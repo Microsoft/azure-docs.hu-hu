@@ -105,6 +105,8 @@
       items:
         - name: Adatok átalakítása leképezési adatfolyamokkal
           items:
+            - name: Adatátalakítás a tavon a Delta Lake-szel
+              href: tutorial-data-flow-delta-lake.md
             - name: Adatok átalakítása leképezési adatfolyamokkal
               href: tutorial-data-flow.md
             - name: Adatfolyamok leképezését ismertető oktatóvideók
@@ -556,6 +558,8 @@
           href: data-flow-lookup.md
         - name: Új ág
           href: data-flow-new-branch.md
+        - name: Elemzés
+          href: data-flow-parse.md
         - name: Kimutatás
           href: data-flow-pivot.md
         - name: Sorszám
@@ -806,6 +810,8 @@
       href: /azure/templates/microsoft.datafactory/allversions
     - name: Python
       href: /python/api/overview/azure/datafactory
+    - name: Az Azure Policy beépített elemei
+      href: policy-reference.md
 - name: További források
   items:
     - name: Tanulmányok

@@ -11,12 +11,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: mbullwin
-ms.openlocfilehash: 0982f89d59f2ef9a282a46a93b98801b9df00a40
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: f42d294dec4dd2c92fe08498a7bce3c1eabae4b3
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368712"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519133"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Oktatóanyag: az adatátviteli rendellenességek észlelése Azure Databricks használatával
 
@@ -123,7 +123,7 @@ Mentse a Twitter-alkalmazáshoz lekért értékeket. Az oktatóanyag későbbi r
 
 Ez az oktatóanyag bemutatja, hogyan küldhet tweeteket az Event Hubsnak a Twitter API-k segítségével. Ezenkívül az [Apache Spark Event Hubs-összekötő](https://github.com/Azure/azure-event-hubs-spark) segítségével adatokat olvashat be és írhat az Azure Event Hubsba. Ha az API-kat a fürt részeként kívánja használni, adja hozzá azokat kódtárként az Azure Databrickshez, majd társítsa a Spark-fürthöz. Az alábbi utasítások azt mutatják be, hogyan adhatók hozzá a kódtárak a **megosztott** mappához a munkaterületen.
 
-1. Az Azure Databricks-munkaterületen válassza a **Munkaterület** lehetőséget, majd kattintson a jobb gombbal a **Megosztott** elemre. A helyi menüben válassza a könyvtár **létrehozása** lehetőséget  >  **Library**.
+1. Az Azure Databricks-munkaterületen válassza a **Munkaterület** lehetőséget, majd kattintson a jobb gombbal a **Megosztott** elemre. A helyi menüben válassza a könyvtár **létrehozása** lehetőséget  >  .
 
    ![Kódtár hozzáadása párbeszédpanel](../media/tutorials/databricks-add-library-option.png "Kódtár hozzáadása párbeszédpanel")
 
@@ -151,7 +151,7 @@ A könyvtár lapon válassza ki azt a fürtöt, ahol a könyvtárat használni s
 
 Ebben az oktatóanyagban az [Azure Cognitive Services anomália-érzékelő API](../overview.md) -k használatával futtathatja a anomáliák észlelését egy közel valós idejű tweetek streamen. Az API-k használata előtt létre kell hoznia egy rendellenesség-Kiderítő erőforrást az Azure-ban, és be kell szereznie egy hozzáférési kulcsot az anomália detektor API-k használatához
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 2. Válassza a **+ Erőforrás létrehozása** lehetőséget.
 
@@ -187,7 +187,7 @@ Ebben a szakaszban két jegyzetfüzetet hoz létre a Databricks munkaterületen 
 - **SendTweetsToEventHub** – Előállítói jegyzetfüzet a tweetek beszerzésére a Twitterről, majd azok streamelésére az Event Hubsnak.
 - **AnalyzeTweetsFromEventHub** – egy fogyasztói jegyzetfüzet, amellyel beolvashatja a tweeteket Event Hubs és futtathatja a anomáliák észlelését.
 
-1. A Azure Databricks munkaterületen válassza a **munkaterület** lehetőséget a bal oldali ablaktáblán. A **Munkaterület** legördülő menüjében válassza a **Létrehozás** , majd a **Jegyzetfüzet** elemet.
+1. A Azure Databricks munkaterületen válassza a **munkaterület** lehetőséget a bal oldali ablaktáblán. A **Munkaterület** legördülő menüjében válassza a **Létrehozás**, majd a **Jegyzetfüzet** elemet.
 
     ![Jegyzetfüzet létrehozása a Databricks-ben](../media/tutorials/databricks-create-notebook.png "Jegyzetfüzet létrehozása a Databricks-ben")
 
@@ -586,7 +586,7 @@ groupTime                       average
 
 Ezután szerezze be az összesített kimeneti eredményt a Delta értékre. Mivel a anomáliák észlelése már egy korábbi előzményi időszakot igényel, a Delta használatával megtarthatja az észlelni kívánt pont előzményeit.
 Cserélje le a "[helyőrző: táblanév]" nevet a létrehozandó, minősített Delta Table (például "tweetek") névre. Cserélje le a "[helyőrző: mappa neve az ellenőrzőpontokhoz]" karakterlánc értékét, amely minden alkalommal, amikor futtatja ezt a kódot (például "ETL-from-eventhub-20190605").
-Ha többet szeretne megtudni a Azure Databricks Delta Lake-ről, tekintse meg a [Delta Lake útmutatót](https://docs.azuredatabricks.net/delta/index.html)
+Ha többet szeretne megtudni a Azure Databricks Delta Lake-ről, tekintse meg a [Delta Lake útmutatót](/databricks/delta/)
 
 
 ```scala
@@ -690,7 +690,7 @@ Az oktatóanyag befejezése után leállíthatja a fürtöt. Ehhez a Azure Datab
 
 Ha nem állítja be manuálisan a fürtöt, az automatikusan leáll, ha a fürt létrehozásakor bejelölte a **megszakítás \_ \_ perc inaktivitás után** jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan használhatja az Azure Databricks szolgáltatást az adatok Azure Event Hubsra való streamelésére, és hogyan olvashatja valós időben a streamelt adatokat az Event Hubsról. Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan hívhatja meg a rendellenesség-Kiderítő API-t, és hogyan jeleníthet meg rendellenességeket Power BI
 

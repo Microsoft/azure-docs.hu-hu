@@ -93,8 +93,6 @@
           href: storage-how-to-create-file-share.md
         - name: Az Azure File Sync üzembe helyezése
           href: storage-sync-files-deployment-guide.md
-        - name: Prémium szintű fájlmegosztás létrehozása
-          href: storage-how-to-create-premium-fileshare.md
         - name: NFS-megosztás létrehozása
           href: storage-files-how-to-create-nfs-shares.md
         - name: SQL Server FCI prémium fájlmegosztásokkal

@@ -1,23 +1,18 @@
 ---
 title: Magas rendelkezésre állás a Azure Data Factory adatkezelési átjáróval
 description: Ez a cikk azt ismerteti, hogyan méretezhető ki egy adatkezelési átjáró további csomópontok hozzáadásával és vertikális felskálázással a csomóponton futtatható egyidejű feladatok számának növelésével.
-services: data-factory
-documentationcenter: ''
 author: nabhishek
-manager: anandsub
-editor: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b8d05293359cff16bb6d8c9a629a1fbf68104365
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ad34ed14682d729157f45e67eb3e0d3bb3eb39b7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003616"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391728"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Adatkezelés átjáró – magas rendelkezésre állás és méretezhetőség (előzetes verzió)
 > [!NOTE]
@@ -98,7 +93,7 @@ Ez a szakasz azt feltételezi, hogy elvégezte a következő két cikket, vagy i
         > A TLS/SSL-tanúsítvány használatára vonatkozó követelmények listáját a [TLS/SSL-tanúsítványokra vonatkozó követelmények](#tlsssl-certificate-requirements) című szakaszban találja. 
     5. Az átjáró sikeres telepítése után kattintson az Indítás gombra Configuration Manager:
     
-        ![Manuális telepítés – a Configuration Manager elindítása](media/data-factory-data-management-gateway-high-availability-scalability/manual-setup-launch-configuration-manager.png)   
+        ![Manuális telepítés – a Configuration Manager elindítása](media/data-factory-data-management-gateway-high-availability-scalability/manual-setup-launch-configuration-manager.png)     
     6. megjelenik adatkezelés átjáró Configuration Manager a csomóponton (helyszíni Windows-gépen), amely a kapcsolat állapotát, az **átjáró nevét** és a **csomópont nevét** mutatja.  
 
         ![Adatkezelés átjáró – sikeres telepítés](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png)
@@ -200,11 +195,11 @@ Szerepkör | A szerepköröknek két típusa van: Diszpécser és feldolgozó. M
 
 Az alábbi táblázat egy **átjáró-csomópont** lehetséges állapotát tartalmazza: 
 
-Állapot  | Megjegyzések/forgatókönyvek
+Állapot    | Megjegyzések/forgatókönyvek
 :------- | :------------------
 Online | Data Factory szolgáltatáshoz csatlakoztatott csomópont.
 Offline | A csomópont offline állapotban van.
-Frissítése | A csomópont automatikus frissítése folyamatban van.
+Frissítés | A csomópont automatikus frissítése folyamatban van.
 Korlátozott | Kapcsolódási probléma miatt. A hiba oka lehet a 8050-es HTTP-port, a Service Bus-csatlakozási probléma vagy a hitelesítő adatok szinkronizálása. 
 Inaktív | A csomópont más többségi csomópontok konfigurációjától eltérő konfigurációban található.<br/><br/> Egy csomópont inaktív lehet, ha nem tud csatlakozni más csomópontokhoz. 
 
@@ -255,7 +250,7 @@ Az előzetes verzióról történő visszaállításhoz törölje az összes cso
 A törlés után kattintson az **előnézet szolgáltatások** elemre ugyanabban a Azure Portal oldalon, és tiltsa le az előzetes verzió funkciót. Alaphelyzetbe állítja az átjárót egy Node GA-(általános rendelkezésre állási) átjáróra.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse át a következő cikkeket:
 - [Adatkezelés átjáró](data-factory-data-management-gateway.md) – részletes áttekintést nyújt az átjáróról.
 - Az [adatáthelyezés a helyszíni és a Felhőbeli adattárak között](data-factory-move-data-between-onprem-and-cloud.md) – egy olyan bemutatót tartalmaz, amely részletes útmutatást nyújt egy átjáró egyetlen csomóponttal való használatához. 

@@ -3,18 +3,18 @@ title: 'ML Studio (klasszikus): betanítási szolgáltatás importálása – Az
 description: Adatok importálása a Azure Machine Learning Studioba (klasszikus) különböző adatforrásokból. Ismerje meg, hogy milyen adattípusok és adatformátumok támogatottak.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: c69ed7b9e2aaa7113637868e1c1329ed2962b931
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: db5f3cc4b9530c4aeac40786756b36cc0ac98728
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302770"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520374"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>Betanítási adatok importálása Azure Machine Learning Studioba (klasszikus) különböző adatforrásokból
 
@@ -73,12 +73,12 @@ A Studio (klasszikus) a következő adattípusokat ismeri fel:
 * DateTime
 * időtartam
 
-A Studio egy ***adattábla** _ nevű belső adattípust használ a modulok közötti adatátvitelhez. Az adatokat adattábla formátumba explicit módon konvertálhatja az [átalakítás adatkészletbe][convert-to-dataset] modul használatával.
+A Studio egy ***adattábla*** nevű belső adattípust használ a modulok közötti adatátvitelhez. Az adatokat adattábla formátumba explicit módon konvertálhatja az [átalakítás adatkészletbe][convert-to-dataset] modul használatával.
 
 Az adattáblán kívül más formátumokat is tartalmazó modulok a következő modulba való átadásuk előtt csendes adattáblára konvertálják az adattáblát.
 
 Szükség esetén átalakíthatja az adattábla formátumát CSV-, TSV-, ARFF-vagy SVMLight-formátumba más konverziós modulok használatával.
-A függvényeket végrehajtó modulok esetében tekintse meg a modul paletta _ *adatformátum-konverziók** szakaszát.
+A függvényeket végrehajtó modulok esetében tekintse meg a modul paletta **adatformátum-konverziók** szakaszát.
 
 ## <a name="data-capacities"></a>Adatkapacitások
 
@@ -157,7 +157,7 @@ A támogatott online adatforrások az alábbi táblázatban vannak részletezve.
 ### <a name="supported-online-data-sources"></a>Támogatott online adatforrások
 A Azure Machine Learning Studio (klasszikus) **adatimportálási** modul a következő adatforrásokat támogatja:
 
-| Adatforrás | Leírás | Paraméterek |
+| Adatforrás | Description | Paraméterek |
 | --- | --- | --- |
 | Webes URL-cím HTTP-n keresztül |A vesszővel tagolt értékek (CSV), tabulátorral tagolt értékek (TSV), attribútum-kapcsolati fájlformátum (ARFF) és a SVM-formátumok támogatása a HTTP-t használó bármely webes URL-címről |<b>URL</b>: a fájl teljes nevét adja meg, beleértve a webhely URL-címét és a fájlnevet bármilyen kiterjesztéssel. <br/><br/><b>Adatformátum</b>: a támogatott adatformátumok egyikét adja meg: CSV, TSV, ARFF vagy SVM. Ha az adatsorok fejléctel rendelkeznek, az oszlopnevek hozzárendelésére szolgál. |
 | Hadoop/HDFS |Beolvassa az adatokat a Hadoop-ben lévő elosztott tárolóból. A HiveQL, egy SQL-szerű lekérdezési nyelvet használva adhatja meg a kívánt adatértékeket. A HiveQL az adatok összesítéséhez és az Adatszűrés végrehajtásához is használható, mielőtt hozzáadja az adatokat a studióhoz (klasszikus). |<b>Struktúra adatbázis-lekérdezése</b>: megadja az adatlétrehozáshoz használt kaptár-lekérdezést.<br/><br/><b>HCatalog-kiszolgáló URI-ja</b> : a fürt nevét a fürt neve *&lt; &gt; . azurehdinsight.net* formátumban adja meg.<br/><br/><b>Hadoop felhasználói fiók neve</b>: a fürt kiépítéséhez használt Hadoop-felhasználói fiók nevét adja meg.<br/><br/><b>Hadoop felhasználói fiók jelszava</b> : a fürt kiépítés során használt hitelesítő adatokat adja meg. További információ: [Hadoop-fürtök létrehozása a HDInsight-ben](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md).<br/><br/><b>Kimeneti adatforgalom helye</b>: Megadja, hogy az adatokat egy Hadoop elosztott fájlrendszerben (HDFS) vagy az Azure-ban tárolja-e a rendszer. <br/><ul>Ha a kimeneti adatokat a HDFS tárolja, adja meg a HDFS-kiszolgáló URI azonosítóját. (Ügyeljen arra, hogy a HDInsight-fürt nevét a HTTPS://előtag nélkül használja.) <br/><br/>Ha a kimeneti adatokat az Azure-ban tárolja, meg kell adnia az Azure Storage-fiók nevét, a tárterület-hozzáférési kulcsot és a tároló nevét.</ul> |
@@ -178,7 +178,7 @@ Időnként előfordulhat, hogy egy kísérletből közbenső eredményt szeretne
 
 A Mentés befejeződése után az adatkészlet elérhető lesz a munkaterületen lévő bármilyen kísérletben. Ez a modul paletta **mentett adatkészletek** listájában található.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Adatimportálási és adatexportálási modulokat használó Azure Machine Learning Studio webszolgáltatások üzembe helyezése](web-services-that-use-import-export-modules.md)
 

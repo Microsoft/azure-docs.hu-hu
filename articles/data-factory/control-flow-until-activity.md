@@ -1,29 +1,25 @@
 ---
 title: A tevékenység Azure Data Factory
 description: A amíg tevékenység végrehajtja a tevékenységek egy csoportját, amíg a tevékenységhez rendelt feltétel igaz vagy időtúllépést nem ad vissza.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: ab3644b11273017ea6e4e5a395a7d3cc3a201217
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 6431321d788e7311e076d302173ffffb96e07876
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485997"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385370"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>A tevékenység Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Az Until tevékenység ugyanazokat a funkciókat biztosítja, mint a programnyelvek Do-Until ciklusos szerkezete. Egy tevékenységkészletet futtat le ciklusosan addig, amíg a tevékenységhez rendelt feltétel igaz értéket nem ad vissza. Megadhat egy időtúllépési értéket az Until tevékenységhez a Data Factoryban. 
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -55,11 +51,11 @@ Az Until tevékenység ugyanazokat a funkciókat biztosítja, mint a programnyel
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-name | A tevékenység neve `Until` . | Sztring | Igen
-típus | **Csak** a értékre kell beállítani. | Sztring | Igen
-kifejezés | Igaz vagy hamis értéket megadó kifejezés | Kifejezés.  | Igen
-timeout | A do-ig hurkos időtúllépés a megadott idő után. | Sztring. `d.hh:mm:ss` (vagy) `hh:mm:ss` . Az alapértelmezett érték 7 nap. Maximális érték: 90 nap. | Nem
-Tevékenységek | Azoknak a tevékenységeknek a készlete, amelyeket a kifejezés kiértékelése után hajt végre `true` . | Tevékenységek tömbje. |  Igen
+name | A tevékenység neve `Until` . | Sztring | Yes
+típus | **Csak** a értékre kell beállítani. | Sztring | Yes
+kifejezés | Igaz vagy hamis értéket megadó kifejezés | Kifejezés.  | Yes
+timeout | A do-ig hurkos időtúllépés a megadott idő után. | Sztring. `d.hh:mm:ss` (vagy) `hh:mm:ss` . Az alapértelmezett érték 7 nap. Maximális érték: 90 nap. | No
+Tevékenységek | Azoknak a tevékenységeknek a készlete, amelyeket a kifejezés kiértékelése után hajt végre `true` . | Tevékenységek tömbje. |  Yes
 
 ## <a name="example-1"></a>1\. példa
 
@@ -287,7 +283,7 @@ while ($True) {
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a Data Factory által támogatott egyéb vezérlési folyamatokat: 
 
 - [If Condition tevékenység](control-flow-if-condition-activity.md)

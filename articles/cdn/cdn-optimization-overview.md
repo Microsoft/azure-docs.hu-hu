@@ -4,22 +4,16 @@ description: Ismerje meg, hogy az Azure Content Delivery Network hogyan optimali
 services: cdn
 documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: ''
-ms.assetid: ''
 ms.service: azure-cdn
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: allensu
-ms.openlocfilehash: 7c7e4ff05307452da67c37b23bf492db8855e2ef
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3d207ee09a76509a65a2645515b182f8d92753b0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004500"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387920"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>Azure CDN optimalizálása a tartalom kézbesítésének típusára
 
@@ -64,7 +58,11 @@ A Microsoft azt javasolja, hogy tesztelje a különböző szolgáltatók közöt
 
 ## <a name="select-and-configure-optimization-types"></a>Optimalizálási típusok kiválasztása és konfigurálása
 
-CDN-végpont létrehozásakor válasszon olyan optimalizálási típust, amely a legjobban megfelel a végpont által kézbesíteni kívánt-forgatókönyvnek és a tartalom típusának. Az alapértelmezett beállítás az **általános webes kézbesítés** . Csak a Akamai-végpontok meglévő **Azure CDN standard** verziójában bármikor frissítheti az optimalizálási lehetőséget. Ez a módosítás nem szakítja meg a kézbesítést Azure CDNról. 
+CDN-végpont létrehozásakor válasszon olyan optimalizálási típust, amely a legjobban megfelel a végpont által kézbesíteni kívánt-forgatókönyvnek és a tartalom típusának. 
+
+Az alapértelmezett beállítás az **általános webes kézbesítés** . A Akamai-végpontok optimalizálásával csak **Azure CDN szabványt** lehet frissíteni. 
+
+A **microsofttól Azure CDN standard szintű** Azure CDN a verizontól és **a Azure CDN Premiumtól a Verizontól** a **standard** szintig nem.
 
 1. A Akamai-profilból **származó Azure CDN-szabványban** válasszon ki egy végpontot.
 

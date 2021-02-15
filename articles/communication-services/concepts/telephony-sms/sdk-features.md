@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 6f0b5325ff95d2c2f34572239967151986621bcb
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 2448840fcbbea686972f8f948d428bda7b3c2bf2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937185"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391745"
 ---
 # <a name="sms-client-library-overview"></a>Az SMS-ügyfélkódtár áttekintése
 
@@ -49,4 +49,4 @@ A következő dokumentumok érdekesek lehetnek:
 
 - Ismerkedjen meg az általános [SMS-fogalmakkal](../telephony-sms/concepts.md)
 - SMS-kompatibilis [telefonszám](../../quickstarts/telephony-sms/get-phone-number.md) beszerzése
-- [Az SMS-megoldás megtervezése](../telephony-sms/plan-solution.md)
+- [Telefonszám-típusok az Azure kommunikációs szolgáltatásokban](../telephony-sms/plan-solution.md)

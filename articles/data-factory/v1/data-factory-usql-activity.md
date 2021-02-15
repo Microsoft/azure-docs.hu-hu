@@ -1,24 +1,19 @@
 ---
 title: Adatátalakítás az U-SQL-parancsfájllal – Azure
 description: Megtudhatja, hogyan dolgozhat fel és alakíthat át az adatok a U-SQL-parancsfájlok futtatásával Azure Data Lake Analytics számítási szolgáltatás – 1. verzió.
-services: data-factory
-documentationcenter: ''
-ms.assetid: e17c1255-62c2-4e2e-bb60-d25274903e80
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/01/2017
 author: nabhishek
 ms.author: abnarain
 ms.custom: devx-track-csharp
-manager: anandsub
 robots: noindex
-ms.openlocfilehash: a5e53cab30f1adca05652a3b3b7541e12ebebbdb
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 5931cb28721e8658a771ceea1cd94624a0c09f7c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631461"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392918"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Adatok átalakítása az Azure Data Lake Analyticsben található U-SQL-szkriptek futtatásával 
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -48,9 +43,9 @@ A következő táblázat a JSON-definícióban használt általános tulajdonsá
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| **típusa** |A Type tulajdonságot a következőre kell beállítani: **AzureDataLakeAnalytics** . |Igen |
-| **accountName** |Azure Data Lake Analytics fiók neve. |Igen |
-| **dataLakeAnalyticsUri** |Azure Data Lake Analytics URI. |Nem |
+| **típusa** |A Type tulajdonságot a következőre kell beállítani: **AzureDataLakeAnalytics**. |Yes |
+| **accountName** |Azure Data Lake Analytics fiók neve. |Yes |
+| **dataLakeAnalyticsUri** |Azure Data Lake Analytics URI. |No |
 | **subscriptionId** |Azure-előfizetés azonosítója |Nem (ha nincs megadva, a rendszer az adatfeldolgozó előfizetését használja). |
 | **resourceGroupName** |Azure-erőforráscsoport neve |Nem (ha nincs megadva, a rendszer az adatfeldolgozó erőforráscsoportot használja). |
 
@@ -64,9 +59,9 @@ Az egyszerű szolgáltatás hitelesítését a következő tulajdonságok megad�
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| **servicePrincipalId** | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját. | Igen |
-| **servicePrincipalKey** | Az alkalmazás kulcsának meghatározása. | Igen |
-| **bérlő** | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. Lekérheti a Azure Portal jobb felső sarkában lévő egér fölé. | Igen |
+| **servicePrincipalId** | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját. | Yes |
+| **servicePrincipalKey** | Az alkalmazás kulcsának meghatározása. | Yes |
+| **bérlő** | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. Lekérheti a Azure Portal jobb felső sarkában lévő egér fölé. | Yes |
 
 **Példa: egyszerű szolgáltatásnév hitelesítése**
 ```json
@@ -92,8 +87,8 @@ Azt is megteheti, hogy a következő tulajdonságok megadásával felhasználói
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| **engedély** | Kattintson az **Engedélyezés** gombra a Data Factory szerkesztőben, és adja meg a hitelesítő adatait, amely hozzárendeli az automatikusan létrehozott engedélyezési URL-címet ehhez a tulajdonsághoz. | Igen |
-| **sessionId** | OAuth munkamenet-azonosító a OAuth-engedélyezési munkamenetből. Az egyes munkamenet-AZONOSÍTÓk egyediek, és csak egyszer használhatók fel. Ez a beállítás automatikusan létrejön a Data Factory-szerkesztő használatakor. | Igen |
+| **engedély** | Kattintson az **Engedélyezés** gombra a Data Factory szerkesztőben, és adja meg a hitelesítő adatait, amely hozzárendeli az automatikusan létrehozott engedélyezési URL-címet ehhez a tulajdonsághoz. | Yes |
+| **sessionId** | OAuth munkamenet-azonosító a OAuth-engedélyezési munkamenetből. Az egyes munkamenet-AZONOSÍTÓk egyediek, és csak egyszer használhatók fel. Ez a beállítás automatikusan létrejön a Data Factory-szerkesztő használatakor. | Yes |
 
 **Példa: felhasználói hitelesítő adatok hitelesítése**
 ```json
@@ -208,16 +203,16 @@ A következő táblázat ismerteti a tevékenységre jellemző tulajdonságok ne
 
 | Tulajdonság            | Leírás                              | Kötelező                                 |
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
-| típus                | A Type tulajdonságot **DataLakeAnalyticsU-SQL** értékre kell beállítani. | Igen                                      |
-| linkedServiceName   | Hivatkozás a társított szolgáltatásként regisztrált Azure Data Lake Analytics Data Factory | Igen                                      |
+| típus                | A Type tulajdonságot **DataLakeAnalyticsU-SQL** értékre kell beállítani. | Yes                                      |
+| linkedServiceName   | Hivatkozás a társított szolgáltatásként regisztrált Azure Data Lake Analytics Data Factory | Yes                                      |
 | scriptPath          | A U-SQL-parancsfájlt tartalmazó mappa elérési útja. A fájl neve megkülönbözteti a kis-és nagybetűket. | Nem (ha parancsfájlt használ)                   |
 | Scriptlinkedservice szolgáltatás | Társított szolgáltatás, amely összekapcsolja a parancsfájlt tartalmazó tárolót az adatgyárba | Nem (ha parancsfájlt használ)                   |
-| parancsfájl              | A scriptPath és a Scriptlinkedservice szolgáltatás meghatározása helyett beágyazott parancsfájlt adjon meg. Például: `"script": "CREATE DATABASE test"`. | Nem (scriptPath és Scriptlinkedservice szolgáltatás használata esetén) |
-| Analyticsunits | A feladatok futtatásához egyidejűleg használt csomópontok maximális száma. | Nem                                       |
-| prioritású            | Meghatározza, hogy az összes várólistán lévő feladatra kiválassza az első futtatást. Minél kisebb a szám, annál magasabb a prioritás. | Nem                                       |
-| parameters          | A U-SQL-parancsfájl paramétereinek          | Nem                                       |
-| runtimeVersion      | A használni kívánt U-SQL-motor futtatókörnyezet-verziója | Nem                                       |
-| compilationMode     | <p>U-SQL fordítási módja. A következő értékek egyikének kell lennie:</p> <ul><li>**Szemantika:** Csak szemantikai ellenőrzéseket és a szükséges józan ész-ellenőrzéseket kell végrehajtania.</li><li>**Teljes:** Végezze el a teljes fordítást, beleértve a szintaxis-ellenőrzést, az optimalizálást, a kód generálását stb.</li><li>**SingleBox:** Hajtsa végre a teljes fordítást a TargetType beállítással a SingleBox.</li></ul><p>Ha nem ad meg értéket ehhez a tulajdonsághoz, a kiszolgáló meghatározza az optimális fordítási módot. </p> | Nem                                       |
+| parancsfájl              | A scriptPath és a Scriptlinkedservice szolgáltatás meghatározása helyett beágyazott parancsfájlt adjon meg. Példa: `"script": "CREATE DATABASE test"`. | Nem (scriptPath és Scriptlinkedservice szolgáltatás használata esetén) |
+| Analyticsunits | A feladatok futtatásához egyidejűleg használt csomópontok maximális száma. | No                                       |
+| prioritású            | Meghatározza, hogy az összes várólistán lévő feladatra kiválassza az első futtatást. Minél kisebb a szám, annál magasabb a prioritás. | No                                       |
+| parameters          | A U-SQL-parancsfájl paramétereinek          | No                                       |
+| runtimeVersion      | A használni kívánt U-SQL-motor futtatókörnyezet-verziója | No                                       |
+| compilationMode     | <p>U-SQL fordítási módja. A következő értékek egyikének kell lennie:</p> <ul><li>**Szemantika:** Csak szemantikai ellenőrzéseket és a szükséges józan ész-ellenőrzéseket kell végrehajtania.</li><li>**Teljes:** Végezze el a teljes fordítást, beleértve a szintaxis-ellenőrzést, az optimalizálást, a kód generálását stb.</li><li>**SingleBox:** Hajtsa végre a teljes fordítást a TargetType beállítással a SingleBox.</li></ul><p>Ha nem ad meg értéket ehhez a tulajdonsághoz, a kiszolgáló meghatározza az optimális fordítási módot. </p> | No                                       |
 
 Lásd [SearchLogProcessing.txt parancsfájl](#sample-u-sql-script) definícióját. 
 

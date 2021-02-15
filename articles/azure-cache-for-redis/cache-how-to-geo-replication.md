@@ -1,24 +1,28 @@
 ---
-title: Az Azure cache geo-replikációjának beállítása a Redis-hez | Microsoft Docs
-description: Ismerje meg, hogyan replikálhatja az Azure cache-t a Redis-példányok földrajzi régiók közötti replikálásához.
+title: Geo-replikáció konfigurálása prémium szintű Azure cache-hez Redis-példányokhoz
+description: Ismerje meg, hogyan replikálhatja az Azure cache-t a prémium szintű Redis az Azure-régiók között
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
-ms.date: 03/06/2019
+ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: 33d5ec89ef7563df16e0fe9b447eca88b1dba7fe
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 27ccc81ddf0a771de9fb15f60820dfd3efa6146e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536878"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386872"
 ---
-# <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Az Azure cache geo-replikációjának beállítása a Redis
+# <a name="configure-geo-replication-for-premium-azure-cache-for-redis-instances"></a>Geo-replikáció konfigurálása prémium szintű Azure cache-hez Redis-példányokhoz
 
-A Geo-replikáció lehetővé teszi két prémium szintű Azure cache összekapcsolását a Redis-példányokhoz. Az egyik gyorsítótár elsődleges csatolt gyorsítótárként van kiválasztva, a másik pedig másodlagos csatolt gyorsítótárként. A másodlagos csatolt gyorsítótár írásvédett lesz, és az elsődleges gyorsítótárba írt információk replikálódnak a másodlagos csatolt gyorsítótárba. Az elsődleges és a másodlagos gyorsítótár példányai közötti adatátvitelt a TLS védi. A Geo-replikáció két Azure-régióra kiterjedő gyorsítótár beállítására használható. Ez a cikk útmutatást nyújt a Geo-replikáció konfigurálásához a prémium szintű Azure cache-hez a Redis-példányok esetében.
+Ebből a cikkből megtudhatja, hogyan konfigurálhat egy földrajzilag replikált Azure-gyorsítótárat a Azure Portal használatával.
+
+A Geo-replikáció két prémium szintű Azure cache-t tartalmaz a Redis-példányokhoz, és létrehoz egy adatreplikálási kapcsolatot. Ezek a gyorsítótár-példányok általában különböző Azure-régiókban találhatók, de nem szükségesek hozzájuk. Az egyik példány elsődlegesként, a másik pedig másodlagosként működik. Az elsődleges kezeli az olvasási és írási kérelmeket, és propagálja a másodlagos módosításokat. Ez a folyamat addig folytatódik, amíg a két példány közötti kapcsolat el nem távolítva.
 
 > [!NOTE]
-> A Geo-replikáció vész-helyreállítási megoldásként lett kialakítva. Alapértelmezés szerint az alkalmazás az elsődleges régióból fog írni és olvasni. Opcionálisan beállítható úgy is, hogy a másodlagos régióból olvasson. A Geo-replikáció nem biztosít automatikus feladatátvételt, mert a régiók között a hozzáadott hálózati késés miatti probléma az, hogy az alkalmazás többi része az elsődleges régióban marad. A másodlagos gyorsítótár leválasztásával kell kezelnie és kezdeményeznie a feladatátvételt. Ez az új elsődleges példány lesz.
+> A Geo-replikáció vész-helyreállítási megoldásként lett kialakítva.
+>
+>
 
 ## <a name="geo-replication-prerequisites"></a>Földrajzi replikálás előfeltételei
 

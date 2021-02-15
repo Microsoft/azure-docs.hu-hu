@@ -3,22 +3,22 @@ title: 'ML Studio (klasszikus): hozzon létre több modellt & végpontokat – A
 description: A PowerShell használatával több Machine Learning modellt és webszolgáltatás-végpontot hozhat létre ugyanazzal az algoritmussal, de különböző betanítási adatkészletekkel.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: ef9ea055f437b53313dc9ee11b0b91f095664f5e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 35b5fe4556f1d557d3fc0420e9069f2fb510eec4
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322849"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520510"
 ---
 # <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>Több webszolgáltatás-végpont létrehozása egy kísérletből ML Studio (klasszikus) és a PowerShell használatával
 
-**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 Íme egy gyakori gépi tanulási probléma: több olyan modellt szeretne létrehozni, amely azonos képzési munkafolyamattal rendelkezik, és ugyanazt az algoritmust használja. Azonban azt szeretné, hogy a különböző betanítási adatkészletek bemenetként legyenek kiválasztva. Ebből a cikkből megtudhatja, hogyan végezheti el ezt a méretezést Azure Machine Learning Studio (klasszikus) használatával csupán egyetlen kísérlettel.
 
@@ -99,7 +99,7 @@ Most létrehozott 10 végpontot, és mindegyikük ugyanazt a betanított modellt
 ## <a name="update-the-endpoints-to-use-separate-training-datasets-using-powershell"></a>A végpontok frissítése külön betanítási adatkészletek használatára a PowerShell használatával
 A következő lépés a végpontok frissítése az egyes ügyfelek egyedi adateszközeire egyedileg betanított modellekkel. Először is létre kell hoznia ezeket a modelleket a **Bike Rental Training** web szolgáltatásból. Térjünk vissza a **Bike Rental Training** webszolgáltatáshoz. 10 különböző modell létrehozásához meg kell hívnia a BES-végpontot 10 alkalommal 10 különböző betanítási adatkészlettel. Ehhez használja a **InovkeAmlWebServiceBESEndpoint** PowerShell-parancsmagot.
 
-Emellett a blob Storage-fiókjához tartozó hitelesítő adatokat is meg kell adnia a alkalmazásban `$configContent` . A következő mezőkben: `AccountName` `AccountKey` és `RelativeLocation` . Az `AccountName` lehet az egyik fiók neve, ahogy az a **Azure Portalban** látható ( *Storage* TAB). Miután rákattintott egy Storage-fiókra, az a `AccountKey` (z) alján található **hozzáférési kulcsok kezelése** gomb lenyomásával és az *elsődleges elérési kulcs* másolásával érhető el. Az a `RelativeLocation` tárolóhoz viszonyított elérési út, ahol egy új modellt fog tárolni. Például a következő parancsfájl elérési útja `hai/retrain/bike_rental/` egy nevű tárolóra mutat `hai` , és `/retrain/bike_rental/` almappák. Jelenleg nem hozhatók létre almappák a portál felhasználói felületén keresztül, de [több Azure Storage-tallózó](../../storage/common/storage-explorers.md) is lehetővé teszi. Azt javasoljuk, hogy hozzon létre egy új tárolót a tárolóban az új betanított modellek (. iLearner fájlok) tárolásához a következő módon: a tárterület lapon kattintson az alján található **Hozzáadás** gombra, és nevezze el `retrain` . Összefoglalva, a következő parancsfájl szükséges módosításai a, `AccountName` `AccountKey` és `RelativeLocation` (:) értékre vonatkoznak `"retrain/model' + $seq + '.ilearner"` .
+Emellett a blob Storage-fiókjához tartozó hitelesítő adatokat is meg kell adnia a alkalmazásban `$configContent` . A következő mezőkben: `AccountName` `AccountKey` és `RelativeLocation` . Az `AccountName` lehet az egyik fiók neve, ahogy az a **Azure Portalban** látható (*Storage* TAB). Miután rákattintott egy Storage-fiókra, az a `AccountKey` (z) alján található **hozzáférési kulcsok kezelése** gomb lenyomásával és az *elsődleges elérési kulcs* másolásával érhető el. Az a `RelativeLocation` tárolóhoz viszonyított elérési út, ahol egy új modellt fog tárolni. Például a következő parancsfájl elérési útja `hai/retrain/bike_rental/` egy nevű tárolóra mutat `hai` , és `/retrain/bike_rental/` almappák. Jelenleg nem hozhatók létre almappák a portál felhasználói felületén keresztül, de [több Azure Storage-tallózó](../../storage/common/storage-explorers.md) is lehetővé teszi. Azt javasoljuk, hogy hozzon létre egy új tárolót a tárolóban az új betanított modellek (. iLearner fájlok) tárolásához a következő módon: a tárterület lapon kattintson az alján található **Hozzáadás** gombra, és nevezze el `retrain` . Összefoglalva, a következő parancsfájl szükséges módosításai a, `AccountName` `AccountKey` és `RelativeLocation` (:) értékre vonatkoznak `"retrain/model' + $seq + '.ilearner"` .
 
 ```powershell
 # Invoke the retraining API 10 times
@@ -123,7 +123,7 @@ For ($i = 1; $i -le 10; $i++){
 
 Ahogy a fentiekben is látható, a 10 különböző BES-beli konfigurációs JSON-fájl létrehozása helyett Ehelyett dinamikusan létrehozza a konfigurációs karakterláncot. Ezután a **InvokeAmlWebServceBESEndpoint** parancsmag *jobConfigString* paraméteréhez adja a csatornát. A lemezen nem kell megőrizni a másolást.
 
-Ha minden jól megy, egy idő után 10. iLearner-fájlt kell látnia a *model001. iLearner* fájlból a *model010. iLearner* -be az Azure Storage-fiókban. Most már készen áll arra, hogy frissítse a 10 pontozásos webszolgáltatás-végpontot ezekkel a modellekkel a **patch-AmlWebServiceEndpoint** PowerShell-parancsmag használatával. Ne feledje újra, hogy csak a korábban létrehozott, nem alapértelmezett végpontok javítását végezheti el.
+Ha minden jól megy, egy idő után 10. iLearner-fájlt kell látnia a *model001. iLearner* fájlból a *model010. iLearner*-be az Azure Storage-fiókban. Most már készen áll arra, hogy frissítse a 10 pontozásos webszolgáltatás-végpontot ezekkel a modellekkel a **patch-AmlWebServiceEndpoint** PowerShell-parancsmag használatával. Ne feledje újra, hogy csak a korábban létrehozott, nem alapértelmezett végpontok javítását végezheti el.
 
 ```powershell
 # Patch the 10 endpoints with respective .ilearner models

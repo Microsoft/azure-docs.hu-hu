@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: f7d7bff1bc85e0dec78a69422d126b86f61b7704
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9a4453c29c52f8821643e93584666c3a6a8e6b4c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783980"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379828"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Vészhelyreállítás és tárfiók feladatátvétele
 
@@ -23,7 +23,7 @@ A Microsoft igyekszik biztosítani, hogy az Azure-szolgáltatások mindig elérh
 
 Az Azure Storage támogatja a fiókok feladatátvételét a földrajzilag redundáns Storage-fiókok esetében. A fiók feladatátvétele esetén kezdeményezheti a tárolási fiók feladatátvételi folyamatát, ha az elsődleges végpont elérhetetlenné válik. A feladatátvétel frissíti a másodlagos végpontot, hogy az a Storage-fiók elsődleges végpontja legyen. A feladatátvétel befejeződése után az ügyfelek megkezdhetik az új elsődleges végpont írását.
 
-A fiók feladatátvétele az általános célú v1, az általános célú v2 és a blob Storage-fiókok típusaihoz Azure Resource Manager üzemelő példányokkal érhető el. A fiók feladatátvétele az összes nyilvános régióban támogatott, de jelenleg nem érhető el szuverén vagy országos felhőkben.
+A fiókok feladatátvétele az általános célú v1, az általános célú v2 és a Blob Storage típusú fiókok esetén érhető el az Azure Resource Manager-környezetekben. A fiók feladatátvétele az összes nyilvános régióban támogatott, de jelenleg nem érhető el szuverén vagy országos felhőkben.
 
 Ez a cikk a fiók feladatátvételével kapcsolatos fogalmakat és folyamatokat ismerteti, és bemutatja, hogyan készítheti elő a Storage-fiókját a lehető legkevesebb vásárlói hatású helyreállításra. A fiók feladatátvételének elindításáról a Azure Portal vagy a PowerShellben tekintse meg a [fiók feladatátvételének kezdeményezése](storage-initiate-account-failover.md)című témakört.
 
@@ -55,7 +55,7 @@ Emellett vegye figyelembe ezeket az ajánlott eljárásokat az Azure Storage-bel
 
 - **Lemezek:** A [Azure Backup](https://azure.microsoft.com/services/backup/) használatával biztonsági mentést készíthet az Azure-beli virtuális gépek által használt VM-lemezekről. Vegye fontolóra a [Azure site Recovery](https://azure.microsoft.com/services/site-recovery/) használatát a virtuális gépek biztonságának biztosítása érdekében regionális katasztrófa esetén is.
 - **Blobok letiltása:** Ha a [AzCopy](./storage-use-azcopy-v10.md), a [Azure PowerShell](/powershell/module/az.storage/)vagy az [Azure adatátviteli függvénytárat](storage-use-data-movement-library.md)használja, a [Soft delete](../blobs/soft-delete-blob-overview.md) bekapcsolásával védelmet biztosíthat az objektum-szintű törlések és a felülírások ellen, vagy más régióba másolja a blokk blobokat egy másikba.
-- **Fájlok:** A [AzCopy](./storage-use-azcopy-v10.md) vagy a [Azure PowerShell](/powershell/module/az.storage/) segítségével másolja át a fájlokat egy másik különböző régióban lévő Storage-fiókba.
+- **Fájlok:** A fájlmegosztás biztonsági mentéséhez használja a [Azure Backup](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview) . Engedélyezze a helyreállítható [törlést](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion) is a véletlen fájlmegosztás törlésével szembeni védelem érdekében. Ha a GRS nem érhető el, a [AzCopy](./storage-use-azcopy-v10.md) vagy a [Azure PowerShell](/powershell/module/az.storage/) használatával másolhatja át a fájlokat egy másik, eltérő régióban lévő Storage-fiókba.
 - **Táblák:** a [AzCopy](./storage-use-azcopy-v10.md) használatával exportálhatja a tábla-és más tárolási fiókokat egy másik régióban.
 
 ## <a name="track-outages"></a>Kimaradások nyomon követése

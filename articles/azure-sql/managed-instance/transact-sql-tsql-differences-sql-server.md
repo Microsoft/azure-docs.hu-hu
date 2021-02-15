@@ -9,14 +9,14 @@ ms.topic: reference
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
-ms.date: 11/10/2020
+ms.date: 1/12/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: cc31ad851441c980365841b1131405339a1092fa
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: d43f794d6d73e26d791c5a11961470d2131b8951
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626274"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378621"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL felügyelt példányának T-SQL-különbségei
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -284,6 +284,7 @@ További információ: [Alter Database](/sql/t-sql/statements/alter-database-tra
 ### <a name="sql-server-agent"></a>SQL Server Agent
 
 - A SQL Server Agent engedélyezése és letiltása jelenleg nem támogatott az SQL felügyelt példányain. Az SQL Agent folyamatosan fut.
+- Az inaktív PROCESSZORok alapján végzett feladatütemezés-trigger nem támogatott.
 - SQL Server Agent beállítások csak olvashatók. Az eljárás `sp_set_agent_properties` nem támogatott az SQL felügyelt példányain. 
 - Feladatok
   - A T-SQL-feladatok lépései támogatottak.
@@ -306,13 +307,7 @@ További információ: [Alter Database](/sql/t-sql/statements/alter-database-tra
   - A proxyk nem támogatottak.
 - Az Eseménynapló nem támogatott.
 - Az SQL Agent-feladatok létrehozásához, módosításához vagy végrehajtásához közvetlenül hozzá kell rendelni a felhasználót az Azure AD-kiszolgáló rendszerbiztonsági képviselőjéhez (login). Azok a felhasználók, akik nem közvetlenül vannak leképezve, például olyan Azure AD-csoporthoz tartozó felhasználók, amelyek az SQL Agent-feladatok létrehozásához, módosításához vagy végrehajtásához szükséges jogosultságokkal rendelkeznek, nem tudják hatékonyan végrehajtani ezeket a műveleteket. Ennek oka a felügyelt példány megszemélyesítése és a [végrehajtás korlátozásként](#logins-and-users)történik.
-
-A következő SQL Agent-funkciók jelenleg nem támogatottak:
-
-- Legközelebbi
-- Feladatok ütemezése üresjárati PROCESSZORon
-- Ügynök engedélyezése vagy letiltása
-- Riasztások
+- A több kiszolgáló felügyeleti funkciója a Master/Target (MSX/TSX) feladatok esetében nem támogatott.
 
 További információ a SQL Server Agentről: [SQL Server Agent](/sql/ssms/agent/sql-server-agent).
 

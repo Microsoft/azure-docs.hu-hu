@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: a3f6c14b7ed2686a262f28510efb37068cfb9cb3
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: b34fcd66f0b64e2522da69bcfc7d119628b9d9d9
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787298"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516702"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>DDoS Protection-telemetria megtekintése és konfigurálása
 
@@ -37,9 +37,8 @@ Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 A következő [metrikák](../azure-monitor/platform/metrics-supported.md#microsoftnetworkpublicipaddresses) érhetők el Azure DDoS Protection standard. Ezek a metrikák a diagnosztikai beállításokon keresztül is exportálhatók (lásd: a [DDoS diagnosztikai naplózás megtekintése és konfigurálása](diagnostic-logging.md)).
 
 
-| Metric | Metrika megjelenítendő neve | Unit (Egység) | Aggregáció típusa | Leírás |
+| Metric | Metrika megjelenítendő neve | Unit (Egység) | Aggregáció típusa | Description |
 | --- | --- | --- | --- | --- |
-| ByteCount | Bájtok száma | Darabszám | Összesen | Az adott időszakon belül továbbított bájtok teljes száma |
 | BytesDroppedDDoS | Bejövő bájtok elvetve DDoS | BytesPerSecond | Maximum | Bejövő bájtok elvetve DDoS| 
 | BytesForwardedDDoS | Bejövő bájtok továbbított DDoS | BytesPerSecond | Maximum | Bejövő bájtok továbbított DDoS |
 | BytesInDDoS | Bejövő bájtok DDoS | BytesPerSecond | Maximum | Bejövő bájtok DDoS |
@@ -47,11 +46,9 @@ A következő [metrikák](../azure-monitor/platform/metrics-supported.md#microso
 | DDoSTriggerTCPPackets | Bejövő TCP-csomagok a DDoS-mérséklés indításához | CountPerSecond | Maximum | Bejövő TCP-csomagok a DDoS-mérséklés indításához |
 | DDoSTriggerUDPPackets | Bejövő UDP-csomagok a DDoS-elhárítás elindításához | CountPerSecond | Maximum | Bejövő UDP-csomagok a DDoS-elhárítás elindításához |
 | IfUnderDDoSAttack | DDoS-támadás alatt vagy nem | Darabszám | Maximum | DDoS-támadás alatt vagy nem |
-| PacketCount | Csomagok száma | Darabszám | Összesen | Az időszakon belül továbbított csomagok teljes száma |
 | PacketsDroppedDDoS | Bejövő csomagok eldobott DDoS | CountPerSecond | Maximum | Bejövő csomagok eldobott DDoS |
 | PacketsForwardedDDoS | Bejövő csomagok továbbított DDoS | CountPerSecond | Maximum | Bejövő csomagok továbbított DDoS |
 | PacketsInDDoS | Bejövő csomagok DDoS | CountPerSecond | Maximum | Bejövő csomagok DDoS |
-| SynCount | SYN-szám | Darabszám | Összesen | Az időszakon belül továbbított SYN-csomagok teljes száma |
 | TCPBytesDroppedDDoS | Bejövő TCP-bájtok elvetve DDoS | BytesPerSecond | Maximum | Bejövő TCP-bájtok elvetve DDoS |
 | TCPBytesForwardedDDoS | Bejövő TCP-bájtok továbbított DDoS | BytesPerSecond | Maximum | Bejövő TCP-bájtok továbbított DDoS |
 | TCPBytesInDDoS | Bejövő TCP-bájtok DDoS | BytesPerSecond | Maximum | Bejövő TCP-bájtok DDoS |
@@ -64,7 +61,6 @@ A következő [metrikák](../azure-monitor/platform/metrics-supported.md#microso
 | UDPPacketsDroppedDDoS | Bejövő UDP-csomagok eldobott DDoS | CountPerSecond | Maximum | Bejövő UDP-csomagok eldobott DDoS |
 | UDPPacketsForwardedDDoS | Bejövő UDP-csomagok továbbított DDoS | CountPerSecond | Maximum | Bejövő UDP-csomagok továbbított DDoS |
 | UDPPacketsInDDoS | Bejövő UDP-csomagok DDoS | CountPerSecond | Maximum | Bejövő UDP-csomagok DDoS |
-| VipAvailability | Adatelérési út rendelkezésre állása | Darabszám | Átlag | Átlagos IP-cím rendelkezésre állása időszakonként |
 
 ## <a name="prerequisites"></a>Előfeltételek
 

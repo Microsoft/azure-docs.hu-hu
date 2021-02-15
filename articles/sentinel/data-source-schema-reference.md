@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: reference
 ms.custom: ''
 ms.date: 01/14/2021
-ms.openlocfilehash: 32ec711309190d4bb7c6c98a05b6a75cf88a8f5c
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: b5d53ec6c6a8002c72a53d6928d56e55d520ef38
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920503"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390827"
 ---
 # <a name="data-source-schema-reference"></a>Adatforrás sémájának referenciája
 
@@ -37,6 +37,9 @@ Ez a cikk a támogatott Azure-és külső adatforrások sémáit sorolja fel, é
 | **Hálózat**                          | NSG          | AzureNetworkAnalytics  | [Sémák és adatösszesítések Traffic Analytics](/azure/network-watcher/traffic-analytics-schema) |
 | | | | |
 
+> [!NOTE]
+> További információkért tekintse meg a teljes [Azure monitor adatreferenciát](/azure/azure-monitor/reference/).
+>
 ## <a name="3rd-party-vendor-data-sources"></a>külső gyártótól származó adatforrások
 
 A következő táblázat felsorolja a harmadik féltől származó gyártókat, valamint a syslog-vagy Common Event Format (CEF)-leképezési dokumentációt a különböző támogatott naplókhoz, amelyek CEF mező-hozzárendeléseket és mintavételi naplókat tartalmaznak az egyes kategóriákhoz.

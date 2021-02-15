@@ -2,19 +2,16 @@
 title: Excel-formátum Azure Data Factory
 description: Ez a témakör a Azure Data Factory Excel-formátumának kezelését ismerteti.
 author: linda33wj
-manager: shwang
-ms.reviewer: craigg
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 8f19ccc90c44ef90cee7bb1ae881086321e863b6
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: bef29bc958253be0498442f842dda67105ce799b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902034"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386526"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Excel-formátum Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -31,16 +28,16 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 | Tulajdonság         | Leírás                                                  | Kötelező |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| típus             | Az adatkészlet Type tulajdonságát az **Excel** értékre kell beállítani.   | Igen      |
-| location         | A fájl (ok) helyének beállításai. Minden fájl alapú összekötőhöz tartozik a saját hely típusa és a támogatott tulajdonságai `location` . | Igen      |
+| típus             | Az adatkészlet Type tulajdonságát az **Excel** értékre kell beállítani.   | Yes      |
+| location         | A fájl (ok) helyének beállításai. Minden fájl alapú összekötőhöz tartozik a saját hely típusa és a támogatott tulajdonságai `location` . | Yes      |
 | SheetName tulajdonságbeállító        | Az Excel-munkalap neve az adatolvasáshoz.                       | Itt adhatja meg `sheetName` vagy `sheetIndex` |
 | sheetIndex | Az Excel-munkalap indexe az adatok olvasására, 0-tól kezdődően. | Itt adhatja meg `sheetName` vagy `sheetIndex` |
-| tartomány            | Az adott munkalapon lévő cellatartomány a szelektív adat megtalálásához, például:<br>-Nincs megadva: beolvassa a teljes munkalapot táblaként az első nem üres sorból és oszlopból.<br>- `A3`: az adott cellától kezdődő táblázat beolvasása, amely dinamikusan észleli az alábbi sorokat és az összes oszlopot a jobb oldalon.<br>- `A3:H5`: a rögzített tartomány beolvasása táblázatként<br>- `A3:A3`: az egyetlen cella beolvasása | Nem       |
-| firstRowAsHeader | Meghatározza, hogy az adott munkalap vagy tartomány első sorát fejlécként kell-e kezelni az oszlopok neveivel.<br>Az engedélyezett értékek: **true** és **false** (alapértelmezett). | Nem       |
-| nullValue        | Megadja a null értékű karakterlánc-ábrázolást. <br>Az alapértelmezett érték **üres karakterlánc**. | Nem       |
-| tömörítés | A fájltömörítés konfigurálására szolgáló tulajdonságok csoportja. Akkor konfigurálja ezt a szakaszt, ha a tevékenység végrehajtása során tömörítést vagy kibontást szeretne végezni. | Nem |
+| tartomány            | Az adott munkalapon lévő cellatartomány a szelektív adat megtalálásához, például:<br>-Nincs megadva: beolvassa a teljes munkalapot táblaként az első nem üres sorból és oszlopból.<br>- `A3`: az adott cellától kezdődő táblázat beolvasása, amely dinamikusan észleli az alábbi sorokat és az összes oszlopot a jobb oldalon.<br>- `A3:H5`: a rögzített tartomány beolvasása táblázatként<br>- `A3:A3`: az egyetlen cella beolvasása | No       |
+| firstRowAsHeader | Meghatározza, hogy az adott munkalap vagy tartomány első sorát fejlécként kell-e kezelni az oszlopok neveivel.<br>Az engedélyezett értékek: **true** és **false** (alapértelmezett). | No       |
+| nullValue        | Megadja a null értékű karakterlánc-ábrázolást. <br>Az alapértelmezett érték **üres karakterlánc**. | No       |
+| tömörítés | A fájltömörítés konfigurálására szolgáló tulajdonságok csoportja. Akkor konfigurálja ezt a szakaszt, ha a tevékenység végrehajtása során tömörítést vagy kibontást szeretne végezni. | No |
 | típus<br/>(*alatt `compression`*) | A JSON-fájlok olvasásához/írásához használt tömörítési kodek. <br>Az engedélyezett értékek a **bzip2**, a **gzip**, a **deflate**, a **ZipDeflate**, a **TarGzip**, a **tar**, a **Snappy** vagy a **lz4**. Az alapértelmezett érték nincs tömörítve.<br>**Megjegyzés:** jelenleg a másolási tevékenység nem támogatja a "snappy" & "lz4", és a leképezési folyamat nem támogatja a "ZipDeflate", a "TarGzip" és a "tar" típust.<br>**Vegye figyelembe** , hogy ha másolási tevékenységet használ a **ZipDeflate** -fájl (ok) kibontásához és a fájl alapú fogadó adattárba való íráshoz, a fájlok kikerülnek a mappába: `<path specified in dataset>/<folder named as source zip file>/` . | Nem.  |
-| szint<br/>(*alatt `compression`*) | A tömörítési arány. <br>Az engedélyezett értékek az **optimálisak** vagy a **leggyorsabbek**.<br>- **Leggyorsabb:** A tömörítési műveletnek a lehető leggyorsabban kell elvégeznie, még akkor is, ha az eredményül kapott fájl nem tömöríthető optimálisan.<br>- **Optimális**: a tömörítési műveletet optimálisan kell tömöríteni, még akkor is, ha a művelet végrehajtása hosszú időt vesz igénybe. További információ: [tömörítési szint](/dotnet/api/system.io.compression.compressionlevel) témakör. | Nem       |
+| szint<br/>(*alatt `compression`*) | A tömörítési arány. <br>Az engedélyezett értékek az **optimálisak** vagy a **leggyorsabbek**.<br>- **Leggyorsabb:** A tömörítési műveletnek a lehető leggyorsabban kell elvégeznie, még akkor is, ha az eredményül kapott fájl nem tömöríthető optimálisan.<br>- **Optimális**: a tömörítési műveletet optimálisan kell tömöríteni, még akkor is, ha a művelet végrehajtása hosszú időt vesz igénybe. További információ: [tömörítési szint](/dotnet/api/system.io.compression.compressionlevel) témakör. | No       |
 
 Az alábbi példa az Azure Blob Storage Excel-adatkészletet mutatja be:
 
@@ -74,12 +71,12 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 ### <a name="excel-as-source"></a>Excel forrásként 
 
-A másolási tevékenység **_ \_ forrás \**** szakaszában a következő tulajdonságok támogatottak.
+A másolási tevékenység ***\* forrása \**** szakaszban a következő tulajdonságok támogatottak.
 
 | Tulajdonság      | Leírás                                                  | Kötelező |
 | ------------- | ------------------------------------------------------------ | -------- |
-| típus          | A másolási tevékenység forrásának Type tulajdonságát **ExcelSource** értékre kell állítani. | Igen      |
-| storeSettings | Az adattárakból származó adatok beolvasására szolgáló tulajdonságok csoportja. A fájl alapú összekötők a saját támogatott olvasási beállításaival rendelkeznek `storeSettings` . | Nem       |
+| típus          | A másolási tevékenység forrásának Type tulajdonságát **ExcelSource** értékre kell állítani. | Yes      |
+| storeSettings | Az adattárakból származó adatok beolvasására szolgáló tulajdonságok csoportja. A fájl alapú összekötők a saját támogatott olvasási beállításaival rendelkeznek `storeSettings` . | No       |
 
 ```json
 "activities": [
@@ -116,7 +113,7 @@ Az alábbi táblázatban az Excel-források által támogatott tulajdonságok sz
 | Fájlok listája             | Azt jelzi, hogy a forrás egy szövegfájlra mutat-e, amely a feldolgozandó fájlokat listázza | nem       | `true` vagy `false`                                         | fileList                          |
 | A fájl nevét tároló oszlop | Új oszlop létrehozása a forrásfájl nevével és elérési útjával       | nem       | Sztring                                                    | rowUrlColumn                      |
 | Befejezés után          | A fájlok törlése vagy áthelyezése a feldolgozás után. A fájl elérési útja a tároló gyökeréből indul el | nem       | Törlés: `true` vagy `false` <br> Áthelyezése `['<from>', '<to>']` | purgeFiles <br> moveFiles         |
-| Szűrés utoljára módosítva   | Válassza ki a fájlok szűrését az utolsó módosításuk alapján | nem       | Timestamp                                                 | modifiedAfter <br> modifiedBefore |
+| Szűrés utoljára módosítva   | Válassza ki a fájlok szűrését az utolsó módosításuk alapján | nem       | Időbélyeg                                                 | modifiedAfter <br> modifiedBefore |
 | Nem található fájlok engedélyezése | Ha az értéke igaz, a rendszer nem dobja el a hibát, ha nem található fájl | nem | `true` vagy `false` | ignoreNoFilesFound |
 
 ### <a name="source-example"></a>Forrás példa

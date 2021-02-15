@@ -3,22 +3,22 @@ title: 'ML Studio (klasszikus): algoritmusok optimalizálása – Azure'
 description: A cikk azt ismerteti, hogyan választhatja ki az algoritmushoz beállított optimális paramétereket Azure Machine Learning Studio (klasszikus).
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: b08318d4c12fd2e6ea8055771ca6792b0fb280dd
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a216dc7cb17b9e35e412c6bebe34c0cccfb732e4
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307850"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519303"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-machine-learning-studio-classic"></a>Paraméterek kiválasztása az algoritmusok optimalizálásához Machine Learning Studio (klasszikus)
 
-**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 Ez a témakör azt ismerteti, hogyan választhatja ki a megfelelő hiperparaméter-készletet Azure Machine Learning Studio (klasszikus) algoritmushoz. A legtöbb gépi tanulási algoritmushoz paraméterek vannak beállítva. A modellek betanításakor meg kell adnia a paraméterek értékeit. A betanított modell hatékonysága a választott modell-paraméterektől függ. A paraméterek optimális készletének megkeresésének folyamata modell- *kiválasztás* néven ismert.
 
@@ -28,9 +28,9 @@ A modell kiválasztásának számos módja van. A gépi tanulásban a kereszt-el
 
 A legjobb beállításhalmaz megkeresésének folyamata négy lépésből áll:
 
-1. **Adja meg a paraméter területét** : az algoritmushoz először döntse el, hogy pontosan milyen paramétereket szeretne figyelembe venni.
-2. **Az átellenőrzési beállítások megadása** : döntse el, hogy az adatkészlethez hogyan kell kiválasztania a több érvényesítést.
-3. **A metrika meghatározása** : döntse el, hogy melyik mérőszámot kell használni a legjobb paraméterek meghatározásához, például a pontosságot, a legfelső szintű négyzetes hibát, a pontosságot, a visszahívás vagy az f-score értékét.
+1. **Adja meg a paraméter területét**: az algoritmushoz először döntse el, hogy pontosan milyen paramétereket szeretne figyelembe venni.
+2. **Az átellenőrzési beállítások megadása**: döntse el, hogy az adatkészlethez hogyan kell kiválasztania a több érvényesítést.
+3. **A metrika meghatározása**: döntse el, hogy melyik mérőszámot kell használni a legjobb paraméterek meghatározásához, például a pontosságot, a legfelső szintű négyzetes hibát, a pontosságot, a visszahívás vagy az f-score értékét.
 4. **Betanítási, kiértékelési és összehasonlítási** lehetőségek: a paraméterek értékeinek minden egyedi kombinációja esetén a rendszer az Ön által megadott hiba alapján hajtja végre a kereszt-érvényesítést. A kiértékelés és az összehasonlítás után kiválaszthatja a legjobban teljesítő modellt.
 
 Az alábbi ábrán látható, hogyan érhető el a Azure Machine Learning Studio (klasszikus).

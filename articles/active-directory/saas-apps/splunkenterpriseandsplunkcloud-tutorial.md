@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/13/2021
+ms.date: 02/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 18d64e2b2ac359a9036ebd548ef886cb0efd3405
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 3d99ed71e284ae2e986a93591a61c3c9011857eb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98622197"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371293"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-splunk-enterprise-and-splunk-cloud"></a>Oktatóanyag: Azure Active Directory integráció a splunk Enterprise és a splunk Cloud szolgáltatással
 
@@ -28,10 +28,10 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a splunk Enterpris
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció splunk Enterprise és splunk felhővel való konfigurálásához a következő elemek szükségesek:
+Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/)kérhet egy hónapos próbaverziót.
-* Splunk Enterprise és splunk Cloud egyszeri bejelentkezés engedélyezve előfizetés.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* A splunk Enterprise és a splunk felhőalapú egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -63,7 +63,7 @@ Az Azure AD SSO konfigurálásához és teszteléséhez a splunk Enterprise és 
     1. **[Hozzon létre splunk Enterprise és splunk Cloud test User](#create-splunk-enterprise-and-splunk-cloud-test-user)** -t, hogy a B. Simon partnere legyen a splunk Enterprise és a splunk felhőben, amely a felhasználó Azure ad-beli képviseletéhez van társítva.
 1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
@@ -111,16 +111,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="configure-splunk-enterprise-and-splunk-cloud-sso"></a>A splunk Enterprise és a splunk Cloud SSO konfigurálása
+## <a name="configure-splunk-enterprise-and-splunk-cloud-sso"></a>A splunk Enterprise és a splunk Cloud SSO konfigurálása
 
   Az **splunk Enterprise és a splunk Cloud** Side egyszeri bejelentkezésének konfigurálásához el kell küldenie a letöltött **összevonás-metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portalról a [splunk Enterprise és a splunk Cloud support csapatnak](https://www.splunk.com/en_us/about-splunk/contact-us.html). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
-
 
 ### <a name="create-splunk-enterprise-and-splunk-cloud-test-user"></a>Splunk Enterprise és splunk Cloud test User létrehozása
 
 Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a splunk Enterprise és a splunk felhőben. Működjön együtt a [splunk Enterprise és a splunk Cloud support csapatával](https://www.splunk.com/en_us/about-splunk/contact-us.html) , és vegye fel a felhasználókat a splunk Enterprise és a splunk Cloud platformba. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
-### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
@@ -132,4 +131,4 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 ## <a name="next-steps"></a>Következő lépések
 
-A splunk Enterprise és a splunk Cloud konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben biztosítja a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)
+A splunk Enterprise és a splunk Cloud konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)

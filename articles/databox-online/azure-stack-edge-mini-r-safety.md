@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 02/08/2021
+ms.date: 02/12/2021
 ms.author: alkohli
-ms.openlocfilehash: aa363b1eeddff6c3b10d8e36371becb8b690697c
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: eb42a9a77927d8577dfec3c9167294eb8f809fec
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981035"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382624"
 ---
 # <a name="azure-stack-edge-mini-r-safety-instructions"></a>Azure Stack Edge mini R biztonsági utasítások
 
@@ -161,7 +161,6 @@ A Band 5150 – 5250 MHz-ben végzett művelet csak beltéri használatra alkalm
 
 ![Szabályozási információk figyelmeztetés – beltéri használat](./media/azure-stack-edge-mini-r-safety/regulatory-information-indoor-use-only.png)
 
-
 A felhasználók azt tanácsolják, hogy a nagy teljesítményű radarok a 5250-5350 MHz-es és a 5650-5850 MHz-es sávok elsődleges felhasználóinak (Kiemelt felhasználóinak) legyenek lefoglalva, és ezek a radarok interferenciát és/vagy sérülést okozhatnak a LE-LAN eszközökön.
 
 Ez a berendezés a rádiófrekvenciás energia előállítására, felhasználására és kisugárzására szolgál, és ha nincs telepítve és használatban az utasításoknak megfelelően, akkor káros interferencia okozhat a rádiós kommunikációban. Azonban nincs garancia arra, hogy az interferencia nem fog megtörténni egy adott telepítésben.
@@ -205,11 +204,13 @@ Minden termék esetében az 1 g-nál átlagosan meghatározott abszorpciós ará
 
 #### <a name="european-union"></a>EURÓPAI UNIÓ:
 
-Kérje le az EU megfelelőségi nyilatkozatának másolatát ehhez a berendezéshez.
+Kérje le az EU megfelelőségi nyilatkozatának másolatát ehhez a berendezéshez. Küldjön egy e-mailt a következő címre: [CSI_Compliance@microsoft.com](mailto:CSI_Compliance@microsoft.com).
 
 Az ezzel a berendezéssel biztosított Netgear A6150 Wi-Fi-adapter a 2014/53/EU direktíva megfelel, és kérésre is megadható.
 
-> ![Figyelmeztető ikon 13 ](./media/azure-stack-edge-mini-r-safety/icon-safety-warning.png) . Ez a termék egy osztálya. Belföldi környezetben Ez a termék a rádiófrekvenciás interferencia okozhatja, amely esetben a felhasználónak szükség lehet a megfelelő intézkedések meghozatalára.
+![Figyelmeztetés ikon 13 ](./media/azure-stack-edge-mini-r-safety/icon-safety-warning.png) **– Figyelmeztetés:**  
+
+Ez egy termék osztálya. Belföldi környezetben Ez a termék a rádiófrekvenciás interferencia okozhatja, amely esetben a felhasználónak szükség lehet a megfelelő intézkedések meghozatalára.
 
 A hulladék akkuinak és elektromos és elektronikus berendezéseinek ártalmatlanítása:
 

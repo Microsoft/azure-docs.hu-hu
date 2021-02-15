@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 11/10/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 04b68899b796088bd4b89509a413c7a1fe5369bb
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 9e4edbcfd9e4180e727cd885902d9f0150a967ca
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475352"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389399"
 ---
 # <a name="azure-tls-certificate-changes"></a>Az Azure TLS-tanúsítvány változásai  
 
@@ -24,7 +24,7 @@ A Microsoft frissíti az Azure-szolgáltatásokat, hogy TLS-tanúsítványokat h
 
 A meglévő Azure-végpontok a 2020-as augusztus 13. óta lépcsőzetes módon lettek átalakulóban. Minden újonnan létrehozott Azure TLS/SSL-végpont frissített tanúsítványokat tartalmaz az új legfelső szintű hitelesítésszolgáltatókhoz.
 
-Szolgáltatás-specifikus részletek:
+Ez a változás minden Azure-szolgáltatást érint. Íme néhány további információ az egyes szolgáltatásokról:
 
 - A [Azure Active Directory](../../active-directory/index.yml) (Azure ad) szolgáltatások a 2020. július 7-én kezdték el ezt az áttérést.
 - Az [Azure IoT hub](https://azure.microsoft.com/services/iot-hub) és a [DPS](../../iot-dps/index.yml) továbbra is a Baltimore CYBERTRUST legfelső szintű hitelesítésszolgáltatóján marad, de a köztes hitelesítésszolgáltatók is megváltoznak. [További részletekért kattintson ide](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456).

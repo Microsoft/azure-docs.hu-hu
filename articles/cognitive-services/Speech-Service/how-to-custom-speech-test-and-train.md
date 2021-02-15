@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/27/2020
+ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 605bae706bbc1db2e008b8d050cbba9eacd16933
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 8546201d21e68fbcf1e519c8fe9ba0de1dc38a96
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98702202"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367979"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Adatok előkészítése a Custom Speech szolgáltatáshoz
 
@@ -46,9 +46,9 @@ Ez a táblázat felsorolja az elfogadott adattípusokat, valamint az egyes adatt
 
 | Adattípus | Teszteléshez használatos | Ajánlott mennyiség | Képzéshez használatos | Ajánlott mennyiség |
 |-----------|-----------------|----------|-------------------|----------|
-| [Audió](#audio-data-for-testing) | Igen<br>Vizuális vizsgálathoz használatos | 5 + hangfájl | Nem | N/A |
-| [Hang + emberi – címkézett átiratok](#audio--human-labeled-transcript-data-for-testingtraining) | Igen<br>A pontosság kiértékeléséhez használatos | 0,5-5 órányi hang | Igen | 1-20 órányi hang |
-| [Kapcsolódó szöveg](#related-text-data-for-training) | Nem | N/a | Igen | 1-200 MB kapcsolódó szöveg |
+| [Audió](#audio-data-for-testing) | Yes<br>Vizuális vizsgálathoz használatos | 5 + hangfájl | No | N/A |
+| [Hang + emberi – címkézett átiratok](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>A pontosság kiértékeléséhez használatos | 0,5-5 órányi hang | Yes | 1-20 órányi hang |
+| [Kapcsolódó szöveg](#related-text-data-for-training) | No | N/a | Yes | 1-200 MB kapcsolódó szöveg |
 
 Új modell betanításakor Kezdje a [kapcsolódó szöveggel](#related-text-data-for-training). Ezek az adatmennyiségek már javítják a speciális kifejezések és kifejezések felismerését. A szöveggel való képzés sokkal gyorsabb, mint a hanggal való képzés (perc és nap).
 
@@ -57,9 +57,17 @@ A fájlokat típus szerint kell csoportosítani egy adatkészletbe, és. zip fá
 > [!TIP]
 > A gyors kezdéshez vegye fontolóra a mintaadatok használatát. Tekintse meg a GitHub-tárházat a <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">minta Custom Speech <span class="docon docon-navigate-external x-hidden-focus"></span> </a>
 
+> [!NOTE]
+> Nem minden alapmodell támogatja a hangfelvételt. Ha egy alapmodell nem támogatja azt, a beszédfelismerési szolgáltatás csak az átiratokból származó szöveget fogja használni, és figyelmen kívül hagyja a hangot. A hangadatokkal való képzést támogató alapmodellek listáját a [nyelvi támogatásban](language-support.md#speech-to-text) találhatja meg.
+
+> [!NOTE]
+> Abban az esetben, ha megváltoztatja a betanításhoz használt alapmodellt, és a betanítási adatkészletben van hang, *mindig* győződjön meg arról, hogy az új kiválasztott alapmodell támogatja-e a [hangadatokkal való képzést](language-support.md#speech-to-text). Ha a korábban használt alapmodell nem támogatja a hangadatokkal való betanítást, és a betanítási adatkészlet hang-és betanítási időt tartalmaz, az új alapmodellel **jelentősen** növekedni fog, és könnyen elvégezhető több óra és több nap között. Ez különösen akkor igaz, ha a beszédfelismerési szolgáltatás előfizetése **nincs** olyan [régióban, ahol a dedikált hardvert](custom-speech-overview.md#set-up-your-azure-account) betanítják.
+>
+> Ha a fenti bekezdésben ismertetett probléma merül fel, gyorsan csökkentheti a betanítási időt, ha csökkenti az adatkészletben lévő hang mennyiségét, vagy teljesen eltávolítja, és csak a szöveget hagyja. Az utóbbi lehetőség kifejezetten ajánlott, ha a beszédfelismerési szolgáltatás előfizetése **nincs** olyan [régióban, ahol a dedikált hardver](custom-speech-overview.md#set-up-your-azure-account) betanítása történik.
+
 ## <a name="upload-data"></a>Adatok feltöltése
 
-Az adatok feltöltéséhez navigáljon a <a href="https://speech.microsoft.com/customspeech" target="_blank">Custom Speech portálra <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. A portálon kattintson az **adatok feltöltése** elemre a varázsló indításához és az első adatkészlet létrehozásához. Az adatok feltöltésének engedélyezése előtt meg kell adnia, hogy ki kell választania egy beszédfelismerési adattípust az adatkészlethez.
+Az adatok feltöltéséhez navigáljon a <a href="https://speech.microsoft.com/customspeech" target="_blank">Speech studióhoz <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. A portálon kattintson az **adatok feltöltése** elemre a varázsló indításához és az első adatkészlet létrehozásához. Az adatok feltöltésének engedélyezése előtt meg kell adnia, hogy ki kell választania egy beszédfelismerési adattípust az adatkészlethez.
 
 ![Képernyőfelvétel a hangfeltöltési lehetőségről a beszédfelismerési portálról.](./media/custom-speech/custom-speech-select-audio.png)
 
@@ -93,7 +101,7 @@ Ezzel a táblázattal ellenőrizheti, hogy a hangfájlok formátuma helyesen van
 
 A <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">Sox <span class="docon docon-navigate-external x-hidden-focus"></span> </a> használatával ellenőrizze a hangtulajdonságokat, vagy alakítsa át a meglévő hangokat a megfelelő formátumokba. Az alábbiakban néhány példát láthat arra, hogyan végezheti el ezeket a tevékenységeket a SoX parancssorban:
 
-| Tevékenység | Leírás | SoX-parancs |
+| Tevékenység | Description | SoX-parancs |
 |----------|-------------|-------------|
 | Hangformátum keresése | Ezzel a paranccsal ellenőrizhető<br>a hangfájl formátuma. | `sox --i <filename>` |
 | Hangformátum konvertálása | A parancs használata a konvertáláshoz<br>a hangfájl egyetlen csatornára, 16 bites, 16 KHz. | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
@@ -136,14 +144,14 @@ speech03.wav    the lazy dog was not amused
 
 Az átiratokat a rendszer normalizálja, hogy fel tudja őket dolgozni. Van azonban néhány fontos normalizálás, amelyeket el kell végezni, mielőtt feltölti az adatsort a Speech studióba. Az átírások előkészítésekor használandó megfelelő nyelvet lásd: [Human-címkével ellátott átirat létrehozása](how-to-custom-speech-human-labeled-transcriptions.md)
 
-A hangfájlok és a megfelelő átírások összegyűjtése után egyetlen. zip fájlként csomagolja őket, mielőtt feltölti őket a <a href="https://speech.microsoft.com/customspeech" target="_blank">Custom Speech <span class="docon docon-navigate-external x-hidden-focus"></span> -portálra </a>. Az alábbi példa egy három hangfájllal és egy emberi címkével ellátott átírási fájllal rendelkező adathalmazt mutat be:
+A hangfájlok és a megfelelő átírások összegyűjtése után egyetlen. zip-fájlként csomagolja őket, mielőtt feltölti őket a <a href="https://speech.microsoft.com/customspeech" target="_blank">Speech studióba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. Az alábbi példa egy három hangfájllal és egy emberi címkével ellátott átírási fájllal rendelkező adathalmazt mutat be:
 
 > [!div class="mx-imgBorder"]
 > ![Hang kiválasztása a Speech Portalon](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
 
 Lásd: az [Azure-fiók beállítása](custom-speech-overview.md#set-up-your-azure-account) az ajánlott régiók listájához a Speech Service-előfizetésekhez. A beszédfelismerési előfizetések ezen régiók egyikében való beállítása csökkenti a modell betanításához szükséges időt. Ezekben a régiókban a képzés napi 10 órányi hangfeldolgozást végez, a többi régióban pedig napi 1 órát. Ha a modell betanítása egy héten belül nem hajtható végre, a modell sikertelenként lesz megjelölve.
 
-Nem minden alapmodell támogatja a hangadatokkal való képzést. Ha az alapmodell nem támogatja azt, akkor a szolgáltatás figyelmen kívül hagyja a hangot, és csak az átiratok szövegét fogja betanítani. Ebben az esetben a képzés a kapcsolódó szöveggel megegyező módon fog megjelenni.
+Nem minden alapmodell támogatja a hangadatokkal való képzést. Ha az alapmodell nem támogatja azt, akkor a szolgáltatás figyelmen kívül hagyja a hangot, és csak az átiratok szövegét fogja betanítani. Ebben az esetben a képzés a kapcsolódó szöveggel megegyező módon fog megjelenni. A hangadatokkal való képzést támogató alapmodellek listáját a [nyelvi támogatásban](language-support.md#speech-to-text) találhatja meg.
 
 ## <a name="related-text-data-for-training"></a>Kapcsolódó szöveges adat a betanításhoz
 
@@ -154,7 +162,7 @@ Az egyedi terméknév vagy szolgáltatások esetében a betanításhoz kapcsoló
 | Mondatok (hosszúságú kimondott szöveg) | A termékek nevének felismerése, illetve az iparágra jellemző Szószedet használata a mondatok kontextusában. |
 | Kiejtés | A nem definiált kiejtésekkel kapcsolatos gyakori kifejezések, mozaikszavak és egyéb szavak kiejtésének javítása. |
 
-A mondatok egyetlen szövegfájlként vagy több szövegfájlként is megadhatók. A pontosság javítása érdekében a várt hosszúságú kimondott szöveg közelebbi szöveges adatok használatával. A kiejtéseket egyetlen szövegfájlként kell megadni. Minden egyes zip-fájlként becsomagolható, és a <a href="https://speech.microsoft.com/customspeech" target="_blank">Custom Speech portálra <span class="docon docon-navigate-external x-hidden-focus"></span> </a>tölthető fel.
+A mondatok egyetlen szövegfájlként vagy több szövegfájlként is megadhatók. A pontosság javítása érdekében a várt hosszúságú kimondott szöveg közelebbi szöveges adatok használatával. A kiejtéseket egyetlen szövegfájlként kell megadni. Minden egyes zip-fájlként becsomagolható, és a <a href="https://speech.microsoft.com/customspeech" target="_blank">Speech studióba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>tölthető fel.
 
 A kapcsolódó szöveggel végzett képzések általában néhány percen belül befejeződik.
 
@@ -210,7 +218,7 @@ A következő táblázat segítségével biztosíthatja, hogy a kiejtésekhez ka
 | kiejtések száma soronként | 1 |
 | Maximális fájlméret | 1 MB (1 KB ingyenes szinten) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az adatai ellenőrzése](how-to-custom-speech-inspect-data.md)
 * [Az adatai kiértékelése](how-to-custom-speech-evaluate-data.md)

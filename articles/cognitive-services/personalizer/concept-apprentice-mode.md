@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: f2b9f6dfe60aa50eb4ec6da76fe8781ecd8a1f13
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 531917d9c48915f71354b4cd35747ecd9d33a6f8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98951327"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385030"
 ---
 # <a name="use-apprentice-mode-to-train-personalizer-without-affecting-your-existing-application"></a>A tanulói mód használata a személyre szabás kitanításához anélkül, hogy ez hatással lenne a meglévő alkalmazásra
 
@@ -63,7 +63,7 @@ A tanulói módban való tanulás az alábbi módokon különbözik az online m�
 |--|--|--|
 |A felhasználói élményre gyakorolt hatás|Meglévő felhasználói viselkedést is használhat a személyre szabáshoz azáltal, hogy megfigyeli (nem befolyásolja) az **alapértelmezett műveletet** , és megszerezte a jutalmat. Ez azt jelenti, hogy a felhasználói élményt és az azokból származó üzleti eredményeket nem érinti.|A rangsorolási hívás által visszaadott felső művelet megjelenítése a felhasználói viselkedés befolyásolására.|
 |Tanulási sebesség|A személyre szabott mód sokkal lassabban fog tanulni, ha az online módban tanul. A gyakornoki mód csak akkor tanulható meg, ha megfigyeli az **alapértelmezett művelet** által beszerzett jutalmakat, ami korlátozza a tanulás sebességét, mivel nem végezhető el a felderítés.|Gyorsabban tanulhat, mivel képes kihasználni az aktuális modellt, és feltárni az új trendeket.|
-|Tanulási hatékonyság – felső határ|A személyre szabott érték megközelíthető, nagyon ritkán egyezik, és soha nem haladhatja meg az alapszintű üzleti logika teljesítményét (az egyes rangsorolt hívások **alapértelmezett művelete** által elért jutalom összesen).|A személyre szabásnak meg kell haladnia az alkalmazások alapkonfigurációját, és az idő múlásával meg kell szüntetnie az offline kiértékelést és a funkciók kiértékelését, hogy továbbra is javítsa a modellt. |
+|Tanulási hatékonyság – felső határ|A személyre szabott érték megközelíthető, nagyon ritkán egyezik, és soha nem haladhatja meg az alapszintű üzleti logika teljesítményét (az egyes rangsorolt hívások **alapértelmezett művelete** által elért jutalom összesen). Ez a közelítési felső korlátot a feltárás csökkenti. Például a 20%-os feltárás esetén nagyon valószínűtlen, hogy a tanulói mód teljesítménye meghaladja a 80%-ot, és a 60% egy ésszerű cél, amellyel online módba lehet lépni.|A személyre szabásnak meg kell haladnia az alkalmazások alapkonfigurációját, és az idő múlásával meg kell szüntetnie az offline kiértékelést és a funkciók kiértékelését, hogy továbbra is javítsa a modellt. |
 |A rewardActionId Range API-értéke|A felhasználói élmény nem lesz hatással, mivel a _rewardActionId_ mindig az első, a rangsorban küldött művelet. Ez azt jelenti, hogy a Rank API a tanulói módban nem jelenik meg az alkalmazás számára. Az alkalmazásban található API-k jutalmazása nem változtathatja meg, hogy a jutalmazási API hogyan használja az egyik mód és egy másik között.|A felhasználói élményt az alkalmazás személyre szabott _rewardActionId_ fogja módosítani. |
 |Értékelések|A személyre szabhatja az alapértelmezett üzleti logikában bekövetkező jutalom összegének összehasonlítását, és a jutalmak összegének személyre szabása akkor lesz elérhető, ha online módban van. Az összehasonlítás az adott erőforráshoz tartozó Azure Portal érhető el|Az [Offline értékelések](concepts-offline-evaluation.md)segítségével kiértékelheti a személyre szabott lehetőségeket, így összehasonlíthatja a teljes jutalmak személyre szabását az alkalmazás alapkonfigurációjának lehetséges hasznával.|
 

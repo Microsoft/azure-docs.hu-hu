@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/18/2020
+ms.date: 02/10/2021
 ms.author: b-juche
-ms.openlocfilehash: 35fce3723e92a3a7c68aaa62b28b756432182a8c
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 4d992bcc202dc8bdacdda6426371df1adb1ec3e6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629663"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379114"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Pillanatképek kezelése az Azure NetApp Filesszal
 
@@ -177,7 +177,7 @@ Jelenleg csak egy új kötetre állíthatja vissza a pillanatképet.
 
     ![Visszaállítás új kötetre](../media/azure-netapp-files/snapshot-restore-new-volume.png) 
 
-4. Kattintson a **felülvizsgálat + létrehozás** gombra.  Kattintson a **Létrehozás** gombra.   
+4. Kattintson a **felülvizsgálat + létrehozás** gombra.  Kattintson a **Létrehozás** lehetőségre.   
     Az új kötet ugyanazt a protokollt használja, mint amelyet a pillanatkép használ.   
     Az új kötet, amelybe a pillanatkép vissza lett állítva, megjelenik a kötetek panelen.
 
@@ -187,7 +187,9 @@ Ha nem szeretné [visszaállítani a teljes pillanatképet egy kötetre](#restor
 
 A csatlakoztatott kötet tartalmazza  `.snapshot` az ügyfél számára elérhető pillanatkép-könyvtárat (az NFS-ügyfeleken) vagy `~snapshot` (az SMB-ügyfeleken). A pillanatkép könyvtára a kötet pillanatképeit reprezentáló alkönyvtárakat tartalmaz. Minden alkönyvtár tartalmazza a pillanatkép fájljait. Ha véletlenül töröl vagy felülír egy fájlt, visszaállíthatja a fájlt a szülő írható-olvasható könyvtárára úgy, hogy a fájlt egy pillanatkép-alkönyvtárból az írható-olvasható könyvtárba másolja. 
 
-Ha nem látja a pillanatképek könyvtárát, előfordulhat, hogy rejtve van, mert jelenleg engedélyezve van a pillanatkép-elrejtési útvonal elrejtése beállítás. [A pillanatkép elérési útjának elrejtése lehetőséggel](#edit-the-hide-snapshot-path-option) letilthatja azt.  
+A pillanatkép-címtárak elérését a [Pillanatkép-elérési út elrejtése lehetőség](#edit-the-hide-snapshot-path-option)használatával szabályozhatja. Ezzel a beállítással szabályozható, hogy a címtár el legyen-e rejtve az ügyfelektől. Ezért a pillanatképekben lévő fájlokhoz és mappákhoz való hozzáférést is szabályozza.  
+
+A NFSv 4.1 nem jeleníti meg a `.snapshot` könyvtárat ( `ls -la` ). Ha azonban a pillanatkép-elérési út elrejtése beállítás nincs beállítva, a könyvtárat a NFSv 4.1-es verzióján keresztül is elérheti az `.snapshot` `cd <snapshot-path>` ügyfél parancssorában található paranccsal. 
 
 ### <a name="restore-a-file-by-using-a-linux-nfs-client"></a>Fájl visszaállítása Linux NFS-ügyfél használatával 
 
@@ -269,4 +271,4 @@ Törölheti azokat a pillanatképeket, amelyeket már nem kell megtartania.
 * [Pillanatkép-szabályzatokkal kapcsolatos problémák elhárítása](troubleshoot-snapshot-policies.md)
 * [Az Azure NetApp Files erőforráskorlátai](azure-netapp-files-resource-limits.md)
 * [Azure NetApp Files Pillanatképek 101 videó](https://www.youtube.com/watch?v=uxbTXhtXCkw&feature=youtu.be)
-* [Mi az Azure Application konzisztens pillanatkép-eszköz](azacsnap-introduction.md)
+* [Mi az az Azure-beli alkalmazáskonzisztens pillanatkép-készítési eszköz?](azacsnap-introduction.md)

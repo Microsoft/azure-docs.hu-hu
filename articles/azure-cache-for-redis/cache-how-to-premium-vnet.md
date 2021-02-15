@@ -1,32 +1,27 @@
 ---
 title: Virtuális hálózat konfigurálása – prémium szintű Azure cache a Redis-példányhoz
-description: Ismerje meg, hogyan hozhat létre és kezelhet virtuális hálózati támogatást a prémium szintű Azure cache-hez a Redis-példányokhoz.
+description: Ismerje meg, hogyan hozhat létre és kezelhet virtuális hálózati támogatást a prémium szintű Azure cache-hez a Redis-példányhoz
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
-ms.custom: devx-track-csharp
 ms.topic: conceptual
-ms.date: 10/09/2020
-ms.openlocfilehash: 908254fec0d9e92b0e30c2e4968c3c505bbbdbf8
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.date: 02/08/2021
+ms.openlocfilehash: 94bbb9bb683f40d44d6649802b66bda6feeee218
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833830"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375272"
 ---
-# <a name="configure-virtual-network-support-for-a-premium-tier-azure-cache-for-redis-instance"></a>Virtuális hálózatok támogatásának konfigurálása prémium szintű Azure cache-hez a Redis-példányhoz
+# <a name="configure-virtual-network-support-for-a-premium-azure-cache-for-redis-instance"></a>Virtuális hálózatok támogatásának konfigurálása prémium szintű Azure cache-hez a Redis-példányhoz
 
-A Redis készült Azure cache különböző gyorsítótár-ajánlatokat tartalmaz, amelyek rugalmasságot biztosítanak a gyorsítótár méretének és funkcióinak kiválasztásában. A prémium szintű funkciók közé tartozik a fürtözés, az adatmegőrzés és a virtuális hálózat támogatása. A virtuális hálózat a felhőben található magánhálózat. Ha egy Azure cache for Redis-példány virtuális hálózattal van konfigurálva, nem nyilvánosan címezhető, és csak a virtuális hálózatban lévő virtuális gépekről és alkalmazásokról érhető el. Ez a cikk azt ismerteti, hogyan konfigurálható a virtuális hálózatok támogatása egy prémium szintű Azure cache-hez a Redis-példányhoz.
+Az [Azure Virtual Network](https://azure.microsoft.com/services/virtual-network/) üzembe helyezése fokozott biztonságot és elkülönítést biztosít az alhálózatokkal, a hozzáférés-vezérlési szabályzatokkal és egyéb funkciókkal a hozzáférés további korlátozása érdekében. Ha egy Azure cache for Redis-példány virtuális hálózattal van konfigurálva, nem nyilvánosan címezhető, és csak a virtuális hálózatban lévő virtuális gépekről és alkalmazásokról érhető el. Ez a cikk azt ismerteti, hogyan konfigurálható a virtuális hálózatok támogatása egy prémium szintű Azure cache-hez a Redis-példányhoz.
 
 > [!NOTE]
 > A Redis készült Azure cache a klasszikus üzemi modellt és a Azure Resource Manager virtuális hálózatokat is támogatja.
 > 
 
-## <a name="why-virtual-network"></a>Miért Virtual Network?
-
-Az [azure Virtual Network](https://azure.microsoft.com/services/virtual-network/) üzembe helyezése fokozott biztonságot és elkülönítést biztosít az Azure cache számára a Redis-példányhoz, valamint alhálózatokkal, hozzáférés-vezérlési házirendekkel és más szolgáltatásokkal a hozzáférés további korlátozásához.
-
-## <a name="virtual-network-support"></a>Virtuális hálózatok támogatása
+## <a name="set-up-virtual-network-support"></a>Virtuális hálózat támogatásának beállítása
 
 A virtuális hálózatok támogatása a gyorsítótár létrehozásakor a **Redis új Azure-gyorsítótárában** van konfigurálva.
 

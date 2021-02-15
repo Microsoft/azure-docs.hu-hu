@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - contperf-fy21q1
 - device-developer
-ms.openlocfilehash: 236acc2ded3fcb651295e0342ab4e1e88174be46
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 22e948a0100f23dbddef8fc138576bb4b9372c77
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202963"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363202"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Új IoT-eszköztípus definiálása az Azure IoT Central-alkalmazásban
 
@@ -31,9 +31,9 @@ A Builder például létrehozhat egy eszköz sablont egy csatlakoztatott ventil�
 - Ventilátor működési állapotának küldése
 - Egy írható ventilátor sebességét biztosító tulajdonságot biztosít
 - Az eszköz újraindítására szolgáló parancsot biztosít
-- Általános áttekintést nyújt az eszközről egy irányítópulton keresztül
+- Általános áttekintést nyújt az eszközről egy nézet használatával
 
-Az eszköz sablonja alapján a kezelők valódi ventilátoros eszközöket hozhatnak létre és csatlakozhatnak. Ezek a ventilátorok olyan mérésekkel, tulajdonságokkal és parancsokkal rendelkeznek, amelyeket az operátorok a figyelésre és felügyeletre használnak. A kezelők az eszközök [irányítópultját](#add-dashboards) és űrlapjait használják a ventilátorral való interakcióra. Az eszközök fejlesztői a sablont használják annak megismeréséhez, hogy az eszköz hogyan kommunikál az alkalmazással. További információ: [telemetria, Property és Command hasznos](concepts-telemetry-properties-commands.md)adatok.
+Az eszköz sablonja alapján a kezelők valódi ventilátoros eszközöket hozhatnak létre és csatlakozhatnak. Ezek a ventilátorok olyan mérésekkel, tulajdonságokkal és parancsokkal rendelkeznek, amelyeket az operátorok a figyelésre és felügyeletre használnak. A kezelők az eszközök [nézeteit](#add-views) és űrlapait használják a ventilátorral való interakcióhoz. Az eszközök fejlesztői a sablont használják annak megismeréséhez, hogy az eszköz hogyan kommunikál az alkalmazással. További információ: [telemetria, Property és Command hasznos](concepts-telemetry-properties-commands.md)adatok.
 
 > [!NOTE]
 > Csak az építők és a rendszergazdák hozhatnak létre, szerkeszthetnek és törölhetnek eszközöket. Bármely felhasználó létrehozhat eszközöket az **eszközök** lapon a meglévő eszközök sablonjaiból.
@@ -46,8 +46,8 @@ Egy IoT Central alkalmazásban az eszköz egy eszköz modelljét használja az e
 > IoT Central a teljes modellt az azonos fájlban lévő összes hivatkozott csatolóval együtt kell megadnia, amikor egy modellt importál a modell-adattárból, a "kibontott" kulcsszó használatával szerezheti be a teljes verziót.
 Például:. https://devicemodels.azure.com/dtmi/com/example/thermostat-1.expanded.json
 
-- Az eszköz modelljét a [digitális Twins Definition Language (DTDL) – 2. verzió](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)használatával hozhatja létre. A Visual Studio Code olyan bővítményt tartalmaz, amely támogatja a DTDL-modellek készítését. További információ: [install and use The DTDL authoring Tools](../../iot-pnp/howto-use-dtdl-authoring-tools.md). Ezután tegye közzé a modellt a nyilvános modell adattárában. További információ: [eszköz modell tárháza](../../iot-pnp/concepts-model-repository.md). Implementálja az eszköz kódját a modellből, és kapcsolja össze a valódi eszközt a IoT Central alkalmazással. IoT Central megkeresi és importálja az eszköz modelljét a nyilvános adattárból, és létrehoz egy sablont. Ezután hozzáadhat bármilyen Felhőbeli tulajdonságot, testreszabást és irányítópultot, amely az IoT Central alkalmazásnak az eszköz sablonját kell használnia.
-- Egy eszköz modell létrehozása a DTDL használatával. Implementálja az eszköz kódját a modellből. Manuálisan importálja az eszköz modelljét a IoT Central alkalmazásba, majd adja hozzá a IoT Central alkalmazás igényeinek megfelelő Felhőbeli tulajdonságokat, testreszabásokat és irányítópultokat.
+- Az eszköz modelljét a [digitális Twins Definition Language (DTDL) – 2. verzió](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)használatával hozhatja létre. A Visual Studio Code olyan bővítményt tartalmaz, amely támogatja a DTDL-modellek készítését. További információ: [install and use The DTDL authoring Tools](../../iot-pnp/howto-use-dtdl-authoring-tools.md). Ezután tegye közzé a modellt a nyilvános modell adattárában. További információ: [eszköz modell tárháza](../../iot-pnp/concepts-model-repository.md). Implementálja az eszköz kódját a modellből, és kapcsolja össze a valódi eszközt a IoT Central alkalmazással. IoT Central megkeresi és importálja az eszköz modelljét a nyilvános adattárból, és létrehoz egy sablont. Ezután hozzáadhat bármilyen Felhőbeli tulajdonságot, testreszabást, és megtekintheti az IoT Central alkalmazásnak az eszköz sablonját.
+- Egy eszköz modell létrehozása a DTDL használatával. Implementálja az eszköz kódját a modellből. Manuálisan importálja az eszköz modelljét a IoT Central alkalmazásba, majd adja hozzá a IoT Central alkalmazás igényeinek megfelelő Felhőbeli tulajdonságokat, testreszabásokat és nézeteket.
 
 > [!TIP]
 > IoT Central a teljes modellt az összes hivatkozott csatolóval megegyező fájlban kell megadnia. Ha modellt importál a modell-adattárból, a *kibontott* kulcsszó használatával szerezheti be a teljes verziót.
@@ -72,8 +72,8 @@ Az eszköz sablonjai A következőket tartalmazzák:
 
 - Egy _eszköz modellje_ , amely az eszköz által megvalósított telemetria, tulajdonságokat és parancsokat határozza meg. Ezek a képességek egy vagy több összetevőbe vannak rendezve.
 - A _felhő tulajdonságai_ , amelyek a IoT Central alkalmazás által az eszközökön tárolt adatokat határozzák meg. Előfordulhat például, hogy egy Felhőbeli tulajdonság rögzíti az eszköz legutóbbi kiszolgálásának dátumát. Ezeket az adatokat soha nem osztja meg az eszközzel.
-- A _testreszabások_ lehetővé teszik, hogy a szerkesztő felülbírálja az eszköz modellje definícióit. A szerkesztő például felülbírálhatja egy eszköz tulajdonságának a nevét. A tulajdonságok neve IoT Central irányítópultokon és űrlapokon jelenik meg.
-- Az _irányítópultok és űrlapok_ lehetővé teszik, hogy a szerkesztő olyan felhasználói felületet hozzon létre, amely lehetővé teszi a kezelők számára az alkalmazáshoz csatlakoztatott eszközök figyelését és kezelését
+- A _testreszabások_ lehetővé teszik, hogy a szerkesztő felülbírálja az eszköz modellje definícióit. A szerkesztő például felülbírálhatja egy eszköz tulajdonságának a nevét. A tulajdonságok nevei IoT Central nézetekben és űrlapokban jelennek meg.
+- A _nézetek és az űrlapok_ lehetővé teszik, hogy a szerkesztő olyan felhasználói felületet hozzon létre, amely lehetővé teszi, hogy a kezelők az alkalmazáshoz csatlakoztatott eszközöket figyeljenek
 
 Eszköz sablonjának létrehozása a IoT Centralban:
 
@@ -129,7 +129,7 @@ A következő táblázat a telemetria képesség konfigurációs beállításait
 
 | Mező | Leírás |
 | ----- | ----------- |
-| Megjelenítendő név | Az irányítópultokon és űrlapokon használt telemetria érték megjelenítendő neve. |
+| Megjelenítendő név | A nézetekben és űrlapokon használt telemetria érték megjelenítendő neve. |
 | Name | A mező neve a telemetria üzenetben. IoT Central a megjelenített név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. A mezőnek alfanumerikusnak kell lennie. |
 | Képesség típusa | Telemetria. |
 | Szemantikai típus | A telemetria szemantikai típusa, például hőmérséklet, állapot vagy esemény. A szemantikai típus megválasztása határozza meg, hogy a következő mezők közül melyek érhetők el. |
@@ -137,7 +137,7 @@ A következő táblázat a telemetria képesség konfigurációs beállításait
 | Súlyosság | Csak az esemény szemantikai típusához érhető el. A megszakítások a következők: **hiba**, **információ** vagy **Figyelmeztetés**. |
 | Állapot értékei | Csak az állapot szemantikai típusához érhető el. Definiálja a lehetséges állapotinformációkat, amelyek mindegyike megjelenített névvel, névvel, számbavételi típussal és értékkel rendelkezik. |
 | Unit (Egység) | A telemetria értékének (például: **mph**, **%** , vagy **&deg; C**) egysége. |
-| Megjelenítési egység | Irányítópultokon és űrlapokon használható megjelenítési egység. |
+| Megjelenítési egység | Nézeteken és űrlapokon használható megjelenítési egység. |
 | Megjegyzés | A telemetria képességgel kapcsolatos megjegyzések. |
 | Description | A telemetria képesség leírása. |
 
@@ -149,7 +149,7 @@ A következő táblázat a tulajdonságok funkciójának konfigurációs beáll�
 
 | Mező | Leírás |
 | ----- | ----------- |
-| Megjelenítendő név | Az irányítópultokon és űrlapokon használt tulajdonságérték megjelenítendő neve. |
+| Megjelenítendő név | A nézeteken és űrlapokon használt tulajdonságérték megjelenítendő neve. |
 | Name | A tulajdonság neve. IoT Central a megjelenített név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. A mezőnek alfanumerikusnak kell lennie. |
 | Képesség típusa | Tulajdonság. |
 | Szemantikai típus | A tulajdonság szemantikai típusa, például hőmérséklet, állapot vagy esemény. A szemantikai típus megválasztása határozza meg, hogy a következő mezők közül melyek érhetők el. |
@@ -158,7 +158,7 @@ A következő táblázat a tulajdonságok funkciójának konfigurációs beáll�
 | Súlyosság | Csak az esemény szemantikai típusához érhető el. A megszakítások a következők: **hiba**, **információ** vagy **Figyelmeztetés**. |
 | Állapot értékei | Csak az állapot szemantikai típusához érhető el. Definiálja a lehetséges állapotinformációkat, amelyek mindegyike megjelenített névvel, névvel, számbavételi típussal és értékkel rendelkezik. |
 | Unit (Egység) | A tulajdonság értékének egysége, például: **mph**, **%** , vagy **&deg; C**. |
-| Megjelenítési egység | Irányítópultokon és űrlapokon használható megjelenítési egység. |
+| Megjelenítési egység | Nézeteken és űrlapokon használható megjelenítési egység. |
 | Megjegyzés | A tulajdonság képességével kapcsolatos megjegyzések. |
 | Description | A tulajdonság funkciójának leírása. |
 
@@ -170,7 +170,7 @@ A következő táblázat a parancs funkciójának konfigurációs beállításai
 
 | Mező | Leírás |
 | ----- | ----------- |
-| Megjelenítendő név | Az irányítópultokon és űrlapokon használt parancs megjelenítendő neve. |
+| Megjelenítendő név | A nézeteken és űrlapokon használt parancs megjelenítendő neve. |
 | Name | A parancs neve. IoT Central a megjelenített név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. A mezőnek alfanumerikusnak kell lennie. |
 | Képesség típusa | Parancs. |
 | Megjegyzés | A parancs képességével kapcsolatos megjegyzések. |
@@ -209,7 +209,7 @@ A következő táblázat a Cloud Property konfigurációs beállításait mutatj
 
 | Mező | Leírás |
 | ----- | ----------- |
-| Megjelenítendő név | Az irányítópultokon és űrlapokon használt Cloud Property érték megjelenítendő neve. |
+| Megjelenítendő név | A nézeteken és űrlapokon használt Cloud Property érték megjelenítendő neve. |
 | Name | A felhő tulajdonság neve IoT Central a megjelenített név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. |
 | Szemantikai típus | A tulajdonság szemantikai típusa, például hőmérséklet, állapot vagy esemény. A szemantikai típus megválasztása határozza meg, hogy a következő mezők közül melyek érhetők el. |
 | Séma | A Felhőbeli tulajdonság adattípusa, például Double, string vagy Vector. Az elérhető beállításokat a szemantikai típus határozza meg. |
@@ -234,24 +234,24 @@ Az alapértelmezett nézetek létrehozásával gyorsan megjelenítheti az eszkö
 
 Miután kiválasztotta az **alapértelmezett nézetek létrehozása** lehetőséget, láthatja, hogy az eszköz sablonjának **nézetek** szakaszában automatikusan hozzá lettek adva.
 
-## <a name="add-dashboards"></a>Irányítópultok hozzáadása
+## <a name="add-views"></a>Nézetek hozzáadása
 
-Irányítópultokat adhat hozzá egy sablonhoz, hogy az operátorok diagramok és metrikák használatával jelenítsék meg az eszközöket. Az eszközök sablonjaihoz több irányítópult is tartozhat.
+Nézetek hozzáadása egy sablonhoz, amely lehetővé teszi, hogy a kezelők diagramok és metrikák használatával jelenítsék meg az eszközöket. Az eszközök sablonjaihoz több nézet is tartozhat.
 
-Irányítópult hozzáadása egy eszköz sablonhoz:
+Nézet hozzáadása egy eszköz sablonhoz:
 
 1. Nyissa meg az eszköz sablonját, és válassza a **nézetek** lehetőséget.
 1. Válassza ki **az eszköz megjelenítését**.
-1. Adja meg az irányítópult nevét az **irányítópult neve** mezőben.
-1. Csempe hozzáadása az irányítópulthoz a statikus, a tulajdonság, a Cloud Property, a telemetria és a Command csempék listájából. Húzza az irányítópultra felvenni kívánt csempéket.
+1. Adja meg a nézet nevét a **nézet nevében**.
+1. Csempe hozzáadása a nézethez a statikus, a tulajdonság, a Cloud Property, a telemetria és a Command csempék listájából. Húzza a nézetbe felvenni kívánt csempéket.
 1. Ha több telemetria-értéket szeretne ábrázolni egyetlen diagramon, válassza ki a telemetria-értékeket, majd kattintson az **összevonás** elemre.
 1. Konfigurálja az egyes hozzáadott csempéket az adatmegjelenítés testreszabásához. A beállítás eléréséhez válassza a fogaskerék ikont, vagy a diagram csempén a **konfiguráció módosítása** lehetőséget választva.
-1. Rendezze és méretezze át a csempéket az irányítópulton.
+1. A csempék elrendezése és átméretezése a nézetben.
 1. Mentse a módosításokat.
 
-### <a name="configure-preview-device-to-view-dashboard"></a>Az előnézet eszköz konfigurálása az irányítópult megtekintéséhez
+### <a name="configure-preview-device-to-view"></a>Előnézet eszköz konfigurálása a megtekintéshez
 
-Az irányítópult megtekintéséhez és teszteléséhez válassza az **előnézet eszköz konfigurálása** lehetőséget. Ezzel a funkcióval megtekintheti az irányítópultot, amikor az operátor látja a közzététel után. Ezzel a szolgáltatással ellenőrizheti, hogy a nézetek a megfelelő adatokon jelenjenek-e meg. Az alábbi lehetőségek közül választhat:
+A nézet megtekintéséhez és teszteléséhez válassza az **előnézet eszköz konfigurálása** lehetőséget. Ez a funkció lehetővé teszi a nézet megtekintését, ahogy az operátor látja azt a közzététel után. Ezzel a szolgáltatással ellenőrizheti, hogy a nézetek a megfelelő adatokon jelenjenek-e meg. Az alábbi lehetőségek közül választhat:
 
 - Nincs előnézeti eszköz.
 - Az eszköz sablonja számára konfigurált valós tesztelési eszköz.

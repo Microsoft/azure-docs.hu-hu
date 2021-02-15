@@ -6,17 +6,17 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
-ms.openlocfilehash: 047a24133dfdf68e2176b20cf31a871d11f0d4f9
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: d297d215d4b0edfdd67b603ba4707bf02057ad78
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241157"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516872"
 ---
 # <a name="stopstart-an-azure-database-for-mysql"></a>Azure Database for MySQL leállítása/elindítása
 
 > [!IMPORTANT]
-> A Azure Database for MySQL funkcióinak leállítása/elindítása jelenleg nyilvános előzetes verzióban érhető el.
+>  Ha **leállítja** a kiszolgálót, akkor a következő 7 nap során marad ebben az állapotban. Ha ez idő alatt nem **indítja el** manuálisan, a rendszer 7 nap elteltével automatikusan elindítja a kiszolgálót. Ha nem használja a kiszolgálót, dönthet úgy, hogy újra **leállítja** .
 
 Ez a cikk részletesen ismerteti az önálló kiszolgáló leállításának és indításának menetét.
 
@@ -48,7 +48,7 @@ A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 
 2.  Az **Áttekintés** lapon kattintson a **Start** gombra az eszköztáron.
 
-    :::image type="content" source="./media/howto-stop-start-server/mysql-start-server.png" alt-text="Kiszolgáló Azure Database for MySQL leállítása":::
+    :::image type="content" source="./media/howto-stop-start-server/mysql-start-server.png" alt-text="Azure Database for MySQL kiszolgáló indítása":::
 
     > [!NOTE]
     > A kiszolgáló elindítása után az összes felügyeleti művelet már elérhető az egyes kiszolgálókon.

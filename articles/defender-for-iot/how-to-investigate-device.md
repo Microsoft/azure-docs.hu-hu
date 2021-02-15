@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: a7b51138abe6d8e97f55ceae11d4cf13b9ebc136
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 096549c37c9f1feb04cd9214e1835956dae53735
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820602"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516838"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>Gyanús IoT-eszköz vizsgálata
 
-A Defender for IoT szolgáltatás riasztásai egyértelmű jelzéseket biztosítanak, ha a IoT-eszközök gyanús tevékenységekben való részvétel gyanúja esetén jelentkeznek, vagy ha olyan jelzések vannak, amelyeket az eszköz veszélyeztet.
+A Defender for IoT szolgáltatás riasztásai egyértelmű jelzéseket biztosítanak, ha a IoT-eszközök gyanús tevékenységekben való részvétel gyanúja esetén jelentkeznek, vagy ha a jelzések egy eszköz sérülését fenyegetik.
 
 Ebben az útmutatóban a szervezete lehetséges kockázatának meghatározásához, a probléma megoldásához, valamint a hasonló támadásoknak a jövőben való elkerüléséhez szükséges legjobb módszerek megállapításához használja a vizsgálati javaslatokat.
 
@@ -43,8 +43,8 @@ Az adattároláshoz Log Analytics munkaterület megkeresése:
 
 A következő beállításokkal érheti el a Log Analytics munkaterületen tárolt adatait:
 
-1. Válassza ki, majd kattintson a Defender IoT-riasztásra a IoT Hub.
-1. Kattintson a **további vizsgálat** gombra.
+1. Válassza ki és válassza ki a IoT riasztást a IoT Hubban.
+1. Válassza a **további vizsgálat** lehetőséget.
 1. Jelölje be **, ha szeretné látni, hogy mely eszközöknél van ilyen riasztás, kattintson ide, és tekintse meg a DeviceID oszlopot**.
 
 ## <a name="investigation-steps-for-suspicious-iot-devices"></a>A gyanús IoT-eszközök vizsgálatának lépései
@@ -55,7 +55,7 @@ Tekintse meg az alábbi kql-lekérdezéseket a riasztások és a tevékenységek
 
 ### <a name="related-alerts"></a>Kapcsolódó riasztások
 
-Annak megállapítása, hogy a riasztások egy időben lettek-e aktiválva a következő kql-lekérdezés használatával:
+Megtudhatja, hogy a következő kql-lekérdezésen keresztül történtek-e más riasztások egy időben:
 
   ```
   let device = "YOUR_DEVICE_ID";
@@ -144,7 +144,7 @@ Az eszközre bejelentkezett felhasználók megkereséséhez használja a követk
 A lekérdezés eredményeinek felderítése:
 
 - Mely felhasználók jelentkezett be az eszközre?
-- Be vannak jelentkezve a felhasználók, akik be kellene jelentkezniük?
+- A bejelentkezett felhasználók bejelentkeznek?
 - A bejelentkezett felhasználók a várt vagy váratlan IP-címekről csatlakoznak?
 
 ### <a name="process-list"></a>Folyamatok listája

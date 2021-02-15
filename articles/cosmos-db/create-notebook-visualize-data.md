@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: e16a738264e64e37cfa42722832dac7e34fee899
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: beb58922172a045242f4f9bcaf647b3cfc8b5551
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339495"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380797"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Oktatóanyag: jegyzetfüzet létrehozása Azure Cosmos DBban az adat elemzéséhez és megjelenítéséhez
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,7 +22,7 @@ Ez a cikk azt ismerteti, hogyan használhatók a beépített Jupyter jegyzetfüz
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [A notebookok támogatásának engedélyezése az Azure Cosmos-fiók létrehozásakor](enable-notebooks.md)
+* [Jegyzetfüzetek engedélyezése Azure Cosmos-fiókban](enable-notebooks.md)
 
 ## <a name="create-the-resources-and-import-data"></a>Erőforrások létrehozása és az információk importálása
  
@@ -290,6 +290,6 @@ Ebben a szakaszban néhány lekérdezést fog futtatni a beolvasott adatforrásr
 
    :::image type="content" source="./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png" alt-text="Vásárlási konverziós arány megjelenítése":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni a Python notebook-parancsokról, olvassa el a következő témakört: [a beépített notebook-parancsok és-szolgáltatások használata Azure Cosmos db](use-python-notebook-features-and-commands.md) cikkben.

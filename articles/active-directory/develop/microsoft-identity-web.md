@@ -13,12 +13,12 @@ ms.date: 10/09/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: b82e300128a41f8315132e1ff93af33c853edb15
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8bc9773fa7e1b3db2e249e803f4d2a3cf39edb48
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173515"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102546"
 ---
 # <a name="microsoft-identity-web-authentication-library"></a>Microsoft Identity web Authentication Library
 
@@ -70,7 +70,7 @@ dotnet new blazorserver2 --auth SingleOrg --calls-graph --client-id "00000000-00
 
 #### <a name="github"></a>GitHub
 
-A Microsoft Identity web egy, a GitHubon üzemeltetett nyílt forráskódú projekt: <a href="https://github.com/AzureAD/microsoft-identity-web" target="_blank">AzureAD/Microsoft-Identity <span class="docon docon-navigate-external x-hidden-focus"></span> -web</a>
+A Microsoft Identity web egy, a GitHubon üzemeltetett nyílt forráskódú projekt: <a href="https://github.com/AzureAD/microsoft-identity-web" target="_blank">AzureAD/Microsoft-Identity-web</a>
 
 A [tárház wiki](https://github.com/AzureAD/microsoft-identity-web/wiki) további dokumentációt tartalmaz, és ha segítségre van szüksége vagy hibát szeretne felderíteni, a [probléma](https://github.com/AzureAD/microsoft-identity-web/issues)beolvasható.
 
@@ -78,7 +78,7 @@ A [tárház wiki](https://github.com/AzureAD/microsoft-identity-web/wiki) továb
 
 A Microsoft Identity web számos olyan szolgáltatást tartalmaz, amelyeket nem biztosítunk, ha az alapértelmezett ASP.NET 3,1 Project-sablonokat használja.
 
-| Funkció                                                                                  | ASP.NET Core 3,1                                                     | Microsoft Identity web                                                                                  |
+| Szolgáltatás                                                                                  | ASP.NET Core 3,1                                                     | Microsoft Identity web                                                                                  |
 |------------------------------------------------------------------------------------------|----------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
 | [Felhasználói bejelentkezés](scenario-web-app-sign-user-app-configuration.md) a Web Apps szolgáltatásban             | <li>Munkahelyi vagy iskolai fiókok<li>Közösségi identitások (Azure AD B2C) | <li>Munkahelyi vagy iskolai fiókok<li>Személyes Microsoft-fiókok<li>Közösségi identitások (Azure AD B2C)     |
 | [Webes API-k elleni védelem](scenario-protected-web-api-app-configuration.md#microsoftidentityweb) | <li>Munkahelyi vagy iskolai fiókok<li>Közösségi identitások (Azure AD B2C) | <li>Munkahelyi vagy iskolai fiókok<li>Személyes Microsoft-fiókok<li>Közösségi identitások (Azure AD B2C)     |
@@ -99,12 +99,14 @@ A Microsoft Identity web működés közbeni megtekintéséhez próbálja ki a k
 
 A GitHubon található Microsoft Identity web wiki részletes dokumentációt tartalmaz a könyvtár különböző szempontjaihoz. Például a tanúsítvány használata, a növekményes beleegyezés és a feltételes hozzáférés referenciája itt található:
 
-- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates" target="_blank">Tanúsítványok használata a Microsoft. Identity. Web <span class="docon docon-navigate-external x-hidden-focus"></span> használatával</a> GitHub
-- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Managing-incremental-consent-and-conditional-access" target="_blank">Növekményes beleegyezett és <span class="docon docon-navigate-external x-hidden-focus"></span> feltételes hozzáférés</a> GitHub
+- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates" target="_blank">Tanúsítványok használata a Microsoft. Identity. Web</a> (GitHub) használatával
+- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Managing-incremental-consent-and-conditional-access" target="_blank">Növekményes engedély és feltételes hozzáférés</a> (GitHub)
 
 <!-- LINKS -->
 <!--  [miw-certs]: microsoft-identity-web-certificates.md  -->
 <!--  [miw-certs-decrypt]: microsoft-identity-web-certificates.md#decryption-certificates  -->
 <!--  [miw-inc-consent-ca-header]: microsoft-identity-web-consent-conditional-access.md#handling-incremental-consent-or-conditional-access-in-web-apis  -->
 <!--  [miw-inc-consent-ca]: microsoft-identity-web-consent-conditional-access.md  -->
-[forgatókönyv-API-Call-API]: forgatókönyv-web-API-Call-API-Call-API. MD # Option-1-Call-Microsoft-Graph-with-the-SDK [forgatókönyv-API-Call-Graph]: forgatókönyv-web-API-Call-API-Call-API. MD # Option-1-Call-Microsoft-Graph-with-the-SDK [forgatókönyv-API-Validation]: scenario-protected-web-api-verification-scope-app-roles.md
+[forgatókönyv-API-Call-API]: forgatókönyv-web-API-Call-API-Call-API. MD # Option-1-Call-Microsoft-Graph-with-the-SDK  
+[forgatókönyv-API-Call-Graph]: forgatókönyv-web-API-Call-API-Call-API. MD # Option-1-Call-Microsoft-Graph-with-the-SDK  
+[forgatókönyv-API-érvényesítés]: scenario-protected-web-api-verification-scope-app-roles.md  

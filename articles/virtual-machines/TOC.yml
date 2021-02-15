@@ -990,7 +990,7 @@
       href: ephemeral-os-disks.md
     - name: Migrálás és átalakítás
       items:
-        - name: Lemez konvertálása a standard és a prémium szint között
+        - name: Lemez konvertálása másik lemezre
           items:
             - name: parancssori felület
               href: ./linux/convert-disk-storage.md

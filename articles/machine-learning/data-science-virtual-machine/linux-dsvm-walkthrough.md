@@ -3,18 +3,17 @@ title: A Linux megismerése
 titleSuffix: Azure Data Science Virtual Machine
 description: Ismerje meg, hogyan hajthat végre több gyakori adatelemzési feladatot a Linux Data Science Virtual Machine használatával.
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 09/17/2020
-ms.openlocfilehash: b0ee83cdf3ea710974ce6985db3fc8ce8782351c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 42136d0d58dbc318aab0e111fcef46f80751ca88
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315797"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517671"
 ---
 # <a name="data-science-with-an-ubuntu-data-science-virtual-machine-in-azure"></a>Adatelemzés Ubuntu-Data Science Virtual Machine az Azure-ban
 
@@ -62,7 +61,7 @@ mv headers spambaseHeaders.data
 
 Az adatkészlet többféle statisztikai adattípussal rendelkezik az egyes e-mailekhez:
 
-* Az olyan oszlopok, mint a **Word \_ freq \_ _Word_** , az e-mailben szereplő *szavak százalékos* arányát jelölik. Ha például a **Word \_ freq \_ make** értéke **1** , akkor az e-mailben szereplő összes szó 1%- *a.*
+* Az olyan oszlopok, mint a **Word \_ freq \_ _Word_** , az e-mailben szereplő *szavak százalékos* arányát jelölik. Ha például a **Word \_ freq \_ make** értéke **1**, akkor az e-mailben szereplő összes szó 1%- *a.*
 * Oszlopok, például *a char* **\_ freq \_ _char_** az e-mailben szereplő összes karakter százalékos arányát jelzi.
 * a **tőke \_ futtatásának \_ \_ leghosszabb hossza** a nagybetűk sorozatának leghosszabb hosszúsága.
 * a **tőke \_ futtatásának \_ \_ átlagos** hossza a nagybetűk összes sorozatának átlagos hossza.
@@ -315,7 +314,7 @@ Több minta jegyzetfüzet már telepítve van a DSVM:
 
 ### <a name="rattle"></a>Rattle
 
-A [csörgő](https://cran.r-project.org/web/packages/rattle/index.html) ( *R* *a* analitikus *t* OOL *t* o *L* keres *E* asily) egy grafikus R-eszköz az adatbányászathoz. A Rattle olyan intuitív kezelőfelülettel rendelkezik, amely megkönnyíti az adatterhelést, az elemzést és az átalakítást, valamint a modellek kiépítését és értékelését. [Csörgő: az R adatbányászati grafikus felhasználói felülete](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) egy olyan bemutatót biztosít, amely bemutatja a csörgő funkcióit.
+A [csörgő](https://cran.r-project.org/web/packages/rattle/index.html) (*R* *a* analitikus *t* OOL *t* o *L* keres *E* asily) egy grafikus R-eszköz az adatbányászathoz. A Rattle olyan intuitív kezelőfelülettel rendelkezik, amely megkönnyíti az adatterhelést, az elemzést és az átalakítást, valamint a modellek kiépítését és értékelését. [Csörgő: az R adatbányászati grafikus felhasználói felülete](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) egy olyan bemutatót biztosít, amely bemutatja a csörgő funkcióit.
 
 Telepítse és indítsa el a csörgőt a következő parancsok futtatásával:
 
@@ -333,7 +332,7 @@ A csörgő egy tabulátor-alapú felületet használ. A lapok többsége megfele
 Az adatkészlet betöltése és konfigurálása:
 
 1. A fájl betöltéséhez válassza az **adatlapot.**
-1. Válassza ki a **fájlnév** melletti választót, majd válassza az **spambaseHeaders.** -adatelemet.
+1. Válassza ki a **fájlnév** melletti választót, majd válassza az **spambaseHeaders.**-adatelemet.
 1. A fájl betöltéséhez. Válassza a **végrehajtás** lehetőséget. Az egyes oszlopok összegzését kell látnia, beleértve az azonosított adattípust is. legyen szó bemenetről, célhoz vagy más típusú változóról; és az egyedi értékek száma.
 1. A csörgő helyesen azonosította a **Levélszemét** oszlopot célként. Válassza ki a **Levélszemét** oszlopot, majd állítsa a **Target adattípus** értéket **Categoric** értékre.
 
@@ -355,7 +354,7 @@ A **korrelációs** mintaterületek is érdekesek. Egy mintaterület létrehozá
 1. Válassza a **Végrehajtás** lehetőséget.
 1. A csörgő figyelmezteti, hogy legfeljebb 40 változót javasol. A mintaterület megtekintéséhez válassza az **Igen** lehetőséget.
 
-Vannak érdekes összefüggések, amelyek a következők: a _technológia_ szorosan összefügg a _HP_ -vel és a _laborokkal_ , például. Emellett a _650_ -as rendszer is szorosan összefügg, mivel az adatkészletek adományozóinak körzetszáma 650.
+Vannak érdekes összefüggések, amelyek a következők: a _technológia_ szorosan összefügg a _HP_ -vel és a _laborokkal_, például. Emellett a _650_ -as rendszer is szorosan összefügg, mivel az adatkészletek adományozóinak körzetszáma 650.
 
 A szavak közötti korrelációk numerikus értékei a **Tallózás** ablakban érhetők el. Fontos megjegyezni, hogy például a _technológia_ negatívan összefügg a _saját és a_ _pénzével_.
 
@@ -374,7 +373,7 @@ A csörgő a fürt elemzését is képes futtatni. Kizárunk néhány funkciót,
 * word_freq_business
 * spam
 
-Térjen vissza a **fürt** lapra. Válassza a **KMeans** lehetőséget, majd állítsa a **fürtök számát** **4** -re. Válassza a **Végrehajtás** lehetőséget. Az eredmények a kimenet ablakban jelennek meg. Az egyik fürt a _George_ és a _HP_ nagy gyakorisággal rendelkezik, és valószínűleg egy legitim üzleti e-mail-cím.
+Térjen vissza a **fürt** lapra. Válassza a **KMeans** lehetőséget, majd állítsa a **fürtök számát** **4**-re. Válassza a **Végrehajtás** lehetőséget. Az eredmények a kimenet ablakban jelennek meg. Az egyik fürt a _George_ és a _HP_ nagy gyakorisággal rendelkezik, és valószínűleg egy legitim üzleti e-mail-cím.
 
 Alapszintű döntés faszerkezetű gépi tanulási modell létrehozása:
 
@@ -387,7 +386,7 @@ A Rattle hasznos funkciója, hogy több gépi tanulási módszert is futtathat, 
 
 1. A **Típus mezőben** válassza az **összes** lehetőséget.
 1. Válassza a **Végrehajtás** lehetőséget.
-1. Ha a csörgő befejezi a futást, kiválaszthat bármilyen **típusú** értéket, például a **SVM** , és megtekintheti az eredményeket.
+1. Ha a csörgő befejezi a futást, kiválaszthat bármilyen **típusú** értéket, például a **SVM**, és megtekintheti az eredményeket.
 1. Az ellenőrzési csoport modelljeinek teljesítményét az **értékelés** lapon is összehasonlíthatja. A **hiba-mátrix** kiválasztása például megjeleníti a zűrzavar mátrixot, a teljes hibát és az átlagos osztály-hibát az ellenőrzési készlet egyes modelljeinél. Emellett a ROC-görbék, az érzékenységi elemzések és más típusú modellek kiértékelései is megtekinthetők.
 
 Amikor elkészült a modellek létrehozásával, a **napló** lapon megtekintheti a csörgő által a munkamenet során futtatott R-kódot. Válassza az **Exportálás** gombot a mentéshez.
@@ -464,7 +463,7 @@ Most Ismerkedjen meg az adataival, és futtasson néhány lekérdezést a mókus
 
 Első lépésként nyissa meg a mókus SQL **alkalmazást az alkalmazások** menüben. Az illesztőprogram beállítása:
 
-1. Válassza a **Windows** -  >  **illesztőprogramok megtekintése** lehetőséget.
+1. Válassza a **Windows**-  >  **illesztőprogramok megtekintése** lehetőséget.
 1. Kattintson a jobb gombbal a **PostgreSQL** elemre, és válassza az **illesztőprogram módosítása** lehetőséget.
 1. Válassza a **további osztály elérési útja**  >  **Hozzáadás** lehetőséget.
 1. A **fájlnév** mezőben adja meg a **/usr/share/Java/jdbcdrivers/PostgreSQL-9.4.1208.jre6.jar** nevet.
@@ -494,7 +493,7 @@ Az adatelemzéshez számos további lekérdezés is futtatható. Hogyan változi
 SELECT avg(word_freq_make), spam from data group by spam;
 ```
 
-Vagy milyen jellemzőkkel rendelkezik az e-mailek gyakran tartalmaznak *3D* -ket?
+Vagy milyen jellemzőkkel rendelkezik az e-mailek gyakran tartalmaznak *3D*-ket?
 
 ```SQL
 SELECT * from data order by word_freq_3d desc;

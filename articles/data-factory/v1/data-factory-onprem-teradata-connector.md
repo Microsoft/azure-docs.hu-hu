@@ -1,23 +1,18 @@
 ---
 title: Adatok áthelyezése a Teradata a Azure Data Factory használatával
 description: Ismerkedjen meg a Data Factory szolgáltatás Teradata-összekötővel, amely lehetővé teszi az adatok áthelyezését a Teradata-adatbázisból
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 98eb76d8-5f3d-4667-b76e-e59ed3eea3ae
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ecde5784e759ef5259b8c67ed574cef6cae98f30
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ef992ed907bc070643f290e7fd536de05ebf9242
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019599"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387206"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Adatok áthelyezése a Teradata a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -299,10 +294,10 @@ Az adatok Teradata való áthelyezésekor a rendszer a következő leképezések
 | Egész szám |Int32 |
 | Szám |Dupla |
 | SmallInt |Int16 |
-| Dátum |Dátum/idő |
+| Date |Dátum/idő |
 | Idő |időtartam |
 | Időzónával ellátott idő |Sztring |
-| Timestamp |DateTime |
+| Időbélyeg |DateTime |
 | Időbélyeg időzónával |DateTimeOffset |
 | Intervallum napja |időtartam |
 | Nap és óra közötti időszak |időtartam |

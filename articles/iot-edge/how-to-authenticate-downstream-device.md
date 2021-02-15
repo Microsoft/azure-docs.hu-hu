@@ -8,12 +8,12 @@ ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3876b44bc6bb1ddbc5398126421fb9651003838f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 13ac18abd0a557d02435c3805e1ab86bcbf1ff84
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678823"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391983"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Lefelé irányuló eszköz hitelesítése az Azure IoT Hubon
 
@@ -68,6 +68,11 @@ Az új eszköz identitásának létrehozásakor adja meg a következő informác
 * Válassza a **szülő eszköz beállítása** elemet, és válassza ki azt a IoT Edge átjáró-eszközt, amelyre ez az alárendelt eszköz fog csatlakoztatva. Később bármikor módosíthatja a szülőt.
 
    ![Eszköz AZONOSÍTÓjának létrehozása szimmetrikus kulcsú hitelesítéssel a portálon](./media/how-to-authenticate-downstream-device/symmetric-key-portal.png)
+
+   >[!NOTE]
+   >Ha a fölérendelt eszközt a szimmetrikus kulcsos hitelesítést használó alsóbb rétegbeli eszközökhöz nem kötelező lépésként szeretné beállítani. A IoT Edge Version 1.1.0-től kezdődően azonban minden alsóbb rétegbeli eszköznek hozzá kell rendelnie egy fölérendelt eszközhöz.
+   >
+   >Az IoT Edge hub úgy is beállítható, hogy visszalépjen az előző viselkedésre úgy, hogy a környezeti változót a **authenticationmode tulajdonsághoz** értékre állítja a **CloudAndScope**.
 
 Ugyanezen művelet végrehajtásához használhatja az [Azure CLI-hez készült IoT-bővítményt](https://github.com/Azure/azure-iot-cli-extension) is. Az alábbi példa az az [IOT hub Device-Identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) paranccsal hoz létre egy új IOT-eszközt szimmetrikus kulcsos hitelesítéssel, és hozzárendel egy fölérendelt eszközt:
 

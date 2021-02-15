@@ -9,13 +9,13 @@ ms.custom: sqldbrb=1
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
-ms.date: 05/28/2020
-ms.openlocfilehash: aa236ecaaa9c38c68e66d1813280cd98b85b9463
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 02/09/2021
+ms.openlocfilehash: 332a2273a377268a425619a0cdaa5f4780b46e73
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790389"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361655"
 ---
 # <a name="migrate-azure-sql-database-from-the-dtu-based-model-to-the-vcore-based-model"></a>Azure SQL Database migrálása a DTU-alapú modellből a virtuális mag-alapú modellbe
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -52,24 +52,33 @@ Ezt a lekérdezést az áttelepíteni kívánt adatbázis kontextusában hajtsa 
 ```SQL
 WITH dtu_vcore_map AS
 (
-SELECT TOP (1) rg.slo_name,
-               CASE WHEN rg.slo_name LIKE '%SQLG4%' THEN 'Gen4'
-                    WHEN rg.slo_name LIKE '%SQLGZ%' THEN 'Gen4'
-                    WHEN rg.slo_name LIKE '%SQLG5%' THEN 'Gen5'
-                    WHEN rg.slo_name LIKE '%SQLG6%' THEN 'Gen5'
-               END AS dtu_hardware_gen,
-               s.scheduler_count * CAST(rg.instance_cap_cpu/100. AS decimal(3,2)) AS dtu_logical_cpus,
-               CAST((jo.process_memory_limit_mb / s.scheduler_count) / 1024. AS decimal(4,2)) AS dtu_memory_per_core_gb
+SELECT rg.slo_name,
+       DATABASEPROPERTYEX(DB_NAME(), 'Edition') AS dtu_service_tier,
+       CASE WHEN rg.slo_name LIKE '%SQLG4%' THEN 'Gen4'
+            WHEN rg.slo_name LIKE '%SQLGZ%' THEN 'Gen4'
+            WHEN rg.slo_name LIKE '%SQLG5%' THEN 'Gen5'
+            WHEN rg.slo_name LIKE '%SQLG6%' THEN 'Gen5'
+            WHEN rg.slo_name LIKE '%SQLG7%' THEN 'Gen5'
+       END AS dtu_hardware_gen,
+       s.scheduler_count * CAST(rg.instance_cap_cpu/100. AS decimal(3,2)) AS dtu_logical_cpus,
+       CAST((jo.process_memory_limit_mb / s.scheduler_count) / 1024. AS decimal(4,2)) AS dtu_memory_per_core_gb
 FROM sys.dm_user_db_resource_governance AS rg
 CROSS JOIN (SELECT COUNT(1) AS scheduler_count FROM sys.dm_os_schedulers WHERE status = 'VISIBLE ONLINE') AS s
 CROSS JOIN sys.dm_os_job_object AS jo
 WHERE dtu_limit > 0
       AND
       DB_NAME() <> 'master'
+      AND
+      rg.database_id = DB_ID()
 )
 SELECT dtu_logical_cpus,
        dtu_hardware_gen,
        dtu_memory_per_core_gb,
+       dtu_service_tier,
+       CASE WHEN dtu_service_tier = 'Basic' THEN 'General Purpose'
+            WHEN dtu_service_tier = 'Standard' THEN 'General Purpose or Hyperscale'
+            WHEN dtu_service_tier = 'Premium' THEN 'Business Critical or Hyperscale'
+       END AS vcore_service_tier,
        CASE WHEN dtu_hardware_gen = 'Gen4' THEN dtu_logical_cpus
             WHEN dtu_hardware_gen = 'Gen5' THEN dtu_logical_cpus * 0.7
        END AS Gen4_vcores,
@@ -97,7 +106,7 @@ A virtuális mag (logikai processzorok) és a hardveres létrehozás mellett sz�
 - Ugyanahhoz a hardveres létrehozáshoz, valamint a virtuális mag-adatbázisok esetében a IOPS és a tranzakciónaplók átviteli sebességére vonatkozó virtuális mag gyakran magasabbak, mint a DTU-adatbázisok esetében. Az IO-kötésű munkaterhelések esetében előfordulhat, hogy a virtuális mag-modellben lévő virtuális mag számát csökkenteni lehet a teljesítmény azonos szintjének elérése érdekében. Az abszolút értékekben lévő DTU-és virtuális mag-adatbázisok erőforrás-korlátai a [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) nézetben érhetők el. Ha összehasonlítja ezeket az értékeket az áttelepíteni kívánt DTU-adatbázis és egy virtuális mag-adatbázis között, amely egy körülbelül egyező szolgáltatási célkitűzést használ, a virtuális mag-szolgáltatás céljának pontosabb kiválasztását is segíti.
 - A leképezési lekérdezés a DTU-adatbázis vagy a rugalmas készlet áttelepítéséhez használt memória mennyiségét, valamint a virtuális mag modell minden egyes hardveres generálását is visszaadja. A hasonló vagy magasabb teljes memória biztosítása a virtuális mag való áttelepítés után fontos a nagy mennyiségű adatgyorsítótárat igénylő munkaterhelések számára a megfelelő teljesítmény eléréséhez, vagy nagy mennyiségű memóriát igénylő munkaterhelések megkövetelése a lekérdezések feldolgozásához. Az ilyen számítási feladatokhoz a tényleges teljesítménytől függően szükség lehet a virtuális mag számának növelésére, hogy elegendő mennyiségű memóriát kapjon.
 - A DTU-adatbázis [korábbi erőforrás-kihasználtságát](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) figyelembe kell venni a virtuális mag szolgáltatás céljának kiválasztásakor. A konzisztensen használt CPU-erőforrásokkal rendelkező DTU-adatbázisok esetében kevesebb virtuális mag van szükség a leképezési lekérdezés által visszaadott számnál. Ezzel szemben a DTU-adatbázisok esetében, ahol a következetesen magas CPU-kihasználtság miatt a nem megfelelő munkaterhelés-teljesítmény a lekérdezés által visszaadottnál nagyobb virtuális mag igényel.
-- Ha időszakos vagy kiszámíthatatlan használati mintákkal rendelkező adatbázisokat telepít át, vegye figyelembe a [kiszolgáló](serverless-tier-overview.md) nélküli számítási szintek használatát.  Vegye figyelembe, hogy a kiszolgáló nélküli egyidejű feldolgozók (kérelmek) maximális száma 75% a kiépített számítási korlát a beállított maximális virtuális mag-értéknél.  Továbbá a kiszolgáló nélküli kiszolgálón elérhető maximális memória 3 GB-szor a beállított virtuális mag maximális száma; például a maximális memória 120 GB, ha 40 Max virtuális mag van konfigurálva.   
+- Ha időszakos vagy kiszámíthatatlan használati mintákkal rendelkező adatbázisokat telepít át, vegye figyelembe a [kiszolgáló](serverless-tier-overview.md) nélküli számítási szintek használatát. Vegye figyelembe, hogy a kiszolgáló nélküli egyidejű feldolgozók (kérelmek) maximális száma 75% a kiépített számítási korlát a beállított maximális virtuális mag-értéknél. Továbbá a kiszolgáló nélküli kiszolgálón elérhető maximális memória 3 GB-szor a beállított virtuális mag maximális száma; például a maximális memória 120 GB, ha 40 Max virtuális mag van konfigurálva.   
 - A virtuális mag-modellben a támogatott maximális adatbázis-méret eltérő lehet a hardver-létrehozástól függően. Nagyméretű adatbázisok esetében a virtuális mag-modellben található támogatott maximális méretek közül a [különálló adatbázisok](resource-limits-vcore-single-databases.md) és a [rugalmas készletek](resource-limits-vcore-elastic-pools.md)esetében a következőt kell megnéznie:.
 - A rugalmas készletek esetében a [DTU](resource-limits-dtu-elastic-pools.md) és a [virtuális mag](resource-limits-vcore-elastic-pools.md) modellek eltérést mutatnak a maximálisan támogatott adatbázisok száma alapján. Ezt figyelembe kell venni, amikor rugalmas készleteket telepít át sok adatbázissal.
 - Előfordulhat, hogy egyes hardver-generációk nem érhetők el minden régióban. A rendelkezésre állást a [hardver generációi](service-tiers-vcore.md#hardware-generations)között tekintheti meg.
@@ -132,7 +141,7 @@ A leképezési lekérdezés a következő eredményt adja vissza (néhány oszlo
 |----------------|----------------|----------------------|-----------|-----------------------|-----------|-----------------------|
 |0,25|Gen4|0,42|0,250|7|0,425|5,05|
 
-Azt láthatjuk, hogy a DTU-adatbázis 0,25 logikai CPU-val (virtuális mag) egyenértékű, 0,42 GB memóriával és virtuális mag, és Gen4 hardvert használ. A Gen4 és a Gen5 hardver generációinak legkisebb virtuális mag-szolgáltatási célja, **GP_Gen4_1** és **GP_Gen5_2** , több számítási erőforrást biztosít, mint a szabványos S0-adatbázis, így a közvetlen egyezés nem lehetséges. Mivel a Gen4 hardver [leszerelése](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/)folyamatban van, a **GP_Gen5_2** lehetőség javasolt. Emellett, ha a számítási feladat megfelelően van kiszámítva a [kiszolgáló](serverless-tier-overview.md) nélküli számítási réteghez, akkor a **GP_S_Gen5_1** szorosabb egyezés lenne.
+Azt láthatjuk, hogy a DTU-adatbázis 0,25 logikai CPU-val (virtuális mag) egyenértékű, 0,42 GB memóriával és virtuális mag, és Gen4 hardvert használ. A Gen4 és a Gen5 hardver generációinak legkisebb virtuális mag-szolgáltatási célja, **GP_Gen4_1** és **GP_Gen5_2**, több számítási erőforrást biztosít, mint a szabványos S0-adatbázis, így a közvetlen egyezés nem lehetséges. Mivel a Gen4 hardver [leszerelése](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/)folyamatban van, a **GP_Gen5_2** lehetőség javasolt. Emellett, ha a számítási feladat megfelelően van kiszámítva a [kiszolgáló](serverless-tier-overview.md) nélküli számítási réteghez, akkor a **GP_S_Gen5_1** szorosabb egyezés lenne.
 
 **Prémium szintű P15-adatbázis áttelepítése**
 
@@ -169,12 +178,12 @@ Az alábbi táblázat a speciális áttelepítési forgatókönyvekhez nyújt ú
 |---|---|---|---|
 |Standard|Általános célú|Oldalirányú|Az áttelepíthető bármely sorrendben, de biztosítani kell a megfelelő virtuális mag-méretezést a fent leírtak szerint.|
 |Prémium|Üzleti szempontból kritikus|Oldalirányú|Az áttelepíthető bármely sorrendben, de biztosítani kell a megfelelő virtuális mag-méretezést a fent leírtak szerint.|
-|Standard|Üzleti szempontból kritikus|Upgrade|Először át kell telepítenie a másodlagost|
+|Standard|Üzleti szempontból kritikus|Frissítés|Először át kell telepítenie a másodlagost|
 |Üzleti szempontból kritikus|Standard|Alacsonyabb szintre|Először át kell telepítenie az elsődlegest|
 |Prémium|Általános célú|Alacsonyabb szintre|Először át kell telepítenie az elsődlegest|
-|Általános célú|Prémium|Upgrade|Először át kell telepítenie a másodlagost|
+|Általános célú|Prémium|Frissítés|Először át kell telepítenie a másodlagost|
 |Üzleti szempontból kritikus|Általános célú|Alacsonyabb szintre|Először át kell telepítenie az elsődlegest|
-|Általános célú|Üzleti szempontból kritikus|Upgrade|Először át kell telepítenie a másodlagost|
+|Általános célú|Üzleti szempontból kritikus|Frissítés|Először át kell telepítenie a másodlagost|
 ||||
 
 ## <a name="migrate-failover-groups"></a>Feladatátvételi csoportok áttelepíthetők

@@ -42,6 +42,14 @@
     - name: Azure-biztonsági teljesítményteszt
       displayName: 'standards, azure, benchmark'
       href: ./samples/azure-security-benchmark.md
+    - name: Az Azure Security teljesítményteszt alapjai
+      items:
+        - name: Áttekintés
+          displayName: 'standards, azure, benchmark, foundation'
+          href: ./samples/azure-security-benchmark-foundation/index.md
+        - name: Az üzembe helyezés lépései
+          displayName: 'standards, azure, benchmark, foundation, deploy'
+          href: ./samples/azure-security-benchmark-foundation/deploy.md
     - name: Australian Government ISM PROTECTED
       items:
         - name: Áttekintés
