@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: azure-monitor
 author: rboucher
 tags: azure-service-management
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 86c5c6fff06f43bf66427ba1935852fcf97a71c6
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 1f461c4870b398a49387472c49d45b90929405c7
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356210"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100529676"
 ---
 **Adatgyűjtés mennyisége és megőrzése** 
 
@@ -35,34 +35,40 @@ ms.locfileid: "96356210"
 
 **Azure Portal**
 
-| Category | Korlát | Megjegyzések |
+| Kategória | Korlát | Megjegyzések |
 |:---|:---|:---|
 | Egy napló lekérdezés által visszaadott maximális rekordok | 10,000 | Csökkentheti az eredményeket a lekérdezés hatóköre, az időtartomány és a lekérdezésben szereplő szűrők használatával. |
 
 
 **Adatgyűjtő API**
 
-| Category | Korlát | Megjegyzések |
+| Kategória | Korlát | Megjegyzések |
 |:---|:---|:---|
 | Egyetlen bejegyzés maximális mérete | 30 MB | Nagyobb kötetek felosztása több bejegyzésbe. |
 | Mezőértékek maximális mérete  | 32 KB | A 32 KB-nál hosszabb mezők csonkolva lesznek. |
 
 **Search API**
 
-| Category | Korlát | Megjegyzések |
+| Kategória | Korlát | Megjegyzések |
 |:---|:---|:---|
 | Egyetlen lekérdezésben visszaadott rekordok maximális száma | 500 000 | |
 | Visszaadott adatmennyiség maximális mérete | 64 000 000 bájt (~ 61 MiB)| |
 | Lekérdezés maximális futási ideje | 10 perc | További részletek: [időtúllépések](https://dev.loganalytics.io/documentation/Using-the-API/Timeouts) .  |
 | Kérelmek maximális száma | 200 kérés/30 másodperc/Azure AD-felhasználó vagy ügyfél IP-címe | Részletekért lásd a [díjszabási korlátokat](https://dev.loganalytics.io/documentation/Using-the-API/Limits) . |
 
+**Azure Monitor-naplók összekötője**
+| Kategória | Korlát | Megjegyzések |
+|:---|:---|:---|
+| Rekordok maximális száma | 500 000 | |
+| Lekérdezés maximális időtúllépése | 110 másodperc | |
+| Diagramok | | A naplók és az összekötő különböző ábrázolási kódtárakat használ, és bizonyos funkciók jelenleg nem érhetők el az összekötőben. |
+
 **Általános munkaterület korlátai**
 
-| Category | Korlát | Megjegyzések |
+| Kategória | Korlát | Megjegyzések |
 |:---|:---|:---|
 | Oszlopok maximális száma egy táblában         | 500 | |
 | Oszlop nevének maximális száma | 500 | |
-| Adatexportálás | Jelenleg nem érhető el | Az Azure Function vagy a Logic App használatával összesítheti és exportálhatja az adatokat. | 
 
 **<a name="data-ingestion-volume-rate">Adatfeldolgozási kötetek aránya</a>**
 
