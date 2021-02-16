@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2020
 ms.author: yelevin
-ms.openlocfilehash: c375595951eb760d5341db424c5572719b97046a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: aa57963ce369e4c8f84f4aae5f99fe343181ff6b
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102983"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530501"
 ---
 # <a name="connect-cyberark-enterprise-password-vault-epv-to-azure-sentinel"></a>A CyberArk Enterprise Password Vault (EPV) és az Azure Sentinel összekötése
 
@@ -36,9 +36,9 @@ A CyberArk syslog-összekötővel egyszerűen csatlakoztathatja az összes Cyber
 
 A CyberArk EPV-naplókat a rendszer a tárolóból egy Linux-alapú (rsyslog vagy syslog-ng-t futtató) naplózási kiszolgálóra küldi, amelyen telepítve van az Log Analytics-ügynök, amely a naplókat az Azure Sentinelbe exportálja. Ha nem rendelkezik ilyen naplózási kiszolgálóval, tekintse meg az [alábbi utasításokat](connect-cef-agent.md) .
 
-1. Az Azure Sentinel-portálon kattintson az **adatösszekötők** elemre, válassza a **CyberArk Enterprise Password Vault (EPV) események (előzetes verzió)** lehetőséget, majd **nyissa meg az összekötő lapot** .
+1. Az Azure Sentinel-portálon kattintson az **adatösszekötők** elemre, válassza a **CyberArk Enterprise Password Vault (EPV) események (előzetes verzió)** lehetőséget, majd **nyissa meg az összekötő lapot**.
 
-1. A CyberArk EPV utasításait követve konfigurálhatja a syslog-adatok küldését a naplófájl-továbbító kiszolgálóra.
+1. A [CYBERARK EPV utasításait](https://docs.cyberark.com/Product-Doc/OnlineHelp/PAS/Latest/en/Content/PASIMP/DV-Integrating-with-SIEM-Applications.htm) követve konfigurálhatja a syslog-adatok küldését a naplófájl-továbbító kiszolgálóra.
 
 1. Érvényesítse a kapcsolatokat, és ellenőrizze az adatfeldolgozást [ezen utasítások](connect-cef-verify.md)alapján. Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Analytics.
 

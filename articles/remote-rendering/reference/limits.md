@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: 68c0c04feba2779598a500c84b2ba4a9086b104d
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: f62a07ef7109c669c6abc90d4e1b4a2ee83ece23
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593948"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530246"
 ---
 # <a name="limitations"></a>Korlátozások
 
@@ -36,7 +36,7 @@ A következő korlátozások vonatkoznak a frontend API-ra (C++ és C#):
 
 ### <a name="overall-number-of-polygons"></a>Sokszögek összesített száma
 
-Az összes betöltött modell számára engedélyezett számú sokszög a virtuális gép méretétől függ a [munkamenet-felügyeleti REST API](../how-tos/session-rest-api.md#create-a-session):
+Az összes betöltött modell számára engedélyezett számú sokszög a virtuális gép méretétől függ a [munkamenet-felügyeleti REST API](../how-tos/session-rest-api.md):
 
 | Kiszolgáló mérete | Sokszögek maximális száma |
 |:--------|:------------------|

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 35c8c2aa31887feb294b04b8a88bbe5478659e5e
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: f249a95551916311fab51ebef72b55d9a4343c0b
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807903"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530518"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Adatok gyűjtése Linux-alapú forrásokból a syslog használatával
 
@@ -67,17 +67,17 @@ További információ: [syslog-adatforrások Azure monitorban](../azure-monitor/
 
 ### <a name="configure-the-log-analytics-agent"></a>A Log Analytics-ügynök konfigurálása
 
-1. A syslog-összekötő panel alján kattintson a **munkaterület megnyitása speciális beállítások konfigurációs >** hivatkozásra.
+1. A syslog-összekötő paneljének alján kattintson a **munkaterület-ügynökök megnyitása konfigurációs >** hivatkozásra.
 
-1. A **Speciális beállítások** **panelen válassza ki az**  >  **adatsyslog** elemet. Ezután adja hozzá az összekötőhöz tartozó létesítményeket a gyűjtéshez.
+1. Az **ügynökök konfigurálása** panelen válassza a **syslog** fület. Ezután adja hozzá az összekötőhöz tartozó létesítményeket a gyűjtéshez. Válassza a **létesítmény hozzáadása** lehetőséget, és válasszon a létesítmények legördülő listájából.
     
     - Adja hozzá azokat a létesítményeket, amelyeket a syslog-berendezés tartalmaz a naplójának fejlécében. 
     
     - Ha rendellenes SSH bejelentkezési észlelést szeretne használni a gyűjtött adatokkal, adja hozzá az **Auth** és a **authpriv**. További részletekért tekintse meg a [következő szakaszt](#configure-the-syslog-connector-for-anomalous-ssh-login-detection) .
 
-1. Ha hozzáadta az összes figyelni kívánt létesítményt, és kiigazította az egyes súlyossági beállításokat, jelölje be az **alábbi konfiguráció alkalmazása a saját gépekre** jelölőnégyzetet.
+1. Ha hozzáadta az összes figyelni kívánt szolgáltatást, ellenőrizze, hogy az összes kívánt súlyossági szint be van-e jelölve.
 
-1. Kattintson a **Mentés** gombra. 
+1. Kattintson az **Alkalmaz** gombra. 
 
 1. Győződjön meg arról, hogy a virtuális gépen vagy berendezésen a megadott létesítményeket küldi el.
 
@@ -88,7 +88,6 @@ További információ: [syslog-adatforrások Azure monitorban](../azure-monitor/
 > [!NOTE]
 > **Ugyanazzal a géppel az egyszerű syslog *és* a CEF üzenetek továbbítása**
 >
->
 > A meglévő [CEF-naplózási továbbító géppel](connect-cef-agent.md) is felhasználhatja a naplók egyszerű syslog-forrásokból való összegyűjtését és továbbítását. Azonban az alábbi lépéseket kell elvégeznie, hogy elkerülje az események mindkét formátumban való küldését az Azure Sentinel számára, mivel ez az események ismétlődését eredményezi.
 >
 >    Ha már beállította az [adatgyűjtést a CEF-forrásaiból](connect-common-event-format.md), és a fentiek szerint konfigurálta a log Analytics-ügynököt:
@@ -97,7 +96,6 @@ További információ: [syslog-adatforrások Azure monitorban](../azure-monitor/
 >
 > 1. A következő parancs futtatásával le kell tiltania az ügynök szinkronizálását az Azure Sentinel syslog-konfigurációjával. Ez biztosítja, hogy az előző lépésben végrehajtott konfigurációs módosítás ne legyen felülírva.<br>
 > `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
-
 
 ### <a name="configure-the-syslog-connector-for-anomalous-ssh-login-detection"></a>A syslog-összekötő konfigurálása rendellenes SSH-bejelentkezés észleléséhez
 
@@ -113,10 +111,7 @@ Az Azure Sentinel gépi tanulást (ML) alkalmazhat a syslog-adatokra a rendellen
  
 Az észleléshez a syslog-adatösszekötő adott konfigurációja szükséges: 
 
-1. Az előző eljárás 5. lépésében ellenőrizze, hogy az **Auth** és a **authpriv** is ki van-e választva a figyeléshez. Tartsa meg a súlyossági beállítások alapértelmezett beállításait, hogy azok mind ki legyenek választva. Például:
-    
-    > [!div class="mx-imgBorder"]
-    > ![A rendellenes SSH bejelentkezési észleléshez szükséges szolgáltatások](./media/connect-syslog/facilities-ssh-detection.png)
+1. A fenti [log Analytics ügynök konfigurálása](#configure-the-log-analytics-agent) szakasz 2. lépésében ellenőrizze, hogy az **Auth** és a **authpriv** is ki van-e választva a figyeléshez, és hogy az összes csomópont ki van-e választva. 
 
 2. A syslog-adatok gyűjtéséhez elegendő idő szükséges. Ezután navigáljon az **Azure Sentinel-logs** elemhez, és másolja és illessze be a következő lekérdezést:
     

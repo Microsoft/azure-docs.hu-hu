@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/11/2020
+ms.date: 02/05/2021
 ms.author: juliako
-ms.openlocfilehash: 06f5e19718445f44dd2302faf280f083cce0774f
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 12d23ec471329bd4e0ecb502750198e946e58872
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98783801"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530229"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>Mi az az Azure Media Services Video Indexer?
 
@@ -84,7 +84,7 @@ A következő lista azokat az elemzéseket mutatja be, amelyekkel lekérheti a v
 * **Beszélő enumerálása**: leképezi a térképeket, és megérti, hogy a beszélő mely szavakat és mikor szólalt meg. A rendszer 16 beszélőt képes észlelni egyetlen hangfájlban.
 * A **beszélő statisztikái**: statisztikai adatokat biztosít a beszélők beszédének arányáról.
 * **Szöveges tartalom moderálása**: Felismeri az explicit szövegeket a hanganyag alapján készült átiratban.
-* **Hangeffektusok**: felismeri a hangeffektusokat, például a tapsot, a beszédet és a csendet.
+* **Hangeffektusok** (nyilvános előzetes verzió): a következő hanghatásokat észleli a tartalom nem beszéd szegmensében: lőtt, üveg összetörő, riasztás, sziréna, robbanás, kutya kéreg, sikítás, nevetés, tömegre adott válaszok (éljenzés, taps és booing) és csend. Megjegyzés: az események teljes készlete csak akkor érhető el, ha a feltöltési beállításkészletben a "speciális hangelemzés" lehetőséget választja, ellenkező esetben csak a "Silence" és a "Crowd Reactions" lesz elérhető.
 * **Érzelem észlelése**: az érzelmeket a beszéd alapján azonosítja (mit mondott) és a hangtónust (ahogy azt mondják). Az érzelem lehet a Joy, a szomorúság, a düh vagy a félelem.
 * **Fordítás**: Fordítást készít a hanganyag alapján készült átiratról 54 különböző nyelven.
 
@@ -131,7 +131,7 @@ A következő lista azokat a támogatott böngészőket mutatja be, amelyeket a 
 - Chrome Androidhoz, verzió: 87
 - Androidos Firefox, verzió: 83
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Készen áll a Video Indexer használatának megkezdésére. További információért tekintse át a következő cikkeket:
 

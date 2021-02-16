@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: caa83b9149f39f69d0cbf44a2d6cb01fdaf29721
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 15e31b8dc5ac6db5861e3ea0fb5390ddf0a8c945
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567887"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530671"
 ---
 # <a name="connect-your-cisco-unified-computing-system-ucs-to-azure-sentinel"></a>A Cisco Unified Computing System (FKR) összekötése az Azure Sentinel szolgáltatással
 
@@ -53,7 +53,7 @@ Konfigurálja a Cisco FKR-t, hogy a syslog-ügynökön keresztül továbbítsa a
 
     1. A gyűjteni kívánt naplók konfigurálása
 
-        - Válassza ki a létesítményeket és a súlyosságot a munkaterület speciális beállítások konfigurációjában.
+        - Válassza ki a létesítményeket és a megszakításokat a munkaterület-ügynökök konfigurációjában.
 
     1. A Cisco FKR konfigurálása és összekapcsolása
 
@@ -69,7 +69,7 @@ Néhány hasznos minta lekérdezéshez tekintse meg az összekötő lap **követ
 
 Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Analytics.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtanulta, hogyan csatlakoztatható a Cisco FKR az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

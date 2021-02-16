@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a786907c5c954aa45de266b6d92dd47867a8445d
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 24d04c148e8a96e3b1d72c5301f6226df6d9a569
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743615"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530348"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Jelszóval nem rendelkező hitelesítés központi telepítésének megtervezése Azure Active Directory
 
@@ -51,7 +51,7 @@ A Microsoft három, több forgatókönyvre kiterjedő, jelszóval nem rendelkez�
 
 A Microsoft jelszavas hitelesítési módszerei különböző forgatókönyveket tesznek lehetővé. Vegye figyelembe a szervezeti igényeket, előfeltételeket és az egyes hitelesítési módszerek képességeit a jelszóval nem rendelkező hitelesítési stratégia kiválasztásához. Javasoljuk, hogy minden Windows 10-es eszközt használó szervezet a vállalati Windows Hello szolgáltatást használja. Ezután adja hozzá a telefonos bejelentkezést (a Microsoft Authenticator alkalmazással) vagy a biztonsági kulcsokat a további forgatókönyvekhez.
 
-| Használati példa | Telefonos hitelesítés | Biztonsági kulcsok | Vállalati Windows Hello |
+| Eset | Telefonos hitelesítés | Biztonsági kulcsok | Vállalati Windows Hello |
 | --- | --- | --- | --- |
 | **Számítógép bejelentkezés**: <br> Hozzárendelt Windows 10-es eszközről | **Nem** | **Igen** <br> Biometrikus kóddal | **Igen**<br>biometrikus felismeréssel és PIN-kóddal |
 | **Számítógép bejelentkezés**: <br> Megosztott Windows 10-es eszközről | **Nem** | **Igen** <br> Biometrikus kóddal  | **Nem** |
@@ -150,7 +150,7 @@ A biztonsági kulcsokkal háromféle jelszó nélküli bejelentkezési üzemelő
 -    Webalkalmazások Azure Active Directory támogatott böngészőben
 -    Azure Active Directory csatlakoztatott Windows 10-es eszközök
 -    Hibrid Azure Active Directory csatlakoztatott Windows 10-es eszközök (előzetes verzió)
-     -    Hozzáférést biztosít a felhőalapú és a helyszíni erőforrásokhoz is. További információ a helyszíni erőforrásokhoz való hozzáférésről: [egyszeri bejelentkezés a helyszíni erőforrásokhoz FIDOP2-kulcsok használatával](./howto-authentication-passwordless-security-key-on-premises.md)
+     -    Hozzáférést biztosít a felhőalapú és a helyszíni erőforrásokhoz is. További információ a helyszíni erőforrásokhoz való hozzáférésről: [egyszeri bejelentkezés a helyszíni erőforrásokhoz FIDO2-kulcsok használatával](./howto-authentication-passwordless-security-key-on-premises.md)
 
 Engedélyeznie kell a **kompatibilis FIDO2 biztonsági kulcsokat**. A Microsoft bejelentette [a FIDO2 Key vendors-vel való együttműködését](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Microsoft-passwordless-partnership-leads-to-innovation-and-great/ba-p/566493).
 
@@ -243,7 +243,7 @@ Az üzembe helyezés minden egyes fázisában, a forgatókönyvek és az elfogad
 
 Az alábbiakban a Microsoft Authenticator alkalmazással való jelszavas hitelesítésre vonatkozó példákat vizsgáljuk:
 
-| Használati példa | Várt eredmények |
+| Eset | Várt eredmények |
 | --- | --- |
 | A felhasználó regisztrálhat Microsoft Authenticator alkalmazást | A felhasználó regisztrálhatja az alkalmazást a aka.ms/mysecurityinfo |
 | A felhasználó engedélyezheti a telefonos bejelentkezést | A munkahelyi fiókhoz konfigurált telefonos bejelentkezés |
@@ -257,7 +257,7 @@ A következő példák tesztelési eseteket biztosítanak a biztonsági kulcsokk
 
 **Jelszó nélküli, Windows 10-es eszközökhöz csatlakozó Azure Active Directory**
 
-| Használati példa | Várt eredmények |
+| Eset | Várt eredmények |
 | --- | --- |
 | A felhasználó regisztrálhat FIDO2 eszközt (1809) | A felhasználó regisztrálhat FIDO2-eszközt a beállítások > fiókok > bejelentkezési beállítások > biztonsági kulcs |
 | A felhasználó alaphelyzetbe állíthatja a FIDO2 eszközt (1809) | A felhasználó alaphelyzetbe állíthatja a FIDO2 eszközt gyártó szoftverrel |
@@ -268,7 +268,7 @@ A következő példák tesztelési eseteket biztosítanak a biztonsági kulcsokk
 
 **Jelszó nélküli bejelentkezés az Azure AD web appsbe**
 
-| Használati példa | Várt eredmények |
+| Eset | Várt eredmények |
 | --- | --- |
 | A felhasználó regisztrálhat FIDO2-eszközt a aka.ms/mysecurityinfo-on a Microsoft Edge használatával | A regisztrációnak sikeresnek kell lennie |
 | A felhasználó regisztrálhat FIDO2-eszközt a aka.ms/mysecurityinfo-on a Firefox használatával | A regisztrációnak sikeresnek kell lennie |
@@ -296,7 +296,7 @@ Kövesse az alábbi, a választott módszerhez igazított lépéseket.
 | --- | --- |
 | Globális rendszergazda|A legkevésbé magas jogosultsági szintű szerepkör lehetővé tenné a közös regisztrációs élmény megvalósítását. |
 | Hitelesítés rendszergazdája | A minimális jogosultsági szintű szerepkör képes a hitelesítési módszerek megvalósítására és kezelésére. |
-| Felhasználó | A legkevesebb Kiemelt szerepkör a hitelesítő alkalmazás konfigurálásához az eszközön, vagy a biztonsági kulcs eszközének regisztrálása a web vagy a Windows 10 rendszerű bejelentkezéshez. |
+| User | A legkevesebb Kiemelt szerepkör a hitelesítő alkalmazás konfigurálásához az eszközön, vagy a biztonsági kulcs eszközének regisztrálása a web vagy a Windows 10 rendszerű bejelentkezéshez. |
 
 ### <a name="deploy-phone-sign-in-with-the-microsoft-authenticator-app"></a>Telefonos bejelentkezés üzembe helyezése a Microsoft Authenticator alkalmazással
 
@@ -308,7 +308,7 @@ Kövesse a cikk lépéseit, [engedélyezze a jelszó nélküli biztonsági kulcs
 
 ### <a name="troubleshoot-phone-sign-in"></a>Telefonos bejelentkezés – problémamegoldás
 
-| Használati példa | Megoldás |
+| Eset | Megoldás |
 | --- | --- |
 | A felhasználó nem tudja végrehajtani a kombinált regisztrációt. | Győződjön meg arról, hogy a [kombinált regisztráció](concept-registration-mfa-sspr-combined.md) engedélyezve van. |
 | A felhasználó nem engedélyezheti a telefonos bejelentkezési hitelesítő alkalmazást. | Győződjön meg arról, hogy a felhasználó hatókörben van az üzembe helyezéshez. |
@@ -316,7 +316,7 @@ Kövesse a cikk lépéseit, [engedélyezze a jelszó nélküli biztonsági kulcs
 
 ### <a name="troubleshoot-security-key-sign-in"></a>A biztonsági kulcs bejelentkezésének hibakeresése
 
-| Használati példa | Megoldás |
+| Eset | Megoldás |
 | --- | --- |
 | A felhasználó nem tudja végrehajtani a kombinált regisztrációt. | Győződjön meg arról, hogy a [kombinált regisztráció](concept-registration-mfa-sspr-combined.md) engedélyezve van. |
 | A felhasználó nem adhat hozzá biztonsági kulcsot a [biztonsági beállításokban](https://aka.ms/mysecurityinfo). | Győződjön meg arról, hogy a [biztonsági kulcsok](howto-authentication-passwordless-security-key.md) engedélyezve vannak. |
@@ -326,7 +326,7 @@ Kövesse a cikk lépéseit, [engedélyezze a jelszó nélküli biztonsági kulcs
 | A Windows 10 1809-es verziójában a felhasználó nem tudja kezelni a biztonsági kulcsot | Az 1809-es verzió használatához a FIDO2 kulcs gyártója által biztosított biztonsági kulcs-felügyeleti szoftvert kell használnia. Támogatásért forduljon a gyártóhoz. |
 | Azt hiszem, hogy a FIDO2 biztonsági kulcsa hibás lehet – hogyan tesztelhető. | Lépjen a [https://webauthntest.azurewebsites.net/](https://webauthntest.azurewebsites.net/) be, adja meg egy teszt fiók hitelesítő adatait, csatlakoztassa a gyanús biztonsági kulcsot, válassza a **+** képernyő jobb felső részén látható gombot, kattintson a Létrehozás gombra, és folytassa a létrehozás folyamatát. Ha ez a forgatókönyv meghiúsul, lehetséges, hogy az eszköz hibás. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Jelszó nélküli biztonsági kulcsok engedélyezése az Azure AD-ba való bejelentkezéshez](howto-authentication-passwordless-security-key.md)
 - [Jelszó nélküli bejelentkezés engedélyezése a Microsoft Authenticator alkalmazással](howto-authentication-passwordless-phone.md)

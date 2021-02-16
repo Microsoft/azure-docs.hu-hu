@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4e8ba291f32456bf2b8432620d1f9ea313629c9d
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 46c41a4868c80bf9ba1c2c6d4a8286c3a8f47c3d
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600507"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530433"
 ---
 # <a name="manage-digital-twins"></a>Digitális ikereszközök kezelése
 
@@ -86,7 +86,7 @@ A következőhöz hasonló módon érheti el bármelyik digitális Twin adatait 
 
 Ez a hívás a kettős adattípust adja vissza, például: `BasicDigitalTwin` . `BasicDigitalTwin` a egy olyan szerializálási segítő osztály, amely tartalmazza az SDK-t, amely az alapszintű Twin metaadatokat és tulajdonságokat az előre elemzett űrlapon fogja visszaadni. Íme egy példa arra, hogyan használhatja ezt a Twin részletek megtekintésére:
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="GetTwin":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="GetTwin" highlight="2":::
 
 Csak a legalább egyszer beállított tulajdonságokat adja vissza a rendszer, amikor egy Twin metódust kér le `GetDigitalTwin()` .
 
@@ -208,9 +208,9 @@ A *Twin1* módosító két hívás egy másik után kerül végrehajtásra, és 
 
 Az ikreket az metódus használatával törölheti `DeleteDigitalTwin()` . Azonban csak akkor törölhet egy IKeret, ha nincs több kapcsolata. Ezért először törölje a két bejövő és kimenő kapcsolatot.
 
-Az alábbi példa az ikrek és kapcsolataik törlésére szolgáló kódot szemlélteti:
+Az alábbi példa az ikrek és kapcsolataik törlésére szolgáló kódot mutat be. Az `DeleteDigitalTwin` SDK-hívás ki van emelve annak tisztázására, hogy hol esik a tágabb példa kontextusában.
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="DeleteTwin":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="DeleteTwin" highlight="7":::
 
 ### <a name="delete-all-digital-twins"></a>Az összes digitális ikrek törlése
 
@@ -247,7 +247,7 @@ Itt látható a fenti program konzoljának kimenete:
 
 :::image type="content" source="./media/how-to-manage-twin/console-output-manage-twins.png" alt-text="Konzol kimenete, amely azt mutatja, hogy a Twin létrehozása, frissítése és törlése megtörtént" lightbox="./media/how-to-manage-twin/console-output-manage-twins.png":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan hozhat létre és kezelhet kapcsolatokat a digitális ikrek között:
 * [*Útmutató: a Twin gráf kezelése kapcsolatok használatával*](how-to-manage-graph.md)

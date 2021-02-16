@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 321d73c78d0192dcb7a303f4aa70a4ff0f18ecea
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 79f3f93338d15562dcc37857d63bc8b2d7e96b05
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593705"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530552"
 ---
 # <a name="remote-rendering-sessions"></a>Remote Rendering-munkamenetek
 
@@ -39,9 +39,9 @@ Minden munkamenet több fázison megy keresztül.
 
 ### <a name="session-startup"></a>Munkamenet indítása
 
-Ha az ARR-t arra kéri, hogy [hozzon létre egy új munkamenetet](../how-tos/session-rest-api.md#create-a-session), akkor az első dolog, ha egy munkamenet [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)-t ad vissza. Ez az UUID lehetővé teszi a munkamenet adatainak lekérdezését. Az UUID-t és a munkamenet alapszintű információit 30 napig őrzi meg a rendszer, így a munkamenet leállítása után is lekérdezheti az adatokat. Ezen a ponton a **munkamenet-állapotot** a rendszer az **induláskor** fogja jelenteni.
+Ha az ARR-t arra kéri, hogy [hozzon létre egy új munkamenetet](../how-tos/session-rest-api.md), akkor az első dolog, ha egy munkamenet [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)-t ad vissza. Ez az UUID lehetővé teszi a munkamenet adatainak lekérdezését. Az UUID-t és a munkamenet alapszintű információit 30 napig őrzi meg a rendszer, így a munkamenet leállítása után is lekérdezheti az adatokat. Ezen a ponton a **munkamenet-állapotot** a rendszer az **induláskor** fogja jelenteni.
 
-Ezt követően az Azure Remote rendering megpróbál olyan kiszolgálót találni, amely képes a munkamenet üzemeltetésére. A keresésnek két paramétere van. Először csak a [régiójában](../reference/regions.md)lévő kiszolgálókat fogja fenntartani. Ennek oka, hogy a régiók közötti hálózati késés túl magas lehet a tisztességes felhasználói élmény garantálása érdekében. A második tényező a megadott kívánt *méret* . Az egyes régiókban korlátozott számú kiszolgáló érhető el, amelyek megfelelnek a standard vagy a [*prémium*](../reference/vm-sizes.md) [*szintű*](../reference/vm-sizes.md) kérésnek. Ennek következtében, ha a kért méret összes kiszolgálója jelenleg használatban van a régiójában, a munkamenet létrehozása sikertelen lesz. A hiba oka lehet a [lekérdezés](../how-tos/session-rest-api.md#get-sessions-properties).
+Ezt követően az Azure Remote rendering megpróbál olyan kiszolgálót találni, amely képes a munkamenet üzemeltetésére. A keresésnek két paramétere van. Először csak a [régiójában](../reference/regions.md)lévő kiszolgálókat fogja fenntartani. Ennek oka, hogy a régiók közötti hálózati késés túl magas lehet a tisztességes felhasználói élmény garantálása érdekében. A második tényező a megadott kívánt *méret* . Az egyes régiókban korlátozott számú kiszolgáló érhető el, amelyek megfelelnek a standard vagy a [*prémium*](../reference/vm-sizes.md) [*szintű*](../reference/vm-sizes.md) kérésnek. Ennek következtében, ha a kért méret összes kiszolgálója jelenleg használatban van a régiójában, a munkamenet létrehozása sikertelen lesz. A hiba oka lehet a [lekérdezés](../how-tos/session-rest-api.md).
 
 > [!IMPORTANT]
 > Ha *standard szintű* kiszolgáló-méretet kér, és a kérés magas kereslet miatt meghiúsul, a nem jelenti azt, hogy a *prémium* szintű kiszolgáló igénylése is sikertelen lesz. Ha így van, akkor kipróbálhatja a *prémium* szintű kiszolgáló méretének visszaesését.
@@ -77,7 +77,7 @@ A munkamenet leállítása után minden esetben nem számítunk fel díjat.
 
 #### <a name="extend-a-sessions-lease-time"></a>Munkamenet címbérleti idejének meghosszabbítása
 
-Kiterjesztheti egy aktív munkamenet [címbérleti idejét](../how-tos/session-rest-api.md#modify-and-query-session-properties) , ha kiderül, hogy továbbra is szüksége van rá.
+Kiterjesztheti egy aktív munkamenet [címbérleti idejét](../how-tos/session-rest-api.md) , ha kiderül, hogy továbbra is szüksége van rá.
 
 ## <a name="example-code"></a>Mintakód
 

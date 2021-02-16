@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: 0583846fcd847e92a6f001dae828d31d9d11cb00
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: b10c47a31bf1be10c278d4d9e0dce633bc7bff6c
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567888"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530637"
 ---
 # <a name="connect-your-juniper-srx-firewall-to-azure-sentinel"></a>A Juniper SRX-tűzfal összekapcsolása az Azure Sentinel szolgáltatással
 
@@ -53,7 +53,7 @@ Konfigurálja a Juniper SRX-t a syslog-üzenetek Azure Sentinel-munkaterületre 
 
     1. A gyűjteni kívánt naplók konfigurálása
 
-        - Válassza ki a létesítményeket és a súlyosságot a munkaterület speciális beállítások konfigurációjában.
+        - Válassza ki a létesítményeket és a megszakításokat a munkaterület-ügynökök konfigurációjában.
 
     1. A Juniper SRX konfigurálása és összekapcsolása
 
@@ -72,7 +72,7 @@ Néhány hasznos minta lekérdezéshez tekintse meg az összekötő lap **követ
 
 Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Analytics.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtudta, hogyan csatlakoztatható a Juniper SRX az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

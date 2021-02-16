@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e5009e59477e6862c4441090a6480075c9e22385
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: b713a19cbe572998bb6e5050ab2d7721a844f07a
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526783"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530450"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Digitális ikrek gráfjának kezelése kapcsolatok használatával
 
@@ -49,11 +49,11 @@ Kapcsolat létrehozásához meg kell adnia a következőket:
 A kapcsolat AZONOSÍTÓjának egyedinek kell lennie az adott forrás ikerén belül. Nem kell globálisan egyedinek lennie.
 A Twin *foo* esetében például minden egyes kapcsolat azonosítójának egyedinek kell lennie. Egy másik dupla *sáv* azonban rendelkezhet olyan kimenő kapcsolattal, amely megegyezik egy *foo* -kapcsolat ugyanazzal az azonosítóval.
 
-Az alábbi mintakód azt szemlélteti, hogyan hozható létre kapcsolat az Azure Digital Twins-példányban.
+Az alábbi mintakód azt szemlélteti, hogyan hozható létre kapcsolat az Azure Digital Twins-példányban. Az SDK-hívást (kiemelten) egy olyan egyéni metóduson belül használja, amely egy nagyobb program kontextusában jelenhet meg.
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="CreateRelationshipMethod":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="CreateRelationshipMethod" highlight="13":::
 
-A Main metódusban most meghívhatja az egyéni függvényt, hogy hozzon _létre egy olyan kapcsolatot, amely a_ következőhöz hasonló: 
+Ezt az egyéni függvényt most már meghívhatja, hogy hozzon _létre egy olyan kapcsolatot, amely a_ következőhöz hasonló: 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseCreateRelationship":::
 
@@ -82,9 +82,9 @@ A gráfban lévő egy adott Twin-hez tartozó **kimenő** kapcsolatok listáján
 
 Ez egy vagy értéket ad vissza `Azure.Pageable<T>` `Azure.AsyncPageable<T>` , attól függően, hogy a hívás szinkron vagy aszinkron verzióját használja-e.
 
-Íme egy példa, amely a kapcsolatok listáját kérdezi le:
+Íme egy példa, amely a kapcsolatok listáját kéri le. Az SDK-hívást (kiemelten) egy olyan egyéni metóduson belül használja, amely egy nagyobb program kontextusában jelenhet meg.
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindOutgoingRelationshipsMethod":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindOutgoingRelationshipsMethod" highlight="8":::
 
 Most meghívhatja ezt az egyéni metódust az ikrek kimenő kapcsolatainak megtekintéséhez:
 
@@ -96,11 +96,12 @@ A beolvasott kapcsolatok használatával más ikrek is megnyitható a gráfban. 
 
 Az Azure Digital Twins is rendelkezik egy API-val, amely az adott iker összes **bejövő** kapcsolatát megkeresi. Ez gyakran hasznos a fordított navigáláshoz, illetve a Twin törléséhez.
 
-A korábbi kód minta a kimenő kapcsolatok egy Twin-ből való megtalálására koncentrál. A következő példa hasonló strukturált, de a *bejövő* kapcsolatokat is megkeresi a Twin helyett.
+>[!NOTE]
+> `IncomingRelationship` a hívások nem adják vissza a kapcsolat teljes törzsét. A osztályról további információt a `IncomingRelationship` [dokumentációjában](/dotnet/api/azure.digitaltwins.core.incomingrelationship?view=azure-dotnet&preserve-view=true)talál.
 
-Vegye figyelembe, hogy a `IncomingRelationship` hívások nem adják vissza a kapcsolat teljes törzsét.
+Az előző szakaszban található mintakód a kimenő kapcsolatok egy Twin-ből való megtalálására koncentrál. A következő példa hasonló strukturált, de a *bejövő* kapcsolatokat is megkeresi a Twin helyett. Ez a példa az SDK-hívást (kiemelten) is használja egy olyan egyéni metóduson belül, amely egy nagyobb program kontextusában jelenhet meg.
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindIncomingRelationshipsMethod":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindIncomingRelationshipsMethod" highlight="8":::
 
 Most meghívhatja ezt az egyéni metódust az ikrek bejövő kapcsolatainak megtekintéséhez:
 
@@ -108,11 +109,11 @@ Most meghívhatja ezt az egyéni metódust az ikrek bejövő kapcsolatainak megt
 
 ### <a name="list-all-twin-properties-and-relationships"></a>Az összes Twin tulajdonság és kapcsolat listázása
 
-A fenti módszerek használatával a kimenő és a bejövő kapcsolatok egy Twin-re való listázásához létrehozhat egy metódust, amely a teljes Twin-adatokat, például a Twin tulajdonságait és a kapcsolatainak mindkét típusát kinyomtatja. Íme egy példa az egyéni metódusra, amely bemutatja, hogyan teheti ezt meg.
+A fenti módszerek használatával a kimenő és a bejövő kapcsolatok egy Twin-re való listázásához létrehozhat egy metódust, amely a teljes Twin-adatokat, például a Twin tulajdonságait és a kapcsolatainak mindkét típusát kinyomtatja. Íme egy példa az egyéni módszerre, amely bemutatja, hogyan lehet a fenti egyéni módszereket kombinálni erre a célra.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FetchAndPrintMethod":::
 
-Most meghívhatja ezt az egyéni függvényt a fő metódusban, például a következőképpen: 
+Mostantól a következőképpen hívhatja ezt az egyéni függvényt: 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseFetchAndPrint":::
 
@@ -125,7 +126,9 @@ A kapcsolatok a metódus használatával frissülnek `UpdateRelationship` .
 
 Az ügyfél hívásához szükséges paraméterek a forrás-és a Twin (az a kapcsolat, ahol a kapcsolat származik), a frissíteni kívánt kapcsolat azonosítója, valamint egy [JSON-javítási](http://jsonpatch.com/) dokumentum, amely a frissíteni kívánt tulajdonságokat és új értékeket tartalmazza.
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UpdateRelationshipMethod":::
+Az alábbi mintakód bemutatja, hogyan használhatja ezt a metódust. Ez a példa az SDK-hívást (kiemelten) használja egy olyan egyéni metóduson belül, amely egy nagyobb program kontextusában is megjelenhet.
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UpdateRelationshipMethod" highlight="6":::
 
 Íme egy példa erre az egyéni metódusra, amely egy JSON-javító dokumentumot továbbít a tulajdonság frissítéséhez szükséges információkkal.
 
@@ -135,7 +138,9 @@ Az ügyfél hívásához szükséges paraméterek a forrás-és a Twin (az a kap
 
 Az első paraméter határozza meg a forrást (Twin) (az a kapcsolat, amelyben a kapcsolat származik). A másik paraméter a kapcsolat azonosítója. A Twin azonosítót és a kapcsolat AZONOSÍTÓját egyaránt meg kell adni, mivel a kapcsolati azonosítók csak a Twin hatókörén belül egyediek.
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="DeleteRelationshipMethod":::
+Az alábbi mintakód bemutatja, hogyan használhatja ezt a metódust. Ez a példa az SDK-hívást (kiemelten) használja egy olyan egyéni metóduson belül, amely egy nagyobb program kontextusában is megjelenhet.
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="DeleteRelationshipMethod" highlight="5":::
 
 Most meghívhatja ezt az egyéni metódust a kapcsolat törléséhez, például:
 

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/16/2020
 ms.author: juliako
-ms.openlocfilehash: bf48f873127a12c3cabb28da33d34cedcda2793b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 2ac7c3c2149ce43c860c7726381733ef377de8d3
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94831566"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530739"
 ---
 # <a name="examine-the-video-indexer-output"></a>Vizsgálja meg a Video Indexer kimenetét
 
@@ -104,7 +104,7 @@ Ez a szakasz az információk összegzését jeleníti meg.
 |arcok/animatedCharacters|Nulla vagy több arcot is tartalmazhat. Részletesebb információ: [Faces/animatedCharacters](#facesanimatedcharacters).|
 |kulcsszavak|Nulla vagy több kulcsszót is tartalmazhat. Részletesebb információ: [kulcsszavak](#keywords).|
 |érzelmeket|Nulla vagy több érzelem is szerepelhet. Részletesebb információ: [érzelmek](#sentiments).|
-|audioEffects| Nulla vagy több audioEffects is tartalmazhat. Részletesebb információ: [audioEffects](#audioeffects).|
+|audioEffects| Nulla vagy több audioEffects is tartalmazhat. Részletesebb információ: [audioEffects](#audioeffects-public-preview).|
 |Címkék| Nulla vagy több címkét is tartalmazhat. További információ: [címkék](#labels).|
 |márkák| Nulla vagy több márkát is tartalmazhat. Részletesebb információ: [Brands](#brands).|
 |statisztikák | Részletesebb információ: [statisztika](#statistics).|
@@ -181,7 +181,7 @@ Az arcok rendelkezhetnek AZONOSÍTÓval, névvel, miniatűrvel, egyéb metaadato
 |Címkék|A [címkék](#labels) betekintést nyernek.|
 |lövések|A [felvételek](#shots) betekintést nyernek.|
 |márkák|A [márkák](#brands) betekintése.|
-|audioEffects|A [audioEffects](#audioeffects) betekintést nyújt.|
+|audioEffects|A [audioEffects](#audioeffects-public-preview) betekintést nyújt.|
 |érzelmeket|Az [érzelmek](#sentiments) betekintése.|
 |visualContentModeration|A [visualContentModeration](#visualcontentmoderation) betekintést nyújt.|
 |textualContentModeration|A [textualContentModeration](#textualcontentmoderation) betekintést nyújt.|
@@ -590,26 +590,28 @@ Az üzleti és a termék márkanevei a szöveg átiratának és/vagy a videó OC
 |SpeakerLongestMonolog|A beszélő leghosszabb monologot. Ha a beszélő a monologot belül csendben van, a rendszer belefoglalja. A rendszer eltávolítja a monologot elején és végén található csendet.| 
 |SpeakerTalkToListenRatio|A számítás a beszélő monologot töltött idő (a között a csend nélkül) alapján történik, a videó teljes időpontjára bontva. Az idő a harmadik tizedes pontra van kerekítve.|
 
-#### <a name="audioeffects"></a>audioEffects
+#### <a name="audioeffects-public-preview"></a>audioEffects (nyilvános előzetes verzió)
 
-|Név|Leírás|
+|Név|Leírás
 |---|---|
-|id|A hanghatás azonosítója.|
-|típus|A hanghatás típusa (például: taps, beszéd, csend).|
-|esetben|Azon időtartományok listája, amelyekben ez a hanghatás megjelent.|
+|id|Az audio Effect azonosító|
+|típus|A hang effektusának típusa|
+|esetben|Azon időtartományok listája, amelyekben ez a hanghatás megjelent. Minden példány megbízhatósági mezővel rendelkezik.|
 
 ```json
 "audioEffects": [
 {
     "id": 0,
-    "type": "Clapping",
+    "type": "Siren",
     "instances": [
     {
+       "confidence": 0.87,
         "start": "00:00:00",
         "end": "00:00:03"
     },
     {
-        "start": "00:01:13",
+       "confidence": 0.87,
+       "start": "00:01:13",
         "end": "00:01:21"
     }
     ]
