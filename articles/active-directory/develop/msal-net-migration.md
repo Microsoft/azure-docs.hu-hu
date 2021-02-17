@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 2b8577af2c8a6296ae6f4f090e8ff233e51ee6fb
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 64107c3f667dd7e59fcf6d191e83457029b3a277
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99583925"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546346"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Alkalmazások migrálása a MSAL.NET-be
 
@@ -59,7 +59,7 @@ A MSAL.NET a v 1.0 erőforrásokhoz is hozzáfér. Tekintse meg a [v 1.0 alkalma
 
 - A ADAL.NET a [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD) használja a biztonsági jogkivonat szolgáltatással (STS) vagy az engedélyezési kiszolgálóval való kapcsolat ábrázolására egy szolgáltatón keresztül. Éppen ellenkezőleg, a MSAL.NET az [ügyfélalkalmazások](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications)körül van kialakítva. Két különálló osztályt `PublicClientApplication` biztosít: `ConfidentialClientApplication`
 
-- Jogkivonatok beszerzése: a ADAL.NET és a MSAL.NET ugyanazzal a hitelesítési hívásokkal ( `AcquireTokenAsync` és  `AcquireTokenSilentAsync` ADAL.net, valamint `AcquireTokenInteractive` `AcquireTokenSilent` a MSAL.net-ben), de eltérő paraméterekkel kell rendelkezniük. Az egyik különbség az, hogy a MSAL.NET már nem kell átadnia az `ClientID` alkalmazásában az összes AcquireTokenXX-hívásban. Valójában a `ClientID` (vagy) kiépítésekor csak egyszer van `IPublicClientApplication` beállítva `IConfidentialClientApplication` .
+- Jogkivonatok beszerzése: a ADAL.NET és a MSAL.NET ugyanazzal a hitelesítési hívásokkal ( `AcquireTokenAsync` és `AcquireTokenSilentAsync` ADAL.net, valamint `AcquireTokenInteractive` `AcquireTokenSilent` a MSAL.net-ben), de eltérő paraméterekkel kell rendelkezniük. Az egyik különbség az, hogy a MSAL.NET már nem kell átadnia az `ClientID` alkalmazásában az összes AcquireTokenXX-hívásban. Valójában a `ClientID` (vagy) kiépítésekor csak egyszer van `IPublicClientApplication` beállítva `IConfidentialClientApplication` .
 
 ### <a name="iaccount-not-iuser"></a>A IAccount nem IUser
 
@@ -170,7 +170,7 @@ Ha olyan alkalmazáshoz szeretne jogkivonatokat beszerezni, amely a v 1.0 jogkiv
 Ha például a felhasználó nevében egy 1.0-s verziójú webes API-t szeretne elérni, amely az alkalmazás-azonosító URI-ja, a következőt kell `ResourceId` használnia:
 
 ```csharp
-var scopes = new [] {  ResourceId+"/user_impersonation"};
+var scopes = new [] { ResourceId+"/user_impersonation" };
 ```
 
 Ha a Microsoft Graph API-val szeretné olvasni és írni a MSAL.NET Azure Active Directory használatával (a https://graph.microsoft.com/) hatókörök listáját a következő kódrészlethez hasonlóan kell létrehoznia:
@@ -205,7 +205,7 @@ Ha például jogkivonatot szeretne beszerezni egy v 1.0 alkalmazás összes stat
 
 ```csharp
 ResourceId = "someAppIDURI";
-var scopes = new [] {  ResourceId+"/.default"};
+var scopes = new [] { ResourceId+"/.default" };
 ```
 
 ### <a name="scopes-to-request-in-the-case-of-client-credential-flow--daemon-app"></a>Ügyfél-hitelesítési folyamat/Daemon-alkalmazás esetében kérelmekre vonatkozó hatókörök

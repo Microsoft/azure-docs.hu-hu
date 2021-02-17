@@ -2,52 +2,32 @@
 title: Konfigurációk üzembe helyezése a GitOps használatával Arc-kompatibilis Kubernetes-fürtön (előzetes verzió)
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/09/2021
+ms.date: 02/15/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Azure arc-kompatibilis Kubernetes-fürt (előzetes verzió) konfigurálása a GitOps használatával
 keywords: GitOps, Kubernetes, K8s, Azure, arc, Azure Kubernetes szolgáltatás, AK, tárolók
-ms.openlocfilehash: 072bfc8c243eb9b69e06366961019b88b67e0941
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3cadcdf80abd997ec10aeb9521680944d455898f
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392238"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560174"
 ---
-# <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Konfigurációk üzembe helyezése a GitOps használatával Arc-kompatibilis Kubernetes-fürtön (előzetes verzió)
+# <a name="deploy-configurations-using-gitops-on-an-arc-enabled-kubernetes-cluster-preview"></a>Konfigurációk üzembe helyezése a GitOps használatával egy arc-kompatibilis Kubernetes-fürtön (előzetes verzió)
 
-A Kubernetes kapcsolatban a GitOps a Kubernetes-fürt konfigurációjának (központi telepítések, névterek stb.) kívánt állapotának deklarálása a git-tárházban. Ezt a deklarációt a fürt konfigurációjának egy operátor használatával történő lekérdezésével és lekéréses telepítésével követheti. 
-
-Ez a cikk az Azure arc-kompatibilis Kubernetes-fürtökön futó GitOps-munkafolyamatok beállítását ismerteti.
-
-A fürt és a git-tárház közötti kapcsolat a `Microsoft.KubernetesConfiguration/sourceControlConfigurations` Azure Resource Manager bővítmény-erőforrásként jön létre. Az `sourceControlConfiguration` Erőforrás-tulajdonságok határozzák meg, hogy a Kubernetes-erőforrások hol és hogyan folynak a git és a fürt között. Az adatok titkosítása a `sourceControlConfiguration` Azure Cosmos db adatbázisban található, inaktív állapotban tárolja az adatok titkosságának biztosítása érdekében.
-
-A `config-agent` fürtön futó operációs rendszer feladatai a következők:
-* Az új vagy frissített bővítmény-erőforrások nyomon követése `sourceControlConfiguration` Az Azure arc-kompatibilis Kubernetes-erőforráson.
-* Egy Flux-operátor üzembe helyezésével megtekintheti a git-tárházat `sourceControlConfiguration` .
-* Bármilyen frissítés alkalmazása `sourceControlConfiguration` . 
-
-Több `sourceControlConfiguration` erőforrást is létrehozhat ugyanazon az Azure arc-kompatibilis Kubernetes-fürtön a több-bérlős szolgáltatás eléréséhez. Korlátozza a központi telepítéseket a megfelelő névtereken belül úgy, hogy mindegyiket `sourceControlConfiguration` egy másik `namespace` hatókörrel hozza létre.
-
-A git-tárház a következőket tartalmazhatja:
-* YAML – bármilyen érvényes Kubernetes-erőforrást (például névtereket, ConfigMaps, központi telepítéseket, DaemonSets stb.) leíró jegyzékfájlok 
-* Helm-diagramok alkalmazások telepítéséhez. 
-
-A gyakori forgatókönyvek közé tartozik a szervezet alapkonfigurációjának meghatározása, például a közös Azure-szerepkörök és-kötések, a figyelési vagy naplózási ügynökök, vagy a fürtre kiterjedő szolgáltatások.
-
-Ugyanez a minta használható a fürtök nagyobb gyűjteményének kezelésére, amely heterogén környezetekben is üzembe helyezhető. Tegyük fel például, hogy rendelkezik egy adattárral, amely meghatározza a szervezet alapkonfigurációját, amely egyszerre több Kubernetes-fürtre vonatkozik. [Azure Policy](use-azure-policy.md) a `sourceControlConfiguration` (z) egy hatókörön (előfizetés vagy erőforráscsoport) belül az Azure arc összes engedélyezett Kubernetes erőforrás-készletének használatával automatizálhatja a-t.
-
-Ismerkedjen meg a következő lépésekkel, hogy megtudja, hogyan alkalmazhatók `cluster-admin` hatókörrel rendelkező konfigurációk.
+Ez a cikk bemutatja, hogyan alkalmazhat konfigurációkat egy Azure arc-kompatibilis Kubernetes-fürtön. Ugyanezt a fogalmi áttekintést [itt](./conceptual-configurations.md)találja.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ellenőrizze, hogy rendelkezik-e meglévő Azure arc-kompatibilis Kubernetes csatlakoztatott fürttel. Ha csatlakoztatott fürtre van szüksége, tekintse meg az [Azure arc-kompatibilis Kubernetes-fürt csatlakoztatása](./connect-cluster.md)című rövid útmutatót.
+* Ellenőrizze, hogy rendelkezik-e meglévő Azure arc-kompatibilis Kubernetes csatlakoztatott fürttel. Ha csatlakoztatott fürtre van szüksége, tekintse meg az [Azure arc-kompatibilis Kubernetes-fürt csatlakoztatása](./connect-cluster.md)című rövid útmutatót.
+
+* Tekintse át a [konfigurációkat és a GitOps az arc for Kubernetes című cikket](./conceptual-configurations.md) a funkció előnyeinek és architektúrájának megismeréséhez.
 
 ## <a name="create-a-configuration"></a>Konfiguráció létrehozása
 
 A cikkben használt [példában szereplő adattár](https://github.com/Azure/arc-k8s-demo) egy olyan fürt munkatársai köré épül fel, akik néhány névteret szeretnének kiépíteni, közös munkaterhelést telepíteni, és bizonyos, a csoportra jellemző konfigurációt biztosítanak. Az adattár használata a következő erőforrásokat hozza létre a fürtön:
-
 
 * **Névterek:** `cluster-config` , `team-a` , `team-b`
 * **Üzembe helyezés:**`cluster-config/azure-vote`
@@ -249,7 +229,7 @@ Ha a létrehozása `sourceControlConfiguration` vagy frissítése megtörtént, 
 
 A kiépítési folyamat során a `sourceControlConfiguration` átkerül néhány állapotba. A folyamat figyelése a `az k8sconfiguration show ...` fenti paranccsal:
 
-| Szakasz módosítása | Description |
+| Szakasz módosítása | Leírás |
 | ------------- | ------------- |
 | `complianceStatus`-> `Pending` | A kezdeti és a folyamatban lévő állapotot jelöli. |
 | `complianceStatus` -> `Installed`  | `config-agent` sikerült konfigurálni a fürtöt, és hiba nélkül is üzembe helyezhető `flux` . |

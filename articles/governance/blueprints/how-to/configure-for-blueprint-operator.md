@@ -3,12 +3,12 @@ title: Környezet beállítása a Blueprint Operator számára
 description: Ismerje meg, hogyan konfigurálhatja Azure-környezetét a Blueprint Operator Azure beépített szerepkörrel való használatra.
 ms.date: 02/05/2021
 ms.topic: how-to
-ms.openlocfilehash: 0e0f6680ab39481a480919af10fadc0f7103a1fb
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: b43a33f4bac92903bd07454041d11850f217d480
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99591601"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558719"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>A környezet konfigurálása Blueprint Operatorhoz
 
@@ -22,7 +22,7 @@ Első lépésként adja meg a **terv operátori** szerepkört ahhoz a fiókhoz v
 
 1. Ajánlott [Biztonsági csoport létrehozása és Tagok hozzáadása](../../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
 
-1. A **terv operátor** [szerepkör-hozzárendelésének hozzáadása](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) a fiókhoz vagy a biztonsági csoporthoz
+1. A **Blueprint operátor** [Azure-szerepkörének kiosztása](../../../role-based-access-control/role-assignments-portal.md) a fiókhoz vagy a biztonsági csoporthoz
 
 ## <a name="user-assign-managed-identity"></a>Felhasználó – felügyelt identitások kiosztása
 
@@ -32,7 +32,7 @@ A tervrajzok definíciója rendszer által hozzárendelt vagy felhasználó ált
 
 1. Adja meg a felhasználó által hozzárendelt felügyelt identitást a terv definíciójában a kívánt hatókörhöz szükséges szerepkörökkel vagy engedélyekkel.
 
-1. [Adja hozzá](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) a **felügyelt identitás-kezelő** szerepkör-hozzárendelését a fiókhoz vagy a biztonsági csoporthoz. Hatókör a szerepkör-hozzárendelés az új, felhasználó által hozzárendelt felügyelt identitáshoz.
+1. [Rendelje hozzá](../../../role-based-access-control/role-assignments-portal.md) a **felügyelt identitás kezelője** Azure-szerepkörét a fiókhoz vagy a biztonsági csoporthoz. Hatókör a szerepkör-hozzárendelés az új, felhasználó által hozzárendelt felügyelt identitáshoz.
 
 1. A **terv operátorként** [rendeljen hozzá egy tervet](../create-blueprint-portal.md#assign-a-blueprint) , amely az új, felhasználó által hozzárendelt felügyelt identitást használja.
 

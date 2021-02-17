@@ -9,14 +9,14 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 410f8ab4de0d93262647cbc07e0792cd39f7a844
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 79382dde5780827d7b0393858fe8896c5da1b56d
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593637"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559437"
 ---
-# <a name="call-flows"></a>Hívási folyamatok
+# <a name="call-flow-basics"></a>Folyamat alapjai
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
@@ -76,6 +76,14 @@ Ha az ügyféloldali kódtár nem tud az UDP protokollt használni a tűzfal kor
 
 :::image type="content" source="./media/call-flows/about-voice-group-calls-2.png" alt-text="A kommunikációs szolgáltatások TCP-feldolgozási folyamatát ábrázoló diagram.":::
 
+### <a name="case-5-communication-services-client-library-and-microsoft-teams-in-a-scheduled-teams-meeting"></a>5. eset: a kommunikációs szolgáltatások ügyféloldali könyvtára és a Microsoft Teams egy ütemezett csapat ülésén
+
+A riasztás a jelző vezérlőn keresztül zajlik. Az adathordozó a média processzorán keresztül áramlik. A jelző vezérlő és a média processzora a kommunikációs szolgáltatások és a Microsoft Teams között van megosztva. 
+
+:::image type="content" source="./media/call-flows/teams-communication-services-meeting.png" alt-text="A kommunikációs szolgáltatások ügyféloldali függvénytárát és a Teams-ügyfelet bemutató diagram egy ütemezett csapat ülésén.":::
+
+
+
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
@@ -85,3 +93,4 @@ A következő dokumentumok érdekesek lehetnek:
 
 - További információ a [hívások típusairól](../concepts/voice-video-calling/about-call-types.md)
 - További információ az [ügyfél-kiszolgáló architektúráról](./client-and-server-architecture.md)
+- További információ a [Call flow-topológiák](./detailed-call-flows.md) használatáról

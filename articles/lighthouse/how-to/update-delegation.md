@@ -1,14 +1,14 @@
 ---
 title: Delegálás frissítése
 description: Megtudhatja, hogyan frissíthet egy korábban az Azure Lighthouse-be bekészített ügyfél delegálását.
-ms.date: 12/03/2020
+ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: eec5d1f2d34e8e3c9e0ded59cb111624b1981873
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: f0ed5222cdbac3d0e4d193941c2a6f233d15938c
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791339"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555773"
 ---
 # <a name="update-a-delegation"></a>Delegálás frissítése
 
@@ -48,7 +48,7 @@ Ha úgy frissíti az ajánlatot, hogy csak az engedélyeket módosítsa, és meg
 A delegáláshoz való hozzáférés eltávolítását bármely olyan felhasználó megteheti, aki a [felügyelt szolgáltatások regisztrációs hozzárendelésének törlési szerepkörét](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) adta meg az eredeti delegálásban. Ha a kezelő bérlő egyik felhasználója sem rendelkezik ezzel a szerepkörrel, megkérheti az ügyfelet, hogy [távolítsa el az ajánlathoz való hozzáférést a Azure Portal](view-manage-service-providers.md#add-or-remove-service-provider-offers).
 
 > [!TIP]
-> Ha eltávolította az előző delegálást a fenti lépéseket követve, és továbbra sem tudja telepíteni az új ARM-sablont, előfordulhat, hogy [teljesen el kell távolítania a regisztráció definícióját](/powershell/module/az.managedservices/remove-azmanagedservicesdefinition). Ezt bármely olyan felhasználó megteheti, aki tulajdonosi szerepkörrel rendelkezik az ügyfél bérlője számára.  
+> Ha eltávolította az előző delegálást a fenti lépéseket követve, és továbbra sem tudja telepíteni az új ARM-sablont, előfordulhat, hogy [teljesen el kell távolítania a regisztráció definícióját](/powershell/module/az.managedservices/remove-azmanagedservicesdefinition). Ezt bármely olyan felhasználó megteheti, aki rendelkezik `Microsoft.Authorization/roleAssignments/write` engedéllyel (például [tulajdonossal](../../role-based-access-control/built-in-roles.md#owner)) rendelkező szerepkörrel az ügyfél bérlője számára.  
 
 ## <a name="deploy-the-arm-template"></a>Az ARM-sablon üzembe helyezése
 
@@ -65,7 +65,7 @@ Ha módosítani szeretné az ügyvezető bérlőt, [létre kell hoznia és közz
 > [!TIP]
 > Ahogy korábban említettük, javasoljuk, hogy ne használjon több különböző ajánlatot ugyanahhoz az ügyfélhez és a bérlő kezeléséhez. Ha olyan új ajánlatot tesz közzé ugyanahhoz az ügyfélhez, amely ugyanazt a kezelő bérlőt használja, akkor a korábbi ajánlatot el kell távolítani, mielőtt az ügyfél elfogadja az újabb ajánlatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Megtekintheti és kezelheti az ügyfeleket](view-manage-customers.md) a Azure Portalban lévő **ügyfelekkel** .
 - Ismerje meg, hogyan [távolíthatja el a korábban előkészített delegáláshoz való hozzáférést](remove-delegation.md) .

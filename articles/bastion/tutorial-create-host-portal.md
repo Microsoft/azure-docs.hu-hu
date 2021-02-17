@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: a7937745e839b54d9ee7b6f056d10ff627e191d3
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 54aca389ea56594b004212c1479d5cc2568a2527
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327331"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560880"
 ---
 # <a name="tutorial-configure-bastion-and-connect-to-a-windows-vm-through-a-browser"></a>Oktatóanyag: a Bastion konfigurálása és a Windows rendszerű virtuális gépekhez való kapcsolódás böngésző használatával
 
@@ -46,9 +46,9 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 Ez a szakasz segítséget nyújt a megerősített objektum létrehozásához a VNet. Erre azért van szükség, hogy biztonságos kapcsolatokat hozzon létre egy virtuális géppel a VNet.
 
-1. A **Kezdőlap** lapon válassza az **+ erőforrás létrehozása**lehetőséget.
-1. Az **új** oldalon, a keresőmezőbe írja be a következőt: **Bastion**, majd válassza az **ENTER billentyűt** a keresési eredmények eléréséhez. A **megerősített**eredménynél ellenőrizze, hogy a közzétevő a Microsoft.
-1. Kattintson a **Létrehozás** gombra.
+1. A **Kezdőlap** lapon válassza az **+ erőforrás létrehozása** lehetőséget.
+1. Az **új** oldalon, a keresőmezőbe írja be a következőt: **Bastion**, majd válassza az **ENTER billentyűt** a keresési eredmények eléréséhez. A **megerősített** eredménynél ellenőrizze, hogy a közzétevő a Microsoft.
+1. Válassza a **Létrehozás** lehetőséget.
 1. A **bástya létrehozása** lapon állítson be egy új megerősített erőforrást.
 
    :::image type="content" source="./media/tutorial-create-host-portal/bastion-basics.png" alt-text="Bastion-gazdagép létrehozása" lightbox="./media/tutorial-create-host-portal/bastion-basics.png":::
@@ -60,20 +60,20 @@ Ez a szakasz segítséget nyújt a megerősített objektum létrehozásához a V
     * **Virtual Network (virtuális hálózat**): az a virtuális hálózat, amelyben a megerősített erőforrás létre lesz hozva. A folyamat során létrehozhat egy új virtuális hálózatot a portálon, vagy használhat egy meglévő virtuális hálózatot is. Ha meglévő virtuális hálózatot használ, ellenőrizze, hogy a meglévő virtuális hálózat rendelkezik-e elegendő szabad hellyel a megerősített alhálózat követelményeinek kielégítéséhez. Ha nem látja a virtuális hálózatot a legördülő listából, győződjön meg arról, hogy a megfelelő erőforráscsoportot választotta.
     * **Alhálózat**: Miután létrehozta vagy kiválasztta a virtuális hálózatot, megjelenik az alhálózat mező. A virtuális hálózat azon alhálózata, ahol az új megerősített állomás üzembe lesz helyezve. Az alhálózat a megerősített gazdagépre lesz kijelölve. Válassza az **alhálózat konfigurációjának kezelése** lehetőséget, és hozza létre az Azure megerősített alhálózatot. Válassza az **+ alhálózat** lehetőséget, és hozzon létre egy alhálózatot az alábbi irányelvek alapján:
 
-         * Az alhálózatnak **AzureBastionSubnet**nevűnek kell lennie.
+         * Az alhálózatnak **AzureBastionSubnet** nevűnek kell lennie.
          * Az alhálózatnak legalább/27 vagy nagyobb méretűnek kell lennie.
 
       Nem kell további mezőket kitöltenie. Kattintson az **OK gombra** , majd az oldal tetején válassza ki a **bástya létrehozása** lehetőséget a megerősített konfiguráció laphoz való visszatéréshez.
-    * **Nyilvános IP-cím**: a megerősített erőforrás nyilvános IP-címe, AMELYEN az RDP/SSH elérhető (az 443-as porton keresztül). Hozzon létre egy új nyilvános IP-címet. A nyilvános IP-címnek ugyanabban a régióban kell lennie, mint a létrehozandó megerősített erőforrásnak. Ez az IP-cím nem rendelkezik olyan virtuális gépekkel, amelyekhez csatlakozni szeretne. Ez a megerősített gazdagép erőforrásának nyilvános IP-címe.
+    * **Nyilvános IP-cím**: a megerősített erőforrás nyilvános IP-címe, AMELYEN az RDP/SSH elérhető (az 443-as porton keresztül). Hozzon létre egy új nyilvános IP-címet. A nyilvános IP-címnek ugyanabban a régióban kell lennie, mint a létrehozandó megerősített erőforrásnak. Ehhez az IP-címhez nem tartozik semmi ahhoz a virtuális géphez, amelyhez csatlakozni szeretne. Ez a megerősített gazdagép erőforrásának nyilvános IP-címe.
     * **Nyilvános IP-cím neve**: a nyilvános IP-cím erőforrásának neve. Ebben az oktatóanyagban meghagyhatja az alapértelmezett értéket.
-    * **Nyilvános IP-cím SKU**: Ez a beállítás alapértelmezés szerint a **standard**értékre van beállítva. Az Azure Bastion csak a standard nyilvános IP-SKU-t használja/támogatja.
-    * **Hozzárendelés**: Ez a beállítás alapértelmezés szerint a **statikus**értékre van feltöltve.
+    * **Nyilvános IP-cím SKU**: Ez a beállítás alapértelmezés szerint a **standard** értékre van beállítva. Az Azure Bastion csak a standard nyilvános IP-SKU-t használja/támogatja.
+    * **Hozzárendelés**: Ez a beállítás alapértelmezés szerint a **statikus** értékre van feltöltve.
 
-1. Ha befejezte a beállítások megadását, válassza a **felülvizsgálat + létrehozás**lehetőséget. Ezzel érvényesíti az értékeket. Az ellenőrzés után létrehozhatja a megerősített erőforrást.
-1. Kattintson a **Létrehozás** gombra.
+1. Ha befejezte a beállítások megadását, válassza a **felülvizsgálat + létrehozás** lehetőséget. Ezzel érvényesíti az értékeket. Az ellenőrzés után létrehozhatja a megerősített erőforrást.
+1. Válassza a **Létrehozás** lehetőséget.
 1. Megjelenik egy üzenet, amely tájékoztatja, hogy a telepítés folyamatban van. Az állapot ekkor megjelenik ezen a lapon az erőforrások létrehozásakor. A megerősített erőforrás létrehozása és üzembe helyezése körülbelül 5 percet vesz igénybe.
 
-## <a name="connect-to-a-vm"></a>Kapcsolódás virtuális géphez
+## <a name="connect-to-a-vm"></a>Csatlakozás virtuális géphez
 
 [!INCLUDE [Connect to a Windows VM](../../includes/bastion-vm-rdp.md)]
 
@@ -83,9 +83,9 @@ Ha nem folytatja az alkalmazás használatát, törölje az erőforrásokat a k�
 
 1. Adja meg az erőforráscsoport nevét a portál felső részén található **keresőmezőbe** . Ha az erőforráscsoport megjelenik a keresési eredmények között, válassza ki.
 1. Válassza az **Erőforráscsoport törlése** elemet.
-1. Adja meg az erőforráscsoport nevét az erőforráscsoport neveként **, majd válassza** a **Törlés**lehetőséget.
+1. Adja meg az erőforráscsoport nevét az erőforráscsoport neveként **, majd válassza** a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy megerősített gazdagépet, és hozzárendelte azt egy virtuális hálózathoz, majd kapcsolódott egy Windows rendszerű virtuális géphez. Dönthet úgy, hogy hálózati biztonsági csoportokat használ az Azure-beli megerősített alhálózattal. Ehhez tekintse meg a következőt:
 

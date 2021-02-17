@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/01/2021
 ms.author: juliako
-ms.openlocfilehash: c0d332c00635444ab4d694e46486a498b43137f2
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: a6b1fc5adba166aa15a786d3440be1eca7f0a260
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99427658"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560513"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer kibocsátási megjegyzései
 
@@ -67,7 +67,7 @@ A következő szolgáltatók egyikének használatával regisztrálhat és bejel
 > [!NOTE]
 > A LinkedIn-hez és a Facebookhoz csatlakozó Video Indexer fiókok március 1-től 2021-ig nem lesznek elérhetők. 
 > 
-> Meg kell [hívnia](invite-users.md) egy olyan Azure ad-, Microsoft-vagy Google-e-mailt, amely a video Indexer fiókhoz tartozik, így továbbra is elérhető lesz.<br/>
+> Meg kell [hívnia](invite-users.md) egy olyan Azure ad-, Microsoft-vagy Google-e-mailt, amely a video Indexer fiókhoz tartozik, így továbbra is elérhető lesz. A következő témakörben leírtak szerint adhat hozzá további tulajdonost a támogatott szolgáltatókhoz: [INVITE](invite-users.md). <br/>
 > Azt is megteheti, hogy létrehoz egy fizetős fiókot, és áttelepíti az adatátvitelt.
 
 ## <a name="august-2020"></a>2020. augusztus

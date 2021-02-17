@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: fecd707d96b03eef4f093c0b256e32f11bb8a3f7
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 84987b12657a37264d3a1ca67fdc423ed8085662
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99095856"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557916"
 ---
 # <a name="dcsv2-series"></a>DCsv2 sorozat
 
@@ -21,15 +21,15 @@ A DCsv2 sorozat a nyilvános felhőben feldolgozott adatok és kódok titkosság
 
 Példa a használati esetekre: a bizalmas többrésztvevős adatmegosztás, a csalások észlelése, a pénzmosás elleni védelem, a blockchain, a bizalmas használati elemzés, az intelligencia elemzése és a bizalmas gépi tanulás.
 
-[Premium Storage](premium-storage-performance.md): támogatott *<br>
-[Premium Storage gyorsítótárazás](premium-storage-performance.md): támogatott<br>
-[Élő áttelepítés](maintenance-and-updates.md): nem támogatott<br>
-[Memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott<br>
-[VM-létrehozási támogatás](generation-2.md): 2. generáció<br>
-[Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott<br>
+[Premium Storage](premium-storage-performance.md): támogatott *<br> 
+ [Premium Storage gyorsítótárazás](premium-storage-performance.md): támogatott <br> 
+ [élő áttelepítés](maintenance-and-updates.md): nem támogatott <br> 
+ [memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott virtuálisgép- <br> 
+ [létrehozási támogatás](generation-2.md): 2. generációs <br> 
+ [gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott (* legalább 4 vCPU *) <br>
 [Ideiglenes operációsrendszer-lemezek](ephemeral-os-disks.md): támogatott <br>
 
-* A Standard_DC8_v2 kivételével
+* A Standard_DC8_v2 kivételével <br>
 
 | Méret             | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Hálózati adapterek maximális száma/várt hálózati sávszélesség (MBps) | EPC-memória (MiB) |
 |------------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|----------------------------------------------|---------------------|

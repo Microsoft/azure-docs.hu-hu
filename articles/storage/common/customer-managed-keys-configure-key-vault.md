@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 02/16/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 02661c9c2a581ab21a2ae9dc31e5da95426c0edd
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 24fbe843986b732a04c9e356c54f3d768d6739be
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843383"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558184"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault"></a>Titkosítás konfigurálása az Azure Key Vaultban tárolt, ügyfél által kezelt kulcsokkal
 
@@ -175,10 +175,11 @@ Az Azure Storage képes automatikusan frissíteni a titkosításhoz használt ü
 Ha az ügyfél által felügyelt kulcsokat a Azure Portal a kulcs verziójának automatikus frissítésével szeretné konfigurálni, kövesse az alábbi lépéseket:
 
 1. Nyissa meg a tárfiókot.
-1. A Storage-fiók **Beállítások** paneljén kattintson a **titkosítás** elemre. Válassza ki az **ügyfél által felügyelt kulcsok** lehetőséget, ahogy az az alábbi képen is látható.
+1. A Storage-fiók **Beállítások** paneljén kattintson a **titkosítás** elemre. Alapértelmezés szerint a kulcskezelő a **Microsoft által felügyelt kulcsok** értékre van állítva, ahogy az az alábbi képen is látható.
 
     ![A titkosítási beállítást megjelenítő portál képernyőképe](./media/customer-managed-keys-configure-key-vault/portal-configure-encryption-keys.png)
 
+1. Válassza ki az **ügyfél által felügyelt kulcsok** lehetőséget.
 1. Válassza a **kiválasztás a Key Vault** lehetőséget.
 1. Válassza ki **a Key Vault és a kulcs kiválasztása** lehetőséget.
 1. Válassza ki a használni kívánt kulcsot tartalmazó kulcstartót.
