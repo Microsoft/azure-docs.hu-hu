@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: ed4b4d9c1de1e9024e8ea86d4661b42d6c68b0ae
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f5c5d6da239d302b57bdb37e9d49116a29c1ccb4
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460988"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558132"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Az Azure Data Share szerepkörei és követelményei 
 
@@ -63,7 +63,7 @@ Ha manuálisan szeretné létrehozni az adatmegosztási erőforrás felügyelt i
 1. A *kiválasztás* mezőben adja meg az Azure-beli adatmegosztási erőforrás nevét.
 1. Kattintson a *Mentés* gombra.
 
-A szerepkör-hozzárendeléssel kapcsolatos további tudnivalókért tekintse meg [Az Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)című témakört. Ha REST API-k használatával oszt meg adatmegosztást, a szerepkör-hozzárendelést az API használatával is létrehozhatja [Az Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása az REST API használatával](../role-based-access-control/role-assignments-rest.md)való hivatkozással. 
+A szerepkör-hozzárendeléssel kapcsolatos további tudnivalókért tekintse meg [Az Azure-szerepkörök hozzárendelése a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)című témakört. Ha REST API-k használatával oszt meg adatmegosztást, a szerepkör-hozzárendelést az API használatával hozhatja létre [Az Azure-szerepkörök hozzárendelésével a REST API használatával](../role-based-access-control/role-assignments-rest.md). 
 
 SQL-alapú források esetén létre kell hozni egy SQL-felhasználót egy külső szolgáltatótól SQL Database ugyanazzal a névvel, mint az Azure-beli adatmegosztási erőforrással az SQL Database-hez való kapcsolódáskor Azure Active Directory hitelesítés használatával. Ezt a felhasználót *db_datareader* jogosultsággal kell megadnia. Az SQL-alapú megosztás egyéb előfeltételeivel együtt a [megosztás a Azure SQL Database vagy az Azure szinapszis Analytics](how-to-share-from-sql.md) oktatóanyagban található. 
 
@@ -83,7 +83,7 @@ Ha manuálisan szeretné létrehozni az adatmegosztási erőforrás felügyelt i
 1. A *kiválasztás* mezőben adja meg az Azure-beli adatmegosztási erőforrás nevét.
 1. Kattintson a *Mentés* gombra.
 
-A szerepkör-hozzárendeléssel kapcsolatos további tudnivalókért tekintse meg [Az Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)című témakört. Ha REST API-k használatával fogadja az adatait, létrehozhat szerepkör-hozzárendelést az API-val [Az Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása az REST API használatával](../role-based-access-control/role-assignments-rest.md). 
+A szerepkör-hozzárendeléssel kapcsolatos további tudnivalókért tekintse meg [Az Azure-szerepkörök hozzárendelése a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)című témakört. Ha REST API-k használatával fogadja az adatgyűjtést, létrehozhat szerepkör-hozzárendelést az API-val [Az Azure-szerepkörök hozzárendelésével a REST API használatával](../role-based-access-control/role-assignments-rest.md). 
 
 SQL-alapú cél esetén az SQL-felhasználót egy külső szolgáltatóból kell létrehozni SQL Database az Azure-beli adatmegosztási erőforrással megegyező névvel az SQL Database-hez való kapcsolódáskor Azure Active Directory hitelesítés használatával. Ezt a felhasználót *db_datareader, db_datawriter, db_ddladmin* engedéllyel kell megadnia. Az SQL-alapú megosztás egyéb előfeltételeivel együtt a [megosztás a Azure SQL Database vagy az Azure szinapszis Analytics](how-to-share-from-sql.md) oktatóanyagban található. 
 
@@ -105,6 +105,6 @@ Az alábbi lépéseket követve regisztrálja a Microsoft. DataShare erőforrás
  
 Az erőforrás-szolgáltatóval kapcsolatos további tudnivalókért tekintse meg az [Azure-erőforrás-szolgáltatókat és-típusokat](../azure-resource-manager/management/resource-providers-and-types.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- További információ az Azure-beli szerepkörökről – a [szerepkör-definíciók ismertetése](../role-based-access-control/role-definitions.md)
+- További információ az Azure-beli szerepkörökről – az [Azure szerepkör-definíciók ismertetése](../role-based-access-control/role-definitions.md)

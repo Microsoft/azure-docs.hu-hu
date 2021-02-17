@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: bf92765431ea6b0f80b96ab7d61e8e830220dc82
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b589f98ee78d0709b2a74ba4e364cec0e486e968
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98934527"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547162"
 ---
 # <a name="secure-azure-digital-twins"></a>Biztonságos Azure digitális Twins
 
@@ -53,11 +53,6 @@ Az Azure **két beépített Azure-szerepkört** biztosít az Azure Digital Twins
 | --- | --- | --- |
 | Azure digitális Twins-adattulajdonos | Teljes hozzáférést biztosít az Azure digitális Twins-erőforrásaihoz | bcd981a7-7f74-457b-83e1-cceb9e632ffe |
 | Azure digitális Twins-Adatolvasó | Csak olvasási hozzáférést biztosít az Azure Digital Twins-erőforrásokhoz | d57506d4-4c8d-48b1-8587-93c323f6a5a3 |
-
->[!NOTE]
-> Ezeket a szerepköröket nemrég átnevezték a korábbi nevükről az előzetes verzióban:
-> * *Az Azure Digital Twins-adattulajdonos korábban az* *Azure digitális ikrek tulajdonosa (előzetes verzió)* volt.
-> * *Az Azure Digital Twins Adatolvasó* korábban *Azure digitális Twins-olvasó (előzetes verzió)* volt.
 
 A szerepköröket kétféleképpen rendelheti hozzá:
 * Az Azure Digital Twins hozzáférés-vezérlés (IAM) paneljén a Azure Portalban (lásd: [*Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával*](../role-based-access-control/role-assignments-portal.md))

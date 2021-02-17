@@ -19,8 +19,18 @@
       href: tutorial-end-to-end.md
 - name: Alapelvek
   items:
-    - name: Egyéni modellek
+    - name: DTDL modellek
       href: concepts-models.md
+    - name: Ontológiákat
+      items:
+        - name: Mi az az ontológia?
+          href: concepts-ontologies.md
+        - name: Az iparági szabványnak megfelelő ontológiákat bevezetése
+          href: concepts-ontologies-adopt.md
+        - name: Ontológiákat konvertálása
+          href: concepts-ontologies-convert.md
+        - name: A ontológiákat kiterjesztése
+          href: concepts-ontologies-extend.md
     - name: Digitális ikermodellek és az ikergráf
       href: concepts-twins-graph.md
     - name: Lekérdezés nyelve
@@ -65,10 +75,8 @@
           href: how-to-move-regions.md
     - name: Tervezési modellek
       items:
-        - name: Egyéni modellek kezelése
+        - name: DTDL-modellek kezelése
           href: how-to-manage-model.md
-        - name: Iparági szabványoknak megfelelő modellek integrálása
-          href: how-to-integrate-models.md
         - name: Modellek elemzése és ellenőrzése
           href: how-to-parse-models.md
         - name: Címkék hozzáadása
@@ -249,6 +257,12 @@
           href: /samples/azure-samples/digital-twins-explorer/digital-twins-explorer/
         - name: DTDL-érvényesítő (minta)
           href: /samples/azure-samples/dtdl-validator/dtdl-validator/
+        - name: Modell feltöltője (minta)
+          href: 'https://github.com/Azure/opendigitaltwins-building-tools/tree/master/ModelUploader'
+        - name: Modell megjelenítő (minta)
+          href: 'https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer'
+        - name: OWL2DTDL-átalakító
+          href: 'https://github.com/Azure/opendigitaltwins-building-tools/tree/master/OWL2DTDL'
         - name: Integrációs minta a DPS-hez és az IoT Hubhoz
           href: /samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/
         - name: A SignalR integrációs mintája

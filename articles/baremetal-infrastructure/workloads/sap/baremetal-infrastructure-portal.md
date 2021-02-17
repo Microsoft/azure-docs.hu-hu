@@ -2,13 +2,13 @@
 title: BareMetal-példányok egységei az Azure-ban
 description: Ismerje meg, hogyan azonosíthatja és kezelheti a BareMetal-példányok egységeit a Azure Portalon keresztül.
 ms.topic: how-to
-ms.date: 1/4/2021
-ms.openlocfilehash: b089b45c35ff05f10ae59f8ce793645361be1e9b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 02/17/2021
+ms.openlocfilehash: 076e84473a7d067712625dd12a2d5cae42bfa91a
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733263"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548165"
 ---
 # <a name="manage-baremetal-instances-through-the-azure-portal"></a>Operációs rendszer nélküli példányok kezelése az Azure Portalon
  
@@ -17,25 +17,9 @@ Ez a cikk bemutatja, hogyan jeleníti meg a [Azure Portal](https://portal.azure.
 ## <a name="register-the-resource-provider"></a>Az erőforrás-szolgáltató regisztrálása
 A BareMetal-példányok Azure-erőforrás-szolgáltatója biztosítja a Azure Portalban lévő példányok láthatóságát, amely jelenleg nyilvános előzetes verzióban érhető el. Alapértelmezés szerint a BareMetal példányok üzembe helyezéséhez használt Azure-előfizetés regisztrálja a *BareMetalInfrastructure* erőforrás-szolgáltatót. Ha nem látja a telepített BareMetal-példányok egységét, regisztrálnia kell az erőforrás-szolgáltatót az előfizetésében. 
 
-Az BareMetal-példány erőforrás-szolgáltatóját kétféleképpen lehet regisztrálni:
- 
-* [Azure CLI](#azure-cli)
- 
-* [Azure Portal](#azure-portal)
- 
-### <a name="azure-cli"></a>Azure CLI
- 
-Jelentkezzen be a BareMetal példány üzembe helyezéséhez használt Azure-előfizetésbe az Azure CLI-n keresztül. A BareMetalInfrastructure erőforrás-szolgáltatót az alábbiak szerint regisztrálhatja:
+A BareMetal-példány erőforrás-szolgáltatóját a Azure Portal vagy az Azure CLI használatával regisztrálhatja.
 
-```azurecli-interactive
-az provider register --namespace Microsoft.BareMetalInfrastructure
-```
- 
-További információ: [Azure Resource Providers és types](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell).
- 
-### <a name="azure-portal"></a>Azure Portal
- 
-A BareMetalInfrastructure erőforrás-szolgáltatót a Azure Portal keresztül regisztrálhatja.
+### <a name="portal"></a>[Portál](#tab/azure-portal)
  
 Az előfizetést fel kell sorolnia a Azure Portalban, majd duplán kell kattintania a BareMetal-példány-egységek üzembe helyezéséhez használt előfizetésre.
  
@@ -53,12 +37,32 @@ Az előfizetést fel kell sorolnia a Azure Portalban, majd duplán kell kattinta
 >Ha az erőforrás-szolgáltató nincs regisztrálva, válassza a **regisztráció** lehetőséget.
  
 :::image type="content" source="media/baremetal-infrastructure-portal/register-resource-provider-azure-portal.png" alt-text="Képernyőkép, amely megjeleníti a regisztrált BareMetal-példány egységet":::
- 
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Az Azure CLI használatának megkezdéséhez:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Jelentkezzen be a BareMetal példány üzembe helyezéséhez használt Azure-előfizetésbe az Azure CLI-n keresztül. Regisztrálja az `BareMetalInfrastructure` erőforrás-szolgáltatót az az [Provider Register](/cli/azure/provider#az_provider_register) paranccsal:
+
+```azurecli
+az provider register --namespace Microsoft.BareMetalInfrastructure
+```
+
+Az az [Provider List](/cli/azure/provider#az_provider_list) parancs használatával megtekintheti az összes elérhető szolgáltatót.
+
+---
+
+További információ az erőforrás-szolgáltatókkal kapcsolatban: [Azure Resource Providers és types](../../../azure-resource-manager/management/resource-providers-and-types.md).
+
 ## <a name="baremetal-instance-units-in-the-azure-portal"></a>BareMetal-példányok egységei a Azure Portal
  
 BareMetal-példány központi telepítési kérelmének elküldésekor meg kell adnia azt az Azure-előfizetést, amelyhez az BareMetal-példányokhoz csatlakozik. Használja ugyanazt az előfizetést, amelyet az BareMetal-példányok egységeit használó alkalmazás rétegének telepítéséhez használ.
  
 A BareMetal-példányok üzembe helyezése során új [Azure-erőforráscsoport](../../../azure-resource-manager/management/manage-resources-portal.md) jön létre a telepítési kérelemben használt Azure-előfizetésben. Ez az új erőforráscsoport felsorolja az adott előfizetésben üzembe helyezett összes BareMetal-példány egységét.
+
+### <a name="portal"></a>[Portál](#tab/azure-portal)
 
 1. Az BareMetal-előfizetés Azure Portaljában válassza az **erőforráscsoportok** lehetőséget.
  
@@ -75,10 +79,27 @@ A BareMetal-példányok üzembe helyezése során új [Azure-erőforráscsoport]
    
    >[!NOTE]
    >Ha több BareMetal-példány bérlőjét telepítette ugyanazon az Azure-előfizetésen belül, több Azure-erőforráscsoport is megjelenhet.
- 
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Az összes BareMetal-példány megjelenítéséhez futtassa az az [baremetalinstance List](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_list) parancsot az erőforráscsoporthoz:
+
+```azurecli
+az baremetalinstance list --resource-group DSM05A-T550 –output table
+```
+
+> [!TIP]
+> A `--output` paraméter egy globális paraméter, amely az összes parancs számára elérhető. A **tábla** értéke rövid formátumban jeleníti meg a kimenetet. További információ: [Az Azure CLI-parancsok kimeneti formátumai](/cli/azure/format-output-azure-cli).
+
+---
+
 ## <a name="view-the-attributes-of-a-single-instance"></a>Egyetlen példány attribútumainak megtekintése
- 
-Megtekintheti egy adott egység részleteit. A BareMetal-példány listájában válassza ki a megtekinteni kívánt egyetlen példányt.
+
+Megtekintheti egy adott egység részleteit.
+
+### <a name="portal"></a>[Portál](#tab/azure-portal)
+
+A BareMetal-példány listájában válassza ki a megtekinteni kívánt egyetlen példányt.
  
 :::image type="content" source="media/baremetal-infrastructure-portal/view-attributes-single-baremetal-instance.png" alt-text="Egy adott példány BareMetal-Példányi egységének attribútumait megjelenítő képernyőkép" lightbox="media/baremetal-infrastructure-portal/view-attributes-single-baremetal-instance.png":::
  
@@ -101,6 +122,18 @@ Emellett a jobb oldalon megtalálja az [Azure Proximity-elhelyezési csoport](..
  
 >[!TIP]
 >Ha az alkalmazás rétegét ugyanabban az Azure-adatközpontban szeretné megkeresni, mint a 4. x változatot, tekintse meg az [Azure Proximity elhelyezési csoportok az optimális hálózati késés](../../../virtual-machines/workloads/sap/sap-proximity-placement-scenarios.md)érdekében
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+A BareMetal-példány részleteinek megtekintéséhez futtassa az az [baremetalinstance show](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_show) parancsot:
+
+```azurecli
+az baremetalinstance show --resource-group DSM05A-T550 --instance-name orcllabdsm01
+```
+
+Ha nem biztos benne, hogy a példány neve, futtassa a `az baremetalinstance list` fent ismertetett parancsot.
+
+---
  
 ## <a name="check-activities-of-a-single-instance"></a>Egyetlen példány tevékenységének ellenőrzését
  
@@ -113,11 +146,31 @@ Az egység metaadatait az Azure-ban a tevékenység naplójában is rögzíti a 
 Egy másik tevékenység, amely rögzítésre kerül, amikor hozzáad vagy töröl egy [címkét](../../../azure-resource-manager/management/tag-resources.md) egy példányhoz.
  
 ## <a name="add-and-delete-an-azure-tag-to-an-instance"></a>Azure-címke hozzáadása és törlése egy példányhoz
+
+### <a name="portal"></a>[Portál](#tab/azure-portal)
  
 Hozzáadhat Azure-címkéket egy BareMetal-példány-egységhez, vagy törölheti is azokat. A címkék hozzárendelésének módja nem különbözik a címkék virtuális gépekhez való hozzárendelésének módjától. A virtuális gépekhez hasonlóan a címkék az Azure-metaadatokban, a BareMetal-példányok esetében ugyanazok a korlátozások vonatkoznak, mint a virtuális gépek címkéi.
  
 A címkék törlése ugyanúgy történik, mint a virtuális gépeken. A címkék alkalmazásával és törlésével kapcsolatban a BareMetal-példány egységének tevékenységi naplójában szerepel.
- 
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+A címkék BareMetal-példányokhoz való társítása ugyanúgy működik, mint a virtuális gépek esetében. A címkék az Azure-metaadatokban találhatók, a BareMetal-példányok esetében ugyanazok a korlátozások vonatkoznak, mint a virtuális gépek címkéi.
+
+Ha címkéket szeretne felvenni egy BareMetal-példány egységbe, futtassa az az [baremetalinstance Update](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_update) parancsot:
+
+```azurecli
+az baremetalinstance update --resource-group DSM05a-T550 --instance-name orcllabdsm01 --set tags.Dept=Finance tags.Status=Normal
+```
+
+Egy címke eltávolításához használja ugyanazt a parancsot:
+
+```azurecli
+az baremetalinstance update --resource-group DSM05a-T550 --instance-name orcllabdsm01 --remove tags.Dept
+```
+
+---
+
 ## <a name="check-properties-of-an-instance"></a>Példány tulajdonságainak megtekintése
  
 A példányok beolvasásakor a Properties (Tulajdonságok) szakaszra kattintva megtekintheti a példányokkal kapcsolatban gyűjtött adatokat. Az összegyűjtött adatok közé tartozik az Azure-kapcsolat, a tárolási háttér, a ExpressRoute áramkör-azonosító, az egyedi erőforrás-azonosító és az előfizetés-azonosító. Ezeket az információkat a támogatási kérelmekben vagy a tárolási Pillanatképek konfigurációjának beállításakor fogja használni.
@@ -127,15 +180,29 @@ Egy másik fontos információ, amelyet látni fog a Storage NFS IP-címe. Elkü
 :::image type="content" source="media/baremetal-infrastructure-portal/baremetal-instance-properties.png" alt-text="A BareMetal-példány tulajdonságainak beállításait megjelenítő képernyőkép" lightbox="media/baremetal-infrastructure-portal/baremetal-instance-properties.png":::
  
 ## <a name="restart-a-unit-through-the-azure-portal"></a>Egység újraindítása a Azure Portal
- 
-Különböző helyzetekben az operációs rendszer nem fejezi be az újraindítást, amelyhez az BareMetal-példány egységének újraindítása szükséges. Az egység újraindítását közvetlenül a Azure Portalról végezheti el:
+
+Különböző helyzetekben az operációs rendszer nem fejezi be az újraindítást, amelyhez az BareMetal-példány egységének újraindítása szükséges.
+
+### <a name="portal"></a>[Portál](#tab/azure-portal)
+
+Az egység újraindítását közvetlenül a Azure Portalról végezheti el:
  
 Válassza az **Újraindítás** lehetőséget, majd az **Igen** gombot az egység újraindításának megerősítéséhez.
  
 :::image type="content" source="media/baremetal-infrastructure-portal/baremetal-instance-restart.png" alt-text="A BareMetal-példány egységének újraindítását bemutató képernyőkép":::
  
 Egy BareMetal-példány egységének újraindításakor késést tapasztalhat. Ebben a késésben a tápellátás a kezdeti kezdéstől **kezdve kezdődik** , ami azt jelenti **, hogy az** operációs rendszer teljesen elindult. Ennek eredményeképpen a rendszer az újraindítást követően nem tud bejelentkezni az egységbe, amint az állapot **elindul**.
- 
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+BareMetal-Példányi egység újraindításához használja az az [baremetalinstance restart](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_restart) parancsot:
+
+```azurecli
+az baremetalinstance restart --resource-group DSM05a-T550 --instance-name orcllabdsm01
+```
+
+---
+
 >[!IMPORTANT]
 >A BareMetal-példány egységében lévő memória mennyiségétől függően a hardver újraindítása és újraindítása, valamint az operációs rendszer akár egy órát is igénybe vehet.
  
@@ -170,6 +237,6 @@ A támogatási kérelmeket kifejezetten egy BareMetal-példány egységéhez is 
  
 Egy támogatási képviselő legfeljebb öt munkanapot vesz igénybe, hogy erősítse meg a kérését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a munkaterhelésekről, tekintse meg a [BareMetal számítási feladatok típusai](../../../virtual-machines/workloads/sap/get-started.md)című témakört.

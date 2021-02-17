@@ -4,12 +4,12 @@ description: Ez a cikk azt ismerteti, hogyan adhat hozzá Microsoft. ServiceBus 
 ms.topic: article
 ms.date: 02/12/2021
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6b168bbdc69f2d18a724084d9de694fa83d23dda
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 2e00c9429ab3e39f95bc5ce6df072a99e4f02b86
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100516141"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559580"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-virtual-networks"></a>Azure Service Bus névtér elérésének engedélyezése adott virtuális hálózatokból
 Service Bus és [Virtual Network (VNet) szolgáltatás-végpontok][vnet-sep] integrációja lehetővé teszi az üzenetkezelési funkciók biztonságos elérését olyan munkaterhelések esetén, mint a virtuális hálózatokhoz kötött virtuális gépek, és a hálózati forgalom elérési útja mindkét végén védett.
@@ -18,15 +18,16 @@ Ha úgy konfigurálták, hogy legalább egy virtuális hálózati alhálózat sz
 
 Az eredmény az alhálózathoz és a megfelelő Service Bus névtérhez kötött munkaterhelések közötti privát és elkülönített kapcsolat, annak ellenére, hogy az üzenetküldési szolgáltatás végpontjának megfigyelhető hálózati címe egy nyilvános IP-tartományban van.
 
->[!WARNING]
-> A virtuális hálózatok integrálásának megvalósításával megakadályozható, hogy más Azure-szolgáltatások a Service Bus használatával kommunikálnak. Kivételként engedélyezheti a hozzáférést bizonyos megbízható szolgáltatásoktól Service Bus erőforrásaihoz, még akkor is, ha a hálózati szolgáltatás végpontjai engedélyezve vannak. A megbízható szolgáltatások listáját lásd: [megbízható szolgáltatások](#trusted-microsoft-services).
->
-> A következő Microsoft-szolgáltatások szükségesek virtuális hálózaton
-> - Azure App Service
-> - Azure Functions
+A virtuális hálózatok integrálásának megvalósításával megakadályozható, hogy más Azure-szolgáltatások a Service Bus használatával kommunikálnak. Kivételként engedélyezheti a hozzáférést bizonyos megbízható szolgáltatásoktól Service Bus erőforrásaihoz, még akkor is, ha a hálózati szolgáltatás végpontjai engedélyezve vannak. A megbízható szolgáltatások listáját lásd: [megbízható szolgáltatások](#trusted-microsoft-services).
+
+A következő Microsoft-szolgáltatások szükségesek virtuális hálózaton
+- Azure App Service
+- Azure Functions
+
+A virtuális hálózatok csak [prémium szintű](service-bus-premium-messaging.md) Service Bus névterek esetén támogatottak. Ha a VNet szolgáltatásbeli végpontokat Service Bus használatával használja, ezeket a végpontokat nem ajánlott olyan alkalmazásokban engedélyezni, amelyek a standard és a prémium szintű Service Bus névtereket keverik. Mivel a standard szint nem támogatja a virtuális hálózatok. A végpont csak a prémium szintű névterek számára van korlátozva.
 
 > [!IMPORTANT]
-> A virtuális hálózatok csak [prémium szintű](service-bus-premium-messaging.md) Service Bus névterek esetén támogatottak. Ha a VNet szolgáltatásbeli végpontokat Service Bus használatával használja, ezeket a végpontokat nem ajánlott olyan alkalmazásokban engedélyezni, amelyek a standard és a prémium szintű Service Bus névtereket keverik. Mivel a standard szint nem támogatja a virtuális hálózatok. A végpont csak a prémium szintű névterek számára van korlátozva.
+> Legalább egy IP-szabályt vagy virtuális hálózati szabályt meg kell adni a névtérhez, hogy csak a virtuális hálózat megadott IP-címeiről vagy alhálózatáról engedélyezze a forgalmat. Ha nincsenek IP-és virtuális hálózati szabályok, a névtér a nyilvános interneten keresztül érhető el (a hozzáférési kulccsal).  
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>A VNet-integráció által engedélyezett speciális biztonsági forgatókönyvek 
 
@@ -57,9 +58,6 @@ Ez a szakasz bemutatja, hogyan használható a Azure Portal virtuális hálózat
     > [!NOTE]
     > A **hálózatkezelés** lap csak a **prémium** szintű névterek esetében jelenik meg.  
     
-    >[!WARNING]
-    > Ha a **kiválasztott hálózatok** lehetőséget választja, és nem ad hozzá legalább egy IP-tűzfalszabály vagy virtuális hálózat ezen a lapon, a névtér a nyilvános interneten keresztül érhető el (a hozzáférési kulcs használatával).
-
     :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="Hálózatkezelés lap – alapértelmezett" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
     
     Ha a **minden hálózat** lehetőséget választja, akkor a Service Bus névtér bármely IP-címről fogad kapcsolatokat. Ez az alapértelmezett beállítás egyenértékű egy olyan szabállyal, amely elfogadja a 0.0.0.0/0 IP-címtartományt. 
@@ -69,6 +67,9 @@ Ez a szakasz bemutatja, hogyan használható a Azure Portal virtuális hálózat
 1. A lap **Virtual Network** szakaszában válassza a **+ meglévő virtuális hálózat hozzáadása** elemet. 
 
     ![meglévő virtuális hálózat hozzáadása](./media/service-endpoints/add-vnet-menu.png)
+
+    >[!WARNING]
+    > Ha a **kiválasztott hálózatok** lehetőséget választja, és nem ad hozzá legalább egy IP-tűzfalszabály vagy virtuális hálózat ezen a lapon, a névtér a nyilvános interneten keresztül érhető el (a hozzáférési kulcs használatával).
 3. Jelölje ki a virtuális hálózatot a virtuális hálózatok listájából, majd válassza ki az **alhálózatot**. Engedélyeznie kell a szolgáltatás végpontját, mielőtt hozzáadja a virtuális hálózatot a listához. Ha a szolgáltatási végpont nincs engedélyezve, akkor a portál felszólítja, hogy engedélyezze.
    
    ![alhálózat kiválasztása](./media/service-endpoints/select-subnet.png)

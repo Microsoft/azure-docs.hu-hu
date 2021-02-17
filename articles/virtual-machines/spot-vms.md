@@ -1,6 +1,6 @@
 ---
-title: Azure spot virtuális gépek használata
-description: Megtudhatja, hogyan használhatja az Azure spot virtuális gépeket a költségek megtakarítására.
+title: Az Azure spot Virtual Machines használata
+description: Ismerje meg, hogyan mentheti a költségeket az Azure spot Virtual Machines használatával.
 author: JagVeerappan
 ms.author: jagaveer
 ms.service: virtual-machines
@@ -8,23 +8,23 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: 1e82da3bc45bc8fb88b3955bd59091372f56d292
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 460529ab6e3227a998ac04c4819171274307ff9e
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375459"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557817"
 ---
-# <a name="use-spot-vms-in-azure"></a>Helyszíni virtuális gépek használata az Azure-ban
+# <a name="use-azure-spot-virtual-machines"></a>Az Azure spot Virtual Machines használata 
 
-A helyszíni virtuális gépek használata lehetővé teszi, hogy a kihasználatlan kapacitást jelentős költségmegtakarítással használja. Az Azure-infrastruktúra minden olyan időpontban kizárja a helyszíni virtuális gépeket, amikor az Azure-nak szüksége van a kapacitásra. Ezért a helyszíni virtuális gépek kiválóan alkalmasak olyan munkaterhelések kezelésére, amelyek kezelhetik a kötegelt feldolgozási feladatokat, a fejlesztési és tesztelési környezeteket, a nagy számítási feladatokat és egyebeket.
+Az Azure spot Virtual Machines használatával jelentős költségmegtakarítás mellett kihasználhatja a fel nem használt kapacitás előnyeit. Az Azure-infrastruktúra minden olyan időpontban kizárja az Azure spot Virtual Machinest, amikor az Azure-nak szüksége van a kapacitásra. Ezért az Azure spot Virtual Machines nagyszerűek olyan munkaterhelésekhez, amelyek képesek kezelni a megszakításokat, például a kötegelt feldolgozási feladatokat, a fejlesztési és tesztelési környezeteket, a nagy számítási feladatokat és egyebeket.
 
-A rendelkezésre álló kapacitás mennyisége a mérettől, a régiótól, a napszaktól és egyebektől függően változhat. A helyszíni virtuális gépek üzembe helyezésekor az Azure kiosztja a virtuális gépeket, ha rendelkezésre áll kapacitás, de ezekhez a virtuális gépekhez nem biztosítunk SLA-t. A helyszíni virtuális gépek nem biztosítanak magas rendelkezésre állású garanciákat. Az Azure-infrastruktúra minden olyan időpontban, amikor az Azure-nak szüksége van a kapacitásra, 30 másodperces figyelmeztetéssel kizárja a helyszíni virtuális gépeket. 
+A rendelkezésre álló kapacitás mennyisége a mérettől, a régiótól, a napszaktól és egyebektől függően változhat. Az Azure spot Virtual Machines telepítésekor az Azure kiosztja a virtuális gépeket, ha rendelkezésre áll kapacitás, de ezekhez a virtuális gépekhez nem biztosítunk SLA-t. Az Azure-beli helyszíni virtuális gépek nem biztosítanak magas rendelkezésre állású garanciákat. Az Azure-infrastruktúra minden olyan időpontban kizárja az Azure spot Virtual Machinest, amely 30 másodperces felmondást igényel. 
 
 
 ## <a name="eviction-policy"></a>Kiürítési szabályzat
 
-A virtuális gépeket a kapacitás vagy a beállított maximális ár alapján lehet kizárni. A Direktszínű virtuális gépek létrehozásakor beállíthatja a kizárási házirendet a *felszabadításhoz* (alapértelmezett) vagy a *törléshez*. 
+A virtuális gépeket a kapacitás vagy a beállított maximális ár alapján lehet kizárni. Az Azure-beli direktszínű virtuális gépek létrehozásakor beállíthatja a kizárási házirendet a *felszabadításhoz* (alapértelmezett) vagy a *törléshez*. 
 
 A *felszabadítási* házirend áthelyezi a virtuális gépet a leállított, lefoglalt állapotba, így később újra üzembe helyezheti. Azonban nem garantálható, hogy a foglalás sikeres lesz. A fel nem osztott virtuális gépek a kvóta alapján számítanak, és a mögöttes lemezek tárolási költségei lesznek felszámítva. 
 
@@ -47,11 +47,11 @@ Engedélyezheti, hogy a virtuális gép értesítéseit az [Azure Scheduled Even
 
 ## <a name="limitations"></a>Korlátozások
 
-A következő virtuálisgép-méretek nem támogatottak a Direktszínű virtuális gépek esetében:
+Az Azure spot Virtual Machines esetében a következő virtuálisgép-méretek nem támogatottak:
  - B sorozat
  - Bármilyen méretű promóciós verzió (például Dv2, NV, NC, H promo-méretek)
 
-A helyszíni virtuális gépek bármely régióba üzembe helyezhetők, kivéve Microsoft Azure China 21Vianet.
+Az Azure spot Virtual Machines bármely régióba üzembe helyezhető, kivéve a Microsoft Azure China 21Vianet-t.
 
 <a name="channel"></a>
 
@@ -65,7 +65,7 @@ Jelenleg a következő [típusú ajánlatok](https://azure.microsoft.com/support
 
 ## <a name="pricing"></a>Díjszabás
 
-A helyszíni virtuális gépek díjszabása a régió és az SKU alapján változó. További információ: virtuális gépek díjszabása [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) és [Windows rendszerekhez](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). 
+Az Azure spot Virtual Machines díjszabása a régió és az SKU alapján változó. További információ: virtuális gépek díjszabása [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) és [Windows rendszerekhez](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). 
 
 A díjszabással kapcsolatos információkat az [Azure kiskereskedelmi díjszabás API](/rest/api/cost-management/retail-prices/azure-retail-prices) használatával kérdezheti le a helyszíni díjszabással kapcsolatos információk lekérdezéséhez. A `meterName` és `skuName` mindkettő tartalmazni fogja `Spot` .
 
@@ -87,24 +87,24 @@ A portálon megtekintheti a korábbi díjszabást és a kizárási arányt egy a
 
 ##  <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-**K:** A létrehozása után a egy direkt virtuális gép, amely azonos a normál szabványos virtuális géppel?
+**K:** A létrehozása után egy Azure-beli helyszíni virtuális gép azonos a normál normál virtuális géppel?
 
-**A:** Igen, a helyszíni virtuális gépekhez nem biztosítunk SLA-t, és a szolgáltatás bármikor kizárható.
+**A:** Igen, kivéve, ha az Azure spot Virtual Machineshoz nem biztosítunk SLA-t, de bármikor kizárható.
 
 
 **K:** Mi a teendő, ha kizárja, de továbbra is kapacitásra van szüksége?
 
-**A:** Javasoljuk, hogy a virtuális gépek helyett használjon szabványos virtuális gépeket, ha a kapacitásra azonnal szükség van.
+**A:** Javasoljuk, hogy a standard szintű virtuális gépeket az Azure spot Virtual Machines helyett használja, ha a kapacitásra azonnal szüksége van.
 
 
-**K:** Hogyan kezelik a kvóta a helyszíni virtuális gépeket?
+**K:** Hogyan kezelik a kvóta az Azure spot Virtual Machines?
 
-**A:** A helyszíni virtuális gépek külön kvóta-készlettel rendelkeznek. A helyszíni kvóta a virtuális gépek és a méretezési csoport példányai között lesz megosztva. További információk: [Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései](../azure-resource-manager/management/azure-subscription-service-limits.md).
+**A:** Az Azure spot Virtual Machines külön kvóta-készlettel fog rendelkezni. A helyszíni kvóta a virtuális gépek és a méretezési csoport példányai között lesz megosztva. További információk: [Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 
-**K:** Igényelhetek további kvótát a helyszínen?
+**K:** Igényelhetek további kvótát az Azure spot Virtual Machines?
 
-**A:** Igen, elküldheti a kérést, hogy növelje a helyszíni virtuális gépek kvótáját a [normál kvóta-kérési folyamaton](../azure-portal/supportability/per-vm-quota-requests.md)keresztül.
+**A:** Igen, elküldheti a kérést, hogy növelje az Azure spot Virtual Machines kvótáját a [normál kvóta-igénylési folyamaton](../azure-portal/supportability/per-vm-quota-requests.md)keresztül.
 
 
 **K:** Hol tehetek közzé kérdéseket?
@@ -117,8 +117,8 @@ A portálon megtekintheti a korábbi díjszabást és a kizárási arányt egy a
 **A:** A maximális ár módosítása előtt fel kell szabadítania a virtuális gépet. Ezt követően módosíthatja a maximális árat a portálon, a virtuális gép **konfigurációs** szakaszából. 
 
 ## <a name="next-steps"></a>Következő lépések
-Helyszíni virtuális gépek üzembe helyezéséhez használja a [CLI](./linux/spot-cli.md)-t, a [portált](spot-portal.md), az [ARM-sablont](./linux/spot-template.md)vagy a [PowerShellt](./windows/spot-powershell.md) .
+Az Azure spot Virtual Machines üzembe helyezéséhez használja a [CLI](./linux/spot-cli.md)-t, a [portált](spot-portal.md), az [ARM-sablont](./linux/spot-template.md)vagy a [PowerShellt](./windows/spot-powershell.md) .
 
-Helyszíni virtuálisgép-példányokkal is üzembe helyezhetők a [méretezési csoport](../virtual-machine-scale-sets/use-spot.md).
+A [méretezési csoport Azure-beli virtuálisgép-példányokkal](../virtual-machine-scale-sets/use-spot.md)is üzembe helyezhető.
 
 Ha hibát tapasztal, tekintse meg a [hibakódokat](./error-codes-spot.md).

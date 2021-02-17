@@ -4,6 +4,14 @@
   items:
     - name: Az Arc-kompatibilis Kubernetes ismertetése
       href: overview.md
+- name: Alapelvek
+  items:
+    - name: Ügynök architektúrája
+      href: conceptual-agent-architecture.md
+    - name: Konfigurációk és GitOps
+      href: conceptual-configurations.md
+    - name: Gyakori kérdések
+      href: faq.md
 - name: Útmutatók
   items:
     - name: Csatlakozás az Azure Archoz
@@ -12,7 +20,7 @@
           href: connect-cluster.md
         - name: Szolgáltatásnév előkészítése
           href: create-onboarding-service-principal.md
-    - name: Kezelés
+    - name: Forgatókönyvek
       items:
         - name: Konfigurációk üzembe helyezése GitOps használatával
           href: use-gitops-connected-cluster.md

@@ -9,18 +9,41 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 01/12/2021
-ms.openlocfilehash: f416fe8ef4f6e89d07e6065d4c9435642d9bacb9
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: ef9cb083c9bbe6eae5c34cd3799debde771231b6
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179639"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558214"
 ---
-# <a name="correct-misspelled-words-with-bing-search-resource"></a>Hibásan írt szavak kijavítása Bing Search erőforrással
+# <a name="correct-misspelled-words-with-bing-resource"></a>Hibásan írt szavak kijavítása a Bing-erőforrással
 
-A LUIS-alkalmazást [Bing Search](https://ms.portal.azure.com/#create/Microsoft.BingSearch) használatával integrálhatja a hosszúságú kimondott szöveg hibásan írt szavainak kijavításához, mielőtt a Luis megjósolja a pontszámot és az entitásokat.
+A v3 előrejelzési API mostantól támogatja a [Bing helyesírási API](https://docs.microsoft.com/bing/search-apis/bing-spell-check/overview)-t. Adja hozzá a helyesírás-ellenőrzést az alkalmazáshoz úgy, hogy a kérések fejlécében a Bing keresési erőforrás kulcsát is tartalmazza. Meglévő Bing-erőforrást is használhat, ha már rendelkezik ilyennel, vagy [létrehozhat egy újat](https://portal.azure.com/#create/Microsoft.BingSearch) a funkció használatához. 
 
-## <a name="create-endpoint-key"></a>Végponti kulcs létrehozása
+Egy hibásan írt lekérdezésre vonatkozó előrejelzési kimeneti példa:
+
+```json
+{
+  "query": "bouk me a fliht to kayro",
+  "prediction": {
+    "alteredQuery": "book me a flight to cairo",
+    "topIntent": "book a flight",
+    "intents": {
+      "book a flight": {
+        "score": 0.9480589
+      }
+      "None": {
+        "score": 0.0332136229
+      }
+    },
+    "entities": {}
+  }
+}
+```
+
+A helyesírási javítások a LUIS-felhasználó teljes előrejelzése előtt történnek. A válaszban megtekintheti az eredeti szöveg összes módosítását, beleértve a helyesírást is.
+
+## <a name="create-bing-search-resource"></a>Bing Search erőforrás létrehozása
 
 Ha Bing Search erőforrást szeretne létrehozni a Azure Portalban, kövesse az alábbi utasításokat:
 
@@ -32,7 +55,8 @@ Ha Bing Search erőforrást szeretne létrehozni a Azure Portalban, kövesse az 
 
 4. Egy információs panel jelenik meg a jogot tartalmazó információkkal, beleértve a jogi értesítést is. Válassza a **Létrehozás** lehetőséget az előfizetés-létrehozási folyamat megkezdéséhez.
 
-    :::image type="content" source="./media/luis-tutorial-bing-spellcheck/bing-search-resource-portal.png" alt-text="Bing Spell Check API v7-erőforrás":::
+> [!div class="mx-imgBorder"]
+> ![Bing Spell Check API v7-erőforrás](./media/luis-tutorial-bing-spellcheck/bing-search-resource-portal.png)
 
 5. A következő panelen adja meg a szolgáltatás beállításait. Várjon, amíg a szolgáltatás-létrehozási folyamat befejeződik.
 
@@ -40,15 +64,23 @@ Ha Bing Search erőforrást szeretne létrehozni a Azure Portalban, kövesse az 
 
 7. Másolja be az egyik kulcsot, amelyet fel szeretne venni az előrejelzési kérelem fejlécébe. Csak a két kulcs egyikére lesz szüksége.
 
-8. Adja hozzá a kulcsot az `mkt-bing-spell-check-key` előrejelzési kérelem fejlécéhez.
-
 <!--
 ## Using the key in LUIS test panel
 There are two places in LUIS to use the key. The first is in the [test panel](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). The key isn't saved into LUIS but instead is a session variable. You need to set the key every time you want the test panel to apply the Bing Spell Check API v7 service to the utterance. See [instructions](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel) in the test panel for setting the key.
 -->
+## <a name="enable-spell-check-from-ui"></a>Helyesírás-ellenőrzés engedélyezése a felhasználói felületen 
+A példaként szolgáló lekérdezéshez a [Luis portálon](https://www.luis.ai)engedélyezheti a helyesírást. Válassza a **kezelés** lehetőséget a képernyő tetején, valamint az **Azure-erőforrásokat** a bal oldali navigációs sávon. Miután hozzárendelt egy előrejelzési erőforrást az alkalmazáshoz, az oldal alján található **lekérdezési paraméterek módosítása** lehetőségre kattintva beillesztheti az erőforrás-kulcsot a **Helyesírás-ellenőrzés engedélyezése** mezőbe.
+    
+   > [!div class="mx-imgBorder"]
+   > ![Helyesírás-ellenőrzés engedélyezése](./media/luis-tutorial-bing-spellcheck/spellcheck-query-params.png)
+
+
 ## <a name="adding-the-key-to-the-endpoint-url"></a>A kulcs hozzáadása a végpont URL-címéhez
 Minden olyan lekérdezésnél, amelynél helyesírás-módosítást kíván alkalmazni, a végponti lekérdezéshez a lekérdezési fejléc paraméterében átadott Bing helyesírás-ellenőrzési erőforrás kulcsa szükséges. Lehet, hogy van egy Csevegőrobot, amely meghívja a LUIS-t, vagy meghívhatja közvetlenül a LUIS Endpoint API-t. Függetlenül attól, hogy a végpont hogyan legyen meghívva, minden egyes hívásnak tartalmaznia kell a szükséges információkat a fejléc kérésében a helyesírás-helyesbítések megfelelő működéséhez. A **MKT-Bing-Spell-Check-Key** értékkel kell megadnia a kulcs értékét.
 
+|Fejléc kulcsa|Fejléc értéke|
+|--|--|
+|`mkt-bing-spell-check-key`|Az erőforrás **kulcsok és végpont** paneljén található kulcsok|
 
 ## <a name="send-misspelled-utterance-to-luis"></a>Hibásan írt kifejezés elküldése LUIS-re
 1. Adjon hozzá egy hibásan írt kiírást az előrejelzési lekérdezésben, amely a következőt küldi el: "milyen messze van a mountainn?". Az angol nyelvben `mountain` a, az egyik `n` , a helyes helyesírás.

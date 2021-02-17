@@ -4,16 +4,16 @@ description: Ismerje meg, hogyan azonosíthatja, diagnosztizálhatja és elhár�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 02/02/2021
+ms.date: 02/16/2021
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 6875fc53a651b89fcfe88d3217ff86bd21204f6c
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 6701a580cbe7790dcce2cbbcc46889f9dff00107
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524306"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559985"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Az Azure Cosmos DB használatakor felmerülő lekérdezési hibák elhárítása
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -213,6 +213,12 @@ Az alábbiakban néhány olyan gyakori rendszerfüggvényt ismertetünk, amely n
 | Felső/alsó                         | Ahelyett, hogy a rendszerfüggvényt használja az összehasonlításhoz, a beillesztéskor normalizálja a burkolatot. Egy lekérdezés, például A ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` válik ```SELECT * FROM c WHERE c.name = 'BOB'``` . |
 | GetCurrentDateTime/GetCurrentTimestamp/GetCurrentTicks | Kiszámítja a lekérdezés végrehajtása előtti aktuális időt, és ezt a karakterláncot használja a `WHERE` záradékban. |
 | Matematikai függvények (nem összesítések) | Ha egy értéket gyakran kell kiszámítani a lekérdezésben, érdemes az értéket a JSON-dokumentum tulajdonságának megfelelően tárolni. |
+
+Ezek a rendszerfunkciók indexeket használhatnak, kivéve, ha összesítésekkel rendelkező lekérdezésekben használják őket:
+
+| **System függvény**                     | **Optimalizálási ötletek**             |
+| --------------------------------------- |------------------------------------------------------------ |
+| Térbeli rendszerek funkciói                        | A lekérdezés eredményének tárolása valós idejű, anyagbeli nézetben |
 
 Ha a záradékban használatban van `SELECT` , a nem hatékony rendszerfunkciók nem befolyásolják, hogy a lekérdezések hogyan használhatják az indexeket.
 

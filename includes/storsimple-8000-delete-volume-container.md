@@ -1,19 +1,19 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: storsimple
 author: alkohli
 ms.service: storsimple
 ms.topic: include
-ms.date: 06/08/2018
+ms.date: 02/09/2021
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: 30bbd06e36ed1e03caa391165a8abc275f1899a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 386a39d76bf47da45f07054124886e174104849e
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87102708"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545290"
 ---
 A mennyiségi tárolók törléséhez
  - kötetek törlése a kötet tárolóban. Ha a mennyiségi tárolóhoz társított kötetek tartoznak, először a köteteket offline állapotba kell állítani. Kövesse a [kötet offline állapotba](../articles/storsimple/storsimple-8000-manage-volumes-u2.md#take-a-volume-offline)helyezése című témakör lépéseit. A kötetek offline állapotba helyezése után törölheti őket. 
@@ -22,20 +22,19 @@ A mennyiségi tárolók törléséhez
 Ha a kötet tárolóban nincsenek társított kötetek, biztonsági mentési szabályzatok és Felhőbeli Pillanatképek, törölheti azt. A kötetek tárolójának törléséhez hajtsa végre az alábbi eljárást.
 
 #### <a name="to-delete-a-volume-container"></a>Mennyiségi tároló törlése
-1. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. Jelölje ki, majd kattintson az eszközre, majd lépjen a **beállítások > > mennyiségi tárolók kezelése**elemre.
 
-    ![Mennyiségi tárolók panel](./media/storsimple-8000-create-volume-container/createvolumecontainer2.png)
+1. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. Jelölje ki, majd kattintson az eszközre, majd lépjen a **beállítások > > mennyiségi tárolók kezelése** elemre.
 
-2. A mennyiségi tárolók táblázatos listájából válassza ki a törölni kívánt kötet-tárolót, kattintson a jobb gombbal **...** elemre, majd válassza a **Törlés**lehetőséget.
+    ![Mennyiségi tárolók panel](./media/storsimple-8000-delete-volume-container/create-volume-container.png)
 
-    ![Mennyiségi tároló törlése](./media/storsimple-8000-delete-volume-container/deletevolumecontainer1.png)
+2. A mennyiségi tárolók táblázatos listájából válassza ki a törölni kívánt kötet-tárolót, kattintson a jobb gombbal **...** elemre, majd válassza a **Törlés** lehetőséget.
+
+    ![Mennyiségi tároló törlése](./media/storsimple-8000-delete-volume-container/delete-volume-container-01.png)
 
 3. Ha egy mennyiségi tárolóhoz nincsenek társított kötetek, biztonsági mentési szabályzatok és Felhőbeli Pillanatképek, akkor törölhető. Ha a rendszer megerősítést kér, tekintse át, majd jelölje be a mennyiségi tároló törlésének következményeire vonatkozó jelölőnégyzetet. Kattintson a **Törlés** elemre, majd törölje a kötet tárolót.
 
-    ![Törlés megerősítése](./media/storsimple-8000-delete-volume-container/deletevolumecontainer2.png)
+    ![Törlés megerősítése](./media/storsimple-8000-delete-volume-container/delete-volume-container-02.png)
 
 A kötet-tárolók listája frissült, hogy tükrözze a törölt kötet tárolóját.
 
-![Képernyőfelvétel a mennyiségi tároló lapról. A mennyiségi tárolók táblázatos listája már nem tartalmazza a törölt tárolót.](./media/storsimple-8000-delete-volume-container/deletevolumecontainer5.png)
-
-
+![Képernyőfelvétel a mennyiségi tároló lapról. A mennyiségi tárolók táblázatos listája már nem tartalmazza a törölt tárolót.](./media/storsimple-8000-delete-volume-container/delete-volume-container-05.png)

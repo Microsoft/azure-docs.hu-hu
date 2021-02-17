@@ -262,7 +262,7 @@
           href: dedicated-hosts-portal.md
         - name: PowerShell
           href: ./windows/dedicated-hosts-powershell.md
-    - name: Direktszín Virtual Machines
+    - name: Azure spot Virtual Machines
       displayName: 'pre-empt, preempt, spot'
       items:
         - name: Áttekintés
@@ -1143,6 +1143,8 @@
       href: ./linux/static-dns-name-resolution-for-linux-on-azure.md
 - name: Biztonság
   items:
+    - name: Áttekintés
+      href: ../security/fundamentals/virtual-machines-overview.md?context=/azure/virtual-machines/context/context
     - name: Azure Security Center
       href: ../security-center/security-center-introduction.md
     - name: Biztonsági alapkonfigurációk

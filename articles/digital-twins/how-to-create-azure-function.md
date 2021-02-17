@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1178b0ab5af3642026fe78c7de788f354691b13a
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: ecbf07c1a85c708d4117c83bca546cd8bd6ccd2b
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98701160"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546074"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>Function Apps-alkalmazások összekapcsolhatók az Azure-ban az adatfeldolgozáshoz
 
@@ -122,8 +122,6 @@ A korábbi példák függvényének csontváza megköveteli, hogy egy tulajdonos
 
 Létrehozhatja a rendszer által felügyelt identitást, és hozzárendelheti a Function alkalmazás identitását az Azure Digital _**Twins-adattulajdonosi**_ szerepkörhöz az Azure Digital Twins-példányhoz. Ezzel a művelettel a példányban az adatsík-tevékenységek elvégzéséhez a függvény alkalmazás engedélyének kell megadnia. Ezután az Azure Digital Twins-példány URL-címét elérhetővé teheti a függvény számára egy környezeti változó beállításával.
 
-[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
-
 A parancsok futtatásához használja a [Azure Cloud Shell](https://shell.azure.com) .
 
 A rendszerfelügyelt identitás létrehozásához használja a következő parancsot. Jegyezze fel a kimenet _principalId_ mezőjét.
@@ -221,7 +219,7 @@ Az Alkalmazásbeállítások az _értesítések_ ikon kiválasztásával tekinth
 
 :::image type="content" source="media/how-to-create-azure-function/notifications-update-web-app-settings.png" alt-text="Képernyőkép a Azure Portalról: az értesítések listája a portál felső sávján található harang alakú ikon kiválasztásával. Megjelenik egy értesítés arról, hogy a webalkalmazás beállításai sikeresen frissítve lettek.":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben követte, hogyan állíthat be egy Function alkalmazást az Azure-ban az Azure digitális Twins szolgáltatással való használatra.
 

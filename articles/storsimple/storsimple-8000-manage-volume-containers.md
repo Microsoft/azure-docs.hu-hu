@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/19/2017
+ms.date: 02/09/2021
 ms.author: alkohli
-ms.openlocfilehash: 5a6cd904d7baa71c8b383022523909ca30000ce8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f0a0fd48e3717d14a714e42c5566cd7bcf090d5
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514993"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545280"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-volume-containers"></a>StorSimple-kötettárolók kezelése a StorSimple-eszközkezelő szolgáltatással
 
@@ -56,7 +56,7 @@ A mennyiségi tárolóban kötetek találhatók. Csak akkor törölhető, ha az 
 
 [!INCLUDE [storsimple-8000-delete-volume-container](../../includes/storsimple-8000-delete-volume-container.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [StorSimple-kötetek kezeléséről](storsimple-8000-manage-volumes-u2.md). 
 * További információ [a StorSimple Eszközkezelő szolgáltatás a StorSimple-eszköz felügyeletéhez való használatáról](storsimple-8000-manager-service-administration.md).
 

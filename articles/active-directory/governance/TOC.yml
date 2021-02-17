@@ -14,8 +14,10 @@
 - name: Oktatóanyagok
   expanded: true
   items:
-    - name: Az első hozzáférési csomag létrehozása
+    - name: Erőforrásokhoz való hozzáférés kezelése – Azure Portal
       href: entitlement-management-access-package-first.md
+    - name: Erőforrásokhoz való hozzáférés kezelése – Microsoft Graph
+      href: /graph/tutorial-access-package-api?toc=/azure/active-directory/governance/toc.json&bc=/azure/active-directory/governance/breadcrumb/toc.json
 - name: Alapelvek
   expanded: true
   items:

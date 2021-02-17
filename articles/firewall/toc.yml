@@ -32,6 +32,12 @@
   items:
     - name: Az Azure Firewall funkciói
       href: features.md
+    - name: Prémium szintű szolgáltatások Azure Firewall
+      href: premium-features.md
+    - name: Prémium Azure Firewall a portálon
+      href: premium-portal.md
+    - name: Prémium szintű tanúsítványok Azure Firewall
+      href: premium-certificates.md
     - name: FQDN-címkék
       href: fqdn-tags.md
     - name: Infrastruktúra FQDN-jei
@@ -91,6 +97,10 @@
       displayName: 'Azure CLI, az monitor diagnostic-settings create, monitor diagnostic settings'
     - name: Azure Firewall-munkafüzet
       href: firewall-workbook.md
+    - name: A tűzfal Premium telepítése és konfigurálása
+      href: premium-deploy.md
+    - name: Migrálás Azure Firewall Premiumra
+      href: premium-migrate.md
 - name: Referencia
   items:
     - name: Azure CLI

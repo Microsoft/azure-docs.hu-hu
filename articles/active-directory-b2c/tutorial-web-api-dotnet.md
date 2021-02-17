@@ -11,18 +11,18 @@ ms.custom: devx-track-csharp, mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: ada4226500437e7733605a29988ee7cacae40761
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 84bf0ddd194cd59a7e728c0c50dbe3cbad2afa4a
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994314"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555642"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Oktatóanyag: hozzáférés biztosítása egy ASP.NET webes API-hoz a Azure Active Directory B2C használatával
 
 Ez az oktatóanyag bemutatja, hogyan hívhat meg egy védett webes API-erőforrást Azure Active Directory B2C (Azure AD B2C) egy ASP.NET-webalkalmazásból.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Webes API-alkalmazás hozzáadása
@@ -63,7 +63,7 @@ Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja
 6. A **Web App/web API belefoglalásához** válassza az **Igen** lehetőséget.
 7. A **Válasz URL-cím** mezőben adjon meg egy végpontot, amelyben Azure ad B2C vissza kell adnia az alkalmazás által kért jogkivonatokat. Ebben az oktatóanyagban a minta helyileg fut, és figyeli a következőt: `https://localhost:44332` .
 8. Az **alkalmazás-azonosító URI-ja** mezőben adja meg a webes API-hoz használt azonosítót. A teljes azonosító URI-t, a tartománnyal együtt, a rendszer hozza létre. Például: `https://contosotenant.onmicrosoft.com/api`.
-9. Kattintson a **Létrehozás** gombra.
+9. Kattintson a **Létrehozás** lehetőségre.
 10. A Tulajdonságok lapon jegyezze fel az alkalmazás AZONOSÍTÓját, amelyet a webalkalmazás konfigurálásakor használni fog.
 
 * * *
@@ -166,4 +166,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * A minta beállítása az alkalmazás használatára
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: identitás-szolgáltatók hozzáadása az alkalmazásokhoz Azure Active Directory B2C](tutorial-add-identity-providers.md)
+> [Identitás-szolgáltatók hozzáadása az alkalmazásokhoz Azure Active Directory B2C](add-identity-provider.md)

@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 05/18/2020
+ms.date: 02/10/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: b9e036df91eecadc701664a19905a92c142b7585
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 126ece1327fa92c9b92c587922f1b8d9335d1a01
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591891"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559282"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-sdk-and-azure-cosmos-db"></a>Gyors útmutató: Cassandra-alkalmazás létrehozása Node.js SDK-val és Azure Cosmos DB
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -66,104 +66,117 @@ Most hozzon létre egy Cassandra API alkalmazást a GitHubról, állítsa be a k
     git clone https://github.com/Azure-Samples/azure-cosmos-db-cassandra-nodejs-getting-started.git
     ```
 
+1. Telepítse a Node.js függőségeket a NPM.
+
+    ```bash
+    npm install
+    ```
+
 ## <a name="review-the-code"></a>A kód áttekintése
 
 Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan hozza létre a kód az adatbázis erőforrásait, tekintse át a következő kódrészleteket. A kódrészletek mind a `uprofile.js` fájlból származnak, amely a `C:\git-samples\azure-cosmos-db-cassandra-nodejs-getting-started` mappában található. Egyéb esetben ugorhat [A kapcsolati sztring frissítése](#update-your-connection-string) szakaszra. 
 
-* A felhasználónév és a jelszó értékei a kapcsolati sztring oldalán állíthatók be az Azure Portalon. A `path\to\cert` egy X509-tanúsítvány elérési útját tartalmazza. 
+* A felhasználónév és a jelszó értékei a kapcsolati sztring oldalán állíthatók be az Azure Portalon. 
 
    ```javascript
-   var ssl_option = {
-        cert : fs.readFileSync("path\to\cert"),
-        rejectUnauthorized : true,
-        secureProtocol: 'TLSv1_2_method'
-        };
-   const authProviderLocalCassandra = new cassandra.auth.PlainTextAuthProvider(config.username, config.password);
+    let authProvider = new cassandra.auth.PlainTextAuthProvider(
+        config.username,
+        config.password
+    );
    ```
 
 * A `client` inicializálása contactPoint adataival történik. A contactPoint az Azure Portalról kérhető le.
 
     ```javascript
-    const client = new cassandra.Client({contactPoints: [config.contactPoint], authProvider: authProviderLocalCassandra, sslOptions:ssl_option});
+    let client = new cassandra.Client({
+        contactPoints: [`${config.contactPoint}:10350`],
+        authProvider: authProvider,
+        localDataCenter: config.localDataCenter,
+        sslOptions: {
+            secureProtocol: "TLSv1_2_method"
+        },
+    });
     ```
 
 * A `client` csatlakozik az Azure Cosmos DB Cassandra API-hoz.
 
     ```javascript
-    client.connect(next);
+    client.connect();
     ```
 
 * A rendszer létrehoz egy új kulcsteret.
 
     ```javascript
-    function createKeyspace(next) {
-        var query = "CREATE KEYSPACE IF NOT EXISTS uprofile WITH replication = {\'class\': \'NetworkTopologyStrategy\', \'datacenter1\' : \'1\' }";
-        client.execute(query, next);
-        console.log("created keyspace");    
+    var query =
+        `CREATE KEYSPACE IF NOT EXISTS ${config.keySpace} WITH replication = {'class': 'NetworkTopologyStrategy', 'datacenter' : '1' }`;
+    await client.execute(query);
   }
     ```
 
 * Létrejön egy új tábla.
 
    ```javascript
-   function createTable(next) {
-       var query = "CREATE TABLE IF NOT EXISTS uprofile.user (user_id int PRIMARY KEY, user_name text, user_bcity text)";
-        client.execute(query, next);
-        console.log("created table");
+    query =
+        `CREATE TABLE IF NOT EXISTS ${config.keySpace}.user (user_id int PRIMARY KEY, user_name text, user_bcity text)`;
+    await client.execute(query);
    },
    ```
 
 * A rendszer beszúrja a kulcs/érték entitásokat.
 
     ```javascript
-        function insert(next) {
-            console.log("\insert");
-            const arr = ['INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (1, \'AdrianaS\', \'Seattle\')',
-                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (2, \'JiriK\', \'Toronto\')',
-                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (3, \'IvanH\', \'Mumbai\')',
-                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (4, \'IvanH\', \'Seattle\')',
-                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (5, \'IvanaV\', \'Belgaum\')',
-                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (6, \'LiliyaB\', \'Seattle\')',
-                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (7, \'JindrichH\', \'Buenos Aires\')',
-                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (8, \'AdrianaS\', \'Seattle\')',
-                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (9, \'JozefM\', \'Seattle\')'];
-            arr.forEach(element => {
-            client.execute(element);
-            });
-            next();
-        },
+    const arr = [
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (1, 'AdrianaS', 'Seattle')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (2, 'JiriK', 'Toronto')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (3, 'IvanH', 'Mumbai')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (4, 'IvanH', 'Seattle')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (5, 'IvanaV', 'Belgaum')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (6, 'LiliyaB', 'Seattle')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (7, 'JindrichH', 'Buenos Aires')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (8, 'AdrianaS', 'Seattle')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (9, 'JozefM', 'Seattle')`,
+    ];
+    for (const element of arr) {
+        await client.execute(element);
+    }
     ```
 
 * Lekérdezés az összes kulcsérték lekéréséhez.
 
     ```javascript
-        function selectAll(next) {
-            console.log("\Select ALL");
-            var query = 'SELECT * FROM uprofile.user';
-            client.execute(query, function (err, result) {
-            if (err) return next(err);
-            result.rows.forEach(function(row) {
-                console.log('Obtained row: %d | %s | %s ',row.user_id, row.user_name, row.user_bcity);
-            }, this);
-            next();
-            });
-        },
+    query = `SELECT * FROM ${config.keySpace}.user`;
+    const resultSelect = await client.execute(query);
+
+    for (const row of resultSelect.rows) {
+        console.log(
+            "Obtained row: %d | %s | %s ",
+            row.user_id,
+            row.user_name,
+            row.user_bcity
+        );
+    }
     ```  
 
 * Lekérdezés a kulcs-érték lekéréséhez.
 
     ```javascript
-        function selectById(next) {
-            console.log("\Getting by id");
-            var query = 'SELECT * FROM uprofile.user where user_id=1';
-            client.execute(query, function (err, result) {
-            if (err) return next(err);
-            result.rows.forEach(function(row) {
-                console.log('Obtained row: %d | %s | %s ',row.user_id, row.user_name, row.user_bcity);
-            }, this);
-            next();
-            });
-        }
+    query = `SELECT * FROM ${config.keySpace}.user where user_id=1`;
+    const resultSelectWhere = await client.execute(query);
+
+    for (const row of resultSelectWhere.rows) {
+        console.log(
+            "Obtained row: %d | %s | %s ",
+            row.user_id,
+            row.user_name,
+            row.user_bcity
+        );
+    }
+    ```  
+
+* A kapcsolatok lezárása. 
+
+    ```javascript
+    client.shutdown();
     ```  
 
 ## <a name="update-your-connection-string"></a>A kapcsolati sztring frissítése
@@ -178,63 +191,42 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 1. Nyissa meg az `config.js` fájlt. 
 
-1. Illessze be a CONTACT POINT értéket a portálról a `<FillMEIN>` helyére a 4. sorban.
+1. Illessze be a CONTACT POINT értéket a portálról a `'CONTACT-POINT` 9. sorba.
 
-    A 4. sornak ekkor a következőképp kell kinéznie: 
+    A 9-es vonalnak ekkor a következőhöz hasonlóan kell kinéznie 
 
-    `config.contactPoint = "cosmos-db-quickstarts.cassandra.cosmosdb.azure.com:10350"`
+    `contactPoint: "cosmos-db-quickstarts.cassandra.cosmosdb.azure.com",`
 
 1. Másolja a USERNAME értéket a portálról, és illessze be a `<FillMEIN>` helyére a 2. sorban.
 
     A 2. sornak ekkor a következőképp kell kinéznie: 
 
-    `config.username = 'cosmos-db-quickstart';`
+    `username: 'cosmos-db-quickstart',`
 
-1. Másolja a PASSWORD értéket a portálról, és illessze be a `<FillMEIN>` helyére a 3. sorban.
+1. Másolja a PASSWORD értéket a portálról, és illessze be a `USERNAME` helyére a 8. sorban.
 
-    A 3. sornak ekkor a következőképp kell kinéznie:
+    A 8. sornak ekkor a következőképp kell kinéznie:
 
-    `config.password = '2Ggkr662ifxz2Mg==';`
+    `password: '2Ggkr662ifxz2Mg==',`
+
+1. Cserélje le a RÉGIÓt arra az Azure-régióra, amelyben az erőforrást létrehozta.
 
 1. Mentse a `config.js` fájlt.
 
-## <a name="use-the-x509-certificate"></a>Az X509-tanúsítvány használata
-
-1. Töltse le a Baltimore CyberTrust főtanúsítványát helyileg innen: [https://cacert.omniroot.com/bc2025.crt](https://cacert.omniroot.com/bc2025.crt) . Nevezze át a fájlt `.cer` kiterjesztésűre.
-
-   A tanúsítvány sorozatszáma `02:00:00:b9`, az SHA1 ujjlenyomata pedig `d4:de:20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74`.
-
-2. Nyissa meg `uprofile.js` fájlt, és változtassa meg a `path\to\cert` útvonalat úgy, hogy az új tanúsítványára mutasson.
-
-3. Mentse a `uprofile.js` fájlt.
-
-> [!NOTE]
-> Ha a későbbi lépésekben a tanúsítványokkal kapcsolatos hiba lép fel, és egy Windows rendszerű gépen fut, győződjön meg arról, hogy követte a. CRT-fájl megfelelő átalakításának folyamatát az alábbi Microsoft. cer formátumra.
-> 
-> Kattintson duplán a. CRT fájlra a tanúsítvány megjelenítésének megnyitásához. 
->
-> :::image type="content" source="./media/create-cassandra-nodejs/crtcer1.gif" alt-text="A tanúsítvány ablakát megjelenítő képernyőkép.":::
->
-> Nyomja meg a Tovább gombot a tanúsítvány varázslóban. Válassza a Base-64 kódolású X. 509 (. CER), majd a Tovább gombra.
->
-> :::image type="content" source="./media/create-cassandra-nodejs/crtcer2.gif" alt-text="Képernyőkép, amely a Base-64 kódolt X. 509 (. CER) beállítás.":::
->
-> Válassza a Tallózás lehetőséget (cél megkereséséhez), és írja be a fájlnevet.
-> Válassza a tovább, majd a Befejezés lehetőséget.
->
-> Ekkor egy megfelelően formázott. cer fájllal kell rendelkeznie. Győződjön meg arról, hogy az elérési út `uprofile.js` erre a fájlra mutat.
 
 ## <a name="run-the-nodejs-app"></a>A Node.js-alkalmazás futtatása
 
-1. Győződjön meg arról, hogy a git-terminál ablakban a korábban klónozott minta könyvtárban van:
+1. A terminál ablakban ellenőrizze, hogy a korábban klónozott minta könyvtárban van-e:
 
     ```bash
     cd azure-cosmos-db-cassandra-nodejs-getting-started
     ```
 
-2. Futtassa `npm install` a parancsot a szükséges NPM-modulok telepítéséhez.
+1. Futtassa a Node alkalmazást:
 
-3. Futtassa a `node uprofile.js` parancsot a node-alkalmazás elindításához.
+    ```bash
+    npm start
+    ```
 
 4. Ellenőrizze az eredményt a parancssorban.
 
