@@ -3,22 +3,19 @@ title: CI/CD-folyamat létrehozása a GatsbyJS és az Azure DevOps Starter-vel r
 description: Ismerje meg, hogyan hozhat létre NodeJS progresszív webalkalmazást (PWA) a GatsbyJS és az egyszerűsített Azure DevOps Starter-létrehozási felület használatával.
 ms.prod: devops
 ms.technology: devops-cicd
-services: vsts
 documentationcenter: vs-devops-build
-author: arob98
-manager: angrobe
+author: mijacobs
+ms.author: mijacobs
 ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 03/24/2020
-ms.author: angrobe
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 6cffa6065f0e1cefc31223553a42a7a78c1dbea8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6d8a10dffa3801fe343b3b479265fac5612b021
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856211"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556561"
 ---
 # <a name="create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-starter"></a>CI/CD-folyamat létrehozása Azure-folyamatokban Node.js Azure DevOps Starter-vel
 
@@ -33,11 +30,11 @@ Ebben a rövid útmutatóban létrehoz egy NodeJS progresszív webalkalmazást (
 
 A DevOps Starter egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. Létrehozhat egy új Azure DevOps-szervezetet, vagy használhat egy meglévő céget is. A DevOps Starter Azure-erőforrásokat is létrehoz az Ön által választott Azure-előfizetésben.
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és a bal oldali ablaktáblán válassza az **erőforrás létrehozása**lehetőséget. 
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és a bal oldali ablaktáblán válassza az **erőforrás létrehozása** lehetőséget. 
 
    ![Azure-erőforrás létrehozása Azure Portal](_img/azure-devops-project-nodejs/create-azure-resource.png)
 
-1. A keresőmezőbe írja be a **DevOps Starter**kifejezést, majd válassza a elemet. Kattintson a **Hozzáadás** gombra egy új létrehozásához.
+1. A keresőmezőbe írja be a **DevOps Starter** kifejezést, majd válassza a elemet. Kattintson a **Hozzáadás** gombra egy új létrehozásához.
 
     ![A DevOps Starter irányítópultja](_img/azure-devops-starter-aks/search-devops-starter.png)
 
@@ -47,17 +44,17 @@ A DevOps Starter egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. Létreh
 
     ![Node.js minta kiválasztása](_img/azure-devops-project-nodejs/select-nodejs.png) 
 
-1. Az alapértelmezett mintakeretrendszer az **Express.js**. Módosítsa a kijelölést **egyszerű Node.js alkalmazásra** , majd válassza a **tovább**lehetőséget. 
+1. Az alapértelmezett mintakeretrendszer az **Express.js**. Módosítsa a kijelölést **egyszerű Node.js alkalmazásra** , majd válassza a **tovább** lehetőséget. 
 
     ![Válassza ki az egyszerű Node.js alkalmazást](_img/azure-devops-project-nodejs/select-nodejs-framework.png) 
 
-1. Az ebben a lépésben elérhető központi telepítési célokat a 2. lépésben kiválasztott alkalmazás-keretrendszer határozza meg. Ebben a példában a **Windows Web App** az alapértelmezett telepítési cél. Hagyja **Web App for containers** a beállítást, és válassza a **tovább**lehetőséget.
+1. Az ebben a lépésben elérhető központi telepítési célokat a 2. lépésben kiválasztott alkalmazás-keretrendszer határozza meg. Ebben a példában a **Windows Web App** az alapértelmezett telepítési cél. Hagyja **Web App for containers** a beállítást, és válassza a **tovább** lehetőséget.
 
     ![Telepítési cél kiválasztása](_img/azure-devops-project-nodejs/select-web-server.png)
 
 ## <a name="configure-a-project-name-and-an-azure-subscription"></a>Adja meg a projekt nevét és az Azure-előfizetést
 
-1. Az DevOps Starter-létrehozási munkafolyamat utolsó lépéseként rendeljen hozzá egy projekt nevét, válasszon ki egy Azure-előfizetést, majd válassza a **kész**lehetőséget.  
+1. Az DevOps Starter-létrehozási munkafolyamat utolsó lépéseként rendeljen hozzá egy projekt nevét, válasszon ki egy Azure-előfizetést, majd válassza a **kész** lehetőséget.  
 
     ![Projekt nevének kijelölése és előfizetés kiválasztása](_img/azure-devops-project-nodejs/assign-project-name.png)
 
@@ -73,7 +70,7 @@ A DevOps Starter egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. Létreh
 
     ![Azure DevOps-irányítópult](_img/azure-devops-project-nodejs/devops-projects-dashboard.png) 
 
-1. Az Azure DevOps-projektből meghívhatja a csapattagokat, hogy működjenek együtt egy Kanban-testülettel a munka nyomon követésének megkezdéséhez. További információ: [itt](/azure/devops/user-guide/what-is-azure-devops?view=azure-devops).
+1. Az Azure DevOps-projektből meghívhatja a csapattagokat, hogy működjenek együtt egy Kanban-testülettel a munka nyomon követésének megkezdéséhez. További információ: [itt](/azure/devops/user-guide/what-is-azure-devops).
 
 ![Az Azure DevOps áttekintése](_img/azure-devops-project-nodejs/azure-devops-overview.png)
 
@@ -81,7 +78,7 @@ A DevOps Starter egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. Létreh
 
 A DevOps Starter létrehoz egy git-tárházat az Azure Reposben vagy a GitHubban. Ez a példa egy Azure-tárházat hozott létre. A következő lépés a tárház klónozása és a módosítások elvégzése.
 
-1. Válassza ki a **DevOps-projektben** a **repókat** , majd kattintson a **klónozás**elemre.  A git-tárház klónozása az asztalra különböző mechanizmusokkal történik.  Válassza ki a fejlesztési élményhez illőt.  
+1. Válassza ki a **DevOps-projektben** a **repókat** , majd kattintson a **klónozás** elemre.  A git-tárház klónozása az asztalra különböző mechanizmusokkal történik.  Válassza ki a fejlesztési élményhez illőt.  
 
     ![Az adattár klónozása](_img/azure-devops-project-nodejs/clone-the-repo.png)
 
@@ -163,9 +160,9 @@ A DevOps Starter létrehoz egy git-tárházat az Azure Reposben vagy a GitHubban
 
 1. A böngésző bal oldalán lépjen a **views/index. mopsz** fájlra.
 
-1. Válassza a **Szerkesztés**lehetőséget, majd módosítsa a H2-fejlécet.  Írja be például, hogy az első **lépések azonnal elérhetők legyenek az Azure DevOps Starter** vagy más módosítással.
+1. Válassza a **Szerkesztés** lehetőséget, majd módosítsa a H2-fejlécet.  Írja be például, hogy az első **lépések azonnal elérhetők legyenek az Azure DevOps Starter** vagy más módosítással.
 
-1. Válassza **a**végrehajtás lehetőséget, majd mentse a módosításokat.
+1. Válassza **a** végrehajtás lehetőséget, majd mentse a módosításokat.
 
 1. A böngészőben nyissa meg a DevOps Starter irányítópultját.   
 Ekkor megjelenik egy Build folyamatban. Az elvégzett módosításokat a rendszer automatikusan felépíti és telepíti a CI/CD-folyamaton keresztül.
@@ -182,7 +179,7 @@ Az előző két lépésben hozzáadott egy Gatsby létrehozott PWA a git-tárhá
     git push
     ```
     
-1. A buildek a befejezést követően kezdődnek `git push` . Az **Azure DevOps irányítópultján**követheti a folyamat előrehaladását.
+1. A buildek a befejezést követően kezdődnek `git push` . Az **Azure DevOps irányítópultján** követheti a folyamat előrehaladását.
 
 3. Néhány perc elteltével a létrehozási és kiadási folyamatokat be kell fejezni, és a PWA üzembe kell helyezni egy tárolón. Kattintson az **alkalmazás-végpont** hivatkozásra a fenti irányítópulton, és egy Gatsby Starter-projektet kell megjelennie a blogokhoz.
 
@@ -190,9 +187,9 @@ Az előző két lépésben hozzáadott egy Gatsby létrehozott PWA a git-tárhá
 
 Törölheti Azure App Service és az egyéb kapcsolódó erőforrásokat, amelyeket akkor hozott létre, amikor már nincs szüksége az erőforrásokra. Használja a **delete** funkciót a DevOps Starter irányítópultján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A CI/CD folyamat konfigurálásakor a rendszer automatikusan létrehozza a létrehozási és kiadási folyamatokat. Ezeket a build és kiadási folyamatokat a csapat igényeinek megfelelően módosíthatja. A CI/CD folyamattal kapcsolatos további tudnivalókért tekintse meg a következőt:
 
 > [!div class="nextstepaction"]
-> [CD-folyamat testreszabása](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [CD-folyamat testreszabása](/azure/devops/pipelines/release/define-multistage-release-process)

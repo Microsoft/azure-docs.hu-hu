@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: d4736515d8e011ce1e72c51ecb3ce1cfd2e1e1cd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5c8bd335832a950385f88f13dc31eb7f6159f831
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978526"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548131"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Belső hiba jelentkezik, ha távoli asztalon keresztül próbál csatlakozni az Azure-beli virtuális géphez
 
@@ -120,9 +120,9 @@ A kezdéshez kapcsolódjon a [soros konzolhoz, és nyisson meg egy PowerShell-p�
 2. Ha ezzel a módszerrel nem tudja megújítani a tanúsítványt, próbálja meg távolról megújítani az RDP önaláírt tanúsítványát:
 
     1. Egy olyan működő virtuális gépről, amely a problémát okozó virtuális géphez kapcsolódik, írja be az **MMC** parancsot a **Futtatás** mezőbe a Microsoft Management Console megnyitásához.
-    2. A **fájl** menüben kattintson a **beépülő modul hozzáadása/eltávolítása**elemre, válassza a **tanúsítványok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
-    3. Válassza a **számítógépfiókok**lehetőséget, válasszon **másik számítógépet**, majd adja hozzá a probléma virtuális gép IP-címét.
-    4. Nyissa meg a **távoli Desktop\Certificates** mappát, kattintson a jobb gombbal a tanúsítványra, majd válassza a **Törlés**lehetőséget.
+    2. A **fájl** menüben kattintson a **beépülő modul hozzáadása/eltávolítása** elemre, válassza a **tanúsítványok** lehetőséget, majd válassza a **Hozzáadás** lehetőséget.
+    3. Válassza a **számítógépfiókok** lehetőséget, válasszon **másik számítógépet**, majd adja hozzá a probléma virtuális gép IP-címét.
+    4. Nyissa meg a **távoli Desktop\Certificates** mappát, kattintson a jobb gombbal a tanúsítványra, majd válassza a **Törlés** lehetőséget.
     5. A soros konzolon a PowerShell-példányon indítsa újra a Távoli asztal konfigurációs szolgáltatást:
 
         ```powershell
@@ -134,7 +134,7 @@ A kezdéshez kapcsolódjon a [soros konzolhoz, és nyisson meg egy PowerShell-p�
 3. Állítsa vissza a következő mappára vonatkozó engedélyt.
 
     ```powershell
-    remove-module psreadline icacls
+    remove-module psreadline 
 
     md c:\temp
 

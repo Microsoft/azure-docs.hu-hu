@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 12/10/2020
 ms.author: rolyon
-ms.openlocfilehash: 81224b5e16f3bca5da641bbb2e9c82dd59000e79
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 5a4be6052e72c27ad83b5af64f1acb3ad8d4e3be
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185886"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555905"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Azure-előfizetés átvitele egy másik Azure AD-címtárba
 
@@ -69,21 +69,21 @@ Számos Azure-erőforrás függőséget tartalmaz egy előfizetéshez vagy egy c
 
 | Szolgáltatás vagy erőforrás | Érintett | Helyreállítható | Hatással van? | Miket végezhet el? |
 | --------- | --------- | --------- | --------- | --------- |
-| Szerepkör-hozzárendelések | Igen | Yes | [Szerepkör-hozzárendelések felsorolása](#save-all-role-assignments) | Az összes szerepkör-hozzárendelés véglegesen törölve lesz. A felhasználókat, csoportokat és egyszerű szolgáltatásokat le kell képeznie a cél könyvtár megfelelő objektumaira. Újra létre kell hoznia a szerepkör-hozzárendeléseket. |
-| Egyéni szerepkörök | Igen | Yes | [Egyéni szerepkörök listázása](#save-custom-roles) | Az összes egyéni szerepkör véglegesen törölve lesz. Újra létre kell hoznia az egyéni szerepköröket és a szerepkör-hozzárendeléseket. |
-| Rendszer által hozzárendelt felügyelt identitások | Igen | Yes | [Felügyelt identitások listázása](#list-role-assignments-for-managed-identities) | Le kell tiltania, majd újra engedélyeznie kell a felügyelt identitásokat. Újra létre kell hoznia a szerepkör-hozzárendeléseket. |
-| Felhasználó által hozzárendelt felügyelt identitások | Igen | Yes | [Felügyelt identitások listázása](#list-role-assignments-for-managed-identities) | Törölnie kell, újra létre kell hoznia és csatolnia kell a felügyelt identitásokat a megfelelő erőforráshoz. Újra létre kell hoznia a szerepkör-hozzárendeléseket. |
-| Azure Key Vault | Igen | Yes | [Hozzáférési szabályzatok listázása Key Vault](#list-key-vaults) | Frissítenie kell a kulcstartóhoz társított bérlői azonosítót. Az új hozzáférési házirendeket el kell távolítania és hozzá kell adnia. |
+| Szerepkör-hozzárendelések | Igen | Igen | [Szerepkör-hozzárendelések felsorolása](#save-all-role-assignments) | Az összes szerepkör-hozzárendelés véglegesen törölve lesz. A felhasználókat, csoportokat és egyszerű szolgáltatásokat le kell képeznie a cél könyvtár megfelelő objektumaira. Újra létre kell hoznia a szerepkör-hozzárendeléseket. |
+| Egyéni szerepkörök | Igen | Igen | [Egyéni szerepkörök listázása](#save-custom-roles) | Az összes egyéni szerepkör véglegesen törölve lesz. Újra létre kell hoznia az egyéni szerepköröket és a szerepkör-hozzárendeléseket. |
+| Rendszer által hozzárendelt felügyelt identitások | Igen | Igen | [Felügyelt identitások listázása](#list-role-assignments-for-managed-identities) | Le kell tiltania, majd újra engedélyeznie kell a felügyelt identitásokat. Újra létre kell hoznia a szerepkör-hozzárendeléseket. |
+| Felhasználó által hozzárendelt felügyelt identitások | Igen | Igen | [Felügyelt identitások listázása](#list-role-assignments-for-managed-identities) | Törölnie kell, újra létre kell hoznia és csatolnia kell a felügyelt identitásokat a megfelelő erőforráshoz. Újra létre kell hoznia a szerepkör-hozzárendeléseket. |
+| Azure Key Vault | Igen | Igen | [Hozzáférési szabályzatok listázása Key Vault](#list-key-vaults) | Frissítenie kell a kulcstartóhoz társított bérlői azonosítót. Az új hozzáférési házirendeket el kell távolítania és hozzá kell adnia. |
 | Azure SQL Database-adatbázisok engedélyezve az Azure AD-hitelesítés integrációja | Igen | Nem | [Azure SQL-adatbázisok keresése az Azure AD-hitelesítéssel](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
-| Azure Storage és Azure Data Lake Storage Gen2 | Igen | Yes |  | Az ACL-eket újra létre kell hoznia. |
-| Azure Data Lake Storage Gen1 | Igen | Yes |  | Az ACL-eket újra létre kell hoznia. |
-| Azure Files | Igen | Yes |  | Az ACL-eket újra létre kell hoznia. |
-| Azure File Sync | Igen | Yes |  |  |
-| Azure Managed Disks | Igen | Yes |  |  Ha az ügyfél által felügyelt kulcsokkal rendelkező Managed Disks titkosítását használja, le kell tiltania, majd újra engedélyeznie kell a lemezes titkosítási csoportokhoz társított rendszerhez rendelt identitásokat. És újra létre kell hoznia a szerepkör-hozzárendeléseket, azaz újra meg kell adnia a szükséges engedélyeket a lemez titkosítási csoportjai számára a Kulcstartókban. |
-| Azure Kubernetes Service | Igen | Yes |  |  |
+| Azure Storage és Azure Data Lake Storage Gen2 | Igen | Igen |  | Az ACL-eket újra létre kell hoznia. |
+| Azure Data Lake Storage Gen1 | Igen | Igen |  | Az ACL-eket újra létre kell hoznia. |
+| Azure Files | Igen | Igen |  | Az ACL-eket újra létre kell hoznia. |
+| Azure File Sync | Igen | Igen |  |  |
+| Azure Managed Disks | Igen | Igen |  |  Ha az ügyfél által felügyelt kulcsokkal rendelkező Managed Disks titkosítását használja, le kell tiltania, majd újra engedélyeznie kell a lemezes titkosítási csoportokhoz társított rendszerhez rendelt identitásokat. És újra létre kell hoznia a szerepkör-hozzárendeléseket, azaz újra meg kell adnia a szükséges engedélyeket a lemez titkosítási csoportjai számára a Kulcstartókban. |
+| Azure Kubernetes Service | Igen | Igen |  |  |
 | Azure Policy | Igen | Nem | Minden Azure Policy objektum, beleértve az egyéni definíciókat, a hozzárendeléseket, a kivételeket és a megfelelőségi adatok. | A definíciók [exportálására](../governance/policy/how-to/export-resources.md), importálására és újbóli hozzárendelésére van szükség. Ezután hozzon létre új szabályzat-hozzárendeléseket és a szükséges [házirend-kivételeket](../governance/policy/concepts/exemption-structure.md). |
 | Azure Active Directory tartományi szolgáltatások | Igen | Nem |  |  |
-| Alkalmazásregisztrációk | Igen | Yes |  |  |
+| Alkalmazásregisztrációk | Igen | Igen |  |  |
 
 > [!WARNING]
 > Ha olyan erőforráshoz (például egy Storage-fiókhoz vagy SQL-adatbázishoz) használ titkosítást, amely **nem** ugyanahhoz az előfizetéshez tartozik, mint az átvitt egyik kulcstartó, akkor az egy helyreállíthatatlan forgatókönyvhöz vezethet. Ha ez a helyzet áll fenn, hajtson végre egy másik kulcstartó használatát, vagy átmenetileg tiltsa le az ügyfél által felügyelt kulcsokat a nem helyreállítható forgatókönyv elkerüléséhez.
@@ -307,9 +307,9 @@ Ebben a lépésben átviszi az előfizetést a forrás könyvtárából a cél k
     az role definition create --role-definition <role_definition>
     ```
 
-### <a name="create-role-assignments"></a>Szerepkör-hozzárendelések létrehozása
+### <a name="assign-roles"></a>Szerepkörök hozzárendelése
 
-- Az [az role hozzárendelés Create](/cli/azure/role/assignment#az_role_assignment_create) paranccsal hozhatja létre a felhasználókhoz, csoportokhoz és egyszerű szolgáltatásokhoz tartozó szerepkör-hozzárendeléseket. További információ: szerepkör- [hozzárendelések hozzáadása vagy eltávolítása az Azure RBAC és az Azure CLI használatával](role-assignments-cli.md).
+- A szerepkörök felhasználókhoz, csoportokhoz és egyszerű szolgáltatásokhoz való hozzárendeléséhez használja [az az role hozzárendelés Create](/cli/azure/role/assignment#az_role_assignment_create) paranccsal. További információ: Azure- [szerepkörök kiosztása az Azure CLI használatával](role-assignments-cli.md).
 
     ```azurecli
     az role assignment create --role <role_name_or_id> --assignee <assignee> --resource-group <resource_group>
@@ -325,7 +325,7 @@ Ebben a lépésben átviszi az előfizetést a forrás könyvtárából a cél k
     | Virtuálisgép-méretezési csoportok | [Felügyelt identitások konfigurálása Azure-erőforrásokhoz virtuálisgép-méretezési csoportokban az Azure CLI használatával](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#system-assigned-managed-identity) |
     | Egyéb szolgáltatások | [Az Azure-erőforrások felügyelt identitásait támogató szolgáltatások](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) |
 
-1. A rendszer által hozzárendelt felügyelt identitásokhoz tartozó szerepkör-hozzárendelések létrehozásához használja az [az role hozzárendelés Create](/cli/azure/role/assignment#az_role_assignment_create) paranccsal. További információ: [felügyelt identitás-hozzáférés társítása az erőforrásokhoz az Azure CLI használatával](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
+1. Az [az role hozzárendelés Create](/cli/azure/role/assignment#az_role_assignment_create) paranccsal rendelhet hozzá szerepköröket a rendszerhez rendelt felügyelt identitásokhoz. További információ: [felügyelt identitás-hozzáférés társítása az erőforrásokhoz az Azure CLI használatával](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>
@@ -341,7 +341,7 @@ Ebben a lépésben átviszi az előfizetést a forrás könyvtárából a cél k
     | Virtuálisgép-méretezési csoportok | [Felügyelt identitások konfigurálása Azure-erőforrásokhoz virtuálisgép-méretezési csoportokban az Azure CLI használatával](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#user-assigned-managed-identity) |
     | Egyéb szolgáltatások | [Az Azure-erőforrások felügyelt identitásait támogató szolgáltatások](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)<br/>[Felhasználó által hozzárendelt felügyelt identitás létrehozása, listázása és törlése az Azure CLI használatával](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) |
 
-1. A felhasználó által hozzárendelt felügyelt identitásokhoz tartozó szerepkör-hozzárendelések létrehozásához használja az [az role hozzárendelés Create](/cli/azure/role/assignment#az_role_assignment_create) paranccsal. További információ: [felügyelt identitás-hozzáférés társítása az erőforrásokhoz az Azure CLI használatával](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
+1. Az [az szerepkör-hozzárendelési létrehozás](/cli/azure/role/assignment#az_role_assignment_create) használatával rendeljen hozzá szerepköröket a felhasználókhoz rendelt felügyelt identitásokhoz. További információ: [felügyelt identitás-hozzáférés társítása az erőforrásokhoz az Azure CLI használatával](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>
@@ -361,7 +361,7 @@ Ez a szakasz a kulcstartók frissítésének alapvető lépéseit ismerteti. Tov
 
 1. Ha Azure Data Lake Storage Gen1 használ, rendelje hozzá a megfelelő ACL-eket. További információ: [Azure Data Lake Storage Gen1 tárolt adatok védelme](../data-lake-store/data-lake-store-secure-data.md).
 
-1. Ha Azure Data Lake Storage Gen2 használ, rendelje hozzá a megfelelő ACL-eket. További információ: [hozzáférés-vezérlés Azure Data Lake Storage Gen2ban](../storage/blobs/data-lake-storage-access-control.md).
+1. Ha Azure Data Lake Storage Gen2 használ, rendelje hozzá a megfelelő ACL-eket. További információért lásd: [Hozzáférés-vezérlés az Azure Data Lake Storage Gen2-ben](../storage/blobs/data-lake-storage-access-control.md).
 
 1. Ha Azure Files használ, rendelje hozzá a megfelelő ACL-eket.
 

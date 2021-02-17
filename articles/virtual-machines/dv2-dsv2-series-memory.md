@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: b6f99f1f58faece3ab286b2bc3cb571cdcba87de
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 8450a4bf172abcc57f93ccd20bc84642946e7ba9
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99088904"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555075"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>Memória-optimalizált Dv2 és Dsv2 sorozat
 
@@ -28,7 +28,7 @@ Az Dv2 sorozatú méretek Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel®
 [Élő áttelepítés](maintenance-and-updates.md): támogatott<br>
 [Memória megőrzésének frissítései](maintenance-and-updates.md): támogatott<br>
 [VM-generáció támogatása](generation-2.md): 1. generáció<br>
-[Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott<br>
+[Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott (*legalább 4 vCPU szükséges*)<br>
 [Ideiglenes operációsrendszer-lemezek](ephemeral-os-disks.md): nem támogatott <br>
 <br> 
 
@@ -53,7 +53,7 @@ Az DSv2 sorozatú méretek Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel�
 [Élő áttelepítés](maintenance-and-updates.md): támogatott<br>
 [Memória megőrzésének frissítései](maintenance-and-updates.md): támogatott<br>
 [VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
-[Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott<br>
+[Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott (*legalább 4 vCPU szükséges*)<br>
 [Ideiglenes operációsrendszer-lemezek](ephemeral-os-disks.md): támogatott <br>
 <br> 
 

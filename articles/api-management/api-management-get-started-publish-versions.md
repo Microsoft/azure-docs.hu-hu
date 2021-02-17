@@ -5,14 +5,14 @@ author: vladvino
 ms.service: api-management
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 10/30/2020
+ms.date: 02/10/2021
 ms.author: apimpm
-ms.openlocfilehash: 4a107b4cc0dbf0b0845211ca64691fb0e792a47c
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: f6ea02c32ec7fcb694d63f29c63c3880a7cfff9e
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679093"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546652"
 ---
 # <a name="tutorial-publish-multiple-versions-of-your-api"></a>Oktatóanyag: az API több verziójának közzététele 
 
@@ -20,7 +20,7 @@ Vannak olyan időpontok, amikor nem praktikus, hogy az API-hívók pontosan ugya
 
 A háttérben lásd: [verziók & változatok](https://azure.microsoft.com/blog/versions-revisions/).
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Új verzió hozzáadása meglévő API-hoz
@@ -84,9 +84,35 @@ Ha például a verziót szeretné hozzáadni a **korlátlan** termékhez:
 1. A Azure Portal navigáljon a API Management-példányhoz.
 1. Válassza a **termékek**  >  **korlátlan**  >  **API**  >  **+ Hozzáadás** lehetőséget.
 1. Válassza a **bemutató konferencia API**, **v1** verzió elemet.
-1. Válassza a **Kiválasztás** lehetőséget.
+1. Kattintson a **Kiválasztás** elemre.
 
 :::image type="content" source="media/api-management-getstarted-publish-versions/08-add-multiple-versions-03-add-version-product.png" alt-text="Verzió hozzáadása a termékhez":::
+
+## <a name="use-version-sets"></a>Verzió-készletek használata
+
+Ha több verziót hoz létre, a Azure Portal egy olyan *verziót* hoz létre, amely egyetlen logikai API-hoz tartozó verziók egy készletét jelöli. Válassza ki azt az API-t, amelynek több verziója van. A Azure Portal megjeleníti a **verziószámát**. Testre szabhatja egy virtuális készlet **nevét** és **leírását** .
+
+Az Azure CLI használatával közvetlenül is használhatja a verziószámokat:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Az összes verzió megjelenítéséhez futtassa az az [APIM API versionset List](/cli/azure/apim/api/versionset#az_apim_api_versionset_list) parancsot:
+
+```azurecli
+az apim api versionset list --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --output table
+```
+
+Ha a Azure Portal létrehoz egy beállított verziót, az egy alfanumerikus nevet rendel hozzá, amely megjelenik a lista Name ( **név** ) oszlopában. Használja ezt a nevet más Azure CLI-parancsokban.
+
+Ha meg szeretné tekinteni a verziószám részleteit, futtassa az az [APIM API versionset show](/api/versionset#az_apim_api_versionset_show) parancsot:
+
+```azurecli
+az apim api versionset show --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --version-set-id 00000000000000000000000
+```
+
+További információ a [verziókról: az Azure API Management verziói](api-management-versions.md#how-versions-are-represented).
 
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>A fejlesztői portál tallózása a verzió megtekintéséhez
 

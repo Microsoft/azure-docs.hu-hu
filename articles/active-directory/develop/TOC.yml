@@ -62,12 +62,16 @@
           href: quickstart-v2-uwp.md
         - name: Windows asztali .NET
           href: quickstart-v2-windows-desktop.md
+        - name: Node.js Electron
+          href: quickstart-v2-nodejs-desktop.md
     - name: Démon vagy háttérszolgáltatás
       items:
         - name: .NET Core-konzol (démon)
           href: quickstart-v2-netcore-daemon.md
         - name: Python-konzol-démon
           href: quickstart-v2-python-daemon.md
+        - name: Node.js konzol démon
+          href: quickstart-v2-nodejs-console.md
         - name: Java-konzol démon
           href: quickstart-v2-java-daemon.md
 - name: Oktatóanyagok
@@ -88,6 +92,8 @@
           href: tutorial-v2-asp-webapp.md
         - name: Blazor Server
           href: tutorial-blazor-server.md
+        - name: Node.js webalkalmazás-oktatóanyag
+          href: tutorial-v2-nodejs-webapp-msal.md
     - name: Mobil és asztali
       items:
         - name: Android
@@ -101,10 +107,14 @@
           href: tutorial-v2-windows-desktop.md
         - name: Megosztott eszköz mód használata az Android-alkalmazásban
           href: tutorial-v2-shared-device-mode.md
+        - name: Electron asztali alkalmazás
+          href: tutorial-v2-nodejs-desktop.md
     - name: Démon vagy háttérszolgáltatás
       items:
         - name: ASP.NET démon-webalkalmazása
           href: tutorial-v2-aspnet-daemon-web-app.md
+        - name: Node.js konzol démon
+          href: tutorial-v2-nodejs-console.md
 - name: Példák
   href: sample-v2-code.md
 - name: Alapelvek

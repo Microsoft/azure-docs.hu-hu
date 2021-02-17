@@ -3,12 +3,12 @@ title: Azure Event Hubs tűzfalszabályok | Microsoft Docs
 description: A tűzfalszabályok használatával engedélyezheti az adott IP-címekről az Azure Event Hubs való kapcsolódást.
 ms.topic: article
 ms.date: 02/12/2021
-ms.openlocfilehash: 18d043ebff7ff317207d0a33eaeba741fea8cc8a
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: ca5995c3e1b9923d925ddc4deae299c28261d18a
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517195"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560852"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>Azure Event Hubs-névterek elérésének engedélyezése adott IP-címekről vagy tartományokból
 Alapértelmezés szerint a Event Hubs névterek az internetről érhetők el, feltéve, hogy a kérés érvényes hitelesítéssel és engedélyezéssel rendelkezik. Az IP-tűzfallal a [CIDR (osztály nélküli Inter-Domain útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelöléssel tovább korlátozhatja az IPv4-címek vagy az IPv4-címtartományok körét.
@@ -17,6 +17,10 @@ Ez a funkció olyan helyzetekben hasznos, amikor az Azure Event Hubs csak bizony
 
 >[!WARNING]
 > A tűzfalszabályok bekapcsolása a Event Hubs névtérben alapértelmezés szerint blokkolja a bejövő kérelmeket, hacsak a kérelmek nem az engedélyezett nyilvános IP-címekről származó szolgáltatásból származnak. A letiltott kérések közé tartoznak a más Azure-szolgáltatások, a Azure Portal, a naplózási és a metrikai szolgáltatások, valamint így tovább. Kivételként engedélyezheti a hozzáférést bizonyos megbízható szolgáltatásoktól Event Hubs erőforrásaihoz, még akkor is, ha az IP-szűrés engedélyezve van. A megbízható szolgáltatások listáját lásd: [megbízható Microsoft-szolgáltatások](#trusted-microsoft-services).
+
+> [!IMPORTANT]
+> Legalább egy IP-szabályt vagy virtuális hálózati szabályt meg kell adni a névtérhez, hogy csak a virtuális hálózat megadott IP-címeiről vagy alhálózatáról engedélyezze a forgalmat. Ha nincsenek IP-és virtuális hálózati szabályok, a névtér a nyilvános interneten keresztül érhető el (a hozzáférési kulccsal).  
+
 
 ## <a name="ip-firewall-rules"></a>IP-tűzfalszabályok
 Az IP-tűzfalszabályok a Event Hubs névtér szintjén lesznek alkalmazva. Így a szabályok az ügyfelek összes kapcsolatára érvényesek bármely támogatott protokoll használatával. Olyan IP-címről érkező csatlakozási kísérletek, amely nem felel meg az engedélyezett IP-szabálynak a Event Hubs-névtérben, a rendszer nem engedélyezettként fogadja el. A válasz nem említi az IP-szabályt. Az IP-szűrési szabályok sorrendben lesznek alkalmazva, és az IP-címnek megfelelő első szabály határozza meg az elfogadás vagy az elutasítás műveletet.
@@ -38,7 +42,10 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre IP-tűzfalszabályok Even
 1. A megadott IP-címekre való hozzáférés korlátozásához ellenőrizze, hogy a **kiválasztott hálózatok** lehetőség van-e kiválasztva. A **tűzfal** szakaszban kövesse az alábbi lépéseket:
     1. Válassza az **ügyfél IP-címének hozzáadása** lehetőséget, hogy a jelenlegi ügyfél IP-címe hozzáférjen a névtérhez. 
     2. A **címtartomány** mezőben adjon meg egy adott IPv4-címeket vagy IPv4-CÍMTARTOMÁNYT a CIDR-jelölésben. 
-3. Itt adhatja meg, hogy szeretné- **e engedélyezni a megbízható Microsoft-szolgáltatások számára a tűzfal megkerülését**. További részletekért lásd a [megbízható Microsoft-szolgáltatások](#trusted-microsoft-services) című témakört. 
+
+    >[!WARNING]
+    > Ha a **kiválasztott hálózatok** lehetőséget választja, és nem ad hozzá legalább egy IP-tűzfalszabály vagy virtuális hálózat ezen a lapon, a névtér a nyilvános interneten keresztül érhető el (a hozzáférési kulcs használatával).
+1. Itt adhatja meg, hogy szeretné- **e engedélyezni a megbízható Microsoft-szolgáltatások számára a tűzfal megkerülését**. További részletekért lásd a [megbízható Microsoft-szolgáltatások](#trusted-microsoft-services) című témakört. 
 
       ![Tűzfal – az összes hálózat lehetőség ki van választva](./media/event-hubs-firewall/firewall-selected-networks-trusted-access-disabled.png)
 3. A beállítások mentéséhez kattintson a **Save (Mentés** ) gombra az eszköztáron. Várjon néhány percet, hogy a megerősítés megjelenjen a portál értesítésein.

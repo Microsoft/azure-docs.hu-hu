@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 02/15/2021
-ms.openlocfilehash: 3be043af7b057c47f360ce36db6bb7c3afd80638
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.openlocfilehash: 7149233782815deebebde53767a3c654ac2321bb
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/16/2021
-ms.locfileid: "100535348"
+ms.locfileid: "100547757"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rövid útmutató: Azure Cognitive Search-szolgáltatások létrehozása a portálon
 
@@ -83,22 +83,19 @@ A szolgáltatásnévre vonatkozó követelmények:
 
 ## <a name="choose-a-location"></a>Hely kiválasztása
 
-Az Azure Cognitive Search a legtöbb régióban elérhető. A támogatott régiók listája a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/search/)található.
+Az Azure Cognitive Search a legtöbb régióban elérhető, a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/search/)leírtak szerint.
 
-> [!Note]
-> A közép-India és az Észak-Egyesült Arab Emírségek jelenleg nem érhető el új szolgáltatásokhoz. A régiókban már meglévő szolgáltatások esetében korlátozás nélkül méretezhető, és a szolgáltatás teljes mértékben támogatott az adott régióban. A korlátozások ideiglenesek, és csak az új szolgáltatásokra korlátozódnak. Ezt a megjegyzést akkor távolítjuk el, ha a korlátozások már nem érvényesek.
->
-> A kettős titkosítás csak bizonyos régiókban érhető el. További információ: [dupla titkosítás](search-security-overview.md#double-encryption).
+Általában, ha több Azure-szolgáltatást használ, válasszon egy olyan régiót, amely az Ön adatait vagy az alkalmazásait is üzemelteti. Így a kimenő adatok sávszélességének csökkentése vagy érvénytelenítése (a kimenő adatokért nem számítunk fel díjat, ha a szolgáltatások ugyanabban a régióban találhatók).
 
-### <a name="requirements"></a>Követelmények
+Az üzletmenet-folytonossággal és a vész-helyreállítási (BCDR) követelményekkel rendelkező ügyfeleknek [regionális párokban](../best-practices-availability-paired-regions.md#azure-regional-pairs)kell létrehozniuk a szolgáltatásaikat. Ha például Észak-Amerika működik, az USA keleti régiója és az USA nyugati régiója, illetve az USA északi középső régiója és a Dél-Amerikai Egyesült Államok az egyes szolgáltatások esetében is megadható.
 
- Ha AI-bővítést használ, hozza létre a keresési szolgáltatást ugyanabban a régióban, mint Cognitive Services. *Az Azure Cognitive Search és az ugyanazon régióban lévő Cognitive Services együttes elhelyezése az AI-bővítés követelménye*.
+A következő szolgáltatások csak bizonyos régiókban érhetők el:
 
- Az üzletmenet-folytonossággal és a vész-helyreállítási (BCDR) követelményekkel rendelkező ügyfeleknek [regionális párokban](../best-practices-availability-paired-regions.md#azure-regional-pairs)kell létrehozniuk a szolgáltatásaikat. Ha például Észak-Amerika működik, az USA keleti régiója és az USA nyugati régiója, illetve az USA északi középső régiója és a Dél-Amerikai Egyesült Államok az egyes szolgáltatások esetében is megadható.
+* Az AI-bővítés megköveteli, hogy az Cognitive Services ugyanabban a régióban legyen, mint az Azure Cognitive Search. Válassza ki a [régiót Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) először (a lista kisebb), majd válassza ki ugyanazt a régiót a keresési szolgáltatáshoz.
 
-### <a name="recommendations"></a>Javaslatok
+* A kettős titkosítás csak bizonyos régiókban érhető el. További információ: [dupla titkosítás](search-security-overview.md#double-encryption)
 
-Ha több Azure-szolgáltatást használ, válasszon egy olyan régiót, amely az Ön adatait vagy az alkalmazásait is üzemelteti. Így a kimenő adatok sávszélességének csökkentése vagy érvénytelenítése (a kimenő adatokért nem számítunk fel díjat, ha a szolgáltatások ugyanabban a régióban találhatók).
+* A rendelkezésre állási zóna támogatását meghatározott régiókban, adott dátumok után létrehozott szolgáltatásokban ajánljuk. További információ: ["Availability Zones" a teljesítmény méretében](search-performance-optimization.md#availability-zones).
 
 ## <a name="choose-a-pricing-tier"></a>Árképzési szintek kiválasztása
 

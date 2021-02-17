@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 11/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4c758dca9f6020fd948ad8c3a8cdf014306e8ae7
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b61636d6048f63ae962d4f755a29c02e6785d5e1
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96343999"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557537"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Klasszikus Azure-előfizetés rendszergazdái
 
@@ -71,7 +71,7 @@ Előfordulhat, hogy a Co-Administrator szerepkörhöz rendelt vendég felhaszná
 
 Azt várná, hogy a B felhasználó mindent tud kezelni. Ennek a különbségnek az az oka, hogy a Microsoft-fiók a tag felhasználója helyett vendég felhasználóként adja hozzá az előfizetéshez. A vendég felhasználók a felhasználókhoz képest eltérő alapértelmezett engedélyekkel rendelkeznek az Azure AD-ben. Például a felhasználók más felhasználókat is olvashatnak az Azure AD-ben, és a vendég felhasználói nem. A tagok felhasználói regisztrálhatnak új egyszerű szolgáltatásokat az Azure AD-ben, és a vendég felhasználói nem rendelkezhetnek.
 
-Ha egy vendégnek el kell tudnia hajtani ezeket a feladatokat, lehetséges megoldás a vendég felhasználói igényeknek megfelelő Azure AD-szerepkörök hozzárendelésére. Az előző forgatókönyvben például hozzárendelheti a [címtár-olvasók](../active-directory/roles/permissions-reference.md#directory-readers) szerepkört más felhasználók olvasásához és az [alkalmazás fejlesztői](../active-directory/roles/permissions-reference.md#application-developer) szerepkörének hozzárendeléséhez, hogy az egyszerű szolgáltatásokat lehessen létrehozni. További információ a tagok és a vendég felhasználókról és azok engedélyeiről: [Mi az alapértelmezett felhasználói engedély a Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md) További információ a vendég felhasználók hozzáférésének megadásáról: [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása külső vendég felhasználók számára a Azure Portal használatával](role-assignments-external-users.md).
+Ha egy vendégnek el kell tudnia hajtani ezeket a feladatokat, lehetséges megoldás a vendég felhasználói igényeknek megfelelő Azure AD-szerepkörök hozzárendelésére. Az előző forgatókönyvben például hozzárendelheti a [címtár-olvasók](../active-directory/roles/permissions-reference.md#directory-readers) szerepkört más felhasználók olvasásához és az [alkalmazás fejlesztői](../active-directory/roles/permissions-reference.md#application-developer) szerepkörének hozzárendeléséhez, hogy az egyszerű szolgáltatásokat lehessen létrehozni. További információ a tagok és a vendég felhasználókról és azok engedélyeiről: [Mi az alapértelmezett felhasználói engedély a Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md) További információ a vendégek hozzáférésének biztosításáról: [Azure-szerepkörök hozzárendelése külső vendég felhasználókhoz a Azure Portal használatával](role-assignments-external-users.md).
 
 Vegye figyelembe, hogy az [Azure beépített szerepkörei](../role-based-access-control/built-in-roles.md) eltérnek az [Azure ad szerepköreitől](../active-directory/roles/permissions-reference.md). A beépített szerepkörök nem biztosítanak hozzáférést az Azure AD-hoz. További információ: [a különböző szerepkörök megismerése](../role-based-access-control/rbac-and-directory-admin-roles.md).
 
@@ -148,8 +148,8 @@ A fiók rendszergazdájának megtekintéséhez kövesse az alábbi lépéseket.
 
     ![A fiók rendszergazdáját ábrázoló képernyőfelvétel](./media/classic-administrators/account-admin.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A különböző szerepkörök ismertetése](../role-based-access-control/rbac-and-directory-admin-roles.md)
-* [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)
+* [Azure-szerepkörök kiosztása a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)
 * [Azure-előfizetés-rendszergazdák hozzáadása vagy módosítása](../cost-management-billing/manage/add-change-subscription-administrator.md)

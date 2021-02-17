@@ -11,20 +11,20 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 11/13/2019
+ms.date: 02/12/2021
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: 9d476b1db645ed1f91b62fcf11464f7077a8fb3c
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: e34fbdca51e7680a80c768e49bae891cb56dfa9d
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491426"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546448"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Leküldéses értesítések az Azure Notification Hubs: gyakori kérdések
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="what-is-the-resource-structure-of-notification-hubs"></a>Mi a Notification Hubs erőforrás-szerkezete?
 
@@ -34,16 +34,16 @@ Az Azure Notification Hubs két erőforrás-szinttel rendelkezik: hubok és név
 
 A legfrissebb díjszabás a [Notification Hubs díjszabási] oldalán található. Notification Hubs számlázása a névtér szintjén történik. (Névtér definíciója: "mi az az erőforrás szerkezete Notification Hubs?") A Notification Hubs három szintet kínál:
 
-* **Ingyenes** : Ez a szinten jó kiindulási pont a leküldéses képességek feltárására. Éles alkalmazások esetében nem ajánlott. A 500-es és az 1 000 000-es leküldéses szolgáltatás havonta, a szolgáltatói szerződés (SLA) garanciája nélkül is elérhető.
-* **Alapszintű** : Ez a szint (vagy a standard szint) kisebb üzemi alkalmazások esetében ajánlott. Az 200 000-es és a 10 000 000-es leküldéses adategységek havonta, alapkonfigurációként jelennek meg.
-* **Standard** : Ez a szint közepes és nagy üzemi alkalmazások esetében ajánlott. Az 10 000 000-es és a 10 000 000-es leküldéses adategységek havonta, alapkonfigurációként jelennek meg. Gazdag telemetria tartalmaz (a leküldéses állapottal kapcsolatos további információkat).
+* **Ingyenes**: Ez a szinten jó kiindulási pont a leküldéses képességek feltárására. Éles alkalmazások esetében nem ajánlott. A 500-es és az 1 000 000-es leküldéses szolgáltatás havonta, a szolgáltatói szerződés (SLA) garanciája nélkül is elérhető.
+* **Alapszintű**: Ez a szint (vagy a standard szint) kisebb üzemi alkalmazások esetében ajánlott. Az 200 000-es és a 10 000 000-es leküldéses adategységek havonta, alapkonfigurációként jelennek meg.
+* **Standard**: Ez a szint közepes és nagy üzemi alkalmazások esetében ajánlott. Az 10 000 000-es és a 10 000 000-es leküldéses adategységek havonta, alapkonfigurációként jelennek meg. Gazdag telemetria tartalmaz (a leküldéses állapottal kapcsolatos további információkat).
 
 Standard szintű funkciók:
 
-* **Rich telemetria** : a leküldéses kérelmek nyomon követéséhez és a hibakereséshez platform Notification System visszajelzések Notification Hubséhez használhatja az telemetria-t.
-* **Több-bérlős** : platform Notification System hitelesítő adatokkal használható a névtér szintjén. Ez a beállítás lehetővé teszi, hogy könnyedén Ossza szét a bérlőket ugyanazon a névtéren belüli hubokba.
+* **Rich telemetria**: a leküldéses kérelmek nyomon követéséhez és a hibakereséshez platform Notification System visszajelzések Notification Hubséhez használhatja az telemetria-t.
+* **Több-bérlős**: platform Notification System hitelesítő adatokkal használható a névtér szintjén. Ez a beállítás lehetővé teszi, hogy könnyedén Ossza szét a bérlőket ugyanazon a névtéren belüli hubokba.
 * **Ütemezett** leküldés: az értesítések bármikor ütemezhetők.
-* **Tömeges műveletek** : engedélyezi a regisztrációk exportálási/importálási funkcióit a [regisztrációk exportálási/importálási] dokumentumában leírtak szerint.
+* **Tömeges műveletek**: engedélyezi a regisztrációk exportálási/importálási funkcióit a [regisztrációk exportálási/importálási] dokumentumában leírtak szerint.
 
 ### <a name="what-is-the-notification-hubs-sla"></a>Mi a Notification Hubs SLA?
 
@@ -103,6 +103,10 @@ A PNS nem garantálja az értesítések kézbesítésére vonatkozó SLA-t. A le
 
 A leküldéses értesítések jellegéből adódóan (amelyeket külső, platform-specifikus PNS továbbítanak), nincs késési garancia. A leküldéses értesítések többsége általában néhány percen belül elérhető.
 
+### <a name="where-does-azure-notification-hubs-store-data"></a>Hol tárolja az Azure Notification Hubs az adattárolást?
+
+Az Azure Notification Hubs az ügyfél regisztrációs szolgáltatásait az ügyfél által kiválasztott régióban tárolja. A Notification Hubs metaadatokat biztosít a vész-helyreállítási lefedettségről (a Notification Hubs neve, a kapcsolatok karakterlánca és egyéb kritikus információk). Az összes régió esetében, kivéve Dél-és Délkelet-Ázsiában, a metaadatok biztonsági mentése egy másik régióban (általában az Azure párosított régióban) található. A Dél-és Délkelet-ázsiai régiókban a biztonsági mentések ugyanabban a régióban vannak tárolva, hogy megfeleljenek az ezekben a régiókban tárolt adatrezidensi követelményeknek.
+
 ### <a name="what-do-i-need-to-consider-when-designing-a-solution-with-namespaces-and-notification-hubs"></a>Mit kell figyelembe venni a névtereket és az értesítési központokat tartalmazó megoldások tervezésekor?
 
 #### <a name="mobile-appenvironment"></a>Mobile App/Environment
@@ -151,7 +155,7 @@ Minden kapcsolat, a küldőtől az Azure Notification Hubs a PNS, használja a H
 
 Bizalmas adattartalom küldéséhez biztonságos leküldéses mintát ajánlott használni. A küldő a bizalmas adattartalom nélkül kézbesít egy, az eszközhöz tartozó üzenet-azonosítóval rendelkező ping-értesítést. Amikor az eszközön az alkalmazás megkapja a hasznos adatokat, az alkalmazás közvetlenül a biztonságos API-t hívja meg az üzenet részleteinek beolvasásához. A minta megvalósításának útmutatóját a [Notification Hubs biztonságos leküldéses oktatóanyag] oldalán találja.
 
-## <a name="operations"></a>Műveletek
+## <a name="operations"></a>Üzemeltetés
 
 ### <a name="what-support-is-provided-for-disaster-recovery"></a>Milyen támogatást biztosít a vész-helyreállítás?
 
@@ -188,7 +192,7 @@ Az Azure Notification Hubs számos funkciót kínál a hibaelhárításhoz, kül
 
 Az Azure Notification Hubs lehetővé teszi a [Azure Portal]telemetria-beli megtekintését. A metrikák részletei a [Notification Hubs metrikák] lapon érhetők el.
 
-Programozott módon is elérheti a metrikákat. További információkat az következő cikkekben talál:
+Programozott módon is elérheti a metrikákat. További információért tekintse át a következő cikkeket:
 
 - [Azure monitor mérőszámok beolvasása a .net](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)-tel. Ez a példa a felhasználónevet és a jelszót használja. Ha tanúsítványt szeretne használni, a FromServicePrincipal metódust a [jelen példában](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs)látható módon kell megadnia a tanúsítvány megadásához. 
 - [Erőforrások metrikáinak és tevékenységi naplóinak beolvasása](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
