@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e8915e1c15972341befd176b412925f4e87c94f6
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: fadbed5607c7ebdd61a42ae054f431840c529d69
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201450"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573063"
 ---
 # <a name="azure-policy-security-baseline-for-azure-security-benchmark"></a>Az Azure biztonsági teljesítményteszt Azure Policy biztonsági alapterve
 
@@ -31,9 +31,9 @@ A Azure Policy a _felelősség_ helyett a _tulajdonos_ kifejezést használja. A
 
 **Útmutató**: a Azure Policy a tevékenység naplóit használja, amelyek automatikusan engedélyezve vannak az eseményforrás, a dátum, a felhasználó, az időbélyeg, a forráscím, a célhelyek és más hasznos elemek belefoglalásához.
 
-* [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../../../azure-monitor/platform/diagnostic-settings.md)
+* [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../../../azure-monitor/essentials/diagnostic-settings.md)
 
-* [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](../../../azure-monitor/platform/platform-logs-overview.md)
+* [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](../../../azure-monitor/essentials/platform-logs-overview.md)
 
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
@@ -89,7 +89,7 @@ Egy igény szerinti vagy elég hozzáférési megoldást is engedélyezhet [Azur
 
 **Útmutató**: a Azure monitor a tevékenység-naplók használatával riasztásokat hozhat létre, amikor a módosítások Azure Policyban lépnek életbe.
 
-* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../../../azure-monitor/platform/alerts-activity-log.md)
+* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../../../azure-monitor/alerts/alerts-activity-log.md)
 
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el

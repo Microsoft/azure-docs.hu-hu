@@ -6,16 +6,16 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7393c36099795bbc989ae4b690100284d53f08e5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 51f938743d8da3c9a1dea546320662701e2b88c8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678392"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583524"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Impact Analysis Application Insights
 
-A hatás azt elemzi, hogy a betöltési idő és más tulajdonságok milyen hatással vannak az alkalmazás különböző részeinek konverziós arányára. Pontosabban fogalmazva azt észleli, hogy egy **oldal nézet** , egy **egyéni esemény** vagy **kérelem** **bármely dimenziója** hatással van-e egy másik **oldal** vagy **egyéni esemény** használatára. 
+A hatás azt elemzi, hogy a betöltési idő és más tulajdonságok milyen hatással vannak az alkalmazás különböző részeinek konverziós arányára. Pontosabban fogalmazva azt észleli, hogy egy **oldal nézet**, egy **egyéni esemény** vagy **kérelem** **bármely dimenziója** hatással van-e egy másik **oldal** vagy **egyéni esemény** használatára. 
 
 ![Hatás eszköz](./media/usage-impact/0001-impact.png)
 
@@ -65,9 +65,9 @@ A motorháztető alatt az Impact eszköz a [Pearson korrelációs együtthatóra
 
 A Impact Analysis működésének alapvető részletezése a következő:
 
-Legyen _a_ = az első legördülő listában kiválasztott fő oldal nézet/egyéni esemény/kérelem. ( **Az oldal nézethez** ).
+Legyen _a_ = az első legördülő listában kiválasztott fő oldal nézet/egyéni esemény/kérelem. (**Az oldal nézethez**).
 
-Legyen _B_ = a másodlagos lap nézete/egyéni kiválasztott esemény ( **a használata hatással** van).
+Legyen _B_ = a másodlagos lap nézete/egyéni kiválasztott esemény (**a használata hatással** van).
 
 A hatás a kiválasztott időtartományban lévő felhasználók összes munkamenetének mintáját vizsgálja. Minden egyes munkamenet esetében az _a_ egyes előfordulásait keresi.
 
@@ -83,8 +83,8 @@ A hatás végső kiszámításának módja attól függően változik, hogy metr
 - A használati tapasztalatok engedélyezéséhez kezdjen el [Egyéni eseményeket](./api-custom-events-metrics.md#trackevent) vagy [oldalletöltések](./api-custom-events-metrics.md#page-views)küldését.
 - Ha már elküldte az egyéni eseményeket vagy a lapok nézeteit, tekintse meg a használati eszközöket, amelyekkel megismerheti, hogy a felhasználók miként használják a szolgáltatást.
     - [Tölcsérek](usage-funnels.md)
-    - [Megőrzés](usage-retention.md)
-    - [Felhasználói folyamatok](usage-flows.md)
-    - [Munkafüzetek](../platform/workbooks-overview.md)
+    - [Visszatartás](usage-retention.md)
+    - [Felhasználókövetés](usage-flows.md)
+    - [Munkafüzetek](../visualize/workbooks-overview.md)
     - [Felhasználói környezet hozzáadása](usage-send-user-context.md)
 

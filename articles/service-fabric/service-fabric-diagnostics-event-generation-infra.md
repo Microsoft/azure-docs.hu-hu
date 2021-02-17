@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 033b4967d3da382057c2651457f7792e760d8bc3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9db0df9370197190c11b740f1fd1af3fb69f19c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86247615"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581409"
 ---
 # <a name="monitoring-the-cluster"></a>A fürt figyelése
 
@@ -70,7 +70,7 @@ Minden olyan információ, amely az alkalmazás állapotának és teljesítmény
 
 ## <a name="service-fabric-support-logs"></a>Service Fabric támogatási naplók
 
-Ha kapcsolatba kell lépnie a Microsoft ügyfélszolgálatával az Azure Service Fabric-fürttel kapcsolatos segítségért, a támogatási naplók szinte mindig szükségesek. Ha a fürt az Azure-ban üzemel, a rendszer automatikusan konfigurálja és gyűjti a támogatási naplókat a fürt létrehozása során. A naplók tárolása egy dedikált Storage-fiókban történik a fürt erőforráscsoport-csoportjában. A Storage-fiók nem rendelkezik rögzített névvel, de a fiókban a blob-tárolók és-táblák a *hálóval*kezdődő névvel jelennek meg. További információ a naplófájlok önálló fürthöz való beállításáról: [önálló Azure Service Fabric-fürt és konfigurációs beállítások létrehozása és kezelése](service-fabric-cluster-creation-for-windows-server.md) [önálló Windows-fürthöz](service-fabric-cluster-manifest.md). Önálló Service Fabric-példányok esetén a naplókat egy helyi fájlmegosztás számára kell elküldeni. Ezeknek a naplóknak támogatásra van **szükségük** , de nem használhatók a Microsoft ügyfélszolgálati csapatán kívüli személyek számára.
+Ha kapcsolatba kell lépnie a Microsoft ügyfélszolgálatával az Azure Service Fabric-fürttel kapcsolatos segítségért, a támogatási naplók szinte mindig szükségesek. Ha a fürt az Azure-ban üzemel, a rendszer automatikusan konfigurálja és gyűjti a támogatási naplókat a fürt létrehozása során. A naplók tárolása egy dedikált Storage-fiókban történik a fürt erőforráscsoport-csoportjában. A Storage-fiók nem rendelkezik rögzített névvel, de a fiókban a blob-tárolók és-táblák a *hálóval* kezdődő névvel jelennek meg. További információ a naplófájlok önálló fürthöz való beállításáról: [önálló Azure Service Fabric-fürt és konfigurációs beállítások létrehozása és kezelése](service-fabric-cluster-creation-for-windows-server.md) [önálló Windows-fürthöz](service-fabric-cluster-manifest.md). Önálló Service Fabric-példányok esetén a naplókat egy helyi fájlmegosztás számára kell elküldeni. Ezeknek a naplóknak támogatásra van **szükségük** , de nem használhatók a Microsoft ügyfélszolgálati csapatán kívüli személyek számára.
 
 ## <a name="measuring-performance"></a>Teljesítmény mérése
 
@@ -81,12 +81,12 @@ A Service Fabric használatakor gyűjtött teljesítményszámlálók listáját
 Íme két gyakori módszer, amelyekkel a fürt teljesítményadatokat gyűjthet:
 
 * **Ügynök használata**  
-Ez az előnyben részesített módszer a gépek teljesítményének begyűjtésére, mivel az ügynökök általában a lehetséges teljesítmény-mérőszámok listáját gyűjtik, és viszonylag egyszerű folyamat, amellyel kiválaszthatja a begyűjteni vagy módosítani kívánt mérőszámokat. Az Azure Monitor ajánlat Azure Monitor naplók beolvasása Service Fabric [Azure monitor naplók integrációja](service-fabric-diagnostics-event-analysis-oms.md) és [a log Analytics-ügynök beállítása](../azure-monitor/platform/agent-windows.md) további információk a log Analytics ügynökről, amely egy ilyen figyelő ügynök, amely képes a fürtözött virtuális gépek és a telepített tárolók teljesítményadatait felvenni.
+Ez az előnyben részesített módszer a gépek teljesítményének begyűjtésére, mivel az ügynökök általában a lehetséges teljesítmény-mérőszámok listáját gyűjtik, és viszonylag egyszerű folyamat, amellyel kiválaszthatja a begyűjteni vagy módosítani kívánt mérőszámokat. Az Azure Monitor ajánlat Azure Monitor naplók beolvasása Service Fabric [Azure monitor naplók integrációja](service-fabric-diagnostics-event-analysis-oms.md) és [a log Analytics-ügynök beállítása](../azure-monitor/agents/agent-windows.md) további információk a log Analytics ügynökről, amely egy ilyen figyelő ügynök, amely képes a fürtözött virtuális gépek és a telepített tárolók teljesítményadatait felvenni.
 
 * **Teljesítményszámlálók az Azure Table Storage**  
 A teljesítménymutatókat is elküldheti ugyanahhoz a tábla-tárolóhoz, mint az eseményeket. Ehhez módosítania kell a Azure Diagnostics konfigurációt a fürtben lévő virtuális gépek megfelelő teljesítményszámlálói kiválasztásához, és lehetővé kell tenni a Docker-statisztika felvételét, ha tárolókat helyez üzembe. További információ a teljesítményszámlálók [a Service FABRIC wad](service-fabric-diagnostics-event-aggregation-wad.md) -ben történő konfigurálásáról a teljesítményszámláló-gyűjtemény beállításához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a Service Fabric [Azure monitor naplók integrálásáról](service-fabric-diagnostics-event-analysis-oms.md) a fürt diagnosztika gyűjtéséhez és egyéni lekérdezések és riasztások létrehozásához
 * Ismerkedjen meg Service Fabric a beépített diagnosztikai felülettel, a [EventStore](service-fabric-diagnostics-eventstore.md)

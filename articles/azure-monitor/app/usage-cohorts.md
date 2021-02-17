@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: f8edeb452f01af88f0305cd0a3e3a2332ec09e4e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 2c35356951560b11a605334aba4c26dbc38086de
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186949"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583545"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights kohorszok
 
@@ -43,7 +43,7 @@ A csapata egy résztvevő felhasználót határoz meg, aki egy adott hónapban �
     * **Időszak**, egy hónap definíciója.
     * **UsedAtLeastCustom**, hogy a felhasználóknak hány alkalommal kell használnia egy adott időszakon belül a befoglalt értéket.
 
-4. Módosítsa **UsedAtLeastCustom** a UsedAtLeastCustom **5 + nap** értékre, és hagyjon **időt** az alapértelmezett 28 napra.
+4. Módosítsa  a UsedAtLeastCustom **5 + nap** értékre, és hagyjon **időt** az alapértelmezett 28 napra.
 
     ![Résztvevő felhasználók](./media/usage-cohorts/003.png)
 
@@ -131,7 +131,7 @@ A kohorszok és a szűrők eltérőek. Tegyük fel, hogy az Egyesült Királysá
 
 ## <a name="learn-more"></a>Tudjon meg többet
 
-* [Elemzés lekérdezési nyelve](../log-query/log-analytics-tutorial.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
+* [Elemzés lekérdezési nyelve](../logs/log-analytics-tutorial.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 * [Felhasználók, munkamenetek, események](usage-segmentation.md)
 * [Felhasználói folyamatok](usage-flows.md)
 * [A használat áttekintése](usage-overview.md)

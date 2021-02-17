@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: df4bd0ae0884feae8bd21e33f4d27b6ceb207337
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 843e11e7f2df404a6bf1866da7b383ee9d1097de
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234001"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574781"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurációs és felügyeleti GYIK az Azure-beli Web Apps
 
@@ -63,7 +63,7 @@ A webalkalmazás kiszolgálói időzónájának beállítása:
 2. Az **Alkalmazásbeállítások** területen adja hozzá a következő beállítást:
     * Kulcs = WEBSITE_TIME_ZONE
     * Value = *a kívánt időzóna*
-3. Válassza a **Mentés** lehetőséget.
+3. Kattintson a **Mentés** gombra.
 
 A Windows rendszeren futó app Services esetében tekintse meg a Windows parancs kimenetét `tzutil /L` . Használja az egyes bejegyzések második sorában található értéket. Például: "Tonga téli idő". Ezen értékek némelyike az [alapértelmezett időzónák](/windows-hardware/manufacture/desktop/default-time-zones) **timezone** oszlopában is szerepel.
 
@@ -292,7 +292,7 @@ A App Serviceban telepített Microsoft .NET verziószámának leggyorsabb módja
 
 ## <a name="why-isnt-autoscale-working-as-expected"></a>Miért nem a várt módon működik az autoskálázás?
 
-Ha az Azure-beli autoskálázás a várt módon nem méretezi át vagy bővíti a webalkalmazási példányt, előfordulhat, hogy olyan forgatókönyvben fut, amelyben szándékosan nem méretezhető, hogy elkerülje a végtelen hurkot a "csapkodás" miatt. Ez általában akkor fordul elő, ha nincs megfelelő árrés a kibővített és a skálázási küszöbértékek között. Ha szeretné megtudni, hogyan kerülheti el a "csapkodás" és az egyéb, az autoscale ajánlott eljárásaival kapcsolatos információkat, tekintse meg az [ajánlott eljárásokat](../azure-monitor/platform/autoscale-best-practices.md#autoscale-best-practices).
+Ha az Azure-beli autoskálázás a várt módon nem méretezi át vagy bővíti a webalkalmazási példányt, előfordulhat, hogy olyan forgatókönyvben fut, amelyben szándékosan nem méretezhető, hogy elkerülje a végtelen hurkot a "csapkodás" miatt. Ez általában akkor fordul elő, ha nincs megfelelő árrés a kibővített és a skálázási küszöbértékek között. Ha szeretné megtudni, hogyan kerülheti el a "csapkodás" és az egyéb, az autoscale ajánlott eljárásaival kapcsolatos információkat, tekintse meg az [ajánlott eljárásokat](../azure-monitor/autoscale/autoscale-best-practices.md#autoscale-best-practices).
 
 ## <a name="why-does-autoscale-sometimes-scale-only-partially"></a>Miért érdemes a méretezést időnként csak részben méretezni?
 

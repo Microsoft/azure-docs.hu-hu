@@ -4,12 +4,12 @@ description: Javaslatok a lemezképek és a titkos kulcsok biztonságossá téte
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: 898bdf77bf4b6636e78f5d735fc8650da4fde2b8
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: cbceeea24501bc9815cb07e1b0a054914ba8e964
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148663"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579277"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>A Azure Container Instances biztonsági szempontjai
 
@@ -115,9 +115,9 @@ Az [Aqua](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.
 
 Más informatikai környezetekhez hasonlóan a tároló-ökoszisztémával kapcsolatos tevékenység-és felhasználói hozzáférés következetes monitorozásával gyorsan azonosíthatja a gyanús vagy kártékony tevékenységeket. Az Azure tároló-figyelési megoldásokat biztosít, többek között:
 
-* A [tárolók Azure monitor](../azure-monitor/insights/container-insights-overview.md) figyeli az Azure Kubernetes szolgáltatásban (ak) üzemeltetett Kubernetes környezetekben üzembe helyezett számítási feladatok teljesítményét. A tárolók Azure Monitor a teljesítmény láthatóságát azáltal, hogy a mérőszámok API-n keresztül Kubernetes elérhető vezérlőket, csomópontokat és tárolókat gyűjt a memória és a processzor metrikáinak összegyűjtéséhez. 
+* A [tárolók Azure monitor](../azure-monitor/containers/container-insights-overview.md) figyeli az Azure Kubernetes szolgáltatásban (ak) üzemeltetett Kubernetes környezetekben üzembe helyezett számítási feladatok teljesítményét. A tárolók Azure Monitor a teljesítmény láthatóságát azáltal, hogy a mérőszámok API-n keresztül Kubernetes elérhető vezérlőket, csomópontokat és tárolókat gyűjt a memória és a processzor metrikáinak összegyűjtéséhez. 
 
-* Az [Azure Container monitoring megoldás](../azure-monitor/insights/containers.md) segítségével egyetlen helyen tekintheti meg és kezelheti a többi Docker-és Windows-tároló gazdagépét. Példa:
+* Az [Azure Container monitoring megoldás](../azure-monitor/containers/containers.md) segítségével egyetlen helyen tekintheti meg és kezelheti a többi Docker-és Windows-tároló gazdagépét. Például:
 
   * Tekintse meg a tárolók által használt parancsokat megjelenítő részletes naplózási információkat. 
   * A tárolók hibaelhárítása központi naplók megtekintésével és keresésével anélkül, hogy távolról kellene megtekintenie a Docker-vagy a Windows-gazdagépeket.  
@@ -139,7 +139,7 @@ Figyelje az erőforrás-tevékenységeket, például a fájlokat, a hálózatot 
 A tároló ökoszisztémájának, például a Kubernetes-fürt, a tároló-beállításjegyzék és a tárolók rendszerképeinek pontos naplózási nyomvonalának fenntartása. Előfordulhat, hogy ezek a naplók naplózási célokra szükségesek, és a biztonsági incidensek után törvényszéki bizonyítékként lesznek hasznosak. Az Azure-megoldások a következők:
 
 * Az [Azure Kubernetes szolgáltatás integrálása a Azure Security Center](../security-center/defender-for-kubernetes-introduction.md) a fürt környezetének biztonsági konfigurációjának figyelésére és biztonsági javaslatok előállítására
-* [Azure Container monitoring megoldás](../azure-monitor/insights/containers.md)
+* [Azure Container monitoring megoldás](../azure-monitor/containers/containers.md)
 * [Azure Container instances](container-instances-log-analytics.md) és [Azure Container Registry](../container-registry/container-registry-diagnostics-audit-logs.md) erőforrás-naplói
 
 ## <a name="next-steps"></a>Következő lépések

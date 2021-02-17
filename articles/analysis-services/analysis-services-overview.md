@@ -8,12 +8,12 @@ ms.date: 01/20/2021
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 542b1ed96025f6bd40cd4da766b434dde3569c25
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 9f8de6ed4f0312a342526fb2ba5d100dfd9ec91f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98663774"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582620"
 ---
 # <a name="what-is-azure-analysis-services"></a>Mi az Azure Analysis Services?
 
@@ -79,7 +79,7 @@ Az Azure Analysis Services a világ összes régiójában támogatott. A támoga
 
 ### <a name="americas"></a>Észak-, Dél- és Közép-Amerika
 
-|Régió  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
+|Region  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
 |---------|---------|:---------:|
 |Dél-Brazília     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
 |Közép-Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
@@ -101,7 +101,7 @@ Az Azure Analysis Services a világ összes régiójában támogatott. A támoga
 
 ### <a name="europe"></a>Európa
 
-|Régió  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
+|Region  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
 |---------|---------|:---------:|
 |Észak-Európa     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
 |Észak-Európa     |    S8v2, S9v2      |    3     |
@@ -111,7 +111,7 @@ Az Azure Analysis Services a világ összes régiójában támogatott. A támoga
 
 ### <a name="asia-pacific"></a>Ázsia és a Csendes-óceáni térség 
 
-|Régió  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
+|Region  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
 |---------|---------|:---------:|
 |Kelet-Ausztrália     |    B1, B2, S0, S1, S2, S4     |    3     |
 |Kelet-Ausztrália     |    S8v2, S9v2    |    1     |
@@ -238,7 +238,7 @@ Az olyan modern adatáttekintési és vizualizációs eszközök, mint például
 
 ## <a name="monitoring-and-diagnostics"></a>Monitorozás és diagnosztika
 
-A Azure Analysis Services Azure Monitor metrikákkal van integrálva, és számos erőforrás-specifikus mérőszámot biztosít a kiszolgálók teljesítményének és állapotának figyeléséhez. További tudnivalókért lásd: [A kiszolgáló metrikáinak monitorozása](analysis-services-monitor.md). Metrikák rögzítése az [erőforrás-platform naplóival](../azure-monitor/platform/platform-logs-overview.md). Naplózhatja és elküldheti a naplókat az [Azure Storage](https://azure.microsoft.com/services/storage/)-ba, továbbíthatja őket az [Azure Event Hubsba](https://azure.microsoft.com/services/event-hubs/), és exportálhatja őket az [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite)-szolgáltatásba [Azure monitor naplókba](https://azure.microsoft.com/services/log-analytics/). További információ: [Diagnosztikai naplózás beállítása](analysis-services-logging.md).
+A Azure Analysis Services Azure Monitor metrikákkal van integrálva, és számos erőforrás-specifikus mérőszámot biztosít a kiszolgálók teljesítményének és állapotának figyeléséhez. További tudnivalókért lásd: [A kiszolgáló metrikáinak monitorozása](analysis-services-monitor.md). Metrikák rögzítése az [erőforrás-platform naplóival](../azure-monitor/essentials/platform-logs-overview.md). Naplózhatja és elküldheti a naplókat az [Azure Storage](https://azure.microsoft.com/services/storage/)-ba, továbbíthatja őket az [Azure Event Hubsba](https://azure.microsoft.com/services/event-hubs/), és exportálhatja őket az [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite)-szolgáltatásba [Azure monitor naplókba](https://azure.microsoft.com/services/log-analytics/). További információ: [Diagnosztikai naplózás beállítása](analysis-services-logging.md).
 
 Az Azure Analysis Services támogatja a [dinamikus felügyeleti nézetek (DMV-k)](/analysis-services/instances/use-dynamic-management-views-dmvs-to-monitor-analysis-services) használatát is. A DMV-k az SQL-szintaxis alapján kapcsolódnak azokhoz a sémasorkészletekhez, amelyek a kiszolgálópéldány metaadatait és monitorozási információit adják vissza.
 

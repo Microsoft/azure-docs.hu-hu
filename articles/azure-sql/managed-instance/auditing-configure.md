@@ -13,12 +13,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
-ms.openlocfilehash: 31a1169ca6c2194b8d5564e5d0df50116dd25084
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: ae0d9696d869b2a260de643482a9f86c34bcc824
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505665"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575469"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Ismerkedés az Azure SQL felügyelt példányok naplózásával
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ Az [Azure SQL felügyelt példányának](sql-managed-instance-paas-overview.md) 
 
 A következő szakasz ismerteti a felügyelt példány naplózásának konfigurációját.
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+1. Nyissa meg az [Azure Portal](https://portal.azure.com).
 2. Hozzon létre egy Azure Storage- **tárolót** , amelyben a naplók tárolása történik.
 
    1. Navigáljon ahhoz az Azure Storage-fiókhoz, ahol a naplókat tárolni szeretné.
@@ -50,7 +50,7 @@ A következő szakasz ismerteti a felügyelt példány naplózásának konfigur�
 
       ![BLOB-tároló létrehozása ikon](./media/auditing-configure/2_create_container_button.png)
 
-   1. Adja meg a tároló **nevét** , állítsa a **nyilvános hozzáférési szintet** **magán** értékre, majd kattintson **az OK** gombra.
+   1. Adja meg a tároló **nevét**, állítsa a **nyilvános hozzáférési szintet** **magán** értékre, majd kattintson **az OK** gombra.
 
       ![BLOB-tároló konfigurációjának létrehozása](./media/auditing-configure/3_create_container_config.png)
 
@@ -79,11 +79,11 @@ A következő szakasz ismerteti a felügyelt példány naplózásának konfigur�
 
         - Konfigurálja az SAS-t a következőképpen:
 
-          - **Engedélyezett szolgáltatások** : blob
+          - **Engedélyezett szolgáltatások**: blob
 
-          - **Kezdési dátum** : az időzónával kapcsolatos problémák elkerülése érdekében használja a tegnapi dátumot
+          - **Kezdési dátum**: az időzónával kapcsolatos problémák elkerülése érdekében használja a tegnapi dátumot
 
-          - **Befejezési dátum** : válassza ki a dátumot, AMELYEN az SAS-jogkivonat lejár
+          - **Befejezési dátum**: válassza ki a dátumot, AMELYEN az SAS-jogkivonat lejár
 
             > [!NOTE]
             > A naplózási hibák elkerülése érdekében újítsa meg a tokent a lejárat után.
@@ -138,7 +138,7 @@ A következő szakasz ismerteti a felügyelt példány naplózásának konfigur�
 
         ![Bejelentkezés az Azure-ba](./media/auditing-configure/12_mi_SSMS_sign_in_to_azure.png)
 
-     1. Válassza ki az előfizetést, a Storage-fiókot és a BLOB-tárolót a legördülő listából, vagy hozzon létre egy saját tárolót a **Létrehozás** gombra kattintva. Ha elkészült, kattintson **az OK gombra** :
+     1. Válassza ki az előfizetést, a Storage-fiókot és a BLOB-tárolót a legördülő listából, vagy hozzon létre egy saját tárolót a **Létrehozás** gombra kattintva. Ha elkészült, kattintson **az OK gombra**:
 
         ![Válassza az Azure-előfizetés, a Storage-fiók és a blob-tároló elemet.](./media/auditing-configure/13_mi_SSMS_select_subscription_account_container.png)
 
@@ -223,7 +223,7 @@ A Event Hubsi naplók adatainak felhasználásához be kell állítania egy stre
 
 Ha a naplókat Azure Monitor naplókba írja a rendszer, azok a Log Analytics munkaterületen érhetők el, ahol a naplózási adatként speciális kereséseket futtathat. Kiindulási pontként navigáljon a Log Analytics munkaterületre. A **General (általános** ) szakaszban kattintson a **naplók** elemre, és adjon meg egy egyszerű lekérdezést, például: a naplók `search "SQLSecurityAuditEvents"` megtekintéséhez.  
 
-A Azure Monitor naplók valós idejű üzemeltetési elemzéseket biztosítanak az integrált keresés és az egyéni irányítópultok használatával, amelyekkel a munkaterhelések és a kiszolgálók több millió rekordját is könnyedén elemezheti. További hasznos információk Azure Monitor naplók keresési nyelvéről és parancsairól: [Azure monitor naplók keresési referenciája](../../azure-monitor/log-query/log-query-overview.md).
+A Azure Monitor naplók valós idejű üzemeltetési elemzéseket biztosítanak az integrált keresés és az egyéni irányítópultok használatával, amelyekkel a munkaterhelések és a kiszolgálók több millió rekordját is könnyedén elemezheti. További hasznos információk Azure Monitor naplók keresési nyelvéről és parancsairól: [Azure monitor naplók keresési referenciája](../../azure-monitor/logs/log-query-overview.md).
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 

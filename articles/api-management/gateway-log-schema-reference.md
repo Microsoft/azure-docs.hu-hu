@@ -8,16 +8,16 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 064ac21e01239f7be3ddca9e48089ce880c6af58
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: df0018e323bc0c5725c9752b25b77612f035c196
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93380388"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582492"
 ---
 # <a name="reference-api-management-resource-log-schema"></a>Hivatkozás: API Management erőforrás-napló sémája
 
-Ez a cikk az Azure API Management GatewayLogs erőforrás-naplójának sémájának hivatkozását tartalmazza. A naplóbejegyzések a [legfelső szintű közös sémában](../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema)található mezőket is tartalmazzák.
+Ez a cikk az Azure API Management GatewayLogs erőforrás-naplójának sémájának hivatkozását tartalmazza. A naplóbejegyzések a [legfelső szintű közös sémában](../azure-monitor/essentials/resource-logs-schema.md#top-level-common-schema)található mezőket is tartalmazzák.
 
 A API Management erőforrás-napló gyűjtésének engedélyezéséhez tekintse meg a [közzétett API-k figyelése](api-management-howto-use-azure-monitor.md#resource-logs)című témakört.
 
@@ -49,5 +49,5 @@ Az egyes API-kérelmeket a következő tulajdonságok naplózzák.
 ## <a name="next-steps"></a>Következő lépések
 
 * További információ a API Management API-k monitorozásáról: a [közzétett API-k figyelése](api-management-howto-use-azure-monitor.md)
-* További információ az [Azure-beli erőforrás-naplók általános és szolgáltatás-specifikus sémájáról](../azure-monitor/platform/resource-logs-schema.md)
+* További információ az [Azure-beli erőforrás-naplók általános és szolgáltatás-specifikus sémájáról](../azure-monitor/essentials/resource-logs-schema.md)
 

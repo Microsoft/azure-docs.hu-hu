@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a106455ea9d7b7a64fecd7c4255c294d0bd62db8
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: cfc980fdabdb9c6e7085088db12754243f133d89
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562616"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581389"
 ---
 # <a name="security-best-practices"></a>Ajánlott biztonsági eljárások
 
@@ -29,16 +29,16 @@ A Windows rendszerű virtuális asztali környezetében a következő biztonság
 
 | Biztonsági igények | Az ügyfél felelős erre? |
 |---------------|:-------------------------:|
-|Identitás|Igen|
-|Felhasználói eszközök (mobil és PC)|Igen|
-|Alkalmazás biztonsága|Igen|
-|Munkamenet-gazda operációs rendszer|Igen|
-|Központi telepítés konfigurálása|Igen|
-|Hálózati vezérlők|Igen|
-|Virtualizációs vezérlő síkja|Nem|
-|Fizikai gazdagépek|Nem|
-|Fizikai hálózat|Nem|
-|Fizikai adatközpont|Nem|
+|Identitás|Yes|
+|Felhasználói eszközök (mobil és PC)|Yes|
+|Alkalmazás biztonsága|Yes|
+|Munkamenet-gazda operációs rendszer|Yes|
+|Központi telepítés konfigurálása|Yes|
+|Hálózati vezérlők|Yes|
+|Virtualizációs vezérlő síkja|No|
+|Fizikai gazdagépek|No|
+|Fizikai hálózat|No|
+|Fizikai adatközpont|No|
 
 Az ügyfél nem felelős a Microsoft által kezelt biztonsági követelményeknek.
 
@@ -80,10 +80,10 @@ A [feltételes hozzáférés](../active-directory/conditional-access/overview.md
 
 A naplózás engedélyezésével megtekintheti a Windows rendszerű virtuális asztallal kapcsolatos felhasználói és rendszergazdai tevékenységeket. Néhány példa a legfontosabb naplókra:
 
--   [Azure-tevékenység naplója](../azure-monitor/platform/activity-log.md)
+-   [Azure-tevékenységnapló](../azure-monitor/essentials/activity-log.md)
 -   [Azure Active Directory tevékenység naplója](../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)
 -   [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)
--   [Munkamenet-gazdagépek](../azure-monitor/platform/agent-windows.md)
+-   [Munkamenet-gazdagépek](../azure-monitor/agents/agent-windows.md)
 -   [Windows rendszerű virtuális asztali diagnosztikai napló](../virtual-desktop/diagnostics-log-analytics.md)
 -   [Naplók Key Vault](../key-vault/general/logging.md)
 
@@ -170,6 +170,6 @@ Az operációs rendszer képességeinek korlátozásával megerősítheti a munk
 
 - A nemkívánatos szoftverek futtatásának megakadályozása a munkamenet-gazdagépeken. A munkamenet-gazdagépek további biztonsága érdekében engedélyezheti az alkalmazások zárolását, így biztosíthatja, hogy csak az Ön által engedélyezett alkalmazások futhatnak a gazdagépen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A többtényezős hitelesítés engedélyezéséről a [többtényezős hitelesítés beállítása](set-up-mfa.md)című témakörben olvashat bővebben.

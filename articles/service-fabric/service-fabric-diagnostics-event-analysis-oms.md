@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: srrengar
-ms.openlocfilehash: f44426103b8f0fce275f33682edbc3b84a08344b
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 678e96c9b5611cd6d72abd7c4582691b55ffe479
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329559"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581552"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Események elemzése és vizualizáció Azure Monitor naplókkal
  Azure Monitor naplók gyűjti és elemzi a felhőben üzemeltetett alkalmazások és szolgáltatások telemetria, és elemzési eszközöket biztosít a rendelkezésre állás és a teljesítmény maximalizálása érdekében. Ez a cikk azt ismerteti, hogyan futtathat lekérdezéseket Azure Monitor-naplókban, hogy betekintést nyerjen, és hárítsa el, mi történik a fürtben. A következő gyakori kérdéseket tárgyaljuk:
@@ -34,7 +34,7 @@ Azure Monitor naplókból származó adatok fogadása után az Azure számos oly
 
 Az [Azure Portalon](https://portal.azure.com)nyissa meg azt az erőforráscsoportot, amelyben létrehozta a Service Fabric Analytics megoldást.
 
-Válassza ki az erőforrás- **ServiceFabric \<nameOfOMSWorkspace\> **.
+Válassza ki az erőforrás- **ServiceFabric \<nameOfOMSWorkspace\>**.
 
 A-ben a `Summary` csempék egy gráf formájában jelennek meg az összes engedélyezett megoldáshoz, beleértve az egyiket a Service Fabric. A Service Fabric Analytics megoldás folytatásához kattintson a **Service Fabric** gráfra.
 
@@ -74,7 +74,7 @@ Több mezőből is lekérdezhető, például a rendszerszolgáltatás (feladatn�
 
 ## <a name="view-service-fabric-reliable-service-and-actor-events"></a>Megbízható szolgáltatás-és Actor-események megtekintése Service Fabric
 
-A Service Fabric Analytics lapon kattintson a **Reliable Services**gráfra.
+A Service Fabric Analytics lapon kattintson a **Reliable Services** gráfra.
 
 ![Service Fabric megoldás Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
 
@@ -100,10 +100,10 @@ A Kusto lekérdezési nyelve nagy teljesítményű. Egy másik értékes lekérd
 
 ![Események lekérdezése/csomópont](media/service-fabric-diagnostics-event-analysis-oms/oms_kusto_query.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az infrastruktúra figyelésének engedélyezéséhez, azaz a teljesítményszámlálók létrehozásához lépjen [a log Analytics-ügynök hozzáadásához](service-fabric-diagnostics-oms-agent.md). Az ügynök gyűjti a teljesítményszámlálókat, és hozzáadja őket a meglévő munkaterülethez.
-* Helyszíni fürtök esetén a Azure Monitor-naplók egy átjárót (HTTP-továbbítási proxyt) biztosítanak, amellyel az adatküldés Azure Monitor naplókba. További információ arról, hogy a [számítógépek internetkapcsolat nélküli csatlakoztatása Azure monitor naplókhoz a log Analytics átjáró használatával](../azure-monitor/platform/gateway.md).
-* [Automatikus riasztások](../azure-monitor/platform/alerts-overview.md) konfigurálása az észlelés és a diagnosztika támogatásához.
-* Ismerkedjen meg az Azure Monitor naplók részeként kínált [naplóbeli keresési és lekérdezési](../azure-monitor/log-query/log-query-overview.md) funkciókkal.
+* Helyszíni fürtök esetén a Azure Monitor-naplók egy átjárót (HTTP-továbbítási proxyt) biztosítanak, amellyel az adatküldés Azure Monitor naplókba. További információ arról, hogy a [számítógépek internetkapcsolat nélküli csatlakoztatása Azure monitor naplókhoz a log Analytics átjáró használatával](../azure-monitor/agents/gateway.md).
+* [Automatikus riasztások](../azure-monitor/alerts/alerts-overview.md) konfigurálása az észlelés és a diagnosztika támogatásához.
+* Ismerkedjen meg az Azure Monitor naplók részeként kínált [naplóbeli keresési és lekérdezési](../azure-monitor/logs/log-query-overview.md) funkciókkal.
 * Részletes áttekintést kaphat Azure Monitor naplókról, valamint arról, hogy mit kínál, olvassa el a [Mi az Azure monitor naplók?](../azure-monitor/overview.md)című témakört.

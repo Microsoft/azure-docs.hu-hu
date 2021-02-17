@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: b-juche
-ms.openlocfilehash: 4a4fff18d21ccb0c729ecb1f79df17225c8086bc
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: ed03e20f7a1a24d1a38e023b958959fdc6fdc326
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632673"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579349"
 ---
 # <a name="requirements-and-considerations-for-using-cross-region-replication"></a>A régiók közötti replikáció használatára vonatkozó követelmények és szempontok 
 
@@ -29,7 +29,7 @@ Vegye figyelembe az alábbi követelményeket és szempontokat a Azure NetApp Fi
 
 * A régiók közötti replikációs szolgáltatás jelenleg nyilvános előzetes verzióban érhető el. Be kell küldenie egy várólistára vonatkozó kérelmet a szolgáltatás eléréséhez a [Azure NetApp Files régiók közötti replikációs várólista-küldési lapon](https://aka.ms/anfcrrpreviewsignup). Várjon egy hivatalos visszaigazoló e-mailt a Azure NetApp Files csapattól a régiók közötti replikációs szolgáltatás használata előtt.
 * Azure NetApp Files replikáció csak bizonyos rögzített régiós párokban érhető el. Lásd: [támogatott régió párok](cross-region-replication-introduction.md#supported-region-pairs). 
-* Az SMB-kötetek az NFS-kötetekkel együtt támogatottak. Az SMB-kötetek replikálásához Active Directory kapcsolat szükséges a forrás-és a cél NetApp-fiókokban. A cél AD-kapcsolatnak hozzáféréssel kell rendelkeznie a DNS-kiszolgálókhoz, vagy hozzá kell adnia azokat a tartományvezérlőket, amelyek elérhetők a célként megadott régióban lévő delegált alhálózatból. További információ: [Active Directory kapcsolatokra vonatkozó követelmények](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections). 
+* Az SMB-kötetek az NFS-kötetekkel együtt támogatottak. Az SMB-kötetek replikálásához Active Directory kapcsolat szükséges a forrás-és a cél NetApp-fiókokban. A cél AD-kapcsolatnak hozzáféréssel kell rendelkeznie a DNS-kiszolgálókhoz, vagy hozzá kell adnia azokat a tartományvezérlőket, amelyek elérhetők a célként megadott régióban lévő delegált alhálózatból. További információ: [Active Directory kapcsolatokra vonatkozó követelmények](create-active-directory-connections.md#requirements-for-active-directory-connections). 
 * A célként megadott fióknak a forrás kötet régiójától eltérő régióban kell lennie. Másik régióban is kiválaszthat egy meglévő NetApp-fiókot.  
 * A replikálási cél kötete csak olvasható, amíg át nem adja a rendeltetési [régiónak](cross-region-replication-manage-disaster-recovery.md#fail-over-to-destination-volume) , hogy a cél kötetet olvasási és írási célra engedélyezze. 
 * Azure NetApp Files replikáció jelenleg nem támogatja több előfizetést; az összes replikációt egyetlen előfizetés alatt kell végrehajtani.

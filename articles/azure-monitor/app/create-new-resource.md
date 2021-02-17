@@ -3,12 +3,12 @@ title: Új Azure Application Insights-erőforrás létrehozása | Microsoft Docs
 description: Application Insights figyelésének manuális beállítása egy új élő alkalmazáshoz.
 ms.topic: conceptual
 ms.date: 02/10/2021
-ms.openlocfilehash: 3233aed895eac269bd34a961728b3302581ff360
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 1ec5e929f591c0b7ada36f345d86c6de591892c8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104586"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575627"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights-erőforrás létrehozása
 
@@ -35,7 +35,7 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és hozzon létre 
    | **Erőforrás mód** | `Classic` vagy `Workspace-based` | A munkaterület-alapú erőforrások jelenleg nyilvános előzetes verzióban érhetők el, és lehetővé teszik, hogy egy közös Log Analytics munkaterületre küldje el Application Insights telemetria. További információt a [munkaterület-alapú erőforrások című cikkben](create-workspace-resource.md)talál.
 
 > [!NOTE]
-> Habár ugyanazt az erőforrást használhatja a különböző erőforráscsoportok között, hasznos lehet globálisan egyedi nevet használni. Ez akkor lehet hasznos, ha [több erőforrás-lekérdezést kell végrehajtania](../log-query/cross-workspace-query.md#identifying-an-application) , mivel leegyszerűsíti a szükséges szintaxist.
+> Habár ugyanazt az erőforrást használhatja a különböző erőforráscsoportok között, hasznos lehet globálisan egyedi nevet használni. Ez akkor lehet hasznos, ha [több erőforrás-lekérdezést kell végrehajtania](../logs/cross-workspace-query.md#identifying-an-application) , mivel leegyszerűsíti a szükséges szintaxist.
 
 Adja meg a megfelelő értékeket a kötelező mezőkben, majd válassza a **felülvizsgálat + létrehozás** elemet.
 
@@ -159,13 +159,13 @@ A parancs teljes Azure CLI-dokumentációja, valamint a rendszerállapot-kulcs b
 
 ## <a name="next-steps"></a>Következő lépések
 * [Diagnosztikai keresés](./diagnostic-search.md)
-* [Metrikák böngészése](../platform/metrics-charts.md)
-* [Analytics-lekérdezések](../log-query/log-query-overview.md)
+* [Metrikák böngészése](../essentials/metrics-charts.md)
+* [Analytics-lekérdezések](../logs/log-query-overview.md)
 
 <!--Link references-->
 
 [api]: ./api-custom-events-metrics.md
 [diagnostic]: ./diagnostic-search.md
-[metrics]: ../platform/metrics-charts.md
+[metrics]: ../essentials/metrics-charts.md
 [start]: ./app-insights-overview.md
 

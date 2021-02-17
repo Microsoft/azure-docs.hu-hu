@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 226d5a46482d6611fdecf214d040fc27af9ac586
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: bc75ee64174957ad6486146b4da6f8a66a2120e5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632046"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570556"
 ---
 # <a name="connect-windows-security-events"></a>A Windows biztonsági eseményeinek csatlakoztatása 
 
@@ -56,7 +56,7 @@ Windowsos biztonsági események összegyűjtése az Azure Sentinelben:
 
 1. Ellenőrizze, hogy rendelkezik-e a megfelelő engedélyekkel az összekötő lapon az **Előfeltételek** részben leírtak szerint.
 
-1. Töltse le és telepítse a [log Analytics-ügynököt](../azure-monitor/platform/log-analytics-agent.md) (más néven Microsoft monitoring agentet vagy MMA-t) azon gépekre, amelyeken biztonsági eseményeket szeretne továbbítani az Azure Sentinel szolgáltatásba.
+1. Töltse le és telepítse a [log Analytics-ügynököt](../azure-monitor/agents/log-analytics-agent.md) (más néven Microsoft monitoring agentet vagy MMA-t) azon gépekre, amelyeken biztonsági eseményeket szeretne továbbítani az Azure Sentinel szolgáltatásba.
 
     Azure-Virtual Machines esetén:
     
@@ -73,9 +73,9 @@ Windowsos biztonsági események összegyűjtése az Azure Sentinelben:
     >
     > Annak engedélyezéséhez, hogy a Windows rendszerű rendszerek ne legyenek a szükséges internetkapcsolattal az Azure Sentinelhez, töltse le és telepítse a **OMS-átjárót** egy külön gépre, a jobb alsó sarokban lévő hivatkozásra kattintva, hogy proxyként működjön.  Továbbra is telepítenie kell a Log Analytics-ügynököt minden olyan Windows rendszerre, amelynek eseményeit össze szeretné gyűjteni.
     >
-    > Erről a forgatókönyvről a [ **log Analytics átjáró** dokumentációjában](../azure-monitor/platform/gateway.md)talál további információt.
+    > Erről a forgatókönyvről a [ **log Analytics átjáró** dokumentációjában](../azure-monitor/agents/gateway.md)talál további információt.
 
-    További telepítési lehetőségekért és további részletekért tekintse meg az [ **log Analytics ügynök** dokumentációját](../azure-monitor/platform/agent-windows.md).
+    További telepítési lehetőségekért és további részletekért tekintse meg az [ **log Analytics ügynök** dokumentációját](../azure-monitor/agents/agent-windows.md).
 
 1. Válassza ki, hogy melyik eseményazonosító ([az összes, a Common vagy a minimum](#event-sets)) legyen továbbítva.
 

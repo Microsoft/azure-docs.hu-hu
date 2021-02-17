@@ -3,12 +3,12 @@ title: Bevezetés
 description: Ismerje meg az Azure VMware-megoldás funkcióit és előnyeit a VMware-alapú számítási feladatok Azure-beli üzembe helyezéséhez és kezeléséhez.
 ms.topic: overview
 ms.date: 11/11/2020
-ms.openlocfilehash: 57edfc5786dfc95070b66eb9c8e2e038bafdcd35
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 255d3599385c60d3b13f4769796ced41a1177311
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534653"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579287"
 ---
 # <a name="what-is-azure-vmware-solution"></a>Mi az az Azure VMware Solution?
 
@@ -48,12 +48,12 @@ Miután telepítette az Azure VMware-megoldást az előfizetésbe, [Azure monito
 
 A saját felhőben a következőket teheti:
 - Gyűjtsön naplókat az egyes virtuális gépeken.
-- [Töltse le és telepítse az MMA-ügynököt](../azure-monitor/platform/log-analytics-agent.md#installation-options) Linux és Windows rendszerű virtuális gépekre.
-- Engedélyezze az [Azure Diagnostics bővítményt](../azure-monitor/platform/diagnostics-extension-overview.md).
-- [Hozzon létre és futtasson új lekérdezéseket](../azure-monitor/platform/data-platform-logs.md#log-queries).
+- [Töltse le és telepítse az MMA-ügynököt](../azure-monitor/agents/log-analytics-agent.md#installation-options) Linux és Windows rendszerű virtuális gépekre.
+- Engedélyezze az [Azure Diagnostics bővítményt](../azure-monitor/agents/diagnostics-extension-overview.md).
+- [Hozzon létre és futtasson új lekérdezéseket](../azure-monitor/logs/data-platform-logs.md#log-queries).
 - Futtassa ugyanazokat a lekérdezéseket, amelyeket általában futtat a virtuális gépeken.
 
-Az Azure VMware-megoldáson belüli figyelési minták hasonlóak az Azure-beli virtuális gépekhez a IaaS platformon belül. További információk és útmutatók: Azure-beli [virtuális gépek figyelése Azure monitorokkal](../azure-monitor/insights/monitor-vm-azure.md).
+Az Azure VMware-megoldáson belüli figyelési minták hasonlóak az Azure-beli virtuális gépekhez a IaaS platformon belül. További információk és útmutatók: Azure-beli [virtuális gépek figyelése Azure monitorokkal](../azure-monitor/vm/monitor-vm-azure.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

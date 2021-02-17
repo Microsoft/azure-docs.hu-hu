@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: 152fee2e4e72cee6a7bc1c768c0a8ca7b031ec39
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 1efd91d92bac1bc1f39d82aaa0cc71daa0275f8e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878918"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570534"
 ---
 # <a name="connect-your-salesforce-service-cloud-to-azure-sentinel"></a>A Salesforce Service-felhő összekötése az Azure Sentinel szolgáltatással
 
@@ -35,7 +35,7 @@ Ez a cikk azt ismerteti, hogyan csatlakoztatható a Salesforce Service Cloud-meg
 
 - Olvasási és írási engedéllyel kell rendelkeznie az Azure Sentinel munkaterületen.
 
-- Olvasási jogosultsággal kell rendelkeznie a munkaterület megosztott kulcsaihoz. [További információ a munkaterület kulcsairól](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key).
+- Olvasási jogosultsággal kell rendelkeznie a munkaterület megosztott kulcsaihoz. [További információ a munkaterület kulcsairól](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key).
 
 - Függvényalkalmazás létrehozásához olvasási és írási engedéllyel kell rendelkeznie a Azure Functionshoz. [További információ a Azure Functionsról](../azure-functions/index.yml).
 
@@ -61,7 +61,7 @@ Néhány hasznos minta lekérdezéshez tekintse meg az összekötő lap **követ
 
 Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Analytics.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtanulta, hogyan csatlakoztatható a Salesforce Service Cloud az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
