@@ -7,23 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 01/23/2021
-ms.openlocfilehash: 57867cc4fb539b07fc1e4117f6e956078c41e2c6
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.date: 02/15/2021
+ms.openlocfilehash: 3be043af7b057c47f360ce36db6bb7c3afd80638
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746696"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535348"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rövid útmutató: Azure Cognitive Search-szolgáltatások létrehozása a portálon
 
 Az [azure Cognitive Search](search-what-is-azure-search.md) egy Azure-erőforrás, amellyel teljes szöveges keresési élményt adhat hozzá az egyéni alkalmazásokhoz. Egyszerűen integrálható más Azure-szolgáltatásokkal, amelyek adatkezelést vagy további feldolgozást tesznek lehetővé, a hálózati kiszolgálókon lévő alkalmazásokkal vagy más felhőalapú platformokon futó szoftverekkel.
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre keresési szolgáltatást a [Azure Portalban](https://portal.azure.com/).
+A keresési szolgáltatás a jelen cikkben ismertetett [Azure Portal](https://portal.azure.com/)használatával hozható létre. Az [Azure PowerShell](search-manage-powershell.md), az [Azure CLI](/cli/azure/search)vagy egy [Azure Resource Manager-szolgáltatás sablonját](https://azure.microsoft.com/resources/templates/101-azure-search-create/)is használhatja.
 
 [![Animált GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
-
-Szívesebben használja a PowerShellt? Használja az Azure Resource Manager [szolgáltatássablonját](https://azure.microsoft.com/resources/templates/101-azure-search-create/). Az első lépésekkel kapcsolatos segítségért lásd: az [Azure Cognitive Search kezelése a PowerShell](search-manage-powershell.md)-lel.
 
 ## <a name="before-you-start"></a>Előkészületek
 
@@ -136,9 +134,9 @@ A portálon alapuló feladatokhoz nincs szükség végpontra és kulcsra. A port
 
 A szolgáltatást annak üzembe helyezése után igényei szerint méretezheti. Ha az Azure Cognitive Search szolgáltatás standard csomagját választotta, akkor a szolgáltatás két dimenzióban méretezhető: replikák és partíciók. Ha az alapszintű csomagot választotta volna, akkor csak replikákat adhatna hozzá. Ingyenes szolgáltatás üzembe helyezése esetén a méretezés nem elérhető.
 
-*A *_Partitions_* _ lehetővé teszi, hogy a szolgáltatás több dokumentumon tárolja és keressen.
+A ***partíciókkal*** a szolgáltatás több dokumentum tárolására és keresésére alkalmas.
 
-A _*_replikák_*_ lehetővé teszik, hogy a szolgáltatás nagyobb terhelésű keresési lekérdezéseket kezeljen.
+A ***replikákkal*** a szolgáltatás több keresési kérelem kiszolgálására alkalmas.
 
 Az erőforrások hozzáadása növeli a havi költségeket. A [díjkalkulátor](https://azure.microsoft.com/pricing/calculator/) segíthet áttekinteni az erőforrások hozzáadásának számlázási vonatkozásait. Vegye figyelembe, hogy az erőforrások mennyisége a terheléshez igazítható. Például növelheti az erőforrások mennyiségét egy teljes körű első index létrehozásához, majd később csökkentheti azt a növekményes indexeléshez jobban megfelelő szintre.
 
@@ -146,7 +144,7 @@ Az erőforrások hozzáadása növeli a havi költségeket. A [díjkalkulátor](
 > A szolgáltatásnak [csak olvasható SLA esetén 2, írási/olvasási SLA esetén 3 replikával](https://azure.microsoft.com/support/legal/sla/search/v1_0/) kell rendelkeznie.
 
 1. Nyissa meg a keresési szolgáltatás oldalát az Azure Portalon.
-2. A bal oldali navigációs panelen válassza a _ *Beállítások** > **skálázás** lehetőséget.
+2. A bal oldali navigációs panelen válassza a **Beállítások**  >  **skála** lehetőséget.
 3. A csúszka segítségével bármelyik típusú erőforrásokat hozzáadhatja.
 
 :::image type="content" source="media/search-create-service-portal/settings-scale.png" alt-text="Kapacitás hozzáadása replikák és partíciók használatával" border="false":::
@@ -171,7 +169,7 @@ Bár az ügyfelek többsége csak egy szolgáltatást használ, szükség lehet 
 
 A magas rendelkezésre álláshoz nincs szükség második szolgáltatásra. A lekérdezések magas rendelkezésre állása úgy érhető el, hogy egyazon szolgáltatáson belül 2 vagy több replikát használ. A replika frissítései szekvenciálisak, ami azt jelenti, hogy legalább egy működőképes a szolgáltatás frissítésekor. További információ az üzemidőről: [szolgáltatói szerződések](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A szolgáltatás kiépítés után folytathatja a portálon az első index létrehozását.
 

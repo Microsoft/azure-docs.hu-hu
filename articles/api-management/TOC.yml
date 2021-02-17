@@ -27,8 +27,10 @@
     - name: 1 – Az első API importálása
       href: import-and-publish.md
     - name: 2 – Termékek létrehozása és közzététele
+      displayName: 'Azure CLI, az apim product'
       href: api-management-howto-add-products.md
     - name: 3 – API-válaszok utánzása
+      displayName: 'Azure CLI, az apim api operation'
       href: mock-api-responses.md
     - name: 4 – Az API védelme
       href: transform-api.md
@@ -37,8 +39,10 @@
     - name: 6 – API-k hibakeresése
       href: api-management-howto-api-inspector.md
     - name: 7 – Változatok hozzáadása
+      displayName: 'Azure CLI, az apim api release'
       href: api-management-get-started-revise-api.md
     - name: 8 – Több verzió hozzáadása
+      displayName: 'Azure CLI, az apim api versionset'
       href: api-management-get-started-publish-versions.md
     - name: 9 – A fejlesztői portál testreszabása
       href: api-management-howto-developer-portal-customize.md
@@ -225,6 +229,7 @@
         - name: Külső szolgáltatások használata
           href: api-management-sample-send-request.md
         - name: Titkos kulcsok kezelése nevesített értékekkel
+          displayName: 'Azure CLI, az apim nv'
           href: api-management-howto-properties.md
         - name: Hozzáférés-korlátozási szabályzatok
           href: api-management-access-restriction-policies.md

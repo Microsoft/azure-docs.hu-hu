@@ -55,13 +55,13 @@
           href: role-assignments-list-cli.md
         - name: REST API
           href: role-assignments-list-rest.md
-    - name: Szerepkör-hozzárendelések hozzáadása vagy eltávolítása
+    - name: Szerepkörök hozzárendelése
       items:
-        - name: Szerepkör-hozzárendelés hozzáadásának lépései
+        - name: Szerepkörök hozzárendelésének lépései
           href: role-assignments-steps.md
         - name: Portál
           items:
-            - name: Szerepkör-hozzárendelések hozzáadása vagy eltávolítása
+            - name: Szerepkörök hozzárendelése
               href: role-assignments-portal.md
             - name: Előfizetés-rendszergazda
               href: role-assignments-portal-subscription-admin.md
@@ -78,6 +78,8 @@
         - name: ARM-sablon
           displayName: Resource Manager
           href: role-assignments-template.md
+    - name: Szerepkör-hozzárendelések eltávolítása
+      href: role-assignments-remove.md
     - name: Megtagadás-hozzárendelések felsorolása
       items:
         - name: Áttekintés

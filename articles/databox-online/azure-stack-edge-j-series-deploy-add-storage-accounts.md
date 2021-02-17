@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to storage accounts on Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: c24970b30e522d593a491194dbbabb0421ad7f4b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: b346cf37a8275b1783e94e0f51859b8c87eb9b67
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185571"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546822"
 ---
 # <a name="tutorial-transfer-data-via-storage-accounts-with-azure-stack-edge-pro-gpu"></a>Oktatóanyag: adatok átvitele a Storage-fiókok használatával Azure Stack Edge Pro GPU-val 
 
@@ -24,7 +24,7 @@ Ez az oktatóanyag azt ismerteti, hogyan lehet hozzáadni és csatlakozni a Stor
 
 Az eljárás végrehajtása körülbelül 30 percet vesz igénybe.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Storage-fiók hozzáadása
@@ -137,9 +137,9 @@ Ezeket a lépéseket az alábbi szakaszokban ismertetjük.
 
 A blob Storage HTTPS-kapcsolaton keresztüli eléréséhez SSL-tanúsítvány szükséges az eszközhöz. Ezt a tanúsítványt a Azure Stack Edge Pro-eszközre is fel kell töltenie *. pfx* -fájlként, amelyhez titkos kulccsal csatolva van. További információ a létrehozásáról (csak tesztelési és fejlesztési célokra) és a tanúsítványok Azure Stack Edge Pro-eszközre való feltöltéséhez keresse fel a következőt:
 
-- [Hozza létre a blob-végpont tanúsítványát](azure-stack-edge-j-series-manage-certificates.md#create-certificates-optional).
-- [Töltse fel a blob-végpont tanúsítványát](azure-stack-edge-j-series-manage-certificates.md#upload-certificates).
-- [Tanúsítványok importálása az eszközhöz hozzáférő ügyfélen](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device).
+- [Hozza létre a blob-végpont tanúsítványát](azure-stack-edge-gpu-manage-certificates.md#create-certificates-optional).
+- [Töltse fel a blob-végpont tanúsítványát](azure-stack-edge-gpu-manage-certificates.md#upload-certificates).
+- [Tanúsítványok importálása az eszközhöz hozzáférő ügyfélen](azure-stack-edge-gpu-manage-certificates.md#import-certificates-on-the-client-accessing-the-device).
 
 ### <a name="import-certificate"></a>Tanúsítvány importálása
 
@@ -163,7 +163,7 @@ A következő lépésekkel importálhatja a tanúsítványokat a Azure Storage E
 
 ### <a name="configure-and-verify-connection"></a>A kapcsolatok konfigurálása és ellenőrzése
 
-A HTTP protokollon [keresztüli kapcsolódás során használt kapcsolat konfigurálásához és ellenőrzéséhez *http*](#verify-connection)kövesse az alábbi lépéseket. Az egyetlen különbség, hogy a *http használata beállítás* nincs bejelölve.
+A HTTP protokollon [keresztüli kapcsolódás során használt kapcsolat konfigurálásához és ellenőrzéséhez ](#verify-connection)kövesse az alábbi lépéseket. Az egyetlen különbség, hogy a *http használata beállítás* nincs bejelölve.
 
 ## <a name="next-steps"></a>Következő lépések
 

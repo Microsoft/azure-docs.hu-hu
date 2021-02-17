@@ -4,18 +4,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: gelecaro
-ms.openlocfilehash: f674edd15b86f49d60450a53f5df5852b32f95a4
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: cf765145cafa2eb06d77ea2e153e45c296281b71
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906434"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100551643"
 ---
 Ez az útmutató bemutatja, hogyan telepítheti a Linux rendszerhez készült [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
-## <a name="system-requirements"></a>Rendszerkövetelmények
+## <a name="system-requirements"></a>System requirements (Rendszerkövetelmények)
 
 Linux Tekintse meg a [támogatott Linux-disztribúciók és a megcélzott architektúrák](~/articles/cognitive-services/speech-service/speech-sdk.md)listáját.
 
@@ -23,6 +23,7 @@ Linux Tekintse meg a [támogatott Linux-disztribúciók és a megcélzott archit
 
 A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
+* Windows rendszeren a platformhoz a [Microsoft Visual C++ terjeszthető változata szükséges a Visual Studio 2019](https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0) -hez. Ha először telepíti az elsőt, újraindításra lehet szükség.
 * GCC
 * [Go Binary (1,13 vagy újabb)](https://golang.org/dl/)
 

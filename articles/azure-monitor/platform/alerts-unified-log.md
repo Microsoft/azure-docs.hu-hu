@@ -4,14 +4,14 @@ description: E-mailek, értesítések, a webhelyek URL-címeinek (webhookok), va
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 5/31/2019
+ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: a913bc0ae01507cb26c1650d63918a8319eeacf4
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: 0f81dd14988b069931bddf5f5636cb1bab426641
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857426"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100544868"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Riasztások naplózása Azure Monitor
 
@@ -51,7 +51,7 @@ A szabály kiértékeléséhez használt [log Analytics](../log-query/log-analyt
 - Több erőforrás több [erőforrást használó lekérdezéssel](../log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights). 
  
 > [!IMPORTANT]
-> A riasztási lekérdezések megkötésekkel biztosítják az optimális teljesítményt és az eredmények helytállóságát. [További információ itt](./alerts-log-query.md).
+> A riasztási lekérdezések megkötésekkel biztosítják az optimális teljesítményt és az eredmények helytállóságát. [További információt itt talál](./alerts-log-query.md).
 
 > [!IMPORTANT]
 > Az erőforrás-központú és az [erőforrások közötti lekérdezés](../log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) csak a jelenlegi scheduledQueryRules API használatával támogatott. Ha az örökölt [log Analytics riasztási API](api-alerts.md)-t használja, váltania kell. [További információ a váltásról](./alerts-log-api-switch.md)
@@ -64,7 +64,7 @@ A log analyticshez hasonlóan az időtartomány is a megadott tartományra korl�
 
 Egy lekérdezés például 60 percet vizsgál, ha az időtartomány 60 perc, még akkor is, ha a szöveg már tartalmazza a **következőt: ago (1d)**. Az időtartománynak és a lekérdezési idő szűrésének meg kell egyeznie. A példában az **adott időszakra** vonatkozó  /  **felülbírálás lekérdezési időtartománya** egy napra változik, a várt módon fog működni.
 
-### <a name="measure"></a>Mérték
+### <a name="measure"></a>Measure
 
 A naplózási riasztások olyan numerikus értékekre jelentkeznek be, amelyek kiértékelése lehetséges. Két különböző dolgot mérhető fel:
 
@@ -205,7 +205,7 @@ A díjszabási információk a [Azure monitor díjszabási oldalán](https://azu
 > [!NOTE]
 > Az örökölt [log Analytics riasztási API](api-alerts.md) -val és a [log Analytics mentett keresések és riasztások](../insights/solutions.md)örökölt sablonjaival felügyelhető log Analytics naplózási riasztásai. [További információ az aktuális SCHEDULEDQUERYRULES API-ra való áttérésről](alerts-log-api-switch.md). A riasztási szabályok kezelését a [régi log Analytics API](api-alerts.md) használatával kell elvégezni, amíg nem dönt, és nem tudja használni a rejtett erőforrásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg [, hogyan hozhat létre naplóbeli riasztásokat az Azure](./alerts-log.md)-ban.
 * Ismerkedjen meg [a webhookokkal a log-riasztásokban az Azure-ban](alerts-log-webhook.md).

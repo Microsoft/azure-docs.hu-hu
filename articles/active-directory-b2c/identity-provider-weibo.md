@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 26c4e154deec02b0642e6c131ced50acb02f9899
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: d69675d7ab07e4097556d269c97c3ecb66dc2fc6
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98951527"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545834"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>WeiBo-fiókkal történő regisztráció és bejelentkezés beállítása Azure Active Directory B2C
 
@@ -32,19 +32,19 @@ ms.locfileid: "98951527"
 
 ## <a name="create-a-weibo-application"></a>WeiBo-alkalmazás létrehozása
 
-Ha Azure Active Directory B2C (Azure AD B2C) WeiBo-fiókkal rendelkező felhasználók számára szeretné engedélyezni a bejelentkezést, létre kell hoznia egy alkalmazást a [WeiBo fejlesztői portálon](https://open.weibo.com/). Ha még nem rendelkezik WeiBo-fiókkal, regisztrálhat a következő címen: [https://weibo.com](https://weibo.com/signup/signup.php?lang=en-us) .
+Ha Azure Active Directory B2C (Azure AD B2C) WeiBo-fiókkal rendelkező felhasználók számára szeretné engedélyezni a bejelentkezést, létre kell hoznia egy alkalmazást a WeiBo fejlesztői portálon. Ha még nem rendelkezik WeiBo-fiókkal, regisztrálhat a következő címen: [https://weibo.com](https://weibo.com/signup/signup.php?lang=en-us) .
 
-1. Jelentkezzen be a [WeiBo fejlesztői portálra](https://open.weibo.com/) a WeiBo-fiókja hitelesítő adataival.
+1. Jelentkezzen be a WeiBo fejlesztői portálra a WeiBo-fiókja hitelesítő adataival.
 1. A bejelentkezést követően válassza ki a megjelenítendő nevet a jobb felső sarokban.
 1. A legördülő menüben válassza a **编辑开发者信息** (fejlesztői adatok szerkesztése) elemet.
 1. Adja meg a szükséges adatokat, és válassza a **提交** (elküldés) lehetőséget.
 1. Fejezze be az e-mail ellenőrzési folyamatát.
-1. Nyissa meg a [személyazonosság-ellenőrző lapot](https://open.weibo.com/developers/identity/edit).
+1. Nyissa meg a személyazonosság-ellenőrző lapot.
 1. Adja meg a szükséges adatokat, és válassza a **提交** (elküldés) lehetőséget.
 
 ### <a name="register-a-weibo-application"></a>WeiBo-alkalmazás regisztrálása
 
-1. Nyissa meg az [új WeiBo-alkalmazás regisztrációs lapját](https://open.weibo.com/apps/new).
+1. Nyissa meg az új WeiBo-alkalmazás regisztrációs lapját.
 1. Adja meg a szükséges alkalmazás-információkat.
 1. Válassza a **创建** (létrehozás) lehetőséget.
 1. Másolja az **alkalmazás kulcsának** és az **alkalmazás titkos** kódjának értékét. Mindkét példányhoz hozzá kell adnia az identitás-szolgáltatót a bérlőhöz.

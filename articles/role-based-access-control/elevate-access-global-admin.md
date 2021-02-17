@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 06/09/2020
 ms.author: rolyon
-ms.openlocfilehash: 850d50bc9e427ff559782d587d74b33089332a8d
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 30c7e6b1412373cf3bfe1c511206aa4b916bf1ee
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99091663"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557503"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Hozzáférési jogosultságszint emelése az összes Azure-előfizetés és felügyeleti csoport kezeléséhez
 
@@ -80,7 +80,7 @@ Kövesse az alábbi lépéseket a globális rendszergazda hozzáférésének a A
 
 1. Emelt szintű hozzáféréshez végezze el a szükséges módosításokat.
 
-    További információ a szerepkörök hozzárendeléséről: [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](role-assignments-portal.md). Ha Privileged Identity Management használ, tekintse meg [Az Azure-erőforrások Azure-erőforrás-szerepkörök kezeléséhez](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md) vagy [hozzárendeléséhez](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md)való felderítését ismertető témakört.
+    További információ a szerepkörök hozzárendeléséről: [Azure-szerepkörök kiosztása a Azure Portal használatával](role-assignments-portal.md). Ha Privileged Identity Management használ, tekintse meg [Az Azure-erőforrások Azure-erőforrás-szerepkörök kezeléséhez](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md) vagy [hozzárendeléséhez](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md)való felderítését ismertető témakört.
 
 1. A következő szakaszban ismertetett lépések végrehajtásával távolítsa el a emelt szintű hozzáférést.
 
@@ -149,7 +149,7 @@ Az alábbi lépéseket követve távolíthatja el a felhasználói hozzáférés
 
 Az alábbi alapszintű lépésekkel emelheti ki a globális rendszergazda hozzáférését az Azure CLI használatával.
 
-1. Az az [Rest](/cli/azure/reference-index?view=azure-cli-latest#az-rest) paranccsal hívja `elevateAccess` meg a végpontot, amely megadja a felhasználói hozzáférés rendszergazdai szerepkörét a root scope ( `/` ) használatával.
+1. Az az [Rest](/cli/azure/reference-index#az_rest) paranccsal hívja `elevateAccess` meg a végpontot, amely megadja a felhasználói hozzáférés rendszergazdai szerepkörét a root scope ( `/` ) használatával.
 
     ```azurecli
     az rest --method post --url "/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01"
@@ -157,7 +157,7 @@ Az alábbi alapszintű lépésekkel emelheti ki a globális rendszergazda hozzá
 
 1. Emelt szintű hozzáféréshez végezze el a szükséges módosításokat.
 
-    További információ a szerepkörök hozzárendeléséről: [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure CLI használatával](role-assignments-cli.md).
+    A szerepkörök hozzárendelésével kapcsolatos információkért lásd: [Azure-szerepkörök kiosztása az Azure CLI használatával](role-assignments-cli.md).
 
 1. Az emelt szintű hozzáférés eltávolításához hajtsa végre a lépéseket egy későbbi szakaszban.
 
@@ -213,7 +213,7 @@ A következő alapvető lépésekkel emelheti ki a globális rendszergazda hozz�
 
 1. Emelt szintű hozzáféréshez végezze el a szükséges módosításokat.
 
-    További információ a szerepkörök hozzárendeléséről: [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása a REST API használatával](role-assignments-rest.md).
+    További információ a szerepkörök hozzárendeléséről: [Azure-szerepkörök kiosztása a REST API használatával](role-assignments-rest.md).
 
 1. Az emelt szintű hozzáférés eltávolításához hajtsa végre a lépéseket egy későbbi szakaszban.
 
@@ -330,4 +330,4 @@ A hívásakor `elevateAccess` létre kell hoznia egy szerepkör-hozzárendelést
 ## <a name="next-steps"></a>Következő lépések
 
 - [A különböző szerepkörök ismertetése](rbac-and-directory-admin-roles.md)
-- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása a REST API használatával](role-assignments-rest.md)
+- [Azure-szerepkörök kiosztása a REST API használatával](role-assignments-rest.md)

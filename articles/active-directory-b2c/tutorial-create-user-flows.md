@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ca023af0666899ae94d5bf82fc6f0736d5a8efa5
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 6b0bdc5a5b58c205d888c8892a4333225a9b316f
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614268"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557140"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Oktatóanyag: felhasználói folyamatok létrehozása Azure Active Directory B2C
 
@@ -30,10 +30,10 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 Ez az oktatóanyag bemutatja, hogyan hozhat létre néhány javasolt felhasználói folyamatot a Azure Portal használatával. Ha további információt szeretne arról, hogyan állíthatja be az erőforrás-tulajdonosi jelszó hitelesítő adatait (ROPC) az alkalmazásban, tekintse meg [az erőforrás-tulajdonosi jelszó hitelesítő adatainak konfigurálása Azure ad B2Cban](add-ropc-policy.md)című témakört.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!IMPORTANT]
-> Módosítottuk a felhasználói flow-verziókra való hivatkozás módját. Korábban a v1 (termelésre kész), valamint a V 1.1 és v2 (előzetes verzió) verzióját is felajánlottuk. Most összevontuk a felhasználói folyamatokat a **javasolt** (következő generációs előzetes verzió) és **standard** (általánosan elérhető) verziókra. Az összes, 1.1-es és v2-es korábbi előzetes verziójú felhasználói folyamat a 2021-es **augusztus 1-től** az elavult elérési úton van. Részletekért lásd: [a felhasználói folyamatok verziói Azure ad B2Cban](user-flow-versions.md).
+> Megváltoztattuk a felhasználói folyamatok verzióinak elnevezéseit. Korábban V1 (az éles környezetben való használatra kész) verziókat, valamint V1.1 és V2 (előzetes) verziókat kínáltunk. Most összevontuk a felhasználói folyamatokat a **javasolt** (következő generációs előzetes verzió) és **standard** (általánosan elérhető) verziókra. Az összes, 1.1-es és v2-es korábbi előzetes verziójú felhasználói folyamat a 2021-es **augusztus 1-től** az elavult elérési úton van. Részletekért lásd: [a felhasználói folyamatok verziói Azure ad B2Cban](user-flow-versions.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -124,7 +124,7 @@ Ha engedélyezni szeretné, hogy az alkalmazás felhasználói visszaállítsa a
 1. Kattintson a **felhasználói folyamat futtatása** elemre, ellenőrizze a korábban létrehozott fiók e-mail-címét, majd válassza a **Folytatás** lehetőséget.
 1. Most lehetősége van a felhasználó jelszavának módosítására. Módosítsa a jelszót, és válassza a **Folytatás** lehetőséget. A rendszer visszaküldi a tokent, `https://jwt.ms` és megjelenik Önnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan végezheti el a következőket:
 
@@ -133,7 +133,7 @@ Ebben a cikkben megtanulta, hogyan végezheti el a következőket:
 > * Profil szerkesztése felhasználói folyamat létrehozása
 > * Jelszó-visszaállítási felhasználói folyamat létrehozása
 
-Következő lépésként ismerje meg, hogy miként adhat meg identitás-szolgáltatókat az alkalmazásaihoz, így lehetővé teszi a felhasználói bejelentkezést az Azure AD, az Amazon, a Facebook, a GitHub, a LinkedIn, a Microsoft vagy a Twitter használatával.
+Következő lépésként megtudhatja, hogyan használhatja a Azure AD B2Ct a bejelentkezéshez, és hogyan regisztrálhat felhasználókat egy alkalmazásban. Kövesse az alább hivatkozott ASP.NET-webalkalmazást, vagy navigáljon egy másik alkalmazáshoz a tartalomjegyzékben a **felhasználók hitelesítése** területen.
 
 > [!div class="nextstepaction"]
-> [Identitás-szolgáltatók hozzáadása az alkalmazásokhoz >](tutorial-add-identity-providers.md)
+> [Oktatóanyag: hitelesítés engedélyezése webalkalmazásokban Azure AD B2C >használatával ](tutorial-web-app-dotnet.md)

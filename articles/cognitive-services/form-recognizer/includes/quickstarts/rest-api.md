@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 3112c93e0877a8441875e3c7627c2a7b84ac8ab1
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 8ba24d5a59beade1429b9d86ed549f1dae3c2f1f
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808505"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100552833"
 ---
 > [!NOTE]
 > Ez az útmutató a cURL használatával REST API hívásokat hajt végre. A [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/FormRecognizer/rest) is szerepel egy mintakód, amely bemutatja, hogyan hívhatja meg a REST API-kat a Python használatával.
@@ -85,9 +85,14 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyzeR
 
 A rendszer a `200 (success)` JSON-tartalommal kapcsolatos választ küld.
 
-Tekintse meg a következő számla képét és a hozzá tartozó JSON-kimenetet. A kimenet lerövidítve az egyszerűség kedvéért. A `"readResults"` csomópont a szöveg minden sorát tartalmazza a megfelelő határolókeret elhelyezésével az oldalon. A `"selectionMarks"` csomópont (v 2.1 előzetes verzió) megjeleníti az összes kijelölési jelet (jelölőnégyzet, választógomb), valamint azt, hogy az állapota "kijelölt" vagy "nem kijelölt". A `"pageResults"` szakasz tartalmazza a kinyert táblákat. Minden táblához a szöveg, a sor és az oszlop indexe, a sor és az oszlop átfedése, a határolókeret és egyebek is ki lesznek csomagolva.
+Tekintse meg a következő számla képét és a hozzá tartozó JSON-kimenetet.
+* A `"readResults"` csomópont a szöveg minden sorát tartalmazza a megfelelő határolókeret elhelyezésével az oldalon. 
+* A `"selectionMarks"` csomópont (v 2.1 előzetes verzió) megjeleníti az összes kijelölési jelet (jelölőnégyzet, választógomb), valamint azt, hogy az állapota "kijelölt" vagy "nem kijelölt". 
+* A `"pageResults"` szakasz tartalmazza a kinyert táblákat. Minden táblához a szöveg, a sor és az oszlop indexe, a sor és az oszlop átfedése, a határolókeret és egyebek is ki lesznek csomagolva.
 
 :::image type="content" source="../../media/contoso-invoice.png" alt-text="Contoso Project-utasítás dokumentum táblával.":::
+
+Ezt a kimenetet az egyszerűség kedvéért lerövidítjük. Tekintse [meg a teljes minta kimenetet a githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/sample-layout-output.json).
 
 # <a name="v20"></a>[2.0-s verzió](#tab/v2-0)    
 ```json
@@ -355,11 +360,16 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/invoic
 
 ### <a name="examine-the-response"></a>A válasz vizsgálata
 
-A rendszer a `200 (Success)` JSON-kimenettel kapcsolatos választ küld. A `"readResults"` mező a számlából kinyert szöveg minden sorát tartalmazza, a `"pageResults"` tartalmazza a számlából kinyert táblákat és kiválasztási jeleket, a mező pedig a `"documentResults"` számla legfontosabb részeire vonatkozó kulcs/érték információkat tartalmazza.
+A rendszer a `200 (Success)` JSON-kimenettel kapcsolatos választ küld. 
+* A `"readResults"` mező a számlából kinyert szöveg minden sorát tartalmazza.
+* A `"pageResults"` tartalmazza a számlából kinyert táblákat és választási jeleket.
+* A `"documentResults"` mező a számla legfontosabb részeire vonatkozó kulcs/érték információkat tartalmazza.
 
-Tekintse meg az alábbi számlázási dokumentumot és a hozzá tartozó JSON-kimenetet. A JSON-tartalom le lett rövidítve az olvashatóság érdekében.
+Tekintse meg az alábbi számlázási dokumentumot és a hozzá tartozó JSON-kimenetet. 
 
 * [Minta számla](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/curl/form-recognizer/sample-invoice.pdf)
+
+Ez a JSON-tartalom le lett rövidítve az olvashatóság érdekében. Tekintse [meg a teljes minta kimenetet a githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/sample-invoice-output.json).
 
 ```json
 {
@@ -716,7 +726,7 @@ curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview/custom/models/{model
 
 A címkék nélkül betanított egyéni modellek esetében a kulcs/érték párok társításai és táblái a `"pageResults"` JSON-kimenet csomópontjában találhatók. A címkékkel rendelkező egyéni modellekben a kulcs/érték párok társítása a `"documentResults"` csomópontban található. Ha az egyszerű szöveg kinyerését is a *includeTextDetails* URL-cím paraméterrel adta meg, akkor a `"readResults"` csomópont megjeleníti a dokumentumban lévő összes szöveg tartalmát és pozícióit.
 
-Ez a JSON-kimenet lerövidítve az egyszerűség kedvéért.
+Ez a JSON-kimenet lerövidítve az egyszerűség kedvéért. Tekintse [meg a teljes minta kimenetet a githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/analyze-result-invoice-6.pdf.json).
 
 # <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
 ```JSON
@@ -1041,13 +1051,15 @@ curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/receipt/a
 
 ### <a name="examine-the-response"></a>A válasz vizsgálata
 
-A rendszer a `200 (Success)` JSON-kimenettel kapcsolatos választ küld. Az első mező `"status"` jelzi a művelet állapotát. Ha a művelet befejeződött, a `"readResults"` mező a beérkezésből kinyert szöveg minden sorát tartalmazza, és a `"documentResults"` mező a Bevételezés legfontosabb részeinek kulcs/érték információit tartalmazza. Ha a művelet nem fejeződött be, a vagy a érték lesz, `"status"` `"running"` `"notStarted"` és az API-t manuálisan vagy parancsfájlon keresztül kell meghívni. Javasoljuk, hogy a hívások között egy másodperc vagy több intervallum legyen.
+A rendszer a `200 (Success)` JSON-kimenettel kapcsolatos választ küld. Az első mező `"status"` jelzi a művelet állapotát. Ha a művelet nem fejeződött be, a vagy a érték lesz, `"status"` `"running"` `"notStarted"` és az API-t manuálisan vagy parancsfájlon keresztül kell meghívni. Javasoljuk, hogy a hívások között egy másodperc vagy több intervallum legyen.
 
-Tekintse meg az alábbi beérkezési képet és a hozzá tartozó JSON-kimenetet. A kimenet le lett rövidítve az olvashatóság érdekében.
+A `"readResults"` csomópont tartalmazza az összes felismert szöveget (ha a választható *includeTextDetails* paramétert a értékre állítja `true` ). A szöveget az oldal, a sor, majd az egyes szavak szerint rendezi. A `"documentResults"` csomópont tartalmazza a modell által felderített bevételezés-specifikus értékeket. Itt talál hasznos kulcs/érték párokat, mint például az adó, a teljes, a kereskedelmi címek és így tovább.
+
+Tekintse meg az alábbi beérkezési képet és a hozzá tartozó JSON-kimenetet.
 
 ![A contoso áruházból érkezett visszaigazolás](../../media/contoso-allinone.jpg)
 
-A `"readResults"` csomópont tartalmazza az összes felismert szöveget (ha a választható *includeTextDetails* paramétert a értékre állítja `true` ). A szöveget az oldal, a sor, majd az egyes szavak szerint rendezi. A `"documentResults"` csomópont tartalmazza a modell által felderített bevételezés-specifikus értékeket. Itt talál hasznos kulcs/érték párokat, mint például az adó, a teljes, a kereskedelmi címek és így tovább.
+Ezt a kimenetet lerövidíti az olvashatóság érdekében. Tekintse [meg a teljes minta kimenetet a githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/receipt-result.json).
 
 ```json
 {
@@ -1386,11 +1398,11 @@ A `"readResults"` csomópont tartalmazza az összes felismert szöveget (ha a v�
 Ez a szakasz bemutatja, hogyan elemezheti és kinyerheti az angol üzleti kártyákból származó általános mezőket egy előre betanított modell használatával. További információ a névjegykártya-elemzésről: a [Business Cards fogalmi útmutatója](../../concept-business-cards.md). A névjegykártya elemzésének megkezdéséhez hívja meg a **[Business Card API elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)** az alábbi curl-parancs használatával. A parancs futtatása előtt végezze el a következő módosításokat:
 
 1. Cserélje le `{Endpoint}` a helyére az űrlap-felismerő előfizetéshez kapott végpontot.
-1. Cserélje le a értékét `{your receipt URL}` egy nyugtát ábrázoló rendszerkép URL-címére.
+1. Cserélje le a értékét `{your business card URL}` egy nyugtát ábrázoló rendszerkép URL-címére.
 1. Cserélje le az `{subscription key}` elemet az előző lépésből másolt előfizetési kulcsra.
 
 ```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/businessCard/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/businessCard/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your business card URL}'}"
 ```
 
 Olyan választ fog kapni `202 (Success)` , amely tartalmazza a am **Operation-Location** fejlécet. A fejléc értéke olyan műveleti azonosítót tartalmaz, amelynek segítségével lekérdezheti az aszinkron művelet állapotát, és lekérheti az eredményeket.
@@ -1414,11 +1426,13 @@ curl -v -X GET "https://westcentralus.api.cognitive.microsoft.com/formrecognizer
 
 ### <a name="examine-the-response"></a>A válasz vizsgálata
 
-A rendszer a `200 (Success)` JSON-kimenettel kapcsolatos választ küld. A `"readResults"` csomópont tartalmazza az összes felismert szöveget. A szöveget az oldal, a sor, majd az egyes szavak szerint rendezi. A `"documentResults"` csomópont tartalmazza a modell által felderített névjegykártya-specifikus értékeket. Itt találhat hasznos kapcsolattartási adatokat, például a vállalat nevét, utónevét, vezetéknevét, telefonszámát stb.
+A rendszer a `200 (Success)` JSON-kimenettel kapcsolatos választ küld. 
+
+A `"readResults"` csomópont tartalmazza az összes felismert szöveget. A szöveget az oldal, a sor, majd az egyes szavak szerint rendezi. A `"documentResults"` csomópont tartalmazza a modell által felderített névjegykártya-specifikus értékeket. Itt találhat hasznos kapcsolattartási adatokat, például a vállalat nevét, utónevét, vezetéknevét, telefonszámát stb.
 
 ![A contoso vállalat üzleti kártyája](../../media/business-card-english.jpg)
 
-Ez a példa az űrlap-felismerő által visszaadott JSON-kimenetet mutatja be. A rendszer csonkolja az olvashatóságot.
+Ez a JSON-kimenet lerövidítve az olvashatóság érdekében. Tekintse [meg a teljes minta kimenetet a githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/business-card-result.json).
 
 ```json
 {

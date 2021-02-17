@@ -10,12 +10,12 @@ ms.custom: subject-armqs
 ms.workload: identity
 ms.date: 12/16/2020
 ms.author: rolyon
-ms.openlocfilehash: beea0c5cecd7bb99973a4692a4cce17e7a69d708
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 96915fe5cc7bc7b2f88e0cbd8619c10a6433dd71
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631312"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557486"
 ---
 # <a name="create-or-update-azure-custom-roles-using-an-arm-template"></a>Egyéni Azure-szerepkörök létrehozása vagy frissítése ARM-sablon használatával
 
@@ -207,5 +207,5 @@ Az egyéni szerepkör eltávolításához kövesse az alábbi lépéseket.
 ## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure szerepkör-definíciók ismertetése](role-definitions.md)
-- [Gyors útmutató: Azure-beli szerepkör-hozzárendelés hozzáadása Azure Resource Manager sablon használatával](quickstart-role-assignments-template.md)
+- [Gyors útmutató: Azure-szerepkör kiosztása Azure Resource Manager sablon használatával](quickstart-role-assignments-template.md)
 - [ARM-sablon dokumentációja](../azure-resource-manager/templates/index.yml)

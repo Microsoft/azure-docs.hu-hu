@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: eba3958ae5dd307b80b04371d3659a129d5acf89
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 5a7cfec6acb4cd8735c039f5eab30bac4ccf55b0
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797869"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556134"
 ---
 # <a name="write-client-app-authentication-code"></a>Ügyfél-alkalmazás hitelesítési kódjának írása
 
@@ -112,10 +112,10 @@ Továbbá a függvények hitelesítésének használatához ne felejtse el a kö
 
 Ha a fenti, Kiemelt hitelesítési forgatókönyvek nem fedik le az alkalmazás igényeit, megismerheti a [**Microsoft Identity platformon**](../active-directory/develop/v2-overview.md#getting-started)kínált egyéb hitelesítési módokat is. A platform dokumentációja a további hitelesítési forgatókönyvekre vonatkozik, az alkalmazás típusa szerint rendezve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogyan működik a biztonság az Azure digitális Twinsban:
 * [*Fogalmak: az Azure Digital Twins-megoldások biztonsága*](concepts-security.md)
 
-Vagy most, hogy a hitelesítés be van állítva, a következő lépésekkel hozhat létre modelleket a példányban:
-* [*Útmutató: egyéni modellek kezelése*](how-to-manage-model.md)
+Vagy most, hogy a hitelesítés be van állítva, a következő lépésekkel hozhat létre és kezelhet modelleket a példányban:
+* [*Útmutató: DTDL-modellek kezelése*](how-to-manage-model.md)

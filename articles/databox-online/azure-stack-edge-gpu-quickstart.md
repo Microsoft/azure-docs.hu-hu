@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/27/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to quickly deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 642ab348cd2bb5cd2cedd2b481b0d06fb6c4b425
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 4f3ecb6c9aa4ec200cd1a53b82d7c81a2c8d4dcd
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98953937"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546788"
 ---
 # <a name="quickstart-get-started-with-azure-stack-edge-pro-with-gpu"></a>Gyors útmutató: az Azure Stack Edge Pro és a GPU használatának első lépései 
 
@@ -64,7 +64,7 @@ A telepítése előtt győződjön meg arról, hogy az alábbi előfeltételek t
 10. **Tanúsítványok konfigurálása**: Ha módosította az eszköz nevét és/vagy a DNS-tartományt, akkor tanúsítványokat kell előállítania, vagy tanúsítványokat kell hozzáadnia az eszköz aktiválásához. 
 
     - A nem éles munkaterhelések teszteléséhez használja a [tanúsítványok előállítása lehetőséget](azure-stack-edge-gpu-deploy-configure-certificates.md#generate-device-certificates). 
-    - Ha saját tanúsítványokat hoz létre, beleértve az aláíró lánc (oka) t, [adja hozzá a tanúsítványokat](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates) a megfelelő formátumhoz. Először töltse fel az aláíró láncot. Lásd: [tanúsítványok létrehozása](azure-stack-edge-j-series-create-certificates-tool.md) és [tanúsítványok feltöltése a helyi felhasználói felületen keresztül](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates).
+    - Ha saját tanúsítványokat hoz létre, beleértve az aláíró lánc (oka) t, [adja hozzá a tanúsítványokat](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates) a megfelelő formátumhoz. Először töltse fel az aláíró láncot. Lásd: [tanúsítványok létrehozása](azure-stack-edge-gpu-create-certificates-tool.md) és [tanúsítványok feltöltése a helyi felhasználói felületen keresztül](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates).
 
 11. **Aktiválás: az** aktiváló kulcs beszerzése 
 
@@ -73,7 +73,7 @@ A telepítése előtt győződjön meg arról, hogy az alábbi előfeltételek t
 
 12. **Számítás konfigurálása**: a Azure Portal válassza az **Áttekintés > eszköz** lehetőséget. Ellenőrizze, hogy az eszköz **online állapotban** van-e. A bal oldali ablaktáblán válassza az **Edge számítási > első lépések > a peremhálózati számítási > számítási beállítások konfigurálása** lehetőséget. Adjon meg egy meglévő vagy új IoT Hub szolgáltatást, és várjon körülbelül 20 percet, amíg a számítási konfiguráció konfigurálva lenne. További információ az [oktatóanyagról: számítás konfigurálása Azure stack Edge Pro GPU-eszközön](azure-stack-edge-gpu-deploy-configure-compute.md)
 
-Készen áll a számítási feladatok üzembe helyezésére az eszközön a [IoT Edge](azure-stack-edge-gpu-deploy-sample-module-marketplace.md)keresztül [, `kubectl` ](azure-stack-edge-gpu-create-kubernetes-cluster.md) az [Azure arc-kompatibilis Kubernetes](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)keresztül vagy az használatával. Ha a telepítés során problémák merülnek fel, lépjen az [eszközök problémáinak elhárítása](), a [problémák megoldása](azure-stack-edge-gpu-troubleshoot.md), a [tanúsítványok problémái](azure-stack-edge-j-series-certificate-troubleshooting.md)vagy a Kubernetes problémákra. 
+Készen áll a számítási feladatok üzembe helyezésére az eszközön a [IoT Edge](azure-stack-edge-gpu-deploy-sample-module-marketplace.md)keresztül [, `kubectl` ](azure-stack-edge-gpu-create-kubernetes-cluster.md) az [Azure arc-kompatibilis Kubernetes](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)keresztül vagy az használatával. Ha a telepítés során problémák merülnek fel, lépjen az [eszközök problémáinak elhárítása](), a [problémák megoldása](azure-stack-edge-gpu-troubleshoot.md), a [tanúsítványok problémái](azure-stack-edge-gpu-certificate-troubleshooting.md)vagy a Kubernetes problémákra. 
 
 ## <a name="next-steps"></a>Következő lépések
 

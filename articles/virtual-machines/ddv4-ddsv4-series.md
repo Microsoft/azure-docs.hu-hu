@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 1606315b6b6cb4cff787a67e97e64baedc6c508e
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: b68ba21e7a676dda46527313f2fceece0fcba578
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097100"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557929"
 ---
 # <a name="ddv4-and-ddsv4-series"></a>Ddv4 és Ddsv4 sorozat
 
@@ -34,7 +34,7 @@ Az új Ddv4 virtuálisgép-méretek közé tartozik a gyors, nagyobb helyi SSD-t
 [Élő áttelepítés](maintenance-and-updates.md): támogatott<br>
 [Memória megőrzésének frissítései](maintenance-and-updates.md): támogatott<br>
 [VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
-[Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott<br>
+[Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott (*legalább 4 vCPU szükséges*)<br>
 [Ideiglenes operációsrendszer-lemezek](ephemeral-os-disks.md): támogatott <br>
 <br> 
 
@@ -65,7 +65,7 @@ Az új Ddsv4 virtuálisgép-méretek közé tartozik a gyors, nagyobb helyi SSD-
 [Élő áttelepítés](maintenance-and-updates.md): támogatott<br>
 [Memória megőrzésének frissítései](maintenance-and-updates.md): támogatott<br>
 [VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
-[Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott<br>
+[Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott (*legalább 4 vCPU szükséges*)<br>
 [Ideiglenes operációsrendszer-lemezek](ephemeral-os-disks.md): támogatott <br>
 <br> 
 

@@ -1,6 +1,6 @@
 ---
-title: Virtuális gépek üzembe helyezése az Azure Stack Edge Pro GPU-eszközön Azure PowerShell használatával
-description: Ismerteti, hogyan lehet virtuális gépeket (VM-ket) létrehozni és felügyelni egy Azure Stack Edge Pro GPU-eszközön Azure PowerShell használatával.
+title: Virtuális gépek üzembe helyezése az Azure Stack Edge-eszközön Azure PowerShell használatával
+description: Ismerteti, hogyan hozhat létre és kezelhet virtuális gépeket egy Azure Stack peremhálózati eszközön Azure PowerShell használatával.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,22 +8,22 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 1d286e7661fa14dd63bd55b133c39414e04decc6
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: d4a4a2e6e04f8f6247df663aba033d387e66c437
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98802994"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546890"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell"></a>Virtuális gépek üzembe helyezése az Azure Stack Edge Pro GPU-eszközön Azure PowerShell használatával
+# <a name="deploy-vms-on-your-azure-stack-edge-device-via-azure-powershell"></a>Virtuális gépek üzembe helyezése az Azure Stack Edge-eszközön Azure PowerShell használatával
 
-Ez a cikk azt ismerteti, hogyan hozhat létre és kezelhet virtuális gépeket a Azure Stack Edge Pro-eszközön Azure PowerShell használatával. Ez a cikk Azure Stack Edge Pro GPU-ra, Azure Stack Edge Pro R-re és Azure Stack Edge mini R-eszközökre vonatkozik.
+Ez a cikk azt ismerteti, hogyan hozhat létre és kezelhet virtuális gépeket a Azure Stack peremhálózati eszközön Azure PowerShell használatával. Ez a cikk Azure Stack Edge Pro GPU-ra, Azure Stack Edge Pro R-re és Azure Stack Edge mini R-eszközökre vonatkozik.
 
 ## <a name="vm-deployment-workflow"></a>Virtuális gép üzembe helyezésének munkafolyamata
 
-Az üzembe helyezési munkafolyamat a következő ábrán látható.
+Az üzembe helyezési munkafolyamat a következőképpen néz ki:
 
-![Virtuális gép üzembe helyezésének munkafolyamata](media/azure-stack-edge-gpu-deploy-virtual-machine-powershell/vm-workflow-r.svg)
+![A virtuális gép üzembe helyezési munkafolyamatának ábrája.](media/azure-stack-edge-gpu-deploy-virtual-machine-powershell/vm-workflow-r.svg)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -32,7 +32,7 @@ Az üzembe helyezési munkafolyamat a következő ábrán látható.
 
 ## <a name="query-for-built-in-subscription-on-the-device"></a>Beépített előfizetés lekérdezése az eszközön
 
-Azure Resource Manager esetében csak egyetlen felhasználó által látható rögzített előfizetés támogatott. Ez az előfizetés eszközönként egyedi, és az előfizetés neve vagy az előfizetés azonosítója nem módosítható.
+Azure Resource Manager esetében csak egyetlen, felhasználó által látható rögzített előfizetés támogatott. Ez az előfizetés eszközönként egyedi, és az előfizetés neve vagy az előfizetés azonosítója nem módosítható.
 
 Ez az előfizetés tartalmazza a virtuális gépek létrehozásához szükséges összes erőforrást. 
 
@@ -47,7 +47,7 @@ Ez az előfizetés a virtuális gépek üzembe helyezésére szolgál.
     Get-AzureRmSubscription
     ```
     
-    Az alábbiakban egy példa látható a kimenetre.
+    Íme egy példa kimenet:
 
     ```powershell
     PS C:\windows\system32> Get-AzureRmSubscription
@@ -59,7 +59,7 @@ Ez az előfizetés a virtuális gépek üzembe helyezésére szolgál.
     PS C:\windows\system32>
     ```
         
-3.  Az eszközön futó regisztrált erőforrás-szolgáltatók listájának beolvasása. Ez a lista általában számítást, hálózatot és tárterületet tartalmaz.
+1. Az eszközön futó regisztrált erőforrás-szolgáltatók listájának beolvasása. Ez a lista általában számítást, hálózatot és tárterületet tartalmaz.
 
     ```powershell
     Get-AzureRMResourceProvider
@@ -68,7 +68,7 @@ Ez az előfizetés a virtuális gépek üzembe helyezésére szolgál.
     > [!NOTE]
     > Az erőforrás-szolgáltatók előre regisztrálva vannak, és nem módosíthatók és nem módosíthatók.
     
-    Alább látható egy minta kimenet:
+    Íme egy példa kimenet:
 
     ```powershell
     Get-AzureRmResourceProvider
@@ -100,7 +100,7 @@ Ez az előfizetés a virtuális gépek üzembe helyezésére szolgál.
     
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy Azure-erőforráscsoportot a [New-AzureRmResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsmaggal. Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat, például a Storage-fiókot, a lemezt, a felügyelt lemezt.
+Hozzon létre egy Azure-erőforráscsoportot a [New-AzureRmResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsmaggal. Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat, például a Storage-fiókot, a lemezt és a felügyelt lemezt.
 
 > [!IMPORTANT]
 > Az összes erőforrás ugyanabban a helyen jön létre, mint az eszköz, és a hely a **DBELocal** értékre van állítva.
@@ -109,7 +109,7 @@ Hozzon létre egy Azure-erőforráscsoportot a [New-AzureRmResourceGroup](/power
 New-AzureRmResourceGroup -Name <Resource group name> -Location DBELocal
 ```
 
-Az alábbiakban egy példa látható a kimenetre.
+Íme egy példa kimenet:
 
 ```powershell
 New-AzureRmResourceGroup -Name rg191113014333 -Location DBELocal 
@@ -118,16 +118,16 @@ Successfully created Resource Group:rg191113014333
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-Hozzon létre egy új Storage-fiókot az előző lépésben létrehozott erőforráscsoport használatával. Ez a fiók egy **helyi Storage-fiók** , amelyet a rendszer a virtuális gép virtuális lemezének lemezképének feltöltésére fog használni.
+Hozzon létre egy új Storage-fiókot az előző lépésben létrehozott erőforráscsoport használatával. Ez egy helyi Storage-fiók, amelyet a virtuális gép virtuális lemezének lemezképének feltöltésére használhat.
 
 ```powershell
 New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resource group name> -Location DBELocal -SkuName Standard_LRS
 ```
 
 > [!NOTE]
-> A Azure Resource Manager használatával csak a helyi Storage-fiókok, például a helyileg redundáns tárolás (Standard_LRS vagy Premium_LRS) hozhatók létre. A többplatformos tárolási fiókok létrehozásához tekintse [meg a Hozzáadás, kapcsolódás a Storage-fiókokhoz a Azure stack Edge Pro](azure-stack-edge-j-series-deploy-add-storage-accounts.md)-ban című témakör lépéseit.
+> A Azure Resource Manager használatával csak helyi Storage-fiókok hozhatók létre, például a helyileg redundáns tárolás (standard vagy prémium). A többplatformos tárolási fiókok létrehozásával kapcsolatban lásd [: oktatóanyag: adatok átvitele a Storage-fiókokkal a Azure stack Edge Pro GPU használatával](azure-stack-edge-j-series-deploy-add-storage-accounts.md).
 
-Az alábbiakban egy példa látható a kimenetre.
+Íme egy példa kimenet:
 
 ```powershell
 New-AzureRmStorageAccount -Name sa191113014333  -ResourceGroupName rg191113014333 -SkuName Standard_LRS -Location DBELocal
@@ -158,7 +158,7 @@ Context                : Microsoft.WindowsAzure.Commands.Common.Storage.LazyAzur
 ExtendedProperties     : {}
 ```
 
-A Storage-fiók kulcsainak lekéréséhez futtassa a `Get-AzureRmStorageAccountKey` parancsot. Itt látható a parancs mintájának kimenete.
+A Storage-fiók kulcsainak lekéréséhez futtassa a `Get-AzureRmStorageAccountKey` parancsot. Íme egy példa a parancs kimenetére:
 
 ```powershell
 PS C:\Users\Administrator> Get-AzureRmStorageAccountKey
@@ -175,20 +175,19 @@ key1 /IjVJN+sSf7FMKiiPLlDm8mc9P4wtcmhhbnCa7...
 key2 gd34TcaDzDgsY9JtDNMUgLDOItUU0Qur3CBo6Q...
 ```
 
-## <a name="add-blob-uri-to-hosts-file"></a>BLOB URI hozzáadása a Hosts fájlhoz
+## <a name="add-the-blob-uri-to-the-host-file"></a>Adja hozzá a blob URI-JÁT a gazdagép fájlhoz
 
-Már hozzáadta a blob URI-t a Hosts fájlban ahhoz az ügyfélhez, amelyet a blob Storage-hoz való kapcsolódáshoz használ a [gazdagép fájljának módosítása végpont-névfeloldáshoz](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution)című szakaszban. Ez a bejegyzés a blob URI-azonosító hozzáadására szolgál:
+Már hozzáadta a blob URI-t a Hosts fájlban ahhoz az ügyfélhez, amelyet az Azure Blob Storagehoz való kapcsolódáshoz használ a [gazdagép fájljának módosítása végponti](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution)névfeloldáshoz című szakaszban. Ez a bejegyzés a blob URI-azonosító hozzáadására szolgál:
 
 \<Azure consistent network services VIP \>\<storage name\>. blob. \<appliance name\> .\<dnsdomain\>
 
-
 ## <a name="install-certificates"></a>Tanúsítványok telepítése
 
-Ha *https*-t használ, telepítenie kell a megfelelő tanúsítványokat az eszközre. Ebben az esetben telepítse a blob Endpoint-tanúsítványt. További információ: tanúsítványok létrehozása és feltöltése a [tanúsítványok kezelése](azure-stack-edge-j-series-manage-certificates.md)szolgáltatásban.
+Ha *https*-t használ, telepítenie kell a megfelelő tanúsítványokat az eszközre. Ebben az esetben telepítse a blob Endpoint-tanúsítványt. További információ: tanúsítványok létrehozása és feltöltése a [tanúsítványok használata Azure stack Edge Pro GPU-eszközzel](azure-stack-edge-gpu-manage-certificates.md).
 
 ## <a name="upload-a-vhd"></a>VHD feltöltése
 
-Másolja a korábbi lépésekben létrehozott helyi Storage-fiókban a lapok blobba felhasználható lemezes lemezképeit. Egy eszköz, például a [AzCopy](../storage/common/storage-use-azcopy-v10.md) használatával feltöltheti a virtuális merevlemezt a korábbi lépések során létrehozott Storage-fiókba. 
+Másolja a korábbi lépésekben létrehozott helyi Storage-fiókban a lapok blobba felhasználható lemezes lemezképeit. Egy eszköz, például a [AzCopy](../storage/common/storage-use-azcopy-v10.md) használatával feltöltheti a VHD-t a Storage-fiókba. 
 
 <!--Before you use AzCopy, make sure that the [AzCopy is configured correctly](#configure-azcopy) for use with the blob storage REST API version that you are using with your Azure Stack Edge Pro device.
 
@@ -197,11 +196,11 @@ AzCopy /Source:<sourceDirectoryForVHD> /Dest:<blobContainerUri> /DestKey:<storag
 ```
 
 > [!NOTE]
-> Set `BlobType` to page for creating a managed disk out of VHD. Set `BlobType` to block when writing to tiered storage accounts using AzCopy.
+> Set `BlobType` to `page` for creating a managed disk out of VHD. Set `BlobType` to `block` when you're writing to tiered storage accounts by using AzCopy.
 
-You can download the disk images from the marketplace. For detailed steps, go to [Get the virtual disk image from Azure marketplace](azure-stack-edge-j-series-create-virtual-machine-image.md).
+You can download the disk images from Azure Marketplace. For detailed steps, see [Get the virtual disk image from Azure Marketplace](azure-stack-edge-j-series-create-virtual-machine-image.md).
 
-A sample output using AzCopy 7.3 is shown below. For more information on this command, go to [Upload VHD file to storage account using AzCopy](../devtest-labs/devtest-lab-upload-vhd-using-azcopy.md).
+Here's a sample output using AzCopy 7.3. For more information on this command, see [Upload VHD file to storage account using AzCopy](../devtest-labs/devtest-lab-upload-vhd-using-azcopy.md).
 
 
 ```powershell
@@ -248,7 +247,8 @@ Hozzon létre egy felügyelt lemezt a feltöltött VHD-ből.
 ```powershell
 $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import -SourceUri "Source URL for your VHD"
 ```
-Alább látható egy minta kimenet: 
+Íme egy példa kimenet: 
+
 <code>
 $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import –SourceUri http://</code><code>sa191113014333.blob.dbe-1dcmhq2.microsoftdatabox.com/vmimages/ubuntu13.vhd</code> 
 
@@ -256,7 +256,7 @@ $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import –S
 New-AzureRMDisk -ResourceGroupName <Resource group name> -DiskName <Disk name> -Disk $DiskConfig
 ```
 
-Az alábbiakban egy példa látható a kimenetre. A parancsmaggal kapcsolatos további információkért nyissa meg a [New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0&preserve-view=true).
+Íme egy példa kimenet. A parancsmaggal kapcsolatos további információkért nyissa meg a [New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0&preserve-view=true).
 
 ```powershell
 Tags               :
@@ -296,7 +296,7 @@ Set-AzureRmImageOsDisk -Image $imageConfig -OsType 'Linux' -OsState 'Generalized
 New-AzureRmImage -Image $imageConfig -ImageName <Image name>  -ResourceGroupName <Resource group name>
 ```
 
-Az alábbiakban egy példa látható a kimenetre. A parancsmaggal kapcsolatos további információkért nyissa meg a [New-AzureRmImage](/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0&preserve-view=true).
+Íme egy példa kimenet. A parancsmaggal kapcsolatos további információkért nyissa meg a [New-AzureRmImage](/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0&preserve-view=true).
 
 ```powershell
 New-AzureRmImage -Image Microsoft.Azure.Commands.Compute.Automation.Models.PSImage -ImageName ig191113014333  -ResourceGroupName rg191113014333
@@ -317,15 +317,14 @@ Tags                 : {}
 Létre kell hoznia egy virtuális hálózatot, és hozzá kell rendelnie egy virtuális hálózati adaptert a virtuális gép létrehozása és telepítése előtt.
 
 > [!IMPORTANT]
-> A virtuális hálózat és a virtuális hálózati adapter létrehozásakor a következő szabályok érvényesek:
-> - Csak egy vnet hozható létre (még az erőforráscsoportok között is), és pontosan egyeznie kell a logikai hálózattal a címtartomány szempontjából.
-> - A vnet csak egy alhálózat lesz engedélyezve. Az alhálózatnak pontosan ugyanaz a címtartomány kell lennie, mint a vnet.
-> - A Vnic létrehozásakor csak a statikus kiosztási módszer lesz engedélyezve, és a felhasználónak magánhálózati IP-címet kell megadnia.
+> A következő szabályok érvényesek:
+> - Csak egyetlen virtuális hálózatot hozhat létre, még az erőforráscsoportok között is. A virtuális hálózatnak pontosan ugyanaz a címtartomány kell lennie, mint a logikai hálózatnak.
+> - A virtuális hálózatnak csak egy alhálózata lehet. Az alhálózatnak pontosan ugyanazzal a címtartománykel kell rendelkeznie, mint a virtuális hálózatnak.
+> - A virtuális hálózati kártya létrehozásakor csak a statikus kiosztási módszert használhatja. A felhasználónak meg kell adnia egy magánhálózati IP-címet.
 
- 
-**Az automatikusan létrehozott vnet lekérdezése**
+### <a name="query-the-automatically-created-virtual-network"></a>Az automatikusan létrehozott virtuális hálózat lekérdezése
 
-Ha az eszköz helyi felhasználói felületéről engedélyezi a számítást, a rendszer `ASEVNET` automatikusan létrehoz egy vnet az `ASERG` erőforráscsoport alatt. A következő parancs használatával kérdezheti le a meglévő vnet:
+Ha az eszköz helyi felhasználói felületéről engedélyezi a számítást, a rendszer automatikusan létrehoz egy nevű virtuális hálózatot `ASEVNET` az erőforráscsoport alatt `ASERG` . A következő parancs használatával kérdezheti le a meglévő virtuális hálózatot:
 
 ```powershell
 $aRmVN = Get-AzureRMVirtualNetwork -Name ASEVNET -ResourceGroupName ASERG 
@@ -336,14 +335,16 @@ $subNetId=New-AzureRmVirtualNetworkSubnetConfig -Name <Subnet name> -AddressPref
 $aRmVN = New-AzureRmVirtualNetwork -ResourceGroupName <Resource group name> -Name <Vnet name> -Location DBELocal -AddressPrefix <Address prefix> -Subnet $subNetId
 ```-->
 
-**Vnic létrehozása a vnet alhálózati azonosító használatával**
+### <a name="create-a-virtual-network-interface-card"></a>Virtuális hálózati kártya létrehozása
+
+A virtuális hálózati kártya virtuális hálózati alhálózati azonosítójával történő létrehozásához a következő parancsot használhatja:
 
 ```powershell
 $ipConfig = New-AzureRmNetworkInterfaceIpConfig -Name <IP config Name> -SubnetId $aRmVN.Subnets[0].Id -PrivateIpAddress <Private IP>
 $Nic = New-AzureRmNetworkInterface -Name <Nic name> -ResourceGroupName <Resource group name> -Location DBELocal -IpConfiguration $ipConfig
 ```
 
-A parancsok mintájának kimenete alább látható:
+Íme a következő parancsok mintájának kimenete:
 
 ```powershell
 PS C:\Users\Administrator> $subNetId=New-AzureRmVirtualNetworkSubnetConfig -Name my-ase-subnet -AddressPrefix "5.5.0.0/16"
@@ -405,7 +406,7 @@ Primary                     : True
 MacAddress                  : 00155D18E432                :
 ```
 
-Ha a virtuális gép számára Vnic hoz létre, a nyilvános IP-címet is átadhatja. Ebben az esetben a nyilvános IP-cím a magánhálózati IP-címet fogja visszaadni. 
+Ha virtuális hálózati adaptert hoz létre egy virtuális GÉPHEZ, akkor a nyilvános IP-címet is átadhatja. Ebben az esetben a nyilvános IP-cím a magánhálózati IP-címet adja vissza. 
 
 ```powershell
 New-AzureRmPublicIPAddress -Name <Public IP> -ResourceGroupName <ResourceGroupName> -AllocationMethod Static -Location DBELocal
@@ -413,8 +414,7 @@ $publicIP = (Get-AzureRmPublicIPAddress -Name <Public IP> -ResourceGroupName <Re
 $ipConfig = New-AzureRmNetworkInterfaceIpConfig -Name <ConfigName> -PublicIpAddressId $publicIP -SubnetId $subNetId
 ```
 
-
-**Virtuális gép létrehozása**
+### <a name="create-a-vm"></a>Virtuális gép létrehozása
 
 Mostantól a virtuálisgép-rendszerkép használatával létrehozhat egy virtuális gépet, és csatlakoztathatja azt a korábban létrehozott virtuális hálózathoz.
 
@@ -458,15 +458,15 @@ A Windows rendszerű virtuális gépekhez való kapcsolódáshoz kövesse az al�
 [!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-windows.md)]
 
 
-<!--Connect to the VM using the private IP that you passed during the VM creation.
+<!--Connect to the VM by using the private IP that you passed during the VM creation.
 
 Open an SSH session to connect with the IP address.
 
 `ssh -l <username> <ip address>`
 
-When prompted, provide the password that you used when creating the VM.
+When you're prompted, provide the password that you used when creating the VM.
 
-If you need to provide the SSH key, use this command.
+If you need to provide the SSH key, use this command:
 
 ssh -i c:/users/Administrator/.ssh/id_rsa Administrator@5.5.41.236
 
@@ -475,16 +475,16 @@ If you used a public IP address during VM creation, you can use that IP to conne
 ```powershell
 $publicIp = Get-AzureRmPublicIpAddress -Name <Public IP> -ResourceGroupName <Resource group name>
 ```
-The public IP in this case will be the same as the private IP that you passed during virtual network interface creation.-->
+The public IP in this case is the same as the private IP that you passed during the virtual network interface creation.-->
 
 
-## <a name="manage-vm"></a>Virtuális gép kezelése
+## <a name="manage-the-vm"></a>A virtuális gép kezelése
 
-A következő szakasz ismerteti a virtuális gép azon gyakori műveleteit, amelyeket a Azure Stack Edge Pro-eszközön fog létrehozni.
+A következő szakaszok ismertetik a Azure Stack Edge Pro-eszközön létrehozható gyakori műveleteket.
 
 ### <a name="list-vms-running-on-the-device"></a>Az eszközön futó virtuális gépek listázása
 
-Az Azure Stack Edge Pro-eszközön futó összes virtuális gép listájának visszaküldéséhez futtassa a következő parancsot.
+A Azure Stack Edge-eszközön futó összes virtuális gép listájának visszaküldéséhez futtassa a következő parancsot:
 
 
 `Get-AzureRmVM -ResourceGroupName <String> -Name <String>`
@@ -497,24 +497,22 @@ Futtassa a következő parancsmagot az eszközön futó virtuális gépek bekapc
 
 `Start-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>`
 
-
 A parancsmaggal kapcsolatos további információkért nyissa meg a [Start-AzureRmVM](/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0&preserve-view=true).
 
 ### <a name="suspend-or-shut-down-the-vm"></a>A virtuális gép felfüggesztése vagy leállítása
 
-Futtassa az alábbi parancsmagot az eszközön futó virtuális gépek leállításához vagy kikapcsolásához:
+Futtassa a következő parancsmagot az eszközön futó virtuális gép leállításához vagy leállításához:
 
 
 ```powershell
 Stop-AzureRmVM [-Name] <String> [-StayProvisioned] [-ResourceGroupName] <String>
 ```
 
-
 A parancsmaggal kapcsolatos további információkért nyissa meg a [stop-AzureRmVM parancsmagot](/powershell/module/azurerm.compute/stop-azurermvm?view=azurermps-6.13.0&preserve-view=true).
 
 ### <a name="add-a-data-disk"></a>Adatlemez hozzáadása
 
-Ha a virtuális gép számítási feladatainak növekedése megnövekszik, akkor előfordulhat, hogy adatlemezt kell hozzáadnia.
+Ha a virtuális gép számítási feladatainak növekedése megnövekszik, akkor lehet, hogy adatlemezt kell hozzáadnia.
 
 ```powershell
 Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "disk1" -VhdUri "https://contoso.blob.core.windows.net/vhds/diskstandard03.vhd" -LUN 0 -Caching ReadOnly -DiskSizeinGB 1 -CreateOption Empty 
@@ -532,8 +530,6 @@ Remove-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>
 
 A parancsmaggal kapcsolatos további információkért nyissa meg a [Remove-AzureRmVm parancsmagot](/powershell/module/azurerm.compute/remove-azurermvm?view=azurermps-6.13.0&preserve-view=true).
 
-
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure Resource Manager-parancsmagok](/powershell/module/azurerm.resources/?view=azurermps-6.13.0&preserve-view=true)

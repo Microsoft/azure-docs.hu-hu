@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 5a9f6fa79da59425e4972dddd21ffdea15af73e7
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: f027b2d41f63b5aa7ea3df87e06224abd629799b
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127906"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535314"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Telemetria, tulajdonságok és parancsok hasznos adatai
 
@@ -1068,7 +1068,7 @@ Az eszköz modelljének következő kódrészlete egy parancs definícióját je
                 "displayName": {
                   "en": "Bank3"
                 },
-                "enumValue": 2,
+                "enumValue": 3,
                 "name": "Bank3"
               }
             ],

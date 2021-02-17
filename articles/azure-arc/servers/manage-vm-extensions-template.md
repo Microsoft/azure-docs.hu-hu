@@ -1,14 +1,14 @@
 ---
 title: Virtuálisgép-bővítmény engedélyezése Azure Resource Manager sablon használatával
 description: Ez a cikk bemutatja, hogyan telepíthet virtuálisgép-bővítményeket hibrid felhőalapú környezetekben futó Azure arc-kompatibilis kiszolgálókra Azure Resource Manager sablon használatával.
-ms.date: 02/03/2021
+ms.date: 02/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: cfba14ac30553178bd509d0b0e7ba9c60332d299
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 0115bda614133891275daff96c94dc4b1a680ccf
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493328"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555104"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>Azure virtuálisgép-bővítmények engedélyezése ARM-sablon használatával
 
@@ -631,13 +631,43 @@ A következő JSON a Key Vault virtuálisgép-bővítmény (előzetes verzió) s
 
 ```json
 {
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vmName": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "autoUpgradeMinorVersion":{
+            "type": "bool"
+        },
+        "pollingIntervalInS":{
+          "type": "int"
+        },
+        "certificateStoreName":{
+          "type": "string"
+        },
+        "certificateStoreLocation":{
+          "type": "string"
+        },
+        "observedCertificates":{
+          "type": "string"
+        },
+        "msiEndpoint":{
+          "type": "string"
+        },
+        "msiClientId":{
+          "type": "string"
+        }
+},
+"resources": [
+   {
       "type": "Microsoft.HybridCompute/machines/extensions",
-      "name": "KeyVaultForLinux",
-      "apiVersion": "2019-07-01",
-      "location": "<location>",
-      "dependsOn": [
-          "[concat('Microsoft.HybridCompute/machines/extensions/', <machineName>)]"
-      ],
+      "name": "[concat(parameters('vmName'),'/KVVMExtensionForLinux')]",
+      "apiVersion": "2019-12-12",
+      "location": "[parameters('location')]",
       "properties": {
       "publisher": "Microsoft.Azure.KeyVault",
       "type": "KeyVaultForLinux",
@@ -646,12 +676,18 @@ A következő JSON a Key Vault virtuálisgép-bővítmény (előzetes verzió) s
       "settings": {
           "secretsManagementSettings": {
           "pollingIntervalInS": <polling interval in seconds, e.g. "3600">,
-          "certificateStoreName": <ingnored on linux>,
+          "certificateStoreName": <ignored on linux>,
           "certificateStoreLocation": <disk path where certificate is stored, default: "/var/lib/waagent/Microsoft.Azure.KeyVault">,
           "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
-          }
+          },
+          "authenticationSettings": {
+                "msiEndpoint":  <MSI endpoint e.g.: "http://localhost:40342/metadata/identity">,
+                "msiClientId":  <MSI identity e.g.: "c7373ae5-91c2-4165-8ab6-7381d6e75619">
+        }
       }
-     }
+    }
+  }
+ ]
 }
 ```
 
@@ -659,13 +695,49 @@ A következő JSON a Key Vault virtuálisgép-bővítmény (előzetes verzió) s
 
 ```json
 {
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vmName": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "autoUpgradeMinorVersion":{
+            "type": "bool"
+        },
+        "pollingIntervalInS":{
+          "type": "int"
+        },
+        "certificateStoreName":{
+          "type": "string"
+        },
+        "linkOnRenewal":{
+          "type": "bool"
+        },
+        "certificateStoreLocation":{
+          "type": "string"
+        },
+        "requireInitialSync":{
+          "type": "bool"
+        },
+        "observedCertificates":{
+          "type": "string"
+        },
+        "msiEndpoint":{
+          "type": "string"
+        },
+        "msiClientId":{
+          "type": "string"
+        }
+},
+"resources": [
+   {
       "type": "Microsoft.HybridCompute/machines/extensions",
-      "name": "KVVMExtensionForWindows",
-      "apiVersion": "2019-07-01",
-      "location": "<location>",
-      "dependsOn": [
-          "[concat('Microsoft.HybridCompute/machines/extensions/', <machineName>)]"
-      ],
+      "name": "[concat(parameters('vmName'),'/KVVMExtensionForWindows')]",
+      "apiVersion": "2019-12-12",
+      "location": "[parameters('location')]",
       "properties": {
       "publisher": "Microsoft.Azure.KeyVault",
       "type": "KeyVaultForWindows",
@@ -673,28 +745,35 @@ A következő JSON a Key Vault virtuálisgép-bővítmény (előzetes verzió) s
       "autoUpgradeMinorVersion": true,
       "settings": {
         "secretsManagementSettings": {
-          "pollingIntervalInS": <polling interval in seconds, e.g: "3600">,
+          "pollingIntervalInS": "3600",
           "certificateStoreName": <certificate store name, e.g.: "MY">,
           "linkOnRenewal": <Only Windows. This feature ensures s-channel binding when certificate renews, without necessitating a re-deployment.  e.g.: false>,
           "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
           "requireInitialSync": <initial synchronization of certificates e..g: true>,
-          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
+          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net"
         },
         "authenticationSettings": {
-                "msiEndpoint":  <Optional MSI endpoint e.g.: "http://169.254.169.254/metadata/identity">,
-                "msiClientId":  <Optional MSI identity e.g.: "c7373ae5-91c2-4165-8ab6-7381d6e75619">
+                "msiEndpoint": <MSI endpoint e.g.: "http://localhost:40342/metadata/identity">,
+                "msiClientId": <MSI identity e.g.: "c7373ae5-91c2-4165-8ab6-7381d6e75619">
         }
       }
-     }
+    }
+  }
+ ]
 }
 ```
 
 > [!NOTE]
 > A megfigyelt tanúsítványok URL-címeinek űrlapnak kell lenniük `https://myVaultName.vault.azure.net/secrets/myCertName` .
-> 
+>
 > Ennek az az oka, hogy az `/secrets` elérési út a teljes tanúsítványt adja vissza, beleértve a titkos kulcsot is, míg az `/certificates` elérési út nem. A tanúsítványokkal kapcsolatos további információkért tekintse meg a következőt: [Key Vault tanúsítványok](../../key-vault/general/about-keys-secrets-certificates.md)
 
-Mentse a sablonfájlt a lemezre. Ezután telepítheti a bővítményt az erőforráscsoport összes csatlakoztatott számítógépén a következő paranccsal.
+### <a name="template-deployment"></a>Sablonalapú telepítés
+
+Mentse a sablonfájlt a lemezre. Ezután központilag telepítheti a bővítményt a csatlakoztatott gépre a következő parancs használatával.
+
+> [!NOTE]
+> A virtuálisgép-bővítményhez szükség van egy rendszerhez rendelt identitás hozzárendelésére a Key vaulthoz való hitelesítéshez. Tekintse meg, [Hogyan lehet hitelesíteni a Key Vault felügyelt identitás használatával](managed-identity-authentication.md) Windows-és Linux-alapú arc-kiszolgálókon.
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "D:\Azure\Templates\KeyVaultExtension.json"
@@ -778,7 +857,9 @@ Az Azure Defender integrált képolvasó bővítményének használatához a kö
 }
 ```
 
-Mentse a sablonfájlt a lemezre. Ezután telepítheti a bővítményt az erőforráscsoport összes csatlakoztatott számítógépén a következő paranccsal.
+### <a name="template-deployment"></a>Sablonalapú telepítés
+
+Mentse a sablonfájlt a lemezre. Ezután központilag telepítheti a bővítményt a csatlakoztatott gépre a következő parancs használatával.
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "D:\Azure\Templates\AzureDefenderScanner.json"

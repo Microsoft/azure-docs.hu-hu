@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: 51431bf0da9145e1b61da708942b675e4c3eea78
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 664733f3d4c4e4bf17440db0323580c5d2c8c2ce
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733818"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555662"
 ---
 # <a name="configure-azure-attestation-for-your-azure-sql-logical-server"></a>Az Azure-igazolás konfigurálása az Azure SQL logikai kiszolgálóhoz
 
@@ -114,7 +114,7 @@ Az igazolási munkafolyamat során az adatbázist tartalmazó Azure SQL logikai 
 
 ### <a name="use-azure-portal-to-assign-permission"></a>Engedélyek kiosztása Azure Portal használatával
 
-Ha egy Azure SQL-kiszolgáló identitását az igazolási szolgáltatóhoz tartozó igazoló olvasó szerepkörhöz szeretné rendelni, kövesse az [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md)című részben található általános útmutatást. A **szerepkör-hozzárendelés hozzáadása** panelen:
+Ahhoz, hogy egy Azure SQL-kiszolgáló identitását az igazolási szolgáltatóhoz társítsa a tanúsító olvasó szerepkörhöz, kövesse az [Azure-szerepkörök az Azure Portal használatával történő hozzárendelésének](../../role-based-access-control/role-assignments-portal.md)általános utasításait. A **szerepkör-hozzárendelés hozzáadása** panelen:
 
 1. A **szerepkör** legördülő menüben válassza ki az **igazolási olvasó** szerepkört.
 1. A **kiválasztás** mezőben adja meg annak az Azure SQL Servernek a nevét, amelyet meg szeretne keresni.
@@ -143,7 +143,7 @@ $attestationResourceGroupName = "<attestation provider resource group name>"
 New-AzRoleAssignment -ObjectId $server.Identity.PrincipalId -RoleDefinitionName "Attestation Reader" -ResourceGroupName $attestationResourceGroupName
 ```
 
-További információ: [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása Azure PowerShell használatával](../../role-based-access-control/role-assignments-powershell.md#add-role-assignment-examples).
+További információ: Azure- [szerepkörök Kiosztása Azure PowerShell használatával](../../role-based-access-control/role-assignments-powershell.md#assign-role-examples).
 
 ## <a name="next-steps"></a>Következő lépések
 

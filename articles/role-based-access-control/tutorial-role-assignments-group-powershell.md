@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: 9b1a2f87498d7869b21e6a8ab44fc1f9660456ad
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: e25db6213c99afaa46732831534956b01adba0b4
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648295"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555231"
 ---
 # <a name="tutorial-grant-a-group-access-to-azure-resources-using-azure-powershell"></a>Oktatóanyag: csoporthoz való hozzáférés biztosítása az Azure-erőforrásokhoz Azure PowerShell használatával
 
@@ -48,8 +48,8 @@ Az Azure RBAC a hozzáférés biztosításához létre kell hoznia egy szerepkö
 
 | Rendszerbiztonsági tag | Szerepkör-definíció | Hatókör |
 | --- | --- | --- |
-| Csoport<br>(RBAC-oktatóanyagbeli csoport) | [Olvasó](built-in-roles.md#reader) | Előfizetés |
-| Csoport<br>(RBAC-oktatóanyagbeli csoport)| [Közreműködő](built-in-roles.md#contributor) | Erőforráscsoport<br>(rbac-tutorial-resource-group) |
+| Group<br>(RBAC-oktatóanyagbeli csoport) | [Olvasó](built-in-roles.md#reader) | Előfizetés |
+| Group<br>(RBAC-oktatóanyagbeli csoport)| [Közreműködő](built-in-roles.md#contributor) | Erőforráscsoport<br>(rbac-tutorial-resource-group) |
 
    ![Csoport szerepkör-hozzárendelései](./media/tutorial-role-assignments-group-powershell/rbac-role-assignments.png)
 
@@ -72,7 +72,7 @@ Szerepkör hozzárendeléséhez felhasználóra, csoportra vagy szolgáltatásn�
 
 Ha nem rendelkezik a csoportok létrehozásához szükséges engedélyekkel, kipróbálhatja az [oktatóanyagot: felhasználói hozzáférést biztosíthat az Azure-erőforrásokhoz Azure PowerShell](tutorial-role-assignments-user-powershell.md) helyett.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Egy erőforráscsoport használatával bemutatjuk, hogyan rendelhet hozzá egy szerepkört erőforráscsoporti hatókörben.
 
@@ -294,4 +294,4 @@ Ha törölni szeretné a jelen oktatóanyag során létrehozott erőforrásokat,
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure PowerShell használatával](role-assignments-powershell.md)
+> [Azure-szerepkörök kiosztása Azure PowerShell használatával](role-assignments-powershell.md)

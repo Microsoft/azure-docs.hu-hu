@@ -9,6 +9,7 @@
 - name: Útmutatók
   items:
     - name: BareMetal-példányegységek kezelése az Azure-ban
+      displayName: 'Azure CLI, az baremetalinstance, az baremetalinstance restart'
       href: baremetal-infrastructure-portal.md
 - name: Referencia
   items:

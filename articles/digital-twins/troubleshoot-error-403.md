@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: 1517c066fe20d478094f57d85d6e27f355a93601
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: ad28b3300e9107c7f6d4b1987205583ef60ed658
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049813"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545700"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>A szolgáltatási kérelem sikertelen. Állapot: 403 (tiltott)
 
@@ -26,8 +26,6 @@ Ez a hiba számos, hitelesítést igénylő szolgáltatási kérelem esetében f
 ### <a name="cause-1"></a>Ok #1
 
 Ez a hiba általában azt jelzi, hogy az Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC) engedélyei nincsenek megfelelően beállítva a szolgáltatáshoz. Az Azure Digital Twins-példányok számos művelete megköveteli, hogy az *Azure Digital Twins adattulajdonosi* szerepköre legyen a **felügyelni kívánt példányon**. 
-
-[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
 ### <a name="cause-2"></a>Ok #2
 
@@ -90,7 +88,7 @@ Ezután válassza az *API-engedélyek* lehetőséget a menüsávon annak ellenő
 
 Ha bármelyike másképp jelenik meg, mint a leírtak, kövesse az alkalmazás regisztrációjának beállítása című témakör útmutatását [*: alkalmazás regisztrációjának létrehozása*](how-to-create-app-registration.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el a telepítési lépéseket az új Azure Digital Twins-példány létrehozásához és hitelesítéséhez:
 * [*Útmutató: példány és hitelesítés beállítása (CLI)*](how-to-set-up-instance-cli.md)

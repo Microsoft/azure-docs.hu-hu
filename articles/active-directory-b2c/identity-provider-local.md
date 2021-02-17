@@ -12,12 +12,12 @@ ms.date: 01/19/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e6b520a32755379fce5326e25b90f135b0d67755
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: b2baff33d9e91e1b5259d79eca0a22535c00f419
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98574354"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555243"
 ---
 # <a name="set-up-the-local-account-identity-provider"></a>A helyi fiók identitás-szolgáltatójának beállítása
 
@@ -101,7 +101,7 @@ A felhasználói folyamatokat csak akkor lehet konfigurálni, ha a helyi fiók i
 1. A **kezelés** területen válassza az **identitás-szolgáltatók** elemet.
 1. Az identitás-szolgáltató listában válassza a **helyi fiók** lehetőséget.
 1. A **helyi identitásszolgáltató konfigurálása** lapon válassza ki, hogy a felhasználók közül legalább az egyik engedélyezhető identitási típust használja a helyi fiókok létrehozásához a Azure ad B2C-bérlőben.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="configure-your-user-flow"></a>A felhasználói folyamat konfigurálása
 
@@ -124,7 +124,7 @@ Ha a **telefonos regisztráció**, **telefon/e-mail regisztráció** lehetőség
 1. A **helyreállítási értesítő e-mailek küldésének engedélyezése a telefonszám-regisztrációhoz és bejelentkezéshez (előzetes verzió)** kattintson a következőkre:
    - **Bekapcsolva** a helyreállítási e-mail-üzenet megjelenítéséhez és a bejelentkezéshez.
    - **Kikapcsolva** a helyreállítási e-mail üzenet elrejtéséhez.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ::: zone-end
 
@@ -148,7 +148,7 @@ Az alapszintű csomag letöltése után.
 
 ::: zone-end
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Külső identitás-szolgáltatók hozzáadása](tutorial-add-identity-providers.md)
+- [Külső identitás-szolgáltatók hozzáadása](add-identity-provider.md)
 - [Felhasználói folyamat létrehozása](tutorial-create-user-flows.md)

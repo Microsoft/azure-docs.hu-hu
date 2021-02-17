@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 02/09/2021
 ms.custom: references_regions
-ms.openlocfilehash: 13cb22c178be29af71b57d0f50fdbd0e95718069
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 2b6685952aee1c8600321070794f001e0881604b
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104603"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535212"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
@@ -21,14 +21,14 @@ Ismerje meg a szolgáltatás újdonságait. Könyvjelző ezen az oldalon naprak�
 
 ## <a name="february-2021"></a>2021. február
 
-|Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Rendelkezésre állás  |
+|Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Leírás | Rendelkezésre állás  |
 |------------------------------|---------------|---------------|
 | [Dokumentumok alaphelyzetbe állítása (előzetes verzió)](search-howto-run-reset-indexers.md) |  Egyénileg kiválasztott keresési dokumentumok újrafeldolgozása az indexelő munkaterhelésekben. | [Keresés REST API 2020-06-30 – előzetes verzió](/rest/api/searchservice/index-preview) |
 | [Rendelkezésre állási zónák](search-performance-optimization.md#availability-zones)| Az [ebben a cikkben](search-performance-optimization.md#availability-zones)leírtak szerint a két vagy több replikával rendelkező szolgáltatások között a két vagy több különböző fizikai helyen lévő replikák révén rugalmasságot nyerhet.  | A keresési szolgáltatás létrehozásának régiója és dátuma határozza meg a rendelkezésre állást. A részletekért tekintse meg a teljesítmény finomhangolása című dokumentumot. |
 
 ## <a name="january-2021"></a>2021. január
 
-|Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Rendelkezésre állás  |
+|Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Leírás | Rendelkezésre állás  |
 |------------------------------|-------------|---------------|
 | [Megoldás-gyorsító az Azure Cognitive Search és QnA Maker](https://github.com/Azure-Samples/search-qna-maker-accelerator) | Kérdéseket és válaszokat kér le a dokumentumból, és a legfontosabb válaszokat ajánlja fel. Egy élő bemutató alkalmazás a következő címen érhető el: [https://aka.ms/qnaWithAzureSearchDemo](https://aka.ms/qnaWithAzureSearchDemo) .  | Nyílt forráskódú projekt (SLA nélkül) |
 
@@ -77,7 +77,7 @@ Ismerje meg a szolgáltatás újdonságait. Könyvjelző ezen az oldalon naprak�
 |November | [Szöveges fordítási képesség](cognitive-search-skill-text-translation.md) | Az indexelés során használt kognitív képesség, amely kiértékeli és lefordítja a szöveget. Általánosan elérhető.|
 |November | [Power BI sablonok](https://github.com/Azure-Samples/cognitive-search-templates/blob/master/README.md) | Sablon a tartalom megjelenítéséhez a Knowledge Store-ban |
 |November | [Azure Data Lake Storage Gen2 (előzetes verzió)](search-howto-index-azure-data-lake-storage.md), [Cosmos db Gremlin API (előzetes verzió)](search-howto-index-cosmosdb.md)és [Cosmos db Cassandra API (előzetes verzió)](search-howto-index-cosmosdb.md) | A nyilvános előzetes verzióban elérhető új indexelő adatforrások. |
-|Július | [Felhő-támogatás Azure Government](../azure-government/compare-azure-government-global-azure.md#azure-cognitive-search) | Általánosan elérhető.|
+|Július | [Felhő-támogatás Azure Government](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia&products=search) | Általánosan elérhető.|
 
 <a name="new-service-name"></a>
 

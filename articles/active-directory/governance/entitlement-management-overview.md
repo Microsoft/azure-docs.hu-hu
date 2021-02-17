@@ -17,12 +17,12 @@ ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: c9815355b26a9c14c02110e4bb5fff4f998d2105
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 7efaaf9cbfdb13c80ce653c99d05da451c2b8968
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032032"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547315"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Mi az az Azure AD-jogosultságkezelés?
 
@@ -167,12 +167,13 @@ További információ a licencekről: [licencek kiosztása vagy eltávolítása 
 
 Íme néhány példa a licencekre, amelyek segítségével meghatározhatja a szükséges licencek számát.
 
-| Forgatókönyv | Számítás | Licencek száma |
+| Eset | Számítás | Licencek száma |
 | --- | --- | --- |
 | A Woodgrove Bank globális rendszergazdája kezdeti katalógusokat hoz létre, és rendszergazdai feladatokat delegál a 6 másik felhasználó számára. Az egyik házirend azt határozza meg, hogy **minden alkalmazott** (2 000 alkalmazott) egy adott hozzáférési csomagot igényelhet. 150 az alkalmazottak a hozzáférési csomagokat kérik. | 2 000 **olyan** alkalmazottak, akik igényelhetik a hozzáférési csomagokat | 2000 |
 | A Woodgrove Bank globális rendszergazdája kezdeti katalógusokat hoz létre, és rendszergazdai feladatokat delegál a 6 másik felhasználó számára. Az egyik házirend azt határozza meg, hogy **minden alkalmazott** (2 000 alkalmazott) egy adott hozzáférési csomagot igényelhet. Egy másik házirend azt határozza meg, hogy a partner contoso (vendég) **felhasználóinak** néhány felhasználója a jóváhagyás alá eső hozzáférési csomagokat is kérheti. A contoso 30 000 felhasználóval rendelkezik. 150 az alkalmazottak a contoso-kérések hozzáférési csomagjait és 10 500 felhasználóit kérik. | 2 000 Employees + 500 vendég a Contosotól, amely meghaladja a 1:5 arányt (10 500-(2 000 * 5)) | 2500 |
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Oktatóanyag: az első hozzáférési csomag létrehozása](entitlement-management-access-package-first.md)
+- Ha érdekli a Azure Portal használata az erőforrásokhoz való hozzáférés kezelésére, tekintse meg az [oktatóanyag: az erőforrásokhoz való hozzáférés kezelése – Azure Portal](entitlement-management-access-package-first.md).
+- Ha szeretné, hogy a Microsoft Graph használatával kezelhesse az erőforrásokhoz való hozzáférést, tekintse meg az [oktatóanyag: az erőforrásokhoz való hozzáférés kezelése – Microsoft Graph](/graph/tutorial-access-package-api?toc=/azure/active-directory/governance/toc.json&bc=/azure/active-directory/governance/breadcrumb/toc.json)
 - [Gyakori forgatókönyvek](entitlement-management-scenarios.md)

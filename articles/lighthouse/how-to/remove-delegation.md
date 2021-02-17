@@ -1,14 +1,14 @@
 ---
 title: Delegáláshoz való hozzáférés eltávolítása
 description: Ismerje meg, hogyan távolíthatja el az Azure Lighthouse szolgáltatáshoz delegált erőforrásokhoz való hozzáférést.
-ms.date: 12/03/2020
+ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: 7218c8829c9b2500e8311fbb3d5e9ff4eb986529
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: c53b678ba6e37ece1bcaf2860abceb9eea980532
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791356"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555776"
 ---
 # <a name="remove-access-to-a-delegation"></a>Delegáláshoz való hozzáférés eltávolítása
 
@@ -21,7 +21,7 @@ A delegálás eltávolítását az ügyfél vagy a szolgáltató bérlője felha
 
 ## <a name="customers"></a>Ügyfelek
 
-Azok a felhasználók, akik az előfizetéshez tartozó [tulajdonos beépített szerepkörrel](../../role-based-access-control/built-in-roles.md#owner) rendelkeznek az ügyfél bérlője számára, eltávolíthatják az adott előfizetéshez tartozó szolgáltatói hozzáférést (vagy az adott előfizetéshez tartozó erőforráscsoportokat). Ehhez az ügyfél bérlője hozzáférhet a Azure Portal [szolgáltatói oldalához](view-manage-service-providers.md#add-or-remove-service-provider-offers) , keresse meg az ajánlatot a **szolgáltatói ajánlatok** képernyőn, és válassza ki az ajánlat sorában látható Kuka ikont.
+Azon felhasználók, akik jogosultak az engedéllyel rendelkező szerepkörre `Microsoft.Authorization/roleAssignments/write` (például a [tulajdonosra](../../role-based-access-control/built-in-roles.md#owner)), eltávolíthatják a szolgáltatóhoz való hozzáférést az adott előfizetéshez (vagy az adott előfizetéshez tartozó erőforráscsoportok). Ehhez a felhasználó megtekintheti a Azure Portal [szolgáltatók lapját](view-manage-service-providers.md#add-or-remove-service-provider-offers) , ahol megkeresheti az ajánlatot a **szolgáltatói ajánlatok** képernyőn, és kiválaszthatja az ajánlat sorában látható Kuka ikont.
 
 A Törlés megerősítése után a szolgáltató bérlője egyik felhasználója sem férhet hozzá a korábban delegált erőforrásokhoz.
 

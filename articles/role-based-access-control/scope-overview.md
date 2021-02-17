@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 10/08/2020
 ms.author: rolyon
-ms.openlocfilehash: ad906e3665c6ffc354cf6292c2559d1184037594
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: deee42c46c9b08bb265c972695b9319413d4fcb1
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856150"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555915"
 ---
 # <a name="understand-scope-for-azure-rbac"></a>Az Azure RBAC hatókörének megismerése
 
@@ -32,7 +32,7 @@ A felügyeleti csoportok az előfizetések feletti hatóköri szint, de a felüg
 
 ## <a name="scope-format"></a>Hatókör formátuma
 
-Ha a parancssor használatával ad hozzá szerepkör-hozzárendeléseket, meg kell adnia a hatókört. Parancssori eszközök esetén a hatókör egy potenciálisan hosszú karakterlánc, amely a szerepkör-hozzárendelés pontos hatókörét azonosítja. A Azure Portal a hatókör általában *erőforrás-azonosítóként*van felsorolva.
+Ha a parancssor használatával rendel hozzá szerepköröket, meg kell adnia a hatókört. Parancssori eszközök esetén a hatókör egy potenciálisan hosszú karakterlánc, amely a szerepkör-hozzárendelés pontos hatókörét azonosítja. A Azure Portal a hatókör általában *erőforrás-azonosítóként* van felsorolva.
 
 A hatókör a perjel (/) karakterrel elválasztott azonosítók sorozatából áll. Ezt a karakterláncot úgy tekintheti meg, mint a következő hierarchiát, ahol a helyőrzők nélküli szöveg ( `{}` ) rögzített azonosítók:
 
@@ -122,6 +122,6 @@ A felügyeleti csoport, az előfizetés vagy az erőforráscsoport hatóköréne
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Szerepkör-hozzárendelés hozzáadásának lépései](role-assignments-steps.md)
+- [Azure-szerepkörök hozzárendelésének lépései](role-assignments-steps.md)
 - [Erőforrás-szolgáltatók az Azure-szolgáltatásokhoz](../azure-resource-manager/management/azure-services-resource-providers.md)
 - [Mik az Azure-beli felügyeleti csoportok?](../governance/management-groups/overview.md)

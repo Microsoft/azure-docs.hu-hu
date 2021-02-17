@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9dad8ffc9971894a2777e8bda9bcf6d78eee00a9
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 3c9018322c9e5075ff59024f9d791e7431035e3d
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369276"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555950"
 ---
 # <a name="list-azure-role-definitions"></a>Azure-szerepkör-definíciók listázása
 
@@ -479,4 +479,4 @@ Az alábbi ábrán egy példa látható a kimenetre:
 - [Beépített Azure-szerepkörök](built-in-roles.md)
 - [Egyéni Azure-szerepkörök](custom-roles.md)
 - [Azure-beli szerepkör-hozzárendelések listázása a Azure Portal használatával](role-assignments-list-portal.md)
-- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](role-assignments-portal.md)
+- [Azure-szerepkörök kiosztása a Azure Portal használatával](role-assignments-portal.md)
