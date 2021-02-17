@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9a1a55bdf21b74116450ca32f66d891f1aa206d3
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 70bf46de072a97eca810dda60a5331df14172ed6
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045410"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555162"
 ---
 # <a name="add-tags-to-digital-twins"></a>Címkék hozzáadása a digitális ikrekhez 
 
@@ -88,10 +88,10 @@ Itt látható egy lekérdezés, amely az összes olyan entitást beolvassa, amel
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerValueTags":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a digitális kettős modellek tervezéséről és kezeléséről:
-* [*Útmutató: egyéni modellek kezelése*](how-to-manage-model.md)
+* [*Útmutató: DTDL-modellek kezelése*](how-to-manage-model.md)
 
 További információ a Twin Graph lekérdezéséről:
 * [*Útmutató: a Twin gráf lekérdezése*](how-to-query-graph.md)

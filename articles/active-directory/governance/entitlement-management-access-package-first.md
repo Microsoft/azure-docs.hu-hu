@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – hozzáférési csomag létrehozása – Azure AD-jogosultságok kezelése
-description: Lépésenkénti útmutató az első hozzáférési csomag létrehozásához Azure Active Directory jogosultságok kezelésében.
+title: Oktatóanyag – erőforrásokhoz való hozzáférés kezelése az Azure AD-jogosultságok kezelésében
+description: Lépésenkénti útmutató az első hozzáférési csomag létrehozásához a Azure Active Directory jogosultságok kezelése Azure Portal használatával.
 services: active-directory
 documentationCenter: ''
 author: ajburnle
@@ -16,14 +16,14 @@ ms.date: 09/30/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2625b1e0ccc4c3129f412eff144f47d9dc97b961
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 1adbc653c8b698cb7b439b54b0a77d2b8cd4042a
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937893"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547400"
 ---
-# <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Oktatóanyag: az első hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében
+# <a name="tutorial-manage-access-to-resources-in-azure-ad-entitlement-management"></a>Oktatóanyag: az erőforrásokhoz való hozzáférés kezelése az Azure AD-jogosultságok kezelésében
 
 A szervezetek számára fontos funkció az összes erőforráshoz, például a csoportokhoz, alkalmazásokhoz és webhelyekhez való hozzáférés kezelése. Azt szeretné, hogy az alkalmazottak a megfelelő szintű hozzáférést biztosítsanak a hatékonysághoz, és el kell távolítaniuk a hozzáférést, ha már nincs rá szükség.
 
@@ -41,8 +41,6 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 Az Azure Active Directory jogosultságok felügyeletének üzembe helyezési folyamatának lépésenkénti bemutatásához, beleértve az első hozzáférési csomag létrehozását is, tekintse meg a következő videót:
 
 >[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
-
-Microsoft Graph használatával programozott módon is létrehozhat hozzáférési csomagokat. Egy olyan oktatóanyaghoz, amely bemutatja, hogyan hozhat létre programozott módon egy hozzáférési csomagot, tekintse meg a [jogosultságok kezelése API](/graph/tutorial-access-package-api?view=graph-rest-beta)-t.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

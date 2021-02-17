@@ -344,7 +344,7 @@
               href: ../virtual-machines/windows/dedicated-hosts-powershell.md
             - name: Portál
               href: ../virtual-machines/dedicated-hosts-portal.md
-        - name: Spot-példány használata
+        - name: Azure spot Virtual Machines
           href: use-spot.md
     - name: Kezelés
       items:

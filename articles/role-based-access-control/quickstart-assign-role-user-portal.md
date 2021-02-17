@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/22/2019
 ms.author: rolyon
-ms.openlocfilehash: c6736bb2642ff08d0aa3cda536ef1599324efded
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fcba9cad208c2ac170f91cc06a6db22e271f2a70
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85362014"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559318"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-the-azure-portal"></a>Oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz a Azure Portal használatával
 
@@ -30,7 +30,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Hozzáférés biztosítása egy erőforráscsoport-hatókörben lévő felhasználó számára
 > * Hozzáférés eltávolítása
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -44,7 +44,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
    ![Új erőforráscsoport hozzáadása](./media/quickstart-assign-role-user-portal/resource-group.png)
 
-1. Az **erőforráscsoport neve**mezőbe írja be a következőt: **RBAC-Resource-Group**.
+1. Az **erőforráscsoport neve** mezőbe írja be a következőt: **RBAC-Resource-Group**.
 
 1. Válasszon egy előfizetést és a egy helyet.
 
@@ -58,9 +58,9 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 ## <a name="grant-access"></a>Hozzáférés biztosítása
 
-Az Azure RBAC a hozzáférés biztosításához létre kell hoznia egy szerepkör-hozzárendelést.
+Az Azure RBAC a hozzáférés biztosításához rendeljen hozzá egy Azure-szerepkört.
 
-1. Az **erőforráscsoportok**listájában kattintson az új **RBAC-Resource-Group** erőforráscsoport elemre.
+1. Az **erőforráscsoportok** listájában kattintson az új **RBAC-Resource-Group** erőforráscsoport elemre.
 
 1. Kattintson a **Hozzáférés-vezérlés (IAM)** elemre.
 
@@ -82,7 +82,7 @@ Az Azure RBAC a hozzáférés biztosításához létre kell hoznia egy szerepkö
 
 1. A **Kiválasztás** listában válassza ki saját magát vagy egy másik felhasználót.
 
-1. Kattintson a **Mentés** gombra a szerepkör-hozzárendelés létrehozásához.
+1. Kattintson a **Mentés** gombra a szerepkör hozzárendeléséhez.
 
    Néhány pillanat elteltével a felhasználónak hozzá kell rendelnie a virtuálisgép-közreműködő szerepkört a RBAC-Resource-Group erőforráscsoport-hatókörhöz.
 
@@ -90,7 +90,7 @@ Az Azure RBAC a hozzáférés biztosításához létre kell hoznia egy szerepkö
 
 ## <a name="remove-access"></a>Hozzáférés eltávolítása
 
-Az Azure RBAC a hozzáférés eltávolításához el kell távolítania egy szerepkör-hozzárendelést.
+Az Azure RBAC-ben a hozzáférés eltávolításához el kell eltávolítania egy szerepkör-hozzárendelést.
 
 1. A szerepkör-hozzárendelések listájában vegyen fel egy pipát a felhasználó mellett a virtuális gép közreműködői szerepkörével.
 
@@ -98,7 +98,7 @@ Az Azure RBAC a hozzáférés eltávolításához el kell távolítania egy szer
 
    ![Szerepkör-hozzárendelés eltávolítási üzenete](./media/quickstart-assign-role-user-portal/remove-role-assignment.png)
 
-1. A megjelenő szerepkör-hozzárendelés eltávolítása üzenetben kattintson az **Igen**gombra.
+1. A megjelenő szerepkör-hozzárendelés eltávolítása üzenetben kattintson az **Igen** gombra.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
@@ -114,7 +114,7 @@ Az Azure RBAC a hozzáférés eltávolításához el kell távolítania egy szer
 
 1. Az erőforráscsoport törléséhez kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz Azure PowerShell használatával](tutorial-role-assignments-user-powershell.md)

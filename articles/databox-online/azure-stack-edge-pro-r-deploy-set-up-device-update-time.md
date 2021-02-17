@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/18/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: a22d710f9e18dc98e9fe068abedd57152f4c755c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 095eb8c20830b9bfe27e26453567d3c25230f2ef
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468277"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548114"
 ---
 # <a name="tutorial-configure-the-device-settings-for-azure-stack-edge-pro-r"></a>Oktatóanyag: Azure Stack Edge Pro R-eszköz beállításainak konfigurálása
 
@@ -82,7 +82,7 @@ Az eszközhöz kapcsolódó beállítások konfigurálásához kövesse az aláb
         ![Helyi webes felhasználói felület "frissítési kiszolgáló" 2. lapja](./media/azure-stack-edge-pro-r-deploy-set-up-device-update-time/update-3.png)
 
         > [!NOTE] 
-        > Ha külön Windows Update kiszolgáló van konfigurálva, és ha a *https* protokollon keresztüli kapcsolódást választja ( *http* helyett), akkor szükség van a frissítési kiszolgálóhoz való kapcsolódáshoz szükséges tanúsítványok aláírására. A tanúsítványok létrehozásáról és feltöltéséről a [tanúsítványok kezelése](azure-stack-edge-j-series-manage-certificates.md)című témakörben olvashat bővebben.         
+        > Ha külön Windows Update kiszolgáló van konfigurálva, és ha a *https* protokollon keresztüli kapcsolódást választja ( *http* helyett), akkor szükség van a frissítési kiszolgálóhoz való kapcsolódáshoz szükséges tanúsítványok aláírására. A tanúsítványok létrehozásáról és feltöltéséről a [tanúsítványok kezelése](azure-stack-edge-gpu-manage-certificates.md)című témakörben olvashat bővebben.         
         > Ha leválasztott módban szeretne dolgozni, például az Azure Stack Edge-eszközök többplatformos adatközpontba való csatlakoztatására, engedélyezze a WSUS szolgáltatást. Az aktiválás során az eszköz frissítéseket keres, és ha a kiszolgáló nincs beállítva, az aktiválás sikertelen lesz. 
 
 
@@ -116,7 +116,7 @@ Az NTP-kiszolgálókra azért van szükség, mert az eszköznek szinkronizálnia
 2. A beállítások alkalmazása után válassza a **Tovább: tanúsítványok** lehetőséget.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 

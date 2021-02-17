@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f949747649e351947ba65666fdb57c0beac3aa23
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 07ad53191c8212ccde5633a4068f31aa00ab69b1
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492110"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100554730"
 ---
 # <a name="calling-client-library-overview"></a>Hívási ügyfélkódtár áttekintése
 
@@ -96,9 +96,10 @@ A kommunikációs szolgáltatások az ügyféloldali kódtárat a következő fo
 
 |           |Webes | Android/iOS|
 |-----------|----|------------|
-|**egyidejűleg elküldött kimenő adatfolyamok száma** |1 videó + 1 képernyő megosztása | 1 videó |
-|**egyidejűleg megjeleníthető bejövő adatfolyamok száma** |1 videó + 1 képernyő megosztása| 6 videó + 1 képernyő megosztása |
+|**egyidejűleg elküldött kimenő adatfolyamok száma** |1 audió/videó vagy 1 hang/képernyő megosztása | 1 hang/videó | 
+|**egyidejűleg megjeleníthető bejövő adatfolyamok száma** |1 audió/videó vagy 1 hang/képernyő megosztása| 6 hang/videó vagy 1 képernyő megosztása |
 
+Vegye figyelembe, hogy a csoportos forgatókönyvek esetében a rendszer egy vegyes hangstreamet használ az összes hangrésztvevő támogatásához.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -106,6 +107,6 @@ A kommunikációs szolgáltatások az ügyféloldali kódtárat a következő fo
 > [Ismerkedés a hívással](../../quickstarts/voice-video-calling/getting-started-with-calling.md)
 
 További információért tekintse át a következő cikkeket:
-- Ismerkedjen meg az általános [hívási folyamatokkal](../call-flows.md)
+- Ismerkedjen meg az általános [hívási folyamatokkal](../call-flows.md) 
 - Tudnivalók a [hívási típusokról](../voice-video-calling/about-call-types.md)
 - [A PSTN-megoldás megtervezése](../telephony-sms/plan-solution.md)

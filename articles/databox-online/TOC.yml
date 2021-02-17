@@ -239,13 +239,13 @@
         - name: Tanúsítványok kezelése
           items:
             - name: Követelmények
-              href: azure-stack-edge-j-series-certificate-requirements.md
+              href: azure-stack-edge-gpu-certificate-requirements.md
             - name: Saját eszközök használata
-              href: azure-stack-edge-j-series-manage-certificates.md
+              href: azure-stack-edge-gpu-manage-certificates.md
             - name: Létrehozás az Azure Stack készenlét-ellenőrzési eszközével
-              href: azure-stack-edge-j-series-create-certificates-tool.md
+              href: azure-stack-edge-gpu-create-certificates-tool.md
             - name: Tanúsítványhibák elhárítása
-              href: azure-stack-edge-j-series-certificate-troubleshooting.md
+              href: azure-stack-edge-gpu-certificate-troubleshooting.md
         - name: Peremhálózati számítás felügyelete
           href: azure-stack-edge-j-series-manage-compute.md
         - name: A peremhálózati tárolóregisztrációs adatbázis kezelése

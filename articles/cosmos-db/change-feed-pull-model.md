@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 01/04/2021
+ms.date: 02/09/2021
 ms.reviewer: sngun
-ms.openlocfilehash: e227e230c4de1234e068f72958367dc2ac709426
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: ee05cbdfb2634ed7c299f736b3343ce2dfbd3520
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881973"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548403"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>A hírcsatorna lekérési modelljének módosítása Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "97881973"
 Ha a Change feed pull modellt használja, a saját tempójában használhatja a Azure Cosmos DB változási csatornát. Ahogy az [adatváltozási folyamattal](change-feed-processor.md)már megteheti a változást, a hírcsatorna-lekérési modell módosításával integrálással a változások feldolgozását több módosítási csatornán keresztül is.
 
 > [!NOTE]
-> A hírcsatorna-váltási lekérési modell jelenleg csak előzetes verzióban érhető [el a Azure Cosmos db .net SDK](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.15.0-preview) -ban. Az előzetes verzió még nem érhető el más SDK-verziókhoz.
+> A hírcsatorna-váltási lekérési modell jelenleg csak előzetes verzióban érhető [el a Azure Cosmos db .net SDK](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.17.0-preview) -ban. Az előzetes verzió még nem érhető el más SDK-verziókhoz.
 
 ## <a name="comparing-with-change-feed-processor"></a>Összehasonlítás a csatorna változása folyamattal
 
@@ -65,19 +65,19 @@ A `FeedIterator` két ízeket tartalmaz. Az entitás-objektumokat visszaadó len
 Az alábbi példa egy olyan objektum beszerzését szemlélteti `FeedIterator` , amely entitás-objektumokat ad vissza, ebben az esetben egy `User` objektumot:
 
 ```csharp
-FeedIterator<User> InteratorWithPOCOS = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning());
+FeedIterator<User> InteratorWithPOCOS = container.GetChangeFeedIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Beginning());
 ```
 
 Az alábbi példa egy `FeedIterator` , a értéket visszaadó beszerzését szemlélteti `Stream` :
 
 ```csharp
-FeedIterator iteratorWithStreams = container.GetChangeFeedStreamIterator<User>(ChangeFeedStartFrom.Beginning());
+FeedIterator iteratorWithStreams = container.GetChangeFeedStreamIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Beginning());
 ```
 
 Ha nem ad meg a `FeedRange` -t `FeedIterator` , a teljes tároló változási csatornáját saját tempójában is feldolgozhatja. Íme egy példa, amely az aktuális időponttól kezdődően elkezdi az összes módosítás olvasását:
 
 ```csharp
-FeedIterator iteratorForTheEntireContainer = container.GetChangeFeedStreamIterator<User>(ChangeFeedStartFrom.Now());
+FeedIterator iteratorForTheEntireContainer = container.GetChangeFeedStreamIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Now());
 
 while (iteratorForTheEntireContainer.HasMoreResults)
 {
@@ -103,7 +103,9 @@ Mivel a változási csatorna gyakorlatilag az összes jövőbeli írást és fri
 Bizonyos esetekben előfordulhat, hogy csak egy adott partíciós kulcs módosításait szeretné feldolgozni. Beszerezhet egy `FeedIterator` adott partíciós kulcsot, és feldolgozhatja a módosításokat ugyanúgy, mint egy teljes tárolóban.
 
 ```csharp
-FeedIterator<User> iteratorForPartitionKey = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(FeedRange.FromPartitionKey(new PartitionKey("PartitionKeyValue"))));
+FeedIterator<User> iteratorForPartitionKey = container.GetChangeFeedIterator<User>(
+    ChangeFeedMode.Incremental, 
+    ChangeFeedStartFrom.Beginning(FeedRange.FromPartitionKey(new PartitionKey("PartitionKeyValue"))));
 
 while (iteratorForThePartitionKey.HasMoreResults)
 {
@@ -147,7 +149,7 @@ Abban az esetben, ha a FeedRanges-t szeretné használni, rendelkeznie kell egy 
 1. gép:
 
 ```csharp
-FeedIterator<User> iteratorA = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(ranges[0]));
+FeedIterator<User> iteratorA = container.GetChangeFeedIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Beginning(ranges[0]));
 while (iteratorA.HasMoreResults)
 {
     try {
@@ -169,7 +171,7 @@ while (iteratorA.HasMoreResults)
 2. gép:
 
 ```csharp
-FeedIterator<User> iteratorB = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(ranges[1]));
+FeedIterator<User> iteratorB = container.GetChangeFeedIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Beginning(ranges[1]));
 while (iteratorB.HasMoreResults)
 {
     try {
@@ -193,7 +195,7 @@ while (iteratorB.HasMoreResults)
 `FeedIterator`Egy folytatási token létrehozásával mentheti a pozícióját. A folytatási token olyan karakterlánc-érték, amely nyomon követi a FeedIterator legutóbbi feldolgozott módosításait. Ez lehetővé teszi `FeedIterator` , hogy később folytassa a folytatást. A következő kód beolvassa a változási csatornát a tároló létrehozása óta. Ha nem áll rendelkezésre több módosítás, a rendszer továbbra is megőrzi a folytatási jogkivonatot, így később folytathatja a módosítást.
 
 ```csharp
-FeedIterator<User> iterator = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning());
+FeedIterator<User> iterator = container.GetChangeFeedIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Beginning());
 
 string continuation = null;
 
@@ -216,12 +218,12 @@ while (iterator.HasMoreResults)
 }
 
 // Some time later
-FeedIterator<User> iteratorThatResumesFromLastPoint = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.ContinuationToken(continuation));
+FeedIterator<User> iteratorThatResumesFromLastPoint = container.GetChangeFeedIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.ContinuationToken(continuation));
 ```
 
 Amíg a Cosmos-tároló továbbra is létezik, a FeedIterator folytatási tokenje soha nem jár le.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A hírcsatorna változásának áttekintése](change-feed.md)
 * [Az adatcsatorna módosításának használata](change-feed-processor.md)

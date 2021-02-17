@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 3e99b156d220b4c24a368886b1c0ca0813ffdc51
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 58e31cfa42faabbfab217a451e14d33f2cf45863
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98674133"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100554807"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript fejlesztői útmutató
 
@@ -20,7 +20,7 @@ Express.js, Node.js vagy JavaScript-fejlesztőként, ha még nem ismeri a Azure 
 
 | Első lépések | Alapelvek| Interaktív tanulás |
 | -- | -- | -- | 
-| <ul><li>[Node.js függvény a Visual Studio Code használatával](./create-first-function-vs-code-node.md)</li><li>[Node.js függvény a Terminal/Command parancssorral](./create-first-function-cli-node.md)</li></ul> | <ul><li>[Fejlesztői útmutató](functions-reference.md)</li><li>[Üzemeltetési lehetőségek](functions-scale.md)</li><li>[Írógéppel függvények](#typescript)</li><li>[Teljesítménnyel &nbsp; kapcsolatos megfontolások](functions-best-practices.md)</li></ul> | <ul><li>[Kiszolgáló nélküli alkalmazás létrehozása](/learn/paths/create-serverless-applications/)</li><li>[Refrakció Node.js és expressz API-k kiszolgáló nélküli API-khoz](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
+| <ul><li>[Node.js függvény a Visual Studio Code használatával](./create-first-function-vs-code-node.md)</li><li>[Node.js függvény a Terminal/Command parancssorral](./create-first-function-cli-node.md)</li><li>[Node.js függvény a Azure Portal használatával](functions-create-function-app-portal.md)</li></ul> | <ul><li>[Fejlesztői útmutató](functions-reference.md)</li><li>[Üzemeltetési lehetőségek](functions-scale.md)</li><li>[Írógéppel függvények](#typescript)</li><li>[Teljesítménnyel &nbsp; kapcsolatos megfontolások](functions-best-practices.md)</li></ul> | <ul><li>[Kiszolgáló nélküli alkalmazás létrehozása](/learn/paths/create-serverless-applications/)</li><li>[Refrakció Node.js és expressz API-k kiszolgáló nélküli API-khoz](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
 ## <a name="javascript-function-basics"></a>JavaScript-függvény alapjai
 
