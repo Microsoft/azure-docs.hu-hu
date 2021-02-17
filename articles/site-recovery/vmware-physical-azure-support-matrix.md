@@ -3,12 +3,12 @@ title: Támogatási mátrix a VMware/fizikai vész-helyreállításhoz Azure Sit
 description: Összefoglalja a VMware virtuális gépek és a fizikai kiszolgálók vész-helyreállításának támogatását az Azure-ban Azure Site Recovery használatával.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: f684f57ed1acb5c48694196b4e19de809c98dc9f
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: aecc7ccb6e633fc9c27b254f98931d682fa3d21b
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102257"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100534676"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>A VMware virtuális gépek és fizikai kiszolgálók Azure-ba való vész-helyreállítási mátrixának támogatása
 
@@ -328,6 +328,17 @@ Folyamatkiszolgáló által támogatott napi adatváltozás maximuma | 2 TB
 - Ezek átlagos értékek, amelyek 30 százalékos I/O-átfedést feltételeznek.
 - A Site Recovery képes magasabb átviteli sebesség kezelésére az átfedési arány, a nagyobb írási méretek és a számítási feladatok tényleges I/O-viselkedése alapján.
 - Ezek a számok körülbelül öt percet vesznek igénybe. Ez azt jelenti, hogy a feltöltést követő öt percben megtörténik az adat feldolgozása, és létrejön egy helyreállítási pont.
+
+## <a name="storage-account-limits"></a>A Storage-fiók korlátai
+
+A lemezek átlagos adatforgalmának növekedésével a Storage-fiók által támogatott lemezek száma csökken. Az alábbi táblázat útmutatóként használható a kiépíteni kívánt tárolási fiókok számával kapcsolatos döntések meghozatalához.
+ 
+**Storage-fiók típusa**    |    **Forgalom = 4 MBps/lemez**    |    **Forgalom = 8 MB/s/lemez**
+---    |    ---    |    ---
+V1 Storage-fiók    |    600 lemez    |    300 lemez
+V2 Storage-fiók    |    1500 lemez    |    750 lemez
+
+Vegye figyelembe, hogy a fenti korlátok csak a hibrid DR-forgatókönyvekre alkalmazhatók.
 
 ## <a name="vault-tasks"></a>Tár feladatai
 

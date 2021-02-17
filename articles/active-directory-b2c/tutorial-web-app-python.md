@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.custom: devx-track-python
-ms.openlocfilehash: b4455f21ae7243ab7a15e8d746d6674289f9fdb5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 56e92a698446bd417c74820d6da662ad9ee55c77
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953015"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555685"
 ---
 # <a name="tutorial-enable-authentication-in-a-python-web-application-with-azure-ad-b2c"></a>Oktatóanyag: hitelesítés engedélyezése egy Python-webalkalmazásban Azure AD B2C
 
@@ -185,4 +185,4 @@ Ebben az oktatóanyagban egy Python-lombik webalkalmazást konfigurált a Azure 
 Következő lépésként megtudhatja, hogyan szabhatja testre a felhasználók számára megjelenített felhasználói folyamatok lapjait Azure AD B2C:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: a felhasználói élmények felületének testreszabása Azure AD B2C >](tutorial-customize-ui.md)
+> [A felhasználói élmények felületének testreszabása Azure AD B2Cban >](customize-ui.md)

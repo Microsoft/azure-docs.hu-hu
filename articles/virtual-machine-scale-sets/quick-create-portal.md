@@ -9,18 +9,18 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 8243619bc7a32c5fa86b6e108d954674b54394e5
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 0408341eff483de71d76a24a933ece4cbdc2b947
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913726"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535280"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Rövid útmutató: Virtuálisgép-méretezési csoport létrehozása az Azure Portalon
 
 A virtuálisgép-méretezési csoport lehetővé teszi az automatikus méretezésű virtuális gépek készletének üzembe helyezését és kezelését. A méretezési csoportban lévő virtuális gépek számát beállíthatja manuálisan, de automatikus méretezési szabályokat is megadhat az erőforrás-használat (például processzorhasználat, memóriaigény vagy hálózati forgalom) alapján. Egy Azure-terheléselosztó ezután elosztja a forgalmat a méretezési csoportban lévő virtuálisgép-példányok között. Ebben a rövid útmutatóban egy virtuálisgép-méretezési csoportot hoz létre az Azure Portalon.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
@@ -39,7 +39,7 @@ Először hozzon létre egy nyilvános standard Load Balancer a portál használ
     | ---| ---|
     | Előfizetés  | Válassza ki előfizetését.    |    
     | Erőforráscsoport | Válassza az **új létrehozása** lehetőséget, és írja be a *myVMSSResourceGroup* szöveget a szövegmezőbe.|
-    | Név           | *myLoadBalancer*         |
+    | Name           | *myLoadBalancer*         |
     | Region         | Válassza az **USA keleti régiója** lehetőséget.       |
     | Típus          | Válassza a **Nyilvános** lehetőséget.       |
     | Termékváltozat           | Válassza a **standard** lehetőséget.       |
@@ -57,7 +57,7 @@ Először hozzon létre egy nyilvános standard Load Balancer a portál használ
 Méretezési csoportokat Windows Server-rendszerképpel vagy Linux-rendszerképpel (például RHEL, CentOS, Ubuntu vagy SLES) helyezhet üzembe.
 
 1. Írja be a **méretezési csoport** kifejezést a keresőmezőbe. Az eredmények alatt, a **piactér** területen válassza a **virtuálisgép-méretezési** csoportok lehetőséget. Válassza a **Létrehozás** lehetőséget a **virtuálisgép-méretezési** csoportok lapon, amely megnyitja a **virtuálisgép-méretezési csoport létrehozása** lapot. 
-1. Az **Alapok** fül **Projektadatok** részén győződjön meg arról, hogy a megfelelő előfizetés van kiválasztva, és válassza az **Új létrehozása** lehetőséget az Erőforráscsoport részen. Írja be a *myVMSSResourceGroup* nevet, majd kattintson az **OK gombra** . 
+1. Az **alapvető beállítások** lap **projekt részletei** területén ellenőrizze, hogy a megfelelő előfizetés van-e kiválasztva, majd válassza a *myVMSSResourceGroup* elemet az erőforráscsoport listából. 
 1. A méretezési csoport neveként írja be a *myScaleSet* nevet.
 1. A **régió** területen válasszon ki egy régiót, amely a területhez közeledik.
 1. Válassza ki a **piactér rendszerképét.** Ebben a példában az *Ubuntu Server 18,04 LTS*-et választottuk.

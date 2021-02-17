@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 01/04/2021
+ms.date: 02/16/2021
 ms.author: victorh
-ms.openlocfilehash: 855c06b610fb8166f6f2dfcf37af34efb3713ffe
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: d6a79e87e9999dd520358e0722011cf4e54d8c63
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883221"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546244"
 ---
 # <a name="azure-firewall-dns-settings"></a>Azure Firewall DNS-beállítások
 
@@ -29,7 +29,7 @@ A DNS-kiszolgáló karbantartja és feloldja a tartományneveket az IP-címekre.
 
 1. A Azure Firewall **Beállítások** területen válassza a **DNS-beállítások** elemet.
 2. A **DNS-kiszolgálók** területen beírhatja vagy hozzáadhat olyan meglévő DNS-kiszolgálókat, amelyek korábban meg lettek adva a virtuális hálózaton.
-3. Válassza a **Mentés** lehetőséget.
+3. Kattintson a **Mentés** gombra.
 
 A tűzfal most átirányítja a DNS-forgalmat a megadott DNS-kiszolgálókra a névfeloldáshoz.
 
@@ -95,7 +95,7 @@ A DNS-proxy konfigurálásához konfigurálnia kell a virtuális hálózati DNS-
 2. A **Beállítások** területen válassza a **DNS-kiszolgálók** elemet.
 3. A **DNS-kiszolgálók** területen válassza az **Egyéni** lehetőséget.
 4. Adja meg a tűzfal magánhálózati IP-címét.
-5. Válassza a **Mentés** lehetőséget.
+5. Kattintson a **Mentés** gombra.
 6. Indítsa újra a virtuális hálózathoz csatlakozó virtuális gépeket, hogy azok hozzá legyenek rendelve az új DNS-kiszolgáló beállításaihoz. A virtuális gépek továbbra is a jelenlegi DNS-beállításokat használják, amíg újra nem indulnak.
 
 ##### <a name="enable-dns-proxy"></a>DNS-proxy engedélyezése
@@ -104,7 +104,7 @@ A DNS-proxy konfigurálásához konfigurálnia kell a virtuális hálózati DNS-
 2. A **Beállítások** területen válassza a **DNS-beállítások** elemet.
 3. Alapértelmezés szerint a **DNS-proxy** le van tiltva. Ha ez a beállítás engedélyezve van, a tűzfal figyeli a 53-es portot, és továbbítja a DNS-kéréseket a konfigurált DNS-kiszolgálókra.
 4. Tekintse át a **DNS-kiszolgálók** konfigurációját, és győződjön meg arról, hogy a beállítások megfelelőek-e a környezetéhez.
-5. Válassza a **Mentés** lehetőséget.
+5. Kattintson a **Mentés** gombra.
 
 :::image type="content" source="media/dns-settings/dns-proxy.png" alt-text="A D N S proxy beállításait bemutató képernyőkép.":::
 
@@ -161,6 +161,6 @@ $azFw.DNSEnableProxy = $true
 $azFw | Set-AzFirewall
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [FQDN-szűrés a hálózati szabályokban](fqdn-filtering-network-rules.md)

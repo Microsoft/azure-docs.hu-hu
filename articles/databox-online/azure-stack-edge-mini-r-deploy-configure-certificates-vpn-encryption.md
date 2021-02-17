@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge Mini R  so I can use it to transfer data to Azure.
-ms.openlocfilehash: 1e81ab61b04f9cca6aff57de1736eac25a871c97
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c3a09242b895234c96c64d9e23449d980e47e387
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468559"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546737"
 ---
 # <a name="tutorial-configure-certificates-vpn-encryption-for-your-azure-stack-edge-mini-r"></a>Oktatóanyag: tanúsítványok, VPN és titkosítás konfigurálása a Azure Stack Edge mini R-hez
 
@@ -38,10 +38,10 @@ Az Azure Stack Edge mini R-eszköz konfigurálása és beállítása előtt győ
 * Telepítette a fizikai eszközt a [Azure stack Edge mini R telepítésének](azure-stack-edge-mini-r-deploy-install.md)részletesen.
 
 * Ha azt tervezi, hogy saját tanúsítványokat hoz:
-    - A tanúsítványokat a megfelelő formátumban kell megadni, beleértve az aláíró lánc tanúsítványát. A tanúsítványról a további tudnivalókat lásd: [tanúsítványok kezelése](azure-stack-edge-j-series-manage-certificates.md)
+    - A tanúsítványokat a megfelelő formátumban kell megadni, beleértve az aláíró lánc tanúsítványát. A tanúsítványról a további tudnivalókat lásd: [tanúsítványok kezelése](azure-stack-edge-gpu-manage-certificates.md)
 
     - Ha az eszköz üzembe helyezése Azure Government vagy Azure Government Secret vagy Azure Government legfelső szintű titkos felhőben történik, és nem az Azure nyilvános felhőben van telepítve, akkor az eszköz aktiválása előtt regisztrálni kell egy aláíró láncot. 
-    A tanúsítvány részleteiért lépjen a [tanúsítványok kezelése](azure-stack-edge-j-series-manage-certificates.md)elemre.
+    A tanúsítvány részleteiért lépjen a [tanúsítványok kezelése](azure-stack-edge-gpu-manage-certificates.md)elemre.
 
 
 ## <a name="configure-certificates-for-device"></a>Tanúsítványok konfigurálása az eszközhöz
@@ -157,7 +157,7 @@ Az eszköz most már készen áll a titkosításra. Konfigurálja a titkosítás
 
 Az eszköz már készen áll az aktiválásra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 

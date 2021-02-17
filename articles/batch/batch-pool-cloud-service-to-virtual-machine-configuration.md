@@ -2,13 +2,13 @@
 title: Batch-készlet konfigurációjának migrálása Cloud Servicesról Virtual Machinesra
 description: Ismerje meg, hogyan frissítheti a készlet konfigurációját a legújabb és ajánlott konfigurációra
 ms.topic: how-to
-ms.date: 1/6/2021
-ms.openlocfilehash: 417738be2c69101129079b8ff3a3d80634f9f99c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 2/16/2021
+ms.openlocfilehash: 9cbcf3864526bd8f8132f3b0f729e2d728e07bb8
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98731499"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546040"
 ---
 # <a name="migrate-batch-pool-configuration-from-cloud-services-to-virtual-machines"></a>Batch-készlet konfigurációjának migrálása Cloud Servicesról Virtual Machinesra
 
@@ -37,7 +37,20 @@ A készlet konfigurációjának frissítésekor a következőket kell figyelembe
 
 - A készlet és a csomópont indítási és törlési ideje eltérhet a "cloudServiceConfiguration" készletek és a "virtualMachineConfiguration" készletek között.
 
-## <a name="next-steps"></a>További lépések
+## <a name="azure-data-factory-custom-activity-pools"></a>Egyéni tevékenység-készletek Azure Data Factory
+
+Azure Batch készleteket Data Factory egyéni tevékenységek futtatására lehet használni. Az egyéni tevékenységek futtatásához használt összes "cloudServiceConfiguration" készletet törölni kell, és létre kell hozni az új "virtualMachineConfiguration" készleteket.
+
+- A folyamatokat a törlés/újbóli létrehozás előtt szüneteltetni kell, hogy a végrehajtás ne legyen megszakítva.
+- A társított szolgáltatás konfigurációjának módosításainak elkerüléséhez a készlet azonosítóját is használhatja.
+- Folyamatok folytatása új készletek létrehozásakor.
+
+További információ a Azure Batch használatáról Data Factory egyéni tevékenységek futtatásához:
+
+- [Társított szolgáltatás Azure Batch](../data-factory/compute-linked-services.md#azure-batch-linked-service)
+- [Egyéni tevékenységek egy Data Factory-folyamatban](../data-factory/transform-data-using-dotnet-custom-activity.md)
+
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [készlet-konfigurációkról](nodes-and-pools.md#configurations).
 - További információ a [Pool ajánlott eljárásairól](best-practices.md#pools).

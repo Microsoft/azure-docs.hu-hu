@@ -3,19 +3,19 @@ title: Felhasználók meghívása Video Indexerra – Azure
 titleSuffix: Azure Media Services
 description: Ez a cikk bemutatja, hogyan hívhat meg felhasználókat a Video Indexer.
 services: media-services
-author: ReutAmior
+author: Juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 02/03/2021
 ms.author: juliako
-ms.openlocfilehash: 4023f8584e7b901a19906235d98982abbbfbaaf8
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7d3415ffad4820d8651841398ec6d47352869ce2
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92364140"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100534739"
 ---
 # <a name="quickstart-invite-users-to-video-indexer"></a>Gyors útmutató: felhasználók meghívása Video Indexer
 
@@ -29,26 +29,33 @@ A munkatársakkal való együttműködéshez meghívhatja őket a Video Indexer-
 1. Jelentkezzen be a [Video Indexer](https://www.videoindexer.ai/) webhelyre. Győződjön meg arról, hogy rendszergazdai fiókkal csatlakozik.
 1. Ha Ön a rendszergazda, megjelenik a **fiók megosztása** gomb a jobb felső sarokban. Kattintson a gombra, és meghívhatja a felhasználókat. 
 
-   ![Új felhasználók meghívása](./media/invite-users/share-account.png)
-1. Adja meg azoknak a személyeknek az e-mail címeit, akiket hozzá szeretne adni a Video Indexer fiókjához:
+    :::image type="content" source="./media/invite-users/share-account.png" alt-text="Fiók megosztása":::
+1. A **fiók megosztása másokkal** párbeszédpanelen adja meg annak a személynek az e-mail-címét, akit meg szeretne hívni a video Indexer-fiókjába:
 
-    ![Felhasználók meghívása erre a fiókra](./media/invite-users/invite-to-account.png)
-        
-    >[!NOTE]
-    > Az összes meghívott felhasználó olvasási és írási engedéllyel rendelkezik a fiókjában lévő összes videóhoz.
-1. A meghívott felhasználók e-mailt kapnak egy hivatkozással, és akkor férhetnek hozzá a fiókhoz, ha rákattintanak a **Join video Indexer** hivatkozásra:
+    :::image type="content" source="./media/invite-users/share-account-others.png" alt-text="Felhasználók meghívása erre a fiókra":::  
+1. A **meghívás** megnyomása után a rendszer hozzáadja a személyt a függőben lévő meghívók listájához. <br/>Két lehetőség közül választhat az egyes meghívottak közül, akik még nem csatlakoztak a fiókhoz: a **meghívás eltávolítása** vagy a **meghívó URL-címének másolása**.
 
-    ![Visszaigazolás](./media/invite-users/invite-msg.png)
+    :::image type="content" source="./media/invite-users/invites-pending.png" alt-text="Meghívók függőben":::  
+1. Ha a meghívó csatlakozik a fiókhoz, három lehetőség közül választhat:. Két lehetőség a szerepkörökhöz: **közreműködő** (alapértelmezett) vagy **tulajdonos**. A alkalmazásban a meghívást a **Remove** parancs megnyomásával távolíthatja el.
 
-    A fiókhoz való hozzáféréshez a felhasználónak a hivatkozásra kell kattintania a csatlakozáshoz. 
+    :::image type="content" source="./media/invite-users/joined-invitee-options.png" alt-text="Meghíváshoz csatlakozott":::  
 
-## <a name="removing-existing-users"></a>Meglévő felhasználók eltávolítása
+    A felhasználók nem kapnak értesítést az eltávolítás után. Az eltávolítást követően a felhasználók nem kapnak engedélyt a bejelentkezésre.
 
-Ha el szeretné távolítani a fiókjához hozzáférő felhasználókat, kattintson a neve melletti **X** jelre:
+## <a name="manage-roles-invite-more-users"></a>Szerepkörök kezelése, további felhasználók meghívása
 
-![Felhasználók eltávolítása](./media/invite-users/remove-users.png)
+Azon kívül, hogy a **fiók megosztása más** párbeszédpanelre, kattintson a **megosztási fiók** elemre (a fent leírtak szerint), ezt megteheti a **Beállítások** menüpontban.
 
-A felhasználók nem kapnak értesítést az eltávolítás után. Az eltávolítást követően a felhasználók nem kapnak engedélyt a bejelentkezésre.
+1. Nyomja meg a **Beállítások** gombot a fiók megnyitása elemnél. 
+
+    :::image type="content" source="./media/invite-users/settings.png" alt-text="Fiókbeállítások":::  
+1. Kattintson a **Szerepkörök kezelése** gombra.
+1. Egy másik felhasználó meghívásához kattintson a **több személy meghívása erre a fiókra** lehetőségre.
+
+    :::image type="content" source="./media/invite-users/invite-more-people.png" alt-text="További felhasználók meghívása":::  
+1. Miután megnyomja a **több személy meghívása ehhez a fiókhoz** lehetőséget, megjelenik a meghívás párbeszédablak
+ 
+    :::image type="content" source="./media/invite-users/share-account-others.png" alt-text="Felhasználók meghívása erre a fiókra":::  
 
 ## <a name="next-steps"></a>Következő lépések
 

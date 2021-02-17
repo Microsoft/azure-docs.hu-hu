@@ -14,14 +14,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/23/2019
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 09/23/2019
-ms.openlocfilehash: b871775bc7a6d795e86147ae9cffa27bdd2f3348
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07600b1fe0cb7420989fbbfbe55c2f1a4197d2fc
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76263761"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548250"
 ---
 # <a name="notification-hubs-security"></a>Notification Hubs biztonság
 
@@ -36,7 +36,7 @@ Notification Hubs megvalósítja a *közös hozzáférésű aláírás* (SAS) ne
 Egy központ létrehozásakor a rendszer automatikusan két szabályt hoz létre: egyet a **figyelési** jogokkal (az ügyfélalkalmazás által használt), és egyet az **összes** jogosultsággal (amelyet az alkalmazás-háttér használ):
 
 - **DefaultListenSharedAccessSignature**: csak a **figyelési** engedélyt engedélyezi.
-- **DefaultFullSharedAccessSignature**: a **figyelési**, **kezelési**és **küldési** engedélyeket biztosít. Ezt a szabályzatot csak az alkalmazási háttérrendszer használja. Ne használja az ügyfélalkalmazások számára; olyan házirendet használjon, amely csak a **figyelési** hozzáféréssel rendelkezik. Az új SAS-tokent tartalmazó új egyéni hozzáférési házirend létrehozásához tekintse meg a jelen cikk későbbi, a [hozzáférési szabályzatok sas-jogkivonatait](#sas-tokens-for-access-policies) ismertető cikket.
+- **DefaultFullSharedAccessSignature**: a **figyelési**, **kezelési** és **küldési** engedélyeket biztosít. Ezt a szabályzatot csak az alkalmazási háttérrendszer használja. Ne használja az ügyfélalkalmazások számára; olyan házirendet használjon, amely csak a **figyelési** hozzáféréssel rendelkezik. Az új SAS-tokent tartalmazó új egyéni hozzáférési házirend létrehozásához tekintse meg a jelen cikk későbbi, a [hozzáférési szabályzatok sas-jogkivonatait](#sas-tokens-for-access-policies) ismertető cikket.
 
 Ha az ügyfélalkalmazások regisztrációs felügyeletet végeznek, ha az értesítéseken keresztül küldött információk nem érzékenyek (például időjárás-frissítések), az értesítési központ elérésének közös módja, hogy a szabály kulcsfontosságú értéke csak az ügyfélalkalmazás számára legyen elérhető, és hogy a szabály kulcs értéke teljes hozzáférést biztosítson az alkalmazás-háttérhöz.
 
@@ -46,7 +46,7 @@ A **figyelési** hozzáféréssel rendelkező kulcs lehetővé teszi, hogy az ü
 
 ## <a name="security-claims"></a>Biztonsági jogcímek
 
-A többi entitáshoz hasonlóan a Notification hub műveletei három biztonsági jogcím esetében is engedélyezettek: **figyelés**, **Küldés**és **felügyelet**.
+A többi entitáshoz hasonlóan a Notification hub műveletei három biztonsági jogcím esetében is engedélyezettek: **figyelés**, **Küldés** és **felügyelet**.
 
 | Jogcím   | Leírás                                          | Engedélyezett műveletek |
 | ------- | ---------------------------------------------------- | ------------------ |
@@ -67,11 +67,11 @@ Névtér szintű műveletekhez használja a névtér szintű hozzáférési ház
 1. Jelentkezzen be az Azure portálra.
 2. Válassza a **Minden erőforrás** elemet.
 3. Válassza ki az értesítési központ nevét, amelyhez létre kívánja hozni a jogcímet, vagy tekintse meg az SAS-kulcsot.
-4. A bal oldali menüben válassza a **hozzáférési szabályzatok**lehetőséget.
-5. Új biztonsági jogcím létrehozásához válassza az **új szabályzat** lehetőséget. Adja meg a szabályzat nevét, és válassza ki a megadni kívánt engedélyeket. Ezután válassza az **OK** gombot.
+4. A bal oldali menüben válassza a **hozzáférési szabályzatok** lehetőséget.
+5. Új biztonsági jogcím létrehozásához válassza az **új szabályzat** lehetőséget. Adja meg a szabályzat nevét, és válassza ki a megadni kívánt engedélyeket. Ez után válassza az **OK** gombot.
 6. A hozzáférési házirendek ablakban megjelenik a teljes kapcsolati karakterlánc (az új SAS-kulccsal együtt). Ezt a karakterláncot a vágólapra másolhatja későbbi használatra.
 
-Ha az SAS-kulcsot egy adott szabályzatból szeretné kibontani, kattintson a kívánt SAS-kulcsot tartalmazó házirend melletti **Másolás** gombra. Illessze be ezt az értéket egy ideiglenes helyre, majd másolja a kapcsolatok karakterlánc SAS-kulcs részét. Ez a példa egy **mytestnamespace1**nevű Notification Hubs névteret és egy **policy2**nevű szabályzatot használ. Az SAS-kulcs a karakterlánc végén található, a **SharedAccessKey**által megadott érték:
+Ha az SAS-kulcsot egy adott szabályzatból szeretné kibontani, kattintson a kívánt SAS-kulcsot tartalmazó házirend melletti **Másolás** gombra. Illessze be ezt az értéket egy ideiglenes helyre, majd másolja a kapcsolatok karakterlánc SAS-kulcs részét. Ez a példa egy **mytestnamespace1** nevű Notification Hubs névteret és egy **policy2** nevű szabályzatot használ. Az SAS-kulcs a karakterlánc végén található, a **SharedAccessKey** által megadott érték:
 
 ```shell
 Endpoint=sb://mytestnamespace1.servicebus.windows.net/;SharedAccessKeyName=policy2;SharedAccessKey=<SAS key value here>
@@ -79,6 +79,6 @@ Endpoint=sb://mytestnamespace1.servicebus.windows.net/;SharedAccessKeyName=polic
 
 ![SAS-kulcsok beszerzése](media/notification-hubs-push-notification-security/access1.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Notification Hubs áttekintése](notification-hubs-push-notification-overview.md)

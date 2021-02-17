@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 1/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1d54ecdac739bbc5a072426f5bf73f71ab394159
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5c216661e45e5ed34a95e8a56002f3ad175b089a
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417674"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545911"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-portal"></a>Felügyelt identitás engedélyezése az Azure Digital Twins-események útválasztásához (előzetes verzió): Azure Portal
 
@@ -101,9 +101,10 @@ Ha szerepkört szeretne hozzárendelni az identitáshoz, először nyissa meg a 
     :::image type="content" source="media/how-to-enable-managed-identities/add-role-assignment-1.png" alt-text="Képernyőfelvétel a Azure Portal az Event hub hozzáférés-vezérlés (IAM) lapjáról. A + Hozzáadás gomb ki van emelve." lightbox="media/how-to-enable-managed-identities/add-role-assignment-1.png":::
 
 1. A szerepkör- **hozzárendelés hozzáadása** lapon adja meg a következő értékeket:
-    * **Szerepkör**: válassza ki a kívánt szerepkört a legördülő menüből
-    * **Hozzáférés társítása**: válassza a **felhasználó, csoport vagy szolgáltatásnév** lehetőséget
-    * **Válassza ki**: Itt választhatja ki a szerepkörhöz hozzárendelt Azure digitális Twins-példány felügyelt identitását. A felügyelt identitás neve megegyezik a példány nevével, ezért keresse meg az Azure Digital Twins-példány nevét. Az eredmény kiválasztásakor megjelenik a példány identitása a **kiválasztott tagok** szakaszban.
+    * **Szerepkör**: válassza ki a kívánt szerepkört a legördülő menüből.
+    * **Hozzáférés hozzárendelése**: a **rendszerhez rendelt felügyelt identitás** területen válassza a **digitális ikrek** elemet.
+    * **Előfizetés**: Válassza ki előfizetését. Ez megjeleníti az összes Azure digitális Twins által felügyelt identitást a kiválasztott előfizetésen belül.
+    * **Válassza ki**: Itt választhatja ki a szerepkörhöz hozzárendelt Azure digitális Twins-példány felügyelt identitását. A felügyelt identitás neve megegyezik a példány nevével, ezért válassza ki az Azure Digital Twins-példány nevét. Ha kiválasztja, a példány identitása megjelenik a panel alján található **kijelölt tagok** szakaszban.
 
     :::row:::
         :::column:::

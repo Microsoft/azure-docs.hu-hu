@@ -22,7 +22,7 @@
           href: character-counts.md
     - name: Útmutatók
       items:
-        - name: Regisztrálás a Translatorra
+        - name: Fordítói erőforrás létrehozása
           href: ./translator-how-to-signup.md
         - name: Áttérés a Text API 3-as verziójára
           href: migrate-to-v3.md

@@ -1,27 +1,27 @@
 ---
-title: Szerepkör-hozzárendelés hozzáadása felügyelt identitáshoz (előzetes verzió) – Azure RBAC
-description: Ismerje meg, hogyan adhat hozzá szerepkör-hozzárendelést a felügyelt identitással, majd kiválaszthatja a hatókört és a szerepkört a Azure Portal és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
+title: Azure-szerepkörök kiosztása felügyelt identitáshoz (előzetes verzió) – Azure RBAC
+description: Ismerje meg, hogyan rendelhet Azure-szerepköröket a felügyelt identitással, majd kiválaszthatja a hatókört és a szerepkört a Azure Portal és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
 services: active-directory
 author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 01/11/2021
+ms.date: 02/15/2021
 ms.author: rolyon
-ms.openlocfilehash: a01246c0cf35653f4d13262183cf9df28b056c69
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 57c8c00a64996bc6223fbe7e514db9db38ccdcc2
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122241"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556847"
 ---
-# <a name="add-a-role-assignment-for-a-managed-identity-preview"></a>Szerepkör-hozzárendelés hozzáadása felügyelt identitáshoz (előzetes verzió)
+# <a name="assign-azure-roles-to-a-managed-identity-preview"></a>Azure-szerepkörök kiosztása felügyelt identitáshoz (előzetes verzió)
 
-A felügyelt identitásokhoz szerepkör-hozzárendeléseket adhat **hozzá a** [Azure Portal használatával az Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása](role-assignments-portal.md)című témakörben leírtak szerint. Ha a hozzáférés-vezérlés (IAM) lapot használja, először a hatókörrel kell kezdődnie, majd ki kell választania a felügyelt identitást és szerepkört. Ez a cikk egy másik módszert ismertet a szerepkör-hozzárendelések felügyelt identitásokhoz való hozzáadására. Ezekkel a lépésekkel először a felügyelt identitást kell használni, majd ki kell választania a hatókört és a szerepkört.
+A felügyelt identitáshoz hozzárendelheti a szerepkört a **hozzáférés-vezérlés (iam)** lapon leírt módon, az [Azure-szerepkörök hozzárendelésének Azure Portal használatával](role-assignments-portal.md)című témakörben leírtak szerint. Ha a hozzáférés-vezérlés (IAM) lapot használja, először a hatókörrel kell kezdődnie, majd ki kell választania a felügyelt identitást és szerepkört. Ez a cikk a szerepkörök felügyelt identitáshoz való hozzárendelésének másik módját ismerteti. Ezekkel a lépésekkel először a felügyelt identitást kell használni, majd ki kell választania a hatókört és a szerepkört.
 
 > [!IMPORTANT]
-> A felügyelt identitás szerepkör-hozzárendelésének ezen alternatív lépések használatával történő hozzáadása jelenleg előzetes verzióban érhető el.
+> Szerepkör társítása felügyelt identitáshoz ezen alternatív lépések jelenleg előzetes verzióban érhetők el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -92,5 +92,5 @@ Az alábbi lépéseket követve rendeljen hozzá egy szerepkört a felhasználó
 ## <a name="next-steps"></a>Következő lépések
 
 - [Mik azok az Azure-erőforrások felügyelt identitásai?](../active-directory/managed-identities-azure-resources/overview.md)
-- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](role-assignments-portal.md)
+- [Azure-szerepkörök kiosztása a Azure Portal használatával](role-assignments-portal.md)
 - [Azure-beli szerepkör-hozzárendelések listázása a Azure Portal használatával](role-assignments-list-portal.md)

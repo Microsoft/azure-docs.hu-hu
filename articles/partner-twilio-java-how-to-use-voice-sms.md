@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.custom: devx-track-java
-ms.openlocfilehash: 5e44ae3280d3ca0f8d5052be10d0955ba342352f
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: e7ff925534a9cab6523097f84a8ae199e9cb83eb
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652874"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548726"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-java"></a>A Twilio használata a hang-és SMS-funkciókhoz Java-ban
 Ez az útmutató bemutatja, hogyan hajthat végre általános programozási feladatokat az Azure Twilio API szolgáltatásával. A tárgyalt forgatókönyvek közé tartozik a telefonhívás kezdeményezése és egy rövid üzenetküldési szolgáltatás (SMS) üzenet küldése. A Twilio és a hang-és SMS-alkalmazások alkalmazásokban való használatáról további információt a [következő lépések](#NextSteps) című szakaszban talál.
@@ -56,7 +56,7 @@ A következő lista az Twilio-műveletek listáját tartalmazza.
 ### <a name="twiml"></a><a id="TwiML"></a>TwiML
 A TwiML XML-alapú utasításokat tartalmaz a Twilio műveletek alapján, amelyek tájékoztatják a Twilio, hogy hogyan dolgozzák fel a hívást vagy az SMS-t.
 
-Példaként a következő TwiML konvertálja a szöveget **„Helló világ!” alkalmazás!** a beszédhez.
+Példaként a következő TwiML konvertálja a szöveget **Hello World!** a beszédhez.
 
 ```xml
     <?xml version="1.0" encoding="UTF-8" ?>
@@ -76,7 +76,7 @@ Amikor regisztrál egy Twilio-fiókra, megkapja a fiók AZONOSÍTÓját és a hi
 
 ## <a name="create-a-java-application"></a><a id="create_app"></a>Java-alkalmazás létrehozása
 1. Szerezze be a Twilio JAR-t, és adja hozzá a Java Build elérési útjához és a háborús üzembe helyezési szerelvényhez. A [https://github.com/twilio/twilio-java][twilio_java] -ben letöltheti a GitHub-forrásokat, és létrehozhat saját jar-t, vagy letöltheti az előre elkészített jar-t (függőségekkel vagy anélkül).
-2. Győződjön meg arról, hogy a JDK **hitesítésszolgáltatói** -tárolója tartalmazza a Equifax biztonságos hitelesítésszolgáltatói tanúsítványát MD5 ujjlenyomattal 67: CB: 9D: C0:13:24:8a: 82:9b: B2:17:1e: D1:1b: ec: D4 (a sorozatszám 35: de: F4: CF és az SHA1 ujjlenyomata D2:32:09: ad: 23: d3:14:23:21:74: E4:0D: 7F: 9D: 62:13:97:86:63:3a). Ez a hitelesítésszolgáltató (CA) tanúsítványa a [https://api.twilio.com][twilio_api_service] szolgáltatáshoz, amelyet a rendszer Twilio API-k használatakor hív meg. A JDK **hitesítésszolgáltatói** -tárolójának a megfelelő hitelesítésszolgáltatói tanúsítvánnyal való biztosításával kapcsolatos információkért lásd a [tanúsítvány hozzáadása a Java hitelesítésszolgáltatói tanúsítványtárolóhoz][add_ca_cert]című témakört.
+2. Győződjön meg arról, hogy a JDK **hitesítésszolgáltatói** -tárolója tartalmazza a Equifax biztonságos hitelesítésszolgáltatói tanúsítványát MD5 ujjlenyomattal 67: CB: 9D: C0:13:24:8a: 82:9b: B2:17:1e: D1:1b: ec: D4 (a sorozatszám 35: de: F4: CF és az SHA1 ujjlenyomata D2:32:09: ad: 23: d3:14:23:21:74: E4:0D: 7F: 9D: 62:13:97:86:63:3a). Ez a hitelesítésszolgáltató (CA) tanúsítványa a [https://api.twilio.com][twilio_api_service] szolgáltatáshoz, amelyet a rendszer Twilio API-k használatakor hív meg.
 
 A Java-Twilio ügyféloldali kódtár használatának részletes utasításait az [Azure-beli Java-alkalmazások Twilio használatával hívhatják meg][howto_phonecall_java].
 
@@ -161,7 +161,7 @@ Amikor az alkalmazás kezdeményez egy hívást a Twilio API-ra, például a **C
 
 Ahelyett, hogy a Twilio által megadott URL-címet kellene megadnia, létrehozhat egy saját URL-helyet, amely a HTTP-válaszokat adja vissza. A helyet bármilyen nyelven létrehozhatja, amely a HTTP-válaszokat adja vissza; Ez a témakör feltételezi, hogy az URL-címet egy JSP-lapon fogja üzemeltetni.
 
-A következő JSP-oldal egy TwiML választ eredményez, amely a **„Helló világ!” alkalmazást mondja!** a híváson.
+A következő JSP-oldal egy TwiML választ eredményez, amely a **Hello Worldt mondja!** a híváson.
 
 ```xml
     <%@ page contentType="text/xml" %>
@@ -217,7 +217,6 @@ Most, hogy megismerte a Twilio szolgáltatás alapjait, kövesse az alábbi hiva
 
 [twilio_java]: https://github.com/twilio/twilio-java
 [twilio_api_service]: https://api.twilio.com
-[add_ca_cert]: /azure/developer/java/sdk/java-sdk-add-certificate-ca-store
 [howto_phonecall_java]: partner-twilio-java-phone-call-example.md
 [misc_role_config_settings]: /previous-versions/azure/hh690945(v=azure.100)
 [twimlet_message_url]: https://twimlets.com/message

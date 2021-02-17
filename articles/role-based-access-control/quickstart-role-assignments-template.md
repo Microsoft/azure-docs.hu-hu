@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Azure-beli szerepkör-hozzárendelés hozzáadása egy Azure Resource Manager sablon használatával – Azure RBAC'
+title: 'Gyors útmutató: Azure-szerepkör kiosztása Azure Resource Manager sablon használatával – Azure RBAC'
 description: Megtudhatja, hogyan biztosíthat hozzáférést az Azure-erőforrásokhoz az erőforráscsoport-hatókörben lévő felhasználók számára Azure Resource Manager sablonok és Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
 services: role-based-access-control,azure-resource-manager
 author: rolyon
@@ -8,16 +8,16 @@ ms.service: role-based-access-control
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.workload: identity
-ms.date: 05/21/2020
+ms.date: 02/15/2021
 ms.author: rolyon
-ms.openlocfilehash: 622f37fa4fda20fdc854edf5cd7c192b4113c4e3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6e8f194cd85a3c381bdabf206777a99dce3c29b6
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88690442"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559262"
 ---
-# <a name="quickstart-add-an-azure-role-assignment-using-an-arm-template"></a>Gyors útmutató: Azure szerepkör-hozzárendelés hozzáadása ARM-sablonnal
+# <a name="quickstart-assign-an-azure-role-using-an-arm-template"></a>Gyors útmutató: Azure-szerepkör kiosztása ARM-sablon használatával
 
 Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](overview.md) az Azure-erőforrásokhoz való hozzáférés kezelésének módja. Ebben a rövid útmutatóban létrehoz egy erőforráscsoportot, és felhasználói hozzáférést biztosít a virtuális gépek létrehozásához és kezeléséhez az erőforráscsoporthoz. Ez a rövid útmutató egy Azure Resource Manager sablont (ARM-sablont) használ a hozzáférés biztosításához.
 
@@ -29,11 +29,11 @@ Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonoka
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A szerepkör-hozzárendelések hozzáadásához a következőket kell tennie:
+Az Azure-szerepkörök hozzárendeléséhez és a szerepkör-hozzárendelések eltávolításához a következőket kell tennie:
 
-- Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+- Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - `Microsoft.Authorization/roleAssignments/write` és `Microsoft.Authorization/roleAssignments/delete` engedélyek, például a [felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator) vagy a [tulajdonos](built-in-roles.md#owner)
-- Szerepkör-hozzárendelés hozzáadásához három elemet kell megadnia: rendszerbiztonsági tag, szerepkör-definíció és hatókör. Ebben a rövid útmutatóban a rendszerbiztonsági tag Ön vagy egy másik felhasználó a címtárban, a szerepkör-definíció a [virtuális gép közreműködője](built-in-roles.md#virtual-machine-contributor), a hatókör pedig egy Ön által megadott erőforráscsoport.
+- A szerepkörök hozzárendeléséhez három elemet kell megadnia: rendszerbiztonsági tag, szerepkör-definíció és hatókör. Ebben a rövid útmutatóban a rendszerbiztonsági tag Ön vagy egy másik felhasználó a címtárban, a szerepkör-definíció a [virtuális gép közreműködője](built-in-roles.md#virtual-machine-contributor), a hatókör pedig egy Ön által megadott erőforráscsoport.
 
 ## <a name="review-the-template"></a>A sablon áttekintése
 
@@ -75,7 +75,7 @@ A sablonban definiált erőforrás:
 
 1. Adja meg az erőforráscsoport helyét (például CentralUS).
 
-1. Ha szükséges, nyomja le az ENTER billentyűt a New-AzResourceGroupDeployment parancs futtatásához.
+1. Ha szükséges, nyomja le az ENTER billentyűt az New-AzResourceGroupDeployment parancs futtatásához.
 
     A [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancs létrehoz egy új erőforráscsoportot, és a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) parancs telepíti a sablont a szerepkör-hozzárendelés hozzáadásához.
 
@@ -136,11 +136,11 @@ A létrehozott szerepkör-hozzárendelés és erőforráscsoport eltávolítás�
 
 1. Adja meg az eltávolítani kívánt erőforráscsoport nevét (például ExampleGrouprg).
 
-1. Ha szükséges, nyomja le az ENTER billentyűt a Remove-AzResourceGroup parancs futtatásához.
+1. Ha szükséges, nyomja le az ENTER billentyűt az Remove-AzResourceGroup parancs futtatásához.
 
 1. Az **Y** érték megadásával erősítse meg, hogy el kívánja távolítani az erőforráscsoportot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz Azure PowerShell használatával](tutorial-role-assignments-user-powershell.md)

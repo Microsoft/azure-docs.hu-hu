@@ -6,14 +6,14 @@ documentationcenter: ''
 author: vladvino
 ms.service: api-management
 ms.topic: article
-ms.date: 12/14/2020
+ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 344500d5635f591b34a45130c7dd6b63659ad84d
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 2bc9b1c5724fa7bab1fdf5ac9332d87ba03a6d11
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491012"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545819"
 ---
 # <a name="use-named-values-in-azure-api-management-policies"></a>Nevesített értékek használata az Azure API Management-házirendekben
 
@@ -86,6 +86,8 @@ Lásd: [a Key Vault-integráció előfeltételei](#prerequisites-for-key-vault-i
 
 ### <a name="add-a-plain-or-secret-value"></a>Egyszerű vagy titkos érték hozzáadása
 
+### <a name="portal"></a>[Portál](#tab/azure-portal)
+
 1. A [Azure Portal](https://portal.azure.com)navigáljon a API Management-példányhoz.
 1. Az **API**-k területen válassza a **nevesített értékek**  >  **+ Hozzáadás** lehetőséget.
 1. Adja meg a **név** azonosítóját, és adjon meg egy **megjelenítendő nevet** , amely a tulajdonságra hivatkozik a szabályzatokban.
@@ -95,6 +97,50 @@ Lásd: [a Key Vault-integráció előfeltételei](#prerequisites-for-key-vault-i
 1. Válassza a **Létrehozás** lehetőséget.
 
 A megnevezett érték létrehozása után a név kiválasztásával szerkesztheti. Ha megváltoztatja a megjelenítendő nevet, a rendszer automatikusan frissíti az adott nevesített értékre hivatkozó házirendeket az új megjelenítendő név használatára.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Az Azure CLI használatának megkezdéséhez:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Megnevezett érték hozzáadásához használja az az [APIM NV Create](/cli/azure/apim/nv#az_apim_nv_create) parancsot:
+
+```azurecli
+az apim nv create --resource-group apim-hello-word-resource-group \
+    --display-name "named_value_01" --named-value-id named_value_01 \
+    --secret true --service-name apim-hello-world --value test
+```
+
+Megnevezett érték létrehozása után az az [APIM NV Update](/cli/azure/apim/nv#az_apim_nv_update) paranccsal frissítheti azt. Az összes elnevezett érték megjelenítéséhez futtassa az az [APIM NV List](/cli/azure/apim/nv#az_apim_nv_list) parancsot:
+
+```azurecli
+az apim nv list --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --output table
+```
+
+Az ehhez a példához létrehozott megnevezett érték részleteinek megtekintéséhez futtassa az az [APIM NV show](/cli/azure/apim/nv#az_apim_nv_show) parancsot:
+
+```azurecli
+az apim nv show --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --named-value-id named_value_01
+```
+
+Ez a példa egy titkos érték. Az előző parancs nem ad vissza értéket. Az érték megjelenítéséhez futtassa az az [APIM NV show-Secret](/cli/azure/apim/nv#az_apim_nv_show_secret) parancsot:
+
+```azurecli
+az apim nv show-secret --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --named-value-id named_value_01
+```
+
+Megnevezett érték törléséhez használja az az [APIM NV delete](/cli/azure/apim/nv#az_apim_nv_delete) parancsot:
+
+```azurecli
+az apim nv delete --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --named-value-id named_value_01
+```
+
+---
 
 ## <a name="use-a-named-value"></a>Névvel ellátott érték használata
 
