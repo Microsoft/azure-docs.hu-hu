@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: dde9575a70ea80ad262bc01bb9d5d0015c803427
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: d311ea3158e1f9d53c51fe239103039849597d11
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94543017"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579195"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql-flexible-server-preview"></a>Lassú lekérdezési naplók Azure Database for MySQL rugalmas kiszolgálóban (előzetes verzió)
 
@@ -27,19 +27,19 @@ Alapértelmezés szerint a lassú lekérdezési napló le van tiltva. A naplók 
 
 Egyéb paraméterek a lassú lekérdezés naplózási viselkedésének vezérléséhez:
 
-- **long_query_time** : a lekérdezés naplózása, ha a művelet `long_query_time` befejezéséhez (másodpercben) hosszabb időt vesz igénybe. Az alapértelmezett érték 10 másodperc.
-- **log_slow_admin_statements** : meghatározza, hogy a felügyeleti utasítások (pl. `ALTER_TABLE`, `ANALYZE_TABLE` ) naplózásra kerül.
-- **log_queries_not_using_indexes** : meghatározza, hogy az indexeket nem használó lekérdezések naplózva vannak-e.
-- **log_throttle_queries_not_using_indexes** : korlátozza a lassú lekérdezési naplóba írható nem indexelt lekérdezések számát. Ez a paraméter akkor lép életbe, ha `log_queries_not_using_indexes` be van állítva *ON*
+- **long_query_time**: a lekérdezés naplózása, ha a művelet `long_query_time` befejezéséhez (másodpercben) hosszabb időt vesz igénybe. Az alapértelmezett érték 10 másodperc.
+- **log_slow_admin_statements**: meghatározza, hogy a felügyeleti utasítások (pl. `ALTER_TABLE`, `ANALYZE_TABLE` ) naplózásra kerül.
+- **log_queries_not_using_indexes**: meghatározza, hogy az indexeket nem használó lekérdezések naplózva vannak-e.
+- **log_throttle_queries_not_using_indexes**: korlátozza a lassú lekérdezési naplóba írható nem indexelt lekérdezések számát. Ez a paraméter akkor lép életbe, ha `log_queries_not_using_indexes` be van állítva 
 
 > [!IMPORTANT]
-> Ha a táblák nincsenek indexelve, a (z) `log_queries_not_using_indexes` és a `log_throttle_queries_not_using_indexes` Paraméterek beállítása hatással lehet a MySQL-teljesítményre, mivel a nem indexelt táblákon futó összes lekérdezés a lassú lekérdezési naplóba kerül. **ON**
+> Ha a táblák nincsenek indexelve, a (z) `log_queries_not_using_indexes` és a `log_throttle_queries_not_using_indexes` Paraméterek beállítása hatással lehet a MySQL-teljesítményre, mivel a nem indexelt táblákon futó összes lekérdezés a lassú lekérdezési naplóba kerül. 
 
 A lassú lekérdezési napló paramétereinek teljes leírását a MySQL [lassú lekérdezési napló dokumentációjában](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) találja.
 
 ## <a name="access-slow-query-logs"></a>Lassú lekérdezési naplók elérése
 
-A lassú lekérdezési naplók integrálva vannak Azure Monitor diagnosztikai beállításokkal. Miután engedélyezte a lassú lekérdezési naplókat a MySQL rugalmas kiszolgálón, kibocsáthatja őket Azure Monitor naplókba, Event Hubsba vagy az Azure Storage szolgáltatásba. A diagnosztikai beállításokkal kapcsolatos további tudnivalókért tekintse meg a [diagnosztikai naplók dokumentációját](../../azure-monitor/platform/platform-logs-overview.md). Ha többet szeretne megtudni arról, hogyan engedélyezheti a diagnosztikai beállításokat a Azure Portalban, tekintse meg a [lassú lekérdezési napló-portált ismertető cikket](how-to-configure-slow-query-logs-portal.md#set-up-diagnostics).
+A lassú lekérdezési naplók integrálva vannak Azure Monitor diagnosztikai beállításokkal. Miután engedélyezte a lassú lekérdezési naplókat a MySQL rugalmas kiszolgálón, kibocsáthatja őket Azure Monitor naplókba, Event Hubsba vagy az Azure Storage szolgáltatásba. A diagnosztikai beállításokkal kapcsolatos további tudnivalókért tekintse meg a [diagnosztikai naplók dokumentációját](../../azure-monitor/essentials/platform-logs-overview.md). Ha többet szeretne megtudni arról, hogyan engedélyezheti a diagnosztikai beállításokat a Azure Portalban, tekintse meg a [lassú lekérdezési napló-portált ismertető cikket](how-to-configure-slow-query-logs-portal.md#set-up-diagnostics).
 
 A következő táblázat a lassú lekérdezési napló kimenetét ismerteti. A kimeneti módszertől függően a befoglalt mezők és a megjelenő sorrend eltérő lehet.
 

@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: 719fcca74d2cd048bf170940eff7da6a25425469
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 00e44185c938c94903e9b85a4748906721dac27f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373283"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571696"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>A Azure Migrate korábbi verziójának használata
 
@@ -210,14 +210,14 @@ A függőségi vizualizáció használatához egy Log Analytics munkaterületet 
 1. Ha Log Analytics munkaterületet szeretne csatolni egy projekthez, az **áttekintés**> **Essentials** szolgáltatásban kattintson a **Konfigurálás szükséges** elemre.
 2. Létrehozhat egy új munkaterületet, vagy csatolhat egy meglévőt:
   - Új munkaterület létrehozásához adjon meg egy nevet. A munkaterület ugyanabban az [Azure-földrajzbeli](https://azure.microsoft.com/global-infrastructure/geographies/) régióban jön létre, mint az áttelepítési projekt.
-  - Ha meglévő munkaterületet csatol, az összes elérhető munkaterületet az áttelepítési projekttel megegyező előfizetésben is kiválaszthatja. Csak azok a munkaterületek jelennek meg, amelyek egy [támogatott Service Map régióban](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions)lettek létrehozva. Munkaterület csatolásához ellenőrizze, hogy van-e "olvasó" hozzáférése a munkaterülethez.
+  - Ha meglévő munkaterületet csatol, az összes elérhető munkaterületet az áttelepítési projekttel megegyező előfizetésben is kiválaszthatja. Csak azok a munkaterületek jelennek meg, amelyek egy [támogatott Service Map régióban](../azure-monitor/vm/vminsights-configure-workspace.md#supported-regions)lettek létrehozva. Munkaterület csatolásához ellenőrizze, hogy van-e "olvasó" hozzáférése a munkaterülethez.
 
 > [!NOTE]
 > Az áttelepítési projekthez társított munkaterület nem módosítható.
 
 ### <a name="download-and-install-vm-agents"></a>VM-ügynökök letöltése és telepítése
 
-A munkaterület konfigurálása után le kell töltenie és telepítenie kell az ügynököket minden olyan helyszíni gépen, amelyet ki szeretne értékelni. Továbbá, ha olyan gépekkel rendelkezik, amelyeknek nincs internetkapcsolata, le kell töltenie és telepítenie kell [log Analytics-átjárót](../azure-monitor/platform/gateway.md) .
+A munkaterület konfigurálása után le kell töltenie és telepítenie kell az ügynököket minden olyan helyszíni gépen, amelyet ki szeretne értékelni. Továbbá, ha olyan gépekkel rendelkezik, amelyeknek nincs internetkapcsolata, le kell töltenie és telepítenie kell [log Analytics-átjárót](../azure-monitor/agents/gateway.md) .
 
 1. Az **Áttekintés** lapon kattintson   >  a **gépek** kezelése lehetőségre, és válassza ki a szükséges gépet.
 2. A **függőségek** oszlopban kattintson az **ügynökök telepítése** elemre.
@@ -238,7 +238,7 @@ Az ügynök telepítése Windows rendszerű gépre:
 4. Az **ügynök telepítési beállításai** területen válassza az **Azure log Analytics**  >  **tovább** lehetőséget.
 5. Új Log Analytics munkaterület hozzáadásához kattintson a **Hozzáadás** gombra. Illessze be azt a munkaterület-azonosítót és-kulcsot, amelyet a portálról másolt. Kattintson a **Tovább** gombra.
 
-Az ügynököt a parancssorból vagy egy automatizált módszerrel, például Configuration Manager is telepítheti. [További](../azure-monitor/platform/log-analytics-agent.md#installation-options) információ az MMA-ügynök telepítésével kapcsolatban ezen módszerek használatával.
+Az ügynököt a parancssorból vagy egy automatizált módszerrel, például Configuration Manager is telepítheti. [További](../azure-monitor/agents/log-analytics-agent.md#installation-options) információ az MMA-ügynök telepítésével kapcsolatban ezen módszerek használatával.
 
 #### <a name="install-the-mma-agent-on-a-linux-machine"></a>Az MMA-ügynök telepítése Linux rendszerű gépre
 
@@ -249,11 +249,11 @@ Az ügynök telepítése Linux rendszerű gépre:
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-[További](../azure-monitor/platform/agents-overview.md#supported-operating-systems) információ az MMA által támogatott Linux operációs rendszerek listájáról.
+[További](../azure-monitor/agents/agents-overview.md#supported-operating-systems) információ az MMA által támogatott Linux operációs rendszerek listájáról.
 
 ### <a name="install-the-mma-agent-on-a-machine-monitored-by-operations-manager"></a>Az MMA-ügynök telepítése Operations Manager által figyelt gépre
 
-A System Center Operations Manager 2012 R2 vagy újabb verziói által monitorozott gépek esetében nincs szükség az MMA-ügynök telepítésére. Service Map integrálódik a Operations Manager MMA-val a szükséges függőségi adatok összegyűjtéséhez. [További információ](../azure-monitor/insights/service-map-scom.md#prerequisites). A függőségi ügynököt telepíteni kell.
+A System Center Operations Manager 2012 R2 vagy újabb verziói által monitorozott gépek esetében nincs szükség az MMA-ügynök telepítésére. Service Map integrálódik a Operations Manager MMA-val a szükséges függőségi adatok összegyűjtéséhez. [További információ](../azure-monitor/vm/service-map-scom.md#prerequisites). A függőségi ügynököt telepíteni kell.
 
 ### <a name="install-the-dependency-agent"></a>A függőségi ügynök telepítése
 
@@ -262,8 +262,8 @@ A System Center Operations Manager 2012 R2 vagy újabb verziói által monitoroz
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-- További információ a Windows és Linux operációs rendszerek [függőségi ügynökének támogatásáról](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) .
-- [További](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent) információ arról, hogyan használhatók a parancsfájlok a függőségi ügynök telepítéséhez.
+- További információ a Windows és Linux operációs rendszerek [függőségi ügynökének támogatásáról](../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems) .
+- [További](../azure-monitor/vm/vminsights-enable-hybrid.md#dependency-agent) információ arról, hogyan használhatók a parancsfájlok a függőségi ügynök telepítéséhez.
 
 >[!NOTE]
 > A függőségi ügynök telepítéséhez szükséges rendszerkövetelmények és módszerek áttekintését ismertető Azure Monitor for VMs cikk a Service Map megoldásra is érvényes.
@@ -298,7 +298,7 @@ A csoport létrehozása után javasoljuk, hogy telepítse az ügynököket a cso
 
 ## <a name="query-dependency-data-from-azure-monitor-logs"></a>Függőségi adatok lekérdezése Azure Monitor naplókból
 
-A Service Map által rögzített függőségi adatmennyiség a Azure Migrate projekthez társított Log Analytics munkaterületen kérdezhető le. [További](../azure-monitor/insights/service-map.md#log-analytics-records) információ a Service Map adattáblákról Azure monitor naplók lekérdezéséhez. 
+A Service Map által rögzített függőségi adatmennyiség a Azure Migrate projekthez társított Log Analytics munkaterületen kérdezhető le. [További](../azure-monitor/vm/service-map.md#log-analytics-records) információ a Service Map adattáblákról Azure monitor naplók lekérdezéséhez. 
 
 A Kusto-lekérdezések futtatása:
 
@@ -308,15 +308,15 @@ A Kusto-lekérdezések futtatása:
 4. A függőségi adatok Azure Monitor naplók használatával történő gyűjtésének megírása a lekérdezésbe. Keresse meg a következő szakaszban szereplő lekérdezéseket.
 5. Futtassa a lekérdezést a Futtatás gombra kattintva. 
 
-[További](../azure-monitor/log-query/log-analytics-tutorial.md) információ a Kusto-lekérdezések írásához. 
+[További](../azure-monitor/logs/log-analytics-tutorial.md) információ a Kusto-lekérdezések írásához. 
 
 ### <a name="sample-azure-monitor-logs-queries"></a>Példa Azure Monitor naplók lekérdezésére
 
-A következő példák a függőségi adatok kinyerésére használható lekérdezések. A lekérdezéseket módosíthatja az előnyben részesített adatpontok kinyeréséhez. A függőségi adatrekordok mezőinek teljes listája [itt](../azure-monitor/insights/service-map.md#log-analytics-records)érhető el. További példákat [itt](../azure-monitor/insights/service-map.md#sample-log-searches)találhat.
+A következő példák a függőségi adatok kinyerésére használható lekérdezések. A lekérdezéseket módosíthatja az előnyben részesített adatpontok kinyeréséhez. A függőségi adatrekordok mezőinek teljes listája [itt](../azure-monitor/vm/service-map.md#log-analytics-records)érhető el. További példákat [itt](../azure-monitor/vm/service-map.md#sample-log-searches)találhat.
 
 #### <a name="summarize-inbound-connections-on-a-set-of-machines"></a>A bejövő kapcsolatok összefoglalása a gépek egy készletén
 
-A táblázatban lévő, a kapcsolati metrikák, VMConnection, nem az egyes fizikai hálózati kapcsolatok. A fizikai hálózati kapcsolatok több logikai kapcsolatba vannak csoportosítva. [További](../azure-monitor/insights/service-map.md#connections) információ arról, hogyan összesítik a fizikai hálózati kapcsolatok adatait egyetlen logikai rekordba a VMConnection-ben. 
+A táblázatban lévő, a kapcsolati metrikák, VMConnection, nem az egyes fizikai hálózati kapcsolatok. A fizikai hálózati kapcsolatok több logikai kapcsolatba vannak csoportosítva. [További](../azure-monitor/vm/service-map.md#connections) információ arról, hogyan összesítik a fizikai hálózati kapcsolatok adatait egyetlen logikai rekordba a VMConnection-ben. 
 
 ```
 // the machines of interest

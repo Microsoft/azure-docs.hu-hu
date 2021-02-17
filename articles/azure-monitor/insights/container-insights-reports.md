@@ -3,15 +3,15 @@ title: Azure Monitor-jelentések tárolók számára
 description: A Azure Monitor által a tárolók számára gyűjtött adatok elemzéséhez rendelkezésre álló jelentéseket ismerteti.
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 3cc2f8fb9bfaa278ce06b4a8cd6d379397b7129a
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 94709cf4a8b579447c11f91f9bc6863ab4b4fe08
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96907533"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582318"
 ---
 # <a name="reports-in-azure-monitor-for-containers"></a>Azure Monitor-jelentések tárolók számára
-Az Azure Monitor for containers szolgáltatásban lévő jelentések ajánlott, beépített Azure- [munkafüzetek](../platform/workbooks-overview.md). Ez a cikk az elérhető különböző jelentéseket és azok elérését ismerteti.
+Az Azure Monitor for containers szolgáltatásban lévő jelentések ajánlott, beépített Azure- [munkafüzetek](../visualize/workbooks-overview.md). Ez a cikk az elérhető különböző jelentéseket és azok elérését ismerteti.
 
 ## <a name="viewing-reports"></a>Jelentések megtekintése
 A Azure Portal **Azure monitor** menüjében válassza a **tárolók** lehetőséget. A **figyelés** szakaszban válassza ki az adatokat, **válasszon ki egy** adott fürtöt, majd válassza a **jelentések (előzetes verzió)** lapot. 
@@ -19,7 +19,7 @@ A Azure Portal **Azure monitor** menüjében válassza a **tárolók** lehetős�
 [![Jelentések lap](media/container-insights-reports/reports-page.png)](media/container-insights-reports/reports-page.png#lightbox)
 
 ## <a name="create-a-custom-workbook"></a>Egyéni munkafüzet létrehozása
-Ha ezen munkafüzetek bármelyikén alapuló egyéni munkafüzetet szeretne létrehozni, válassza a **munkafüzetek megtekintése** legördülő menüt, majd a legördülő lista alján **lépjen** a következőre: A munkafüzetekkel és a munkafüzet-sablonokkal kapcsolatos további információkért lásd: [Azure monitor munkafüzetek](../platform/workbooks-overview.md) .
+Ha ezen munkafüzetek bármelyikén alapuló egyéni munkafüzetet szeretne létrehozni, válassza a **munkafüzetek megtekintése** legördülő menüt, majd a legördülő lista alján **lépjen** a következőre: A munkafüzetekkel és a munkafüzet-sablonokkal kapcsolatos további információkért lásd: [Azure monitor munkafüzetek](../visualize/workbooks-overview.md) .
 
 [![AK-gyűjtemény](media/container-insights-reports/aks-gallery.png)](media/container-insights-reports/aks-gallery.png#lightbox)
 
@@ -78,4 +78,4 @@ Ha ezen munkafüzetek bármelyikén alapuló egyéni munkafüzetet szeretne lét
 
 ## <a name="next-steps"></a>Következő lépések
 
-- A Azure Monitor munkafüzetekkel kapcsolatos részletekért tekintse meg [Azure monitor munkafüzeteket](../platform/workbooks-overview.md) .
+- A Azure Monitor munkafüzetekkel kapcsolatos részletekért tekintse meg [Azure monitor munkafüzeteket](../visualize/workbooks-overview.md) .

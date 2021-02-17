@@ -5,12 +5,12 @@ author: anthonychu
 ms.author: antchu
 ms.date: 12/1/2020
 ms.topic: article
-ms.openlocfilehash: f527b387afc01eb60bd582adc13a4ad3d516055b
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: dd112c74ea9f013a0e14bddd735060ddbf73c14e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936991"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578531"
 ---
 # <a name="azure-functions-custom-handlers"></a>Egyéni kezelők Azure Functions
 
@@ -121,9 +121,6 @@ Egyéni kezelők esetén a értékeként `FUNCTIONS_WORKER_RUNTIME` `Custom` *lo
   }
 }
 ```
-
-> [!NOTE]
-> `Custom` a Linux Premium vagy App Service csomagokban nem ismerhető fel érvényes futtatókörnyezet. Ha ez az Ön telepítési célja, állítsa `FUNCTIONS_WORKER_RUNTIME` üresre a karakterláncot.
 
 ### <a name="function-metadata"></a>Függvény metaadatainak
 
@@ -586,6 +583,6 @@ Ha segítségre van szüksége egy egyéni kezelővel rendelkező Function alkal
 
 A támogatás akkor érhető el, ha a functions gazdagép problémákba ütközne az egyéni kezelő folyamatával. Az egyéni kezelői folyamat belső működésével kapcsolatos problémák, például a választott nyelven vagy keretrendszerrel kapcsolatos problémák esetén a támogatási csapatunk nem tud segítséget nyújtani ebben a kontextusban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg egy Azure Functions alkalmazás létrehozásával a Go-ban vagy a Rustban az [Egyéni kezelők](create-first-function-vs-code-other.md)gyors üzembe helyezésével.

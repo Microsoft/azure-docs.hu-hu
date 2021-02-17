@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2021
 ms.author: memildin
-ms.openlocfilehash: 205f92d4282f0cad00c1dd136636da319e107f3f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 96af34b5b68fca5ab8061c8c99f03bee094dc175
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391072"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590383"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender a gépeken futó SQL-kiszolgálókon 
 
@@ -55,7 +55,7 @@ A fentiek mindegyikét alább találja.
     
     - Az **Azure arc üzembe helyezése** – bármely Windows-gépet összekapcsolhat Security Centerhoz. Az Azure arc azonban mélyebb integrációt tesz lehetővé az *összes* Azure-környezetben. Ha beállítja az Azure-ívet, a portálon megjelenik a **SQL Server – Azure arc** oldal, és a biztonsági riasztások az oldal dedikált **Biztonság** lapján jelennek meg. Ezért az első és ajánlott lehetőség az [Azure arc beállítása a gazdagépen](../azure-arc/servers/onboard-portal.md#install-and-validate-the-agent-on-windows) , és kövesse az Azure-beli **SQL Server vonatkozó** utasításokat.
         
-    - **A Windows rendszerű gép összekapcsolása az Azure arc nélkül** – ha úgy dönt, hogy a Windows-gépen futó SQL Servert az Azure arc használata nélkül kívánja összekapcsolni, kövesse a Windows rendszerű [gépek összekapcsolása a Azure monitor](../azure-monitor/platform/agent-windows.md).
+    - **A Windows rendszerű gép összekapcsolása az Azure arc nélkül** – ha úgy dönt, hogy a Windows-gépen futó SQL Servert az Azure arc használata nélkül kívánja összekapcsolni, kövesse a Windows rendszerű [gépek összekapcsolása a Azure monitor](../azure-monitor/agents/agent-windows.md).
 
 
 ### <a name="step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page"></a>2. lépés Engedélyezze a választható csomagot Security Center díjszabási és beállítási lapján:
@@ -75,7 +75,7 @@ A fentiek mindegyikét alább találja.
     A csomag a kiválasztott munkaterülethez csatlakoztatott összes SQL-kiszolgálón engedélyezve lesz. A védelem teljes mértékben aktív lesz az SQL Server példány első újraindítása után.
 
     >[!TIP] 
-    > Új munkaterület létrehozásához kövesse az [log Analytics-munkaterület létrehozása](../azure-monitor/learn/quick-create-workspace.md)című témakör utasításait.
+    > Új munkaterület létrehozásához kövesse az [log Analytics-munkaterület létrehozása](../azure-monitor/logs/quick-create-workspace.md)című témakör utasításait.
 
 
 1. Szükség esetén az e-mail-értesítések konfigurálása a biztonsági riasztásokhoz. 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 28ec6659430cfdbc81533f05863ccb0ddc560e32
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 5d8c5eb385baff4aac450c470fb6103e2fb315f3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508032"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590414"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Az SQL-hez készült Azure Defender bemutatása
 
@@ -43,8 +43,8 @@ Az SQL-hez készült Azure Defender két Azure Defender-csomagot tartalmaz, amel
 - Az **Azure Defender az SQL-kiszolgálókon a gépeken** kiterjeszti az Azure-natív SQL-kiszolgálók védelmét, így teljes mértékben támogatja a hibrid környezeteket, és védelmet biztosít az Azure-ban, más felhőalapú környezetekben és akár helyszíni gépeken üzemeltetett SQL-kiszolgálóknak (az összes támogatott verziónak).
     - [SQL Server on Virtual Machines](https://azure.microsoft.com/services/virtual-machines/sql-server/)
     - Helyszíni SQL Server-kiszolgálók:
-        - [Azure Arc-kompatibilis SQL Server (előzetes verzió)](/sql/sql-server/azure-arc/overview)
-        - [Windows rendszerű gépeken futó SQL Server Azure arc nélkül](../azure-monitor/platform/agent-windows.md)
+        - [Azure Arc-kompatibilis SQL Server (előzetes verzió)](https://docs.microsoft.com/sql/sql-server/azure-arc/overview)
+        - [Windows rendszerű gépeken futó SQL Server Azure arc nélkül](../azure-monitor/agents/agent-windows.md)
 
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-sql"></a>Milyen előnyökkel jár az Azure Defender for SQL?

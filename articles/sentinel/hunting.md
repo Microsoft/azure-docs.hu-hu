@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: yelevin
-ms.openlocfilehash: ca483d993290e4d66ba257d4cb5de7fc3c952405
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b88185a09e69b1c7bd6c6c58b8e22190b4a2e394
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660831"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576769"
 ---
 # <a name="hunt-for-threats-with-azure-sentinel"></a>A fenyegetések vadászata az Azure Sentinel szolgáltatással
 
@@ -66,7 +66,7 @@ Az Azure Sentinel-vadászattal az alábbi lehetőségek közül választhat:
 
 ## <a name="query-language"></a>Lekérdezés nyelve 
 
-Az Azure Sentinelben való vadászat a Kusto lekérdezési nyelvén alapul. A lekérdezési nyelvre és a támogatott operátorokra vonatkozó további információkért lásd a [lekérdezés nyelvi referenciája](../azure-monitor/log-query/get-started-queries.md)című témakört.
+Az Azure Sentinelben való vadászat a Kusto lekérdezési nyelvén alapul. A lekérdezési nyelvre és a támogatott operátorokra vonatkozó további információkért lásd a [lekérdezés nyelvi referenciája](../azure-monitor/logs/get-started-queries.md)című témakört.
 
 ## <a name="public-hunting-query-github-repository"></a>Nyilvános vadászati lekérdezés GitHub-tárháza
 

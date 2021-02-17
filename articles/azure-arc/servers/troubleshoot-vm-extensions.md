@@ -3,12 +3,12 @@ title: Azure arc-kompatibilis kiszolgálók virtuálisgép-bővítményekkel kap
 description: Ez a cikk azt ismerteti, hogyan lehet elhárítani az Azure-beli virtuálisgép-bővítményekkel kapcsolatos problémákat, és elhárítani azokat az Azure arc-kompatibilis kiszolgálókon.
 ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: ffd7db5ff7da3d7f60762117f80d7b9b5af6f646
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 799e5c8ec00a894c6a54c64494edd8f259faf2dc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91344611"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584664"
 ---
 # <a name="troubleshoot-arc-enabled-servers-vm-extension-issues"></a>Az ív használatára képes kiszolgálók virtuálisgép-bővítményekkel kapcsolatos hibák elhárítása
 
@@ -36,9 +36,9 @@ Az alábbi hibaelhárítási lépések minden virtuálisgép-bővítményre érv
 
 ### <a name="log-analytics-agent-for-linux"></a>Linux-Log Analytics ügynök
 
-- A Log Analytics ügynök verziójának 1.13.9 (a megfelelő bővítmény verziója 1.13.15) nem megfelelően jelöli meg a feltöltött adatmennyiséget az Azure arc-kompatibilis kiszolgáló erőforrás-azonosítójával. Bár a rendszer a naplókat a szolgáltatásba küldi, amikor a **naplók** **vagy az**elemzések kiválasztása után megpróbálja megtekinteni a kijelölt kiszolgáló adatait, az adatok nem lesznek visszaadva. Az adatok megtekinthetők úgy, hogy a munkaterületre hatókörrel rendelkező Azure Monitor naplókból vagy Azure Monitor for VMsból futtatnak lekérdezéseket.
+- A Log Analytics ügynök verziójának 1.13.9 (a megfelelő bővítmény verziója 1.13.15) nem megfelelően jelöli meg a feltöltött adatmennyiséget az Azure arc-kompatibilis kiszolgáló erőforrás-azonosítójával. Bár a rendszer a naplókat a szolgáltatásba küldi, amikor a **naplók** **vagy az** elemzések kiválasztása után megpróbálja megtekinteni a kijelölt kiszolgáló adatait, az adatok nem lesznek visszaadva. Az adatok megtekinthetők úgy, hogy a munkaterületre hatókörrel rendelkező Azure Monitor naplókból vagy Azure Monitor for VMsból futtatnak lekérdezéseket.
 
-- A Linux Log Analytics ügynöke jelenleg nem támogatja a disztribúciókat. Az ügynöknek további függőségeket kell telepítenie, beleértve a Python 2-t is. Tekintse át a támogatási mátrixot [here](../../azure-monitor/platform/agents-overview.md#supported-operating-systems)és az előfeltételeket.
+- A Linux Log Analytics ügynöke jelenleg nem támogatja a disztribúciókat. Az ügynöknek további függőségeket kell telepítenie, beleértve a Python 2-t is. Tekintse át a támogatási mátrixot [](../../azure-monitor/agents/agents-overview.md#supported-operating-systems)és az előfeltételeket.
 
 - Az állapotjelző üzenet 52-es hibakódja hiányzó függőséget jelez. A kimenet és a naplók további információkkal szolgálnak arról, hogy mely függőségek hiányoznak.
 
@@ -52,4 +52,4 @@ Ha itt nem találja a problémát, vagy nem tudja elhárítani a problémát, pr
 
 - A szolgáltatással való együttműködéshez [@AzureSupport](https://twitter.com/azuresupport) a hivatalos Microsoft Azure fiók a felhasználói élmény javítása érdekében. Az Azure-támogatás a válaszokat, támogatást és szakértőket az Azure-Közösséggel köti össze.
 
-- Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése**lehetőséget.
+- Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése** lehetőséget.

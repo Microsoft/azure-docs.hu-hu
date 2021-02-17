@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: a5fdde954d2826f34c671552a88365f9276b89a0
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: f4d97b81bf8f11b8380f04dcbfdb72bd658805ab
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895223"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579247"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Traffic Analytics gyakori kérdések
 
@@ -126,7 +126,7 @@ Igen.
 
 ## <a name="can-i-use-an-existing-workspace"></a>Használhatok egy meglévő munkaterületet?
 
-Igen. Ha egy meglévő munkaterületet választ ki, győződjön meg arról, hogy az új lekérdezési nyelvre lett migrálva. Ha nem szeretné frissíteni a munkaterületet, egy újat kell létrehoznia. További információ az új lekérdezési nyelvről: [Azure monitor naplók frissítése az új naplók keresésére](../azure-monitor/log-query/log-query-overview.md).
+Igen. Ha egy meglévő munkaterületet választ ki, győződjön meg arról, hogy az új lekérdezési nyelvre lett migrálva. Ha nem szeretné frissíteni a munkaterületet, egy újat kell létrehoznia. További információ az új lekérdezési nyelvről: [Azure monitor naplók frissítése az új naplók keresésére](../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>Használhatom az Azure Storage-fiókomat egy előfizetésben, és az Log Analytics munkaterületem egy másik előfizetésben is szerepelhet?
 
@@ -262,7 +262,7 @@ A Traffic Analytics nem rendelkezik beépített támogatással a riasztásokhoz.
 - A Traffic Analytics Log Analytics shortlink is használhatja. 
 - A lekérdezések megírásához használja az [itt dokumentált sémát](traffic-analytics-schema.md) 
 - A riasztás létrehozásához kattintson az "új riasztási szabály" elemre.
-- A riasztás létrehozásához tekintse meg a [riasztások dokumentációját](../azure-monitor/platform/alerts-log.md)
+- A riasztás létrehozásához tekintse meg a [riasztások dokumentációját](../azure-monitor/alerts/alerts-log.md)
 
 ## <a name="how-do-i-check-which-vms-are-receiving-most-on-premises-traffic"></a>Hogyan annak ellenőrzését, hogy mely virtuális gépek kapják meg a legtöbb helyszíni forgalmat?
 
@@ -403,4 +403,4 @@ A virtuális alhálózatok topológiája lap két fő szakaszt tartalmaz:
 - Az ilyen csomópontok kiválasztásakor a kulcs megnyomásával megtekintheti az összes kapcsolatát, egyet pedig eggyel `Shift+Left arrow` . A fókusz a kapcsolatok **információs eszköz mezőjére** lép. A fókuszt bármikor visszahelyezheti a csomópontra az újbóli megnyomásával `Shift+Right arrow` .
 
 ## <a name="are-classic-nsgs-supported"></a>Támogatottak a klasszikus NSG?
-Nem, Traffic Analytics nem támogatja a klasszikus NSG. Azt javasoljuk, hogy a klasszikus erőforrások IaaS telepítse át a Klasszikusból a Azure Resource Managerba [.](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation) A cikkből megtudhatja, [hogyan telepítheti át az áttelepítést](https://docs.microsoft.com/azure/virtual-machines/migration-classic-resource-manager-overview).
+Nem, Traffic Analytics nem támogatja a klasszikus NSG. Azt javasoljuk, hogy a klasszikus erőforrások IaaS telepítse át a Klasszikusból a Azure Resource Managerba [.](../virtual-machines/classic-vm-deprecation.md) A cikkből megtudhatja, [hogyan telepítheti át az áttelepítést](../virtual-machines/migration-classic-resource-manager-overview.md).

@@ -7,12 +7,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 02/11/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: af432d9c6323bd2328eb8dd84d8572a8a5ae05a7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 15a18cbfc3a80bbfea0b92e5b616104dc0f593af
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388005"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580995"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Hibrid runbook-feldolgozó hibáinak elhárítása
 
@@ -128,7 +128,7 @@ A következő problémák lehetséges okai:
 #### <a name="resolution"></a>Feloldás
 
 ##### <a name="mistyped-workspace-id-or-key"></a>Nem típusos munkaterület-azonosító vagy-kulcs
-Annak ellenőrzéséhez, hogy az ügynök munkaterület-azonosítója vagy a munkaterület kulcsa nem lett-e megadva, tekintse meg a következőt: [munkaterület hozzáadása vagy eltávolítása](../../azure-monitor/platform/agent-manage.md#windows-agent) a Windows-ügynökhöz, illetve [munkaterület hozzáadása vagy eltávolítása](../../azure-monitor/platform/agent-manage.md#linux-agent) a Linux-ügynökhöz. Győződjön meg arról, hogy a Azure Portal teljes sztringet választ, majd másolja és illessze be alaposan.
+Annak ellenőrzéséhez, hogy az ügynök munkaterület-azonosítója vagy a munkaterület kulcsa nem lett-e megadva, tekintse meg a következőt: [munkaterület hozzáadása vagy eltávolítása](../../azure-monitor/agents/agent-manage.md#windows-agent) a Windows-ügynökhöz, illetve [munkaterület hozzáadása vagy eltávolítása](../../azure-monitor/agents/agent-manage.md#linux-agent) a Linux-ügynökhöz. Győződjön meg arról, hogy a Azure Portal teljes sztringet választ, majd másolja és illessze be alaposan.
 
 ##### <a name="configuration-not-downloaded"></a>A konfiguráció nincs letöltve
 
@@ -169,7 +169,7 @@ Helyezze a fájlt a végrehajtható fájllal megegyező mappába `OrchestratorSa
 
 ## <a name="linux"></a>Linux
 
-A Linux Hybrid Runbook Worker a [linuxos log Analytics-ügynöktől](../../azure-monitor/platform/log-analytics-agent.md) függ, hogy kommunikálni fog-e az Automation-fiókjával a feldolgozó, a Runbook-feladatok fogadása és a jelentés állapotának regisztrálásához. Ha a feldolgozó regisztrálása meghiúsul, a hiba lehetséges okait itt találja.
+A Linux Hybrid Runbook Worker a [linuxos log Analytics-ügynöktől](../../azure-monitor/agents/log-analytics-agent.md) függ, hogy kommunikálni fog-e az Automation-fiókjával a feldolgozó, a Runbook-feladatok fogadása és a jelentés állapotának regisztrálásához. Ha a feldolgozó regisztrálása meghiúsul, a hiba lehetséges okait itt találja.
 
 ### <a name="scenario-linux-hybrid-runbook-worker-receives-prompt-for-a-password-when-signing-a-runbook"></a><a name="prompt-for-password"></a>Forgatókönyv: a Linux Hybrid Runbook Worker a Runbook aláírásakor kéri a jelszót
 
@@ -225,7 +225,7 @@ wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/inst
 
 ## <a name="windows"></a>Windows
 
-A Windows Hybrid Runbook Worker a [windows log Analytics ügynöktől](../../azure-monitor/platform/log-analytics-agent.md) függ, hogy kommunikálni tudjon az Automation-fiókjával a feldolgozó, a Runbook-feladatok fogadása és a jelentés állapotának regisztrálásához. Ha a feldolgozó regisztrálása meghiúsul, ez a szakasz néhány lehetséges okot is tartalmaz.
+A Windows Hybrid Runbook Worker a [windows log Analytics ügynöktől](../../azure-monitor/agents/log-analytics-agent.md) függ, hogy kommunikálni tudjon az Automation-fiókjával a feldolgozó, a Runbook-feladatok fogadása és a jelentés állapotának regisztrálásához. Ha a feldolgozó regisztrálása meghiúsul, ez a szakasz néhány lehetséges okot is tartalmaz.
 
 ### <a name="scenario-the-log-analytics-agent-for-windows-isnt-running"></a><a name="mma-not-running"></a>Forgatókönyv: a Windows Log Analytics ügynöke nem fut
 
@@ -253,7 +253,7 @@ Ezt a problémát az okozhatja, hogy a proxy vagy a hálózati tűzfal blokkolja
 
 #### <a name="resolution"></a>Feloldás
 
-A naplók tárolása helyileg történik minden hibrid feldolgozón a következő helyen: C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes. Ellenőrizheti, hogy van-e figyelmeztetési vagy hibaüzenet az **alkalmazás-és Logs\Microsoft-SMA\Operations** , valamint az **alkalmazás és a szolgáltatások Logs\Operations-kezelő** eseménynaplójában. Ezek a naplók olyan kapcsolatot vagy más típusú problémát jeleznek, amely hatással van a szerepkör Azure Automationre való engedélyezésére vagy a normál műveletek során felmerülő problémákra. Ha további segítségre van a Log Analytics ügynökkel kapcsolatos problémák elhárításához, olvassa el [a log Analytics Windows-ügynökkel kapcsolatos problémák elhárítása](../../azure-monitor/platform/agent-windows-troubleshoot.md)című témakört.
+A naplók tárolása helyileg történik minden hibrid feldolgozón a következő helyen: C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes. Ellenőrizheti, hogy van-e figyelmeztetési vagy hibaüzenet az **alkalmazás-és Logs\Microsoft-SMA\Operations** , valamint az **alkalmazás és a szolgáltatások Logs\Operations-kezelő** eseménynaplójában. Ezek a naplók olyan kapcsolatot vagy más típusú problémát jeleznek, amely hatással van a szerepkör Azure Automationre való engedélyezésére vagy a normál műveletek során felmerülő problémákra. Ha további segítségre van a Log Analytics ügynökkel kapcsolatos problémák elhárításához, olvassa el [a log Analytics Windows-ügynökkel kapcsolatos problémák elhárítása](../../azure-monitor/agents/agent-windows-troubleshoot.md)című témakört.
 
 A hibrid feldolgozók a [Runbook kimenetét és üzeneteit](../automation-runbook-output-and-messages.md) ugyanúgy küldik el Azure Automationnak, mint a felhőben futó Runbook-feladatok kimenetének és üzeneteinek küldése. A részletes és a folyamat-adatfolyamokat ugyanúgy engedélyezheti, mint a runbookok.
 

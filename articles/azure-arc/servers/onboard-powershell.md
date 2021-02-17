@@ -3,12 +3,12 @@ title: Hibrid gépek összekötése az Azure-ba a PowerShell használatával
 description: Ebből a cikkből megtudhatja, hogyan telepítheti az ügynököt, és hogyan csatlakoztatható egy gép az Azure-hoz az Azure arc-kompatibilis kiszolgálók használatával. Ezt a PowerShell használatával teheti meg.
 ms.date: 10/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0218235179e1a8a883360d0061e685c04079cbf4
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 07a00de9077378ce3e3f7a7578b66e93d1b04f2b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95492941"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584937"
 ---
 # <a name="connect-hybrid-machines-to-azure-by-using-powershell"></a>Hibrid gépek összekötése az Azure-ba a PowerShell használatával
 
@@ -103,6 +103,6 @@ Miután telepítette és konfigurálta az ügynököt az Azure arc-kompatibilis 
 
 * Ha szükséges, tekintse meg a [csatlakoztatott gép ügynökével kapcsolatos útmutatót](troubleshoot-agent-onboard.md).
 
-* Megtudhatja, hogyan kezelheti a gépet [Azure Policy](../../governance/policy/overview.md)használatával. A virtuális gép [vendég konfigurációját](../../governance/policy/concepts/guest-configuration.md)használhatja, ellenőrizheti, hogy a gép a várt log Analytics munkaterületről jelent-e jelentést, és lehetővé teszi a figyelést a [Azure monitor virtuális gépekkel](../../azure-monitor/insights/vminsights-enable-policy.md).
+* Megtudhatja, hogyan kezelheti a gépet [Azure Policy](../../governance/policy/overview.md)használatával. A virtuális gép [vendég konfigurációját](../../governance/policy/concepts/guest-configuration.md)használhatja, ellenőrizheti, hogy a gép a várt log Analytics munkaterületről jelent-e jelentést, és lehetővé teszi a figyelést a [Azure monitor virtuális gépekkel](../../azure-monitor/vm/vminsights-enable-policy.md).
 
-* További információ a [log Analytics-ügynökről](../../azure-monitor/platform/log-analytics-agent.md). A Windows és a Linux rendszerhez készült Log Analytics ügynökre akkor van szükség, ha az operációs rendszer és a számítási feladatok figyelésére szolgáló adatokat szeretné összegyűjteni, vagy a Azure Automation runbookok vagy más funkciókkal, például a Update Management használatával kívánja kezelni Ez az ügynök más Azure-szolgáltatások, például a [Azure Security Center](../../security-center/security-center-introduction.md)használatához is szükséges.
+* További információ a [log Analytics-ügynökről](../../azure-monitor/agents/log-analytics-agent.md). A Windows és a Linux rendszerhez készült Log Analytics ügynökre akkor van szükség, ha az operációs rendszer és a számítási feladatok figyelésére szolgáló adatokat szeretné összegyűjteni, vagy a Azure Automation runbookok vagy más funkciókkal, például a Update Management használatával kívánja kezelni Ez az ügynök más Azure-szolgáltatások, például a [Azure Security Center](../../security-center/security-center-introduction.md)használatához is szükséges.

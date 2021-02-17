@@ -5,12 +5,12 @@ ms.assetid: f7091b25-b2b6-48da-8d4a-dcf9b7baccab
 ms.topic: article
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 617a2717a1d1265d067cb3e1f26531d135d47941
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb0ce5cfadbab247299cd3c22bf6ee618bf19731
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743913"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582483"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>Alkalmazás vertikális felskálázása Azure App Service
 
@@ -18,7 +18,7 @@ Ez a cikk bemutatja, hogyan méretezheti az alkalmazást Azure App Serviceban. K
 
 * Vertikális [felskálázás](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): több processzor, memória, lemezterület és további funkciók, például dedikált virtuális gépek (VM-EK), egyéni tartományok és tanúsítványok, átmeneti tárolóhelyek, automatikus skálázás és egyéb szolgáltatások. A vertikális felskálázáshoz módosítsa az alkalmazáshoz tartozó App Service terv díjszabási szintjét.
 * Vertikális [felskálázás](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): növelje az alkalmazást futtató virtuálisgép-példányok számát.
-  A díjszabási szintjétől függően akár 30 példányra is kibővíthető. Az **elszigetelt** szinten [app Service környezetek](environment/intro.md) tovább növelik a kibővíthető darabszámot 100 példányra. További információ a horizontális felskálázásról: [Példányszám manuális vagy automatikus skálázása](../azure-monitor/platform/autoscale-get-started.md). Itt megtudhatja, hogyan használhatja az automatikus skálázást, amely az előre meghatározott szabályok és ütemtervek alapján automatikusan méretezi a példányszámot.
+  A díjszabási szintjétől függően akár 30 példányra is kibővíthető. Az **elszigetelt** szinten [app Service környezetek](environment/intro.md) tovább növelik a kibővíthető darabszámot 100 példányra. További információ a horizontális felskálázásról: [Példányszám manuális vagy automatikus skálázása](../azure-monitor/autoscale/autoscale-get-started.md). Itt megtudhatja, hogyan használhatja az automatikus skálázást, amely az előre meghatározott szabályok és ütemtervek alapján automatikusan méretezi a példányszámot.
 
 A méretezési beállítások csak másodperceket vesznek igénybe, és hatással lesznek a [app Service-csomag](../app-service/overview-hosting-plans.md)összes alkalmazására.
 Nem igénylik a kód módosítását vagy az alkalmazás újbóli üzembe helyezését.
@@ -43,7 +43,7 @@ Az egyes App Service csomagok díjszabásával és funkcióival kapcsolatos info
 
 1. A App Service alkalmazás lapjának bal oldali menüjében válassza a vertikális **felskálázás (App Service terv)** lehetőséget.
    
-3. Válassza ki a szintet, majd válassza az **alkalmaz**lehetőséget. Válassza ki a különböző kategóriákat (például **éles**környezetben), és **további lehetőségeket is láthat** a további szintek megjelenítéséhez.
+3. Válassza ki a szintet, majd válassza az **alkalmaz** lehetőséget. Válassza ki a különböző kategóriákat (például **éles** környezetben), és **további lehetőségeket is láthat** a további szintek megjelenítéséhez.
    
     ![Navigáljon az Azure-alkalmazás vertikális felskálázásához.][ChooseWHP]
 
@@ -77,7 +77,7 @@ A szolgáltatási korlátok, kvóták és megkötések, valamint az egyes réteg
 
 ## <a name="more-resources"></a>További erőforrások
 
-[Példányszám manuális vagy automatikus méretezése](../azure-monitor/platform/autoscale-get-started.md)  
+[Példányszám manuális vagy automatikus méretezése](../azure-monitor/autoscale/autoscale-get-started.md)  
 [App Service PremiumV3-szintjeinek konfigurálása](app-service-configure-premium-tier.md)
 
 <!-- LINKS -->

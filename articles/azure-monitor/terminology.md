@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 819ef7e61045c0ed4205eeaf0094fec706b0b9da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99592544d97793f82db36e1d2cb33ba8c6af1c9c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86498610"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586957"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor elnevezési és terminológiai változások
 Jelentős változások történtek a közelmúltban, és az Azure-ügyfelek figyelésének egyszerűsítése érdekében a különböző szolgáltatások összevonása is megtörténik a Azure Monitor. Ez a cikk a Azure Monitor dokumentációjának közelmúltbeli nevét és terminológiájának változásait ismerteti.
@@ -23,12 +23,12 @@ A "diagnosztikai naplók" módosultak az "erőforrás-naplók" értékre, hogy j
 A Azure Monitor alatti különböző szolgáltatások összevonása után a következő lépés a dokumentáció terminológiájának módosítása a Azure Monitor szolgáltatás és annak különböző összetevőinek jobb leírásához. 
 
 ### <a name="log-analytics"></a>Log Analytics
-Azure Monitor naplózási adatokat a rendszer továbbra is egy Log Analytics munkaterületen tárolja, és ugyanazokat a Log Analytics szolgáltatást gyűjti és elemzi, de a _log Analytics_ számos helyen módosítjuk _Azure monitor naplókra_. Ez a kifejezés jobban tükrözi a Azure Monitorban betöltött szerepkörét, és jobb következetességet biztosít a [Azure monitor metrikáinak](platform/data-platform-metrics.md).
+Azure Monitor naplózási adatokat a rendszer továbbra is egy Log Analytics munkaterületen tárolja, és ugyanazokat a Log Analytics szolgáltatást gyűjti és elemzi, de a _log Analytics_ számos helyen módosítjuk _Azure monitor naplókra_. Ez a kifejezés jobban tükrözi a Azure Monitorban betöltött szerepkörét, és jobb következetességet biztosít a [Azure monitor metrikáinak](essentials/data-platform-metrics.md).
 
-A _log Analytics_ kifejezés mostantól elsősorban a lekérdezés írásához és futtatásához, illetve a naplófájlok elemzéséhez használt Azure Portal oldalára vonatkozik. Ez a [metrikák Explorer](platform/metrics-charts.md)funkcionális megfelelője, amely a metrikai adatok elemzéséhez használt Azure Portal lapja.
+A _log Analytics_ kifejezés mostantól elsősorban a lekérdezés írásához és futtatásához, illetve a naplófájlok elemzéséhez használt Azure Portal oldalára vonatkozik. Ez a [metrikák Explorer](essentials/metrics-charts.md)funkcionális megfelelője, amely a metrikai adatok elemzéséhez használt Azure Portal lapja.
 
 ### <a name="log-analytics-workspaces"></a>Log Analytics-munkaterületek
-Azok a [munkaterületek](platform/manage-access.md) , amelyeken a Azure monitor naplózási adatként vannak, log Analytics munkaterületeknek is nevezik. A Azure Portal **log Analytics** menüje át lett nevezve **log Analytics munkaterületekre** , és [új munkaterületeket hoz létre](learn/quick-create-workspace.md) , és konfigurálja az adatforrásokat. Elemezze a naplókat és az egyéb figyelési adatait **Azure monitor** és konfigurálja a munkaterületet **log Analytics munkaterületeken**.
+Azok a [munkaterületek](logs/manage-access.md) , amelyeken a Azure monitor naplózási adatként vannak, log Analytics munkaterületeknek is nevezik. A Azure Portal **log Analytics** menüje át lett nevezve **log Analytics munkaterületekre** , és [új munkaterületeket hoz létre](logs/quick-create-workspace.md) , és konfigurálja az adatforrásokat. Elemezze a naplókat és az egyéb figyelési adatait **Azure monitor** és konfigurálja a munkaterületet **log Analytics munkaterületeken**.
 
 ### <a name="management-solutions"></a>Felügyeleti megoldások
 Felügyeleti [megoldások](insights/solutions.md) lettek átnevezve a _figyelési megoldásokra_, ami jobban leírja a funkcióit.
@@ -56,7 +56,7 @@ Az Operations Management Suite (OMS) a következő Azure felügyeleti szolgálta
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a különböző összetevőkkel és szolgáltatásokkal [kapcsolatos Azure monitor áttekintése című](overview.md) témakört.
-- Ismerje meg a [OMS-portál áttérését](./platform/oms-portal-transition.md).
+- Ismerje meg a [OMS-portál áttérését](./logs/oms-portal-transition.md).

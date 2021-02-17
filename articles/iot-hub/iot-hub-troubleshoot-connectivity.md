@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: Technical Support'
 - fasttrack-edit
 - iot
-ms.openlocfilehash: 81558526500f3c01e975d9a963b4a6a98ec6d753
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8bd20e3c7207c75e87a2132fca89906885de2676
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446402"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579251"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Az Azure IoT Hub-vel való kapcsolat figyelése, diagnosztizálása és hibakeresése
 
@@ -82,7 +82,7 @@ A [*csatlakoztatott eszközök (előzetes verzió)*](monitor-iot-hub-reference.m
 
 Metrikus riasztási szabályok segítségével figyelheti az eszköz leválasztási rendellenességeit a skálán. Azaz, ha jelentős számú eszköz váratlanul leválasztja a kapcsolatot. Ha a rendszer ilyen eseményt észlel, megtekintheti a naplókat, hogy segítsen a probléma megoldásában. Az eszközön belüli leválasztások figyelése és a kritikus fontosságú eszközök leválasztása; azonban a Event Gridt kell használnia. A Event Grid az Azure-metrikák valós idejű élményét is biztosítja.
 
-Ha többet szeretne megtudni a IoT Hubrel kapcsolatos riasztásokról, tekintse meg a [figyelő IoT hub riasztások](monitor-iot-hub.md#alerts)című témakört. A riasztások IoT Hubban való létrehozásának lépéseiért tekintse meg a [metrikák és naplók használata oktatóanyagot](tutorial-use-metrics-and-diags.md). A riasztások részletesebb áttekintését lásd: a [Microsoft Azure riasztások áttekintése](../azure-monitor/platform/alerts-overview.md) a Azure monitor dokumentációjában.
+Ha többet szeretne megtudni a IoT Hubrel kapcsolatos riasztásokról, tekintse meg a [figyelő IoT hub riasztások](monitor-iot-hub.md#alerts)című témakört. A riasztások IoT Hubban való létrehozásának lépéseiért tekintse meg a [metrikák és naplók használata oktatóanyagot](tutorial-use-metrics-and-diags.md). A riasztások részletesebb áttekintését lásd: a [Microsoft Azure riasztások áttekintése](../azure-monitor/alerts/alerts-overview.md) a Azure monitor dokumentációjában.
 
 ## <a name="azure-monitor-use-logs-to-resolve-connectivity-errors"></a>Azure Monitor: kapcsolódási hibák elhárítása naplók használatával
 
@@ -181,7 +181,7 @@ Ha az előző lépések nem segítettek, próbálkozzon a következő lépésekk
 
 Ha segítségre van szüksége mindenki számára, az alábbi visszajelzések szakaszban hagyja meg a megjegyzéseit, ha az útmutató nem segít Önnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az átmeneti problémák megoldásával kapcsolatos további tudnivalókért lásd: az [átmeneti hibák kezelésének](/azure/architecture/best-practices/transient-faults)ismertetése.
 

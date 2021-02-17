@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: b91a8a8742a5bdc9454ebcbd8894889084a12a79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47017fdb5f1fbaba800e71dea21afe2c39bd91e7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258688"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570140"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>Teljesítményfigyelés Azure Monitor naplókkal
 
@@ -67,19 +67,19 @@ A sablont letöltheti és módosíthatja úgy, hogy olyan fürtöt helyezzen üz
 
 Most, hogy hozzáadta a Log Analytics-ügynököt, a Log Analytics portálra bejelentkezve kiválaszthatja, hogy mely teljesítményszámlálókat szeretné összegyűjteni.
 
-1. A Azure Portal keresse meg azt az erőforráscsoportot, amelyben létrehozta a Service Fabric Analytics megoldást. Válassza **a \<nameOfLog AnalyticsWorkspace\> ServiceFabric**lehetőséget.
+1. A Azure Portal keresse meg azt az erőforráscsoportot, amelyben létrehozta a Service Fabric Analytics megoldást. Válassza **a \<nameOfLog AnalyticsWorkspace\> ServiceFabric** lehetőséget.
 
 2. Kattintson a **Log Analytics** elemre.
 
-3. Kattintson a **Speciális beállítások**elemre.
+3. Kattintson a **Speciális beállítások** elemre.
 
-4. Kattintson **az adat**, majd a **Windows-vagy Linux-teljesítményszámlálók**elemre. Az alapértelmezett számlálók listája lehetővé teszi az engedélyezést, és beállíthatja a gyűjtemény intervallumát is. [További teljesítményszámlálókat](service-fabric-diagnostics-event-generation-perf.md) is hozzáadhat a gyűjtéshez. Ennek a [cikknek](/windows/win32/perfctrs/specifying-a-counter-path)a megfelelő formátumra hivatkozik.
+4. Kattintson **az adat**, majd a **Windows-vagy Linux-teljesítményszámlálók** elemre. Az alapértelmezett számlálók listája lehetővé teszi az engedélyezést, és beállíthatja a gyűjtemény intervallumát is. [További teljesítményszámlálókat](service-fabric-diagnostics-event-generation-perf.md) is hozzáadhat a gyűjtéshez. Ennek a [cikknek](/windows/win32/perfctrs/specifying-a-counter-path)a megfelelő formátumra hivatkozik.
 
-5. Kattintson a **Mentés**, majd **az OK**gombra.
+5. Kattintson a **Mentés**, majd **az OK** gombra.
 
 6. A speciális beállítások panel bezárásához.
 
-7. Az általános fejléc alatt kattintson a **munkaterület összegzése**lehetőségre.
+7. Az általános fejléc alatt kattintson a **munkaterület összegzése** lehetőségre.
 
 8. A csempék egy gráf formájában jelennek meg az összes engedélyezett megoldáshoz, beleértve az egyiket a Service Fabric. A Service Fabric Analytics megoldás folytatásához kattintson a **Service Fabric** gráfra.
 
@@ -89,8 +89,8 @@ Most, hogy hozzáadta a Log Analytics-ügynököt, a Log Analytics portálra bej
 
 ![Log Analytics teljesítményszámláló-lekérdezés](media/service-fabric-diagnostics-event-analysis-oms/oms_node_metrics_table.PNG)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* A megfelelő [teljesítményszámlálók](service-fabric-diagnostics-event-generation-perf.md)összegyűjtése. Ha a Log Analytics-ügynököt egy adott teljesítményszámlálók gyűjtésére szeretné beállítani, tekintse át az [adatforrások konfigurálását ismertető témakört](../azure-monitor/platform/agent-data-sources.md#configuring-data-sources)
-* Azure Monitor naplók konfigurálása az [automatizált riasztások](../azure-monitor/platform/alerts-overview.md) beállításához az észlelés és a diagnosztika támogatásához
+* A megfelelő [teljesítményszámlálók](service-fabric-diagnostics-event-generation-perf.md)összegyűjtése. Ha a Log Analytics-ügynököt egy adott teljesítményszámlálók gyűjtésére szeretné beállítani, tekintse át az [adatforrások konfigurálását ismertető témakört](../azure-monitor/agents/agent-data-sources.md#configuring-data-sources)
+* Azure Monitor naplók konfigurálása az [automatizált riasztások](../azure-monitor/alerts/alerts-overview.md) beállításához az észlelés és a diagnosztika támogatásához
 * Alternatív megoldásként összegyűjtheti a teljesítményszámlálók [Azure Diagnostics bővítmény használatával, és elküldheti őket Application Insights](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)

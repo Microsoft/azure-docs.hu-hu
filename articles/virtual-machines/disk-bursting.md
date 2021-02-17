@@ -3,17 +3,17 @@ title: Felügyelt lemez kitörése
 description: Ismerje meg az Azure-lemezekhez és az Azure-beli virtuális gépekhez készült lemezek kitörését.
 author: albecker1
 ms.author: albecker
-ms.date: 09/22/2020
+ms.date: 01/27/2021
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: dcdbf94e547581cb9ff885ac5896467abdf316ae
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 1cedac5814d1c547a28e9b1c894f416af5a924b5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576193"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585096"
 ---
 # <a name="managed-disk-bursting"></a>Felügyelt lemez kitörése
 [!INCLUDE [managed-disks-bursting](../../includes/managed-disks-bursting.md)]
@@ -30,3 +30,7 @@ A burst beállítás alapértelmezés szerint engedélyezve van az azt támogat�
 A [prémium szintű SSD](disks-types.md#premium-ssd) -lemezeken az Azure-beli nyilvános, kormányzati és kínai felhők minden régiójában P20 és kisebb méretekben is elérhetők a betörések. A lemez kitörése alapértelmezés szerint engedélyezve van az azt támogató lemezek összes új és meglévő központi telepítésén. 
 
 [!INCLUDE [managed-disks-bursting](../../includes/managed-disks-bursting-2.md)]
+
+## <a name="next-steps"></a>Következő lépések
+
+Ha meg szeretné tudni, hogyan szerezhet be betekintést a feltört erőforrásaiba, tekintse meg a [lemezek felszakadási mérőszámait](disks-metrics.md).

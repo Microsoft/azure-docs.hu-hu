@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 8/11/2020
 ms.author: lajanuar
-ms.openlocfilehash: 021a65ba69b9d1909df4a86d92b660c0c1033a3b
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: bdfb1ac03ea6f896725d5c86cefe41021204359c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895458"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582194"
 ---
 # <a name="translator-v30"></a>Translator v 3.0
 
@@ -230,7 +230,7 @@ A hibakód egy 6 számjegyből álló szám, amely a 3 számjegyből álló HTTP
 | 503000| A szolgáltatás átmenetileg nem érhető el. Próbálkozzon újra. Ha a hiba továbbra is fennáll, jelentse a hibát dátum/idő szerint, a válasz fejléce X-kérelemazonosító, valamint az ügyfél-azonosítót az X-ClientTraceId kérelem fejlécében.|
 
 ## <a name="metrics"></a>Mérőszámok 
-A metrikák segítségével megtekintheti a Translator használati és rendelkezésre állási adatait Azure Portalban, a metrikák szakaszban, ahogy az alábbi képernyőképen is látható. További információ: [adatok és platform metrikák](../../../azure-monitor/platform/data-platform-metrics.md).
+A metrikák segítségével megtekintheti a Translator használati és rendelkezésre állási adatait Azure Portalban, a metrikák szakaszban, ahogy az alábbi képernyőképen is látható. További információ: [adatok és platform metrikák](../../../azure-monitor/essentials/data-platform-metrics.md).
 
 ![Fordítói metrikák](../media/translatormetrics.png)
 

@@ -3,12 +3,12 @@ title: Az Azure arc-kompatibilis kiszolgáló beléptetése az Azure Sentinelbe
 description: Ismerje meg, hogyan veheti fel az Azure arc-kompatibilis kiszolgálókat az Azure Sentinelbe, és proaktív módon figyelje a biztonsági állapotukat.
 ms.date: 11/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 60018e710613a27bcb5c00f38ee90be6ff46c61d
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 2364ba72ac5b10ec4e1f433cc6d591c3ca389ecd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94811050"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584734"
 ---
 # <a name="onboard-azure-arc-enabled-servers-to-azure-sentinel"></a>Azure arc-kompatibilis kiszolgálók előkészítése az Azure Sentinel szolgáltatásba
 
@@ -18,7 +18,7 @@ Ez a cikk segítséget nyújt az Azure arc-kompatibilis kiszolgáló [Azure sent
 
 Mielőtt elkezdené, győződjön meg arról, hogy teljesítette a következő követelményeket:
 
-- Egy [Log Analytics-munkaterület](../../azure-monitor/platform/data-platform-logs.md). További információ az Log Analytics munkaterületekről: [a Azure monitor naplók telepítésének megtervezése](../../azure-monitor/platform/design-logs-deployment.md).
+- Egy [Log Analytics-munkaterület](../../azure-monitor/logs/data-platform-logs.md). További információ az Log Analytics munkaterületekről: [a Azure monitor naplók telepítésének megtervezése](../../azure-monitor/logs/design-logs-deployment.md).
 
 - Az Azure Sentinel [engedélyezve van az előfizetésében](../../sentinel/quickstart-onboard.md).
 

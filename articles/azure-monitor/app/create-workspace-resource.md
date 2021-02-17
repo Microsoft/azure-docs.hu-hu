@@ -3,12 +3,12 @@ title: Új Azure Monitor Application Insights munkaterület-alapú erőforrás l
 description: Ismerkedjen meg az új Azure Monitor Application Insights munkaterület-alapú erőforrások engedélyezéséhez szükséges lépésekkel.
 ms.topic: conceptual
 ms.date: 10/06/2020
-ms.openlocfilehash: 23994190df89b47d9c7e90ed62a724545389b1fe
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 3ec0b25a24af13b29a3568165009f8a6d66e0218
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063366"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578336"
 ---
 # <a name="workspace-based-application-insights-resources"></a>Munkaterület-alapú Application Insights erőforrások
 
@@ -23,10 +23,10 @@ Ez a közös Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) is le
 
 A munkaterület-alapú Application Insights lehetővé teszi Azure Monitor és Log Analytics legújabb képességeinek kihasználását, beleértve a következőket:
 
-* Az [ügyfél által felügyelt kulcsok (CMK)](../platform/customer-managed-keys.md) lehetővé teszi az adatok titkosítását olyan titkosítási kulcsokkal, amelyekhez csak Ön férhet hozzá.
-* Az [Azure Private link](../platform/private-link-security.md) lehetővé teszi, hogy a privát végpontok használatával biztonságosan összekapcsolja az Azure Pásti-szolgáltatásokat a virtuális hálózattal.
+* Az [ügyfél által felügyelt kulcsok (CMK)](../logs/customer-managed-keys.md) lehetővé teszi az adatok titkosítását olyan titkosítási kulcsokkal, amelyekhez csak Ön férhet hozzá.
+* Az [Azure Private link](../logs/private-link-security.md) lehetővé teszi, hogy a privát végpontok használatával biztonságosan összekapcsolja az Azure Pásti-szolgáltatásokat a virtuális hálózattal.
 * A [Profiler és a Snapshot Debugger saját tárterületének (BYOS)](./profiler-bring-your-own-storage.md) teljes körű vezérlést biztosít a titkosítást a REST-alapú házirend, az élettartam-kezelési házirend és a Application Insights Profiler és Snapshot Debuggerhoz kapcsolódó összes adat hálózati hozzáférése felett. 
-* A [kapacitás-foglalási szintek](../platform/manage-cost-storage.md#pricing-model) lehetővé teszik, hogy akár 25%-ot is mentsen az utólagos elszámolású díjszabáshoz képest. 
+* A [kapacitás-foglalási szintek](../logs/manage-cost-storage.md#pricing-model) lehetővé teszik, hogy akár 25%-ot is mentsen az utólagos elszámolású díjszabáshoz képest. 
 * Gyorsabb adatfeldolgozás Log Analytics folyamatos átvitelsel.
 
 ## <a name="create-workspace-based-resource"></a>Munkaterület-alapú erőforrás létrehozása
@@ -36,7 +36,7 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és hozzon létre 
 > [!div class="mx-imgBorder"]
 > ![Munkaterület-alapú Application Insights erőforrás](./media/create-workspace-resource/create-workspace-based.png)
 
-Ha még nem rendelkezik meglévő Log Analytics munkaterülettel, [tekintse meg a log Analytics munkaterület-létrehozási dokumentációt](../learn/quick-create-workspace.md).
+Ha még nem rendelkezik meglévő Log Analytics munkaterülettel, [tekintse meg a log Analytics munkaterület-létrehozási dokumentációt](../logs/quick-create-workspace.md).
 
 **A munkaterület-alapú erőforrások jelenleg minden kereskedelmi régióban elérhetők és Azure Government**
 
@@ -212,5 +212,5 @@ A örökölt folyamatos exportálás funkció nem támogatott a munkaterület-al
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Metrikák böngészése](../platform/metrics-charts.md)
-* [Analytics-lekérdezések](../log-query/log-query-overview.md)
+* [Metrikák böngészése](../essentials/metrics-charts.md)
+* [Analytics-lekérdezések](../logs/log-query-overview.md)

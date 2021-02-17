@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2bfd1064a02f0fb4982c9d2747b85707e98b5bcd
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: c481daf73f916ede2e7063c75448ba4d09e553cc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954529"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571867"
 ---
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>Oktatóanyag: Azure Media Services-események tárolása az Azure-ban Log Analytics
 
@@ -42,11 +42,11 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 > * [Azure-előfizetés](how-to-set-azure-subscription.md)
 > * Egy [Media Services](create-account-howto.md) fiók és erőforráscsoport.
 > * Az [FFmpeg](https://ffmpeg.org/download.html) telepítése az operációs rendszerhez.
-> * [Log Analytics](../../azure-monitor/learn/quick-create-workspace.md) munkaterület
+> * [Log Analytics](../../azure-monitor/logs/quick-create-workspace.md) munkaterület
 
 ## <a name="subscribe-to-a-media-services-event-with-logic-app"></a>Előfizetés Media Services eseményre a Logic App használatával
 
-1. Ha még nem tette meg, hozzon létre egy [log Analytics](../../azure-monitor/learn/quick-create-workspace.md) munkaterületet a Azure Portalban. Szüksége lesz a munkaterület-AZONOSÍTÓra és az egyik kulcsra, hogy a böngészőablak nyitva legyen. Ezután nyissa meg a portált egy másik lapon vagy ablakban.
+1. Ha még nem tette meg, hozzon létre egy [log Analytics](../../azure-monitor/logs/quick-create-workspace.md) munkaterületet a Azure Portalban. Szüksége lesz a munkaterület-AZONOSÍTÓra és az egyik kulcsra, hogy a böngészőablak nyitva legyen. Ezután nyissa meg a portált egy másik lapon vagy ablakban.
 
 1. Navigáljon a Azure Media Services-fiókjához, és válassza az **események** lehetőséget. Ekkor megjelenik az Azure Media Services eseményekre való feliratkozás összes módszere.
     > [!div class="mx-imgBorder"]
@@ -230,4 +230,4 @@ Ha nem szeretné tovább használni az oktatóanyag során létrehozott erőforr
 
 ## <a name="next-steps"></a>Következő lépések
 
-Különböző lekérdezéseket hozhat létre, és mentheti őket. Ezek hozzáadhatók az [Azure irányítópulthoz](../../azure-monitor/learn/tutorial-logs-dashboards.md).
+Különböző lekérdezéseket hozhat létre, és mentheti őket. Ezek hozzáadhatók az [Azure irányítópulthoz](../../azure-monitor/visualize/tutorial-logs-dashboards.md).

@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: srrengar
-ms.openlocfilehash: fe31c6fdca3651bfe56e798b30d50c9f047c680b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a98a833baefa9b1c2d1ebd9ff8147206c2106bf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258629"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570194"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Linux-fürt eseményeinek Service Fabric a syslog-ben
 
@@ -87,7 +87,7 @@ Itt láthatók a meghívott változások
 ```
 
 ## <a name="azure-monitor-logs-integration"></a>Azure Monitor naplók integrációja
-Ezeket a syslog-eseményeket megtekintheti egy figyelési eszközben, például Azure Monitor naplókban. Az alábbi [utasítások] használatával létrehozhat egy Log Analytics munkaterületet az Azure Marketplace használatával. (.. /Azure-monitor/Learn/Quick-Create-Workspace.MD) Emellett hozzá kell adnia a Log Analytics-ügynököt a fürthöz, hogy adatokat gyűjtsön és küldjön a munkaterületre. Ez ugyanaz az ügynök, amely a teljesítményszámlálók gyűjtésére szolgál. 
+Ezeket a syslog-eseményeket megtekintheti egy figyelési eszközben, például Azure Monitor naplókban. Az alábbi [utasítások] használatával létrehozhat egy Log Analytics munkaterületet az Azure Marketplace használatával. (.. /Azure-monitor/logs/Quick-Create-Workspace.MD) Emellett hozzá kell adnia a Log Analytics-ügynököt a fürthöz, hogy adatokat gyűjtsön és küldjön a munkaterületre. Ez ugyanaz az ügynök, amely a teljesítményszámlálók gyűjtésére szolgál. 
 
 1. Navigáljon a `Advanced Settings` panelre
 
@@ -111,8 +111,8 @@ Ezeket a syslog-eseményeket megtekintheti egy figyelési eszközben, például 
 
 A fenti példa egy NodeDown esemény. Az események teljes listáját [itt](service-fabric-diagnostics-event-generation-operational.md)tekintheti meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A log Analytics-ügynök üzembe helyezése](service-fabric-diagnostics-oms-agent.md) a csomópontokon a teljesítményszámlálók összegyűjtéséhez, valamint a tárolók Docker-statisztikáinak és naplóinak összegyűjtéséhez
-* Ismerkedjen meg az Azure Monitor naplók részeként kínált [naplóbeli keresési és lekérdezési](../azure-monitor/log-query/log-query-overview.md) funkciókkal
-* [Egyéni nézetek létrehozása Azure Monitor naplókban a Tervező nézet használatával](../azure-monitor/platform/view-designer.md)
-* Útmutató a [naplók Azure monitor a syslog-integrációhoz](../azure-monitor/platform/data-sources-syslog.md).
+* Ismerkedjen meg az Azure Monitor naplók részeként kínált [naplóbeli keresési és lekérdezési](../azure-monitor/logs/log-query-overview.md) funkciókkal
+* [Egyéni nézetek létrehozása Azure Monitor naplókban a Tervező nézet használatával](../azure-monitor/visualize/view-designer.md)
+* Útmutató a [naplók Azure monitor a syslog-integrációhoz](../azure-monitor/agents/data-sources-syslog.md).

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: maquaran
-ms.openlocfilehash: f753010eb994c9f3c286ad6eca6392ca7b643075
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 30328db465e0d9bf8c1ce67d92e48c688c51e043
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97932911"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574614"
 ---
 # <a name="how-to-configure-logging-and-connectivity-with-the-azure-functions-trigger-for-cosmos-db"></a>A naplózás és a kapcsolat konfigurálása a Cosmos DB Azure Functions triggerrel
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -44,7 +44,7 @@ Miután telepítette az Azure-függvényt a frissített konfigurációval, a Nyo
 
 ### <a name="query-the-logs"></a>Naplók lekérdezése
 
-A következő lekérdezés futtatásával lekérdezheti az [Azure Application Insights Analytics szolgáltatásban](../azure-monitor/log-query/log-query-overview.md)Cosmos db Azure functions trigger által létrehozott naplókat:
+A következő lekérdezés futtatásával lekérdezheti az [Azure Application Insights Analytics szolgáltatásban](../azure-monitor/logs/log-query-overview.md)Cosmos db Azure functions trigger által létrehozott naplókat:
 
 ```sql
 traces
@@ -84,7 +84,7 @@ Ha a Azure Functions-projekt a Azure Functions v1 futtatókörnyezettel dolgozik
 > [!NOTE]
 > Ha a Function alkalmazást egy használati tervben üzemelteti, az egyes példányok esetében az általa fenntartott szoftvercsatorna-kapcsolatok mennyisége korlátozott. A közvetlen/TCP mód használata esetén több kapcsolat jön létre, és elérheti a használati [terv korlátját](../azure-functions/manage-connections.md#connection-limit). ebben az esetben használhatja az átjáró üzemmódot, vagy Ehelyett a Function app szolgáltatást [prémium csomaggal](../azure-functions/functions-premium-plan.md) vagy [dedikált (App Service) csomaggal](../azure-functions/dedicated-plan.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Azure Functions a kapcsolatok korlátai](../azure-functions/manage-connections.md#connection-limit)
 * A [figyelés engedélyezése](../azure-functions/functions-monitoring.md) a Azure functions alkalmazásokban.
