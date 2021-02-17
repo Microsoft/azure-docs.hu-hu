@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/08/2020
-ms.openlocfilehash: f2f2272363cbc26895b061fe7b6263ed2a29fbab
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: f06ed85e362f15e36e030cd11639d9d17348e938
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993260"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573609"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Azure Monitor üzembe helyezése méretezéssel Azure Policy használatával
 Néhány Azure Monitor funkció egyszer vagy korlátozott számú alkalommal van konfigurálva, másokat meg kell ismételni minden figyelni kívánt erőforrásnál. Ez a cikk azokat a módszereket ismerteti, amelyekkel a Azure Policy használatával méretezhetők a Azure Monitorek, így biztosítható, hogy az összes Azure-erőforrás monitorozása következetes legyen és pontosan legyen konfigurálva.
@@ -33,19 +33,19 @@ A Azure Policy a következő táblázatban szereplő objektumokból áll. Az egy
 | Hozzárendelés | Egy házirend-definíció vagy kezdeményezés csak akkor lép érvénybe, ha hozzá van rendelve egy hatókörhöz. Például hozzárendelhet egy szabályzatot egy erőforráscsoporthoz, hogy az az adott erőforrásban létrehozott összes erőforrásra alkalmazza azt, vagy alkalmazza azt egy előfizetésre, hogy alkalmazza az adott előfizetés összes erőforrására.  További részletekért tekintse meg [Azure Policy hozzárendelési struktúrát](../governance/policy/concepts/assignment-structure.md). |
 
 ## <a name="built-in-policy-definitions-for-azure-monitor"></a>A Azure Monitor beépített szabályzat-definíciói
-Azure Policy tartalmaz több, Azure Monitorhoz kapcsolódó előre összeépített definíciót is. Ezeket a házirend-definíciókat hozzárendelheti meglévő előfizetéséhez, vagy felhasználhatja azokat a saját egyéni definícióinak létrehozásához. A **figyelés** kategóriájában található beépített szabályzat teljes listájáért lásd: [Azure Policy beépített házirend-definíciók a Azure monitorhoz](./samples/policy-reference.md).
+Azure Policy tartalmaz több, Azure Monitorhoz kapcsolódó előre összeépített definíciót is. Ezeket a házirend-definíciókat hozzárendelheti meglévő előfizetéséhez, vagy felhasználhatja azokat a saját egyéni definícióinak létrehozásához. A **figyelés** kategóriájában található beépített szabályzat teljes listájáért lásd: [Azure Policy beépített házirend-definíciók a Azure monitorhoz](.//policy-reference.md).
 
 A figyeléshez kapcsolódó beépített szabályzat-definíciók megtekintéséhez hajtsa végre a következőket:
 
 1. Lépjen **Azure Policy** a Azure Portal.
-2. Válassza a **definíciók**lehetőséget.
-3. A **Típus mezőben**válassza a *beépített* lehetőséget, és a **Kategória**beállításnál válassza a *figyelés*lehetőséget.
+2. Válassza a **definíciók** lehetőséget.
+3. A **Típus mezőben** válassza a *beépített* lehetőséget, és a **Kategória** beállításnál válassza a *figyelés* lehetőséget.
 
   ![Képernyőkép a Azure Policy-definíciók oldaláról Azure Portal a figyelés kategória és a beépített típus házirend-definícióinak listáját jeleníti meg.](media/deploy-scale/builtin-policies.png)
 
 
 ## <a name="diagnostic-settings"></a>Diagnosztikai beállítások
-A [diagnosztikai beállítások](platform/diagnostic-settings.md) erőforrás-naplókat és mérőszámokat gyűjtenek az Azure-erőforrásokból több helyre, jellemzően egy log Analytics munkaterületre, amely lehetővé teszi az adatok elemzését a [naplók lekérdezésével](log-query/log-query-overview.md) és a [naplók riasztásával](platform/alerts-log.md). A házirend használatával automatikusan létrehozhat egy diagnosztikai beállítást, valahányszor létrehoz egy erőforrást.
+A [diagnosztikai beállítások](essentials/diagnostic-settings.md) erőforrás-naplókat és mérőszámokat gyűjtenek az Azure-erőforrásokból több helyre, jellemzően egy log Analytics munkaterületre, amely lehetővé teszi az adatok elemzését a [naplók lekérdezésével](logs/log-query-overview.md) és a [naplók riasztásával](alerts/alerts-log.md). A házirend használatával automatikusan létrehozhat egy diagnosztikai beállítást, valahányszor létrehoz egy erőforrást.
 
 Minden egyes Azure-erőforrástípus olyan egyedi kategóriákat tartalmaz, amelyeknek szerepelniük kell a diagnosztikai beállításban. Emiatt minden erőforrástípus külön házirend-definíciót igényel. Egyes erőforrástípusok beépített szabályzat-definíciókkal rendelkeznek, amelyeket módosítás nélkül rendelhet hozzá. Más erőforrástípusok esetén létre kell hoznia egy egyéni definíciót.
 
@@ -122,7 +122,7 @@ A kezdeményezés a létrehozott virtuális gépekre lesz érvényes. Egy [szerv
 
 
 ## <a name="azure-monitor-for-vms"></a>Azure Monitor virtuális gépekhez
-A [Azure monitor for VMS](insights/vminsights-overview.md) a virtuális gépek figyelésére szolgáló Azure monitor elsődleges eszköze. A Azure Monitor for VMs engedélyezése a Log Analytics ügynököt és a függőségi ügynököt is telepíti. Ahelyett, hogy ezeket a feladatokat manuálisan hajtja végre, a Azure Policy használatával győződjön meg arról, hogy az egyes virtuális gépeket a létrehozáskor konfigurálta.
+A [Azure monitor for VMS](vm/vminsights-overview.md) a virtuális gépek figyelésére szolgáló Azure monitor elsődleges eszköze. A Azure Monitor for VMs engedélyezése a Log Analytics ügynököt és a függőségi ügynököt is telepíti. Ahelyett, hogy ezeket a feladatokat manuálisan hajtja végre, a Azure Policy használatával győződjön meg arról, hogy az egyes virtuális gépeket a létrehozáskor konfigurálta.
 
 > [!NOTE]
 > Azure Monitor for VMs tartalmaz egy **Azure monitor for VMS Policy lefedettség** nevű szolgáltatást, amely lehetővé teszi a nem megfelelő virtuális gépek felderítését és szervizelését a környezetben. Ezt a funkciót használhatja ahelyett, hogy közvetlenül a Azure Policy Azure-beli virtuális gépekhez, illetve az Azure arc-hoz csatlakoztatott hibrid virtuális gépekhez kellene dolgoznia. Az Azure-beli virtuálisgép-méretezési csoportokhoz Azure Policy használatával kell létrehoznia a hozzárendelést.
@@ -139,7 +139,7 @@ Azure Monitor for VMs a következő beépített kezdeményezéseket tartalmazza,
 ### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
 Ahelyett, hogy a Azure Policy felületen hozza létre a kezdeményezésekhez tartozó hozzárendeléseket, Azure Monitor for VMs tartalmaz egy olyan szolgáltatást, amely lehetővé teszi az egyes hatókörökben lévő virtuális gépek számának vizsgálatát annak megállapítására, hogy a kezdeményezés alkalmazása megtörtént-e. Ezután konfigurálhatja a munkaterületet, és létrehozhatja a szükséges hozzárendeléseket a csatoló használatával.
 
-A folyamat részleteiért lásd: [Azure monitor for VMS engedélyezése Azure Policy használatával](./insights/vminsights-enable-policy.md).
+A folyamat részleteiért lásd: [Azure monitor for VMS engedélyezése Azure Policy használatával](./vm/vminsights-enable-policy.md).
 
 ![Azure Monitor for VMs házirend](media/deploy-scale/vminsights-policy.png)
 
@@ -148,7 +148,7 @@ Ha Azure Policyt szeretne használni a virtuálisgép-méretezési csoportok fig
 
 ![Képernyőkép a Azure Portal hozzárendelésének kiosztása oldalról. A kezdeményezés definíciója az Azure Monitor engedélyezése a virtuálisgép-méretezési csoportokhoz.](media/deploy-scale/virtual-machine-scale-set-assign-initiative.png)
 
-Válassza ki azt a munkaterületet, amelybe az adatküldés történik. Ennek a munkaterületnek telepítve kell lennie a *VMInsights* -megoldásnak a következő témakörben leírt módon: []() .
+Válassza ki azt a munkaterületet, amelybe az adatküldés történik. Ennek a munkaterületnek telepítve kell lennie a *VMInsights* -megoldásnak a [Log Analytics munkaterület konfigurálása Azure monitor for VMS számára](vm/vminsights-configure-workspace.md)című témakörben leírtak szerint.
 
 ![Munkaterület kiválasztása](media/deploy-scale/virtual-machine-scale-set-workspace.png)
 
@@ -181,4 +181,4 @@ Lehetnek olyan helyzetek, amikor telepíteni szeretné a Log Analytics ügynök�
 ## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure Policyról](../governance/policy/overview.md).
-- További információ a [diagnosztikai beállításokról](platform/diagnostic-settings.md).
+- További információ a [diagnosztikai beállításokról](essentials/diagnostic-settings.md).

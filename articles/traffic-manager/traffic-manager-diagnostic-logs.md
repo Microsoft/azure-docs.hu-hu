@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: duau
-ms.openlocfilehash: f24a4a0d982ff78ca4d6726e950825ed2c784e67
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 0c1273f4a2025658520118ed843d90b3378a129f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184542"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577885"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>Erőforrás-naplózás engedélyezése az Azure-ban Traffic Manager
 
@@ -64,7 +64,7 @@ Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com
 
 ## <a name="traffic-manager-log-schema"></a>Traffic Manager naplózási séma
 
-A Azure Monitoron keresztül elérhető összes erőforrás-napló közös legfelső szintű sémával rendelkezik, és minden szolgáltatás számára rugalmasságot biztosít, hogy egyedi tulajdonságokat bocsát ki a saját eseményeihez. A legfelső szintű erőforrás-naplók sémája: [támogatott szolgáltatások, sémák és kategóriák az Azure-erőforrások naplóihoz](../azure-monitor/platform/resource-logs-schema.md).
+A Azure Monitoron keresztül elérhető összes erőforrás-napló közös legfelső szintű sémával rendelkezik, és minden szolgáltatás számára rugalmasságot biztosít, hogy egyedi tulajdonságokat bocsát ki a saját eseményeihez. A legfelső szintű erőforrás-naplók sémája: [támogatott szolgáltatások, sémák és kategóriák az Azure-erőforrások naplóihoz](../azure-monitor/essentials/resource-logs-schema.md).
 
 Az alábbi táblázat az Azure Traffic Manager-profil erőforrásához tartozó naplók sémáját tartalmazza.
 

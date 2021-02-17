@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: 3d9e436d636fbd5414367efb0e122748a8e9e2cb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 35b3f4fe5703e9ce902553f992dfa44cea7db78f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390810"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570456"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Normalizálás az Azure Sentinelben
 
@@ -147,7 +147,7 @@ Ha a függvény módosult, kattintson ismét a Save (Mentés) gombra, és haszn�
 
 A JSON, az XML és a CSV különösen a lekérdezési idő elemzésekor használható. Az Azure Sentinel beépített elemzési funkciókat tartalmaz a JSON, az XML és a CSV számára, valamint egy JSON-elemzési eszközt is.  További információ: [JSON-mezők használata az Azure sentinelben](https://techcommunity.microsoft.com/t5/azure-sentinel/tip-easily-use-json-fields-in-sentinel/ba-p/768747) (blog). 
 
-További információ a [mentett lekérdezésekről](../azure-monitor/log-query/example-queries.md) (a lekérdezési idő elemzői megvalósításáról) log Analytics.
+További információ a [mentett lekérdezésekről](../azure-monitor/logs/example-queries.md) (a lekérdezési idő elemzői megvalósításáról) log Analytics.
 
 
 ## <a name="next-steps"></a>Következő lépések

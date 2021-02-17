@@ -3,15 +3,15 @@ title: Lassú lekérdezési naplók – Azure Database for MariaDB
 description: Ismerteti a Azure Database for MariaDBban elérhető naplókat, valamint a különböző naplózási szintek engedélyezéséhez elérhető paramétereket.
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 11/6/2020
-ms.openlocfilehash: 2d3c3c92cc4d0da38f18c7895f4f7f3f3385c653
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 2e7e56616300566839fadef762c2165c8d989e6e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664163"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570811"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Lassú lekérdezési naplók a Azure Database for MariaDB
 Azure Database for MariaDB a lassú lekérdezési napló elérhető a felhasználók számára. A tranzakciónaplóhoz való hozzáférés nem támogatott. A lassú lekérdezési napló használatával azonosíthatók a hibaelhárítási teljesítménybeli szűk keresztmetszetek.
@@ -53,7 +53,7 @@ A naplók 24 óránként vagy 7 GB-onként vannak elforgatva, attól függően, 
 > A fenti napló megőrzése nem vonatkozik a Azure Monitor diagnosztikai naplók használatával vezetékes naplókra. Megváltoztathatja a beérkező adatnyelők megőrzési időtartamát (pl. Azure Storage).
 
 ## <a name="diagnostic-logs"></a>Diagnosztikai naplók
-Azure Database for MariaDB integrálva van Azure Monitor diagnosztikai naplókba. Ha engedélyezte a lassú lekérdezési naplókat a MariaDB-kiszolgálón, kiválaszthatja, hogy Azure Monitor naplók, Event Hubs vagy az Azure Storage szolgáltatásban. A diagnosztikai naplók engedélyezésével kapcsolatos további tudnivalókért tekintse meg a [diagnosztikai naplók dokumentációjának](../azure-monitor/platform/platform-logs-overview.md)útmutató szakaszát.
+Azure Database for MariaDB integrálva van Azure Monitor diagnosztikai naplókba. Ha engedélyezte a lassú lekérdezési naplókat a MariaDB-kiszolgálón, kiválaszthatja, hogy Azure Monitor naplók, Event Hubs vagy az Azure Storage szolgáltatásban. A diagnosztikai naplók engedélyezésével kapcsolatos további tudnivalókért tekintse meg a [diagnosztikai naplók dokumentációjának](../azure-monitor/essentials/platform-logs-overview.md)útmutató szakaszát.
 
 Az alábbi táblázat az egyes naplókat ismerteti. A kimeneti módszertől függően a befoglalt mezők és a megjelenő sorrend eltérő lehet.
 

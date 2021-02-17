@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 04/18/2019
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 37602f7b9a8669ce0e8db984f7f7617cffdd431c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b172f1f7137b53e98384d92c9c709694eaf0b7e9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87029280"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594500"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Vertikális automata méretezés a virtuálisgép-méretezési csoportokkal
 
@@ -118,7 +118,7 @@ Miután importálta a runbookok, vegyen fel egy webhookot a runbook, hogy egy vi
 
 ## <a name="add-an-alert-to-your-virtual-machine-scale-set"></a>Riasztás hozzáadása a virtuálisgép-méretezési csoporthoz
 
-Az alábbiakban egy PowerShell-szkript látható, amely bemutatja, hogyan adhat hozzá riasztást a virtuálisgép-méretezési csoportokhoz. A következő cikkből megtudhatja, hogyan kérheti le a metrika nevét a riasztás bekapcsolásához: [Azure monitor általános mérőszámok automatikus skálázása](../azure-monitor/platform/autoscale-common-metrics.md).
+Az alábbiakban egy PowerShell-szkript látható, amely bemutatja, hogyan adhat hozzá riasztást a virtuálisgép-méretezési csoportokhoz. A következő cikkből megtudhatja, hogyan kérheti le a metrika nevét a riasztás bekapcsolásához: [Azure monitor általános mérőszámok automatikus skálázása](../azure-monitor/autoscale/autoscale-common-metrics.md).
 
 ```powershell
 $actionEmail = New-AzAlertRuleEmail -CustomEmail user@contoso.com
@@ -153,8 +153,8 @@ Add-AzMetricAlertRule  -Name  $alertName `
 
 A riasztások létrehozásával kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-* [PowerShell-minták Azure Monitor](../azure-monitor/samples/powershell-samples.md)
-* [Platformfüggetlen CLI-minták Azure Monitor](../azure-monitor/samples/cli-samples.md)
+* [PowerShell-minták Azure Monitor](../azure-monitor/powershell-samples.md)
+* [Platformfüggetlen CLI-minták Azure Monitor](../azure-monitor/cli-samples.md)
 
 ## <a name="summary"></a>Összefoglalás
 

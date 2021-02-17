@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3e123ab6d5b9d801908112239cf3e9cb72b4abbb
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 4716679de08bbae137e42f91db5b6f93c0c96e22
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99093964"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593379"
 ---
 # <a name="azure-security-baseline-for-azure-signalr-service"></a>Azure Security alapterv az Azure Signaler szolgáltatáshoz
 
@@ -481,9 +481,9 @@ Az Azure Signaler szolgáltatás azonban naplózza az ügyfél-hozzáféréshez 
 
 Azure-beli erőforrás-naplók engedélyezése az Azure Signaler szolgáltatáshoz. Azure Security Center és Azure Policy használatával engedélyezheti az erőforrás-naplókat és naplózhatja az adatgyűjtést. Ezek a naplók kritikus fontosságúak lehetnek a biztonsági incidensek kivizsgálásához és a kriminalisztikai gyakorlatok végrehajtásához.
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](../azure-monitor/platform/platform-logs-overview.md)
+- [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](../azure-monitor/essentials/platform-logs-overview.md)
 
 - [Az Azure Signaler szolgáltatás erőforrás-naplói](signalr-howto-diagnostic-logs.md)
 
@@ -503,7 +503,7 @@ Emellett az Azure Sentinel vagy egy harmadik féltől származó biztonsági inf
 
 Számos szervezet úgy dönt, hogy a gyakran használt és az Azure-tárolót használja a ritkábban használt adatokhoz az Azure Sentinel használatával.
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 

@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
-ms.openlocfilehash: d4bff4ee7980002d911426ed46ffef6fc28c43e9
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: a0c8286b2fb36642723ae28b8bc88e9e49f8a8fb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920744"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577952"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Hibák és kivételek kezelése az Azure Logic Appsben
 
@@ -27,7 +27,7 @@ A legalapvetőbb kivételek és hibakezelés érdekében az *újrapróbálkozás
 
 Az újrapróbálkozási szabályzatok típusai:
 
-| Típus | Leírás |
+| Típus | Description |
 |------|-------------|
 | **Alapértelmezett** | Ez a szabályzat legfeljebb négy újrapróbálkozást küld el *exponenciálisan növekvő* intervallumokban, amelyek mérete 7,5 másodperc, de 5 – 45 másodpercre van korlátozva. |
 | **Exponenciális időköz**  | Ez a szabályzat egy exponenciálisan növekvő tartományból érkező véletlenszerű intervallumot vár a következő kérelem elküldése előtt. |
@@ -69,7 +69,7 @@ Vagy manuálisan is megadhatja az újrapróbálkozási házirendet az `inputs` �
 
 *Kötelező*
 
-| Érték | Típus | Leírás |
+| Érték | Típus | Description |
 |-------|------|-------------|
 | <*újrapróbálkozás – házirend-típus*> | Sztring | A használni kívánt újrapróbálkozási szabályzat típusa: `default` ,,, `none` `fixed` vagy `exponential` |
 | <*újrapróbálkozási időköz*> | Sztring | Az újrapróbálkozási időköz, amelyben az értéknek [ISO 8601 formátumot](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)kell használnia. Az alapértelmezett minimális időköz, `PT5S` a maximális intervallum `PT1D` . Az exponenciális időközi szabályzat használatakor különböző minimális és maximális értékeket adhat meg. |
@@ -78,7 +78,7 @@ Vagy manuálisan is megadhatja az újrapróbálkozási házirendet az `inputs` �
 
 *Nem kötelező*
 
-| Érték | Típus | Leírás |
+| Érték | Típus | Description |
 |-------|------|-------------|
 | <*minimális időköz*> | Sztring | Az exponenciális időközi házirend esetében a véletlenszerűen kiválasztott időköz ( [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) ) legkisebb intervalluma |
 | <*maximális időköz*> | Sztring | Az exponenciális időközi házirend esetében a véletlenszerűen kiválasztott időköz ( [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) ) legnagyobb intervalluma |
@@ -362,7 +362,7 @@ A különböző kivételek kezelésére szolgáló mintázatok végrehajtásáho
 
 ## <a name="set-up-azure-monitor-logs"></a>Azure Monitor naplók beállítása
 
-Az előző minták nagyszerű módon kezelik a hibákat és a kivételeket egy futtatáson belül, de a futtatástól függetlenül is azonosíthatók és reagálnak a hibákra. A [Azure monitor](../azure-monitor/overview.md) egyszerű módot biztosít az összes munkafolyamat-esemény, beleértve a futtatási és a műveleti állapotok elküldését egy [log Analytics-munkaterületre](../azure-monitor/platform/data-platform-logs.md), [Azure Storage-fiókra](../storage/blobs/storage-blobs-overview.md)vagy [Azure-Event Hubsre](../event-hubs/event-hubs-about.md).
+Az előző minták nagyszerű módon kezelik a hibákat és a kivételeket egy futtatáson belül, de a futtatástól függetlenül is azonosíthatók és reagálnak a hibákra. A [Azure monitor](../azure-monitor/overview.md) egyszerű módot biztosít az összes munkafolyamat-esemény, beleértve a futtatási és a műveleti állapotok elküldését egy [log Analytics-munkaterületre](../azure-monitor/logs/data-platform-logs.md), [Azure Storage-fiókra](../storage/blobs/storage-blobs-overview.md)vagy [Azure-Event Hubsre](../event-hubs/event-hubs-about.md).
 
 A futtatási állapotok kiértékeléséhez nyomon követheti a naplókat és a metrikákat, vagy közzéteheti azokat bármely figyelési eszközön. Az egyik lehetséges lehetőség az, hogy az összes eseményt Event Hubs-ba [Azure stream Analyticsba](https://azure.microsoft.com/services/stream-analytics/)továbbítsa. Stream Analytics élő lekérdezéseket írhat a diagnosztikai naplókból származó rendellenességek, átlagok vagy hibák alapján. A Stream Analytics használatával adatokat küldhet más adatforrásoknak, például várólistákat, témaköröket, SQL-, Azure Cosmos DB-vagy Power BI.
 

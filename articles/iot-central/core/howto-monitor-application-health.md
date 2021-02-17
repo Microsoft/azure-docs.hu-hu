@@ -7,12 +7,12 @@ ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 1c16da10a8a7853b1392383855aba0ff24424f33
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: d0e59f73dd9b62b528c3d86d315b613312df7773
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515869"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577043"
 ---
 # <a name="monitor-the-overall-health-of-an-iot-central-application"></a>Egy IoT Central alkalmazás általános állapotának figyelése
 
@@ -23,7 +23,7 @@ ms.locfileid: "100515869"
 
 Ebből a cikkből megtudhatja, hogyan használhatja a IoT Central által biztosított mérőszámokat a IoT Central alkalmazáshoz csatlakoztatott eszközök állapotának és a futó adatexportálások állapotának felmérésére.
 
-A metrikák alapértelmezés szerint engedélyezve vannak a IoT Central alkalmazáshoz, és a [Azure Portal](https://portal.azure.com/)érheti el azokat. A [Azure monitor adatplatform elérhetővé teszi ezeket a mérőszámokat](../../azure-monitor/platform/data-platform-metrics.md) , és számos módszert biztosít a velük való kommunikációra. Használhat például diagramokat a PowerShellben vagy az Azure CLI-ben lévő Azure Portal, REST API vagy lekérdezésekben.
+A metrikák alapértelmezés szerint engedélyezve vannak a IoT Central alkalmazáshoz, és a [Azure Portal](https://portal.azure.com/)érheti el azokat. A [Azure monitor adatplatform elérhetővé teszi ezeket a mérőszámokat](../../azure-monitor/essentials/data-platform-metrics.md) , és számos módszert biztosít a velük való kommunikációra. Használhat például diagramokat a PowerShellben vagy az Azure CLI-ben lévő Azure Portal, REST API vagy lekérdezésekben.
 
 ### <a name="trial-applications"></a>Próbaverziós alkalmazások
 
@@ -46,7 +46,7 @@ A Azure Portal metrikáinak elérését az [Azure szerepköralapú hozzáférés
 
 ## <a name="iot-central-metrics"></a>IoT Central metrikák
 
-A IoT Central jelenleg elérhető metrikák listáját a [Azure monitor által támogatott mérőszámok](../../azure-monitor/platform/metrics-supported.md#microsoftiotcentraliotapps)részben tekintheti meg.
+A IoT Central jelenleg elérhető metrikák listáját a [Azure monitor által támogatott mérőszámok](../../azure-monitor/essentials/metrics-supported.md#microsoftiotcentraliotapps)részben tekintheti meg.
 
 ### <a name="metrics-and-invoices"></a>Metrikák és számlák
 

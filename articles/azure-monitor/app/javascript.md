@@ -4,12 +4,12 @@ description: Megtekintheti az oldal nézetét és a munkamenetek számát, a web
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 60b3e9229adb93ce32c97c2822a465f7f629d47d
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 317050abd0aa77649800493c36b03b298f256096
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234358"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573808"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
 
@@ -107,7 +107,7 @@ Az egyes konfigurációs beállítások egy új sorban jelennek meg, ha nem szer
 
 Az elérhető konfigurációs lehetőségek a következők
 
-| Név | Típus | Leírás
+| Név | Típus | Description
 |------|------|----------------
 | src | karakterlánc **[kötelező]** | Az a teljes URL-cím, ahová be kell tölteni az SDK-t. Ezt az értéket egy dinamikusan hozzáadott parancsfájl vagy címke "src" attribútumához használja a rendszer &lt; &gt; . Használhatja a nyilvános CDN-helyet vagy a saját privát üzemeltetését.
 | name | karakterlánc *[nem kötelező]* | A inicializált SDK globális neve, alapértelmezett érték: `appInsights` . Így ```window.appInsights``` a inicializált példányra mutató hivatkozás lesz. Megjegyzés: Ha egy név értéket ad meg, vagy egy korábbi példányt rendel hozzá (a globális név appInsightsSDK), akkor ez a name érték a globális névtérben is definiálva lesz ```window.appInsightsSDK=<name value>``` , ezt az SDK inicializálási kódja megköveteli, hogy a rendszer inicializálja és frissítse a megfelelő kódrészletet és proxy metódusokat.
@@ -170,7 +170,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Konfiguráció
 A legtöbb konfigurációs mező neve úgy van elnevezve, hogy a hamis értékre legyenek kiválasztva. Az összes mező megadása nem kötelező, kivéve a következőt: `instrumentationKey` .
 
-| Name | Alapértelmezett | Leírás |
+| Name | Alapértelmezett | Description |
 |------|---------|-------------|
 | instrumentationKey | null | **Kötelező**<br>A Azure Portaltól beszerzett kialakítási kulcs. |
 | accountId | null | Egy nem kötelező fiókazonosító, ha az alkalmazás a felhasználókat fiókokba csoportosítja. Nincsenek szóközök, vesszők, pontosvesszők, egyenlők vagy függőleges sávok |
@@ -180,8 +180,8 @@ A legtöbb konfigurációs mező neve úgy van elnevezve, hogy a hamis értékre
 | maxBatchInterval | 15 000 | Mennyi ideig kell a Batch telemetria a küldés előtt (ezredmásodperc) |
 | disableExceptionTracking | hamis | Ha az értéke igaz, a rendszer nem gyűjti össze a kivételeket. Az alapértelmezett érték a false (hamis). |
 | disableTelemetry | hamis | Ha az értéke igaz, a rendszer nem gyűjti és nem továbbítja a telemetria. Az alapértelmezett érték a false (hamis). |
-| enableDebug | hamis | Ha az értéke igaz, a rendszer az SDK-naplózási beállításoktól függetlenül kivételt okoz a **belső** hibakeresési adatvesztés **helyett** . Az alapértelmezett érték a false (hamis). <br>**_Megjegyzés:_* _ ha ez a beállítás engedélyezve van, a rendszer eldobott telemetria okoz, amikor belső hiba történik. Ez hasznos lehet a konfigurációval vagy az SDK használatával kapcsolatos problémák gyors azonosításához. Ha nem kívánja elveszíteni a telemetria a hibakeresés során, érdemes lehet `consoleLoggingLevel` `telemetryLoggingLevel` a vagy a helyett használni `enableDebug` . |
-| loggingLevelConsole | 0 | Naplózza a *belső** Application Insights hibákat a konzolon. <br>0: kikapcsolva, <br>1: csak kritikus hibák, <br>2: minden (hibák & figyelmeztetés) |
+| enableDebug | hamis | Ha az értéke igaz, a rendszer az SDK-naplózási beállításoktól függetlenül kivételt okoz a **belső** hibakeresési adatvesztés **helyett** . Az alapértelmezett érték a false (hamis). <br>**_Megjegyzés:_** Ha ez a beállítás engedélyezve van, a rendszer elveti a telemetria, amikor belső hiba történik. Ez hasznos lehet a konfigurációval vagy az SDK használatával kapcsolatos problémák gyors azonosításához. Ha nem kívánja elveszíteni a telemetria a hibakeresés során, érdemes lehet `consoleLoggingLevel` `telemetryLoggingLevel` a vagy a helyett használni `enableDebug` . |
+| loggingLevelConsole | 0 | **Belső** Application Insights hibák naplózása a konzolon. <br>0: kikapcsolva, <br>1: csak kritikus hibák, <br>2: minden (hibák & figyelmeztetés) |
 | loggingLevelTelemetry | 1 | **Belső** Application Insights hibákat küld a telemetria. <br>0: kikapcsolva, <br>1: csak kritikus hibák, <br>2: minden (hibák & figyelmeztetés) |
 | diagnosticLogInterval | 10000 | belső A belső naplózási várólista lekérdezési időköze (MS) |
 | samplingPercentage | 100 | Az elküldeni kívánt események százalékos aránya. Az alapértelmezett érték 100, ami azt jelenti, hogy az összes esemény el lesz küldve. Állítsa be ezt, ha nagy méretű alkalmazásokhoz szeretné megőrizni az adatkorlátot. |
@@ -219,7 +219,7 @@ A legtöbb konfigurációs mező neve úgy van elnevezve, hogy a hamis értékre
 
 ## <a name="enable-time-on-page-tracking"></a>Időbeli nyomon követés engedélyezése
 
-A beállítás szerint `autoTrackPageVisitTime: true` a felhasználó által az egyes lapokon töltött idő nyomon követhető. Minden egyes új Oldalmegtekintésnél az *előző* oldalon eltöltött felhasználói időtartamot [Egyéni metrikaként](../platform/metrics-custom-overview.md) kell elküldeni `PageVisitTime` . Ez az egyéni metrika a [Metrikaböngésző](../platform/metrics-getting-started.md) "napló alapú metrika" néven látható.
+A beállítás szerint `autoTrackPageVisitTime: true` a felhasználó által az egyes lapokon töltött idő nyomon követhető. Minden egyes új Oldalmegtekintésnél az *előző* oldalon eltöltött felhasználói időtartamot [Egyéni metrikaként](../essentials/metrics-custom-overview.md) kell elküldeni `PageVisitTime` . Ez az egyéni metrika a [Metrikaböngésző](../essentials/metrics-getting-started.md) "napló alapú metrika" néven látható.
 
 ## <a name="enable-correlation"></a>Korreláció engedélyezése
 

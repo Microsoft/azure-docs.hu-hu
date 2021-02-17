@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: 8a33e9d462f3105bfee295ac82384a38325f7c7c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 27443eb9c04c69567b3a1374f11e8b53837040f2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498795"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585411"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Az Azure-ban elérhető biztonsági szolgáltatások és technológiák
 
@@ -35,7 +35,7 @@ Ez a lista idővel megváltozik és növekedni fog, ugyanúgy, mint az Azure. Ü
 |--------|--------|
 |[Azure &nbsp; Security &nbsp; Center](../../security-center/security-center-introduction.md)| Felhőalapú munkaterhelés-védelmi megoldás, amely biztonsági felügyeletet és komplex veszélyforrások elleni védelmet biztosít a hibrid Felhőbeli munkaterhelések között.|
 |[Azure Key Vault](../../key-vault/general/overview.md)| Biztonságos titkos kulcsok tárolása a jelszavakhoz, a kapcsolati karakterláncokhoz és az alkalmazások működésének megőrzéséhez szükséges egyéb információkhoz. |
-|[Azure Monitor-naplók](../../azure-monitor/log-query/log-query-overview.md)|Egy figyelési szolgáltatás, amely telemetria és más adatokat gyűjt, valamint egy lekérdezési nyelvet és analitikai motort biztosít az alkalmazások és erőforrások működési elemzéséhez. Önállóan vagy más szolgáltatásokkal, például Security Center használható. |
+|[Azure Monitor-naplók](../../azure-monitor/logs/log-query-overview.md)|Egy figyelési szolgáltatás, amely telemetria és más adatokat gyűjt, valamint egy lekérdezési nyelvet és analitikai motort biztosít az alkalmazások és erőforrások működési elemzéséhez. Önállóan vagy más szolgáltatásokkal, például Security Center használható. |
 |[Azure dev/test Labs](../../devtest-labs/devtest-lab-overview.md)|Egy olyan szolgáltatás, amely segít a fejlesztőknek és a tesztelőknek gyorsan létrehozni az Azure-beli környezeteket, miközben minimalizálja a hulladékot és szabályozza a költségeket.  |
 
 <!---|[Azure&nbsp;Disk&nbsp;Encryption](/azure/azure-security-disk-encryption-overview)| THIS WILL GO TO THE NEW OVERVIEW TOPIC MEGHAN STEWART IS WRITING|--->
@@ -70,7 +70,7 @@ Ez a lista idővel megváltozik és növekedni fog, ugyanúgy, mint az Azure. Ü
 | [Azure &nbsp; szerepköralapú hozzáférés- &nbsp; vezérlés](../../role-based-access-control/role-assignments-portal.md)|Hozzáférés-vezérlési funkció, amely lehetővé teszi, hogy a felhasználók csak azokat az erőforrásokat férhessenek hozzá, amelyekre a szervezeten belüli szerepköreik alapján van szükségük.  |
 | [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)|Egy felhőalapú hitelesítési tárház, amely több-bérlős, felhőalapú címtárat és több Identitáskezelés-kezelő szolgáltatást támogat az Azure-on belül.  |
 | [Azure Active Directory B2C](../../active-directory-b2c/overview.md)|Identitáskezelés-kezelő szolgáltatás, amely lehetővé teszi, hogy az ügyfelek regisztráljanak, jelentkezzenek be és kezeljenek profilokat Azure-alapú alkalmazások használatakor.   |
-| [Azure Active Directory tartományi szolgáltatások](../../active-directory-domain-services/overview.md)| A Active Directory tartományi szolgáltatások felhőalapú és felügyelt verziója. |
+| [Azure Active Directory tartományi szolgáltatások](../../active-directory-domain-services/overview.md)| A Active Directory Domain Services felhőalapú és felügyelt verziója. |
 | [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)| A biztonságos információkhoz való hozzáférés engedélyezése előtt a hitelesítés és ellenőrzés számos különböző formáját alkalmazó biztonsági rendelkezés. |
 
 ## <a name="backup-and-disaster-recovery"></a>Biztonsági mentés és vész-helyreállítás
@@ -79,7 +79,7 @@ Ez a lista idővel megváltozik és növekedni fog, ugyanúgy, mint az Azure. Ü
 | [Azure &nbsp; Backup](../../backup/backup-overview.md)| Azure-alapú szolgáltatás, amely az Azure-felhőben tárolt adatbiztonsági mentésére és helyreállítására szolgál. |
 | [Azure &nbsp; site &nbsp; Recovery](../../site-recovery/site-recovery-overview.md)|Egy online szolgáltatás, amely a fizikai és virtuális gépeken futó munkaterheléseket replikálja egy elsődleges helyről egy másodlagos helyre, hogy a meghibásodás után engedélyezze a szolgáltatások helyreállítását. |
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 |Szolgáltatás|Leírás|
 |------|--------|
 | [Hálózati &nbsp; biztonsági &nbsp; csoportok](../../virtual-network/virtual-network-vnet-plan-design-arm.md)| Egy 5 rekordos hálózati hozzáférés-vezérlési funkció, amely lehetővé teszi vagy megtagadja a döntéseket.  |

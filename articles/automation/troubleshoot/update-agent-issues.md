@@ -5,12 +5,12 @@ services: automation
 ms.date: 01/25/2020
 ms.topic: troubleshooting
 ms.subservice: update-management
-ms.openlocfilehash: d4fbc566cb82eb3b728b37aa1f1cc20ff92f4fca
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 9516210021ce48f069ae3b3b4e02503527e0db24
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896240"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580891"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>A Windows Update Agent hibáinak elhárítása
 
@@ -87,7 +87,7 @@ A proxy és a tűzfal konfigurációjának lehetővé kell tennie, hogy a hibrid
 
 Ez az érték határozza meg, hogy a Windows-ügynök ( `healthservice` ) fut-e a gépen a log Analytics. Ha többet szeretne megtudni a szolgáltatás hibaelhárításáról, tekintse meg [a log Analytics ügynök a Windows rendszerhez nem fut](hybrid-runbook-worker.md#mma-not-running).
 
-A Windows Log Analytics ügynökének újratelepítéséhez tekintse meg [a Windows rendszerhez készült ügynök telepítése](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)című témakört.
+A Windows Log Analytics ügynökének újratelepítéséhez tekintse meg [a Windows rendszerhez készült ügynök telepítése](../../azure-monitor/vm/quick-collect-windows-computer.md#install-the-agent-for-windows)című témakört.
 
 ### <a name="monitoring-agent-service-events"></a>Figyelési ügynök szolgáltatási eseményei
 

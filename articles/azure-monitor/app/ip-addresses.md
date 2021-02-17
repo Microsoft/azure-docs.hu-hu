@@ -3,12 +3,12 @@ title: Az Azure Monitor által használt IP-címek
 description: A Application Insights által igényelt kiszolgálói tűzfal-kivételek
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 0e7028c59b4588ac23424a63f4e3ce240391dfb8
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 72f825630ec94b5c32a949a4395c431318afa87f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220802"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584101"
 ---
 # <a name="ip-addresses-used-by-azure-monitor"></a>Az Azure Monitor által használt IP-címek
 [Azure monitor](../overview.md) számos IP-címet használ. A Azure Monitor a Log Analytics és a Application Insights mellett a fő platform metrikái és a bejelentkezések is elérhetők. Előfordulhat, hogy ismernie kell ezeket a címeket, ha a figyelt alkalmazás vagy infrastruktúra tűzfal mögött található.
@@ -254,21 +254,21 @@ A forrás IP-címek változásainak kezelése meglehetősen sok időt vehet igé
    1. Adja hozzá az erőforráscsoport nevét, majd adja meg a *példány részleteit*.
    1. Kattintson a **felülvizsgálat + létrehozás** elemre, majd a *Létrehozás* gombra.
    
-   :::image type="content" source="../platform/media/action-groups/action-group-create-security-group.png" alt-text="Példa hálózati biztonsági csoport létrehozására."border="true":::
+   :::image type="content" source="../alerts/media/action-groups/action-group-create-security-group.png" alt-text="Példa hálózati biztonsági csoport létrehozására."border="true":::
 
 3. Nyissa meg az erőforráscsoportot, majd kattintson a létrehozott *hálózati biztonsági csoportra* .
 
     1. Válassza a *bejövő biztonsági szabályok* lehetőséget.
     1. Kattintson a **Hozzáadás** gombra.
     
-    :::image type="content" source="../platform/media/action-groups/action-group-add-service-tag.png" alt-text="Példa szolgáltatási címke hozzáadására."border="true":::
+    :::image type="content" source="../alerts/media/action-groups/action-group-add-service-tag.png" alt-text="Példa szolgáltatási címke hozzáadására."border="true":::
 
 4. Ekkor megnyílik egy új ablak a jobb oldali ablaktáblán.
     1.  Forrás kiválasztása: **szolgáltatás címkéje**
     1.  Forrásoldali szolgáltatás címkéje: **ActionGroup**
     1.  Kattintson a **Hozzáadás** parancsra.
     
-    :::image type="content" source="../platform/media/action-groups/action-group-service-tag.png" alt-text="Példa a szolgáltatási címke hozzáadására."border="true":::
+    :::image type="content" source="../alerts/media/action-groups/action-group-service-tag.png" alt-text="Példa a szolgáltatási címke hozzáadására."border="true":::
 
 
 ## <a name="profiler"></a>Profilkészítő

@@ -11,21 +11,21 @@ ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 01/29/2021
-ms.openlocfilehash: e44a029c61db5a22513387772c2b0d7a3e4d1a40
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 712a933276393890bf017a2517196031306233ad
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219230"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572997"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure AD B2C figyelése Azure Monitor
 
-A Azure Monitor használatával átirányíthatja Azure Active Directory B2C (Azure AD B2C) bejelentkezési és [naplózási](view-audit-logs.md) naplókat különböző figyelési megoldásokhoz. Megtarthatja a naplókat a hosszú távú használatra, vagy integrálhatja a külső felek biztonsági információit és esemény-felügyeleti (SIEM) eszközöket, hogy betekintést nyerjen a környezetbe.
+A Azure Monitor használatával átirányíthatja Azure Active Directory B2C (Azure AD B2C) bejelentkezési és [naplózási](view-audit-logs.md) naplókat különböző figyelési megoldásokhoz. A naplókat megőrizheti hosszú távú használatra, vagy külső biztonságiinformáció- és eseménykezelési (SIEM-) eszközökkel integrálva elemezheti a környezetet.
 
 A naplózási eseményeket a következő módon irányíthatja át:
 
 * Egy Azure [Storage-fiók](../storage/blobs/storage-blobs-introduction.md).
-* [Log Analytics munkaterület](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) (az adatelemzéshez, az irányítópultok létrehozásához és a riasztáshoz adott eseményeken).
+* [Log Analytics munkaterület](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) (az adatelemzéshez, az irányítópultok létrehozásához és a riasztáshoz adott eseményeken).
 * Egy Azure [Event hub](../event-hubs/event-hubs-about.md) (és integrálható a splunk és a szumó logikai példányokkal).
 
 ![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
@@ -38,7 +38,7 @@ Ebből a cikkből megtudhatja, hogyan viheti át a naplókat egy Azure Log Analy
 
 ## <a name="deployment-overview"></a>Az üzembe helyezés áttekintése
 
-A Azure AD B2C [Azure Active Directory monitorozást](../active-directory/reports-monitoring/overview-monitoring.md)használ. Az Azure AD B2C-bérlőn belüli Azure Active Directory *diagnosztikai beállításainak* engedélyezéséhez az [Azure Lighthouse](../lighthouse/concepts/azure-delegated-resource-management.md) használatával [delegálhat egy erőforrást](../lighthouse/concepts/azure-delegated-resource-management.md), amely lehetővé teszi a Azure ad B2C (a **szolgáltató**) számára az Azure ad-( **ügyfél**-) erőforrás felügyeletét. Miután elvégezte a cikkben leírt lépéseket, hozzáférhet az *Azure-ad-B2C-figyelő* erőforráscsoporthoz, amely tartalmazza a [log Analytics munkaterületet](../azure-monitor/learn/quick-create-workspace.md) a **Azure ad B2C** portálon. A naplókat a Azure AD B2C a Log Analytics-munkaterületre is továbbíthatja.
+A Azure AD B2C [Azure Active Directory monitorozást](../active-directory/reports-monitoring/overview-monitoring.md)használ. Az Azure AD B2C-bérlőn belüli Azure Active Directory *diagnosztikai beállításainak* engedélyezéséhez az [Azure Lighthouse](../lighthouse/concepts/azure-delegated-resource-management.md) használatával [delegálhat egy erőforrást](../lighthouse/concepts/azure-delegated-resource-management.md), amely lehetővé teszi a Azure ad B2C (a **szolgáltató**) számára az Azure ad-( **ügyfél**-) erőforrás felügyeletét. Miután elvégezte a cikkben leírt lépéseket, hozzáférhet az *Azure-ad-B2C-figyelő* erőforráscsoporthoz, amely tartalmazza a [log Analytics munkaterületet](../azure-monitor/logs/quick-create-workspace.md) a **Azure ad B2C** portálon. A naplókat a Azure AD B2C a Log Analytics-munkaterületre is továbbíthatja.
 
 A telepítés során a Azure AD B2C-címtárban lévő felhasználó vagy csoport számára engedélyezi a Log Analytics Workspace-példány konfigurálását az Azure-előfizetést tartalmazó bérlőn belül. Az engedélyezés létrehozásához üzembe kell helyeznie egy [Azure Resource Manager](../azure-resource-manager/index.yml) sablont az előfizetést tartalmazó Azure ad-bérlőn.
 
@@ -62,7 +62,7 @@ A **log Analytics munkaterület** egy egyedi környezet, amely Azure monitor nap
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely tartalmazza az **Azure ad-bérlőt**.
-1. [Log Analytics munkaterület létrehozása](../azure-monitor/learn/quick-create-workspace.md). Ez a példa egy *AzureAdB2C* nevű log Analytics munkaterületet használ az *Azure-ad-B2C-monitor* nevű erőforráscsoporthoz.
+1. [Log Analytics munkaterület létrehozása](../azure-monitor/logs/quick-create-workspace.md). Ez a példa egy *AzureAdB2C* nevű log Analytics munkaterületet használ az *Azure-ad-B2C-monitor* nevű erőforráscsoporthoz.
 
 ## <a name="3-delegate-resource-management"></a>3. erőforrás-kezelés delegálása
 
@@ -104,7 +104,7 @@ Ezután létre fog hozni egy Azure Resource Manager sablont, amely Azure AD B2C 
    | Mező   | Meghatározás |
    |---------|------------|
    | Előfizetés |  Válassza ki azt az Azure-előfizetést tartalmazó könyvtárat, amelyben az *Azure-ad-B2C-monitor* erőforráscsoport létrejött. |
-   | Régió| Válassza ki azt a régiót, ahol az erőforrást telepíteni kívánja.  | 
+   | Region| Válassza ki azt a régiót, ahol az erőforrást telepíteni kívánja.  | 
    | MSP-ajánlat neve| A definíciót leíró név. Például *Azure ad B2C figyelés*.  |
    | MSP-ajánlat leírása| Az ajánlat rövid leírása. Például *engedélyezi a Azure AD B2C Azure monitorét*.|
    | Bérlői azonosító kezeli| A Azure AD B2C bérlő (más néven címtár-azonosító) **bérlői azonosítója** . |
@@ -144,9 +144,9 @@ Miután telepítette a sablont, és néhány percet várt az erőforrás-kivetí
 
 A diagnosztikai beállítások határozzák meg, hogy az erőforráshoz tartozó naplókat és mérőszámokat kell-e elküldeni. A lehetséges célpontok:
 
-- [Azure Storage-fiók](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
-- [Event hub](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs) -megoldások
-- [Log Analytics munkaterület](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)
+- [Azure Storage-fiók](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
+- [Event hub](../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs) -megoldások
+- [Log Analytics munkaterület](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)
 
 Ebben a példában a Log Analytics munkaterületet használjuk egy irányítópult létrehozásához.
 
@@ -171,7 +171,7 @@ Azure AD B2C tevékenység naplóinak figyelési beállításainak konfigurálá
 1. Kattintson a **Mentés** gombra.
 
 > [!NOTE]
-> Akár 15 percet is igénybe vehet, miután egy esemény kikerül [egy log Analytics munkaterületen](../azure-monitor/platform/data-ingestion-time.md). Emellett tájékozódhat [Active Directory jelentési késésekről](../active-directory/reports-monitoring/reference-reports-latencies.md)is, amelyek befolyásolhatják az adatvesztést, és fontos szerepet játszanak a jelentéskészítésben.
+> Akár 15 percet is igénybe vehet, miután egy esemény kikerül [egy log Analytics munkaterületen](../azure-monitor/logs/data-ingestion-time.md). Emellett tájékozódhat [Active Directory jelentési késésekről](../active-directory/reports-monitoring/reference-reports-latencies.md)is, amelyek befolyásolhatják az adatvesztést, és fontos szerepet játszanak a jelentéskészítésben.
 
 Ha a következő hibaüzenet jelenik meg: "a diagnosztikai beállítások beállítása Azure Monitor használatára a Azure AD B2C könyvtára számára, be kell állítania a delegált erőforrás-kezelést," győződjön meg arról, hogy a [biztonsági csoport](#32-select-a-security-group) tagja, és [válassza ki az előfizetését](#4-select-your-subscription).
 
@@ -181,7 +181,7 @@ Most beállíthatja a Log Analytics munkaterületet az adatai megjelenítéséhe
 
 ### <a name="61-create-a-query"></a>6,1 lekérdezés létrehozása
 
-A naplók lekérdezései segítségével teljes mértékben kihasználhatja Azure Monitor naplókban összegyűjtött adatok értékét. Egy hatékony lekérdezési nyelv lehetővé teszi több táblázatból származó adatok összekapcsolását, nagy mennyiségű adat összesítését, valamint a minimális kóddal rendelkező összetett műveletek végrehajtását. Gyakorlatilag bármilyen kérdés megválaszolható és elemezhető mindaddig, amíg a támogatási adatok gyűjtése megtörtént, és tisztában van a megfelelő lekérdezés létrehozásával is. További információ: Ismerkedés [a Azure monitor-naplózási lekérdezésekkel](../azure-monitor/log-query/get-started-queries.md).
+A naplók lekérdezései segítségével teljes mértékben kihasználhatja Azure Monitor naplókban összegyűjtött adatok értékét. Egy hatékony lekérdezési nyelv lehetővé teszi több táblázatból származó adatok összekapcsolását, nagy mennyiségű adat összesítését, valamint a minimális kóddal rendelkező összetett műveletek végrehajtását. Gyakorlatilag bármilyen kérdés megválaszolható és elemezhető mindaddig, amíg a támogatási adatok gyűjtése megtörtént, és tisztában van a megfelelő lekérdezés létrehozásával is. További információ: Ismerkedés [a Azure monitor-naplózási lekérdezésekkel](../azure-monitor/logs/get-started-queries.md).
 
 1. **Log Analytics munkaterületen** válassza a **naplók** lehetőséget.
 1. Illessze be a következő Kusto lekérdezési [nyelvi](/azure/data-explorer/kusto/query/) lekérdezést a lekérdezéstervező szerkesztőjébe. Ez a lekérdezés a házirend-használatot mutatja az elmúlt x napban. Az alapértelmezett időtartam 90 nap (90d). Figyelje meg, hogy a lekérdezés csak arra a műveletre összpontosít, ahol a jogkivonat/kód kiállítja a szabályzatot.
@@ -228,7 +228,7 @@ További példákért tekintse meg a Azure AD B2C [Siem GitHub](https://aka.ms/b
 
 ### <a name="62-create-a-workbook"></a>6,2 munkafüzet létrehozása
 
-A munkafüzetek Azure Portalon belül kínálnak rugalmas vásznat az adatelemzéshez és a részletgazdag vizuális jelentések létrehozásához. Lehetővé teszik, hogy több adatforrásra koppintson az Azure-ból, és egyesítse azokat egységes interaktív környezetekben. További információ: [Azure monitor munkafüzetek](../azure-monitor/platform/workbooks-overview.md).
+A munkafüzetek Azure Portalon belül kínálnak rugalmas vásznat az adatelemzéshez és a részletgazdag vizuális jelentések létrehozásához. Lehetővé teszik, hogy több adatforrásra koppintson az Azure-ból, és egyesítse azokat egységes interaktív környezetekben. További információ: [Azure monitor munkafüzetek](../azure-monitor/visualize/workbooks-overview.md).
 
 Az alábbi útmutatást követve hozzon létre egy új munkafüzetet egy JSON-katalógus sablon használatával. Ez a munkafüzet egy **felhasználói bepillantást** és **hitelesítési** irányítópultot biztosít Azure ad B2C bérlőnek.
 
@@ -259,10 +259,10 @@ A munkafüzet irányítópult formájában jeleníti meg a jelentéseket.
 
 ## <a name="create-alerts"></a>Riasztások létrehozása
 
-A riasztásokat riasztási szabályok hozzák létre az Azure Monitorban, és rendszeres időközönként automatikusan mentett lekérdezéseket vagy egyéni naplókereséseket futtathatnak. Riasztásokat megadott teljesítménymetrikák alapján, illetve bizonyos események létrehozásakor vagy hiányakor hozhat létre, illetve akkor, ha egy adott időtartományon belül több esemény jön létre. A riasztások például értesítést kaphatnak arról, ha a bejelentkezések átlagos száma meghaladja az adott küszöbértéket. További információt a [riasztások létrehozása](../azure-monitor/learn/tutorial-response.md)című témakörben talál.
+A riasztásokat riasztási szabályok hozzák létre az Azure Monitorban, és rendszeres időközönként automatikusan mentett lekérdezéseket vagy egyéni naplókereséseket futtathatnak. Riasztásokat megadott teljesítménymetrikák alapján, illetve bizonyos események létrehozásakor vagy hiányakor hozhat létre, illetve akkor, ha egy adott időtartományon belül több esemény jön létre. A riasztások például értesítést kaphatnak arról, ha a bejelentkezések átlagos száma meghaladja az adott küszöbértéket. További információt a [riasztások létrehozása](../azure-monitor/alerts/tutorial-response.md)című témakörben talál.
 
 
-Az alábbi útmutatást követve létrehozhat egy új Azure-riasztást, amely [e-mailben értesítést](../azure-monitor/platform/action-groups.md#configure-notifications) küld, amikor 25%-kal csökken az előző időszakban összehasonlított **kérelmek száma** . A riasztás 5 percenként fut le, és az elmúlt 24 órában megtekinti a Windows-t. A riasztások a Kusto lekérdezési nyelv használatával jönnek létre.
+Az alábbi útmutatást követve létrehozhat egy új Azure-riasztást, amely [e-mailben értesítést](../azure-monitor/alerts/action-groups.md#configure-notifications) küld, amikor 25%-kal csökken az előző időszakban összehasonlított **kérelmek száma** . A riasztás 5 percenként fut le, és az elmúlt 24 órában megtekinti a Windows-t. A riasztások a Kusto lekérdezési nyelv használatával jönnek létre.
 
 
 1. **Log Analytics munkaterületen** válassza a **naplók** lehetőséget. 
@@ -296,7 +296,7 @@ A riasztás létrehozása után nyissa meg **log Analytics munkaterületet** , �
 
 ### <a name="configure-action-groups"></a>Műveleti csoportok konfigurálása
 
-Azure Monitor és Service Health riasztások használata műveleti csoportok segítségével értesíti a felhasználókat arról, hogy riasztást váltott ki. Belefoglalhatja a hanghívások, SMS és e-mailek küldését is. vagy különböző típusú automatizált műveletek elindítása. Kövesse a [műveleti csoportok létrehozása és kezelése](../azure-monitor/platform/action-groups.md) című témakör útmutatását a Azure Portal
+Azure Monitor és Service Health riasztások használata műveleti csoportok segítségével értesíti a felhasználókat arról, hogy riasztást váltott ki. Belefoglalhatja a hanghívások, SMS és e-mailek küldését is. vagy különböző típusú automatizált műveletek elindítása. Kövesse a [műveleti csoportok létrehozása és kezelése](../azure-monitor/alerts/action-groups.md) című témakör útmutatását a Azure Portal
 
 Íme egy példa a riasztási értesítő e-mailekre. 
 
@@ -306,7 +306,7 @@ Azure Monitor és Service Health riasztások használata műveleti csoportok seg
 
 Ha több Azure AD B2C bérlői naplót szeretne bevezetni ugyanahhoz a Log Analytics munkaterületre (vagy Azure Storage-fiókba vagy Event hub-ba), külön üzemelő példányokra van szüksége az **MSP-ajánlat nevének** értékeivel. Győződjön meg arról, hogy a Log Analytics munkaterület ugyanabban az erőforráscsoporthoz van, mint a [Létrehozás vagy az erőforráscsoport kiválasztása](#1-create-or-choose-resource-group)elemben.
 
-Ha több Log Analytics munkaterülettel dolgozik, a több munkaterületen dolgozó lekérdezések létrehozásához használjon több munkaterület [lekérdezését](../azure-monitor/log-query/cross-workspace-query.md) . Például a következő lekérdezés két napló összeillesztését hajtja végre különböző bérlők között ugyanazon kategória alapján (például hitelesítés):
+Ha több Log Analytics munkaterülettel dolgozik, a több munkaterületen dolgozó lekérdezések létrehozásához használjon több munkaterület [lekérdezését](../azure-monitor/logs/cross-workspace-query.md) . Például a következő lekérdezés két napló összeillesztését hajtja végre különböző bérlők között ugyanazon kategória alapján (például hitelesítés):
 
 ```kusto
 workspace("AD-B2C-TENANT1").AuditLogs
@@ -316,12 +316,12 @@ workspace("AD-B2C-TENANT1").AuditLogs
 
 ## <a name="change-the-data-retention-period"></a>Az adatmegőrzési időtartam módosítása
 
-Azure Monitor naplókat úgy tervezték, hogy a vállalati vagy az Azure-ban üzembe helyezett bármely forrásból származó nagy mennyiségű adat gyűjtését, indexelését és tárolását naponta kialakítsa és támogassa. Alapértelmezés szerint a rendszer 30 napig őrzi meg a naplókat, a megőrzési időtartam azonban akár két évre is növelhető. Megtudhatja, hogyan [kezelheti a használatot és a költségeket Azure monitor naplók használatával](../azure-monitor/platform/manage-cost-storage.md). Az árképzési csomag kiválasztása után [megváltoztathatja az adatmegőrzési időszakot](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period).
+Azure Monitor naplókat úgy tervezték, hogy a vállalati vagy az Azure-ban üzembe helyezett bármely forrásból származó nagy mennyiségű adat gyűjtését, indexelését és tárolását naponta kialakítsa és támogassa. Alapértelmezés szerint a rendszer 30 napig őrzi meg a naplókat, a megőrzési időtartam azonban akár két évre is növelhető. Megtudhatja, hogyan [kezelheti a használatot és a költségeket Azure monitor naplók használatával](../azure-monitor/logs/manage-cost-storage.md). Az árképzési csomag kiválasztása után [megváltoztathatja az adatmegőrzési időszakot](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period).
 
 ## <a name="next-steps"></a>Következő lépések
 
 * További mintákat a Azure AD B2C [Siem galériában](https://aka.ms/b2csiem)talál. 
 
-* A Azure Monitor diagnosztikai beállításainak hozzáadásával és konfigurálásával kapcsolatos további információkért lásd [: oktatóanyag: erőforrás-naplók összegyűjtése és elemzése az Azure-erőforrásokból](../azure-monitor/insights/monitor-azure-resource.md).
+* A Azure Monitor diagnosztikai beállításainak hozzáadásával és konfigurálásával kapcsolatos további információkért lásd [: oktatóanyag: erőforrás-naplók összegyűjtése és elemzése az Azure-erőforrásokból](../azure-monitor/essentials/monitor-azure-resource.md).
 
 * További információ az Azure AD-naplók esemény-központba való továbbításáról [: oktatóanyag: Stream Azure Active Directory-naplók az Azure Event hub](../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)-ba.

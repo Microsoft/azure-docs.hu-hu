@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1818dc558ba45e318b71e1443556cc48feaede8b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1453d43707a3680380e553fe69d738b27fe5ae3a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367673"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571348"
 ---
 # <a name="troubleshoot-azure-monitor-for-windows-virtual-desktop-preview"></a>A Windows rendszerű virtuális asztali számítógép (előzetes verzió) Azure Monitor hibáinak megoldása
 
@@ -26,9 +26,9 @@ Ha a konfigurációs munkafüzet nem működik megfelelően a telepítő automat
 
 - A diagnosztika manuális engedélyezéséhez vagy a Log Analytics munkaterület eléréséhez lásd: [a Windows rendszerű virtuális asztali diagnosztika küldése log Analytics](diagnostics-log-analytics.md).
 - Ha manuálisan szeretné telepíteni a Log Analytics-bővítményt egy gazdagépre, tekintse meg [log Analytics virtuálisgép-bővítményt a Windowshoz](../virtual-machines/extensions/oms-windows.md).
-- Új Log Analytics munkaterület beállításához tekintse meg a [log Analytics munkaterület létrehozása a Azure Portalben](../azure-monitor/learn/quick-create-workspace.md)című témakört.
-- Teljesítményszámlálók hozzáadásához vagy eltávolításához tekintse meg a [teljesítményszámlálók konfigurálása](../azure-monitor/platform/data-sources-performance-counters.md)című témakört.
-- Log Analytics munkaterület eseményeinek konfigurálásához lásd: a [Windows Eseménynapló adatforrásainak összegyűjtése log Analytics ügynökkel](../azure-monitor/platform/data-sources-windows-events.md).
+- Új Log Analytics munkaterület beállításához tekintse meg a [log Analytics munkaterület létrehozása a Azure Portalben](../azure-monitor/logs/quick-create-workspace.md)című témakört.
+- Teljesítményszámlálók hozzáadásához vagy eltávolításához tekintse meg a [teljesítményszámlálók konfigurálása](../azure-monitor/agents/data-sources-performance-counters.md)című témakört.
+- Log Analytics munkaterület eseményeinek konfigurálásához lásd: a [Windows Eseménynapló adatforrásainak összegyűjtése log Analytics ügynökkel](../azure-monitor/agents/data-sources-windows-events.md).
 
 ## <a name="my-data-isnt-displaying-properly"></a>Az adataim nem megfelelően jelennek meg
 
@@ -44,7 +44,7 @@ Ha az adatai nem megfelelően jelennek meg, ellenőrizze a konfigurációt, az e
 
 - Előfordulhat, hogy a kiszolgáló tűzfalán meg kell nyitnia a kimenő portokat, hogy Azure Monitor az adatküldést a portálra, lásd: [kimenő portok](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses). 
 
-- Nem látja a legutóbbi tevékenységek adatait? Érdemes 15 percet várni, és frissíteni a hírcsatornát. A naplózási adatok feltöltéséhez a Azure Monitor 15 perces késési időszakot biztosít. További információ: [adatfeldolgozási idő naplózása Azure monitorban](../azure-monitor/platform/data-ingestion-time.md).
+- Nem látja a legutóbbi tevékenységek adatait? Érdemes 15 percet várni, és frissíteni a hírcsatornát. A naplózási adatok feltöltéséhez a Azure Monitor 15 perces késési időszakot biztosít. További információ: [adatfeldolgozási idő naplózása Azure monitorban](../azure-monitor/logs/data-ingestion-time.md).
 
 Ha nem ad meg semmilyen információt, de az adatai még nem jelennek meg megfelelően, előfordulhat, hogy probléma van a lekérdezésben vagy az adatforrásokban. Tekintse át az ismert problémákat és korlátozásokat. 
 
@@ -52,7 +52,7 @@ Ha nem ad meg semmilyen információt, de az adatai még nem jelennek meg megfel
 
 A Windows rendszerű virtuális asztali Azure Monitor Azure Monitor munkafüzeteket használ. A munkafüzetek lehetővé teszik a Windows rendszerű virtuális asztali munkafüzet sablonjának másolatának mentését, és a saját testreszabását.
 
-A tervezés szerint az egyéni munkafüzetek sablonjai nem fogják automatikusan alkalmazni a frissítéseket a termékek csoportjából. További információ: a [munkafüzet-alapú információk hibaelhárítása](../azure-monitor/insights/troubleshoot-workbooks.md) és a [munkafüzetek áttekintése](../azure-monitor/platform/workbooks-overview.md).
+A tervezés szerint az egyéni munkafüzetek sablonjai nem fogják automatikusan alkalmazni a frissítéseket a termékek csoportjából. További információ: a [munkafüzet-alapú információk hibaelhárítása](../azure-monitor/insights/troubleshoot-workbooks.md) és a [munkafüzetek áttekintése](../azure-monitor/visualize/workbooks-overview.md).
 
 ## <a name="i-cant-interpret-the-data"></a>Nem tudom értelmezni az adatforrást
 

@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 89ba50b91e8ff2e2d7a05d59f2b738a1f87a5fd2
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: e4b5372a2b6e9b833f3a0213d69649b75ae2589b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742148"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578193"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services-classic"></a>Azure Diagnostics engedélyezése az Azure Cloud Services (klasszikus)
 
@@ -189,13 +189,13 @@ A Visual Studio **Server Explorerben** navigáljon a wadexample Storage-fiókhoz
 ![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
 
 ## <a name="configuration-file-schema"></a>Konfigurációs fájl sémája
-A diagnosztikai konfigurációs fájl határozza meg azokat az értékeket, amelyeket a rendszer a diagnosztika ügynök indításakor a diagnosztikai konfigurációs beállítások inicializálásához használ. Tekintse meg az érvényes értékeket és példákat a [legújabb séma-referenciával](../azure-monitor/platform/diagnostics-extension-versions.md) .
+A diagnosztikai konfigurációs fájl határozza meg azokat az értékeket, amelyeket a rendszer a diagnosztika ügynök indításakor a diagnosztikai konfigurációs beállítások inicializálásához használ. Tekintse meg az érvényes értékeket és példákat a [legújabb séma-referenciával](../azure-monitor/agents/diagnostics-extension-versions.md) .
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
-Ha problémája van, tekintse meg a gyakori problémákkal kapcsolatos segítségért [Azure Diagnostics hibaelhárítással](../azure-monitor/platform/diagnostics-extension-troubleshooting.md) foglalkozó témakört.
+Ha problémája van, tekintse meg a gyakori problémákkal kapcsolatos segítségért [Azure Diagnostics hibaelhárítással](../azure-monitor/agents/diagnostics-extension-troubleshooting.md) foglalkozó témakört.
 
 ## <a name="next-steps"></a>Következő lépések
-[Tekintse meg a kapcsolódó Azure virtuális gépek diagnosztikai cikkeinek listáját](../azure-monitor/platform/diagnostics-extension-overview.md) a gyűjtött adatok módosításához, a problémák elhárításához, illetve a diagnosztika általános megismeréséhez.
+[Tekintse meg a kapcsolódó Azure virtuális gépek diagnosztikai cikkeinek listáját](../azure-monitor/agents/diagnostics-extension-overview.md) a gyűjtött adatok módosításához, a problémák elhárításához, illetve a diagnosztika általános megismeréséhez.
 
 [EventSource Class]: /dotnet/api/system.diagnostics.tracing.eventsource
 

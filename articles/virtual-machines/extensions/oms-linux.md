@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: f75ad90a562a39f940e1006a2e4d9123eff2b47c
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 202cdc341ce31c2347552e6fbc430c679ef28d7f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202181"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580083"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Log Analytics virtuális gépi bővítmény Linuxhoz
 
@@ -37,7 +37,7 @@ Azure Monitor naplók a Felhőbeli és a helyszíni eszközökön végzett figye
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-A támogatott Linux-disztribúciókkal kapcsolatos részletekért tekintse meg az [Azure monitor ügynökök áttekintése](../../azure-monitor/platform/agents-overview.md#supported-operating-systems) című cikket.
+A támogatott Linux-disztribúciókkal kapcsolatos részletekért tekintse meg az [Azure monitor ügynökök áttekintése](../../azure-monitor/agents/agents-overview.md#supported-operating-systems) című cikket.
 
 ### <a name="agent-and-vm-extension-version"></a>Ügynök és virtuálisgép-bővítmény verziója
 Az alábbi táblázat a Log Analytics virtuálisgép-bővítmény és a Log Analytics Agent Bundle verziójának leképezését tartalmazza minden kiadáshoz. A Log Analytics Agent csomag verziójának kibocsátási megjegyzésekre mutató hivatkozás is szerepel. A kibocsátási megjegyzések tartalmazzák az adott ügynök kiadásával kapcsolatos hibajavítások és új funkciók részleteit.  
@@ -76,7 +76,7 @@ A Linux rendszerhez készült Log Analytics-ügynökhöz szükséges, hogy a cé
 
 ## <a name="extension-schema"></a>Bővítményséma
 
-A következő JSON a Log Analytics ügynök bővítmény sémáját jeleníti meg. A kiterjesztéshez a munkaterület-azonosító és a munkaterület kulcsa szükséges a cél Log Analytics munkaterületről; Ezek az értékek a Azure Portal [log Analytics munkaterületén találhatók](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key) . Mivel a munkaterület kulcsát bizalmas adatokként kell kezelni, a védett beállítási konfigurációban kell tárolni. Az Azure virtuálisgép-bővítmény védett beállítási adatbeállításai titkosítottak, és csak a célként megadott virtuális gépen lettek visszafejtve. Vegye figyelembe, hogy a **munkaterület azonosítója** és a **workspaceKey** a kis-és nagybetűk megkülönböztetése.
+A következő JSON a Log Analytics ügynök bővítmény sémáját jeleníti meg. A kiterjesztéshez a munkaterület-azonosító és a munkaterület kulcsa szükséges a cél Log Analytics munkaterületről; Ezek az értékek a Azure Portal [log Analytics munkaterületén találhatók](../../azure-monitor/vm/quick-collect-linux-computer.md#obtain-workspace-id-and-key) . Mivel a munkaterület kulcsát bizalmas adatokként kell kezelni, a védett beállítási konfigurációban kell tárolni. Az Azure virtuálisgép-bővítmény védett beállítási adatbeállításai titkosítottak, és csak a célként megadott virtuális gépen lettek visszafejtve. Vegye figyelembe, hogy a **munkaterület azonosítója** és a **workspaceKey** a kis-és nagybetűk megkülönböztetése.
 
 ```json
 {
@@ -221,7 +221,7 @@ A bővítmény végrehajtásának kimenete a következő fájlba van naplózva:
 | 53 | Ez a bővítmény hiányzó vagy helytelen konfigurációs paraméterek miatt nem sikerült | A hibákkal kapcsolatos további információkért tekintse meg a kimenetet és a naplókat. Emellett ellenőrizze a munkaterület AZONOSÍTÓjának helyességét, és ellenőrizze, hogy a számítógép csatlakozik-e az internethez. |
 | 55 | Nem lehet csatlakozni a Azure Monitor szolgáltatáshoz, vagy hiányzik a szükséges csomagok, vagy a dpkg Package Manager zárolva van| Győződjön meg arról, hogy a rendszer rendelkezik internet-hozzáféréssel, vagy hogy érvényes HTTP-proxy van megadva. Emellett ellenőrizze a munkaterület-azonosító helyességét, és ellenőrizze, hogy telepítve vannak-e a curl és a Tar segédprogramok. |
 
-További hibaelhárítási tudnivalókat a [log Analytics-Agent-Linux hibaelhárítási útmutatójában](../../azure-monitor/platform/vmext-troubleshoot.md)talál.
+További hibaelhárítási tudnivalókat a [log Analytics-Agent-Linux hibaelhárítási útmutatójában](../../azure-monitor/visualize/vmext-troubleshoot.md)talál.
 
 ### <a name="support"></a>Támogatás
 

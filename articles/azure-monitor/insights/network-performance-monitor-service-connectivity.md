@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 5d7c7068c4a8669cdff782267030d38ac0f73584
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: a980c0987106a80751a98c48dfc5780708e6f889
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832929"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573418"
 ---
 # <a name="service-connectivity-monitor"></a>Szolgáltatáskapcsolati monitor
 
@@ -136,4 +136,5 @@ Az USA-beli kormányzati Virginia régió esetében csak a DOD URL-címek beép�
 | MS-csapatok | gov.teams.microsoft.us | 
 
 ## <a name="next-steps"></a>Következő lépések
-[Keresési naplók](../log-query/log-query-overview.md) a hálózati teljesítményadatok részletes rekordjainak megtekintéséhez.
+[Keresési naplók](../logs/log-query-overview.md) a hálózati teljesítményadatok részletes rekordjainak megtekintéséhez.
+

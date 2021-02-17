@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 09415c47432f71310b10c86390c10e55f1ccc4b2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9350b5dbcedd2773e94ef9d35cfe26f97fbd97bc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498608"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571608"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Az Azure Spring Cloud-problémák gyakori problémáinak elhárítása
 
@@ -66,7 +66,7 @@ Az alkalmazások összeomlásának hibakereséséhez először ellenőrizze az a
 
 
 
-Ha többet szeretne megtudni az Azure Log Analytics-ról, tekintse meg a [log Analytics beszerzése a Azure monitorban](../azure-monitor/log-query/log-analytics-tutorial.md)című témakört.
+Ha többet szeretne megtudni az Azure Log Analytics-ról, tekintse meg a [log Analytics beszerzése a Azure monitorban](../azure-monitor/logs/log-analytics-tutorial.md)című témakört.
 
 ### <a name="my-application-experiences-high-cpu-usage-or-high-memory-usage"></a>Az alkalmazás CPU- vagy memóriahasználata magas
 
@@ -88,7 +88,7 @@ További információ: [mérőszámok az Azure Spring Cloud](spring-cloud-concep
 
 Ha minden példány fut, lépjen az Azure Log Analyticsra az alkalmazás naplófájljainak lekérdezéséhez, és tekintse át a kód logikáját. Ez segít megtekinteni, hogy ezek bármelyike érintheti-e a méretezési particionálást. További információ: [naplók és mérőszámok elemzése diagnosztikai beállításokkal](diagnostic-services.md).
 
-Ha többet szeretne megtudni az Azure Log Analytics-ról, tekintse meg a [log Analytics beszerzése a Azure monitorban](../azure-monitor/log-query/log-analytics-tutorial.md)című témakört. A naplókat a [Kusto lekérdezési nyelv](/azure/kusto/query/)használatával kérdezheti le.
+Ha többet szeretne megtudni az Azure Log Analytics-ról, tekintse meg a [log Analytics beszerzése a Azure monitorban](../azure-monitor/logs/log-analytics-tutorial.md)című témakört. A naplókat a [Kusto lekérdezési nyelv](/azure/kusto/query/)használatával kérdezheti le.
 
 ### <a name="checklist-for-deploying-your-spring-application-to-azure-spring-cloud"></a>Ellenőrzőlista a Spring-alkalmazás üzembe helyezéséhez az Azure Spring Cloud-ban
 
@@ -163,7 +163,7 @@ Ha egy meglévő Spring Cloud-alapú megoldást telepít át az Azure-ba, győz�
 
 A _szolgáltatás beállításjegyzékbeli_ ügyfél-naplófájljait is megtekintheti az Azure log Analyticsban. További információ: [naplók és mérőszámok elemzése diagnosztikai beállításokkal](diagnostic-services.md)
 
-Ha többet szeretne megtudni az Azure Log Analytics-ról, tekintse meg a [log Analytics beszerzése a Azure monitorban](../azure-monitor/log-query/log-analytics-tutorial.md)című témakört. A naplókat a [Kusto lekérdezési nyelv](/azure/kusto/query/)használatával kérdezheti le.
+Ha többet szeretne megtudni az Azure Log Analytics-ról, tekintse meg a [log Analytics beszerzése a Azure monitorban](../azure-monitor/logs/log-analytics-tutorial.md)című témakört. A naplókat a [Kusto lekérdezési nyelv](/azure/kusto/query/)használatával kérdezheti le.
 
 ### <a name="i-want-to-inspect-my-applications-environment-variables"></a>Meg szeretném vizsgálni az alkalmazás környezeti változóit
 
@@ -223,8 +223,8 @@ Ellenőrizze, hogy a `spring-boot-actuator` függőség engedélyezve van-e az a
 </dependency>
 ```
 
-Ha az alkalmazás naplói archiválható egy Storage-fiókba, de az Azure Log Analyticsba nem küldték, ellenőrizze, hogy [helyesen állította-e be a munkaterületet](../azure-monitor/learn/quick-create-workspace.md). Ha az Azure Log Analytics ingyenes szintjét használja, vegye figyelembe, hogy [az ingyenes szint nem biztosít szolgáltatói szerződést (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/).
+Ha az alkalmazás naplói archiválható egy Storage-fiókba, de az Azure Log Analyticsba nem küldték, ellenőrizze, hogy [helyesen állította-e be a munkaterületet](../azure-monitor/logs/quick-create-workspace.md). Ha az Azure Log Analytics ingyenes szintjét használja, vegye figyelembe, hogy [az ingyenes szint nem biztosít szolgáltatói szerződést (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Spring Cloud szolgáltatásban felmerülő problémák önálló diagnosztizálása és megoldása](spring-cloud-howto-self-diagnose-solve.md)

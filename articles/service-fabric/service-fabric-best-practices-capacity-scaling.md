@@ -1,19 +1,19 @@
 ---
-title: Kapacitás megtervezése és méretezése az Azure Service Fabric
+title: Az Azure Service Fabric kapacitástervezése és skálázása
 description: Ajánlott eljárások Service Fabric fürtök és alkalmazások tervezéséhez és méretezéséhez.
 author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d7d9ed8fa695c636e7aaf36fd034babb4de012d9
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 32a9c26bb9e89cf4057cc753b02ad3c006d0bae6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98784680"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595081"
 ---
-# <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Kapacitás megtervezése és méretezése az Azure Service Fabric
+# <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Az Azure Service Fabric kapacitástervezése és skálázása
 
 Mielőtt bármilyen Azure Service Fabric-fürtöt hozna létre, vagy a fürtöt futtató számítási erőforrásokat méretezheti, fontos a kapacitás megtervezése. További információ a kapacitás megtervezéséről: [a Service Fabric-fürt kapacitásának megtervezése](./service-fabric-cluster-capacity.md). A fürtök méretezhetőségével kapcsolatos további gyakorlati útmutatásért lásd: [Service Fabric skálázhatósági megfontolások](/azure/architecture/reference-architectures/microservices/service-fabric#scalability-considerations).
 
@@ -26,7 +26,7 @@ A virtuálisgép-méretezési csoportokon keresztüli automatikus skálázással
 
 * A megfelelő kapacitással rendelkező Resource Manager-sablonok üzembe helyezése nem támogatja a használati esetet.
      
-   A manuális skálázás mellett az Azure [DevOps-szolgáltatásokban is konfigurálhat folyamatos integrációs és kézbesítési folyamatot az Azure erőforráscsoport-telepítési projektjeivel](../azure-resource-manager/templates/add-template-to-azure-pipelines.md). Ezt a folyamatot általában egy olyan logikai alkalmazás indítja el, amely a [Azure Monitor Rest APIból](../azure-monitor/platform/rest-api-walkthrough.md)lekérdezett virtuális gépek teljesítmény-metrikáit használja. A folyamat hatékonyan kibővíti a kívánt mérőszámok alapján, a Resource Manager-sablonok optimalizálásával.
+   A manuális skálázás mellett az Azure [DevOps-szolgáltatásokban is konfigurálhat folyamatos integrációs és kézbesítési folyamatot az Azure erőforráscsoport-telepítési projektjeivel](../azure-resource-manager/templates/add-template-to-azure-pipelines.md). Ezt a folyamatot általában egy olyan logikai alkalmazás indítja el, amely a [Azure Monitor Rest APIból](../azure-monitor/essentials/rest-api-walkthrough.md)lekérdezett virtuális gépek teljesítmény-metrikáit használja. A folyamat hatékonyan kibővíti a kívánt mérőszámok alapján, a Resource Manager-sablonok optimalizálásával.
 * Egyszerre csak egy virtuálisgép-méretezési csoport csomópontot kell horizontálisan méreteznie.
    
    Ha egyszerre három vagy több csomópontot szeretne felskálázásra, egy [virtuálisgép-méretezési csoport hozzáadásával Service Fabric-fürtöt kell felskálázása](virtual-machine-scale-set-scale-node-type-scale-out.md). A virtuálisgép-méretezési csoportok horizontálisan, egyszerre egy csomóponton méretezhetők és méretezhetők.
@@ -218,7 +218,7 @@ A másik erőforrás a `nodeTypes` [Microsoft. ServiceFabric/Clusters erőforrá
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Hozzon létre egy fürtöt a virtuális gépeken vagy a Windows Servert futtató számítógépeken: [Service Fabric a fürt létrehozását a Windows Server](service-fabric-cluster-creation-for-windows-server.md)rendszerhez.
 * Hozzon létre egy fürtöt a virtuális gépeken vagy Linuxon futó számítógépeken: [hozzon létre egy linuxos fürtöt](service-fabric-cluster-creation-via-portal.md).

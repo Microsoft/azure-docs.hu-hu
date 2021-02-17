@@ -8,12 +8,12 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 7c522abd04f4a3e480bb5c3e14e78cc03dbd5d86
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: a047761669920d6460c3d6fb6d74b970effa7846
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888640"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572034"
 ---
 # <a name="region-availability-and-data-residency"></a>Regionális elérhetőség és adattárolási hely
 
@@ -73,7 +73,7 @@ A szolgáltatás elmúló módon dolgozza fel a hang-és video-kommunikációt, 
 
 ## <a name="azure-monitor-and-log-analytics"></a>Azure Monitor és Log Analytics
 
-Az Azure kommunikációs szolgáltatások a szolgáltatás működési állapotának és kihasználtságának megértéséhez Azure Monitor naplózási adataiba kerülnek. Ezek a naplók a kommunikációs szolgáltatás identitásait és telefonszámait tartalmazzák. A potenciálisan személyes adatértékek törléséhez [használja ezeket az eljárásokat a Azure monitor](../../azure-monitor/platform/personal-data-mgmt.md). Előfordulhat, hogy [az Azure monitor alapértelmezett megőrzési időtartamát](../../azure-monitor/platform/manage-cost-storage.md)is be szeretné állítani.
+Az Azure kommunikációs szolgáltatások a szolgáltatás működési állapotának és kihasználtságának megértéséhez Azure Monitor naplózási adataiba kerülnek. Ezek a naplók a kommunikációs szolgáltatás identitásait és telefonszámait tartalmazzák. A potenciálisan személyes adatértékek törléséhez [használja ezeket az eljárásokat a Azure monitor](../../azure-monitor/logs/personal-data-mgmt.md). Előfordulhat, hogy [az Azure monitor alapértelmezett megőrzési időtartamát](../../azure-monitor/logs/manage-cost-storage.md)is be szeretné állítani.
 
 ## <a name="additional-resources"></a>További források
 

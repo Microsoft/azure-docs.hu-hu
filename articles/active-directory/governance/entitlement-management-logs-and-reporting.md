@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af9921510ba11ab1bd7d0664b2c4c19e042864d3
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 1a7f0d937d41ee42bf0fe678eb2f49e78882f881
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746643"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577861"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Archiválási naplók és jelentéskészítés az Azure AD-jogosultságok kezelésében Azure Monitor
 
@@ -59,7 +59,7 @@ Az Azure AD-naplók archiválásához a Azure Monitor Azure-előfizetésben kell
 
 ## <a name="view-events-for-an-access-package"></a>Hozzáférési csomag eseményeinek megtekintése  
 
-Egy hozzáférési csomag eseményeinek megtekintéséhez hozzá kell férnie az alapul szolgáló Azure monitor-munkaterülethez (lásd: [hozzáférés kezelése a naplózási adatokhoz és munkaterületekhez a Azure monitor](../../azure-monitor/platform/manage-access.md#manage-access-using-azure-permissions) az információkhoz) és a következő szerepkörök egyikében: 
+Egy hozzáférési csomag eseményeinek megtekintéséhez hozzá kell férnie az alapul szolgáló Azure monitor-munkaterülethez (lásd: [hozzáférés kezelése a naplózási adatokhoz és munkaterületekhez a Azure monitor](../../azure-monitor/logs/manage-access.md#manage-access-using-azure-permissions) az információkhoz) és a következő szerepkörök egyikében: 
 
 - Globális rendszergazda  
 - Biztonsági rendszergazda  
@@ -128,7 +128,7 @@ A szerepkör-hozzárendelés beállításához és a lekérdezés létrehozásá
 
     ![Szerepkör-hozzárendelés hozzáadása](./media/entitlement-management-logs-and-reporting/workspace-set-role-assignment.png)
 
-### <a name="install-azure-powershell-module"></a>Azure PowerShell-modul telepítése
+### <a name="install-azure-powershell-module"></a>Azure PowerShell modul telepítése
 
 Ha rendelkezik a megfelelő szerepkör-hozzárendeléssel, indítsa el a PowerShellt, és [telepítse a Azure PowerShell modult](/powershell/azure/install-az-ps?view=azps-3.3.0) (ha még nem tette meg), írja be a következőt:
 
@@ -189,4 +189,4 @@ $bResponse.Results |ft
 ```
 
 ## <a name="next-steps"></a>Következő lépések:
-- [Interaktív jelentések létrehozása Azure Monitor munkafüzetekkel](../../azure-monitor/platform/workbooks-overview.md)
+- [Interaktív jelentések létrehozása Azure Monitor munkafüzetekkel](../../azure-monitor/visualize/workbooks-overview.md)

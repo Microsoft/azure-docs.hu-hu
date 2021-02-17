@@ -3,12 +3,12 @@ title: Hogyan... Az Azure Application Insightsban | Microsoft Docs
 description: Gyakori kérdések a Application Insights.
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 134089f4df8f80147182835ca8746322c1de7e50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74a4d7ee65dccead132cfcebd9bf8c0de9b761a5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87319252"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584158"
 ---
 # <a name="how-do-i--in-application-insights"></a>Hogyan tegyem... az Application Insights szolgáltatásban?
 ## <a name="get-an-email-when-"></a>E-mail küldése, ha...
@@ -16,20 +16,20 @@ ms.locfileid: "87319252"
 Adja meg a [rendelkezésre állási webes tesztet](./monitor-web-app-availability.md).
 
 ### <a name="email-if-my-site-is-overloaded"></a>E-mail-cím, ha a webhely túl van terhelve
-[Riasztás](../platform/alerts-log.md) beállítása a **kiszolgáló válaszideje**. Egy 1 és 2 másodperc közötti küszöbértéknek kell működnie.
+[Riasztás](../alerts/alerts-log.md) beállítása a **kiszolgáló válaszideje**. Egy 1 és 2 másodperc közötti küszöbértéknek kell működnie.
 
 ![Képernyőkép, amely bemutatja, hogyan állítható be a riasztás a kiszolgáló válaszideje alapján.](./media/how-do-i/030-server.png)
 
 Az alkalmazás a meghibásodási kódok visszaadásával is megjelenítheti a törzs jeleit. Riasztás beállítása a **sikertelen kérelmeknél**.
 
-Ha riasztást szeretne beállítani a **kiszolgálók kivételei**között, akkor előfordulhat, hogy [további beállításokat](./asp-net-exceptions.md) kell megtennie az adatmegjelenítéshez.
+Ha riasztást szeretne beállítani a **kiszolgálók kivételei** között, akkor előfordulhat, hogy [további beállításokat](./asp-net-exceptions.md) kell megtennie az adatmegjelenítéshez.
 
 ### <a name="email-on-exceptions"></a>Kivételek e-mail-címe
 1. [Kivételek figyelésének beállítása](./asp-net-exceptions.md)
-2. [Riasztás beállítása](../platform/alerts-log.md) a kivételek számának metrikája
+2. [Riasztás beállítása](../alerts/alerts-log.md) a kivételek számának metrikája
 
 ### <a name="email-on-an-event-in-my-app"></a>E-mail küldése az alkalmazáson belüli eseményről
-Tegyük fel, hogy egy adott esemény bekövetkezésekor szeretne e-mailt kapni. Application Insights nem biztosítja ezt a létesítményt közvetlenül, de [riasztást küldhet, ha egy metrika átlép egy küszöbértéket](../platform/alerts-log.md).
+Tegyük fel, hogy egy adott esemény bekövetkezésekor szeretne e-mailt kapni. Application Insights nem biztosítja ezt a létesítményt közvetlenül, de [riasztást küldhet, ha egy metrika átlép egy küszöbértéket](../alerts/alerts-log.md).
 
 A riasztások [Egyéni metrikák](./api-custom-events-metrics.md#trackmetric)esetén is beállíthatók, de nem egyéni események. Írjon be egy kódot a metrika növeléséhez az esemény bekövetkezésekor:
 
@@ -51,7 +51,7 @@ Mivel a riasztások két állapottal rendelkeznek, alacsony értéket kell küld
 telemetry.TrackMetric("Alarm", 0.5);
 ```
 
-Diagram létrehozása a [metrika Explorerben](../platform/metrics-charts.md) a riasztás megtekintéséhez:
+Diagram létrehozása a [metrika Explorerben](../essentials/metrics-charts.md) a riasztás megtekintéséhez:
 
 ![Képernyőfelvétel: diagram létrehozása a metrika Explorerben a riasztás megtekintéséhez.](./media/how-do-i/010-alarm.png)
 
@@ -71,11 +71,11 @@ Néhány megfontolandó szempont:
 * Mivel az e-maileket a "riasztás" és az "kifogástalan" is elküldi, érdemes lehet átgondolni az egyeseményes eseményt egy kétállapotú feltételnek. Például a "feladatok befejezve" esemény helyett a "feladatok folyamatban" állapotot kell megadni, amely a feladatok elején és végén kap e-maileket.
 
 ### <a name="set-up-alerts-automatically"></a>Riasztások automatikus beállítása
-[Új riasztások létrehozása a PowerShell használatával](../platform/alerts-log.md)
+[Új riasztások létrehozása a PowerShell használatával](../alerts/alerts-log.md)
 
 ## <a name="use-powershell-to-manage-application-insights"></a>Application Insights kezelése a PowerShell használatával
 * [Új erőforrások létrehozása](./create-new-resource.md#creating-a-resource-automatically)
-* [Új riasztások létrehozása](../platform/alerts-log.md)
+* [Új riasztások létrehozása](../alerts/alerts-log.md)
 
 ## <a name="separate-telemetry-from-different-versions"></a>Különálló telemetria különböző verziókból
 
@@ -88,7 +88,7 @@ Néhány megfontolandó szempont:
 
 ## <a name="visualize-data"></a>Adatok vizualizációja
 #### <a name="dashboard-with-metrics-from-multiple-apps"></a>Irányítópult több alkalmazás metrikákkal
-* A [metrika Explorerben](../platform/metrics-charts.md)szabja testre a diagramot, és mentse kedvencként. Rögzítse az Azure-irányítópulton.
+* A [metrika Explorerben](../essentials/metrics-charts.md)szabja testre a diagramot, és mentse kedvencként. Rögzítse az Azure-irányítópulton.
 
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>Irányítópult más forrásokból származó adatokkal és Application Insights
 * [Telemetria exportálása a Power BIba](./export-power-bi.md).
@@ -165,6 +165,6 @@ A mérőszámokban megjeleníthető mérőszámok közé tartoznak a rendszertel
 * **UNIX-kiszolgáló**  -  A [telepítés begyűjtve](./java-collectd.md)
 
 ### <a name="to-display-more-performance-counters"></a>További teljesítményszámlálók megjelenítése
-* Először [vegyen fel egy új diagramot](../platform/metrics-charts.md) , és ellenőrizze, hogy a számláló az általunk kínált alapszintű készletben van-e.
+* Először [vegyen fel egy új diagramot](../essentials/metrics-charts.md) , és ellenőrizze, hogy a számláló az általunk kínált alapszintű készletben van-e.
 * Ha nem, [adja hozzá a számlálót a teljesítményszámláló modul által összegyűjtött készlethez](./performance-counters.md).
 

@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: lagayhar
-ms.openlocfilehash: b2e9c267b0a3723c9ac7b3edd49e23b95741962f
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 5ad3e1a5a4ff47fe3d5fee8b8bc79235838995b8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660453"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593630"
 ---
 # <a name="click-analytics-auto-collection-plugin-for-application-insights-javascript-sdk"></a>Kattintson az Analytics Auto-Collection beépülő modul Application Insights JavaScript SDK-hoz
 
@@ -79,7 +79,7 @@ appInsights.loadAppInsights();
 
 ## <a name="configuration"></a>Konfiguráció
 
-| Név                  | Típus                               | Alapértelmezett | Leírás                                                                                                                              |
+| Név                  | Típus                               | Alapértelmezett | Description                                                                                                                              |
 | --------------------- | -----------------------------------| --------| ---------------------------------------------------------------------------------------------------------------------------------------- |
 | az autocapture           | boolean                            | true    | Automatikus rögzítési konfiguráció.                                                                                                         |
 | visszahívási              | [IValueCallback](#ivaluecallback)  | null    | Visszahívások konfigurálása.                                                                                                                 |
@@ -101,7 +101,7 @@ appInsights.loadAppInsights();
 
 ### <a name="icustomdatatags"></a>ICustomDataTags
 
-| Név                      | Típus    | Alapértelmezett   | HTML-kódban használandó alapértelmezett címke |   Leírás                                                                                |
+| Név                      | Típus    | Alapértelmezett   | HTML-kódban használandó alapértelmezett címke |   Description                                                                                |
 |---------------------------|---------|-----------|-------------|----------------------------------------------------------------------------------------------|
 | useDefaultContentNameOrId | boolean | hamis     | N/A         |A standard HTML attribútumot gyűjti a contentName, ha egy adott elem nem az alapértelmezett customDataPrefix van címkézve, vagy ha a felhasználó nem biztosít customDataPrefix. |
 | customDataPrefix          | sztring  | `data-`   | `data-*`| A megadott előtaggal címkézett elemek tartalmának és értékének automatikus rögzítése. Például a ( `data-*-id` ) `data-<yourcustomattribute>` HTML-címkékben is használható.   |
@@ -314,5 +314,5 @@ appInsights.loadAppInsights();
 
 - Tekintse meg a [GitHub-tárházat](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-clickanalytics-js) és a [NPM csomagot](https://www.npmjs.com/package/@microsoft/applicationinsights-clickanalytics-js) a Click Analytics automatikus gyűjtemény beépülő moduljában.
 - Használja az [események elemzését használati élményben](usage-segmentation.md) a leggyakoribb kattintások és a szeletek elérhető dimenziók alapján történő elemzéséhez.
-- Keresse meg az adatokat a CustomEvents tábla customDimensions attribútumában a Content (tartalom) mezőben a [log Analyticsban](../log-query/log-analytics-tutorial.md#write-a-query). További útmutatásért lásd: [Sample app](https://go.microsoft.com/fwlink/?linkid=2152871) .
-- Hozzon létre egy [munkafüzetet](../platform/workbooks-overview.md) egyéni vizualizációk létrehozásához, kattintson az adatelemre.
+- Keresse meg az adatokat a CustomEvents tábla customDimensions attribútumában a Content (tartalom) mezőben a [log Analyticsban](../logs/log-analytics-tutorial.md#write-a-query). További útmutatásért lásd: [Sample app](https://go.microsoft.com/fwlink/?linkid=2152871) .
+- Hozzon létre egy [munkafüzetet](../visualize/workbooks-overview.md) egyéni vizualizációk létrehozásához, kattintson az adatelemre.

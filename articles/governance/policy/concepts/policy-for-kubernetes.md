@@ -3,12 +3,12 @@ title: A Kubernetes Azure Policy megismerése
 description: Ismerje meg, hogyan használja a Azure Policy a Rego-t és a nyílt házirend-ügynököt az Azure-ban vagy a helyszínen futó Kubernetes futtató fürtök kezelésére.
 ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: f25b64bc28535d125c7883f16c9e747d6250ca96
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 0aaf610cd5712ee195ed2a4108cf9e5ca9c65183
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789738"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577092"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>A Kubernetes-fürtökhöz tartozó Azure Policy ismertetése
 
@@ -447,7 +447,7 @@ Egyéb megfontolások:
 ## <a name="logging"></a>Naplózás
 
 Kubernetes-vezérlőként/tárolóként az _Azure-Policy_ és a _forgalomirányító_ hüvelyek is megőrzik a naplókat a Kubernetes-fürtben. A naplók elérhetők a Kubernetes-fürt elemzések **lapján.**
-További információ: [a Kubernetes-fürt teljesítményének figyelése a Azure monitor for containers szolgáltatással](../../../azure-monitor/insights/container-insights-analyze.md).
+További információ: [a Kubernetes-fürt teljesítményének figyelése a Azure monitor for containers szolgáltatással](../../../azure-monitor/containers/container-insights-analyze.md).
 
 A bővítmények naplófájljainak megtekintéséhez használja a következőt `kubectl` :
 
@@ -544,7 +544,7 @@ A bővítmény által gyűjtött információk nem személyes adatok. A rendszer
 - Az ügynök telepítése során Azure Policy bővítmény által észlelt kivételek/hibák a szabályzat kiértékelése során
 - A Azure Policy bővítmény által nem telepített forgalomirányító házirend-definíciók száma
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - A [Szabályzatdefiníciók struktúrájának](definition-structure.md) áttekintése.

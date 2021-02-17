@@ -3,15 +3,15 @@ title: Metrikus riasztások konfigurálása – Azure Portal-Azure Database for 
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja és érheti el az Azure Portal Azure Database for MariaDB metrikai riasztásait.
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 1e7dafaba6b6792afdec1f1866629fac9ba5a577
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 689e830d2486420be8d551d1f88dccba8d982428
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664418"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593071"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Az Azure Portal használatával riasztásokat állíthat be a metrikákkal kapcsolatban Azure Database for MariaDB
 
@@ -25,8 +25,8 @@ A következő műveletek elvégzéséhez beállíthatja a riasztást:
 * Webhook meghívása
 
 A riasztási szabályokkal kapcsolatos információkat a használatával konfigurálhatja és kérheti le:
-* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
-* [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
+* [Azure Portal](../azure-monitor/alerts/alerts-metric.md#create-with-azure-portal)
+* [Azure CLI](../azure-monitor/alerts/alerts-metric.md#with-azure-cli)
 * [Azure Monitor REST API](/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric"></a>Metrikához tartozó riasztási szabály létrehozása
@@ -85,5 +85,5 @@ Miután létrehozta a riasztást, kiválaszthatja, és elvégezheti a következ�
 
 
 ## <a name="next-steps"></a>Következő lépések
-* További információ a [webhookok riasztásokban való konfigurálásáról](../azure-monitor/platform/alerts-webhooks.md).
-* [Tekintse át a metrikák gyűjteményét](../azure-monitor/platform/data-platform.md) , és győződjön meg arról, hogy a szolgáltatás elérhető és rugalmas.
+* További információ a [webhookok riasztásokban való konfigurálásáról](../azure-monitor/alerts/alerts-webhooks.md).
+* [Tekintse át a metrikák gyűjteményét](../azure-monitor/data-platform.md) , és győződjön meg arról, hogy a szolgáltatás elérhető és rugalmas.

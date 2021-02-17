@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2020
-ms.openlocfilehash: 4f14f006283b7430458d67d2bd3bee787c08411d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a498c229acce9359acfb4593ec5f833000ca2c39
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87326018"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573371"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Agent Health megoldás a Azure Monitor
 A Agent Health megoldás az Azure-ban segít megérteni, hogy az összes ügynök, amely közvetlenül a Log Analytics munkaterületen jelent meg Azure Monitor vagy egy Azure Monitorhoz csatlakoztatott System Center Operations Manager felügyeleti csoport, amely nem válaszol, és nem küldi el a működési adatmennyiséget.  Azt is nyomon követheti, hogy hány ügynök lett üzembe helyezve, és milyen a földrajzi eloszlásuk, illetve egyéb lekérdezéseket hajthat végre, amelyekkel megismerheti az Azure-ban, egyéb felhőkörnyezetekben, illetve helyszínen üzembe helyezett ügynökök eloszlását.    
 
 ## <a name="prerequisites"></a>Előfeltételek
-A megoldás üzembe helyezése előtt ellenőrizze, hogy jelenleg támogatottak-e a Log Analytics munkaterületre jelentett [Windows-ügynökök](../platform/agent-windows.md) , vagy a munkaterülethez integrált [Operations Manager felügyeleti csoportnak](../platform/om-agents.md) jelentenek-e jelentéseket.
+A megoldás üzembe helyezése előtt ellenőrizze, hogy jelenleg támogatottak-e a Log Analytics munkaterületre jelentett [Windows-ügynökök](../agents/agent-windows.md) , vagy a munkaterülethez integrált [Operations Manager felügyeleti csoportnak](../agents/om-agents.md) jelentenek-e jelentéseket.
 
 ## <a name="solution-components"></a>Megoldás-összetevők
 Ez a megoldás a következő erőforrásokból áll, amelyek a munkaterületéhez lesznek hozzáadva, és ügynökökhöz vagy az Operations Managerhez kapcsolt felügyeleti csoporthoz lesznek közvetlenül hozzákapcsolva.
@@ -28,7 +28,7 @@ Ha a System Center Operations Manager felügyeleti csoport egy Log Analytics mun
 * Microsoft System Center Advisor HealthAssessment Direct Channel Intelligence Pack (Microsoft.IntelligencePacks.HealthAssessmentDirect)
 * Microsoft System Center Advisor HealthAssessment Server Channel Intelligence Pack (Microsoft.IntelligencePacks.HealthAssessmentViaServer).  
 
-A megoldási felügyeleti csomagok frissítéseivel kapcsolatban lásd: [Az Operations Manager csatlakoztatása a Log Analyticshez](../platform/om-agents.md).
+A megoldási felügyeleti csomagok frissítéseivel kapcsolatban lásd: [Az Operations Manager csatlakoztatása a Log Analyticshez](../agents/om-agents.md).
 
 ## <a name="configuration"></a>Konfiguráció
 Adja hozzá a Agent Health megoldást a Log Analytics munkaterülethez a [megoldások hozzáadása](solutions.md)című témakörben leírt eljárással. Nincs szükség további konfigurációra.
@@ -38,10 +38,10 @@ Adja hozzá a Agent Health megoldást a Log Analytics munkaterülethez a [megold
 ### <a name="supported-agents"></a>Támogatott ügynökök
 Az alábbi táblázat áttekintést nyújt az ebben a megoldásban támogatott összekapcsolt forrásokról.
 
-| Összekapcsolt forrás | Támogatott | Leírás |
+| Összekapcsolt forrás | Támogatott | Description |
 | --- | --- | --- |
-| Windows-ügynökök | Igen | A szívverés eseményeket a rendszer a közvetlen Windows-ügynököktől gyűjti össze.|
-| System Center Operations Manage felügyeleti csoport | Igen | A szívverési események gyűjtése a felügyeleti csoportnak jelentést küldő ügynököktől 60 másodpercenként történik, majd a Azure Monitorba továbbítva. Nem szükséges közvetlen kapcsolódás Operations Manager ügynököktől Azure Monitor. A szívverési esemény adatait a rendszer a felügyeleti csoportból továbbítja a Log Analytics munkaterületre.|
+| Windows-ügynökök | Yes | A szívverés eseményeket a rendszer a közvetlen Windows-ügynököktől gyűjti össze.|
+| System Center Operations Manage felügyeleti csoport | Yes | A szívverési események gyűjtése a felügyeleti csoportnak jelentést küldő ügynököktől 60 másodpercenként történik, majd a Azure Monitorba továbbítva. Nem szükséges közvetlen kapcsolódás Operations Manager ügynököktől Azure Monitor. A szívverési esemény adatait a rendszer a felügyeleti csoportból továbbítja a Log Analytics munkaterületre.|
 
 ## <a name="using-the-solution"></a>A megoldás használata
 Amikor hozzáadja a megoldást a Log Analytics munkaterülethez, a rendszer hozzáadja a **Agent Health** csempét az irányítópulthoz. Ezen a csempén látható az ügynökök teljes száma és az elmúlt 24 órában nem válaszoló ügynökök száma.<br><br> ![Ügynökállapot megoldás csempe az irányítópulton](./media/solution-agenthealth/agenthealth-solution-tile-homepage.png)
@@ -90,7 +90,7 @@ Minden Operations Manager felügyeleti kiszolgálónak küldött ügynök két s
 ## <a name="sample-log-searches"></a>Naplókeresési minták
 A következő táblázat a megoldás által összegyűjtött rekordokkal kapcsolatos naplókeresési mintákat tartalmazza.
 
-| Lekérdezés | Leírás |
+| Lekérdezés | Description |
 |:---|:---|
 | Heartbeat &#124; distinct Computer |Az ügynökök száma összesen |
 | Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(24h) |Az elmúlt 24 órában nem válaszoló ügynökök száma |
@@ -108,7 +108,7 @@ A következő táblázat a megoldás által összegyűjtött rekordokkal kapcsol
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* További információ a [Azure monitor riasztásokról](../platform/alerts-overview.md) : riasztások létrehozásának részletei a naplók lekérdezésében. 
+* További információ a [Azure monitor riasztásokról](../alerts/alerts-overview.md) : riasztások létrehozásának részletei a naplók lekérdezésében. 
 

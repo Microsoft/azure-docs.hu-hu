@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: 7812d0f2e42dfed6cdd661244b77969297093a5d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 3ed349616ae6456913c19bb073f6e9ea28e7d549
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879173"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575129"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>A Azure Firewall használata a privát végpontoknak szánt forgalom vizsgálatára
 
@@ -106,7 +106,7 @@ Ugyanazokat a szempontokat kell figyelembe venni, mint a fenti 2. forgatókönyv
 * Azure-előfizetés.
 * Egy Log Analytics-munkaterület.  
 
-Ha még nem rendelkezik az előfizetésében, a [Azure Portal hozzon létre egy log Analytics munkaterületet a](../azure-monitor/learn/quick-create-workspace.md) munkaterületen.
+Ha még nem rendelkezik az előfizetésében, a [Azure Portal hozzon létre egy log Analytics munkaterületet a](../azure-monitor/logs/quick-create-workspace.md) munkaterületen.
 
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
@@ -174,7 +174,7 @@ Cserélje le a következő paramétereket a lépésekben az alábbi információ
     | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget. Ezt az erőforráscsoportot az előző szakaszban hozta létre.  |
     | **Példány adatai** |  |
     | Virtuális gép neve | Adja meg a **myVM**. |
-    | Régió | Válassza ki az USA **déli középső** régióját. |
+    | Region | Válassza ki az USA **déli középső** régióját. |
     | Rendelkezésre állási beállítások | Az alapértelmezett **infrastruktúra-redundancia megadása nem kötelező**. |
     | Kép | Válassza az **Ubuntu Server 18,04 LTS-Gen1** lehetőséget. |
     | Méret | Válassza a **Standard_B2s** lehetőséget. |
@@ -223,7 +223,7 @@ Cserélje le a következő paramétereket a lépésekben az alábbi információ
     | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget.  |
     | **Példány adatai** |  |
     | Name | Adja meg a **myAzureFirewall**. |
-    | Régió | Válassza az **USA déli középső** régióját. |
+    | Region | Válassza az **USA déli középső** régióját. |
     | A rendelkezésre állási zóna | Hagyja meg az alapértelmezett **nincs** értéket. |
     | Válasszon egy virtuális hálózatot    |    Válassza a **meglévő használata** lehetőséget.    |
     | Virtuális hálózat    |    Válassza a **myAzFwVNet** lehetőséget.    |
@@ -309,7 +309,7 @@ Ebben a szakaszban egy privát végpontot hoz létre az Azure SQL Database-hez a
     | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget. |
     | **Példány adatai** | |
     | Name | Adja meg a **SQLPrivateEndpoint**. |
-    | Régió | Válassza ki az USA **déli középső** régióját. |
+    | Region | Válassza ki az USA **déli középső** régióját. |
 
 6. Válassza ki az **erőforrás** lapot, vagy válassza a **Next (tovább** ) gombot az oldal alján.
 
@@ -473,7 +473,7 @@ Ez a szabály lehetővé teszi az előző lépésekben létrehozott tűzfalon ke
     | Cél teljes tartománynevek | Adja meg a **mydbserver.database.Windows.net**. |
     |||
 
-7. Válassza a **Hozzáadás** elemet.
+7. Válassza a **Hozzáadás** lehetőséget.
 
 ## <a name="route-traffic-between-the-virtual-machine-and-private-endpoint-through-azure-firewall"></a>Átirányítja a forgalmat a virtuális gép és a magánhálózati végpont között Azure Firewall
 
@@ -497,7 +497,7 @@ Az útvonal továbbítja a forgalmat a **myVM** alhálózatról a virtuális há
     | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget.  |
     | **Példány adatai** |  |
-    | Régió | Válassza az **USA déli középső** régióját. |
+    | Region | Válassza az **USA déli középső** régióját. |
     | Name | Adja meg **a alhálózat-to-AzureFirewall** értéket. |
     | Átjáró-útvonalak propagálása | Válassza a **Nem** lehetőséget. |
 
@@ -614,7 +614,7 @@ Ha elkészült az erőforrásokkal, törölje az erőforráscsoportot és a benn
 
 1. Írja be a **myResourceGroup** **nevet az erőforráscsoport neveként** , majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben különböző forgatókönyveket ismertetett, amelyekkel korlátozhatja a virtuális gépek és a privát végpontok közötti forgalmat Azure Firewall használatával. 
 

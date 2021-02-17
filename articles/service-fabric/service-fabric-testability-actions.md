@@ -1,17 +1,15 @@
 ---
 title: Hibák szimulálása az Azure-beli szolgáltatásokban
 description: Ez a cikk a Microsoft Azure Service Fabric található tesztelési műveletekre mutat.
-author: georgewallace
 ms.topic: conceptual
 ms.date: 06/07/2017
-ms.author: gwallace
 ms.custom: devx-track-csharp
-ms.openlocfilehash: aea918f75ad9c8aa58b5201d2fdd967794085438
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: c57f54096a9593f5ab25a5722d3f2d2b9878b511
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547077"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595028"
 ---
 # <a name="testability-actions"></a>Tesztelési műveletek
 A megbízhatatlan infrastruktúra szimulálása érdekében az Azure Service Fabric biztosítja a fejlesztőket, és lehetővé teszi a különböző valós hibák és az állami váltások szimulálása. Ezek tesztelési műveleteknek vannak kitéve. A műveletek az alacsony szintű API-k, amelyek egy adott hiba befecskendezését, állapotának átváltását vagy érvényesítését okozzák. A műveletek kombinálásával átfogó tesztelési forgatókönyveket írhat a szolgáltatásaihoz.

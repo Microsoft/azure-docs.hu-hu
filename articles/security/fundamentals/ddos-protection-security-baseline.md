@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b4b2a3bf8c9a3a2e2ec7f1b22785a037f8dedc60
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 21ae8986761483658f5ac4254e4bb378e0bc4ba9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98873960"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575057"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Az Azure biztonsági alapterve Azure DDoS Protection standard szintű
 
@@ -26,7 +26,7 @@ Ez a biztonsági alapkonfiguráció az [Azure biztonsági teljesítményteszttel
 
 **Útmutató**: az Azure-műveletnapló diagnosztikai beállításainak engedélyezése és a naplók elküldése egy log Analytics-munkaterületre, Azure Event hub vagy Azure Storage-fiókba az archívumhoz. A tevékenységi naplók betekintést nyújtanak a Azure DDoS Protectioni tervekben a vezérlési sík szintjén végrehajtott műveletekre. Az Azure-tevékenység naplójának adatai alapján meghatározhatja a "mit, ki és mikor" típusú írási műveleteket (PUT, POST, DELETE) a Azure DDoS Protection példányok vezérlési síkja szintjén.
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../../azure-monitor/platform/activity-log.md)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../../azure-monitor/essentials/activity-log.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -40,7 +40,7 @@ Engedélyezze az Azure-műveletnapló diagnosztikai beállításait, és küldje
 
 - [DDoS-diagnosztikai naplózás megtekintése és konfigurálása](../../ddos-protection/diagnostic-logging.md)
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../../azure-monitor/platform/activity-log.md)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../../azure-monitor/essentials/activity-log.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -50,7 +50,7 @@ Engedélyezze az Azure-műveletnapló diagnosztikai beállításait, és küldje
 
 **Útmutató**: a Azure monitor a szervezeti megfelelőségi előírásoknak megfelelően állítsa be log Analytics munkaterületek naplózási megőrzési időtartamát a Azure DDoS Protection terveihez.
 
-- [Napló-megőrzési paraméterek beállítása](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Napló-megőrzési paraméterek beállítása](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -62,9 +62,9 @@ Engedélyezze az Azure-műveletnapló diagnosztikai beállításait, és küldje
 
 - [A telemetria, a naplók és a támadási elemzések DDoS Protection standard szintű szolgáltatáshoz való hozzáférésének ismertetése](../../ddos-protection/telemetry.md)
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../../azure-monitor/platform/activity-log.md)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../../azure-monitor/essentials/activity-log.md)
 
-- [Azure-Tevékenységnaplók összegyűjtése és elemzése Log Analytics munkaterületen Azure Monitor](../../azure-monitor/platform/activity-log.md)
+- [Azure-Tevékenységnaplók összegyűjtése és elemzése Log Analytics munkaterületen Azure Monitor](../../azure-monitor/essentials/activity-log.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -80,7 +80,7 @@ Egy Log Analytics munkaterület bevezetését az Azure Sentinelbe, mivel ez egy 
 
 - [Az Azure Sentinel előkészítése](../../sentinel/quickstart-onboard.md)
 
-- [Naplózási riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](../../azure-monitor/platform/alerts-log.md)
+- [Naplózási riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](../../azure-monitor/alerts/alerts-log.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -276,7 +276,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, amikor a módosítások Azure DDoS Protection terveket, valamint más kritikus vagy kapcsolódó erőforrásokat is végrehajtanak.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../../azure-monitor/platform/alerts-activity-log.md)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -560,7 +560,7 @@ Válassza ki a rendelkezésre álló DDoS-védelmi mérőszámok bármelyikét, 
 
 **Felelősség**: Megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../benchmarks/overview.md)
 - További tudnivalók az [Azure biztonsági alapterveiről](../benchmarks/security-baselines-overview.md)
