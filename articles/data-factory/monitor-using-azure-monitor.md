@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 389c0b1fd5a2fde33c2bf19ac2807cca45691523
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5e2ecf8dff432f2a0ce6b3356ce3eca7a8127932
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373147"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586864"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Data Factory figyelése és riasztása Azure Monitor használatával
 
@@ -76,7 +76,7 @@ Hozzon létre vagy adjon hozzá diagnosztikai beállításokat az adatai-előál
    ![Adja meg a beállításokat, és válasszon egy log-Analytics-munkaterületet](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
     > [!NOTE]
-    > Mivel az Azure-tábla nem rendelkezhet több mint 500 oszloppal **, javasoljuk, hogy az** _erőforrás-specifikus módot_ válassza. További információ: [log Analytics ismert korlátozások](../azure-monitor/platform/resource-logs.md#column-limit-in-azurediagnostics).
+    > Mivel az Azure-tábla nem rendelkezhet több mint 500 oszloppal **, javasoljuk, hogy az** _erőforrás-specifikus módot_ válassza. További információ: [log Analytics ismert korlátozások](../azure-monitor/essentials/resource-logs.md#column-limit-in-azurediagnostics).
 
 1. Kattintson a **Mentés** gombra.
 
@@ -151,7 +151,7 @@ A monitor segítségével megtekintheti az Azure-beli számítási feladatok tel
 | SSISPackageExecutionFailed           | Sikertelen SSIS-csomag végrehajtási metrikái    | Darabszám    | Összesen                | Egy percen belül sikertelen SSIS-csomagok végrehajtásának teljes száma. |
 | SSISPackageExecutionSucceeded        | Sikeres SSIS-csomag végrehajtási metrikái | Darabszám    | Összesen                | Egy percen belül sikeres SSIS-csomagok végrehajtásának teljes száma. |
 
-A metrikák eléréséhez hajtsa végre az [Azure monitor adatplatformon](../azure-monitor/platform/data-platform.md)megjelenő utasításokat.
+A metrikák eléréséhez hajtsa végre az [Azure monitor adatplatformon](../azure-monitor/data-platform.md)megjelenő utasításokat.
 
 > [!NOTE]
 > A rendszer csak a befejezett, az aktivált tevékenység és a folyamat futtatásának eseményeit bocsátja ki. A folyamatban és a hibakeresési **futtatások nincsenek kibocsátva** . Másfelől az **összes** SSIS-csomag végrehajtásáról származó eseményeket, beleértve a befejezett és a folyamatban lévőket is, a Meghívási módszertől függetlenül. Meghívhatja például a csomagok végrehajtását az Azure-t támogató SQL Server Data Toolson (SSDT), a T-SQL használatával a SSMS, SQL Server Agent vagy más kijelölt eszközökön, valamint az eseményindítók és a hibakeresési műveletek futtatásával az ADF-folyamatokban.
@@ -848,7 +848,7 @@ A SSIS-munkaterhelések & váltásához a [következőt támogató ADF-ben kiép
 
 A kiépítés után a [SSIS IR működési állapotát a Azure PowerShell vagy az ADF-portál **figyelő** központja segítségével ellenőrizheti](./monitor-integration-runtime.md#azure-ssis-integration-runtime). A projekt üzembe helyezési modelljével a SSIS-csomag végrehajtási naplói a SSISDB belső tábláiban vagy nézeteiben vannak tárolva, így lekérdezheti, elemezheti és vizuálisan bemutathatja azokat a kijelölt eszközök, például a SSMS használatával. A csomag üzembe helyezési modelljével a SSIS-csomag-végrehajtási naplók a fájlrendszerben vagy Azure Files CSV-fájlként is tárolhatók, ezért a többi kijelölt eszköz használatával még a lekérdezés, az elemzés és a vizuális megjelenítés előtt továbbra is meg kell vizsgálni és feldolgozni.
 
-A [Azure monitor](../azure-monitor/platform/data-platform.md) integrációval mostantól lekérdezheti, elemezheti és vizuálisan megtekintheti az SSIS IR-műveletekkel és a SSIS-csomagok végrehajtásával létrehozott összes mérőszámot és naplót Azure Portal. Emellett riasztásokat is készíthet rajtuk.
+A [Azure monitor](../azure-monitor/data-platform.md) integrációval mostantól lekérdezheti, elemezheti és vizuálisan megtekintheti az SSIS IR-műveletekkel és a SSIS-csomagok végrehajtásával létrehozott összes mérőszámot és naplót Azure Portal. Emellett riasztásokat is készíthet rajtuk.
 
 ### <a name="configure-diagnostic-settings-and-workspace-for-ssis-operations"></a>Diagnosztikai beállítások és munkaterület konfigurálása a SSIS-műveletekhez
 
@@ -856,9 +856,9 @@ Ha az SSIS IR-műveletek és a SSIS-csomagok végrehajtásához létrehozott ös
 
 ### <a name="ssis-operational-metrics"></a>SSIS működési mérőszámai
 
-A SSIS működési [mérőszámai](../azure-monitor/platform/data-platform-metrics.md) olyan teljesítményszámlálók vagy numerikus értékek, amelyek leírják a SSIS IR indítási és leállítási műveleteinek állapotát, valamint a SSIS-csomagok végrehajtásának egy adott időpontban történő végrehajtását. Ezek az [ADF-metrikák](#data-factory-metrics)részét képezik Azure monitorban.
+A SSIS működési [mérőszámai](../azure-monitor/essentials/data-platform-metrics.md) olyan teljesítményszámlálók vagy numerikus értékek, amelyek leírják a SSIS IR indítási és leállítási műveleteinek állapotát, valamint a SSIS-csomagok végrehajtásának egy adott időpontban történő végrehajtását. Ezek az [ADF-metrikák](#data-factory-metrics)részét képezik Azure monitorban.
 
-Ha a diagnosztikai beállításokat és a munkaterületet az ADF-hez Azure Monitor konfigurálja, akkor a _AllMetrics_ jelölőnégyzet bejelölésével az Azure Metrikaböngésző, az [Azure irányítópulton és a](../azure-monitor/learn/tutorial-app-dashboards.md) [közel valós idejű riasztásokat](../azure-monitor/platform/alerts-metric.md) [használó interaktív elemzéshez](../azure-monitor/platform/metrics-getting-started.md)elérhetővé teszi a SSIS működési mérőszámait.
+Ha a diagnosztikai beállításokat és a munkaterületet az ADF-hez Azure Monitor konfigurálja, akkor a _AllMetrics_ jelölőnégyzet bejelölésével az Azure Metrikaböngésző, az [Azure irányítópulton és a](../azure-monitor/app/tutorial-app-dashboards.md) [közel valós idejű riasztásokat](../azure-monitor/alerts/alerts-metric.md) [használó interaktív elemzéshez](../azure-monitor/essentials/metrics-getting-started.md)elérhetővé teszi a SSIS működési mérőszámait.
 
 ![Adja meg a beállításokat, és válasszon egy log-Analytics-munkaterületet](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
@@ -874,9 +874,9 @@ Ha riasztásokat szeretne felvenni a Azure Portal SSIS operatív mérőszámai k
 
 ### <a name="ssis-operational-logs"></a>SSIS operatív naplók
 
-A SSIS operatív [naplói](../azure-monitor/platform/data-platform-logs.md) olyan események, amelyek az SSIS IR-műveletekkel és a SSIS-csomagok végrehajtásával kapcsolatosak, amelyek az azonosított problémákhoz elegendő kontextust biztosítanak, és a kiváltó okok elemzéséhez hasznosak 
+A SSIS operatív [naplói](../azure-monitor/logs/data-platform-logs.md) olyan események, amelyek az SSIS IR-műveletekkel és a SSIS-csomagok végrehajtásával kapcsolatosak, amelyek az azonosított problémákhoz elegendő kontextust biztosítanak, és a kiváltó okok elemzéséhez hasznosak 
 
-Ha a diagnosztikai beállításokat és a munkaterületet az ADF Azure Monitoron konfigurálja, akkor kiválaszthatja a megfelelő SSIS operatív naplókat, és elküldheti azokat az Azure Adatkezelőon alapuló Log Analyticsnak. Ebben az esetben a részletes [lekérdezési nyelv](../azure-monitor/log-query/log-query-overview.md), az [Azure-irányítópulton való megjelenítés](../azure-monitor/learn/tutorial-app-dashboards.md)és a [valós idejű riasztások](../azure-monitor/platform/alerts-log.md)révén elérhetővé válnak az elemzéshez.
+Ha a diagnosztikai beállításokat és a munkaterületet az ADF Azure Monitoron konfigurálja, akkor kiválaszthatja a megfelelő SSIS operatív naplókat, és elküldheti azokat az Azure Adatkezelőon alapuló Log Analyticsnak. Ebben az esetben a részletes [lekérdezési nyelv](../azure-monitor/logs/log-query-overview.md), az [Azure-irányítópulton való megjelenítés](../azure-monitor/app/tutorial-app-dashboards.md)és a [valós idejű riasztások](../azure-monitor/alerts/alerts-log.md)révén elérhetővé válnak az elemzéshez.
 
 ![Adja meg a beállításokat, és válasszon egy log-Analytics-munkaterületet](media/data-factory-monitor-oms/monitor-oms-image2.png)
 

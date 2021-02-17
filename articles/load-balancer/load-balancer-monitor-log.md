@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 59359cdd3e3c035d4cb6789295d41bb3908019bb
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 7a456057bc088264cefb91be9f3e5069b29474a1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98785820"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596810"
 ---
 # <a name="azure-monitor-logs-for-azure-standard-load-balancer"></a>Azure Monitor naplók az Azure standard Load Balancer
 
@@ -63,7 +63,7 @@ A tevékenységnaplózás automatikusan engedélyezve van minden Resource Manage
      5. Az **Event hub-házirend neve** legördülő listában válassza ki a nevet.
      6. Válassza az **OK** lehetőséget.
 
-   * **Küldés log Analyticsba**. Ehhez a folyamathoz már létre kell hoznia és konfigurálnia kell egy log Analytics-munkaterületet. Log Analytics munkaterület létrehozásához tekintse [meg a log Analytics munkaterület létrehozása a Azure Portalben](../azure-monitor/learn/quick-create-workspace.md)című témakört.
+   * **Küldés log Analyticsba**. Ehhez a folyamathoz már létre kell hoznia és konfigurálnia kell egy log Analytics-munkaterületet. Log Analytics munkaterület létrehozásához tekintse [meg a log Analytics munkaterület létrehozása a Azure Portalben](../azure-monitor/logs/quick-create-workspace.md)című témakört.
      1. Jelölje be a **Küldés a Log Analytics szolgáltatásba** jelölőnégyzetet.
      2. Az **előfizetés** legördülő listában válassza ki azt az előfizetést, ahol a log Analytics munkaterület.
      3. A **log Analytics munkaterület** legördülő listából válassza ki a munkaterületet.
@@ -100,10 +100,10 @@ Ha tárolóba exportál, kapcsolódjon a Storage-fiókjához, és kérje le az e
 > Ha már ismeri a Visual studiót és a C#-beli állandók és változók értékeinek módosítására vonatkozó alapfogalmakat, használhatja a GitHubról elérhető [log Converter-eszközöket](https://github.com/Azure-Samples/networking-dotnet-log-converter) .
 
 ## <a name="stream-to-an-event-hub"></a>Streamelés eseményközpontba
-Ha a diagnosztikai adatokat egy esemény központba továbbítják, a központi naplózási elemzéshez használhatja a partner SIEM-eszközben Azure Monitor-integrációval. További információ: az [Azure monitoring-adatok továbbítása egy Event hubhoz](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration).
+Ha a diagnosztikai adatokat egy esemény központba továbbítják, a központi naplózási elemzéshez használhatja a partner SIEM-eszközben Azure Monitor-integrációval. További információ: az [Azure monitoring-adatok továbbítása egy Event hubhoz](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration).
 
 ## <a name="send-to-log-analytics"></a>Küldés a Log Analyticsnek
-Az Azure-beli erőforrásokhoz közvetlenül egy Log Analytics munkaterületre küldhet diagnosztikai adatokat. Ebben a munkaterületen összetett lekérdezéseket futtathat a hibaelhárítási és elemzési információkhoz. További információ: az [Azure-erőforrás-naplók gyűjtése Azure Monitor log Analytics munkaterületen](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace).
+Az Azure-beli erőforrásokhoz közvetlenül egy Log Analytics munkaterületre küldhet diagnosztikai adatokat. Ebben a munkaterületen összetett lekérdezéseket futtathat a hibaelhárítási és elemzési információkhoz. További információ: az [Azure-erőforrás-naplók gyűjtése Azure Monitor log Analytics munkaterületen](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace).
 
 ## <a name="limitations"></a>Korlátozások
 A Azure Load Balancer metrika-naplók exportálási funkciója a következő korlátozásokkal rendelkezik:
@@ -111,6 +111,6 @@ A Azure Load Balancer metrika-naplók exportálási funkciója a következő kor
 * A metrikák dimenzióját nem őrződnek meg. Például a **DipAvailability** (állapot-mintavételi állapot) mérőszámokkal nem lehet kiosztani vagy megtekinteni a HÁTTÉRBELI IP-címet.
 * A használt SNAT-portok és a lefoglalt SNAT-portok metrikái jelenleg nem érhetők el naplókként való exportálásra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Tekintse át a terheléselosztó elérhető mérőszámait](./load-balancer-standard-diagnostics.md)
 * [Lekérdezések létrehozása és tesztelése a következő Azure Monitor utasítások alapján](../azure-monitor/log-query/log-query-overview.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 749c32091ed10d5bb39d7b67c8b737e002fc9909
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 56965310c818f8d9089ab244641bdc562428a337
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94693732"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580470"
 ---
 # <a name="introduction-to-azure-security"></a>Bevezetés az Azure biztonsági megoldásaiba
 ## <a name="overview"></a>Áttekintés
@@ -60,7 +60,7 @@ A Cloud Service-modelltől függően az alkalmazás vagy szolgáltatás biztons�
 
 A beépített funkciók hat funkcionális területen vannak rendszerezve: műveletek, alkalmazások, tárolás, hálózatkezelés, számítás és identitás. Az Azure platformon elérhető funkciókkal és képességekkel kapcsolatos további részleteket az alábbi hat területen tekintheti meg összefoglaló információk alapján.
 
-## <a name="operations"></a>Műveletek
+## <a name="operations"></a>Üzemeltetés
 Ez a szakasz további információkat tartalmaz a biztonsági műveletek főbb funkcióiról, valamint az ezekkel a képességekkel kapcsolatos összefoglaló információkkal kapcsolatban.
 
 ### <a name="security-and-audit-dashboard"></a>Security and Audit irányítópult
@@ -81,12 +81,12 @@ A Application Insights diagramokat és táblákat hoz létre, amelyek megmutatj�
 Ha összeomlik, hiba vagy teljesítménnyel kapcsolatos probléma merül fel, részletesen megkeresheti a telemetria adatokat az OK diagnosztizálásához. A szolgáltatás pedig e-maileket küld, ha az alkalmazás rendelkezésre állása és teljesítménye megváltozik. Az alkalmazás betekintése így értékes biztonsági eszközvé válik, mivel segít a titkosság, integritás és rendelkezésre állási biztonság hármasban való rendelkezésre állásában.
 
 ### <a name="azure-monitor"></a>Azure Monitor
-A [Azure monitor](/azure/monitoring-and-diagnostics/) vizualizációkat, lekérdezéseket, útválasztást, riasztásokat, automatikus méretezést és automatizálást kínál az Azure-infrastruktúrából ([műveletnapló](../../azure-monitor/platform/platform-logs-overview.md)) és minden egyes Azure-erőforrásból ([diagnosztikai naplókból](../../azure-monitor/platform/platform-logs-overview.md)) származó adatokhoz. A Azure Monitor használatával riasztást kaphat az Azure-naplókban létrehozott biztonsággal kapcsolatos eseményekről.
+A [Azure monitor](/azure/monitoring-and-diagnostics/) vizualizációkat, lekérdezéseket, útválasztást, riasztásokat, automatikus méretezést és automatizálást kínál az Azure-infrastruktúrából ([műveletnapló](../../azure-monitor/essentials/platform-logs-overview.md)) és minden egyes Azure-erőforrásból ([diagnosztikai naplókból](../../azure-monitor/essentials/platform-logs-overview.md)) származó adatokhoz. A Azure Monitor használatával riasztást kaphat az Azure-naplókban létrehozott biztonsággal kapcsolatos eseményekről.
 
 ### <a name="azure-monitor-logs"></a>Azure Monitor-naplók
 [Azure monitor naplók](https://azure.microsoft.com/documentation/services/log-analytics/) – az Azure-erőforrások mellett helyszíni és harmadik féltől származó felhőalapú infrastruktúra (például AWS) számára biztosít informatikai felügyeleti megoldást. Azure Monitorból származó adatok közvetlenül átirányíthatók Azure Monitor naplókba, így egy helyen láthatja a teljes környezet mérőszámait és naplóit.
 
-Azure Monitor naplók hasznos eszközök lehetnek a kriminalisztikai és egyéb biztonsági elemzésekben, mivel az eszköz lehetővé teszi, hogy gyorsan keressen nagy mennyiségű biztonsággal kapcsolatos bejegyzést rugalmas lekérdezési megközelítéssel. Emellett a helyszíni [tűzfal és a proxy naplói is exportálhatók az Azure-ba, és az elemzéshez Azure monitor naplók használatával is elérhetők.](../../azure-monitor/platform/agent-windows.md)
+Azure Monitor naplók hasznos eszközök lehetnek a kriminalisztikai és egyéb biztonsági elemzésekben, mivel az eszköz lehetővé teszi, hogy gyorsan keressen nagy mennyiségű biztonsággal kapcsolatos bejegyzést rugalmas lekérdezési megközelítéssel. Emellett a helyszíni [tűzfal és a proxy naplói is exportálhatók az Azure-ba, és az elemzéshez Azure monitor naplók használatával is elérhetők.](../../azure-monitor/agents/agent-windows.md)
 
 ### <a name="azure-advisor"></a>Azure Advisor
 A [Azure Advisor](../../advisor/index.yml) egy személyre szabott felhőalapú tanácsadó, amely segít az Azure-beli üzembe helyezések optimalizálásában. A program elemzi az erőforrás-konfigurációs és -használati telemetriákat, Ezután olyan megoldásokat javasol, amelyekkel javítható a [teljesítmény](../../advisor/advisor-performance-recommendations.md), a [Biztonság](../../advisor/advisor-security-recommendations.md)és az erőforrások [magas rendelkezésre állása](../../advisor/advisor-high-availability-recommendations.md) , miközben lehetőség van a [teljes Azure-ráfordítás csökkentésére](../../advisor/advisor-cost-recommendations.md). A Azure Advisor biztonsági javaslatokat tesz elérhetővé, ami jelentősen javíthatja az Azure-ban üzembe helyezett megoldások általános biztonsági állapotát. Ezek az ajánlások a Azure Security Center által végzett biztonsági elemzésből származnak [.](../../security-center/security-center-introduction.md)
@@ -101,7 +101,7 @@ A szakasz további információkat tartalmaz az alkalmazások biztonságának f�
 ### <a name="web-application-vulnerability-scanning"></a>Webalkalmazások sebezhetőségének vizsgálata
 Az [app Service-alkalmazás](../../app-service/overview.md) biztonsági rések tesztelésének megkezdéséhez az egyik legegyszerűbb módszer az, hogy az [integráció a sztaniol biztonsággal](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) lehetővé tegye az alkalmazáson belüli, egykattintásos biztonsági rések vizsgálatát. A teszt eredményeit egy könnyen értelmezhető jelentésben tekintheti meg, és megtudhatja, hogyan javíthatja ki az egyes biztonsági réseket részletes utasításokkal.
 
-### <a name="penetration-testing"></a>Behatolás tesztelése
+### <a name="penetration-testing"></a>Behatolástesztelés
 Ha szeretné elvégezni a saját behatolási teszteket, vagy egy másik képolvasó-csomagot vagy szolgáltatót szeretne használni, kövesse az [Azure penetráció tesztelési jóváhagyási folyamatát](./pen-testing.md) , és a kívánt penetrációs tesztek végrehajtásához előzetes jóváhagyást kell kérnie.
 
 ### <a name="web-application-firewall"></a>Webalkalmazási tűzfal
@@ -138,7 +138,7 @@ Az Application Diagnostics felületén a következő módokon csoportosíthatók
 -   Alkalmazáshibák (a kivételesemények megjelenítése)
 -   Teljesítmény (a teljesítménnyel kapcsolatos események megjelenítése)
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 A szakasz további információkat tartalmaz az Azure Storage biztonságának főbb funkcióiról, valamint az ezekkel a képességekkel kapcsolatos összegző információkkal kapcsolatban.
 
 ### <a name="azure-role-based-access-control-azure-rbac"></a>Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)

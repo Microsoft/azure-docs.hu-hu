@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 01/05/2021
+ms.date: 02/16/2021
 ms.author: mbullwin
 keywords: anomáliák észlelése, gépi tanulás, algoritmusok
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 425c6cab4a4a5e1329e2d38f49c5058ec8ffc5b9
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: ad3bd1eed6e5e7efb783c4a40958e16c3ca23691
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901368"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572087"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Mi az az Anomaly Detector API?
 
@@ -53,13 +53,13 @@ Ha meg szeretné tudni, hogyan hívhatja meg a rendellenesség-Kiderítő API-t,
 A jegyzetfüzet futtatásához hajtsa végre a következő lépéseket:
 
 1. Szerezzen be egy érvényes anomália-detektor API-előfizetési kulcsot és egy API-végpontot. Az alábbi szakasz útmutatást nyújt a regisztráláshoz.
-1. Jelentkezzen be, és kattintson a jobb felső sarokban található klónozás elemre.
+1. Jelentkezzen be, majd a jobb felső sarokban kattintson a klónozás elemre.
 1. A klónozási művelet befejezése előtt törölje a "nyilvános" lehetőséget a párbeszédpanelen, ellenkező esetben a notebook, beleértve az előfizetési kulcsokat is, nyilvános lesz.
-1. Kattintson **a Futtatás ingyenes számításkor** lehetőségre
+1. Válassza **a Futtatás ingyenes számításkor** lehetőséget.
 1. Válassza ki az egyik jegyzetfüzetet.
 1. Adja hozzá az érvényes anomália-érzékelő API-előfizetési kulcsát a `subscription_key` változóhoz.
 1. Módosítsa a `endpoint` változót a végpontra. Például: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
-1. A felső menüsorban kattintson a **cella**, majd az **összes futtatása** elemre.
+1. A felső menüsorban válassza a **cella**, majd az **összes futtatása** lehetőséget.
 
 ## <a name="workflow"></a>Munkafolyamat
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: 4e270185550fac5a06d800d74d5fcd751aceb25d
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 5b5c78ffec736f29a481aa95426ff663199613b3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342229"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595649"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Felhasználói adatok kezelése az Azure Security Centerben
 Ez a cikk azt ismerteti, hogyan kezelheti a felhasználói adatokat Azure Security Centerban. A felhasználói adatkezelési funkció magában foglalja az adatelérését, törlését és exportálását.
@@ -97,4 +97,4 @@ Az igény szerinti [adatok](security-center-just-in-time.md) nem azonosítható 
 A [riasztási adat](security-center-managing-and-responding-alerts.md) biztonsági adatnak minősül, és két évig őrzi meg a rendszer.
 
 ## <a name="auditing-and-reporting"></a>Naplózás és jelentéskészítés
-A biztonsági kapcsolattartási naplókat, az igény szerinti és a riasztási frissítéseket a rendszer az [Azure-tevékenységek naplóiban](../azure-monitor/platform/platform-logs-overview.md)tartja karban.
+A biztonsági kapcsolattartási naplókat, az igény szerinti és a riasztási frissítéseket a rendszer az [Azure-tevékenységek naplóiban](../azure-monitor/essentials/platform-logs-overview.md)tartja karban.

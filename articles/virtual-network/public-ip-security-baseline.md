@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: cba362004e764ffbbc734fb06c8898f380ffdf88
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: b26a020b9b4b1641d67a4f5ca55908b8d37f31e4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806918"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596502"
 ---
 # <a name="azure-security-baseline-for-azure-public-ip"></a>Azure biztonsági alapkonfiguráció az Azure nyilvános IP-címéhez
 
@@ -52,7 +52,7 @@ A nyilvános IP-cím eszközöket biztosít az Azure-beli virtuális hálózatok
 
 Ehelyett engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó SIEM használatát.
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
@@ -64,7 +64,7 @@ Ehelyett engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik f�
 
 **Útmutató**: az Azure-Tevékenységnaplók használatával figyelheti a konfigurációkat, és azonosíthatja a nyilvános IP-példányok módosításait. A vezérlési síkon kívül (például Azure Portal) a nyilvános IP-cím nem hoz majd naplókat. A nyilvános IP-cím eszközöket biztosít az Azure-beli virtuális hálózatokban lévő erőforrások figyelésére, diagnosztizálására, megtekintésére, valamint a naplók engedélyezésére vagy letiltására.
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -74,7 +74,7 @@ Ehelyett engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik f�
 
 **Útmutató**: a Azure monitor használatával állíthatja be a napló megőrzési időtartamát a szervezete megfelelőségi kötelezettségei alapján a nyilvános IP-példányokhoz társított log Analytics-munkaterületek esetében.
 
-- [Napló-megőrzési paraméterek beállítása](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Napló-megőrzési paraméterek beállítása](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -88,7 +88,7 @@ Az Azure Activity log használatával figyelheti a konfigurációkat, és azonos
 
 Maga a nyilvános IP-cím nem hoz a vezérlési síkon kívüli hálózati forgalomhoz kapcsolódó naplókat (például Azure Portal).
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 

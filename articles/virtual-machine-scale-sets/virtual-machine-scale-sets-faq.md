@@ -9,12 +9,12 @@ ms.subservice: faq
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 8170cfcbbf200c6ba5030aff5716f46b537d8c97
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3bc259f9ee6cb1e6fd927af82a1740403d3ae7d8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016709"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587943"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets – gyakori kérdések
 
@@ -71,15 +71,15 @@ Igen! További információkért lásd a [méretezési csoport zónájának doku
 
 ### <a name="what-are-best-practices-for-azure-autoscale"></a>Mik az Azure-ra vonatkozó ajánlott eljárások?
 
-Az automatikus skálázás ajánlott eljárásaiért lásd: [ajánlott eljárások a virtuális gépek automatikus skálázásához](../azure-monitor/platform/autoscale-best-practices.md).
+Az automatikus skálázás ajánlott eljárásaiért lásd: [ajánlott eljárások a virtuális gépek automatikus skálázásához](../azure-monitor/autoscale/autoscale-best-practices.md).
 
 ### <a name="where-do-i-find-metric-names-for-autoscaling-that-uses-host-based-metrics"></a>Hol találom meg a gazdagép-alapú metrikákat használó automatikus skálázás metrikáinak nevét?
 
-A gazdagép-alapú metrikákat használó automatikus skálázás metrikáinak neveivel kapcsolatban lásd: [támogatott metrikák Azure monitor](../azure-monitor/platform/metrics-supported.md).
+A gazdagép-alapú metrikákat használó automatikus skálázás metrikáinak neveivel kapcsolatban lásd: [támogatott metrikák Azure monitor](../azure-monitor/essentials/metrics-supported.md).
 
 ### <a name="are-there-any-examples-of-autoscaling-based-on-an-azure-service-bus-topic-and-queue-length"></a>Van-e példa az automatikus skálázásra egy Azure Service Bus témakör és a várólista hossza alapján?
 
-Igen. Példa az automatikus skálázásra egy Azure Service Bus témakör és a várólista hossza alapján: az automatikus [skálázás általános metrikáinak Azure monitor](../azure-monitor/platform/autoscale-common-metrics.md).
+Igen. Példa az automatikus skálázásra egy Azure Service Bus témakör és a várólista hossza alapján: az automatikus [skálázás általános metrikáinak Azure monitor](../azure-monitor/autoscale/autoscale-common-metrics.md).
 
 Service Bus üzenetsor esetében használja a következő JSON-t:
 
@@ -104,9 +104,9 @@ Cserélje le a példában szereplő értékeket az erőforrás egységes erőfor
 
 Egy virtuális gépen létrehozhat egy autoskálázási beállítást, amely a gazdagép szintű metrikák vagy a vendég operációs rendszer alapú metrikák használatára szolgál.
 
-A támogatott metrikák listáját itt tekintheti meg: [Azure monitor általános mérőszámok automatikus skálázása](../azure-monitor/platform/autoscale-common-metrics.md).
+A támogatott metrikák listáját itt tekintheti meg: [Azure monitor általános mérőszámok automatikus skálázása](../azure-monitor/autoscale/autoscale-common-metrics.md).
 
-A virtuálisgép-méretezési csoportok teljes mintája a [virtuálisgép-méretezési csoportok Resource Manager-sablonjainak használatával: speciális automatikus skálázási konfiguráció](../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md).
+A virtuálisgép-méretezési csoportok teljes mintája a [virtuálisgép-méretezési csoportok Resource Manager-sablonjainak használatával: speciális automatikus skálázási konfiguráció](../azure-monitor/autoscale/autoscale-virtual-machine-scale-sets.md).
 
 A minta a gazdagép szintű CPU-metrikát és egy üzenet darabszám metrikáját használja.
 
@@ -114,13 +114,13 @@ A minta a gazdagép szintű CPU-metrikát és egy üzenet darabszám metrikájá
 
 ### <a name="how-do-i-set-alert-rules-on-a-virtual-machine-scale-set"></a>Hogyan beállítani a riasztási szabályokat egy virtuálisgép-méretezési csoporton?
 
-A virtuális gépek méretezési csoportjaihoz a PowerShell vagy az Azure CLI használatával riasztásokat hozhat létre. További információ: [Azure monitor PowerShell](../azure-monitor/samples/powershell-samples.md#create-metric-alerts) -gyors példák és [Azure monitor platformfüggetlen CLI-gyors minták](../azure-monitor/samples/cli-samples.md#work-with-alerts).
+A virtuális gépek méretezési csoportjaihoz a PowerShell vagy az Azure CLI használatával riasztásokat hozhat létre. További információ: [Azure monitor PowerShell](../azure-monitor/powershell-samples.md#create-metric-alerts) -gyors példák és [Azure monitor platformfüggetlen CLI-gyors minták](../azure-monitor/cli-samples.md#work-with-alerts).
 
 A virtuálisgép-méretezési csoport Targetresourceid azonosítója a következőképpen néz ki:
 
 /subscriptions/yoursubscriptionid/resourceGroups/yourresourcegroup/providers/Microsoft.Compute/virtualMachineScaleSets/yourvmssname
 
-Bármelyik virtuálisgép-teljesítményszámláló kiválasztható metrikaként a riasztások beállításához. További információkért lásd: [vendég operációs rendszer mérőszámai a Resource Manager-alapú Windows rendszerű virtuális gépekhez](../azure-monitor/platform/autoscale-common-metrics.md#guest-os-metrics-for-resource-manager-based-windows-vms) és a Linux rendszerű [virtuális gépek vendég operációs rendszer metrikái](../azure-monitor/platform/autoscale-common-metrics.md#guest-os-metrics-linux-vms) a [Azure monitor automatikus skálázás általános mérőszámai](../azure-monitor/platform/autoscale-common-metrics.md) cikkben.
+Bármelyik virtuálisgép-teljesítményszámláló kiválasztható metrikaként a riasztások beállításához. További információkért lásd: [vendég operációs rendszer mérőszámai a Resource Manager-alapú Windows rendszerű virtuális gépekhez](../azure-monitor/autoscale/autoscale-common-metrics.md#guest-os-metrics-for-resource-manager-based-windows-vms) és a Linux rendszerű [virtuális gépek vendég operációs rendszer metrikái](../azure-monitor/autoscale/autoscale-common-metrics.md#guest-os-metrics-linux-vms) a [Azure monitor automatikus skálázás általános mérőszámai](../azure-monitor/autoscale/autoscale-common-metrics.md) cikkben.
 
 ### <a name="how-do-i-set-up-autoscale-on-a-virtual-machine-scale-set-by-using-powershell"></a>Hogyan beállítani az autoskálázást a virtuálisgép-méretezési csoportokon a PowerShell használatával?
 
@@ -224,7 +224,7 @@ Linuxos virtuális gép létrehozásakor egyszerű szövegként is megadhat SSH 
 }
 ```
 
-linuxConfiguration elem neve | Kötelező | Típus | Leírás
+linuxConfiguration elem neve | Kötelező | Típus | Description
 --- | --- | --- | ---
 SSH | No | Gyűjtemény | Megadja egy Linux operációs rendszer SSH-kulcsának konfigurációját
 path | Igen | Sztring | Megadja a Linux-fájl elérési útját, ahol az SSH-kulcsokat vagy a tanúsítványokat kell elhelyezni
@@ -465,7 +465,7 @@ A virtuális gépek jelszava a méretezési csoportokban két fő módon módos�
     Update-AzVmss -ResourceGroupName $vmssResourceGroup -Name $vmssName -VirtualMachineScaleSet $vmss
     ```
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 ### <a name="is-it-possible-to-assign-a-network-security-group-nsg-to-a-scale-set-so-that-it-applies-to-all-the-vm-nics-in-the-set"></a>Lehet hálózati biztonsági csoportot (NSG) rendelni egy méretezési csoporthoz, hogy az a készlet összes virtuálisgép-hálózati adapterére vonatkozzon?
 

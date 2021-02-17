@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ead666cecbc3208fe103aa740578ca36339c3e30
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 19935037e98bbc7ce9c4152b034b664d802a8f3a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804971"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588282"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale-citus"></a>Azure biztonsági alapkonfiguráció Azure Database for PostgreSQL-nagy kapacitású (Citus)
 
@@ -60,7 +60,7 @@ További információ: [Azure Security](../security/benchmarks/security-baseline
 
 A nagy kapacitású (Citus) által generált biztonsági adatokat összesítve az Azure Monitor segítségével is betöltheti a naplókat. A Azure Monitoron belül Log Analytics munkaterülettel kérdezheti le és végezheti el az elemzéseket, és használhat tárolási fiókokat a hosszú távú/archiválási tároláshoz. Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó biztonsági incidensek és események felügyeletét (SIEM). 
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/platform/activity-log.md)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 - [Metrikák a nagy kapacitású-ben (Citus)](./concepts-hyperscale-monitoring.md)
 
@@ -80,7 +80,7 @@ A nagy kapacitású (Citus) által generált biztonsági adatokat összesítve a
 
 - [Metrikák a nagy kapacitású-ben (Citus)](./concepts-hyperscale-monitoring.md)
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/platform/activity-log.md)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
@@ -92,9 +92,9 @@ A nagy kapacitású (Citus) által generált biztonsági adatokat összesítve a
 
 **Útmutató**: Azure monitor belül, a nagy kapacitású-(Citus-) naplók tárolására szolgáló log Analytics munkaterület esetében állítsa be a megőrzési időszakot a szervezet megfelelőségi szabályainak megfelelően. Használja az Azure Storage-fiókokat hosszú távú/archiválási tároláshoz.
 
-- [Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Erőforrás-naplók tárolása Azure Storage-fiókban](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [Erőforrás-naplók tárolása Azure Storage-fiókban](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -106,9 +106,9 @@ A nagy kapacitású (Citus) által generált biztonsági adatokat összesítve a
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-- [További információ a Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [További információ a Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/log-query/get-started-queries.md)
+- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -122,7 +122,7 @@ A Log Analytics-munkaterületet az Azure Sentinelbe irányíthatja, mivel ez egy
 
 - [Metrikák a nagy kapacitású-ben (Citus)](./howto-hyperscale-alert-on-metric.md)
 
-- [Az Azure-tevékenység naplójának diagnosztikai beállításainak konfigurálása](../azure-monitor/platform/activity-log.md)
+- [Az Azure-tevékenység naplójának diagnosztikai beállításainak konfigurálása](../azure-monitor/essentials/activity-log.md)
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
@@ -379,7 +379,7 @@ Naponta legalább egyszer Azure Database for PostgreSQL nagy kapacitású (Citus
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, amikor a módosítások a nagy kapacitású (Citus) és más kritikus vagy kapcsolódó erőforrások éles példányaira vonatkoznak.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/platform/alerts-activity-log.md)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Az Azure Security Center monitorozása**: Igen
 

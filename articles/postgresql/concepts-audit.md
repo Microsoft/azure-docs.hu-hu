@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
-ms.openlocfilehash: 615297a4bf47d80c9313f011b90d343b7ae680e3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 33fa6420f52cae9c869cc75a04ea82de0ec48262
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488044"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596294"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Naplózás naplózása Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -21,7 +21,7 @@ Az adatbázis-tevékenységek naplózása Azure Database for PostgreSQL – az e
 > a pgAudit előzetes verzióban érhető el Azure Database for PostgreSQL.
 > A bővítmény csak általános célú és a memóriára optimalizált kiszolgálókon engedélyezhető.
 
-Ha az Azure-beli erőforrás-szintű naplókat szeretné használni a számítási és tárolási skálázási műveletekhez, tekintse meg az [Azure-tevékenység naplóját](../azure-monitor/platform/platform-logs-overview.md).
+Ha az Azure-beli erőforrás-szintű naplókat szeretné használni a számítási és tárolási skálázási műveletekhez, tekintse meg az [Azure-tevékenység naplóját](../azure-monitor/essentials/platform-logs-overview.md).
 
 ## <a name="usage-considerations"></a>Használati megfontolások
 Alapértelmezés szerint a pgAudit naplóutasítások a normál naplóutasításokkal együtt vannak kibocsátva a Postgres standard naplózási eszközének használatával. Az Azure Database for PostgreSQL-ben ezek a .log-fájlok az Azure Portalról vagy a parancssori felületről tölthetők le. A fájlok gyűjteményének maximális tárterülete 1 GB, és minden fájl legfeljebb hét napig érhető el (az alapértelmezett érték három nap). Ez a szolgáltatás egy rövid távú tárolási lehetőség.
@@ -42,9 +42,9 @@ A pgAudit telepítéséhez fel kell vennie azt a kiszolgáló megosztott előtel
 A [Azure Portal](https://portal.azure.com)használata:
 
    1. Válassza ki az Azure Database for PostgreSQL kiszolgálóját.
-   2. Az oldalsávon válassza a **kiszolgálói paraméterek**lehetőséget.
+   2. Az oldalsávon válassza a **kiszolgálói paraméterek** lehetőséget.
    3. Keresse meg a `shared_preload_libraries` paramétert.
-   4. Válassza a **pgaudit**lehetőséget.
+   4. Válassza a **pgaudit** lehetőséget.
    5. A módosítás alkalmazásához indítsa újra a kiszolgálót.
 
    6. Kapcsolódjon a kiszolgálóhoz egy ügyfél használatával (például psql), és engedélyezze az pgAudit-bővítményt
@@ -88,9 +88,9 @@ A gyors kezdéshez állítsa a következőt: `pgaudit.log` `WRITE` , majd nyissa
 ## <a name="viewing-audit-logs"></a>Naplók megtekintése
 Ha. log fájlokat használ, a rendszer a naplókat a PostgreSQL-hibákkal megegyező fájlban fogja tartalmazni. A naplófájlokat az Azure [Portalról](howto-configure-server-logs-in-portal.md) vagy a [parancssori](howto-configure-server-logs-using-cli.md)felületről töltheti le. 
 
-Ha Azure erőforrás-naplózást használ, a naplók elérésének módja attól függ, hogy melyik végpontot választja. Az Azure Storage szolgáltatással kapcsolatban lásd a [Storage-fiók naplózása](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) című cikket. Event Hubs esetében tekintse meg a [stream Azure-naplók](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs) című cikket.
+Ha Azure erőforrás-naplózást használ, a naplók elérésének módja attól függ, hogy melyik végpontot választja. Az Azure Storage szolgáltatással kapcsolatban lásd a [Storage-fiók naplózása](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) című cikket. Event Hubs esetében tekintse meg a [stream Azure-naplók](../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs) című cikket.
 
-Azure Monitor naplók esetében a naplók a kiválasztott munkaterületre kerülnek. A postgres-naplók a **AzureDiagnostics** -gyűjtési módot használják, így a AzureDiagnostics táblából is lekérdezhető. A táblázatban szereplő mezők a következőkben olvashatók. További információ a lekérdezésekről és a riasztásokról: [Azure monitor naplók lekérdezése](../azure-monitor/log-query/log-query-overview.md) – áttekintés.
+Azure Monitor naplók esetében a naplók a kiválasztott munkaterületre kerülnek. A postgres-naplók a **AzureDiagnostics** -gyűjtési módot használják, így a AzureDiagnostics táblából is lekérdezhető. A táblázatban szereplő mezők a következőkben olvashatók. További információ a lekérdezésekről és a riasztásokról: [Azure monitor naplók lekérdezése](../azure-monitor/logs/log-query-overview.md) – áttekintés.
 
 Ezt a lekérdezést használhatja a kezdéshez. A riasztásokat lekérdezések alapján is konfigurálhatja.
 

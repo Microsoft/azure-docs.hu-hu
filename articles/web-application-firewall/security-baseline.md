@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b50ab8cae91aab56be287f517fa6e6a0b25db8e1
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d1f0b0b36c8f0ed5ede7b5c3113207ae3cce10fd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807869"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581253"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Azure-alapú biztonsági alapkonfiguráció Azure webalkalmazási tűzfalhoz
 
@@ -111,9 +111,9 @@ Válassza az Azure PowerShell vagy az Azure CLI lehetőséget a címkéken alapu
 
 **Útmutató**: az Azure-Tevékenységnaplók használatával figyelheti a hálózati erőforrás-konfigurációkat, és felderítheti az Azure webalkalmazási TŰZFAL (WAF) üzembe helyezéséhez kapcsolódó hálózati beállítások és erőforrások változásait. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati beállításokat vagy erőforrásokat módosítják.
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/platform/alerts-activity-log.md)
+- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -153,9 +153,9 @@ Az Azure Sentinel egy beépített Azure WAF-munkafüzettel rendelkezik, amely á
 
 - [Naplózás – áttekintés](ag/ag-overview.md#logging)
 
-- [Azure Monitor log lekérdezés áttekintése](../azure-monitor/log-query/log-query-overview.md)
+- [Azure Monitor log lekérdezés áttekintése](../azure-monitor/logs/log-query-overview.md)
 
-- [Az Azure platform naplófájljainak áttekintése](../azure-monitor/platform/platform-logs-overview.md)
+- [Az Azure platform naplófájljainak áttekintése](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -192,9 +192,9 @@ Az Azure Sentinel egy beépített WAF-tűzfallal kapcsolatos esemény-munkafüze
 
 **Útmutató**: az Azure-Tevékenységnaplók diagnosztikai beállításainak engedélyezése, valamint az Azure-WAF diagnosztikai beállításai, valamint a naplók elküldése egy log Analytics-munkaterületre. Lekérdezéseket hajthat végre Log Analytics a kifejezések kereséséhez, a trendek azonosításához, a mintázatok elemzéséhez és számos más elemzéshez az összegyűjtött adatok alapján. Riasztások létrehozása a rendellenes tevékenységekhez WAF metrikák alapján. Ha például a letiltott kérelmek száma meghaladja az "X" értéket, akkor tegye a következőt: "Y".
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/platform/activity-log.md)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
-- [Riasztások létrehozása az Azure-ban](../azure-monitor/learn/tutorial-response.md)
+- [Riasztások létrehozása az Azure-ban](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: c706f38dabbe21e5bafb096bf406e70af0855aa3
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 59791b72272ccd721a61da88d13b973119cef5d6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089978"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596142"
 ---
 # <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Oktatóanyag: a Spring Cloud-erőforrások figyelése riasztások és műveleti csoportok használatával
 
@@ -30,13 +30,13 @@ Az Azure Spring követelményei mellett az oktatóanyagban szereplő eljárások
 
 A következő eljárások inicializálják mindkét **műveleti csoportot** és a **riasztást** a Spring Cloud-példány bal oldali navigációs paneljének **riasztások** lehetőségével. (Az eljárás a Azure Portal **figyelő áttekintés** lapján is elindítható.) 
 
-Navigáljon egy erőforráscsoporthoz a Spring Cloud-példányra. Válassza a **riasztások** lehetőséget a bal oldali ablaktáblán, majd válassza a **műveletek kezelése**lehetőséget:
+Navigáljon egy erőforráscsoporthoz a Spring Cloud-példányra. Válassza a **riasztások** lehetőséget a bal oldali ablaktáblán, majd válassza a **műveletek kezelése** lehetőséget:
 
 ![Képernyőfelvétel-portál erőforráscsoport lapja](media/alerts-action-groups/action-1-a.png)
 
 ## <a name="set-up-action-group"></a>Műveleti csoport beállítása
 
-Az új **műveleti csoport**inicializálási eljárásának megkezdéséhez válassza a **+ műveleti csoport hozzáadása**lehetőséget.
+Az új **műveleti csoport** inicializálási eljárásának megkezdéséhez válassza a **+ műveleti csoport hozzáadása** lehetőséget.
 
 ![Képernyőfelvétel-portál – műveleti csoport hozzáadása](media/alerts-action-groups/action-1.png)
 
@@ -44,11 +44,11 @@ A **műveleti csoport hozzáadása** oldalon:
 
  1. Adja meg a **műveleti csoport nevét** és **rövid nevét**.
 
- 1. Az **előfizetés** és az **erőforráscsoport**meghatározása.
+ 1. Az **előfizetés** és az **erőforráscsoport** meghatározása.
 
  1. Adja meg a **művelet nevét**.
 
- 1. Válassza a **művelet típusa**lehetőséget.  Ekkor megnyílik egy másik ablaktábla a jobb oldalon az aktiváláskor végrehajtandó művelet definiálásához.
+ 1. Válassza a **művelet típusa** lehetőséget.  Ekkor megnyílik egy másik ablaktábla a jobb oldalon az aktiváláskor végrehajtandó művelet definiálásához.
 
  1. Adja meg a műveletet a jobb oldali ablaktáblán található beállítások használatával.  Ez az eset e-mailes értesítést használ.
 
@@ -62,13 +62,13 @@ A **műveleti csoport hozzáadása** oldalon:
 
 Az előző lépések olyan **műveleti csoportot** hoztak létre, amely e-mailt használ. Telefonos értesítéseket, webhookokat, Azure-függvényeket és így tovább is használhat. A következő lépésekkel konfigurálhatja a **riasztásokat**.
 
-1. váltson vissza a **riasztások** lapra, majd kattintson a **riasztási szabályok kezelése**elemre.
+1. váltson vissza a **riasztások** lapra, majd kattintson a **riasztási szabályok kezelése** elemre.
 
    ![A képernyőfelvétel-portál meghatározza a riasztást](media/alerts-action-groups/alerts-2.png)
 
 1. Válassza ki a riasztás **erőforrását** .
 
-1. Kattintson az **+ új riasztási szabály**elemre.
+1. Kattintson az **+ új riasztási szabály** elemre.
 
    ![Képernyőkép-portál új riasztási szabálya](media/alerts-action-groups/alerts-3.png)
 
@@ -76,7 +76,7 @@ Az előző lépések olyan **műveleti csoportot** hoztak létre, amely e-mailt 
 
 1. A **feltétel** beállítása számos lehetőséget kínál a **Spring Cloud** -erőforrások figyelésére.  Kattintson a **Hozzáadás** gombra a **jel logikájának konfigurálása** panel megnyitásához.
 
-1. Válasszon ki egy feltételt. Ez a példa a **rendszer CPU-kihasználtságának százalékos arányát**használja.
+1. Válasszon ki egy feltételt. Ez a példa a **rendszer CPU-kihasználtságának százalékos arányát** használja.
 
    ![Képernyőkép-portál – új riasztási szabály 2](media/alerts-action-groups/alerts-3-1.png)
 
@@ -88,11 +88,11 @@ Az előző lépések olyan **műveleti csoportot** hoztak létre, amely e-mailt 
 
    A figyeléshez rendelkezésre álló feltételek részleteiért lásd: [felhasználói portál metrikái – beállítások](spring-cloud-concept-metrics.md#user-metrics-options).
 
-1. A **műveletek**területen kattintson a **műveleti csoport kiválasztása**elemre. A **műveletek** ablaktáblán válassza ki a korábban definiált **műveleti csoportot**.
+1. A **műveletek** területen kattintson a **műveleti csoport kiválasztása** elemre. A **műveletek** ablaktáblán válassza ki a korábban definiált **műveleti csoportot**.
 
    ![Képernyőkép-portál új riasztási szabály 4](media/alerts-action-groups/alerts-3-3.png) 
 
-1. Görgessen le, és a **riasztás részletei**területen nevezze el a riasztási szabályt.
+1. Görgessen le, és a **riasztás részletei** területen nevezze el a riasztási szabályt.
 
 1. Állítsa be a **súlyosságot**.
 
@@ -113,7 +113,7 @@ A **metrikák** lapról is létrehozhat egy szabályt:
 Ebben az oktatóanyagban megtanulta, hogyan állíthat be riasztásokat és műveleti csoportokat egy Azure Spring Cloud-alkalmazáshoz. A műveleti csoportokról további információt a következő témakörben talál:
 
 > [!div class="nextstepaction"]
-> [Műveletcsoportok létrehozása és kezelése az Azure Portalon](../azure-monitor/platform/action-groups.md)
+> [Műveletcsoportok létrehozása és felügyelete az Azure Portalon](../azure-monitor/alerts/action-groups.md)
 
 > [!div class="nextstepaction"]
-> [SMS-riasztás viselkedése a műveleti csoportokban](../azure-monitor/platform/alerts-sms-behavior.md)
+> [SMS-riasztás viselkedése a műveleti csoportokban](../azure-monitor/alerts/alerts-sms-behavior.md)

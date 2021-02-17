@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: e3c64155053517205ab006673bb8f400325ad3c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4c1c247d8fb248c5e6d548dd04af1c3d08a4e76
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86219963"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588322"
 ---
 # <a name="notification-hubs-templates"></a>Notification Hubs sablonok
 
@@ -108,7 +108,6 @@ A Celsius hőmérséklettel rendelkező egynapos előrejelzés sablonja a követ
 
 Az értesítési központnak küldött üzenet a következő tulajdonságokat tartalmazza:
 
-```html
 <table border="1">
 
 <tr><td>day1_image</td><td>day2_image</td><td>day3_image</td><td>day4_image</td><td>day5_image</td></tr>
@@ -117,7 +116,6 @@ Az értesítési központnak küldött üzenet a következő tulajdonságokat ta
 
 <tr><td>day1_tempF</td><td>day2_tempF</td><td>day3_tempF</td><td>day4_tempF</td><td>day5_tempF</td></tr>
 </table><br/>
-```
 
 Ennek a mintának a használatával a háttérrendszer csak egyetlen üzenetet küld anélkül, hogy az alkalmazás felhasználói számára speciális személyre szabott beállításokat kellene tárolnia. A következő kép szemlélteti ezt a forgatókönyvet:
 
@@ -171,6 +169,6 @@ Ahogy korábban már említettük, az összefűzéskor a kifejezéseket kapcsos 
 </tile>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További tudnivalók az Azure Notification Hubs](notification-hubs-push-notification-overview.md)

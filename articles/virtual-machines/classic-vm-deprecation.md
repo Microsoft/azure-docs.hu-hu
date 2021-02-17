@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 7ed2a672f0f7149240e799b5529a7a3a6836a702
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 004a84cd98381af027c554a7ef40e27e69ec6dbc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499305"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587921"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>A IaaS-erőforrások migrálása a Azure Resource Managerra 2023. március 1-től 
 
@@ -30,7 +30,7 @@ A klasszikus üzemi modellel létrehozott virtuális gépek a [modern életciklu
 - 2023. március 1-jén a nem átAzure Resource Manager telepített előfizetéseket a rendszer a fennmaradó virtuális gépek (klasszikus) törlésére vonatkozó ütemtervekkel kapcsolatban tájékoztatja.  
 
 Ez a nyugdíjazás *nem* érinti a következő Azure-szolgáltatásokat és-funkciókat: 
-- Azure Cloud Services 
+- [Azure Cloud Services (klasszikus)](https://docs.microsoft.com/azure/cloud-services/cloud-services-choose-me)
 - Virtuális gépek által *nem* használt Storage-fiókok (klasszikus) 
 - Virtuális gépek által *nem* használt virtuális hálózatok (klasszikus) 
 - Egyéb klasszikus erőforrások
@@ -49,9 +49,9 @@ Kezdje el megtervezni az áttelepítés megtervezését Azure Resource Managerre
 
 1. Javasoljuk, hogy indítsa el a tervezést a [platform-támogatás áttelepítési eszköz](./migration-classic-resource-manager-overview.md) használatával a meglévő virtuális gépek három egyszerű lépéssel történő áttelepítéséhez: érvényesítés, előkészítés és végrehajtás. Az eszköz úgy lett kialakítva, hogy a virtuális gépeket minimálisan, állásidő nélkül telepítse át. 
 
-   1. Az első lépés, a validate nem befolyásolja a meglévő telepítést, és felsorolja az áttelepítéshez nem támogatott forgatókönyveket. 
-   1. A központi telepítés kijavításához és az áttelepítéshez való felkészüléshez végezze el a [megkerülő megoldások listáját](./migration-classic-resource-manager-overview.md#unsupported-features-and-configurations) . 
-   1. Ideális esetben az összes érvényesítési hiba kijavítása után az előkészítés és a végrehajtás lépései során nem merülhet fel probléma. A végrehajtás sikeres végrehajtása után a rendszer áttelepíti az üzemelő példányt Azure Resource Manager, és a Azure Resource Manager által elérhetővé tett új API-kkal felügyelhető. 
+   - Az első lépés, a validate nem befolyásolja a meglévő telepítést, és felsorolja az áttelepítéshez nem támogatott forgatókönyveket. 
+   - A központi telepítés kijavításához és az áttelepítéshez való felkészüléshez végezze el a [megkerülő megoldások listáját](./migration-classic-resource-manager-overview.md#unsupported-features-and-configurations) . 
+   - Ideális esetben az összes érvényesítési hiba kijavítása után az előkészítés és a végrehajtás lépései során nem merülhet fel probléma. A végrehajtás sikeres végrehajtása után a rendszer áttelepíti az üzemelő példányt Azure Resource Manager, és a Azure Resource Manager által elérhetővé tett új API-kkal felügyelhető. 
 
    Ha az áttelepítési eszköz nem alkalmas az áttelepítésre, az áttelepítéshez [más számítási ajánlatokat](/azure/architecture/guide/technology-choices/compute-decision-tree) is megvizsgálhat. Mivel számos Azure-beli számítási ajánlat létezik, és ezek különböznek egymástól, nem biztosítható a platform által támogatott áttelepítési útvonal.  
 
@@ -65,6 +65,6 @@ Kezdje el megtervezni az áttelepítés megtervezését Azure Resource Managerre
 
 - [Azure-áttelepítési támogatás](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"1135e3d0-20e2-aec5-4ef0-55fd3dae2d58"}): az áttelepítés során technikai segítséget nyújtó dedikált támogatási csoport.
 
-- [Microsoft Fast Track](https://www.microsoft.com/fasttrack): a Fast Track segítséget nyújthat a jogosult ügyfeleknek az áttelepítés megtervezésében & végrehajtásában. [Jelölje ki a saját magát](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fprograms%2Fazure-fasttrack%2F%23nomination&data=02%7C01%7CTanmay.Gore%40microsoft.com%7C3e75bbf3617944ec663a08d85c058340%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637360526032558561&sdata=CxWTVQQPVWNwEqDZKktXzNV74pX91uyJ8dY8YecIgGc%3D&reserved=0).  
+- [Microsoft Fast Track](https://www.microsoft.com/fasttrack): a Fast Track segítséget nyújthat a jogosult ügyfeleknek az áttelepítés megtervezésében & végrehajtásában. [Jelölje](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fprograms%2Fazure-fasttrack%2F%23nomination&data=02%7C01%7CTanmay.Gore%40microsoft.com%7C3e75bbf3617944ec663a08d85c058340%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637360526032558561&sdata=CxWTVQQPVWNwEqDZKktXzNV74pX91uyJ8dY8YecIgGc%3D&reserved=0) ki a DC áttelepítési programját.  
 
 - Ha a vállalata vagy szervezete a Microsofttal vagy a Microsoft képviselőivel (például a Cloud Solution Architects (CSAs) vagy a Technical Account Managers (TAMs) szolgáltatással együttműködve dolgozik, akkor további forrásokat is megtalálhat a Migrálás érdekében.

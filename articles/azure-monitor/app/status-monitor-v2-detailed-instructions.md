@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: a8a27a782d5e05b5febda659009284c22d3608c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a955273c01d8c0d865aabd91bb1bfcce70fd373
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318980"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587380"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights ügynök (korábbi nevén Állapotmonitor v2): részletes utasítások
 
@@ -160,7 +160,7 @@ Ha bármilyen okból nem tud csatlakozni a PowerShell-modulhoz, akkor manuálisa
 
 1. Nyissa meg a következőt: https://www.powershellgallery.com/packages/Az.ApplicationMonitor.
 2. Válassza ki a fájl legújabb verzióját az **verziótörténete** táblában.
-3. A **telepítési beállítások**alatt válassza a **manuális Letöltés**lehetőséget.
+3. A **telepítési beállítások** alatt válassza a **manuális Letöltés** lehetőséget.
 
 ### <a name="option-1-install-into-a-powershell-modules-directory"></a>1. lehetőség: telepítés PowerShell-modulok könyvtárába
 Telepítse a manuálisan letöltött PowerShell-modult egy PowerShell-könyvtárba, hogy a PowerShell-munkamenetek is felderíthetők legyenek.
@@ -231,9 +231,9 @@ A parancsmag használatának részletes ismertetését az [API-referenciában](.
 
  A telemetriai adatok megtekintése:
 
-- [Ismerje meg a mérőszámokat](../platform/metrics-charts.md) a teljesítmény és a használat figyeléséhez.
+- [Ismerje meg a mérőszámokat](../essentials/metrics-charts.md) a teljesítmény és a használat figyeléséhez.
 - [Események és naplók keresése](./diagnostic-search.md) a problémák diagnosztizálásához.
-- További speciális lekérdezésekhez [használja az elemzést](../log-query/log-query-overview.md) .
+- További speciális lekérdezésekhez [használja az elemzést](../logs/log-query-overview.md) .
 - [Irányítópultok létrehozása](./overview-dashboard.md).
 
  További telemetriai funkciók hozzáadása:

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: bde1c503d0aaaff1afcee67a26245d5021c43bb4
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d031b64b36bd7ff91c64960642cfbf00fb1682ab
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807750"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587301"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365 felügyeleti megoldás az Azure-ban (előzetes verzió)
 
@@ -118,7 +118,7 @@ Az Office 365 felügyeleti megoldás lehetővé teszi az Office 365-környezet f
 - Rendszergazdai tevékenységek figyelése a konfigurációs változások és a magas jogosultsági szintű műveletek nyomon követéséhez.
 - A nem kívánt felhasználói viselkedés észlelése és vizsgálata, amely testreszabható a szervezeti igényeknek megfelelően.
 - Auditálás és megfelelőség bemutatása. Például figyelheti a fájl-hozzáférési műveleteket a bizalmas fájlokon, ami segíthet a naplózási és megfelelőségi folyamatokban.
-- Hajtsa végre a működés közbeni hibaelhárítást a szervezete Office 365-tevékenység adataihoz tartozó [lekérdezések](../log-query/log-query-overview.md) használatával.
+- Hajtsa végre a működés közbeni hibaelhárítást a szervezete Office 365-tevékenység adataihoz tartozó [lekérdezések](../logs/log-query-overview.md) használatával.
 
 
 ## <a name="uninstall"></a>Eltávolítás
@@ -473,6 +473,6 @@ A következő táblázat példákat tartalmaz a megoldás által gyűjtött fris
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A részletes frissítési információk megtekintéséhez használja [a Azure monitor a naplózási lekérdezéseket](../log-query/log-query-overview.md) .
-* [Saját irányítópultok létrehozásával](../learn/tutorial-logs-dashboards.md) megjelenítheti kedvenc Office 365 keresési lekérdezéseit.
-* [Riasztásokat hozhat létre](../platform/alerts-overview.md) , amelyekkel proaktívan értesítheti a fontos Office 365-tevékenységeket.  
+* A részletes frissítési információk megtekintéséhez használja [a Azure monitor a naplózási lekérdezéseket](../logs/log-query-overview.md) .
+* [Saját irányítópultok létrehozásával](../visualize/tutorial-logs-dashboards.md) megjelenítheti kedvenc Office 365 keresési lekérdezéseit.
+* [Riasztásokat hozhat létre](../alerts/alerts-overview.md) , amelyekkel proaktívan értesítheti a fontos Office 365-tevékenységeket.  
