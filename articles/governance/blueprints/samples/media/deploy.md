@@ -3,12 +3,12 @@ title: Adathordozó tervének üzembe helyezése minta
 description: A Media Blueprint-minta üzembe helyezésének lépései, beleértve a tervrajz-összetevő paraméterének részleteit.
 ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: 5dc3720ceb1bdd8e50ab220288cef64c73e304ff
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 13d50c2a791a72c58d8ebef7a46c592efd0cb9a8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035002"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577299"
 ---
 # <a name="deploy-the-media-blueprint-sample"></a>A Media Blueprint minta üzembe helyezése
 
@@ -93,12 +93,12 @@ A következő táblázat a terv összetevő-paramétereinek listáját tartalmaz
 
 Összetevő neve|Összetevő típusa|Paraméter neve|Leírás|
 |-|-|-|-|
-|\[Előzetes verzió \] : log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken |Szabályzat-hozzárendelés |A Linux rendszerű virtuális gépek Log Analytics munkaterülete |További információ: [log Analytics munkaterület létrehozása a Azure Portalban](../../../../azure-monitor/learn/quick-create-workspace.md). |
+|\[Előzetes verzió \] : log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken |Szabályzat-hozzárendelés |A Linux rendszerű virtuális gépek Log Analytics munkaterülete |További információ: [log Analytics munkaterület létrehozása a Azure Portalban](../../../../azure-monitor/logs/quick-create-workspace.md). |
 |\[Előzetes verzió \] : log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken |Szabályzat-hozzárendelés |Nem kötelező: a hatókörbe felvenni kívánt Linux operációs rendszert futtató virtuálisgép-rendszerképek listája |Egy üres tömb is felhasználható a nem kötelező paraméterek jelölésére: `[]` |
 |\[Előzetes verzió \] : log Analytics ügynök üzembe helyezése Windows rendszerű virtuális gépeken |Szabályzat-hozzárendelés |Nem kötelező: a hatókörbe felvenni kívánt Windows operációs rendszert futtató virtuálisgép-rendszerképek listája |Egy üres tömb is felhasználható a nem kötelező paraméterek jelölésére: `[]` |
-|\[Előzetes verzió \] : log Analytics ügynök üzembe helyezése Windows rendszerű virtuális gépeken |Szabályzat-hozzárendelés |Log Analytics munkaterület a Windows rendszerű virtuális gépekhez |További információ: [log Analytics munkaterület létrehozása a Azure Portalban](../../../../azure-monitor/learn/quick-create-workspace.md). |
+|\[Előzetes verzió \] : log Analytics ügynök üzembe helyezése Windows rendszerű virtuális gépeken |Szabályzat-hozzárendelés |Log Analytics munkaterület a Windows rendszerű virtuális gépekhez |További információ: [log Analytics munkaterület létrehozása a Azure Portalban](../../../../azure-monitor/logs/quick-create-workspace.md). |
 |\[Előzetes verzió \] : a média vezérlőinek ellenőrzése és adott virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények támogatásához |Szabályzat-hozzárendelés |Log Analytics munkaterület-azonosító, amelyhez a virtuális gépeket konfigurálni kell |Ez a Log Analytics munkaterület azonosítója (GUID), amelyhez a virtuális gépeket konfigurálni kell. |
-|\[Előzetes verzió \] : a média vezérlőinek ellenőrzése és adott virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények támogatásához |Szabályzat-hozzárendelés |Azon erőforrástípusok listája, amelyeknek engedélyezve kell lennie a diagnosztikai naplóknak |A naplózni kívánt erőforrástípusok listája, ha a diagnosztikai napló beállítása nincs engedélyezve. Elfogadható értékek találhatók [Azure monitor diagnosztikai naplók sémái](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)között. |
+|\[Előzetes verzió \] : a média vezérlőinek ellenőrzése és adott virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények támogatásához |Szabályzat-hozzárendelés |Azon erőforrástípusok listája, amelyeknek engedélyezve kell lennie a diagnosztikai naplóknak |A naplózni kívánt erőforrástípusok listája, ha a diagnosztikai napló beállítása nincs engedélyezve. Elfogadható értékek találhatók [Azure monitor diagnosztikai naplók sémái](../../../../azure-monitor/essentials/resource-logs-schema.md#service-specific-schemas)között. |
 |\[Előzetes verzió \] : a média vezérlőinek ellenőrzése és adott virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények támogatásához |Szabályzat-hozzárendelés |Rendszergazdák csoport |Csoport. Például: `Administrator; myUser1; myUser2` |
 |\[Előzetes verzió \] : a média vezérlőinek ellenőrzése és adott virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények támogatásához |Szabályzat-hozzárendelés |A Windows rendszerű virtuális gépek rendszergazdái csoportjának részét képező felhasználók listája |A rendszergazdák helyi csoportba foglalandó tagok pontosvesszővel tagolt listája. Például: `Administrator; myUser1; myUser2` |
 |Komplex veszélyforrások elleni védelem üzembe helyezése a Storage-fiókokon |Szabályzat-hozzárendelés |Hatás |A házirend hatásával kapcsolatos információk a [Azure Policy effektusok megismerése](../../../policy/concepts/effects.md)című témakörben találhatók. |
@@ -107,7 +107,7 @@ A következő táblázat a terv összetevő-paramétereinek listáját tartalmaz
 |Hálózati biztonsági csoportok diagnosztikai beállításainak telepítése |Szabályzat-hozzárendelés |A hálózati biztonsági csoport diagnosztika Storage-fiókjának előtagja |Ez az előtag a hálózati biztonsági csoport helyével együtt alkotja a létrehozott Storage-fiók nevét. |
 |Hálózati biztonsági csoportok diagnosztikai beállításainak telepítése |Szabályzat-hozzárendelés |A hálózati biztonsági csoport diagnosztikát szolgáló Storage-fiók erőforráscsoport-neve (léteznie kell) |Az az erőforráscsoport, amelyben a Storage-fiók létrejön. Ez az erőforráscsoport már léteznie kell. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette a Media Sample üzembe helyezésének lépéseit, tekintse meg az alábbi cikkeket az Áttekintés és a vezérlés leképezésének megismeréséhez:
 

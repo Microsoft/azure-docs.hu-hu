@@ -1,19 +1,19 @@
 ---
 title: Azure Files StorageClass létrehozása az Azure Red Hat OpenShift 4-ben
 description: Megtudhatja, hogyan hozhat létre Azure Files StorageClass az Azure Red Hat OpenShift
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: article
 ms.date: 10/16/2020
 author: grantomation
 ms.author: b-grodel
 keywords: ARO, openshift, az ARO, Red Hat, CLI, Azure file
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 201ec3293943f53179bcabde45259d15ce6208a6
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: daaf6d3042b3b8d050173a87d94f0ff6a4ccb2c7
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901283"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633257"
 ---
 # <a name="create-an-azure-files-storageclass-on-azure-red-hat-openshift-4"></a>Azure Files StorageClass létrehozása az Azure Red Hat OpenShift 4-ben
 

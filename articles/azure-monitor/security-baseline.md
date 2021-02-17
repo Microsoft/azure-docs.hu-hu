@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: da3386692d2d02015c0d3f59c88ae78a6c84b9ab
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: d6ffeeb1470fbe51885c81f30ab8b96c4e27d707
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203099"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586978"
 ---
 # <a name="azure-security-baseline-for-azure-monitor"></a>Azure Monitor Azure biztonsági alapterve
 
@@ -34,9 +34,9 @@ A virtuális hálózati szabályok lehetővé teszik, hogy a Azure Monitor csak 
 
 Log Analytics átjáró használata az adatLog Analytics-munkaterületre való adatküldéshez Azure Monitor azon számítógépek nevében, amelyek nem tudnak közvetlenül csatlakozni az internethez, ami megakadályozza, hogy a számítógépek csatlakozni tudjanak az internethez. 
 
-- [Privát hivatkozás beállítása Azure Monitorhoz](platform/private-link-security.md)
+- [Privát hivatkozás beállítása Azure Monitorhoz](logs/private-link-security.md)
 
-- [Internet-hozzáférés nélküli számítógépek összekötése a Log Analytics átjáró használatával Azure Monitor](platform/gateway.md)
+- [Internet-hozzáférés nélküli számítógépek összekötése a Log Analytics átjáró használatával Azure Monitor](agents/gateway.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -48,9 +48,9 @@ Log Analytics átjáró használata az adatLog Analytics-munkaterületre való a
 
 Ha a Azure Monitort privát hivatkozással használja, akkor a hálózati naplózáshoz, például a privát végpont által feldolgozott (vagy kimenő) adatkapcsolathoz férhet hozzá.
 
-- [Azure Monitor ügynökök hálózati követelményei](platform/log-analytics-agent.md#network-requirements)
+- [Azure Monitor ügynökök hálózati követelményei](agents/log-analytics-agent.md#network-requirements)
 
-- [Internet-hozzáférés nélküli számítógépek összekötése a Log Analytics átjáró használatával Azure Monitor](platform/gateway.md)
+- [Internet-hozzáférés nélküli számítógépek összekötése a Log Analytics átjáró használatával Azure Monitor](agents/gateway.md)
 
 - [Hálózati biztonsági csoport folyamatábráinak engedélyezése](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
@@ -76,9 +76,9 @@ Ha a Azure Monitort privát hivatkozással használja, akkor a hálózati napló
 
 **Útmutató**: a Azure monitor az Azure alapszolgáltatások részét képezi, és nem telepíthető külön szolgáltatásként. Azure Monitor összetevőket, beleértve az Azure Monitor ügynököt, és a Application Insights SDK üzembe helyezhető az erőforrásaival, és ez hatással lehet az erőforrások biztonsági helyzetére.
 
-- [Azure Monitor ügynökök hálózati követelményei](platform/log-analytics-agent.md#network-requirements)
+- [Azure Monitor ügynökök hálózati követelményei](agents/log-analytics-agent.md#network-requirements)
 
-- [Internet-hozzáférés nélküli számítógépek összekötése a Log Analytics átjáró használatával Azure Monitor](platform/gateway.md) 
+- [Internet-hozzáférés nélküli számítógépek összekötése a Log Analytics átjáró használatával Azure Monitor](agents/gateway.md) 
 
 - [Lásd: a Application Insights első lépései](./app/app-insights-overview.md#get-started)
 
@@ -92,9 +92,9 @@ Ha a Azure Monitort privát hivatkozással használja, akkor a hálózati napló
 
 **Útmutató**: az Azure-tevékenység naplójának használatával figyelheti az erőforrás-konfigurációkat, és azonosíthatja a Azure monitorhoz kapcsolódó hálózati erőforrások módosításait. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrások módosításai megváltoznak.
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](./platform/activity-log.md#view-the-activity-log)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](./essentials/activity-log.md#view-the-activity-log)
 
-- [Riasztások létrehozása a Azure Monitorban](platform/alerts-activity-log.md)
+- [Riasztások létrehozása a Azure Monitorban](alerts/alerts-activity-log.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -110,9 +110,9 @@ Ha a Azure Monitort privát hivatkozással használja, akkor a hálózati napló
 
 Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó SIEM-et.
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](platform/diagnostic-settings.md)
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](essentials/diagnostic-settings.md)
 
-- [Az Azure-beli virtuális gépek belső gazdagép-naplóinak összegyűjtése Azure Monitor](learn/quick-collect-azurevm.md)
+- [Az Azure-beli virtuális gépek belső gazdagép-naplóinak összegyűjtése Azure Monitor](vm/quick-collect-azurevm.md)
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
@@ -126,9 +126,9 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 **Útmutató**: a Azure monitor tevékenység-naplókat használ, a tevékenység naplója automatikusan engedélyezve van, és naplózza Azure monitor erőforrásokon végrehajtott műveleteket, például: a művelet elindítását, a művelet állapotát és egyéb hasznos naplózási információt. 
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](platform/diagnostic-settings.md)
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](essentials/diagnostic-settings.md)
 
-- [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](platform/platform-logs-overview.md)
+- [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](essentials/platform-logs-overview.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -138,7 +138,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 **Útmutató**: Azure monitor a szervezet megfelelőségi szabályainak megfelelően állítsa be a log Analytics munkaterület megőrzési időszakát. Használja az Azure Storage-fiókokat a naplók hosszú távú/archiválási tárolására.
 
-- [Az adatmegőrzési időszak módosítása Log Analytics](platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Az adatmegőrzési időszak módosítása Log Analytics](logs/manage-cost-storage.md#change-the-data-retention-period)
 
 - [Adatmegőrzési szabályzat konfigurálása az Azure Storage-fiók naplóihoz](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -154,9 +154,9 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics lekérdezések első lépései](./log-query/log-analytics-tutorial.md)
+- [Log Analytics lekérdezések első lépései](./logs/log-analytics-tutorial.md)
 
-- [Egyéni lekérdezések végrehajtása a Azure Monitorban](log-query/get-started-queries.md)
+- [Egyéni lekérdezések végrehajtása a Azure Monitorban](logs/get-started-queries.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -170,7 +170,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 - [Riasztások kezelése Azure Security Centerban](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Riasztás a log Analytics-naplófájlok adatkezeléséről](learn/tutorial-response.md)
+- [Riasztás a log Analytics-naplófájlok adatkezeléséről](alerts/tutorial-response.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -316,7 +316,7 @@ A Microsoft-szolgáltatásokhoz igénybe vehet egy igény szerinti vagy elég ho
 
 - [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
-- [Naplóadatok és munkaterületek elérésének felügyelete az Azure Monitorban](platform/manage-access.md)
+- [Naplóadatok és munkaterületek elérésének felügyelete az Azure Monitorban](logs/manage-access.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -342,7 +342,7 @@ A Microsoft-szolgáltatásokhoz igénybe vehet egy igény szerinti vagy elég ho
 
 Application Insights és Log Analytics mindkettő továbbra is engedélyezi a TLS 1,1-és TLS 1,0-adatmennyiséget. Az adat a TLS 1,2-re korlátozható az ügyféloldali oldalon való konfigurálással.
 
-- [Adatküldés biztonságos továbbítása a TLS 1,2 használatával](platform/data-security.md#sending-data-securely-using-tls-12)
+- [Adatküldés biztonságos továbbítása a TLS 1,2 használatával](logs/data-security.md#sending-data-securely-using-tls-12)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -363,7 +363,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használata a Azure monitor elérésének kezeléséhez.
 
-- [Szerepkörök, engedélyek és biztonság a Azure Monitorban](platform/roles-permissions-security.md)
+- [Szerepkörök, engedélyek és biztonság a Azure Monitorban](/roles-permissions-security.md)
 
 - [Az Azure RBAC konfigurálása](../role-based-access-control/role-assignments-portal.md)
 
@@ -375,9 +375,9 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató**: a Azure monitor biztosítja, hogy az összes adatok és mentett lekérdezések a Microsoft által felügyelt kulcsok (MMK-EK) használatával titkosítva legyenek. A Azure Monitor a saját Azure Key Vault tárolt és a rendszer által hozzárendelt felügyelt identitás-hitelesítéssel hozzáférő saját kulcs használatával is lehetőséget nyújt a titkosításra. Ez az ügyfél által felügyelt kulcs (CMK) lehet szoftveres vagy hardveres HSM-védelemmel ellátott.
 
-- [Ügyfél által felügyelt kulcsok Azure Monitor](platform/customer-managed-keys.md)
+- [Ügyfél által felügyelt kulcsok Azure Monitor](logs/customer-managed-keys.md)
 
-- [Adatbiztonság Log Analytics](platform/data-security.md)
+- [Adatbiztonság Log Analytics](logs/data-security.md)
 
 - [Adatgyűjtés, -megőrzés és -tárolás az Application Insightsban](app/data-retention-privacy.md)
 
@@ -391,7 +391,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, amikor a módosítások Azure monitor és kapcsolódó erőforrásokban lépnek életbe.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](platform/alerts-activity-log.md)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](alerts/alerts-activity-log.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -423,7 +423,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 - [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
-- [Szerepkörök, engedélyek és biztonság a Azure Monitorban](platform/roles-permissions-security.md)
+- [Szerepkörök, engedélyek és biztonság a Azure Monitorban](/roles-permissions-security.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -479,7 +479,7 @@ Az Azure Resource Graph használatával lekérdezheti és felderítheti az előf
 
 **Útmutató**: a leltár rendszeres összeegyeztetése és a jogosulatlan Azure monitor kapcsolódó erőforrások törlésének biztosítása az előfizetésből időben.  
 
-- [Azure Log Analytics-munkaterület törlése](platform/delete-workspace.md)
+- [Azure Log Analytics-munkaterület törlése](logs/delete-workspace.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -647,7 +647,7 @@ A Storage-fiókokba feltöltött kártevők észleléséhez használja a Azure S
 
 **Útmutató**: a Azure Resource Manager használatával exportálhatja a Azure monitor és a kapcsolódó erőforrásokat egy JavaScript Object Notation (JSON) sablonban, amely biztonsági mentésként használható a Azure monitor és a kapcsolódó konfigurációkhoz.  A Azure Automation használatával automatikusan futtathatja a biztonsági mentési parancsfájlokat. 
 
-- [Log Analytics munkaterület kezelése Azure Resource Manager sablonok használatával](./samples/resource-manager-workspace.md)
+- [Log Analytics munkaterület kezelése Azure Resource Manager sablonok használatával](./logs/resource-manager-workspace.md)
 
 - [Egy-és többerőforrásos exportálás Azure Portal sablonba](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -661,7 +661,7 @@ A Storage-fiókokba feltöltött kártevők észleléséhez használja a Azure S
 
 **Útmutató**: a Azure Resource Manager használatával exportálhatja a Azure monitor és a kapcsolódó erőforrásokat egy JavaScript Object Notation (JSON) sablonban, amely biztonsági mentésként használható a Azure monitor és a kapcsolódó konfigurációkhoz.  Az ügyfél által felügyelt kulcsok biztonsági mentése Azure Key Vault, ha Azure Monitor kapcsolódó erőforrások ügyfél által felügyelt kulcsokat használnak, 
 
-- [Log Analytics munkaterület kezelése Azure Resource Manager sablonok használatával](./samples/resource-manager-workspace.md)
+- [Log Analytics munkaterület kezelése Azure Resource Manager sablonok használatával](./logs/resource-manager-workspace.md)
 
 - [Egy-és többerőforrásos exportálás Azure Portal sablonba](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -675,7 +675,7 @@ A Storage-fiókokba feltöltött kártevők észleléséhez használja a Azure S
 
 **Útmutató**: a helyreállítás rendszeres végrehajtásának lehetősége Azure Resource Manager támogatott sablonfájlok használatával.  Tesztelje az ügyfél által felügyelt kulcsok biztonsági mentésének visszaállítását.
 
-- [Log Analytics munkaterület kezelése Azure Resource Manager sablonok használatával](./samples/resource-manager-workspace.md)
+- [Log Analytics munkaterület kezelése Azure Resource Manager sablonok használatával](./logs/resource-manager-workspace.md)
 
 - [Key Vault-kulcsok visszaállítása az Azure-ban](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 

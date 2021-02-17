@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 8221e814b4555a75d596cec3ab00aa3b63e41a14
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: caff705a03f7c4645eedc9423f6a9f9649c1167e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197404"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571293"
 ---
 # <a name="azure-security-baseline-for-vpn-gateway"></a>VPN Gateway Azure biztonsági alapterve
 
@@ -78,9 +78,9 @@ Az Azure-tervrajzok segítségével leegyszerűsítheti a nagyméretű Azure-kö
 
 **Útmutató**: az Azure-tevékenység naplójának használata az erőforrás-konfigurációk figyelésére és a virtuális hálózati erőforrások változásainak észlelésére. Hozzon létre riasztásokat a Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a VPN-átjáróval kapcsolatos kritikus erőforrásokra vált.
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/platform/alerts-activity-log.md)
+- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -100,7 +100,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Ismerkedés a Azure Monitor és a harmadik féltől származó SIEM-integrációval](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -112,9 +112,9 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 **Útmutató**: a diagnosztikai beállítások engedélyezése a VPN Gateway erőforrásokon a naplózási, biztonsági és diagnosztikai naplókhoz való hozzáféréshez. A automatikusan elérhető tevékenység-naplók közé tartozik az eseményforrás, a dátum, a felhasználó, az időbélyeg, a forráscím, a célcím és más hasznos elemek. 
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](../azure-monitor/platform/platform-logs-overview.md)
+- [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -124,7 +124,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 **Útmutató**: Azure monitor a szervezet megfelelőségi szabályainak megfelelően állítsa be a log Analytics munkaterület megőrzési időszakát. Azure Storage-fiókokat használhat hosszú távú és archiválási tároláshoz. 
 
-- [Az adatmegőrzési időszak módosítása Log Analytics](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) 
+- [Az adatmegőrzési időszak módosítása Log Analytics](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period) 
 
 - [Adatmegőrzési szabályzat konfigurálása az Azure Storage-fiók naplóihoz](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -140,9 +140,9 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md) 
 
-- [Log Analytics lekérdezések első lépései](../azure-monitor/log-query/log-analytics-tutorial.md) 
+- [Log Analytics lekérdezések első lépései](../azure-monitor/logs/log-analytics-tutorial.md) 
 
-- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/log-query/get-started-queries.md)
+- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -158,7 +158,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti a fedélzeti adatfel
 
 - [Riasztások kezelése Azure Security Centerban](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Riasztás a log Analytics-naplófájlok adatkezeléséről](../azure-monitor/learn/tutorial-response.md)
+- [Riasztás a log Analytics-naplófájlok adatkezeléséről](../azure-monitor/alerts/tutorial-response.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -382,7 +382,7 @@ A virtuális hálózatban lévő megfelelő erőforrásokra vonatkozó ajánlás
 
 - [Riasztások beállítása a diagnosztikai naplózási eseményekről VPN Gateway](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md)
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/platform/alerts-activity-log.md)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 

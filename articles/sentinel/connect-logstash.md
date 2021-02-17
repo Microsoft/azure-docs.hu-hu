@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: 63b9d74fbbb1a79dd4f3d3e7c5fb094a372282e0
-ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
+ms.openlocfilehash: d388478fb3bc9b4e355d8c3cd3f16c0a785b8b27
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96299632"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578922"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Adatforrások az Azure Sentinelhez való összekapcsolásához használja a Logstash-t
 
@@ -49,7 +49,7 @@ A Logstash motor három összetevőből áll:
 A Logstash készült Azure Sentinel kimeneti beépülő modul JSON formátumú adatokat küld a Log Analytics munkaterületre a Log Analytics HTTP-adatgyűjtő REST API használatával. Az adatgyűjtés egyéni naplókba történik.
 
 - További információ a [Log Analytics Rest APIról](/rest/api/loganalytics/create-request).
-- További információ az [Egyéni naplókról](../azure-monitor/platform/data-sources-custom-logs.md).
+- További információ az [Egyéni naplókról](../azure-monitor/agents/data-sources-custom-logs.md).
 
 ## <a name="deploy-the-azure-sentinel-output-plugin-in-logstash"></a>Az Azure Sentinel kimeneti beépülő modul üzembe helyezése a Logstash-ben
 
@@ -57,7 +57,7 @@ A Logstash készült Azure Sentinel kimeneti beépülő modul JSON formátumú a
 
 Az Azure Sentinel kimeneti beépülő modulja elérhető a Logstash gyűjteményben.
 
-- A *_[Microsoft-Logstash-output-Azure-loganalytics](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/microsoft-logstash-output-azure-loganalytics)_* _ beépülő modul telepítéséhez kövesse a Logstash című cikkben található utasításokat a [plugins](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html) -dokumentummal.
+- A ***[Microsoft-Logstash-output-Azure-loganalytics](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/microsoft-logstash-output-azure-loganalytics)*** beépülő modul telepítéséhez kövesse a Logstash [használata beépülő](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html) modullal című dokumentumot.
    
 - Ha a Logstash-rendszer nem rendelkezik internet-hozzáféréssel, kövesse a Logstash [Offline beépülő moduljának felügyeleti](https://www.elastic.co/guide/en/logstash/current/offline-plugins.html) dokumentumának utasításait az offline beépülő modul előkészítéséhez és használatához. (Ehhez szüksége lesz egy másik Logstash rendszer létrehozására internet-hozzáféréssel.)
 
@@ -65,9 +65,9 @@ Az Azure Sentinel kimeneti beépülő modulja elérhető a Logstash gyűjtemény
 
 Használja a konfigurációs [fájl Logstash struktúrájában](https://www.elastic.co/guide/en/logstash/current/configuration-file-structure.html) található információkat, és adja hozzá az Azure Sentinel kimeneti beépülő modult a konfigurációhoz a következő kulcsokkal és értékekkel. (A megfelelő konfigurációs fájl szintaxisa a tábla után jelenik meg.)
 
-| Mező neve | Adattípus | Leírás |
+| Mező neve | Adattípus | Description |
 |----------------|---------------|-----------------|
-| `workspace_id` | sztring | Adja meg a munkaterület AZONOSÍTÓjának GUID azonosítóját. _ |
+| `workspace_id` | sztring | Adja meg a munkaterület AZONOSÍTÓjának GUID azonosítóját. * |
 | `workspace_key` | sztring | Adja meg a munkaterület elsődleges kulcsának GUID azonosítóját. * |
 | `custom_log_table_name` | sztring | Állítsa be annak a táblának a nevét, amelybe a rendszer betölti a naplókat. Kimeneti beépülő modulok esetében csak egy Táblanév lehet konfigurálni. A naplófájl az Azure Sentinelben a **naplók** területen jelenik meg, az **egyéni naplók** kategória **tábláiban** , `_CL` utótaggal. |
 | `endpoint` | sztring | Nem kötelező kitölteni. Alapértelmezés szerint ez a Log Analytics végpont. Ez a mező egy alternatív végpont beállítására használható. |

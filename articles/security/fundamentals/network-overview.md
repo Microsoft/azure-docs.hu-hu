@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 17d48b6093d88a926569d5cfe84475fc0c306a0d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 4fb4981925593a22ed65df9d3ed0da5f45062f23
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98874383"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578943"
 ---
 # <a name="azure-network-security-overview"></a>A nagyvállalati hálózati biztonság áttekintése
 
@@ -395,7 +395,7 @@ További információ:
 
 A hálózati szintű naplózás a hálózati biztonsági forgatókönyvek egyik kulcsfontosságú funkciója. Az Azure-ban a hálózati szintű naplózási információk beszerzéséhez naplózhatja a NSG-hez kapott adatokat. A NSG-naplózással a következő információkat kapja meg:
 
-* [Tevékenységek naplói](../../azure-monitor/platform/platform-logs-overview.md). Ezen naplók használatával megtekintheti az Azure-előfizetésekhez küldött összes műveletet. Ezek a naplók alapértelmezés szerint engedélyezve vannak, és a Azure Portalon belül is használhatók. Korábban naplózási vagy operatív naplók néven ismertek.
+* [Tevékenységek naplói](../../azure-monitor/essentials/platform-logs-overview.md). Ezen naplók használatával megtekintheti az Azure-előfizetésekhez küldött összes műveletet. Ezek a naplók alapértelmezés szerint engedélyezve vannak, és a Azure Portalon belül is használhatók. Korábban naplózási vagy operatív naplók néven ismertek.
 * Eseménynaplók. Ezek a naplók információt nyújtanak arról, hogy milyen NSG-szabályok lettek alkalmazva.
 * Számlálónaplók. Ezek a naplók lehetővé teszik, hogy az egyes NSG-szabályok hányszor lettek alkalmazva a forgalom megtagadására vagy engedélyezésére.
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: yuajia
-ms.openlocfilehash: cd99be40700ab1c34176f2bf7497e4debf5cd424
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d1f3e59cc88ea9cb30e7eacbd26591e08d71be61
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483797"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575239"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Metrikák és naplók figyelése az Azure-beli bejárati ajtón
 
@@ -29,7 +29,7 @@ Az Azure bejárati ajtót használva a következő módokon figyelheti az erőfo
 
 A metrikák bizonyos Azure-erőforrások, amelyek lehetővé teszik a teljesítményszámlálók megtekintését a portálon. A következő elérhetők a bejárati ajtó metrikái:
 
-| Metrika | Metrika megjelenítendő neve | Egység | Dimenziók | Description |
+| Metric | Metrika megjelenítendő neve | Unit (Egység) | Dimenziók | Description |
 | --- | --- | --- | --- | --- |
 | RequestCount | Kérelmek száma | Darabszám | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | A bejárati ajtó által kiszolgált ügyfél-kérelmek száma.  |
 | RequestSize | Kérelem mérete | Bájt | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Az ügyfelektől a befelé irányuló kérelmekként küldött bájtok száma. |
@@ -59,7 +59,7 @@ A hozzáférési tevékenység naplóit a bejárati ajtón vagy az Azure-erőfor
 ## <a name="diagnostic-logs"></a><a name="diagnostic-logging"></a>Diagnosztikai naplók
 A diagnosztikai naplók részletes információkat biztosítanak a naplózáshoz és a hibaelhárításhoz fontos műveletekről és hibákról. A diagnosztikai naplók eltérnek a tevékenység naplóitól.
 
-A Tevékenységnaplók betekintést nyújtanak az Azure-erőforrásokon végzett műveletekre. A diagnosztikai naplók betekintést nyújtanak az erőforrás által végzett műveletekre. További információ: [Azure monitor diagnosztikai naplók](../azure-monitor/platform/platform-logs-overview.md).
+A Tevékenységnaplók betekintést nyújtanak az Azure-erőforrásokon végzett műveletekre. A diagnosztikai naplók betekintést nyújtanak az erőforrás által végzett műveletekre. További információ: [Azure monitor diagnosztikai naplók](../azure-monitor/essentials/platform-logs-overview.md).
 
 :::image type="content" source="./media/front-door-diagnostics/diagnostic-log.png" alt-text="Diagnosztikai naplók":::
 
@@ -135,7 +135,7 @@ A bejárati ajtó egy objektum-darabolás nevű technikát használ. Nagyméret�
 
 Miután az adathalmaz megérkezik a bejárati ajtó szélén, a gyorsítótárba kerül, és azonnal kézbesítve van a felhasználó számára. A bejárati ajtó ezután párhuzamosan lekéri a következő adathalmazt. Ez a kilépés biztosítja, hogy a tartalom a felhasználó előtt egy darabban maradjon, ami csökkenti a késést. Ez a folyamat addig folytatódik, amíg a teljes fájl le nem töltődik (ha szükséges), az összes bájtos tartomány elérhető (ha szükséges), vagy az ügyfél lezárja a csatlakozást. A byte-Range kérelemmel kapcsolatos további információkért lásd: RFC 7233. A bejárati ajtó gyorsítótárba helyezi a kapott adattömböket. A teljes fájlt nem kell gyorsítótárazni a bejárati ajtó gyorsítótárában. A fájl-vagy byte-tartományokra vonatkozó kérelmeket a rendszer a bejárati ajtó gyorsítótárából kézbesíti. Ha nem az összes adathalmaz gyorsítótárazva van a bejárati ajtón, a rendszer kikéri a kiindulási pontokra vonatkozó adattömböket. Ez az optimalizálás arra támaszkodik, hogy a forráskiszolgáló képes támogatni a bájtos tartományokra vonatkozó kérelmeket. Ha a forráskiszolgáló nem támogatja a bájtok közötti kérelmeket, ez az optimalizálás nem érvényes.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Bejárati ajtó profiljának létrehozása](quickstart-create-front-door.md)
 - [Az előtérben működik](front-door-routing-architecture.md)

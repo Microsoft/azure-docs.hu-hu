@@ -4,12 +4,12 @@ description: Riasztást küld a webalkalmazásnak küldött sikertelen kérelmek
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: 978b63d74e6be4104ff53eef66e9633c78b90eb8
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 0f4de3aaba4acf86df37048134089326196e87ff
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510634"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587543"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Intelligens észlelés – hibák rendellenességei
 [Application Insights](./app-insights-overview.md) automatikusan riasztást küld a közel valós időben, ha a webalkalmazása rendellenes növekedést tapasztal a sikertelen kérések arányában. Ez a művelet szokatlanul megnövekszik a HTTP-kérelmek vagy a sikertelenként jelentett függőségi hívások gyakorisága. A kérelmek esetében a sikertelen kérelmek általában 400-as vagy magasabb szintű hibakódokkal rendelkeznek. A probléma osztályozásának és diagnosztizálásának elősegítése érdekében a riasztás részleteiben a hibák és a kapcsolódó alkalmazásadatok jellemzőinek elemzése szerepel. További diagnosztizálásra a Application Insights portálra mutató hivatkozások is rendelkezésre állnak. A szolgáltatásnak nincs szüksége beállításra és konfigurációra, mivel gépi tanulási algoritmusokat használ a normál meghibásodási arány előrejelzéséhez.
@@ -31,7 +31,7 @@ A riasztás részletei a következőket közlik:
 * Közvetlenül a kapcsolódó keresésekre mutató hivatkozásokat Application Insights.
 
 ## <a name="benefits-of-smart-detection"></a>Az intelligens észlelés előnyei
-A szokásos [metrikus riasztások](../platform/alerts-log.md) jelzik, hogy probléma lehet. Az intelligens észlelés azonban elindítja a diagnosztikai munkát, és sok olyan elemzést hajt végre, amelyet egyébként el kellene végeznie. Az eredményeket szépen csomagolja, és segít a probléma gyökerének gyors megszerzésében.
+A szokásos [metrikus riasztások](../alerts/alerts-log.md) jelzik, hogy probléma lehet. Az intelligens észlelés azonban elindítja a diagnosztikai munkát, és sok olyan elemzést hajt végre, amelyet egyébként el kellene végeznie. Az eredményeket szépen csomagolja, és segít a probléma gyökerének gyors megszerzésében.
 
 ## <a name="how-it-works"></a>Működés
 Az intelligens észlelés figyeli az alkalmazástól kapott adatokat, és különösen a hibák sebességét. Ez a szabály számolja a kérelmek számát, amelyekben a `Successful request` tulajdonság hamis, valamint azon függőségi hívások száma, amelyek esetében a `Successful call` tulajdonság hamis. Alapértelmezés szerint a kérelmek esetében `Successful request == (resultCode < 400)` (hacsak nem írt egyéni kódot a saját [TrackRequest](./api-custom-events-metrics.md#trackrequest) -hívások [szűréséhez](./api-filtering-sampling.md#filtering) vagy létrehozásához). 
@@ -48,7 +48,7 @@ Ha a szolgáltatás ezekkel a hívásokkal van kialakítva, az elemző kivételt
 
 Az eredményül kapott elemzést riasztásként küldi el a rendszer, ha nem konfigurálta.
 
-A [manuálisan beállított riasztásokhoz](../platform/alerts-log.md)hasonlóan megtekintheti a kilőtt riasztás állapotát, amely feloldható, ha a probléma kijavítva van. Adja meg a riasztási szabályokat a Application Insights erőforrás riasztások lapján. Más riasztásokkal ellentétben azonban nem kell beállítania vagy konfigurálnia az intelligens észlelést. Ha szeretné, letilthatja vagy módosíthatja a cél e-mail-címeit.
+A [manuálisan beállított riasztásokhoz](../alerts/alerts-log.md)hasonlóan megtekintheti a kilőtt riasztás állapotát, amely feloldható, ha a probléma kijavítva van. Adja meg a riasztási szabályokat a Application Insights erőforrás riasztások lapján. Más riasztásokkal ellentétben azonban nem kell beállítania vagy konfigurálnia az intelligens észlelést. Ha szeretné, letilthatja vagy módosíthatja a cél e-mail-címeit.
 
 ### <a name="alert-logic-details"></a>Riasztási logika részletei
 
@@ -64,11 +64,11 @@ A riasztásokat a szabadalmaztatott gépi tanulási algoritmus váltja ki, így 
 
 Az intelligens észlelési riasztási szabályt letilthatja a portálról vagy Azure Resource Manager használatával ([lásd a sablon példáját](./proactive-arm-config.md)).
 
-Ez a riasztási szabály egy "Application Insights intelligens észlelés" nevű társított [műveleti csoporttal](../platform/action-groups.md) jön létre, amely e-mail-és webhook-műveleteket tartalmaz, és kiterjeszthető további műveletek elindítására, ha a riasztás tüzet okoz.
+Ez a riasztási szabály egy "Application Insights intelligens észlelés" nevű társított [műveleti csoporttal](../alerts/action-groups.md) jön létre, amely e-mail-és webhook-műveleteket tartalmaz, és kiterjeszthető további műveletek elindítására, ha a riasztás tüzet okoz.
 
 > [!NOTE]
 > Az ebből a riasztási szabályból küldött e-mail-értesítéseket a rendszer alapértelmezés szerint az előfizetés figyelési olvasójának és a közreműködő szerepkörök figyeléséhez társított felhasználók számára küldi el. Erről további információt [itt](./proactive-email-notification.md)talál.
-> A riasztási szabály által küldött értesítések a [Common Alert sémát](../platform/alerts-common-schema.md)követik.
+> A riasztási szabály által küldött értesítések a [Common Alert sémát](../alerts/alerts-common-schema.md)követik.
 >
 
 Nyissa meg a riasztások lapot. A meghibásodási rendellenességek riasztási szabályai szerepelnek a manuálisan beállított riasztásokkal együtt, és láthatja, hogy jelenleg a riasztási állapotban van-e.
@@ -410,7 +410,7 @@ A legutóbbi kilőtt riasztások megtekintéséhez kattintson a **riasztások** 
 ## <a name="whats-the-difference-"></a>Mi a különbség...
 A meghibásodási rendellenességek intelligens észlelése kiegészíti a Application Insights hasonló, de különböző funkcióit.
 
-* a [metrikai riasztásokat](../platform/alerts-log.md) Ön állítja be, és a metrikák széles skáláját figyeli, például a CPU-kihasználtságot, a kérelmek sebességét, az oldal betöltési idejét stb. Ezekkel a riasztással figyelmeztetheti Önt, például ha további erőforrásokat kell hozzáadnia. Ezzel szemben a meghibásodási rendellenességek intelligens észlelése a kritikus mérőszámok kis tartományát fedi le (jelenleg csak a sikertelen kérelmek arányát), amely úgy lett kialakítva, hogy közel valós időben értesítse Önt, amint a webalkalmazás sikertelen kérelmének aránya a webalkalmazás normál viselkedéséhez képest növekszik. A metrikus riasztásokkal ellentétben az intelligens észlelés automatikusan beállítja és frissíti a küszöbértékeket a viselkedés változásakor. Az intelligens észlelés is elindítja a diagnosztikai munkát, így időt takaríthat meg a problémák megoldásában.
+* a [metrikai riasztásokat](../alerts/alerts-log.md) Ön állítja be, és a metrikák széles skáláját figyeli, például a CPU-kihasználtságot, a kérelmek sebességét, az oldal betöltési idejét stb. Ezekkel a riasztással figyelmeztetheti Önt, például ha további erőforrásokat kell hozzáadnia. Ezzel szemben a meghibásodási rendellenességek intelligens észlelése a kritikus mérőszámok kis tartományát fedi le (jelenleg csak a sikertelen kérelmek arányát), amely úgy lett kialakítva, hogy közel valós időben értesítse Önt, amint a webalkalmazás sikertelen kérelmének aránya a webalkalmazás normál viselkedéséhez képest növekszik. A metrikus riasztásokkal ellentétben az intelligens észlelés automatikusan beállítja és frissíti a küszöbértékeket a viselkedés változásakor. Az intelligens észlelés is elindítja a diagnosztikai munkát, így időt takaríthat meg a problémák megoldásában.
 
 * A [teljesítménybeli rendellenességek intelligens észlelése](proactive-performance-diagnostics.md) a gépi intelligenciával észleli a mérőszámokban szokatlan mintákat, és nincs szükség konfigurációra. A meghibásodási rendellenességek intelligens észlelése miatt azonban a teljesítménybeli rendellenességek intelligens észlelésének célja, hogy megkeresse a használat sokrétű, esetlegesen kiszolgált szegmenseit, például egy adott böngésző adott lapjain. Az elemzés naponta történik, és ha bármilyen eredmény található, valószínűleg sokkal kevésbé sürgős, mint a riasztás. Ezzel szemben a hibákra vonatkozó rendellenességek elemzése folyamatosan történik a bejövő alkalmazásadatok esetében, és perceken belül értesítést kap, ha a kiszolgáló meghibásodási aránya nagyobb a vártnál.
 
@@ -441,16 +441,16 @@ A meghibásodási rendellenességek intelligens észlelése kiegészíti a Appli
 
 *Néhány riasztás az ismert problémákról szól, és nem szeretném fogadni őket.*
 
-* Használhatja a [riasztás műveleti szabályok](../platform/alerts-action-rules.md) elnyomása funkciót.
+* Használhatja a [riasztás műveleti szabályok](../alerts/alerts-action-rules.md) elnyomása funkciót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ezek a diagnosztikai eszközök segítenek az alkalmazás adatainak vizsgálatában:
 
-* [Metrika-kezelő](../platform/metrics-charts.md)
+* [Metrika-kezelő](../essentials/metrics-charts.md)
 * [Keresési ablak](./diagnostic-search.md)
-* [Analitika – hatékony lekérdezési nyelv](../log-query/log-analytics-tutorial.md)
+* [Analitika – hatékony lekérdezési nyelv](../logs/log-analytics-tutorial.md)
 
 Az intelligens észlelések automatikusak. De lehet, hogy néhány riasztást szeretne beállítani?
 
-* [Manuálisan konfigurált metrikai riasztások](../platform/alerts-log.md)
+* [Manuálisan konfigurált metrikai riasztások](../alerts/alerts-log.md)
 * [Rendelkezésre állási webes tesztek](./monitor-web-app-availability.md)

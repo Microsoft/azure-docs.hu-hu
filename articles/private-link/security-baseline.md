@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b38d86402f418e5c2b484bb9101e2b4cc3575d6e
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 692b52e8ea6a88a119ca98985864cb9e1daa14c3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196622"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595748"
 ---
 # <a name="azure-security-baseline-for-azure-private-link"></a>Azure biztonsági alapkonfiguráció az Azure Private linkhez
 
@@ -28,9 +28,9 @@ Ez a biztonsági alapkonfiguráció az [Azure biztonsági teljesítménytesztbő
 
 Hozzon létre riasztásokat a Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus erőforrások változásai megváltoznak.
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/platform/alerts-activity-log.md)
+- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -50,7 +50,7 @@ Emellett a szervezeti üzleti követelmények alapján engedélyezheti és elkü
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Naplózás és figyelés privát kapcsolathoz](private-link-overview.md#logging-and-monitoring)
 
@@ -66,9 +66,9 @@ Emellett a szervezeti üzleti követelmények alapján engedélyezheti és elkü
 
 **Útmutatás**: engedélyezze a Azure monitor tevékenységi naplókat, amelyek a privát kapcsolati erőforrásokon végrehajtott naplózási műveleteket, például a műveletet elindította, a művelet bekövetkeztekor, a művelet állapotát és más hasznos naplózási információkat. 
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 - [Naplózás és figyelés privát kapcsolathoz](private-link-overview.md#logging-and-monitoring)
 
@@ -80,7 +80,7 @@ Emellett a szervezeti üzleti követelmények alapján engedélyezheti és elkü
 
 **Útmutató**: a privát hivatkozáshoz kapcsolódó naplók esetében állítsa be a log Analytics munkaterület megőrzési időtartamát a szervezet megfelelőségi szabályainak megfelelően Azure monitor belül. Használja az Azure Storage-fiókokat a naplók hosszú távú/archiválási tárolására.
 
-- [Az adatmegőrzési időszak módosítása Log Analytics](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Az adatmegőrzési időszak módosítása Log Analytics](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 - [Adatmegőrzési szabályzat konfigurálása az Azure Storage-fiók naplóihoz](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -96,9 +96,9 @@ Egy másik lehetőség, hogy lehetővé tegye az Azure Sentinel vagy egy harmadi
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics munkaterület ismertetése](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Log Analytics munkaterület ismertetése](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/log-query/get-started-queries.md)
+- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -114,7 +114,7 @@ A szervezeti üzleti követelmények alapján engedélyezheti és elküldheti az
 
 - [Riasztások kezelése Azure Security Centerban](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Riasztás a log Analytics-naplófájlok adatkezeléséről](../azure-monitor/learn/tutorial-response.md)
+- [Riasztás a log Analytics-naplófájlok adatkezeléséről](../azure-monitor/alerts/tutorial-response.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -192,7 +192,7 @@ Emellett engedélyezze az igény szerinti vagy elég egyszerűen elérhető hozz
 
 - [Azure-tevékenységnaplók integrálása az Azure Monitorba](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Műveleti csoportok konfigurálása egyéni riasztásokhoz és értesítésekhez](../azure-monitor/platform/action-groups.md)
+- [Műveleti csoportok konfigurálása egyéni riasztásokhoz és értesítésekhez](../azure-monitor/alerts/action-groups.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -318,7 +318,7 @@ A szolgáltatását saját maga is kihasználhatja a többi virtuális hálózat
 
 - [Hálózati biztonsági csoport diagnosztikai naplózása](private-link-overview.md#logging-and-monitoring)
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/platform/alerts-activity-log.md)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 

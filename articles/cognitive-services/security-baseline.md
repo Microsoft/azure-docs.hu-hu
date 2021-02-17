@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 97bcf0bedb3ed175f8fdb5d4dc361c069ae0327d
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: c0b773a728fed456a34d0db3a00b353147432012
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805209"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589265"
 ---
 # <a name="azure-security-baseline-for-cognitive-services"></a>Cognitive Services Azure biztonsági alapterve
 
@@ -175,9 +175,9 @@ Az Azure-tervezetek segítségével leegyszerűsítheti a nagy léptékű Azure-
 
 **Útmutató**: az Azure-tevékenység naplójának használatával figyelheti a hálózati erőforrás-konfigurációkat, és azonosíthatja az Azure Cognitive Services-tárolóval kapcsolatos hálózati erőforrások változásait. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják
 
-* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Riasztások létrehozása a Azure Monitorban](../azure-monitor/platform/alerts-activity-log.md)
+* [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -199,7 +199,7 @@ Az Azure-tervezetek segítségével leegyszerűsítheti a nagy léptékű Azure-
 
 **Útmutató**: az Azure-műveletnapló diagnosztikai beállításainak engedélyezése és a naplók elküldése egy log Analytics-munkaterületre, Azure Event hub vagy Azure Storage-fiókba az archívumhoz. A tevékenységi naplók betekintést nyújtanak az Azure Cognitive Services-tárolón végrehajtott műveletekre a vezérlési sík szintjén. Az Azure-tevékenység naplójának adatai segítségével meghatározhatja a "mi, ki és mikor" típusú írási műveleteket (PUT, POST, DELETE) az Azure cache Redis-példányok esetében végzett vezérlési sík szintjén.
 
-* [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/platform/activity-log.md)
+* [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -211,7 +211,7 @@ Az Azure-tervezetek segítségével leegyszerűsítheti a nagy léptékű Azure-
 
 Az Azure Cognitive Services továbbá diagnosztikai eseményeket küld, amelyeket elemzés, riasztás és jelentéskészítés céljából gyűjthet és használhat fel. Cognitive Services tároló diagnosztikai beállításait a Azure Portal használatával konfigurálhatja. Egy vagy több diagnosztikai eseményt is elküldhet egy Storage-fiókba, az Event hub-ba vagy egy Log Analytics-munkaterületre.
 
-* [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/platform/activity-log.md)
+* [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 * [Diagnosztikai beállítások használata az Azure Cognitive Services](./diagnostic-logging.md)
 
@@ -231,7 +231,7 @@ Az Azure Cognitive Services továbbá diagnosztikai eseményeket küld, amelyeke
 
 **Útmutató**: Azure monitoron belül állítsa be a log Analytics munkaterület megőrzési időszakát a szervezet megfelelőségi előírásai szerint. Használja az Azure Storage-fiókokat hosszú távú/archiválási tároláshoz.
 
-* [Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -241,9 +241,9 @@ Az Azure Cognitive Services továbbá diagnosztikai eseményeket küld, amelyeke
 
 **Útmutató**: az Azure-műveletnapló diagnosztikai beállításainak engedélyezése és a naplók elküldése egy log Analytics munkaterületre. Ezek a naplók részletes és gyakori információkat biztosítanak egy olyan erőforrás működéséről, amely az azonosításhoz és a hibakereséshez használatos. Lekérdezéseket hajthat végre Log Analytics a kifejezések kereséséhez, a trendek azonosításához, a mintázatok elemzéséhez, valamint számos más elemzéshez az Azure-Cognitive Services összegyűjtött tevékenységi napló adatai alapján.
 
-* [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/platform/activity-log.md)
+* [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
-* [Azure-Tevékenységnaplók összegyűjtése és elemzése Log Analytics munkaterületen Azure Monitor](../azure-monitor/platform/activity-log.md)
+* [Azure-Tevékenységnaplók összegyűjtése és elemzése Log Analytics munkaterületen Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -257,7 +257,7 @@ A Cognitive Services tároló diagnosztikai beállításainak konfigurálása é
 
 * [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-* [Naplózási riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](../azure-monitor/platform/alerts-log.md)
+* [Naplózási riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](../azure-monitor/alerts/alerts-log.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -570,7 +570,7 @@ Az ügyfél által felügyelt kulcsok tárolásához Azure Key Vault is használ
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használatával riasztásokat hozhat létre, amelyekkel az Azure Cognitive Services és más kritikus vagy kapcsolódó erőforrások éles példányain végezheti el a módosításokat.
 
-* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/platform/alerts-activity-log.md)
+* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Az Azure Security Center monitorozása**: Igen
 

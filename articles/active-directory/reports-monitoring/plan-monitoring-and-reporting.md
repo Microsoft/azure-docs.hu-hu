@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 094ecd88c8b493d44b756d03d700b43cbcba1ee9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 683367251c220abe36660d61463bce9e5a0c52f9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362399"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577766"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Azure Active Directory jelentéskészítés és figyelés üzembe helyezésének megtervezése
 
@@ -47,7 +47,7 @@ Az Azure AD-figyelés segítségével a naplók a következőre irányíthatók:
 * egy Azure Event hub, amely integrálható a meglévő SIEM-eszközökkel, például a splunk, a Sumologic vagy a QRadar.
 
 > [!NOTE]
-A közelmúltban kezdtük el használni a Azure Monitor naplók kifejezést Log Analytics helyett. A naplózási adatokat a rendszer továbbra is egy Log Analytics munkaterületen tárolja, és ugyanazokat a Log Analytics szolgáltatást gyűjti és elemzi. Frissíti a terminológiát, hogy jobban tükrözze a naplók szerepét a [Azure monitorban](../../azure-monitor/platform/data-platform.md). A részletekért tekintse meg [Azure monitor terminológiai módosításokat](../../azure-monitor/terminology.md) .
+A közelmúltban kezdtük el használni a Azure Monitor naplók kifejezést Log Analytics helyett. A naplózási adatokat a rendszer továbbra is egy Log Analytics munkaterületen tárolja, és ugyanazokat a Log Analytics szolgáltatást gyűjti és elemzi. Frissíti a terminológiát, hogy jobban tükrözze a naplók szerepét a [Azure monitorban](../../azure-monitor/data-platform.md). A részletekért tekintse meg [Azure monitor terminológiai módosításokat](../../azure-monitor/terminology.md) .
 
 [További információ a jelentések adatmegőrzési házirendjeiről](./reference-reports-data-retention.md).
 
@@ -97,9 +97,9 @@ A jelentéskészítés és a monitorozás az üzleti igények kielégítésére 
 
 * Az üzleti igények kielégítéséhez szükséges megoldás
 * Örülök, hogy meg kell felelnie az üzleti igényeknek
-* Nem értelmezhető
+* Nem alkalmazható
 
-|Terület |Leírás |
+|Terület |Description |
 |-|-|
 |Megőrzés| **30 napnál hosszabb napló megőrzése**. Jogi vagy üzleti követelmények miatt a naplókat és az Azure AD bejelentkezési naplóit 30 napnál hosszabb ideig kell tárolni. |
 |Elemzés| **A naplóknak kereshetőnek kell lenniük**. A tárolt naplóknak analitikai eszközökkel kell kereshetőnek lennie. |
@@ -121,7 +121,7 @@ További információ [az adatok a tárfiókokba való irányításáról](./qui
 
 #### <a name="send-logs-to-azure-monitor-logs"></a>Naplók elküldése Azure Monitor naplókba
 
-[Azure monitor naplók](../../azure-monitor/log-query/log-query-overview.md) különböző forrásokból származó figyelési adatok összesítését végzik. Egy lekérdezési nyelvet és elemzési motort is biztosít, amely betekintést nyújt az alkalmazások működésére és az erőforrások használatára. Az Azure AD-tevékenység naplófájljainak Azure Monitor naplókba küldésével gyorsan lekérheti, figyelheti és riasztást gyűjthet az összegyűjtött adatokról. Akkor használja ezt a módszert, ha nem rendelkezik olyan meglévő SIEM-megoldással, amelyet közvetlenül szeretne elküldeni, de lekérdezéseket és elemzéseket szeretne küldeni. Miután az adatai beAzure Monitor naplókba, elküldheti azt az Event hub-ba, és onnan egy SIEM-be, ha szeretné.
+[Azure monitor naplók](../../azure-monitor/logs/log-query-overview.md) különböző forrásokból származó figyelési adatok összesítését végzik. Egy lekérdezési nyelvet és elemzési motort is biztosít, amely betekintést nyújt az alkalmazások működésére és az erőforrások használatára. Az Azure AD-tevékenység naplófájljainak Azure Monitor naplókba küldésével gyorsan lekérheti, figyelheti és riasztást gyűjthet az összegyűjtött adatokról. Akkor használja ezt a módszert, ha nem rendelkezik olyan meglévő SIEM-megoldással, amelyet közvetlenül szeretne elküldeni, de lekérdezéseket és elemzéseket szeretne küldeni. Miután az adatai beAzure Monitor naplókba, elküldheti azt az Event hub-ba, és onnan egy SIEM-be, ha szeretné.
 
 Megtudhatja, hogyan [küldhet adatküldést Azure monitor naplókba](./howto-integrate-activity-logs-with-log-analytics.md).
 

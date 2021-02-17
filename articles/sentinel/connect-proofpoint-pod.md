@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: bdc9cbf942b88af93befa34f73eb3a90469cfcef
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 73a9d9c7ab321aebd615922e5d4395c0318e809c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98873501"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580449"
 ---
 # <a name="connect-your-proofpoint-on-demand-email-security-pod-solution-to-azure-sentinel"></a>A Proofpoint on demand mail Security (POD) megoldásának összekapcsolása az Azure Sentinel szolgáltatással
 
@@ -35,7 +35,7 @@ Ez a cikk azt ismerteti, hogyan csatlakoztatható a Proofpoint on demand E-mail 
 
 - Olvasási és írási engedéllyel kell rendelkeznie az Azure Sentinel munkaterületen.
 
-- Olvasási jogosultsággal kell rendelkeznie a munkaterület megosztott kulcsaihoz. [További információ a munkaterület kulcsairól](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key).
+- Olvasási jogosultsággal kell rendelkeznie a munkaterület megosztott kulcsaihoz. [További információ a munkaterület kulcsairól](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key).
 
 - Függvényalkalmazás létrehozásához olvasási és írási engedéllyel kell rendelkeznie a Azure Functionshoz. [További információ a Azure Functionsról](../azure-functions/index.yml).
 
@@ -63,7 +63,7 @@ Néhány hasznos minta lekérdezéshez tekintse meg az összekötő lap **követ
 
 Akár 60 percet is igénybe vehet, amíg a naplók elkezdenek megjelenni Log Analyticsban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható a Proofpoint on demand E-mail biztonság az Azure Sentinel szolgáltatáshoz. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

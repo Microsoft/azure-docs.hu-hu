@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: f9b9681b08f5864dc34bbf1c35dc6919129c24cb
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 4c8f4b490c46ed8061201ba6362999f0e426ecb7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518804"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596334"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Adattitkosítás Azure Database for MySQL ügyfél által felügyelt kulccsal
 
@@ -118,7 +118,7 @@ Az adatbázis állapotának figyeléséhez, valamint az átlátható adattitkos�
 * [Azure Resource Health](../service-health/resource-health-overview.md): egy nem elérhető adatbázis, amely nem fér hozzá az ügyfél kulcsához, az adatbázishoz való első kapcsolódás megtagadása után "nem érhető el" érték jelenik meg.
 * [Műveletnapló](../service-health/alerts-activity-log-service-notifications-portal.md): Ha az ügyfél által felügyelt Key Vault nem sikerül hozzáférni az ügyfél kulcsához, a rendszer hozzáadja a bejegyzéseket a tevékenységi naplóhoz. Ha riasztásokat hoz létre ezekhez az eseményekhez, a lehető leghamarabb visszaállíthatja a hozzáférést.
 
-* [Műveleti csoportok](../azure-monitor/platform/action-groups.md): ezeket a csoportokat úgy definiálhatja, hogy a beállítások alapján küldje el az értesítéseket és a riasztásokat.
+* [Műveleti csoportok](../azure-monitor/alerts/action-groups.md): ezeket a csoportokat úgy definiálhatja, hogy a beállítások alapján küldje el az értesítéseket és a riasztásokat.
 
 ## <a name="restore-and-replicate-with-a-customers-managed-key-in-key-vault"></a>Visszaállítás és replikálás az ügyfél felügyelt kulcsával Key Vault
 
@@ -143,6 +143,6 @@ A Azure Database for MySQL esetében az ügyfelek által felügyelt kulcs (CMK) 
 
 * A titkosítás csak az RSA 2048 titkosítási kulccsal támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan állíthatja be az adattitkosítást a MySQL-hez készült Azure-adatbázishoz a [Azure Portal](howto-data-encryption-portal.md) és az [Azure CLI](howto-data-encryption-cli.md)használatával.

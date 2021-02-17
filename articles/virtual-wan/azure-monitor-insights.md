@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: d14ae86d41caec3c1bd897c2c81bee748dcc312c
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 6ead00a0979d81ef11ac81fb13a1abe31317691d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050884"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571325"
 ---
 # <a name="azure-monitor-insights-for-virtual-wan"></a>Azure Monitor a virtuális WAN-ra vonatkozó bepillantást
 
@@ -85,7 +85,7 @@ A **részletes mérőszámok oldal** megnyitásához válassza a **részletes m�
 
 :::image type="content" source="./media/azure-monitor-insights/detailed-metrics.png" alt-text="A részletes mérőszámok irányítópultját bemutató képernyőkép." lightbox="./media/azure-monitor-insights/detailed-metrics.png":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* További információ: [mérőszámok a Azure monitorban](../azure-monitor/platform/data-platform-metrics.md).
+* További információ: [mérőszámok a Azure monitorban](../azure-monitor/essentials/data-platform-metrics.md).
 * Az összes virtuális WAN-metrika részletes ismertetését lásd: [virtuális WAN-naplók és-metrikák](logs-metrics.md).

@@ -6,23 +6,23 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 4d4287b877f5327b7fd485358b26148686b9515b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7ccd01f8c351ac2a7326a3b893bd78d14599db50
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487925"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588301"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL figyelése és finomhangolása – egyetlen kiszolgáló
 A kiszolgálók figyelési adatai segítenek a számítási feladatok megoldásában és optimalizálásában. Azure Database for PostgreSQL különböző figyelési lehetőségeket biztosít a kiszolgáló működésének áttekintéséhez.
 
 ## <a name="metrics"></a>Mérőszámok
-Azure Database for PostgreSQL különböző mérőszámokat biztosít, amelyek betekintést nyújtanak a PostgreSQL-kiszolgálót támogató erőforrások viselkedésére. Minden metrika egyperces gyakorisággal van kibocsátva, és akár [93 napig](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics)is eltarthat. A mérőszámokra vonatkozó riasztásokat is beállíthat. Részletes útmutatást a [riasztások beállítása](howto-alert-on-metric.md)című témakörben talál. Az egyéb feladatok közé tartozik az automatizált műveletek beállítása, a speciális elemzések végrehajtása és az archiválási előzmények. További információt az [Azure mérőszámok áttekintése](../azure-monitor/platform/data-platform.md)című témakörben talál.
+Azure Database for PostgreSQL különböző mérőszámokat biztosít, amelyek betekintést nyújtanak a PostgreSQL-kiszolgálót támogató erőforrások viselkedésére. Minden metrika egyperces gyakorisággal van kibocsátva, és akár [93 napig](../azure-monitor/essentials/data-platform-metrics.md#retention-of-metrics)is eltarthat. A mérőszámokra vonatkozó riasztásokat is beállíthat. Részletes útmutatást a [riasztások beállítása](howto-alert-on-metric.md)című témakörben talál. Az egyéb feladatok közé tartozik az automatizált műveletek beállítása, a speciális elemzések végrehajtása és az archiválási előzmények. További információt az [Azure mérőszámok áttekintése](../azure-monitor/data-platform.md)című témakörben talál.
 
 ### <a name="list-of-metrics"></a>Metrikák listája
 Ezek a metrikák a Azure Database for PostgreSQL számára érhetők el:
 
-|Metrika|Metrika megjelenítendő neve|Egység|Leírás|
+|Metric|Metrika megjelenítendő neve|Unit (Egység)|Description|
 |---|---|---|---|
 |cpu_percent|CPU-százalék|Százalék|A használatban lévő CPU százalékos aránya.|
 |memory_percent|Memória százaléka|Százalék|A használatban lévő memória százalékos aránya.|
@@ -42,7 +42,7 @@ Ezek a metrikák a Azure Database for PostgreSQL számára érhetők el:
 |pg_replica_log_delay_in_seconds|Replika késése|Másodperc|Az utolsó visszajátszott tranzakció óta eltelt idő. Ez a metrika csak replika kiszolgálók esetében érhető el.|
 
 ## <a name="server-logs"></a>Kiszolgálói naplók
-Engedélyezheti a naplózást a kiszolgálón. Ezeket az erőforrás-naplókat [Azure monitor naplókba](../azure-monitor/log-query/log-query-overview.md), Event Hubsba és egy Storage-fiókba lehet elküldeni. Ha többet szeretne megtudni a naplózásról, látogasson el a [kiszolgálói naplók](concepts-server-logs.md) oldalra.
+Engedélyezheti a naplózást a kiszolgálón. Ezeket az erőforrás-naplókat [Azure monitor naplókba](../azure-monitor/logs/log-query-overview.md), Event Hubsba és egy Storage-fiókba lehet elküldeni. Ha többet szeretne megtudni a naplózásról, látogasson el a [kiszolgálói naplók](concepts-server-logs.md) oldalra.
 
 ## <a name="query-store"></a>Lekérdezéstár
 A [lekérdezési tár](concepts-query-store.md) nyomon követi a lekérdezési teljesítményt az idő múlásával, beleértve a lekérdezési futtatókörnyezet statisztikáit és a várakozási eseményeket. A szolgáltatás egy **azure_sys** nevű rendszeradatbázisban tartja fenn a lekérdezési futtatókörnyezet teljesítményadatait a query_store sémában. Az adatgyűjtést és-tárolást különböző konfigurációs gombokon keresztül szabályozhatja.
@@ -61,6 +61,6 @@ További információ az értesítések beállításáról a [tervezett karbanta
 
 ## <a name="next-steps"></a>Következő lépések
 - A riasztások metrikai létrehozásával kapcsolatos útmutatást a riasztások [beállítása](howto-alert-on-metric.md) című témakörben tekintheti meg.
-- A metrikák Azure Portal, REST API vagy parancssori felülettel való eléréséről és exportálásáról további információt az [Azure-metrikák áttekintése](../azure-monitor/platform/data-platform.md) című témakörben talál.
+- A metrikák Azure Portal, REST API vagy parancssori felülettel való eléréséről és exportálásáról további információt az [Azure-metrikák áttekintése](../azure-monitor/data-platform.md) című témakörben talál.
 - A [kiszolgáló figyelésére vonatkozó ajánlott eljárásokért](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-postgresql-monitoring/)olvassa el a blogot.
 - További információ a [tervezett karbantartási értesítésekről](./concepts-planned-maintenance-notification.md) Azure Database for PostgreSQL-egyetlen kiszolgálón.

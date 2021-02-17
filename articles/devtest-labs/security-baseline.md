@@ -3,12 +3,12 @@ title: Azure DevTest Labs Azure biztonsági alapterve
 description: Azure DevTest Labs Azure biztonsági alapterve
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 09b4e28437c79961d53cf07b068e3169d20fe0c4
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: c192f881dd4a8544b9c833eece56fb3765cd07f8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789904"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582030"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs Azure biztonsági alapterve
 
@@ -34,7 +34,7 @@ A következő cikkből megtudhatja, hogyan konfigurálhatja az időszinkronizál
 ### <a name="22-configure-central-security-log-management"></a>2,2: a központi biztonsági naplók felügyeletének konfigurálása
 **Útmutató:** Engedélyezze az Azure-műveletnapló diagnosztikai beállításait, és küldje el a naplókat egy Log Analytics munkaterületre, az Azure Event hub vagy az Azure Storage-fiókba az archívumhoz. A tevékenységi naplók betekintést nyújtanak a Azure DevTest Labs példányain végrehajtott műveletekre a felügyeleti sík szintjén. Az Azure-beli tevékenység naplójának adatai alapján meghatározhatja, hogy a DevTest Labs-példányok felügyeleti síkon milyen műveleteket hajtson végre az írási műveletekhez (PUT, POST, DELETE).
 
-További információ: [diagnosztikai beállítások létrehozása a platform naplófájljainak és metrikáinak különböző célhelyekre küldéséhez](../azure-monitor/platform/diagnostic-settings.md).
+További információ: [diagnosztikai beállítások létrehozása a platform naplófájljainak és metrikáinak különböző célhelyekre küldéséhez](../azure-monitor/essentials/diagnostic-settings.md).
 
 **Azure Security Center figyelés:** Jelenleg nem érhető el
 
@@ -43,7 +43,7 @@ További információ: [diagnosztikai beállítások létrehozása a platform na
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: az Azure-erőforrások naplózásának engedélyezése
 **Útmutató:** Engedélyezze az Azure-műveletnapló diagnosztikai beállításait, és küldje el a naplókat egy Log Analytics munkaterületre, az Azure Event hub vagy az Azure Storage-fiókba az archívumhoz. A tevékenységi naplók betekintést nyújtanak a Azure DevTest Labs példányain végrehajtott műveletekre a felügyeleti sík szintjén. Az Azure-tevékenység naplójának adatai alapján meghatározhatja a "mi, ki és mikor" minden írási művelethez (PUT, POST, DELETE) a DevTest Labs-példányok felügyeleti síkja szintjén.
 
-További információ: [diagnosztikai beállítások létrehozása a platform naplófájljainak és metrikáinak különböző célhelyekre küldéséhez](../azure-monitor/platform/diagnostic-settings.md).
+További információ: [diagnosztikai beállítások létrehozása a platform naplófájljainak és metrikáinak különböző célhelyekre küldéséhez](../azure-monitor/essentials/diagnostic-settings.md).
 
 **Azure Security Center figyelés:** Jelenleg nem érhető el
 
@@ -54,7 +54,7 @@ További információ: [diagnosztikai beállítások létrehozása a platform na
 
 További információért tekintse át a következő cikkeket: 
 
-- [Az Azure-beli virtuális gépek belső gazdagép-naplóinak összegyűjtése Azure Monitor](../azure-monitor/learn/quick-collect-azurevm.md)
+- [Az Azure-beli virtuális gépek belső gazdagép-naplóinak összegyűjtése Azure Monitor](../azure-monitor/vm/quick-collect-azurevm.md)
 - [Az Azure Security Center adatgyűjtés ismertetése](../security-center/security-center-enable-data-collection.md)
 
 **Azure Security Center figyelés:** igen
@@ -62,9 +62,9 @@ További információért tekintse át a következő cikkeket:
 **Felelősség:** Ügyfél
 
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: a biztonsági napló tárolási adatmegőrzésének konfigurálása
-**_Útmutató:_* A Azure Monitor a szervezet megfelelőségi előírásai szerint állítsa be a Azure DevTest Labs példányokhoz társított Log Analytics-munkaterületek naplózásának megőrzési időtartamát.
+***Útmutató:** A Azure Monitor a szervezet megfelelőségi előírásai szerint állítsa be a Azure DevTest Labs példányokhoz társított Log Analytics-munkaterületek naplózásának megőrzési időtartamát.
 
-További információ: a [napló megőrzési paramétereinek beállítása](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) .
+További információ: a [napló megőrzési paramétereinek beállítása](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period) .
 
 **Azure Security Center figyelés:** Nem alkalmazható
 
@@ -75,8 +75,8 @@ További információ: a [napló megőrzési paramétereinek beállítása](../a
 
 További információért tekintse át a következő cikkeket:
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/platform/diagnostic-settings.md)
-- [Azure-Tevékenységnaplók összegyűjtése és elemzése Log Analytics munkaterületen Azure Monitor](../azure-monitor/platform/activity-log.md)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/diagnostic-settings.md)
+- [Azure-Tevékenységnaplók összegyűjtése és elemzése Log Analytics munkaterületen Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 **Azure Security Center figyelés:** Nem alkalmazható
 
@@ -85,7 +85,7 @@ További információért tekintse át a következő cikkeket:
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: riasztások engedélyezése rendellenes tevékenységhez
 **Útmutató:** Az Azure Log Analytics munkaterület segítségével figyelheti és riasztást tehet a rendellenes tevékenységekről a biztonsági naplókban és a Azure DevTest Labs kapcsolatos eseményekben.
 
-További információkért tekintse meg a következő cikket: [riasztás a log Analytics-naplózási adatokról](../azure-monitor/learn/tutorial-response.md)
+További információkért tekintse meg a következő cikket: [riasztás a log Analytics-naplózási adatokról](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center figyelés:** Jelenleg nem érhető el
 
@@ -109,8 +109,8 @@ További információkért tekintse meg a következő cikket: [riasztás a log A
 **Útmutató:** A Azure DevTest Labs az ügyfél által birtokolt és felügyelt Azure számítási gépeket hoz létre. A folyamat-létrehozási esemény és a mező naplózásához használja a Microsoft monitoring agentet az összes támogatott Azure Windows-alapú virtuális gépen `CommandLine` . A támogatott Azure Linux rendszerű virtuális gépek esetében a konzol naplózását manuálisan is konfigurálhatja a csomópontok alapján, és a syslog használatával tárolhatja az adattárakat. Emellett a Azure Monitor Log Analytics munkaterülete segítségével tekintheti át a naplókat, és futtathat lekérdezéseket az Azure-beli virtuális gépekről naplózott adatokon.
 
 - [Adatgyűjtés az Azure Security Centerben](../security-center/security-center-enable-data-collection.md#data-collection-tier)
-- [Egyéni lekérdezések futtatása a Azure Monitorban](../azure-monitor/log-query/get-started-queries.md)
-- [Rendszernapló-adatforrások az Azure Monitorban](../azure-monitor/platform/data-sources-syslog.md)
+- [Egyéni lekérdezések futtatása a Azure Monitorban](../azure-monitor/logs/get-started-queries.md)
+- [Rendszernapló-adatforrások az Azure Monitorban](../azure-monitor/agents/data-sources-syslog.md)
 
 **Azure Security Center figyelés:** igen
 
@@ -175,9 +175,9 @@ Emellett a dedikált rendszergazdai fiókok nyomon követésének elősegítése
 - [MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)  
 - [Identitás és hozzáférés figyelése Azure Security Centeron belül](../security-center/security-center-identity-access.md)
 
-**Azure Security Center figyelés:** _ igen
+**Azure Security Center figyelés:*** igen
 
-_ *Felelősség:** ügyfél
+**Felelősség:** Ügyfél
 
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: dedikált gépek (privilegizált hozzáférési munkaállomások) használata az összes felügyeleti feladathoz
@@ -353,7 +353,7 @@ Alapértelmezés szerint az összes Lab operációs rendszer és adatlemez egy p
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: a kritikus Azure-erőforrások változásainak naplózása és riasztása
 **Útmutató:** A Azure Monitor és az Azure-tevékenység naplójának használatával riasztásokat hozhat létre, amelyekkel a DevTest Labs-példányok és egyéb kritikus vagy kapcsolódó erőforrások módosíthatók.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/platform/alerts-activity-log.md)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 - [Riasztások létrehozása a DevTest Labs tevékenység-naplózási eseményeihez](create-alerts.md)
 
 **Azure Security Center figyelés:** Nem alkalmazható
@@ -387,7 +387,7 @@ A Microsoft a Azure DevTest Labst támogató mögöttes erőforrásokon hajtja v
 **Felelősség:** Ügyfél
 
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5,3: a harmadik féltől származó szoftveres javításokat kezelő megoldás telepítése
-**_Útmutató:_* a labor-rendszergazdaként a [DevTest Labs](add-artifact-vm.md) -összetevők segítségével automatizálhatja a tesztkörnyezet egyéni rendszerképeinek frissítéseit, beleértve a biztonsági javításokat és az egyéb frissítéseket is. 
+***Útmutató:*** Labor-rendszergazdaként a [DevTest Labs](add-artifact-vm.md) -összetevőkkel automatizálhatja a tesztkörnyezet egyéni rendszerképeinek frissítéseit, beleértve a biztonsági javításokat és egyéb frissítéseket is. 
 
 További információ a [DevTest Labs Image factoryről](image-factory-create.md), amely egy olyan konfigurációs programkódot használó megoldás, amely rendszeresen készít és forgalmaz képeket automatikusan az összes kívánt konfigurációval. 
 
@@ -396,7 +396,7 @@ Előfizetés-rendszergazdaként használhatja az Azure Update Management megold�
 - [Update Management megoldás az Azure-ban](../automation/update-management/overview.md)
 - [A virtuális gépek frissítéseinek és javításának kezelése](../automation/update-management/overview.md)
 
-_ *Azure Security Center figyelés:** nem alkalmazható
+**Azure Security Center figyelés:** Nem alkalmazható
 
 **Felelősség:** Ügyfél
 
@@ -886,7 +886,7 @@ Azure Security Center figyelés: * * * * nem alkalmazható
 
 **Felelősség:** Megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a következő cikket:
 
 - [Biztonsági riasztások a Azure DevTest Labs környezetekben](environment-security-alerts.md)

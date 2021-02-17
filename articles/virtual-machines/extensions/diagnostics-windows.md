@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: mimckitt
-ms.openlocfilehash: 9561f96dafd936244831cff2ed05cda4d915d27d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 990bd7c21bec0f42034a0044b58d1589665700ec
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955973"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580159"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>A Azure Diagnostics engedélyezése a PowerShell használatával a Windows rendszerű virtuális gépeken
 
@@ -213,4 +213,4 @@ A konfigurációt frissíteni kell, hogy tartalmazza a következőket:
 
 ## <a name="next-steps"></a>Következő lépések
 * A Azure Diagnostics képesség és a problémák elhárítására szolgáló egyéb technikák használatával kapcsolatos további útmutatásért lásd: a [diagnosztika engedélyezése az Azure-ban Cloud Services és Virtual Machines](../../cloud-services/cloud-services-dotnet-diagnostics.md).
-* A [diagnosztikai konfigurációk sémája](../../azure-monitor/platform/diagnostics-extension-versions.md) a diagnosztikai bővítmény különböző XML-konfigurációs beállításait ismerteti.
+* A [diagnosztikai konfigurációk sémája](../../azure-monitor/agents/diagnostics-extension-versions.md) a diagnosztikai bővítmény különböző XML-konfigurációs beállításait ismerteti.

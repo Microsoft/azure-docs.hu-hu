@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
 ms.date: 05/08/2019
-ms.openlocfilehash: 7dae067b5d8648f1441047c26f8792e55591b64d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 95d35b3496248db9acb69181191acde58ede7b44
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368523"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589247"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory által támogatott számítási környezetek
 
@@ -322,6 +322,9 @@ Tekintse meg a következő cikkeket, ha új Azure Batch szolgáltatás:
 * A Azure Batch szolgáltatás áttekintéséhez [Azure batch alapjai](../batch/batch-technical-overview.md) .
 * A [New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) parancsmaggal hozzon létre egy Azure batch-fiókot (vagy) [Azure Portal](../batch/batch-account-create-portal.md) a Azure batch-fiók Azure Portal használatával történő létrehozásához. A parancsmag használatával kapcsolatos részletes utasításokért lásd: a [PowerShell használata Azure batch-fiók kezeléséhez](/archive/blogs/windowshpc/using-azure-powershell-to-manage-azure-batch-account) .
 * [New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) parancsmag Azure batch készlet létrehozásához.
+
+> [!IMPORTANT]
+> Új Azure Batch-készlet létrehozásakor a "VirtualMachineConfiguration" használata szükséges, és nem "CloudServiceConfiguration". További részletekért tekintse meg [Azure batch készlet áttelepítési Útmutatóját](https://docs.microsoft.com/azure/batch/batch-pool-cloud-service-to-virtual-machine-configuration). 
 
 ### <a name="example"></a>Példa
 

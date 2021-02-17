@@ -3,12 +3,12 @@ title: A szabályzat-hozzárendelési struktúra részletei
 description: Az Azure Policy által használt szabályzat-hozzárendelési definíciót ismerteti az erőforrásokhoz a kiértékeléshez.
 ms.date: 01/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 1151c931863e1139b76c34ced12c4e2842f83cc6
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 625314a8b83a4d0cc76eae51eae8d357e39d2a6a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558449"
+ms.locfileid: "100581957"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy-hozzárendelés struktúrája
 
@@ -63,13 +63,13 @@ A **DisplayName** és a **Leírás** használatával azonosíthatja a szabályza
 
 ## <a name="enforcement-mode"></a>Kényszerítési mód
 
-A **enforcementMode** tulajdonság lehetővé teszi a felhasználók számára, hogy a házirend érvénybe léptetése vagy az [Azure-műveletnapló](../../../azure-monitor/platform/platform-logs-overview.md)bejegyzéseinek elindítása nélkül teszteljék a meglévő erőforrásokra vonatkozó szabályzatok eredményét. Ezt a forgatókönyvet általában "What If"-ként emlegetik, és a biztonságos üzembe helyezési gyakorlatokhoz igazodik. a **enforcementMode** eltér a [letiltott](./effects.md#disabled) effektustól, mivel ennek hatására az erőforrás-kiértékelés egyáltalán nem történik meg.
+A **enforcementMode** tulajdonság lehetővé teszi a felhasználók számára, hogy a házirend érvénybe léptetése vagy az [Azure-műveletnapló](../../../azure-monitor/essentials/platform-logs-overview.md)bejegyzéseinek elindítása nélkül teszteljék a meglévő erőforrásokra vonatkozó szabályzatok eredményét. Ezt a forgatókönyvet általában "What If"-ként emlegetik, és a biztonságos üzembe helyezési gyakorlatokhoz igazodik. a **enforcementMode** eltér a [letiltott](./effects.md#disabled) effektustól, mivel ennek hatására az erőforrás-kiértékelés egyáltalán nem történik meg.
 
 Ennek a tulajdonságnak a következő értékei vannak:
 
-|Mód |JSON-érték |Típus |Szervizelés manuálisan |Tevékenység naplójának bejegyzése |Leírás |
+|Mód |JSON-érték |Típus |Szervizelés manuálisan |Tevékenység naplójának bejegyzése |Description |
 |-|-|-|-|-|-|
-|Engedélyezve |Alapértelmezett |sztring |Igen |Igen |A házirend hatása az erőforrás létrehozásakor vagy frissítésekor lép érvénybe. |
+|Engedélyezve |Alapértelmezett |sztring |Igen |Yes |A házirend hatása az erőforrás létrehozásakor vagy frissítésekor lép érvénybe. |
 |Disabled (Letiltva) |DoNotEnforce |sztring |Igen |Nem | A házirend-effektus nem kényszerített az erőforrás létrehozásakor vagy frissítésekor. |
 
 Ha a **enforcementMode** nincs megadva házirend-vagy kezdeményezési definícióban, a rendszer az _alapértelmezett_ értéket használja. A [szervizelési feladatok](../how-to/remediate-resources.md) a [deployIfNotExists](./effects.md#deployifnotexists) házirendek esetében is elindíthatók, még akkor is, ha a **enforcementMode** beállítása _DoNotEnforce_.

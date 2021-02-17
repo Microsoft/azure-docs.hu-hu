@@ -3,12 +3,12 @@ title: Az operatív Uram fejlesztése az Advisor szolgáltatással
 description: Az Azure-előfizetések működési kiválóságának optimalizálása Azure Advisor használatával.
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 63e88129a7418e82ea13429c33d8735e96616476
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 0b938a0c7a42182bb8d2a50b48d65a0844d952a6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122619"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579954"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>Az operatív kiválóság elérése Azure Advisor használatával
 
@@ -38,7 +38,7 @@ Ha a készlet elavult belső összetevőt használ, törölje, majd hozza létre
 
 ## <a name="repair-invalid-log-alert-rules"></a>Érvénytelen naplózási riasztási szabályok javítása
 
-Azure Advisor észleli azokat a riasztási szabályokat, amelyekben a feltételek szakaszban megadott lekérdezések érvénytelenek. A naplózási riasztási szabályokat a Azure Monitorban hozhatja létre, és a segítségével meghatározott időközönként futtathatja az elemzési lekérdezéseket. A lekérdezés eredményei határozzák meg, hogy egy riasztást aktiválni kell-e. Az elemzési lekérdezések a hivatkozott erőforrások, táblák vagy parancsok változásai miatt változhatnak az idő múlásával. Az Advisor azt javasolja, hogy javítsa ki a lekérdezést a riasztási szabályban, hogy megakadályozza, hogy a rendszer automatikusan letiltsa, és biztosítsa az Azure-beli erőforrások lefedettségét. [További információ a riasztási szabályok hibaelhárításáról.](../azure-monitor/platform/alerts-troubleshoot-log.md)
+Azure Advisor észleli azokat a riasztási szabályokat, amelyekben a feltételek szakaszban megadott lekérdezések érvénytelenek. A naplózási riasztási szabályokat a Azure Monitorban hozhatja létre, és a segítségével meghatározott időközönként futtathatja az elemzési lekérdezéseket. A lekérdezés eredményei határozzák meg, hogy egy riasztást aktiválni kell-e. Az elemzési lekérdezések a hivatkozott erőforrások, táblák vagy parancsok változásai miatt változhatnak az idő múlásával. Az Advisor azt javasolja, hogy javítsa ki a lekérdezést a riasztási szabályban, hogy megakadályozza, hogy a rendszer automatikusan letiltsa, és biztosítsa az Azure-beli erőforrások lefedettségét. [További információ a riasztási szabályok hibaelhárításáról.](../azure-monitor/alerts/alerts-troubleshoot-log.md)
 
 ## <a name="use-azure-policy-recommendations"></a>Azure Policy javaslatok használata
 

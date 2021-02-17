@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e6a42a39e55e379865332fce8a9aed8dfe78f57b
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 28be34e9323697759b2492d86b968f8e3d47a28e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201331"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572044"
 ---
 # <a name="azure-security-baseline-for-azure-cloud-services"></a>Azure biztonsági alapkonfiguráció az Azure Cloud Services
 
@@ -175,9 +175,9 @@ Betekintést nyerhet az Azure-ba, az előfizetési szintű eseményekbe. Ilyen i
 
 Hozzon létre egy diagnosztikai beállítást, amely elküldi a műveletnapló Azure Monitor, Azure Event Hubs az Azure-on kívülre vagy az Azure Storage-ba archiválásra. Az értesítési riasztások Azure Monitor konfigurálása, ha az Azure-Cloud Services kritikus erőforrásai módosulnak. 
 
-- [Azure-tevékenység naplója](../azure-monitor/platform/activity-log.md)
+- [Azure-tevékenység naplója](../azure-monitor/essentials/activity-log.md)
 
-- [Műveletnapló-riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](../azure-monitor/platform/alerts-activity-log.md)
+- [Műveletnapló-riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Traffic Manager figyelés](../traffic-manager/traffic-manager-monitoring.md)
 
@@ -233,7 +233,7 @@ Az Azure Cloud Services a rendelkezésre állás, a teljesítmény, a hibák és
 
 - [A diagnosztika bekapcsolása a Visual Studióban az üzembe helyezés előtt](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?preserve-view=true#to-turn-on-diagnostics-in-visual-studio-before-deployment)
 
-- [Változási előzmények megtekintése](../azure-monitor/platform/activity-log.md#view-change-history)
+- [Változási előzmények megtekintése](../azure-monitor/essentials/activity-log.md#view-change-history)
 
 - [Azure Cloud Service Application Insights (klasszikus)](../azure-monitor/app/cloudservices.md)
 
@@ -465,9 +465,9 @@ Az ideiglenes lemezekben tárolt alkalmazásadatok nem titkosítottak. Az ügyf�
 
 Emellett a Application Insights képes figyelni az Azure Cloud Services-alkalmazásokat a rendelkezésre állás, a teljesítmény, a hibák és a használat tekintetében. Ez a Application Insights SDK-k összesített adatait használja az Azure-Cloud Services Azure Diagnostics adataival.
 
-- [Klasszikus metrikai riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](../azure-monitor/platform/alerts-classic-portal.md)
+- [Klasszikus metrikai riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](../azure-monitor/alerts/alerts-classic-portal.md)
 
-- [Metrikus riasztások áttekintése](../azure-monitor/platform/alerts-metric-overview.md) 
+- [Metrikus riasztások áttekintése](../azure-monitor/alerts/alerts-metric-overview.md) 
 
 - [Azure Cloud Service Application Insights (klasszikus)](../azure-monitor/app/cloudservices.md)
 

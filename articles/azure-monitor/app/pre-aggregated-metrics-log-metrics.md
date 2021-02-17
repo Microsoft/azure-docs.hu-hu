@@ -6,12 +6,12 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9b93ac774dffb837d93853353e83b8da4ab4d8d4
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: c419411b0956cdc42055f0e97a47fc8e4ddb38c9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027159"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589736"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Naplóalapú és előre összesített metrikák az Application Insightsban
 
@@ -30,12 +30,12 @@ Ugyanakkor előfordulhat, hogy az események teljes készletének begyűjtése n
 
 ## <a name="pre-aggregated-metrics"></a>Előre összevont mérőszámok
 
-A log-alapú 2018 mérőszámokon kívül a Application Insights csapat az idősorozatra optimalizált speciális adattárban tárolt mérőszámok nyilvános előzetes verzióját is elküldte. Az új metrikák már nem tekinthetők meg olyan egyedi eseményekként, amelyeknek sok tulajdonsága van. Ehelyett a rendszer előre összesített idősorozatként tárolja őket, és csak a legfontosabb dimenziókkal. Így az új metrikák a lekérdezési időpontnál jobbak: az adatok beolvasása sokkal gyorsabban történik, és kevesebb számítási teljesítményt igényel. Ez Következésképpen olyan új forgatókönyveket tesz lehetővé, mint a [közel valós idejű riasztás a mérőszámok méreteivel](../platform/alerts-metric-near-real-time.md), rugalmasabb [irányítópultokkal](./overview-dashboard.md)és egyebekkel.
+A log-alapú 2018 mérőszámokon kívül a Application Insights csapat az idősorozatra optimalizált speciális adattárban tárolt mérőszámok nyilvános előzetes verzióját is elküldte. Az új metrikák már nem tekinthetők meg olyan egyedi eseményekként, amelyeknek sok tulajdonsága van. Ehelyett a rendszer előre összesített idősorozatként tárolja őket, és csak a legfontosabb dimenziókkal. Így az új metrikák a lekérdezési időpontnál jobbak: az adatok beolvasása sokkal gyorsabban történik, és kevesebb számítási teljesítményt igényel. Ez Következésképpen olyan új forgatókönyveket tesz lehetővé, mint a [közel valós idejű riasztás a mérőszámok méreteivel](../alerts/alerts-metric-near-real-time.md), rugalmasabb [irányítópultokkal](./overview-dashboard.md)és egyebekkel.
 
 > [!IMPORTANT]
 > Mind a naplózási, mind az előre aggregált mérőszámok párhuzamosan léteznek a Application Insightsban. A kettő megkülönböztetéséhez az Application Insights UX-ben az előre összevont metrikák mostantól "standard metrikák (előzetes verzió)" néven jelennek meg, míg az események hagyományos mérőszámait átnevezték "log-alapú metrikák" névre.
 
-Az újabb SDK-k ([Application Insights 2,7](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.7.2) SDK vagy újabb verziók a .net-hez) a gyűjteményben előre összevont metrikák. Ez az  [alapértelmezett, alapértelmezés szerint eljuttatott mérőszámokra](../platform/metrics-supported.md#microsoftinsightscomponents) vonatkozik, így a pontosság nem befolyásolja a mintavételezést vagy szűrést. A [GetMetric](./api-custom-events-metrics.md#getmetric) használatával elküldett egyéni mérőszámokra is vonatkozik, ami kevesebb adatfeldolgozást és alacsonyabb költségeket eredményez.
+Az újabb SDK-k ([Application Insights 2,7](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.7.2) SDK vagy újabb verziók a .net-hez) a gyűjteményben előre összevont metrikák. Ez az  [alapértelmezett, alapértelmezés szerint eljuttatott mérőszámokra](../essentials/metrics-supported.md#microsoftinsightscomponents) vonatkozik, így a pontosság nem befolyásolja a mintavételezést vagy szűrést. A [GetMetric](./api-custom-events-metrics.md#getmetric) használatával elküldett egyéni mérőszámokra is vonatkozik, ami kevesebb adatfeldolgozást és alacsonyabb költségeket eredményez.
 
 Az olyan SDK-k esetében, amelyek nem implementálják az előzetes összesítést (azaz Application Insights SDK-k régebbi verziói vagy a böngésző-rendszerállapotok), az Application Insights háttérrendszer továbbra is feltölti az új metrikákat az Application Insights esemény-gyűjtési végpont által fogadott események összesítésével. Ez azt jelenti, hogy ha nem használja ki a hálózaton keresztül továbbított adatmennyiséget, továbbra is használhatja az előre összevont mérőszámokat, és a közel valós idejű dimenziós riasztások jobb teljesítményét és támogatását is kihasználhatja az olyan SDK-k esetében, amelyek nem összesítik az előre összevont mérőszámokat a gyűjtemény során.
 
@@ -81,7 +81,7 @@ Az egyéni metrikák dimenzióinak gyűjteménye alapértelmezés szerint ki van
 
 ## <a name="creating-charts-and-exploring-log-based-and-standard-pre-aggregated-metrics"></a>Diagramok létrehozása és a naplózási és standard szintű előre összesített mérőszámok feltárása
 
-[Azure Monitor Metrikaböngésző](../platform/metrics-getting-started.md) használatával diagramokat rajzolhat előre összesített és naplózott metrikák alapján, valamint irányítópultokat hozhat létre a diagramokkal. A kívánt Application Insights erőforrás kiválasztása után a névtér-választóval válthat a standard (előzetes) és a log-alapú metrikák között, vagy kijelölhet egy egyéni metrikai névteret:
+[Azure Monitor Metrikaböngésző](../essentials/metrics-getting-started.md) használatával diagramokat rajzolhat előre összesített és naplózott metrikák alapján, valamint irányítópultokat hozhat létre a diagramokkal. A kívánt Application Insights erőforrás kiválasztása után a névtér-választóval válthat a standard (előzetes) és a log-alapú metrikák között, vagy kijelölhet egy egyéni metrikai névteret:
 
 ![Metrikai névtér](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
 
@@ -93,5 +93,5 @@ Ha az [Egyéni metrikai dimenziók engedélyezése](#custom-metrics-dimensions-a
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Közel valós idejű riasztás](../platform/alerts-metric-near-real-time.md)
+* [Közel valós idejű riasztás](../alerts/alerts-metric-near-real-time.md)
 * [GetMetric és TrackValue](./api-custom-events-metrics.md#getmetric)

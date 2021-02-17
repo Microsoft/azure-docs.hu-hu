@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c1bcde3f2b1f61fd241143e308a508d5f19e7b0c
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 2a5c31270f18c2e6149d93fa522818704b9747d8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090570"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588616"
 ---
 # <a name="azure-security-baseline-for-azure-managed-applications"></a>Azure Managed Applications Azure biztonsági alapterve
 
@@ -415,9 +415,9 @@ Az Azure Security Center riasztásokat is küldhet bizonyos gyanús tevékenysé
 
 **Útmutató**: az automatikusan elérhető tevékenység-naplók a felügyelt alkalmazás-erőforrások összes írási műveletét (Put, post, DELETE) tartalmazzák, kivéve az olvasási MŰVELETEKET (Get). A Tevékenységnaplók segítségével hibát kereshet a hibaelhárítás során, vagy megfigyelheti, hogy a szervezet felhasználója hogyan módosított egy erőforrást.
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md) 
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](../../azure-monitor/platform/platform-logs-overview.md)
+- [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](../../azure-monitor/essentials/platform-logs-overview.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -432,7 +432,7 @@ Emellett az Azure Sentinel vagy egy harmadik féltől származó SIEM-nek is eng
 
 Számos szervezet úgy dönt, hogy a gyakran használt és az Azure-tárolót használja a ritkábban használt adatokhoz az Azure Sentinel használatával.
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md)
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Az Azure Sentinel előkészítése](../../sentinel/quickstart-onboard.md)
 
@@ -445,7 +445,7 @@ Számos szervezet úgy dönt, hogy a gyakran használt és az Azure-tárolót ha
 **Útmutató**: gondoskodjon arról, hogy a felügyelt alkalmazás erőforrásai által létrehozott naplók tárolására használt összes Storage-fiók vagy log Analytics-munkaterület a szervezet megfelelőségi szabályainak megfelelően állítsa be a napló megőrzési időtartamát.
 Azure Monitor az Log Analytics munkaterület megőrzési időszakát a szervezet megfelelőségi előírásai szerint állíthatja be. Az Azure Storage, a Data Lake vagy a Log Analytics munkaterület-fiókok használata hosszú távú és archiválási tároláshoz.
 
-- [Log Analytics munkaterület megőrzési időtartamának konfigurálása](../../azure-monitor/platform/manage-cost-storage.md)
+- [Log Analytics munkaterület megőrzési időtartamának konfigurálása](../../azure-monitor/logs/manage-cost-storage.md)
 
 - [Erőforrás-naplók tárolása Azure Storage-fiókban](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
 

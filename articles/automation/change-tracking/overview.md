@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0ef821634669739ff5aed58e4404d7c21b8d8222
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: e2371f3de8ed73250bca6639e6c749811c5559ad
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896629"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572604"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>A Change Tracking és a leltár áttekintése
 
@@ -34,9 +34,9 @@ A Change Tracking és a leltár a [Azure Security Center file Integrity monitori
 
 A Change Tracking és a leltárban foglalt összes szolgáltatás engedélyezése további díjakat eredményezhet. A továbblépés előtt tekintse át az [Automation díjszabását](https://azure.microsoft.com/pricing/details/automation/) és a [Azure monitor díjszabását](https://azure.microsoft.com/pricing/details/monitor/).
 
-A Change Tracking és a leltár Azure Monitor naplókba továbbítja az adatokat, és az összegyűjtött adatokat egy Log Analytics munkaterületen tárolja. A fájlok integritásának figyelése (FIM) szolgáltatás csak akkor érhető el, ha engedélyezve van az **Azure Defender for Servers** . További információkért tekintse meg a Azure Security Center [díjszabását](../../security-center/security-center-pricing.md) . A FIM feltölti az adatait ugyanarra a Log Analytics munkaterületre, mint amelyet az adatok Change Tracking és leltárból való tárolásához hoztak létre. Javasoljuk, hogy figyelje a csatolt Log Analytics munkaterületet, hogy nyomon követhesse a pontos használatot. A Azure Monitor naplók adatfelhasználásának elemzésével kapcsolatos további információkért lásd: [a használat és a költséghatékonyság kezelése](../../azure-monitor/platform/manage-cost-storage.md).
+A Change Tracking és a leltár Azure Monitor naplókba továbbítja az adatokat, és az összegyűjtött adatokat egy Log Analytics munkaterületen tárolja. A fájlok integritásának figyelése (FIM) szolgáltatás csak akkor érhető el, ha engedélyezve van az **Azure Defender for Servers** . További információkért tekintse meg a Azure Security Center [díjszabását](../../security-center/security-center-pricing.md) . A FIM feltölti az adatait ugyanarra a Log Analytics munkaterületre, mint amelyet az adatok Change Tracking és leltárból való tárolásához hoztak létre. Javasoljuk, hogy figyelje a csatolt Log Analytics munkaterületet, hogy nyomon követhesse a pontos használatot. A Azure Monitor naplók adatfelhasználásának elemzésével kapcsolatos további információkért lásd: [a használat és a költséghatékonyság kezelése](../../azure-monitor/logs/manage-cost-storage.md).
 
-A Log Analytics munkaterülethez csatlakozó gépek a [log Analytics ügynökkel](../../azure-monitor/platform/log-analytics-agent.md) gyűjtenek adatokat a telepített szoftverek, a Microsoft-szolgáltatások, a Windows-beállításjegyzék és-fájlok, valamint a figyelt kiszolgálókon futó Linux-démonok változásairól. Ha az adatokat elérhetővé teszi, az ügynök elküldi a feldolgozásra Azure Monitor naplókba. Azure Monitor naplók a fogadott adatokra vonatkozó logikát alkalmaznak, rögzítik, és elemzés céljából elérhetővé teszik.
+A Log Analytics munkaterülethez csatlakozó gépek a [log Analytics ügynökkel](../../azure-monitor/agents/log-analytics-agent.md) gyűjtenek adatokat a telepített szoftverek, a Microsoft-szolgáltatások, a Windows-beállításjegyzék és-fájlok, valamint a figyelt kiszolgálókon futó Linux-démonok változásairól. Ha az adatokat elérhetővé teszi, az ügynök elküldi a feldolgozásra Azure Monitor naplókba. Azure Monitor naplók a fogadott adatokra vonatkozó logikát alkalmaznak, rögzítik, és elemzés céljából elérhetővé teszik.
 
 > [!NOTE]
 > A Change Tracking és a leltár használatához Log Analytics munkaterületet kell összekapcsolni az Automation-fiókkal. A támogatott régiók végleges listáját az [Azure Workspace-hozzárendelések](../how-to/region-mappings.md)című témakörben tekintheti meg. A régió-hozzárendelések nem befolyásolják a virtuális gépek az Automation-fióktól eltérő régióban való felügyeletének képességét.
@@ -48,7 +48,7 @@ A Change Tracking és a leltár nem támogatja, vagy a következő korlátozáso
 - Rekurzió a Windows beállításjegyzékének nyomon követéséhez
 - Hálózati fájlrendszerek
 - Különböző telepítési módszerek
-- *a Windowson tárolt *_. exe_* fájlok
+- *a Windowson tárolt **. exe** fájlok
 - A **Maximális fájlméret** oszlop és az értékek nem használhatók az aktuális implementációban.
 - Ha egy 30 perces gyűjtési ciklusban több mint 2500 fájlt próbál összegyűjteni, a Change Tracking és a leltározás teljesítménye csökkenhet.
 - Ha a hálózati forgalom magas, a rekordok módosítása akár hat órát is igénybe vehet.
@@ -58,7 +58,7 @@ A Change Tracking és a leltár nem támogatja, vagy a következő korlátozáso
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
-A Change Tracking és a leltár minden olyan operációs rendszeren támogatott, amely megfelel Log Analytics ügynök követelményeinek. A Log Analytics ügynök által jelenleg támogatott Windows és Linux operációsrendszer-verziók listáját a [támogatott operációs rendszerek](../../azure-monitor/platform/agents-overview.md#supported-operating-systems) című részben tekintheti meg.
+A Change Tracking és a leltár minden olyan operációs rendszeren támogatott, amely megfelel Log Analytics ügynök követelményeinek. A Log Analytics ügynök által jelenleg támogatott Windows és Linux operációsrendszer-verziók listáját a [támogatott operációs rendszerek](../../azure-monitor/agents/agents-overview.md#supported-operating-systems) című részben tekintheti meg.
 
 A TLS 1,2-hez szükséges ügyfél-követelmények megismeréséhez lásd: [tls 1,2 kényszerítés Azure Automation](../automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
@@ -159,7 +159,7 @@ A következő táblázat a nyomon követett elemek korlátozásait mutatja gépe
 |Szolgáltatások|250|
 |Démonok|250|
 
-A Change Tracking és a leltárt használó gépek átlagos Log Analytics adatfelhasználása körülbelül 40 MB/hó, a környezettől függően. A Log Analytics munkaterület használati és becsült költségek funkciójával megtekintheti a Change Tracking és a leltár által betöltött adatokat egy használati diagramon. Ezzel az adatnézettel kiértékelheti az adathasználatot, és meghatározhatja, hogyan befolyásolja a számláját. Lásd: [a használat és a becsült költségek megismerése](../../azure-monitor/platform/manage-cost-storage.md#understand-your-usage-and-estimate-costs).
+A Change Tracking és a leltárt használó gépek átlagos Log Analytics adatfelhasználása körülbelül 40 MB/hó, a környezettől függően. A Log Analytics munkaterület használati és becsült költségek funkciójával megtekintheti a Change Tracking és a leltár által betöltött adatokat egy használati diagramon. Ezzel az adatnézettel kiértékelheti az adathasználatot, és meghatározhatja, hogyan befolyásolja a számláját. Lásd: [a használat és a becsült költségek megismerése](../../azure-monitor/logs/manage-cost-storage.md#understand-your-usage-and-estimate-costs).
 
 ### <a name="microsoft-service-data"></a>Microsoft-szolgáltatásokra vonatkozó adatkezelés
 

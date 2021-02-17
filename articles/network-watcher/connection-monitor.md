@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: a4f3e0bbd282fb1253e206e71c2eb1667773248e
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: b734c4cdec022f2bf43ee7123b06331f67c10390
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834085"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570841"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Oktatóanyag: Két virtuális gép közötti hálózati kommunikáció monitorozása az Azure Portal használatával
 
@@ -137,7 +137,7 @@ A riasztásokat riasztási szabályok hozzák létre az Azure Monitorban, és re
 2. Kattintson a **Cél kiválasztása** elemre, majd válassza ki a megcélozni kívánt erőforrásokat. Válassza ki az **előfizetést**, majd adja meg az **erőforrás típusát** a használni kívánt Kapcsolatfigyelő kiszűréséhez.
 
     ![riasztási képernyő a kiválasztott céllal](./media/connection-monitor/set-alert-rule.png)
-1. A megcélozni kívánt erőforrás kiválasztása után válassza a **Feltételek hozzáadása** elemet. A Network Watcher olyan [metrikákkal rendelkezik, amelyeken riasztásokat hozhat létre](../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported). Állítsa be az **elérhető jeleket** a ProbesFailedPercent és az AverageRoundtripMs metrikáin:
+1. A megcélozni kívánt erőforrás kiválasztása után válassza a **Feltételek hozzáadása** elemet. A Network Watcher olyan [metrikákkal rendelkezik, amelyeken riasztásokat hozhat létre](../azure-monitor/alerts/alerts-metric-near-real-time.md#metrics-and-dimensions-supported). Állítsa be az **elérhető jeleket** a ProbesFailedPercent és az AverageRoundtripMs metrikáin:
 
     ![riasztás oldal kiválasztott jelekkel](./media/connection-monitor/set-alert-signals.png)
 1. Adja meg a riasztás részleteit, például a riasztási szabály nevét, a leírását és a súlyosságát. Egy műveletcsoportot is hozzáadhat a riasztáshoz a riasztás válaszának automatizálása és testreszabása érdekében.

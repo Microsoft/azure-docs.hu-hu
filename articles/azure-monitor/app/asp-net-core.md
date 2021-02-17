@@ -4,12 +4,12 @@ description: ASP.NET Core webalkalmazások figyelése a rendelkezésre állás, 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 2f17f4fbed196932ad7a5680338c459740e4d3bd
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 93f72b7e2f709f32942564dc7322a4c5d1064cfc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249108"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589898"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights ASP.NET Core alkalmazásokhoz
 
@@ -29,7 +29,10 @@ A [ASP.NET Core Application INSIGHTS SDK](https://nuget.org/packages/Microsoft.A
 * **Ide**: Visual Studio, vs Code vagy Command line.
 
 > [!NOTE]
-> ASP.NET Core 3. X [Application Insights a 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) vagy újabb verzióra van szükség.
+> ASP.NET Core 3,1 [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) vagy újabb verzió szükséges.
+
+> [!IMPORTANT]
+> A ASP.NET Core következő verziói támogatottak: ASP.NET Core 2,1 és 3,1. A 2,0, 2,2 és 3,0 verziók ki lettek vonva, és már nem támogatottak.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -522,7 +525,7 @@ Ehhez az SDK `HttpContext` -hoz szükséges, ezért nem működik semmilyen nem 
 
 A legújabb frissítések és hibajavítások [olvassa el a kibocsátási megjegyzéseket](./release-notes.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Fedezze fel a felhasználói folyamatokat](./usage-flows.md) , hogy megtudja, hogyan navigálnak a felhasználók az alkalmazáson keresztül.
 * [Egy pillanatkép-gyűjtemény konfigurálásával](./snapshot-debugger.md) megtekintheti a forráskód és a változók állapotát a kivétel pillanatában.

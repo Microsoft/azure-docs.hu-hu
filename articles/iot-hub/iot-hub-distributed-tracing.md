@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: f8d37cf8f23de1d0535c7a9ff4a95ac217eddf74
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: adcbf4efc4dfaa7701c18440531327949640cb53
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452400"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581982"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Azure IoT-eszközről a felhőbe irányuló üzenetek nyomon követése elosztott nyomkövetéssel (előzetes verzió)
 
@@ -154,7 +154,7 @@ Ezek az utasítások a minta Windows rendszeren történő létrehozásához sz�
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_tracing&highlight=5)]
 
-    A `IoTHubDeviceClient_LL_EnablePolicyConfiguration` függvény lehetővé teszi, hogy a szabályzatok meghatározott IoTHub- [device twins](./iot-hub-devguide-device-twins.md)funkciókhoz legyenek konfigurálva. Ha a `POLICY_CONFIGURATION_DISTRIBUTED_TRACING` fenti kóddal van engedélyezve, az eszköz nyomkövetési viselkedése az eszköz ikerén végrehajtott elosztott nyomkövetési módosításokat tükrözi.
+    A `IoTHubDeviceClient_LL_EnablePolicyConfiguration` függvény lehetővé teszi, hogy a szabályzatok meghatározott IoTHub- [](./iot-hub-devguide-device-twins.md)funkciókhoz legyenek konfigurálva. Ha a `POLICY_CONFIGURATION_DISTRIBUTED_TRACING` fenti kóddal van engedélyezve, az eszköz nyomkövetési viselkedése az eszköz ikerén végrehajtott elosztott nyomkövetési módosításokat tükrözi.
 
 1. Ha a minta alkalmazást az összes kvóta használata nélkül szeretné megőrizni, adjon hozzá egy másodperces késleltetést az üzenet küldése hurok végén:
 
@@ -252,7 +252,7 @@ Az elosztott nyomkövetési mintavételi konfiguráció több eszközhöz való 
 | Elem neve | Kötelező | Típus | Leírás |
 |-----------------|----------|---------|-----------------------------------------------------|
 | `sampling_mode` | Igen | Egész szám | A mintavétel be-és kikapcsolása jelenleg két mód értékkel lehetséges. `1` a és a, `2` ki van kapcsolva. |
-| `sampling_rate` | Igen | Egész szám | Ez az érték százalék. Csak `0` a és a közötti értékek `100` engedélyezettek.  |
+| `sampling_rate` | Yes | Egész szám | Ez az érték százalék. Csak `0` a és a közötti értékek `100` engedélyezettek.  |
 
 ## <a name="query-and-visualize"></a>Lekérdezés és megjelenítés
 
@@ -260,7 +260,7 @@ Ha meg szeretné tekinteni a IoT Hub által naplózott összes nyomkövetést, k
 
 ### <a name="query-using-log-analytics"></a>Lekérdezés Log Analytics használatával
 
-Ha a [log Analytics erőforrás-naplókkal](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)van beállítva, a lekérdezésben a naplókat keresi a `DistributedTracing` kategóriában. Ez a lekérdezés például az összes naplózott nyomkövetést megjeleníti:
+Ha a [log Analytics erőforrás-naplókkal](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)van beállítva, a lekérdezésben a naplókat keresi a `DistributedTracing` kategóriában. Ez a lekérdezés például az összes naplózott nyomkövetést megjeleníti:
 
 ```Kusto
 // All distributed traces 
@@ -272,7 +272,7 @@ AzureDiagnostics
 
 Példák a Log Analytics által megjelenített naplókra:
 
-| TimeGenerated | OperationName | Category | Level | CorrelationId | DurationMs | Tulajdonságok |
+| TimeGenerated | OperationName | Kategória | Level | CorrelationId | DurationMs | Tulajdonságok |
 |--------------------------|---------------|--------------------|---------------|---------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | 2018-02-22T03:28:28.633 Z | DiagnosticIoTHubD2C | DistributedTracing | Tájékoztató | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId": "AZ3166", "messageSize": "96", "callerLocalTimeUtc": "2018-02-22T03:27:28.633 Z", "calleeLocalTimeUtc": "2018-02-22T03:27:28.687 Z"} |
 | 2018-02-22T03:28:38.633 Z | DiagnosticIoTHubIngress | DistributedTracing | Tájékoztató | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled": "false", "parentSpanId": "0144d2590aacd909"} |
@@ -325,7 +325,7 @@ Ha engedélyezve van, az elosztott nyomkövetés támogatása IoT Hub a követke
 - A felhőből az eszközre történő kettős képesség nem érhető el [IoT hub alapszintű csomaghoz](iot-hub-scaling.md#basic-and-standard-tiers). A IoT Hub azonban továbbra is Azure Monitor, ha a megfelelő számú nyomkövetési környezeti fejlécet lát.
 - A hatékony működés biztosítása érdekében a IoT Hub a naplózás mértékét fogja alkalmazni, amely az elosztott nyomkövetés részeként fordulhat elő.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha többet szeretne megtudni az általános elosztott nyomkövetési mintával kapcsolatban, tekintse meg a következő témakört [: a Service architektúrájának mintája: elosztott nyomkövetés](https://microservices.io/patterns/observability/distributed-tracing.html).
 - Ha úgy szeretné beállítani a konfigurációt, hogy az elosztott nyomkövetési beállításokat nagy számú eszközre alkalmazza, tekintse meg a [IoT-eszközök konfigurálása és figyelése skálán](./iot-hub-automatic-device-management.md)című témakört

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/9/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d988617fcaf7479c7bb3356e6ef6f87824ed23a7
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: c600ced8896a3847b80d854c9e230310cca4c98d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616654"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588595"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Azure Digital Twins hibaelhárítása: diagnosztika naplózása
 
@@ -35,8 +35,8 @@ A diagnosztikai beállítások bekapcsolásával megkezdheti a naplók gyűjtés
     :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="A diagnosztikai beállítások lapot és a hozzáadni kívánt gombot ábrázoló képernyőkép" lightbox="media/troubleshoot-diagnostics/diagnostic-settings.png":::
 
 3. Az alábbi lapon adja meg a következő értékeket:
-     * **Diagnosztikai beállítás neve** : adjon meg egy nevet a diagnosztikai beállításoknak.
-     * **Kategória részletei** : válassza ki a figyelni kívánt műveleteket, majd jelölje be a jelölőnégyzeteket a diagnosztika engedélyezéséhez a műveletekhez. A diagnosztikai beállítások által a következő műveleteket lehet jelenteni:
+     * **Diagnosztikai beállítás neve**: adjon meg egy nevet a diagnosztikai beállításoknak.
+     * **Kategória részletei**: válassza ki a figyelni kívánt műveleteket, majd jelölje be a jelölőnégyzeteket a diagnosztika engedélyezéséhez a műveletekhez. A diagnosztikai beállítások által a következő műveleteket lehet jelenteni:
         - DigitalTwinsOperation
         - EventRoutesOperation
         - ModelsOperation
@@ -44,7 +44,7 @@ A diagnosztikai beállítások bekapcsolásával megkezdheti a naplók gyűjtés
         - AllMetrics
         
         Ezekről a kategóriákról és a bennük található információkról további részleteket az alábbi [*log categoriess*](#log-categories) szakaszban talál.
-     * **Célhely részletei** : válassza ki, hová szeretné elküldeni a naplókat. A három lehetőség bármely kombinációját kiválaszthatja:
+     * **Célhely részletei**: válassza ki, hová szeretné elküldeni a naplókat. A három lehetőség bármely kombinációját kiválaszthatja:
         - Küldés a Log Analyticsnek
         - Archiválás tárfiókba
         - Streamelés eseményközpontba
@@ -57,13 +57,13 @@ A diagnosztikai beállítások bekapcsolásával megkezdheti a naplók gyűjtés
 
 Az új beállítások körülbelül 10 percen belül lépnek érvénybe. Ezután a naplók megjelennek a konfigurált célhelyen a példány **diagnosztikai beállítások** lapján. 
 
-A diagnosztikai beállításokkal és a telepítési lehetőségekkel kapcsolatos további információkért látogasson el a [*diagnosztikai beállítások létrehozása lehetőségre a platform-naplók és-metrikák különböző célhelyekre küldéséhez*](../azure-monitor/platform/diagnostic-settings.md).
+A diagnosztikai beállításokkal és a telepítési lehetőségekkel kapcsolatos további információkért látogasson el a [*diagnosztikai beállítások létrehozása lehetőségre a platform-naplók és-metrikák különböző célhelyekre küldéséhez*](../azure-monitor/essentials/diagnostic-settings.md).
 
 ## <a name="log-categories"></a>Naplók kategóriái
 
 Az alábbiakban további információkat talál az Azure Digital Twins által gyűjtött naplók kategóriái.
 
-| Naplókategória | Leírás |
+| Naplókategória | Description |
 | --- | --- |
 | ADTModelsOperation | A modellekre vonatkozó összes API-hívás naplózása |
 | ADTQueryOperation | A lekérdezésekre vonatkozó összes API-hívás naplózása |
@@ -77,7 +77,7 @@ Minden naplózási kategória írási, olvasási, törlési és művelet-művele
 | Írás | PUT és PATCH |
 | Olvasás | GET |
 | Törlés | DELETE |
-| Műveletek | POST |
+| Művelet | POST |
 
 Itt látható a műveletek és a megfelelő [Azure digitális Twins REST API](/rest/api/azure-digitaltwins/) a különböző kategóriákba bejelentkezett hívások részletes listája. 
 
@@ -255,10 +255,10 @@ Itt megtudhatja, hogyan kérdezheti le a példányhoz tartozó naplókat.
     - A *lekérdezések* lapon a szerkesztőbe betölthető példákat tartalmazó lekérdezések láthatók.
     - A *szűrő* lapon testreszabhatja a lekérdezés által visszaadott adatok szűrt nézetét.
 
-A naplózási lekérdezésekkel és azok írásával kapcsolatos részletesebb információkért tekintse meg a [*Azure monitorban található naplók áttekintését*](../azure-monitor/log-query/log-query-overview.md).
+A naplózási lekérdezésekkel és azok írásával kapcsolatos részletesebb információkért tekintse meg a [*Azure monitorban található naplók áttekintését*](../azure-monitor/logs/log-query-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* A diagnosztika konfigurálásával kapcsolatos további információkért lásd: [*adatok gyűjtése és felhasználása az Azure-erőforrásokból*](../azure-monitor/platform/platform-logs-overview.md).
+* A diagnosztika konfigurálásával kapcsolatos további információkért lásd: [*adatok gyűjtése és felhasználása az Azure-erőforrásokból*](../azure-monitor/essentials/platform-logs-overview.md).
 * További információ az Azure digitális Twins metrikáinak használatáról [*: a metrikák megtekintése Azure Monitorsal*](troubleshoot-metrics.md).
 * Ha szeretné megtudni, hogyan engedélyezheti a riasztásokat a metrikák számára, tekintse meg a [*Hibaelhárítás: riasztások beállítása*](troubleshoot-alerts.md)című témakört.
