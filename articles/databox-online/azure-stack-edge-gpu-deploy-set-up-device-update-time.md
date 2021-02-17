@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: dd4078d414048d858c46f6757daa0a87a698eaab
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ceaa16ee2a54886cde45f37ea90ed617abafffc1
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976067"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546907"
 ---
 # <a name="tutorial-configure-the-device-settings-for-azure-stack-edge-pro-with-gpu"></a>Oktatóanyag: Azure Stack Edge Pro eszköz beállításainak konfigurálása GPU-val
 
@@ -51,7 +51,7 @@ Az eszközhöz kapcsolódó beállítások konfigurálásához kövesse az aláb
 
     2. Adja meg az eszköz **DNS-tartományát** . Ez a tartomány az eszköz fájlkiszolgálóként való beállítására szolgál.
 
-    3. A konfigurált eszközbeállítások ellenőrzéséhez és alkalmazásához válassza az **alkalmaz**lehetőséget.
+    3. A konfigurált eszközbeállítások ellenőrzéséhez és alkalmazásához válassza az **alkalmaz** lehetőséget.
 
         ![Helyi webes felhasználói felület "eszköz" 1. oldal](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-2.png)
 
@@ -65,7 +65,7 @@ Az eszközhöz kapcsolódó beállítások konfigurálásához kövesse az aláb
 
     4. Amikor az eszköz neve és a DNS-tartomány megváltozik, létrejön az SMB-végpont.  
 
-    5. A beállítások alkalmazása után válassza a **következő: kiszolgáló frissítése**lehetőséget.
+    5. A beállítások alkalmazása után válassza a **következő: kiszolgáló frissítése** lehetőséget.
 
         ![Helyi webes felhasználói felület "eszköz" 3. oldala](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-4.png)
 
@@ -73,7 +73,7 @@ Az eszközhöz kapcsolódó beállítások konfigurálásához kövesse az aláb
 
 1. A **frissítés** lapon megadhatja, hogy honnan szeretné letölteni az eszköz frissítéseinek helyét.  
 
-    - A frissítéseket közvetlenül a **Microsoft Update-kiszolgálóról**kérheti le.
+    - A frissítéseket közvetlenül a **Microsoft Update-kiszolgálóról** kérheti le.
 
         ![Helyi webes felhasználói felület "frissítési kiszolgáló" lapja](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/update-2.png)
 
@@ -82,10 +82,10 @@ Az eszközhöz kapcsolódó beállítások konfigurálásához kövesse az aláb
         ![Helyi webes felhasználói felület "frissítési kiszolgáló" 2. lapja](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/update-3.png)
 
         > [!NOTE] 
-        > Ha külön Windows Update kiszolgáló van konfigurálva, és ha a *https* protokollon keresztüli kapcsolódást választja ( *http*helyett), akkor szükség van a frissítési kiszolgálóhoz való kapcsolódáshoz szükséges tanúsítványok aláírására. A tanúsítványok létrehozásáról és feltöltéséről a [tanúsítványok kezelése](azure-stack-edge-j-series-manage-certificates.md)című témakörben olvashat bővebben. 
+        > Ha külön Windows Update kiszolgáló van konfigurálva, és ha a *https* protokollon keresztüli kapcsolódást választja ( *http* helyett), akkor szükség van a frissítési kiszolgálóhoz való kapcsolódáshoz szükséges tanúsítványok aláírására. A tanúsítványok létrehozásáról és feltöltéséről a [tanúsítványok kezelése](azure-stack-edge-gpu-manage-certificates.md)című témakörben olvashat bővebben. 
 
 2. Kattintson az **Alkalmaz** gombra.
-3. A frissítési kiszolgáló konfigurálása után válassza a **következő: idő**lehetőséget.
+3. A frissítési kiszolgáló konfigurálása után válassza a **következő: idő** lehetőséget.
     
 
 ## <a name="configure-time"></a>Konfigurálás időpontja
@@ -107,11 +107,11 @@ Az NTP-kiszolgálókra azért van szükség, mert az eszköznek szinkronizálnia
 
     3. Szükség esetén a **másodlagos NTP-kiszolgáló** mezőbe írja be az eszköz másodlagos kiszolgálóját.
 
-    4. A beállított idő beállításainak ellenőrzéséhez és alkalmazásához válassza az **alkalmaz**lehetőséget.
+    4. A beállított idő beállításainak ellenőrzéséhez és alkalmazásához válassza az **alkalmaz** lehetőséget.
 
         ![Helyi webes felhasználói felület "Time" lapja](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/time-2.png)
 
-2. A beállítások alkalmazása után válassza a **Tovább: tanúsítványok**lehetőséget.
+2. A beállítások alkalmazása után válassza a **Tovább: tanúsítványok** lehetőséget.
 
 
 ## <a name="next-steps"></a>Következő lépések

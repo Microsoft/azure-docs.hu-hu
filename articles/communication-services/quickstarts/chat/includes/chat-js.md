@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 4f50bce86b43c83401ac41c59dbd4e5e952d15d1
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4d3781c7a3894429cb5daccb334655543e3eea01
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379663"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100551473"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 Az első lépések előtt ügyeljen a következőre:
@@ -112,14 +112,14 @@ Ha nem hozott létre felhasználókat és jogkivonatokat, kövesse az itt talál
 ```JavaScript
 
 import { ChatClient } from '@azure/communication-chat';
-import { AzureCommunicationUserCredential } from '@azure/communication-common';
+import { AzureCommunicationTokenCredential } from '@azure/communication-common';
 
 // Your unique Azure Communication service endpoint
 let endpointUrl = 'https://<RESOURCE_NAME>.communication.azure.com';
 // The user access token generated as part of the pre-requisites
 let userAccessToken = '<USER_ACCESS_TOKEN>';
 
-let chatClient = new ChatClient(endpointUrl, new AzureCommunicationUserCredential(userAccessToken));
+let chatClient = new ChatClient(endpointUrl, new AzureCommunicationTokenCredential(userAccessToken));
 console.log('Azure Communication Chat client created!');
 ```
 - Cserélje le az **endpointUrl** -t a kommunikációs szolgáltatások erőforrás-végpontra: [hozzon létre egy Azure kommunikációs erőforrást](../../create-communication-resource.md) , ha még nem tette meg.

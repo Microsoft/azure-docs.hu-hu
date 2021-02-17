@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: trbye
-ms.openlocfilehash: d50d4c554f47629f6e04adf957e02f8ffcc48fe5
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: df7c24fefcc6cda8f02a6575dea911e48d200a90
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96509519"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100552842"
 ---
 Ez az útmutató bemutatja, hogyan telepítheti a Pythonhoz készült [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t. Ha csak azt szeretné, hogy a csomag neve a saját számára legyen megkezdve, futtassa a parancsot `pip install azure-cognitiveservices-speech` .
 
@@ -23,6 +23,8 @@ Ez az útmutató bemutatja, hogyan telepítheti a Pythonhoz készült [SPEECH SD
   - Linux Tekintse meg a [támogatott Linux-disztribúciók és a megcélzott architektúrák](~/articles/cognitive-services/speech-service/speech-sdk.md)listáját.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
+- Windows rendszeren a platformhoz a [Microsoft Visual C++ terjeszthető változata szükséges a Visual Studio 2019](https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0) -hez. Ha először telepíti az elsőt, újraindításra lehet szükség.
 
 - A támogatott linuxos platformokhoz telepíteni kell bizonyos kódtárakat ( `libssl` a Secure Sockets Layer támogatásához és a hangalapú `libasound2` támogatáshoz). A könyvtárak megfelelő verzióinak telepítéséhez szükséges parancsokért tekintse meg az alábbi disztribúciót.
 
@@ -74,7 +76,7 @@ import azure.cognitiveservices.speech as speechsdk
 1. Töltse le és telepítse a [Python](https://www.python.org/downloads/) legújabb támogatott verzióját a platformhoz, 3,5 – 3,8.
    - A Windows-felhasználók a telepítési folyamat során a "Python hozzáadása az elérési úthoz" lehetőséget kell választani.
 1. Töltse le és telepítse a [Visual Studio Code-ot](https://code.visualstudio.com/Download).
-1. Nyissa meg a Visual Studio Code-ot, és telepítse a Python-bővítményt. Válassza **File**  >  **Preferences**  >  a menüből a file Preferences **bővítmények** lehetőséget. Keressen rá a **Python** kifejezésre, majd kattintson a **telepítés** gombra.
+1. Nyissa meg a Visual Studio Code-ot, és telepítse a Python-bővítményt. Válassza   >    >  a menüből a file Preferences **bővítmények** lehetőséget. Keressen rá a **Python** kifejezésre, majd kattintson a **telepítés** gombra.
 
    ![A Python-bővítmény telepítése](~/articles/cognitive-services/speech-service/media/sdk/qs-python-vscode-python-extension.png)
 

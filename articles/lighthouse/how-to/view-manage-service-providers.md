@@ -1,51 +1,45 @@
 ---
 title: Szolgáltatók megtekintése és kezelése
 description: Az ügyfelek a Azure Portal szolgáltatók lapján tekinthetik meg a szolgáltatók, a szolgáltatói ajánlatok és a delegált erőforrások adatait.
-ms.date: 12/16/2020
+ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: 5ee897503c997ab10fdb489f7921c9d2d001e472
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: f6ee5fb154d75ff715acf99c5184cd1652ccdb80
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617204"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555578"
 ---
 # <a name="view-and-manage-service-providers"></a>Szolgáltatók megtekintése és kezelése
 
-A [Azure Portal](https://portal.azure.com) **szolgáltatók** lapja biztosítja az ügyfelek számára az [Azure Lighthouse](../overview.md)szolgáltatást használó szolgáltatók felügyeletét és láthatóságát. Az ügyfelek megtekinthetik a szolgáltatók részleteit, az egyes erőforrások delegálását, az új szolgáltatói ajánlatok megvásárlását, a szolgáltatói hozzáférés eltávolítását stb.
+A [Azure Portal](https://portal.azure.com) **szolgáltatók** lapja biztosítja az ügyfelek számára az [Azure Lighthouse](../overview.md)szolgáltatást használó szolgáltatók felügyeletét és láthatóságát. Az ügyfelek megtekinthetik a szolgáltatók részleteit, az egyes erőforrások delegálását, az új ajánlatokat, a szolgáltatói hozzáférés eltávolítását stb.
 
-> [!TIP]
-> Noha a szolgáltatók és az ügyfelekre is hivatkozunk, a [több bérlőt kezelő vállalatok](../concepts/enterprise.md) ugyanazt a folyamatot használhatják a kezelési élményük megszilárdítására.
-
-A Azure Portal **szolgáltatók** lapjának eléréséhez az ügyfél kiválaszthatja az **összes szolgáltatást**, majd kereshet **a szolgáltatók között, és kiválaszthatja** azt. Azt is megtalálják, hogy beírja a "szolgáltatók" vagy az "Azure Lighthouse" kifejezést a Azure Portal tetején található keresőmezőbe.
+Ha meg szeretné tekinteni a **szolgáltatók lapot a** Azure Portalban, válassza a **minden szolgáltatás** lehetőséget, majd keressen **a szolgáltatók között, és jelölje** ki. Ezt a lapot a Azure Portal tetején található keresőmezőbe írja be a "szolgáltatók" vagy az "Azure Lighthouse" kifejezést.
 
 > [!NOTE]
 > **A szolgáltatók lap megtekintéséhez** az ügyfél bérlője számára az [olvasó beépített szerepkörrel](../../role-based-access-control/built-in-roles.md#reader) kell rendelkeznie (vagy egy másik beépített szerepkör, amely olvasói hozzáférést is tartalmaz).
 >
-> Ajánlatok hozzáadásához vagy frissítéséhez, erőforrások delegálásához és az ajánlatok eltávolításához a felhasználónak a [tulajdonos beépített szerepkörrel](../../role-based-access-control/built-in-roles.md#owner) kell rendelkeznie az előfizetéshez.
+> Ajánlatok hozzáadásához vagy frissítéséhez, erőforrások delegálásához és az ajánlatok eltávolításához a felhasználónak rendelkeznie kell egy engedéllyel rendelkező szerepkörrel, `Microsoft.Authorization/roleAssignments/write` például a [tulajdonossal](../../role-based-access-control/built-in-roles.md#owner).
 
-Ne feledje, hogy a **szolgáltatók lap csak** azokat a szolgáltatói információkat jeleníti meg, amelyek az ügyfél előfizetéseit vagy erőforráscsoportait az Azure Lighthouse használatával érik el. Ha az ügyfél olyan további szolgáltatókkal működik együtt, akik nem használják az Azure Lighthouse-t az ügyfél erőforrásainak eléréséhez, itt nem jelennek meg a szolgáltatók információi.
-
-> [!TIP]
-> A szolgáltatók megtekinthetik az ügyfelekkel kapcsolatos információkat, ha a Azure Portalban lévő **ügyfelekre** navigálnak. További információ: [ügyfelek és delegált erőforrások megtekintése és kezelése](view-manage-customers.md).
+Ne feledje, hogy a **szolgáltatók lap csak** azokat a szolgáltatói információkat jeleníti meg, amelyek az ügyfél előfizetéseit vagy erőforráscsoportait az Azure Lighthouse használatával érik el. Ha az ügyfél olyan további szolgáltatókkal működik együtt, akik nem használják az Azure Lighthouse-t, itt nem jelenik meg információ ezekről a szolgáltatókról.
 
 ## <a name="view-service-provider-details"></a>Szolgáltató adatainak megtekintése
 
-A szolgáltatók részleteinek megtekintéséhez az ügyfél kiválaszthatja a szolgáltatói **ajánlatokat** a **szolgáltatók lap bal** oldalán.
+Ha az Azure Lighthouse használatával szeretné megtekinteni az ügyfél bérlője számára az aktuális szolgáltatók adatait, válassza a szolgáltatói **ajánlatok** lehetőséget a **szolgáltatók oldal bal** oldalán.
 
-Az ügyfél minden szolgáltatói ajánlatnál látni fogja a szolgáltató nevét és a hozzá társított ajánlatot, valamint azt a nevet, amelyet az ügyfél a bevezetési folyamat során megadott.
+Minden ajánlat esetében megjelenik a szolgáltató neve és a hozzá társított ajánlat. Kiválaszthat egy ajánlatot a leírás és egyéb részletek megtekintéséhez, beleértve a szolgáltató által megadott szerepkör-hozzárendeléseket is.
 
-A **delegálások** oszlopban az ügyfél azt látja, hogy hány előfizetés és/vagy erőforráscsoport van delegálva az ajánlat szolgáltatójának. A szolgáltató elérheti és kezelheti ezeket az előfizetéseket és/vagy erőforráscsoportokat az ajánlatban megadott hozzáférési szintnek megfelelően.
+A **delegálások** oszlopban láthatja, hogy hány előfizetés és/vagy erőforráscsoport van delegálva az adott ajánlat szolgáltatójának. A szolgáltató elérheti és kezelheti ezeket az előfizetéseket és/vagy erőforráscsoportokat az ajánlatban megadott hozzáférési szintnek megfelelően.
 
 ## <a name="add-or-remove-service-provider-offers"></a>Szolgáltatói ajánlatok hozzáadása vagy eltávolítása
 
-Egy ügyfél hozzáadhat egy új szolgáltatói ajánlatot a szolgáltatói **ajánlatok** oldaláról az **ajánlat hozzáadása** lehetőség kiválasztásával. A szolgáltatónak közzé kell tennie egy ajánlatot ehhez az ügyfélhez. Az ügyfél ezt követően kiválaszthatja az ajánlatot a **privát ajánlatok** képernyőjén, majd a **Létrehozás** lehetőséget is választhatja.
+Ha új szolgáltatói ajánlatot szeretne hozzáadni a szolgáltatói **ajánlatok** lapról, válassza az **ajánlat hozzáadása** lehetőséget. Válassza ki a **privát ajánlatokat** azon ajánlatok megtekintéséhez, amelyeket a szolgáltató közzétett az ügyfél számára. Ezután kiválaszthatja az ajánlatot a **privát ajánlatok** képernyőn, majd a **beállítás + előfizetés** lehetőséget.
 
-Ha az ügyfél el szeretné távolítani a szolgáltatói ajánlatot, ezt bármikor megteheti, ha kiválasztja az ajánlat sorában látható Kuka ikont. A Törlés megerősítése után a szolgáltató már nem fog tudni hozzáférni az adott ajánlathoz korábban delegált ügyfél-erőforrásokhoz.
+A szolgáltatói ajánlatot bármikor eltávolíthatja, ha kiválasztja az ajánlat sorában látható Kuka ikont. A Törlés megerősítése után a szolgáltató már nem fog tudni hozzáférni az adott ajánlathoz korábban delegált erőforrásokhoz.
 
 ## <a name="delegate-resources"></a>Erőforrások delegálása
 
-Ahhoz, hogy a szolgáltató hozzáférhessen egy ügyfél erőforrásaihoz és felügyelje azt, delegálásra van szükség. Ha egy ügyfél elfogadta az ajánlatot, de még nem delegált erőforrást, akkor a **szolgáltató ajánlatok** szakaszának tetején egy megjegyzés jelenik meg. Ez lehetővé teszi, hogy az ügyfél tudja, hogy el kell végeznie a beavatkozást, mielőtt a szolgáltató hozzáférhet az ügyfél erőforrásaihoz.
+Ahhoz, hogy a szolgáltató hozzáférhessen egy ügyfél erőforrásaihoz, és felügyelni tudja az ügyfelek erőforrásait, egy vagy több konkrét előfizetést és/vagy erőforráscsoportot delegálni kell. Ha egy ügyfél elfogadta az ajánlatot, de még nem delegált erőforrást, akkor a **szolgáltató ajánlatok** szakaszának tetején egy megjegyzés jelenik meg. Ez lehetővé teszi, hogy az ügyfél tudja, hogy el kell végeznie a beavatkozást, mielőtt a szolgáltató hozzáférhet az ügyfél erőforrásaihoz.
 
 Előfizetések vagy erőforráscsoportok delegálása:
 
@@ -57,11 +51,11 @@ Előfizetések vagy erőforráscsoportok delegálása:
 
 ## <a name="update-service-provider-offers"></a>A szolgáltatói ajánlatok frissítése
 
-Miután egy ügyfél hozzáadott egy ajánlatot, a szolgáltató közzéteheti az Azure Marketplace-re vonatkozó ajánlat frissített verzióját. Előfordulhat például, hogy új szerepkör-definíciót szeretne hozzáadni. Ha közzétette az ajánlat új verzióját, a szolgáltató által biztosított **ajánlatok** lapon megjelenik az ajánlat sorában látható "Update" ikon. Az ügyfél kiválaszthatja ezt az ikont az ajánlat aktuális verziója és az új verzió közötti különbségek megtekintéséhez.
+Miután egy ügyfél hozzáadott egy ajánlatot, a szolgáltató közzéteheti az Azure Marketplace-re vonatkozó ajánlat frissített verzióját. Előfordulhat például, hogy új szerepkör-definíciót szeretne hozzáadni. Ha közzétette az ajánlat új verzióját, a szolgáltató által biztosított **ajánlatok** lapon megjelenik az ajánlat sorában látható "Update" ikon. Válassza ezt az ikont az ajánlat aktuális verziója és az új verzió közötti különbségek megtekintéséhez.
 
  ![Ajánlat frissítése ikon](../media/update-offer.jpg)
 
-A módosítások áttekintése után az ügyfél dönthet úgy, hogy frissíti az új verzióra. Ha ezt megtette, az új verzióban megadott engedélyek és egyéb beállítások az adott ajánlathoz delegált előfizetésekre és/vagy erőforráscsoportok érvényesek lesznek.
+A módosítások áttekintése után az ügyfél dönthet úgy, hogy frissíti az új verzióra. Az új verzióban megadott engedélyek és egyéb beállítások ezután az adott ajánlathoz delegált összes előfizetésre és/vagy erőforrás-csoportra érvényesek lesznek.
 
 ## <a name="view-delegations"></a>Delegálások megtekintése
 
@@ -82,8 +76,10 @@ Egy másik [beépített szabályzat-definíció](../../governance/policy/samples
 
 A szabályzatok hozzárendeléséről és a megfelelőségi állapot eredményeinek megjelenítéséről a rövid útmutató [: szabályzat-hozzárendelés létrehozása](../../governance/policy/assign-policy-portal.md)című témakörben olvashat bővebben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [Azure Lighthouse](../overview.md)-ról.
 - További információ a szolgáltatói [tevékenységek naplózásáról](view-service-provider-activity.md).
 - Ismerje meg, hogy a szolgáltatók hogyan [tekinthetik meg és kezelhetik az ügyfeleket](view-manage-customers.md) a Azure Portal **saját ügyfelek** lapján.
+- Ismerje meg, hogy a [több bérlőt kezelő vállalatok](../concepts/enterprise.md) hogyan használhatják az Azure Lighthouse-t a kezelési élményük megszilárdítására.
+

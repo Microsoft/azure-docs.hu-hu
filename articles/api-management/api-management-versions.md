@@ -6,15 +6,15 @@ documentationcenter: ''
 author: johndowns
 ms.service: api-management
 ms.topic: article
-ms.date: 06/12/2020
+ms.date: 02/10/2021
 ms.author: jodowns
 ms.custom: fasttrack-new
-ms.openlocfilehash: 578bb511175d88a1507af9520265a1acd068b27c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9dc44b4b898603df88d1bdd8c36ddfb6449335ac
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87096844"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547196"
 ---
 # <a name="versions-in-azure-api-management"></a>Az Azure API Management verziói
 
@@ -64,9 +64,13 @@ Ha egy verziót ad hozzá egy nem verziójú API-hoz, a rendszer `Original` auto
 
 ## <a name="how-versions-are-represented"></a>A verziók ábrázolása
 
-Az Azure API Management egy olyan nevű erőforrást tart *fenn, amely egy adott logikai*API-hoz tartozó verziókat jelöl. Ha a Azure Portal használatával kezeli a verziókat, de ha a PowerShell, a Resource Manager-sablonok vagy a Azure Resource Manager API használatával kommunikál a API Management szolgáltatással, akkor közvetlenül megtekintheti és kezelheti a verzió-készleteket. A verziókövetés a verziószámmal ellátott API megjelenített nevét, valamint a megadott verzióra irányuló kérelmekhez [használt verziószámozási sémát](#versioning-schemes) tartalmazza.
+Az Azure API Management egy olyan nevű erőforrást tart *fenn, amely egy adott logikai* API-hoz tartozó verziókat jelöl. A verziókövetés tartalmazza a verziószámmal ellátott API megjelenített nevét, valamint a kérelmeknek a megadott verzióra való irányításához [használt verziószámozási sémát](#versioning-schemes) .
 
-Az API-k minden verziója a saját API-erőforrásként van fenntartva, amelyet aztán egy adott verzióhoz társít. A verziókövetés olyan API-kat tartalmazhat, amelyek nagyon különböző műveletekkel vagy házirendekkel rendelkeznek, ami azt jelzi, hogy az API verziói között jelentős változásokat lehet végezni.
+Az API-k minden verziója a saját API-erőforrásként van fenntartva, amelyet aztán egy adott verzióhoz társít. A verziókövetés különböző műveletekkel vagy házirendekkel rendelkező API-kat tartalmazhat. Előfordulhat, hogy jelentős módosításokat végez egy készletben lévő verziók között.
+
+A Azure Portal beállítja a verziószámokat. A Azure Portal lévő verziók nevét és leírását módosíthatja.
+
+A verziókövetés közvetlenül az [Azure CLI](/cli/azure/apim/api/versionset), [Azure PowerShell](/powershell/module/az.apimanagement/#api-management), [Resource Manager-sablonok](/azure/templates/microsoft.apimanagement/service/apiversionsets)vagy a [Azure Resource Manager API](/rest/api/apimanagement/2020-06-01-preview/apiversionset)használatával tekinthetők meg és kezelhetők.
 
 ### <a name="migrating-a-non-versioned-api-to-a-versioned-api"></a>Nem verziószámú API áttelepítése egy verzióval ellátott API-ra
 

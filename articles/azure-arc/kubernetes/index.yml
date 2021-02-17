@@ -1,20 +1,20 @@
 ### YamlMime:Landing
-title: Azure Arc Kubernetes (előzetes verzió)
+title: Azure Arc-kompatibilis Kubernetes (előzetes verzió)
 summary: Tudnivalók a Kubernetes-fürtök Azure Arc segítségével történő kezeléséről
 metadata:
-  title: Azure Arc Kubernetes
+  title: Azure Arc-kompatibilis Kubernetes
   description: Tudnivalók a helyszíni gépek Azure-ban történő felügyeletéről
-  author: 
+  author: shashankbarsin
   ms.service: azure-arc
   ms.topic: landing-page
-  ms.date: 06/26/2020
-  ms.author: 
-  ms.openlocfilehash: 9eeddfefe451eb524484df8a1986c7ec736c4c0f
-  ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
-  ms.translationtype: HT
+  ms.date: 02/15/2021
+  ms.author: shasb
+  ms.openlocfilehash: 97343e8c23e202e70ec30bb0a522105889ea08b3
+  ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+  ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 12/18/2020
-  ms.locfileid: "97674372"
+  ms.lasthandoff: 02/17/2021
+  ms.locfileid: "100560239"
 landingContent:
 - title: Kubernetes-fürtök csatlakoztatása az Azure-hoz az Azure Arc használatával
   linkLists:
@@ -22,10 +22,22 @@ landingContent:
     links:
     - text: Mi az Azure Arc-kompatibilis Kubernetes?
       url: overview.md
+  - linkListType: concept
+    links:
+    - text: Ügynök architektúrája
+      url: conceptual-agent-architecture.md
+    - text: Konfigurációk és GitOps
+      url: conceptual-configurations.md
+    - text: Gyakori kérdések
+      url: faq.md
+- title: Bevezetés
+  linkLists:
   - linkListType: quickstart
     links:
     - text: Fürt csatlakoztatása
       url: connect-cluster.md
+- title: Fürtök konfigurálása, szabályozása és figyelése
+  linkLists:
   - linkListType: how-to-guide
     links:
     - text: Konfigurációk üzembe helyezése GitOps használatával

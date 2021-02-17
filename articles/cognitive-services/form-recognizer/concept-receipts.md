@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: c1ae52b2b92c5c8d5a1a98632e19d3140672d6ea
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 565ba3f7cd02a5ca8a3a858dc29a8fa6c7df16c1
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585041"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546006"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>Űrlap-felismerő előre összeépített bevételezési modellje
 
@@ -38,7 +38,7 @@ Az előre elkészített bevételezési szolgáltatás kibontja az értékesíté
 
 ### <a name="fields-extracted"></a>Kinyert mezők
 
-|Név| Típus | Description | Szöveg | Érték (szabványosított kimenet) |
+|Név| Típus | Leírás | Szöveg | Érték (szabványosított kimenet) |
 |:-----|:----|:----|:----| :----|
 | ReceiptType | sztring | Az értékesítési visszaigazolás típusa | Elkülönül |  |
 | MerchantName | sztring | A nyugtát kiállító kereskedő neve | Contoso |  |
@@ -115,7 +115,12 @@ Ha az **állapot** mező értéke **sikeres** , a JSON-válasz tartalmazni fogja
 
 ### <a name="sample-json-output"></a>Példa JSON-kimenetre
 
-Tekintse meg a sikeres JSON-válasz következő példáját: a "readResults" csomópont tartalmazza az összes felismert szöveget. A szöveget az oldal, a sor, majd az egyes szavak szerint rendezi. A "documentResults" csomópont a modell által felderített névjegykártya-specifikus értékeket tartalmazza. Itt talál hasznos kulcs/érték párokat, mint például az utónév, a vezetéknév, a vállalat neve és még sok más.
+
+A beolvasási visszaigazolás eredményének beolvasása műveletre adott válasz a visszaigazolás strukturált ábrázolása lesz a kinyert információkkal együtt.  Tekintse meg a [minta beérkezési fájlját](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg) és a strukturált kimeneti [minta bevételezési kimenetét](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/receipt-result.json).
+
+Tekintse meg a sikeres JSON-válasz következő példáját:
+* A `"readResults"` csomópont tartalmazza az összes felismert szöveget. A szöveget az oldal, a sor, majd az egyes szavak szerint rendezi. 
+* A `"documentResults"` csomópont tartalmazza a modell által felderített névjegykártya-specifikus értékeket. Itt talál hasznos kulcs/érték párokat, mint például az utónév, a vezetéknév, a vállalat neve és még sok más.
 
 ```json
 { 

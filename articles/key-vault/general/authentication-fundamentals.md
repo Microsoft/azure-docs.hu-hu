@@ -7,12 +7,12 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 6de0fc52ae265a47ca7f52d46e5f44b74c1277aa
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: a75ecac20c553f697585648c5654d375b85e5183
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530918"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535195"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Key Vault – hitelesítési alapok
 
@@ -120,7 +120,7 @@ Key Vault a szerepkör-hozzárendelések olyan Azure beépített szerepkör-hozz
 Ha többet szeretne megtudni a Key Vault Azure RBAC, tekintse meg a következő dokumentumokat:
 
 * Azure-RBAC Key Vault- [hivatkozáshoz](./secure-your-key-vault.md#management-plane-and-azure-rbac)
-* Az Azure RBAC for Key Vault roles (előzetes verzió) [hivatkozása](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview)
+* Azure-RBAC Key Vault-szerepkörökhöz [hivatkozás](../../role-based-access-control/built-in-roles.md#key-vault-administrator)
 
 ## <a name="configure-key-vault-firewall"></a>Key Vault tűzfal konfigurálása
 

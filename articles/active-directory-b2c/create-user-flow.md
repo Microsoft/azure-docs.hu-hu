@@ -10,24 +10,24 @@ ms.topic: tutorial
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 418446e0d465b606b8d580297cebd73c466d4841
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 9bd436b972dfb1549232831b1f07c3726ff459dd
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109012"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556505"
 ---
 # <a name="create-a-user-flow-in-azure-active-directory-b2c"></a>Felhasználói folyamat létrehozása Azure Active Directory B2C
 
 A Azure Active Directory B2C (Azure AD B2C) bérlőben különböző típusú [felhasználói folyamatokat](user-flow-overview.md) hozhat létre, és igény szerint használhatja azokat az alkalmazásokban. A felhasználói folyamatok az alkalmazások között újra felhasználhatók.
 
 > [!IMPORTANT]
-> Módosítottuk a felhasználói flow-verziókra való hivatkozás módját. Korábban a v1 (termelésre kész), valamint a V 1.1 és v2 (előzetes verzió) verzióját is felajánlottuk. Most összevontuk a felhasználói folyamatokat a **javasolt** (következő generációs előzetes verzió) és **standard** (általánosan elérhető) verziókra. Az összes, 1.1-es és v2-es korábbi előzetes verziójú felhasználói folyamat a 2021-es **augusztus 1-től** az elavult elérési úton van. Részletekért lásd: [a felhasználói folyamatok verziói Azure ad B2Cban](user-flow-versions.md).
+> Megváltoztattuk a felhasználói folyamatok verzióinak elnevezéseit. Korábban V1 (az éles környezetben való használatra kész) verziókat, valamint V1.1 és V2 (előzetes) verziókat kínáltunk. Most összevontuk a felhasználói folyamatokat a **javasolt** (következő generációs előzetes verzió) és **standard** (általánosan elérhető) verziókra. Az összes, 1.1-es és v2-es korábbi előzetes verziójú felhasználói folyamat a 2021-es **augusztus 1-től** az elavult elérési úton van. Részletekért lásd: [a felhasználói folyamatok verziói Azure ad B2Cban](user-flow-versions.md).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 - **Regisztrálja az** új felhasználói folyamat teszteléséhez használni kívánt alkalmazást. Példaként tekintse meg az [oktatóanyag: webalkalmazás regisztrálása a Azure ad B2Cban](tutorial-register-applications.md)című témakört.
-- **Külső identitás-szolgáltatók hozzáadása** , ha engedélyezni szeretné a felhasználói bejelentkezést olyan szolgáltatókkal, mint például az Azure ad, az Amazon, a Facebook, a GitHub, a LinkedIn, a Microsoft vagy a Twitter. Példaként tekintse meg a következőt [: oktatóanyag: identitás-szolgáltatók hozzáadása az alkalmazásokhoz Azure ad B2Cban](tutorial-add-identity-providers.md).
+- **Külső identitás-szolgáltatók hozzáadása** , ha engedélyezni szeretné a felhasználói bejelentkezést olyan szolgáltatókkal, mint például az Azure ad, az Amazon, a Facebook, a GitHub, a LinkedIn, a Microsoft vagy a Twitter. Lásd: [identitás-szolgáltatók hozzáadása az alkalmazásokhoz Azure ad B2C](add-identity-provider.md).
 - **Konfigurálja a helyi fiók identitás-szolgáltatóját** a bérlő helyi fiókjainak támogatásához használni kívánt identitási típusok (e-mail, Felhasználónév, telefonszám) megadásához. Ezeket a támogatott identitási típusok közül választhat, ha egyéni felhasználói folyamatokat hoz létre. Amikor a felhasználó befejezi a felhasználói folyamatot, a rendszer létrehoz egy helyi fiókot a Azure AD B2C könyvtárban, és a **helyi fiók** identitás-szolgáltatója hitelesíti a felhasználó adatait. Konfigurálja a bérlő helyi fiókjának identitás-szolgáltatóját a következő lépésekkel:
 
    1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). 
@@ -39,7 +39,7 @@ A Azure Active Directory B2C (Azure AD B2C) bérlőben különböző típusú [f
       - **Telefon** (előzetes verzió): lehetővé teszi a felhasználó számára a telefonszám megadását, amelyet a rendszer a regisztráláskor ellenőriz, és a felhasználói azonosítóját adja meg.
       - **E-mail** (alapértelmezett): lehetővé teszi, hogy a felhasználó megadjon egy e-mail-címet, amelyet a rendszer a regisztráláskor ellenőriz, és a felhasználói azonosítóját adja meg.
       - **Username**: lehetővé teszi, hogy a felhasználó saját egyedi felhasználói azonosítót hozzon létre. A rendszer begyűjti az e-mail-címet a felhasználótól, és ellenőrizte azokat.
-    7. Válassza a **Mentés** lehetőséget.
+    7. Kattintson a **Mentés** gombra.
 
 ## <a name="create-a-user-flow"></a>Felhasználói folyamat létrehozása
 
@@ -66,7 +66,7 @@ A Azure Active Directory B2C (Azure AD B2C) bérlőben különböző típusú [f
 
    - **Helyi fiók**. Ha engedélyezni szeretné, hogy a felhasználók helyi fiókokat hozzanak létre a Azure AD B2C-bérlőben, válassza ki a használni kívánt azonosító típusát (például e-mail, felhasználói azonosító vagy telefon). A lista csak azokat az identitási típusokat tartalmazza, amelyek a [helyi fiók identitás-szolgáltatójának](#before-you-begin) beállításaiban vannak konfigurálva.
 
-   - **Közösségi identitás-szolgáltatók**. Ha engedélyezni szeretné a felhasználói bejelentkezést a [hozzáadott közösségi identitás-szolgáltatókkal](tutorial-add-identity-providers.md), például az Azure ad, az Amazon, a Facebook, a GitHub, a LinkedIn, a Microsoft vagy a Twitter, válassza ki a szolgáltatókat a listából.
+   - **Közösségi identitás-szolgáltatók**. Ha engedélyezni szeretné a felhasználói bejelentkezést a [hozzáadott közösségi identitás-szolgáltatókkal](add-identity-provider.md), például az Azure ad, az Amazon, a Facebook, a GitHub, a LinkedIn, a Microsoft vagy a Twitter, válassza ki a szolgáltatókat a listából.
 
 9. **Felhasználói attribútumok és jogcímek** esetében válassza ki azokat a jogcímeket és attribútumokat, amelyeket szeretne összegyűjteni, és a felhasználótól a regisztráció során elküldeni. Válassza a **továbbiak megjelenítése** lehetőséget. Válassza ki az attribútumokat és jogcímeket, majd kattintson **az OK gombra**.
 

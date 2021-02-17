@@ -3,17 +3,17 @@ title: A többrégiós környezetekben elérhető Azure Cosmos SDK-k rendelkezé
 description: Ismerje meg az Azure Cosmos SDK rendelkezésre állási viselkedését többrégiós környezetben való működés esetén.
 author: ealsur
 ms.service: cosmos-db
-ms.date: 10/20/2020
+ms.date: 02/16/2021
 ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: b1c2377ba26b4ca64f5028fb1a51ca4e64f6a67c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 34c6e7ad8473f02f2772c84ea63aee2a41b97306
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097889"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559688"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>A többrégiós környezetekben elérhető Azure Cosmos SDK-k rendelkezésre állásának diagnosztizálása és megoldása
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -35,7 +35,7 @@ A területi beállítások megadásakor az ügyfél a következő táblázatban 
 | Egyszeri írási régió | Előnyben részesített régió | Elsődleges régió  |
 | Több írási régió | Előnyben részesített régió | Előnyben részesített régió  |
 
-Ha **nem állít be előnyben részesített régiót** , az SDK-ügyfél alapértelmezett értéke az elsődleges régió:
+Ha **nem állít be előnyben részesített régiót**, az SDK-ügyfél alapértelmezett értéke az elsődleges régió:
 
 |Fiók típusa |Olvasások |Írások |
 |------------------------|--|--|
@@ -51,7 +51,7 @@ Ezekben az esetekben az Azure Cosmos SDK-t használó ügyfél elérhetővé tes
 
 * A válaszok *RequestDiagnosticsString* tulajdonsága a .NET v2 SDK-ban.
 * A .NET v3 SDK-beli válaszok és kivételek *diagnosztikai* tulajdonsága.
-* A *getDiagnostics ()* metódus a válaszokat és kivételeket a Java v4 SDK-ban.
+* A *getDiagnostics()* metódussal a Java v4 SDK-beli válaszoknál és kivételeknél.
 
 A következő régió beállításakor az SDK-ügyfél a fiók régiójának listáját fogja használni, rangsorolva az előnyben részesített régiókat (ha vannak ilyenek).
 
@@ -83,9 +83,9 @@ A [munkamenet konzisztenciájának](consistency-levels.md#guarantees-associated-
 
 ## <a name="transient-connectivity-issues-on-tcp-protocol"></a>Átmeneti kapcsolódási problémák a TCP protokollon
 
-Olyan esetekben, amikor az Azure Cosmos SDK-ügyfél a TCP protokoll használatára van konfigurálva, egy adott kérelem esetében előfordulhatnak olyan helyzetek, amikor a hálózati feltételek átmenetileg érintik egy adott végponttal folytatott kommunikációt. Ezek az ideiglenes hálózati feltételek TCP-időtúllépésként használhatók. Az ügyfél néhány másodpercen belül újra megkísérli a kérést helyileg ugyanazon a végponton.
+Olyan esetekben, amikor az Azure Cosmos SDK-ügyfél a TCP protokoll használatára van konfigurálva, egy adott kérelem esetében előfordulhatnak olyan helyzetek, amikor a hálózati feltételek átmenetileg érintik egy adott végponttal folytatott kommunikációt. Ezek az ideiglenes hálózati feltételek a TCP-időtúllépések és a szolgáltatás nem érhető el (HTTP 503) hibákat okozhatnak. Az ügyfél néhány másodpercen belül újra megkísérli a kérést helyileg ugyanazon a végponton, mielőtt felszínre kerül a hiba.
 
-Ha a felhasználó több régióval konfigurált egy előnyben részesített régiót, és az Azure Cosmos-fiók több írási régió vagy egyetlen írási régió, és a művelet egy olvasási kérelem, az ügyfél újra megpróbálja ezt az egyetlen műveletet a következő régióban a preferencia listából.
+Ha a felhasználó több régióval konfigurált egy előnyben részesített régiót, és az Azure Cosmos-fiók több írási régió vagy egyetlen írási régió, és a művelet egy olvasási kérelem, az ügyfél észlelni fogja a helyi hibát, majd próbálja megismételni az egyetlen műveletet a következő régióban a preferencia listából.
 
 ## <a name="next-steps"></a>Következő lépések
 

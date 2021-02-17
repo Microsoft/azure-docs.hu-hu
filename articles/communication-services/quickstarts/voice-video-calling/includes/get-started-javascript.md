@@ -6,12 +6,12 @@ ms.author: nimag
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: f3d6023ffd3043bc57727fc39f077dd0ce7eccb8
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: e878aa00261d446d049f5a7b3c68b14bc2fe8a4e
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024314"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548497"
 ---
 Ebből a rövid útmutatóból megtudhatja, hogyan indíthat el egy hívást az Azure kommunikációs szolgáltatásokkal a JavaScript-hez készült ügyféloldali kódtár meghívásával.
 
@@ -60,7 +60,7 @@ Hozzon létre egy fájlt **client.js** nevű projekt gyökérkönyvtárában, ho
 
 ```javascript
 import { CallClient, CallAgent } from "@azure/communication-calling";
-import { AzureCommunicationUserCredential } from '@azure/communication-common';
+import { AzureCommunicationTokenCredential } from '@azure/communication-common';
 
 let call;
 let callAgent;
@@ -77,17 +77,17 @@ Az alábbi osztályok és felületek az Azure kommunikációs szolgáltatások �
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
 | CallClient                       | A CallClient a hívó ügyféloldali függvénytár fő belépési pontja.                                                                       |
 | CallAgent                        | A CallAgent a hívások indításához és kezeléséhez használatos.                                                                                            |
-| AzureCommunicationUserCredential | A AzureCommunicationUserCredential osztály az CommunicationUserCredential felületet valósítja meg, amely a CallAgent létrehozásához használatos. |
+| AzureCommunicationTokenCredential | A AzureCommunicationTokenCredential osztály az CommunicationTokenCredential felületet valósítja meg, amely a CallAgent létrehozásához használatos. |
 
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-Az `<USER_ACCESS_TOKEN>` erőforráshoz érvényes felhasználói hozzáférési tokent kell cserélnie. Ha még nem áll rendelkezésre jogkivonat, tekintse meg a [felhasználói hozzáférési jogkivonat](../../access-tokens.md) dokumentációját. A használatával `CallClient` inicializáljon egy `CallAgent` példányt egy példánnyal, `CommunicationUserCredential` amely lehetővé teszi a hívások kezdeményezését és fogadását. Adja hozzá a következő kódot a **client.jshoz**:
+Az `<USER_ACCESS_TOKEN>` erőforráshoz érvényes felhasználói hozzáférési tokent kell cserélnie. Ha még nem áll rendelkezésre jogkivonat, tekintse meg a [felhasználói hozzáférési jogkivonat](../../access-tokens.md) dokumentációját. A használatával `CallClient` inicializáljon egy `CallAgent` példányt egy példánnyal, `CommunicationTokenCredential` amely lehetővé teszi a hívások kezdeményezését és fogadását. Adja hozzá a következő kódot a **client.jshoz**:
 
 ```javascript
 async function init() {
     const callClient = new CallClient();
-    const tokenCredential = new AzureCommunicationUserCredential("<USER ACCESS TOKEN>");
+    const tokenCredential = new AzureCommunicationTokenCredential("<USER ACCESS TOKEN>");
     callAgent = await callClient.createCallAgent(tokenCredential);
     callButton.disabled = false;
 }

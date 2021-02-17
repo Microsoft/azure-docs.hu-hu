@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: b376883ab7d8ef0ffd57a271e74862b684788ebd
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 70aaa528fc86c9e543267b68b5b4cf157ec2dc65
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630276"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535263"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Az Azure hatáskörébe tartozó adatfeliratok automatikus címkézése
 
@@ -38,20 +38,20 @@ Ezzel szemben az **érzékenységi címkék** akkor lépnek életbe, ha egy vagy
 
 Az Azure hatáskörébe tartozó érzékenységi címkék használatával automatikusan alkalmazhat címkéket a fájlokra és az adatbázis-oszlopokra.
 
-További információ:
+További információkért lásd:
 
 - Tudnivalók a Microsoft 365 dokumentációjában található [érzékenységi címkékről](/microsoft-365/compliance/sensitivity-labels)
-- [Mik azok az autocímkézési szabályok?](#what-are-autolabeling-rules)
+- [Mik azok az automatikus címkézési szabályok?](#what-are-auto-labeling-rules)
 - [Támogatott adattípusok az érzékenységi címkékhez az Azure-beli hatáskörébe](#supported-data-types-for-sensitivity-labels-in-azure-purview)
 - [Az SQL Database-oszlopok címkézése](#labeling-for-sql-database-columns)
 
-#### <a name="what-are-autolabeling-rules"></a>Mik azok az autocímkézési szabályok?
+#### <a name="what-are-auto-labeling-rules"></a>Mik azok az automatikus címkézési szabályok?
 
 Az adatai folyamatosan növekednek és változnak. A jelenleg címkézett és a címkék manuális alkalmazására szolgáló műveletek követése nem csak nehézkes, hanem szükségtelen fejfájást is okoz. 
 
-Az autocímkézési szabályok az Ön által megadott feltételek, amelyekben egy adott címkét kell alkalmazni. Ha ezek a feltételek teljesülnek, a rendszer automatikusan hozzárendeli a címkét az adathoz, és megőrzi az adatain lévő konzisztens érzékenységi címkéket.
+Az automatikus címkézési szabályok az Ön által megadott feltételek, amelyekben egy adott címkét kell alkalmazni. Ha ezek a feltételek teljesülnek, a rendszer automatikusan hozzárendeli a címkét az adathoz, és megőrzi az adatain lévő konzisztens érzékenységi címkéket.
 
-A címkék létrehozásakor ügyeljen arra, hogy az automatikus címkézési szabályokat definiálja mindkét [fájlhoz](#define-autolabeling-rules-for-files) és [adatbázis-oszlophoz](#define-autolabeling-rules-for-database-columns) , hogy automatikusan alkalmazza a címkéket az egyes adatvizsgálatok során. 
+A címkék létrehozásakor ügyeljen arra, hogy automatikus címkézési szabályokat határozzon meg mindkét [fájlhoz](#define-auto-labeling-rules-for-files) és [adatbázis-oszlophoz](#define-auto-labeling-rules-for-database-columns) , hogy automatikusan alkalmazza a címkéket az egyes adatvizsgálatok során. 
 
 Miután ellenőrizte az adatait a hatáskörébe, megtekintheti a hatáskörébe tartozó katalógus és betekintés jelentésekben automatikusan alkalmazott címkéket.
 #### <a name="supported-data-types-for-sensitivity-labels-in-azure-purview"></a>Támogatott adattípusok az érzékenységi címkékhez az Azure-beli hatáskörébe
@@ -76,7 +76,7 @@ További információkért lásd az [SQL-adatfelderítési és-besorolási dokum
 
 Ha még nem rendelkezik érzékenységi címkékkel, létre kell hoznia őket, és elérhetővé kell tennie őket az Azure hatáskörébe. A meglévő érzékenységi címkék is módosíthatók, hogy elérhetők legyenek az Azure hatáskörébe.
 
-További információ:
+További információkért lásd:
 
 - [Licenckövetelmények](#licensing-requirements)
 - [Az érzékenységi címkék kiterjesztése az Azure hatáskörébe](#extending-sensitivity-labels-to-azure-purview)
@@ -123,10 +123,10 @@ Ha kiterjeszti a címkézést az eszközökre az Azure hatáskörébe, kiválasz
 
 1. A felirat beállításainál kövesse a varázsló további részeit. 
 
-    Pontosabban definiálja a fájlok és az adatbázis-oszlopok autocímkézési szabályait:
+    Pontosabban definiálja a fájlokra és az adatbázis-oszlopokra vonatkozó automatikus címkézési szabályokat:
 
-    - [A fájlokra vonatkozó autocímkézési szabályok definiálása](#define-autolabeling-rules-for-files)
-    - [Az adatbázis-oszlopokra vonatkozó autocímkézési szabályok definiálása](#define-autolabeling-rules-for-database-columns)
+    - [Automatikus címkézési szabályok definiálása fájlokhoz](#define-auto-labeling-rules-for-files)
+    - [Az adatbázis oszlopaihoz tartozó automatikus címkézési szabályok definiálása](#define-auto-labeling-rules-for-database-columns)
 
     A varázsló beállításaival kapcsolatos további információkért tekintse meg a Microsoft 365 dokumentációjában a következő témakört: [Mi az érzékenységi címkék](/microsoft-365/compliance/sensitivity-labels#what-sensitivity-labels-can-do) .
 
@@ -156,21 +156,21 @@ Folytassa az [adatai vizsgálatával, hogy automatikusan alkalmazza a címkéket
 - [Eszközök címkéjének megtekintése](#view-labels-on-assets)
 - [A besorolások és az érzékenységi címkék megtekintése a betekintési jelentésekben](#view-insight-reports-for-the-classifications-and-sensitivity-labels)
 
-#### <a name="define-autolabeling-rules-for-files"></a>A fájlokra vonatkozó autocímkézési szabályok definiálása
+#### <a name="define-auto-labeling-rules-for-files"></a>Automatikus címkézési szabályok definiálása fájlokhoz
 
-A címke létrehozásakor vagy szerkesztésekor a varázslóban található fájlokra vonatkozó autocímkézési szabályok definiálása. 
+A címkék automatikus címkézési szabályainak megadása a varázslóban a címke létrehozásakor vagy szerkesztésekor. 
 
 Az **Office-alkalmazások automatikus címkézése** lapon engedélyezze az **Office-alkalmazások automatikus címkézését,** majd adja meg azokat a feltételeket, amelyekben automatikusan alkalmazni szeretné a címkét az adataira.
 
 Például:
 
-:::image type="content" source="media/create-sensitivity-label/create-auto-labeling-rules-files-small.png" alt-text="A Microsoft 365 biztonsági és megfelelőségi központban található fájlokra vonatkozó autocímkézési szabályok definiálása" lightbox="media/create-sensitivity-label/create-auto-labeling-rules-files.png":::
+:::image type="content" source="media/create-sensitivity-label/create-auto-labeling-rules-files-small.png" alt-text="Automatikus címkézési szabályok definiálása a Microsoft 365 biztonsági és megfelelőségi központban található fájlokhoz" lightbox="media/create-sensitivity-label/create-auto-labeling-rules-files.png":::
  
 További információ: [érzékenységi címke alkalmazása automatikusan az adatokra](/microsoft-365/compliance/apply-sensitivity-label-automatically#how-to-configure-auto-labeling-for-office-apps) a Microsoft 365 dokumentációjában. 
 
-#### <a name="define-autolabeling-rules-for-database-columns"></a>Az adatbázis-oszlopokra vonatkozó autocímkézési szabályok definiálása
+#### <a name="define-auto-labeling-rules-for-database-columns"></a>Az adatbázis oszlopaihoz tartozó automatikus címkézési szabályok definiálása
 
-A címke létrehozásakor vagy szerkesztésekor a varázslóban található adatbázis-oszlopokra vonatkozó autocímkézési szabályok definiálása. 
+Az adatbázis-oszlopokra vonatkozó automatikus címkézési szabályok definiálása a varázslóban a címke létrehozásakor vagy szerkesztésekor. 
 
 Az **Azure hatáskörébe tartozó eszközök (előzetes verzió)** lehetőségnél:
 
@@ -180,7 +180,7 @@ Az **Azure hatáskörébe tartozó eszközök (előzetes verzió)** lehetőségn
 
 Például:
         
-:::image type="content" source="media/create-sensitivity-label/create-auto-labeling-rules-db-columns-small.png" alt-text="Az SQL-oszlopokra vonatkozó autocímkézési szabályok definiálása a Microsoft 365 biztonsági és megfelelőségi központban" lightbox="media/create-sensitivity-label/create-auto-labeling-rules-db-columns.png":::
+:::image type="content" source="media/create-sensitivity-label/create-auto-labeling-rules-db-columns-small.png" alt-text="Az SQL-oszlopokra vonatkozó automatikus címkézési szabályok definiálása a Microsoft 365 biztonsági és megfelelőségi központban" lightbox="media/create-sensitivity-label/create-auto-labeling-rules-db-columns.png":::
 
 ## <a name="scan-your-data-to-apply-labels-automatically"></a>A feliratok automatikus alkalmazásának ellenőrzése az adataiban
 

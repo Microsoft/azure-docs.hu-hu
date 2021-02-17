@@ -1,14 +1,14 @@
 ---
 title: Felügyelt szolgáltatás ajánlatának közzététele az Azure Marketplace-en
 description: Megtudhatja, hogyan tehet közzé egy felügyelt szolgáltatási ajánlatot, amely az ügyfeleket az Azure Lighthouse-be.
-ms.date: 02/10/2021
+ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: 9abac28d982e5b33bc4952f73336810abcb44e45
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3af460f17533d70b24f76ab40460a5fa920cdece
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372060"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555808"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Felügyelt szolgáltatás ajánlatának közzététele az Azure Marketplace-en
 
@@ -29,10 +29,10 @@ Az alábbi táblázat segítségével meghatározhatja, hogy az ügyfelek felüg
 |[Partner Center-fiók](../../marketplace/partner-center-portal/create-account.md) szükséges   |Igen         |Nem        |
 |[Silver vagy Gold Cloud Platform kompetencia](/partner-center/learn-about-competencies) vagy [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) szükséges      |Igen         |Nem         |
 |Elérhető az új ügyfelek számára az Azure Marketplace-en keresztül     |Igen     |Nem       |
-|Korlátozhatja az ajánlatokat adott ügyfelek számára     |Igen (csak privát ajánlatokkal, amelyek nem használhatók a Cloud Solution Provider (CSP) program viszonteladóján keresztül létesített előfizetésekkel.         |Yes         |
+|Korlátozhatja az ajánlatokat adott ügyfelek számára     |Igen (csak privát ajánlatokkal, amelyek nem használhatók a Cloud Solution Provider (CSP) program viszonteladóján keresztül létesített előfizetésekkel.         |Igen         |
 |Ügyfél-elfogadás szükséges a Azure Portal     |Igen     |Nem   |
 |Az Automation használatával több előfizetést, erőforráscsoportot vagy ügyfelet helyezhet üzembe |Nem     |Igen    |
-|Azonnali hozzáférés az új beépített szerepkörökhöz és az Azure Lighthouse szolgáltatásaihoz     |Nem mindig (általánosan elérhető némi késés után)         |Yes         |
+|Azonnali hozzáférés az új beépített szerepkörökhöz és az Azure Lighthouse szolgáltatásaihoz     |Nem mindig (általánosan elérhető némi késés után)         |Igen         |
 
 ## <a name="create-your-offer"></a>Ajánlat létrehozása
 
@@ -56,7 +56,7 @@ Bármikor [közzéteheti az ajánlat frissített verzióját](../..//marketplace
 Miután egy ügyfél felveszi az ajánlatot, [egy vagy több konkrét előfizetést vagy erőforráscsoportot delegálhat](view-manage-service-providers.md#delegate-resources), amelyek ezután az Azure Lighthouse-be lesznek bevezetve. Ha egy ügyfél elfogadta az ajánlatot, de még nem delegált erőforrást, akkor a Azure Portal [**szolgáltatók**](view-manage-service-providers.md) lapján a **szolgáltatói ajánlatok** szakaszának felső részén egy megjegyzés jelenik meg.
 
 > [!IMPORTANT]
-> A delegálást olyan nem vendég fiókkal kell végrehajtani az ügyfél bérlője számára, amely az előfizetéshez tartozó [tulajdonos beépített szerepkörrel](../../role-based-access-control/built-in-roles.md#owner) rendelkezik (vagy amely tartalmazza az előkészítés alatt álló erőforráscsoportokat). Ha szeretné megtekinteni az összes olyan felhasználót, aki delegálhatja az előfizetést, az ügyfél bérlője kiválaszthatja az előfizetést a Azure Portalban, megnyithatja a **hozzáférés-vezérlés (iam)** elemet, és [megtekintheti a tulajdonosi szerepkörrel rendelkező felhasználókat](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
+> A delegálást olyan nem vendég fiókkal kell végrehajtania az ügyfél bérlője számára, aki rendelkezik a bevezetéshez `Microsoft.Authorization/roleAssignments/write` szükséges engedéllyel (például [tulajdonossal](../../role-based-access-control/built-in-roles.md#owner)) az előfizetéshez tartozó szerepkörrel (vagy amely tartalmazza az előkészítés alatt álló erőforráscsoportokat). Az előfizetést delegáló felhasználók megkereséséhez az ügyfél bérlője számára kiválaszthatja az előfizetést a Azure Portalban, megnyithatja a **hozzáférés-vezérlés (iam)** lehetőséget, és [megtekintheti a tulajdonosi szerepkörrel rendelkező összes felhasználót](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
 
 Miután az ügyfél delegált egy előfizetést (vagy egy vagy több erőforráscsoportot egy előfizetésen belül), a **Microsoft. ManagedServices** erőforrás-szolgáltató regisztrálva lesz az adott előfizetéshez, és a bérlő felhasználói hozzáférhetnek a delegált erőforrásokhoz az ajánlatban foglalt jogosultságok alapján.
 

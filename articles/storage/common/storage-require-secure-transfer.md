@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 22e012c36f5c2c6f195a7e3b21afe9001a4cad0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0a942daae6b106bce928f8214e92c0c6294203d
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89077959"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555723"
 ---
 # <a name="require-secure-transfer-to-ensure-secure-connections"></a>Biztonságos átvitel szükséges a biztonságos kapcsolatok biztosításához
 
@@ -38,15 +38,15 @@ A **biztonságos átvitel szükséges** tulajdonság bekapcsolható, amikor lét
 ### <a name="require-secure-transfer-for-a-new-storage-account"></a>Biztonságos átvitel megkövetelése új Storage-fiókhoz
 
 1. Nyissa meg a **Storage-fiók létrehozása** panelt a Azure Portal.
-1. A **biztonságos átvitel szükséges**területen válassza az **engedélyezve**lehetőséget.
+1. A **biztonságos átvitel szükséges** területen válassza az **engedélyezve** lehetőséget.
 
    ![Storage-fiók létrehozása panel](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_1.png)
 
 ### <a name="require-secure-transfer-for-an-existing-storage-account"></a>Biztonságos átvitel megkövetelése egy meglévő Storage-fiókhoz
 
 1. Válasszon ki egy meglévő Storage-fiókot a Azure Portal.
-1. A Storage-fiók menü **Beállítások**területén válassza a **konfiguráció**elemet.
-1. A **biztonságos átvitel szükséges**területen válassza az **engedélyezve**lehetőséget.
+1. A Storage-fiók menü **Beállítások** területén válassza a **konfiguráció** elemet.
+1. A **biztonságos átvitel szükséges** területen válassza az **engedélyezve** lehetőséget.
 
    ![A Storage-fiók menüje ablaktábla](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_2.png)
 
@@ -57,7 +57,7 @@ Ha programozottan szeretné megkövetelni a biztonságos átvitelt, állítsa a 
 * [REST API](/rest/api/storagerp/storageaccounts)
 * [PowerShell](/powershell/module/az.storage/set-azstorageaccount)
 * [Parancssori felület](/cli/azure/storage/account)
-* [NodeJS](https://www.npmjs.com/package/azure-arm-storage/)
+* [NodeJS](https://www.npmjs.com/package/@azure/arm-storage/)
 * [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage)
 * [Python SDK](https://pypi.org/project/azure-mgmt-storage)
 * [Ruby SDK](https://rubygems.org/gems/azure_mgmt_storage)

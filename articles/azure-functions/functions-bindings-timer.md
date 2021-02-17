@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 11/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 0d9852659801040d64fe4143f024fd52ffec16ee
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: c6b3bd61386cbde0e8de63055eee9218e372dfcd
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874083"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547842"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Időzítő trigger a Azure Functionshoz
 
@@ -258,9 +258,9 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 
 |function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**típusa** | n/a | "TimerTrigger" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
-|**irányba** | n/a | "In" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
-|**név** | n/a | Annak a változónak a neve, amely az időzítő objektumot jelöli a függvény kódjában. | 
+|**típusa** | n.a. | "TimerTrigger" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
+|**irányba** | n.a. | "In" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
+|**név** | n.a. | Annak a változónak a neve, amely az időzítő objektumot jelöli a függvény kódjában. | 
 |**menetrend**|**ScheduleExpression**|Egy [cron kifejezés](#ncrontab-expressions) vagy egy [TimeSpan](#timespan) érték. A `TimeSpan` csak egy app Service csomagon futó Function alkalmazás esetében használható. Az ütemezett kifejezést beállíthatja egy alkalmazás-beállításban, és ezt a tulajdonságot megadhatja a jelek között becsomagolt Alkalmazásbeállítások nevében, az **%** alábbi példában látható módon: "% ScheduleAppSetting%". |
 |**runOnStartup**|**RunOnStartup**|Ha a `true` rendszer meghívja a függvényt a futtatókörnyezet indításakor. Például a futtatókörnyezet akkor indul el, amikor a Function alkalmazás felébred, miután inaktivitás miatt tétlen marad. Ha a Function alkalmazás újraindul a függvény változásai miatt, és a függvény alkalmazás skálázása. Így a **runOnStartup** ritkán kell beállítani `true` , különösen éles környezetben. |
 |**useMonitor**|**UseMonitor**|Állítsa be `true` vagy `false` értékre, ha azt szeretné, hogy a program figyelje az ütemtervet. Az ütemterv figyelése továbbra is fenntartja az ütemezett előfordulásokat, hogy a támogatás az ütemterv megfelelő karbantartása legyen, még akkor is, ha a Function app instances újraindul Ha nincs explicit beállítva, az alapértelmezett érték az olyan `true` ütemezések esetében, amelyeknél az ismétlődési időköz nagyobb vagy egyenlő, mint 1 perc. Az olyan ütemtervek esetében, amelyek percenként többször aktiválódnak, az alapértelmezett érték `false` .
@@ -336,7 +336,7 @@ A CRON-kifejezésben szereplő számok egy időre és dátumra hivatkoznak, nem 
 
 A CRON kifejezéstől eltérően `TimeSpan` az érték határozza meg az egyes függvények meghívása közötti időtartamot. Ha egy függvény a megadott intervallumnál hosszabb ideig fut, az időzítő azonnal meghívja a függvényt.
 
-Karakterláncként kifejezve a `TimeSpan` formátum a `hh:mm:ss` 24- `hh` nél kisebb. Ha az első két számjegy 24 vagy nagyobb, a formátum: `dd:hh:mm` . Néhány példa:
+Karakterláncként kifejezve a `TimeSpan` formátum a `hh:mm:ss` 24- `hh` nél kisebb. Ha az első két számjegy 24 vagy nagyobb, a formátum: `dd:hh:mm` . Íme néhány példa:
 
 | Példa      | Aktiváláskor |
 |--------------|----------------|
@@ -347,7 +347,7 @@ Karakterláncként kifejezve a `TimeSpan` formátum a `hh:mm:ss` 24- `hh` nél k
 
 ## <a name="scale-out"></a>Bővítés
 
-Ha egy függvény alkalmazás több példányra is kiterjed, csak egy időzítő által aktivált függvény egyetlen példánya fut az összes példányon.
+Ha egy függvény alkalmazás több példányra is kiterjed, csak egy időzítő által aktivált függvény egyetlen példánya fut az összes példányon. Ha egy függőben lévő hívás még fut, a rendszer nem indítja újra.
 
 ## <a name="function-apps-sharing-storage"></a>Function apps megosztása Storage
 

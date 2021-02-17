@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 07/08/2020
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: d09cb92055c69b6585fa3b55609144c0e680964a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 61aa5ffcbab493109371067b1eb9d199a29cb852
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997807"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100551815"
 ---
 **A konfigurációs és a feldolgozási kiszolgáló követelményei**
 
@@ -68,7 +68,7 @@ https: \/ /dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-
 
 **Összetevő** | **Követelmény** 
 --- | ---
-VMware vSphere PowerCLI | A [PowerCLI 6,0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) -es verzióját kell telepíteni, ha a konfigurációs kiszolgáló VMWare virtuális gépen fut.
+VMware vSphere PowerCLI | Nem szükséges a 9,14-es és újabb verziókhoz
 MYSQL | Telepíteni kell a MySQL-t. Manuálisan is telepítheti, vagy Site Recovery telepítheti. (További információ a [beállítások konfigurálása](../articles/site-recovery/vmware-azure-deploy-configuration-server.md#configure-settings) című témakörben találhatók)
 |
 

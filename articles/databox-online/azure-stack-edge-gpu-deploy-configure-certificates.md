@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 7854aff0b4194efae7c4df653dee18e2676fdd41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8d21f9eea0258175195529c4d8b72ee9085dc77
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446320"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546975"
 ---
 # <a name="tutorial-configure-certificates-for-your-azure-stack-edge-pro-with-gpu"></a>Oktatóanyag: a Azure Stack Edge Pro tanúsítványának konfigurálása GPU-val
 
@@ -35,10 +35,10 @@ Az Azure Stack Edge Pro-eszköz GPU-val való konfigurálása előtt győződjö
 
 * A fizikai eszközt a [Azure stack Edge Pro telepítésének](azure-stack-edge-gpu-deploy-install.md)részletesen telepítette.
 * Ha azt tervezi, hogy saját tanúsítványokat hoz:
-    - A tanúsítványokat a megfelelő formátumban kell megadni, beleértve az aláíró lánc tanúsítványát. A tanúsítványról a további tudnivalókat lásd: [tanúsítványok kezelése](azure-stack-edge-j-series-manage-certificates.md)
+    - A tanúsítványokat a megfelelő formátumban kell megadni, beleértve az aláíró lánc tanúsítványát. A tanúsítványról a további tudnivalókat lásd: [tanúsítványok kezelése](azure-stack-edge-gpu-manage-certificates.md)
 
 <!--    - If your device is deployed in Azure Government or Azure Government Secret or Azure Government top secret cloud and not deployed in Azure public cloud, a signing chain certificate is required before you can activate your device. 
-    For details on certificate, go to [Manage certificates](azure-stack-edge-j-series-manage-certificates.md).-->
+    For details on certificate, go to [Manage certificates](azure-stack-edge-gpu-manage-certificates.md).-->
 
 
 ## <a name="configure-certificates-for-device"></a>Tanúsítványok konfigurálása az eszközhöz
@@ -61,7 +61,7 @@ Az Azure Stack Edge Pro-eszköz GPU-val való konfigurálása előtt győződjö
     
         - **Az összes eszköz tanúsítványának előállítása**. Ezeket az eszköz tanúsítványait csak tesztelésre kell használni, és nem használhatók éles számítási feladatokhoz. További információ: [eszközök tanúsítványainak előállítása a Azure stack Edge Pro](#generate-device-certificates)-ban.
 
-        - **Saját tanúsítványok**használata. Saját aláírt végponti tanúsítványokat és a hozzájuk tartozó aláíró láncokat is használhatja. Először adja hozzá az aláíró láncot, majd töltse fel a végponti tanúsítványokat. **Javasoljuk, hogy mindig saját tanúsítványokat használjon az éles számítási feladatokhoz.** További információ: [saját tanúsítványok használata az Azure stack Edge Pro-eszközön](#bring-your-own-certificates).
+        - **Saját tanúsítványok** használata. Saját aláírt végponti tanúsítványokat és a hozzájuk tartozó aláíró láncokat is használhatja. Először adja hozzá az aláíró láncot, majd töltse fel a végponti tanúsítványokat. **Javasoljuk, hogy mindig saját tanúsítványokat használjon az éles számítási feladatokhoz.** További információ: [saját tanúsítványok használata az Azure stack Edge Pro-eszközön](#bring-your-own-certificates).
     
         - Saját tanúsítványokat is létrehozhat, és létrehozhat néhány eszköz tanúsítványát. A **tanúsítványok előállítása** lehetőség csak az eszköz tanúsítványait hozza újra.
 
@@ -74,11 +74,11 @@ Az eszközök tanúsítványainak létrehozásához kövesse az alábbi lépése
 
 Ezekkel a lépésekkel újragenerált és letöltheti az Azure Stack Edge Pro-eszköz tanúsítványait:
 
-1. Az eszköz helyi felhasználói felületén lépjen a **Configuration > tanúsítványok**elemre. Válassza a **tanúsítványok előállítása**lehetőséget.
+1. Az eszköz helyi felhasználói felületén lépjen a **Configuration > tanúsítványok** elemre. Válassza a **tanúsítványok előállítása** lehetőséget.
 
     ![Tanúsítvány előállítása és letöltése 1](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-3.png)
 
-2. Az **eszközök tanúsítványainak előállítása**lapon válassza a **készítés**lehetőséget. 
+2. Az **eszközök tanúsítványainak előállítása** lapon válassza a **készítés** lehetőséget. 
 
     ![A 2. tanúsítvány előállítása és letöltése](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-4.png)
 
@@ -93,7 +93,7 @@ Ezekkel a lépésekkel újragenerált és letöltheti az Azure Stack Edge Pro-es
 
 3. A tanúsítványok létrehozása után: 
 
-    - Az összes tanúsítvány állapota **érvényesként**jelenik meg. 
+    - Az összes tanúsítvány állapota **érvényesként** jelenik meg. 
 
         ![Tanúsítvány készítése és letöltése 5](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-6.png)
 
@@ -120,24 +120,24 @@ Ezekkel a lépésekkel újragenerált és letöltheti az Azure Stack Edge Pro-es
 
 Ezeket a tanúsítványokat telepítenie kell arra az ügyfél-rendszerre, amelyet a szolgáltatói eszközön lévő végpontokhoz való hozzáféréshez használ. Ezek a tanúsítványok megbízhatósági kapcsolatot létesít az ügyfél és az eszköz között.
 
-A tanúsítványok importálásához és telepítéséhez azon az ügyfélen, amelyet az eszköz eléréséhez használ, kövesse a [tanúsítványok importálása az Azure stack Edge Pro-eszközhöz hozzáférő ügyfeleken](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)című témakör lépéseit. 
+A tanúsítványok importálásához és telepítéséhez azon az ügyfélen, amelyet az eszköz eléréséhez használ, kövesse a [tanúsítványok importálása az Azure stack Edge Pro-eszközhöz hozzáférő ügyfeleken](azure-stack-edge-gpu-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)című témakör lépéseit. 
 
 Azure Storage Explorer használata esetén PEM formátumban kell telepítenie a tanúsítványokat az ügyfélre, és az eszköz által létrehozott tanúsítványokat PEM formátumba kell alakítania. 
 
 > [!IMPORTANT]
 > - A letöltési hivatkozás csak az eszköz által generált tanúsítványokhoz érhető el, és nem, ha saját tanúsítványokat hoz létre.
-> - Dönthet úgy, hogy az eszköz által generált tanúsítványokat kombinálja, és saját tanúsítványokat használ, amíg a többi tanúsítványra vonatkozó követelmény teljesül. További információért lépjen a [tanúsítványokra vonatkozó követelményeknél](azure-stack-edge-j-series-certificate-requirements.md).
+> - Dönthet úgy, hogy az eszköz által generált tanúsítványokat kombinálja, és saját tanúsítványokat használ, amíg a többi tanúsítványra vonatkozó követelmény teljesül. További információért lépjen a [tanúsítványokra vonatkozó követelményeknél](azure-stack-edge-gpu-certificate-requirements.md).
     
 
 ### <a name="bring-your-own-certificates"></a>Saját tanúsítványok használata
 
 A következő lépésekkel adhatja hozzá saját tanúsítványait, beleértve az aláíró láncot.
 
-1. A tanúsítvány feltöltéséhez a **tanúsítvány** lapon válassza a **+ tanúsítvány hozzáadása**elemet.
+1. A tanúsítvány feltöltéséhez a **tanúsítvány** lapon válassza a **+ tanúsítvány hozzáadása** elemet.
 
     ![Helyi webes felhasználói felület "tanúsítványok" – 4. oldal](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-1.png)
 
-2. Először töltse fel az aláíró láncot, és válassza az **érvényesítés & Hozzáadás**lehetőséget.
+2. Először töltse fel az aláíró láncot, és válassza az **érvényesítés & Hozzáadás** lehetőséget.
 
     ![Helyi webes felhasználói felület "tanúsítványok" 5. oldal](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-2.png)
 
@@ -165,10 +165,10 @@ A következő lépésekkel adhatja hozzá saját tanúsítványait, beleértve a
     > Az Azure nyilvános felhő kivételével az összes felhőalapú konfiguráció (Azure Government vagy Azure Stack) aktiválása előtt be kell állítani az aláírási lánc tanúsítványait.
 
 
-Az eszköz már készen áll az aktiválásra. **A kezdéshez válassza< vissza**lehetőséget.
+Az eszköz már készen áll az aktiválásra. **A kezdéshez válassza< vissza** lehetőséget.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 

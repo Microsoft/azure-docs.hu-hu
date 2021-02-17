@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 10/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b6125252c22163306a79f5682a3a5fc4f0b55d4c
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: cc64e314a8acb035736df0521987cb78a7297326
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964388"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556916"
 ---
 # <a name="list-azure-role-assignments-using-azure-cli"></a>Azure-beli szerepkör-hozzárendelések listázása az Azure CLI használatával
 
@@ -185,6 +185,6 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
     az role assignment list --assignee {objectId}
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure CLI használatával](role-assignments-cli.md)
+- [Azure-szerepkörök kiosztása az Azure CLI-vel](role-assignments-cli.md)

@@ -9,19 +9,19 @@ ms.author: mikben
 ms.date: 09/29/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 779fa577b25bd4f2aa92aa8b8cc1244a58bdf1ae
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 883be25716d94130984baef5e7a1eab80888a2b9
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126190"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558467"
 ---
 # <a name="pricing-scenarios"></a>Díjszabási forgatókönyvek
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 
-Az Azure kommunikációs szolgáltatások díjszabása általában az utólagos elszámolású modellen alapul.
+Az Azure kommunikációs szolgáltatások díjszabása általában az utólagos elszámolású modellen alapul. A következő példákban szereplő díjak szemléltető célokat szolgálnak, és nem feltétlenül tükrözik a legújabb Azure-díjszabást.
 
 ## <a name="voicevideo-calling-and-screen-sharing"></a>Hang/videó hívása és a képernyő megosztása
 
@@ -48,9 +48,32 @@ Alice csoportos hívást készített a kollégáival, Bob és Charlie-val. Alice
 
 **A csoportos hívás teljes költsége**: $0,48 + $0,172 = $0,652
 
+### <a name="pricing-example-a-user-of-the-communication-services-js-client-library-joins-a-scheduled-microsoft-teams-meeting"></a>Díjszabási példa: a kommunikációs szolgáltatások JS ügyféloldali kódtár felhasználója egy ütemezett Microsoft Teams-találkozóhoz csatlakozik
+
+Alice egy orvos, aki a betegével találkozott, Bob. Alice csatlakozik a csapat asztali alkalmazásban található látogatáshoz. Bob kap egy hivatkozást az egészségügyi szolgáltató webhelyéről való csatlakozásra, amely a kommunikációs szolgáltatások JS ügyféloldali kódtár használatával csatlakozik az értekezlethez. Bob a mobiltelefonnal fogja használni az értekezletet egy webböngészővel (iPhone Safari használatával). A csevegés a virtuális látogatás során lesz elérhető. 
+
+- A hívás összesen 30 percet vesz igénybe.
+- Alice és Bob részt vesz a teljes hívásban. Alice bekapcsolja a videót öt perccel a hívás elindítása után, és megosztja a képernyőjét 13 percig. Bob a teljes híváshoz tartozó videóval rendelkezik.
+- Alice öt üzenetet küld, Bob válasza három üzenettel.
+
+
+**Költségszámítások**
+
+- 1 résztvevő (Bob) x 30 perc x $0,004/résztvevő/perc = $0,12 [a videó és az audió díja azonos a díjszabásban]
+- 1 résztvevő (Alice) x 30 perc x $0,000/résztvevő/perc = $0,0 *. 
+- 1 résztvevő (Bob) x 3 csevegési üzenet x $0,0008 = $0,0024.
+- 1 résztvevő (Alice) x 5 csevegési üzenet x $0,000 = $0,0 *. 
+
+* Alice részvételét a csapatának licence szabályozza. Az Azure-számlán megtekintheti azokat a perceket és csevegéseket, amelyeket a felhasználók a kommunikációs szolgáltatásokat használó felhasználók számára biztosítanak az Ön kényelme érdekében, de ezek a percek és a Teams-ügyféltől származó üzenetek nem kerülnek be
+
+**A látogatás teljes költsége**: 
+- Felhasználói csatlakozás a kommunikációs szolgáltatások JS-ügyféloldali kódtár használatával: $0,12 + $0,0024 = $0,1224
+- Felhasználói csatlakozás a Teams Desktop alkalmazáshoz: $0 (a csapat licence vonatkozik rájuk) 
+
+
 ## <a name="chat"></a>Csevegés
 
-A kommunikációs szolgáltatások segítségével javíthatja az alkalmazását, hogy 2 vagy több felhasználótól érkező csevegési üzeneteket küldjön és fogadjon. A csevegési ügyféloldali kódtárak a JavaScript, a .NET, a Python és a Java esetében érhetők el. Tekintse meg [ezt a lapot az ügyféloldali kódtárak megismeréséhez](./sdk-options.md)
+A kommunikációs szolgáltatások segítségével javíthatja az alkalmazást, hogy két vagy több felhasználó között küldjön és fogadhat csevegési üzeneteket. A csevegési ügyféloldali kódtárak a JavaScript, a .NET, a Python és a Java esetében érhetők el. Tekintse meg [ezt a lapot az ügyféloldali kódtárak megismeréséhez](./sdk-options.md)
 
 ### <a name="price"></a>Ár
 
@@ -58,7 +81,7 @@ Minden elküldött Csevegésnél $0,0008 díjat számítunk fel.
 
 ### <a name="pricing-example-chat-between-two-users"></a>Díjszabási példa: csevegés két felhasználó között 
 
-A-vel egy olyan csevegési szálat indít el, amely az Emily használatával megoszt egy frissítést, és 5 üzenetet küld. A csevegés 10 percet vesz igénybe, hogy a és az Emily egy másik 15 üzenetet küldjön.
+A-vel egy olyan csevegési szálat indít el, amely az Emily használatával megoszt egy frissítést, és 5 üzenetet küld. A csevegés 10 percet vesz igénybe. A és az Emily egy másik 15 üzenetet küld.
 
 **Költségszámítások** 
 - Küldött üzenetek száma (5 + 15 + 15) x $0,0008 = $0,028

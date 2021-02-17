@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 08ab71375171d4bb4167c725bc7118bec2e1ebfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da85abdff3d1022659f2d4e83fd14c5ae6003fc9
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372011"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546057"
 ---
 # <a name="machine-learning-features"></a>Gépi tanulási funkciók
 
@@ -160,11 +160,9 @@ Szállítási címe (gépi megtanult entitás)
 
 ### <a name="required-feature-using-prebuilt-entities"></a>Kötelező funkció előre elkészített entitások használatával
 
-A város, az állam és az ország/régió általában a listának egy zárt halmaza, ami azt jelenti, hogy az idő múlásával nem változnak. Ezek az entitások rendelkezhetnek a megfelelő ajánlott funkciókkal, és ezek a funkciók kötelezőként jelölhetők meg. Ez azt jelenti, hogy a teljes szállítási címet nem adja vissza a rendszer, ha a szükséges funkciókkal rendelkező entitások nem találhatók.
+Az előre elkészített entitások, például a város, az állam, az ország/régió általában egy lezárt készlet, ami azt jelenti, hogy az idő múlásával nem változnak. Ezek az entitások rendelkezhetnek a megfelelő ajánlott funkciókkal, és ezek a funkciók kötelezőként jelölhetők meg. A jelző azonban `isRequired` csak a hozzá tartozó entitáshoz van társítva, és nincs hatással a hierarchiára. Ha az előre elkészített alentitások szolgáltatás nem található, akkor ez nem befolyásolja a szülő entitás észlelését és visszaküldését.
 
-Mi a helyzet abban az esetben, ha a város, az állam vagy az ország/régió a teljes verzióban van, de egy helyen van, vagy olyan szleng, amelyet a LUIS nem vár? Ha szeretne valamilyen utólagos feldolgozást végezni, hogy segítsen megoldani az entitást, mert az alacsony megbízhatósági pontszám LUIS, ne adja meg a szolgáltatást igény szerint.
-
-Egy másik példa a szállítási címekhez szükséges szolgáltatásra, hogy az utca egy kötelező, [előre elkészített](luis-reference-prebuilt-entities.md) szám legyen. Ez lehetővé teszi, hogy a felhasználó "1 Microsoft Way" vagy "egy Microsoft Way" értéket adjon meg. Mindkettő feloldása az utca-szám alentitás "1" számával.
+Példa egy szükséges szolgáltatásra, érdemes lehet felderíteni a címeket. Érdemes lehet megfontolni az utca számának kötelezővé tételét. Ez lehetővé tenné a felhasználóknak "1 Microsoft Way" vagy "egy Microsoft Way" megadását, és mindkettő feloldja az "1" számot az utca száma alentitás számára. További információért tekintse meg az [előre felépített entitást ](luis-reference-prebuilt-entities.md) ismertető cikket.
 
 ### <a name="required-feature-using-list-entities"></a>Kötelező szolgáltatás a lista entitások használatával
 
@@ -201,13 +199,13 @@ Egy tulajdonság vagy fogalom leírásához több funkciót is használhat. Gyak
 
 ### <a name="example-ticket-booking-entity-features-for-a-travel-app"></a>Példa: egy utazási alkalmazás Ticket-foglalási entitásának funkciói  
 
-Alapszintű példaként vegye fontolóra egy olyan alkalmazás foglalását, amely egy repülési foglalási _szándékot_ és egy Ticket-foglalási _entitást_foglal le. A Ticket-Booking entitás rögzíti az információkat, hogy egy repülőjegyet foglaljon le egy foglalási rendszeren. 
+Alapszintű példaként vegye fontolóra egy olyan alkalmazás foglalását, amely egy repülési foglalási _szándékot_ és egy Ticket-foglalási _entitást_ foglal le. A Ticket-Booking entitás rögzíti az információkat, hogy egy repülőjegyet foglaljon le egy foglalási rendszeren. 
 
 A Ticket-Book gépi tanulási entitása két alentitással rendelkezik a forrás és a cél rögzítéséhez. A funkciókat hozzá kell adni az egyes alentitásokhoz, nem a legfelső szintű entitáshoz.
 
 :::image type="content" source="media/luis-concept-features/ticket-booking-entity.png" alt-text="Ticketbooking-entitás sémája":::
 
-A Ticket-Booking entitás egy gépi tanulásra szolgáló entitás, amelynek alentitásai, például a _forrás_ és a _cél_. Ezek az alentitások mind földrajzi helyet jeleznek. A hely kinyeréséhez, valamint a _forrás_ és a _cél_közötti különbségtételhez minden alentitásnak rendelkeznie kell funkciókkal.
+A Ticket-Booking entitás egy gépi tanulásra szolgáló entitás, amelynek alentitásai, például a _forrás_ és a _cél_. Ezek az alentitások mind földrajzi helyet jeleznek. A hely kinyeréséhez, valamint a _forrás_ és a _cél_ közötti különbségtételhez minden alentitásnak rendelkeznie kell funkciókkal.
 
 |Típus|Forrás alentitás |Cél alentitás|
 |--|--|--|
@@ -226,7 +224,7 @@ Miután létrehozta a gépi tanulási entitást, hozzá kell adnia egy példa ho
 
 A Ticket foglalási példához címkézze fel a példában szereplő hosszúságú kimondott szöveg az `TicketBooking` entitással és a szövegben található alentitásokkal.
 
-:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity.png" alt-text="Ticketbooking-entitás sémája":::
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity.png" alt-text="Címke – példa hosszúságú kimondott szöveg":::
 
 ### <a name="example-pizza-ordering-app"></a>Példa: Pizza rendezési alkalmazás
 
@@ -234,13 +232,13 @@ Egy másik Példaként vegyünk egy alkalmazást egy pizzéria-étterem számár
 
 Ebben a példában a gépi tanulási entitás a beágyazott alentitások, a kifejezések listája, az előre elkészített entitások és az egyéni entitások esetében összetettebb.
 
-:::image type="content" source="media/luis-concept-features/pizza-order-entity.png" alt-text="Ticketbooking-entitás sémája":::
+:::image type="content" source="media/luis-concept-features/pizza-order-entity.png" alt-text="Pizza Order entitás sémája":::
 
 Ez a példa az alentitások szintjén és az alentitások szintjének alárendelt funkciókat használja. Milyen szinten kapja meg, hogy milyen típusú kifejezéseket vagy modelleket tartalmaz a funkció az entitások kialakításának fontos részeként.
 
 Habár az alentitások számos olyan kifejezést tartalmazhatnak, amelyek segítenek az entitás észlelésében, az egyes alentitások csak egy modellel rendelkeznek szolgáltatásként. Ebben a [pizza-alkalmazásban](https://github.com/Azure/pizza_luis_bot/blob/master/CognitiveModels/MicrosoftPizza.json)ezek a modellek elsősorban a listában szerepelnek.
 
-:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity-pizza.png" alt-text="Ticketbooking-entitás sémája":::
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity-pizza.png" alt-text="Pizza Order szándék a címkével ellátott példa hosszúságú kimondott szöveg":::
 
 A helyesen címkézett példa hosszúságú kimondott szöveg úgy jelenik meg, hogy megmutassa az entitások beágyazásának módját. 
 

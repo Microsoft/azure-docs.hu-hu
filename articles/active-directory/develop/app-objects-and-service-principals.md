@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/22/2020
+ms.date: 02/15/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: a18e3cb65b2ef70a04ca1d7e74dd9d5f42e3a933
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 0345362e0e5bce9912a247fc90dee63943a1cb3b
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355766"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557839"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Alkalmazás- és szolgáltatásnév-objektumok az Azure Active Directoryban
 
@@ -27,9 +27,9 @@ Ez a cikk az alkalmazások regisztrálását, az alkalmazások objektumait és a
 ## <a name="application-registration"></a>Alkalmazásregisztráció
 Az identitás-és hozzáférés-kezelési funkciók Azure AD-be való delegálásához egy alkalmazást regisztrálni kell egy Azure AD- [bérlőben](developer-glossary.md#tenant). Ha az Azure AD-vel regisztrálja az alkalmazást, az alkalmazáshoz olyan identitás-konfigurációt hoz létre, amely lehetővé teszi, hogy integrálható legyen az Azure AD-vel. Ha a [Azure Portalban][AZURE-Portal]regisztrál egy alkalmazást, kiválaszthatja, hogy egyetlen bérlő (csak a bérlőben érhető el) vagy több-bérlős (más bérlők számára elérhető), és opcionálisan beállíthat-e ÁTirányítási URI-t (ahol a hozzáférési jogkivonat el van küldve).
 
-:::image type="content" source="media/app-objects-and-service-principals/app-registration.png" alt-text="Képernyőkép a Azure Portal az alkalmazás regisztrálása panelről":::
+Az alkalmazások regisztrálásának lépésenkénti utasításait az [alkalmazás regisztrációjának](quickstart-register-app.md)első lépéseiben találhatja meg.
 
-Az alkalmazás regisztrációjának befejezése után az alkalmazás (az Application objektum) globálisan egyedi példánya van, amely a saját bérlőn vagy címtáron belül él.  Az alkalmazáshoz (az alkalmazáshoz vagy az ügyfél-AZONOSÍTÓhoz) globálisan egyedi azonosítót is használhat.  A portálon titkokat vagy tanúsítványokat és hatóköröket adhat hozzá az alkalmazás működéséhez, testreszabhatja az alkalmazás arculatát a bejelentkezési párbeszédpanelen, és így tovább.
+Az alkalmazás regisztrációjának befejezése után az alkalmazás (az [Application objektum](#application-object)) globálisan egyedi példánya van, amely a saját bérlőn vagy címtáron belül él.  Az alkalmazáshoz (az alkalmazáshoz vagy az ügyfél-AZONOSÍTÓhoz) globálisan egyedi azonosítót is használhat.  A portálon titkokat vagy tanúsítványokat és hatóköröket adhat hozzá az alkalmazás működéséhez, testreszabhatja az alkalmazás arculatát a bejelentkezési párbeszédpanelen, és így tovább.
 
 Ha regisztrál egy alkalmazást a portálon, a rendszer automatikusan létrehoz egy Application-objektumot és egy egyszerű szolgáltatásnevet a saját bérlőben.  Ha a Microsoft Graph API-k használatával regisztrál/hoz létre alkalmazást, az egyszerű szolgáltatás létrehozása egy külön lépés.
 

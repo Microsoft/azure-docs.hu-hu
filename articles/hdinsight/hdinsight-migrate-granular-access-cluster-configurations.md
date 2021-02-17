@@ -6,12 +6,12 @@ ms.author: tyfox
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: 08be42f4f0801fc700b3e0fc645c1bbc1b747e91
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: c6bbb389902c11239f665c6d0db787f61955a953
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944093"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555824"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrálás fürtkonfigurációk részletes szerepköralapú hozzáféréséhez
 
@@ -182,7 +182,7 @@ az role assignment create --role "HDInsight Cluster Operator" --assignee user@do
 
 ### <a name="using-the-azure-portal"></a>Az Azure Portal használata
 
-A Azure Portal segítségével hozzáadhatja a HDInsight-fürt operátori szerepkör-hozzárendelését egy felhasználóhoz. Tekintse meg a dokumentációt, [adja hozzá vagy távolítsa el az Azure szerepkör-hozzárendeléseket a Azure Portal használatával – szerepkör-hozzárendelés hozzáadása](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment).
+A Azure Portal segítségével hozzáadhatja a HDInsight-fürt operátori szerepkör-hozzárendelését egy felhasználóhoz. Tekintse meg a dokumentációt, [rendeljen Azure-szerepköröket a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="faq"></a>GYIK
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/14/2020
 ms.author: alkohli
-ms.openlocfilehash: 891885dce52ee57fa163bb71b427591156091651
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 922ef24bff7d6e60a3ba3b91113003f8206b8177
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362853"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548641"
 ---
 # <a name="security-and-data-protection-for-azure-stack-edge-pro-r-and-azure-stack-edge-mini-r"></a>Biztonság és adatvédelem Azure Stack Edge Pro R és Azure Stack Edge mini R rendszerhez
 
@@ -77,7 +77,7 @@ A következőket teheti:
 
 ### <a name="establish-trust-with-the-device-via-certificates"></a>Megbízhatósági kapcsolat létrehozása az eszközzel tanúsítványok használatával
 
-Azure Stack Edge robusztus eszköz lehetővé teszi saját tanúsítványok használatát, és telepíti azokat, amelyeket az összes nyilvános végponthoz használni fog. További információért lépjen [a tanúsítvány feltöltése](azure-stack-edge-j-series-manage-certificates.md#upload-certificates)elemre. Az eszközön telepíthető összes tanúsítvány listáját a [tanúsítványok kezelése az eszközön című oldalon](azure-stack-edge-j-series-manage-certificates.md)tekintheti meg.
+Azure Stack Edge robusztus eszköz lehetővé teszi saját tanúsítványok használatát, és telepíti azokat, amelyeket az összes nyilvános végponthoz használni fog. További információért lépjen [a tanúsítvány feltöltése](azure-stack-edge-gpu-manage-certificates.md#upload-certificates)elemre. Az eszközön telepíthető összes tanúsítvány listáját a [tanúsítványok kezelése az eszközön című oldalon](azure-stack-edge-gpu-manage-certificates.md)tekintheti meg.
 
 - Amikor számítási lehetőséget konfigurál az eszközön, létrejön egy IoT-eszköz és egy IoT Edge eszköz. Ezeket az eszközöket a rendszer automatikusan hozzárendeli a szimmetrikus hozzáférési kulcsokhoz. Ajánlott biztonsági eljárásként ezeket a kulcsokat rendszeresen elforgatják a IoT Hub szolgáltatáson keresztül.
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 5ef06f2db487a3e6d897e26758da840f37c3ecaf
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: cff40385edc89c0f6d2d105d089b66c046b0c04b
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575805"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545938"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Oktatóanyag: végpontok közötti megoldás kiépítése
 
@@ -124,8 +124,6 @@ Vissza a Visual Studio-ablakba, ahol a _**AdtE2ESample**_ -projekt meg van nyitv
 ### <a name="assign-permissions-to-the-function-app"></a>Engedélyek kiosztása a Function alkalmazáshoz
 
 Ha engedélyezni szeretné a Function app számára az Azure Digital Twins elérését, a következő lépés az alkalmazás beállításainak konfigurálása, a rendszer által felügyelt Azure AD-identitás kiosztása, és az Azure digitális Twins- *adattulajdonosi* szerepkör megadása az Azure Digital Twins-példányban. Ez a szerepkör minden olyan felhasználóhoz vagy függvényhez szükséges, amely sok adatsík-tevékenységet szeretne végrehajtani a példányon. A biztonsággal és a szerepkör-hozzárendelésekkel kapcsolatos további információkért tekintse meg a [*következő fogalmakat: az Azure Digital Twins-megoldások biztonsága*](concepts-security.md).
-
-[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
 Azure Cloud Shell a következő parancs használatával állítson be egy olyan alkalmazás-beállítást, amelyet a Function alkalmazás az Azure Digital Twins-példányra való hivatkozáshoz fog használni. Töltse ki a helyőrzőket az erőforrásainak részleteivel (ne feledje, hogy az Azure digitális Twins-példányának URL-címe a *https://* előtt megjelenő állomásnév).
 
