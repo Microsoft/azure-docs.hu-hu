@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: fc410ef903ac7eca2457516df2c71260a4b19b89
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 656b2e44ec4a4e9de0d594301cb3e4c1b9a33b13
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097489"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558620"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4 és Edsv4 sorozat
 
@@ -30,7 +30,7 @@ A Edv4-sorozat méretei az Intel &reg; Xeon &reg; Platinum 8272CL (Cascade-tó) 
 [Élő áttelepítés](maintenance-and-updates.md): támogatott<br>
 [Memória megőrzésének frissítései](maintenance-and-updates.md): támogatott<br>
 [VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
-[Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott<br>
+[Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott (*legalább 4 vCPU szükséges*)<br>
 [Ideiglenes operációsrendszer-lemezek](ephemeral-os-disks.md): nem támogatott <br>
 <br>
 
@@ -58,7 +58,7 @@ A Edsv4-sorozat méretei az Intel &reg; Xeon &reg; Platinum 8272CL (Cascade-tó)
 [Élő áttelepítés](maintenance-and-updates.md): támogatott<br>
 [Memória megőrzésének frissítései](maintenance-and-updates.md): támogatott<br>
 [VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
-[Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott<br>
+[Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott (*legalább 4 vCPU szükséges*)<br>
 [Ideiglenes operációsrendszer-lemezek](ephemeral-os-disks.md): támogatott <br>
 <br>
 

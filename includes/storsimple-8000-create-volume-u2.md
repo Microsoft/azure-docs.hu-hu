@@ -2,19 +2,19 @@
 author: alkohli
 ms.service: storsimple
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 02/09/2021
 ms.author: alkohli
-ms.openlocfilehash: 2abfa29671bd804ee75194ef621fe07f06c015e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 400c5f0b2281679c3ec913e94643ffec6082d9e6
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67179172"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100551466"
 ---
 #### <a name="to-create-a-volume"></a>Kötet létrehozása
-1. Az **Eszközök** panelen szereplő eszközök táblázatos listájából válassza ki az eszközt. Kattintson a **+ Kötet hozzáadása** gombra.
+1. Az **Eszközök** panelen szereplő eszközök táblázatos listájából válassza ki az eszközt. Kattintson a **+ Kötet hozzáadása** gombra.<!--Note to reviewer. No screen updates. Had to rename screens to be able to correct a formatting error.-->
 
-    ![Új kötet hozzáadása](./media/storsimple-8000-create-volume-u2/step5createvol1.png)
+    ![Új kötet hozzáadása](./media/storsimple-8000-create-volume-u2/create-volume-01.png)
 
 2. A **Kötet hozzáadása** panelen:
    
@@ -35,19 +35,19 @@ ms.locfileid: "67179172"
        A 8100-as eszközön gyors helyi kötetekhez legfeljebb 8,5 TB, rétegzett kötetekhez legfeljebb 200 TB területet oszthat ki. A nagyobb 8600-as eszközön gyors helyi kötetekhez legfeljebb 22,5 TB, rétegzett kötetekhez legfeljebb 500 TB területet oszthat ki. A rétegzett kötetek munkakészletének üzemeltetéséhez helyi terület szükséges az eszközön, ezért a gyors helyi kötetek létrehozása hatással van a rétegzett kötetek kiosztásához rendelkezésre álló területre. Ha tehát helyileg rögzített kötetet hoz létre, a rétegzett kötetek létrehozásához rendelkezésre álló terület lecsökken. Ha rétegzett kötetet hoz létre, akkor ehhez hasonlóan a gyors helyi kötetek létrehozásához rendelkezésre álló terület csökken.
       
        Ha a 8100-as eszközön kioszt egy 8,5 TB-os (vagyis a legnagyobb megengedett méretű) gyors helyi kötetet, azzal elfoglalja az összes rendelkezésre álló helyi területet az eszközön. Innentől kezdve nem hozhat létre további rétegzett köteteket, mivel nincs helyi terület az eszközön, amely üzemeltethetné a rétegzett kötet munkakészletét. A meglévő rétegzett kötetek is hatással vannak a rendelkezésre álló területre. Ha például egy 8100-as eszközhöz már tartozik körülbelül 106 TB rétegzett kötet, akkor csak 4 TB érhető el a gyors helyi kötetekhez.
-
+ 
       1. Kattintson a nyílra a **Csatlakoztatott gazdagépek** mezőben. 
 
-         ![Csatlakoztatott gazdagépek](./media/storsimple-8000-create-volume-u2/step5createvol2.png)
+         ![Csatlakoztatott gazdagépek](./media/storsimple-8000-create-volume-u2/create-volume-02.png)
 
       1. A **Csatlakoztatott gazdagépek** panelen válasszon egy meglévő ACR-t vagy adjon meg egy újat a következő lépések végrehajtásával:
 
          1. Adja meg az ACR **nevét**.
          2. Az **iSCSI-kezdeményező neve** alatt adja meg a Windows-gazdagép iSCSI minősített nevét (IQN). Ha nem tudja az IQN-t, lépjen a [Windows Server-gazdagép IQN nevének lekérése](#get-the-iqn-of-a-windows-server-host) szakaszhoz.
 
-      1. Kattintson a **Létrehozás** elemre. Létrejön egy kötet a megadott beállításokkal.
+      1. Kattintson a **Létrehozás** lehetőségre. Létrejön egy kötet a megadott beállításokkal.
 
-         ![Kattintson a Létrehozás gombra](./media/storsimple-8000-create-volume-u2/step5createvol3.png)
+         ![Kattintson a Létrehozás gombra](./media/storsimple-8000-create-volume-u2/create-volume-03.png)
 
          > [!NOTE]
          > Ügyeljen arra, hogy a létrehozott kötet nem védett. Az ütemezett biztonsági mentésekhez biztonsági mentési házirendeket kell létrehoznia, és társítania kell azokat a kötethez. 

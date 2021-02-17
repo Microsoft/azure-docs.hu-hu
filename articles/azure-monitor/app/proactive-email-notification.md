@@ -6,12 +6,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 03/13/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8e2bf4e451ebc3c9ebba2c01dae6703fc79aa606
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63d1a0bf437df6bc0b68474e092ca23985493b24
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324131"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559585"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>Az e-mail értesítések intelligens észlelésének változása
 
@@ -19,7 +19,7 @@ Az ügyfelek visszajelzései alapján 2019 április 1-jén módosítjuk azokat a
 
 ## <a name="what-is-changing"></a>Mi változik?
 
-Jelenleg az intelligens észlelési értesítő e-maileket a rendszer alapértelmezés szerint az _előfizetés tulajdonosa_, az _előfizetés közreműködői_és az _előfizetés-olvasó_ szerepkörei számára küldi el. Ezek a szerepkörök gyakran tartalmaznak olyan felhasználókat, akik aktívan nem vesznek részt a figyelésben, ami miatt a felhasználók sok esetben szükségtelenül kapják meg az értesítéseket. A felhasználói élmény javítása érdekében az e-mail értesítések csak a [figyelési olvasó](../../role-based-access-control/built-in-roles.md#monitoring-reader) és a [közreműködői szerepkörök figyelését](../../role-based-access-control/built-in-roles.md#monitoring-contributor) teszik elérhetővé.
+Jelenleg az intelligens észlelési értesítő e-maileket a rendszer alapértelmezés szerint az _előfizetés tulajdonosa_, az _előfizetés közreműködői_ és az _előfizetés-olvasó_ szerepkörei számára küldi el. Ezek a szerepkörök gyakran tartalmaznak olyan felhasználókat, akik aktívan nem vesznek részt a figyelésben, ami miatt a felhasználók sok esetben szükségtelenül kapják meg az értesítéseket. A felhasználói élmény javítása érdekében az e-mail értesítések csak a [figyelési olvasó](../../role-based-access-control/built-in-roles.md#monitoring-reader) és a [közreműködői szerepkörök figyelését](../../role-based-access-control/built-in-roles.md#monitoring-contributor) teszik elérhetővé.
 
 ## <a name="scope-of-this-change"></a>A módosítás hatóköre
 
@@ -33,14 +33,14 @@ Ez a módosítás az összes intelligens észlelési szabályra hatással lesz, 
 
 Annak biztosítása érdekében, hogy az intelligens észlelésről érkező e-mailes értesítések a megfelelő felhasználók számára legyenek elküldve, ezeket a felhasználókat hozzá kell rendelni a [figyelési olvasóhoz](../../role-based-access-control/built-in-roles.md#monitoring-reader) vagy az előfizetés [figyelő közreműködői](../../role-based-access-control/built-in-roles.md#monitoring-contributor) szerepköreihez.
 
-Ha felhasználókat szeretne hozzárendelni a figyelési olvasóhoz vagy a közreműködő szerepkörökhöz a Azure Portalon keresztül, kövesse a [szerepkör-hozzárendelés hozzáadása](../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) című cikkben ismertetett lépéseket. Ügyeljen arra, hogy a _figyelési olvasót_ vagy a _figyelő közreműködőt_ adja meg a felhasználókhoz hozzárendelt szerepkörhöz.
+Ha felhasználókat szeretne hozzárendelni a figyelési olvasóhoz vagy a közreműködő szerepkörökhöz a Azure Portalon keresztül, kövesse az [Azure-szerepkörök hozzárendelésével](../../role-based-access-control/role-assignments-portal.md) foglalkozó cikkben ismertetett lépéseket. Ügyeljen arra, hogy a _figyelési olvasót_ vagy a _figyelő közreműködőt_ adja meg a felhasználókhoz hozzárendelt szerepkörhöz.
 
 > [!NOTE]
 > Ez a változás nem érinti az intelligens észlelési értesítések adott címzettjeit, amelyeket a szabály beállításai között a _további e-mail címzettek_ lehetőséggel konfiguráltak. A címzettek továbbra is megkapják az e-mailes értesítéseket.
 
 Ha bármilyen kérdése vagy problémája van a változással kapcsolatban, ne habozzon [kapcsolatba lépni velünk](mailto:smart-alert-feedback@microsoft.com).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az intelligens észlelésről:
 

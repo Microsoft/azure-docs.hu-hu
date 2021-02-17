@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
 ms.custom: contperf-fy21q1, azuread-video-2020
-ms.openlocfilehash: a39ae904bb1dd36c3d3e19e8f51ff24e8d975f9b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 5bf9b79621ae1cd2c73f2e3ce18b0780bcdd2a71
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033918"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559334"
 ---
 # <a name="what-is-azure-role-based-access-control-azure-rbac"></a>Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?
 
@@ -27,7 +27,7 @@ Ez a videó az Azure RBAC gyors áttekintését nyújtja.
 
 >[!VIDEO https://www.youtube.com/embed/Dzhm-garKBM]
 
-## <a name="what-can-i-do-with-azure-rbac"></a>Mire használhatom az Azure RBAC?
+## <a name="what-can-i-do-with-azure-rbac"></a>Mire használhatom az Azure RBAC-t?
 
 Íme néhány példa arra, hogy mit tehet az Azure RBAC:
 
@@ -38,7 +38,7 @@ Ez a videó az Azure RBAC gyors áttekintését nyújtja.
 
 ## <a name="how-azure-rbac-works"></a>Az Azure RBAC működése
 
-Az erőforrásokhoz való hozzáférés az Azure RBAC szolgáltatással való elérésének módját a szerepkör-hozzárendelések létrehozásával szabályozhatja. Ez a legfontosabb elképzelés az, hogy a rendszer hogyan érvényesíti az engedélyeket. A szerepkör-hozzárendelés három elemből áll: rendszerbiztonsági tagból, szerepkör-definícióból és hatókörből.
+Az Azure RBAC használatával az erőforrásokhoz való hozzáférés vezérlése az Azure-szerepkörök hozzárendelésével végezhető el. Ez a legfontosabb elképzelés az, hogy a rendszer hogyan érvényesíti az engedélyeket. A szerepkör-hozzárendelés három elemből áll: rendszerbiztonsági tagból, szerepkör-definícióból és hatókörből.
 
 ### <a name="security-principal"></a>Rendszerbiztonsági tag
 
@@ -80,9 +80,9 @@ Az alábbi ábrán egy példa látható szerepkör-hozzárendelésre. Ebben a p�
 
 ![Hozzáférés-vezérlés szerepkör-hozzárendeléssel](./media/overview/rbac-overview.png)
 
-Szerepkör-hozzárendeléseket az Azure Portal, az Azure CLI, az Azure PowerShell, az Azure SDK-k vagy REST API-k használatával hozhat létre.
+Szerepköröket a Azure Portal, az Azure CLI, az Azure PowerShell, az Azure SDK-k vagy a REST API-k használatával rendelhet hozzá.
 
-További információ: [szerepkör-hozzárendelés hozzáadásának lépései](role-assignments-steps.md).
+További információ: Azure- [szerepkör hozzárendelésének lépései](role-assignments-steps.md).
 
 ## <a name="multiple-role-assignments"></a>Több szerepkör-hozzárendelés
 
@@ -122,6 +122,6 @@ Az Azure RBAC a következő magas szintű lépésekkel határozza meg, hogy van-
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](role-assignments-portal.md)
+- [Azure-szerepkörök kiosztása a Azure Portal használatával](role-assignments-portal.md)
 - [A különböző szerepkörök ismertetése](rbac-and-directory-admin-roles.md)
 - [Felhőalapú bevezetési keretrendszer: erőforrás-hozzáférés kezelése az Azure-ban](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

@@ -8,10 +8,12 @@
       href: whats-new.md
 - name: Rövid útmutatók
   items:
-    - name: Tudásbázis létrehozása és lekérdezése QnA Maker portálon
-      href: Quickstarts/create-publish-knowledge-base.md
-    - name: Tudásbázis létrehozása és lekérdezése az ügyféloldali kódtárak vagy a REST API használatával
-      href: Quickstarts/quickstart-sdk.md
+    - name: Tudásbázis létrehozása és lekérdezése
+      items:
+        - name: QnA Maker portál
+          href: Quickstarts/create-publish-knowledge-base.md
+        - name: Ügyféloldali kódtárak vagy REST API
+          href: Quickstarts/quickstart-sdk.md
     - name: Tudásbázis lekérdezése REST API-kkal
       href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
 - name: Oktatóanyagok

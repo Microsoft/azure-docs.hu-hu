@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: f4ce830c889feaeda05745eeb02b72f55ad9314a
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 336eeee7d522647d11f55a65dc9dc4e65e8b7d47
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99819843"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535236"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>Rövid útmutató: Azure DDoS Protection standard létrehozása és konfigurálása
 
@@ -88,6 +88,11 @@ Először olvassa el a DDoS Protection-terv részleteit:
 3. Válassza ki a DDoS Protection-tervet a listából.
 
 A _MyVnet_ virtuális hálózatnak szerepelnie kell a felsorolásban. 
+
+### <a name="view-protected-resources"></a>Védett erőforrások megtekintése
+A **védett erőforrások** területen megtekintheti a védett virtuális hálózatokat és a nyilvános IP-címeket, vagy további virtuális hálózatokat adhat hozzá a DDoS Protection-tervhez:
+
+![Védett erőforrások megtekintése](./media/manage-ddos-protection/ddos-protected-resources.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

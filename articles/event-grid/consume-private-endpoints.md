@@ -3,12 +3,12 @@ title: Események kézbesítése a Private link Service használatával
 description: Ez a cikk azt ismerteti, hogyan lehet megkerülni a korlátozást, hogy az események ne legyenek kézbesítve a Private link Service használatával.
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.openlocfilehash: ad6f500830383f60e0350a297d2650bfbeae2f6f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4343740ea6c34c9ae282723b79007f7035785b04
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417586"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548614"
 ---
 # <a name="deliver-events-using-private-link-service"></a>Események kézbesítése a Private link Service használatával
 Jelenleg nem lehet eseményeket kézbesíteni [privát végpontok](../private-link/private-endpoint-overview.md)használatával. Ez azt eredményezi, hogy nincs támogatás, ha szigorú hálózati elkülönítési követelmények vannak, amelyekben a továbbított események forgalma nem hagyhatja el a magánhálózati IP-területet. 
@@ -19,7 +19,7 @@ Ha azonban a követelmények biztonságos módon küldik el az eseményeket egy 
 Ezt követően használhat egy Azure Functions vagy a virtuális hálózaton üzembe helyezett webhookot az események lekéréséhez. Lásd a következő mintát: [Kapcsolódás privát végpontokhoz Azure functions használatával](/samples/azure-samples/azure-functions-private-endpoints/connect-to-private-endpoints-with-azure-functions/).
 
 
-:::image type="content" source="./media/consume-private-endpoints/deliver-private-link-service.png" alt-text="Kézbesítés Private link Service használatával":::
+:::image type="content" source="./media/consume-private-endpoints/deliver-private-link-service.svg" alt-text="Kézbesítés Private link Service használatával":::
 
 
 Ebben a konfigurációban a forgalom a nyilvános IP-cím/Internet Event Gridról Event Hubsra, Service Busra vagy az Azure Storage-ba kerül, de a csatorna titkosítható, és a Event Grid felügyelt identitása is használatos. Ha a virtuális hálózatra telepített Azure Functions vagy webhookot úgy konfigurálja, hogy Event Hubs, Service Bus vagy Azure Storage-t használ privát kapcsolaton keresztül, akkor a forgalom ezen szakasza nyilvánvalóan az Azure-ban marad.

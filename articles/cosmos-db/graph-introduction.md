@@ -7,17 +7,17 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 11/25/2020
 ms.author: chrande
-ms.openlocfilehash: c2165ea6273ad90cfb95242dfe72538c0a5ef64c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 806904943f4e4a20734d595f835dc9450afdded5
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350058"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547277"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>A Gremlin API bemutatása Azure Cosmos DB
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
-[Azure Cosmos db](introduction.md)   a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása a kritikus fontosságú alkalmazások számára. Ez egy többmodelles adatbázis, amely támogatja a dokumentumok, a kulcs-érték, a gráf és az oszlop-család adatmodelleket. "Azure Cosmos DB a Gremlin API-val egy teljes körűen felügyelt, bármilyen méretezésre tervezett adatbázis-szolgáltatáson keresztül biztosít gráf adatbázis-szolgáltatást.  
+[Azure Cosmos db](introduction.md)   a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása a kritikus fontosságú alkalmazások számára. Ez egy többmodelles adatbázis, amely támogatja a dokumentumok, a kulcs-érték, a gráf és az oszlop-család adatmodelleket. Azure Cosmos DB a Gremlin API-val egy teljes körűen felügyelt, bármilyen méretezésre tervezett adatbázis-szolgáltatáson keresztül biztosít gráf adatbázis-szolgáltatást.  
 
 :::image type="content" source="./media/graph-introduction/cosmosdb-graph-architecture.png" alt-text="Az Azure Cosmos DB gráfarchitektúrája" border="false":::
 
@@ -154,7 +154,7 @@ A gráfok különösen akkor hasznosak, ha olyan kérdéseket kell megválaszoln
 :> g.V('thomas.1').out('knows').out('uses').out('runsos').group().by('name').by(count())
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A gráfok Azure Cosmos DB általi támogatásával kapcsolatos további információkért lásd:
 

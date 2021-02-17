@@ -15,19 +15,19 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b459f44308827308c28687db3c3fc33df470ea8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab64765fc4e329c8edbf7a4db813113d20d476b3
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84790188"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557512"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-rest-api"></a>Egyéni Azure-szerepkörök létrehozása vagy frissítése a REST API használatával
 
 > [!IMPORTANT]
 > A felügyeleti csoport hozzáadása a `AssignableScopes` jelenleg előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Ha az [Azure beépített szerepkörei](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját egyéni szerepköröket is. Ez a cikk az egyéni szerepkörök listázását, létrehozását, frissítését és törlését ismerteti a REST API használatával.
 
@@ -338,8 +338,8 @@ Egyéni szerepkör törléséhez használja a [szerepkör-definíciókat – tö
 
 1. Cserélje le a *{roleDefinitionId}* helyére az egyéni szerepkör GUID azonosítóját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni Azure-szerepkörök](custom-roles.md)
-- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása a REST API használatával](role-assignments-rest.md)
+- [Azure-szerepkörök kiosztása a REST API használatával](role-assignments-rest.md)
 - [Azure REST API-referencia](/rest/api/azure/)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/19/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 598673bca5b893236cfd38a7fa220ff25ee9dd7e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 78958dc0f95d2bc7a9e393ac2e769a97f7e92efa
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388515"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556438"
 ---
 # <a name="azure-storage-redundancy"></a>Redundancia az Azure Storage szolgáltatásban
 
@@ -179,8 +179,8 @@ Az alábbi táblázat azt jelzi, hogy az adatai tartósak-e, és elérhetőek-e 
 
 | Kimaradási forgatókönyv | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
 |:-|:-|:-|:-|:-|
-| Az adatközpontban lévő csomópont elérhetetlenné válik | Igen | Igen | Igen | Yes |
-| Egy teljes adatközpont (Zona vagy nem zónák) elérhetetlenné válik | Nem | Igen | Igen<sup>1</sup> | Yes |
+| Az adatközpontban lévő csomópont elérhetetlenné válik | Igen | Igen | Igen | Igen |
+| Egy teljes adatközpont (Zona vagy nem zónák) elérhetetlenné válik | Nem | Igen | Igen<sup>1</sup> | Igen |
 | Az elsődleges régióban az egész régióra kiterjedő leállás következik be | Nem | Nem | Igen<sup>1</sup> | Igen<sup>1</sup> |
 | A másodlagos régióhoz való olvasási hozzáférés akkor érhető el, ha az elsődleges régió elérhetetlenné válik | Nem | Nem | Igen (az RA-GRS-vel) | Igen (az RA-GZRS-vel) |
 
@@ -200,7 +200,7 @@ A következő táblázat bemutatja, hogy az egyes típusú Storage-fiókok milye
 
 | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
 |:-|:-|:-|:-|
-| Általános célú v2<br /> Általános célú v1<br /> BLOB Storage letiltása<br /> Blob Storage<br /> File Storage | Általános célú v2<br /> BLOB Storage letiltása<br /> File Storage | Általános célú v2<br /> Általános célú v1<br /> Blob Storage | Általános célú v2 |
+| Általános célú v2<br /> Általános célú v1<br /> BlockBlobStorage<br /> BlobStorage<br /> FileStorage | Általános célú v2<br /> BlockBlobStorage<br /> FileStorage | Általános célú v2<br /> Általános célú v1<br /> BlobStorage | Általános célú v2 |
 
 Az összes Storage-fiókra vonatkozó összes adattal a rendszer a Storage-fiók redundancia beállításának megfelelően másolja. Az objektumok, például a Blobok, a Blobok, a Blobok, a várólisták, a táblák és a fájlok másolása történik. A rendszer átmásolja az összes szintet, beleértve az archiválási szintet is. A blob-rétegekkel kapcsolatos további információkért lásd [: Azure Blob Storage: gyors, ritka elérésű és archív hozzáférési szintek](../blobs/storage-blob-storage-tiers.md).
 

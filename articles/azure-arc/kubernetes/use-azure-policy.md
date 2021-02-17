@@ -2,18 +2,18 @@
 title: Az Azure Policy használata fürtkonfigurációk tömeges alkalmazására (előzetes verzió)
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/10/2021
+ms.date: 02/15/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: A Azure Policy használata a fürt konfigurációjának méretekben történő alkalmazásához
 keywords: Kubernetes, arc, Azure, K8s, tárolók
-ms.openlocfilehash: ce9ba75e200a02654cac4c50303cc90fd0c1a5fd
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b80e50cb4823632f054de3b7f9da71392f8578d7
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390912"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560188"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>Az Azure Policy használata fürtkonfigurációk tömeges alkalmazására (előzetes verzió)
 

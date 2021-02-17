@@ -13,12 +13,12 @@ ms.date: 10/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c16eb2af5dfb103541c2eac207eb8ee5c303168f
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 55cecc658b11b7a09665af7128df25fbbff800ef
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754709"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559531"
 ---
 # <a name="overview-of-the-microsoft-authentication-library-msal"></a>A Microsoft Authentication Library (MSAL) áttekintése
 A Microsoft Authentication Library (MSAL) lehetővé teszi a fejlesztők számára a [jogkivonatok](developer-glossary.md#security-token) beszerzését a Microsoft Identity platformból a felhasználók hitelesítéséhez és a biztonságos webes API-k eléréséhez. A szolgáltatással biztonságos hozzáférést biztosíthat a Microsoft Graphhoz, más Microsoft API-khoz, harmadik féltől származó webes API-khoz vagy a saját webes API-hoz. A MSAL számos különböző alkalmazás-architektúrát és platformot támogat, többek között a .NET, JavaScript, Java, Python, Android és iOS rendszereken.
@@ -50,12 +50,15 @@ A MSAL számos alkalmazási helyzetben használható, többek között az alább
 
 | Kódtár | Támogatott platformok és keretrendszerek|
 | --- | --- |
-| [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)| .NET-keretrendszer, .NET Core, Xamarin Android, Xamarin iOS, Univerzális Windows-platform|
-| [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)| JavaScript/írógéppel keretrendszerek, például AngularJS, Ember.js vagy Durandal.js|
 | [MSAL Android rendszerhez](https://github.com/AzureAD/microsoft-authentication-library-for-android)|Android|
+| [MSAL szögletes](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-angular)| Egyoldalas alkalmazások szögletes és Angular.js keretrendszerekkel|
 | [MSAL iOS és macOS rendszerekre](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|iOS és macOS|
 | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java)|Windows, macOS, Linux|
+| [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)| JavaScript/írógéppel keretrendszerek, például Vue.js, Ember.js vagy Durandal.js|
+| [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)| .NET-keretrendszer, .NET Core, Xamarin Android, Xamarin iOS, Univerzális Windows-platform|
+| [MSAL csomópont](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-node)|Web Apps expressz, asztali alkalmazásokkal és Electron platformmal, platformfüggetlen konzolos alkalmazásokkal|
 | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python)|Windows, macOS, Linux|
+| [MSAL reagál](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-react)| Egyoldalas alkalmazások reagáló és reagáláson alapuló kódtárakkal (Next.js, Gatsby.js)|
 
 ## <a name="differences-between-adal-and-msal"></a>ADAL és MSAL közötti különbségek
 

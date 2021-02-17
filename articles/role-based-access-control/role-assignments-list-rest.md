@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 7d00c40a021bbe087d906fd6d9b767188a7b169a
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 1d90e83405cf9c560f644277a04012571e1a5a9d
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964328"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556902"
 ---
 # <a name="list-azure-role-assignments-using-the-rest-api"></a>Azure-beli szerepkör-hozzárendelések listázása a REST API használatával
 
@@ -54,7 +54,7 @@ Az Azure RBAC a hozzáférés listázásához listázza a szerepkör-hozzárende
 1. Cserélje le a *{Filter}* helyére azt a feltételt, amelyet alkalmazni szeretne a szerepkör-hozzárendelési lista szűréséhez.
 
     > [!div class="mx-tableFixed"]
-    > | Szűrés | Leírás |
+    > | Szűrő | Leírás |
     > | --- | --- |
     > | `$filter=atScope()` | Csak a megadott hatókörhöz tartozó szerepkör-hozzárendelések felsorolása, nem tartalmazza a szerepkör-hozzárendeléseket az alhatókörben. |
     > | `$filter=assignedTo('{objectId}')` | Egy adott felhasználó vagy szolgáltatásnév szerepkör-hozzárendeléseinek felsorolása.<br/>Ha a felhasználó egy szerepkör-hozzárendeléssel rendelkező csoport tagja, akkor a szerepkör-hozzárendelés is megjelenik. Ez a szűrő a csoportok esetében tranzitív, ami azt jelenti, hogy ha a felhasználó egy csoport tagja, és a csoport egy másik, szerepkör-hozzárendelést tartalmazó csoport tagja, akkor a szerepkör-hozzárendelés is megjelenik.<br/>Ez a szűrő csak egy felhasználóhoz vagy egy egyszerű szolgáltatáshoz tartozó objektumazonosítót fogad el. Nem lehet átadni egy objektum AZONOSÍTÓját egy csoport számára. |
@@ -90,7 +90,7 @@ Az alábbi ábrán egy példa látható a kimenetre:
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása a REST API használatával](role-assignments-rest.md)
+- [Azure-szerepkörök kiosztása a REST API használatával](role-assignments-rest.md)
 - [Azure REST API-referencia](/rest/api/azure/)

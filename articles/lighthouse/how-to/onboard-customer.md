@@ -1,14 +1,14 @@
 ---
 title: Ügyfél előkészítése az Azure Lighthouse-hoz
 description: Ismerje meg, hogyan végezheti el az ügyfelek Azure világítótoronyba való bevezetését, így az erőforrásaik a saját bérlőn keresztül érhetők el és kezelhetők az Azure-beli delegált erőforrás-kezelés használatával.
-ms.date: 02/08/2021
+ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: c0a886b692b99156cbd53e5f0f5953047560c5b9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4487dd82b30e14f9db2001dc10f7437a53e745f3
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372144"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556103"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Ügyfél előkészítése az Azure Lighthouse-hoz
 
@@ -205,7 +205,7 @@ A fenti példában szereplő utolsó engedély egy **principalId** hoz létre a 
 A paramétert tartalmazó fájl frissítése után az ügyfél bérlője a Azure Resource Manager sablont a bérlőn belül kell telepítenie. Külön üzembe helyezésre van szükség minden olyan előfizetéshez, amelyet be szeretne készíteni a bevezetéshez (vagy minden olyan előfizetéshez, amely a bevezetéshez használni kívánt erőforráscsoportokat tartalmaz).
 
 > [!IMPORTANT]
-> Ezt az üzembe helyezést olyan nem vendég fiókkal kell végrehajtani az ügyfél bérlője számára, aki az előfizetéshez tartozó [tulajdonos beépített szerepkörrel](../../role-based-access-control/built-in-roles.md#owner) rendelkezik (vagy amely tartalmazza az előkészítés alatt álló erőforráscsoportokat). Ha szeretné megtekinteni az összes olyan felhasználót, aki delegálhatja az előfizetést, az ügyfél bérlője kiválaszthatja az előfizetést a Azure Portalban, megnyithatja a **hozzáférés-vezérlés (iam)** elemet, és [megtekintheti a tulajdonosi szerepkörrel rendelkező felhasználókat](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription). 
+> Ezt az üzembe helyezést egy olyan nem vendég fiókkal kell végrehajtani az ügyfél bérlője számára, akinek van szerepköre a `Microsoft.Authorization/roleAssignments/write` (z) előfizetésben (vagy amely tartalmazza az előkészítés alatt álló erőforráscsoportokat) a [tulajdonossal](../../role-based-access-control/built-in-roles.md#owner). Az előfizetést delegáló felhasználók megkereséséhez az ügyfél bérlője számára kiválaszthatja az előfizetést a Azure Portalban, megnyithatja a **hozzáférés-vezérlés (iam)** lehetőséget, és [megtekintheti a tulajdonosi szerepkörrel rendelkező összes felhasználót](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription). 
 >
 > Ha az előfizetés a [Cloud Solution Provider (CSP) programon](../concepts/cloud-solution-provider.md)keresztül lett létrehozva, akkor minden olyan felhasználó, aki rendelkezik [rendszergazdai ügynök](/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles) szerepkörrel a szolgáltatói bérlőben, végrehajthatja a telepítést.
 

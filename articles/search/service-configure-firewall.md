@@ -7,20 +7,19 @@ author: mrcarter8
 ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.openlocfilehash: 67fa53e565de70d3da0b90e36a968b68d54d667f
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.date: 02/16/2021
+ms.openlocfilehash: 98a516e76d5e4f5c225873b934949759d7fcba8d
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99573245"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535331"
 ---
 # <a name="configure-ip-firewall-for-azure-cognitive-search"></a>Az Azure Cognitive Search IP-tűzfalának konfigurálása
 
 Az Azure Cognitive Search támogatja az IP-szabályokat a bejövő tűzfalak támogatásához. Ez a modell egy további biztonsági réteget biztosít a keresési szolgáltatáshoz, amely az Azure virtuális hálózati biztonsági csoportban található IP-szabályokhoz hasonló. Ezeknek az IP-szabályoknak a segítségével úgy állíthatja be a keresési szolgáltatást, hogy csak jóváhagyott gépekből és/vagy felhőalapú szolgáltatásokból legyen elérhető. A keresési szolgáltatásban tárolt adatoknak ezen jóváhagyott készletekből és szolgáltatásokból való elérése továbbra is megköveteli, hogy a hívó érvényes engedélyezési jogkivonatot jelentsen.
 
-> [!Important]
-> Az Azure Cognitive Search Service-ben az IP-szabályok konfigurálhatók a Azure Portal vagy a [felügyeleti REST API 2020-03-13-es verziójának](/rest/api/searchmanagement/)használatával.
+A Azure Portal IP-szabályait az ebben a cikkben leírtak szerint állíthatja be. Azt is megteheti, hogy a 2020-03-13-es, [Azure PowerShell](/powershell/module/az.search)-es vagy az [Azure CLI](/cli/azure/search)-es [verziójának felügyeleti REST API verzióját](/rest/api/searchmanagement/)használja.
 
 ## <a name="configure-an-ip-firewall-using-the-azure-portal"></a><a id="configure-ip-policy"></a> IP-tűzfal konfigurálása a Azure Portal használatával
 

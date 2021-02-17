@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: daberry
-ms.openlocfilehash: 537a301ef2c3ba1bb5ed34d92c8784655c79d97f
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 9d2c245cdc8b1aba644171089ed95bad2ab730a4
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097472"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558606"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 és Esv3 sorozat
 
@@ -32,7 +32,7 @@ Az Ev3 sorozatú virtuális gépek funkciójának Intel® Hyper-Threading techno
 [Élő áttelepítés](maintenance-and-updates.md): támogatott<br>
 [Memória megőrzésének frissítései](maintenance-and-updates.md): támogatott<br>
 [VM-generáció támogatása](generation-2.md): 1. generáció<br>
-[Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott<br>
+[Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott (*legalább 4 vCPU szükséges*)<br>
 [Ideiglenes operációsrendszer-lemezek](ephemeral-os-disks.md): nem támogatott <br>
 <br>
 
@@ -64,7 +64,7 @@ Az Esv3 sorozatú virtuális gépek funkciójának Intel® Hyper-Threading techn
 [Élő áttelepítés](maintenance-and-updates.md): támogatott<br>
 [Memória megőrzésének frissítései](maintenance-and-updates.md): támogatott<br>
 [VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
-[Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott<br>
+[Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott (*legalább 4 vCPU szükséges*)<br>
 [Ideiglenes operációsrendszer-lemezek](ephemeral-os-disks.md): támogatott <br>
 <br>
 

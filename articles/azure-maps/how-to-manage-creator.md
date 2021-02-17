@@ -3,17 +3,17 @@ title: Microsoft Azure Maps Creator kezelése (előzetes verzió)
 description: Ebből a cikkből megtudhatja, hogyan kezelheti Microsoft Azure Maps Creatort (előzetes verzió).
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 02/16/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 1ed3a9033f9be39774e1c52982f63259cc477d29
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: d26df4287032bc59cc58dd1d832d9d5a9c40afcd
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906097"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559209"
 ---
 # <a name="manage-azure-maps-creator-preview"></a>Azure Maps létrehozójának kezelése (előzetes verzió) 
 
@@ -33,15 +33,15 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre és törölhet egy létrehoz
 
     ![Azure Maps portál kezdőlapja](./media/how-to-manage-creator/select-maps-account.png)
 
-3. Miután megtörtént a Azure Maps-fiók lapon, navigáljon az **Áttekintés** lehetőségre a **Creator** alatt. Azure Maps létrehozó erőforrás létrehozásához kattintson a  **Létrehozás**  gombra.
+3. Miután megtörtént a Azure Maps-fiók lapon, navigáljon az **Áttekintés** lehetőségre a **Creator** alatt. Válassza a  **Létrehozás**  lehetőséget Azure Maps létrehozó erőforrás létrehozásához.
 
     ![Azure Maps létrehozó lap létrehozása](./media/how-to-manage-creator/creator-blade-settings.png)
 
-4. Adja meg a létrehozó erőforrás nevét és helyét. Jelenleg a Creator csak a Egyesült Államok támogatott. Kattintson a **Felülvizsgálat + létrehozás** elemre.
+4. Adja meg a létrehozó erőforrás nevét és helyét. Jelenleg a Creator csak a Egyesült Államok támogatott. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
    ![Adja meg a létrehozó fiókadatok oldalát](./media/how-to-manage-creator/creator-creation-dialog.png)
 
-5. Tekintse át a beállításokat, és kattintson a **Létrehozás** gombra.
+5. Tekintse át a beállításokat, és válassza a **Létrehozás** lehetőséget.
 
     ![Létrehozó fiók beállításainak megerősítése lap](./media/how-to-manage-creator/creator-create-dialog.png)
 
@@ -49,16 +49,16 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre és törölhet egy létrehoz
 
    ![Erőforrás központi telepítésének állapota lap](./media/how-to-manage-creator/creator-resource-created.png)
 
-7. Kattintson az **Erőforrás megnyitása** lehetőségre. A létrehozó erőforrás nézet oldal megjeleníti a létrehozó erőforrás állapotát és a kiválasztott demográfiai régiót.
+7. Válassza az **Erőforrás megnyitása** lehetőséget. A létrehozó erőforrás nézet oldal megjeleníti a létrehozó erőforrás állapotát és a kiválasztott demográfiai régiót.
 
     ![Létrehozó állapota lap](./media/how-to-manage-creator/creator-resource-view.png)
 
    >[!NOTE]
-   >A létrehozó erőforrás lapon visszatérhet a Azure Maps fiókhoz, amelyhez a Azure Maps fiókra kattint.
+   >A létrehozó erőforrás lapon visszatérhet a Azure Maps fiók kiválasztásával a hozzá tartozó Azure Maps fiókhoz.
 
 ## <a name="delete-creator-preview-resource"></a>Létrehozó (előzetes) erőforrás törlése
 
-A létrehozó erőforrás törléséhez navigáljon a Azure Maps-fiókjához. Válassza az **Áttekintés** lehetőséget a **létrehozó** területen. Kattintson a **Törlés** gombra.
+A létrehozó erőforrás törléséhez navigáljon a Azure Maps-fiókjához. Válassza az **Áttekintés** lehetőséget a **létrehozó** területen. Válassza a **Törlés** gombot.
 
 >[!WARNING]
 >Ha törli a Azure Maps-fiók létrehozó erőforrását, akkor a Creator Services használatával létrehozott adatkészleteket, tilesets és szolgáltatás-statesets is törli.
@@ -67,7 +67,7 @@ A létrehozó erőforrás törléséhez navigáljon a Azure Maps-fiókjához. V�
 
 Kattintson a **Törlés** gombra, és írja be a létrehozó nevét a törlés megerősítéséhez. Az erőforrás törlése után egy megerősítő oldal jelenik meg, például az alábbi képen:
 
-![Létrehozó lap törlési megerősítéssel](./media/how-to-manage-creator/creator-confirmdelete.png)
+![Létrehozó lap törlési megerősítéssel](./media/how-to-manage-creator/creator-confirm-delete.png)
 
 ## <a name="authentication"></a>Hitelesítés
 
@@ -77,7 +77,7 @@ A létrehozói használati adatok a Azure Maps használati diagramokban és a te
 
 ## <a name="access-to-creator-services"></a>Hozzáférés a Creator szolgáltatásaihoz
 
-A Creator Services (előzetes verzió) csak a létrehozáskor kiválasztott helyről érhető el. Ha a rendszer a kiválasztott helyen kívülről kezdeményezi a létrehozói szolgáltatásokat, a rendszer egy felhasználói hibaüzenetet küld vissza. Ha a kiválasztott helyen kívülről szeretne hívásokat kezdeményezni, a szolgáltatás URL-címének tartalmaznia kell a földrajzi előtagot a kiválasztott helyekhez. Ha például a létrehozót a Egyesült Államok hozza létre, a konverziós szolgáltatásnak küldött összes hívást el kell küldenie a következőnek: `us.atlas.microsoft.com/conversion/convert` .
+A Creator Services (előzetes verzió) és a Creatorben (például rendering Service) tárolt adatszolgáltatásokat használó szolgáltatások földrajzi URL-címen érhetők el. A földrajzi URL-címet a létrehozás során kiválasztott hely határozza meg. Ha például a létrehozót a Egyesült Államok földrajzi helyen hozza létre, a konverziós szolgáltatásnak küldött összes hívást el kell küldenie a következőnek: `us.atlas.microsoft.com/conversion/convert` .
 
 Emellett a Creatorbe importált összes adathalmazt a létrehozó erőforrással megegyező földrajzi helyre kell feltölteni. Ha például az Creator ki van töltve az Egyesült-ban, az összes nyers adattal fel kell tölteni a-on keresztül `us.atlas.microsoft.com/mapData/upload` .
 

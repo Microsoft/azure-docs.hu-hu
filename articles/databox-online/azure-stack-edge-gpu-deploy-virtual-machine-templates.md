@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 66d537b79819aecab4ce88a56ed465679363f421
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 9a347d57de540ed31c862f618be7c8a98b685348
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805205"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546924"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>Virtuális gépek üzembe helyezése a Azure Stack Edge Pro GPU-eszközön sablonok használatával
 
@@ -149,7 +149,7 @@ Egy tipikus környezetben a DNS-t úgy kell konfigurálni, hogy az összes Stora
 
 ### <a name="optional-install-certificates"></a>Választható Tanúsítványok telepítése
 
-Ugorja át ezt a lépést, ha Storage Explorer *http*-n keresztül fog kapcsolatot létesíteni. Ha *https*-t használ, akkor telepítenie kell a megfelelő tanúsítványokat a Storage Explorer. Ebben az esetben telepítse a blob Endpoint-tanúsítványt. További információ: tanúsítványok létrehozása és feltöltése a [tanúsítványok kezelése](azure-stack-edge-j-series-manage-certificates.md)szolgáltatásban. 
+Ugorja át ezt a lépést, ha Storage Explorer *http*-n keresztül fog kapcsolatot létesíteni. Ha *https*-t használ, akkor telepítenie kell a megfelelő tanúsítványokat a Storage Explorer. Ebben az esetben telepítse a blob Endpoint-tanúsítványt. További információ: tanúsítványok létrehozása és feltöltése a [tanúsítványok kezelése](azure-stack-edge-gpu-manage-certificates.md)szolgáltatásban. 
 
 ### <a name="create-and-upload-a-vhd"></a>Virtuális merevlemez létrehozása és feltöltése
 
@@ -588,6 +588,6 @@ A Linux rendszerű virtuális gépekhez való kapcsolódáshoz kövesse az aláb
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure Resource Manager-parancsmagok](/powershell/module/azurerm.resources/?view=azurermps-6.13.0&preserve-view=true)

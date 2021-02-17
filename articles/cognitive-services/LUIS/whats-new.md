@@ -4,13 +4,13 @@ description: Ez a cikk rendszeresen frissül az Azure Cognitive Services Languag
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 01/21/2021
-ms.openlocfilehash: 5fdde81d31eae4c50b86a5553742f9b599f32505
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 02/16/2021
+ms.openlocfilehash: f4ac384a9b1bce944397369cb93392f179643f96
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693595"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558751"
 ---
 # <a name="whats-new-in-language-understanding"></a>A Language Understanding újdonságai
 
@@ -20,7 +20,7 @@ Ismerje meg a szolgáltatás újdonságait. Ezek közé tartoznak a kibocsátás
 
 ### <a name="january-2021"></a>2021. január
 
-* A v3 előrejelzési API mostantól támogatja a [Bing helyesírási API](luis-how-to-publish-app.md#spelling-correction)-t.
+* A v3 előrejelzési API mostantól támogatja a [Bing helyesírási API](luis-tutorial-bing-spellcheck.md)-t.
 * A regionális portálokat (au.luis.ai és eu.luis.ai) egyetlen portálra és URL-re konszolidálták. Ha ezen portálok egyikét használta, a rendszer automatikusan átirányítja a luis.ai-re.
 
 ### <a name="december-2020"></a>2020. december

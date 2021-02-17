@@ -15,12 +15,12 @@ ms.date: 11/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1, devx-track-azurecli
-ms.openlocfilehash: e30af9522d7c8fa81c4d93e11d252aefc4426586
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d77468619fcd67887273b2fbd452b37add1e19b0
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184263"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555881"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Az Azure RBAC hibáinak megoldása
 
@@ -51,7 +51,7 @@ $ras.Count
 
 ## <a name="problems-with-azure-role-assignments"></a>Azure-beli szerepkör-hozzárendelésekkel kapcsolatos problémák
 
-- Ha nem tud szerepkör-hozzárendelést hozzáadni a Azure Portal on hozzáférés- **vezérlés (iam)** elemnél, **mert a**  >  **szerepkör-hozzárendelés hozzáadása** lehetőség le van tiltva, vagy ha az engedélyekkel kapcsolatos hibaüzenet jelenik meg, akkor a "nem rendelkezik a művelet végrehajtásához szükséges engedélyekkel" nevű ügyfél. Győződjön meg arról, hogy jelenleg be van jelentkezve egy olyan szerepkörrel rendelkező felhasználóval, amely jogosult a `Microsoft.Authorization/roleAssignments/write` szerepkörhöz hozzárendelni kívánt hatókörre, például [tulajdonos](built-in-roles.md#owner) vagy [felhasználói hozzáférés rendszergazdai](built-in-roles.md#user-access-administrator) jogosultsággal.
+- Ha nem tud szerepkört hozzárendelni a **hozzáférés-vezérlési Azure Portalban (iam)** , mert **a**  >  **szerepkör-hozzárendelés hozzáadása** beállítás le van tiltva, vagy az engedélyekkel kapcsolatos hibaüzenet jelenik meg: "az objektumazonosító nem rendelkezik engedéllyel a művelet végrehajtásához", győződjön meg arról, hogy jelenleg be van jelentkezve egy olyan szerepkörrel rendelkező felhasználóval, amely jogosult a `Microsoft.Authorization/roleAssignments/write` szerepkörhöz hozzárendelni kívánt hatókörre, például [tulajdonos](built-in-roles.md#owner) vagy [felhasználói hozzáférés rendszergazdai](built-in-roles.md#user-access-administrator) jogosultsággal.
 - Ha egy egyszerű szolgáltatásnevet használ a szerepkörök hozzárendeléséhez, akkor előfordulhat, hogy a "nincs megfelelő jogosultsága a művelet végrehajtásához" hibaüzenet jelenik meg. Tegyük fel például, hogy rendelkezik egy olyan egyszerű szolgáltatással, amely hozzá lett rendelve a tulajdonosi szerepkörhöz, és a következő szerepkör-hozzárendelést próbálja meg létrehozni az Azure CLI használatával:
 
     ```azurecli
@@ -63,7 +63,7 @@ $ras.Count
 
     Ez a hiba kétféleképpen oldható fel. Első lépésként rendelje hozzá a [címtár-olvasók](../active-directory/roles/permissions-reference.md#directory-readers) szerepkört az egyszerű szolgáltatáshoz, hogy az képes legyen az információk olvasására a címtárban.
 
-    A hiba megoldásának második módja, ha a szerepkör-hozzárendelést a (z `--assignee-object-id` ) helyett a paraméter használatával hozza létre `--assignee` . A használatával `--assignee-object-id` Az Azure CLI kihagyja az Azure ad-keresést. Meg kell kérnie annak a felhasználónak, csoportnak vagy alkalmazásnak az AZONOSÍTÓját, amelyhez hozzá szeretné rendelni a szerepkört. További információ: [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure CLI használatával](role-assignments-cli.md#add-role-assignment-for-a-new-service-principal-at-a-resource-group-scope).
+    A hiba megoldásának második módja, ha a szerepkör-hozzárendelést a (z `--assignee-object-id` ) helyett a paraméter használatával hozza létre `--assignee` . A használatával `--assignee-object-id` Az Azure CLI kihagyja az Azure ad-keresést. Meg kell kérnie annak a felhasználónak, csoportnak vagy alkalmazásnak az AZONOSÍTÓját, amelyhez hozzá szeretné rendelni a szerepkört. További információ: Azure- [szerepkörök kiosztása az Azure CLI használatával](role-assignments-cli.md#assign-a-role-for-a-new-service-principal-at-a-resource-group-scope).
 
     ```azurecli
     az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
@@ -151,7 +151,7 @@ Hasonlóképpen, ha az Azure CLI használatával sorolja fel ezt a szerepkör-ho
 }
 ```
 
-Nem jelent problémát, ha el szeretné hagyni ezeket a szerepkör-hozzárendeléseket, ahol a rendszerbiztonsági tag törölve lett. Ha szeretné, ezeket a szerepkör-hozzárendeléseket a többi szerepkör-hozzárendeléshez hasonló lépésekkel távolíthatja el. További információ a szerepkör-hozzárendelések eltávolításáról: [Azure Portal](role-assignments-portal.md#remove-a-role-assignment), [Azure POWERSHELL](role-assignments-powershell.md#remove-a-role-assignment)vagy [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
+Nem jelent problémát, ha el szeretné hagyni ezeket a szerepkör-hozzárendeléseket, ahol a rendszerbiztonsági tag törölve lett. Ha szeretné, ezeket a szerepkör-hozzárendeléseket a többi szerepkör-hozzárendeléshez hasonló lépésekkel távolíthatja el. További információ a szerepkör-hozzárendelések eltávolításáról: [Azure szerepkör-hozzárendelések eltávolítása](role-assignments-remove.md).
 
 Ha a PowerShellben megpróbálja eltávolítani a szerepkör-hozzárendeléseket az objektumazonosító és a szerepkör-definíció neve alapján, és egynél több szerepkör-hozzárendelés felel meg a paramétereknek, a következő hibaüzenet jelenik meg: "a megadott információ nem képezhető le szerepkör-hozzárendelésre". A következő kimenet a hibaüzenet példáját mutatja be:
 
@@ -174,7 +174,7 @@ PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -
 
 ## <a name="role-assignment-changes-are-not-being-detected"></a>A szerepkör-hozzárendelés módosításait a rendszer nem észleli
 
-A Azure Resource Manager időnként a konfiguráció és az adat gyorsítótárazásával javítja a teljesítményt. Szerepkör-hozzárendelések hozzáadásakor vagy eltávolításakor akár 30 percet is igénybe vehet, amíg a módosítások érvénybe lépnek. Ha a Azure Portal, a Azure PowerShell vagy az Azure CLI-t használja, akkor kijelentkezéssel és bejelentkezéssel kényszerítheti a szerepkör-hozzárendelés módosításának frissítését. Ha REST API-hívásokkal módosítja a szerepkör-hozzárendelési módosításokat, a hozzáférési token frissítésével kényszerítheti a frissítést.
+A Azure Resource Manager időnként a konfiguráció és az adat gyorsítótárazásával javítja a teljesítményt. Szerepkörök hozzárendelése vagy szerepkör-hozzárendelések eltávolítása esetén akár 30 percet is igénybe vehet, amíg a módosítások érvénybe lépnek. Ha a Azure Portal, a Azure PowerShell vagy az Azure CLI-t használja, akkor kijelentkezéssel és bejelentkezéssel kényszerítheti a szerepkör-hozzárendelés módosításának frissítését. Ha REST API-hívásokkal módosítja a szerepkör-hozzárendelési módosításokat, a hozzáférési token frissítésével kényszerítheti a frissítést.
 
 Ha szerepkör-hozzárendelést ad hozzá vagy távolít el a felügyeleti csoport hatókörében, és a szerepkörhöz tartozik `DataActions` , előfordulhat, hogy az adatsíkon lévő hozzáférés több órán át nem frissül. Ez csak a felügyeleti csoport hatókörére és az adatsíkon érvényes.
 
@@ -249,5 +249,5 @@ Egy olvasó rákattinthat a **platform szolgáltatásai** lapra, majd a **minden
 ## <a name="next-steps"></a>Következő lépések
 
 - [A vendég felhasználókkal kapcsolatos hibák](role-assignments-external-users.md#troubleshoot)
-- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](role-assignments-portal.md)
+- [Azure-szerepkörök kiosztása a Azure Portal használatával](role-assignments-portal.md)
 - [Az Azure RBAC változásaival kapcsolatos tevékenységek naplóinak megtekintése](change-history-report.md)

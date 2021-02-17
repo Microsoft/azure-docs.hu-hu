@@ -11,12 +11,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 01/12/2021
-ms.openlocfilehash: 8db0f5fa39c7f489db0e30e98ee2684c74eee7e8
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 8e78fc5bd49aaf2b31fdc83ced132e2a39ca83d5
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180030"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558916"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Aktív, betanított alkalmazás közzététele átmeneti vagy éles végponton
 
@@ -57,7 +57,6 @@ Ha például egy, a [www.Luis.ai](https://www.luis.ai)-on létrehozott alkalmaz�
 Miután kiválasztotta a tárolóhelyet, konfigurálja a közzétételi beállításokat a következőhöz:
 
 * Hangulatelemzés
-* [Helyesírás-javítás](luis-tutorial-bing-spellcheck.md)
 * Beszéd alapozó
 
 A közzététel után ezek a beállítások a **kezelés** szakasz **közzétételi beállítások** lapján érhetők el. A beállításokat minden közzététel lehetőséggel módosíthatja. Ha megszakít egy közzétételt, a közzététel során végrehajtott módosítások is megszakadnak.
@@ -79,37 +78,6 @@ Nem kell megadnia Text Analytics kulcsot, és a szolgáltatáshoz nem tartozik s
 Az érzelmi adatmennyiség egy 1 és 0 közötti pontszám, amely az adatmennyiség pozitív (közelebbről 1) vagy negatív (közelebbről 0) hangulatát jelzi. A, a, a és a a `positive` `neutral` `negative` által támogatott kulturális környezet. Jelenleg csak az angol támogatja a hangulati címkéket.
 
 A JSON-végponti válaszról a [hangulat elemzése című témakörben](luis-reference-prebuilt-sentiment.md) talál további információt.
-
-## <a name="spelling-correction"></a>Helyesírás-javítás
-
-A v3 előrejelzési API mostantól támogatja a Bing helyesírási API-t. Az alkalmazáshoz helyesírás-ellenőrzést adhat, ha a kérések fejlécében a Bing keresési erőforrás kulcsát is tartalmazza. Meglévő Bing-erőforrást is használhat, ha már rendelkezik ilyennel, vagy [létrehozhat egy újat](https://portal.azure.com/#create/Microsoft.BingSearch) a funkció használatához. 
-
-|Fejléc kulcsa|Fejléc értéke|
-|--|--|
-|`mkt-bing-spell-check-key`|Az erőforrás **kulcsok és végpont** paneljén található kulcsok|
-
-Egy hibásan írt lekérdezésre vonatkozó előrejelzési kimeneti példa:
-
-```json
-{
-  "query": "bouk me a fliht to kayro",
-  "prediction": {
-    "alteredQuery": "book me a flight to cairo",
-    "topIntent": "book a flight",
-    "intents": {
-      "book a flight": {
-        "score": 0.9480589
-      }
-      "None": {
-        "score": 0.0332136229
-      }
-    },
-    "entities": {}
-  }
-}
-```
-
-A helyesírási javítások a LUIS-felhasználó teljes előrejelzése előtt történnek. A válaszban megtekintheti az eredeti szöveg összes módosítását, beleértve a helyesírást is.
 
 ## <a name="speech-priming"></a>Beszéd alapozó
 

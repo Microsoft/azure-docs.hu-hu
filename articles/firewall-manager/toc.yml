@@ -10,6 +10,9 @@
     - name: Virtuális központ védelme – ARM-sablon
       displayName: Resource Manager
       href: quick-secure-virtual-hub.md
+    - name: Tűzfal üzembe helyezése házirend-ARM sablonnal
+      displayName: Resource Manager
+      href: quick-firewall-policy.md
 - name: Oktatóanyagok
   items:
     - name: A virtuális központ biztonságossá tétele – portál

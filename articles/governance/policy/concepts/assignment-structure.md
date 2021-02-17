@@ -3,12 +3,12 @@ title: A szabályzat-hozzárendelési struktúra részletei
 description: Az Azure Policy által használt szabályzat-hozzárendelési definíciót ismerteti az erőforrásokhoz a kiértékeléshez.
 ms.date: 01/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 12acbe368c9ccd6fa5654d3394e0fecb286984bf
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 1151c931863e1139b76c34ced12c4e2842f83cc6
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219566"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558449"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy-hozzárendelés struktúrája
 
@@ -67,9 +67,9 @@ A **enforcementMode** tulajdonság lehetővé teszi a felhasználók számára, 
 
 Ennek a tulajdonságnak a következő értékei vannak:
 
-|Mód |JSON-érték |Típus |Szervizelés manuálisan |Tevékenység naplójának bejegyzése |Description |
+|Mód |JSON-érték |Típus |Szervizelés manuálisan |Tevékenység naplójának bejegyzése |Leírás |
 |-|-|-|-|-|-|
-|Engedélyezve |Alapértelmezett |sztring |Igen |Yes |A házirend hatása az erőforrás létrehozásakor vagy frissítésekor lép érvénybe. |
+|Engedélyezve |Alapértelmezett |sztring |Igen |Igen |A házirend hatása az erőforrás létrehozásakor vagy frissítésekor lép érvénybe. |
 |Disabled (Letiltva) |DoNotEnforce |sztring |Igen |Nem | A házirend-effektus nem kényszerített az erőforrás létrehozásakor vagy frissítésekor. |
 
 Ha a **enforcementMode** nincs megadva házirend-vagy kezdeményezési definícióban, a rendszer az _alapértelmezett_ értéket használja. A [szervizelési feladatok](../how-to/remediate-resources.md) a [deployIfNotExists](./effects.md#deployifnotexists) házirendek esetében is elindíthatók, még akkor is, ha a **enforcementMode** beállítása _DoNotEnforce_.
@@ -98,7 +98,7 @@ Ha olyan egyéni üzenetet szeretne beállítani, amely leírja, hogy egy erőfo
 ]
 ```
 
-Ha a hozzárendelés egy kezdeményezésre van beállítva, különböző üzenetek konfigurálhatók a kezdeményezés minden egyes házirend-definíciójában. Az üzenetek a `policyDefinitionReferenceId` kezdeményezési definícióban konfigurált értéket használják. Részletekért lásd: [tulajdonság-definíciók tulajdonságai](./initiative-definition-structure.md#policy-definition-properties).
+Ha a hozzárendelés egy kezdeményezésre van beállítva, különböző üzenetek konfigurálhatók a kezdeményezés minden egyes házirend-definíciójában. Az üzenetek a `policyDefinitionReferenceId` kezdeményezési definícióban konfigurált értéket használják. Részletekért lásd: [szabályzat-definíciók tulajdonságai](./initiative-definition-structure.md#policy-definition-properties).
 
 ```json
 "nonComplianceMessages": [

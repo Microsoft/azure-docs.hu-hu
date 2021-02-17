@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 54aad90cf86f1a20d76f04f3a829f29c47023558
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: ebadfc889eb648b734747e5a2a45662e82aab643
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805801"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546805"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Azure Resource Manager csatlakoztatása a Azure Stack Edge Pro-eszközön
 
@@ -93,9 +93,9 @@ A Azure Resource Managerhoz való kapcsolódáshoz létre kell hoznia vagy be ke
 
 Csak tesztelési és fejlesztési célokra használhatja a Windows PowerShellt tanúsítványok létrehozásához a helyi rendszeren. Az ügyfél tanúsítványainak létrehozásakor kövesse az alábbi irányelveket:
 
-1. Először létre kell hoznia egy főtanúsítványt az aláírási lánchoz. További információ: az [aláíró tanúsítványok létrehozásának](azure-stack-edge-j-series-manage-certificates.md#create-signing-chain-certificate)lépései.
+1. Először létre kell hoznia egy főtanúsítványt az aláírási lánchoz. További információ: az [aláíró tanúsítványok létrehozásának](azure-stack-edge-gpu-manage-certificates.md#create-signing-chain-certificate)lépései.
 
-2. Ezután létrehozhatja a blobhoz tartozó végpont-tanúsítványokat, és Azure Resource Manager is. Ezeket a végpontokat a helyi webes felhasználói felület **eszköz** lapján érheti el. Lásd a [végponti tanúsítványok létrehozásának](azure-stack-edge-j-series-manage-certificates.md#create-signed-endpoint-certificates)lépéseit.
+2. Ezután létrehozhatja a blobhoz tartozó végpont-tanúsítványokat, és Azure Resource Manager is. Ezeket a végpontokat a helyi webes felhasználói felület **eszköz** lapján érheti el. Lásd a [végponti tanúsítványok létrehozásának](azure-stack-edge-gpu-manage-certificates.md#create-signed-endpoint-certificates)lépéseit.
 
 3. Az összes tanúsítvány esetében győződjön meg arról, hogy a tulajdonos neve és a tulajdonos alternatív neve megfelel a következő irányelveknek:
 
@@ -105,26 +105,26 @@ Csak tesztelési és fejlesztési célokra használhatja a Windows PowerShellt t
     |Blob Storage|`*.blob.<Device name>.<Dns Domain>`|`*.blob.< Device name>.<Dns Domain>`|`*.blob.mydevice1.microsoftdatabox.com` |
     |Több-SAN önálló tanúsítvány mindkét végponthoz|`<Device name>.<dnsdomain>`|`login.<Device name>.<Dns Domain>`<br>`management.<Device name>.<Dns Domain>`<br>`*.blob.<Device name>.<Dns Domain>`|`mydevice1.microsoftdatabox.com` |
 
-A tanúsítványokkal kapcsolatos további információkért lépjen a [tanúsítványok kezelése](azure-stack-edge-j-series-manage-certificates.md)című témakörre.
+A tanúsítványokkal kapcsolatos további információkért lépjen a [tanúsítványok kezelése](azure-stack-edge-gpu-manage-certificates.md)című témakörre.
 
 ### <a name="upload-certificates-on-the-device"></a>Tanúsítványok feltöltése az eszközön
 
 Az előző lépésben létrehozott tanúsítványok az ügyfél személyes tárolójába kerülnek. Ezeket a tanúsítványokat a megfelelő formátumú fájlokra kell exportálni az ügyfélen, amelyeket aztán fel lehet tölteni az eszközre.
 
-1. A főtanúsítványt a *. cer* kiterjesztésű der formátumú fájlként kell exportálni. A részletes lépésekért lásd: [tanúsítványok exportálása. cer formátumú fájlként](azure-stack-edge-j-series-manage-certificates.md#export-certificates-as-der-format).
+1. A főtanúsítványt a *. cer* kiterjesztésű der formátumú fájlként kell exportálni. A részletes lépésekért lásd: [tanúsítványok exportálása. cer formátumú fájlként](azure-stack-edge-gpu-manage-certificates.md#export-certificates-as-der-format).
 
-2. A végponti tanúsítványokat *. pfx* -fájlként kell exportálni titkos kulcsokkal. A részletes lépésekért lásd: [tanúsítványok exportálása. pfx-fájlként, titkos kulcsokkal](azure-stack-edge-j-series-manage-certificates.md#export-certificates-as-pfx-format-with-private-key).
+2. A végponti tanúsítványokat *. pfx* -fájlként kell exportálni titkos kulcsokkal. A részletes lépésekért lásd: [tanúsítványok exportálása. pfx-fájlként, titkos kulcsokkal](azure-stack-edge-gpu-manage-certificates.md#export-certificates-as-pfx-format-with-private-key).
 
-3. Ezután a rendszer feltölti a gyökér-és végpont-tanúsítványokat az eszközre a helyi webes felhasználói felület **tanúsítványok** lapján található **+ tanúsítvány hozzáadása** lehetőség használatával. A tanúsítványok feltöltéséhez kövesse a [tanúsítványok feltöltése](azure-stack-edge-j-series-manage-certificates.md#upload-certificates)című témakör lépéseit.
+3. Ezután a rendszer feltölti a gyökér-és végpont-tanúsítványokat az eszközre a helyi webes felhasználói felület **tanúsítványok** lapján található **+ tanúsítvány hozzáadása** lehetőség használatával. A tanúsítványok feltöltéséhez kövesse a [tanúsítványok feltöltése](azure-stack-edge-gpu-manage-certificates.md#upload-certificates)című témakör lépéseit.
 
 
 ### <a name="import-certificates-on-the-client-running-azure-powershell"></a>Tanúsítványok importálása a Azure PowerShell rendszert futtató ügyfélen
 
 A Windows-ügyfélnek, amelyen meg kell hívnia a Azure Resource Manager API-kat, létre kell hoznia a megbízhatóságot az eszközzel. Ennek érdekében az előző lépésben létrehozott tanúsítványokat importálni kell a Windows-ügyfélen a megfelelő tanúsítványtárolóba.
 
-1. A (z *). cer* KITERJESZTÉSű der-formátumban exportált főtanúsítványt most importálni kell az ügyfélrendszer megbízható legfelső szintű hitelesítésszolgáltatók hatóságaiba. A részletes lépésekért lásd: [tanúsítványok importálása a megbízható legfelső szintű hitelesítésszolgáltatók tárolójába.](azure-stack-edge-j-series-manage-certificates.md#import-certificates-as-der-format)
+1. A (z *). cer* KITERJESZTÉSű der-formátumban exportált főtanúsítványt most importálni kell az ügyfélrendszer megbízható legfelső szintű hitelesítésszolgáltatók hatóságaiba. A részletes lépésekért lásd: [tanúsítványok importálása a megbízható legfelső szintű hitelesítésszolgáltatók tárolójába.](azure-stack-edge-gpu-manage-certificates.md#import-certificates-as-der-format)
 
-2. A *. pfx* fájlba exportált végpont-tanúsítványokat *. cer* fájlként kell exportálni. Ezt a *. cer* -et a rendszer a **személyes** tanúsítványtárolóba importálja. A részletes lépésekért lásd: [tanúsítványok importálása személyes tárolóba](azure-stack-edge-j-series-manage-certificates.md#import-certificates-as-der-format).
+2. A *. pfx* fájlba exportált végpont-tanúsítványokat *. cer* fájlként kell exportálni. Ezt a *. cer* -et a rendszer a **személyes** tanúsítványtárolóba importálja. A részletes lépésekért lásd: [tanúsítványok importálása személyes tárolóba](azure-stack-edge-gpu-manage-certificates.md#import-certificates-as-der-format).
 
 ## <a name="step-3-install-powershell-on-the-client"></a>3. lépés: a PowerShell telepítése az ügyfélen 
 
@@ -458,6 +458,6 @@ ExtendedProperties : {}
 ```
 Ezzel átváltotta a kívánt környezetet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Virtuális gépek üzembe helyezése Azure stack Edge Pro-eszközön](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md).

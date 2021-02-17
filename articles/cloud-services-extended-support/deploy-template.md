@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 5c7ecfeace88f613d6f15606382bdbb3117a0cce
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: eb59bb43d493609ae408a402eaea2dcc9c6fab29
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526636"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548777"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Cloud Service (kiterjesztett támogatás) üzembe helyezése ARM-sablonok használatával
 
@@ -134,7 +134,7 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre felhőalapú szolgáltatást 
     ```
  
 
-4. Adja hozzá a Key Vault-referenciát az  `OsProfile`   ARM-sablon szakaszában. A Key Vault a Cloud Serviceshoz társított tanúsítványok (kiterjesztett támogatás) tárolására szolgál. Adja hozzá a tanúsítványokat a Key Vaulthoz, majd hivatkozzon a tanúsítvány ujjlenyomatai megfelelnek (. cscfg). Emellett engedélyeznie kell Key Vault a megfelelő engedélyekhez, hogy a Cloud Services (bővített támogatás) erőforrás beolvassa a titkos kulcsként tárolt tanúsítványt Key Vault. További információ: [tanúsítványok használata Cloud Services használatával (kiterjesztett támogatás)](certificates-and-key-vault.md).
+4. Adja hozzá a Key Vault-referenciát az  `OsProfile`   ARM-sablon szakaszában. A Key Vault a Cloud Serviceshoz társított tanúsítványok (kiterjesztett támogatás) tárolására szolgál. Adja hozzá a tanúsítványokat a Key Vaulthoz, majd hivatkozzon a tanúsítvány ujjlenyomatai megfelelnek (. cscfg). Emellett engedélyeznie kell Key Vault a megfelelő engedélyekhez, hogy a Cloud Services (bővített támogatás) erőforrás beolvassa a titkos kulcsként tárolt tanúsítványt Key Vault. A Key Vaultnak ugyanabban a régióban és előfizetésben kell lennie, mint a Cloud Service, és egyedi névvel kell rendelkeznie. További információ: [tanúsítványok használata Cloud Services használatával (kiterjesztett támogatás)](certificates-and-key-vault.md).
      
     ```json
     "osProfile": { 
