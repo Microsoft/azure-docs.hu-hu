@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
-ms.openlocfilehash: f9213f36ec33939c3df3b56d21822aa3b6a17c03
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 360a9730025dc24eda93868903fcd356c37d06ef
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945610"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576332"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor naplók lekérdezése HDInsight-fürtök figyeléséhez
 
@@ -122,9 +122,9 @@ A riasztás létrehozásának első lépése egy olyan lekérdezés megérkezés
 
     ![HDInsight Azure Monitor naplók riasztás törlésének szerkesztése](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
 
-További információ: [metrikus riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../azure-monitor/platform/alerts-metric.md).
+További információ: [metrikus riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../azure-monitor/alerts/alerts-metric.md).
 
 ## <a name="see-also"></a>Lásd még
 
-* [Ismerkedés az Azure Monitor-naplólekérdezésekkel](../azure-monitor/log-query/get-started-queries.md)
-* [Egyéni nézetek létrehozása a Azure Monitor View Designer használatával](../azure-monitor/platform/view-designer.md)
+* [Ismerkedés az Azure Monitor-naplólekérdezésekkel](../azure-monitor/logs/get-started-queries.md)
+* [Egyéni nézetek létrehozása a Azure Monitor View Designer használatával](../azure-monitor/visualize/view-designer.md)

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: b4b8f48afc75c0a96937575bdad5bb884d0cb4d8
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8630afa7410aad81a7a3c61540fc74702fc6481c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183719"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575996"
 ---
 # <a name="dns-records-for-azure-regions-used-by-azure-automation"></a>Az Azure Automation által használt Azure-régiók DNS-rekordjai
 
@@ -21,7 +21,7 @@ A [Azure Automation](../automation-intro.md) szolgáltatás számos DNS-rekordot
 * Webhookok
 
 >[!NOTE]
->A Linux hibrid Runbook Worker regisztrációja meghiúsul az új rekordokkal, kivéve, ha az 1.6.10.2 vagy újabb verziójú. A Linux rendszerhez készült [log Analytics-ügynök](../../azure-monitor/platform/agent-linux.md) újabb verziójára kell frissíteni, hogy a gép megkapja a feldolgozói szerepkör frissített verzióját, és ezeket az új rekordokat használja. A meglévő gépek a probléma nélkül továbbra is működőképesek maradnak.  
+>A Linux hibrid Runbook Worker regisztrációja meghiúsul az új rekordokkal, kivéve, ha az 1.6.10.2 vagy újabb verziójú. A Linux rendszerhez készült [log Analytics-ügynök](../../azure-monitor/agents/agent-linux.md) újabb verziójára kell frissíteni, hogy a gép megkapja a feldolgozói szerepkör frissített verzióját, és ezeket az új rekordokat használja. A meglévő gépek a probléma nélkül továbbra is működőképesek maradnak.  
 
 ## <a name="dns-records-per-region"></a>DNS-rekordok régiónként
 

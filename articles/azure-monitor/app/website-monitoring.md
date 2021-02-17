@@ -4,12 +4,12 @@ description: Ebből a rövid útmutatóból megtudhatja, hogyan állíthatja be 
 ms.topic: quickstart
 ms.date: 08/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 959beeac004c71fb4593740d3c1685771638e40c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0a30fb12e93058690fbd7611ae64fc0a7dd96f64
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88611330"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583439"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>Rövid útmutató: a webhely figyelésének megkezdése Azure Monitor Application Insights
 
@@ -27,7 +27,7 @@ Az Azure Monitor Application Insights segítségével egyszerűen monitorozhatja
 A Application Insights a helyszínen vagy a felhőben futó, internetkapcsolattal rendelkező alkalmazásokból is gyűjthet telemetria-adatokat. Az alábbi lépések végrehajtásával tekintheti meg ezeket az adatfájlokat:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-1. Válassza **az erőforrás létrehozása**  >  **felügyeleti eszközök**  >  **Application Insights**elemet.
+1. Válassza **az erőforrás létrehozása**  >  **felügyeleti eszközök**  >  **Application Insights** elemet.
 
    > [!NOTE]
    >Ha első alkalommal hoz létre Application Insights-erőforrást, tekintse meg [Application Insights erőforrás létrehozása](./create-new-resource.md)című témakört.
@@ -38,7 +38,7 @@ A Application Insights a helyszínen vagy a felhőben futó, internetkapcsolatta
    | **Név**      | Globálisan egyedi érték | A figyelt alkalmazást azonosító név. |
    | **Erőforráscsoport**     | myResourceGroup      | Az új erőforráscsoport neve Application Insights-adattároláshoz. Létrehozhat egy új erőforráscsoportot, vagy használhat egy meglévőt is. |
    | **Hely** | USA keleti régiója | Válasszon egy Önhöz közeli helyet, vagy a közelében, ahol az alkalmazás üzemeltetve van. |
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="create-an-html-file"></a>HTML-fájl létrehozása
 
@@ -60,7 +60,7 @@ A Application Insights a helyszínen vagy a felhőben futó, internetkapcsolatta
 
 ## <a name="configure-application-insights-sdk"></a>Application Insights SDK konfigurálása
 
-1. Válassza az **Áttekintés**  >  **Essentials**lehetőséget, majd másolja az alkalmazás kialakítási **kulcsát**.
+1. Válassza az **Áttekintés**  >  **Essentials** lehetőséget, majd másolja az alkalmazás kialakítási **kulcsát**.
 
    ![Új Application Insights-erőforrás űrlap](media/website-monitoring/instrumentation-key-001.png)
 
@@ -110,7 +110,7 @@ A Application Insights a helyszínen vagy a felhőben futó, internetkapcsolatta
 
    ![Az adott időtartamon belüli felhasználói kéréseket mutató elemzési diagram](./media/website-monitoring/analytics-query.png)
 
-1. Térjen vissza az **Áttekintés** oldalra. A **vizsgálat** fejléc alatt válassza a **böngésző**, majd a **teljesítmény**lehetőséget.  A webhely teljesítményével kapcsolatos metrikák jelennek meg. A hibák és kivételek elemzéséhez egy megfelelő nézet tartozik a webhelyén. A [végpontok közötti tranzakció részleteinek](./transaction-diagnostics.md)eléréséhez választhat **mintákat** .
+1. Térjen vissza az **Áttekintés** oldalra. A **vizsgálat** fejléc alatt válassza a **böngésző**, majd a **teljesítmény** lehetőséget.  A webhely teljesítményével kapcsolatos metrikák jelennek meg. A hibák és kivételek elemzéséhez egy megfelelő nézet tartozik a webhelyén. A [végpontok közötti tranzakció részleteinek](./transaction-diagnostics.md)eléréséhez választhat **mintákat** .
 
    ![Kiszolgálómetrikák diagram](./media/website-monitoring/browser-performance.png)
 
@@ -131,11 +131,11 @@ Ha azt tervezi, hogy további rövid útmutatókkal vagy oktatóanyagokkal dolgo
 > [!NOTE]
 > Ha meglévő erőforráscsoportot használt, a következő utasítások nem fognak működni. Ehelyett egyszerűen törölheti az egyes Application Insights erőforrásait. Vegye figyelembe, hogy amikor töröl egy erőforráscsoportot, az adott csoport tagjaihoz tartozó összes underyling-erőforrás is törlődik.
 
-1. A Azure Portal bal oldali menüjében válassza az **erőforráscsoportok**lehetőséget, majd válassza a **myResourceGroup** vagy az ideiglenes erőforráscsoport nevét.
-1. Az erőforráscsoport lapon válassza a **Törlés**lehetőséget, írja be a **myResourceGroup** szöveget a szövegmezőbe, majd válassza a **Törlés**lehetőséget.
+1. A Azure Portal bal oldali menüjében válassza az **erőforráscsoportok** lehetőséget, majd válassza a **myResourceGroup** vagy az ideiglenes erőforráscsoport nevét.
+1. Az erőforráscsoport lapon válassza a **Törlés** lehetőséget, írja be a **myResourceGroup** szöveget a szövegmezőbe, majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Teljesítményproblémák észlelése és diagnosztizálása](../log-query/log-query-overview.md)
+> [Teljesítményproblémák észlelése és diagnosztizálása](../logs/log-query-overview.md)
 

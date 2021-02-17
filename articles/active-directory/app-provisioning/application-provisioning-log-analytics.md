@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 454d44eecd4eaa6d5c1f50edbd7edb1024ace041
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 0593d2b675da533035a70c66784812543909c9db
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256881"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574194"
 ---
 # <a name="understand-how-provisioning-integrates-with-azure-monitor-logs"></a>A kiépítés integrálása Azure Monitor naplókkal
 
@@ -24,7 +24,7 @@ A kiépítés integrálható Azure Monitor naplók és Log Analytics. Az Azure m
 
 ## <a name="enabling-provisioning-logs"></a>A kiépítési naplók engedélyezése
 
-Már ismernie kell az Azure monitoringot és a Log Analytics. Ha nem, ugorjon át a megismeréséhez, és térjen vissza az alkalmazás-kiépítési naplók megismeréséhez. További információ az Azure monitoring szolgáltatásról: [Azure monitor Overview (áttekintés](../../azure-monitor/overview.md)). További információ a Azure Monitor naplókról és Log Analyticsekről: [a Azure monitor-lekérdezések áttekintése](../../azure-monitor/log-query/log-query-overview.md).
+Már ismernie kell az Azure monitoringot és a Log Analytics. Ha nem, ugorjon át a megismeréséhez, és térjen vissza az alkalmazás-kiépítési naplók megismeréséhez. További információ az Azure monitoring szolgáltatásról: [Azure monitor Overview (áttekintés](../../azure-monitor/overview.md)). További információ a Azure Monitor naplókról és Log Analyticsekről: [a Azure monitor-lekérdezések áttekintése](../../azure-monitor/logs/log-query-overview.md).
 
 Miután konfigurálta az Azure monitoringot, engedélyezheti a naplók számára az alkalmazások üzembe helyezését. A beállítás a **diagnosztika beállításai** oldalon található.
 
@@ -47,7 +47,7 @@ Az alapul szolgáló adatfolyam, amelyet a kiépítés küld, a naplók megjelen
 
 ## <a name="azure-monitor-workbooks"></a>Munkafüzetek Azure Monitor
 
-Azure Monitor munkafüzetek rugalmas vásznon biztosítanak adatelemzést. Emellett részletes vizualizációs jelentések létrehozását is lehetővé teszik a Azure Portalon belül. További információ: [Azure monitor munkafüzetek áttekintése](../../azure-monitor/platform/workbooks-overview.md).
+Azure Monitor munkafüzetek rugalmas vásznon biztosítanak adatelemzést. Emellett részletes vizualizációs jelentések létrehozását is lehetővé teszik a Azure Portalon belül. További információ: [Azure monitor munkafüzetek áttekintése](../../azure-monitor/visualize/workbooks-overview.md).
 
 Az alkalmazás üzembe helyezése előre elkészített munkafüzetekből áll. A munkafüzeteket a munkafüzetek lapon tekintheti meg. Az adatok megtekintéséhez meg kell győződnie arról, hogy az összes szűrő (timeRange, jobID, appName) fel van töltve. Emellett meg kell győződnie arról, hogy kiépített egy alkalmazást, ellenkező esetben nem fog tudni semmilyen adatnaplót.
 
@@ -57,7 +57,7 @@ Az alkalmazás üzembe helyezése előre elkészített munkafüzetekből áll. A
 
 ## <a name="custom-queries"></a>Egyéni lekérdezések
 
-Létrehozhat egyéni lekérdezéseket, és megjelenítheti az Azure-irányítópultokon tárolt adatmegjelenítést. Ebből a cikkből megtudhatja, hogyan [hozhat létre és oszthat meg irányítópultokat log Analytics-adatelemekről](../../azure-monitor/log-query/get-started-queries.md). Ügyeljen arra is, hogy tekintse át a [Azure monitor a naplók lekérdezését](../../azure-monitor/log-query/log-query-overview.md).
+Létrehozhat egyéni lekérdezéseket, és megjelenítheti az Azure-irányítópultokon tárolt adatmegjelenítést. Ebből a cikkből megtudhatja, hogyan [hozhat létre és oszthat meg irányítópultokat log Analytics-adatelemekről](../../azure-monitor/logs/get-started-queries.md). Ügyeljen arra is, hogy tekintse át a [Azure monitor a naplók lekérdezését](../../azure-monitor/logs/log-query-overview.md).
 
 Íme néhány példa az alkalmazás üzembe helyezésének megkezdéséhez.
 
@@ -96,7 +96,7 @@ AADProvisioningLogs
 
 Azure Monitor lehetővé teszi az egyéni riasztások konfigurálását, hogy értesítést kapjon az üzembe helyezéshez kapcsolódó kulcsfontosságú eseményekről. Előfordulhat például, hogy riasztást szeretne kapni a hibákkal kapcsolatos tüskékkel kapcsolatban. Vagy lehet, hogy a letiltások vagy a törlési tüskéket. Egy másik példa arra, hogy hol lehet riasztást kapni, mert hiányzik a kiépítés, ami azt jelzi, hogy valami nem megfelelő.
 
-A riasztásokkal kapcsolatos további tudnivalókért tekintse meg az [Azure monitor riasztásokkal kapcsolatos események megválaszolásával foglalkozó](../../azure-monitor/learn/tutorial-response.md)témakört.
+A riasztásokkal kapcsolatos további tudnivalókért tekintse meg az [Azure monitor riasztásokkal kapcsolatos események megválaszolásával foglalkozó](../../azure-monitor/alerts/tutorial-response.md)témakört.
 
 Riasztás, ha hiba van a csúcson. Cserélje le a jobID az alkalmazás jobID.
 
@@ -118,7 +118,7 @@ Nyílt forráskódú és közösségi alapú megközelítést végzünk az alkal
 ## <a name="next-steps"></a>Következő lépések
 
 - [Log Analytics](../reports-monitoring/howto-analyze-activity-logs-log-analytics.md)
-- [Ismerkedés a Azure Monitor-naplókban található lekérdezésekkel](../../azure-monitor/log-query/get-started-queries.md)
-- [Riasztási csoportok létrehozása és kezelése a Azure Portal](../../azure-monitor/platform/action-groups.md)
+- [Ismerkedés a Azure Monitor-naplókban található lekérdezésekkel](../../azure-monitor/logs/get-started-queries.md)
+- [Riasztási csoportok létrehozása és kezelése a Azure Portal](../../azure-monitor/alerts/action-groups.md)
 - [A log Analytics-nézetek telepítése és használata Azure Active Directory](../reports-monitoring/howto-install-use-log-analytics-views.md)
 - [A naplók API üzembe helyezése](/graph/api/resources/provisioningobjectsummary?preserve-view=true&view=graph-rest-beta.md)

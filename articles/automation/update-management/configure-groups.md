@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: a2df2489e4b216b4b33524e35691bf93468edda0
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 318b5498c826b1e29baa35850594cebca72c4f3f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222155"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575922"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>Dinamikus csoportok használata az Update Managementtel
 
@@ -37,13 +37,13 @@ Az Azure-gépek dinamikus csoportos lekérdezésének meghatározásakor a köve
 
 ![Csoportok kiválasztása](./media/configure-groups/select-groups.png)
 
-A dinamikus csoportos lekérdezés eredményének megtekintéséhez kattintson az **előnézet**gombra. Az előnézet megjeleníti a csoporttagság aktuális időpontját. A példában olyan gépeket keresünk, amelyek címkével rendelkeznek a `Role` csoport **BackendServer**. Ha további gépek szerepelnek a címkén, akkor azokat a rendszer az adott csoportra vonatkozó jövőbeli központi telepítésekhez adja hozzá.
+A dinamikus csoportos lekérdezés eredményének megtekintéséhez kattintson az **előnézet** gombra. Az előnézet megjeleníti a csoporttagság aktuális időpontját. A példában olyan gépeket keresünk, amelyek címkével rendelkeznek a `Role` csoport **BackendServer**. Ha további gépek szerepelnek a címkén, akkor azokat a rendszer az adott csoportra vonatkozó jövőbeli központi telepítésekhez adja hozzá.
 
 ![előzetes verziójú csoportok](./media/configure-groups/preview-groups.png)
 
 ## <a name="define-dynamic-groups-for-non-azure-machines"></a>Dinamikus csoportok definiálása nem Azure-beli gépekhez
 
-A nem Azure-alapú gépek dinamikus csoportja mentett kereséseket, más néven számítógépcsoportot használ. A mentett keresések létrehozásáról további információt a [számítógépcsoport létrehozása](../../azure-monitor/platform/computer-groups.md#creating-a-computer-group)című témakörben talál. A mentett keresés létrehozása után kiválaszthatja azt a mentett keresések listájában a Azure Portal **Update Management szolgáltatásban** . Az **előnézet** gombra kattintva megtekintheti a mentett keresésben lévő számítógépeket.
+A nem Azure-alapú gépek dinamikus csoportja mentett kereséseket, más néven számítógépcsoportot használ. A mentett keresések létrehozásáról további információt a [számítógépcsoport létrehozása](../../azure-monitor/logs/computer-groups.md#creating-a-computer-group)című témakörben talál. A mentett keresés létrehozása után kiválaszthatja azt a mentett keresések listájában a Azure Portal **Update Management szolgáltatásban** . Az **előnézet** gombra kattintva megtekintheti a mentett keresésben lévő számítógépeket.
 
 ![Képernyőfelvétel: a csoportok kiválasztása lap a nem Azure (előzetes verzió) és a jobb oldalon látható előnézet ablaktábla.](./media/configure-groups/select-groups-2.png)
 

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e0be6decf28fcbb2edacd5019f567d26403b1f31
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e9da1071686dafa003a5a49d0864b77644493344
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466813"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594455"
 ---
 # <a name="use-azure-monitor-for-windows-virtual-desktop-to-monitor-your-deployment-preview"></a>Az üzembe helyezés figyelése a Windows rendszerű virtuális asztali Azure Monitor használatával (előzetes verzió)
 
@@ -98,7 +98,7 @@ Ha többet szeretne megtudni arról, hogyan engedélyezheti a diagnosztika szolg
 
 ## <a name="configure-log-analytics"></a>A Log Analytics konfigurálása
 
-A Windows rendszerű virtuális asztalok Azure Monitor használatának megkezdéséhez szüksége lesz legalább egy Log Analytics-munkaterületre, hogy adatokat gyűjtsön a figyelni kívánt környezetből, és megadja azt a munkafüzetnek. Ha már van egy beállított beállítása, ugorjon előre a [teljesítményszámlálók beállítása](#set-up-performance-counters)elemre. Ha új Log Analytics munkaterületet szeretne beállítani a Windows rendszerű virtuális asztali környezetet tartalmazó Azure-előfizetéshez, tekintse meg a [log Analytics munkaterület létrehozása a Azure Portalben](../azure-monitor/learn/quick-create-workspace.md)című témakört.
+A Windows rendszerű virtuális asztalok Azure Monitor használatának megkezdéséhez szüksége lesz legalább egy Log Analytics-munkaterületre, hogy adatokat gyűjtsön a figyelni kívánt környezetből, és megadja azt a munkafüzetnek. Ha már van egy beállított beállítása, ugorjon előre a [teljesítményszámlálók beállítása](#set-up-performance-counters)elemre. Ha új Log Analytics munkaterületet szeretne beállítani a Windows rendszerű virtuális asztali környezetet tartalmazó Azure-előfizetéshez, tekintse meg a [log Analytics munkaterület létrehozása a Azure Portalben](../azure-monitor/logs/quick-create-workspace.md)című témakört.
 
 >[!NOTE]
 >A Log Analytics szabványos adattárolási díjait fogja alkalmazni. A kezdéshez azt javasoljuk, hogy válassza az utólagos elszámolású modellt, és állítsa be az üzembe helyezés méretezését, és vegyen fel több adatmennyiséget. További információ: [Azure monitor díjszabása](https://azure.microsoft.com/pricing/details/monitor/).
@@ -107,7 +107,7 @@ A Windows rendszerű virtuális asztalok Azure Monitor használatának megkezdé
 
 A Log Analytics munkaterületen a megfelelő mintavételi intervallumban engedélyeznie kell a gyűjteményhez megadott teljesítményszámlálókat. Ezek a teljesítményszámlálók csak a Windows virtuális asztal figyeléséhez szükséges számlálók. Letilthatja az összes többiet a költségek megtakarítása érdekében.
 
-Ha már engedélyezve vannak a teljesítményszámlálók, és el szeretné távolítani őket, kövesse a teljesítményszámlálók [konfigurálása](../azure-monitor/platform/data-sources-performance-counters.md) a teljesítményszámlálók újrakonfigurálásához című témakör útmutatását. Míg a cikk leírja, hogyan adhat hozzá számlálókat, de ugyanazon a helyen is eltávolíthatja őket.
+Ha már engedélyezve vannak a teljesítményszámlálók, és el szeretné távolítani őket, kövesse a teljesítményszámlálók [konfigurálása](../azure-monitor/agents/data-sources-performance-counters.md) a teljesítményszámlálók újrakonfigurálásához című témakör útmutatását. Míg a cikk leírja, hogyan adhat hozzá számlálókat, de ugyanazon a helyen is eltávolíthatja őket.
 
 Ha még nem állított be teljesítményszámlálókat, a következő módon konfigurálhatja őket a Windows rendszerű virtuális asztali Azure Monitorhoz:
 
@@ -128,7 +128,7 @@ Ha még nem állított be teljesítményszámlálókat, a következő módon kon
 >[!NOTE]
 >A bemeneti késleltetési teljesítményszámlálók csak a Windows 10 RS5 és újabb, illetve a Windows Server 2019-es és újabb verzióival kompatibilisek.
 
-További információ a gyűjteményhez még nem engedélyezett teljesítményszámlálók manuális hozzáadásáról: [teljesítményszámlálók konfigurálása](../azure-monitor/platform/data-sources-performance-counters.md).
+További információ a gyűjteményhez még nem engedélyezett teljesítményszámlálók manuális hozzáadásáról: [teljesítményszámlálók konfigurálása](../azure-monitor/agents/data-sources-performance-counters.md).
 
 ### <a name="set-up-windows-events"></a>Windows-események beállítása
 
@@ -171,7 +171,7 @@ A Log Analytics-ügynök telepítése:
 
 ## <a name="optional-configure-alerts"></a>Nem kötelező: riasztások konfigurálása
 
-A Windows rendszerű virtuális asztali számítógép Azure Monitor konfigurálható úgy, hogy értesítést kapjon, ha a kiválasztott előfizetésen belül bármilyen súlyos Azure Monitor riasztás történik. Ehhez kövesse a [válasz az eseményekre Azure monitor riasztásokkal](../azure-monitor/learn/tutorial-response.md)című témakör utasításait.
+A Windows rendszerű virtuális asztali számítógép Azure Monitor konfigurálható úgy, hogy értesítést kapjon, ha a kiválasztott előfizetésen belül bármilyen súlyos Azure Monitor riasztás történik. Ehhez kövesse a [válasz az eseményekre Azure monitor riasztásokkal](../azure-monitor/alerts/tutorial-response.md)című témakör utasításait.
 
 ## <a name="diagnostic-and-usage-data"></a>Diagnosztikai és használati adatok
 
@@ -184,7 +184,7 @@ További információ az adatok gyűjtéséről és használatáról: a [Microso
 >[!NOTE]
 >A szolgáltatás által gyűjtött személyes adatok megtekintésének és törlésének megismeréséhez tekintse meg [a GDPR kapcsolatos Azure-beli adattulajdonosi kérelmeket](/microsoft-365/compliance/gdpr-dsr-azure). A GDPR kapcsolatos további információkért tekintse meg a [szolgáltatás-megbízhatósági portál GDPR című szakaszát](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy konfigurálta a Windows rendszerű virtuális asztali Azure Portal, néhány olyan erőforrást tartalmaz, amelyek segíthetnek a következőkben:
 

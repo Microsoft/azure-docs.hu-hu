@@ -4,12 +4,12 @@ description: Megismerheti a felügyeleti csoportokat és azok használatának m�
 ms.date: 01/22/2021
 ms.topic: overview
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 547f26717bfb516bbcf531af1418c812e4cbc63b
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 9843b824c62e0f9919d7a71a717d9aad03dcbd9c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560200"
+ms.locfileid: "100590845"
 ---
 # <a name="what-are-azure-management-groups"></a>Mik az Azure-beli felügyeleti csoportok?
 
@@ -196,7 +196,7 @@ Ha az előfizetés tulajdonosi szerepköre az aktuális felügyeleti csoporttól
 
 ## <a name="audit-management-groups-using-activity-logs"></a>Felügyeleti csoportok naplózása tevékenységnaplókkal
 
-A felügyeleti csoportok támogatottak az [Azure-tevékenységnaplóban](../../azure-monitor/platform/platform-logs-overview.md). A felügyeleti csoportokkal kapcsolatos minden eseményre ugyanarról a központi helyről kereshet rá, mint más Azure-erőforrások esetében. Például megtekintheti egy adott felügyeleti csoporthoz tartozó összes szerepkör-hozzárendelés vagy szabályzat-hozzárendelés módosításait.
+A felügyeleti csoportok támogatottak az [Azure-tevékenységnaplóban](../../azure-monitor/essentials/platform-logs-overview.md). A felügyeleti csoportokkal kapcsolatos minden eseményre ugyanarról a központi helyről kereshet rá, mint más Azure-erőforrások esetében. Például megtekintheti egy adott felügyeleti csoporthoz tartozó összes szerepkör-hozzárendelés vagy szabályzat-hozzárendelés módosításait.
 
 :::image type="content" source="./media/al-mg.png" alt-text="Képernyőkép a kiválasztott felügyeleti csoporttal kapcsolatos tevékenységi naplókról és műveletekről." border="false":::
 

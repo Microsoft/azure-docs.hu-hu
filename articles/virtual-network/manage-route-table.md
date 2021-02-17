@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: kumud
-ms.openlocfilehash: a8c38f4e84a6a653c3a4d887c82340409fc363af
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 642a9a9f798492d85ee2a9784a1fe5ad4f854d58
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220592"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574131"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Útválasztási táblázat létrehozása, módosítása vagy törlése
 
@@ -85,7 +85,7 @@ A virtuális hálózat kezeléséhez lépjen a [Azure Portal](https://portal.azu
 
 Az általános Azure-beállításokkal kapcsolatos további tudnivalókért tekintse meg a következő információkat:
 
-- [Tevékenységnapló](../azure-monitor/platform/platform-logs-overview.md)
+- [Tevékenységnapló](../azure-monitor/essentials/platform-logs-overview.md)
 - [Hozzáférés-vezérlés (IAM)](../role-based-access-control/overview.md)
 - [Címkék](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Zárolások](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -127,7 +127,7 @@ Az útválasztási táblázatot igény szerint hozzárendelheti egy alhálózath
 
 1. Az **útválasztási táblázatban** válassza ki azt az útválasztási táblázatot, amelyet az alhálózathoz kíván rendelni.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 Ha a virtuális hálózat egy Azure VPN Gateway-átjáróhoz csatlakozik, ne társítson útválasztási táblázatot az [átjáró-alhálózathoz](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) , amely tartalmazza a *0.0.0.0/0* rendeltetésű útvonalat. Ellenkező esetben előfordulhat, hogy az átjárószolgáltatás nem működik megfelelően. További információ a *0.0.0.0/0* útvonalon való használatáról: [virtuális hálózati forgalom útválasztása](virtual-networks-udr-overview.md#default-route).
 
@@ -152,7 +152,7 @@ Amikor alhálózatból választ ki egy útválasztási táblázatot, az Azure az
 
 1. Az **útválasztási táblázatban** válassza a **nincs** lehetőséget.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="dissociate-a-route-table---commands"></a>Útválasztási táblázat leválasztása – parancsok
 

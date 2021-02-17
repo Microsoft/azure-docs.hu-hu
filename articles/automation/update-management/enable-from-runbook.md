@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: mvc
-ms.openlocfilehash: 219efe05b399677c60922542f3d7acd76ca37d26
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 5377a3ff7ef7033b57f8785baa615a717ef7fa0f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054889"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575877"
 ---
 # <a name="enable-update-management-from-a-runbook"></a>Az Update Management engedélyezése runbookból
 
@@ -29,7 +29,7 @@ Ez a módszer két runbookok használ:
 
 * Egy Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Egy [Automation-fiók](../automation-security-overview.md) a gépek kezeléséhez.
-* [Log Analytics munkaterület](../../azure-monitor/platform/design-logs-deployment.md)
+* [Log Analytics munkaterület](../../azure-monitor/logs/design-logs-deployment.md)
 * Egy [virtuális gép](../../virtual-machines/windows/quick-create-portal.md).
 * Két Automation-eszköz, amelyet az **enable-AutomationSolution** runbook használ. Ez a runbook, ha még nem létezik az Automation-fiókjában, automatikusan importálja az **enable-MultipleSolution** runbook az első futtatásakor.
     * *LASolutionSubscriptionId*: az előfizetés azonosítója, ahol a log Analytics munkaterület található.

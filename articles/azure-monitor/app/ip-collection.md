@@ -4,12 +4,12 @@ description: Az IP-címek és a térinformatikai kezelésének ismertetése az A
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 3a8969d5d0df2fdacf78815c6f47c7c6bfa73a37
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 91b3aa07720e39aa8aeeceb9c35e38205e7d7c76
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100521917"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584084"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Térinformatikai és IP-címek kezelése
 
@@ -30,7 +30,7 @@ Ez a viselkedés úgy működik, hogy segít elkerülni a személyes adatgyűjt�
 
 Az alapértelmezett érték az IP-címek összegyűjtése. Továbbra is rugalmasságot biztosítunk a viselkedés felülbírálásához. Azt javasoljuk azonban, hogy a gyűjtemény ne szüntesse meg az összes megfelelőségi követelményt vagy helyi szabályozást. 
 
-Ha többet szeretne megtudni a Application Insights személyes adatainak kezeléséről, tekintse meg a [személyes adatainak útmutatását](../platform/personal-data-mgmt.md).
+Ha többet szeretne megtudni a Application Insights személyes adatainak kezeléséről, tekintse meg a [személyes adatainak útmutatását](../logs/personal-data-mgmt.md).
 
 ## <a name="storing-ip-address-data"></a>IP-címek tárolására szolgáló adattároló
 
@@ -245,6 +245,6 @@ Ha a localhost-ról történő tesztelés és a `customDimensions_client-ip` ér
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ a Application Insights [személyes adatainak gyűjtéséről](../platform/personal-data-mgmt.md) .
+* További információ a Application Insights [személyes adatainak gyűjtéséről](../logs/personal-data-mgmt.md) .
 
 * További információ arról, hogyan működik az [IP-címek gyűjteménye](https://apmtips.com/posts/2016-07-05-client-ip-address/) Application Insights. (Ez a cikk egy korábbi külső blogbejegyzés, amelyet az egyik mérnök írt alá. Ez a beállítás a jelenlegi alapértelmezett viselkedést, az IP-címet pedig az aktuálisan rögzített állapotba `0.0.0.0` helyezi, de a beépített mechanika nagyobb mélységbe kerül `ClientIpHeaderTelemetryInitializer` .)

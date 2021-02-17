@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: eb74137e515bff7a432367e75b4208490b1243c0
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 33cd19f7bb1881b17f1ca9080a9634162014808a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681387"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574287"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>Azure Monitor használata az Azure szinapszis Analytics-munkaterülettel
 
@@ -28,7 +28,7 @@ További információ: [Azure monitor Overview (áttekintés](../../azure-monito
 
 A monitor segítségével megtekintheti az Azure-beli számítási feladatok teljesítményét és állapotát. A monitorozási adatok legfontosabb típusa a metrika, amelyet a teljesítményszámláló is nevez. A metrikákat a legtöbb Azure-erőforrás kibocsátja. A figyelő számos módszert biztosít ezen mérőszámok konfigurálásához és felhasználásához a figyeléshez és a hibaelhárításhoz.
 
-A metrikák eléréséhez hajtsa végre az [Azure monitor adatplatformon](../../azure-monitor/platform/data-platform.md)megjelenő utasításokat.
+A metrikák eléréséhez hajtsa végre az [Azure monitor adatplatformon](../../azure-monitor/data-platform.md)megjelenő utasításokat.
 
 ### <a name="workspace-level-metrics"></a>Munkaterület-szintű mérőszámok
 
@@ -103,7 +103,7 @@ Jelentkezzen be a Azure Portalba, és válassza a riasztások **figyelése** leh
 
 Az Azure szinapszis Analytics-munkaterületek által kibocsátott naplók a következők:
 
-| Log Analytics tábla neve | Naplózási kategória neve                 | Leírás |
+| Log Analytics tábla neve | Naplózási kategória neve                 | Description |
 |-------------------------------|-------------------------------------------------|-------------|
 | SynapseGatewayApiRequests     | GatewayApiRequests             | Azure szinapszis Gateway API-kérelmek. |
 | SynapseRbacOperations         | SynapseRbacOperations          | Azure szinapszis szerepköralapú hozzáférés-vezérlési (SRBAC) műveletek. |
@@ -112,7 +112,7 @@ Az Azure szinapszis Analytics-munkaterületek által kibocsátott naplók a köv
 
 A dedikált SQL-készletek által kibocsátott naplók a következők:
 
-| Log Analytics tábla neve        | Naplózási kategória neve             | Leírás |
+| Log Analytics tábla neve        | Naplózási kategória neve             | Description |
 |----------------------|--------------------------------------|-------------|
 | SynapseSqlPoolExecRequests  | ExecRequests | Információk az Azure szinapszis dedikált SQL-készletében található SQL-kérelmekről/lekérdezésekről.
 | SynapseSqlPoolDmsWorkers    | DmsWorkers   | Információ arról, hogy a feldolgozók hogyan fejezik be a DMS lépéseit az Azure szinapszis dedikált SQL-készletéből.
@@ -131,7 +131,7 @@ A naplókról további információt a következő információkban talál:
 
 Apache Spark készletek által kibocsátott napló:
 
-| Log Analytics tábla neve               | Naplózási kategória neve              | Leírás                 |
+| Log Analytics tábla neve               | Naplózási kategória neve              | Description                 |
 |-----------------------------|---------------------------------------|-----------------------------|
 | SynapseBigDataPoolApplicationsEnded | BigDataPoolAppsEnded | A befejezett Apache Spark alkalmazásokkal kapcsolatos információk |
 
@@ -171,7 +171,7 @@ Hozzon létre vagy adjon hozzá diagnosztikai beállításokat a munkaterülethe
 1. Adja meg a beállítás nevét, válassza a **küldés log Analytics** lehetőséget, majd válasszon ki egy munkaterületet **log Analytics munkaterületről**.
 
     > [!NOTE]
-    > Mivel az Azure-tábla nem rendelkezhet több mint 500 oszloppal **, javasoljuk, hogy az** _erőforrás-specifikus módot_ válassza. További információ: [log Analytics ismert korlátozások](../../azure-monitor/platform/resource-logs.md#column-limit-in-azurediagnostics).
+    > Mivel az Azure-tábla nem rendelkezhet több mint 500 oszloppal **, javasoljuk, hogy az** _erőforrás-specifikus módot_ válassza. További információ: [log Analytics ismert korlátozások](../../azure-monitor/essentials/resource-logs.md#column-limit-in-azurediagnostics).
 
 1. Kattintson a **Mentés** gombra.
 

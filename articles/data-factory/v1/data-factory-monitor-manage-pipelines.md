@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: 486f12c29c473d46e3aff73abe747f8aa5a2ef8d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c728654e868bcb8213e6a4039fa1e2e169b0078c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100380406"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576379"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Azure Data Factory folyamatok monitorozása és kezelése a Azure Portal és a PowerShell használatával
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ Ez a cikk a folyamatok figyelését, kezelését és hibakeresését ismerteti A
 > A monitoring & felügyeleti alkalmazás jobb támogatást nyújt az adatfolyamatok monitorozásához és kezeléséhez, valamint az esetleges problémák megoldásához. További információ az alkalmazás használatáról: [Data Factory folyamatok figyelése és felügyelete a figyelési és felügyeleti alkalmazás használatával](data-factory-monitor-manage-app.md). 
 
 > [!IMPORTANT]
-> Az 1. verzió Azure Data Factory mostantól az új [Azure Monitor riasztási infrastruktúrát](../../azure-monitor/platform/alerts-metric.md)használja. A régi riasztási infrastruktúra elavult. Ennek eredményeképpen az 1. verziójú adatüzemekhez konfigurált meglévő riasztások már nem működnek. A v1-es adatüzemek meglévő riasztásait a rendszer nem telepíti át automatikusan. Ezeket a riasztásokat újra létre kell hozni az új riasztási infrastruktúrán. Jelentkezzen be a Azure Portalba, és válassza a **figyelő** lehetőséget, hogy új riasztásokat hozzon létre a metrikák (például sikertelen futtatások vagy sikeres futtatások) számára az 1. verziójú adat-előállítók számára.
+> Az 1. verzió Azure Data Factory mostantól az új [Azure Monitor riasztási infrastruktúrát](../../azure-monitor/alerts/alerts-metric.md)használja. A régi riasztási infrastruktúra elavult. Ennek eredményeképpen az 1. verziójú adatüzemekhez konfigurált meglévő riasztások már nem működnek. A v1-es adatüzemek meglévő riasztásait a rendszer nem telepíti át automatikusan. Ezeket a riasztásokat újra létre kell hozni az új riasztási infrastruktúrán. Jelentkezzen be a Azure Portalba, és válassza a **figyelő** lehetőséget, hogy új riasztásokat hozzon létre a metrikák (például sikertelen futtatások vagy sikeres futtatások) számára az 1. verziójú adat-előállítók számára.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

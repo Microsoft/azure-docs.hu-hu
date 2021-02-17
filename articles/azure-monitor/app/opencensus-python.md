@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/24/2020
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
-ms.openlocfilehash: 1e6376cd8389a4f1f0defebce0a2c7b6d0f9deed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f50628395526783face11fcb1438e2716135b640
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91323265"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584026"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Azure Monitor beállítása a Python-alkalmazáshoz
 
@@ -18,7 +18,7 @@ Azure Monitor támogatja a Python-alkalmazások elosztott nyomkövetését, metr
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+- Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 - Python-telepítés. Ez a cikk a [Python 3.7.0](https://www.python.org/downloads/release/python-370/)használja, bár más verziók valószínűleg kisebb módosításokkal fognak működni. Az SDK csak a Python v 2.7 és a v 3.4-v 3.7-es verziókat támogatja.
 - Hozzon létre egy Application Insights [erőforrást](./create-new-resource.md). Ehhez hozzá kell rendelnie saját Instrumentation-kulcsát (rendszerállapotkulcsot) az erőforráshoz.
 
@@ -33,7 +33,7 @@ python -m pip install opencensus-ext-azure
 > [!NOTE]
 > A `python -m pip install opencensus-ext-azure` parancs feltételezi, hogy rendelkezik a `PATH` Python-telepítéshez beállított környezeti változóval. Ha még nem konfigurálta ezt a változót, meg kell adnia a teljes könyvtár elérési útját, ahol a Python-végrehajtható fájl található. Az eredmény az alábbihoz hasonló parancs: `C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure` .
 
-Az SDK három Azure Monitor-exportálót használ a különböző típusú telemetria küldéséhez Azure Monitor. Ezek a nyomkövetés, a metrikák és a naplók. További információ ezekről a telemetria-típusokról: [az adatplatform áttekintése](../platform/data-platform.md). Az alábbi útmutatást követve elküldheti ezeket a telemetria-típusokat a három-exportőr használatával.
+Az SDK három Azure Monitor-exportálót használ a különböző típusú telemetria küldéséhez Azure Monitor. Ezek a nyomkövetés, a metrikák és a naplók. További információ ezekről a telemetria-típusokról: [az adatplatform áttekintése](../data-platform.md). Az alábbi útmutatást követve elküldheti ezeket a telemetria-típusokat a három-exportőr használatával.
 
 ## <a name="telemetry-type-mappings"></a>Telemetria típusú leképezések
 
@@ -438,7 +438,7 @@ Ahogy az ábrán látható, három különböző Azure Monitor-exportőr támoga
 Mindegyik exportőr elfogadja a konfigurációhoz tartozó argumentumokat, amelyeket a konstruktorok továbbítanak. Itt láthatja a részleteket:
 
 - `connection_string`: A Azure Monitor erőforráshoz való kapcsolódáshoz használt kapcsolati karakterlánc. Elsőbbséget élvez `instrumentation_key` .
-- `enable_standard_metrics`: Használatban `AzureMetricsExporter` . Azt jelzi, hogy az exportőr automatikusan elküldi a [teljesítményszámláló](../platform/app-insights-metrics.md#performance-counters) -metrikákat a Azure monitor. Alapértelmezett értéke `True` .
+- `enable_standard_metrics`: Használatban `AzureMetricsExporter` . Azt jelzi, hogy az exportőr automatikusan elküldi a [teljesítményszámláló](../essentials/app-insights-metrics.md#performance-counters) -metrikákat a Azure monitor. Alapértelmezett értéke `True` .
 - `export_interval`: Az Exportálás másodpercben megadott gyakoriságának meghatározására szolgál.
 - `instrumentation_key`: A Azure Monitor erőforráshoz való csatlakozáshoz használt rendszerállapot-kulcs.
 - `logging_sampling_rate`: Használatban `AzureLogHandler` . Mintavételezési sebességet biztosít [1,0] a naplók exportálásához. Az alapértelmezett érték a 1,0.
@@ -458,7 +458,7 @@ A listában az **aktív**:
 - A Azure Monitor metrikákkal ellátott telemetria esetében az eljuttatott metrikák a alatt jelennek meg `customMetrics` .
 - A Azure Monitor naplók exportőrével eljuttatott telemetria esetében a naplók a alatt jelennek meg `traces` . A kivételek a alatt jelennek meg `exceptions` .
 
-További információ a lekérdezések és naplók használatáról: [naplók a Azure monitorban](../platform/data-platform-logs.md).
+További információ a lekérdezések és naplók használatáról: [naplók a Azure monitorban](../logs/data-platform-logs.md).
 
 ## <a name="learn-more-about-opencensus-for-python"></a>További információ a Pythonhoz készült OpenCensus
 
@@ -473,11 +473,11 @@ További információ a lekérdezések és naplók használatáról: [naplók a 
 * [Bejövő kérelmek nyomon követése](./opencensus-python-dependency.md)
 * [Folyamatban lévő kérelmek nyomon követése](./opencensus-python-request.md)
 * [Alkalmazás-hozzárendelés](./app-map.md)
-* [Végpontok közötti teljesítmény figyelése](../learn/tutorial-performance.md)
+* [Végpontok közötti teljesítmény figyelése](../app/tutorial-performance.md)
 
 ### <a name="alerts"></a>Riasztások
 
 * [Rendelkezésre állási tesztek](./monitor-web-app-availability.md): Hozzon létre teszteket, hogy megbizonyosodjon róla, oldala látható a weben.
 * [Intelligens diagnosztika](./proactive-diagnostics.md): Ezek a tesztek automatikusan futnak, a beállításukhoz semmit sem kell tennie. Értesítést kap, ha az alkalmazásában szokatlanul magas a meghiúsult kérelmek száma.
-* [Metrikai riasztások](../platform/alerts-log.md): riasztások beállítása, amely figyelmezteti, ha egy metrika átlépi a küszöbértéket. Az alkalmazás kódjába beépített egyedi metrikákhoz is állíthat be riasztásokat.
+* [Metrikai riasztások](../alerts/alerts-log.md): riasztások beállítása, amely figyelmezteti, ha egy metrika átlépi a küszöbértéket. Az alkalmazás kódjába beépített egyedi metrikákhoz is állíthat be riasztásokat.
 

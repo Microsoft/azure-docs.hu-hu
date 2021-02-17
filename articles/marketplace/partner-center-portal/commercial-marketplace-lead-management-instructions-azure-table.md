@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 08/25/2020
-ms.openlocfilehash: 71b9c96c1855180106f7dfa9a31f0ee8b06ceb67
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 3c8b9444344e5bae414145e2b3367c265114a423
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347863"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586839"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Az Azure Table Storage használata a kereskedelmi Piactéri érdeklődők felügyeletéhez
 
@@ -72,7 +72,7 @@ A példa létrehoz egy folyamatot, amely automatikusan értesítő e-mailt küld
 
    ![Saját folyamatok + ütemezett – üresről](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-scheduled-from-blank.png)
 
-1. Az **ütemezett folyamat létrehozása** ablakban az **ismétlődéshez** válassza az **1** értéket az intervallum és az **óra** értéknél. Adja meg a folyamat nevét is, ha szeretné. Kattintson a **Létrehozás** gombra.
+1. Az **ütemezett folyamat létrehozása** ablakban az **ismétlődéshez** válassza az **1** értéket az intervallum és az **óra** értéknél. Adja meg a folyamat nevét is, ha szeretné. Válassza a **Létrehozás** lehetőséget.
 
    >[!NOTE]
    >Bár ez a példa egy órás időközt használ, kiválaszthatja az üzleti igényeinek leginkább megfelelő intervallumot és gyakoriságot.
@@ -203,3 +203,7 @@ Az **Érvényesítés** gombra kattintva győződjön meg arról, hogy sikeresen
 >Be kell fejeznie az ajánlat többi részének konfigurálását, és közzé kell tennie az ajánlathoz tartozó érdeklődők fogadása előtt.
 
 Az érdeklődők létrehozásakor a Microsoft elküldi az érdeklődőket az Azure-táblába. Ha konfigurált egy folyamatot, a rendszer e-mailt küld a konfigurált e-mail-címre is.
+
+## <a name="next-steps"></a>Következő lépések
+
+- [Az érdeklődők felügyeletével kapcsolatos gyakori kérdések és hibaelhárítás](../lead-management-faq.md)

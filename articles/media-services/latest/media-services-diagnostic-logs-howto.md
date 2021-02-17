@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1d9252a5fdf7b1c68c1bb64bd22ede8640184a0c
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 3093d20fbe0a1ded68e34e816b7fc865a237ad92
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98953954"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576309"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Media Services diagnosztikai naplók figyelése
 
@@ -183,9 +183,9 @@ Előfordulhat, hogy akár öt percet is várnia kell, mielőtt az esemény megje
 
 ## <a name="see-also"></a>Lásd még
 
-* [Azure Monitor-metrikák](../../azure-monitor/platform/data-platform.md)
-* [Diagnosztikai naplók Azure Monitor](../../azure-monitor/platform/platform-logs-overview.md)
-* [Az Azure-erőforrások naplózási adatainak gyűjtése és felhasználása](../../azure-monitor/platform/platform-logs-overview.md)
+* [Azure Monitor-metrikák](../../azure-monitor/data-platform.md)
+* [Diagnosztikai naplók Azure Monitor](../../azure-monitor/essentials/platform-logs-overview.md)
+* [Az Azure-erőforrások naplózási adatainak gyűjtése és felhasználása](../../azure-monitor/essentials/platform-logs-overview.md)
 
 ## <a name="next-steps"></a>Következő lépések
 

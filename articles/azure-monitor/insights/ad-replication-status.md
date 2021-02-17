@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: c33e9105be1eb080025922ff9e612771a4f021cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01d641801b1b9a0cfaa4fd7ee11e3c55314dc53c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318079"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577531"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Active Directory replikáció állapotának figyelése Azure Monitor
 
@@ -34,13 +34,13 @@ A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi i
 
 
 ### <a name="install-agents-on-domain-controllers"></a>Ügynökök telepítése tartományvezérlőkön
-Az ügynököket olyan tartományvezérlőkön kell telepíteni, amelyek kiértékelése a tartomány tagjai. Másik lehetőségként telepítenie kell az ügynököket a tagkiszolgálókon, és konfigurálnia kell az ügynököket, hogy az AD-replikációs adatszolgáltatásokat a Azure Monitor küldje el. A Windows rendszerű számítógépek Azure Monitorhoz való kapcsolódásának megismeréséhez lásd: [Windows rendszerű számítógépek Összekötése Azure monitorhoz](../platform/agent-windows.md). Ha a tartományvezérlő már része egy meglévő System Center Operations Manager-környezetnek, amelyhez csatlakozni szeretne Azure Monitorhoz, tekintse meg a [Operations Manager Azure monitorhoz való kapcsolódását](../platform/om-agents.md)ismertető témakört.
+Az ügynököket olyan tartományvezérlőkön kell telepíteni, amelyek kiértékelése a tartomány tagjai. Másik lehetőségként telepítenie kell az ügynököket a tagkiszolgálókon, és konfigurálnia kell az ügynököket, hogy az AD-replikációs adatszolgáltatásokat a Azure Monitor küldje el. A Windows rendszerű számítógépek Azure Monitorhoz való kapcsolódásának megismeréséhez lásd: [Windows rendszerű számítógépek Összekötése Azure monitorhoz](../agents/agent-windows.md). Ha a tartományvezérlő már része egy meglévő System Center Operations Manager-környezetnek, amelyhez csatlakozni szeretne Azure Monitorhoz, tekintse meg a [Operations Manager Azure monitorhoz való kapcsolódását](../agents/om-agents.md)ismertető témakört.
 
 ### <a name="enable-non-domain-controller"></a>Nem tartományvezérlő engedélyezése
 Ha nem kívánja közvetlenül csatlakoztatni a tartományvezérlőket a Azure Monitorhoz, a tartomány bármely más számítógépét is csatlakoztathatja a Azure Monitorhoz, hogy összegyűjtse az AD Replication Status megoldási csomag adatait, és küldje el az adatokat.
 
 1. Győződjön meg arról, hogy a számítógép a AD Replication Status megoldás használatával figyelni kívánt tartomány tagja.
-2. Ha még nincs csatlakoztatva, [csatlakoztassa a Windows rendszerű számítógépet Azure monitor](../platform/om-agents.md) vagy [csatlakoztassa a meglévő Operations Manager-környezettel Azure monitorhoz](../platform/om-agents.md).
+2. Ha még nincs csatlakoztatva, [csatlakoztassa a Windows rendszerű számítógépet Azure monitor](../agents/om-agents.md) vagy [csatlakoztassa a meglévő Operations Manager-környezettel Azure monitorhoz](../agents/om-agents.md).
 3. A számítógépen állítsa be a következő beállításkulcsot:<br>Kulcs: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName> \Solutions\ADReplication**<br>Érték: **IsTarget**<br>Érték: **true**
 
    > [!NOTE]
@@ -110,7 +110,7 @@ Ha az egyik listában rákattint bármelyik elemre, további részleteket látha
 
 ![Az AD-replikáció állapotával kapcsolatos hibák a lekérdezés eredményeiben](./media/ad-replication-status/oms-ad-replication-search-details.png)
 
-Innen további szűrést végezhet, módosíthatja a napló lekérdezését, és így tovább. További információ a Azure Monitorban található naplók használatával kapcsolatban: a [naplózási adatok elemzése Azure monitorokban](../log-query/log-query-overview.md).
+Innen további szűrést végezhet, módosíthatja a napló lekérdezését, és így tovább. További információ a Azure Monitorban található naplók használatával kapcsolatban: a [naplózási adatok elemzése Azure monitorokban](../logs/log-query-overview.md).
 
 A **HelpLink** mező a TechNet-oldal URL-címét jeleníti meg az adott hibával kapcsolatos további részletekkel. A hivatkozást a böngészőablakba másolhatja és beillesztheti a hibaelhárítással és a hiba elhárításával kapcsolatos információk megjelenítéséhez.
 
@@ -150,10 +150,10 @@ A: a Active Directoryhoz tartozó normál felhasználói engedélyek elegendőek
 ## <a name="troubleshoot-data-collection-problems"></a>Az adatgyűjtési problémák elhárítása
 Az adatok gyűjtéséhez a AD Replication Status Solution Pack használatához legalább egy tartományvezérlőnek csatlakoznia kell a Log Analytics munkaterülethez. Amíg nem kapcsolódik tartományvezérlőhöz, megjelenik egy üzenet, amely jelzi, hogy az **adatok gyűjtése még folyamatban van**.
 
-Ha segítségre van szüksége a tartományvezérlők csatlakoztatásához, megtekintheti a dokumentációt a [Windows rendszerű számítógépek csatlakoztatása Azure monitor](../platform/om-agents.md). Azt is megteheti, hogy ha a tartományvezérlő már csatlakoztatva van egy meglévő System Center Operations Manager-környezethez, megtekintheti a dokumentációt a [Connect System Center Operations Manager a Azure monitor](../platform/om-agents.md).
+Ha segítségre van szüksége a tartományvezérlők csatlakoztatásához, megtekintheti a dokumentációt a [Windows rendszerű számítógépek csatlakoztatása Azure monitor](../agents/om-agents.md). Azt is megteheti, hogy ha a tartományvezérlő már csatlakoztatva van egy meglévő System Center Operations Manager-környezethez, megtekintheti a dokumentációt a [Connect System Center Operations Manager a Azure monitor](../agents/om-agents.md).
 
 Ha nem szeretne közvetlenül a tartományvezérlőhöz csatlakozni Azure Monitor vagy a System Center Operations Managerhoz, tekintse meg a [nem tartományvezérlő engedélyezése](#enable-non-domain-controller)című témakört.
 
-## <a name="next-steps"></a>További lépések
-* A [Azure monitorban található naplók](../log-query/log-query-overview.md) használatával megtekintheti a Active Directory replikációs állapotadatok részletes állapotát.
+## <a name="next-steps"></a>Következő lépések
+* A [Azure monitorban található naplók](../logs/log-query-overview.md) használatával megtekintheti a Active Directory replikációs állapotadatok részletes állapotát.
 

@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.custom: contperf-fy21q1
 ms.date: 06/18/2020
-ms.openlocfilehash: 56c7ad49fc9af3ca4f30aa5309623c31e9db7385
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 93d881419c4854b8e46608e150b55072267e0347
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011118"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574405"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>Azure Stream Analyticsek hibakeresése erőforrás-naplók használatával
 
@@ -24,9 +24,9 @@ Erősen ajánlott az erőforrás-naplók engedélyezése az összes feladathoz, 
 
 Stream Analytics kétféle naplót kínál:
 
-* A [tevékenységek naplói](../azure-monitor/platform/platform-logs-overview.md) (always on), amelyek betekintést nyújtanak a feladatokon végrehajtott műveletekre.
+* A [tevékenységek naplói](../azure-monitor/essentials/platform-logs-overview.md) (always on), amelyek betekintést nyújtanak a feladatokon végrehajtott műveletekre.
 
-* [Erőforrás-naplók](../azure-monitor/platform/platform-logs-overview.md) (konfigurálható), amelyek mélyebb betekintést biztosítanak a feladatokkal megjelenő összes műveletbe. Az erőforrás-naplók a feladatok létrehozásakor és befejezésekor kezdődnek, amikor a rendszer törli a feladatot. Ezek a feladatok a feladatoknak a frissítésekor és a futása közben is lefedik az eseményeket.
+* [Erőforrás-naplók](../azure-monitor/essentials/platform-logs-overview.md) (konfigurálható), amelyek mélyebb betekintést biztosítanak a feladatokkal megjelenő összes műveletbe. Az erőforrás-naplók a feladatok létrehozásakor és befejezésekor kezdődnek, amikor a rendszer törli a feladatot. Ezek a feladatok a feladatoknak a frissítésekor és a futása közben is lefedik az eseményeket.
 
 > [!NOTE]
 > Olyan szolgáltatásokat használhat, mint például az Azure Storage, az Azure Event Hubs és a Azure Monitor naplók a nem megfelelő adatelemzések elemzéséhez. Ezen szolgáltatások díjszabási modellje alapján számítjuk fel a díjat.
@@ -140,7 +140,7 @@ Hiba | választható Hiba adatai. Általában ez a kivételi információ, ha el
 Típus | Az üzenet típusa. Leképezés a hibák belső kategorizálására. Például: **JobValidationError** vagy **BlobOutputAdapterInitializationFailure**.
 Korrelációs azonosító | GUID, amely egyedileg azonosítja a feladatok végrehajtását. Az összes végrehajtási naplóbejegyzés abban az időponttól kezdve, amíg a feladatoknak nem kell megegyezniük a **korrelációs azonosító** értékével.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [AdatStream Analyticsi hibák](./data-errors.md)
 * [Stream Analytics lekérdezés nyelvi referenciája](/stream-analytics-query/stream-analytics-query-language-reference)

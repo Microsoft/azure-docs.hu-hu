@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: ea99c34f03cd74185840767605c17ee6c65eb701
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 0ff11c9601fb55e27d8780185d77c177e9d9201b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389705"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584637"
 ---
 # <a name="monitor-azure-cache-for-redis"></a>Az Azure cache figyelése a Redis
 
@@ -52,13 +52,13 @@ Az Redis-metrikák megtekintéséhez és az egyéni diagramok létrehozásához 
 
 ![A contoso55 bal oldali navigációs paneljén a metrikák a figyelés és a Kiemelt lehetőség alatt állnak. A mérőszámokon a metrikák listája látható. A gyorsítótár-találatok és a gyorsítótár-kihagyók ki vannak választva.](./media/cache-how-to-monitor/redis-cache-monitor.png)
 
-A metrikák Azure Monitor használatával történő használatáról a [Microsoft Azure metrikáinak áttekintése](../azure-monitor/platform/data-platform.md)című témakörben talál további információt.
+A metrikák Azure Monitor használatával történő használatáról a [Microsoft Azure metrikáinak áttekintése](../azure-monitor/data-platform.md)című témakörben talál további információt.
 
 <a name="how-to-view-metrics-and-customize-chart"></a>
 <a name="enable-cache-diagnostics"></a>
 ## <a name="export-cache-metrics"></a>Gyorsítótár-metrikák exportálása
 
-Alapértelmezés szerint a Azure Monitor gyorsítótár-metrikái [30 napig tárolódnak](../azure-monitor/platform/data-platform-metrics.md) , majd törlődnek. Ha 30 napnál hosszabb ideig szeretné megőrizni a gyorsítótár-metrikákat, [kijelölheti a Storage-fiókot](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) , és megadhatja a gyorsítótár metrikáinak **megőrzési (nap)** szabályzatát. 
+Alapértelmezés szerint a Azure Monitor gyorsítótár-metrikái [30 napig tárolódnak](../azure-monitor/essentials/data-platform-metrics.md) , majd törlődnek. Ha 30 napnál hosszabb ideig szeretné megőrizni a gyorsítótár-metrikákat, [kijelölheti a Storage-fiókot](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) , és megadhatja a gyorsítótár metrikáinak **megőrzési (nap)** szabályzatát. 
 
 Storage-fiók konfigurálása a gyorsítótár metrikái számára:
 
@@ -74,10 +74,10 @@ Storage-fiók konfigurálása a gyorsítótár metrikái számára:
 ![Redis-diagnosztika](./media/cache-how-to-monitor/redis-cache-diagnostics.png)
 
 >[!NOTE]
->A gyorsítótár-metrikák Storage-ba való archiválásán kívül továbbíthatja [őket egy Event hub-ba, vagy elküldheti azokat Azure monitor naplókba](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-values).
+>A gyorsítótár-metrikák Storage-ba való archiválásán kívül továbbíthatja [őket egy Event hub-ba, vagy elküldheti azokat Azure monitor naplókba](../azure-monitor/essentials/rest-api-walkthrough.md#retrieve-metric-values).
 >
 
-A metrikák eléréséhez tekintse meg azokat a Azure Portal a jelen cikkben ismertetett módon, és a [Azure monitor metrikák REST API](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)használatával is elérheti őket.
+A metrikák eléréséhez tekintse meg azokat a Azure Portal a jelen cikkben ismertetett módon, és a [Azure monitor metrikák REST API](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md)használatával is elérheti őket.
 
 > [!NOTE]
 > Ha módosítja a Storage-fiókokat, a korábban konfigurált Storage-fiókban lévő adatfájlok továbbra is letölthetők maradnak, de nem jelennek meg a Azure Portal.  
@@ -129,7 +129,7 @@ A gyorsítótár riasztási szabályainak konfigurálásához kattintson a **ria
 
 ![Figyelés](./media/cache-how-to-monitor/redis-cache-monitoring.png)
 
-A riasztások konfigurálásával és használatával kapcsolatos további információkért lásd: [a riasztások áttekintése](../azure-monitor/platform/alerts-classic-portal.md).
+A riasztások konfigurálásával és használatával kapcsolatos további információkért lásd: [a riasztások áttekintése](../azure-monitor/alerts/alerts-classic-portal.md).
 
 ## <a name="activity-logs"></a>Tevékenységnaplók
 A Tevékenységnaplók betekintést nyújtanak a Redis-példányok Azure-gyorsítótárában végrehajtott műveletekre. Korábban "naplók" vagy "operatív naplók" néven ismert. A Tevékenységnaplók használatával meghatározhatja a "mi, ki és mikor" minden olyan írási műveletet (PUT, POST, DELETE), amelyet az Azure cache-ben a Redis-példányok számára készített. 
@@ -140,4 +140,4 @@ A Tevékenységnaplók betekintést nyújtanak a Redis-példányok Azure-gyorsí
 
 Ha meg szeretné tekinteni a gyorsítótárhoz tartozó tevékenységek naplóit, kattintson az **erőforrás menü** **tevékenység naplók** elemére.
 
-További információ a tevékenységek naplóiról: [Az Azure-tevékenység naplójának áttekintése](../azure-monitor/platform/platform-logs-overview.md).
+További információ a tevékenységek naplóiról: [Az Azure-tevékenység naplójának áttekintése](../azure-monitor/essentials/platform-logs-overview.md).

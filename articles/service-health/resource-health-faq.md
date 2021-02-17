@@ -3,12 +3,12 @@ title: Azure Resource Health GYIK
 description: A Azure Resource Health áttekintése
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: a5ad8867b110039e4dcc34b20c8a61fccfd39eaf
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: dc24688d8393b7a13e8c93d3f4d0171cce4c213c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032864"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570056"
 ---
 # <a name="azure-resource-health-faq"></a>Azure Resource Health GYIK
 Ismerkedjen meg a Azure Resource Healthekkel kapcsolatos gyakori kérdésekre adott válaszokkal.
@@ -46,7 +46,7 @@ Igen, ha egy erőforrás nem érhető el, Resource Health a következő kategór
 A portálon a felhasználó által kezdeményezett műveletek kék értesítési ikonnal jelennek meg, míg a tervezett és nem tervezett események vörös figyelmeztető ikon használatával jelennek meg. További részletek a [Resource Health áttekintése című témakörben](Resource-health-overview.md)találhatók.  
 
 ## <a name="can-i-integrate-resource-health-with-my-monitoring-tools"></a>Integrálható a Resource Health a monitorozási eszközökkel?
-A Resource Health [támogatja](resource-health-alert-arm-template-guide.md) a tevékenység napló alapú riasztásait. A műveletnapló riasztások használatával értesítheti a felhasználókat arról, hogy riasztást [váltott ki.](../azure-monitor/platform/action-groups.md) A műveleti csoportok különböző értesítési csatornákat támogatnak, például e-maileket, SMS-t, webhookot és ITSM műveleteket.
+A Resource Health [támogatja](resource-health-alert-arm-template-guide.md) a tevékenység napló alapú riasztásait. A műveletnapló riasztások használatával értesítheti a felhasználókat arról, hogy riasztást [váltott ki.](../azure-monitor/alerts/action-groups.md) A műveleti csoportok különböző értesítési csatornákat támogatnak, például e-maileket, SMS-t, webhookot és ITSM műveleteket.
 
 ## <a name="where-do-i-find-resource-health"></a>Hol találom a Resource Health?
 Miután bejelentkezett a Azure Portalba, több módon is elérheti Resource Health:

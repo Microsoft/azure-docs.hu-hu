@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5bfa4bf8a9d20cc1a7baf1b5432e68501d65a509
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: a848c7c15bf786ba26b8a1fdb1dab41b9aa20b8d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222842"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575779"
 ---
 # <a name="integrate-update-management-with-microsoft-endpoint-configuration-manager"></a>Update Management integrálása a Microsoft Endpoint Configuration Manager
 
@@ -25,7 +25,7 @@ A felügyelt Windows-kiszolgálókat jelentéssel és frissítéssel állíthatj
 
 * Az Automation-fiókhoz [Azure Automation Update Management](overview.md) kell hozzáadnia.
 * A Microsoft Endpoint Configuration Manager-környezet által jelenleg felügyelt Windows Server-kiszolgálóknak is jelentést kell készíteniük a Log Analytics munkaterületre, amely szintén Update Management engedélyezve van.
-* Ez a funkció engedélyezve van a Microsoft Endpoint Configuration Manager az aktuális ág 1606-es és újabb verziója. Ha integrálni szeretné a Microsoft-végpontot Configuration Manager központi adminisztrációs helyet vagy egy önálló elsődleges helyet, amelyen Azure Monitor naplók és az importálási gyűjtemények szerepelnek, tekintse át a [kapcsolódás Configuration Manager a Azure monitor naplókat](../../azure-monitor/platform/collect-sccm.md)  
+* Ez a funkció engedélyezve van a Microsoft Endpoint Configuration Manager az aktuális ág 1606-es és újabb verziója. Ha integrálni szeretné a Microsoft-végpontot Configuration Manager központi adminisztrációs helyet vagy egy önálló elsődleges helyet, amelyen Azure Monitor naplók és az importálási gyűjtemények szerepelnek, tekintse át a [kapcsolódás Configuration Manager a Azure monitor naplókat](../../azure-monitor/logs/collect-sccm.md)  
 * A Windows-ügynököket úgy kell konfigurálni, hogy Windows Server Update Services-(WSUS-) kiszolgálóval kommunikáljanak, Microsoft Update vagy ha nem kapnak biztonsági frissítéseket a Microsoft Endpoint Configuration Managertól, a Windows-ügynököt is be kell állítani.
 
 Az Azure IaaS-ben üzemeltetett ügyfelek kezelése a meglévő Microsoft Endpoint Configuration Manager-környezettel elsősorban az Azure-adatközpontok és az infrastruktúra közötti kapcsolattól függ. Ez a kapcsolat hatással van minden olyan tervezési módosításra, amelyet a szükséges módosítások támogatásához szükséges lehet a Microsoft-végponton Configuration Manager infrastruktúrához és a kapcsolódó díjakhoz. Annak megismeréséhez, hogy milyen tervezési szempontokat kell értékelnie a továbblépés előtt, tekintse meg az [Azure-beli Configuration Managerrel kapcsolatos gyakori kérdéseket](/configmgr/core/understand/configuration-manager-on-azure#networking).
@@ -36,7 +36,7 @@ Hajtsa végre az alábbi lépéseket, ha továbbra is szeretné kezelni a friss�
 
 1. Hozzon létre egy szoftverfrissítés-telepítést a Microsoft Endpoint Configuration Manager hierarchia legfelső szintű helyéről a [szoftverfrissítések központi telepítése](/configmgr/sum/deploy-use/deploy-software-updates)című témakörben ismertetett eljárással. Az egyetlen beállítás, amelyet egy standard telepítéstől eltérően kell konfigurálnia, a **Ne telepítse a szoftverfrissítéseket** kiválasztása, amely a telepítőcsomag letöltésének viselkedését vezérli. Ezt a viselkedést Update Management felügyelheti egy ütemezett frissítési telepítés létrehozásával a következő lépésben.
 
-2. A Azure Automation területen válassza a **Update Management**lehetőséget. Hozzon létre egy új központi telepítést a [frissítés központi telepítésének létrehozása](deploy-updates.md#schedule-an-update-deployment) című témakörben ismertetett lépéseket követve, és válassza az **importált csoportok** lehetőséget a **típus** legördülő menüben a megfelelő Microsoft Endpoint Configuration Manager gyűjtemény kiválasztásához. Tartsa szem előtt az alábbi fontos szempontokat:
+2. A Azure Automation területen válassza a **Update Management** lehetőséget. Hozzon létre egy új központi telepítést a [frissítés központi telepítésének létrehozása](deploy-updates.md#schedule-an-update-deployment) című témakörben ismertetett lépéseket követve, és válassza az **importált csoportok** lehetőséget a **típus** legördülő menüben a megfelelő Microsoft Endpoint Configuration Manager gyűjtemény kiválasztásához. Tartsa szem előtt az alábbi fontos szempontokat:
 
     a. Ha egy karbantartási időszak van meghatározva a kiválasztott Microsoft Endpoint Configuration Manager-eszköz gyűjteményben, a gyűjtemény tagjai az ütemezett telepítésben megadott **időtartam** beállítás helyett tiszteletben tartsák.
 

@@ -4,12 +4,12 @@ description: A rendszer és az egyéni .NET/.NET Core EventCounters figyelése A
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a9af36f3c81ee52b41a8eed875c1a286b95bf838
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1ae0937c25a68798acd87fe8b2a0a54aa765b35
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803643"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579527"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters bemutatása
 
@@ -88,14 +88,14 @@ A WorkerService SDK-hoz hasonló módszer is használható, de a névteret az al
 
 ## <a name="event-counters-in-metric-explorer"></a>Az események számlálói a metrika Explorerben
 
-Az EventCounter mérőszámok megjelenítéséhez a [metrika-kezelőben](../platform/metrics-charts.md)válassza ki Application Insights erőforrást, majd a log-alapú metrikákat metrikai névtérként. Ezután az EventCounter mérőszámok az egyéni kategória alatt jelennek meg.
+Az EventCounter mérőszámok megjelenítéséhez a [metrika-kezelőben](../essentials/metrics-charts.md)válassza ki Application Insights erőforrást, majd a log-alapú metrikákat metrikai névtérként. Ezután az EventCounter mérőszámok az egyéni kategória alatt jelennek meg.
 
 > [!div class="mx-imgBorder"]
 > ![Application Insights metrika-kezelőben jelentett események számlálói](./media/event-counters/metrics-explorer-counter-list.png)
 
 ## <a name="event-counters-in-analytics"></a>Az elemzési események számlálói
 
-Az **customMetrics** táblában is kereshet és megjeleníthet Event Counter-jelentéseket az [Analyticsben](../log-query/log-query-overview.md).
+Az **customMetrics** táblában is kereshet és megjeleníthet Event Counter-jelentéseket az [Analyticsben](../logs/log-query-overview.md).
 
 Például a következő lekérdezés futtatásával tekintheti meg, hogy a rendszer milyen számlálókat gyűjt, és hogyan érhető el a lekérdezéshez:
 
@@ -121,7 +121,7 @@ customMetrics
 A többi telemetria hasonlóan a **customMetrics** is tartalmaz egy oszlopot, `cloud_RoleInstance` amely jelzi annak a gazdagép-példánynak az identitását, amelyen az alkalmazás fut. A fenti lekérdezés a számláló értékét jeleníti meg, és felhasználható a különböző kiszolgálói példányok teljesítményének összehasonlítására.
 
 ## <a name="alerts"></a>Riasztások
-Más mérőszámokhoz hasonlóan [riasztást is beállíthat](../platform/alerts-log.md) , amely figyelmezteti, ha egy esemény számlálója a megadott korláton kívül esik. Nyissa meg a riasztások ablaktáblát, és kattintson a riasztás hozzáadása lehetőségre.
+Más mérőszámokhoz hasonlóan [riasztást is beállíthat](../alerts/alerts-log.md) , amely figyelmezteti, ha egy esemény számlálója a megadott korláton kívül esik. Nyissa meg a riasztások ablaktáblát, és kattintson a riasztás hozzáadása lehetőségre.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 

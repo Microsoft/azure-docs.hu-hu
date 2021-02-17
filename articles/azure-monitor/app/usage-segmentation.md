@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d11b12ba37d543ec21985c52c4ffb3399bfc56d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d1076239938988119d8a9838d0e060d70a22082
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323519"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583368"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Felhasználók, munkamenetek és események elemzése Application Insights
 
@@ -41,10 +41,10 @@ A felhasználók eszköz tetején található lekérdezési beállítások módo
 * Ki használt: válassza az egyéni események és oldalletöltések lehetőséget.
 * Ideje: válasszon időtartományt.
 * Szerint: válassza ki, hogyan szeretné felvenni az adatgyűjtőt egy adott időtartam vagy egy másik tulajdonság (például böngésző vagy város) alapján.
-* Felosztási szempont: válasszon ki egy tulajdonságot, amellyel feloszthatja vagy szegmentálhatja az adatgyűjtést. 
-* Szűrők hozzáadása: a lekérdezés korlátozása bizonyos felhasználóknak, munkameneteknek vagy eseményeknek a tulajdonságaik (például böngésző vagy város) alapján. 
- 
-## <a name="saving-and-sharing-reports"></a>Jelentések mentése és megosztása 
+* Felosztási szempont: válasszon ki egy tulajdonságot, amellyel feloszthatja vagy szegmentálhatja az adatgyűjtést. 
+* Szűrők hozzáadása: a lekérdezés korlátozása bizonyos felhasználóknak, munkameneteknek vagy eseményeknek a tulajdonságaik (például böngésző vagy város) alapján. 
+ 
+## <a name="saving-and-sharing-reports"></a>Jelentések mentése és megosztása 
 A felhasználók jelentéseit mentheti saját maga is a Saját jelentések szakaszban, vagy megoszthatja mindenki mással, hogy hozzáférjen ehhez a Application Insights erőforráshoz a megosztott jelentések szakaszban.
 
 Felhasználókra, munkamenetekre vagy eseményekre vonatkozó jelentésre mutató hivatkozás megosztása; kattintson az eszköztár **megosztás** elemére, majd másolja a hivatkozást.
@@ -55,13 +55,13 @@ A felhasználók, munkamenetek vagy események jelentésében tárolt adatmásol
 
 A **felhasználók** betartása szakasz az aktuális lekérdezéssel megegyező öt minta felhasználó adatait jeleníti meg. Az összesítések mellett figyelembe kell venni és meg kell vizsgálni az egyének viselkedését, és betekintést nyerhet arról, hogy a felhasználók miként használják ténylegesen az alkalmazást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A használati tapasztalatok engedélyezéséhez kezdjen el [Egyéni eseményeket](./api-custom-events-metrics.md#trackevent) vagy [oldalletöltések](./api-custom-events-metrics.md#page-views)küldését.
 - Ha már elküldte az egyéni eseményeket vagy a lapok nézeteit, tekintse meg a használati eszközöket, amelyekkel megismerheti, hogy a felhasználók miként használják a szolgáltatást.
     - [Tölcsérek](usage-funnels.md)
-    - [Megőrzés](usage-retention.md)
+    - [Visszatartás](usage-retention.md)
     - [Felhasználókövetés](usage-flows.md)
-    - [Munkafüzetek](../platform/workbooks-overview.md)
+    - [Munkafüzetek](../visualize/workbooks-overview.md)
     - [Felhasználói környezet hozzáadása](usage-send-user-context.md)
 

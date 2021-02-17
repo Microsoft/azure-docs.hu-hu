@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 12/04/2020
 ms.author: b-juche
-ms.openlocfilehash: bba3dce2a2a18888cb88f4cf8b33cd48d6a4cd69
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: b40bbd6c470302b78b78744307805021a3649376
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631159"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571035"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>A Azure NetApp Files újdonságai
 
@@ -57,7 +57,7 @@ Azure NetApp Files rendszeresen frissül. Ez a cikk a legújabb új funkciókró
 
 * [LDAP-aláírás](azure-netapp-files-create-volumes-smb.md) (előzetes verzió)   
 
-    Azure NetApp Files mostantól támogatja az LDAP-aláírást a biztonságos LDAP-keresésekhez a Azure NetApp Files szolgáltatás és a felhasználó által megadott Active Directory tartományi szolgáltatások tartományvezérlők között. Ez a szolgáltatás jelenleg előzetes kiadásban elérhető.
+    Azure NetApp Files mostantól támogatja az LDAP-aláírást a biztonságos LDAP-keresésekhez a Azure NetApp Files szolgáltatás és a felhasználó által megadott Active Directory Domain Services tartományvezérlők között. Ez a szolgáltatás jelenleg előzetes kiadásban elérhető.
 
 * [AES-titkosítás az ad-hitelesítéshez](azure-netapp-files-create-volumes-smb.md) (előzetes verzió)
 
@@ -99,7 +99,7 @@ Azure NetApp Files rendszeresen frissül. Ez a cikk a legújabb új funkciókró
 
 ## <a name="may-2020"></a>2020. május
 
-* [Biztonsági mentési szabályzat felhasználói](azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection) (előzetes verzió)
+* [Biztonsági mentési szabályzat felhasználói](create-active-directory-connections.md) (előzetes verzió)
 
     Azure NetApp Files lehetővé teszi olyan további fiókok hozzáadását, amelyek emelt szintű jogosultságokat igényelnek a Azure NetApp Fileshoz való használatra létrehozott számítógépfiók számára. A megadott fiókok a fájl vagy mappa szintjén módosíthatják az NTFS-engedélyeket. Megadhat például egy nem Kiemelt szolgáltatásfiók-fiókot, amely az adatáttelepítés során az SMB-fájlmegosztás Azure NetApp Files-ben való áttelepítésére szolgál. A biztonsági mentési házirend felhasználói szolgáltatás jelenleg előzetes verzióban érhető el.
 

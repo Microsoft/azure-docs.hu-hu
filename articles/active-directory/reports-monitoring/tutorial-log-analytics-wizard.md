@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bdf3a763dc71eb842496775b6cc91b8ca39b4b3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ca84fa57cb3a26337038275d1b7491154915c90e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96343841"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574375"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>Oktatóanyag: a log Analytics varázsló konfigurálása
 
@@ -41,7 +41,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Ismerkedjen meg a következő cikkekkel:
 
-- [Oktatóanyag: erőforrás-naplók összegyűjtése és elemzése Azure-erőforrásból](../../azure-monitor/learn/tutorial-resource-logs.md)
+- [Oktatóanyag: erőforrás-naplók összegyűjtése és elemzése Azure-erőforrásból](../../azure-monitor/essentials/tutorial-resource-logs.md)
 
 - [A tevékenységek naplóinak integrálása a Log Analytics](./howto-integrate-activity-logs-with-log-analytics.md)
 
@@ -49,7 +49,7 @@ Ismerkedjen meg a következő cikkekkel:
 
 - [KQL– rövid áttekintés](/azure/data-explorer/kql-quick-reference)
 
-- [Munkafüzetek Azure Monitor](../../azure-monitor/platform/workbooks-overview.md)
+- [Munkafüzetek Azure Monitor](../../azure-monitor/visualize/workbooks-overview.md)
 
 
 
@@ -268,7 +268,7 @@ Ez az eljárás bemutatja, hogyan küldhet riasztásokat a breakglass-fiók hasz
 
     3. Kattintson a **Felülvizsgálat + létrehozás** elemre. 
 
-    4. Kattintson a **Létrehozás** gombra.
+    4. Kattintson a **Létrehozás** lehetőségre.
 
 
 15. A **művelet testreszabása** területen hajtsa végre a következő lépéseket:
@@ -392,7 +392,7 @@ Ez az eljárás bemutatja, hogyan adhat hozzá egy lekérdezést egy meglévő m
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megtudhatja, hogyan kezelheti az eszközök identitásait a Azure Portal használatával.
 > [!div class="nextstepaction"]

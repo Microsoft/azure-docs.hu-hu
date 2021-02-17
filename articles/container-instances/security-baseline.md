@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3f4e855c52488652b88a3b14e9817f1755167b67
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 107380dabc9c163aab6d0347f6e6cc2c1a718c0b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806121"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576360"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>Container Instances Azure biztonsági alapterve
 
@@ -192,9 +192,9 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 **Útmutató**: az Azure-tevékenység naplójának használata a hálózati erőforrás-konfigurációk figyelésére és a tároló példányaihoz kapcsolódó hálózati erőforrások változásainak észlelésére. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják
 
-* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Riasztások létrehozása a Azure Monitorban](../azure-monitor/platform/alerts-activity-log.md)
+* [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -251,7 +251,7 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 **Útmutató**: Azure monitoron belül állítsa be a log Analytics munkaterület megőrzési időszakát a szervezet megfelelőségi előírásai szerint. Használja az Azure Storage-fiókokat hosszú távú/archiválási tároláshoz.
 
-* [Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -263,9 +263,9 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 * [Tároló csoport és példány naplózása Azure Monitor naplókkal](./container-instances-log-analytics.md)
 
-* [Log Analytics munkaterület ismertetése](../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Log Analytics munkaterület ismertetése](../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/log-query/get-started-queries.md)
+* [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -277,7 +277,7 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 * [Tároló csoport és példány naplózása Azure Monitor naplókkal](./container-instances-log-analytics.md)
 
-* [Riasztás a log Analytics-naplófájlok adatkezeléséről](../azure-monitor/learn/tutorial-response.md)
+* [Riasztás a log Analytics-naplófájlok adatkezeléséről](../azure-monitor/alerts/tutorial-response.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -596,7 +596,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használatával riasztásokat hozhat létre, amelyekkel a rendszer a tároló-csoportokat és a tároló-példányokat érintő módosításokat hajt végre. 
 
-* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/platform/alerts-activity-log.md)
+* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
@@ -750,9 +750,9 @@ Figyelje Azure Container Instances naplókat a rendellenes működéshez, és re
 
 * [Tároló csoport és példány naplózása Azure Monitor naplókkal](./container-instances-log-analytics.md)
 
-* [Log Analytics munkaterület ismertetése](../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Log Analytics munkaterület ismertetése](../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/log-query/get-started-queries.md)
+* [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/logs/get-started-queries.md)
 
 * [A Azure Container Instances biztonsági szempontjai](./container-instances-image-security.md)
 * [Azure Container Registry integráció a Security Center](../security-center/defender-for-container-registries-introduction.md)

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: duau
-ms.openlocfilehash: 837d1f78a9fde72137383e6c22adb8870997dc9b
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 907c03bd15463368def316e72f55ce214cb3e617
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986039"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571048"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Network Performance Monitor for ExpressRoute konfigurálása
 
@@ -54,7 +54,7 @@ Hozzon létre egy olyan munkaterületet az előfizetésben, amely a virtuális h
 1. A [Azure Portal](https://portal.azure.com)válassza ki azt az előfizetést, amely az ExpressRoute-áramkörhöz tartozó virtuális hálózatok rendelkezik. Ezután keresse meg a szolgáltatások listáját a **piactéren** a következőhöz: "Network Performance monitor". A visszatérésnél kattintson ide a **Network Performance monitor** lap megnyitásához.
 
    >[!NOTE]
-   >Létrehozhat egy új munkaterületet, vagy használhat egy meglévő munkaterületet is. Ha meglévő munkaterületet szeretne használni, meg kell győződnie arról, hogy a munkaterület át lett telepítve az új lekérdezési nyelvre. [További információ...](../azure-monitor/log-query/log-query-overview.md)
+   >Létrehozhat egy új munkaterületet, vagy használhat egy meglévő munkaterületet is. Ha meglévő munkaterületet szeretne használni, meg kell győződnie arról, hogy a munkaterület át lett telepítve az új lekérdezési nyelvre. [További információ...](../azure-monitor/logs/log-query-overview.md)
    >
 
    ![portál](./media/how-to-npm/3.png)<br><br>
@@ -118,7 +118,7 @@ Javasoljuk, hogy legalább két ügynököt telepítsen a redundancia (például
 
 ### <a name="23-configure-proxy-settings-optional"></a><a name="proxy"></a>2,3: proxybeállítások konfigurálása (nem kötelező)
 
-Ha webproxyt használ az Internet eléréséhez, a következő lépésekkel konfigurálja a proxybeállításokat a Microsoft monitoring Agenthez. Hajtsa végre ezeket a lépéseket az egyes kiszolgálókon. Ha sok kiszolgálót kell konfigurálnia, akkor érdemes lehet parancsfájl használatával automatizálni a folyamatot. Ha igen, tekintse [meg a proxy beállításainak konfigurálása a Microsoft monitoring agenthez parancsfájl használatával](../azure-monitor/platform/agent-windows.md)című témakört.
+Ha webproxyt használ az Internet eléréséhez, a következő lépésekkel konfigurálja a proxybeállításokat a Microsoft monitoring Agenthez. Hajtsa végre ezeket a lépéseket az egyes kiszolgálókon. Ha sok kiszolgálót kell konfigurálnia, akkor érdemes lehet parancsfájl használatával automatizálni a folyamatot. Ha igen, tekintse [meg a proxy beállításainak konfigurálása a Microsoft monitoring agenthez parancsfájl használatával](../azure-monitor/agents/agent-windows.md)című témakört.
 
 Proxybeállítások konfigurálása a Microsoft monitoring Agent számára a Vezérlőpult használatával:
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c2364eae0d04da8f8e6fe38ae80db7adb8666ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae802038626a1fbf8d533800a0b8eb43c4565e8c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049417"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574170"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>Feltételes hozzáférési ismeretek és jelentéskészítés
 
@@ -43,7 +43,7 @@ A felhasználóknak az alábbi Log Analytics munkaterület-szerepkörök egyiké
 
 Ha nem integrálta az Azure AD-naplókat Azure Monitor naplókkal, akkor a munkafüzet betöltése előtt a következő lépéseket kell elvégeznie:  
 
-1. [Hozzon létre egy log Analytics munkaterületet a Azure monitorban](../../azure-monitor/learn/quick-create-workspace.md).
+1. [Hozzon létre egy log Analytics munkaterületet a Azure monitorban](../../azure-monitor/logs/quick-create-workspace.md).
 1. [Azure ad-naplók integrálása Azure monitor naplókkal](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md).
 
 ## <a name="how-it-works"></a>Működés 
@@ -121,7 +121,7 @@ A munkafüzet eléréséhez szükség van a megfelelő Azure AD-engedélyekre, v
 
 1. Jelentkezzen be az **Azure Portalra**.
 1. Tallózással keresse meg **Azure Active Directory**  >  **naplókat**.
-1. Írja be `SigninLogs` a lekérdezés mezőbe, és válassza a **Futtatás**lehetőséget.
+1. Írja be `SigninLogs` a lekérdezés mezőbe, és válassza a **Futtatás** lehetőséget.
 1. Ha a lekérdezés nem ad vissza semmilyen eredményt, előfordulhat, hogy a munkaterülete helytelenül van konfigurálva. 
 
 ![Sikertelen lekérdezések hibáinak megoldása](./media/howto-conditional-access-insights-reporting/query-troubleshoot-sign-in-logs.png)
@@ -146,11 +146,11 @@ Ha a bejelentkezések mennyisége meghaladja Log Analytics lekérdezési kapacit
 
 ### <a name="can-i-save-my-parameter-selections"></a>Menthetem a paraméter-beállításokat?  
 
-A paraméterek kijelölését a munkafüzet tetején is mentheti, ha a **Azure Active Directory**  >  **munkafüzetek**  >  **feltételes hozzáférési elemzéseket és jelentéskészítést**Azure Active Directory. Itt megtalálhatja a munkafüzet sablonját, ahol szerkesztheti a munkafüzetet, és menthet egy másolatot a munkaterületre, beleértve a paraméterek kiválasztását is a **saját jelentések** vagy a **megosztott jelentések**területen. 
+A paraméterek kijelölését a munkafüzet tetején is mentheti, ha a   >  **munkafüzetek**  >  **feltételes hozzáférési elemzéseket és jelentéskészítést** Azure Active Directory. Itt megtalálhatja a munkafüzet sablonját, ahol szerkesztheti a munkafüzetet, és menthet egy másolatot a munkaterületre, beleértve a paraméterek kiválasztását is a **saját jelentések** vagy a **megosztott jelentések** területen. 
 
 ### <a name="can-i-edit-and-customize-the-workbook-with-additional-queries"></a>Szerkeszthetem és testre is szabhatom a munkafüzetet további lekérdezésekkel? 
 
-A munkafüzetet szerkesztheti és testreszabhatja úgy, hogy **Azure Active Directory**  >  **munkafüzetek**  >  **feltételes hozzáférési információit és jelentéseit**. Itt megtalálhatja a munkafüzet sablonját, ahol szerkesztheti a munkafüzetet, és menthet egy másolatot a munkaterületre, beleértve a paraméterek kiválasztását is a **saját jelentések** vagy a **megosztott jelentések**területen. A lekérdezések szerkesztésének megkezdéséhez kattintson a **Szerkesztés** gombra a munkafüzet tetején.  
+A munkafüzetet szerkesztheti és testreszabhatja úgy, hogy **Azure Active Directory**  >  **munkafüzetek**  >  **feltételes hozzáférési információit és jelentéseit**. Itt megtalálhatja a munkafüzet sablonját, ahol szerkesztheti a munkafüzetet, és menthet egy másolatot a munkaterületre, beleértve a paraméterek kiválasztását is a **saját jelentések** vagy a **megosztott jelentések** területen. A lekérdezések szerkesztésének megkezdéséhez kattintson a **Szerkesztés** gombra a munkafüzet tetején.  
  
 ## <a name="next-steps"></a>Következő lépések
 

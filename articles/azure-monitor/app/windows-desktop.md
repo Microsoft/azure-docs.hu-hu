@@ -4,16 +4,16 @@ description: A windowsos asztali alkalmazások használatát és teljesítmény�
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1aa1e8a9e7ccbbc90a961ebf47224f59f8a9e9fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15331494b40021f10c162fba75abf6fe88d2d419
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827865"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583325"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Klasszikus windowsos asztali alkalmazások használatának és teljesítményének figyelése
 
-A helyszínen, az Azure-ban és más felhőben üzemeltetett alkalmazások is kihasználhatják az Application Insights előnyeit. Az egyetlen korlát, hogy [engedélyezni kell a kommunikációt](./ip-addresses.md) az Application Insights szolgáltatással. Az univerzális Windows-platformra (UWP) épülő alkalmazásokhoz a [Visual Studio App Center](../learn/mobile-center-quickstart.md) használatát javasoljuk.
+A helyszínen, az Azure-ban és más felhőben üzemeltetett alkalmazások is kihasználhatják az Application Insights előnyeit. Az egyetlen korlát, hogy [engedélyezni kell a kommunikációt](./ip-addresses.md) az Application Insights szolgáltatással. Az univerzális Windows-platformra (UWP) épülő alkalmazásokhoz a [Visual Studio App Center](../app/mobile-center-quickstart.md) használatát javasoljuk.
 
 ## <a name="to-send-telemetry-to-application-insights-from-a-classic-windows-application"></a>Klasszikus Windows-alkalmazásból származó telemetriai adatok küldése az Application Insightsba
 1. [Hozzon létre egy Application Insights-erőforrást](./create-new-resource.md) az [Azure Portalon](https://portal.azure.com). 
@@ -177,6 +177,6 @@ namespace WindowsFormsApp2
 ## <a name="next-steps"></a>Következő lépések
 * [Irányítópult létrehozása](./overview-dashboard.md)
 * [Diagnosztikai keresés](./diagnostic-search.md)
-* [Metrikák böngészése](../platform/metrics-charts.md)
-* [Analytics-lekérdezések](../log-query/log-query-overview.md)
+* [Metrikák böngészése](../essentials/metrics-charts.md)
+* [Analytics-lekérdezések](../logs/log-query-overview.md)
 

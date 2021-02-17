@@ -11,12 +11,12 @@ ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 75c0058f2d4878016281656935cbd82f79b859fd
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 96a076ef144af1d32e9ef3ec2903557b8edff006
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120002"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586702"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Erőforrás-kihasználtság és lekérdezési tevékenységek figyelése az Azure szinapszis Analyticsben
 
@@ -24,9 +24,9 @@ Az Azure szinapszis Analytics a Azure Portalon belül gazdag monitorozási lehet
 
 ## <a name="resource-utilization"></a>Erőforrás-felhasználás
 
-A következő mérőszámok érhetők el a szinapszis SQL-Azure Portalban. Ezek a metrikák [Azure monitoron](../../azure-monitor/platform/data-platform.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#metrics)keresztül vannak felszínben.
+A következő mérőszámok érhetők el a szinapszis SQL-Azure Portalban. Ezek a metrikák [Azure monitoron](../../azure-monitor/data-platform.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#metrics)keresztül vannak felszínben.
 
-| Metrika neve             | Leírás                                                  | Aggregáció típusa |
+| Metrika neve             | Description                                                  | Aggregáció típusa |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
 | Processzorhasználat (%)          | CPU-kihasználtság az adatraktár összes csomópontja között      | AVG, min, Max    |
 | Adat IO kihasználtsága (%)      | I/o-kihasználtság az adatraktár összes csomópontja között       | AVG, min, Max    |
@@ -57,7 +57,7 @@ A szinapszis SQL-re vonatkozó DMV listájának megtekintéséhez tekintse meg e
 
 ## <a name="metrics-and-diagnostics-logging"></a>Metrikák és diagnosztikai naplózás 
 
-Mindkét metrika és napló exportálható Azure Monitorba, pontosabban a [Azure monitor naplózó](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) összetevőt, és a [naplózási lekérdezésekkel](../../azure-monitor/log-query/log-analytics-tutorial.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json)programozott módon férhet hozzá. A szinapszis SQL-naplózási késése körülbelül 10-15 percet vesz igénybe. A késést befolyásoló tényezőkkel kapcsolatos további információkért látogasson el a következő dokumentációra.
+Mindkét metrika és napló exportálható Azure Monitorba, pontosabban a [Azure monitor naplózó](../../azure-monitor/logs/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) összetevőt, és a [naplózási lekérdezésekkel](../../azure-monitor/logs/log-analytics-tutorial.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json)programozott módon férhet hozzá. A szinapszis SQL-naplózási késése körülbelül 10-15 percet vesz igénybe. A késést befolyásoló tényezőkkel kapcsolatos további információkért látogasson el a következő dokumentációra.
 
 ## <a name="next-steps"></a>Következő lépések
 

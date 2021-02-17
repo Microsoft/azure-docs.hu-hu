@@ -5,16 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: a2226f55c829afa4316a92888d16f6dc68e1f931
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 2e94191e80d39e28d7ff0ffc9aa22b522fda68c1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183600"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576026"
 ---
 # <a name="migrate-azure-monitor-logs-update-deployments-to-azure-portal"></a>Áttelepítési Azure Monitor naplók frissítése a Azure Portal
 
-Az Operations Management Suite-(OMS-) portál [elavult](../azure-monitor/platform/oms-portal-transition.md). A OMS-portálon Update Management összes funkciója elérhető a Azure Portalban Azure Monitor naplókon keresztül. Ez a cikk azokat az információkat tartalmazza, amelyeket át kell telepíteni a Azure Portalra.
+Az Operations Management Suite-(OMS-) portál [elavult](../azure-monitor/logs/oms-portal-transition.md). A OMS-portálon Update Management összes funkciója elérhető a Azure Portalban Azure Monitor naplókon keresztül. Ez a cikk azokat az információkat tartalmazza, amelyeket át kell telepíteni a Azure Portalra.
 
 ## <a name="key-information"></a>Legfontosabb információk
 
@@ -41,7 +41,7 @@ Az Operations Management Suite-(OMS-) portál [elavult](../azure-monitor/platfor
 
 ## <a name="recreate-existing-deployments"></a>Meglévő központi telepítések újbóli létrehozása
 
-A OMS-portálon létrehozott összes frissítési központi telepítésnek más néven számítógépcsoport [néven is](../azure-monitor/platform/computer-groups.md) ismertnek kell lennie, amelynek a neve megegyezik a létező frissítési központi telepítéssel. A mentett keresés a frissítés központi telepítésében ütemezett számítógépek listáját tartalmazza.
+A OMS-portálon létrehozott összes frissítési központi telepítésnek más néven számítógépcsoport [néven is](../azure-monitor/logs/computer-groups.md) ismertnek kell lennie, amelynek a neve megegyezik a létező frissítési központi telepítéssel. A mentett keresés a frissítés központi telepítésében ütemezett számítógépek listáját tartalmazza.
 
 :::image type="content" source="media/migrate-oms-update-deployments/oms-deployment.png" alt-text="Képernyőfelvétel a frissítések központi telepítése oldalról a Kiemelt név és kiszolgálók mezőkkel.":::
 
@@ -57,12 +57,12 @@ A meglévő mentett keresés használatához kövesse az alábbi lépéseket:
 
     | Tulajdonság | Leírás |
     | --- | --- |
-    |Name (Név) |A frissítéstelepítést beazonosító egyedi név. |
+    |Név |A frissítéstelepítést beazonosító egyedi név. |
     |Operációs rendszer| Válassza a **Linux** vagy a **Windows** lehetőséget.|
-    |Frissítendő gépek |Válasszon ki egy mentett keresést, importált csoportot, vagy válasszon ki egy gépet a legördülő listából, és válassza az egyes gépek lehetőséget. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható.</br> A számítógépcsoportok Azure Monitor-naplókban való létrehozásának különböző módszereiről a következő témakörben talál további információt: [számítógépcsoportok Azure monitor-naplókban](../azure-monitor/platform/computer-groups.md) |
+    |Frissítendő gépek |Válasszon ki egy mentett keresést, importált csoportot, vagy válasszon ki egy gépet a legördülő listából, és válassza az egyes gépek lehetőséget. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható.</br> A számítógépcsoportok Azure Monitor-naplókban való létrehozásának különböző módszereiről a következő témakörben talál további információt: [számítógépcsoportok Azure monitor-naplókban](../azure-monitor/logs/computer-groups.md) |
     |Frissítési besorolások|Válassza ki az összes szükséges frissítési besorolást. A CentOS nem támogatja ezt a jelölőnégyzetet.|
     |Kizárási frissítések|Adja meg a kizárni kívánt frissítéseket. Windows esetén **a KB-os előtag nélkül** adja meg a tudásbázist. Linux esetén adja meg a csomag nevét, vagy használjon helyettesítő karaktert.  |
-    |Ütemezett beállítások|Válassza ki a kezdéshez szükséges időt, majd válassza ki az ismétlődést **egyszer** vagy **ismétlődően** . | 
+    |Ütemezési beállítások|Válassza ki a kezdéshez szükséges időt, majd válassza ki az ismétlődést **egyszer** vagy **ismétlődően** . | 
     | Karbantartási időszak |A frissítések számára beállított percek száma. Az érték nem lehet kevesebb, mint 30 perc vagy több mint 6 óra. |
     | Vezérlő újraindítása| Meghatározza az újraindítások kezelését.</br>Az elérhető lehetőségek:</br>Újraindítás szükség esetén (alapértelmezett beállítás)</br>Mindig induljon újra</br>Soha ne induljon újra</br>Csak újraindítás – frissítések nem lesznek telepítve|
 

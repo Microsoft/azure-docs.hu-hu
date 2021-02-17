@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.openlocfilehash: 46b7479df6d087915cfe81895a786a528da6b9bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 021c76bcd03bbe35eabec5611fe0cc1e2c7c4427
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327905"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583329"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Felhasználói környezeti azonosítók küldése a használati élmények engedélyezéséhez az Azure-ban Application Insights
 
@@ -22,7 +22,7 @@ Application Insights lehetővé teszi a felhasználók figyelését és nyomon k
 - [Felhasználók, munkamenetek, események](./usage-segmentation.md)
 - [Tölcsérek](./usage-funnels.md)
 - [Adatmegőrzés](./usage-retention.md) Kohorszok
-- [Munkafüzetek](../platform/workbooks-overview.md)
+- [Munkafüzetek](../visualize/workbooks-overview.md)
 
 A felhasználó által az idő múlásával nyomon követhető, Application Insights minden felhasználóhoz vagy munkamenethez szüksége van egy AZONOSÍTÓra. A következő azonosítókat adja meg minden egyéni esemény vagy lap nézetben.
 
@@ -126,13 +126,13 @@ namespace MvcWebRole.Telemetry
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A használati tapasztalatok engedélyezéséhez kezdjen el [Egyéni eseményeket](./api-custom-events-metrics.md#trackevent) vagy [oldalletöltések](./api-custom-events-metrics.md#page-views)küldését.
 - Ha már elküldte az egyéni eseményeket vagy a lapok nézeteit, tekintse meg a használati eszközöket, amelyekkel megismerheti, hogy a felhasználók miként használják a szolgáltatást.
     - [A használat áttekintése](usage-overview.md)
     - [Felhasználók, munkamenetek és események](usage-segmentation.md)
     - [Tölcsérek](usage-funnels.md)
-    - [Megőrzés](usage-retention.md)
-    - [Munkafüzetek](../platform/workbooks-overview.md)
+    - [Visszatartás](usage-retention.md)
+    - [Munkafüzetek](../visualize/workbooks-overview.md)
 

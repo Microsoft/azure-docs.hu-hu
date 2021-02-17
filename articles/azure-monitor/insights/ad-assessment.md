@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2019
-ms.openlocfilehash: 3c86b21c5e0533ab6a1a3c64dc601eb8bb573547
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 069f70d27bd7e721be2bf82f6ef64ce9c531ab8e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318096"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577562"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Az Active Directory környezet-optimalizálása az Azure Monitor Active Directory Health Check megoldásával
 
@@ -46,9 +46,9 @@ A megoldás hozzáadása és az ellenőrzések befejezése után a fókusz terü
 
 A tartományhoz tartozó tartományvezérlők állapot-ellenőrzésének elvégzéséhez az adott tartomány összes tartományvezérlőjén az alábbi támogatott módszerek egyikével kell ügynököt és kapcsolatot létesíteni Azure Monitor:
 
-1. Telepítse a [Windows log Analytics Agent ügynököt,](../platform/agent-windows.md) ha a tartományvezérlőt még nem figyeli a System Center 2016-Operations Manager vagy a Operations Manager 2012 R2.
+1. Telepítse a [Windows log Analytics Agent ügynököt,](../agents/agent-windows.md) ha a tartományvezérlőt még nem figyeli a System Center 2016-Operations Manager vagy a Operations Manager 2012 R2.
 2. Ha a System Center 2016 – Operations Manager vagy Operations Manager 2012 R2 rendszerrel van figyelve, és a felügyeleti csoport nincs integrálva a Azure Monitorba, a tartományvezérlő több Azure Monitor-Operations Manager is lehet az adatok gyűjtésére és a szolgáltatásba való továbbítására, valamint a általi figyelésre.  
-3. Ellenkező esetben, ha a Operations Manager felügyeleti csoport integrálva van a szolgáltatással, hozzá kell adnia a tartományvezérlőket az adatgyűjtéshez a szolgáltatáshoz az [ügynök által felügyelt számítógépek hozzáadása](../platform/om-agents.md#connecting-operations-manager-to-azure-monitor) után, miután engedélyezte a megoldást a munkaterületen.  
+3. Ellenkező esetben, ha a Operations Manager felügyeleti csoport integrálva van a szolgáltatással, hozzá kell adnia a tartományvezérlőket az adatgyűjtéshez a szolgáltatáshoz az [ügynök által felügyelt számítógépek hozzáadása](../agents/om-agents.md#connecting-operations-manager-to-azure-monitor) után, miután engedélyezte a megoldást a munkaterületen.  
 
 A tartományvezérlőn az ügynök, amely egy Operations Manager felügyeleti csoportnak jelent jelentést, adatokat gyűjt, továbbít a hozzárendelt felügyeleti kiszolgálóhoz, majd közvetlenül egy felügyeleti kiszolgálóról küldi el a Azure Monitor.  Az adatOperations Manager-adatbázisok nem kerülnek be az adatforrásba.  
 
@@ -118,7 +118,7 @@ Tekintse meg az infrastruktúra összesített megfelelőségi értékeléseit, m
 
     ![Állapot-ellenőrzési javaslatok képe](./media/ad-assessment/ad-healthcheck-dashboard-02.png)
 
-4. A **javasolt műveletekben**javasolt korrekciós műveleteket is végrehajthat. Az elem megcímzése után a későbbi felmérések rögzítik a javasolt műveleteket, és a megfelelőségi pontszám növekedni fog. A javított elemek **átadott objektumként**jelennek meg.
+4. A **javasolt műveletekben** javasolt korrekciós műveleteket is végrehajthat. Az elem megcímzése után a későbbi felmérések rögzítik a javasolt műveleteket, és a megfelelőségi pontszám növekedni fog. A javított elemek **átadott objektumként** jelennek meg.
 
 ## <a name="ignore-recommendations"></a>Javaslatok figyelmen kívül hagyása
 
@@ -213,7 +213,7 @@ Az eredmények az Excel programba exportálhatók további áttekintés céljáb
 
 * Igen, lásd a fenti [javaslatok mellőzése](#ignore-recommendations) szakaszt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Azure monitor log-lekérdezések](../log-query/log-query-overview.md) használatával megismerheti, hogyan elemezheti a részletes ad Health-ellenőrzési információkat és javaslatokat.
+[Azure monitor log-lekérdezések](../logs/log-query-overview.md) használatával megismerheti, hogyan elemezheti a részletes ad Health-ellenőrzési információkat és javaslatokat.
 

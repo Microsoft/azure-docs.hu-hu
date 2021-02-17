@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: wiassaf, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: 86ac0f64a6a797b1bc702597ed30e6417f2efe14
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c7f72a9b140c68320e221a4cfb20cbf107a5f531
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500971"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572270"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-using-the-azure-portal"></a>Riasztások létrehozása a Azure SQL Database és az Azure szinapszis Analytics számára a Azure Portal használatával
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -42,9 +42,9 @@ A riasztást úgy is beállíthatja, hogy a következő esetekben hajtsa végre 
 
 A riasztási szabályokkal kapcsolatos információkat a
 
-* [Az Azure Portal](../../azure-monitor/platform/alerts-classic-portal.md)
-* [PowerShell](../../azure-monitor/platform/alerts-classic-portal.md)
-* [Parancssori felület (CLI)](../../azure-monitor/platform/alerts-classic-portal.md)
+* [Az Azure Portal](../../azure-monitor/alerts/alerts-classic-portal.md)
+* [PowerShell](../../azure-monitor/alerts/alerts-classic-portal.md)
+* [Parancssori felület (CLI)](../../azure-monitor/alerts/alerts-classic-portal.md)
 * [Azure Monitor REST API](/rest/api/monitor/alertrules)
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Riasztási szabály létrehozása metrika esetén a Azure Portal
@@ -71,6 +71,6 @@ A riasztási szabályokkal kapcsolatos információkat a
 
 10 percen belül a riasztás aktív, és a korábban leírt módon aktiválódik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* További információ a [webhookok riasztásokban való konfigurálásáról](../../azure-monitor/platform/alerts-webhooks.md).
+* További információ a [webhookok riasztásokban való konfigurálásáról](../../azure-monitor/alerts/alerts-webhooks.md).

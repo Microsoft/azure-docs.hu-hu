@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
-ms.openlocfilehash: 5ad40ca051677ced0c6d8b5c35e8563272ff598f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5650ff0e039d1e9211b8d0013726e101efdfab78
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183974"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572248"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Az Azure Signaler szolgáltatás erőforrás-naplói
 
@@ -20,8 +20,8 @@ Ez az oktatóanyag azt ismerteti, hogy milyen erőforrás-naplók érhetők el a
 ## <a name="prerequisites"></a>Előfeltételek
 Az erőforrás-naplók engedélyezéséhez a naplófájlok tárolásához valahol szüksége lesz. Ez az oktatóanyag az Azure Storage és a Log Analytics használatát ismerteti.
 
-* [Azure Storage](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) – erőforrás-naplókat tart fenn a házirendek naplózása, a statikus elemzés vagy a biztonsági mentés számára.
-* [Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) – egy rugalmas napló keresési és elemzési eszköze, amely lehetővé teszi az Azure-erőforrások által generált nyers naplók elemzését.
+* [Azure Storage](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) – erőforrás-naplókat tart fenn a házirendek naplózása, a statikus elemzés vagy a biztonsági mentés számára.
+* [Log Analytics](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) – egy rugalmas napló keresési és elemzési eszköze, amely lehetővé teszi az Azure-erőforrások által generált nyers naplók elemzését.
 
 ## <a name="set-up-resource-logs-for-an-azure-signalr-service"></a>Erőforrás-naplók beállítása Azure Signaler szolgáltatáshoz
 
@@ -50,7 +50,7 @@ Az erőforrás-naplók alapértelmezés szerint le vannak tiltva. Az erőforrás
 
 Az új beállítások körülbelül 10 percen belül lépnek érvénybe. Ezt követően a naplók megjelennek a konfigurált archiválási célhelyen a **diagnosztikai naplók** panelen.
 
-A diagnosztika konfigurálásával kapcsolatos további információkért tekintse meg az [Azure-erőforrások naplóinak áttekintése](../azure-monitor/platform/platform-logs-overview.md)című témakört.
+A diagnosztika konfigurálásával kapcsolatos további információkért tekintse meg az [Azure-erőforrások naplóinak áttekintése](../azure-monitor/essentials/platform-logs-overview.md)című témakört.
 
 ### <a name="resource-logs-categories"></a>Erőforrás-naplók kategóriái
 
@@ -122,7 +122,7 @@ Az erőforrás-naplók megtekintéséhez kövesse az alábbi lépéseket:
 
     ![Log Analytics menüelem](./media/signalr-tutorial-diagnostic-logs/log-analytics-menu-item.png)
 
-2. Adja meg `SignalRServiceDiagnosticLogs` és válassza ki az időtartományt az erőforrás-naplók lekérdezéséhez. A speciális lekérdezéssel kapcsolatban lásd: a [log Analytics első lépései Azure monitor](../azure-monitor/log-query/log-analytics-tutorial.md)
+2. Adja meg `SignalRServiceDiagnosticLogs` és válassza ki az időtartományt az erőforrás-naplók lekérdezéséhez. A speciális lekérdezéssel kapcsolatban lásd: a [log Analytics első lépései Azure monitor](../azure-monitor/logs/log-analytics-tutorial.md)
 
     ![Lekérdezési napló Log Analytics](./media/signalr-tutorial-diagnostic-logs/query-log-in-log-analytics.png)
 
@@ -134,7 +134,7 @@ TimeGenerated | Napló eseményének időpontja
 Gyűjtemény | A naplózási esemény gyűjteménye. Az engedélyezett értékek a következők: `Connection` , `Authorization` és `Throttling`
 OperationName | Az esemény műveleti neve
 Hely | Az Azure Signaler szolgáltatás helye
-Szint | Naplózási esemény szintje
+Level | Naplózási esemény szintje
 CallerIpAddress | A kiszolgáló/ügyfél IP-címe
 Üzenet | A naplózási esemény részletes üzenete
 UserId (Felhasználóazonosító) | A felhasználó identitása
@@ -162,7 +162,7 @@ A és a közötti különbség a `ConnectionAborted` `ConnectionEnded` `Connecti
 
 A megszakítás okai a következő táblázatban láthatók:
 
-Ok | Leírás
+Ok | Description
 ------- | ------- 
 A kapcsolatok száma eléri a korlátot | A kapcsolatok száma eléri a jelenlegi árszint korlátját. A szolgáltatási egység vertikális felskálázása
 Az alkalmazáskiszolgáló lezárta a kapcsolatokat | Az App Server elindítja az abortuszt. A várt abortusznak számít

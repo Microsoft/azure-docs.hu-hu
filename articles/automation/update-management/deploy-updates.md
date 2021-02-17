@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 12/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1b5ced7038f692046d1ce4ba2f4599cae3962510
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: fb81d38b066e1abb54664225daa6840d895e9ace
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632461"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575892"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Frissítések központi telepítése és eredmények áttekintése
 
@@ -59,7 +59,7 @@ A frissítési központi telepítés ütemezése egy olyan [ütemezési](../shar
     > [!NOTE]
     > Ez a beállítás nem érhető el, ha Azure-beli virtuális gépet vagy ív-kompatibilis kiszolgálót jelölt ki. A gép automatikusan az ütemezett telepítéshez van rendelve.
 
-6. A **frissítendő gépek** területen válasszon ki egy mentett keresést, egy importált csoportot, vagy válasszon ki **gépeket** a legördülő menüből, és válassza az egyes gépek lehetőséget. Ezzel a beállítással megtekintheti az egyes gépek Log Analytics ügynökének készültségét. A számítógépcsoportok Azure Monitor-naplókban való létrehozásának különböző módszereiről további információt a következő témakörben talál: [számítógépcsoportok Azure monitor-naplókban](../../azure-monitor/platform/computer-groups.md). Az ütemezett frissítések telepítése legfeljebb 1000 gépet tartalmazhat.
+6. A **frissítendő gépek** területen válasszon ki egy mentett keresést, egy importált csoportot, vagy válasszon ki **gépeket** a legördülő menüből, és válassza az egyes gépek lehetőséget. Ezzel a beállítással megtekintheti az egyes gépek Log Analytics ügynökének készültségét. A számítógépcsoportok Azure Monitor-naplókban való létrehozásának különböző módszereiről további információt a következő témakörben talál: [számítógépcsoportok Azure monitor-naplókban](../../azure-monitor/logs/computer-groups.md). Az ütemezett frissítések telepítése legfeljebb 1000 gépet tartalmazhat.
 
     > [!NOTE]
     > Ez a beállítás nem érhető el, ha Azure-beli virtuális gépet vagy ív-kompatibilis kiszolgálót jelölt ki. A gép automatikusan az ütemezett telepítéshez van rendelve.

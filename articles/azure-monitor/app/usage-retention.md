@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: f7f6155d3230d234e1163ee12cd7685817331b93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 37de27e8dc707133595b71b39e45bdec554289e5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323536"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583388"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>A webalkalmazások felhasználói adatmegőrzési elemzése Application Insights
 
@@ -57,12 +57,12 @@ Vagy a ASP.NET-kiszolgáló kódjában:
 [További információ az egyéni események írásához](./api-custom-events-metrics.md#trackevent).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - A használati tapasztalatok engedélyezéséhez kezdjen el [Egyéni eseményeket](./api-custom-events-metrics.md#trackevent) vagy [oldalletöltések](./api-custom-events-metrics.md#page-views)küldését.
 - Ha már elküldte az egyéni eseményeket vagy a lapok nézeteit, tekintse meg a használati eszközöket, amelyekkel megismerheti, hogy a felhasználók miként használják a szolgáltatást.
     - [Felhasználók, munkamenetek, események](usage-segmentation.md)
     - [Tölcsérek](usage-funnels.md)
     - [Felhasználókövetés](usage-flows.md)
-    - [Munkafüzetek](../platform/workbooks-overview.md)
+    - [Munkafüzetek](../visualize/workbooks-overview.md)
     - [Felhasználói környezet hozzáadása](usage-send-user-context.md)
 

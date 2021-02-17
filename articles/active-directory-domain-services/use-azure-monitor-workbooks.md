@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: justinha
-ms.openlocfilehash: 3067388265fb69b916fe0e179cb896401b7c2dc4
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 9a126fe4676f340fb45677382a3aeeed79291f0b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618161"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574205"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Biztonsági naplózási események áttekintése Azure Active Directory Domain Services Azure Monitor munkafüzetek használatával
 
@@ -46,7 +46,7 @@ Az Azure AD DS a következő két munkafüzet-sablont tartalmazza:
 * Biztonsági áttekintés jelentés
 * Fiók tevékenységi jelentése
 
-A munkafüzetek szerkesztésével és kezelésével kapcsolatos további információkért lásd: [Azure monitor munkafüzetek áttekintése](../azure-monitor/platform/workbooks-overview.md).
+A munkafüzetek szerkesztésével és kezelésével kapcsolatos további információkért lásd: [Azure monitor munkafüzetek áttekintése](../azure-monitor/visualize/workbooks-overview.md).
 
 ## <a name="use-the-security-overview-report-workbook"></a>A biztonsági áttekintés jelentés munkafüzetének használata
 
@@ -108,7 +108,7 @@ Az Azure AD DS által biztosított két sablonos munkafüzet jó kiindulópont a
 
 Azure Monitor munkafüzetek összes diagramja és táblázata Kusto lekérdezések használatával jön létre. A saját lekérdezések létrehozásával kapcsolatos további információkért lásd: [Azure monitor log-lekérdezések][azure-monitor-queries] és [Kusto-lekérdezések oktatóanyaga][kusto-queries].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha módosítania kell a jelszó-és a zárolási házirendeket, tekintse [meg a felügyelt tartományokra vonatkozó jelszó-és fiókzárolási házirendeket][password-policy].
 

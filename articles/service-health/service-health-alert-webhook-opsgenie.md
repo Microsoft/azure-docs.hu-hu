@@ -3,12 +3,12 @@ title: Azure szolgáltatásbeli állapottal kapcsolatos riasztások küldése a 
 description: Személyre szabott értesítések beszerzése a OpsGenie-példány szolgáltatás állapotával kapcsolatos eseményekről.
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 112774cb1f9e16b08225471e8dbc1bb79b1bd37d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8867d442d0c7fe563f6429fc1ff4edb212737c5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86529097"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594599"
 ---
 # <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>Azure szolgáltatásbeli állapottal kapcsolatos riasztások küldése a OpsGenie webhookok használatával
 
@@ -27,7 +27,7 @@ Ebből a cikkből megtudhatja, hogyan állíthatja be az Azure szolgáltatás á
 
 1.  **Nevezze** el a riasztást, és adja meg a **hozzárendelt csoport** mezőt.
 
-1.  Töltse ki a többi mezőt, például a **címzetteket**, az **engedélyezést**és az **értesítések mellőzését**.
+1.  Töltse ki a többi mezőt, például a **címzetteket**, az **engedélyezést** és az **értesítések mellőzését**.
 
 1.  Másolja ki és mentse el az **integrációs URL-címet**, amelynek már tartalmaznia kell a `apiKey` hozzáfűzést a végéhez.
 
@@ -39,7 +39,7 @@ Ebből a cikkből megtudhatja, hogyan állíthatja be az Azure szolgáltatás á
 ### <a name="for-a-new-action-group"></a>Új műveleti csoport esetén:
 1. Kövesse az 1 – 8. lépést a [riasztás létrehozása a szolgáltatás állapotáról szóló értesítésben egy új műveleti csoportra vonatkozóan a Azure Portal használatával](./alerts-activity-log-service-notifications-portal.md).
 
-1. Definiálás a **műveletek**listájában:
+1. Definiálás a **műveletek** listájában:
 
     a. **Művelet típusa:** *webhook*
 
@@ -50,13 +50,13 @@ Ebből a cikkből megtudhatja, hogyan állíthatja be az Azure szolgáltatás á
 1. A riasztás létrehozásához válassza a **Mentés** lehetőséget.
 
 ### <a name="for-an-existing-action-group"></a>Meglévő műveleti csoport esetén:
-1. A [Azure Portal](https://portal.azure.com/)válassza a **figyelő**elemet.
+1. A [Azure Portal](https://portal.azure.com/)válassza a **figyelő** elemet.
 
-1. A **Beállítások** szakaszban válassza a **műveleti csoportok**lehetőséget.
+1. A **Beállítások** szakaszban válassza a **műveleti csoportok** lehetőséget.
 
 1. Keresse meg és válassza ki a szerkeszteni kívánt műveleti csoportot.
 
-1. Hozzáadás a **műveletek**listájához:
+1. Hozzáadás a **műveletek** listájához:
 
     a. **Művelet típusa:** *webhook*
 
@@ -67,7 +67,7 @@ Ebből a cikkből megtudhatja, hogyan állíthatja be az Azure szolgáltatás á
 1. A műveleti csoport frissítéséhez válassza a **Mentés** lehetőséget.
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Webhook-integráció tesztelése HTTP POST-kérelem használatával
-1. Hozza létre a küldeni kívánt szolgáltatás-állapot adattartalmát. Az Azure-beli [tevékenységekre vonatkozó riasztások webhookok](../azure-monitor/platform/activity-log-alerts-webhook.md)szolgáltatásában például a Service Health webhook hasznos adatai találhatók.
+1. Hozza létre a küldeni kívánt szolgáltatás-állapot adattartalmát. Az Azure-beli [tevékenységekre vonatkozó riasztások webhookok](../azure-monitor/alerts/activity-log-alerts-webhook.md)szolgáltatásában például a Service Health webhook hasznos adatai találhatók.
 
 1. Hozzon létre egy HTTP POST-kérelmet a következőképpen:
 
@@ -82,8 +82,8 @@ Ebből a cikkből megtudhatja, hogyan állíthatja be az Azure szolgáltatás á
 
 1. Nyissa meg a [OpsGenie](https://www.opsgenie.com/) , és ellenőrizze, hogy sikeresen beállította-e az integrációt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Megtudhatja, hogyan [konfigurálhat webhook-értesítéseket a meglévő probléma-felügyeleti rendszerekhez](service-health-alert-webhook-guide.md).
-- Tekintse át a [tevékenység naplójának riasztása webhook sémáját](../azure-monitor/platform/activity-log-alerts-webhook.md). 
+- Tekintse át a [tevékenység naplójának riasztása webhook sémáját](../azure-monitor/alerts/activity-log-alerts-webhook.md). 
 - Tudnivalók a [szolgáltatás állapotával kapcsolatos értesítésekről](./service-notifications.md).
-- További információ a [műveleti csoportokról](../azure-monitor/platform/action-groups.md).
+- További információ a [műveleti csoportokról](../azure-monitor/alerts/action-groups.md).

@@ -13,26 +13,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.author: inhenkel
-ms.openlocfilehash: 35b0d9c2937024341be6183ac1438b7c4500d6ef
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: cd8c6ca67a1e475279cba8ccc3f4cb8cc7412d66
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954986"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590780"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-with-azure-monitor"></a>Media Services metrikák és diagnosztikai naplók figyelése a Azure Monitor
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-[Azure monitor](../../azure-monitor/overview.md) segítségével figyelheti a mérőszámokat és a diagnosztikai naplókat, amelyek segítenek megérteni az alkalmazások teljesítményét. Az Azure Monitor által összegyűjtött adatok két alapvető típusba sorolhatók: metrikák és naplók. Nyomon követheti Media Services diagnosztikai naplóit, és riasztásokat és értesítéseket hozhat létre az összegyűjtött metrikák és naplók számára. A metrikák adatait a [metrikák Explorerrel](../../azure-monitor/platform/metrics-getting-started.md)jelenítheti meg és elemezheti. Naplókat küldhet az [Azure Storage](https://azure.microsoft.com/services/storage/)-ba, továbbíthatja őket az [Azure Event Hubsba](https://azure.microsoft.com/services/event-hubs/), exportálhatja őket [log Analyticsba](https://azure.microsoft.com/services/log-analytics/), vagy külső szolgáltatásokat is használhat.
+[Azure monitor](../../azure-monitor/overview.md) segítségével figyelheti a mérőszámokat és a diagnosztikai naplókat, amelyek segítenek megérteni az alkalmazások teljesítményét. Az Azure Monitor által összegyűjtött adatok két alapvető típusba sorolhatók: metrikák és naplók. Nyomon követheti Media Services diagnosztikai naplóit, és riasztásokat és értesítéseket hozhat létre az összegyűjtött metrikák és naplók számára. A metrikák adatait a [metrikák Explorerrel](../../azure-monitor/essentials/metrics-getting-started.md)jelenítheti meg és elemezheti. Naplókat küldhet az [Azure Storage](https://azure.microsoft.com/services/storage/)-ba, továbbíthatja őket az [Azure Event Hubsba](https://azure.microsoft.com/services/event-hubs/), exportálhatja őket [log Analyticsba](https://azure.microsoft.com/services/log-analytics/), vagy külső szolgáltatásokat is használhat.
 
-Részletes Áttekintés: [Azure monitor metrikák](../../azure-monitor/platform/data-platform.md) és [Azure monitor diagnosztikai naplók](../../azure-monitor/platform/platform-logs-overview.md).
+Részletes Áttekintés: [Azure monitor metrikák](../../azure-monitor/data-platform.md) és [Azure monitor diagnosztikai naplók](../../azure-monitor/essentials/platform-logs-overview.md).
 
 Ez a témakör a támogatott [Media Services metrikákat](#media-services-metrics) és [Media Services diagnosztikai naplókat](#media-services-diagnostic-logs)ismerteti.
 
 ## <a name="media-services-metrics"></a>Media Services metrikák
 
-A metrikák gyűjtése rendszeres időközönként történik, függetlenül attól, hogy az érték megváltozik-e. Ezek a riasztások azért hasznosak, mert gyakran mintavételezésre is képesek, és a riasztások gyorsan és viszonylag egyszerű logikával is elindíthatók. A metrikai riasztások létrehozásával kapcsolatos információkért lásd: [metrikai riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../../azure-monitor/platform/alerts-metric.md).
+A metrikák gyűjtése rendszeres időközönként történik, függetlenül attól, hogy az érték megváltozik-e. Ezek a riasztások azért hasznosak, mert gyakran mintavételezésre is képesek, és a riasztások gyorsan és viszonylag egyszerű logikával is elindíthatók. A metrikai riasztások létrehozásával kapcsolatos információkért lásd: [metrikai riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../../azure-monitor/alerts/alerts-metric.md).
 
 Media Services támogatja a következő erőforrások figyelési metrikáit:
 
@@ -89,7 +89,7 @@ Lásd: [Media Services-metrikák figyelése](media-services-metrics-howto.md).
 
 ## <a name="media-services-diagnostic-logs"></a>Diagnosztikai naplók Media Services
 
-A diagnosztikai naplók részletes és gyakori információkat biztosítanak az Azure-erőforrások működéséről. További információkért lásd: az [Azure-erőforrások naplózási adatainak gyűjtése és felhasználása](../../azure-monitor/platform/platform-logs-overview.md).
+A diagnosztikai naplók részletes és gyakori információkat biztosítanak az Azure-erőforrások működéséről. További információkért lásd: az [Azure-erőforrások naplózási adatainak gyűjtése és felhasználása](../../azure-monitor/essentials/platform-logs-overview.md).
 
 A Media Services a következő diagnosztikai naplókat támogatja:
 
@@ -116,7 +116,7 @@ Lásd: [a Media Service diagnosztikai naplóinak figyelése](media-services-diag
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Az Azure-erőforrások naplózási adatainak gyűjtése és felhasználása](../../azure-monitor/platform/platform-logs-overview.md)
-* [Metrikariasztások létrehozása, megtekintése és kezelése az Azure Monitorral](../../azure-monitor/platform/alerts-metric.md)
+* [Az Azure-erőforrások naplózási adatainak gyűjtése és felhasználása](../../azure-monitor/essentials/platform-logs-overview.md)
+* [Metrikariasztások létrehozása, megtekintése és kezelése az Azure Monitorral](../../azure-monitor/alerts/alerts-metric.md)
 * [Media Services mérőszámok figyelése](media-services-metrics-howto.md)
 * [A Media Service diagnosztikai naplóinak figyelése](media-services-diagnostic-logs-howto.md)

@@ -3,18 +3,18 @@ title: Keresés használata az Azure Application Insightsban | Microsoft Docs
 description: A webalkalmazás által eljuttatott nyers telemetria keresése és szűrése.
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.openlocfilehash: f87a972b417bf6074de1c10b7a54bd2416f88daa
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f7c2229a2e497fb052db79d61fcfeff140897798
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187017"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579541"
 ---
 # <a name="using-search-in-application-insights"></a>Keresés használata a Application Insightsban
 
 A keresés a [Application Insights](./app-insights-overview.md) egyik funkciója, amellyel megkeresheti és megismerheti az egyes telemetria-elemeket, például a lapok nézeteit, a kivételeket vagy a webes kérelmeket. És megtekintheti a kódolt naplókat és eseményeket.
 
-(Az [adatelemzéshez használja az](../log-query/log-analytics-tutorial.md)összetettebb lekérdezéseket.)
+(Az [adatelemzéshez használja az](../logs/log-analytics-tutorial.md)összetettebb lekérdezéseket.)
 
 ## <a name="where-do-you-see-search"></a>Hol látja a keresést?
 
@@ -81,7 +81,7 @@ Ha az összes elemet ugyanazzal a tulajdonsággal szeretné megkeresni, írja be
 ## <a name="search-the-data"></a>Keresés az adatszolgáltatásban
 
 > [!NOTE]
-> Összetettebb lekérdezések írásához nyissa meg a [**naplók (Analitika)**](../log-query/log-analytics-tutorial.md) elemet a Keresés panel tetején.
+> Összetettebb lekérdezések írásához nyissa meg a [**naplók (Analitika)**](../logs/log-analytics-tutorial.md) elemet a Keresés panel tetején.
 >
 
 A kifejezéseket bármelyik tulajdonság értékében megkeresheti. Ez akkor hasznos, ha olyan [Egyéni eseményeket](./api-custom-events-metrics.md) írt be, amelyekben tulajdonságértékek szerepelnek.
@@ -145,7 +145,7 @@ Az adatposta automatikus naplózása nem történik meg, de a [TrackTrace vagy a
 
 ## <a name="next-steps"></a><a name="add"></a>Következő lépések
 
-* [Összetett lekérdezések írása az elemzésekben](../log-query/log-analytics-tutorial.md)
+* [Összetett lekérdezések írása az elemzésekben](../logs/log-analytics-tutorial.md)
 * [Naplók és egyéni telemetria küldése Application Insights](./asp-net-trace-logs.md)
 * [Rendelkezésre állási és válaszadási tesztek beállítása](./monitor-web-app-availability.md)
 * [Hibaelhárítás](../faq.md)

@@ -4,12 +4,12 @@ description: Megfigyelheti egy webhely teljesítményét annak ismételt üzembe
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 53dbcc341fdd4bc194d34d40cdd2a975df496376
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 79e14c171adde89c43c5ea82a60db39133157293
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186303"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576431"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Az eszköz webalkalmazásai futásidőben Application Insights kód nem csatolhatók
 
@@ -40,10 +40,10 @@ Itt található egy összefoglaló az egyes módszerek eredményeiről:
 
 |  | Felépítési idő | Futási idő |
 | --- | --- | --- |
-| **Kérelmek & kivételek** |Igen |Igen |
-| **[Részletesebb kivételek](./asp-net-exceptions.md)** | |Igen |
+| **Kérelmek & kivételek** |Igen |Yes |
+| **[Részletesebb kivételek](./asp-net-exceptions.md)** | |Yes |
 | **[Függőségi diagnosztika](./asp-net-dependencies.md)** |.NET 4.6+ esetén, kevésbé részletesen |Igen, teljes részletesség: eredménykódok, SQL-parancsszöveg, HTTP-parancsok|
-| **[Rendszerteljesítmény-számlálók](./performance-counters.md)** |Igen |Igen |
+| **[Rendszerteljesítmény-számlálók](./performance-counters.md)** |Igen |Yes |
 | **[API egyéni telemetria][api]** |Igen |Nem |
 | **[Nyomkövetési napló integrációja](./asp-net-trace-logs.md)** |Igen |Nem |
 | **[Az oldal nézet & felhasználói](./javascript.md)** |Igen |Nem |
@@ -93,7 +93,7 @@ Ezeket a lépéseket végrehajtva ellenőrizheti, hogy a telepítés sikeres vol
 
 - Győződjön meg arról, hogy a applicationInsights.config fájl megtalálható a cél alkalmazás könyvtárban, és tartalmazza a rendszerállapotkulcsot.
 
-- Ha azt gyanítja, hogy az adatok hiányoznak, futtathat egy lekérdezést az [Analyticsben](../log-query/log-analytics-tutorial.md) az összes olyan felhőalapú szerepkör listázásához, amely jelenleg telemetria küld.
+- Ha azt gyanítja, hogy az adatok hiányoznak, futtathat egy lekérdezést az [Analyticsben](../logs/log-analytics-tutorial.md) az összes olyan felhőalapú szerepkör listázásához, amely jelenleg telemetria küld.
   ```Kusto
   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
   ```
@@ -320,9 +320,9 @@ A fordítási során már kiépített alkalmazások esetén:
 
 A telemetriai adatok megtekintése:
 
-* [A metrikák áttekintése](../platform/metrics-charts.md) a teljesítmény és a használat figyeléséhez
+* [A metrikák áttekintése](../essentials/metrics-charts.md) a teljesítmény és a használat figyeléséhez
 * [Események és naplók keresése][diagnostic] a problémák diagnosztizálásához
-* [Elemzések](../log-query/log-query-overview.md) az összetettebb lekérdezésekhez
+* [Elemzések](../logs/log-query-overview.md) az összetettebb lekérdezésekhez
 
 További telemetriai funkciók hozzáadása:
 

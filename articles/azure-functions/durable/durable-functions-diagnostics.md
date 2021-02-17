@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 4714b9330c4a9d9cd390a58f814e3cdb4b591038
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 62cc5e1762a2a54b26cbebae5aa7cfbf64204ba5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168141"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584622"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>A Durable Functions diagnosztikája az Azure-ban
 
@@ -20,7 +20,7 @@ Több lehetőség is van a [Durable Functionsával](durable-functions-overview.m
 
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) a diagnosztika és a figyelés ajánlott módszere Azure Functionsokban. Ugyanez vonatkozik a Durable Functionsra is. A Application Insightsnek a Function alkalmazásban való kihasználása áttekintését lásd: [Azure functions figyelése](../functions-monitoring.md).
 
-A Azure Functions tartós bővítmény olyan *követési eseményeket* is kibocsát, amelyek segítségével nyomon követheti a folyamat végpontok közötti végrehajtását. Ezek a követési események a Azure Portal [Application Insights Analytics](../../azure-monitor/log-query/log-query-overview.md) eszközének használatával találhatók meg és kérhetők le.
+A Azure Functions tartós bővítmény olyan *követési eseményeket* is kibocsát, amelyek segítségével nyomon követheti a folyamat végpontok közötti végrehajtását. Ezek a követési események a Azure Portal [Application Insights Analytics](../../azure-monitor/logs/log-query-overview.md) eszközének használatával találhatók meg és kérhetők le.
 
 ### <a name="tracking-data"></a>Adatkövetés
 
@@ -472,7 +472,7 @@ Ez a hibakereséshez hasznos, mert pontosan azt látja, hogy milyen állapotban 
 > [!WARNING]
 > Habár érdemes megtekinteni a táblázatos tárolóban a végrehajtási előzményeket, ne vegyen fel függőségeket ezen a táblán. Előfordulhat, hogy a Durable Functions bővítmény fejlődése megváltozhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További információ a Azure Functions figyeléséről](../functions-monitoring.md)

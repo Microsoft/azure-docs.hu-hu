@@ -3,18 +3,18 @@ title: Új Azure Policy definíció hatásának kiértékelése
 description: Ismerkedjen meg az új házirend-definíció Azure-környezetbe való bevezetésének folyamatával.
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9d73d703c38dce1335a471bfad9171d8b30a83c5
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: cf52d25aa846388bc387430913a733d5206df82e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873867"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590803"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy-definition"></a>Új Azure Policy definíció hatásának kiértékelése
 
 A Azure Policy hatékony eszköz az Azure-erőforrások üzleti szabványokhoz való felügyeletéhez és a megfelelőségi igények kielégítéséhez. Ha a felhasználók, folyamatok vagy folyamatok erőforrásokat hoznak létre vagy frissítenek, Azure Policy áttekinti a kérést. Ha a házirend-definíció hatásának [módosítása](./effects.md#modify), [Hozzáfűzés](./effects.md#deny) vagy [DeployIfNotExists](./effects.md#deployifnotexists), a házirend módosítja a kérést, vagy hozzáadja azt. Ha a házirend-definíció hatással van a [naplózásra](./effects.md#audit) vagy a [AuditIfNotExists](./effects.md#auditifnotexists), a házirend az új és a frissített erőforrásokra vonatkozó műveletnapló-bejegyzést hoz létre. Ha a házirend-definíció hatása [megtagadva](./effects.md#deny), a házirend leállítja a kérelem létrehozását vagy módosítását.
 
-Ezek az eredmények pontosan olyankor szükségesek, amikor tudja, hogy a szabályzat helyesen van definiálva. Fontos azonban, hogy egy új szabályzatot a kívánt módon érvényesítse, mielőtt engedélyezi, hogy megváltoztassa vagy letiltsa a munkát. Az ellenőrzésnek biztosítania kell, hogy csak a kívánt erőforrások legyenek nem megfelelőek, és a rendszer helytelenül tartalmazza a megfelelő erőforrásokat az eredményekben ( _hamis pozitív_néven).
+Ezek az eredmények pontosan olyankor szükségesek, amikor tudja, hogy a szabályzat helyesen van definiálva. Fontos azonban, hogy egy új szabályzatot a kívánt módon érvényesítse, mielőtt engedélyezi, hogy megváltoztassa vagy letiltsa a munkát. Az ellenőrzésnek biztosítania kell, hogy csak a kívánt erőforrások legyenek nem megfelelőek, és a rendszer helytelenül tartalmazza a megfelelő erőforrásokat az eredményekben ( _hamis pozitív_ néven).
 
 Az új házirend-definíció érvényesítéséhez ajánlott módszer a következő lépések végrehajtása:
 
@@ -63,7 +63,7 @@ A hatókör (szint vagy kizárás) módosításait teljes mértékben ellenőriz
 
 ## <a name="monitor-your-policy-and-compliance"></a>A szabályzat és a megfelelőség figyelése
 
-A házirend-definíció megvalósítása és kiosztása nem az utolsó lépés. Folyamatosan figyelheti az erőforrások [megfelelőségi](../how-to/get-compliance-data.md) szintjét az új szabályzat-definícióba, és beállíthatja a megfelelő [Azure monitor riasztásokat és értesítéseket](../../../azure-monitor/platform/alerts-overview.md) a nem megfelelő eszközök azonosításához. Javasoljuk továbbá, hogy a házirend-definíciót és a kapcsolódó hozzárendeléseket ütemezett alapon értékelje ki, hogy ellenőrizze a házirend-definíciót az üzleti szabályzatok és a megfelelőségi igények kielégítése érdekében. Ha már nincs rá szükség, el kell távolítania a házirendeket. A szabályzatoknak időről időre frissíteniük kell a mögöttes Azure-erőforrások alakulását, és hozzá kell adni új tulajdonságokat és képességeket.
+A házirend-definíció megvalósítása és kiosztása nem az utolsó lépés. Folyamatosan figyelheti az erőforrások [megfelelőségi](../how-to/get-compliance-data.md) szintjét az új szabályzat-definícióba, és beállíthatja a megfelelő [Azure monitor riasztásokat és értesítéseket](../../../azure-monitor/alerts/alerts-overview.md) a nem megfelelő eszközök azonosításához. Javasoljuk továbbá, hogy a házirend-definíciót és a kapcsolódó hozzárendeléseket ütemezett alapon értékelje ki, hogy ellenőrizze a házirend-definíciót az üzleti szabályzatok és a megfelelőségi igények kielégítése érdekében. Ha már nincs rá szükség, el kell távolítania a házirendeket. A szabályzatoknak időről időre frissíteniük kell a mögöttes Azure-erőforrások alakulását, és hozzá kell adni új tulajdonságokat és képességeket.
 
 ## <a name="next-steps"></a>Következő lépések
 

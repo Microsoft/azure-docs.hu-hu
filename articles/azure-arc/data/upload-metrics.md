@@ -10,12 +10,12 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: f319f912520a69a0c68f89a3d4178f63cc45ca1f
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: d7c611f1cdb5e3294e38f87c0534003813e50388
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356548"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575690"
 ---
 # <a name="upload-metrics-to-azure-monitor"></a>Metrikák feltöltése a Azure Monitorba
 
@@ -126,7 +126,7 @@ Az Azure arc használatára képes SQL felügyelt példányok és az Azure arc e
    >[!NOTE]
    >Várjon legalább 30 percet, miután az Azure ív használatára jogosult adatpéldányok létre lettek hozva az első feltöltéshez.
    >
-   >Győződjön `upload` meg arról, hogy a metrikák a Azure monitor után azonnal `export` , csak az elmúlt 30 percben fogadják el a metrikákat. [További információ](../../azure-monitor/platform/metrics-store-custom-rest-api.md#troubleshooting).
+   >Győződjön `upload` meg arról, hogy a metrikák a Azure monitor után azonnal `export` , csak az elmúlt 30 percben fogadják el a metrikákat. [További információ](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting).
 
 
 Ha az exportálás során "nem sikerült beolvasni a mérőszámokat" hibaüzenet jelenik meg, ellenőrizze, hogy az adatgyűjtés a `true` következő parancs futtatásával van-e beállítva:
@@ -199,7 +199,7 @@ Az Azure arc-kompatibilis adatszolgáltatások létrehozási, olvasási, frissí
 
 Az előzetes verzió ideje alatt ez a folyamat éjjel történik. Az általános útmutató a használat napi egyszeri feltöltése. Ha a használati adatokat több alkalommal exportálják és töltötték fel ugyanazon a 24 órás időszakon belül, akkor csak az erőforrás-leltár frissül Azure Portal de nem az erőforrás-használat.
 
-A metrikák feltöltéséhez az Azure monitor csak az utolsó 30 perces adatokat fogadja el ([További információ](../../azure-monitor/platform/metrics-store-custom-rest-api.md#troubleshooting)). A metrikák feltöltésére vonatkozó útmutató a metrikák az exportfájl létrehozása utáni azonnali feltöltésére szolgál, így megtekintheti a teljes adathalmazt Azure Portalban. Ha például a 2:00 ÓRAKOR exportálta a metrikákat, és a feltöltési parancsot 2:50 ÓRAKOR futtatta. Mivel a Azure Monitor csak az elmúlt 30 percben fogadja az adatgyűjtést, előfordulhat, hogy a portálon nem jelennek meg az összes információ. 
+A metrikák feltöltéséhez az Azure monitor csak az utolsó 30 perces adatokat fogadja el ([További információ](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting)). A metrikák feltöltésére vonatkozó útmutató a metrikák az exportfájl létrehozása utáni azonnali feltöltésére szolgál, így megtekintheti a teljes adathalmazt Azure Portalban. Ha például a 2:00 ÓRAKOR exportálta a metrikákat, és a feltöltési parancsot 2:50 ÓRAKOR futtatta. Mivel a Azure Monitor csak az elmúlt 30 percben fogadja az adatgyűjtést, előfordulhat, hogy a portálon nem jelennek meg az összes információ. 
 
 ## <a name="next-steps"></a>Következő lépések
 

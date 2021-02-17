@@ -7,12 +7,12 @@ ms.subservice: monitoring
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
-ms.openlocfilehash: e3e44019d09927ff700e74b713a1b02136fedbc1
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: a5e280fb562bf9bb36d0d729e5f494bd23776ec7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98702270"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570130"
 ---
 # <a name="monitor-scheduled-events-for-your-azure-vms"></a>Azure-beli virtuális gépek ütemezett eseményeinek monitorozása
 
@@ -25,7 +25,7 @@ Ebben a cikkben bemutatjuk, hogyan használhatók az ütemezett események olyan
 
 Scheduled Events az [azure instance metadata Service](instance-metadata-service.md)részeként érhető el, amely minden Azure-beli virtuális gépen elérhető. Az ügyfelek írhatnak automatizálást a virtuális gépek végpontjának lekéréséhez, hogy megkeressék az ütemezett karbantartási értesítéseket, és csökkentsék a szükséges megoldásokat, például az állapot mentését és a virtuális gép elforgatásának elvégzését. Javasoljuk, hogy az automatizálás létrehozásával rögzítse a Scheduled Events, így az Azure karbantartási eseményeinek naplózási naplója is lehet. 
 
-Ebből a cikkből megtudhatja, hogyan rögzítheti Log Analytics a karbantartási Scheduled Events. Ezután elindítunk néhány alapszintű értesítési műveletet, például e-mailek küldését a csapatnak, és bemutatjuk a virtuális gépeket érintő összes esemény előzményeit. Az események összesítéséhez és automatizálásához [log Analytics](../../azure-monitor/learn/quick-create-workspace.md)fogjuk használni, de a naplók összegyűjtéséhez és az automatizálás elindításához bármelyik figyelési megoldás használható.
+Ebből a cikkből megtudhatja, hogyan rögzítheti Log Analytics a karbantartási Scheduled Events. Ezután elindítunk néhány alapszintű értesítési műveletet, például e-mailek küldését a csapatnak, és bemutatjuk a virtuális gépeket érintő összes esemény előzményeit. Az események összesítéséhez és automatizálásához [log Analytics](../../azure-monitor/logs/quick-create-workspace.md)fogjuk használni, de a naplók összegyűjtéséhez és az automatizálás elindításához bármelyik figyelési megoldás használható.
 
 ![Az esemény életciklusát ábrázoló diagram](./media/notifications/events.png)
 
@@ -35,7 +35,7 @@ Ebben a példában létre kell hoznia egy [Windows rendszerű virtuális gépet 
 
 Ne törölje a csoport erőforráscsoportot az oktatóanyag végén.
 
-[Létre kell hoznia egy log Analytics munkaterületet](../../azure-monitor/learn/quick-create-workspace.md) is, amelyet a rendelkezésre állási csoportba tartozó virtuális gépek adatainak összesítésére fogunk használni.
+[Létre kell hoznia egy log Analytics munkaterületet](../../azure-monitor/logs/quick-create-workspace.md) is, amelyet a rendelkezésre állási csoportba tartozó virtuális gépek adatainak összesítésére fogunk használni.
 
 ## <a name="set-up-the-environment"></a>A környezet beállítása
 
@@ -132,7 +132,7 @@ Ekkor a rendszer telepíti a [Microsoft monitoring agentet](../extensions/oms-wi
 ## <a name="creating-an-alert-rule-with-azure-monitor"></a>Riasztási szabály létrehozása Azure Monitor 
 
 
-Az események Log Analyticsba való leküldése után a következő [lekérdezés](../../azure-monitor/log-query/log-analytics-tutorial.md) futtatásával megkeresheti az ütemezett eseményeket.
+Az események Log Analyticsba való leküldése után a következő [lekérdezés](../../azure-monitor/logs/log-analytics-tutorial.md) futtatásával megkeresheti az ütemezett eseményeket.
 
 1. A lap tetején válassza a **naplók** lehetőséget, majd illessze be a következőt a szövegmezőbe:
 
@@ -172,6 +172,6 @@ Az események Log Analyticsba való leküldése után a következő [lekérdezé
 A riasztási szabályok kezeléséhez nyissa meg az erőforráscsoportot, válassza a bal oldali menüben a **riasztások** elemet, majd a lap tetején válassza a **riasztási szabályok kezelése** lehetőséget.
 
      
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [ütemezett események szolgáltatás](https://github.com/microsoft/AzureScheduledEventsService) lapja a githubon.

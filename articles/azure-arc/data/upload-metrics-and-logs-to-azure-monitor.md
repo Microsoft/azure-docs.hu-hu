@@ -10,12 +10,12 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: 66b10efb6ca93bc6b4dd67d700daaf1f9049de68
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ac9c8efbe29bf1420a94d486b650758cc22bec2f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183430"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575752"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>Használati adatok, metrikák és naplók feltöltése a Azure Monitorba
 
@@ -42,18 +42,18 @@ Lásd: [eszközök telepítése](./install-client-tools.md).
 
 ## <a name="register-the-resource-provider"></a>Az erőforrás-szolgáltató regisztrálása
 
-A metrikák vagy felhasználói adatok Azure-ba való feltöltése előtt gondoskodnia kell arról, hogy az Azure-előfizetése `Microsoft.AzureData` regisztrálva legyen az erőforrás-szolgáltatónál.
+A metrikák vagy felhasználói adatok Azure-ba való feltöltése előtt gondoskodnia kell arról, hogy az Azure-előfizetése `Microsoft.AzureArcData` regisztrálva legyen az erőforrás-szolgáltatónál.
 
 Az erőforrás-szolgáltató ellenőrzéséhez futtassa a következő parancsot:
 
 ```azurecli
-az provider show -n Microsoft.AzureData -o table
+az provider show -n Microsoft.AzureArcData -o table
 ```
 
 Ha az erőforrás-szolgáltató jelenleg nincs regisztrálva az előfizetésben, regisztrálhatja. A regisztráláshoz futtassa a következő parancsot.  A parancs végrehajtása igénybe vehet egy-két percet.
 
 ```azurecli
-az provider register -n Microsoft.AzureData --wait
+az provider register -n Microsoft.AzureArcData --wait
 ```
 
 ## <a name="create-service-principal"></a>Egyszerű szolgáltatás létrehozása
@@ -193,7 +193,7 @@ Az Azure arc-kompatibilis adatszolgáltatások létrehozási, olvasási, frissí
 
 Az előzetes verzió ideje alatt ez a folyamat éjjel történik. Az általános útmutató a használat napi egyszeri feltöltése. Ha a használati adatokat több alkalommal exportálják és töltötték fel ugyanazon a 24 órás időszakon belül, akkor csak az erőforrás-leltár frissül Azure Portal de nem az erőforrás-használat.
 
-A metrikák feltöltéséhez az Azure monitor csak az utolsó 30 perces adatokat fogadja el ([További információ](../../azure-monitor/platform/metrics-store-custom-rest-api.md#troubleshooting)). A metrikák feltöltésére vonatkozó útmutató a metrikák az exportfájl létrehozása utáni azonnali feltöltésére szolgál, így megtekintheti a teljes adathalmazt Azure Portalban. Ha például a 2:00 ÓRAKOR exportálta a metrikákat, és a feltöltési parancsot 2:50 ÓRAKOR futtatta. Mivel a Azure Monitor csak az elmúlt 30 percben fogadja az adatgyűjtést, előfordulhat, hogy a portálon nem jelennek meg az összes információ. 
+A metrikák feltöltéséhez az Azure monitor csak az utolsó 30 perces adatokat fogadja el ([További információ](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting)). A metrikák feltöltésére vonatkozó útmutató a metrikák az exportfájl létrehozása utáni azonnali feltöltésére szolgál, így megtekintheti a teljes adathalmazt Azure Portalban. Ha például a 2:00 ÓRAKOR exportálta a metrikákat, és a feltöltési parancsot 2:50 ÓRAKOR futtatta. Mivel a Azure Monitor csak az elmúlt 30 percben fogadja az adatgyűjtést, előfordulhat, hogy a portálon nem jelennek meg az összes információ. 
 
 ## <a name="next-steps"></a>Következő lépések
 

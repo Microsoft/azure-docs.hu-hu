@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: fde0afcd37cd464b0b87e5ccd257d4a7a684eeb0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9fafa9bd014a44fdd0098ef2364375c3f9672bea
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021588"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571070"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Azure Log Analytics-szívófej üzembe helyezése Cloud Foundry rendszer-figyeléshez
 
@@ -191,9 +191,9 @@ A *"Cloud Foundry. omsview"* a Cloud Foundry OMS View sablon előzetes verziója
 
 ### <a name="2-create-alert-rules"></a>2. riasztási szabályok létrehozása
 
-[Létrehozhatók a riasztások](../azure-monitor/platform/alerts-overview.md), és igény szerint testre szabhatók a lekérdezések és a küszöbértékek. A következő ajánlott riasztások:
+[Létrehozhatók a riasztások](../azure-monitor/alerts/alerts-overview.md), és igény szerint testre szabhatók a lekérdezések és a küszöbértékek. A következő ajánlott riasztások:
 
-| Keresési lekérdezés                                                                  | Riasztás előállítása a következő alapján | Leírás                                                                       |
+| Keresési lekérdezés                                                                  | Riasztás előállítása a következő alapján | Description                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |
 | Type = CF_ValueMetric_CL Origin_s = BBS Name_s = "tartomány. CF-apps"                   | Találatok száma < 1   | **BBS. Domain.cf – az alkalmazások** azt jelzik, hogy a CF-apps tartomány naprakész-e. Ez azt jelenti, hogy a Cloud Controller által benyújtott CF-alkalmazások szinkronizálása a BBS-be történik. LRPsDesired (Diego – kívánt AIs) a végrehajtáshoz. Nem érkezett adat: a CF-apps tartomány nem naprakész a megadott időablakban. |
 | Type = CF_ValueMetric_CL Origin_s = rep Name_s = UnhealthyCell Value_d>1            | Találatok száma > 0   | Diego-sejtek esetén a 0 a kifogástalan állapotot jelenti, az 1 pedig sérült. Állítsa be a riasztást, ha a megadott időtartományban több nem kifogástalan állapotú Diego-cella észlelhető. |

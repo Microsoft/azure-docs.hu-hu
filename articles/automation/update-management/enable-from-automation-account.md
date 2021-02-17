@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.date: 11/09/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 06a29cd07a870e7553d599b5f719943acb259c2a
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 089d5d70d8ad8060455e5c1bee45e0bee4a12fae
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054923"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575834"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>Az Update Management engedélyezése Automation-fiókból
 
@@ -24,7 +24,8 @@ Ez a cikk azt ismerteti, hogyan használhatja az Automation-fiókját a környez
 
 * Egy Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Egy [Automation-fiók](../automation-security-overview.md) a gépek kezeléséhez.
-* Az arc-kompatibilis kiszolgálókon regisztrált Azure-beli [virtuális gépek](../../virtual-machines/windows/quick-create-portal.md)vagy virtuális gépek vagy kiszolgálók. A nem Azure-beli virtuális gépeknek vagy kiszolgálóknak telepítve kell lennie a Windows vagy Linux rendszerhez készült [log Analytics ügynöknek](../../azure-monitor/platform/log-analytics-agent.md) , és az Automation-fiókhoz társított munkaterületre kell jelentenie Update Management engedélyezve van a rendszerben. Javasoljuk, hogy a Windows vagy Linux rendszerhez készült Log Analytics Agent telepítéséhez először csatlakoztassa a gépet az [Azure arc-kompatibilis kiszolgálókhoz](../../azure-arc/servers/overview.md), majd a Azure Policy használatával rendelje hozzá a [log Analytics-ügynök üzembe helyezését a *Linux* vagy a *Windows* Azure arc Machines](../../governance/policy/samples/built-in-policies.md#monitoring) beépített házirendjéhez. Ha a gépeket Azure Monitor for VMs használatával kívánja figyelni, Ehelyett használja a [Azure monitor for VMS engedélyezése](../../governance/policy/samples/built-in-initiatives.md#monitoring) kezdeményezést.
+* Az arc-kompatibilis kiszolgálókon regisztrált Azure-beli [virtuális gépek](../../virtual-machines/windows/quick-create-portal.md)vagy virtuális gépek vagy kiszolgálók. A nem Azure-beli virtuális gépeknek vagy kiszolgálóknak telepítve kell lennie a Windows vagy Linux rendszerhez készült [log Analytics ügynöknek](../../azure-monitor/agents/log-analytics-agent.md) , és az Automation-fiókhoz társított munkaterületre kell jelentenie Update Management engedélyezve van a rendszerben. Javasoljuk, hogy a Windows vagy Linux rendszerhez készült Log Analytics Agent telepítéséhez először csatlakoztassa a gépet az [Azure arc-kompatibilis kiszolgálókhoz](../../azure-arc/servers/overview.md), majd a Azure Policy használatával rendelje hozzá a [log Analytics-ügynök üzembe helyezését a *Linux* vagy a *Windows* Azure arc Machines](../../governance/policy/samples/built-in-policies.md#monitoring) beépített házirendjéhez. Ha a gépeket Azure Monitor for VMs használatával kívánja figyelni, Ehelyett használja a [Azure monitor for VMS engedélyezése](../../governance/policy/samples/built-in-initiatives.md#monitoring) kezdeményezést.
+
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -54,7 +55,7 @@ Az Azure-on kívül üzemeltetett gépek vagy kiszolgálók esetében, beleértv
 
 1. Az Automation-fiókban válassza **a frissítés kezelése lehetőséget az** **Update Management** alatt.
 
-2. Válassza a **nem Azure-beli gép hozzáadása** lehetőséget. Ez a művelet egy új böngészőablakot nyit meg, amely [útmutatást nyújt a Windows log Analytics ügynökének telepítéséhez és konfigurálásához](../../azure-monitor/platform/log-analytics-agent.md) , hogy a gép megkezdhesse a jelentéskészítést Update Management. Ha olyan gépet engedélyez, amelyet jelenleg a Operations Manager felügyel, nincs szükség új ügynökre. A munkaterület adatai hozzáadódnak az ügynökök konfigurációjához.
+2. Válassza a **nem Azure-beli gép hozzáadása** lehetőséget. Ez a művelet egy új böngészőablakot nyit meg, amely [útmutatást nyújt a Windows log Analytics ügynökének telepítéséhez és konfigurálásához](../../azure-monitor/agents/log-analytics-agent.md) , hogy a gép megkezdhesse a jelentéskészítést Update Management. Ha olyan gépet engedélyez, amelyet jelenleg a Operations Manager felügyel, nincs szükség új ügynökre. A munkaterület adatai hozzáadódnak az ügynökök konfigurációjához.
 
 ## <a name="enable-machines-in-the-workspace"></a>Gépek engedélyezése a munkaterületen
 

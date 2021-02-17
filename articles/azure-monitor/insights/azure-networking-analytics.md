@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 19370eee9d9fa524de9beeaa85a15521580bd8e6
-ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
+ms.openlocfilehash: cdb43bd8b91881905b1734d0c0b36c33fb27d232
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97707690"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577507"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure hálózatkezelési figyelési megoldások Azure Monitor
 
@@ -113,11 +113,11 @@ A hálózati áttekintési munkafüzet lehetővé teszi a Azure Monitor és Log 
 
 * Központosított konzol figyeléshez és hibaelhárításhoz mind a [metrikai](../insights/network-insights-overview.md#resource-health-and-metrics) , mind a naplózási adatokkal.
 
-* Rugalmas vászon az egyéni Rich [vizualizációk](../platform/workbooks-overview.md#visualizations)létrehozásának támogatásához.
+* Rugalmas vászon az egyéni Rich [vizualizációk](../visualize/workbooks-overview.md#visualizations)létrehozásának támogatásához.
 
-* A [munkafüzet-sablonok](../platform/workbooks-overview.md#workbooks-versus-workbook-templates) szélesebb közösséggel való felhasználása és megosztása.
+* A [munkafüzet-sablonok](../visualize/workbooks-overview.md#workbooks-versus-workbook-templates) szélesebb közösséggel való felhasználása és megosztása.
 
-Az új munkafüzet-megoldás képességeivel kapcsolatos további információkért tekintse meg a [munkafüzetek – áttekintés](../platform/workbooks-overview.md)
+Az új munkafüzet-megoldás képességeivel kapcsolatos további információkért tekintse meg a [munkafüzetek – áttekintés](../visualize/workbooks-overview.md)
 
 ## <a name="migrating-from-azure-gateway-analytics-solution-to-azure-monitor-workbooks"></a>Migrálás az Azure Gateway Analytics megoldásból Azure Monitor munkafüzetekbe
 
@@ -129,7 +129,7 @@ Az új munkafüzet-megoldás képességeivel kapcsolatos további információk�
 > [!NOTE]
 > Az összes korábbi adatok már elérhetők a munkafüzeten belül a pont diagnosztikai beállításainál eredetileg engedélyezve lettek. Nincs szükség adatátvitelre.
 
-2. A Application Gateway-erőforráshoz tartozó [alapértelmezett adatáttekintési munkafüzet](#accessing-azure-application-gateway-analytics-via-azure-monitor-network-insights) elérése. A Application Gateway Analytics-megoldás által támogatott összes meglévő elemzés már jelen lesz a munkafüzetben. Ezt kiterjesztheti olyan egyéni [vizualizációk](../platform/workbooks-overview.md#visualizations) hozzáadásával, amelyek metrikai & naplózási adatokon alapulnak.
+2. A Application Gateway-erőforráshoz tartozó [alapértelmezett adatáttekintési munkafüzet](#accessing-azure-application-gateway-analytics-via-azure-monitor-network-insights) elérése. A Application Gateway Analytics-megoldás által támogatott összes meglévő elemzés már jelen lesz a munkafüzetben. Ezt kiterjesztheti olyan egyéni [vizualizációk](../visualize/workbooks-overview.md#visualizations) hozzáadásával, amelyek metrikai & naplózási adatokon alapulnak.
 
 3. Miután megtekintheti az összes mérőszámot és naplózási információt, hogy kiürítse az Azure Gateway Analytics megoldást a munkaterületről, törölheti a megoldást a megoldás erőforrás-oldaláról.
 
@@ -231,6 +231,6 @@ A módosítás előtt gyűjtött adatok nem láthatók az új megoldásban. Tov�
 ## <a name="troubleshooting"></a>Hibaelhárítás
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
-## <a name="next-steps"></a>További lépések
-* Az Azure-diagnosztika részletes adatait [a Azure monitorban található naplók](../log-query/log-query-overview.md) használatával tekintheti meg.
+## <a name="next-steps"></a>Következő lépések
+* Az Azure-diagnosztika részletes adatait [a Azure monitorban található naplók](../logs/log-query-overview.md) használatával tekintheti meg.
 

@@ -5,18 +5,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli, devx-track-azurepowershell
 ms.date: 05/13/2020
-ms.openlocfilehash: 5f849248021de3c17b69517d214f6f3fd6e4ee3a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b81a2021cabefd9587d448aa236e7e87bc254741
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945635"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590822"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor-naplók használata HDInsight-fürtök monitorozásához
 
 Megtudhatja, hogyan engedélyezheti Azure Monitor naplók a Hadoop figyelését a HDInsight-ben. És hogyan adhat hozzá HDInsight-figyelési megoldást.
 
-[Azure monitor a naplók](../azure-monitor/log-query/log-query-overview.md) egy Azure monitor szolgáltatás, amely figyeli a Felhőbeli és a helyszíni környezeteket. A figyelés a rendelkezésre állás és a teljesítmény fenntartása. A felhőben, a helyszíni környezetekben és más figyelési eszközökben lévő erőforrások által generált adatokat gyűjt. A rendszer a több forrásból származó elemzések megadására szolgál.
+[Azure monitor a naplók](../azure-monitor/logs/log-query-overview.md) egy Azure monitor szolgáltatás, amely figyeli a Felhőbeli és a helyszíni környezeteket. A figyelés a rendelkezésre állás és a teljesítmény fenntartása. A felhőben, a helyszíni környezetekben és más figyelési eszközökben lévő erőforrások által generált adatokat gyűjt. A rendszer a több forrásból származó elemzések megadására szolgál.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -24,7 +24,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Log Analytics-munkaterület. Ezt a munkaterületet a saját adattárházával, adatforrásaival és megoldásaival kapcsolatos egyedi Azure Monitor-naplózási környezetnek tekintheti át. Az utasításokért lásd: [log Analytics munkaterület létrehozása](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace).
+* Egy Log Analytics-munkaterület. Ezt a munkaterületet a saját adattárházával, adatforrásaival és megoldásaival kapcsolatos egyedi Azure Monitor-naplózási környezetnek tekintheti át. Az utasításokért lásd: [log Analytics munkaterület létrehozása](../azure-monitor/vm/quick-collect-azurevm.md#create-a-workspace).
 
 * Egy Azure-beli HDInsight-fürt. Jelenleg a következő HDInsight-fürtökkel rendelkező Azure Monitor naplókat használhatja:
 
@@ -144,7 +144,7 @@ Mivel a fürt egy teljesen új fürt, a jelentés nem jeleníti meg a tevékenys
 
 ## <a name="configuring-performance-counters"></a>Teljesítményszámlálók konfigurálása
 
-Az Azure monitor támogatja a fürt csomópontjaihoz tartozó teljesítmény-mérőszámok gyűjtését és elemzését. További információ: [Linux Performance adatforrások a Azure monitor-ben](../azure-monitor/platform/data-sources-performance-counters.md#linux-performance-counters).
+Az Azure monitor támogatja a fürt csomópontjaihoz tartozó teljesítmény-mérőszámok gyűjtését és elemzését. További információ: [Linux Performance adatforrások a Azure monitor-ben](../azure-monitor/agents/data-sources-performance-counters.md#linux-performance-counters).
 
 ## <a name="cluster-auditing"></a>Fürt naplózása
 

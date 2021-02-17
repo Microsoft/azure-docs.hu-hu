@@ -3,12 +3,12 @@ title: Használat elemzése az Azure Application Insights használatával | Micr
 description: Ismerje meg a felhasználókat, és hogy mit csinálnak az alkalmazással.
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 633d35ec16f5eb9de664421c38cd4c824dc240cf
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 0888b6743a10c9934ab85a6f2b3b637b857f643a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233848"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583408"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Használatelemzés az Application Insights szolgáltatással
 
@@ -38,7 +38,7 @@ A legjobb megoldás a Application Insights telepítésével érhető el az App S
 
     A webhelyek figyeléséhez szükséges speciális konfigurációk megismeréséhez tekintse meg a [JavaScript SDK-referenciát ismertető cikket](./javascript.md).
 
-3. **Mobile App code:** Az App Center SDK használatával gyűjthet eseményeket az alkalmazásból, majd az események másolatait elküldheti az elemzéshez az [útmutató](../learn/mobile-center-quickstart.md)alapján Application Insights.
+3. **Mobile App code:** Az App Center SDK használatával gyűjthet eseményeket az alkalmazásból, majd az események másolatait elküldheti az elemzéshez az [útmutató](../app/mobile-center-quickstart.md)alapján Application Insights.
 
 4. **Telemetria beolvasása:** Futtassa a projektet hibakeresési módban néhány percre, majd keresse meg az eredményeket a Application Insights áttekintés paneljén.
 
@@ -174,11 +174,11 @@ A webalkalmazás-inicializáló, például a Global.asax.cs:
 
 Minden új TelemetryClients automatikusan hozzáadja a megadott tulajdonságérték értékét. Az egyes telemetria-események felülbírálják az alapértelmezett értékeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
    - [Felhasználók, munkamenetek, események](usage-segmentation.md)
    - [Tölcsérek](usage-funnels.md)
-   - [Megőrzés](usage-retention.md)
+   - [Visszatartás](usage-retention.md)
    - [Felhasználókövetés](usage-flows.md)
-   - [Munkafüzetek](../platform/workbooks-overview.md)
+   - [Munkafüzetek](../visualize/workbooks-overview.md)
    - [Felhasználói környezet hozzáadása](usage-send-user-context.md)
 

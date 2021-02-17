@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: tutorial
-ms.date: 10/13/2020
+ms.date: 02/12/2021
 ms.author: cherylmc
-ms.openlocfilehash: 54aca389ea56594b004212c1479d5cc2568a2527
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 60b49e5b6e103a85d79cf8495f2743b22e434c96
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560880"
+ms.locfileid: "100586805"
 ---
 # <a name="tutorial-configure-bastion-and-connect-to-a-windows-vm-through-a-browser"></a>Oktatóanyag: a Bastion konfigurálása és a Windows rendszerű virtuális gépekhez való kapcsolódás böngésző használatával
 

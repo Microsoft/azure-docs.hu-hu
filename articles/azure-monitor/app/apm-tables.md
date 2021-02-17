@@ -3,16 +3,16 @@ title: Azure Monitor Application Insights munkaterület-alapú erőforrás-sém�
 description: Ismerkedjen meg a Azure Monitor Application Insights munkaterület-alapú erőforrások új táblázatos struktúrájával és sémájával.
 ms.topic: conceptual
 ms.date: 05/09/2020
-ms.openlocfilehash: e63d4a680ad76ccd6895aed53f3276a5775b1226
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ef9d22cd2b45679928ee54778b2a521ea9ecab03
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385965"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575595"
 ---
 # <a name="workspace-based-resource-changes"></a>Munkaterület-alapú erőforrás-változások
 
-A [munkaterület-alapú Application Insights erőforrások](create-workspace-resource.md)bevezetését megelőzően Application Insights az adatok a Azure monitor egyéb naplófájljaitól elkülönítve vannak tárolva. Mindkettő az Azure Adatkezelőon alapul, és ugyanazt a Kusto lekérdezési nyelvet (KQL) használja. Ezt a [Azure monitor naplóiban](../platform/data-platform-logs.md)ismertetjük.
+A [munkaterület-alapú Application Insights erőforrások](create-workspace-resource.md)bevezetését megelőzően Application Insights az adatok a Azure monitor egyéb naplófájljaitól elkülönítve vannak tárolva. Mindkettő az Azure Adatkezelőon alapul, és ugyanazt a Kusto lekérdezési nyelvet (KQL) használja. Ezt a [Azure monitor naplóiban](../logs/data-platform-logs.md)ismertetjük.
 
 A munkaterületen alapuló Application Insights erőforrás-adathalmazok egy Log Analytics munkaterületen vannak tárolva, amelyek más megfigyelési és alkalmazásadatok. Ez egyszerűbbé teszi a konfigurációt azáltal, hogy könnyebben elemezheti az adatelemzést több megoldás között, és kihasználhatja a munkaterületek képességeit.
 
@@ -464,6 +464,6 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Metrikák böngészése](../platform/metrics-charts.md)
-* [Analytics-lekérdezések](../log-query/log-query-overview.md)
+* [Metrikák böngészése](../essentials/metrics-charts.md)
+* [Analytics-lekérdezések](../logs/log-query-overview.md)
 
