@@ -1,22 +1,22 @@
 ---
-title: Egyéni modellek
+title: DTDL modellek
 titleSuffix: Azure Digital Twins
-description: Ismerje meg, hogy az Azure Digital Twins hogyan használja a felhasználó által definiált modelleket a környezetben található entitások leírására.
+description: Ismerje meg, hogy az Azure Digital Twins hogyan használja az egyéni modelleket a környezetben található entitások leírására.
 author: baanders
 ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 599bb93e747acf504a4ebf43aaea771ed5064886
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 9abf389eb7f8862440f860c53a0dbd8b10315c67
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131389"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558154"
 ---
-# <a name="understand-twin-models-in-azure-digital-twins"></a>A Twin modellek ismertetése az Azure Digital Twinsban
+# <a name="understand-twin-models-in-azure-digital-twins"></a>Az Azure Digital Twinsbeli ikermodellek ismertetése
 
-Az Azure Digital Twins egyik fő jellemzője, hogy saját szókincset definiálhat, és saját maga által definiált üzleti feltételeit felépítheti. Ezt a képességet felhasználó által definiált **modelleken** keresztül biztosítjuk. A modelleket a világa leírásában szereplő nevekre lehet gondolni. 
+Az Azure Digital Twins egyik fő jellemzője, hogy saját szókincset definiálhat, és saját maga által definiált üzleti feltételeit felépítheti. Ezt a képességet a felhasználó által megadott **modelleken** keresztül biztosítjuk. A modelleket a világa leírásában szereplő nevekre lehet gondolni. 
 
 A modell hasonlít egy objektumorientált programozási nyelv **osztályára** , amely egy adott koncepcióhoz tartozó adatalakzatot határoz meg a valós munkahelyi környezetben. A modellek névvel rendelkeznek (például a *Room* vagy a *hőmérséklet-érzékelő*), és olyan elemeket tartalmaznak, mint például a tulajdonságok, telemetria/események és parancsok, amelyek leírják, hogy milyen típusú entitást lehet a környezetben. Később ezeket a modelleket fogja használni, hogy olyan [**digitális ikreket**](concepts-twins-graph.md) hozzon létre, amelyek megfelelnek az ilyen típusú leírásnak megfelelő entitásoknak.
 
@@ -24,7 +24,7 @@ Az Azure digitális ikrek modelljei a JSON-LD-alapú **Digital Twin Definition L
 
 ## <a name="digital-twin-definition-language-dtdl-for-models"></a>Digital Twin Definition Language (DTDL) modellekhez
 
-Az Azure Digital Twins modelljei a digitális Twins Definition Language (DTDL) használatával definiálhatók. A DTDL JSON-LD-alapú, és a programozási nyelvtől független. A DTDL nem kizárólagos az Azure Digital Twins-ban, de más IoT-szolgáltatásokban, például a [IoT Plug and Playban](../iot-pnp/overview-iot-plug-and-play.md)is használhatók. 
+Az Azure Digital Twins-modellek a Digital Twins Definition Language (DTDL) segítségével vannak definiálva. A DTDL a JSON-LD nyelven alapul, és programnyelvtől független. A DTDL nem kizárólagos az Azure Digital Twins-ban, de más IoT-szolgáltatásokban, például a [IoT Plug and Playban](../iot-pnp/overview-iot-plug-and-play.md)is használhatók. 
 
 Az Azure Digital Twins a **DTDL _2-es verzióját_** használja. A DTDL ezen verziójával kapcsolatos további információkért tekintse meg a specifikációs dokumentációt a GitHubon: [*Digital Twins Definition Language (DTDL) – 2. verzió*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). Az DTDL _1-es verziójának_ használata az Azure Digital Twins használatával már elavult.
 
@@ -35,7 +35,7 @@ Az Azure Digital Twins a **DTDL _2-es verzióját_** használja. A DTDL ezen ver
 
 ## <a name="elements-of-a-model"></a>A modell elemei
 
-A modell definícióján belül a legfelső szintű kódrészlet egy **illesztőfelület**. Ez magában foglalja a teljes modellt, a modell többi része pedig az illesztőfelületen belül van definiálva. 
+A modell definícióján belül a legfelső szintű kódrészlet egy **illesztőfelület**. Ez magában foglalja a teljes modellt, és a modell többi része az interfészen belül van definiálva. 
 
 A DTDL-modell illesztőfelülete nulla, egy vagy több műveletet is tartalmazhat a következő mezők közül:
 * **Tulajdonság** – a tulajdonságok olyan adatmezők, amelyek egy entitás állapotát jelölik (például a tulajdonságok számos objektumorientált programozási nyelven). A tulajdonságok biztonsági mentést végeznek, és bármikor olvashatók.
@@ -136,23 +136,31 @@ A modellek a környezetében lévő entitások megjelenítésére való megterve
 
 [!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
-## <a name="integrating-with-industry-standard-models"></a>Integrálás az iparági szabványnak megfelelő modellekkel
+## <a name="tools-for-models"></a>Modellek eszközei 
 
-Az iparági szabványokon alapuló modellek használata vagy a standard ontológia-képviselet (például RDF vagy bagoly) használata gazdag kiindulási pontot biztosít az Azure digitális Twins-modelljeinek tervezésekor. Az iparági modellek használata a szabványosítás és az információmegosztás terén is segít.
+Számos példa áll rendelkezésre, hogy még könnyebb legyen a modellek és a ontológiákat kezelése. Ebben az adattárban találhatók: [eszközök a digitális Twins Definition Language (DTDL) eszközhöz](https://github.com/Azure/opendigitaltwins-tools).
 
-Az Azure Digital Twins szolgáltatással való használathoz a modellnek a JSON-LD-alapú [**digitális Twins Definition Language (DTDL) nyelven**](concepts-models.md)kell szerepelnie. Ezért az iparági szabványnak megfelelő modell használatához először át kell alakítania a DTDL, hogy az Azure digitális Twins használhassa azt. A DTDL modell ezután az igazság forrásaként szolgál a modellhez az Azure Digital Twins-n belül.
+Ez a szakasz részletesen ismerteti a minták aktuális készletét.
 
-Az iparági szabványnak megfelelő modellek a DTDL való integrálásának két fő útja van:
-* Ha még nem hozza létre a modelleket, megtervezheti azokat a **meglévő Starter DTDL-ontológiákat** , amelyek az iparágra jellemző nyelvet tartalmaznak.
-* Ha már rendelkezik egy iparági szabványon alapuló meglévő modellel, a **DTDL konvertálnia kell őket** , hogy az Azure digitális Twins-ba kerüljön.
+### <a name="model-uploader"></a>Modell feltöltője 
 
-A két folyamattal kapcsolatos további információkért lásd [*: útmutató: az iparági szabványnak megfelelő modellek integrálása*](how-to-integrate-models.md).
+_**Modellek feltöltése az Azure Digital Twinsba**_
+
+Ha elkészült a modellek létrehozásával, kiterjesztésével vagy kiválasztásával, feltöltheti őket az Azure Digital Twins-példányba, hogy azok elérhetők legyenek a megoldásban. Ezt az [Azure Digital Twins API](how-to-use-apis-sdks.md)-k használatával végezheti el, a [*útmutató: DTDL-modellek kezelése*](how-to-manage-model.md#upload-models)című témakörben leírtak szerint.
+
+Ha azonban sok modell van feltöltve – vagy ha sok egymásrautaltsága lenne az egyéni feltöltések megrendeléséhez –, a minta használatával egyszerre több modellt is feltölthet: az [**Azure digitális Twins-modell feltöltője**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/ModelUploader). Kövesse a minta konfigurálásához és használatához szükséges utasításokat a modelleknek a saját példányba való feltöltéséhez.
+
+### <a name="model-visualizer"></a>Modell megjelenítő 
+
+_**Modellek megjelenítéséhez**_
+
+Miután feltöltötte a modelleket az Azure Digital Twins-példányba, megtekintheti a modelleket az Azure Digital Twins-példányban, beleértve az öröklési és a modellbeli kapcsolatokat is a [**ADT-modell**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer)megjelenítésével. Ez a minta jelenleg vázlat állapotban van. Javasoljuk, hogy a digitális Twins fejlesztői közösség kiterjessze és hozzájáruljanak a mintához. 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Tekintse meg, hogyan kezelhetők a modellek a DigitalTwinModels API-kkal:
-* [*Útmutató: egyéni modellek kezelése*](how-to-manage-model.md)
+* Ismerje meg az iparági szabványnak megfelelő ontológiákat alapuló modellek létrehozását: [ *fogalmak: Mi az az ontológia?*](concepts-ontologies.md)
 
-Vagy Ismerje meg, hogyan hozhatók létre a digitális ikrek a modellek alapján:
-* [*Fogalmak: digitális ikrek és a Twin gráf*](concepts-twins-graph.md)
+* A modellek kezelése az API-műveletekkel: [ *útmutató: DTDL-modellek kezelése*](how-to-manage-model.md)
+
+* Ismerje meg, hogyan használhatók a modellek a digitális Twins létrehozásához: [ *fogalmak: digitális ikrek és a Twin Graph*](concepts-twins-graph.md)
 

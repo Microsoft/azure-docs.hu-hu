@@ -8,14 +8,14 @@ author: vladvino
 ms.service: api-management
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 10/30/2020
+ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 3804bfb2a269c431b1a00947f5c7613566a78f49
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: acb121bb00df481c926ebed9594bf0fe1b9b17ed
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377505"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546635"
 ---
 # <a name="tutorial-use-revisions-to-make-non-breaking-api-changes-safely"></a>Oktatóanyag: a nem betörést jelentő API-k biztonságos módosítására szolgáló változatok használata
 Amikor az API készen áll, és a fejlesztők elkezdik a használatát, előbb-utóbb módosításokat kell végeznie az API-n, miközben nem akadályozza az API hívóit. Emellett az is hasznos, ha a fejlesztők értesülnek az elvégzett módosításokról. 
@@ -51,7 +51,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
    :::image type="content" source="media/api-management-getstarted-revise-api/07-add-revisions-01-add-new-revision.png" alt-text="API-változat hozzáadása":::
 
     > [!TIP]
-    > Az API helyi menüjében ( **...** ) is kiválaszthatja a **változat hozzáadása** elemet.
+    > Az API helyi menüjében (**...**) is kiválaszthatja a **változat hozzáadása** elemet.
 
 5. Adja meg az új változat leírását, amely alapján emlékezni fog a változat funkciójára.
 6. Válassza a **Létrehozás** lehetőséget,
@@ -69,7 +69,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     > [!TIP]
     > A változatválasztóval váltson arra a változatra, amelyen dolgozni kíván.
 1. Válassza a **+ Művelet hozzáadása** lehetőséget.
-1. Az új művelet legyen **POST** , a művelet Neve, Megjelenítendő neve és URL-címe pedig **test**.
+1. Az új művelet legyen **POST**, a művelet Neve, Megjelenítendő neve és URL-címe pedig **test**.
 1. **Mentse** az új műveletet.
 
    :::image type="content" source="media/api-management-getstarted-revise-api/07-add-revisions-02-make-changes.png" alt-text="Változat módosítása":::
@@ -78,14 +78,71 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="make-your-revision-current-and-add-a-change-log-entry"></a>Változat aktuálissá tétele és módosításinapló-bejegyzés hozzáadása
 
+### <a name="portal"></a>[Portál](#tab/azure-portal)
+
 1. Kattintson a **Változatok** fülre az oldal felső részén található menüben.
-1. Nyissa meg a **2. változat** helyi menüjét ( **...** ).
+1. Nyissa meg a **2. változat** helyi menüjét (**...**).
 1. Válassza a **jelenlegivé tétele** lehetőséget.
 1. Ha a módosítással kapcsolatos megjegyzéseket szeretne küldeni, jelölje be a közzététel **nyilvános módosítási naplóba** jelölőnégyzetet. Adja meg a változás leírását, amelyet a fejlesztők látnak, például: **tesztelési változatok. Új "teszt" művelet lett hozzáadva.**
 1. Most már a **2. változat** az aktuális.
 
     :::image type="content" source="media/api-management-getstarted-revise-api/revisions-menu.png" alt-text="Változat menü a változatok ablakban":::
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Az Azure CLI használatának megkezdéséhez:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Ezzel az eljárással hozhat létre és frissíthet kiadásokat.
+
+1. Az API-azonosítók megjelenítéséhez futtassa az az [APIM API List](/cli/azure/apim/api#az_apim_api_list) parancsot:
+
+   ```azurecli
+   az apim api list --resource-group apim-hello-word-resource-group \
+       --service-name apim-hello-world --output table
+   ```
+
+   A következő parancsban használandó API-azonosító az `Name` érték. Az API-változat az `ApiRevision` oszlopban található.
+
+1. A kiadás létrehozásához kiadási megjegyzéssel futtassa az az [APIM API Release Create](/cli/azure/apim/api/release#az_apim_api_release_create) parancsot:
+
+   ```azurecli
+   az apim api release create --resource-group apim-hello-word-resource-group \
+       --api-id demo-conference-api --api-revision 2 --service-name apim-hello-world \
+       --notes 'Testing revisions. Added new "test" operation.'
+   ```
+
+   A kiadott változat lesz az aktuális változat.
+
+1. A kiadások megtekintéséhez használja az az [APIM API Release List](/cli/azure/apim/api/release#az_apim_api_release_list) parancsot:
+
+   ```azurecli
+   az apim api release list --resource-group apim-hello-word-resource-group \
+       --api-id echo-api --service-name apim-hello-world --output table
+   ```
+
+   A megadott megjegyzések megjelennek a changelog. Ezeket az előző parancs kimenetében tekintheti meg.
+
+1. Kiadás létrehozásakor a `--notes` paraméter megadása nem kötelező. A jegyzeteket később is hozzáadhatja vagy módosíthatja az az [APIM API Release Update](/cli/azure/apim/api/release#az_apim_api_release_update) parancs használatával:
+
+   ```azurecli
+   az apim api release update --resource-group apim-hello-word-resource-group \
+       --api-id demo-conference-api --release-id 00000000000000000000000000000000 \
+       --service-name apim-hello-world --notes "Revised notes."
+   ```
+
+   Használja a `Name` kiadási azonosító oszlopban található értéket.
+
+Az az [APIM API Release delete ](/cli/azure/apim/api/release#az_apim_api_release_delete) paranccsal eltávolíthatja az összes kiadást:
+
+```azurecli
+az apim api release delete --resource-group apim-hello-word-resource-group \
+    --api-id demo-conference-api --release-id 00000000000000000000000000000000 
+    --service-name apim-hello-world
+```
+
+---
 
 ## <a name="browse-the-developer-portal-to-see-changes-and-change-log"></a>A fejlesztői portál tallózása a módosítások és a módosítási napló megtekintéséhez
 
@@ -93,7 +150,7 @@ Ha kipróbálta a [fejlesztői portált](api-management-howto-developer-portal-c
 
 1. Az Azure Portalon válassza az **API-k** lehetőséget.
 1. Válassza a **fejlesztői portál** lehetőséget a felső menüben.
-1. A fejlesztői portálon válassza az **API** -k, majd a **bemutató konferencia API** elemet.
+1. A fejlesztői portálon válassza az **API**-k, majd a **bemutató konferencia API** elemet.
 1. Figyelje meg, hogy az új **test** művelet már elérhető.
 1. Az API neve közelében válassza a **changelog** lehetőséget.
 1. Figyelje meg, hogy a módosításinapló-bejegyzés megjelenik a listában.

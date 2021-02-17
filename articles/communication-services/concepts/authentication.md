@@ -2,19 +2,19 @@
 title: Hitelesítés az Azure kommunikációs szolgáltatásokban
 titleSuffix: An Azure Communication Services concept document
 description: Ismerje meg, hogy az alkalmazás vagy szolgáltatás milyen módon tud hitelesíteni a kommunikációs szolgáltatásokban.
-author: matthewrobertson
+author: GrantMeStrength
 manager: jken
 services: azure-communication-services
-ms.author: marobert
+ms.author: jken
 ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 4d6e02852dcd2d30a764417a4b5e0e012a1d2ab5
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: e20c822c2e792c67ed655080385a3c90794d53fd
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571096"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545139"
 ---
 # <a name="authenticate-to-azure-communication-services"></a>Hitelesítés az Azure kommunikációs szolgáltatásokban
 
@@ -72,11 +72,11 @@ Ha nem használ ügyféloldali kódtárat az Azure kommunikációs szolgáltatá
 
 A felhasználói hozzáférési tokenek lehetővé teszik az ügyfélalkalmazások számára, hogy közvetlenül az Azure kommunikációs szolgáltatásokkal hitelesítsék magukat. Ennek eléréséhez állítson be egy megbízható szolgáltatást, amely hitelesíti az alkalmazás felhasználóit, és kiadja a felhasználói hozzáférési jogkivonatokat a felügyeleti ügyféloldali kódtár használatával. Az architektúrával kapcsolatos szempontokkal kapcsolatos további információkért tekintse meg az [ügyfél és a kiszolgáló architektúra](./client-and-server-architecture.md) fogalmi dokumentációját.
 
-Az `CommunicationUserCredential` osztály tartalmazza azt a logikát, amely a felhasználói hozzáférési jogkivonat hitelesítő adatainak megadására szolgál az ügyféloldali kódtárak számára, és kezeli az életciklusát.
+Az `CommunicationTokenCredential` osztály tartalmazza azt a logikát, amely a felhasználói hozzáférési jogkivonat hitelesítő adatainak megadására szolgál az ügyféloldali kódtárak számára, és kezeli az életciklusát.
 
 ### <a name="initialize-the-client-libraries"></a>Az ügyféloldali kódtárak inicializálása
 
-A felhasználói hozzáférési jogkivonat hitelesítését igénylő Azure kommunikációs szolgáltatások ügyféloldali kódtárainak inicializálásához először létre kell hoznia a osztály egy példányát `CommunicationUserCredential` , majd egy API-ügyfél inicializálásához használhatja azt.
+A felhasználói hozzáférési jogkivonat hitelesítését igénylő Azure kommunikációs szolgáltatások ügyféloldali kódtárainak inicializálásához először létre kell hoznia a osztály egy példányát `CommunicationTokenCredential` , majd egy API-ügyfél inicializálásához használhatja azt.
 
 A következő kódrészletek bemutatják, hogyan inicializálhatja a csevegési ügyfél függvénytárát felhasználói hozzáférési jogkivonattal:
 
@@ -86,8 +86,8 @@ A következő kódrészletek bemutatják, hogyan inicializálhatja a csevegési 
 // user access tokens should be created by a trusted service using the Administration client library
 var token = "<valid-user-access-token>";
 
-// create a CommunicationUserCredential instance
-var userCredential = new CommunicationUserCredential(token);
+// create a CommunicationTokenCredential instance
+var userCredential = new CommunicationTokenCredential(token);
 
 // initialize the chat client library with the credential
 var chatClient = new ChatClient(ENDPOINT_URL, userCredential);
@@ -99,8 +99,8 @@ var chatClient = new ChatClient(ENDPOINT_URL, userCredential);
 // user access tokens should be created by a trusted service using the Administration client library
 const token = "<valid-user-access-token>";
 
-// create a CommunicationUserCredential instance with the AzureCommunicationUserCredential class
-const userCredential = new AzureCommunicationUserCredential(token);
+// create a CommunicationTokenCredential instance with the AzureCommunicationTokenCredential class
+const userCredential = new AzureCommunicationTokenCredential(token);
 
 // initialize the chat client library with the credential
 let chatClient = new ChatClient(ENDPOINT_URL, userCredential);
@@ -112,8 +112,8 @@ let chatClient = new ChatClient(ENDPOINT_URL, userCredential);
 // user access tokens should be created by a trusted service using the Administration client library
 let token = "<valid-user-access-token>";
 
-// create a CommunicationUserCredential instance
-let userCredential = try CommunicationUserCredential(token: token)
+// create a CommunicationTokenCredential instance
+let userCredential = try CommunicationTokenCredential(token: token)
 
 // initialize the chat client library with the credential
 let chatClient = try CommunicationChatClient(credential: userCredential, endpoint: ENDPOINT_URL)
@@ -125,8 +125,8 @@ let chatClient = try CommunicationChatClient(credential: userCredential, endpoin
 // user access tokens should be created by a trusted service using the Administration client library
 String token = "<valid-user-access-token>";
 
-// create a CommunicationUserCredential instance
-CommunicationUserCredential userCredential = new CommunicationUserCredential(token);
+// create a CommunicationTokenCredential instance
+CommunicationTokenCredential userCredential = new CommunicationTokenCredential(token);
 
 // Initialize the chat client
 final ChatClientBuilder builder = new ChatClientBuilder();
@@ -140,12 +140,12 @@ ChatClient chatClient = builder.buildClient();
 
 ### <a name="refreshing-user-access-tokens"></a>Felhasználói hozzáférési tokenek frissítése
 
-A felhasználói hozzáférési tokenek olyan rövid élettartamú hitelesítő adatok, amelyeket újra kell adni ahhoz, hogy a felhasználók nem tapasztalják a szolgáltatások megszakadását. A `CommunicationUserCredential` konstruktor egy frissítési visszahívási függvényt fogad el, amely lehetővé teszi a felhasználói hozzáférési tokenek lejárata előtti frissítését. Ezt a visszahívást kell használnia ahhoz, hogy egy új felhasználói hozzáférési tokent beolvasson a megbízható szolgáltatásból.
+A felhasználói hozzáférési tokenek olyan rövid élettartamú hitelesítő adatok, amelyeket újra kell adni ahhoz, hogy a felhasználók nem tapasztalják a szolgáltatások megszakadását. A `CommunicationTokenCredential` konstruktor egy frissítési visszahívási függvényt fogad el, amely lehetővé teszi a felhasználói hozzáférési tokenek lejárata előtti frissítését. Ezt a visszahívást kell használnia ahhoz, hogy egy új felhasználói hozzáférési tokent beolvasson a megbízható szolgáltatásból.
 
 #### <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
-var userCredential = new CommunicationUserCredential(
+var userCredential = new CommunicationTokenCredential(
     initialToken: token,
     refreshProactively: true,
     tokenRefresher: cancellationToken => fetchNewTokenForCurrentUser(cancellationToken)
@@ -155,7 +155,7 @@ var userCredential = new CommunicationUserCredential(
 #### <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
-const userCredential = new AzureCommunicationUserCredential({
+const userCredential = new AzureCommunicationTokenCredential({
   tokenRefresher: async () => fetchNewTokenForCurrentUser(),
   refreshProactively: true,
   initialToken: token
@@ -165,7 +165,7 @@ const userCredential = new AzureCommunicationUserCredential({
 #### <a name="swift"></a>[Swift](#tab/swift)
 
 ```swift
- let userCredential = try CommunicationUserCredential(initialToken: token, refreshProactively: true) { |completionHandler|
+ let userCredential = try CommunicationTokenCredential(initialToken: token, refreshProactively: true) { |completionHandler|
    let updatedToken = fetchTokenForCurrentUser()
    completionHandler(updatedToken, nil)
  }
@@ -181,13 +181,13 @@ TokenRefresher tokenRefresher = new TokenRefresher() {
     }
 }
 
-CommunicationUserCredential credential = new CommunicationUserCredential(tokenRefresher, token, true);
+CommunicationTokenCredential credential = new CommunicationTokenCredential(tokenRefresher, token, true);
 ```
 ---
 
 A `refreshProactively` beállítással eldöntheti, hogyan fogja kezelni a jogkivonat életciklusát. Alapértelmezés szerint, ha egy jogkivonat elavult, a visszahívás letiltja az API-kérelmeket, és megkísérli a frissítését. Ha a `refreshProactively` visszahívásra van beállítva, a `true` jogkivonat lejárata előtt aszinkron módon van ütemezve és végrehajtva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Felhasználói hozzáférési tokenek létrehozása](../quickstarts/access-tokens.md)

@@ -1,5 +1,5 @@
 ---
-title: Szerepkör-hozzárendelés hozzáadásának lépései – Azure RBAC
+title: Azure-szerepkörök hozzárendelésének lépései – Azure RBAC
 description: Megtudhatja, hogyan rendelhet Azure-szerepköröket felhasználókhoz, csoportokhoz, egyszerű szolgáltatásokhoz vagy felügyelt identitásokhoz az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
 services: active-directory
 author: rolyon
@@ -7,18 +7,18 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 09/30/2020
+ms.date: 02/15/2021
 ms.author: rolyon
-ms.openlocfilehash: e746c7d09bb568d457ab1037b56c7c2973b29ad7
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 081335779ffc4b3a6ddf09e56b773c6d34b210be
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98117248"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556033"
 ---
-# <a name="steps-to-add-a-role-assignment"></a>Szerepkör-hozzárendelés hozzáadásának lépései
+# <a name="steps-to-assign-an-azure-role"></a>Azure-szerepkörök hozzárendelésének lépései
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] Ez a cikk a szerepkör-hozzárendelések [Azure Portal](role-assignments-portal.md), [Azure PowerShell](role-assignments-powershell.md), az [Azure CLI](role-assignments-cli.md)vagy a [REST API](role-assignments-rest.md)használatával történő hozzáadásának magas szintű lépéseit ismerteti.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] Ez a cikk az Azure-szerepkörök [Azure Portal](role-assignments-portal.md), [Azure PowerShell](role-assignments-powershell.md), az [Azure CLI](role-assignments-cli.md)vagy a [REST API](role-assignments-rest.md)használatával történő hozzárendelésének magas szintű lépéseit ismerteti.
 
 ## <a name="step-1-determine-who-needs-access"></a>1. lépés: annak meghatározása, hogy kinek van hozzáférése
 
@@ -79,16 +79,16 @@ A szerepkörök hozzárendeléséhez olyan felhasználóval kell bejelentkeznie,
 
 Ha a felhasználói fiókja nem jogosult szerepkör hozzárendelésére az előfizetésen belül, hibaüzenet jelenik meg arról, hogy a fiókja "nem rendelkezik engedéllyel a Microsoft. Authorization/roleAssignments/Write" művelet végrehajtásához. " Ebben az esetben vegye fel a kapcsolatot az előfizetés rendszergazdájával, mivel az engedélyeket az Ön nevében rendelheti hozzá.
 
-## <a name="step-5-add-role-assignment"></a>5. lépés Szerepkör-hozzárendelés hozzáadása
+## <a name="step-5-assign-role"></a>5. lépés Szerepkör hozzárendelése
 
-Ha ismeri a rendszerbiztonsági tag, a szerepkör és a hatókört, hozzárendelheti a szerepkört. Szerepkör-hozzárendeléseket a Azure Portal, a Azure PowerShell, az Azure CLI, az Azure SDK-k vagy a REST API-k használatával adhat hozzá. Az egyes előfizetésekben akár **2000** szerepkör-hozzárendelést is megadhat. Ez a korlát tartalmazza az előfizetés, az erőforráscsoport és az erőforrás-hatókörök szerepkör-hozzárendeléseit. Az egyes felügyeleti csoportokban akár **500** szerepkör-hozzárendelést is megadhat.
+Ha ismeri a rendszerbiztonsági tag, a szerepkör és a hatókört, hozzárendelheti a szerepkört. Szerepköröket a Azure Portal, a Azure PowerShell, az Azure CLI, az Azure SDK-k vagy a REST API-k használatával rendelhet hozzá. Az egyes előfizetésekben akár **2000** szerepkör-hozzárendelést is megadhat. Ez a korlát tartalmazza az előfizetés, az erőforráscsoport és az erőforrás-hatókörök szerepkör-hozzárendeléseit. Az egyes felügyeleti csoportokban akár **500** szerepkör-hozzárendelést is megadhat.
 
-A szerepkör-hozzárendelések hozzáadásának részletes lépéseit az alábbi cikkekben tekintheti meg.
+A szerepkörök hozzárendelésének részletes lépéseiért tekintse meg a következő cikkeket.
 
-- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](role-assignments-portal.md)
-- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure PowerShell használatával](role-assignments-powershell.md)
-- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure CLI használatával](role-assignments-cli.md)
-- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása a REST API használatával](role-assignments-rest.md)
+- [Azure-szerepkörök kiosztása a Azure Portal használatával](role-assignments-portal.md)
+- [Azure-szerepkörök kiosztása Azure PowerShell használatával](role-assignments-powershell.md)
+- [Azure-szerepkörök kiosztása az Azure CLI-vel](role-assignments-cli.md)
+- [Azure-szerepkörök kiosztása a REST API használatával](role-assignments-rest.md)
 
 ## <a name="next-steps"></a>Következő lépések
 

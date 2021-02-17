@@ -3,17 +3,17 @@ title: Privát végpont létrehozása biztonságos kapcsolatok létrehozásához
 titleSuffix: Azure Cognitive Search
 description: Hozzon létre egy magánhálózati végpontot egy virtuális hálózaton egy Azure Cognitive Search szolgáltatás biztonságos kapcsolataihoz.
 manager: nitinme
-author: mrcarter8
-ms.author: mcarter
+author: markheff
+ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/19/2020
-ms.openlocfilehash: 6ee72a25fc8435159ae75ac3296742eda58617b6
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.date: 02/16/2021
+ms.openlocfilehash: 7445ac5d750ac29d3e6ce466a48e82efd1bcde40
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779940"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545530"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Hozzon létre egy privát végpontot biztonságos kapcsolódáshoz az Azure Cognitive Search
 
@@ -21,8 +21,10 @@ Ebben a cikkben a Azure Portal használatával hozzon létre egy új Azure Cogni
 
 A privát végpontokat az [Azure privát kapcsolata](../private-link/private-link-overview.md)külön szolgáltatásként biztosíthatja. A költségekkel kapcsolatos további információkért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/private-link/).
 
-> [!Important]
-> Az Azure Cognitive Search privát végpontjának támogatása a Azure Portal vagy a 2020-03-13-es [verziójú felügyeleti REST API](/rest/api/searchmanagement/)használatával konfigurálható. Ha a szolgáltatás végpontja privát, egyes portál-funkciók le vannak tiltva. Megtekintheti és kezelheti a szolgáltatási szint adatait, de a portál hozzáférése az adatok indexeléséhez és a szolgáltatás különböző összetevőihez, például az index, az indexelő és a készségkészlet-definíciók biztonsági okokból korlátozottak. A portál alternatívájaként a [vs Code bővítménnyel](https://aka.ms/vscode-search) is használhatja a szolgáltatás különböző összetevőit.
+Az ebben a cikkben leírtak szerint létrehozhat egy privát végpontot a Azure Portalban. Azt is megteheti, hogy a 2020-03-13-es, [Azure PowerShell](/powershell/module/az.search)-es vagy az [Azure CLI](/cli/azure/search)-es [verziójának felügyeleti REST API verzióját](/rest/api/searchmanagement/)használja.
+
+> [!NOTE]
+> Ha a szolgáltatás végpontja privát, egyes portál-funkciók le vannak tiltva. Megtekintheti és kezelheti a szolgáltatási szint adatait, de az indexet, az indexelő és a készségkészlet adatait biztonsági okokból elrejtheti. A portál alternatívájaként a [vs Code bővítménnyel](https://aka.ms/vscode-search) is használhatja a szolgáltatás különböző összetevőit.
 
 ## <a name="why-use-a-private-endpoint-for-secure-access"></a>Miért érdemes privát végpontot használni a biztonságos hozzáféréshez?
 
@@ -47,7 +49,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     | Előfizetés | Az előfizetés kiválasztása|
     | Erőforráscsoport | Válassza az **új létrehozása** elemet, írja be a *myResourceGroup*, majd kattintson **az OK gombra** . |
     | Name | *MyVirtualNetwork* megadása |
-    | Régió | Válassza ki a kívánt régiót |
+    | Region | Válassza ki a kívánt régiót |
     |||
 
 1. Hagyja meg az alapértelmezett értékeket a többi beállításnál. Kattintson a **felülvizsgálat + létrehozás** , majd a **Létrehozás** elemre.
@@ -96,7 +98,7 @@ Ebben a szakaszban egy új Azure Cognitive Search szolgáltatást fog létrehozn
     | Privát DNS-zóna  | Hagyja meg az alapértelmezett * * (új) privatelink.search.windows.net * * értéket. |
     |||
 
-1. Kattintson az **OK** gombra. 
+1. Válassza az **OK** lehetőséget. 
 
 1. Válassza az **Áttekintés + létrehozás** lehetőséget. Az **Áttekintés és létrehozása** lapra kerül, ahol az Azure érvényesíti az Ön konfigurációját. 
 
@@ -121,9 +123,9 @@ Ebben a szakaszban egy új Azure Cognitive Search szolgáltatást fog létrehozn
     | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget. Ezt az előző szakaszban hozta létre.  |
     | **PÉLDÁNY RÉSZLETEI** |  |
     | Virtuális gép neve | Adja meg a *myVm*. |
-    | Régió | Válassza az **USA nyugati** régiója vagy bármely Ön által használt régiót. |
+    | Region | Válassza az **USA nyugati** régiója vagy bármely Ön által használt régiót. |
     | Rendelkezésre állási beállítások | Az alapértelmezett **infrastruktúra-redundancia megadása nem kötelező**. |
-    | Rendszerkép | Válassza a **Windows Server 2019 Datacenter** lehetőséget. |
+    | Kép | Válassza a **Windows Server 2019 Datacenter** lehetőséget. |
     | Méret | Hagyja meg az alapértelmezett **standard DS1 v2** értéket. |
     | **RENDSZERGAZDAFIÓK** |  |
     | Felhasználónév | Adja meg a választott felhasználónevet. |
@@ -180,7 +182,7 @@ Töltse le, majd kapcsolódjon a virtuális gép *myVm* a következőképpen:
     1. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
 
         > [!NOTE]
-        > Előfordulhat, hogy a **More choices**  >  virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell választania **egy másik fiók használatával**.
+        > Előfordulhat, hogy a   >  virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell választania **egy másik fiók használatával**.
 
 1. Válassza az **OK** lehetőséget.
 
@@ -222,5 +224,5 @@ Ha végzett a privát végpont, a Search szolgáltatás és a virtuális gép ha
 1. Válassza az **Erőforráscsoport törlése** elemet. 
 1. Írja be a  *myResourceGroup*   **nevet az erőforráscsoport neveként** , majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben létrehozott egy virtuális GÉPET egy virtuális hálózaton és egy keresési szolgáltatást egy privát végponttal. Az internetről csatlakozik a virtuális géphez, és biztonságosan kommunikál a keresési szolgáltatással a privát hivatkozás használatával. További információ a privát végpontról: [Mi az az Azure Private Endpoint?](../private-link/private-endpoint-overview.md).

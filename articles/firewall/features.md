@@ -5,41 +5,42 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 10/08/2020
+ms.date: 02/16/2021
 ms.author: victorh
-ms.openlocfilehash: 69eaf3ca60378afd810d712d85ea7ef732e41e3e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 9f89d84fc7033645b2b094e9f40a1d85b076623b
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788230"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100544833"
 ---
 # <a name="azure-firewall-features"></a>Az Azure Firewall funkciói
 
-A [Azure Firewall](overview.md) felügyelt, felhőalapú hálózati biztonsági szolgáltatás, amely védelmet nyújt az Azure-Virtual Network erőforrásainak.
+A [Azure Firewall](overview.md) felügyelt, felhőalapú hálózati biztonsági szolgáltatás, amely megvédi az Azure-Virtual Network erőforrásait.
 
 ![Tűzfal áttekintése](media/overview/firewall-threat.png)
 
 Azure Firewall a következő funkciókat tartalmazza:
 
-- [Beépített magas rendelkezésre állás](#built-in-high-availability)
-- [Rendelkezésre állási zónák](#availability-zones)
-- [Korlátlan Felhőbeli méretezhetőség](#unrestricted-cloud-scalability)
-- [Alkalmazások teljes tartománynevére vonatkozó szűrési szabályok](#application-fqdn-filtering-rules)
-- [Hálózati forgalomra vonatkozó szűrési szabályok](#network-traffic-filtering-rules)
-- [FQDN-címkék](#fqdn-tags)
-- [Szolgáltatáscímkék](#service-tags)
-- [Fenyegetésészlelési intelligencia](#threat-intelligence)
-- [Kimenő SNAT-támogatás](#outbound-snat-support)
-- [Bejövő DNAT-támogatás](#inbound-dnat-support)
-- [Több nyilvános IP-cím](#multiple-public-ip-addresses)
-- [Azure Monitor naplózás](#azure-monitor-logging)
-- [Alagúthasználat kényszerítése](#forced-tunneling)
-- [Tanúsítványok](#certifications)
+- Beépített magas rendelkezésre állás
+- Rendelkezésre állási zónák
+- Korlátlan felhőalapú skálázhatóság
+- Alkalmazások teljes tartománynevére vonatkozó szűrési szabályok
+- Hálózati forgalomra vonatkozó szűrési szabályok
+- FQDN-címkék
+- Szolgáltatáscímkék
+- Fenyegetésészlelési intelligencia
+- Kimenő SNAT-támogatás
+- Bejövő DNAT-támogatás
+- Több nyilvános IP-cím
+- Azure Monitor-naplózás
+- Alagúthasználat kényszerítése
+- Webes kategóriák (előzetes verzió)
+- Tanúsítványok
 
 ## <a name="built-in-high-availability"></a>Beépített magas rendelkezésre állás
 
-A magas rendelkezésre állás beépített, így nincs szükség további terheléselosztó megadására, és nincs szükség a konfigurálásra.
+A magas rendelkezésre állás beépített, ezért nincs szükség további terheléselosztó megadására, és nincs szükség a konfigurálásra.
 
 ## <a name="availability-zones"></a>Rendelkezésre állási zónák
 
@@ -97,7 +98,7 @@ A tűzfallal [több nyilvános IP-címet](deploy-multi-public-ip-powershell.md) 
 Ez a következő forgatókönyveket teszi lehetővé:
 
 - **DNAT** – a háttér-kiszolgálókra több szabványos port-példányt is lefordíthat. Ha például két nyilvános IP-címmel rendelkezik, akkor mindkét IP-címhez lefordíthatja a 3389-es (RDP) TCP-portot.
-- **SNAT** – további portok érhetők el a kimenő SNAT-kapcsolatokhoz, ami csökkenti a SNAT-portok kimerülésének lehetséges lehetőségét. Ekkor Azure Firewall véletlenszerűen kiválasztja a forrás nyilvános IP-címét, amelyet a rendszer a kapcsolódáshoz használ. Ha a hálózaton bármilyen lefelé irányuló szűrés van érvényben, engedélyeznie kell a tűzfalhoz társított összes nyilvános IP-címet. Érdemes lehet egy [nyilvános IP-cím előtagot](../virtual-network/public-ip-address-prefix.md) használni a konfiguráció egyszerűsítéséhez.
+- **SNAT** – további portok érhetők el a kimenő SNAT kapcsolatok számára, ami csökkenti a SNAT-portok kimerülésének lehetséges lehetőségét. Ekkor Azure Firewall véletlenszerűen kiválasztja a forrás nyilvános IP-címét, amelyet a rendszer a kapcsolódáshoz használ. Ha a hálózaton bármilyen lefelé irányuló szűrés van érvényben, engedélyeznie kell a tűzfalhoz társított összes nyilvános IP-címet. Érdemes lehet egy [nyilvános IP-cím előtagot](../virtual-network/public-ip-address-prefix.md) használni a konfiguráció egyszerűsítéséhez.
 
 ## <a name="azure-monitor-logging"></a>Azure Monitor-naplózás
 
@@ -111,10 +112,28 @@ Azure Firewall munkafüzet rugalmas vásznon biztosít Azure Firewall adatelemz�
 
 A Azure Firewall konfigurálható úgy, hogy az összes internetes forgalmat a következő ugrásra irányítsa, ahelyett, hogy közvetlenül az internethez kellene jutnia. Előfordulhat például, hogy egy helyszíni peremhálózati tűzfallal vagy más hálózati virtuális berendezéssel (NVA) szeretné feldolgozni a hálózati forgalmat az internetre való továbbítás előtt. További információ: [Azure Firewall kényszerített bújtatás](forced-tunneling.md).
 
+## <a name="web-categories-preview"></a>Webes kategóriák (előzetes verzió)
+
+A webes kategóriák lehetővé teszik a rendszergazdák számára, hogy engedélyezik vagy megtagadják a webhelyhez való hozzáférést, például a szerencsejáték-webhelyeket, a közösségi média webhelyeket A webes kategóriák a Azure Firewall standard csomag részét képezik, de jobban hangolva vannak a Azure Firewall Premium Preview-ban. A standard SKU-ban található, a teljes tartománynév alapján a kategóriának megfelelő webes kategóriák lehetőséggel ellentétben a prémium SKU a HTTP-és a HTTPS-forgalom teljes URL-címének megfelelően a kategóriának felel meg. További információ a Azure Firewall Premium előzetes verziójáról: [Azure Firewall Premium Preview-funkciók](premium-features.md).
+
+Ha például Azure Firewall elfogja a HTTPS `www.google.com/news` -kérelmet, a következő kategorizálás várható: 
+
+- Firewall standard – a rendszer csak a teljes tartománynevet fogja megvizsgálni, ezért a `www.google.com` *keresőmotorként* lesz kategorizálva. 
+
+- Tűzfal Premium – a teljes URL-cím meg lesz vizsgálva, ezért `www.google.com/news` *hírekként* lesz kategorizálva.
+
+A kategóriákat a **felelősség**, a **nagy sávszélesség**, az **üzleti használat**, a **termelékenység elvesztése**, az **általános szörfözés** és a **Kategorizálatlan** kategóriák alapján rendezi a rendszer.
+
+### <a name="category-exceptions"></a>Kategória kivételei
+
+Kivételeket hozhat létre a webes kategória szabályaihoz. Hozzon létre egy külön engedélyezési vagy megtagadási szabályt a szabály gyűjtési csoportjában magasabb prioritással. Beállíthat például egy olyan szabálygyűjtemény-gyűjteményt `www.linkedin.com` , amely az 100-es prioritással rendelkezik, és olyan szabálygyűjtemény használatát teszi lehetővé, amely megtagadja a **közösségi hálózatkezelést** a 200-es prioritással. Ez létrehozza a kivételt az előre definiált **közösségi hálózat** webes kategóriához.
+
+
+
 ## <a name="certifications"></a>Tanúsítványok
 
 A Azure Firewall a Payment Card Industry (PCI), a Service Organization Controls (SOC), a International Organization for Standardization (ISO) és a ICSA Labs megfelelője. További információ: [Azure Firewall megfelelőségi tanúsítványok](compliance-certifications.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Firewall szabályfeldolgozási logikája](rule-processing.md)
