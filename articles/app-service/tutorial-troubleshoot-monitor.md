@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.author: msangapu
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.openlocfilehash: af2711a3d219bb472334ad61bad0b87f6c691dab
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: d45a8b8f426df32b9f5ac6f64237107083e0f9ab
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183200"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586291"
 ---
 # <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>Oktatóanyag: App Service-alkalmazás hibakeresése Azure Monitor
 
@@ -22,7 +22,7 @@ Ez az oktatóanyag bemutatja, hogyan lehet elhárítani egy [app Service](overvi
 
 [Azure monitor](../azure-monitor/overview.md) maximalizálja az alkalmazások és szolgáltatások rendelkezésre állását és teljesítményét azáltal, hogy átfogó megoldást kínál a Felhőbeli és a helyszíni környezetek telemetria gyűjtésére, elemzésére és működésére.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Webalkalmazás konfigurálása Azure Monitor
@@ -78,7 +78,7 @@ A diagnosztikai beállításokkal bizonyos Azure-szolgáltatások metrikáit gy�
 A következő parancsok futtatásával diagnosztikai beállításokat hozhat létre a AppServiceConsoleLogs (normál kimenet/hiba) és a AppServiceHTTPLogs (webkiszolgáló-naplók) számára. Cserélje le az _\<app-name>_ _\<workspace-name>_ értékeket az értékekre. 
 
 > [!NOTE]
-> Az első két parancs `resourceID` és a `workspaceID` , a `az monitor diagnostic-settings create` parancsban használandó változók. További információ a parancsról: [diagnosztikai beállítások létrehozása az Azure CLI használatával](../azure-monitor/platform/diagnostic-settings.md#create-using-azure-cli) .
+> Az első két parancs `resourceID` és a `workspaceID` , a `az monitor diagnostic-settings create` parancsban használandó változók. További információ a parancsról: [diagnosztikai beállítások létrehozása az Azure CLI használatával](../azure-monitor/essentials/diagnostic-settings.md#create-using-azure-cli) .
 >
 
 ```bash
@@ -129,7 +129,7 @@ A Azure Portal válassza ki Log Analytics munkaterületét.
 
 ### <a name="log-queries"></a>Naplólekérdezések
 
-A naplók lekérdezései segítségével teljes mértékben kihasználhatja Azure Monitor naplókban összegyűjtött adatok értékét. A naplók segítségével azonosíthatja a naplókat mind a AppServiceHTTPLogs, mind a AppServiceConsoleLogs. A naplók lekérdezésével kapcsolatos további információkért tekintse meg a [napló lekérdezésének áttekintése](../azure-monitor/log-query/log-query-overview.md) című témakört.
+A naplók lekérdezései segítségével teljes mértékben kihasználhatja Azure Monitor naplókban összegyűjtött adatok értékét. A naplók segítségével azonosíthatja a naplókat mind a AppServiceHTTPLogs, mind a AppServiceConsoleLogs. A naplók lekérdezésével kapcsolatos további információkért tekintse meg a [napló lekérdezésének áttekintése](../azure-monitor/logs/log-query-overview.md) című témakört.
 
 ### <a name="view-appservicehttplogs-with-log-query"></a>AppServiceHTTPLogs megtekintése a log lekérdezéssel
 
@@ -269,6 +269,6 @@ Az alábbiak elvégzését ismerte meg:
 > * A webalkalmazások hibáinak azonosítására és elhárítására használt naplózási lekérdezések
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> További lépések
-* [Naplók lekérdezése Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
+* [Naplók lekérdezése Azure Monitor](../azure-monitor/logs/log-query-overview.md)
 * [Hibaelhárítási Azure App Service a Visual Studióban](troubleshoot-dotnet-visual-studio.md)
 * [Alkalmazás-naplók elemzése a HDInsight-ben](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

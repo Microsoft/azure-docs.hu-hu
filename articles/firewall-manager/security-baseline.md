@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5ef40b048fbc50174afb662aecd3335d97eb0106
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 07a0aed7d1839c84ead0c3b2c5f8282a1dc228c7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99095972"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593216"
 ---
 # <a name="azure-security-baseline-for-azure-firewall-manager"></a>Az Azure biztonsági alapterve Azure Firewall Managerhez
 
@@ -403,9 +403,9 @@ A tevékenység naplója nem támogatja a tűzfalszabályok csoportházirend-cso
 
 A tevékenység naplója nem támogatja a tűzfalszabályok csoportházirend-csoportokra vonatkozó szabályait, ez egy ismert probléma, és a jövőbeli frissítésekben kerül megcímzésre.
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](../azure-monitor/platform/platform-logs-overview.md)
+- [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -421,7 +421,7 @@ Továbbá engedélyezze és helyezze üzembe a napló adatait az Azure Sentinel 
 
 Számos szervezet úgy dönt, hogy a gyakran használt és az Azure-tárolót használja a ritkábban használt adatokhoz az Azure Sentinel használatával.
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
@@ -435,7 +435,7 @@ Számos szervezet úgy dönt, hogy a gyakran használt és az Azure-tárolót ha
 
 Azure Monitor az Log Analytics munkaterület megőrzési időszakát a szervezet megfelelőségi előírásai szerint állíthatja be. Az Azure Storage, a Data Lake vagy a Log Analytics munkaterület-fiókokat használhatja a hosszú távú és az archiválási tároláshoz.
 
-- [Log Analytics munkaterület megőrzési időtartamának konfigurálása](../azure-monitor/platform/manage-cost-storage.md)
+- [Log Analytics munkaterület megőrzési időtartamának konfigurálása](../azure-monitor/logs/manage-cost-storage.md)
 
 - [Erőforrás-naplók tárolása Azure Storage-fiókban](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
 

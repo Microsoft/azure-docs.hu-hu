@@ -3,12 +3,12 @@ title: Exportálás Power BI az Azure Application Insightsból | Microsoft Docs
 description: Az elemzési lekérdezések a Power BIban is megjeleníthetők.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 1e88d60cd9a9d0e6267998237b33a361b12ffd84
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4bdae09d193d5ae9c59fe9352e07b8219a76841d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187000"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584308"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Hírcsatorna-Power BI Application Insights
 A [Power bi](https://www.powerbi.com/) egy olyan üzleti eszköz, amely megkönnyíti az adatok elemzését és az elemzések megosztását. A gazdag irányítópultok minden eszközön elérhetők. Több forrásból is egyesítheti az adatait, beleértve az [Azure Application Insightsból](./app-insights-overview.md)származó elemzési lekérdezéseket is.
@@ -31,7 +31,7 @@ A Application Insights-lekérdezés importálásához használja a Power BI aszt
 Telepítse a [Power bi Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
 ### <a name="export-an-analytics-query"></a>Elemzési lekérdezés exportálása
-1. [Nyissa meg az elemzést, és írja le a lekérdezést](../log-query/log-analytics-tutorial.md).
+1. [Nyissa meg az elemzést, és írja le a lekérdezést](../logs/log-analytics-tutorial.md).
 2. Tesztelje és pontosítsa a lekérdezést, amíg nem elégedett az eredményekkel. Exportálás előtt győződjön meg arról, hogy a lekérdezés megfelelően fut az Analyticsben.
 3. Az **Exportálás** menüben válassza a **Power bi (M)** lehetőséget. Mentse a szövegfájlt.
    
@@ -146,4 +146,4 @@ A kezdeti importálás után az irányítópult és a jelentések naponta friss�
 
 ## <a name="next-steps"></a>Következő lépések
 * [Power BI – Learn](https://www.powerbi.com/learning/)
-* [Elemzési oktatóanyag](../log-query/log-analytics-tutorial.md)
+* [Elemzési oktatóanyag](../logs/log-analytics-tutorial.md)

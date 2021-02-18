@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b7dc7a9f93d6d70abec57632ffc95aea8a6bc699
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 82e15712fe1e7a5791b1374e4aa4cd446f8f5e90
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804988"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574423"
 ---
 # <a name="azure-security-baseline-for-network-watcher"></a>Network Watcher Azure biztonsági alapterve
 
@@ -118,9 +118,9 @@ Network Watcher engedélyezni kell
 
 **Útmutató**: az azure-Network Watcheron végrehajtott módosítások figyelése az Azure-beli tevékenység naplójának használatával. Létrehozhat olyan Azure Monitoron belüli riasztásokat, amelyek a módosítások elvégzése után aktiválódnak.
 
-* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Riasztások létrehozása a Azure Monitorban](../azure-monitor/platform/alerts-activity-log.md)
+* [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -142,7 +142,7 @@ Network Watcher engedélyezni kell
 
 **Útmutató**: az Azure-tevékenység naplójának használata a konfigurációk figyelésére és az Azure Network Watcher-példányok változásainak észlelésére. A vezérlési síkon (például Azure Portal) kívül a Network Watcher nem hoz a hálózati forgalomhoz kapcsolódó naplókat. Network Watcher eszközöket biztosít az Azure-beli virtuális hálózatban található erőforrások figyelésére, diagnosztizálására, megtekintésére, valamint a naplók engedélyezésére vagy letiltására.
 
-* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 * [A Network Watcher megismerése](./network-watcher-monitoring-overview.md)
 
@@ -154,7 +154,7 @@ Network Watcher engedélyezni kell
 
 **Útmutató**: az Azure-tevékenység naplójának használata a konfigurációk figyelésére és az Azure Network Watcher-példányok változásainak észlelésére. A vezérlési síkon kívül (például Azure Portal) a Network Watcher maga nem hoz majd naplókat. Network Watcher eszközöket biztosít az Azure-beli virtuális hálózatban található erőforrások figyelésére, diagnosztizálására, megtekintésére, valamint a naplók engedélyezésére vagy letiltására.
 
-* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 * [A Network Watcher megismerése](./network-watcher-monitoring-overview.md)
 
@@ -174,7 +174,7 @@ Network Watcher engedélyezni kell
 
 **Útmutató**: a Azure monitor a szervezet megfelelőségi előírásai szerint az Azure Network Watcherhoz társított log Analytics-munkaterületek naplózásának megőrzési időtartamát állíthatja be.
 
-* [Napló-megőrzési paraméterek beállítása](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Napló-megőrzési paraméterek beállítása](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -184,7 +184,7 @@ Network Watcher engedélyezni kell
 
 **Útmutató**: az Azure-tevékenység naplójának használata a konfigurációk figyelésére és az Azure Network Watcher-példányok változásainak észlelésére. A vezérlési síkon (például Azure Portal) kívül a Network Watcher nem hoz a hálózati forgalomhoz kapcsolódó naplókat. Network Watcher eszközöket biztosít az Azure-beli virtuális hálózatban található erőforrások figyelésére, diagnosztizálására, megtekintésére, valamint a naplók engedélyezésére vagy letiltására.
 
-* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 * [A Network Watcher megismerése](./network-watcher-monitoring-overview.md)
 
@@ -479,7 +479,7 @@ Network Watcher képességek használatához az Azure-ba bejelentkezett fiókot 
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, amikor a módosítások az Azure Network Watcher és más kritikus vagy kapcsolódó erőforrásokra is vonatkoznak.
 
-* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/platform/alerts-activity-log.md)
+* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Az Azure Security Center monitorozása**: Igen
 

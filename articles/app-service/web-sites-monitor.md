@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 587ad53fa3a4875f7019a8c094db1b9a5f096519
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: bf230032afe80680dc392c2a74da2a5aef381983
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509553"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586089"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Alkalmazások figyelése Azure App Service
 A [Azure app Service](./overview.md) beépített figyelési funkciókat biztosít a webalkalmazások, a mobil és az API-alkalmazások számára a [Azure Portal](https://portal.azure.com).
@@ -31,7 +31,7 @@ Ha az alkalmazás *Alapszintű*, standard vagy *prémium* *szintű* csomagban ta
 
 Az ingyenes vagy a megosztott alkalmazások kvótái a következők:
 
-| Kvóta | Leírás |
+| Kvóta | Description |
 | --- | --- |
 | **CPU (rövid)** | Az alkalmazás számára engedélyezett CPU-mennyiség 5 perces intervallumban. Ez a kvóta öt percenként alaphelyzetbe áll. |
 | **CPU (nap)** | Az alkalmazáshoz egy nap alatt engedélyezett CPU teljes mennyisége. Ez a kvóta 24 óránként visszaállítja az UTC-t éjfélkor. |
@@ -136,7 +136,7 @@ A CPU-használatot két mérőszám mutatja:
 **CPU-százalék**: az alapszintű, a standard és a prémium csomagokban üzemeltetett alkalmazásokhoz hasznos, mivel azok felskálázásra képesek. A CPU-százalék jól jelzi az összes példány teljes használatát.
 
 ## <a name="metrics-granularity-and-retention-policy"></a>Mérőszámok részletességi és adatmegőrzési szabályzata
-Az alkalmazások és az App Service-csomag metrikáit a szolgáltatás naplózza és összesíti, és [ezeket a szabályoknak megfelelően megőrzi](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics).
+Az alkalmazások és az App Service-csomag metrikáit a szolgáltatás naplózza és összesíti, és [ezeket a szabályoknak megfelelően megőrzi](../azure-monitor/essentials/data-platform-metrics.md#retention-of-metrics).
 
 ## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Kvóták és metrikák figyelése a Azure Portalban
 Az alkalmazást érintő különböző kvóták és mérőszámok állapotának áttekintéséhez lépjen a [Azure Portal](https://portal.azure.com).
@@ -153,14 +153,14 @@ A kvóták megkereséséhez válassza a **Beállítások**  >  **kvóták** lehe
 
 A diagramok bármelyikére kattintva megtekintheti a mérőszámokat, ahol egyéni diagramokat hozhat létre, különböző mérőszámokat jeleníthet meg, és még sok minden mást is megadhat. 
 
-További információ a metrikákkal kapcsolatban: a [szolgáltatás metrikáinak figyelése](../azure-monitor/platform/data-platform.md).
+További információ a metrikákkal kapcsolatban: a [szolgáltatás metrikáinak figyelése](../azure-monitor/data-platform.md).
 
 ## <a name="alerts-and-autoscale"></a>Riasztások és autoskálázás
-Az alkalmazásokhoz vagy App Service tervekhez tartozó metrikák összekapcsolható riasztásokkal. További információ: [Receive alert notifications](../azure-monitor/platform/alerts-classic-portal.md) (Riasztások fogadása).
+Az alkalmazásokhoz vagy App Service tervekhez tartozó metrikák összekapcsolható riasztásokkal. További információ: [Receive alert notifications](../azure-monitor/alerts/alerts-classic-portal.md) (Riasztások fogadása).
 
 Az alapszintű vagy magasabb App Service-csomagokban üzemeltetett App Service-alkalmazások támogatják az autoskálázást. Az autoscale használatával olyan szabályokat konfigurálhat, amelyek figyelik a App Service terv mérőszámait. A szabályok növelhetik vagy csökkenthetik a példányszámot, ami igény szerint további erőforrásokat is biztosíthat. A szabályok segítségével pénzt takaríthat meg, ha az alkalmazás túl van kiépítve.
 
-További információ az automatikus méretezésről: az automatikus [skálázás Azure monitorának](../azure-monitor/platform/autoscale-best-practices.md) [skálázása](../azure-monitor/platform/autoscale-get-started.md) és ajánlott eljárásai.
+További információ az automatikus méretezésről: az automatikus [skálázás Azure monitorának](../azure-monitor/autoscale/autoscale-best-practices.md) [skálázása](../azure-monitor/autoscale/autoscale-get-started.md) és ajánlott eljárásai.
 
 [fzilla]:https://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:https://go.microsoft.com/fwlink/?LinkID=309169

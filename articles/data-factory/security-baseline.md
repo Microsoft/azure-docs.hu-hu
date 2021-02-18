@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 387c5e70d50e53f922530cfb1fa91494fa7cc624
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ab4f92c9723dc98d0b6c32d3a49df8d4f724ebfa
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100376309"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585466"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure Data Factory Azure biztonsági alapterve
 
@@ -175,9 +175,9 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 **Útmutató**: az Azure-tevékenység naplójának használata a hálózati erőforrás-konfigurációk figyelésére és a Azure Data Factory-példányokhoz kapcsolódó hálózati erőforrások változásainak észlelésére. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják
 
-* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Riasztások létrehozása a Azure Monitorban](../azure-monitor/platform/alerts-activity-log.md)
+* [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -201,7 +201,7 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó biztonsági incidensek és események felügyeletének (SIEM) engedélyezését. A git használatával Azure Data Factory is integrálhat, így több verziókövetés előnyeit is kihasználhatja, például nyomon követheti és naplózhatja a módosításokat, és visszaállíthatja a hibákat tartalmazó módosításokat.
 
-* [Diagnosztikai beállítások konfigurálása](../azure-monitor/platform/diagnostic-settings.md)
+* [Diagnosztikai beállítások konfigurálása](../azure-monitor/essentials/diagnostic-settings.md)
 
 * [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
@@ -219,7 +219,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 Diagnosztikai beállításokkal konfigurálhatja a Azure Data Factory nem számítási erőforrásaihoz tartozó diagnosztikai naplókat, például a mérőszámokat és a folyamat által futtatott adatokat. A Azure Data Factory 45 napig tárolja a folyamat által futtatott adatfeldolgozást. Ha hosszabb ideig szeretné megőrizni az adatok mennyiségét, mentse a diagnosztikai naplókat egy Storage-fiókba a naplózáshoz vagy a manuális vizsgálathoz, és adja meg a megőrzési időt napokban. A naplókat átirányíthatja az Azure Event Hubsba, vagy elküldheti a naplókat egy Log Analytics-munkaterületre elemzés céljából.
 
-* [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/platform/activity-log.md)
+* [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 * [Azure Data Factory diagnosztikai naplók ismertetése](./monitor-using-azure-monitor.md)
 
@@ -233,7 +233,7 @@ Diagnosztikai beállításokkal konfigurálhatja a Azure Data Factory nem szám�
 
 Ha a szervezete meg szeretné őrizni a biztonsági eseménynapló adatait, az egy adatgyűjtési szinten tárolható, amelyen Log Analytics lehet lekérdezni.
 
-* [Adatok gyűjtése az Azure Virtual Machinesról Azure Monitor](../azure-monitor/learn/quick-collect-azurevm.md)
+* [Adatok gyűjtése az Azure Virtual Machinesról Azure Monitor](../azure-monitor/vm/quick-collect-azurevm.md)
 
 * [Adatgyűjtés engedélyezése a Azure Security Centerban](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
@@ -247,7 +247,7 @@ Ha a szervezete meg szeretné őrizni a biztonsági eseménynapló adatait, az e
 
 * [Diagnosztikai naplók engedélyezése Azure Data Factory](./monitor-using-azure-monitor.md)
 
-* [Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -263,7 +263,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 * [Log Analytics séma](./monitor-using-azure-monitor.md#schema-of-logs-and-events)
 
-* [Adatok gyűjtése Azure-beli virtuális gépekről Azure Monitor](../azure-monitor/learn/quick-collect-azurevm.md)
+* [Adatok gyűjtése Azure-beli virtuális gépekről Azure Monitor](../azure-monitor/vm/quick-collect-azurevm.md)
 
 * [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
@@ -281,9 +281,9 @@ Továbbá győződjön meg arról, hogy engedélyezte az adattárakhoz kapcsoló
 
 * [Riasztások Azure Data Factory](./monitor-visually.md#alerts)
 
-* [Az összes támogatott metrika lap](../azure-monitor/platform/metrics-supported.md)
+* [Az összes támogatott metrika lap](../azure-monitor/essentials/metrics-supported.md)
 
-* [Riasztások konfigurálása Log Analytics munkaterületen](../azure-monitor/platform/alerts-log.md)
+* [Riasztások konfigurálása Log Analytics munkaterületen](../azure-monitor/alerts/alerts-log.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -652,9 +652,9 @@ A hitelesítő adatokat vagy a titkos értékeket egy Azure Key Vault tárolhatj
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, amikor a módosítások Azure Data Factory és kapcsolódó erőforrásokra vonatkoznak.
 
-* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/platform/alerts-activity-log.md)
+* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
-* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/platform/alerts-activity-log.md)
+* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Azure Storage Analytics-naplózás](../storage/common/storage-analytics-logging.md)
 

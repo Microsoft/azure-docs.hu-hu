@@ -7,12 +7,12 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: conceptual
 ms.date: 08/07/2019
-ms.openlocfilehash: b41575208d0793a33864556ec4313ae1a71f2db5
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f73091552a78760024189b173897913edca724bb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184467"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593413"
 ---
 # <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>Az Azure NetApp Files teljesítménytesztjével kapcsolatos javaslatok
 
@@ -113,7 +113,7 @@ Irányítópultot is létrehozhat Azure Monitor a Azure NetApp Fileshoz a metrik
 
 ### <a name="azure-monitor-api-access"></a>API-hozzáférés Azure Monitor
 
-Azure NetApp Files számlálókat REST API-hívások segítségével érheti el. A kapacitási készletek és kötetek számlálóinak megjelenítéséhez tekintse meg [Azure monitor: Microsoft. NetApp/netAppAccounts/capacityPools/Volumes (támogatott mérőszámok](../azure-monitor/platform/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) ) című témakört.
+Azure NetApp Files számlálókat REST API-hívások segítségével érheti el. A kapacitási készletek és kötetek számlálóinak megjelenítéséhez tekintse meg [Azure monitor: Microsoft. NetApp/netAppAccounts/capacityPools/Volumes (támogatott mérőszámok](../azure-monitor/essentials/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) ) című témakört.
 
 A következő példa egy GET URL-címet mutat be a logikai kötetek méretének megtekintéséhez:
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/12/2020
 ms.author: yelevin
-ms.openlocfilehash: b346a23ccde6abd0f76982a4d19e00e28e8511a7
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: a1c2754fcae5768c6b87d6280fc882acd46d9a0a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97930871"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585330"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Az Azure Sentinel ügyfél által felügyelt kulcsának beállítása
 
@@ -30,13 +30,13 @@ Ez a cikk háttér-információkat és lépéseket tartalmaz az ügyfél által 
 >
 > - A képességhez való hozzáférést az Azure-szolgáltatások regisztrációja szabályozza. A hozzáférést a kapcsolatfelvételsel kérheti le azuresentinelCMK@microsoft.com . A függőben lévő kérések jóváhagyása a rendelkezésre álló kapacitás alapján történik.
 >
-> - A CMK képesség csak az 1 TB-ot vagy annál többet küldő ügyfelek számára érhető el. Ha az Azure-előfizetése CMK kiépítésére alkalmazza a Microsoftot, a további díjszabásról is tájékozódhat. További információ a [log Analytics díjszabásáról](../azure-monitor/platform/manage-cost-storage.md#log-analytics-dedicated-clusters).
+> - A CMK képesség csak az 1 TB-ot vagy annál többet küldő ügyfelek számára érhető el. Ha az Azure-előfizetése CMK kiépítésére alkalmazza a Microsoftot, a további díjszabásról is tájékozódhat. További információ a [log Analytics díjszabásáról](../azure-monitor/logs/manage-cost-storage.md#log-analytics-dedicated-clusters).
 
 ## <a name="how-cmk-works"></a>A CMK működése 
 
 Az Azure Sentinel megoldás számos tárolási erőforrást használ a naplók gyűjtéséhez és szolgáltatásaihoz, beleértve a Log Analytics és másokat is. Az Azure Sentinel CMK konfigurációjának részeként konfigurálnia kell a CMK beállításait a kapcsolódó tárolási erőforrásokon is. A Log Analyticson kívüli tárolási erőforrásokban mentett adatfájlok is titkosítva lesznek.
 
-További információ a [CMK](../azure-monitor/platform/customer-managed-keys.md#customer-managed-key-overview).
+További információ a [CMK](../azure-monitor/logs/customer-managed-keys.md#customer-managed-key-overview).
 
 > [!NOTE]
 > Ha engedélyezi a CMK az Azure Sentinelben, a CMK nem támogató nyilvános előzetes funkciók nem lesznek engedélyezve.
@@ -71,7 +71,7 @@ A CMK kiépítéséhez kövesse az alábbi lépéseket:
 
 ### <a name="step-2-enable-cmk-on-your-log-analytics-workspace"></a>2. lépés: a CMK engedélyezése a Log Analytics munkaterületen
 
-Kövesse a [Azure monitor ügyfél által felügyelt kulcs konfigurációjának](../azure-monitor/platform/customer-managed-keys.md) utasításait, és hozzon létre egy CMK-munkaterületet, amelyet az Azure Sentinel-munkaterületként fog használni az alábbi lépésekben.
+Kövesse a [Azure monitor ügyfél által felügyelt kulcs konfigurációjának](../azure-monitor/logs/customer-managed-keys.md) utasításait, és hozzon létre egy CMK-munkaterületet, amelyet az Azure Sentinel-munkaterületként fog használni az alábbi lépésekben.
 
 ### <a name="step-3-register-for-cosmos-db"></a>3. lépés: a Cosmos DB regisztrálása
 
@@ -114,7 +114,7 @@ Az egyetlen művelet, amely a titkosítási kulcs visszavonása vagy törlése u
 
 Ha a hozzáférés vissza lett állítva a visszavonás után, az Azure Sentinel egy órán belül visszaállítja az adatelérést.
 
-Ha többet szeretne megtudni arról, hogy ez hogyan működik Azure Monitorban, tekintse meg a [Azure monitor CMK visszavonása](../azure-monitor/platform/customer-managed-keys.md#key-revocation)című témakört.
+Ha többet szeretne megtudni arról, hogy ez hogyan működik Azure Monitorban, tekintse meg a [Azure monitor CMK visszavonása](../azure-monitor/logs/customer-managed-keys.md#key-revocation)című témakört.
 
 ## <a name="key-encryption-key-rotation"></a>Kulcs titkosítási kulcsának elforgatása
 
@@ -127,9 +127,9 @@ Key Vault a kulcs elforgatását a kulcs új verziójának létrehozásával vé
 
 A kulcs előző verzióját 24 óra elteltével letilthatja, vagy azt követően, hogy a Azure Key Vault naplók már nem jelenítenek meg semmilyen tevékenységet, amely az előző verziót használja.
 
-Ha ugyanazt a kulcsot használja az Azure Sentinel-ben és a Log Analytics-ben, akkor szükség van a kulcs elforgatására, explicit módon frissítenie kell a fürterőforrás Log Analytics az új Azure Key Vault kulcs verzióját. További információ: [Azure monitor CMK forgatása](../azure-monitor/platform/customer-managed-keys.md#key-rotation).
+Ha ugyanazt a kulcsot használja az Azure Sentinel-ben és a Log Analytics-ben, akkor szükség van a kulcs elforgatására, explicit módon frissítenie kell a fürterőforrás Log Analytics az új Azure Key Vault kulcs verzióját. További információ: [Azure monitor CMK forgatása](../azure-monitor/logs/customer-managed-keys.md#key-rotation).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtudhatta, hogyan állíthat be egy ügyfél által felügyelt kulcsot az Azure Sentinelben. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](./tutorial-detect-threats-built-in.md).

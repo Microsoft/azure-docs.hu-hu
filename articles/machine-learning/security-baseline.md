@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 025a94cf7d163d41486ef218e70d9eb48e93d31c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 08aa69db90901447297e06cd111b6b0174e6637a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881316"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575090"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure Machine Learning Azure biztonsági alapterve
 
@@ -155,9 +155,9 @@ A Description (Leírás) mezőt támogató Azure Machine Learning virtuális há
 
 **Útmutató**: az Azure-tevékenység naplójának használata a hálózati erőforrás-konfigurációk figyelésére és a Azure Machine learning kapcsolódó hálózati erőforrások változásainak észlelésére. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/platform/alerts-activity-log.md)
+- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -193,9 +193,9 @@ A Description (Leírás) mezőt támogató Azure Machine Learning virtuális há
 
 Biztonsági és megfelelőségi célokból is korrelálhat Machine Learning szolgáltatási műveletek naplóit.
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](../azure-monitor/platform/platform-logs-overview.md)
+- [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](../azure-monitor/essentials/platform-logs-overview.md)
 
 - [Bejelentkezés engedélyezése Azure Machine Learning](./how-to-track-experiments.md)
 
@@ -211,7 +211,7 @@ Biztonsági és megfelelőségi célokból is korrelálhat Machine Learning szol
 
 A Azure Machine Learning különböző számítási erőforrásokon és saját számítási erőforrásokon is eltérő támogatást nyújt. A szervezete tulajdonában lévő számítási erőforrások esetében az operációs rendszer figyeléséhez Azure Security Center kell használnia. 
 
-- [Az Azure-beli virtuális gépek belső gazdagép-naplóinak összegyűjtése Azure Monitor](../azure-monitor/learn/quick-collect-azurevm.md)
+- [Az Azure-beli virtuális gépek belső gazdagép-naplóinak összegyűjtése Azure Monitor](../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Az Azure Security Center adatgyűjtés ismertetése](../security-center/security-center-enable-data-collection.md)
 
@@ -223,7 +223,7 @@ A Azure Machine Learning különböző számítási erőforrásokon és saját s
 
 **Útmutató**: a Azure monitor a szervezet megfelelőségi előírásai alapján állítsa be a Azure Machine learning-példányokhoz társított log Analytics-munkaterületek naplózásának megőrzési időtartamát.
 
-- [Napló-megőrzési paraméterek beállítása](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Napló-megőrzési paraméterek beállítása](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -241,9 +241,9 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics lekérdezések első lépései](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Log Analytics lekérdezések első lépései](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/log-query/get-started-queries.md)
+- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -257,7 +257,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti a fedélzeti adatfel
 
 - [További információ a Azure Machine Learning riasztásokról](monitor-azure-machine-learning.md#alerts)
 
-- [Riasztás Log Analytics-munkaterület naplófájljainak adatvédelme](../azure-monitor/learn/tutorial-response.md)
+- [Riasztás Log Analytics-munkaterület naplófájljainak adatvédelme](../azure-monitor/alerts/tutorial-response.md)
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
@@ -565,7 +565,7 @@ A Microsoft kezeli a Machine Learning alapjául szolgáló infrastruktúrát, é
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, amikor a módosítások a Azure Machine learning és más kritikus vagy kapcsolódó erőforrások éles példányain lépnek életbe.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/platform/alerts-activity-log.md)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -1196,7 +1196,7 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 **Felelősség**: Megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
 - További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

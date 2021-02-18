@@ -6,16 +6,18 @@ ms.date: 05/18/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: fb91662dfcdeb404f51f91c1fef893dc72dcac73
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 4013b60a5718de6c196e806f894503f63ec9dafd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601050"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593687"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Ismerkedjen meg a Java-nyomkövetési naplók Application Insights
 
 > [!IMPORTANT]
+> A dokumentumban leírt módszer már nem ajánlott.
+>
 > A Java-alkalmazások figyelésének ajánlott módszere az automatikus kiépítés használata a kód módosítása nélkül. Kérjük, kövesse az [Application Insights Java 3,0-ügynökre](./java-in-process-agent.md)vonatkozó irányelveket.
 
 Ha a nyomkövetéshez Logback vagy Log4J (v 1.2 vagy v 2.0) használ, a nyomkövetési naplókat automatikusan elküldheti Application Insights ahol megtekintheti és megkeresheti őket.
@@ -195,7 +197,7 @@ A gyűjtők által küldött kivételek a portálon a kivétel telemetria jelenn
 
 ![A Application Insights portálon nyissa meg a keresést](./media/java-trace-logs/01-diagnostics.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Diagnosztikai keresés][diagnostic]
 
 <!--Link references-->

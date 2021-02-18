@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 3dac47aa7cf93ca882c4c1d0d191dabf0eb7178c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c122a21fc7149e9943825cafbed77069b7919f3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88227211"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593599"
 ---
 # <a name="native-react-plugin-for-application-insights-javascript-sdk"></a>Natív reagálású beépülő modul a Application Insights JavaScript SDK-hoz
 
@@ -59,4 +59,4 @@ appInsights.loadAppInsights();
 ## <a name="next-steps"></a>Következő lépések
 
 - A JavaScript SDK-val kapcsolatos további tudnivalókért tekintse meg a [Application Insights JavaScript SDK dokumentációját](javascript.md).
-- A Kusto lekérdezési nyelvének megismeréséhez és a Log Analytics adatainak lekérdezéséhez tekintse meg a [naplózási lekérdezés áttekintését](../../azure-monitor/log-query/log-query-overview.md).
+- A Kusto lekérdezési nyelvének megismeréséhez és a Log Analytics adatainak lekérdezéséhez tekintse meg a [naplózási lekérdezés áttekintését](../../azure-monitor/logs/log-query-overview.md).

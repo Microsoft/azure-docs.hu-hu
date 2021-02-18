@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 00d19d7b554e8a867412cfb982e1377fd90bd936
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 8b3a67fc06594a4782ba55c17ab36c0bad9cf2a0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624523"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574916"
 ---
 # <a name="azure-security-baseline-for-service-bus"></a>Service Bus Azure biztonsági alapterve
 
@@ -143,9 +143,9 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 **Útmutató**: az Azure-tevékenység naplójának használata a hálózati erőforrás-konfigurációk figyelésére és a Azure Service Bus kapcsolódó hálózati erőforrások változásainak észlelésére. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/platform/alerts-activity-log.md)
+- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -161,7 +161,7 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 - [A Azure Service Bus diagnosztikai beállításainak konfigurálása](service-bus-diagnostic-logs.md)
 
-- [Az Azure-tevékenység naplójának ismertetése](../azure-monitor/platform/platform-logs-overview.md)
+- [Az Azure-tevékenység naplójának ismertetése](../azure-monitor/essentials/platform-logs-overview.md)
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md) 
 
@@ -177,7 +177,7 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 - [A Azure Service Bus diagnosztikai beállításainak engedélyezése](service-bus-diagnostic-logs.md)
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/platform/activity-log.md)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -187,7 +187,7 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 **Útmutató**: a Azure monitoron belül állítsa be a log Analytics munkaterület megőrzési időszakát a szervezet megfelelőségi szabályainak megfelelően a Service Bus kapcsolatos incidensek rögzítéséhez és felülvizsgálatához.
 
-- [Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -197,9 +197,9 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 **Útmutató**: elemezze és figyelje a rendellenes viselkedés naplóit, és rendszeresen tekintse át a Service Bus entitásokkal kapcsolatos eredményeket. A Azure Monitor segítségével áttekintheti a naplókat, és lekérdezéseket hajthat végre a Service Bus kapcsolatos naplózási adatokon.
 
-- [További információ a Log Analytics munkaterületről](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [További információ a Log Analytics munkaterületről](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/log-query/get-started-queries.md)
+- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/logs/get-started-queries.md)
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
@@ -215,7 +215,7 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 - [Riasztások kezelése Azure Security Centerban](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Riasztás a log Analytics-naplófájlok adatkezeléséről](../azure-monitor/learn/tutorial-response.md)
+- [Riasztás a log Analytics-naplófájlok adatkezeléséről](../azure-monitor/alerts/tutorial-response.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -491,7 +491,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, amikor a módosítások a Azure Service Bus és más kritikus vagy kapcsolódó erőforrások éles példányain lépnek életbe.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/platform/alerts-activity-log.md)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 

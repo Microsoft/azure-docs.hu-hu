@@ -12,16 +12,16 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/30/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: b9f0b3219a75900a44a73ca0fc3e453f023bddb8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: aeabfb42d378f22ff660214517fea031d678b208
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787159"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635574"
 ---
-# <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>Oktatóanyag: osztályozás, vizsgálat és válaszadás a biztonsági riasztásokra
+# <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>Oktatóanyag: Biztonsági riasztások osztályozása, kivizsgálása és a riasztásokra való válaszadás
 Security Center folyamatosan elemzi a hibrid Felhőbeli számítási feladatokat a fejlett Analitika és a fenyegetések felderítése révén, hogy figyelmeztessen a Felhőbeli erőforrásaiban esetlegesen rosszindulatú tevékenységekre. A riasztásokat más biztonsági termékekből és szolgáltatásokból is integrálhatja Security Centerba. A riasztások beadását követően gyors beavatkozásra van szükség a lehetséges biztonsági problémák kivizsgálásához és szervizeléséhez. 
 
 Az oktatóanyag során a következőket fogja elsajátítani:
@@ -42,7 +42,7 @@ A Security Center segítségével minden biztonsági riasztást egy egyesített 
 
 A riasztások osztályozása a **biztonsági riasztások** lapról:
 
-:::image type="content" source="./media/tutorial-security-incident/alerts-list.png" alt-text="Biztonsági riasztások listája lap" lightbox="./media/tutorial-security-incident/alerts-list.png":::
+:::image type="content" source="media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Azure Security Center biztonsági riasztások listája":::
 
 Ezen a lapon áttekintheti a környezetében található aktív biztonsági riasztásokat, hogy eldöntse, melyik riasztást kell először kivizsgálni.
 
@@ -60,7 +60,7 @@ Ha eldöntötte, hogy melyik riasztást először vizsgálja meg:
 1. A riasztás áttekintése lapon válassza ki az elsőként kivizsgálni kívánt erőforrást.
 1. Indítsa el a vizsgálatot a bal oldali panelen, amely a biztonsági riasztással kapcsolatos magas szintű információkat jeleníti meg.
 
-    :::image type="content" source="./media/tutorial-security-incident/alert-details-left-pane.png" alt-text="Biztonsági riasztások listája lap":::
+    :::image type="content" source="./media/tutorial-security-incident/alert-details-left-pane.png" alt-text="A riasztás részletei oldal bal oldali ablaktáblája kiemelve a magas szintű információkat":::
 
     Az ablaktábla a következőket jeleníti meg:
     - Riasztás súlyossága, állapota és tevékenységi ideje
@@ -80,16 +80,16 @@ Miután kivizsgálta a riasztást, és megértette a hatókörét, választ kaph
 
 1.  Az ajánlott válaszok megjelenítéséhez nyissa meg a **Take Action (művelet végrehajtása** ) lapot.
 
-    :::image type="content" source="./media/tutorial-security-incident/alert-details-take-action.png" alt-text="Biztonsági riasztások listája lap" lightbox="./media/tutorial-security-incident/alert-details-take-action.png":::
+    :::image type="content" source="./media/tutorial-security-incident/alert-details-take-action.png" alt-text="Biztonsági riasztások művelet lapja" lightbox="./media/tutorial-security-incident/alert-details-take-action.png":::
 
 1.  A probléma megoldásához szükséges manuális vizsgálat lépéseiért tekintse át a **fenyegetés enyhítése** szakaszt.
 1.  Ha szeretné megerősíteni az erőforrásokat, és meg szeretné akadályozni a jövőbeli támadásokat, javítsa ki a biztonsági javaslatokat a **jövőbeni támadások megelőzése** szakaszban.
 1.  A logikai alkalmazások automatikus válaszokkal történő elindításához használja az **trigger automatikus válasza** szakaszt.
 1.  Ha az észlelt tevékenység *nem* rosszindulatú, akkor a **hasonló riasztások mellőzése** szakaszban letilthatja az ilyen típusú riasztásokat.
 
-1.  Ha befejezte a vizsgálatot a riasztásban, és a megfelelő módon válaszolt, módosítsa az állapotot elvetett **értékre** .
+1.  Ha befejezte a vizsgálatot a riasztásban, és a megfelelő módon válaszolt, módosítsa az állapotot elvetett **értékre**.
 
-    :::image type="content" source="./media/tutorial-security-incident/set-status-dismissed.png" alt-text="Biztonsági riasztások listája lap":::
+    :::image type="content" source="./media/tutorial-security-incident/set-status-dismissed.png" alt-text="Riasztás állapotának beállítása":::
 
     Ezzel eltávolítja a riasztást a fő riasztások listájáról. A riasztások listája lapon található szűrő használatával megtekintheti az összes **elhagyott** állapottal rendelkező riasztást.
 
@@ -97,7 +97,7 @@ Miután kivizsgálta a riasztást, és megértette a hatókörét, választ kaph
     1. A riasztás **hasznosként** vagy **nem hasznosként** való megjelölése.
     1. Válasszon ki egy okot, és adjon hozzá egy megjegyzést.
 
-        :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="Biztonsági riasztások listája lap":::
+        :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="Visszajelzés küldése a Microsoftnak a riasztás hasznosságáról":::
 
     > [!TIP]
     > Áttekintjük a visszajelzéseit, hogy javítsuk az algoritmusokat, és jobb biztonsági riasztásokat nyújtsanak.
@@ -112,7 +112,7 @@ Ha nem folytatja a folytatást, vagy le szeretné tiltani valamelyik funkciót:
 1. Válassza ki az adott előfizetést.
 1. A visszalépéshez válassza az **Azure Defender kikapcsolva** lehetőséget.
 1. Az automatikus kiépítés letiltásához nyissa meg az **adatgyűjtés** lapot, és állítsa be az **automatikus kiépítés** **beállítást.**
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
 >[!NOTE]
 > Az automatikus kiépítés letiltása nem távolítja el a Log Analytics ügynököt olyan Azure-beli virtuális gépekről, amelyek már rendelkeznek ügynökkel. Az automatikus kiépítés letiltása korlátozza az erőforrások biztonsági monitorozását.
@@ -123,4 +123,4 @@ Ebből az oktatóanyagból megtudhatta, hogyan használhatók a biztonsági rias
 
 - [Válaszadás Key Vaulthoz készült Azure Defender-riasztásokra](defender-for-key-vault-usage.md)
 - [Biztonsági riasztások - – referencia-útmutató](alerts-reference.md)
-- [Az Azure Defender bemutatása](azure-defender.md)
+- [Bevezetés az Azure Defender használatába](azure-defender.md)

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 28c92004fe67de35e5776cd7dc24cf534ec6f8f3
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 801f0f03b49d20c84a4531bd0daad7630a0ed01d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98061041"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585050"
 ---
 ## <a name="common-scenarios"></a>Gyakori forgatókönyvek
 A következő forgatókönyvek nagy mértékben kihasználhatják a betörést:
@@ -37,7 +37,8 @@ Három állapottal rendelkezhet, ha az erőforrás a kitört állapotban van:
 - **Állandó** – az erőforrás forgalma pontosan a teljesítmény célpontja.
 
 ## <a name="examples-of-bursting"></a>Példák a kitörésre
-Az alábbi példák azt mutatják be, hogyan működik a kitörés a különböző virtuális gépekkel és lemez-kombinációkkal. Ahhoz, hogy a példák könnyen követhető legyenek, a MB/s-ra fogunk összpontosítani, de ugyanezt a logikát a IOPS függetlenül alkalmazza a rendszer.
+
+Az alábbi példák azt mutatják be, hogyan működik a kitörés a különböző virtuális gépekkel és lemezes kombinációkkal. Ahhoz, hogy a példák könnyen követhető legyenek, a MB/s-ra fogunk összpontosítani, de ugyanezt a logikát a IOPS függetlenül alkalmazza a rendszer.
 
 ### <a name="non-burstable-virtual-machine-with-burstable-disks"></a>Nem betört virtuális gép, amely feltört lemezekkel rendelkezik
 **VIRTUÁLIS gépek és lemezek kombinációja:** 
@@ -50,17 +51,17 @@ Az alábbi példák azt mutatják be, hogyan működik a kitörés a különböz
     - Kiépített MB/s: 100
     - Maximális burst MB/s: 170
 
- Amikor a virtuális gép elindul, az operációs rendszer lemezéről kéri le az adatok beolvasását. Mivel az operációsrendszer-lemez egy olyan virtuális gép része, amely az első lépésekből áll, az operációsrendszer-lemez tele lesz a feltört kreditekkel. Ezek a kreditek lehetővé teszik, hogy az operációsrendszer-lemez elindítsa az indítást 170 MB/s-on, ahogy az alábbi képen látható:
+ Amikor a virtuális gép elindul, lekéri az operációs rendszer lemezéről az adatok lekérését. Mivel az operációsrendszer-lemez egy rendszerindító virtuális gép része, az operációsrendszer-lemez tele lesz a feltört kreditekkel. Ezek a kreditek lehetővé teszik, hogy az operációs rendszer lemeze elindítsa az indítást 170 MB/s-on.
 
-![Nem feltört virtuális gép rendszerindítási lemezének indítása](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-startup.jpg)
+![A virtuális gép 192 MB/s sebességre vonatkozó kérést küld az operációsrendszer-lemezre, az operációsrendszer-lemez az 170 MB/s adatokkal válaszol.](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-startup.jpg)
 
-A rendszerindítás befejezése után egy alkalmazás fut a virtuális gépen, és nem kritikus fontosságú számítási feladattal rendelkezik. Ehhez a munkaterheléshez 15 MB/S érték szükséges, amely egyenletesen oszlik el az összes lemez között:
+A rendszerindítás befejezése után egy alkalmazás fut a virtuális gépen, és nem kritikus fontosságú számítási feladattal rendelkezik. Ehhez a munkaterheléshez 15 MB/S érték szükséges, amely egyenletesen oszlik el az összes lemez között.
 
-![Nem feltört virtuális gép, amely üresjáratban van](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-idling.jpg)
+![Az alkalmazás 15 MB/s átviteli sebességre vonatkozó kérést küld a virtuális géphez, a virtuális gép igénybe veszi és elküldi az egyes lemezeket 5 MB/s-ra, az egyes lemezek 5 MB/s értéket adnak vissza, a virtuális gép 15 MB/s értéket ad vissza az alkalmazásnak.](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-idling.jpg)
 
-Ezután az alkalmazásnak fel kell dolgoznia egy batch-feladatot, amely 192 MB/s memóriát igényel. az operációsrendszer-lemez 2 MB/s-ot használ, a többi pedig egyenlően oszlik meg az adatlemezek között:
+Ezután az alkalmazásnak fel kell dolgoznia egy batch-feladatot, amely 192 MB/s memóriát igényel. az operációsrendszer-lemez 2 MB/s-ot használ, a többi pedig egyenletesen oszlik meg az adatlemezek között.
 
-![Nem feltört virtuális gép kipukkanása lemezről](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-bursting.jpg)
+![Az alkalmazás 192 MB/s sebességű, virtuális gépre vonatkozó kérést küld, a virtuális gép kérést küld, és az adatlemezekre (95 MB/s) és 2 MB/s-ra kéri az operációsrendszer-lemezre küldött kérések nagy részét, az adatlemezek pedig a kereslet kielégítéséhez, és az összes lemez visszaadja a kért átviteli sebességet a virtuális géphez](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-bursting.jpg)
 
 ### <a name="burstable-virtual-machine-with-non-burstable-disks"></a>Feltört virtuális gép nem feltört lemezekkel
 **VIRTUÁLIS gépek és lemezek kombinációja:** 
@@ -72,11 +73,12 @@ Ezután az alkalmazásnak fel kell dolgoznia egy batch-feladatot, amely 192 MB/s
 - 2 P10 adatlemez 
     - Kiépített MB/s: 250
 
- A kezdeti rendszerindítás után egy alkalmazás fut a virtuális gépen, és nem kritikus fontosságú számítási feladattal rendelkezik. Ez a munkaterhelés 30 MB/s memóriát igényel, amely egyenletesen oszlik el az összes lemezen: a ![ virtuális gép nem feltört lemezének üresjárata](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-normal.jpg)
+ A kezdeti rendszerindítás után egy alkalmazás fut a virtuális gépen, és nem kritikus fontosságú számítási feladattal rendelkezik. Ehhez a munkaterheléshez 30 MB/s érték szükséges, amely egyenletesen oszlik el az összes lemez között.
+![Az alkalmazás 30 MB/s átviteli sebességre vonatkozó kérelmet küld a virtuális géphez, a virtuális gép igénybe veszi és elküldi az egyes lemezeit 10 MB/s-ra, minden lemez 10 MB/s értéket ad vissza, a virtuális gép 30 MB/s értéket ad vissza az alkalmazásnak.](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-normal.jpg)
 
-Ezután az alkalmazásnak fel kell dolgoznia egy batch-feladatot, amely 600 MB/s memóriát igényel. A Standard_L8s_v2 az igények kielégítése érdekében, majd a lemezekre irányuló kérések egyenletesen oszlanak meg a P50-lemezeken:
+Ezután az alkalmazásnak fel kell dolgoznia egy batch-feladatot, amely 600 MB/s memóriát igényel. A Standard_L8s_v2 az igények kielégítése érdekében felrobban, majd a lemezekre irányuló kérések egyenletesen oszlanak meg a P50-lemezeken.
 
-![A virtuális gép nem feltört lemezének kitörése](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-bursting.jpg)
+![Az alkalmazás 600 MB/s sebességgel küldi el a virtuális gép felé irányuló kérést, a virtuális gép pedig az 200 MB/s-ra irányuló kérelem elvégzését kéri le, és minden lemezre elküldi a kérelmet, a virtuális gépek pedig 200 MB/s értéket adnak 600 vissza.](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-bursting.jpg)
 ### <a name="burstable-virtual-machine-with-burstable-disks"></a>Leválasztható virtuális gép feltört lemezekkel
 **VIRTUÁLIS gépek és lemezek kombinációja:** 
 - Standard_L8s_v2 
@@ -89,14 +91,14 @@ Ezután az alkalmazásnak fel kell dolgoznia egy batch-feladatot, amely 600 MB/s
     - Kiépített MB/s: 25
     - Maximális burst MB/s: 170 
 
-Ha a virtuális gép elindul, a rendszer az operációsrendszer-lemezről 1 280 MB/s-OS burst-korlátot kér, és az operációsrendszer-lemez a 170 MB/s burst teljesítményével fog válaszolni:
+A virtuális gép indításakor a rendszer az operációsrendszer-lemezről 1 280 MB/s értékű burst-korlátot kér le, és az operációsrendszer-lemez a 170 MB/s-os terhelési teljesítménnyel fog válaszolni.
 
-![A virtuális gép burst lemezének indítása](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-startup.jpg)
+![Indításkor a virtuális gép 1 280 MB/s-OS kérést küld az operációsrendszer-lemezre, az operációsrendszer-lemez feltört a 1 280 MB/s értékre.](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-startup.jpg)
 
-Ezután a rendszerindítás befejezése után egy alkalmazás fut a virtuális gépen. Az alkalmazás olyan nem kritikus fontosságú számítási feladattal rendelkezik, amely 15 MB/s memóriát igényel, amely egyenletesen oszlik el az összes lemez között:
+Indítás után olyan alkalmazást indít el, amely nem kritikus fontosságú számítási feladattal rendelkezik. Az alkalmazáshoz 15 MB/s érték szükséges, amely egyenletesen oszlik el az összes lemez között.
 
-![A virtuális gép felszakadási lemezének üresjárata](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-idling.jpg)
+![Az alkalmazás 15 MB/s átviteli sebességre vonatkozó kérést küld a virtuális géphez, a virtuális gép igénybe veszi és elküldi az egyes lemezeket 5 MB/s-ra, az egyes lemezek 5 MB/s értéket adnak vissza, a virtuális gép 15 MB/s értéket ad vissza az alkalmazásnak.](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-idling.jpg)
 
-Ezután az alkalmazásnak fel kell dolgoznia egy batch-feladatot, amely 360 MB/s memóriát igényel. A Standard_L8s_v2 az igények kielégítése érdekében felrobban, majd kéri. Az operációsrendszer-lemez csak 20 MB/s memóriát igényel. A fennmaradó 340 MB/s-ot a kitört P4 adatlemezek kezelik:  
+Ezután az alkalmazásnak fel kell dolgoznia egy batch-feladatot, amely 360 MB/s memóriát igényel. A Standard_L8s_v2 az igények kielégítése érdekében felrobban, majd kéri. Az operációsrendszer-lemez csak 20 MB/s memóriát igényel. A fennmaradó 340 MB/s-ot a kitört P4 adatlemezek kezelik.
 
-![A virtuális gép kipukkanása a lemezről](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-bursting.jpg)
+![Az alkalmazás 360 MB/s sebességre vonatkozó kérést küld a virtuális géphez, a virtuális gép az operációsrendszer-360 lemezről az 170 MB/s-ra és 20 MB/s-ra küldi a kérést, és elküldi az összes adatlemezét.](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-bursting.jpg)

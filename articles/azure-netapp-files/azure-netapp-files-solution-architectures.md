@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/16/2021
 ms.author: b-juche
-ms.openlocfilehash: e9e7451e411ed9160eace0a60c65b5b74bf8f750
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: f36a7827b9351b5565eab19abd4bfdb3d8b4a273
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100559477"
+ms.locfileid: "100635404"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Megoldásarchitektúrák az Azure NetApp Filesszal
 Ez a cikk az ajánlott eljárásokra mutató hivatkozásokat tartalmaz, amelyek segítségével megismerheti a Azure NetApp Files használatának megoldási architektúráit.  
@@ -94,8 +94,8 @@ Ez a szakasz az SAP Azure-megoldásokra mutató hivatkozásokat tartalmaz.
 * [Azure NetApp Files – SAP HANA a biztonsági mentés kiszervezése a Cloud Sync szolgáltatással](https://blog.netapp.com/azure-netapp-files-sap-hana)
 * [A SAP HANA rendszermásolatok felgyorsítása Azure NetApp Files használatával](https://blog.netapp.com/sap-hana-faster-using-azure-netapp-files/)
 * [Felhőbeli kötetek ONTAP és Azure NetApp Files: SAP HANA rendszer áttelepítése egyszerűen](https://blog.netapp.com/cloud-volumes-ontap-and-azure-netapp-files-sap-hana-system-migration-made-easy/)
-* [ANF-befektetések maximalizálása a HANA N + M Scale-Out architektúrában – 1. rész – Microsoft technikai Közösség](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2078737)
-* [Az ANF-befektetések maximalizálása a HANA N + M Scale-Out architektúrában – 2. rész – Microsoft technikai Közösség](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2117130)
+* [Építészeti döntések a HANA N + M Scale-Out-architektúra ANF-beruházásának maximalizálása érdekében – 1. rész](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2078737)
+* [Az építészeti döntések a HANA N + M Scale-Out-architektúra ANF-beruházásának maximalizálása érdekében – 2. rész](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2117130)
 
 ## <a name="azure-vmware-solutions"></a>Azure VMware-megoldások
 

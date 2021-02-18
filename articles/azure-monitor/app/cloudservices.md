@@ -4,15 +4,15 @@ description: Webes és feldolgozói szerepkörök hatékony figyelése az Applic
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: ccd863db55ef0ff9f4051947321321c8b01430c4
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 1f9204534fcdfbf7c393eaafdbae62c4c4321f2f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920685"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573874"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services-Application Insights
-A [Application Insights][start] képes figyelni az [Azure Cloud Service-alkalmazásokat](https://azure.microsoft.com/services/cloud-services/) a rendelkezésre állásra, a teljesítményre, a hibákra és a használatra, ha Application Insights SDK-ból származó adatokat egyesít a cloud servicesből származó [Azure Diagnostics](../platform/diagnostics-extension-overview.md) adatokkal. A széles körben elérhető módon működő alkalmazások teljesítményével és hatékonyságával kapcsolatos visszajelzések birtokában tájékozott döntéseket hozhat a fejlesztés irányát illetően az egyes fejlesztési fázisokban.
+A [Application Insights][start] képes figyelni az [Azure Cloud Service-alkalmazásokat](https://azure.microsoft.com/services/cloud-services/) a rendelkezésre állásra, a teljesítményre, a hibákra és a használatra, ha Application Insights SDK-ból származó adatokat egyesít a cloud servicesből származó [Azure Diagnostics](../agents/diagnostics-extension-overview.md) adatokkal. A széles körben elérhető módon működő alkalmazások teljesítményével és hatékonyságával kapcsolatos visszajelzések birtokában tájékozott döntéseket hozhat a fejlesztés irányát illetően az egyes fejlesztési fázisokban.
 
 ![Áttekintő irányítópult](./media/cloudservices/overview-graphs.png)
 
@@ -32,7 +32,7 @@ Ez a beállítás lehetővé teszi az alkalmazás futását, és megadja az öss
 
 Ha erre a lehetőségre van szüksége, készen áll. 
 
-A következő lépések az [alkalmazás mérőszámait tekintik át](../platform/metrics-charts.md), és az [adatokat az elemzéssel kérdezik](../log-query/log-query-overview.md)le. 
+A következő lépések az [alkalmazás mérőszámait tekintik át](../essentials/metrics-charts.md), és az [adatokat az elemzéssel kérdezik](../logs/log-query-overview.md)le. 
 
 Ha figyelni szeretné a teljesítményt a böngészőben, érdemes lehet a [rendelkezésre állási teszteket](./monitor-web-app-availability.md) is beállítania, és [kódokat hozzáadni a weblapokhoz](./javascript.md).
 
@@ -91,11 +91,11 @@ Ezzel a beállítással figyelheti az alkalmazást az Application Insightsszal. 
 
 Ha úgy döntött, hogy külön Application Insights-erőforrást használ mindegyik buildkonfigurációhoz, előbb válassza ki a konfigurációt.
 
-![Application Insights konfigurálása](./media/cloudservices/configure-azure-diagnostics.png)
+![Az Application Insights konfigurálása](./media/cloudservices/configure-azure-diagnostics.png)
 
 Ennek hatására be kell szúrni a Application Insights rendszerállapot-kulcsokat a ServiceConfiguration nevű fájlba *. \* cscfg*. Itt látható a [mintakód](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).
 
-Ha szeretné, hogy a Application Insights eljuttatott diagnosztikai információk szintje eltérő legyen, ezt a [ *. cscfg* fájlok közvetlen szerkesztésével](../platform/diagnostics-extension-to-application-insights.md)teheti meg.
+Ha szeretné, hogy a Application Insights eljuttatott diagnosztikai információk szintje eltérő legyen, ezt a [ *. cscfg* fájlok közvetlen szerkesztésével](../agents/diagnostics-extension-to-application-insights.md)teheti meg.
 
 ## <a name="install-the-sdk-in-each-project"></a><a name="sdk"></a>Az SDK telepítése az egyes projektekben
 Ezzel a beállítással egyéni üzleti telemetria adhat hozzá bármely szerepkörhöz. A beállítás részletesebb elemzést nyújt az alkalmazás használatáról és végrehajtásáról.
@@ -167,7 +167,7 @@ Erre a lépésre csak akkor van szükség, ha a .NET-keretrendszerben teljes SQL
 
 1. Nyissa meg a létrehozott Application Insights erőforrásokat.
 
-   Az egyes adatpontok a [keresésben][diagnostic]jelennek meg, és az összesített adatok megjelennek a [metrika Explorerben](../platform/metrics-charts.md).
+   Az egyes adatpontok a [keresésben][diagnostic]jelennek meg, és az összesített adatok megjelennek a [metrika Explorerben](../essentials/metrics-charts.md).
 
 1. Vegyen fel további telemetria (lásd a következő részeket), majd tegye közzé az alkalmazást az élő diagnosztika és a használati visszajelzések beszerzéséhez. 
 
@@ -180,17 +180,17 @@ Ha nincs ilyen érték, tegye a következőket:
 További információk: [Hibaelhárítás][qna].
 
 ## <a name="view-azure-diagnostics-events"></a>Azure Diagnostics események megtekintése
-A [Azure Diagnostics](../platform/diagnostics-extension-overview.md) információk a Application Insights a következő helyszíneken találhatók:
+A [Azure Diagnostics](../agents/diagnostics-extension-overview.md) információk a Application Insights a következő helyszíneken találhatók:
 
 * A teljesítményszámlálók egyéni mérőszámokként jelennek meg. 
 * A Windows eseménynaplók nyomkövetésekként és egyéni eseményekként jelennek meg.
 * Az alkalmazásnaplók, ETW-naplók és egyéb diagnosztikai infrastruktúra-naplók nyomkövetésként jelennek meg.
 
-A teljesítményszámlálók és az események számának megtekintéséhez nyissa meg [Metrikaböngésző](../platform/metrics-charts.md) és adja hozzá a következő diagramot:
+A teljesítményszámlálók és az események számának megtekintéséhez nyissa meg [Metrikaböngésző](../essentials/metrics-charts.md) és adja hozzá a következő diagramot:
 
 ![Azure Diagnosticsi az adatgyűjtést](./media/cloudservices/23-wad.png)
 
-A Azure Diagnostics által eljuttatott nyomkövetési naplók közötti kereséshez használjon [keresési](./diagnostic-search.md) vagy [elemzési lekérdezést](../log-query/log-analytics-tutorial.md). Tegyük fel például, hogy van egy kezeletlen kivétel, amely egy szerepkör összeomlását és újrahasznosítását okozta. Ezek az információk a Windows eseménynaplójában, az Alkalmazás csatornában jelennek meg. A keresés használatával megtekintheti a Windows Eseménynapló hibáját, és lekérheti a kivétel teljes verem-nyomkövetését. Ennek segítségével megtalálhatja a probléma alapvető okát.
+A Azure Diagnostics által eljuttatott nyomkövetési naplók közötti kereséshez használjon [keresési](./diagnostic-search.md) vagy [elemzési lekérdezést](../logs/log-analytics-tutorial.md). Tegyük fel például, hogy van egy kezeletlen kivétel, amely egy szerepkör összeomlását és újrahasznosítását okozta. Ezek az információk a Windows eseménynaplójában, az Alkalmazás csatornában jelennek meg. A keresés használatával megtekintheti a Windows Eseménynapló hibáját, és lekérheti a kivétel teljes verem-nyomkövetését. Ennek segítségével megtalálhatja a probléma alapvető okát.
 
 ![Azure Diagnostics keresés](./media/cloudservices/25-wad.png)
 
@@ -261,7 +261,7 @@ A rendszer átfogó képére a kulcsfontosságú figyelési diagramok is megjele
 
 Ha a rendszer más Azure-szolgáltatásokat (például Stream Analytics) használ, vegye fel a figyelési diagramokat is. 
 
-Ha rendelkezik ügyfél-mobilalkalmazással, használja az [App Centert](../learn/mobile-center-quickstart.md). [Analytics](../log-query/log-query-overview.md)-lekérdezések létrehozásával megjelenítheti az események számát, és rögzítheti őket az irányítópulton.
+Ha rendelkezik ügyfél-mobilalkalmazással, használja az [App Centert](../app/mobile-center-quickstart.md). [Analytics](../logs/log-query-overview.md)-lekérdezések létrehozásával megjelenítheti az események számát, és rögzítheti őket az irányítópulton.
 
 ## <a name="example"></a>Példa
 [Ez a példa](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) egy olyan szolgáltatást figyel, amely egy webes és két feldolgozói szerepkörrel rendelkezik.
@@ -274,7 +274,7 @@ A .NET 4.6-os verziójára készítette el az alkalmazást? A .NET 4,6 nem támo
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>Következő lépések
-* [Azure Diagnostics-diagnosztikák Application Insightsba való küldésének konfigurálása](../platform/diagnostics-extension-to-application-insights.md)
+* [Azure Diagnostics-diagnosztikák Application Insightsba való küldésének konfigurálása](../agents/diagnostics-extension-to-application-insights.md)
 * [Application Insights erőforrások automatikus létrehozása](./powershell.md)
 * [Azure Diagnostics automatizálása](./powershell-azure-diagnostics.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample)

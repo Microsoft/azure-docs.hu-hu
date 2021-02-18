@@ -4,12 +4,12 @@ description: Application Insights az alkalmazás telemetria intelligens elemzés
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: ead71a5ac6e2cfa0df6654c7ba9aa7b5b9238d04
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: a055a323001e0291d3cb5c1716e640b3c8b21dbf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763774"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573728"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Intelligens észlelés – teljesítménybeli rendellenességek
 
@@ -70,12 +70,12 @@ Az intelligens Észlelésekkel kapcsolatos e-mailek száma Application Insights 
 * *Létrehozhatom a saját anomáliák észlelési szabályait, vagy testre is szabhatom a meglévő szabályokat?*
 
   * Még nem, de a következőket teheti:
-    * [Riasztásokat állíthat be](../platform/alerts-log.md) , amelyek azt jelzik, ha egy metrika átlép egy küszöbértéket.
+    * [Riasztásokat állíthat be](../alerts/alerts-log.md) , amelyek azt jelzik, ha egy metrika átlép egy küszöbértéket.
     * [Exportálja a telemetria](./export-telemetry.md) egy [adatbázisba](./code-sample-export-sql-stream-analytics.md) vagy [Power BIba](./export-power-bi.md), ahol elemezheti saját maga is.
 * *Milyen gyakran történik az elemzés?*
 
   * Az elemzést naponta futtatjuk a telemetria az előző naptól számítva (az UTC időzónában teljes nap).
-* *Tehát ez a [metrikai riasztásokat](../platform/alerts-log.md)váltja fel?*
+* *Tehát ez a [metrikai riasztásokat](../alerts/alerts-log.md)váltja fel?*
   * Nem.  Nem vállalunk kötelezettséget arra, hogy észlelje az esetleges rendellenes viselkedést.
 
 
@@ -170,15 +170,15 @@ Kattintson a hivatkozásokra a metrika-kezelő megnyitásához és a megfelelő 
 
 Módosítsa az időtartományt és a szűrőket a telemetria megismeréséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ezek a diagnosztikai eszközök segítenek megvizsgálni a telemetria az alkalmazásból:
 
 * [Profilkészítő](profiler.md) 
 * [Pillanatkép-hibakereső](./snapshot-debugger.md)
-* [Elemzés](../log-query/log-analytics-tutorial.md)
-* [Analitika – intelligens diagnosztika](../log-query/log-query-overview.md)
+* [Elemzés](../logs/log-analytics-tutorial.md)
+* [Analitika – intelligens diagnosztika](../logs/log-query-overview.md)
 
 Az intelligens észlelések teljesen automatikusak. De lehet, hogy néhány riasztást szeretne beállítani?
 
-* [Manuálisan konfigurált metrikai riasztások](../platform/alerts-log.md)
+* [Manuálisan konfigurált metrikai riasztások](../alerts/alerts-log.md)
 * [Rendelkezésre állási webes tesztek](./monitor-web-app-availability.md)

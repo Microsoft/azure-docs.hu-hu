@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 11/12/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 2aa589d237a8cfeb8e0dc947896dba82e755631c
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 85e4b6a4d0ff1c3bd7e634311a36396a74408419
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564769"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594437"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok – tervezett karbantartás értesítései
 
@@ -28,7 +28,7 @@ Az Azure rendszeres időközönként frissítéseket végez a virtuális gépek 
 
 Az újraindítást igénylő tervezett karbantartás hullámokban van ütemezve. Minden hullám különböző hatókörrel rendelkezik (régiók):
 
-- A Wave az ügyfeleknek küldött értesítésekkel kezdődik. Alapértelmezés szerint a rendszer értesítést küld az előfizetés tulajdonosának és a közös tulajdonosoknak. Az értesítésekhez hozzáadhat címzetteket és üzenetküldési beállításokat, például e-maileket, SMS-t és webhookokat az Azure- [Tevékenységnaplók riasztásai](../azure-monitor/platform/platform-logs-overview.md)használatával.  
+- A Wave az ügyfeleknek küldött értesítésekkel kezdődik. Alapértelmezés szerint a rendszer értesítést küld az előfizetés tulajdonosának és a közös tulajdonosoknak. Az értesítésekhez hozzáadhat címzetteket és üzenetküldési beállításokat, például e-maileket, SMS-t és webhookokat az Azure- [Tevékenységnaplók riasztásai](../azure-monitor/essentials/platform-logs-overview.md)használatával.  
 - A Notification *szolgáltatással egy önkiszolgáló ablak* is elérhetővé válik. Ez az ablak általában 35 nap alatt megkeresheti, hogy a virtuális gépek mely része szerepeljen a Wave-ben. Proaktív módon megkezdheti a karbantartást a saját ütemezési igényei szerint.
 - Az önkiszolgáló ablak után megkezdődik az *ütemezett karbantartási* időszak. Ezen időszak alatt az Azure a szükséges karbantartást a virtuális gépre irányítja és alkalmazza. 
 
@@ -75,7 +75,7 @@ Tervezett karbantartási hullám ütemezésekor megtekintheti azoknak a virtuál
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A bal oldali menüben válassza a **minden szolgáltatás** lehetőséget, majd válassza a **virtuálisgép-méretezési** csoportok lehetőséget.
 3. A **virtuálisgép-méretezési** csoportok területen válassza az **Oszlopok szerkesztése** lehetőséget az elérhető oszlopok listájának megnyitásához.
-4. Az **elérhető oszlopok** szakaszban válassza az **önkiszolgáló karbantartás** lehetőséget, majd helyezze át a **kijelölt oszlopok** listájára. Kattintson az **Alkalmaz** elemre.  
+4. Az **elérhető oszlopok** szakaszban válassza az **önkiszolgáló karbantartás** lehetőséget, majd helyezze át a **kijelölt oszlopok** listájára. Kattintson az **Alkalmaz** gombra.  
 
     Ahhoz, hogy az **önkiszolgáló karbantartási** elem könnyebben megkereshető legyen, az **összesből** a **Tulajdonságok** lehetőségre kattintva megváltoztathatja a legördülő lehetőséget az **elérhető oszlopok** szakaszban.
 
@@ -84,22 +84,22 @@ Az **önkiszolgáló karbantartási** oszlop most megjelenik a virtuálisgép-m�
 | Érték | Leírás |
 |-------|-------------|
 | Igen | A virtuálisgép-méretezési csoport legalább egy virtuális gépe önkiszolgáló ablakban található. Az önkiszolgáló ablakon bármikor elindíthatja a karbantartást. | 
-| Nem | Az érintett virtuálisgép-méretezési csoport önkiszolgáló ablakában egyetlen virtuális gép sem található. | 
+| No | Az érintett virtuálisgép-méretezési csoport önkiszolgáló ablakában egyetlen virtuális gép sem található. | 
 | - | A virtuális gépek méretezési csoportjai nem részei a tervezett karbantartási hullámnak.| 
 
 ## <a name="notification-and-alerts-in-the-portal"></a>Értesítés és riasztások a portálon
 
-Az Azure a tervezett karbantartásra vonatkozó ütemtervet küld az előfizetés tulajdonosának és a közös tulajdonosok csoportjának e-mail-címének elküldésével. A kommunikációhoz címzetteket és csatornákat is hozzáadhat a tevékenység naplójának riasztásai létrehozásával. További információ: [előfizetés figyelése tevékenység az Azure-tevékenység naplójában](../azure-monitor/platform/platform-logs-overview.md).
+Az Azure a tervezett karbantartásra vonatkozó ütemtervet küld az előfizetés tulajdonosának és a közös tulajdonosok csoportjának e-mail-címének elküldésével. A kommunikációhoz címzetteket és csatornákat is hozzáadhat a tevékenység naplójának riasztásai létrehozásával. További információ: [előfizetés figyelése tevékenység az Azure-tevékenység naplójában](../azure-monitor/essentials/platform-logs-overview.md).
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A bal oldali menüben válassza a **figyelő** elemet. 
 3. A **figyelő-riasztások (klasszikus)** ablaktáblán válassza a **+ tevékenység naplójának hozzáadása riasztás** elemet.
 4. A **tevékenység naplójának hozzáadása riasztás** lapon válassza ki vagy adja meg a kért adatokat. A **feltételek** területen győződjön meg arról, hogy a következő értékeket állítja be:
-   - **Esemény kategóriája** : válassza a **Service Health** lehetőséget.
-   - **Szolgáltatások** : válassza **a Virtual Machine Scale sets és Virtual Machines** lehetőséget.
-   - **Típus** : válassza a **tervezett karbantartás** lehetőséget. 
+   - **Esemény kategóriája**: válassza a **Service Health** lehetőséget.
+   - **Szolgáltatások**: válassza **a Virtual Machine Scale sets és Virtual Machines** lehetőséget.
+   - **Típus**: válassza a **tervezett karbantartás** lehetőséget. 
     
-A műveletnapló-riasztások konfigurálásával kapcsolatos további tudnivalókért tekintse meg a [műveletnapló riasztások létrehozása](../azure-monitor/platform/activity-log-alerts.md) című témakört.
+A műveletnapló-riasztások konfigurálásával kapcsolatos további tudnivalókért tekintse meg a [műveletnapló riasztások létrehozása](../azure-monitor/alerts/activity-log-alerts.md) című témakört.
     
     
 ## <a name="start-maintenance-on-your-virtual-machine-scale-set-from-the-portal"></a>A virtuális gépi méretezési csoport karbantartásának elindítása a portálról
@@ -135,7 +135,7 @@ A **MaintenanceRedeployStatus** alatt a következő tulajdonságokat adja vissza
 
 ### <a name="start-maintenance-on-your-vm-instance-by-using-powershell"></a>A virtuálisgép-példány karbantartásának elindítása a PowerShell használatával
 
-A karbantartást elindíthatja egy virtuális gépen, ha a **IsCustomerInitiatedMaintenanceAllowed** értéke **true (igaz** ). Használja a [set-AzVmss](/powershell/module/az.compute/set-azvmss) parancsmagot a `-PerformMaintenance` paraméterrel.
+A karbantartást elindíthatja egy virtuális gépen, ha a **IsCustomerInitiatedMaintenanceAllowed** értéke **true (igaz**). Használja a [set-AzVmss](/powershell/module/az.compute/set-azvmss) parancsmagot a `-PerformMaintenance` paraméterrel.
 
 ```powershell
 Set-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -PerformMaintenance 
@@ -165,7 +165,7 @@ Az egyes virtuálisgép-példányok **MaintenanceRedeployStatus** a következő 
 
 ### <a name="start-maintenance-on-your-vm-instance-by-using-the-cli"></a>A virtuálisgép-példány karbantartásának elindítása a parancssori felület használatával
 
-A következő hívás egy virtuálisgép-példány karbantartását kezdeményezi `IsCustomerInitiatedMaintenanceAllowed` , ha a értéke **true (igaz** ):
+A következő hívás egy virtuálisgép-példány karbantartását kezdeményezi `IsCustomerInitiatedMaintenanceAllowed` , ha a értéke **true (igaz**):
 
 ```azurecli
 az vmss perform-maintenance -g rgName -n vmssName --instance-ids id

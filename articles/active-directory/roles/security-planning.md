@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ae8dbf6ffd2d827bbcd0fd723f63255d71d47a5
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 9f2fe29ede2bf0f92049d1ae82bae87326057a63
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090790"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594294"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Emelt szintű hozzáférés biztosítása Azure AD hibrid- és felhőkörnyezetekhez
 
@@ -212,7 +212,7 @@ A más programokból (például Xbox, Live és Outlook) származó Microsoft-fi�
 
 #### <a name="monitor-azure-activity"></a>Azure-tevékenység figyelése
 
-Az Azure-tevékenységnapló az Azure előfizetés-szintű eseményeit tartalmazza. Információt nyújt arról, hogy ki hozta létre, frissítette és törölte azokat az erőforrásokat, és hogy mikor történtek ezek az események. További információt az [Azure-előfizetésében található fontos műveletekkel kapcsolatos értesítések naplózása és fogadása](../../azure-monitor/platform/alerts-activity-log.md)című témakörben talál.
+Az Azure-tevékenységnapló az Azure előfizetés-szintű eseményeit tartalmazza. Információt nyújt arról, hogy ki hozta létre, frissítette és törölte azokat az erőforrásokat, és hogy mikor történtek ezek az események. További információt az [Azure-előfizetésében található fontos műveletekkel kapcsolatos értesítések naplózása és fogadása](../../azure-monitor/alerts/alerts-activity-log.md)című témakörben talál.
 
 ### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>További lépések a más felhőalapú alkalmazásokhoz való hozzáférést kezelő szervezetek számára az Azure AD-n keresztül
 

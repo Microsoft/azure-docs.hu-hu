@@ -3,12 +3,12 @@ title: A FedRAMP High Blueprint minta üzembe helyezése
 description: A FedRAMP magas tervrajzi mintájának üzembe helyezése, beleértve a tervrajz-összetevő paraméterének részleteit.
 ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: 065f1343066f5d0ac9b0846de790124e907a5e24
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 53d48eff79f7227373c1e7dfb0c34ef17a00e125
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034866"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594772"
 ---
 # <a name="deploy-the-fedramp-high-blueprint-sample"></a>A FedRAMP High Blueprint minta üzembe helyezése
 
@@ -94,7 +94,7 @@ A következő táblázat a terv összetevő-paramétereinek listáját tartalmaz
 |Összetevő neve|Összetevő típusa|Paraméter neve|Leírás|
 |-|-|-|-|
 |\[Előzetes verzió \] : a FedRAMP magas szintű vezérlése és adott virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények támogatásához|Szabályzat-hozzárendelés|Log Analytics munkaterület-azonosító, amelyhez a virtuális gépeket konfigurálni kell|Ez a Log Analytics munkaterület azonosítója (GUID), amelyhez a virtuális gépeket konfigurálni kell.|
-|\[Előzetes verzió \] : a FedRAMP magas szintű vezérlése és adott virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények támogatásához|Szabályzat-hozzárendelés|Azon erőforrástípusok listája, amelyeknek engedélyezve kell lennie a diagnosztikai naplóknak|A naplózni kívánt erőforrástípusok listája, ha a diagnosztikai napló beállítása nincs engedélyezve. Elfogadható értékek találhatók [Azure monitor diagnosztikai naplók sémái](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)között.|
+|\[Előzetes verzió \] : a FedRAMP magas szintű vezérlése és adott virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények támogatásához|Szabályzat-hozzárendelés|Azon erőforrástípusok listája, amelyeknek engedélyezve kell lennie a diagnosztikai naplóknak|A naplózni kívánt erőforrástípusok listája, ha a diagnosztikai napló beállítása nincs engedélyezve. Elfogadható értékek találhatók [Azure monitor diagnosztikai naplók sémái](../../../../azure-monitor/essentials/resource-logs-schema.md#service-specific-schemas)között.|
 |\[Előzetes verzió \] : a FedRAMP magas szintű vezérlése és adott virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények támogatásához|Szabályzat-hozzárendelés|A Windows rendszerű virtuális gépek rendszergazdái csoportból kizárandó felhasználók listája|A rendszergazdák helyi csoportba kizárandó tagok pontosvesszővel tagolt listája. Pl.: rendszergazda; myUser1; myUser2|
 |\[Előzetes verzió \] : a FedRAMP magas szintű vezérlése és adott virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények támogatásához|Szabályzat-hozzárendelés|A Windows rendszerű virtuális gépek rendszergazdái csoportjának részét képező felhasználók listája|A rendszergazdák helyi csoportba foglalandó tagok pontosvesszővel tagolt listája. Pl.: rendszergazda; myUser1; myUser2|
 |\[Előzetes verzió \] : log Analytics-ügynök üzembe helyezése Linux-VM Scale sets (VMSS)|Szabályzat-hozzárendelés|Log Analytics a Linux VM Scale Sets (VMSS) munkaterülete|Ha ez a munkaterület kívül esik a hozzárendelés hatókörén, manuálisan kell megadnia a "Log Analytics közreműködői" engedélyeket (vagy hasonlókat) a szabályzat-hozzárendelés elsődleges AZONOSÍTÓjának.|
@@ -134,7 +134,7 @@ A következő táblázat a terv összetevő-paramétereinek listáját tartalmaz
 |\[Előzetes verzió \] : a FedRAMP magas szintű vezérlése és adott virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények támogatásához|Szabályzat-hozzárendelés|A hosszú távú geo-redundáns biztonsági mentést engedélyezni kell az Azure SQL Database-adatbázisokhoz|A házirend hatásával kapcsolatos információk a [Azure Policy effektusok megismerése](../../../policy/concepts/effects.md)című témakörben találhatók.|
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette a FedRAMP High Blueprint-minta üzembe helyezésének lépéseit, tekintse meg a következő cikkeket a terv és a vezérlés leképezésének megismeréséhez:
 

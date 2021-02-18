@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2020
 ms.author: yelevin
-ms.openlocfilehash: 5bf94d7c5889bb5a743655d65e48f021e91e01b7
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 0b2a6088effc735076d56ba83dd85135392147b8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807139"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574996"
 ---
 # <a name="import-threat-intelligence-into-azure-sentinel"></a>Fenyegetésfelderítési adatok importálása az Azure Sentinelbe
 
@@ -419,7 +419,7 @@ Nézzük meg, hogyan lehet megkeresni az Azure Sentinelben elérhető veszélyfo
 
     :::image type="content" source="media/import-threat-intelligence/threat-intel-bar-chart.png" alt-text="Oszlopdiagram":::
 
-A munkafüzetek hatékony interaktív irányítópultokat biztosítanak, amelyek betekintést nyújtanak az Azure Sentinel valamennyi aspektusára. A munkafüzetek teljes egészében elvégezhető, és a megadott sablonok nagyszerű kiindulási pontként használhatók, érdemes lehet bemutatni és testreszabni ezeket a sablonokat, vagy új irányítópultokat létrehozni, amelyek számos különböző adatforrást egyesítenek, így egyedi módon jelenítheti meg az adatait. Mivel az Azure Sentinel-munkafüzetek Azure Monitor munkafüzeteken alapulnak, már széles körű dokumentáció áll rendelkezésre, és számos további sablon is elérhető. Ez a cikk azt ismerteti, hogyan [hozhatók létre interaktív jelentések Azure monitor munkafüzetek](../azure-monitor/platform/workbooks-overview.md)használatával. 
+A munkafüzetek hatékony interaktív irányítópultokat biztosítanak, amelyek betekintést nyújtanak az Azure Sentinel valamennyi aspektusára. A munkafüzetek teljes egészében elvégezhető, és a megadott sablonok nagyszerű kiindulási pontként használhatók, érdemes lehet bemutatni és testreszabni ezeket a sablonokat, vagy új irányítópultokat létrehozni, amelyek számos különböző adatforrást egyesítenek, így egyedi módon jelenítheti meg az adatait. Mivel az Azure Sentinel-munkafüzetek Azure Monitor munkafüzeteken alapulnak, már széles körű dokumentáció áll rendelkezésre, és számos további sablon is elérhető. Ez a cikk azt ismerteti, hogyan [hozhatók létre interaktív jelentések Azure monitor munkafüzetek](../azure-monitor/visualize/workbooks-overview.md)használatával. 
 
 A [githubon Azure monitor-munkafüzetek](https://github.com/microsoft/Application-Insights-Workbooks) gazdag közössége is letölthető, ahol további sablonokat tölthet le, és hozzájárulhat a saját sablonjaihoz is.
 

@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 07/06/2020
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: 0bfacc4169de6b30272229283e9aef9a9d69fad5
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 668988ae34c2f97f3baca3f360c13e3ec3e30731
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99592330"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586349"
 ---
 # <a name="app-service-overview"></a>Az App Service áttekintése
 
@@ -28,7 +28,7 @@ A App Service főbb jellemzői:
 * **Felügyelt éles környezet** – app Service automatikusan [kijavításokat végez, és KARBANTARTJA az operációs rendszer és a nyelv keretrendszerét](overview-patch-os-runtime.md) . Töltsön fel időt a nagyszerű alkalmazások írásakor, és hagyja, hogy az Azure aggódnia legyen a platformmal kapcsolatban.
 * **Tárolókra bontás és Docker** -Dockerize az alkalmazást, és egy egyéni Windows vagy Linux-tárolót üzemeltet a app Service. Több tárolóból álló alkalmazások futtatása a Docker-összeállítással. A Docker-képességek áttelepíthetők közvetlenül a App Servicera.
 * **DevOps-optimalizálás** – [Folyamatos integrációt és üzembe helyezést](deploy-continuous-deployment.md) állíthat be az Azure DevOps, GitHub, BitBucket, Docker Hub vagy az Azure Container Registry szolgáltatásokhoz. [Teszt- és átmeneti környezetek](deploy-staging-slots.md) segítségével küldheti ki a frissítéseket. Alkalmazásait az App Service-ben az [Azure PowerShell](/powershell/azure/) vagy a [többplatformos parancssori felület (CLI)](/cli/azure/install-azure-cli) segítségével felügyelheti.
-* **Globális méret magas rendelkezésre állással** - Manuálisan vagy automatikusan is végezhet [felfelé skálázást](manage-scale-up.md) és [horizontális skálázást](../azure-monitor/platform/autoscale-get-started.md). A Microsoft globális adatközpont infrastruktúrájában bárhol üzemeltetheti az alkalmazásait, az App Service [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) pedig magas rendelkezésre állást biztosít.
+* **Globális méret magas rendelkezésre állással** - Manuálisan vagy automatikusan is végezhet [felfelé skálázást](manage-scale-up.md) és [horizontális skálázást](../azure-monitor/autoscale/autoscale-get-started.md). A Microsoft globális adatközpont infrastruktúrájában bárhol üzemeltetheti az alkalmazásait, az App Service [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) pedig magas rendelkezésre állást biztosít.
 * **Csatlakozás SaaS-platformokhoz és helyszíni adatokhoz** – Több mint 50, nagyvállalati rendszerekhez (például SAP), SaaS-szolgáltatásokhoz (például Salesforce), valamint internetes szolgáltatásokhoz (többek között a Facebookhoz) készült [összekötő](../connectors/apis-list.md) közül választhat. Hozzáférhet helyszíni adatokhoz a [Hibrid kapcsolatok](app-service-hybrid-connections.md) és az [Azure virtuális hálózatok](web-sites-integrate-with-vnet.md) segítségével.
 * **Biztonság és megfelelőség** - Az App Service megfelel az [ISO, SOC és PCI szabványoknak](https://www.microsoft.com/en-us/trustcenter). Felhasználók hitelesítése [Azure Active Directory](configure-authentication-provider-aad.md), [Google](configure-authentication-provider-google.md), [Facebook](configure-authentication-provider-facebook.md), [Twitter](configure-authentication-provider-twitter.md)vagy [Microsoft-fiók](configure-authentication-provider-microsoft.md)használatával. [IP-címkorlátozásokat](app-service-ip-restrictions.md) hozhat létre és [kezelheti a szolgáltatásidentitásokat](overview-managed-identity.md).
 * **Alkalmazássablonok** – Az [Azure Marketplace](https://azure.microsoft.com/marketplace/) alkalmazássablon-listájának széles kínálatából választhat, például a WordPresst, a Joomlát vagy a Drupalt.

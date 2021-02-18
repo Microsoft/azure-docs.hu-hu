@@ -3,21 +3,21 @@ title: Diagnosztikai naplók beállítása – Azure Event hub | Microsoft Docs
 description: Ismerje meg, hogyan állíthatja be a tevékenységek naplóit és a diagnosztikai naplókat az Azure-beli Event hubokhoz.
 ms.topic: article
 ms.date: 10/27/2020
-ms.openlocfilehash: 015814b9a56ec963f5209f971f096ac6c173d7e1
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: dc5cbea31583a4e8126897b2dcda63b216438e1b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131984"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573177"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Diagnosztikai naplók beállítása az Azure-eseményközpontokhoz
 
 Az Azure Event Hubs-hoz két típusú naplót tekinthet meg:
 
-* **[Tevékenységnaplók](../azure-monitor/platform/platform-logs-overview.md)**: ezek a naplók egy adott feladaton végzett műveletekkel kapcsolatos információkat tartalmaznak. A naplók mindig engedélyezve vannak. A tevékenység naplójának bejegyzései a Azure Portalban az Event hub-névtér bal oldali ablaktábláján a **műveletnapló** lehetőség kiválasztásával láthatók. Például: "névtér létrehozása vagy frissítése", "az Event hub létrehozása vagy frissítése".
+* **[Tevékenységnaplók](../azure-monitor/essentials/platform-logs-overview.md)**: ezek a naplók egy adott feladaton végzett műveletekkel kapcsolatos információkat tartalmaznak. A naplók mindig engedélyezve vannak. A tevékenység naplójának bejegyzései a Azure Portalban az Event hub-névtér bal oldali ablaktábláján a **műveletnapló** lehetőség kiválasztásával láthatók. Például: "névtér létrehozása vagy frissítése", "az Event hub létrehozása vagy frissítése".
 
     ![Event Hubs névtérhez tartozó műveletnapló](./media/event-hubs-diagnostic-logs/activity-log.png)
-* **[Diagnosztikai naplók](../azure-monitor/platform/platform-logs-overview.md)**: a diagnosztikai naplók részletes információkat biztosítanak a névtérhez az API használatával vagy a Language SDK felügyeleti ügyfelein keresztül végrehajtott műveletekről és műveletekről. 
+* **[Diagnosztikai naplók](../azure-monitor/essentials/platform-logs-overview.md)**: a diagnosztikai naplók részletes információkat biztosítanak a névtérhez az API használatával vagy a Language SDK felügyeleti ügyfelein keresztül végrehajtott műveletekről és műveletekről. 
     
     A következő szakasz bemutatja, hogyan engedélyezheti a diagnosztikai naplókat egy Event Hubs névtérhez.
 
@@ -36,7 +36,7 @@ A diagnosztikai naplók alapértelmezés szerint le vannak tiltva. A diagnosztik
 
     Az új beállítások körülbelül 10 percen belül lépnek érvénybe. Ezt követően a naplók megjelennek a konfigurált archiválási célhelyen a **diagnosztikai naplók** panelen.
 
-    A diagnosztika konfigurálásával kapcsolatos további információkért tekintse meg az [Azure diagnosztikai naplók áttekintése](../azure-monitor/platform/platform-logs-overview.md)című témakört.
+    A diagnosztika konfigurálásával kapcsolatos további információkért tekintse meg az [Azure diagnosztikai naplók áttekintése](../azure-monitor/essentials/platform-logs-overview.md)című témakört.
 
 ## <a name="diagnostic-logs-categories"></a>Diagnosztikai naplók kategóriái
 

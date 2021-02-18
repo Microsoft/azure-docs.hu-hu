@@ -13,12 +13,12 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: b28454e9b60654541d4f62ec1d8455b30cfc2906
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: bdb9e12fdf721204ce98d23e5d5aeea535ddf23d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99580827"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574812"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>A MSAL.NET használata a felhasználók közösségi identitásokkal való bejelentkezéséhez
 
@@ -67,31 +67,27 @@ application = PublicClientApplicationBuilder.Create(ClientID)
 Egy Azure AD B2C által védett API-hoz egy nyilvános ügyfélalkalmazás jogkivonatának beszerzéséhez a felülbírálásokat egy szolgáltatóval kell használni:
 
 ```csharp
-IEnumerable<IAccount> accounts = await application.GetAccountsAsync();
-AuthenticationResult ar = await application.AcquireTokenInteractive(scopes)
-                                           .WithAccount(GetAccountByPolicy(accounts, policy))
-                                           .WithParentActivityOrWindow(ParentActivityOrWindow)
-                                           .ExecuteAsync();
+AuthenticationResult authResult = null;
+IEnumerable<IAccount> accounts = await application.GetAccountsAsync(policy);
+IAccount account = accounts.FirstOrDefault();
+try
+{
+    authResult = await application.AcquireTokenSilent(scopes, account)
+                      .ExecuteAsync();
+}
+catch (MsalUiRequiredException ex)
+{
+    authResult = await application.AcquireTokenInteractive(scopes)
+                        .WithAccount(account)
+                        .WithParentActivityOrWindow(ParentActivityOrWindow)
+                        .ExecuteAsync();
+}  
 ```
 
 Az előző kódrészletben:
 
 - `policy` egy olyan karakterlánc, amely tartalmazza a Azure AD B2C felhasználói folyamat vagy az egyéni házirend nevét (például: `PolicySignUpSignIn` ).
 - `ParentActivityOrWindow` az Androidhoz (a tevékenységhez) szükséges, és nem kötelező más platformokhoz, amelyek támogatják a szülő felhasználói felületet, például a Windowst a Microsoft Windows rendszeren és az iOS-UIViewController. További információ a felhasználói felületi párbeszédpanelről: [WithParentActivityOrWindow](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow) a MSAL wikin.
-- `GetAccountByPolicy(IEnumerable<IAccount>, string)` egy olyan metódus, amely megkeresi az adott szabályzathoz tartozó fiókot. Például:
-
-  ```csharp
-  private IAccount GetAccountByPolicy(IEnumerable<IAccount> accounts, string policy)
-  {
-      foreach (var account in accounts)
-      {
-          string userIdentifier = account.HomeAccountId.ObjectId.Split('.')[0];
-          if (userIdentifier.EndsWith(policy.ToLower()))
-              return account;
-      }
-      return null;
-  }
-  ```
 
 A felhasználói folyamat vagy az egyéni házirend alkalmazása (például a felhasználó szerkesztési profiljának vagy a jelszó alaphelyzetbe állításának engedélyezése) jelenleg a meghívásával történik `AcquireTokenInteractive` . Ebben a két házirendben nem használja a visszaadott jogkivonat/hitelesítési eredményt.
 
@@ -104,16 +100,16 @@ Ezt úgy teheti `AcquireTokenInteractive` meg, ha meghívja a szolgáltatót az 
 ```csharp
 private async void EditProfileButton_Click(object sender, RoutedEventArgs e)
 {
-    IEnumerable<IAccount> accounts = await app.GetAccountsAsync();
+    IEnumerable<IAccount> accounts = await application.GetAccountsAsync(PolicyEditProfile);
+    IAccount account = accounts.FirstOrDefault();
     try
     {
-        var authResult = await app.AcquireToken(scopes:App.ApiScopes)
-                            .WithAccount(GetUserByPolicy(accounts, App.PolicyEditProfile)),
+        var authResult = await application.AcquireTokenInteractive(scopes)
                             .WithPrompt(Prompt.NoPrompt),
-                            .WithB2CAuthority(App.AuthorityEditProfile)
+                            .WithAccount(account)
+                            .WithB2CAuthority(AuthorityEditProfile)
                             .ExecuteAsync();
-        DisplayBasicTokenInfo(authResult);
-    }
+     }
     catch
     {
     }
