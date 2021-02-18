@@ -4,19 +4,19 @@ description: A szervezet adatai tulajdonosai, közreműködői és olvasói.
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cd1e69ecd121380353ad6400d473d572b7b7bb3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4254170ad100b634439cc846dc381e305ae71d1f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89076684"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589602"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Erőforrások, szerepkörök és hozzáférés-vezérlés a Application Insightsban
 
 Az Azure- [beli szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)használatával szabályozhatja, hogy ki olvasta és frissítse az adataihoz való hozzáférést az Azure [Application Insightsban][start].
 
 > [!IMPORTANT]
-> Rendeljen hozzá hozzáférést az **erőforráscsoport vagy az előfizetés** azon felhasználóihoz, amelyekhez az alkalmazás-erőforrás tartozik – nem az erőforráshoz. Rendelje hozzá a **Application Insights összetevő közreműködői** szerepkört. Ez biztosítja a webes tesztekhez és riasztásokhoz való hozzáférés egységes vezérlését az alkalmazás-erőforrással együtt. [További információk](#access).
+> Rendeljen hozzá hozzáférést az **erőforráscsoport vagy az előfizetés** azon felhasználóihoz, amelyekhez az alkalmazás-erőforrás tartozik – nem az erőforráshoz. Rendelje hozzá a **Application Insights összetevő közreműködői** szerepkört. Ez biztosítja a webes tesztekhez és riasztásokhoz való hozzáférés egységes vezérlését az alkalmazás-erőforrással együtt. [További információ](#access).
 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -76,7 +76,7 @@ Adott esetben a kapcsolódó hivatalos dokumentációra hivatkozunk.
 | [Olvasó](../../role-based-access-control/built-in-roles.md#reader) |Megtekintheti, de nem változtathatja meg bármit. |
 | [Application Insights Snapshot Debugger](../../role-based-access-control/built-in-roles.md#application-insights-snapshot-debugger) | Engedélyt ad a felhasználónak a Application Insights Snapshot Debugger funkcióinak használatára. Vegye figyelembe, hogy ez a szerepkör sem a tulajdonos, sem a közreműködő szerepkör részét képezi. |
 | Az Azure szolgáltatás üzembe helyezésének kiadási felügyeleti közreműködői | Közreműködő szerepkör az Azure Service üzembe helyezésével üzembe helyezett szolgáltatásokhoz. |
-| [Adattisztító](../../role-based-access-control/built-in-roles.md#data-purger) | A személyes adattörlés speciális szerepe. További információért tekintse meg a [személyes adatokra vonatkozó útmutatást](../platform/personal-data-mgmt.md) .   |
+| [Adattisztító](../../role-based-access-control/built-in-roles.md#data-purger) | A személyes adattörlés speciális szerepe. További információért tekintse meg a [személyes adatokra vonatkozó útmutatást](../logs/personal-data-mgmt.md) .   |
 | ExpressRoute-rendszergazda | Az expressz útvonalak törlését és kezelését is létrehozhatja.|
 | [Log Analytics közreműködő](../../role-based-access-control/built-in-roles.md#log-analytics-contributor) | Log Analytics közreműködő képes olvasni az összes figyelési és szerkesztési beállítást. A figyelési beállítások szerkesztése magában foglalja a virtuálisgép-bővítmény virtuális gépekhez való hozzáadását. a Storage-fiók kulcsainak beolvasása az Azure Storage-ból származó naplók gyűjtésének konfigurálásához; Automation-fiókok létrehozása és konfigurálása; megoldások hozzáadása; és az Azure Diagnostics konfigurálása az összes Azure-erőforráshoz.  |
 | [Log Analytics olvasó](../../role-based-access-control/built-in-roles.md#log-analytics-reader) | Log Analytics olvasó megtekintheti és megkeresheti az összes figyelési adatait, valamint megtekintheti a figyelési beállításokat, beleértve az Azure Diagnostics konfigurációjának megtekintését az összes Azure-erőforráson. |
@@ -90,7 +90,7 @@ Adott esetben a kapcsolódó hivatalos dokumentációra hivatkozunk.
 
 A "szerkesztés" magában foglalja a következők létrehozását, törlését és frissítését:
 
-* További források
+* Források
 * Webes tesztek
 * Riasztások
 * Folyamatos exportálás

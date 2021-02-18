@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 02/09/2021
 ms.custom: references_regions
-ms.openlocfilehash: d37b39f596a9986f001663847e0b8e6ae8adb987
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 6de91d51f3700c25ba1e0f361c948dc8ab338c43
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100545513"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590546"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
@@ -21,14 +21,15 @@ Ismerje meg a szolgáltatás újdonságait. Könyvjelző ezen az oldalon naprak�
 
 ## <a name="february-2021"></a>2021. február
 
-|Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Leírás | Rendelkezésre állás  |
+|Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Rendelkezésre állás  |
 |------------------------------|---------------|---------------|
 | [Dokumentumok alaphelyzetbe állítása (előzetes verzió)](search-howto-run-reset-indexers.md) |  Egyénileg kiválasztott keresési dokumentumok újrafeldolgozása az indexelő munkaterhelésekben. | [Keresés REST API 2020-06-30 – előzetes verzió](/rest/api/searchservice/index-preview) |
 | [Rendelkezésre állási zónák](search-performance-optimization.md#availability-zones)| Az egyes régiókban két vagy több replikával rendelkező szolgáltatások keresése – a [teljesítmény skálázása](search-performance-optimization.md#availability-zones), a rugalmasság növelése azáltal, hogy két vagy több különböző fizikai helyen replikák vannak.  | A keresési szolgáltatás létrehozásának régiója és dátuma határozza meg a rendelkezésre állást. A részletekért tekintse meg a teljesítmény méretezése című cikket. |
+| [Azure CLI](/cli/azure/search) </br>[Azure PowerShell](/powershell/module/az.search/) | Az új változatok mostantól teljes körű műveleteket biztosítanak a felügyeleti REST API 2020-08-01-ben, beleértve az IP-tűzfalszabályok és a magánhálózati végpontok támogatását is. | Általánosan elérhető. |
 
 ## <a name="january-2021"></a>2021. január
 
-|Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Leírás | Rendelkezésre állás  |
+|Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Rendelkezésre állás  |
 |------------------------------|-------------|---------------|
 | [Megoldás-gyorsító az Azure Cognitive Search és QnA Maker](https://github.com/Azure-Samples/search-qna-maker-accelerator) | Kérdéseket és válaszokat kér le a dokumentumból, és a legfontosabb válaszokat ajánlja fel. Egy élő bemutató alkalmazás a következő címen érhető el: [https://aka.ms/qnaWithAzureSearchDemo](https://aka.ms/qnaWithAzureSearchDemo) .  | Nyílt forráskódú projekt (SLA nélkül) |
 

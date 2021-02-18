@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 1f461c4870b398a49387472c49d45b90929405c7
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 56afc81794bb18bfb7c9146eeb4ed61a0a75ea0f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100529676"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587002"
 ---
 **Adatgyűjtés mennyisége és megőrzése** 
 
@@ -72,7 +72,7 @@ ms.locfileid: "100529676"
 
 **<a name="data-ingestion-volume-rate">Adatfeldolgozási kötetek aránya</a>**
 
-A Azure Monitor egy nagy léptékű adatszolgáltatás, amely több ezer ügyfelet szolgál ki havonta több, mint havi terabájt adatküldéssel. A mennyiségi korlát a bérlős-környezetben a hirtelen betöltési tüskékkel Azure Monitor ügyfelek elkülönítését tervezi. Az alapértelmezett betöltési mennyiség 500 MB (tömörített), a munkaterületeken van definiálva, ez körülbelül **6 GB/perc** tömörítve van – a tényleges méret a napló hosszától és a tömörítési aránytól függően változhat. A mennyiségi díjszabási korlát az Azure-erőforrásokból a [diagnosztikai beállításokon](../articles/azure-monitor/platform/diagnostic-settings.md)keresztül betöltött adatokra vonatkozik. Ha a rendszer eléri a mennyiségi korlátot, az újrapróbálkozási mechanizmus 30 percen belül megkísérli az adat betöltését, és ha a művelet meghiúsul, eldobása. Nem vonatkozik az [ügynökökből](../articles/azure-monitor/platform/agents-overview.md) vagy adatgyűjtő [API](../articles/azure-monitor/platform/data-collector-api.md)-ból betöltött adatokra.
+A Azure Monitor egy nagy léptékű adatszolgáltatás, amely több ezer ügyfelet szolgál ki havonta több, mint havi terabájt adatküldéssel. A mennyiségi korlát a bérlős-környezetben a hirtelen betöltési tüskékkel Azure Monitor ügyfelek elkülönítését tervezi. Az alapértelmezett betöltési mennyiség 500 MB (tömörített), a munkaterületeken van definiálva, ez körülbelül **6 GB/perc** tömörítve van – a tényleges méret a napló hosszától és a tömörítési aránytól függően változhat. A mennyiségi díjszabási korlát az Azure-erőforrásokból a [diagnosztikai beállításokon](../articles/azure-monitor/platform/diagnostic-settings.md)keresztül betöltött adatokra vonatkozik. Ha a rendszer eléri a mennyiségi korlátot, az újrapróbálkozási mechanizmus 30 percen belül megkísérli az adat betöltését, és ha a művelet meghiúsul, eldobása. Nem vonatkozik az [ügynökökből](../articles/azure-monitor/agents/agents-overview.md) vagy adatgyűjtő [API](../articles/azure-monitor/platform/data-collector-api.md)-ból betöltött adatokra.
 
 Ha a munkaterületre eljuttatott adatmennyiség a munkaterületen konfigurált küszöbérték 80%-ánál nagyobb, akkor a rendszer 6 óránként elküld egy eseményt a munkaterület *műveleti* táblájába, amíg a küszöbérték továbbra is meghalad. Ha a betöltött mennyiség meghaladja a küszöbértéket, a rendszer bizonyos adatvesztést végez, és az eseményt 6 óránként küldi el a munkaterület *műveleti* táblájába, amíg a küszöbérték továbbra is túllépve lesz. Ha a betöltési mennyiség aránya továbbra is meghaladja a küszöbértéket, vagy hamarosan várhatóan nem éri el, kérheti, hogy egy támogatási kérelem megnyitásával növelje azt. 
 

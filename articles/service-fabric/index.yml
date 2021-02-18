@@ -7,12 +7,12 @@ metadata:
   author: erikadoyle
   ms.author: edoyle
   ms.date: 07/31/2020
-  ms.openlocfilehash: 2f9b7264fe8199cb25772b0598354e474196ca93
-  ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-  ms.translationtype: HT
+  ms.openlocfilehash: e850855a4f794e5e90abe9c86d6ddedd0af26a6b
+  ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+  ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 12/02/2020
-  ms.locfileid: "96499798"
+  ms.lasthandoff: 02/17/2021
+  ms.locfileid: "100634838"
 landingContent:
 - title: Felügyelt Service Fabric-fürtök kipróbálása (előzetes verzió)
   linkLists:
@@ -24,8 +24,6 @@ landingContent:
       url: quickstart-managed-cluster-template.md
   - linkListType: tutorial
     links:
-    - text: Felügyelt fürt létrehozása (előzetes verzió)
-      url: tutorial-managed-cluster-deploy.md
     - text: Felügyelt fürt típusú csomópont horizontális felskálázása (előzetes verzió)
       url: tutorial-managed-cluster-scale.md
     - text: Felügyelt fürt típusú csomópontok hozzáadása és eltávolítása (előzetes verzió)
@@ -34,6 +32,8 @@ landingContent:
       url: tutorial-managed-cluster-deploy-app.md
     - text: Virtuálisgép-méretezési csoport típusú bővítmény hozzáadása egy felügyelt fürt típusú csomóponthoz (előzetes verzió)
       url: how-to-managed-cluster-vmss-extension.md
+    - text: Lemez titkosításának engedélyezése a felügyelt fürtcsomópontok esetében
+      url: how-to-enable-managed-cluster-disk-encryption.md
   - linkListType: whats-new
     links:
     - text: Gyakori kérdések a felügyelt Service Fabric-fürtökről

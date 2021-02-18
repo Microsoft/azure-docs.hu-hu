@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9672d18fe99d8baae3c73fa3782531eb84114713
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 05d312296b48f35ea87c5443cc587989e2d11fd5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97515640"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587971"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>A Windows rendszerű virtuális asztali (klasszikus) diagnosztika eszköz üzembe helyezése
 
@@ -116,7 +116,7 @@ Az ajánlott teljesítményszámlálók manuális konfigurálását a következ�
     -   Processzor adatai ( \* ) \\ processzoridő
     -   Felhasználói bemeneti késleltetés/munkamenet ( \* ) \\ maximális bemeneti késleltetése
 
-További információ a teljesítményszámlálók a [Azure monitor Windows-és Linux-teljesítményű adatforrásaiban](../../azure-monitor/platform/data-sources-performance-counters.md).
+További információ a teljesítményszámlálók a [Azure monitor Windows-és Linux-teljesítményű adatforrásaiban](../../azure-monitor/agents/data-sources-performance-counters.md).
 
 >[!NOTE]
 >A konfigurált további számlálók nem jelennek meg a diagnosztikai eszközben. Ahhoz, hogy megjelenjen a diagnosztika eszközben, konfigurálnia kell az eszköz konfigurációs fájlját. A speciális felügyelettel kapcsolatos utasítások később a GitHubon lesznek elérhetők.
@@ -186,7 +186,7 @@ Az átirányítási URI beállítása:
 4.  A bal oldali panel kezelés területén válassza a **hitelesítés** lehetőséget.
 5.  Adja meg a kívánt átirányítási URI-t az **átirányítási URI** szövegmezőbe, majd kattintson a menü bal felső sarkában található **Mentés** elemre.
 6. A típus alatt válassza a **web** lehetőséget a legördülő menüben.
-7. Adja meg az URL-címet az alkalmazás áttekintés lapjáról, és adja hozzá a **/Security/signin-callback** a végéhez. Például: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
+7. Adja meg az URL-címet az alkalmazás áttekintés lapjáról, és adja hozzá a **/Security/signin-callback** a végéhez. Példa: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
 
    > [!div class="mx-imgBorder"]
    > ![Az átirányítási URI-lap](../media/redirect-uri-page.png)
@@ -199,7 +199,7 @@ Az átirányítási URI beállítása:
 
 Mielőtt a diagnosztikai eszközt elérhetővé tenné a felhasználók számára, győződjön meg arról, hogy a következő engedélyek vannak:
 
-- A felhasználóknak olvasási hozzáféréssel kell rendelkezniük a log analyticshez. További információ: Ismerkedés [a szerepkörökkel, az engedélyekkel és a biztonsággal a Azure monitor](../../azure-monitor/platform/roles-permissions-security.md).
+- A felhasználóknak olvasási hozzáféréssel kell rendelkezniük a log analyticshez. További információ: Ismerkedés [a szerepkörökkel, az engedélyekkel és a biztonsággal a Azure monitor](../../azure-monitor/roles-permissions-security.md).
 -  A felhasználóknak olvasási hozzáférésre is szükségük van a Windows rendszerű virtuális asztali bérlőhöz (RDS olvasó szerepkör). További információ: [delegált hozzáférés a Windows rendszerű virtuális asztalon](delegated-access-virtual-desktop-2019.md).
 
 A következő információkat is meg kell adnia a felhasználóknak:
@@ -259,7 +259,7 @@ A munkamenet-gazdagépen lévő felhasználókkal is dolgozhat:
 
     - Küszöbérték: a 2000 MS-nál nagyobb érték van megjelölve sérültként.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan figyelheti a tevékenységek naplóit a [használatban lévő diagnosztika log Analytics használatával](diagnostics-log-analytics-2019.md).
 - További információ a gyakori hibákról, valamint a [problémák azonosítására és diagnosztizálására szolgáló hibák](diagnostics-role-service-2019.md)elhárításáról.

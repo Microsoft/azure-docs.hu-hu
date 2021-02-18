@@ -3,12 +3,12 @@ title: Azure Monitor naplók adatmodellje
 description: Ebből a cikkből megtudhatja, hogyan Azure Monitor Log Analytics adatmodell adatait Azure Backup adatokra vonatkozóan.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 1fcb4eb0c584f792132f19c8c4d66289342aa36e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d2146612763bac39eb636bb7da522586a0daee2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020949"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586773"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics adatmodell Azure Backup-adattípushoz
 
@@ -172,7 +172,7 @@ Ez a táblázat a feladatokkal kapcsolatos mezők részleteit tartalmazza.
 
 Ez a táblázat a házirendekkel kapcsolatos mezőkről tartalmaz információkat.
 
-| Mező | Adattípus | Alkalmazható verziók | Leírás |
+| Mező | Adattípus | Alkalmazható verziók | Description |
 | --- | --- | --- | --- |
 | EventName_s |Szöveg ||Ez a mező az esemény nevét jelöli. Mindig AzureBackupCentralReport |
 | SchemaVersion_s |Szöveg ||Ez a mező a séma aktuális verzióját jelöli. **V2** |
@@ -220,7 +220,7 @@ Ez a táblázat a házirendekkel kapcsolatos mezőkről tartalmaz információka
 
 Ez a táblázat a különböző entitásokkal rendelkező házirend-társítások részleteit tartalmazza.
 
-| Mező | Adattípus | Alkalmazható verziók | Leírás |
+| Mező | Adattípus | Alkalmazható verziók | Description |
 | --- | --- | --- | --- |
 | EventName_s |Szöveg ||Ez a mező az esemény nevét jelöli. Mindig AzureBackupCentralReport |
 | SchemaVersion_s |Szöveg ||Ez a mező a séma aktuális verzióját jelöli. **V2** |
@@ -258,7 +258,7 @@ Ez a táblázat a védett tárolók alapszintű mezőit tartalmazza. (ProtectedS
 | ProtectedContainerType_s |Szöveg |Azt jelzi, hogy a védett tároló kiszolgáló vagy tároló-e |
 | ProtectedContainerProtectionState_s "  |Szöveg |A védett tároló védelmi állapota |
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Tárolás
 
 Ez a táblázat a Storage szolgáltatással kapcsolatos mezők részleteit tartalmazza.
 
@@ -349,7 +349,7 @@ Ez a tábla meghatározza, hogy egy kötet milyen munkaterheléshez van társít
 
 Ez a táblázat az alapszintű védett példányokkal kapcsolatos mezőket tartalmazza.
 
-| Mező | Adattípus |Alkalmazható verziók | Leírás |
+| Mező | Adattípus |Alkalmazható verziók | Description |
 | --- | --- | --- | --- |
 | BackupItemUniqueId_s |Szöveg |v2|Egyedi azonosító, amely a DPM, MABS használatával biztonsági mentést végző virtuális gépek biztonsági mentési elemének azonosítására szolgál.|
 | ProtectedContainerUniqueId_s |Szöveg |v2|Egyedi azonosító, amely a védett tároló azonosítására szolgál a DPM, a MABS-t használó virtuális gépek kivételével.|
@@ -462,7 +462,7 @@ Az alábbi példák segítséget nyújtanak a Azure Diagnostics táblában talá
 
 ## <a name="v1-schema-vs-v2-schema"></a>V1 Schema vs v2 séma
 
-Korábban a Azure Backup-ügynök és az Azure-beli virtuális gép biztonsági mentésének diagnosztikai adatait a rendszer a ***v1 sémának***nevezett sémában Azure Diagnostics táblába küldték. Ezt követően új oszlopok lettek hozzáadva a más forgatókönyvek és munkaterhelések támogatásához, és a diagnosztikai adatok egy, a ***v2-séma***néven ismert új sémában lettek leküldve.  
+Korábban a Azure Backup-ügynök és az Azure-beli virtuális gép biztonsági mentésére vonatkozó diagnosztikai adatait a rendszer a ***v1 séma** _ néven említett sémában Azure Diagnostics táblába küldték. Ezt követően új oszlopok lettek hozzáadva a más forgatókönyvek és munkaterhelések támogatásához, és a diagnosztikai adatok egy új sémában (_ *_v2 Schema_* *) lettek leküldve.  
 
 A visszamenőleges kompatibilitás miatt a Azure Backup-ügynök és az Azure virtuális gép biztonsági mentésének diagnosztikai adatait jelenleg a v1-es és v2-es sémában is elküldi Azure Diagnostics táblázatba (a v1 séma mostantól egy elavult útvonalon érhető el). A naplózási lekérdezésekben a SchemaVersion_s = = "v1" rekordok szűrésével azonosíthatja, hogy mely rekordok Log Analytics v1 sémában.
 
@@ -495,4 +495,4 @@ Mivel a v1-séma elavult elérési úton van, ajánlott csak a v2 sémát haszn�
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az adatmodell áttekintése után megkezdheti az [Egyéni lekérdezések létrehozását](../azure-monitor/learn/tutorial-logs-dashboards.md) Azure monitor naplókban a saját irányítópultjának létrehozásához.
+Az adatmodell áttekintése után megkezdheti az [Egyéni lekérdezések létrehozását](../azure-monitor/visualize/tutorial-logs-dashboards.md) Azure monitor naplókban a saját irányítópultjának létrehozásához.

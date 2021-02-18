@@ -3,12 +3,12 @@ title: VM-bővítmény engedélyezése Azure Portal
 description: Ez a cikk bemutatja, hogyan telepíthet virtuálisgép-bővítményeket a Azure Portal hibrid felhőalapú környezetekben futó Azure arc-kompatibilis kiszolgálókra.
 ms.date: 01/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 43bbcef28b77e7c7112880fdac1bbd4809791cef
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b0e114b314179d42ccd47b7d7bd534d3a824a411
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728949"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587658"
 ---
 # <a name="enable-azure-vm-extensions-from-the-azure-portal"></a>Azure VM-bővítmények engedélyezése a Azure Portal
 
@@ -33,7 +33,7 @@ A virtuálisgép-bővítmények alkalmazhatók a kiszolgáló által felügyelt 
 
     ![Log Analytics VM-bővítmény telepítése](./media/manage-vm-extensions/mma-extension-config.png)
 
-    A telepítés befejezéséhez meg kell adnia a munkaterület AZONOSÍTÓját és az elsődleges kulcsot. Ha nem ismeri ezt az információt, tekintse meg a [munkaterület-azonosító és-kulcs beszerzése](../../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)című témakört.
+    A telepítés befejezéséhez meg kell adnia a munkaterület AZONOSÍTÓját és az elsődleges kulcsot. Ha nem ismeri ezt az információt, tekintse meg a [munkaterület-azonosító és-kulcs beszerzése](../../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key)című témakört.
 
 4. A szükséges információk megerősítése után válassza a **Létrehozás** lehetőséget. Megjelenik a központi telepítés összegzése, és megtekintheti a központi telepítés állapotát.
 
@@ -64,7 +64,7 @@ Egy vagy több bővítményt is eltávolíthat egy arc-kompatibilis kiszolgáló
 
 4. Válassza az **Eltávolítás** lehetőséget, és amikor a rendszer kéri az ellenőrzésre, válassza az **Igen** lehetőséget a folytatáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Virtuálisgép-bővítmények üzembe helyezése, kezelése és eltávolítása az [Azure CLI](manage-vm-extensions-cli.md), a [PowerShell](manage-vm-extensions-powershell.md)vagy a [Azure Resource Manager sablonok](manage-vm-extensions-template.md)használatával végezhető el.
 

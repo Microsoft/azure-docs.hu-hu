@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: 3fc880e238c1c9f45c663975470a6ab57267a648
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 940f7efc7130ef80817be3b42e3c0eff83588a90
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879544"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587992"
 ---
 # <a name="monitoring-time-series-insights"></a>Figyelés Time Series Insights
 
@@ -29,7 +29,7 @@ Az egyes Time Series Insights-környezetek Azure Portal **áttekintő** lapja az
 
 A Time Series Insights a [Azure monitor](../azure-monitor/overview.md)használatával hoz létre figyelési adatokkal, amely az Azure teljes verem-figyelési szolgáltatása, amely teljes körű funkciókat biztosít az Azure-erőforrások figyeléséhez más Felhőbeli és helyszíni erőforrásokon kívül.
 
-A következő fogalmakat ismerteti az [Azure-erőforrások Azure Monitorával való monitorozásával foglalkozó](../azure-monitor/insights/monitor-azure-resource.md)cikkből:
+A következő fogalmakat ismerteti az [Azure-erőforrások Azure Monitorával való monitorozásával foglalkozó](../azure-monitor/essentials/monitor-azure-resource.md)cikkből:
 
 - Mi az Azure Monitor?
 - A figyeléshez kapcsolódó költségek
@@ -40,11 +40,11 @@ A következő fogalmakat ismerteti az [Azure-erőforrások Azure Monitorával va
 Az alábbi részekben a cikk a Azure Time Series Insightshoz összegyűjtött adatok leírásával épít. Ezek a szakasz példákat is tartalmaznak az adatgyűjtés konfigurálására és az adatok elemzésére az Azure-eszközökkel.
 
 > [!TIP]
-> A Azure Monitorhez kapcsolódó költségek megismeréséhez tekintse meg a [használati és becsült költségeket](../azure-monitor/platform/usage-estimated-costs.md). Ha meg szeretné tudni, hogy mire van szüksége ahhoz, hogy az adatai megjelenjenek Azure Monitorban, tekintse meg az [adatfeldolgozási idő naplózása](../azure-monitor/platform/data-ingestion-time.md)című témakört.
+> A Azure Monitorhez kapcsolódó költségek megismeréséhez tekintse meg a [használati és becsült költségeket](../azure-monitor//usage-estimated-costs.md). Ha meg szeretné tudni, hogy mire van szüksége ahhoz, hogy az adatai megjelenjenek Azure Monitorban, tekintse meg az [adatfeldolgozási idő naplózása](../azure-monitor/logs/data-ingestion-time.md)című témakört.
 
 ## <a name="monitoring-data-from-azure-time-series-insights"></a>Adatok figyelése Azure Time Series Insightsról
 
-Azure Time Series Insights ugyanolyan típusú figyelési adatokat gyűjt, mint az [Azure-erőforrások monitorozásával](../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)kapcsolatos további Azure-erőforrások. 
+Azure Time Series Insights ugyanolyan típusú figyelési adatokat gyűjt, mint az [Azure-erőforrások monitorozásával](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data)kapcsolatos további Azure-erőforrások. 
 
 A begyűjthető naplók és mérőszámok részletes ismertetését lásd: [Azure Time Series Insights monitorozási adatok referenciája](how-to-monitor-tsi-reference.md) .
 
@@ -53,7 +53,7 @@ A begyűjthető naplók és mérőszámok részletes ismertetését lásd: [Azur
 A platform metrikáinak gyűjtése és tárolása automatikusan történik, de más helyekre is átirányítható diagnosztikai beállítások használatával.
 
 Az erőforrás-naplók gyűjtése és tárolása addig nem történik meg, amíg létre nem hozza a diagnosztikai beállításokat, és egy vagy több helyre irányítja őket.
-A diagnosztikai beállításoknak a Azure Portal, a CLI vagy a PowerShell használatával történő létrehozásával kapcsolatos részletes folyamatért lásd: [diagnosztikai beállítás létrehozása a platform-naplók és-metrikák összegyűjtéséhez az Azure-ban](../azure-monitor/platform/diagnostic-settings.md) . Diagnosztikai beállítás létrehozásakor meg kell adnia, hogy a rendszer milyen típusú naplókat gyűjtsön.
+A diagnosztikai beállításoknak a Azure Portal, a CLI vagy a PowerShell használatával történő létrehozásával kapcsolatos részletes folyamatért lásd: [diagnosztikai beállítás létrehozása a platform-naplók és-metrikák összegyűjtéséhez az Azure-ban](../azure-monitor/essentials/diagnostic-settings.md) . Diagnosztikai beállítás létrehozásakor meg kell adnia, hogy a rendszer milyen típusú naplókat gyűjtsön.
 
 A következő kategóriákból gyűjthet naplókat Azure Time Series Insights:
 
@@ -80,7 +80,7 @@ Az erőforrás-naplókat megadhatja blobként egy Storage-fiókban, az Event-ada
 
 Azure Monitor naplókban található adatkészletek olyan táblákban tárolódnak, amelyekben az egyes táblák egyedi tulajdonságokkal rendelkeznek.
 
-Azure Monitor összes erőforrás-naplója ugyanazokkal a mezőkkel rendelkezik, amelyeket a szolgáltatás-specifikus mezők követnek. Az általános séma [Azure monitor erőforrás-naplózási sémában](../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema)szerepel. A Azure Time Series Insights gyűjtött erőforrás-naplók típusairól a [Azure Time Series Insights monitorozási adatok referenciája](how-to-monitor-tsi-reference.md#resource-logs)című témakörben olvashat.
+Azure Monitor összes erőforrás-naplója ugyanazokkal a mezőkkel rendelkezik, amelyeket a szolgáltatás-specifikus mezők követnek. Az általános séma [Azure monitor erőforrás-naplózási sémában](../azure-monitor/essentials/resource-logs-schema.md#top-level-common-schema)szerepel. A Azure Time Series Insights gyűjtött erőforrás-naplók típusairól a [Azure Time Series Insights monitorozási adatok referenciája](how-to-monitor-tsi-reference.md#resource-logs)című témakörben olvashat.
 
 A Azure Time Series Insights az alábbi táblázatokban tárolja az adattárakat.
 
@@ -122,4 +122,4 @@ A platform metrikái alapján létrehozott riasztási szabályok létrehozásako
 ## <a name="next-steps"></a>Következő lépések
 
 * A Azure Time Series Insights által létrehozott naplók és metrikák hivatkozását a [Azure Time Series Insights monitorozási adatok referenciája](how-to-monitor-tsi-reference.md) tartalmazza.
-* Az Azure-erőforrások figyelésével kapcsolatos részletekért lásd: az [Azure-erőforrások figyelése Azure monitorokkal](../azure-monitor/insights/monitor-azure-resource.md) .
+* Az Azure-erőforrások figyelésével kapcsolatos részletekért lásd: az [Azure-erőforrások figyelése Azure monitorokkal](../azure-monitor/essentials/monitor-azure-resource.md) .
