@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.custom: subject-monitoring
 ms.date: 10/02/2020
-ms.openlocfilehash: 6da9c6775a6d5c96bc52183fefc3e5330272e9ff
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: f9f25ec2dd8fb8b859f7863c1e695e22cb9a9cec
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585126"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575071"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Az Azure Machine learning-adatreferenciák monitorozása
 
@@ -23,7 +23,7 @@ Ismerje meg az Azure Monitor által gyűjtött adatokat és erőforrásokat az A
 
 ## <a name="metrics"></a>Mérőszámok
 
-Ez a szakasz felsorolja a Azure Machine Learning összegyűjtött, automatikusan összegyűjtött platform-metrikákat. A metrikák erőforrás-szolgáltatója a [Microsoft. MachineLearningServices/workspaces](../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces).
+Ez a szakasz felsorolja a Azure Machine Learning összegyűjtött, automatikusan összegyűjtött platform-metrikákat. A metrikák erőforrás-szolgáltatója a [Microsoft. MachineLearningServices/workspaces](../azure-monitor/essentials/metrics-supported.md#microsoftmachinelearningservicesworkspaces).
 
 **Modellezés**
 
@@ -74,7 +74,7 @@ A képzések futtatásával kapcsolatos információk.
 
 ## <a name="metric-dimensions"></a>Metrikus méretek
 
-A metrikus dimenziókkal kapcsolatos további információkért lásd: [többdimenziós mérőszámok](../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics).
+A metrikus dimenziókkal kapcsolatos további információkért lásd: [többdimenziós mérőszámok](../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics).
 
 A Azure Machine Learning a metrikához tartozó következő dimenziókkal rendelkezik.
 
@@ -117,7 +117,7 @@ A következő táblázat felsorolja azokat a Azure Machine Learning kapcsolódó
 
 Ez a szakasz felsorolja a Azure Machine Learning munkaterülethez összegyűjthető erőforrás-naplók típusait.
 
-Erőforrás-szolgáltató és típus: [Microsoft. MachineLearningServices/munkaterület](../azure-monitor/platform/resource-logs-categories.md#microsoftmachinelearningservicesworkspaces).
+Erőforrás-szolgáltató és típus: [Microsoft. MachineLearningServices/munkaterület](../azure-monitor/essentials/resource-logs-categories.md#microsoftmachinelearningservicesworkspaces).
 
 | Kategória | Megjelenítendő név |
 | ----- | ----- |
@@ -232,4 +232,4 @@ A következő sémákat használják Azure Machine Learning
 ## <a name="see-also"></a>Lásd még
 
 - A figyelési Azure Machine Learning leírását a [figyelés Azure Machine learning](monitor-azure-machine-learning.md) című részben tekintheti meg.
-- Az Azure-erőforrások figyelésével kapcsolatos részletekért lásd: az [Azure-erőforrások figyelése Azure monitorokkal](../azure-monitor/insights/monitor-azure-resource.md) .
+- Az Azure-erőforrások figyelésével kapcsolatos részletekért lásd: az [Azure-erőforrások figyelése Azure monitorokkal](../azure-monitor/essentials/monitor-azure-resource.md) .

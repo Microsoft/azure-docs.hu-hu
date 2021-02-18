@@ -3,15 +3,15 @@ title: Azure Service Bus – üzenetkezelési egységek automatikus frissítése
 description: Ebből a cikkből megtudhatja, hogyan használhatja automatikusan a Service Bus-névtér üzenetkezelési egységeit.
 ms.topic: how-to
 ms.date: 09/15/2020
-ms.openlocfilehash: 0a72cc991e768a7bed01762d984cc56238ae0ad0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 932c7bb1235cb54aefe67253e38e1683187f4d2c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984763"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581643"
 ---
 # <a name="automatically-update-messaging-units-of-an-azure-service-bus-namespace"></a>Azure Service Bus névtér üzenetkezelési egységeinek automatikus frissítése 
-Az automatikus méretezés lehetővé teszi, hogy az alkalmazás terhelésének kezeléséhez megfelelő mennyiségű erőforrást futtasson. Lehetővé teszi az erőforrások hozzáadását a terhelés növekedésének kezeléséhez, és pénzt takarít meg a tétlenül ülő erőforrások eltávolításával. További információ a Azure Monitor autoskálázási funkciójának [áttekintéséről: Microsoft Azure](../azure-monitor/platform/autoscale-overview.md) . 
+Az automatikus méretezés lehetővé teszi, hogy az alkalmazás terhelésének kezeléséhez megfelelő mennyiségű erőforrást futtasson. Lehetővé teszi az erőforrások hozzáadását a terhelés növekedésének kezeléséhez, és pénzt takarít meg a tétlenül ülő erőforrások eltávolításával. További információ a Azure Monitor autoskálázási funkciójának [áttekintéséről: Microsoft Azure](../azure-monitor/autoscale/autoscale-overview.md) . 
 
 A Service Bus prémium szintű üzenetkezelés erőforrás-elkülönítést biztosít a CPU és a memória szintjén, így az ügyfél minden számítási feladata elkülönítve fut. Ennek az erőforrás-tárolónak a neve **üzenetkezelési egység**. További információ az üzenetkezelési egységekről: [Service Bus Premium Messaging](service-bus-premium-messaging.md). 
 
@@ -32,7 +32,7 @@ Ebből a cikkből megtudhatja, hogyan méretezheti automatikusan Service Bus né
 Először az alábbi lépéseket követve navigáljon az Service Bus-névtérhez tartozó **autoskálázási beállítások** lapra.
 
 1. Jelentkezzen be [Azure Portalba](https://portal.azure.com). 
-2. A keresősáv mezőbe írja be a **Service Bus**kifejezést, válassza a **Service Bus** elemet a legördülő listából, majd nyomja le az **ENTER**billentyűt. 
+2. A keresősáv mezőbe írja be a **Service Bus** kifejezést, válassza a **Service Bus** elemet a legördülő listából, majd nyomja le az **ENTER** billentyűt. 
 1. Válassza ki a **prémium névteret** a névterek listájából. 
 1. Váltson a **skála** lapra. 
 
@@ -45,7 +45,7 @@ Ezzel a beállítással rögzített számú üzenetküldési egység állíthat�
 1. Az **üzenetkezelési egységek** beállításnál válassza ki az üzenetkezelési egységek számát a legördülő listából.
 1. A beállítás mentéséhez válassza az eszköztár **Mentés** elemét. 
 
-    :::image type="content" source="./media/automate-update-messaging-units/manual-scale.png" alt-text="Service Bus névtér – oldal méretezése":::       
+    :::image type="content" source="./media/automate-update-messaging-units/manual-scale.png" alt-text="Üzenetkezelési egységek manuális méretezése":::       
 
 
 ## <a name="custom-autoscale---default-condition"></a>Egyéni autoskálázás – alapértelmezett feltétel
@@ -62,32 +62,32 @@ Az alábbi eljárás bemutatja, hogyan adhat hozzá olyan feltételt, amely auto
 1. Az automatikus **skálázási beállítás** lapon válassza az **Egyéni automatikus méretezés** lehetőséget az **erőforrás-méretezési lehetőség kiválasztásával** . 
 1. Az oldal **alapértelmezett** szakaszában adja meg az alapértelmezett feltétel **nevét** . A szöveg szerkesztéséhez válassza a **ceruza** ikont. 
 1. Skálázási **mód** **mérőszáma alapján** válassza a skála lehetőséget. 
-1. Válassza **a + szabály hozzáadása**lehetőséget. 
+1. Válassza **a + szabály hozzáadása** lehetőséget. 
 
-    :::image type="content" source="./media/automate-update-messaging-units/default-scale-metric-add-rule-link.png" alt-text="Service Bus névtér – oldal méretezése":::    
+    :::image type="content" source="./media/automate-update-messaging-units/default-scale-metric-add-rule-link.png" alt-text="Alapértelmezett – metrika alapján méretezhető":::    
 1. A **skálázási szabály** lapon kövesse az alábbi lépéseket:
     1. Válasszon mérőszámot a **metrika neve** legördülő listából. Ebben a példában ez a **CPU**. 
     1. Válasszon ki egy operátort és egy küszöbértéket. Ebben a példában a metrikus küszöbértéknél **nagyobbak** és **75** a **skálázási művelet elindításához**. 
-    1. Válasszon **műveletet** a **művelet** szakaszban. Ebben a példában a **növelés**értékre van állítva. 
+    1. Válasszon **műveletet** a **művelet** szakaszban. Ebben a példában a **növelés** értékre van állítva. 
     1. Ezután válassza a **Hozzáadás** lehetőséget.
     
-        :::image type="content" source="./media/automate-update-messaging-units/scale-rule-cpu-75.png" alt-text="Service Bus névtér – oldal méretezése":::       
+        :::image type="content" source="./media/automate-update-messaging-units/scale-rule-cpu-75.png" alt-text="Alapértelmezett – vertikális felskálázás, ha a CPU-használat meghaladja a 75%-ot":::       
 
         > [!NOTE]
         > Az autoscale funkció növeli a névtér üzenetkezelési egységeit, ha a teljes CPU-használat 75% fölé esik ebben a példában. A növekmények 1 – 2, 2 és 4 közötti, valamint 4 – 8. 
 1. Válassza a **+ szabály hozzáadása** lehetőséget, majd kövesse az alábbi lépéseket a **skálázási szabály** lapon:
     1. Válasszon mérőszámot a **metrika neve** legördülő listából. Ebben a példában ez a **CPU**. 
     1. Válasszon ki egy operátort és egy küszöbértéket. Ebben a példában a metrikus küszöbértéknél **kevesebb, mint** **25** a **skálázási művelet elindításához**. 
-    1. Válasszon **műveletet** a **művelet** szakaszban. Ebben a példában a **csökkenés**értékre van állítva. 
+    1. Válasszon **műveletet** a **művelet** szakaszban. Ebben a példában a **csökkenés** értékre van állítva. 
     1. Ezután válassza a **Hozzáadás** lehetőséget. 
 
-        :::image type="content" source="./media/automate-update-messaging-units/scale-rule-cpu-25.png" alt-text="Service Bus névtér – oldal méretezése":::       
+        :::image type="content" source="./media/automate-update-messaging-units/scale-rule-cpu-25.png" alt-text="Alapértelmezett – méretezés abban az esetben, ha a CPU-használat kevesebb, mint 25%":::       
 
         > [!NOTE]
         > Az autoscale funkció csökkenti a névtér üzenetkezelési egységeit, ha a teljes CPU-használat a jelen példában 25% alá esik. Az csökkentések 8 és 4 közötti értékre, 4 – 2 és 2 – 1 értékre vannak elvégezve. 
 1. Az üzenetkezelési egységek **minimális** és **maximális** és **alapértelmezett** számának beállítása.
 
-    :::image type="content" source="./media/automate-update-messaging-units/default-scale-metric-based.png" alt-text="Service Bus névtér – oldal méretezése":::
+    :::image type="content" source="./media/automate-update-messaging-units/default-scale-metric-based.png" alt-text="Alapértelmezett szabály metrika alapján":::
 1. Az autoskálázási beállítás mentéséhez válassza az eszköztár **Mentés** elemét. 
         
 ### <a name="scale-to-specific-number-of-messaging-units"></a>Méretezés adott számú üzenetkezelési egységre
@@ -95,10 +95,10 @@ A következő lépésekkel konfigurálhatja a szabályt úgy, hogy az adott szá
 
 1. Az automatikus **skálázási beállítás** lapon válassza az **Egyéni automatikus méretezés** lehetőséget az **erőforrás-méretezési lehetőség kiválasztásával** . 
 1. Az oldal **alapértelmezett** szakaszában adja meg az alapértelmezett feltétel **nevét** . 
-1. Skálázási **mód**esetén válassza a **Méretezés adott üzenetkezelési egységhez** lehetőséget. 
-1. Az **üzenetkezelési egységek**esetében válassza ki az alapértelmezett üzenetküldési egységek számát. 
+1. Skálázási **mód** esetén válassza a **Méretezés adott üzenetkezelési egységhez** lehetőséget. 
+1. Az **üzenetkezelési egységek** esetében válassza ki az alapértelmezett üzenetküldési egységek számát. 
 
-    :::image type="content" source="./media/automate-update-messaging-units/default-scale-messaging-units.png" alt-text="Service Bus névtér – oldal méretezése":::       
+    :::image type="content" source="./media/automate-update-messaging-units/default-scale-messaging-units.png" alt-text="Alapértelmezett – adott üzenetkezelési egységek méretezése":::       
 
 ## <a name="custom-autoscale---additional-conditions"></a>Egyéni autoskálázás – további feltételek
 Az előző szakaszban megtudhatja, hogyan adhat hozzá alapértelmezett feltételt az autoskálázási beállításhoz. Ebből a szakaszból megtudhatja, hogyan adhat hozzá több feltételt az autoskálázási beállításhoz. Ezeknél a további nem alapértelmezett feltételeknél a hét adott napjain vagy dátumtartományon alapuló ütemtervet is beállíthat. 
@@ -107,37 +107,37 @@ Az előző szakaszban megtudhatja, hogyan adhat hozzá alapértelmezett feltéte
 1. Az automatikus **skálázási beállítás** lapon válassza az **Egyéni automatikus méretezés** lehetőséget az **erőforrás-méretezési lehetőség kiválasztásával** . 
 1. Válassza az **alapértelmezett** blokkban a **méretezési feltétel hozzáadása** lehetőséget. 
 
-    :::image type="content" source="./media/automate-update-messaging-units/add-scale-condition-link.png" alt-text="Service Bus névtér – oldal méretezése":::    
+    :::image type="content" source="./media/automate-update-messaging-units/add-scale-condition-link.png" alt-text="Egyéni – méretezési feltétel hivatkozásának hozzáadása":::    
 1. Adja meg a feltétel **nevét** . 
 1. Ellenőrizze, hogy ki van-e jelölve a **skála mérőszámon alapuló** beállítás. 
 1. Válassza a **+ szabály hozzáadása** lehetőséget egy szabály hozzáadásához az üzenetkezelési egységek növeléséhez, ha a teljes CPU-használat 75% fölé esik. Kövesse az [alapértelmezett feltétel](#custom-autoscale---default-condition) szakasz lépéseit. 
 5. Az üzenetkezelési egységek **minimális** és **maximális** és **alapértelmezett** számának beállítása.
 6. Egyéni feltételhez is beállíthat **ütemtervet** (az alapértelmezett feltételnél nem). Megadhatja a feltétel kezdési és befejezési dátumát (vagy) egy hét bizonyos napjai (hétfő, kedd stb.) közül. 
-    1. Ha a **kezdő/befejező dátumok megadása**lehetőséget választja, válassza ki az **időzónát**, a **kezdés dátumát és idejét** , valamint a **befejezési dátumot és időt** (ahogy az az alábbi képen is látható) a feltétel érvénybe léptetéséhez. 
+    1. Ha a **kezdő/befejező dátumok megadása** lehetőséget választja, válassza ki az **időzónát**, a **kezdés dátumát és idejét** , valamint a **befejezési dátumot és időt** (ahogy az az alábbi képen is látható) a feltétel érvénybe léptetéséhez. 
 
-       :::image type="content" source="./media/automate-update-messaging-units/custom-min-max-default.png" alt-text="Service Bus névtér – oldal méretezése":::
-    1. Ha a **megadott napok ismétlése**lehetőséget választja, válassza ki a hét napjait, az időzónát, a kezdési időt és a befejezési időpontot, amikor a feltételt alkalmazni szeretné. 
+       :::image type="content" source="./media/automate-update-messaging-units/custom-min-max-default.png" alt-text="Az üzenetkezelési egységek számának minimális, maximális és alapértelmezett értékei":::
+    1. Ha a **megadott napok ismétlése** lehetőséget választja, válassza ki a hét napjait, az időzónát, a kezdési időt és a befejezési időpontot, amikor a feltételt alkalmazni szeretné. 
 
-        :::image type="content" source="./media/automate-update-messaging-units/repeat-specific-days.png" alt-text="Service Bus névtér – oldal méretezése":::
+        :::image type="content" source="./media/automate-update-messaging-units/repeat-specific-days.png" alt-text="Adott napok ismétlése":::
   
 ### <a name="scale-to-specific-number-of-messaging-units"></a>Méretezés adott számú üzenetkezelési egységre
 1. Az automatikus **skálázási beállítás** lapon válassza az **Egyéni automatikus méretezés** lehetőséget az **erőforrás-méretezési lehetőség kiválasztásával** . 
 1. Válassza az **alapértelmezett** blokkban a **méretezési feltétel hozzáadása** lehetőséget. 
 
-    :::image type="content" source="./media/automate-update-messaging-units/add-scale-condition-link.png" alt-text="Service Bus névtér – oldal méretezése":::    
+    :::image type="content" source="./media/automate-update-messaging-units/add-scale-condition-link.png" alt-text="Egyéni – méretezési feltétel hivatkozásának hozzáadása":::    
 1. Adja meg a feltétel **nevét** . 
-2. **Skálázási mód**esetén válassza a **Méretezés adott üzenetkezelési egységhez** lehetőséget. 
+2. **Skálázási mód** esetén válassza a **Méretezés adott üzenetkezelési egységhez** lehetőséget. 
 1. Válassza ki az **üzenetkezelési egységek** számát a legördülő listából. 
-6. Az **ütemtervhez**adja meg a feltétel kezdési és befejezési dátumát (vagy) a hét és az idő megadott napjai (hétfő, kedd stb.) közül. 
-    1. Ha a **kezdő/befejező dátumok megadása**lehetőséget választja, válassza ki az **időzónát**, a **kezdő dátum és idő** , valamint a **befejezési dátum és idő** beállítást a feltétel érvénybe léptetéséhez. 
+6. Az **ütemtervhez** adja meg a feltétel kezdési és befejezési dátumát (vagy) a hét és az idő megadott napjai (hétfő, kedd stb.) közül. 
+    1. Ha a **kezdő/befejező dátumok megadása** lehetőséget választja, válassza ki az **időzónát**, a **kezdő dátum és idő** , valamint a **befejezési dátum és idő** beállítást a feltétel érvénybe léptetéséhez. 
     
-    :::image type="content" source="./media/automate-update-messaging-units/scale-specific-messaging-units-start-end-dates.png" alt-text="Service Bus névtér – oldal méretezése":::        
-    1. Ha a **megadott napok ismétlése**lehetőséget választja, válassza ki a hét napjait, az időzónát, a kezdési időt és a befejezési időpontot, amikor a feltételt alkalmazni szeretné.
+    :::image type="content" source="./media/automate-update-messaging-units/scale-specific-messaging-units-start-end-dates.png" alt-text="méretezés adott üzenetkezelési egységekre – kezdési és befejezési dátumok":::        
+    1. Ha a **megadott napok ismétlése** lehetőséget választja, válassza ki a hét napjait, az időzónát, a kezdési időt és a befejezési időpontot, amikor a feltételt alkalmazni szeretné.
     
-    :::image type="content" source="./media/automate-update-messaging-units/repeat-specific-days-2.png" alt-text="Service Bus névtér – oldal méretezése":::
+    :::image type="content" source="./media/automate-update-messaging-units/repeat-specific-days-2.png" alt-text="méretezés adott üzenetkezelési egységekre – adott napok ismétlése":::
 
 > [!IMPORTANT]
-> Ha többet szeretne megtudni az autoskálázási beállítások működéséről, különösen arról, hogy miként lehet profilt vagy feltételt kiértékelni, és több szabályt is kiértékel, tekintse meg az az [autoskálázási beállítások ismertetése](../azure-monitor/platform/autoscale-understanding-settings.md)          
+> Ha többet szeretne megtudni az autoskálázási beállítások működéséről, különösen arról, hogy miként lehet profilt vagy feltételt kiértékelni, és több szabályt is kiértékel, tekintse meg az az [autoskálázási beállítások ismertetése](../azure-monitor/autoscale/autoscale-understanding-settings.md)          
 
 ## <a name="next-steps"></a>Következő lépések
 Az üzenetkezelési egységekről a prémium szintű [üzenetkezelés](service-bus-premium-messaging.md) című témakörben olvashat bővebben.

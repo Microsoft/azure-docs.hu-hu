@@ -4,12 +4,12 @@ description: Adatmegőrzési és adatvédelmi szabályzati nyilatkozat
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 2205ab1115a66092ae6dd6d75ee7004ab281eec7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54d3e53b71b5f63da84e41a752bbbb6fce65c045
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263912"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579588"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Adatgyűjtés, -megőrzés és -tárolás az Application Insightsban
 
@@ -120,7 +120,7 @@ Igen, bizonyos telemetria csatornák helyileg is megőrzik az adattárolást, ha
 
 A helyi tárolót használó telemetria-csatornák ideiglenes fájlokat hoznak létre a TEMP vagy az APPDATA címtárakban, amelyek az alkalmazást futtató adott fiókra korlátozódnak. Ez akkor fordulhat elő, ha egy végpont átmenetileg nem érhető el, vagy elérte a szabályozási korlátot. A probléma megoldása után a telemetria-csatorna folytatja az új és megőrzött adatok küldését.
 
-Ez a megőrzött adatbázis nem titkosított helyileg. Ha ez aggodalomra ad okot, tekintse át az adatgyűjtést, és korlátozza a személyes adataik gyűjteményét. (További információ: [személyes adatok exportálása és törlése](../platform/personal-data-mgmt.md#how-to-export-and-delete-private-data).)
+Ez a megőrzött adatbázis nem titkosított helyileg. Ha ez aggodalomra ad okot, tekintse át az adatgyűjtést, és korlátozza a személyes adataik gyűjteményét. (További információ: [személyes adatok exportálása és törlése](../logs/personal-data-mgmt.md#how-to-export-and-delete-private-data).)
 
 Ha az ügyfélnek meghatározott biztonsági követelményekkel kell konfigurálnia ezt a könyvtárat, akkor az egy-egy keretrendszer szerint konfigurálható. Győződjön meg arról, hogy az alkalmazás futtatására szolgáló folyamat rendelkezik írási hozzáféréssel ehhez a címtárhoz, de győződjön meg arról, hogy a könyvtár védett, hogy elkerülje a nem kívánt felhasználók által beolvasott telemetria.
 
@@ -220,7 +220,7 @@ Nem ajánlott explicit módon beállítani az alkalmazást úgy, hogy csak a TLS
 | Windows Server 2012 – 2016 | Támogatott, és alapértelmezés szerint engedélyezve van. | Annak ellenőrzése, hogy továbbra is az [alapértelmezett beállításokat](/windows-server/security/tls/tls-registry-settings) használja-e |
 | Windows 7 SP1 és Windows Server 2008 R2 SP1 | Támogatott, de alapértelmezés szerint nincs engedélyezve. | Az engedélyezésével kapcsolatos részletekért tekintse meg a [Transport Layer Security (TLS) beállításjegyzék-beállítások](/windows-server/security/tls/tls-registry-settings) lapját.  |
 | Windows Server 2008 SP2 | A TLS 1,2 támogatásához frissítés szükséges. | Lásd: [frissítés a TLS 1,2 támogatásának hozzáadásához](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) a Windows Server 2008 SP2-ben. |
-|Windows Vista | Nem támogatott. | N.A.
+|Windows Vista | Nem támogatott. | N/A
 
 ### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Győződjön meg arról, hogy az OpenSSL milyen verziója fut a Linux-disztribúcióban
 
@@ -240,7 +240,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 
 ## <a name="personal-data-stored-in-application-insights"></a>A Application Insightsban tárolt személyes adattárolás
 
-A [Application Insights személyes adatkezelési cikk](../platform/personal-data-mgmt.md) részletesen ismerteti ezt a problémát.
+A [Application Insights személyes adatkezelési cikk](../logs/personal-data-mgmt.md) részletesen ismerteti ezt a problémát.
 
 #### <a name="can-my-users-turn-off-application-insights"></a>Kikapcsolhatom a felhasználók a Application Insights?
 Nem közvetlenül. Nem biztosítunk olyan kapcsolót, amelyet a felhasználók a Application Insights kikapcsolására használhatnak.
@@ -262,7 +262,7 @@ Az SDK-k különböző platformok között változnak, és több összetevő is 
 | [TrackMetric hívása][api] |Numerikus értékek<br/>**Tulajdonságok** |
 | [Hívási sáv *][api] |Esemény neve<br/>**Tulajdonságok** |
 | [TrackException hívása][api] |**Kivételek**<br/>Verem kiírása<br/>**Tulajdonságok** |
-| Az SDK nem tud adatokat gyűjteni. Példa: <br/> -nem érhető el a teljesítményszámláló-számlálók<br/> – kivétel a telemetria inicializálásakor |SDK-diagnosztika |
+| Az SDK nem tud adatokat gyűjteni. Például: <br/> -nem érhető el a teljesítményszámláló-számlálók<br/> – kivétel a telemetria inicializálásakor |SDK-diagnosztika |
 
 [Más platformokhoz készült SDK][platforms]-k esetében tekintse meg a dokumentumokat.
 
@@ -293,7 +293,7 @@ Az SDK-k különböző platformok között változnak, és több összetevő is 
 [ApplicationInsights.configszerkesztésével kikapcsolhatja az egyes adatmennyiségeket][config]
 
 > [!NOTE]
-> Az ügyfél IP-címe a földrajzi hely kiértékelésére szolgál, de alapértelmezés szerint az IP-adatmennyiség már nem tárolódik, és az összes nulla a társított mezőbe íródik. Ha többet szeretne megtudni a személyes adatkezelésről, javasoljuk ezt a [cikket](../platform/personal-data-mgmt.md#application-data). Ha IP-cím adatait kell tárolnia, az [IP-cím gyűjtésével kapcsolatos cikk](./ip-collection.md) végigvezeti Önt a lehetőségein.
+> Az ügyfél IP-címe a földrajzi hely kiértékelésére szolgál, de alapértelmezés szerint az IP-adatmennyiség már nem tárolódik, és az összes nulla a társított mezőbe íródik. Ha többet szeretne megtudni a személyes adatkezelésről, javasoljuk ezt a [cikket](../logs/personal-data-mgmt.md#application-data). Ha IP-cím adatait kell tárolnia, az [IP-cím gyűjtésével kapcsolatos cikk](./ip-collection.md) végigvezeti Önt a lehetőségein.
 
 ## <a name="credits"></a>Kreditek
 Ez a termék a MaxMind által létrehozott GeoLite2-adatokból áll [https://www.maxmind.com](https://www.maxmind.com) .

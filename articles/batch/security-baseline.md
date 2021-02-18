@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3678ead9f3e1ba2556fde3c2fbe30df4e7dc2225
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 96d1c4c0ad210352be94255609a3a373b408ed23
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737235"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593304"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Azure biztonsági alapkonfiguráció a Batch szolgáltatáshoz
 
@@ -142,7 +142,7 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 - [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log) 
 
-- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/platform/alerts-activity-log.md)
+- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -200,7 +200,7 @@ Ha szükséges, az egyes készlet-csomópontokhoz biztonságos rendszerhéj (SSH
 
 - [Azure Batch figyelés és naplózás konfigurálása](monitoring-overview.md)
 
-- [Az Azure Log Analytics munkaterület megőrzési időtartamának konfigurálása](../azure-monitor/platform/manage-cost-storage.md)
+- [Az Azure Log Analytics munkaterület megőrzési időtartamának konfigurálása](../azure-monitor/logs/manage-cost-storage.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -514,7 +514,7 @@ Az Azure Disk Encryption használatával a szervezeti biztonsági és megfelelő
 
 A Azure Batch készlethez társított Storage-fiókok diagnosztikai beállításainak konfigurálása a készlet adatain végzett összes szifilisz-művelet figyeléséhez és naplózásához.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/platform/alerts-activity-log.md)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [További naplózás/naplózás engedélyezése egy Azure Storage-fiókhoz](../storage/common/storage-monitor-storage-account.md)
 
@@ -992,7 +992,7 @@ A Microsoft által felügyelt felhő-infrastruktúrával,-szolgáltatásokkal é
 
 **Felelősség**: Megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Security Benchmark v2 áttekintésének](../security/benchmarks/overview.md) megtekintése
 - További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

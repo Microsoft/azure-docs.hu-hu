@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 991ef6e7ffc26294f75ba5bd2f24c62ea6e0b421
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: a521ca80039b68f93bf7c9d98e51d9846e96e985
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007006"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593825"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Start/Stop VMs during off-hours áttekintése
 
-Az Start/Stop VMs during off-hours funkció indítása vagy leállítása az Azure-beli virtuális gépeken. A felhasználó által meghatározott ütemterveken megkezdi vagy leállítja a gépeket, bepillantást Azure Monitor naplókba, és a választható e-maileket a [műveleti csoportok](../azure-monitor/platform/action-groups.md)használatával küldi el. A szolgáltatás a legtöbb forgatókönyv esetében engedélyezhető a Azure Resource Manager és a klasszikus virtuális gépeken is.
+Az Start/Stop VMs during off-hours funkció indítása vagy leállítása az Azure-beli virtuális gépeken. A felhasználó által meghatározott ütemterveken megkezdi vagy leállítja a gépeket, bepillantást Azure Monitor naplókba, és a választható e-maileket a [műveleti csoportok](../azure-monitor/alerts/action-groups.md)használatával küldi el. A szolgáltatás a legtöbb forgatókönyv esetében engedélyezhető a Azure Resource Manager és a klasszikus virtuális gépeken is. 
 
 Ez a szolgáltatás a [Start-AzVm](/powershell/module/az.compute/start-azvm) parancsmag használatával indítja el a virtuális gépeket. A [stop-AzVM](/powershell/module/az.compute/stop-azvm) használatával állítja le a virtuális gépeket.
 

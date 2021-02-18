@@ -8,16 +8,16 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 881dbd02a6bf069fbe68108cc6eab0cb6b909a13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c7acdda3dce3b1338888cdf36f1623597c11fc3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362650"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586088"
 ---
 # <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-waf-logs"></a>Log Analytics használata Application Gateway webalkalmazási tűzfal (WAF) naplófájljainak vizsgálatához
 
-Ha a Application Gateway WAF működőképes, engedélyezheti a naplók számára, hogy megvizsgálják, mi történik az egyes kérelmekkel. A tűzfal naplói betekintést nyújtanak a WAF értékelésére, egyeztetésére és blokkolására. A Log Analytics segítségével megvizsgálhatja a tűzfalakon belüli adatnaplókat, hogy még több elemzést nyújtson. Log Analytics munkaterület létrehozásával kapcsolatos további információkért lásd: [log Analytics munkaterület létrehozása a Azure Portal](../azure-monitor/learn/quick-create-workspace.md). További információ a naplózási lekérdezésekről: [a Azure monitorban található lekérdezések áttekintése](../azure-monitor/log-query/log-query-overview.md).
+Ha a Application Gateway WAF működőképes, engedélyezheti a naplók számára, hogy megvizsgálják, mi történik az egyes kérelmekkel. A tűzfal naplói betekintést nyújtanak a WAF értékelésére, egyeztetésére és blokkolására. A Log Analytics segítségével megvizsgálhatja a tűzfalakon belüli adatnaplókat, hogy még több elemzést nyújtson. Log Analytics munkaterület létrehozásával kapcsolatos további információkért lásd: [log Analytics munkaterület létrehozása a Azure Portal](../azure-monitor/logs/quick-create-workspace.md). További információ a naplózási lekérdezésekről: [a Azure monitorban található lekérdezések áttekintése](../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="import-waf-logs"></a>WAF-naplók importálása
 

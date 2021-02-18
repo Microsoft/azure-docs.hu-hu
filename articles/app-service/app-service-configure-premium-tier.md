@@ -6,12 +6,12 @@ ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 7ade24b6478f78a51e0be68ae69ae0b076ecff1f
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: c187a1521762c0b69d42c81f464694729d3c02f7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607874"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594227"
 ---
 # <a name="configure-premiumv3-tier-for-azure-app-service"></a>Azure App Service PremiumV3-szintjeinek konfigurálása
 
@@ -124,4 +124,4 @@ New-AzAppServicePlan -ResourceGroupName <resource_group_name> `
 ## <a name="more-resources"></a>További erőforrások
 
 [Alkalmazások vertikális Felskálázása az Azure](manage-scale-up.md) 
- -ban [Példányszám manuális vagy automatikus méretezése](../azure-monitor/platform/autoscale-get-started.md)
+ -ban [Példányszám manuális vagy automatikus méretezése](../azure-monitor/autoscale/autoscale-get-started.md)

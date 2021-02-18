@@ -9,16 +9,19 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/29/2020
 ms.author: inhenkel
-ms.openlocfilehash: 96031642efb1248fb3b1acabeb9d7381177a2c70
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: fd92eed127ec50a3d3a86f667d9aa764b79c190a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100098078"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585407"
 ---
 # <a name="trusted-storage-for-media-services"></a>Megbízható tárterület Media Services
 
 Media Services fiók létrehozásakor hozzá kell rendelnie egy Storage-fiókhoz. A Media Services a rendszerhitelesítés vagy a felügyelt identitás-hitelesítés használatával érheti el a Storage-fiókot. Media Services ellenőrzi, hogy a Media Services fiók és a Storage-fiók ugyanahhoz az előfizetéshez tartozik-e, és ellenőrzi, hogy a társítást hozzáadó felhasználó hozzáfér-e a Storage-fiókhoz Azure Resource Manager RBAC.
+
+>[!NOTE]
+>A megbízható tárterület csak az API-ban érhető el, és jelenleg nincs engedélyezve a Azure Portal.
 
 ## <a name="trusted-storage-with-a-firewall"></a>Megbízható tárterület tűzfallal
 

@@ -3,12 +3,12 @@ title: Azure Monitor Application Insights klasszikus erőforrás migrálása mun
 description: Ismerje meg a Azure Monitor Application Insights klasszikus erőforrás új munkaterület-alapú modellre való frissítéséhez szükséges lépéseket.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 5316bf5b919fe8b24ea1dd601214df62aa034f37
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5791abe33dee2e62aadb00ae1024338e1e44a900
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945100"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584258"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>Áttelepítés munkaterületen alapuló Application Insights erőforrásokra
 
@@ -22,21 +22,21 @@ A munkaterület-alapú erőforrások lehetővé teszik a közös Azure szerepkö
 
 A munkaterület-alapú Application Insights lehetővé teszi Azure Monitor és Log Analytics legújabb képességeinek kihasználását, beleértve a következőket:
 
-* Az [ügyfél által felügyelt kulcsok (CMK)](../platform/customer-managed-keys.md) lehetővé teszi az adatok titkosítását olyan titkosítási kulcsokkal, amelyekhez csak Ön férhet hozzá.
-* Az [Azure Private link](../platform/private-link-security.md) lehetővé teszi, hogy a privát végpontok használatával biztonságosan összekapcsolja az Azure Pásti-szolgáltatásokat a virtuális hálózattal.
+* Az [ügyfél által felügyelt kulcsok (CMK)](../logs/customer-managed-keys.md) lehetővé teszi az adatok titkosítását olyan titkosítási kulcsokkal, amelyekhez csak Ön férhet hozzá.
+* Az [Azure Private link](../logs/private-link-security.md) lehetővé teszi, hogy a privát végpontok használatával biztonságosan összekapcsolja az Azure Pásti-szolgáltatásokat a virtuális hálózattal.
 * A [Profiler és a Snapshot Debugger saját tárterületének (BYOS)](./profiler-bring-your-own-storage.md) teljes körű vezérlést biztosít a titkosítást a REST-alapú házirend, az élettartam-kezelési házirend és a Application Insights Profiler és Snapshot Debuggerhoz kapcsolódó összes adat hálózati hozzáférése felett. 
-* A [kapacitás-foglalási szintek](../platform/manage-cost-storage.md#pricing-model) lehetővé teszik, hogy akár 25%-ot is mentsen az utólagos elszámolású díjszabáshoz képest. 
+* A [kapacitás-foglalási szintek](../logs/manage-cost-storage.md#pricing-model) lehetővé teszik, hogy akár 25%-ot is mentsen az utólagos elszámolású díjszabáshoz képest. 
 * Gyorsabb adatfeldolgozás Log Analytics folyamatos átvitelsel.
 
 ## <a name="migration-process"></a>Migrálási folyamat
 
 Ha munkaterületen alapuló erőforrásra végez áttelepítést, a rendszer a klasszikus erőforrás tárterületéről nem helyez át adatátvitelt az új munkaterület-alapú tárolóba. Az áttelepítés kiválasztása Ehelyett megváltoztatja azt a helyet, ahol az új adatai Log Analytics munkaterületre íródnak, miközben megőrizheti a klasszikus erőforrások adataihoz való hozzáférést. 
 
-A klasszikus erőforrás-adatok továbbra is megmaradnak, és a klasszikus Application Insights erőforrás megőrzési beállításai vonatkoznak rájuk. Az áttelepítés utáni összes új adatot a társított Log Analytics munkaterület [megőrzési beállításai](../platform/manage-cost-storage.md#change-the-data-retention-period) szabályozzák, amely más [adatmegőrzési beállításokat is támogat adattípus szerint](../platform/manage-cost-storage.md#retention-by-data-type).
+A klasszikus erőforrás-adatok továbbra is megmaradnak, és a klasszikus Application Insights erőforrás megőrzési beállításai vonatkoznak rájuk. Az áttelepítés utáni összes új adatot a társított Log Analytics munkaterület [megőrzési beállításai](../logs/manage-cost-storage.md#change-the-data-retention-period) szabályozzák, amely más [adatmegőrzési beállításokat is támogat adattípus szerint](../logs/manage-cost-storage.md#retention-by-data-type).
 Az áttelepítési folyamat **állandó, és nem vonható vissza**. Miután áttelepítette az erőforrást a munkaterület-alapú Application Insightsre, mindig munkaterület-alapú erőforrás lesz. A Migrálás után azonban a kívánt gyakorisággal módosíthatja a cél munkaterületet. 
 
 > [!NOTE]
-> A munkaterületen alapuló Application Insights erőforrások adatfeldolgozása és megőrzése a [log Analytics munkaterületen](../platform/manage-cost-storage.md) történik, ahol az adatok találhatók. Ha 90 napnál nagyobb adatmegőrzést jelölt ki a klasszikus Application Insights erőforrásba való áttelepítés előtt betöltött adatokon, az adatmegőrzés továbbra is a Application Insights erőforráson keresztül történik. [További]( ./pricing.md#workspace-based-application-insights) információ a munkaterület-alapú Application Insights erőforrások számlázásáról.
+> A munkaterületen alapuló Application Insights erőforrások adatfeldolgozása és megőrzése a [log Analytics munkaterületen](../logs/manage-cost-storage.md) történik, ahol az adatok találhatók. Ha 90 napnál nagyobb adatmegőrzést jelölt ki a klasszikus Application Insights erőforrásba való áttelepítés előtt betöltött adatokon, az adatmegőrzés továbbra is a Application Insights erőforráson keresztül történik. [További]( ./pricing.md#workspace-based-application-insights) információ a munkaterület-alapú Application Insights erőforrások számlázásáról.
 
 Ha nem kell áttelepítenie egy meglévő erőforrást, és ehelyett új munkaterület-alapú Application Insights erőforrást szeretne létrehozni, használja a [munkaterület-alapú erőforrás-létrehozási útmutatót](create-workspace-resource.md).
 
@@ -44,12 +44,12 @@ Ha nem kell áttelepítenie egy meglévő erőforrást, és ehelyett új munkate
 
 - Egy Log Analytics munkaterület, amelynek hozzáférés-vezérlési módja a **`use resource or workspace permissions`** beállításra van beállítva. 
 
-    - A munkaterület-alapú Application Insights erőforrások nem kompatibilisek a dedikált beállításhoz beállított munkaterületekkel **`workspace based permissions`** . A Log Analytics munkaterület-hozzáférés-vezérléssel kapcsolatos további tudnivalókért tekintse meg a [hozzáférés-vezérlési mód konfigurálása című log Analytics](../platform/manage-access.md#configure-access-control-mode)
+    - A munkaterület-alapú Application Insights erőforrások nem kompatibilisek a dedikált beállításhoz beállított munkaterületekkel **`workspace based permissions`** . A Log Analytics munkaterület-hozzáférés-vezérléssel kapcsolatos további tudnivalókért tekintse meg a [hozzáférés-vezérlési mód konfigurálása című log Analytics](../logs/manage-access.md#configure-access-control-mode)
 
-    - Ha még nem rendelkezik meglévő Log Analytics munkaterülettel, [tekintse meg a log Analytics munkaterület-létrehozási dokumentációt](../learn/quick-create-workspace.md).
+    - Ha még nem rendelkezik meglévő Log Analytics munkaterülettel, [tekintse meg a log Analytics munkaterület-létrehozási dokumentációt](../logs/quick-create-workspace.md).
     
 - A folyamatos exportálás nem támogatott a munkaterület-alapú erőforrások esetében, és le kell tiltani.
-Az áttelepítés befejezése után a [diagnosztikai beállításokkal](../platform/diagnostic-settings.md) konfigurálhatja az adatarchiválást egy Storage-fiókba vagy az Azure Event hub szolgáltatásba való folyamatos átvitelre.  
+Az áttelepítés befejezése után a [diagnosztikai beállításokkal](../essentials/diagnostic-settings.md) konfigurálhatja az adatarchiválást egy Storage-fiókba vagy az Azure Event hub szolgáltatásba való folyamatos átvitelre.  
 
 - A jelenlegi adatmegőrzési beállításokat az **általános**  >  **használat és a becsült költségek**  >  **adatmegőrzés** az log Analytics munkaterületen című szakaszban találja. Ez a beállítás befolyásolja, hogy mennyi ideig tárolja a rendszer az új betöltött adatot, miután áttelepítette Application Insights erőforrását. Ha jelenleg az alapértelmezett 90 napnál hosszabb ideig tárolja Application Insights adatait, és meg szeretné őrizni ezt a nagyobb megőrzési időt, előfordulhat, hogy módosítania kell a munkaterület adatmegőrzési beállításait.
 
@@ -209,7 +209,7 @@ A Application Insights erőforrás ablaktáblán válassza a **Tulajdonságok** 
 
 **Hibaüzenet:** *a kiválasztott munkaterület munkaterület-alapú hozzáférési móddal van konfigurálva. Előfordulhat, hogy egyes APM-funkciók befolyásolhatják a funkciót. Válasszon másik munkaterületet, vagy engedélyezze az erőforrás-alapú hozzáférést a munkaterület beállításai között. Ezt a hibát felülbírálhatja a parancssori felület használatával.* 
 
-Ahhoz, hogy a munkaterület-alapú Application Insights erőforrás megfelelően működjön, módosítania kell a cél Log Analytics munkaterület hozzáférés-vezérlési módját az **erőforrás vagy a munkaterület engedélyeinek** beállítására. Ez a beállítás a log Analytics munkaterület felhasználói felületén található a **Tulajdonságok**  >  **hozzáférés-vezérlési módban**. Részletes útmutatásért olvassa el az [log Analytics hozzáférés-vezérlési mód konfigurálása című útmutatót](../platform/manage-access.md#configure-access-control-mode). Ha a hozzáférés-vezérlési mód a kizárólagos **munkaterülethez szükséges engedélyek** beállításra van beállítva, a portál áttelepítési felületén keresztüli áttelepítés továbbra is blokkolva marad.
+Ahhoz, hogy a munkaterület-alapú Application Insights erőforrás megfelelően működjön, módosítania kell a cél Log Analytics munkaterület hozzáférés-vezérlési módját az **erőforrás vagy a munkaterület engedélyeinek** beállítására. Ez a beállítás a log Analytics munkaterület felhasználói felületén található a **Tulajdonságok**  >  **hozzáférés-vezérlési módban**. Részletes útmutatásért olvassa el az [log Analytics hozzáférés-vezérlési mód konfigurálása című útmutatót](../logs/manage-access.md#configure-access-control-mode). Ha a hozzáférés-vezérlési mód a kizárólagos **munkaterülethez szükséges engedélyek** beállításra van beállítva, a portál áttelepítési felületén keresztüli áttelepítés továbbra is blokkolva marad.
 
 Ha a hozzáférés-vezérlési mód nem módosítható biztonsági okokból az aktuális célként megadott munkaterületen, javasoljuk, hogy hozzon létre egy új Log Analytics munkaterületet az áttelepítéshez. 
 
@@ -229,7 +229,7 @@ A örökölt folyamatos exportálás funkció nem támogatott a munkaterület-al
 
 - Miután kiválasztotta a Letiltás lehetőséget, visszatérhet az áttelepítési felhasználói felületre. Ha a folyamatos exportálás szerkesztése lapon rákérdez, hogy a beállítások nem lesznek-e mentve, válassza az OK lehetőséget a kéréshez, mivel az nem vonatkozik a folyamatos exportálás letiltására/engedélyezésére.
 
-- Miután sikeresen áttelepítette Application Insights erőforrását a munkaterület-alapúra, diagnosztikai beállításokkal lecserélheti a folyamatos exportáláshoz használt funkciókat. Válassza a **diagnosztikai beállítások**  >  **Hozzáadás diagnosztikai beállítás** lehetőséget a Application Insights erőforráson belül. Kiválaszthatja az összes táblát vagy a táblák egy részhalmazát, hogy archiválja a Storage-fiókba, vagy egy Azure Event hub-ba továbbítson. A diagnosztikai beállításokkal kapcsolatos részletes útmutatásért tekintse meg a [Azure monitor diagnosztikai beállítások útmutatását](../platform/diagnostic-settings.md).
+- Miután sikeresen áttelepítette Application Insights erőforrását a munkaterület-alapúra, diagnosztikai beállításokkal lecserélheti a folyamatos exportáláshoz használt funkciókat. Válassza a **diagnosztikai beállítások**  >  **Hozzáadás diagnosztikai beállítás** lehetőséget a Application Insights erőforráson belül. Kiválaszthatja az összes táblát vagy a táblák egy részhalmazát, hogy archiválja a Storage-fiókba, vagy egy Azure Event hub-ba továbbítson. A diagnosztikai beállításokkal kapcsolatos részletes útmutatásért tekintse meg a [Azure monitor diagnosztikai beállítások útmutatását](../essentials/diagnostic-settings.md).
 
 ### <a name="retention-settings"></a>Adatmegőrzési beállítások
 
@@ -241,5 +241,5 @@ A log Analytics aktuális megőrzési beállításait az **általános** haszná
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Metrikák böngészése](../platform/metrics-charts.md)
-* [Analytics-lekérdezések](../log-query/log-query-overview.md)
+* [Metrikák böngészése](../essentials/metrics-charts.md)
+* [Analytics-lekérdezések](../logs/log-query-overview.md)

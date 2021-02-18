@@ -4,12 +4,12 @@ description: Személyre szabott értesítések beszerzése a ServiceNow-példán
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: f120e9d950cc349d0331a476dbfbfe9d7e599f0c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: df6596dd9853a792b5bfdb333361a2b9cd02a347
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000640"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588185"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>Azure szolgáltatásbeli állapottal kapcsolatos riasztások küldése a ServiceNow webhookok használatával
 
@@ -178,7 +178,7 @@ Ez a cikk bemutatja, hogyan integrálhatja az Azure szolgáltatás állapotával
 1. A műveleti csoport frissítéséhez válassza a **Mentés** lehetőséget.
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Webhook-integráció tesztelése HTTP POST-kérelem használatával
-1. Hozza létre a küldeni kívánt szolgáltatás-állapot adattartalmát. Az Azure-beli [tevékenységekre vonatkozó riasztások webhookok](../azure-monitor/platform/activity-log-alerts-webhook.md)szolgáltatásában például a Service Health webhook hasznos adatai találhatók.
+1. Hozza létre a küldeni kívánt szolgáltatás-állapot adattartalmát. Az Azure-beli [tevékenységekre vonatkozó riasztások webhookok](../azure-monitor/alerts/activity-log-alerts-webhook.md)szolgáltatásában például a Service Health webhook hasznos adatai találhatók.
 
 1. Hozzon létre egy HTTP POST-kérelmet a következőképpen:
 
@@ -193,8 +193,8 @@ Ez a cikk bemutatja, hogyan integrálhatja az Azure szolgáltatás állapotával
 
 1. Nyissa meg a [ServiceNow](https://www.servicenow.com/) , és ellenőrizze, hogy sikeresen beállította-e az integrációt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Megtudhatja, hogyan [konfigurálhat webhook-értesítéseket a meglévő probléma-felügyeleti rendszerekhez](service-health-alert-webhook-guide.md).
-- Tekintse át a [tevékenység naplójának riasztása webhook sémáját](../azure-monitor/platform/activity-log-alerts-webhook.md). 
+- Tekintse át a [tevékenység naplójának riasztása webhook sémáját](../azure-monitor/alerts/activity-log-alerts-webhook.md). 
 - Tudnivalók a [szolgáltatás állapotával kapcsolatos értesítésekről](./service-notifications.md).
-- További információ a [műveleti csoportokról](../azure-monitor/platform/action-groups.md).
+- További információ a [műveleti csoportokról](../azure-monitor/alerts/action-groups.md).

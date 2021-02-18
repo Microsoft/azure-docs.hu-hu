@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 98caca31e172f54c3e37f33c5a463790d9d27032
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e0a7a5b9e19436deaed45382fe23063fa61edadf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87325984"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587257"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Az SQL-környezet optimalizálása a SQL Server Health-ellenőrzési megoldással Azure Monitor
 
@@ -44,9 +44,9 @@ A megoldás hozzáadása és az értékelés befejezése után a fókusz terüle
 
 A SQL Server-kiszolgálók állapot-ellenőrzésének végrehajtásához a következő támogatott módszerek egyikével kell ügynököt és kapcsolatot létesíteni a Azure Monitorhoz:
 
-1. Telepítse a [Microsoft monitoring Agent (MMA)](../platform/agent-windows.md) programot, ha a kiszolgálót még nem figyeli a System Center 2016 – Operations Manager vagy Operations Manager 2012 R2.
+1. Telepítse a [Microsoft monitoring Agent (MMA)](../agents/agent-windows.md) programot, ha a kiszolgálót még nem figyeli a System Center 2016 – Operations Manager vagy Operations Manager 2012 R2.
 2. Ha a System Center 2016 – Operations Manager vagy Operations Manager 2012 R2 rendszerrel van figyelve, és a felügyeleti csoport nincs integrálva a Azure Monitor-be, a kiszolgáló többplatformos lehet a Log Analytics, hogy adatokat gyűjtsön és továbbítson a szolgáltatásnak, és továbbra is a Operations Manager figyeli.  
-3. Ellenkező esetben, ha a Operations Manager felügyeleti csoport integrálva van a szolgáltatással, hozzá kell adnia a tartományvezérlőket az adatgyűjtéshez a szolgáltatáshoz az [ügynök által felügyelt számítógépek hozzáadása](../platform/om-agents.md#connecting-operations-manager-to-azure-monitor) után, miután engedélyezte a megoldást a munkaterületen.  
+3. Ellenkező esetben, ha a Operations Manager felügyeleti csoport integrálva van a szolgáltatással, hozzá kell adnia a tartományvezérlőket az adatgyűjtéshez a szolgáltatáshoz az [ügynök által felügyelt számítógépek hozzáadása](../agents/om-agents.md#connecting-operations-manager-to-azure-monitor) után, miután engedélyezte a megoldást a munkaterületen.  
 
 A SQL Server ügynöke, amely egy Operations Manager felügyeleti csoportnak jelent jelentést, adatokat gyűjt, továbbít a hozzárendelt felügyeleti kiszolgálóhoz, majd közvetlenül egy felügyeleti kiszolgálóról küldi el a Azure Monitor.  Az adatOperations Manager-adatbázisok nem kerülnek be az adatforrásba.  
 
@@ -76,8 +76,8 @@ Az alábbi információk segítségével állíthatja be az SQL Health-ellenőrz
 >
 >
 
-1. A Operations Managerban nyissa meg az operatív konzolt, majd kattintson az **Adminisztráció**elemre.
-2. A **futtató konfiguráció**alatt kattintson a **profilok**elemre, majd nyissa meg **SQL Assessment futtató profilt**.
+1. A Operations Managerban nyissa meg az operatív konzolt, majd kattintson az **Adminisztráció** elemre.
+2. A **futtató konfiguráció** alatt kattintson a **profilok** elemre, majd nyissa meg **SQL Assessment futtató profilt**.
 3. A **Futtató fiókok** lapon kattintson **Hozzáadás** lehetőségre.
 4. Válasszon olyan Windows rendszerű futtató fiókot, amely tartalmazza a SQL Serverhoz szükséges hitelesítő adatokat, vagy kattintson az **új** elemre egy létrehozásához.
 
@@ -125,7 +125,7 @@ Minden javaslat egy súlyozási értéket kap, amely a javaslat relatív fontoss
 ### <a name="how-weights-are-calculated"></a>A súlyozás kiszámítása
 A súlyozások három fő tényezőn alapuló összesített értékek:
 
-* Az *probability* észlelt probléma valószínűleg problémákat okoz. A nagyobb valószínűség a javaslat nagyobb összesített pontszáma.
+* Az  észlelt probléma valószínűleg problémákat okoz. A nagyobb valószínűség a javaslat nagyobb összesített pontszáma.
 * A probléma *hatása* a szervezeten belül, ha problémát okoz. A nagyobb hatás a javaslat nagyobb összesített pontszáma.
 * A javaslat megvalósításához szükséges *erőfeszítés* . A nagyobb erőfeszítés a javaslat kisebb összesített pontszámának felel meg.
 
@@ -157,17 +157,17 @@ Tekintse meg az infrastruktúra összesített megfelelőségi értékeléseit, m
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>A fókusz területre vonatkozó javaslatok megtekintése és a kijavítani kívánt művelet elvégzése
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 2. Az Azure Portalon kattintson a bal alsó sarokban található **További szolgáltatások** elemre. Az erőforrások listájába írja be a **Monitorozás** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Monitorozás** lehetőséget.
-3. **A menü áttekintések szakaszában válassza** a **továbbiak**lehetőséget.  
+3. **A menü áttekintések szakaszában válassza** a **továbbiak** lehetőséget.  
 4. Az **Áttekintés** lapon kattintson az **SQL Health-ellenőrzési** csempére.
 5. Az **Állapot ellenőrzése** oldalon tekintse át az összefoglaló információkat az egyik fókuszban lévő panelen, majd kattintson az egyikre a fókuszhoz tartozó javaslatok megtekintéséhez.
 6. A fókusz oldalain megtekintheti a környezetére vonatkozó rangsorolt javaslatokat. Az **érintett objektumok** alatt található javaslatra kattintva megtekintheti a javaslat hátterének részleteit.<br><br> ![SQL Health-ellenőrzési javaslatok képe](./media/sql-assessment/sql-healthcheck-dashboard-02.png)<br>
-7. A **javasolt műveletekben**javasolt korrekciós műveleteket is végrehajthat. Az elem megcímzése után a későbbi értékelések rögzítik a javasolt műveleteket, és a megfelelőségi pontszám növekedni fog. A javított elemek **átadott objektumként**jelennek meg.
+7. A **javasolt műveletekben** javasolt korrekciós műveleteket is végrehajthat. Az elem megcímzése után a későbbi értékelések rögzítik a javasolt műveleteket, és a megfelelőségi pontszám növekedni fog. A javított elemek **átadott objektumként** jelennek meg.
 
 ## <a name="ignore-recommendations"></a>Javaslatok figyelmen kívül hagyása
 Ha olyan javaslatok vannak, amelyeket figyelmen kívül szeretne hagyni, létrehozhat egy szövegfájlt, amelyet Azure Monitor fog használni, hogy megakadályozza a javaslatok megjelenését az értékelés eredményeiben.
 
 ### <a name="to-identify-recommendations-that-you-will-ignore"></a>A figyelmen kívül hagyható javaslatok azonosítása
-1. A Azure Monitor menüben kattintson a **naplók**elemre.
+1. A Azure Monitor menüben kattintson a **naplók** elemre.
 2. A következő lekérdezéssel listázhatja azokat a javaslatokat, amelyek a környezetében lévő számítógépeken sikertelenek voltak.
 
     ```
@@ -256,6 +256,6 @@ Az eredmények az Excel programba exportálhatók további áttekintés céljáb
 
 * Igen, lásd a fenti [javaslatok mellőzése](#ignore-recommendations) szakaszt.
 
-## <a name="next-steps"></a>További lépések
-* A [lekérdezésekkel](../log-query/log-query-overview.md) megtudhatja, hogyan elemezheti a részletes SQL Health-ellenőrzési információkat és javaslatokat.
+## <a name="next-steps"></a>Következő lépések
+* A [lekérdezésekkel](../logs/log-query-overview.md) megtudhatja, hogyan elemezheti a részletes SQL Health-ellenőrzési információkat és javaslatokat.
 

@@ -5,12 +5,12 @@ ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 345d0d31528f7bdc40be4400e783ad5be45df72f
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: b4a255235b2c6d772ab9a05dffacd4574ddd3280
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930560"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584184"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>Egyéni metrika-gyűjtemény a .NET-ben és a .NET Core-ban
 
@@ -109,7 +109,7 @@ Ha megvizsgáljuk a Application Insights erőforrást a naplók (Analytics) szol
 > [!NOTE]
 > Míg a nyers telemetria-tétel nem tartalmazott explicit Sum tulajdonságot/mezőt a betöltés után, akkor létrehozunk egyet. Ebben az esetben mind a `value` , mind a `valueSum` tulajdonság ugyanazt a dolgot jelöli.
 
-Az egyéni metrika telemetria a portál [_mérőszámok_](../platform/metrics-charts.md) szakaszában is elérheti. [Naplózási és egyéni metrika](pre-aggregated-metrics-log-metrics.md)is. (Az alábbi képernyőképen a log-alapú példa látható.) ![Metrikák Explorer nézet](./media/get-metric/metrics-explorer.png)
+Az egyéni metrika telemetria a portál [_mérőszámok_](../essentials/metrics-charts.md) szakaszában is elérheti. [Naplózási és egyéni metrika](pre-aggregated-metrics-log-metrics.md)is. (Az alábbi képernyőképen a log-alapú példa látható.) ![Metrikák Explorer nézet](./media/get-metric/metrics-explorer.png)
 
 ### <a name="caching-metric-reference-for-high-throughput-usage"></a>Gyorsítótárazási metrika referenciája a nagy átviteli sebességű használathoz
 
@@ -188,7 +188,7 @@ A metrikus Explorer felhasználói felületén belüli többdimenziós metrikák
 
 ### <a name="enable-multi-dimensional-metrics"></a>Többdimenziós mérőszámok engedélyezése
 
-Ha Application Insights erőforráshoz szeretne többdimenziós mérőszámokat engedélyezni, válassza a **használat és becsült költségek**  >  **Egyéni metrikák**  >  **engedélyezése az egyéni metrika dimenziók**számára  >  **OK**lehetőséget. Erről további részleteket [itt](pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)találhat.
+Ha Application Insights erőforráshoz szeretne többdimenziós mérőszámokat engedélyezni, válassza a **használat és becsült költségek**  >  **Egyéni metrikák**  >  **engedélyezése az egyéni metrika dimenziók** számára  >  **OK** lehetőséget. Erről további részleteket [itt](pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)találhat.
 
 Miután elvégezte ezt a módosítást, és új többdimenziós telemetria küld, a **felosztást is alkalmazhatja**.
 
@@ -302,6 +302,6 @@ SeverityLevel.Error);
 
 * [További ](./worker-service.md)információ a Worker Service-alkalmazások figyeléséről.
 * További részletek a [naplózási és előre összesített metrikákkal](./pre-aggregated-metrics-log-metrics.md)kapcsolatban.
-* [Metrika-kezelő](../platform/metrics-getting-started.md)
+* [Metrika-kezelő](../essentials/metrics-getting-started.md)
 * [ASP.net Core alkalmazások](asp-net-core.md) Application Insightsának engedélyezése
 * Application Insights engedélyezése a ASP.NET- [alkalmazásokhoz](asp-net.md)

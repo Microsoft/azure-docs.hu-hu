@@ -3,12 +3,12 @@ title: DoD Impact Level 4 terv minta
 description: A DoD Impact Level 4 tervre vonatkozó lépések üzembe helyezése minta, beleértve a tervrajz-összetevő paraméterének részleteit.
 ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: 40f45d1194ae089010edf308c3b110bc97591613
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 389090b79c0aad343c1999ea17ed8c9332958544
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033761"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594793"
 ---
 # <a name="deploy-the-dod-impact-level-4-blueprint-sample"></a>A DoD Impact Level 4 terv minta üzembe helyezése
 
@@ -109,7 +109,7 @@ A következő táblázat a terv összetevő-paramétereinek listáját tartalmaz
 |Windows rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése|Szabályzat-hozzárendelés|Nem kötelező: a hatókörbe felvenni kívánt Windows operációs rendszert futtató virtuálisgép-rendszerképek listája|Egy üres tömb is felhasználható a nem kötelező paraméterek jelölésére: \[\]|
 |\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|A rendszergazdák helyi csoportba foglalandó tagok|A rendszergazdák helyi csoportba kizárandó tagok pontosvesszővel tagolt listája. Pl.: rendszergazda; myUser1; myUser2|
 |\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|A rendszergazdák helyi csoportból kizárandó tagok|A rendszergazdák helyi csoportba foglalandó tagok pontosvesszővel tagolt listája. Pl.: rendszergazda; myUser1; myUser2|
-|\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|Azon erőforrástípusok listája, amelyeknek engedélyezve kell lennie a diagnosztikai naplóknak|A naplózni kívánt erőforrástípusok listája, ha a diagnosztikai napló beállítása nincs engedélyezve. Elfogadható értékek találhatók [Azure monitor diagnosztikai naplók sémái](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)között.|
+|\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|Azon erőforrástípusok listája, amelyeknek engedélyezve kell lennie a diagnosztikai naplóknak|A naplózni kívánt erőforrástípusok listája, ha a diagnosztikai napló beállítása nincs engedélyezve. Elfogadható értékek találhatók [Azure monitor diagnosztikai naplók sémái](../../../../azure-monitor/essentials/resource-logs-schema.md#service-specific-schemas)között.|
 |\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|Log Analytics munkaterület-azonosító, amelyhez a virtuális gépeket konfigurálni kell|Ez a Log Analytics munkaterület azonosítója (GUID), amelyhez a virtuális gépeket konfigurálni kell.|
 |\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|A hosszú távú geo-redundáns biztonsági mentést engedélyezni kell az Azure SQL Database-adatbázisokhoz|A házirend hatásával kapcsolatos információk a [Azure Policy effektusok megismerése](../../../policy/concepts/effects.md)című témakörben találhatók.|
 |\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|A sebezhetőségi felmérést engedélyezni kell az SQL felügyelt példányain.|A házirend hatásával kapcsolatos információk a [Azure Policy effektusok megismerése](../../../policy/concepts/effects.md)című témakörben találhatók.|
@@ -130,7 +130,7 @@ A következő táblázat a terv összetevő-paramétereinek listáját tartalmaz
 |\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|Az MFA-t engedélyezni kell az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező fiókokon|A házirend hatásával kapcsolatos információk a [Azure Policy effektusok megismerése](../../../policy/concepts/effects.md)című témakörben találhatók.|
 |\[Előzetes verzió \] : DoD Impact Level 4|Szabályzat-hozzárendelés|Az MFA-t engedélyezni kell az előfizetés írási engedélyekkel rendelkező fiókjaiban|A házirend hatásával kapcsolatos információk a [Azure Policy effektusok megismerése](../../../policy/concepts/effects.md)című témakörben találhatók.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette a DoD Impact Level 4 tervrajzi minta üzembe helyezésének lépéseit, tekintse meg a következő cikkeket a terv és a vezérlési leképezés megismeréséhez:
 

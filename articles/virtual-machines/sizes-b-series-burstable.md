@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: 833d96b8ca252cff5384cde114390aba8c2f51c3
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: e3a24e4c947afdc1970f6e624335ecc84dd8eff2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097690"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594399"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B sorozatú virtuális gépek méretei
 
@@ -109,7 +109,7 @@ Egy olyan D16s_v3 esetében, amely 16 vCPU és 64 GiB memóriával rendelkezik, 
 
 Válasz: a **kredit** metrika segítségével megtekintheti, hogy a virtuális gép hány kreditet kapott, és a **ConsumedCredit** metrika azt mutatja, hogy a virtuális gép hány CPU-kreditet használ a banktól.    Ezeket a metrikákat a portál mérőszámok paneljéről vagy programozott módon, a Azure Monitor API-kon keresztül tekintheti meg.
 
-További információ az Azure mérőszámok adatainak eléréséről: [a Microsoft Azure metrikáinak áttekintése](../azure-monitor/platform/data-platform.md).
+További információ az Azure mérőszámok adatainak eléréséről: [a Microsoft Azure metrikáinak áttekintése](../azure-monitor/data-platform.md).
 
 ### <a name="q-how-are-credits-accumulated-and-consumed"></a>K: Hogyan történik a kreditek felhalmozódása és felhasználása?
 

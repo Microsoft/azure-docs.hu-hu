@@ -3,12 +3,12 @@ title: Virtuálisgép-bővítmény engedélyezése Azure Resource Manager sablon
 description: Ez a cikk bemutatja, hogyan telepíthet virtuálisgép-bővítményeket hibrid felhőalapú környezetekben futó Azure arc-kompatibilis kiszolgálókra Azure Resource Manager sablon használatával.
 ms.date: 02/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0115bda614133891275daff96c94dc4b1a680ccf
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: b84f9d4d13de3ce2d661e254528e1f0a304001f4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100555104"
+ms.locfileid: "100580922"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>Azure virtuálisgép-bővítmények engedélyezése ARM-sablon használatával
 
@@ -545,7 +545,7 @@ A PowerShell DSC bővítmény használatához a következő minta a Windows és 
 
 ## <a name="deploy-the-dependency-agent-extension"></a>A függőségi ügynök bővítményének üzembe helyezése
 
-A Azure Monitor függőségi ügynök bővítményének használatához a következő minta a Windows és Linux rendszeren való futtatásra szolgál. Ha nem ismeri a függőségi ügynököt, tekintse meg [a Azure monitor ügynökök áttekintése](../../azure-monitor/platform/agents-overview.md#dependency-agent)című témakört.
+A Azure Monitor függőségi ügynök bővítményének használatához a következő minta a Windows és Linux rendszeren való futtatásra szolgál. Ha nem ismeri a függőségi ügynököt, tekintse meg [a Azure monitor ügynökök áttekintése](../../azure-monitor/agents/agents-overview.md#dependency-agent)című témakört.
 
 ### <a name="template-file-for-linux"></a>A Linux sablon fájlja
 

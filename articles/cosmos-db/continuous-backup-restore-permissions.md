@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 82af70547d20509c48f1e07bbc7610fc666a6da1
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 8b3ce2c195dc2fa3dd703306e731aa5b807b78b1
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393054"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100648603"
 ---
 # <a name="manage-permissions-to-restore-an-azure-cosmos-db-account"></a>Azure Cosmos DB-fiók visszaállítására vonatkozó engedélyek kezelése
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -61,7 +61,7 @@ A következő engedélyek szükségesek a folyamatos biztonsági mentési módú
 |Engedély  |Hatás  |Minimális hatókör  |Maximális hatókör  |
 |---------|---------|---------|---------|
 |`Microsoft.Resources/deployments/validate/action`, `Microsoft.Resources/deployments/write` | Ezek az engedélyek szükségesek ahhoz, hogy az ARM-sablon üzembe kerüljön a visszaállított fiók létrehozásához. A szerepkör beállításához tekintse meg az alábbi minta engedély [RestorableAction](#custom-restorable-action) . | Nem alkalmazható | Nem alkalmazható  |
-|Microsoft.DocumentDB/databaseAccounts/írás | Ez az engedély szükséges a fiók erőforráscsoporthoz való visszaállításához | Az az erőforráscsoport, amelyben a visszaállított fiókot létrehozták. | Az előfizetés, amelyben a visszaállított fiókot létrehozták |
+|`Microsoft.DocumentDB/databaseAccounts/write` | Ez az engedély szükséges a fiók erőforráscsoporthoz való visszaállításához | Az az erőforráscsoport, amelyben a visszaállított fiókot létrehozták. | Az előfizetés, amelyben a visszaállított fiókot létrehozták |
 |`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restore/action` |Ez az engedély szükséges a forrás helyreállítható adatbázis-fiók hatókörében, hogy lehetővé váljon a visszaállítási műveletek végrehajtása.  | A visszaállítani kívánt *RestorableDatabaseAccount* tartozó erőforrás. Ezt az értéket a `ID` helyreállítható adatbázis-fiók erőforrásának tulajdonsága is adja. Egy visszaállítható fiók például a */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/Locations/regionName/restorableDatabaseAccounts/<GUID-instanceid>* | A helyreállítható adatbázis-fiókot tartalmazó előfizetés. Az erőforráscsoport nem választható hatókörként.  |
 |`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read` |Ez az engedély szükséges a forrás helyreállítható adatbázis-fiók hatókörében a visszaállítani kívánt adatbázis-fiókok listázásához.  | A visszaállítani kívánt *RestorableDatabaseAccount* tartozó erőforrás. Ezt az értéket a `ID` helyreállítható adatbázis-fiók erőforrásának tulajdonsága is adja. Egy visszaállítható fiók például a */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/Locations/regionName/restorableDatabaseAccounts/<GUID-instanceid>*| A helyreállítható adatbázis-fiókot tartalmazó előfizetés. Az erőforráscsoport nem választható hatókörként.  |
 |`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` | Ez az engedély szükséges a forrás helyreállítható fiók hatókörében, hogy lehetővé tegye a helyreállítható erőforrások, például az adatbázisok és tárolók beolvasását egy helyreállítható fiók számára.  | A visszaállítani kívánt *RestorableDatabaseAccount* tartozó erőforrás. Ezt az értéket a `ID` helyreállítható adatbázis-fiók erőforrásának tulajdonsága is adja. Egy visszaállítható fiók például a */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/Locations/regionName/restorableDatabaseAccounts/<GUID-instanceid>*| A helyreállítható adatbázis-fiókot tartalmazó előfizetés. Az erőforráscsoport nem választható hatókörként. |

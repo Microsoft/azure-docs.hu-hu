@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: 22c69288479e0247e499a33c2e818c19f7edb2ae
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: b13d03f05b7225a1c88f6b10b454749bd7b42477
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879948"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588345"
 ---
 # <a name="azure-purview-metrics-in-azure-monitor"></a>Azure-beli hatáskörébe metrikák a Azure Monitor
 
@@ -24,7 +24,7 @@ Az Azure-beli hatáskörébe tartozó rendszergazdák a Azure Monitor segítség
 
 ## <a name="aggregated-metrics"></a>Összesített mérőszámok
 
-A metrikák a Azure Portal egy hatáskörébe tartozó fiókhoz érhetők el. A metrikák elérését a hatáskörébe tartozó fiók szerepkör-hozzárendelése szabályozza. A metrikák megtekintéséhez a felhasználóknak az Azure-beli felügyelet olvasó szerepkör részét kell képezniük. A szerepkörök hozzáférési szintjeivel kapcsolatos további tudnivalókért tekintse meg a [figyelési olvasói szerepkör engedélyeit](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles) .
+A metrikák a Azure Portal egy hatáskörébe tartozó fiókhoz érhetők el. A metrikák elérését a hatáskörébe tartozó fiók szerepkör-hozzárendelése szabályozza. A metrikák megtekintéséhez a felhasználóknak az Azure-beli felügyelet olvasó szerepkör részét kell képezniük. A szerepkörök hozzáférési szintjeivel kapcsolatos további tudnivalókért tekintse meg a [figyelési olvasói szerepkör engedélyeit](../azure-monitor/roles-permissions-security.md#built-in-monitoring-roles) .
 
 Az a személy, aki létrehozta a hatáskörébe tartozó fiókot, automatikusan megkapja a metrikák megtekintéséhez szükséges engedélyeket. Ha valaki más szeretné megjeleníteni a metrikákat, adja hozzá őket a **figyelési olvasó** szerepkörhöz a következő lépések végrehajtásával:
 
@@ -58,11 +58,11 @@ Az Azure hatáskörébe tartozó felhasználók közvetlenül az Azure hatáskö
 
 ### <a name="available-metrics"></a>Rendelkezésre álló metrikák
 
-A Azure Portal metrika szakaszának megismeréséhez olvassa el a következő két dokumentumot. A metrika Explorer és [a metrikus Explorer speciális funkcióinak](../azure-monitor/platform/metrics-charts.md) [első lépései](../azure-monitor/platform/metrics-getting-started.md) .
+A Azure Portal metrika szakaszának megismeréséhez olvassa el a következő két dokumentumot. A metrika Explorer és [a metrikus Explorer speciális funkcióinak](../azure-monitor/essentials/metrics-charts.md) [első lépései](../azure-monitor/essentials/metrics-getting-started.md) .
 
 A következő táblázat tartalmazza a Azure Portal vizsgálatához elérhető metrikák listáját:
 
-| Metrika neve | Metrika névtere | Összesítés típusa | Leírás |
+| Metrika neve | Metrika névtere | Összesítés típusa | Description |
 | ------------------- | ------------------- | ------------------- | ----------------- |
 | Ellenőrzés megszakítva | Automatizált vizsgálat | Sum <br> Darabszám | A megszakított adatforrás összesítése az időszak során |
 | A vizsgálat befejeződött | Automatizált vizsgálat | Sum <br> Darabszám | A befejezett adatforrás összesítése az időszak során |
@@ -75,7 +75,7 @@ A rendszer kibocsátja a nyers telemetria eseményeket a Azure Monitor. Az esem�
 
 Kövesse az Azure-beli hatáskörébe tartozó fiók diagnosztikai beállításainak létrehozásához szükséges lépéseket.
 
-1. Hozzon létre egy új diagnosztikai beállítást a platform naplófájljainak és metrikáinak összegyűjtéséhez a következő cikk alapján: [diagnosztikai beállítások létrehozása a platform-naplók és-metrikák különböző célhelyekre küldéséhez](../azure-monitor/platform/diagnostic-settings.md). Válassza ki a célhelyet Azure Storage-fiókként.
+1. Hozzon létre egy új diagnosztikai beállítást a platform naplófájljainak és metrikáinak összegyűjtéséhez a következő cikk alapján: [diagnosztikai beállítások létrehozása a platform-naplók és-metrikák különböző célhelyekre küldéséhez](../azure-monitor/essentials/diagnostic-settings.md). Válassza ki a célhelyet Azure Storage-fiókként.
 
    :::image type="content" source="./media/how-to-monitor-with-azure-monitor/step-one-diagnostic-setting.png" alt-text="A diagnosztikai napló létrehozását bemutató képernyőkép." lightbox="./media/how-to-monitor-with-azure-monitor/step-one-diagnostic-setting.png":::
 
@@ -154,6 +154,6 @@ Az Event példány mintájának naplója az alábbi szakaszban látható.
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Asset-áttekintések megtekintése](asset-insights.md)

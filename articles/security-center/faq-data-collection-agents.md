@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 64fa6c72e3bc37276dd108e3981bbefb5a2021a7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 30744ab97549d585cb6893dc2e2e12009e8cd3fb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444517"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595773"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Gyakori kérdések – az adatgyűjtés, az ügynökök és a munkaterületek kérdései
 
@@ -43,7 +43,7 @@ További információ a díjszabásról: [Security Center díjszabása](https://
 
 ## <a name="what-is-the-log-analytics-agent"></a>Mi a Log Analytics ügynök?
 
-A biztonsági rések és fenyegetések figyeléséhez Azure Security Center a [log Analytics ügynöktől](../azure-monitor/platform/log-analytics-agent.md) függ – ez ugyanaz az ügynök, amelyet a Azure monitor szolgáltatás használ. 
+A biztonsági rések és fenyegetések figyeléséhez Azure Security Center a [log Analytics ügynöktől](../azure-monitor/agents/log-analytics-agent.md) függ – ez ugyanaz az ügynök, amelyet a Azure monitor szolgáltatás használ. 
 
 Az ügynököt más néven Microsoft monitoring agentnek (vagy "MMA") nevezzük. 
 
@@ -51,9 +51,9 @@ Az ügynök különböző biztonsággal kapcsolatos konfigurációs adatokat és
 
 Győződjön meg arról, hogy a gépek az ügynök által támogatott operációs rendszerek egyikét futtatják az alábbi lapokon leírtak szerint:
 
-* [Log Analytics ügynök a Windows által támogatott operációs rendszerekhez](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
+* [Log Analytics ügynök a Windows által támogatott operációs rendszerekhez](../azure-monitor/agents/agents-overview.md#supported-operating-systems)
 
-* [A Linux által támogatott operációs rendszerek Log Analytics ügynöke](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
+* [A Linux által támogatott operációs rendszerek Log Analytics ügynöke](../azure-monitor/agents/agents-overview.md#supported-operating-systems)
 
 További információ az [log Analytics-ügynök által gyűjtött adatokról](security-center-enable-data-collection.md).
 
@@ -123,7 +123,7 @@ Meglévő Log Analytics munkaterület kiválasztása:
     > [!TIP]
     > A lista csak azokat a munkaterületeket tartalmazza, amelyekhez hozzáférése van, és amelyek az Azure-előfizetésében találhatók.
 
-1. Válassza a **Mentés** lehetőséget. A rendszer megkérdezi, hogy szeretné-e újrakonfigurálni a figyelt virtuális gépeket.
+1. Kattintson a **Mentés** gombra. A rendszer megkérdezi, hogy szeretné-e újrakonfigurálni a figyelt virtuális gépeket.
 
     - Válassza a **nem** lehetőséget, ha azt szeretné, hogy az új munkaterület-beállítások **csak az új virtuális gépeken legyenek érvényesek**. Az új munkaterület-beállítások csak az új ügynök telepítésére érvényesek; újonnan felderített virtuális gépek, amelyeken nincs telepítve a Log Analytics ügynök.
     - Válassza az **Igen** lehetőséget, ha azt szeretné, hogy az új munkaterület-beállítások **minden virtuális gépen érvényesek** legyenek. Továbbá a Security Center létrehozott munkaterülethez csatlakozó összes virtuális gép újra csatlakozik az új cél munkaterülethez.
@@ -178,7 +178,7 @@ Az előfizetésekhez tartozó automatikus kiépítés kikapcsolható a biztonsá
 
     :::image type="content" source="./media/security-center-enable-data-collection/agent-toggles.png" alt-text="Az Log Analytics-ügynök automatikus központi telepítésének engedélyezése":::
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 
 ## <a name="should-i-opt-out-of-the-automatic-agent-installation-and-workspace-creation"></a>Letiltom az ügynök automatikus telepítését és a munkaterület létrehozását?
@@ -255,7 +255,7 @@ Az Azure-előfizetéshez tartozó adatgyűjtést a biztonsági szabályzatban en
 
 ## <a name="what-happens-when-data-collection-is-enabled"></a>Mi történik, ha az adatgyűjtés engedélyezve van?
 
-Ha engedélyezve van az automatikus kiépítés, Security Center a Log Analytics ügynököt az összes támogatott Azure-beli virtuális gépen és a létrehozott újakon. Az automatikus kiépítés ajánlott, de a manuális ügynök telepítése is elérhető. [Ismerje meg, hogyan telepítheti a log Analytics Agent bővítményt](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension). 
+Ha engedélyezve van az automatikus kiépítés, Security Center a Log Analytics ügynököt az összes támogatott Azure-beli virtuális gépen és a létrehozott újakon. Az automatikus kiépítés ajánlott, de a manuális ügynök telepítése is elérhető. [Ismerje meg, hogyan telepítheti a log Analytics Agent bővítményt](../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension). 
 
 Az ügynök engedélyezi a 4688-es folyamat-létrehozási eseményt és a 4688-es eseményen belüli *parancssori* mezőt. A virtuális gépen létrehozott új folyamatokat az eseménynapló rögzíti, és a Security Center észlelési szolgáltatásai figyelik. Az egyes új folyamatokra vonatkozóan rögzített részletekkel kapcsolatos további információkért lásd: [a Leírás mezői a 4688-ben](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields). Az ügynök a virtuális gépen létrehozott 4688 eseményt is gyűjti, és azokat a keresés során tárolja.
 
@@ -267,7 +267,7 @@ Ha a Security Center gyanús tevékenységet észlel a virtuális gépen, a rend
 ## <a name="will-security-center-work-using-an-oms-gateway"></a>A Security Center OMS-átjáró használatával fog működni?
 
 Igen. Azure Security Center kihasználja Azure Monitor az Azure-beli virtuális gépekről és kiszolgálókról származó adatok gyűjtésére az Log Analytics-ügynök használatával.
-Az adatok gyűjtéséhez az egyes virtuális gépeknek és kiszolgálóknak HTTPS használatával kell csatlakozniuk az internethez. A csatlakozás lehet közvetlen, proxy használatával vagy a [OMS-átjárón](../azure-monitor/platform/gateway.md)keresztül.
+Az adatok gyűjtéséhez az egyes virtuális gépeknek és kiszolgálóknak HTTPS használatával kell csatlakozniuk az internethez. A csatlakozás lehet közvetlen, proxy használatával vagy a [OMS-átjárón](../azure-monitor/agents/gateway.md)keresztül.
 
 
 ## <a name="does-the-monitoring-agent-impact-the-performance-of-my-servers"></a>Befolyásolja a figyelési ügynök a saját kiszolgálók teljesítményét?

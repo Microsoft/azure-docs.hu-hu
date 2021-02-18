@@ -7,12 +7,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: bf8ea45f37e421d70a68c4a6e138f5203e92d78f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 620dadbaba049d6baea54b3b64c9e248fc48004a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87045768"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573450"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Erőforráscsoportok figyelése Azure Monitorvel (előzetes verzió)
 
@@ -46,9 +46,9 @@ Az erőforráscsoport-elemzések oldal számos más eszközt is tartalmaz, amely
 
    |         |          |
    | ---------------- |:-----|
-   | [**Riasztások**](../platform/alerts-overview.md)      |  A riasztások megtekintése, létrehozása és kezelése. |
-   | [**Mérőszámok**](../platform/data-platform.md) | Jelenítse meg és vizsgálja meg a metrika-alapú adatokat.    |
-   | [**Tevékenységnaplók**](../platform/platform-logs-overview.md) | Az Azure-ban történt előfizetési szintű események.  |
+   | [**Riasztások**](../alerts/alerts-overview.md)      |  A riasztások megtekintése, létrehozása és kezelése. |
+   | [**Mérőszámok**](../data-platform.md) | Jelenítse meg és vizsgálja meg a metrika-alapú adatokat.    |
+   | [**Tevékenységnaplók**](../essentials/platform-logs-overview.md) | Az Azure-ban történt előfizetési szintű események.  |
    | [**Alkalmazás-hozzárendelés**](../app/app-map.md) | Navigáljon az elosztott alkalmazás topológiájában a teljesítménnyel kapcsolatos szűk keresztmetszetek vagy a meghibásodási pontok azonosításához. |
 
 ## <a name="failures-and-performance"></a>Hibák és teljesítmény
@@ -113,10 +113,10 @@ Ha meg szeretné tekinteni az erőforráscsoportok Azure Monitor riasztásait, a
 
 Az erőforráscsoportok Azure Monitor a riasztási állapot lekéréséhez Azure Monitor riasztások felügyeleti rendszerére támaszkodik. A riasztások kezelése nincs konfigurálva minden erőforráscsoport és előfizetés számára alapértelmezés szerint, és csak egy tulajdonos vagy közreműködő szerepkörrel rendelkező személy engedélyezhető. A következők bármelyikét engedélyezheti:
 * Az erőforrás-csoportokhoz tartozó Azure Monitor megnyitása az előfizetés egyik erőforráscsoport számára.
-* Vagy nyissa meg az előfizetést, kattintson az **erőforrás-szolgáltatók**, majd a **regisztráció a riasztásokhoz**elemre.
+* Vagy nyissa meg az előfizetést, kattintson az **erőforrás-szolgáltatók**, majd a **regisztráció a riasztásokhoz** elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Munkafüzetek Azure Monitor](../platform/workbooks-overview.md)
+- [Munkafüzetek Azure Monitor](../visualize/workbooks-overview.md)
 - [Azure Resource Health](../../service-health/resource-health-overview.md)
-- [Azure Monitor-riasztások](../platform/alerts-overview.md)
+- [Azure Monitor-riasztások](../alerts/alerts-overview.md)

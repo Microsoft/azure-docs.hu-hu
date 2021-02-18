@@ -7,21 +7,21 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 01/06/2021
 ms.author: sngun
-ms.openlocfilehash: d78ddf983f1c8f2bfeaf733c273afc1cc98b1185
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 561375eb41600ba1404bba2bcbf15b6cbfc61851
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684858"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595348"
 ---
-# <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Azure Cosmos DB adatai figyelése az Azure diagnosztikai beállításainak használatával
+# <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Azure Cosmos DB-adatok monitorozása az Azure diagnosztikai beállításainak használatával
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Az Azure diagnosztikai beállításai az erőforrás-naplók összegyűjtésére szolgálnak. Az Azure-erőforrás-naplókat egy erőforrás bocsátja ki, és az adott erőforrás működésével kapcsolatos gazdag és gyakori információkat biztosít. Ezeket a naplókat a rendszer kérelem szerint rögzíti, és a továbbiakban "adatsíkok naplóiként" is emlegetik. Néhány példa az adatsík-műveletekre: delete, INSERT és readFeed. A naplók tartalma az erőforrástípus alapján változik.
+Az Azure-ban a diagnosztikai beállítások az erőforrásnaplók gyűjtésére szolgálnak. Az Azure-erőforrás-naplókat egy erőforrás bocsátja ki, és az adott erőforrás működésével kapcsolatos gazdag és gyakori információkat biztosít. Ezeket a naplókat a rendszer kérelem szerint rögzíti, és a továbbiakban "adatsíkok naplóiként" is emlegetik. Néhány példa az adatsík-műveletekre: delete, INSERT és readFeed. A naplók tartalma az erőforrástípus alapján változik.
 
 A platform metrikáit és a tevékenységek naplóit automatikusan gyűjti a rendszer, míg az erőforrás-naplók összegyűjtéséhez és a Azure Monitoron kívüli továbbításához létre kell hoznia egy diagnosztikai beállítást. Az Azure Cosmos-fiókok diagnosztikai beállításainak bekapcsolásához hajtsa végre a következő lépéseket:
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. Navigáljon az Azure Cosmos-fiókjához. Nyissa meg a **diagnosztikai beállítások** ablaktáblát, majd kattintson a **diagnosztikai beállítás hozzáadása** lehetőségre.
 
@@ -103,7 +103,7 @@ A platform metrikáit és a tevékenységek naplóit automatikusan gyűjti a ren
 
 * **Kérelmek**: akkor válassza ezt a lehetőséget, ha a Azure Cosmos DBről a diagnosztikai beállításokban lévő célhelyekre szeretne metrikus adatokat gyűjteni. Ez ugyanazokat az adatokat gyűjti össze automatikusan az Azure-Mérőszámokban. A metrikai adatok összegyűjtése az erőforrás-naplókkal mindkét típusú adat elemzéséhez, valamint a Azure Monitoron kívüli metrikai adatok küldéséhez.
 
-A diagnosztikai beállítások a Azure Portal, a CLI vagy a PowerShell használatával történő létrehozásával kapcsolatos részletes információkért lásd: [diagnosztikai beállítás létrehozása a platform-naplók és-metrikák gyűjtéséhez az Azure-ban](../azure-monitor/platform/diagnostic-settings.md) .
+A diagnosztikai beállítások a Azure Portal, a CLI vagy a PowerShell használatával történő létrehozásával kapcsolatos részletes információkért lásd: [diagnosztikai beállítás létrehozása a platform-naplók és-metrikák gyűjtéséhez az Azure-ban](../azure-monitor/essentials/diagnostic-settings.md) .
 
 
 ## <a name="troubleshoot-issues-with-diagnostics-queries"></a><a id="diagnostic-queries"></a> Diagnosztikai lekérdezésekkel kapcsolatos hibák elhárítása

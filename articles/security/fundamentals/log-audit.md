@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: terrylan
-ms.openlocfilehash: 79c15f2df82125f20dcfaf9992d9047b632c253d
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 0d85cf6ae501a7d50f20e48543e361149f4b57d0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412799"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580545"
 ---
 # <a name="azure-security-logging-and-auditing"></a>Azure biztonsági naplózás
 
@@ -38,9 +38,9 @@ A Felhőbeli alkalmazások számos mozgó részből összetettek. A naplózási 
 - Olyan műveletek automatizálása, amelyek egyébként manuális beavatkozást igényelnek
 
 Az Azure-naplók a következő típusokra vannak kategorizálva:
-* A **vezérlési/felügyeleti naplók** a Azure Resource Manager létrehozási, frissítési és törlési műveleteivel kapcsolatos információkat biztosítanak. További információ: Azure- [tevékenységek naplói](../../azure-monitor/platform/platform-logs-overview.md).
+* A **vezérlési/felügyeleti naplók** a Azure Resource Manager létrehozási, frissítési és törlési műveleteivel kapcsolatos információkat biztosítanak. További információ: Azure- [tevékenységek naplói](../../azure-monitor/essentials/platform-logs-overview.md).
 
-* Az **adatsíkok naplói** az Azure-erőforrások használatának részeként kiváltott eseményekről nyújtanak információt. Ilyen típusú napló például a Windows-eseményrendszer, a biztonság és az alkalmazás naplófájljai egy virtuális gépen (VM) és a Azure Monitoron keresztül konfigurált [diagnosztikai naplókon](../../azure-monitor/platform/platform-logs-overview.md) .
+* Az **adatsíkok naplói** az Azure-erőforrások használatának részeként kiváltott eseményekről nyújtanak információt. Ilyen típusú napló például a Windows-eseményrendszer, a biztonság és az alkalmazás naplófájljai egy virtuális gépen (VM) és a Azure Monitoron keresztül konfigurált [diagnosztikai naplókon](../../azure-monitor/essentials/platform-logs-overview.md) .
 
 * A **feldolgozott események** információt nyújtanak az Ön nevében feldolgozott elemzett eseményekről/riasztásokról. Ilyen típusú példák olyan [Azure Security Center riasztások](../../security-center/security-center-managing-and-responding-alerts.md) , ahol a [Azure Security Center](../../security-center/security-center-introduction.md) feldolgozta és elemezte az előfizetését, és rövid biztonsági riasztásokat biztosít.
 
@@ -48,10 +48,10 @@ A következő táblázat az Azure-ban elérhető naplók legfontosabb típusait 
 
 | Naplókategória | Napló típusa | Használat | Integráció |
 | ------------ | -------- | ------ | ----------- |
-|[Tevékenységnaplók](../../azure-monitor/platform/platform-logs-overview.md)|Az Azure Resource Manager-erőforrásokon futó események vezérlése|  Betekintést nyújt az előfizetése erőforrásaiban végrehajtott műveletekre.|    REST API, [Azure monitor](../../azure-monitor/platform/platform-logs-overview.md)|
-|[Azure-erőforrás-naplók](../../azure-monitor/platform/platform-logs-overview.md)|Az előfizetésben Azure Resource Manager erőforrások működésével kapcsolatos gyakori információk|   Betekintést nyújt az erőforrás által végrehajtott műveletekre.| Azure Monitor|
+|[Tevékenységnaplók](../../azure-monitor/essentials/platform-logs-overview.md)|Az Azure Resource Manager-erőforrásokon futó események vezérlése|    Betekintést nyújt az előfizetése erőforrásaiban végrehajtott műveletekre.|    REST API, [Azure monitor](../../azure-monitor/essentials/platform-logs-overview.md)|
+|[Azure-erőforrás-naplók](../../azure-monitor/essentials/platform-logs-overview.md)|Az előfizetésben Azure Resource Manager erőforrások működésével kapcsolatos gyakori információk| Betekintést nyújt az erőforrás által végrehajtott műveletekre.| Azure Monitor|
 |[Jelentéskészítés az Azure Active Directoryban](../../active-directory/reports-monitoring/overview-reports.md)|Naplók és jelentések | A felhasználók és csoportok kezelésével kapcsolatos felhasználói bejelentkezési tevékenységek és rendszertevékenység-információk jelentése.|[Graph API](../../active-directory/develop/microsoft-graph-intro.md)|
-|[Virtual Machines és Cloud Services](../../azure-monitor/learn/quick-collect-azurevm.md)|A Windows Eseménynapló szolgáltatás és a Linux syslog|  Rögzíti a rendszerinformációkat és a naplózási adatait a virtuális gépeken, és átviszi azokat egy tetszőleges Storage-fiókba.|   Windows (Windows Azure Diagnostics [[wad](../../azure-monitor/platform/diagnostics-extension-overview.md)] Storage) és Linux használata a Azure monitor|
+|[Virtual Machines és Cloud Services](../../azure-monitor/vm/quick-collect-azurevm.md)|A Windows Eseménynapló szolgáltatás és a Linux syslog| Rögzíti a rendszerinformációkat és a naplózási adatait a virtuális gépeken, és átviszi azokat egy tetszőleges Storage-fiókba.|   Windows (Windows Azure Diagnostics [[wad](../../azure-monitor/agents/diagnostics-extension-overview.md)] Storage) és Linux használata a Azure monitor|
 |[Azure Storage Analytics](/rest/api/storageservices/fileservices/storage-analytics)|A Storage-naplózási szolgáltatás metrikákat biztosít a Storage-fiókhoz|Betekintést nyújt a nyomkövetési kérelmekbe, elemzi a használati trendeket, és diagnosztizálja a Storage-fiókkal kapcsolatos problémákat.| REST API vagy az [ügyféloldali kódtár](/dotnet/api/overview/azure/storage)|
 |[Hálózati biztonsági csoport (NSG) folyamatábrái](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)|JSON-formátum, a kimenő és a bejövő folyamatok megjelenítése a szabályok alapján|Egy hálózati biztonsági csoporton keresztül megjeleníti a bejövő és kimenő IP-forgalomra vonatkozó információkat.|[Azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md)|
 |[Alkalmazás-betekintés](../../azure-monitor/app/app-insights-overview.md)|Naplók, kivételek és egyéni diagnosztika|  Egy Application Performance monitoring (APM) szolgáltatást biztosít több platformon futó webes fejlesztőknek.| REST API, [Power bi](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|
@@ -60,7 +60,7 @@ A következő táblázat az Azure-ban elérhető naplók legfontosabb típusait 
 ## <a name="log-integration-with-on-premises-siem-systems"></a>A helyszíni SIEM-rendszerekkel való integráció naplózása
 A [Security Center riasztások integrálása](../../security-center/security-center-partner-integration.md) azt ismerteti, hogyan lehet szinkronizálni Security Center riasztásokat, az Azure Diagnostics-naplók által gyűjtött virtuális gépek biztonsági eseményeit, valamint az Azure-naplókat az Azure monitor naplók vagy Siem-megoldás segítségével.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Naplózás és naplózás](management-monitoring-overview.md): az adatvédelmet a láthatóság fenntartása és az időben gyorsan reagáló riasztások megválaszolásával biztosíthatja.
 
