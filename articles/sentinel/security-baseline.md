@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ba15deed98af16b9b501439082ee6c9237fe20b7
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d95a2318d94f52352c9546aedc24d0111c5ba0a4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807207"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571664"
 ---
 # <a name="azure-security-baseline-for-azure-sentinel"></a>Az Azure Sentinel Azure Security alapterve
 
@@ -37,9 +37,9 @@ Ez a biztonsági alapterv az [Azure Security Benchmark 1,0-es verziójáról](..
 
 - [Naplózás engedélyezése az Azure Sentinelben](resources.md)
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/platform/alerts-activity-log.md)
+- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -73,7 +73,7 @@ Ez a biztonsági alapterv az [Azure Security Benchmark 1,0-es verziójáról](..
 
 **Útmutató**: Azure monitorban az Azure Sentinel-munkaterületekhez tartozó log Analytics-munkaterületek naplózási megőrzési időtartamát a szervezet megfelelőségi előírásai szerint állítsa be.
 
-- [Napló-megőrzési paraméterek beállítása](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Napló-megőrzési paraméterek beállítása](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -341,7 +341,7 @@ Emellett az egyes Sentinel-munkafüzetek egy Azure-erőforrás is, és szerepkö
 
 **Útmutató**: az Azure Sentinel és a Azure monitor log Analytics-munkaterületek jelenleg a Microsoft által felügyelt kulcsokat használják a tárolt adatok titkosításához. Saját kulcsának használatának lehetősége még nem teljes mértékben támogatott a Sentinel esetében, de a közeljövőben fog megjelenni.
 
-- [Azure Monitor ügyfél által felügyelt kulcs áttekintése](../azure-monitor/platform/customer-managed-keys.md#customer-managed-key-overview)
+- [Azure Monitor ügyfél által felügyelt kulcs áttekintése](../azure-monitor/logs/customer-managed-keys.md#customer-managed-key-overview)
 
 - [Az ügyfél által felügyelt kulcsok megismerése az Azure Sentinelben (előzetes verzió)](customer-managed-keys.md)
 

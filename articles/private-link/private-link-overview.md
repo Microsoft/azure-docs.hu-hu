@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 01/28/2021
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 681e4efc8a9edda896249fdc939d19b4f644f246
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 34223298dbf0dad9d9214676a5190bef063a8228
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986479"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577038"
 ---
 # <a name="what-is-azure-private-link"></a>Mi az az Azure privát kapcsolat? 
 Az Azure Private link lehetővé teszi az Azure Pásti-szolgáltatások (például az Azure Storage és a SQL Database) és az Azure által üzemeltetett felhasználói/partneri szolgáltatások elérését a virtuális hálózat [privát végpontján](private-endpoint-overview.md) keresztül.
@@ -70,7 +70,7 @@ Az Azure Private link a következő előnyöket biztosítja:
 | Azure Automation  | Összes nyilvános régió<br/> Minden kormányzati régió |  | Előnézet </br> [Megtudhatja, hogyan hozhat létre saját végpontot a Azure Automationhoz.](../automation/how-to/private-link-security.md)| |
 | Azure IoT Hub | Összes nyilvános régió    |  | FE   <br/> [Ismerje meg, hogyan hozhat létre privát végpontot az Azure IoT Hubhoz.](../iot-hub/virtual-network-support.md) |
 | Azure SignalR | USA KELETI RÉGIÓJA, USA DÉLI KÖZÉPSŐ RÉGIÓJA,<br/>USA 2. nyugati régiója, minden kínai régió      |  | Előnézet   <br/> [Megtudhatja, hogyan hozhat létre privát végpontot az Azure-jelzőhöz.](../azure-signalr/howto-private-endpoints.md)   |
-| Azure Monitor <br/>(Log Analytics & Application Insights) | Összes nyilvános régió      |  | FE   <br/> [Megtudhatja, hogyan hozhat létre saját végpontot a Azure Monitorhoz.](../azure-monitor/platform/private-link-security.md)   | 
+| Azure Monitor <br/>(Log Analytics & Application Insights) | Összes nyilvános régió      |  | FE   <br/> [Megtudhatja, hogyan hozhat létre saját végpontot a Azure Monitorhoz.](../azure-monitor/logs/private-link-security.md)   | 
 | Azure Batch | Az összes nyilvános régió kivételével: Közép-Németország, Északkelet-Németország <br/> Minden kormányzati régió  | | FE <br/> [Megtudhatja, hogyan hozhat létre saját végpontot a Azure Batchhoz.](../batch/private-connectivity.md) |
 |Azure Data Factory | Összes nyilvános régió<br/> Minden kormányzati régió<br/>Minden kínai régió    | A hitelesítő adatokat egy Azure Key vaultban kell tárolni| FE   <br/> [Megtudhatja, hogyan hozhat létre saját végpontot a Azure Data Factoryhoz.](../data-factory/data-factory-private-link.md)   |
 |Azure Managed Disks | Összes nyilvános régió<br/> Minden kormányzati régió<br/>Minden kínai régió    | [Kattintson ide az ismert korlátozásokhoz](../virtual-machines/disks-enable-private-links-for-import-export-portal.md#limitations) | FE   <br/> [Ismerje meg, hogyan hozhat létre privát végpontot az Azure Managed Diskshoz.](../virtual-machines/disks-enable-private-links-for-import-export-portal.md)   |

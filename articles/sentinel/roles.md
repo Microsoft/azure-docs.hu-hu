@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 9c100ca82b751a050e74cce85e1794701a789288
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: f9b50c831b435a6189a9b9e4d79a934a2661b033
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95498469"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570404"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Az Azure Sentinel engedélyei
 
@@ -91,7 +91,7 @@ Az alábbi táblázat a szerepköröket és az Azure Sentinelben engedélyezett 
 
 - Az Azure beépített szerepköreinek használatával vagy ahelyett, hogy az Azure Sentinelhez egyéni Azure-szerepköröket is létrehozhat. Az Azure Sentinel Azure-beli egyéni szerepkörei ugyanúgy jönnek létre, mint más [Egyéni Azure-szerepköröket](../role-based-access-control/custom-roles-rest.md#create-a-custom-role)az [Azure Sentinel](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) és az [Azure log Analytics erőforrásaira](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights)adott engedélyek alapján.
 
-- A Log Analytics Advanced Azure szerepköralapú hozzáférés-vezérlést az Azure Sentinel-munkaterület összes adatához használhatja. Ez magában foglalja az adattípuson alapuló Azure-RBAC és az erőforrás-központú Azure-RBAC is. Log Analytics szerepkörökkel kapcsolatos további információkért lásd: [a naplózási adatok és munkaterületek kezelése a Azure monitorban](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions).
+- A Log Analytics Advanced Azure szerepköralapú hozzáférés-vezérlést az Azure Sentinel-munkaterület összes adatához használhatja. Ebbe beletartozik az adattípuson alapuló Azure RBAC és az erőforrás-központú Azure RBAC is. További információ a Log Analytics-szerepkörökről: [Naplóadatok és munkaterületek felügyelete az Azure Monitorban](../azure-monitor/logs/manage-access.md#manage-access-using-workspace-permissions).
 
 ## <a name="next-steps"></a>Következő lépések
 

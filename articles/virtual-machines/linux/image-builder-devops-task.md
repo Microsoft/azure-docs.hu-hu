@@ -7,12 +7,12 @@ ms.date: 01/27/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 56f1e78e0f2bbba15b50664b88bd8808731e6836
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 6090adffbab7c8c57837b62e190f90c8ffb18e3d
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807614"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100636424"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Az Azure rendszerkép-készítő szolgáltatás DevOps feladata
 
@@ -21,7 +21,7 @@ Ebből a cikkből megtudhatja, hogyan szúrhat be összetevőket egy virtuálisg
 ## <a name="devops-task-versions"></a>DevOps-feladatok verziói
 Két Azure VM rendszerkép-készítő (AIB) DevOps-feladat létezik:
 
-* ["STABLE" AIB feladat](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder), amely lehetővé teszi a legújabb frissítések és funkciók bevonását, lehetővé téve az ügyfelek számára a tesztelést, mielőtt a "STABLE" feladatra előléptetjük, körülbelül 1 héttel később. 
+* ["STABLE" AIB feladat](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder), ez a legújabb stabil Build, amelyet teszteltek, és a telemetria nem jelenít meg problémákat. 
 
 
 * ["Instabil" AIB feladat](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder-canary), amely lehetővé teszi a legújabb frissítések és funkciók bevonását, lehetővé téve az ügyfeleknek a tesztelését, mielőtt előléptetik a "STABLE" feladatba. Ha nincsenek jelentett problémák, és a telemetria nem jelenít meg problémát, körülbelül 1 héttel később, a feladatsort "STABLE"-re fogjuk előléptetni. 
@@ -57,7 +57,7 @@ Két Azure VM rendszerkép-készítő (AIB) DevOps-feladat létezik:
 
 **Kiadási folyamat**  >  **szerkesztésének** kiválasztása
 
-A felhasználói ügynöknél válassza a *+* Hozzáadás lehetőséget, majd keressen rá a **rendszerkép-szerkesztőre**. Válassza a **Hozzáadás** elemet.
+A felhasználói ügynöknél válassza a *+* Hozzáadás lehetőséget, majd keressen rá a **rendszerkép-szerkesztőre**. Válassza a **Hozzáadás** lehetőséget.
 
 Adja meg a következő feladat tulajdonságait:
 

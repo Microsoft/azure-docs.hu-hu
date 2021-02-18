@@ -17,12 +17,12 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8dbf14b1816d367f864cc3a2977497b34111df3f
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 73130c906d4d9f0da51db1b666e8562570cce40f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586193"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571273"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD-tevékenységnaplók az Azure Monitorban
 
@@ -103,7 +103,7 @@ Az alábbi táblázat az USA nyugati régiójában található alapszintű Event
 | Naplókategória | Felhasználók száma | Események száma másodpercenként | Események száma ötperces időközönként | Adatmennyiség az egyes időablakokban | Üzenetek száma időközönként | Üzenetek száma havonta | Havi költség (becsült) |
 |--------------|-----------------|-------------------------|----------------------------------------|---------------------|---------------------------------|------------------------------|----------------------------|
 | Naplózás | 100.000 | 18 | 5400 | 10,8 MB | 43 | 371 520 | 10,83 dollár |
-| Naplózás | 1,000 | 0,1 | 52 | 104 KB | 1 | 8640 | 10,80 dollár |
+| Naplózás | 1,000 | 0.1 | 52 | 104 KB | 1 | 8640 | 10,80 dollár |
 | Bejelentkezések | 100.000 | 18000 | 5 400 000 | 10,8 GB | 42188 | 364 504 320 | $23,9 |  
 | Bejelentkezések | 1,000 | 178 | 53 400 | 106,8&nbsp;MB | 418 | 3 611 520 | 11,06 dollár |  
 
@@ -126,7 +126,7 @@ Az alábbi táblázat az USA nyugati régiójában található alapszintű Event
 
 
 
-A Azure Monitor naplók kezelésével kapcsolatos költségek áttekintését lásd: a [költségek kezelése az adatmennyiség szabályozásával és a megőrzéssel Azure monitor naplókban](../../azure-monitor/platform/manage-cost-storage.md).
+A Azure Monitor naplók kezelésével kapcsolatos költségek áttekintését lásd: a [költségek kezelése az adatmennyiség szabályozásával és a megőrzéssel Azure monitor naplókban](../../azure-monitor/logs/manage-cost-storage.md).
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -180,7 +180,7 @@ Ez a szakasz az Azure AD-naplók az Azure Monitorban való kezelésével kapcsol
 
 **K: Mely SIEM-eszközök támogatottak jelenleg?** 
 
-**A**: **a** jelenleg Azure monitor a [splunk](./howto-integrate-activity-logs-with-splunk.md), az IBM QRadar, a [Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory), a [ArcSight](./howto-integrate-activity-logs-with-arcsight.md), a LogRhythm és a Logz.IO támogatja. Az összekötők működéséről [az Azure monitorozási adatok egy eseményközpontba külső eszközökben való használat céljából való streamelését](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md) ismertető cikkben talál további információt.
+**A**: **a** jelenleg Azure monitor a [splunk](./howto-integrate-activity-logs-with-splunk.md), az IBM QRadar, a [Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory), a [ArcSight](./howto-integrate-activity-logs-with-arcsight.md), a LogRhythm és a Logz.IO támogatja. Az összekötők működéséről [az Azure monitorozási adatok egy eseményközpontba külső eszközökben való használat céljából való streamelését](../../azure-monitor/essentials/stream-monitoring-data-event-hubs.md) ismertető cikkben talál további információt.
 
 ---
 

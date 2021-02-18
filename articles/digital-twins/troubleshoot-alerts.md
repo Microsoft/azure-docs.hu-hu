@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 057a1b08095a71e2fca6119f5b63bfdc787eea88
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 461d7a82854ce62ee99eef1227c13c7a8f0371e2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616602"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594863"
 ---
 # <a name="troubleshooting-azure-digital-twins-alerts"></a>Azure Digital Twins hibaelhárítása: riasztások
 
 Az Azure Digital Twins a szolgáltatási példány [metrikáit](troubleshoot-metrics.md) gyűjti, amelyek információkat biztosítanak az erőforrások állapotáról. Ezeket a mérőszámokat felhasználhatja az Azure Digital Twins szolgáltatás általános állapotának felmérésére és a hozzájuk kapcsolódó erőforrásokra.
 
-A **riasztások** proaktívan értesítik Önt, ha fontos feltételek találhatók a metrikák adataiban. Lehetővé teszik a problémák azonosítását és megcímzését, mielőtt a felhasználók a rendszerértesítéseket. A riasztásokról a [*Microsoft Azure riasztások áttekintése című*](../azure-monitor/platform/alerts-overview.md)témakörben olvashat bővebben.
+A **riasztások** proaktívan értesítik Önt, ha fontos feltételek találhatók a metrikák adataiban. Lehetővé teszik a problémák azonosítását és megcímzését, mielőtt a felhasználók a rendszerértesítéseket. A riasztásokról a [*Microsoft Azure riasztások áttekintése című*](../azure-monitor/alerts/alerts-overview.md)témakörben olvashat bővebben.
 
 ## <a name="turn-on-alerts"></a>Riasztások bekapcsolása
 
@@ -38,7 +38,7 @@ Itt láthatja, hogyan engedélyezheti a riasztásokat az Azure Digital Twins-pé
 
 :::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="Képernyőfelvétel: a riasztási szabály létrehozása lap a hatókör, a feltétel, a műveleti csoport és a riasztási szabály részleteinek részeivel" lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
 
-A mezők kitöltését bemutató útmutató a [*Microsoft Azure riasztások áttekintése*](../azure-monitor/platform/alerts-overview.md)című témakörben található. Az alábbiakban néhány példát láthat arra, hogyan fog kinézni a lépések az Azure Digital Twins szolgáltatásban.
+A mezők kitöltését bemutató útmutató a [*Microsoft Azure riasztások áttekintése*](../azure-monitor/alerts/alerts-overview.md)című témakörben található. Az alábbiakban néhány példát láthat arra, hogyan fog kinézni a lépések az Azure Digital Twins szolgáltatásban.
 
 ### <a name="select-conditions"></a>Feltételek kiválasztása
 
@@ -56,8 +56,8 @@ A riasztások beállítása után a rendszer megjeleníti a példány *riasztás
  
 :::image type="content" source="media/troubleshoot-alerts/alerts-post.png" alt-text="Képernyőfelvétel: a riasztások oldal és a hozzáadandó gomb. Egy riasztás van konfigurálva" lightbox="media/troubleshoot-alerts/alerts-post.png":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* A Azure Monitor riasztásokkal kapcsolatos további információkért lásd: [*Microsoft Azure riasztások áttekintése*](../azure-monitor/platform/alerts-overview.md).
+* A Azure Monitor riasztásokkal kapcsolatos további információkért lásd: [*Microsoft Azure riasztások áttekintése*](../azure-monitor/alerts/alerts-overview.md).
 * További információ az Azure digitális Twins metrikáinak használatáról [*: a metrikák megtekintése Azure Monitorsal*](troubleshoot-metrics.md).
 * Ha szeretné megtudni, hogyan engedélyezheti a diagnosztikai naplózást a metrikák számára, tekintse meg a [*Hibaelhárítás: diagnosztika beállítása*](troubleshoot-diagnostics.md)című témakört.

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 369847810cdb7f7e93a13f5d410f226d3663080d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 384c6df86b4aadb117bb31b4604fa4c2ffcda09a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188581"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570591"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Gyorsútmutató: Bevezetés az Azure Sentinel használatába
 
@@ -52,9 +52,9 @@ Az áttekintő lap fő törzse áttekintést nyújt a munkaterület biztonsági 
 
 ## <a name="use-built-in-workbooks"></a>Beépített munkafüzetek használata<a name="dashboards"></a>
 
-A beépített munkafüzetek integrált adatokkal szolgálnak a csatlakoztatott adatforrásokból, így részletesen megismerheti az ezekben a szolgáltatásokban létrehozott eseményeket. A beépített munkafüzetek közé tartoznak az Azure AD, az Azure-tevékenység eseményei és a helyszíni adatok, amelyek a kiszolgálókról származó Windows-eseményekről, az első féltől származó riasztásokból, bármely harmadik féltől, például a tűzfal forgalmi naplóitól, az Office 365-től és a Windows-események alapján nem biztonságos protokollokból származnak. A munkafüzetek Azure Monitor munkafüzeteken alapulnak, így jobb testreszabhatóság és rugalmasság biztosítható a saját munkafüzetek tervezésekor. További információ: [munkafüzetek](../azure-monitor/platform/workbooks-overview.md).
+A beépített munkafüzetek integrált adatokkal szolgálnak a csatlakoztatott adatforrásokból, így részletesen megismerheti az ezekben a szolgáltatásokban létrehozott eseményeket. A beépített munkafüzetek közé tartoznak az Azure AD, az Azure-tevékenység eseményei és a helyszíni adatok, amelyek a kiszolgálókról származó Windows-eseményekről, az első féltől származó riasztásokból, bármely harmadik féltől, például a tűzfal forgalmi naplóitól, az Office 365-től és a Windows-események alapján nem biztonságos protokollokból származnak. A munkafüzetek Azure Monitor munkafüzeteken alapulnak, így jobb testreszabhatóság és rugalmasság biztosítható a saját munkafüzetek tervezésekor. További információ: [munkafüzetek](../azure-monitor/visualize/workbooks-overview.md).
 
-1. A **Beállítások** területen válassza a **munkafüzetek** elemet. A **telepítés** alatt látható az összes telepített munkafüzet. Az **összes** lehetőségnél megtekintheti a telepítéshez elérhető beépített munkafüzetek teljes katalógusát. 
+1. A **Beállítások** területen válassza a **munkafüzetek** elemet. A **telepítés** alatt látható az összes telepített munkafüzet. A **Mind** területen láthatja a telepíthető beépített munkafüzetek teljes katalógusát. 
 2. Egy adott munkafüzet keresésével megtekintheti az egyes ajánlatok teljes listáját és leírását. 
 3. Feltételezve, hogy az Azure AD-t használja az Azure Sentinel használatának megkezdéséhez, javasoljuk, hogy legalább a következő munkafüzeteket telepítse:
    - **Azure ad**: használja az alábbiak egyikét vagy mindkettőt:
@@ -66,14 +66,14 @@ A beépített munkafüzetek integrált adatokkal szolgálnak a csatlakoztatott a
       ![Palo Alto-irányítópult](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-A munkafüzeteket testreszabhatja úgy, hogy szerkeszti a fő lekérdezési ![ lekérdezés szerkesztése gombot ](./media/qs-get-visibility/edit-query-button.png) . A gombra kattintva megnyithatja a ![ log Analytics gombot ](./media/qs-get-visibility/go-to-la-button.png) [log Analytics a lekérdezés szerkesztéséhez](../azure-monitor/log-query/log-analytics-tutorial.md), és kiválaszthatja a három pontot (...), és kiválaszthatja a **csempe adatainak testreszabása** lehetőséget, amely lehetővé teszi a fő Időszűrő szerkesztését, vagy eltávolíthatja a munkafüzetből az adott csempéket.
+A munkafüzeteket testreszabhatja úgy, hogy szerkeszti a fő lekérdezési ![ lekérdezés szerkesztése gombot ](./media/qs-get-visibility/edit-query-button.png) . A gombra kattintva megnyithatja a ![ log Analytics gombot ](./media/qs-get-visibility/go-to-la-button.png) [log Analytics a lekérdezés szerkesztéséhez](../azure-monitor/logs/log-analytics-tutorial.md), és kiválaszthatja a három pontot (...), és kiválaszthatja a **csempe adatainak testreszabása** lehetőséget, amely lehetővé teszi a fő Időszűrő szerkesztését, vagy eltávolíthatja a munkafüzetből az adott csempéket.
 
-További információ a lekérdezések használatáról [: oktatóanyag: vizualizációs adatok log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md)
+További információ a lekérdezések használatáról [: oktatóanyag: vizualizációs adatok log Analytics](../azure-monitor/visualize/tutorial-logs-dashboards.md)
 
 ### <a name="add-a-new-tile"></a>Új csempe hozzáadása
 
 Ha új csempét szeretne felvenni, hozzáadhatja egy meglévő munkafüzethez, vagy létrehozhatja azt, vagy egy beépített Azure Sentinel-munkafüzetet. 
-1. A Log Analytics-ban hozzon létre egy csempét az [oktatóanyag: vizualizációs adatLog Analyticsokban](../azure-monitor/learn/tutorial-logs-dashboards.md)található útmutatások segítségével. 
+1. A Log Analytics-ban hozzon létre egy csempét az [oktatóanyag: vizualizációs adatLog Analyticsokban](../azure-monitor/visualize/tutorial-logs-dashboards.md)található útmutatások segítségével. 
 2. Miután létrehozta a csempét, a **PIN** elemnél válassza ki azt a munkafüzetet, amelyben a csempét meg szeretné jeleníteni.
 
 ## <a name="create-new-workbooks"></a>Új munkafüzetek létrehozása

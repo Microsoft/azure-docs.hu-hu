@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 11/19/2020
 ms.reviewer: sdash
-ms.openlocfilehash: 368c45433247c441631bdf79bfc9caa28a41f1b4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 849701caf73a4fb289773c67bccaab2e0f39dbd1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546750"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583734"
 ---
 # <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -32,7 +32,7 @@ A hibaelhárítási jelentés segítségével egyszerűen diagnosztizálhatja a 
 
 |Lépés | Hibaüzenet | Lehetséges ok |
 |-----|---------------|----------------|
-| Kapcsolatok újrafelhasználása | n/a | Általában egy korábban létesített kapcsolattól függ, hogy a webes teszt lépés függ-e. Így nincs szükség DNS-, kapcsolat-vagy SSL-lépésre. |
+| Kapcsolatok újrafelhasználása | n.a. | Általában egy korábban létesített kapcsolattól függ, hogy a webes teszt lépés függ-e. Így nincs szükség DNS-, kapcsolat-vagy SSL-lépésre. |
 | DNS feloldása | A távoli név nem oldható fel: "az URL-cím" | A DNS-feloldási folyamat sikertelen volt, valószínűleg helytelenül konfigurált DNS-rekordok vagy ideiglenes DNS-kiszolgáló meghibásodása miatt. |
 | Kapcsolatok létrehozása | A kapcsolódási kísérlet sikertelen volt, mert a csatlakoztatott fél egy adott idő elteltével nem válaszolt megfelelően. | Általánosságban azt jelenti, hogy a kiszolgáló nem válaszol a HTTP-kérelemre. Gyakori ok, hogy a tesztelési ügynököket a kiszolgálón lévő tűzfal blokkolja. Ha egy Azure-Virtual Networkon belül szeretne tesztelni, vegye fel a rendelkezésre állási szolgáltatás címkéjét a környezetbe.|
 | TLS-átvitel  | Az ügyfél és a kiszolgáló nem tud kommunikálni, mert nem rendelkeznek közös algoritmussal.| Csak a TLS 1,0, 1,1 és 1,2 támogatottak. Az SSL nem támogatott. Ez a lépés nem ellenőrzi az SSL-tanúsítványokat, és csak biztonságos kapcsolatot létesít. Ez a lépés csak akkor jelenik meg, ha hiba történik. |
@@ -62,7 +62,7 @@ A klasszikus riasztások konfigurációjában ellenőrizze, hogy az e-mailek kö
 
 ### <a name="i-did-not-receive-the-webhook-notification"></a>Nem kaptam meg a webhook-értesítést?
 
-Győződjön meg arról, hogy a webhook-értesítést fogadó alkalmazás elérhető, és sikeresen feldolgozza a webhook-kérelmeket. További információért tekintse meg [ezt](../platform/alerts-log-webhook.md) a témakört.
+Győződjön meg arról, hogy a webhook-értesítést fogadó alkalmazás elérhető, és sikeresen feldolgozza a webhook-kérelmeket. További információért tekintse meg [ezt](../alerts/alerts-log-webhook.md) a témakört.
 
 ### <a name="i-am-getting--403-forbidden-errors-what-does-this-mean"></a>403 Tiltott hibát kapok, mit jelent ez?
 
@@ -113,7 +113,7 @@ Ez jelenleg nem támogatott.
 
 ## <a name="who-receives-the-classic-alert-notifications"></a>Kik kapják meg a (klasszikus) riasztási értesítéseket?
 
-Ez a szakasz csak a klasszikus riasztásokra vonatkozik, és segít optimalizálni a riasztási értesítéseket, így biztosítva, hogy csak a kívánt címzettek kapják meg az értesítéseket. Ha többet szeretne megtudni a [klasszikus riasztások](../platform/alerts-classic.overview.md)közötti különbségről és az új riasztások élményéről, tekintse meg a [riasztások áttekintése című cikket](../platform/alerts-overview.md). A riasztások értesítésének vezérléséhez az új riasztások használatakor használjon [műveleti csoportokat](../platform/action-groups.md).
+Ez a szakasz csak a klasszikus riasztásokra vonatkozik, és segít optimalizálni a riasztási értesítéseket, így biztosítva, hogy csak a kívánt címzettek kapják meg az értesítéseket. Ha többet szeretne megtudni a [klasszikus riasztások](../alerts/alerts-classic.overview.md)közötti különbségről és az új riasztások élményéről, tekintse meg a [riasztások áttekintése című cikket](../alerts/alerts-overview.md). A riasztások értesítésének vezérléséhez az új riasztások használatakor használjon [műveleti csoportokat](../alerts/action-groups.md).
 
 * A klasszikus riasztási értesítések esetében javasoljuk, hogy adott címzetteket használjon.
 
@@ -124,7 +124,7 @@ Ez a szakasz csak a klasszikus riasztásokra vonatkozik, és segít optimalizál
 > [!NOTE]
 > Ha jelenleg a **tömeges/csoportos** jelölőnégyzetet használja, és letiltja, akkor nem fogja tudni visszaállítani a változást.
 
-Ha a felhasználókat a szerepköreik alapján kell értesítenie, használja az új riasztási élmény/közel valós idejű riasztásokat. A [műveleti csoportokkal](../platform/action-groups.md)e-mailes értesítéseket állíthat be a felhasználók számára a közreműködő/tulajdonos/olvasó szerepkörök bármelyikével (egyetlen lehetőségként nem kombinálva).
+Ha a felhasználókat a szerepköreik alapján kell értesítenie, használja az új riasztási élmény/közel valós idejű riasztásokat. A [műveleti csoportokkal](../alerts/action-groups.md)e-mailes értesítéseket állíthat be a felhasználók számára a közreműködő/tulajdonos/olvasó szerepkörök bármelyikével (egyetlen lehetőségként nem kombinálva).
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 1cc2cd1a7c5c16b1f9d1542e3f2d14dc030bb090
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: d1e51552acdd869a3f304a6d48e18e9d2aa6c782
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586550"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576781"
 ---
 # <a name="monitor-azure-file-sync"></a>Az Azure File Sync monitorozása
 
@@ -42,7 +42,7 @@ A Azure File Sync metrikái alapértelmezés szerint engedélyezve vannak, és 1
 
 Az Azure File Sync következő mérőszámai érhetők el Azure Monitorban:
 
-| Metrika neve | Leírás |
+| Metrika neve | Description |
 |-|-|
 | Szinkronizált bájtok száma | Az átvitt adatok mérete (feltöltés és letöltés).<br><br>Egység: bájtok<br>Összesítés típusa: Sum<br>Alkalmazható méretek: kiszolgálói végpont neve, szinkronizálás iránya, szinkronizálási csoport neve |
 | Felhőbeli rétegek felidézése | A visszahívott adatmennyiség.<br><br>**Megjegyzés**: Ez a mérőszám a jövőben el lesz távolítva. A Felhőbeli rétegű visszahívás méretének mérőszámával figyelheti a meghívott adatok méretét.<br><br>Egység: bájtok<br>Összesítés típusa: Sum<br>Alkalmazható dimenzió: kiszolgálónév |
@@ -56,7 +56,7 @@ Az Azure File Sync következő mérőszámai érhetők el Azure Monitorban:
 
 ### <a name="alerts"></a>Riasztások
 
-A riasztások proaktívan értesítik Önt, ha fontos feltételek találhatók a megfigyelési adataiban. Ha többet szeretne megtudni a Azure Monitor riasztások konfigurálásáról, tekintse meg [a Microsoft Azure riasztások áttekintése](../../azure-monitor/platform/alerts-overview.md)című témakört.
+A riasztások proaktívan értesítik Önt, ha fontos feltételek találhatók a megfigyelési adataiban. Ha többet szeretne megtudni a Azure Monitor riasztások konfigurálásáról, tekintse meg [a Microsoft Azure riasztások áttekintése](../../azure-monitor/alerts/alerts-overview.md)című témakört.
 
 **Riasztások létrehozása Azure File Synchoz**
 
@@ -72,7 +72,7 @@ A riasztások proaktívan értesítik Önt, ha fontos feltételek találhatók a
 
 A következő táblázat a riasztásra vonatkozó példákat és a riasztáshoz használandó megfelelő mérőszámot sorolja fel:
 
-| Forgatókönyv | A riasztáshoz használandó metrika |
+| Eset | A riasztáshoz használandó metrika |
 |-|-|
 | A kiszolgáló végpontjának állapota hibát jelez a portálon | Szinkronizálási munkamenet eredménye |
 | A fájlok nem szinkronizálhatók a kiszolgálóval vagy a Felhőbeli végponttal | Nem szinkronizált fájlok |
@@ -118,7 +118,7 @@ Egy **kiszolgálói végpont** állapotának megtekintéséhez a portálon navig
 
 - A következő metrikai diagramok láthatók a Storage Sync szolgáltatás portálon:
 
-  | Metrika neve | Leírás | Lap neve |
+  | Metrika neve | Description | Lap neve |
   |-|-|-|
   | Szinkronizált bájtok száma | Átvitt adatok mérete (feltöltés és letöltés) | Szinkronizálási csoport, kiszolgálói végpont |
   | Felhőbeli rétegek felidézése | Visszahívott adatmennyiség | Regisztrált kiszolgálók |
@@ -178,7 +178,7 @@ A kiszolgáló Azure File Sync teljesítményszámlálók megtekintéséhez nyis
 
 A következő teljesítményszámlálók érhetők el Azure File Sync a Teljesítményfigyelőben:
 
-| Teljesítmény Object\Counter neve | Leírás |
+| Teljesítmény Object\Counter neve | Description |
 |-|-|
 | AFS bájtok Transferred\Downloaded sebessége (bájt/s) | A másodpercenként letöltött bájtok száma. |
 | AFS bájtok Transferred\Uploaded sebessége (bájt/s) | A másodpercenként feltöltött bájtok száma. |

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/01/2021
 ms.author: apimpm
-ms.openlocfilehash: e34c25b2e3bfa845e258dc5d9699497d7ffcb004
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 2b66663c9ee8033bcb12bfac57964ea0eafecdac
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526670"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594171"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Helyi mérőszámok és naplók konfigurálása az Azure API Management saját üzemeltetésű átjáróhoz
 
@@ -149,7 +149,7 @@ sputnik-metrics-statsd       NodePort       10.0.41.179   <none>          8125:3
 
 Most, hogy mind a statd, mind a Prometheus üzembe lett helyezve, frissítjük a saját üzemeltetésű átjáró konfigurációját, hogy elindítsa a mérőszámokat a statisztikán keresztül. A szolgáltatás engedélyezhető vagy letiltható a `telemetry.metrics.local` saját üzemeltetésű átjáró ConfigMap található kulcs használatával, további beállításokkal. Alább látható az elérhető lehetőségek részletezése:
 
-| Mező  | Alapértelmezett | Leírás |
+| Mező  | Alapértelmezett | Description |
 | ------------- | ------------- | ------------- |
 | telemetria. Metrics. local  | `none` | Lehetővé teszi a naplózást a statisztikán keresztül. Az érték lehet `none` `statsd` . |
 | telemetria. mérőszámok. local. statd. Endpoint  | n.a. | A statisztikai végpontot határozza meg. |
@@ -204,11 +204,11 @@ A saját üzemeltetésű átjáró alapértelmezés szerint a és a naplókat is
 kubectl logs <pod-name>
 ```
 
-Ha a saját üzemeltetésű átjáró üzembe helyezése az Azure Kubernetes szolgáltatásban történik, engedélyezheti [Azure monitor a tárolók](../azure-monitor/insights/container-insights-overview.md) számára a számítási `stdout` `stderr` feladatokhoz és a munkaterhelések összegyűjtéséhez, valamint a naplófájlok megtekintéséhez log Analytics. 
+Ha a saját üzemeltetésű átjáró üzembe helyezése az Azure Kubernetes szolgáltatásban történik, engedélyezheti [Azure monitor a tárolók](../azure-monitor/containers/container-insights-overview.md) számára a számítási `stdout` `stderr` feladatokhoz és a munkaterhelések összegyűjtéséhez, valamint a naplófájlok megtekintéséhez log Analytics. 
 
 A saját üzemeltetésű átjáró számos protokollt is támogat, például: `localsyslog` , `rfc5424` és `journal` . Az alábbi táblázat összefoglalja az összes támogatott lehetőséget. 
 
-| Mező  | Alapértelmezett | Leírás |
+| Mező  | Alapértelmezett | Description |
 | ------------- | ------------- | ------------- |
 | telemetria. logs. STD  | `text` | Engedélyezi a naplózást a standard streamek számára. Az érték lehet `none` , `text` , `json` |
 | telemetria. logs. local  | `none` | Engedélyezi a helyi naplózást. Az érték lehet `none` a,, `auto` `localsyslog` , `rfc5424` , `journal`  |

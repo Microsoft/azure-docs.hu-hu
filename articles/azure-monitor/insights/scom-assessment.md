@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: 97d7d21374062462248e1b86f2bde2fef2d25331
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 685bf35bfb6d6e85d70bd1f1b446370d66a320f2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004908"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573393"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>A környezet optimalizálása a System Center Operations Manager Health Check (előzetes verzió) megoldással
 
@@ -82,7 +82,7 @@ A folytatás előtt a futtató fióknak a következő követelményeknek kell me
 4. Az **Általános tulajdonságok** lapon válassza a **Windows** lehetőséget a **futtató fiók típusa:** listában.
 5. Írjon be egy megjelenítendő nevet a **megjelenítendő név** szövegmezőbe, és szükség esetén adjon meg egy leírást a **Leírás** mezőben, majd kattintson a **tovább** gombra.
 6. A **terjesztés biztonsága** **lapon válassza a biztonságosabb lehetőséget**.
-7. Kattintson a **Létrehozás** gombra.  
+7. Kattintson a **Létrehozás** lehetőségre.  
 
 Most, hogy létrejött a futtató fiók, meg kell céloznia a felügyeleti kiszolgálókat a felügyeleti csoportban, és egy előre definiált futtató profilhoz kell rendelni, hogy a munkafolyamatok a hitelesítő adatok használatával fussanak.  
 
@@ -179,7 +179,7 @@ Minden javaslat egy súlyozási értéket kap, amely a javaslat relatív fontoss
 
 A súlyozások három fő tényezőn alapuló összesített értékek:
 
-- Az *probability* észlelt probléma valószínűleg problémákat okoz. A nagyobb valószínűség a javaslat nagyobb összesített pontszáma.
+- Az  észlelt probléma valószínűleg problémákat okoz. A nagyobb valószínűség a javaslat nagyobb összesített pontszáma.
 - A probléma *hatása* a szervezeten belül, ha problémát okoz. A nagyobb hatás a javaslat nagyobb összesített pontszáma.
 - A javaslat megvalósításához szükséges *erőfeszítés* . A nagyobb erőfeszítés a javaslat kisebb összesített pontszámának felel meg.
 
@@ -229,7 +229,7 @@ Ha olyan javaslatok vannak, amelyeket figyelmen kívül szeretne hagyni, létreh
     ```
 
     >[!NOTE]
-    > Ha a munkaterülete frissítve lett az [új log Analytics lekérdezési nyelvre](../log-query/log-query-overview.md), akkor a fenti lekérdezés a következőre módosul.
+    > Ha a munkaterülete frissítve lett az [új log Analytics lekérdezési nyelvre](../logs/log-query-overview.md), akkor a fenti lekérdezés a következőre módosul.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -254,7 +254,7 @@ Ha olyan javaslatok vannak, amelyeket figyelmen kívül szeretne hagyni, létreh
     ```
 
     >[!NOTE]
-    > Ha a munkaterülete frissítve lett az [új log Analytics lekérdezési nyelvre](../log-query/log-query-overview.md), akkor a fenti lekérdezés a következőre módosul.
+    > Ha a munkaterülete frissítve lett az [új log Analytics lekérdezési nyelvre](../logs/log-query-overview.md), akkor a fenti lekérdezés a következőre módosul.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Ignore" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -293,7 +293,7 @@ Ha olyan javaslatok vannak, amelyeket figyelmen kívül szeretne hagyni, létreh
 *Van lehetőség arra, hogy figyelmen kívül hagyja a javaslatot?* Igen, tekintse meg a [javaslatok mellőzése](#ignore-recommendations)című témakört.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- A [naplókban](../log-query/log-query-overview.md) megtudhatja, hogyan elemezheti a részletes System Center Operations Manager Health Checki információkat és javaslatokat.
+- A [naplókban](../logs/log-query-overview.md) megtudhatja, hogyan elemezheti a részletes System Center Operations Manager Health Checki információkat és javaslatokat.
 

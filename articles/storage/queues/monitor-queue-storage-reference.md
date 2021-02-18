@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: azure-monitor
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: ba8a82ed1113bfb3e71560ca9a6c713602df21f2
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 95f20737b044140fe12ea939e71cd2397cb4826d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590647"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576688"
 ---
 # <a name="azure-queue-storage-monitoring-data-reference"></a>Az Azure Queue Storage monitorozási dokumentációja
 
@@ -36,9 +36,9 @@ Az Azure Storage a következő kapacitási mérőszámokat biztosítja Azure Mon
 
 #### <a name="queue-storage-metrics"></a>Queue Storage metrikák
 
-Ez a táblázat [Queue Storage mérőszámokat](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices)jelenít meg.
+Ez a táblázat [Queue Storage mérőszámokat](../../azure-monitor/essentials/metrics-supported.md#microsoftstoragestorageaccountsqueueservices)jelenít meg.
 
-| Metrika | Leírás |
+| Metric | Leírás |
 | ------------------- | ----------------- |
 | **QueueCapacity** | A Storage-fiók által használt Queue Storage mennyisége. <br><br> Egység `Bytes` <br> Összesítés típusa: `Average` <br> Érték példa: `1024` |
 | **QueueCount** | A Storage-fiókban lévő várólisták száma. <br><br> Egység `Count` <br> Összesítés típusa: `Average` <br> Érték példa: `1024` |
@@ -80,4 +80,4 @@ A következő táblázat felsorolja az Azure Storage-beli erőforrás-naplók tu
 ## <a name="see-also"></a>Lásd még
 
 - Lásd: az Azure [Queue Storage figyelése](monitor-queue-storage.md) az azure-Queue Storage figyelésének leírásához.
-- Az Azure-erőforrások figyelésével kapcsolatos részletekért lásd: az [Azure-erőforrások figyelése Azure monitorokkal](../../azure-monitor/insights/monitor-azure-resource.md) .
+- Az Azure-erőforrások figyelésével kapcsolatos részletekért lásd: az [Azure-erőforrások figyelése Azure monitorokkal](../../azure-monitor/essentials/monitor-azure-resource.md) .

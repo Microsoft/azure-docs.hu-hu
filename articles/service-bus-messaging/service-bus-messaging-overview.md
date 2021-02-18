@@ -2,13 +2,13 @@
 title: Az Azure Service Bus-üzenetkezelés áttekintése | Microsoft Docs
 description: Ez a cikk átfogó áttekintést nyújt a Azure Service Busről, amely egy teljes körűen felügyelt Enterprise Integration Message Broker.
 ms.topic: overview
-ms.date: 01/28/2021
-ms.openlocfilehash: 232f25ca94e9426a20755940caf284426502cfb3
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.date: 02/16/2021
+ms.openlocfilehash: 897729b9748d69ad3c6de507e800dbb3a1a3619c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219162"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570472"
 ---
 # <a name="what-is-azure-service-bus"></a>Mi az Azure Service Bus?
 A Microsoft Azure Service Bus egy teljes körűen felügyelt vállalati üzenetsor az üzenetsor-kezelés és a közzététel – előfizetés témakörökben. Service Bus az alkalmazások és szolgáltatások egymástól való elválasztására szolgálnak, a következő előnyöket biztosítva:
@@ -118,11 +118,10 @@ Az ügyféloldali kötegek lehetővé teszik, hogy egy üzenetsor vagy egy téma
 Egy tranzakció két vagy több műveletet egyesít egy *végrehajtási hatókörbe*. Service Bus lehetővé teszi, hogy egyetlen tranzakció hatókörébe eső több üzenetkezelési entitáson belül csoportosítsa a műveleteket. Az üzenet entitás lehet üzenetsor, témakör vagy előfizetés. További információkért lásd: [Service Bus tranzakciók feldolgozásának áttekintése](service-bus-transactions.md).
 
 ### <a name="autodelete-on-idle"></a>Az autodelete inaktív állapotban
-
-Az automatikus törlés üresjáratban beállítással megadhat egy üresjárati időközt, amely után a rendszer automatikusan törli a várólista vagy a témakör előfizetését. A minimális érték 5 perc. További tudnivalókért tekintse meg a [QueueDescription. AutoDeleteOnIdle tulajdonságot](/dotnet/api/microsoft.servicebus.messaging.queuedescription.autodeleteonidle).
+Az automatikus törlés üresjáratban beállítással megadhat egy üresjárati időközt, amely után a rendszer automatikusan törli a várólista vagy a témakör előfizetését. A minimális érték 5 perc. 
 
 ### <a name="duplicate-detection"></a>Duplikálás észlelése
-A duplikált észlelési funkció lehetővé teszi, hogy a küldő újra ugyanazt az üzenetet küldje újra, és a bróker el lehessen dobni a lehetséges duplikált elemeket. Az ismétlődő észlelés az üzenet tulajdonságának nyomon követésén alapul `message-id` , ami azt jelenti, hogy az alkalmazásnak az üzenet újraküldésekor ugyanazt az értéket kell használnia, amely közvetlenül az alkalmazás-specifikus környezetből származtatható. További információ: [duplikált észlelés](duplicate-detection.md).
+A duplikált észlelési funkció lehetővé teszi, hogy a küldő újra ugyanazt az üzenetet küldje újra, és a bróker el lehessen dobni a lehetséges duplikált elemeket. További információ: [duplikált észlelés](duplicate-detection.md).
 
 ### <a name="geo-disaster-recovery"></a>Geo-vészhelyreállítás
 
