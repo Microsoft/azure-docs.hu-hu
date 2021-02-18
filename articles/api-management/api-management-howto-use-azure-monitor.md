@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 5e5c59d611cb7f4b5333b9919488e6fc083611cd
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 1cb902c4b59193c46dbeca47bb355f0695a0f2c7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779243"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572791"
 ---
 # <a name="tutorial-monitor-published-apis"></a>Oktatóanyag: közzétett API-k figyelése
 
@@ -39,7 +39,7 @@ Az API-k használatának és teljesítményének figyeléséhez API Management b
 
 ## <a name="view-metrics-of-your-apis"></a>Az API-k metrikáinak megtekintése
 
-API Management percenként bocsát ki [metrikákat](../azure-monitor/platform/data-platform-metrics.md) , így közel valós idejű láthatóságot biztosít az API-k állapotáról és állapotáról. A két leggyakrabban használt mérőszám a következő: Az összes elérhető metrika listáját itt tekintheti meg: [támogatott mérőszámok](../azure-monitor/platform/metrics-supported.md#microsoftapimanagementservice).
+API Management percenként bocsát ki [metrikákat](../azure-monitor/essentials/data-platform-metrics.md) , így közel valós idejű láthatóságot biztosít az API-k állapotáról és állapotáról. A két leggyakrabban használt mérőszám a következő: Az összes elérhető metrika listáját itt tekintheti meg: [támogatott mérőszámok](../azure-monitor/essentials/metrics-supported.md#microsoftapimanagementservice).
 
 * **Kapacitás** – segít döntéseket hozni a APIM-szolgáltatások frissítésével/lefokozásával kapcsolatban. A mérőszám percentként keletkezik, és az átjáró a jelentés pillanatában érvényes kapacitását tükrözi. A mérőszám értéke a 0–100 tartományban mozog, és az érték számítása az átjáró erőforrásai, például a processzor és a memória kihasználtsága alapján történik.
 * **Kérelmek** – segít az API-forgalom elemzésében a API Management szolgáltatásain keresztül. A metrikát percenként bocsátja ki, és az átjáróra vonatkozó kérelmek számát jelenti, beleértve a válasz kódokat, a helyet, az állomásnevet és a hibákat. 
@@ -62,7 +62,7 @@ A mérőszámok elérése:
 
 ## <a name="set-up-an-alert-rule"></a>Riasztási szabály beállítása 
 
-A [riasztások](../azure-monitor/platform/alerts-metric-overview.md) a mérőszámok és a tevékenységek naplói alapján is fogadhatók. Azure Monitor lehetővé teszi a [riasztások konfigurálását](../azure-monitor/platform/alerts-metric.md) az alábbi műveletek elvégzéséhez:
+A [riasztások](../azure-monitor/alerts/alerts-metric-overview.md) a mérőszámok és a tevékenységek naplói alapján is fogadhatók. Azure Monitor lehetővé teszi a [riasztások konfigurálását](../azure-monitor/alerts/alerts-metric.md) az alábbi műveletek elvégzéséhez:
 
 * E-mail-értesítés küldése
 * Webhook meghívása
@@ -140,7 +140,7 @@ Az erőforrás-naplók konfigurálása:
 
    Archiválhatja az erőforrás-naplókat a metrikákkal együtt egy Storage-fiókba, továbbíthatja őket egy Event hub-ba, vagy elküldheti azokat egy Log Analytics munkaterületre. 
 
-További információ: [diagnosztikai beállítások létrehozása a platform naplófájljainak és metrikáinak különböző célhelyekre küldéséhez](../azure-monitor/platform/diagnostic-settings.md).
+További információ: [diagnosztikai beállítások létrehozása a platform naplófájljainak és metrikáinak különböző célhelyekre küldéséhez](../azure-monitor/essentials/diagnostic-settings.md).
 
 ## <a name="view-diagnostic-data-in-azure-monitor"></a>Diagnosztikai adatAzure Monitorek megtekintése
 
@@ -151,7 +151,7 @@ Ha engedélyezi a GatewayLogs vagy metrikák gyűjtését egy Log Analytics munk
 
     :::image type="content" source="media/api-management-howto-use-azure-monitor/logs-menu-item.png" alt-text="Képernyőfelvétel a figyelési menüben található naplók elemről":::
 
-Lekérdezések futtatása az adatmegjelenítéshez. Több [minta lekérdezés](../azure-monitor/log-query/example-queries.md) van megadva, vagy saját maga futtathatja. A következő lekérdezés például lekéri a legutóbbi 24 órás adatmennyiséget a GatewayLogs táblából:
+Lekérdezések futtatása az adatmegjelenítéshez. Több [minta lekérdezés](../azure-monitor/logs/example-queries.md) van megadva, vagy saját maga futtathatja. A következő lekérdezés például lekéri a legutóbbi 24 órás adatmennyiséget a GatewayLogs táblából:
 
 ```kusto
 ApiManagementGatewayLogs
@@ -160,9 +160,9 @@ ApiManagementGatewayLogs
 
 További információ a API Management erőforrás-naplóinak használatáról:
 
-* Ismerkedjen meg [Azure Monitor log Analyticsval](../azure-monitor/log-query/log-analytics-tutorial.md), vagy próbálja ki a [log Analytics bemutató környezetét](https://portal.loganalytics.io/demo).
+* Ismerkedjen meg [Azure Monitor log Analyticsval](../azure-monitor/logs/log-analytics-tutorial.md), vagy próbálja ki a [log Analytics bemutató környezetét](https://portal.loganalytics.io/demo).
 
-* [A Azure monitor lévő naplók áttekintése](../azure-monitor/log-query/log-query-overview.md).
+* [A Azure monitor lévő naplók áttekintése](../azure-monitor/logs/log-query-overview.md).
 
 A következő JSON a GatewayLogs egy mintául szolgáló bejegyzést jelez egy sikeres API-kéréshez. Részletekért tekintse meg a [séma-referenciát](gateway-log-schema-reference.md). 
 

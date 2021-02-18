@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 078118ec793530720a49a19046854e5ea4b7f5c4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3f0d191157fbabeab2b6f08a9d0a9b3bf1a35250
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388940"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591895"
 ---
 # <a name="evaluate-and-improve-custom-speech-accuracy"></a>A Custom Speech pontosságának értékelése és javítása
 
@@ -109,12 +109,13 @@ Az emberi címkével ellátott átiratokkal rendelkező hang a lehető legnagyob
 
 Tekintse meg az alábbi adatokat:
 
-* A Custom Speech csak a behelyettesítési hibák, a beillesztési vagy törlési hibák csökkentése érdekében képes a Word-környezet rögzítésére.
+* A hanggal való képzés a legtöbb előnyt biztosítja, ha a hang az emberek számára is nehezen érthető. A legtöbb esetben a betanítást csak a kapcsolódó szöveg használatával kezdheti meg.
+* Ha a leggyakrabban használt nyelveket használja, például az USA-angol nyelvet, jó esély van arra, hogy a hangadatokkal nem kell betanítani. Ilyen nyelveken az alapmodellek a legtöbb esetben már nagyon jó felismerési eredményeket kínálnak. valószínűleg elég a kapcsolódó szöveggel betanítani.
+* A Custom Speech csak a szavak kontextusát tudja rögzíteni a helyettesítési hibák, a beszúrási és a törlési hibák csökkentése érdekében.
 * Kerülje az átírási hibákat tartalmazó mintákat, de a hangminőség sokféleségét is.
 * Kerülje azokat a mondatokat, amelyek nem kapcsolódnak a problémás tartományhoz. A nem kapcsolódó mondatok károsíthatják a modellt.
 * Ha az átiratok minősége változó, a kivételesen jó mondatok (például a kiváló átiratok, amelyek tartalmazzák a kulcsfontosságú kifejezéseket) megismétlődnek a súlyozásuk növeléséhez.
 * A beszédfelismerési szolgáltatás automatikusan az átiratokkal javítja a tartományra vonatkozó szavak és kifejezések felismerését, mintha a hozzá kapcsolódó szövegként lett hozzáadva.
-* A hanggal való képzés a legtöbb előnyt biztosítja, ha a hang az emberek számára is nehezen érthető. A legtöbb esetben a betanítást csak a kapcsolódó szöveg használatával kezdheti meg.
 * A betanítási művelet elvégzése több napot is igénybe vehet. A képzés sebességének növelése érdekében mindenképpen hozzon létre egy olyan régióban a Speech Service-előfizetést, [amely a dedikált hardverrel](custom-speech-overview.md#set-up-your-azure-account) rendelkezik.
 
 > [!NOTE]

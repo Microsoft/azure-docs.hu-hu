@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0e4c749d875ab22f8cdf26adf6050e1fa0476b28
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 195c264eca0c40712816495a09e1387fcaa2c910
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202249"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572940"
 ---
 # <a name="azure-security-baseline-for-security-center"></a>Security Center Azure biztonsági alapterve
 
@@ -30,7 +30,7 @@ Ez a biztonsági alapkonfiguráció az [Azure biztonsági teljesítménytesztre]
 
 - [Hálózati adatforgalom hálózati biztonsági csoporttal](../virtual-network/tutorial-filter-network-traffic.md)
 
-- [A Log Analytics ügynök használatára vonatkozó tűzfalszabályok](../azure-monitor/platform/log-analytics-agent.md#firewall-requirements)
+- [A Log Analytics ügynök használatára vonatkozó tűzfalszabályok](../azure-monitor/agents/log-analytics-agent.md#firewall-requirements)
 
 - [Az Azure privát hivatkozásának megismerése](../private-link/private-link-overview.md) 
 
@@ -46,7 +46,7 @@ Az Azure tervrajzai segítségével leegyszerűsítheti a nagy léptékű Azure-
 
 - [Adatgyűjtés az Azure Security Centerben](security-center-enable-data-collection.md)
 
-- [A Log Analytics ügynök használatára vonatkozó tűzfalszabályok](../azure-monitor/platform/log-analytics-agent.md#firewall-requirements)
+- [A Log Analytics ügynök használatára vonatkozó tűzfalszabályok](../azure-monitor/agents/log-analytics-agent.md#firewall-requirements)
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md) 
 
@@ -70,7 +70,7 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 - [Adatgyűjtés az Azure Security Centerben](security-center-enable-data-collection.md)
 
-- [A Log Analytics ügynök használatára vonatkozó tűzfalszabályok](../azure-monitor/platform/log-analytics-agent.md#firewall-requirements)
+- [A Log Analytics ügynök használatára vonatkozó tűzfalszabályok](../azure-monitor/agents/log-analytics-agent.md#firewall-requirements)
 
 - [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md) 
 
@@ -86,9 +86,9 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 **Útmutató**: az Azure-tevékenység naplójának használata az erőforrás-konfigurációk figyelésére és a Azure Security Center kapcsolódó hálózati erőforrások változásainak észlelésére. Riasztásokat hozhat létre a Azure Monitorban, hogy értesítse a kritikus erőforrások módosításainak elvégzéséről.
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log) 
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log) 
 
-- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/platform/alerts-activity-log.md)
+- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -112,9 +112,9 @@ Azt is megteheti, hogy a Security Center által készített adatküldés az Azur
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md) 
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Az Azure-beli virtuális gépek belső gazdagép-naplóinak összegyűjtése Azure Monitor](../azure-monitor/learn/quick-collect-azurevm.md)
+- [Az Azure-beli virtuális gépek belső gazdagép-naplóinak összegyűjtése Azure Monitor](../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Ismerkedés a Azure Monitor és a harmadik féltől származó SIEM-integrációval](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -126,11 +126,11 @@ Azt is megteheti, hogy a Security Center által készített adatküldés az Azur
 
 **Útmutató**: a Azure monitor tevékenységi naplók automatikusan elérhetők, ezek a naplók az erőforráshoz tartozó összes írási műveletet tartalmazzák, például a Azure Security centert, beleértve a művelet elindítását, a műveletet elindító műveleteket, illetve amikor történtek. Az Azure-tevékenységek naplóinak elküldése Log Analytics munkaterületre a naplózási konszolidáció és a megnövekedett megőrzés érdekében.
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](../azure-monitor/platform/platform-logs-overview.md)
+- [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](../azure-monitor/essentials/platform-logs-overview.md)
 
-- [Tevékenységek naplóinak elküldése Log Analytics munkaterületre](../azure-monitor/platform/activity-log.md#send-to-log-analytics-workspace)
+- [Tevékenységek naplóinak elküldése Log Analytics munkaterületre](../azure-monitor/essentials/activity-log.md#send-to-log-analytics-workspace)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -140,7 +140,7 @@ Azt is megteheti, hogy a Security Center által készített adatküldés az Azur
 
 **Útmutató**: Azure monitor a szervezet megfelelőségi szabályainak megfelelően állítsa be a log Analytics munkaterület megőrzési időszakát. Azure Storage-fiókokat használhat hosszú távú és archiválási tároláshoz. 
 
-- [Az adatmegőrzési időszak módosítása Log Analytics](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) 
+- [Az adatmegőrzési időszak módosítása Log Analytics](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period) 
 
 - [Adatmegőrzési szabályzat konfigurálása az Azure Storage-fiók naplóihoz](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -156,9 +156,9 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md) 
 
-- [Log Analytics lekérdezések első lépései](../azure-monitor/log-query/log-analytics-tutorial.md) 
+- [Log Analytics lekérdezések első lépései](../azure-monitor/logs/log-analytics-tutorial.md) 
 
-- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/log-query/get-started-queries.md)
+- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -174,11 +174,11 @@ Alternatív megoldásként engedélyezheti és elvégezheti a Azure Security Cen
 
 - [Riasztások kezelése Azure Security Centerban](security-center-managing-and-responding-alerts.md) 
 
-- [Riasztás a log Analytics-naplófájlok adatkezeléséről](../azure-monitor/learn/tutorial-response.md)
+- [Riasztás a log Analytics-naplófájlok adatkezeléséről](../azure-monitor/alerts/tutorial-response.md)
 
 - [Fenyegetésre adott automatikus válaszok beállítása az Azure Sentinelben](../sentinel/tutorial-respond-threats-playbook.md)
 
-- [Riasztások naplózása Azure Monitor](../azure-monitor/platform/alerts-unified-log.md)
+- [Riasztások naplózása Azure Monitor](../azure-monitor/alerts/alerts-unified-log.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -368,7 +368,7 @@ Alapértelmezés szerint a rendszer a Security Center háttér-szolgáltatásban
 
 Kövesse Azure Security Center a inaktív adatok titkosítására és az átvitel közbeni titkosításra vonatkozó ajánlásokat, ahol lehetséges. 
 
-- [Adatok biztonságos küldése Log Analytics](../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12)
+- [Adatok biztonságos küldése Log Analytics](../azure-monitor/logs/data-security.md#sending-data-securely-using-tls-12)
 
 - [A titkosítás ismertetése az Azure-ban](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
@@ -394,7 +394,7 @@ Kövesse Azure Security Center a inaktív adatok titkosítására és az átvite
 
 **Útmutató**: a Azure Security Center egy konfigurált log Analytics munkaterületet használ az általa generált adatkezelési, riasztások és javaslatok tárolásához. Konfiguráljon egy ügyfél által felügyelt kulcsot (CMK) a Security Center adatgyűjtéshez konfigurált munkaterülethez. A CMK lehetővé teszi, hogy a munkaterületre mentett vagy elküldhető összes adatfájlt egy Ön által létrehozott és birtokolt Azure Key Vault kulccsal titkosítsa. 
 
-- [Azure Monitor – ügyfél által kezelt kulcs](../azure-monitor/platform/customer-managed-keys.md)
+- [Azure Monitor – ügyfél által kezelt kulcs](../azure-monitor/logs/customer-managed-keys.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -404,7 +404,7 @@ Kövesse Azure Security Center a inaktív adatok titkosítására és az átvite
 
 **Útmutató**: a Azure monitor használatával riasztásokat hozhat létre, amikor a módosítások a Azure Security Centerhoz kapcsolódó kritikus Azure-erőforrásokra változnak. Ezek a változások olyan műveleteket is tartalmazhatnak, amelyek a Security Centerhez kapcsolódó konfigurációkat módosítják, például a riasztások vagy javaslatok letiltását, illetve az adattárak frissítését vagy törlését.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/platform/alerts-activity-log.md)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -596,7 +596,7 @@ Az Azure Resource Graph használatával lekérdezheti és felderítheti az előf
 
 **Útmutató**: a Azure Security Center egy konfigurált log Analytics munkaterületet használ az általa generált adatkezelési, riasztások és javaslatok tárolásához. Konfiguráljon egy ügyfél által felügyelt kulcsot (CMK) a Security Center adatgyűjtéshez konfigurált munkaterülethez. A CMK lehetővé teszi, hogy a munkaterületre mentett vagy elküldhető összes adatfájlt egy Ön által létrehozott és birtokolt Azure Key Vault kulccsal titkosítsa. 
 
-- [Azure Monitor – ügyfél által kezelt kulcs](../azure-monitor/platform/customer-managed-keys.md)
+- [Azure Monitor – ügyfél által kezelt kulcs](../azure-monitor/logs/customer-managed-keys.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -656,7 +656,7 @@ Az Azure Resource Graph használatával lekérdezheti és felderítheti az előf
 
 **Útmutató**: a helyreállítás rendszeres végrehajtásának lehetősége Azure Resource Manager támogatott sablonfájlok használatával. Tesztelje az ügyfél által felügyelt kulcsok biztonsági mentésének visszaállítását.
 
-- [Log Analytics munkaterület kezelése Azure Resource Manager sablonok használatával](../azure-monitor/samples/resource-manager-workspace.md)
+- [Log Analytics munkaterület kezelése Azure Resource Manager sablonok használatával](../azure-monitor/logs/resource-manager-workspace.md)
 
 - [Key Vault-kulcsok visszaállítása az Azure-ban](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 

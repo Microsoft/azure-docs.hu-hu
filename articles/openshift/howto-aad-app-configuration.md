@@ -3,15 +3,15 @@ title: Azure Active Directory integráció az Azure Red Hat OpenShift
 description: Ismerje meg, hogyan hozhat létre Azure AD-beli biztonsági csoportot és felhasználót a Microsoft Azure Red Hat OpenShift-fürtön futó alkalmazások teszteléséhez.
 author: jimzim
 ms.author: jzim
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: ee8613d0300a941f80577c98be106173d5d3ced1
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: f0bf28d61d4c9ad95a485fb4b60e370c16ace16c
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220703"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633325"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Active Directory integráció az Azure Red Hat OpenShift
 
@@ -29,7 +29,7 @@ Microsoft Azure Red Hat OpenShift engedélyre van szüksége a fürt nevében el
 
 A [Azure Portalban](https://portal.azure.com)győződjön meg arról, hogy a bérlő a portál jobb felső részén a Felhasználónév alatt jelenik meg:
 
-![Képernyőkép a portálról a jobb felső sarokban található Bérlővel, ](./media/howto-create-tenant/tenant-callout.png) Ha nem megfelelő bérlő jelenik meg, kattintson a jobb felső sarokban található felhasználónévre, majd a **könyvtár váltása**lehetőségre, és válassza ki a megfelelő bérlőt a **minden könyvtár** listából.
+![Képernyőkép a portálról a jobb felső sarokban található Bérlővel, ](./media/howto-create-tenant/tenant-callout.png) Ha nem megfelelő bérlő jelenik meg, kattintson a jobb felső sarokban található felhasználónévre, majd a **könyvtár váltása** lehetőségre, és válassza ki a megfelelő bérlőt a **minden könyvtár** listából.
 
 Hozzon létre egy új Azure Active Directory "tulajdonos" felhasználót az Azure Red Hat OpenShift-fürtbe való bejelentkezéshez.
 
@@ -46,9 +46,9 @@ Hozzon létre egy új Azure Active Directory "tulajdonos" felhasználót az Azur
 A fürt rendszergazdai hozzáférésének megadásához az Azure AD biztonsági csoportba tartozó tagságok az "OSA-Customer-adminok" OpenShift-csoportba vannak szinkronizálva. Ha nincs megadva, a rendszer nem engedélyezi a fürt rendszergazdai hozzáférését.
 
 1. Nyissa meg a [Azure Active Directory csoportok](https://portal.azure.com/#blade/Microsoft_AAD_IAM/GroupsManagementMenuBlade/AllGroups) panelt.
-2. Kattintson az **+ új csoport**lehetőségre.
+2. Kattintson az **+ új csoport** lehetőségre.
 3. Adja meg a csoport nevét és leírását.
-4. Adja meg a **csoport típusát** a **Biztonság**beállításnál.
+4. Adja meg a **csoport típusát** a **Biztonság** beállításnál.
 5. Adja meg a **tagsági típust** a **hozzárendeléshez**.
 
     Adja hozzá az előző lépésben létrehozott Azure AD-felhasználót a biztonsági csoporthoz.
@@ -71,7 +71,7 @@ A fürt létrehozásának részeként automatikusan létrehozhat egy Azure Activ
 
 Ha a szervezet még nem rendelkezik olyan Azure Active Directory (Azure AD-beli) alkalmazás-regisztrációval, amelyet egyszerű szolgáltatásnévként szeretne használni, akkor az alábbi utasításokat követve hozhat létre egyet.
 
-1. Nyissa meg a [Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) panelt, és kattintson az **+ új regisztráció**elemre.
+1. Nyissa meg a [Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) panelt, és kattintson az **+ új regisztráció** elemre.
 2. Az **alkalmazás regisztrálása** ablaktáblán adja meg az alkalmazás regisztrációjának nevét.
 3. Győződjön meg arról, hogy az **ebben a szervezeti könyvtárban csak** a **támogatott fióktípus** vannak kiválasztva. Ez a legbiztonságosabb megoldás.
 4. Később egy átirányítási URI-t adunk hozzá, ha ismerjük a fürt URI-JÁT. Az Azure AD-alkalmazás regisztrációjának létrehozásához kattintson a **regisztráció** gombra.
@@ -83,8 +83,8 @@ Ha a szervezet még nem rendelkezik olyan Azure Active Directory (Azure AD-beli)
 
 Ügyfél-titkos kulcs létrehozása az alkalmazás Azure Active Directory való hitelesítéséhez.
 
-1. Az alkalmazás-regisztrációk lap **kezelés** szakaszában kattintson a **tanúsítványok & titkok**elemre.
-2. A **tanúsítványok & titkok** ablaktáblán kattintson az **+ új ügyfél titka**elemre.  Megjelenik az **ügyfél titkos kulcsának hozzáadása** panel.
+1. Az alkalmazás-regisztrációk lap **kezelés** szakaszában kattintson a **tanúsítványok & titkok** elemre.
+2. A **tanúsítványok & titkok** ablaktáblán kattintson az **+ új ügyfél titka** elemre.  Megjelenik az **ügyfél titkos kulcsának hozzáadása** panel.
 3. Adja meg a **leírást**.
 4. A beállítás **lejárati** ideje a kívánt időtartam, például **2 év**.
 5. Kattintson a **Hozzáadás** gombra, és a kulcs értéke megjelenik az oldal **ügyfél-titkok** szakaszában.
@@ -108,8 +108,8 @@ További információ az új Azure AD-alkalmazások létrehozásáról: [Alkalma
 4. Görgessen felfelé, és válassza ki az **alkalmazás engedélyeit**.
 5. Bontsa ki az alábbi lista **könyvtárát** , és engedélyezze a **Directory. ReadAll**.
 6. A módosítások elfogadásához kattintson az **engedélyek hozzáadása** lehetőségre.
-7. Az API-engedélyek panelnek ekkor meg kell jelennie a *User. Read* és a *Directory. ReadAll*. Vegye figyelembe, hogy a **rendszergazda beleegyezett a szükséges** oszlopba a *Directory. ReadAll*mellett.
-8. Ha Ön az *Azure-előfizetés rendszergazdája*, kattintson az alábbi ** *előfizetés neveként* a rendszergazdai jóváhagyás megadása** lehetőségre. Ha nem Ön az *Azure-előfizetés rendszergazdája*, kérje meg a rendszergazdától a hozzájárulásukat.
+7. Az API-engedélyek panelnek ekkor meg kell jelennie a *User. Read* és a *Directory. ReadAll*. Vegye figyelembe, hogy a **rendszergazda beleegyezett a szükséges** oszlopba a *Directory. ReadAll* mellett.
+8. Ha Ön az *Azure-előfizetés rendszergazdája*, kattintson az alábbi ***előfizetés neveként* a rendszergazdai jóváhagyás megadása** lehetőségre. Ha nem Ön az *Azure-előfizetés rendszergazdája*, kérje meg a rendszergazdától a hozzájárulásukat.
 
 ![Képernyőkép az API-engedélyek panelről. User. Read és Directory. ReadAll engedélyek hozzáadva, rendszergazdai engedély szükséges a címtárhoz. ReadAll](./media/howto-aad-app-configuration/permissions-required.png)
 
@@ -118,7 +118,7 @@ További információ az új Azure AD-alkalmazások létrehozásáról: [Alkalma
 
 A rendszergazdák és egyéb szerepkörök kezelésével kapcsolatos részletekért lásd: [Azure-előfizetési rendszergazdák hozzáadása vagy módosítása](../cost-management-billing/manage/add-change-subscription-administrator.md).
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Források
 
 * [Alkalmazások és egyszerű szolgáltatások objektumai a Azure Active Directoryban](../active-directory/develop/app-objects-and-service-principals.md)
 * [Rövid útmutató: Alkalmazás regisztrálása az Azure Active Directory 1.0-s verziójú végpontján](../active-directory/develop/quickstart-register-app.md)

@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 06/12/2020
-ms.openlocfilehash: 0f3dce3ca79b12b05325a1d8284dd3304653d5fa
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 61033e3eb8264c1e462faac3e4553a855a1d06c7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488867"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592074"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Intelligent Insights AI használata az adatbázis teljesítményének figyelésére és hibakeresésére (előzetes verzió)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -73,10 +73,10 @@ Az elérhető Intelligent Insights lehetőségek a következők:
 
 | Intelligent Insights lehetőség | Azure SQL Database támogatás | Az Azure SQL felügyelt példányainak támogatása |
 | :----------------------------- | ----- | ----- |
-| **Intelligent Insights konfigurálása** – az adatbázisok Intelligent Insights elemzésének konfigurálása. | Igen | Igen |
-| **A Azure SQL Analytics adatfolyam** -bepillantást nyerhet a Azure SQL Analytics. | Igen | Igen |
-| Az **Azure Event Hubs** adatfolyam-bepillantást nyerhet a további egyéni integrációk Event Hubs. | Igen | Igen |
-| Az **Azure Storage bepillantást nyerhet** az Azure Storage-ba, ahol további elemzést és hosszú távú archiválást végezhet. | Igen | Igen |
+| **Intelligent Insights konfigurálása** – az adatbázisok Intelligent Insights elemzésének konfigurálása. | Igen | Yes |
+| **A Azure SQL Analytics adatfolyam** -bepillantást nyerhet a Azure SQL Analytics. | Igen | Yes |
+| Az **Azure Event Hubs** adatfolyam-bepillantást nyerhet a további egyéni integrációk Event Hubs. | Igen | Yes |
+| Az **Azure Storage bepillantást nyerhet** az Azure Storage-ba, ahol további elemzést és hosszú távú archiválást végezhet. | Igen | Yes |
 
 > [!NOTE]
 > Az intelligens betekintő funkció az alábbi régiókban nem érhető el: Nyugat-Európa, Észak-Európa, USA 2. nyugati régiója és USA 1. keleti régiója.
@@ -107,7 +107,7 @@ Az alábbi példa egy Azure SQL Analyticson keresztül megtekintett Intelligent 
 
 ### <a name="set-up-with-event-hubs"></a>Beállítás a Event Hubs
 
-Ahhoz, hogy a Intelligent Insightst Event Hubs használatával lehessen használni, a Intelligent Insights naplózási adatokat Event Hubsra kell továbbítani, a [metrikák és diagnosztika naplózása](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) és [Az Azure Diagnostics-naplók továbbítása a Event Hubsba](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)című témakörben talál.
+Ahhoz, hogy a Intelligent Insightst Event Hubs használatával lehessen használni, a Intelligent Insights naplózási adatokat Event Hubsra kell továbbítani, a [metrikák és diagnosztika naplózása](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) és [Az Azure Diagnostics-naplók továbbítása a Event Hubsba](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)című témakörben talál.
 
 Ha egyéni figyelést és riasztást szeretne beállítani a Event Hubs használatával, tekintse meg a [Mi a teendő a metrikákkal és a diagnosztikai naplókkal foglalkozó](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#what-to-do-with-metrics-and-resource-logs-in-event-hubs)témakört Event Hubs.
 
@@ -185,7 +185,7 @@ A Intelligent Insights napló a hibás kérelmek számát adja eredményül. Ez 
 
 Ha a figyelt kritikus kivételek bármelyike átlépi a rendszer által kezelt abszolút küszöbértékeket, akkor a kritikus kivétel részleteivel intelligens elemzés jön létre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [figyelheti meg az adatbázisokat az SQL Analytics használatával](../../azure-monitor/insights/azure-sql.md).
 - Ismerje meg, hogy miként lehet [elhárítani a Intelligent Insights teljesítményével kapcsolatos problémákat](intelligent-insights-troubleshoot-performance.md).

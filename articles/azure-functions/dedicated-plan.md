@@ -3,12 +3,12 @@ title: Azure Functions dedikált üzemeltetés
 description: Ismerje meg, hogy milyen előnyökkel jár a Azure Functions futtatása dedikált App Service üzemeltetési tervben.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 0ebf83aa919d91f161b247539ae20873242a8ed8
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 0ee32d4c4a7d33664da88b133a1f7011fc09f298
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937623"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591066"
 ---
 # <a name="dedicated-hosting-plans-for-azure-functions"></a>Dedikált üzemeltetési csomagok Azure Functions
 
@@ -33,7 +33,7 @@ Még ha a mindig engedélyezve van, az egyes függvények végrehajtási időtú
 
 ## <a name="scaling"></a>Méretezés
 
-App Service-csomag használata esetén a további virtuálisgép-példányok hozzáadásával manuálisan is felskálázást hajthat végre. Emellett engedélyezheti az autoscale méretezést is, bár a prémium szintű csomag rugalmas skálázása lassabban történik. További információ: a [Példányszám manuális vagy automatikus skálázása](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Egy másik App Service terv kiválasztásával is méretezhető. További információ: alkalmazás vertikális [Felskálázása az Azure-ban](../app-service/manage-scale-up.md). 
+App Service-csomag használata esetén a további virtuálisgép-példányok hozzáadásával manuálisan is felskálázást hajthat végre. Emellett engedélyezheti az autoscale méretezést is, bár a prémium szintű csomag rugalmas skálázása lassabban történik. További információ: a [Példányszám manuális vagy automatikus skálázása](../azure-monitor/autoscale/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Egy másik App Service terv kiválasztásával is méretezhető. További információ: alkalmazás vertikális [Felskálázása az Azure-ban](../app-service/manage-scale-up.md). 
 
 > [!NOTE] 
 > Ha a JavaScript (Node.js) függvényeket egy App Service-csomagon futtatja, olyan csomagot válasszon, amely kevesebb vCPU rendelkezik. További információ: [Choose Single-core app Service Plans](functions-reference-node.md#choose-single-vcpu-app-service-plans). 
@@ -45,7 +45,7 @@ A [app Service Environment](../app-service/environment/intro.md) (bevezetéssel)
 
 Ha csak egy virtuális hálózatban szeretné futtatni a Function alkalmazást, ezt a [Prémium csomag](functions-premium-plan.md)használatával teheti meg. További információ: [Azure functions Private site Access létrehozása](functions-create-private-site-access.md). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + [Üzemeltetési lehetőségek Azure Functions](functions-scale.md)
 + [Az Azure App Service-csomagok áttekintése](../app-service/overview-hosting-plans.md)

@@ -3,13 +3,13 @@ title: Fogalmak – az Azure VMware-megoldás privát felhők monitorozása és 
 description: Ismerje meg, hogyan figyeli és javítja az Azure VMware megoldás a VMware ESXi-kiszolgálókat egy Azure VMware-megoldás privát felhőben.
 ms.topic: conceptual
 ms.custom: contperf-fy21q2
-ms.date: 02/03/2021
-ms.openlocfilehash: 6174df429fd9b21c7f685c8ba14e6d5c0bba4c83
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.date: 02/16/2021
+ms.openlocfilehash: 59319b5598be9770e82b9676a28444648230a019
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538958"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633138"
 ---
 # <a name="monitor-and-repair-azure-vmware-solution-private-clouds"></a>Azure VMware-megoldás privát felhők monitorozása és javítása
 
@@ -17,7 +17,7 @@ Az Azure VMware megoldás folyamatosan figyeli a VMware ESXi-kiszolgálókat egy
 
 ## <a name="what-azure-vmware-solution-monitors"></a>Az Azure VMware-megoldás figyelők
 
-Az Azure VMware-megoldás a következő esetekben figyeli a meghibásodási feltételeket a gazdagépen:  
+Az Azure VMware-megoldás a következő feltételeket figyeli a gazdagépen:  
 
 - Processzor állapota 
 - Memória állapota 
@@ -37,9 +37,9 @@ Az Azure VMware-megoldás a következő esetekben figyeli a meghibásodási felt
 
 ## <a name="azure-vmware-solution-host-remediation"></a>Azure VMware megoldás gazdagép szervizelése  
 
-Ha az Azure VMware-megoldás romlást vagy hibát észlel egy bérlő privát felhőben lévő Azure VMware megoldás-csomóponton, elindítja a gazdagép szervizelési folyamatát. A gazdagép szervizelése azt jelenti, hogy a hibás csomópontot egy új kifogástalan állapotú csomópontra cseréli.  
+Ha az Azure VMware-megoldás romlást vagy hibát észlel egy Azure VMware-megoldási csomóponton, elindítja a gazdagép szervizelési folyamatát. A gazdagép szervizelése azt jelenti, hogy a hibás csomópontot egy új kifogástalan állapotú csomópontra cseréli.  
 
-A gazdagép szervizelési folyamata egy új, kifogástalan állapotú csomópont hozzáadásával indul el a fürtben. Ezután, ha lehetséges, a hibás gazdagép VMware vSphere karbantartási módba kerül. A VMware vMotion arra szolgál, hogy a virtuális gépeket a fürtön kívül más elérhető kiszolgálókra helyezze át, ami potenciálisan lehetővé teszi a számítási feladatok élő áttelepítését. Olyan esetekben, amikor a hibás gazdagép nem helyezhető karbantartási módba, a rendszer eltávolítja a gazdagépet a fürtből.
+A gazdagép szervizelése új, kifogástalan állapotú csomópont hozzáadásával kezdődik a fürtben. Ezután, ha lehetséges, a hibás gazdagép VMware vSphere karbantartási módba kerül. A VMware vMotion áthelyezi a virtuális gépeket a hibás gazdagépről a fürt többi elérhető kiszolgálójára, ami potenciálisan nulla állásidőt biztosít a számítási feladatok élő áttelepítéséhez. Ha a hibás gazdagép nem helyezhető karbantartási módba, a rendszer eltávolítja a gazdagépet a fürtből.
 
 ## <a name="next-steps"></a>Következő lépések
 

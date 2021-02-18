@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: subject-monitoring
-ms.openlocfilehash: 6dd53358b67eef481948d3349afc07086ea26fcd
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: b37586f66106e33b2a8dad034a6e7c131484be73
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584906"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571623"
 ---
 # <a name="azure-blob-storage-monitoring-data-reference"></a>Az Azure Blob Storage figyelési adatreferenciája
 
@@ -36,7 +36,7 @@ Az Azure Storage a következő kapacitási mérőszámokat biztosítja Azure Mon
 
 #### <a name="blob-storage"></a>Blob Storage
 
-Ez a táblázat a [blob Storage metrikáit](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsblobservices)mutatja be.
+Ez a táblázat a [blob Storage metrikáit](../../azure-monitor/essentials/metrics-supported.md#microsoftstoragestorageaccountsblobservices)mutatja be.
 
 | Metric | Leírás |
 | ------------------- | ----------------- |
@@ -176,4 +176,4 @@ A következő táblázat felsorolja az Azure Storage-beli erőforrás-naplók tu
 ## <a name="see-also"></a>Lásd még
 
 - Az Azure Storage figyelésének leírását lásd: az [Azure Storage figyelése](monitor-blob-storage.md) .
-- Az Azure-erőforrások figyelésével kapcsolatos részletekért lásd: az [Azure-erőforrások figyelése Azure monitorokkal](../../azure-monitor/insights/monitor-azure-resource.md) .
+- Az Azure-erőforrások figyelésével kapcsolatos részletekért lásd: az [Azure-erőforrások figyelése Azure monitorokkal](../../azure-monitor/essentials/monitor-azure-resource.md) .

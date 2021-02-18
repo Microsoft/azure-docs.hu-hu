@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f6825fee4cfb78ab54d782cd4d942bb994bedae9
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: b484873f6c118c49712cbcd66eeb6a63d8aa05f6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195721"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591548"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure-beli biztonsági alapkonfiguráció Azure Storage-hoz
 
@@ -158,7 +158,7 @@ A Storage-fiókhoz kapcsolódó beépített szabályzat-definíciókat is haszn�
 
 - [Az Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
 
-- [Riasztások létrehozása a Azure Monitorban](../../azure-monitor/platform/alerts-activity-log.md)
+- [Riasztások létrehozása a Azure Monitorban](../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -180,7 +180,7 @@ A Storage-fiókhoz kapcsolódó beépített szabályzat-definíciókat is haszn�
 
 **Útmutató**: naplók beolvasása Azure monitor használatával a végpontok eszközei, hálózati erőforrásai és más biztonsági rendszerek által generált biztonsági adatokat összesítve. A Azure Monitoron belül Log Analytics munkaterület (ek) használatával kérdezheti le és végezheti el az elemzéseket, és használhatja az Azure Storage-fiókokat a hosszú távú/archiválási tároláshoz, opcionálisan olyan biztonsági funkciókkal, mint például a megváltoztathatatlan tárolás és a kényszerített megőrzés.
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md)
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -210,7 +210,7 @@ A Storage-fiókhoz kapcsolódó beépített szabályzat-definíciókat is haszn�
 
 - [Adatmegőrzési szabályzat konfigurálása az Azure Storage-fiók naplóihoz](./storage-monitor-storage-account.md#configure-logging)
 
-- [Az adatmegőrzési időszak módosítása Log Analytics](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Az adatmegőrzési időszak módosítása Log Analytics](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -238,7 +238,7 @@ Emellett engedélyezze a komplex veszélyforrások elleni védelmet az Azure Sto
 
 - [Riasztások kezelése Azure Security Centerban](../../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Riasztás a log Analytics-naplófájlok adatkezeléséről](../../azure-monitor/learn/tutorial-response.md)
+- [Riasztás a log Analytics-naplófájlok adatkezeléséről](../../azure-monitor/alerts/tutorial-response.md)
 
 - [Azure Storage Analytics-naplózás](./storage-analytics-logging.md)
 
@@ -362,7 +362,7 @@ A Microsoft-szolgáltatásokhoz és az Azure ARM-hoz Azure AD Privileged Identit
 
 - [Az Azure AD kockázati észlelések ismertetése](../../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Műveleti csoportok konfigurálása egyéni riasztásokhoz és értesítésekhez](../../azure-monitor/platform/action-groups.md)
+- [Műveleti csoportok konfigurálása egyéni riasztásokhoz és értesítésekhez](../../azure-monitor/alerts/action-groups.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -572,7 +572,7 @@ Emellett a virtuális hálózati szolgáltatás végpont-házirendjeivel is szű
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, amikor a módosítások a Storage-fiók erőforrásaira vonatkoznak. Az Azure Storage naplózását is engedélyezheti az Azure Storage-ba irányuló kérelmek engedélyezésének nyomon követése érdekében. A naplók azt jelzik, hogy egy kérelem névtelenül történt-e egy OAuth 2,0-token használatával, megosztott kulcs használatával vagy közös hozzáférésű aláírás (SAS) használatával. Emellett az Azure Monitor használatával a névtelen hitelesítési feltételt használó Storage-fiókok névtelen hozzáférésére vonatkozó riasztást is használhat.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../../azure-monitor/platform/alerts-activity-log.md)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Azure Storage Analytics-naplózás](./storage-analytics-logging.md)
 

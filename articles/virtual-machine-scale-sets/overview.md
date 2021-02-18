@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: dff83159511c6e8a08e8f212c01244e923ad1f5b
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 4f741c1317f70079755b61f7ad94a415cd039865
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376944"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578879"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Mik azok a virtuálisgép-méretezési csoportok?
 Az Azure virtuálisgép-méretezési csoportok lehetővé teszik elosztott terhelésű virtuális gépek csoportjának létrehozását és kezelését. A virtuálisgép-példányok száma automatikusan növelhető vagy csökkenthető a pillanatnyi igényeknek megfelelően vagy egy meghatározott ütemezés szerint. A méretezési csoportok biztosítják az alkalmazások magas rendelkezésre állását, és lehetővé teszik nagy számú virtuális gép központi felügyeletét, konfigurálását és frissítését. A virtuálisgép-méretezési csoportokkal nagyobb léptékű szolgáltatások építhetők ki a nagy számítási igényű, „big data” típusú és tárolóalapú számítási feladatokhoz.
@@ -46,7 +46,7 @@ Az Azure-beli virtuálisgép-méretezési csoportok biztosítják a szükséges 
 ## <a name="differences-between-virtual-machines-and-scale-sets"></a>Mi a különbség a virtuális gépek és a méretezési csoportok között?
 A méretezési csoportokat virtuális gépek alkotják. A méretezési csoportok biztosítják az alkalmazások futtatásához és méretezéséhez szükséges felügyeleti és automatizálási rétegeket. Helyettük manuálisan is létrehozhat és felügyelhet önálló virtuális gépeket, illetve meglévő eszközök integrálásával is kialakíthat egy hasonló szintű automatizációt. A következő táblázat összefoglalja a méretezési csoportok előnyeit több virtuálisgép-példány manuális felügyeletével szemben.
 
-| Használati eset                           | Virtuális gépek manuális csoportja                                                                    | Virtuálisgép-méretezési csoport |
+| Eset                           | Virtuális gépek manuális csoportja                                                                    | Virtuálisgép-méretezési csoport |
 |------------------------------------|----------------------------------------------------------------------------------------|---------------------------|
 | További virtuálisgép-példányok hozzáadása        | A létrehozás, a konfigurálás és a megfelelőség biztosítása manuális folyamatokkal történik                             | Automatikus létrehozás központi konfigurációból |
 | Forgalom kiegyensúlyozása és elosztása | Manuálisan kell létrehozni és konfigurálni egy Azure-terheléselosztót vagy alkalmazásátjárót      | Automatikus létrehozás és integrálás egy Azure-terheléselosztóval vagy alkalmazásátjáróval |
@@ -57,7 +57,7 @@ A méretezési csoportok nem járnak többletköltségekkel. Csak a mögöttes s
 
 ## <a name="how-to-monitor-your-scale-sets"></a>A méretezési csoportok figyelése
 
-Használja a [Azure monitor for VMst](../azure-monitor/insights/vminsights-overview.md), amely egy egyszerű előkészítési folyamattal rendelkezik, és automatizálja a méretezési csoportba tartozó virtuális gépekről származó fontos CPU-, memória-, lemez-és hálózati teljesítményszámlálók gyűjteményét. Emellett további figyelési képességeket és előre definiált vizualizációkat is tartalmaz, amelyek segítenek a méretezési csoportok rendelkezésre állásának és teljesítményének a kiépítésében.
+Használja a [Azure monitor for VMst](../azure-monitor/vm/vminsights-overview.md), amely egy egyszerű előkészítési folyamattal rendelkezik, és automatizálja a méretezési csoportba tartozó virtuális gépekről származó fontos CPU-, memória-, lemez-és hálózati teljesítményszámlálók gyűjteményét. Emellett további figyelési képességeket és előre definiált vizualizációkat is tartalmaz, amelyek segítenek a méretezési csoportok rendelkezésre állásának és teljesítményének a kiépítésében.
 
 Engedélyezheti a figyelést a [virtuálisgép-méretezési csoport alkalmazásához](../azure-monitor/app/azure-vm-vmss-apps.md) a Application Insights segítségével részletes információkat gyűjthet az alkalmazásról, többek között a lapok nézeteiről, az alkalmazások kéréseiről és a kivételekről. Ellenőrizze az alkalmazás rendelkezésre állását a [rendelkezésre állási teszt](../azure-monitor/app/monitor-web-app-availability.md) konfigurálásával a felhasználói forgalom szimulálása érdekében.
 

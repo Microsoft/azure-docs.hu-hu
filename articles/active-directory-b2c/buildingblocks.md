@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0170877995573bdfcb13ebc1c0387bed0893deac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a42c1d06051c283f0e911c4cd166884ddd060f45
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85201225"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633274"
 ---
 # <a name="buildingblocks"></a>BuildingBlocks
 
@@ -72,10 +72,10 @@ A **BuildingBlocks** elem a következő elemeket tartalmazza, amelyeket meg kell
   - Véletlenszerű karakterlánc létrehozása a véletlenszám-generátor használatával.
   - Jogcím formázása a megadott formázó sztringnek megfelelően. Ez a transzformáció a C# `String.Format` metódust használja.
 
-- InputValidation – ez az elem lehetővé teszi, hogy olyan logikai összesítéseket végezzen el, amelyek hasonlóak a *és* a és a *vagy*a rendszerhez.
+- InputValidation – ez az elem lehetővé teszi, hogy olyan logikai összesítéseket végezzen el, amelyek hasonlóak a *és* a és a *vagy* a rendszerhez.
 
 - [ContentDefinitions](contentdefinitions.md) – a felhasználói úton használandó HTML5-sablonok URL-jeit tartalmazza. Egy egyéni szabályzatban a tartalom definíciója határozza meg a felhasználói út adott lépéséhez használt HTML5-oldal URI-JÁT. Például a bejelentkezés vagy a regisztráció, a jelszó alaphelyzetbe állítása vagy a hibák lapja. A megjelenést és a működést úgy változtathatja meg, hogy felülbírálja a HTML5-fájl Tartalomdefinícióban. Az igényeknek megfelelően új tartalmi definíciókat is létrehozhat. Ez az elem honosított erőforrás-referenciát tartalmazhat a honosítási azonosító használatával.
 
 - [Honosítás](localization.md) – lehetővé teszi több nyelv támogatását. A házirendek honosítási támogatása lehetővé teszi, hogy beállítsa a szabályzatban támogatott nyelvek listáját, és válasszon egy alapértelmezett nyelvet. A nyelvspecifikus karakterláncok és gyűjtemények is támogatottak.
 
-- [DisplayControls](display-controls.md) – meghatározza a lapon megjelenítendő vezérlőket. A megjelenítési vezérlők speciális funkciókkal rendelkeznek, és együttműködnek a háttér-ellenőrzési technikai profilokkal. A megjelenítési vezérlők jelenleg **előzetes**verzióban érhetők el.
+- [DisplayControls](display-controls.md) – meghatározza a lapon megjelenítendő vezérlőket. A megjelenítési vezérlők speciális funkciókkal rendelkeznek, és együttműködnek a háttér-ellenőrzési technikai profilokkal. 

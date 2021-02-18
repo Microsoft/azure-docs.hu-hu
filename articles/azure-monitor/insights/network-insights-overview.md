@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
-ms.openlocfilehash: 4a273170a1f3842a9a11a61d41d4150eb98eace4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0616d14a890cfd5dd1a486dd21670c7c58dbeebc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734152"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573530"
 ---
 # <a name="azure-monitor-for-networks"></a>Azure Monitor hálózatokhoz
 
-A hálózatok Azure Monitor az összes telepített hálózati erőforrás [állapotának](../../service-health/resource-health-checks-resource-types.md) és [metrikáinak](../platform/metrics-supported.md) átfogó áttekintését teszi lehetővé anélkül, hogy konfigurációt kellene igényelni. Emellett hozzáférést biztosít a hálózati figyelési funkciókhoz, például a [kapcsolati figyelőhöz](../../network-watcher/connection-monitor-overview.md), [a hálózati biztonsági csoportok (NSG) adatforgalmának naplózásához](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)és [Traffic Analytics](../../network-watcher/traffic-analytics.md). És más hálózati [diagnosztikai](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) funkciókat is biztosít.
+A hálózatok Azure Monitor az összes telepített hálózati erőforrás [állapotának](../../service-health/resource-health-checks-resource-types.md) és [metrikáinak](../essentials/metrics-supported.md) átfogó áttekintését teszi lehetővé anélkül, hogy konfigurációt kellene igényelni. Emellett hozzáférést biztosít a hálózati figyelési funkciókhoz, például a [kapcsolati figyelőhöz](../../network-watcher/connection-monitor-overview.md), [a hálózati biztonsági csoportok (NSG) adatforgalmának naplózásához](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)és [Traffic Analytics](../../network-watcher/traffic-analytics.md). És más hálózati [diagnosztikai](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) funkciókat is biztosít.
 
 A hálózatok Azure Monitor a monitorozás ezen kulcsfontosságú összetevői köré szerveződik:
 - [Hálózati állapot és mérőszámok](#networkhealth)
@@ -146,7 +146,7 @@ Az időtartomány az irányítópult beállításaitól függ.
 
 A szerkesztési mód használatával bármely oldalon vagy részletes mérőszámban megjelenített munkafüzetet szerkeszthet. Ezután új munkafüzetként mentheti a módosításokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a hálózati figyelésről: [Mi az az Azure Network Watcher?](../../network-watcher/network-watcher-monitoring-overview.md)
-- Ismerje meg a forgatókönyveket, amelyekkel a munkafüzetek támogatottak, hogyan hozhatók létre jelentések és testreszabhatók a meglévő jelentések, és így tovább: [interaktív jelentések létrehozása Azure monitor munkafüzetek](../platform/workbooks-overview.md) használatával
+- Ismerje meg a forgatókönyveket, amelyekkel a munkafüzetek támogatottak, hogyan hozhatók létre jelentések és testreszabhatók a meglévő jelentések, és így tovább: [interaktív jelentések létrehozása Azure monitor munkafüzetek](../visualize/workbooks-overview.md) használatával

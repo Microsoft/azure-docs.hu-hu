@@ -4,12 +4,12 @@ description: Az alkalmazások teljesítményének figyelése az Azure app Servic
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: 55682215a990643111d5813db437b1f1e4612868
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 74b39219b3b18c8de0214367d141085f6dc5f674
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547232"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573999"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Az Azure App Service teljesítményének monitorozása
 
@@ -61,11 +61,11 @@ Az alkalmazások figyelését kétféleképpen engedélyezheti az Azure App Serv
         
 | Adatok | ASP.NET alapszintű gyűjtemény | ASP.NET ajánlott gyűjtemény |
 | --- | --- | --- |
-| Processzor-, memória- és I/O-használati trendek hozzáadása |Igen |Igen |
-| Használati trendek gyűjtése, a rendelkezésreállási eredmények és a tranzakciók összevetése | Igen |Igen |
-| A gazdafolyamat által nem kezelt kivételek gyűjtése | Igen |Igen |
-| Az APM-metrikák pontosságának növelése terhelés alatt, mintavételezés használatakor | Igen |Igen |
-| Mikroszolgáltatások összevetése kérési és függőségi határokon keresztül | Nem (csak egypéldányos APM-képességek) |Igen |
+| Processzor-, memória- és I/O-használati trendek hozzáadása |Igen |Yes |
+| Használati trendek gyűjtése, a rendelkezésreállási eredmények és a tranzakciók összevetése | Igen |Yes |
+| A gazdafolyamat által nem kezelt kivételek gyűjtése | Igen |Yes |
+| Az APM-metrikák pontosságának növelése terhelés alatt, mintavételezés használatakor | Igen |Yes |
+| Mikroszolgáltatások összevetése kérési és függőségi határokon keresztül | Nem (csak egypéldányos APM-képességek) |Yes |
 
 3. Ha olyan beállításokat szeretne konfigurálni, mint például a mintavétel, amelyet korábban a applicationinsights.config fájlon keresztül szabályozhat, mostantól a megfelelő előtaggal használhatja ugyanezeket a beállításokat az Alkalmazásbeállítások használatával. 
 
@@ -434,8 +434,8 @@ A legújabb frissítések és hibajavítások [olvassa el a kibocsátási megjeg
 ## <a name="next-steps"></a>Következő lépések
 * [Futtassa a profilkészítőt a működő alkalmazásán.](./profiler.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) – az Azure Functions figyelése az Application Insights segítségével
-* [Engedélyezze az Azure Diagnostics](../platform/diagnostics-extension-to-application-insights.md) Application Insightsba való küldését.
-* [Figyelje a szolgáltatások állapotával kapcsolatos mérőszámokat](../platform/data-platform.md), így meggyőződhet róla, hogy szolgáltatása elérhető és válaszkész.
-* [Riasztási értesítéseket kaphat](../platform/alerts-overview.md), ha működési események történnek vagy a mérőszámok átlépnek egy küszöbértéket.
+* [Engedélyezze az Azure Diagnostics](../agents/diagnostics-extension-to-application-insights.md) Application Insightsba való küldését.
+* [Figyelje a szolgáltatások állapotával kapcsolatos mérőszámokat](../data-platform.md), így meggyőződhet róla, hogy szolgáltatása elérhető és válaszkész.
+* [Riasztási értesítéseket kaphat](../alerts/alerts-overview.md), ha működési események történnek vagy a mérőszámok átlépnek egy küszöbértéket.
 * Az [Application Insights JavaScript-alkalmazásokhoz és weblapokhoz](javascript.md) való használatával ügyféltelemetriát kaphat azoktól a böngészőktől, amelyek ellátogatnak egy weblapra.
 * [Állítson be rendelkezésre állási webes teszteket](monitor-web-app-availability.md), így riasztást kaphat, ha webhelye nem működik.

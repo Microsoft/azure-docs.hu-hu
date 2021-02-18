@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: ac42fe3265163a5a967524fe11063803c9ca91d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bb4084a7ee0d9d719a88c077fa8c63803aa6934
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87080590"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591363"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Virtuálisgép-méretezési csoport automatikus méretezése a Azure Portal
 Méretezési csoport létrehozásakor meghatározza a futtatni kívánt virtuálisgép-példányok számát. Az alkalmazás igényeihez igazodva automatikusan növelheti vagy csökkentheti a virtuálisgép-példányok számát. Az automatikus méretezésnek köszönhetően lépést tarthat az ügyfeleik igényeivel és az alkalmazás teljes élettartama alatt reagálhat az alkalmazás teljesítményében bekövetkezett változásokra.
@@ -35,9 +35,9 @@ Az alkalmazás növekvő igényeivel párhuzamosan a méretezési csoportban lé
 
     ![Az autoskálázás engedélyezése a Azure Portalban](media/virtual-machine-scale-sets-autoscale-portal/enable-autoscale.png)
 
-4. Adja meg a beállítások nevét, például az *autoskálázást*, majd válassza a **szabály hozzáadásának**lehetőségét.
+4. Adja meg a beállítások nevét, például az *autoskálázást*, majd válassza a **szabály hozzáadásának** lehetőségét.
 
-5. Hozzon létre egy szabályt, amely növeli a méretezési csoportokban lévő virtuálisgép-példányok számát, ha az átlagos CPU-terhelés meghaladja a 70%-ot egy 10 perces időszak alatt. A szabály indításakor a virtuálisgép-példányok száma 20%-kal nő. Kis mennyiségű virtuálisgép-példánnyal rendelkező méretezési csoportokban beállíthatja, hogy **Operation** a művelet *növelje a Count értéket* , majd adja meg az *1* vagy a *2* értéket a *példányszámhoz*. Nagy mennyiségű virtuálisgép-példánnyal rendelkező méretezési csoportokban a 10%-os vagy 20%-os virtuálisgép-példányok nagyobb mértékben megfelelőbbek lehetnek.
+5. Hozzon létre egy szabályt, amely növeli a méretezési csoportokban lévő virtuálisgép-példányok számát, ha az átlagos CPU-terhelés meghaladja a 70%-ot egy 10 perces időszak alatt. A szabály indításakor a virtuálisgép-példányok száma 20%-kal nő. Kis mennyiségű virtuálisgép-példánnyal rendelkező méretezési csoportokban beállíthatja, hogy  a művelet *növelje a Count értéket* , majd adja meg az *1* vagy a *2* értéket a *példányszámhoz*. Nagy mennyiségű virtuálisgép-példánnyal rendelkező méretezési csoportokban a 10%-os vagy 20%-os virtuálisgép-példányok nagyobb mértékben megfelelőbbek lehetnek.
 
     Adja meg a következő beállításokat a szabályhoz:
     
@@ -87,7 +87,7 @@ Az autoskálázási profilnak meg kell határoznia a virtuálisgép-példányok 
     |---------|---------|--------|
     | 2       | 10      | 2      |
 
-2. Az autoskálázási szabályok és a példányok korlátainak alkalmazásához válassza a **Mentés**lehetőséget.
+2. Az autoskálázási szabályok és a példányok korlátainak alkalmazásához válassza a **Mentés** lehetőséget.
 
 
 ## <a name="monitor-number-of-instances-in-a-scale-set"></a>A méretezési csoport példányainak számának figyelése
@@ -103,7 +103,7 @@ Az előző példákban az alapszintű gazdagép-mérőszámokkal, például a CP
 
     ![A meglévő autoskálázási szabályok törlése](media/virtual-machine-scale-sets-autoscale-portal/delete-rules.png)
 
-2. Válassza a **méretezési feltétel hozzáadása**lehetőséget. Válassza a szabály neve melletti ceruza ikont, és adjon meg egy nevet, például a *Felskálázást az egyes munkanapokon*.
+2. Válassza a **méretezési feltétel hozzáadása** lehetőséget. Válassza a szabály neve melletti ceruza ikont, és adjon meg egy nevet, például a *Felskálázást az egyes munkanapokon*.
 
     ![Az alapértelmezett autoskálázási szabály átnevezése](media/virtual-machine-scale-sets-autoscale-portal/rename-rule.png)
 
@@ -113,16 +113,16 @@ Az előző példákban az alapszintű gazdagép-mérőszámokkal, például a CP
 6. Válassza ki az összes munkanap, hétfőtől péntekig.
 7. Válassza ki a megfelelő időzónát, majd adja meg a *09:00* **kezdési időpontját** .
 8. Válassza a **méretezési feltétel ismételt hozzáadását** . Ismételje meg a folyamatot, ha a Scale (méretezés) nevű ütemtervet szeretné létrehozni *az esti időszakban* , amely *3* példányra méretezi, minden hétköznap ismétlődik, és *18:00*-kor kezdődik.
-9. Az ütemterv szerinti autoskálázási szabályok alkalmazásához válassza a **Mentés**lehetőséget.
+9. Az ütemterv szerinti autoskálázási szabályok alkalmazásához válassza a **Mentés** lehetőséget.
 
     ![Ütemterv szerinti méretezést biztosító autoskálázási szabályok létrehozása](media/virtual-machine-scale-sets-autoscale-portal/schedule-autoscale.PNG)
 
 Az automatikus skálázási szabályok alkalmazásának megtekintéséhez válassza a **futtatási előzmények** lehetőséget a **skálázási** ablak tetején. A Graph és az Events (diagramok és események) lista azt mutatja be, hogy az autoskálázási szabályok triggere és a méretezési csoport virtuálisgép-példányainak száma nő vagy csökken.
 
 
-## <a name="next-steps"></a>További lépések
-Ebben a cikkben megtanulta, hogyan használhatja az autoskálázási szabályokat horizontális méretezésre, és növelheti vagy csökkentheti a méretezési csoport virtuálisgép-példányainak *számát* . A virtuálisgép-példány *méretének*növeléséhez vagy csökkentéséhez függőlegesen is méretezheti a méretezést. További információkért lásd: [vertikális autoskálázás virtuális gépi méretezési csoportokkal](virtual-machine-scale-sets-vertical-scale-reprovision.md).
+## <a name="next-steps"></a>Következő lépések
+Ebben a cikkben megtanulta, hogyan használhatja az autoskálázási szabályokat horizontális méretezésre, és növelheti vagy csökkentheti a méretezési csoport virtuálisgép-példányainak *számát* . A virtuálisgép-példány *méretének* növeléséhez vagy csökkentéséhez függőlegesen is méretezheti a méretezést. További információkért lásd: [vertikális autoskálázás virtuális gépi méretezési csoportokkal](virtual-machine-scale-sets-vertical-scale-reprovision.md).
 
 A virtuálisgép-példányok kezelésével kapcsolatos információkért lásd: [virtuálisgép-méretezési csoportok kezelése Azure PowerShellokkal](./virtual-machine-scale-sets-manage-powershell.md).
 
-Ha meg szeretné tudni, hogyan hozhatók riasztások az automatikusan méretezhető szabályok indításakor, tekintse meg az [e-mailek és webhookok riasztási értesítéseinek Azure monitor-ben történő küldését](../azure-monitor/platform/autoscale-webhook-email.md)ismertető témakört. A [naplók használatával e-mail-és webhook](../azure-monitor/platform/alerts-log-webhook.md)-értesítéseket is küldhet a Azure monitor.
+Ha meg szeretné tudni, hogyan hozhatók riasztások az automatikusan méretezhető szabályok indításakor, tekintse meg az [e-mailek és webhookok riasztási értesítéseinek Azure monitor-ben történő küldését](../azure-monitor/autoscale/autoscale-webhook-email.md)ismertető témakört. A [naplók használatával e-mail-és webhook](../azure-monitor/alerts/alerts-log-webhook.md)-értesítéseket is küldhet a Azure monitor.

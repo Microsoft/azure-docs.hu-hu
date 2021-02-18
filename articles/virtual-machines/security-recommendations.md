@@ -10,12 +10,12 @@ ms.date: 11/13/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.reviewer: cynthn
-ms.openlocfilehash: 95ba93c4a5d71e6813c1bee144c983e1dfd8c89d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: afb985ecbe91835369738966e39e751f06f8d796
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500325"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571335"
 ---
 # <a name="security-recommendations-for-virtual-machines-in-azure"></a>Biztonsági javaslatok az Azure-beli virtuális gépekhez
 
@@ -26,7 +26,7 @@ Ennek a cikknek a javaslatait a Azure Security Center automatikusan tudja kezeln
 
 A Azure Security Centertel kapcsolatos általános információkért lásd: [Mi az Azure Security Center?](../security-center/security-center-introduction.md)
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 | Ajánlás | Megjegyzések | Security Center |
 |-|----|--|
@@ -56,15 +56,15 @@ A Azure Security Centertel kapcsolatos általános információkért lásd: [Mi 
 
 | Ajánlás | Megjegyzések | Security Center |
 |-|----|--|
-| A virtuális gépek figyelése. | Az Azure-beli virtuális gépek és a virtuálisgép-méretezési csoportok állapotának figyeléséhez [Azure monitor for VMst](../azure-monitor/insights/vminsights-overview.md) használhat. A virtuális gépekkel kapcsolatos teljesítményproblémák a szolgáltatás megszakadásához vezethetnek, ami sérti a rendelkezésre állás biztonsági elvét. | - |
+| A virtuális gépek figyelése. | Az Azure-beli virtuális gépek és a virtuálisgép-méretezési csoportok állapotának figyeléséhez [Azure monitor for VMst](../azure-monitor/vm/vminsights-overview.md) használhat. A virtuális gépekkel kapcsolatos teljesítményproblémák a szolgáltatás megszakadásához vezethetnek, ami sérti a rendelkezésre állás biztonsági elvét. | - |
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 | Ajánlás | Megjegyzések | Security Center |
 |-|----|--|
 | A felügyeleti portok elérésének korlátozása. | A támadók nyilvános Felhőbeli IP-tartományokat vizsgálnak meg a nyílt felügyeleti portok számára, és megkísérlik a közös jelszavakat, valamint az ismert, nem javított biztonsági réseket. Igény szerinti [(JIT)](../security-center/security-center-just-in-time.md) virtuálisgép-hozzáférést használhat az Azure-beli virtuális gépek bejövő forgalmának zárolására, így csökkentve a támadásoknak való kitettséget, miközben egyszerű kapcsolatokat biztosít a virtuális gépekhez, amikor szükségesek. | - |
 | Korlátozza a hálózati hozzáférést. | A hálózati biztonsági csoportok lehetővé teszik a hálózati hozzáférés korlátozását és a kitett végpontok számának szabályozását. További információ: [hálózati biztonsági csoport létrehozása, módosítása vagy törlése](../virtual-network/manage-network-security-group.md). | - |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A további biztonsági követelmények megismeréséhez forduljon az alkalmazás-szolgáltatóhoz. A biztonságos alkalmazások fejlesztésével kapcsolatos további információkért lásd: a [biztonságos fejlesztés dokumentációja](https://azure.microsoft.com/resources/develop-secure-applications-on-azure/).

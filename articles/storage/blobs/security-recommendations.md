@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/13/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 05fdf681b7cdc3b8145a30041e261eece420e560
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5653b59ed29495334079e932fb305fd4ba10475c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878087"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592349"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Biztonsági javaslatok a blob Storage-hoz
 
@@ -71,9 +71,9 @@ Azure Security Center rendszeresen elemzi az Azure-erőforrások biztonsági ál
 | Ajánlás | Megjegyzések | Security Center |
 |-|----|--|
 | A kérések engedélyezésének nyomon követése | Az Azure Storage naplózásának engedélyezése az Azure Storage-ba irányuló kérelmek engedélyezésének nyomon követésére. A naplók azt jelzik, hogy egy kérelem névtelenül történt-e egy OAuth 2,0-token használatával, megosztott kulcs használatával vagy közös hozzáférésű aláírás (SAS) használatával. További információkért lásd: az [Azure Blob Storage figyelése Azure monitor](monitor-blob-storage.md) vagy az [Azure Storage Analytics naplózása klasszikus figyeléssel](../common/storage-analytics-logging.md). | - |
-| Riasztások beállítása Azure Monitorban | Konfigurálja a naplózási riasztásokat, hogy a megadott gyakorisággal kiértékelje az erőforrások naplóit, és az eredmények alapján figyelmeztessen egy riasztást. További információ: [riasztások naplózása Azure monitorban](../../azure-monitor/platform/alerts-unified-log.md). | - |
+| Riasztások beállítása Azure Monitorban | Konfigurálja a naplózási riasztásokat, hogy a megadott gyakorisággal kiértékelje az erőforrások naplóit, és az eredmények alapján figyelmeztessen egy riasztást. További információ: [riasztások naplózása Azure monitorban](../../azure-monitor/alerts/alerts-unified-log.md). | - |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure biztonsági dokumentációja](../../security/index.yml)
 - [Biztonságos fejlesztői dokumentáció](../../security/develop/index.yml).

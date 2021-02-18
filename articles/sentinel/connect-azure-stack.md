@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 120f160e3c7bc7a9a0e81586ea4b97ee827dd33e
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 5999e8da5dffce85dd12ecd01cd5991ea4abc098
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807428"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590252"
 ---
 # <a name="connect-azure-stack-hub-virtual-machines-to-azure-sentinel"></a>Azure Stack hub-beli virtuális gépek összekötése az Azure Sentinel szolgáltatással
 
@@ -50,9 +50,9 @@ Adja hozzá a **Azure monitor, a frissítés és a konfiguráció kezelése** vi
 
 1. A bővítmény telepítésének befejezése után az állapota a **kiépítés sikerességét** jelzi. Akár egy óráig is eltarthat, amíg a virtuális gép megjelenik az Azure Sentinel portálon.
 
-A Windows-ügynök telepítésével és konfigurálásával kapcsolatos további információkért lásd: [Windows rendszerű számítógépek összekapcsolása](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard).
+A Windows-ügynök telepítésével és konfigurálásával kapcsolatos további információkért lásd: [Windows rendszerű számítógépek összekapcsolása](../azure-monitor/agents/agent-windows.md#install-agent-using-setup-wizard).
 
-Az ügynökkel kapcsolatos problémák Linux rendszeren történő hibaelhárításával kapcsolatban lásd: az [Azure log Analytics Linux-ügynök hibaelhárítása](../azure-monitor/platform/agent-linux-troubleshoot.md).
+Az ügynökkel kapcsolatos problémák Linux rendszeren történő hibaelhárításával kapcsolatban lásd: az [Azure log Analytics Linux-ügynök hibaelhárítása](../azure-monitor/agents/agent-linux-troubleshoot.md).
 
 Az Azure-beli Azure Sentinel-portálon a **Virtual Machines** alatt áttekintheti az összes virtuális gépet és számítógépet, valamint azok állapotát. 
 

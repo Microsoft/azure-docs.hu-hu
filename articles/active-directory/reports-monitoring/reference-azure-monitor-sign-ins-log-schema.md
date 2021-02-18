@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a881dee50195fe4995c77d793b4f4b75091d20b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d912707a1f41a0c3063d6f3fb67aa6914bd2d390
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231112"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592308"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Az Azure AD bejelentkezési naplók sémájának értelmezése Azure Monitor
 
@@ -143,7 +143,7 @@ Ez a cikk a Azure Monitor Azure Active Directory (Azure AD) bejelentkezési napl
 
 ## <a name="field-descriptions"></a>Mezőleírások
 
-| Mező neve | Leírás |
+| Mező neve | Description |
 |------------|-------------|
 | Idő | A dátum és az idő (UTC). |
 | ResourceId | Ez az érték le van képezve, és nyugodtan figyelmen kívül hagyhatja ezt a mezőt.  |
@@ -163,11 +163,11 @@ Ez a cikk a Azure Monitor Azure Active Directory (Azure AD) bejelentkezési napl
 | CallerIpAddress | Annak az ügyfélnek az IP-címe, amely a kérelmet elvégezte. | 
 | CorrelationId | Az ügyfél által átadott opcionális GUID-azonosító. Ez az érték segít az ügyféloldali műveleteknek a kiszolgálóoldali műveletekkel való összekapcsolásában, és akkor hasznos, ha a szolgáltatásokra kiterjedő naplók követését végzi. |
 | Identitás | A kérelem elküldésekor bemutatott jogkivonat identitása. Felhasználói fiók, rendszerfiók vagy egyszerű szolgáltatásnév lehet. |
-| Szint | Az üzenet típusát adja meg. A naplózáshoz mindig *tájékoztatás*szükséges. |
+| Level | Az üzenet típusát adja meg. A naplózáshoz mindig *tájékoztatás* szükséges. |
 | Hely | Megadja a bejelentkezési tevékenység helyét. |
 | Tulajdonságok | Felsorolja a bejelentkezésekhez kapcsolódó összes tulajdonságot. További információ: [Microsoft Graph API-referenciák](/graph/api/resources/signin?view=graph-rest-beta). Ez a séma ugyanazokat az attribútumokat használja, mint a bejelentkezési erőforrás, az olvashatóság érdekében.
 
 ## <a name="next-steps"></a>Következő lépések
 
 * [A naplózási naplók sémájának értelmezése Azure Monitor](reference-azure-monitor-audit-log-schema.md)
-* [További információ az Azure platform naplóiról](../../azure-monitor/platform/platform-logs-overview.md)
+* [További információ az Azure platform naplóiról](../../azure-monitor/essentials/platform-logs-overview.md)

@@ -3,12 +3,12 @@ title: Azure Backup-jelentések konfigurálása
 description: Azure Backup jelentések konfigurálása és megtekintése Log Analytics és Azure-munkafüzetek használatával
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 39d1aa17c5e92eccd34013738937e49890109561
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 78ab22bece54caa15e23021e594eaa0742505f79
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897275"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591983"
 ---
 # <a name="configure-azure-backup-reports-preview"></a>Azure Backup-jelentések konfigurálása (előzetes verzió)
 
@@ -18,7 +18,7 @@ A biztonsági mentési rendszergazdákra vonatkozó gyakori követelmény, hogy 
 - Biztonsági mentések és visszaállítások naplózása.
 - A legfontosabb trendek azonosítása különböző részletességi szinteken.
 
-A Azure Backup jelenleg olyan jelentéskészítési megoldást biztosít, amely [Azure monitor naplókat](../azure-monitor/log-query/log-analytics-tutorial.md) és [Azure-munkafüzeteket](../azure-monitor/platform/workbooks-overview.md)használ. Ezekkel az erőforrásokkal részletes információkhoz juthat a biztonsági másolatokról a teljes Backup-hagyatékon keresztül. Ez a cikk azt ismerteti, hogyan lehet konfigurálni és megtekinteni Azure Backup jelentéseket.
+A Azure Backup jelenleg olyan jelentéskészítési megoldást biztosít, amely [Azure monitor naplókat](../azure-monitor/logs/log-analytics-tutorial.md) és [Azure-munkafüzeteket](../azure-monitor/visualize/workbooks-overview.md)használ. Ezekkel az erőforrásokkal részletes információkhoz juthat a biztonsági másolatokról a teljes Backup-hagyatékon keresztül. Ez a cikk azt ismerteti, hogyan lehet konfigurálni és megtekinteni Azure Backup jelentéseket.
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
 
@@ -41,9 +41,9 @@ A jelentések használatának megkezdéséhez kövesse az alábbi lépéseket.
 
 Állítson be egy vagy több Log Analytics munkaterületet a biztonsági mentési jelentéskészítési adatai tárolásához. A hely és az előfizetés, ahol a Log Analytics munkaterület létrehozható, független a tárolók helyétől és előfizetéstől.
 
-Log Analytics munkaterület beállításához tekintse meg a [log Analytics munkaterület létrehozása a Azure Portalben](../azure-monitor/learn/quick-create-workspace.md)című témakört.
+Log Analytics munkaterület beállításához tekintse meg a [log Analytics munkaterület létrehozása a Azure Portalben](../azure-monitor/logs/quick-create-workspace.md)című témakört.
 
-Alapértelmezés szerint a Log Analytics munkaterületen lévő adat 30 napig tart. Ha hosszabb ideig szeretné megtekinteni az adatok számát, módosítsa a Log Analytics munkaterület megőrzési időtartamát. A megőrzési időtartam módosításához tekintse meg a [használat és a költségek kezelése Azure monitor naplókkal](../azure-monitor/platform/manage-cost-storage.md)című témakört.
+Alapértelmezés szerint a Log Analytics munkaterületen lévő adat 30 napig tart. Ha hosszabb ideig szeretné megtekinteni az adatok számát, módosítsa a Log Analytics munkaterület megőrzési időtartamát. A megőrzési időtartam módosításához tekintse meg a [használat és a költségek kezelése Azure monitor naplókkal](../azure-monitor/logs/manage-cost-storage.md)című témakört.
 
 ### <a name="2-configure-diagnostics-settings-for-your-vaults"></a>2. a tárolók diagnosztikai beállításainak konfigurálása
 

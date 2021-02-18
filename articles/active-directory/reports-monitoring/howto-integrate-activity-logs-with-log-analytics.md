@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85e6a66f4520f12278266203211e1d1ae224c97f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 0f328ed44252f7fb314552d6d05df9806f59d972
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180455"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591129"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Azure AD-naplók integrálása Azure Monitor naplókkal
 
@@ -59,7 +59,7 @@ A szolgáltatás használatához a következőkre lesz szüksége:
 * Azure-előfizetés. Ha nincs Azure-előfizetése, [regisztráljon egy ingyenes próbaverzióra](https://azure.microsoft.com/free/).
 * Egy Azure AD-bérlő.
 * Egy felhasználó, aki az adott Azure AD-bérlő *globális* vagy *biztonsági rendszergazdája*.
-* Egy Log Analytics munkaterület az Azure-előfizetésében. Megtudhatja, hogyan [hozhat létre log Analytics munkaterületet](../../azure-monitor/learn/quick-create-workspace.md).
+* Egy Log Analytics munkaterület az Azure-előfizetésében. Megtudhatja, hogyan [hozhat létre log Analytics munkaterületet](../../azure-monitor/logs/quick-create-workspace.md).
 
 ## <a name="licensing-requirements"></a>Licenckövetelmények
 

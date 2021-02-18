@@ -3,12 +3,12 @@ title: További információ az Azure Service Fabric
 description: Ismerje meg az Azure Service Fabric legfontosabb alapfogalmait és főbb területeit. A részletes áttekintést nyújt a Service Fabricről és a szolgáltatások létrehozásáról.
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 011ddf5db1555e83a1a61a349cc19ed791ab900b
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: c709abe1087a9cc69c9e6e23cd1ff344a3dbebd2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526766"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589042"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Szeretne többet megtudni a Service Fabricról?
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások csomagolását, üzembe helyezését és kezelését.  Service Fabric nagy felülettel rendelkezik, és sokat tanulhat.  Ez a cikk áttekintést nyújt a Service Fabricekről, valamint ismerteti az alapvető fogalmakat, programozási modelleket, az alkalmazások életciklusát, a tesztelést, a fürtöket és az állapot-figyelést Olvassa el az [áttekintést](service-fabric-overview.md) , és [Mik azok a szolgáltatások?](service-fabric-overview-microservices.md) a bevezetéshez és a Service Fabric használhatók a-szolgáltatások létrehozásához. Ez a cikk nem tartalmaz átfogó listát, de a Service Fabric összes területének áttekintésére és az első lépéseket ismertető cikkekre mutató hivatkozást tartalmaz. 
@@ -87,7 +87,7 @@ A [vendég végrehajtható fájl](service-fabric-guest-executables-introduction.
 ## <a name="application-lifecycle"></a>Alkalmazás-életciklus
 A többi platformhoz hasonlóan a Service Fabric alkalmazások általában a következő fázisokon haladnak át: tervezés, fejlesztés, tesztelés, üzembe helyezés, frissítés, karbantartás és eltávolítás. A Service Fabric első osztályú támogatást biztosít a felhőalapú alkalmazások teljes életciklusához, a fejlesztéstől az üzembe helyezés, a napi felügyelet és a végleges leszerelésig történő karbantartás révén. A szolgáltatási modell lehetővé teszi, hogy a különböző szerepkörök egymástól függetlenül vehessenek részt az alkalmazás életciklusában. [Service Fabric alkalmazás életciklusa](service-fabric-application-lifecycle.md) áttekintést nyújt az API-król, és azt, hogy a különböző szerepkörök hogyan használják őket a Service Fabric alkalmazás életciklusának fázisaiban. 
 
-A teljes alkalmazás-életciklus a PowerShell- [parancsmagok](/powershell/module/ServiceFabric/New-ServiceFabricService), a [CLI-parancsok](service-fabric-sfctl.md), a [C# API](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient)-k, a [Java API](/java/api/overview/azure/servicefabric)-k és a [REST API](/rest/api/servicefabric/)-k használatával kezelhető. Folyamatos integrációs/folyamatos üzembe helyezési folyamatokat is beállíthat olyan eszközökkel, mint például az [Azure-folyamatok](./service-fabric-tutorial-deploy-app-with-cicd-vsts.md) vagy a [Jenkins](/azure/developer/jenkins/deploy-to-service-fabric-cluster).
+A teljes alkalmazás-életciklus a PowerShell- [parancsmagok](/powershell/module/servicefabric/?view=azureservicefabricps), a [CLI-parancsok](service-fabric-sfctl.md), a [C# API](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient)-k, a [Java API](/java/api/overview/azure/servicefabric)-k és a [REST API](/rest/api/servicefabric/)-k használatával kezelhető. Folyamatos integrációs/folyamatos üzembe helyezési folyamatokat is beállíthat olyan eszközökkel, mint például az [Azure-folyamatok](./service-fabric-tutorial-deploy-app-with-cicd-vsts.md) vagy a [Jenkins](/azure/developer/jenkins/deploy-to-service-fabric-cluster).
 
 ## <a name="test-applications-and-services"></a>Alkalmazások és szolgáltatások tesztelése
 A valóban felhőalapú szolgáltatások létrehozásához kritikus fontosságú annak ellenőrzése, hogy az alkalmazások és szolgáltatások elbírja-e a valós hibákat. A hiba-elemzési szolgáltatás a Service Fabric-ra épülő szolgáltatások tesztelésére szolgál. A [hiba-elemzési szolgáltatással](service-fabric-testability-overview.md)értelmes hibákat válthat ki, és teljes körű tesztelési forgatókönyveket futtathat az alkalmazásain. Ezek a hibák és forgatókönyvek a számos államot, valamint a szolgáltatás teljes élettartama során felmerülő, ellenőrzött, biztonságos és konzisztens módon működtetett állapotokat gyakorolják és érvényesítik.
@@ -160,7 +160,7 @@ A Service Fabric az összetevők állapota a fürt összes entitásán megjeleni
 
 Service Fabric több módszert is biztosít az állapot-tárolóban összesített [állapot-jelentések megtekintésére](service-fabric-view-entities-aggregated-health.md) :
 * [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) vagy más vizualizációs eszközöket.
-* Állapot-lekérdezések (a [PowerShell](/powershell/module/ServiceFabric/New-ServiceFabricService), a [CLI](service-fabric-sfctl.md), a [C# FabricClient API](/dotnet/api/system.fabric.fabricclient.healthclient) -k és a [Java FabricClient API](/java/api/system.fabric)-k, illetve a [REST API](/rest/api/servicefabric)-k használatával).
+* Állapot-lekérdezések (a [PowerShell](/powershell/module/servicefabric/?view=azureservicefabricps), a [CLI](service-fabric-sfctl.md), a [C# FabricClient API](/dotnet/api/system.fabric.fabricclient.healthclient) -k és a [Java FabricClient API](/java/api/system.fabric)-k, illetve a [REST API](/rest/api/servicefabric)-k használatával).
 * Általános lekérdezések, amelyek olyan entitások listáját adják vissza, amelyek állapota a tulajdonságok egyike (a PowerShell, a CLI, az API-k vagy a REST használatával).
 
 ## <a name="monitoring-and-diagnostics"></a>Monitorozás és diagnosztika

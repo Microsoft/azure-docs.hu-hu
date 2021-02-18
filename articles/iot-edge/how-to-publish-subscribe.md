@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 13bfd7c602389ff286a80f625829da5924a73bdf
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: e4043fd8b7c9571b62cbf65d7398754b27375efd
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621895"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633971"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Közzététel és előfizetés Azure IoT Edge
 
@@ -366,8 +366,8 @@ Az [Azure IoT eszközoldali SDK](https://github.com/Azure/azure-iot-sdks) -k má
 
 A telemetria-adatok IoT Hubba való küldése hasonló a felhasználó által definiált témakörök közzétételéhez, de egy adott IoT Hub témakört használva:
 
-- Egy eszköz esetében a telemetria a következő témakörben lesz elküldve: `devices/<device_name>/messages/events`
-- Modul esetén a telemetria a következő témakörben lesz elküldve: `devices/<device_name>/<module_name>/messages/events`
+- Egy eszköz esetében a telemetria a következő témakörben lesz elküldve: `devices/<device_name>/messages/events/`
+- Modul esetén a telemetria a következő témakörben lesz elküldve: `devices/<device_name>/<module_name>/messages/events/`
 
 Emellett hozzon létre egy útvonalat, például `FROM /messages/* INTO $upstream` hogy telemetria küldjön a IOT Edge MQTT Broker és az IoT hub között. Az útválasztással kapcsolatos további tudnivalókért tekintse meg az [útvonalak deklarálása](module-composition.md#declare-routes)című témakört.
 

@@ -4,14 +4,14 @@ titleSuffix: Azure Kubernetes Service
 description: A virtuális csomópontok Azure Kubernetes-szolgáltatásokkal (ak) való használatának áttekintése
 services: container-service
 ms.topic: conceptual
-ms.date: 09/21/2020
+ms.date: 02/17/2021
 ms.custom: references_regions
-ms.openlocfilehash: 1e5a53c80aed90e44ba594dcff3c8ca23afc2c4f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 3bba1155ec57db67968aec95d1d3386fc6cda006
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684774"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634447"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes"></a>Azure Kubernetes Services (ak) fürt létrehozása és konfigurálása virtuális csomópontok használatához
 
@@ -45,7 +45,6 @@ A virtuális csomópontok funkciói nagy mértékben függenek az ACI funkciój�
 * A [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) nem helyezi üzembe a hüvelyeket a virtuális csomópontokon
 * A virtuális csomópontok támogatják a Linux-hüvelyek ütemezését. Manuálisan is telepítheti a nyílt forráskódú [virtuális KUBELET ACI](https://github.com/virtual-kubelet/azure-aci) -szolgáltatót a Windows Server-tárolók ACI-ra való beosztásához.
 * A virtuális csomópontok az Azure CNI hálózatkezeléssel rendelkező AK-fürtöket igényelnek.
-* Privát fürtökkel rendelkező virtuális csomópontok.
 * API-kiszolgáló által jóváhagyott IP-címtartományok használata az AK-hoz.
 * A Volume Mount Azure Files-megosztás támogatja az [általános célú v1-](../storage/common/storage-account-overview.md#types-of-storage-accounts)et. A [kötetek Azure Files megosztással való](azure-files-volume.md) csatlakoztatásának utasításait követve
 * Az IPv6 használata nem támogatott.

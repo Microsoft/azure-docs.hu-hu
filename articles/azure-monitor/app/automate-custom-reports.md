@@ -4,12 +4,12 @@ description: Egyéni napi/heti/havi jelentések automatizálása Azure Applicati
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: da465fbc899cb52fc48dbde830d3db4f3b58c68b
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 39970227fc94d3073688b23cc530462f368a6ecf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98680450"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590036"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Egyéni jelentések automatizálása Azure Application Insights-beli adatkezeléssel
 
@@ -31,7 +31,7 @@ Minden vállalat egyedi jelentéskészítési igényeivel rendelkezik, például
 
 Programozott módon [lekérdezheti Application Insightsi](https://dev.applicationinsights.io/) adataikat, hogy egyéni jelentéseket készítsenek az ütemterv alapján. A következő lehetőségek segíthetnek a gyors kezdésben:
 
-* [Jelentések automatizálása a Power automatizálva](../platform/logicapp-flow-connector.md)
+* [Jelentések automatizálása a Power automatizálva](../logs/logicapp-flow-connector.md)
 * [Jelentések automatizálása Logic Apps](automate-with-logic-apps.md)
 * A figyelési forgatókönyvben használja a "Application Insights ütemezett kivonatoló" [Azure-függvény](../../azure-functions/functions-get-started.md) sablonját. Ez a függvény a SendGrid használatával továbbítja az e-mailt. 
 
@@ -150,7 +150,7 @@ Ezek a lépések csak akkor érvényesek, ha még nem rendelkezik konfigurált S
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ az [elemzési lekérdezések](../log-query/get-started-queries.md)létrehozásáról.
+* További információ az [elemzési lekérdezések](../logs/get-started-queries.md)létrehozásáról.
 * További információ az [Application Insights adatainak programozott lekérdezéséről](https://dev.applicationinsights.io/)
 * További tudnivalók a [Logic Apps](../../logic-apps/logic-apps-overview.md) szolgáltatásról
 * További információ a [Microsoft Power automatizáló](https://ms.flow.microsoft.com)szolgáltatásról.

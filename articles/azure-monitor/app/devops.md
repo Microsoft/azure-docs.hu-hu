@@ -3,12 +3,12 @@ title: Webalkalmazások teljesítményének monitorozása – Azure Application 
 description: Hogyan illeszkedik a Application Insights a devOps ciklusba
 ms.topic: conceptual
 ms.date: 12/21/2018
-ms.openlocfilehash: d2c3326c3f655d4bdfeaa42ac272658b251b7f82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc897cc0259894964e0b6164219b1e5459e824b6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324488"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579559"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Webalkalmazások és szolgáltatások részletes diagnosztikája az Application Insights szolgáltatással
 ## <a name="why-do-i-need-application-insights"></a>Miért van szükség a Application Insightsre?
@@ -110,7 +110,7 @@ Az alkalmazás-hozzárendelés automatikusan felderíti az alkalmazás-topológi
 ![Alkalmazástérkép](./media/devops/0050.png)
 
 ## <a name="application-insights-analytics"></a>Application Insights Analitika
-Az [Analytics](../log-query/log-query-overview.md)segítségével tetszőleges lekérdezéseket írhat egy hatékony SQL-szerű nyelven.  A teljes alkalmazás-verembe való Diagnosztizálás számos különböző perspektívát biztosít, és a szolgáltatás teljesítményének az üzleti metrikákkal és az ügyfelekkel való összekapcsolásával kapcsolatos kérdéseket is megteheti. 
+Az [Analytics](../logs/log-query-overview.md)segítségével tetszőleges lekérdezéseket írhat egy hatékony SQL-szerű nyelven.  A teljes alkalmazás-verembe való Diagnosztizálás számos különböző perspektívát biztosít, és a szolgáltatás teljesítményének az üzleti metrikákkal és az ügyfelekkel való összekapcsolásával kapcsolatos kérdéseket is megteheti. 
 
 A portálon tárolt összes telemetria-példány és metrikus nyers adat lekérdezhető. A nyelv magában foglalja a szűrést, a csatlakozást, az összesítést és az egyéb műveleteket. Kiszámíthatja a mezőket és statisztikai elemzéseket végezhet. Táblázatos és grafikus megjelenítés is használható.
 
@@ -154,7 +154,7 @@ Ha riasztást vált ki, Application Insights automatikusan létrehozhat egy munk
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Application Insights első lépései egyszerűek. A fő lehetőségek a következők:
 
 * [IIS-kiszolgálók](./monitor-performance-live-website-now.md)és [Azure app Service](./app-insights-overview.md)esetén is.

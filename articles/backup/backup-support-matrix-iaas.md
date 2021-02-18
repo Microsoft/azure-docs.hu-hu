@@ -4,12 +4,12 @@ description: Összefoglalja az Azure-beli virtuális gépek Azure Backup szolgá
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 1752e6687cd4dda72ee330c489a4642ae32f8219
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: ed58bc9e2bf8757cad79c1043459ceb5b845be40
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820772"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633903"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure-beli virtuális gépek biztonsági mentésének támogatási mátrixa
 
@@ -43,7 +43,7 @@ Felügyelt lemezek biztonsági mentése az erőforráscsoport zárolásának eng
 Virtuális gép biztonsági mentési szabályzatának módosítása | Támogatott.<br/><br/> A virtuális gép biztonsági mentése az új házirend ütemterv és adatmegőrzési beállítások használatával történik. Ha a megőrzési beállítások meg vannak hosszabbítva, a meglévő helyreállítási pontok meg vannak jelölve és megmaradnak. Ha csökkennek, a rendszer a meglévő helyreállítási pontokat metszi a következő karbantartási feladatokban, és végül törölve lesz.
 Biztonsági mentési feladat megszakítása| A pillanatkép-készítési folyamat során támogatott.<br/><br/> Nem támogatott, ha a pillanatképet a tárolóba helyezi át.
 A virtuális gép biztonsági mentése egy másik régióba vagy előfizetésbe |Nem támogatott.<br><br>A sikeres biztonsági mentéshez a virtuális gépeknek ugyanahhoz az előfizetéshez kell tartoznia, mint a biztonsági mentéshez.
-Biztonsági mentések naponta (az Azure virtuálisgép-bővítmény használatával) | Naponta egy ütemezett biztonsági mentés.<br/><br/>A Azure Backup szolgáltatás naponta akár kilenc igény szerinti biztonsági mentést is támogat, de a Microsoft legfeljebb négy napi igény szerinti biztonsági mentést javasol a legjobb teljesítmény érdekében.
+Biztonsági mentések naponta (az Azure virtuálisgép-bővítmény használatával) | Naponta egy ütemezett biztonsági mentés.<br/><br/>A Azure Backup szolgáltatás naponta legfeljebb három igény szerinti biztonsági mentést támogat, valamint egy további ütemezett biztonsági mentést.
 Biztonsági mentések naponta (a MARS-ügynökön keresztül) | Naponta három ütemezett biztonsági mentés.
 Biztonsági mentések naponta (DPM/MABS-n keresztül) | Naponta két ütemezett biztonsági mentés.
 Havi/éves biztonsági mentés| Nem támogatott az Azure virtuálisgép-bővítménysel történő biztonsági mentés során. Csak naponta és hetente támogatott.<br/><br/> Beállíthatja a szabályzatot, hogy megőrizze a napi/heti biztonsági mentéseket a havi/éves megőrzési időszakra.
@@ -144,8 +144,8 @@ Az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?f
 Egyéni rendszerképből (külső féltől) üzembe helyezett virtuális gépek biztonsági mentése |Támogatott.<br/><br/> A virtuális gépnek támogatott operációs rendszernek kell futnia.<br/><br/> A virtuális gépen lévő fájlok helyreállításakor csak kompatibilis operációs rendszerre (nem egy korábbi vagy újabb operációs rendszerre) lehet visszaállítani.
 Az Azure-ba migrált virtuális gépek biztonsági mentése| Támogatott.<br/><br/> A virtuális gép biztonsági mentéséhez telepíteni kell a virtuálisgép-ügynököt az áttelepített gépre.
 Több virtuális gépre kiterjedő konzisztencia biztonsági mentése | Azure Backup nem biztosít több virtuális gép között az adatés az alkalmazások konzisztenciáját.
-Biztonsági mentés [diagnosztikai beállításokkal](../azure-monitor/platform/platform-logs-overview.md)  | Támogatott. <br/><br/> Ha a diagnosztikai beállításokkal rendelkező Azure-beli virtuális gép visszaállítása [új](backup-azure-arm-restore-vms.md#create-a-vm) lehetőség használatával aktiválódik, a visszaállítás sikertelen lesz.
-A zóna által rögzített virtuális gépek visszaállítása | Támogatott (egy olyan virtuális gép esetében, amelyről január 2019 után biztonsági másolat készül, és ahol rendelkezésre áll a [rendelkezésre állási zónák](https://azure.microsoft.com/global-infrastructure/availability-zones/) ).<br/><br/>Jelenleg a virtuális gépeken rögzített zónára történő visszaállítást támogatjuk. Ha azonban a zóna leállás miatt nem érhető el, a visszaállítás sikertelen lesz.
+Biztonsági mentés [diagnosztikai beállításokkal](../azure-monitor/essentials/platform-logs-overview.md)  | Támogatott. <br/><br/> Ha a diagnosztikai beállításokkal rendelkező Azure-beli virtuális gép visszaállítása [új](backup-azure-arm-restore-vms.md#create-a-vm) lehetőség használatával aktiválódik, a visszaállítás sikertelen lesz.
+A zóna által rögzített virtuális gépek visszaállítása | Támogatott (egy olyan virtuális gép esetében, amelyről január 2019 után biztonsági másolat készül, és ahol rendelkezésre áll a [rendelkezésre állási zónák](https://azure.microsoft.com/global-infrastructure/availability-zones/) ).<br/><br/>Jelenleg a virtuális gépeken rögzített zónára történő visszaállítást támogatjuk. Ha azonban a zóna áramkimaradás miatt nem érhető el, a visszaállítás sikertelen lesz.
 Gen2 virtuális gépek | Támogatott <br> Azure Backup támogatja a [Gen2 virtuális gépek](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)biztonsági mentését és helyreállítását. Ha ezeket a virtuális gépeket helyreállítási pontról állítják vissza, a rendszer [Gen2 virtuális gépekként](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)állítja vissza őket.
 Azure-beli virtuális gépek biztonsági mentése zárolásokkal | Nem felügyelt virtuális gépek esetén nem támogatott. <br><br> Felügyelt virtuális gépek esetén támogatott.
 [Spot virtuális gépek](../virtual-machines/spot-vms.md) | Támogatott. Azure Backup a helyszíni virtuális gépeket normál Azure-beli virtuális gépekként visszaállítja.

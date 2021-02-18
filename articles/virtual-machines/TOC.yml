@@ -445,7 +445,7 @@
         - name: Azure Monitor
           items:
             - name: Azure Monitor-ügynök
-              href: ../azure-monitor/platform/azure-monitor-agent-install.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/azure-monitor-agent-install.md?context=/azure/virtual-machines/context/context
             - name: Diagnosztikai bővítmény
               href: ../azure-monitor/platform/diagnostics-extension-overview.md?context=/azure/virtual-machines/context/context
             - name: Log Analytics
@@ -950,6 +950,8 @@
           href: disks-reserved-capacity.md
         - name: Nagy teljesítményű rendszer tervezése
           href: premium-storage-performance.md
+        - name: Lemezzel kapcsolatos metrikák
+          href: disks-metrics.md
         - name: Lemezek adatlöket-kezelése
           href: disk-bursting.md
         - name: Lemezteljesítmény-szintek
@@ -1287,7 +1289,7 @@
     - name: Ügynökök
       items:
         - name: Ügynökök áttekintése
-          href: ../azure-monitor/platform/agents-overview.md?context=/azure/virtual-machines/context/context
+          href: ../azure-monitor/agents/agents-overview.md?context=/azure/virtual-machines/context/context
         - name: GYIK
           href: ../azure-monitor/faq.md?context=/azure/virtual-machines/context/context#agents
         - name: Azure Diagnostics bővítmény
@@ -1308,29 +1310,29 @@
             - name: Áttekintés
               href: ../azure-monitor/platform/log-analytics-agent.md?context=/azure/virtual-machines/context/context
             - name: Linux-ügynökök
-              href: ../azure-monitor/platform/agent-linux.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/agent-linux.md?context=/azure/virtual-machines/context/context
             - name: Log Analytics-átjáró
               href: ../azure-monitor/platform/gateway.md?context=/azure/virtual-machines/context/context
             - name: Ügynökkezelés
-              href: ../azure-monitor/platform/agent-manage.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/agent-manage.md?context=/azure/virtual-machines/context/context
             - name: Az ügynök állapota
               href: ../azure-monitor/insights/solution-agenthealth.md?context=/azure/virtual-machines/context/context
             - name: Adatforrások
               items:
                 - name: Áttekintés
-                  href: ../azure-monitor/platform/agent-data-sources.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/agents/agent-data-sources.md?context=/azure/virtual-machines/context/context
                 - name: Egyéni JSON-adatok
-                  href: ../azure-monitor/platform/data-sources-json.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/agents/data-sources-json.md?context=/azure/virtual-machines/context/context
                 - name: A collectd teljesítményadatai
-                  href: ../azure-monitor/platform/data-sources-collectd.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/agents/data-sources-collectd.md?context=/azure/virtual-machines/context/context
                 - name: Rendszernapló
-                  href: ../azure-monitor/platform/data-sources-syslog.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/agents/data-sources-syslog.md?context=/azure/virtual-machines/context/context
                 - name: Teljesítményszámlálók
-                  href: ../azure-monitor/platform/data-sources-performance-counters.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/agents/data-sources-performance-counters.md?context=/azure/virtual-machines/context/context
                 - name: Linux-alkalmazások teljesítménye
-                  href: ../azure-monitor/platform/data-sources-linux-applications.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/agents/data-sources-linux-applications.md?context=/azure/virtual-machines/context/context
                 - name: Egyéni naplók
-                  href: ../azure-monitor/platform/data-sources-custom-logs.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/agents/data-sources-custom-logs.md?context=/azure/virtual-machines/context/context
                 - name: Egyéni mezők
                   href: ../azure-monitor/platform/custom-fields.md?context=/azure/virtual-machines/context/context
         - name: Hibaelhárítás
@@ -1339,7 +1341,7 @@
               href: ../azure-monitor/platform/vmext-troubleshoot.md?context=/azure/virtual-machines/context/context
               displayname: 'troubleshoot, troubleshooting'
             - name: A Log Analytics Linux-ügynöke
-              href: ../azure-monitor/platform/agent-linux-troubleshoot.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/agent-linux-troubleshoot.md?context=/azure/virtual-machines/context/context
               displayname: 'troubleshoot, troubleshooting'
         - name: Azure Monitor virtuális gépekhez
           items:

@@ -3,16 +3,16 @@ title: Erőforrás-naplók & gyűjtése
 description: Az Azure Container Registry, például a hitelesítés, a képküldés és a képek lekéréséhez szükséges erőforrás-naplózási események rögzítése és elemzése.
 ms.topic: article
 ms.date: 06/01/2020
-ms.openlocfilehash: 8b05d34e6c50fea3760e30d28f59e55d8c5f211a
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 952f239e94df6b3b21317985f56d3d7a999813fe
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348585"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572004"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Azure Container Registry naplók a diagnosztika kiértékeléséhez és a naplózáshoz
 
-Ez a cikk azt ismerteti, hogyan gyűjthetők be az Azure Container Registry naplózási adatai a [Azure monitor](../azure-monitor/overview.md)szolgáltatásainak használatával. A Azure Monitor [erőforrás-naplókat](../azure-monitor/platform/platform-logs-overview.md) (korábbi néven *diagnosztikai naplókat*) gyűjt a beállításjegyzékben lévő felhasználó által vezérelt eseményekhez. Gyűjtse össze és használja fel ezeket az adatokat az igények kielégítéséhez, például:
+Ez a cikk azt ismerteti, hogyan gyűjthetők be az Azure Container Registry naplózási adatai a [Azure monitor](../azure-monitor/overview.md)szolgáltatásainak használatával. A Azure Monitor [erőforrás-naplókat](../azure-monitor/essentials/platform-logs-overview.md) (korábbi néven *diagnosztikai naplókat*) gyűjt a beállításjegyzékben lévő felhasználó által vezérelt eseményekhez. Gyűjtse össze és használja fel ezeket az adatokat az igények kielégítéséhez, például:
 
 * A beállításjegyzék hitelesítési eseményeinek naplózása a biztonság és a megfelelőség biztosítása érdekében 
 
@@ -39,21 +39,21 @@ Az erőforrás-naplók olyan Azure-erőforrások által kibocsátott informáci�
 
 * **ContainerRegistryLoginEvents**  – a beállításjegyzék hitelesítési eseményei és állapota, beleértve a bejövő identitást és IP-címet is
 * **ContainerRegistryRepositoryEvents** – például leküldéses és lekéréses műveletek a beállításjegyzékbeli adattárakban található képekhez és egyéb összetevőkhöz
-* **AzureMetrics**  -  [Tároló beállításjegyzék-metrikák](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries) , például összesített leküldéses és lekéréses darabszám.
+* **AzureMetrics**  -  [Tároló beállításjegyzék-metrikák](../azure-monitor/essentials/metrics-supported.md#microsoftcontainerregistryregistries) , például összesített leküldéses és lekéréses darabszám.
 
 A műveletek esetében a naplózási adatok a következők:
   * Sikeres vagy sikertelen állapot
   * Kezdő és záró időbélyegző
 
-Az Azure az erőforrás-naplók mellett egy [tevékenységi naplót](../azure-monitor/platform/platform-logs-overview.md)is biztosít, amely az Azure felügyeleti eseményeinek egyetlen előfizetési szintű rekordja, például egy tároló-beállításjegyzék létrehozása vagy törlése.
+Az Azure az erőforrás-naplók mellett egy [tevékenységi naplót](../azure-monitor/essentials/platform-logs-overview.md)is biztosít, amely az Azure felügyeleti eseményeinek egyetlen előfizetési szintű rekordja, például egy tároló-beállításjegyzék létrehozása vagy törlése.
 
 ## <a name="enable-collection-of-resource-logs"></a>Erőforrás-naplók gyűjtésének engedélyezése
 
-A tároló-beállításjegyzék erőforrás-naplófájljainak gyűjteménye alapértelmezés szerint nincs engedélyezve. Explicit módon engedélyezze a diagnosztikai beállításokat minden figyelni kívánt beállításjegyzékhez. A diagnosztikai beállítások engedélyezésének lehetőségeiért lásd: [diagnosztikai beállítás létrehozása a platform-naplók és-metrikák gyűjtéséhez az Azure-ban](../azure-monitor/platform/diagnostic-settings.md).
+A tároló-beállításjegyzék erőforrás-naplófájljainak gyűjteménye alapértelmezés szerint nincs engedélyezve. Explicit módon engedélyezze a diagnosztikai beállításokat minden figyelni kívánt beállításjegyzékhez. A diagnosztikai beállítások engedélyezésének lehetőségeiért lásd: [diagnosztikai beállítás létrehozása a platform-naplók és-metrikák gyűjtéséhez az Azure-ban](../azure-monitor/essentials/diagnostic-settings.md).
 
 Ha például egy tároló-beállításjegyzék naplóit és metrikáit szeretné megtekinteni a Azure Monitor közel valós időben, Gyűjtse össze az erőforrás-naplókat egy Log Analytics munkaterületen. A diagnosztikai beállítás engedélyezése a Azure Portal használatával:
 
-1. Ha még nem rendelkezik munkaterülettel, hozzon létre egy munkaterületet a [Azure Portal](../azure-monitor/learn/quick-create-workspace.md)használatával. Az adatgyűjtés késleltetésének csökkentése érdekében ügyeljen arra, hogy a munkaterület ugyanabban a **régióban** legyen, mint a tároló-beállításjegyzék.
+1. Ha még nem rendelkezik munkaterülettel, hozzon létre egy munkaterületet a [Azure Portal](../azure-monitor/logs/quick-create-workspace.md)használatával. Az adatgyűjtés késleltetésének csökkentése érdekében ügyeljen arra, hogy a munkaterület ugyanabban a **régióban** legyen, mint a tároló-beállításjegyzék.
 1. A portálon válassza ki a beállításjegyzéket, és válassza a **figyelés > diagnosztikai beállítások > diagnosztikai beállítás hozzáadása** elemet.
 1. Adja meg a beállítás nevét, majd kattintson a **küldés log Analytics** lehetőségre.
 1. Válassza ki a beállításjegyzék diagnosztikai naplóihoz tartozó munkaterületet.
@@ -81,9 +81,9 @@ Az alábbi képen a minta kimenet látható:
 
 ![Naplóadatok lekérdezése](media/container-registry-diagnostics-audit-logs/azure-monitor-query.png)
 
-A Azure Portal Log Analytics használatáról szóló oktatóanyagért lásd: [Bevezetés a Azure Monitor log Analytics használatába](../azure-monitor/log-query/log-analytics-tutorial.md), vagy próbálja ki a log Analytics [bemutató környezetét](https://portal.loganalytics.io/demo). 
+A Azure Portal Log Analytics használatáról szóló oktatóanyagért lásd: [Bevezetés a Azure Monitor log Analytics használatába](../azure-monitor/logs/log-analytics-tutorial.md), vagy próbálja ki a log Analytics [bemutató környezetét](https://portal.loganalytics.io/demo). 
 
-A naplók lekérdezésével kapcsolatos további információkért lásd: [a Azure monitorban található naplók áttekintése](../azure-monitor/log-query/log-query-overview.md).
+A naplók lekérdezésével kapcsolatos további információkért lásd: [a Azure monitorban található naplók áttekintése](../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="query-examples"></a>Lekérdezéspéldák
 
@@ -144,7 +144,7 @@ Amellett, hogy a naplókat Log Analyticsre küldi, vagy egy másik megoldáskén
 
 A diagnosztikai napló eseményeit egy [Azure Event hub](../event-hubs/event-hubs-about.md)-ba is továbbíthatja. A Event Hubs másodpercenként több millió eseményt képes befogadni, amelyet később bármilyen valós idejű elemzési szolgáltató használatával átalakíthat és tárolhat. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* További információ a [log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md) használatáról és a [naplók](../azure-monitor/log-query/get-started-queries.md)létrehozásáról.
-* A különböző Azure-rétegekben elérhető platform-naplók megismeréséhez tekintse meg [Az Azure platform-naplók áttekintése](../azure-monitor/platform/platform-logs-overview.md) című témakört.
+* További információ a [log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) használatáról és a [naplók](../azure-monitor/logs/get-started-queries.md)létrehozásáról.
+* A különböző Azure-rétegekben elérhető platform-naplók megismeréséhez tekintse meg [Az Azure platform-naplók áttekintése](../azure-monitor/essentials/platform-logs-overview.md) című témakört.

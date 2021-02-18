@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: c7a24dbe93bf0096e327804be07acc3f67d2f03b
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 3a678f6280b5f2d0fd372e75bfbeb6eb2e9b1577
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985756"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634294"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Active geo-Replication-Azure SQL Database létrehozása és használata
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,6 +25,9 @@ Az aktív geo-replikáció egy Azure SQL Database funkció, amely lehetővé tes
 
 > [!NOTE]
 > Az Azure SQL felügyelt példánya nem támogatja az aktív geo-replikációt. Az SQL felügyelt példány példányainak földrajzi feladatátvételéhez használjon [automatikus feladatátvételi csoportokat](auto-failover-group-overview.md).
+
+> [!NOTE]
+> Ha az SQL-adatbázisokat Active geo-replikáció használatával szeretné áttelepíteni az Azure Germanyből, tekintse meg az [áttelepítés SQL Database az aktív földrajzi replikálás használatával](../../germany/germany-migration-databases.md#migrate-sql-database-using-active-geo-replication)című témakört
 
 Az aktív földrajzi replikálás olyan üzletmenet-folytonossági megoldás, amely lehetővé teszi, hogy az alkalmazás az egyes adatbázisok gyors vész-helyreállítását regionális katasztrófa vagy nagy léptékű leállás esetén hajtsa végre. Ha a Geo-replikáció engedélyezve van, az alkalmazás feladatátvételt kezdeményezhet egy másik Azure-régióban található másodlagos adatbázisba. Akár négy formátumú másodlagos zónák is támogatott ugyanazon vagy különböző régiókban, és a formátumú másodlagos zónák csak olvasási hozzáférési lekérdezésekhez használható. A feladatátvételt az alkalmazásnak vagy a felhasználónak manuálisan kell kezdeményeznie. A feladatátvételt követően az új elsődleges végpont eltérő kapcsolódási ponttal rendelkezik.
 
@@ -292,6 +295,9 @@ Amint azt korábban már említettük, az aktív geo-replikáció programozott m
 | [Replikációs hivatkozások – lista adatbázis szerint](/rest/api/sql/replicationlinks/listbydatabase) | Az adott adatbázishoz tartozó összes replikációs hivatkozás beolvasása egy földrajzi replikálási partnerségben. Lekéri az sys.geo_replication_links Catalog nézetben látható információkat. |
 | [Replikációs hivatkozás törlése](/rest/api/sql/replicationlinks/delete) | Töröl egy adatbázis-replikációs hivatkozást. Feladatátvétel közben nem végezhető el. |
 |  | |
+
+
+
 
 ## <a name="next-steps"></a>Következő lépések
 
