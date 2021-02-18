@@ -406,6 +406,54 @@
           href: service-fabric-get-started-mac.md
         - name: A Service Fabric parancssori felület beállítása
           href: service-fabric-cli.md
+        - name: IDE-ben végzett munka
+          items:
+            - name: Munka a Windows/VS fejlesztői környezetében
+              items:
+                - name: Alkalmazások kezelése a Visual Studióban
+                  href: service-fabric-manage-application-in-visual-studio.md
+                - name: Biztonságos kapcsolatok konfigurálása a Visual Studióban
+                  href: service-fabric-visualstudio-configure-secure-connections.md
+                - name: .NET-szolgáltatás hibakeresése a VS-ben
+                  href: service-fabric-debugging-your-application.md
+                - name: Hibakeresés Windows-tárolókon a Service Fabric és a VS használatával
+                  href: service-fabric-how-to-debug-windows-containers.md
+                - name: Gyakori hibák és kivételek
+                  href: service-fabric-errors-and-exceptions.md
+                - name: Helyi monitorozás és diagnosztika
+                  href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md
+                - name: Linux-fürt beállítása Windowson
+                  href: service-fabric-local-linux-cluster-windows.md
+                - name: .NET Core-alkalmazás üzembe helyezése távoli Linux-fürtre VS-ről
+                  href: service-fabric-how-to-publish-linux-app-vs.md
+            - name: Munka a Linux/Eclipse fejlesztői környezetében
+              items:
+                - name: Az Eclipse beépülő modul használatának első lépései Java-fejlesztésekhez
+                  href: service-fabric-get-started-eclipse.md
+                - name: Java szolgáltatás hibakeresése az Eclipse-ben
+                  href: service-fabric-debugging-your-application-java.md
+                - name: Helyi monitorozás és diagnosztika
+                  href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md
+            - name: Munka VS Code-környezetben
+              items:
+                - name: Bevezetés a VS Code használatába
+                  href: service-fabric-get-started-vs-code.md
+                - name: C# Service Fabric-alkalmazások fejlesztése a VS Code-dal
+                  href: service-fabric-develop-csharp-applications-with-vs-code.md
+                - name: Java Service Fabric-alkalmazások fejlesztése a VS Code-dal
+                  href: service-fabric-develop-java-applications-with-vs-code.md
+    - name: Service Fabric felügyelt fürtök használata
+      items:
+        - name: Virtuálisgép-méretezési csoport típusú bővítmény hozzáadása egy felügyelt fürt típusú csomóponthoz
+          href: how-to-managed-cluster-vmss-extension.md
+        - name: A felügyelt fürt konfigurálása
+          href: how-to-managed-cluster-configuration.md
+        - name: Felügyelt fürtözött alkalmazások üzembe helyezése ARM-sablon használatával
+          href: how-to-managed-cluster-app-deployment-template.md
+        - name: Felügyelt és felügyelt identitással rendelkező felügyelt fürt konfigurálása
+          href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
+        - name: Lemez titkosításának engedélyezése a felügyelt fürtcsomópontok esetében
+          href: how-to-enable-managed-cluster-disk-encryption.md
     - name: Tervezés és előkészítés
       items:
         - name: Fürtkapacitás tervezése
@@ -416,6 +464,142 @@
           href: service-fabric-disaster-recovery.md
         - name: Alkalmazás kapacitásának megtervezése
           href: service-fabric-capacity-planning.md
+    - name: Fürtök létrehozása és felügyelete
+      items:
+        - name: Fürtök az Azure-on
+          items:
+            - name: Létrehozás
+              items:
+                - name: Fürtözött környezet megtervezése
+                  href: service-fabric-cluster-azure-deployment-preparation.md
+                - name: Létrehozás az Azure Portalon
+                  href: service-fabric-cluster-creation-via-portal.md
+                - name: Azure Service Fabric-fürt üzembe helyezése rendelkezésreállási zónákban
+                  href: service-fabric-cross-availability-zones.md
+                - name: Azure Service Fabric-fürt üzembe helyezése állapot nélküli csomóponttípusokkal
+                  href: service-fabric-stateless-node-types.md
+                - name: Azure Active Directory-alapú hitelesítés beállítása
+                  href: service-fabric-cluster-creation-setup-aad.md
+                - name: Egyéni fürtsablon létrehozása
+                  href: service-fabric-cluster-creation-create-template.md
+                - name: Létrehozás a Resource Managerrel
+                  href: service-fabric-cluster-creation-via-arm.md
+                - name: Létrehozás a tanúsítvány köznapi nevével
+                  href: service-fabric-create-cluster-using-cert-cn.md
+                - name: Linux rendszerű fürt létrehozása
+                  href: service-fabric-tutorial-create-vnet-and-linux-cluster.md
+            - name: Méretezés
+              items:
+                - name: Horizontális felskálázás manuálisan
+                  href: service-fabric-cluster-scale-in-out.md
+                - name: Horizontális felskálázás programozott módon
+                  href: service-fabric-cluster-programmatic-scaling.md
+                - name: Elsődleges csomóponttípus vertikális felskálázása
+                  href: service-fabric-scale-up-primary-node-type.md
+                - name: Csomóponttípus hozzáadása
+                  href: virtual-machine-scale-set-scale-node-type-scale-out.md
+                - name: Csomóponttípus eltávolítása
+                  href: service-fabric-how-to-remove-node-type.md
+            - name: Frissítés
+              items:
+                - name: A Service Fabric-verzió frissítése
+                  href: service-fabric-cluster-upgrade-version-azure.md
+                - name: Fürtkonfiguráció frissítése
+                  href: service-fabric-cluster-config-upgrade-azure.md
+                - name: Fürtcsomópontok javítása (Windows)
+                  href: service-fabric-patch-orchestration-application.md
+                - name: Lemeztitkosítás engedélyezése (Windows)
+                  href: service-fabric-enable-azure-disk-encryption-windows.md
+                - name: Lemeztitkosítás engedélyezése (Linux)
+                  href: service-fabric-enable-azure-disk-encryption-linux.md
+                - name: Hozzáférés-vezérlés beállítása
+                  href: service-fabric-cluster-security-roles.md
+                - name: Port megnyitása a terheléselosztóban
+                  href: create-load-balancer-rule.md
+                - name: Fürttanúsítvány módosítása köznapi névre
+                  href: service-fabric-cluster-change-cert-thumbprint-to-cn.md
+                - name: Fürttanúsítványok manuális váltása
+                  href: service-fabric-cluster-rollover-cert-cn.md
+                - name: Fürttanúsítványok kezelése
+                  href: service-fabric-cluster-security-update-certs-azure.md
+                - name: Csatlakozás távolról fürtcsomópontbeli virtuális géphez
+                  href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
+        - name: Önálló fürtök
+          items:
+            - name: Létrehozás
+              items:
+                - name: Helyszíni létrehozás
+                  href: service-fabric-cluster-creation-for-windows-server.md
+                - name: Biztonságossá tétel tanúsítványokkal
+                  href: service-fabric-windows-cluster-x509-security.md
+                - name: Biztonságossá tétel a Windows-rendszerbiztonság használatával
+                  href: service-fabric-windows-cluster-windows-security.md
+                - name: A különálló csomag tartalma
+                  href: service-fabric-cluster-standalone-package-contents.md
+            - name: Méretezés
+              href: service-fabric-cluster-windows-server-add-remove-nodes.md
+            - name: Frissítés
+              items:
+                - name: A Service Fabric-verzió frissítése
+                  href: service-fabric-cluster-upgrade-windows-server.md
+                - name: Fürtkonfiguráció frissítése
+                  href: service-fabric-cluster-config-upgrade-windows-server.md
+                - name: Konfigurációs beállítások
+                  href: service-fabric-cluster-manifest.md
+                - name: Hozzáférés-vezérlés beállítása
+                  href: service-fabric-cluster-security-roles.md
+                - name: Fürtcsomópontok javítása (Windows)
+                  href: service-fabric-patch-orchestration-application.md
+        - name: Vizualizáció a Service Fabric Explorerrel
+          href: service-fabric-visualizing-your-cluster.md
+        - name: Csatlakozás biztonságos fürthöz
+          href: service-fabric-connect-to-secure-cluster.md
+    - name: Megfigyelés és diagnosztika
+      items:
+        - name: Gyakori forgatókönyvek diagnosztizálása
+          href: service-fabric-diagnostics-common-scenarios.md
+        - name: Kódcsomaghibák diagnosztizálása
+          href: service-fabric-diagnostics-code-package-errors.md
+        - name: Alkalmazások figyelése
+          items:
+            - name: Naplózás hozzáadása az alkalmazáshoz
+              href: service-fabric-how-to-diagnostics-log.md
+            - name: Elemzés az Application Insights segítségével
+              href: service-fabric-diagnostics-event-analysis-appinsights.md
+            - name: Naplók összesítése az EventFlow segítségével
+              href: service-fabric-diagnostics-event-aggregation-eventflow.md
+            - name: Tárolók figyelése
+              href: service-fabric-diagnostics-oms-containers.md
+        - name: Fürtök monitorozása
+          items:
+            - name: Az Azure Monitor naplóinak konfigurálása fürtesemények gyűjtésére
+              href: service-fabric-diagnostics-oms-setup.md
+            - name: Fürtmonitorozás az Azure Monitor naplóival
+              href: service-fabric-diagnostics-event-analysis-oms.md
+            - name: EventStore API-k lekérdezése
+              href: service-fabric-diagnostics-eventstore-query.md
+            - name: Windows-fürt diagnosztikája
+              href: service-fabric-diagnostics-event-aggregation-wad.md
+            - name: Linux-fürt diagnosztikája
+              href: service-fabric-diagnostics-oms-syslog.md
+        - name: Infrastruktúra monitorozása
+          items:
+            - name: Teljesítményszámlálók gyűjtése a Log Analytics-ügynökkel
+              href: service-fabric-diagnostics-oms-agent.md
+            - name: Teljesítményszámlálók gyűjtése a WAD-vel
+              href: service-fabric-diagnostics-perf-wad.md
+        - name: Az állapot monitorozása
+          items:
+            - name: Állapot jelentése és ellenőrzése
+              href: service-fabric-diagnostics-how-to-report-and-check-service-health.md
+            - name: Hibaelhárítás rendszerállapot-jelentések segítségével
+              href: service-fabric-understand-and-troubleshoot-with-system-health-reports.md
+            - name: Állapotjelentések megtekintése
+              href: service-fabric-view-entities-aggregated-health.md
+        - name: Fordított proxy eseményeinek diagnosztizálása
+          href: service-fabric-reverse-proxy-diagnostics.md
+        - name: A helyi fürt hibaelhárítása
+          href: service-fabric-troubleshoot-local-cluster-setup.md
     - name: Első alkalmazás létrehozása...
       items:
         - name: Windows-alapú tárolóalkalmazás
@@ -434,7 +618,7 @@
           href: service-fabric-create-your-first-linux-application-with-java.md
         - name: Futtatható vendégalkalmazás Windows rendszeren
           href: quickstart-guest-app.md
-    - name: Alkalmazás készítése
+    - name: Alkalmazások készítése
       items:
         - name: Futtatható vendégszolgáltatás készítése
           items:
@@ -547,52 +731,6 @@
           href: service-fabric-backuprestoreservice-quickstart-standalonecluster.md
         - name: Régi Java-alkalmazás migrálása a Maven támogatására
           href: service-fabric-migrate-old-javaapp-to-use-maven.md
-    - name: IDE-ben végzett munka
-      items:
-        - name: Munka a Windows/VS fejlesztői környezetében
-          items:
-            - name: Alkalmazások kezelése a Visual Studióban
-              href: service-fabric-manage-application-in-visual-studio.md
-            - name: Biztonságos kapcsolatok konfigurálása a Visual Studióban
-              href: service-fabric-visualstudio-configure-secure-connections.md
-            - name: .NET-szolgáltatás hibakeresése a VS-ben
-              href: service-fabric-debugging-your-application.md
-            - name: Hibakeresés Windows-tárolókon a Service Fabric és a VS használatával
-              href: service-fabric-how-to-debug-windows-containers.md
-            - name: Gyakori hibák és kivételek
-              href: service-fabric-errors-and-exceptions.md
-            - name: Helyi monitorozás és diagnosztika
-              href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md
-            - name: Linux-fürt beállítása Windowson
-              href: service-fabric-local-linux-cluster-windows.md
-            - name: .NET Core-alkalmazás üzembe helyezése távoli Linux-fürtre VS-ről
-              href: service-fabric-how-to-publish-linux-app-vs.md
-        - name: Munka a Linux/Eclipse fejlesztői környezetében
-          items:
-            - name: Az Eclipse beépülő modul használatának első lépései Java-fejlesztésekhez
-              href: service-fabric-get-started-eclipse.md
-            - name: Java szolgáltatás hibakeresése az Eclipse-ben
-              href: service-fabric-debugging-your-application-java.md
-            - name: Helyi monitorozás és diagnosztika
-              href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md
-        - name: Munka VS Code-környezetben
-          items:
-            - name: Bevezetés a VS Code használatába
-              href: service-fabric-get-started-vs-code.md
-            - name: C# Service Fabric-alkalmazások fejlesztése a VS Code-dal
-              href: service-fabric-develop-csharp-applications-with-vs-code.md
-            - name: Java Service Fabric-alkalmazások fejlesztése a VS Code-dal
-              href: service-fabric-develop-java-applications-with-vs-code.md
-    - name: Áttelepítés a Cloud Servicesből
-      items:
-        - name: A Cloud Services és a Service Fabric összehasonlítása
-          href: service-fabric-cloud-services-migration-differences.md
-        - name: Migráció a Service Fabricre
-          href: service-fabric-cloud-services-migration-worker-role-stateless-service.md
-        - name: Ajánlott eljárások
-          href: /azure/architecture/service-fabric/migrate-from-cloud-services
-        - name: Az alkalmazás modernizálása
-          href: /azure/architecture/service-fabric/modernize-app-azure-service-fabric
     - name: Alkalmazások életciklus-kezelése
       items:
         - name: Alkalmazás becsomagolása
@@ -651,144 +789,6 @@
           href: service-fabric-reverseproxy-setup.md
         - name: Fordított proxy konfigurálása biztonságos kommunikációhoz
           href: service-fabric-reverseproxy-configure-secure-communication.md
-    - name: Fürtök létrehozása és felügyelete
-      items:
-        - name: Fürtök az Azure-on
-          items:
-            - name: Létrehozás
-              items:
-                - name: Fürtözött környezet megtervezése
-                  href: service-fabric-cluster-azure-deployment-preparation.md
-                - name: Létrehozás az Azure Portalon
-                  href: service-fabric-cluster-creation-via-portal.md
-                - name: Azure Service Fabric-fürt üzembe helyezése rendelkezésreállási zónákban
-                  href: service-fabric-cross-availability-zones.md
-                - name: Azure Service Fabric-fürt üzembe helyezése állapot nélküli csomóponttípusokkal
-                  href: service-fabric-stateless-node-types.md
-                - name: Azure Active Directory-alapú hitelesítés beállítása
-                  href: service-fabric-cluster-creation-setup-aad.md
-                - name: Egyéni fürtsablon létrehozása
-                  href: service-fabric-cluster-creation-create-template.md
-                - name: Létrehozás a Resource Managerrel
-                  href: service-fabric-cluster-creation-via-arm.md
-                - name: Létrehozás a tanúsítvány köznapi nevével
-                  href: service-fabric-create-cluster-using-cert-cn.md
-                - name: Linux rendszerű fürt létrehozása
-                  href: service-fabric-tutorial-create-vnet-and-linux-cluster.md
-            - name: Méretezés
-              items:
-                - name: Horizontális felskálázás manuálisan
-                  href: service-fabric-cluster-scale-in-out.md
-                - name: Horizontális felskálázás programozott módon
-                  href: service-fabric-cluster-programmatic-scaling.md
-                - name: Elsődleges csomóponttípus vertikális felskálázása
-                  href: service-fabric-scale-up-primary-node-type.md
-                - name: Csomóponttípus hozzáadása
-                  href: virtual-machine-scale-set-scale-node-type-scale-out.md
-                - name: Csomóponttípus eltávolítása
-                  href: service-fabric-how-to-remove-node-type.md
-            - name: Frissítés
-              items:
-                - name: Virtuálisgép-méretezési csoport típusú bővítmény hozzáadása egy felügyelt fürt típusú csomóponthoz
-                  href: how-to-managed-cluster-vmss-extension.md
-                - name: A Service Fabric-verzió frissítése
-                  href: service-fabric-cluster-upgrade-version-azure.md
-                - name: Fürtkonfiguráció frissítése
-                  href: service-fabric-cluster-config-upgrade-azure.md
-                - name: Fürtcsomópontok javítása (Windows)
-                  href: service-fabric-patch-orchestration-application.md
-                - name: Lemeztitkosítás engedélyezése (Windows)
-                  href: service-fabric-enable-azure-disk-encryption-windows.md
-                - name: Lemeztitkosítás engedélyezése (Linux)
-                  href: service-fabric-enable-azure-disk-encryption-linux.md
-                - name: Hozzáférés-vezérlés beállítása
-                  href: service-fabric-cluster-security-roles.md
-                - name: Port megnyitása a terheléselosztóban
-                  href: create-load-balancer-rule.md
-                - name: Fürttanúsítvány módosítása köznapi névre
-                  href: service-fabric-cluster-change-cert-thumbprint-to-cn.md
-                - name: Fürttanúsítványok manuális váltása
-                  href: service-fabric-cluster-rollover-cert-cn.md
-                - name: Fürttanúsítványok kezelése
-                  href: service-fabric-cluster-security-update-certs-azure.md
-                - name: Csatlakozás távolról fürtcsomópontbeli virtuális géphez
-                  href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
-        - name: Önálló fürtök
-          items:
-            - name: Létrehozás
-              items:
-                - name: Helyszíni létrehozás
-                  href: service-fabric-cluster-creation-for-windows-server.md
-                - name: Biztonságossá tétel tanúsítványokkal
-                  href: service-fabric-windows-cluster-x509-security.md
-                - name: Biztonságossá tétel a Windows-rendszerbiztonság használatával
-                  href: service-fabric-windows-cluster-windows-security.md
-                - name: A különálló csomag tartalma
-                  href: service-fabric-cluster-standalone-package-contents.md
-            - name: Méretezés
-              href: service-fabric-cluster-windows-server-add-remove-nodes.md
-            - name: Frissítés
-              items:
-                - name: A Service Fabric-verzió frissítése
-                  href: service-fabric-cluster-upgrade-windows-server.md
-                - name: Fürtkonfiguráció frissítése
-                  href: service-fabric-cluster-config-upgrade-windows-server.md
-                - name: Konfigurációs beállítások
-                  href: service-fabric-cluster-manifest.md
-                - name: Hozzáférés-vezérlés beállítása
-                  href: service-fabric-cluster-security-roles.md
-                - name: Fürtcsomópontok javítása (Windows)
-                  href: service-fabric-patch-orchestration-application.md
-        - name: Vizualizáció a Service Fabric Explorerrel
-          href: service-fabric-visualizing-your-cluster.md
-        - name: Csatlakozás biztonságos fürthöz
-          href: service-fabric-connect-to-secure-cluster.md
-    - name: Megfigyelés és diagnosztika
-      items:
-        - name: Gyakori forgatókönyvek diagnosztizálása
-          href: service-fabric-diagnostics-common-scenarios.md
-        - name: Kódcsomaghibák diagnosztizálása
-          href: service-fabric-diagnostics-code-package-errors.md
-        - name: Alkalmazások figyelése
-          items:
-            - name: Naplózás hozzáadása az alkalmazáshoz
-              href: service-fabric-how-to-diagnostics-log.md
-            - name: Elemzés az Application Insights segítségével
-              href: service-fabric-diagnostics-event-analysis-appinsights.md
-            - name: Naplók összesítése az EventFlow segítségével
-              href: service-fabric-diagnostics-event-aggregation-eventflow.md
-            - name: Tárolók figyelése
-              href: service-fabric-diagnostics-oms-containers.md
-        - name: Fürtök monitorozása
-          items:
-            - name: Az Azure Monitor naplóinak konfigurálása fürtesemények gyűjtésére
-              href: service-fabric-diagnostics-oms-setup.md
-            - name: Fürtmonitorozás az Azure Monitor naplóival
-              href: service-fabric-diagnostics-event-analysis-oms.md
-            - name: EventStore API-k lekérdezése
-              href: service-fabric-diagnostics-eventstore-query.md
-            - name: Windows-fürt diagnosztikája
-              href: service-fabric-diagnostics-event-aggregation-wad.md
-            - name: Linux-fürt diagnosztikája
-              href: service-fabric-diagnostics-oms-syslog.md
-        - name: Infrastruktúra monitorozása
-          items:
-            - name: Teljesítményszámlálók gyűjtése a Log Analytics-ügynökkel
-              href: service-fabric-diagnostics-oms-agent.md
-            - name: Teljesítményszámlálók gyűjtése a WAD-vel
-              href: service-fabric-diagnostics-perf-wad.md
-        - name: Az állapot monitorozása
-          items:
-            - name: Állapot jelentése és ellenőrzése
-              href: service-fabric-diagnostics-how-to-report-and-check-service-health.md
-            - name: Hibaelhárítás rendszerállapot-jelentések segítségével
-              href: service-fabric-understand-and-troubleshoot-with-system-health-reports.md
-            - name: Állapotjelentések megtekintése
-              href: service-fabric-view-entities-aggregated-health.md
-        - name: Fordított proxy eseményeinek diagnosztizálása
-          href: service-fabric-reverse-proxy-diagnostics.md
-        - name: A helyi fürt hibaelhárítása
-          href: service-fabric-troubleshoot-local-cluster-setup.md
     - name: Felügyelt identitás használata a Service Fabric-alkalmazásokhoz
       items:
         - name: Fürtbeállítás
@@ -797,8 +797,6 @@
               href: configure-existing-cluster-enable-managed-identity-token-service.md
             - name: Új Azure Service Fabric-fürt konfigurálása felügyelt identitással
               href: configure-new-azure-service-fabric-enable-managed-identity.md
-            - name: Felügyelt Service Fabric-fürt konfigurálása felügyelt identitással
-              href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
         - name: Alkalmazásbeállítás
           items:
             - name: Alkalmazás üzembe helyezése felügyelt identitással
@@ -811,12 +809,22 @@
           href: how-to-managed-identity-service-fabric-app-code.md
         - name: Hozzáférés biztosítása más Azure-erőforrásokhoz
           href: how-to-grant-access-other-resources.md
+    - name: Áttelepítés a Cloud Servicesből
+      items:
+        - name: A Cloud Services és a Service Fabric összehasonlítása
+          href: service-fabric-cloud-services-migration-differences.md
+        - name: Migráció a Service Fabricre
+          href: service-fabric-cloud-services-migration-worker-role-stateless-service.md
+        - name: Ajánlott eljárások
+          href: /azure/architecture/service-fabric/migrate-from-cloud-services
+        - name: Az alkalmazás modernizálása
+          href: /azure/architecture/service-fabric/modernize-app-azure-service-fabric
 - name: Referencia
   items:
     - name: Azure PowerShell
       href: /powershell/module/az.servicefabric/
     - name: PowerShell
-      href: /powershell/module/ServiceFabric/New-ServiceFabricService?view=azureservicefabricps
+      href: /powershell/module/servicefabric/?view=azureservicefabricps
     - name: Azure CLI (az sf)
       href: /cli/azure/sf
     - name: Service Fabric parancssori felület (sfctl)

@@ -4,22 +4,22 @@ description: A diagnosztikai napló eseményeinek rögzítése és elemzése Azu
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: fe2697c73f2a5f3f0b33cfb598f11f39420ed723
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 83411d7018155955f5be71bd41803e510edbc9da
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994111"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592682"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch-metrikák, riasztások és naplók a diagnosztika kiértékeléséhez és figyeléséhez
 
-Ez a cikk ismerteti, hogyan figyelheti a Batch-fiókokat a [Azure monitor](../azure-monitor/overview.md)szolgáltatásainak használatával. A Azure Monitor a Batch-fiók erőforrásaihoz tartozó [mérőszámokat](../azure-monitor/platform/data-platform-metrics.md) és [diagnosztikai naplókat](../azure-monitor/platform/platform-logs-overview.md) gyűjt. Gyűjtsön és fogyasszon el különböző módon ezeket az adatokat a Batch-fiók figyeléséhez és a problémák diagnosztizálásához. A [metrikai riasztásokat](../azure-monitor/platform/alerts-overview.md) úgy is konfigurálhatja, hogy értesítést kapjon, ha egy metrika eléri a megadott értéket.
+Ez a cikk ismerteti, hogyan figyelheti a Batch-fiókokat a [Azure monitor](../azure-monitor/overview.md)szolgáltatásainak használatával. A Azure Monitor a Batch-fiók erőforrásaihoz tartozó [mérőszámokat](../azure-monitor/essentials/data-platform-metrics.md) és [diagnosztikai naplókat](../azure-monitor/essentials/platform-logs-overview.md) gyűjt. Gyűjtsön és fogyasszon el különböző módon ezeket az adatokat a Batch-fiók figyeléséhez és a problémák diagnosztizálásához. A [metrikai riasztásokat](../azure-monitor/alerts/alerts-overview.md) úgy is konfigurálhatja, hogy értesítést kapjon, ha egy metrika eléri a megadott értéket.
 
 ## <a name="batch-metrics"></a>Batch-metrikák
 
 A metrikák Azure-telemetria adatok (más néven teljesítményszámlálók), amelyeket az Azure-erőforrások bocsátanak ki, és amelyeket a Azure Monitor szolgáltatás használ. A Batch-fiókokban lévő mérőszámok például a készlet létrehozása események, Low-Priority csomópontok száma, valamint a feladat teljes eseményei.
 
-Tekintse meg a [támogatott batch-metrikák listáját](../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts).
+Tekintse meg a [támogatott batch-metrikák listáját](../azure-monitor/essentials/metrics-supported.md#microsoftbatchbatchaccounts).
 
 A metrikák a következők:
 
@@ -68,9 +68,9 @@ Metrikai riasztás konfigurálása a Azure Portalban:
 5. A **riasztási szabály részletei** szakaszban adja meg a **riasztási szabály nevét** és **leírását** , és válassza ki a **súlyosságot** .
 6. Válassza a **Riasztási szabály létrehozása** lehetőséget.
 
-A metrikai riasztások létrehozásával kapcsolatos további információkért lásd: a [metrikai riasztások működésének megértése Azure monitor és a](../azure-monitor/platform/alerts-metric-overview.md) [metrikai riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../azure-monitor/platform/alerts-metric.md).
+A metrikai riasztások létrehozásával kapcsolatos további információkért lásd: a [metrikai riasztások működésének megértése Azure monitor és a](../azure-monitor/alerts/alerts-metric-overview.md) [metrikai riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../azure-monitor/alerts/alerts-metric.md).
 
-A Azure Monitor [REST API](/rest/api/monitor/)használatával is konfigurálhat közel valós idejű riasztást. További információ: [a Microsoft Azure riasztások áttekintése](../azure-monitor/platform/alerts-overview.md). A feladatok, a feladatok vagy a készletekre vonatkozó információk a riasztásokban való felvételéhez tekintse meg az [Azure monitor riasztásokkal rendelkező eseményekre adott válaszokban](../azure-monitor/learn/tutorial-response.md)lévő keresési lekérdezéseket ismertető témakört.
+A Azure Monitor [REST API](/rest/api/monitor/)használatával is konfigurálhat közel valós idejű riasztást. További információ: [a Microsoft Azure riasztások áttekintése](../azure-monitor/alerts/alerts-overview.md). A feladatok, a feladatok vagy a készletekre vonatkozó információk a riasztásokban való felvételéhez tekintse meg az [Azure monitor riasztásokkal rendelkező eseményekre adott válaszokban](../azure-monitor/alerts/tutorial-response.md)lévő keresési lekérdezéseket ismertető témakört.
 
 ## <a name="batch-diagnostics"></a>Batch-diagnosztika
 
@@ -88,7 +88,7 @@ Gyakori forgatókönyv egy Azure Storage-fiók kiválasztása a napló célhelyk
 Másik lehetőségként a következőket teheti:
 
 - A Batch diagnosztikai napló eseményeinek továbbítása egy [Azure Event hub](../event-hubs/event-hubs-about.md)-ba. A Event Hubs másodpercenként több millió eseményt képes befogadni, amelyet később bármilyen valós idejű elemzési szolgáltató használatával átalakíthat és tárolhat.
-- Diagnosztikai naplók küldése [Azure monitor naplókba](../azure-monitor/log-query/log-query-overview.md), ahol elemezheti őket, vagy exportálhatja őket elemzésre Power bi vagy Excelben.
+- Diagnosztikai naplók küldése [Azure monitor naplókba](../azure-monitor/logs/log-query-overview.md), ahol elemezheti őket, vagy exportálhatja őket elemzésre Power bi vagy Excelben.
 
 > [!NOTE]
 > Az Azure-szolgáltatásokkal további költségek is felmerülhetnek a diagnosztikai naplózási információk tárolásához vagy feldolgozásához.
@@ -105,7 +105,7 @@ Ha új diagnosztikai beállítást szeretne létrehozni a Azure Portalban, köve
 6. Válassza ki a **ServiceLog**, a **AllMetrics** vagy mindkettőt.
 7. A diagnosztikai beállítás létrehozásához válassza a **Mentés** lehetőséget.
 
-[A Azure Portal Azure monitoron keresztül is engedélyezheti a gyűjteményt a](../azure-monitor/platform/diagnostic-settings.md) diagnosztikai beállítások konfigurálásához egy [Resource Manager-sablon](../azure-monitor/samples/resource-manager-diagnostic-settings.md), illetve az Azure POWERSHELL vagy az Azure CLI használatával. További információ: [Az Azure platform naplófájljainak áttekintése](../azure-monitor/platform/platform-logs-overview.md).
+[A Azure Portal Azure monitoron keresztül is engedélyezheti a gyűjteményt a](../azure-monitor/essentials/diagnostic-settings.md) diagnosztikai beállítások konfigurálásához egy [Resource Manager-sablon](../azure-monitor/essentials/resource-manager-diagnostic-settings.md), illetve az Azure POWERSHELL vagy az Azure CLI használatával. További információ: [Az Azure platform naplófájljainak áttekintése](../azure-monitor/essentials/platform-logs-overview.md).
 
 ### <a name="access-diagnostics-logs-in-storage"></a>Diagnosztikai naplók elérése a Storage-ban
 
@@ -135,7 +135,7 @@ Az alábbi példa egy `PoolResizeCompleteEvent` naplófájlban lévő bejegyzés
 { "Tenant": "65298bc2729a4c93b11c00ad7e660501", "time": "2019-08-22T20:59:13.5698778Z", "resourceId": "/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/BATCHACCOUNTS/MYBATCHACCOUNT/", "category": "ServiceLog", "operationName": "PoolResizeCompleteEvent", "operationVersion": "2017-06-01", "properties": {"id":"MYPOOLID","nodeDeallocationOption":"Requeue","currentDedicatedNodes":10,"targetDedicatedNodes":100,"currentLowPriorityNodes":0,"targetLowPriorityNodes":0,"enableAutoScale":false,"isAutoPool":false,"startTime":"2019-08-22 20:50:59.522","endTime":"2019-08-22 20:59:12.489","resultCode":"Success","resultMessage":"The operation succeeded"}}
 ```
 
-A Storage-fiókban található diagnosztikai naplók sémájával kapcsolatos további információkért lásd: [Azure-erőforrások naplófájljainak archiválása a Storage-fiókba](../azure-monitor/platform/resource-logs.md#send-to-azure-storage). A Storage-fiókban lévő naplók programozott módon való eléréséhez használja a Storage API-kat.
+A Storage-fiókban található diagnosztikai naplók sémájával kapcsolatos további információkért lásd: [Azure-erőforrások naplófájljainak archiválása a Storage-fiókba](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage). A Storage-fiókban lévő naplók programozott módon való eléréséhez használja a Storage API-kat.
 
 ### <a name="service-log-events"></a>Szolgáltatás-naplózási események
 
@@ -176,7 +176,7 @@ A Batch szolgáltatás által kibocsátott szolgáltatás-naplózási események
 - [Sikertelen feladat](batch-task-fail-event.md)
 - [Sikertelen feladat-ütemterv](batch-task-schedule-fail-event.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megismerheti a Batch-megoldások fejlesztéséhez rendelkezésre álló [Batch API-kat és eszközöket](batch-apis-tools.md).
 - További információ a [Batch-megoldások figyeléséről](monitoring-overview.md).

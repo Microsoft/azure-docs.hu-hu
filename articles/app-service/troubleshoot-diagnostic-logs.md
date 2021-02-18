@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 8f3fb0be08bb806d74c689a7656c1c55019eb105
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 5fa729ae68d091d9810430bdc0ea55ce1c876b25
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980609"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586272"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Diagnosztikai naplózás engedélyezése a Azure App Serviceban lévő alkalmazásokhoz
 ## <a name="overview"></a>Áttekintés
@@ -187,20 +187,20 @@ A következő táblázat a támogatott naplózási típusokat és leírásokat t
 
 | Napló típusa | Windows | Windows-tároló | Linux | Linux-tároló | Description |
 |-|-|-|-|-|-|
-| AppServiceConsoleLogs | Java SE & tomcat | Igen | Igen | Igen | Standard kimenet és standard hiba |
-| AppServiceHTTPLogs | Igen | Igen | Igen | Igen | Webkiszolgáló-naplók |
-| AppServiceEnvironmentPlatformLogs | Igen | N.A. | Igen | Igen | App Service Environment: skálázás, konfigurációs változások és állapotüzenetek|
-| AppServiceAuditLogs | Igen | Igen | Igen | Igen | Bejelentkezési tevékenység FTP-n és kudu |
-| AppServiceFileAuditLogs | Igen | Igen | TBA | TBA | A webhely tartalma módosult; **csak a prémium szinthez és a fentiekhez érhető el** |
+| AppServiceConsoleLogs | Java SE & tomcat | Igen | Igen | Yes | Standard kimenet és standard hiba |
+| AppServiceHTTPLogs | Igen | Igen | Igen | Yes | Webkiszolgáló-naplók |
+| AppServiceEnvironmentPlatformLogs | Yes | N.A. | Igen | Yes | App Service Environment: skálázás, konfigurációs változások és állapotüzenetek|
+| AppServiceAuditLogs | Igen | Igen | Igen | Yes | Bejelentkezési tevékenység FTP-n és kudu |
+| AppServiceFileAuditLogs | Igen | Yes | TBA | TBA | A webhely tartalma módosult; **csak a prémium szinthez és a fentiekhez érhető el** |
 | AppServiceAppLogs | ASP .NET | ASP .NET | Java SE & tomcat áldott képek <sup>1</sup> | Java SE & tomcat áldott képek <sup>1</sup> | Alkalmazás-naplók |
-| AppServiceIPSecAuditLogs  | Igen | Igen | Igen | Igen | IP-szabályoktól érkező kérések |
-| AppServicePlatformLogs  | TBA | Igen | Igen | Igen | Tároló műveleti naplói |
-| AppServiceAntivirusScanAuditLogs | Igen | Igen | Igen | Igen | Víruskeresési [naplók](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html) a Microsoft Defender használatával; **csak a prémium szintű csomag esetében érhető el** | 
+| AppServiceIPSecAuditLogs  | Igen | Igen | Igen | Yes | IP-szabályoktól érkező kérések |
+| AppServicePlatformLogs  | TBA | Igen | Igen | Yes | Tároló műveleti naplói |
+| AppServiceAntivirusScanAuditLogs | Igen | Igen | Igen | Yes | Víruskeresési [naplók](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html) a Microsoft Defender használatával; **csak a prémium szintű csomag esetében érhető el** | 
 
 <sup>1</sup> a Java SE-alkalmazások esetében adja hozzá a "$website _AZMON_PREVIEW_ENABLED" lehetőséget az alkalmazás beállításaihoz, és állítsa 1 vagy igaz értékre.
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> További lépések
-* [Naplók lekérdezése Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
+* [Naplók lekérdezése Azure Monitor](../azure-monitor/logs/log-query-overview.md)
 * [A Azure App Service figyelése](web-sites-monitor.md)
 * [Hibaelhárítási Azure App Service a Visual Studióban](troubleshoot-dotnet-visual-studio.md)
 * [Alkalmazás-naplók elemzése a HDInsight-ben](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

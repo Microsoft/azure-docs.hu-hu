@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 293245d6778a40e234cdca177905c15dc88dd04f
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0f3b36729fb07c6f5ae03a46e199e4cadb44a25e
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737761"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635591"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux rendszerképek áttekintése
 
@@ -65,6 +65,9 @@ A rendszerkép-verzió összehasonlítását úgy végezheti el, hogy az érték
 
 ## <a name="rhel-6-image-types"></a>RHEL 6 Képtípus
 
+>[!NOTE]
+> December 30 2020-én a RHEL 6,10 (EOL) életbe lépett. A folyamatos támogatás érdekében engedélyezze az ELS-t a hosszabb életciklus-támogatási fázis részeként: [Red Hat els dokumentáció](./redhat-extended-lifecycle-support.md).
+
 RHEL 6. x rendszerképek esetén a képtípusok az alábbi táblázatban láthatók.
 
 |Publisher | Ajánlat | SKU-érték | Verzió | Részletek
@@ -106,7 +109,15 @@ A RHEL 8 képtípusának részletei alább láthatók.
 |RedHat | RHEL | 8 | A RHEL alverzió és a közzétett dátum összefűzött értékei (például 8.0.20191023) | Ezek a képek a standard Red Hat-adattárakhoz csatlakoztatott, 8 LVM-particionált rendszerképek RHEL.
 |RedHat | RHEL | 8 – Gen2 | A RHEL alverzió és a közzétett dátum összefűzött értékei (például 8.0.20191024) | Ezek a lemezképek a Hyper-V 2. generációs RHEL 8 LVM-particionált rendszerképek a standard Red Hat-tárházhoz csatlakoztatva. További információ az Azure-beli 2. generációs virtuális gépekről: a [2. generációs virtuális gépek támogatása az Azure](../../generation-2.md)-ban.
 
-## <a name="rhel-longer-support-add-ons"></a>A RHEL már támogatja a bővítményeket
+## <a name="rhel-extended-support-add-ons"></a>RHEL kiterjesztett támogatása – bővítmények
+
+### <a name="extended-life-cycle-support"></a>Meghosszabbított életciklus-támogatás
+
+A kiterjesztett életciklus-támogatás (ELS) bővítmény egy opcionális előfizetés, amely kritikus fontosságú és fontos biztonsági javításokat tesz lehetővé olyan kiadásokban, amelyek elértek az élettartam végét (EOL). A RHEL EUS kapcsolatos további információk a [Red Hat dokumentációjában](https://access.redhat.com/support/policy/updates/errata#Extended_Life_Cycle_Support)olvashatók.
+
+Az ELS jelenleg csak a 6,10-es RHEL érhető el. Az utólagos elszámolású lemezképek esetében az ELS a [Red Hat els dokumentációjának](./redhat-extended-lifecycle-support.md)lépéseit követve engedélyezhető.
+
+Ha régebbi verziójú verziót használ, az ELS engedélyezése előtt frissítenie kell a RHEL 6,10-re.
 
 ### <a name="extended-update-support"></a>Bővített frissítési támogatás
 
@@ -176,7 +187,7 @@ Egy adott rendszerkép-családban csak az aktuális alverziót frissítjük. Egy
 
 Az aktuális szabályzat az összes korábban közzétett rendszerkép megőrzése. Fenntartjuk a jogot arra, hogy olyan rendszerképeket távolítson el, amelyek bármilyen típusú problémát okozhatnak. Előfordulhat például, hogy a következő platform vagy összetevő frissítései miatt helytelen konfigurációval rendelkező lemezképek el lesznek távolítva. Az esetlegesen eltávolított lemezképek az aktuális Azure Marketplace-szabályzat alapján biztosítanak értesítést akár 30 nappal a lemezkép eltávolítása előtt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure-ban elérhető RHEL-lemezképek teljes listájának megtekintéséhez lásd: [Red Hat Enterprise Linux (RHEL) lemezképek az Azure-ban](./redhat-imagelist.md).
 * További információ az Azure Red Hat frissítési infrastruktúráról: [Red Hat frissítési infrastruktúra az igény szerinti RHEL virtuális gépekhez az Azure-ban](./redhat-rhui.md).

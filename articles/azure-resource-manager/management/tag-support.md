@@ -3,12 +3,12 @@ title: Erőforrások támogatásának címkézése
 description: Megjeleníti, hogy mely Azure-erőforrástípusok támogatják a címkéket. Az összes Azure-szolgáltatás részleteit tartalmazza.
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 12a57577241e3b2206aab9c3badb29502e7b0301
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 73f58dbda0e7c073cf4a8d2e846132a102192e93
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656971"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635914"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure-erőforrások támogatásának címkézése
 Ez a cikk azt mutatja be, hogy az erőforrástípus támogatja-e a [címkéket](tag-resources.md). A címkével ellátott oszlopban szereplő **címke jelzi,** hogy az erőforrástípus rendelkezik-e tulajdonsággal a címkéhez. A **címke a Cost jelentésben** feliratú oszlop jelzi, hogy az erőforrástípus átadja-e a címkét a Cost jelentésnek. A költségeket címkék alapján tekintheti meg a [Cost Management Cost Analysis](../../cost-management-billing/costs/group-filter.md) és az [Azure számlázási számlájában és a napi használati adatokban](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
@@ -1565,6 +1565,9 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | munkaterületek/modellek/verziók | Nem | Nem |
 > | munkaterületek/onlineEndpoints | Igen | Yes |
 > | munkaterületek/onlineEndpoints/központi telepítések | Igen | Yes |
+ 
+> [!NOTE]
+> A munkaterület-címkék nem terjednek ki a számítási fürtökre és a számítási példányokra. 
 
 ## <a name="microsoftmaintenance"></a>Microsoft. Maintenance
 

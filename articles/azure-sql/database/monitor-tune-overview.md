@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: wiassaf, sstein
 ms.date: 09/30/2020
-ms.openlocfilehash: 3d28cf1a89ff455cfbed26aad234607ec8cd7e63
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 6b56da68b10bc40304097fbe9eeaf200d422b663
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490567"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592698"
 ---
 # <a name="monitoring-and-performance-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Monitorozás és a teljesítmény finomhangolása az Azure SQL Database-ben és a felügyelt Azure SQL-példányban
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -99,11 +99,11 @@ A diagnosztikai beállításokat a mérőszámok és az erőforrás-naplók a k�
 
 ### <a name="log-analytics-workspace-in-azure-monitor"></a>Log Analytics munkaterület a Azure Monitor
 
-A metrikák és az erőforrás-naplók a [Azure Monitor log Analytics munkaterületére](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)is továbbíthatók. Az itt továbbított adatfolyamokat az [SQL Analytics](../../azure-monitor/insights/azure-sql.md)is felhasználhatja, ami egy kizárólag Felhőbeli figyelési megoldás, amely a teljesítményadatokat, a riasztásokat és a kockázatcsökkentő ajánlásokat tartalmazó adatbázisok intelligens figyelését teszi lehetővé. A Log Analytics munkaterületre továbbított adatok elemezhetők más figyelési adatokkal, és lehetővé teszik más Azure Monitor funkciók, például a riasztások és a vizualizációk kihasználása is.
+A metrikák és az erőforrás-naplók a [Azure Monitor log Analytics munkaterületére](../../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)is továbbíthatók. Az itt továbbított adatfolyamokat az [SQL Analytics](../../azure-monitor/insights/azure-sql.md)is felhasználhatja, ami egy kizárólag Felhőbeli figyelési megoldás, amely a teljesítményadatokat, a riasztásokat és a kockázatcsökkentő ajánlásokat tartalmazó adatbázisok intelligens figyelését teszi lehetővé. A Log Analytics munkaterületre továbbított adatok elemezhetők más figyelési adatokkal, és lehetővé teszik más Azure Monitor funkciók, például a riasztások és a vizualizációk kihasználása is.
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
 
-A metrikákat és az erőforrás-naplókat továbbíthatja az [Azure Event Hubsba](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs). Adatfolyam-diagnosztikai telemetria az Event hubok számára a következő funkciók biztosításához:
+A metrikákat és az erőforrás-naplókat továbbíthatja az [Azure Event Hubsba](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs). Adatfolyam-diagnosztikai telemetria az Event hubok számára a következő funkciók biztosításához:
 
 - **Naplókat streamelhet külső naplózási és telemetriarendszerekbe**
 
@@ -117,13 +117,13 @@ A metrikákat és az erőforrás-naplókat továbbíthatja az [Azure Event Hubsb
 
 ### <a name="azure-storage"></a>Azure Storage
 
-Stream-metrikák és erőforrás-naplók az [Azure Storage](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)-ba. Az Azure Storage használatával nagy mennyiségű diagnosztikai telemetria archiválható az előző két folyamatos átviteli lehetőség díjainak töredékéért.
+Stream-metrikák és erőforrás-naplók az [Azure Storage](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)-ba. Az Azure Storage használatával nagy mennyiségű diagnosztikai telemetria archiválható az előző két folyamatos átviteli lehetőség díjainak töredékéért.
 
 ## <a name="use-extended-events"></a>Kiterjesztett események használata 
 
 Emellett a speciális figyeléshez és hibaelhárításhoz is használhatja a SQL Server [kiterjesztett eseményeit](/sql/relational-databases/extended-events/extended-events) . A kiterjesztett események architektúrája lehetővé teszi a felhasználók számára, hogy a teljesítménnyel kapcsolatos problémák elhárításához vagy azonosításához szükséges mennyiségű vagy kevés adatot gyűjtsenek. További információ a Azure SQL Database kiterjesztett eseményeinek használatáról: [kiterjesztett események a Azure SQL Databaseban](xevent-db-diff-from-svr.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az önálló és a készletezett adatbázisokra vonatkozó intelligens teljesítménnyel kapcsolatos javaslatokról az [adatbázis-tanácsadó teljesítményével kapcsolatos javaslatok](database-advisor-implement-performance-recommendations.md)című témakörben olvashat bővebben.
 - Az adatbázis teljesítményének automatikus és a teljesítménnyel kapcsolatos problémák kiváltó okának elemzésével kapcsolatos további információkért lásd: [Azure SQL Intelligent Insights](intelligent-insights-overview.md).

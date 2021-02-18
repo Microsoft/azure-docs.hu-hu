@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: 845ff6f0905b232b9ec68dbe127ef7f47a6ad898
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 226ca943554ca24f3332f24f5a9baf571b432917
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916784"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590624"
 ---
 # <a name="continuously-export-security-center-data"></a>Security Center-adatfeldolgozás folyamatos exportálása
 
@@ -185,7 +185,7 @@ Az exportált adattípusok esemény-sémáinak megtekintéséhez keresse fel a [
 
 ##  <a name="view-exported-alerts-and-recommendations-in-azure-monitor"></a>Az exportált riasztások és javaslatok megtekintése Azure Monitor
 
-Azt is megteheti, hogy megtekinti az exportált biztonsági riasztásokat és/vagy javaslatokat [Azure monitorban](../azure-monitor/platform/alerts-overview.md). 
+Azt is megteheti, hogy megtekinti az exportált biztonsági riasztásokat és/vagy javaslatokat [Azure monitorban](../azure-monitor/alerts/alerts-overview.md). 
 
 Azure Monitor egységes riasztási élményt nyújt számos Azure-riasztáshoz, beleértve a diagnosztikai naplót, a metrikus riasztásokat és az egyéni riasztásokat Log Analytics munkaterület-lekérdezések alapján.
 
@@ -195,13 +195,13 @@ Ha Azure Monitor Security Center riasztásait és javaslatait szeretné megtekin
 
     ![Azure Monitor riasztások lapja](./media/continuous-export/azure-monitor-alerts.png)
 
-1. A szabály létrehozása lapon konfigurálja az új szabályt (ugyanúgy, mint a [naplózási riasztási szabály konfigurálása a Azure monitorban](../azure-monitor/platform/alerts-unified-log.md)):
+1. A szabály létrehozása lapon konfigurálja az új szabályt (ugyanúgy, mint a [naplózási riasztási szabály konfigurálása a Azure monitorban](../azure-monitor/alerts/alerts-unified-log.md)):
 
     * Az **erőforrás** mezőben válassza ki azt a log Analytics munkaterületet, amelyhez biztonsági riasztásokat és javaslatokat exportált.
 
     * A **feltétel** beállításnál válassza az **egyéni naplók keresése** lehetőséget. A megjelenő oldalon konfigurálja a lekérdezést, az lookback időszakot és a gyakorisági időszakot. A keresési lekérdezésben beírhatja a *SecurityAlert* vagy a *SecurityRecommendation* kifejezést, hogy lekérdezze azokat az adattípusokat, amelyek Security Center folyamatos exportálást végeznek, amikor engedélyezi a folyamatos exportálást log Analytics szolgáltatásba. 
     
-    * Megadhatja az aktiválni kívánt [műveleti csoportot](../azure-monitor/platform/action-groups.md) is. A műveleti csoportok elindíthatják az e-mailek küldését, a ITSM jegyeket, a webhookokat és egyebeket.
+    * Megadhatja az aktiválni kívánt [műveleti csoportot](../azure-monitor/alerts/action-groups.md) is. A műveleti csoportok elindíthatják az e-mailek küldését, a ITSM jegyeket, a webhookokat és egyebeket.
     ![Azure Monitor riasztási szabály](./media/continuous-export/azure-monitor-alert-rule.png)
 
 Ekkor megjelenik az új Azure Security Center riasztások vagy javaslatok (a beállított folyamatos exportálási szabályoktól és a Azure Monitor riasztási szabályban megadott feltételtől függően) Azure Monitor riasztásokban, a műveleti csoport automatikus indításával (ha meg van adva).

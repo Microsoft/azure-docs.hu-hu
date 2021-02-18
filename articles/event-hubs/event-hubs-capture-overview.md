@@ -2,13 +2,13 @@
 title: Folyamatos átviteli események rögzítése – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk áttekintést nyújt a capture szolgáltatásról, amely lehetővé teszi az Azure-Event Hubs keresztüli adatfolyamok rögzítését.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 32741fdd98ec79c38568ff5a6c4fa476f27d794b
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.date: 02/16/2021
+ms.openlocfilehash: 9f0ec1223c06b908a9aa9f3ac5c5b19ead2fe962
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912616"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595949"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Események rögzítése Azure-Event Hubs az Azure-ban Blob Storage vagy Azure Data Lake Storage
 Az Azure Event Hubs lehetővé teszi, hogy automatikusan rögzítsen egy [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) -ban található Event Hubs adatfolyam-adatait, vagy [Azure Data Lake Storage 1. vagy 2. generációs](https://azure.microsoft.com/services/data-lake-store/) fiókot, és a rugalmasságot az idő vagy a méret megadásával. A rögzítés beállítása gyorsan elvégezhető, ezért a futtatásához nincs szükség felügyeleti költségekre, és a rendszer automatikusan méretezi Event Hubs [átviteli egységekkel](event-hubs-scalability.md#throughput-units). A Event Hubs Capture a legegyszerűbb módszer az adatfolyamok Azure-ba való betöltésére, és lehetővé teszi az adatfeldolgozásra koncentrálva az adatrögzítés helyett.
@@ -53,7 +53,7 @@ A konfigurálást követően Event Hubs rögzítés automatikusan elindul, amiko
 
 ## <a name="setting-up-event-hubs-capture"></a>Event Hubs rögzítésének beállítása
 
-A rögzítést az Event hub létrehozási idején konfigurálhatja a [Azure Portal](https://portal.azure.com)használatával, vagy Azure Resource Manager sablonok használatával. További információkat az következő cikkekben talál:
+A rögzítést az Event hub létrehozási idején konfigurálhatja a [Azure Portal](https://portal.azure.com)használatával, vagy Azure Resource Manager sablonok használatával. További információért tekintse át a következő cikkeket:
 
 - [Az Event Hubs Capture engedélyezése az Azure Portal használatával](event-hubs-capture-enable-through-portal.md)
 - [Event Hubs-névtér létrehozása egy eseményközponttal és a Rögzítés funkció engedélyezése az Azure Resource Manager-sablonjának használatával](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
@@ -79,13 +79,7 @@ Az Azure Blob Storage natív támogatása elérhető, amely megkönnyíti az ada
 
 [Apache Drill: Azure Blob Storage beépülő modul][Apache Drill: Azure Blob Storage Plugin]
 
-A rögzített fájlok lekéréséhez létrehozhat és futtathat egy virtuális gépet, amely az Apache-részletezés használatával engedélyezhető egy tárolón keresztül az Azure Blob Storage eléréséhez:
-
-https://github.com/yorek/apache-drill-azure-blob
-
-Teljes körű minta érhető el a streaming on Scale repositoryban:
-
-[Streaming on Scale: Event Hubs Capture]
+A rögzített fájlok egyszerű lekérdezéséhez létrehozhat és futtathat egy virtuális gépet, amely az Apache-részletezés használatával engedélyezhető egy tárolón keresztül az Azure Blob Storage eléréséhez. Tekintse meg a következő mintát: nagy [léptékű Streaming Event Hubs rögzítéssel](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-capture).
 
 ### <a name="use-apache-spark"></a>Apache Spark használata
 
@@ -160,4 +154,4 @@ Ismerje meg, hogyan engedélyezheti ezt a funkciót a Azure Portal és a Azure R
 [HDInsight: Address files in Azure storage]:https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-blob-storage
 [Azure Databricks: Azure Blob Storage]:https://docs.databricks.com/spark/latest/data-sources/azure/azure-storage.html
 [Apache Drill: Azure Blob Storage Plugin]:https://drill.apache.org/docs/azure-blob-storage-plugin/
-[Streaming on Scale: Event Hubs Capture]:https://github.com/yorek/streaming-at-scale/tree/master/event-hubs-capture
+[Streaming at Scale: Event Hubs Capture]:https://github.com/yorek/streaming-at-scale/tree/master/event-hubs-capture

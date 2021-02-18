@@ -3,12 +3,12 @@ title: Figyelő Azure Batch
 description: Ismerje meg az Azure monitoring Services, a metrikák, a diagnosztikai naplók és a Azure Batch további figyelési funkcióit.
 ms.topic: how-to
 ms.date: 04/05/2018
-ms.openlocfilehash: 9387d4894dbf06445fd43722353ca7ae98607359
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b926f9c6d173cd0b8d886047eae490e4a151988f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86144936"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595432"
 ---
 # <a name="monitor-batch-solutions"></a>Batch-megoldások monitorozása
 
@@ -18,15 +18,15 @@ Az Azure-erőforrások figyeléséhez elérhető Azure-összetevők és-szolgál
 
 ## <a name="subscription-level-monitoring"></a>Előfizetés szintű figyelés
 
-Az előfizetési szinten, amely tartalmazza a Batch-fiókokat, az [Azure-tevékenység naplója](../azure-monitor/platform/platform-logs-overview.md) [több kategóriában](../azure-monitor/platform/activity-log.md#view-the-activity-log)gyűjti az operatív események adatait.
+Az előfizetési szinten, amely tartalmazza a Batch-fiókokat, az [Azure-tevékenység naplója](../azure-monitor/essentials/platform-logs-overview.md) [több kategóriában](../azure-monitor/essentials/activity-log.md#view-the-activity-log)gyűjti az operatív események adatait.
 
 A Batch-fiókok esetében a műveletnapló a fiókok létrehozásával és törlésével, valamint a kulcskezelő szolgáltatással kapcsolatos eseményeket gyűjti.
 
-Az események a tevékenység naplóból való beolvasásának egyik módja a Azure Portal használata. Kattintson **a minden szolgáltatás**  >  **tevékenység napló**elemre. Vagy az Azure CLI-vel, a PowerShell-parancsmagokkal vagy a Azure Monitor REST APIával kapcsolatos eseményeket kérdezheti le. Exportálhatja a tevékenység naplóját is, vagy konfigurálhatja a [tevékenység naplójának riasztásait](../azure-monitor/platform/alerts-activity-log.md).
+Az események a tevékenység naplóból való beolvasásának egyik módja a Azure Portal használata. Kattintson **a minden szolgáltatás**  >  **tevékenység napló** elemre. Vagy az Azure CLI-vel, a PowerShell-parancsmagokkal vagy a Azure Monitor REST APIával kapcsolatos eseményeket kérdezheti le. Exportálhatja a tevékenység naplóját is, vagy konfigurálhatja a [tevékenység naplójának riasztásait](../azure-monitor/alerts/alerts-activity-log.md).
 
 ## <a name="batch-account-level-monitoring"></a>Batch-fiók szintű figyelés
 
-Az egyes batch-fiókokat a [Azure monitor](../azure-monitor/overview.md)funkcióival figyelheti. Azure Monitor a Batch-fiók szintjén (például készletekben, feladatokban és feladatokban) lévő erőforrások [mérőszámait](../azure-monitor/platform/data-platform-metrics.md) és opcionálisan [diagnosztikai naplóit](../azure-monitor/platform/platform-logs-overview.md) gyűjti. Az adatok gyűjtése és felhasználása manuálisan vagy programozott módon a Batch-fiókban lévő tevékenységek figyeléséhez és a problémák diagnosztizálásához. Részletekért lásd: [Batch-metrikák, riasztások és naplók a diagnosztika kiértékeléséhez és figyeléséhez](batch-diagnostics.md).
+Az egyes batch-fiókokat a [Azure monitor](../azure-monitor/overview.md)funkcióival figyelheti. Azure Monitor a Batch-fiók szintjén (például készletekben, feladatokban és feladatokban) lévő erőforrások [mérőszámait](../azure-monitor/essentials/data-platform-metrics.md) és opcionálisan [diagnosztikai naplóit](../azure-monitor/essentials/platform-logs-overview.md) gyűjti. Az adatok gyűjtése és felhasználása manuálisan vagy programozott módon a Batch-fiókban lévő tevékenységek figyeléséhez és a problémák diagnosztizálásához. Részletekért lásd: [Batch-metrikák, riasztások és naplók a diagnosztika kiértékeléséhez és figyeléséhez](batch-diagnostics.md).
  
 > [!NOTE]
 > A metrikák alapértelmezés szerint a Batch-fiókban, további konfiguráció nélkül érhetők el, és 30 napos múlttal rendelkeznek. Engedélyeznie kell a diagnosztikai naplózást egy batch-fiókhoz, és további költségek merülhetnek fel a diagnosztikai naplózási információk tárolásához vagy feldolgozásához. 
@@ -58,7 +58,7 @@ A Batch-alkalmazásokban a Batch API-k segítségével figyelheti vagy lekérdez
 * A [Batch Explorer](https://github.com/Azure/BatchExplorer) egy ingyenes, gazdag funkcionalitású, önálló ügyfél-eszköz, amely a Azure batch alkalmazások létrehozását, hibakeresését és figyelését segíti elő. Töltse le a [telepítőcsomagot](https://azure.github.io/BatchExplorer/) Mac, Linux vagy Windows rendszerre. Opcionálisan konfigurálhatja a Batch-megoldást úgy, hogy az Application Insights adatait, például a virtuális gépek teljesítményszámlálói a Batch Explorerben [jelenjenek meg](https://github.com/Azure/batch-insights) .
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megismerheti a Batch-megoldások fejlesztéséhez rendelkezésre álló [Batch API-kat és eszközöket](batch-apis-tools.md).
 * További információ a Batch szolgáltatással történő [diagnosztikai naplózásról](batch-diagnostics.md) .

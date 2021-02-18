@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: dd54459cef3d6f20180b4c7c41eefbdd42c6980c
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: b58d96adba690084580fe11b42253a1e77370379
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807920"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595594"
 ---
 # <a name="azure-security-baseline-for-customer-lockbox-for-microsoft-azure"></a>Az Azure biztonsági alapkonfigurációja Ügyfélszéf for Microsoft Azure
 
@@ -164,7 +164,7 @@ A Ügyfélszéf által létrehozott tevékenységek naplóinak előkészítése 
 
 **Útmutató**: Azure monitorban a szervezet megfelelőségi előírásai szerint állítsa be log Analytics munkaterületek naplózásának megőrzési időtartamát a Ügyfélszéfhoz.
 
-* [Napló-megőrzési paraméterek beállítása](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Napló-megőrzési paraméterek beállítása](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -186,7 +186,7 @@ A Ügyfélszéf által létrehozott tevékenységek naplóinak előkészítése 
 
 * [Naplók naplózása Ügyfélszéf](./customer-lockbox-overview.md#auditing-logs)
 
-* [Riasztás a log Analytics-naplófájlok adatkezeléséről](../../azure-monitor/learn/tutorial-response.md)
+* [Riasztás a log Analytics-naplófájlok adatkezeléséről](../../azure-monitor/alerts/tutorial-response.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -461,9 +461,9 @@ Ezt a folyamatot leegyszerűsítheti Azure Active Directory felhasználói fiók
 
 * [A naplózás engedélyezése a Ügyfélszéfban](./customer-lockbox-overview.md)
 
-* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Riasztások létrehozása a Azure Monitorban](../../azure-monitor/platform/alerts-activity-log.md)
+* [Riasztások létrehozása a Azure Monitorban](../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Az Azure Security Center monitorozása**: Igen
 

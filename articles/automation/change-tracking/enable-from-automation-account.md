@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 64eace72b6ea203d4052c39404bcbd7ce4c4bfa0
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 32fb95c88d632cc2c51cd2390f0244e9c1927051
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055161"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585889"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-automation-account"></a>A Change Tracking és az Inventory engedélyezése Automation-fiókból
 
@@ -53,7 +53,7 @@ Az Azure-ban nem szereplő gépeket manuálisan kell hozzáadni. Javasoljuk, hog
 
 1. Az Automation-fiókban válassza a **leltár** vagy a **változások követése** lehetőséget a **konfiguráció** felügyelete alatt.
 
-2. Kattintson a **nem Azure-beli gép hozzáadása** lehetőségre. Ez a művelet egy új böngészőablakot nyit meg, amely [útmutatást nyújt a Windows log Analytics ügynökének telepítésére és konfigurálására](../../azure-monitor/platform/log-analytics-agent.md) , hogy a gép megkezdhesse a Change Tracking és a leltározási műveletek bejelentését. Ha olyan gépet engedélyez, amelyet jelenleg Operations Manager felügyel, nincs szükség új ügynökre, és a munkaterület adatai bekerülnek a meglévő ügynökbe.
+2. Kattintson a **nem Azure-beli gép hozzáadása** lehetőségre. Ez a művelet egy új böngészőablakot nyit meg, amely [útmutatást nyújt a Windows log Analytics ügynökének telepítésére és konfigurálására](../../azure-monitor/agents/log-analytics-agent.md) , hogy a gép megkezdhesse a Change Tracking és a leltározási műveletek bejelentését. Ha olyan gépet engedélyez, amelyet jelenleg Operations Manager felügyel, nincs szükség új ügynökre, és a munkaterület adatai bekerülnek a meglévő ügynökbe.
 
 ## <a name="enable-machines-in-the-workspace"></a>Gépek engedélyezése a munkaterületen
 

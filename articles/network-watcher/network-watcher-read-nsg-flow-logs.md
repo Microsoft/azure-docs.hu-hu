@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: d465106725e9b936172fb74e1cc265c14942f662
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 27f94c43266fe324016a73e2e6d31e8488457416
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898096"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593043"
 ---
 # <a name="read-nsg-flow-logs"></a>NSG-forgalom naplóinak olvasása
 
@@ -189,6 +189,6 @@ Ez a forgatókönyv egy példa arra, hogyan olvashat be bejegyzéseket a NSG flo
 
 Látogasson el a [rugalmas verem használatára](network-watcher-visualize-nsg-flow-logs-open-source-tools.md), [használja a Grafana](network-watcher-nsg-grafana.md), és a [Graylog](network-watcher-analyze-nsg-flow-logs-graylog.md) használatával további információkat tudhat meg a NSG-folyamatok megtekintésének módjairól. Itt talál egy nyílt forráskódú Azure-függvényt, amely a Blobok közvetlen felhasználására és különböző log Analytics-felhasználókra való kibocsátására szolgál: az [Azure Network WATCHER NSG flow naplók összekötője](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector).
 
-Az [Azure Traffic Analytics](./traffic-analytics.md) használatával bepillantást nyerhet a forgalmi folyamatokra. A Traffic Analytics a [log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md) használatával teszi elérhetővé a forgalom folyamatát.
+Az [Azure Traffic Analytics](./traffic-analytics.md) használatával bepillantást nyerhet a forgalmi folyamatokra. A Traffic Analytics a [log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) használatával teszi elérhetővé a forgalom folyamatát.
 
 További információ a Storage-Blobok látogatásáról: [Azure functions blob Storage-kötések](../azure-functions/functions-bindings-storage-blob.md)

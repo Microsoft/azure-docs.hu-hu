@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/24/2020
 ms.author: ccompy
 ms.custom: seodec18, references_regions
-ms.openlocfilehash: e5f9cd361d4f130d725f608614159d67fb7b56d1
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: ec506546b52a2d137d448f07f4b7a6827c01b4d2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026360"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594116"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service Environment zárolása
 
@@ -100,7 +100,7 @@ Azure Firewall küldhet naplókat az Azure Storage-ba, az Event hub-ba vagy a Az
 AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 ```
 
-Ha nem ismeri az összes alkalmazás-függőséget, akkor hasznos, ha a Azure Firewall Azure Monitor naplókkal való integrációja során először működik. További tudnivalókat Azure Monitor naplók [elemzése a naplófájlok elemzéséről Azure monitor](../../azure-monitor/log-query/log-query-overview.md).
+Ha nem ismeri az összes alkalmazás-függőséget, akkor hasznos, ha a Azure Firewall Azure Monitor naplókkal való integrációja során először működik. További tudnivalókat Azure Monitor naplók [elemzése a naplófájlok elemzéséről Azure monitor](../../azure-monitor/logs/log-query-overview.md).
  
 ## <a name="dependencies"></a>Függőségek
 

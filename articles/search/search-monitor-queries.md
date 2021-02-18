@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: a5589a46a63437fb395db280222f8a9e84775df3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 169a90c12b30e0d083ce5c53ab7c6dd2495c4c23
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935075"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592389"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Lekérdezési kérelmek figyelése az Azure Cognitive Search
 
@@ -36,7 +36,7 @@ A kötet a **másodpercenkénti keresési lekérdezések** (QPS) alapján mérhe
 
 A lekérdezések végrehajtása általában ezredmásodpercben történik, ezért a mérőszámokban csak a másodpercben lekérdezett lekérdezések jelennek meg.
 
-| Aggregáció típusa | Leírás |
+| Aggregáció típusa | Description |
 |------------------|-------------|
 | Átlag | A lekérdezés végrehajtásának időpontjában egy percen belül eltelt másodpercek átlagos száma.|
 | Darabszám | Az egyperces intervallumon belül a naplóba kibocsátott metrikák száma. |
@@ -100,7 +100,7 @@ Az alábbi képernyőképen az első szám a darabszám (vagy a naplóba eljutta
 
 A jelenlegi számok gyors áttekintéséhez a szolgáltatás áttekintő lapjának **figyelés** lapja három mérőszámot jelenít meg (**keresési késés**, **keresési lekérdezések másodpercenként (keresési egység alapján)**, a **szabályozott keresési lekérdezések százalékos aránya**) a rögzített intervallumok között óra, nap és hét szerint, az Összesítés típusának módosításához.
 
-A mélyebb feltáráshoz nyissa meg a metrikák Explorert a **figyelés** menüből, hogy a trendek és rendellenességek feltárásához a rétegek, a nagyítás és az adatok megjelenítése is megtörténjen. További információ a metrikák Explorerrel: az oktatóanyag elvégzése [a metrikák diagram létrehozásához](../azure-monitor/learn/tutorial-metrics-explorer.md).
+A mélyebb feltáráshoz nyissa meg a metrikák Explorert a **figyelés** menüből, hogy a trendek és rendellenességek feltárásához a rétegek, a nagyítás és az adatok megjelenítése is megtörténjen. További információ a metrikák Explorerrel: az oktatóanyag elvégzése [a metrikák diagram létrehozásához](../azure-monitor/essentials/tutorial-metrics-explorer.md).
 
 1. A figyelés szakaszban válassza a **metrikák** lehetőséget, hogy megnyissa a metrikák Explorert a keresési szolgáltatás hatókörével.
 
@@ -163,9 +163,9 @@ Egy keresési szolgáltatás esetében gyakori, hogy metrikai riasztást hozzon 
 
 Egy adott replika-partíciós konfiguráció korlátainak leküldésekor a rendszer a lekérdezési mennyiségi küszöbértékekhez (QPS) tartozó riasztások beállítását is hasznosnak tekinti.
 
-1. A figyelés szakaszban válassza a **riasztások** elemet, majd kattintson az **+ új riasztási szabály**elemre. Győződjön meg arról, hogy a keresési szolgáltatás az erőforrásként van kiválasztva.
+1. A figyelés szakaszban válassza a **riasztások** elemet, majd kattintson az **+ új riasztási szabály** elemre. Győződjön meg arról, hogy a keresési szolgáltatás az erőforrásként van kiválasztva.
 
-1. A feltétel területen kattintson a **Hozzáadás**gombra.
+1. A feltétel területen kattintson a **Hozzáadás** gombra.
 
 1. Adja meg a jel logikáját. A jel típusa mezőben válassza a **metrikák** lehetőséget, majd válassza ki a jelet.
 
@@ -187,7 +187,7 @@ Ha e-mailes értesítést adott meg, a "Microsoft Azure" üzenet jelenik meg az 
 
 Power BI is an analytical reporting tool useful for visualizing data, including log information. If you are collecting data in Blob storage, a Power BI template makes it easy to spot anomalies or trends. Use this link to download the template. -->
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha még nem tette meg, tekintse át a keresési szolgáltatás figyelésének alapjait, és ismerkedjen meg a teljes körű felügyeleti funkciókkal.
 

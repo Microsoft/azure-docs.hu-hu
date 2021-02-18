@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 648e7991784212e4fe781efd5d9f01cb571c5012
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d7753de473d90c45fecb20403352a594ef52dafe
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807852"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586304"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>App Service Azure biztonsági alapterve
 
@@ -241,9 +241,9 @@ Tekintse át a részletes biztonsági riasztásokat és javaslatokat Security Ce
 
 Javasoljuk, hogy hozzon létre egy folyamatot automatizált eszközökkel a hálózati erőforrás-konfigurációk figyelésére és a változások gyors észlelésére.
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/platform/alerts-activity-log.md)
+- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Biztonsági riasztások és javaslatok exportálása](../security-center/continuous-export.md)
 
@@ -280,7 +280,7 @@ A vezérlési sík szintjén végrehajtott összes írási művelethez (PUT, POS
 
 Emellett a Azure Key Vault központosított titkos felügyeletet biztosít a hozzáférési házirendekkel és a naplózási előzményekkel. 
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/platform/activity-log.md)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 - [A Azure App Service diagnosztikai beállításainak engedélyezése](troubleshoot-diagnostic-logs.md)
 
@@ -293,7 +293,7 @@ Emellett a Azure Key Vault központosított titkos felügyeletet biztosít a hoz
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: a biztonsági napló tárolási adatmegőrzésének konfigurálása
 
 **Útmutató**: a Azure monitor a szervezet megfelelőségi előírásai szerint állítsa be a app Service erőforrásokhoz társított log Analytics munkaterületek naplózási megőrzési időtartamát.
-- [Napló-megőrzési paraméterek beállítása](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Napló-megőrzési paraméterek beállítása](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -309,7 +309,7 @@ Ha telepített egy webalkalmazási tűzfalat (WAF), akkor a valós idejű webalk
 
 Az Azure Sentinel, a skálázható és a Felhőbeli natív biztonsági információkkal foglalkozó esemény kezelése (SIEM) a különböző adatforrásokkal és összekötővel való integrálásra igény szerint. Az Azure Marketplace-en engedélyezheti és elküldheti a harmadik féltől származó biztonsági információkkal kapcsolatos esemény-kezelési megoldást.
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/platform/activity-log.md)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 - [A Application Insights engedélyezése](../azure-monitor/app/app-insights-overview.md)
 
@@ -640,7 +640,7 @@ Vegye figyelembe, hogy míg a helyileg csatlakoztatott lemezeket a webhelyek ide
 
 **Útmutató**: a Azure monitor és az Azure Activity log használatával riasztásokat hozhat létre az éles app Service alkalmazások és egyéb kritikus vagy kapcsolódó erőforrások változásairól.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/platform/alerts-activity-log.md)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
