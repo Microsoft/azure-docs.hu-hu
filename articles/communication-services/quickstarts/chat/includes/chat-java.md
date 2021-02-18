@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 6a075ae721d767faf25e4774dd545d36eedfaef4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1548b878d5b1261d2d4b91ed6c081c27845d99d1
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379664"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653517"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -83,6 +83,8 @@ A következő osztályok és felületek kezelik az Azure kommunikációs szolgá
 
 ## <a name="create-a-chat-client"></a>Csevegési ügyfél létrehozása
 Csevegési ügyfél létrehozásához használja a kommunikációs szolgáltatás végpontját és az előfeltételként létrehozott hozzáférési tokent. A felhasználói hozzáférési tokenek lehetővé teszik olyan ügyfélalkalmazások összeállítását, amelyek közvetlenül az Azure kommunikációs szolgáltatásokban vannak hitelesítve. Miután létrehozta ezeket a jogkivonatokat a kiszolgálón, továbbíthatja őket egy ügyfél-eszköznek. A CommunicationTokenCredential osztályt kell használnia a közös ügyféloldali függvénytárban, hogy átadja a tokent a csevegési ügyfelének. 
+
+További információ a [csevegési architektúráról](../../../concepts/chat/concepts.md)
 
 Az importálási utasítások hozzáadásakor ügyeljen arra, hogy csak a com. Azure. Communication. chat és a com. Azure. Communication. chat. models névtérből vegyen fel importokat, nem pedig a com. Azure. Communication. chat. implementációs névtérből. A Maven használatával létrehozott app. Java-fájlban a következő kódot használhatja a kezdéshez:
 

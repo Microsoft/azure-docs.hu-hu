@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 02/16/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: e038cdcb50c7ee15960c904c8e234d6917d02f3b
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 44473efbfb1c07c628c939fd05805ed92e691736
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706586"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651820"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Az Azure Import/Export szolgáltatás használata az adatok Azure Filesba történő importálásához
 
@@ -119,13 +119,13 @@ További mintákért lépjen a [minták a Journal-fájlokhoz](#samples-for-journ
 
 Az alábbi lépések végrehajtásával hozzon létre egy importálási feladatot a Azure Portal.
 1. Jelentkezzen be a következőre: https://portal.azure.com/ .
-2. Lépjen az **összes szolgáltatás > Storage > importálási/exportálási feladatok lehetőségre**.
+2. **Importálási/exportálási feladatok** keresése.
 
-    ![Importálási/exportálási ugrás](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
+    ![Importálási/exportálási feladatok keresése](./media/storage-import-export-data-to-blobs/import-to-blob-1.png)
 
-3. Kattintson az **importálási/exportálási feladatok létrehozása** lehetőségre.
+3. Válassza a **+ Új** lehetőséget.
 
-    ![Kattintson az Importálás/exportálás feladata elemre.](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
+    ![Új létrehozásához válassza az új lehetőséget. ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
 
 4. Az **alapjaiban**:
 
@@ -136,7 +136,7 @@ Az alábbi lépések végrehajtásával hozzon létre egy importálási feladato
     - Válasszon egy előfizetést.
     - Válasszon ki egy erőforráscsoportot.
 
-        ![Importálási feladatok létrehozása – 1. lépés](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
+        ![Importálási feladatok létrehozása – 1. lépés](./media/storage-import-export-data-to-blobs/import-to-blob-3.png)
 
 3. A **feladatok részletei**:
 
@@ -144,7 +144,7 @@ Az alábbi lépések végrehajtásával hozzon létre egy importálási feladato
     - Válassza ki azt a Storage-fiókot, amelybe be kívánja importálni az adatimportálást.
     - A lemorzsolódási helye automatikusan kitöltődik a kiválasztott Storage-fiók régiója alapján.
 
-       ![Importálási feladatok létrehozása – 2. lépés](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
+       ![Importálási feladatok létrehozása – 2. lépés](./media/storage-import-export-data-to-blobs/import-to-blob-4.png)
 
 4. **Visszaszállítási adatok**:
 
@@ -155,7 +155,7 @@ Az alábbi lépések végrehajtásával hozzon létre egy importálási feladato
         > [!TIP]
         > E-mail-cím egyetlen felhasználóhoz való megadása helyett adjon meg egy csoportos e-mailt. Ez biztosítja, hogy értesítést kapjon, még akkor is, ha a rendszergazda elhagyja.
 
-       ![Importálási feladatok létrehozása – 3. lépés](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
+       ![Importálási feladatok létrehozása – 3. lépés](./media/storage-import-export-data-to-blobs/import-to-blob-5.png)
 
 
 5. Az **összegzésben**:
@@ -163,7 +163,7 @@ Az alábbi lépések végrehajtásával hozzon létre egy importálási feladato
     - Adja meg az Azure-adatközpont szállítási címet a lemezek szállításához az Azure-ba. Győződjön meg arról, hogy a feladatok neve és a teljes cím szerepel a szállítási címkén.
     - Az importálási feladatok létrehozásának befejezéséhez kattintson **az OK** gombra.
 
-        ![Importálási feladatok létrehozása – 4. lépés](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
+        ![Importálási feladatok létrehozása – 4. lépés](./media/storage-import-export-data-to-blobs/import-to-blob-6.png)
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -384,7 +384,7 @@ Alább látható egy importálási példa.
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset-2.csv
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A feladatok és a meghajtó állapotának megtekintése](storage-import-export-view-drive-status.md)
 * [Importálási/exportálási követelmények áttekintése](storage-import-export-requirements.md)

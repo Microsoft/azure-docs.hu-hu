@@ -7,7 +7,7 @@
     - name: Üzenetküldő szolgáltatások összehasonlítása
       href: ../event-grid/compare-messaging-services.md
       maintainContext: true
-    - name: A Service Bus használata a Java Message Service (JMS) 2.0-val (előzetes verzió)
+    - name: 'A Service Bus használata Java Message Service-sel (JMS) 2,0'
       href: how-to-use-java-message-service-20.md
 - name: Rövid útmutatók
   items:
@@ -90,6 +90,10 @@
       href: service-bus-samples.md
 - name: Alapelvek
   items:
+    - name: 'Queues, topics, and subscriptions'
+      href: service-bus-queues-topics-subscriptions.md
+    - name: Témakörszűrők és -műveletek
+      href: topic-filters.md
     - name: Prémium szintű üzenettovábbítás
       href: service-bus-premium-messaging.md
     - name: Azure-üzenetsorok és Azure Service Bus-üzenetsorok összehasonlítása
@@ -158,12 +162,16 @@
       href: service-bus-create-namespace-portal.md
     - name: Fejlesztés
       items:
+        - name: Előfizetési szűrők és műveletek beállítása
+          href: service-bus-filter-examples.md
         - name: Üzenetkezelés
           items:
             - name: 'Queues, topics, and subscriptions'
               href: service-bus-queues-topics-subscriptions.md
-            - name: Java Message Service (JMS) 2.0-entitások (előzetes verzió)
+            - name: 'Java Message Service (JMS) 2,0 entitások'
               href: java-message-service-20-entities.md
+            - name: Java Message Service (JMS) fejlesztői guide.md
+              href: jms-developer-guide.md
             - name: 'Üzenetek, hasznos adatforgalom és szerializáció'
               href: service-bus-messages-payloads.md
             - name: 'Üzenetek átvitele, zárolása és elszámolása'
@@ -172,8 +180,6 @@
               href: message-sequencing.md
             - name: Üzenetek lejárata (élettartama)
               href: message-expiration.md
-        - name: Témakörszűrők és -műveletek
-          href: topic-filters.md
         - name: Migrálás standard névterekről prémium névterekre
           href: service-bus-migrate-standard-premium.md
         - name: Particionált üzenetsorok és témakörök

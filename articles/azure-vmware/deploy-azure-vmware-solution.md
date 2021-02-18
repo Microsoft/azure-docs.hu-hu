@@ -1,35 +1,27 @@
 ---
 title: Azure VMware-megoldás üzembe helyezése és konfigurálása
-description: Megtudhatja, hogyan használhatja a tervezési szakaszban összegyűjtött információkat az Azure VMware-megoldás saját felhőbe történő üzembe helyezéséhez.
+description: Megtudhatja, hogyan használhatja a tervezési szakaszban összegyűjtött információkat az Azure VMware-megoldás saját Felhőbeli üzembe helyezéséhez és konfigurálásához.
 ms.topic: tutorial
-ms.date: 12/24/2020
-ms.openlocfilehash: 4c6929ca59bae022642082e8382203a10bd41309
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.custom: contperf-fy21q3
+ms.date: 02/17/2021
+ms.openlocfilehash: bfd057a19ebe26a66d11b52ddf17c285a1f9a308
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100382055"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652734"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Azure VMware-megoldás üzembe helyezése és konfigurálása
 
-Ebben a cikkben a [tervezési szakaszban](production-ready-deployment-steps.md) található információkat fogja használni az Azure VMware-megoldás üzembe helyezéséhez. 
+Ebben a cikkben a [tervezési szakaszban](production-ready-deployment-steps.md) található információk segítségével telepítheti és konfigurálhatja az Azure VMware-megoldást. 
 
 >[!IMPORTANT]
 >Ha még nem adta meg az adatokat, lépjen vissza a [tervezés szakaszra](production-ready-deployment-steps.md) a folytatás előtt.
 
-## <a name="register-the-resource-provider"></a>Az erőforrás-szolgáltató regisztrálása
 
-[!INCLUDE [register-resource-provider-steps](includes/register-resource-provider-steps.md)]
+## <a name="create-an-azure-vmware-solution-private-cloud"></a>Azure VMware-megoldás saját felhő létrehozása
 
-
-## <a name="deploy-azure-vmware-solution"></a>Az Azure VMware Solution üzembe helyezése
-
-Használja az [Azure VMware megoldás üzembe helyezésének megtervezése](production-ready-deployment-steps.md) című cikkben összegyűjtött információkat:
-
->[!NOTE]
->Az Azure VMware-megoldás üzembe helyezéséhez az előfizetés minimális közreműködői szintjén kell lennie.
-
-[!INCLUDE [create-avs-private-cloud-azure-portal](includes/create-private-cloud-azure-portal-steps.md)]
+Kövesse az [Azure VMware Solution Private Cloud](tutorial-create-private-cloud.md) oktatóanyag előfeltételeit és lépéseit. A [Azure Portal](tutorial-create-private-cloud.md#azure-portal) vagy az [Azure parancssori](tutorial-create-private-cloud.md#azure-cli)felületének használatával létrehozhat egy Azure VMware-megoldáshoz tartozó saját felhőt is.  
 
 >[!NOTE]
 >Ennek a lépésnek a teljes körű áttekintéséhez tekintse meg az [Azure VMware-megoldást: üzembehelyezési](https://www.youtube.com/embed/gng7JjxgayI) videó.
@@ -60,7 +52,7 @@ Ha nem adott meg virtuális hálózatot az üzembe helyezési lépésben, és a 
 
 A Jump Box abban a virtuális hálózaton található, ahol az Azure VMware megoldás a ExpressRoute áramkörén keresztül csatlakozik.  Az Azure-ban nyissa meg a Jump Box hálózati adapterét, és [tekintse meg a hatályos útvonalakat](../virtual-network/manage-route-table.md#view-effective-routes).
 
-Az érvényben lévő útvonalak listájában az Azure VMware-megoldás üzembe helyezésének részeként létrehozott hálózatokat kell látnia. [A jelen cikk korábbi](#deploy-azure-vmware-solution) részében [ `/22` megadott hálózatról](production-ready-deployment-steps.md#ip-address-segment) származó több hálózat is megjelenik.
+Az érvényben lévő útvonalak listájában az Azure VMware-megoldás üzembe helyezésének részeként létrehozott hálózatokat kell látnia. A [privát felhő létrehozásakor](#create-an-azure-vmware-solution-private-cloud) [ `/22` megadott hálózatról](production-ready-deployment-steps.md#ip-address-segment) több hálózatot is láthat.  
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="Az Azure VMware-megoldásból az Azure-ba hirdetett hálózati útvonalak ellenőrzése Virtual Network" lightbox="media/pre-deployment/azure-vmware-solution-effective-routes.png":::
 

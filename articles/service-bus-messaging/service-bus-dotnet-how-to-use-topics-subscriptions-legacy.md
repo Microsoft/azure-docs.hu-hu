@@ -1,16 +1,16 @@
 ---
 title: Ismerkedés az Azure Service Bus-üzenettémákkal és előfizetésekkel | Microsoft Docs
 description: Írjon Service Bus-üzenettémákat és előfizetéseket használó C# .NET Core-konzolalkalmazást.
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 09/02/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 85eb8e6cdaa8636215c5df9d81dbecdca97a2501
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 28e94cdb0df0a18b41f4c8a0ded362b50df6dcac
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95819274"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652972"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Bevezetés a Service Bus-üzenettémák használatába
 Ez az oktatóanyag a következő lépéseken vezet végig:
@@ -364,7 +364,7 @@ Gratulálunk! A .NET Standard kódtár használatával létrehozott egy üzenett
 > [!NOTE]
 > [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg Service Bus [GitHub-adattárunkat, ahol további példákat talál](https://github.com/Azure/azure-service-bus/tree/master/samples), amelyek a Service Bus üzenetkezelési szolgáltatásának néhány speciális funkcióját mutatják be.
 
