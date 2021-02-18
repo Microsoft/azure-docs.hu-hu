@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 257656a29733972672570648d4317b7847fedff1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfe8026f099c341b68a1aa1fc5e3fac425e29403
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88997676"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578894"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature-in-windows-virtual-desktop-classic"></a>Log Analytics használata a Windows Virtual Desktop diagnosztikai szolgáltatásához (klasszikus)
 
@@ -32,9 +32,9 @@ Javasoljuk, hogy a Log Analytics használatával elemezze az Azure-ügyfél diag
 
 ## <a name="before-you-get-started"></a>A kezdés előtt
 
-Mielőtt a diagnosztikai szolgáltatással Log Analytics használni, [létre kell hoznia egy munkaterületet](../../azure-monitor/learn/quick-collect-windows-computer.md#create-a-workspace).
+Mielőtt a diagnosztikai szolgáltatással Log Analytics használni, [létre kell hoznia egy munkaterületet](../../azure-monitor/vm/quick-collect-windows-computer.md#create-a-workspace).
 
-Miután létrehozta a munkaterületet, kövesse a [Windows rendszerű számítógépek Összekapcsolásának Azure monitor](../../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key) a következő információk beszerzéséhez című témakör utasításait:
+Miután létrehozta a munkaterületet, kövesse a [Windows rendszerű számítógépek Összekapcsolásának Azure monitor](../../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key) a következő információk beszerzéséhez című témakör utasításait:
 
 - A munkaterület azonosítója
 - A munkaterület elsődleges kulcsa

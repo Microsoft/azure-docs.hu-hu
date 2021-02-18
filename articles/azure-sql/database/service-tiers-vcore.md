@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 01/15/2021
-ms.openlocfilehash: 35cdfdbdc04d0c88bc49c024ea7465537583e0d7
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c55e2d2d9eaeae441e8a7505d0f391ed0860cedf
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735511"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634192"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Virtuális mag-modell áttekintése – Azure SQL Database és az Azure SQL felügyelt példánya 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -34,7 +34,7 @@ A virtuális mag modellben található szolgáltatási rétegek beállításai k
 |-|**Általános célú**|**Üzletileg kritikus**|**Rugalmas skálázás**|
 |---|---|---|---|
 |A következőkre alkalmas|A legtöbb üzleti számítási feladat. Költséghatékony, kiegyensúlyozott és skálázható számítási és tárolási lehetőségeket nyújt. |Több elkülönített replika használatával a lehető legnagyobb rugalmasságot nyújtja az üzleti alkalmazások számára, és az adatbázis-replikák esetében a legmagasabb I/O-teljesítményt biztosítja.|A legtöbb üzleti számítási feladat nagy mértékben méretezhető tárolási és olvasási méretezési követelményekkel.  Nagyobb rugalmasságot biztosít a hibákhoz azáltal, hogy lehetővé teszi több elkülönített adatbázis-replika konfigurációját. |
-|Storage|Távoli tárterületet használ.<br/>**SQL Database kiépített számítás**:<br/>5 GB – 4 TB<br/>**Kiszolgáló nélküli számítás**:<br/>5 GB – 3 TB<br/>**SQL felügyelt példány**: 32 GB – 8 TB |A helyi SSD-tárolót használ.<br/>**SQL Database kiépített számítás**:<br/>5 GB – 4 TB<br/>**SQL felügyelt példány**:<br/>32 GB – 4 TB |A tárterület rugalmas automatikus növekedése igény szerint. Akár 100 TB tárterületet is támogat. A helyi SSD-tárolót használ a helyi puffer-készlet gyorsítótárához és a helyi adattároláshoz. Az Azure-beli távoli tárterületet használja végső hosszú távú adattárként. |
+|Tárolás|Távoli tárterületet használ.<br/>**SQL Database kiépített számítás**:<br/>5 GB – 4 TB<br/>**Kiszolgáló nélküli számítás**:<br/>5 GB – 3 TB<br/>**SQL felügyelt példány**: 32 GB – 8 TB |A helyi SSD-tárolót használ.<br/>**SQL Database kiépített számítás**:<br/>5 GB – 4 TB<br/>**SQL felügyelt példány**:<br/>32 GB – 4 TB |A tárterület rugalmas automatikus növekedése igény szerint. Akár 100 TB tárterületet is támogat. A helyi SSD-tárolót használ a helyi puffer-készlet gyorsítótárához és a helyi adattároláshoz. Az Azure-beli távoli tárterületet használja végső hosszú távú adattárként. |
 |IOPS és átviteli sebesség (hozzávetőleges)|**SQL Database**: az [önálló adatbázisok](resource-limits-vcore-single-databases.md) és a [rugalmas készletek](resource-limits-vcore-elastic-pools.md)erőforrás-korlátai.<br/>**SQL felügyelt példány**: lásd az [Azure SQL felügyelt példányok erőforrás-korlátainak áttekintése](../managed-instance/resource-limits.md#service-tier-characteristics)című témakört.|Tekintse meg az [önálló adatbázisok](resource-limits-vcore-single-databases.md) és a [rugalmas készletek](resource-limits-vcore-elastic-pools.md)erőforrás-korlátozásait.|A nagy kapacitású egy többrétegű architektúra, több szinten történő gyorsítótárazással. A hatékony IOPS és az átviteli sebesség a munkaterheléstól függ.|
 |Rendelkezésre állás|1 replika, nincsenek olvasási méretezésű replikák|3 replika, 1 [olvasási léptékű replika](read-scale-out.md),<br/>zóna – redundáns magas rendelkezésre állás (HA)|1 írható-olvasható replika, valamint 0-4 [-es olvasási léptékű replika](read-scale-out.md)|
 |Biztonsági másolatok|[Olvasási hozzáférés – geo-redundáns tárolás (ra-GRS)](../../storage/common/geo-redundant-design.md), 7-35 nap (alapértelmezés szerint 7 nap)|[Ra-GRS](../..//storage/common/geo-redundant-design.md), 7-35 nap (alapértelmezés szerint 7 nap)|Pillanatkép-alapú biztonsági másolatok az Azure-beli távoli tárolóban. A visszaállítja ezeket a pillanatképeket a gyors helyreállításhoz. A biztonsági másolatok azonnaliek, és nem befolyásolják a számítási I/O-teljesítményt. A visszaállítások gyorsak, és nem az adatmennyiség (óra vagy nap helyett percekben).|
@@ -204,7 +204,7 @@ További részletekért az [az SQL mi Update](/cli/azure/sql/mi#az-sql-mi-update
 
 A Gen4 hardverek fokozatos kiépítése [folyamatban](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/) van, és már nem érhető el az új üzemelő példányokhoz. Minden új adatbázist telepíteni kell a Gen5 hardveren.
 
-A Gen5 a világ legtöbb régiójában elérhető.
+A Gen5 a világ minden nyilvános régiójában elérhető.
 
 #### <a name="fsv2-series"></a>Fsv2 sorozat
 
@@ -251,7 +251,7 @@ A DC sorozat a következő régiókban érhető el: Közép-Kanada, Kelet-Kanada
 
 Ha egy jelenleg nem támogatott régióban található DC-sorozatra van szüksége, [küldjön egy támogatási jegyet](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) a [kérelmek kvótájának a Azure SQL Database és az SQL felügyelt példányra való növelésére](quota-increase-request.md)vonatkozó utasításokat követve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépésként tekintse meg a következőt: 
 - [SQL Database létrehozása a Azure Portal használatával](single-database-create-quickstart.md)

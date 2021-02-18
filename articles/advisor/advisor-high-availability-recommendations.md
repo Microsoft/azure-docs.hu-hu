@@ -3,12 +3,12 @@ title: Az Advisor-alkalmazás megbízhatóságának javítása
 description: A Azure Advisor használatával biztosíthatja és javíthatja a megbízhatóságot az üzleti szempontból kritikus fontosságú Azure-környezetekben.
 ms.topic: article
 ms.date: 09/27/2020
-ms.openlocfilehash: 0ced690ae735a281fdf8b1c3a020ff8c63ce469b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c96b47f1ee145129f4c14c6646f93abeb8a5aac9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078034"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579974"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Az alkalmazás megbízhatóságának javítása Azure Advisor használatával
 
@@ -68,7 +68,7 @@ Ha redundanciát szeretne biztosítani az alkalmazás számára, javasoljuk, hog
 
 ## <a name="ensure-availability-set-fault-tolerance-temporarily-disabled"></a>Rendelkezésre állási csoport hibatűrésének biztosítása (átmenetileg letiltva)
 
-Ha redundanciát szeretne biztosítani az alkalmazás számára, javasoljuk, hogy legalább két virtuális gépet egy rendelkezésre állási csoportba csoportosítson. Az Advisor egyetlen virtuális gépet tartalmazó rendelkezésre állási csoportokat azonosít, és egy vagy több virtuális gép hozzáadását javasolja.Ez a konfiguráció biztosítja, hogy a tervezett vagy nem tervezett karbantartás során legalább egy virtuális gép elérhető legyen, és megfelel az Azure-beli virtuális gépek SLA-nak.Dönthet úgy, hogy létrehoz egy virtuális gépet, vagy egy meglévő virtuális gépet ad hozzá a rendelkezésre állási csoporthoz.  
+Ha redundanciát szeretne biztosítani az alkalmazás számára, javasoljuk, hogy legalább két virtuális gépet egy rendelkezésre állási csoportba csoportosítson. Az Advisor egyetlen virtuális gépet tartalmazó rendelkezésre állási csoportokat azonosít, és egy vagy több virtuális gép hozzáadását javasolja. Ez a konfiguráció biztosítja, hogy a tervezett vagy nem tervezett karbantartás során legalább egy virtuális gép elérhető legyen, és megfelel az Azure-beli virtuális gépek SLA-nak. Dönthet úgy, hogy létrehoz egy virtuális gépet, vagy egy meglévő virtuális gépet ad hozzá a rendelkezésre állási csoporthoz.  
 
 ## <a name="use-managed-disks-to-improve-data-reliability-temporarily-disabled"></a>Felügyelt lemezek használata az adatmegbízhatóság javítására (átmenetileg letiltva)
 
@@ -76,7 +76,7 @@ Azok a virtuális gépek, amelyek olyan rendelkezésre állási csoportban talá
 
 ## <a name="repair-invalid-log-alert-rules"></a>Érvénytelen naplózási riasztási szabályok javítása
 
-Azure Advisor észleli azokat a naplózási riasztási szabályokat, amelyekben érvénytelen lekérdezések vannak megadva a feltételek szakaszban. Azure Monitor naplózási riasztási szabályok lekérdezéseket futtatnak a megadott gyakorisággal és riasztásokkal az eredmények alapján. A lekérdezések idővel érvénytelenné válhatnak a hivatkozott erőforrások, táblák vagy parancsok változásai miatt. Az Advisor a riasztási lekérdezések helyesbítéseit javasolja, hogy megakadályozza a szabályok automatikus letiltását és a figyelési lefedettség biztosítását. További információ: [riasztási szabályok hibaelhárítása](../azure-monitor/platform/alerts-troubleshoot-log.md#query-used-in-a-log-alert-isnt-valid)
+Azure Advisor észleli azokat a naplózási riasztási szabályokat, amelyekben érvénytelen lekérdezések vannak megadva a feltételek szakaszban. Azure Monitor naplózási riasztási szabályok lekérdezéseket futtatnak a megadott gyakorisággal és riasztásokkal az eredmények alapján. A lekérdezések idővel érvénytelenné válhatnak a hivatkozott erőforrások, táblák vagy parancsok változásai miatt. Az Advisor a riasztási lekérdezések helyesbítéseit javasolja, hogy megakadályozza a szabályok automatikus letiltását és a figyelési lefedettség biztosítását. További információ: [riasztási szabályok hibaelhárítása](../azure-monitor/alerts/alerts-troubleshoot-log.md#query-used-in-a-log-alert-isnt-valid)
 
 ## <a name="configure-consistent-indexing-mode-on-your-azure-cosmos-db-collection"></a>Konzisztens indexelési mód konfigurálása a Azure Cosmos DB-gyűjteményen
 
