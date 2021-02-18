@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: aab99721b61ababe218e509ab1078198b5f4152b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: c54a56843be5121e16449d95fb18c24901a95a8d
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030365"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650565"
 ---
 # <a name="quickstart-building-your-first-static-site-in-the-azure-portal"></a>Rövid útmutató: az első statikus hely felépítése a Azure Portal
 
@@ -55,7 +55,7 @@ Miután bejelentkezett a GitHubba, adja meg a tárház adatait.
 
 1. Válassza ki az előnyben részesített _szervezetet_
 1. Válassza a **saját-első-web-static-app** elemet az _adattár_ legördülő menüből.
-1. Válassza ki a **főkiszolgálót** az _ág_ legördülő menüből
+1. Válassza ki a **fő** elemet az _ág_ legördülő menüből
 
 > [!NOTE]
 > Ha nem lát tárházat, lehetséges, hogy engedélyeznie kell az Azure statikus Web Apps a GitHubon. Keresse meg a GitHub-tárházat, és lépjen a **beállítások > alkalmazások > a OAuth-alkalmazások engedélyezve** lehetőségre, válassza az **Azure statikus Web Apps** lehetőséget, majd válassza a **támogatás** lehetőséget. A szervezeti adattárak esetében a szervezet tulajdonosának kell lennie az engedélyek megadásához.

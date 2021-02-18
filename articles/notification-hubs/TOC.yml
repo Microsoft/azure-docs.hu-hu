@@ -24,9 +24,9 @@
       items:
         - name: Firebase Cloud Messaging
           items:
-            - name: Leküldéses értesítések küldése az összes regisztrációnak (1.0.0-preview1 SDK-verzió)
+            - name: Leküldéses értesítések küldése az összes regisztrációra (aktuális SDK)
               href: android-sdk.md
-            - name: Leküldéses értesítések küldése az összes regisztrációnak (0.6-os SDK-verzió)
+            - name: Leküldéses értesítések küldése az összes regisztrációra (örökölt SDK)
               href: notification-hubs-android-push-notification-google-fcm-get-started.md
             - name: Leküldéses értesítések küldése adott eszközökre
               href: push-notifications-android-specific-devices-firebase-cloud-messaging.md
@@ -50,10 +50,10 @@
           items:
             - name: Előfeltételek iOS-oktatóanyagokhoz
               href: ios-sdk-get-started.md
-            - name: Objective-C (3.0.0-preview1 verzió)
-              href: ios-sdk-300.md
-            - name: Objective-C (2.0.4-es verzió)
-              href: ios-sdk-204.md
+            - name: Objective-C (aktuális SDK)
+              href: ios-sdk-current.md
+            - name: Objective-C (örökölt SDK)
+              href: ios-sdk-legacy.md
         - name: Leküldéses értesítések küldése adott eszközökre
           href: notification-hubs-ios-xplat-segmented-apns-push-notification.md
         - name: Leküldéses értesítések küldése adott felhasználóknak

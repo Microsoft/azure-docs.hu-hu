@@ -6,12 +6,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/11/2020
 ms.subservice: ''
-ms.openlocfilehash: 26e7dbf3f5629d4691211b6c9b82446ba4035421
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: f3c9197faaae89e0ffb238f987ee66dafea8abdd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347623"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579797"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation"></a>Hálózatok biztonságos csatlakoztatása az Azure privát hivatkozással Azure Automation
 
@@ -34,7 +34,7 @@ A privát hivatkozással a következőket teheti:
 - A nyilvános hálózati hozzáférés megnyitása nélkül csatlakozhat a Azure Monitor Log Analytics munkaterülethez.
 
     >[!NOTE]
-    >A Log Analytics munkaterület számára külön privát végpont szükséges, ha az Automation-fiókja egy Log Analytics-munkaterülethez van csatolva a feladatok adatai továbbításához, és ha engedélyezte az olyan szolgáltatásokat, mint például a Update Management, a Change Tracking és a leltár, az állapot-konfiguráció vagy a Start/Stop VMs during off-hours. További információ a Azure Monitor magánhálózati hivatkozásáról: az [Azure Private link használata a hálózatok biztonságos csatlakoztatásához Azure monitorhoz](../../azure-monitor/platform/private-link-security.md).
+    >A Log Analytics munkaterület számára külön privát végpont szükséges, ha az Automation-fiókja egy Log Analytics-munkaterülethez van csatolva a feladatok adatai továbbításához, és ha engedélyezte az olyan szolgáltatásokat, mint például a Update Management, a Change Tracking és a leltár, az állapot-konfiguráció vagy a Start/Stop VMs during off-hours. További információ a Azure Monitor magánhálózati hivatkozásáról: az [Azure Private link használata a hálózatok biztonságos csatlakoztatásához Azure monitorhoz](../../azure-monitor/logs/private-link-security.md).
 
 - Győződjön meg arról, hogy az Automation-adatai csak a jogosult magánhálózatok használatával érhetők el.
 - A privát végponton keresztül összekapcsolt Azure Automation erőforrás definiálásával megakadályozhatja a kiszűrése származó adatok kiépítését.
@@ -46,8 +46,8 @@ További információ:  [a privát hivatkozás legfontosabb előnyei](../../priv
 ## <a name="limitations"></a>Korlátozások
 
 - A privát hivatkozás jelenlegi implementációjában az Automation-fiók felhőalapú feladatai nem férnek hozzá a privát végponton keresztül védett Azure-erőforrásokhoz. Például Azure Key Vault, Azure SQL, Azure Storage-fiók stb. Ennek elkerüléséhez használjon inkább [hibrid Runbook-feldolgozót](../automation-hybrid-runbook-worker.md) .
-- A Windows vagy Linux rendszerhez készült [log Analytics ügynök](../../azure-monitor/platform/log-analytics-agent.md) legújabb verzióját kell használnia.
-- A [log Analytics átjáró](../../azure-monitor/platform/gateway.md) nem támogatja a privát hivatkozást.
+- A Windows vagy Linux rendszerhez készült [log Analytics ügynök](../../azure-monitor/agents/log-analytics-agent.md) legújabb verzióját kell használnia.
+- A [log Analytics átjáró](../../azure-monitor/agents/gateway.md) nem támogatja a privát hivatkozást.
 
 ## <a name="how-it-works"></a>Működés
 
@@ -76,7 +76,7 @@ A [Update Management](../update-management/overview.md)Update Management átteki
 
 Ha azt szeretné, hogy a gépek az Update Management szolgáltatáshoz legyenek konfigurálva az Automation & Log Analytics-munkaterülethez a privát kapcsolati csatornán keresztül, akkor engedélyeznie kell a magánhálózati kapcsolattal konfigurált Automation-fiókhoz társított Log Analytics munkaterület privát hivatkozását.
 
-A következő [log Analytics](../../azure-monitor/platform/private-link-security.md#configure-log-analytics)témakörben ismertetett lépéseket követve szabályozhatja, hogy log Analytics munkaterület Hogyan érhető el a privát kapcsolat hatókörén kívülről. Ha a **nem** értékre állítja a **nyilvános hálózati hozzáférés engedélyezése lehetőséget** , akkor a csatlakoztatott hatókörökön kívüli gépek nem tölthetnek fel adatot erre a munkaterületre. Ha a **nyilvános hálózati hozzáférés engedélyezése a** **nem** értékre van állítva, akkor a hatókörön kívüli gépek nem férhetnek hozzá a munkaterületen lévő adatforrásokhoz.
+A következő [log Analytics](../../azure-monitor/logs/private-link-security.md#configure-log-analytics)témakörben ismertetett lépéseket követve szabályozhatja, hogy log Analytics munkaterület Hogyan érhető el a privát kapcsolat hatókörén kívülről. Ha a **nem** értékre állítja a **nyilvános hálózati hozzáférés engedélyezése lehetőséget** , akkor a csatlakoztatott hatókörökön kívüli gépek nem tölthetnek fel adatot erre a munkaterületre. Ha a **nyilvános hálózati hozzáférés engedélyezése a** **nem** értékre van állítva, akkor a hatókörön kívüli gépek nem férhetnek hozzá a munkaterületen lévő adatforrásokhoz.
 
 A **DSCAndHybridWorker** cél alerőforrásának használatával engedélyezheti a felhasználók & a rendszer hibrid feldolgozói számára a privát hivatkozást.
 
@@ -114,7 +114,7 @@ Ebben a szakaszban egy privát végpontot fog létrehozni az Automation-fiókhoz
     | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget. Ezt az előző szakaszban hozta létre.  |
     | **PÉLDÁNY RÉSZLETEI** |  |
     | Name | Adja meg a *PrivateEndpoint*. |
-    | Régió | Válassza a **YourRegion** lehetőséget. |
+    | Region | Válassza a **YourRegion** lehetőséget. |
     |||
 
 4. Válassza a **Tovább: erőforrás** elemet.

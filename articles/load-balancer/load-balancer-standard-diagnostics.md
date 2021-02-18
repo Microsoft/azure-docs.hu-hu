@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2021
 ms.author: allensu
-ms.openlocfilehash: 43d83d994c9a4ee3cf89b584f6c3835a62fa2cfe
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: fbde2b95b7aca205f164dc45c1f0170cc4da74fb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805997"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581893"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Metrikák, riasztások és az erőforrások állapotának diagnosztikái a standard Load Balancerben
 
@@ -34,7 +34,7 @@ Azure Load Balancer többdimenziós metrikákat biztosít az Azure-metrikák has
 
 A különböző standard Load Balancer konfigurációk a következő metrikákat biztosítják:
 
-| Metric | Erőforrás típusa | Leírás | Ajánlott aggregáció |
+| Metric | Erőforrás típusa | Description | Ajánlott aggregáció |
 | --- | --- | --- | --- |
 | Adatútvonalak rendelkezésre állása | Nyilvános és belső Load Balancer | A standard szintű Load Balancer folyamatosan kihasználja a régió és a terheléselosztó elülső rétege közötti adatútvonalat egészen a virtuális gépet támogató SDN-veremig. Amíg a kifogástalan állapotú példányok megmaradnak, a mérés ugyanazt az útvonalat követi, mint az alkalmazás elosztott terhelésű forgalma. Az ügyfelek által használt adatútvonal szintén érvényesítve lesz. A mérés nem látható az alkalmazás számára, és nincs hatással más műveletekre.| Átlag |
 | Állapotadat-mintavétel állapota | Nyilvános és belső Load Balancer | A standard Load Balancer egy elosztott állapot-ellenőrzési szolgáltatást használ, amely figyeli az alkalmazás-végpont állapotát a konfigurációs beállításoknak megfelelően. Ez a metrika a terheléselosztó készletében lévő példányok összesített vagy végponti szűrt nézetét biztosítja. Láthatja, hogyan tekinti meg a Load Balancer az alkalmazás állapotát az állapotminta konfigurációja alapján. |  Átlag |
@@ -72,7 +72,7 @@ A standard Load Balancer erőforrások metrikáinak megtekintése:
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>Többdimenziós mérőszámok programozott módon történő beolvasása API-kon keresztül
 
-A többdimenziós metrikák definícióinak és értékeinek beolvasására szolgáló API-útmutatásért lásd: [Azure Monitoring REST API útmutató](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api). Ezek a metrikák megírhatók egy Storage-fiókba az "összes metrika" kategóriához tartozó [diagnosztikai beállítás](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) hozzáadásával. 
+A többdimenziós metrikák definícióinak és értékeinek beolvasására szolgáló API-útmutatásért lásd: [Azure Monitoring REST API útmutató](../azure-monitor/essentials/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api). Ezek a metrikák megírhatók egy Storage-fiókba az "összes metrika" kategóriához tartozó [diagnosztikai beállítás](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) hozzáadásával. 
 
 ### <a name="configure-alerts-for-multi-dimensional-metrics"></a>Riasztások konfigurálása többdimenziós mérőszámokhoz ###
 
@@ -232,7 +232,7 @@ A diagram lehetővé teszi, hogy az ügyfelek az üzembe helyezést a saját mag
 
 A standard Load Balancer erőforrások állapotának állapota a meglévő **erőforrás** -állapoton keresztül érhető el a **monitor > Service Health**. A rendszer **két percenként** értékeli az adatelérési út rendelkezésre állásának mérésével, amely meghatározza, hogy elérhetők-e a előtér-terheléselosztási végpontok.
 
-| Erőforrás állapotának állapota | Leírás |
+| Erőforrás állapotának állapota | Description |
 | --- | --- |
 | Elérhető | A standard Load Balancer erőforrása kifogástalan és elérhető. |
 | Csökkentett teljesítményű | A standard Load Balancer platform vagy felhasználó által kezdeményezett események hatással vannak a teljesítményre. Az adatelérési út rendelkezésre állására vonatkozó metrika 90%-osnál rosszabb, de 25%-osnál jobb állapotot jelentett legalább két percig. A teljesítmény mérsékelten befolyásolhatja a teljesítményt. [Kövesse a hibaelhárítási RHC útmutatót](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) , és állapítsa meg, hogy vannak-e olyan felhasználó által kezdeményezett események, amelyek hatással vannak a rendelkezésre állásra.
@@ -261,7 +261,7 @@ A nyilvános standard Load Balancer erőforrások állapotának megtekintése:
 Az általános erőforrás állapotának leírása a [RHC dokumentációjában](../service-health/resource-health-overview.md)érhető el. A Azure Load Balancer meghatározott állapotait az alábbi táblázat tartalmazza: 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan tekintheti meg a Load Balancerhoz előre konfigurált mérőszámokat [az információk használatával](https://docs.microsoft.com/azure/load-balancer/load-balancer-insights)
 - További információ a [standard Load Balancerról](./load-balancer-overview.md).

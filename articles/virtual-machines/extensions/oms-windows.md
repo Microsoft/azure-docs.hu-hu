@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: 22cc9bf1bdfdb8a3026bb09f44e007ab3438325a
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 1b394a6daf7ba680d193a13dd4cb25dbebc576e4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98046821"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580081"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Log Analytics virtuális gépi bővítmény Windowshoz
 
@@ -30,12 +30,12 @@ Azure Monitor naplók a Felhőbeli és a helyszíni eszközök figyelési lehet�
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-A támogatott Windows operációs rendszerekkel kapcsolatos részletekért tekintse meg az [Azure monitor ügynökök áttekintése](../../azure-monitor/platform/agents-overview.md#supported-operating-systems) című cikket.
+A támogatott Windows operációs rendszerekkel kapcsolatos részletekért tekintse meg az [Azure monitor ügynökök áttekintése](../../azure-monitor/agents/agents-overview.md#supported-operating-systems) című cikket.
 
 ### <a name="agent-and-vm-extension-version"></a>Ügynök és virtuálisgép-bővítmény verziója
 Az alábbi táblázat a Windows Log Analytics virtuálisgép-bővítmény verziójának és Log Analytics ügynök csomagjának leképezését tartalmazza minden egyes kiadáshoz. 
 
-| Log Analytics Windows-ügynök csomagjának verziója | Log Analytics Windowsos virtuálisgép-bővítmény verziója | Kiadás dátuma | Kibocsátási megjegyzések |
+| Log Analytics Windows-ügynök csomagjának verziója | Log Analytics Windowsos virtuálisgép-bővítmény verziója | Kiadás dátuma | Release Notes (Kibocsátási megjegyzések) |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
 | 10.20.18053| 1.0.18053.0 | 2020. október   | <ul><li>Új ügynök-hibakereső</li><li>Frissítések arról, hogy az ügynök hogyan kezeli a tanúsítványok változásait az Azure-szolgáltatásokban</li></ul> |
 | 10.20.18040 | 1.0.18040.2 | 2020. augusztus   | <ul><li>Elhárít egy problémát az Azure arc-ban</li></ul> |
@@ -89,26 +89,26 @@ A következő JSON a Log Analytics ügynök bővítmény sémáját jeleníti me
 ```
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Név | Érték/példa |
+| Name | Érték/példa |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | közzétevő | Microsoft. EnterpriseCloud. monitoring |
 | típus | MicrosoftMonitoringAgent |
-| typeHandlerVersion | 1,0 |
+| typeHandlerVersion | 1.0 |
 | Munkaterület azonosítója (például) * | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (például) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI + rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ = = |
 
 \* A munkaterület azonosítója neve consumerId a Log Analytics API-ban.
 
 > [!NOTE]
-> További tulajdonságok: Azure [-beli Windows-számítógépek Összekapcsolásának Azure monitor](../../azure-monitor/platform/agent-windows.md).
+> További tulajdonságok: Azure [-beli Windows-számítógépek Összekapcsolásának Azure monitor](../../azure-monitor/agents/agent-windows.md).
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
 Az Azure virtuálisgép-bővítmények Azure Resource Manager-sablonokkal is üzembe helyezhetők. Az előző szakaszban részletezett JSON-séma használható Azure Resource Manager sablonban az Log Analytics Agent bővítmény futtatásához Azure Resource Manager sablon központi telepítésekor. A Log Analytics Agent virtuálisgép-bővítményt tartalmazó minta sablon az [Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm)rövid útmutatójában található. 
 
 >[!NOTE]
->A sablon nem támogatja több munkaterület-azonosító és munkaterület-kulcs megadását, ha úgy szeretné konfigurálni az ügynököt, hogy több munkaterületre is jelentsen. Ha úgy szeretné beállítani az ügynököt, hogy több munkaterületnek jelentsen, tekintse meg a [munkaterület hozzáadása vagy eltávolítása](../../azure-monitor/platform/agent-manage.md#adding-or-removing-a-workspace)című témakört.  
+>A sablon nem támogatja több munkaterület-azonosító és munkaterület-kulcs megadását, ha úgy szeretné konfigurálni az ügynököt, hogy több munkaterületre is jelentsen. Ha úgy szeretné beállítani az ügynököt, hogy több munkaterületnek jelentsen, tekintse meg a [munkaterület hozzáadása vagy eltávolítása](../../azure-monitor/agents/agent-manage.md#adding-or-removing-a-workspace)című témakört.  
 
 A virtuálisgép-bővítmények JSON-je beágyazható a virtuális gép erőforrásaiba, vagy egy Resource Manager JSON-sablon legfelső szintű vagy legfelső szintjén helyezhető el. A JSON elhelyezése hatással van az erőforrás nevének és típusának értékére. További információ: [a gyermek erőforrások nevének és típusának beállítása](../../azure-resource-manager/templates/child-resource-name-type.md). 
 

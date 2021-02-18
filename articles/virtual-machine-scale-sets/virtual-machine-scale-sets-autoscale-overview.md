@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 092b95845ed033ac0705e325fc6535739088848f
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: dbd2d6dc3034ff64ef6b5d4d36d836ce8462b154
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888793"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591395"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Az Azure-beli virtuálisgép-méretezési csoportokkal végzett automatikus skálázás áttekintése
 Az Azure virtuálisgép-méretezési csoport automatikusan növelheti vagy csökkentheti az alkalmazást futtató virtuálisgép-példányok számát. Ez az automatizált és rugalmas viselkedés csökkenti a felügyeleti terhelést az alkalmazás teljesítményének monitorozásához és optimalizálásához. Olyan szabályokat hozhat létre, amelyek meghatározzák a pozitív felhasználói élmény elfogadható teljesítményét. Ha ezek a meghatározott küszöbértékek teljesülnek, az automatikusan méretezhető szabályok végrehajtják a méretezési csoport kapacitásának módosítását. Az eseményeket úgy is ütemezhet, hogy rögzített időpontokban automatikusan növelje vagy csökkentse a méretezési csoport kapacitását. Ez a cikk áttekintést nyújt arról, hogy mely teljesítménymutatók érhetők el, és hogy milyen műveletek hajthatók végre.
@@ -51,7 +51,7 @@ Az autoskálázási szabályok a következő források egyikének mérőszámait
 | Metrikaforrás        | Használati eset                                                                                                                     |
 |----------------------|------------------------------------------------------------------------------------------------------------------------------|
 | Aktuális méretezési csoport    | Olyan gazdagép-alapú metrikák esetében, amelyek nem igényelnek további ügynököket a telepítéshez vagy a konfiguráláshoz.                                  |
-| Tárfiók      | Az Azure diagnosztikai bővítmény a teljesítménymutatókat az Azure Storage-ba írja, amely az autoskálázási szabályok elindításához használatos. |
+| A(z)      | Az Azure diagnosztikai bővítmény a teljesítménymutatókat az Azure Storage-ba írja, amely az autoskálázási szabályok elindításához használatos. |
 | Service Bus-üzenetsor    | Az alkalmazás vagy más összetevők üzeneteket küldhetnek egy Azure Service Bus-várólistán a szabályok elindításához.                   |
 | Application Insights | Az alkalmazásba telepített Instrumentation-csomag, amely közvetlenül az alkalmazásból továbbítja a metrikákat.                         |
 
@@ -88,7 +88,7 @@ Az autoskálázási szabályok akkor aktiválódnak, ha a metrikák összevetés
 |--------------------------|
 | Nagyobb, mint             |
 | Nagyobb vagy egyenlő |
-| Kisebb                |
+| Kisebb, mint                |
 | Kisebb vagy egyenlő    |
 | Egyenlő                 |
 | Nem egyenlő             |
@@ -142,4 +142,4 @@ Ez az Áttekintés részletesen ismerteti, hogyan használhatók az autoskáláz
 
 A virtuálisgép-példányok kezelésével kapcsolatos információkért lásd: [virtuálisgép-méretezési csoportok kezelése Azure PowerShellokkal](./virtual-machine-scale-sets-manage-powershell.md).
 
-Ha meg szeretné tudni, hogyan hozhatók riasztások az automatikusan méretezhető szabályok indításakor, tekintse meg az [e-mailek és webhookok riasztási értesítéseinek Azure monitor-ben történő küldését](../azure-monitor/platform/autoscale-webhook-email.md)ismertető témakört. A [naplók használatával e-mail-és webhook](../azure-monitor/platform/alerts-log-webhook.md)-értesítéseket is küldhet a Azure monitor.
+Ha meg szeretné tudni, hogyan hozhatók riasztások az automatikusan méretezhető szabályok indításakor, tekintse meg az [e-mailek és webhookok riasztási értesítéseinek Azure monitor-ben történő küldését](../azure-monitor/autoscale/autoscale-webhook-email.md)ismertető témakört. A [naplók használatával e-mail-és webhook](../azure-monitor/alerts/alerts-log-webhook.md)-értesítéseket is küldhet a Azure monitor.

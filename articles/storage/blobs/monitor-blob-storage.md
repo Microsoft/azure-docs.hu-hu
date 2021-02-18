@@ -9,12 +9,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: subject-monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 4ca74070c1b0d2cd4a5cf4225443465e080b518d
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 5337372b5e996798a5000e1c32ea8e372aa63ed4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584889"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591779"
 ---
 # <a name="monitoring-azure-blob-storage"></a>Az Azure Blob Storage figyelése
 
@@ -30,7 +30,7 @@ Az egyes blob Storage-erőforrások Azure Portal **áttekintő** lapja az erőfo
 ## <a name="what-is-azure-monitor"></a>Mi az Azure Monitor?
 Az Azure Blob Storage a [Azure monitor](../../azure-monitor/overview.md)használatával hozza létre a figyelési adataikat, amely az Azure-ban teljes verem-figyelési szolgáltatás. A Azure Monitor a funkciók teljes készletét biztosítja az Azure-erőforrások és-erőforrások figyelésére más felhőkben és a helyszínen. 
 
-A cikkből megtudhatja [, hogyan figyelheti az Azure-erőforrásokat a Azure monitor,](../../azure-monitor/insights/monitor-azure-resource.md) amely leírja a következőket:
+A cikkből megtudhatja [, hogyan figyelheti az Azure-erőforrásokat a Azure monitor,](../../azure-monitor/essentials/monitor-azure-resource.md) amely leírja a következőket:
 
 - Mi az Azure Monitor?
 - A figyeléshez kapcsolódó költségek
@@ -42,7 +42,7 @@ Az alábbi, az Azure Storage-ból gyűjtött adatok leírásával a cikk a köve
 
 ## <a name="monitoring-data"></a>Adatok monitorozása
 
-Az Azure Blob Storage ugyanolyan típusú figyelési adatokat gyűjt, mint az Azure- [erőforrások monitorozásával](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)kapcsolatos egyéb Azure-erőforrások. 
+Az Azure Blob Storage ugyanolyan típusú figyelési adatokat gyűjt, mint az Azure- [erőforrások monitorozásával](../../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data)kapcsolatos egyéb Azure-erőforrások. 
 
 Az Azure Blob Storage által létrehozott mérőszámokra és naplókra vonatkozó részletes információkért tekintse meg az [azure blob Storage monitorozási adatok referenciáját](monitor-blob-storage-reference.md) .
 
@@ -69,7 +69,7 @@ Az erőforrás-naplók összegyűjtéséhez létre kell hoznia egy diagnosztikai
 
 Diagnosztikai beállításokat a Azure Portal, a PowerShell, az Azure CLI vagy egy Azure Resource Manager sablon használatával hozhat létre. 
 
-Általános útmutatásért lásd: [diagnosztikai beállítás létrehozása platform-naplók és-metrikák gyűjtéséhez az Azure-ban](../../azure-monitor/platform/diagnostic-settings.md).
+Általános útmutatásért lásd: [diagnosztikai beállítás létrehozása platform-naplók és-metrikák gyűjtéséhez az Azure-ban](../../azure-monitor/essentials/diagnostic-settings.md).
 
 > [!NOTE]
 > Az Azure Monitor Azure Storage-naplók nyilvános előzetes verzióban érhetők el, és elérhetők az előzetes teszteléshez az összes nyilvános felhőben. Ez az előzetes verzió lehetővé teszi a Blobok (köztük a Azure Data Lake Storage Gen2), a fájlok, a várólisták és a táblák naplófájljainak naplózását. Ez a funkció a Azure Resource Manager üzemi modellel létrehozott összes Storage-fiókhoz elérhető. Lásd: a [Storage-fiók áttekintése](../common/storage-account-overview.md).
@@ -111,7 +111,7 @@ Ha úgy dönt, hogy archiválja a naplókat egy Storage-fiókba, akkor a Storage
 2. A **Storage-fiók** legördülő listában válassza ki azt a Storage-fiókot, amelybe archiválni szeretné a naplókat, kattintson az **OK** gombra, majd kattintson a **Mentés** gombra.
 
    > [!NOTE]
-   > Mielőtt az Exportálás célhelyként kiválasztja a Storage-fiókot, tekintse meg az [Azure-erőforrás-naplók archiválása](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage) című témakört az előfeltételek a Storage-fiókban való megismeréséhez.
+   > Mielőtt az Exportálás célhelyként kiválasztja a Storage-fiókot, tekintse meg az [Azure-erőforrás-naplók archiválása](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) című témakört az előfeltételek a Storage-fiókban való megismeréséhez.
 
 #### <a name="stream-logs-to-azure-event-hubs"></a>Stream-naplók az Azure Event Hubs
 
@@ -165,7 +165,7 @@ Bemutatunk egy példát:
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/blobServices/default -StorageAccountId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount -Enabled $true -Category StorageWrite,StorageDelete`
 
-Az egyes paraméterek leírását az [Azure-erőforrás-naplók archiválása Azure PowerShell használatával](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)című részben tekintheti meg.
+Az egyes paraméterek leírását az [Azure-erőforrás-naplók archiválása Azure PowerShell használatával](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)című részben tekintheti meg.
 
 #### <a name="stream-logs-to-an-event-hub"></a>Adatfolyam-naplók az Event hub-ba
 
@@ -181,7 +181,7 @@ Bemutatunk egy példát:
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/blobServices/default -EventHubAuthorizationRuleId /subscriptions/20884142-a14v3-4234-5450-08b10c09f4/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey -Enabled $true -Category StorageDelete`
 
-Az egyes paraméterek leírását a következő témakörben találhatja [meg: stream-információk Event Hubs PowerShell-parancsmagok](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)használatával.
+Az egyes paraméterek leírását a következő témakörben találhatja [meg: stream-információk Event Hubs PowerShell-parancsmagok](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)használatával.
 
 #### <a name="send-logs-to-log-analytics"></a>Naplók küldése a Log Analyticsbe
 
@@ -195,7 +195,7 @@ Bemutatunk egy példát:
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/blobServices/default -WorkspaceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace -Enabled $true -Category StorageDelete`
 
-További információ: [stream Azure-erőforrás-naplók log Analytics munkaterületre Azure monitorban](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace).
+További információ: [stream Azure-erőforrás-naplók log Analytics munkaterületre Azure monitorban](../../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace).
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -227,7 +227,7 @@ Bemutatunk egy példát:
 
 `az monitor diagnostic-settings create --name setting1 --storage-account mystorageaccount --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/blobServices/default --resource-group myresourcegroup --logs '[{"category": StorageWrite, "enabled": true, "retentionPolicy": {"days": 90, "enabled": true}}]'`
 
-Az egyes paraméterek leírását az [erőforrás-naplók archiválása az Azure CLI használatával](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)című részben tekintheti meg.
+Az egyes paraméterek leírását az [erőforrás-naplók archiválása az Azure CLI használatával](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)című részben tekintheti meg.
 
 #### <a name="stream-logs-to-an-event-hub"></a>Adatfolyam-naplók az Event hub-ba
 
@@ -243,7 +243,7 @@ Bemutatunk egy példát:
 
 `az monitor diagnostic-settings create --name setting1 --event-hub myeventhub --event-hub-rule /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/blobServices/default --logs '[{"category": StorageDelete, "enabled": true }]'`
 
-Az egyes paraméterek leírását az [Azure CLI-n keresztül Event Hubs stream-információk](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)című részben tekintheti meg.
+Az egyes paraméterek leírását az [Azure CLI-n keresztül Event Hubs stream-információk](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)című részben tekintheti meg.
 
 #### <a name="send-logs-to-log-analytics"></a>Naplók küldése a Log Analyticsbe
 
@@ -257,17 +257,17 @@ Bemutatunk egy példát:
 
 `az monitor diagnostic-settings create --name setting1 --workspace /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/blobServices/default --logs '[{"category": StorageDelete, "enabled": true ]'`
 
- További információ: [stream Azure-erőforrás-naplók log Analytics munkaterületre Azure monitorban](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace).
+ További információ: [stream Azure-erőforrás-naplók log Analytics munkaterületre Azure monitorban](../../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace).
 
 ### <a name="template"></a>[Sablon](#tab/template)
 
-Diagnosztikai beállítást létrehozó Azure Resource Manager-sablon megtekintéséhez lásd: [diagnosztikai beállítások az Azure Storage szolgáltatáshoz](../../azure-monitor/samples/resource-manager-diagnostic-settings.md#diagnostic-setting-for-azure-storage).
+Diagnosztikai beállítást létrehozó Azure Resource Manager-sablon megtekintéséhez lásd: [diagnosztikai beállítások az Azure Storage szolgáltatáshoz](../../azure-monitor/essentials/resource-manager-diagnostic-settings.md#diagnostic-setting-for-azure-storage).
 
 ---
 
 ## <a name="analyzing-metrics"></a>Mérőszámok elemzése
 
-Az Azure Storage mérőszámait más Azure-szolgáltatásokból származó metrikákkal elemezheti Metrikaböngésző használatával. A **Azure monitor** menüből válassza a **metrikák** lehetőséget a Metrikaböngésző megnyitásához. Az eszköz használatáról további információt az [Azure Metrikaböngésző használatának első lépéseivel](../../azure-monitor/platform/metrics-getting-started.md)foglalkozó témakörben talál. 
+Az Azure Storage mérőszámait más Azure-szolgáltatásokból származó metrikákkal elemezheti Metrikaböngésző használatával. A **Azure monitor** menüből válassza a **metrikák** lehetőséget a Metrikaböngésző megnyitásához. Az eszköz használatáról további információt az [Azure Metrikaböngésző használatának első lépéseivel](../../azure-monitor/essentials/metrics-getting-started.md)foglalkozó témakörben talál. 
 
 Ebből a példából megtudhatja, hogyan tekintheti meg a **tranzakciókat** a fiók szintjén.
 
@@ -284,7 +284,7 @@ Az Azure Blob Storage mérőszámai ezekben a névterekben találhatók:
 - Microsoft. Storage/storageAccounts
 - Microsoft. Storage/storageAccounts/blobServices
 
-Az Azure Blob Storaget tartalmazó összes Azure Monitor támogatási mérőszámok listáját itt tekintheti meg: [Azure monitor támogatott metrikák](../../azure-monitor/platform/metrics-supported.md).
+Az Azure Blob Storaget tartalmazó összes Azure Monitor támogatási mérőszámok listáját itt tekintheti meg: [Azure monitor támogatott metrikák](../../azure-monitor/essentials/metrics-supported.md).
 
 
 ### <a name="accessing-metrics"></a>Metrikák elérése
@@ -528,22 +528,22 @@ Az Event hub-nak küldött naplók nem fájlként vannak tárolva, de ellenőriz
 
 ![Naplók](media/monitor-blob-storage/event-hub-log.png)
 
-A biztonsági információkkal és az események kezelésével és figyelési eszközeivel elérheti és beolvashatja az Event hub-nak elküldett naplózási adatokat. További információ: Mit tehetek [az Event hub-ba küldött figyelési adatokkal?](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
+A biztonsági információkkal és az események kezelésével és figyelési eszközeivel elérheti és beolvashatja az Event hub-nak elküldett naplózási adatokat. További információ: Mit tehetek [az Event hub-ba küldött figyelési adatokkal?](../../azure-monitor/essentials/stream-monitoring-data-event-hubs.md).
 
 ### <a name="accessing-logs-in-a-log-analytics-workspace"></a>Naplók elérése Log Analytics munkaterületen
 
 A Log Analytics munkaterületre küldött naplók Azure Monitor naplózási lekérdezések használatával érhetők el.
 
-További információ: [Bevezetés a log Analytics használatába Azure monitor](../../azure-monitor/log-query/log-analytics-tutorial.md).
+További információ: [Bevezetés a log Analytics használatába Azure monitor](../../azure-monitor/logs/log-analytics-tutorial.md).
 
 Az adattárolást a **StorageBlobLog** táblában tárolja a rendszer. A Data Lake Storage Gen2 naplói nem jelennek meg egy dedikált táblában. Ennek oka, hogy Data Lake Storage Gen2 nem szolgáltatás. Ez egy olyan funkció, amelyet engedélyezheti a Storage-fiókban. Ha engedélyezte ezeket a képességeket, a naplók továbbra is megjelennek a StorageBlobLogs táblában. 
 
 #### <a name="sample-kusto-queries"></a>Példa Kusto-lekérdezésekre
 
-Íme néhány lekérdezés, amely megadható a **log keresési** sávban a blob Storage figyeléséhez. Ezek a lekérdezések az [új nyelvvel](../../azure-monitor/log-query/log-query-overview.md)működnek.
+Íme néhány lekérdezés, amely megadható a **log keresési** sávban a blob Storage figyeléséhez. Ezek a lekérdezések az [új nyelvvel](../../azure-monitor/logs/log-query-overview.md)működnek.
 
 > [!IMPORTANT]
-> Amikor kiválasztja a **naplók** elemet a Storage-fiók erőforráscsoport menüjében, log Analytics megnyílik a lekérdezés hatóköre beállítással az aktuális erőforráscsoporthoz. Ez azt jelenti, hogy a naplók lekérdezése csak az adott erőforráscsoport adatait fogja tartalmazni. Ha olyan lekérdezést szeretne futtatni, amely más erőforrásokból vagy más Azure-szolgáltatásoktól származó adatokból származó adatokkal is rendelkezik, válassza a **naplók** lehetőséget a **Azure monitor** menüből. Részletekért lásd: [a naplózási lekérdezés hatóköre és időbeli tartománya Azure Monitor log Analytics](../../azure-monitor/log-query/scope.md) .
+> Amikor kiválasztja a **naplók** elemet a Storage-fiók erőforráscsoport menüjében, log Analytics megnyílik a lekérdezés hatóköre beállítással az aktuális erőforráscsoporthoz. Ez azt jelenti, hogy a naplók lekérdezése csak az adott erőforráscsoport adatait fogja tartalmazni. Ha olyan lekérdezést szeretne futtatni, amely más erőforrásokból vagy más Azure-szolgáltatásoktól származó adatokból származó adatokkal is rendelkezik, válassza a **naplók** lehetőséget a **Azure monitor** menüből. Részletekért lásd: [a naplózási lekérdezés hatóköre és időbeli tartománya Azure Monitor log Analytics](../../azure-monitor/logs/scope.md) .
 
 Az alábbi lekérdezések segítségével figyelheti az Azure Storage-fiókokat:
 
@@ -602,5 +602,5 @@ Nem. Az Azure-beli számítási szolgáltatás támogatja a lemezek mérőszáma
 ## <a name="next-steps"></a>Következő lépések
 
 - Az Azure Blob Storage által létrehozott naplók és mérőszámok ismertetését az [azure blob Storage monitorozási adatok referenciája](monitor-blob-storage-reference.md)című témakörben tekintheti meg.
-- Az Azure-erőforrások monitorozásával kapcsolatos további információkért lásd: [Azure-erőforrások figyelése Azure monitorokkal](../../azure-monitor/insights/monitor-azure-resource.md).
+- Az Azure-erőforrások monitorozásával kapcsolatos további információkért lásd: [Azure-erőforrások figyelése Azure monitorokkal](../../azure-monitor/essentials/monitor-azure-resource.md).
 - A metrikák áttelepítésével kapcsolatos további információkért lásd: [Azure Storage-metrikák áttelepítése](../common/storage-metrics-migration.md).

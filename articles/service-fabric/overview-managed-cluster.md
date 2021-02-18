@@ -2,13 +2,13 @@
 title: Felügyelt fürtök Service Fabric (előzetes verzió)
 description: Service Fabric felügyelt fürtök az Azure Service Fabric fürterőforrás-modell fejlődése, amely egyszerűsíti az üzembe helyezést és a fürtözést.
 ms.topic: overview
-ms.date: 09/28/2020
-ms.openlocfilehash: 3d26a92126491662d5c51b3c4e8900ffa547f830
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 02/15/2021
+ms.openlocfilehash: 8b90b73ef5f3202788ac7857875427673ebb562b
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91410488"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635145"
 ---
 # <a name="service-fabric-managed-clusters-preview"></a>Felügyelt fürtök Service Fabric (előzetes verzió)
 
@@ -28,7 +28,7 @@ A méret és az összetettség szempontjából a Service Fabric felügyelt fürt
 |----------|-----------|
 | Service Fabric-fürt | Felügyelt fürt Service Fabric |
 | Virtuálisgép-méretezési csoport (ok) | |
-| Terheléselosztó | |
+| Terheléselosztóval | |
 | Nyilvános IP-cím | |
 | Tárfiók(ok) | |
 | Virtuális hálózat | |
@@ -62,21 +62,26 @@ Service Fabric felügyelt fürtök az alapszintű és a standard SKU-ban is elé
 | Csomópont-típusok hozzáadása/eltávolítása | Nem | Igen |
 | Zónaredundancia | Nem | Igen |
 
-## <a name="service-fabric-managed-cluster-feature-roadmap"></a>Service Fabric felügyelt fürt szolgáltatásának ütemterve
-Mivel ez a Service Fabric felügyelt fürtök korai előzetes verziója, néhány hiányosságot kell figyelembe vennie. Ezek a funkciók a későbbi kiadásokban lesznek elérhetők. 
+## <a name="whats-new-for-service-fabric-managed-clusters"></a>A Service Fabric felügyelt fürtök újdonságai
 
-* Alkalmazások közzététele közvetlenül a Visual studióból
-* Felügyelt identitások 
-* ARM-alkalmazások telepítései 
-* Rendelkezésre állási zónák 
-* Fordított proxy 
-* Automatikus skálázás 
-* NSG-szabályok frissítése 
-* Automatikus operációs rendszer frissítése
+A Service Fabric Managed Clusters előzetes verziójának legújabb funkciói a következők támogatását tartalmazzák:
 
-## <a name="next-steps"></a>További lépések
+* [Alkalmazások üzembe helyezése ARM-sablonok használatával](how-to-managed-cluster-app-deployment-template.md)
+* [Operációs rendszer automatikus frissítései](how-to-managed-cluster-configuration.md#enable-automatic-os-image-upgrades)
+* [Lemez titkosítása](how-to-enable-managed-cluster-disk-encryption.md)
+* [NSG-szabályok alkalmazása](how-to-managed-cluster-configuration.md#apply-nsg-rules)
 
-Service Fabric felügyelt fürtök használatának megkezdéséhez próbálja ki a gyors üzembe helyezési útmutatót:
+A következő kiadásokban felvenni kívánt funkciók a következők:
+
+* Alkalmazások üzembe helyezése a Visual Studióval
+* Felügyelt identitások támogatása
+* Rendelkezésre állási zónák
+* Fordított proxy
+* Automatikus skálázás
+
+## <a name="next-steps"></a>Következő lépések
+
+Service Fabric felügyelt fürtök használatának megkezdéséhez próbálja ki a gyors útmutatót:
 
 > [!div class="nextstepaction"]
 > [Service Fabric felügyelt fürt létrehozása (előzetes verzió)](quickstart-managed-cluster-template.md)

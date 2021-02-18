@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: c3674b6877438a0dd4fe53569cf6852e872334a7
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 4bc30fbf342a9bc85b52c9f88ce7ca1df3c36e23
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693612"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595504"
 ---
 # <a name="azure-operational-security-overview"></a>Azure Operational Security – áttekintés
 
@@ -94,7 +94,7 @@ Security Center megvizsgálja az erőforrások konfigurációját a biztonsági 
 >[!Note]
 >Ha többet szeretne megtudni a Security Center szerepköreiről és az engedélyezett műveletekről, tekintse meg a [Azure Security Center engedélyeit](../../security-center/security-center-permissions.md).
 
-Security Center a Microsoft monitoring agentet használja. Ez ugyanaz az ügynök, amelyet a Azure Monitor szolgáltatás használ. Az ettől az ügynöktől gyűjtött adatok tárolása az Azure-előfizetéshez vagy egy új munkaterülethez társított meglévő Log Analytics [munkaterületen](../../azure-monitor/platform/manage-access.md) történik, a virtuális gép földrajzi helyének figyelembevételével.
+Security Center a Microsoft monitoring agentet használja. Ez ugyanaz az ügynök, amelyet a Azure Monitor szolgáltatás használ. Az ettől az ügynöktől gyűjtött adatok tárolása az Azure-előfizetéshez vagy egy új munkaterülethez társított meglévő Log Analytics [munkaterületen](../../azure-monitor/logs/manage-access.md) történik, a virtuális gép földrajzi helyének figyelembevételével.
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
@@ -108,23 +108,23 @@ Azure Monitor a következő összetevőket tartalmazza.
 
 ### <a name="azure-activity-log"></a>Azure-tevékenységnapló
 
-Az [Azure-tevékenység naplója](../../azure-monitor/platform/platform-logs-overview.md) betekintést nyújt az előfizetése erőforrásaiban végrehajtott műveletekre. Korábban "naplónak" vagy "operatív naplónak" nevezték, mert az előfizetések vezérlési sík eseményeit jelenti.
+Az [Azure-tevékenység naplója](../../azure-monitor/essentials/platform-logs-overview.md) betekintést nyújt az előfizetése erőforrásaiban végrehajtott műveletekre. Korábban "naplónak" vagy "operatív naplónak" nevezték, mert az előfizetések vezérlési sík eseményeit jelenti.
 
 ### <a name="azure-diagnostic-logs"></a>Azure diagnosztikai naplók
 
-Az [Azure diagnosztikai naplókat](../../azure-monitor/platform/platform-logs-overview.md) egy erőforrás bocsátja ki, és az adott erőforrás működésével kapcsolatos gazdag és gyakori információkat biztosít. A naplók tartalma az erőforrástípus alapján változik.
+Az [Azure diagnosztikai naplókat](../../azure-monitor/essentials/platform-logs-overview.md) egy erőforrás bocsátja ki, és az adott erőforrás működésével kapcsolatos gazdag és gyakori információkat biztosít. A naplók tartalma az erőforrástípus alapján változik.
 
 A Windows-események rendszernaplói a virtuális gépek diagnosztikai naplóinak egyik kategóriája. A blob-, tábla-és üzenetsor-naplók a tárolási fiókok diagnosztikai naplófájljainak kategóriái.
 
-A diagnosztikai naplók eltérnek a [tevékenység naplójától](../../azure-monitor/platform/platform-logs-overview.md). A tevékenység naplója betekintést nyújt az előfizetése erőforrásaiban végrehajtott műveletekre. A diagnosztikai naplók betekintést nyújtanak az erőforrás által végrehajtott műveletekre.
+A diagnosztikai naplók eltérnek a [tevékenység naplójától](../../azure-monitor/essentials/platform-logs-overview.md). A tevékenység naplója betekintést nyújt az előfizetése erőforrásaiban végrehajtott műveletekre. A diagnosztikai naplók betekintést nyújtanak az erőforrás által végrehajtott műveletekre.
 
 ### <a name="metrics"></a>Mérőszámok
 
-A Azure Monitor telemetria biztosít az Azure-beli számítási feladatok teljesítményének és állapotának áttekintéséhez. Az Azure telemetria-adatok legfontosabb típusa a legtöbb Azure-erőforrás által kibocsátott [mérőszámok](../../azure-monitor/platform/data-platform.md) (más néven teljesítményszámlálók). A Azure Monitor számos módszert biztosít ezen mérőszámok konfigurálásához és felhasználásához a figyeléshez és a hibaelhárításhoz.
+A Azure Monitor telemetria biztosít az Azure-beli számítási feladatok teljesítményének és állapotának áttekintéséhez. Az Azure telemetria-adatok legfontosabb típusa a legtöbb Azure-erőforrás által kibocsátott [mérőszámok](../../azure-monitor/data-platform.md) (más néven teljesítményszámlálók). A Azure Monitor számos módszert biztosít ezen mérőszámok konfigurálásához és felhasználásához a figyeléshez és a hibaelhárításhoz.
 
 ### <a name="azure-diagnostics"></a>Azure Diagnostics
 
-Azure Diagnostics lehetővé teszi a diagnosztikai adatgyűjtést egy telepített alkalmazáson. A diagnosztikai bővítményt különböző forrásokból is használhatja. Jelenleg támogatott az [Azure Cloud Service-szerepkörök](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service), a Microsoft Windowst futtató Azure-beli [virtuális gépek](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service) és az [Azure Service Fabric](../../azure-monitor/platform/diagnostics-extension-overview.md).
+Azure Diagnostics lehetővé teszi a diagnosztikai adatgyűjtést egy telepített alkalmazáson. A diagnosztikai bővítményt különböző forrásokból is használhatja. Jelenleg támogatott az [Azure Cloud Service-szerepkörök](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service), a Microsoft Windowst futtató Azure-beli [virtuális gépek](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service) és az [Azure Service Fabric](../../azure-monitor/agents/diagnostics-extension-overview.md).
 
 ## <a name="azure-network-watcher"></a>Azure Network Watcher
 
@@ -187,7 +187,7 @@ Az érett DevOps-szakemberek az alábbi eljárások közül többet is elfogadna
 - Az [infrastruktúra mint kód (IaC)](/azure/devops/learn/what-is-infrastructure-as-code) olyan gyakorlat, amely lehetővé teszi a hálózatok és virtuális gépek létrehozásának és Teardown automatizálását és érvényesítését, így segítve a biztonságos, stabil alkalmazás-üzemeltetési platformok nyújtását.
 - A [szolgáltatás](/azure/devops/learn/what-are-microservices) architektúrája az üzleti használati esetek kis újrafelhasználható szolgáltatásokra való elkülönítésére szolgál.  Ez az architektúra lehetővé teszi a méretezhetőséget és a hatékonyságot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Security and Audit megoldással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

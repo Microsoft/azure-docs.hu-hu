@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 2a1455c5956297a19d640146879f93b61d035139
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: c1e2b6abe378df1450967ee0e1df6021ca0d5744
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185903"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650371"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlési listák (ACL-ek) Azure Data Lake Storage Gen2
 
@@ -28,18 +28,20 @@ Fájlok és könyvtárak hozzáférési szintjén társíthatja a [rendszerbizto
 > [!NOTE]
 > Az ACL-ek csak az ugyanabban a bérlőben lévő rendszerbiztonsági tag esetében érvényesek, és nem vonatkoznak azokra a felhasználókra, akik megosztott kulcsot vagy közös hozzáférésű aláírási (SAS) jogkivonat-hitelesítést használnak. Ennek oka, hogy nincs identitás társítva a hívóhoz, ezért a rendszerbiztonsági tag engedély-alapú engedélyezése nem hajtható végre.  
 
+<a id="set-access-control-lists"></a>
+
 ## <a name="how-to-set-acls"></a>ACL-ek beállítása
 
 A fájl-és könyvtári szintű engedélyek megadásához tekintse meg a következő cikkek bármelyikét:
 
 | Környezet | Cikk |
 |--------|-----------|
-|Azure Storage Explorer |[ kezelése az Azure Storage Explorerrel az Azure Data Lake Storage Gen2-ben](data-lake-storage-explorer.md#managing-access)|
-|.NET |[A .NET használatával kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-dotnet.md#manage-access-control-lists-acls)|
-|Java|[A Java segítségével kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-java.md#manage-access-control-lists-acls)|
-|Python|[A Python használatával kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-python.md#manage-access-control-lists-acls)|
-|PowerShell|[A PowerShell használatával kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-powershell.md#manage-access-control-lists-acls)|
-|Azure CLI|[Könyvtárak, fájlok és ACL-ek kezelése az Azure CLI használatával Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-cli.md#manage-access-control-lists-acls)|
+|Azure Storage Explorer |[Az ACL-ek beállítása Azure Storage Explorer használatával Azure Data Lake Storage Gen2](data-lake-storage-explorer-acl.md)|
+|.NET |[A .NET használata az ACL-ek beállításához Azure Data Lake Storage Gen2](data-lake-storage-acl-dotnet.md)|
+|Java|[A Java használata az ACL-ek beállításához Azure Data Lake Storage Gen2](data-lake-storage-acl-java.md)|
+|Python|[A Python használata a Azure Data Lake Storage Gen2 ACL-ek beállításához](data-lake-storage-acl-python.md)|
+|PowerShell|[Hozzáférés-vezérlési listák beállítása a PowerShell használatával Azure Data Lake Storage Gen2](data-lake-storage-acl-powershell.md)|
+|Azure CLI|[ACL-ek beállítása az Azure Data Lake Storage Gen2-ben az Azure CLI használatával](data-lake-storage-acl-cli.md)|
 |REST API |[Elérési út – frissítés](/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
@@ -200,7 +202,7 @@ Ahogy az a hozzáférés-ellenőrzési algoritmusban is látható, a maszk korl�
 
 Új Data Lake Storage Gen2 tároló esetén a gyökérkönyvtár ("/") hozzáférési ACL-jéhez tartozó maszk alapértelmezés szerint **750** a könyvtárakhoz és a **640** fájlokhoz. Az alábbi táblázat a jogosultsági szintek szimbolikus jelölését mutatja be.
 
-|Entitás|Könyvtárak|Files|
+|Entitás|Könyvtárak|Fájlok|
 |--|--|--|
 |Tulajdonos felhasználó|`rwx`|`r-w`|
 |Tulajdonoscsoport|`r-x`|`r--`|
@@ -273,7 +275,7 @@ Annak megismeréséhez, hogy a rendszer hogyan értékeli ki az Azure RBAC és a
 
 ### <a name="what-are-the-limits-for-azure-role-assignments-and-acl-entries"></a>Mik az Azure szerepkör-hozzárendelések és az ACL-bejegyzések korlátai?
 
-Az alábbi táblázat összefoglalja a korlátozásokat, amelyeket figyelembe kell venni az Azure RBAC a "durva szemű" engedélyek (a Storage-fiókokra vagy tárolóra vonatkozó engedélyek) kezelésére, valamint a "részletes" engedélyek (a fájlokra és könyvtárakra vonatkozó engedélyek) kezelésére szolgáló ACL-ek használatával. Biztonsági csoportok használata ACL-hozzárendelésekhez. A csoportok használatával kevésbé valószínű, hogy túllépi a szerepkör-hozzárendelések maximális számát az előfizetésben, valamint az ACl-bejegyzések maximális számát fájlonként vagy címtárban. 
+Az alábbi táblázat összefoglalja a korlátozásokat, amelyeket figyelembe kell venni az Azure RBAC a "durva szemű" engedélyek (a Storage-fiókokra vagy tárolóra vonatkozó engedélyek) kezelésére, valamint a "részletes" engedélyek (a fájlokra és könyvtárakra vonatkozó engedélyek) kezelésére szolgáló ACL-ek használatával. Biztonsági csoportok használata ACL-hozzárendelésekhez. A csoportok használatával kevésbé valószínű, hogy túllépi a szerepkör-hozzárendelések maximális számát az előfizetésben, valamint az ACL-bejegyzések maximális számát fájlonként vagy címtárban. 
 
 [!INCLUDE [Security groups](../../../includes/azure-storage-data-lake-rbac-acl-limits.md)] 
 

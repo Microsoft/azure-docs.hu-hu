@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: bd13712d137ec5a1fdfa6dec8e6f6d1e0a7432cb
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 61cb37e727808566db1bc9b1161960926e03cb91
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833167"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570899"
 ---
 # <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>Figyelő létrehozása a Csatlakozáskezelő Azure Portal használatával
 
@@ -186,7 +186,7 @@ A Azure Portal a riasztások létrehozásához a kapcsolódási figyelőhöz a k
 
 - **Feltétel neve**: a riasztás a `Test Result(preview)` metrikán jön létre. Ha a figyelő teszt eredménye sikertelen, akkor a riasztási szabály tüzet fog okozni. 
 
-- **Műveleti csoport neve**: közvetlenül is megadhatja az e-mail-címet, vagy létrehozhat riasztásokat a műveleti csoportok használatával. Ha közvetlenül adja meg az e-mail-címét, létrejön egy **NPM E-mail ActionGroup** nevű műveleti csoport. A rendszer hozzáadja az e-mail-azonosítót a műveleti csoporthoz. Ha a műveleti csoportok használata mellett dönt, ki kell választania egy korábban létrehozott műveleti csoportot. A műveleti csoportok létrehozásával kapcsolatos további információkért lásd: [create Action groups in the Azure Portal](../azure-monitor/platform/action-groups.md). A riasztás létrehozása után [kezelheti a riasztásokat](../azure-monitor/platform/alerts-metric.md#view-and-manage-with-azure-portal). 
+- **Műveleti csoport neve**: közvetlenül is megadhatja az e-mail-címet, vagy létrehozhat riasztásokat a műveleti csoportok használatával. Ha közvetlenül adja meg az e-mail-címét, létrejön egy **NPM E-mail ActionGroup** nevű műveleti csoport. A rendszer hozzáadja az e-mail-azonosítót a műveleti csoporthoz. Ha a műveleti csoportok használata mellett dönt, ki kell választania egy korábban létrehozott műveleti csoportot. A műveleti csoportok létrehozásával kapcsolatos további információkért lásd: [create Action groups in the Azure Portal](../azure-monitor/alerts/action-groups.md). A riasztás létrehozása után [kezelheti a riasztásokat](../azure-monitor/alerts/alerts-metric.md#view-and-manage-with-azure-portal). 
 
 - **Riasztási szabály neve**: a Csatlakozáskezelő neve.
 

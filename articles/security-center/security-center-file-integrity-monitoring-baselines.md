@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 89230b6aca9e225c28a1efd0b99476b35f4d8db0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f160948a06d8a3175158e0100345ee2a330048c
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91439546"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634700"
 ---
 # <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>Alapértékek összehasonlítása fájlintegritási monitorozással (FIM)
 
@@ -62,23 +62,22 @@ A FIM alapkonfigurációk az operációs rendszer és a támogató alkalmazás i
 > [!NOTE]
 > Ha többet szeretne megtudni a különböző operációsrendszer-verziók által támogatott beállításjegyzék-beállításokról, tekintse meg a [csoportházirend beállítások hivatkozását tartalmazó táblázatot](https://www.microsoft.com/download/confirmation.aspx?id=25250).
 
-*A FIM konfigurálása a beállításjegyzék alapkonfigurációinak figyeléséhez:*
+A FIM konfigurálása a beállításjegyzék alapkonfigurációinak figyeléséhez:
 
-1. A **Windows beállításjegyzék hozzáadása Change Tracking** ablakban a **Windows beállításjegyzék kulcsa** szövegmezőbe írja be a beállításkulcsot.
+1. A **Windows beállításjegyzék hozzáadása Change Tracking** ablakban a **Windows beállításjegyzék kulcsa** szövegmezőbe írja be a következő beállításkulcsot:
 
-    <code>
-
+    ```
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters
-    </code>
+    ```
 
-      ![A FIM engedélyezése a beállításjegyzékben](./media/security-center-file-integrity-monitoring-baselines/baselines-add-registry.png)
+    :::image type="content" source="./media/security-center-file-integrity-monitoring-baselines/baselines-add-registry.png" alt-text="A FIM engedélyezése a beállításjegyzékben":::
 
 ## <a name="track-changes-to-windows-files"></a>Windows-fájlok változásainak követése
 
 1. A **Windows-fájl hozzáadása Change Tracking** ablakban az **elérési út megadása** szövegmezőbe írja be azt a mappát, amely tartalmazza a nyomon követni kívánt fájlokat. Az alábbi ábrán látható példában a **contoso-webalkalmazás** a D:\ található. meghajtó a **ContosWebApp** -mappa struktúráján belül.  
 1. Hozzon létre egy egyéni Windows-bejegyzést úgy, hogy megadja a beállítási osztály nevét, engedélyezi a rekurziót, és megadta a legfelső mappát helyettesítő karakter (*) utótaggal.
 
-    ![FIM engedélyezése fájlon](./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png)
+    :::image type="content" source="./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png" alt-text="FIM engedélyezése fájlon":::
 
 ## <a name="retrieve-change-data"></a>Adatváltozások beolvasása
 

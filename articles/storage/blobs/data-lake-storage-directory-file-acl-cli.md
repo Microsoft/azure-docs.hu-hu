@@ -1,34 +1,37 @@
 ---
-title: Az Azure CLI használata fájlok & ACL-ekkel Azure Data Lake Storage Gen2
-description: Az Azure CLI használatával kezelheti a könyvtárakat és a fájl-és címtár-hozzáférés-vezérlési listákat (ACL) a hierarchikus névtérrel rendelkező Storage-fiókokban.
+title: Az Azure CLI használata az adatkezeléshez (Azure Data Lake Storage Gen2)
+description: Az Azure CLI-vel kezelheti azokat a címtárakat és fájlokat, amelyek hierarchikus névteret tartalmazó Storage-fiókokban vannak.
 services: storage
 author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: how-to
-ms.date: 05/18/2020
+ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 42359eb8a2bfdad23589e0302b80e7806b388510
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3e9afd4617eb7445ba83948d46eef0890832e2be
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913606"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650354"
 ---
-# <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Könyvtárak, fájlok és ACL-ek kezelése az Azure CLI használatával Azure Data Lake Storage Gen2
+# <a name="use-azure-cli-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>Könyvtárak és fájlok kezelése az Azure CLI használatával Azure Data Lake Storage Gen2
 
-Ez a cikk bemutatja, hogyan hozhat létre és kezelhet könyvtárakat, fájlokat és engedélyeket a hierarchikus névtérrel rendelkező Storage-fiókokban az [Azure Command-Line Interface (CLI)](/cli/azure/) használatával. 
+Ez a cikk bemutatja, hogyan hozhat létre és kezelhet olyan könyvtárakat és fájlokat az [Azure Command-Line felületen (CLI)](/cli/azure/) , amelyek hierarchikus névtérrel rendelkeznek a Storage-fiókokban.
+
+A címtárak és fájlok hozzáférés-vezérlési listái (ACL) beszerzésével, beállításával és frissítésével kapcsolatos további információkért lásd: az [ACL-ek kezelése az Azure Data Lake Storage Gen2-ban](data-lake-storage-acl-cli.md).
 
 [Példák](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)  |  [Visszajelzés küldése](https://github.com/Azure/azure-cli-extensions/issues)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-> [!div class="checklist"]
-> * Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-> * Olyan Storage-fiók, amelyen engedélyezve van a hierarchikus névtér (HNS). Az [alábbi](../common/storage-account-create.md) útmutatást követve hozzon létre egyet.
-> * Az Azure CLI verziója `2.6.0` vagy újabb.
+- Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+
+- Olyan Storage-fiók, amelyen engedélyezve van a hierarchikus névtér. Az [alábbi](create-data-lake-storage-account.md) útmutatást követve hozzon létre egyet.
+
+- Az Azure CLI verziója `2.6.0` vagy újabb.
 
 ## <a name="ensure-that-you-have-the-correct-version-of-azure-cli-installed"></a>Győződjön meg arról, hogy az Azure CLI megfelelő verziója van telepítve
 
@@ -39,6 +42,7 @@ Ez a cikk bemutatja, hogyan hozhat létre és kezelhet könyvtárakat, fájlokat
    ```azurecli
     az --version
    ```
+
    Ha az Azure CLI verziója alacsonyabb, mint a `2.6.0` , telepítsen egy újabb verziót. Lásd: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 ## <a name="connect-to-the-account"></a>Kapcsolódás a fiókhoz
@@ -64,7 +68,7 @@ Ez a cikk bemutatja, hogyan hozhat létre és kezelhet könyvtárakat, fájlokat
    Cserélje le a `<subscription-id>` helyőrző értékét az előfizetés azonosítójával.
 
 > [!NOTE]
-> A cikkben bemutatott példa Azure Active Directory (AD) engedélyezését mutatja. További információ az engedélyezési módszerekről: a [blob-vagy üzenetsor-hozzáférés engedélyezése az Azure CLI-vel](./authorize-data-operations-cli.md).
+> A cikkben bemutatott példa Azure Active Directory (Azure AD) engedélyezését mutatja be. További információ az engedélyezési módszerekről: a [blob-vagy üzenetsor-hozzáférés engedélyezése az Azure CLI-vel](./authorize-data-operations-cli.md).
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
@@ -216,106 +220,9 @@ Ez a példa töröl egy nevű fájlt. `my-file.txt`
 az storage fs file delete -p my-directory/my-file.txt -f my-file-system  --account-name mystorageaccount --auth-mode login 
 ```
 
-## <a name="manage-access-control-lists-acls"></a>Hozzáférés-vezérlési listák (ACL-ek) kezelése
-
-Lekérheti, beállíthatja és frissítheti a címtárak és fájlok hozzáférési engedélyeit.
-
-> [!NOTE]
-> Ha Azure Active Directory (Azure AD) használatával engedélyezi a parancsokat, akkor győződjön meg arról, hogy a rendszerbiztonsági tag hozzá lett rendelve a [Storage blob-adat tulajdonosi szerepköréhez](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner). Ha többet szeretne megtudni az ACL-engedélyek alkalmazásáról és azok módosításának hatásairól, tekintse meg a  [Azure Data Lake Storage Gen2 hozzáférés-vezérlését](./data-lake-storage-access-control.md)ismertető témakört.
-
-### <a name="get-an-acl"></a>ACL beszerzése
-
-A parancs használatával szerezze be a **CÍMTÁR** ACL-listáját `az storage fs access show` .
-
-Ez a példa egy könyvtár ACL-listáját kéri le, majd kiírja az ACL-t a konzolra.
-
-```azurecli
-az storage fs access show -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-A parancs használatával szerezze be egy **fájl** hozzáférési engedélyeit `az storage fs access show` . 
-
-Ez a példa egy fájl ACL-listáját kéri le, majd kiírja az ACL-t a konzolra.
-
-```azurecli
-az storage fs access show -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-Az alábbi képen egy könyvtár ACL-listájának beolvasása után a kimenet látható.
-
-![ACL kimenetének beolvasása](./media/data-lake-storage-directory-file-acl-cli/get-acl.png)
-
-Ebben a példában a tulajdonos felhasználó olvasási, írási és végrehajtási engedélyekkel rendelkezik. A tulajdonos csoport csak olvasási és végrehajtási engedélyekkel rendelkezik. A hozzáférés-vezérlési listával kapcsolatos további információkért lásd: [hozzáférés-vezérlés Azure Data Lake Storage Gen2ban](data-lake-storage-access-control.md).
-
-### <a name="set-an-acl"></a>ACL beállítása
-
-A `az storage fs access set` parancs használatával állítsa be a **címtár** ACL-listáját. 
-
-Ez a példa a tulajdonos felhasználó, tulajdonos csoport vagy más felhasználók könyvtárának ACL-listáját állítja be, majd kinyomtatja az ACL-t a konzolra.
-
-```azurecli
-az storage fs access set --acl "user::rw-,group::rw-,other::-wx" -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-Ez a példa a tulajdonos felhasználó, tulajdonos csoport vagy más felhasználók könyvtárának *alapértelmezett* ACL-listáját állítja be, majd kinyomtatja az ACL-t a konzolra.
-
-```azurecli
-az storage fs access set --acl "default:user::rw-,group::rw-,other::-wx" -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-A `az storage fs access set` parancs használatával állítsa be egy **fájl** ACL-listáját. 
-
-Ez a példa egy fájl ACL-fájlját állítja be a tulajdonos felhasználó, tulajdonos csoport vagy más felhasználók számára, majd kinyomtatja az ACL-t a konzolra.
-
-```azurecli
-az storage fs access set --acl "user::rw-,group::rw-,other::-wx" -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-Az alábbi képen egy fájl ACL-listájának beállítása után a kimenet látható.
-
-![A 2. ACL-kimenet beolvasása](./media/data-lake-storage-directory-file-acl-cli/set-acl-file.png)
-
-Ebben a példában a tulajdonos felhasználó és a tulajdonos csoport csak olvasási és írási engedéllyel rendelkezik. Minden más felhasználó írási és végrehajtási engedélyekkel rendelkezik. A hozzáférés-vezérlési listával kapcsolatos további információkért lásd: [hozzáférés-vezérlés Azure Data Lake Storage Gen2ban](data-lake-storage-access-control.md).
-
-### <a name="update-an-acl"></a>ACL frissítése
-
-Ezt az engedélyt úgy is beállíthatja, hogy a `az storage fs access set` parancsot használja. 
-
-Frissítse a címtár vagy fájl ACL-listáját úgy `-permissions` , hogy a paramétert egy ACL rövid formájára állítja be.
-
-Ez a példa egy **könyvtár** ACL-listáját frissíti.
-
-```azurecli
-az storage fs access set --permissions rwxrwxrwx -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-Ez a példa egy **fájl** ACL-listáját frissíti.
-
-```azurecli
-az storage fs access set --permissions rwxrwxrwx -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-Egy könyvtár vagy fájl tulajdonos felhasználóját és csoportját úgy is frissítheti, ha az `--owner` vagy a `group` paramétereket egy felhasználó entitás-azonosító vagy egyszerű felhasználónév (UPN) értékére állítja be. 
-
-Ez a példa egy könyvtár tulajdonosát módosítja. 
-
-```azurecli
-az storage fs access set --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-Ez a példa egy fájl tulajdonosát módosítja. 
-
-```azurecli
-az storage fs access set --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
-
-```
-
-### <a name="set-an-acl-recursively"></a>ACL beállítása rekurzív módon
-
-Az ACL-eket a szülő könyvtár meglévő alárendelt elemein is hozzáadhatja, frissítheti és eltávolíthatja anélkül, hogy ezeket a módosításokat egyenként el kellene végeznie az egyes alárendelt elemek esetében. További információ: [rekurzív hozzáférés-vezérlési listák (ACL-ek) beállítása Azure Data Lake Storage Gen2hoz](recursive-access-control-lists.md).
-
 ## <a name="see-also"></a>Lásd még
 
-* [Példák](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)
-* [Visszajelzés küldése](https://github.com/Azure/azure-cli-extensions/issues)
-* [Ismert problémák](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
+- [Példák](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)
+- [Visszajelzés küldése](https://github.com/Azure/azure-cli-extensions/issues)
+- [Ismert problémák](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
+- [Az ACL-ek kezelése az Azure CLI használatával Azure Data Lake Storage Gen2](data-lake-storage-acl-cli.md)

@@ -132,6 +132,8 @@
       href: howto-backup-config-store.md
     - name: Felügyelt identitások használata az App Configuration eléréséhez
       href: howto-integrate-azure-managed-service-identity.md
+    - name: Alkalmazások konfigurációjának integrálása a Visual Studióban
+      href: /visualstudio/azure/vs-azure-tools-connected-services-app-configuration
 - name: Referencia
   items:
     - name: Konfiguráció

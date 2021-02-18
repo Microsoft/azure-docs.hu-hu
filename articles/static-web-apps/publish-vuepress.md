@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
 ms.custom: devx-track-js
-ms.openlocfilehash: 72b1bd4d46b0b04364b25a8460361d6a008d42a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f0616df885a7f8fcd76337c810bc368aa02f3c8
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250130"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650446"
 ---
 # <a name="tutorial-publish-a-vuepress-site-to-azure-static-web-apps-preview"></a>Oktatóanyag: VuePress-webhely közzététele az Azure statikus Web Apps előzetes verziójában
 
@@ -89,7 +89,7 @@ VuePress-alkalmazás létrehozása a parancssori felületen (CLI):
 
 Az Azure statikus Web Appshoz való csatlakozáshoz a GitHubon egy adattárra van szükség. A következő lépések bemutatják, hogyan hozhat létre tárházat a webhelyhez.
 
-1. Hozzon létre egy üres GitHub-tárházat (ne hozzon létre README) a [https://github.com/new](https://github.com/new) named **vuepress-static-app**névvel.
+1. Hozzon létre egy üres GitHub-tárházat (ne hozzon létre README) a [https://github.com/new](https://github.com/new) named **vuepress-static-app** névvel.
 
 1. Adja hozzá a GitHub-adattárat a helyi tárházhoz. Ügyeljen arra, hogy a GitHub-felhasználónevet a helyőrző helyén adja hozzá `<YOUR_USER_NAME>` a következő parancsban.
 
@@ -100,7 +100,7 @@ Az Azure statikus Web Appshoz való csatlakozáshoz a GitHubon egy adattárra va
 1. Küldje le a helyi tárházat a GitHubra.
 
    ```bash
-   git push --set-upstream origin master
+   git push --set-upstream origin main
    ```
 
 ## <a name="deploy-your-web-app"></a>A webalkalmazás üzembe helyezése
@@ -117,17 +117,17 @@ A következő lépések bemutatják, hogyan hozhat létre új statikus Web Apps 
 
    :::image type="content" source="./media/publish-vuepress/create-in-portal.png" alt-text="Statikus Web Apps (előzetes verzió) létrehozása a portálon":::
 
-1. Az **előfizetés**mezőben fogadja el a felsorolt előfizetést, vagy válasszon ki egy újat a legördülő listából.
+1. Az **előfizetés** mezőben fogadja el a felsorolt előfizetést, vagy válasszon ki egy újat a legördülő listából.
 
-1. Az _erőforráscsoport_területen válassza az **új**lehetőséget. Az _Új erőforráscsoport neve_mezőbe írja be a **vuepress-static-app** nevet, majd kattintson **az OK gombra**.
+1. Az _erőforráscsoport_ területen válassza az **új** lehetőséget. Az _Új erőforráscsoport neve_ mezőbe írja be a **vuepress-static-app** nevet, majd kattintson **az OK gombra**.
 
 1. Ezután adja meg az alkalmazás nevét a **név** mezőben. Érvényes karakterek a következők:, `a-z` `A-Z` `0-9` és `-` .
 
-1. A _régió_területen válasszon ki egy elérhető régiót.
+1. A _régió_ területen válasszon ki egy elérhető régiót.
 
-1. Az _SKU_esetében válassza az **ingyenes**lehetőséget.
+1. Az _SKU_ esetében válassza az **ingyenes** lehetőséget.
 
-   :::image type="content" source="./media/publish-vuepress/basic-app-details.png" alt-text="Statikus Web Apps (előzetes verzió) létrehozása a portálon":::
+   :::image type="content" source="./media/publish-vuepress/basic-app-details.png" alt-text="Részletek kitöltve":::
 
 1. Kattintson a **Bejelentkezés a GitHub** gombbal gombra.
 
@@ -135,9 +135,9 @@ A következő lépések bemutatják, hogyan hozhat létre új statikus Web Apps 
 
 1. Válassza ki a **vuepress-static-app** _adattárat_ .
 
-1. A _ág_ válassza a **Master**elemet.
+1. A _ág_ válassza a **Main (fő**) lehetőséget.
 
-   :::image type="content" source="./media/publish-vuepress/completed-github-info.png" alt-text="Statikus Web Apps (előzetes verzió) létrehozása a portálon":::
+   :::image type="content" source="./media/publish-vuepress/completed-github-info.png" alt-text="Elkészült GitHub-információ":::
 
 ### <a name="build"></a>Létrehozás
 
@@ -151,7 +151,7 @@ Ezután adja hozzá azokat a konfigurációs beállításokat, amelyeket a létr
 
 Az API-k _helyének_ értéke nem szükséges, mivel jelenleg nem TELEPÍTenek API-t.
 
-   :::image type="content" source="./media/publish-vuepress/build-details.png" alt-text="Statikus Web Apps (előzetes verzió) létrehozása a portálon":::
+   :::image type="content" source="./media/publish-vuepress/build-details.png" alt-text="Összeállítási beállítások":::
 
 ### <a name="review-and-create"></a>Áttekintés és létrehozás
 
@@ -159,17 +159,17 @@ Az API-k _helyének_ értéke nem szükséges, mivel jelenleg nem TELEPÍTenek A
 
 1. Kattintson a Létrehozás gombra az Azure statikus Web Apps létrehozásához, és **hozzon létre** egy GitHub-műveletet az üzembe helyezéshez.
 
-1. Miután az üzembe helyezés befejeződött, kattintson az **erőforrás**elemre.
+1. Miután az üzembe helyezés befejeződött, kattintson az **erőforrás** elemre.
 
 1. Az erőforrás képernyőn kattintson az _URL_ hivatkozásra az üzembe helyezett alkalmazás megnyitásához. Előfordulhat, hogy várnia kell egy percet vagy kettőt a GitHub-művelet befejeződésére.
 
-   :::image type="content" source="./media/publish-vuepress/deployed-app.png" alt-text="Statikus Web Apps (előzetes verzió) létrehozása a portálon":::
+   :::image type="content" source="./media/publish-vuepress/deployed-app.png" alt-text="Üzembe helyezett alkalmazás":::
 
 ### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [cleanup-resource](../../includes/static-web-apps-cleanup-resource.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni tartomány hozzáadása](custom-domain.md)

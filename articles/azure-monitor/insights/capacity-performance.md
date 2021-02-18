@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: ee5aec2e483f41c73d57fc1d91427e5657bda3e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9fce67c0ffe1951b0bfc325603b6d8f985dd804d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87317994"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592204"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>A Hyper-V virtuális gépek kapacitásának megtervezése a Capacity and Performance megoldással (elavult)
 
@@ -39,12 +39,12 @@ A megoldás:
 
 Az alábbi táblázat áttekintést nyújt az ebben a megoldásban támogatott összekapcsolt forrásokról.
 
-| Összekapcsolt forrás | Támogatás | Leírás |
+| Összekapcsolt forrás | Támogatás | Description |
 |---|---|---|
-| [Windows-ügynökök](../platform/agent-windows.md) | Igen | A megoldás a Windows-ügynököktől származó kapacitás-és teljesítményadatok adatait gyűjti. |
-| [Linux-ügynökök](../learn/quick-collect-linux-computer.md) | Nem | A megoldás nem gyűjt kapacitás-és teljesítményadatok-adatokat a közvetlen Linux-ügynököktől.|
-| [SCOM felügyeleti csoport](../platform/om-agents.md) | Igen |A megoldás gyűjti a kapacitás-és teljesítményadatokat a csatlakoztatott SCOM felügyeleti csoportban lévő ügynököktől. Nem szükséges közvetlen kapcsolódás a SCOM-ügynöktől a Log Analyticshoz.|
-| [Azure Storage-fiók](../platform/resource-logs.md#send-to-log-analytics-workspace) | Nem | Az Azure Storage nem tartalmaz kapacitás-és teljesítményadatokat.|
+| [Windows-ügynökök](../agents/agent-windows.md) | Yes | A megoldás a Windows-ügynököktől származó kapacitás-és teljesítményadatok adatait gyűjti. |
+| [Linux-ügynökök](../vm/quick-collect-linux-computer.md) | No    | A megoldás nem gyűjt kapacitás-és teljesítményadatok-adatokat a közvetlen Linux-ügynököktől.|
+| [SCOM felügyeleti csoport](../agents/om-agents.md) | Yes |A megoldás gyűjti a kapacitás-és teljesítményadatokat a csatlakoztatott SCOM felügyeleti csoportban lévő ügynököktől. Nem szükséges közvetlen kapcsolódás a SCOM-ügynöktől a Log Analyticshoz.|
+| [Azure Storage-fiók](../essentials/resource-logs.md#send-to-log-analytics-workspace) | No | Az Azure Storage nem tartalmaz kapacitás-és teljesítményadatokat.|
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -72,7 +72,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 A Capacity and Performance-megoldás frissítésekor a verziószám módosul.
 
-A megoldási felügyeleti csomagok frissítéseivel kapcsolatban lásd: [Az Operations Manager csatlakoztatása a Log Analyticshez](../platform/om-agents.md).
+A megoldási felügyeleti csomagok frissítéseivel kapcsolatban lásd: [Az Operations Manager csatlakoztatása a Log Analyticshez](../agents/om-agents.md).
 
 ## <a name="using-the-solution"></a>A megoldás használata
 
@@ -117,7 +117,7 @@ Az összegzéshez a megoldás a különböző forrásokból származó kapacitá
 Az alábbi táblázat a megoldás által gyűjtött és kiszámított kapacitás-és teljesítményadatok-kereséseket tartalmazza.
 
 
-| Lekérdezés | Leírás |
+| Lekérdezés | Description |
 |:--- |:--- |
 | Minden gazdagép memória-konfigurációja | A Perf &#124;, ahol a ObjectName = = "Capacity and Performance" és a CounterName = = "gazdagéphez hozzárendelt memória MB" &#124; összefoglaló MB = AVG (kártyabirtokos számlájának megterhelését) by példánynév |
 | Minden virtuális gép memória-konfigurációja | A Teljesítményfigyelő &#124;, ahol a ObjectName = = "Capacity and Performance" és a CounterName = = "virtuális gép hozzárendelt memóriája MB" &#124; a MB = AVG (kártyabirtokos számlájának megterhelését) by példánynév összegzése |
@@ -128,6 +128,6 @@ Az alábbi táblázat a megoldás által gyűjtött és kiszámított kapacitás
 | Az összes CSV közötti teljes késés részletezése | A Teljesítményfigyelő &#124;, ahol a ObjectName = = "Capacity and Performance" és (CounterName = = "CSV olvasási késés" vagy CounterName = = "CSV írási késése") &#124; foglalja össze a AggregatedValue = AVG (kártyabirtokos számlájának megterhelését) by bin (TimeGenerated, 1h), CounterName, példánynév |
 
 
-## <a name="next-steps"></a>További lépések
-* A részletes Capacity and Performance-információk megtekintéséhez használja [a log Analytics a naplóbeli kereséseket](../log-query/log-query-overview.md) .
+## <a name="next-steps"></a>Következő lépések
+* A részletes Capacity and Performance-információk megtekintéséhez használja [a log Analytics a naplóbeli kereséseket](../logs/log-query-overview.md) .
 

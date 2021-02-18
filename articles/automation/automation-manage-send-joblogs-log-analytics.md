@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2e7e798967541748b5572994d48cb5bdf7474cb1
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4199c5576662eee1dd6cedc388440a71e21f8b74
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182869"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581206"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>Azure Automation-feladat adatainak továbbítása az Azure Monitor-naplói felé
 
@@ -72,7 +72,7 @@ Az Automation diagnosztikai beállításai támogatják a következő platform-n
 * DSCNodeStatus
 * Metrikák – összes feladat, összes frissítés központi telepítési gépe, összes frissítés központi telepítésének futtatása
 
-Az Automation-naplók Azure Monitor naplókba való küldésének megkezdéséhez tekintse át a [diagnosztikai beállítások létrehozása](../azure-monitor/platform/diagnostic-settings.md) című témakört, amelyből megismerheti a platform-naplók küldéséhez szükséges diagnosztikai beállításokat.
+Az Automation-naplók Azure Monitor naplókba való küldésének megkezdéséhez tekintse át a [diagnosztikai beállítások létrehozása](../azure-monitor/essentials/diagnostic-settings.md) című témakört, amelyből megismerheti a platform-naplók küldéséhez szükséges diagnosztikai beállításokat.
 
 ## <a name="azure-monitor-log-records"></a>Naplóbejegyzések Azure Monitor
 
@@ -140,7 +140,7 @@ Riasztási szabály létrehozásához először hozzon létre egy naplót a runb
 
    Ha több Automation-fiókból vagy-előfizetésből állít be naplókat a munkaterületre, a riasztásokat az előfizetés és az Automation-fiók alapján csoportosíthatja. Az Automation-fiók neve a `Resource` Keresés mezőjében található `JobLogs` .
 
-3. A **szabály létrehozása** képernyő megnyitásához kattintson az oldal tetején található **új riasztási szabály** elemre. A riasztás konfigurálásával kapcsolatos további információkért lásd: [riasztások naplózása az Azure-ban](../azure-monitor/platform/alerts-unified-log.md).
+3. A **szabály létrehozása** képernyő megnyitásához kattintson az oldal tetején található **új riasztási szabály** elemre. A riasztás konfigurálásával kapcsolatos további információkért lásd: [riasztások naplózása az Azure-ban](../azure-monitor/alerts/alerts-unified-log.md).
 
 ### <a name="find-all-jobs-that-have-completed-with-errors"></a>A hibákkal befejezett összes feladat megkeresése
 
@@ -192,8 +192,8 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Ha meg szeretné tudni, hogyan hozhat létre keresési lekérdezéseket, és hogyan tekintheti át az Automation-feladatok naplóit Azure Monitor-naplókkal, tekintse meg a [Azure monitor](../azure-monitor/log-query/log-query-overview.md)naplókban végzett
+* Ha meg szeretné tudni, hogyan hozhat létre keresési lekérdezéseket, és hogyan tekintheti át az Automation-feladatok naplóit Azure Monitor-naplókkal, tekintse meg a [Azure monitor](../azure-monitor/logs/log-query-overview.md)naplókban végzett
 * A runbookok származó kimeneti és hibaüzenetek létrehozásának és lekérésének megismeréséhez lásd: [runbook-kimenet figyelése](automation-runbook-output-and-messages.md).
 * A runbook végrehajtásával, a runbook-feladatok figyelésével és egyéb technikai részletekkel kapcsolatos további tudnivalókért tekintse meg [a runbook végrehajtásáról szóló részt Azure Automation](automation-runbook-execution.md).
-* Ha többet szeretne megtudni Azure Monitor a naplókról és az adatgyűjtési forrásokról, tekintse meg [Az Azure Storage-adatok gyűjtése Azure monitor naplók áttekintését](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)ismertető cikket.
-* A Log Analytics hibaelhárításával kapcsolatban lásd: [Hibaelhárítás, hogy a log Analytics miért nem gyűjti az adatgyűjtést](../azure-monitor/platform/manage-cost-storage.md#troubleshooting-why-log-analytics-is-no-longer-collecting-data).
+* Ha többet szeretne megtudni Azure Monitor a naplókról és az adatgyűjtési forrásokról, tekintse meg [Az Azure Storage-adatok gyűjtése Azure monitor naplók áttekintését](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)ismertető cikket.
+* A Log Analytics hibaelhárításával kapcsolatban lásd: [Hibaelhárítás, hogy a log Analytics miért nem gyűjti az adatgyűjtést](../azure-monitor/logs/manage-cost-storage.md#troubleshooting-why-log-analytics-is-no-longer-collecting-data).

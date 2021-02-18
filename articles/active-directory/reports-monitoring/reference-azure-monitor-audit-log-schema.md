@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc7a5e2e45cd3d76c0d8af612291ecaf9893b5b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4d32e0b939731d64f3ef2495ab606b5dc0780e4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231095"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592278"
 ---
 # <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Az Azure AD napló sémájának értelmezése Azure Monitor (előzetes verzió)
 
@@ -147,7 +147,7 @@ Ez a cikk a Azure Monitor Azure Active Directory (Azure AD) napló sémáját is
 
 ## <a name="field-and-property-descriptions"></a>Mező és tulajdonság leírása
 
-| Mező neve | Leírás |
+| Mező neve | Description |
 |------------|-------------|
 | time       | A dátum és idő (UTC). |
 | operationName | A művelet neve. |
@@ -167,17 +167,17 @@ Ez a cikk a Azure Monitor Azure Active Directory (Azure AD) napló sémáját is
 
 <br>
 
-| Tulajdonság neve | Leírás |
+| Tulajdonság neve | Description |
 |---------------|-------------|
-| AuditEventCategory | A naplózási esemény típusa. Ez lehet a *felhasználók felügyelete*, az *Alkalmazások kezelése*vagy más típusú.|
+| AuditEventCategory | A naplózási esemény típusa. Ez lehet a *felhasználók felügyelete*, az *Alkalmazások kezelése* vagy más típusú.|
 | Identitás típusa | A típus lehet *alkalmazás* vagy *felhasználó*. |
-| Művelet típusa | A típus lehet *Hozzáadás*, *frissítés*, *Törlés*. vagy *más*. |
+| Művelettípus | A típus lehet *Hozzáadás*, *frissítés*, *Törlés*. vagy *más*. |
 | Cél erőforrástípus | Meghatározza azt a célként megadott erőforrás-típust, amelyen a művelet végre lett hajtva. A típus lehet *alkalmazás*, *felhasználó*, *szerepkör*, *házirend* | 
 | Cél erőforrás neve | A célként megadott erőforrás neve. Ez lehet egy alkalmazás neve, egy szerepkör neve, egy egyszerű felhasználónév vagy egy egyszerű szolgáltatásnév. |
-| additionalTargets | Az adott műveletekhez tartozó további tulajdonságok felsorolása. Egy frissítési művelet esetében például a régi értékek és az új értékek a *targetUpdatedProperties*területen jelennek meg. | 
+| additionalTargets | Az adott műveletekhez tartozó további tulajdonságok felsorolása. Egy frissítési művelet esetében például a régi értékek és az új értékek a *targetUpdatedProperties* területen jelennek meg. | 
 
 ## <a name="next-steps"></a>Következő lépések
 
 * [A bejelentkezési naplók sémájának értelmezése az Azure Monitorban](reference-azure-monitor-sign-ins-log-schema.md)
-* [Azure-beli diagnosztikai naplók](../../azure-monitor/platform/platform-logs-overview.md)
+* [Azure-beli diagnosztikai naplók](../../azure-monitor/essentials/platform-logs-overview.md)
 * [Gyakori kérdések és ismert hibák](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

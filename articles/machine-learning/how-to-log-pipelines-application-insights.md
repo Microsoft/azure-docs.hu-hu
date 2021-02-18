@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: e451e55a9a73022f9c90ba4adae91b520840481e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 58e604eccaca4630a235f4ae83724df20d6b1e26
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880759"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592528"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>A gépi tanulási folyamat naplófájljainak összegyűjtése a riasztások és a hibakeresés Application Insights
 
@@ -164,6 +164,6 @@ Az alábbi lekérdezések némelyike a "customDimensions. level" használatát h
 
 ## <a name="next-steps"></a>Következő lépések
 
-Miután megtörtént a naplók beolvasása a Application Insights-példányban, a rendszer a lekérdezés eredményei alapján [Azure monitor riasztások](../azure-monitor/platform/alerts-overview.md#what-you-can-alert-on) beállítására is használható.
+Miután megtörtént a naplók beolvasása a Application Insights-példányban, a rendszer a lekérdezés eredményei alapján [Azure monitor riasztások](../azure-monitor/alerts/alerts-overview.md#what-you-can-alert-on) beállítására is használható.
 
-A lekérdezéseket egy [Azure-irányítópulton](../azure-monitor/learn/tutorial-app-dashboards.md#add-logs-query) is hozzáadhatja további információkhoz.
+A lekérdezéseket egy [Azure-irányítópulton](../azure-monitor/app/tutorial-app-dashboards.md#add-logs-query) is hozzáadhatja további információkhoz.

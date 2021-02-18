@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: 1c33011d947d6dc9dd9ee4dd6331c24c06d99b38
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 411a95154c9ca36595dff4472e9ab8e1ae8a767e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693824"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571365"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>SAP-megoldások Azure monitorja (előzetes verzió)
 
@@ -35,7 +35,7 @@ Támogatott adatbázisok:
 - SAP HANA-adatbázis
 - Microsoft SQL Server
 
-Az SAP-megoldások Azure Monitor a meglévő [Azure monitor](../../../azure-monitor/overview.md) képességek, például a log Analytics és a [munkafüzetek](../../../azure-monitor/platform/workbooks-overview.md) hatékonyságát használják több figyelési képesség biztosításához. Az ügyfelek [Egyéni vizualizációkat](../../../azure-monitor/platform/workbooks-overview.md#getting-started) hozhatnak létre az SAP-megoldások Azure monitor által biztosított alapértelmezett munkafüzetek szerkesztésével, [Egyéni lekérdezések](../../../azure-monitor/log-query/log-analytics-tutorial.md) írásához és [egyéni riasztások](../../../azure-monitor/learn/tutorial-response.md) létrehozásához az Azure log Analytics-munkaterületen, kihasználva a [rugalmas megőrzési időt](../../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) , és összekapcsolhatók a megfigyelési adatokkal a jegyrendszer használatával.
+Az SAP-megoldások Azure Monitor a meglévő [Azure monitor](../../../azure-monitor/overview.md) képességek, például a log Analytics és a [munkafüzetek](../../../azure-monitor/visualize/workbooks-overview.md) hatékonyságát használják több figyelési képesség biztosításához. Az ügyfelek [Egyéni vizualizációkat](../../../azure-monitor/visualize/workbooks-overview.md#getting-started) hozhatnak létre az SAP-megoldások Azure monitor által biztosított alapértelmezett munkafüzetek szerkesztésével, [Egyéni lekérdezések](../../../azure-monitor/logs/log-analytics-tutorial.md) írásához és [egyéni riasztások](../../../azure-monitor/alerts/tutorial-response.md) létrehozásához az Azure log Analytics-munkaterületen, kihasználva a [rugalmas megőrzési időt](../../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period) , és összekapcsolhatók a megfigyelési adatokkal a jegyrendszer használatával.
 
 ## <a name="what-data-does-azure-monitor-for-sap-solutions-collect"></a>Az SAP-megoldások Azure Monitor milyen adatokat gyűjtenek?
 
@@ -91,9 +91,9 @@ Az architektúra legfontosabb összetevői a következők:
    - Azure-beli virtuális gép: *gyűjtő virtuális* gépnek is nevezzük. Ez egy Standard_B2ms virtuális gép. Ennek a virtuális gépnek a fő célja a *figyelési tartalom* üzemeltetése. A figyelési tartalom arra a logikára utal, amely a telemetria és a begyűjtött adatoknak a megfigyelési keretrendszerbe való továbbítására szolgál. A fenti ábrán a figyelési tartalom tartalmazza azt a logikát, amely az SQL-porton keresztül SAP HANA adatbázishoz csatlakozik.
    - [Azure Key Vault](../../../key-vault/general/basic-concepts.md): ezt az erőforrást úgy helyezi üzembe, hogy biztonságosan tárolja SAP HANA adatbázis hitelesítő adatait, és adatokat tároljon a [szolgáltatókról](./azure-monitor-providers.md).
    - Log Analytics munkaterület: az a cél, ahol a telemetria-adat található.
-      - A vizualizáció az [Azure-munkafüzetek](../../../azure-monitor/platform/workbooks-overview.md)használatával log Analytics telemetria épül. Az ügyfelek testre szabhatják a vizualizációt. Az ügyfelek az Azure irányítópulton is rögzíthetik a munkafüzeteket vagy adott vizualizációkat az Azure irányítópulton az autofrissítési képességhez, amely a legalacsonyabb részletességgel 30 percet vesz igénybe.
+      - A vizualizáció az [Azure-munkafüzetek](../../../azure-monitor/visualize/workbooks-overview.md)használatával log Analytics telemetria épül. Az ügyfelek testre szabhatják a vizualizációt. Az ügyfelek az Azure irányítópulton is rögzíthetik a munkafüzeteket vagy adott vizualizációkat az Azure irányítópulton az autofrissítési képességhez, amely a legalacsonyabb részletességgel 30 percet vesz igénybe.
       - Az ügyfelek a meglévő munkaterületet az adott előfizetésen belül, az SAP-figyelő erőforrással is használhatják, ha ezt a lehetőséget választja az üzembe helyezés időpontjában.
-      - A Kusto lekérdezési nyelv (KQL) segítségével az ügyfelek [lekérdezéseket](../../../azure-monitor/log-query/log-query-overview.md) futtathatnak log Analytics munkaterületen belüli nyers táblákon. Tekintse meg az *Egyéni naplókat*.
+      - A Kusto lekérdezési nyelv (KQL) segítségével az ügyfelek [lekérdezéseket](../../../azure-monitor/logs/log-query-overview.md) futtathatnak log Analytics munkaterületen belüli nyers táblákon. Tekintse meg az *Egyéni naplókat*.
 
 > [!Note]
 > Az ügyfelek feladata a felügyelt erőforráscsoport keretében üzembe helyezett virtuális gép javítása és karbantartása.
@@ -112,7 +112,7 @@ Az architektúra legfontosabb főbb jellemzői a következők:
 ## <a name="pricing"></a>Díjszabás
 Az SAP-megoldások Azure Monitor egy ingyenes termék (nincs licenc díj). Az ügyfelek feladata, hogy kifizessék a felügyelt erőforráscsoport mögöttes összetevőinek költségeit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg a szolgáltatókat, és hozza létre az első Azure Monitor az SAP Solutions-erőforráshoz.
  - További információ a [szolgáltatókról](./azure-monitor-providers.md)

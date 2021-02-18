@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: cefcd4ce287eecfe2c764d88d5d2233cc8ac0a5c
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 4eeda2e4e418920522f7a65bef68928963c43ad4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753445"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581787"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Értékelés/függőségek vizualizációjának hibaelhárítása
 
@@ -22,7 +22,7 @@ Ez a cikk segítséget nyújt az értékeléssel és a függőségi vizualizáci
 
 Javítsa ki az értékelés készültségi problémáit az alábbiak szerint:
 
-**Probléma** | **Javítás**
+**Kérdés** | **Javítás**
 --- | ---
 Nem támogatott rendszerindítási típus | Az Azure nem támogatja az EFI rendszerindítási típussal rendelkező virtuális gépeket. Javasoljuk, hogy az áttelepítés futtatása előtt alakítsa át a rendszerindítási típust BIOS-ra. <br/><br/>Az ilyen virtuális gépek áttelepítésének kezeléséhez Azure Migrate kiszolgáló áttelepítését használhatja. Az áttelepítés során a rendszer a virtuális gép rendszerindítási típusát a BIOS-ba konvertálja.
 Feltételesen támogatott Windows operációs rendszer | Az operációs rendszer elérte a támogatás befejezési dátumát, és az [Azure-támogatáshoz](/troubleshoot/azure/virtual-machines/server-software-support)egyéni támogatási szerződés (CSA) szükséges. Az Azure-ba való Migrálás előtt érdemes lehet frissíteni. [Tekintse át]() az Azure-ba való áttelepítéshez [Windows Server 2003 rendszerű gépek előkészítésével](prepare-windows-server-2003-migration.md) kapcsolatos információkat.
@@ -75,7 +75,7 @@ Azure Migrate kiszolgáló értékelése a felmérés típusa alapján több mag
 
 - A VM SKU-javaslat az értékelés tulajdonságaitól függ.
 - Ezt a kiszolgáló értékelése során végrehajtott értékelés típusa befolyásolja: *teljesítmény-alapú* *vagy helyszíni*.
-- A teljesítmény-alapú értékelések esetében a kiszolgáló értékelése a helyszíni virtuális gépek (CPU, memória, lemez és hálózat kihasználtsága) kihasználtsági adatait veszi figyelembe a helyszíni virtuális gépekhez tartozó megfelelő virtuálisgép-SKU meghatározásához. A tényleges kihasználtság meghatározásakor kényelmi faktort is megad.
+- A teljesítményalapú értékelések esetén a Server Assessment a helyszíni virtuális gépek használati adatait (processzor-, memória-, lemez- és hálózathasználat) veszi figyelembe, hogy meghatározza a megfelelő virtuálisgép-termékváltozatot a helyszíni virtuális gépek számára. A tényleges kihasználtság meghatározásakor kényelmi faktort is megad.
 - A helyszíni méretezés esetén a teljesítményadatok nem számítanak, és a célként megadott SKU-t a helyszíni kiosztás alapján ajánlott használni.
 
 Ha szeretné megmutatni, hogy ez milyen hatással lehet a javaslatokra, vessünk egy példát:
@@ -160,12 +160,12 @@ Windows rendszerű virtuális gépek esetén:
 
     ![MMA-állapot](./media/troubleshoot-assessment/mma-properties.png)
 
-Linux rendszerű virtuális gépek esetén győződjön meg arról, hogy az MMA és a függőségi ügynök telepítési parancsai sikeresek voltak. További hibaelhárítási útmutatót [itt](../azure-monitor/insights/service-map.md#post-installation-issues)találhat.
+Linux rendszerű virtuális gépek esetén győződjön meg arról, hogy az MMA és a függőségi ügynök telepítési parancsai sikeresek voltak. További hibaelhárítási útmutatót [itt](../azure-monitor/vm/service-map.md#post-installation-issues)találhat.
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
-- **MMS-ügynök**: Tekintse át a támogatott [Windows](../azure-monitor/platform/agents-overview.md#supported-operating-systems)és [Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems) operációs rendszereket.
-- **Függőségi ügynök**: a támogatott [Windows-és Linux-](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) operációs rendszerek.
+- **MMS-ügynök**: Tekintse át a támogatott [Windows](../azure-monitor/agents/agents-overview.md#supported-operating-systems)és [Linux](../azure-monitor/agents/agents-overview.md#supported-operating-systems) operációs rendszereket.
+- **Függőségi ügynök**: a támogatott [Windows-és Linux-](../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems) operációs rendszerek.
 
 ## <a name="visualize-dependencies-for--hour"></a>> óra függőségeinek megjelenítése
 
@@ -221,6 +221,6 @@ Gyűjtsön hálózati forgalmi naplókat a következőképpen:
 - Hyper-V virtuális gépek esetén az operációs rendszer adatait a Hyper-V gazdagépről gyűjti a rendszer.
 - Fizikai kiszolgálók esetében a rendszer beolvassa a kiszolgálót a kiszolgálóról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Értékelés [létrehozása](how-to-create-assessment.md) vagy [testreszabása](how-to-modify-assessment.md) .

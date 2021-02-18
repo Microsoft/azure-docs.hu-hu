@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 495f9d568760421c7f42df3acf74217c15b01a05
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: d054b005b6b11e718662619b5525de3fc1ae5f4c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246339"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592635"
 ---
 # <a name="access-your-security-data"></a>Hozzáférés a biztonsági adataihoz
 
@@ -37,7 +37,7 @@ A riasztások és javaslatok elérése a Log Analytics munkaterületen a konfigu
 1. Válasszon ki egy riasztást vagy javaslatot a Defender for IoT.
 1. Kattintson a **további vizsgálat** elemre, majd kattintson **ide a riasztást tartalmazó eszközök megtekintéséhez kattintson ide, és tekintse meg a DeviceID oszlopot**.
 
-A Log Analytics adatainak lekérdezésével kapcsolatos részletekért lásd: Ismerkedés [a lekérdezésekkel a log Analyticsban](../azure-monitor/log-query/get-started-queries.md).
+A Log Analytics adatainak lekérdezésével kapcsolatos részletekért lásd: Ismerkedés [a lekérdezésekkel a log Analyticsban](../azure-monitor/logs/get-started-queries.md).
 
 ## <a name="security-alerts"></a>Biztonsági riasztások
 
@@ -64,7 +64,7 @@ SecurityAlert
 | take 3
 ```
 
-| TimeGenerated           | IoTHubId                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | Leírás                                             | Extendedproperties példányt paraméterként                                                                                                                                                             |
+| TimeGenerated           | IoTHubId                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | Description                                             | Extendedproperties példányt paraméterként                                                                                                                                                             |
 |-------------------------|----------------------------------------------------------------------------------------------------------------|---------------|---------------|---------------------------------------|---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 2018-11 – 18T18:10:29.000 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Magas          | A találgatásos támadás sikeres volt           | A találgatásos támadás az eszközön sikeres volt.        |    {"Teljes forrás címe": "[ \" 10.165.12.18: \" ]", "user Names": "[ \" \" ]", "DeviceID": "IoT-Device-Linux"}                                                                       |
 | 2018-11 – 19T12:40:31.000 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Magas          | Sikeres helyi bejelentkezés az eszközön      | Az eszköz sikeres helyi bejelentkezést észlelt     | {"Távoli címe": "?", "távoli port": "", "helyi port": "", "login shell": "/bin/Su", "bejelentkezési folyamat azonosítója": "28207", "Felhasználónév": "támadó", "DeviceId": "IoT-Device-Linux"} |
@@ -144,7 +144,7 @@ SecurityRecommendation
 | take 2
 ```
 
-| TimeGenerated | IoTHubId | DeviceId | RecommendationSeverity | RecommendationState | RecommendationDisplayName | Leírás | RecommendationAdditionalData |
+| TimeGenerated | IoTHubId | DeviceId | RecommendationSeverity | RecommendationState | RecommendationDisplayName | Description | RecommendationAdditionalData |
 |---------------|----------|----------|------------------------|---------------------|---------------------------|-------------|------------------------------|
 | 2019-03-22T10:21:06.060 |    /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Közepes | Aktív | A bemeneti láncban található engedékeny tűzfalszabályok találhatók | A rendszer olyan szabályt észlelt a tűzfalon, amely az IP-címek vagy portok széles tartományára vonatkozó megengedő mintát tartalmaz | {"Szabályok": "[{ \" SourceAddress \" : \" \" , \" SourcePort \" : \" \" , \" DestinationAddress \" : \" \" , \" DestinationPort \" : \" 1337 \" }]"} |
 | 2019-03-22T10:50:27.237 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Közepes | Aktív | A bemeneti láncban található engedékeny tűzfalszabályok találhatók | A rendszer olyan szabályt észlelt a tűzfalon, amely az IP-címek vagy portok széles tartományára vonatkozó megengedő mintát tartalmaz | {"Szabályok": "[{ \" SourceAddress \" : \" \" , \" SourcePort \" : \" \" , \" DestinationAddress \" : \" \" , \" DestinationPort \" : \" 1337 \" }]"} |
@@ -171,7 +171,7 @@ SecurityRecommendation
 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Magas          | 1  |
 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Közepes        | 4   |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Olvassa el a Defender for IoT [áttekintését](overview.md)
 - Tudnivalók a IoT-architektúra Defender- [architektúráról](architecture.md)

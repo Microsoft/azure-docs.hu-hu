@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: c920c9b3b28df7f5bf3bf169ef88ab967f23649e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c18814230eda6624e8ab1040797c66108f630e30
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001320"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581735"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Oktatóanyag: leküldéses értesítések küldése iOS-alkalmazásokba az Azure Notification Hubs használatával
 
@@ -250,7 +250,7 @@ Ebben a szakaszban létrehoz egy értesítési központot, és konfigurálja a h
    2. Adjon meg egy nevet az **új névtér létrehozása** mezőben. A névtér egy vagy több értesítési központot tartalmaz.
    3. Válasszon egy értéket a **hely** legördülő listából. Ez az érték határozza meg azt a helyet, amelyben létre kívánja hozni az értesítési központot.
    4. Válasszon ki egy meglévő erőforráscsoportot az **erőforráscsoporthoz**, vagy hozzon létre egy új erőforráscsoportot.
-   5. Kattintson a **Létrehozás** gombra.
+   5. Válassza a **Létrehozás** lehetőséget.
 
    :::image type="content" source="media/ios-sdk-get-started/image20.png" alt-text="Tulajdonságok beállítása":::
 
@@ -305,8 +305,8 @@ A **Notification Services** alatt válassza az **Apple (APNS)** lehetőséget, m
 
 Most már konfigurálta az értesítési központot a APNS. Az alkalmazás regisztrálásához és leküldéses értesítések küldéséhez is szükség van a kapcsolódási karakterláncokra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott és konfigurált egy értesítési központot az Azure-ban, és úgy konfigurálta, hogy engedélyezze az értesítések küldését az alkalmazásnak Apple Push Notification Service (APNS) használatával. Ezután létrehozunk egy minta iOS-alkalmazást, és integráljuk az Azure Notifications hubok SDK-t úgy, hogy az a Azure Portalon keresztül küldött leküldéses értesítéseket fogadhasson. Folytassa a következő oktatóanyaggal a választott nyelv alapján:
 
-- [Oktatóanyag: leküldéses értesítések küldése iOS-alkalmazásokba az Azure Notification Hubs használatával](ios-sdk-300.md)
+- [Oktatóanyag: leküldéses értesítések küldése iOS-alkalmazásokba az Azure Notification Hubs használatával](ios-sdk-current.md)

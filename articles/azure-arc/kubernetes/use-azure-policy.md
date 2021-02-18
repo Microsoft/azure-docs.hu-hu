@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: A Azure Policy használata a fürt konfigurációjának méretekben történő alkalmazásához
 keywords: Kubernetes, arc, Azure, K8s, tárolók
-ms.openlocfilehash: b80e50cb4823632f054de3b7f9da71392f8578d7
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 23cd42458c396afd31741c648d713934250a4112
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560188"
+ms.locfileid: "100587803"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>Az Azure Policy használata fürtkonfigurációk tömeges alkalmazására (előzetes verzió)
 
@@ -74,4 +74,4 @@ Meglévő fürtök esetében manuálisan kell futtatnia egy szervizelési felada
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Azure Monitor beállítása az arc-kompatibilis Kubernetes-fürtökkel rendelkező tárolók számára](../../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md)
+* [Azure Monitor beállítása az arc-kompatibilis Kubernetes-fürtökkel rendelkező tárolók számára](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md)

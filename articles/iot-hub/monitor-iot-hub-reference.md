@@ -7,12 +7,12 @@ ms.topic: reference
 ms.service: iot-hub
 ms.custom: subject-monitoring
 ms.date: 10/22/2020
-ms.openlocfilehash: f198b59f106b7d2a29e35d77b54274328be6fa93
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 6c7fd0a310663b664d33027951ade885b83d458a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581601"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570955"
 ---
 # <a name="monitoring-azure-iot-hub-data-reference"></a>Az Azure IoT Hub adatreferenciájának monitorozása
 
@@ -24,25 +24,48 @@ Ez a szakasz felsorolja az Azure IoT Hub automatikusan összegyűjtött platform
 
 A következő alszakaszok kiosztják a IoT Hub platform metrikáit az általános kategória szerint, és azokat a megjelenítendő név alapján listázzák, amelyet a Azure Portal tartalmaz. Az egyes alszakaszokban megjelenő metrikákkal kapcsolatos információkat is meg kell adni.
 
-Az Azure Monitor dokumentációjában a [Microsoft. Devices/IotHubs](../azure-monitor/platform/metrics-supported.md#microsoftdevicesiothubs) alatt található összes IoT hub platform metrikájának listáját is megtalálhatja. Vegye figyelembe, hogy ez a táblázat nem tartalmaz néhány információt, például a jelen cikkben elérhető egyes mérőszámok [támogatott összesítéseit](#supported-aggregations) .
+Az Azure Monitor dokumentációjában a [Microsoft. Devices/IotHubs](../azure-monitor/essentials/metrics-supported.md#microsoftdevicesiothubs) alatt található összes IoT hub platform metrikájának listáját is megtalálhatja. Vegye figyelembe, hogy ez a táblázat nem tartalmaz néhány információt, például a jelen cikkben elérhető egyes mérőszámok [támogatott összesítéseit](#supported-aggregations) .
 
-A más Azure-szolgáltatások által támogatott mérőszámokkal kapcsolatos további információkért lásd: [támogatott metrikák Azure monitor](../azure-monitor/platform/metrics-supported.md)használatával.
+A más Azure-szolgáltatások által támogatott mérőszámokkal kapcsolatos további információkért lásd: [támogatott metrikák Azure monitor](../azure-monitor/essentials/metrics-supported.md)használatával.
 
 **A szakasz témakörei**
 
-- [Támogatott összesítések](#supported-aggregations)
-- [Felhőből az eszközre irányuló parancsok mérőszámai](#cloud-to-device-command-metrics)
-- [Felhőből az eszközre irányuló közvetlen módszerek mérőszámai](#cloud-to-device-direct-methods-metrics)
-- [Felhőből az eszközre kettős műveleti mérőszámok](#cloud-to-device-twin-operations-metrics)
-- [Konfigurációk metrikái](#configurations-metrics)
-- [Napi kvóta mérőszámai](#daily-quota-metrics)
-- [Eszköz metrikái](#device-metrics)
-- [Eszköz telemetria metrikái](#device-telemetry-metrics)
-- [Eszközről a felhőbe irányuló Twin Operations metrikák](#device-to-cloud-twin-operations-metrics)
-- [Event Grid-metrikák](#event-grid-metrics)
-- [Feladatok metrikái](#jobs-metrics)
-- [Útválasztási metrikák](#routing-metrics)
-- [Dupla lekérdezési metrika](#twin-query-metrics)
+- [Az Azure IoT Hub adatreferenciájának monitorozása](#monitoring-azure-iot-hub-data-reference)
+  - [Metrikák](#metrics)
+    - [Támogatott összesítések](#supported-aggregations)
+    - [Felhőből az eszközre irányuló parancsok mérőszámai](#cloud-to-device-command-metrics)
+    - [Felhőből az eszközre irányuló közvetlen módszerek mérőszámai](#cloud-to-device-direct-methods-metrics)
+    - [Felhőből az eszközre kettős műveleti mérőszámok](#cloud-to-device-twin-operations-metrics)
+    - [Konfigurációk metrikái](#configurations-metrics)
+    - [Napi kvóta mérőszámai](#daily-quota-metrics)
+    - [Eszköz metrikái](#device-metrics)
+    - [Eszköz telemetria metrikái](#device-telemetry-metrics)
+    - [Eszközről a felhőbe irányuló Twin Operations metrikák](#device-to-cloud-twin-operations-metrics)
+    - [Event Grid-metrikák](#event-grid-metrics)
+    - [Feladatok metrikái](#jobs-metrics)
+    - [Útválasztási metrikák](#routing-metrics)
+    - [Dupla lekérdezési metrika](#twin-query-metrics)
+  - [Metrikus méretek](#metric-dimensions)
+  - [Erőforrásnaplók](#resource-logs)
+    - [Kapcsolatok](#connections)
+    - [Eszköz telemetria](#device-telemetry)
+    - [Felhő–eszköz irányú parancsok](#cloud-to-device-commands)
+    - [Eszköz-identitási műveletek](#device-identity-operations)
+    - [Fájlfeltöltési műveletek](#file-upload-operations)
+    - [Útvonalak](#routes)
+    - [Az eszközről a felhőbe irányuló kettős művelet](#device-to-cloud-twin-operations)
+    - [A felhőből az eszközre irányuló kettős műveletek](#cloud-to-device-twin-operations)
+    - [Dupla lekérdezés](#twin-queries)
+    - [Feladatműveletek](#jobs-operations)
+    - [Közvetlen metódusok](#direct-methods)
+    - [Elosztott nyomkövetés (előzetes verzió)](#distributed-tracing-preview)
+      - [IoT Hub D2C (eszközről a felhőbe irányuló) naplók](#iot-hub-d2c-device-to-cloud-logs)
+      - [Bejövő IoT Hubi naplók](#iot-hub-ingress-logs)
+      - [IoT Hub kimenő naplók](#iot-hub-egress-logs)
+    - [Konfigurációk](#configurations)
+    - [Eszköz streamek (előzetes verzió)](#device-streams-preview)
+  - [Azure Monitor naplók táblái](#azure-monitor-logs-tables)
+  - [Lásd még:](#see-also)
 
 ### <a name="supported-aggregations"></a>Támogatott összesítések
 
@@ -226,31 +249,50 @@ Az Azure IoT Hub a következő, az útválasztási és az Event Grid-metrikákka
 |**Eredmény**| **Sikeres** vagy **sikertelen**.|
 |**RoutingSource**| Eszköz üzenetei<br>Kettős változási események<br>Eszközök életciklusával kapcsolatos események|
 
-További információ a metrikus dimenziókkal kapcsolatban: [többdimenziós mérőszámok](../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics).
+További információ a metrikus dimenziókkal kapcsolatban: [többdimenziós mérőszámok](../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics).
 
 ## <a name="resource-logs"></a>Erőforrásnaplók
 
-Ez a szakasz felsorolja az Azure IoT Hubhoz gyűjtött összes erőforrás-napló kategóriáját és sémáját. Az összes IoT Hub napló erőforrás-szolgáltatója és típusa [Microsoft. Devices/IotHubs](../azure-monitor/platform/resource-logs-categories.md#microsoftdevicesiothubs).
+Ez a szakasz felsorolja az Azure IoT Hubhoz gyűjtött összes erőforrás-napló kategóriáját és sémáját. Az összes IoT Hub napló erőforrás-szolgáltatója és típusa [Microsoft. Devices/IotHubs](../azure-monitor/essentials/resource-logs-categories.md#microsoftdevicesiothubs).
 
 **A szakasz témakörei**
 
-- [Kapcsolatok](#connections)
-- [Eszköz telemetria](#device-telemetry)
-- [Felhő–eszköz irányú parancsok](#cloud-to-device-commands)
-- [Eszköz-identitási műveletek](#device-identity-operations)
-- [Fájlfeltöltési műveletek](#file-upload-operations)
-- [Útvonalak](#routes)
-- [Az eszközről a felhőbe irányuló kettős művelet](#device-to-cloud-twin-operations)
-- [A felhőből az eszközre irányuló kettős műveletek](#cloud-to-device-twin-operations)
-- [Dupla lekérdezés](#twin-queries)
-- [Feladatműveletek](#jobs-operations)
-- [Közvetlen metódusok](#direct-methods)
-- [Elosztott nyomkövetés (előzetes verzió)](#distributed-tracing-preview)
-  - [IoT Hub D2C (eszközről a felhőbe irányuló) naplók](#iot-hub-d2c-device-to-cloud-logs)
-  - [Bejövő IoT Hubi naplók](#iot-hub-ingress-logs)
-  - [IoT Hub kimenő naplók](#iot-hub-egress-logs)
-- [Konfigurációk](#configurations)
-- [Eszköz streamek (előzetes verzió)](#device-streams-preview)
+- [Az Azure IoT Hub adatreferenciájának monitorozása](#monitoring-azure-iot-hub-data-reference)
+  - [Metrikák](#metrics)
+    - [Támogatott összesítések](#supported-aggregations)
+    - [Felhőből az eszközre irányuló parancsok mérőszámai](#cloud-to-device-command-metrics)
+    - [Felhőből az eszközre irányuló közvetlen módszerek mérőszámai](#cloud-to-device-direct-methods-metrics)
+    - [Felhőből az eszközre kettős műveleti mérőszámok](#cloud-to-device-twin-operations-metrics)
+    - [Konfigurációk metrikái](#configurations-metrics)
+    - [Napi kvóta mérőszámai](#daily-quota-metrics)
+    - [Eszköz metrikái](#device-metrics)
+    - [Eszköz telemetria metrikái](#device-telemetry-metrics)
+    - [Eszközről a felhőbe irányuló Twin Operations metrikák](#device-to-cloud-twin-operations-metrics)
+    - [Event Grid-metrikák](#event-grid-metrics)
+    - [Feladatok metrikái](#jobs-metrics)
+    - [Útválasztási metrikák](#routing-metrics)
+    - [Dupla lekérdezési metrika](#twin-query-metrics)
+  - [Metrikus méretek](#metric-dimensions)
+  - [Erőforrásnaplók](#resource-logs)
+    - [Kapcsolatok](#connections)
+    - [Eszköz telemetria](#device-telemetry)
+    - [Felhő–eszköz irányú parancsok](#cloud-to-device-commands)
+    - [Eszköz-identitási műveletek](#device-identity-operations)
+    - [Fájlfeltöltési műveletek](#file-upload-operations)
+    - [Útvonalak](#routes)
+    - [Az eszközről a felhőbe irányuló kettős művelet](#device-to-cloud-twin-operations)
+    - [A felhőből az eszközre irányuló kettős műveletek](#cloud-to-device-twin-operations)
+    - [Dupla lekérdezés](#twin-queries)
+    - [Feladatműveletek](#jobs-operations)
+    - [Közvetlen metódusok](#direct-methods)
+    - [Elosztott nyomkövetés (előzetes verzió)](#distributed-tracing-preview)
+      - [IoT Hub D2C (eszközről a felhőbe irányuló) naplók](#iot-hub-d2c-device-to-cloud-logs)
+      - [Bejövő IoT Hubi naplók](#iot-hub-ingress-logs)
+      - [IoT Hub kimenő naplók](#iot-hub-egress-logs)
+    - [Konfigurációk](#configurations)
+    - [Eszköz streamek (előzetes verzió)](#device-streams-preview)
+  - [Azure Monitor naplók táblái](#azure-monitor-logs-tables)
+  - [Lásd még:](#see-also)
 
 ### <a name="connections"></a>Kapcsolatok
 
@@ -690,4 +732,4 @@ Az összes Azure Monitor naplóra/Log Analytics táblázatra vonatkozó hivatkoz
 ## <a name="see-also"></a>Lásd még:
 
 * Lásd: az Azure- [IoT hub](monitor-iot-hub.md) figyelése az azure-IoT hub figyelésének leírásához.
-* Az Azure-erőforrások figyelésével kapcsolatos részletekért lásd: az [Azure-erőforrások figyelése Azure monitorokkal](../azure-monitor/insights/monitor-azure-resource.md) .
+* Az Azure-erőforrások figyelésével kapcsolatos részletekért lásd: az [Azure-erőforrások figyelése Azure monitorokkal](../azure-monitor/essentials/monitor-azure-resource.md) .

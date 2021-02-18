@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: a85bf6510163c47fa39bdb28debff806e1812f58
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d37465223000399aa42895626c48426ddadc0c72
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499271"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592714"
 ---
 # <a name="create-alerts-for-azure-sql-managed-instance-using-the-azure-portal"></a>Riasztások létrehozása felügyelt Azure SQL-példány esetében az Azure Portalon
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -41,7 +41,7 @@ A riasztást úgy is beállíthatja, hogy a következő esetekben hajtsa végre 
 * Az Azure runbook meghívása
 * Külső jegyű ITSM-kompatibilis rendszer hívása
 
-A riasztási szabályokkal kapcsolatos információkat [a Azure Portal, a PowerShell vagy az Azure CLI vagy a](../../azure-monitor/platform/alerts-classic-portal.md) [Azure monitor REST API](/rest/api/monitor/alertrules)használatával konfigurálhatja és kérheti le. 
+A riasztási szabályokkal kapcsolatos információkat [a Azure Portal, a PowerShell vagy az Azure CLI vagy a](../../azure-monitor/alerts/alerts-classic-portal.md) [Azure monitor REST API](/rest/api/monitor/alertrules)használatával konfigurálhatja és kérheti le. 
 
 ## <a name="alerting-metrics-available-for-managed-instance"></a>Felügyelt példányok számára elérhető riasztási mérőszámok
 
@@ -50,7 +50,7 @@ A riasztási szabályokkal kapcsolatos információkat [a Azure Portal, a PowerS
 
 A következő felügyelt példány metrikái elérhetők riasztási konfigurációhoz:
 
-| Metrika | Leírás | Mértékegység \ lehetséges értékek |
+| Metric | Leírás | Mértékegység \ lehetséges értékek |
 | :--------- | --------------------- | ----------- |
 | Átlagos CPU-százalék | A CPU-kihasználtság átlagos százaléka a kiválasztott időszakban. | 0-100 (százalék) |
 | I/o-bájtok olvasása | Az i/o-bájtok beolvasása a kiválasztott időszakban. | Bájt |
@@ -113,7 +113,7 @@ Az új riasztási szabály néhány percen belül aktív lesz, és a beállítá
 ## <a name="verifying-alerts"></a>Riasztások ellenőrzése
 
 > [!NOTE]
-> A zajos riasztások elnyomásával kapcsolatban lásd: riasztások leállítása [műveleti szabályok használatával](../../azure-monitor/platform/alerts-action-rules.md#suppression-of-alerts).
+> A zajos riasztások elnyomásával kapcsolatban lásd: riasztások leállítása [műveleti szabályok használatával](../../azure-monitor/alerts/alerts-action-rules.md#suppression-of-alerts).
 
 Riasztási szabály beállításakor ellenőrizze, hogy elégedett-e a riasztási triggerrel és annak gyakoriságával. Az ezen a lapon látható, a használatban lévő tárolóhelyre vonatkozó riasztás beállításához, ha a riasztási lehetőség e-mailben szerepel, a következőt láthatja: e-mail-cím.
 
@@ -140,10 +140,10 @@ Meglévő riasztások megtekintése, felfüggesztése, aktiválása, módosítá
 
    Megjelenik a meglévő riasztások listája. Válasszon ki egy egyéni meglévő riasztási szabályt a kezeléséhez. A meglévő aktív szabályok módosíthatók és beállíthatók az Ön igényei szerint. Az aktív szabályok felfüggesztés nélkül is felmenthetők. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Tudnivalók Azure Monitor riasztási rendszerről: [a riasztások áttekintése Microsoft Azure](../../azure-monitor/platform/alerts-overview.md)
-* További információ a metrikus riasztásokról: [a metrikai riasztások működésének ismertetése Azure monitor](../../azure-monitor/platform/alerts-metric-overview.md)
-* További tudnivalók a webhookok riasztásokban való konfigurálásáról: [webhook meghívása klasszikus metrikus riasztással](../../azure-monitor/platform/alerts-webhooks.md)
+* Tudnivalók Azure Monitor riasztási rendszerről: [a riasztások áttekintése Microsoft Azure](../../azure-monitor/alerts/alerts-overview.md)
+* További információ a metrikus riasztásokról: [a metrikai riasztások működésének ismertetése Azure monitor](../../azure-monitor/alerts/alerts-metric-overview.md)
+* További tudnivalók a webhookok riasztásokban való konfigurálásáról: [webhook meghívása klasszikus metrikus riasztással](../../azure-monitor/alerts/alerts-webhooks.md)
 * Tudnivalók a riasztások PowerShell használatával történő konfigurálásáról és kezeléséről: [műveleti szabályok](/powershell/module/az.monitor/add-azmetricalertrulev2)
 * További információ a riasztások API-val történő konfigurálásáról és kezeléséről: [Azure Monitor REST API referenciája](/rest/api/monitor/)
