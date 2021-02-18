@@ -12,14 +12,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/30/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: d3ed064547b1202aa562fffdfde85a28cbe8514e
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.openlocfilehash: 5e39093e0472705111907e72b70446db53770012
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809547"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634488"
 ---
 # <a name="quickstart-set-up-azure-security-center"></a>Gyors útmutató: Azure Security Center beállítása
 
@@ -88,8 +88,8 @@ Az log Analytics-ügynök automatikus kiépítés engedélyezése:
 
 1. A Security Center menüjében válassza a **díjszabás & beállítások** lehetőséget.
 1. Válassza ki az adott előfizetést.
-1. Az **adatgyűjtés** lapon állítsa be az **automatikus kiépítés** **a** következőre:.
-1. Válassza a **Mentés** lehetőséget.
+1. Az **automatikus kiépítés** lapon az Azure-beli **virtuális gépekhez tartozó log Analytics-ügynök** esetében állítsa be az állapotot **a** következőre:.
+1. Kattintson a **Mentés** gombra.
 
     :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Az log Analytics-ügynök automatikus kiépítés engedélyezése":::
 
@@ -103,7 +103,7 @@ A gépekre telepített ügynökkel Security Center további, a rendszerfrissít�
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban engedélyezte az Azure Defender használatát, és kiépítte a Log Analytics ügynököt az egységes biztonsági felügyelet és a fenyegetések elleni védelem érdekében a hibrid felhőalapú számítási feladatokhoz. Ha többet szeretne megtudni a Security Center használatáról, folytassa a helyszínen és egyéb felhőszolgáltatásokban található Windows rendszerű számítógépek felvételével foglalkozó oktatóanyaggal.
 
 > [!div class="nextstepaction"]

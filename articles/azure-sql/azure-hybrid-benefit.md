@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
-ms.date: 11/13/2019
-ms.openlocfilehash: 51cf4a4d3aa3cb4654b141a98064460a7152fcec
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 02/16/2021
+ms.openlocfilehash: f1761851f91e6d0c0aadb3315dbb7980a00bba5b
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737455"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633818"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Azure Hybrid Benefit – Azure SQL Database & SQL felügyelt példánya
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -85,16 +85,16 @@ A SQL Server Azure Hybrid Benefit két kulcsfontosságú területen különbözi
 
 #### <a name="what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server"></a>Milyen jogokkal rendelkezik a SQL Server Azure Hybrid Benefit?
 
-SQL Database az ügyfelek a következő jogokkal rendelkeznek a SQL Server Azure Hybrid Benefithoz:
+A SQL Database és az SQL felügyelt példányának ügyfelei a következő jogokkal rendelkeznek a SQL Serverhoz tartozó Azure Hybrid Benefithoz:
 
 |Licenc-lábnyom|Mire Azure Hybrid Benefit a SQL Server?|
 |---|---|
 |SQL Server Enterprise Edition Core-ügyfelek a SA-val|<li>A nagy kapacitású, általános célú vagy üzletileg kritikus SKU-ra is fizethet alapdíjat</li><br><li>1 mag helyszíni = 4 mag a nagy kapacitású SKU-ban</li><br><li>1 mag helyszíni = 4 mag általános célú SKU-ban</li><br><li>1 mag a helyszínen = 1 mag üzletileg kritikus SKU-ban</li>|
-|SQL Server Standard Edition Core-ügyfelek a SA-val|<li>Csak a nagy kapacitású és a általános célú SKU esetében fizethet alapdíjat</li><br><li>1 mag a helyszínen = 1 mag a nagy kapacitású SKU-ban</li><br><li>1 mag a helyszínen = 1 mag általános célú SKU-ban</li>|
+|SQL Server Standard Edition Core-ügyfelek a SA-val|<li>A nagy kapacitású, általános célú vagy üzletileg kritikus SKU-ra is fizethet alapdíjat</li><br><li>1 mag a helyszínen = 1 mag a nagy kapacitású SKU-ban</li><br><li>1 mag a helyszínen = 1 mag általános célú SKU-ban</li><br><li>4 mag helyszíni = 1 mag üzletileg kritikus SKU-ban</li>|
 |||
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure SQL-alapú üzembe helyezési lehetőség kiválasztásával kapcsolatos segítségért lásd: [a megfelelő üzembe helyezési lehetőség kiválasztása az Azure SQL-ben](azure-sql-iaas-vs-paas-what-is-overview.md).
 - A SQL Database és az SQL felügyelt példány funkcióinak összehasonlítását lásd: [SQL Database & SQL felügyelt példányának funkciói](database/features-comparison.md).

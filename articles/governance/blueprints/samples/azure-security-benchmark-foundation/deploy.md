@@ -3,12 +3,12 @@ title: Az Azure Security teljesítményteszt Foundation tervének üzembe helyez
 description: Üzembe helyezheti az Azure Security teljesítményteszt Foundation tervezetének lépéseit, beleértve a tervrajz-összetevő paraméterének részleteit.
 ms.date: 02/12/2020
 ms.topic: sample
-ms.openlocfilehash: e1a5e011f5b53d35971fa43613914c0a43549600
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 84c157d696dc8ababe1f252136672ea600e604af
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100421849"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633954"
 ---
 # <a name="deploy-the-azure-security-benchmark-foundation-blueprint-sample"></a>Az Azure Security teljesítményteszt Foundation tervének üzembe helyezési mintája
 
@@ -132,10 +132,8 @@ A következő táblázat a terv paramétereinek listáját tartalmazza:
 |Azure Virtual Network küllős sablon|Resource Manager-sablon|Alhálózati címek nevei (nem kötelező)|A küllős virtuális hálózathoz telepítendő alhálózati nevek tömbje; például: "subnet1", "subnet2 alhálózattal"|
 |Azure Virtual Network küllős sablon|Resource Manager-sablon|Alhálózati címek előtagjai (nem kötelező)|IP-cím előtagjainak tömbje a küllős virtuális hálózat választható alhálózatai számára; például: "10.0.7.0/24", "10.0.8.0/24"|
 |Azure Virtual Network küllős sablon|Resource Manager-sablon|Küllő üzembe helyezése|Adja meg az "igaz" vagy a "false" értéket annak megadásához, hogy a hozzárendelés üzembe helyezi-e az architektúra küllős összetevőit.|
-|Network Watcher erőforráscsoport|Erőforráscsoport|Erőforráscsoport neve|Zárolt – Network Watcher erőforráscsoport-nevet használ|
-|Network Watcher erőforráscsoport|Erőforráscsoport|Erőforráscsoport helye|Zárolt – a hub helyét használja|
-|Azure Network Watcher-sablon|Resource Manager-sablon|Network Watcher helye|A Network Watcher erőforrás helye|
-|Azure Network Watcher-sablon|Resource Manager-sablon|Network Watcher erőforráscsoport helye|A Network Watcher erőforráscsoport helye|
+|Azure Network Watcher-sablon|Resource Manager-sablon|Network Watcher helye|Ha a Network Watcher már engedélyezve van, akkor a paraméter értékének **meg kell** egyeznie a meglévő Network Watcher erőforráscsoport helyével.|
+|Azure Network Watcher-sablon|Resource Manager-sablon|Network Watcher erőforráscsoport helye|Ha Network Watcher már engedélyezve van, ennek a paraméternek **meg kell** egyeznie a meglévő Network Watcher erőforráscsoport nevével.|
 
 ## <a name="next-steps"></a>Következő lépések
 

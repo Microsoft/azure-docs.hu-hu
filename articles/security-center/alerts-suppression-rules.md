@@ -5,15 +5,15 @@ author: memildin
 manager: rkarlin
 services: security-center
 ms.author: memildin
-ms.date: 09/10/2020
+ms.date: 02/17/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 12cc2de6cd1a8e9ddf40b358c94b720b8b2cf594
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 646495597565bbb033ac3adaa15f3754f33e8fd6
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920443"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634165"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>Riasztások letiltása az Azure Defenderből
 
@@ -60,9 +60,7 @@ Szabály létrehozása közvetlenül a Azure Portalban:
 
 1. A Security Center biztonsági riasztásokat tartalmazó oldalán:
 
-    - Keresse meg azt a riasztást, amelyet nem szeretne többé látni, majd a riasztás három pont (...) menüjéből válassza az **elnyomási szabály létrehozása** elemet:
-
-        [![* * Elnyomási szabály létrehozása * * beállítás](media/alerts-suppression-rules/auto-dismiss-future-option.png)](media/alerts-suppression-rules/auto-dismiss-future-option.png#lightbox)
+    - Válassza ki azt a riasztást, amelyet többé nem szeretne látni, majd a részletek ablaktáblán válassza a **művelet végrehajtása** lehetőséget.
 
     - Vagy válassza a **mellőzési szabályok** hivatkozást az oldal tetején, és a letiltási szabályok lapon válassza az **új tiltási szabály létrehozása** elemet:
 
@@ -85,9 +83,9 @@ Szabály létrehozása közvetlenül a Azure Portalban:
 1. Mentse a szabályt. 
 
 
-## <a name="edit-a-suppression-rules"></a>Mellőzési szabályok szerkesztése
+## <a name="edit-a-suppression-rule"></a>Letiltási szabály szerkesztése
 
-A létrehozott szabályok szerkesztéséhez használja a letiltási szabályok lapot.
+A létrehozott szabály szerkesztéséhez használja a letiltási szabályok lapot.
 
 1. A Security Center biztonsági riasztásai lapon válassza a **letiltási szabályok** hivatkozást az oldal tetején.
 1. Megnyílik a letiltási szabályok lap, amely a kijelölt előfizetésekre vonatkozó összes szabályt megjeleníti.
@@ -106,20 +104,6 @@ Egy vagy több létrehozott szabály törléséhez használja a letiltási szab�
 1. Egyetlen szabály törléséhez nyissa meg a szabály három pontot (...), majd válassza a **Törlés** lehetőséget.
 1. Több szabály törléséhez jelölje be a törölni kívánt szabályok jelölőnégyzetét, majd válassza a **Törlés** lehetőséget.
     ![Egy vagy több elnyomási szabály törlése](media/alerts-suppression-rules/delete-multiple-alerts.png)
-
-## <a name="view-suppressed-alerts"></a>Letiltott riasztások megtekintése
-
-Az engedélyezett letiltási szabályoknak megfelelő riasztások továbbra is létrejönnek, de az állapotukat a rendszer **elutasítja**. Megtekintheti az állapotot a Azure Portalban, vagy hozzáférhet a Security Center biztonsági riasztásokhoz. 
-
-> [!TIP]
-> Az [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) nem hoz létre incidenseket a letiltott riasztásokhoz. Más SIEM-EK esetében a riasztások állapota ("elhagyva") használatával szűrheti a letiltott riasztásokat.
-
-A szabályok által elvetett riasztások megtekintéséhez használja Security Center szűrőjét.
-
-* A Security Center biztonsági riasztások lapján nyissa meg a szűrési beállításokat, **és válassza az elvetett lehetőséget.**  
-
-   [![Elbocsátott riasztások megtekintése](media/alerts-suppression-rules/view-dismissed-alerts.png)](media/alerts-suppression-rules/view-dismissed-alerts.png#lightbox)
-
 
 ## <a name="create-and-manage-suppression-rules-with-the-api"></a>Letiltási szabályok létrehozása és kezelése az API-val
 

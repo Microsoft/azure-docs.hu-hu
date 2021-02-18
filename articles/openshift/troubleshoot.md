@@ -3,15 +3,15 @@ title: Az Azure Red Hat OpenShift hibáinak megoldása
 description: Az Azure Red Hat OpenShift kapcsolatos gyakori problémák elhárítása és megoldása
 author: jimzim
 ms.author: jzim
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: troubleshooting
 ms.date: 05/08/2019
-ms.openlocfilehash: 55360ef295ff80b700b059d053203458f9f384db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af66abff3507279dd1954fd83627900578229866
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89469082"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100632951"
 ---
 # <a name="troubleshooting-for-azure-red-hat-openshift"></a>Hibaelhárítás az Azure Red Hat OpenShift
 

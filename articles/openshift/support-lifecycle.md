@@ -3,15 +3,15 @@ title: Azure Red Hat OpenShift-támogatás életciklusa
 description: Ismerje meg az Azure Red Hat OpenShift támogatási életciklusát és támogatott verzióit
 author: sakthi-vetrivel
 ms.author: suvetriv
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: 5b5ae695ac11ae687a9b076005a765feaa46f83c
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: fca01c77a1ff47cbeee167eb408ed9f29a1307bd
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049507"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634328"
 ---
 # <a name="support-lifecycle-for-azure-red-hat-openshift-4"></a>Az Azure Red Hat OpenShift 4 támogatási életciklusa
 
@@ -100,13 +100,13 @@ Tekintse meg az alábbi útmutatót a [korábbi Red Hat OpenShift Container plat
 |4.3|2020. január|2020. április| 2020. augusztus|
 |4.4|2020. május|2020. július|4,6 GA|
 |4,5|2020. július| 2020. november|4,7 GA
-|4,6|2020. október| Február 2021|4,8 GA|
+|4,6|2020. október| 2021. február|4,8 GA|
 
 ## <a name="faq"></a>GYIK
 
 **Mi történik, ha egy felhasználó egy alverzióval nem támogatott OpenShift-fürtöt frissít?**
 
-Ha az N-2 vagy régebbi verziót használ, az azt jelenti, hogy a támogatáson kívül esik, és a rendszer a frissítésre kéri. Ha az N-2 verzióról N-1-re való frissítés sikeres, akkor a támogatási szabályzatunk keretében visszakerül. Példa:
+Ha az N-2 vagy régebbi verziót használ, az azt jelenti, hogy a támogatáson kívül esik, és a rendszer a frissítésre kéri. Ha az N-2 verzióról N-1-re való frissítés sikeres, akkor a támogatási szabályzatunk keretében visszakerül. Például:
 * Ha a legrégebbi támogatott Azure Red Hat OpenShift 4.4. z, és a 4.3. z vagy régebbi verzióban van, akkor a támogatáson kívül van.
 * Ha a 4.3. z-ről 4.4. z vagy újabb verzióra történő frissítés sikeres, a támogatási szabályzatunk keretében visszakerül.
 

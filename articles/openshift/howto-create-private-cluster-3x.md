@@ -3,16 +3,16 @@ title: Privát fürt létrehozása az Azure Red Hat OpenShift 3,11-mel | Microso
 description: Privát fürt létrehozása az Azure Red Hat OpenShift 3,11
 author: sakthi-vetrivel
 ms.author: suvetriv
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 03/02/2020
 keywords: ARO, openshift, privát fürt, Red Hat
-ms.openlocfilehash: 37e9dc996fddf2b592ea6bf7fff1e1f4825f3ca8
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 28a21635da770a990a21e0da2a8034c754f4f7aa
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220628"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633240"
 ---
 # <a name="create-a-private-cluster-with-azure-red-hat-openshift-311"></a>Privát fürt létrehozása az Azure Red Hat OpenShift 3,11
 

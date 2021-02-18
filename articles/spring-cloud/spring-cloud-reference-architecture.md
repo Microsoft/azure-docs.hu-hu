@@ -1,17 +1,17 @@
 ---
-ms.date: 01/19/2021
+ms.date: 02/16/2021
 ms.topic: reference-architecture
 author: kriation
 title: Azure Spring Cloud-referenciák architektúrája
 ms.author: akaleshian
 ms.service: spring-cloud
 description: Ez a viszonyítási architektúra egy tipikus nagyvállalati központ, és az Azure Spring Cloud használatának az alapja.
-ms.openlocfilehash: 8376cbb2a0f1a7c082b9fdb1c6d606236e162600
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7d069e67e5161135b309aee3dc9c6ac921105623
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417892"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634362"
 ---
 # <a name="azure-spring-cloud-reference-architecture"></a>Azure Spring Cloud-referenciák architektúrája
 
