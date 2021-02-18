@@ -9,16 +9,16 @@ ms.reviewer: dseven
 ms.author: cavoeg
 author: CaitlinV39
 ms.date: 02/03/2021
-ms.openlocfilehash: 8dc87ae5b296f322d9d5a4d59c0a8c9b1c50d5da
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 220618f93d23ec71ee3246e8bd68bfd724860696
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575439"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581969"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>Diagnosztikai naplózás engedélyezése a FHIR készült Azure API-ban
 
-Ebből a cikkből megtudhatja, hogyan engedélyezheti a diagnosztikai naplózást az Azure API-ban a FHIR, és áttekintheti a naplókhoz tartozó egyes lekérdezéseket. A diagnosztikai naplókhoz való hozzáférés elengedhetetlen minden olyan egészségügyi szolgáltatáshoz, ahol a szabályozási követelményeknek (például HIPAA) való megfelelés kötelező. A diagnosztikai naplókat engedélyező Azure API-FHIR az Azure Portal [**diagnosztikai beállításai**](../azure-monitor/platform/diagnostic-settings.md) . 
+Ebből a cikkből megtudhatja, hogyan engedélyezheti a diagnosztikai naplózást az Azure API-ban a FHIR, és áttekintheti a naplókhoz tartozó egyes lekérdezéseket. A diagnosztikai naplókhoz való hozzáférés elengedhetetlen minden olyan egészségügyi szolgáltatáshoz, ahol a szabályozási követelményeknek (például HIPAA) való megfelelés kötelező. A diagnosztikai naplókat engedélyező Azure API-FHIR az Azure Portal [**diagnosztikai beállításai**](../azure-monitor/essentials/diagnostic-settings.md) . 
 
 ## <a name="enable-audit-logs"></a>Naplók engedélyezése
 1. Ha engedélyezni szeretné a diagnosztikai naplózást az Azure API FHIR, válassza ki az Azure API-t a FHIR szolgáltatáshoz a Azure Portal 
@@ -45,7 +45,7 @@ Ebből a cikkből megtudhatja, hogyan engedélyezheti a diagnosztikai naplózás
 > [!Note] 
 > Akár 15 percet is igénybe vehet, hogy az első naplók megjelenjenek Log Analyticsban.  
  
-A diagnosztikai naplók használatával kapcsolatos további tudnivalókért tekintse meg az [Azure Resource log dokumentációját](../azure-monitor/platform/platform-logs-overview.md) .
+A diagnosztikai naplók használatával kapcsolatos további tudnivalókért tekintse meg az [Azure Resource log dokumentációját](../azure-monitor/essentials/platform-logs-overview.md) .
 
 ## <a name="audit-log-details"></a>Napló részletei
 Jelenleg az Azure API for FHIR szolgáltatás a következő mezőket adja vissza a naplóban: 

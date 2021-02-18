@@ -11,12 +11,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 65c97f04213acfe707a39be11c74b852885f7203
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 04c19ca8fbdaed85225b5af128c72d393e5350e8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493882"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573252"
 ---
 # <a name="use-powershell-to-monitor-and-scale-a-single-database-in-azure-sql-database"></a>Egyetlen adatbázis figyelése és méretezése a PowerShell használatával Azure SQL Database
 
@@ -35,7 +35,7 @@ Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanya
 [!code-powershell-interactive[main](../../../../powershell_scripts/sql-database/monitor-and-scale-database/monitor-and-scale-database.ps1?highlight=15-16 "Monitor and scale single database")]
 
 > [!NOTE]
-> A metrikák teljes listáját lásd: a [metrikák támogatottak](../../../azure-monitor/platform/metrics-supported.md#microsoftsqlserversdatabases).
+> A metrikák teljes listáját lásd: a [metrikák támogatottak](../../../azure-monitor/essentials/metrics-supported.md#microsoftsqlserversdatabases).
 > [!TIP]
 > Az adatbázis-műveletek állapotának lekéréséhez használja a [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) -t, és a [stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity) használatával szakítsa meg az adatbázis-frissítési műveletet.
 
@@ -61,7 +61,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure PowerShellről: [Azure PowerShell dokumentáció](/powershell/azure/).
 

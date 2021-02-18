@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: f9b3be69ab57c0abf7523169303def899f325229
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 7778607b533a836eb5a47a12b73374c2a8299621
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789216"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590569"
 ---
 # <a name="security-alerts-schemas"></a>Biztonsági riasztások sémái
 
@@ -24,7 +24,7 @@ Ha az előfizetése engedélyezve van az Azure Defender számára, akkor biztons
 
 Ezeket a biztonsági riasztásokat megtekintheti Azure Security Center **veszélyforrások elleni védelmi** oldalain, illetve külső eszközökkel, például a következőkkel:
 
-- [Azure Sentinel](../sentinel/index.yml) – a Microsoft Felhőbeli natív Siem-je. A Sentinel Connector Azure Security Center riasztásokat küld, és elküldi azokat az Azure Sentinel [log Analytics munkaterületére](../azure-monitor/learn/quick-create-workspace.md) .
+- [Azure Sentinel](../sentinel/index.yml) – a Microsoft Felhőbeli natív Siem-je. A Sentinel Connector Azure Security Center riasztásokat küld, és elküldi azokat az Azure Sentinel [log Analytics munkaterületére](../azure-monitor/logs/quick-create-workspace.md) .
 - Harmadik féltől származó SIEM-ekkel való adatküldés az [Azure Event Hubsba](../event-hubs/index.yml). Ezután integrálja az Event hub-adatait egy harmadik féltől származó SIEM-mel. További információ a [stream-riasztásokról a Siem, a SOAR vagy az IT Service Management megoldáshoz](export-to-siem.md).
 - [A REST API](/rest/api/securitycenter/) – ha a REST API használatával fér hozzá a riasztásokhoz, tekintse meg az [online riasztások API dokumentációját](/rest/api/securitycenter/alerts).
 
@@ -187,4 +187,4 @@ A biztonsági riasztások Security Centeron kívülről történő elérésének
 - [Azure Sentinel](../sentinel/index.yml) – a Microsoft Felhőbeli natív Siem-je
 - [Azure Event Hubs](../event-hubs/index.yml) – a Microsoft teljes körűen felügyelt, valós idejű adatfeldolgozási szolgáltatása
 - [Security Center-adatfeldolgozás folyamatos exportálása](continuous-export.md)
-- [Log Analytics-munkaterületek](../azure-monitor/learn/quick-create-workspace.md) – a Azure Monitor a log Analytics munkaterületen tárolja a naplózási adatokat, egy olyan tárolót, amely adatokat és konfigurációs adatokat tartalmaz.
+- [Log Analytics-munkaterületek](../azure-monitor/logs/quick-create-workspace.md) – a Azure Monitor a log Analytics munkaterületen tárolja a naplózási adatokat, egy olyan tárolót, amely adatokat és konfigurációs adatokat tartalmaz.

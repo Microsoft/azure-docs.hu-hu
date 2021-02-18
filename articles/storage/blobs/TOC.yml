@@ -635,20 +635,16 @@
       items:
         - name: Bevezetés a Data Lake Storage használatába
           href: data-lake-storage-introduction.md
-    - name: Rövid útmutatók
-      items:
-        - name: Adatelemzés a Databricksszel
-          href: data-lake-storage-quickstart-create-databricks-account.md
     - name: Oktatóanyagok
       items:
-        - name: 'Adatok kinyerése, átalakítása és betöltése az Azure Databricks használatával'
-          href: /azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Hozzáférés a Data Lake Storage-adatokhoz a Databricks és a Spark használatával
+        - name: Használat a Databricks és a Spark használatával
           href: data-lake-storage-use-databricks-spark.md
-        - name: 'Adatok kinyerése, átalakítása és betöltése az Azure HDInsight-alapú Apache Hive használatával'
+        - name: Használat Apache Hive és HDInsight
           href: data-lake-storage-tutorial-extract-transform-load-hive.md
-        - name: Adatok beszúrása Databricks Delta-táblázatokba az Event Grid használatával
+        - name: Használat a Databricks-különbözettel és a Event Grid
           href: data-lake-storage-events.md
+        - name: Használat más Azure-szolgáltatásokkal
+          href: data-lake-storage-integrate-with-services-tutorials.md
     - name: Alapelvek
       items:
         - name: Big Data feldolgozása
@@ -705,7 +701,7 @@
       items:
         - name: Tárfiók létrehozása
           href: create-data-lake-storage-account.md
-        - name: Migrate (Áttelepítés)
+        - name: Fiókok és adattárak migrálása
           items:
             - name: Migrálás a Data Lake Storage Gen1-ből
               href: data-lake-storage-migrate-gen1-to-gen2.md
@@ -713,31 +709,7 @@
               href: data-lake-storage-migrate-on-premises-HDFS-cluster.md
             - name: HDFS-tároló online migrálása
               href: migrate-gen2-wandisco-live-data-platform.md
-        - name: Kezelés
-          items:
-            - name: .NET
-              href: data-lake-storage-directory-file-acl-dotnet.md
-            - name: Java
-              href: data-lake-storage-directory-file-acl-java.md
-            - name: Python
-              href: data-lake-storage-directory-file-acl-python.md
-            - name: JavaScript
-              href: data-lake-storage-directory-file-acl-javascript.md
-            - name: PowerShell
-              href: data-lake-storage-directory-file-acl-powershell.md
-            - name: parancssori felület
-              href: data-lake-storage-directory-file-acl-cli.md
-            - name: Storage Explorer
-              href: data-lake-storage-explorer.md
-            - name: A Hadoop fájlrendszer parancssori felülete
-              href: data-lake-storage-use-hdfs-data-lake-storage.md
-            - name: ACL-ek rekurzív beállítása
-              href: recursive-access-control-lists.md
-        - name: Lekérdezés
-          items:
-            - name: Adatok szűrése lekérdezésgyorsítással
-              href: data-lake-storage-query-acceleration-how-to.md
-        - name: Átvitel
+        - name: Adatátvitel
           items:
             - name: AzCopy
               items:
@@ -761,9 +733,47 @@
               href: data-lake-storage-use-distcp.md
             - name: Adatok átvitele az adatátviteli kódtárral
               href: ../common/storage-use-data-movement-library.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Optimalizálás
+        - name: A hozzáférés-vezérlés kezelése
           items:
-            - name: Teljesítmény optimalizálása
+            - name: Storage Explorer
+              href: data-lake-storage-explorer-acl.md
+            - name: PowerShell
+              href: data-lake-storage-acl-powershell.md
+            - name: parancssori felület
+              href: data-lake-storage-acl-cli.md
+            - name: .NET
+              href: data-lake-storage-acl-dotnet.md
+            - name: Java
+              href: data-lake-storage-acl-java.md
+            - name: Python
+              href: data-lake-storage-acl-python.md
+            - name: JavaScript
+              href: data-lake-storage-acl-javascript.md
+        - name: Adatok használata
+          items:
+            - name: Storage Explorer
+              href: data-lake-storage-explorer.md
+            - name: PowerShell
+              href: data-lake-storage-directory-file-acl-powershell.md
+            - name: parancssori felület
+              href: data-lake-storage-directory-file-acl-cli.md
+            - name: .NET
+              href: data-lake-storage-directory-file-acl-dotnet.md
+            - name: Java
+              href: data-lake-storage-directory-file-acl-java.md
+            - name: Python
+              href: data-lake-storage-directory-file-acl-python.md
+            - name: JavaScript
+              href: data-lake-storage-directory-file-acl-javascript.md
+            - name: Lekérdezésgyorsítás
+              href: data-lake-storage-query-acceleration-how-to.md
+            - name: A Hadoop fájlrendszer parancssori felülete
+              href: data-lake-storage-use-hdfs-data-lake-storage.md
+        - name: Használat az Azure-szolgáltatásokkal
+          href: data-lake-storage-integrate-with-services-tutorials.md
+        - name: Teljesítmény optimalizálása
+          items:
+            - name: A teljesítmény optimalizálása – áttekintés
               href: data-lake-storage-performance-tuning-guidance.md
             - name: A HDInsight-alapú Spark optimalizálása
               href: data-lake-storage-performance-tuning-spark.md

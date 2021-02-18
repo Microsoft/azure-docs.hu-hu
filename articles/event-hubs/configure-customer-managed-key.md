@@ -3,12 +3,12 @@ title: Saját kulcs konfigurálása az Azure-Event Hubs inaktív adatok titkosí
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja saját kulcsát az Azure Event Hubs-adatok titkosításához.
 ms.topic: conceptual
 ms.date: 02/01/2021
-ms.openlocfilehash: 53622344e36e514543d547dec95caaf1b0b76a13
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: c9d1ac1c3a3387600fed80939598baafe658054b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430679"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595995"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Ügyfél által felügyelt kulcsok konfigurálása az Azure Event Hubs-adatok inaktív titkosításához a Azure Portal használatával
 Az Azure Event Hubs az Azure Storage Service Encryption (Azure SSE) segítségével titkosítja az inaktív adatok titkosítását. Az Event Hubs szolgáltatás az Azure Storage-t használja az adattároláshoz. Az Azure Storage-ban tárolt összes adattal a Microsoft által felügyelt kulcsokkal van titkosítva. Ha saját kulcsot (más néven Bring Your Own Key (BYOK) vagy ügyfél által felügyelt kulcsot) használ, az adatok továbbra is a Microsoft által felügyelt kulccsal lesznek titkosítva, a Microsoft által felügyelt kulcs pedig az ügyfél által felügyelt kulcs használatával lesz titkosítva. Ez a funkció lehetővé teszi a Microsoft által felügyelt kulcsok titkosításához használt ügyfél által felügyelt kulcsok elérésének létrehozását, elforgatását, letiltását és visszavonását. A BYOK funkció engedélyezése egy egyszeri telepítési folyamat a névtérben.
@@ -70,7 +70,7 @@ A titkosítási kulcsokhoz való hozzáférés visszavonása nem törli az Event
 A titkosítási kulcs visszavonása után a titkosított névtér Event Hubs szolgáltatása inműködőképes lesz. Ha a kulcshoz való hozzáférés engedélyezve van, vagy a törlési kulcs vissza van állítva, Event Hubs szolgáltatás a kulcsot fogja kiválasztani, hogy hozzáférhessen az adatokhoz a titkosított Event Hubs névtérből.
 
 ## <a name="set-up-diagnostic-logs"></a>Diagnosztikai naplók beállítása 
-A diagnosztikai naplók beállítása a BYOK-kompatibilis névterekhez megadja a szükséges információkat a műveletekről. Ezeket a naplókat engedélyezheti és később továbbíthatja az Event hub számára, vagy elemezheti a log Analytics szolgáltatásban, vagy továbbíthatja a tárolóba a testreszabott elemzések elvégzéséhez. További információ a diagnosztikai naplókról: [Az Azure diagnosztikai naplók áttekintése](../azure-monitor/platform/platform-logs-overview.md).
+A diagnosztikai naplók beállítása a BYOK-kompatibilis névterekhez megadja a szükséges információkat a műveletekről. Ezeket a naplókat engedélyezheti és később továbbíthatja az Event hub számára, vagy elemezheti a log Analytics szolgáltatásban, vagy továbbíthatja a tárolóba a testreszabott elemzések elvégzéséhez. További információ a diagnosztikai naplókról: [Az Azure diagnosztikai naplók áttekintése](../azure-monitor/essentials/platform-logs-overview.md).
 
 ## <a name="enable-user-logs"></a>Felhasználói naplók engedélyezése
 Az alábbi lépéseket követve engedélyezheti a naplók számára az ügyfél által felügyelt kulcsokat.

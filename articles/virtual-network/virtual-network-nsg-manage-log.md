@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: 412556f3bd517539fc8ccad94c4de52226f16597
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: bb078b9738e995a1c507f7934a7dd64f075d5fe0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946222"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596543"
 ---
 # <a name="resource-logging-for-a-network-security-group"></a>Hálózati biztonsági csoport erőforrás-naplózása
 
@@ -28,7 +28,7 @@ Amikor engedélyezi a naplózást egy NSG, a következő típusú erőforrás-na
 
 Az erőforrás-naplók csak a Azure Resource Manager üzemi modellen keresztül üzembe helyezett NSG érhetők el. A klasszikus üzemi modellen keresztül üzembe helyezett NSG erőforrás-naplózása nem engedélyezhető. A két modell jobb megismeréséhez tekintse meg az [Azure üzembe helyezési modelljeinek ismertetése](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)című témakört.
 
-Az erőforrás-naplózás *minden* olyan NSG külön engedélyezve van, amelyhez diagnosztikai adatokat kíván gyűjteni. Ha inkább a tevékenység (operatív) naplói érdeklik, tekintse meg az Azure- [tevékenységek naplózása](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)című témakört.
+Az erőforrás-naplózás *minden* olyan NSG külön engedélyezve van, amelyhez diagnosztikai adatokat kíván gyűjteni. Ha inkább a tevékenység (operatív) naplói érdeklik, tekintse meg az Azure- [tevékenységek naplózása](../azure-monitor/essentials/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)című témakört.
 
 ## <a name="enable-logging"></a>Naplózás engedélyezése
 
@@ -87,7 +87,7 @@ Set-AzDiagnosticSetting `
   -Enabled $true
 ```
 
-Ha a kettő helyett egyetlen kategóriához vagy a másikhoz kívánja naplózni az adatnaplózást, adja hozzá az `-Categories` előző parancshoz a kapcsolót, amelyet a *NetworkSecurityGroupEvent* vagy a *NetworkSecurityGroupRuleCounter* követ. Ha Log Analytics munkaterülettől eltérő [célra](#log-destinations) szeretne bejelentkezni, használja az Azure [Storage-fiók](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage) vagy az [Event hub](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs)megfelelő paramétereit.
+Ha a kettő helyett egyetlen kategóriához vagy a másikhoz kívánja naplózni az adatnaplózást, adja hozzá az `-Categories` előző parancshoz a kapcsolót, amelyet a *NetworkSecurityGroupEvent* vagy a *NetworkSecurityGroupRuleCounter* követ. Ha Log Analytics munkaterülettől eltérő [célra](#log-destinations) szeretne bejelentkezni, használja az Azure [Storage-fiók](../azure-monitor/essentials/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage) vagy az [Event hub](../azure-monitor/essentials/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs)megfelelő paramétereit.
 
 Naplók megtekintése és elemzése. További információt a [naplók megtekintése és elemzése](#view-and-analyze-logs)című témakörben talál.
 
@@ -120,18 +120,18 @@ az monitor diagnostic-settings create \
   --resource-group myWorkspaces
 ```
 
-Ha nem rendelkezik meglévő munkaterülettel, létrehozhat egyet a [Azure Portal](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy a [PowerShell](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace)használatával. A naplózásnak két kategóriája is engedélyezhető.
+Ha nem rendelkezik meglévő munkaterülettel, létrehozhat egyet a [Azure Portal](../azure-monitor/logs/quick-create-workspace.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy a [PowerShell](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace)használatával. A naplózásnak két kategóriája is engedélyezhető.
 
-Ha csak az egyik kategóriába vagy a másikba kívánja naplózni az adatnaplózást, távolítsa el azt a kategóriát, amelyet nem kíván naplózni az előző parancsban. Ha Log Analytics munkaterülettől eltérő [célra](#log-destinations) szeretne bejelentkezni, használja az Azure [Storage-fiók](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage) vagy az [Event hub](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs)megfelelő paramétereit.
+Ha csak az egyik kategóriába vagy a másikba kívánja naplózni az adatnaplózást, távolítsa el azt a kategóriát, amelyet nem kíván naplózni az előző parancsban. Ha Log Analytics munkaterülettől eltérő [célra](#log-destinations) szeretne bejelentkezni, használja az Azure [Storage-fiók](../azure-monitor/essentials/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage) vagy az [Event hub](../azure-monitor/essentials/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs)megfelelő paramétereit.
 
 Naplók megtekintése és elemzése. További információt a [naplók megtekintése és elemzése](#view-and-analyze-logs)című témakörben talál.
 
 ## <a name="log-destinations"></a>Naplók célhelyei
 
 A diagnosztikai adatait a következőket teheti:
-- [Egy Azure Storage-fiókba](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage), naplózásra vagy manuális ellenőrzésre íródott. Megadhatja a megőrzési időt (napokban) az erőforrás-diagnosztikai beállítások használatával.
-- Egy harmadik féltől származó szolgáltatás vagy egyéni elemzési megoldás (például PowerBI) általi betöltésre [továbbítva egy Event hub](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs) számára.
-- [Azure monitor naplókba írva](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage).
+- [Egy Azure Storage-fiókba](../azure-monitor/essentials/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage), naplózásra vagy manuális ellenőrzésre íródott. Megadhatja a megőrzési időt (napokban) az erőforrás-diagnosztikai beállítások használatával.
+- Egy harmadik féltől származó szolgáltatás vagy egyéni elemzési megoldás (például PowerBI) általi betöltésre [továbbítva egy Event hub](../azure-monitor/essentials/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs) számára.
+- [Azure monitor naplókba írva](../azure-monitor/essentials/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage).
 
 ## <a name="log-categories"></a>Naplók kategóriái
 
@@ -197,7 +197,7 @@ A szabály számlálójának naplója az erőforrásokra alkalmazott szabályokr
 
 ## <a name="view-and-analyze-logs"></a>Naplók megtekintése és elemzése
 
-Az erőforrás-naplózási információk megtekintésének megismeréséhez lásd: az [Azure platform naplói – áttekintés](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ha diagnosztikai adatait küldi el a következőnek:
+Az erőforrás-naplózási információk megtekintésének megismeréséhez lásd: az [Azure platform naplói – áttekintés](../azure-monitor/essentials/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ha diagnosztikai adatait küldi el a következőnek:
 - **Azure monitor naplók**: a [hálózati biztonsági csoport elemzési](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-azure-monitor
 ) megoldásával továbbfejlesztett elemzéseket készíthet. A megoldás olyan vizualizációkat biztosít a NSG-szabályokhoz, amelyek engedélyezik vagy megtagadják a virtuális gép hálózati adapterének forgalmát, MAC-címként.
 - **Azure Storage-fiók**: az adatfájlok egy PT1H.jsba íródnak. A következőket találja:
@@ -206,7 +206,7 @@ Az erőforrás-naplózási információk megtekintésének megismeréséhez lás
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a [tevékenységek naplózásáról](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). A tevékenységek naplózása alapértelmezés szerint engedélyezve van az Azure-alapú üzemi modellel létrehozott NSG. Annak megállapításához, hogy mely műveletek befejeződtek a NSG a tevékenység naplójában, keresse meg a következő típusú erőforrásokat tartalmazó bejegyzéseket:
+- További információ a [tevékenységek naplózásáról](../azure-monitor/essentials/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). A tevékenységek naplózása alapértelmezés szerint engedélyezve van az Azure-alapú üzemi modellel létrehozott NSG. Annak megállapításához, hogy mely műveletek befejeződtek a NSG a tevékenység naplójában, keresse meg a következő típusú erőforrásokat tartalmazó bejegyzéseket:
   - Microsoft. ClassicNetwork/networkSecurityGroups
   - Microsoft. ClassicNetwork/networkSecurityGroups/securityRules
   - Microsoft. Network/networkSecurityGroups

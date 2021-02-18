@@ -3,12 +3,12 @@ title: Útmutatás és ajánlott eljárások
 description: Ismerje meg a Felhőbeli és a helyszíni számítási feladatok felhőbe történő biztonsági mentésének ajánlott eljárásait és útmutatását.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 7b65556d8dd9b5b12e8da25055f6e39732c83afd
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 0b3f70061be4d158ae717a97779d6ab0445f5858
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258761"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593336"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Felhőbeli és helyszíni számítási feladatok biztonsági mentése a felhőbe
 
@@ -238,9 +238,9 @@ Biztonsági mentési felhasználóként vagy rendszergazdaként képesnek kell l
   * A legfontosabb trendek azonosítása különböző részletességi szinteken.
 
 * ráadásul
-  * Az adatok (például feladatok, házirendek stb.) a **log Analytics** munkaterületre is elküldhetők. Ez lehetővé teszi Azure Monitor naplók funkcióit, hogy lehetővé tegyék az adatok korrelációját a Azure Monitor által gyűjtött más monitorozási adatokkal, összevonja a naplóbejegyzéseket több Azure-előfizetésből és-bérlőből egyetlen helyre az elemzéshez [További információt itt talál](../azure-monitor/platform/activity-log.md#send-to-log-analytics-workspace).
-  * Adatokat küldhet az Event hub-nak az Azure-on kívüli bejegyzések küldéséhez, például egy harmadik féltől származó SIEM (biztonsági információk és rendezvényszervezés) vagy más log Analytics megoldáshoz. [További információt itt talál](../azure-monitor/platform/activity-log.md#send-to-azure-event-hubs).
-  * Az Azure Storage-fiókba küldheti az adatait, ha a naplózást, a statikus elemzést vagy a biztonsági mentést 90 napnál hosszabb ideig kívánja megőrizni. Ha csak 90 vagy kevesebb napig kell megtartania az eseményeket, nem kell létrehoznia az archívumokat egy Storage-fiókhoz, mivel a tevékenység-naplózási események az Azure-platformon maradnak a 90 napig. [További információk](../azure-monitor/platform/activity-log.md#send-to--azure-storage).
+  * Az adatok (például feladatok, házirendek stb.) a **log Analytics** munkaterületre is elküldhetők. Ez lehetővé teszi Azure Monitor naplók funkcióit, hogy lehetővé tegyék az adatok korrelációját a Azure Monitor által gyűjtött más monitorozási adatokkal, összevonja a naplóbejegyzéseket több Azure-előfizetésből és-bérlőből egyetlen helyre az elemzéshez [További információt itt talál](../azure-monitor/essentials/activity-log.md#send-to-log-analytics-workspace).
+  * Adatokat küldhet az Event hub-nak az Azure-on kívüli bejegyzések küldéséhez, például egy harmadik féltől származó SIEM (biztonsági információk és rendezvényszervezés) vagy más log Analytics megoldáshoz. [További információt itt talál](../azure-monitor/essentials/activity-log.md#send-to-azure-event-hubs).
+  * Az Azure Storage-fiókba küldheti az adatait, ha a naplózást, a statikus elemzést vagy a biztonsági mentést 90 napnál hosszabb ideig kívánja megőrizni. Ha csak 90 vagy kevesebb napig kell megtartania az eseményeket, nem kell létrehoznia az archívumokat egy Storage-fiókhoz, mivel a tevékenység-naplózási események az Azure-platformon maradnak a 90 napig. [További információ](../azure-monitor/essentials/activity-log.md#send-to--azure-storage).
 
 ### <a name="alerting"></a>Riasztások kezelése
 

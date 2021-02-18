@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
 ms.custom: contperf-fy21q1, azuread-video-2020
-ms.openlocfilehash: 5bf9b79621ae1cd2c73f2e3ce18b0780bcdd2a71
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 4241e476b2f778ff63057d0491b5dc8666c7520c
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100559334"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650864"
 ---
 # <a name="what-is-azure-role-based-access-control-azure-rbac"></a>Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?
 
@@ -86,7 +86,7 @@ További információ: Azure- [szerepkör hozzárendelésének lépései](role-a
 
 ## <a name="multiple-role-assignments"></a>Több szerepkör-hozzárendelés
 
-Tehát mi történik, ha több átfedésben lévő szerepkör-hozzárendelés van? Az Azure RBAC egy adalékanyag-modell, így az érvényes engedélyek a szerepkör-hozzárendelések összege. Vegye figyelembe a következő példát, amikor egy felhasználó megkapja a közreműködő szerepkört az előfizetés hatókörében, valamint az olvasó szerepkört egy erőforráscsoporthoz. A közreműködői engedélyek és az olvasói engedélyek összege ténylegesen az erőforráscsoport közreműködői szerepköre. Ezért ebben az esetben az olvasó szerepkör-hozzárendelésnek nincs hatása.
+Tehát mi történik, ha több átfedésben lévő szerepkör-hozzárendelés van? Az Azure RBAC egy adalékanyag-modell, így az érvényes engedélyek a szerepkör-hozzárendelések összege. Vegye figyelembe a következő példát, amikor egy felhasználó megkapja a közreműködő szerepkört az előfizetés hatókörében, valamint az olvasó szerepkört egy erőforráscsoporthoz. A közreműködői engedélyek és az olvasói engedélyek összege ténylegesen az előfizetés közreműködői szerepköre. Ezért ebben az esetben az olvasó szerepkör-hozzárendelésnek nincs hatása.
 
 ![Több szerepkör-hozzárendelés](./media/overview/rbac-multiple-roles.png)
 

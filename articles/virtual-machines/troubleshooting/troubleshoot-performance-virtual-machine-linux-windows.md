@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: ec605fd30252b9a0cfb80d0bc3ff145ed3b5a1d4
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: cde84a018d307bada6a6b6f3b5467b8addd007b1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573309"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571442"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Azure-beli virtuális gépek teljesítményének megoldása Linux vagy Windows rendszeren
 
@@ -30,7 +30,7 @@ Ez a cikk végigvezeti a teljesítménybeli szűk keresztmetszetek diagnosztizá
 
 ### <a name="azure-iaas-virtual-machine-monitoring"></a>Azure IAAS-beli virtuális gépek figyelése
 
-A vendég virtuális gép figyeléséhez használja az Azure-beli virtuális gépek figyelését, amely riasztást küld az egyes magas szintű erőforrás-feltételekről. Ellenőrizze, hogy engedélyezve van-e a virtuálisgép-diagnosztika, lásd: [Azure-erőforrások naplói – áttekintés](../../azure-monitor/learn/tutorial-resource-logs.md). Ha a következő jelenik meg, akkor valószínűleg nincs engedélyezve a diagnosztika:
+A vendég virtuális gép figyeléséhez használja az Azure-beli virtuális gépek figyelését, amely riasztást küld az egyes magas szintű erőforrás-feltételekről. Ellenőrizze, hogy engedélyezve van-e a virtuálisgép-diagnosztika, lásd: [Azure-erőforrások naplói – áttekintés](../../azure-monitor/essentials/tutorial-resource-logs.md). Ha a következő jelenik meg, akkor valószínűleg nincs engedélyezve a diagnosztika:
 
 ![A figyelés nincs engedélyezve](media/troubleshoot-performance-virtual-machine-linux-windows/1-virtual-machines-monitoring-not-enabled.png)
  
@@ -101,7 +101,7 @@ Annak megállapításához, hogy van-e erőforrás-szűk keresztmetszete, tekint
 
 ### <a name="cpu-observe-trends"></a>A CPU megfigyelésének trendjei
 
-Ha teljesítménnyel kapcsolatos problémákat tapasztal, vegye figyelembe a trendeket, és Ismerje meg, ha azok érintik Önt. A következő fejezetekben a portálon a figyelési grafikonokat használjuk a trendek megjelenítéséhez. Emellett hasznosak lehetnek az erőforrás-viselkedésre vonatkozó kereszthivatkozások egyazon időszakban. A diagramok testreszabásához kattintson [Azure monitor adatplatformra](../../azure-monitor/platform/data-platform.md).
+Ha teljesítménnyel kapcsolatos problémákat tapasztal, vegye figyelembe a trendeket, és Ismerje meg, ha azok érintik Önt. A következő fejezetekben a portálon a figyelési grafikonokat használjuk a trendek megjelenítéséhez. Emellett hasznosak lehetnek az erőforrás-viselkedésre vonatkozó kereszthivatkozások egyazon időszakban. A diagramok testreszabásához kattintson [Azure monitor adatplatformra](../../azure-monitor/data-platform.md).
 
 Beszúró – a beszúró folyamat egy ütemezett feladathoz/ismert eseményhez kapcsolódhat. Ha azonosítani tudja a feladatot, állapítsa meg, hogy a feladat a szükséges teljesítményszint szerint fut-e. Ha a teljesítmény elfogadható, előfordulhat, hogy nem kell megemelnie az erőforrásokat.
 
@@ -248,7 +248,7 @@ Ezek a cikkek a konkrét forgatókönyveket tárgyalják:
 
 * [Az Azure Premium Storage használata a SQL Server](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-server-premium-storage)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban és stack overflow fórumokon](https://azure.microsoft.com/support/forums/).
 

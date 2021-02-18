@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 03814766d7bc873855df261a50a40b8d342fa69b
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: add2bbb7b8f9eeb72c8c58b8c54b070a6b14d8e6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054246"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586069"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Azure Automation runbook elindítására szolgáló riasztás használata
 
-A [Azure monitor](../azure-monitor/overview.md) segítségével figyelheti az Azure-ban a legtöbb szolgáltatáshoz tartozó alapszintű mérőszámokat és naplókat. Azure Automation runbookok a [műveleti csoportok](../azure-monitor/platform/action-groups.md) használatával vagy klasszikus riasztásokkal hívhatja a feladatok a riasztások alapján történő automatizálásához. Ebből a cikkből megtudhatja, hogyan konfigurálhat és futtathat egy runbook riasztások használatával.
+A [Azure monitor](../azure-monitor/overview.md) segítségével figyelheti az Azure-ban a legtöbb szolgáltatáshoz tartozó alapszintű mérőszámokat és naplókat. Azure Automation runbookok a [műveleti csoportok](../azure-monitor/alerts/action-groups.md) használatával vagy klasszikus riasztásokkal hívhatja a feladatok a riasztások alapján történő automatizálásához. Ebből a cikkből megtudhatja, hogyan konfigurálhat és futtathat egy runbook riasztások használatával.
 
 ## <a name="alert-types"></a>Riasztástípusok
 
@@ -25,15 +25,15 @@ Az Automation runbookok háromféle riasztási típust használhat:
 * Közel valós idejű metrikus riasztások
 
 > [!NOTE]
-> A Common Alert séma szabványosítja a riasztási értesítések fogyasztási élményét az Azure-ban még ma. Az Azure-ban a három riasztási típust (metrikus, log és Activity log) a saját e-mail-sablonjai, webhook-sémái stb. is megkapta. További információ: [Common Alert Schema](../azure-monitor/platform/alerts-common-schema.md)
+> A Common Alert séma szabványosítja a riasztási értesítések fogyasztási élményét az Azure-ban még ma. Az Azure-ban a három riasztási típust (metrikus, log és Activity log) a saját e-mail-sablonjai, webhook-sémái stb. is megkapta. További információ: [Common Alert Schema](../azure-monitor/alerts/alerts-common-schema.md)
 
 Amikor egy riasztás meghívja a runbook, a tényleges hívás egy HTTP POST-kérelem a webhooknak. A POST kérelem törzse egy JSON-formátumú objektumot tartalmaz, amely a riasztáshoz kapcsolódó hasznos tulajdonságokkal rendelkezik. Az alábbi táblázat felsorolja az egyes riasztási típusok adatforgalmi sémájára mutató hivatkozásokat:
 
 |Riasztás  |Description|Hasznos adatok sémája  |
 |---------|---------|---------|
-|[Gyakori riasztás](../azure-monitor/platform/alerts-common-schema.md)|A gyakori riasztási séma, amely szabványosítja a riasztási értesítések fogyasztási élményét az Azure-ban még ma.|Gyakori riasztási adattartalom sémája|
-|[Tevékenység naplójának riasztása](../azure-monitor/platform/activity-log-alerts.md)    |Értesítés küldése, ha az Azure-tevékenység naplójában minden új esemény megfelel bizonyos feltételeknek. Ha például egy művelet a `Delete VM` **myProductionResourceGroup** -ban vagy egy új, aktív állapotú Azure Service Health eseményt jelenít meg.| [Műveletnapló riasztási hasznos sémája](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
-|[Közel valós idejű metrika riasztása](../azure-monitor/platform/alerts-metric-near-real-time.md)    |A metrikus riasztások gyorsabban küld értesítést, ha egy vagy több platform szintű metrika megfelel a megadott feltételeknek. Ha például egy virtuális gépen a **CPU%** értéke nagyobb, mint 90, és a **hálózat** értéke nagyobb, mint 500 MB az elmúlt 5 percben.| [A közel valós idejű metrikus riasztás hasznos adattartalma sémája](../azure-monitor/platform/alerts-webhooks.md#payload-schema)          |
+|[Gyakori riasztás](../azure-monitor/alerts/alerts-common-schema.md)|A gyakori riasztási séma, amely szabványosítja a riasztási értesítések fogyasztási élményét az Azure-ban még ma.|Gyakori riasztási adattartalom sémája|
+|[Tevékenység naplójának riasztása](../azure-monitor/alerts/activity-log-alerts.md)    |Értesítés küldése, ha az Azure-tevékenység naplójában minden új esemény megfelel bizonyos feltételeknek. Ha például egy művelet a `Delete VM` **myProductionResourceGroup** -ban vagy egy új, aktív állapotú Azure Service Health eseményt jelenít meg.| [Műveletnapló riasztási hasznos sémája](../azure-monitor/alerts/activity-log-alerts-webhook.md)        |
+|[Közel valós idejű metrika riasztása](../azure-monitor/alerts/alerts-metric-near-real-time.md)    |A metrikus riasztások gyorsabban küld értesítést, ha egy vagy több platform szintű metrika megfelel a megadott feltételeknek. Ha például egy virtuális gépen a **CPU%** értéke nagyobb, mint 90, és a **hálózat** értéke nagyobb, mint 500 MB az elmúlt 5 percben.| [A közel valós idejű metrikus riasztás hasznos adattartalma sémája](../azure-monitor/alerts/alerts-webhooks.md#payload-schema)          |
 
 Mivel az egyes riasztási típusok által megadott információk eltérnek, az egyes riasztási típusokat a rendszer eltérően kezeli. A következő szakaszban megtudhatja, hogyan hozhat létre egy runbook a különböző típusú riasztások kezeléséhez.
 
@@ -185,7 +185,7 @@ A riasztások olyan műveleti csoportokat használnak, amelyek a riasztás álta
 
     ![Műveleti csoport hozzáadása lap](./media/automation-create-alert-triggered-runbook/add-action-group.png)
 
-    Ezt a műveleti csoportot a [tevékenység naplójának riasztásai](../azure-monitor/platform/activity-log-alerts.md) és a létrehozott [valós idejű riasztások mellett](../azure-monitor/platform/alerts-overview.md) is használhatja.
+    Ezt a műveleti csoportot a [tevékenység naplójának riasztásai](../azure-monitor/alerts/activity-log-alerts.md) és a létrehozott [valós idejű riasztások mellett](../azure-monitor/alerts/alerts-overview.md) is használhatja.
 
 1. A **riasztás részletei** területen adja meg a riasztási szabály nevét és leírását, majd kattintson a **riasztási szabály létrehozása** elemre.
 
@@ -193,6 +193,6 @@ A riasztások olyan műveleti csoportokat használnak, amelyek a riasztás álta
 
 * A runbook webhook használatával történő indításához tekintse meg [a Runbook indítása webhookból](automation-webhooks.md)című témakört.
 * A runbook elindításának különböző módjaival kapcsolatban lásd: [Runbook elindítása](./start-runbooks.md).
-* A műveletnapló riasztásának létrehozásával kapcsolatban lásd: [műveletnapló riasztásai](../azure-monitor/platform/activity-log-alerts.md).
-* A közel valós idejű riasztás létrehozásáról további információt [a riasztási szabály létrehozása a Azure Portalban](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json)című témakörben talál.
+* A műveletnapló riasztásának létrehozásával kapcsolatban lásd: [műveletnapló riasztásai](../azure-monitor/alerts/activity-log-alerts.md).
+* A közel valós idejű riasztás létrehozásáról további információt [a riasztási szabály létrehozása a Azure Portalban](../azure-monitor/alerts/alerts-metric.md?toc=/azure/azure-monitor/toc.json)című témakörben talál.
 * A PowerShell-parancsmagok leírása: [az. Automation](/powershell/module/az.automation).

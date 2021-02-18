@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/01/2020
-ms.openlocfilehash: 5dff78989eef17f95d8b8dd108baafc53a3f761a
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 1779df1c5f9baf2aa46ff809ecae9ec5e3cd7adb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657022"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581570"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Teljesítmény figyelése a lekérdezési tárolóval
 
@@ -166,7 +166,7 @@ Ez a nézet visszaadja az események várakozási idejének értékét a lekérd
 | esemény | szöveg |  | A várakozási esemény neve, ha a háttér jelenleg várakozik |
 | hívások | Egész szám |  | A rögzített esemény száma |
 
-### <a name="functions"></a>Függvények
+### <a name="functions"></a>Functions
 
 Query_store Query_store.qs_reset () érvénytelen értéket ad vissza
 
@@ -178,7 +178,7 @@ Query_store Query_store.staging_data_reset () érvénytelen értéket ad vissza
 
 
 ## <a name="azure-monitor"></a>Azure Monitor
-A Azure Database for PostgreSQL [Azure monitor diagnosztikai beállításokkal](../azure-monitor/platform/diagnostic-settings.md)van integrálva. A diagnosztikai beállítások lehetővé teszik, hogy JSON formátumban küldje el a postgres-naplókat, hogy [Azure monitor naplókat](../azure-monitor/log-query/log-query-overview.md) az elemzéshez és a riasztásokhoz, Event Hubs a folyamatos átvitelhez és az Azure Storage-hoz az archiváláshoz.
+A Azure Database for PostgreSQL [Azure monitor diagnosztikai beállításokkal](../azure-monitor/essentials/diagnostic-settings.md)van integrálva. A diagnosztikai beállítások lehetővé teszik, hogy JSON formátumban küldje el a postgres-naplókat, hogy [Azure monitor naplókat](../azure-monitor/logs/log-query-overview.md) az elemzéshez és a riasztásokhoz, Event Hubs a folyamatos átvitelhez és az Azure Storage-hoz az archiváláshoz.
 
 >[!IMPORTANT]
 > Ez a diagnosztikai funkció csak a általános célú és a memória optimalizált díjszabási szintjein érhető el.
@@ -195,7 +195,7 @@ Az erőforrás-naplók engedélyezése a Azure Portal használatával:
 5. Válassza ki a **QueryStoreRuntimeStatistics** és a **QueryStoreWaitStatistics** típusú naplókat.
 6. Mentse a beállítást.
 
-Ha ezt a beállítást a PowerShell, a CLI vagy a REST API használatával szeretné engedélyezni, keresse fel a [diagnosztikai beállítások című cikket](../azure-monitor/platform/diagnostic-settings.md).
+Ha ezt a beállítást a PowerShell, a CLI vagy a REST API használatával szeretné engedélyezni, keresse fel a [diagnosztikai beállítások című cikket](../azure-monitor/essentials/diagnostic-settings.md).
 
 ### <a name="json-log-format"></a>JSON-napló formátuma
 A következő táblázatok a két naplózási típus mezőit ismertetik. A kiválasztott kimeneti végponttól függően a befoglalt mezők és a megjelenő sorrend eltérő lehet.

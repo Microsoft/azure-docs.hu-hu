@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: a663c5f3bcf3492c4a9bc74fe93c6ed6a86137ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ede1c917bb44dd31aa59855a0b7c83eb478700a
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530641"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651721"
 ---
 # <a name="azure-firewall-threat-intelligence-configuration"></a>Azure Firewall veszélyforrások intelligencia-konfigurációja
 
@@ -24,21 +24,33 @@ Ha beállította a veszélyforrások felderítésére alapuló szűrést, a rend
 
 ## <a name="threat-intelligence-mode"></a>Fenyegetés intelligencia üzemmód
 
-Dönthet úgy, hogy csak riasztást tud naplózni egy szabály indításakor, vagy választhatja a riasztási és a megtagadási módot.
+A veszélyforrások intelligenciát a következő táblázatban ismertetett három mód egyikében konfigurálhatja. Alapértelmezés szerint a fenyegetési intelligencia-alapú szűrés riasztási módban van engedélyezve.
 
-Alapértelmezés szerint a fenyegetési intelligencia-alapú szűrés riasztási módban van engedélyezve.
+|Mód |Description  |
+|---------|---------|
+|`Off`     | A veszélyforrások intelligencia szolgáltatása nincs engedélyezve a tűzfalon. |
+|`Alert only`     | A tűzfalon keresztül érkező, illetve az ismert kártékony IP-címekre és tartományokra irányuló adatforgalomra vonatkozóan nagy megbízhatóságú riasztásokat fog kapni. |
+|`Alert and deny`     | A forgalom le van tiltva, és nagy megbízhatóságú riasztásokat küld, amikor a rendszer a tűzfalon való átállást kísérli meg az ismert, kártékony IP-címek és tartományok között. |
 
-## <a name="allowed-list-addresses"></a>Engedélyezési lista címei
+> [!NOTE]
+> A veszélyforrások felderítésének módja örökölt a szülői házirendektől az alárendelt házirendekig. A gyermek házirendet ugyanazzal a vagy szigorúbb móddal kell konfigurálni, mint a szülő házirendnek.
 
-Az engedélyezett IP-címek listáját beállíthatja úgy, hogy a fenyegetési intelligencia ne szűrje a megadott címeket, tartományokat vagy alhálózatokat.
+## <a name="allowlist-addresses"></a>Engedélyezési-címek
 
+A fenyegetések felderítése hamis pozitív adatokat válthat ki, és blokkolja a ténylegesen érvényes forgalmat. Az engedélyezett IP-címek listáját beállíthatja úgy, hogy a fenyegetési intelligencia ne szűrje a megadott címeket, tartományokat vagy alhálózatokat.  
 
+![Engedélyezési-címek](media/threat-intelligence-settings/allow-list.png)
+
+Egy CSV-fájl feltöltésével egyszerre több bejegyzéssel is frissítheti a engedélyezési. A CSV-fájl csak IP-címeket és tartományokat tartalmazhat. A fájl nem tartalmazhat fejléceket.
+
+> [!NOTE]
+> A fenyegetési intelligencia engedélyezési címei örökölnek a szülői házirendektől az alárendelt házirendekig. A fölérendelt házirendhez hozzáadott bármely IP-cím vagy tartomány az összes alárendelt házirendre érvényes lesz.
 
 ## <a name="logs"></a>Naplók
 
-A következő naplózási részlet egy aktivált szabályt mutat be:
+A következő naplózási részlet egy rosszindulatú helyre irányuló kimenő forgalomra vonatkozó kiváltott szabályt mutat be:
 
-```
+```json
 {
     "category": "AzureFirewallNetworkRule",
     "time": "2018-04-16T23:45:04.8295030Z",

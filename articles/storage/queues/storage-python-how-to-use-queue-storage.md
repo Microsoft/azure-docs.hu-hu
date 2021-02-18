@@ -1,20 +1,20 @@
 ---
-title: Az Azure Queue Storage használata a Python-Azure Storage-ból
+title: Az Azure Queue Storage használata a Pythonból
 description: Ismerje meg, hogyan hozhat létre és törölhet várólistákat az Azure Queue Storage Pythonból, és hogyan szúrhat be, kérhet le és törölhet üzeneteket.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.reviewer: dineshm
-ms.date: 01/19/2021
+ms.date: 02/16/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: seo-javascript-october2019, devx-track-python
-ms.openlocfilehash: 82d18fd79b10a8500cfd9191f143438d69fda401
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 8c30d05cf49162155f84961e1fd8a32361444ba5
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600804"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653261"
 ---
 # <a name="how-to-use-azure-queue-storage-from-python"></a>Az Azure Queue Storage használata a Pythonból
 
@@ -22,9 +22,9 @@ ms.locfileid: "98600804"
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a cikk az Azure Queue Storage szolgáltatás használatának gyakori forgatókönyveit mutatja be. Az érintett forgatókönyvek közé tartozik az üzenetsor-üzenetek beszúrása, bepillantása, beolvasása és törlése. A várólisták létrehozásához és törléséhez szükséges kód is szerepel.
+Ez a cikk az Azure Queue Storage szolgáltatás használatának gyakori forgatókönyveit mutatja be. A tárgyalt forgatókönyvek közé tartozik az üzenetsor-üzenetek beszúrása, bepillantása, beolvasása és törlése. A várólisták létrehozásához és törléséhez szükséges kód is szerepel.
 
-A cikkben szereplő példák Pythonban íródtak, és a [Pythonhoz készült Azure Queue Storage ügyféloldali kódtárat](https://github.com/Azure/Azure-SDK-for-Python/tree/master/sdk/storage/azure-storage-queue)használják. A várólistákkal kapcsolatos további információkért tekintse meg a [következő lépések](#next-steps) szakaszt.
+A cikkben szereplő példák Pythonban íródtak, és a [Pythonhoz készült Azure Queue Storage ügyféloldali kódtárat](https://github.com/azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue)használják. A várólistákkal kapcsolatos további információkért tekintse meg a [következő lépések](#next-steps) szakaszt.
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -117,6 +117,26 @@ queue_service.create_queue(queue_name)
 
 ---
 
+Az Azure üzenetsor-üzenetei szövegként vannak tárolva. Ha bináris adatok tárolására van szüksége, állítson be Base64 kódolást és dekódolási függvényeket, mielőtt üzenetet hozna a várólistába.
+
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+Konfigurálja a Base64 kódolást és a dekódolási függvényeket az ügyfél-objektum létrehozásakor.
+
+:::code language="python" source="~/azure-storage-snippets/queues/howto/python/python-v12/python-howto-v12.py" id="Snippet_EncodeMessage":::
+
+# <a name="python-v2"></a>[Python v2](#tab/python2)
+
+Base64 kódolás és dekódolási függvények konfigurálása Queue Storage objektumon.
+
+```python
+# Setup Base64 encoding and decoding functions
+queue_service.encode_function = QueueMessageFormat.binary_base64encode
+queue_service.decode_function = QueueMessageFormat.binary_base64decode
+```
+
+---
+
 ## <a name="insert-a-message-into-a-queue"></a>Üzenet beszúrása egy üzenetsorba
 
 # <a name="python-v12"></a>[Python V12](#tab/python)
@@ -133,26 +153,6 @@ Egy üzenet üzenetsorbe való beszúrásához használja az [`put_message`](/az
 message = u"Hello, World"
 print("Adding message: " + message)
 queue_service.put_message(queue_name, message)
-```
-
----
-
-Az Azure üzenetsor-üzenetei szövegként vannak tárolva. Ha bináris adatok tárolására van szüksége, állítson be Base64 kódolást és dekódolási függvényeket, mielőtt üzenetet hozna a várólistába.
-
-# <a name="python-v12"></a>[Python V12](#tab/python)
-
-Konfigurálja a Base64 kódolást és a dekódolási függvényeket a várólista-ügyfél objektumon.
-
-:::code language="python" source="~/azure-storage-snippets/queues/howto/python/python-v12/python-howto-v12.py" id="Snippet_EncodeMessage":::
-
-# <a name="python-v2"></a>[Python v2](#tab/python2)
-
-Base64 kódolás és dekódolási függvények konfigurálása Queue Storage objektumon.
-
-```python
-# Setup Base64 encoding and decoding functions
-queue_service.encode_function = QueueMessageFormat.binary_base64encode
-queue_service.decode_function = QueueMessageFormat.binary_base64decode
 ```
 
 ---
@@ -293,7 +293,7 @@ queue_service.delete_queue(queue_name)
 
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte Queue Storage alapjait, kövesse az alábbi hivatkozásokat további információért.
 

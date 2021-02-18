@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 2af9608006eac37ccdfe76d66e619d5a64cad9f1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: a935b34c4fcebe9128d8af0316658072e20ddfbe
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746652"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596205"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>Gyors útmutató: Azure Spring Cloud-alkalmazások figyelése naplókkal, metrikákkal és nyomkövetéssel
 
@@ -69,7 +69,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
     
 1. Szerkessze a lekérdezést, és távolítsa el azokat a WHERE záradékokat, amelyek a figyelmeztetési és a hibajelentési naplókra korlátozzák a megjelenítést.
 
-1. Ezután válassza `Run` a () lehetőséget, és látni fogja a naplókat. A lekérdezések írásához további útmutatást az [Azure log Analytics dokumentációjában](../azure-monitor/log-query/get-started-queries.md) talál.
+1. Ezután válassza `Run` a () lehetőséget, és látni fogja a naplókat. A lekérdezések írásához további útmutatást az [Azure log Analytics dokumentációjában](../azure-monitor/logs/get-started-queries.md) talál.
 
    [![Naplók Analytics-lekérdezés – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png#lightbox)
 
@@ -142,7 +142,7 @@ Ekkor a következőhöz hasonló naplók láthatók:
 
 Naplók beszerzése Azure Toolkit for IntelliJ használatával:
 
-1. Válassza az **Azure Explorer** , majd a **Spring Cloud** elemet.
+1. Válassza az **Azure Explorer**, majd a **Spring Cloud** elemet.
 
 1. Kattintson a jobb gombbal a futó alkalmazásra.
 
@@ -165,13 +165,13 @@ Naplók beszerzése Azure Toolkit for IntelliJ használatával:
 
    [![Naplók Analytics-bejegyzés ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png#lightbox)
     
-1. Ezután megjelennek a szűrt naplók. A lekérdezések írásához további útmutatást az [Azure log Analytics dokumentációjában](../azure-monitor/log-query/get-started-queries.md) talál.
+1. Ezután megjelennek a szűrt naplók. A lekérdezések írásához további útmutatást az [Azure log Analytics dokumentációjában](../azure-monitor/logs/get-started-queries.md) talál.
 
    [![Naplók Analytics-lekérdezés ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png#lightbox)
 
 ## <a name="metrics"></a>Mérőszámok
 
-1. Ugrás a **szolgáltatásra | Áttekintés** lapon válassza a **metrikák** lehetőséget a **figyelés** szakaszban. Adja hozzá az első mérőszámot a metrika lehetőség kiválasztásával `system.cpu.usage` , és **Metric** `Avg` a teljes CPU-használat idővonalának megjelenítéséhez. **Aggregation**
+1. Ugrás a **szolgáltatásra | Áttekintés** lapon válassza a **metrikák** lehetőséget a **figyelés** szakaszban. Adja hozzá az első mérőszámot a metrika lehetőség kiválasztásával `system.cpu.usage` , és  `Avg` a teljes CPU-használat idővonalának megjelenítéséhez. 
 
    [![Metrikák bejegyzése ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu.png)](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu.png#lightbox)
     
@@ -203,7 +203,7 @@ Naplók beszerzése Azure Toolkit for IntelliJ használatával:
 
 ::: zone-end
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ezekben a gyors útmutatókban olyan Azure-erőforrásokat hozott létre, amelyek továbbra is felhalmozzák a díjakat, ha az előfizetésben maradnak. Ha nem várható, hogy a jövőben szüksége lenne ezekre az erőforrásokra, törölje az erőforráscsoportot a portál használatával, vagy futtassa a következő parancsot a Cloud Shellban:
 
@@ -226,4 +226,4 @@ Az Azure Spring Cloud további figyelési képességeinek megismeréséhez lásd
 >
 > [Elosztott nyomkövetés](spring-cloud-tutorial-distributed-tracing.md)
 >
-> [Adatfolyam-naplók valós időben](spring-cloud-howto-log-streaming.md)
+> [Naplók streamelése valós időben](spring-cloud-howto-log-streaming.md)

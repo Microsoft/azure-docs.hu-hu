@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, sstein
 ms.date: 12/9/2020
-ms.openlocfilehash: f50042caf21630c5054ead76825e49b820405c5b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c478edf95ae345d64da630400fbf63ac613b73a6
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732694"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653635"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>A rugalmas készletek segítségével több adatbázist kezelhet és méretezheti Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -90,15 +90,10 @@ A szolgáltatási szintek és az egyes beszerzési modellek erőforrás-korláta
 Az alábbi lépések segítségével megbecsülheti, hogy a készlet költséghatékonyabb-e az önálló adatbázisok esetében:
 
 1. Becsülje meg a készlethez szükséges Edtu vagy virtuális mag a következőképpen:
-
-DTU-alapú vásárlási modell esetén:
-
-MAX (<*teljes számú adatbázisok* x *átlagos DTU-kihasználtsága (db* ->), <*az egyidejű, maximális adatbázisok* maximális *DTU kihasználtsága db*>)
-
-Virtuális mag-alapú vásárlási modell esetén:
-
-MAX (<*teljes számú adatbázisok* x *átlagos virtuális mag-kihasználtsága (db* ->), <*az egyidejű, maximális adatbázisok* maximális *virtuális mag kihasználtsága db*>)
-
+   - A DTU-alapú vásárlási modell esetében:
+     - Max ( *az adatbázisok* &times; *átlagos DTU-kihasználtságának* maximális száma (<db->, <*a párhuzamosan futó adatbázisok* maximális &times; *DTU-kihasználtságának száma db*>)
+   - A virtuális mag-alapú vásárlási modell esetében:
+     - Max ( *az adatbázisok* &times; *átlagos virtuális mag-kihasználtságának* maximális száma (<db->, <*a párhuzamosan futó adatbázisok* maximális &times; *virtuális mag-kihasználtságának száma db*>)
 2. Becsülje meg a készlethez szükséges teljes tárterületet a készletben lévő összes adatbázishoz szükséges adatméret hozzáadásával. A DTU-vásárlási modell esetében határozza meg a eDTU-készlet méretét, amely biztosítja ezt a tárterületet.
 3. A DTU-alapú vásárlási modell esetében az 1. és a 2. lépésben szereplő eDTU-becslések nagyobb mennyiségét kell megbecsülni. A virtuális mag-alapú vásárlási modell esetében az 1. lépés alapján végezze el a virtuális mag becslését.
 4. Tekintse meg a [SQL Database díjszabási oldalát](https://azure.microsoft.com/pricing/details/sql-database/) , és keresse meg a 3. lépésben megbecsülhető legkisebb méretű készletet.
@@ -172,7 +167,7 @@ A beépített [Teljesítményfigyelő](./performance-guidance.md) és [riasztás
 
    A Daxko/CSI rugalmas készleteket használ Azure SQL Database a fejlesztési ciklus felgyorsításához, valamint az ügyfelek szolgáltatásainak és teljesítményének növeléséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A díjszabással kapcsolatos információkért lásd a [rugalmas készlet díjszabását](https://azure.microsoft.com/pricing/details/sql-database/elastic).
 - Rugalmas készletek méretezése: [rugalmas készletek skálázása](elastic-pool-scale.md) és [rugalmas készlet méretezése – mintakód](scripts/monitor-and-scale-pool-powershell.md)

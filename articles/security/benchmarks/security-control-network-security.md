@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 3a232f8e8c35e265a8243ac79e465c03f6b9650e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: cc52d1f6eec5f1aedb0db37b3945f7be6d9f62a8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487864"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595629"
 ---
 # <a name="security-control-network-security"></a>Biztonsági ellenőrzés: hálózati biztonság
 
@@ -22,7 +22,7 @@ A hálózati biztonsági javaslatok azt határozzák meg, hogy mely hálózati p
 
 | Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 1,1 | 9,2, 9,4, 14,1, 14,2, 14,3 | Ügyfél |
+| 1.1 | 9,2, 9,4, 14,1, 14,2, 14,3 | Ügyfél |
 
 Győződjön meg arról, hogy az összes Virtual Network alhálózati üzemelő példány rendelkezik egy hálózati biztonsági csoporttal, amely az alkalmazás megbízható portjaira és forrásaira jellemző hálózati hozzáférés-vezérléssel rendelkezik. Ha elérhető, privát végpontok használatával gondoskodhat az Azure-szolgáltatások erőforrásainak virtuális hálózatra való védelméről, ha a VNet-identitást kiterjesztjük a szolgáltatásra. Ha a privát végpontok és a privát hivatkozások nem érhetők el, használja a szolgáltatási végpontokat. A szolgáltatásra vonatkozó követelményekért tekintse meg az adott szolgáltatásra vonatkozó biztonsági javaslatot. 
 
@@ -42,7 +42,7 @@ Ha konkrét használati esettel rendelkezik, a követelmények teljesítése Azu
 
 | Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 1,2 | 9,3, 12,2, 12,8 | Ügyfél |
+| 1.2 | 9,3, 12,2, 12,8 | Ügyfél |
 
 Az Azure-ban a hálózati erőforrások biztonságossá tételéhez használja a Azure Security Centert, és kövesse a hálózati védelmi javaslatok című témakört. Engedélyezze a NSG folyamat naplóit, és küldje el a naplókat egy Storage-fiókba a forgalom naplózása érdekében. NSG-naplókat is küldhet egy Log Analytics munkaterületre, és a Traffic Analytics használatával betekintést nyerhet az Azure-Felhőbeli forgalomba. A Traffic Analytics egyes előnyei lehetővé teszi a hálózati tevékenységek megjelenítését és a gyakori pontok azonosítását, a biztonsági fenyegetések azonosítását, a forgalomban rejlő minták értelmezését, valamint a hálózati helytelen konfigurációk meghatározását.
 
@@ -116,7 +116,7 @@ Az Ön által választott tűzfal-megoldás üzembe helyezésével azonosíthatj
 
 | Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 1,7 | 12,9, 12,10 | Ügyfél |
+| 1.7 | 12,9, 12,10 | Ügyfél |
 
 Az Azure Application Gateway üzembe helyezése a megbízható tanúsítványok számára engedélyezett HTTPS/TLS-alapú webalkalmazásokhoz.
 
@@ -144,7 +144,7 @@ Emellett az alkalmazás biztonsági csoportjaival is egyszerűsítheti az össze
 
 | Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 1,9 | 11,1 | Ügyfél |
+| 1.9 | 11,1 | Ügyfél |
 
 A hálózati erőforrások szabványos biztonsági konfigurációinak definiálása és implementálása Azure Policy.
 
@@ -182,10 +182,10 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 Az Azure-tevékenység naplójának használatával figyelheti az erőforrás-konfigurációkat, és felderítheti az Azure-erőforrások módosításait. Hozzon létre riasztásokat a Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus erőforrások változásai megváltoznak.
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Riasztások létrehozása a Azure Monitorban](../../azure-monitor/platform/alerts-activity-log.md)
+- [Riasztások létrehozása a Azure Monitorban](../../azure-monitor/alerts/alerts-activity-log.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg a következő biztonsági vezérlőt: [naplózás és figyelés](security-control-logging-monitoring.md)

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: errobin
-ms.openlocfilehash: 88c287c4aa87b4df41bfe6bbc1992262b21d07aa
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 190a9e431dedfb0f0fe6077e903174f253f5c773
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232760"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589098"
 ---
 # <a name="using-insights-to-monitor-and-configure-your-azure-load-balancer"></a>A Azure Load Balancer figyelése és konfigurálása a bepillantást használva
 
@@ -40,7 +40,7 @@ A standard Load Balancerek esetében a háttérbeli készlet erőforrásai szín
 
 ## <a name="metrics-dashboard"></a>Metrikai irányítópult
 
-A Load Balancer betekintő paneljén kiválaszthatja a részletesebb mérőszámokat, amelyekkel megtekintheti az előre konfigurált [Azure monitor munkafüzetet](../azure-monitor/platform/workbooks-overview.md) , amely a Load Balancer adott szempontjaira vonatkozó mérőszámokat tartalmazó vizualizációkat tartalmaz. Ez az irányítópult a Load Balancer állapotát és a kapcsolódó dokumentációra mutató hivatkozásokat jeleníti meg az oldal tetején.
+A Load Balancer betekintő paneljén kiválaszthatja a részletesebb mérőszámokat, amelyekkel megtekintheti az előre konfigurált [Azure monitor munkafüzetet](../azure-monitor/visualize/workbooks-overview.md) , amely a Load Balancer adott szempontjaira vonatkozó mérőszámokat tartalmazó vizualizációkat tartalmaz. Ez az irányítópult a Load Balancer állapotát és a kapcsolódó dokumentációra mutató hivatkozásokat jeleníti meg az oldal tetején.
 
 Első lépésként az Áttekintés lapot mutatjuk be. Navigálhat az elérhető lapokon, amelyek a Load Balancer adott aspektusához tartozó vizualizációkat tartalmaznak. Az egyes lapokhoz tartozó explicit útmutatást az irányítópult alján találhatja meg.
 
@@ -76,8 +76,8 @@ A kapcsolati figyelők lapon megtekintheti az összes konfigurált [kapcsolati f
 ### <a name="metric-definitions"></a>Metrikadefiníciók
 A metrika-definíciók lapon a [többdimenziós metrikák című cikkben](./load-balancer-standard-diagnostics.md#multi-dimensional-metrics)látható összes információ szerepel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Tekintse át az irányítópultot, és küldjön visszajelzést az alábbi hivatkozással, ha van valami, ami javítható
 * [Tekintse át a metrikák dokumentációját, amelyből megtudhatja, hogyan számítja ki az egyes metrikákat](./load-balancer-standard-diagnostics.md#multi-dimensional-metrics)
 * [A Load Balancerhoz tartozó kapcsolatok figyelők létrehozása](../network-watcher/connection-monitor.md)
-* [Saját munkafüzetek létrehozásához](../azure-monitor/platform/workbooks-overview.md)kattintson a részletes mérőszámok irányítópultjának Szerkesztés gombjára.
+* [Saját munkafüzetek létrehozásához](../azure-monitor/visualize/workbooks-overview.md)kattintson a részletes mérőszámok irányítópultjának Szerkesztés gombjára.

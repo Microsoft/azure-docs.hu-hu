@@ -1,0 +1,41 @@
+### YamlMime:Landing
+title: IoT-eszközök és-alkalmazások fejlesztői dokumentációja
+summary: Fedezze fel az Azure IoT dokumentációját a beágyazott eszközök fejlesztéséhez és az eszközre képes felhőalapú alkalmazások létrehozásához.
+metadata:
+  title: IoT-eszközök és-alkalmazások fejlesztése
+  description: Ismerje meg, hogyan használhatja az Azure IoT a beágyazott eszközök fejlesztésére és az eszközre képes felhőalapú alkalmazások készítésére.
+  services: iot-develop
+  ms.service: iot-develop
+  ms.topic: landing-page
+  author: timlt
+  ms.author: timlt
+  ms.date: 01/11/2021
+  ms.openlocfilehash: 98d3a7f3eb51ce9c2fddfe5b3ac6730d8ef3b3eb
+  ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+  ms.translationtype: MT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 02/18/2021
+  ms.locfileid: "100656236"
+landingContent:
+- title: Tudnivalók a IoT-eszközök és-alkalmazások fejlesztéséről
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az Azure IoT-eszköz és alkalmazásfejlesztés?
+      url: about-iot-develop.md
+    - text: Melyik SDK-t használjam?
+      url: about-iot-sdks.md
+- title: Ismerkedés az eszközök alkalmazás-fejlesztésével
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Eszköz telemetria küldése IoT Central
+      url: quickstart-send-telemetry-python.md
+    - text: Eszköz telemetria küldése IoT Hub
+      url: quickstart-send-telemetry-cli-python.md
+- title: Ismerkedés a beágyazott eszközök fejlesztésével
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Ismerkedés a beágyazott eszközök fejlesztésével
+      url: quickstart-device-development.md

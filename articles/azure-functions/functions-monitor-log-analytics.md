@@ -6,20 +6,20 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 582dafba40012e9ff9c59bc09adb1a0831e999f5
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: b6ce9e77421df0563810fd7f8255720c1fd2d0c0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491222"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591082"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Azure Functions figyelése Azure Monitor naplókkal
 
-A Azure Functions a függvények figyeléséhez [Azure monitor naplókkal](../azure-monitor/platform/data-platform-logs.md) való integrációt biztosít. Ez a cikk bemutatja, hogyan konfigurálhatja a Azure Functionst a rendszer által létrehozott és a felhasználó által létrehozott naplók Azure Monitor naplókba való küldéséhez.
+A Azure Functions a függvények figyeléséhez [Azure monitor naplókkal](../azure-monitor/logs/data-platform-logs.md) való integrációt biztosít. Ez a cikk bemutatja, hogyan konfigurálhatja a Azure Functionst a rendszer által létrehozott és a felhasználó által létrehozott naplók Azure Monitor naplókba való küldéséhez.
 
-Azure Monitor naplók lehetővé teszik a különböző erőforrásokból származó naplók összevonását ugyanabban a munkaterületen, ahol a [lekérdezésekkel](../azure-monitor/log-query/log-query-overview.md) elemezhető az összegyűjtött adatok gyors lekérése, összevonása és elemzése céljából.  A Azure Portal [log Analytics](../azure-monitor/log-query/log-query-overview.md) használatával létrehozhat és tesztelheti a lekérdezéseket, majd közvetlenül elemezheti ezeket az eszközöket, vagy a [vizualizációk](../azure-monitor/visualizations.md) vagy a [riasztási szabályok](../azure-monitor/platform/alerts-overview.md)használatával mentheti a lekérdezéseket.
+Azure Monitor naplók lehetővé teszik a különböző erőforrásokból származó naplók összevonását ugyanabban a munkaterületen, ahol a [lekérdezésekkel](../azure-monitor/logs/log-query-overview.md) elemezhető az összegyűjtött adatok gyors lekérése, összevonása és elemzése céljából.  A Azure Portal [log Analytics](../azure-monitor/logs/log-query-overview.md) használatával létrehozhat és tesztelheti a lekérdezéseket, majd közvetlenül elemezheti ezeket az eszközöket, vagy a [vizualizációk](../azure-monitor/visualizations.md) vagy a [riasztási szabályok](../azure-monitor/alerts/alerts-overview.md)használatával mentheti a lekérdezéseket.
 
-A Azure Monitor az Azure Adatkezelő által használt [Kusto-lekérdezési nyelv](/azure/kusto/query/) egy olyan verzióját használja, amely az egyszerű naplózási lekérdezésekhez megfelelő, de olyan speciális funkciókat is tartalmaz, mint az összesítések, az illesztések és az intelligens elemzések. A lekérdezés nyelvét [több leckével](../azure-monitor/log-query/get-started-queries.md)is gyorsan megismerheti.
+A Azure Monitor az Azure Adatkezelő által használt [Kusto-lekérdezési nyelv](/azure/kusto/query/) egy olyan verzióját használja, amely az egyszerű naplózási lekérdezésekhez megfelelő, de olyan speciális funkciókat is tartalmaz, mint az összesítések, az illesztések és az intelligens elemzések. A lekérdezés nyelvét [több leckével](../azure-monitor/logs/get-started-queries.md)is gyorsan megismerheti.
 
 > [!NOTE]
 > A Azure Monitor-naplókkal való integráció jelenleg nyilvános előzetes verzióban érhető el, és a Windows-használat, a prémium szintű és a dedikált üzemeltetési csomagok esetében a v2-es és v3-es függvények
@@ -36,7 +36,7 @@ A Azure Monitor az Azure Adatkezelő által használt [Kusto-lekérdezési nyelv
 
 1. A **célhely részletei** területen válassza a **Küldés log Analyticsba** lehetőséget, majd válassza ki a **log Analytics munkaterületet**. 
 
-1. Adja meg a **diagnosztikai beállítások nevét** , majd kattintson a **Mentés** gombra.
+1. Adja meg a **diagnosztikai beállítások nevét**, majd kattintson a **Mentés** gombra.
 
    :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="Diagnosztikai beállítás hozzáadása":::
 
@@ -121,8 +121,8 @@ FunctionAppLogs
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a [Azure functions áttekintését](functions-overview.md).
-- További információ a [Azure monitor naplókról](../azure-monitor/platform/data-platform-logs.md).
-- További információ a [lekérdezési nyelvről](../azure-monitor/log-query/get-started-queries.md).
+- További információ a [Azure monitor naplókról](../azure-monitor/logs/data-platform-logs.md).
+- További információ a [lekérdezési nyelvről](../azure-monitor/logs/get-started-queries.md).

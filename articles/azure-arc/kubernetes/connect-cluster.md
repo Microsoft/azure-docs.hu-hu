@@ -2,23 +2,23 @@
 title: Azure arc-kompatibilis Kubernetes-fürt összekapcsolása (előzetes verzió)
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/15/2021
+ms.date: 02/17/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Azure arc-kompatibilis Kubernetes-fürt összekapcsolása az Azure Arcmal
 keywords: Kubernetes, arc, Azure, K8s, tárolók
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 5e2058c5128075de4c37eb9768b204532cd09ffa
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 876bc15a3f4db1d12afec37c69656c431e5e6773
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558561"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652513"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure arc-kompatibilis Kubernetes-fürt összekapcsolása (előzetes verzió)
 
-Ez a cikk végigvezeti a meglévő Kubernetes-fürtök Azure-ívet való csatlakoztatásának lépéseit. Ugyanezt a fogalmi áttekintést [itt](./conceptual-agent-architecture.md)találja.
+Ez a cikk végigvezeti egy meglévő Kubernetes-fürt Azure-ívet való csatlakoztatásának lépésén. A fürtök összekapcsolásával kapcsolatos fogalmakat az [Azure arc-kompatibilis Kubernetes-ügynök architektúráját ismertető cikkben](./conceptual-agent-architecture.md)találja.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -28,12 +28,12 @@ Győződjön meg arról, hogy előkészítette a következő előfeltételeket:
   * Hozzon létre egy Kubernetes [-fürtöt a Kubernetes használatával a Docker-ben (Kind)](https://kind.sigs.k8s.io/).
   * Hozzon létre egy Kubernetes-fürtöt a Docker használatával [Mac](https://docs.docker.com/docker-for-mac/#kubernetes) vagy [Windows rendszerhez](https://docs.docker.com/docker-for-windows/#kubernetes).
 * Kubeconfig-fájl, amely a fürt és a fürt rendszergazdai szerepkörének elérésére használható az arc-kompatibilis Kubernetes-ügynökök telepítéséhez.
-* A (z) és a (z) paranccsal használt felhasználónak vagy szolgáltatásnak " `az login` `az connectedk8s connect` READ" és "Write" engedélyekkel kell rendelkeznie a "Microsoft. Kubernetes/connectedclusters" erőforrástípus számára. A "Kubernetes-fürt – Azure arc bevezetése" szerepkör rendelkezik ezekkel az engedélyekkel, és a felhasználó vagy az egyszerű szolgáltatás szerepkör-hozzárendeléseihez is használható.
+* Az "olvasás" és az "írás" engedély a felhasználóhoz vagy a szolgáltatáshoz, amelyet az erőforrástípus használ, `az login` és `az connectedk8s connect` parancsokkal rendelkezik `Microsoft.Kubernetes/connectedclusters` . A "Kubernetes-fürt – Azure arc bevezetése" szerepkör rendelkezik ezekkel az engedélyekkel, és a felhasználó vagy az egyszerű szolgáltatás szerepkör-hozzárendeléseihez is használható.
 * 3. Helm a fürt egy bővítmény használatával történő előkészítéséhez `connectedk8s` . [Telepítse a Helm 3 legújabb kiadását](https://helm.sh/docs/intro/install) , hogy megfeleljen ennek a követelménynek.
 * Azure CLI-verzió 2.15 + az Azure arc-kompatibilis Kubernetes CLI-bővítményeinek telepítéséhez. [Telepítse az Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) -t vagy frissítsen a legújabb verzióra.
-* Telepítse az Azure arc-kompatibilis Kubernetes CLI-bővítményeket:
+* Az Azure arc engedélyezve Kubernetes CLI-bővítményei:
   
-  * Telepítse a `connectedk8s` bővítményt, amely segít a Kubernetes-fürtök az Azure-hoz való összekapcsolásában:
+  * Telepítse a `connectedk8s` bővítményt a Kubernetes-fürtök Azure-hoz való összekapcsolásának megkönnyítéséhez:
   
   ```azurecli
   az extension add --name connectedk8s
@@ -64,13 +64,13 @@ Az Azure arc-ügynökök a következő protokollok/portok/kimenő URL-címek mű
 * TCP a 443-as porton: `https://:443`
 * TCP a 9418-as porton: `git://:9418`
 
-| Végpont (DNS)                                                                                               | Leírás                                                                                                                 |
+| Végpont (DNS)                                                                                               | Description                                                                                                                 |
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | `https://management.azure.com`                                                                                 | Ahhoz szükséges, hogy az ügynök csatlakozhasson az Azure-hoz, és regisztrálja a fürtöt.                                                        |
 | `https://eastus.dp.kubernetesconfiguration.azure.com`, `https://westeurope.dp.kubernetesconfiguration.azure.com` | Adatsík-végpont az ügynök számára az állapot leküldéséhez és a konfigurációs adatok beolvasásához.                                      |
 | `https://login.microsoftonline.com`                                                                            | Azure Resource Manager tokenek beolvasásához és frissítéséhez szükséges.                                                                                    |
 | `https://mcr.microsoft.com`                                                                            | A tároló lemezképének lekéréséhez szükséges az Azure arc-ügynökökhöz.                                                                  |
-| `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`                                                                            |  A rendszer által hozzárendelt felügyelt azonosító tanúsítványok lekéréséhez szükséges.                                                                  |
+| `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`                                                                            |  A rendszer által hozzárendelt Managed Service Identity (MSI) tanúsítványok lekéréséhez szükséges.                                                                  |
 
 ## <a name="register-the-two-providers-for-azure-arc-enabled-kubernetes"></a>A két szolgáltató regisztrálása az Azure arc-kompatibilis Kubernetes
 
@@ -177,7 +177,9 @@ Name           Location    ResourceGroup
 AzureArcTest1  eastus      AzureArcTest
 ```
 
-Ezt az erőforrást a [Azure Portal](https://portal.azure.com/)is megtekintheti. Nyissa meg a portált a böngészőben, és navigáljon az erőforráscsoporthoz és az Azure arc-kompatibilis Kubernetes-erőforráshoz a parancsban korábban használt erőforrás neve és erőforráscsoport-név bemenete alapján `az connectedk8s connect` .  
+Ezt az erőforrást a [Azure Portal](https://portal.azure.com/)is megtekintheti.
+1. Nyissa meg a portált a böngészőben.
+1. Navigáljon az erőforráscsoporthoz és az Azure arc-kompatibilis Kubernetes-erőforráshoz a parancsban korábban használt erőforrás neve és erőforráscsoport-név bemenete alapján `az connectedk8s connect` .  
 > [!NOTE]
 > A fürt bevezetését követően 5 – 10 percet vesz igénybe, hogy a fürt metaadatai (a fürt verziója, az ügynök verziója, a csomópontok száma stb.) az Azure arc-kompatibilis Kubernetes-erőforrás áttekintés lapján legyenek felszínre Azure Portal.
 
@@ -220,7 +222,7 @@ Ha a fürt egy kimenő proxykiszolgáló mögött található, az Azure CLI és 
 > [!NOTE]
 > * `excludedCIDR`A alatt a `--proxy-skip-range` következő megadása fontos, hogy a fürtön belüli kommunikáció ne legyen megszakítva az ügynökök esetében.
 > * A `--proxy-http` `--proxy-https` és a a `--proxy-skip-range` legtöbb kimenő proxy esetében várhatóan `--proxy-cert` csak akkor szükséges, ha a proxy megbízható tanúsítványait az ügynök hüvelyének megbízható tanúsítványtárolóba kell befecskendezni.
-> * A fenti proxy-specifikációt jelenleg csak az ív-ügynökökre alkalmazza a rendszer, a sourceControlConfiguration használt Flux-hüvelyek esetében nem. Az Azure arc-kompatibilis Kubernetes csapata aktívan dolgozik ezen a szolgáltatáson, és hamarosan elérhető lesz.
+> * A fenti proxy-specifikáció jelenleg csak az Azure arc-ügynökökre érvényes, és nem a alkalmazásban használt adatáramlási hüvelyek esetében `sourceControlConfiguration` . Az Azure arc-kompatibilis Kubernetes csapata aktívan dolgozik a szolgáltatáson.
 
 ## <a name="azure-arc-agents-for-kubernetes"></a>Azure arc-ügynökök a Kubernetes
 

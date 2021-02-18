@@ -1,5 +1,5 @@
 ---
-title: Az Azure Windows rendszerű virtuális gépek nagy CPU-problémáinak elhárítása
+title: Azure-beli windowsos virtuális gépek magas processzorhasználatával kapcsolatos problémák elhárítása
 description: .
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/24/2020
 ms.author: mnanda
-ms.openlocfilehash: ffac5ac4d1a8143590e1d72aaafc8a02d6ab04ca
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 124650f4570608efabba3d8002c14ad06c4782ad
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977255"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571509"
 ---
-# <a name="troubleshoot-high-cpu-issues-for-azure-windows-virtual-machines"></a>Az Azure Windows rendszerű virtuális gépek nagy CPU-problémáinak elhárítása
+# <a name="troubleshoot-high-cpu-issues-for-azure-windows-virtual-machines"></a>Azure-beli windowsos virtuális gépek magas processzorhasználatával kapcsolatos problémák elhárítása
 
 ## <a name="summary"></a>Összefoglalás
 
@@ -108,15 +108,15 @@ Keresse meg a virtuális gép panelen a **problémák diagnosztizálásához és
 
   ![A virtuális gépek teljesítményével kapcsolatos problémák elhárítása](./media/troubleshoot-high-cpu-issues-azure-windows-vm/2-troubleshoot-vm-performance-issues.png)
 
-Ha a **hibakeresés**lehetőséget választja, a PerfInsights telepítési képernyője betöltődik.
+Ha a **hibakeresés** lehetőséget választja, a PerfInsights telepítési képernyője betöltődik.
 
-Ha a **telepítés**lehetőséget választja, a telepítés különböző gyűjteményi lehetőségeket biztosít.
+Ha a **telepítés** lehetőséget választja, a telepítés különböző gyűjteményi lehetőségeket biztosít.
 
   ![Teljesítményelemzés](./media/troubleshoot-high-cpu-issues-azure-windows-vm/3-performance-analysis.png)
 
 A képernyőképen a számozott beállítások a következő megjegyzéseket érintik:
 
-1. A **nagy CPU**beállításnál válassza a **teljesítmény elemzése** vagy a **speciális**lehetőséget.
+1. A **nagy CPU** beállításnál válassza a **teljesítmény elemzése** vagy a **speciális** lehetőséget.
 
 2. Ha itt ad hozzá tüneteket, a rendszer hozzáadja a jelentéshez, amely segítséget nyújt az információk Azure-támogatással való megosztásához.
 
@@ -176,7 +176,7 @@ Nyissa meg az PerfInsights jelentést. Az **eredmények** lap az erőforrás-fel
 
   ![A hatás szintjének erőforrásai](./media/troubleshoot-high-cpu-issues-azure-windows-vm/8-impact-level-resources.png)
 
-Az előző példához hasonlóan a PerfInsights 30 percig futott. Ebben az esetben a Kiemelt folyamat a CPU-t a magasabb oldalon használta. Ha ugyanez a folyamat futott a gyűjtemény ideje alatt, a hatás szintje **magasra**változott.
+Az előző példához hasonlóan a PerfInsights 30 percig futott. Ebben az esetben a Kiemelt folyamat a CPU-t a magasabb oldalon használta. Ha ugyanez a folyamat futott a gyűjtemény ideje alatt, a hatás szintje **magasra** változott.
 
 Ha kibontja az **eredményekkel** kapcsolatos eseményt, több kulcsfontosságú adat jelenik meg. A lap felsorolja a folyamatokat csökkenő sorrendben, **átlagos CPU** -használat alapján, és megjeleníti, hogy a folyamat kapcsolódott-e a rendszerhez, egy Microsoft tulajdonú alkalmazáshoz (SQL, IIS) vagy egy harmadik féltől származó folyamathoz.
 
@@ -204,7 +204,7 @@ A PerfInsights további naplóként gyűjti a perfmon-t a VMSlow és a speciáli
 
 - Távolról is gyűjthető.
 
-- **Feladatokkal**ütemezhető.
+- **Feladatokkal** ütemezhető.
 
 - Hosszabb időtartamra vagy folyamatos módban is összegyűjthetők a szolgáltatással.
 
@@ -225,11 +225,11 @@ A perfmon szolgáltatásban nincsenek elérhető alapértelmezett, felhasználó
 
 A kezdéshez válassza a **számlálók hozzáadása** kategóriát.
 
-1. A **rendelkezésre álló számlálók**területen válassza ki a **% ProcessorTime** számlálót a **Processzor adatai** kategóriában.
+1. A **rendelkezésre álló számlálók** területen válassza ki a **% ProcessorTime** számlálót a **Processzor adatai** kategóriában.
 
-1. Válassza a **_Total**lehetőséget, amely az összes összesített mag statisztikáit tartalmazza.
+1. Válassza a **_Total** lehetőséget, amely az összes összesített mag statisztikáit tartalmazza.
 
-1. Válassza a **Hozzáadás** lehetőséget. Az ablakban a **hozzáadott számlálók**alatt a **% ProcessorTime** látható.
+1. Válassza a **Hozzáadás** lehetőséget. Az ablakban a **hozzáadott számlálók** alatt a **% ProcessorTime** látható.
 
   ![Processzoridő hozzáadása](./media/troubleshoot-high-cpu-issues-azure-windows-vm/11-add-processor-time.png)
 
@@ -237,7 +237,7 @@ A számlálók betöltését követően a gyűjtemény időkeretében megjelenik
 
   ![Teljesítményfigyelő beállításai](./media/troubleshoot-high-cpu-issues-azure-windows-vm/12-performance-monitor-1.png)
 
-Minden számláló **átlagos**, **minimális**és **maximális** értékkel fog rendelkezni. Koncentráljon az **átlagos** és a **maximális** értékekre is, mivel az átlagos érték az adatgyűjtés időtartamától függően változhat. Ha a nagy CPU-aktivitás 10 percig volt látható, míg a teljes gyűjtemény 40 perc volt, az átlagos értékek sokkal alacsonyabbak lesznek.
+Minden számláló **átlagos**, **minimális** és **maximális** értékkel fog rendelkezni. Koncentráljon az **átlagos** és a **maximális** értékekre is, mivel az átlagos érték az adatgyűjtés időtartamától függően változhat. Ha a nagy CPU-aktivitás 10 percig volt látható, míg a teljes gyűjtemény 40 perc volt, az átlagos értékek sokkal alacsonyabbak lesznek.
 
 Az előző trend Graph azt mutatja, hogy a **teljes processzor** 80%-kal közel körülbelül 15 percet vesz igénybe.
 
@@ -257,7 +257,7 @@ Egy tipikus üzemi számítógépen több száz vagy folyamat is futtatható. Ez
 
 A folyamat felgyorsításához használja a **hisztogram** nézetet, és változtassa meg a nézet típusát a **vonalról** a **hisztogramra**, amely egy oszlopdiagram használatát teszi lehetővé. Könnyebben kiválaszthatja azokat a folyamatokat, amelyek nagy CPU-használatot tapasztalnak a gyűjtés ideje alatt.
 
-Mivel a rendszer mindig egy **teljes**sávot jelenít meg, a nagy mennyiségű sávokra koncentrálhat. A többi sávot törölheti a nézet tisztításához. Most váltson vissza a **sor** nézetre.
+Mivel a rendszer mindig egy **teljes** sávot jelenít meg, a nagy mennyiségű sávokra koncentrálhat. A többi sávot törölheti a nézet tisztításához. Most váltson vissza a **sor** nézetre.
 
   ![Teljesítményfigyelő kijelzői](./media/troubleshoot-high-cpu-issues-azure-windows-vm/14-performance-monitor-2.png)
 
@@ -281,7 +281,7 @@ Azure Monitor mérőszámok engedélyezése után a szoftver egy bővítményt t
 
   ![Diagnosztikai Storage-fiók](./media/troubleshoot-high-cpu-issues-azure-windows-vm/17-diagnostics-storage-account.png)
 
-Az **alapszintű** számlálók kategóriái **alapértelmezettként**vannak beállítva. Beállíthat azonban **Egyéni** gyűjteményt is.
+Az **alapszintű** számlálók kategóriái **alapértelmezettként** vannak beállítva. Beállíthat azonban **Egyéni** gyűjteményt is.
 
   ![Teljesítményszámlálók](./media/troubleshoot-high-cpu-issues-azure-windows-vm/18-performance-counters.png)
 
@@ -289,7 +289,7 @@ A beállítások engedélyezése után megtekintheti ezeket a **vendég** száml
 
   ![Metrikák névtere](./media/troubleshoot-high-cpu-issues-azure-windows-vm/19-metrics-namespace.png)
 
-További információ arról, hogyan használható az Azure monitor az Azure-beli virtuális gépek kezeléséhez: [Az Azure Virtual Machines szolgáltatás figyelése Azure monitor](../../azure-monitor/insights/monitor-vm-azure.md)használatával.
+További információ arról, hogyan használható az Azure monitor az Azure-beli virtuális gépek kezeléséhez: [Az Azure Virtual Machines szolgáltatás figyelése Azure monitor](../../azure-monitor/vm/monitor-vm-azure.md)használatával.
 
 ### <a name="reactive-troubleshooting"></a>Újraaktív hibaelhárítás
 
@@ -303,7 +303,7 @@ A PerfInsights még nem rendelkezik **ütemezett futtatási** funkcióval. A per
 
 ### <a name="logman-command"></a>Logman parancs
 
-A **Logman Create Counter** parancs a perfmon-gyűjtemény parancssorból történő futtatására, a **Feladatkezelő**segítségével történő, illetve távoli futtatására szolgál.
+A **Logman Create Counter** parancs a perfmon-gyűjtemény parancssorból történő futtatására, a **Feladatkezelő** segítségével történő, illetve távoli futtatására szolgál.
 
 **Minta** (magában foglalja a távoli gyűjtési módot)
 

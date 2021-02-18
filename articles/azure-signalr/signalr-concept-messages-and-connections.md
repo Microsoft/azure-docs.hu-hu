@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: zhshang
-ms.openlocfilehash: d71462bd30dbd4b377353c792a3c579e02949680
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 9d0e94cf2318db777bb44c15037f73531cd969fa
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151097"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593320"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Üzenetek és kapcsolatok az Azure Signaler szolgáltatásban
 
@@ -62,7 +62,7 @@ A szolgáltatásba küldött üzenet bejövő üzenet. A szolgáltatásból kül
 
 ## <a name="related-resources"></a>Kapcsolódó források (lehet, hogy a cikkek angol nyelvűek)
 
-- [Összesítési típusok a Azure Monitorban](../azure-monitor/platform/metrics-supported.md#microsoftsignalrservicesignalr )
+- [Összesítési típusok a Azure Monitorban](../azure-monitor/essentials/metrics-supported.md#microsoftsignalrservicesignalr )
 - [ASP.NET Core jelző konfigurálása](/aspnet/core/signalr/configuration)
 - [JSON](https://www.json.org/)
 - [MessagePack](/aspnet/core/signalr/messagepackhubprotocol)

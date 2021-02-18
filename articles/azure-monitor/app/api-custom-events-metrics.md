@@ -4,12 +4,12 @@ description: A használat és a problémák diagnosztizálásához helyezzen be 
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 72e79ff90422a6f055d5b883ba208555244687b3
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 881c657b25d04834d83221c738c578b8281752b7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927814"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593751"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni eseményekhez és metrikákhoz
 
@@ -108,7 +108,7 @@ Node.js-projektekben `new applicationInsights.TelemetryClient(instrumentationKey
 
 ## <a name="trackevent"></a>TrackEvent
 
-Application Insights egy *egyéni esemény* egy olyan adatpont, amelyet [Metrikaböngésző](../platform/metrics-charts.md) megadhat összesített számként, valamint a [diagnosztikai keresésben](./diagnostic-search.md) egyéni előfordulásként. (Nem kapcsolódik az MVC-hoz vagy más keretrendszer "eseményeihez".)
+Application Insights egy *egyéni esemény* egy olyan adatpont, amelyet [Metrikaböngésző](../essentials/metrics-charts.md) megadhat összesített számként, valamint a [diagnosztikai keresésben](./diagnostic-search.md) egyéni előfordulásként. (Nem kapcsolódik az MVC-hoz vagy más keretrendszer "eseményeihez".)
 
 A `TrackEvent` különböző események számlálásához helyezzen be hívásokat a kódban. A felhasználók milyen gyakran választanak ki egy adott funkciót, milyen gyakran érnek el konkrét célokat, vagy hogy milyen gyakran használják bizonyos típusú hibákat.
 
@@ -146,7 +146,7 @@ telemetry.trackEvent({name: "WinGame"});
 
 ### <a name="custom-events-in-analytics"></a>Egyéni események az Analyticsben
 
-A telemetria a `customEvents` táblázat [Application Insights naplók lapján](../log-query/log-query-overview.md) vagy a [használati élményben](usage-overview.md)érhető el. Az események származhatnak, `trackEvent(..)` vagy az [Analytics automatikus gyűjtésének beépülő moduljában](javascript-click-analytics-plugin.md)is előfordulhatnak.
+A telemetria a `customEvents` táblázat [Application Insights naplók lapján](../logs/log-query-overview.md) vagy a [használati élményben](usage-overview.md)érhető el. Az események származhatnak, `trackEvent(..)` vagy az [Analytics automatikus gyűjtésének beépülő moduljában](javascript-click-analytics-plugin.md)is előfordulhatnak.
 
  
 
@@ -204,7 +204,7 @@ telemetry.trackMetric({name: "queueLength", value: 42.0});
 
 ### <a name="custom-metrics-in-analytics"></a>Egyéni metrikák az Analyticsben
 
-A telemetria `customMetrics` [Application Insights Analytics](../log-query/log-query-overview.md)táblázatában érhető el. Az egyes sorok az alkalmazásban meghívást jelentenek `trackMetric(..)` .
+A telemetria `customMetrics` [Application Insights Analytics](../logs/log-query-overview.md)táblázatában érhető el. Az egyes sorok az alkalmazásban meghívást jelentenek `trackMetric(..)` .
 
 * `valueSum` – Ez a mérések összege. A Mean értékének megszerzéséhez ossza el a következőt: `valueCount` .
 * `valueCount` – Az ebben a hívásban összesített mérések száma `trackMetric(..)` .
@@ -274,7 +274,7 @@ Az eredményül kapott oldal betöltési időtartama a Metrikaböngésző a kezd
 
 ### <a name="page-telemetry-in-analytics"></a>Az Analytics telemetria lapja
 
-Az [Analytics](../log-query/log-query-overview.md) két táblájában a böngésző műveleteiből származó adatok jelennek meg:
+Az [Analytics](../logs/log-query-overview.md) két táblájában a böngésző műveleteiből származó adatok jelennek meg:
 
 * A `pageViews` tábla az URL-címmel és a lap címével kapcsolatos információkat tartalmaz.
 * A `browserTimings` tábla az ügyfél teljesítményével kapcsolatos információkat tartalmaz, például a bejövő adat feldolgozásához szükséges időt.
@@ -310,7 +310,7 @@ Azonban a kérelem küldésének ajánlott módja a telemetria, ahol a kérelem 
 
 ## <a name="operation-context"></a>Műveleti környezet
 
-A telemetria elemek összekapcsolhatók a műveleti környezettel való társítással. A standard szintű kérelem-követési modul ezt a kivételeket és a HTTP-kérelem feldolgozása közben elküldött egyéb eseményeket is végrehajtja. A [Search](./diagnostic-search.md) és az [Analytics szolgáltatásban](../log-query/log-query-overview.md)a művelet azonosítójának használatával könnyedén megtalálhatja a kérelemhez társított eseményeket.
+A telemetria elemek összekapcsolhatók a műveleti környezettel való társítással. A standard szintű kérelem-követési modul ezt a kivételeket és a HTTP-kérelem feldolgozása közben elküldött egyéb eseményeket is végrehajtja. A [Search](./diagnostic-search.md) és az [Analytics szolgáltatásban](../logs/log-query-overview.md)a művelet azonosítójának használatával könnyedén megtalálhatja a kérelemhez társított eseményeket.
 
 A korrelációval kapcsolatos további részletekért tekintse meg a [telemetria korrelációját Application Insightsban](./correlation.md) .
 
@@ -348,7 +348,7 @@ Az egyéni műveletek nyomon követésével kapcsolatos további információké
 
 ### <a name="requests-in-analytics"></a>Az elemzési kérelmek
 
-[Application Insights elemzésekben](../log-query/log-query-overview.md)a kérelmek megjelennek a `requests` táblázatban.
+[Application Insights elemzésekben](../logs/log-query-overview.md)a kérelmek megjelennek a `requests` táblázatban.
 
 Ha a [mintavételezés](./sampling.md) folyamatban van, a ItemCount tulajdonság 1-nél nagyobb értéket fog megjeleníteni. Például a itemCount = = 10 érték azt jelenti, hogy a trackRequest () 10 hívása a mintavételezési folyamat csak az egyiket továbbítja. A kérelmek helyes számának és az átlagos időtartamnak a kérelmek nevei szerint szegmentált eléréséhez használja a következő kódot:
 
@@ -361,7 +361,7 @@ requests
 
 Kivételek küldése Application Insightsre:
 
-* A probléma gyakoriságának megjelölése, hogy [megszámolja őket](../platform/metrics-charts.md).
+* A probléma gyakoriságának megjelölése, hogy [megszámolja őket](../essentials/metrics-charts.md).
 * Az [egyes előfordulások vizsgálatához](./diagnostic-search.md).
 
 A jelentések tartalmazzák a verem nyomkövetését.
@@ -430,7 +430,7 @@ Az SDK-k sok kivételt kapnak automatikusan, így nem mindig explicit módon kel
 
 ### <a name="exceptions-in-analytics"></a>Kivételek az Analyticsben
 
-[Application Insights elemzésekben](../log-query/log-query-overview.md)a kivételek megjelennek a `exceptions` táblázatban.
+[Application Insights elemzésekben](../logs/log-query-overview.md)a kivételek megjelennek a `exceptions` táblázatban.
 
 Ha a [mintavétel](./sampling.md) folyamatban van, a `itemCount` tulajdonság 1-nél nagyobb értéket jelenít meg. Például a itemCount = = 10 érték azt jelenti, hogy a trackException () 10 hívása a mintavételezési folyamat csak az egyiket továbbítja. A kivételek típusával szegmentált kivételek helyes számának beszerzéséhez használja a következő kódot:
 
@@ -525,7 +525,7 @@ A [Search](./diagnostic-search.md)szolgáltatásban egyszerűen kiszűrheti az a
 
 ### <a name="traces-in-analytics"></a>Nyomkövetés az Analyticsben
 
-[Application Insights elemzésekben](../log-query/log-query-overview.md)a TrackTrace megjelenő hívások megjelennek a `traces` táblázatban.
+[Application Insights elemzésekben](../logs/log-query-overview.md)a TrackTrace megjelenő hívások megjelennek a `traces` táblázatban.
 
 Ha a [mintavételezés](./sampling.md) folyamatban van, a ItemCount tulajdonság 1-nél nagyobb értéket jelenít meg. Például a itemCount = = 10 azt jelenti, hogy a 10 meghívása `trackTrace()` esetén a mintavételi folyamat csak az egyiket továbbítja. A nyomkövetési hívások helyes számának megszerzéséhez használja a következő kódot: `traces | summarize sum(itemCount)` .
 
@@ -607,7 +607,7 @@ A standard függőség-követési modul C# nyelven való kikapcsolásához szerk
 
 ### <a name="dependencies-in-analytics"></a>Az elemzés függőségei
 
-[Application Insights elemzésekben](../log-query/log-query-overview.md)a trackDependency-hívások megjelennek a `dependencies` táblázatban.
+[Application Insights elemzésekben](../logs/log-query-overview.md)a trackDependency-hívások megjelennek a `dependencies` táblázatban.
 
 Ha a [mintavételezés](./sampling.md) folyamatban van, a ItemCount tulajdonság 1-nél nagyobb értéket jelenít meg. Például a itemCount = = 10 érték azt jelenti, hogy a trackDependency () 10 hívása a mintavételezési folyamat csak az egyiket továbbítja. A cél összetevő által szegmentált függőségek helyes számának beszerzéséhez használja a következő kódot:
 
@@ -695,7 +695,7 @@ Ha az alkalmazás a felhasználókat fiókokba csoportosítja, akkor a fiók azo
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-[Metrikaböngésző](../platform/metrics-charts.md)létrehozhat egy olyan diagramot, amely **felhasználói, hitelesített** és **felhasználói fiókokat** számol fel.
+[Metrikaböngésző](../essentials/metrics-charts.md)létrehozhat egy olyan diagramot, amely **felhasználói, hitelesített** és **felhasználói fiókokat** számol fel.
 
 A megadott felhasználóneveket és fiókokat tartalmazó ügyfél-adatpontokat is [megkeresheti](./diagnostic-search.md) .
 
@@ -816,7 +816,7 @@ telemetry.TrackEvent(event);
 
 ### <a name="custom-measurements-and-properties-in-analytics"></a>Egyéni mérések és tulajdonságok az elemzésekben
 
-Az [elemzésben](../log-query/log-query-overview.md)az egyéni metrikák és tulajdonságok az `customMeasurements` `customDimensions` egyes telemetria-rekordok és attribútumaik szerint jelennek meg.
+Az [elemzésben](../logs/log-query-overview.md)az egyéni metrikák és tulajdonságok az `customMeasurements` `customDimensions` egyes telemetria-rekordok és attribútumaik szerint jelennek meg.
 
 Ha például hozzáadta a "Game" nevű tulajdonságot a kérelem telemetria, ez a lekérdezés a "játék" különböző értékeinek előfordulásait számolja, és megjeleníti az egyéni metrika "pontszáma" átlagát:
 

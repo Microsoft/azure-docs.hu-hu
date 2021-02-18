@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c4c9808813de80beea55e083c5bd80667ae2861f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: a1c803ed24542cbc4a2f0aaaee82ac0f57559cb9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033119"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591857"
 ---
 # <a name="communication-services-logs"></a>Kommunikációs szolgáltatások naplói
 
@@ -30,7 +30,7 @@ Az új beállítások körülbelül tíz percet vesznek érvénybe. A naplók a 
 
 :::image type="content" source="./media/diagnostic-settings.png" alt-text="Az ACS diagnosztikai beállításainak beállításai.":::
 
-A diagnosztika konfigurálásával kapcsolatos további információkért tekintse meg az [Azure-erőforrások naplóinak](../../azure-monitor/platform/platform-logs-overview.md)áttekintése című témakört.
+A diagnosztika konfigurálásával kapcsolatos további információkért tekintse meg az [Azure-erőforrások naplóinak](../../azure-monitor/essentials/platform-logs-overview.md)áttekintése című témakört.
 
 ## <a name="resource-log-categories"></a>Erőforrás-naplók kategóriái
 
@@ -45,7 +45,7 @@ A kommunikációs szolgáltatások háromféle típusú naplót biztosít:
 
 | Tulajdonság | Leírás |
 | -------- | ---------------|
-| Timestamp | A napló létrehozásának időbélyegzője (UTC). |
+| Időbélyeg | A napló létrehozásának időbélyegzője (UTC). |
 | Művelet neve | A naplózási rekordhoz társított művelet. |
 | Művelet verziója | A `api-version` művelethez társított, ha a OPERATIONNAME API használatával lett elvégezve. Ha nincs olyan API, amely megfelel a műveletnek, akkor a verzió a művelet azon verzióját jelöli, amely a művelethez kapcsolódó tulajdonságok jövőbeli változásakor következik be. |
 | Kategória | Az esemény naplózási kategóriája. A kategória a részletesség, amelyen engedélyezheti vagy letilthatja a naplókat egy adott erőforráson. Az események tulajdonságok blobjában megjelenő tulajdonságok egy adott napló kategóriáján és erőforrás-típusán belül megegyeznek. |
