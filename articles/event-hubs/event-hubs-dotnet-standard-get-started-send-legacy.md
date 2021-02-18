@@ -1,15 +1,15 @@
 ---
 title: Események küldése és fogadása az Azure Event Hubs .NET (régi) használatával
 description: Ez a cikk egy olyan .NET Core-alkalmazás létrehozását ismerteti, amely az Azure Event Hubs a régi Microsoft. Azure. EventHubs csomag használatával küld/fogad eseményeket.
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8819a95364bf41c6f9837c3db31a9800968d096c
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 7092c3a4c32fe2ad46b71c5a796ac811e4253dbb
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332161"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653091"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>Események küldése vagy fogadása az Azure Event Hubs a .NET Core használatával (Microsoft. Azure. EventHubs)
 Ez a rövid útmutató bemutatja, hogyan lehet eseményeket küldeni és fogadni az Event hub eseményeiről a **Microsoft. Azure. EventHubs** .net Core Library használatával.
@@ -36,7 +36,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre olyan .NET Core Console-a
 
 ### <a name="create-a-console-application"></a>Konzolalkalmazás létrehozása
 
-Indítsa el a Visual Studiót. A **fájl** menüben kattintson az **új**, majd a **projekt**elemre. Hozzon létre egy .NET Core-konzolalkalmazást.
+Indítsa el a Visual Studiót. A **fájl** menüben kattintson az **új**, majd a **projekt** elemre. Hozzon létre egy .NET Core-konzolalkalmazást.
 
 ![Új projekt](./media/event-hubs-dotnet-standard-getstarted-send/netcoresnd.png)
 
@@ -198,7 +198,7 @@ Ez a szakasz bemutatja, hogyan írhat olyan .NET Core Console-alkalmazást, amel
 
 ### <a name="create-a-console-application"></a>Konzolalkalmazás létrehozása
 
-Indítsa el a Visual Studiót. A **fájl** menüben kattintson az **új**, majd a **projekt**elemre. Hozzon létre egy .NET Core-konzolalkalmazást.
+Indítsa el a Visual Studiót. A **fájl** menüben kattintson az **új**, majd a **projekt** elemre. Hozzon létre egy .NET Core-konzolalkalmazást.
 
 ![Új projekt fogadáshoz](./media/event-hubs-dotnet-standard-getstarted-receive-eph/netcorercv.png)
 
@@ -359,7 +359,7 @@ A következő lépéseket végrehajtva adja hozzá a .NET Standard kódtár [**M
 4. Futtassa a programot, és ellenőrizze, hogy nincsenek-e hibák.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Olvassa el a következő cikkeket:
 
 - [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) minták](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac). 

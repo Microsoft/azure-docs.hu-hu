@@ -5,16 +5,16 @@ tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
 ms.topic: how-to
 ms.date: 12/14/2020
-ms.openlocfilehash: 8110f87401da1352309fb55615093d49981c754d
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: d6c68dd341e0794a690b41b73ecc4be954db7359
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504814"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653849"
 ---
 # <a name="manage-an-azure-support-request"></a>Azure-támogatáskérés kezelése
 
-Miután [létrehozta az Azure-támogatási kérést](how-to-create-azure-support-request.md), felügyelheti azt a [Azure Portalban](https://portal.azure.com), amely ebben a cikkben is szerepel. A kéréseket programozott módon is létrehozhatja és kezelheti az [Azure támogatási jegy REST API](/rest/api/support)használatával.
+Miután [létrehozta az Azure-támogatási kérést](how-to-create-azure-support-request.md), felügyelheti azt a [Azure Portalban](https://portal.azure.com), amely ebben a cikkben is szerepel. A kéréseket programozott módon is létrehozhatja és kezelheti az [Azure támogatási jegy REST API](/rest/api/support)vagy az [Azure CLI](/cli/azure/azure-cli-support-request)használatával.
 
 ## <a name="view-support-requests"></a>Támogatási kérelmek megtekintése
 
@@ -127,7 +127,7 @@ Ha le kell zárnia egy támogatási kérelmet, [küldjön egy üzenetet](#send-a
 
 Ha újra meg kell nyitnia egy lezárt támogatási kérelmet, hozzon létre egy [új üzenetet](#send-a-message), amely automatikusan újra megnyitja a kérést.
 
-## <a name="cancel-a-support-plan"></a>Támogatási csomag megszakítása
+## <a name="cancel-a-support-plan"></a>Támogatási terv lemondása
 
 Ha meg kell szakítania egy támogatási csomagot, tekintse meg [a támogatási csomag megszakítása](../../cost-management-billing/manage/cancel-azure-subscription.md#cancel-a-support-plan)című témakört.
 

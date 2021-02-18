@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2020
 ms.author: memildin
-ms.openlocfilehash: 49533947ff01aea07eaacd9d761b6414fb672a1c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 0c21c916d152188031212b47704dfb41d3f64a82
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339475"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596282"
 ---
 # <a name="azure-security-center-data-security"></a>Adatbiztonság Azure Security Center
 
@@ -82,8 +82,8 @@ Az ügyfelek a következő adatfolyamokból érhetik el Security Center kapcsol�
 
 | Adatfolyam                                                                                | Adattípusok                                                                                                                                                                                                          |
 |---------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Azure-tevékenység naplója](../azure-monitor/platform/activity-log.md)                       | Minden biztonsági riasztás, [jóváhagyott Security Center igény](security-center-just-in-time.md) szerinti hozzáférési kérés, valamint az [adaptív alkalmazások](security-center-adaptive-application.md)által létrehozott összes riasztás.|
-| [Azure Monitor-naplók](../azure-monitor/platform/data-platform.md)                      | Minden biztonsági riasztás.                                                                                                                                                                                                |
+| [Azure-tevékenység naplója](../azure-monitor/essentials/activity-log.md)                       | Minden biztonsági riasztás, [jóváhagyott Security Center igény](security-center-just-in-time.md) szerinti hozzáférési kérés, valamint az [adaptív alkalmazások](security-center-adaptive-application.md)által létrehozott összes riasztás.|
+| [Azure Monitor-naplók](../azure-monitor/data-platform.md)                      | Minden biztonsági riasztás.                                                                                                                                                                                                |
 | [Azure Resource Graph](../governance/resource-graph/overview.md)                      | A biztonsági riasztások, a biztonsági javaslatok, a sebezhetőségi felmérés eredményei, a biztonságos pontszám adatai, a megfelelőségi ellenőrzések állapota és egyebek.                                                                       |
 | [Azure Security Center – REST API](/rest/api/securitycenter/) | Biztonsági riasztások, biztonsági javaslatok és egyebek.                                                                                                                                                                |
 |                                                                                       |                                                                                                                                                                                                                     |

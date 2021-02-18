@@ -8,19 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 01/27/2021
+ms.date: 02/16/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 45b52f98f9f3670f2a68c22cfe9e27a86b2a74cc
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 3205e96bca6ce13afdfe06fede1112e6ddb1ab39
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220700"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653917"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>A Text Analytics API újdonságai.
 
 A Text Analytics API frissítése folyamatosan történik. Ha naprakészen szeretne maradni a legutóbbi fejleményekkel, ez a cikk az új kiadásokkal és szolgáltatásokkal kapcsolatos információkat tartalmaz.
+
+## <a name="february-2021"></a>2021. február
+
+* Az S4 díjszabási szintjein keresztüli S0 a 2021. március 8-án megszűnik. Ha már rendelkezik egy meglévő Text Analytics erőforrással a S0 az S4 díjszabási szinten keresztül, akkor a standard (S) [árképzési](how-tos/text-analytics-how-to-call-api.md#change-your-pricing-tier)szint használatára kell frissítenie.
 
 ## <a name="january-2021"></a>2021. január
 

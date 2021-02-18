@@ -3,16 +3,16 @@ title: Prometheus-példány üzembe helyezése az Azure Red Hat OpenShift-fürtb
 description: Hozzon létre egy Prometheus-példányt egy Azure Red Hat OpenShift-fürtben az alkalmazás metrikáinak monitorozásához.
 author: makdaam
 ms.author: b-lejaku
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 06/17/2019
 keywords: Prometheus, ARO, openshift, metrikák, Red Hat
-ms.openlocfilehash: 42ed8c90b35eba57fdc3db1f0ed93d44cf9a5e41
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 974096e515401ab5e292dbad4c9beba7f1611a8a
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996848"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633444"
 ---
 # <a name="deploy-a-standalone-prometheus-instance-in-an-azure-red-hat-openshift-cluster"></a>Önálló Prometheus-példány üzembe helyezése Azure Red Hat OpenShift-fürtben
 
@@ -211,7 +211,7 @@ További részletekért válassza az **állapot**  >  **céljait**.
 > [!NOTE]
 > A Prometheus minden sikeresen lekapart cél esetében felvesz egy adatpontot a felfelé mutató metrikába. Válassza a **Prometheus** lehetőséget a bal felső sarokban **, írja be a kifejezést** kifejezésként, majd válassza a **végrehajtás** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Egyéni Prometheus-rendszerállapot-kialakítást adhat az alkalmazásaihoz. A Prometheus-ügyfél könyvtára, amely leegyszerűsíti a Prometheus-metrikák előkészítését, készen áll a különböző programozási nyelvekre.
 

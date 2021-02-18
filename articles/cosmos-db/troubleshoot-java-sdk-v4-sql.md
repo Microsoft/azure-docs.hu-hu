@@ -9,12 +9,12 @@ ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.custom: devx-track-java
-ms.openlocfilehash: d6b23a831426a3308a0b47946d5a82679e937bbe
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: cba8b97adb40ca2c277268188ff6ad541c7e9676
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683124"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596474"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>A Azure Cosmos DB Java SDK v4 SQL API-fiókokkal való használatakor felmerülő problémák elhárítása
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -40,7 +40,7 @@ Kezdje a következő listával:
 * Ha nem talál megoldást, olvassa el a cikk további részeit. Ezután egy [GitHub-problémát kell megadnia](https://github.com/Azure/azure-sdk-for-java/issues). Ha van lehetőség címkék hozzáadására a GitHub-problémákhoz, vegyen fel egy *Cosmos: v4-Item* címkét.
 
 ### <a name="retry-logic"></a>Újrapróbálkozási logika <a id="retry-logics"></a>
-Cosmos DB SDK bármely i/o-hiba esetén megpróbálja megismételni a sikertelen műveletet, ha az SDK-ban az Újrapróbálkozás megoldható. Ha bármilyen hiba esetén újra próbálkozik, az írási hibák konkrét kezelése/újrapróbálása kötelező. Javasoljuk, hogy a legújabb SDK-t használja, mivel az újrapróbálkozási logikát folyamatosan fejleszti.
+A Cosmos DB SDK bármely I/O-hiba esetén megpróbálja újra végrehajtani a sikertelen műveletet, ha az SDK-ban kivitelezhető az újrapróbálkozás. Ha bármilyen hiba esetén újra próbálkozik, az írási hibák konkrét kezelése/újrapróbálása kötelező. Javasoljuk, hogy a legújabb SDK-t használja, mivel az újrapróbálkozási logikát folyamatosan fejleszti.
 
 1. Az i/o-hibák olvasása és lekérése az SDK-val újra próbálkozik a végfelhasználók nélkül.
 2. Az írások (létrehozás, Upsert, csere, törlés) nem idempotens, ezért az SDK nem mindig vakon próbálkozik a sikertelen írási műveletekkel. Szükség van arra, hogy a felhasználó alkalmazás-logikája kezelni tudja a hibát, és próbálkozzon újra.
@@ -54,7 +54,7 @@ Cosmos DB SDK bármely i/o-hiba esetén megpróbálja megismételni a sikertelen
 A legjobb teljesítmény érdekében:
 * Győződjön meg arról, hogy az alkalmazás ugyanazon a régión fut, mint a Azure Cosmos DB-fiókja. 
 * Keresse meg a CPU-használatot azon a gazdagépen, amelyen az alkalmazás fut. Ha a CPU-használat 50 százalék vagy több, akkor futtassa az alkalmazást egy magasabb konfigurációval rendelkező gazdagépen. Vagy több gépen is terjesztheti a terhelést.
-    * Ha az alkalmazást az Azure Kubernetes szolgáltatáson futtatja, akkor a [Azure monitor segítségével figyelheti a CPU-kihasználtságot](../azure-monitor/insights/container-insights-analyze.md).
+    * Ha az alkalmazást az Azure Kubernetes szolgáltatáson futtatja, akkor a [Azure monitor segítségével figyelheti a CPU-kihasználtságot](../azure-monitor/containers/container-insights-analyze.md).
 
 #### <a name="connection-throttling"></a>Kapcsolatok szabályozása
 A kapcsolatok szabályozása akkor fordulhat elő, ha a gazdagép vagy az [Azure SNAT (Pat) portjának kimerülése]vagy a [Csatlakozás korlátja] .
