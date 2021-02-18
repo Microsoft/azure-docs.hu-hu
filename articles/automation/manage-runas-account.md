@@ -5,12 +5,12 @@ services: automation
 ms.subservice: ''
 ms.date: 01/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: f9e99318c526bb935d0e035fdbf59874249390da
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: f170fc948f136f4f46634e7ae2645ed2eb357afa
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050939"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096458"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>Azure Automation futtató fiók kezelése
 
@@ -64,10 +64,10 @@ A futtató fiók engedélyeinek megadása előtt fel kell jegyeznie a hozzárend
 
 A szerepkör-hozzárendelések hozzáadásának részletes lépéseiért tekintse meg az alábbi cikkeket a használni kívánt módszertől függően.
 
-* [Azure szerepkör-hozzárendelés hozzáadása a Azure Portal](../role-based-access-control/role-assignments-portal.md)
-* [Azure szerepkör-hozzárendelés hozzáadása a Azure PowerShell használatával](../role-based-access-control/role-assignments-powershell.md)
-* [Azure szerepkör-hozzárendelés hozzáadása az Azure CLI használatával](../role-based-access-control/role-assignments-cli.md)
-* [Azure szerepkör-hozzárendelés hozzáadása a REST API használatával](..//role-based-access-control/role-assignments-rest.md)
+* [Azure-szerepkörök kiosztása a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)
+* [Azure-szerepkörök kiosztása Azure PowerShell használatával](../role-based-access-control/role-assignments-powershell.md)
+* [Azure-szerepkörök kiosztása az Azure CLI használatával](../role-based-access-control/role-assignments-cli.md)
+* [Azure-szerepkörök kiosztása a REST API használatával](..//role-based-access-control/role-assignments-rest.md)
 
 Miután hozzárendelte a futtató fiókot a szerepkörhöz, a runbook adja meg az `Set-AzContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"` előfizetési környezet használatára vonatkozó beállítását. További információ: [set-AzContext](/powershell/module/az.accounts/set-azcontext).
 

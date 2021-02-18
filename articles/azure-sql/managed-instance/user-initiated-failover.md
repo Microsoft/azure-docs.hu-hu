@@ -9,15 +9,16 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 01/26/2021
-ms.openlocfilehash: 7588ce055ce0df89a7dca87a75a38c8acccf6d46
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.date: 02/17/2021
+ms.openlocfilehash: ecd97efbf12fb149037a94749bc899169f2c5a92
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806090"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096523"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Felhasználó által, felügyelt SQL-példányon kezdeményezett manuális feladatátvétel
+[!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Ez a cikk azt ismerteti, hogyan lehet manuálisan feladatátvételt elvégezni az SQL felügyelt példányok általános célú (GP) és a üzletileg kritikus (BC) szolgáltatáshoz tartozó elsődleges csomópontok számára, és hogyan lehet manuálisan feladatátvételt elvégezni a csak a BC szolgáltatási szinten található másodlagos írásvédett replika csomóponton.
 
@@ -151,7 +152,7 @@ A feladatátvétel során az ügyféltől való kapcsolat rövid elvesztése, am
 > - BC-példányok esetében nem lehet megadni, hogy melyik olvasható másodlagos replika kezdeményezi a feladatátvételt.
 > - A feladatátvétel nem engedélyezett, amíg az új adatbázishoz tartozó első teljes biztonsági mentést az automatizált biztonsági mentési rendszerek végzik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a felügyelt példány magas rendelkezésre állásáról [Az Azure SQL felügyelt példányain](../database/high-availability-sla.md).
 - Az áttekintést lásd: [Mi az az Azure SQL felügyelt példánya?](sql-managed-instance-paas-overview.md).

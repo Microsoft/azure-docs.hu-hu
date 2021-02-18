@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5e44515c8ca71d115ced65c9123e2b1ae3bdf23a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1ba497094a28e056d5984f1e58e2f15c9d21eae2
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578232"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094445"
 ---
 # <a name="azure-security-baseline-for-azure-resource-manager"></a>Azure Resource Manager Azure biztonsági alapterve
 
@@ -241,7 +241,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Útmutató**: az Azure ad RBAC használatával szabályozhatja az adathozzáférést és az erőforrásokat, máskülönben a szolgáltatásra vonatkozó hozzáférés-vezérlési módszereket is használhatja.
 
-- [Az RBAC konfigurálása az Azure-ban](../../role-based-access-control/role-assignments-portal.md)
+- [Az Azure RBAC konfigurálása](../../role-based-access-control/role-assignments-portal.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 

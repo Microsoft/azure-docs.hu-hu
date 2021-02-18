@@ -14,33 +14,31 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 75df01ff65a0910dab140942b520978cd7728775
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: f75b8055757557eadeb98a45196a116e56c5aa35
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897577"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093439"
 ---
 # <a name="creating-filters-with-cli"></a>Szűrők létrehozása a parancssori felülettel
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Ha az ügyfelek számára továbbít tartalmat (élő vagy igény szerinti közvetítést), az ügyfélnek nagyobb rugalmasságra lehet szüksége, mint amit az alapértelmezett eszköz jegyzékfájljában ismertetünk. A Azure Media Services segítségével meghatározhatja a tartalomhoz tartozó fiókok szűrőit és a hozzájuk tartozó szűrőket. 
+Ha az ügyfelek számára továbbít tartalmat (élő vagy igény szerinti közvetítést), az ügyfélnek nagyobb rugalmasságra lehet szüksége, mint amit az alapértelmezett eszköz jegyzékfájljában ismertetünk. A Azure Media Services segítségével meghatározhatja a tartalomhoz tartozó fiókok szűrőit és a hozzájuk tartozó szűrőket.
 
 A funkció részletes ismertetését és a használatban lévő forgatókönyveket lásd: [dinamikus jegyzékfájlok](filters-dynamic-manifest-overview.md) és [szűrők](filters-concept.md).
 
-Ebből a témakörből megtudhatja, hogyan konfigurálhat egy szűrőt egy igény szerinti videóhoz, és hogyan használhatja a CLI-t a Media Services v3-hoz a [fiókok szűrőinek](/cli/azure/ams/account-filter?view=azure-cli-latest) és az [eszközök szűrőinek](/cli/azure/ams/asset-filter?view=azure-cli-latest)létrehozásához. 
+Ebből a témakörből megtudhatja, hogyan konfigurálhat egy szűrőt egy igény szerinti videóhoz, és hogyan használhatja a CLI-t a Media Services v3-hoz a [fiókok szűrőinek](/cli/azure/ams/account-filter?view=azure-cli-latest) és az [eszközök szűrőinek](/cli/azure/ams/asset-filter?view=azure-cli-latest)létrehozásához.
 
 > [!NOTE]
 > Ügyeljen rá, hogy ellenőrizze a [presentationTimeRange](filters-concept.md#presentationtimerange).
 
-## <a name="prerequisites"></a>Előfeltételek 
+## <a name="prerequisites"></a>Előfeltételek
 
-- [Hozzon létre egy Media Services fiókot](./create-account-howto.md). Ügyeljen rá, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét. 
+- [Hozzon létre egy Media Services fiókot](./create-account-howto.md). Ügyeljen rá, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét.
 
-[!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
-
-## <a name="define-a-filter"></a>Szűrő definiálása 
+## <a name="define-a-filter"></a>Szűrő definiálása
 
 Az alábbi példa a végső jegyzékfájlhoz hozzáadott kiválasztási feltételeket határozza meg. Ez a szűrő minden olyan hangsávot magában foglal, amely EC-3, valamint az 0-1000000-es tartományon belüli bitrátával rendelkező videók.
 
@@ -82,7 +80,7 @@ Az alábbi példa a végső jegyzékfájlhoz hozzáadott kiválasztási feltéte
 
 ## <a name="create-account-filters"></a>Fiókok szűrőinek létrehozása
 
-A következő az [AMS Account-Filter](/cli/azure/ams/account-filter?view=azure-cli-latest) parancs egy olyan fiók szűrőt hoz létre, amely a [korábban definiált](#define-a-filter)szűrési nyomon követési beállításokkal rendelkezik. 
+A következő az [AMS Account-Filter](/cli/azure/ams/account-filter?view=azure-cli-latest) parancs egy olyan fiók szűrőt hoz létre, amely a [korábban definiált](#define-a-filter)szűrési nyomon követési beállításokkal rendelkezik.
 
 A parancs lehetővé teszi, hogy egy opcionális `--tracks` paramétert adjon át, amely a követési beállításokat jelképező JSON-t tartalmazza.  A JSON fájlból való betöltéséhez használja a @ {file} fájlt. Ha helyileg használja az Azure CLI-t, a fájl teljes elérési útját kell megadnia:
 
@@ -130,7 +128,7 @@ Az alábbi táblázat néhány példát mutat be a szűrőket tartalmazó URL-c�
 
 ## <a name="next-step"></a>Következő lépés
 
-[Stream-videók](stream-files-tutorial-with-api.md) 
+[Stream-videók](stream-files-tutorial-with-api.md)
 
 ## <a name="see-also"></a>Lásd még
 

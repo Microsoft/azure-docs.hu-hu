@@ -37,10 +37,8 @@
   items:
     - name: SQL Server migrálása
       items:
-        - name: az Azure SQL Database-re (offline)
+        - name: Azure SQL Database
           href: tutorial-sql-server-to-azure-sql.md
-        - name: az Azure SQL Database-re (online)
-          href: tutorial-sql-server-azure-sql-online.md
         - name: felügyelt Azure SQL-példányra (offline)
           href: tutorial-sql-server-to-managed-instance.md
         - name: felügyelt Azure SQL-példányra (online)

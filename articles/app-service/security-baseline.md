@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d7753de473d90c45fecb20403352a594ef52dafe
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f21c819f82051572e8a3dd01664053ade9196484
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100586304"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095041"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>App Service Azure biztonsági alapterve
 
@@ -347,7 +347,7 @@ A valós idejű webalkalmazási tűzfal naplójának egy üzembe helyezett Azure
 
 - [Felügyelt identitások használata App Service és Azure Functions](overview-managed-identity.md?context=azure%2Factive-directory%2Fmanaged-identities-azure-resources%2Fcontext%2Fmsi-context&amp;tabs=dotnet)
 
-- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)
+- [Azure-szerepkörök kiosztása a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -612,9 +612,9 @@ A Microsoft kezeli a mögöttes platformot, és az összes ügyféladatokat biza
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: szerepköralapú hozzáférés-vezérlés használata az erőforrásokhoz való hozzáférés szabályozásához
 
-**Útmutató**: a Azure Active Directory (Azure ad) szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával szabályozhatja az App Service vezérlési síkon való hozzáférést a Azure Portal.
+**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használata az Azure Active Directory (Azure ad-ban) a Azure Portal app Service vezérlési síkja elérésének vezérléséhez.
 
-- [Az RBAC konfigurálása az Azure-ban](../role-based-access-control/role-assignments-portal.md)
+- [Az Azure RBAC konfigurálása](../role-based-access-control/role-assignments-portal.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 

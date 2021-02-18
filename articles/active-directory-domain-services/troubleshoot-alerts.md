@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
 ms.author: justinha
-ms.openlocfilehash: 80011b2ae2a70ce4c540ac31897cc8be4a6580c3
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 4caf804a274956556d6e9ca396c8f08594b11a87
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618620"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092877"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>Ismert problémák: gyakori riasztások és megoldások a Azure Active Directory Domain Services
 
@@ -162,7 +162,7 @@ Ez a hiba nem állítható helyre. A riasztás feloldásához [törölje a megl�
 
 Néhány automatikusan létrehozott egyszerű szolgáltatás a felügyelt tartomány erőforrásainak kezelésére és létrehozására szolgál. Ha az egyik egyszerű szolgáltatásnév hozzáférési engedélyei módosulnak, a tartomány nem tudja megfelelően kezelni az erőforrásokat. A következő lépések bemutatják, hogyan értelmezheti és engedélyezheti a hozzáférési engedélyeket egy egyszerű szolgáltatásnév számára:
 
-1. További információ [a szerepköralapú hozzáférés-vezérlésről és az alkalmazásokhoz való hozzáférés engedélyezéséről a Azure Portal](../role-based-access-control/role-assignments-portal.md).
+1. További információ [Az Azure szerepköralapú hozzáférés-vezérléséről és az alkalmazásokhoz való hozzáférés engedélyezéséről a Azure Portal](../role-based-access-control/role-assignments-portal.md).
 2. Tekintse át az *ABBA844E-BC0E-44B0-947A-DC74E5D09022* azonosítóval rendelkező szolgáltatásnév hozzáférését, és adja meg a korábbi időpontban megtagadott hozzáférést.
 
 ## <a name="aadds112-not-enough-ip-address-in-the-managed-domain"></a>AADDS112: nincs elegendő IP-cím a felügyelt tartományban
@@ -294,7 +294,7 @@ Ha a felügyelt tartomány ismét engedélyezve van, a felügyelt tartomány ál
 
 A felügyelt tartomány konfigurációjában felmerülő problémákat jelző [Azure AD DS állapotú](check-health.md) riasztások keresése. Ha olyan riasztásokat tud feloldani, amelyek konfigurációs problémát jeleznek, várjon két órát, és térjen vissza, és ellenőrizze, hogy befejeződött-e a szinkronizálás. Ha elkészült, [Nyisson meg egy Azure-támogatási kérést][azure-support] a felügyelt tartomány újbóli engedélyezéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha továbbra is problémákba ütközik, [Nyisson meg egy Azure-támogatási kérést][azure-support] további hibaelhárítási segítségért.
 

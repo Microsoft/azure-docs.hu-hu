@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 01/26/2021
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 23e3adad12a726b03f6efe309dde0ec4a93bcd5b
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 1574149e0587701323cb9ae5ae0c5cfeaccf47c7
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897425"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096421"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Az Azure-beli számlázási információkhoz való hozzáférés kezelése
 
@@ -40,7 +40,7 @@ A fiókadminisztrátor úgy biztosíthat hozzáférést az Azure számlázási a
 
 Ezek a szerepkörök hozzáféréssel rendelkeznek a számlázási adatokhoz az [Azure Portalon](https://portal.azure.com/). Azok a személyek, akikhez hozzá lett rendelve ez a szerepkör, a [Billing API-k](consumption-api-overview.md#usage-details-api) használatával a számlákat és a használati részleteket is lekérhetik programozott módon.
 
-A szerepkörök hozzárendeléséhez lásd: [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
+A szerepkörök hozzárendeléséről [Az Azure-szerepkörök a Azure Portal használatával történő hozzárendelését](../../role-based-access-control/role-assignments-portal.md)ismertető témakörben talál további információt.
 
 **Ha Ön EA-ügyfél, a fióktulajdonos hozzárendelheti a fenti szerepkört a csapata többi felhasználójához. Azonban ahhoz, hogy ezek a felhasználók megtekinthessék a számlázási adatokat, a vállalati rendszergazdának engedélyeznie kell a díjtételek megtekintését a fióktulajdonos számára az Enterprise Portalon.
 
@@ -105,7 +105,7 @@ A Számlázási olvasó funkció előzetes verzióként érhető el, és még ne
 
 ## <a name="next-steps"></a>További lépések
 
-- A más (például tulajdonosi vagy közreműködői) szerepkörrel rendelkező felhasználók nemcsak a számlázási adatokhoz, hanem az Azure-szolgáltatásokhoz is hozzáférhetnek. A szerepkörök kezeléséhez lásd: [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
+- A más (például tulajdonosi vagy közreműködői) szerepkörrel rendelkező felhasználók nemcsak a számlázási adatokhoz, hanem az Azure-szolgáltatásokhoz is hozzáférhetnek. A szerepkörök kezeléséhez tekintse meg [Az Azure-szerepkörök a Azure Portal használatával történő hozzárendelését](../../role-based-access-control/role-assignments-portal.md)ismertető témakört.
 - További információ a szerepkörökről: [Az Azure beépített szerepkörei](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.

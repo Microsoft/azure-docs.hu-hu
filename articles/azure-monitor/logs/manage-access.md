@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 184d5c98b2b434c87e112c569ff4e8ab347344c5
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f16e5363af7de2152a7fa73bb52219d87971a249
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100613978"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091199"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Naplóadatok és munkaterületek elérésének felügyelete az Azure Monitorban
 
@@ -120,7 +120,7 @@ Az alábbi tevékenységek szintén Azure-engedélyeket igényelnek:
 
 ## <a name="manage-access-using-azure-permissions"></a>Hozzáférés kezelése az Azure-engedélyekkel
 
-Ha Azure-engedélyekkel kíván hozzáférést biztosítani a Log Analytics-munkaterülethez, kövesse [Az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepkör-hozzárendelésekkel](../../role-based-access-control/role-assignments-portal.md) című rész lépéseit. Példa egyéni szerepkörökre: [példa egyéni szerepkörökre](#custom-role-examples)
+Ha az Azure-engedélyek használatával szeretne hozzáférést adni a Log Analytics munkaterülethez, kövesse az Azure [-szerepkörök hozzárendelése az Azure-előfizetési erőforrásokhoz való hozzáférés kezeléséhez](../../role-based-access-control/role-assignments-portal.md)című témakör lépéseit. Példa egyéni szerepkörökre: [példa egyéni szerepkörökre](#custom-role-examples)
 
 Az Azure két beépített felhasználói szerepkörrel rendelkezik Log Analytics munkaterületekhez:
 

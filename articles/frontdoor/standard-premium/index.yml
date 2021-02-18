@@ -1,0 +1,127 @@
+### YamlMime:Landing
+title: Azure bejárati ajtó standard/prémium (előzetes verzió) – dokumentáció
+summary: Az Azure Door standard/Premium (előzetes verzió) egy modern, biztonságos alkalmazás-továbbítási hálózati platform, amely méretezhető CDN-, DSA-és borai biztosít a globális webalkalmazásokhoz.
+metadata:
+  title: Azure bejárati ajtó standard/prémium szintű dokumentáció
+  description: Az Azure bejárati ajtó standard/Premium (előzetes verzió) méretezhető és biztonságos belépési pontot biztosít a globális webalkalmazások gyors teljesítéséhez. Ismerje meg rövid útmutatóink, oktatóanyagaink és példáink segítségével a Front Door használatának módját.
+  services: frontdoor
+  ms.service: frontdoor
+  ms.topic: landing-page
+  author: duongau
+  ms.author: duau
+  ms.date: 02/18/2020
+  ms.openlocfilehash: b11cf6b0fe8c0f1cdf711ee3b9ef6c92e5bc71bb
+  ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+  ms.translationtype: MT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 02/18/2021
+  ms.locfileid: "101100971"
+landingContent:
+- title: Ismerje meg az Azure bejárati ajtót (standard/prémium) (előzetes verzió)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az Azure bejárati ajtó standard/Premium (előzetes verzió)?
+      url: overview.md
+- title: Bejárati ajtó profiljának létrehozása
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Bejárati ajtó standard/prémium profiljának létrehozása
+      url: create-front-door-portal.md
+- title: Az Endpoint Manager konfigurálása
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Endpoint Manager
+      url: concept-endpoint-manager.md
+    - text: Útvonal
+      url: concept-route.md
+  - linkListType: how-to-guide
+    links:
+    - text: Az Endpoint Manager konfigurálása
+      url: how-to-configure-endpoint-manager.md
+- title: Egyéni tartományok hozzáadása
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Egyéni tartomány hozzáadása
+      url: how-to-add-custom-domain.md
+- title: A származási csoportok kezelése
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Forrás
+      url: concept-origin.md
+    - text: Állapotminták
+      url: concept-health-probes.md
+  - linkListType: how-to-guide
+    links:
+    - text: Origin csoport konfigurálása
+      url: how-to-create-origin.md
+- title: Szabálykészlet konfigurálása
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Mi az a szabálykészlet?
+      url: concept-rule-set.md
+    - text: Szabálykészlet egyeztetési feltételei
+      url: concept-rule-set-match-conditions.md
+    - text: Szabálykészlet műveletei
+      url: concept-rule-set-actions.md
+  - linkListType: how-to-guide
+    links:
+    - text: Szabálykészlet konfigurálása
+      url: how-to-configure-rule-set.md
+- title: Az alkalmazás biztonságossá tétele
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Private Link
+      url: concept-private-link.md
+    - text: WAF az Azure-előtérben standard/prémium szintű
+      url: ../../web-application-firewall/afds/afds-overview.md
+    - text: DDoS Protection
+      url: concept-ddos.md
+  - linkListType: how-to-guide
+    links:
+    - text: Privát hivatkozás engedélyezése
+      url: how-to-enable-private-link.md
+    - text: WAF házirend konfigurálása
+      url: ../../web-application-firewall/afds/waf-front-door-create-portal.md
+- title: Jelentések, metrikák és naplók
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Jelentések
+      url: how-to-reports.md
+    - text: Monitorozás, mérőszámok és riasztások
+      url: how-to-monitor-metrics.md
+    - text: Naplózás
+      url: how-to-logs.md
+- title: Gyorsítótárazás és optimalizálás
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Gyorsítótárazás
+      url: concept-caching.md
+  - linkListType: how-to-guide
+    links:
+    - text: Gyorsítótár kiürítése
+      url: how-to-cache-purge.md
+    - text: Tömörítés
+      url: how-to-compression.md
+- title: Az Azure Front Door hibaelhárítása
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Gyakori útválasztási problémák
+      url: troubleshoot-route-issues.md
+    - text: Engedélyezett hitelesítésszolgáltatók
+      url: troubleshoot-allowed-certificate-authority.md
+- title: Tudnivalók az Azure Front Doorról
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Front Door?
+      url: ../front-door-overview.md

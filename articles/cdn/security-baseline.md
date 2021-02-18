@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0d98edb820e3a6d27f0a57bfde801f064a905a5b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2625e4a4954dc74fd0037c6563d0a32734c90b01
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100575402"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096266"
 ---
 # <a name="azure-security-baseline-for-content-delivery-network"></a>Content Delivery Network Azure biztonsági alapterve
 
@@ -78,7 +78,7 @@ Emellett a beépített szerepkörök használatával is lefoglalhatja az engedé
 
 - [Mi az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../role-based-access-control/overview.md) 
 
-- [Az RBAC konfigurálása az Azure-ban](../role-based-access-control/role-assignments-portal.md) 
+- [Az Azure RBAC konfigurálása](../role-based-access-control/role-assignments-portal.md) 
 
 - [Az Azure AD identitás- és hozzáférési felülvizsgálatainak használata](../active-directory/governance/access-reviews-overview.md)
 

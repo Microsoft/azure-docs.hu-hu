@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 8c32d06247516611fc79bd6f77b60fec6b73044d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0618e4445629893fbe623df4bc937698bd307c7c
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591803"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096569"
 ---
 # <a name="azure-security-baseline-for-azure-cognitive-search"></a>Azure biztonsági alapkonfiguráció az Azure Cognitive Search
 
@@ -495,7 +495,7 @@ A Microsoft kezeli a mögöttes platformot, és az összes vásárlói tartalmat
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés kezelése az Azure RBAC
 
 **Útmutató**: a szolgáltatás felügyeletéhez használja az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) a kulcsok és a konfiguráció elérésének kezeléséhez. A tartalmi műveletekhez, például az indexeléshez és a lekérdezésekhez, Cognitive Search az identitás-alapú hozzáférés-vezérlési modell helyett kulcsokat használ. Az Azure RBAC segítségével szabályozhatja a kulcsokhoz való hozzáférést.
-- [Az RBAC konfigurálása az Azure-ban](../role-based-access-control/role-assignments-portal.md) 
+- [Az Azure RBAC konfigurálása](../role-based-access-control/role-assignments-portal.md) 
 
  
 - [Szerepkörök használata rendszergazdai hozzáféréshez Cognitive Search](./search-security-rbac.md)

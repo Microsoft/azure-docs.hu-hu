@@ -212,8 +212,10 @@
               href: application-proxy-integrate-with-microsoft-cloud-application-security.md
             - name: Integrálás a Távoli asztallal
               href: application-proxy-integrate-with-remote-desktop-services.md
-            - name: Integráció a SharePointtal
+            - name: Integrálás a SharePointba (Kerberos)
               href: application-proxy-integrate-with-sharepoint-server.md
+            - name: Integrálás a SharePoint (SAML) szolgáltatással
+              href: application-proxy-integrate-with-sharepoint-server-saml.md
             - name: Integrálás a Teamsszel
               href: application-proxy-integrate-with-teams.md
             - name: Integrálás a Tableau-vel

@@ -13,12 +13,12 @@ ms.custom:
 - 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: a460d77a032f36505c8036bc60aa37017f630e55
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 7e72f628bf328a3b93e81c60aa65b8c2495f7f2b
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501141"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095255"
 ---
 # <a name="what-is-azure-iot-hub"></a>Mi az Azure IoT Hub?
 
@@ -90,7 +90,7 @@ Az [IoT Hubhoz](https://azure.microsoft.com/support/legal/sla/iot-hub/) 99,9%-os
 
 Az [Azure IoT eszközoldali SDK](./iot-hub-devguide-sdks.md)-kódtárakkal olyan alkalmazásokat készíthet, amelyek az eszközökön futnak, és az IoT Hubbal kommunikálnak. A támogatott platformok közé tartozik több Linux-disztribúció, Windows és valós idejű operációs rendszer. A támogatott nyelvek közé tartoznak a következők:
 
-* C#
+* C
 * Beágyazott C
 * C#
 * Java
@@ -104,6 +104,8 @@ Az IoT Hub és az eszközoldali SDK-k a következő protokollokat támogatják a
 * AMQP WebSocketen keresztül
 * MQTT
 * MQTT WebSocketen keresztül
+
+A IoT Hub és az eszköz SDK-k támogatják az [Azure IoT Plug and Play](../iot-pnp/overview-iot-plug-and-play.md) az eszközök csatlakoztatására vonatkozó konvenciókat. A IoT Plug and Play-eszközök egy eszköz modell használatával hirdetik meg a képességeiket a Plug and Play-kompatibilis alkalmazások IoT. Az eszköz modellje lehetővé teszi a megoldás-építők számára, hogy manuális konfiguráció nélkül integrálják az intelligens eszközöket a megoldásaikkal.
 
 Ha a megoldása nem tudja használni az eszközkódtárakat, az eszközök natív módon csatlakozhatnak a központhoz az MQTT v3.1.1, HTTPS 1.1 vagy AMQP 1.0 protokollokkal.
 
@@ -127,7 +129,7 @@ A IoT Hub on Azure Stack hub (előzetes verzió) lehetővé teszi hibrid IoT-meg
 
 A nyilvános előzetes verzióban a IoT Hub on Azure Stack hub ingyenes. További információ: [IoT Hub Azure stack hub – áttekintés](/azure-stack/operator/iot-hub-rp-overview).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A végpontok közötti IoT-megoldás kipróbálásához tekintse meg az IoT Hub rövid útmutatóit:
 

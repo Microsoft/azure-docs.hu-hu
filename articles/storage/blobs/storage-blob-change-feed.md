@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 3e4211da59193d0c48398d9f2822fd12cc217d8b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 43aa86504d265927cb94e4333f86bb9cc9d2e2ea
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390572"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095566"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>A hírcsatornák támogatásának módosítása az Azure-ban Blob Storage
 
@@ -268,7 +268,7 @@ Az egyes tulajdonságok leírását lásd: [Azure Event Grid blob Storagehoz tar
 
 - Módosítsa az eseményeket, ahol a `eventType` `Control` belső rendszerrekordok értéke, és nem tükrözi a fiókban lévő objektumok változását. Ezeket a rekordokat nyugodtan figyelmen kívül hagyhatja.
 
-- A `storageDiagnonstics` tulajdonság táskájában lévő értékek csak belső használatra vannak kialakítva, és nem az alkalmazás általi használatra készültek. Az alkalmazásai nem rendelkezhetnek az adott adattal kapcsolatos szerződéses függőséggel. Ezeket a tulajdonságokat nyugodtan figyelmen kívül hagyhatja.
+- A `storageDiagnostics` tulajdonság táskájában lévő értékek csak belső használatra vannak kialakítva, és nem az alkalmazás általi használatra készültek. Az alkalmazásai nem rendelkezhetnek az adott adattal kapcsolatos szerződéses függőséggel. Ezeket a tulajdonságokat nyugodtan figyelmen kívül hagyhatja.
 
 - A szegmens által jelzett idő 15 perces határokkal van **megközelítve** . Annak érdekében, hogy a megadott időn belül az összes rekord felhasználását meg lehessen adni, az előző és a következő óránkénti szegmenst kell használni.
 

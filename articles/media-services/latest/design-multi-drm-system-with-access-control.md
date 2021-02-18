@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: e0104dd2761f74fbd84486aebbf8c3c4e128eb08
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: bb43396260e1b914f9f5b9e9ae489e87042a3154
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954901"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092431"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Hozzáférés-vezérléssel ellátott Multi-DRM-rendszerek tervezése
 
@@ -66,8 +66,8 @@ A kiválasztás elvégzéséhez tartsa szem előtt a következőket:
 * A Widevine natív módon implementálva van minden Android-eszközön, a Chrome-ban és más eszközökön. A Widevine a Firefox és az Opera böngészőkben is támogatott a DASH-en keresztül.
 * A FairPlay iOS-, macOS-és tvOS-eszközökön érhető el.
 
-
 ## <a name="a-reference-design"></a>Hivatkozási terv
+
 Ez a szakasz egy olyan hivatkozási kialakítást mutat be, amely a megvalósításához használt technológiákkal kapcsolatos.
 
 A DRM-alrendszer a következő összetevőket tartalmazza:

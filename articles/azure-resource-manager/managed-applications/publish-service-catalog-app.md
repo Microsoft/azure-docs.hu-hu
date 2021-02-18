@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 04/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: 342fa722d704933f22cec00a46d11ccc38fc6e4d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b255cafb9040f87c902fe6c094c3e0db3d461e4b
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91650646"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093651"
 ---
 # <a name="quickstart-create-and-publish-a-managed-application-definition"></a>Rövid útmutató: Felügyelt alkalmazás definíciójának létrehozása és közzététele
 
@@ -137,7 +137,7 @@ További információ: Ismerkedés [a CreateUiDefinition szolgáltatással](crea
 
 ## <a name="package-the-files"></a>A fájlok becsomagolása
 
-Adja hozzá a két fájlt egy _app.zip_nevű _. zip_ -fájlhoz. A két fájlnak a _. zip_ fájl legfelső szintjén kell lennie. Ha egy mappába helyezi őket, hibaüzenetet fog kapni a felügyelt alkalmazás definíciójának létrehozásakor, amely szerint nem találhatók a szükséges fájlok.
+Adja hozzá a két fájlt egy _app.zip_ nevű _. zip_ -fájlhoz. A két fájlnak a _. zip_ fájl legfelső szintjén kell lennie. Ha egy mappába helyezi őket, hibaüzenetet fog kapni a felügyelt alkalmazás definíciójának létrehozásakor, amely szerint nem találhatók a szükséges fájlok.
 
 Töltse fel a csomagot egy elérhető helyre, ahonnan mások használhatják. Meg kell adnia egy egyedi nevet a Storage-fiókhoz.
 
@@ -314,8 +314,8 @@ Mielőtt a felügyelt alkalmazás definíciója üzembe helyezhető a Storage-fi
 1. Az [Azure Portalon](https://portal.azure.com) lépjen a tárfiókra.
 1. Válassza a **hozzáférés-vezérlés (iam)** lehetőséget a Storage-fiók hozzáférés-vezérlési beállításainak megjelenítéséhez. Válassza ki a **szerepkör-hozzárendelések** lapot a szerepkör-hozzárendelések listájának megtekintéséhez.
 1. A **szerepkör-hozzárendelés hozzáadása** ablakban válassza ki a **közreműködő** szerepkört.
-1. A **hozzáférés kiosztása** mezőben válassza az **Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév**elemet.
-1. A **kiválasztás**területen keresse meg a **készülék erőforrás-szolgáltatói** szerepkörét, és válassza ki.
+1. A **hozzáférés kiosztása** mezőben válassza az **Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév** elemet.
+1. A **kiválasztás** területen keresse meg a **készülék erőforrás-szolgáltatói** szerepkörét, és válassza ki.
 1. Mentse a szerepkör-hozzárendelést.
 
 ### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>A felügyelt alkalmazás definíciójának üzembe helyezése ARM-sablonnal
@@ -401,9 +401,9 @@ Megtekintheti, hogy az alkalmazás-definíciós fájlok a megadott Storage-fiók
 
 ## <a name="make-sure-users-can-see-your-definition"></a>Győződjön meg arról, hogy a definíció a felhasználók számára látható
 
-Ön hozzáfér a felügyelt alkalmazás definíciójához, azonban gondoskodnia kell róla, hogy a vállalat más felhasználói is hozzáférjenek. Engedélyezzen számukra legalább Olvasó szerepkört a definícióhoz. Előfordulhat, hogy ezt a hozzáférési szintet már megörökölték az előfizetéstől vagy az erőforráscsoporttól. Ha szeretné megtekinteni, hogy ki férhet hozzá a definícióhoz, és hogyan adhat hozzá felhasználókat vagy csoportokat, tekintse meg [Az Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md)
+Ön hozzáfér a felügyelt alkalmazás definíciójához, azonban gondoskodnia kell róla, hogy a vállalat más felhasználói is hozzáférjenek. Engedélyezzen számukra legalább Olvasó szerepkört a definícióhoz. Előfordulhat, hogy ezt a hozzáférési szintet már megörökölték az előfizetéstől vagy az erőforráscsoporttól. Ha szeretné megnézni, hogy ki férhet hozzá a definícióhoz, és hogyan adhat hozzá felhasználókat vagy csoportokat, tekintse meg [Az Azure-szerepkörök Azure Portal használatával történő hozzárendelését](../../role-based-access-control/role-assignments-portal.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Sikeresen közzétette a felügyelt alkalmazás definícióját. Most megismerheti, hogyan helyezheti üzembe a definíció egyik példányát.
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: 23be8e667d435c2d91d32ebeac30b1e96b45a77e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: a84627b2b426385d21ad72b85780db86e7dd5ee3
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790291"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096081"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Egy Azure-kulcstartó áthelyezése egy másik előfizetésbe
 
@@ -106,9 +106,9 @@ A házirendek hozzárendelésével kapcsolatban lásd:
 - [Hozzáférési szabályzat kiosztása a PowerShell használatával](assign-access-policy-powershell.md)
 
 A szerepkör-hozzárendelések hozzáadásával kapcsolatban lásd:
-- [Szerepkör-hozzárendelés hozzáadása a portál használatával](../../role-based-access-control/role-assignments-portal.md)
-- [Szerepkör-hozzárendelés hozzáadása az Azure CLI-vel](../../role-based-access-control/role-assignments-cli.md)
-- [Szerepkör-hozzárendelés hozzáadása a PowerShell használatával](../../role-based-access-control/role-assignments-powershell.md)
+- [Azure-szerepkörök kiosztása a Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md)
+- [Azure-szerepkörök kiosztása az Azure CLI-vel](../../role-based-access-control/role-assignments-cli.md)
+- [Azure-szerepkörök kiosztása a PowerShell használatával](../../role-based-access-control/role-assignments-powershell.md)
 
 
 ### <a name="update-managed-identities"></a>Felügyelt identitások frissítése
@@ -120,7 +120,7 @@ Ha felügyelt identitást használ, az identitást is frissítenie kell, mert a 
 * [MSI frissítése](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)
 * [Előfizetés átszállítása új könyvtárba](../../role-based-access-control/transfer-subscription.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [kulcsokról, a titkokról és a tanúsítványokról](about-keys-secrets-certificates.md)
 - Elméleti információk, beleértve a Key Vault naplók értelmezését: [Key Vault naplózás](logging.md)

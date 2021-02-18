@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, automl
-ms.openlocfilehash: c95a75ef48aa9e3db070c6c237f913fabbe893fa
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2a07b2fc70a21dd192f74eb5260f3444e09cdca0
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388209"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092917"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Az automatizált Machine learning-kísérletek eredményeinek kiértékelése
 
@@ -192,7 +192,7 @@ explained_variance|Az elmagyarázott variancia azt méri, hogy a modell milyen m
 mean_absolute_error|Abszolút érték: a cél és az előrejelzés közötti különbség abszolút értéke a várt érték.<br><br> **Cél:** Közelebb 0 annál jobb <br> **Tartomány:** [0, inf) <br><br> Típusú <br>`mean_absolute_error` <br>  `normalized_mean_absolute_error`a mean_absolute_error az adattartományon belül vannak elosztva. | [Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|
 mean_absolute_percentage_error|Átlagosan abszolút százalékos hiba (MAPE) az előre jelzett érték és a tényleges érték közötti átlagos különbség mértéke.<br><br> **Cél:** Közelebb 0 annál jobb <br> **Tartomány:** [0, inf) ||
 median_absolute_error|A medián abszolút hiba a cél és az előrejelzés közötti összes abszolút különbség középértéke. Ez a veszteség robusztus a kiugró értékeknél.<br><br> **Cél:** Közelebb 0 annál jobb <br> **Tartomány:** [0, inf)<br><br>Típusú <br> `median_absolute_error`<br> `normalized_median_absolute_error`: a median_absolute_error az adattartományon belül vannak elosztva. |[Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|
-r2_score|Az R ^ 2 a meghatározási együttható vagy a négyzetes hibák százalékos csökkenése egy olyan alapmodellhez képest, amely a középértéket adja eredményül. <br> <br> **Cél:** Közelebb 1 annál jobb <br> **Tartomány:** [-1, 1] <br><br> Megjegyzés: az R ^ 2 gyakran a következő tartományhoz tartozik (-inf, 1], de az automatikus ML-klipek negatív értékeket tartalmaznak a nagyon rossz modellektől a-1 értékig.|[Számítás](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|
+r2_score|Az R<sup>2</sup> (a meghatározási együttható) a megfigyelt adat teljes variancia viszonyított arányos csökkenését méri. <br> <br> **Cél:** Közelebb 1 annál jobb <br> **Tartomány:** [-1, 1]<br><br>Megjegyzés: az R<sup>2</sup> gyakran a (-inf, 1] tartománnyal rendelkezik. Az MSE nagyobb lehet, mint a megfigyelt variancia, ezért az R<sup>2</sup> az adatoktól és a modell-előrejelzéstől függően tetszőlegesen nagy negatív értékeket tartalmazhat. Az automatikus ML-klipek R<sup>2</sup> pontszámokat jelentettek a-1 értéknél, így az r<sup>2</sup> esetében az-1 érték az-1 értéket jelenti, hogy az igaz r<sup>2</sup> pontszám kisebb, mint-1. A negatív R<sup>2</sup> pontszám értelmezése során vegye figyelembe a többi mérőszám értékét és az adatok tulajdonságait.|[Számítás](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|
 root_mean_squared_error |A legfelső szintű meaned error (GYÖKÁTLAGOS) a cél és az előrejelzés között a várt négyzetes különbség négyzetének gyökere. Elfogulatlan becslés esetén a GYÖKÁTLAGOS egyenlő a szórással.<br> <br> **Cél:** Közelebb 0 annál jobb <br> **Tartomány:** [0, inf)<br><br>Típusú<br> `root_mean_squared_error` <br> `normalized_root_mean_squared_error`: a root_mean_squared_error az adattartományon belül vannak elosztva. |[Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|
 root_mean_squared_log_error|A legfelső szintű négyzetes naplózási hiba a várt szögletes logaritmikus hiba négyzetének gyökere.<br><br>**Cél:** Közelebb 0 annál jobb <br> **Tartomány:** [0, inf) <br> <br>Típusú <br>`root_mean_squared_log_error` <br> `normalized_root_mean_squared_log_error`: a root_mean_squared_log_error az adattartományon belül vannak elosztva.  |[Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|
 spearman_correlation| A lándzsás korreláció a két adathalmaz közötti kapcsolat monotonicity nem számszerű mérőszáma. A Pearson korrelációtól eltérően a lándzsás korreláció nem feltételezi, hogy mindkét adathalmazt általában kiosztják. A többi korrelációs tényezőhöz hasonlóan a lándzsás-1 és 1 közötti változó a 0 értéket jelenti, amely nem jelent korrelációt. Az-1 vagy az 1 korrelációk pontos monoton kapcsolatot jelentenek. <br><br> A spearer egy rangsorok közötti korrelációs metrika, amely azt jelenti, hogy az előre jelzett vagy tényleges értékek módosítása nem változtatja meg a lándzsás eredményt, ha nem változtatják meg az előre jelzett vagy a tényleges értékek rangsorolási sorrendjét.<br> <br> **Cél:** Közelebb 1 annál jobb <br> **Tartomány:** [-1, 1]|[Számítás](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|

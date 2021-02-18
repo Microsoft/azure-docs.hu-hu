@@ -3,12 +3,12 @@ title: Üzenetkezelés – várólisták, témakörök és előfizetések Azure 
 description: Ez a cikk áttekintést nyújt Azure Service Bus üzenetkezelési entitásokról (Üzenetsor, témakörök és előfizetések).
 ms.topic: conceptual
 ms.date: 02/16/2021
-ms.openlocfilehash: f647164ba18cb83e35b5bd174f09e07a4a9f9aa7
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: b8fb68509ad920fc6911290377f49b89ec610b58
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652819"
+ms.locfileid: "101096334"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus queues, topics, and subscriptions (Service Bus-üzenetsorok, -témakörök és -előfizetések)
 Azure Service Bus támogatja a felhőalapú, Message-orientált middleware-technológiákat, beleértve a megbízható üzenetsor-kezelési és tartós közzétételi/előfizetési üzeneteket. Ezek a felügyelt üzenetkezelési képességek olyan leválasztott üzenetkezelési funkciók, amelyek támogatják a közzététel-előfizetést, az időbeli leválasztást és a terheléselosztási forgatókönyveket a Service Bus üzenetkezelési számítási feladattal. A leválasztott kommunikáció számos előnnyel jár. Például az ügyfelek és a kiszolgálók szükség szerint kapcsolódhatnak, és aszinkron módon végezhetik el a műveleteiket.
@@ -36,6 +36,9 @@ Két különböző módot is megadhat, amelyekben Service Bus üzeneteket fogad.
         Ha az alkalmazás valamilyen okból nem tudja feldolgozni az üzenetet, kérheti a Service Bus szolgáltatást, hogy **hagyjon** le az üzenetet. Service Bus **feloldja az üzenet zárolását** , és lehetővé teszi, hogy az újbóli fogadása akár ugyanazon felhasználó, akár egy másik versenytárs fogyasztó számára is megtörténjen. Másodszor a zároláshoz **időtúllépés** van társítva. Ha az alkalmazás nem tudja feldolgozni az üzenetet a zárolási időtúllépés lejárta előtt, Service Bus feloldja az üzenet zárolását, és lehetővé teszi, hogy ismét elérhető legyen.
 
         Ha az alkalmazás összeomlik az üzenet feldolgozása után, de mielőtt a Service Bus szolgáltatásra kéri az üzenet befejezését, Service Bus az újraindításkor visszaadja az üzenetet az alkalmazásnak. Ezt a folyamatot gyakran **legalább egyszeri** feldolgozásnak nevezik. Azaz minden üzenet feldolgozása legalább egyszer megtörténik. Bizonyos helyzetekben azonban előfordulhat, hogy ugyanazt az üzenetet újra lehet küldeni. Ha a forgatókönyv nem tudja elviselni az ismétlődő feldolgozást, adjon hozzá további logikát az alkalmazásban az ismétlődések észleléséhez. További információ: [duplikált észlelés](duplicate-detection.md). Ezt a szolgáltatást **pontosan egyszer** kell feldolgozni.
+
+        > [!NOTE]
+        > A két móddal kapcsolatos további információkért lásd: [fogadási műveletek rendezése](message-transfers-locks-settlement.md#settling-receive-operations).
 
 ## <a name="topics-and-subscriptions"></a>Témakörök és előfizetések
 A várólista lehetővé teszi az üzenetek egyetlen fogyasztó általi feldolgozását. A várólistákkal ellentétben a témakörök és az előfizetések egy-a-többhöz típusú kommunikációt biztosítanak egy **közzétételi és** előfizetési mintában. Hasznos nagy számú címzett méretezésére. Minden közzétett üzenet elérhetővé válik minden, a témakörben regisztrált előfizetés számára. A közzétevő üzenetet küld egy témakörnek, és egy vagy több előfizető megkapja az üzenet másolatát az ezen előfizetéseken beállított szűrési szabályoktól függően. Az előfizetések további szűrőket is használhatnak a fogadni kívánt üzenetek korlátozására. A közzétevők üzeneteket küldenek egy témakörbe ugyanúgy, ahogy üzeneteket küldenek egy várólistába. A felhasználók azonban nem kapnak üzeneteket közvetlenül a témakörből. Ehelyett a felhasználók üzeneteket kapnak a témakör előfizetései között. A témakör-előfizetés egy olyan virtuális várólistára hasonlít, amely megkapja a témakörbe küldött üzenetek másolatait. A felhasználók azonos módon fogadnak üzeneteket az előfizetéstől az üzenetek várólistából való fogadásával.
