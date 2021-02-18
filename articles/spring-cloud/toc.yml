@@ -59,7 +59,7 @@
   items:
     - name: Fejlesztés
       items:
-        - name: Java Spring-alkalmazás előkészítése üzembe helyezéshez
+        - name: Alkalmazás előkészítése üzembe helyezésre
           href: spring-cloud-tutorial-prepare-app-deployment.md
         - name: Config Server beállítása
           href: spring-cloud-tutorial-config-server.md

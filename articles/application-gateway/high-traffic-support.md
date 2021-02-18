@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 03/24/2020
 ms.author: caya
-ms.openlocfilehash: a5f7569fc46d4678ca0c12299e33caa3c78df849
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d8940d791920daca6ef0af186a4bb5e17009637b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182920"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586118"
 ---
 # <a name="application-gateway-high-traffic-support"></a>Nagy mennyiségű forgalom támogatása az Application Gatewayben
 
@@ -23,7 +23,7 @@ A webalkalmazások forgalmát méretezhető és biztonságos módon kezelheti a 
 
 Fontos, hogy a Application Gateway az adatforgalomnak és egy kis puffernek megfelelően méretezze, hogy előkészítse a forgalom felskálázását vagy a tüskéket, és minimalizálja a QoS-ben esetlegesen felmerülő hatásokat. A következő javaslatok segítséget nyújtanak a WAF-vel való Application Gateway beállításában a további forgalom kezeléséhez.
 
-Tekintse meg a [metrikák dokumentációját](./application-gateway-metrics.md) a Application Gateway által kínált metrikák teljes listájának megtekintéséhez. A metrikákkal kapcsolatos riasztások beállításával kapcsolatban lásd: [mérőszámok megjelenítése](./application-gateway-metrics.md#metrics-visualization) a Azure Portal és az [Azure monitor dokumentációjában](../azure-monitor/platform/alerts-metric.md) .
+Tekintse meg a [metrikák dokumentációját](./application-gateway-metrics.md) a Application Gateway által kínált metrikák teljes listájának megtekintéséhez. A metrikákkal kapcsolatos riasztások beállításával kapcsolatban lásd: [mérőszámok megjelenítése](./application-gateway-metrics.md#metrics-visualization) a Azure Portal és az [Azure monitor dokumentációjában](../azure-monitor/alerts/alerts-metric.md) .
 
 ## <a name="scaling-for-application-gateway-v1-sku-standardwaf-sku"></a>Méretezés a Application Gateway v1 SKU-hoz (standard/WAF SKU)
 
@@ -35,7 +35,7 @@ Ha v1 SKU-átjárót használ, beállíthatja, hogy a Application Gateway legfel
 ### <a name="use-the-v2-sku-over-v1-for-its-autoscaling-capabilities-and-performance-benefits"></a>Használja a v2 SKU-t a v1 protokollon keresztül az automatikus skálázási képességek és a teljesítmény előnyeihez
 A v2 SKU automatikus skálázást biztosít annak biztosításához, hogy a Application Gateway képes legyen a forgalom növekedésére. Emellett további jelentős teljesítménybeli előnyöket is kínál, például az 5x-ös jobb TLS-kiszervezési teljesítményt, a gyorsabb üzembe helyezést és a frissítés időpontját, a zónák redundanciát és egyebeket a V1-hez képest. További információkért lásd a [v2 dokumentációt](./application-gateway-autoscaling-zone-redundant.md) , és tekintse meg a v1 – v2 [áttelepítési dokumentációt](./migrate-v1-v2.md) , amelyből megtudhatja, hogyan telepítheti át meglévő v1 SKU-átjáróit a v2 SKU-ra. 
 
-## <a name="autoscaling-for-application-gateway-v2-sku-standard_v2waf_v2-sku"></a>Automatikus skálázás Application Gateway v2 SKU-hoz (Standard_v2/WAF_v2 SKU)
+## <a name="autoscaling-for-application-gateway-v2-sku-standard_v2waf_v2-sku"></a>Automatikus skálázás az Application Gateway v2 termékváltozata (Standard_v2/WAF_v2 SKU) esetében
 
 ### <a name="set-maximum-instance-count-to-the-maximum-possible-125"></a>A példányok maximális számának beállítása a lehető legnagyobb értékre (125)
  
@@ -65,7 +65,7 @@ Az elmúlt egy hónapban keresse meg a számítási egység metrikáját. A szá
 
 ## <a name="monitoring-and-alerting"></a>Figyelés és riasztás
 
-Ha értesítést szeretne kapni a forgalomról vagy a kihasználtsági rendellenességekről, beállíthat riasztásokat bizonyos mérőszámokra vonatkozóan. A Application Gateway által kínált mérőszámok teljes listáját a [metrikák dokumentációjában](./application-gateway-metrics.md) találja. A metrikákkal kapcsolatos riasztások beállításával kapcsolatban lásd: [mérőszámok megjelenítése](./application-gateway-metrics.md#metrics-visualization) a Azure Portal és az [Azure monitor dokumentációjában](../azure-monitor/platform/alerts-metric.md) .
+Ha értesítést szeretne kapni a forgalomról vagy a kihasználtsági rendellenességekről, beállíthat riasztásokat bizonyos mérőszámokra vonatkozóan. A Application Gateway által kínált mérőszámok teljes listáját a [metrikák dokumentációjában](./application-gateway-metrics.md) találja. A metrikákkal kapcsolatos riasztások beállításával kapcsolatban lásd: [mérőszámok megjelenítése](./application-gateway-metrics.md#metrics-visualization) a Azure Portal és az [Azure monitor dokumentációjában](../azure-monitor/alerts/alerts-metric.md) .
 
 ## <a name="alerts-for-application-gateway-v1-sku-standardwaf"></a>Riasztások Application Gateway v1 SKU-hoz (standard/WAF)
 

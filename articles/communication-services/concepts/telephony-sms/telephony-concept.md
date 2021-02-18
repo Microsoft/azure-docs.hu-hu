@@ -8,16 +8,17 @@ ms.author: bobazile
 ms.date: 02/09/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5f7c2b0168c914c836aca7b551a9c22d4718c7b6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 06029590a2fbca66cd3a672af3f93d6a842ba0b2
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100422453"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651024"
 ---
 # <a name="telephony-concepts"></a>Telefonos fogalmak
 
 [!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 Az Azure kommunikációs szolgáltatások az ügyfél-kódtárak használatával telefonos és PSTN-alkalmazásokat adhatnak hozzá az alkalmazásaihoz. Ez az oldal a legfontosabb telefonos fogalmakat és képességeket foglalja össze. Tekintse meg a [hívó könyvtárat](../../quickstarts/voice-video-calling/calling-client-samples.md) , ahol további információkat tudhat meg az ügyféloldali kódtár nyelveiről és képességeiről.
 

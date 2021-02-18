@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 06/21/2019
-ms.openlocfilehash: e4a6802829d230cebc460df1409b7655534a5b8e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 322ef3b8ca30396bd4772850ff651f7545a21257
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782994"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580747"
 ---
 # <a name="restore-your-azure-sql-database-or-failover-to-a-secondary"></a>Azure SQL Database vagy feladatátvétel visszaállítása másodlagosra
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -62,7 +62,7 @@ A helyreállítási művelet hatással van az alkalmazásra. Ehhez az SQL-kapcso
 
 Az alkalmazási toleranciára és az esetleges üzleti felelősségre függően a következő helyreállítási lehetőségek közül választhat.
 
-Használja a helyreállítható [adatbázis beolvasása](/previous-versions/azure/reference/dn800985(v=azure.100)) ( *LastAvailableBackupDate* ) lehetőséget a legújabb földrajzi replikálási visszaállítási pont lekéréséhez.
+Használja a helyreállítható [adatbázis beolvasása](/previous-versions/azure/reference/dn800985(v=azure.100)) (*LastAvailableBackupDate*) lehetőséget a legújabb földrajzi replikálási visszaállítási pont lekéréséhez.
 
 ## <a name="wait-for-service-recovery"></a>Várakozás a szolgáltatás helyreállítására
 
@@ -109,7 +109,7 @@ Meg kell győződnie arról, hogy az alkalmazás által használt összes bejele
 
 Győződjön meg arról, hogy a meglévő riasztási szabály beállításainak frissítése a helyreállított adatbázisra és a másik kiszolgálóra való leképezéshez szükséges.
 
-Az adatbázis-riasztási szabályokról további információt a [Riasztási értesítések fogadása](../../azure-monitor/platform/alerts-overview.md) és a [Service Health nyomon követése](../../service-health/service-notifications.md)című témakörben talál.
+Az adatbázis-riasztási szabályokról további információt a [Riasztási értesítések fogadása](../../azure-monitor/alerts/alerts-overview.md) és a [Service Health nyomon követése](../../service-health/service-notifications.md)című témakörben talál.
 
 ### <a name="enable-auditing"></a>Naplózás engedélyezése
 

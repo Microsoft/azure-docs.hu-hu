@@ -3,12 +3,12 @@ title: Diagnosztikai naplók Azure Service Bus | Microsoft Docs
 description: Ez a cikk a Azure Service Bus számára elérhető összes operatív és diagnosztikai napló áttekintését tartalmazza.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: f227f5a988ccd51425b4f43e87b4ed4d9af74e1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2672d61285025eadb8f742ca2518297107595ce
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88064434"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585263"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>Diagnosztikai naplók engedélyezése a Service Bushoz
 
@@ -33,7 +33,7 @@ Az operatív napló JSON-karakterláncai közé tartoznak az alábbi táblázatb
 | SubscriptionId | Előfizetés azonosítója |
 | EventTimeString | Működési idő |
 | EventProperties | Művelet tulajdonságai |
-| status | Művelet állapota |
+| Állapot | Művelet állapota |
 | Hívó | A művelet hívója (a Azure Portal vagy a felügyeleti ügyfél) |
 | Kategória | OperationalLogs |
 
@@ -76,11 +76,11 @@ Az üzemeltetési naplók a következő kezelési műveleteket rögzítik:
 
 Az operatív naplók alapértelmezés szerint le vannak tiltva. A diagnosztikai naplók engedélyezéséhez tegye a következőket:
 
-1. A [Azure Portal](https://portal.azure.com)nyissa meg a Azure Service Bus névteret, majd a **figyelés**területen válassza a  **diagnosztikai beállítások**elemet.
+1. A [Azure Portal](https://portal.azure.com)nyissa meg a Azure Service Bus névteret, majd a **figyelés** területen válassza a  **diagnosztikai beállítások** elemet.
 
    ![A "diagnosztikai beállítások" hivatkozás](./media/service-bus-diagnostic-logs/image1.png)
 
-1. A **diagnosztika beállításai** ablaktáblán válassza a **diagnosztikai beállítás hozzáadása**elemet.  
+1. A **diagnosztika beállításai** ablaktáblán válassza a **diagnosztikai beállítás hozzáadása** elemet.  
 
    ![A "diagnosztikai beállítás hozzáadása" hivatkozás](./media/service-bus-diagnostic-logs/image2.png)
 
@@ -91,7 +91,7 @@ Az operatív naplók alapértelmezés szerint le vannak tiltva. A diagnosztikai 
    b. Válasszon egyet a következő három célhely közül a diagnosztikai naplókhoz:  
    - Ha a **Storage-fiókba az Archive (archiválás**) lehetőséget választja, akkor konfigurálnia kell azt a Storage-fiókot, ahol a rendszer a diagnosztikai naplókat tárolja.  
    - Ha a stream elemet választja **egy Event hub-hoz**, akkor konfigurálnia kell azt az Event hub-t, amelybe a diagnosztikai naplókat továbbítani szeretné.
-   - Ha a **küldés log Analytics**lehetőséget választja, meg kell adnia a diagnosztika azon log Analytics példányát, amelybe a rendszer elküldi a diagnosztikát.  
+   - Ha a **küldés log Analytics** lehetőséget választja, meg kell adnia a diagnosztika azon log Analytics példányát, amelybe a rendszer elküldi a diagnosztikát.  
 
    c. Jelölje be a **OperationalLogs** jelölőnégyzetet.
 
@@ -101,7 +101,7 @@ Az operatív naplók alapértelmezés szerint le vannak tiltva. A diagnosztikai 
 
 Az új beállítások körülbelül 10 percen belül lépnek érvénybe. A naplók a konfigurált archiválási célpontban, a **diagnosztikai naplók** panelen jelennek meg.
 
-A diagnosztikai beállítások konfigurálásával kapcsolatos további információkért tekintse meg az [Azure Diagnostics-naplók áttekintését](../azure-monitor/platform/platform-logs-overview.md).
+A diagnosztikai beállítások konfigurálásával kapcsolatos további információkért tekintse meg az [Azure Diagnostics-naplók áttekintését](../azure-monitor/essentials/platform-logs-overview.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

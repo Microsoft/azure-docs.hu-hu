@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: terrylan
-ms.openlocfilehash: eb8332bda2105c3f83c0c1cc28fb7db4b1ca0102
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 79262b85e9591ae4b41e8467abdcbccb3804d4ec
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549931"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590340"
 ---
 # <a name="azure-threat-protection"></a>Azure Threat Protection
 
@@ -89,7 +89,7 @@ A [Azure Security Center](../../security-center/security-center-introduction.md)
 Azure Monitor naplók segítségével gyorsan és könnyen megismerheti bármely környezet általános biztonsági állapotát, mindezt az IT-műveletek kontextusában, beleértve a szoftverfrissítés értékelését, a kártevők értékelését és az alapkonfigurációkat. A biztonsági naplókra vonatkozó adatszolgáltatások könnyen elérhetők a biztonsági és megfelelőségi naplózási folyamatok egyszerűsítése érdekében.
 
 ### <a name="insight-and-analytics"></a>Betekintés és elemzés
-[Azure monitor naplók](../../azure-monitor/log-query/log-query-overview.md) középpontjában az Azure által üzemeltetett adattár található.
+[Azure monitor naplók](../../azure-monitor/logs/log-query-overview.md) középpontjában az Azure által üzemeltetett adattár található.
 
 ![Insight and Analytics diagram](./media/threat-detection/azure-threat-detection-fig4.png)
 
@@ -98,8 +98,8 @@ Adatokat gyűjt a tárházhoz a csatlakoztatott forrásokból az adatforrások k
 Az egyes adatforrások és megoldások külön bejegyzéstípusokat hoznak létre a saját tulajdonságokkal, de továbbra is elemezheti őket a tárházban lévő lekérdezésekben. Ugyanazokat az eszközöket és metódusokat használhatja a különböző forrásokból összegyűjtött különféle adatokkal való munkához.
 
 A Azure Monitor naplókkal való interakciójának nagy része az a Azure Portal, amely bármely böngészőben fut, és hozzáférést biztosít a konfigurációs beállításokhoz és több eszközhöz, amelyekkel elemezheti és kezelheti az összegyűjtött adatokat. A portálról a következőket használhatja:
-* A [naplóban megkeresi](../../azure-monitor/log-query/log-query-overview.md) a gyűjtött adatok elemzéséhez szükséges lekérdezéseket.
-* [Irányítópultok](../../azure-monitor/learn/tutorial-logs-dashboards.md), amelyek a legértékesebb keresések grafikus nézeteivel testreszabhatók.
+* A [naplóban megkeresi](../../azure-monitor/logs/log-query-overview.md) a gyűjtött adatok elemzéséhez szükséges lekérdezéseket.
+* [Irányítópultok](../../azure-monitor/visualize/tutorial-logs-dashboards.md), amelyek a legértékesebb keresések grafikus nézeteivel testreszabhatók.
 * [Megoldások](../../azure-monitor/insights/solutions.md), amelyek további funkciókat és elemzési eszközöket biztosítanak.
 
 A megoldások funkciókkal bővítik Azure Monitor naplókat. Elsősorban a felhőben futnak, és a log Analytics-tárházban összegyűjtött adatok elemzését teszik lehetővé. A megoldások olyan új bejegyzéstípusokat is meghatározhatnak, amelyeket a rendszer a naplók keresésével vagy egy, a log Analytics-irányítópulton a megoldás által biztosított további felhasználói felület használatával elemezni lehet.

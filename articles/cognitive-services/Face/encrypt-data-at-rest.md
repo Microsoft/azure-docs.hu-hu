@@ -9,16 +9,16 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 8c6f4f7db312355b719deb434bf6a46fa55eec9d
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: a46253e586aaf90a85bc10e2c62ab6eb238f2ead
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100524493"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650813"
 ---
 # <a name="face-service-encryption-of-data-at-rest"></a>Az inaktív adatok arc-szolgáltatásbeli titkosítása
 
-A Face szolgáltatás automatikusan titkosítja az adatait, amikor azt a felhőben megőrzi. Az arc-szolgáltatás titkosítása védi az adatait, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében.
+A Face szolgáltatás automatikusan titkosítja az adatait, amikor a felhőben megmarad. Az arc-szolgáltatás titkosítása védi az adatait, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében.
 
 [!INCLUDE [cognitive-services-about-encryption](../includes/cognitive-services-about-encryption.md)]
 

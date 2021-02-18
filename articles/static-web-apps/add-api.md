@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-js
-ms.openlocfilehash: 53be2ee9b6b3ab46f081747aec58b9c99fc54f0d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 8a42ca4cf69515c99bb2e0bd28bb62dfed0e18f8
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349956"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650684"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>API hozzáadása az Azure statikus Web Apps előzetes verziójához Azure Functions
 
@@ -61,7 +61,7 @@ Ezután létre kell hoznia egy Azure Functions projektet az alkalmazás API-ját
 
    :::image type="content" source="media/add-api/create-azure-functions-vscode-1.png" alt-text="A képernyőképen a P I mappa és a kiválasztás gomb látható.":::
 
-1. Adja meg a következő információkat a kérdésekben:
+1. Amikor a rendszer kéri, adja meg az alábbi információkat:
 
     - _Válasszon nyelvet_: **JavaScript** kiválasztása
     - _Válasszon sablont a projekt első függvényéhez_: válassza a **http-trigger** lehetőséget.
@@ -234,7 +234,7 @@ Ezután adja hozzá az alkalmazásra vonatkozó beállításokat.
 1. Kattintson a **Bejelentkezés GitHub-fiókkal** gombra, majd végezzen hitelesítést a GitHub-fiókkal
 1. Válassza ki az előnyben részesített _szervezetet_
 1. Válassza a **My-Vanilla-API** elemet az _adattár_ legördülő menüből
-1. Válassza ki a **főkiszolgálót** az _ág_ legördülő menüből
+1. Válassza ki a **fő** elemet az _ág_ legördülő menüből
 1. Válassza ki a konfiguráció létrehozásához választott keretrendszert a Build- _előállítók_ legördülő menüből.
 
  > Ezek a mezők az alkalmazás típusának alapértelmezett projekt-struktúráját tükrözik. Módosítsa az értékeket az alkalmazás igényeinek megfelelően.

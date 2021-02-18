@@ -10,12 +10,12 @@ ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 14ea98ecc4d9682353038088a124802d60a5dd5d
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
-ms.translationtype: HT
+ms.openlocfilehash: da2e20e333fe499998fff72b175442650f5f1e28
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131445"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595319"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Kiterjesztett metrikák hozzáadása Azure-beli virtuális gépekhez
 
@@ -31,7 +31,7 @@ A metrikák gyűjtésének engedélyezése után a következőkre van lehetősé
 Például előfordulhat, hogy szeretné monitorozni az Azure-beli virtuális gépek processzor- és memóriahasználatát (%). Az Azure-beli virtuális gép metrikái megfelelnek a _Százalékos processzorhasználat_ és a _\Memória\% Előjegyzett memória kihasználtsága_ értékeknek.
 
 > [!NOTE]
-> A kiterjesztett metrikaadatok gyűjtése csak az Azure-beli vendégszintű monitorozással támogatott. A Cloudyn nem kompatibilis a [Log Analytics-ügynökkel](../../azure-monitor/platform/agents-overview.md).
+> A kiterjesztett metrikaadatok gyűjtése csak az Azure-beli vendégszintű monitorozással támogatott. A Cloudyn nem kompatibilis a [Log Analytics-ügynökkel](../../azure-monitor/agents/agents-overview.md).
 
 [!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
@@ -46,7 +46,7 @@ Az előző példában a gazdagépek számára korlátozott számú szabványos m
 
 ## <a name="enable-extended-metrics-in-the-azure-portal"></a>Kiterjesztett metrikák engedélyezése az Azure Portalon
 
-A standard metrikák a gazdagépek metrikái. A _Százalékos processzorhasználat_ metrika egy példa erre. A vendég virtuális gépekhez is tartoznak alapvető metrikák, és ezeket is kiterjesztett metrikáknak nevezik. A kiterjesztett metrikák közé tartozik a _\Memória\% Előjegyzett memória kihasználtsága_ és a _\Memória\Elérhető bájtok_ .
+A standard metrikák a gazdagépek metrikái. A _Százalékos processzorhasználat_ metrika egy példa erre. A vendég virtuális gépekhez is tartoznak alapvető metrikák, és ezeket is kiterjesztett metrikáknak nevezik. A kiterjesztett metrikák közé tartozik a _\Memória\% Előjegyzett memória kihasználtsága_ és a _\Memória\Elérhető bájtok_.
 
 A kiterjesztett metrikák egyszerűen engedélyezhetők. Mindegyik virtuális géphez engedélyezze a vendégszintű monitorozást. A vendégszintű monitorozás engedélyezésekor a rendszer az Azure Diagnostics-ügynököt is telepíti a virtuális gépre. Alapértelmezés szerint a rendszer kiterjesztett metrikák egy alapszintű készletét is hozzáadja. A következő folyamat azonos a klasszikus és általános, illetve a Windows és Linux rendszerű virtuális gépek esetében.
 
@@ -66,7 +66,7 @@ Ne feledje, hogy a Windows- és a Linux-beli vendégszintű monitorozáshoz is t
 
 ### <a name="enable-guest-level-monitoring-on-new-vms"></a>Vendégszintű monitorozás engedélyezése új virtuális gépeken
 
-Új virtuális gépek létrehozásakor a Kezelés lapon állítsa **Be** értékre a **Vendég operációs rendszer diagnosztikáját** .
+Új virtuális gépek létrehozásakor a Kezelés lapon állítsa **Be** értékre a **Vendég operációs rendszer diagnosztikáját**.
 
 ![a vendég operációs rendszer diagnosztikájának bekapcsolása](./media/azure-vm-extended-metrics/new-enable-diag.png)
 

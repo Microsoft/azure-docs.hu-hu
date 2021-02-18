@@ -3,18 +3,18 @@ title: Azure-Application Insights automatizálása a PowerShell használatával 
 description: Erőforrások, riasztások és rendelkezésre állási tesztek létrehozása és kezelése a PowerShellben egy Azure Resource Manager sablon használatával.
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: c380880845c162a1e8fb38e699a439ac04fb3b5a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c2e3d33be487b6a92cb7038d814e17fcd5a10064
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186269"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589799"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Application Insights-erőforrások kezelése a PowerShell használatával
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Ez a cikk bemutatja, hogyan automatizálható a [Application Insights](./app-insights-overview.md) -erőforrások automatikus létrehozása és frissítése az Azure Resource Management használatával. Előfordulhat például, hogy egy összeállítási folyamat részeként ezt megteheti. Az alapszintű Application Insights erőforrás mellett létrehozhat [rendelkezésre állási webes teszteket](./monitor-web-app-availability.md), [riasztásokat](../platform/alerts-log.md)állíthat be, és beállíthatja az [árképzési sémát](pricing.md), és más Azure-erőforrásokat is létrehozhat.
+Ez a cikk bemutatja, hogyan automatizálható a [Application Insights](./app-insights-overview.md) -erőforrások automatikus létrehozása és frissítése az Azure Resource Management használatával. Előfordulhat például, hogy egy összeállítási folyamat részeként ezt megteheti. Az alapszintű Application Insights erőforrás mellett létrehozhat [rendelkezésre állási webes teszteket](./monitor-web-app-availability.md), [riasztásokat](../alerts/alerts-log.md)állíthat be, és beállíthatja az [árképzési sémát](pricing.md), és más Azure-erőforrásokat is létrehozhat.
 
 Az erőforrások létrehozásának kulcsa a [Azure Resource Manager](../../azure-resource-manager/management/manage-resources-powershell.md)JSON-sablonjai. Az alapszintű eljárás: a meglévő erőforrások JSON-definícióinak letöltése; parametrizálja bizonyos értékeket, például neveket; Ezután futtassa a sablont, amikor új erőforrást szeretne létrehozni. Egyszerre több erőforrást is becsomagolhat, így egyetlen lépéssel létrehozhatja őket, például egy alkalmazás-figyelő rendelkezésre állási tesztekkel, riasztásokkal és tárolással a folyamatos exportáláshoz. A parameterizations néhány finomságot talál, amelyeket itt mutatjuk be.
 
@@ -404,12 +404,12 @@ Ez a napi korlátot 200 GB/nap értékűre állítja be, konfigurálja a napi ko
 
 ## <a name="add-a-metric-alert"></a>Metrikai riasztás hozzáadása
 
-A metrikai riasztások létrehozásának automatizálásához olvassa el a [metrika riasztások sablonnal kapcsolatos cikket.](../platform/alerts-metric-create-templates.md#template-for-a-simple-static-threshold-metric-alert)
+A metrikai riasztások létrehozásának automatizálásához olvassa el a [metrika riasztások sablonnal kapcsolatos cikket.](../alerts/alerts-metric-create-templates.md#template-for-a-simple-static-threshold-metric-alert)
 
 
 ## <a name="add-an-availability-test"></a>Rendelkezésre állási teszt hozzáadása
 
-A rendelkezésre állási tesztek automatizálásához tekintse meg a [metrikus riasztások sablonjának cikkét](../platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert).
+A rendelkezésre állási tesztek automatizálásához tekintse meg a [metrikus riasztások sablonjának cikkét](../alerts/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert).
 
 ## <a name="add-more-resources"></a>További erőforrások hozzáadása
 
@@ -469,6 +469,6 @@ Az Azure-nak szigorú sorrendben kell beállítania az erőforrásokat. A követ
 Egyéb Automation-cikkek:
 
 * [Hozzon létre egy Application Insights erőforrás](./create-new-resource.md#creating-a-resource-automatically) -gyors metódust sablon használata nélkül.
-* [Hozzon létre webes teszteket](../samples/resource-manager-alerts-metric.md#availability-test-with-metric-alert)
+* [Hozzon létre webes teszteket](../alerts/resource-manager-alerts-metric.md#availability-test-with-metric-alert)
 * [Az Azure Diagnostics küldése az Application Insights-ba](powershell-azure-diagnostics.md)
 * [Kiadási jegyzetek létrehozása](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)

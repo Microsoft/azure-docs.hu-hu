@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b5ce8e3d6482c13a8ba02065f2a97074610c25bb
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 2d902bbdc03596fe246fc36813895e72c53da05a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98877714"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571405"
 ---
 # <a name="azure-security-baseline-for-virtual-machine-scale-sets"></a>Virtual Machine Scale Sets Azure biztonsági alapterve
 
@@ -178,9 +178,9 @@ A Azure Security Center igény szerinti hálózati hozzáférésével korlátozh
 
 Használja a Azure Policy a virtuálisgép-méretezési csoporttal kapcsolatos hálózati erőforrás érvényesítéséhez (és/vagy szervizeléséhez).
 
-* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Riasztások létrehozása a Azure Monitorban](../azure-monitor/platform/alerts-activity-log.md)
+* [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
@@ -216,7 +216,7 @@ A Azure Security Center használatával biztosíthatja az Azure Virtual Machines
 
 Ha a szervezete szeretné megőrizni a biztonsági eseménynapló adatait a virtuális gépről, akkor a Log Analytics munkaterületen belül tárolhatja a Azure Security Centeron belül konfigurált kívánt adatgyűjtési szinten.
 
-* [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+* [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 * [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
@@ -224,7 +224,7 @@ Ha a szervezete szeretné megőrizni a biztonsági eseménynapló adatait a virt
 
 * [Adatgyűjtés az Azure Security Centerben](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
-* [Virtuális gépek figyelése az Azure-ban](../azure-monitor/insights/monitor-vm-azure.md)
+* [Virtuális gépek figyelése az Azure-ban](../azure-monitor/vm/monitor-vm-azure.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -238,11 +238,11 @@ A vendég operációs rendszer diagnosztikai adatai gyűjtésének engedélyezé
 
 Az Azure virtuálisgép-méretezési csoport által támogatott alkalmazások és szolgáltatások speciális láthatósága érdekében a Azure Monitor for VMs és az Application betekintést is engedélyezheti. A Application Insights segítségével figyelheti az alkalmazást, és rögzítheti a telemetria, például HTTP-kérelmeket, kivételeket stb., így a virtuális gépek és az alkalmazás közötti problémák is összekapcsolhatók.
 
-* [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+* [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Virtuális gépek figyelése az Azure-ban](../azure-monitor/insights/monitor-vm-azure.md)
+* [Virtuális gépek figyelése az Azure-ban](../azure-monitor/vm/monitor-vm-azure.md)
 
 * [Az Application Insights áttekintése](../azure-monitor/app/app-insights-overview.md)
 
@@ -258,7 +258,7 @@ Ha a szervezete szeretné megőrizni a biztonsági eseménynapló adatait a virt
 
 * [Adatgyűjtés az Azure Security Centerben](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
-* [Virtuális gépek figyelése az Azure-ban](../azure-monitor/insights/monitor-vm-azure.md)
+* [Virtuális gépek figyelése az Azure-ban](../azure-monitor/vm/monitor-vm-azure.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -268,9 +268,9 @@ Ha a szervezete szeretné megőrizni a biztonsági eseménynapló adatait a virt
 
 **Útmutató**: gondoskodjon arról, hogy a virtuális gépek naplófájljainak tárolására használt összes Storage-fiók vagy log Analytics-munkaterület a szervezet megfelelőségi szabályainak megfelelően állítsa be a napló megőrzési időtartamát.
 
-* [Virtuális gépek figyelése az Azure-ban](../azure-monitor/insights/monitor-vm-azure.md)
+* [Virtuális gépek figyelése az Azure-ban](../azure-monitor/vm/monitor-vm-azure.md)
 
-* [Log Analytics munkaterület megőrzési időtartamának konfigurálása](../azure-monitor/platform/manage-cost-storage.md)
+* [Log Analytics munkaterület megőrzési időtartamának konfigurálása](../azure-monitor/logs/manage-cost-storage.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -284,9 +284,9 @@ Azt is megteheti, hogy az Azure Sentinel vagy egy harmadik féltől származó S
 
 * [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-* [Log Analytics munkaterület ismertetése](../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Log Analytics munkaterület ismertetése](../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/log-query/get-started-queries.md)
+* [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -302,7 +302,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 * [Riasztások kezelése Azure Security Centerban](../security-center/security-center-managing-and-responding-alerts.md)
 
-* [Riasztás a log Analytics-naplófájlok adatkezeléséről](../azure-monitor/learn/tutorial-response.md)
+* [Riasztás a log Analytics-naplófájlok adatkezeléséről](../azure-monitor/alerts/tutorial-response.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -340,9 +340,9 @@ Linux rendszerű virtuális gépek esetén a konzol naplózását manuálisan is
 
 * [Adatgyűjtés az Azure Security Centerben](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
-* [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/log-query/get-started-queries.md)
+* [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/logs/get-started-queries.md)
 
-* [Rendszernapló-adatforrások az Azure Monitorban](../azure-monitor/platform/data-sources-syslog.md)
+* [Rendszernapló-adatforrások az Azure Monitorban](../azure-monitor/agents/data-sources-syslog.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -430,7 +430,7 @@ Linux rendszerű virtuális gépek esetén a konzol naplózását manuálisan is
 
 * [Azure-tevékenységnaplók integrálása az Azure Monitorba](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Műveleti csoportok konfigurálása egyéni riasztásokhoz és értesítésekhez](../azure-monitor/platform/action-groups.md)
+* [Műveleti csoportok konfigurálása egyéni riasztásokhoz és értesítésekhez](../azure-monitor/alerts/action-groups.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -472,13 +472,13 @@ Linux rendszerű virtuális gépek esetén a konzol naplózását manuálisan is
 
 **Útmutató**: a Azure Active Directory diagnosztikai beállításainak konfigurálása a naplók és a bejelentkezési naplók log Analytics-munkaterületre való elküldéséhez. Emellett a Azure Monitor segítségével tekintheti át a naplókat, és lekérdezéseket hajthat végre az Azure Virtual Machines szolgáltatásban.
 
-* [Log Analytics munkaterület ismertetése](../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Log Analytics munkaterület ismertetése](../azure-monitor/logs/log-analytics-tutorial.md)
 
 * [Azure-tevékenységnaplók integrálása az Azure Monitorba](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/log-query/get-started-queries.md)
+* [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/logs/get-started-queries.md)
 
-* [Virtuális gépek figyelése az Azure-ban](../azure-monitor/insights/monitor-vm-azure.md)
+* [Virtuális gépek figyelése az Azure-ban](../azure-monitor/vm/monitor-vm-azure.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -610,7 +610,7 @@ A Microsoft a Transport Layer Security (TLS) protokollt használja az adatvédel
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használatával riasztásokat hozhat létre, amelyekkel a rendszer a virtuális gépek méretezési csoportjaira és a kapcsolódó erőforrásokra vonatkozó módosításokat hajt végre.
 
-* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/platform/alerts-activity-log.md)
+* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Azure Storage Analytics-naplózás](../storage/common/storage-analytics-logging.md)
 
@@ -1196,7 +1196,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: Megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
 - További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

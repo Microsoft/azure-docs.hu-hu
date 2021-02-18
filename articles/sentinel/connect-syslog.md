@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: f249a95551916311fab51ebef72b55d9a4343c0b
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: d35a97b0008a7ce3069185dd557a60221776b0ba
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530518"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595469"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Adatok gyűjtése Linux-alapú forrásokból a syslog használatával
 
@@ -34,7 +34,7 @@ A Linux-alapú, syslog-supported Machines vagy készülékekről származó esem
 
 A **syslog** egy olyan eseménynaplózási protokoll, amely közös a Linux rendszerben. Ha a **Linux** rendszerhez készült log Analytics-ügynök telepítve van a virtuális gépre vagy készülékre, a telepítési rutin konfigurálja a helyi syslog démont, hogy továbbítsa az üzeneteket az ügynöknek az 25224-as TCP-porton. Az ügynök ezután a HTTPS-kapcsolaton keresztül elküldi az üzenetet a Log Analytics munkaterületnek, ahol a rendszer az **Azure Sentinel > naplóiban naplózza** a syslog táblában az Eseménynapló-bejegyzésbe.
 
-További információ: [syslog-adatforrások Azure monitorban](../azure-monitor/platform/data-sources-syslog.md).
+További információ: [syslog-adatforrások Azure monitorban](../azure-monitor/agents/data-sources-syslog.md).
 
 ## <a name="configure-syslog-collection"></a>Syslog-gyűjtemény konfigurálása
 
@@ -83,7 +83,7 @@ További információ: [syslog-adatforrások Azure monitorban](../azure-monitor/
 
 1. A syslog-naplófájlok **naplófájljainak** lekérdezéséhez írja be a `Syslog` következőt: a lekérdezési ablak.
 
-1. A következő témakörben ismertetett lekérdezési paramétereket használhatja a [függvények használatával Azure monitor napló lekérdezésekben](../azure-monitor/log-query/functions.md) a syslog-üzenetek elemzéséhez. Ezután mentheti a lekérdezést új Log Analytics függvényként, és új adattípusként használhatja azt.
+1. A következő témakörben ismertetett lekérdezési paramétereket használhatja a [függvények használatával Azure monitor napló lekérdezésekben](../azure-monitor/logs/functions.md) a syslog-üzenetek elemzéséhez. Ezután mentheti a lekérdezést új Log Analytics függvényként, és új adattípusként használhatja azt.
 
 > [!NOTE]
 > **Ugyanazzal a géppel az egyszerű syslog *és* a CEF üzenetek továbbítása**
@@ -92,7 +92,7 @@ További információ: [syslog-adatforrások Azure monitorban](../azure-monitor/
 >
 >    Ha már beállította az [adatgyűjtést a CEF-forrásaiból](connect-common-event-format.md), és a fentiek szerint konfigurálta a log Analytics-ügynököt:
 >
-> 1. Minden olyan gépen, amely CEF formátumú naplókat küld, szerkesztenie kell a syslog konfigurációs fájlját, hogy eltávolítsa a CEF üzenetek küldésére használt létesítményeket. Így a CEF-ben eljuttatott létesítmények nem lesznek elküldve a syslog-ben. Ennek módjával kapcsolatos részletes útmutatásért lásd: [a syslog konfigurálása Linux-ügynökön](../azure-monitor/platform/data-sources-syslog.md#configure-syslog-on-linux-agent) .
+> 1. Minden olyan gépen, amely CEF formátumú naplókat küld, szerkesztenie kell a syslog konfigurációs fájlját, hogy eltávolítsa a CEF üzenetek küldésére használt létesítményeket. Így a CEF-ben eljuttatott létesítmények nem lesznek elküldve a syslog-ben. Ennek módjával kapcsolatos részletes útmutatásért lásd: [a syslog konfigurálása Linux-ügynökön](../azure-monitor/agents/data-sources-syslog.md#configure-syslog-on-linux-agent) .
 >
 > 1. A következő parancs futtatásával le kell tiltania az ügynök szinkronizálását az Azure Sentinel syslog-konfigurációjával. Ez biztosítja, hogy az előző lépésben végrehajtott konfigurációs módosítás ne legyen felülírva.<br>
 > `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`

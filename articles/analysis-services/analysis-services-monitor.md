@@ -7,27 +7,27 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: aaa3a6d128fe7dd466f6f60ab515f05fa38ba63b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1cc517ac3c903930eddb95a4813a8146cae2ec2c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84690376"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582668"
 ---
 # <a name="monitor-server-metrics"></a>A kiszolgáló metrikáinak monitorozása
 
-A Analysis Services metrikákat biztosít az Azure Metrikaböngészőban, amely egy ingyenes eszköz a portálon, amely segít a kiszolgálók teljesítményének és állapotának figyelésében. Figyelje például a memória és a processzor kihasználtságát, az ügyfélkapcsolatok számát és a lekérdezési erőforrások felhasználását. Analysis Services ugyanazt a figyelési keretrendszert használja, mint a legtöbb más Azure-szolgáltatás. További információ: [Az Azure Metrikaböngésző első lépései](../azure-monitor/platform/metrics-getting-started.md).
+A Analysis Services metrikákat biztosít az Azure Metrikaböngészőban, amely egy ingyenes eszköz a portálon, amely segít a kiszolgálók teljesítményének és állapotának figyelésében. Figyelje például a memória és a processzor kihasználtságát, az ügyfélkapcsolatok számát és a lekérdezési erőforrások felhasználását. Analysis Services ugyanazt a figyelési keretrendszert használja, mint a legtöbb más Azure-szolgáltatás. További információ: [Az Azure Metrikaböngésző első lépései](../azure-monitor/essentials/metrics-getting-started.md).
 
 A részletesebb diagnosztika végrehajtásához, a teljesítmény nyomon követéséhez és az erőforráscsoport vagy előfizetés több szolgáltatási erőforrása közötti trendek azonosításához használja a [Azure monitor](../azure-monitor/overview.md). A Azure Monitor (szolgáltatás) számlázható szolgáltatást eredményezhet.
 
 
 ## <a name="to-monitor-metrics-for-an-analysis-services-server"></a>Analysis Services-kiszolgáló metrikáinak figyelése
 
-1. A Azure Portal területen válassza a **metrikák**lehetőséget.
+1. A Azure Portal területen válassza a **metrikák** lehetőséget.
 
     ![Monitorozás az Azure Portalon](./media/analysis-services-monitor/aas-monitor-portal.png)
 
-2. A **metrika**mezőben válassza ki a diagramba felvenni kívánt metrikákat. 
+2. A **metrika** mezőben válassza ki a diagramba felvenni kívánt metrikákat. 
 
     ![Diagram figyelése](./media/analysis-services-monitor/aas-monitor-chart.png)
 
@@ -37,7 +37,7 @@ A részletesebb diagnosztika végrehajtásához, a teljesítmény nyomon követ�
 
 A táblázat segítségével meghatározhatja, hogy mely mérőszámok a legmegfelelőbbek a figyelési forgatókönyvekhez. Ugyanazon a diagramon csak az azonos egység mérőszámai jeleníthetők meg.
 
-|Metrika|Metrika megjelenítendő neve|Egység|Aggregáció típusa|Leírás|
+|Metric|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|
 |---|---|---|---|---|
 |CommandPoolJobQueueLength|Parancssori feladatok várólistájának hossza|Darabszám|Átlag|A parancsfájl-készlet várólistájában lévő feladatok száma.|
 |Összege|Kapcsolat: aktuális kapcsolatok|Darabszám|Átlag|A létesített ügyfélkapcsolatok aktuális száma.|
@@ -87,7 +87,7 @@ A táblázat segítségével meghatározhatja, hogy mely mérőszámok a legmegf
 |TotalConnectionFailures|Összes sikertelen Kapcsolatfelvétel|Darabszám|Átlag|A sikertelen csatlakozási kísérletek teljes száma.|
 |TotalConnectionRequests|Kapcsolatkérelmek teljes száma|Darabszám|Átlag|A kapcsolatkérelmek teljes száma. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Azure Monitor áttekintése](../azure-monitor/overview.md)      
-[Első lépések az Azure Metrikaböngésző](../azure-monitor/platform/metrics-getting-started.md)      
+[Első lépések az Azure Metrikaböngésző](../azure-monitor/essentials/metrics-getting-started.md)      
 [Metrikák a Azure Monitor REST API](/rest/api/monitor/metrics)

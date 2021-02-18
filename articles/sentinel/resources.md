@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/27/2021
 ms.author: yelevin
-ms.openlocfilehash: 2a6e31115fb2548f8248f741213970605f230036
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c404aa93669cd95dccb0ad185d71d2ec16256d0d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390725"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570439"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Az Azure Sentinel használatának hasznos erőforrásai
 
@@ -32,7 +32,7 @@ Ez a cikk azokat az erőforrásokat sorolja fel, amelyek segítségével tovább
 
 
 ## <a name="auditing-and-reporting"></a>Naplózás és jelentéskészítés
-Az Azure Sentinel naplózási naplóit az [Azure-tevékenységek naplójában](../azure-monitor/platform/platform-logs-overview.md)tartják karban.
+Az Azure Sentinel naplózási naplóit az [Azure-tevékenységek naplójában](../azure-monitor/essentials/platform-logs-overview.md)tartják karban.
 
 A következő támogatott műveletek naplózhatók.
 

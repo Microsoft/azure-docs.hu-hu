@@ -2,19 +2,19 @@
 title: Ajánlott eljárások a beállításjegyzék használatához
 description: Az ajánlott eljárások követésével megismerkedhet az Azure Container Registry leghatékonyabb használatával.
 ms.topic: article
-ms.date: 09/27/2018
-ms.openlocfilehash: fc84fb8cb98f58e28570095370d55a7358ce3a99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/07/2021
+ms.openlocfilehash: 01c8c7f547be9dd225022fb3315a4bdecc48c2bf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83682682"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578144"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Az Azure Container Registry ajánlott eljárásai
 
-Az itt leírt ajánlott eljárások követésével a legjobb teljesítménnyel és költséghatékonysággal használhatja az Azure-ban található privát Docker regisztrációs adatbázist.
+Az ajánlott eljárások követésével maximalizálhatja az Azure-beli privát beállításjegyzék teljesítményének és költséghatékony felhasználásának hatékonyságát a tároló lemezképek és egyéb összetevők tárolására és üzembe helyezésére.
 
-Lásd még: [javaslatok a lemezképek címkézésére és verziószámozására](container-registry-image-tag-version.md) a beállításjegyzékben található rendszerképek címkézéséhez és verziószámozásához. 
+A beállításjegyzék-fogalmak hátterével kapcsolatban lásd: [a kibocsátásiegység-forgalmi jegyzékek, a Tárházak és a rendszerképek](container-registry-concepts.md). Lásd még: [javaslatok a lemezképek címkézésére és verziószámozására](container-registry-image-tag-version.md) a beállításjegyzékben található rendszerképek címkézéséhez és verziószámozásához. 
 
 ## <a name="network-close-deployment"></a>Hálózatközeli központi telepítés
 
@@ -25,13 +25,24 @@ A nyilvános felhők – köztük az Azure is – hálózati forgalmi díjat sz�
 
 ## <a name="geo-replicate-multi-region-deployments"></a>Többrégiós üzemelő példányok georeplikációja
 
-Ha több régióban telepít tárolókat, használja az Azure Container Registry [georeplikációs](container-registry-geo-replication.md) funkcióját. Ha globális ügyfélbázist szolgál ki helyi adatközpontokból, vagy fejlesztői csapatának tagjai különböző helyeken tartózkodnak, a regisztrációs adatbázis georeplikálásával egyszerűsítheti a regisztrációs adatbázis kezelését és minimalizálhatja a késést. A georeplikáció csak [Prémium](container-registry-skus.md) szintű regisztrációs adatbázisok esetén érhető el.
+Ha több régióban telepít tárolókat, használja az Azure Container Registry [georeplikációs](container-registry-geo-replication.md) funkcióját. Ha globális ügyfélbázist szolgál ki helyi adatközpontokból, vagy fejlesztői csapatának tagjai különböző helyeken tartózkodnak, a regisztrációs adatbázis georeplikálásával egyszerűsítheti a regisztrációs adatbázis kezelését és minimalizálhatja a késést. A regionális [webhookokat](container-registry-webhook.md) úgy is konfigurálhatja, hogy értesítést kapjon bizonyos replikákban lévő eseményekről, például a képek leküldésekor.
 
-A georeplikáció használatának megismeréséhez tekintse meg háromrészes útmutatónkat: [Georeplikáció az Azure Container Registry-ben](container-registry-tutorial-prepare-registry.md).
+A Geo-replikáció [prémium](container-registry-skus.md) szintű kibocsátásiegység-forgalmi jegyzékekkel érhető el. A georeplikáció használatának megismeréséhez tekintse meg háromrészes útmutatónkat: [Georeplikáció az Azure Container Registry-ben](container-registry-tutorial-prepare-registry.md).
+
+## <a name="maximize-pull-performance"></a>A lekéréses teljesítmény maximalizálása
+
+Amellett, hogy a rendszerképeket az üzembe helyezésekhez közelíti, a rendszerképek jellemzői hatással lehetnek a lekérési teljesítményre.
+
+* **Kép mérete** – a felesleges [rétegek](container-registry-concepts.md#manifest) eltávolításával vagy a rétegek méretének csökkentésével csökkentheti a képek méretét. A képméret csökkentésének egyik módja a [többfázisú Docker-létrehozási](https://docs.docker.com/develop/develop-images/multistage-build/) módszer használata, amely csak a szükséges futtatókörnyezet-összetevőket tartalmazza. 
+
+  Győződjön meg arról is, hogy a rendszerkép tartalmazhat-e világosabb alap operációsrendszer-rendszerképet. Ha pedig olyan központi telepítési környezetet használ, mint például a Azure Container Instances, amely bizonyos alaplemezképek gyorsítótárazását hajtja végre, ellenőrizze, hogy képes-e a képréteget felcserélni valamelyik gyorsítótárazott rendszerképre. 
+* **Rétegek száma** – a felhasznált rétegek számának kiegyensúlyozása. Ha túl kevés van, a rendszer nem használja a réteg újrafelhasználását és gyorsítótárazását a gazdagépen. Túl sok, és az üzembe helyezési környezet több időt tölt a húzással és a kibontással. Az öt – 10 réteg optimális.
+
+Olyan Azure Container Registry [szolgáltatási szintet](container-registry-skus.md) is választhat, amely megfelel a teljesítmény igényeinek. A prémium szint biztosítja a legnagyobb sávszélességet és az egyidejű olvasási és írási műveletek legmagasabb arányát, ha nagy mennyiségű üzemelő példánya van.
 
 ## <a name="repository-namespaces"></a>Adattárnévterek
 
-Az adattárnévterek használatával engedélyezheti egyetlen regisztrációs adatbázis megosztását több csoporttal a szervezeten belül. A regisztrációs adatbázisok több környezeten és csoporton keresztül is megoszthatók. Az Azure Container Registry támogatja a beágyazott névtereket, amelyekkel elkülöníthetők a csoportok.
+A tárház névtereit használva engedélyezheti egyetlen beállításjegyzék megosztását a szervezeten belüli több csoport között. A regisztrációs adatbázisok több környezeten és csoporton keresztül is megoszthatók. Az Azure Container Registry támogatja a beágyazott névtereket, amelyekkel elkülöníthetők a csoportok. A beállításjegyzék azonban egymástól függetlenül kezeli az összes tárházat, nem pedig a hierarchiát.
 
 Vegyük példaként a következő tárolórendszerkép-címkéket. A vállalati szintű, például a-ben használt rendszerképek `aspnetcore` a legfelső szintű névtérbe kerülnek, míg a termékek és a marketing csoportok által birtokolt tároló lemezképek saját névtereket használnak.
 
@@ -44,22 +55,24 @@ Vegyük példaként a következő tárolórendszerkép-címkéket. A vállalati 
 
 Mivel a tároló-beállításjegyzékek olyan erőforrások, amelyeket több tároló gazdagépe használ, a beállításjegyzéknek a saját erőforráscsoporthoz kell tartoznia.
 
-Nyugodtan kísérletezhet speciális gazdagéptípusokkal, például az Azure Container Instances-zel, de utána valószínűleg törölni szeretné majd a tárolópéldányt. Előfordulhat azonban, hogy meg szeretné tartani azokat a rendszerképeket, amelyeket átvitt az Azure Container Registry-be. Azzal, hogy a regisztrációs adatbázis a saját erőforráscsoportjába helyezi, csökkentheti annak esélyét, hogy véletlenül törli a rendszerképeket, amikor törli a tárolópéldány erőforráscsoportját.
+Bár előfordulhat, hogy egy adott gazdagép típusával kísérletezik, például [Azure Container instances](../container-instances/container-instances-overview.md), valószínűleg törölni szeretné a tároló példányát, ha elkészült. Előfordulhat azonban, hogy meg szeretné tartani azokat a rendszerképeket, amelyeket átvitt az Azure Container Registry-be. Azzal, hogy a regisztrációs adatbázis a saját erőforráscsoportjába helyezi, csökkentheti annak esélyét, hogy véletlenül törli a rendszerképeket, amikor törli a tárolópéldány erőforráscsoportját.
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication-and-authorization"></a>Hitelesítés és engedélyezés
 
 Azure tárolóregisztrációs adatbázissal való hitelesítéskor két fő forgatókönyv fordulhat elő: az egyéni hitelesítés és a szolgáltatásos (vagy „távfelügyelt”) hitelesítés. A következő táblázat röviden bemutatja ezeket a forgatókönyveket és a hozzájuk fűződő ajánlott hitelesítési módokat.
 
 | Típus | Példaforgatókönyv | Javasolt módszer |
 |---|---|---|
-| Egyéni identitás | Egy fejlesztő rendszerképeket hív le a saját számítógépére, vagy helyez át onnan. | [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) |
-| Távfelügyelt/szolgáltatásos identitás | Buildelési és üzembe helyezési folyamatok, amelyekben a felhasználó nem vesz közvetlenül részt. | [Egyszerű szolgáltatásnév](container-registry-authentication.md#service-principal) |
+| Egyéni identitás | Egy fejlesztő rendszerképeket hív le a saját számítógépére, vagy helyez át onnan. | [az acr login](/cli/azure/acr#az-acr-login) |
+| Távfelügyelt/szolgáltatásos identitás | Buildelési és üzembe helyezési folyamatok, amelyekben a felhasználó nem vesz közvetlenül részt. | [Szolgáltatásnév](container-registry-authentication.md#service-principal) |
 
-Az Azure Container Registry-vel kapcsolatos részletes információk: [Hitelesítés Azure tárolóregisztrációs adatbázissal](container-registry-authentication.md).
+Ezen és más Azure Container Registry hitelesítési forgatókönyvekkel kapcsolatos részletes információkért lásd: [hitelesítés Azure Container registryvel](container-registry-authentication.md).
 
-## <a name="manage-registry-size"></a>Regisztrációs adatbázis méretének kezelése
+Azure Container Registry támogatja a szervezeten belüli biztonsági eljárásokat a feladatok és a jogosultságok különböző identitásokra való terjesztéséhez. [Szerepköralapú hozzáférés-vezérlés](container-registry-roles.md)használatával rendeljen hozzá megfelelő engedélyeket a különböző felhasználókhoz, szolgáltatásokhoz vagy más, különböző beállításjegyzék-műveleteket végző identitásokhoz. Például leküldéses engedélyeket rendelhet egy olyan egyszerű szolgáltatásnév számára, amelyet egy összeállítási folyamat használ, és lekéréses engedélyeket rendel a telepítéshez használt másik identitáshoz. Hozzon létre [jogkivonatokat](container-registry-repository-scoped-permissions.md) a részletes, időkorlátos hozzáféréshez adott adattárakhoz.
 
-Az egyes [tárolók beállításjegyzék-szolgáltatási szintjeinek][container-registry-skus] tárolási korlátozásai egy tipikus forgatókönyvhöz igazodnak: **alapszintű** , első lépések, **standard** az üzemi alkalmazások többsége számára, és **prémium** szintű teljesítmény és [földrajzi replikálás][container-registry-geo-replication]. A regisztrációs adatbázis élettartama során érdemes felügyelnie annak méretét a nem használt tartalmak törlésével.
+## <a name="manage-registry-size"></a>Regisztrációs adatbázis méretének kezelése      
+
+Az egyes [tárolók beállításjegyzék-szolgáltatási szintjeinek][container-registry-skus] tárolási korlátozásai egy tipikus forgatókönyvhöz igazodnak: **alapszintű** , első lépések, **standard** a legtöbb üzemi alkalmazáshoz, **prémium** szintű teljesítmény és [földrajzi replikálás][container-registry-geo-replication]. A regisztrációs adatbázis élettartama során érdemes felügyelnie annak méretét a nem használt tartalmak törlésével.
 
 Használja az Azure CLI-parancsot az [ACR show-][az-acr-show-usage] use paranccsal a beállításjegyzék aktuális méretének megjelenítéséhez:
 
@@ -84,9 +97,11 @@ Azure Container Registry számos módszert támogat a képadatoknak a tároló-b
 
 A képadatok beállításjegyzékből való törlésével kapcsolatos részletekért, beleértve a címkézett (más néven "lelógó" vagy "árva") lemezképeket, lásd: [tároló lemezképek törlése Azure Container Registry](container-registry-delete.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Azure Container Registry több szinten is elérhető, amelyek mindegyike különböző képességeket biztosít. Az elérhető szolgáltatási szintek részletes ismertetését lásd: [Azure Container Registry szolgáltatási szintek](container-registry-skus.md).
+A Azure Container Registry számos különböző szinten, más néven SKU-ban is elérhető. Az elérhető szolgáltatási szintek részletes ismertetését lásd: [Azure Container Registry szolgáltatási szintek](container-registry-skus.md).
+
+A tároló-beállításjegyzékek biztonsági helyzetének javítására vonatkozó javaslatokért lásd: [Azure Container Registry Azure biztonsági alapterve](security-baseline.md).
 
 <!-- IMAGES -->
 [delete-repository-portal]: ./media/container-registry-best-practices/delete-repository-portal.png
