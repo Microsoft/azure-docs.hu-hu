@@ -6,12 +6,12 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.date: 09/15/2020
-ms.openlocfilehash: 378a85ed77a6eedeb928dee541046db1909da553
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: f5304e7634cfb7b4d5c3c05036c0606ba03295ae
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491991"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589061"
 ---
 # <a name="dependency-analysis"></a>Függőségek elemzése
 
@@ -34,7 +34,7 @@ A függőségi elemzések üzembe helyezésére két lehetőség áll rendelkez�
 **Beállítás** | **Részletek** | **Nyilvános felhő** | **Azure Government**
 ----  |---- | ---- 
 **Ügynök nélküli** | A VMware virtuális gépek adatait vSphere API-k használatával kérdezi le.<br/><br/> Nem kell telepítenie az ügynököket a virtuális gépekre.<br/><br/> Ez a beállítás jelenleg előzetes verzióban érhető el, csak VMware virtuális gépek esetén. | Támogatott. | Támogatott.
-**Ügynök-alapú elemzés** | A Azure Monitor [Service Map megoldását](../azure-monitor/insights/service-map.md) használja a függőségi vizualizációk és elemzések engedélyezéséhez.<br/><br/> Az összes elemezni kívánt helyszíni gépre telepítenie kell az ügynököket. | Támogatott | Nem támogatott.
+**Ügynök-alapú elemzés** | A Azure Monitor [Service Map megoldását](../azure-monitor/vm/service-map.md) használja a függőségi vizualizációk és elemzések engedélyezéséhez.<br/><br/> Az összes elemezni kívánt helyszíni gépre telepítenie kell az ügynököket. | Támogatott | Nem támogatott.
 
 
 ## <a name="agentless-analysis"></a>Ügynök nélküli elemzés
@@ -58,7 +58,7 @@ A függőségi adatmennyiség megkezdése után a lekérdezés megkezdődik:
 
 ## <a name="agent-based-analysis"></a>Ügynök-alapú elemzés
 
-Az ügynök-alapú elemzéshez a Server Assessment a [Service Map](../azure-monitor/insights/service-map.md) megoldást használja Azure monitor. Telepítse a [Microsoft monitoring Agent/log Analytics ügynököt](../azure-monitor/platform/agents-overview.md#log-analytics-agent) és a [függőségi ügynököt](../azure-monitor/platform/agents-overview.md#dependency-agent)minden egyes elemezni kívánt gépen.
+Az ügynök-alapú elemzéshez a Server Assessment a [Service Map](../azure-monitor/vm/service-map.md) megoldást használja Azure monitor. Telepítse a [Microsoft monitoring Agent/log Analytics ügynököt](../azure-monitor/agents/agents-overview.md#log-analytics-agent) és a [függőségi ügynököt](../azure-monitor/agents/agents-overview.md#dependency-agent)minden egyes elemezni kívánt gépen.
 
 ### <a name="dependency-data"></a>Függőségi adatértékek
 
@@ -78,7 +78,7 @@ Az ügynök nélküli vizualizáció és az ügynök-alapú vizualizáció köz�
 --- | --- | ---
 **Támogatás** | Csak a VMware virtuális gépek előzetes verziójában. [Tekintse át](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) a támogatott operációs rendszereket. | Általánosan elérhető (GA).
 **Ügynök** | Nincs szükség ügynökökre az elemezni kívánt gépeken. | Az elemezni kívánt helyszíni gépekhez szükséges ügynökök.
-**Naplóelemzés** | Nem szükségesek. | Azure Migrate a függőségi elemzéshez a [Service Map](../azure-monitor/insights/service-map.md) megoldást használja [Azure monitor naplókban](../azure-monitor/log-query/log-query-overview.md) .<br/><br/> Log Analytics munkaterületet egy Azure Migrate projekthez társít. A munkaterületnek az USA keleti régiójában, Délkelet-Ázsiában vagy Nyugat-európai régióban kell lennie. A munkaterületnek olyan régióban kell lennie, amelyben a [Service Map támogatott](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions).
+**Naplóelemzés** | Nem szükségesek. | Azure Migrate a függőségi elemzéshez a [Service Map](../azure-monitor/vm/service-map.md) megoldást használja [Azure monitor naplókban](../azure-monitor/logs/log-query-overview.md) .<br/><br/> Log Analytics munkaterületet egy Azure Migrate projekthez társít. A munkaterületnek az USA keleti régiójában, Délkelet-Ázsiában vagy Nyugat-európai régióban kell lennie. A munkaterületnek olyan régióban kell lennie, amelyben a [Service Map támogatott](../azure-monitor/vm/vminsights-configure-workspace.md#supported-regions).
 **Folyamat** | A TCP-kapcsolatok adatmennyiségét rögzíti. A felderítést követően öt percen belül gyűjti az adatokat. | A gépen telepített Service Map ügynökök adatokat gyűjtenek a TCP-folyamatokról, valamint az egyes folyamatok bejövő/kimenő kapcsolatairól.
 **Adatok** | Forrásoldali gép kiszolgálójának neve, folyamata, alkalmazás neve.<br/><br/> Célszámítógép kiszolgálójának neve, folyamat, alkalmazás neve és port. | Forrásoldali gép kiszolgálójának neve, folyamata, alkalmazás neve.<br/><br/> Célszámítógép kiszolgálójának neve, folyamat, alkalmazás neve és port.<br/><br/> A kapcsolatok száma, a késés és az adatátviteli adatok összegyűjtése és Log Analytics lekérdezések számára elérhetők. 
 **Vizualizáció** | Az önálló kiszolgálók függőségi térképe egy óra és 30 nap közötti időtartamon belül megtekinthető. | Egyetlen kiszolgáló függőségi térképe.<br/><br/> Kiszolgálók egy csoportjának függőségi térképe.<br/><br/>  A Térkép csak egy órán át jeleníthető meg.<br/><br/> Kiszolgálók hozzáadása és eltávolítása a Térkép nézetből.

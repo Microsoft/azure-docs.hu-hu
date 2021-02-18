@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: e6fcf5980cf64b5fc088dfa295ef6221ffda6de9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e29e20d071e992b941b2f6bd803c8dade044fbfd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499934"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592467"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Az Azure-Cognitive Search naplózási adatainak összegyűjtése és elemzése
 
@@ -25,7 +25,7 @@ A diagnosztikai naplózás beállításakor a rendszer megkéri a tárolási mec
 
 | Erőforrás | Alkalmazási cél |
 |----------|----------|
-| [Küldés a Log Analytics-munkaterületre](../azure-monitor/learn/tutorial-resource-logs.md) | Az eseményeket és mérőszámokat egy Log Analytics munkaterületre küldi a rendszer, amely lekérdezhető a portálon, és részletes információkat adhat vissza. Bevezetés: Ismerkedés [a Azure monitor-naplókkal](../azure-monitor/log-query/log-analytics-tutorial.md) |
+| [Küldés a Log Analytics-munkaterületre](../azure-monitor/essentials/tutorial-resource-logs.md) | Az eseményeket és mérőszámokat egy Log Analytics munkaterületre küldi a rendszer, amely lekérdezhető a portálon, és részletes információkat adhat vissza. Bevezetés: Ismerkedés [a Azure monitor-naplókkal](../azure-monitor/logs/log-analytics-tutorial.md) |
 | [Archiválás blob Storage-val](../storage/blobs/storage-blobs-overview.md) | Az események és a metrikák archiválása egy blob-tárolóba történik, és JSON-fájlokban tárolódik. A naplók meglehetősen részletesek (óránként/percenként), ami hasznos lehet egy adott incidens kereséséhez, de a nyílt végű vizsgálathoz nem. Egy JSON-szerkesztővel megtekintheti a naplófájlok összesítéséhez és megjelenítéséhez használható nyers naplófájlt vagy Power BI.|
 | [Stream az Event hub-ba](../event-hubs/index.yml) | Az események és mérőszámok továbbítása egy Azure Event Hubs szolgáltatásba történik. Válassza ezt alternatív adatgyűjtési szolgáltatásként a nagyon nagy naplók számára. |
 
@@ -33,7 +33,7 @@ A diagnosztikai naplózás beállításakor a rendszer megkéri a tárolási mec
 
 Hozzon létre erőforrásokat előre, hogy a diagnosztikai naplózás konfigurálásakor ki lehessen választani egyet vagy többet.
 
-+ [Log Analytics-munkaterület létrehozása](../azure-monitor/learn/quick-create-workspace.md)
++ [Log Analytics-munkaterület létrehozása](../azure-monitor/logs/quick-create-workspace.md)
 
 + [Tárfiók létrehozása](../storage/common/storage-account-create.md)
 
@@ -195,7 +195,7 @@ A blob Storage a naplófájlok archiválására szolgál. A naplófájl megtekin
 
 Miután letöltötte a fájlt, nyissa meg egy JSON-szerkesztőben a tartalom megtekintéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha még nem tette meg, tekintse át a keresési szolgáltatás figyelésének alapjait, és ismerkedjen meg a teljes körű felügyeleti funkciókkal.
 

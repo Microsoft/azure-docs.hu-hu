@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 944d867ef888e70faa659adcc0e2d4c02f003c97
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 40afa1d743b8d074fa46dde46163f6479ebf87c2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567411"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589079"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Felderítés, értékelés és függőségek elemzése – gyakori kérdések
 
@@ -150,9 +150,9 @@ Az ügynök nélküli vizualizáció és az ügynök-alapú vizualizáció köz�
 **Követelmény** | **Ügynök nélküli** | **Ügynök-alapú**
 --- | --- | ---
 Támogatás | Ez a beállítás jelenleg előzetes verzióban érhető el, és csak a VMware virtuális gépekhez használható. [Tekintse át](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) a támogatott operációs rendszereket. | Általánosan elérhető (GA).
-Ügynök | Nem kell telepítenie az ügynököket az áttekinteni kívánt gépekre. | Az elemezni kívánt helyszíni gépekre telepítendő ügynökök: a [Microsoft monitoring Agent (MMA)](../azure-monitor/platform/agent-windows.md)és a [függőségi ügynök](../azure-monitor/platform/agents-overview.md#dependency-agent). 
+Ügynök | Nem kell telepítenie az ügynököket az áttekinteni kívánt gépekre. | Az elemezni kívánt helyszíni gépekre telepítendő ügynökök: a [Microsoft monitoring Agent (MMA)](../azure-monitor/agents/agent-windows.md)és a [függőségi ügynök](../azure-monitor/agents/agents-overview.md#dependency-agent). 
 Előfeltételek | [Tekintse át](concepts-dependency-visualization.md#agentless-analysis) az előfeltételeket és az üzembe helyezésre vonatkozó követelményeket. | [Tekintse át](concepts-dependency-visualization.md#agent-based-analysis) az előfeltételeket és az üzembe helyezésre vonatkozó követelményeket.
-Log Analytics | Nem szükségesek. | A Azure Migrate a [Service Map](../azure-monitor/insights/service-map.md) megoldást használja [Azure monitor naplókban](../azure-monitor/log-query/log-query-overview.md) a függőségi vizualizációhoz. [További információ](concepts-dependency-visualization.md#agent-based-analysis).
+Log Analytics | Nem szükségesek. | A Azure Migrate a [Service Map](../azure-monitor/vm/service-map.md) megoldást használja [Azure monitor naplókban](../azure-monitor/logs/log-query-overview.md) a függőségi vizualizációhoz. [További információ](concepts-dependency-visualization.md#agent-based-analysis).
 Működés | Rögzíti a TCP-kapcsolatok mennyiségét a függőségi vizualizációhoz engedélyezett gépeken. A felderítést követően öt percen belül gyűjti az adatokat. | A gépen telepített Service Map ügynökök gyűjtenek adatokat a TCP-folyamatokról és a bejövő/kimenő kapcsolatokról az egyes folyamatokhoz.
 Adatok | Forrásoldali gép kiszolgálójának neve, folyamata, alkalmazás neve.<br/><br/> Célszámítógép kiszolgálójának neve, folyamat, alkalmazás neve és port. | Forrásoldali gép kiszolgálójának neve, folyamata, alkalmazás neve.<br/><br/> Célszámítógép kiszolgálójának neve, folyamat, alkalmazás neve és port.<br/><br/> A kapcsolatok száma, a késés és az adatátviteli adatok összegyűjtése és Log Analytics lekérdezések számára elérhetők. 
 Vizualizáció | Az önálló kiszolgálók függőségi térképe egy óra és 30 nap közötti időtartamon belül megtekinthető. | Egyetlen kiszolgáló függőségi térképe.<br/><br/> A Térkép csak egy órán át jeleníthető meg.<br/><br/> Kiszolgálók egy csoportjának függőségi térképe.<br/><br/> Kiszolgálók hozzáadása és eltávolítása a Térkép nézetből.
@@ -171,8 +171,8 @@ Nem. További információ a [Azure Migrate díjszabásáról](https://azure.mic
 
 Az ügynök-alapú függőségi vizualizációk használatához töltse le és telepítse az ügynököket minden olyan helyszíni gépen, amelyet ki szeretne értékelni:
 
-- [Microsoft monitoring Agent (MMA)](../azure-monitor/platform/agent-windows.md)
-- [Függőségi ügynök](../azure-monitor/platform/agents-overview.md#dependency-agent)
+- [Microsoft monitoring Agent (MMA)](../azure-monitor/agents/agent-windows.md)
+- [Függőségi ügynök](../azure-monitor/agents/agents-overview.md#dependency-agent)
 - Ha olyan gépekkel rendelkezik, amelyeknek nincs internetkapcsolata, töltse le és telepítse a Log Analytics átjárót rajtuk.
 
 Ezeket az ügynököket csak akkor kell használni, ha ügynök-alapú függőségi vizualizációt használ.
@@ -189,14 +189,14 @@ Nem, az ügynök-alapú vizualizációban nem lehet exportálni a függőség vi
 
 Ügynök-alapú függőségi vizualizáció esetén:
 
-- Parancsfájl használatával [telepítse a függőségi ügynököt](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent).
-- Az MMA esetében [használja a parancssort vagy az automationt](../azure-monitor/platform/log-analytics-agent.md#installation-options), vagy használjon [parancsfájlt](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
+- Parancsfájl használatával [telepítse a függőségi ügynököt](../azure-monitor/vm/vminsights-enable-hybrid.md#dependency-agent).
+- Az MMA esetében [használja a parancssort vagy az automationt](../azure-monitor/agents/log-analytics-agent.md#installation-options), vagy használjon [parancsfájlt](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
 - A parancsfájlok mellett olyan központi telepítési eszközöket is használhat, mint például a Microsoft Endpoint Configuration Manager és a [Intigua](https://www.intigua.com/intigua-for-azure-migration) az ügynökök üzembe helyezéséhez.
 
 ## <a name="what-operating-systems-does-mma-support"></a>Milyen operációs rendszereket támogat az MMA?
 
-- Tekintse meg az [MMA által támogatott Windows operációs rendszerek](../azure-monitor/platform/log-analytics-agent.md#installation-options)listáját.
-- Megtekintheti az [MMA által támogatott Linux operációs rendszerek](../azure-monitor/platform/log-analytics-agent.md#installation-options)listáját.
+- Tekintse meg az [MMA által támogatott Windows operációs rendszerek](../azure-monitor/agents/log-analytics-agent.md#installation-options)listáját.
+- Megtekintheti az [MMA által támogatott Linux operációs rendszerek](../azure-monitor/agents/log-analytics-agent.md#installation-options)listáját.
 
 ## <a name="can-i-visualize-dependencies-for-more-than-one-hour"></a>Megjeleníthető több mint egy órányi függőség?
 
@@ -208,6 +208,6 @@ Az ügynök nélküli vizualizációk esetében egy adott kiszolgáló függős�
 
 Megjelenítheti a [függőségeket](./how-to-create-a-group.md#refine-a-group-with-dependency-mapping) a legfeljebb 10 virtuális géppel rendelkező csoportok esetében. Ha több mint 10 virtuális géppel rendelkező csoporttal rendelkezik, javasoljuk, hogy ossza szét a csoportot kisebb csoportokba, majd jelenítse meg a függőségeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el a [Azure Migrate áttekintést](migrate-services-overview.md).

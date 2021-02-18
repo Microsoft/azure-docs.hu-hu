@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 9b9a83cf71dfa7658c34c3c98f8d12a056adad0c
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: e7e8d51b8227acd033c95583d6e61d78a56d62a3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698784"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590284"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Ajánlott biztonsági eljárások IaaS számítási feladatokhoz az Azure-ban
 Ez a cikk a virtuális gépek és operációs rendszerek ajánlott biztonsági eljárásait ismerteti.
@@ -130,17 +130,17 @@ A Windows és a Linux [rendszerű](../../security-center/security-center-introdu
 
 A Security Center aktívan nyomon követheti a fenyegetéseket, és a potenciális fenyegetések a biztonsági riasztásokban vannak kitéve. A korrelált fenyegetéseket egyetlen, biztonsági incidensnek nevezett nézetben összesítjük.
 
-A Security Center [Azure monitor naplókban](../../azure-monitor/log-query/log-query-overview.md)tárolja az adattárakat. Azure Monitor a naplók egy lekérdezési nyelvet és elemzési motort biztosítanak, amely betekintést nyújt az alkalmazások és erőforrások működésére. A rendszer az adatokat a felhőben vagy a helyszínen lévő virtuális gépekre telepített [Azure monitorokból](../../batch/monitoring-overview.md), felügyeleti megoldásokból és ügynökökből is gyűjti. A közös funkcióknak köszönhetően átfogó képet alkothat a környezetről.
+A Security Center [Azure monitor naplókban](../../azure-monitor/logs/log-query-overview.md)tárolja az adattárakat. Azure Monitor a naplók egy lekérdezési nyelvet és elemzési motort biztosítanak, amely betekintést nyújt az alkalmazások és erőforrások működésére. A rendszer az adatokat a felhőben vagy a helyszínen lévő virtuális gépekre telepített [Azure monitorokból](../../batch/monitoring-overview.md), felügyeleti megoldásokból és ügynökökből is gyűjti. A közös funkcióknak köszönhetően átfogó képet alkothat a környezetről.
 
 Azok a szervezetek, amelyek nem kényszerítik ki az erős biztonságot a virtuális gépek számára, továbbra is tudatában vannak a jogosulatlan felhasználók lehetséges kísérleteinek a biztonsági ellenőrzések megkerülése érdekében
 
 ## <a name="monitor-vm-performance"></a>VIRTUÁLIS gépek teljesítményének figyelése
 Az erőforrás-visszaélés akkor lehet probléma, ha a virtuális gép folyamatai több erőforrást használnak, mint amennyit kellene. A virtuális gépekkel kapcsolatos teljesítményproblémák a szolgáltatás megszakadásához vezethetnek, ami sérti a rendelkezésre állás biztonsági elvét. Ez különösen fontos az IIS-t vagy más webkiszolgálókat üzemeltető virtuális gépek esetében, mivel a magas CPU-vagy memóriahasználat a szolgáltatásmegtagadási (DoS) támadásokat jelezhetik. Fontos, hogy a virtuális gépek hozzáférését a probléma előfordulásakor ne csak a reaktív módon figyelje, hanem proaktív módon, a normál működés során mért alapkonfigurációt is.
 
-Javasoljuk, hogy a [Azure monitor](../../azure-monitor/platform/data-platform.md) használatával betekintést nyerjen az erőforrás állapotára. Azure Monitor funkciók:
+Javasoljuk, hogy a [Azure monitor](../../azure-monitor/data-platform.md) használatával betekintést nyerjen az erőforrás állapotára. Azure Monitor funkciók:
 
-- [Erőforrás-diagnosztikai naplófájlok](../../azure-monitor/platform/platform-logs-overview.md): FIGYELI a virtuális gépek erőforrásait, és azonosítja a teljesítményt és a rendelkezésre állást befolyásoló lehetséges problémákat.
-- [Azure Diagnostics bővítmény](../../azure-monitor/platform/diagnostics-extension-overview.md): a Windows rendszerű virtuális gépek monitorozási és diagnosztikai képességeit biztosítja. Ezeket a képességeket engedélyezheti, ha a bővítményt a [Azure Resource Manager sablon](../../virtual-machines/extensions/diagnostics-template.md)részeként is engedélyezi.
+- [Erőforrás-diagnosztikai naplófájlok](../../azure-monitor/essentials/platform-logs-overview.md): FIGYELI a virtuális gépek erőforrásait, és azonosítja a teljesítményt és a rendelkezésre állást befolyásoló lehetséges problémákat.
+- [Azure Diagnostics bővítmény](../../azure-monitor/agents/diagnostics-extension-overview.md): a Windows rendszerű virtuális gépek monitorozási és diagnosztikai képességeit biztosítja. Ezeket a képességeket engedélyezheti, ha a bővítményt a [Azure Resource Manager sablon](../../virtual-machines/extensions/diagnostics-template.md)részeként is engedélyezi.
 
 Azok a szervezetek, amelyek nem figyelik a virtuális gépek teljesítményét, nem tudják megállapítani, hogy a teljesítménybeli minták bizonyos változásai normál vagy rendellenesek. Egy virtuális gép, amely a megszokottnál több erőforrást használ, a külső erőforrás vagy a virtuális gépen futó sérült folyamat támadását jelezhetik.
 

@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 3a3f4faf8278553153ae2186ea74d20702c603b3
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 4575709a4fa7067b02228036fb2e2b4a60844e21
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780926"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592322"
 ---
 # <a name="azure-files-monitoring-data-reference"></a>Azure Files monitorozási adathivatkozás
 
@@ -36,9 +36,9 @@ A Azure Files a következő kapacitási metrikákat biztosítja a Azure Monitorb
 
 #### <a name="azure-files"></a>Azure Files
 
-Ez a táblázat [Azure Files mérőszámokat](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsfileservices)jelenít meg.
+Ez a táblázat [Azure Files mérőszámokat](../../azure-monitor/essentials/metrics-supported.md#microsoftstoragestorageaccountsfileservices)jelenít meg.
 
-| Metrika | Leírás |
+| Metric | Leírás |
 | ------------------- | ----------------- |
 | FileCapacity | A Storage-fiók által használt file Storage mennyisége. <br/><br/> Egység: bájtok <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
 | FileCount   | A Storage-fiókban található fájlok száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
@@ -85,7 +85,7 @@ A következő táblázat felsorolja az Azure Storage-beli erőforrás-naplók tu
 
 [!INCLUDE [Account level capacity metrics](../../../includes/azure-storage-logs-properties-service.md)]
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - Lásd: [figyelés Azure Files](storage-files-monitoring-reference.md) az Azure Storage figyelésének leírásához.
-- Az Azure-erőforrások figyelésével kapcsolatos részletekért lásd: az [Azure-erőforrások figyelése Azure monitorokkal](../../azure-monitor/insights/monitor-azure-resource.md) .
+- Az Azure-erőforrások figyelésével kapcsolatos részletekért lásd: az [Azure-erőforrások figyelése Azure monitorokkal](../../azure-monitor/essentials/monitor-azure-resource.md) .

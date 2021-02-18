@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: tutorial
 ms.date: 2/8/2021
-ms.openlocfilehash: b20da64c135f7e54a7f6bc74beea073140a1e0a9
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 18cb4e3ada94822c2f4cb1ca7675310a37e44e84
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100101702"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590646"
 ---
 # <a name="tutorial-media-services-trusted-storage"></a>Oktatóanyag: Media Services megbízható tároló
 
@@ -23,6 +23,9 @@ Ezen oktatóanyag segítségével elsajátíthatja a következőket:
 > - Az Azure-szolgáltatások hozzáférésének biztosítása egy Storage-fiókhoz hálózati hozzáférés-vezérlés, például tűzfal vagy VPN használata esetén
 
 A 2020-05-01 API-val engedélyezheti a megbízható tárterületet egy felügyelt identitás Media Services-fiókkal való társításával.
+
+>[!NOTE]
+>A megbízható tárterület csak az API-ban érhető el, és jelenleg nincs engedélyezve a Azure Portal.
 
 A Media Services a rendszerhitelesítés használatával automatikusan hozzáférhet a Storage-fiókhoz. Media Services ellenőrzi, hogy a Media Services fiók és a Storage-fiók ugyanahhoz az előfizetéshez tartoznak-e. Azt is ellenőrzi, hogy a társítást hozzáadó felhasználó hozzáfér-e a Storage-fiókhoz Azure Resource Manager RBAC.
 

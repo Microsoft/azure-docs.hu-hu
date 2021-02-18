@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 42d4467a6441e517ef3194f701eb47e7e68505b1
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: cc5b3b85d6d13fda532da0993fa7f733126b8eae
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806307"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591874"
 ---
 # <a name="view-and-configure-ddos-diagnostic-logging"></a>DDoS-diagnosztikai naplózás megtekintése és konfigurálása
 
@@ -57,9 +57,9 @@ Ha automatikusan engedélyezni szeretné a diagnosztikai naplózást az összes 
 
 7. A **célhely részletei** területen válassza ki a következő lehetőségek közül a kívántat:
 
-    - **Archiválás egy Storage-fiókba**: az adatok egy Azure Storage-fiókba íródnak. Ha többet szeretne megtudni erről a lehetőségről, olvassa el az [erőforrás-naplók archiválása](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage)című témakört.
-    - **Stream az Event hub**-ba: lehetővé teszi, hogy a naplók egy Azure Event hub használatával vegyenek fel naplókat. Az Event hubok lehetővé teszik az integrációt a splunk vagy más SIEM-rendszerekkel. Ha többet szeretne megtudni erről a lehetőségről, tekintse meg a [stream-erőforrás naplófájljait az Event hub](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs)-ban.
-    - **Küldés log Analyticsba**: a naplók beírása a Azure monitor szolgáltatásba. Ha többet szeretne megtudni erről a lehetőségről, tekintse meg a [naplók összegyűjtése Azure monitor naplókban való használatát](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-log-analytics-workspace)ismertető témakört.
+    - **Archiválás egy Storage-fiókba**: az adatok egy Azure Storage-fiókba íródnak. Ha többet szeretne megtudni erről a lehetőségről, olvassa el az [erőforrás-naplók archiválása](../azure-monitor/essentials/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage)című témakört.
+    - **Stream az Event hub**-ba: lehetővé teszi, hogy a naplók egy Azure Event hub használatával vegyenek fel naplókat. Az Event hubok lehetővé teszik az integrációt a splunk vagy más SIEM-rendszerekkel. Ha többet szeretne megtudni erről a lehetőségről, tekintse meg a [stream-erőforrás naplófájljait az Event hub](../azure-monitor/essentials/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs)-ban.
+    - **Küldés log Analyticsba**: a naplók beírása a Azure monitor szolgáltatásba. Ha többet szeretne megtudni erről a lehetőségről, tekintse meg a [naplók összegyűjtése Azure monitor naplókban való használatát](../azure-monitor/essentials/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-log-analytics-workspace)ismertető témakört.
 
 ### <a name="log-schemas"></a>Naplózási sémák
 
@@ -77,7 +77,7 @@ A következő táblázat a mezőneveket és a leírásokat tartalmazza:
 | **Erőforrás** | A nyilvános IP-cím neve. |
 | **ResourceType** | Ez mindig a következő lesz: `PUBLICIPADDRESS` . |
 | **OperationName** | Az értesítések esetében ez a következő lesz: `DDoSProtectionNotifications` .  |
-| **Üzenet** | A támadás részletei. |
+| **Üzenetet** | A támadás részletei. |
 | **Típus** | Az értesítés típusa. A lehetséges értékek a következők: `MitigationStarted` . `MitigationStopped`. |
 | **PublicIpAddress** | A nyilvános IP-címe. |
 
@@ -93,7 +93,7 @@ A következő táblázat a mezőneveket és a leírásokat tartalmazza:
 | **Erőforrás** | A nyilvános IP-cím neve. |
 | **ResourceType** | Ez mindig a következő lesz: `PUBLICIPADDRESS` . |
 | **OperationName** | A flow-naplók esetében ez a következő lesz: `DDoSMitigationFlowLogs` . |
-| **Üzenet** | A támadás részletei. |
+| **Üzenetet** | A támadás részletei. |
 | **SourcePublicIpAddress** | Az ügyfél nyilvános IP-címe, amely a nyilvános IP-címére irányuló forgalmat generál. |
 | **SourcePort** | A portszám 0-tól 65535-ig terjed. |
 | **DestPublicIpAddress** | A nyilvános IP-címe. |

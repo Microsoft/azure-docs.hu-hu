@@ -8,12 +8,12 @@ ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 34c6e7ad8473f02f2772c84ea63aee2a41b97306
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 641b7d44407f8f3760c673f45d69dcfdc8b363b8
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100559688"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650983"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>A többrégiós környezetekben elérhető Azure Cosmos SDK-k rendelkezésre állásának diagnosztizálása és megoldása
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -43,7 +43,17 @@ Ha **nem állít be előnyben részesített régiót**, az SDK-ügyfél alapért
 | Több írási régió | Elsődleges régió  | Elsődleges régió  |
 
 > [!NOTE]
-> Az elsődleges régió az [Azure Cosmos-fiók régiójának](distribute-data-globally.md) első régiójára vonatkozik
+> Az elsődleges régió az [Azure Cosmos-fiók régiójának](distribute-data-globally.md)első régiójára utal.
+> Ha a területi beállításként megadott értékek nem egyeznek a meglévő Azure-régiókkal, a rendszer figyelmen kívül hagyja őket. Ha megegyeznek egy meglévő régióval, de a fiók nem replikálódik rá, akkor az ügyfél az elsődleges régióhoz tartozó következő előnyben részesített régióhoz fog csatlakozni.
+
+> [!WARNING]
+> Ha letiltja a végpont újbóli felderítését (amely hamis értékre van állítva), az ügyfél konfigurációja letiltja a jelen dokumentumban ismertetett összes feladatátvételi és rendelkezésre állási logikát.
+> Ez a konfiguráció a következő paraméterekkel érhető el az egyes Azure Cosmos SDK-ban:
+>
+> * A [ConnectionPolicy. EnableEndpointRediscovery](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.enableendpointdiscovery) tulajdonság a .NET v2 SDK-ban.
+> * A [CosmosClientBuilder. endpointDiscoveryEnabled](/java/api/com.azure.cosmos.cosmosclientbuilder.endpointdiscoveryenabled) metódus a Java v4 SDK-ban.
+> * A [CosmosClient.enable_endpoint_discovery](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) paraméter a Python SDK-ban.
+> * A [CosmosClientOptions. ConnectionPolicy. enableEndpointDiscovery](/javascript/api/@azure/cosmos/connectionpolicy#enableEndpointDiscovery) paraméter a JS SDK-ban.
 
 Normális körülmények között az SDK-ügyfél csatlakozni fog az előnyben részesített régióhoz (ha be van állítva egy területi beállítás) vagy az elsődleges régióra (ha nincs beállítva preferencia), és a műveletek az adott régióra korlátozódnak, kivéve, ha az alábbi esetek bármelyike bekövetkezik.
 
@@ -59,7 +69,7 @@ Az SLA-garanciákkal kapcsolatos átfogó Részletes információkért tekintse 
 
 ## <a name="removing-a-region-from-the-account"></a><a id="remove-region"></a>Régió eltávolítása a fiókból
 
-Ha eltávolít egy régiót egy Azure Cosmos-fiókból, a fiókot aktívan használó SDK-ügyfelek a háttérbeli válasz kódján keresztül fogják észlelni a régió eltávolítását. Az ügyfél ezután nem elérhetőként jelöli meg a regionális végpontot. Az ügyfél újrapróbálkozik az aktuális művelettel, és az összes jövőbeli művelet véglegesen át lesz irányítva a következő régióba, a preferencia sorrendben.
+Ha eltávolít egy régiót egy Azure Cosmos-fiókból, a fiókot aktívan használó SDK-ügyfelek a háttérbeli válasz kódján keresztül fogják észlelni a régió eltávolítását. Az ügyfél ezután nem elérhetőként jelöli meg a regionális végpontot. Az ügyfél újrapróbálkozik az aktuális művelettel, és az összes jövőbeli művelet véglegesen át lesz irányítva a következő régióba, a preferencia sorrendben. Abban az esetben, ha a preferencia-lista csak egy bejegyzést tartalmaz (vagy üres volt), de a fióknak más régiói is vannak, akkor a fiók lista következő régiójára irányítja át.
 
 ## <a name="adding-a-region-to-an-account"></a>Régió hozzáadása egy fiókhoz
 

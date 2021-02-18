@@ -4,12 +4,12 @@ description: A helyszíni vagy Microsoft Azure webalkalmazástól származó fü
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df13042656aa077b30bf144aab0a47d9fc0a0662
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05b6c29b121cbf42cf0ebe12b2879e50735db7ea
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263929"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652003"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Függőségek nyomon követése az Azure Application Insights 
 
@@ -109,9 +109,10 @@ A ASP.NET-alkalmazások esetében a teljes SQL-lekérdezési szöveget a rendsze
 A fenti platform-specifikus lépések mellett **explicit módon be kell jelentkeznie az SQL-parancsok gyűjtésének engedélyezéséhez** a applicationInsights.config fájl módosításával a következőkkel:
 
 ```xml
-<Add Type="Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule, Microsoft.AI.DependencyCollector">
-<EnableSqlCommandTextInstrumentation>true</EnableSqlCommandTextInstrumentation>
-</Add>
+<TelemetryModules>
+  <Add Type="Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule, Microsoft.AI.DependencyCollector">
+    <EnableSqlCommandTextInstrumentation>true</EnableSqlCommandTextInstrumentation>
+  </Add>
 ```
 
 A fenti esetekben a rendszerállapot-kezelő motor megfelelő ellenőrzésének helyes módszere az, hogy ellenőrzi, hogy a gyűjtött SDK-verzió `DependencyTelemetry` "rddp". a "rdddsd" vagy a "rddf" érték azt jelzi, hogy a függőségek gyűjtése DiagnosticSource vagy EventSource visszahívásokon keresztül történik, így a teljes SQL-lekérdezés nem lesz rögzítve.

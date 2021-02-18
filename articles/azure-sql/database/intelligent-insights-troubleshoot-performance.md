@@ -11,17 +11,17 @@ author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 1/14/2021
-ms.openlocfilehash: 3b57172daeffd1766da456e56cb5e445427a4858
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 17ea6716f090144e8dfef16721bfb69dc23e9912
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220388"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589328"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>A Azure SQL Database és az Azure SQL felügyelt példányok teljesítménnyel kapcsolatos problémáinak elhárítása Intelligent Insights
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Ez a lap a [Intelligent Insights](intelligent-insights-overview.md) erőforrás-naplón keresztül észlelt Azure SQL Database és az Azure SQL felügyelt példányok teljesítményével kapcsolatos problémákat ismerteti. A metrikák és erőforrás-naplók a [Azure monitor naplókba](../../azure-monitor/insights/azure-sql.md), az [Azure Event Hubsba](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs), az [Azure Storage](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)-ba vagy egy harmadik féltől származó, az egyéni DevOps-riasztási és jelentéskészítési képességekhez továbbítható megoldás.
+Ez a lap a [Intelligent Insights](intelligent-insights-overview.md) erőforrás-naplón keresztül észlelt Azure SQL Database és az Azure SQL felügyelt példányok teljesítményével kapcsolatos problémákat ismerteti. A metrikák és erőforrás-naplók a [Azure monitor naplókba](../../azure-monitor/insights/azure-sql.md), az [Azure Event Hubsba](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs), az [Azure Storage](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)-ba vagy egy harmadik féltől származó, az egyéni DevOps-riasztási és jelentéskészítési képességekhez továbbítható megoldás.
 
 > [!NOTE]
 > Az Intelligent Insights használatával történő gyors teljesítmény-hibaelhárítási útmutatóért tekintse meg a jelen dokumentum [javasolt hibaelhárítási folyamat](intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) folyamatábráját.
@@ -335,4 +335,4 @@ Intelligent Insights általában egy órányi időt kell igénybe vennie a telje
 - Ismerkedjen meg [Intelligent Insights](intelligent-insights-overview.md) fogalmakkal.
 - Használja a [Intelligent Insights Performance Diagnostics-naplót](intelligent-insights-use-diagnostics-log.md).
 - Figyelés [Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md)használatával.
-- Ismerje meg, hogyan [gyűjthet és használhat adatokat az Azure-erőforrásokból](../../azure-monitor/platform/platform-logs-overview.md).
+- Ismerje meg, hogyan [gyűjthet és használhat adatokat az Azure-erőforrásokból](../../azure-monitor/essentials/platform-logs-overview.md).

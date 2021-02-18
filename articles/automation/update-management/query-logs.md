@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 833e2f7808b4b8efa210bc6a903ed30fe9ac53e0
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 5eb0c7d72896cc9a27907743b1b9c3d5a40614dd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222233"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592858"
 ---
 # <a name="query-update-management-logs"></a>Update Management-naplók lekérdezése
 
@@ -195,7 +195,7 @@ Windows rendszerű számítógépen a következő információkat tekintheti meg
 
 1. Nyissa meg a Windows eseménynaplót. Nyissa meg az **Application and Services Logs\Operations Manager alkalmazást** , és keressen rá a 3000-es azonosítójú eseményre és a 5002-es azonosítójú eseményre **.** Ezek az események jelzik, hogy a számítógép regisztrálva van a Log Analytics-munkaterületen, és konfigurációt kap.
 
-Ha az ügynök nem tud kommunikálni Azure Monitor naplókkal, és az ügynök úgy van konfigurálva, hogy tűzfalon vagy proxykiszolgálón keresztül kommunikáljon az internettel, ellenőrizze, hogy a tűzfal vagy a proxykiszolgáló megfelelően van-e konfigurálva. A tűzfal vagy a proxykiszolgáló megfelelő konfigurálásának ellenőrzéséhez tekintse meg a [hálózati konfiguráció Windows-ügynökhöz](../../azure-monitor/platform/agent-windows.md) vagy [a Linux-ügynök hálózati konfigurációja](../../azure-monitor/learn/quick-collect-linux-computer.md)című témakört.
+Ha az ügynök nem tud kommunikálni Azure Monitor naplókkal, és az ügynök úgy van konfigurálva, hogy tűzfalon vagy proxykiszolgálón keresztül kommunikáljon az internettel, ellenőrizze, hogy a tűzfal vagy a proxykiszolgáló megfelelően van-e konfigurálva. A tűzfal vagy a proxykiszolgáló megfelelő konfigurálásának ellenőrzéséhez tekintse meg a [hálózati konfiguráció Windows-ügynökhöz](../../azure-monitor/agents/agent-windows.md) vagy [a Linux-ügynök hálózati konfigurációja](../../azure-monitor/vm/quick-collect-linux-computer.md)című témakört.
 
 > [!NOTE]
 > Ha a linuxos rendszerek proxyval vagy Log Analytics átjáróval való kommunikációra vannak konfigurálva, és engedélyezte a Update Managementt, frissítse a `proxy.conf` omiuser csoport olvasási engedélyét a fájlhoz a következő parancsok használatával:
@@ -205,7 +205,7 @@ Ha az ügynök nem tud kommunikálni Azure Monitor naplókkal, és az ügynök �
 
 Az újonnan hozzáadott Linux-ügynökök a felmérés végrehajtása után **frissülő** állapotot mutatnak. A folyamat akár hat órát is igénybe vehet.
 
-Annak ellenőrzéséhez, hogy egy Operations Manager felügyeleti csoport kommunikál-e Azure Monitor naplókkal, tekintse meg az [Operations Manager integráció ellenőrzése Azure monitor naplókkal](../../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-azure-monitor)című témakört.
+Annak ellenőrzéséhez, hogy egy Operations Manager felügyeleti csoport kommunikál-e Azure Monitor naplókkal, tekintse meg az [Operations Manager integráció ellenőrzése Azure monitor naplókkal](../../azure-monitor/agents/om-agents.md#validate-operations-manager-integration-with-azure-monitor)című témakört.
 
 ### <a name="single-azure-vm-assessment-queries-windows"></a>Egyetlen Azure-beli VM-értékelő lekérdezés (Windows)
 
@@ -410,5 +410,5 @@ Update
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Azure Monitor naplók részleteiért lásd: [Azure monitor naplók](../../azure-monitor/log-query/log-query-overview.md).
+* Azure Monitor naplók részleteiért lásd: [Azure monitor naplók](../../azure-monitor/logs/log-query-overview.md).
 * A riasztásokkal kapcsolatos segítségért lásd: [riasztások konfigurálása](configure-alerts.md).

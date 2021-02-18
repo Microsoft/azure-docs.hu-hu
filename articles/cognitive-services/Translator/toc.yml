@@ -86,6 +86,22 @@
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
         - name: Megfelelőség
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+- name: Dokumentum fordítása
+  items:
+    - name: Áttekintés
+      items:
+        - name: Mi a dokumentum fordítása?
+          href: document-translation/overview.md
+    - name: Útmutatók
+      items:
+        - name: Ismerkedés a dokumentumok fordításával
+          href: document-translation/get-started-with-document-translation.md
+        - name: SAS-tokenek létrehozása
+          href: document-translation/create-sas-tokens.md
+    - name: Referencia
+      items:
+        - name: Dokumentum fordítási API-referenciája
+          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/translator/translation'
 - name: Custom Translator
   items:
     - name: Áttekintés

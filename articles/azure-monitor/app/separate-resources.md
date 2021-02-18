@@ -3,12 +3,12 @@ title: A Application Insights üzembe helyezésének megtervezése – egy vagy 
 description: A különböző erőforrásokhoz való közvetlen telemetria fejlesztési, tesztelési és üzemi bélyegzők.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 49e9b8920af7333e0d95e23e6e5cf0828d448609
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 3964cddcf27a4b2c7397b508ccb3cc8928bd04ad
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536353"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589534"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Hány Application Insights erőforrást kell üzembe helyezni
 
@@ -86,7 +86,7 @@ Szüksége lesz az összes olyan erőforrás rendszerállapot-kulcsaira, amelyek
 ## <a name="filter-on-build-number"></a>Kiépítés számának szűrése
 Amikor közzéteszi az alkalmazás új verzióját, a különböző buildek közül választhat, hogy el szeretné-e különíteni a telemetria.
 
-Megadhatja az alkalmazás verzió tulajdonságát, így szűrheti a [keresési](../../azure-monitor/app/diagnostic-search.md) és [metrikai Explorer](../../azure-monitor/platform/metrics-charts.md) eredményeit.
+Megadhatja az alkalmazás verzió tulajdonságát, így szűrheti a [keresési](../../azure-monitor/app/diagnostic-search.md) és [metrikai Explorer](../../azure-monitor/essentials/metrics-charts.md) eredményeit.
 
 Az alkalmazás verzió tulajdonságának beállítása több különböző módszerrel is elvégezhető.
 
@@ -132,7 +132,7 @@ Az alkalmazásverzió nyomon követéséhez győződjön meg arról, hogy a Micr
 </PropertyGroup>
 ```
 
-Ha megkapja a verzióinformációkat, az Application Insights webmodul automatikusan hozzáadja az **Alkalmazás verzióját** tulajdonságként a telemetria minden eleméhez. Ez lehetővé teszi a verziók szerinti szűrést, amikor [diagnosztikai kereséseket](../../azure-monitor/app/diagnostic-search.md) végez, illetve [metrikákat vizsgál](../../azure-monitor/platform/metrics-charts.md).
+Ha megkapja a verzióinformációkat, az Application Insights webmodul automatikusan hozzáadja az **Alkalmazás verzióját** tulajdonságként a telemetria minden eleméhez. Ez lehetővé teszi a verziók szerinti szűrést, amikor [diagnosztikai kereséseket](../../azure-monitor/app/diagnostic-search.md) végez, illetve [metrikákat vizsgál](../../azure-monitor/essentials/metrics-charts.md).
 
 Figyelje meg azonban, hogy a build verziószámát csak a Microsoft Build motorja hozza létre, nem pedig a Visual studióból származó fejlesztői Build.
 

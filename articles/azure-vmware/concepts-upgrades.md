@@ -2,17 +2,17 @@
 title: Fogalmak – a privát felhő frissítései és frissítései
 description: Ismerje meg az Azure VMware-megoldás legfontosabb frissítési folyamatait és funkcióit.
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.openlocfilehash: 78d4b566aa9156cdddfdcd69b50ebfd1d10aa784
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.date: 02/16/2021
+ms.openlocfilehash: d93453cbf6ad744844a04cd298cc18ad181cc0b0
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100006701"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634992"
 ---
 # <a name="azure-vmware-solution-private-cloud-updates-and-upgrades"></a>Azure VMware-megoldás saját Felhőbeli frissítései és frissítései
 
-Az Azure VMware-megoldás privát felhők egyik legfőbb előnye, hogy a platform karbantartás alatt áll. A platform karbantartása magában foglalja a VMware ellenőrzött szoftvercsomag automatizált frissítéseit, így biztosítva, hogy az ellenőrzött Azure VMware-megoldás saját felhőalapú szoftverének legújabb verzióját használja.
+Az Azure VMware-megoldás privát felhők egyik előnye, hogy a platform karbantartás alatt áll. A karbantartás magában foglalja a VMware ellenőrzött szoftvercsomag automatizált frissítéseit, így biztosítva, hogy az Azure VMware-megoldás saját felhőalapú szoftverének legújabb verzióját használja.
 
 Pontosabban, az Azure VMware-megoldás saját felhője a következőket tartalmazza:
 
@@ -22,7 +22,7 @@ Pontosabban, az Azure VMware-megoldás saját felhője a következőket tartalma
 - VMware vSAN adattár vSphere számítási feladatokhoz virtuális gépekhez  
 - VMware HCX a számítási feladatok mobilitásához  
 
-Ezen összetevőkön kívül az Azure VMware megoldás saját felhője az Azure alátétben lévő, a kapcsolathoz és a privát felhő üzemeltetéséhez szükséges erőforrásokat is tartalmazza. Az Azure VMware megoldás folyamatosan figyeli az alátét és a VMware-összetevők állapotát. Ha az Azure VMware-megoldás hibát észlel, végrehajtja a sikertelen összetevők kijavítását. 
+Az Azure VMware megoldás saját felhője a kapcsolódáshoz és a privát felhő üzemeltetéséhez szükséges Azure alátét erőforrásaival is rendelkezik. Az Azure VMware megoldás folyamatosan figyeli az alátét és a VMware-összetevők állapotát. Ha az Azure VMware-megoldás hibát észlel, végrehajtja a sikertelen összetevők kijavítását. 
 
 ## <a name="what-components-get-updated"></a>Milyen összetevőket kell frissíteni?   
 
@@ -42,16 +42,16 @@ Az Azure VMware-megoldás a következő típusú frissítéseket alkalmazza a VM
 - Frissítések: egy vagy több VMware-összetevő másodlagos verziója. 
 - Frissítések: egy vagy több VMware-összetevő főverziójának frissítései.
 
-A rendszer a javítások előtt és után is értesíti a privát felhőkre. Emellett a karbantartási időszakot is ütemezhetjük a frissítések vagy a saját felhőre történő verziófrissítések alkalmazása előtt. 
+A rendszer a javítások előtt és után is értesíti a privát felhőkre. Emellett a frissítések vagy a saját felhőre való frissítésük előtt is ütemezhet egy karbantartási időszakot. 
 
 ## <a name="vmware-appliance-backup"></a>VMware készülék biztonsági mentése 
 
-A frissítések mellett az Azure VMware-megoldás a következő VMware-összetevők konfigurációs biztonsági másolatát is végrehajtja:
+Az Azure VMware megoldás a következő VMware-összetevők konfigurációs biztonsági mentését is végrehajtja:
 
 - vCenter Server 
 - NSX – T Manager 
 
-Meghibásodás esetén az Azure VMware-megoldás visszaállíthatja ezeket a konfiguráció biztonsági másolatából. 
+Meghibásodás esetén az Azure VMware megoldás képes visszaállítani ezeket az összetevőket a konfiguráció biztonsági másolatából. 
 
 A VMware-szoftverekkel kapcsolatos további információkért lásd a [privát felhők és fürtök fogalmát ismertető cikket](concepts-private-clouds-clusters.md) és a [gyakori kérdéseket](faq.yml).
 

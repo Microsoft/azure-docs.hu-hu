@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 04/06/2020
-ms.openlocfilehash: 999bb83af6937d4a7b3d7ee8207e2fd689a23d35
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1de2c1ff02c799d04f2ab2c81e83dda5001a531f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490815"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592722"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>Azure SQL Database és SQL felügyelt példányok diagnosztikai telemetria adatfolyam-exportálásának konfigurálása
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -39,15 +39,15 @@ A Intelligent Insights napló exportálásán kívül számos teljesítmény-mé
 | :------------------- | ----- | ----- |
 | [Alapszintű mérőszámok](#basic-metrics): tartalmazza a DTU/CPU-arányt, a DTU/CPU-korlátot, a fizikai adatok olvasási százalékos arányát, a napló írási százalékos arányát, a sikeres/sikertelen/letiltott/blokkolt, a munkamenetek százalékos arányát, a dolgozók százalékos arányát, a tárterületet | Igen | Nem |
 | [A példány és az alkalmazás speciális](#advanced-metrics): tartalmazza a tempdb rendszeradatbázis-információit és a naplófájlok méretét, valamint a tempdb százalékos naplófájlját. | Igen | Nem |
-| [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): a lekérdezési futtatókörnyezet statisztikáit, például a CPU-használat és a lekérdezés időtartamára vonatkozó statisztikai adatokat tartalmazza. | Igen | Igen |
-| [QueryStoreWaitStatistics](#query-store-wait-statistics): a lekérdezési várakozási statisztikával kapcsolatos információkat tartalmaz (a lekérdezéseket várta), például a processzort, a naplót és a zárolást. | Igen | Igen |
-| [Hibák](#errors-dataset): az adatbázis SQL-hibáiról tartalmaz információkat. | Igen | Igen |
+| [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): a lekérdezési futtatókörnyezet statisztikáit, például a CPU-használat és a lekérdezés időtartamára vonatkozó statisztikai adatokat tartalmazza. | Igen | Yes |
+| [QueryStoreWaitStatistics](#query-store-wait-statistics): a lekérdezési várakozási statisztikával kapcsolatos információkat tartalmaz (a lekérdezéseket várta), például a processzort, a naplót és a zárolást. | Igen | Yes |
+| [Hibák](#errors-dataset): az adatbázis SQL-hibáiról tartalmaz információkat. | Igen | Yes |
 | [DatabaseWaitStatistics](#database-wait-statistics-dataset): információ arról, hogy mennyi időt töltöttek egy adatbázis a különböző várakozási típusoknál. | Igen | Nem |
 | [Időtúllépések](#time-outs-dataset): az adatbázis-időtúllépésekkel kapcsolatos információkat tartalmaz. | Igen | Nem |
 | [Blokkok](#blockings-dataset): az adatbázis-események blokkolásával kapcsolatos információkat tartalmaz. | Igen | Nem |
 | [Holtpontok](#deadlocks-dataset): az adatbázis holtpont eseményeivel kapcsolatos információkat tartalmaz. | Igen | Nem |
 | [AutomaticTuning](#automatic-tuning-dataset): az adatbázis Automatikus hangolási javaslataival kapcsolatos információkat tartalmaz. | Igen | Nem |
-| [SQLInsights](#intelligent-insights-dataset): Intelligent Insightst tartalmaz egy adatbázis teljesítményében. További információ: [Intelligent Insights](intelligent-insights-overview.md). | Igen | Igen |
+| [SQLInsights](#intelligent-insights-dataset): Intelligent Insightst tartalmaz egy adatbázis teljesítményében. További információ: [Intelligent Insights](intelligent-insights-overview.md). | Igen | Yes |
 
 > [!NOTE]
 > A diagnosztikai beállítások nem konfigurálhatók a **rendszeradatbázisokhoz**, például a Master, a msdb, a Model, az Resource és a tempdb adatbázisokhoz.
@@ -58,17 +58,17 @@ Ez a diagnosztikai telemetria az alábbi Azure-erőforrások egyikére továbbí
 
 - **[Log Analytics munkaterület](#stream-into-sql-analytics)**:
 
-  Az [SQL Analytics](../../azure-monitor/insights/azure-sql.md)az [log Analytics-munkaterületre](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) továbbított adatfolyamokat is felhasználhatja. Az SQL Analytics egy Felhőbeli figyelési megoldás, amely a teljesítményadatokat, a riasztásokat és a kockázatcsökkentő javaslatokat tartalmazó adatbázisok intelligens figyelését teszi lehetővé. A Log Analytics munkaterületre továbbított adatok elemezhetők más megfigyelési adatokkal, és lehetővé teszik más Azure Monitor funkciók, például riasztások és vizualizációk kihasználása
+  Az [SQL Analytics](../../azure-monitor/insights/azure-sql.md)az [log Analytics-munkaterületre](../../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) továbbított adatfolyamokat is felhasználhatja. Az SQL Analytics egy Felhőbeli figyelési megoldás, amely a teljesítményadatokat, a riasztásokat és a kockázatcsökkentő javaslatokat tartalmazó adatbázisok intelligens figyelését teszi lehetővé. A Log Analytics munkaterületre továbbított adatok elemezhetők más megfigyelési adatokkal, és lehetővé teszik más Azure Monitor funkciók, például riasztások és vizualizációk kihasználása
 - **[Azure Event Hubs](#stream-into-event-hubs)**:
 
-  Az [Azure Event hub](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)-ba továbbított adatfolyamok a következő funkciókat biztosítják:
+  Az [Azure Event hub](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)-ba továbbított adatfolyamok a következő funkciókat biztosítják:
 
   - **Stream-naplók harmadik féltől származó naplózási és telemetria rendszerekhez**: az összes metrika és erőforrás-napló továbbítása egyetlen esemény központba az adatcsatornán keresztül, harmadik féltől származó Siem-vagy log Analytics-eszközre.
   - **Hozzon létre egy egyéni telemetria-és naplózási platformot**: az Event hubok nagymértékben méretezhető közzétételi és előfizetési felépítése lehetővé teszi, hogy rugalmasan betöltse a metrikákat és az erőforrás-naplókat egy egyéni telemetria platformra. A részletekért lásd: [globális méretű telemetria platform tervezése és méretezése az Azure Event Hubsban](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/) .
   - A **szolgáltatás állapotának megtekintése az adattovábbítás Power bi**: Event Hubs, Stream Analytics és Power bi használatával alakítsa át a diagnosztikai adatait az Azure-szolgáltatások közel valós idejű elemzéséhez. A megoldás részleteiért tekintse meg a [stream Analytics és Power bi: valós idejű elemzési irányítópultot a folyamatos adattovábbításhoz](../../stream-analytics/stream-analytics-power-bi-dashboard.md) .
 - **[Azure Storage](#stream-into-azure-storage)**:
 
-  Az [Azure Storage](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage) -ba továbbított adatok lehetővé teszik, hogy nagy mennyiségű diagnosztikai telemetria archiváljon az előző két folyamatos átviteli lehetőségért járó költségek töredékéért.
+  Az [Azure Storage](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) -ba továbbított adatok lehetővé teszik, hogy nagy mennyiségű diagnosztikai telemetria archiváljon az előző két folyamatos átviteli lehetőségért járó költségek töredékéért.
 
 Ez a diagnosztikai telemetria a következő célhelyek egyikére is felhasználható az erőforrás-kihasználtság és a lekérdezés-végrehajtási statisztika méréséhez, így egyszerűbbé válik a teljesítmény monitorozása.
 
@@ -89,7 +89,7 @@ Az alábbi módszerek valamelyikével engedélyezheti és felügyelheti a metrik
 
 ## <a name="configure-the-streaming-export-of-diagnostic-telemetry"></a>A diagnosztikai telemetria adatfolyam-exportálásának konfigurálása
 
-A Azure Portal **diagnosztikai beállítások** menüjében engedélyezheti és konfigurálhatja a diagnosztikai telemetria folyamatos átvitelét. Emellett a PowerShell, az Azure CLI, a [REST API](/rest/api/monitor/diagnosticsettings)és a [Resource Manager-sablonok](../../azure-monitor/samples/resource-manager-diagnostic-settings.md) használatával is konfigurálhatja a diagnosztikai telemetria streamingjét. A következő célhelyek megadásával továbbíthatja a diagnosztikai telemetria: Azure Storage, Azure Event Hubs és Azure Monitor naplók.
+A Azure Portal **diagnosztikai beállítások** menüjében engedélyezheti és konfigurálhatja a diagnosztikai telemetria folyamatos átvitelét. Emellett a PowerShell, az Azure CLI, a [REST API](/rest/api/monitor/diagnosticsettings)és a [Resource Manager-sablonok](../../azure-monitor/essentials/resource-manager-diagnostic-settings.md) használatával is konfigurálhatja a diagnosztikai telemetria streamingjét. A következő célhelyek megadásával továbbíthatja a diagnosztikai telemetria: Azure Storage, Azure Event Hubs és Azure Monitor naplók.
 
 > [!IMPORTANT]
 > A diagnosztikai telemetria adatfolyam-exportálásának alapértelmezett értéke nincs engedélyezve.
@@ -127,7 +127,7 @@ Az alábbi lépéseket követve engedélyezheti a diagnosztikai telemetria folya
 7. Jelölje be a rugalmas készlet diagnosztikai telemetria jelölőnégyzetét: **alapszintű** mérőszámok.
    ![Diagnosztika konfigurálása rugalmas készletekhez](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-container-elasticpool-selection.png)
 
-8. Válassza a **Mentés** lehetőséget.
+8. Kattintson a **Mentés** gombra.
 9. Emellett a következő szakaszban ismertetett lépések végrehajtásával konfigurálhatja a diagnosztikai telemetria a figyelni kívánt rugalmas készletben található minden adatbázishoz.
 
 > [!IMPORTANT]
@@ -156,7 +156,7 @@ Az alábbi lépéseket követve engedélyezheti a diagnosztikai telemetria egyet
 8. A speciális, egyperces figyelési élmény érdekében jelölje be az **alapszintű** mérőszámok jelölőnégyzetét.
 
    ![Diagnosztika konfigurálása Azure SQL Databasehoz](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-database-sql-selection.png)
-9. Válassza a **Mentés** lehetőséget.
+9. Kattintson a **Mentés** gombra.
 10. Ismételje meg ezeket a lépéseket minden figyelni kívánt adatbázis esetében.
 
 > [!TIP]
@@ -192,7 +192,7 @@ A felügyelt példányok erőforrásának diagnosztikai telemetria engedélyezé
 
    ![Diagnosztika konfigurálása felügyelt példányhoz](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-container-mi-selection.png)
 
-8. Válassza a **Mentés** lehetőséget.
+8. Kattintson a **Mentés** gombra.
 9. Emellett a következő szakaszban ismertetett lépéseket követve konfigurálja a diagnosztikai telemetria adatfolyam-továbbítását a felügyelt példányban található minden példány-adatbázishoz.
 
 > [!IMPORTANT]
@@ -220,7 +220,7 @@ Az alábbi lépéseket követve engedélyezheti a diagnosztikai telemetria a pé
 5. Válasszon ki egy célként megadott erőforrást a folyamatos átviteli diagnosztikai adatokhoz: **archiválás a Storage-fiókba**, adatfolyam küldése az **Event hub** felé, vagy **Küldés log Analytics**.
 6. Jelölje be az adatbázis-diagnosztikai telemetria: **SQLInsights**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics** és **hibák** jelölőnégyzetét.
    ![Diagnosztika konfigurálása példány-adatbázisokhoz](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-database-mi-selection.png)
-7. Válassza a **Mentés** lehetőséget.
+7. Kattintson a **Mentés** gombra.
 8. Ismételje meg ezeket a lépéseket minden figyelni kívánt példány-adatbázis esetében.
 
 > [!TIP]
@@ -335,7 +335,7 @@ Az alábbi lépések végrehajtásával figyelheti az adatbázisok és az adatb�
 2. Hozzon létre egy Log Analytics munkaterületet a megoldásban.
 3. Konfigurálja az adatbázisokat a telemetria a munkaterületre.
 
-A diagnosztikai telemetria adatfolyam-exportálását a Azure Portal diagnosztikai beállítások lapján található beépített **küldés log Analytics** lehetőséggel állíthatja be. Az adatfolyamot Log Analytics munkaterületre is engedélyezheti, ha a diagnosztikai beállításokat a [PowerShell-parancsmagok](metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-powershell#configure-the-streaming-export-of-diagnostic-telemetry), az [Azure CLI](metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-cli#configure-the-streaming-export-of-diagnostic-telemetry), a [Azure monitor REST API](/rest/api/monitor/diagnosticsettings)vagy a [Resource Manager-sablonok](../../azure-monitor/samples/resource-manager-diagnostic-settings.md)segítségével engedélyezi.
+A diagnosztikai telemetria adatfolyam-exportálását a Azure Portal diagnosztikai beállítások lapján található beépített **küldés log Analytics** lehetőséggel állíthatja be. Az adatfolyamot Log Analytics munkaterületre is engedélyezheti, ha a diagnosztikai beállításokat a [PowerShell-parancsmagok](metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-powershell#configure-the-streaming-export-of-diagnostic-telemetry), az [Azure CLI](metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-cli#configure-the-streaming-export-of-diagnostic-telemetry), a [Azure monitor REST API](/rest/api/monitor/diagnosticsettings)vagy a [Resource Manager-sablonok](../../azure-monitor/essentials/resource-manager-diagnostic-settings.md)segítségével engedélyezi.
 
 ### <a name="create-an-azure-sql-analytics-resource"></a>Azure SQL Analytics erőforrás létrehozása
 
@@ -428,7 +428,7 @@ Ha Azure SQL Analytics használ, a Azure SQL Analytics navigációs menüjében 
 
 ## <a name="metrics-and-logs-available"></a>Elérhető metrikák és naplók
 
-Az önálló adatbázisok, a készletezett adatbázisok, a rugalmas készletek, a felügyelt példányok és a példány-adatbázisok figyelésére szolgáló telemetria dokumentációja a cikk jelen szakasza tartalmazza. Az SQL Analytics szolgáltatásban összegyűjtött figyelési telemetria a saját egyéni elemzéséhez és az alkalmazások fejlesztéséhez [Azure monitor log lekérdezési](../../azure-monitor/log-query/get-started-queries.md) nyelvet használva.
+Az önálló adatbázisok, a készletezett adatbázisok, a rugalmas készletek, a felügyelt példányok és a példány-adatbázisok figyelésére szolgáló telemetria dokumentációja a cikk jelen szakasza tartalmazza. Az SQL Analytics szolgáltatásban összegyűjtött figyelési telemetria a saját egyéni elemzéséhez és az alkalmazások fejlesztéséhez [Azure monitor log lekérdezési](../../azure-monitor/logs/get-started-queries.md) nyelvet használva.
 
 ### <a name="basic-metrics"></a>Alapszintű mérőszámok
 
@@ -478,7 +478,7 @@ Az összes naplóhoz elérhető telemetria részletei a következő táblázatok
 |TimeGenerated [UTC]|A napló rögzítésekor megjelenő időbélyegző |
 |Típus|Mindig: AzureDiagnostics |
 |ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT. SQL |
-|Category|A kategória neve. Mindig: ResourceUsageStats |
+|Kategória|A kategória neve. Mindig: ResourceUsageStats |
 |Erőforrás|Az erőforrás neve |
 |ResourceType|Az erőforrástípus neve. Mindig: MANAGEDINSTANCES |
 |SubscriptionId|Az adatbázis előfizetési GUID azonosítója |
@@ -503,7 +503,7 @@ Az összes naplóhoz elérhető telemetria részletei a következő táblázatok
 |TimeGenerated [UTC]|A napló rögzítésekor megjelenő időbélyegző |
 |Típus|Mindig: AzureDiagnostics |
 |ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT. SQL |
-|Category|A kategória neve. Mindig: QueryStoreRuntimeStatistics |
+|Kategória|A kategória neve. Mindig: QueryStoreRuntimeStatistics |
 |OperationName|A művelet neve. Mindig: QueryStoreRuntimeStatisticsEvent |
 |Erőforrás|Az erőforrás neve |
 |ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK/adatbázisok |
@@ -554,7 +554,7 @@ További információ a [lekérdezési tár futásidejű statisztikáinak adatai
 |TimeGenerated [UTC]|A napló rögzítésekor megjelenő időbélyegző |
 |Típus|Mindig: AzureDiagnostics |
 |ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT. SQL |
-|Category|A kategória neve. Mindig: QueryStoreWaitStatistics |
+|Kategória|A kategória neve. Mindig: QueryStoreWaitStatistics |
 |OperationName|A művelet neve. Mindig: QueryStoreWaitStatisticsEvent |
 |Erőforrás|Az erőforrás neve |
 |ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK/adatbázisok |
@@ -592,7 +592,7 @@ További információ a [lekérdezési tár várakozási statisztikáinak adatai
 |TimeGenerated [UTC]|A napló rögzítésekor megjelenő időbélyegző |
 |Típus|Mindig: AzureDiagnostics |
 |ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT. SQL |
-|Category|A kategória neve. Mindig: hibák |
+|Kategória|A kategória neve. Mindig: hibák |
 |OperationName|A művelet neve. Mindig: ErrorEvent |
 |Erőforrás|Az erőforrás neve |
 |ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK/adatbázisok |
@@ -621,7 +621,7 @@ További információ az [SQL-hibaüzenetekről](/sql/relational-databases/error
 |TimeGenerated [UTC]|A napló rögzítésekor megjelenő időbélyegző |
 |Típus|Mindig: AzureDiagnostics |
 |ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT. SQL |
-|Category|A kategória neve. Mindig: DatabaseWaitStatistics |
+|Kategória|A kategória neve. Mindig: DatabaseWaitStatistics |
 |OperationName|A művelet neve. Mindig: DatabaseWaitStatisticsEvent |
 |Erőforrás|Az erőforrás neve |
 |ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK/adatbázisok |
@@ -650,7 +650,7 @@ További információ az [adatbázis-várakozási statisztikákról](/sql/relati
 |TimeGenerated [UTC]|A napló rögzítésekor megjelenő időbélyegző |
 |Típus|Mindig: AzureDiagnostics |
 |ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT. SQL |
-|Category|A kategória neve. Mindig: időtúllépések |
+|Kategória|A kategória neve. Mindig: időtúllépések |
 |OperationName|A művelet neve. Mindig: TimeoutEvent |
 |Erőforrás|Az erőforrás neve |
 |ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK/adatbázisok |
@@ -673,7 +673,7 @@ További információ az [adatbázis-várakozási statisztikákról](/sql/relati
 |TimeGenerated [UTC]|A napló rögzítésekor megjelenő időbélyegző |
 |Típus|Mindig: AzureDiagnostics |
 |ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT. SQL |
-|Category|A kategória neve. Mindig: blokkok |
+|Kategória|A kategória neve. Mindig: blokkok |
 |OperationName|A művelet neve. Mindig: BlockEvent |
 |Erőforrás|Az erőforrás neve |
 |ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK/adatbázisok |
@@ -697,7 +697,7 @@ További információ az [adatbázis-várakozási statisztikákról](/sql/relati
 |TimeGenerated [UTC] |A napló rögzítésekor megjelenő időbélyegző |
 |Típus|Mindig: AzureDiagnostics |
 |ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT. SQL |
-|Category|A kategória neve. Mindig: holtpontok |
+|Kategória|A kategória neve. Mindig: holtpontok |
 |OperationName|A művelet neve. Mindig: DeadlockEvent |
 |Erőforrás|Az erőforrás neve |
 |ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK/adatbázisok |
@@ -718,7 +718,7 @@ További információ az [adatbázis-várakozási statisztikákról](/sql/relati
 |TimeGenerated [UTC]|A napló rögzítésekor megjelenő időbélyegző |
 |Típus|Mindig: AzureDiagnostics |
 |ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT. SQL |
-|Category|A kategória neve. Mindig: AutomaticTuning |
+|Kategória|A kategória neve. Mindig: AutomaticTuning |
 |Erőforrás|Az erőforrás neve |
 |ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK/adatbázisok |
 |SubscriptionId|Az adatbázis előfizetési GUID azonosítója |
@@ -743,12 +743,12 @@ További információ az [adatbázis-várakozási statisztikákról](/sql/relati
 
 További információ a [Intelligent Insights napló formátumáról](intelligent-insights-use-diagnostics-log.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretné megtudni, hogyan engedélyezheti a naplózást, és megismerheti a különböző Azure-szolgáltatások által támogatott mérőszámokat és naplózási kategóriákat, tekintse meg a következőt:
 
-- [A Microsoft Azure metrikáinak áttekintése](../../azure-monitor/platform/data-platform.md)
-- [Az Azure-platform naplóinak áttekintése](../../azure-monitor/platform/platform-logs-overview.md)
+- [A Microsoft Azure metrikáinak áttekintése](../../azure-monitor/data-platform.md)
+- [Az Azure-platform naplóinak áttekintése](../../azure-monitor/essentials/platform-logs-overview.md)
 
 A Event Hubsről a következő témakörben olvashat bővebben:
 
