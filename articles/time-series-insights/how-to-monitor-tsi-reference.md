@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: 0b564ddfdea2cf24b7f9b1bc608d47fa4cfe541b
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: bfd0d04313f0b519b4013a43e29d88400c73ea31
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632670"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591378"
 ---
 # <a name="monitoring-azure-time-series-insights-data-reference"></a>Azure Time Series Insights adathivatkozás figyelése
 
@@ -23,12 +23,12 @@ Ismerje meg a Azure Time Series Insights-környezetből Azure Monitor által gy�
 
 ## <a name="metrics"></a>Mérőszámok
 
-Ez a szakasz felsorolja a Azure Time Series Insights összegyűjtött, automatikusan összegyűjtött platform-metrikákat. Az összes Azure Monitor támogatási metrikájának listáját (beleértve a Azure Time Series Insightst is) lásd: [Azure monitor támogatott metrikák](../azure-monitor/platform/metrics-supported.md). A metrikák erőforrás-szolgáltatója a [Microsoft. TimeSeriesInsights/Environments/eventsources](../azure-monitor/platform/metrics-supported.md#microsofttimeseriesinsightsenvironmentseventsources) és a [Microsoft. TimeSeriesInsights/Environments](../azure-monitor/platform/metrics-supported.md#microsofttimeseriesinsightsenvironments).
+Ez a szakasz felsorolja a Azure Time Series Insights összegyűjtött, automatikusan összegyűjtött platform-metrikákat. Az összes Azure Monitor támogatási metrikájának listáját (beleértve a Azure Time Series Insightst is) lásd: [Azure monitor támogatott metrikák](../azure-monitor/essentials/metrics-supported.md). A metrikák erőforrás-szolgáltatója a [Microsoft. TimeSeriesInsights/Environments/eventsources](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironmentseventsources) és a [Microsoft. TimeSeriesInsights/Environments](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironments).
 
 
 ### <a name="ingress"></a>Bejövő forgalom
  
-|Metrika|Metrika megjelenítendő neve|Egység|Aggregáció típusa|Description|
+|Metric|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|
 |---|---|---|---|---|
 |IngressReceivedBytes|Bejövő fogadott bájtok száma|Bájt|Összesen|Az eseményforrás által beolvasott bájtok száma|
 |IngressReceivedInvalidMessages|A bejövő forgalom érvénytelen üzeneteket kapott|Darabszám|Összesen|Az eseményforrás által beolvasott érvénytelen üzenetek száma|
@@ -40,7 +40,7 @@ Ez a szakasz felsorolja a Azure Time Series Insights összegyűjtött, automatik
 
 ### <a name="storage"></a>Tárolás
 
-|Metrika|Metrika megjelenítendő neve|Egység|Aggregáció típusa|Description|
+|Metric|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|
 |---|---|---|---|---|
 |WarmStorageMaxProperties|A meleg tárolás Max tulajdonságai|Darabszám|Maximum|A környezet által az S1/S2 SKU számára engedélyezett tulajdonságok maximális száma, valamint a TB SKU-hoz tartozó meleg tár által engedélyezett tulajdonságok maximális száma|
 |WarmStorageUsedProperties|Meleg tároláshoz használt tulajdonságok |Darabszám|Maximum|A környezet által az S1/S2 SKU-hoz használt tulajdonságok száma, valamint a TB SKU meleg tárolója által használt tulajdonságok száma|

@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 02/17/2021
 ms.author: ambapat
-ms.openlocfilehash: 816941fe0ec3a81c41da56acedcedf2de7febe74
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 0c0a0c5f62f92aaf195e207dfd505ffb017d924e
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445234"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653900"
 ---
 # <a name="managed-hsm-access-control"></a>A Managed HSM hozzáférés-vezérlése
 
@@ -60,10 +60,10 @@ A rendszerbiztonsági tag végpontokon keresztül fér hozzá a síkokhoz. A ké
 
 A következő táblázat a felügyeleti és adatsíkok végpontját mutatja be.
 
-| Hozzáférési &nbsp; sík | Hozzáférés végpontjai | Műveletek | Hozzáférés-vezérlési mechanizmus |
+| Hozzáférési &nbsp; sík | Hozzáférés végpontjai | Üzemeltetés | Hozzáférés-vezérlési mechanizmus |
 | --- | --- | --- | --- |
 | Felügyeleti sík | **Globális**<br> management.azure.com:443<br> | Felügyelt HSM létrehozása, olvasása, frissítése, törlése és áthelyezése<br>Felügyelt HSM-címkék beállítása | Azure RBAC-vel |
-| Adatsík | **Globális**<br> &lt;HSM – név &gt; . Vault.Azure.net:443<br> | **Kulcsok** : visszafejtés, titkosítás,<br> kicsomagolás, becsomagolás, ellenőrzés, aláírás, beolvasás, Listázás, frissítés, létrehozás, importálás, törlés, biztonsági mentés, visszaállítás, kiürítés<br/><br/> **Adatsík szerepkör-felügyelet (felügyelt HSM helyi RBAC)**_: szerepkör-definíciók listázása, szerepkörök hozzárendelése, szerepkör-hozzárendelések törlése, egyéni szerepkörök <br/> <br/> meghatározása_ * biztonsági mentés/visszaállítás **: biztonsági mentés, <br/> <br/> visszaállítás, állapot biztonsági mentésének és visszaállítási műveletének** biztonsági tartománya * *: a biztonsági tartomány letöltése és feltöltése | Felügyelt HSM helyi RBAC |
+| Adatsík | **Globális**<br> &lt;HSM – név &gt; . managedhsm.Azure.net:443<br> | **Kulcsok**: visszafejtés, titkosítás,<br> kicsomagolás, becsomagolás, ellenőrzés, aláírás, beolvasás, Listázás, frissítés, létrehozás, importálás, törlés, biztonsági mentés, visszaállítás, kiürítés<br/><br/> **Adatsík szerepkör-felügyelet (felügyelt HSM helyi RBAC)**_: szerepkör-definíciók listázása, szerepkörök hozzárendelése, szerepkör-hozzárendelések törlése, egyéni szerepkörök <br/> <br/> meghatározása_* biztonsági mentés/visszaállítás **: biztonsági mentés, <br/> <br/> visszaállítás, állapot biztonsági mentésének és visszaállítási műveletének** biztonsági tartománya * *: a biztonsági tartomány letöltése és feltöltése | Felügyelt HSM helyi RBAC |
 |||||
 ## <a name="management-plane-and-azure-rbac"></a>Felügyeleti sík és Azure RBAC
 
@@ -71,9 +71,9 @@ A felügyeleti síkon az Azure RBAC segítségével engedélyezheti a hívó ál
 
 Hozzon létre egy kulcstartót egy erőforráscsoporthoz, és kezelje a hozzáférést Azure Active Directory használatával. A felhasználók vagy csoportok számára engedélyezheti az erőforráscsoport kulcstárolóinak kezelését. A hozzáférést adott hatóköri szinten kell megadni a megfelelő Azure-szerepkörök hozzárendelésével. Ahhoz, hogy hozzáférést biztosítson egy felhasználónak a kulcstartók kezeléséhez, egy előre meghatározott `key vault Contributor` szerepkört kell hozzárendelni a felhasználóhoz egy adott hatókörben. Az Azure-szerepkörökhöz a következő hatóköröket lehet hozzárendelni:
 
-- **Felügyeleti csoport** : az előfizetési szinten hozzárendelt Azure-szerepkörök az adott felügyeleti csoportban lévő összes előfizetésre érvényesek.
-- **Előfizetés** : az előfizetés szintjén hozzárendelt Azure-szerepkörök az adott előfizetésen belüli összes erőforráscsoport és erőforrásra érvényesek.
-- **Erőforráscsoport** : az erőforráscsoport szintjén hozzárendelt Azure-szerepkör az adott erőforráscsoport összes erőforrására vonatkozik.
+- **Felügyeleti csoport**: az előfizetési szinten hozzárendelt Azure-szerepkörök az adott felügyeleti csoportban lévő összes előfizetésre érvényesek.
+- **Előfizetés**: az előfizetés szintjén hozzárendelt Azure-szerepkörök az adott előfizetésen belüli összes erőforráscsoport és erőforrásra érvényesek.
+- **Erőforráscsoport**: az erőforráscsoport szintjén hozzárendelt Azure-szerepkör az adott erőforráscsoport összes erőforrására vonatkozik.
 - **Adott** erőforrás: egy adott erőforráshoz hozzárendelt Azure-szerepkör az adott erőforrásra vonatkozik. Ebben az esetben az erőforrás egy adott kulcstartó.
 
 Számos előre definiált szerepkör létezik. Ha egy előre meghatározott szerepkör nem felel meg az igényeinek, megadhatja saját szerepkörét. További információt az [Azure RBAC: beépített szerepkörök](../../role-based-access-control/built-in-roles.md)című témakörben talál.
@@ -82,10 +82,10 @@ Számos előre definiált szerepkör létezik. Ha egy előre meghatározott szer
 
 Egy szerepkör kiosztásával egy rendszerbiztonsági tag számára biztosít hozzáférést egy adott kulcsfontosságú művelet végrehajtásához. Minden szerepkör-hozzárendeléshez meg kell adnia egy szerepkört és hatókört, amelyre a hozzárendelés vonatkozik. A felügyelt HSM helyi RBAC két hatókör érhető el.
 
-- **"/" vagy "/Keys"** : HSM szintű hatókör. Az ezen a hatókörben szerepkört hozzárendelő rendszerbiztonsági tag a felügyelt HSM-ben a szerepkörben meghatározott műveleteket hajthatja végre.
-- **"/Keys/ &lt; Key-name &gt; "** : kulcs szintű hatókör. Az ebben a hatókörben szerepkört hozzárendelő rendszerbiztonsági tag csak a megadott kulcs összes verziójára vonatkozóan tudja végrehajtani a szerepkörben definiált műveleteket.
+- **"/" vagy "/Keys"**: HSM szintű hatókör. Az ezen a hatókörben szerepkört hozzárendelő rendszerbiztonsági tag a felügyelt HSM-ben a szerepkörben meghatározott műveleteket hajthatja végre.
+- **"/Keys/ &lt; Key-name &gt; "**: kulcs szintű hatókör. Az ebben a hatókörben szerepkört hozzárendelő rendszerbiztonsági tag csak a megadott kulcs összes verziójára vonatkozóan tudja végrehajtani a szerepkörben definiált műveleteket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az első lépéseket ismertető oktatóanyagért lásd: [Mi a felügyelt HSM?](overview.md).
 - A szerepkör-kezelési oktatóanyagért lásd: [felügyelt HSM helyi RBAC](role-management.md)

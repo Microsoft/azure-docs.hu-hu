@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: yuajia
-ms.openlocfilehash: 43f53d1098e08a0f913e3baec2c6aaf3d65054d0
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8a4b48586c564ee5d14a0768156b0477e2935ccf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501566"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575453"
 ---
 # <a name="real-time-monitoring-metrics-and-access-logs-for-azure-cdn"></a>A Azure CDN valós idejű figyelése, metrikái és hozzáférési naplói
 A Microsoft Azure CDNával a következő módokon figyelheti az erőforrásokat a hibák elhárítása, nyomon követése és hibakeresése érdekében. 
@@ -63,7 +63,7 @@ Nyers naplók konfigurálása a Azure CDNhoz a Microsoft profilból:
 
     :::image type="content" source="./media/cdn-raw-logs/raw-logs-02.png" alt-text="Adja meg a naplózási beállításokat a célhelyen." border="true":::
 
-7. Válassza a **Mentés** lehetőséget.
+7. Kattintson a **Mentés** gombra.
 
 ## <a name="configuration---azure-powershell"></a>Konfiguráció – Azure PowerShell
 
@@ -215,7 +215,7 @@ A metrikák a diagramokban jelennek meg, és a PowerShell, a CLI és az API hasz
 
 Azure CDN a Microsoft mértékeit, és 60 másodperces időközönként elküldi a metrikákat. A metrikák akár 3 percet is igénybe vehetnek, hogy megjelenjenek a portálon. 
 
-További információ: [Azure monitor mérőszámok](../azure-monitor/platform/data-platform-metrics.md).
+További információ: [Azure monitor mérőszámok](../azure-monitor/essentials/data-platform-metrics.md).
 
 **A Microsoft által Azure CDN által támogatott metrikák**
 
@@ -226,7 +226,7 @@ További információ: [Azure monitor mérőszámok](../azure-monitor/platform/d
 | ResponseSize | A CDN Edge által az ügyfeleknek küldött válaszként küldött bájtok száma. |Végpont </br> Ügyfél országa. </br> Ügyfél-régió. </br> A HTTP-állapot. </br> HTTP-állapot csoport. |
 | TotalLatency | A CDN által az ügyfélnek **küldött, a CDN által az utolsó válasz bájtig** fogadott kérelmek teljes ideje. |Végpont </br> Ügyfél országa. </br> Ügyfél-régió. </br> A HTTP-állapot. </br> HTTP-állapot csoport. |
 
-**_Találatok száma (a forrástól a kilépéstől a szélétől kimenő forgalomból)/egress_*
+***Találatok száma (a forrástól a kilépéstől a szélétől kimenő forgalomból)/egress**
 
 A bájtok találati arányának kiszámítása során kizárt forgatókönyvek:
 
@@ -265,7 +265,7 @@ Válassza az **új riasztási szabály** a metrikák szakaszban felsorolt mérő
 
 :::image type="content" source="./media/cdn-raw-logs/raw-logs-08.png" alt-text="A CDN-végpontra vonatkozó riasztások konfigurálása." border="true":::
 
-A riasztások Azure Monitor alapján lesznek felszámítva. További információ a riasztásokról: [Azure monitor riasztások](../azure-monitor/platform/alerts-overview.md).
+A riasztások Azure Monitor alapján lesznek felszámítva. További információ a riasztásokról: [Azure monitor riasztások](../azure-monitor/alerts/alerts-overview.md).
 
 ### <a name="additional-metrics"></a>További mérőszámok
 A további mérőszámokat az Azure Log Analytics és a nyers naplók használatával is engedélyezheti további díjakért.
@@ -299,4 +299,4 @@ A Azure CDNről és a jelen cikkben említett egyéb Azure-szolgáltatásokról 
 
 * További információ a [Azure monitorról](../azure-monitor/overview.md).
 
-* [Log Analytics konfigurálása Azure monitorban](../azure-monitor/log-query/log-analytics-tutorial.md).
+* [Log Analytics konfigurálása Azure monitorban](../azure-monitor/logs/log-analytics-tutorial.md).

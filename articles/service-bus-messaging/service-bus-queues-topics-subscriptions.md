@@ -1,14 +1,14 @@
 ---
 title: Üzenetkezelés – várólisták, témakörök és előfizetések Azure Service Bus
 description: Ez a cikk áttekintést nyújt Azure Service Bus üzenetkezelési entitásokról (Üzenetsor, témakörök és előfizetések).
-ms.topic: article
-ms.date: 11/04/2020
-ms.openlocfilehash: 54b6a1fd2d4e8e5ef5bb6522374646257213e4b4
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.topic: conceptual
+ms.date: 02/16/2021
+ms.openlocfilehash: f647164ba18cb83e35b5bd174f09e07a4a9f9aa7
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95791609"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652819"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus queues, topics, and subscriptions (Service Bus-üzenetsorok, -témakörök és -előfizetések)
 Azure Service Bus támogatja a felhőalapú, Message-orientált middleware-technológiákat, beleértve a megbízható üzenetsor-kezelési és tartós közzétételi/előfizetési üzeneteket. Ezek a felügyelt üzenetkezelési képességek olyan leválasztott üzenetkezelési funkciók, amelyek támogatják a közzététel-előfizetést, az időbeli leválasztást és a terheléselosztási forgatókönyveket a Service Bus üzenetkezelési számítási feladattal. A leválasztott kommunikáció számos előnnyel jár. Például az ügyfelek és a kiszolgálók szükség szerint kapcsolódhatnak, és aszinkron módon végezhetik el a műveleteiket.
@@ -26,19 +26,16 @@ A várólisták és a felhasználók közti közti kapcsolat lehetővé teszi az
 A várólistákat a [Azure Portal](service-bus-quickstart-portal.md), a [PowerShell](service-bus-quickstart-powershell.md), a [CLI](service-bus-quickstart-cli.md)vagy a [Resource Manager-sablonok](service-bus-resource-manager-namespace-queue.md)segítségével hozhatja létre. Ezután a C#, a [Java](service-bus-java-how-to-use-queues.md), a [Python](service-bus-python-how-to-use-queues.md), a [JavaScript](service-bus-nodejs-how-to-use-queues.md), a [php](service-bus-php-how-to-use-queues.md)és a [Ruby](service-bus-ruby-how-to-use-queues.md) [nyelveken](service-bus-dotnet-get-started-with-queues.md)írt ügyfelekkel küldhet és fogadhat üzeneteket. 
 
 ### <a name="receive-modes"></a>Fogadási módok
-Két különböző módot is megadhat, amelyekben a Service Bus üzeneteket fogad: **ReceiveAndDelete** vagy **PeekLock**. Ha a [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode) módban Service Bus fogadja a fogyasztótól érkező kérést, az üzenetet felhasználva jelzi, és visszaadja a fogyasztó alkalmazásnak. Ez a mód a legegyszerűbb modell. A legjobban olyan helyzetekben működik, amikor az alkalmazás meghibásodás esetén nem dolgozza fel az üzenetet. A forgatókönyv megértéséhez vegye fontolóra azt a forgatókönyvet, amelyben a fogyasztó kiadja a fogadási kérelmet, majd összeomlik a feldolgozás előtt. Ahogy Service Bus az üzenetet felhasználva jelzi, az alkalmazás újraindításkor elkezdi az üzenetek felhasználását. A hiba miatt nem fog megjelenni az összeomlás előtt felhasznált üzenet.
+Két különböző módot is megadhat, amelyekben Service Bus üzeneteket fogad.
 
-A [PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) módban a fogadási művelet kétfázisú lesz, ami lehetővé teszi az olyan alkalmazások támogatását, amelyek nem tudják elviselni a hiányzó üzeneteket. Ha Service Bus fogadja a kérést, az a következő műveleteket végzi el:
+- **Fogadás és törlés**. Ebben a módban, ha Service Bus fogadja a fogyasztótól érkező kérést, az üzenetet felhasználva jelzi, és visszaadja a fogyasztó alkalmazásnak. Ez a mód a legegyszerűbb modell. A legjobban olyan helyzetekben működik, amikor az alkalmazás meghibásodás esetén nem dolgozza fel az üzenetet. A forgatókönyv megértéséhez vegye fontolóra azt a forgatókönyvet, amelyben a fogyasztó kiadja a fogadási kérelmet, majd összeomlik a feldolgozás előtt. Ahogy Service Bus az üzenetet felhasználva jelzi, az alkalmazás újraindításkor elkezdi az üzenetek felhasználását. A hiba miatt nem fog megjelenni az összeomlás előtt felhasznált üzenet.
+- **Betekintés zárolása**. Ebben a módban a fogadási művelet kétlépcsős lesz, ami lehetővé teszi az olyan alkalmazások támogatását, amelyek nem tudják elviselni a hiányzó üzeneteket. 
+    1. Megkeresi a következő felvenni kívánt üzenetet, **zárolja** , hogy más fogyasztó ne fogadja el, majd visszaküldi az üzenetet az alkalmazásnak. 
+    1. Miután az alkalmazás befejezte az üzenet feldolgozását, megkéri a Service Bus szolgáltatást a fogadási folyamat második szakaszának elvégzéséhez. Ezt követően a szolgáltatás **felhasználja az üzenetet**. 
 
-1. Megkeresi a következő felhasználandó üzenetet.
-1. Zárolja, hogy a többi fogyasztó ne fogadja el.
-1. Ezután adja vissza az üzenetet az alkalmazásnak. 
+        Ha az alkalmazás valamilyen okból nem tudja feldolgozni az üzenetet, kérheti a Service Bus szolgáltatást, hogy **hagyjon** le az üzenetet. Service Bus **feloldja az üzenet zárolását** , és lehetővé teszi, hogy az újbóli fogadása akár ugyanazon felhasználó, akár egy másik versenytárs fogyasztó számára is megtörténjen. Másodszor a zároláshoz **időtúllépés** van társítva. Ha az alkalmazás nem tudja feldolgozni az üzenetet a zárolási időtúllépés lejárta előtt, Service Bus feloldja az üzenet zárolását, és lehetővé teszi, hogy ismét elérhető legyen.
 
-Miután az alkalmazás befejezte az üzenet feldolgozását, vagy megbízhatóan tárolja azt a későbbi feldolgozás érdekében, az üzenet meghívásával végrehajtja a fogadási folyamat második szakaszát [`CompleteAsync`](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) . Ha Service Bus fogadja a **CompleteAsync** kérelmet, az üzenetet a rendszer felhasználva jelöli meg.
-
-Ha az alkalmazás valamilyen okból nem tudja feldolgozni az üzenetet, meghívja a [`AbandonAsync`](/dotnet/api/microsoft.azure.servicebus.queueclient.abandonasync) metódust az üzeneten (a helyett [`CompleteAsync`](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) ). Ez a módszer lehetővé teszi az Service Bus számára az üzenet zárolásának feloldását, és elérhetővé tételét, akár ugyanazon fogyasztó, akár egy másik versengő fogyasztó számára. Másodszor a zároláshoz időtúllépés van társítva. Ha az alkalmazás nem tudja feldolgozni az üzenetet a zárolási időtúllépés lejárta előtt, Service Bus feloldja az üzenet zárolását, és lehetővé teszi, hogy ismét elérhető legyen.
-
-Ha az alkalmazás összeomlik az üzenet feldolgozása után, de a hívása előtt [`CompleteAsync`](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) , Service Bus az újraindításkor visszaküldi az üzenetet az alkalmazásnak. Ezt a folyamatot gyakran **legalább egyszeri** feldolgozásnak nevezik. Azaz minden üzenet feldolgozása legalább egyszer megtörténik. Bizonyos helyzetekben azonban előfordulhat, hogy ugyanazt az üzenetet újra lehet küldeni. Ha a forgatókönyv nem tudja elviselni az ismétlődő feldolgozást, adjon hozzá további logikát az alkalmazásban az ismétlődések észleléséhez. Ez az üzenet [MessageID](/dotnet/api/microsoft.azure.servicebus.message.messageid) tulajdonságával érhető el, amely állandó marad a kézbesítési kísérletek között. Ezt a szolgáltatást **pontosan egyszer** kell feldolgozni.
+        Ha az alkalmazás összeomlik az üzenet feldolgozása után, de mielőtt a Service Bus szolgáltatásra kéri az üzenet befejezését, Service Bus az újraindításkor visszaadja az üzenetet az alkalmazásnak. Ezt a folyamatot gyakran **legalább egyszeri** feldolgozásnak nevezik. Azaz minden üzenet feldolgozása legalább egyszer megtörténik. Bizonyos helyzetekben azonban előfordulhat, hogy ugyanazt az üzenetet újra lehet küldeni. Ha a forgatókönyv nem tudja elviselni az ismétlődő feldolgozást, adjon hozzá további logikát az alkalmazásban az ismétlődések észleléséhez. További információ: [duplikált észlelés](duplicate-detection.md). Ezt a szolgáltatást **pontosan egyszer** kell feldolgozni.
 
 ## <a name="topics-and-subscriptions"></a>Témakörök és előfizetések
 A várólista lehetővé teszi az üzenetek egyetlen fogyasztó általi feldolgozását. A várólistákkal ellentétben a témakörök és az előfizetések egy-a-többhöz típusú kommunikációt biztosítanak egy **közzétételi és** előfizetési mintában. Hasznos nagy számú címzett méretezésére. Minden közzétett üzenet elérhetővé válik minden, a témakörben regisztrált előfizetés számára. A közzétevő üzenetet küld egy témakörnek, és egy vagy több előfizető megkapja az üzenet másolatát az ezen előfizetéseken beállított szűrési szabályoktól függően. Az előfizetések további szűrőket is használhatnak a fogadni kívánt üzenetek korlátozására. A közzétevők üzeneteket küldenek egy témakörbe ugyanúgy, ahogy üzeneteket küldenek egy várólistába. A felhasználók azonban nem kapnak üzeneteket közvetlenül a témakörből. Ehelyett a felhasználók üzeneteket kapnak a témakör előfizetései között. A témakör-előfizetés egy olyan virtuális várólistára hasonlít, amely megkapja a témakörbe küldött üzenetek másolatait. A felhasználók azonos módon fogadnak üzeneteket az előfizetéstől az üzenetek várólistából való fogadásával.
@@ -55,7 +52,7 @@ Teljes körű működésre példaként tekintse meg a [TopicSubscriptionWithRule
 
 A lehetséges szűrési értékekkel kapcsolatos további információkért tekintse meg a [SqlFilter](/dotnet/api/microsoft.azure.servicebus.sqlfilter) és a [SqlRuleAction](/dotnet/api/microsoft.azure.servicebus.sqlruleaction) osztály dokumentációját.
 
-## <a name="java-message-service-jms-20-entities-preview"></a>Java Message Service (JMS) 2,0 entitások (előzetes verzió)
+## <a name="java-message-service-jms-20-entities"></a>Java Message Service (JMS) 2,0 entitások
 A következő entitások érhetők el a Java Message Service (JMS) 2,0 API-n keresztül.
 
   * Ideiglenes várólisták
@@ -67,7 +64,7 @@ A következő entitások érhetők el a Java Message Service (JMS) 2,0 API-n ker
 
 További információ a [JMS 2,0-entitásokról](java-message-service-20-entities.md) és [azok használatáról](how-to-use-java-message-service-20.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információt és példákat a Service Bus üzenetkezelés használatával kapcsolatban a következő speciális témakörökben talál:
 

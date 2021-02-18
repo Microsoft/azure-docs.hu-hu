@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: bcb9ca9e73c0898dc778202eca036a5ae92bebf8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87fc8e30274f0a11b7ddfc5eeb184f1a45a5351d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87076143"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588382"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Események összesítése és gyűjtése a Windows Azure Diagnostics használatával
 > [!div class="op_single_selector"]
@@ -177,7 +177,7 @@ Ezután frissítse a `VirtualMachineProfile` template.jsfájljának szakaszát �
 }
 ```
 
-Miután a leírtak szerint módosította a template.jsfájlt, tegye közzé újra a Resource Manager-sablont. Ha a sablon exportálása megtörtént, a deploy.ps1 fájl futtatása újból közzéteszi a sablont. A telepítést követően győződjön meg arról, hogy a **ProvisioningState** **sikeres**volt.
+Miután a leírtak szerint módosította a template.jsfájlt, tegye közzé újra a Resource Manager-sablont. Ha a sablon exportálása megtörtént, a deploy.ps1 fájl futtatása újból közzéteszi a sablont. A telepítést követően győződjön meg arról, hogy a **ProvisioningState** **sikeres** volt.
 
 > [!TIP]
 > Ha tárolókat helyez üzembe a fürtön, engedélyezze a WAD-t a Docker-statisztika felvételéhez, ha hozzáadja ezt a **WadCfg > DiagnosticMonitorConfiguration** szakaszhoz.
@@ -346,12 +346,12 @@ A Resource Manager-sablon "WadCfg" vegyen fel egy "fogadót" a következő két 
 
 A fenti kódrészletekben az "applicationInsights" nevet is használták a fogadó leírására. Ez nem követelmény, és mindaddig, amíg a fogadó neve szerepel a "mosogatók" között, bármilyen sztringre beállíthatja a nevet.
 
-Jelenleg a fürtből származó naplók **nyomkövetésként** jelennek meg Application Insights "log Viewerben. Mivel a platformról érkező nyomok többsége "tájékoztató" jellegű, a fogadó konfigurációjának módosítását is megteheti, hogy csak "figyelmeztetés" vagy "hiba" típusú naplókat küldjön. Ezt úgy teheti meg, hogy "csatornákat" ad hozzá a fogadóhoz, ahogy azt a [jelen cikk](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)mutatja.
+Jelenleg a fürtből származó naplók **nyomkövetésként** jelennek meg Application Insights "log Viewerben. Mivel a platformról érkező nyomok többsége "tájékoztató" jellegű, a fogadó konfigurációjának módosítását is megteheti, hogy csak "figyelmeztetés" vagy "hiba" típusú naplókat küldjön. Ezt úgy teheti meg, hogy "csatornákat" ad hozzá a fogadóhoz, ahogy azt a [jelen cikk](../azure-monitor/agents/diagnostics-extension-to-application-insights.md)mutatja.
 
 >[!NOTE]
 >Ha a portálon vagy a Resource Manager-sablonban helytelen Application Insights kulcsot használ, akkor manuálisan kell módosítania a kulcsot, és frissítenie kell a fürtöt, majd újra kell telepítenie.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure Diagnostics megfelelő konfigurálása után a ETW és a EventSource naplókból származó adatok jelennek meg a tároló tábláiban. Ha úgy dönt, hogy Azure Monitor naplókat, Kibana vagy bármely más adatelemzési és vizualizációs platformot használ, amely nem közvetlenül a Resource Manager-sablonban van konfigurálva, ügyeljen arra, hogy a kívánt platformot állítsa be a tárolási táblákból származó adatok olvasásához. Ezt Azure Monitor naplóknál viszonylag triviálisan használják, és az [esemény-és naplózási elemzésekben](service-fabric-diagnostics-event-analysis-oms.md)is ismertetjük. Application Insights ebben az értelemben egy kis különleges eset, mivel a diagnosztikai bővítmény konfigurációjának részeként konfigurálható, ezért a [megfelelő cikkben](service-fabric-diagnostics-event-analysis-appinsights.md) tájékozódhat, ha úgy dönt, hogy az AI-t használja.
 

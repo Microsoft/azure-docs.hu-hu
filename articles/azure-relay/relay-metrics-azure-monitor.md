@@ -4,12 +4,12 @@ description: Ez a cikk azt ismerteti, hogyan használható a Azure Monitor az Az
 services: service-bus-relay
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: f39019dc092740c166798a7f85d5bdba686adbf4
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 7f91ac0aec46d0fc24901585156dceabb18640c1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179962"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586834"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor"></a>Azure Monitor Azure Relay metrikák 
 Azure Relay mérőszámok az Azure-előfizetésében lévő erőforrások állapotát adják meg. A metrikai adatok gazdag készletével felmérhető a továbbítási erőforrások általános állapota, nem csak a névtér szintjén, hanem az entitás szintjén is. Ezek a statisztikák fontosak lehetnek, mivel segítenek a Azure Relay állapotának figyelésében. A metrikák az Azure-támogatáshoz való kapcsolódás nélkül is segíthetnek a hibák elhárításában.
@@ -21,9 +21,9 @@ A Azure Monitor egységes felhasználói felületet biztosít a különböző Az
 
 ## <a name="access-metrics"></a>Hozzáférési metrikák
 
-Azure Monitor több módszert biztosít a metrikák eléréséhez. A mérőszámokat a [Azure Portalon](https://portal.azure.com)keresztül érheti el, vagy használhatja a Azure monitor API-kat (REST és .net) és az elemzési megoldásokat, például az Operation Management Suite-t és a Event Hubst. További információ: [Azure monitor által összegyűjtött adatok figyelése](../azure-monitor/platform/data-platform.md).
+Azure Monitor több módszert biztosít a metrikák eléréséhez. A mérőszámokat a [Azure Portalon](https://portal.azure.com)keresztül érheti el, vagy használhatja a Azure monitor API-kat (REST és .net) és az elemzési megoldásokat, például az Operation Management Suite-t és a Event Hubst. További információ: [Azure monitor által összegyűjtött adatok figyelése](../azure-monitor/data-platform.md).
 
-A metrikák alapértelmezés szerint engedélyezve vannak, és a legutóbbi 30 nap adatait is elérheti. Ha hosszabb ideig kell megőriznie az adatokat, archiválhatja a metrikák adatait egy Azure Storage-fiókba. Ez a Azure Monitor [diagnosztikai beállításaiban](../azure-monitor/platform/diagnostic-settings.md) van konfigurálva.
+A metrikák alapértelmezés szerint engedélyezve vannak, és a legutóbbi 30 nap adatait is elérheti. Ha hosszabb ideig kell megőriznie az adatokat, archiválhatja a metrikák adatait egy Azure Storage-fiókba. Ez a Azure Monitor [diagnosztikai beállításaiban](../azure-monitor/essentials/diagnostic-settings.md) van konfigurálva.
 
 ## <a name="access-metrics-in-the-portal"></a>Hozzáférési metrikák a portálon
 
@@ -48,7 +48,7 @@ Minden metrikai érték Azure Monitor percenként lesz elküldve. Az idő részl
 
 ## <a name="connection-metrics"></a>Kapcsolatok metrikái
 
-| Metrika neve | Leírás |
+| Metrika neve | Description |
 | ------------------- | ----------------- |
 | ListenerConnections-Success  | Egy adott időszakban Azure Relay sikeres figyelő-kapcsolatok száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 |ListenerConnections-ClientError |A figyelő kapcsolatainak száma a megadott időszakban.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
@@ -65,7 +65,7 @@ Minden metrikai érték Azure Monitor percenként lesz elküldve. Az idő részl
 
 ## <a name="memory-usage-metrics"></a>Memóriahasználat mérőszámai
 
-| Metrika neve | Leírás |
+| Metrika neve | Description |
 | ------------------- | ----------------- |
 |BytesTransferred |A megadott időszakon át továbbított bájtok száma.<br/><br/> Egység: bájtok <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 
@@ -73,7 +73,7 @@ Minden metrikai érték Azure Monitor percenként lesz elküldve. Az idő részl
 
 A Azure Relay a Azure Monitor metrikáinak következő dimenzióit támogatja. Nem kötelező dimenziókat hozzáadni a metrikához. Ha nem ad hozzá dimenziókat, a metrikák a névtér szintjén vannak megadva. 
 
-|Dimenzió neve|Leírás|
+|Dimenzió neve|Description|
 | ------------------- | ----------------- |
 |EntityName| Azure Relay támogatja az üzenetküldési entitásokat a névtérben.|
 

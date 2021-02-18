@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 30be9cbba7fe702d12285fe13794290c4820fd53
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 544f871f62481243cda2409db24b0d067df28c32
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487993"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580592"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL figyelése és finomhangolása – nagy kapacitású (Citus)
 
@@ -22,13 +22,13 @@ A kiszolgálók figyelési adatai segítenek a számítási feladatok megoldás�
 
 A nagy kapacitású (Citus) metrikákat biztosít a kiszolgálócsoport egyes csomópontjaihoz. A metrikák betekintést nyújtanak a támogatási erőforrások viselkedésére. Minden metrika egy egyperces gyakorisággal van kibocsátva, és akár 30 napig is eltarthat.
 
-A metrikák diagramjainak megtekintése mellett beállíthatja a riasztásokat is. Részletes útmutatást a [riasztások beállítása](howto-hyperscale-alert-on-metric.md)című témakörben talál.  Az egyéb feladatok közé tartozik az automatizált műveletek beállítása, a speciális elemzések futtatása és az archiválási előzmények. További információt az [Azure mérőszámok áttekintése](../azure-monitor/platform/data-platform.md)című témakörben talál.
+A metrikák diagramjainak megtekintése mellett beállíthatja a riasztásokat is. Részletes útmutatást a [riasztások beállítása](howto-hyperscale-alert-on-metric.md)című témakörben talál.  Az egyéb feladatok közé tartozik az automatizált műveletek beállítása, a speciális elemzések futtatása és az archiválási előzmények. További információt az [Azure mérőszámok áttekintése](../azure-monitor/data-platform.md)című témakörben talál.
 
 ### <a name="list-of-metrics"></a>Metrikák listája
 
 Ezek a metrikák a nagy kapacitású-(Citus-) csomópontokhoz érhetők el:
 
-|Metrika|Metrika megjelenítendő neve|Egység|Leírás|
+|Metric|Metrika megjelenítendő neve|Unit (Egység)|Description|
 |---|---|---|---|
 |active_connections|Aktív kapcsolatok|Darabszám|A kiszolgálóval létesített aktív kapcsolatok száma.|
 |cpu_percent|CPU-százalék|Százalék|A használatban lévő CPU százalékos aránya.|

@@ -3,12 +3,12 @@ title: Egyéni rendelkezésre állási tesztek létrehozása és futtatása Azur
 description: Ez a dokumentum azt ismerteti, hogyan hozhat létre egy Azure-függvényt a TrackAvailability () használatával, amely rendszeres időközönként a TimerTrigger függvényben megadott konfigurációnak megfelelően fog futni. A teszt eredményét a rendszer elküldi a Application Insights-erőforrásnak, ahol a rendelkezésre állási eredmények adataira vonatkozó lekérdezéssel és riasztással kapcsolatos értesítéseket fog kapni. A testreszabott tesztek lehetővé teszik az összetettebb rendelkezésre állási tesztek megírását, mint amennyi a portál felhasználói felületén lehetséges, figyelheti az alkalmazást az Azure-VNET belül, módosíthatja a végponti címeket, vagy létrehozhat egy rendelkezésre állási tesztet, ha az nem érhető el a régióban.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 3553b212d1b63d4bd239893ba90aa3465d98df60
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 98d9eaadb31ffdeabe85752f7c76bdd4f7c0d4f3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945651"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589936"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Egyéni rendelkezésre állási tesztek létrehozása és futtatása Azure Functions használatával
 
@@ -125,7 +125,7 @@ public async static Task Run(TimerInfo myTimer, ILogger log)
 
 ```
 
-A fájlok megtekintése lehetőségnél kattintson a **Hozzáadás**gombra. Hívja meg az új file **function. Proj** fájlt a következő konfigurációval.
+A fájlok megtekintése lehetőségnél kattintson a **Hozzáadás** gombra. Hívja meg az új file **function. Proj** fájlt a következő konfigurációval.
 
 ```C#
 <Project Sdk="Microsoft.NET.Sdk">
@@ -142,7 +142,7 @@ A fájlok megtekintése lehetőségnél kattintson a **Hozzáadás**gombra. Hív
 >[!div class="mx-imgBorder"]
 >![A jobb gombbal válassza a Hozzáadás lehetőséget. Nevezze el a file function. Proj fájlt.](media/availability-azure-functions/addfile.png)
 
-A fájlok megtekintése lehetőségnél kattintson a **Hozzáadás**gombra. Hívja meg az új **runAvailabilityTest. CSX** fájlt a következő konfigurációval.
+A fájlok megtekintése lehetőségnél kattintson a **Hozzáadás** gombra. Hívja meg az új **runAvailabilityTest. CSX** fájlt a következő konfigurációval.
 
 ```C#
 public async static Task RunAvailbiltyTestAsync(ILogger log)
@@ -175,7 +175,7 @@ Ha mindent futtatott (üzleti logika hozzáadása nélkül), akkor a teszt siker
 
 ## <a name="query-in-logs-analytics"></a>Lekérdezés a naplókban (Analitika)
 
-A naplók (Analitika) használatával megtekintheti a rendelkezésre állási eredményeket, a függőségeket és egyebeket. A naplókról további információt a [log Query áttekintése című](../log-query/log-query-overview.md)témakörben találhat.
+A naplók (Analitika) használatával megtekintheti a rendelkezésre állási eredményeket, a függőségeket és egyebeket. A naplókról további információt a [log Query áttekintése című](../logs/log-query-overview.md)témakörben találhat.
 
 >[!div class="mx-imgBorder"]
 >![Rendelkezésre állási eredmények](media/availability-azure-functions/availabilityresults.png)
@@ -183,7 +183,7 @@ A naplók (Analitika) használatával megtekintheti a rendelkezésre állási er
 >[!div class="mx-imgBorder"]
 >![Képernyőfelvétel: az új lekérdezés lap, amelynek függőségei a 50-ra korlátozódnak.](media/availability-azure-functions/dependencies.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Alkalmazástérkép](./app-map.md)
 - [Tranzakció diagnosztikája](./transaction-diagnostics.md)

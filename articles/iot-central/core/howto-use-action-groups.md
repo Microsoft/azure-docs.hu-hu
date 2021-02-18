@@ -8,18 +8,18 @@ ms.date: 12/06/2019
 ms.topic: how-to
 ms.service: iot-central
 manager: philmea
-ms.openlocfilehash: b447f44d0c95693e560fd5bbfbff8c8daeec964e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84a723023bf8614b837ba9783bae987403921c06
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80157687"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585487"
 ---
 # <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>Több művelet csoportosítása egy vagy több szabályból való futtatáshoz
 
 *Ez a cikk az építők és a rendszergazdákra vonatkozik.*
 
-Az Azure IoT Centralban szabályokat hozhat létre a műveletek futtatásához, ha egy feltétel teljesül. A szabályok az eszköz telemetria vagy eseményein alapulnak. Például értesítheti az operátort, ha az eszköz hőmérséklete meghaladja a küszöbértéket. Ez a cikk azt ismerteti, hogyan használhatók [Azure monitor](../../azure-monitor/overview.md) *műveleti csoportok* több művelet egy IoT Central-szabályhoz való csatolásához. A műveleti csoportokat több szabályhoz is csatolhatja. A [műveleti csoport](../../azure-monitor/platform/action-groups.md) az Azure-előfizetés tulajdonosa által meghatározott értesítési beállítások gyűjteménye.
+Az Azure IoT Centralban szabályokat hozhat létre a műveletek futtatásához, ha egy feltétel teljesül. A szabályok az eszköz telemetria vagy eseményein alapulnak. Például értesítheti az operátort, ha az eszköz hőmérséklete meghaladja a küszöbértéket. Ez a cikk azt ismerteti, hogyan használhatók [Azure monitor](../../azure-monitor/overview.md) *műveleti csoportok* több művelet egy IoT Central-szabályhoz való csatolásához. A műveleti csoportokat több szabályhoz is csatolhatja. A [műveleti csoport](../../azure-monitor/alerts/action-groups.md) az Azure-előfizetés tulajdonosa által meghatározott értesítési beállítások gyűjteménye.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -28,7 +28,7 @@ Az Azure IoT Centralban szabályokat hozhat létre a műveletek futtatásához, 
 
 ## <a name="create-action-groups"></a>Műveletcsoportok létrehozása
 
-[Létrehozhat és kezelhet műveleti csoportokat a Azure Portal](../../azure-monitor/platform/action-groups.md) vagy egy [Azure Resource Manager sablonnal](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
+[Létrehozhat és kezelhet műveleti csoportokat a Azure Portal](../../azure-monitor/alerts/action-groups.md) vagy egy [Azure Resource Manager sablonnal](../../azure-monitor/alerts/action-groups-create-resource-manager-template.md).
 
 Egy műveleti csoport a következőket teheti:
 
@@ -68,6 +68,6 @@ A következő szöveg egy példa SMS-üzenetet küld egy műveleti csoportból:
 
 `iotcentral: Azure IoT Central alert: Contoso - "Low pressure alert" triggered on "Motion sensor 2" at March 20, 2019 10:12 UTC`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan használhatók a műveleti csoportok szabályokkal, a javasolt következő lépés az [eszközök kezelésének](howto-manage-devices.md)megismerése.

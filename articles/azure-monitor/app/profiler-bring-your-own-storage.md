@@ -6,12 +6,12 @@ author: renatosalas
 ms.author: regutier
 ms.date: 01/14/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: f82432c1dd8c66e8ce845831ff35d534a34e3e04
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 9c3ff91cbfb6423099040a6ea46eeb66f5461f48
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202538"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589662"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>A saját tároló (BYOS) beállítása a Application Insights Profiler és a Snapshot Debugger
 
@@ -21,9 +21,9 @@ Application Insights Profiler vagy Snapshot Debugger használatakor az alkalmaz�
 Ha saját tárhelyet használ, a rendszer feltölti ezeket az összetevőket egy Ön által vezérelt Storage-fiókba. Ez azt jelenti, hogy a titkosítást a REST-re vonatkozó szabályzatot, az élettartam-kezelési házirendet és a hálózati hozzáférést szabályozza. A Storage-fiókkal kapcsolatos költségekért azonban felelősnek kell lennie.
 
 > [!NOTE]
-> Ha engedélyezi a privát hivatkozásokat, a saját tárterületet is igénybe kell hoznia. További információ a Application Insightshoz tartozó privát hivatkozásokról [: dokumentáció.](../platform/private-link-security.md)
+> Ha engedélyezi a privát hivatkozásokat, a saját tárterületet is igénybe kell hoznia. További információ a Application Insightshoz tartozó privát hivatkozásokról [: dokumentáció.](../logs/private-link-security.md)
 >
-> Ha engedélyezi Customer-Managed kulcsokat, a saját tárterületet kell használnia. A Application Insights Customer-Managed kulcsaival kapcsolatos további információkért [tekintse meg a dokumentációt.](../platform/customer-managed-keys.md)
+> Ha engedélyezi Customer-Managed kulcsokat, a saját tárterületet kell használnia. A Application Insights Customer-Managed kulcsaival kapcsolatos további információkért [tekintse meg a dokumentációt.](../logs/customer-managed-keys.md)
 
 ## <a name="how-will-my-storage-account-be-accessed"></a>Hogyan lesz elérhető a Storage-fiókom?
 1. A Virtual Machinesban vagy App Serviceban futó ügynökök az összetevők (profilok, Pillanatképek és szimbólumok) feltöltését is feltölthetik a fiókban található blob-tárolóba. Ehhez a folyamathoz kapcsolatba kell lépnie a Application Insights Profiler vagy Snapshot Debugger szolgáltatással, hogy SAS (közös hozzáférésű aláírási) tokent szerezzen be a Storage-fiókjában lévő új blobba.

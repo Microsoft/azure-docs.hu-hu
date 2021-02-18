@@ -2,13 +2,13 @@
 title: A AMQP 1,0-es verziójának áttekintése Azure Service Bus
 description: Ismerje meg, hogyan támogatja a Azure Service Bus a Advanced Message Queueing Protocol (AMQP), egy nyílt szabványú protokollt.
 ms.topic: article
-ms.date: 11/20/2020
-ms.openlocfilehash: 58c2cc8e9d92fff31a286b6e9bd63b63bee26aee
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.date: 02/17/2021
+ms.openlocfilehash: b2ca126312f5fc3da2a7ff6e20a9ade252f489f1
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632884"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653883"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>AMQP 1,0-támogatás Service Bus
 A Azure Service Bus Cloud Service a kommunikáció elsődleges kommunikációs eszközeként a [1,0 Advanced Message Queuing protokollt (AMQP)](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html) használja. A Microsoft az iparágban, az ügyfelekkel és a versengő üzenetkezelési közvetítőket használó partnerekkel együttműködve fejleszti és fejleszti a AMQP az elmúlt évtizedben, és új bővítményeket fejlesztett ki az [Oasis AMQP technikai bizottságban](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp). A AMQP 1,0 egy ISO és IEC szabvány ([iso 19464:20149](https://www.iso.org/standard/64955.html)). 
@@ -84,9 +84,8 @@ Készen áll a tanulásra? Látogasson el a következő hivatkozásokra:
 
 * [Service Bus használata a .NET-ről a AMQP használatával]
 * [Service Bus használata a Java és a AMQP használatával]
-* [Apache csontos proton-C telepítése Azure Linux rendszerű virtuális gépen]
 
 [0]: ./media/service-bus-amqp-overview/service-bus-amqp-1.png
 [Service Bus használata a .NET-ről a AMQP használatával]: service-bus-amqp-dotnet.md
 [Service Bus használata a Java és a AMQP használatával]: ./service-bus-java-how-to-use-jms-api-amqp.md
-[Apache csontos proton-C telepítése Azure Linux rendszerű virtuális gépen]::
+

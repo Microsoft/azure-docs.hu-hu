@@ -8,16 +8,16 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.reviewer: klaasl
-ms.openlocfilehash: 10d4e99d7bbebb6bc7d7def308e233507ed99ce9
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 637f748882b3ac84127c8b71761a06629e1e0957
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98166482"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653832"
 ---
 # <a name="manage-the-default-access-tier-of-an-azure-storage-account"></a>Azure Storage-fiók alapértelmezett hozzáférési szintjeinek kezelése
 
-Minden Azure Storage-fiókhoz tartozik egy alapértelmezett hozzáférési szint, amely a gyakori, a ritka elérésű vagy az archív. A hozzáférési szintet a Storage-fiók létrehozásakor rendelheti hozzá. Az alapértelmezett hozzáférési szint a gyors.
+Minden egyes Azure Storage-fiókhoz tartozik egy alapértelmezett hozzáférési szint, amely akár gyors, akár ritka. A hozzáférési szintet a Storage-fiók létrehozásakor rendelheti hozzá. Az alapértelmezett hozzáférési szint a gyors.
 
 Az alapértelmezett fiók szintet úgy változtathatja meg, hogy a Storage-fiók **hozzáférési szintje** attribútumát állítja be. A fiók rétegének módosítása a fiókban tárolt összes olyan objektumra vonatkozik, amely nem rendelkezik explicit szintű készlettel. A fiók rétegét a gyakori és a ritka elérésű írási műveletekre (10 000) állítja be a GPv2-fiókokban lévő set szint nélkül, és az olvasási műveletek (10 000) és az lekérési (GB-os) Adatlekérdezési díjak a blob Storage-és GPv2-fiókokban lévő összes blob esetében nem használhatók.
 

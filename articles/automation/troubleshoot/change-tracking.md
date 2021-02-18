@@ -3,18 +3,63 @@ title: A Azure Automation Change Tracking és a leltárral kapcsolatos problém�
 description: Ez a cikk azt ismerteti, hogyan lehet elhárítani a problémákat a Azure Automation Change Tracking és a leltár szolgáltatással kapcsolatos problémák megoldásában.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 01/31/2019
+ms.date: 02/15/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 516f1a4e5e7c677b17a2941ee3c300db44d49a3b
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 9fe53a343a9f6675519b60d37d077886adaf8a9d
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896545"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651160"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>A Change Tracking és az Inventory hibáinak elhárítása
 
 Ez a cikk a Azure Automation Change Tracking és a leltárral kapcsolatos problémák elhárítását és megoldását ismerteti. A Change Tracking és a leltárral kapcsolatos általános információkért lásd: [change Tracking és leltár – áttekintés](../change-tracking/overview.md).
+
+## <a name="general-errors"></a>Általános hibák
+
+### <a name="scenario-machine-is-already-registered-to-a-different-account"></a><a name="machine-already-registered"></a>Forgatókönyv: a gép már regisztrálva van egy másik fiókban
+
+### <a name="issue"></a>Probléma
+
+A következő hibaüzenet jelenik meg:
+
+```error
+Unable to Register Machine for Change Tracking, Registration Failed with Exception System.InvalidOperationException: {"Message":"Machine is already registered to a different account."}
+```
+
+### <a name="cause"></a>Ok
+
+A gép már telepítve van a Change Tracking egy másik munkaterületére.
+
+### <a name="resolution"></a>Feloldás
+
+1. Győződjön meg arról, hogy a számítógép a megfelelő munkaterületre küld jelentést. Ennek ellenőrzésével kapcsolatos útmutatásért lásd: az [ügynök kapcsolatának ellenőrzése Azure monitor](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-azure-monitor). Győződjön meg arról is, hogy ez a munkaterület a Azure Automation-fiókjához van csatolva. A megerősítéshez nyissa meg az Automation-fiókját, és a **kapcsolódó erőforrások** területen válassza a **csatolt munkaterület** lehetőséget.
+
+1. Győződjön meg arról, hogy a gépek megjelennek az Automation-fiókhoz társított Log Analytics munkaterületen. Futtassa a következő lekérdezést a Log Analytics munkaterületen.
+
+   ```kusto
+   Heartbeat
+   | summarize by Computer, Solutions
+   ```
+
+   Ha nem látja a gépet a lekérdezés eredményei között, azt nem ellenőrizte a közelmúltban. Valószínűleg van egy helyi konfigurációs probléma. Telepítse újra a Log Analytics-ügynököt.
+
+   Ha a számítógép a lekérdezés eredményei között szerepel, ellenőrizze a **változáskövetési** listáján szereplő Solutions (megoldások) tulajdonságot. Ez ellenőrzi, hogy regisztrálva van-e Change Tracking és leltárban. Ha nem, ellenőrizze a hatókör-konfigurációs problémákat. A hatókör-konfiguráció határozza meg, hogy mely gépek vannak konfigurálva a Change Trackinghoz és a leltárhoz. A célszámítógép hatókör-konfigurációjának konfigurálásához tekintse meg az [Automation-fiók Change Tracking és leltározásának engedélyezése](../change-tracking/enable-from-automation-account.md)című témakört.
+
+   A munkaterületen futtassa ezt a lekérdezést.
+
+   ```kusto
+   Operation
+   | where OperationCategory == 'Data Collection Status'
+   | sort by TimeGenerated desc
+   ```
+
+1. Ha ezt ```Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota``` az eredményt kapja, elérte a munkaterületen definiált kvótát, amely leállította az adatok mentését. A munkaterületen lépjen a **használati és becsült költségek** pontra. Válasszon ki egy új **díjszabási szintet** , amely lehetővé teszi, hogy több adatmennyiséget használjon, vagy kattintson a **napi korlát** lehetőségre, és távolítsa el a korlátot.
+
+:::image type="content" source="./media/change-tracking/change-tracking-usage.png" alt-text="Használat és becsült költségek." lightbox="./media/change-tracking/change-tracking-usage.png":::
+
+Ha a probléma továbbra is megoldatlan, kövesse a [Windows Hybrid Runbook Worker telepítése](../automation-windows-hrw-install.md) a hibrid feldolgozó Windows rendszerre való újratelepítésének lépéseit. Linux esetén kövesse a  [Linux Hybrid Runbook Worker üzembe helyezése](../automation-linux-hrw-install.md)című témakör lépéseit.
 
 ## <a name="windows"></a>Windows
 
@@ -96,11 +141,11 @@ Heartbeat
 | summarize by Computer, Solutions
 ```
 
-Ha nem látja a gépet a lekérdezés eredményei között, a közelmúltban nem volt bejelölve. Valószínűleg van egy helyi konfigurációs probléma, és újra kell telepítenie az ügynököt. További információ a telepítésről és a konfigurálásról: [a naplófájlok adatainak összegyűjtése a log Analytics ügynökkel](../../azure-monitor/platform/log-analytics-agent.md).
+Ha nem látja a gépet a lekérdezés eredményei között, a közelmúltban nem volt bejelölve. Valószínűleg van egy helyi konfigurációs probléma, és újra kell telepítenie az ügynököt. További információ a telepítésről és a konfigurálásról: [a naplófájlok adatainak összegyűjtése a log Analytics ügynökkel](../../azure-monitor/agents/log-analytics-agent.md).
 
 Ha a gép megjelenik a lekérdezés eredményei között, ellenőrizze a hatókör-konfigurációt. Lásd: [Azure monitor-figyelési megoldások célzása](../../azure-monitor/insights/solution-targeting.md).
 
-A probléma további hibaelhárítását lásd [: probléma: nem jelenik meg Linux-alapú információ](../../azure-monitor/platform/agent-linux-troubleshoot.md#issue-you-are-not-seeing-any-linux-data).
+A probléma további hibaelhárítását lásd [: probléma: nem jelenik meg Linux-alapú információ](../../azure-monitor/agents/agent-linux-troubleshoot.md#issue-you-are-not-seeing-any-linux-data).
 
 ##### <a name="log-analytics-agent-for-linux-not-configured-correctly"></a>A Linux-ügynök nem megfelelően van konfigurálva Log Analytics
 

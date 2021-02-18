@@ -3,12 +3,12 @@ title: Az Azure Service Fabric-fürt verziójának frissítése
 description: Ismerje meg az Azure Service Fabric-beli fürtök verzióit, beleértve a Service Fabric csapat blogján elérhető legújabb kiadásokra mutató hivatkozást is.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 5abfe83fcb68fcab7df22f1fd266cc695f2b9c80
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 9c7e5e3778c9a38190be210ebb391bc8b0b58c76
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549068"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652054"
 ---
 # <a name="upgrade-your-azure-service-fabric-cluster-version"></a>Az Azure Service Fabric-fürt verziójának frissítése
 
@@ -130,6 +130,7 @@ A következő táblázat felsorolja a Service Fabric verzióit és azok támogat
 | 7.2.433.* | 7.0.470.* |Kisebb vagy egyenlő, mint a 4,2-es verzió |Aktuális verzió, így nincs befejező dátum |
 | 7.2.445.* | 7.0.470.* |Kisebb vagy egyenlő, mint a 4,2-es verzió |Aktuális verzió, így nincs befejező dátum |
 | 7.2.452.* | 7.0.470.* |Kisebb vagy egyenlő, mint a 4,2-es verzió |Aktuális verzió, így nincs befejező dátum |
+| 7.2.457.* | 7.0.470.* |Kisebb vagy egyenlő, mint a 4,2-es verzió |Aktuális verzió, így nincs befejező dátum |
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
@@ -209,6 +210,7 @@ A következő táblázat a Service Fabric verziószámait és a hozzájuk tartoz
 | 7,1 CU10 | 7.1.510.9590 | NA |
 | 7,2 RTO | 7.2.413.9590 | NA |
 | 7,2 CU2 | 7.2.432.9590 | 7.2.431.1 |
-| 7,2 CU3 | 7.2.433.9590 | Nem alkalmazható|
+| 7,2 CU3 | 7.2.433.9590 | NA |
 | 7,2 CU4 | 7.2.445.9590 | 7.2.447.1 |
 | 7,2 CU5 | 7.2.452.9590 | 7.2.454.1 |
+| 7,2 CU6 | 7.2.457.9590 | 7.2.456.1 |

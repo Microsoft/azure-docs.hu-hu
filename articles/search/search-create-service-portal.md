@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 02/15/2021
-ms.openlocfilehash: 7149233782815deebebde53767a3c654ac2321bb
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: e183d81355d4db81e677f34b02330ddb9b631957
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547757"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651986"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rövid útmutató: Azure Cognitive Search-szolgáltatások létrehozása a portálon
 
 Az [azure Cognitive Search](search-what-is-azure-search.md) egy Azure-erőforrás, amellyel teljes szöveges keresési élményt adhat hozzá az egyéni alkalmazásokhoz. Egyszerűen integrálható más Azure-szolgáltatásokkal, amelyek adatkezelést vagy további feldolgozást tesznek lehetővé, a hálózati kiszolgálókon lévő alkalmazásokkal vagy más felhőalapú platformokon futó szoftverekkel.
 
-A keresési szolgáltatás a jelen cikkben ismertetett [Azure Portal](https://portal.azure.com/)használatával hozható létre. Az [Azure PowerShell](search-manage-powershell.md), az [Azure CLI](/cli/azure/search)vagy egy [Azure Resource Manager-szolgáltatás sablonját](https://azure.microsoft.com/resources/templates/101-azure-search-create/)is használhatja.
+A keresési szolgáltatást a [Azure Portal](https://portal.azure.com/)használatával hozhatja létre, amely ebben a cikkben is szerepel. Az [Azure PowerShell](search-manage-powershell.md), az [Azure CLI](/cli/azure/search), a [felügyeleti REST API](/rest/api/searchmanagement/)vagy egy [Azure Resource Manager Service-sablon](https://azure.microsoft.com/resources/templates/101-azure-search-create/)is használható.
 
 [![Animált GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
@@ -27,9 +27,9 @@ A keresési szolgáltatás a jelen cikkben ismertetett [Azure Portal](https://po
 
 A szolgáltatás élettartamára a következő szolgáltatási tulajdonságok vannak rögzítve – a változtatások bármelyike új szolgáltatást igényel. Mivel ezek rögzítettek, vegye figyelembe a használati szempontokat az egyes tulajdonságok kitöltése során:
 
-* A szolgáltatás neve az URL-végpont részévé válik (a hasznos szolgáltatások neveire vonatkozó[tippek áttekintése](#name-the-service) ).
-* A [szolgáltatási](search-sku-tier.md) szinten befolyásolja a számlázást, és beállítja a kapacitás felső határát. Néhány funkció nem érhető el az ingyenes szinten.
-* A szolgáltatási régió képes meghatározni bizonyos forgatókönyvek rendelkezésre állását. Ha [magas szintű biztonsági funkciókra](search-security-overview.md) vagy [AI](cognitive-search-concept-intro.md)-bővítésre van szüksége, létre kell hoznia Azure-Cognitive Search a többi szolgáltatással azonos régióban, vagy a szóban forgó szolgáltatást biztosító régiókban. 
++ A szolgáltatás neve az URL-végpont részévé válik (a hasznos szolgáltatások neveire vonatkozó[tippek áttekintése](#name-the-service) ).
++ A [szolgáltatási](search-sku-tier.md) szinten befolyásolja a számlázást, és beállítja a kapacitás felső határát. Néhány funkció nem érhető el az ingyenes szinten.
++ A szolgáltatási régió képes meghatározni bizonyos forgatókönyvek rendelkezésre állását. Ha [magas szintű biztonsági funkciókra](search-security-overview.md) vagy [AI](cognitive-search-concept-intro.md)-bővítésre van szüksége, létre kell hoznia Azure-Cognitive Search a többi szolgáltatással azonos régióban, vagy a szóban forgó szolgáltatást biztosító régiókban. 
 
 ## <a name="subscribe-free-or-paid"></a>Feliratkozás (ingyenes vagy fizetős)
 
@@ -72,30 +72,30 @@ A példány részletei területen adja meg a szolgáltatás nevét az **URL** me
 
 A szolgáltatásnévre vonatkozó követelmények:
 
-* Egyedinek kell lennie a search.windows.net névtérben
-* Hosszának 2 és 60 karakter közöttinek kell lennie
-* Kisbetűket, számokat vagy kötőjeleket ("-") kell használnia
-* Ne használjon kötőjeleket ("-") az első 2 karakterben, vagy az utolsó egy karaktert.
-* Bárhol nem használhat egymást követő kötőjeleket ("--")
++ Egyedinek kell lennie a search.windows.net névtérben
++ Hosszának 2 és 60 karakter közöttinek kell lennie
++ Kisbetűket, számokat vagy kötőjeleket ("-") kell használnia
++ Ne használjon kötőjeleket ("-") az első 2 karakterben, vagy az utolsó egy karaktert.
++ Bárhol nem használhat egymást követő kötőjeleket ("--")
 
 > [!TIP]
 > Ha úgy gondolja, hogy több szolgáltatást fog használni, javasoljuk, hogy a szolgáltatás neveként a régiót (vagy helyet) nevezze el elnevezési konvencióként. Az azonos régión belüli szolgáltatások díjmentesen cserélhetik az adatcserét, így ha az Azure Cognitive Search az USA nyugati régiójában van, és más szolgáltatásokkal is rendelkezik az USA nyugati régiójában, akkor egy olyan név is lehet, mint `mysearchservice-westus` a Properties (Tulajdonságok) oldalra, amikor az erőforrások egyesítésével vagy csatlakoztatásával dönt.
 
 ## <a name="choose-a-location"></a>Hely kiválasztása
 
-Az Azure Cognitive Search a legtöbb régióban elérhető, a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/search/)leírtak szerint.
+Az Azure Cognitive Search a legtöbb régióban elérhető, a régiók [által elérhető termékekben](https://azure.microsoft.com/global-infrastructure/services/?products=search)dokumentálva. Általában, ha több Azure-szolgáltatást használ, válasszon egy olyan régiót, amely az Ön adatait vagy az alkalmazásait is üzemelteti. Így a kimenő adatok sávszélességének csökkentése vagy érvénytelenítése (a kimenő adatokért nem számítunk fel díjat, ha a szolgáltatások ugyanabban a régióban találhatók).
 
-Általában, ha több Azure-szolgáltatást használ, válasszon egy olyan régiót, amely az Ön adatait vagy az alkalmazásait is üzemelteti. Így a kimenő adatok sávszélességének csökkentése vagy érvénytelenítése (a kimenő adatokért nem számítunk fel díjat, ha a szolgáltatások ugyanabban a régióban találhatók).
++ Az [AI](cognitive-search-concept-intro.md) -bővítés megköveteli, hogy Cognitive Services ugyanabban a fizikai régióban legyen, mint az Azure Cognitive Search. Csak néhány régió nem nyújt mindkettőt. A [régiók lapon elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/?products=search) kettős rendelkezésre állást jeleznek két halmozott pipa megjelenítésével. Egy nem elérhető kombinációnál hiányzik a pipa:
 
-Az üzletmenet-folytonossággal és a vész-helyreállítási (BCDR) követelményekkel rendelkező ügyfeleknek [regionális párokban](../best-practices-availability-paired-regions.md#azure-regional-pairs)kell létrehozniuk a szolgáltatásaikat. Ha például Észak-Amerika működik, az USA keleti régiója és az USA nyugati régiója, illetve az USA északi középső régiója és a Dél-Amerikai Egyesült Államok az egyes szolgáltatások esetében is megadható.
+  :::image type="content" source="media/search-create-service-portal/region-availability.png" alt-text="Régiónkénti rendelkezésre állás" border="true":::
 
-A következő szolgáltatások csak bizonyos régiókban érhetők el:
++ Az üzletmenet-folytonossági és a vész-helyreállítási (BCDR) követelmények teljesítéséhez több keresési szolgáltatást kell létrehozni [regionális párokban](../best-practices-availability-paired-regions.md#azure-regional-pairs). Ha például Észak-Amerika működik, az USA keleti régiója és az USA nyugati régiója, illetve az USA északi középső régiója és a Dél-Amerikai Egyesült Államok az egyes keresési szolgáltatások esetében is megadható.
 
-* Az AI-bővítés megköveteli, hogy az Cognitive Services ugyanabban a régióban legyen, mint az Azure Cognitive Search. Válassza ki a [régiót Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) először (a lista kisebb), majd válassza ki ugyanazt a régiót a keresési szolgáltatáshoz.
+Néhány szolgáltatás a régiók alapján korlátozott rendelkezésre állást biztosít. A korlátozásokat a szolgáltatás dokumentációja ismerteti:
 
-* A kettős titkosítás csak bizonyos régiókban érhető el. További információ: [dupla titkosítás](search-security-overview.md#double-encryption)
++ [Dupla titkosítás](search-security-overview.md#double-encryption)
 
-* A rendelkezésre állási zóna támogatását meghatározott régiókban, adott dátumok után létrehozott szolgáltatásokban ajánljuk. További információ: ["Availability Zones" a teljesítmény méretében](search-performance-optimization.md#availability-zones).
++ ["Availability Zones" a teljesítmény méretében](search-performance-optimization.md#availability-zones).
 
 ## <a name="choose-a-pricing-tier"></a>Árképzési szintek kiválasztása
 
@@ -121,7 +121,7 @@ Ha nem használja a portált, az új szolgáltatáshoz való programozott hozzá
 
 1. Az **Áttekintés** oldalon keresse meg és másolja ki az URL-végpontot az oldal jobb oldalán.
 
-2. A **kulcsok** lapon másolja át a rendszergazdai kulcsok egyikét (ezek egyenértékűek). Felügyeleti API-kulcsok szükségesek a szolgáltatásban található objektumok létrehozásához, frissítéséhez és törléséhez. Ezzel szemben a lekérdezési kulcsok olvasási hozzáférést biztosítanak a tartalom indexeléséhez.
+1. A **kulcsok** lapon másolja át a rendszergazdai kulcsok egyikét (ezek egyenértékűek). Felügyeleti API-kulcsok szükségesek a szolgáltatásban található objektumok létrehozásához, frissítéséhez és törléséhez. Ezzel szemben a lekérdezési kulcsok olvasási hozzáférést biztosítanak a tartalom indexeléséhez.
 
    :::image type="content" source="media/search-create-service-portal/get-url-key.png" alt-text="A szolgáltatás áttekintő lapja URL-végponttal" border="false":::
 
@@ -141,8 +141,8 @@ Az erőforrások hozzáadása növeli a havi költségeket. A [díjkalkulátor](
 > A szolgáltatásnak [csak olvasható SLA esetén 2, írási/olvasási SLA esetén 3 replikával](https://azure.microsoft.com/support/legal/sla/search/v1_0/) kell rendelkeznie.
 
 1. Nyissa meg a keresési szolgáltatás oldalát az Azure Portalon.
-2. A bal oldali navigációs panelen válassza a **Beállítások**  >  **skála** lehetőséget.
-3. A csúszka segítségével bármelyik típusú erőforrásokat hozzáadhatja.
+1. A bal oldali navigációs panelen válassza a **Beállítások**  >  **skála** lehetőséget.
+1. A csúszka segítségével bármelyik típusú erőforrásokat hozzáadhatja.
 
 :::image type="content" source="media/search-create-service-portal/settings-scale.png" alt-text="Kapacitás hozzáadása replikák és partíciók használatával" border="false":::
 

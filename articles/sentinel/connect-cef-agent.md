@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
 ms.author: yelevin
-ms.openlocfilehash: 8261856598a155e97f90ea350cedcd4c10e6893c
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: a4303f43dffa98f842bd3daf9e3a0cd5214932b1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747306"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585360"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>1. lépés: a naplózási továbbító üzembe helyezése
 
@@ -70,7 +70,7 @@ Ebben a lépésben a Linux-gépet fogja kijelölni és konfigurálni, amely tov�
 >
 > Ha azt tervezi, hogy ezt a naplózási továbbítót használja a [syslog-üzenetek](connect-syslog.md) és a CEF továbbítására, akkor az események a syslog-és a CommonSecurityLog-táblákba való másolásának elkerülése érdekében:
 >
-> 1. Minden olyan forrásoldali gépen, amely CEF formátumú naplókat küld a továbbítónak, szerkesztenie kell a syslog konfigurációs fájlját, hogy eltávolítsa a CEF üzenetek küldésére használt létesítményeket. Így a CEF-ben eljuttatott létesítmények nem lesznek elküldve a syslog-ben. Ennek módjával kapcsolatos részletes útmutatásért lásd: [a syslog konfigurálása Linux-ügynökön](../azure-monitor/platform/data-sources-syslog.md#configure-syslog-on-linux-agent) .
+> 1. Minden olyan forrásoldali gépen, amely CEF formátumú naplókat küld a továbbítónak, szerkesztenie kell a syslog konfigurációs fájlját, hogy eltávolítsa a CEF üzenetek küldésére használt létesítményeket. Így a CEF-ben eljuttatott létesítmények nem lesznek elküldve a syslog-ben. Ennek módjával kapcsolatos részletes útmutatásért lásd: [a syslog konfigurálása Linux-ügynökön](../azure-monitor/agents/data-sources-syslog.md#configure-syslog-on-linux-agent) .
 >
 > 1. A következő parancs futtatásával le kell tiltania az ügynök szinkronizálását az Azure Sentinel syslog-konfigurációjával. Ez biztosítja, hogy az előző lépésben végrehajtott konfigurációs módosítás ne legyen felülírva.<br>
 > `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
@@ -226,7 +226,7 @@ A megfelelő leírás megtekintéséhez válassza ki a syslog démont.
         ```
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtudhatta, hogyan helyezheti üzembe a Log Analytics-ügynököt a CEF-berendezések Azure Sentinelhez való összekapcsolásához. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).

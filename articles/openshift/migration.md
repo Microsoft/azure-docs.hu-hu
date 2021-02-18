@@ -3,16 +3,16 @@ title: Migrálás az Azure Red Hat OpenShift 3.11-es verziójáról az Azure Red
 description: Migrálás az Azure Red Hat OpenShift 3.11-es verziójáról az Azure Red Hat OpenShift 4-es verziójára
 author: sakthi-vetrivel
 ms.author: suvetriv
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 08/13/2020
 keywords: Migrálás, ARO, openshift, Red Hat
-ms.openlocfilehash: f9bfc924581d5dbe33c7c2683a0f6083cb2abc23
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 371672de83a6d745d7b367f8327a64e11059923e
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071035"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653278"
 ---
 # <a name="migrate-from-azure-red-hat-openshift-311-to-azure-red-hat-openshift-4"></a>Migrálás az Azure Red Hat OpenShift 3,11-ről az Azure Red Hat OpenShift 4-re
 
@@ -100,13 +100,13 @@ A tárolási típusok konfigurálásával kapcsolatos információkért lásd: a
 
 Az Azure Red Hat OpenShift 4 képes képeket készíteni a forráskódból, üzembe helyezheti és felügyelheti az életciklusát. Ennek engedélyezéséhez az Azure Red Hat OpenShift 4 [belső, integrált tároló lemezkép-regisztrációs adatbázist](https://docs.openshift.com/container-platform/4.6/registry/registry-options.html) biztosít, amely az Azure Red Hat OpenShift-környezetben üzembe helyezhető a lemezképek helyi kezeléséhez.
 
-Ha külső beállításjegyzékeket használ, például a [Azure Container Registry](../container-registry/index.yml), a [Red Hat Quay-jegyzékeket](ttps://docs.openshift.com/container-platform/4.6/registry/registry-options.html#registry-quay-overview_registry-options)vagy egy [hitelesítést engedélyező Red Hat-regisztrációt](https://docs.openshift.com/container-platform/4.6/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options), kövesse a hitelesítő adatok megadásához szükséges lépéseket a fürt számára, hogy a fürt hozzáférjen a tárházhoz.
+Ha külső beállításjegyzékeket használ, például a [Azure Container Registry](../container-registry/index.yml), a [Red Hat Quay-jegyzékeket](https://docs.openshift.com/container-platform/4.6/registry/registry-options.html#registry-quay-overview_registry-options)vagy egy [hitelesítést engedélyező Red Hat-regisztrációt](https://docs.openshift.com/container-platform/4.6/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options), kövesse a hitelesítő adatok megadásához szükséges lépéseket a fürt számára, hogy a fürt hozzáférjen a tárházhoz.
 
 ### <a name="monitoring"></a>Figyelés
 
 Az Azure Red Hat OpenShift tartalmaz egy előre konfigurált, előre telepített és önfrissítő figyelési veremet, amely a Prometheus nyílt forráskódú projekten és a tágabb ökoszisztémán alapul. Lehetővé teszi a fürt összetevőinek figyelését, és riasztásokat tartalmaz, amelyek azonnal értesítik a fürt rendszergazdáit az esetleges problémákról és a Grafana-irányítópultokról. A fürt figyelési vereme csak az Azure Red Hat OpenShift-fürtök figyelésére használható. További információ: [a fürtök figyelése az Azure Red Hat OpenShift](https://docs.openshift.com/container-platform/4.6/monitoring/understanding-the-monitoring-stack.html).
 
-Ha [Azure monitort használ a tárolók számára az Azure Red Hat OpenShift 3,11](../azure-monitor/insights/container-insights-azure-redhat-setup.md)-hez, Azure monitor engedélyezheti a tárolók számára az [Azure Red Hat OpenShift 4 fürtöket](../azure-monitor/insights/container-insights-azure-redhat4-setup.md) , és továbbra is használhatja ugyanazt a log Analytics munkaterületet.
+Ha [Azure monitort használ a tárolók számára az Azure Red Hat OpenShift 3,11](../azure-monitor/containers/container-insights-azure-redhat-setup.md)-hez, Azure monitor engedélyezheti a tárolók számára az [Azure Red Hat OpenShift 4 fürtöket](../azure-monitor/containers/container-insights-azure-redhat4-setup.md) , és továbbra is használhatja ugyanazt a log Analytics munkaterületet.
 
 ## <a name="move-your-dns-or-load-balancer-configuration-to-the-new-cluster"></a>A DNS-vagy terheléselosztó-konfiguráció áthelyezése az új fürtre
 
