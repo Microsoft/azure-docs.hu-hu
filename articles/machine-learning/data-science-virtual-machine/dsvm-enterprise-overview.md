@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 05/08/2018
-ms.openlocfilehash: a22b253081a6695758a737a506620f2f56e90227
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 28dea7c28f47a9850486877571672cbd717e9f1f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100519694"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596779"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Data Science Virtual Machine-alapú Team Analytics és AI-környezet 
 A [Data Science Virtual Machine](overview.md) (DSVM) az Azure platformon gazdag környezetet biztosít, amely a mesterséges intelligencia (AI) és az adatelemzések előre elkészített szoftvereit tartalmazza.
@@ -37,7 +37,7 @@ A vállalati csapat elemzési környezetének kulcsfontosságú építőelemei a
 Ez a sorozat az előző témakörökhöz nyújt útmutatást és mutatókat. Nem fedi le az Dsvm nagyméretű vállalati konfigurációkban való üzembe helyezésével kapcsolatos szempontokat és követelményeket. Íme néhány további Azure-erőforrás, amelyet a vállalati DSVM-példányok megvalósítása során használhat:
 
 * [Hálózati biztonság](../../security/fundamentals/network-overview.md)
-* [Figyelés](../../azure-monitor/insights/monitor-vm-azure.md) és [felügyelet](../../virtual-machines/maintenance-and-updates.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json%252c%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json%253ftoc%253d%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Figyelés](../../azure-monitor/vm/monitor-vm-azure.md) és [felügyelet](../../virtual-machines/maintenance-and-updates.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json%252c%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json%253ftoc%253d%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Naplózás](../../security/fundamentals/log-audit.md)
 * [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md)
 * [Házirend-beállítás és kényszerítés](../../governance/policy/overview.md)

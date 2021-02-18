@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 61ca4dc8cd7048df69c827e7ca657b9882900819
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: cc0028a8c7d6d15277c3789118b13b80ed4306ea
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218909"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596634"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Virtuális hálózat létrehozása, módosítása vagy törlése
 
@@ -87,7 +87,7 @@ A cikk bármely szakaszának lépéseinek elvégzése előtt hajtsa végre a kö
    - **Tulajdonságok**: megjeleníti a virtuális hálózat beállításait, beleértve a virtuális hálózat erőforrás-azonosítóját és az Azure-előfizetést is.
    - **Ábra**: a diagram a virtuális hálózathoz csatlakozó összes eszköz vizuális megjelenítését biztosítja. A diagram néhány kulcsfontosságú információt tartalmaz az eszközökről. Ha ebben a nézetben szeretne felügyelni egy eszközt, a diagramon válassza ki az eszközt.
    - **Általános Azure-beállítások**: az általános Azure-beállításokkal kapcsolatos további információkért tekintse meg a következő információkat:
-     - [Tevékenységnapló](../azure-monitor/platform/platform-logs-overview.md)
+     - [Tevékenységnapló](../azure-monitor/essentials/platform-logs-overview.md)
      - [Hozzáférés-vezérlés (IAM)](../role-based-access-control/overview.md)
      - [Címkék](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
      - [Zárolások](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -122,7 +122,7 @@ Címtartomány hozzáadása vagy eltávolítása:
 4. Hajtsa végre a következő lehetőségek egyikét:
     - **Címtartomány hozzáadása**: adja meg az új címtartományt. A címtartomány nem fedi át a virtuális hálózathoz definiált meglévő címtartományt.
     - **Címtartomány eltávolítása**: az eltávolítani kívánt címtartomány jobb oldalán válassza a **...**, majd az **Eltávolítás** lehetőséget. Ha egy alhálózat létezik a címtartományból, nem távolíthatja el a címtartományt. Címtartomány eltávolításához először törölnie kell a címtartomány meglévő alhálózatait (és az alhálózatokban található összes erőforrást).
-5. Válassza a **Mentés** lehetőséget.
+5. Kattintson a **Mentés** gombra.
 
 **Parancsok**
 
@@ -143,7 +143,7 @@ A virtuális hálózathoz csatlakozó virtuális gépek a virtuális hálózatho
    - Válasszon ki **egy címeket**: az eltávolítani kívánt kiszolgáló mellett válassza a **...**, majd az **Eltávolítás** lehetőséget. A kiszolgáló törlésével a kiszolgáló csak a virtuális hálózatok listájáról távolítható el. A DNS-kiszolgáló továbbra is regisztrálva lesz az Azure-ban a többi virtuális hálózat használatára.
    - **DNS-kiszolgáló címeinek átrendezése**: fontos ellenőrizni, hogy a DNS-kiszolgálókat a környezetének megfelelő sorrendben sorolja-e fel. A DNS-kiszolgálók listáját a rendszer a megadott sorrendben használja. Nem működnek ciklikus multiplexelés beállításként. Ha a lista első DNS-kiszolgálója elérhető, akkor az ügyfél ezt a DNS-kiszolgálót használja, függetlenül attól, hogy a DNS-kiszolgáló megfelelően működik-e. Távolítsa el az összes felsorolt DNS-kiszolgálót, majd adja őket vissza a kívánt sorrendben.
    - **Módosítsa a címeket**: jelölje ki a DNS-kiszolgálót a listában, majd adja meg az új címeket.
-5. Válassza a **Mentés** lehetőséget.
+5. Kattintson a **Mentés** gombra.
 6. Indítsa újra a virtuális hálózathoz csatlakozó virtuális gépeket, hogy azok hozzá legyenek rendelve az új DNS-kiszolgáló beállításaihoz. A virtuális gépek továbbra is a jelenlegi DNS-beállításokat használják, amíg újra nem indítják őket.
 
 **Parancsok**

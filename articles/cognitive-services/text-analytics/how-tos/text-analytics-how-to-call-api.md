@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 708c70a5144e4e38dd5de9524711c80ef28cd839
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 9302bde13a303dda2107900dc0c10cc180669a18
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100092128"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650728"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>A Text Analytics meghívása REST API
 
@@ -37,7 +37,7 @@ A Text Analytics API használata előtt létre kell hoznia egy Azure-erőforrás
 
 ## <a name="change-your-pricing-tier"></a>Árképzési szintek módosítása 
 
-Ha már rendelkezik egy meglévő Text Analytics erőforrással a S0 az S4 díjszabási szinten keresztül, akkor frissítheti a standard (S) [árképzési szint](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)használatára:
+Ha már rendelkezik egy meglévő Text Analytics erőforrással a S0 az S4 díjszabási szinten keresztül, akkor a standard (S) [árképzési](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)szint használatára kell frissítenie. Az S4 díjszabási szintjein keresztüli S0 kivonásra kerül. Az erőforrás díjszabásának frissítése:
 
 1. A [Azure Portalban](https://portal.azure.com/)navigáljon a Text Analytics-erőforráshoz.
 2. A bal oldali navigációs menüben válassza ki az **árképzési szintet** . Ez az erőforrás- **kezelés** alatt lesz. 

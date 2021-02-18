@@ -10,12 +10,12 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: ac9c8efbe29bf1420a94d486b650758cc22bec2f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 61ac4c979445ef48b5986ec3793a9880cedc837a
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100575752"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650252"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>Használati adatok, metrikák és naplók feltöltése a Azure Monitorba
 
@@ -29,7 +29,7 @@ A használati adatokat rendszeresen exportálhatja számlázási célokra, a met
 A használati adatok, metrikák vagy naplók feltöltése előtt a következőkre lesz szüksége:
 
 * Eszközök telepítése 
-* [Az erőforrás-szolgáltató regisztrálása `Microsoft.AzureData`](#register-the-resource-provider) 
+* [Az erőforrás-szolgáltató regisztrálása `Microsoft.AzureArcData`](#register-the-resource-provider) 
 * [A szolgáltatásnév létrehozása](#create-service-principal)
 
 ## <a name="install-tools"></a>Eszközök telepítése

@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 02/11/2021
-ms.openlocfilehash: f6b68ea756253a30f006983c214e287c75637278
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 5508ffc758b08642b05b1f77b66c9f29be1c85a2
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100642373"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650779"
 ---
 # <a name="get-started-with-document-translation-preview"></a>Ismerkedés a dokumentumok fordításával (előzetes verzió)
 
@@ -108,7 +108,7 @@ A `sourceUrl` , `targetUrl` , és opcionálisan `glossaryUrl`  tartalmaznia kell
 * Másolja és illessze be a kódot az egyik mintából a projektbe.
 * Állítsa be a végpontot, az előfizetési kulcsot és a tároló URL-értékeit.
 * Futtassa a programot. Példa: `python translate.py`.
-  
+
 ### <a name="java"></a>[Java](#tab/java)
 
 * Hozzon létre egy munkakönyvtárat a projekthez. Például:
@@ -127,7 +127,7 @@ mkdir sample-project
 mkdir -p src/main/java/
 ```
 
-* A Java-forrásfájlok (például a _sample. Java_) a src/Main/**Java** nyelven élnek.
+**Megjegyzés**: a Java-forrásfájlok (például a _sample. Java_) a src/Main/**Java** nyelven élnek.
 
 * A gyökérkönyvtárban (például *minta-projekt*) inicializálja a projektet a Gradle:
 
@@ -136,6 +136,7 @@ gradle init --type basic
 ```
 
 * Amikor a rendszer rákérdez a **DSL** kiválasztására, válassza a **Kotlin** lehetőséget.
+
 * Frissítse a `build.gradle.kts`  fájlt. Ne feledje, hogy a mintától függően frissítenie kell a következőt `mainClassName` :
 
   ```java
@@ -155,7 +156,8 @@ gradle init --type basic
   ```
 
 * Hozzon létre egy Java-fájlt a **Java** könyvtárban, és másolja/illessze be a kódot a megadott mintából. Ne felejtse el felvenni az előfizetési kulcsot és a végpontot.
-Hozza **létre és futtassa a mintát a gyökérkönyvtárból**:
+
+* Hozza **létre és futtassa a mintát a gyökérkönyvtárból**:
 
 ```powershell
 gradle build
@@ -172,7 +174,7 @@ gradle run
 * Hozza létre a fájlt, például: "Go Build example-code. go".
 * Futtassa a fájlt, például: "example-code".
 
----
+ ---
 
 ## <a name="make-document-translation-requests"></a>Dokumentum-fordítási kérelmek készítése
 

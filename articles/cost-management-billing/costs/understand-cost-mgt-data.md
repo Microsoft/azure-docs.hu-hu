@@ -3,18 +3,18 @@ title: Az Azure Cost Management adatainak ismertetése
 description: Ez a cikk segít az Azure Cost Managementben található adatok, valamint azok feldolgozási, gyűjtési, megjelenítési és lezárási gyakoriságának jobb megértésében.
 author: bandersmsft
 ms.author: banders
-ms.date: 01/06/2021
+ms.date: 01/17/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e6096c259ec1870a711a515bf02d5d00b4f75345
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
-ms.translationtype: HT
+ms.openlocfilehash: ad099fc7dfcee168186ef5229785933f4b1c5a90
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964150"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650881"
 ---
 # <a name="understand-cost-management-data"></a>A Cost Management adatainak értelmezése
 
@@ -31,6 +31,7 @@ Az alábbi információk azokat a [Microsoft Azure-ajánlatokat](https://azure.m
 | **Kategória**  | **Ajánlat neve** | **Kvótaazonosító** | **Ajánlatszám** | **Adatok elérhetőségének kezdete** |
 | --- | --- | --- | --- | --- |
 | **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P | 2014. május<sup>1</sup> |
+| **Azure Government** | Azure Government – használatalapú fizetés | PayAsYouGo_2014-09-01 | MS-AZR-USGOV-0003P | 2018. október 2.<sup>2</sup> |
 | **Nagyvállalati Szerződés (EA)** | Enterprise Dev/Test                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P | 2014. május<sup>1</sup> |
 | **Nagyvállalati Szerződés (EA)** | Microsoft Azure Enterprise | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P | 2014. május<sup>1</sup> |
 | **Microsoft-ügyfélszerződés** | Microsoft Azure-csomag | EnterpriseAgreement_2014-09-01 | N/A | 2019. március<sup>3</sup> |
@@ -51,7 +52,7 @@ Az alábbi információk azokat a [Microsoft Azure-ajánlatokat](https://azure.m
 
 _<sup>**1**</sup> A 2014 májusa előtti adatokért látogasson el az [Azure Enterprise Portalra](https://ea.azure.com)._
 
-_<sup>**2**</sup> A 2018. október 2. előtti adatokért látogasson el az [Azure Fiókközpontba](https://account.azure.com/subscriptions)._
+_<sup>**2**</sup> az 2018-es október 2. előtt az Azure Government-fiókokhoz tartozó globális fiókok és [Azure Fiókközpont gov](https://account.windowsazure.us/subscriptions) [Azure Fiókközpont](https://account.azure.com/subscriptions) ._
 
 _<sup>**3**</sup> A Microsoft Ügyfélszerződések 2019 márciusában kezdődtek, így ennél korábbi adatokkal nem rendelkeznek._
 
@@ -62,7 +63,6 @@ Az alábbi ajánlatok még nem támogatottak:
 | Kategória  | **Ajánlat neve** | **Kvótaazonosító** | **Ajánlatszám** |
 | --- | --- | --- | --- |
 | **Azure Germany** | Azure Germany – használatalapú fizetés | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P |
-| **Azure Government** | Azure Government – használatalapú fizetés | PayAsYouGo_2014-09-01 | MS-AZR-USGOV-0003P |
 | **Felhőszolgáltató (CSP)** | Microsoft Azure                                    | CSP_2015-05-01 | MS-AZR-0145P |
 | **Felhőszolgáltató (CSP)** | Azure Government CSP                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |
 | **Felhőszolgáltató (CSP)** | Azure Germany – CSP for Microsoft Cloud Germany   | CSP_2015-05-01 | MS-AZR-DE-0145P |
@@ -161,7 +161,7 @@ Miután a költség- és használati adatok elérhetővé váltak a Költségkez
 
 ### <a name="rerated-data"></a>Újraszámolt adatok
 
-Függetlenül attól, hogy a Cost Management API-k, a Power BI vagy az Azure Portal használatával kéri le az adatokat, számítson arra, hogy az aktuális számlázási időszakhoz tartozó díjakat a rendszer újraszámolja, ezért módosulnak, amíg a rendszer le nem zárja a számlát.
+Függetlenül attól, hogy az Cost Management API-kat, Power BIokat vagy az Azure Portal az adatok lekérésére használja-e, várhatóan az aktuális számlázási időszak díjait számítjuk fel. A díjak változhatnak, amíg a számla le nem zárul.
 
 ## <a name="cost-rounding"></a>Költségek kerekítése
 
@@ -175,7 +175,7 @@ A Cost Managementben megjelenített költségek kerekítve vannak. A Query API �
 
 ## <a name="historical-data-might-not-match-invoice"></a>Előfordulhat, hogy a korábbi adatok nem egyeznek meg a számlán szereplő adatokkal
 
-Előfordulhat, hogy a kreditalapú és előre fizetett ajánlatok korábbi adatai nem egyeznek meg a számlán szereplő adatokkal. Bizonyos Azure-beli használatalapú fizetéses, MSDN- és Visual Studio-ajánlatok esetében lehetséges, hogy Azure-kreditek és előzetes kifizetések vannak alkalmazva a számlára. A Cost Managementben megjelenített korábbi adatok azonban csak a becsült használati díjakon alapulnak. A Cost Management korábbi adatai nem tartalmazzák a kifizetéseket és krediteket. Így előfordulhat, hogy az alábbi ajánlatok korábbi adatai nem egyeznek meg pontosan a számlán szereplő adatokkal.
+Előfordulhat, hogy a kreditalapú és előre fizetett ajánlatok korábbi adatai nem egyeznek meg a számlán szereplő adatokkal. Bizonyos Azure-beli használatalapú fizetéses, MSDN- és Visual Studio-ajánlatok esetében lehetséges, hogy Azure-kreditek és előzetes kifizetések vannak alkalmazva a számlára. A Cost Managementban megjelenő korábbi adatok csak a becsült fogyasztási díjakon alapulnak. A Cost Management korábbi adatai nem tartalmazzák a kifizetéseket és krediteket. Előfordulhat, hogy a következő ajánlatokban megjelenített korábbi adatértékek nem egyeznek pontosan a számlával.
 
 - Azure for Students (MS-AZR-0170P)
 - Azure in Open (MS-AZR-0111P)

@@ -1,17 +1,17 @@
 ---
 title: Megosztott hozzáférési aláírási (SAS-) token létrehozása tárolók és Blobok számára a Microsoft Storage Explorer
-description: Megosztott hozzáférési jogkivonat (SAS) létrehozása tárolók és Blobok számára a Microsoft Storage Explorer
+description: Megosztott hozzáférési jogkivonat (SAS) létrehozása tárolók és Blobok számára a Microsoft Storage Explorer és a Azure Portal
 ms.topic: how-to
 manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 02/11/2021
-ms.openlocfilehash: 49813a29009e04c81dae59a7d4da2bae411e07b2
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 1425be4fc4e462185f9fee573dc87b04a68bfea4
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100642385"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650745"
 ---
 # <a name="create-sas-tokens-for-document-translation"></a>SAS-jogkivonatok létrehozása a dokumentumok fordításához
 

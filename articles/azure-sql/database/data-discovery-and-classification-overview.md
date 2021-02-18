@@ -11,14 +11,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 02/11/2021
+ms.date: 02/17/2021
 tags: azure-synapse
-ms.openlocfilehash: 254d69c723a97d9007a1f6c0f0eb7b34bcfe3c4e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: fee285aa3beb308f5e6b3b233d40597c2a287eb7
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392765"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651969"
 ---
 # <a name="data-discovery--classification"></a>Adatfelderítés és -besorolás
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -195,3 +195,4 @@ A REST API használatával programozott módon kezelheti a besorolásokat és a 
 
 - Érdemes lehet az [Azure SQL auditot](../../azure-sql/database/auditing-overview.md) beállítani a minősített bizalmas adatokhoz való hozzáférés figyelésére és naplózására.
 - Adatfelderítési & besorolást tartalmazó bemutató esetén tekintse meg a következőt: az [SQL-adatok védelmének észlelése, osztályozása, címkézése & | Az elérhető adatvédelem](https://www.youtube.com/watch?v=itVi9bkJUNc).
+- Az Azure SQL-adatbázisok és az Azure-beli szinapszis-elemzések az Azure-beli, T-SQL-parancsokkal történő besorolásáról az Azure [SQL-alapú adatosztályozás Azure-beli hatáskörébe címkékkel](https://docs.microsoft.com/azure/sql-database/scripts/sql-database-import-purview-labels)című témakörben olvashat

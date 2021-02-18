@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 00aa24f0ff8c918c645239ca36888c6a214062c8
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 98c1ce9367e9bf2aa1a381a772b3cbc73f96b519
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028760"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650949"
 ---
 # <a name="voice-and-video-concepts"></a>A hang- és videóhívással kapcsolatos alapfogalmak
 
@@ -52,12 +52,12 @@ A natív (iOS, Android) SDK-k teljes HD 1080p verziójának támogatása. A web 
 A szobák olyan API-k és SDK-k összessége, amelyek segítségével könnyedén hozzáadhat hang-, videó-, képernyőfelvétel-, PSTN-és SMS-interakciókat webhelyéhez vagy natív alkalmazásához.
 Az előzetes verzió ideje alatt a csoport azonosítója segítségével csatlakozhat ugyanahhoz a beszélgetéshez. Tetszőleges számú csoport-azonosítót hozhat létre, és elkülönítheti a felhasználókat a "szobák" használatával. A továbblépés további vezérlőket mutat be a "szobák" körül 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ismerkedés a hívással](../../quickstarts/voice-video-calling/getting-started-with-calling.md)
 
 További információért tekintse át a következő cikkeket:
 - Ismerkedjen meg az általános [hívási folyamatokkal](../call-flows.md)
-- [A PSTN-megoldás megtervezése](../telephony-sms/plan-solution.md)
+- [Telefonszám-típusok](../telephony-sms/plan-solution.md)
 - További információ az [ügyféloldali kódtár funkcióinak meghívásáról](../voice-video-calling/calling-sdk-features.md)
