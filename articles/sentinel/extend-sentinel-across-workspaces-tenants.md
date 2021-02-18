@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 9cbafa2a87db9aa59769ac759da9b56a6463874a
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 49b267d36fb6c365cf2125912c0d27fe7d669474
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100006683"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585293"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Az Azure Sentinel kiterjesztése munkaterületek és bérlők között
 
@@ -35,7 +35,7 @@ Az Azure Sentinel-felület összes előnyét akkor használhatja ki, ha egyetlen
 | Az adatok tulajdonjoga | Az adattulajdonos határai, például a leányvállalatok vagy a kapcsolt vállalatok, jobban körülhatárolva vannak külön munkaterületek használatával. |  |
 | Több Azure-bérlő | Az Azure Sentinel csak a saját Azure Active Directory (Azure AD) bérlői határán belül támogatja a Microsoft és az Azure SaaS-erőforrások adatgyűjtését. Emiatt minden Azure AD-bérlőhöz külön munkaterületre van szükség. |  |
 | Részletes adathozzáférés-vezérlés | Előfordulhat, hogy egy szervezetnek a szervezeten belül vagy kívül különböző csoportokat is engedélyeznie kell az Azure Sentinel által összegyűjtött adatok eléréséhez. Például:<br><ul><li>Erőforrás-tulajdonosok hozzáférése az erőforrásokhoz kapcsolódó adatforrásokhoz</li><li>A SOCs regionális vagy leányvállalati hozzáférése a szervezet részeihez kapcsolódóan</li></ul> | Azure- [RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/controlling-access-to-azure-sentinel-data-resource-rbac/ba-p/1301463) vagy- [szintű Azure-RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) használata |
-| Részletes adatmegőrzési beállítások | A különböző adattípusok esetében a több munkaterületet is csak a különböző adatmegőrzési időszakok beállítására lehet beállítani. A táblázat szintű adatmegőrzési beállítások bevezetésének köszönhetően számos esetben már nincs szükség erre. | [Táblázat szintű adatmegőrzési beállítások](https://techcommunity.microsoft.com/t5/azure-sentinel/new-per-data-type-retention-is-now-available-for-azure-sentinel/ba-p/917316) használata vagy [az adatok törlésének](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data) automatizálása |
+| Részletes adatmegőrzési beállítások | A különböző adattípusok esetében a több munkaterületet is csak a különböző adatmegőrzési időszakok beállítására lehet beállítani. A táblázat szintű adatmegőrzési beállítások bevezetésének köszönhetően számos esetben már nincs szükség erre. | [Táblázat szintű adatmegőrzési beállítások](https://techcommunity.microsoft.com/t5/azure-sentinel/new-per-data-type-retention-is-now-available-for-azure-sentinel/ba-p/917316) használata vagy [az adatok törlésének](../azure-monitor/logs/personal-data-mgmt.md#how-to-export-and-delete-private-data) automatizálása |
 | Felosztott számlázás | A munkaterületek külön előfizetésbe helyezésével különböző feleknek is kiszámlázható. | Használati jelentések készítése és kereszt-díjszámítás |
 | Örökölt architektúra | Több munkaterület használata olyan korábbi kialakításokból eredhet, amelyek figyelembe vették a korlátozásokat vagy az ajánlott eljárásokat, amelyek nem rendelkeznek többé igaz értékűek. Lehet akár egy tetszőlegesen meghozott döntés eredménye is, amely módosítható, hogy jobban megfeleljen az Azure Sentinelhez.<br><br>Példák:<br><ul><li>Előfizetés alapértelmezett munkaterületének használata Azure Security Center telepítésekor</li><li>A részletes hozzáférés-vezérlési vagy adatmegőrzési beállítások szükségessége, amelyek viszonylag új megoldások</li></ul> | A munkaterületek architektúrájának újratervezése |
 
@@ -81,12 +81,12 @@ Az Azure Sentinel több [munkaterület incidens-nézetet](./multiple-workspace-v
 
 ### <a name="cross-workspace-querying"></a>Több munkaterület lekérdezése
 
-Az Azure Sentinel több munkaterület lekérdezését támogatja [egyetlen lekérdezésben](../azure-monitor/log-query/cross-workspace-query.md), így egyetlen lekérdezésben kereshet és korrelálhat több munkaterületről származó adatokkal. 
+Az Azure Sentinel több munkaterület lekérdezését támogatja [egyetlen lekérdezésben](../azure-monitor/logs/cross-workspace-query.md), így egyetlen lekérdezésben kereshet és korrelálhat több munkaterületről származó adatokkal. 
 
-- A [munkaterület () kifejezés](../azure-monitor/log-query/workspace-expression.md) használatával egy másik munkaterületen található táblára hivatkozhat. 
+- A [munkaterület () kifejezés](../azure-monitor/logs/workspace-expression.md) használatával egy másik munkaterületen található táblára hivatkozhat. 
 - A munkaterületek () kifejezés mellett használja a [Union operátort](/azure/data-explorer/kusto/query/unionoperator?pivots=azuremonitor) , hogy több munkaterület tábláin is alkalmazza a lekérdezéseket.
 
-A mentett [függvények](../azure-monitor/log-query/functions.md) segítségével egyszerűbbé teheti a több munkaterülettel kapcsolatos lekérdezéseket. Ha például egy munkaterületre mutató hivatkozás hosszú, érdemes lehet menteni a kifejezést `workspace("customer-A's-hard-to-remember-workspace-name").SecurityEvent` egy nevű függvényként `SecurityEventCustomerA` . Ezután a lekérdezéseket is írhat `SecurityEventCustomerA | where ...` .
+A mentett [függvények](../azure-monitor/logs/functions.md) segítségével egyszerűbbé teheti a több munkaterülettel kapcsolatos lekérdezéseket. Ha például egy munkaterületre mutató hivatkozás hosszú, érdemes lehet menteni a kifejezést `workspace("customer-A's-hard-to-remember-workspace-name").SecurityEvent` egy nevű függvényként `SecurityEventCustomerA` . Ezután a lekérdezéseket is írhat `SecurityEventCustomerA | where ...` .
 
 Egy függvény is egyszerűsítheti a gyakran használt Uniót. Például mentheti a következő kifejezést egy nevű függvényként `unionSecurityEvent` :
 

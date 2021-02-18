@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan tekintheti meg és kérdezheti le Azure Functio
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 9e03a36824853a3e43bbf8628fd12481cfbcaf25
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 56af6af6f4204a819c06fd97cda357dca20a19b0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549558"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591175"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>Azure Functions telemetria elemzése Application Insights 
 
@@ -64,12 +64,12 @@ Az Application Insights következő területei hasznosak lehetnek a függvények
 | ---- | ----------- |
 | **[Hibák](../azure-monitor/app/asp-net-exceptions.md)** |  Diagramok és riasztások létrehozása a függvények hibái és a kiszolgálói kivételek alapján. A **művelet** neve a függvény neve. A függőségek meghibásodása csak akkor jelenik meg, ha egyéni telemetria valósít meg a függőségekhez. |
 | **[Teljesítmény](../azure-monitor/app/performance-counters.md)** | A teljesítménnyel kapcsolatos problémák elemzéséhez tekintse meg az erőforrás-kihasználtságot és az átviteli sebességet a **felhőalapú szerepkör példányain**. Ez a teljesítményadatok hasznosak lehetnek olyan forgatókönyvek hibakereséséhez, amelyekben a függvények lekérik az alapul szolgáló erőforrásokat. |
-| **[Mérőszámok](../azure-monitor/platform/metrics-charts.md)** | Metrikák alapján létrehozhat diagramokat és riasztásokat. A metrikák közé tartozik a Function meghívások száma, a végrehajtási idő és a sikerességi arány. |
+| **[Mérőszámok](../azure-monitor/essentials/metrics-charts.md)** | Metrikák alapján létrehozhat diagramokat és riasztásokat. A metrikák közé tartozik a Function meghívások száma, a végrehajtási idő és a sikerességi arány. |
 | **[Élő metrikák](../azure-monitor/app/live-stream.md)** | A metrikák adatait a közel valós időben létrehozva tekintheti meg. |
 
 ## <a name="query-telemetry-data"></a>Telemetria-adatbázis lekérdezése
 
-[Application Insights Analytics](../azure-monitor/log-query/log-query-overview.md) hozzáférést biztosít minden telemetria-adatbázishoz egy adatbázisban lévő táblák formájában. Az elemzés lekérdezési nyelvet biztosít az adatok kinyeréséhez, módosításához és megjelenítéséhez. 
+[Application Insights Analytics](../azure-monitor/logs/log-query-overview.md) hozzáférést biztosít minden telemetria-adatbázishoz egy adatbázisban lévő táblák formájában. Az elemzés lekérdezési nyelvet biztosít az adatok kinyeréséhez, módosításához és megjelenítéséhez. 
 
 Válassza a **naplók** lehetőséget a naplózott események felderítéséhez vagy lekérdezéséhez.
 

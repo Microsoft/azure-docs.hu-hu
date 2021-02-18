@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 565f98126cea8cc03874bb4f83ecdc2c65f8d5fb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 44d071c635967e4ce3078be8419414bc9ff0c653
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016454"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580150"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Virtuálisgép-bővítmények és-szolgáltatások a Windows rendszerhez
 
@@ -36,7 +36,7 @@ Ez a cikk áttekintést nyújt a virtuálisgép-bővítményekről, az Azure vir
 Számos különböző Azure-beli virtuálisgép-bővítmény érhető el, amelyek mindegyike egy adott használati esettel rendelkezik. Néhány példa:
 
 - PowerShell kívánt állapot-konfiguráció alkalmazása egy virtuális gépre a Windows DSC bővítménnyel. További információ: az [Azure desired State Configuration bővítménye](dsc-overview.md).
-- Egy virtuális gép figyelésének konfigurálása a Log Analytics ügynök virtuálisgép-bővítményével. További információ: [Azure-beli virtuális gépek Összekapcsolásának Azure monitor naplók](../../azure-monitor/learn/quick-collect-azurevm.md).
+- Egy virtuális gép figyelésének konfigurálása a Log Analytics ügynök virtuálisgép-bővítményével. További információ: [Azure-beli virtuális gépek Összekapcsolásának Azure monitor naplók](../../azure-monitor/vm/quick-collect-azurevm.md).
 - Azure-beli virtuális gép konfigurálása a Chef használatával. További információ: az Azure-beli [virtuális gépek üzembe helyezésének automatizálása a Chef segítségével](/azure/developer/chef/windows-vm-configure).
 - Konfigurálja az Azure-infrastruktúra figyelését az Datadoggal bővítménnyel. További információ: [datadoggal blog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 
@@ -422,13 +422,13 @@ A bővítményeket a következőképpen is eltávolíthatja a Azure Portalban:
 4. Válassza az **Eltávolítás** lehetőséget.
 
 ## <a name="common-vm-extensions-reference"></a>Gyakori virtuálisgép-bővítmények ismertetése
-| Kiterjesztés neve | Leírás | További információ |
+| Kiterjesztés neve | Description | További információ |
 | --- | --- | --- |
 | Egyéniszkript-bővítmény Windows rendszerre |Parancsfájlok futtatása Azure-beli virtuális gépeken |[Egyéniszkript-bővítmény Windows rendszerre](custom-script-windows.md) |
 | DSC-bővítmény a Windowshoz |PowerShell DSC (kívánt állapot konfiguráció) bővítmény |[DSC-bővítmény a Windowshoz](dsc-overview.md) |
 | Azure Diagnostics bővítmény |Azure Diagnostics kezelése |[Azure Diagnostics bővítmény](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
 | Azure VM-hozzáférési bővítmény |Felhasználók és hitelesítő adatok kezelése |[VM-hozzáférési bővítmény Linux rendszerhez](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a virtuálisgép-bővítményekről: [Azure-beli virtuális gépek bővítményei és funkcióinak áttekintése](overview.md).

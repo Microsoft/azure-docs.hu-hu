@@ -3,21 +3,21 @@ title: A delegált erőforrások nagy léptékű figyelése
 description: Megtudhatja, hogyan használhatja hatékonyan a Azure Monitor-naplókat a felügyelt ügyfél-bérlők méretezhető módjában.
 ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: f3a789c855f7b05d24cdacd0fb31ee7d6d3e188b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: aadd14bb3e4aad61fb2afc0735b5714deedfe301
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379233"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593115"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>A delegált erőforrások nagy léptékű figyelése
 
 Szolgáltatóként több ügyfél-bérlőt is felkészített az [Azure világítótoronyba](../overview.md). Az Azure Lighthouse lehetővé teszi a szolgáltatók számára, hogy egyszerre több bérlőn is elvégezzék a műveleteket, így hatékonyabbá téve a felügyeleti feladatokat.
 
-Ebből a témakörből megtudhatja, hogyan használhatja a [Azure monitor naplókat](../../azure-monitor/platform/data-platform-logs.md) skálázható módon a kezelt ügyfél-bérlők között. Bár a jelen témakörben a szolgáltatók és az ügyfelekre is hivatkozunk, ez az útmutató az [Azure Lighthouse-t használó vállalatoknak is vonatkozik több bérlő kezelésére](../concepts/enterprise.md).
+Ebből a témakörből megtudhatja, hogyan használhatja a [Azure monitor naplókat](../../azure-monitor/logs/data-platform-logs.md) skálázható módon a kezelt ügyfél-bérlők között. Bár a jelen témakörben a szolgáltatók és az ügyfelekre is hivatkozunk, ez az útmutató az [Azure Lighthouse-t használó vállalatoknak is vonatkozik több bérlő kezelésére](../concepts/enterprise.md).
 
 > [!NOTE]
-> Győződjön meg arról, hogy a felügyeleti bérlők felhasználói megkaptak a szükséges szerepköröket a delegált ügyfél-előfizetések [log Analytics-munkaterületek kezeléséhez](../../azure-monitor/platform/manage-access.md#manage-access-using-azure-permissions) .
+> Győződjön meg arról, hogy a felügyeleti bérlők felhasználói megkaptak a szükséges szerepköröket a delegált ügyfél-előfizetések [log Analytics-munkaterületek kezeléséhez](../../azure-monitor/logs/manage-access.md#manage-access-using-azure-permissions) .
 
 ## <a name="create-log-analytics-workspaces"></a>Log Analytics-munkaterületek létrehozása
 
@@ -28,7 +28,7 @@ Javasoljuk, hogy ezeket a munkaterületeket közvetlenül az ügyfél bérlői h
 > [!TIP]
 > A Log Analytics munkaterületről származó adatokhoz való hozzáféréshez használt Automation-fiókokat ugyanabban a bérlőben kell létrehozni, mint a munkaterületet.
 
-Log Analytics munkaterületet az [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)használatával vagy [Azure PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md)használatával hozhat létre a [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)használatával.
+Log Analytics munkaterületet az [Azure CLI](../../azure-monitor/logs/quick-create-workspace-cli.md)használatával vagy [Azure PowerShell](../../azure-monitor/logs/powershell-workspace-configuration.md)használatával hozhat létre a [Azure Portal](../../azure-monitor/logs/quick-create-workspace.md)használatával.
 
 > [!IMPORTANT]
 > Még ha az összes munkaterületet az ügyfél bérlője hozza létre, a Microsoft. betekintő erőforrás-szolgáltatót is regisztrálni kell egy előfizetésben a bérlői felügyeletben.
@@ -43,11 +43,11 @@ Ha meghatározta, hogy mely házirendeket kell telepítenie, akkor a [delegált 
 
 ## <a name="analyze-the-gathered-data"></a>Az összegyűjtött adatok elemzése
 
-A szabályzatok üzembe helyezése után a rendszer az egyes ügyfelek bérlői által létrehozott Log Analytics munkaterületeken naplózza az adatait. Az összes felügyelt ügyfélhez olyan eszközöket használhat, mint például a [Azure monitor munkafüzetek](../../azure-monitor/platform/workbooks-overview.md) több adatforrásból származó információk gyűjtésére és elemzésére.
+A szabályzatok üzembe helyezése után a rendszer az egyes ügyfelek bérlői által létrehozott Log Analytics munkaterületeken naplózza az adatait. Az összes felügyelt ügyfélhez olyan eszközöket használhat, mint például a [Azure monitor munkafüzetek](../../azure-monitor/visualize/workbooks-overview.md) több adatforrásból származó információk gyűjtésére és elemzésére.
 
 ## <a name="view-alerts-across-customers"></a>Riasztások megtekintése az ügyfelek között
 
-A delegált előfizetések [riasztásait](../../azure-monitor/platform/alerts-overview.md) megtekintheti a kezelt ügyfelek bérlői számára.
+A delegált előfizetések [riasztásait](../../azure-monitor/alerts/alerts-overview.md) megtekintheti a kezelt ügyfelek bérlői számára.
 
 A kezelő Bérlővel a Azure Portal vagy API-k és felügyeleti eszközök segítségével [hozhatja létre, tekintheti meg és kezelheti a tevékenységek naplójának riasztásait](../../azure-monitor/platform/alerts-activity-log.md) .
 

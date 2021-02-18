@@ -5,12 +5,12 @@ ms.custom: subject-cost-optimization
 ms.service: app-service
 ms.topic: how-to
 ms.date: 01/01/2021
-ms.openlocfilehash: 3df08705859678525526f8fef198826f58249d8b
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: ada4c1991a57c8252247c9617e097dc82cb3b4a9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99573364"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593980"
 ---
 # <a name="plan-and-manage-costs-for-azure-app-service"></a>A Azure App Service költségeinek megtervezése és kezelése
 
@@ -38,7 +38,7 @@ Attól függően, hogy milyen szolgáltatást használ a App Serviceban, a köve
 - **App Service terv**  App Service alkalmazás üzemeltetéséhez szükséges.
 - **Elkülönített rétegek**  Egy App Service-környezethez [Virtual Network](../virtual-network/index.yml) szükséges.
 - **Biztonsági mentés**  A biztonsági másolatok készítéséhez szükség van egy [Storage-fiókra](../storage/index.yml) .
-- **Diagnosztikai naplók**  Naplózási lehetőségként kiválaszthatja a [Storage-fiókot](../storage/index.yml) , vagy integrálhatja az [Azure log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)-t.
+- **Diagnosztikai naplók**  Naplózási lehetőségként kiválaszthatja a [Storage-fiókot](../storage/index.yml) , vagy integrálhatja az [Azure log Analytics](../azure-monitor/logs/log-analytics-tutorial.md)-t.
 - **Tanúsítványok app Service**  Az Azure-ban vásárolt tanúsítványokat [Azure Key Vault](../key-vault/index.yml)kell fenntartani.
 
 A App Service egyéb Cost-erőforrásai (a részletekért lásd a [app Service díjszabását](https://azure.microsoft.com/pricing/details/app-service/) ):
@@ -114,7 +114,7 @@ Az éles számítási feladatokhoz a dedikált **standard** díjszabási szint v
 > [!NOTE]
 > A **Premium v3** a Windows-tárolókat és a Linux-tárolókat is támogatja. 
 
-Miután kiválasztotta a kívánt díjszabási szintet, csökkentse az üresjárati példányokat. A kibővíthető üzembe helyezés során pénzt pazarolhat a kihasználatlan számítási példányokra. Konfigurálnia kell az automatikus [skálázást](../azure-monitor/platform/autoscale-get-started.md), amely a **standard** szintű és a fentiekben is elérhető. A kibővíthető ütemtervek, valamint a metrikus kibővített szabályok létrehozásával csak azokat a példányokat kell fizetnie, amelyekhez adott időpontban szüksége van.
+Miután kiválasztotta a kívánt díjszabási szintet, csökkentse az üresjárati példányokat. A kibővíthető üzembe helyezés során pénzt pazarolhat a kihasználatlan számítási példányokra. Konfigurálnia kell az automatikus [skálázást](../azure-monitor/autoscale/autoscale-get-started.md), amely a **standard** szintű és a fentiekben is elérhető. A kibővíthető ütemtervek, valamint a metrikus kibővített szabályok létrehozásával csak azokat a példányokat kell fizetnie, amelyekhez adott időpontban szüksége van.
 
 ### <a name="azure-reservations"></a>Azure Reservations
 

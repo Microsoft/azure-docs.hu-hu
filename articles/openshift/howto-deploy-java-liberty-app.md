@@ -3,16 +3,16 @@ title: Java-alkalmazás üzembe helyezése Open Liberty/WebSphere Liberty-vel eg
 description: Egy Java-alkalmazás üzembe helyezése nyílt Liberty/WebSphere Liberty-vel egy Azure Red Hat OpenShift 4 fürtön.
 author: jiangma
 ms.author: jiangma
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 10/30/2020
 keywords: Java, jakartaee, JavaEE, profil, Open-Liberty, WebSphere-Liberty, ARO, openshift, Red Hat
-ms.openlocfilehash: 0c17c911d1eefe646785314a26b6a9b1e964ca67
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: acb448a9662daa58b5d2ff42861e238e23586b33
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493941"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633886"
 ---
 # <a name="deploy-a-java-application-with-open-libertywebsphere-liberty-on-an-azure-red-hat-openshift-4-cluster"></a>Java-alkalmazás üzembe helyezése Open Liberty/WebSphere Liberty-vel egy Azure Red Hat OpenShift 4 fürtön
 
@@ -38,7 +38,7 @@ Az útmutató lépéseinek végrehajtásához hajtsa végre az alábbi előfelt�
 
    Bár a "Red Hat pull-kulcs beolvasása" lépés opcionálisként van megjelölve, ez a **cikk szükséges**.  A lekéréses titok lehetővé teszi, hogy az Azure Red Hat OpenShift-fürt megtalálja a nyílt Liberty-kezelőt.
 
-   Ha memória-igényű alkalmazásokat szeretne futtatni a fürtön, a paraméter használatával adja meg a munkavégző csomópontok megfelelő virtuálisgép-méretét `--worker-vm-size` . Például `Standard_E4s_v3` a virtuális gép minimális mérete, hogy a Elasticsearch-kezelőt egy fürtön telepítse. További információ:
+   Ha memória-igényű alkalmazásokat szeretne futtatni a fürtön, a paraméter használatával adja meg a munkavégző csomópontok megfelelő virtuálisgép-méretét `--worker-vm-size` . Például `Standard_E4s_v3` a virtuális gép minimális mérete, hogy a Elasticsearch-kezelőt egy fürtön telepítse. További információkért lásd:
 
    * [Azure CLI fürt létrehozásához](/cli/azure/aro?preserve-view=true&view=azure-cli-latest#az-aro-create)
    * [A virtuális gépek támogatott méretei a memória optimalizálása esetén](./support-policies-v4.md#memory-optimized)
@@ -97,7 +97,7 @@ Miután létrehozta és csatlakoztatta a fürtöt, telepítse az Open Liberty op
 1. Jelentkezzen be a OpenShift webkonzolra a böngészőjében a `kubeadmin` hitelesítő adatok használatával.
 2. Navigáljon a **kezelők**  >  **OperatorHub** , és keresse **meg a nyílt Liberty operátort**.
 3. Válassza a **szabadság-kezelő megnyitása** lehetőséget a keresési eredmények közül.
-4. Válassza a **Telepítés** lehetőséget.
+4. Válassza a **Telepítés** gombot.
 5. Az előugró **ablak létrehozása-kezelő előfizetésben** a **fürt összes névterét (alapértelmezett)** a **telepítési mód**, a **bétaverzió** a **frissítési csatornához** és az **automatikus** **jóváhagyási stratégia** esetében:
 
    ![kezelői előfizetés létrehozása a nyílt Liberty-kezelőhöz](./media/howto-deploy-java-liberty-app/install-operator.png)
@@ -233,7 +233,7 @@ Most már üzembe helyezheti a minta Liberty-alkalmazást az előfeltételeken v
 Mivel a Liberty-alkalmazások kezeléséhez a nyílt Liberty operátort használjuk, létre kell hozni az *egyéni erőforrás-definíció* egy példányát, amelynek típusa "OpenLibertyApplication". A kezelő ezt követően gondoskodik az üzembe helyezéshez szükséges OpenShift-erőforrások kezelésének minden aspektusáról.
 
 1. Jelentkezzen be a OpenShift webkonzolra a böngészőjében az Azure AD-felhasználó hitelesítő adataival.
-1. Bontsa ki a **Home (Kezdőlap**) lehetőséget, és válassza a **Projects**  >  **Open-Liberty-bemutató** projektet.
+1. Bontsa ki a **Home (Kezdőlap**) lehetőséget, és válassza a   >  **Open-Liberty-bemutató** projektet.
 1. Navigáljon a **kezelők** által  >  **telepített operátorokhoz**.
 1. A lap közepén válassza a **szabadság-kezelő megnyitása** lehetőséget.
 1. A lap közepén válassza a **szabadság alkalmazás megnyitása** lehetőséget.  A felhasználói felületen lévő elemek navigációja a használatban lévő technológiák tényleges betárolási hierarchiáját tükrözi.
@@ -241,7 +241,7 @@ Mivel a Liberty-alkalmazások kezeléséhez a nyílt Liberty operátort használ
    ![ARO Java-tároló](./media/howto-deploy-java-liberty-app/aro-java-containment.png)
 1. Válassza a **OpenLibertyApplication létrehozása** lehetőséget.
 1. Cserélje le a generált YAML a tiéd értékre, amely a következő helyen található: `<path-to-repo>/2-simple/openlibertyapplication.yaml` .
-1. Kattintson a **Létrehozás** gombra. A rendszer visszaadja a OpenLibertyApplications listáját.
+1. Válassza a **Létrehozás** lehetőséget. A rendszer visszaadja a OpenLibertyApplications listáját.
 1. Válassza a **JavaEE-Café-Simple** lehetőséget.
 1. A lap közepén válassza az **erőforrások** lehetőséget.
 1. A táblázatban válassza ki a **JavaEE-Café-Simple** hivatkozást az **útvonal** **típusának** megfelelően.
@@ -316,7 +316,7 @@ oc delete -f openlibertyapplication.yaml
 
 Törölje az ARO-fürtöt az [oktatóanyag: Azure Red Hat OpenShift 4-fürt törlése](./tutorial-delete-cluster.md) című témakör lépéseit követve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az útmutatóban megtanulta, hogyan teheti meg a következőket:
 > [!div class="checklist"]

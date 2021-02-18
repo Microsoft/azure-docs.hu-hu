@@ -66,12 +66,12 @@
         - name: Esemény összesítése (előzetes verzió)
           displayName: 'process events, network connection'
           href: concept-event-aggregation.md
-        - name: Biztonsági riasztások
+        - name: Beépített riasztások a IoT Hubhoz
           displayName: 'binary command line, disable firewall, port forwarding detection, possible attempt to disable auditd logging detected, reverse shells, successful bruteforce attempt, successful local login, web shell, Behavior similar, Crypto coin, suspicious, Exposed Docker,'
           href: concept-security-alerts.md
-        - name: Egyéni biztonsági riasztások
+        - name: IoT Hub egyéni biztonsági riasztásai
           href: concept-customizable-security-alerts.md
-        - name: Biztonsági javaslatok
+        - name: A IoT Hub biztonsági javaslatai
           href: concept-recommendations.md
         - name: Klasszikus
           items:
@@ -94,6 +94,12 @@
             - name: A biztonsági modul klasszikus eseményének összesítése
               displayName: 'twin, default, configuration, alerts'
               href: event-aggregation.md
+            - name: Ügynök-alapú biztonsági riasztások
+              href: agent-based-security-alerts.md
+            - name: Ügynök-alapú biztonsági egyéni riasztások
+              href: agent-based-security-custom-alerts.md
+            - name: Ügynök-alapú javaslatok
+              href: agent-based-recommendations.md
 - name: Útmutatók
   items:
     - name: Ügynök nélküli megoldás szervezetek számára

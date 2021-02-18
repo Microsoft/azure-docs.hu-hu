@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.custom: subject-monitoring
 ms.date: 10/01/2020
-ms.openlocfilehash: c9b7230ca734bba1527ec5ecd975e1bae141a9b4
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: a18ee02b5e91b628a25655949a652270bd7436c4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584685"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575139"
 ---
 # <a name="monitor-azure-machine-learning"></a>Az Azure Machine Learning monitorozása
 
@@ -35,7 +35,7 @@ Ha kritikus fontosságú alkalmazásokat és üzleti folyamatokat kíván haszn�
 
 A Azure Machine Learning a [Azure monitor](../azure-monitor/overview.md)használatával hoz létre figyelési adatgyűjtési szolgáltatást, amely az Azure-ban teljes verem-figyelési szolgáltatás. Azure Monitor az Azure-erőforrások figyelésére szolgáló funkciók teljes készletét biztosítja. Más felhőkben és a helyszínen is figyelheti az erőforrásokat.
 
-A következő fogalmakat ismerteti az [Azure-erőforrások Azure Monitorával való monitorozásával foglalkozó](../azure-monitor/insights/monitor-azure-resource.md)cikkből:
+A következő fogalmakat ismerteti az [Azure-erőforrások Azure Monitorával való monitorozásával foglalkozó](../azure-monitor/essentials/monitor-azure-resource.md)cikkből:
 
 - Mi az Azure Monitor?
 - A figyeléshez kapcsolódó költségek
@@ -46,11 +46,11 @@ A következő fogalmakat ismerteti az [Azure-erőforrások Azure Monitorával va
 Az alábbi részekben a cikk a Azure Machine Learninghoz összegyűjtött adatok leírásával épít. Ezek a szakasz példákat is tartalmaznak az adatgyűjtés konfigurálására és az adatok elemzésére az Azure-eszközökkel.
 
 > [!TIP]
-> A Azure Monitorhez kapcsolódó költségek megismeréséhez tekintse meg a [használati és becsült költségeket](../azure-monitor/platform/usage-estimated-costs.md). Ha meg szeretné tudni, hogy mire van szüksége ahhoz, hogy az adatai megjelenjenek Azure Monitorban, tekintse meg az [adatfeldolgozási idő naplózása](../azure-monitor/platform/data-ingestion-time.md)című témakört.
+> A Azure Monitorhez kapcsolódó költségek megismeréséhez tekintse meg a [használati és becsült költségeket](../azure-monitor//usage-estimated-costs.md). Ha meg szeretné tudni, hogy mire van szüksége ahhoz, hogy az adatai megjelenjenek Azure Monitorban, tekintse meg az [adatfeldolgozási idő naplózása](../azure-monitor/logs/data-ingestion-time.md)című témakört.
 
 ## <a name="monitoring-data-from-azure-machine-learning"></a>Adatok figyelése Azure Machine Learningról
 
-Azure Machine Learning ugyanolyan típusú figyelési adatokat gyűjt, mint az [Azure-erőforrások monitorozásával](../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)kapcsolatos további Azure-erőforrások. 
+Azure Machine Learning ugyanolyan típusú figyelési adatokat gyűjt, mint az [Azure-erőforrások monitorozásával](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data)kapcsolatos további Azure-erőforrások. 
 
 A Azure Machine Learning által létrehozott naplók és metrikák részletes ismertetését lásd: [Azure Machine learning monitorozási adatok referenciája](monitor-resource-reference.md) .
 
@@ -62,7 +62,7 @@ A platform metrikáit és a tevékenység naplóját a rendszer automatikusan ö
 
 Az erőforrás-naplók gyűjtése és tárolása addig nem történik meg, amíg létre nem hozza a diagnosztikai beállításokat, és egy vagy több helyre irányítja őket.
 
-A diagnosztikai beállításoknak a Azure Portal, a CLI vagy a PowerShell használatával történő létrehozásával kapcsolatos részletes folyamatért lásd: [diagnosztikai beállítás létrehozása a platform-naplók és-metrikák összegyűjtéséhez az Azure-ban](../azure-monitor/platform/diagnostic-settings.md) . Diagnosztikai beállítás létrehozásakor meg kell adnia, hogy a rendszer milyen típusú naplókat gyűjtsön. A Azure Machine Learning kategóriái [Azure Machine learning figyelési adatreferenciában](monitor-resource-reference.md#resource-logs)vannak felsorolva.
+A diagnosztikai beállításoknak a Azure Portal, a CLI vagy a PowerShell használatával történő létrehozásával kapcsolatos részletes folyamatért lásd: [diagnosztikai beállítás létrehozása a platform-naplók és-metrikák összegyűjtéséhez az Azure-ban](../azure-monitor/essentials/diagnostic-settings.md) . Diagnosztikai beállítás létrehozásakor meg kell adnia, hogy a rendszer milyen típusú naplókat gyűjtsön. A Azure Machine Learning kategóriái [Azure Machine learning figyelési adatreferenciában](monitor-resource-reference.md#resource-logs)vannak felsorolva.
 
 > [!IMPORTANT]
 > Ezen beállítások engedélyezéséhez további Azure-szolgáltatások (Storage-fiók, Event hub vagy Log Analytics) szükségesek, ami növelheti a költségeket. A becsült költségek kiszámításához tekintse meg az [Azure díjszabási számológépét](https://azure.microsoft.com/pricing/calculator).
@@ -82,7 +82,7 @@ A gyűjtött mérőszámokat és naplókat a következő szakaszokban tárgyalju
 
 ## <a name="analyzing-metrics"></a>Mérőszámok elemzése
 
-A metrikákat a **Azure monitor** menüből **megnyitva** elemezheti Azure Machine learning mérőszámait, valamint más Azure-szolgáltatások metrikáit is. Az eszköz használatával kapcsolatos részletekért lásd: az [Azure Metrikaböngésző használatának első lépései](../azure-monitor/platform/metrics-getting-started.md) .
+A metrikákat a **Azure monitor** menüből **megnyitva** elemezheti Azure Machine learning mérőszámait, valamint más Azure-szolgáltatások metrikáit is. Az eszköz használatával kapcsolatos részletekért lásd: az [Azure Metrikaböngésző használatának első lépései](../azure-monitor/essentials/metrics-getting-started.md) .
 
 A gyűjtött platform metrikáinak listáját itt tekintheti meg: [Monitoring Azure Machine learning adathivatkozási mérőszámok](monitor-resource-reference.md#metrics).
 
@@ -90,7 +90,7 @@ Azure Machine Learning összes mérőszáma a névtér **Machine learning szolg�
 
 ![Metrikaböngésző a Machine Learning szolgáltatás munkaterületének kiválasztásával](./media/monitor-azure-machine-learning/metrics.png)
 
-A hivatkozásokat a [Azure monitor által támogatott összes erőforrás-metrika](../azure-monitor/platform/metrics-supported.md)listáját láthatja.
+A hivatkozásokat a [Azure monitor által támogatott összes erőforrás-metrika](../azure-monitor/essentials/metrics-supported.md)listáját láthatja.
 
 > [!TIP]
 > Azure Monitor metrikák adatai 90 napig érhetők el. A diagramok létrehozásakor azonban csak 30 napig lehet vizualizációt készíteni. Ha például egy 90 napos időszakot szeretne megjeleníteni, azt három, a 90 napos időszakon belül 30 napos diagramra kell bontania.
@@ -100,7 +100,7 @@ A dimenziókat támogató metrikák esetében a dimenzió érték használatáva
 
 A mérőszámokat dimenzió alapján is feloszthatja, hogy megjelenítse, hogy a metrika különböző szakaszai hogyan hasonlítanak össze egymással. Például feloszthatja a folyamat **lépésének típusát** , hogy megtekintse a folyamat során használt lépések számát.
 
-További információ a szűrésről és a felosztásról: [Azure monitor speciális szolgáltatásai](../azure-monitor/platform/metrics-charts.md).
+További információ a szűrésről és a felosztásról: [Azure monitor speciális szolgáltatásai](../azure-monitor/essentials/metrics-charts.md).
 
 <a id="analyzing-log-data"></a>
 ## <a name="analyzing-logs"></a>Naplók elemzése
@@ -116,14 +116,14 @@ Azure Monitor naplókban lévő, az egyes táblákban található, egyedi tulajd
 | AmlComputeJobEvent | Azure Machine Learning számításon futó feladatok eseményei. |
 
 > [!IMPORTANT]
-> Amikor kijelöli a **naplók** elemet a Azure Machine learning menüben, a rendszer megnyit egy log Analytics a jelenlegi munkaterületre beállított lekérdezési hatókörrel. Ez azt jelenti, hogy a naplók lekérdezése csak az adott erőforrás adatait fogja tartalmazni. Ha olyan lekérdezést szeretne futtatni, amely más adatbázisokból vagy más Azure-szolgáltatásoktól származó adatokból származó adatokkal is rendelkezik, válassza a **naplók** lehetőséget a **Azure monitor** menüből. Részletekért lásd: [a naplózási lekérdezés hatóköre és időbeli tartománya Azure Monitor log Analytics](../azure-monitor/log-query/scope.md) .
+> Amikor kijelöli a **naplók** elemet a Azure Machine learning menüben, a rendszer megnyit egy log Analytics a jelenlegi munkaterületre beállított lekérdezési hatókörrel. Ez azt jelenti, hogy a naplók lekérdezése csak az adott erőforrás adatait fogja tartalmazni. Ha olyan lekérdezést szeretne futtatni, amely más adatbázisokból vagy más Azure-szolgáltatásoktól származó adatokból származó adatokkal is rendelkezik, válassza a **naplók** lehetőséget a **Azure monitor** menüből. Részletekért lásd: [a naplózási lekérdezés hatóköre és időbeli tartománya Azure Monitor log Analytics](../azure-monitor/logs/scope.md) .
 
 A naplók és a metrikák részletes ismertetését lásd: [Azure Machine learning monitorozási adatok referenciája](monitor-resource-reference.md).
 
 ### <a name="sample-kusto-queries"></a>Példa Kusto-lekérdezésekre
 
 > [!IMPORTANT]
-> Amikor kiválasztja a **naplók** elemet a [szolgáltatásnév] menüben, log Analytics megnyílik a lekérdezés hatóköre beállítással az aktuális Azure Machine learning munkaterületre. Ez azt jelenti, hogy a naplók lekérdezése csak az adott erőforrás adatait fogja tartalmazni. Ha olyan lekérdezést szeretne futtatni, amely más munkaterületekről vagy más Azure-szolgáltatásokból származó adatokból származó adatokkal is rendelkezik, válassza a **naplók** lehetőséget a **Azure monitor** menüből. Részletekért lásd: [a naplózási lekérdezés hatóköre és időbeli tartománya Azure Monitor log Analytics](../azure-monitor/log-query/scope.md) .
+> Amikor kiválasztja a **naplók** elemet a [szolgáltatásnév] menüben, log Analytics megnyílik a lekérdezés hatóköre beállítással az aktuális Azure Machine learning munkaterületre. Ez azt jelenti, hogy a naplók lekérdezése csak az adott erőforrás adatait fogja tartalmazni. Ha olyan lekérdezést szeretne futtatni, amely más munkaterületekről vagy más Azure-szolgáltatásokból származó adatokból származó adatokkal is rendelkezik, válassza a **naplók** lehetőséget a **Azure monitor** menüből. Részletekért lásd: [a naplózási lekérdezés hatóköre és időbeli tartománya Azure Monitor log Analytics](../azure-monitor/logs/scope.md) .
 
 A következő lekérdezések segítségével figyelheti Azure Machine Learning erőforrásait: 
 
@@ -161,7 +161,7 @@ A következő lekérdezések segítségével figyelheti Azure Machine Learning e
 
 ## <a name="alerts"></a>Riasztások
 
-Azure Machine Learning riasztásait a **Azure monitor** menüből származó **riasztások** megnyitásával érheti el. A riasztások létrehozásával kapcsolatos részletekért tekintse meg a [metrikus riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../azure-monitor/platform/alerts-metric.md) című témakört.
+Azure Machine Learning riasztásait a **Azure monitor** menüből származó **riasztások** megnyitásával érheti el. A riasztások létrehozásával kapcsolatos részletekért tekintse meg a [metrikus riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../azure-monitor/alerts/alerts-metric.md) című témakört.
 
 A következő táblázat a Azure Machine Learning vonatkozó gyakori és javasolt metrikai szabályokat sorolja fel:
 
@@ -175,4 +175,4 @@ A következő táblázat a Azure Machine Learning vonatkozó gyakori és javasol
 
 - A naplók és a metrikák ismertetését lásd: [Azure Machine learning adathivatkozás figyelése](monitor-resource-reference.md).
 - További információ a Azure Machine Learninghoz kapcsolódó kvóták használatáról: az [Azure-erőforrások kezelése és kvóták igénylése](how-to-manage-quotas.md).
-- Az Azure-erőforrások monitorozásával kapcsolatos további információkért lásd: [Azure-erőforrások figyelése Azure monitorokkal](../azure-monitor/insights/monitor-azure-resource.md).
+- Az Azure-erőforrások monitorozásával kapcsolatos további információkért lásd: [Azure-erőforrások figyelése Azure monitorokkal](../azure-monitor/essentials/monitor-azure-resource.md).

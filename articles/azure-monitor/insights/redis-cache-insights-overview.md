@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/10/2020
-ms.openlocfilehash: 35f575410caa7a8a8ffbda35bdfa876418db8945
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: fee454073c50b9542e140576ef0629a39b8f4294
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210375"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573466"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis"></a>Ismerkedés az Azure cache Azure Monitor Redis
 
@@ -186,6 +186,6 @@ A hibaelhárítással kapcsolatos útmutatásért tekintse meg a dedikált munka
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A [metrikai riasztások](../platform/alerts-metric.md) és a [szolgáltatás állapotára vonatkozó értesítések](../../service-health/alerts-activity-log-service-notifications-portal.md) konfigurálása a problémák észlelését segítő automatizált riasztások beállításához.
+* A [metrikai riasztások](../alerts/alerts-metric.md) és a [szolgáltatás állapotára vonatkozó értesítések](../../service-health/alerts-activity-log-service-notifications-portal.md) konfigurálása a problémák észlelését segítő automatizált riasztások beállításához.
 
-* Megismerheti a munkafüzetek által támogatott forgatókönyveket, a jelentések készítését és testreszabását, valamint az [interaktív jelentések létrehozásával Azure monitor munkafüzetek](../platform/workbooks-overview.md)használatával történő áttekintésével.
+* Megismerheti a munkafüzetek által támogatott forgatókönyveket, a jelentések készítését és testreszabását, valamint az [interaktív jelentések létrehozásával Azure monitor munkafüzetek](../visualize/workbooks-overview.md)használatával történő áttekintésével.

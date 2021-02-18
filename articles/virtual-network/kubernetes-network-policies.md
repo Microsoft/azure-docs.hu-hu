@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: b7c683edd15ab05e9efc239ffe07759078754607
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: a68e1a3f60930e290e97084ff2ec9350b18e2873
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222649"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594969"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Az Azure Kubernetes hálózati házirendjeinek áttekintése
 
@@ -112,7 +112,7 @@ A felhasználók korábban csak a parancssorban futtatott paranccsal tudtak megi
 ### <a name="supported-metrics"></a>Támogatott metrikák
 A támogatott metrikák listája a következő:
 
-|Metrika neve |Leírás  |Prometheus-metrika típusa  |Címkék  |
+|Metrika neve |Description  |Prometheus-metrika típusa  |Címkék  |
 |---------|---------|---------|---------|
 |`npm_num_policies`     |hálózati házirendek száma          |Kijelző         |-         |
 |`npm_num_iptables_rules`     | Iptables-szabályok száma     | Kijelző        |-         |         
@@ -130,7 +130,7 @@ Minden "exec_time" összegző metrika esetében létezik egy "exec_time_count" �
 A metrikák Azure Monitor a tárolók vagy a Prometheus-n keresztül is megtekinthetők.
 
 ### <a name="setup-for-azure-monitor"></a>A Azure Monitor beállítása
-Az első lépés az Azure Monitor engedélyezése a Kubernetes-fürthöz tartozó tárolók számára. A [Azure monitor a tárolók áttekintése című](../azure-monitor/insights/container-insights-overview.md)témakörben talál útmutatást. Ha engedélyezve van Azure Monitor a tárolók számára, konfigurálja a [tárolók ConfigMap Azure monitor](https://aka.ms/container-azm-ms-agentconfig) a NPM-integráció és a Prometheus NPM-metrikák gyűjtésének engedélyezéséhez. Az Azure monitor for containers ConfigMap tartalmaz egy ```integrations``` szakaszt, amely tartalmazza a NPM-metrikák gyűjtéséhez szükséges beállításokat. Ezek a beállítások alapértelmezés szerint le vannak tiltva a ConfigMap. Az alapszintű beállítás engedélyezésével az ```collect_basic_metrics = true``` alapszintű NPM mérőszámok gyűjtése történik. A speciális beállítás engedélyezése ```collect_advanced_metrics = true``` az alapmetrikák mellett speciális mérőszámokat is gyűjt. 
+Az első lépés az Azure Monitor engedélyezése a Kubernetes-fürthöz tartozó tárolók számára. A [Azure monitor a tárolók áttekintése című](../azure-monitor/containers/container-insights-overview.md)témakörben talál útmutatást. Ha engedélyezve van Azure Monitor a tárolók számára, konfigurálja a [tárolók ConfigMap Azure monitor](https://aka.ms/container-azm-ms-agentconfig) a NPM-integráció és a Prometheus NPM-metrikák gyűjtésének engedélyezéséhez. Az Azure monitor for containers ConfigMap tartalmaz egy ```integrations``` szakaszt, amely tartalmazza a NPM-metrikák gyűjtéséhez szükséges beállításokat. Ezek a beállítások alapértelmezés szerint le vannak tiltva a ConfigMap. Az alapszintű beállítás engedélyezésével az ```collect_basic_metrics = true``` alapszintű NPM mérőszámok gyűjtése történik. A speciális beállítás engedélyezése ```collect_advanced_metrics = true``` az alapmetrikák mellett speciális mérőszámokat is gyűjt. 
 
 A ConfigMap szerkesztése után mentse helyileg, és alkalmazza a ConfigMap a fürtre a következőképpen.
 
@@ -143,7 +143,7 @@ integrations: |-
 ```
 A speciális mérőszámok nem kötelezőek, és a bekapcsolás automatikusan bekapcsolja az alapszintű mérőszámok gyűjteményét. Jelenleg csak a speciális mérőszámok tartoznak ide `npm_ipset_counts`
 
-További információ az [Azure monitor for containers Collection beállításairól a konfigurációs térképen](../azure-monitor/insights/container-insights-agent-config.md)
+További információ az [Azure monitor for containers Collection beállításairól a konfigurációs térképen](../azure-monitor/containers/container-insights-agent-config.md)
 
 ### <a name="visualization-options-for-azure-monitor"></a>Vizualizációs beállítások a Azure Monitor
 Ha a NPM metrikáinak gyűjteménye engedélyezve van, a Azure Portal a tároló-és Grafana használatával megtekintheti a metrikákat.
@@ -154,7 +154,7 @@ Nyissa meg az Azure Portalt. Miután a fürtben megtalálta az adatait, navigál
 A munkafüzet megtekintése mellett (az alábbi képeken) közvetlenül is lekérdezheti a Prometheus-metrikákat az elemzések szakasz "naplók" szakaszában. Ez a lekérdezés például az összes összegyűjtött metrikát visszaküldi.
 | ahol a TimeGenerated > ezelőtt (5h) | ahol a név tartalmazza a "npm_"
 
-Log Analytics közvetlenül a metrikák esetében is lekérdezheti. További információ a [első lépésekról log Analytics lekérdezésekkel](../azure-monitor/insights/container-insights-log-search.md) 
+Log Analytics közvetlenül a metrikák esetében is lekérdezheti. További információ a [első lépésekról log Analytics lekérdezésekkel](../azure-monitor/containers/container-insights-log-search.md) 
 
 #### <a name="viewing-in-grafana-dashboard"></a>Megtekintés a Grafana-irányítópulton
 Állítsa be a Grafana-kiszolgálót, és konfiguráljon egy Log Analytics adatforrást az [itt](https://grafana.com/grafana/plugins/grafana-azure-monitor-datasource)leírtak szerint. Ezután importálja a [Grafana-irányítópultot egy log Analytics háttérrel](https://grafana.com/grafana/dashboards/10956) a Grafana Labs-be.

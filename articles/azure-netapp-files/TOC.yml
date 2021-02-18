@@ -77,6 +77,8 @@
       href: manage-manual-qos-capacity-pool.md
     - name: Alhálózat delegálása az Azure NetApp Fileshoz
       href: azure-netapp-files-delegate-subnet.md
+    - name: Active Directory kapcsolatok létrehozása és kezelése
+      href: create-active-directory-connections.md
     - name: NFS-kötet létrehozása és kezelése
       items:
         - name: NFS-kötet létrehozása

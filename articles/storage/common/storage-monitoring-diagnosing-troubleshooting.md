@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 50d78e83bbbeb4b0252c83f9f52e94599ea6946c
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 2f68452bed69e4e174f126d259e8df6d2283e6cf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787960"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585224"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage felügyelete, diagnosztizálása és hibaelhárítása
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -94,7 +94,7 @@ A "[függelékek]" információkkal szolgálnak más eszközök, például a Wir
 ## <a name="monitoring-your-storage-service"></a><a name="monitoring-your-storage-service"></a>A tárolási szolgáltatás figyelése
 Ha ismeri a Windows teljesítményfigyelőjét, a tárolási metrikákat úgy tekintheti meg, hogy a Windows teljesítményfigyelő számlálóinak megfelelő Azure Storage-kompatibilis. A tárolási Mérőszámokban átfogó mérőszámokat (számlálókat a Windows Teljesítményfigyelő terminológiájában) talál, például a szolgáltatás elérhetőségét, a szolgáltatásra irányuló kérelmek teljes számát vagy a sikeres kérelmek százalékos arányát. Az elérhető metrikák teljes listáját itt tekintheti meg: [Storage Analytics mérőszámok tábla sémája](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema). Megadhatja, hogy a tárolási szolgáltatás óránként, vagy percenként összesítse-e a metrikákat. A metrikák engedélyezésével és a tárolási fiókok figyelésével kapcsolatos további információkért lásd: [a tárolási mérőszámok engedélyezése és a metrikák adatainak megtekintése](../blobs/monitor-blob-storage.md).
 
-Kiválaszthatja, hogy mely óradíjak jelenjenek meg a [Azure Portalban](https://portal.azure.com) , és hogyan konfigurálhat olyan szabályokat, amelyek e-mailben értesítik a rendszergazdát, amikor egy óradíj meghaladja az adott küszöbértéket. További információt a [Riasztási értesítések fogadása](../../azure-monitor/platform/alerts-overview.md)című témakörben talál.
+Kiválaszthatja, hogy mely óradíjak jelenjenek meg a [Azure Portalban](https://portal.azure.com) , és hogyan konfigurálhat olyan szabályokat, amelyek e-mailben értesítik a rendszergazdát, amikor egy óradíj meghaladja az adott küszöbértéket. További információt a [Riasztási értesítések fogadása](../../azure-monitor/alerts/alerts-overview.md)című témakörben talál.
 
 Javasoljuk, hogy tekintse át [Azure monitor a Storage szolgáltatáshoz](../../azure-monitor/insights/storage-insights-overview.md) (előzetes verzió). Ez az Azure Monitor szolgáltatása, amely átfogóan figyeli az Azure Storage-fiókokat az Azure Storage-szolgáltatások teljesítményének, kapacitásának és rendelkezésre állásának egységes áttekintésével. Nem igényli, hogy bármit engedélyezzen vagy konfiguráljan, és azonnal megtekintheti ezeket a metrikákat az előre definiált interaktív diagramokon és egyéb vizualizációkban is.
 
@@ -785,7 +785,7 @@ A teljesítmény és a rendelkezésre állás monitorozásának részeként hasz
 
 További információ: [Mi a Application Insights](../../azure-monitor/app/app-insights-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure Storage-beli elemzéssel kapcsolatos további információkért tekintse meg a következő forrásokat:
 

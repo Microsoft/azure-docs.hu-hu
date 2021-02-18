@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: f0ce969a4ab016d6a036d33a0e9bf027bb580a20
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 69f80856150e461c6edfafdf0aa89de77c4ab0fd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186218"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583804"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>A helyszíni kiszolgálók Azure Monitor Application Insights ügynökének üzembe helyezése
 
@@ -67,7 +67,7 @@ Ezeket a beállításokat a [részletes utasítások](status-monitor-v2-detailed
   - A [Get-ApplicationInsightsMonitoringStatus](./status-monitor-v2-api-reference.md#get-applicationinsightsmonitoringstatus) parancsmag használatával ellenőrizheti, hogy az engedélyezés sikeres volt-e.
   - Javasoljuk, hogy [élő metrikák](./live-stream.md) használatával gyorsan megállapítsa, hogy az alkalmazás telemetria küld-e.
 
-  - A [log Analytics](../log-query/log-analytics-tutorial.md) használatával is listázhatja az összes jelenleg telemetria küldő felhőalapú szerepkört:
+  - A [log Analytics](../logs/log-analytics-tutorial.md) használatával is listázhatja az összes jelenleg telemetria küldő felhőalapú szerepkört:
       ```Kusto
       union * | summarize count() by cloud_RoleName, cloud_RoleInstance
       ```
@@ -76,9 +76,9 @@ Ezeket a beállításokat a [részletes utasítások](status-monitor-v2-detailed
 
 A telemetriai adatok megtekintése:
 
-* [Ismerje meg a mérőszámokat](../platform/metrics-charts.md) a teljesítmény és a használat figyeléséhez.
+* [Ismerje meg a mérőszámokat](../essentials/metrics-charts.md) a teljesítmény és a használat figyeléséhez.
 * [Események és naplók keresése](./diagnostic-search.md) a problémák diagnosztizálásához.
-* További speciális lekérdezésekhez [használja az elemzést](../log-query/log-query-overview.md) .
+* További speciális lekérdezésekhez [használja az elemzést](../logs/log-query-overview.md) .
 * [Irányítópultok létrehozása](./overview-dashboard.md).
 
 További telemetriai funkciók hozzáadása:

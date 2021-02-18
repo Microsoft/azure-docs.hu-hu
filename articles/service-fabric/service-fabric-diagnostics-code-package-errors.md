@@ -5,12 +5,12 @@ author: grzuber
 ms.topic: article
 ms.date: 05/09/2019
 ms.author: grzuber
-ms.openlocfilehash: 983d45a7a240701fa6441d2d9edeeda16f1ed18b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 400651b240f0518a85b9deb7a7293a77a88b0861
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86256492"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591715"
 ---
 # <a name="diagnose-common-code-package-errors-by-using-service-fabric"></a>A kódok gyakori hibáinak diagnosztizálása Service Fabric használatával
 
@@ -41,7 +41,7 @@ Előfordulhat, hogy a Service Fabric a különböző okok miatt a kód leállít
 >[!NOTE]
 > Ha a folyamat vagy a tároló a következő táblázatban szereplő kódoktól eltérő kilépési kóddal leáll, Service Fabric nem felelős a megszakításért.
 
-Kilépési kód | Leírás
+Kilépési kód | Description
 --------- | -----------
 7147 | Azt jelzi, hogy Service Fabric szabályosan leállítja a folyamatot vagy a tárolót úgy, hogy a CTRL + C jelet küldi el.
 7148 | Azt jelzi, hogy Service Fabric megszakította a folyamatot vagy a tárolót. Előfordulhat, hogy ez a hibakód azt jelzi, hogy a folyamat vagy a tároló nem válaszolt kellő időben a CTRL + C jel elküldése után, és meg kellett szakítani.
@@ -54,9 +54,9 @@ Kilépési kód | Hexadecimális érték | Rövid leírás | Gyökérok | Lehets
 3221225794 | 0xc0000142 | STATUS_DLL_INIT_FAILED | Ez a hiba esetenként azt jelenti, hogy a gép elfogyott az asztali tárolóhelyen. Ez különösen akkor valószínű, ha számos olyan folyamata van, amely a csomóponton futó alkalmazáshoz tartozik. | Ha a program nem úgy lett felépítve, hogy válaszoljon a CTRL + C jelekre, akkor engedélyezheti a **EnableActivateNoWindow** beállítást a fürt jegyzékfájljában. Ha engedélyezi ezt a beállítást, a kód csomagja nem grafikus felhasználói felülettel fog futni, és nem kap CTRL + C jeleket. Ez a művelet csökkenti az egyes folyamatok által felhasznált asztali tárolóhelyek mennyiségét is. Ha a kód csomagjának a CTRL + C jeleket kell kapnia, növelheti a csomópont asztali kupacjának méretét.
 3762504530 | 0xe0434352 | N/A | Ez az érték a felügyelt kódból (azaz .NET) származó kezeletlen kivétel hibakódját jelöli. | Ez a kilépési kód azt jelzi, hogy az alkalmazás olyan kivételt váltott ki, amely kezeletlen marad, és amely megszakította a folyamatot. A hiba kiváltásának első lépéseként hibakeresést végezhet az alkalmazás naplófájljaiban és a fájlok kiírásakor.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [gyakori forgatókönyvek diagnosztizálásáról](service-fabric-diagnostics-common-scenarios.md).
 * Tekintse át a Azure Monitor naplók részletes áttekintését és a [Azure monitor áttekintését ismertető témakört](../azure-monitor/overview.md).
-* További információ az észlelési és diagnosztikai támogatásokról Azure Monitor naplók [riasztásáról](../azure-monitor/platform/alerts-overview.md) .
-* Ismerkedjen meg Azure Monitor naplók részeként kínált [naplóbeli keresési és lekérdezési](../azure-monitor/log-query/log-query-overview.md) funkciókkal.
+* További információ az észlelési és diagnosztikai támogatásokról Azure Monitor naplók [riasztásáról](../azure-monitor/alerts/alerts-overview.md) .
+* Ismerkedjen meg Azure Monitor naplók részeként kínált [naplóbeli keresési és lekérdezési](../azure-monitor/logs/log-query-overview.md) funkciókkal.

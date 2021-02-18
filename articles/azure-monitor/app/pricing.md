@@ -7,17 +7,17 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 2/7/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 3ae3224ae17d0dee2ed1080669c6057ca62959d9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: db5506f1f1fcabf3a922115c24aa64e35b888fbd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384503"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573754"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Használat és költségek kezelése az Application Insights szolgáltatásban
 
 > [!NOTE]
-> Ez a cikk a Application Insights költségeinek megismerését és szabályozását ismerteti.  A kapcsolódó cikkek, a [monitorozási használat és a becsült költségek](../platform/usage-estimated-costs.md) azt írják le, hogyan lehet megtekinteni a használati és becsült költségeket több Azure-figyelési funkció között különböző díjszabási modellekhez.
+> Ez a cikk a Application Insights költségeinek megismerését és szabályozását ismerteti.  A kapcsolódó cikkek, a [monitorozási használat és a becsült költségek](..//usage-estimated-costs.md) azt írják le, hogyan lehet megtekinteni a használati és becsült költségeket több Azure-figyelési funkció között különböző díjszabási modellekhez.
 
 Application Insights úgy lett kialakítva, hogy a webalkalmazások rendelkezésre állásának, teljesítményének és használatának nyomon követéséhez szükséges mindent meg lehessen figyelni, függetlenül attól, hogy az Azure-ban vagy a helyszínen vannak tárolva. Application Insights támogatja a népszerű nyelveket és keretrendszerek, például a .NET, a Java és a Node.js használatát, és integrálható a DevOps-folyamatokkal és-eszközökkel, például az Azure DevOps, a JIRA és a PagerDuty. Fontos tisztában lenni azzal, hogy mi határozza meg az alkalmazások monitorozásának költségeit. Ebben a cikkben áttekintjük, hogy mi vezet az alkalmazás figyelési költségeihez, és hogy miként lehet proaktívan figyelni és felügyelni őket.
 
@@ -33,7 +33,7 @@ Az [Egyéni metrikai dimenziókkal kapcsolatos riasztások engedélyezésének](
 
 ### <a name="workspace-based-application-insights"></a>Munkaterület-alapú Application Insights
 
-Olyan Application Insights-erőforrások esetében, amelyek az adatoknak a [munkaterület-alapú Application Insights erőforrások](create-workspace-resource.md)nevű log Analytics munkaterületre küldenek, az adatok betöltésének és megőrzésének számlázását azon munkaterület végzi el, ahol a Application Insights adatok találhatók. Ez lehetővé teszi az ügyfelek számára a Log Analytics [díjszabási modell](../platform/manage-cost-storage.md#pricing-model) összes beállítását, amely az utólagos elszámolású kapacitás fenntartását is magában foglalja. Log Analytics emellett több lehetőség is rendelkezésre áll az adatmegőrzésre, beleértve az [adattípusok megőrzését](../platform/manage-cost-storage.md#retention-by-data-type)is. A munkaterületen Application Insights adattípusok esetén a rendszer 90 napos megőrzési időt kap, díjak nélkül. A webes tesztek használata és a riasztások egyéni metrikai dimenziókban való engedélyezése továbbra is Application Insights keresztül történik. Megtudhatja, hogyan követheti nyomon az adatfeldolgozási és-megőrzési költségeket Log Analytics a [használati és becsült költségek](../platform/manage-cost-storage.md#understand-your-usage-and-estimate-costs), [Azure Cost Management + számlázási](../platform/manage-cost-storage.md#viewing-log-analytics-usage-on-your-azure-bill) és [log Analytics lekérdezések](#data-volume-for-workspace-based-application-insights-resources)használatával. 
+Olyan Application Insights-erőforrások esetében, amelyek az adatoknak a [munkaterület-alapú Application Insights erőforrások](create-workspace-resource.md)nevű log Analytics munkaterületre küldenek, az adatok betöltésének és megőrzésének számlázását azon munkaterület végzi el, ahol a Application Insights adatok találhatók. Ez lehetővé teszi az ügyfelek számára a Log Analytics [díjszabási modell](../logs/manage-cost-storage.md#pricing-model) összes beállítását, amely az utólagos elszámolású kapacitás fenntartását is magában foglalja. Log Analytics emellett több lehetőség is rendelkezésre áll az adatmegőrzésre, beleértve az [adattípusok megőrzését](../logs/manage-cost-storage.md#retention-by-data-type)is. A munkaterületen Application Insights adattípusok esetén a rendszer 90 napos megőrzési időt kap, díjak nélkül. A webes tesztek használata és a riasztások egyéni metrikai dimenziókban való engedélyezése továbbra is Application Insights keresztül történik. Megtudhatja, hogyan követheti nyomon az adatfeldolgozási és-megőrzési költségeket Log Analytics a [használati és becsült költségek](../logs/manage-cost-storage.md#understand-your-usage-and-estimate-costs), [Azure Cost Management + számlázási](../logs/manage-cost-storage.md#viewing-log-analytics-usage-on-your-azure-bill) és [log Analytics lekérdezések](#data-volume-for-workspace-based-application-insights-resources)használatával. 
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>Az alkalmazás kezelésével kapcsolatos költségek becslése
 
@@ -106,7 +106,7 @@ systemEvents
 | summarize sum(BillingTelemetrySizeInBytes) by BillingTelemetryType, bin(timestamp, 1d) | render barchart  
 ```
 
-Vegye figyelembe, hogy ez a lekérdezés egy Azure-beli [naplóbeli riasztásban](../platform/alerts-unified-log.md) is használható az adatkötetek riasztásának beállításához.  
+Vegye figyelembe, hogy ez a lekérdezés egy Azure-beli [naplóbeli riasztásban](../alerts/alerts-unified-log.md) is használható az adatkötetek riasztásának beállításához.  
 
 Ha többet szeretne megtudni a telemetria-adatváltozásokról, a lekérdezés használatával lekérheti az események számát típus szerint:
 
@@ -224,7 +224,7 @@ A [napi korlát Azure Resource Manageron keresztüli módosításához](./powers
 
 ### <a name="create-alerts-for-the-daily-cap"></a>Riasztások létrehozása a napi korláthoz
 
-A Application Insights napi korlát egy eseményt hoz létre az Azure-beli tevékenység naplójában, amikor a betöltött adatmennyiség eléri a figyelmeztetési szintet vagy a napi korlátot.  [Ezek a műveletnapló-események alapján létrehozhatók riasztások](../platform/alerts-activity-log.md#create-with-the-azure-portal). A következő eseményekhez tartozó jelek nevei:
+A Application Insights napi korlát egy eseményt hoz létre az Azure-beli tevékenység naplójában, amikor a betöltött adatmennyiség eléri a figyelmeztetési szintet vagy a napi korlátot.  [Ezek a műveletnapló-események alapján létrehozhatók riasztások](../alerts/alerts-activity-log.md#create-with-the-azure-portal). A következő eseményekhez tartozó jelek nevei:
 
 * Application Insights összetevő napi korlátjának figyelmeztetési küszöbértéke elérte
 
@@ -248,7 +248,7 @@ A betöltési mintavételezés beállításához lépjen a  **díjszabás** pane
 > Az **adatmintavételezési** panel csak a betöltési mintavételezés értékét vezérli. Nem tükrözi az alkalmazásban az Application Insights SDK által alkalmazott mintavételi sebességet. Ha a bejövő telemetria már meg van határozva az SDK-ban, a rendszer nem alkalmazza a betöltési mintavételezést.
 >
 
-Ha a tényleges mintavételezési sebességet szeretné felderíteni, függetlenül attól, hogy hol lett alkalmazva, használjon egy [elemzési lekérdezést](../log-query/log-query-overview.md). A lekérdezés így néz ki:
+Ha a tényleges mintavételezési sebességet szeretné felderíteni, függetlenül attól, hogy hol lett alkalmazva, használjon egy [elemzési lekérdezést](../logs/log-query-overview.md). A lekérdezés így néz ki:
 
 ```kusto
 requests | where timestamp > ago(1d)
@@ -288,7 +288,7 @@ Az Azure Application Insights korai alkalmazói számára még két lehetséges 
 
 Ezek az örökölt árképzési szintek át lettek nevezve. A nagyvállalati díjszabási szint mostantól **csomópontként** van meghívva, és az alapszintű díjszabás mostantól **GB-ra** van meghívva. A rendszer ezeket az új neveket használja a Azure Portal.  
 
-A per node (korábban nagyvállalati) szinten egy csomópontos díjat számítunk fel, és minden egyes csomópont napi adatmennyiséget kap. A per Node díjszabási szinten a befoglalt mennyiség fölött betöltött adatért kell fizetnie. Ha az Operations Management Suite-t használja, válassza ki a csomópontok közötti szintet. A 2018-es verzióban egy új díjszabási modellt [vezettünk be](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) az Azure monitoring szolgáltatáshoz. Ez a modell egy egyszerű "utólagos elszámolású" modellt alkalmaz a figyelési szolgáltatások teljes portfóliójában. További információ az [új díjszabási modellről](../platform/usage-estimated-costs.md).
+A per node (korábban nagyvállalati) szinten egy csomópontos díjat számítunk fel, és minden egyes csomópont napi adatmennyiséget kap. A per Node díjszabási szinten a befoglalt mennyiség fölött betöltött adatért kell fizetnie. Ha az Operations Management Suite-t használja, válassza ki a csomópontok közötti szintet. A 2018-es verzióban egy új díjszabási modellt [vezettünk be](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) az Azure monitoring szolgáltatáshoz. Ez a modell egy egyszerű "utólagos elszámolású" modellt alkalmaz a figyelési szolgáltatások teljes portfóliójában. További információ az [új díjszabási modellről](..//usage-estimated-costs.md).
 
 A pénznem és a régió aktuális áraiért lásd: [Application Insights díjszabása](https://azure.microsoft.com/pricing/details/application-insights/).
 
