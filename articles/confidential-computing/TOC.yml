@@ -38,7 +38,7 @@
     - name: Tárolóalapú számítás
       expanded: true
       items:
-        - name: Bizalmas tárolók (átemelés)
+        - name: Bizalmas tárolók
           items:
             - name: Első lépések
               href: confidential-containers.md
@@ -58,7 +58,7 @@
       href: how-to-fortanix-enclave-manager.md
 - name: Hivatkozások
   items:
-    - name: SGX-ajánlat segítőfunkciója
+    - name: SGX ENKLÁVÉHOZ-ajánlat segítő funkciója
       href: confidential-nodes-out-of-proc-attestation.md
 - name: Források
   items:

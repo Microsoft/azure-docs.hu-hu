@@ -1,32 +1,34 @@
 ---
-title: Azure Data Lake Storage Gen2 Python SDK a fájlokhoz & ACL-ek
-description: A Python segítségével kezelheti a könyvtárakat és a fájl-és címtár-hozzáférés-vezérlési listákat (ACL) olyan Storage-fiókokban, amelyeken engedélyezve van a hierarchikus névtér.
+title: A Python használata a Azure Data Lake Storage Gen2ban tárolt adatkezeléshez
+description: A Python használatával olyan Storage-fiókokban kezelheti a címtárakat és a fájlokat, amelyeken engedélyezve van a hierarchikus névtér.
 author: normesta
 ms.service: storage
-ms.date: 01/22/2021
+ms.date: 02/17/2021
 ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-python
-ms.openlocfilehash: 5036930c7bb49578582fbc1b347b11518579b53e
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: a143c0aa19241b532cabff95fe6bf85679e4007c
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740618"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652292"
 ---
-# <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>A Python használatával kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2
+# <a name="use-python-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>A Python használata könyvtárak és fájlok kezelésére Azure Data Lake Storage Gen2
 
-Ez a cikk bemutatja, hogyan lehet a Python használatával könyvtárakat, fájlokat és engedélyeket létrehozni és kezelni olyan Storage-fiókokban, amelyeken engedélyezve van a hierarchikus névtér (HNS). 
+Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet Python-címtárakat és-fájlokat olyan Storage-fiókokban, amelyek hierarchikus névteret használnak.
+
+A címtárak és fájlok hozzáférés-vezérlési listáinak (ACL) beszerzéséről, beállításáról és frissítéséről a [Python használata az ACL-ek kezelése Azure Data Lake Storage Gen2ban](data-lake-storage-acl-python.md)című cikkből tájékozódhat.
 
 [Csomag (Python-csomag indexe)](https://pypi.org/project/azure-storage-file-datalake/)  |  [Példák](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)  |  [API-referenciák](/python/api/azure-storage-file-datalake/azure.storage.filedatalake)  |  [Gen1 a Gen2-megfeleltetéshez](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)  |  [Visszajelzés küldése](https://github.com/Azure/azure-sdk-for-python/issues)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-> [!div class="checklist"]
-> * Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-> * Olyan Storage-fiók, amelyen engedélyezve van a hierarchikus névtér (HNS). Az [alábbi](../common/storage-account-create.md) útmutatást követve hozzon létre egyet.
+- Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+
+- Olyan Storage-fiók, amelyen engedélyezve van a hierarchikus névtér. Az [alábbi](create-data-lake-storage-account.md) útmutatást követve hozzon létre egyet.
 
 ## <a name="set-up-your-project"></a>A projekt beállítása
 
@@ -56,12 +58,12 @@ Ez a legegyszerűbb módszer a fiókhoz való kapcsolódásra.
 Ez a példa egy **DataLakeServiceClient** -példányt hoz létre a fiók kulcsa alapján.
 
 :::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_AuthorizeWithKey":::
- 
+
 - Cserélje le a `storage_account_name` helyőrző értékét a Storage-fiók nevére.
 
 - Cserélje le a `storage_account_key` helyőrző értékét a Storage-fiók hozzáférési kulcsára.
 
-### <a name="connect-by-using-azure-active-directory-ad"></a>Kapcsolat Azure Active Directory (AD) használatával
+### <a name="connect-by-using-azure-active-directory-azure-ad"></a>Kapcsolat Azure Active Directory (Azure AD) használatával
 
 A [Pythonhoz készült Azure Identity ügyféloldali kódtár](https://pypi.org/project/azure-identity/) használatával hitelesítheti az alkalmazást az Azure ad-vel.
 
@@ -104,7 +106,7 @@ Ez a példa törli a nevű könyvtárat `my-directory` .
 
 :::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_DeleteDirectory":::
 
-## <a name="upload-a-file-to-a-directory"></a>Fájl feltöltése könyvtárba 
+## <a name="upload-a-file-to-a-directory"></a>Fájl feltöltése könyvtárba
 
 Először hozzon létre egy fájlt a célhelyen a **DataLakeFileClient** osztály egy példányának létrehozásával. Töltsön fel egy fájlt a **DataLakeFileClient.append_data** metódus meghívásával. Ügyeljen arra, hogy a feltöltést a **DataLakeFileClient.flush_data** metódus meghívásával végezze el.
 
@@ -135,46 +137,11 @@ Ez a példa kinyomtatja az egyes alkönyvtárak és fájlok elérési útját, a
 
 :::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_ListFilesInDirectory":::
 
-## <a name="manage-access-control-lists-acls"></a>Hozzáférés-vezérlési listák (ACL-ek) kezelése
-
-Lekérheti, beállíthatja és frissítheti a címtárak és fájlok hozzáférési engedélyeit.
-
-> [!NOTE]
-> Ha Azure Active Directory (Azure AD) használatával engedélyezi a hozzáférést, akkor győződjön meg arról, hogy a rendszerbiztonsági tag hozzá lett rendelve a [Storage blob-adat tulajdonosi szerepköréhez](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner). Ha többet szeretne megtudni az ACL-engedélyek alkalmazásáról és azok módosításának hatásairól, tekintse meg a  [Azure Data Lake Storage Gen2 hozzáférés-vezérlését](./data-lake-storage-access-control.md)ismertető témakört.
-
-### <a name="manage-directory-acls"></a>Címtár-ACL-ek kezelése
-
-A címtár hozzáférés-vezérlési listájának (ACL) beszerzéséhez hívja meg a **DataLakeDirectoryClient.get_access_control** metódust, és állítsa be az ACL-t a **DataLakeDirectoryClient.set_access_control** metódus meghívásával.
-
-> [!NOTE]
-> Ha az alkalmazás a Azure Active Directory (Azure AD) használatával engedélyezi a hozzáférést, akkor győződjön meg arról, hogy az alkalmazás által a hozzáférés engedélyezéséhez használt rendszerbiztonsági tag hozzá lett rendelve a [Storage blob-adat tulajdonosi szerepköréhez](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner). Ha többet szeretne megtudni az ACL-engedélyek alkalmazásáról és azok módosításának hatásairól, tekintse meg a  [Azure Data Lake Storage Gen2 hozzáférés-vezérlését](./data-lake-storage-access-control.md)ismertető témakört.
-
-Ez a példa lekérdezi és beállítja a nevű könyvtár ACL-listáját `my-directory` . A karakterlánc `rwxr-xrw-` Megadja az olvasási, írási és végrehajtási engedélyeket a tulajdonos felhasználó számára, csak olvasási és végrehajtási engedélyeket ad a tulajdonos csoportnak, és minden más olvasási és írási engedélyt ad.
-
-:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/ACL_datalake.py" id="Snippet_ACLDirectory":::
-
-Lekérheti és beállíthatja egy tároló gyökérkönyvtárának ACL-listáját is. A gyökérkönyvtár beszerzéséhez hívja meg a **FileSystemClient._get_root_directory_client** metódust.
-
-### <a name="manage-file-permissions"></a>Fájlengedélyek kezelése
-
-Egy fájl hozzáférés-vezérlési listájának (ACL) beszerzéséhez hívja meg a **DataLakeFileClient.get_access_control** metódust, és állítsa be az ACL-t a **DataLakeFileClient.set_access_control** metódus meghívásával.
-
-> [!NOTE]
-> Ha az alkalmazás a Azure Active Directory (Azure AD) használatával engedélyezi a hozzáférést, akkor győződjön meg arról, hogy az alkalmazás által a hozzáférés engedélyezéséhez használt rendszerbiztonsági tag hozzá lett rendelve a [Storage blob-adat tulajdonosi szerepköréhez](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner). Ha többet szeretne megtudni az ACL-engedélyek alkalmazásáról és azok módosításának hatásairól, tekintse meg a  [Azure Data Lake Storage Gen2 hozzáférés-vezérlését](./data-lake-storage-access-control.md)ismertető témakört.
-
-Ez a példa lekérdezi és beállítja a nevű fájl hozzáférés-vezérlési listáját `my-file.txt` . A karakterlánc `rwxr-xrw-` Megadja az olvasási, írási és végrehajtási engedélyeket a tulajdonos felhasználó számára, csak olvasási és végrehajtási engedélyeket ad a tulajdonos csoportnak, és minden más olvasási és írási engedélyt ad.
-
-:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/ACL_datalake.py" id="Snippet_FileACL":::
-
-### <a name="set-an-acl-recursively"></a>ACL beállítása rekurzív módon
-
-Az ACL-eket a szülő könyvtár meglévő alárendelt elemein is hozzáadhatja, frissítheti és eltávolíthatja anélkül, hogy ezeket a módosításokat egyenként el kellene végeznie az egyes alárendelt elemek esetében. További információ: [rekurzív hozzáférés-vezérlési listák (ACL-ek) beállítása Azure Data Lake Storage Gen2hoz](recursive-access-control-lists.md).
-
 ## <a name="see-also"></a>Lásd még
 
-* [API-referenciadokumentáció](/python/api/azure-storage-file-datalake/azure.storage.filedatalake)
-* [Csomag (Python-csomag indexe)](https://pypi.org/project/azure-storage-file-datalake/)
-* [Példák](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)
-* [Gen1 a Gen2-megfeleltetéshez](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
-* [Ismert problémák](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
-* [Visszajelzés küldése](https://github.com/Azure/azure-sdk-for-python/issues)
+- [API-referenciadokumentáció](/python/api/azure-storage-file-datalake/azure.storage.filedatalake)
+- [Csomag (Python-csomag indexe)](https://pypi.org/project/azure-storage-file-datalake/)
+- [Példák](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)
+- [Gen1 a Gen2-megfeleltetéshez](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
+- [Ismert problémák](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
+- [Visszajelzés küldése](https://github.com/Azure/azure-sdk-for-python/issues)

@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: de013b6ccd924f50ffe12fcba1285b121eece5f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e9e924d6626d9f0dcd2db8a5e8b8f90a0aa01ce
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83827556"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593853"
 ---
 # <a name="query-logs-from-startstop-vms-during-off-hours"></a>Virtuális gépek munkaidőn kívüli indításának és leállításának lekérdezési naplói
 
-Azure Automation két típusú rekordot továbbít a csatolt Log Analytics munkaterületre: a feladatok naplóit és a feladatok folyamait. Ez a cikk a Azure Monitor [lekérdezéséhez](../azure-monitor/log-query/log-query-overview.md) rendelkezésre álló adatelemzéseket tekinti át.
+Azure Automation két típusú rekordot továbbít a csatolt Log Analytics munkaterületre: a feladatok naplóit és a feladatok folyamait. Ez a cikk a Azure Monitor [lekérdezéséhez](../azure-monitor/logs/log-query-overview.md) rendelkezésre álló adatelemzéseket tekinti át.
 
 ## <a name="job-logs"></a>Feladatnaplók
 
@@ -56,21 +56,21 @@ Azure Automation két típusú rekordot továbbít a csatolt Log Analytics munka
 |StreamType | A feladatstream típusa. Lehetséges értékek:<br>– Folyamat<br>- Kimenet<br>- Figyelmeztetés<br>- Hiba<br>- Hibakeresés<br>- Részletes|
 |Idő | A runbook-feladat végrehajtásának dátuma és időpontja.|
 
-Ha olyan naplóbeli keresést hajt végre, amely a **JobLogs** vagy a **JobStreams**kategóriába tartozó rekordokat ad vissza, akkor kiválaszthatja a **JobLogs** vagy a **JobStreams** nézetet, amely a keresés által visszaadott frissítések összegzését jeleníti meg.
+Ha olyan naplóbeli keresést hajt végre, amely a **JobLogs** vagy a **JobStreams** kategóriába tartozó rekordokat ad vissza, akkor kiválaszthatja a **JobLogs** vagy a **JobStreams** nézetet, amely a keresés által visszaadott frissítések összegzését jeleníti meg.
 
 ## <a name="sample-log-searches"></a>Naplókeresési minták
 
 A következő táblázat a Start/Stop VMs during off-hours által összegyűjtött feladatokhoz tartozó rekordokat tartalmazza.
 
-|Lekérdezés | Leírás|
+|Lekérdezés | Description|
 |----------|----------|
 |A sikeresen befejezett runbook ScheduledStartStop_Parent feladatok keresése | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 |Azon runbook ScheduledStartStop_Parent feladatok keresése, amelyek nem fejeződött be sikeresen | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Failed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 |A sikeresen befejezett runbook SequencedStartStop_Parent feladatok keresése | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 |Azon runbook SequencedStartStop_Parent feladatok keresése, amelyek nem fejeződött be sikeresen | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Failed" ) <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A szolgáltatás beállításához tekintse meg a [virtuális gépek leállítása/elindítása munkaidőn kívüli konfigurálását](automation-solution-vm-management-config.md)ismertető témakört.
-* A szolgáltatás központi telepítésével kapcsolatos riasztásokról további információt a következő témakörben talál: [log riasztások létrehozása a Azure monitor](../azure-monitor/platform/alerts-log.md).
+* A szolgáltatás központi telepítésével kapcsolatos riasztásokról további információt a következő témakörben talál: [log riasztások létrehozása a Azure monitor](../azure-monitor/alerts/alerts-log.md).
 * A szolgáltatási hibák megoldásához tekintse meg a [Start/Stop VMS During off-hours problémák elhárítása](troubleshoot/start-stop-vm.md)című témakört.

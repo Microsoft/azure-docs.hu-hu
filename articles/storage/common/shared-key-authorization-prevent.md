@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 01/21/2021
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: e4a5803b3d04b59316f71e50af24945efc87cb69
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 944e233fafc4cf5c8c90041e18f94d0e53b7bb46
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98677563"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591540"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Azure Storage-fiókhoz tartozó megosztott kulcs engedélyezésének tiltása (előzetes verzió)
 
@@ -41,7 +41,7 @@ Az előzetes verzióban közös hozzáférésű aláírással végzett kérelmek
 
 ### <a name="monitor-how-many-requests-are-authorized-with-shared-key"></a>A megosztott kulccsal rendelkező kérelmek számának figyelése
 
-A Storage-fiókra irányuló kérések engedélyezésének nyomon követéséhez használja az Azure Metrikaböngésző a Azure Portal. További információ a Metrikaböngészőről: az [Azure Metrikaböngésző első lépései](../../azure-monitor/platform/metrics-getting-started.md).
+A Storage-fiókra irányuló kérések engedélyezésének nyomon követéséhez használja az Azure Metrikaböngésző a Azure Portal. További információ a Metrikaböngészőről: az [Azure Metrikaböngésző első lépései](../../azure-monitor/essentials/metrics-getting-started.md).
 
 Kövesse az alábbi lépéseket egy olyan metrika létrehozásához, amely nyomon követi a megosztott kulccsal vagy SAS-val végzett kérelmeket:
 
@@ -67,7 +67,7 @@ Miután konfigurálta a metrikát, a Storage-fiókra irányuló kérések megjel
 
 :::image type="content" source="media/shared-key-authorization-prevent/metric-shared-key-requests.png" alt-text="A megosztott kulccsal rendelkező összesített kérelmeket bemutató képernyőfelvétel":::
 
-A riasztási szabályt úgy is beállíthatja, hogy értesítést kapjon arról, ha a megosztott kulccsal rendelkező bizonyos számú kérelem a Storage-fiókra vonatkozik. További információ: [metrikus riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../../azure-monitor/platform/alerts-metric.md).
+A riasztási szabályt úgy is beállíthatja, hogy értesítést kapjon arról, ha a megosztott kulccsal rendelkező bizonyos számú kérelem a Storage-fiókra vonatkozik. További információ: [metrikus riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../../azure-monitor/alerts/alerts-metric.md).
 
 ### <a name="analyze-logs-to-identify-clients-that-are-authorizing-requests-with-shared-key-or-sas"></a>Naplók elemzése a megosztott kulccsal vagy SAS-vel érkező kéréseket engedélyező ügyfelek azonosításához
 
@@ -75,14 +75,14 @@ Az Azure Storage-naplók rögzítik a Storage-fiókkal kapcsolatos kérések ré
 
 Ha a kérelmeket az Azure Storage-fiókjába kívánja naplózni, hogy kiértékelje a jogosultságokat, az Azure Storage-naplózást Azure Monitor (előzetes verzió) használatával is használhatja. További információ: az [Azure Storage figyelése](../blobs/monitor-blob-storage.md).
 
-Az Azure Storage Azure Monitor támogatja a naplózási lekérdezések használatát a naplófájlok elemzéséhez. A naplók lekérdezéséhez használhat Azure Log Analytics munkaterületet. További információ a naplók lekérdezéséről [: oktatóanyag: log Analytics lekérdezések első lépései](../../azure-monitor/log-query/log-analytics-tutorial.md).
+Az Azure Storage Azure Monitor támogatja a naplózási lekérdezések használatát a naplófájlok elemzéséhez. A naplók lekérdezéséhez használhat Azure Log Analytics munkaterületet. További információ a naplók lekérdezéséről [: oktatóanyag: log Analytics lekérdezések első lépései](../../azure-monitor/logs/log-analytics-tutorial.md).
 
 #### <a name="create-a-diagnostic-setting-in-the-azure-portal"></a>Diagnosztikai beállítás létrehozása a Azure Portalban
 
 Az Azure Storage-beli adatAzure Monitor és az Azure Log Analytics való elemzéséhez először létre kell hoznia egy diagnosztikai beállítást, amely meghatározza, hogy milyen típusú kérelmeket és milyen tárolási szolgáltatásokat szeretne naplózni. Ha diagnosztikai beállítást szeretne létrehozni a Azure Portalban, kövesse az alábbi lépéseket:
 
 1. Regisztráljon az [Azure Storage naplózási Azure monitor előzetes](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)verziójában.
-1. Hozzon létre egy új Log Analytics munkaterületet az Azure Storage-fiókot tartalmazó előfizetésben, vagy használjon egy meglévő Log Analytics-munkaterületet. A Storage-fiók naplózásának konfigurálása után a naplók a Log Analytics munkaterületen lesznek elérhetők. További információ: [log Analytics munkaterület létrehozása a Azure Portalban](../../azure-monitor/learn/quick-create-workspace.md).
+1. Hozzon létre egy új Log Analytics munkaterületet az Azure Storage-fiókot tartalmazó előfizetésben, vagy használjon egy meglévő Log Analytics-munkaterületet. A Storage-fiók naplózásának konfigurálása után a naplók a Log Analytics munkaterületen lesznek elérhetők. További információ: [log Analytics munkaterület létrehozása a Azure Portalban](../../azure-monitor/logs/quick-create-workspace.md).
 1. Az Azure Portalon nyissa meg a tárfiókot.
 1. A figyelés szakaszban válassza a **diagnosztikai beállítások (előzetes verzió)** lehetőséget.
 1. Válassza ki azt az Azure Storage-szolgáltatást, amelyhez be szeretné jelentkezni a kérelmeket. Például válassza a **blob** lehetőséget a blob Storage-ba irányuló kérelmek naplózásához.
@@ -95,7 +95,7 @@ Az Azure Storage-beli adatAzure Monitor és az Azure Log Analytics való elemzé
 
 A Storage-fiókban minden egyes Azure Storage-erőforráshoz diagnosztikai beállítást hozhat létre.
 
-Miután létrehozta a diagnosztikai beállítást, a rendszer a Storage-fiókra irányuló kérelmeket a beállításnak megfelelően naplózza. További információ: [diagnosztikai beállítás létrehozása az erőforrás-naplók és-metrikák az Azure-ban való összegyűjtéséhez](../../azure-monitor/platform/diagnostic-settings.md).
+Miután létrehozta a diagnosztikai beállítást, a rendszer a Storage-fiókra irányuló kérelmeket a beállításnak megfelelően naplózza. További információ: [diagnosztikai beállítás létrehozása az erőforrás-naplók és-metrikák az Azure-ban való összegyűjtéséhez](../../azure-monitor/essentials/diagnostic-settings.md).
 
 A Azure Monitor Azure Storage-naplókban elérhető mezőkre vonatkozó hivatkozásokat itt tekintheti meg: [erőforrás-naplók (előzetes verzió)](../blobs/monitor-blob-storage-reference.md#resource-logs-preview).
 
@@ -110,7 +110,7 @@ StorageBlobLogs
 | top 10 by count_ desc
 ```
 
-A lekérdezésen alapuló riasztási szabályt úgy is konfigurálhat, hogy értesítést kapjon a megosztott kulccsal vagy SAS-vel felhatalmazott kérelmekről. További információ: a [naplók létrehozása, megtekintése és kezelése Azure monitor használatával](../../azure-monitor/platform/alerts-log.md).
+A lekérdezésen alapuló riasztási szabályt úgy is konfigurálhat, hogy értesítést kapjon a megosztott kulccsal vagy SAS-vel felhatalmazott kérelmekről. További információ: a [naplók létrehozása, megtekintése és kezelése Azure monitor használatával](../../azure-monitor/alerts/alerts-log.md).
 
 ## <a name="remediate-authorization-via-shared-key"></a>Hitelesítés szervizelése megosztott kulcson keresztül
 
@@ -193,13 +193,13 @@ resources
 
 ## <a name="permissions-for-allowing-or-disallowing-shared-key-access"></a>A megosztott kulcsok elérésének engedélyezéséhez vagy letiltásához szükséges engedélyek
 
-A Storage-fiók **AllowSharedKeyAccess** tulajdonságának beállításához a felhasználónak rendelkeznie kell a Storage-fiókok létrehozásához és kezeléséhez szükséges engedélyekkel. Az ilyen engedélyeket biztosító Azure szerepköralapú hozzáférés-vezérlési (Azure-RBAC) szerepkörök közé tartozik a **Microsoft. Storage/storageAccounts/Write** vagy a **Microsoft. Storage \* /storageAccounts/* _ művelet. A művelettel rendelkező beépített szerepkörök a következők:
+A Storage-fiók **AllowSharedKeyAccess** tulajdonságának beállításához a felhasználónak rendelkeznie kell a Storage-fiókok létrehozásához és kezeléséhez szükséges engedélyekkel. Az ilyen engedélyeket biztosító Azure szerepköralapú hozzáférés-vezérlési (Azure-RBAC) szerepkörök közé tartozik a **Microsoft. Storage/storageAccounts/Write** vagy a **Microsoft. Storage \* /storageAccounts/** művelet. A művelettel rendelkező beépített szerepkörök a következők:
 
 - A Azure Resource Manager [tulajdonosi](../../role-based-access-control/built-in-roles.md#owner) szerepkör
 - A Azure Resource Manager [közreműködő](../../role-based-access-control/built-in-roles.md#contributor) szerepkör
 - A [Storage-fiók közreműködői](../../role-based-access-control/built-in-roles.md#storage-account-contributor) szerepköre
 
-Ezek a szerepkörök nem biztosítanak hozzáférést a Storage-fiókban lévő adatAzure Active Directory (Azure AD) használatával. Ezek közé tartoznak azonban a _ * Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/Action * *, amely hozzáférést biztosít a fiók hozzáférési kulcsaihoz. Ezzel az engedéllyel a felhasználók a fiók hozzáférési kulcsainak használatával férhetnek hozzá a Storage-fiókokban lévő összes adattal.
+Ezek a szerepkörök nem biztosítanak hozzáférést a Storage-fiókban lévő adatAzure Active Directory (Azure AD) használatával. Ezek közé tartoznak azonban a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/művelet**, amely hozzáférést biztosít a fiók hozzáférési kulcsaihoz. Ezzel az engedéllyel a felhasználók a fiók hozzáférési kulcsainak használatával férhetnek hozzá a Storage-fiókokban lévő összes adattal.
 
 A szerepkör-hozzárendeléseket a Storage-fiók szintjére kell korlátozni, hogy a felhasználók engedélyezzék vagy letiltsák a megosztott kulcsos hozzáférést a Storage-fiókhoz. A szerepkör hatókörével kapcsolatos további információkért lásd: [Az Azure RBAC hatókörének megismerése](../../role-based-access-control/scope-overview.md).
 

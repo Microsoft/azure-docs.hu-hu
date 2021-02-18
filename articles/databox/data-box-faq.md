@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/17/2020
+ms.date: 02/17/2021
 ms.author: alkohli
-ms.openlocfilehash: 87ec1f03a1f2294a4423e26129644eafcf7c915c
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 46a60642e177a2bfb9e8fb996427ea45f6777468
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655475"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652785"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: gyakori kérdések
 
@@ -68,6 +68,10 @@ Például abban az esetben, ha az importálási forgatókönyvben volt olyan ada
 2. Miután megtörtént a helyszíni Adatmásolás a Data Boxre, a rendszer visszaküldi az eszközt a kanadai Azure-adatközpontba. A Data Boxban található, majd a rendelés létrehozásakor kiválasztott Kanada Azure-régiójában lévő, a cél Storage-fiókba való feltöltésre kerül.
 
 3. Ezután a AzCopy hasonló eszközzel másolhatók az adattárak az USA nyugati régiójában lévő Storage-fiókba. Ez a lépés a Data Box számlázásban nem szereplő [szabványos tárolási](https://azure.microsoft.com/pricing/details/storage/) és [sávszélesség-díjakat](https://azure.microsoft.com/pricing/details/bandwidth/) tartalmazza.
+
+### <a name="q-how-can-i-recover-my-data-if-an-entire-region-fails"></a>K. Hogyan állíthatom helyre az adatokat, ha egy teljes régió meghibásodik?
+
+A. Szélsőséges körülmények között, amikor egy régió elvesztése jelentős katasztrófa miatt megszakad, a Microsoft regionális feladatátvételt kezdeményezhet. Ebben az esetben nincs szükség beavatkozásra a részen. A megrendelés a feladatátvételi régión keresztül lesz teljesítve, ha ugyanazon az országon vagy kereskedelmi határon belül van. Egyes Azure-régiók azonban nem rendelkeznek ugyanahhoz a földrajzi vagy kereskedelmi határhoz tartozó párosított régióval. Ha bármelyik régióban van katasztrófa, létre kell hoznia a Data Box sorrendet egy másik elérhető régióból, és át kell másolnia az Azure-ba az új régióban. További információ: [Üzletmenet-folytonosság és vészhelyreállítás (BCDR): Az Azure párosított régiói](../best-practices-availability-paired-regions.md).
 
 ### <a name="q-who-should-i-contact-if-i-come-across-any-issues-with-data-box"></a>K. Kihez vegyem fel a kapcsolatot, ha a Data Boxkel kapcsolatos bármilyen problémára ráakadok?
 A. Ha Data Boxtel kapcsolatos problémákba ütközik, [forduljon a Microsoft ügyfélszolgálatahoz](data-box-disk-contact-microsoft-support.md).
@@ -201,7 +205,7 @@ A.  A másolási folyamat felgyorsításához:
 - Használjon több másolási adatfolyamot. Például a `Robocopy` esetében használja a többszálú kapcsolót. A konkrét parancsokkal kapcsolatban további információt [az adatok az Azure Data Boxra másolását és ellenőrzését](data-box-deploy-copy-data.md) ismertető oktatóanyagban talál.
 - Használjon több munkamenetet.
 - A hálózati megosztáson való másolás helyett (ahol a hálózati sebesség korlátozhatja a másolási sebességet), az adatok helyileg is tárolhatók azon a számítógépen, amelyhez a Data Box csatlakoztatva van.
-- Mérje meg az adatok másolására használt számítógép teljesítményét. Töltse le és használja a [ `Bluestop` Fio eszközt](https://ci.appveyor.com/project/axboe/fio) a kiszolgálói hardver teljesítményének összehasonlításához. Válassza ki a legújabb x86-vagy x64-buildet, válassza a **összetevők fület** , és töltse le az MSI-t.
+- Mérje meg az adatok másolására használt számítógép teljesítményét. Töltse le és használja az [ `Bluestop` `FIO` eszközt](https://ci.appveyor.com/project/axboe/fio) a kiszolgálói hardver teljesítményének összehasonlításához. Válassza ki a legújabb x86-vagy x64-buildet, válassza a **összetevők fület** , és töltse le az MSI-t.
 
 <!--### Q. How to speed up the data copy if the source data has small files (KBs or few MBs)?
 A.  To speed up the copy process:

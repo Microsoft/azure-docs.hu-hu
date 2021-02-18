@@ -3,12 +3,12 @@ title: Azure Service Bus előfizetési szabály SQL-műveletének szintaxisa | M
 description: Ez a cikk az SQL-szabály műveleti szintaxisára mutató hivatkozást tartalmaz. A műveletek olyan SQL-nyelv-alapú szintaxisban íródnak, amely egy üzeneten történik.
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: f7b8cdfcccc22508b98a42391d2a0ef9955232d0
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 75ff437bace59d7f4de07342277f0760480a5b0f
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742682"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652836"
 ---
 # <a name="subscription-rule-sql-action-syntax"></a>Előfizetési szabály SQL-műveletének szintaxisa
 
@@ -185,7 +185,7 @@ A logikai konstansok a kulcsszavak vagy a alapján jelennek meg `TRUE` `FALSE` .
   
 A karakterlánc-konstansok szimpla idézőjelek közé vannak lefoglalva, és tartalmaznak bármilyen érvényes Unicode-karaktert. Egy karakterlánc-konstansba ágyazott idézőjelek két szimpla idézőjelet jelölnek.  
   
-## <a name="function"></a>függvény  
+## <a name="function"></a>A  függvény  
   
 ```  
 <function> :=  
@@ -199,7 +199,8 @@ A `newid()` függvény a `System.Guid` metódus által generált értéket adja 
   
 A `property(name)` függvény a által hivatkozott tulajdonság értékét adja vissza `name` . Az `name` érték bármely érvényes kifejezés lehet, amely egy karakterlánc-értéket ad vissza.  
 
-[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
+## <a name="examples"></a>Példák
+Példák: [Service Bus szűrési példák](service-bus-filter-examples.md).
   
 ## <a name="considerations"></a>Megfontolandó szempontok
 
@@ -210,7 +211,7 @@ A `property(name)` függvény a által hivatkozott tulajdonság értékét adja 
 - A művelet nem sikerül, ha a nem létező felhasználói tulajdonságok hivatkoztak.
 - A nem létező felhasználói tulajdonságokat belsőleg "ismeretlen" értékként értékeli ki a rendszer, és a [SQLFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) a kezelők kiértékelése során megjelenő szemantikat követve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [SQLRuleAction osztály (.NET-keretrendszer)](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
 - [SQLRuleAction osztály (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlruleaction)

@@ -2,18 +2,18 @@
 title: Azure arc-kompatibilis Kubernetes – gyakori kérdések
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/15/2021
+ms.date: 02/17/2021
 ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
 description: Ez a cikk az Azure arc-kompatibilis Kubernetes kapcsolatos gyakori kérdések listáját tartalmazza
 keywords: Kubernetes, arc, Azure, tárolók, konfiguráció, GitOps, GYIK
-ms.openlocfilehash: 237b2629b833a63552b172636f46a1ac92e321c0
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: e0d7501dc1a82940571d0168222c396f61a70bce
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100561739"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652496"
 ---
 # <a name="frequently-asked-questions---azure-arc-enabled-kubernetes"></a>Gyakori kérdések – Azure arc-kompatibilis Kubernetes
 
@@ -35,22 +35,22 @@ Igen, ha az AK-HCI-fürtöt vagy a Kubernetes-fürtöket Azure Stack Edge-ben va
 
 ## <a name="how-to-address-expired-azure-arc-enabled-kubernetes-resources"></a>Hogyan lehet kezelni a lejárt Azure arc-kompatibilis Kubernetes-erőforrásokat?
 
-Az Azure arc-kompatibilis Kuberenetes tartozó felügyelt szolgáltatás-identitás (MSI) tanúsítványának érvényességi időszaka 90 nap. A tanúsítvány lejárata után az erőforrást figyelembe kell venni, `Expired` és az összes funkció, például a konfiguráció, a figyelés és a házirend nem működik ezen a fürtön. Kövesse az alábbi lépéseket, hogy a Kubernetes-fürt ismét működjön az Azure arc használatával:
+Az Azure arc-kompatibilis Kubernetes társított Managed Service Identity (MSI) tanúsítvány érvényességi ideje 90 nap. A tanúsítvány lejárata után az erőforrást figyelembe kell venni, `Expired` és az összes funkció (például a konfiguráció, a figyelés és a házirend) nem működik ezen a fürtön. A Kubernetes-fürt újbóli használatának megkezdése az Azure arc használatával:
 
-1. Azure arc-kompatibilis Kubernetes-erőforrás és-ügynökök törlése a fürtön 
+1. Az Azure arc-kompatibilis Kubernetes-erőforrás és-ügynökök törlése a fürtön. 
 
     ```console
     az connectedk8s delete -n <name> -g <resource-group>
     ```
 
-1. Hozza létre újra az Azure arc-kompatibilis Kubernetes-erőforrást úgy, hogy ügynököket telepít újra a fürtön.
+1. Hozza létre újra az Azure arc-kompatibilis Kubernetes-erőforrást az ügynökök fürtön való üzembe helyezésével.
     
     ```console
     az connectedk8s connect -n <name> -g <resource-group>
     ```
 
 > [!NOTE]
-> `az connectedk8s delete` a a fürt tetején lévő konfigurációkat is törli. A Futtatás után `az connectedk8s connect` hozza létre újra a konfigurációkat a fürtön manuálisan vagy a Azure Policy használatával.
+> `az connectedk8s delete` a a fürt tetején lévő konfigurációkat is törli. A futtatása után `az connectedk8s connect` hozza létre újra a konfigurációkat a fürtön manuálisan vagy a Azure Policy használatával.
 
 ## <a name="if-i-am-already-using-cicd-pipelines-can-i-still-use-azure-arc-enabled-kubernetes-and-configurations"></a>Ha már használom a CI/CD-folyamatokat, továbbra is használhatom az Azure arc-kompatibilis Kubernetes és-konfigurációkat?
 
@@ -62,9 +62,11 @@ A CI/CD-folyamat csak egyszer alkalmazza a módosításokat a folyamat futtatás
 
 **GitOps alkalmazása skálán**
 
-A CI/CD-folyamatok kiválóan alkalmasak az eseményvezérelt üzemelő példányok számára a Kubernetes-fürtön, ahol az esemény lehet egy git-tárházba való leküldés. Ugyanakkor az összes Kubernetes-fürthöz azonos konfiguráció telepítése megköveteli, hogy a CI/CD-folyamat manuálisan legyen konfigurálva az egyes Kubernetes-fürtök hitelesítő adataival. Ha azonban az Azure arc-kompatibilis Kubernetes esetében Azure Resource Manager kezeli a konfigurációkat, akkor a Azure Policy segítségével automatizálhatja a kívánt konfiguráció alkalmazását az előfizetés vagy az erőforráscsoport hatóköre alá tartozó összes Kubernetes-fürtön egy ugrással. Ez a képesség még a szabályzat-hozzárendelés után létrehozott Azure arc-kompatibilis Kubernetes-erőforrásokra is érvényes.
+A CI/CD-folyamatok a Kubernetes-fürt eseményvezérelt üzembe helyezéséhez hasznosak (például egy git-tárházba való leküldés). Ha azonban ugyanazt a konfigurációt szeretné telepíteni az összes Kubernetes-fürtön, akkor manuálisan kell konfigurálnia az egyes Kubernetes-fürtök hitelesítő adatait a CI/CD-folyamathoz. 
 
-A konfigurációk funkció az alapkonfigurációk, például a hálózati házirendek, a szerepkör-kötések és a pod biztonsági házirendek alkalmazására használható a Kubernetes-fürtök teljes leltárában a megfelelőségi és irányítási követelmények teljesítése érdekében.
+Az Azure arc-kompatibilis Kubernetes esetében, mivel a Azure Resource Manager kezeli a konfigurációkat, a Azure Policy használatával automatizálhatja ugyanazt a konfigurációt az összes Azure arc-kompatibilis Kubernetes-erőforráshoz az előfizetés vagy az erőforráscsoport hatókörén belül. Ez a képesség még a szabályzat-hozzárendelés után létrehozott Azure arc-kompatibilis Kubernetes-erőforrásokra is érvényes.
+
+Ez a szolgáltatás alapkonfigurációkat (például hálózati házirendeket, szerepkör-kötéseket és Pod biztonsági házirendeket) alkalmaz a teljes Kubernetes-fürt leltárában a megfelelőségi és irányítási követelmények teljesítése érdekében.
 
 ## <a name="next-steps"></a>Következő lépések
 

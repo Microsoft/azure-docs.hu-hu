@@ -2,22 +2,22 @@
 title: Konfigurációk üzembe helyezése a GitOps használatával Arc-kompatibilis Kubernetes-fürtön (előzetes verzió)
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/15/2021
+ms.date: 02/17/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Azure arc-kompatibilis Kubernetes-fürt (előzetes verzió) konfigurálása a GitOps használatával
 keywords: GitOps, Kubernetes, K8s, Azure, arc, Azure Kubernetes szolgáltatás, AK, tárolók
-ms.openlocfilehash: 3cadcdf80abd997ec10aeb9521680944d455898f
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: b30ecde0e128a955967638828dcb7bec008205ea
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560174"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652479"
 ---
 # <a name="deploy-configurations-using-gitops-on-an-arc-enabled-kubernetes-cluster-preview"></a>Konfigurációk üzembe helyezése a GitOps használatával egy arc-kompatibilis Kubernetes-fürtön (előzetes verzió)
 
-Ez a cikk bemutatja, hogyan alkalmazhat konfigurációkat egy Azure arc-kompatibilis Kubernetes-fürtön. Ugyanezt a fogalmi áttekintést [itt](./conceptual-configurations.md)találja.
+Ez a cikk bemutatja, hogyan alkalmazhat konfigurációkat egy Azure arc-kompatibilis Kubernetes-fürtön. A folyamat elméleti feltételeit a [konfigurációk és GitOps – Azure arc-kompatibilis Kubernetes című cikkben](./conceptual-configurations.md)találja.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -85,22 +85,22 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
   "type": "Microsoft.KubernetesConfiguration/sourceControlConfigurations"
   ```
 
-#### <a name="use-a-public-git-repo"></a>Nyilvános git-tárház használata
+#### <a name="use-a-public-git-repository"></a>Nyilvános git-tárház használata
 
 | Paraméter | Formátum |
 | ------------- | ------------- |
 | `--repository-url` | http [s]://Server/repo [. git] vagy git://Server/repo [. git]
 
-#### <a name="use-a-private-git-repo-with-ssh-and-flux-created-keys"></a>Privát git-tárház használata SSH-val és fluxus által létrehozott kulcsokkal
+#### <a name="use-a-private-git-repository-with-ssh-and-flux-created-keys"></a>Privát git-tárház használata SSH-val és fluxus által létrehozott kulcsokkal
 
 | Paraméter | Formátum | Jegyzetek
 | ------------- | ------------- | ------------- |
 | `--repository-url` | ssh://user@server/repo[. git] vagy user@server:repo [. git] | `git@` lecserélhető `user@`
 
 > [!NOTE]
-> A Flux által generált nyilvános kulcsot hozzá kell adni a git-szolgáltató felhasználói fiókjához. Ha a kulcsot a felhasználói fiók helyett a tárházban adja hozzá, használja az `git@` `user@` URL-cím helyett. További részletekért ugorjon a [konfiguráció alkalmazása egy privát git-tárházból](#apply-configuration-from-a-private-git-repository) című szakaszra.
+> A Flux által generált nyilvános kulcsot hozzá kell adni a git-szolgáltató felhasználói fiókjához. Ha a kulcsot hozzáadja a tárházhoz a felhasználói fiók helyett, használja az `git@` URL-cím helyett `user@` . További részletekért ugorjon a [konfiguráció alkalmazása egy privát git-tárházból](#apply-configuration-from-a-private-git-repository) című szakaszra.
 
-#### <a name="use-a-private-git-repo-with-ssh-and-user-provided-keys"></a>Privát git-tárház használata SSH-val és felhasználó által biztosított kulcsokkal
+#### <a name="use-a-private-git-repository-with-ssh-and-user-provided-keys"></a>Privát git-tárház használata SSH-val és felhasználó által biztosított kulcsokkal
 
 | Paraméter | Formátum | Jegyzetek |
 | ------------- | ------------- | ------------- |
@@ -109,7 +109,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 | `--ssh-private-key-file` | helyi fájl teljes elérési útja | Adja meg a PEM formátumú kulcsot tartalmazó helyi fájl teljes elérési útját
 
 > [!NOTE]
-> Adja meg a saját titkos kulcsát közvetlenül vagy egy fájlban. A kulcsnak [PEM formátumúnak](https://aka.ms/PEMformat) kell lennie, és véget kell adni a sortörés (\n) értéknek.  A társított nyilvános kulcsot hozzá kell adni a git-szolgáltató felhasználói fiókjához. Ha a kulcsot a felhasználói fiók helyett a tárházba adja, használja a `git@` következőt: `user@` . További részletekért ugorjon a [konfiguráció alkalmazása egy privát git-tárházból](#apply-configuration-from-a-private-git-repository) című szakaszra.
+> Adja meg a saját titkos kulcsát közvetlenül vagy egy fájlban. A kulcsnak [PEM formátumúnak](https://aka.ms/PEMformat) kell lennie, és véget kell adni a sortörés (\n) értéknek.  A társított nyilvános kulcsot hozzá kell adni a git-szolgáltató felhasználói fiókjához. Ha a kulcs a felhasználói fiók helyett a tárházba kerül, használja a `git@` következőt: `user@` . További részletekért ugorjon a [konfiguráció alkalmazása egy privát git-tárházból](#apply-configuration-from-a-private-git-repository) című szakaszra.
 
 #### <a name="use-a-private-git-host-with-ssh-and-user-provided-known-hosts"></a>Privát git-gazdagép használata SSH-val és felhasználó által biztosított ismert gazdagépekkel
 
@@ -122,7 +122,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 > [!NOTE]
 > Ahhoz, hogy az SSH-kapcsolat létrehozása előtt hitelesíteni lehessen a git-tárházat, a Flux-kezelő megtartja a közös git-gazdagépek listáját az ismert gazdagépek fájljában. Ha nem gyakori git-tárházat vagy saját git-gazdagépet használ, előfordulhat, hogy meg kell adnia a gazdagép kulcsát annak biztosításához, hogy a Flux azonosítani tudja a tárházat. Known_hosts tartalmat közvetlenül vagy fájlba is megadhatja. A saját tartalom megadásakor a fent ismertetett SSH-fő forgatókönyvek egyikével együtt használja a [known_hosts Content Format specifikációkat](https://aka.ms/KnownHostsFormat) .
 
-#### <a name="use-a-private-git-repo-with-https"></a>Privát git-tárház használata HTTPS-sel
+#### <a name="use-a-private-git-repository-with-https"></a>Privát git-tárház használata HTTPS-sel
 
 | Paraméter | Formátum | Jegyzetek |
 | ------------- | ------------- | ------------- |
@@ -133,7 +133,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 > [!NOTE]
 > A HTTPS Helm kiadás privát hitelesítése csak a Helm Operator diagram 1.2.0 + (alapértelmezett) verziójának használata esetén támogatott.
 > A HTTPS Helm kiadás privát hitelesítése jelenleg nem támogatott az Azure Kubernetes Services által felügyelt fürtök esetében.
-> Ha szüksége van a flow-ra a git-tárháznak a proxyn keresztüli eléréséhez, akkor frissítenie kell az Azure arc-ügynököket a proxy beállításaival. További információ: [Csatlakozás kimenő proxykiszolgáló használatával](./connect-cluster.md#connect-using-an-outbound-proxy-server).
+> Ha a Flux segítségével szeretné elérni a git-tárházat a proxyn keresztül, akkor frissítenie kell az Azure arc-ügynököket a proxybeállítások alapján. További információ: [Csatlakozás kimenő proxykiszolgáló használatával](./connect-cluster.md#connect-using-an-outbound-proxy-server).
 
 #### <a name="additional-parameters"></a>További paraméterek
 
@@ -152,8 +152,8 @@ Szabja testre a konfigurációt a következő választható paraméterekkel:
 | Beállítás | Leírás |
 | ------------- | ------------- |
 | `--git-branch`  | A git-tárház Kubernetes-jegyzékekhez használt ága. Az alapértelmezett érték a "Master". Az újabb Tárházak neve root ág `main` , ebben az esetben be kell állítania a következőt: `--git-branch=main` . |
-| `--git-path`  | Relatív elérési út a git-tárházon belül a Flux számára a Kubernetes-jegyzékek megkereséséhez. |
-| `--git-readonly` | A git-adattárat csak olvashatónak tekinti a rendszer. A Flux nem próbál meg írni. |
+| `--git-path`  | Relatív elérési út a git-tárházban a Flux számára a Kubernetes-jegyzékek kereséséhez. |
+| `--git-readonly` | A git-tárház csak olvasható lesz; A Flux nem próbál meg írni. |
 | `--manifest-generation`  | Ha engedélyezve van, a Flux a. Flux. YAML és a Kustomize vagy más manifest-generátorok futtatására fog keresni. |
 | `--git-poll-interval`  | Az az időszak, amikor a git-tárházat új véglegesíteni kívánja lekérdezni. Az alapértelmezett érték `5m` (5 perc). |
 | `--sync-garbage-collection`  | Ha engedélyezve van, a Flux törli a létrehozott erőforrásokat, de már nem jelennek meg a git-ben. |
@@ -161,7 +161,7 @@ Szabja testre a konfigurációt a következő választható paraméterekkel:
 | `--git-user`  | A git-véglegesítő felhasználóneve. |
 | `--git-email`  | A git-végrehajtáshoz használandó e-mail-cím. 
 
-Ha nem szeretné, hogy a Flux ne írjon a tárházba, `--git-user` vagy `--git-email` nincsenek beállítva, akkor a rendszer `--git-readonly` automatikusan beállítja.
+Ha nem szeretné, hogy a Flux a tárházba írjon `--git-user` `--git-email` , vagy nincsenek beállítva, akkor a rendszer `--git-readonly` automatikusan beállítja.
 
 További információt a [Flux dokumentációjában](https://aka.ms/FluxcdReadme)talál.
 
@@ -229,7 +229,7 @@ Ha a létrehozása `sourceControlConfiguration` vagy frissítése megtörtént, 
 
 A kiépítési folyamat során a `sourceControlConfiguration` átkerül néhány állapotba. A folyamat figyelése a `az k8sconfiguration show ...` fenti paranccsal:
 
-| Szakasz módosítása | Leírás |
+| Szakasz módosítása | Description |
 | ------------- | ------------- |
 | `complianceStatus`-> `Pending` | A kezdeti és a folyamatban lévő állapotot jelöli. |
 | `complianceStatus` -> `Installed`  | `config-agent` sikerült konfigurálni a fürtöt, és hiba nélkül is üzembe helyezhető `flux` . |
@@ -237,7 +237,7 @@ A kiépítési folyamat során a `sourceControlConfiguration` átkerül néhány
 
 ## <a name="apply-configuration-from-a-private-git-repository"></a>Konfiguráció alkalmazása privát git-tárházból
 
-Ha privát git-tárházat használ, konfigurálnia kell az SSH nyilvános kulcsát a tárházban. Az SSH nyilvános kulcs lesz a Flux által generált vagy az Ön által megadott egyik. A nyilvános kulcsot a megadott git-tárházon vagy a tárházhoz hozzáféréssel rendelkező git-felhasználón is konfigurálhatja. 
+Ha privát git-tárházat használ, konfigurálnia kell az SSH nyilvános kulcsát a tárházban. Az SSH nyilvános kulcs lesz a Flux által generált vagy az Ön által megadott egyik. A nyilvános kulcsot az adott git-adattáron vagy a tárházhoz hozzáféréssel rendelkező git-felhasználón is konfigurálhatja. 
 
 ### <a name="get-your-own-public-key"></a>Saját nyilvános kulcs beszerzése
 
@@ -266,7 +266,7 @@ A következők akkor hasznosak, ha a Flux létrehozza a kulcsokat.
 
 Használja az alábbi lehetőségek egyikét:
 
-* 1. lehetőség: adja hozzá a nyilvános kulcsot a felhasználói fiókjához (a fiókban lévő összes repóra vonatkozik):  
+* 1. lehetőség: a nyilvános kulcs hozzáadása a felhasználói fiókhoz (a fiókban lévő összes adattárra vonatkozik):  
     1. Nyissa meg a GitHubot, és kattintson a profil ikonjára a lap jobb felső sarkában.
     2. Kattintson a **Settings** (Beállítások) lehetőségre.
     3. Kattintson az **SSH és a GPG kulcsok** elemre.
@@ -349,7 +349,7 @@ Törölje `sourceControlConfiguration` Az Azure CLI vagy Azure Portal használat
 
 > [!NOTE]
 > Miután `sourceControlConfiguration` `namespace` létrehozta a hatókört, `edit` a névtér szerepkör-kötéssel rendelkező felhasználók üzembe helyezhetik a munkaterheléseket ezen a névtéren. Ha a `sourceControlConfiguration` névtér hatóköre törölve lesz, a névtér érintetlen marad, és a rendszer nem törli a többi számítási feladat megszakítása érdekében. Ha szükséges, manuálisan törölheti a névteret a használatával `kubectl` .  
-> A rendszer nem törli a fürt azon módosításait, amelyek a nyomon követett git-tárházból való üzembe helyezések eredményeként lettek törölve `sourceControlConfiguration` .
+> A rendszer nem törli a fürt azon módosításait, amelyek a nyomon követett git-tárházból való üzembe helyezések eredményeképpen történtek, a `sourceControlConfiguration` törlése után.
 
 ```azurecli
 az k8sconfiguration delete --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters

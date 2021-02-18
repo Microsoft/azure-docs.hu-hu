@@ -1,32 +1,39 @@
 ---
-title: Folyamaton kívüli igazolások támogatása az Intel SGX ENKLÁVÉHOZ quote Helper Daemonset elemet az Azure-ban
+title: Folyamaton kívüli igazolás támogatása az Intel SGX ENKLÁVÉHOZ quote Helper Daemonset elemet az Azure-ban (előzetes verzió)
 description: Daemonset elemet a SGX ENKLÁVÉHOZ alkalmazás folyamatán kívüli ajánlat létrehozásához. Ez a cikk azt ismerteti, hogyan történik a folyamaton kívüli igazolási lehetőség a tárolón belül futó bizalmas munkaterhelések számára.
 ms.service: container-service
 author: agowdamsft
 ms.topic: overview
-ms.date: 9/22/2020
+ms.date: 2/12/2021
 ms.author: amgowda
-ms.openlocfilehash: b79b3b40f3fbfe7d70550db3aaf7b365aa455e89
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 89890740b06a399bad4678ff6ddd9be09c1cda0e
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564157"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653329"
 ---
-# <a name="platform-software-management-with-sgx-quote-helper-daemon-set"></a>Platform Software Management a SGX ENKLÁVÉHOZ quote Helper Daemon set
+# <a name="platform-software-management-with-sgx-quote-helper-daemon-set-preview"></a>Platform Software Management a SGX ENKLÁVÉHOZ quote Helper Daemon set (előzetes verzió)
 
 A távoli igazolást végző [enklávé-alkalmazásokhoz](confidential-computing-enclaves.md) generált idézőjel szükséges. Ez az ajánlat kriptográfiai igazolást nyújt az alkalmazás identitásáról és állapotáról, valamint az enklávét futtató környezetről. Az árajánlat létrehozásához az Intel platform Software Components (PSW) részét képező megbízható szoftver-összetevők szükségesek.
 
 ## <a name="overview"></a>Áttekintés
  
 Az Intel két igazolási módot támogat az idézőjelek létrehozásához:
-- **in-proc** : az enklávé alkalmazás folyamatán belül tárolja a megbízható szoftver összetevőit.
+- **in-proc**: az enklávé alkalmazás folyamatán belül tárolja a megbízható szoftver összetevőit.
 
 - **folyamaton** kívüli: az enklávé alkalmazáson kívül tárolja a megbízható szoftverek összetevőit.
  
 Az Open enklávé SDK-val létrehozott SGX ENKLÁVÉHOZ-alkalmazások alapértelmezés szerint a-proc igazolási módot használják. A SGX ENKLÁVÉHOZ-alapú alkalmazások lehetővé teszik a folyamaton kívüli működést, és a szükséges összetevők (például az építészeti enklávé Service Manager (AESM), az alkalmazáson kívüli) további üzemeltetését igénylik.
 
-A funkció használata **erősen ajánlott** , mivel az az időpontot fokozza az enklávé alkalmazásai számára az Intel platform frissítései vagy a DCAP-illesztőprogram frissítései során.
+A funkció használata **erősen ajánlott**, mivel az az időpontot fokozza az enklávé alkalmazásai számára az Intel platform frissítései vagy a DCAP-illesztőprogram frissítései során.
+
+A szolgáltatás az AK-fürtön való engedélyezéséhez módosítsa az Add--Enable-sgxquotehelper parancsot a CLI-be a bizalmas számítástechnikai bővítmény engedélyezésekor. Részletes CLI-utasítások [itt](confidential-nodes-aks-get-started.md)találhatók: 
+
+```azurecli-interactive
+# Create a new AKS cluster with system node pool with Confidential Computing addon enabled and SGX Quote Helper
+az aks create -g myResourceGroup --name myAKSCluster --generate-ssh-keys --enable-addon confcom --enable-sgxquotehelper
+```
 
 ## <a name="why-and-what-are-the-benefits-of-out-of-proc"></a>Miért és milyen előnyökkel jár az out-of-proc?
 

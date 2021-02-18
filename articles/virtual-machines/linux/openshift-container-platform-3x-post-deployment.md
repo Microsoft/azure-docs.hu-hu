@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.custom: devx-track-ansible, devx-track-azurecli
-ms.openlocfilehash: dd967ad08b628f9073edfe548033f7e97845d047
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9a28c47493f0f775c9e489daf3232371a65d4a7e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016063"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581452"
 ---
 # <a name="post-deployment-tasks"></a>Üzembe helyezés utáni feladatok
 
@@ -160,7 +160,7 @@ Az Log Analytics-ügynök három módon adható hozzá a OpenShift.
 - Azure Monitor virtuálisgép-bővítmény engedélyezése az egyes OpenShift-csomópontokon
 - A Log Analytics-ügynök telepítése OpenShift Daemon-set
 
-További részletekért olvassa el a teljes [útmutatást](../../azure-monitor/insights/containers.md#configure-a-log-analytics-agent-for-red-hat-openshift) .
+További részletekért olvassa el a teljes [útmutatást](../../azure-monitor/containers/containers.md#configure-a-log-analytics-agent-for-red-hat-openshift) .
 
 ## <a name="configure-metrics-and-logging"></a>Metrikák és naplózás konfigurálása
 
@@ -202,6 +202,6 @@ A OSBA a OpenShift-on való telepítéséhez kövesse az itt található utasít
 > [!NOTE]
 > Csak a OpenShift-projekt sablonjának lépéseit kell végrehajtania, nem a teljes telepítés szakaszt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [OpenShift-tároló platform – első lépések](https://docs.openshift.com)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 175c00440fe9723bbd389db39616f525c2b7f436
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: b2d86083077b95312415099f64a13509ed60091b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805478"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582639"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>Service Fabric Azure biztonsági alapterve
 
@@ -178,9 +178,9 @@ A Azure PowerShell vagy az Azure parancssori felülete (CLI) használatával fel
 
 **Útmutató**: az Azure-tevékenység naplójának használata a hálózati erőforrás-konfigurációk figyelésére és az Azure Service Fabric üzemelő példányokhoz kapcsolódó hálózati erőforrások változásainak észlelésére. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják
 
-* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Riasztások létrehozása a Azure Monitorban](../azure-monitor/platform/alerts-activity-log.md)
+* [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -224,7 +224,7 @@ A Azure PowerShell vagy az Azure parancssori felülete (CLI) használatával fel
 
 * [A Log Analytics-ügynök üzembe helyezése a csomópontokon](./service-fabric-diagnostics-oms-agent.md)
 
-* [Log Analytics naplók keresése](../azure-monitor/log-query/log-query-overview.md)
+* [Log Analytics naplók keresése](../azure-monitor/logs/log-query-overview.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -240,7 +240,7 @@ A Azure PowerShell vagy az Azure parancssori felülete (CLI) használatával fel
 
 * [A Log Analytics-ügynök üzembe helyezése a csomópontokon](./service-fabric-diagnostics-oms-agent.md)
 
-* [Log Analytics munkaterület megőrzési időtartamának konfigurálása](../azure-monitor/platform/manage-cost-storage.md)
+* [Log Analytics munkaterület megőrzési időtartamának konfigurálása](../azure-monitor/logs/manage-cost-storage.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -256,7 +256,7 @@ A Azure PowerShell vagy az Azure parancssori felülete (CLI) használatával fel
 
 * [A Log Analytics-ügynök üzembe helyezése a csomópontokon](./service-fabric-diagnostics-oms-agent.md)
 
-* [Log Analytics munkaterület megőrzési időtartamának konfigurálása](../azure-monitor/platform/manage-cost-storage.md)
+* [Log Analytics munkaterület megőrzési időtartamának konfigurálása](../azure-monitor/logs/manage-cost-storage.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -266,7 +266,7 @@ A Azure PowerShell vagy az Azure parancssori felülete (CLI) használatával fel
 
 **Útmutató**: azure-log Analytics munkaterület-lekérdezések használata az Azure Service Fabric-naplók lekérdezéséhez.
 
-* [Log Analytics naplók keresése](../azure-monitor/log-query/log-query-overview.md)
+* [Log Analytics naplók keresése](../azure-monitor/logs/log-query-overview.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -278,7 +278,7 @@ A Azure PowerShell vagy az Azure parancssori felülete (CLI) használatával fel
 
 * [Riasztások kezelése Azure Security Centerban](../security-center/security-center-managing-and-responding-alerts.md)
 
-* [Riasztás a log Analytics-naplófájlok adatkezeléséről](../azure-monitor/learn/tutorial-response.md)
+* [Riasztás a log Analytics-naplófájlok adatkezeléséről](../azure-monitor/alerts/tutorial-response.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -586,7 +586,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, amikor a módosítások a kritikus Azure-erőforrásokra vonatkoznak.
 
-* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/platform/alerts-activity-log.md)
+* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 

@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b019c12103a0324e21ef7c06b0c7a5d7fe14e6ec
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 740201b84323f5a01ab01bb21ec458a19832e499
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743887"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652020"
 ---
 # <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>Helytelen jelszavak eltávolítása Azure Active Directory jelszavas védelem használatával
 
@@ -99,7 +99,7 @@ Bár a globálisan tiltott lista kicsi a harmadik féltől származó tömeges l
 
 ## <a name="on-premises-hybrid-scenarios"></a>Helyszíni hibrid forgatókönyvek
 
-Számos szervezet rendelkezik olyan hibrid identitási modellel, amely helyszíni Active Directory tartományi szolgáltatások (AD DS) környezeteket is tartalmaz. Az Azure AD jelszavas védelem biztonsági előnyeinek a AD DS-környezetbe való kiterjesztéséhez a helyszíni kiszolgálókon is telepíthet összetevőket. Ezeknek az ügynököknek a helyi AD DS környezetében jelszó-módosítási eseményeket kell megkövetelni ahhoz, hogy megfeleljenek az Azure AD-ben használt jelszóházirend követelményeinek.
+Számos szervezet rendelkezik olyan hibrid identitási modellel, amely helyszíni Active Directory Domain Services (AD DS) környezeteket is tartalmaz. Az Azure AD jelszavas védelem biztonsági előnyeinek a AD DS-környezetbe való kiterjesztéséhez a helyszíni kiszolgálókon is telepíthet összetevőket. Ezeknek az ügynököknek a helyi AD DS környezetében jelszó-módosítási eseményeket kell megkövetelni ahhoz, hogy megfeleljenek az Azure AD-ben használt jelszóházirend követelményeinek.
 
 További információ: [Az Azure ad jelszavas védelemének betartatása AD DS](concept-password-ban-bad-on-premises.md).
 
@@ -174,7 +174,7 @@ Tekintse meg a következő példát:
 A következő lépés a betiltott jelszavak összes példányának azonosítása a felhasználó normalizált új jelszavában. A pontok hozzárendelése a következő feltételek alapján történik:
 
 1. A felhasználó jelszavában található összes betiltott jelszó egy pontot kap.
-1. Minden fennmaradó egyedi karakter egy pontot kap.
+1. A betiltott jelszónak nem részét képező többi karakter egy pontot kap.
 1. A jelszónak legalább öt (5) pontot el kell fogadnia.
 
 A következő két forgatókönyv esetében a contoso az Azure AD jelszavas védelmet használja, és a "contoso" szerepel az egyéni tiltott jelszavak listáján. Azt is feltételezzük, hogy az "üres" a globális listán található.
@@ -222,7 +222,7 @@ Amikor egy felhasználó megpróbál visszaállítani egy jelszót a betiltott v
 
 További licencelési információk, beleértve a költségeket is, a [Azure Active Directory díjszabási oldalon](https://azure.microsoft.com/pricing/details/active-directory/)találhatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az egyéni tiltott jelszavak listájának használatának megkezdéséhez kövesse az alábbi oktatóanyagot:
 

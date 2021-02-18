@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: service-bus-messaging
 author: axisc
 ms.service: service-bus-messaging
@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 6/9/2020
 ms.author: aschhab
 ms.custom: include file
-ms.openlocfilehash: 9030080d0b8c8e032cb2992a62275efcdb04aabc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 574507fcc6a3c05919c441bd6d0ec9c573d4b6ae
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87798137"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652605"
 ---
 A következő táblázat felsorolja a Java Message Service (JMS) által jelenleg támogatott funkciókat Azure Service Bus. Emellett a nem támogatott funkciókat is megjeleníti.
 
 
-| Szolgáltatás | API |status |
+| Szolgáltatás | API |Állapot |
 |---|---|---|
 | Üzenetsorok   | <ul> <li> JMSContext. createQueue (karakterlánc queueName) </li> </ul>| **Támogatott** |
 | Témakörök   | <ul> <li> JMSContext. createTopic (karakterlánc topicName) </li> </ul>| **Támogatott** |
@@ -34,4 +34,5 @@ A következő táblázat felsorolja a Java Message Service (JMS) által jelenleg
 | Üzenetek választói | a létrehozott fogyasztótól függ | **Támogatott** |
 | Kézbesítési késleltetés (ütemezett üzenetek) | <ul> <li> JMSProducer. setDeliveryDelay (hosszú deliveryDelay) </li> </ul>|**Támogatott**|
 | Üzenet létrehozva |<ul> <li> JMSContext.createMessage() </li> <li> JMSContext.createBytesMessage() </li> <li> JMSContext.createMapMessage() </li> <li> JMSContext. createObjectMessage (szerializálható objektum) </li> <li> JMSContext.createStreamMessage() </li> <li> JMSContext.createTextMessage() </li> <li> JMSContext. createTextMessage (karakterlánc szövege) </li> </ul>| **Támogatott** |
+| Entitások közötti tranzakciók |<ul> <li> Kapcsolatok. createSession (igaz, Session.SESSION_TRANSACTED) </li> </ul> | **Támogatott** |
 | Elosztott tranzakciók || Nem támogatott |

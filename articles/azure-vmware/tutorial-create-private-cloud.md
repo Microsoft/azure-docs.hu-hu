@@ -1,18 +1,18 @@
 ---
-title: Oktatóanyag – vSphere-fürt üzembe helyezése az Azure-ban
-description: Ismerje meg, hogyan helyezhet üzembe egy vSphere-fürtöt az Azure-ban az Azure VMware-megoldás használatával
+title: Oktatóanyag – Azure VMware-megoldás saját Felhőbeli létrehozása és üzembe helyezése
+description: Ismerje meg, hogyan hozhat létre és helyezhet üzembe egy Azure VMware-megoldást saját felhőben
 ms.topic: tutorial
 ms.date: 11/19/2020
-ms.openlocfilehash: 3c8ae3673ad049153c2b9700bd7efae6c4c286ed
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: c8383e987e13e43ea9bc9ba5be196538a259aa8c
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100093947"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653132"
 ---
-# <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>Oktatóanyag: Azure VMware-megoldás saját Felhőbeli üzembe helyezése az Azure-ban
+# <a name="tutorial-create-an-azure-vmware-solution-private-cloud"></a>Oktatóanyag: Azure VMware-megoldás – saját felhő létrehozása
 
-Az Azure VMware megoldás lehetővé teszi, hogy vSphere-fürtöt helyezzen üzembe az Azure-ban. A minimális kezdeti üzembe helyezés három gazdagép. A további gazdagépek egyenként is hozzáadhatók, legfeljebb 16 gazdagépre. 
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és helyezhet üzembe egy Azure VMware-megoldás saját felhőjét. A gazdagépek minimális kezdeti telepítése három. A további gazdagépek egyenként is hozzáadhatók, legfeljebb 16 gazdagépre. 
 
 Mivel az Azure VMware-megoldás nem teszi lehetővé, hogy az indításkor a helyszíni vCenter kezelhesse saját felhőjét, további konfigurálásra van szükség. Ezek az eljárások és a kapcsolódó előfeltételek az oktatóanyagban találhatók.
 
@@ -25,13 +25,10 @@ Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Megfelelő rendszergazdai jogosultságok és engedélyek a privát felhő létrehozásához.
+- Megfelelő rendszergazdai jogosultságok és engedélyek a privát felhő létrehozásához. Az előfizetésben legalább közreműködő szinten kell lennie.
+- Az Azure VMware-megoldás üzembe helyezéséhez kövesse a [tervezési](production-ready-deployment-steps.md) cikkben összegyűjtött információkat.
 - Győződjön meg arról, hogy a megfelelő hálózatkezelés konfigurálva van az [oktatóanyag: hálózati ellenőrzőlista](tutorial-network-checklist.md)című témakörben leírtak szerint.
-
-## <a name="register-the-resource-provider"></a>Az erőforrás-szolgáltató regisztrálása
-
-[!INCLUDE [register-resource-provider-steps](includes/register-resource-provider-steps.md)]
-
+- A gazdagépek üzembe helyezése megtörtént, és a Microsoft. AVS erőforrás-szolgáltató regisztrálva van a [kérés gazdagépek és a Microsoft. AVS erőforrás-szolgáltató engedélyezése](enable-azure-vmware-solution.md)című témakörben leírtak szerint.
 
 ## <a name="create-a-private-cloud"></a>Magánfelhő létrehozása
 

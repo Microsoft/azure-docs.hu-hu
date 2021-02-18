@@ -4,12 +4,12 @@ description: A Application Insights számára elérhető nyelvek, platformok és
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.reviewer: olegan
-ms.openlocfilehash: d3bb1473d94db04d1dedf2b09e19b83197cc6e0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 399e57377a779622aa3073dfd3313cee1db345f8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88225104"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583865"
 ---
 # <a name="supported-languages"></a>Támogatott nyelvek
 
@@ -30,12 +30,12 @@ ms.locfileid: "88225104"
 ### <a name="instrumentation-through-code-sdks"></a>Rendszerállapot-kódok (SDK-k)
 * [ASP.NET](./asp-net.md)
 * [ASP.NET Core](./asp-net-core.md)
-* [Android](../learn/mobile-center-quickstart.md) (App Center)
-* [iOS](../learn/mobile-center-quickstart.md) (App Center)
+* [Android](../app/mobile-center-quickstart.md) (App Center)
+* [iOS](../app/mobile-center-quickstart.md) (App Center)
 * [Java EE](./java-get-started.md)
 * [Node.JS](https://www.npmjs.com/package/applicationinsights)
 * [Python](./opencensus-python.md)
-* [Univerzális Windows-alkalmazás](../learn/mobile-center-quickstart.md) (App Center)
+* [Univerzális Windows-alkalmazás](../app/mobile-center-quickstart.md) (App Center)
 * [Asztali Windows-alkalmazások, szolgáltatások és feldolgozói szerepkörök](./windows-desktop.md)
 * [React](./javascript-react-plugin.md)
 * [React Native](./javascript-react-native-plugin.md)

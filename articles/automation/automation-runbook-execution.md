@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 71273c456b14fa4ea289e2a48d441de99ce8a4b1
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: ca28d5829689dca46bbf3a94ce7c1591c20cf7b0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053907"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586039"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Runbook végrehajtása az Azure Automationben
 
@@ -85,18 +85,18 @@ A runbook megfelelő [hitelesítő adatokat](shared-resources/credentials.md) ig
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-A Azure Automation a [Azure monitor](../azure-monitor/overview.md) használja a gépi műveleteinek figyeléséhez. A műveletekhez Log Analytics munkaterület és egy [log Analytics ügynök](../azure-monitor/platform/log-analytics-agent.md)szükséges.
+A Azure Automation a [Azure monitor](../azure-monitor/overview.md) használja a gépi műveleteinek figyeléséhez. A műveletekhez Log Analytics munkaterület és egy [log Analytics ügynök](../azure-monitor/agents/log-analytics-agent.md)szükséges.
 
 ### <a name="log-analytics-agent-for-windows"></a>Windows-ügynök Log Analytics
 
-A Windows rendszerhez készült [log Analytics agent](../azure-monitor/platform/agent-windows.md) Azure monitor a Windows rendszerű virtuális gépek és a fizikai számítógépek kezelésére használható. A gépek akár az Azure-ban, akár egy nem Azure-környezetben, például egy helyi adatközpontban is futtathatók.
+A Windows rendszerhez készült [log Analytics agent](../azure-monitor/agents/agent-windows.md) Azure monitor a Windows rendszerű virtuális gépek és a fizikai számítógépek kezelésére használható. A gépek akár az Azure-ban, akár egy nem Azure-környezetben, például egy helyi adatközpontban is futtathatók.
 
 >[!NOTE]
 >A Windows rendszerhez készült Log Analytics ügynök korábban Microsoft monitoring Agent (MMA) néven ismert.
 
 ### <a name="log-analytics-agent-for-linux"></a>Linux-Log Analytics ügynök
 
-A [linux log Analytics-ügynöke](../azure-monitor/platform/agent-linux.md) hasonlóan működik a Windows-ügynökhöz, de a Linux rendszerű számítógépeket csatlakoztatja a Azure monitorhoz. Az ügynök olyan **nxautomation** -felhasználói fiókkal van telepítve, amely lehetővé teszi a rendszergazdai jogosultságokat igénylő parancsok végrehajtását, például egy hibrid Runbook-feldolgozón. A **nxautomation** fiók olyan rendszerfiók, amely nem igényel jelszót.
+A [linux log Analytics-ügynöke](../azure-monitor/agents/agent-linux.md) hasonlóan működik a Windows-ügynökhöz, de a Linux rendszerű számítógépeket csatlakoztatja a Azure monitorhoz. Az ügynök olyan **nxautomation** -felhasználói fiókkal van telepítve, amely lehetővé teszi a rendszergazdai jogosultságokat igénylő parancsok végrehajtását, például egy hibrid Runbook-feldolgozón. A **nxautomation** fiók olyan rendszerfiók, amely nem igényel jelszót.
 
 A [Linux Hybrid Runbook Worker telepítése](automation-linux-hrw-install.md)során a megfelelő sudo engedélyekkel rendelkező **nxautomation** -fióknak jelen kell lennie. Ha megpróbálja telepíteni a munkavégzőt, és a fiók nem létezik, vagy nem rendelkezik a megfelelő engedélyekkel, a telepítés sikertelen lesz.
 

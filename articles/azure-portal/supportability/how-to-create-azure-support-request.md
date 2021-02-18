@@ -4,16 +4,16 @@ description: Azok az ügyfelek, akiknek segítségre van szükségük, a Azure P
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.topic: how-to
 ms.date: 06/25/2020
-ms.openlocfilehash: 11ca7925ce1664b5586ab8ec0fb523a2d562ee80
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 71aba8f2769a75805f47d90b71a8db4eeb26a97a
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745587"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652394"
 ---
 # <a name="create-an-azure-support-request"></a>Azure-támogatáskérés létrehozása
 
-Az Azure-ban támogatási kérelmeket, más néven támogatási jegyeket hozhat létre és kezelhet. A [Azure Portalban](https://portal.azure.com)olyan kérelmeket hozhat létre és kezelhet, amelyek a jelen cikkben szerepelnek. A kéréseket programozott módon is létrehozhatja és kezelheti az [Azure támogatási jegy REST API](/rest/api/support)használatával.
+Az Azure-ban támogatási kérelmeket, más néven támogatási jegyeket hozhat létre és kezelhet. A [Azure Portalban](https://portal.azure.com)olyan kérelmeket hozhat létre és kezelhet, amelyek a jelen cikkben szerepelnek. A kéréseket programozott módon is létrehozhatja és kezelheti az [Azure támogatási jegy REST API](/rest/api/support)vagy az [Azure CLI](/cli/azure/azure-cli-support-request)használatával.
 
 > [!NOTE]
 > A Azure Portal URL-cím kifejezetten arra az Azure-felhőre vonatkozik, ahol a szervezete telepítve van.
@@ -64,7 +64,7 @@ Ha támogatási kérést szeretne elindítani az erőforrás kontextusában, jel
 
 Végigvezeti a problémával kapcsolatos információk gyűjtésének lépésein, és segít a megoldásában. Az egyes lépéseket a következő szakaszokban ismertetjük.
 
-### <a name="basics"></a>Alapvető beállítások
+### <a name="basics"></a>Alapbeállítások
 
 A támogatási kérelem folyamatának első lépése a probléma és a támogatási csomag alapvető információit gyűjti.
 
@@ -97,7 +97,7 @@ Fejezze be az összes szükséges információt az egyes lapokon, majd válassza
 A támogatási szakember felveszi Önnel a kapcsolatot a megadott módszer használatával. További információ a kezdeti válaszidőt: [támogatás hatóköre és reagálási](https://azure.microsoft.com/support/plans/response/)idő.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az Azure önsegítő támogatási lehetőségeiről, tekintse meg ezt a videót:
 

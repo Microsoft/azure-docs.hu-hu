@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: 8c9641e722cf3892450bbfbea54f169ac6dc764b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7f91d5eebfae990f60b47f2c98f364046bafbf04
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963295"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594365"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>Virtuális gépek életciklusa és állapota
 
@@ -108,7 +108,7 @@ A következő táblázat ismerteti az egyes példányok állapotát, és azt jel
    :::column-end:::
    :::column span="":::
 
-   Ez egy átmeneti állapot. Ha elkészült, a rendszer **Leállítottként**jeleníti meg.
+   Ez egy átmeneti állapot. Ha elkészült, a rendszer **Leállítottként** jeleníti meg.
 
    ```json
    "statuses": [
@@ -267,7 +267,7 @@ Az alábbi átmeneti művelet azt jelzi, hogy a platform elfogadta a felhasznál
 :::row:::
    :::column span="":::
 
-   **Frissítése**
+   **Frissítés**
 
    :::column-end:::
    :::column span="2":::
@@ -428,4 +428,4 @@ Az előfizetésben lévő összes virtuális gép energiaellátási állapotána
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a virtuális gép figyeléséről: [Virtual Machines in Azure (virtuális gépek figyelése az Azure-ban](../azure-monitor/insights/monitor-vm-azure.md)).
+További információ a virtuális gép figyeléséről: [Virtual Machines in Azure (virtuális gépek figyelése az Azure-ban](../azure-monitor/vm/monitor-vm-azure.md)).

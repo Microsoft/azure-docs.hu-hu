@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 04e658e3107ac0c9622ca1601eb93b01b9986fef
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1db7eeb61bc4ded2d7015baecaacd974d7767812
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100645495"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653510"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 Az első lépések előtt ügyeljen a következőre:
@@ -60,7 +60,11 @@ A következő osztályok a C#-hoz készült Azure Communication Services cseveg�
 
 ## <a name="create-a-chat-client"></a>Csevegési ügyfél létrehozása
 
-Csevegési ügyfél létrehozásához használja a kommunikációs szolgáltatások végpontját és az előfeltételként szükséges lépések részeként létrehozott hozzáférési tokent. Az `CommunicationIdentityClient` ügyfél-függvénytár osztályát kell használnia `Administration` egy felhasználó létrehozásához, és ki kell állítania a tokent a csevegési ügyfélnek való továbbításhoz. További információ a [felhasználói hozzáférési tokenekről](../../access-tokens.md).
+Csevegési ügyfél létrehozásához használja a kommunikációs szolgáltatások végpontját és az előfeltételként szükséges lépések részeként létrehozott hozzáférési tokent. Az `CommunicationIdentityClient` ügyfél-függvénytár osztályát kell használnia `Administration` egy felhasználó létrehozásához, és ki kell állítania a tokent a csevegési ügyfélnek való továbbításhoz.
+
+További információ a [felhasználói hozzáférési tokenekről](../../access-tokens.md).
+
+Ez a rövid útmutató nem fedi le a csevegési alkalmazás jogkivonatait kezelő szolgáltatási szintet, de ajánlott. További információ a [csevegési architektúráról](../../../concepts/chat/concepts.md)
 
 ```csharp
 using Azure.Communication.Identity;

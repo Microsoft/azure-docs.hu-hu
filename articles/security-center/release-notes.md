@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/10/2021
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: d40d6107d3eee4b45f2184a61b1cdfc99559e9c7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 837ba5a0fd5ff94cc4f55cd4b01b8cb8a27425fd
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379018"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634260"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -35,11 +35,29 @@ Ha szeretne többet megtudni a Security Center hamarosan elérhető *tervezett* 
 
 A februári frissítések a következők:
 
+- [Új biztonsági riasztások oldal a Azure Portal általánosan elérhetővé vált (GA)](#new-security-alerts-page-in-the-azure-portal-released-for-general-availability-ga)
 - [Az általánosan elérhető Kubernetes munkaterhelés-védelmi javaslatok (GA)](#kubernetes-workload-protection-recommendations-released-for-general-availability-ga)
 - [Közvetlen hivatkozás a szabályzatra a javaslat részletei oldalon](#direct-link-to-policy-from-recommendation-details-page)
 - [Az SQL-adatbesorolásra vonatkozó javaslat már nem érinti a biztonságos pontszámot](#sql-data-classification-recommendation-no-longer-affects-your-secure-score)
 - [A munkafolyamatok automatizálása a szabályozások megfelelőségi felmérése (előzetes verzió) változásai alapján indítható el](#workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview)
 - [A tárgyieszköz-leltár oldal továbbfejlesztései](#asset-inventory-page-enhancements)
+
+
+### <a name="new-security-alerts-page-in-the-azure-portal-released-for-general-availability-ga"></a>Új biztonsági riasztások oldal a Azure Portal általánosan elérhetővé vált (GA)
+
+A Azure Security Center biztonsági riasztások lapja az alábbiak biztosítására lett újratervezve:
+
+- **Jobb osztályozási élmény a riasztásokhoz** – segít csökkenteni a riasztások fáradtságát, és könnyebben koncentrálni a legfontosabb fenyegetésekre, a lista tartalmaz testreszabható szűrőket és csoportosítási lehetőségeket.
+- **További információk a riasztások listájában** – például a MITRE ATT&ACK taktikák.
+- **Riasztás létrehozása** – az Azure Defender képességeinek kiértékeléséhez és a riasztások teszteléséhez gomb. konfiguráció (SIEM-integrációhoz, e-mail-értesítések és munkafolyamat-automatizálások esetén) az összes Azure Defender-csomagból létrehozhatók minta-riasztások.
+- Az **Azure Sentinel incidensekkel való összehangolása** – a két terméket használó ügyfelek esetében a váltás mostantól egyszerű, és könnyen megtanulható a többi közül.
+- **Nagyobb teljesítmény** a nagyméretű riasztások listájához.
+- A riasztások listáján **navigáljon a billentyűzeten** .
+- **Riasztások az Azure Resource Graph-ból** – a riasztásokat lekérdezheti az Azure Resource Graph-ban, a Kusto API-t az összes erőforráshoz. Ez akkor is hasznos, ha saját riasztási irányítópultokat épít ki. [További információ az Azure Resource Graph-ról](../governance/resource-graph/index.yml).
+- **Példa a riasztások szolgáltatás létrehozására** – az új riasztások tapasztalataiból származó minta riasztások létrehozásával kapcsolatban lásd: [minta Azure Defender-riasztások](security-center-alert-validation.md#generate-sample-azure-defender-alerts)létrehozása.
+
+:::image type="content" source="media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Azure Security Center biztonsági riasztások listája":::
+
 
 ### <a name="kubernetes-workload-protection-recommendations-released-for-general-availability-ga"></a>Az általánosan elérhető Kubernetes munkaterhelés-védelmi javaslatok (GA)
 

@@ -9,16 +9,16 @@ ms.author: mikben
 ms.date: 05/19/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e7ed4ba181d3730ebbea7725451567c93433afb8
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: edbf29b103a84240299f4a9f389a8c7a90012821
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251097"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572064"
 ---
 # <a name="metrics-overview"></a>A metrikák áttekintése
 
-Az Azure kommunikációs szolgáltatásai jelenleg a csevegéshez és az SMS-hez biztosítanak mérőszámokat. Az [Azure Metrikaböngésző](../../azure-monitor/platform/metrics-getting-started.md) felhasználható a saját diagramok ábrázolására, a metrikai értékek rendellenességének kivizsgálására, valamint az API-forgalom megismerésére a csevegési és SMS-kérések által kibocsátható mérőszámok használatával.
+Az Azure kommunikációs szolgáltatásai jelenleg a csevegéshez és az SMS-hez biztosítanak mérőszámokat. Az [Azure Metrikaböngésző](../../azure-monitor/essentials/metrics-getting-started.md) felhasználható a saját diagramok ábrázolására, a metrikai értékek rendellenességének kivizsgálására, valamint az API-forgalom megismerésére a csevegési és SMS-kérések által kibocsátható mérőszámok használatával.
 
 ## <a name="where-to-find-metrics"></a>Hol találhatók a metrikák
 
@@ -30,7 +30,7 @@ A kommunikációs szolgáltatások metrikáján két típusú kérelem szerepel:
 
 A csevegési és SMS API-kérelmek metrikája három olyan dimenziót tartalmaz, amelyeket a metrikák adatai szűrésére használhat. Ezek a méretek összevonhatók az `Count` összesítési típussal, és támogatják az összes szabványos Azure-összesítési idősorozatot, beleértve a következőket:,, `Sum` `Average` `Min` és `Max` .
 
-További információ a támogatott összesítési típusokról és az idősorozatok összesítéséről [Az Azure speciális funkciói találhatók Metrikaböngésző](../../azure-monitor/platform/metrics-charts.md#aggregation)
+További információ a támogatott összesítési típusokról és az idősorozatok összesítéséről [Az Azure speciális funkciói találhatók Metrikaböngésző](../../azure-monitor/essentials/metrics-charts.md#aggregation)
 
 - **Művelet** – az ACS-csevegési átjárón hívható összes művelet vagy útvonal.
 - **Állapotkód** – az állapotkód válasza a kérelem után elküldve.
@@ -41,7 +41,7 @@ További információ a támogatott összesítési típusokról és az idősoroz
 
 A következő műveletek érhetők el a csevegési API-kérelmek metrikáján:
 
-| Művelet/útvonal    | Leírás                                                                                    |
+| Művelet/útvonal    | Description                                                                                    |
 | -------------------- | ---------------------------------------------------------------------------------------------- |
 | GetChatMessage       | Üzenet beolvasása üzenet azonosítója alapján. |
 | ListChatMessages     | Lekérdezi a csevegési üzenetek listáját egy adott szálból. |
@@ -68,7 +68,7 @@ Ha egy olyan műveletre vonatkozó kérés érkezik, amely nem ismerhető fel, "
 
 Az SMS API-kérelmek metrikái a következő műveletek érhetők el:
 
-| Művelet/útvonal    | Leírás                                                                                    |
+| Művelet/útvonal    | Description                                                                                    |
 | -------------------- | ---------------------------------------------------------------------------------------------- |
 | SMSMessageSent       | SMS-üzenet küldése. |
 | SMSDeliveryReportsReceived     | SMS-Kézbesítési jelentések beolvasása |
@@ -81,7 +81,7 @@ Az SMS API-kérelmek metrikái a következő műveletek érhetők el:
 
 A következő műveletek érhetők el a hitelesítési API-kérelmek metrikáján:
 
-| Művelet/útvonal    | Leírás                                                                                    |
+| Művelet/útvonal    | Description                                                                                    |
 | -------------------- | ---------------------------------------------------------------------------------------------- |
 | CreateIdentity       | Egy egyedi felhasználót jelképező identitást hoz létre. |
 | DeleteIdentity       | Identitás törlése. |
@@ -90,4 +90,4 @@ A következő műveletek érhetők el a hitelesítési API-kérelmek metrikájá
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ az [adatplatform-mérőszámokról](../../azure-monitor/platform/data-platform-metrics.md)
+- További információ az [adatplatform-mérőszámokról](../../azure-monitor/essentials/data-platform-metrics.md)

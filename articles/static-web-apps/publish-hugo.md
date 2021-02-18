@@ -7,18 +7,18 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: e49a84f5ac507ac80481313c103701a88934083a
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 4539c32a367bb0974212d989176a96b530da21a4
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900773"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652334"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Oktatóanyag: Hugo-hely közzététele az Azure statikus Web Apps előzetes verziójában
 
 Ez a cikk bemutatja, hogyan hozhat létre és helyezhet üzembe egy [Hugo](https://gohugo.io/) -webalkalmazást az [Azure statikus Web Apps](overview.md). Az utolsó eredmény egy új, a kapcsolódó GitHub-műveletekkel rendelkező Azure-beli statikus webalkalmazás, amely lehetővé teszi az alkalmazás felépítésének és közzétételének vezérlését.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -88,7 +88,7 @@ Az Azure statikus Web Appshoz való csatlakozáshoz a GitHubon egy adattárra va
 1. Küldje le a helyi tárházat a GitHubra.
 
    ```bash
-   git push --set-upstream origin master
+   git push --set-upstream origin main
    ```
 
 ## <a name="deploy-your-web-app"></a>A webalkalmazás üzembe helyezése
@@ -123,7 +123,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy új statikus webhe
 
 1. Válassza ki a **Hugo-static-app** _adattárat_ .
 
-1. A _ág_ válassza a **Master** elemet.
+1. A _ág_ válassza a **Main (fő**) lehetőséget.
 
    :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="Elkészült GitHub-információ":::
 

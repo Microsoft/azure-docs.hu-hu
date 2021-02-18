@@ -1,0 +1,113 @@
+- name: IoT-eszközök és-alkalmazások fejlesztése
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi a IoT eszköz-és alkalmazásfejlesztés?
+      href: about-iot-develop.md
+    - name: Melyik SDK-t használjam?
+      href: about-iot-sdks.md
+- name: Rövid útmutatók
+  expanded: true
+  items:
+    - name: Ismerkedés az eszközök alkalmazás-fejlesztésével
+      items:
+        - name: Telemetria küldése IoT Centralba (Python)
+          href: quickstart-send-telemetry-python.md
+        - name: Telemetria küldése IoT Hubba (Python)
+          href: quickstart-send-telemetry-cli-python.md
+        - name: Telemetria küldése IoT Hub (csomópont)
+          href: quickstart-send-telemetry-cli-node.md
+    - name: Ismerkedés a beágyazott fejlesztéssel
+      href: quickstart-device-development.md
+- name: Oktatóanyagok
+  items:
+    - name: IoT-eszközök biztonságos csatlakoztatása a felhőhöz
+      href: 'https://docs.microsoft.com/learn/paths/securely-connect-iot-devices/'
+- name: Alapelvek
+  items:
+    - name: Az eszközök fejlesztőinek csatlakoztatási lehetőségei
+      href: concepts-overview-connection-options.md
+    - name: Az eszközök típusai – áttekintés
+      href: concepts-iot-device-types.md
+- name: Referencia
+  items:
+    - name: Azure CLI
+      href: /cli/azure/azure-cli-reference-for-IoT
+    - name: Azure PowerShell
+      href: /powershell/module/az.iothub#iothub
+    - name: C (eszköz)
+      href: /azure/iot-hub/iot-c-sdk-ref/
+    - name: Beágyazott C (eszköz)
+      href: 'https://azure.github.io/azure-sdk-for-c/'
+    - name: Azure RTOS middleware (eszköz)
+      href: /azure/rtos/threadx
+    - name: .NET (Eszköz)
+      href: /dotnet/api/microsoft.azure.devices.client
+    - name: .NET (Szolgáltatás)
+      href: /dotnet/api/microsoft.azure.devices
+    - name: .NET (Felügyelet)
+      href: /dotnet/api/overview/azure/iot/management
+    - name: Java (Eszköz)
+      href: /java/api/com.microsoft.azure.sdk.iot.device
+    - name: Java (Szolgáltatás)
+      href: /java/api/com.microsoft.azure.sdk.iot.service
+    - name: Node.js (Eszköz)
+      href: /javascript/api/azure-iot-device/
+    - name: Node.js (Szolgáltatás)
+      href: /javascript/api/azure-iothub/
+    - name: Node.js (Felügyelet)
+      href: /javascript/api/overview/azure/iothub/management
+    - name: Python (Eszköz)
+      href: /python/api/azure-iot-device
+    - name: Python (Szolgáltatás)
+      href: /python/api/azure-iot-hub
+    - name: Python (Felügyelet)
+      href: /python/api/azure-mgmt-iothub
+    - name: REST (eszköz)
+      href: /rest/api/iothub/device
+    - name: REST (szolgáltatás)
+      href: /rest/api/iothub/service/configuration
+    - name: REST (IoT Hub-erőforrás)
+      href: /rest/api/iothub/iothubresource
+    - name: REST (tanúsítványok)
+      href: /rest/api/iothub/certificates
+    - name: Resource Manager-sablon
+      href: /azure/templates/microsoft.devices/iothub-allversions
+- name: További források
+  items:
+    - name: Támogatási és súgólehetőségek
+      href: ../iot-fundamentals/iot-support-help.md
+    - name: Azure IoT-minták
+      items:
+        - name: C# (.NET)
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
+        - name: Node.js
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
+        - name: Java
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-java/'
+        - name: Python
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
+        - name: iOS platform
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
+    - name: Azure Certified for IoT eszközkatalógus
+      href: 'https://catalog.azureiotsolutions.com/'
+    - name: Azure IoT fejlesztői központ
+      href: 'https://azure.microsoft.com/develop/iot/'
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=iot'
+    - name: Azure IoT-eszközök
+      href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools'
+    - name: Azure IoT Explorer-eszköz
+      href: 'https://github.com/Azure/azure-iot-explorer'
+    - name: iothub-diagnostics eszköz
+      href: 'https://github.com/Azure/iothub-diagnostics'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/iot-hub/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates/?product=iot-hub'
+    - name: Műszaki esettanulmányok
+      href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
+    - name: Videók
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=iot-hub'

@@ -12,12 +12,12 @@ ms.date: 01/13/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
 adobe-target: true
-ms.openlocfilehash: da47967b719b5ce601d8049f54597c207ea732c8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d8c6a9cc000d307490745b923a1f1ba6c93abf53
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372034"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652224"
 ---
 # <a name="deploy-machine-learning-models-to-azure"></a>Gépi tanulási modellek üzembe helyezése az Azure-ban
 
@@ -325,6 +325,14 @@ Az alábbi táblázat a különböző szolgáltatás-állapotokat ismerteti:
 
 > [!TIP]
 > A üzembe helyezéskor a számítási célokhoz tartozó Docker-rendszerképeket Azure Container Registry (ACR) alapján építették és töltik be. Alapértelmezés szerint a Azure Machine Learning létrehoz egy ACR-t, *amely az alapszintű* szolgáltatási szintet használja. A munkaterületre vonatkozó ACR a standard vagy a prémium csomagra való módosítása csökkentheti a lemezképeknek a számítási célokhoz való felépítéséhez és üzembe helyezéséhez szükséges időt. További információ: [Azure Container Registry szolgáltatási szintek](../container-registry/container-registry-skus.md).
+
+> [!NOTE]
+> Ha modellt helyez üzembe az Azure Kubernetes Service (ak) szolgáltatásban, javasoljuk, hogy engedélyezze [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-enable-existing-clusters) a fürt számára. Ez segítséget nyújt a fürt állapotának és erőforrás-használatának általános megismerésében. A következő erőforrások is hasznosak lehetnek:
+>
+> * [Az AK-fürtöt befolyásoló Resource Health események keresése](https://docs.microsoft.com/azure/aks/aks-resource-health)
+> * [Azure Kubernetes Service Diagnostics](https://docs.microsoft.com/azure/aks/concepts-diagnostics)
+>
+> Ha egy modellt nem kifogástalan állapotú vagy túlterhelt fürtre próbál telepíteni, a rendszer problémát tapasztal. Ha segítségre van szüksége az AK-fürtökkel kapcsolatos problémák megoldásához, forduljon az AK-támogatáshoz.
 
 ### <a name="batch-inference"></a><a id="azuremlcompute"></a> Batch-következtetés
 A Azure Machine Learning számítási célokat Azure Machine Learning hozza létre és kezeli. A kötegelt előrejelzésekhez Azure Machine Learning folyamatokból is felhasználhatók.

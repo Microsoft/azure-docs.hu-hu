@@ -74,7 +74,7 @@
           href: concepts/telephony-sms/concepts.md
         - name: Telefonos fogalmak
           href: concepts/telephony-sms/telephony-concept.md
-        - name: Telefonszám-típusok az Azure kommunikációs szolgáltatásokban
+        - name: Telefonszám-típusok
           href: concepts/telephony-sms/plan-solution.md
         - name: A SIP-interfész infrastruktúrájának követelményei
           href: concepts/telephony-sms/sip-interface-infrastructure.md

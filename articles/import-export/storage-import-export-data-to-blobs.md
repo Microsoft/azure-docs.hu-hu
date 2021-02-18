@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 02/16/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: b014f81354b2f7eb2fb06de540f16b08206d583e
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: cc9431d08823bd3bfba423fcc5e9dc14d2a37faa
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706530"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652955"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Az Azure import/export szolgáltatás használata az Azure-ba való adatimportálásra Blob Storage
 
@@ -101,13 +101,13 @@ A meghajtók előkészítéséhez végezze el a következő lépéseket.
 Az alábbi lépések végrehajtásával hozzon létre egy importálási feladatot a Azure Portal.
 
 1. Jelentkezzen be a következőre: https://portal.azure.com/ .
-2. Lépjen az **összes szolgáltatás > Storage > importálási/exportálási feladatok lehetőségre**.
+2. **Importálási/exportálási feladatok** keresése.
 
-    ![Ugrás az importálási/exportálási feladatokra](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
+    ![Importálási/exportálási feladatok keresése](./media/storage-import-export-data-to-blobs/import-to-blob-1.png)
 
-3. Kattintson az **importálási/exportálási feladatok létrehozása** lehetőségre.
+3. Válassza a **+ Új** lehetőséget.
 
-    ![Kattintson az importálási/exportálási feladatok létrehozása lehetőségre.](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
+    ![Új létrehozásához válassza az új lehetőséget. ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
 
 4. Az **alapjaiban**:
 
@@ -118,7 +118,7 @@ Az alábbi lépések végrehajtásával hozzon létre egy importálási feladato
    * Válasszon egy előfizetést.
    * Adjon meg vagy válasszon ki egy erőforráscsoportot.
 
-     ![Importálási feladatok létrehozása – 1. lépés](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
+     ![Importálási feladatok létrehozása – 1. lépés](./media/storage-import-export-data-to-blobs/import-to-blob-3.png)
 
 5. A **feladatok részletei**:
 
@@ -126,7 +126,7 @@ Az alábbi lépések végrehajtásával hozzon létre egy importálási feladato
    * Válassza ki a cél Storage-fiókot, ahol az adat található.
    * A lemorzsolódási helye automatikusan kitöltődik a kiválasztott Storage-fiók régiója alapján.
 
-   ![Importálási feladatok létrehozása – 2. lépés](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
+   ![Importálási feladatok létrehozása – 2. lépés](./media/storage-import-export-data-to-blobs/import-to-blob-4.png)
 
 6. **Visszaszállítási adatok**:
 
@@ -137,14 +137,14 @@ Az alábbi lépések végrehajtásával hozzon létre egy importálási feladato
        > [!TIP]
        > E-mail-cím egyetlen felhasználóhoz való megadása helyett adjon meg egy csoportos e-mailt. Ez biztosítja, hogy értesítést kapjon, még akkor is, ha a rendszergazda elhagyja.
 
-     ![Importálási feladatok létrehozása – 3. lépés](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
+     ![Importálási feladatok létrehozása – 3. lépés](./media/storage-import-export-data-to-blobs/import-to-blob-5.png)
 
 7. Az **összegzésben**:
 
    * Tekintse át az összegzésben megadott feladattal kapcsolatos információkat. Jegyezze fel a feladatok nevét és az Azure-adatközpontok szállítási címeit, hogy a lemezeket vissza lehessen szállítani az Azure-ba. Ezeket az információkat később a szállítási címkén lehet használni.
    * Az importálási feladatok létrehozásához kattintson **az OK** gombra.
 
-     ![Importálási feladatok létrehozása – 4. lépés](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
+     ![Importálási feladatok létrehozása – 4. lépés](./media/storage-import-export-data-to-blobs/import-to-blob-6.png)
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -337,7 +337,7 @@ Hagyja ki ezt a lépést, és folytassa a következő lépéssel, ha a Microsoft
 
 A feladatot nyomon követheti befejezésre. A feladatok befejezése után ellenőrizze, hogy az adatok fel lettek-e töltve az Azure-ba. Csak a feltöltés sikeres ellenőrzése után törölje a helyszíni adatok törlését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A feladatok és a meghajtó állapotának megtekintése](storage-import-export-view-drive-status.md)
 * [Importálási/exportálási követelmények áttekintése](storage-import-export-requirements.md)

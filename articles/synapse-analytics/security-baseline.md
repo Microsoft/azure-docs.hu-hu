@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5e2f6d8ca1f3911959f396eb1ed77ce8377c0e3c
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 9831f70a88aba497eb7d6a759233c3d7d7be62c6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807835"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585116"
 ---
 # <a name="azure-security-baseline-for-azure-synapse-analytics"></a>Azure-beli biztonsági alaptervek az Azure szinapszis Analyticshez
 
@@ -167,9 +167,9 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 **Útmutató**: az Azure-Tevékenységnaplók használatával figyelheti a hálózati erőforrás-konfigurációkat, és azonosíthatja a dedikált SQL-készlethez kapcsolódó hálózati erőforrások változásait. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják
 
-* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Riasztások létrehozása a Azure Monitorban](../azure-monitor/platform/alerts-activity-log.md)
+* [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -237,7 +237,7 @@ A naplózás az adatbázison vagy a kiszolgáló szintjén is engedélyezhető, 
 
 * [Az Azure Blob Storage-életciklus felügyelete](../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal)
 
-* [Naplózási adatmegőrzési paraméterek beállítása Log Analytics munkaterületen](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Naplózási adatmegőrzési paraméterek beállítása Log Analytics munkaterületen](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 * [Folyamatos átviteli események rögzítése Event Hubs](../event-hubs/event-hubs-capture-overview.md)
 
@@ -629,7 +629,7 @@ Az engedélyezést a felhasználói fiók adatbázis-szerepköri tagsága és az
 
 Emellett az SQL szinapszis-készletben lévő adatbázisokhoz is beállíthat riasztásokat az Azure Portal használatával. A riasztások e-mailt küldhetnek, vagy meghívhatnak egy webhookot, ha valamilyen metrika (például az adatbázis mérete vagy a CPU-használat) eléri a küszöbértéket.
 
-* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/platform/alerts-activity-log.md)
+* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Riasztások létrehozása az Azure SQL Szinapszishoz](../azure-sql/database/alerts-insights-configure-portal.md)
 

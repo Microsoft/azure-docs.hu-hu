@@ -9,18 +9,18 @@ ms.subservice: cost-management
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: de0e9c631a97891e75c091c75a34b7dd94a52894
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
-ms.translationtype: HT
+ms.openlocfilehash: 1706fd69f58e4dee4a7ed963fb22cb63aec026fa
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131462"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593393"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Költségek kezelése az Azure Budgetsszel
 
 A költségek kézben tartása egy kritikus eleme annak, hogy a felhővel kapcsolatos befektetéseiből a lehető legtöbbet tudja kihozni. Számos forgatókönyv esetében a folyamatos üzleti tevékenységhez kritikus fontosságú a költségek láthatósága, a jelentéskészítés és a költségalapú előkészítés. [Azure Cost Management API](/rest/api/consumption/)-k egy sor API-t biztosítanak ezen forgatókönyvek mindegyikéhez. Az API-k használati adatokat biztosítanak, így lehetővé teszik a példányszintű költségek részletes megtekintését.
 
-A költségvetések általában a költségszabályozás részeként használatosak. A költségvetések hatóköre beállítható az Azure-ban. Például leszűkítheti a költségvetési nézetet előfizetés, erőforráscsoport vagy erőforrások gyűjteménye alapján. Amellett, hogy a Budgets API használatával e-mailben értesülhet a költségvetési küszöbértékek elérésekor, az [Azure Monitor-műveletcsoportokkal](../../azure-monitor/platform/action-groups.md) vezényelt műveleteket is elindíthat a költségvetési események eredményeként.
+A költségvetések általában a költségszabályozás részeként használatosak. A költségvetések hatóköre beállítható az Azure-ban. Például leszűkítheti a költségvetési nézetet előfizetés, erőforráscsoport vagy erőforrások gyűjteménye alapján. Amellett, hogy a Budgets API használatával e-mailben értesülhet a költségvetési küszöbértékek elérésekor, az [Azure Monitor-műveletcsoportokkal](../../azure-monitor/alerts/action-groups.md) vezényelt műveleteket is elindíthat a költségvetési események eredményeként.
 
 A nem kritikus fontosságú munkaterhelést futtató ügyfelek egyik gyakori költségvetési forgatókönyve a költségvetés havonta előrelátható, kiszámítható költségek melletti felügyelete. Ehhez a forgatókönyvhöz az Azure-környezet részét képező erőforrások költségalapú vezénylése szükséges. Ebben a forgatókönyvben az előfizetésre 1000 dolláros havi költségvetés van beállítva. Emellett az értesítési küszöbértékek úgy vannak beállítva, hogy elindítsanak néhány vezénylést. Ez a forgatókönyv 80%-os költségküszöbértékkel indul, ami leállítja az összes virtuális gépet a **Választható** erőforráscsoportban. Ezután a 100%-os költség-küszöbértéknél minden virtuálisgép-példány le lesz állítva.
 

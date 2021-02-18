@@ -11,17 +11,17 @@ author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 06/12/2020
-ms.openlocfilehash: 6720058ce6e7614284111a75a2ab3a91525df1a3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b03c21eea18c966616154b5cfc5df5d8924fd335
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488765"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589314"
 ---
 # <a name="use-the-intelligent-insights-performance-diagnostics-log-of-azure-sql-database-and-azure-sql-managed-instance-performance-issues"></a>A Azure SQL Database és az Azure SQL felügyelt példányok teljesítményével kapcsolatos problémák Intelligent Insights teljesítmény diagnosztikai naplójának használata
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Ez az oldal a Azure SQL Database és az Azure SQL felügyelt példányok teljesítménnyel kapcsolatos problémáinak, formátumának és az egyéni fejlesztési igényeknek megfelelő adatoknak a [Intelligent Insights](intelligent-insights-overview.md) által generált teljesítmény-diagnosztikai naplójának használatáról nyújt tájékoztatást. Ezt a diagnosztikai naplót elküldheti [Azure monitor naplókba](../../azure-monitor/insights/azure-sql.md), az [Azure Event Hubsba](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs), az [Azure Storage](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)-ba vagy egy harmadik féltől származó megoldásra az egyéni DevOps-riasztási és jelentéskészítési funkciókhoz.
+Ez az oldal a Azure SQL Database és az Azure SQL felügyelt példányok teljesítménnyel kapcsolatos problémáinak, formátumának és az egyéni fejlesztési igényeknek megfelelő adatoknak a [Intelligent Insights](intelligent-insights-overview.md) által generált teljesítmény-diagnosztikai naplójának használatáról nyújt tájékoztatást. Ezt a diagnosztikai naplót elküldheti [Azure monitor naplókba](../../azure-monitor/insights/azure-sql.md), az [Azure Event Hubsba](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs), az [Azure Storage](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)-ba vagy egy harmadik féltől származó megoldásra az egyéni DevOps-riasztási és jelentéskészítési funkciókhoz.
 
 > [!NOTE]
 > Az intelligens betekintő funkció az alábbi régiókban nem érhető el: Nyugat-Európa, Észak-Európa, USA 2. nyugati régiója és USA 1. keleti régiója.
@@ -140,9 +140,9 @@ A Intelligent Insights teljesítmény naplójának utolsó része az azonosítot
 
 A Intelligent Insights Teljesítménynapló [Azure monitor naplókkal]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) vagy harmadik féltől származó megoldással az egyéni DevOps-riasztásokhoz és jelentéskészítési funkciókhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerkedjen meg [Intelligent Insights](intelligent-insights-overview.md) fogalmakkal.
 - Ismerje meg, hogy miként lehet [elhárítani a Intelligent Insights teljesítményével kapcsolatos problémákat](intelligent-insights-troubleshoot-performance.md).
 - Megtudhatja, hogyan [figyelheti a teljesítménnyel kapcsolatos problémákat Azure SQL Analytics használatával](../../azure-monitor/insights/azure-sql.md).
-- Ismerje meg, hogyan [gyűjthet és használhat adatokat az Azure-erőforrásokból](../../azure-monitor/platform/platform-logs-overview.md).
+- Ismerje meg, hogyan [gyűjthet és használhat adatokat az Azure-erőforrásokból](../../azure-monitor/essentials/platform-logs-overview.md).

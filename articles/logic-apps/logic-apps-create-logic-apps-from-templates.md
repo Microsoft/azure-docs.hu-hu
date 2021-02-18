@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
-ms.openlocfilehash: 7eca9b4a8cf09f2f35d56dc22fc25169be192f47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42c592e6aede4537dc983fd2cff043a878f81f1c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87066238"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593104"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Logikai alkalmazás munkafolyamatok létrehozása előre összeállított sablonokból
 
@@ -21,7 +21,7 @@ A munkafolyamatok gyorsabb létrehozásának megkezdéséhez Logic Apps biztosí
 
 Néhány sablon-Kategória:
 
-| Sablon típusa | Leírás | 
+| Sablon típusa | Description | 
 | ------------- | ----------- | 
 | Vállalati felhőalapú sablonok | Az Azure Blob, a Dynamics CRM, a Salesforce, a Box és más összekötők integrálása a vállalati felhő igényei szerint. Ezekkel a sablonokkal például rendszerezheti az üzleti érdeklődőket, vagy biztonsági másolatot készíthet a vállalati fájlok adatairól. | 
 | Személyes hatékonyságnövelő sablonok | A napi emlékeztetők megadásával javíthatja a személyes hatékonyságot, a fontos munkaelemeket a feladatlistába helyezheti, és a hosszadalmas feladatok automatizálását egyetlen felhasználói jóváhagyási lépéshez hajthatja végre. | 
@@ -36,7 +36,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [regisztrálhat egy ingyenes Azure-fi�
 
 1. Ha még nem tette meg, jelentkezzen be a [Azure Portalba](https://portal.azure.com "Azure Portal").
 
-2. Az Azure fő menüjében válassza az **erőforrás létrehozása**  >  **Vállalati integráció**  >  **logikai alkalmazás**lehetőséget.
+2. Az Azure fő menüjében válassza az **erőforrás létrehozása**  >  **Vállalati integráció**  >  **logikai alkalmazás** lehetőséget.
 
    ![Azure Portal, Új, Vállalati integráció, Logikai alkalmazás](./media/logic-apps-create-logic-apps-from-templates/azure-portal-create-logic-app.png)
 
@@ -50,10 +50,10 @@ Ha nem rendelkezik Azure-előfizetéssel, [regisztrálhat egy ingyenes Azure-fi�
    | **Előfizetés** | *az-Ön-Azure-előfizetésének-neve* | Válassza ki a használni kívánt Azure-előfizetést. | 
    | **Erőforráscsoport** | *az-Ön-Azure-erőforráscsoportjának-neve* | Hozzon létre vagy válasszon ki egy [Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md) ehhez a logikai alkalmazáshoz, és rendezze az ehhez az alkalmazáshoz társított összes erőforrást. | 
    | **Hely** | *az-Ön-Azure-adatközpont-régiója* | Válassza ki az adatközpont-régiót a logikai alkalmazás üzembe helyezéséhez, például az USA nyugati régióját. | 
-   | **Log Analytics** | **Kikapcsolva** (alapértelmezett **) vagy** | A logikai alkalmazás [diagnosztikai naplózásának](../logic-apps/monitor-logic-apps-log-analytics.md) beállítása [Azure monitor naplók](../azure-monitor/log-query/log-query-overview.md)használatával. A használatához már van Log Analytics munkaterület. | 
+   | **Naplóelemzés** | **Kikapcsolva** (alapértelmezett **) vagy** | A logikai alkalmazás [diagnosztikai naplózásának](../logic-apps/monitor-logic-apps-log-analytics.md) beállítása [Azure monitor naplók](../azure-monitor/logs/log-query-overview.md)használatával. A használatához már van Log Analytics munkaterület. | 
    |||| 
 
-4. Amikor végzett, válassza a **Rögzítés az irányítópulton** lehetőséget. Így a logikai alkalmazás automatikusan megjelenik az Azure-irányítópulton, és megnyílik az üzembe helyezés után. Válassza a **Létrehozás**lehetőséget.
+4. Amikor végzett, válassza a **Rögzítés az irányítópulton** lehetőséget. Így a logikai alkalmazás automatikusan megjelenik az Azure-irányítópulton, és megnyílik az üzembe helyezés után. Válassza a **Létrehozás** lehetőséget.
 
    > [!NOTE]
    > Ha nem szeretné rögzíteni a logikai alkalmazást, a folytatáshoz manuálisan kell megkeresnie és megnyitnia a logikai alkalmazást az üzembe helyezés után.
@@ -66,14 +66,14 @@ Ha nem rendelkezik Azure-előfizetéssel, [regisztrálhat egy ingyenes Azure-fi�
    ![Logikai alkalmazás sablonjának kiválasztása](./media/logic-apps-create-logic-apps-from-templates/choose-logic-app-template.png)
 
    > [!TIP]
-   > A logikai alkalmazás előzmények nélküli létrehozásához válassza az **üres logikai alkalmazás**lehetőséget.
+   > A logikai alkalmazás előzmények nélküli létrehozásához válassza az **üres logikai alkalmazás** lehetőséget.
 
    Egy előre elkészített sablon kiválasztásakor a sablonra vonatkozó további információk is megtekinthetők. 
    Például:
 
    ![Előre elkészített sablon kiválasztása](./media/logic-apps-create-logic-apps-from-templates/logic-app-choose-prebuilt-template.png)
 
-6. A kiválasztott sablon folytatásához válassza a **sablon használata**lehetőséget. 
+6. A kiválasztott sablon folytatásához válassza a **sablon használata** lehetőséget. 
 
 7. A sablon összekötői alapján a rendszer a következő lépések bármelyikét kéri:
 
@@ -81,7 +81,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [regisztrálhat egy ingyenes Azure-fi�
 
    * Hozzon létre kapcsolatokat a sablon által hivatkozott bármely szolgáltatáshoz vagy rendszerhez. A kapcsolatok létrehozásához adja meg a kapcsolódás nevét, és ha szükséges, válassza ki a használni kívánt erőforrást. 
 
-   * Ha már beállította ezeket a kapcsolatokat, válassza a **Folytatás**lehetőséget.
+   * Ha már beállította ezeket a kapcsolatokat, válassza a **Folytatás** lehetőséget.
 
    Például:
 
@@ -101,7 +101,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [regisztrálhat egy ingyenes Azure-fi�
 
 1. A [Azure Portal](https://portal.azure.com "Azure Portal")a Logic app Designerben keresse meg és nyissa meg a logikai alkalmazást.
 
-2. A tervező eszköztárán válassza a **sablonok**lehetőséget. Ez a művelet elveti a nem mentett módosításokat, ezért megjelenik egy figyelmeztető üzenet, amely megerősíti, hogy folytatja a műveletet. A megerősítéshez kattintson **az OK gombra**. Például:
+2. A tervező eszköztárán válassza a **sablonok** lehetőséget. Ez a művelet elveti a nem mentett módosításokat, ezért megjelenik egy figyelmeztető üzenet, amely megerősíti, hogy folytatja a műveletet. A megerősítéshez kattintson **az OK gombra**. Például:
 
    ![Válassza a "sablonok" lehetőséget.](./media/logic-apps-create-logic-apps-from-templates/logic-app-update-existing-with-template.png)
 
@@ -114,7 +114,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [regisztrálhat egy ingyenes Azure-fi�
 
    ![Előre elkészített sablon kiválasztása](./media/logic-apps-create-logic-apps-from-templates/logic-app-choose-prebuilt-template.png)
 
-4. A kiválasztott sablon folytatásához válassza a **sablon használata**lehetőséget. 
+4. A kiválasztott sablon folytatásához válassza a **sablon használata** lehetőséget. 
 
 5. A sablon összekötői alapján a rendszer a következő lépések bármelyikét kéri:
 
@@ -122,7 +122,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [regisztrálhat egy ingyenes Azure-fi�
 
    * Hozzon létre kapcsolatokat a sablon által hivatkozott bármely szolgáltatáshoz vagy rendszerhez. A kapcsolatok létrehozásához adja meg a kapcsolódás nevét, és ha szükséges, válassza ki a használni kívánt erőforrást. 
 
-   * Ha már beállította ezeket a kapcsolatokat, válassza a **Folytatás**lehetőséget.
+   * Ha már beállította ezeket a kapcsolatokat, válassza a **Folytatás** lehetőséget.
 
    ![Kapcsolatok létrehozása](./media/logic-apps-create-logic-apps-from-templates/logic-app-create-connection.png)
 
@@ -131,7 +131,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [regisztrálhat egy ingyenes Azure-fi�
 8. Folytassa a logikai alkalmazás összeállítását. 
 
    > [!TIP]
-   > Ha még nem mentette a módosításokat, elvetheti a munkáját, és visszatérhet az előző logikai alkalmazáshoz. A tervező eszköztárán válassza az **Elvetés**lehetőséget.
+   > Ha még nem mentette a módosításokat, elvetheti a munkáját, és visszatérhet az előző logikai alkalmazáshoz. A tervező eszköztárán válassza az **Elvetés** lehetőséget.
 
 > [!NOTE] 
 > Számos sablon olyan összekötőket tartalmaz, amelyek már előre feltöltött kötelező tulajdonságokkal rendelkezhetnek. Előfordulhat azonban, hogy egyes sablonok esetében továbbra is meg kell adnia az értékeket, mielőtt megfelelően telepítené a logikai alkalmazást. Ha a hiányzó tulajdonságmezők befejezése nélkül próbálkozik a telepítéssel, hibaüzenet jelenik meg.
@@ -149,7 +149,7 @@ A tervező eszköztárán válassza a **Mentés** parancsot.
 * Ha kérdése van, látogasson el a [Microsoft Q&a Azure Logic apps vonatkozó kérdés oldalára](/answers/topics/azure-logic-apps.html).
 * A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tudnivalók a logikai alkalmazások létrehozásáról példákkal, forgatókönyvekkel, vásárlói történetekkel és forgatókönyvekkel.
 

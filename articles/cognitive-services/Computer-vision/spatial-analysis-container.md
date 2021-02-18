@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: db21f1170dacbfa1e4367e7f22143ec3d0b0f6e4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a43a27a8e880c76ba21639437c0c20f583620d50
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737336"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653618"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>A térbeli elemzési tároló telepítése és futtatása (előzetes verzió)
 
@@ -249,7 +249,7 @@ sudo systemctl --now enable nvidia-mps.service
 
 ## <a name="configure-azure-iot-edge-on-the-host-computer"></a>Azure IoT Edge konfigurálása a gazdaszámítógépen
 
-A térbeli elemzési tároló a gazdagépen való üzembe helyezéséhez hozzon létre egy [Azure IoT hub](../../iot-hub/iot-hub-create-through-portal.md) szolgáltatás egy példányát a standard (S1) vagy az ingyenes (F0) árképzési szint használatával. Ha a gazdaszámítógép Azure Stack Edge, használja ugyanazt az előfizetést és erőforráscsoportot, amelyet az Azure Stack Edge-erőforrás használ.
+A térbeli elemzési tároló a gazdagépen való üzembe helyezéséhez hozzon létre egy [Azure IoT hub](../../iot-hub/iot-hub-create-through-portal.md) szolgáltatás egy példányát a standard (S1) vagy az ingyenes (F0) árképzési szint használatával. 
 
 Azure IoT Hub-példány létrehozása az Azure CLI használatával. Szükség esetén cserélje le a paramétereket. Azt is megteheti, hogy az Azure-IoT Hub is létrehozhatja a [Azure Portal](https://portal.azure.com/).
 
@@ -264,7 +264,7 @@ sudo az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test
 sudo az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
 ```
 
-Ha a gazdaszámítógép nem Azure Stack peremhálózati eszköz, akkor telepítenie kell a [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) 1.0.9 verzióját. A megfelelő verzió letöltéséhez kövesse az alábbi lépéseket:
+Telepítenie kell [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) 1.0.9 verzióját. A megfelelő verzió letöltéséhez kövesse az alábbi lépéseket:
 
 Ubuntu Server 18,04:
 ```bash
@@ -396,7 +396,73 @@ sudo apt-get install -y docker-ce nvidia-docker2
 sudo systemctl restart docker
 ```
 
-Most, hogy beállította és konfigurálta a virtuális gépet, kövesse az alábbi lépéseket a térbeli elemzési tároló üzembe helyezéséhez. 
+Most, hogy beállította és konfigurálta a virtuális gépet, kövesse az alábbi lépéseket a Azure IoT Edge konfigurálásához. 
+
+## <a name="configure-azure-iot-edge-on-the-vm"></a>Azure IoT Edge konfigurálása a virtuális gépen
+
+A térbeli elemzési tároló virtuális gépen való üzembe helyezéséhez hozzon létre egy [Azure IoT hub](../../iot-hub/iot-hub-create-through-portal.md) szolgáltatás egy példányát a standard (S1) vagy az ingyenes (F0) díjszabási szint használatával.
+
+Azure IoT Hub-példány létrehozása az Azure CLI használatával. Szükség esetén cserélje le a paramétereket. Azt is megteheti, hogy az Azure-IoT Hub is létrehozhatja a [Azure Portal](https://portal.azure.com/).
+
+```bash
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+sudo az login
+sudo az account set --subscription <name or ID of Azure Subscription>
+sudo az group create --name "test-resource-group" --location "WestUS"
+
+sudo az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-resource-group"
+
+sudo az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
+```
+
+Telepítenie kell [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) 1.0.9 verzióját. A megfelelő verzió letöltéséhez kövesse az alábbi lépéseket:
+
+Ubuntu Server 18,04:
+```bash
+curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
+```
+
+Másolja a generált listát.
+```bash
+sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
+```
+
+Telepítse a Microsoft GPG nyilvános kulcsot.
+
+```bash
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
+```
+
+Frissítse a csomagok listáját az eszközön.
+
+```bash
+sudo apt-get update
+```
+
+A 1.0.9 kiadásának telepítése:
+
+```bash
+sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
+```
+
+Ezután regisztrálja a virtuális gépet IoT Edge eszközként a IoT Hub-példányban egy [kapcsolatok karakterlánc](../../iot-edge/how-to-manual-provision-symmetric-key.md?view=iotedge-2018-06)használatával.
+
+Az IoT Edge eszközt az Azure-IoT Hubhoz kell kötnie. A korábban létrehozott IoT Edge eszközről kell másolnia a kapcsolódási karakterláncot. Azt is megteheti, hogy az alábbi parancsot futtatja az Azure CLI-ben.
+
+```bash
+sudo az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
+```
+
+A virtuális gépen nyissa meg a  `/etc/iotedge/config.yaml` szerkesztéshez. Cserélje le `ADD DEVICE CONNECTION STRING HERE` a karakterláncot a és a közötti értékre. Mentse és zárja be a fájlt. Futtassa ezt a parancsot a IoT Edge szolgáltatás újraindításához a virtuális gépen.
+
+```bash
+sudo systemctl restart iotedge
+```
+
+Telepítse a térbeli elemzési tárolót IoT-modulként a virtuális gépen a [Azure Portal](../../iot-edge/how-to-deploy-modules-portal.md) vagy az [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows)-ből. Ha a portált használja, állítsa a rendszerkép URI-JÁT a Azure Container Registry helyére. 
+
+Az alábbi lépések segítségével helyezheti üzembe a tárolót az Azure CLI használatával.
 
 ---
 
@@ -518,7 +584,7 @@ Ebben a cikkben megtanulta a térbeli elemzési tároló letöltésére, telepí
 * A Container images szolgáltatás IoT-modulként fut Azure IoT Edgeban.
 * A tároló konfigurálása és üzembe helyezése a gazdagépen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Felhasználók üzembe helyezése webes alkalmazásokban](spatial-analysis-web-app.md)
 * [Térbeli elemzési műveletek konfigurálása](spatial-analysis-operations.md)

@@ -1,17 +1,15 @@
 ---
 title: A káosz indukálása Service Fabric-fürtökben
 description: A hibák befecskendezése és a cluster Analysis Service API-k használatával kezelheti a káoszt a fürtben.
-author: georgewallace
 ms.topic: conceptual
 ms.date: 02/05/2018
-ms.author: gwallace
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 727e0c8a738258434036652dd3df1f686f7433bb
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 8ff3c88b7f86294badb76ec1e8dde0c34b942509
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546380"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588988"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Vezérelt káosz indukálása Service Fabric-fürtökben
 A nagy léptékű elosztott rendszerek, például a felhőalapú infrastruktúrák eleve megbízhatatlanok. Az Azure Service Fabric lehetővé teszi a fejlesztők számára, hogy megbízható elosztott szolgáltatásokat írjanak egy megbízhatatlan infrastruktúrán felül. Ahhoz, hogy megbízható, megbízható infrastruktúrán alapuló elosztott szolgáltatásokat lehessen írni, a fejlesztőknek képesnek kell lenniük a szolgáltatásaik stabilitásának tesztelésére, miközben a mögöttes megbízhatatlan infrastruktúra a hibák miatt bonyolult állapotú átmeneteken megy keresztül.

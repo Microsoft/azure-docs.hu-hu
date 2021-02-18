@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: mingshen
 author: mingshen-ms
 ms.date: 06/10/2020
-ms.openlocfilehash: 909b818c60932f5b1d6071ea1ccf0ee4c76173b4
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 5ab57bcccb6f681f5c9282ef461181952ed5a679
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280529"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653074"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>Rendellenesség-észlelő szolgáltatás forgalmi díjas számlázáshoz
 
@@ -50,32 +50,37 @@ A modell visszamenőleges megbízhatósági intervallumok generálásával műk�
 
 ## <a name="anomaly-detection-notification"></a>Rendellenesség-észlelési értesítés
 
-Heti rendszerességgel e-mailben elküldjük a anomáliák észlelését. Ez magában foglalja az összes olyan rendellenességet, amelyet a héten az összes fogyasztásmérő és ügyfél számára észlelt. Ezt az e-mailt a rendszer az ajánlat létrehozásakor megadott **mérnöki** és **támogatási** partnereknek küldi el.
+A partner Centerben kiértékelheti, kezelheti és visszaigazolhatja a rendellenességeket. Ebből a cikkből megtudhatja, hogyan tekintheti meg [a forgalmi rendellenesség észlelését a mért számlázáshoz](../anomaly-detection.md).
 
-Meg kell vizsgálnia, hogy az észlelt rendellenességek valós problémák-e, és ha igen, forduljon a Microsofthoz, és jelentse a helytelen használatot (lásd az alábbi támogatási szakaszt).
+Annak biztosítása érdekében, hogy az ügyfelek ne legyenek túlterhelve a mért használatnál, meg kell vizsgálnia, hogy az észlelt rendellenességek valós problémák-e. Ha igen, tudomásul veheti a nem megfelelő használatot a partner Centerben.
 
-Ha megerősíti, hogy az észlelt rendellenességek normál használatban vannak, nincs szükség további műveletre. Ha azonban egy rendellenesség potenciálisan magas pénzügyi kockázatot jelent, felvesszük Önnel a kapcsolatot, hogy erősítse a használatot.  
+Javasoljuk, hogy ellenőrizze, hogy az észlelt rendellenességek normál használatban vannak-e. Ennek köszönhetően javulni fog az Ön számára biztosított anomália-információ. Ha egy rendellenesség potenciálisan magas pénzügyi kockázatot jelent, felvesszük Önnel a kapcsolatot, hogy erősítse meg a használatot.
 
 ## <a name="when-and-how-to-get-support"></a>Mikor és hogyan kérhet támogatást
 
-Ha a helytelen használatot küldte a Microsoft számára, és ez az ügyfél számára is fennáll, akkor a Microsoft nem küld számlát az ügyfélnek a jelentett használat miatt, vagy a használatért kell fizetnie. A kevesebb mennyiség jelentése miatti bevételkiesést Önnek kell állnia.
+Ha olyan helytelen forgalmi díjas használatot küldött nekünk, amely az ügyfél számára is felszámított, nem küldünk számlát az ügyfélnek a jelentett használat miatt, vagy a használatért kell fizetnie. A kevesebb mennyiség jelentése miatti bevételkiesést Önnek kell állnia.
 
-A következő esetekben támogatási jegyet nyithat, hogy visszatérítést kérjen, vagy helyesbíttesse az ügyfelek számláját:
+Ha a következő esetek valamelyike érvényes, a partner Centerben módosíthatja a használati összeget, amely visszatérítési vagy számlázási beállításokat eredményez ügyfelei számára:
 
-- Megerősítette, hogy az észlelt rendellenességek egyike valódi probléma, és a helytelen használat az ügyfél **túlterhelését** eredményezi.
-- Felderíti, hogy helytelen használatot kapott nekünk, és a helytelen használat az ügyfél **túlterhelését** eredményezi.
-- Az ügyfél forgalmi díjas számlázási felhasználásának használatáért visszatérítést szeretne kérni.
+- Megerősítette, hogy az észlelt rendellenességek egyike valódi probléma, és a helytelen használat az ügyfél túlterhelését eredményezi.
+- Felderíti, hogy helytelen használatot kapott nekünk, és a helytelen használat az ügyfél túlterhelését eredményezi.
 
-Jegy elküldése:
+A mért számlázási rendellenességekkel kapcsolatos támogatási jegy elküldése:
 
-1. Nyissa meg a támogatási lapot. A **mondja el a probléma mezőjében**írja be a "helytelen használat" kifejezést.
-2. A támogatási témakörökben a keresési eredmények legördülő menüben válassza ki a következők egyikét:
-    - **Kereskedelmi piactér**  >  **Mért számlázás**  >  **Helytelen használat érkezik az Azure-alkalmazások ajánlatához**, vagy
-    - **Kereskedelmi piactér**  >  **Mért számlázás**  >  **Helytelen használat lett elküldve SaaS-ajánlathoz**
-3. A **következő lépés**alatt jelölje be a **megoldások véleményezése** gombot a partner központba való bejelentkezéshez a támogatási jegy elküldéséhez.
+1. Jelentkezzen be a [partner Centerben](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) a munkahelyi fiókjával.
+1. A lap jobb felső részén található menüben válassza a **támogatás** ikont. A **Súgó és támogatás** panel a lap jobb oldalán jelenik meg.
+1. Ha segítségre van a kereskedelmi piactéren, válassza a **kereskedelmi piactér** lehetőséget.
+   ![A támogatási panel illusztrálása.](../media/support/commercial-marketplace-support-pane.png)
+1. A **probléma összegzése** mezőben adja meg a **kereskedelmi piactér > mért számlázás** értéket.
+1. A **probléma típusa** mezőben válassza a következők egyikét:
+    - **Kereskedelmi piactér > mért számlázási > az Azure-alkalmazások ajánlatának helytelen használata**
+    - **Kereskedelmi piactér > mért számlázás > az SaaS-ajánlathoz nem megfelelő használat**
+1. A **következő lépésben** válassza a **megoldások áttekintése** elemet.
+1. A támogatási jegy elküldéséhez tekintse át az ajánlott dokumentumokat, ha vannak ilyenek, vagy válassza a **probléma részleteinek megadása** lehetőséget.
 
 További közzétevői támogatási lehetőségekért lásd: [támogatás a kereskedelmi piactér programhoz a partner Centerben](../support.md).
 
-## <a name="next-step"></a>Következő lépés
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg a [Marketplace-mérési szolgáltatás API](marketplace-metering-service-apis.md)-ját.
+- [A mért számlázás rendellenességének észlelése](../anomaly-detection.md)

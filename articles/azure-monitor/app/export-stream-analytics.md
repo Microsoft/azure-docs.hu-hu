@@ -3,12 +3,12 @@ title: Exportálás az Azure Application Insights Stream Analytics használatáv
 description: Stream Analytics a Application Insightsból exportált adatok folyamatos átalakítását, szűrését és átirányítását is elvégezheti.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: e90daf2516b00f7a27ac47e34cfc4ace03fee6e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8486d7e5656a7770aec4a50739d3a9160e123e3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979184"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584331"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Stream Analytics használata az exportált adatok feldolgozásához Application Insights
 A [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ideális eszköz a [Application Insightsból exportált](export-telemetry.md)adatok feldolgozásához. A Stream Analytics különböző forrásokból származó adatok lekérésére használható. Átalakíthatja és szűrheti az adatmennyiséget, majd átirányíthatja azt különböző mosdók számára.
@@ -55,10 +55,10 @@ A [folyamatos exportálás](export-telemetry.md) a Application Insights adatait 
 
     ![Eseménytípus kiválasztása](./media/export-stream-analytics/080.png)
 
-1. Némi adatmennyiséget is felhalmozhat. Dőljön hátra, és hagyja, hogy a felhasználók egy ideig használják az alkalmazást. A telemetria a következő helyen jelenik meg: statisztikai diagramok a [metrika-kezelőben](../platform/metrics-charts.md) és az egyes események a [diagnosztikai keresésben](./diagnostic-search.md). 
+1. Némi adatmennyiséget is felhalmozhat. Dőljön hátra, és hagyja, hogy a felhasználók egy ideig használják az alkalmazást. A telemetria a következő helyen jelenik meg: statisztikai diagramok a [metrika-kezelőben](../essentials/metrics-charts.md) és az egyes események a [diagnosztikai keresésben](./diagnostic-search.md). 
    
     És az is, hogy az adatai exportálva lesznek a tárhelyre. 
-2. Vizsgálja meg az exportált adatgyűjtést. A Visual Studióban válassza a **Megtekintés/Cloud Explorer**lehetőséget, majd nyissa meg az Azure/Storage elemet. (Ha nem rendelkezik ezzel a menüponttal, telepítenie kell az Azure SDK-t: Nyissa meg az új projekt párbeszédpanelt, és nyissa meg a Visual C#/Cloud/Get Microsoft Azure SDK-t a .NET-hez.)
+2. Vizsgálja meg az exportált adatgyűjtést. A Visual Studióban válassza a **Megtekintés/Cloud Explorer** lehetőséget, majd nyissa meg az Azure/Storage elemet. (Ha nem rendelkezik ezzel a menüponttal, telepítenie kell az Azure SDK-t: Nyissa meg az új projekt párbeszédpanelt, és nyissa meg a Visual C#/Cloud/Get Microsoft Azure SDK-t a .NET-hez.)
    
     ![Képernyőfelvétel: a megtekinteni kívánt események típusának beállítása.](./media/export-stream-analytics/04-data.png)
    
@@ -73,7 +73,7 @@ A [Azure Portal](https://portal.azure.com/)válassza ki a Azure stream Analytics
 
 ![Képernyőkép, amely az új Stream Analytics feladatok létrehozásakor szükséges adatokat jeleníti meg.](./media/export-stream-analytics/SA002.png)
 
-Az új feladatok létrehozásakor válassza az **Ugrás erőforráshoz**lehetőséget.
+Az új feladatok létrehozásakor válassza az **Ugrás erőforráshoz** lehetőséget.
 
 ![Képernyőfelvétel: az új Stream Analytics feladatok központi telepítésének sikerességét jelző üzenet.](./media/export-stream-analytics/SA003.png)
 
@@ -107,7 +107,7 @@ Ebben a példában:
 > 
 
 ## <a name="add-new-output"></a>Új kimenet hozzáadása
-Most válassza ki a feladatot, > **kimenet**  >  **hozzáadása**elemet.
+Most válassza ki a feladatot, > **kimenet**  >  **hozzáadása** elemet.
 
 ![Képernyőfelvétel: a Stream Analytics feladatainak kiválasztásával új kimenetet adhat hozzá.](./media/export-stream-analytics/SA006.png)
 

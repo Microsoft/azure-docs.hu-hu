@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: fced0cfb1836be0f90c606b9a9753dad4200670d
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 8de819fc5444146f40a6a052cd51e6164cdfb230
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635625"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653057"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Azure Red Hat OpenShift-támogatási szabályzat
 
@@ -23,7 +23,7 @@ Az Azure Red Hat OpenShift 4 fürtök bizonyos konfigurációi befolyásolhatjá
 ## <a name="cluster-configuration-requirements"></a>A fürt konfigurációs követelményei
 
 * Az összes OpenShift-fürtnek felügyelt állapotban kell maradnia. A fürtözött operátorok listája a futtatásával adható vissza `oc get clusteroperators` .
-* A fürtnek legalább két feldolgozói csomóponttal kell rendelkeznie. Ne méretezi a fürt feldolgozóit nulla értékre, vagy próbálja meg egy kecses fürt leállítását.
+* A fürtnek legalább két feldolgozói csomóponttal kell rendelkeznie. Ne rendelkezzenek olyan szennyező elemekkel, amelyek megakadályozzák a OpenShift-összetevők ütemezését. Ne méretezi a fürt feldolgozóit nulla értékre, vagy próbálja meg egy kecses fürt leállítását.
 * Ne távolítsa el vagy módosítsa a fürt Prometheus-és Alertmanager-szolgáltatásait.
 * Ne távolítsa el a szolgáltatás Alertmanager szabályait.
 * Ne távolítsa el vagy módosítsa a hálózati biztonsági csoportokat.

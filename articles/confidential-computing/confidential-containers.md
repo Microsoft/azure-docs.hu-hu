@@ -4,15 +4,15 @@ description: Ismerje meg a nem módosított tárolók támogatását a bizalmas 
 services: container-service
 author: agowdamsft
 ms.topic: article
-ms.date: 9/22/2020
+ms.date: 2/11/2020
 ms.author: amgowda
 ms.service: container-service
-ms.openlocfilehash: 35518a90ff3db2b951e0310970afd6d78dd25807
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: bf92e7f28d6a5804886d093671f4b7e33878f1ec
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122203"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652673"
 ---
 # <a name="confidential-containers"></a>Bizalmas tárolók
 
@@ -29,41 +29,24 @@ A bizalmas tárolók segítenek a védelemben:
 - hardver alapú garanciák
 - meglévő alkalmazások futtatásának engedélyezése
 - a megbízható hardver gyökerének létrehozása
+- gazdagép-rendszergazda eltávolítása, Kubernetes-rendszergazda, hypervisor a megbízhatósági kapcsolat határán
 
 A hardveres alapú megbízható végrehajtási környezet (TEE) egy fontos összetevő, amely erős biztosítékok biztosítására szolgál a megbízható számítástechnikai bázis (TCB) összetevőinek hardveres és szoftveres mérései révén. Ezeknek a méréseknek a ellenőrzése a várt számítás érvényesítését és a tároló alkalmazások illetéktelen módosításának ellenőrzését segíti.
 
-A bizalmas tárolók támogatják a **Python, a Java, a Node js vagy a csomagolt szoftveralkalmazások (például az NGINX, a Redis cache, a Memcached stb**.) által fejlesztett egyéni alkalmazásokat, amelyek nem módosíthatók az AK-ban.
+A bizalmas tárolók támogatják a **Python, a Java, a Node js stb.** által fejlesztett egyéni alkalmazásokat, például az NGINX, a Redis cache, a Memcached és így tovább, a bizalmas számítástechnikai csomópontokkal való módosítást az AK-ban.
 
-A bizalmas tárolók a tároló titkosságának leggyorsabb elérési útja, beleértve a tárolók védelmét a titkosításon keresztül, ami lehetővé teszi a lift és a váltást az üzleti logikája minimális változásainak megfelelően.
+A bizalmas tárolók jelentik a tároló titkosságának leggyorsabb elérési útját, és csak a meglévő Docker-tároló alkalmazások újracsomagolását igénylik, és nem igénylik az alkalmazás kódjának módosítását. A bizalmas tárolók olyan Docker-tároló alkalmazások, amelyek egy PÓLÓn való futtatásra vannak csomagolva. A bizalmas tárolók egyes adottságai olyan tároló-titkosítást is biztosítanak, amely a tároló és a szállítás során, valamint a gazdagépen való csatlakoztatás során segít a tároló kódjának védelmében. A tárolók titkosítása lehetővé teszi, hogy tovább folytassa a tárolóban csomagolt kód/modell, valamint a TEE-hez csatolt visszafejtési kulcs védelemmel.
 
-![A bizalmas tároló átalakítása](./media/confidential-containers/conf-con-deploy-process.jpg)
-
+Az alábbi eljárás a bizalmas tárolók fejlesztésből való üzembe helyezésének folyamata ![ a bizalmas tárolók feldolgozásához.](./media/confidential-containers/how-to-confidential-container.png)
 
 ## <a name="confidential-container-enablers"></a>Bizalmas tárolók segítői
+Ahhoz, hogy egy már meglévő Docker-tárolót futtasson, egy SGX ENKLÁVÉHOZ szoftverre van szükség, hogy az alkalmazás meghívja az elérhetővé tett speciális CPU-utasításokat, hogy csökkentse a csatolás felületét, és ne használja a vendég operációs rendszer függőségét. Miután becsomagolta az SGX ENKLÁVÉHOZ Runtime szoftverét, a tárolók automatikusan elindul a védett enklávékban, így eltávolítja a vendég operációs rendszert, a gazdagép operációs rendszerét vagy a Hypervisort a megbízhatósági kapcsolat határáról. Ez az elkülönített végrehajtás egy olyan csomópontban (virtuális gépen), amely a hardveres adattitkosítással támogatott a memóriában, csökkenti a felszíni támadási területeket, és csökkenti a biztonsági réseket az operációs rendszer vagy a hypervisor rétegek használatával.
 
-Meglévő Docker-tároló futtatásához a bizalmas számítástechnikai csomópontokon lévő alkalmazásoknak absztrakt réteget vagy SGX ENKLÁVÉHOZ szoftvert kell használniuk a speciális CPU-utasításkészlet kihasználása érdekében. A SGX ENKLÁVÉHOZ szoftver emellett lehetővé teszi, hogy a bizalmas alkalmazások kódja védve legyen, és közvetlen végrehajtást hozzon létre a CPU számára a vendég operációs rendszer, a gazda operációs rendszer vagy a hypervisor eltávolításához. Ez a védelem csökkenti az operációs rendszer vagy a hypervisor rétegek általános felületi támadási területeit és biztonsági réseit.
-
-A bizalmas tárolók teljes mértékben támogatottak az AK-ban, és az Azure-partnerek és a nyílt forráskódú szoftverek (OSS) projektjein keresztül engedélyezve vannak. A fejlesztők a szolgáltatások, az Azure-szolgáltatásokhoz való integráció és az eszközök támogatása alapján választhatják ki a szoftvergyártókat.
+A bizalmas tárolók teljes mértékben támogatottak az AK-ban, és az Azure-partnerek és a Open-Source szoftverek (OSS) projektjein keresztül engedélyezve vannak. A fejlesztők a szolgáltatások, az Azure-szolgáltatásokhoz való integráció és az eszközök támogatása alapján választhatják ki a szoftvergyártókat.
 
 ## <a name="partner-enablers"></a>Partneri segítők
 > [!NOTE]
 > Az alábbi megoldások Azure-partnereken keresztül érhetők el, és licencelési díjakat is igényelhetnek. Egymástól függetlenül ellenőrizze a partneri szoftverek feltételeit. 
-
-### <a name="fortanix"></a>Fortanix
-
-A [Fortanix](https://www.fortanix.com/) lehetővé teszi a fejlesztők számára, hogy egy portált és CLI-alapú felületet hozzanak elérhetővé a tároló alkalmazások létrehozásához, és a SGX enklávéhoz képes bizalmas tárolókat az alkalmazás módosításának vagy újrafordításának szükségessége nélkül. A Fortanix rugalmasságot biztosít az alkalmazások széles körének futtatásához és kezeléséhez, beleértve a meglévő alkalmazásokat, az új enklávé-natív alkalmazásokat és az előre csomagolt alkalmazásokat. A felhasználók az [enklávé Manager](https://em.fortanix.com/) felhasználói felületével vagy [REST API](https://www.fortanix.com/api/em/) -kkal hozhatnak létre bizalmas tárolókat az Azure Kubernetes Service [gyorskonfigurálás](https://support.fortanix.com/hc/en-us/articles/360049658291-Fortanix-Confidential-Container-on-Azure-Kubernetes-Service) útmutatójának követésével.
-
-![Fortanix üzembe helyezési folyamata](./media/confidential-containers/fortanix-confidential-containers-flow.png)
-
-### <a name="scone-scontain"></a>Scone (Scontain)
-
-A [Scone](https://scontain.com/index.html?lang=en) olyan biztonsági házirendeket támogat, amelyek tanúsítványokat, kulcsokat és titkokat generálnak, és gondoskodnak arról, hogy csak az alkalmazás tanúsított szolgáltatásai legyenek láthatók. Így az alkalmazások szolgáltatásai automatikusan hitelesítik egymást a TLS-n keresztül, anélkül, hogy módosítani kellene az alkalmazásokat és a TLS-t. Ezt egy egyszerű lombik-alkalmazás súgója ismerteti itt: https://sconedocs.github.io/flask_demo/  
-
-A SCONE a meglévő legtöbb bináris alkalmazást a enklávékban futó alkalmazásokba alakíthatja anélkül, hogy módosítania kellene az alkalmazást, vagy újra le kellene fordítani az adott alkalmazást. A SCONE az adatfájlok és a Python-programkódok titkosításával is védi az értelmezett nyelveket, például a Pythont. A SCONE biztonsági szabályzatának segítségével az egyik képes megvédeni a titkosított fájlokat a jogosulatlan hozzáférések, a módosítások és a visszaállítások ellen. "Sconify" – egy meglévő Python-alkalmazás magyarázata [itt](https://sconedocs.github.io/sconify_image/)
-
-![Scontain folyamat](./media/confidential-containers/scone-workflow.png)
-
-A bizalmas számítástechnikai csomópontokon Scone üzemelő példányok teljes mértékben támogatottak és integráltak. Ismerkedjen meg egy minta alkalmazással https://sconedocs.github.io/aks/
 
 ### <a name="anjuna"></a>Anjuna
 
@@ -73,9 +56,26 @@ Ismerkedjen meg a minta Redis Cache és a Python egyéni [alkalmazással](https:
 
 ![Anjuna folyamat](./media/confidential-containers/anjuna-process-flow.png)
 
+### <a name="fortanix"></a>Fortanix
+
+A [Fortanix](https://www.fortanix.com/) lehetővé teszi a fejlesztők számára, hogy egy portált és CLI-alapú felületet hozzanak elérhetővé a tároló alkalmazások létrehozásához, és a SGX enklávéhoz képes bizalmas tárolókat az alkalmazás módosításának vagy újrafordításának szükségessége nélkül. A Fortanix rugalmasságot biztosít az alkalmazások széles körének futtatásához és kezeléséhez, beleértve a meglévő alkalmazásokat, az új enklávé-natív alkalmazásokat és az előre csomagolt alkalmazásokat. A felhasználók a [bizalmas számítástechnikai kezelő](https://em.fortanix.com/) felhasználói felületén vagy a [REST API](https://www.fortanix.com/api/em/) -kon keresztül hozhatnak létre bizalmas tárolókat az Azure Kubernetes szolgáltatás [gyorskonfigurálás](https://support.fortanix.com/hc/en-us/articles/360049658291-Fortanix-Confidential-Container-on-Azure-Kubernetes-Service) útmutatóját követve.
+
+![Fortanix üzembe helyezési folyamata](./media/confidential-containers/fortanix-confidential-containers-flow.png)
+
+### <a name="scone-scontain"></a>Scone (Scontain)
+
+A [Scone](https://scontain.com/index.html?lang=en) olyan biztonsági házirendeket támogat, amelyek tanúsítványokat, kulcsokat és titkokat generálnak, és gondoskodnak arról, hogy csak az alkalmazás tanúsított szolgáltatásai legyenek láthatók. Így az alkalmazások szolgáltatásai automatikusan hitelesítik egymást a TLS-n keresztül, anélkül, hogy módosítani kellene az alkalmazásokat és a TLS-t. Ezt egy egyszerű lombik-alkalmazás súgója ismerteti itt: https://sconedocs.github.io/flask_demo/  
+
+A SCONE a meglévő legtöbb bináris alkalmazást a enklávékban futó alkalmazásokba alakíthatja anélkül, hogy módosítania kellene az alkalmazást, vagy újra le kellene fordítani az adott alkalmazást. A SCONE az adatfájlok és a Python-programkódok **titkosításával** is védi az értelmezett nyelveket, például a Pythont. A SCONE biztonsági szabályzatának segítségével az egyik képes megvédeni a titkosított fájlokat a jogosulatlan hozzáférések, a módosítások és a visszaállítások ellen. "Sconify" – egy meglévő Python-alkalmazás magyarázata [itt](https://sconedocs.github.io/sconify_image/)
+
+![Scontain folyamat](./media/confidential-containers/scone-workflow.png)
+
+A bizalmas számítástechnikai csomópontokon Scone üzemelő példányok teljes mértékben támogatottak, és integrálva vannak más Azure-szolgáltatásokkal. Ismerkedjen meg egy minta alkalmazással https://sconedocs.github.io/aks/
+
+
 ## <a name="oss-enablers"></a>OSS-segítők 
 > [!NOTE]
-> Az alábbi megoldások nyílt forráskódú projektekben érhetők el, és nem kapcsolódnak közvetlenül az Azure bizalmas számítástechnika (ACC) vagy a Microsoft számára.  
+> Az alábbi megoldások Open-Source projektek keretében érhetők el, és nem kapcsolódnak közvetlenül az Azure bizalmas számítástechnika (ACC) vagy a Microsoft szolgáltatáshoz.  
 
 ### <a name="graphene"></a>Grafén
 
@@ -90,14 +90,14 @@ A Occlum támogatja az AK-alapú központi telepítéseket. Kövesse a telepít�
 
 
 ## <a name="confidential-containers-demo"></a>Bizalmas tárolók bemutatója
-Tekintse meg a bizalmas egészségügyi bemutatót bizalmas tárolókkal. A minta [itt](https://github.com/Azure-Samples/confidential-container-samples/blob/main/confidential-healthcare-scone-confinf-onnx/README.md)érhető el. 
+Tekintse meg a bizalmas egészségügyi bemutatót bizalmas tárolókkal. A minta [itt](https://docs.microsoft.com/azure/architecture/example-scenario/confidential/healthcare-inference)érhető el. 
 
 > [!VIDEO https://www.youtube.com/embed/PiYCQmOh0EI]
 
 
 ## <a name="get-in-touch"></a>Segítség kérése
 
-Kérdése van a megvalósítással kapcsolatban, vagy szeretne lenni az Ön számára? E-mail küldése a következő címre: acconaks@microsoft.com
+Kérdése van a megvalósítással kapcsolatban, vagy szeretne lenni az Ön számára? E-mail küldése a termék csapatának **acconaks@microsoft.com**
 
 ## <a name="reference-links"></a>Hivatkozásokra mutató hivatkozások
 

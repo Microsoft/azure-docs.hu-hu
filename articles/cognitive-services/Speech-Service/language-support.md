@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 9dfd950303d1cb838d44ae672fed33dd4cd7b5ec
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c49ee2778d3198cc7109c34bceb1591756d82b1c
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381902"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653448"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Beszédfelismerési szolgáltatás nyelvi és hangalapú támogatása
 
@@ -38,92 +38,92 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 
 | Nyelv                 | Területi beállítás (BCP-47) | Testreszabások  | [Nyelvfelismerés](how-to-automatic-language-detection.md) |
 |------------------------------------|--------|---------------------------------------------------|-------------------------------|
-| Arab (Bahrein), modern standard  | `ar-BH` | Nyelvi modell                                   | Yes                           | 
-| Arab (Egyiptom)                     | `ar-EG` | Nyelvi modell                                   | Yes                          |
-| Arab (Irak)                      | `ar-IQ` | Nyelvi modell                                   |                           |
-| Arab (Izrael)                    | `ar-IL` | Nyelvi modell                                   |                           |
-| Arab (Jordánia)                    | `ar-JO` | Nyelvi modell                                   |                           |
-| Arab (Kuvait)                    | `ar-KW` | Nyelvi modell                                   |                           |
-| Arab (Libanon)                   | `ar-LB` | Nyelvi modell                                   |                           |
-| Arab (Omán)                      | `ar-OM` | Nyelvi modell                                   |                           |
-| Arab (Katar)                     | `ar-QA` | Nyelvi modell                                   |                           |
-| Arab (Szaúd-Arábia)              | `ar-SA` | Nyelvi modell                                   | Yes                          |
-| Arab (palesztin állam)        | `ar-PS` | Nyelvi modell                                   |                           |
-| Arab (Szíria)                     | `ar-SY` | Nyelvi modell                                   | Yes                          |
-| Arab (Egyesült Arab Emírségek)      | `ar-AE` | Nyelvi modell                                   |                           |
-| Bolgár (Bulgária)               | `bg-BG` | Nyelvi modell                                   |                           |
-| Katalán (Spanyolország)                    | `ca-ES` | Nyelvi modell                                   | Yes                          |
-| Kínai (kantoni, hagyományos)   | `zh-HK` | Akusztikai modell (20201015)<br>Nyelvi modell                 |        Yes                   |
-| Kínai (mandarin, egyszerűsített)     | `zh-CN` | Akusztikai modell (20200910)<br>Nyelvi modell                 |     Yes                      |
-| Kínai (tajvani mandarin)       | `zh-TW` | Akusztikai modell (20190701, 20201015)<br>Nyelvi modell                 |           Yes                |
-| Horvát (Horvátország)                 | `hr-HR` | Nyelvi modell                                   |                           |
-| Cseh (Cseh Köztársaság)             | `cs-CZ` | Nyelvi modell                                   |                           |
-| Dán (Dánia)                   | `da-DK` | Nyelvi modell                                   | Yes                          |
-| Holland (Hollandia)                | `nl-NL` | Akusztikai modell (20201015)<br>Nyelvi modell                                   |    Yes                       |
-| Angol (Ausztrália)                | `en-AU` | Akusztikai modell (20201019)<br>Nyelvi modell                 | Yes                          |
-| Angol (Kanada)                   | `en-CA` | Akusztikai modell (20201019)<br>Nyelvi modell                 | Yes                          |
-| Angol (Hongkong)                | `en-HK` | Nyelvi modell                                   |                           |
-| Angol (India)                    | `en-IN` | Akusztikai modell (20200923)<br>Nyelvi modell                 | Yes                          |
-| Angol (Írország)                  | `en-IE` | Nyelvi modell                                   |                           |
-| Angol (Új-Zéland)              | `en-NZ` | Akusztikai modell (20201019)<br>Nyelvi modell                 |  Yes                         |
-| Angol (Nigéria)                  | `en-NG` | Nyelvi modell                                   |                           |
-| Angol (Fülöp-szigetek)              | `en-PH` | Nyelvi modell                                   |                           |
-| Angol (Szingapúr)                | `en-SG` | Nyelvi modell                                   |                           |
-| Angol (Dél-Afrika)             | `en-ZA` | Nyelvi modell                                   |                           |
-| angol (Egyesült Királyság)           | `en-GB` | Akusztikai modell (20201019)<br>Nyelvi modell<br>Kiejtése| Yes                          |
-| angol (Egyesült Államok)            | `en-US` | Akusztikai modell (20201019)<br>Nyelvi modell<br>Kiejtése| Yes                          |
-| Észt (Észtország)                  | `et-EE` | Nyelvi modell                                   |                           |
-| Finn (Finnország)                  | `fi-FI` | Nyelvi modell                                   |     Yes                      |
-| Francia (Kanada)                    | `fr-CA` | Akusztikai modell (20201015)<br>Nyelvi modell                 |     Yes                      |
-| Francia (Franciaország)                    | `fr-FR` | Akusztikai modell (20201015)<br>Nyelvi modell<br>Kiejtése|      Yes                     |
-| Német (Németország)                   | `de-DE` | Akusztikus modell (20190701, 20200619, 20201127)<br>Nyelvi modell<br>Kiejtése|  Yes                         |
-| Görög (Görögország)                     | `el-GR` | Nyelvi modell                                   |                           |
-| Gudzsaráti (indiai)                  | `gu-IN` | Nyelvi modell                                   |                           |
-| Hindi (India)                      | `hi-IN` | Akusztikai modell (20200701)<br>Nyelvi modell                 |     Yes                      |
-| Magyar (Magyarország)                | `hu-HU` | Nyelvi modell                                   |                           |
-| Ír (Írország)                     | `ga-IE` | Nyelvi modell                                   |                           |
-| Olasz (Olaszország)                    | `it-IT` | Akusztikai modell (20201016)<br>Nyelvi modell<br>Kiejtése|      Yes                     |
-| Japán (Japán)                   | `ja-JP` | Nyelvi modell                                   |      Yes                     |
-| Koreai (Dél-Korea)                     | `ko-KR` | Akusztikai modell (20201015)<br>Nyelvi modell                 |      Yes                     |
-| Lett (Lettország)                   | `lv-LV` | Nyelvi modell                                   |                           |
-| Litván (Litvánia)             | `lt-LT` | Nyelvi modell                                   |                           |
-| Máltai (Málta)                     | `mt-MT` | Nyelvi modell                                   |                           |
-| Marathi (India)                    | `mr-IN` | Nyelvi modell                                   |                           |
-| norvég (bokmål, Norvégia)         | `nb-NO` | Nyelvi modell                                   |     Yes                      |
-| Lengyel (Lengyelország)                    | `pl-PL` | Nyelvi modell                                   |       Yes                    |
-| Portugál (Brazília)                | `pt-BR` | Akusztikai modell (20190620, 20201015)<br>Nyelvi modell<br>Kiejtése|          Yes                 |
-| Portugál (Portugália)              | `pt-PT` | Nyelvi modell                                   |             Yes              |
-| Román (Románia)                 | `ro-RO` | Nyelvi modell                                   |                           |
-| Orosz (Oroszország)                   | `ru-RU` | Akusztikai modell (20200907)<br>Nyelvi modell                 |                Yes           |
-| Szlovák (Szlovákia)                  | `sk-SK` | Nyelvi modell                                   |                           |
-| Szlovén (Szlovénia)               | `sl-SI` | Nyelvi modell                                   |                           |
-| Spanyol (Argentína)                | `es-AR` | Nyelvi modell                                   |                           |
-| Spanyol (Bolívia)                  | `es-BO` | Nyelvi modell                                   |                           |
-| Spanyol (Chile)                    | `es-CL` | Nyelvi modell                                   |                           |
-| Spanyol (Kolumbia)                 | `es-CO` | Nyelvi modell                                   |                           |
-| Spanyol (Costa Rica)               | `es-CR` | Nyelvi modell                                   |                           |
-| Spanyol (Kuba)                     | `es-CU` | Nyelvi modell                                   |                           |
-| Spanyol (Dominikai Köztársaság)       | `es-DO` | Nyelvi modell                                   |                           |
-| Spanyol (Ecuador)                  | `es-EC` | Nyelvi modell                                   |                           |
-| Spanyol (Salvador)              | `es-SV` | Nyelvi modell                                   |                           |
-| Spanyol (Egyenlítői-Guinea)        | `es-GQ` | Nyelvi modell                                   |                           |
-| Spanyol (Guatemala)                | `es-GT` | Nyelvi modell                                   |                           |
-| Spanyol (Honduras)                 | `es-HN` | Nyelvi modell                                   |                           |
-| Spanyol (Mexikó)                   | `es-MX` | Akusztikai modell (20200907)<br>Nyelvi modell                 |    Yes                       |
-| Spanyol (Nicaragua)                | `es-NI` | Nyelvi modell                                   |                           |
-| Spanyol (Panama)                   | `es-PA` | Nyelvi modell                                   |                           |
-| Spanyol (Paraguay)                 | `es-PY` | Nyelvi modell                                   |                           |
-| Spanyol (perui)                     | `es-PE` | Nyelvi modell                                   |                           |
-| Spanyol (Puerto Rico)              | `es-PR` | Nyelvi modell                                   |                           |
-| Spanyol (Spanyolország)                    | `es-ES` | Akusztikai modell (20201015)<br>Nyelvi modell                 |  Yes                         |
-| Spanyol (Uruguay)                  | `es-UY` | Nyelvi modell                                   |                           |
-| Spanyol (USA)                      | `es-US` | Nyelvi modell                                   |                           |
-| Spanyol (Venezuela)                | `es-VE` | Nyelvi modell                                   |                           |
-| Svéd (Svédország)                   | `sv-SE` | Nyelvi modell                                   |   Yes                        |
-| Tamil (India)                      | `ta-IN` | Nyelvi modell                                   |                           |
-| Telugu (India)                     | `te-IN` | Nyelvi modell                                   |                           |
-| Thai (Thaiföld)                    | `th-TH` | Nyelvi modell                                   |      Yes                     |
-| Török (Törökország)                   | `tr-TR` | Nyelvi modell                                   |                           |
+| Arab (Bahrein), modern standard  | `ar-BH` | Szöveg                                   | Yes                           | 
+| Arab (Egyiptom)                     | `ar-EG` | Szöveg                                   | Yes                          |
+| Arab (Irak)                      | `ar-IQ` | Szöveg                                   |                           |
+| Arab (Izrael)                    | `ar-IL` | Szöveg                                   |                           |
+| Arab (Jordánia)                    | `ar-JO` | Szöveg                                   |                           |
+| Arab (Kuvait)                    | `ar-KW` | Szöveg                                   |                           |
+| Arab (Libanon)                   | `ar-LB` | Szöveg                                   |                           |
+| Arab (Omán)                      | `ar-OM` | Szöveg                                   |                           |
+| Arab (Katar)                     | `ar-QA` | Szöveg                                   |                           |
+| Arab (Szaúd-Arábia)              | `ar-SA` | Szöveg                                   | Yes                          |
+| Arab (palesztin állam)        | `ar-PS` | Szöveg                                   |                           |
+| Arab (Szíria)                     | `ar-SY` | Szöveg                                   | Yes                          |
+| Arab (Egyesült Arab Emírségek)      | `ar-AE` | Szöveg                                   |                           |
+| Bolgár (Bulgária)               | `bg-BG` | Szöveg                                   |                           |
+| Katalán (Spanyolország)                    | `ca-ES` | Szöveg                                   | Yes                          |
+| Kínai (kantoni, hagyományos)   | `zh-HK` | Hang (20201015)<br>Szöveg                 |        Yes                   |
+| Kínai (mandarin, egyszerűsített)     | `zh-CN` | Hang (20200910)<br>Szöveg                 |     Yes                      |
+| Kínai (tajvani mandarin)       | `zh-TW` | Hang (20190701, 20201015)<br>Szöveg                 |           Yes                |
+| Horvát (Horvátország)                 | `hr-HR` | Szöveg                                   |                           |
+| Cseh (Cseh Köztársaság)             | `cs-CZ` | Szöveg                                   |                           |
+| Dán (Dánia)                   | `da-DK` | Szöveg                                   | Yes                          |
+| Holland (Hollandia)                | `nl-NL` | Hang (20201015)<br>Szöveg                                   |    Yes                       |
+| Angol (Ausztrália)                | `en-AU` | Hang (20201019)<br>Szöveg                 | Yes                          |
+| Angol (Kanada)                   | `en-CA` | Hang (20201019)<br>Szöveg                 | Yes                          |
+| Angol (Hongkong)                | `en-HK` | Szöveg                                   |                           |
+| Angol (India)                    | `en-IN` | Hang (20200923)<br>Szöveg                 | Yes                          |
+| Angol (Írország)                  | `en-IE` | Szöveg                                   |                           |
+| Angol (Új-Zéland)              | `en-NZ` | Hang (20201019)<br>Szöveg                 |  Yes                         |
+| Angol (Nigéria)                  | `en-NG` | Szöveg                                   |                           |
+| Angol (Fülöp-szigetek)              | `en-PH` | Szöveg                                   |                           |
+| Angol (Szingapúr)                | `en-SG` | Szöveg                                   |                           |
+| Angol (Dél-Afrika)             | `en-ZA` | Szöveg                                   |                           |
+| angol (Egyesült Királyság)           | `en-GB` | Hang (20201019)<br>Szöveg<br>Kiejtése| Yes                          |
+| angol (Egyesült Államok)            | `en-US` | Hang (20201019)<br>Szöveg<br>Kiejtése| Yes                          |
+| Észt (Észtország)                  | `et-EE` | Szöveg                                   |                           |
+| Finn (Finnország)                  | `fi-FI` | Szöveg                                   |     Yes                      |
+| Francia (Kanada)                    | `fr-CA` | Hang (20201015)<br>Szöveg                 |     Yes                      |
+| Francia (Franciaország)                    | `fr-FR` | Hang (20201015)<br>Szöveg<br>Kiejtése|      Yes                     |
+| Német (Németország)                   | `de-DE` | Hang (20190701, 20200619, 20201127)<br>Szöveg<br>Kiejtése|  Yes                         |
+| Görög (Görögország)                     | `el-GR` | Szöveg                                   |                           |
+| Gudzsaráti (indiai)                  | `gu-IN` | Szöveg                                   |                           |
+| Hindi (India)                      | `hi-IN` | Hang (20200701)<br>Szöveg                 |     Yes                      |
+| Magyar (Magyarország)                | `hu-HU` | Szöveg                                   |                           |
+| Ír (Írország)                     | `ga-IE` | Szöveg                                   |                           |
+| Olasz (Olaszország)                    | `it-IT` | Hang (20201016)<br>Szöveg<br>Kiejtése|      Yes                     |
+| Japán (Japán)                   | `ja-JP` | Szöveg                                   |      Yes                     |
+| Koreai (Dél-Korea)                     | `ko-KR` | Hang (20201015)<br>Szöveg                 |      Yes                     |
+| Lett (Lettország)                   | `lv-LV` | Szöveg                                   |                           |
+| Litván (Litvánia)             | `lt-LT` | Szöveg                                   |                           |
+| Máltai (Málta)                     | `mt-MT` | Szöveg                                   |                           |
+| Marathi (India)                    | `mr-IN` | Szöveg                                   |                           |
+| norvég (bokmål, Norvégia)         | `nb-NO` | Szöveg                                   |     Yes                      |
+| Lengyel (Lengyelország)                    | `pl-PL` | Szöveg                                   |       Yes                    |
+| Portugál (Brazília)                | `pt-BR` | Hang (20190620, 20201015)<br>Szöveg<br>Kiejtése|          Yes                 |
+| Portugál (Portugália)              | `pt-PT` | Szöveg                                   |             Yes              |
+| Román (Románia)                 | `ro-RO` | Szöveg                                   |                           |
+| Orosz (Oroszország)                   | `ru-RU` | Hang (20200907)<br>Szöveg                 |                Yes           |
+| Szlovák (Szlovákia)                  | `sk-SK` | Szöveg                                   |                           |
+| Szlovén (Szlovénia)               | `sl-SI` | Szöveg                                   |                           |
+| Spanyol (Argentína)                | `es-AR` | Szöveg                                   |                           |
+| Spanyol (Bolívia)                  | `es-BO` | Szöveg                                   |                           |
+| Spanyol (Chile)                    | `es-CL` | Szöveg                                   |                           |
+| Spanyol (Kolumbia)                 | `es-CO` | Szöveg                                   |                           |
+| Spanyol (Costa Rica)               | `es-CR` | Szöveg                                   |                           |
+| Spanyol (Kuba)                     | `es-CU` | Szöveg                                   |                           |
+| Spanyol (Dominikai Köztársaság)       | `es-DO` | Szöveg                                   |                           |
+| Spanyol (Ecuador)                  | `es-EC` | Szöveg                                   |                           |
+| Spanyol (Salvador)              | `es-SV` | Szöveg                                   |                           |
+| Spanyol (Egyenlítői-Guinea)        | `es-GQ` | Szöveg                                   |                           |
+| Spanyol (Guatemala)                | `es-GT` | Szöveg                                   |                           |
+| Spanyol (Honduras)                 | `es-HN` | Szöveg                                   |                           |
+| Spanyol (Mexikó)                   | `es-MX` | Hang (20200907)<br>Szöveg                 |    Yes                       |
+| Spanyol (Nicaragua)                | `es-NI` | Szöveg                                   |                           |
+| Spanyol (Panama)                   | `es-PA` | Szöveg                                   |                           |
+| Spanyol (Paraguay)                 | `es-PY` | Szöveg                                   |                           |
+| Spanyol (perui)                     | `es-PE` | Szöveg                                   |                           |
+| Spanyol (Puerto Rico)              | `es-PR` | Szöveg                                   |                           |
+| Spanyol (Spanyolország)                    | `es-ES` | Hang (20201015)<br>Szöveg                 |  Yes                         |
+| Spanyol (Uruguay)                  | `es-UY` | Szöveg                                   |                           |
+| Spanyol (USA)                      | `es-US` | Szöveg                                   |                           |
+| Spanyol (Venezuela)                | `es-VE` | Szöveg                                   |                           |
+| Svéd (Svédország)                   | `sv-SE` | Szöveg                                   |   Yes                        |
+| Tamil (India)                      | `ta-IN` | Szöveg                                   |                           |
+| Telugu (India)                     | `te-IN` | Szöveg                                   |                           |
+| Thai (Thaiföld)                    | `th-TH` | Szöveg                                   |      Yes                     |
+| Török (Törökország)                   | `tr-TR` | Szöveg                                   |                           |
 
 ## <a name="text-to-speech"></a>Szövegfelolvasás
 

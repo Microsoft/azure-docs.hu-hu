@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 06/15/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 2b5dc30de19704b5e8950515cfa6224b4bbdbaf0
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 722a508679c74f9d62df07575ffa1006528f4398
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341346"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652106"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Biztonsági incidensek kezelése Azure Security Center
 
@@ -29,11 +29,19 @@ A Security Centerben egy biztonsági incidens az adott erőforráshoz tartozó �
 
 ## <a name="managing-security-incidents"></a>Biztonsági incidensek kezelése
 
-1. A Security Center áttekintése lapon válassza a **biztonsági riasztások** csempét. Az incidensek és a riasztások szerepelnek a felsorolásban. Figyelje meg, hogy a biztonsági incidensek eltérő ikonnal rendelkeznek a biztonsági riasztásokhoz.
+1. Security Center riasztások lapján a **szűrő hozzáadása** gombbal a riasztás neve alapján szűrheti a riasztás neve nevű **biztonsági incidenst több erőforráson**. 
 
-    ![Biztonsági incidensek megtekintése](./media/security-center-managing-and-responding-alerts/security-center-manage-alerts.png)
+    :::image type="content" source="media/security-center-incident/locating-incidents.png" alt-text="Az incidensek megkeresése a riasztások oldalán Azure Security Center":::
 
-1. A részletek megtekintéséhez válasszon ki egy incidenst. A **biztonsági incidens** oldal további részleteket jelenít meg. 
+    A lista most már szűrve van, hogy csak az incidenseket jelenítse meg. Figyelje meg, hogy a biztonsági incidensek eltérő ikonnal rendelkeznek a biztonsági riasztásokhoz.
+
+    :::image type="content" source="media/security-center-incident/incidents-list.png" alt-text="Az incidensek listája a Azure Security Center riasztások lapján":::
+
+1. Egy incidens részleteinek megtekintéséhez válasszon egyet a listából. Megjelenik egy oldalsó ablaktábla, amely további részleteket mutat az incidensről.
+
+    :::image type="content" source="media/security-center-incident/incident-quick-peek.png" alt-text="Az incidens részleteit megjelenítő oldalsó ablaktábla":::
+
+1. További részletek megtekintéséhez válassza a **teljes részletek megtekintése** lehetőséget.
 
     [![Válaszadás a Azure Security Center biztonsági incidensekre](media/security-center-incident/incident-details.png)](media/security-center-incident/incident-details.png#lightbox)
 

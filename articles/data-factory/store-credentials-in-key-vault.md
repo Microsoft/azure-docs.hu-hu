@@ -6,16 +6,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 828794715af1e7676253714da6fdc1a487c7c107
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 00c28a9ede01a74f4ae64109d277276050047461
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361893"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653764"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Hitelesítő adatok tárolása Azure Key Vaultban
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Az adattárakhoz és a számítási feladatokhoz tartozó hitelesítő adatokat egy [Azure Key Vault](../key-vault/general/overview.md)tárolhatja. Azure Data Factory beolvassa a hitelesítő adatokat, amikor egy adattárat/számítást használó tevékenységet hajt végre.
 

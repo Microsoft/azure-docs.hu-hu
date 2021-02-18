@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 077500e0188d1cc20864d436a2e2fd711b180702
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 9b249bddc4cd269933a39b5baf77995aec1e82b3
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560236"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653934"
 ---
 # <a name="chat-concepts"></a>Csevegéssel kapcsolatos alapfogalmak
 
@@ -41,92 +41,79 @@ Két fő részből áll a csevegő architektúra: 1) megbízható szolgáltatás
  - **Megbízható szolgáltatás:** A csevegési munkamenetek megfelelő kezeléséhez olyan szolgáltatásra van szükség, amely segítséget nyújt a kommunikációs szolgáltatásokhoz való kapcsolódáshoz az erőforrás-kapcsolati karakterlánc használatával. Ez a szolgáltatás felelős a csevegési szálak létrehozásához, a szálak tagságának kezeléséhez, valamint hozzáférési jogkivonatok biztosításához a felhasználók számára. A hozzáférési jogkivonatokkal kapcsolatos további információk a [hozzáférési tokenek](../../quickstarts/access-tokens.md) rövid útmutatójában találhatók.
 
  - **Ügyfélalkalmazás:**  Az ügyfélalkalmazás csatlakozik a megbízható szolgáltatáshoz, és fogadja a közvetlenül a kommunikációs szolgáltatásokhoz való csatlakozáshoz használt hozzáférési jogkivonatokat. A kapcsolatfelvétel után az ügyfélalkalmazás küldhet és fogadhat üzeneteket.
+
+Javasoljuk, hogy a megbízható szolgáltatási szinten hozza létre a hozzáférési jogkivonatokat. Ebben a forgatókönyvben a kiszolgálói oldal feladata a felhasználók létrehozása és kezelése, valamint a jogkivonatok kiállítása.
     
 ## <a name="message-types"></a>Üzenetek típusai
 
 A kommunikációs szolgáltatások csevegés megosztja a felhasználó által létrehozott üzeneteket, valamint a szál- **tevékenységek** nevű rendszer által generált üzeneteket. A hozzászóláslánc-tevékenységek akkor jönnek létre, amikor egy csevegési szál frissül. `List Messages` `Get Messages` Egy csevegési szál hívásakor az eredmény a felhasználó által generált szöveges üzeneteket, valamint a rendszerüzeneteket is tartalmazza időrendben. Ez segít megállapítani, hogy mikor lett hozzáadva vagy eltávolítva egy tag, vagy mikor frissítették a csevegési szál témakört. A támogatott üzenetek típusai a következők:  
 
- - `Text`: Egyszerű szöveges üzenet, amelyet egy felhasználó egy csevegési beszélgetés részeként komponál és küld. 
+ - `Text`: Egyszerű szöveges üzenet, amelyet egy felhasználó egy csevegési beszélgetés részeként komponál és küld.
  - `RichText/HTML`: Formázott szöveges üzenet. Vegye figyelembe, hogy a kommunikációs szolgáltatások felhasználói jelenleg nem küldhetnek RichText üzeneteket. Ezt az üzenetet a csapatok felhasználóitól a kommunikációs szolgáltatások felhasználóinak küldött üzenetek támogatják a csapatok együttműködési forgatókönyvekben.
- - `ThreadActivity/AddMember`: Olyan Rendszerüzenet, amely azt jelzi, hogy egy vagy több tag hozzá lett adva a csevegési szálhoz. Például:
 
-```xml
-
-<addmember>
-    <eventtime>1598478187549</eventtime>
-    <initiator>8:acs:57b9bac9-df6c-4d39-a73b-26e944adf6ea_0e59221d-0c1d-46ae-9544-c963ce56c10b</initiator>
-    <detailedinitiatorinfo>
-        <friendlyName>User 1</friendlyName>
-    </detailedinitiatorinfo>
-    <rosterVersion>1598478184564</rosterVersion>
-    <target>8:acs:57b9bac9-df6c-4d39-a73b-26e944adf6ea_0e59221d-0c1d-46ae-9544-c963ce56c10b</target>
-    <detailedtargetinfo>
-        <id>8:acs:57b9bac9-df6c-4d39-a73b-26e944adf6ea_0e59221d-0c1d-46ae-9544-c963ce56c10b</id>
-        <friendlyName>User 1</friendlyName>
-    </detailedtargetinfo>
-    <target>8:acs:57b9bac9-df6c-4d39-a73b-26e944adf6ea_8540c0de-899f-5cce-acb5-3ec493af3800</target>
-    <detailedtargetinfo>
-        <id>8:acs:57b9bac9-df6c-4d39-a73b-26e944adf6ea_8540c0de-899f-5cce-acb5-3ec493af3800</id>
-        <friendlyName>User 2</friendlyName>
-    </detailedtargetinfo>
-</addmember>
-
-```  
-
-- `ThreadActivity/DeleteMember`: Az a Rendszerüzenet, amely azt jelzi, hogy a tag el lett távolítva a csevegési szálból. Például:
-
-```xml
-
-<deletemember>
-    <eventtime>1598478187642</eventtime>
-    <initiator>8:acs:57b9bac9-df6c-4d39-a73b-26e944adf6ea_0e59221d-0c1d-46ae-9544-c963ce56c10b</initiator>
-    <detailedinitiatorinfo>
-        <friendlyName>User 1</friendlyName>
-    </detailedinitiatorinfo>
-    <rosterVersion>1598478184564</rosterVersion>
-    <target>8:acs:57b9bac9-df6c-4d39-a73b-26e944adf6ea_8540c0de-899f-5cce-acb5-3ec493af3800</target>
-    <detailedtargetinfo>
-        <id>8:acs:57b9bac9-df6c-4d39-a73b-26e944adf6ea_8540c0de-899f-5cce-acb5-3ec493af3800</id>
-        <friendlyName>User 2</friendlyName>
-    </detailedtargetinfo>
-</deletemember>
+ - `ThreadActivity/ParticipantAdded`: Olyan Rendszerüzenet, amely azt jelzi, hogy egy vagy több résztvevő hozzá lett adva a csevegési szálhoz. Például:
 
 ```
-
-- `ThreadActivity/MemberJoined`: Olyan Rendszerüzenet, amely akkor jön létre, amikor egy vendég felhasználó csatlakozik a Teams Meeting szolgáltatáshoz. A kommunikációs szolgáltatások felhasználóinak tagja a Teams Meeting csevegésnek. Például:  
-```xml
-{ 
-  "id": "1606351443605", 
-  "type": "ThreadActivity/MemberJoined", 
-  "version": "1606347753409", 
-  "priority": "normal", 
-  "content": "{\"eventtime\":1606351443080,\"initiator\":\"8:orgid:8a53fd2b5ef150bau8442ad732a6ac6b_0e8deebe7527544aa2e7bdf3ce1b8733\",\"members\":[{\"id\":\"8:acs:9b665d83-8164-4923-ad5d-5e983b07d2d7_00000006-7ef9-3bbe-b274-5a3a0d0002b1\",\"friendlyname\":\"\"}]}", 
-  "senderId": " 19:meeting_curGQFTQ8tifs3EK9aTusiszGpkZULzNTTy2dbfI4dCJEaik@thread.v2", 
-  "createdOn": "2020-11-29T00:44:03.6950000Z" 
-} 
+{
+            "id": "1613589626560",
+            "type": "participantAdded",
+            "sequenceId": "7",
+            "version": "1613589626560",
+            "content":
+            {
+                "participants":
+                [
+                    {
+                        "id": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4df6-f40f-343a0d003226",
+                        "displayName": "Jane",
+                        "shareHistoryTime": "1970-01-01T00:00:00Z"
+                    }
+                ],
+                "initiator": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4ce0-f40f-343a0d003224"
+            },
+            "createdOn": "2021-02-17T19:20:26Z"
+        }
 ```
-- `ThreadActivity/MemberLeft`: Olyan Rendszerüzenet, amely akkor jön létre, amikor egy vendég felhasználó elhagyja az értekezlet csevegését. A kommunikációs szolgáltatások felhasználóinak tagja a Teams Meeting csevegésnek. Például: 
-```xml
-{ 
-  "id": "1606347703429", 
-  "type": "ThreadActivity/MemberLeft", 
-  "version": "1606340753429", 
-  "priority": "normal", 
-  "content": "{\"eventtime\":1606340755385,\"initiator\":\"8:orgid:8a53fd2b5u8150ba81442ad732a6ac6b_0e8deebe7527544aa2e7bdf3ce1b8733\",\"members\":[{\"id\":\"8:acs:9b665753-8164-4923-ad5d-5e983b07d2d7_00000006-7ef9-3bbe-b274-5a3a0d0002b1\",\"friendlyname\":\"\"}]}", 
-  "senderId": "19:meeting_9u7hBcYiADudn41Djm0n9DTVyAHuMZuh7p0bDsx1rLVGpnMk@thread.v2", 
-  "createdOn": "2020-11-29T23:42:33.4290000Z" 
-} 
+
+- `ThreadActivity/ParticipantRemoved`: A résztvevőt jelző Rendszerüzenet el lett távolítva a csevegési szálból. Például:
+
 ```
-- `ThreadActivity/TopicUpdate`: Az a Rendszerüzenet, amely azt jelzi, hogy a témakör frissítve lett. Például:
+{
+            "id": "1613589627603",
+            "type": "participantRemoved",
+            "sequenceId": "8",
+            "version": "1613589627603",
+            "content":
+            {
+                "participants":
+                [
+                    {
+                        "id": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4df6-f40f-343a0d003226",
+                        "displayName": "Jane",
+                        "shareHistoryTime": "1970-01-01T00:00:00Z"
+                    }
+                ],
+                "initiator": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4ce0-f40f-343a0d003224"
+            },
+            "createdOn": "2021-02-17T19:20:27Z"
+        }
+```
 
-```xml
+- `ThreadActivity/TopicUpdate`: A szál témakörét jelző Rendszerüzenet frissült. Például:
 
-<topicupdate>
-    <eventtime>1598477591811</eventtime>
-    <initiator>8:acs:57b9bac9-df6c-4d39-a73b-26e944adf6ea_0e59221d-0c1d-46ae-9544-c963ce56c10b</initiator>
-    <value>New topic</value>
-</topicupdate>
-
+```
+{
+            "id": "1613589623037",
+            "type": "topicUpdated",
+            "sequenceId": "2",
+            "version": "1613589623037",
+            "content":
+            {
+                "topic": "New topic",
+                "initiator": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4ce0-f40f-343a0d003224"
+            },
+            "createdOn": "2021-02-17T19:20:23Z"
+        }
 ```
 
 ## <a name="real-time-signaling"></a>Valós idejű jelzés 
@@ -157,7 +144,7 @@ Ezt úgy érheti el, ha a megbízható szolgáltatás egy csevegési szál tagja
 
 :::image type="content" source="../media/chat/cognitive-services.png" alt-text="A kommunikációs szolgáltatásokkal való interakciót Cognitive Services bemutató ábra.":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ismerkedés a csevegéssel](../../quickstarts/chat/get-started.md)

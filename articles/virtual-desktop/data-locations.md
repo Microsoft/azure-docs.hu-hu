@@ -3,15 +3,16 @@ title: Adatterületek a Windows rendszerű virtuális asztali környezethez – 
 description: Röviden áttekintheti, hogy a Windows rendszerű virtuális asztali adatok és metaadatok mely helyein vannak tárolva.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.custom: references_regions
+ms.date: 02/17/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e626b7e729e394b1012848904f5ce12279c3ef24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12ec71a86a5df5954c14097e6a0ec5c8a5138fc5
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88010072"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652428"
 ---
 # <a name="data-and-metadata-locations-for-windows-virtual-desktop"></a>A Windows rendszerű virtuális asztali adatok és metaadatok helyei
 
@@ -26,6 +27,14 @@ A Windows virtuális asztal jelenleg minden földrajzi helyen elérhető. A rend
 >[!IMPORTANT]
 >A Windows rendszerű virtuális asztali szolgáltatás a globális metaadat-információkat, például a bérlői neveket, az alkalmazáskészletek nevét, az alkalmazás-csoportok nevét és az egyszerű felhasználóneveket tárolja egy adatközpontban Amikor egy ügyfél létrehoz egy szolgáltatási objektumot, meg kell adnia a szolgáltatás objektumának helyét. A megadott hely határozza meg, hogy az objektum metaadatai hol lesznek tárolva. Az ügyfél kiválaszt egy Azure-régiót, és a metaadatokat a kapcsolódó földrajz fogja tárolni. Az összes Azure-régió és kapcsolódó földrajzi terület listáját itt tekintheti meg: [Azure földrajzi](https://azure.microsoft.com/global-infrastructure/geographies/)területek.
 
-Jelenleg csak a metaadatok tárolása támogatott a Egyesült Államok (US) Azure-földrajzban. A tárolt metaadatok a nyugalmi állapotban vannak titkosítva, és a Geo-redundáns tükrözések a földrajzon belül maradnak. Az összes vásárlói adat, például az Alkalmazásbeállítások és a felhasználói adat, az ügyfél által választott helyen található, és nem a szolgáltatás kezeli. A szolgáltatás növekedésével több földrajzi terület is elérhetővé válik.
+Jelenleg támogatjuk a metaadatok tárolását a következő földrajzi területeken:
+
+- Egyesült Államok (USA) (általánosan elérhető)
+- Európa (EU) (nyilvános előzetes verzió) 
+
+>[!NOTE]
+> Amikor kiválaszt egy régiót a Windows rendszerű virtuális asztali szolgáltatás objektumainak létrehozásához a alkalmazásban, az Egyesült Államokban és az EU földrajzi területein is megjelennek a régiók. Tekintse meg az [Azure globális infrastruktúra-térképét](https://azure.microsoft.com/global-infrastructure/geographies/#geographies), hogy megtudja, melyik régió működne a legjobban az üzembe helyezéshez.
+
+A tárolt metaadatok a nyugalmi állapotban vannak titkosítva, és a Geo-redundáns tükrözések a földrajzon belül maradnak. Az összes vásárlói adat, például az Alkalmazásbeállítások és a felhasználói adat, az ügyfél által választott helyen található, és nem a szolgáltatás kezeli. A szolgáltatás növekedésével több földrajzi terület is elérhetővé válik.
 
 A szolgáltatás metaadatainak replikálását az Azure-ban, a katasztrófa utáni helyreállítás érdekében replikálja a rendszer.
