@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: iot-hub
 ms.custom: subject-monitoring
 ms.date: 11/06/2020
-ms.openlocfilehash: db85594ad4fef37ec7411f7d5791fdb5279ec504
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: c9e6107e981d2bae96c5d9f368c8122d3ce245f0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581652"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570950"
 ---
 # <a name="monitoring-azure-iot-hub"></a>Az Azure IoT Hub figyelése
 
@@ -32,7 +32,7 @@ Az Áttekintés panelen megjelenő információk hasznosak, de csak kis mennyis�
 
 Az Azure IoT Hub a [Azure monitor](../azure-monitor/overview.md)használatával hozza létre a figyelési adatait, amely az Azure teljes körű figyelési szolgáltatása, amely teljes körű funkciókat biztosít az Azure-erőforrások figyeléséhez más Felhőbeli és helyszíni erőforrások mellett.
 
-A következő fogalmakat ismerteti az [Azure-erőforrások Azure Monitorával való monitorozásával foglalkozó](../azure-monitor/insights/monitor-azure-resource.md)cikkből:
+A következő fogalmakat ismerteti az [Azure-erőforrások Azure Monitorával való monitorozásával foglalkozó](../azure-monitor/essentials/monitor-azure-resource.md)cikkből:
 
 - Mi az Azure Monitor?
 - A figyeléshez kapcsolódó költségek
@@ -44,7 +44,7 @@ Az alábbi részekben az Azure IoT Hub összegyűjtött adatok leírásával, va
 
 ## <a name="monitoring-data"></a>Adatok monitorozása
 
-Az Azure IoT Hub ugyanolyan típusú figyelési adatokat gyűjt, mint az [Azure-erőforrások monitorozásával](../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)kapcsolatos további Azure-erőforrások.
+Az Azure IoT Hub ugyanolyan típusú figyelési adatokat gyűjt, mint az [Azure-erőforrások monitorozásával](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data)kapcsolatos további Azure-erőforrások.
 
 Az Azure IoT Hub által létrehozott metrikákkal és naplókkal kapcsolatos részletes információkért lásd: az [azure IoT hub-adatreferenciájának monitorozása](monitor-iot-hub-reference.md) .
 
@@ -68,31 +68,31 @@ Az alábbi képernyőfelvételen egy diagnosztikai beállítás látható az er�
 
 :::image type="content" source="media/monitor-iot-hub/diagnostic-setting-portal.png" alt-text="Az IoT hub diagnosztikai beállítások panelje.":::
 
-A diagnosztikai beállításoknak a Azure Portal, a CLI vagy a PowerShell használatával történő létrehozásával kapcsolatos részletes folyamatért lásd: [diagnosztikai beállítás létrehozása a platform-naplók és-metrikák összegyűjtéséhez az Azure-ban](../azure-monitor/platform/diagnostic-settings.md) . Diagnosztikai beállítás létrehozásakor meg kell adnia, hogy a rendszer milyen típusú naplókat gyűjtsön. Az Azure IoT Hub kategóriái a [monitoring azure IoT hub adathivatkozása alatt találhatók az erőforrás-naplók](monitor-iot-hub-reference.md#resource-logs)területen.
+A diagnosztikai beállításoknak a Azure Portal, a CLI vagy a PowerShell használatával történő létrehozásával kapcsolatos részletes folyamatért lásd: [diagnosztikai beállítás létrehozása a platform-naplók és-metrikák összegyűjtéséhez az Azure-ban](../azure-monitor/essentials/diagnostic-settings.md) . Diagnosztikai beállítás létrehozásakor meg kell adnia, hogy a rendszer milyen típusú naplókat gyűjtsön. Az Azure IoT Hub kategóriái a [monitoring azure IoT hub adathivatkozása alatt találhatók az erőforrás-naplók](monitor-iot-hub-reference.md#resource-logs)területen.
 
 Ha más helyszínekre IoT Hub a platform metrikáit, vegye figyelembe a következőket:
 
 - A következő platform-mérőszámok nem exportálhatók a diagnosztikai beállítások használatával: *csatlakoztatott eszközök (előzetes verzió)* és *összes eszköz (előzetes verzió)*.
 
-- A többdimenziós metrikák, például bizonyos [útválasztási mérőszámok](monitor-iot-hub-reference.md#routing-metrics)jelenleg egy dimenzió értékekben összesítve összesített, egydimenziós mérőszámként lesznek exportálva. További részletekért lásd: [platform metrikáinak exportálása más helyszínekre](../azure-monitor/platform/metrics-supported.md#exporting-platform-metrics-to-other-locations).
+- A többdimenziós metrikák, például bizonyos [útválasztási mérőszámok](monitor-iot-hub-reference.md#routing-metrics)jelenleg egy dimenzió értékekben összesítve összesített, egydimenziós mérőszámként lesznek exportálva. További részletekért lásd: [platform metrikáinak exportálása más helyszínekre](../azure-monitor/essentials/metrics-supported.md#exporting-platform-metrics-to-other-locations).
 
 ## <a name="analyzing-metrics"></a>Mérőszámok elemzése
 
-Az Azure IoT Hub mérőszámait más Azure-szolgáltatásokból származó metrikákkal elemezheti **a metrikák** explorerrel a **Azure monitor** menüből. Az eszköz használatával kapcsolatos részletekért lásd: az [Azure Metrikaböngésző használatának első lépései](../azure-monitor/platform/metrics-getting-started.md) .
+Az Azure IoT Hub mérőszámait más Azure-szolgáltatásokból származó metrikákkal elemezheti **a metrikák** explorerrel a **Azure monitor** menüből. Az eszköz használatával kapcsolatos részletekért lásd: az [Azure Metrikaböngésző használatának első lépései](../azure-monitor/essentials/metrics-getting-started.md) .
 
 Azure Portal a IoT hub bal oldali paneljén a **figyelés** elemre kattintva kiválaszthatja a **metrikákat** a metrikák Explorer hatókörön belül, alapértelmezés szerint az IoT hub által kibocsátott platform mérőszámokra:
 
 :::image type="content" source="media/monitor-iot-hub/metrics-portal.png" alt-text="Metrikák Explorer lapja egy IoT hubhoz.":::
 
-Az Azure IoT Hub gyűjtött platform-metrikák listáját az [Azure Monitoring IoT hub adathivatkozása című témakör metrikái](monitor-iot-hub-reference.md#metrics)című részében tekintheti meg. Az összes Azure-szolgáltatáshoz összegyűjtött platform-metrikák listáját a [Azure monitor támogatott mérőszámai](../azure-monitor/platform/metrics-supported.md)című témakörben tekintheti meg.
+Az Azure IoT Hub gyűjtött platform-metrikák listáját az [Azure Monitoring IoT hub adathivatkozása című témakör metrikái](monitor-iot-hub-reference.md#metrics)című részében tekintheti meg. Az összes Azure-szolgáltatáshoz összegyűjtött platform-metrikák listáját a [Azure monitor támogatott mérőszámai](../azure-monitor/essentials/metrics-supported.md)című témakörben tekintheti meg.
 
 A darabszámú egységekben összegyűjtött IoT Hub platform metrikák esetében előfordulhat, hogy egyes összesítések nem lesznek elérhetők vagy használhatók. További információ: [támogatott összesítések a monitoring Azure IoT hub adatreferenciában](monitor-iot-hub-reference.md#supported-aggregations).
 
-Egyes IoT Hub mérőszámok, például [útválasztási metrikák](monitor-iot-hub-reference.md#routing-metrics), többdimenziós. Ezekben a mérőszámokban [szűrőket](../azure-monitor/platform/metrics-charts.md#filters) alkalmazhat, és egy dimenzió alapján [feloszthatja](../azure-monitor/platform/metrics-charts.md#apply-splitting) a diagramokat.
+Egyes IoT Hub mérőszámok, például [útválasztási metrikák](monitor-iot-hub-reference.md#routing-metrics), többdimenziós. Ezekben a mérőszámokban [szűrőket](../azure-monitor/essentials/metrics-charts.md#filters) alkalmazhat, és egy dimenzió alapján [feloszthatja](../azure-monitor/essentials/metrics-charts.md#apply-splitting) a diagramokat.
 
 ## <a name="analyzing-logs"></a>Naplók elemzése
 
-Azure Monitor naplókban lévő, az egyes táblákban található, egyedi tulajdonságokkal rendelkező táblázatokban tárolt adathalmazok. A táblázatok adatai Log Analytics munkaterülethez vannak társítva, és Log Analyticsban kérhetők le. Az Azure Monitor naplókról további információt a Azure Monitor dokumentációjának [Azure monitor naplók áttekintése](../azure-monitor/platform/data-platform-logs.md) című részében talál. 
+Azure Monitor naplókban lévő, az egyes táblákban található, egyedi tulajdonságokkal rendelkező táblázatokban tárolt adathalmazok. A táblázatok adatai Log Analytics munkaterülethez vannak társítva, és Log Analyticsban kérhetők le. Az Azure Monitor naplókról további információt a Azure Monitor dokumentációjának [Azure monitor naplók áttekintése](../azure-monitor/logs/data-platform-logs.md) című részében talál. 
 
 Az adatok Azure Monitor naplókba való továbbításához létre kell hoznia egy diagnosztikai beállítást, amely erőforrás-naplókat vagy platform-metrikákat küld egy Log Analytics munkaterületre. További információ: [gyűjtemény és útválasztás](#collection-and-routing).
 
@@ -102,17 +102,17 @@ Azure Portal a IoT hub bal oldali paneljén  található **naplók** lehetőség
 
 A Azure Monitor naplók és a Log Analytics által lekérdezhető táblák listáját a következő témakörben találhatja meg: [Azure monitor logs Tables in the monitoring Azure IoT hub adathivatkozás](monitor-iot-hub-reference.md#azure-monitor-logs-tables).
 
-Azure Monitor összes erőforrás-naplója ugyanazokkal a mezőkkel rendelkezik, amelyeket a szolgáltatás-specifikus mezők követnek. Az általános séma [Azure monitor erőforrás-naplózási sémában](../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema)szerepel. Az Azure-IoT Hub gyűjtött erőforrás-naplók sémája és kategóriái a [monitoring azure IoT hub-adathivatkozásban](monitor-iot-hub-reference.md#resource-logs)találhatók.
+Azure Monitor összes erőforrás-naplója ugyanazokkal a mezőkkel rendelkezik, amelyeket a szolgáltatás-specifikus mezők követnek. Az általános séma [Azure monitor erőforrás-naplózási sémában](../azure-monitor/essentials/resource-logs-schema.md#top-level-common-schema)szerepel. Az Azure-IoT Hub gyűjtött erőforrás-naplók sémája és kategóriái a [monitoring azure IoT hub-adathivatkozásban](monitor-iot-hub-reference.md#resource-logs)találhatók.
 
-A [műveletnapló](../azure-monitor/platform/activity-log.md) egy Azure-beli platform-napló, amely betekintést nyújt az előfizetési szintű eseményekre. Megtekintheti egymástól függetlenül, vagy átirányíthatja Azure Monitor naplókba, ahol a Log Analytics használatával jóval összetettebb lekérdezéseket végezhet.  
+A [műveletnapló](../azure-monitor/essentials/activity-log.md) egy Azure-beli platform-napló, amely betekintést nyújt az előfizetési szintű eseményekre. Megtekintheti egymástól függetlenül, vagy átirányíthatja Azure Monitor naplókba, ahol a Log Analytics használatával jóval összetettebb lekérdezéseket végezhet.  
 
 Amikor útválasztást IoT Hub a platform metrikáit Azure Monitor naplókba, vegye figyelembe a következőket:
 
 - A következő platform-mérőszámok nem exportálhatók a diagnosztikai beállítások használatával: *csatlakoztatott eszközök (előzetes verzió)* és *összes eszköz (előzetes verzió)*.
 
-- A többdimenziós metrikák, például bizonyos [útválasztási mérőszámok](monitor-iot-hub-reference.md#routing-metrics)jelenleg egy dimenzió értékekben összesítve összesített, egydimenziós mérőszámként lesznek exportálva. További részletekért lásd: [platform metrikáinak exportálása más helyszínekre](../azure-monitor/platform/metrics-supported.md#exporting-platform-metrics-to-other-locations).
+- A többdimenziós metrikák, például bizonyos [útválasztási mérőszámok](monitor-iot-hub-reference.md#routing-metrics)jelenleg egy dimenzió értékekben összesítve összesített, egydimenziós mérőszámként lesznek exportálva. További részletekért lásd: [platform metrikáinak exportálása más helyszínekre](../azure-monitor/essentials/metrics-supported.md#exporting-platform-metrics-to-other-locations).
 
-A IoT Hubekkel kapcsolatos gyakori lekérdezésekért lásd: [Sample Kusto lekérdezések](#sample-kusto-queries). Log Analytics lekérdezések használatával kapcsolatos részletes információkért lásd: [Azure monitor-lekérdezések áttekintése](../azure-monitor/log-query/log-query-overview.md).
+A IoT Hubekkel kapcsolatos gyakori lekérdezésekért lásd: [Sample Kusto lekérdezések](#sample-kusto-queries). Log Analytics lekérdezések használatával kapcsolatos részletes információkért lásd: [Azure monitor-lekérdezések áttekintése](../azure-monitor/logs/log-query-overview.md).
 
 ### <a name="sdk-version-in-iot-hub-logs"></a>SDK-verzió a IoT Hub-naplókban
 
@@ -153,7 +153,7 @@ AzureDiagnostics
 ### <a name="sample-kusto-queries"></a>Példa Kusto-lekérdezésekre
 
 > [!IMPORTANT]
-> Amikor kiválasztja a **naplók** lehetőséget az IoT hub menüjében, log Analytics megnyílik az aktuális IoT hub lekérdezési hatókörével. Ez azt jelenti, hogy a naplók lekérdezése csak az adott erőforrás adatait fogja tartalmazni. Ha olyan lekérdezést szeretne futtatni, amely más IoT hubokból vagy más Azure-szolgáltatásokból származó adatokból származó adatokkal rendelkezik, válassza a **naplók** lehetőséget a **Azure monitor** menüből. Részletekért lásd: [a naplózási lekérdezés hatóköre és időbeli tartománya Azure Monitor log Analytics](../azure-monitor/log-query/scope.md) .
+> Amikor kiválasztja a **naplók** lehetőséget az IoT hub menüjében, log Analytics megnyílik az aktuális IoT hub lekérdezési hatókörével. Ez azt jelenti, hogy a naplók lekérdezése csak az adott erőforrás adatait fogja tartalmazni. Ha olyan lekérdezést szeretne futtatni, amely más IoT hubokból vagy más Azure-szolgáltatásokból származó adatokból származó adatokkal rendelkezik, válassza a **naplók** lehetőséget a **Azure monitor** menüből. Részletekért lásd: [a naplózási lekérdezés hatóköre és időbeli tartománya Azure Monitor log Analytics](../azure-monitor/logs/scope.md) .
 
 A következő lekérdezések segítségével figyelheti az IoT hubot.
 
@@ -289,7 +289,7 @@ class Program
 
 ## <a name="alerts"></a>Riasztások
 
-Azure Monitor riasztások proaktívan értesítik Önt, ha fontos feltételek találhatók a megfigyelési adataiban. Lehetővé teszik a rendszeren észlelt problémák azonosítását és megoldását, mielőtt az ügyfelek bejelentkeznek. Riasztásokat állíthat be a [metrikák](../azure-monitor/platform/alerts-metric-overview.md), [naplók](../azure-monitor/platform/alerts-unified-log.md)és a [tevékenység naplójában](../azure-monitor/platform/activity-log-alerts.md). A különböző típusú riasztásokhoz előnyök és hátrányok tartoznak.
+Azure Monitor riasztások proaktívan értesítik Önt, ha fontos feltételek találhatók a megfigyelési adataiban. Lehetővé teszik a rendszeren észlelt problémák azonosítását és megoldását, mielőtt az ügyfelek bejelentkeznek. Riasztásokat állíthat be a [metrikák](../azure-monitor/alerts/alerts-metric-overview.md), [naplók](../azure-monitor/alerts/alerts-unified-log.md)és a [tevékenység naplójában](../azure-monitor/alerts/activity-log-alerts.md). A különböző típusú riasztásokhoz előnyök és hátrányok tartoznak.
 
 A platform metrikái alapján létrehozott riasztási szabályok létrehozásakor vegye figyelembe, hogy a darabszámban összegyűjtött IoT Hub platform metrikák esetében előfordulhat, hogy egyes összesítések nem lesznek elérhetők vagy használhatók. További információ: [támogatott összesítések a monitoring Azure IoT hub adatreferenciában](monitor-iot-hub-reference.md#supported-aggregations).
 
@@ -305,4 +305,4 @@ További információ a Event Grid és Azure Monitor eszközök kapcsolatának f
 
 - A [szolgáltatásnév] által létrehozott mérőszámok, naplók és egyéb fontos értékek hivatkozását lásd: az [Azure IoT hub adatreferenciájának figyelése](monitor-iot-hub-reference.md) .
 
-- Az Azure-erőforrások figyelésével kapcsolatos részletekért lásd: az [Azure-erőforrások figyelése Azure monitorokkal](../azure-monitor/insights/monitor-azure-resource.md) .
+- Az Azure-erőforrások figyelésével kapcsolatos részletekért lásd: az [Azure-erőforrások figyelése Azure monitorokkal](../azure-monitor/essentials/monitor-azure-resource.md) .

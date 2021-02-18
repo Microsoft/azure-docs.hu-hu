@@ -3,16 +3,16 @@ title: Bepillantást nyerhet a Backup Center használatával
 description: Ismerje meg, hogyan elemezheti a korábbi trendeket, és mélyebb elemzéseket készíthet a biztonsági mentésekről a Backup Center használatával.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: c5f707ce3bc8d1172805ac14958a50bf59d1412d
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 3086224e4dbb1be2ccfadbfcfcb7441b68a5ff6b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98893693"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592013"
 ---
 # <a name="obtain-insights-using-backup-center-preview"></a>Eredmények beszerzése a Backup Center (előzetes verzió) használatával
 
-A korábbi trendek elemzéséhez és a biztonsági másolatok mélyebb betekintéséhez a Backup Center egy felületet biztosít a [biztonsági mentési jelentésekhez (előzetes verzió)](configure-reports.md), amely [Azure monitor naplókat](../azure-monitor/platform/data-platform-logs.md) és [Azure-munkafüzeteket](../azure-monitor/platform/workbooks-overview.md)használ. A biztonsági mentési jelentések a következő képességeket kínálja:
+A korábbi trendek elemzéséhez és a biztonsági másolatok mélyebb betekintéséhez a Backup Center egy felületet biztosít a [biztonsági mentési jelentésekhez (előzetes verzió)](configure-reports.md), amely [Azure monitor naplókat](../azure-monitor/logs/data-platform-logs.md) és [Azure-munkafüzeteket](../azure-monitor/visualize/workbooks-overview.md)használ. A biztonsági mentési jelentések a következő képességeket kínálja:
 
 - A Felhőbeli tárhely kiosztása és előrejelzése.
 

@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 02/01/2021
+ms.date: 02/16/2021
 ms.author: juliako
-ms.openlocfilehash: a6b1fc5adba166aa15a786d3440be1eca7f0a260
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: c8fcd6e662a0beff61209de4b5c4331618b45ea1
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560513"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653303"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer kibocsátási megjegyzései
 
@@ -29,6 +29,33 @@ A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő
 * Ismert problémák
 * Hibajavítások
 * Elavult funkciók
+
+## <a name="february-2021"></a>2021. február
+
+### <a name="multiple-account-owners"></a>Több fiók tulajdonosa 
+
+A fiók tulajdonosi szerepköre hozzá lett adva Video Indexerhoz. Hozzáadhat, módosíthat és eltávolíthat felhasználókat; módosítsa a szerepkört. A fiókok megosztásával kapcsolatos további információkért lásd: [felhasználók meghívása](invite-users.md).
+
+### <a name="audio-event-detection-public-preview"></a>Hangesemények észlelése (nyilvános előzetes verzió)
+
+> [!NOTE]
+> Ez a funkció csak próbaverziós fiókokban érhető el. 
+
+A Video Indexer mostantól a következő hanghatásokat észleli a tartalom nem Speech szegmensében: lőtt, üveg összetörő, riasztás, sziréna, robbanás, kutya kéreg, sikítás, nevetés, tömegre adott válaszok (éljenzés, taps és booing) és csend. 
+
+Az újonnan hozzáadott hang hatással van a szolgáltatásra a fájl indexeléséhez. ehhez **válassza a speciális hangbeállítások speciális**  ->   hangkészletet (a videó + hangindexelés alatt). A standard indexelés csak a **csendet** és a **tömegre való reagálást** fogja tartalmazni. 
+
+Az előző hangeffektusok modelljében szereplő **tapsolt** esemény típusa már ki van kinyerve a tömeg- **reagálási** esemény típusának egy részébe.
+
+Ha úgy dönt, hogy a [video Indexer](https://www.videoindexer.ai/) webhelyén megtekinti a videó **helyeit** , a hangeffektusok megjelennek az oldalon.
+
+:::image type="content" source="./media/release-notes/audio-detection.png" alt-text="Hangesemények észlelése":::
+
+### <a name="named-entities-enhancement"></a>Megnevezett entitások továbbfejlesztése  
+
+A személyek és a hely kinyert listáját általánosságban kiterjesztették és frissítették. 
+
+Emellett a modell mostantól olyan személyeket és helyszíneket is tartalmaz, amelyek nem ismertek, például a videóban a "Sam" vagy a "Home". 
 
 ## <a name="january-2021"></a>2021. január
 

@@ -2,17 +2,17 @@
 title: Azure Service Bus témakör szűrők | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan határozhatja meg, hogy az előfizetők hogyan határozhatják meg, hogy mely üzeneteket szeretnék a témakörből a szűrők megadásával.
 ms.topic: conceptual
-ms.date: 01/22/2021
-ms.openlocfilehash: 63cf6e67d4fa32c5c7f52f569094e1165554108c
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.date: 02/17/2021
+ms.openlocfilehash: f28b26ee112b47b9782823f6c79670dee9a3f082
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742964"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651663"
 ---
 # <a name="topic-filters-and-actions"></a>Témakörszűrők és -műveletek
 
-Az előfizetők meghatározhatják, hogy mely üzeneteket szeretnék megkapni egy témakörön belül. Ezen üzenetek egy vagy több névvel ellátott előfizetési szabály formájában adhatók meg. Minden szabály egy olyan **szűrési** feltétellel áll, amely adott üzeneteket jelöl ki, és **opcionálisan** tartalmaz egy **műveletet** , amely a kijelölt üzenetet tartalmazza. 
+Az előfizetők meghatározhatják, hogy mely üzeneteket szeretnék megkapni egy témakörön belül. Ezen üzenetek egy vagy több névvel ellátott előfizetési szabály formájában adhatók meg. Minden szabály egy olyan **szűrési feltétellel** áll, amely adott üzeneteket jelöl ki, és **opcionálisan** tartalmaz egy **műveletet** , amely a kijelölt üzenetet tartalmazza. 
 
 A **műveletek nélküli** összes szabály egy `OR` feltétellel kombinálható, és az előfizetéshez tartozó **egyetlen üzenetet** eredményez, még akkor is, ha több egyezési szabály is van. 
 
@@ -32,9 +32,7 @@ Minden újonnan létrehozott témakör-előfizetés kezdeti alapértelmezett el�
 A Service Bus három szűrési feltételt támogat:
 
 -   *SQL-szűrők* – a **SqlFilter** egy SQL-szerű feltételes kifejezést tart fenn, amelyet a rendszer az elküldött üzenetek felhasználó által definiált tulajdonságai és a Rendszertulajdonságok alapján értékel ki a közvetítőn. Az összes rendszertulajdonságot előtaggal kell ellátni `sys.` a feltételes kifejezésben. A [szűrési feltételekhez tartozó SQL-nyelv részhalmaza](service-bus-messaging-sql-filter.md) a tulajdonságok ( `EXISTS` ), a Null érték ( `IS NULL` ), a logikai nem/és/vagy, a rokon operátorok, az egyszerű numerikus aritmetika és az egyszerű szöveges mintázatok meglétét vizsgálja `LIKE` .
-
 -   *Logikai szűrők* – a **TrueFilter** és a **FalseFilter** az összes érkező üzenetet (**igaz**) vagy egyetlen nem az elküldött üzenetet (**false**) sem okozhatja az előfizetés kiválasztásához. Ez a két szűrő az SQL-szűrőből származik. 
-
 -   *Korrelációs szűrők* – a **CorrelationFilter** olyan feltételekkel rendelkezik, amelyek egy vagy több érkező üzenet felhasználó-és rendszertulajdonságával egyeznek. Gyakori használat a **correlationId** tulajdonsággal való egyezés, de az alkalmazás az alábbi tulajdonságokkal is rendelkezhet:
 
     - **ContentType**
@@ -66,14 +64,15 @@ A particionálás szűrők használatával továbbítja az üzeneteket számos m
 
 Az Útválasztás szűrőket használ az üzenetek különböző témakör-előfizetések közötti elosztására kiszámítható módon, de nem feltétlenül kizárólagos. Az [automatikus továbbítási](service-bus-auto-forwarding.md) szolgáltatással együtt a témakör szűrők segítségével összetett útválasztási diagramokat hozhat létre egy Service Bus névtérben az Azure-régión belüli üzenetek terjesztéséhez. Ha Azure Functions vagy Azure Logic Apps Azure Service Bus névterek közötti híddal, összetett globális topológiákat hozhat létre, amelyek közvetlen integrációt végeznek az üzletági alkalmazásokkal.
 
-[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
+## <a name="examples"></a>Példák
+Példák: [Service Bus szűrési példák](service-bus-filter-examples.md).
 
 
 
 > [!NOTE]
 > Mivel a Azure Portal mostantól támogatja a Service Bus Explorer funkcióit, a portálon létrehozhatók és szerkeszthetők az előfizetési szűrők. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a következő mintákat: 
 
 - [.NET – alapszintű küldési és fogadási útmutató szűrőkkel](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveTutorialwithFilters/BasicSendReceiveTutorialWithFilters)

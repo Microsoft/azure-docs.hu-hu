@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépek biztonsági másolatainak kezelése és figy
 description: Ismerje meg, hogyan kezelheti és figyelheti az Azure-beli virtuális gépek biztonsági mentéseit a Azure Backup szolgáltatás használatával.
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: a56f13afa23a81b9cd2b34d34e1ca302c0c667f0
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 51ce88bb67d64ce129a3479d38db9a66dfe65d0a
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "96002909"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635077"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure-beli virtuális gépek biztonsági másolatainak kezelése Azure Backup szolgáltatással
 
@@ -97,7 +97,7 @@ A virtuális gép igény szerinti biztonsági mentését a védelem beállítás
 * Az igény szerinti biztonsági mentés megőrzési tartománya a biztonsági mentés indításakor megadott megőrzési érték.
 
 > [!NOTE]
-> A Azure Backup szolgáltatás naponta akár kilenc igény szerinti biztonsági mentést is támogat, de a Microsoft legfeljebb négy napi igény szerinti biztonsági mentést javasol a legjobb teljesítmény érdekében.
+> A Azure Backup szolgáltatás naponta legfeljebb három igény szerinti biztonsági mentést támogat, valamint egy további ütemezett biztonsági mentést.
 
 Igény szerinti biztonsági mentés elindítása:
 
@@ -192,7 +192,7 @@ Az adatai védelme érdekében Azure Backup tartalmazza a Soft delete funkciót.
 * Ezek a biztonsági mentési elemek aktívak maradnak a rendszernek a felhasználó által beállított biztonsági mentési és adatmegőrzési házirend betartásával. Az Azure-beli virtuális gépek biztonsági másolatait az adatmegőrzési szabályzatnak megfelelően megőrzi a rendszer. A lejárt helyreállítási pontok (a legutóbbi helyreállítási pont kivételével) a biztonsági mentési szabályzatban beállított megőrzési időtartam szerint törlődnek.
 * A további díjak elkerülése érdekében ajánlott törölni azokat a biztonsági mentési elemeket, amelyekben az elsődleges adatforrás már nem létezik. Ez olyan forgatókönyv, ahol a törölt erőforrások biztonsági másolati elemének/adatának megkötése már nem szükséges, mivel a legutóbbi helyreállítási pont örökre megmarad, és a megfelelő biztonsági mentés díjszabása alapján számítjuk fel a díjat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan [készíthet biztonsági mentést az Azure-beli virtuális gépekről a virtuális gép beállításaiból](backup-azure-vms-first-look-arm.md).
 * Megtudhatja, hogyan [állíthatja vissza a virtuális gépeket](backup-azure-arm-restore-vms.md).

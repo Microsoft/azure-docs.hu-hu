@@ -3,15 +3,16 @@ title: Windows rendszerű virtuális asztali címkészlet Azure Portal – Azure
 description: Windows rendszerű virtuális asztali címkészlet létrehozása a Azure Portal használatával.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 09/14/2020
+ms.custom: references_regions
+ms.date: 02/17/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 268f1c4bff84a2c9ef67c3f6b5749bc8d0b90e85
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 46a029a3b803428d6250b74059190f66183be452
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735181"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651459"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Oktatóanyag: állomáslista létrehozása a Azure Portal
 
@@ -67,6 +68,9 @@ Az új címkészlet létrehozásának megkezdéséhez:
 
      > [!div class="mx-imgBorder"]
      > ![A Azure Portal az USA keleti régiójában kiválasztott Location (hely) mezőt bemutató képernyőkép. A mező mellett a "metaadatok az USA keleti régiójában lesznek tárolva."](media/portal-location-field.png)
+  
+   >[!NOTE]
+   > Ha az USA-n kívüli [támogatott régióban](data-locations.md) szeretné létrehozni a gazdagépet, újra kell regisztrálnia az erőforrás-szolgáltatót. Az Újraregisztrálás után a legördülő menüben a másik régiót kell megtekinteni a hely kiválasztásához. Ismerje meg, hogyan regisztrálhat újra a [gazdagép-készlet létrehozásával](troubleshoot-set-up-issues.md#i-only-see-us-when-setting-the-location-for-my-service-objects) kapcsolatos hibaelhárítási cikkben.
 
 8. Az alkalmazáskészlet típusa területen válassza ki, hogy a gazdagép **személyes** vagy **készletezési** készlettel rendelkezik-e.
 
@@ -197,7 +201,7 @@ Ha inkább automatikus folyamatot használ, [töltse le a Azure Resource Manager
 >[!NOTE]
 >Ha automatizált eljárást használ a környezet összeállításához, a konfigurációs JSON-fájl legújabb verziójára lesz szüksége. [Itt](https://wvdportalstorageblob.blob.core.windows.net/galleryartifacts?restype=container&comp=list)megtalálhatja a JSON-fájlt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy elvégezte a gazdagép készletét, feltöltheti azt a RemoteApp-programok használatával. Ha többet szeretne megtudni a Windows rendszerű virtuális asztali alkalmazások kezeléséről, tekintse meg a következő oktatóanyagot:
 

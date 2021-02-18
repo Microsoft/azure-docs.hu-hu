@@ -4,31 +4,29 @@ description: Ismerje meg, hogy a mért számlázások automatikus anomáliának 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 1/09/2021
+ms.date: 2/17/2021
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: d4fb88854359dcd6e383b47d2a8ce4e9c91f867a
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 7f1bcac49ccb12ea1e0517aed5a139e549451ec0
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989364"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653006"
 ---
 # <a name="anomaly-detection-for-metered-billing"></a>A mért számlázás rendellenességének észlelése
 
-Ez a cikk részletesen ismerteti a piactér-mérési szolgáltatást és a kapcsolódó automatikus anomália-észlelési képességet, amellyel biztosítható, hogy az ügyfelek a mért használatnak megfelelően legyenek kiszámlázva. A mért számlázási lehetőség jelenleg a [szolgáltatott szoftverek](plan-saas-offer.md) (SaaS) és az [Azure-alkalmazások](plan-azure-application-offer.md#types-of-plans) számára érhető el egy felügyelt alkalmazási csomaggal. Ez a beállítás lehetővé teszi, hogy a partnerek a kereskedelmi piactér programban olyan ajánlatokat hozzanak létre, amelyek a nem standard egységek szerint vannak felszámítva.
+Az egyéni forgalmi díjas számlázási lehetőség jelenleg a [szolgáltatott szoftverek](plan-saas-offer.md) (SaaS) és az Azure- [alkalmazások](plan-azure-application-offer.md#types-of-plans) számára érhető el egy felügyelt alkalmazási csomaggal.
 
-Az SaaS-és felügyelt alkalmazásokhoz használt egyéni mérőszámokkal rendelkező partnerek a partner Center adott _Egyéni_ mérőszámai _esetében a várt_ használati viselkedéstől való eltérést láthatják. A kockázat enyhítése érdekében a partner Center olyan anomália-észlelési szolgáltatást alkalmaz, amely a gépi tanulási algoritmusok alapján határozza meg a normál mért számlázási viselkedést, elemzi a mért számlázási használatot, és felderíti a rendellenességeket a minimális felhasználói beavatkozással. A mért számlázási használati adatkészletekben az _anomáliák észlelési modelljeinek_ használatával a partneri Központ célja, hogy tájékoztassa a közzétevőt, amikor a jelentett használat meghaladja a várt használatot.
+Ha a mért számlázási lehetőséget használja a kereskedelmi piactér programban elérhető ajánlatok létrehozására, amely lehetővé teszi, hogy a nem standard egységeken alapuló használati díjat számítson fel, tudnia kell, hogy az ügyfél több szolgáltatást használt a vártnál.
 
-## <a name="usability-experience"></a>Használhatósági élmény
+## <a name="use-the-anomaly-detection-feature"></a>Az anomáliák észlelése funkció használata
 
-A Microsoft a partnert arra támaszkodik, hogy az ügyfelet a SaaS vagy az Azure által felügyelt alkalmazásra vonatkozó ajánlatai alapján jelentse be, mielőtt a Microsoft számlázza az ügyfelet. Ha helytelen használatot jelentettek, az ügyfél esetleg helytelen számlát kaphat, és alááshatja a Microsoft és a partner hitelességét is.
+A Microsoft arra támaszkodik, hogy a Microsoft számlázza az ügyfelet az SaaS vagy az Azure által felügyelt alkalmazás-ajánlatokkal kapcsolatban, mielőtt a Microsoft elvégzi a számlázást. Ha helytelen használatot jelentettek, az ügyfél esetleg helytelen számlát kaphat, és alááshatja a Microsoft és a partner hitelességét is.
 
-Ennek enyhítése érdekében az SaaS-alkalmazások és az Azure-alkalmazások által felügyelt alkalmazások csomagjainak automatikus anomália-észlelési funkciója is elérhető. Ez a funkció egy gépi tanulási modell, amely proaktív módon figyeli a használatot a mért számlázással szemben, és a várt tartományon belül előre jelzi a használat várható értékét. Ha a használat a várt tartományon kívül esik, akkor a rendszer anomália-ként kezeli, és riasztási értesítés jelenik meg az ajánlat áttekintés lapján a partner Center kereskedelmi piactér programban.
+Annak érdekében, hogy az ügyfelek számlázása megfelelő legyen, használja az SaaS-alkalmazások és az Azure-alkalmazások által felügyelt alkalmazási csomagok **anomáliák észlelési** funkcióját. Ez a szolgáltatás figyeli a használatot a mért számlázással szemben, és a várt tartományon belül előre jelzi a használat várható értékét. Ha a használat a várt tartományon kívül esik, a rendszer váratlanként (rendellenességként) lesz kezelve, és riasztási értesítést fog kapni az ajánlat áttekintés lapján a partner Center kereskedelmi piactér programjában. Napi rendszerességgel nyomon követheti az ügyfelek használati adatait a beállított egyéni mérési dimenziók esetében.
 
-A Machine learning-modell napi rendszerességgel elemzi a használatot. A közzétevő láthatja, hogy az ügyfeleken fellépő összes rendellenesség az ajánlat egyéni mérőszámának méretei szerint jelenik meg.
-
-### <a name="view-and-manage-metered-usage-anomalies"></a>Mért használati rendellenességek megtekintése és kezelése
+## <a name="view-and-manage-metered-usage-anomalies"></a>Mért használati rendellenességek megtekintése és kezelése
 
 1. Jelentkezzen be a [partner központjába](https://partner.microsoft.com/dashboard/home).
 1. A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **elemzése** elemet.

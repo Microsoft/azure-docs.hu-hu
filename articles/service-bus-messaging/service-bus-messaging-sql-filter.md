@@ -3,12 +3,12 @@ title: Azure Service Bus előfizetési szabály SQL-szűrő szintaxisa | Microso
 description: Ez a cikk az SQL-szűrési nyelvtan részleteit ismerteti. Az SQL-szűrők az SQL-92 szabvány egy részhalmazát támogatják.
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 810d17d458de79c851b6f1ada4556a231bfd20eb
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 022f6cb1d698a10dc216db8d41c172691f7535ab
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742981"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652941"
 ---
 # <a name="subscription-rule-sql-filter-syntax"></a>Előfizetési szabály SQL-szűrési szintaxisa
 
@@ -183,7 +183,7 @@ A logikai konstansokat a **true** vagy a **false** kulcsszó jelöli. Az érték
 
 A karakterlánc-konstansok szimpla idézőjelek közé vannak lefoglalva, és tartalmaznak bármilyen érvényes Unicode-karaktert. Egy karakterlánc-konstansba ágyazott idézőjelek két szimpla idézőjelet jelölnek.  
   
-## <a name="function"></a>függvény  
+## <a name="function"></a>A  függvény  
   
 ```  
 <function> :=  
@@ -269,10 +269,10 @@ Vegye figyelembe a következő [SqlFilter](/dotnet/api/microsoft.servicebus.mess
   
 -   Aritmetikai operátorok, mint például a `+` ,, `-` ,, `*` `/` és `%` ugyanazokat a szemantikai műveleteket követik, mint a C# operátor kötése adattípusú promóciók és implicit konverziók esetében.
 
+## <a name="examples"></a>Példák
+Példák: [Service Bus szűrési példák](service-bus-filter-examples.md).
 
-[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [SQLFilter osztály (.NET-keretrendszer)](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
 - [SQLFilter osztály (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlfilter)

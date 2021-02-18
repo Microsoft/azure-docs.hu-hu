@@ -1,59 +1,54 @@
 ---
-title: Az Azure Kubernetes Service (ak) nyilvános előzetes verziójának bizalmas számítástechnikai csomópontjai
+title: Bizalmas számítástechnikai csomópontok az Azure Kubernetes szolgáltatásban (ak)
 description: Bizalmas számítástechnikai csomópontok az AK-on
 services: virtual-machines
 author: agowdamsft
 ms.service: container-service
 ms.topic: overview
-ms.date: 9/22/2020
+ms.date: 2/08/2021
 ms.author: amgowda
-ms.openlocfilehash: 1b945ac9f656a227bcc3335cb0ec995626f98f77
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 9ca98c032a7c8bd1820a92bff77079a61c515d65
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564174"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653380"
 ---
-# <a name="confidential-computing-nodes-on-azure-kubernetes-service-public-preview"></a>Bizalmas számítástechnikai csomópontok az Azure Kubernetes szolgáltatásban (nyilvános előzetes verzió)
+# <a name="confidential-computing-nodes-on-azure-kubernetes-service"></a>Bizalmas számítástechnikai csomópontok az Azure Kubernetes szolgáltatásban
 
-Az [Azure bizalmas számítástechnikai](overview.md) szolgáltatása lehetővé teszi a bizalmas adatok védelmét a használat közben. A mögöttes infrastruktúrák más alkalmazásokból, rendszergazdákból és felhőalapú szolgáltatóktól származó adatokat védik a hardveres megbízható végrehajtási tároló környezetével.
+Az [Azure bizalmas számítástechnikai](overview.md) szolgáltatása lehetővé teszi a bizalmas adatok védelmét a használat közben. A mögöttes bizalmas számítástechnikai infrastruktúra megvédi ezeket az adatokat más alkalmazásoktól, rendszergazdáktól és felhőalapú szolgáltatóktól egy hardveres megbízható végrehajtási tároló környezetével. A bizalmas számítástechnikai csomópontok hozzáadásával megcélozhatja, hogy a Container Application egy elkülönített, hardveresen védett és tanúsítható környezetben fusson.
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure Kubernetes Service (ak) támogatja az Intel SGX ENKLÁVÉHOZ által működtetett [DCsv2 bizalmas számítástechnikai csomópontok](confidential-computing-enclaves.md) hozzáadását. A futtatott csomópontok a hardveres megbízható végrehajtási környezetben (TEE) belül is futtathatnak bizalmas munkaterheléseket azáltal, hogy lehetővé teszik a felhasználói szintű kód számára a memória privát régiói számára való kiosztását. Ezeket a saját memória-régiókat enklávéknak nevezzük. Az enklávék úgy vannak kialakítva, hogy a magasabb szintű jogosultságokkal rendelkező folyamatokból származó kódok és adatok védelme érdekében. A SGX ENKLÁVÉHOZ végrehajtási modellje eltávolítja a vendég operációs rendszer, a gazdagép operációs rendszere és a hypervisor közbenső rétegeit. A *Container-alapú hardverek által elkülönített végrehajtási* modell lehetővé teszi, hogy az alkalmazások közvetlenül a CPU-val fussanak, miközben a speciális memória-blokkot titkosítják. A bizalmas számítástechnikai csomópontok segítséget nyújtanak az AK-ra kiterjedő tároló-alkalmazások általános biztonsági állapotának kialakításában, valamint a védelem részletes tárolási stratégiájának kiegészítéseként. 
+Az Azure Kubernetes Service (ak) támogatja az Intel SGX ENKLÁVÉHOZ által működtetett [DCsv2 bizalmas számítástechnikai csomópontok](confidential-computing-enclaves.md) hozzáadását. Ezek a csomópontok lehetővé teszik az érzékeny számítási feladatok futtatását egy hardveres megbízható végrehajtási környezetben (TEE) belül. A TEE lehetővé teszi, hogy a tárolók felhasználói szintű kódja kiossza a memóriában lévő privát régiókat, hogy a kódot közvetlenül a CPU használatával hajtsa végre. A közvetlenül a CPU-val végrehajtandó saját memória-régiókat enklávéknak nevezzük. Az enklávék segítenek az adatok titkosságának, az adatok integritásának és a kód integritásának az ugyanazon csomópontokon futó egyéb folyamatoktól való védelmében. Az Intel SGX ENKLÁVÉHOZ végrehajtási modellje eltávolítja a vendég operációs rendszer, a gazdagép operációs rendszere és a hypervisor közbenső rétegeit is, így csökkentve a támadási felületet. A csomópontok *tárolók közötti, elkülönített végrehajtási* modellje lehetővé teszi, hogy az alkalmazások közvetlenül is végrehajtsák a processzort, miközben a védett memória speciális blokkját tárolóban tárolják. A bizalmas tárolókkal rendelkező bizalmas számítástechnikai csomópontok nagyban kiegészítik a megbízható biztonsági tervezést és a védelmi részletes adattárolói stratégiát.
 
 ![a SGX enklávéhoz csomópont áttekintése](./media/confidential-nodes-aks-overview/sgxaksnode.jpg)
 
 ## <a name="aks-confidential-nodes-features"></a>AK bizalmas csomópontok funkciói
 
-- Hardveres és feldolgozható szintű tárolók elkülönítése SGX ENKLÁVÉHOZ megbízható végrehajtási környezettel (póló) 
+- Hardveres és feldolgozható szintű tárolók elkülönítése az Intel SGX ENKLÁVÉHOZ megbízható végrehajtási környezete (póló) alapján 
 - Különböző (bizalmas és nem bizalmas csomópont-készletek)
-- A titkosított oldal gyorsítótára (EPC) memória-alapú Pod-ütemezése
-- Előre telepített SGX ENKLÁVÉHOZ DCAP-illesztőprogram
-- Előre telepített Intel FSGS-javítás
-- Támogatja a CPU-felhasználáson alapuló horizontális Pod automatikus skálázást és a fürt automatikus skálázását
-- Folyamaton kívüli igazolás segítője az AK daemonset elemet
+- A titkosított oldal gyorsítótára (EPC) memória-alapú Pod-ütemezése (kiegészítő funkció szükséges)
+- Az Intel SGX ENKLÁVÉHOZ DCAP illesztőprogramja előre telepítve
+- CPU-használaton alapuló horizontális hüvely automatikus skálázása és a fürt automatikus skálázása
 - Linux-tárolók támogatása az Ubuntu 18,04 Gen 2 VM Worker-csomópontokon
 
-## <a name="aks-provided-daemon-sets-addon"></a>AK megadott démon-készletek (Addon)
+## <a name="confidential-computing-add-on-for-aks"></a>Bizalmas számítástechnikai bővítmény az AK-hoz
+A bővítmény funkció lehetővé teszi az AK-ra való további képességet, ha a fürtön bizalmas számítástechnikai csomópont-készleteket futtat. Ez a bővítmény engedélyezi az alábbi funkciókat.
 
-#### <a name="sgx-device-plugin"></a>SGX ENKLÁVÉHOZ-eszköz beépülő modul <a id="sgx-plugin"></a>
+#### <a name="azure-device-plugin-for-intel-sgx"></a>Azure-eszköz beépülő modul Intel SGX ENKLÁVÉHOZ <a id="sgx-plugin"></a>
 
-Az SGX ENKLÁVÉHOZ-eszköz beépülő modulja implementálja az Kubernetes-eszköz beépülő modulját az EPC memória számára. Ez a beépülő modul a Kubernetes-ben egy további erőforrástípust tesz elérhetővé az EPC memóriában. A felhasználók az erőforrásra vonatkozó korlátozásokat ugyanúgy meghatározhatják, mint a többi erőforrást. Az ütemezési függvényen kívül az eszköz beépülő modul segítséget nyújt a SGX ENKLÁVÉHOZ-eszközillesztők számára a bizalmas számítási feladatokhoz tartozó tárolók kiosztásához. Az EPC memória alapú üzembe helyezési ( `kubernetes.azure.com/sgx_epc_mem_in_MiB` ) minta megvalósítását [itt](https://github.com/Azure-Samples/confidential-computing/blob/main/containersamples/helloworld/helm/templates/helloworld.yaml) találja
+Az eszköz beépülő modulja a Kubernetes-eszköz beépülő modul felületét valósítja meg a titkosított oldal-gyorsítótár (EPC) memóriája számára, és elérhetővé teszi az eszközillesztőket a csomópontokból. Gyakorlatilag ez a beépülő modul a Kubernetes-ben egy másik erőforrástípusként teszi elérhetővé az EPC memóriát. A felhasználók az erőforrásra vonatkozó korlátozásokat ugyanúgy meghatározhatják, mint a többi erőforrást. Az ütemezési függvényen kívül az eszköz beépülő modul segítséget nyújt az Intel SGX ENKLÁVÉHOZ-illesztőprogramokhoz való hozzárendeléséhez a bizalmas számítási feladatokhoz tartozó tárolók számára. Ennek a beépülő modulnak a fejlesztője elkerülheti az Intel SGX ENKLÁVÉHOZ illesztőprogram-köteteknek a telepítési fájlokban való csatlakoztatását. Az EPC memória alapú üzembe helyezési ( `kubernetes.azure.com/sgx_epc_mem_in_MiB` ) minta megvalósítását [itt](https://github.com/Azure-Samples/confidential-computing/blob/main/containersamples/helloworld/helm/templates/helloworld.yaml) találja
 
-#### <a name="sgx-quote-helper-service"></a>SGX ENKLÁVÉHOZ-ajánlat segítő szolgáltatása <a id="sgx-quote"></a>
 
-A távoli igazolást végrehajtó enklávé-alkalmazásoknak ÁRAJÁNLATot kell létrehozniuk. Az ajánlat titkosítási igazolást nyújt az alkalmazás identitásáról és állapotáról, valamint azt a környezetet, amelyben az enklávé fut. Az IDÉZŐJELek létrehozása a SGX ENKLÁVÉHOZ platform szoftver-összetevőinek (PSW/DCAP) részét képező, az Inteltől származó bizonyos megbízható szoftver-összetevőkre támaszkodik. Ez a PSW olyan démon-készletként van csomagolva, amely egy csomóponton fut. Kihasználható az enklávé-alkalmazások igazolási AJÁNLATának kérelmezése során. Az AK által biztosított szolgáltatás használatával jobban megtarthatja a PSW és a gazdagépen található egyéb SW-összetevők közötti kompatibilitást. [További](confidential-nodes-out-of-proc-attestation.md) információ a használatáról és a szolgáltatás részleteiről.
-
-## <a name="programming--application-models"></a>Programozási & alkalmazás modelljei
+## <a name="programming-models"></a>Programozási modellek
 
 ### <a name="confidential-containers"></a>Bizalmas tárolók
 
-A [bizalmas tárolók](confidential-containers.md) meglévő programokat és a leggyakoribb **programozási nyelvi** futtatókörnyezetet (Python, node, Java stb.) futtatják, a meglévő függvénytár-függőségekkel együtt, forráskód-módosítás vagy újrafordítás nélkül. Ez a modell az Azure-partnerek által & nyílt forráskódú projekteken keresztül engedélyezett, a titkosság leggyorsabb modellje. A biztonságos enklávékban való futtatásra készen álló tároló-lemezképek bizalmas tárolóként vannak kinevezve.
+A [bizalmas tárolók](confidential-containers.md) segítségével a leggyakoribb **programozási nyelvek** futtatókörnyezetei (Python, node, Java stb.) által kezelt meglévő, nem módosított tároló-alkalmazásokat futtathatják bizalmasan. Ennek a csomagolási modellnek nincs szüksége forráskód-módosításra vagy újrafordításra. Ez a leggyorsabban a titkossági módszer, amely a standard Docker-tárolók Open-Source-projektekkel vagy Azure-partneri megoldásokkal való csomagolásával érhető el. Ebben a csomagolási és végrehajtási modellben a Container alkalmazás összes része betöltődik a megbízható határba (enklávé). Ez a modell jól működik a piacon elérhető polcos tároló-alkalmazások és az általános célú csomópontokon jelenleg futó egyéni alkalmazások esetében.
 
 ### <a name="enclave-aware-containers"></a>Enklávé-Aware tárolók
-
-Az AK támogatja a bizalmas csomópontokon történő futtatásra programozott és az SDK-k és keretrendszerek által elérhetővé tett **speciális utasításkészlet** használatát. Ez az alkalmazási modell a legkevesebb megbízható számítástechnikai Alappal (TCB) biztosítja az alkalmazások felügyeletét. [További információ](enclave-aware-containers.md) : enklávé Aware containers.
+Az AK-beli bizalmas számítástechnikai csomópontok olyan tárolókat is támogatnak, amelyek egy enklávéban futnak, hogy használják a CPU-ból elérhető **speciális utasításkészlet-készletet** . Ez a programozási modell lehetővé teszi a végrehajtási folyamat szigorúbb vezérlését, és speciális SDK-k és keretrendszerek használatát igényli. Ez a programozási modell a legkevesebb megbízható számítástechnikai Alappal (TCB) rendelkező Application flow vezérlését biztosítja. Az enklávéban a tárolók fejlesztése nem megbízható és megbízható részeket biztosít a tároló alkalmazás számára, így lehetővé teszi a normál memória-és titkosított lapozófájl-(EPC-) memória kezelését, ahol az enklávé fut. [További információ](enclave-aware-containers.md) : enklávé Aware containers.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -62,6 +57,8 @@ Az AK támogatja a bizalmas csomópontokon történő futtatásra programozott �
 [Gyors alapszintű, bizalmas tárolók mintái](https://github.com/Azure-Samples/confidential-container-samples)
 
 [DCsv2 SKU-lista](../virtual-machines/dcv2-series.md)
+
+[Részletes védelem a bizalmas tárolókkal kapcsolatos Webinar-munkamenettel](https://www.youtube.com/watch?reload=9&v=FYZxtHI_Or0&feature=youtu.be)
 
 <!-- LINKS - external -->
 [Azure Attestation]: ../attestation/index.yml

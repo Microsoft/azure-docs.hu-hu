@@ -3,20 +3,20 @@ title: Azure Automation runbook-típusok
 description: Ez a cikk ismerteti azokat a runbookok, amelyeket a Azure Automation használhat, és figyelembe kell venni a használandó típus meghatározásának szempontjait.
 services: automation
 ms.subservice: process-automation
-ms.date: 01/08/2021
+ms.date: 02/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: c1398d25b6d2540abea0012acd69555e5e53e25c
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 067096943cd95913077ada817c94640ff5264520
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050969"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634889"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation runbook-típusok
 
 A Azure Automation Process Automation szolgáltatás számos runbookok támogat, az alábbi táblázatban meghatározottak szerint. A folyamat-automatizálási környezettel kapcsolatos további tudnivalókért lásd: [Runbook végrehajtása Azure Automationban](automation-runbook-execution.md).
 
-| Típus | Leírás |
+| Típus | Description |
 |:--- |:--- |
 | [Grafikus](#graphical-runbooks)|A Windows PowerShellen alapuló grafikus runbook, és a Azure Portal grafikus szerkesztőjében teljesen elkészült és szerkeszthető. |
 | [Grafikus PowerShell-munkafolyamat](#graphical-runbooks)|A grafikus runbook a Windows PowerShell-munkafolyamaton alapul, és a Azure Portal grafikus szerkesztőjében teljesen elkészült és szerkeszthető. |
@@ -102,6 +102,11 @@ A PowerShell-munkafolyamat runbookok a [Windows PowerShell-munkafolyamaton](auto
 
 A Python runbookok a Python 2 és a Python 3 alatt fordítható le. A Python 3 runbookok jelenleg előzetes verzióban érhető el. Közvetlenül szerkesztheti a runbook kódját a Azure Portal szövegszerkesztő használatával. Használhat egy offline szövegszerkesztőt is, és [importálhatja a runbook](manage-runbooks.md) Azure Automationba.
 
+A Python 3 runbookok a következő Azure globális infrastruktúrák támogatják:
+
+* Azure globális
+* Azure Government
+
 ### <a name="advantages"></a>Előnyök
 
 * Használja a robusztus Python-kódtárakat.
@@ -123,7 +128,7 @@ A Python runbookok a Python 2 és a Python 3 alatt fordítható le. A Python 3 r
 
 A Python 3 feladat időnként meghiúsul, és a rendszer *érvénytelen értelmező végrehajtható elérési úttal* rendelkező kivételi üzenetet küld. Ezt a kivételt akkor láthatja, ha a feladatok késleltetve vannak, és több mint 10 percet vesznek igénybe, vagy a **Start-AutomationRunbook** használatával elindítják a Python 3 runbookok. Ha a feladatot késleltetik, a runbook újraindításának elegendőnek kell lennie.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A PowerShell-runbookok kapcsolatos további tudnivalókért lásd [: oktatóanyag: PowerShell-Runbook létrehozása](learn/automation-tutorial-runbook-textual-powershell.md).
 * A PowerShell-munkafolyamatok runbookok kapcsolatos tudnivalókat a következő témakörben talál [: oktatóanyag: PowerShell munkafolyamat-Runbook létrehozása](learn/automation-tutorial-runbook-textual.md).

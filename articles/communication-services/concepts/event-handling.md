@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e661b99e3c5028f40ea69ddedc22c7ee2895acec
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: b4e600581880ccca4f8716db02064e5bb353787c
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888725"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653781"
 ---
 # <a name="event-handling-in-azure-communication-services"></a>Események feldolgozása az Azure kommunikációs szolgáltatásokban
 
@@ -25,6 +25,9 @@ Az Azure kommunikációs szolgáltatásai megbízható, méretezhető és bizton
 A Azure Event Grid egy teljes körűen felügyelt esemény-útválasztási szolgáltatás, amely egy közzétételi és előfizetési modellt használ. A Event Grid beépített támogatást nyújt az Azure-szolgáltatások, például a [Azure functions](../../azure-functions/functions-overview.md) és a [Azure Logic apps](../../azure-functions/functions-overview.md)számára. A webhookok használatával az események riasztásait nem Azure-szolgáltatásokhoz is kézbesítheti. A Event Grid által támogatott eseménykezelők teljes listájáért tekintse [meg a Azure Event Grid bemutatása](../../event-grid/overview.md)című témakört.
 
 :::image type="content" source="https://docs.microsoft.com/azure/event-grid/media/overview/functional-model.png" alt-text="Azure Event Grid esemény modelljét bemutató diagram.":::
+
+> [!NOTE]
+> Ha többet szeretne megtudni arról, hogy az adattárolás hogyan kapcsolódik az események kezeléséhez, látogasson el az [adatrezidens fogalmi dokumentációra](./privacy.md) .
 
 ## <a name="events-types"></a>Események típusai
 

@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 02/16/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 772be332af1476975d91eb270bec24d6d241a616
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 8ccc7b641e2bfcb4ea8733b9d4f793229c430bc0
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706563"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652873"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Az Azure Import/Export szolgáltatás használata adatok Azure Blob-tárolóból való exportálására
 
@@ -43,13 +43,13 @@ A következőket kell tennie:
 Az alábbi lépések végrehajtásával hozzon létre egy exportálási feladatot a Azure Portal.
 
 1. Jelentkezzen be a következőre: <https://portal.azure.com/> .
-2. Lépjen az **összes szolgáltatás > Storage > importálási/exportálási feladatok lehetőségre**.
+2. **Importálási/exportálási feladatok** keresése.
 
-    ![Ugrás az importálási/exportálási feladatokra](./media/storage-import-export-data-from-blobs/export-from-blob1.png)
+    ![Importálási/exportálási feladatok keresése](./media/storage-import-export-data-to-blobs/import-to-blob-1.png)
 
-3. Kattintson az **importálási/exportálási feladatok létrehozása** lehetőségre.
+3. Válassza a **+ Új** lehetőséget.
 
-    ![Kattintson az Importálás/exportálás feladata elemre.](./media/storage-import-export-data-from-blobs/export-from-blob2.png)
+    ![Új létrehozásához válassza az + új lehetőséget. ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
 
 4. Az **alapjaiban**:
 
@@ -60,7 +60,7 @@ Az alábbi lépések végrehajtásával hozzon létre egy exportálási feladato
     - Válasszon egy előfizetést.
     - Adjon meg vagy válasszon ki egy erőforráscsoportot.
 
-        ![Alapbeállítások](./media/storage-import-export-data-from-blobs/export-from-blob3.png)
+        ![Alapbeállítások](./media/storage-import-export-data-from-blobs/export-from-blob-3.png)
 
 5. A **feladatok részletei**:
 
@@ -69,17 +69,17 @@ Az alábbi lépések végrehajtásával hozzon létre egy exportálási feladato
     - Adja meg a Storage-fiókból az üres meghajtóra vagy meghajtókra exportálni kívánt blob-adatok számát.
     - Válassza ki a Storage-fiókban lévő összes blob-érték **exportálását** .
 
-         ![Összes exportálása](./media/storage-import-export-data-from-blobs/export-from-blob4.png)
+         ![Összes exportálása](./media/storage-import-export-data-from-blobs/export-from-blob-4.png)
 
     - Megadhatja, hogy mely tárolók és Blobok exportálhatók.
         - Az **exportálandó blob megadásához** használja a következőt: **egyenlő** a választóval. Adja meg a blob relatív elérési útját, amely a tároló nevével kezdődik. A legfelső szintű tároló megadásához használja a *$root* .
         - Az **összes olyan blob megadása**, amelyik előtaggal kezdődik: használja a **Start with** választót. Itt adhatja meg az előtagot, amely a továbbítási perjel (/) kezdetű. Az előtag lehet a tároló nevének előtagja, a teljes tároló neve vagy a teljes tároló neve, amelyet a blob nevének előtagja követ. A hibák elkerülése érdekében érvényes formátumban kell megadnia a blob elérési útját, ahogy az a képernyőképen is látható. További információ: [az érvényes blob-elérési utakra vonatkozó példák](#examples-of-valid-blob-paths).
 
-           ![Kiválasztott tárolók és Blobok exportálása](./media/storage-import-export-data-from-blobs/export-from-blob5.png)
+           ![Kiválasztott tárolók és Blobok exportálása](./media/storage-import-export-data-from-blobs/export-from-blob-5.png)
 
     - Exportálhatja a blob-lista fájlját.
 
-        ![Exportálás a blob-lista fájljából](./media/storage-import-export-data-from-blobs/export-from-blob6.png)
+        ![Exportálás a blob-lista fájljából](./media/storage-import-export-data-from-blobs/export-from-blob-6.png)
 
    > [!NOTE]
    > Ha az exportálandó blob az adatok másolása során használatban van, az Azure import/export szolgáltatás pillanatképet készít a blobról, és átmásolja a pillanatképet.
@@ -320,7 +320,7 @@ Ez a *választható* lépés segít megszabni az exportálási feladatokhoz szü
 
     A paramétereket a következő táblázat ismerteti:
 
-    |Parancssori paraméter|Leírás|
+    |Parancssori paraméter|Description|
     |--------------------------|-----------------|
     |**/logdir:**|Választható. A naplózási könyvtár. A részletes naplófájlokat a rendszer erre a könyvtárba írja. Ha nincs megadva, a rendszer az aktuális könyvtárat használja a napló könyvtáraként.|
     |**SN**|Kötelező. Az exportálási feladatokhoz tartozó Storage-fiók neve.|
@@ -374,7 +374,7 @@ Number of drives needed:        3
 
 A következő táblázat példákat mutat be a Blobok érvényes elérési útjaira:
 
-   | Szelektor | BLOB elérési útja | Leírás |
+   | Szelektor | BLOB elérési útja | Description |
    | --- | --- | --- |
    | Kezdete |/ |A Storage-fiókban lévő összes blob exportálása |
    | Kezdete |/$root/ |A gyökér tárolóban lévő összes blob exportálása |
@@ -384,7 +384,7 @@ A következő táblázat példákat mutat be a Blobok érvényes elérési útja
    | Egyenlő |$root/logo.bmp |A blob **logo.bmp** exportálása a gyökér tárolóba |
    | Egyenlő |videók/story.mp4 |BLOB- **story.mp4** exportálása a tároló- **videókban** |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A feladatok és a meghajtó állapotának megtekintése](storage-import-export-view-drive-status.md)
 - [Importálási/exportálási követelmények áttekintése](storage-import-export-requirements.md)

@@ -3,15 +3,16 @@ title: Windows rendszerű virtuális asztali környezetbeli gazdagép-készlet l
 description: A bérlői és a gazdagép-készletezési problémák elhárítása és megoldása a Windows rendszerű virtuális asztali környezet telepítése során.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 09/14/2020
+ms.custom: references_regions
+ms.date: 02/17/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0a5439a9d1fd43154379c1dc1a95a6e98b6e877b
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: c31a32b32a685087c53198ec52af1188d0071cab
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539642"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652445"
 ---
 # <a name="host-pool-creation"></a>Gazdagépkészlet létrehozása
 
@@ -49,9 +50,21 @@ Ha a művelet túllépi a kvóta korlátját, a következő műveletek közül v
 
 ### <a name="error-cant-see-user-assignments-in-app-groups"></a>Hiba: a felhasználói hozzárendelések nem jelennek meg az alkalmazás csoportjaiban.
 
-Ok: Ez a hiba általában akkor fordul elő, ha áthelyezte az előfizetést 1 Azure Active Directory (AD) bérlőről egy másikra. Ha a régi hozzárendelések továbbra is a régi Azure AD-bérlőhöz vannak kötve, akkor a Azure Portal elvesznek.
+**OK**: Ez a hiba általában akkor fordul elő, ha áthelyezte az előfizetést 1 Azure Active Directory (ad) bérlőről egy másikra. Ha a régi hozzárendelések továbbra is a régi Azure AD-bérlőhöz vannak kötve, akkor a Azure Portal elvesznek.
 
-Javítás: a felhasználókat újra hozzá kell rendelnie az alkalmazás-csoportokhoz.
+**Javítás**: a felhasználókat újra hozzá kell rendelnie az alkalmazás-csoportokhoz.
+
+### <a name="i-only-see-us-when-setting-the-location-for-my-service-objects"></a>Csak a szolgáltatási objektumok helyének beállításakor jelenik meg
+
+**OK**: az Azure jelenleg nem támogatja ezt a régiót a Windows rendszerű virtuális asztali szolgáltatás számára. Ha szeretné megtudni, hogy mely földrajzi területek támogatottak, tekintse meg az [adathelyszíneket](data-locations.md). Ha a Windows rendszerű virtuális asztal támogatja a helyet, de továbbra sem jelenik meg, amikor egy helyet próbál meg kiválasztani, az azt jelenti, hogy az erőforrás-szolgáltató még nem frissült.
+
+**Javítás**: a régiók legújabb listájának beszerzéséhez regisztrálja újra az erőforrás-szolgáltatót:
+
+1. Lépjen az **előfizetések** elemre, és válassza ki a megfelelő előfizetést.
+2. Válassza az **erőforrás-szolgáltató** elemet.
+3. Válassza a **Microsoft. DesktopVirtualization** lehetőséget, majd a művelet menüben válassza az **újbóli regisztráció** lehetőséget.
+
+Ha újra regisztrálja az erőforrás-szolgáltatót, nem jelenik meg konkrét felhasználói felületi visszajelzés vagy frissítési állapot. Az újbóli regisztrálási folyamat szintén nem zavarja a meglévő környezeteket.
 
 ## <a name="azure-resource-manager-template-errors"></a>Azure Resource Manager sablon hibái
 
@@ -265,7 +278,7 @@ the VM.\\\"
 
 **Javítás:** Helyezze a munkamenet-gazdagépet kiürítési módba, jelentkezzen ki az összes felhasználót a munkamenet-gazdagépről, majd törölje a gazdagépet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Windows rendszerű virtuális asztalok és a eszkalációs sávok hibaelhárításával kapcsolatban lásd: [Hibaelhárítás – áttekintés, visszajelzés és támogatás](troubleshoot-set-up-overview.md).
 - A virtuális gép (VM) Windows rendszerű virtuális asztali gépen való konfigurálása során felmerülő problémák elhárításával kapcsolatban lásd: a [munkamenet-gazdagép virtuális gép konfigurálása](troubleshoot-vm-configuration.md).

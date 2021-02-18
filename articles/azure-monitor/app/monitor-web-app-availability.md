@@ -4,12 +4,12 @@ description: Webes teszteket állíthat be az Application Insightsban. Riasztás
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: b0f66608c6e0f23b861e207d0dea07a546b41c2a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 41338760034918dce30ffb45c738588a2aa29786
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937412"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585947"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Bármely webhely rendelkezésre állásának monitorozása
 
@@ -151,7 +151,7 @@ Kattintson a kivétel sorra, és tekintse meg a szintetikus rendelkezésre áll�
 
 ![Kiszolgálóoldali diagnosztika](./media/monitor-web-app-availability/open-instance-4.png)
 
-A nyers eredmények mellett két fő rendelkezésre állási metrikát is megtekintheti [Metrikaböngészőban](../platform/metrics-getting-started.md):
+A nyers eredmények mellett két fő rendelkezésre állási metrikát is megtekintheti [Metrikaböngészőban](../essentials/metrics-getting-started.md):
 
 1. Rendelkezésre állás: Az összes végrehajtott teszt közül a sikeresen végrehajtott tesztek százalékos aránya.
 2. Tesztek időtartama: A tesztek átlagos időtartama az összes végrehajtás alapján.
@@ -159,7 +159,7 @@ A nyers eredmények mellett két fő rendelkezésre állási metrikát is megtek
 ## <a name="automation"></a>Automation
 
 * [Használjon PowerShell-szkripteket a rendelkezésre állási teszt automatikus beállításához](./powershell.md#add-an-availability-test).
-* Állítson be egy [webhookot](../platform/alerts-webhooks.md), amelyet a rendszer riasztás esetén hív meg.
+* Állítson be egy [webhookot](../alerts/alerts-webhooks.md), amelyet a rendszer riasztás esetén hív meg.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

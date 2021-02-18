@@ -8,12 +8,12 @@ ms.author: dademath
 ms.date: 07/28/2020
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: a16846b8859f93a2d376691115e4b2dd0a7163b6
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 3bf0831084b9dd6f16d8208def87033fc0be2900
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633368"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100645441"
 ---
 ## <a name="download-code"></a>Kód letöltése
 
@@ -74,13 +74,13 @@ Most folytatjuk az Azure kommunikációs szolgáltatások kódtárainak telepít
 
 ### <a name="install-communication-services-libraries"></a>A kommunikációs szolgáltatások kódtárainak telepítése
 
-A `Administration` könyvtárat a létrehozásához használjuk `User Access Tokens` .
+A `Identity` könyvtárat a létrehozásához használjuk `User Access Tokens` .
 
 A `npm install` paranccsal telepítheti az Azure Communication Services Felügyeleti ügyféloldali kódtárat a javascripthez.
 
 ```console
 
-npm install @azure/communication-administration --save
+npm install @azure/communication-identity --save
 
 ```
 
@@ -89,7 +89,7 @@ A (z `--save` ) lehetőség a könyvtárat listázza a **package.js** fájlon be
 A `index.js` fájl tetején importálja a felületet a következőhöz: `CommunicationIdentityClient`
 
 ```javascript
-const { CommunicationIdentityClient } = require('@azure/communication-administration');
+const { CommunicationIdentityClient } = require('@azure/communication-identity');
 ```
 
 ## <a name="access-token-generation"></a>Hozzáférési jogkivonat létrehozása
@@ -136,7 +136,7 @@ Nyissa meg az URL-címet a böngészőjében, és meg kell jelennie a válasz t�
 
 Az Azure-függvény üzembe helyezéséhez kövesse [az útmutató lépésről lépésre](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript#sign-in-to-azure)
 
-Általában a következőkre lesz szüksége:
+Összefoglalva, a következőkre lesz szüksége:
 1. Bejelentkezés az Azure-ba a Visual studióból
 2. Tegye közzé a projektjét az Azure-fiókjában. Itt ki kell választania egy meglévő előfizetést.
 3. Hozzon létre egy új Azure Function-erőforrást a Visual Studio varázsló használatával, vagy használjon egy meglévő erőforrást. Új erőforrás esetén konfigurálnia kell azt a kívánt régióra, futtatókörnyezetre és egyedi azonosítóra.

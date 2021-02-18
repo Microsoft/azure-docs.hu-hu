@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan állíthatja be a Azure Advisor új javaslatair
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/29/2020
-ms.openlocfilehash: f03bf6eaf4f3045e00fc67efe6faa9f53d962089
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7b10ad06e5397ab733987373a3bd18de981c8c97
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91629896"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590050"
 ---
 # <a name="quickstart-create-azure-advisor-alerts-on-new-recommendations-using-an-arm-template"></a>Rövid útmutató: Azure Advisor riasztások létrehozása új javaslatokhoz ARM-sablon használatával
 
@@ -17,7 +17,7 @@ Ebből a cikkből megtudhatja, hogyan állíthatja be a Azure Advisor új javasl
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha Azure Advisor észleli az egyik erőforrásra vonatkozó új javaslatot, egy eseményt az [Azure-tevékenység naplójában](../azure-monitor/platform/platform-logs-overview.md)tárol a rendszer. Az eseményekre vonatkozó riasztásokat a Azure Advisor-specifikus riasztások létrehozási felületének használatával állíthatja be. Kiválaszthat egy előfizetést, és opcionálisan egy erőforráscsoportot is megadhatja azokat az erőforrásokat, amelyekről riasztást szeretne kapni.
+Ha Azure Advisor észleli az egyik erőforrásra vonatkozó új javaslatot, egy eseményt az [Azure-tevékenység naplójában](../azure-monitor/essentials/platform-logs-overview.md)tárol a rendszer. Az eseményekre vonatkozó riasztásokat a Azure Advisor-specifikus riasztások létrehozási felületének használatával állíthatja be. Kiválaszthat egy előfizetést, és opcionálisan egy erőforráscsoportot is megadhatja azokat az erőforrásokat, amelyekről riasztást szeretne kapni.
 
 A következő tulajdonságokkal is meghatározhatja a javaslatok típusait:
 
@@ -30,7 +30,7 @@ Azt is beállíthatja, hogy milyen műveletet hajtson végre a rendszer a riaszt
 - Meglévő műveleti csoport kiválasztása
 - Új műveleti csoport létrehozása
 
-A műveletcsoportokkal kapcsolatban további információt a [műveletcsoportok létrehozásáról és kezeléséről](../azure-monitor/platform/action-groups.md) szóló cikkben talál.
+A műveletcsoportokkal kapcsolatban további információt a [műveletcsoportok létrehozásáról és kezeléséről](../azure-monitor/alerts/action-groups.md) szóló cikkben talál.
 
 > [!NOTE]
 > Az Advisor-riasztások jelenleg csak a magas rendelkezésre állás, a teljesítmény és a Cost-javaslatok esetében érhetők el. A biztonsági javaslatok nem támogatottak.
@@ -146,7 +146,7 @@ A sablon két erőforrást határoz meg:
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-A sablont bármely szabványos módszer használatával üzembe helyezheti [egy ARM-sablon üzembe helyezéséhez](../azure-resource-manager/templates/deploy-portal.md) , például a parancssori felület és a PowerShell használatával. Cserélje le az **erőforráscsoport**mintáit, és az **emailAddress** értéket a környezete megfelelő értékeivel. A munkaterület nevének egyedinek kell lennie az összes Azure-előfizetés között.
+A sablont bármely szabványos módszer használatával üzembe helyezheti [egy ARM-sablon üzembe helyezéséhez](../azure-resource-manager/templates/deploy-portal.md) , például a parancssori felület és a PowerShell használatával. Cserélje le az **erőforráscsoport** mintáit, és az **emailAddress** értéket a környezete megfelelő értékeivel. A munkaterület nevének egyedinek kell lennie az összes Azure-előfizetés között.
 
 # <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
@@ -203,5 +203,5 @@ Remove-AzResourceGroup -Name my-resource-group
 
 ## <a name="next-steps"></a>További lépések
 
-- [Tekintse át a tevékenységek naplójának riasztásait](../azure-monitor/platform/alerts-overview.md), és Ismerje meg, hogyan fogadhat riasztásokat.
-- További információ a [műveleti csoportokról](../azure-monitor/platform/action-groups.md).
+- [Tekintse át a tevékenységek naplójának riasztásait](../azure-monitor/alerts/alerts-overview.md), és Ismerje meg, hogyan fogadhat riasztásokat.
+- További információ a [műveleti csoportokról](../azure-monitor/alerts/action-groups.md).

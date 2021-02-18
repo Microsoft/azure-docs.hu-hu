@@ -1,14 +1,14 @@
 ---
 title: Event Hubs – folyamatos átviteli események rögzítése Azure Portal használatával
 description: Ez a cikk azt ismerteti, hogyan engedélyezhető az események rögzítése az Azure Event Hubs az Azure Portal használatával.
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 2381bfa627d00a78ed91af0ba81579588ee016ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c89a6e56c2d0bc7b7ff09d5fd63737009239eb9
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613577"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653951"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Az Azure Event Hubs használatával streamelt események rögzítésének engedélyezése
 
@@ -37,8 +37,8 @@ Az időkeret alapértelmezett értéke 5 perc. A minimális értéke 1, a maxim�
 1. Az Azure Storage-fiók létrehozásához kövesse [a Storage-fiók létrehozása](../storage/common/storage-account-create.md?tabs=azure-portal#create-a-storage-account) című cikket. A **speciális** lapon állítsa be a **hierarchikus névteret** **úgy,** hogy egy Azure Data Lake Storage 2. generációs fiókot hozzon létre.
 2. Az Event hub létrehozásakor hajtsa végre a következő lépéseket: 
 
-    1. A **rögzítéshez**válassza **a** be lehetőséget. 
-    2. Válassza az **Azure Storage** lehetőséget a rögzítési szolgáltatóként. A **rögzítési szolgáltatónál** megjelenő **Azure Data Lake Storei** beállítás a Azure Data Lake Storage Gen 1. Azure Data Lake Storage 2. generációs használatának kiválasztásához válassza az **Azure Storage**lehetőséget.
+    1. A **rögzítéshez** válassza **a** be lehetőséget. 
+    2. Válassza az **Azure Storage** lehetőséget a rögzítési szolgáltatóként. A **rögzítési szolgáltatónál** megjelenő **Azure Data Lake Storei** beállítás a Azure Data Lake Storage Gen 1. Azure Data Lake Storage 2. generációs használatának kiválasztásához válassza az **Azure Storage** lehetőséget.
     2. Kattintson a **tároló kiválasztása** gombra. 
 
         ![Rögzítés engedélyezése a 2. generációs Data Lake Storage](./media/event-hubs-capture-enable-through-portal/data-lake-storage-gen2.png)
@@ -48,7 +48,7 @@ Az időkeret alapértelmezett értéke 5 perc. A minimális értéke 1, a maxim�
 4. Válassza ki a **tárolót** (a fájlrendszert Data Lake Storage Gen 2).
 
     ![Válassza ki a fájlrendszert a tárolóban.](./media/event-hubs-capture-enable-through-portal/select-file-system-data-lake-storage.png)
-5. Az **Event hub létrehozása** lapon válassza a **Létrehozás**lehetőséget. 
+5. Az **Event hub létrehozása** lapon válassza a **Létrehozás** lehetőséget. 
 
     ![Létrehozás gomb kiválasztása](./media/event-hubs-capture-enable-through-portal/create-event-hub-data-lake-storage.png)
 

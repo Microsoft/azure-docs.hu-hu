@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 4d3781c7a3894429cb5daccb334655543e3eea01
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: af42b83fc005397d4564b7570eedaff0305a8bc8
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100551473"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653539"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 Az első lépések előtt ügyeljen a következőre:
@@ -88,24 +88,7 @@ Hozzon létre egy fájlt **client.js** nevű projekt gyökérkönyvtárában, ho
 
 Ha csevegési ügyfelet szeretne létrehozni a webalkalmazásban, akkor a kommunikációs szolgáltatás **végpontját** és az előfeltételként szükséges lépések részeként létrehozott **hozzáférési tokent** fogja használni. 
 
-A felhasználói hozzáférési tokenek lehetővé teszik olyan ügyfélalkalmazások összeállítását, amelyek közvetlenül az Azure kommunikációs szolgáltatásokban vannak hitelesítve.
-
-##### <a name="server-vs-client-side"></a>Kiszolgáló és ügyfél oldal
-
-Javasoljuk, hogy a hozzáférési jogkivonatokat egy kiszolgálóoldali összetevővel hozza létre, amely továbbítja azokat az ügyfélalkalmazás számára. Ebben a forgatókönyvben a kiszolgálói oldal feladata a felhasználók létrehozása és kezelése, valamint a jogkivonatok kiállítása. Az ügyfél ezután hozzáférési jogkivonatokat fogadhat a szolgáltatástól, és az Azure kommunikációs szolgáltatások ügyféloldali kódtárainak hitelesítéséhez használhatja azokat.
-
-A tokenek a JavaScripthez készült Azure kommunikációs adminisztrációs könyvtár használatával is kiadhatók az ügyfél oldalán. Ebben az esetben az ügyfélnek tudnia kell a felhasználókat a jogkivonatok kibocsátása érdekében.
-
-Az [ügyfél és a kiszolgáló architektúrájának](../../../concepts/client-and-server-architecture.md) további részleteiért tekintse meg az alábbi dokumentációt
-
-Az alábbi ábrán az ügyféloldali alkalmazás egy megbízható szolgáltatási szinten kap hozzáférési jogkivonatot. Az alkalmazás ezután a token használatával hitelesíti a kommunikációs szolgáltatások kódtárait. A hitelesítés után az alkalmazás mostantól használhatja a kommunikációs szolgáltatások ügyféloldali kódtárait olyan műveletek elvégzésére, mint például a más felhasználókkal való csevegés.
-
-:::image type="content" source="../../../media/scenarios/archdiagram-access.png" alt-text="A felhasználói hozzáférési jogkivonat architektúráját bemutató ábra.":::
-
-##### <a name="instructions"></a>Utasítások
-Ez a bemutató nem fedi le a csevegési alkalmazás szolgáltatási szintjeinek létrehozását. 
-
-Ha nem hozott létre felhasználókat és jogkivonatokat, kövesse az itt található utasításokat: [felhasználói hozzáférési jogkivonat](../../access-tokens.md). Ne felejtse el beállítani a hatókört a "csevegés" és nem "VoIP" értékre.
+A felhasználói hozzáférési tokenek lehetővé teszik olyan ügyfélalkalmazások összeállítását, amelyek közvetlenül az Azure kommunikációs szolgáltatásokban vannak hitelesítve. Ez a rövid útmutató nem vonatkozik a csevegési alkalmazás jogkivonatait kezelő szolgáltatási rétegek létrehozására. A hozzáférési jogkivonatokkal kapcsolatos további információkért tekintse meg a [csevegési](../../../concepts/chat/concepts.md) architektúrával és a [felhasználói hozzáférési jogkivonatokkal](../../access-tokens.md) kapcsolatos további információkat.
 
 **client.js** az alábbi kódban a végpont és a hozzáférési token használatával adja hozzá a csevegési képességet az Azure kommunikációs csevegési ügyféloldali kódtár használatával a javascripthez.
 

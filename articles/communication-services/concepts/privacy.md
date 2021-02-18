@@ -8,12 +8,12 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: a047761669920d6460c3d6fb6d74b970effa7846
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5ea4e4fcce380a3bd9c30312639f7aa10bf0bb90
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572034"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653465"
 ---
 # <a name="region-availability-and-data-residency"></a>Regionális elérhetőség és adattárolási hely
 
@@ -23,7 +23,11 @@ Az Azure kommunikációs szolgáltatás elkötelezett ahhoz, hogy ügyfeleink me
 
 ## <a name="data-residency"></a>Adattárolási hely
 
-A kommunikációs szolgáltatások erőforrásának létrehozásakor meg kell adnia egy **földrajzot** (nem Azure-adatközpontot). A kommunikációs szolgáltatások által tárolt összes adat az adott földrajzban megmarad a kommunikációs szolgáltatások által belsőleg kiválasztott adatközpontban. Az adatátvitel azonban más földrajzi területeken is átadható vagy feldolgozható, ezek a globális végpontok nagy teljesítményű, kis késleltetésű felhasználói élményt biztosítanak a végfelhasználók számára a helyüktől függetlenül.
+A kommunikációs szolgáltatások erőforrásának létrehozásakor meg kell adnia egy **földrajzot** (nem Azure-adatközpontot). A kommunikációs szolgáltatások által tárolt összes adat az adott földrajzban megmarad a kommunikációs szolgáltatások által belsőleg kiválasztott adatközpontban. Az adatforgalom más földrajzi területeken is áthaladhat vagy feldolgozható. Ezek a globális végpontok ahhoz szükségesek, hogy nagy teljesítményű, kis késleltetésű felhasználói élményt nyújtsanak a végfelhasználóknak a helyüktől függetlenül.
+
+## <a name="data-residency-and-events"></a>Adattárolás és események
+
+Az Azure kommunikációs szolgáltatásokkal konfigurált Event Grid rendszertémakörek globális helyen lesznek létrehozva. A megbízható kézbesítés támogatásához a globális Event Grid rendszertémakör bármely Microsoft-adatközpontban tárolhatja az eseményeket. Az Azure kommunikációs szolgáltatásokkal való Event Grid konfigurálásakor az esemény adatait Event Grid, amely az Ön felügyelete alá tartozó Azure-erőforrás. Habár az Azure kommunikációs szolgáltatások úgy konfigurálhatók, hogy Azure Event Grid használják, Ön felelős a Event Grid-erőforrás és a benne tárolt adatkezelésért.
 
 ## <a name="relating-humans-to-azure-communication-services-identities"></a>Az Azure kommunikációs szolgáltatások identitásával kapcsolatos emberek
 

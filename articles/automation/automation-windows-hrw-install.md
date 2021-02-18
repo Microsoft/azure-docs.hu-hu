@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 09c86e23379cf9ccecf77d88a99ad6b3a7019a87
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: f6858c7350e6c72a096b2f2bd5f4a4ff606bf023
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100006989"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651357"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker üzembe helyezése
 
-A Azure Automation User Hybrid Runbook Worker funkciójának használatával közvetlenül az Azure-beli vagy nem Azure-beli gépen futtathatja a runbookok, beleértve az [Azure arc-kompatibilis kiszolgálókon](../azure-arc/servers/overview.md)regisztrált kiszolgálókat is. A szerepkört üzemeltető gépről vagy kiszolgálóról a runbookok közvetlenül, illetve a környezetben lévő erőforrásokkal is futtathatja a helyi erőforrások kezeléséhez.
+A Azure Automation User Hybrid Runbook Worker funkciójának használatával közvetlenül egy Azure-beli vagy nem Azure-beli gépen futtathatja a runbookok, beleértve az [Azure arc-kompatibilis kiszolgálókon](../azure-arc/servers/overview.md)regisztrált kiszolgálókat is. A szerepkört futtató gépről vagy kiszolgálóról közvetlenül a runbookok, illetve a környezet erőforrásainak használatával felügyelheti a helyi erőforrásokat.
 
 A Azure Automation a runbookok tárolja és felügyeli, majd egy vagy több kijelölt gépre továbbítja azokat. Ez a cikk azt ismerteti, hogyan helyezhet üzembe egy hibrid Runbook-feldolgozót egy Windows rendszerű gépen, hogyan távolíthatja el a feldolgozót, és hogyan távolíthat el egy hibrid Runbook-feldolgozói csoportot.
 
@@ -26,13 +26,13 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következőkkel
 
 ### <a name="a-log-analytics-workspace"></a>Log Analytics munkaterület
 
-A hibrid Runbook-feldolgozói szerepkör a szerepkör telepítéséhez és konfigurálásához Azure Monitor Log Analytics munkaterülettől függ. [Azure Resource Manager](../azure-monitor/samples/resource-manager-workspace.md#create-a-log-analytics-workspace), a [PowerShell](../azure-monitor/scripts/powershell-sample-create-workspace.md?toc=/powershell/module/toc.json)vagy a [Azure Portal](../azure-monitor/learn/quick-create-workspace.md)segítségével hozhatja létre.
+A hibrid Runbook-feldolgozói szerepkör a szerepkör telepítéséhez és konfigurálásához Azure Monitor Log Analytics munkaterülettől függ. [Azure Resource Manager](../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace), a [PowerShell](../azure-monitor/logs/powershell-sample-create-workspace.md?toc=/powershell/module/toc.json)vagy a [Azure Portal](../azure-monitor/logs/quick-create-workspace.md)segítségével hozhatja létre.
 
-Ha nem rendelkezik Azure Monitor Log Analytics munkaterülettel, tekintse át a [Azure monitor log tervezési útmutatót](../azure-monitor/platform/design-logs-deployment.md) a munkaterület létrehozása előtt.
+Ha nem rendelkezik Azure Monitor Log Analytics munkaterülettel, tekintse át a [Azure monitor log tervezési útmutatót](../azure-monitor/logs/design-logs-deployment.md) a munkaterület létrehozása előtt.
 
 ### <a name="log-analytics-agent"></a>Log Analytics-ügynök
 
-A hibrid Runbook feldolgozói szerepkörhöz a [log Analytics ügynök](../azure-monitor/platform/log-analytics-agent.md) szükséges a támogatott Windows operációs rendszerhez. Az Azure-on kívül üzemeltetett kiszolgálók vagy gépek esetében a Log Analytics-ügynököt az [Azure arc-kompatibilis kiszolgálók](../azure-arc/servers/overview.md)használatával telepítheti.
+A hibrid Runbook feldolgozói szerepkörhöz a [log Analytics ügynök](../azure-monitor/agents/log-analytics-agent.md) szükséges a támogatott Windows operációs rendszerhez. Az Azure-on kívül üzemeltetett kiszolgálók vagy gépek esetében a Log Analytics-ügynököt az [Azure arc-kompatibilis kiszolgálók](../azure-arc/servers/overview.md)használatával telepítheti.
 
 ### <a name="supported-windows-operating-system"></a>Támogatott Windows operációs rendszer
 

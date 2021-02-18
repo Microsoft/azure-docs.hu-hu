@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 5fe1d5a5a472b47abd364a89d1a65f1249c67c0d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c2883a2ddba9a322c09a318aa9f232de5f4704b4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538663"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595163"
 ---
 # <a name="monitor-azure-database-for-mysql-flexible-servers-with-built-in-metrics"></a>Beépített metrikákkal rendelkező rugalmas kiszolgálók figyelése Azure Database for MySQL
 
@@ -24,14 +24,14 @@ Ebben a cikkben megismerheti a rugalmas kiszolgáló különböző mérőszámai
 
 ## <a name="available-metrics"></a>Rendelkezésre álló metrikák
 
-Azure Database for MySQL rugalmas kiszolgáló különböző mérőszámokat biztosít a számítási feladatok végrehajtásához és az adatok alapján, megtudhatja, milyen hatással van a kiszolgálóra és az alkalmazásra. A rugalmas kiszolgálókon például figyelheti a **GAZDAGÉP CPU-százalékát** , az **aktív kapcsolatokat** , az **i/o százalékot** és a **gazdagép memória százalékát** , hogy azonosítsa a teljesítményre gyakorolt hatást. Előfordulhat, hogy optimalizálnia kell a munkaterhelést, méreteznie kell függőlegesen a számítási rétegek módosításával, vagy horizontálisan kell méreteznie az olvasási replika használatával.
+Azure Database for MySQL rugalmas kiszolgáló különböző mérőszámokat biztosít a számítási feladatok végrehajtásához és az adatok alapján, megtudhatja, milyen hatással van a kiszolgálóra és az alkalmazásra. A rugalmas kiszolgálókon például figyelheti a **GAZDAGÉP CPU-százalékát**, az **aktív kapcsolatokat**, az **i/o százalékot** és a **gazdagép memória százalékát** , hogy azonosítsa a teljesítményre gyakorolt hatást. Előfordulhat, hogy optimalizálnia kell a munkaterhelést, méreteznie kell függőlegesen a számítási rétegek módosításával, vagy horizontálisan kell méreteznie az olvasási replika használatával.
 
-Minden Azure-metrika egyperces gyakorisággal rendelkezik, és minden metrika 30 napos előzményt biztosít. A mérőszámokra vonatkozó riasztásokat is beállíthat. Részletes útmutatást a [riasztások beállítása](./how-to-alert-on-metric.md)című témakörben talál. Az egyéb feladatok közé tartozik az automatizált műveletek beállítása, a speciális elemzések végrehajtása és az archiválási előzmények. További információt az [Azure mérőszámok áttekintése](../../azure-monitor/platform/data-platform.md)című témakörben talál.
+Minden Azure-metrika egyperces gyakorisággal rendelkezik, és minden metrika 30 napos előzményt biztosít. A mérőszámokra vonatkozó riasztásokat is beállíthat. Részletes útmutatást a [riasztások beállítása](./how-to-alert-on-metric.md)című témakörben talál. Az egyéb feladatok közé tartozik az automatizált műveletek beállítása, a speciális elemzések végrehajtása és az archiválási előzmények. További információt az [Azure mérőszámok áttekintése](../../azure-monitor/data-platform.md)című témakörben talál.
 
 ### <a name="list-of-metrics"></a>Metrikák listája
 Ezek a metrikák a Azure Database for MySQL számára érhetők el:
 
-|Metrika megjelenítendő neve|Metrika|Egység|Leírás|
+|Metrika megjelenítendő neve|Metric|Unit (Egység)|Description|
 |---|---|---|---|
 |Gazda CPU-százaléka|cpu_percent|Százalék|A kiszolgálón a CPU-kihasználtság százalékos aránya, beleértve a processzor kihasználtságát és az Azure MySQL folyamatait is|
 |Gazdagép hálózata |network_bytes_ingress|Bájt|Bejövő hálózati forgalom a kiszolgálón, beleértve az ügyfél-adatbázis és az Azure MySQL-funkciók (például replikálás, monitorozás, naplók stb.) forgalmát.|

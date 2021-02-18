@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 46c41a4868c80bf9ba1c2c6d4a8286c3a8f47c3d
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: cbab73a2fb3aecaacdfc92950c0d0b86edf775af
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530433"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653346"
 ---
 # <a name="manage-digital-twins"></a>Digitális ikereszközök kezelése
 
@@ -160,7 +160,7 @@ A javítási hívások a több tulajdonságot is frissíthetik egyetlen dupla é
 
 :::code language="json" source="~/digital-twins-docs-samples/models/patch.json":::
 
-Az `JsonPatchDocument` [SDK](how-to-use-apis-sdks.md)-ban létrehozhatja a javításokat. Íme egy példa.
+Az Azure .NET SDK [JsonPatchDocument](/dotnet/api/azure.jsonpatchdocument?view=azure-dotnet&preserve-view=true)is létrehozhat javításokat. Íme egy példa.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="UpdateTwin":::
 

@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: c1cdafe2929502293aada32dbae06e342761862b
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 295a46f6d1074ddf8422233ea3ccfa4d65c28fd8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98876698"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571597"
 ---
 # <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows rendszerű virtuális asztali RDP-Shortpath (előzetes verzió)
 
@@ -151,7 +151,8 @@ Ahhoz, hogy az RDP-Shortpath figyelő hozzáférjen a hálózati biztonsági hat
 Kövesse a [hálózati biztonsági csoport dokumentációját](../virtual-machines/windows/nsg-quickstart-portal.md) egy olyan bejövő biztonsági szabály létrehozásához, amely engedélyezi a forgalmat a következő paraméterekkel:
 
 * **Forrás**  -  **Bármely** vagy az az IP-címtartomány, amelyben az ügyfelek tartózkodnak
-* **Forrásport-tartományok** – * *\** _ _ **célhely**  -  
+* **Forrásport-tartományok** - **\***
+* **Cél**  -  **Bármilyen**
 * **Célport tartományai**  -  **3390**
 * **Protokoll**  -  **UDP**
 * **Művelet**  -  **Engedélyezés**
@@ -188,7 +189,7 @@ Lehetséges értékek:
 * **0** – a felhasználói kapcsolat nem használ RDP-Shortpath
 * **1** – a felhasználói kapcsolat RDP-Shortpath használ
   
-A következő lekérdezési lista lehetővé teszi a kapcsolatok adatainak áttekintését. Ezt a lekérdezést a [log Analytics lekérdezés-szerkesztőben](../azure-monitor/log-query/log-analytics-tutorial.md#write-a-query)futtathatja. Minden lekérdezésnél cserélje le a helyére a `userupn` megkeresni kívánt felhasználó egyszerű felhasználónevét.
+A következő lekérdezési lista lehetővé teszi a kapcsolatok adatainak áttekintését. Ezt a lekérdezést a [log Analytics lekérdezés-szerkesztőben](../azure-monitor/logs/log-analytics-tutorial.md#write-a-query)futtathatja. Minden lekérdezésnél cserélje le a helyére a `userupn` megkeresni kívánt felhasználó egyszerű felhasználónevét.
 
 ```kusto
 let Events = WVDConnections | where UserName == "userupn" ;
@@ -253,7 +254,7 @@ Egy adott munkamenet-állomás RDP-Shortpath letiltásához a következő Csopor
 Ezt a nyilvános előzetes verziót szeretném hallani a tapasztalatairól!
 * Kérdések, kérések, megjegyzések és egyéb visszajelzések esetén [használja ezt a visszajelzési űrlapot](https://aka.ms/RDPShortpathFeedback).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Windows rendszerű virtuális asztali hálózati kapcsolat megismeréséhez tekintse meg a [Windows rendszerű virtuális asztali hálózati kapcsolat ismertetése](network-connectivity.md)című témakört.
 * A Windows rendszerű virtuális asztali szolgáltatások szolgáltatásminőség (QoS) szolgáltatásának megkezdéséhez lásd: [a Windows rendszerű virtuális asztali szolgáltatás szolgáltatásminőség (QoS) implementálása](rdp-quality-of-service-qos.md).

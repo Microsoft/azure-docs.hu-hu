@@ -68,7 +68,7 @@
     - name: Resource Manager-sablonok
       items:
         - name: Áttekintés
-          href: /resource-manager-samples.md
+          href: resource-manager-samples.md
         - name: Ügynökök
           href: agents/resource-manager-agent.md
         - name: Riasztások
@@ -102,9 +102,9 @@
         - name: Azure Monitor virtuális gépekhez
           href: vm/resource-manager-vminsights.md
     - name: Azure CLI
-      href: /cli-samples.md
+      href: cli-samples.md
     - name: Azure PowerShell
-      href: /powershell-samples.md
+      href: powershell-samples.md
 - name: Alapelvek
   items:
     - name: Miket lehet monitorozni?
@@ -114,7 +114,7 @@
     - name: Adatforrások
       href: agents/data-sources.md
     - name: Adatplatform
-      href: /data-platform.md
+      href: data-platform.md
     - name: Adatbiztonság
       items:
         - name: Naplóadatok
@@ -142,7 +142,7 @@
     - name: Adatok vizualizációja
       href: visualizations.md
     - name: Partnerintegrációk
-      href: /partners.md
+      href: partners.md
     - name: Biztonság
       items:
         - name: Biztonsági alapkonfiguráció
@@ -169,14 +169,14 @@
     - name: Kezelés és konfigurálás
       items:
         - name: Szerepköri engedélyek és biztonság
-          href: /roles-permissions-security.md
+          href: roles-permissions-security.md
         - name: IP-címek
           href: app/ip-addresses.md
           displayname: 'firewall, firewall exceptions, whitelist'
         - name: Használat és költségek
           items:
             - name: Használat és becsült költségek
-              href: /usage-estimated-costs.md
+              href: usage-estimated-costs.md
             - name: Alkalmazás használata és költségei
               href: app/pricing.md
             - name: Adathasználat és -költségek naplózása
@@ -1399,7 +1399,7 @@
           href: /azure/templates/microsoft.operationalinsights/allversions
     - name: Az Azure Policy beépített elemei
       displayName: 'samples, policies, definitions'
-      href: /policy-reference.md
+      href: policy-reference.md
     - name: Szolgáltatás és API kivezetése
       items:
         - name: OperationalInsights API
