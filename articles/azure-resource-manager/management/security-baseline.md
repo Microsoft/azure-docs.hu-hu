@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b4f0c64abf150165e3239e78e8cf9b824b34eed6
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 5e44515c8ca71d115ced65c9123e2b1ae3bdf23a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202368"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578232"
 ---
 # <a name="azure-security-baseline-for-azure-resource-manager"></a>Azure Resource Manager Azure biztonsági alapterve
 
@@ -31,9 +31,9 @@ A tartalom az Azure biztonsági teljesítményteszt által meghatározott **bizt
 
 - [Az Azure Sentinel előkészítése](../../sentinel/quickstart-onboard.md) 
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md) 
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Az Azure-beli virtuális gépek belső gazdagép-naplóinak összegyűjtése Azure Monitor](../../azure-monitor/learn/quick-collect-azurevm.md) 
+- [Az Azure-beli virtuális gépek belső gazdagép-naplóinak összegyűjtése Azure Monitor](../../azure-monitor/vm/quick-collect-azurevm.md) 
 
 - [Ismerkedés a Azure Monitor és a harmadik féltől származó SIEM-integrációval](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -45,9 +45,9 @@ A tartalom az Azure biztonsági teljesítményteszt által meghatározott **bizt
 
 **Útmutató**: a Azure Resource Manager a tevékenység naplóit használja, amelyek automatikusan engedélyezve vannak az eseményforrás, a dátum, a felhasználó, az időbélyeg, a forráscím, a célhelyek és más hasznos elemek belefoglalásához.
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md) 
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](../../azure-monitor/platform/platform-logs-overview.md)
+- [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](../../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -61,9 +61,9 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 - [Az Azure Sentinel előkészítése](../../sentinel/quickstart-onboard.md) 
 
-- [Log Analytics lekérdezések első lépései](../../azure-monitor/log-query/log-analytics-tutorial.md) 
+- [Log Analytics lekérdezések első lépései](../../azure-monitor/logs/log-analytics-tutorial.md) 
 
-- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../../azure-monitor/log-query/get-started-queries.md)
+- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -77,7 +77,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 - [Riasztások kezelése Azure Security Centerban](../../security-center/security-center-managing-and-responding-alerts.md) 
 
-- [Riasztás a Log Analytics naplózási információi alapján](../../azure-monitor/learn/tutorial-response.md)
+- [Riasztás a Log Analytics naplózási információi alapján](../../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -261,7 +261,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, amikor a módosítások a kritikus Azure-erőforrásokra vonatkoznak.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../../azure-monitor/platform/alerts-activity-log.md)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Az Azure Security Center monitorozása**: Igen
 

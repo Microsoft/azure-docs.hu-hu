@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 356353da639ab97a1a4e5483abf56050f5a236f8
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 3c3d1930234c178a56227830ef0702450ddf4a8c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676058"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580672"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Futtatási állapot monitorozása, triggerelőzmények áttekintése és riasztások beállítása az Azure Logic Appshez
 
 [A logikai alkalmazás létrehozása és futtatása](../logic-apps/quickstart-create-first-logic-app-workflow.md)után megtekintheti a logikai alkalmazás futtatási állapotát, [futtathatja az előzményeket](#review-runs-history), az [aktiválási előzményeket](#review-trigger-history)és a teljesítményt. Ha értesítéseket szeretne kapni a hibákról vagy egyéb lehetséges problémákról, állítson be [riasztásokat](#add-azure-alerts). Létrehozhat például egy olyan riasztást, amely észleli a következőt: "Ha ötnél több futtatása meghiúsul egy órán belül."
 
-A valós idejű események figyelése és a szélesebb körű hibakeresés érdekében [Azure monitor naplók](../azure-monitor/overview.md)használatával állítsa be a logikai alkalmazás diagnosztikai naplózását. Ez az Azure-szolgáltatás segít a felhő és a helyszíni környezetek monitorozásában, így könnyebben megtarthatja a rendelkezésre állást és a teljesítményt. Ezután megkeresheti és megtekintheti az eseményeket, például az események aktiválását, az események futtatását és a műveleti eseményeket. Ha ezeket az információkat [Azure monitor-naplókban](../azure-monitor/platform/data-platform-logs.md)tárolja, létrehozhat olyan [napló-lekérdezéseket](../azure-monitor/log-query/log-query-overview.md) , amelyek segítségével megkeresheti és elemezheti ezeket az adatokat. Ezt a diagnosztikai szolgáltatást más Azure-szolgáltatásokkal, például az Azure Storage-val és az Azure Event Hubs is használhatja. További információ: [Logic Apps-alkalmazások figyelése Azure monitor használatával](../logic-apps/monitor-logic-apps-log-analytics.md).
+A valós idejű események figyelése és a szélesebb körű hibakeresés érdekében [Azure monitor naplók](../azure-monitor/overview.md)használatával állítsa be a logikai alkalmazás diagnosztikai naplózását. Ez az Azure-szolgáltatás segít a felhő és a helyszíni környezetek monitorozásában, így könnyebben megtarthatja a rendelkezésre állást és a teljesítményt. Ezután megkeresheti és megtekintheti az eseményeket, például az események aktiválását, az események futtatását és a műveleti eseményeket. Ha ezeket az információkat [Azure monitor-naplókban](../azure-monitor/logs/data-platform-logs.md)tárolja, létrehozhat olyan [napló-lekérdezéseket](../azure-monitor/logs/log-query-overview.md) , amelyek segítségével megkeresheti és elemezheti ezeket az adatokat. Ezt a diagnosztikai szolgáltatást más Azure-szolgáltatásokkal, például az Azure Storage-val és az Azure Event Hubs is használhatja. További információ: [Logic Apps-alkalmazások figyelése Azure monitor használatával](../logic-apps/monitor-logic-apps-log-analytics.md).
 
 > [!NOTE]
 > Ha a logikai alkalmazások egy [belső hozzáférési végpont](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)használatára létrehozott [integrációs szolgáltatási környezetben (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) futnak, a logikai alkalmazás futtatási előzményeinek bemeneteit és kimeneteit *csak a virtuális hálózatán belül* tekintheti meg és érheti el. Győződjön meg arról, hogy van hálózati kapcsolat a privát végpontok és azon számítógép között, ahonnan el szeretné érni a futtatási előzményeket. Például az ügyfélszámítógép létezhet az ISE virtuális hálózatán belül vagy egy olyan virtuális hálózaton belül, amely csatlakozik az ISE virtuális hálózatához, például a peering vagy egy virtuális magánhálózat használatával. További információ: [ISE Endpoint Access](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). 
@@ -49,14 +49,14 @@ Minden alkalommal, amikor az eseményindító egy elemhez vagy eseményhez tüze
 
    A lehetséges futtatási állapotok:
 
-   | Futtatás állapota | Leírás |
+   | Futtatás állapota | Description |
    |------------|-------------|
    | **Megszakítva** | A Futtatás leállt vagy nem fejeződik be külső problémák miatt, például rendszerleállás vagy elévült Azure-előfizetés. |
    | **Megszakítva** | A Futtatás elindítva és elindítva, de lemondási kérelem érkezett. |
    | **Sikertelen** | A Futtatás során legalább egy művelet sikertelen volt. A munkafolyamatban nem történt további művelet, amely a hiba kezelésére lett beállítva. |
-   | **Futó** | A Futtatás aktiválva lett, és folyamatban van, de ez az állapot a [művelet korlátai](logic-apps-limits-and-config.md) vagy a [jelenlegi díjszabási csomag](https://azure.microsoft.com/pricing/details/logic-apps/)miatt szabályozott Futtatás esetén is megjelenhet. <p><p>**Tipp** : Ha [diagnosztikai naplózást](monitor-logic-apps-log-analytics.md)állít be, a megjelenő összes szabályozási eseményről információt kaphat. |
+   | **Futó** | A Futtatás aktiválva lett, és folyamatban van, de ez az állapot a [művelet korlátai](logic-apps-limits-and-config.md) vagy a [jelenlegi díjszabási csomag](https://azure.microsoft.com/pricing/details/logic-apps/)miatt szabályozott Futtatás esetén is megjelenhet. <p><p>**Tipp**: Ha [diagnosztikai naplózást](monitor-logic-apps-log-analytics.md)állít be, a megjelenő összes szabályozási eseményről információt kaphat. |
    | **Sikeres** | A Futtatás sikerült. Ha bármilyen művelet meghiúsult, a munkafolyamat egy későbbi művelete ezt a hibát kezelte. |
-   | **Időtúllépés** | A Futtatás időtúllépés miatt meghaladta az időkorlátot, mert a jelenlegi időtartam túllépte a futtatási időtartam határértékét, amelyet a [ **futtatási Előzmények megőrzése nap** beállításban](logic-apps-limits-and-config.md#run-duration-retention-limits)szabályoz. A Futtatás időtartamát a Futtatás kezdő időpontja és a futtatási időtartam korlátja alapján számítjuk ki a kezdési időpontnál. <p><p>**Megjegyzés** : Ha a Futtatás időtartama szintén meghaladja az aktuális *futtatási előzmények megőrzési korlátját* is, amelyet a futtatási [ **Előzmények megőrzésének napja** beállítás](logic-apps-limits-and-config.md#run-duration-retention-limits)is szabályoz, a futtatást a rendszer a napi törlési feladatokból törli a futtatási előzményekből. Függetlenül attól, hogy a futási idő ki vagy fejeződik be, a megőrzési időszakot a rendszer mindig a Futtatás kezdési ideje és az *aktuális* megőrzési korlát használatával számítja ki. Tehát ha csökkenti a repülés közbeni futás időtartamának korlátját, a Futtatás időtúllépést eredményez. A Futtatás azonban marad, vagy törlődik a futtatási előzmények alapján, attól függően, hogy a Futtatás időtartama túllépte-e a megőrzési korlátot. |
+   | **Időtúllépés** | A Futtatás időtúllépés miatt meghaladta az időkorlátot, mert a jelenlegi időtartam túllépte a futtatási időtartam határértékét, amelyet a [ **futtatási Előzmények megőrzése nap** beállításban](logic-apps-limits-and-config.md#run-duration-retention-limits)szabályoz. A Futtatás időtartamát a Futtatás kezdő időpontja és a futtatási időtartam korlátja alapján számítjuk ki a kezdési időpontnál. <p><p>**Megjegyzés**: Ha a Futtatás időtartama szintén meghaladja az aktuális *futtatási előzmények megőrzési korlátját* is, amelyet a futtatási [ **Előzmények megőrzésének napja** beállítás](logic-apps-limits-and-config.md#run-duration-retention-limits)is szabályoz, a futtatást a rendszer a napi törlési feladatokból törli a futtatási előzményekből. Függetlenül attól, hogy a futási idő ki vagy fejeződik be, a megőrzési időszakot a rendszer mindig a Futtatás kezdési ideje és az *aktuális* megőrzési korlát használatával számítja ki. Tehát ha csökkenti a repülés közbeni futás időtartamának korlátját, a Futtatás időtúllépést eredményez. A Futtatás azonban marad, vagy törlődik a futtatási előzmények alapján, attól függően, hogy a Futtatás időtartama túllépte-e a megőrzési korlátot. |
    | **Várakozó** | A Futtatás nem indult el vagy szüneteltetve van, például egy olyan korábbi munkafolyamat-példány miatt, amely még fut. |
    |||
 
@@ -121,7 +121,7 @@ Az egyes logikai alkalmazások futtatása triggerrel kezdődik. Az aktiválási 
 
    A lehetséges kiváltó kísérletek állapota:
 
-   | Triggerállapot | Leírás |
+   | Triggerállapot | Description |
    |----------------|-------------|
    | **Sikertelen** | Hiba történt. A sikertelen triggerek által generált hibaüzenetek áttekintéséhez válassza ki az aktiválási kísérletet, és válassza a **kimenetek** lehetőséget. Előfordulhat például, hogy olyan bemeneteket talál, amelyek nem érvényesek. |
    | **Kimarad** | A trigger ellenőrizte a végpontot, de nem talált olyan adathalmazt, amely megfelel a megadott feltételeknek. |
@@ -141,9 +141,9 @@ Az egyes logikai alkalmazások futtatása triggerrel kezdődik. Az aktiválási 
 
 <a name="add-azure-alerts"></a>
 
-## <a name="set-up-monitoring-alerts"></a>Figyelési riasztások beállítása
+## <a name="set-up-monitoring-alerts"></a>Monitorozási figyelmeztetések beállítása
 
-Ha a logikai alkalmazáshoz meghatározott mérőszámok alapján vagy túllépte a riasztásokat, állítson be [riasztásokat a Azure monitorban](../azure-monitor/platform/alerts-overview.md). Ismerje meg [Az Azure mérőszámait](../azure-monitor/platform/data-platform.md). Ha [Azure monitor](../azure-monitor/log-query/log-query-overview.md)használata nélkül szeretné beállítani a riasztásokat, kövesse az alábbi lépéseket.
+Ha a logikai alkalmazáshoz meghatározott mérőszámok alapján vagy túllépte a riasztásokat, állítson be [riasztásokat a Azure monitorban](../azure-monitor/alerts/alerts-overview.md). Ismerje meg [Az Azure mérőszámait](../azure-monitor/data-platform.md). Ha [Azure monitor](../azure-monitor/logs/log-query-overview.md)használata nélkül szeretné beállítani a riasztásokat, kövesse az alábbi lépéseket.
 
 1. A logikai alkalmazás menüjében, a **figyelés** területen válassza a **riasztások**  >  **új riasztási szabály** lehetőséget.
 

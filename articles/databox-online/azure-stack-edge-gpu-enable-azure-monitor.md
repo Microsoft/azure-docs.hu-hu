@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 171b4dbfb2a5852e270c483a28cad31f97dcb42b
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 199ec8e2f1e8eb74d971286a4fc6180eb8b72f2a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493912"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595976"
 ---
 # <a name="enable-azure-monitor-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Monitor engedélyezése a Azure Stack Edge Pro GPU-eszközön
 
@@ -49,7 +49,7 @@ A log Analytics-munkaterület létrehozásához hajtsa végre a következő lép
 
         ![Áttekintés + létrehozás Log Analytics munkaterülethez](media/azure-stack-edge-gpu-enable-azure-monitor/create-log-analytics-workspace-review-create-1.png)
 
-További információ: [log Analytics munkaterület létrehozása Azure Portal használatával](../azure-monitor/learn/quick-create-workspace.md).
+További információ: [log Analytics munkaterület létrehozása Azure Portal használatával](../azure-monitor/logs/quick-create-workspace.md).
 
 
 
@@ -57,7 +57,7 @@ További információ: [log Analytics munkaterület létrehozása Azure Portal h
 
 A következő lépésekkel engedélyezheti a tárolók bepillantást a munkaterületen. 
 
-1. Kövesse az [Azure monitor containers megoldás hozzáadása](../azure-monitor/insights/container-insights-hybrid-setup.md#how-to-add-the-azure-monitor-containers-solution)című témakör részletes lépéseit. Használja a következő sablonfájlt `containerSolution.json` :
+1. Kövesse az [Azure monitor containers megoldás hozzáadása](../azure-monitor/containers/container-insights-hybrid-setup.md#how-to-add-the-azure-monitor-containers-solution)című témakör részletes lépéseit. Használja a következő sablonfájlt `containerSolution.json` :
 
     ```yml
     {

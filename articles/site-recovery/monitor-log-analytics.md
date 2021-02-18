@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: e3d3ce8218030bc8ba6c59b26b7360bf2299e02a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 308e1bcf042feb15179d32844d8c569af6166619
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499815"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571669"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>A Site Recovery monitorozása az Azure Monitor naplóival
 
-Ez a cikk bemutatja, hogyan figyelheti az Azure [site Recovery](site-recovery-overview.md)által replikált gépeket [Azure Monitor naplók](../azure-monitor/platform/data-platform-logs.md)és [log Analytics](../azure-monitor/log-query/log-query-overview.md)használatával.
+Ez a cikk bemutatja, hogyan figyelheti az Azure [site Recovery](site-recovery-overview.md)által replikált gépeket [Azure Monitor naplók](../azure-monitor/logs/data-platform-logs.md)és [log Analytics](../azure-monitor/logs/log-query-overview.md)használatával.
 
 Azure Monitor naplók olyan log-adatplatformot biztosítanak, amely tevékenység-és erőforrás-naplókat gyűjt, valamint egyéb megfigyelési adatokat is tartalmaz. Azure Monitor naplókon belül a rendszer Log Analytics használatával naplózza és teszteli a napló lekérdezéseit, és interaktív módon elemezheti a naplózási adatforrásokat. Megjelenítheti és lekérdezheti a napló eredményeit, és konfigurálhatja a riasztásokat, hogy műveleteket hajtson végre a figyelt adatmennyiség alapján.
 
@@ -35,8 +35,8 @@ Az **Azure-** ban az Azure-ba való replikáláshoz és a **VMWare virtuális g�
 A következőkre lesz szüksége:
 
 - Legalább egy gép védve van egy Recovery Services-tárolóban.
-- Log Analytics munkaterület Site Recovery naplók tárolására. [További](../azure-monitor/learn/quick-create-workspace.md) információ a munkaterület beállításáról.
-- Alapvető ismeretek a naplók írásához, futtatásához és elemzéséhez Log Analyticsban. [További információk](../azure-monitor/log-query/log-analytics-tutorial.md).
+- Log Analytics munkaterület Site Recovery naplók tárolására. [További](../azure-monitor/logs/quick-create-workspace.md) információ a munkaterület beállításáról.
+- Alapvető ismeretek a naplók írásához, futtatásához és elemzéséhez Log Analyticsban. [További információ](../azure-monitor/logs/log-analytics-tutorial.md).
 
 Javasoljuk, hogy a Kezdés előtt tekintse át az [általános monitorozási kérdéseket](monitoring-common-questions.md) .
 
@@ -62,9 +62,9 @@ Az adatváltozási arány adatait és a forrás adatfeltöltési sebességét a 
 1. Lépjen a Log Analytics munkaterületre, és kattintson a **Speciális beállítások** elemre.
 2. Kattintson a **csatlakoztatott források** lapra, és válassza a **Windows-kiszolgálók** lehetőséget.
 3. Töltse le a Windows-ügynököt (64 bites) a Process Serveren. 
-4. [A munkaterület-azonosító és-kulcs beszerzése](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)
-5. [Az ügynök konfigurálása a TLS 1,2 használatára](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
-6. Az [ügynök telepítésének befejezéséhez](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard) adja meg a beszerzett munkaterület azonosítóját és kulcsát.
+4. [A munkaterület-azonosító és-kulcs beszerzése](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key)
+5. [Az ügynök konfigurálása a TLS 1,2 használatára](../azure-monitor/agents/agent-windows.md#configure-agent-to-use-tls-12)
+6. Az [ügynök telepítésének befejezéséhez](../azure-monitor/agents/agent-windows.md#install-agent-using-setup-wizard) adja meg a beszerzett munkaterület azonosítóját és kulcsát.
 7. A telepítés befejezése után lépjen Log Analytics munkaterületre, és kattintson a **Speciális beállítások** elemre. Nyissa meg az **adat** lapot, és kattintson a **Windows-teljesítményszámlálók** elemre. 
 8. A **"+"** gombra kattintva adja hozzá a következő két számlálót a mintavételi időköz 300 másodpercben:
 
@@ -76,7 +76,7 @@ Az adatforgalom és a feltöltési arány adatok bekerülnek a munkaterületre.
 
 ## <a name="query-the-logs---examples"></a>A naplók lekérdezése – példák
 
-Az adatok naplókból való lekéréséhez a [Kusto lekérdezési nyelvvel](../azure-monitor/log-query/get-started-queries.md)írt napló lekérdezéseket kell használnia. Ez a szakasz néhány példát mutat be Site Recovery figyeléshez használható gyakori lekérdezésekre.
+Az adatok naplókból való lekéréséhez a [Kusto lekérdezési nyelvvel](../azure-monitor/logs/get-started-queries.md)írt napló lekérdezéseket kell használnia. Ez a szakasz néhány példát mutat be Site Recovery figyeléshez használható gyakori lekérdezésekre.
 
 > [!NOTE]
 > Néhány példa a **replicationProviderName_s** beállítása **A2A** értékre. Ezzel lekéri az Azure-beli virtuális gépeket, amelyek egy másodlagos Azure-régióba replikálódnak Site Recovery használatával. Ezekben a példákban lecserélheti a **A2A** -t a **InMageAzureV2**-be, ha az Azure-ba replikált helyszíni VMWare virtuális gépeket vagy fizikai kiszolgálókat szeretné lekérni site Recovery használatával.
@@ -252,7 +252,7 @@ AzureDiagnostics 
 
 ## <a name="set-up-alerts---examples"></a>Riasztások beállítása – példák
 
-Site Recovery riasztásokat Azure Monitor-adatértékek alapján is beállíthat. [További](../azure-monitor/platform/alerts-log.md#create-a-log-alert-rule-with-the-azure-portal) információ a naplózási riasztások beállításáról. 
+Site Recovery riasztásokat Azure Monitor-adatértékek alapján is beállíthat. [További](../azure-monitor/alerts/alerts-log.md#create-a-log-alert-rule-with-the-azure-portal) információ a naplózási riasztások beállításáról. 
 
 > [!NOTE]
 > Néhány példa a **replicationProviderName_s** beállítása **A2A** értékre. Ez riasztásokat állít be a másodlagos Azure-régióba replikált Azure-beli virtuális gépekről. Ezekben a példákban lecserélheti a **A2A** -t a **InMageAzureV2** -be, ha riasztásokat szeretne beállítani a helyszíni VMWare virtuális gépekhez vagy az Azure-ba replikált fizikai kiszolgálókhoz.
@@ -359,6 +359,6 @@ AzureDiagnostics  
 
 A riasztáshoz állítsa 1 **értékre a küszöbértéket** , az utolsó **nap során pedig** az 1440 percet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További információ a](site-recovery-monitor-and-troubleshoot.md) beépített site Recovery figyelésről.

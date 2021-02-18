@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f13909d3835bdbd2931277a88244abfae3f80759
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 29c49ceb3647964030f53c94276e831dc0f648c7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466818"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576629"
 ---
 # <a name="azure-monitor-for-windows-virtual-desktop-preview-glossary"></a>Azure Monitor a Windows rendszerű virtuális asztali (előzetes verzió) szószedethez
 
@@ -24,7 +24,7 @@ Ez a cikk a Windows rendszerű virtuális asztalok (előzetes verzió) Azure Mon
 
 ## <a name="alerts"></a>Riasztások
 
-Az előfizetésre konfigurált és az [1. súlyossággal](#severity-1-alerts) rendelkező aktív Azure monitor riasztások az Áttekintés lapon jelennek meg. A riasztások beállításával kapcsolatos további információkért tekintse meg a [Azure monitor riasztásokkal kapcsolatos események megválaszolásával foglalkozó](../azure-monitor/learn/tutorial-response.md)témakört.
+Az előfizetésre konfigurált és az [1. súlyossággal](#severity-1-alerts) rendelkező aktív Azure monitor riasztások az Áttekintés lapon jelennek meg. A riasztások beállításával kapcsolatos további információkért tekintse meg a [Azure monitor riasztásokkal kapcsolatos események megválaszolásával foglalkozó](../azure-monitor/alerts/tutorial-response.md)témakört.
 
 ## <a name="available-sessions"></a>Elérhető munkamenetek
 
@@ -128,7 +128,7 @@ A következő táblázat a Windows rendszerű virtuális asztali Azure Monitor �
 |Távoli hálózat ( \* ) \\ jelenlegi TCP-RTT|30 másodperc|
 |Távoli hálózat ( \* ) \\ jelenlegi UDP-sávszélesség|30 másodperc|
 
-További információ a teljesítményszámlálók olvasásáról: [teljesítményszámlálók konfigurálása](../azure-monitor/platform/data-sources-performance-counters.md).
+További információ a teljesítményszámlálók olvasásáról: [teljesítményszámlálók konfigurálása](../azure-monitor/agents/data-sources-performance-counters.md).
 
 A bemeneti késleltetési teljesítményszámlálók részletes ismertetését lásd: [felhasználói bemeneti késleltetési](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/)teljesítményszámlálók.
 
@@ -186,9 +186,9 @@ A következő táblázat a Windows rendszerű virtuális asztali Azure Monitor s
 | Microsoft-FSLogix – alkalmazások/működési|Hiba, figyelmeztetés és információ|
 |Microsoft-FSLogix-alkalmazások/rendszergazda|Hiba, figyelmeztetés és információ|
 
-További információ a Windows-eseményekről: [Windows-események rekordjainak tulajdonságai](../azure-monitor/platform/data-sources-windows-events.md).
+További információ a Windows-eseményekről: [Windows-események rekordjainak tulajdonságai](../azure-monitor/agents/data-sources-windows-events.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Windows rendszerű virtuális asztalok Azure Monitorének megkezdéséhez tekintse meg a következő cikkeket:
 

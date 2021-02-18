@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 2f814c54aeca8a337f786beb8da1b98accbeef7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2278b9d70e888fa546dc64da4743b2bf5b6c45e8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318997"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587518"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>Azure Monitor Application Insights Agent API-referenciája
 
@@ -392,7 +392,7 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime
 
 Megvizsgálhatja a folyamatot a műszeres számítógépen, és ellenőrizheti, hogy az összes DLL-fájl be van-e töltve. Ha a figyelés működik, legalább 12 DLL-t be kell tölteni.
 
-Futtassa a parancsot `Get-ApplicationInsightsMonitoringStatus -InspectProcess` :
+Futtassa a `Get-ApplicationInsightsMonitoringStatus -InspectProcess` parancsmagot:
 
 
 ```
@@ -634,12 +634,12 @@ Tracing will timeout in 5 minutes. Press CTRL+C to cancel.
 Timeout Reached. Stopping...
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
   A telemetriai adatok megtekintése:
- - [Ismerje meg a mérőszámokat](../platform/metrics-charts.md) a teljesítmény és a használat figyeléséhez.
+ - [Ismerje meg a mérőszámokat](../essentials/metrics-charts.md) a teljesítmény és a használat figyeléséhez.
 - [Események és naplók keresése](./diagnostic-search.md) a problémák diagnosztizálásához.
-- További speciális lekérdezésekhez használja az [elemzést](../log-query/log-query-overview.md) .
+- További speciális lekérdezésekhez használja az [elemzést](../logs/log-query-overview.md) .
 - [Irányítópultok létrehozása](./overview-dashboard.md).
  
  További telemetriai funkciók hozzáadása:

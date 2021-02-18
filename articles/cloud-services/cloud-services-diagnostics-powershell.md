@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 8dcc6dd355e0c89aa4120a6cc7f331159d56c1bc
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 0b6096f980234c09bf1c2da2b4621b8ed66b495d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742182"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578165"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-classic-using-powershell"></a>Diagnosztika engedélyezése az Azure Cloud Services (klasszikus) PowerShell használatával
 
@@ -134,5 +134,5 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 
 ## <a name="next-steps"></a>Következő lépések
 * Az Azure Diagnostics és a problémák elhárítására szolgáló egyéb technikák használatával kapcsolatos további útmutatásért lásd: [a diagnosztika engedélyezése az Azure-ban Cloud Services és Virtual Machines](cloud-services-dotnet-diagnostics.md).
-* A [diagnosztika konfigurációs sémája](../azure-monitor/platform/diagnostics-extension-schema-windows.md) a diagnosztikai bővítmény különböző XML-konfigurációk beállításait ismerteti.
+* A [diagnosztika konfigurációs sémája](../azure-monitor/agents/diagnostics-extension-schema-windows.md) a diagnosztikai bővítmény különböző XML-konfigurációk beállításait ismerteti.
 * Ha meg szeretné tudni, hogyan engedélyezhető a Virtual Machines diagnosztikai bővítménye, tekintse meg a [Windows rendszerű virtuális gép létrehozása figyelési és diagnosztikai Azure Resource Manager sablon használatával](../virtual-machines/extensions/diagnostics-template.md) című témakört.

@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/03/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: e96aa32c6b67290fc4b4ee62ae98c4e72399fd4b
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 0e85019c8f02b8a4a97426d50a30d047b95378a1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509587"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572291"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>A Azure SQL Database és az Azure szinapszis Analytics naplózása
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -139,7 +139,7 @@ A naplók Log Analytics munkaterületre való írásának konfigurálásához v�
 
    ![LogAnalyticsworkspace](./media/auditing-overview/auditing_select_oms.png)
 
-További információ a Azure Monitor Log Analytics munkaterületről: [a Azure monitor naplók üzembe helyezésének megtervezése](../../azure-monitor/platform/design-logs-deployment.md)
+További információ a Azure Monitor Log Analytics munkaterületről: [a Azure monitor naplók üzembe helyezésének megtervezése](../../azure-monitor/logs/design-logs-deployment.md)
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>Naplózás az Event hub célhelyére
 
@@ -170,7 +170,7 @@ Ha úgy döntött, hogy naplókat ír Azure Monitor naplókba:
     ![Log Analytics biztonsági ismeretek](media/auditing-overview/auditing-log-analytics-dashboard-data.png)
 
 - Azt is megteheti, hogy a naplókat a Log Analytics panelről is elérheti. Nyissa meg Log Analytics munkaterületét, és az **általános** szakaszban kattintson a **naplók** elemre. Egy egyszerű lekérdezéssel kezdheti meg a naplókat, például a *következőt: Search "SQLSecurityAuditEvents"* .
-    Itt is használhatja [Azure monitor naplókat](../../azure-monitor/log-query/log-query-overview.md)  a speciális keresések futtatásához a naplózási napló adatain. A Azure Monitor naplók valós idejű üzemeltetési elemzéseket biztosítanak az integrált keresés és az egyéni irányítópultok használatával, amelyekkel a munkaterhelések és a kiszolgálók több millió rekordját is könnyedén elemezheti. További hasznos információk Azure Monitor naplók keresési nyelvéről és parancsairól: [Azure monitor naplók keresési referenciája](../../azure-monitor/log-query/log-query-overview.md).
+    Itt is használhatja [Azure monitor naplókat](../../azure-monitor/logs/log-query-overview.md)  a speciális keresések futtatásához a naplózási napló adatain. A Azure Monitor naplók valós idejű üzemeltetési elemzéseket biztosítanak az integrált keresés és az egyéni irányítópultok használatával, amelyekkel a munkaterhelések és a kiszolgálók több millió rekordját is könnyedén elemezheti. További hasznos információk Azure Monitor naplók keresési nyelvéről és parancsairól: [Azure monitor naplók keresési referenciája](../../azure-monitor/logs/log-query-overview.md).
 
 Ha úgy döntött, hogy naplókat ír az Event hub-ba:
 

@@ -3,12 +3,12 @@ title: Azure Service Bus metrikák a Azure Monitorban | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan használható a Azure Monitor az Service Bus entitások (várólisták, témakörök és előfizetések) figyelésére.
 ms.topic: article
 ms.date: 02/12/2021
-ms.openlocfilehash: fa242b4d8c8a6ce83801667e686864f858f8a000
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 1e57def2ee7409ae62cdbe065c36e8a53a140e18
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100519099"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570576"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Monitor Azure Service Bus metrikák
 
@@ -21,9 +21,9 @@ A Azure Monitor egységes felhasználói felületet biztosít a különböző Az
 
 ## <a name="access-metrics"></a>Hozzáférési metrikák
 
-Azure Monitor több módszert biztosít a metrikák eléréséhez. A mérőszámokat a [Azure Portalon](https://portal.azure.com)keresztül érheti el, vagy használhatja a Azure monitor API-kat (REST és .net) és az elemzési megoldásokat, például a Azure monitor naplókat és Event Hubseket. További információ: [Azure monitor mérőszámai](../azure-monitor/platform/data-platform-metrics.md).
+Azure Monitor több módszert biztosít a metrikák eléréséhez. A mérőszámokat a [Azure Portalon](https://portal.azure.com)keresztül érheti el, vagy használhatja a Azure monitor API-kat (REST és .net) és az elemzési megoldásokat, például a Azure monitor naplókat és Event Hubseket. További információ: [Azure monitor mérőszámai](../azure-monitor/essentials/data-platform-metrics.md).
 
-A metrikák alapértelmezés szerint engedélyezve vannak, és a legutóbbi 30 nap adatait is elérheti. Ha hosszabb ideig kell megőriznie az adatokat, archiválhatja a metrikák adatait egy Azure Storage-fiókba. Ez az érték a Azure Monitor [diagnosztikai beállításaiban](../azure-monitor/platform/diagnostic-settings.md) van konfigurálva.
+A metrikák alapértelmezés szerint engedélyezve vannak, és a legutóbbi 30 nap adatait is elérheti. Ha hosszabb ideig kell megőriznie az adatokat, archiválhatja a metrikák adatait egy Azure Storage-fiókba. Ez az érték a Azure Monitor [diagnosztikai beállításaiban](../azure-monitor/essentials/diagnostic-settings.md) van konfigurálva.
 
 ## <a name="access-metrics-in-the-portal"></a>Hozzáférési metrikák a portálon
 
@@ -100,7 +100,7 @@ A következő két típusú hiba van besorolva felhasználói hibaként:
 > [!NOTE] 
 > A következő metrikák csak a **prémium** szinttel érhetők el. 
 > 
-> A prémium szintű névtérhez tartozó kimaradások figyeléséhez fontos mérőszámok a következők: a **CPU-használat a névtér** és a **memória mérete régiónként**. [Riasztásokat állíthat be](../azure-monitor/platform/alerts-metric.md) a metrikák számára a Azure monitor használatával.
+> A prémium szintű névtérhez tartozó kimaradások figyeléséhez fontos mérőszámok a következők: a **CPU-használat a névtér** és a **memória mérete régiónként**. [Riasztásokat állíthat be](../azure-monitor/alerts/alerts-metric.md) a metrikák számára a Azure monitor használatával.
 > 
 > A figyelt másik mérőszám: **szabályozott kérelmek**. Nem lehet probléma, ha a névtér a memóriájában, a PROCESSZORon és a felügyelt kapcsolaton belül marad. További információ: [szabályozás Azure Service Bus Premium](service-bus-throttling.md#throttling-in-azure-service-bus-premium-tier) szinten
 

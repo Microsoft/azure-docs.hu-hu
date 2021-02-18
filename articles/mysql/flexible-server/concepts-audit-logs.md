@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 5aab78ad99b80ff1d7be92bd36847b01dbc0e33b
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: d38a0ea7307584c25ddec9389feaef7518bcf925
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542218"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591762"
 ---
 # <a name="track-database-activity-with-audit-logs-in-azure-database-for-mysql-flexible-server"></a>Az adatbázis-tevékenységek nyomon követése Azure Database for MySQL rugalmas kiszolgáló naplófájljaival
 
@@ -50,7 +50,7 @@ A naplózási naplózási viselkedés vezérléséhez beállítható egyéb para
 
 ## <a name="access-audit-logs"></a>Hozzáférés az auditnaplókhoz
 
-A naplófájlok integrálva vannak Azure Monitor diagnosztikai beállításokkal. Miután engedélyezte a naplók használatát a MySQL rugalmas kiszolgálón, kibocsáthatja őket Azure Monitor naplókba, Event Hubs vagy Azure Storage-ba. A diagnosztikai beállításokkal kapcsolatos további tudnivalókért tekintse meg a [diagnosztikai naplók dokumentációját](../../azure-monitor/platform/platform-logs-overview.md). Ha többet szeretne megtudni arról, hogyan engedélyezheti a diagnosztikai beállításokat a Azure Portalban, tekintse meg a [log Portalt ismertető cikket](how-to-configure-audit-logs-portal.md#set-up-diagnostics).
+A naplófájlok integrálva vannak Azure Monitor diagnosztikai beállításokkal. Miután engedélyezte a naplók használatát a MySQL rugalmas kiszolgálón, kibocsáthatja őket Azure Monitor naplókba, Event Hubs vagy Azure Storage-ba. A diagnosztikai beállításokkal kapcsolatos további tudnivalókért tekintse meg a [diagnosztikai naplók dokumentációját](../../azure-monitor/essentials/platform-logs-overview.md). Ha többet szeretne megtudni arról, hogyan engedélyezheti a diagnosztikai beállításokat a Azure Portalban, tekintse meg a [log Portalt ismertető cikket](how-to-configure-audit-logs-portal.md#set-up-diagnostics).
 
 A következő szakaszok ismertetik a MySQL naplók kimenetét az esemény típusa alapján. A kimeneti módszertől függően a befoglalt mezők és a megjelenő sorrend eltérő lehet.
 
@@ -80,7 +80,7 @@ A következő szakaszok ismertetik a MySQL naplók kimenetét az esemény típus
 | `db_s` | A következőhöz kapcsolódó adatbázis neve |
 | `\_ResourceId` | Erőforrás URI-ja |
 
-### <a name="general"></a>Általános kérdések
+### <a name="general"></a>Általános
 
 Az alábbi séma az általános, a DML_SELECT, a DML_NONSELECT, a DML, a DDL, a DCL és a rendszergazdai események típusára vonatkozik.
 

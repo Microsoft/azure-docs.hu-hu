@@ -7,12 +7,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 317c02fe03a56ea3cd3a98b00f8a0080b3917108
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67e7765a1f46c2be5790c11687e06ea624702b9b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88930281"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589568"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>A profil élő Azure Service Fabric alkalmazásai Application Insights
 
@@ -29,7 +29,7 @@ A környezet beállításához végezze el a következő műveleteket:
 
 1. A Profiler a .NET-keretrendszer és a .net Core használatát is támogatja. Ha .NET-keretrendszert használ, győződjön meg róla, hogy a [.NET-keretrendszer 4.6.1](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) -es vagy újabb verzióját használja. Elegendő meggyőződni arról, hogy a telepített operációs rendszer `Windows Server 2012 R2` vagy újabb. A Profiler támogatja a .NET Core 2,1-es és újabb alkalmazásokat.
 
-1. Keresse meg a [Azure Diagnostics](../platform/diagnostics-extension-overview.md) bővítményt a telepítési sablon fájljában.
+1. Keresse meg a [Azure Diagnostics](../agents/diagnostics-extension-overview.md) bővítményt a telepítési sablon fájljában.
 
 1. Adja hozzá a következő `SinksConfig` szakaszt a gyermek elemeként `WadCfg` . Cserélje le a `ApplicationInsightsProfiler` tulajdonság értékét a saját Application Insights kialakítási kulcsára:  
 

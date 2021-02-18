@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/31/2020
 ms.author: kenwith
-ms.openlocfilehash: 213f7d95916555ea32925a5b0af0865d900b0209
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: c08ce3bc8b722f2ea417c854a606f1060aa174e3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257913"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580060"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD alkalmazás-proxy telepítési útmutató
 
@@ -302,7 +302,7 @@ Az összekötők és a szolgáltatás gondoskodik a magas rendelkezésre állás
 
 #### <a name="windows-event-logs-and-performance-counters"></a>Windows-eseménynaplók és teljesítményszámlálók
 
-Az összekötők rendszergazdai és munkamenet-naplókkal is rendelkeznek. A felügyeleti naplók a legfontosabb eseményeket és azok hibáit tartalmazzák. A munkamenet-naplók tartalmazzák az összes tranzakciót és a feldolgozás részleteit. A naplók és a számlálók a Windows-eseménynaplókban találhatók további információ: az [Azure ad Application proxy-összekötők ismertetése](./application-proxy-connectors.md#under-the-hood). Ez az [oktatóanyag az Eseménynapló-adatforrások Azure monitor-ben történő konfigurálását](../../azure-monitor/platform/data-sources-windows-events.md)ismerteti.
+Az összekötők rendszergazdai és munkamenet-naplókkal is rendelkeznek. A felügyeleti naplók a legfontosabb eseményeket és azok hibáit tartalmazzák. A munkamenet-naplók tartalmazzák az összes tranzakciót és a feldolgozás részleteit. A naplók és a számlálók a Windows-eseménynaplókban találhatók további információ: az [Azure ad Application proxy-összekötők ismertetése](./application-proxy-connectors.md#under-the-hood). Ez az [oktatóanyag az Eseménynapló-adatforrások Azure monitor-ben történő konfigurálását](../../azure-monitor/agents/data-sources-windows-events.md)ismerteti.
 
 ### <a name="troubleshooting-guide-and-steps"></a>Hibaelhárítási útmutató és lépések
 

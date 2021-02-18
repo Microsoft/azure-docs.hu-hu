@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: d46c1d8efb5234d47c80ca4256c2f56d56ccf805
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 90c20c1f463cf5143460510b9a409ad5ed3ba9f7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060720"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576134"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -21,7 +21,7 @@ ms.locfileid: "98060720"
 
 Az alábbi gyakori kérdések az Azure Application Gateway.
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="what-is-application-gateway"></a>Mi az Application Gateway?
 
@@ -333,7 +333,7 @@ A Application Gateway legfeljebb 100 hitelesítési tanúsítványt támogat.
 
 ### <a name="does-application-gateway-natively-integrate-with-azure-key-vault"></a>Application Gateway natív módon integrálható a Azure Key Vaultrel?
 
-Igen, a Application Gateway v2 SKU támogatja a Key Vault. További információ: TLS- [lezárás Key Vault tanúsítványokkal](key-vault-certs.md).
+Igen, a Application Gateway v2 SKU támogatja a Key Vault. További információért lásd [a Key Vault tanúsítványokkal való TLS-megszakításról szóló részt](key-vault-certs.md).
 
 ### <a name="how-do-i-configure-https-listeners-for-com-and-net-sites"></a>Hogyan konfigurálja a HTTPS-figyelőket a következőhöz:. com és .net-helyek? 
 
@@ -454,7 +454,7 @@ A portálon, az Application Gateway menü paneljén válassza a **műveletnapló
 
 ### <a name="can-i-set-alerts-with-application-gateway"></a>Megadhatok riasztásokat a Application Gateway?
 
-Igen. Application Gateway a riasztások a metrikák használatára vannak konfigurálva. További információ: [Application Gateway mérőszámok](./application-gateway-metrics.md) és [Riasztási értesítések fogadása](../azure-monitor/platform/alerts-overview.md).
+Igen. Application Gateway a riasztások a metrikák használatára vannak konfigurálva. További információ: [Application Gateway mérőszámok](./application-gateway-metrics.md) és [Riasztási értesítések fogadása](../azure-monitor/alerts/alerts-overview.md).
 
 ### <a name="how-do-i-analyze-traffic-statistics-for-application-gateway"></a>Hogyan elemezni Application Gateway forgalmi statisztikáit?
 
@@ -474,6 +474,6 @@ A platform jelenlegi korlátai miatt, ha a Application Gateway v2 (Standard_v2, 
 
 Nem, Application Gateway nem tárolja az ügyféladatokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Application Gatewayről: [Mi az az Azure Application Gateway?](overview.md).

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d47f6c20246e3210b58dbc9c802a11c866ae305e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f348a5005f28fdd1d02be706ca2742d77368288
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935007"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592374"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Az Azure Cognitive Search működésének és tevékenységének figyelése
 
@@ -37,7 +37,7 @@ Az Azure Cognitive Search a szolgáltatás állapotára és a lekérdezési metr
 A következő képernyőfelvétel segít megtalálni a figyelési információkat a portálon. Az adatai a szolgáltatás használatának megkezdése után azonnal elérhetővé válnak. A portál oldalai néhány percenként frissülnek.
 
 * **Figyelés** lap – a fő Áttekintés lapon a lekérdezési mennyiség, a késés, valamint a szolgáltatás nyomása alatt látható.
-* A **tevékenység naplója**a bal oldali navigációs ablaktáblán csatlakozik a Azure Resource Managerhoz. A tevékenység napló jelentéseket készít a Resource Manager által végrehajtott műveletekről: a szolgáltatás rendelkezésre állása és állapota, a kapacitás (replikák és partíciók) változásai, valamint az API-kulcsokkal kapcsolatos tevékenységek.
+* A **tevékenység naplója** a bal oldali navigációs ablaktáblán csatlakozik a Azure Resource Managerhoz. A tevékenység napló jelentéseket készít a Resource Manager által végrehajtott műveletekről: a szolgáltatás rendelkezésre állása és állapota, a kapacitás (replikák és partíciók) változásai, valamint az API-kulcsokkal kapcsolatos tevékenységek.
 * A **figyelési** beállítások – lejjebb – konfigurálható riasztásokat, metrikákat és diagnosztikai naplókat biztosítanak. Ezeket akkor hozza létre, amikor szüksége van rájuk. Az adatok gyűjtése és tárolása után lekérdezheti vagy megjelenítheti az elemzések adatait.
 
 ![Azure Monitor integráció egy keresési szolgáltatásban](./media/search-monitor-usage/azure-monitor-search.png
@@ -59,7 +59,7 @@ A következő API-k segítségével kérheti le a portál figyelés és használ
 
 ### <a name="activity-logs-and-service-health"></a>Tevékenységek naplói és szolgáltatás állapota
 
-A portál [**tevékenység napló**](../azure-monitor/platform/activity-log.md#view-the-activity-log) lapja adatokat gyűjt a Azure Resource Managerről, és jelentéseket készít a szolgáltatás állapotának változásairól. A szolgáltatási állapottal kapcsolatos kritikus, hibával és figyelmeztetési feltételekkel nyomon követheti a tevékenység naplóját.
+A portál [**tevékenység napló**](../azure-monitor/essentials/activity-log.md#view-the-activity-log) lapja adatokat gyűjt a Azure Resource Managerről, és jelentéseket készít a szolgáltatás állapotának változásairól. A szolgáltatási állapottal kapcsolatos kritikus, hibával és figyelmeztetési feltételekkel nyomon követheti a tevékenység naplóját.
 
 A közös bejegyzések az API-kulcsokra mutató hivatkozásokat tartalmaznak – általános tájékoztató értesítések, például *rendszergazdai kulcs* beolvasása és *lekérdezési kulcsok beolvasása*. Ezek a tevékenységek azokat a kérelmeket jelzik, amelyeket a felügyeleti kulcs (objektumok létrehozása vagy törlése) vagy a lekérdezési kulcs használatával hoztak létre, de a kérést nem jelenítik meg. A gabonával kapcsolatos információkért be kell állítania a diagnosztikai naplózást.
 
@@ -90,7 +90,7 @@ Azure Monitor számos tárolási lehetőséget biztosít, és az Ön választás
 * Válassza az Azure Blob Storage lehetőséget, ha egy Power BI jelentésben szeretné [megjeleníteni a naplózási adattárakat](search-monitor-logs-powerbi.md) .
 * Válassza a Log Analytics lehetőséget, ha Kusto-lekérdezéseken keresztül szeretné felderíteni az adatforrásokat.
 
-Azure Monitor saját számlázási struktúrája van, és az ebben a szakaszban hivatkozott diagnosztikai naplókhoz kapcsolódó díj vonatkozik. További információ: [a Azure monitor használati és becsült költségei](../azure-monitor/platform/usage-estimated-costs.md).
+Azure Monitor saját számlázási struktúrája van, és az ebben a szakaszban hivatkozott diagnosztikai naplókhoz kapcsolódó díj vonatkozik. További információ: [a Azure monitor használati és becsült költségei](../azure-monitor//usage-estimated-costs.md).
 
 ## <a name="monitor-user-access"></a>Felhasználói hozzáférés figyelése
 
@@ -107,4 +107,4 @@ Ezt az információt nem lehet külön naplózni a lekérdezési karakterláncb�
 A Azure Monitorekkel való gördülékenység elengedhetetlen az Azure-szolgáltatások, például az Azure-Cognitive Searchek felügyeletéért. Ha nem ismeri a Azure Monitort, szánjon időt az erőforrásokkal kapcsolatos cikkek áttekintésére. Az oktatóanyagokon kívül a következő cikk is jó kiindulópont.
 
 > [!div class="nextstepaction"]
-> [Azure-erőforrások monitorozása az Azure Monitor segítségével](../azure-monitor/insights/monitor-azure-resource.md)
+> [Azure-erőforrások monitorozása az Azure Monitor segítségével](../azure-monitor/essentials/monitor-azure-resource.md)

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
-ms.openlocfilehash: 90b0ab4fdabd40e803d1f85a640e4cb387e40c44
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b04dacfdedded417e2557d1568e01bc9fa8f5745
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94958948"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590121"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>Magas rendelkezésre állás a Windows rendszerű Azure-beli virtuális gépeken futó SAP NetWeaver számára az SAP-alkalmazások Azure NetApp Files (SMB) szolgáltatásával
 
@@ -81,13 +81,13 @@ Először olvassa el a következő SAP-megjegyzéseket és dokumentumokat:
 * [Azure Virtual Machines magas rendelkezésre állású architektúra és forgatókönyvek az SAP NetWeaver-hoz](./sap-high-availability-architecture-scenarios.md)
 * [Mintavételi Port hozzáadása a ASCS-fürt konfigurációjában](sap-high-availability-installation-wsfc-file-share.md)
 * [Egy (A) SCS-példány telepítése feladatátvevő fürtön](https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html)
-* [SMB-kötet létrehozása az Azure NetApp Files számára](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections)
+* [SMB-kötet létrehozása az Azure NetApp Files számára](../../../azure-netapp-files/create-active-directory-connections.md#requirements-for-active-directory-connections)
 * [NetApp SAP-alkalmazások Microsoft Azure a Azure NetApp Files használatával][anf-sap-applications-azure]
 
 ## <a name="overview"></a>Áttekintés
 
 Az SAP új megközelítést fejlesztett ki, és egy alternatívát a fürt megosztott lemezei számára egy SAP ASCS/SCS-példány fürtözésére egy Windows feladatátvevő fürtön. A fürt megosztott lemezei helyett az egyik SMB-fájlmegosztás használatával telepítheti az SAP globális gazdagép fájljait. Azure NetApp Files támogatja a SMBv3 (az NFS-sel együtt) az NTFS ACL-lel az Active Directory használatával. A Azure NetApp Files automatikusan elérhető (mivel ez egy Pásti szolgáltatás). Ezek a funkciók Azure NetApp Files nagyszerű lehetőséget biztosítanak az SMB-fájlmegosztás az SAP globális számára való üzemeltetéséhez.  
-A [Azure Active Directory (ad) tartományi szolgáltatások](../../../active-directory-domain-services/overview.md) és a [Active Directory tartományi szolgáltatások (AD DS)](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) egyaránt támogatottak. A meglévő Active Directory tartományvezérlőket Azure NetApp Files használatával használhatja. A tartományvezérlők az Azure-ban virtuális gépekként vagy a helyszínen ExpressRoute vagy S2S VPN-en keresztül is lehetnek. Ebben a cikkben egy Azure-beli virtuális gép tartományvezérlőjét fogjuk használni.  
+A [Azure Active Directory (ad) tartományi szolgáltatások](../../../active-directory-domain-services/overview.md) és a [Active Directory Domain Services (AD DS)](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) egyaránt támogatottak. A meglévő Active Directory tartományvezérlőket Azure NetApp Files használatával használhatja. A tartományvezérlők az Azure-ban virtuális gépekként vagy a helyszínen ExpressRoute vagy S2S VPN-en keresztül is lehetnek. Ebben a cikkben egy Azure-beli virtuális gép tartományvezérlőjét fogjuk használni.  
 Az SAP NetWeaver Central Services magas rendelkezésre állása (HA) megosztott tárterületet igényel. Ahhoz, hogy a Windows rendszeren elérhető legyen, a SOFS-fürt vagy a fürt megosztott lemezének (például SIOS) használata szükséges. Most már lehetséges, hogy az SAP NetWeaver HA-t megosztott tároló használatával, Azure NetApp Fileson helyezi el. A megosztott tárolóhoz Azure NetApp Files használata szükségtelenné teszi a SOFS vagy a SIOS használatát.  
 
 > [!NOTE]
@@ -114,9 +114,9 @@ Hajtsa végre a következő lépéseket a Azure NetApp Files használatának el�
 4. Azure NetApp Files erőforrásoknak a delegált alhálózatban kell lenniük. Delegált alhálózat létrehozásához kövesse az [alhálózat delegálása Azure NetApp Filesre](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md) című témakör utasításait.  
 
    > [!IMPORTANT]
-   > SMB-kötet létrehozása előtt létre kell hoznia Active Directory kapcsolatokat. Tekintse át [Active Directory kapcsolatok követelményeit](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections).  
+   > SMB-kötet létrehozása előtt létre kell hoznia Active Directory kapcsolatokat. Tekintse át [Active Directory kapcsolatok követelményeit](../../../azure-netapp-files/create-active-directory-connections.md#requirements-for-active-directory-connections).  
 
-5. Hozzon létre Active Directory-kapcsolatokat a [Active Directory-kapcsolatok létrehozása](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection) című témakörben leírtak szerint.  
+5. Hozzon létre Active Directory-kapcsolatokat a [Active Directory-kapcsolatok létrehozása](../../../azure-netapp-files/create-active-directory-connections.md#create-an-active-directory-connection) című témakörben leírtak szerint.  
 6. Hozzon létre SMB-Azure NetApp Files SMB-kötetet, kövesse az [SMB-kötet hozzáadása](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) című témakör utasításait.  
 7. Csatlakoztassa az SMB-kötetet a Windows rendszerű virtuális gépén.
 

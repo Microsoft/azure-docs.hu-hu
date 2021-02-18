@@ -3,12 +3,12 @@ title: Virtuálisgép-bővítmények kezelése az Azure arc-kompatibilis kiszolg
 description: Az Azure arc-kompatibilis kiszolgálók kezelhetik azokat a virtuálisgép-bővítmények központi telepítését, amelyek a telepítés utáni konfigurálást és az automatizálási feladatokat nem Azure-beli virtuális gépekkel is rendelkeznek.
 ms.date: 01/07/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5430b1c1318747cccfb95f031700fddaad716284
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: b39149eb7ac572ac3bd50bb6303f28d2340f387d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020621"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580854"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Virtuálisgép-bővítmények kezelése az Azure Arc-kompatibilis kiszolgálókon
 
@@ -27,9 +27,9 @@ Az Azure arc-kompatibilis kiszolgálók virtuálisgép-bővítmények támogatá
 
 - [Azure Automation állapot konfigurációjának](../../automation/automation-dsc-overview.md) használatával központilag tárolhatja a konfigurációkat, és megtarthatja a DSC virtuálisgép-bővítményen keresztül engedélyezett hibrid csatlakoztatott gépek kívánt állapotát.
 
-- Begyűjti a naplózási adatokat az elemzéshez [Azure monitor a naplókat](../../azure-monitor/platform/data-platform-logs.md) az log Analytics ügynök virtuálisgép-bővítményének használatával. Ez hasznos lehet a különböző típusú forrásokból származó adatok összetett elemzéséhez.
+- Begyűjti a naplózási adatokat az elemzéshez [Azure monitor a naplókat](../../azure-monitor/logs/data-platform-logs.md) az log Analytics ügynök virtuálisgép-bővítményének használatával. Ez hasznos lehet a különböző típusú forrásokból származó adatok összetett elemzéséhez.
 
-- A [Azure monitor for VMS](../../azure-monitor/insights/vminsights-overview.md)a elemzi a Windows-és Linux-alapú virtuális gépek teljesítményét, és figyeli a folyamatokat és a függőségeket más erőforrásokra és külső folyamatokra. Ez a Log Analytics ügynök és a függőségi ügynök virtuálisgép-bővítményeinek engedélyezésével érhető el.
+- A [Azure monitor for VMS](../../azure-monitor/vm/vminsights-overview.md)a elemzi a Windows-és Linux-alapú virtuális gépek teljesítményét, és figyeli a folyamatokat és a függőségeket más erőforrásokra és külső folyamatokra. Ez a Log Analytics ügynök és a függőségi ügynök virtuálisgép-bővítményeinek engedélyezésével érhető el.
 
 - Parancsfájlokat tölthet le és futtathat a hibrid csatlakoztatott gépeken az egyéni szkriptek bővítmény használatával. Ez a bővítmény az üzembe helyezési konfiguráció, a Szoftvertelepítés vagy bármely egyéb konfigurációs vagy felügyeleti feladat után hasznos.
 
@@ -55,7 +55,7 @@ Ha többet szeretne megtudni az Azure-beli csatlakoztatott gépi ügynök csomag
 |Log Analytics-ügynök |Microsoft. EnterpriseCloud. monitoring |MicrosoftMonitoringAgent |[Log Analytics virtuálisgép-bővítmény a Windowshoz](../../virtual-machines/extensions/oms-windows.md)|
 |Azure Monitor for VMs (bepillantások) |Microsoft. Azure. monitoring. DependencyAgent |DependencyAgentWindows | [Függőségi ügynök virtuálisgép-bővítménye Windows rendszerhez](../../virtual-machines/extensions/agent-dependency-windows.md)|
 |Azure Key Vault tanúsítvány-szinkronizálás | Microsoft. Azure. key. Vault |KeyVaultForWindows | [A Windows rendszerhez készült virtuálisgép-bővítmény Key Vault](../../virtual-machines/extensions/key-vault-windows.md) |
-|Azure Monitor-ügynök |Microsoft. Azure. monitor |AzureMonitorWindowsAgent |[A Azure Monitor-ügynök telepítése (előzetes verzió)](../../azure-monitor/platform/azure-monitor-agent-install.md) |
+|Azure Monitor-ügynök |Microsoft. Azure. monitor |AzureMonitorWindowsAgent |[A Azure Monitor-ügynök telepítése (előzetes verzió)](../../azure-monitor/agents/azure-monitor-agent-install.md) |
 
 ### <a name="linux-extensions"></a>Linux-bővítmények
 
@@ -67,7 +67,7 @@ Ha többet szeretne megtudni az Azure-beli csatlakoztatott gépi ügynök csomag
 |Log Analytics-ügynök |Microsoft. EnterpriseCloud. monitoring |OmsAgentForLinux |[A Linux rendszerhez készült virtuálisgép-bővítmény Log Analytics](../../virtual-machines/extensions/oms-linux.md) |
 |Azure Monitor for VMs (bepillantások) |Microsoft. Azure. monitoring. DependencyAgent |DependencyAgentLinux |[Függőségi ügynök linuxos virtuálisgép-bővítménye](../../virtual-machines/extensions/agent-dependency-linux.md) |
 |Azure Key Vault tanúsítvány-szinkronizálás | Microsoft. Azure. key. Vault |KeyVaultForLinux | [A Linux rendszerhez készült virtuálisgép-bővítmény Key Vault](../../virtual-machines/extensions/key-vault-linux.md) |
-|Azure Monitor-ügynök |Microsoft. Azure. monitor |AzureMonitorLinuxAgent |[A Azure Monitor-ügynök telepítése (előzetes verzió)](../../azure-monitor/platform/azure-monitor-agent-install.md) |
+|Azure Monitor-ügynök |Microsoft. Azure. monitor |AzureMonitorLinuxAgent |[A Azure Monitor-ügynök telepítése (előzetes verzió)](../../azure-monitor/agents/azure-monitor-agent-install.md) |
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -112,6 +112,6 @@ A Windows és Linux rendszeren a szolgáltatással támogatott csatlakoztatott g
 
 Ha a gépet a szükséges ügynök verziójára szeretné frissíteni, tekintse meg az [ügynök frissítése](manage-agent.md#upgrading-agent)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Virtuálisgép-bővítményeket telepíthet, kezelhet és eltávolíthat az [Azure CLI](manage-vm-extensions-cli.md), [Azure PowerShell](manage-vm-extensions-powershell.md), [Azure Portal](manage-vm-extensions-portal.md)vagy [Azure Resource Manager sablonok](manage-vm-extensions-template.md)használatával.

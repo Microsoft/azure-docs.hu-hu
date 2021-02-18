@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 64b39dfa581b242fbb490d61b388f2bf260976ef
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 20241ad316da1c5d713617f3f371d02e2a4e6cc9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460409"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570831"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center – Hibaelhárítási útmutató
 
@@ -42,7 +42,7 @@ Az ügyfelek visszajelzéseket adhatnak a riasztás leírásával és relevanci�
 
 ## <a name="audit-log"></a>Az auditnaplóban
 
-A Security Center hibaelhárítása többnyire a meghibásodott összetevőhöz tartozó [auditnapló](../azure-monitor/platform/platform-logs-overview.md) bejegyzéseinek áttekintésével kezdődik. A naplókból a következők állapíthatók meg:
+A Security Center hibaelhárítása többnyire a meghibásodott összetevőhöz tartozó [auditnapló](../azure-monitor/essentials/platform-logs-overview.md) bejegyzéseinek áttekintésével kezdődik. A naplókból a következők állapíthatók meg:
 
 * A végrehajtott műveletek
 * A művelet kezdeményezője
@@ -87,8 +87,8 @@ A **Figyelés állapota** megmutatja, hogy a Security Center miért nem tudja si
 | Energiaállapot: ki | A virtuális gép leállt.  A Log Analytics ügynök csak a rendszert futtató virtuális gépekre telepíthető. | Indítsa újra a virtuális gépet. |
 | Hiányzó vagy érvénytelen azure-os virtuálisgép-ügynök | A Log Analytics ügynök még nincs telepítve.  Ahhoz, hogy a Security Center telepítse a bővítményt, érvényes azure-os virtuálisgép-ügynök szükséges. | Telepítse, telepítse újra vagy frissítse a virtuális gépen található azure-os virtuálisgép-ügynököt. |
 | A virtuális gép állapota nem áll készen a telepítésre  | A Log Analytics ügynök még nincs telepítve, mert a virtuális gép nem áll készen a telepítésre. A virtuális gép a virtuálisgép-ügynökkel vagy a virtuális gép üzembe helyezésével kapcsolatos probléma miatt nem áll készen a telepítésre. | Ellenőrizze a virtuális gép állapotát. Térjen vissza a **Virtuális gépek** szakaszra a portálon, és jelölje ki a virtuális gépet az állapotra vonatkozó információk megtekintéséhez. |
-|A telepítés nem sikerült – általános hiba | A Log Analytics ügynök telepítve van, de hiba miatt nem sikerült. | [Telepítse manuálisan a bővítményt](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) vagy távolítsa el, és a Security Center megpróbálja újból telepíteni. |
-| A telepítés nem sikerült – a helyi ügynök már telepítve van | Log Analytics ügynök telepítése nem sikerült. Security Center azonosított egy helyi ügynököt (Log Analytics vagy System Center Operations Manager), amely már telepítve van a virtuális gépen. Ha el szeretné kerülni a többsoros konfigurációt, ahol a virtuális gép két különálló munkaterületre jelent jelentést, a Log Analytics ügynök telepítése leállt. | Két megoldás létezik: az egyik [a bővítmény manuális telepítése](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) és csatlakoztatása a kívánt munkaterülethez. A másik a kívánt munkaterület alapértelmezettként való beállítása, és az ügynök automatikus üzembe helyezésének engedélyezése.  Lásd az [automatikus üzembe helyezés engedélyezését](security-center-enable-data-collection.md) ismertető részt. |
+|A telepítés nem sikerült – általános hiba | A Log Analytics ügynök telepítve van, de hiba miatt nem sikerült. | [Telepítse manuálisan a bővítményt](../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) vagy távolítsa el, és a Security Center megpróbálja újból telepíteni. |
+| A telepítés nem sikerült – a helyi ügynök már telepítve van | Log Analytics ügynök telepítése nem sikerült. Security Center azonosított egy helyi ügynököt (Log Analytics vagy System Center Operations Manager), amely már telepítve van a virtuális gépen. Ha el szeretné kerülni a többsoros konfigurációt, ahol a virtuális gép két különálló munkaterületre jelent jelentést, a Log Analytics ügynök telepítése leállt. | Két megoldás létezik: az egyik [a bővítmény manuális telepítése](../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) és csatlakoztatása a kívánt munkaterülethez. A másik a kívánt munkaterület alapértelmezettként való beállítása, és az ügynök automatikus üzembe helyezésének engedélyezése.  Lásd az [automatikus üzembe helyezés engedélyezését](security-center-enable-data-collection.md) ismertető részt. |
 | Az ügynök nem tud csatlakozni a munkaterülethez | A Log Analytics ügynök telepítve van, de a hálózati kapcsolat miatt nem sikerült.  Ellenőrizze az internetkapcsolatot, és hogy érvényes HTTP proxy van-e konfigurálva az ügynökhöz. | Lásd a Monitoring Agent hálózati követelményeit ismertető részt. |
 | Az ügynök hiányzó vagy ismeretlen munkaterülethez van csatlakoztatva | Security Center azonosította, hogy a virtuális gépre telepített Log Analytics-ügynök egy olyan munkaterülethez csatlakozik, amelyhez nincs hozzáférése. | Ez két esetben fordulhat elő. A munkaterületet törölték, és már nem létezik. Telepítse újra az ügynököt a megfelelő munkaterülettel, vagy távolítsa el az ügynököt, és engedélyezze a Security Centernek az automatikus üzembe helyezési telepítés végrehajtását. A másik eset, amikor a munkaterület egy olyan előfizetés része, amelyhez a Security Center nem rendelkezik engedéllyel. A Security Center működéséhez az előfizetéseknek engedélyezniük kell a hozzáférést a Microsoft Security erőforrás-szolgáltató számára. Az engedélyezéshez regisztrálja az előfizetést a Microsoft Security erőforrás-szolgáltatóban. Ezt megteheti egy API, a PowerShell vagy a portál segítségével, vagy a Security Center **Áttekintés** irányítópultján az előfizetésre történő szűréssel. További információ: [Erőforrás-szolgáltatók és típusaik](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). |
 | Az ügynök nem válaszol, vagy hiányzik az azonosító | A Security Center annak ellenére sem tudja lekérni a virtuális gépről beolvasott biztonsági adatokat, hogy az ügynök telepítve van. | Az ügynök nem jelent semmilyen adatot, például szívverést sem. Előfordulhat, hogy az ügynök sérült, vagy valami blokkolja a forgalmat. Vagy az ügynök jelentéskészítési adatforrást tartalmaz, de hiányzik az Azure-erőforrás azonosítója, így nem lehet az Azure-beli virtuális géphez igazodni. A Linux hibaelhárításával kapcsolatban lásd: a [Linux rendszerhez készült log Analytics-ügynök hibaelhárítási útmutatója](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal). Windows hibaelhárítása: [Windows rendszerű virtuális gépek hibaelhárítása](../virtual-machines/extensions/oms-windows.md#troubleshoot-and-support). |
@@ -98,17 +98,17 @@ A **Figyelés állapota** megmutatja, hogy a Security Center miért nem tudja si
 
 Ahhoz, hogy az ügynökök kapcsolódni és regisztrálni tudjanak a Security Centerben, hozzáféréssel kell rendelkezniük a hálózati erőforrásokhoz, beleértve a portszámokat és a tartományok URL-címét.
 
-* Proxykiszolgálók esetében biztosítania kell, hogy a megfelelő proxykiszolgáló-erőforrások konfigurálva vannak az ügynök beállításaiban. További információ: [a proxybeállítások módosítása](../azure-monitor/platform/agent-windows.md).
+* Proxykiszolgálók esetében biztosítania kell, hogy a megfelelő proxykiszolgáló-erőforrások konfigurálva vannak az ügynök beállításaiban. További információ: [a proxybeállítások módosítása](../azure-monitor/agents/agent-windows.md).
 * Ha tűzfallal korlátozza az internet-hozzáférést, akkor a tűzfalat úgy kell beállítania, hogy engedélyezze a Log Analytics hozzáférését. Az ügynök beállításait nem kell módosítania.
 
 Az alábbi táblázat a kommunikációhoz szükséges erőforrásokat tartalmazza.
 
 | Ügynök erőforrása | Portok | HTTPS-ellenőrzés kihagyása |
 |---|---|---|
-| *.ods.opinsights.azure.com | 443 | Igen |
-| *.oms.opinsights.azure.com | 443 | Igen |
-| *.blob.core.windows.net | 443 | Igen |
-| *.azure-automation.net | 443 | Igen |
+| *.ods.opinsights.azure.com | 443 | Yes |
+| *.oms.opinsights.azure.com | 443 | Yes |
+| *.blob.core.windows.net | 443 | Yes |
+| *.azure-automation.net | 443 | Yes |
 
 Ha problémába ütközik az ügynök előkészítése során, olvassa el a következő cikket: [Az Operations Management Suite előkészítési problémáinak hibaelhárítása](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues).
 

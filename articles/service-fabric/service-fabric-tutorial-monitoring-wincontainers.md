@@ -4,12 +4,12 @@ description: Ebben az oktatóanyagban Azure Monitor naplókat konfigurál az Ser
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: cf14cce631a505a951ec4d9c0955431b9a98527e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7689d6e259055137a8d1d3c61552790ab9f28d3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840676"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588240"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>Oktatóanyag: Windows-tárolók figyelése Service Fabric Azure Monitor naplók használatával
 
@@ -75,7 +75,7 @@ Hajtsa végre a következő módosításokat a *template.json* fájlban:
     "omsSolution": "ServiceFabric"
     ```
 
-3. Adja hozzá a Microsoft Monitoring Agentet virtuálisgép-bővítményként. A virtuálisgép-méretezési készletek erőforrásának megkeresése: *erőforrások*  >  *"apiVersion": "[változók (' vmssApiVersion ')]"*. A *properties*  >  *virtualMachineProfile*  >  *extensionProfile*  >  -*bővítmények*tulajdonságok területén adja hozzá a következő bővítmény leírását a *ServiceFabricNode* -bővítmény alatt: 
+3. Adja hozzá a Microsoft Monitoring Agentet virtuálisgép-bővítményként. A virtuálisgép-méretezési készletek erőforrásának megkeresése: *erőforrások*  >  *"apiVersion": "[változók (' vmssApiVersion ')]"*. A   >  *virtualMachineProfile*  >  *extensionProfile*  >  -*bővítmények* tulajdonságok területén adja hozzá a következő bővítmény leírását a *ServiceFabricNode* -bővítmény alatt: 
     
     ```json
     {
@@ -185,7 +185,7 @@ A tárolómegoldások beállításához a munkaterületen keresse meg a *Tárol�
 
 ![Tárolómegoldások hozzáadása](./media/service-fabric-tutorial-monitoring-wincontainers/containers-solution.png)
 
-Ha a rendszer kéri a *log Analytics munkaterületet*, válassza ki az erőforráscsoporthoz létrehozott munkaterületet, és válassza a **Létrehozás**lehetőséget. Ezzel hozzáadja a *tároló-figyelési megoldást* a munkaterülethez, és elindítja a sablon által központilag telepített log Analytics-ügynököt a Docker-naplók és-statisztikák gyűjtésének megkezdéséhez.
+Ha a rendszer kéri a *log Analytics munkaterületet*, válassza ki az erőforráscsoporthoz létrehozott munkaterületet, és válassza a **Létrehozás** lehetőséget. Ezzel hozzáadja a *tároló-figyelési megoldást* a munkaterülethez, és elindítja a sablon által központilag telepített log Analytics-ügynököt a Docker-naplók és-statisztikák gyűjtésének megkezdéséhez.
 
 Lépjen vissza az *erőforráscsoporthoz*, ahol meg kell jelennie az újonnan hozzáadott monitorozási megoldásnak. Ha kijelöli, a kezdőlapon meg kell jeleníteni a futtatott tároló-lemezképek számát.
 
@@ -210,7 +210,7 @@ Az Log Analytics ügynök használatának egy másik előnye, hogy módosítania
 Ekkor megnyílik a Log Analytics-munkaterület, ahol megtekintheti a megoldásokat, létrehozhat egyéni irányítópultokat, és konfigurálhatja a Log Analytics-ügynököt. 
 * Válassza a **Speciális beállítások** lehetőséget a speciális beállítások menü megnyitásához.
 * Válassza a **csatlakoztatott források**  >  **Windows-kiszolgálók** lehetőséget, hogy ellenőrizze, hogy van-e *5 Windows rendszerű számítógép csatlakoztatva*.
-* Az **Data**  >  új teljesítményszámlálók kereséséhez és hozzáadásához válassza az**adatwindows** -teljesítményszámlálók lehetőséget. Itt megtekintheti az összegyűjteni kívánt teljesítményszámlálók Azure Monitor naplóiból származó javaslatok listáját, valamint az egyéb számlálók keresésének lehetőségét is. Ellenőrizze, hogy **Processzor(_Total)\% A processzor kihasználtsága** és a **Memória(*)\Rendelkezésre álló memória (megabájt)** számlálók össze vannak-e gyűjtve.
+* Az   >  új teljesítményszámlálók kereséséhez és hozzáadásához válassza az **adatwindows** -teljesítményszámlálók lehetőséget. Itt megtekintheti az összegyűjteni kívánt teljesítményszámlálók Azure Monitor naplóiból származó javaslatok listáját, valamint az egyéb számlálók keresésének lehetőségét is. Ellenőrizze, hogy **Processzor(_Total)\% A processzor kihasználtsága** és a **Memória(*)\Rendelkezésre álló memória (megabájt)** számlálók össze vannak-e gyűjtve.
 
 Néhány perc múlva **frissítse** a Tárolómonitorozási megoldást, és ezután látnia kell, ahogy érkeznek a *Számítógép teljesítményére* vonatkozó adatok. Ez segít megérteni, hogyan használja a rendszer az erőforrásokat. Ezeket a metrikákat a fürt méretezésére vonatkozó, megfelelő döntések meghozásához is használhatja, vagy annak megerősítéséhez, hogy a fürt a vártnak megfelelően osztja el a terhelést.
 
@@ -230,6 +230,6 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 Most, hogy konfigurálta a tároló alkalmazás figyelését, próbálkozzon az alábbiakkal:
 
 * A Linux-fürtök Azure Monitor naplófájljainak konfigurálása az oktatóanyaghoz hasonló lépéseket követve. Hivatkozzon [erre a sablonra](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeType-Secure-OMS) a módosítások a Resource Manager-sablonban történő elvégzéséhez.
-* Konfigurálja Azure Monitor naplókat az [automatizált riasztások](../azure-monitor/platform/alerts-overview.md) beállításához az észlelés és a diagnosztika támogatásához.
+* Konfigurálja Azure Monitor naplókat az [automatizált riasztások](../azure-monitor/alerts/alerts-overview.md) beállításához az észlelés és a diagnosztika támogatásához.
 * Tekintse meg a Service Fabric a fürthöz konfigurálható, [ajánlott teljesítményszámlálókat](service-fabric-diagnostics-event-generation-perf.md) tartalmazó listáját.
-* Ismerkedjen meg az Azure Monitor naplók részeként kínált [naplóbeli keresési és lekérdezési](../azure-monitor/log-query/log-query-overview.md) funkciókkal.
+* Ismerkedjen meg az Azure Monitor naplók részeként kínált [naplóbeli keresési és lekérdezési](../azure-monitor/logs/log-query-overview.md) funkciókkal.

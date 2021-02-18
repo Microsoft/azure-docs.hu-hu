@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 3b6cb195f44bf6c868402481480d9b10802c4d59
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8e2af73be0fc887b132f523133159472ce1d1f98
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965671"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570976"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Az előjelzéses hálózati figyeléshez használja a csomagok rögzítését riasztásokkal és Azure Functionsokkal
 
@@ -41,7 +41,7 @@ Az Azure-ökoszisztémán belüli Network Watcher, riasztás és függvények ha
 * Network Watcher meglévő példánya. Ha még nem rendelkezik ilyennel, [hozzon létre Network Watcher egy példányát](network-watcher-create.md).
 * Egy meglévő virtuális gép ugyanabban a régióban, mint Network Watcher a [Windows-bővítmény](../virtual-machines/extensions/network-watcher-windows.md) vagy a [linuxos virtuálisgép-bővítmény](../virtual-machines/extensions/network-watcher-linux.md).
 
-## <a name="scenario"></a>Használati eset
+## <a name="scenario"></a>Eset
 
 Ebben a példában a virtuális gép a szokásosnál több TCP-szegmenst küld, és riasztást szeretne kapni. A TCP-szegmensek példaként használhatók, de bármilyen riasztási feltételt használhat.
 
@@ -81,7 +81,7 @@ Első lépésként létre kell hoznia egy Azure-függvényt a riasztás feldolgo
     |**Erőforráscsoport**|PacketCaptureRG|A Function alkalmazást tartalmazó erőforráscsoport.|
     |**Szolgáltatási csomag**|Használatalapú csomag| A Function app által használt terv típusa. A lehetőségek a következők: felhasználás vagy Azure App Service terv. |
     |**Hely**|Az USA középső régiója| Az a régió, amelyben létre kívánja hozni a Function alkalmazást.|
-    |**Storage-fiók**|automatikusan létrehozott| Az általános célú tároláshoz Azure Functions szükséges Storage-fiók.|
+    |**Tárfiók**|automatikusan létrehozott| Az általános célú tároláshoz Azure Functions szükséges Storage-fiók.|
 
 3. A **PacketCaptureExample Function apps** panelen válassza a **functions**  >  **Egyéni függvény** lehetőséget  > **+** .
 
@@ -332,7 +332,7 @@ A következő példában a függvényben használható PowerShell-kód látható
 
     ![A függvény URL-címének másolása][2]
 
-Ha egyéni tulajdonságokat kell megadnia a webhook POST-kérelem hasznos adataiban, tekintse meg a [webhook konfigurálása Azure metrikai riasztásra](../azure-monitor/platform/alerts-webhooks.md)című témakört.
+Ha egyéni tulajdonságokat kell megadnia a webhook POST-kérelem hasznos adataiban, tekintse meg a [webhook konfigurálása Azure metrikai riasztásra](../azure-monitor/alerts/alerts-webhooks.md)című témakört.
 
 ## <a name="configure-an-alert-on-a-vm"></a>Riasztás konfigurálása virtuális gépen
 
@@ -340,7 +340,7 @@ A riasztások úgy konfigurálhatók, hogy a felhasználók értesítése, ha eg
 
 ### <a name="create-the-alert-rule"></a>A riasztási szabály létrehozása
 
-Nyissa meg a meglévő virtuális gépet, majd adjon hozzá egy riasztási szabályt. A riasztások konfigurálásával kapcsolatos részletesebb dokumentációt a [riasztások létrehozása Azure monitor az Azure-szolgáltatások – Azure Portal](../azure-monitor/platform/alerts-classic-portal.md)című témakörben talál. Adja meg a következő értékeket a **riasztási szabály** panelen, majd kattintson az **OK gombra**.
+Nyissa meg a meglévő virtuális gépet, majd adjon hozzá egy riasztási szabályt. A riasztások konfigurálásával kapcsolatos részletesebb dokumentációt a [riasztások létrehozása Azure monitor az Azure-szolgáltatások – Azure Portal](../azure-monitor/alerts/alerts-classic-portal.md)című témakörben talál. Adja meg a következő értékeket a **riasztási szabály** panelen, majd kattintson az **OK gombra**.
 
   |**Beállítás** | **Érték** | **Részletek** |
   |---|---|---|

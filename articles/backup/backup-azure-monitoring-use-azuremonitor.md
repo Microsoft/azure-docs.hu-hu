@@ -4,12 +4,12 @@ description: Figyelje Azure Backup munkaterheléseket, és hozzon létre egyéni
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 3f5f663a2f0ed0f91cc414d352e975a2ff3b9649
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1800771bfff0afbcec8440383536734246ea8f5c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88827154"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580736"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>A monitor méretezése Azure Monitor használatával
 
@@ -29,7 +29,7 @@ Azure Monitor a saját riasztásokat a Log Analytics munkaterületen hozhatja l�
 > [!IMPORTANT]
 > További információ a lekérdezés létrehozásának költségéről: [Azure monitor díjszabása](https://azure.microsoft.com/pricing/details/monitor/).
 
-Nyissa meg a Log Analytics munkaterület **naplók** szakaszát, és hozzon létre egy lekérdezést a saját naplókhoz. Ha **új riasztási szabályt**választ, megnyílik a Azure monitor riasztás létrehozása lap, ahogy az alábbi képen is látható.
+Nyissa meg a Log Analytics munkaterület **naplók** szakaszát, és hozzon létre egy lekérdezést a saját naplókhoz. Ha **új riasztási szabályt** választ, megnyílik a Azure monitor riasztás létrehozása lap, ahogy az alábbi képen is látható.
 
 ![Riasztás létrehozása Log Analytics munkaterületen](media/backup-azure-monitoring-laworkspace/custom-alert.png)
 
@@ -50,13 +50,13 @@ Ha szükséges, szerkesztheti a Kusto-lekérdezést. Válassza ki a küszöbért
 
 #### <a name="alert-action-groups"></a>Riasztási műveleti csoportok
 
-Az értesítési csatorna megadásához használjon műveleti csoportot. Az elérhető értesítési mechanizmusok megjelenítéséhez a **műveleti csoportok**területen válassza az **új létrehozása**lehetőséget.
+Az értesítési csatorna megadásához használjon műveleti csoportot. Az elérhető értesítési mechanizmusok megjelenítéséhez a **műveleti csoportok** területen válassza az **új létrehozása** lehetőséget.
 
 ![Elérhető értesítési mechanizmusok a "műveleti csoport hozzáadása" ablakban](media/backup-azure-monitoring-laworkspace/LA-AzureBackup-ActionGroup.png)
 
 Az összes riasztási és figyelési követelményt Log Analytics egyedül is kielégítheti, vagy a Log Analytics használatával kiegészítheti a beépített értesítéseket.
 
-További információ: a [naplók létrehozása, megtekintése és kezelése Azure monitor használatával,](../azure-monitor/platform/alerts-log.md) valamint [műveleti csoportok létrehozása és kezelése a Azure Portalban](../azure-monitor/platform/action-groups.md).
+További információ: a [naplók létrehozása, megtekintése és kezelése Azure monitor használatával,](../azure-monitor/alerts/alerts-log.md) valamint [műveleti csoportok létrehozása és kezelése a Azure Portalban](../azure-monitor/alerts/action-groups.md).
 
 ### <a name="sample-kusto-queries"></a>Példa Kusto-lekérdezésekre
 
@@ -155,8 +155,8 @@ Az alapértelmezett diagramok olyan alapszintű forgatókönyvekhez biztosítana
 A tárolóból származó diagnosztikai adatok bekerülnek a Log Analytics munkaterületre, és némi késéssel. Minden esemény *20 – 30 perccel* a log Analytics munkaterületen érkezik, miután leküldte a Recovery Services-tárolóból. További részletek a lag-ról:
 
 - Az összes megoldás esetében a biztonsági mentési szolgáltatás beépített riasztásait azonnal leküldi a rendszer a létrehozásuk után. Így általában 20 – 30 perc múlva jelennek meg az Log Analytics munkaterületen.
-- Minden megoldásban az igény szerinti biztonsági mentési feladatok és a visszaállítási feladatok a *befejezésük*után azonnal leküldve lesznek.
-- Az SQL Backup kivételével az összes megoldás esetében az ütemezett biztonsági mentési feladatok a *befejezésük*után azonnal leküldve lesznek.
+- Minden megoldásban az igény szerinti biztonsági mentési feladatok és a visszaállítási feladatok a *befejezésük* után azonnal leküldve lesznek.
+- Az SQL Backup kivételével az összes megoldás esetében az ütemezett biztonsági mentési feladatok a *befejezésük* után azonnal leküldve lesznek.
 - Az SQL Backup szolgáltatásban, mivel a naplók biztonsági mentései 15 percenként fordulnak elő, az összes befejezett ütemezett biztonsági mentési feladatra vonatkozó információ, beleértve a naplókat, a kötegbe kerül, és 6 óránként küldi el azokat.
 - Minden megoldásban, például a biztonsági másolati elem, a házirend, a helyreállítási pontok, a tárterület és így tovább, *naponta legalább egyszer* leküldjük.
 - A biztonsági mentési konfiguráció (például a házirend módosítása vagy a szerkesztési szabályzat) változása elindítja az összes kapcsolódó biztonsági mentési információt.
@@ -180,7 +180,7 @@ A megfelelő napló azonosítása és riasztás létrehozása:
 
 2. A megfelelő részletek megtekintéséhez válassza ki a művelet nevét.
 3. Válassza az **új riasztási szabály** lehetőséget a **szabály létrehozása** lap megnyitásához.
-4. Hozzon létre egy riasztást a [műveletnapló riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../azure-monitor/platform/alerts-activity-log.md)című témakör lépéseit követve.
+4. Hozzon létre egy riasztást a [műveletnapló riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../azure-monitor/alerts/alerts-activity-log.md)című témakör lépéseit követve.
 
    ![Új riasztási szabály](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
 
@@ -193,11 +193,11 @@ Megtekintheti a tevékenységek naplóiból létrehozott összes riasztást és 
 Bár a tevékenység-naplókon keresztül kaphat értesítéseket, javasoljuk, hogy használja a Log Analyticst, és ne a tevékenység naplóit, hanem a nagy léptékű monitorozást. Ennek indokai a következők:
 
 - **Korlátozott forgatókönyvek**: a tevékenység-naplókon keresztüli értesítések csak az Azure-beli virtuális gépek biztonsági mentésére vonatkoznak. Az értesítéseket minden Recovery Services-tárolóhoz be kell állítani.
-- **Definíciós igazítás**: az ütemezett biztonsági mentési tevékenység nem felel meg a tevékenységek naplófájljainak legújabb definíciójának. Ehelyett az [erőforrás-naplókhoz](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)igazodik. Ez az igazítás váratlan hatásokat okoz, ha a tevékenység naplójának csatornáján áthaladó adat megváltozik.
-- **Problémák a tevékenység naplójának csatornájában**: Recovery Services-tárolókban, a Azure Backup bepumpált tevékenység-naplók egy új modellt követnek. Ez a változás sajnos a Azure Government, az Azure Germany és az Azure China 21Vianet tevékenység-naplófájljainak előállítására is hatással van. Ha a felhőalapú szolgáltatások felhasználói a Azure Monitorban lévő tevékenységi naplókból hoznak létre vagy konfigurálnak riasztásokat, a riasztások nem aktiválódnak. Továbbá, ha a felhasználó az összes Azure-beli nyilvános régióban [begyűjti Recovery Services tevékenység naplóit egy log Analytics munkaterületre](../azure-monitor/platform/activity-log.md), akkor ezek a naplók nem jelennek meg.
+- **Definíciós igazítás**: az ütemezett biztonsági mentési tevékenység nem felel meg a tevékenységek naplófájljainak legújabb definíciójának. Ehelyett az [erőforrás-naplókhoz](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)igazodik. Ez az igazítás váratlan hatásokat okoz, ha a tevékenység naplójának csatornáján áthaladó adat megváltozik.
+- **Problémák a tevékenység naplójának csatornájában**: Recovery Services-tárolókban, a Azure Backup bepumpált tevékenység-naplók egy új modellt követnek. Ez a változás sajnos a Azure Government, az Azure Germany és az Azure China 21Vianet tevékenység-naplófájljainak előállítására is hatással van. Ha a felhőalapú szolgáltatások felhasználói a Azure Monitorban lévő tevékenységi naplókból hoznak létre vagy konfigurálnak riasztásokat, a riasztások nem aktiválódnak. Továbbá, ha a felhasználó az összes Azure-beli nyilvános régióban [begyűjti Recovery Services tevékenység naplóit egy log Analytics munkaterületre](../azure-monitor/essentials/activity-log.md), akkor ezek a naplók nem jelennek meg.
 
 A Azure Backup által védett munkaterhelések esetében használjon Log Analytics munkaterületet a nagy léptékű figyeléshez és riasztáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Egyéni lekérdezések létrehozásához tekintse meg az [log Analytics adatmodellt](backup-azure-reports-data-model.md).

@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 06/03/2020
-ms.openlocfilehash: f4da14c1fbdaf71018e62b0f97e288a66edef5c8
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: f5c176db4f679c79bb42c6ceb46b3588e9440874
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677274"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572217"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database napló formátuma
 
@@ -42,11 +42,11 @@ A naplózási eseményeket a rendszer az auditálási konfiguráció során megh
 
 ### <a name="log-analytics"></a>Log Analytics
 
-A naplózási eseményeket a rendszer a naplózási konfiguráció során definiált Log Analytics munkaterületre írja az adott `AzureDiagnostics` kategóriába tartozó táblázatba `SQLSecurityAuditEvents` . További hasznos információk a Log Analytics keresési nyelvről és parancsokról: [log Analytics keresési referenciák](../../azure-monitor/log-query/log-query-overview.md).
+A naplózási eseményeket a rendszer a naplózási konfiguráció során definiált Log Analytics munkaterületre írja az adott `AzureDiagnostics` kategóriába tartozó táblázatba `SQLSecurityAuditEvents` . További hasznos információk a Log Analytics keresési nyelvről és parancsokról: [log Analytics keresési referenciák](../../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="audit-log-fields"></a><a id="subheading-1"></a>Naplózási napló mezői
 
-| Név (blob) | Név (Event Hubs/Log Analytics) | Leírás | Blobtípus | Event Hubs/Log Analytics típusa |
+| Név (blob) | Név (Event Hubs/Log Analytics) | Description | Blobtípus | Event Hubs/Log Analytics típusa |
 |-------------|---------------------------------|-------------|-----------|-------------------------------|
 | action_id | action_id_s | A művelet azonosítója | varchar (4) | sztring |
 | action_name | action_name_s | A művelet neve | N/A | sztring |

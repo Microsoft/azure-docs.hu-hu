@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 1faeb047783b9db24348425e5a6453754e550d4d
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: c58f94bcdb659eed67ebf023af473545d8cee1a7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833014"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587267"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor megoldás – gyakori kérdések
 
@@ -43,7 +43,7 @@ A hálózatok a Linux-alapú csomópontok használatával történő figyelésé
 Ahhoz, hogy a NPM megoldás a csomópontokon futó virtuális gépeken a hálózatok figyelésére fusson, a csomópontoknak legalább 500 MB memóriával és egy mag kell rendelkezniük. Nem kell külön csomópontokat használnia a NPM futtatásához. A megoldás olyan csomópontokon is futhat, amelyeken más munkaterhelések futnak. A megoldás képes a figyelési folyamat leállítására, ha az több mint 5%-os CPU-t használ.
 
 ### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>A NPM használatához csatlakoztatni kell a saját csomópontokat közvetlen ügynökként vagy System Center Operations Manageron keresztül?
-A Teljesítményfigyelő és a szolgáltatás-csatlakozási figyelő funkciói támogatják a [közvetlen ügynökként csatlakoztatott](../platform/agent-windows.md) csomópontokat, és [Operations Manageron keresztül csatlakoznak](../platform/om-agents.md).
+A Teljesítményfigyelő és a szolgáltatás-csatlakozási figyelő funkciói támogatják a [közvetlen ügynökként csatlakoztatott](../agents/agent-windows.md) csomópontokat, és [Operations Manageron keresztül csatlakoznak](../agents/om-agents.md).
 
 Az ExpressRoute-figyelési funkció esetében az Azure-csomópontokat csak közvetlen ügynökként kell csatlakoztatni. Az Operations Manageron keresztül csatlakoztatott Azure-csomópontok nem támogatottak. A helyszíni csomópontok esetében a közvetlen ügynökként és Operations Manager-n keresztül csatlakozó csomópontok ExpressRoute-áramkör figyelésére is használhatók.
 
@@ -98,7 +98,7 @@ Ha egy ugrás vörös színű, azt jelenti, hogy az egy nem megfelelő állapot�
 A NPM egy valószínűségi mechanizmust használ a meghibásodási valószínűségek az egyes hálózati elérési utakhoz, hálózati szegmensekhez és az összetevők hálózati ugrásokhoz való hozzárendeléséhez azon nem kifogástalan elérési utak száma alapján, amelyek részét képezik. Mivel a hálózati szegmensek és a komló több nem megfelelő állapotú elérési út részévé válik, a hozzájuk tartozó hibák valószínűsége növekszik. Ez az algoritmus akkor működik a legjobban, ha sok olyan csomóponttal rendelkezik, amelynek NPM-ügynöke csatlakozik egymáshoz, mivel ez növeli az adatpontokat a hiba valószínűségének kiszámításához.
 
 ### <a name="how-can-i-create-alerts-in-npm"></a>Hogyan hozhatok létre riasztásokat a NPM-ben?
-Jelenleg a NPM felhasználói felületéről érkező riasztások létrehozása egy ismert probléma miatt meghiúsul. [Manuálisan hozzon létre riasztásokat](../platform/alerts-log.md).
+Jelenleg a NPM felhasználói felületéről érkező riasztások létrehozása egy ismert probléma miatt meghiúsul. [Manuálisan hozzon létre riasztásokat](../alerts/alerts-log.md).
 
 ### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>A riasztások alapértelmezett Log Analytics lekérdezései
 Teljesítményfigyelő lekérdezése

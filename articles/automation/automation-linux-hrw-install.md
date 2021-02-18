@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 20683808c81b32560170b175edf1c37c332f47ad
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 58c340c97bd8e46c5a588b4bf0ba2673712ffb95
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183617"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581189"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker üzembe helyezése
 
@@ -26,13 +26,13 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következőkkel
 
 ### <a name="a-log-analytics-workspace"></a>Log Analytics munkaterület
 
-A hibrid Runbook-feldolgozói szerepkör a szerepkör telepítéséhez és konfigurálásához Azure Monitor Log Analytics munkaterülettől függ. [Azure Resource Manager](../azure-monitor/samples/resource-manager-workspace.md#create-a-log-analytics-workspace), a [PowerShell](../azure-monitor/scripts/powershell-sample-create-workspace.md?toc=/powershell/module/toc.json)vagy a [Azure Portal](../azure-monitor/learn/quick-create-workspace.md)segítségével hozhatja létre.
+A hibrid Runbook-feldolgozói szerepkör a szerepkör telepítéséhez és konfigurálásához Azure Monitor Log Analytics munkaterülettől függ. [Azure Resource Manager](../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace), a [PowerShell](../azure-monitor/logs/powershell-sample-create-workspace.md?toc=/powershell/module/toc.json)vagy a [Azure Portal](../azure-monitor/logs/quick-create-workspace.md)segítségével hozhatja létre.
 
-Ha nem rendelkezik Azure Monitor Log Analytics munkaterülettel, tekintse át a [Azure monitor log tervezési útmutatót](../azure-monitor/platform/design-logs-deployment.md) a munkaterület létrehozása előtt.
+Ha nem rendelkezik Azure Monitor Log Analytics munkaterülettel, tekintse át a [Azure monitor log tervezési útmutatót](../azure-monitor/logs/design-logs-deployment.md) a munkaterület létrehozása előtt.
 
 ### <a name="log-analytics-agent"></a>Log Analytics-ügynök
 
-A hibrid Runbook feldolgozói szerepkörhöz a [log Analytics ügynök](../azure-monitor/platform/log-analytics-agent.md) szükséges a támogatott Linux operációs rendszerhez. Az Azure-on kívül üzemeltetett kiszolgálók vagy gépek esetében a Log Analytics-ügynököt az [Azure arc-kompatibilis kiszolgálók](../azure-arc/servers/overview.md)használatával telepítheti.
+A hibrid Runbook feldolgozói szerepkörhöz a [log Analytics ügynök](../azure-monitor/agents/log-analytics-agent.md) szükséges a támogatott Linux operációs rendszerhez. Az Azure-on kívül üzemeltetett kiszolgálók vagy gépek esetében a Log Analytics-ügynököt az [Azure arc-kompatibilis kiszolgálók](../azure-arc/servers/overview.md)használatával telepítheti.
 
 >[!NOTE]
 >A Linux rendszerhez készült Log Analytics-ügynök telepítése után ne módosítsa a `sudoers.d` mappa vagy a tulajdonosának engedélyeit. Sudo engedély szükséges a **nxautomation** -fiókhoz, amely a hibrid Runbook-feldolgozót futtató felhasználói környezet. A rendszer nem távolítja el az engedélyeket. Ha bizonyos mappákra vagy parancsokra korlátozza ezt a korlátozást, előfordulhat, hogy a rendszer megszakítja a változást.
@@ -87,11 +87,11 @@ A linuxos hibrid Runbook-feldolgozók korlátozott számú Runbook-típust támo
 
 |Runbook típusa | Támogatott |
 |-------------|-----------|
-|Python 2 |Igen |
+|Python 2 |Yes |
 |PowerShell |Igen<sup>1</sup> |
-|PowerShell-munkafolyamat |Nem |
-|Grafikus |Nem |
-|Grafikus PowerShell-munkafolyamat |Nem |
+|PowerShell-munkafolyamat |No |
+|Grafikus |No |
+|Grafikus PowerShell-munkafolyamat |No |
 
 <sup>1</sup> A PowerShell-runbookok a PowerShell Core-t kell telepíteni a Linux rendszerű gépen. A telepítésének megismeréséhez lásd: [a PowerShell Core telepítése Linux rendszeren](/powershell/scripting/install/installing-powershell-core-on-linux) .
 

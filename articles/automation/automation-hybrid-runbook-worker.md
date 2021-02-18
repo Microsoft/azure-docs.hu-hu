@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 7cf18b6b677daaf97d425c86a0cad91b3abcb225
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: c95ccb5ea1a23e8173d58bd3a18490e9b8e630e4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896952"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581269"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Hibrid runbook-feldolgozó – áttekintés
 
@@ -25,7 +25,7 @@ Kétféle Runbook-feldolgozó létezik – rendszer és felhasználó. A követk
 |**Rendszer** |A támogatja a Update Management szolgáltatás által használt rejtett runbookok, amelyek a Windows és Linux rendszerű gépeken a felhasználó által megadott frissítések telepítéséhez lettek kialakítva.<br> Az ilyen típusú hibrid Runbook-feldolgozó nem tagja a hibrid Runbook Worker csoportnak, ezért nem futtatja a Runbook-munkavégző csoportra irányuló runbookok. |
 |**Felhasználó** |Támogatja a felhasználó által definiált runbookok, amely közvetlenül a Windows és Linux rendszerű gépen fut, amely egy vagy több Runbook Worker-csoport tagja. |
 
-A hibrid Runbook-feldolgozók a Windows vagy a Linux operációs rendszeren is futtathatók, és ez a szerepkör a [log Analytics ügynökre](../azure-monitor/platform/log-analytics-agent.md) támaszkodik Azure monitor [log Analytics munkaterületre](../azure-monitor/platform/design-logs-deployment.md). A munkaterület nem csak a támogatott operációs rendszerhez tartozó gép figyelésére használható, hanem a hibrid Runbook-feldolgozó telepítéséhez szükséges összetevők letöltésére is.
+A hibrid Runbook-feldolgozók a Windows vagy a Linux operációs rendszeren is futtathatók, és ez a szerepkör a [log Analytics ügynökre](../azure-monitor/agents/log-analytics-agent.md) támaszkodik Azure monitor [log Analytics munkaterületre](../azure-monitor/logs/design-logs-deployment.md). A munkaterület nem csak a támogatott operációs rendszerhez tartozó gép figyelésére használható, hanem a hibrid Runbook-feldolgozó telepítéséhez szükséges összetevők letöltésére is.
 
 Ha Azure Automation [Update Management](./update-management/overview.md) engedélyezve van, az log Analytics munkaterülethez csatlakoztatott összes gép automatikusan rendszer hibrid Runbook-feldolgozóként van konfigurálva. A Windows hibrid Runbook-feldolgozóként való konfigurálásáról lásd: a [Windows Hybrid Runbook Worker](automation-windows-hrw-install.md) és a Linux telepítése. a [Linux Hybrid Runbook Worker üzembe helyezése](automation-linux-hrw-install.md)című témakörben talál további információt.
 
@@ -62,7 +62,7 @@ Ha a Azure Automation és a Log Analytics ügynököt futtató gépek közötti 
 
 ### <a name="firewall-use"></a>Tűzfal használata
 
-Ha tűzfal használatával korlátozza az internethez való hozzáférést, a tűzfalat úgy kell konfigurálnia, hogy engedélyezze a hozzáférést. Ha a Log Analytics-átjárót proxyként használja, győződjön meg arról, hogy a hibrid Runbook-feldolgozók számára van konfigurálva. Lásd: [a log Analytics átjáró konfigurálása az Automation hibrid Runbook-feldolgozók számára](../azure-monitor/platform/gateway.md).
+Ha tűzfal használatával korlátozza az internethez való hozzáférést, a tűzfalat úgy kell konfigurálnia, hogy engedélyezze a hozzáférést. Ha a Log Analytics-átjárót proxyként használja, győződjön meg arról, hogy a hibrid Runbook-feldolgozók számára van konfigurálva. Lásd: [a log Analytics átjáró konfigurálása az Automation hibrid Runbook-feldolgozók számára](../azure-monitor/agents/gateway.md).
 
 ### <a name="service-tags"></a>Szolgáltatáscímkék
 
