@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/17/2020
-ms.openlocfilehash: d577e96c3ae95103a412b96eba3e1293142f1acd
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 51301bd38bf0700ce42ef33a47b9e763da8d4ed6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932779"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595287"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Apache Kafka on HDInsight-naplók elemzése
 
@@ -34,7 +34,7 @@ A fürt Apache Kafka naplófájljai a következő helyen találhatók: `/var/log
 
 A HDInsight Azure Monitor naplófájljainak engedélyezéséhez szükséges lépések megegyeznek az összes HDInsight-fürtön. Az alábbi hivatkozások segítségével megismerheti, hogyan hozhatja létre és konfigurálhatja a szükséges szolgáltatásokat:
 
-1. Egy Log Analytics-munkaterület létrehozása. További információkért tekintse meg a [naplókat Azure monitor](../../azure-monitor/platform/data-platform-logs.md) dokumentumban.
+1. Egy Log Analytics-munkaterület létrehozása. További információkért tekintse meg a [naplókat Azure monitor](../../azure-monitor/logs/data-platform-logs.md) dokumentumban.
 
 2. Hozzon létre egy Kafka-t a HDInsight-fürtön. További információ: [Start with apache Kafka on HDInsight](apache-kafka-get-started.md) Document.
 

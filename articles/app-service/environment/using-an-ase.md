@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 9/22/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e8cc42500b9d8bfc507683b5cc96c7b12f95909b
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: a7fa9ece3728214fad31f0bae769e1e50206df7e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100548454"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594051"
 ---
 # <a name="use-an-app-service-environment"></a>App Service-környezet használata
 
@@ -196,7 +196,7 @@ Ha integrálja Log Analyticsokkal, a naplókat a beadási portál **naplók** el
 
 **Riasztás létrehozása**
 
-Ha riasztást szeretne létrehozni a naplókban, kövesse a naplók [létrehozása, megtekintése és kezelése a Azure monitor használatával című](../../azure-monitor/platform/alerts-log.md)témakör utasításait. Röviden:
+Ha riasztást szeretne létrehozni a naplókban, kövesse a naplók [létrehozása, megtekintése és kezelése a Azure monitor használatával című](../../azure-monitor/alerts/alerts-log.md)témakör utasításait. Röviden:
 
 * A beadási portál riasztások oldalának megnyitása
 * **Új riasztási szabály** kiválasztása
@@ -303,4 +303,4 @@ For more specific examples, use: az find "az appservice ase"
 [AppDeploy]: ../deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../web-application-firewall/ag/ag-overview.md
-[logalerts]: ../../azure-monitor/platform/alerts-log.md
+[logalerts]: ../../azure-monitor/alerts/alerts-log.md

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4f28665998dcac9f641d4142a0dea60707fb02e9
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 579baa611db47215c8ada554328d254ce99f17cf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805360"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579757"
 ---
 # <a name="azure-security-baseline-for-azure-application-gateway"></a>Azure biztonsági alapkonfiguráció az Azure Application Gateway
 
@@ -188,9 +188,9 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 **Útmutató**: az Azure-tevékenység naplójának használata a hálózati erőforrás-konfigurációk figyelésére és a hálózati beállítások és az Azure Application Gateway üzemelő példányokhoz kapcsolódó erőforrások változásainak észlelésére. Hozzon létre riasztásokat a Azure Monitoron belül, amelyek akkor aktiválódnak, ha a kritikus hálózati beállítások vagy erőforrások változása zajlik.
 
-* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Riasztások létrehozása a Azure Monitorban](../azure-monitor/platform/alerts-activity-log.md)
+* [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -216,7 +216,7 @@ A tevékenységek naplóin kívül az Azure Application Gateway üzemelő péld�
 
 Az Azure Application Gateway az Azure Application Insights beépített integrációját is biztosítja. Application Insights gyűjti a napló-, a teljesítmény-és a hiba adatait. Application Insights automatikusan észleli a teljesítménnyel kapcsolatos rendellenességeket, és hatékony elemzési eszközöket tartalmaz, amelyek segítenek a problémák diagnosztizálásában és a webalkalmazások használatának megismerésében. A folyamatos exportálást engedélyezheti a telemetria exportálásához a Application Insightsból egy központi helyre, hogy az adatok továbbra is a normál megőrzési időtartamnál hosszabbak maradjanak.
 
-* [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/platform/activity-log.md)
+* [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 * [Az Azure Application Gateway diagnosztikai beállításainak engedélyezése](./application-gateway-diagnostics.md)
 
@@ -236,7 +236,7 @@ A tevékenységek naplóin kívül az Azure Application Gateway üzemelő péld�
 
 Az Azure Application Gateway az Azure Application Insights beépített integrációját is biztosítja. Application Insights gyűjti a napló-, a teljesítmény-és a hiba adatait. Application Insights automatikusan észleli a teljesítménnyel kapcsolatos rendellenességeket, és hatékony elemzési eszközöket tartalmaz, amelyek segítenek a problémák diagnosztizálásában és a webalkalmazások használatának megismerésében. A folyamatos exportálást engedélyezheti a telemetria exportálásához a Application Insightsból egy központi helyre, hogy az adatok továbbra is a normál megőrzési időtartamnál hosszabbak maradjanak.
 
-* [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/platform/activity-log.md)
+* [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 * [Az Azure Application Gateway diagnosztikai beállításainak engedélyezése](./application-gateway-diagnostics.md)
 
@@ -260,7 +260,7 @@ Az Azure Application Gateway az Azure Application Insights beépített integrác
 
 **Útmutató**: Azure monitoron belül állítsa be a log Analytics munkaterület megőrzési időszakát a szervezet megfelelőségi előírásai szerint. Használja az Azure Storage-fiókokat hosszú távú/archiválási tároláshoz.
 
-* [Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -274,7 +274,7 @@ Az összes telepített hálózati erőforrás, beleértve az Azure Application G
 
 Opcionálisan engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó SIEM-et.
 
-* [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/platform/activity-log.md)
+* [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 * [Az Azure Application Gateway diagnosztikai beállításainak engedélyezése](./application-gateway-diagnostics.md)
 
@@ -294,13 +294,13 @@ Az összes telepített hálózati erőforrás, beleértve az Azure Application G
 
 * [Az Azure WAF üzembe helyezése](../web-application-firewall/ag/create-waf-policy-ag.md)
 
-* [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/platform/activity-log.md)
+* [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 * [Az Azure Application Gateway diagnosztikai beállításainak engedélyezése](./application-gateway-diagnostics.md)
 
 * [Hálózati Azure Monitor használata](../azure-monitor/insights/network-insights-overview.md)
 
-* [Riasztások létrehozása az Azure-ban](../azure-monitor/learn/tutorial-response.md)
+* [Riasztások létrehozása az Azure-ban](../azure-monitor/alerts/tutorial-response.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -591,7 +591,7 @@ A Microsoft felügyeli az Azure Application Gateway mögöttes infrastruktúráj
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használatával riasztásokat hozhat létre, amelyekkel az Azure Application Gateway-példányok, valamint más kritikus vagy kapcsolódó erőforrások változásai zajlanak.
 
-* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/platform/alerts-activity-log.md)
+* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Az Azure Security Center monitorozása**: Igen
 

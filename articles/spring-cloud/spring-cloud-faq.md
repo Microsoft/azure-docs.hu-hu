@@ -8,18 +8,18 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 307afc8f1caafac1a511f0f9895cc73dd9b47eb4
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 50c8a36b943abb24f2c31bfc2bc33e646a74524a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196044"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596626"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud – gyakori kérdések
 
 Ez a cikk az Azure Spring Cloud szolgáltatással kapcsolatos gyakori kérdésekre ad választ.
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="why-azure-spring-cloud"></a>Az Azure Spring Cloud bemutatása
 
@@ -90,9 +90,9 @@ A Spring boot 2,4-as számú, és jelenleg a Spring-Közösséggel dolgozik a me
 
 ### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>Hol tekinthetem meg a Spring Cloud Application-naplókat és-metrikákat?
 
-A metrikák kereséséhez az alkalmazás áttekintése lapon és a [Azure monitor](../azure-monitor/platform/data-platform-metrics.md#metrics-explorer) lapon.
+A metrikák kereséséhez az alkalmazás áttekintése lapon és a [Azure monitor](../azure-monitor/essentials/data-platform-metrics.md#metrics-explorer) lapon.
 
-Az Azure Spring Cloud támogatja a Spring Cloud Application-naplók és-mérőszámok exportálását az Azure Storage, a EventHub és a [log Analyticsba](../azure-monitor/platform/data-platform-logs.md). A Log Analytics *AppPlatformLogsforSpring* a táblázat neve. Ha szeretné megtudni, hogyan engedélyezheti, tekintse meg a [diagnosztikai szolgáltatásokat](diagnostic-services.md)ismertető témakört.
+Az Azure Spring Cloud támogatja a Spring Cloud Application-naplók és-mérőszámok exportálását az Azure Storage, a EventHub és a [log Analyticsba](../azure-monitor/logs/data-platform-logs.md). A Log Analytics *AppPlatformLogsforSpring* a táblázat neve. Ha szeretné megtudni, hogyan engedélyezheti, tekintse meg a [diagnosztikai szolgáltatásokat](diagnostic-services.md)ismertető témakört.
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Támogatja az Azure Spring Cloud az elosztott nyomkövetést?
 

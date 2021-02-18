@@ -5,19 +5,19 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/05/2021
+ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 5ccef241a37e63467b681d5fd12c65072cb92e58
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: e6147918e7cd56aed5b5b333a8e9825a34d60fd4
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626463"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652275"
 ---
-# <a name="use-azure-storage-explorer-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a> kezelése az Azure Storage Explorerrel az Azure Data Lake Storage Gen2-ben
+# <a name="use-azure-storage-explorer-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>Könyvtárak és fájlok kezelése a Azure Storage Explorer használatával Azure Data Lake Storage Gen2
 
-Ez a cikk bemutatja, hogyan hozhat létre és kezelhet olyan könyvtárakat, fájlokat és hozzáférés-vezérlési listákat (ACL-eket) a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) használatával, amelyeken engedélyezve van a hierarchikus NÉVTÉR (HNS).
+Ez a cikk bemutatja, hogyan hozhat létre és kezelhet olyan könyvtárakat és fájlokat a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) használatával, amelyeken engedélyezve van a hierarchikus NÉVTÉR (HNS).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -26,6 +26,9 @@ Ez a cikk bemutatja, hogyan hozhat létre és kezelhet olyan könyvtárakat, fá
 - Olyan Storage-fiók, amelyen engedélyezve van a hierarchikus névtér (HNS). Az [alábbi](../common/storage-account-create.md) útmutatást követve hozzon létre egyet.
 
 - Azure Storage Explorer telepítve a helyi számítógépen. Az Azure Storage Explorer Windows, Macintosh vagy Linux rendszerre való letöltése: [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
+
+> [!NOTE]
+> A Storage Explorer a blob (blob) & Data Lake Storage Gen2 (DFS) [végpontok](../common/storage-private-endpoints.md#private-endpoints-for-azure-storage) használatát is lehetővé teszi a Azure Data Lake Storage Gen2 használatakor. Ha a Azure Data Lake Storage Gen2hoz való hozzáférés privát végpontok használatával van konfigurálva, győződjön meg arról, hogy a Storage-fiókhoz két privát végpont jön létre: egyet a cél alerőforrással, `blob` a másikat pedig a cél alerőforrással `dfs` .
 
 ## <a name="sign-in-to-storage-explorer"></a>Bejelentkezés Storage Explorer
 
@@ -77,41 +80,9 @@ A **Azure Storage Explorer** alkalmazásban válasszon ki egy könyvtárat egy S
 
 A fájlok **Azure Storage Explorer** használatával történő letöltéséhez jelölje ki a fájlt, és válassza a **Letöltés** lehetőséget a menüszalagon. Megnyílik egy fájl párbeszédpanel, amelyen megadhat egy fájlnevet. A **Mentés** gombra kattintva elindíthatja a fájl letöltését a helyi helyre.
 
-<a id="managing-access"></a>
-
-## <a name="manage-acls"></a>ACL-ek kezelése
-
-Kattintson a jobb gombbal a tárolóra, egy könyvtárra vagy egy fájlra, majd kattintson a **Access Control-lista kezelése** lehetőségre.  A következő képernyőképen a menü látható, amikor a jobb gombbal egy könyvtárra kattint.
-
-> [!div class="mx-imgBorder"]
-> ![Kattintson a jobb gombbal egy könyvtárra Azure Storage Explorer](./media/data-lake-storage-explorer/manage-access-control-list-option.png)
-
-A **hozzáférés kezelése** párbeszédpanel lehetővé teszi a tulajdonosi és a tulajdonosi csoport engedélyeinek kezelését. Azt is lehetővé teszi, hogy új felhasználókat és csoportokat vegyen fel a hozzáférés-vezérlési listára, ahol az engedélyeket kezelheti.
-
-> [!div class="mx-imgBorder"]
-> ![Hozzáférés kezelése párbeszédpanel](./media/data-lake-storage-explorer/manage-access-dialog-box.png)
-
-Ha új felhasználót vagy csoportot szeretne hozzáadni a hozzáférés-vezérlési listához, kattintson a **Hozzáadás** gombra. Ezután adja meg a listához hozzáadni kívánt Azure Active Directory-(HRE-) bejegyzést, majd válassza a **Hozzáadás** lehetőséget.  A felhasználó vagy csoport ekkor megjelenik a **felhasználók és csoportok:** mezőben, így megkezdheti az engedélyeik kezelését.
-
-> [!NOTE]
-> Ajánlott eljárás, és javasoljuk, hogy hozzon létre egy biztonsági csoportot a HRE-ben, és tartsa meg az engedélyeket a csoporton az egyes felhasználók helyett. A javaslat részletes ismertetését, valamint az egyéb ajánlott eljárásokat lásd: [hozzáférés-vezérlési modell Azure Data Lake Storage Gen2ban](data-lake-storage-access-control-model.md).
-
-A jelölőnégyzet vezérlőelemekkel megadhatja a hozzáférést és az alapértelmezett ACL-eket. További információ az ilyen típusú ACL-ek közötti különbségről: [ACL-típusok](data-lake-storage-access-control.md#types-of-acls).
-
-<a id="apply-acls-recursively"></a>
-
-## <a name="apply-acls-recursively"></a>ACL-ek rekurzív alkalmazása
-
-Az ACL-bejegyzéseket rekurzív módon alkalmazhatja a szülő könyvtár meglévő alárendelt elemeire anélkül, hogy ezeket a módosításokat külön kell elvégeznie az egyes alárendelt elemek esetében.
-
-Az ACL-bejegyzések rekurzív alkalmazásához kattintson a jobb gombbal a tárolóra vagy a könyvtárra, majd kattintson a **terjesztési Access Control listák** elemre.  A következő képernyőképen a menü látható, amikor a jobb gombbal egy könyvtárra kattint.
-
-> [!div class="mx-imgBorder"]
-> ![Kattintson a jobb gombbal egy könyvtárra, és válassza a hozzáférés-vezérlés propagálása beállítást.](./media/data-lake-storage-explorer/propagate-access-control-list-option.png)
-
 ## <a name="next-steps"></a>Következő lépések
 
-Ismerkedjen meg Data Lake Storage Gen2 hozzáférés-vezérlési listájával.
+Ismerje meg, hogyan kezelheti a fájl-és könyvtár-engedélyeket a hozzáférés-vezérlési listák (ACL-ek) beállításával
 
 > [!div class="nextstepaction"]
-> [Hozzáférés-vezérlés a 2. generációs Azure Data Lake Storage-ben](./data-lake-storage-access-control.md)
+> [Az ACL-ek kezelése Azure Storage Explorer használatával Azure Data Lake Storage Gen2](./data-lake-storage-explorer-acl.md)

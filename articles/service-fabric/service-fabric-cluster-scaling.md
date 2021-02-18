@@ -4,12 +4,12 @@ description: Ismerje meg, hogy az Azure Service Fabric-fürtök méretezése ki-
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: atsenthi
-ms.openlocfilehash: 126be55c63c625995ad52b84a51a8983e220652d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 610c43f64f9073aefe8008473209039122cf36d7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85610200"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591798"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>Azure Service Fabric-fürtök méretezése
 A Service Fabric-fürt olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait. Egy fürt részét képező gépet vagy virtuális gépet csomópontnak nevezzük. A fürtök akár több ezer csomópontot is tartalmazhatnak. Service Fabric-fürt létrehozása után vízszintesen méretezheti a fürtöt (a csomópontok számának módosítása) vagy függőlegesen (a csomópontok erőforrásainak módosítása).  A fürtöt bármikor méretezheti, még akkor is, ha a munkaterhelések futnak a fürtön.  A fürt skálázása esetén az alkalmazások is automatikusan méretezhetők.
@@ -40,7 +40,7 @@ Számos esetben a [fürt manuális méretezése vagy az automatikus skálázási
 - A manuális skálázáshoz be kell jelentkeznie, és explicit módon kell lekérnie a skálázási műveleteket. Ha a skálázási műveletek gyakran vagy előre nem látható időpontokban is szükségesek, akkor ez a megközelítés nem jó megoldás.
 - Ha az automatikus skálázási szabályok eltávolítanak egy példányt egy virtuálisgép-méretezési csoportból, a csomópont nem távolítja el automatikusan a kapcsolódó Service Fabric fürt ismereteit, kivéve, ha a csomópont típusa nem rendelkezik ezüst vagy arany tartóssági szinttel. Mivel az automatikus skálázási szabályok a méretezési csoport szintjén működnek (nem a Service Fabric szinten), az automatikus skálázási szabályok el tudják távolítani Service Fabric csomópontokat anélkül, hogy a rendszer szabályosan leállítja őket. Ez a durva csomópont-Eltávolítás a "Ghost" Service Fabric a csomópont állapotát a skálázási műveletek után elhagyja. Egy személynek (vagy szolgáltatásnak) rendszeresen törölnie kell az eltávolított csomópont-állapotot a Service Fabric-fürtben.
 - Az arany vagy ezüst tartóssági szinttel rendelkező csomópontok automatikusan törlik az eltávolított csomópontokat, így nincs szükség további tisztításra.
-- Bár az automatikus skálázási szabályok [számos mérőszámot](../azure-monitor/platform/autoscale-common-metrics.md) támogatnak, még mindig korlátozott a készlet. Ha a forgatókönyv a készletben nem szereplő egyes mérőszámok alapján meghívja a méretezést, akkor előfordulhat, hogy az automatikus skálázási szabályok nem megfelelőek.
+- Bár az automatikus skálázási szabályok [számos mérőszámot](../azure-monitor/autoscale/autoscale-common-metrics.md) támogatnak, még mindig korlátozott a készlet. Ha a forgatókönyv a készletben nem szereplő egyes mérőszámok alapján meghívja a méretezést, akkor előfordulhat, hogy az automatikus skálázási szabályok nem megfelelőek.
 
 A Service Fabric skálázás megközelítése a forgatókönyvtől függ. Ha a skálázás nem gyakori, a csomópontok manuális hozzáadása vagy eltávolítása valószínűleg elegendő. Az összetettebb forgatókönyvek esetében az automatikus méretezési szabályok és SDK-k lehetővé teszik a programozott, hatékony alternatívák méretezését.
 
@@ -74,7 +74,7 @@ Helyezzen üzembe egy új elsődleges csomópont-típust a frissített VM SKU-va
 
 Ha ez nem lehetséges, létrehozhat egy új fürtöt, és [visszaállíthatja az alkalmazás állapotát](service-fabric-reliable-services-backup-restore.md) (ha van ilyen) a régi fürtből. Nincs szükség a rendszerszolgáltatások állapotának visszaállítására, ezeket a rendszer újból létrehozza, amikor telepíti az alkalmazásokat az új fürtre. Ha csak az állapot nélküli alkalmazásokat futtatta a fürtön, akkor csak az alkalmazásait telepíti az új fürtre, nincs szükség a visszaállításra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Az [alkalmazások méretezhetőségének](service-fabric-concepts-scalability.md)megismerése.
 * [Azure-fürt méretezése vagy](service-fabric-tutorial-scale-cluster.md)kibontása.
 * Az [Azure-fürtöket programozott módon méretezheti](service-fabric-cluster-programmatic-scaling.md) a Fluent Azure számítási SDK használatával.

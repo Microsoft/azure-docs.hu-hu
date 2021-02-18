@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2020
 ms.author: memildin
-ms.openlocfilehash: 31ff3620bcab6b10b59582daa255ff1f259ab0d3
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 4cc8130d34b5f51728fb2e7fb47c1fb0717d2138
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852642"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595119"
 ---
 # <a name="supported-platforms"></a>Támogatott platformok 
 
@@ -37,10 +37,10 @@ Azure-előfizetésben aktivált Azure-környezet esetén a Azure Security Center
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
-A Security Center a [log Analytics ügynöktől](../azure-monitor/platform/agents-overview.md#log-analytics-agent)függ. Győződjön meg arról, hogy a gépek az ügynök által támogatott operációs rendszerek valamelyikét futtatják az alábbi lapokon leírtak szerint:
+A Security Center a [log Analytics ügynöktől](../azure-monitor/agents/agents-overview.md#log-analytics-agent)függ. Győződjön meg arról, hogy a gépek az ügynök által támogatott operációs rendszerek valamelyikét futtatják az alábbi lapokon leírtak szerint:
 
-* [Log Analytics ügynök a Windows által támogatott operációs rendszerekhez](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
-* [A Linux által támogatott operációs rendszerek Log Analytics ügynöke](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
+* [Log Analytics ügynök a Windows által támogatott operációs rendszerekhez](../azure-monitor/agents/agents-overview.md#supported-operating-systems)
+* [A Linux által támogatott operációs rendszerek Log Analytics ügynöke](../azure-monitor/agents/agents-overview.md#supported-operating-systems)
 
 Győződjön meg arról is, hogy a Log Analytics ügynök [megfelelően van konfigurálva, hogy az adatküldés Security Center](security-center-enable-data-collection.md#manual-agent)
 

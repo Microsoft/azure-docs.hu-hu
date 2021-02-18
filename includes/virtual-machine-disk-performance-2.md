@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/12/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 3c4ab8362b2a717a348a59c0baf829b61e1a8006
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 82b4c127f983f3133326bf7fb538e40713ef9655
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808482"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580374"
 ---
 ![A D s v 3 specifikációit bemutató diagram.](media/vm-disk-performance/dsv3-documentation.jpg)
 
@@ -117,57 +117,3 @@ Ebben az esetben a Standard_D8s_v3 virtuális gépen futó alkalmazás 25 000 IO
 - Mivel a gazdagép-gyorsítótárazást használó három lemez a gyorsítótárazott 16 000-es korláton belül van, a kérelmek sikeresen befejeződtek. Nem történik meg a tárolási teljesítményre vonatkozó korlát.
 - Mivel az állomás-gyorsítótárazást nem használó két lemez a 12 800-as gyorsítótáras korláton belül van, ezek a kérések is sikeresen befejeződtek. Nincs korlát.
 
-## <a name="disk-performance-metrics"></a>Lemez teljesítményének mérőszámai
-
-Az Azure-ban olyan mérőszámok találhatók, amelyek betekintést nyújtanak a virtuális gépek és lemezek teljesítményére. Ezek a metrikák a Azure Portalon keresztül tekinthetők meg. Egy API-hívással is lekérhető. A metrikák kiszámítása egyperces időközökkel történik. A következő mérőszámok érhetők el a virtuális gép és a lemez i/o-forgalmának beolvasásához, valamint az átviteli teljesítményről is:
-
-- **Operációsrendszer-lemez várólistájának mélysége**: az operációsrendszer-lemezre való beolvasásra vagy írásra váró aktuális kimaradó i/o-kérelmek száma.
-- **Operációsrendszer-lemez olvasási sebessége (bájt/mp**): az operációsrendszer-lemezről másodpercenként olvasott bájtok száma.
-- **Operációsrendszer-lemez olvasási műveletei/mp**: az operációsrendszer-lemezről egy másodpercben beolvasott bemeneti műveletek száma.
-- **Operációsrendszer-lemez írási sebessége (bájt/mp**): az operációs rendszer lemezének másodpercében írt bájtok száma.
-- **Operációsrendszer-lemez írási műveletei/mp**: az operációsrendszer-lemez másodpercében írt kimeneti műveletek száma.
-- **Adatlemez-várólista mélysége**: az adatlemez (ek) re való beolvasásra vagy az azokba való írásra váró aktuális, függőben lévő i/o-kérelmek száma.
-- **Adatlemez-olvasási sebesség (bájt/mp**): az adatlemez (ek) egy másodpercében olvasott bájtok száma.
-- **Adatlemez olvasási műveletei/mp**: a másodpercenként beolvasott bemeneti műveletek száma az adatlemez (ek) ről.
-- **Adatlemez-írási sebesség (bájt/mp**): az adatlemez (ek) másodpercében írt bájtok száma.
-- **Adatlemez írási műveletei/mp**: az adatlemez (ek) másodpercében írt kimeneti műveletek száma.
-- **Lemez olvasási sebessége (bájt/mp**): a virtuális géphez csatolt összes lemezről beolvasott bájtok teljes száma.
-- **Lemez olvasási műveletei/mp**: a virtuális géphez csatolt összes lemezről beolvasott bemeneti műveletek másodpercenkénti száma.
-- **Lemez írási sebessége (bájt/mp**): a virtuális géphez csatolt összes lemezről a másodpercben írt bájtok száma.
-- **Lemez írási műveletei/mp**: a virtuális géphez csatolt összes lemezről másodpercek alatt írt kimeneti műveletek száma.
-
-## <a name="storage-io-utilization-metrics"></a>Storage IO kihasználtsági metrikái
-A következő metrikák segítenek diagnosztizálni a szűk keresztmetszetet a virtuális gépen és a lemez kombinációjában. Ezek a metrikák csak Premium-kompatibilis virtuális gépek használata esetén érhetők el. Ezek a metrikák az ultra kivételével minden lemez típushoz elérhetők. 
-
-A lemez i/o-korlátjának diagnosztizálását segítő mérőszámok:
-
-- **Adatlemez IOPS** kihasználtsága (%): az ADATlemez IOPS kiszámított százalékos arány a kiépített adatlemez IOPS. Ha ez az érték 100%-os, az alkalmazás futása az adatlemez IOPS-korlátjának i/o-értéke.
-- **Adatlemez sávszélességének** kihasználtsága (%): az adatlemez átviteli sebessége által kiszámított százalékos arány a kiépített adatlemez átviteli sebessége alapján. Ha ez az érték 100%-os, az alkalmazás futása az adatlemez sávszélesség-korlátján belül az i/o-érték.
-- **Operációsrendszer-lemez IOPS felhasznált százaléka**: az operációsrendszer-lemez IOPS kiszámított százalék a kiépített operációsrendszer-lemez IOPS befejeződött. Ha ez az érték 100%-os, az alkalmazás futása az operációsrendszer-lemez IOPS korlátján belül az IO-ra van korlátozva.
-- **Operációsrendszer-lemez sávszélességének** kihasználtsága (%): az operációsrendszer-lemez átviteli sebessége által kiszámított százalékos érték a kiépített operációsrendszer-lemez átviteli sebességén. Ha ez az érték 100%-os, az alkalmazás futása az operációsrendszer-lemez sávszélesség-korlátján kívül esik.
-
-A virtuális gépek IO-korlátjának diagnosztizálását segítő mérőszámok:
-
-- A virtuális **gép gyorsítótárazott IOPS** kihasználtsága (%): az összes IOPS által kiszámított százalék, amely a maximálisan gyorsítótárazott virtuális gép IOPS korlátján fejeződött be. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép gyorsítótárazott IOPS-korlátjának i/o-értéke.
-- A virtuális **gép gyorsítótárazott sávszélességének** kihasználtsága (%): a teljes lemez átviteli sebessége alapján kiszámított százalékos érték a maximálisan gyorsítótárazott virtuálisgép-átviteli sebességnél. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép gyorsítótárazott sávszélesség-korlátjának i/o-határértéke.
-- A virtuális gép nem **gyorsítótárazott IOPS** kihasználtsága (%): a virtuális gépen lévő összes IOPS által kiszámított százalék a nem gyorsítótárazott virtuális gép maximális IOPS-korlátja alapján lett végrehajtva. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép nem gyorsítótárazott IOPS korlátjának i/o-értéke.
-- A virtuális gép nem **gyorsítótárazott sávszélességének** kihasználtsága (%): a virtuális gépen lévő teljes lemez átviteli sebessége által kiszámított százalék a virtuális gép maximálisan kiépített átviteli sebességével fejeződött be. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép nem gyorsítótárazott sávszélesség-korlátjának i/o-korlátja.
-
-## <a name="storage-io-utilization-metrics-example"></a>Storage IO kihasználtsági mérőszámok – példa
-
-Futtassunk egy példát arra, hogyan használhatja ezeket az új Storage i/o-kihasználtsági mérőszámokat, hogy segítsen a rendszerünk szűk keresztmetszetének hibakeresésében. A rendszer telepítése megegyezik az előző példával, kivéve, ha a csatlakoztatott operációsrendszer-lemez *nincs gyorsítótárazva* .
-
-**Telepítő**
-
-- Standard_D8s_v3
-  - Gyorsítótárazott IOPS: 16 000
-  - Nem gyorsítótárazott IOPS: 12 800
-- P30 operációsrendszer-lemez
-  - IOPS: 5 000
-  - Gazdagép gyorsítótárazása: **Letiltva**
-- Két P30 adatlemez × 2
-  - IOPS: 5 000
-  - Gazdagép gyorsítótárazása: **olvasás/írás**
-- Két P30 adatlemez × 2
-  - IOPS: 5 000
-  - Gazdagép gyorsítótárazása: **Letiltva**

@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 427cf2614f81a086dcb174db06cd636df4876c7e
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 763e628183e5f6ad7b7bdbb8ee7ce6db572f44ad
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778495"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577783"
 ---
 # <a name="what-is-azure-active-directory-monitoring"></a>Mit jelent az Azure Active Directory monitorozása?
 
@@ -79,11 +79,11 @@ Ha egy Azure-eseményközpontba irányítja a naplókat, olyan külső SIEM-eszk
 
 ## <a name="send-logs-to-azure-monitor-logs"></a>Naplók elküldése Azure Monitor naplókba
 
-[Azure monitor a naplók](../../azure-monitor/log-query/log-query-overview.md) egy olyan megoldás, amely összevonta a különböző forrásokból származó megfigyelési adatok mennyiségét, és olyan lekérdezési nyelvet és elemzési motort biztosít, amely betekintést nyújt az alkalmazások és erőforrások működésére. Az Azure AD-tevékenység naplófájljainak Azure Monitor naplókba küldésével gyorsan lekérheti, figyelheti és riasztást gyűjthet az összegyűjtött adatokról. Megtudhatja, hogyan [küldhet adatküldést Azure monitor naplókba](howto-integrate-activity-logs-with-log-analytics.md).
+[Azure monitor a naplók](../../azure-monitor/logs/log-query-overview.md) egy olyan megoldás, amely összevonta a különböző forrásokból származó megfigyelési adatok mennyiségét, és olyan lekérdezési nyelvet és elemzési motort biztosít, amely betekintést nyújt az alkalmazások és erőforrások működésére. Az Azure AD-tevékenység naplófájljainak Azure Monitor naplókba küldésével gyorsan lekérheti, figyelheti és riasztást gyűjthet az összegyűjtött adatokról. Megtudhatja, hogyan [küldhet adatküldést Azure monitor naplókba](howto-integrate-activity-logs-with-log-analytics.md).
 
 Az Azure AD előre elkészített nézeteinek telepítésével monitorozhatja az olyan gyakori eseményeket, mint a bejelentkezések vagy a naplóesemények. Ismerje meg, hogyan [telepítheti és használhatja a log Analytics-nézeteket az Azure ad-tevékenységek naplóihoz](howto-install-use-log-analytics-views.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Tevékenységnaplók az Azure Monitorban](concept-activity-logs-azure-monitor.md)
 * [Naplók streamelése egy eseményközpontba](tutorial-azure-monitor-stream-logs-to-event-hub.md)

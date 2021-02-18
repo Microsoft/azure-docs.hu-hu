@@ -3,12 +3,12 @@ title: Intelligens észlelés az Azure Application Insightsban | Microsoft Docs
 description: Application Insights végrehajtja az alkalmazás telemetria automatikus elemzését, és figyelmezteti a lehetséges problémákra.
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 2b6e9370387bf3bb87555261b3949db2917e9911
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 974795e853416ff7a4c051530b050fc663c9423d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186252"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585652"
 ---
 # <a name="smart-detection-in-application-insights"></a>Intelligens detektálás az Application Insightsban
  Az intelligens észlelés automatikusan figyelmezteti a webalkalmazás lehetséges teljesítménybeli problémáit és meghibásodási rendellenességeit. Az alkalmazás által a [Application Insightsnak](./app-insights-overview.md)küldött telemetria proaktív elemzését végzi. Ha hirtelen megnőtt a meghibásodások aránya, vagy az ügyfél vagy a kiszolgáló teljesítménye rendellenes, akkor riasztást kap. Ehhez a szolgáltatáshoz nincs szükség konfigurációra. Akkor működik, ha az alkalmazása elég telemetria küld.
@@ -53,11 +53,11 @@ Azt is megteheti, hogy Azure Resource Manager-sablonok használatával módosít
 ## <a name="next-steps"></a>Következő lépések
 Ezek a diagnosztikai eszközök segítenek megvizsgálni a telemetria az alkalmazásból:
 
-* [Metrika-kezelő](../platform/metrics-charts.md)
+* [Metrika-kezelő](../essentials/metrics-charts.md)
 * [Keresési ablak](./diagnostic-search.md)
-* [Analitika – hatékony lekérdezési nyelv](../log-query/log-analytics-tutorial.md)
+* [Analitika – hatékony lekérdezési nyelv](../logs/log-analytics-tutorial.md)
 
 Az intelligens észlelés teljesen automatikus. De lehet, hogy néhány riasztást szeretne beállítani?
 
-* [Manuálisan konfigurált metrikai riasztások](../platform/alerts-log.md)
+* [Manuálisan konfigurált metrikai riasztások](../alerts/alerts-log.md)
 * [Rendelkezésre állási webes tesztek](./monitor-web-app-availability.md)

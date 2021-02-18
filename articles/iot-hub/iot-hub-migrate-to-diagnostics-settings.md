@@ -8,16 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: kgremban
-ms.openlocfilehash: dfd819d82f5e35183802e33e5d423cad4de36c38
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 48b646881b12047b28490999a96326f6076af2c1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461582"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591846"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-azure-monitor-resource-logs"></a>IoT Hub migrálása az Operations monitoring szolgáltatásból Azure Monitor erőforrás-naplókba
 
-Azok az ügyfelek, akik a [műveletek figyelésével](iot-hub-operations-monitoring.md) követik a műveletek állapotát, IoT hub áttelepíthetik ezt a munkafolyamatot [Azure monitor erőforrás-naplókra](../azure-monitor/platform/platform-logs-overview.md), a Azure monitor egy funkciójának használatára. Az erőforrás-naplók számos Azure-szolgáltatás erőforrás-szintű diagnosztikai információit biztosítják.
+Azok az ügyfelek, akik a [műveletek figyelésével](iot-hub-operations-monitoring.md) követik a műveletek állapotát, IoT hub áttelepíthetik ezt a munkafolyamatot [Azure monitor erőforrás-naplókra](../azure-monitor/essentials/platform-logs-overview.md), a Azure monitor egy funkciójának használatára. Az erőforrás-naplók számos Azure-szolgáltatás erőforrás-szintű diagnosztikai információit biztosítják.
 
 **A IoT hub Operations monitoring funkciója elavult**, és el lett távolítva a portálról. Ez a cikk azokat a lépéseket ismerteti, amelyekkel áthelyezheti a munkaterheléseket az operatív figyelésből Azure Monitor erőforrás-naplókba. Az elavult idővonalról további információt az [Azure IoT-megoldások monitorozása Azure monitor és Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/)című témakörben talál.
 
@@ -49,9 +49,9 @@ A Azure Portal IoT Hub frissítéséhez először hozzon létre egy diagnosztika
 
 1. A beállítások mentéséhez válassza a **Mentés** lehetőséget.
 
-Az új beállítások körülbelül 10 percen belül lépnek érvénybe. Ezt követően a naplók a konfigurált célhelyen jelennek meg. A diagnosztika konfigurálásával kapcsolatos további információkért lásd: [adatok gyűjtése és felhasználása az Azure-erőforrásokból](../azure-monitor/platform/platform-logs-overview.md).
+Az új beállítások körülbelül 10 percen belül lépnek érvénybe. Ezt követően a naplók a konfigurált célhelyen jelennek meg. A diagnosztika konfigurálásával kapcsolatos további információkért lásd: [adatok gyűjtése és felhasználása az Azure-erőforrásokból](../azure-monitor/essentials/platform-logs-overview.md).
 
-A diagnosztikai beállítások létrehozásával, beleértve a PowerShell-lel és az Azure CLI-vel kapcsolatos részletes információkat a Azure Monitor dokumentációjának [diagnosztikai beállítások](../azure-monitor/platform/diagnostic-settings.md) című részében találja.
+A diagnosztikai beállítások létrehozásával, beleértve a PowerShell-lel és az Azure CLI-vel kapcsolatos részletes információkat a Azure Monitor dokumentációjának [diagnosztikai beállítások](../azure-monitor/essentials/diagnostic-settings.md) című részében találja.
 
 ### <a name="turn-off-operations-monitoring"></a>Műveletek figyelésének kikapcsolása
 
@@ -84,6 +84,6 @@ Az adott séma-struktúrákkal kapcsolatban lásd: [erőforrás-naplók](monitor
 
 Ha figyelni szeretné az eszköz csatlakoztatását, és leválasztja az eseményeket az éles üzemben, javasoljuk, hogy a riasztások beszerzéséhez és az eszköz kapcsolati állapotának figyeléséhez az eszközön [ **leválasztott** Event Grid eseményt](iot-hub-event-grid.md#event-types) . Ebből az [oktatóanyagból](iot-hub-how-to-order-connection-state-events.md) megtudhatja, hogyan integrálhatja a csatlakoztatott eszközök és az eszközök kapcsolatait a IoT-megoldás IoT hub.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az IoT Hub monitorozása](monitor-iot-hub.md)

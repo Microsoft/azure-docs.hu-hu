@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c1e61e9434d96148fbce840f4bad7f6a3b2ecb6b
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: e37171fce5dd7fe625550c5f554f211cf148ea07
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202725"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591440"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>Stream Analytics Azure biztonsági alapterve
 
@@ -114,9 +114,9 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../securi
 
 **Útmutató**: az Azure-tevékenység naplójának használata az erőforrás-konfigurációk figyelésére és a stream Analytics erőforrások változásainak észlelésére. Hozzon létre riasztásokat a Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus erőforrások változásai megváltoznak.
 
-* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Riasztások létrehozása a Azure Monitorban](../azure-monitor/platform/alerts-activity-log.md)
+* [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -138,7 +138,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../securi
 
 **Útmutató**: naplók beolvasása a Azure monitor használatával a biztonsági adatokat, például a naplózási eseményeket és a kérelmeket összesítve. Azure Monitoron belül Log Analytics munkaterületek használatával kérdezheti le és hajthatja végre az elemzéseket, és használhatja az Azure Storage accountyfor hosszú távú/archiválási tárolóját, opcionálisan olyan biztonsági funkciókkal, mint a megváltoztathatatlan tárolás és a kényszerített megőrzés.
 
-* [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+* [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -170,7 +170,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../securi
 
 * [Adatmegőrzési szabályzat konfigurálása az Azure Storage-fiók naplóihoz](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
-* [Az adatmegőrzési időszak módosítása Log Analytics](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Az adatmegőrzési időszak módosítása Log Analytics](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -182,9 +182,9 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../securi
 
 * [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-* [További információ a Log Analytics munkaterületről](../azure-monitor/log-query/log-analytics-tutorial.md)
+* [További információ a Log Analytics munkaterületről](../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/log-query/get-started-queries.md)
+* [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -196,7 +196,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../securi
 
 * [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-* [Riasztás a log Analytics-naplófájlok adatkezeléséről](../azure-monitor/learn/tutorial-response.md)
+* [Riasztás a log Analytics-naplófájlok adatkezeléséről](../azure-monitor/alerts/tutorial-response.md)
 
 * [A Azure Stream Analytics diagnosztikai naplókat és tevékenységeket biztosít a felülvizsgálathoz](./stream-analytics-job-diagnostic-logs.md)
 
@@ -474,7 +474,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, amikor a módosítások Azure stream Analytics erőforrások üzemi példányain lépnek életbe.
 
-* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/platform/alerts-activity-log.md)
+* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Az Azure Security Center monitorozása**: Igen
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: memildin
-ms.openlocfilehash: 6ffb6ced6fc828733dd627943a3d4b54e8293ad2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3ddc385b9d489e0c2ab4abf35a6ade011970342b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791902"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572959"
 ---
 # <a name="stream-alerts-to-a-siem-soar-or-it-service-management-solution"></a>Riasztások továbbítása SIEM, SOAR vagy IT Service Management megoldásba
 
@@ -63,22 +63,22 @@ Ezzel az API-val a **teljes bérlő** (és számos más Microsoft biztonsági te
 - **Power bi**  -  [Kapcsolódjon a Microsoft Graph biztonsági API-hoz Power bi Desktop](/power-bi/connect-data/desktop-connect-graph-security)
 - **ServiceNow**  -  [Kövesse a Microsoft Graph Security API-alkalmazás ServiceNow-tárolóból történő telepítésének és konfigurálásának utasításait](https://docs.servicenow.com/bundle/orlando-security-management/page/product/secops-integration-sir/secops-integration-ms-graph/task/ms-graph-install.html)
 - **QRadar**  -  [IBM eszköz-támogatási modulja Azure Security Center Microsoft Graph API-n keresztül](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/com.ibm.dsm.doc/c_dsm_guide_ms_azure_security_center_overview.html) 
-- **Palo Alto hálózatok** , **Anomali** , **kilátó** , **inspark** és több [Microsoft Graph biztonsági API](https://www.microsoft.com/security/business/graph-security-api#office-MultiFeatureCarousel-09jr2ji)
+- **Palo Alto hálózatok**, **Anomali**, **kilátó**, **inspark** és több [Microsoft Graph biztonsági API](https://www.microsoft.com/security/business/graph-security-api#office-MultiFeatureCarousel-09jr2ji)
 
 [További információ a Microsoft Graph biztonsági API-ról](https://www.microsoft.com/security/business/graph-security-api).
 
 
 ## <a name="stream-alerts-with-azure-monitor"></a>Stream-riasztások Azure Monitor 
 
-Riasztások továbbítása a **ArcSight** , a **splunk** , a **SumoLogic** , a syslog-kiszolgálókra, a **LogRhythm** , a Logz.IO Cloud betekintési **platformra** és más figyelési megoldásokra. Security Center összekapcsolhatók az Azure monitorral az Azure Event Hubs használatával:
+Riasztások továbbítása a **ArcSight**, a **splunk**, a **SumoLogic**, a syslog-kiszolgálókra, a **LogRhythm**, a Logz.IO Cloud betekintési **platformra** és más figyelési megoldásokra. Security Center összekapcsolhatók az Azure monitorral az Azure Event Hubs használatával:
 
 1. Engedélyezze a [folyamatos exportálást](continuous-export.md) a stream Security Center a riasztásokat egy dedikált Azure Event hubhoz az előfizetés szintjén. 
     > [!TIP]
     > Ha ezt a felügyeleti csoport szintjén szeretné elvégezni Azure Policy használatával, tekintse meg a [folyamatos exportálás automatizálási konfigurációinak létrehozása a skálán](continuous-export.md?tabs=azure-policy#configure-continuous-export-at-scale-using-the-supplied-policies) című témakört.
 
-1. [A Azure monitor beépített összekötői segítségével csatlakoztathatja az Azure Event hub-t az előnyben részesített megoldáshoz](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration).
+1. [A Azure monitor beépített összekötői segítségével csatlakoztathatja az Azure Event hub-t az előnyben részesített megoldáshoz](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration).
 
-1. Szükség esetén a nyers naplókat továbbíthatja az Azure Event hub-ba, és csatlakozhat a kívánt megoldáshoz. További információ az [elérhető figyelési](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#monitoring-data-available)információkkal kapcsolatban.
+1. Szükség esetén a nyers naplókat továbbíthatja az Azure Event hub-ba, és csatlakozhat a kívánt megoldáshoz. További információ az [elérhető figyelési](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md#monitoring-data-available)információkkal kapcsolatban.
 
 > [!TIP]
 > Az exportált adattípusok esemény-sémáinak megtekintéséhez keresse fel az [Event hub esemény-sémáit](https://aka.ms/ASCAutomationSchemas).

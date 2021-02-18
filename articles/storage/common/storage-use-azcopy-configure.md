@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 1a319c728b918dbad7dd5f240bc7a0bfeb0c4c09
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 244012f0945f467fe79e95d652ba22e3b62a1b7a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881044"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596940"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy konfigurálása, optimalizálása és megoldása
 
@@ -183,7 +183,7 @@ Amikor folytat egy feladatot, a AzCopy megtekinti a feladatütemezés fájlját.
 
 ## <a name="change-the-location-of-the-plan-and-log-files"></a>A csomag és a naplófájlok helyének módosítása
 
-Alapértelmezés szerint a terv és a naplófájlok a `%USERPROFILE%\.azcopy` Windows könyvtárban vagy a `$HOME$\.azcopy` Mac és Linux rendszerű könyvtárban találhatók. Ezt a helyet módosíthatja.
+Alapértelmezés szerint a terv és a naplófájlok a `%USERPROFILE%\.azcopy` Windows könyvtárban vagy a `$HOME/.azcopy` Mac és Linux rendszerű könyvtárban találhatók. Ezt a helyet módosíthatja.
 
 ### <a name="change-the-location-of-plan-files"></a>A csomag fájljai helyének módosítása
 

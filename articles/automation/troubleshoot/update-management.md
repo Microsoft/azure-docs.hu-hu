@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 01/13/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 9ccaddec73a9c74123471c34b1b973b78eacfff8
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: c16b032502401b633532ab0fcf9518aa85a1b8d6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98890781"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579740"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Az Update Management hibáinak elhárítása
 
@@ -135,7 +135,7 @@ Ezt a problémát a helyi konfigurációs problémák vagy a nem megfelelően ko
 
 1. Futtassa a [Windows](update-agent-issues.md#troubleshoot-offline) vagy [Linux](update-agent-issues-linux.md#troubleshoot-offline)rendszerhez készült hibakeresőt az operációs rendszertől függően.
 
-2. Győződjön meg arról, hogy a számítógép a megfelelő munkaterületre küld jelentést. Az adott aspektus ellenőrzésével kapcsolatos útmutatásért lásd: az [ügynök kapcsolatának ellenőrzése Azure monitor](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-azure-monitor). Győződjön meg arról is, hogy ez a munkaterület a Azure Automation-fiókjához van csatolva. A megerősítéshez nyissa meg az Automation-fiókját, és a **kapcsolódó erőforrások** területen válassza a **csatolt munkaterület** lehetőséget.
+2. Győződjön meg arról, hogy a számítógép a megfelelő munkaterületre küld jelentést. Az adott aspektus ellenőrzésével kapcsolatos útmutatásért lásd: az [ügynök kapcsolatának ellenőrzése Azure monitor](../../azure-monitor/agents/agent-windows.md#verify-agent-connectivity-to-azure-monitor). Győződjön meg arról is, hogy ez a munkaterület a Azure Automation-fiókjához van csatolva. A megerősítéshez nyissa meg az Automation-fiókját, és a **kapcsolódó erőforrások** területen válassza a **csatolt munkaterület** lehetőséget.
 
 3. Győződjön meg arról, hogy a gépek megjelennek az Automation-fiókhoz társított Log Analytics munkaterületen. Futtassa a következő lekérdezést a Log Analytics munkaterületen.
 
@@ -144,7 +144,7 @@ Ezt a problémát a helyi konfigurációs problémák vagy a nem megfelelően ko
    | summarize by Computer, Solutions
    ```
 
-    Ha nem látja a gépet a lekérdezés eredményei között, a közelmúltban nem volt bejelölve. Valószínűleg van egy helyi konfigurációs probléma, és újra kell [telepítenie az ügynököt](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows).
+    Ha nem látja a gépet a lekérdezés eredményei között, a közelmúltban nem volt bejelölve. Valószínűleg van egy helyi konfigurációs probléma, és újra kell [telepítenie az ügynököt](../../azure-monitor/vm/quick-collect-windows-computer.md#install-the-agent-for-windows).
 
     Ha a gép megjelenik a lekérdezés eredményei között, ellenőrizze, hogy szerepel-e a **frissítések** listáján szereplő **Solutions (megoldások** ) tulajdonság alatt. Ez ellenőrzi, hogy regisztrálva van-e Update Management. Ha nem, ellenőrizze a hatókör-konfigurációs problémákat. A [hatókör-konfiguráció](../update-management/scope-configuration.md) határozza meg, hogy mely gépek vannak konfigurálva a Update Managementhoz. A számítógép céljának hatókör-konfigurációjának konfigurálásához lásd: [gépek engedélyezése a munkaterületen](../update-management/enable-from-automation-account.md#enable-machines-in-the-workspace).
 

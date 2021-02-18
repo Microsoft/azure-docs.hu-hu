@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 8/11/2020
 ms.author: lajanuar
-ms.openlocfilehash: bdfb1ac03ea6f896725d5c86cefe41021204359c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 567e28ee7f698565d6ad0020db7abdca0557f053
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582194"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650762"
 ---
 # <a name="translator-v30"></a>Translator v 3.0
 
@@ -35,7 +35,7 @@ A Microsoft Translator több adatközpont-helyből is kiszolgálható. Jelenleg 
 
 * **Amerika:** USA keleti régiója, USA déli középső régiója, az USA nyugati középső régiója és az USA 2. nyugati régiója 
 * **Ázsia és a csendes-óceáni térség:** Dél-Korea, Kelet-Japán, Délkelet-Ázsia és Kelet-Ausztrália
-* **Európa:** Észak-Európa és Nyugat-Európa
+* **Európa:** Észak-Európa, Nyugat-Európa, Észak-Svájc <sup>1, 2</sup>és Nyugat-Svájc <sup>1, 2</sup>
 
 A Microsoft Translatorre irányuló kéréseket a legtöbb esetben az adatközpont kezeli, amely a kérelem eredeti helyétől legközelebb esik. Adatközpont meghibásodása esetén a kérést az Azure földrajzán kívül is át lehet irányítani.
 
@@ -47,6 +47,17 @@ Ha szeretné kényszeríteni a kérést, hogy az adott Azure földrajza kezelhet
 |Azure|Egyesült Államok|   api-nam.cognitive.microsofttranslator.com|
 |Azure|Európa|  api-eur.cognitive.microsofttranslator.com|
 |Azure|Ázsia és a Csendes-óceáni térség|    api-apc.cognitive.microsofttranslator.com|
+
+<sup>1</sup> Észak-Svájc vagy Nyugat-Svájc található erőforrással rendelkező ügyfél gondoskodhat arról, hogy a szöveges API-kérések Svájcban legyenek kézbesítve. Annak érdekében, hogy a kérelmeket Svájcban kezeljék, hozza létre a fordítói erőforrást az "erőforrás-régió" Észak-Svájc vagy a "Nyugat-Svájc" területen, majd használja az erőforrás egyéni végpontját az API-kérelmekben. Ha például létrehoz egy Translator-erőforrást Azure Portal az "erőforrás-régióval", mint "Észak-Svájc", és az erőforrás neve "My-CH-n", akkor az egyéni végpont " https://my-ch-n.cognitiveservices.azure.com ". A fordítási kérelem a következő:
+```curl
+// Pass secret key and region using headers to a custom endpoint
+curl -X POST " my-ch-n.cognitiveservices.azure.com/translator/text/v3.0/translate?to=fr" \
+-H "Ocp-Apim-Subscription-Key: xxx" \
+-H "Ocp-Apim-Subscription-Region: switzerlandnorth" \
+-H "Content-Type: application/json" \
+-d "[{'Text':'Hello'}]" -v
+```
+<sup>2</sup> Az egyéni Translator jelenleg nem érhető el Svájcban.
 
 ## <a name="authentication"></a>Hitelesítés
 

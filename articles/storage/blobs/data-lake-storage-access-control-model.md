@@ -5,14 +5,14 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/10/2020
+ms.date: 02/17/2021
 ms.author: normesta
-ms.openlocfilehash: 65d1ef76ffae113a4b526eec75301abbfea751e7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e5f62456b85791bad5bb66f3abf67e523558d76e
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017712"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650388"
 ---
 # <a name="access-control-model-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlési modell Azure Data Lake Storage Gen2
 
@@ -35,7 +35,7 @@ Ez a cikk az Azure RBAC és hozzáférés-vezérlési listákra koncentrál, val
 
 Az Azure RBAC szerepkör-hozzárendeléseket használ a [rendszerbiztonsági tag](../../role-based-access-control/overview.md#security-principal)engedélyeinek készletének alkalmazásához. A rendszerbiztonsági tag egy olyan objektum, amely egy Azure Active Directory (AD) szolgáltatásban definiált felhasználó, csoport, szolgáltatásnév vagy felügyelt identitást jelöl. Egy engedélyezési csoport olyan rendszerbiztonsági tag számára biztosíthatja a "durva magvas" hozzáférési szintet, mint **például az olvasási** vagy írási hozzáférés egy Storage-fiókban vagy egy tárolóban lévő **összes** adattal. 
 
-A következő szerepkörök lehetővé teszik a rendszerbiztonsági tag számára, hogy hozzáférjenek a Storage-fiókban található adathoz. 
+A következő szerepkörök lehetővé teszik a rendszerbiztonsági tag számára, hogy hozzáférjenek a Storage-fiókban található adathoz.
 
 |Szerepkör|Leírás|
 |--|--|
@@ -85,12 +85,12 @@ Az alábbi táblázat bemutatja, hogyan egyesítheti az Azure-szerepköröket é
 |                          |   Nincs                           | `--X`    | `--X`    | `--X`     | `RW-`  |
 | Data.txt törlése          |   Storage-blobadatok tulajdonosa        | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok közreműködője  | N.A.      | N.A.      | N.A.       | N.A.    |
-|                          |   Storage-blobadatok olvasója       | `--X`    | `--X`    | `-WX`     | N.A.    |
-|                          |   Nincs                           | `--X`    | `--X`    | `-WX`     | N.A.    |
+|                          |   Storage-blobadatok olvasója       | `--X`    | `--X`    | `-WX`     | N/A    |
+|                          |   Nincs                           | `--X`    | `--X`    | `-WX`     | N/A    |
 | Data.txt létrehozása          |   Storage-blobadatok tulajdonosa        | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok közreműködője  | N.A.      | N.A.      | N.A.       | N.A.    |
-|                          |   Storage-blobadatok olvasója       | `--X`    | `--X`    | `-WX`     | N.A.    |
-|                          |   Nincs                           | `--X`    | `--X`    | `-WX`     | N.A.    |
+|                          |   Storage-blobadatok olvasója       | `--X`    | `--X`    | `-WX`     | N/A    |
+|                          |   Nincs                           | `--X`    | `--X`    | `-WX`     | N/A    |
 | Listáját                   |   Storage-blobadatok tulajdonosa        | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok közreműködője  | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok olvasója       | N.A.      | N.A.      | N.A.       | N.A.    |
@@ -102,7 +102,7 @@ Az alábbi táblázat bemutatja, hogyan egyesítheti az Azure-szerepköröket é
 | /Oregon/Portland/listázása   |   Storage-blobadatok tulajdonosa        | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok közreműködője  | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok olvasója       | N.A.      | N.A.      | N.A.       | N.A.    |
-|                          |   Nincs                           | `--X`    | `--X`    | `R-X`     | N.A.    |
+|                          |   Nincs                           | `--X`    | `--X`    | `R-X`     | N/A    |
 
 
 > [!NOTE] 
@@ -126,6 +126,6 @@ Megosztott kulcs esetén a hívó gyakorlatilag "felügyelői" hozzáférést ka
 
 Az SAS-tokenek a jogkivonat részeként tartalmazzák az engedélyezett engedélyeket. Az SAS-jogkivonatban található engedélyeket a rendszer hatékonyan alkalmazza az összes hitelesítési döntésre, de nem végez további ACL-ellenőrzéseket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A hozzáférés-vezérlési listákkal kapcsolatos további információkért lásd:  [hozzáférés-vezérlési listák (ACL-ek) Azure Data Lake Storage Gen2](data-lake-storage-access-control.md).

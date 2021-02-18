@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3334c5ca300b6dbeb0ad055c7dbd2c15e1c5481a
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2a2161fd24ccde596630549163a631626a961773
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98677121"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596649"
 ---
 # <a name="monitor-workload---azure-portal"></a>Munkaterhelés figyelése – Azure Portal
 
@@ -36,7 +36,7 @@ Navigáljon Log Analytics munkaterületek Tallózás paneljére, és hozzon lét
 
 ![A képernyőképen a Log Analytics munkaterület látható, ahol értékeket adhat meg.](./media/sql-data-warehouse-monitor-workload-portal/add_analytics_workspace_2.png)
 
-A munkaterületekkel kapcsolatos további információkért tekintse meg az alábbi [dokumentációt](../../azure-monitor/learn/quick-create-workspace.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsond#create-a-workspace).
+A munkaterületekkel kapcsolatos további információkért tekintse meg az alábbi [dokumentációt](../../azure-monitor/logs/quick-create-workspace.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsond#create-a-workspace).
 
 ## <a name="turn-on-resource-logs"></a>Erőforrás-naplók bekapcsolása
 

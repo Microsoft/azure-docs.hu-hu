@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 02/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1957adc0effd5b37d7aff3f813267da6ca065e0a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 15e5aba2bad4cd7ae63ceb9c9f67f7e653a82a91
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368965"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650150"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Az Azure AD Connect előfeltételei
 Ez a cikk a Azure Active Directory (Azure AD) csatlakozási előfeltételeit és hardverkövetelmények leírását ismerteti.
@@ -167,6 +167,17 @@ A 1.1.614.0 verzió előtt a Azure AD Connect alapértelmezés szerint TLS 1,0-e
     "SchUseStrongCrypto"=dword:00000001
     ```
 1. Ha a TLS 1,2-et a Sync Engine-kiszolgáló és egy távoli SQL Server között is engedélyezni szeretné, győződjön meg arról, hogy a szükséges verziók telepítve vannak a [tls 1,2-támogatáshoz a Microsoft SQL Server számára](https://support.microsoft.com/kb/3135244).
+
+### <a name="dcom-prerequisites-on-the-synchronization-server"></a>DCOM-előfeltételek a szinkronizációs kiszolgálón
+A szinkronizálási szolgáltatás telepítése során Azure AD Connect ellenőrzi a következő beállításkulcs jelenlétét:
+
+- HKEY_LOCAL_MACHINE: Software\Microsoft\Ole
+
+A beállításkulcs alatt Azure AD Connect megtekintheti, hogy a következő értékek jelennek-e meg és nem sérültek-e: 
+
+- [MachineAccessRestriction](https://docs.microsoft.com/windows/win32/com/machineaccessrestriction)
+- [MachineLaunchRestriction](https://docs.microsoft.com/windows/win32/com/machinelaunchrestriction)
+- [DefaultLaunchPermission](https://docs.microsoft.com/windows/win32/com/defaultlaunchpermission)
 
 ## <a name="prerequisites-for-federation-installation-and-configuration"></a>Az összevonás telepítésének és konfigurálásának előfeltételei
 ### <a name="windows-remote-management"></a>Rendszerfelügyeleti webszolgáltatások

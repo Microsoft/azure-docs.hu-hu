@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 12/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 636dbf95567f761aee19bd567b0835173ce36ccc
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: dff314f3c9fb72c565a7c2d522694d533c487895
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093621"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572647"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>A Change Tracking és az Inventory kezelése
 
@@ -53,7 +53,7 @@ A következő lépésekkel konfigurálhatja a Windows rendszerű számítógépe
     |---------|---------|
     |Engedélyezve     | Igaz, ha a beállítás alkalmazva van, ellenkező esetben hamis.        |
     |Elem neve     | A nyomon követett fájl rövid neve.        |
-    |Csoport     | Egy csoport neve a fájlok logikai csoportosításához.        |
+    |Group     | Egy csoport neve a fájlok logikai csoportosításához.        |
     |Elérési út megadása     | A fájl keresésének elérési útja, például **c:\Temp \\ \* . txt**. Használhat környezeti változókat is, például: `%winDir%\System32\\\*.*` .       |
     |Elérési út típusa     | Az elérési út típusa A lehetséges értékek: fájl és mappa.        |    
     |Rekurzió     | True (igaz), ha a rendszer rekurziót használ a nyomon követett elem keresésekor, máskülönben hamis értéket ad.        |    
@@ -82,7 +82,7 @@ A következő lépésekkel konfigurálhatja a fájlok követését a Linux rends
     |---------|---------|
     |Engedélyezve     | Igaz, ha a beállítás alkalmazva van, ellenkező esetben hamis.        |
     |Elem neve     | A nyomon követett fájl rövid neve.        |
-    |Csoport     | Egy csoport neve a fájlok logikai csoportosításához.        |
+    |Group     | Egy csoport neve a fájlok logikai csoportosításához.        |
     |Elérési út megadása     | A fájl keresésének elérési útja, például **/etc/*. conf**.       |
     |Elérési út típusa     | Az elérési út típusa A lehetséges értékek a fájl és a könyvtár.        |
     |Rekurzió     | True (igaz), ha a rendszer rekurziót használ a nyomon követett elem keresésekor, máskülönben hamis értéket ad.        |
@@ -152,14 +152,14 @@ A következő lépésekkel konfigurálhatja a beállításjegyzék-kulcsok nyomo
     |---------|---------|
     |Engedélyezve     | Értéke TRUE (igaz), ha egy beállítás alkalmazva van, ellenkező esetben hamis.        |
     |Elem neve     | A nyomon követni kívánt beállításkulcs rövid neve.        |
-    |Csoport     | Csoport neve a beállításkulcsok logikai csoportosításához.        |
+    |Group     | Csoport neve a beállításkulcsok logikai csoportosításához.        |
     |Windows-beállításkulcs   | Az elérési úttal rendelkező kulcsnév, például: `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup` .      |
 
 ## <a name="search-logs-for-change-records"></a>Naplók keresése a változási rekordokhoz
 
 A változási rekordok esetében különböző kereséseket végezhet a Azure Monitor naplókon. Ha megnyitotta a Change Tracking (változások nyomon követése) lapot, kattintson **log Analytics** a naplók lap megnyitásához. A következő táblázat a változási rekordokra vonatkozó példákat tartalmaz.
 
-|Lekérdezés  |Leírás  |
+|Lekérdezés  |Description  |
 |---------|---------|
 |`ConfigurationData`<br>&#124; `where ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"`<br>&#124; `where SvcState == "Stopped"`<br>&#124; `summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | Megjeleníti az automatikusra beállított és a leállítottként jelentett Microsoft-szolgáltatások legújabb leltározási rekordjait. Az eredmények a megadott számítógépnév és számítógép legutóbbi rekordjára korlátozódnak.    |
 |`ConfigurationChange`<br>&#124; `where ConfigChangeType == "Software" and ChangeCategory == "Removed"`<br>&#124; `order by TimeGenerated desc`|Megjeleníti a törölt szoftverek módosítási rekordjait.|
@@ -167,7 +167,7 @@ A változási rekordok esetében különböző kereséseket végezhet a Azure Mo
 ## <a name="next-steps"></a>Következő lépések
 
 * A hatókör-konfigurációkkal kapcsolatos további információkért lásd: a [change Tracking és a leltár központi telepítési hatókörének korlátozása](manage-scope-configurations.md).
-* Ha Azure Monitor-naplókban tárolt naplókat kell keresnie, tekintse meg a Azure Monitor naplókban végzett [keresések](../../azure-monitor/log-query/log-query-overview.md)című témakört.
+* Ha Azure Monitor-naplókban tárolt naplókat kell keresnie, tekintse meg a Azure Monitor naplókban végzett [keresések](../../azure-monitor/logs/log-query-overview.md)című témakört.
 * Ha a telepítésekkel fejeződött be, tekintse meg a [change Tracking és a leltár eltávolítása](remove-feature.md)című témakört.
 * A virtuális gépek Change Tracking és leltárból való törléséhez lásd: [virtuális gépek eltávolítása Change Tracking és leltárból](remove-vms-from-change-tracking.md).
 * A szolgáltatási hibák elhárításáról lásd: [change Tracking és leltározási problémák elhárítása](../troubleshoot/change-tracking.md).

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 1f5db17549c2b95d5dd0dd2f866ca1d1c0e7d8aa
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0868c99a29b8da4376b639a54988fc821433e26d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965119"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576976"
 ---
 # <a name="planning-and-operations-guide"></a>Tervezési és működtetési útmutató
 Ez az útmutató olyan informatikai (IT) szakemberek, informatikai építészek, Információbiztonsági elemzők és felhőalapú rendszergazdák számára készült, akik a Azure Security Center használatát tervezik.
@@ -135,7 +135,7 @@ A Azure Security Center a Log Analytics ügynököt használja – ez ugyanaz az
 
 ### <a name="agent"></a>Ügynök
 
-Ha a biztonsági házirendben engedélyezve van az automatikus kiépítés, a Log Analytics ügynök ( [Windows](../azure-monitor/platform/agent-windows.md) vagy [Linux](../azure-monitor/learn/quick-collect-linux-computer.md)rendszerhez) az összes támogatott Azure-beli virtuális gépre és a létrehozott újakra van telepítve. Ha a virtuális gépen vagy számítógépen már telepítve van a Log Analytics ügynök, Azure Security Center a jelenleg telepített ügynököt fogja használni. Az ügynök folyamata nem invazív, és nagyon csekély hatással van a virtuális gépek teljesítményére.
+Ha a biztonsági házirendben engedélyezve van az automatikus kiépítés, a Log Analytics ügynök ( [Windows](../azure-monitor/agents/agent-windows.md) vagy [Linux](../azure-monitor/vm/quick-collect-linux-computer.md)rendszerhez) az összes támogatott Azure-beli virtuális gépre és a létrehozott újakra van telepítve. Ha a virtuális gépen vagy számítógépen már telepítve van a Log Analytics ügynök, Azure Security Center a jelenleg telepített ügynököt fogja használni. Az ügynök folyamata nem invazív, és nagyon csekély hatással van a virtuális gépek teljesítményére.
 
 A Windows Log Analytics ügynökének a 443-es TCP-portot kell használnia. További részleteket talál a [Hibaelhárításról szóló cikkben](security-center-troubleshooting-guide.md).
 

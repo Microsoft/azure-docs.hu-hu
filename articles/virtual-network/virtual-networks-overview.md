@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/03/2020
 ms.author: kumud
-ms.openlocfilehash: e1efd02d60ba874178f24da2b441fc122e4a1912
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 849127ed0846928a77795ac0a1ea3f7a091468b5
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218534"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635948"
 ---
 # <a name="what-is-azure-virtual-network"></a>Mi az Azure Virtual Network?
 
 Az Azure Virtual Network (VNet) az Azure-beli magánhálózat alapvető építőeleme. A VNet számos Azure-erőforrást, például Azure Virtual Machines (VM) tesz lehetővé az egymással, az internettel és a helyszíni hálózatokkal való biztonságos kommunikációhoz. A VNet hasonló egy hagyományos hálózathoz, amelyet a saját adatközpontban fog használni, de az Azure infrastruktúrájának, például a méretezhetőség, a rendelkezésre állás és az elkülönítés további előnyeit biztosítja.
 
 ## <a name="why-use-an-azure-virtual-network"></a>Miért érdemes Azure-beli virtuális hálózatot használni?
-Az Azure Virtual Network lehetővé teszi az Azure-erőforrások számára, hogy biztonságosan kommunikáljanak egymással, az internettel és a helyszíni hálózatokkal. A virtuális hálózatok megvalósítására szolgáló fő forgatókönyvek közé tartozik az Azure-erőforrások internettel való kommunikációja, az Azure-erőforrások közötti kommunikáció, a helyszíni erőforrásokkal való kommunikáció, a hálózati forgalom szűrése, a hálózati forgalom irányítása és az Azure-szolgáltatásokkal való integráció.
+Az Azure Virtual Network lehetővé teszi az Azure-erőforrások számára, hogy biztonságosan kommunikáljanak egymással, az internettel és a helyszíni hálózatokkal. A virtuális hálózattal végrehajtható főbb forgatókönyvek közé tartozik az Azure-erőforrások internettel való kommunikációja, az Azure-erőforrások közötti kommunikáció, a helyszíni erőforrásokkal való kommunikáció, a hálózati forgalom szűrése, a hálózati forgalom irányítása és az Azure-szolgáltatásokkal való integráció.
 
 ### <a name="communicate-with-the-internet"></a>Kommunikáció az internettel
 

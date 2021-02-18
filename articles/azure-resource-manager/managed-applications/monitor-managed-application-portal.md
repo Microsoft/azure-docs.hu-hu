@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: afe78dd00ecebdc54b6d73c4c8324729e117d95b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a02062edd1a940bcc6588ab53457e0af91fedd9a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75651747"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578273"
 ---
 # <a name="monitor-a-deployed-instance-of-a-managed-application"></a>Felügyelt alkalmazás telepített példányának figyelése
 
@@ -32,7 +32,7 @@ Miután üzembe helyezett egy felügyelt alkalmazást az Azure-előfizetésében
 
 ## <a name="view-alerts"></a>Riasztások megtekintése
 
-1. Válassza a **riasztások**lehetőséget.
+1. Válassza a **riasztások** lehetőséget.
 
    ![Riasztások kiválasztása](./media/monitor-managed-application-portal/select-alerts.png)
 
@@ -40,13 +40,13 @@ Miután üzembe helyezett egy felügyelt alkalmazást az Azure-előfizetésében
 
    ![Riasztások megtekintése](./media/monitor-managed-application-portal/view-alerts.png)
 
-1. Riasztási szabályok hozzáadásához válassza az **+ új riasztási szabály**lehetőséget.
+1. Riasztási szabályok hozzáadásához válassza az **+ új riasztási szabály** lehetőséget.
 
    ![Riasztás létrehozása](./media/monitor-managed-application-portal/create-new-alert.png)
 
-Riasztásokat hozhat létre a felügyelt alkalmazás-példányhoz vagy a felügyelt alkalmazás erőforrásaihoz. A riasztások létrehozásával kapcsolatos információkért lásd: [a Microsoft Azure riasztások áttekintése](../../azure-monitor/platform/alerts-overview.md).
+Riasztásokat hozhat létre a felügyelt alkalmazás-példányhoz vagy a felügyelt alkalmazás erőforrásaihoz. A riasztások létrehozásával kapcsolatos információkért lásd: [a Microsoft Azure riasztások áttekintése](../../azure-monitor/alerts/alerts-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A felügyelt alkalmazások példáit lásd: [Sample projects for Azure Managed Applications](sample-projects.md).
 * Felügyelt alkalmazás központi telepítéséhez lásd: a [Service Catalog alkalmazás központi telepítése Azure Portal használatával](deploy-service-catalog-quickstart.md).
