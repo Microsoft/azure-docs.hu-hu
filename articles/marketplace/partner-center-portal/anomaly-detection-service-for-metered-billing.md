@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: mingshen
 author: mingshen-ms
 ms.date: 06/10/2020
-ms.openlocfilehash: 5ab57bcccb6f681f5c9282ef461181952ed5a679
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: ac3e07c67ca82c2960de1c4341a714b33751bfc1
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653074"
+ms.locfileid: "101092396"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>Rendellenesség-észlelő szolgáltatás forgalmi díjas számlázáshoz
 
@@ -50,7 +50,7 @@ A modell visszamenőleges megbízhatósági intervallumok generálásával műk�
 
 ## <a name="anomaly-detection-notification"></a>Rendellenesség-észlelési értesítés
 
-A partner Centerben kiértékelheti, kezelheti és visszaigazolhatja a rendellenességeket. Ebből a cikkből megtudhatja, hogyan tekintheti meg [a forgalmi rendellenesség észlelését a mért számlázáshoz](../anomaly-detection.md).
+A partner Centerben kiértékelheti, kezelheti és visszaigazolhatja a rendellenességeket. További információ: [a mért számlázási rendellenességek kezelése a partner Centerben](../anomaly-detection.md).
 
 Annak biztosítása érdekében, hogy az ügyfelek ne legyenek túlterhelve a mért használatnál, meg kell vizsgálnia, hogy az észlelt rendellenességek valós problémák-e. Ha igen, tudomásul veheti a nem megfelelő használatot a partner Centerben.
 
@@ -83,4 +83,4 @@ További közzétevői támogatási lehetőségekért lásd: [támogatás a kere
 ## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg a [Marketplace-mérési szolgáltatás API](marketplace-metering-service-apis.md)-ját.
-- [A mért számlázás rendellenességének észlelése](../anomaly-detection.md)
+- [A mért számlázási rendellenességek kezelése a partner Centerben](../anomaly-detection.md)

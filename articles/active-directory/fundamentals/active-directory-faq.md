@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a8fcb14ac397791822c3a9065275dbfb2b3b7dd
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: a3b9f76eba9697d6ad47ecf8dc51689538923f88
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860422"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094479"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Gyakori kérdések a Azure Active Directory
 Az Azure Active Directory (Azure AD) egy átfogó szolgáltatott identitási (IDaaS) megoldás, amely az identitások, a hozzáférés-kezelés és a biztonság minden szempontját lefedi.
@@ -32,7 +32,7 @@ További információkért lásd: [Mi az az Azure Active Directory?](active-dire
 **V:** Az Azure Portal eléréséhez mindegyik felhasználónak engedélyekre van szüksége egy Azure-előfizetés keretében. Ha nem rendelkezik fizetős Microsoft 365 vagy Azure AD-előfizetéssel, aktiválnia kell egy ingyenes [Azure-fiókot](https://azure.microsoft.com/free/
 ) vagy egy fizetős előfizetést.
 
-További információ:
+További információkért lásd:
 
 * [How Azure subscriptions are associated with Active Directory? (Hogyan kapcsolódnak az Azure-előfizetések az Azure Active Directory-hoz?)](active-directory-how-subscriptions-associated-directory.md)
 
@@ -51,7 +51,7 @@ Az Azure AD fizetős szolgáltatásai, például a Enterprise Mobility + Securit
 
 **A:** Alapértelmezés szerint az Azure-előfizetésre feliratkozott személy a tulajdonos szerepkört rendeli hozzá az Azure-erőforrásokhoz. A tulajdonos Microsoft-fiók vagy munkahelyi vagy iskolai fiókot is használhat a címtárból, amelyhez az Azure-előfizetés társítva van.  Ez a szerepkör jogosult szolgáltatások kezelésére az Azure Portalon.
 
-Ha másoknak ugyanazzal az előfizetéssel kell bejelentkezniük, és hozzá kell férniük a szolgáltatásokhoz, a megfelelő [beépített szerepkört](../../role-based-access-control/built-in-roles.md)is hozzárendelheti. További információ: [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
+Ha másoknak ugyanazzal az előfizetéssel kell bejelentkezniük, és hozzá kell férniük a szolgáltatásokhoz, a megfelelő [beépített szerepkört](../../role-based-access-control/built-in-roles.md)is hozzárendelheti. További információ: Azure- [szerepkörök kiosztása a Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
 
 Alapértelmezés szerint az Azure-előfizetésre feliratkozott személy a globális rendszergazdai szerepkört rendeli hozzá a címtárhoz. A globális rendszergazda hozzáfér az összes Azure AD Directory-szolgáltatáshoz. Az Azure AD különböző rendszergazdai szerepkörökkel rendelkezik a címtár és az identitással kapcsolatos funkciók kezeléséhez. Ezek a rendszergazdák hozzáférhetnek a Azure Portal különböző szolgáltatásaihoz. A rendszergazda szerepköre határozza meg, hogy mit tehetnek, például felhasználók létrehozása vagy szerkesztése, rendszergazdai szerepkörök kiosztása mások számára, felhasználói jelszavak alaphelyzetbe állítása, felhasználói licencek kezelése vagy tartományok kezelése.  Az Azure AD címtár-rendszergazdákkal és azok szerepköreivel kapcsolatos további információkért lásd: [felhasználó társítása rendszergazdai szerepkörökhöz Azure Active Directory](active-directory-users-assign-role-azure-portal.md) és [rendszergazdai szerepkörök kiosztása a Azure Active Directoryban](../roles/permissions-reference.md).
 
@@ -160,7 +160,7 @@ Az előre integrált alkalmazások teljes listájáért lásd: [Active Directory
 
 **V:** Az Azure AD Premiumban bármely alkalmazást felveheti és konfigurálhatja. Az alkalmazás képességeitől és a beállításaitól függően beállíthatja az egyszeri bejelentkezést és az automatizált üzembe helyezést.  
 
-További információ:
+További információkért lásd:
 
 * [Egyszeri bejelentkezés konfigurálása az Azure Active Directory alkalmazáskatalógusában nem szereplő alkalmazásokhoz](../manage-apps/configure-saml-single-sign-on.md)
 * [SCIM használata a felhasználók és csoportok automatikus üzembe helyezésének engedélyezéséhez az Azure Active Directoryból az alkalmazásokba](../app-provisioning/use-scim-to-provision-users-and-groups.md)
@@ -182,7 +182,7 @@ További információ: [végfelhasználói élmények az alkalmazásokhoz](../ma
 
 **V:** Az Azure AD számos szabványos protokollt támogat a hitelesítéshez és az engedélyezéshez, például ilyen a SAML 2.0, az OpenID Connect, az OAuth 2.0 és a WS-Federation. Az Azure AD a jelszótárolást és az automatikus bejelentkezési képességeket is támogatja olyan alkalmazásoknál, amelyek csak az űrlapalapú hitelesítést támogatják.  
 
-További információ:
+További információkért lásd:
 
 * [Hitelesítési forgatókönyvek az Azure AD-hez](../develop/authentication-vs-authorization.md)
 * [Hitelesítési protokollok Active Directory](/previous-versions/azure/dn151124(v=azure.100))

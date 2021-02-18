@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: 6086dffaefba003461a6edd8177afab05377103d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aabaad54dce52d57aaa4689f591351e290b0f9a3
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371252"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093687"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Azure Resource Manager erőforráscsoportok kezelése a Azure Portal használatával
 
@@ -41,11 +41,11 @@ Az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Ezért ha 
 
    - **Előfizetés**: Válassza ki az Azure-előfizetést. 
    - **Erőforráscsoport**: adjon meg egy új erőforráscsoport-nevet. 
-   - **Régió**: válasszon ki egy Azure-helyet, például az **USA középső**régióját.
+   - **Régió**: válasszon ki egy Azure-helyet, például az **USA középső** régióját.
 
      ![erőforráscsoport létrehozása](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
 5. Válassza a **felülvizsgálat + létrehozás** lehetőséget
-6. Kattintson a **Létrehozás** gombra. Egy erőforráscsoport létrehozása eltarthat néhány másodpercig.
+6. Válassza a **Létrehozás** lehetőséget. Egy erőforráscsoport létrehozása eltarthat néhány másodpercig.
 7. A felső menüben válassza a **frissítés** lehetőséget az erőforráscsoport listájának frissítéséhez, majd válassza ki az újonnan létrehozott erőforráscsoportot a megnyitásához. Vagy válassza a felül az **értesítés**(harang ikon) lehetőséget, majd válassza az **Ugrás az erőforrás-csoportba** lehetőséget az újonnan létrehozott erőforráscsoport megnyitásához.
 
     ![erőforrás-csoport megugrása](./media/manage-resource-groups-portal/manage-resource-groups-add-group-go-to-resource-group.png)
@@ -57,12 +57,12 @@ Az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Ezért ha 
 
     ![erőforráscsoportok tallózása](./media/manage-resource-groups-portal/manage-resource-groups-list-groups.png)
 
-3. Az erőforráscsoportok számára megjelenített információk testreszabásához válassza az **Oszlopok szerkesztése**lehetőséget. A következő képernyőfelvételen a megjeleníthető hozzáadási oszlopok láthatók:
+3. Az erőforráscsoportok számára megjelenített információk testreszabásához válassza az **Oszlopok szerkesztése** lehetőséget. A következő képernyőfelvételen a megjeleníthető hozzáadási oszlopok láthatók:
 
 ## <a name="open-resource-groups"></a>Erőforráscsoportok megnyitása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza az **erőforráscsoportok**lehetőséget.
+2. Válassza az **Erőforráscsoportok** lehetőséget.
 3. Válassza ki a megnyitni kívánt erőforráscsoportot.
 
 ## <a name="delete-resource-groups"></a>Erőforráscsoportok törlése
@@ -87,9 +87,9 @@ A csoportban található erőforrásokat áthelyezheti egy másik erőforráscso
 A zárolás megakadályozza a szervezet más felhasználói számára a kritikus erőforrások, például az Azure-előfizetés, az erőforráscsoport vagy az erőforrás véletlen törlését vagy módosítását. 
 
 1. Nyissa meg a zárolni kívánt erőforráscsoportot.  Lásd: [erőforráscsoportok megnyitása](#open-resource-groups).
-2. A bal oldali ablaktáblán válassza a **zárolások**lehetőséget.
-3. Ha zárolást szeretne hozzáadni az erőforráscsoporthoz, válassza a **Hozzáadás**lehetőséget.
-4. Adja meg a **zárolás nevét**, a **zárolás típusát**és a **megjegyzéseket**. A zárolási típusok tartalmazzák az **írásvédett**és a **törlési**típust.
+2. A bal oldali ablaktáblán válassza a **zárolások** lehetőséget.
+3. Ha zárolást szeretne hozzáadni az erőforráscsoporthoz, válassza a **Hozzáadás** lehetőséget.
+4. Adja meg a **zárolás nevét**, a **zárolás típusát** és a **megjegyzéseket**. A zárolási típusok tartalmazzák az **írásvédett** és a **törlési** típust.
 
     ![Azure-erőforráscsoport zárolása](./media/manage-resource-groups-portal/manage-resource-groups-add-lock.png)
 
@@ -105,7 +105,7 @@ További információ a sablonok exportálásáról: [egy-és többerőforrásos
 
 ## <a name="manage-access-to-resource-groups"></a>Erőforráscsoportok hozzáférésének kezelése
 
-Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md) segítségével kezelheti az Azure-beli erőforrásokhoz való hozzáférést. További információ: [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
+Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md) segítségével kezelheti az Azure-beli erőforrásokhoz való hozzáférést. További információ: Azure- [szerepkörök kiosztása a Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -6,12 +6,12 @@ ms.service: azure
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 1c28ed90c041a65b2ff8dd08a3aac799795171eb
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 1caab392af1dab4f2e706d7372b0a1d9b5e62db6
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897459"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091210"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure fejlesztői útmutató az első lépésekhez
 
@@ -306,7 +306,7 @@ Ha engedélyezi az Azure-erőforrásokhoz való hozzáférést, az ajánlott elj
 
   > **Mikor érdemes használni**: Ha a felhasználóknak és csoportoknak részletes hozzáférés-kezelést kell végeznie, vagy ha a felhasználónak egy előfizetés tulajdonosát kell tennie.
   >
-  > Első **lépések**: további információért lásd: [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
+  > Első **lépések**: további információért tekintse meg [Az Azure-szerepkörök a Azure Portal használatával történő hozzárendelését](../../role-based-access-control/role-assignments-portal.md)ismertető témakört.
 
 - **Egyszerű szolgáltatások objektumai**: a felhasználói rendszerbiztonsági tag és a csoportok hozzáférésének biztosításával azonos hozzáférést biztosíthat egy egyszerű szolgáltatáshoz.
 

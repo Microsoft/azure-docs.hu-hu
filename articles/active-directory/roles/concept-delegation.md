@@ -15,12 +15,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77ba93b9017fa75f7247bda639880415eda1d280
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 9074fdbf31cdd8516b8d42f7cc13b4bc16f6634a
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740312"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095734"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>Felügyelet delegálása Azure Active Directory
 
@@ -38,7 +38,7 @@ A szervezet növekedésével nehéz lehet nyomon követni, hogy mely felhasznál
 
 Az Azure AD-portálon [megtekintheti bármely szerepkör összes tagját](manage-roles-portal.md), amely segítségével gyorsan megtekintheti a központi telepítést, és delegálhatja az engedélyeket.
 
-Ha az Azure AD-ben való rendszergazdai hozzáférés helyett az Azure-erőforrásokhoz való hozzáférés delegálását érdekli, tekintse meg [Az Azure-szerepkör hozzárendelését](../../role-based-access-control/role-assignments-portal.md)ismertető témakört.
+Ha az Azure AD-ben való rendszergazdai hozzáférés helyett az Azure-erőforrásokhoz való hozzáférés delegálását érdekli, tekintse meg [Az Azure-szerepkörök a Azure Portal használatával történő hozzárendelését](../../role-based-access-control/role-assignments-portal.md)ismertető témakört.
 
 ## <a name="delegation-planning"></a>Delegálás tervezése
 
@@ -112,6 +112,6 @@ A rendszerjogosultságú fiókok felügyeletét befogadó támadók óriási ká
 
 A mindennapos tevékenységek esetében nem minden felhasználónak globális rendszergazdai jogosultságra van szüksége, és nem mindegyiknek véglegesen hozzá kell rendelnie a globális rendszergazdai szerepkörhöz. Ha a felhasználóknak a globális rendszergazda engedélyeire van szükségük, aktiválniuk kell a szerepkör-hozzárendelést az Azure AD-ban [Privileged Identity Management](../privileged-identity-management/pim-configure.md) a saját fiókjában vagy egy másik rendszergazdai fiókban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure AD-szerepkörök leírásával kapcsolatos információkért lásd: [rendszergazdai szerepkörök társítása az Azure ad-ben](permissions-reference.md)

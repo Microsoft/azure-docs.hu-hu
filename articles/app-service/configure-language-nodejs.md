@@ -6,12 +6,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 8bdf637ab773e90a5eac42bcaa443cf6741db636
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 6a6f782768db12c2ce75f5cf1e66100222f24446
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696013"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095202"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>Node.js alkalmazás konfigurálása Azure App Servicehoz
 
@@ -342,6 +342,19 @@ if (req.secure) {
 
 ::: zone-end
 
+
+::: zone pivot="platform-linux"
+
+## <a name="monitor-with-application-insights"></a>Monitorozás az Application Insights segítségével
+
+Application Insights lehetővé teszi az alkalmazás teljesítményének, kivételének és használatának figyelését a kód módosítása nélkül. Az alkalmazás-betekintő ügynök csatlakoztatásához nyissa meg a webalkalmazást a portálon, és válassza a **Application Insights** lehetőséget a **Beállítások** területen, majd válassza **a Application Insights bekapcsolása** elemet. Ezután válasszon ki egy meglévő alkalmazás-keresési erőforrást, vagy hozzon létre egy újat. Végül válassza az **alkalmaz** elemet az alján. Ha a webalkalmazást a PowerShell használatával szeretné kiépíteni, tekintse meg [ezeket az utasításokat](../azure-monitor/app/azure-web-apps.md?tabs=netcore#enabling-through-powershell)
+
+Ez az ügynök figyeli a kiszolgálóoldali Node.js alkalmazást. Az ügyféloldali JavaScript figyeléséhez [adja hozzá a JavaScript SDK-t a projekthez](../azure-monitor/app/javascript.md). 
+
+További információ: [Application Insights Extension kibocsátási megjegyzései](../azure-monitor/app/web-app-extension-release-notes.md).
+
+::: zone-end
+
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
 Ha egy működő Node.js alkalmazás másképp viselkedik App Service vagy hibákat tartalmaz, próbálkozzon a következőkkel:
@@ -370,4 +383,3 @@ Ha egy működő Node.js alkalmazás másképp viselkedik App Service vagy hibá
 > [App Service a Linuxon – gyakori kérdések](faq-app-service-linux.md)
 
 ::: zone-end
-

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8c63ada9621fc1485742a7683fd6742f0e896854
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: ce18e71ced320c408933caeb39b469d5885bd6ba
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954429"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095931"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>Az adott megoldás optimális bitráta-értékének megkereséséhez használja a Content-Aware kódolási beállításkészletet
 
@@ -29,7 +29,7 @@ Vegye figyelembe, hogy milyen tartalmat dolgoz fel, és testreszabhatja/hangolha
 
 A Microsoft [adaptív streaming](autogen-bitrate-ladder.md) -készlete részben a forrás videók minőségének és megoldásának változékonyságával foglalkozik. Ügyfeleink többféle tartalommal rendelkeznek, néhányat 1080p-ra, másokat pedig 720p-ra, és néhányat SD és alacsonyabb felbontásban. Továbbá, nem minden tartalomforrás kiváló minőségű, film-vagy TV-stúdiókból származó. Az adaptív adatfolyam-készlet ezeket a problémákat úgy oldja meg, hogy a bitráta-létrán soha nem haladja meg a bemeneti időpontok felbontását vagy az átlagos bitrátát. Ez az előre definiált beállítás azonban nem vizsgálja meg a forrás tulajdonságait a felbontás és a bitráta helyett.
 
-## <a name="the-content-aware-encoding"></a>A Content-Aware kódolás 
+## <a name="the-content-aware-encoding"></a>A Content-Aware kódolás
 
 A Content-Aware kódolási beállításkészlet kiterjeszti az "adaptív sávszélességű adatfolyam" mechanizmust olyan egyéni logika beépítésével, amely lehetővé teszi, hogy a kódoló egy adott megoldás optimális sebességének megadását, de nem igényel kiterjedt számítási elemzést. Ez a beállításkészlet GOP-igazítású MP4 állít elő. A szolgáltatás a bemeneti tartalom kezdeti könnyű elemzését, valamint az eredmények használatával határozza meg a rétegek optimális számát, a megfelelő bitrátát és a megoldási beállításokat az adaptív adatfolyam-továbbítással. Ez a beállításkészlet különösen alacsony és közepes komplexitású videók esetében érvényes, ahol a kimeneti fájlok alacsonyabb sávszélességű lesznek, mint az adaptív adatfolyam-készlet, de olyan minőségben, amely továbbra is jó élményt nyújt a nézők számára. A kimenet video-és hangalapú MP4-fájlokat fog tartalmazni
 
@@ -57,7 +57,7 @@ Az alábbiakban láthatók a tartalomforrás egy másik kategóriájára vonatko
 
 A következő módon hozhat létre olyan átalakításokat, amelyek ezt az beállításkészletet használják. 
 
-A át-kimeneteket használó oktatóanyagokat a [következő lépések](#next-steps) szakaszban találja. A kimeneti eszköz az olyan protokollok Media Services streaming végpontokból is elérhető, mint például az MPEG-DASH és a HLS (az oktatóanyagokban látható).
+Az átalakítási kimeneteket használó oktatóanyagokat a [következő lépések](#next-steps) szakaszban találja. A kimeneti eszköz az olyan protokollok Media Services streaming végpontokból is elérhető, mint például az MPEG-DASH és a HLS (az oktatóanyagokban látható).
 
 > [!NOTE]
 > Ügyeljen arra, hogy az **ContentAwareEncoding** előre beállított ContentAwareEncodingExperimental ne használja.

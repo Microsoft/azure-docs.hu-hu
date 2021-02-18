@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: c49ee2778d3198cc7109c34bceb1591756d82b1c
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 502f93df8d9948a6d6682b14ea13b59e324833cb
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653448"
+ms.locfileid: "101091461"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Beszédfelismerési szolgáltatás nyelvi és hangalapú támogatása
 
@@ -191,6 +191,7 @@ A neurális hangokat felhasználhatja az csevegőrobotok-és hangsegédekkel val
 | Finn (Finnország) | `fi-FI` | Nő | `fi-FI-SelmaNeural` <sup>Új</sup> | Általános |
 | Finn (Finnország) | `fi-FI` | Férfi | `fi-FI-HarriNeural` <sup>Új</sup> | Általános |
 | Francia (Kanada) | `fr-CA` | Nő | `fr-CA-SylvieNeural` | Általános |
+| Francia (Kanada) | `fr-CA` | Férfi | `fr-CA-AntoineNeural` <sup>Új</sup> | Általános |
 | Francia (Kanada) | `fr-CA` | Férfi | `fr-CA-JeanNeural` | Általános |
 | Francia (Franciaország) | `fr-FR` | Nő | `fr-FR-DeniseNeural` | Általános |
 | Francia (Franciaország) | `fr-FR` | Férfi | `fr-FR-HenriNeural` | Általános |

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/23/2019
-ms.openlocfilehash: 121c5850ef47999f54d206b95b69e10775d3e5c9
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 0fffe763f77fffcec6010d43deb92ffea9ece15d
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946088"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094918"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Nem interaktív hitelesítéssel rendelkező .NET HDInsight-alkalmazás létrehozása
 
@@ -28,7 +28,7 @@ An méretű HDInsight-fürt. Tekintse meg az [első lépéseket ismertető oktat
 
 ## <a name="assign-a-role-to-the-azure-ad-application"></a>Szerepkör társítása az Azure AD-alkalmazáshoz
 
-Rendeljen hozzá egy [szerepkört](../role-based-access-control/built-in-roles.md)az Azure ad-alkalmazáshoz, hogy engedélyeket adjon a műveletekhez. Megadhatja a hatókört az előfizetés, az erőforráscsoport vagy az erőforrás szintjén. Az engedélyek a hatókör alacsonyabb szintjein lesznek örökölve. Ha például hozzáad egy alkalmazást egy erőforráscsoport olvasó szerepköréhez, az azt jelenti, hogy az alkalmazás elolvashatja az erőforráscsoportot és a benne lévő erőforrásokat. Ebben a cikkben a hatókört az erőforráscsoport szintjén állíthatja be. További információkért lásd: [szerepkör-hozzárendelések használata az Azure-előfizetések erőforrásaihoz való hozzáférés kezeléséhez](../role-based-access-control/role-assignments-portal.md).
+Rendeljen hozzá egy [szerepkört](../role-based-access-control/built-in-roles.md)az Azure ad-alkalmazáshoz, hogy engedélyeket adjon a műveletekhez. Megadhatja a hatókört az előfizetés, az erőforráscsoport vagy az erőforrás szintjén. Az engedélyek a hatókör alacsonyabb szintjein lesznek örökölve. Ha például hozzáad egy alkalmazást egy erőforráscsoport olvasó szerepköréhez, az azt jelenti, hogy az alkalmazás elolvashatja az erőforráscsoportot és a benne lévő erőforrásokat. Ebben a cikkben a hatókört az erőforráscsoport szintjén állíthatja be. További információk: [Azure-szerepkörök társítása az Azure-előfizetések erőforrásaihoz való hozzáférés kezeléséhez](../role-based-access-control/role-assignments-portal.md).
 
 **A tulajdonosi szerepkör hozzáadása az Azure AD-alkalmazáshoz**
 

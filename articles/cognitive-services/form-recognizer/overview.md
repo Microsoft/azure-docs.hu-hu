@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: automatizált adatfeldolgozás, dokumentumok feldolgozása, automatizált adatbevitel, űrlapok feldolgozása
-ms.openlocfilehash: 2d3a37165994a8c7ff9d46ac24e63b7f58404ce3
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 95bbc33035ca99a64242274570be5c9263029aef
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584566"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094373"
 ---
 # <a name="what-is-form-recognizer"></a>Mi a Form Recognizer?
 
@@ -27,26 +27,27 @@ Az Azure Form-felismerő egy olyan kognitív szolgáltatás, amely lehetővé te
 Az űrlap-felismerő egyéni dokumentum-feldolgozási modellekből, előre elkészített modellből áll a számlákhoz, a bevételezésekhez és az üzleti kártyákhoz, valamint az elrendezési modellhez. Az űrlap-felismerő modelleket meghívhatja egy REST API-vagy ügyféloldali függvénytár-SDK használatával, így csökkentheti a bonyolultságot, és integrálhatja azt a munkafolyamatba vagy alkalmazásba.
 
 Az űrlap-felismerő a következő szolgáltatásokból áll:
+
 * **[Layout API](#layout-api)** – szöveg-, kiválasztási és táblázatos struktúrák kinyerése, valamint a hozzájuk tartozó mezők koordinátái a dokumentumokból.
 * **[Egyéni modellek](#custom-models)** – szöveg, kulcs/érték párok, kiválasztási jelek és táblák adatainak kinyerése űrlapokból. Ezek a modellek a saját adataival vannak betanítva, így az űrlapokra vannak szabva.
 * Előre **[elkészített modellek](#prebuilt-models)** – az egyedi űrlapokból származó adatok kinyerése előre elkészített modellek használatával. Jelenleg a következő előre elkészített modellek érhetők el
-    * [Számlák](./concept-invoices.md)
-    * [Értékesítési nyugták](./concept-receipts.md)
-    * [Névjegykártyák](./concept-business-cards.md)
-
+  * [Számlák](./concept-invoices.md)
+  * [Értékesítési nyugták](./concept-receipts.md)
+  * [Névjegykártyák](./concept-business-cards.md)
 
 ## <a name="try-it-out"></a>Próbálja ki
 
 Az űrlap-felismerő szolgáltatás kipróbálásához nyissa meg az online minta felhasználói felület eszközét:
-
-
-# <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
-> [!div class="nextstepaction"]
-> [Az űrlap-felismerő kipróbálása](https://fott.azurewebsites.net/)
-
+<!-- markdownlint-disable MD025 -->
 # <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)
+
 > [!div class="nextstepaction"]
 > [Az űrlap-felismerő kipróbálása](https://fott-preview.azurewebsites.net/)
+
+# <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
+
+> [!div class="nextstepaction"]
+> [Az űrlap-felismerő kipróbálása](https://fott.azurewebsites.net/)
 
 ---
 
@@ -137,12 +138,11 @@ A következő API-kat fogja használni a modellek betanításához és a struktu
 | **Visszaigazolás elemzése** | Egy bevételezési dokumentum elemzése a legfontosabb információk kinyeréséhez és a más bevételezési szövegekhez.|
 | **Névjegykártya elemzése** | Egy névjegykártya elemzése a legfontosabb információk és szövegek kinyeréséhez.|
 
+# <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)
+További információért olvassa el a [REST API dokumentációját](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeWithCustomForm) . Ha már ismeri az API korábbi verzióját, tekintse [meg](./whats-new.md) a újdonságokról szóló cikket a legutóbbi változások megismeréséhez.
 
 # <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
 További információért olvassa el a [REST API dokumentációját](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) . Ha már ismeri az API korábbi verzióját, tekintse [meg](./whats-new.md) a újdonságokról szóló cikket a legutóbbi változások megismeréséhez.
-
-# <a name="v21"></a>[v 2.1](#tab/v2-1)
-További információért olvassa el a [REST API dokumentációját](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeWithCustomForm) . Ha már ismeri az API korábbi verzióját, tekintse [meg](./whats-new.md) a újdonságokról szóló cikket a legutóbbi változások megismeréséhez.
 
 ---
 

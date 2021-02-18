@@ -11,12 +11,12 @@ author: knicholasa
 manager: martinco
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e324ae0fc80bb5990f9cf15901080684086a549
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: a8ed99338a10eb226823c4bd4857d812038ff632
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652241"
+ms.locfileid: "101094514"
 ---
 # <a name="browser-support-of-fido2-passwordless-authentication"></a>A FIDO2 jelszavas hitelesítésének böngésző általi támogatása
 
@@ -32,6 +32,17 @@ Ez a táblázat a Azure Active Directory (Azure AD) és a Microsoft-fiókok (MSA
 | **Windows**  | ![A Chrome támogatja az USB-t a Windows HRE-fiókokhoz.][y] | ![A Chrome támogatja az NFC használatát a Windows HRE-fiókokhoz.][y] | ![A Chrome támogatja a Windows for HRE-fiókokat.][y] | ![A Edge támogatja az USB-t a Windows HRE-fiókokhoz.][y] | ![A Edge támogatja az NFC használatát a Windows HRE-fiókokhoz.][y] | ![A Edge támogatja a Windows for HRE-fiókokat.][y] | ![A Firefox támogatja az USB-t a Windows HRE-fiókokhoz.][y] | ![A Firefox támogatja az NFC-t a Windows HRE-fiókokhoz.][y] | ![A Firefox támogatja a Windows rendszerhez készült HRE-fiókokat.][y] |
 | **macOS**  | ![A Chrome támogatja az USB-t a macOS rendszeren a HRE-fiókokhoz.][y] | ![A Chrome nem támogatja a macOS rendszerű HRE-fiókokhoz tartozó NFC használatát.][n] | ![A Chrome nem támogatja a HRE-fiókokhoz készült macOS-t.][n] | ![A Edge támogatja az USB-t a macOS rendszeren a HRE-fiókokhoz.][y] | ![Az Edge nem támogatja az NFC használatát a macOS rendszerű HRE-fiókokhoz.][n] | ![Az Edge nem támogatja a macOS rendszerű HRE-fiókokat.][n] | ![A Firefox nem támogatja az USB-t a macOS rendszeren a HRE-fiókokhoz.][n] | ![A Firefox nem támogatja az NFC használatát a macOS rendszeren a HRE-fiókokhoz.][n] | ![A Firefox nem támogatja a macOS rendszerű HRE-fiókokat.][n] |
 | **Linux**  | ![A Chrome támogatja az USB-t Linux rendszeren a HRE-fiókokhoz.][y] | ![A Chrome nem támogatja az NFC használatát a Linux rendszeren a HRE-fiókokhoz.][n] | ![A Chrome nem támogatja a HRE-fiókok Linux rendszeren való használatát.][n] | ![Az Edge nem támogatja az USB-t Linux rendszeren a HRE-fiókokhoz.][n] | ![Az Edge nem támogatja az NFC használatát a Linux rendszeren a HRE-fiókokhoz.][n] | ![Az Edge nem támogatja a Linux rendszerű HRE-fiókok használatát.][n] | ![A Firefox nem támogatja az USB-t Linux rendszeren a HRE-fiókokhoz.][n] | ![A Firefox nem támogatja az NFC használatát a Linux rendszeren a HRE-fiókokhoz.][n] | ![A Firefox nem támogatja a Linux rendszerű HRE-fiókok használatát.][n] |
+
+## <a name="unsupported-browsers"></a>Nem támogatott böngészők
+
+A következő operációsrendszer-és böngésző-kombinációk nem támogatottak, de a rendszer megvizsgálja a jövőbeli támogatást és tesztelést. Ha szeretné megtekinteni a további operációs rendszer és a böngésző támogatását, küldjön visszajelzést az oldal alján található termék-visszajelzési eszköz használatával.
+
+| Operációs rendszer | Böngésző |
+| ---- | ---- |
+| iOS | Safari, bátor |
+| macOS | Safari |
+| Android | Chrome |
+| ChromeOS | Chrome |
 
 ## <a name="operating-system-versions-tested"></a>Tesztelt operációsrendszer-verziók
 

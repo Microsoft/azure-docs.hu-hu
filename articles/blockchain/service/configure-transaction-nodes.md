@@ -4,12 +4,12 @@ description: Az Azure Blockchain szolgáltatás tranzakciós csomópontjainak ko
 ms.date: 11/20/2019
 ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: 50f9b2aa0f5e1a1b1095b6c799ce0706b6e541de
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 0b659fa9f15cd41e9e55de526747d470046cafa4
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150872"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091256"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Az Azure Blockchain szolgáltatás tranzakciós csomópontjainak konfigurálása
 
@@ -18,7 +18,7 @@ A tranzakciós csomópontok egy nyilvános végponton keresztül blockchain-tran
 Az alapértelmezett tranzakciós csomópont részleteinek megtekintése:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Navigáljon az Azure Blockchain-szolgáltatás tagjához. Válassza a **tranzakciós csomópontok**lehetőséget.
+1. Navigáljon az Azure Blockchain-szolgáltatás tagjához. Válassza a **tranzakciós csomópontok** lehetőséget.
 
     ![Alapértelmezett tranzakciós csomópont kiválasztása](./media/configure-transaction-nodes/nodes.png)
 
@@ -30,7 +30,7 @@ Legfeljebb kilenc további tranzakciós csomópontot adhat hozzá a blockchain-t
 
 Tranzakciós csomópont hozzáadása:
 
-1. A Azure Portal navigáljon az Azure Blockchain-szolgáltatás tagjához, és válassza a **tranzakciós csomópontok > Hozzáadás**lehetőséget.
+1. A Azure Portal navigáljon az Azure Blockchain-szolgáltatás tagjához, és válassza a **tranzakciós csomópontok > Hozzáadás** lehetőséget.
 1. Fejezze be az új tranzakciós csomópont beállításait.
 
     ![Tranzakciós csomópont hozzáadása](./media/configure-transaction-nodes/add-node.png)
@@ -40,7 +40,7 @@ Tranzakciós csomópont hozzáadása:
     | Név | Tranzakciós csomópont neve. A név a tranzakciós csomópont végpontjának DNS-címeinek létrehozására szolgál. Például: `newnode-myblockchainmember.blockchain.azure.com`. A csomópont neve nem módosítható a létrehozása után. |
     | Jelszó | Állítson be egy erős jelszót. Használja a jelszót a tranzakciós csomópont végpontjának egyszerű hitelesítéssel való eléréséhez.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
     Az új tranzakciós csomópont kiépítés körülbelül 10 percet vesz igénybe. A további tranzakciós csomópontok költségekkel járnak. A költségekkel kapcsolatos további információkért lásd: az [Azure díjszabása](https://aka.ms/ABSPricing).
 
@@ -50,7 +50,7 @@ A tranzakciós csomópontok egyedi DNS-névvel és nyilvános végpontokkal rend
 
 A tranzakciós csomópont végpontjának részleteinek megtekintése:
 
-1. A Azure Portal navigáljon az egyik Azure Blockchain-szolgáltatási tag tranzakciós csomópontjára, és válassza az **Áttekintés**lehetőséget.
+1. A Azure Portal navigáljon az egyik Azure Blockchain-szolgáltatási tag tranzakciós csomópontjára, és válassza az **Áttekintés** lehetőséget.
 
     ![A képernyőfelvételek egy blockchain-tag tranzakciós csomópontjainak áttekintését jelenítik meg.](./media/configure-transaction-nodes/endpoints.png)
 
@@ -62,20 +62,20 @@ Az Azure Blockchain szolgáltatás tranzakciós csomópontjának végpontok tám
 
 Az Azure AD hozzáférés-vezérlésének engedélyezése a végpontnak:
 
-1. A Azure Portal navigáljon az Azure Blockchain-szolgáltatás tagjához, és válassza a **tranzakciós csomópontok > hozzáférés-vezérlés (iam) > hozzáadás > szerepkör-hozzárendelés hozzáadása**elemet.
+1. A Azure Portal navigáljon az Azure Blockchain-szolgáltatás tagjához, és válassza a **tranzakciós csomópontok > hozzáférés-vezérlés (iam) > hozzáadás > szerepkör-hozzárendelés hozzáadása** elemet.
 1. Új szerepkör-hozzárendelés létrehozása egy felhasználóhoz, csoporthoz vagy egyszerű szolgáltatáshoz (alkalmazás szerepkörei).
 
     ![IAM szerepkör hozzáadása](./media/configure-transaction-nodes/add-role.png)
 
     | Beállítás | Művelet |
     |---------|-------------|
-    | Szerepkör | Válassza a **tulajdonos**, **közreműködő**vagy **olvasó**lehetőséget.
-    | Hozzáférés hozzárendelése ehhez | Válassza az **Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév**lehetőséget.
+    | Szerepkör | Válassza a **tulajdonos**, **közreműködő** vagy **olvasó** lehetőséget.
+    | Hozzáférés hozzárendelése ehhez | Válassza az **Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév** lehetőséget.
     | Válassza ezt: | Keresse meg azt a felhasználót, csoportot vagy szolgáltatásnevet, amelyet hozzá szeretne adni.
 
 1. A szerepkör-hozzárendelés hozzáadásához válassza a **Mentés** lehetőséget.
 
-Az Azure AD hozzáférés-vezérléssel kapcsolatos további információkért lásd: [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md)
+Az Azure AD hozzáférés-vezérléssel kapcsolatos további információkért lásd: [Azure-szerepkörök kiosztása a Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md)
 
 További információ az Azure AD-hitelesítés használatával történő kapcsolódásról: [Kapcsolódás a csomóponthoz a HRE-hitelesítés használatával](configure-aad.md).
 
@@ -89,7 +89,7 @@ A tranzakciós csomópontok alapszintű hitelesítési végpontjának részletei
 
 A Felhasználónév a csomópont neve, és nem módosítható.
 
-Az URL-cím használatához cserélje le a \<password\> jelszót a csomópont kiosztásakor beállított jelszóra. A jelszót a **jelszó alaphelyzetbe állítása**lehetőség kiválasztásával frissítheti.
+Az URL-cím használatához cserélje le a \<password\> jelszót a csomópont kiosztásakor beállított jelszóra. A jelszót a **jelszó alaphelyzetbe állítása** lehetőség kiválasztásával frissítheti.
 
 ### <a name="access-keys"></a>Elérési kulcs
 

@@ -10,12 +10,12 @@ metadata:
   ms.service: dms
   ms.topic: landing-page
   ms.custom: seo-azure-migrate
-  ms.openlocfilehash: c2461fa9eb2c326141d244fbc576355226f891dd
-  ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-  ms.translationtype: HT
+  ms.openlocfilehash: 2703c34dc56303103c682bed740a34991a6471f6
+  ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+  ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 11/20/2020
-  ms.locfileid: "94962705"
+  ms.lasthandoff: 02/18/2021
+  ms.locfileid: "101092158"
 landingContent:
 - title: Tudnivalók az Azure Database Migration Service-ről
   linkLists:
@@ -57,29 +57,27 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Migrálás önálló SQL DB-adatbázisba – online
-      url: tutorial-sql-server-azure-sql-online.md
-    - text: Migrálás önálló SQL DB-adatbázisba – offline
+    - text: Migrálás az Azure SQL Database-be
       url: tutorial-sql-server-to-azure-sql.md
-    - text: Migrálás felügyelt SQL DB-példányba – online
+    - text: Migrálás az Azure SQL felügyelt példányaira (online)
       url: tutorial-sql-server-managed-instance-online.md
-    - text: Migrálás felügyelt SQL DB-példányba – offline
+    - text: Migrálás az SQL felügyelt példányára (offline)
       url: tutorial-sql-server-to-managed-instance.md
-    - text: RDS SQL Server migrálása önálló SQL DB-adatbázisba/felügyelt példányba – online
+    - text: RDS SQL Server migrálása az Azure SQL-be
       url: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
   - linkListType: reference
     links:
-    - text: Ismert problémák – Online migrálás önálló SQL DB-adatbázisba
+    - text: Ismert problémák – online Migrálás SQL Databasere
       url: known-issues-azure-sql-online.md
-    - text: Ismert problémák – Online migrálás felügyelt SQL DB-példányba
+    - text: Ismert problémák – online Migrálás SQL felügyelt példányra
       url: known-issues-azure-sql-db-managed-instance-online.md
-    - text: Hálózati topológiák felügyelt SQL DB-példányok migrálásához
+    - text: SQL felügyelt példányok áttelepítésének hálózati topológiái
       url: resource-network-topologies.md
-    - text: Egyéni szerepkörök SQL Serverről felügyelt SQL DB-példányba történő online migráláshoz
+    - text: Egyéni szerepkörök az SQL Serverról az SQL felügyelt példányra történő online áttelepítéshez
       url: resource-custom-roles-sql-db-managed-instance.md
   - linkListType: video
     links:
-    - text: SQL Server 2008 migrálása felügyelt SQL DB-példányba
+    - text: SQL Server 2008 áttelepíteni az SQL felügyelt példányára
       url: https://azure.microsoft.com/resources/videos/how-to-migrate-sql-server-2008-or-r2-to-azure-sqldbmi/
 - title: Nyílt forráskódú adatbázisok migrálása az Azure-ba
   linkLists:

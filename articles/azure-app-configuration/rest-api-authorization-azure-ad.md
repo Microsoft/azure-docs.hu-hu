@@ -6,12 +6,12 @@ ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: f144c1f09f87e0b915daf86ba0391c2934e60095
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: c028dcf6649da9abd196997d077b58386a5e6dd9
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932676"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092796"
 ---
 # <a name="azure-active-directory-authorization---rest-api-reference"></a>Azure Active Directory Authorization-REST API referenciája
 
@@ -43,4 +43,4 @@ HTTP/1.1 403 Forbidden
 
 ## <a name="managing-role-assignments"></a>Szerepkör-hozzárendelések kezelése
 
-A szerepkör-hozzárendeléseket az összes Azure-szolgáltatásban szabványos [RBAC eljárások](../role-based-access-control/overview.md) segítségével kezelheti. Ezt az Azure CLI, a PowerShell és a Azure Portal használatával teheti meg. További információ: [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md).
+A szerepkör-hozzárendeléseket az összes Azure-szolgáltatásban szabványos [Azure RBAC eljárások](../role-based-access-control/overview.md) segítségével kezelheti. Ezt az Azure CLI, a PowerShell és a Azure Portal használatával teheti meg. További információ: Azure- [szerepkörök kiosztása a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md).

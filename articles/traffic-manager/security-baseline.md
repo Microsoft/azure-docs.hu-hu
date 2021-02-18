@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: bc121b3f5aadad1e68315acac5daade5337b701b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f8f9da1b9c0b2df4e353b90538d52d9cb9b9e241
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100580370"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093921"
 ---
 # <a name="azure-security-baseline-for-azure-traffic-manager"></a>Azure biztonsági alapkonfiguráció az Azure Traffic Manager
 
@@ -114,7 +114,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel sz
 
 A Resource Managerben bármely előfizetésből származó végpontok Traffic Managerhoz adhatók hozzá, feltéve, hogy a Traffic Manager profilt konfiguráló személy olvasási hozzáféréssel rendelkezik a végponthoz.
 
-- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)
+- [Azure-szerepkörök kiosztása a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)
 
 - [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
@@ -272,7 +272,7 @@ A Resource Managerben bármely előfizetésből származó végpontok Traffic Ma
 
 Az Azure Traffic Manager egy "Traffic Manager közreműködő" nevű előre definiált Azure-szerepkörrel rendelkezik, amely a felhasználókhoz rendelhető.
 
-- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)
+- [Azure-szerepkörök kiosztása a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)
 
 - [Traffic Manager közreműködő szerepkör](../role-based-access-control/built-in-roles.md#traffic-manager-contributor)
 

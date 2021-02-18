@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 74530b861b4dc7a35fa8b192ecc0e79ce5fa59c2
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 898f568d285c3b4b4360ea4dda8c63a1e0f13a42
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742993"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091815"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>Csatlakozás felügyelt identitással az Azure Database for MySQL-hez
 
@@ -31,7 +31,7 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ha még nem ismeri az Azure-erőforrások felügyelt identitására vonatkozó funkciót, tekintse meg ezt az [áttekintést](../../articles/active-directory/managed-identities-azure-resources/overview.md). Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
-- A szükséges erőforrás-létrehozási és szerepkör-kezelés végrehajtásához a fióknak a megfelelő hatókörben (az előfizetésben vagy az erőforráscsoportban) a tulajdonos engedélyekkel kell rendelkeznie. Ha segítségre van szüksége a szerepkör-hozzárendeléssel kapcsolatban, tekintse meg az Azure- [alapú hozzáférés-vezérlés (Azure RBAC) használata az Azure-előfizetési erőforrások elérésének kezeléséhez](../../articles/role-based-access-control/role-assignments-portal.md)című témakört.
+- A szükséges erőforrás-létrehozási és szerepkör-kezelés végrehajtásához a fióknak a megfelelő hatókörben (az előfizetésben vagy az erőforráscsoportban) a tulajdonos engedélyekkel kell rendelkeznie. Ha segítségre van szüksége a szerepkör-hozzárendeléssel kapcsolatban, tekintse meg az Azure [-szerepkörök hozzárendelése az Azure-előfizetés erőforrásaihoz való hozzáférés kezeléséhez](../../articles/role-based-access-control/role-assignments-portal.md)című témakört
 - Szüksége lesz egy Azure-beli virtuális gépre (például a Ubuntu Linux), amelyet az adatbázis felügyelt identitással való eléréséhez szeretne használni.
 - Szüksége van egy Azure Database for MySQL adatbázis-kiszolgálóra, amelyen konfigurálva van az [Azure ad-hitelesítés](howto-configure-sign-in-azure-ad-authentication.md)
 - A C# példájának követéséhez először végezze el a következő útmutatót a [kapcsolódáshoz a c# használatával](connect-csharp.md)

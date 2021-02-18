@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/14/2020
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 3022e9c694d70359a90e71ecd1232e9274f92f10
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: baba35bd29ec6708aca77bd9c6d74401a365014a
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98730322"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091887"
 ---
 # <a name="shared-image-galleries-overview"></a>Megosztott képgyűjtemények – áttekintés
 
@@ -24,7 +24,7 @@ A Shared Image Gallery szolgáltatás segít struktúrát és rendszert kialakí
 - A könnyebb felügyelet érdekében a rendszerképek verziószámozása és csoportosítása.
 - A Availability Zones-t támogató régiókban található, a zóna redundáns tárolási (ZRS) fiókjaival rendelkező, nagyon elérhető rendszerképek. A ZRS nagyobb rugalmasságot biztosít a zónabeli hibákkal szemben.
 - Premium Storage-támogatás (Premium_LRS).
-- Megosztás az előfizetések között, és akár Active Directory (AD) bérlők között a RBAC használatával.
+- Az Azure RBAC használatával megoszthatja az előfizetéseket, és akár Active Directory (AD) bérlők között is.
 - Az üzembe helyezések skálázása minden egyes régióban képreplikákkal.
 
 Megosztott képkatalógus használatával a képeket megoszthatja a szervezeten belüli különböző felhasználókkal, egyszerű szolgáltatásokkal vagy AD-csoportokkal. A megosztott lemezképek több régióba is replikálhatók, így az üzemelő példányok gyorsabban méretezhetők.
@@ -146,14 +146,14 @@ Az a régió, amelyet a megosztott rendszerkép replikál, a rendszer a létreho
 
 ## <a name="access"></a>Access
 
-Mivel a megosztott képtára, a képdefiníció és a rendszerkép verziója minden erőforrás, a beépített natív Azure RBAC-vezérlőkkel is megoszthatók. A RBAC használatával ezeket az erőforrásokat megoszthatja más felhasználókkal, egyszerű szolgáltatásokkal és csoportokkal is. Akár a bérlőn kívüli személyekhez is megoszthatja a hozzáférést. Miután egy felhasználó hozzáfér a megosztott lemezkép verziójához, üzembe helyezhet egy virtuális gépet vagy egy virtuálisgép-méretezési készletet.  Itt látható a megosztási mátrix, amely segít megérteni, hogy a felhasználó milyen módon férhet hozzá:
+Mivel a megosztott képtára, a képdefiníció és a rendszerkép verziója minden erőforrás, a beépített natív Azure RBAC-vezérlőkkel is megoszthatók. Az Azure RBAC használatával ezeket az erőforrásokat megoszthatja más felhasználókkal, egyszerű szolgáltatásokkal és csoportokkal is. Akár a bérlőn kívüli személyekhez is megoszthatja a hozzáférést. Miután egy felhasználó hozzáfér a megosztott lemezkép verziójához, üzembe helyezhet egy virtuális gépet vagy egy virtuálisgép-méretezési készletet.  Itt látható a megosztási mátrix, amely segít megérteni, hogy a felhasználó milyen módon férhet hozzá:
 
 | Felhasználóval megosztva     | Megosztott rendszerkép-katalógus | Rendszerkép-definíció | Rendszerképverzió |
 |----------------------|----------------------|--------------|----------------------|
-| Megosztott rendszerkép-katalógus | Igen                  | Igen          | Igen                  |
-| Rendszerkép-definíció     | Nem                   | Igen          | Igen                  |
+| Megosztott rendszerkép-katalógus | Igen                  | Igen          | Yes                  |
+| Rendszerkép-definíció     | Nem                   | Igen          | Yes                  |
 
-A legjobb megoldás érdekében javasoljuk, hogy ossza meg a gyűjteményt a katalógus szintjén. Az egyes rendszerkép-verziók megosztását nem ajánlott. További információ a RBAC: az [Azure-erőforrásokhoz való hozzáférés kezelése a RBAC használatával](../role-based-access-control/role-assignments-portal.md).
+A legjobb megoldás érdekében javasoljuk, hogy ossza meg a gyűjteményt a katalógus szintjén. Az egyes rendszerkép-verziók megosztását nem ajánlott. További információ az Azure RBAC: Azure- [szerepkörök kiosztása](../role-based-access-control/role-assignments-portal.md).
 
 A képek a több-bérlős alkalmazások regisztrálásával is megoszthatók, akár a bérlők között is. A képek bérlők közötti megosztásával kapcsolatos további információkért tekintse meg az [Azure CLI](./linux/share-images-across-tenants.md) vagy a [PowerShell](./windows/share-images-across-tenants.md)használatával "a katalógus virtuálisgép-rendszerképeinek megosztása az Azure-bérlők között" című témakört.
 
@@ -170,12 +170,12 @@ Tegyük fel például, hogy rendelkezik egy 127 GB-OS operációsrendszer-lemezz
 A létrehozás után módosításokat végezhet a Képtár erőforrásaiban. Ezek a következőkre korlátozódnak:
  
 Megosztott képgyűjtemény:
-- Leírás
+- Description
 
 Rendszerkép definíciója:
 - Ajánlott vCPU
 - Ajánlott memória
-- Leírás
+- Description
 - Élettartam vége
 
 Rendszerkép verziója:
@@ -322,7 +322,7 @@ Ha a megosztott képkatalógus erőforrásaiban bármilyen művelet végrehajtá
 
 Emellett a kérdését a következő címen teheti közzé és címkézheti `azure-virtual-machines-images` : [Q&a](/answers/topics/azure-virtual-machines-images.html).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan helyezhet üzembe megosztott rendszerképeket az [Azure CLI](shared-images-cli.md) vagy a [PowerShell](shared-images-powershell.md)használatával.
 

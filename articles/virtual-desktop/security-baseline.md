@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/25/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 01cd79afe3e718a32663544a76a2a43353bc082e
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 42795e2dda6df24e656c9c06f6a9424bd9e4b5cb
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575381"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092973"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-desktop"></a>Azure biztonsági alapkonfiguráció a Windows rendszerű virtuális asztali gépekhez
 
@@ -328,7 +328,7 @@ Emellett a beépített szerepkörök használatával is lefoglalhatja az engedé
 
 - [Mi az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../role-based-access-control/overview.md) 
 
-- [Az RBAC konfigurálása az Azure-ban](../role-based-access-control/role-assignments-portal.md) 
+- [Az Azure RBAC konfigurálása](../role-based-access-control/role-assignments-portal.md) 
 
 - [Az Azure AD identitás- és hozzáférési felülvizsgálatainak használata](../active-directory/governance/access-reviews-overview.md)
 

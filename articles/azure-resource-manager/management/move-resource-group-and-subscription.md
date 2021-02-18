@@ -4,12 +4,12 @@ description: Az erőforrások új erőforráscsoporthoz vagy előfizetésbe val�
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cd05fe045532ee1b1f1fb88e502d786daabf9365
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aca1e5255c89e99a2c996e072e5106da8dc3eef9
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319554"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093621"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -37,7 +37,7 @@ Néhány fontos lépést végre kell hajtani az erőforrások áthelyezése elő
 
 1. Ha olyan erőforrást helyez át, amely közvetlenül az erőforráshoz (vagy egy alárendelt erőforráshoz) van hozzárendelve egy Azure-szerepkörrel, a szerepkör-hozzárendelés nem kerül át, és nem lesz árva. Az áthelyezés után újra létre kell hoznia a szerepkör-hozzárendelést. Végül a rendszer automatikusan eltávolítja az árva szerepkör-hozzárendelést, de ez az ajánlott eljárás a szerepkör-hozzárendelés eltávolítására az erőforrás áthelyezése előtt.
 
-    További információ a szerepkör-hozzárendelések kezeléséről: az Azure szerepkör-hozzárendelések [listázása](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) és [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása](../../role-based-access-control/role-assignments-portal.md).
+    A szerepkör-hozzárendelések kezelésével kapcsolatos információkért tekintse meg az [Azure szerepkör-hozzárendelések listázása](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) és az [Azure-szerepkörök hozzárendelése](../../role-based-access-control/role-assignments-portal.md)című témakört.
 
 1. A forrás-és a cél-előfizetésnek aktívnak kell lennie. Ha problémája van egy letiltott fiók engedélyezésével, [hozzon létre egy Azure-támogatási kérelmet](../../azure-portal/supportability/how-to-create-azure-support-request.md). Válassza az **előfizetés kezelése** lehetőséget a probléma típusához.
 
@@ -62,7 +62,7 @@ Néhány fontos lépést végre kell hajtani az erőforrások áthelyezése elő
    * [Azure-előfizetés tulajdonjogának átruházása másik fiókra](../../cost-management-billing/manage/billing-subscription-transfer.md)
    * [Azure-előfizetés társítása vagy hozzáadása az Azure Active Directoryhoz](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-1. A cél előfizetést regisztrálni kell az áthelyezett erőforrás erőforrás-szolgáltatóján. Ha nem, hibaüzenetet kap arról, hogy az **előfizetés nincs regisztrálva az erőforrás típusától**függően. Ez a hiba akkor fordulhat elő, amikor új előfizetésre helyezi át az erőforrást, de az előfizetést soha nem használták az adott erőforrás-típussal.
+1. A cél előfizetést regisztrálni kell az áthelyezett erőforrás erőforrás-szolgáltatóján. Ha nem, hibaüzenetet kap arról, hogy az **előfizetés nincs regisztrálva az erőforrás típusától** függően. Ez a hiba akkor fordulhat elő, amikor új előfizetésre helyezi át az erőforrást, de az előfizetést soha nem használták az adott erőforrás-típussal.
 
    A PowerShell esetében használja a következő parancsokat a regisztráció állapotának lekéréséhez:
 
@@ -178,11 +178,11 @@ Ha megtekinti az erőforráscsoportot, az áthelyezés lehetőség le lesz tiltv
 
 Az áthelyezés beállítás engedélyezéséhez válassza ki az áthelyezni kívánt erőforrásokat. Az összes erőforrás kiválasztásához jelölje be a jelölőnégyzetet a lista tetején. Vagy válassza az erőforrások külön lehetőséget. Az erőforrások kiválasztása után az áthelyezés beállítás engedélyezve van.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="a Move lehetőség le van tiltva":::
+:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="erőforrások kiválasztása":::
 
 Kattintson az **Áthelyezés** gombra.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="a Move lehetőség le van tiltva":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="mozgatási beállítások":::
 
 Ez a gomb három lehetőséget biztosít:
 
@@ -194,11 +194,11 @@ Válassza ki, hogy az erőforrásokat új erőforráscsoporthoz vagy új előfiz
 
 Válassza ki a cél erőforráscsoportot. Nyugtázza, hogy frissítenie kell a parancsfájlokat ezekhez az erőforrásokhoz, és kattintson **az OK gombra**. Ha az új előfizetésre való áttérést választotta, ki kell választania a cél előfizetést is.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="a Move lehetőség le van tiltva":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="cél kiválasztása":::
 
 Az erőforrások áthelyezésének ellenőrzése után megjelenik egy értesítés arról, hogy az áthelyezési művelet fut.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="a Move lehetőség le van tiltva":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="értesítési":::
 
 Ha a művelet befejeződött, értesítést kap az eredményről.
 

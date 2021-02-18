@@ -10,12 +10,12 @@ ms.custom: devx-track-dotnet, devx-track-azurecli
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: 04edf2eeb231ff1444c732840def2b78b1373e79
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 39c50f539c04a6c49316f4541c759859be861f9d
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565925"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095519"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>Alkalmazás-konfigurációs tárolók automatikus biztonsági mentése
 
@@ -49,7 +49,7 @@ Ebben az oktatóanyagban egy másodlagos tárolót fog létrehozni a `centralus`
 
 - Az oktatóanyaghoz az Azure CLI 2.3.1-es vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az erőforráscsoport egy olyan logikai gyűjtemény, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -177,7 +177,7 @@ az functionapp identity assign --name $functionAppName --resource-group $resourc
 ```
 
 > [!NOTE]
-> A szükséges erőforrás-létrehozási és-szerepkör-kezelés végrehajtásához a fióknak `Owner` a megfelelő hatókörben (az előfizetésben vagy az erőforráscsoportban) engedélyekkel kell rendelkeznie. Ha segítségre van szüksége a szerepkör-hozzárendeléshez, Ismerje meg, [hogyan adhat hozzá vagy távolíthat el Azure-beli szerepkör-hozzárendeléseket az Azure Portal használatával](../role-based-access-control/role-assignments-portal.md).
+> A szükséges erőforrás-létrehozási és-szerepkör-kezelés végrehajtásához a fióknak `Owner` a megfelelő hatókörben (az előfizetésben vagy az erőforráscsoportban) engedélyekkel kell rendelkeznie. Ha segítségre van szüksége a szerepkör-hozzárendeléshez, Ismerje meg, [Hogyan rendelhet hozzá Azure-szerepköröket a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md).
 
 Az alábbi parancsokkal vagy a [Azure Portal](./howto-integrate-azure-managed-service-identity.md#grant-access-to-app-configuration) használatával biztosíthatja, hogy a Function app felügyelt identitása hozzáférjen az alkalmazás konfigurációs tárolói számára. A következő szerepkörök használata:
 - Rendelje hozzá a `App Configuration Data Reader` szerepkört az elsődleges alkalmazás konfigurációs tárolójához.

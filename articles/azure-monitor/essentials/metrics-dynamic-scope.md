@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: riroloff
 ms.subservice: metrics
-ms.openlocfilehash: 176acea34dead929986acb807b465593f9ffda5a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 23507a01f3ed0015690d9655fde92a875f89c2da
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100615125"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095487"
 ---
 # <a name="view-multiple-resources-in-the-azure-metrics-explorer"></a>Több erőforrás megtekintése az Azure mérőszámok Explorerben
 
@@ -33,7 +33,7 @@ Néhány erőforrástípus több erőforráson is lekérdezheti a metrikákat. A
 ![Képernyőkép, amely a több erőforrással kompatibilis erőforrások menüjét jeleníti meg.](./media/metrics-dynamic-scope/020.png)
 
 > [!WARNING] 
-> A mérőszámok több erőforrás, erőforráscsoport vagy előfizetés alapján történő megjelenítéséhez az előfizetés szintjén kell figyelnie az olvasó engedélyét. További információ: [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
+> A mérőszámok több erőforrás, erőforráscsoport vagy előfizetés alapján történő megjelenítéséhez az előfizetés szintjén kell figyelnie az olvasó engedélyét. További információ: Azure- [szerepkörök kiosztása a Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
 
 Több erőforráshoz tartozó mérőszámok megjelenítéséhez először válassza ki az erőforrás hatókör-választóján belül több erőforrást. 
 
@@ -81,7 +81,7 @@ Ebben a példában a TailspinToysDemo alapján szűrhet. Itt a szűrő eltávol�
 
 ## <a name="pin-multiple-resource-charts"></a>Több erőforrást tartalmazó diagramok rögzítése 
 
-Az erőforráscsoportok és előfizetések mérőszámait ábrázoló több erőforrásból álló diagramok esetében a felhasználónak az előfizetés szintjén kell figyelnie az *olvasói* engedélyekkel. Győződjön meg arról, hogy az irányítópultok minden olyan felhasználója, amelynél több erőforrást tartalmazó diagramot rögzít, megfelelő engedélyekkel rendelkezik. További információ: [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
+Az erőforráscsoportok és előfizetések mérőszámait ábrázoló több erőforrásból álló diagramok esetében a felhasználónak az előfizetés szintjén kell figyelnie az *olvasói* engedélyekkel. Győződjön meg arról, hogy az irányítópultok minden olyan felhasználója, amelynél több erőforrást tartalmazó diagramot rögzít, megfelelő engedélyekkel rendelkezik. További információ: Azure- [szerepkörök kiosztása a Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
 
 Ha több erőforrást tartalmazó diagramot szeretne rögzíteni egy irányítópulton, tekintse meg a [rögzítés az irányítópultokon](../essentials/metrics-charts.md#pinning-to-dashboards)című témakört. 
 

@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.custom: devx-track-azurecli
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 91ee605035dbc81c2302aa0350763e68dc73ecb3
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: a91123b22eaef4cbaf2e96c93200777c8a85abab
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956106"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092391"
 ---
 # <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>Kódolás egyéni átalakítással – Azure CLI
 
@@ -37,8 +37,6 @@ Egyéni beállításkészletek létrehozásakor a következő szempontokat kell 
 [Hozzon létre egy Media Services fiókot](./create-account-howto.md).
 
 Ügyeljen rá, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét.
-
-[!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="define-a-custom-preset"></a>Egyéni beállításkészlet definiálása
 

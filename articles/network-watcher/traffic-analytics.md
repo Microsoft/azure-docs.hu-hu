@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: damendo
 ms.reviewer: vinigam
 ms.custom: references_regions
-ms.openlocfilehash: 42536480a72e8d2160064a82eee7bac11c17746c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 87dacd28223fd88866edb90266aa76fd3cdf86cf
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585519"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095364"
 ---
 # <a name="traffic-analytics"></a>Forgalmi elemzések
 
@@ -71,33 +71,34 @@ A NSG Traffic Analytics a következő támogatott régiókban használható:
       Az USA középső régiója  
       Kelet-Kína 2  
       Észak-Kína 2  
+      Kelet-Ázsia       
    :::column-end:::
    :::column span="":::
-      Kelet-Ázsia  
       USA keleti régiója  
       USA 2. keleti régiója  
       USA 2. keleti – EUAP  
       Közép-Franciaország  
-      Kelet-Japán  
+      Középnyugat-Németország Kelet-Japán  
       Nyugat-Japán  
       Dél-Korea középső régiója  
       Dél-Korea déli régiója  
       USA északi középső régiója  
+      Észak-Európa    
    :::column-end:::
    :::column span="":::
-      Észak-Európa  
       Dél-Afrika északi régiója  
       USA déli középső régiója  
       Dél-India  
       Délkelet-Ázsia  
       Észak-Svájc  
       Nyugat-Svájc  
+      Észak-Egyesült Arab  
       Az Egyesült Királyság déli régiója  
-      Az Egyesült Királyság nyugati régiója  
+      Az Egyesült Királyság nyugati régiója   
       USGov Arizona  
+      USGov Texas
    :::column-end:::
    :::column span="":::
-      USGov Texas  
       USGov Virginia  
       USNat keleti régiója  
       USNat nyugati régiója  
@@ -143,14 +144,15 @@ A Log Analytics munkaterület a következő régiókban kell, hogy legyen:
       Észak-Svájc  
       Nyugat-Svájc  
       UAE középső régiója  
+      Észak-Egyesült Arab  
       Az Egyesült Királyság déli régiója  
-      Az Egyesült Királyság nyugati régiója  
+      Az Egyesült Királyság nyugati régiója   
       USGov Arizona  
       USGov Virginia  
-      USNat keleti régiója  
-      USNat nyugati régiója  
+      USNat keleti régiója   
    :::column-end:::
    :::column span="":::
+      USNat nyugati régiója   
       USSec keleti régiója  
       USSec nyugati régiója  
       USA nyugati középső régiója  

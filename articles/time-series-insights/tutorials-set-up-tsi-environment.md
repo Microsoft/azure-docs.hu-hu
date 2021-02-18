@@ -10,18 +10,18 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 01/19/2021
 ms.custom: seodec18
-ms.openlocfilehash: 912dbf48254a8d68b9bf76db04734fd791a3edb9
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 56f4cb49f42936e7b9f64c2546b94c99d16bac79
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98677054"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092088"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>Oktatóanyag: Azure Time Series Insights Gen2-környezet beállítása
 
 Ez az oktatóanyag végigvezeti Önt egy *Azure Time Series Insights Gen2-alapú TB-környezet* létrehozásának folyamatán.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -38,7 +38,7 @@ Ha még nem rendelkezik ilyennel, regisztráljon egy [ingyenes Azure-előfizeté
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Legalább a **közreműködő** szerepkörrel kell rendelkeznie az Azure-előfizetéshez. További információért olvassa el [Az Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával című részt](../role-based-access-control/role-assignments-portal.md).
+* Legalább a **közreműködő** szerepkörrel kell rendelkeznie az Azure-előfizetéshez. További információért olvassa el [Az Azure-szerepkörök az Azure Portal használatával történő hozzárendelését](../role-based-access-control/role-assignments-portal.md)ismertető témakört.
 
 ## <a name="create-a-device-simulation"></a>Eszközszimuláció létrehozása
 
@@ -91,8 +91,8 @@ Ez a szakasz azt ismerteti, hogyan hozható létre Azure Time Series Insights Ge
     | **Erőforráscsoport** | Válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy új erőforráscsoportot a Azure Time Series Insights Gen2 környezeti erőforráshoz. Az erőforráscsoport az Azure-erőforrások tárolója. Az ajánlott eljárás az, hogy ugyanazt az erőforráscsoportot használja, mint az eszköz-szimulátor által létrehozott többi IoT-erőforrást. |
     | **Hely** | Válasszon ki egy adatközpont-régiót Azure Time Series Insights Gen2-környezetéhez. A további késés elkerülése érdekében érdemes létrehozni a Azure Time Series Insights Gen2-környezetét ugyanabban a régióban, mint az eszköz-szimulátor által létrehozott IoT hub. |
     | **Szint** |  Válassza a **Gen2 (L1)** lehetőséget. Ez a Azure Time Series Insights Gen2 termék SKU-jának. |
-    | **Idősorozat-azonosító tulajdonságának neve** | Adja meg az idősorozat-példányok egyedi azonosítására szolgáló értékeket tartalmazó tulajdonság nevét. A **tulajdonságnév** mezőben megadott érték idősorozat-azonosítóként való megadása később nem módosítható. Ebben az oktatóanyagban adja meg a **_iothub--kapcsolatok-Device-ID_* _ értéket. Ha többet szeretne megtudni az idősorozat-AZONOSÍTÓról, beleértve az összetett idősorozat-azonosítót, olvassa el az [ajánlott eljárásokat az Idősorozat-azonosító kiválasztásához](./how-to-select-tsid.md). |
-    | _ *Storage-fiók neve** | Adjon meg egy globálisan egyedi nevet egy új Storage-fiókhoz.|
+    | **Idősorozat-azonosító tulajdonságának neve** | Adja meg az idősorozat-példányok egyedi azonosítására szolgáló értékeket tartalmazó tulajdonság nevét. A **tulajdonságnév** mezőben megadott érték idősorozat-azonosítóként való megadása később nem módosítható. Ebben az oktatóanyagban adja meg a **_iothub--kapcsolatok-Device-ID_** értéket. Ha többet szeretne megtudni az idősorozat-AZONOSÍTÓról, beleértve az összetett idősorozat-azonosítót, olvassa el az [ajánlott eljárásokat az Idősorozat-azonosító kiválasztásához](./how-to-select-tsid.md). |
+    | **Tárfiók neve** | Adjon meg egy globálisan egyedi nevet egy új Storage-fiókhoz.|
     | **Storage-fiók típusa** | Válassza ki az új Storage-fiók tárolási típusát. Ajánlott StorageV2|
     | **Storage-fiók replikálása** | Válassza ki az új Storage-fiók tárolási típusát. A hely kiválasztása alapján a LRS, a GRS és a ZRS közül választhat. Ebben az oktatóanyagban választhat LRS|
     | **Hierarchikus névtér** |Ez a beállítás választható, ha kijelöli a StorageV2 Storage-típust. Alapértelmezés szerint le van tiltva. Ebben az oktatóanyagban meghagyhatja az alapértelmezett *letiltott* állapotban.|
@@ -287,7 +287,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
         | Paraméter | Művelet |
         | --- | --- |
         | **Hierarchiák** | **Hely hierarchiájának** kiválasztása |
-        | **Country** | **USA** megadása |
+        | **Ország** | **USA** megadása |
         | **City** | **Seattle** megadása |
         | **Létrehozása** | Adja meg a **térközt** |
 
@@ -303,7 +303,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
     | **Név** | **2. felvonó** megadása|
     | **Leírás** | **A 2. felvonóhoz tartozó példány** megadása |
     | **Hierarchiák** | **Hely hierarchiájának** kiválasztása |
-    | **Country** | **USA** megadása |
+    | **Ország** | **USA** megadása |
     | **City** | **Seattle** megadása |
     | **Létrehozása** | A **Pacific Science Center** megadása |
 
@@ -315,7 +315,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
     | **Név** | **3. felvonó** megadása|
     | **Leírás** | **A 3. felvonóhoz tartozó példány** megadása |
     | **Hierarchiák** | **Hely hierarchiájának** kiválasztása |
-    | **Country** | **USA** megadása |
+    | **Ország** | **USA** megadása |
     | **City** | Adja meg a **New York** -i |
     | **Létrehozása** | Adja meg a **Birodalom állapotának kiépítése** |
 

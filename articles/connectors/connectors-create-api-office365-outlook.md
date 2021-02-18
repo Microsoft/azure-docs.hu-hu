@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/13/2020
 tags: connectors
-ms.openlocfilehash: 790879894c3b268fcd55aafc96507319b29fe1e5
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 87a9c8a38ede7008d658068329c8c72e7e3c4117
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055076"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095468"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>E-mailek, partneradatok és naptárak kezelése az Office 365 Outlookban az Azure Logic Apps használatával
 
@@ -98,7 +98,7 @@ Ha olyan fiókkal próbál csatlakozni az Outlookhoz, amely az Azure-ba jelenleg
 
   1. A logikai alkalmazás erőforráscsoport menüjében válassza a **hozzáférés-vezérlés (iam)** lehetőséget. Állítsa be a másik fiókot a **közreműködő** szerepkörrel. 
   
-     További információ: [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../role-based-access-control/role-assignments-portal.md).
+     További információ: Azure- [szerepkörök kiosztása a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md).
 
   1. Miután beállította ezt a szerepkört, jelentkezzen be a Azure Portalba azzal a fiókkal, amely már közreműködői engedélyekkel rendelkezik. Mostantól használhatja ezt a fiókot az Outlookhoz való kapcsolódás létrehozásához.
 

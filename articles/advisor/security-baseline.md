@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 36d5eba344906ca03b137efb220f54dc3a11eb6d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: aae76d50811db87bdf4753ed456a6d8e6d95d6ab
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572810"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094634"
 ---
 # <a name="azure-security-baseline-for-azure-advisor"></a>Azure Advisor Azure biztonsági alapterve
 
@@ -175,7 +175,7 @@ A beépített szerepkörökkel engedélyeket oszthat ki, és csak akkor kell egy
 
 Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)? ../role-based-access-control/overview.md 
 
-- [Az RBAC konfigurálása az Azure-ban](../role-based-access-control/role-assignments-portal.md) 
+- [Az Azure RBAC konfigurálása](../role-based-access-control/role-assignments-portal.md) 
 
 - [Az Azure AD identitás- és hozzáférési felülvizsgálatainak használata](../active-directory/governance/access-reviews-overview.md)
 

@@ -1,14 +1,14 @@
 ---
 title: Az Azure Security teljesítményteszt Foundation tervének üzembe helyezési mintája
 description: Üzembe helyezheti az Azure Security teljesítményteszt Foundation tervezetének lépéseit, beleértve a tervrajz-összetevő paraméterének részleteit.
-ms.date: 02/12/2020
+ms.date: 02/17/2020
 ms.topic: sample
-ms.openlocfilehash: 84c157d696dc8ababe1f252136672ea600e604af
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: aaaabc8767c6d80548a26d64d8557587180fb6f3
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633954"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095291"
 ---
 # <a name="deploy-the-azure-security-benchmark-foundation-blueprint-sample"></a>Az Azure Security teljesítményteszt Foundation tervének üzembe helyezési mintája
 
@@ -92,6 +92,9 @@ Miután a tervezet mintájának **közzététele** sikeresen megtörtént, hozz�
      - **Network Watcher neve**: a Network Watcher erőforrás neve
      - **Network Watcher erőforráscsoport neve**: a Network Watcher erőforráscsoport neve
      - **DDoS-védelem engedélyezése**: adja meg az "igaz" vagy a "false" értéket annak megadásához, hogy DDoS Protection engedélyezve van-e a virtuális hálózaton
+     
+    > [!NOTE] 
+    > Ha Network Watcher már engedélyezve van, javasoljuk, hogy használja a meglévő Network Watcher erőforráscsoportot. Meg kell adnia a meglévő Network Watcher erőforráscsoport helyét is a (z) **Network Watcher erőforráscsoport helye** összetevő-paraméterhez.
 
    - Összetevő paraméterei
 
@@ -132,8 +135,14 @@ A következő táblázat a terv paramétereinek listáját tartalmazza:
 |Azure Virtual Network küllős sablon|Resource Manager-sablon|Alhálózati címek nevei (nem kötelező)|A küllős virtuális hálózathoz telepítendő alhálózati nevek tömbje; például: "subnet1", "subnet2 alhálózattal"|
 |Azure Virtual Network küllős sablon|Resource Manager-sablon|Alhálózati címek előtagjai (nem kötelező)|IP-cím előtagjainak tömbje a küllős virtuális hálózat választható alhálózatai számára; például: "10.0.7.0/24", "10.0.8.0/24"|
 |Azure Virtual Network küllős sablon|Resource Manager-sablon|Küllő üzembe helyezése|Adja meg az "igaz" vagy a "false" értéket annak megadásához, hogy a hozzárendelés üzembe helyezi-e az architektúra küllős összetevőit.|
-|Azure Network Watcher-sablon|Resource Manager-sablon|Network Watcher helye|Ha a Network Watcher már engedélyezve van, akkor a paraméter értékének **meg kell** egyeznie a meglévő Network Watcher erőforráscsoport helyével.|
+|Azure Network Watcher-sablon|Resource Manager-sablon|Network Watcher helye|A Network Watcher erőforrás helye|
 |Azure Network Watcher-sablon|Resource Manager-sablon|Network Watcher erőforráscsoport helye|Ha Network Watcher már engedélyezve van, ennek a paraméternek **meg kell** egyeznie a meglévő Network Watcher erőforráscsoport nevével.|
+
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+Ha a hibába ütközik `The resource group 'NetworkWatcherRG' failed to deploy due to the
+following error: Invalid resource group location '{location}'. The Resource group already exists in
+location '{location}'.` , ellenőrizze, hogy a terv paraméter **Network Watcher erőforráscsoport neve** megadja a meglévő Network Watcher erőforráscsoport nevét, valamint azt, hogy az összetevő-paraméter **Network Watcher erőforráscsoport helye** megadja a meglévő Network Watcher erőforráscsoport helyét.
 
 ## <a name="next-steps"></a>Következő lépések
 

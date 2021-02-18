@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b2ad38e518fa4b924992355990ea3eb06a338ebe
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 38b147a85a26fd1e0be4f5dc6b63ae4c1331d348
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94693158"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093998"
 ---
 # <a name="security-frame-authorization--mitigations"></a>Biztonsági keret: Engedélyezés | Enyhítését 
 | Termék/szolgáltatás | Cikk |
@@ -51,7 +51,7 @@ ms.locfileid: "94693158"
 | **SDL-fázis**               | Üzembe helyezés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | **Lépések** | Győződjön meg arról, hogy a megfelelő ACL-ek úgy vannak konfigurálva, hogy korlátozzák az eszközön tárolt adathozzáférés korlátozását|
 
 ## <a name="ensure-that-sensitive-user-specific-application-content-is-stored-in-user-profile-directory"></a><a id="sensitive-directory"></a>Győződjön meg arról, hogy a bizalmas felhasználóspecifikus alkalmazás tartalma a felhasználói profil címtárában van tárolva
@@ -62,7 +62,7 @@ ms.locfileid: "94693158"
 | **SDL-fázis**               | Üzembe helyezés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | **Lépések** | Győződjön meg arról, hogy a bizalmas felhasználóspecifikus alkalmazás tartalma a felhasználói profil címtárában van tárolva. Ezzel megakadályozható, hogy a gép több felhasználója hozzáférjen egymáshoz.|
 
 ## <a name="ensure-that-the-deployed-applications-are-run-with-least-privileges"></a><a id="deployed-privileges"></a>Győződjön meg arról, hogy a telepített alkalmazások legalább jogosultsággal futnak
@@ -73,7 +73,7 @@ ms.locfileid: "94693158"
 | **SDL-fázis**               | Üzembe helyezés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | **Lépések** | Győződjön meg arról, hogy a telepített alkalmazás legalább egy jogosultsággal fut. |
 
 ## <a name="enforce-sequential-step-order-when-processing-business-logic-flows"></a><a id="sequential-logic"></a>Szekvenciális lépések sorrendjének érvényesítése az üzleti logika folyamatainak feldolgozásakor
@@ -84,7 +84,7 @@ ms.locfileid: "94693158"
 | **SDL-fázis**               | Létrehozás |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | **Lépések** | Annak ellenőrzéséhez, hogy ezt a szakaszt egy valódi felhasználó futtatta-e, az alkalmazás csak szekvenciális lépésekben dolgozza fel az üzleti logikát, a reális emberi idő alatt feldolgozható lépéseket, és nem végezheti el a sorrendet, a kihagyott lépéseket, a másik felhasználó által feldolgozott lépéseket, vagy túl gyorsan elküldheti a tranzakciókat.|
 
 ## <a name="implement-rate-limiting-mechanism-to-prevent-enumeration"></a><a id="rate-enumeration"></a>A ráta korlátozására szolgáló mechanizmus megvalósítása a számbavétel megakadályozásához
@@ -95,7 +95,7 @@ ms.locfileid: "94693158"
 | **SDL-fázis**               | Létrehozás |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | **Lépések** | Ügyeljen arra, hogy a bizalmas azonosítók véletlenszerűek legyenek. A CAPTCHA-vezérlő implementálása névtelen lapokon. Győződjön meg arról, hogy a hiba és a kivétel nem fedi fel az adott adathalmazt|
 
 ## <a name="ensure-that-proper-authorization-is-in-place-and-principle-of-least-privileges-is-followed"></a><a id="principle-least-privilege"></a>Győződjön meg arról, hogy a megfelelő engedélyezés van érvényben, és a legalacsonyabb jogosultsági szint elvét követik
@@ -106,7 +106,7 @@ ms.locfileid: "94693158"
 | **SDL-fázis**               | Létrehozás |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | **Lépések** | <p>Az elv azt jelenti, hogy a felhasználói fiók csak azokat a jogosultságokat adja meg, amelyek elengedhetetlenek a felhasználók működéséhez. Például egy biztonsági mentési felhasználónak nem kell szoftvert telepítenie: így a biztonsági mentési felhasználó csak a biztonsági mentési és a biztonsági mentési kapcsolódó alkalmazások futtatásához rendelkezik jogosultságokkal. A rendszer letiltja az egyéb jogosultságokat, például az új szoftverek telepítését. Az elv arra a személyes számítógép-felhasználóra is vonatkozik, aki általában normál felhasználói fiókban dolgozik, és egy privilegizált, jelszóval védett fiókot (azaz a rendszeradminisztrátort) nyit meg, és csak akkor, ha a helyzet feltétlenül igényli. </p><p>Ez az elv a webes alkalmazásokra is alkalmazható. Ahelyett, hogy a szerepköralapú hitelesítési módszerektől függően munkameneteket használ, inkább egy Database-Based hitelesítési rendszer segítségével kívánja hozzárendelni a jogosultságokat a felhasználókhoz. Továbbra is munkameneteket használunk annak megállapításához, hogy a felhasználó bejelentkezett-e, csak most, hogy a felhasználót egy adott szerepkörhöz rendeli hozzá, jogosultságokkal igazoljuk, hogy a rendszeren milyen műveleteket kell végrehajtania. Ennek a módszernek a nagy részét képezi, ha egy felhasználóhoz kevesebb jogosultságot kell rendelni, a módosításokat a rendszer menet közben alkalmazza, mivel a hozzárendelés nem függ attól, hogy a munkamenet melyik esetben járt le először.</p>|
 
 ## <a name="business-logic-and-resource-access-authorization-decisions-should-not-be-based-on-incoming-request-parameters"></a><a id="logic-request-parameters"></a>Az üzleti logika és az erőforrás-hozzáférés engedélyezési döntései nem alapulhatnak a bejövő kérelmek paramétereinek alapján
@@ -117,7 +117,7 @@ ms.locfileid: "94693158"
 | **SDL-fázis**               | Létrehozás |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | **Lépések** | Ha ellenőrzi, hogy a felhasználó korlátozott-e bizonyos adatellenőrzésre, a hozzáférési korlátozásokat kiszolgálóoldali feldolgozással kell feldolgozni. A felhasználóazonosító-t a bejelentkezési munkamenet változóján belül kell tárolni, és a felhasználói adatoknak az adatbázisból való beolvasására kell használni. |
 
 ### <a name="example"></a>Példa
@@ -136,7 +136,7 @@ A lehetséges támadók mostantól nem változtathatják meg és nem módosítha
 | **SDL-fázis**               | Létrehozás |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | **Lépések** | <p>A bizalmas statikus és konfigurációs fájlokat nem szabad a webes gyökérben tárolni. Ahhoz, hogy a tartalom ne legyen nyilvános, a megfelelő hozzáférés-vezérlést kell alkalmazni, vagy magát a tartalmat kell eltávolítani.</p><p>Az erőteljes böngészést általában a találgatásos támadásokkal kombinálva gyűjtjük össze az adatokat úgy, hogy a lehető legtöbb URL-címet próbálják elérni a kiszolgálók könyvtárainak és fájljainak enumerálásához. A támadók a gyakran létező fájlok összes változatát megvizsgálják. A fájlok keresése például a következő fájlokat tartalmazza: psswd.txt, password.htm, Password. dat és egyéb változatok.</p><p>Ennek enyhítése érdekében fel kell venni a találgatásos támadások észlelésére vonatkozó képességeket.</p>|
 
 ## <a name="ensure-that-least-privileged-accounts-are-used-to-connect-to-database-server"></a><a id="privileged-server"></a>Győződjön meg arról, hogy az adatbázis-kiszolgálóhoz való kapcsolódáshoz a legkevésbé privilegizált fiókok használhatók
@@ -147,7 +147,7 @@ A lehetséges támadók mostantól nem változtathatják meg és nem módosítha
 | **SDL-fázis**               | Létrehozás |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [SQL-engedélyek hierarchiája](/sql/relational-databases/security/permissions-hierarchy-database-engine), [SQL-biztonságos elemek migrálására](/sql/relational-databases/security/securables) |
+| **Hivatkozások**              | [SQL-engedélyek hierarchiája](/sql/relational-databases/security/permissions-hierarchy-database-engine), [SQL-biztonságos elemek migrálására](/sql/relational-databases/security/securables) |
 | **Lépések** | Az adatbázishoz való kapcsolódáshoz a legkevésbé Kiemelt jogosultságú fiókokat kell használni. Az alkalmazás bejelentkezését korlátozni kell az adatbázisban, és csak a kiválasztott tárolt eljárásokat kell végrehajtania. Az alkalmazás bejelentkezésének nincs közvetlen táblához való hozzáférése. |
 
 ## <a name="implement-row-level-security-rls-to-prevent-tenants-from-accessing-each-others-data"></a><a id="rls-tenants"></a>A sor szintű biztonsági RLS megvalósítása annak megakadályozása érdekében, hogy a bérlők hozzáférjenek egymás adatokhoz
@@ -158,7 +158,7 @@ A lehetséges támadók mostantól nem változtathatják meg és nem módosítha
 | **SDL-fázis**               | Létrehozás |  
 | **Alkalmazható technológiák** | SQL Azure, helyszíni |
 | **Attribútumok**              | SQL-verzió – V12, SQL-verzió – MsSQL2016 |
-| **Referencia**              | [SQL Server Row-Level biztonság (RLS)](/sql/relational-databases/security/row-level-security) |
+| **Hivatkozások**              | [SQL Server Row-Level biztonság (RLS)](/sql/relational-databases/security/row-level-security) |
 | **Lépések** | <p>A sorszintű biztonság lehetővé teszi az ügyfelek számára, hogy szabályozzák egy adatbázistábla soraihoz való hozzáférést a lekérdezést végrehajtó felhasználó jellemzői alapján (például csoporttagság vagy végrehajtási környezet).</p><p>A Row-Level biztonság (RLS) leegyszerűsíti az alkalmazás biztonságának megtervezését és kódolását. Az RLS használatával korlátozásokat érvényesíthet az adatsorokhoz való hozzáférésre. Biztosítható például, hogy a munkavállalók csak a szervezeti egységükre vonatkozó adatsorokhoz férjenek hozzá, vagy egy ügyfél adathozzáférése korlátozható a vállalatával kapcsolatos adatokra.</p><p>A hozzáférés-korlátozási logika az adatbázis-szinten található, nem pedig egy másik alkalmazási szinten lévő adatoktól. Az adatbázisrendszer minden alkalommal alkalmazza a hozzáférési korlátozásokat, amikor az adathozzáférés bármely szintről megkísérelhető. Így a biztonsági rendszerek megbízhatóbbak és robusztusak a biztonsági rendszerek felületének csökkentésével.</p><p>|
 
 Vegye figyelembe, hogy az RLS mint beépített adatbázis-szolgáltatás csak a 2016-es, a Azure SQL Database-es és SQL Server az SQL-alapú felügyelt példányok elindítására vonatkozik. Ha a beépített RLS funkció nincs implementálva, gondoskodni kell arról, hogy az adathozzáférés korlátozott legyen a nézetek és eljárások használatával
@@ -171,7 +171,7 @@ Vegye figyelembe, hogy az RLS mint beépített adatbázis-szolgáltatás csak a 
 | **SDL-fázis**               | Létrehozás |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [SQL-engedélyek hierarchiája](/sql/relational-databases/security/permissions-hierarchy-database-engine), [SQL-biztonságos elemek migrálására](/sql/relational-databases/security/securables) |
+| **Hivatkozások**              | [SQL-engedélyek hierarchiája](/sql/relational-databases/security/permissions-hierarchy-database-engine), [SQL-biztonságos elemek migrálására](/sql/relational-databases/security/securables) |
 | **Lépések** | A SysAdmin (rendszergazda) rögzített kiszolgálói szerepkör tagjainak nagyon korlátozottnak kell lenniük, és soha nem tartalmazhatják az alkalmazások által használt fiókokat.  Tekintse át a szerepkörbe tartozó felhasználók listáját, és távolítsa el a szükségtelen fiókokat|
 
 ## <a name="connect-to-cloud-gateway-using-least-privileged-tokens"></a><a id="cloud-least-privileged"></a>Kapcsolódás a Cloud Gatewayhez a legkevésbé privilegizált jogkivonatok használatával
@@ -182,7 +182,7 @@ Vegye figyelembe, hogy az RLS mint beépített adatbázis-szolgáltatás csak a 
 | **SDL-fázis**               | Üzembe helyezés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | Átjáró választása – Azure IoT Hub |
-| **Referencia**              | [IOT hub Access Control](../../iot-hub/iot-hub-devguide.md) |
+| **Hivatkozások**              | [IOT hub Access Control](../../iot-hub/iot-hub-devguide.md) |
 | **Lépések** | Adja meg a legalacsonyabb jogosultsági szintű engedélyeket a felhőalapú átjáróhoz (IoT Hub) csatlakozó különböző összetevőkhöz. Tipikus példa: az eszközök kezelése/kiépítési összetevő registryread/írást használ, az Event Processor (ASA) pedig a szolgáltatás-csatlakoztatást használja. Egyedi eszközök csatlakoztatása az eszköz hitelesítő adataival|
 
 ## <a name="use-a-send-only-permissions-sas-key-for-generating-device-tokens"></a><a id="sendonly-sas"></a>Az eszközök jogkivonatának létrehozásához használjon csak küldési engedélyek SAS-kulcsát
@@ -193,7 +193,7 @@ Vegye figyelembe, hogy az RLS mint beépített adatbázis-szolgáltatás csak a 
 | **SDL-fázis**               | Létrehozás |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [Event Hubs hitelesítési és biztonsági modell áttekintése](../../event-hubs/authenticate-shared-access-signature.md) |
+| **Hivatkozások**              | [Event Hubs hitelesítési és biztonsági modell áttekintése](../../event-hubs/authenticate-shared-access-signature.md) |
 | **Lépések** | A rendszer egy SAS-kulcsot használ az egyes eszközök jogkivonatok létrehozásához. Csak küldési engedélyekkel rendelkező SAS-kulcs használata az adott közzétevőhöz tartozó eszköz jogkivonatának létrehozásakor|
 
 ## <a name="do-not-use-access-tokens-that-provide-direct-access-to-the-event-hub"></a><a id="access-tokens-hub"></a>Ne használjon olyan hozzáférési jogkivonatokat, amelyek közvetlen hozzáférést biztosítanak az Event hub-hoz
@@ -204,7 +204,7 @@ Vegye figyelembe, hogy az RLS mint beépített adatbázis-szolgáltatás csak a 
 | **SDL-fázis**               | Létrehozás |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [Event Hubs hitelesítési és biztonsági modell áttekintése](../../event-hubs/authenticate-shared-access-signature.md) |
+| **Hivatkozások**              | [Event Hubs hitelesítési és biztonsági modell áttekintése](../../event-hubs/authenticate-shared-access-signature.md) |
 | **Lépések** | Az Event hub közvetlen hozzáférését biztosító jogkivonatot nem szabad megadni az eszköz számára. Ha egy olyan eszközhöz, amely csak a közzétevő számára biztosít hozzáférést, akkor a legkevésbé privilegizált token használatával azonosítható és nem engedélyezhető, ha a támadó vagy sérült eszköznek bizonyult.|
 
 ## <a name="connect-to-event-hub-using-sas-keys-that-have-the-minimum-permissions-required"></a><a id="sas-minimum-permissions"></a>Kapcsolódás az Event hubhoz a minimálisan szükséges engedélyekkel rendelkező SAS-kulcsok használatával
@@ -215,7 +215,7 @@ Vegye figyelembe, hogy az RLS mint beépített adatbázis-szolgáltatás csak a 
 | **SDL-fázis**               | Létrehozás |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [Event Hubs hitelesítési és biztonsági modell áttekintése](../../event-hubs/authenticate-shared-access-signature.md) |
+| **Hivatkozások**              | [Event Hubs hitelesítési és biztonsági modell áttekintése](../../event-hubs/authenticate-shared-access-signature.md) |
 | **Lépések** | Adja meg a legalacsonyabb jogosultsági szintű engedélyeket az Event hub-hoz csatlakozó különböző háttérbeli alkalmazásokhoz. Külön SAS-kulcsok generálása minden háttérbeli alkalmazáshoz, és csak a szükséges engedélyek megadása – küldés, fogadás vagy kezelés.|
 
 ## <a name="use-resource-tokens-to-connect-to-cosmos-db-whenever-possible"></a><a id="resource-docdb"></a>Erőforrás-tokenek használata a Cosmos DBhoz való kapcsolódáshoz, amikor lehetséges
@@ -226,7 +226,7 @@ Vegye figyelembe, hogy az RLS mint beépített adatbázis-szolgáltatás csak a 
 | **SDL-fázis**               | Létrehozás |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | **Lépések** | Az erőforrás-token egy Azure Cosmos DB engedélyezési erőforráshoz van társítva, és rögzíti az adatbázis felhasználója és a felhasználó által adott Azure Cosmos DB alkalmazás-erőforráshoz (például gyűjtemény, dokumentum) való kapcsolatot. Mindig használjon erőforrás-jogkivonatot a Azure Cosmos DB eléréséhez, ha az ügyfél nem lehet megbízható a Master vagy a csak olvasható kulcsok használatával – például egy olyan végfelhasználói alkalmazáshoz, mint például a mobil-vagy asztali ügyfél. Használjon főkulcsot vagy csak olvasható kulcsokat a háttérbeli alkalmazásokból, amelyek biztonságos módon tárolhatják ezeket a kulcsokat.|
 
 ## <a name="enable-fine-grained-access-management-to-azure-subscription-using-azure-rbac"></a><a id="grained-rbac"></a>Részletes hozzáférés-kezelés engedélyezése az Azure-előfizetéshez az Azure RBAC
@@ -237,7 +237,7 @@ Vegye figyelembe, hogy az RLS mint beépített adatbázis-szolgáltatás csak a 
 | **SDL-fázis**               | Létrehozás |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure-előfizetések erőforrásaihoz való hozzáférés kezeléséhez](../../role-based-access-control/role-assignments-portal.md)  |
+| **Hivatkozások**              | [Azure-szerepkörök kiosztása az Azure-előfizetések erőforrásaihoz való hozzáférés kezeléséhez](../../role-based-access-control/role-assignments-portal.md)  |
 | **Lépések** | Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) lehetővé teszi a részletes hozzáférés-kezelést az Azure-hoz. Az Azure RBAC használatával csak a felhasználók által a feladataik elvégzéséhez szükséges hozzáférés mennyiségét adhatja meg.|
 
 ## <a name="restrict-clients-access-to-cluster-operations-using-service-fabric-rbac"></a><a id="cluster-rbac"></a>Az ügyfél Service Fabric RBAC való hozzáférésének korlátozása a fürt műveleteihez
@@ -248,7 +248,7 @@ Vegye figyelembe, hogy az RLS mint beépített adatbázis-szolgáltatás csak a 
 | **SDL-fázis**               | Üzembe helyezés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | Környezet – Azure |
-| **Referencia**              | [Service Fabric szerepköralapú hozzáférés-vezérlés Service Fabric-ügyfelek számára](../../service-fabric/service-fabric-cluster-security-roles.md) |
+| **Hivatkozások**              | [Service Fabric szerepköralapú hozzáférés-vezérlés Service Fabric-ügyfelek számára](../../service-fabric/service-fabric-cluster-security-roles.md) |
 | **Lépések** | <p>Az Azure Service Fabric két különböző hozzáférés-vezérlési típust támogat a Service Fabric-fürthöz csatlakozó ügyfelekhez: rendszergazda és felhasználó. A hozzáférés-vezérlés lehetővé teszi, hogy a fürt rendszergazdája a különböző felhasználói csoportok esetében korlátozza a hozzáférést bizonyos fürt műveleteihez, így a fürt biztonságosabbá válik.</p><p>A rendszergazdák teljes hozzáféréssel rendelkeznek a felügyeleti képességekhez (beleértve az írási/olvasási képességeket is). A felhasználók alapértelmezés szerint csak olvasási jogosultságot biztosítanak a felügyeleti képességekhez (például a lekérdezési képességekhez), valamint az alkalmazások és szolgáltatások feloldásának lehetőségét.</p><p>A fürt létrehozásakor a két ügyfél-szerepkört (rendszergazdát és ügyfelet) kell megadnia, ha külön tanúsítványokat biztosít mindegyikhez.</p>|
 
 ## <a name="perform-security-modeling-and-use-field-level-security-where-required"></a><a id="modeling-field"></a>Biztonsági modellezés végrehajtása és a mező szintű biztonság használata, ha szükséges
@@ -259,7 +259,7 @@ Vegye figyelembe, hogy az RLS mint beépített adatbázis-szolgáltatás csak a 
 | **SDL-fázis**               | Létrehozás |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | **Lépések** | Biztonsági modellezés végrehajtása és a mező szintű biztonság használata, ha szükséges|
 
 ## <a name="perform-security-modeling-of-portal-accounts-keeping-in-mind-that-the-security-model-for-the-portal-differs-from-the-rest-of-crm"></a><a id="portal-security"></a>A portál-fiókok biztonsági modellezésének elvégzése szem előtt tartva, hogy a portál biztonsági modellje különbözik a többi CRM-től
@@ -270,7 +270,7 @@ Vegye figyelembe, hogy az RLS mint beépített adatbázis-szolgáltatás csak a 
 | **SDL-fázis**               | Létrehozás |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | **Lépések** | A portál-fiókok biztonsági modellezésének elvégzése szem előtt tartva, hogy a portál biztonsági modellje különbözik a többi CRM-től|
 
 ## <a name="grant-fine-grained-permission-on-a-range-of-entities-in-azure-table-storage"></a><a id="permission-entities"></a>Részletes engedélyek megadása az Azure-beli entitások egy tartományában Table Storage
@@ -281,7 +281,7 @@ Vegye figyelembe, hogy az RLS mint beépített adatbázis-szolgáltatás csak a 
 | **SDL-fázis**               | Létrehozás |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | StorageType – tábla |
-| **Referencia**              | [Az Azure Storage-fiókban lévő objektumokhoz való hozzáférés delegálása SAS használatával](../../storage/blobs/security-recommendations.md#identity-and-access-management) |
+| **Hivatkozások**              | [Az Azure Storage-fiókban lévő objektumokhoz való hozzáférés delegálása SAS használatával](../../storage/blobs/security-recommendations.md#identity-and-access-management) |
 | **Lépések** | Bizonyos üzleti forgatókönyvekben előfordulhat, hogy az Azure Table Storage a különböző felek számára kiszolgált bizalmas adatok tárolására is szükség lehet. Ilyenek például a különböző országokhoz/régiókhoz tartozó bizalmas adatok. Ilyen esetekben a SAS-aláírások a partíció és a sor kulcsainak megadásával állíthatók össze, így a felhasználók hozzáférhetnek egy adott országhoz/régióhoz tartozó adatokhoz.| 
 
 ## <a name="enable-azure-role-based-access-control-azure-rbac-to-azure-storage-account-using-azure-resource-manager"></a><a id="rbac-azure-manager"></a>Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) engedélyezése az Azure Storage-fiókhoz Azure Resource Manager használatával
@@ -292,7 +292,7 @@ Vegye figyelembe, hogy az RLS mint beépített adatbázis-szolgáltatás csak a 
 | **SDL-fázis**               | Létrehozás |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [A Storage-fiók biztonságossá tétele az Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC)](../../storage/blobs/security-recommendations.md) |
+| **Hivatkozások**              | [A Storage-fiók biztonságossá tétele az Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC)](../../storage/blobs/security-recommendations.md) |
 | **Lépések** | <p>Új Storage-fiók létrehozásakor ki kell választania a klasszikus vagy Azure Resource Manager telepítési modellt. Az Azure-beli erőforrások létrehozásának klasszikus modellje csak az előfizetéshez való teljes vagy semmis hozzáférést teszi lehetővé, viszont a Storage-fiókot.</p><p>A Azure Resource Manager modellel a Storage-fiókot egy erőforráscsoporthoz helyezheti el, és a Azure Active Directory használatával szabályozhatja az adott Storage-fiók felügyeleti síkjával való hozzáférést. Megadhatja például, hogy bizonyos felhasználók hozzáférjenek a Storage-fiók kulcsaihoz, míg más felhasználók megtekinthetik a Storage-fiók adatait, de nem férhetnek hozzá a Storage-fiók kulcsaihoz.</p>|
 
 ## <a name="implement-implicit-jailbreak-or-rooting-detection"></a><a id="rooting-detection"></a>Implicit jailbreak vagy gyökeresedési észlelés megvalósítása
@@ -303,7 +303,7 @@ Vegye figyelembe, hogy az RLS mint beépített adatbázis-szolgáltatás csak a 
 | **SDL-fázis**               | Létrehozás |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | **Lépések** | <p>Az alkalmazásnak meg kell őriznie a saját konfigurációját és a felhasználói adatvédelmet abban az esetben, ha a telefon gyökeres vagy a jail sérült. A gyökeresedés vagy a jail Breaking a jogosulatlan hozzáférést vonja maga után, amelyet a normál felhasználók nem tesznek elérhetővé a saját telefonoknál. Az alkalmazás indításakor az alkalmazásnak implicit észlelési logikával kell rendelkeznie annak észleléséhez, hogy a telefon feltört-e.</p><p>Az észlelési logika egyszerűen elérheti azokat a fájlokat, amelyek általában csak a legfelső szintű felhasználók férhetnek hozzá, például a következő módon:</p><ul><li>/system/app/Superuser.apk</li><li>/sbin/su</li><li>/system/bin/su</li><li>/system/xbin/su</li><li>/data/local/xbin/su</li><li>/data/local/bin/su</li><li>/system/sd/xbin/su</li><li>/system/bin/failsafe/su</li><li>/data/local/su</li></ul><p>Ha az alkalmazás hozzáférhet bármelyik fájlhoz, az azt jelzi, hogy az alkalmazás root felhasználóként fut.</p>|
 
 ## <a name="weak-class-reference-in-wcf"></a><a id="weak-class-wcf"></a>Gyenge osztály-hivatkozás a WCF-ben
@@ -314,7 +314,7 @@ Vegye figyelembe, hogy az RLS mint beépített adatbázis-szolgáltatás csak a 
 | **SDL-fázis**               | Létrehozás |  
 | **Alkalmazható technológiák** | Általános, NET-keretrendszer 3 |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10)), [megerősítő Királyság](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
+| **Hivatkozások**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10)), [megerősítő Királyság](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
 | **Lépések** | <p>A rendszer gyenge osztályú referenciát használ, ami lehetővé teheti, hogy egy támadó jogosulatlan kódot hajtson végre. A program olyan felhasználó által definiált osztályra hivatkozik, amely nem egyedi módon van azonosítva. Ha a .NET betölti ezt a gyengén azonosított osztályt, a CLR-beli típus a megadott sorrendben a következő helyeken keresi a osztályt:</p><ol><li>Ha a típus szerelvénye ismert, a betöltő a konfigurációs fájl átirányítási helyein, a GAC-ban, a jelenlegi szerelvényben a konfigurációs adatokat és az alkalmazás alapkönyvtárát keresi.</li><li>Ha a szerelvény ismeretlen, a betöltő megkeresi az aktuális szerelvényt, a mscorlib és a TypeResolve-eseménykezelő által visszaadott helyet.</li><li>Ez a CLR-beli keresési sorrend módosítható a hookokkal, például a típus továbbítási mechanizmusával és a alkalmazástartomány. TypeResolve eseménysel.</li></ol><p>Ha egy támadó kihasználja a CLR keresési sorrendjét úgy, hogy létrehoz egy azonos nevű alternatív osztályt, és azt egy másik helyen helyezi el, amelyet a CLR betölt, akkor a CLR véletlenül nem fogja végrehajtani a támadó által megadott kódot.</p>|
 
 ### <a name="example"></a>Példa
@@ -351,7 +351,7 @@ Az `<behaviorExtensions/>` alábbi WCF konfigurációs fájl eleme arra utasítj
 | **SDL-fázis**               | Létrehozás |  
 | **Alkalmazható technológiák** | Általános, NET-keretrendszer 3 |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10)), [megerősítő Királyság](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
+| **Hivatkozások**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10)), [megerősítő Királyság](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
 | **Lépések** | <p>Ez a szolgáltatás nem használ engedélyezési vezérlőt. Amikor egy ügyfél egy adott WCF szolgáltatást hív meg, a WCF különböző engedélyezési sémákat biztosít, amelyek azt ellenőrzik, hogy a hívó jogosult-e a szolgáltatási módszer végrehajtására a kiszolgálón. Ha az engedélyezési vezérlők nincsenek engedélyezve a WCF-szolgáltatásokhoz, a hitelesített felhasználó elérheti a jogosultságok eszkalációját.</p>|
 
 ### <a name="example"></a>Példa
@@ -399,7 +399,7 @@ return result;
 | **SDL-fázis**               | Létrehozás |  
 | **Alkalmazható technológiák** | Általános, MVC5 |
 | **Attribútumok**              | N/A, identitás-szolgáltató – ADFS, identitás-szolgáltató – Azure AD |
-| **Referencia**              | [Hitelesítés és engedélyezés a ASP.NET web API-ban](https://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api) |
+| **Hivatkozások**              | [Hitelesítés és engedélyezés a ASP.NET web API-ban](https://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api) |
 | **Lépések** | <p>Az alkalmazás felhasználói szerepkör-információi az Azure AD-ből vagy ADFS-jogcímekből származhatnak, ha az alkalmazás identitás-szolgáltatóként hivatkozik rájuk, vagy maga az alkalmazás is megadhatja azt. Ezekben az esetekben az egyéni engedélyezési implementációnak ellenőriznie kell a felhasználói szerepkör információit.</p><p>Az alkalmazás felhasználói szerepkör-információi az Azure AD-ből vagy ADFS-jogcímekből származhatnak, ha az alkalmazás identitás-szolgáltatóként hivatkozik rájuk, vagy maga az alkalmazás is megadhatja azt. Ezekben az esetekben az egyéni engedélyezési implementációnak ellenőriznie kell a felhasználói szerepkör információit.</p>
 
 ### <a name="example"></a>Példa
@@ -450,7 +450,7 @@ public class CustomController : ApiController
 | **SDL-fázis**               | Létrehozás |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | **Lépések** | <p>Az eszköznek engedélyeznie kell a hívót annak ellenőrzéséhez, hogy a hívó rendelkezik-e a kért művelet végrehajtásához szükséges engedélyekkel. Például tegyük fel, hogy az eszköz egy olyan intelligens ajtózár, amely a felhőből figyelhető, valamint olyan funkciókat biztosít, mint például az ajtó távoli zárolása.</p><p>Az intelligens ajtó zárolása csak akkor teszi lehetővé a funkció zárolását, ha valaki fizikailag az ajtó közelében van egy kártyával. Ebben az esetben a távoli parancs és a vezérlő megvalósítását úgy kell végrehajtani, hogy az ne biztosítson semmilyen funkciót az ajtó zárolásának feloldásához, mert a Felhőbeli átjáró nem rendelkezik jogosultsággal az ajtó feloldására szolgáló parancs küldésére.</p>|
 
 ## <a name="perform-authorization-checks-in-the-field-gateway-if-it-supports-various-actions-that-require-different-permission-levels"></a><a id="field-permission"></a>Ha olyan műveleteket támogat, amelyek különböző jogosultsági szinteket igényelnek, hajtsa végre az engedélyezési ellenőrzéseket a helyszíni átjárón.
@@ -461,5 +461,5 @@ public class CustomController : ApiController
 | **SDL-fázis**               | Létrehozás |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | **Lépések** | A helyszíni átjárónak engedélyeznie kell a hívónak, hogy ellenőrizze, hogy a hívó rendelkezik-e a kért művelet végrehajtásához szükséges engedélyekkel. Ilyen például, ha egy rendszergazdai felhasználói felület/API számára eltérő engedélyekkel kell rendelkeznie ahhoz, hogy az átjáróhoz csatlakozó v/s eszközöket konfigurálja.|

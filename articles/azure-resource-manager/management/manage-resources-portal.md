@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: e2274a551542b06996941b49e7d047baf3e8b3ca
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 12d704b0a3d92aa0585fb120f969000def282396
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92894032"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092200"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>Azure-erőforrások kezelése a Azure Portal használatával
 
@@ -34,7 +34,7 @@ Az Azure-erőforrások az Azure-szolgáltatások és az erőforráscsoportok sze
 Erőforrás megnyitása a szolgáltatás típusa szerint:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A bal oldali ablaktáblán válassza ki az Azure-szolgáltatást. Ebben az esetben a **Storage-fiókok** .  Ha nem látja a felsorolt szolgáltatást, válassza a **minden szolgáltatás** lehetőséget, majd válassza ki a szolgáltatás típusát.
+2. A bal oldali ablaktáblán válassza ki az Azure-szolgáltatást. Ebben az esetben a **Storage-fiókok**.  Ha nem látja a felsorolt szolgáltatást, válassza a **minden szolgáltatás** lehetőséget, majd válassza ki a szolgáltatás típusát.
 
     ![Az Azure-erőforrás megnyitása a portálon](./media/manage-resources-portal/manage-azure-resources-portal-open-service.png)
 
@@ -114,7 +114,7 @@ A diagram jobb felső sarkában található rögzítés ikont választva rögzí
 
 ## <a name="manage-access-to-resources"></a>Erőforrásokhoz való hozzáférés kezelése
 
-Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md) segítségével kezelheti az Azure-beli erőforrásokhoz való hozzáférést. További információ: [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
+Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md) segítségével kezelheti az Azure-beli erőforrásokhoz való hozzáférést. További információ: Azure- [szerepkörök kiosztása a Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

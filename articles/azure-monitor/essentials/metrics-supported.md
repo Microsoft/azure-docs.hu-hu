@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/06/2021
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 51cd3bf3349e1880d4dc9f5d98d2d9b5dc5bb228
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3f9ec395e8ccf6d5162717b2e38b0650ccc84812
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100616678"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091805"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Támogatott metrikák Azure Monitor
 
@@ -154,21 +154,21 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 
 |Metric|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|---|
-|aktív – időzítő – darabszám|Yes|System. Runtime|aktív – időzítő – darabszám|Darabszám|Átlag|Jelenleg aktív Időzítők száma|Üzembe helyezés, AppName, Pod|
-|foglalási – arány|Yes|System. Runtime|foglalási – arány|Bájt|Átlag|A felügyelt halomban lefoglalt bájtok száma|Üzembe helyezés, AppName, Pod|
+|aktív – időzítő – darabszám|Yes|aktív – időzítő – darabszám|Darabszám|Átlag|Jelenleg aktív Időzítők száma|Üzembe helyezés, AppName, Pod|
+|foglalási – arány|Yes|foglalási – arány|Bájt|Átlag|A felügyelt halomban lefoglalt bájtok száma|Üzembe helyezés, AppName, Pod|
 |AppCpuUsage|Yes|Alkalmazás CPU-használata (előzetes verzió)|Százalék|Átlag|Az alkalmazás legutóbbi CPU-használata|Üzembe helyezés, AppName, Pod|
-|szerelvény – darabszám|Yes|System. Runtime|szerelvény – darabszám|Darabszám|Átlag|Betöltött szerelvények száma|Üzembe helyezés, AppName, Pod|
-|CPU – használat|Yes|System. Runtime|CPU – használat|Százalék|Átlag|a folyamat%-os kihasználtsága (%)|Üzembe helyezés, AppName, Pod|
-|aktuális – kérelmek|Yes|Microsoft. AspNetCore. hosting|aktuális – kérelmek|Darabszám|Átlag|A folyamat teljes élettartamában folyamatban lévő kérelmek száma összesen|Üzembe helyezés, AppName, Pod|
-|kivételek száma|Yes|System. Runtime|kivételek száma|Darabszám|Összesen|Kivételek száma|Üzembe helyezés, AppName, Pod|
-|Sikertelen – kérelmek|Yes|Microsoft. AspNetCore. hosting|Sikertelen – kérelmek|Darabszám|Átlag|A sikertelen kérelmek teljes száma a folyamat élettartamában|Üzembe helyezés, AppName, Pod|
-|GC-heap-size|Yes|System. Runtime|GC-heap-size|Darabszám|Átlag|A GC által jelentett teljes halom mérete (MB)|Üzembe helyezés, AppName, Pod|
-|Gen-0-GC-darabszám|Yes|System. Runtime|Gen-0-GC-darabszám|Darabszám|Átlag|0. generációs GCs száma|Üzembe helyezés, AppName, Pod|
-|Gen-0 – méret|Yes|System. Runtime|Gen-0 – méret|Bájt|Átlag|0. generációs halom mérete|Üzembe helyezés, AppName, Pod|
-|Gen-1 – GC-darabszám|Yes|System. Runtime|Gen-1 – GC-darabszám|Darabszám|Átlag|System. Runtime|1. generációs GCs száma|Üzembe helyezés, AppName, Pod|
-|1. generációs méret|Yes|System. Runtime|1. generációs méret|Bájt|Átlag|1. generációs halom mérete|Üzembe helyezés, AppName, Pod|
-|Gen-2 – GC – darabszám|Yes|System. Runtime|Gen-2 – GC – darabszám|Darabszám|Átlag|A 2. generációs GCs száma|Üzembe helyezés, AppName, Pod|
-|2. generációs méret|Yes|System. Runtime|2. generációs méret|Bájt|Átlag|2. generációs halom mérete|Üzembe helyezés, AppName, Pod|
+|szerelvény – darabszám|Yes|szerelvény – darabszám|Darabszám|Átlag|Betöltött szerelvények száma|Üzembe helyezés, AppName, Pod|
+|CPU – használat|Yes|CPU – használat|Százalék|Átlag|a folyamat%-os kihasználtsága (%)|Üzembe helyezés, AppName, Pod|
+|aktuális – kérelmek|Yes|aktuális – kérelmek|Darabszám|Átlag|A folyamat teljes élettartamában folyamatban lévő kérelmek száma összesen|Üzembe helyezés, AppName, Pod|
+|kivételek száma|Yes|kivételek száma|Darabszám|Összesen|Kivételek száma|Üzembe helyezés, AppName, Pod|
+|Sikertelen – kérelmek|Yes|Sikertelen – kérelmek|Darabszám|Átlag|A sikertelen kérelmek teljes száma a folyamat élettartamában|Üzembe helyezés, AppName, Pod|
+|GC-heap-size|Yes|GC-heap-size|Darabszám|Átlag|A GC által jelentett teljes halom mérete (MB)|Üzembe helyezés, AppName, Pod|
+|Gen-0-GC-darabszám|Yes|Gen-0-GC-darabszám|Darabszám|Átlag|0. generációs GCs száma|Üzembe helyezés, AppName, Pod|
+|Gen-0 – méret|Yes|Gen-0 – méret|Bájt|Átlag|0. generációs halom mérete|Üzembe helyezés, AppName, Pod|
+|Gen-1 – GC-darabszám|Yes|Gen-1 – GC-darabszám|Darabszám|Átlag|1. generációs GCs száma|Üzembe helyezés, AppName, Pod|
+|1. generációs méret|Yes|1. generációs méret|Bájt|Átlag|1. generációs halom mérete|Üzembe helyezés, AppName, Pod|
+|Gen-2 – GC – darabszám|Yes|Gen-2 – GC – darabszám|Darabszám|Átlag|A 2. generációs GCs száma|Üzembe helyezés, AppName, Pod|
+|2. generációs méret|Yes|2. generációs méret|Bájt|Átlag|2. generációs halom mérete|Üzembe helyezés, AppName, Pod|
 |JVM. GC. Live. Resize|Yes|JVM. GC. Live. Resize|Bájt|Átlag|Régi generációs memória-készlet mérete teljes GC után|Üzembe helyezés, AppName, Pod|
 |JVM. GC. max. az adatméret|Yes|JVM. GC. max. az adatméret|Bájt|Átlag|A régi generációs memória maximális mérete|Üzembe helyezés, AppName, Pod|
 |JVM. GC. Memory. lefoglalt|Yes|JVM. GC. Memory. lefoglalt|Bájt|Maximum|Növekszik a fiatal generációs memória-készlet méretének növekedésével, miután egy GC a következőre kerül|Üzembe helyezés, AppName, Pod|
@@ -178,15 +178,15 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 |JVM. Memory. véglegesített|Yes|JVM. Memory. véglegesített|Bájt|Átlag|JVM rendelt memória bájtban|Üzembe helyezés, AppName, Pod|
 |JVM. Memory. max|Yes|JVM. Memory. max|Bájt|Maximum|A memória-kezeléshez használható memória maximális mennyisége bájtban|Üzembe helyezés, AppName, Pod|
 |JVM. Memory. felhasználva|Yes|JVM. Memory. felhasználva|Bájt|Átlag|Az alkalmazás memóriája bájtban használatban|Üzembe helyezés, AppName, Pod|
-|Kissné méret|Yes|System. Runtime|Kissné méret|Bájt|Átlag|Halmozott halom mérete|Üzembe helyezés, AppName, Pod|
-|figyelő – zárolási tartalom – darabszám|Yes|System. Runtime|figyelő – zárolási tartalom – darabszám|Darabszám|Átlag|A figyelő zárolásának megkísérlése során megjelenő időpontok száma|Üzembe helyezés, AppName, Pod|
+|Kissné méret|Yes|Kissné méret|Bájt|Átlag|Halmozott halom mérete|Üzembe helyezés, AppName, Pod|
+|figyelő – zárolási tartalom – darabszám|Yes|figyelő – zárolási tartalom – darabszám|Darabszám|Átlag|A figyelő zárolásának megkísérlése során megjelenő időpontok száma|Üzembe helyezés, AppName, Pod|
 |Process. CPU. használat|Yes|Process. CPU. használat|Százalék|Átlag|A JVM folyamat legutóbbi CPU-használata|Üzembe helyezés, AppName, Pod|
-|kérelmek/másodperc|Yes|Microsoft. AspNetCore. hosting|kérelmek – arány|Darabszám|Átlag|Kérelmek gyakorisága|Üzembe helyezés, AppName, Pod|
+|kérelmek/másodperc|Yes|kérelmek – arány|Darabszám|Átlag|Kérelmek gyakorisága|Üzembe helyezés, AppName, Pod|
 |System. CPU. használat|Yes|System. CPU. használat|Százalék|Átlag|A legújabb CPU-használat a teljes rendszerhez|Üzembe helyezés, AppName, Pod|
-|szálkészlet munkaszála belépett – befejezett elemek – darabszám|Yes|System. Runtime|szálkészlet munkaszála belépett – befejezett elemek – darabszám|Darabszám|Átlag|A szálkészlet munkaszála belépett befejezte a munkaelemek darabszámát|Üzembe helyezés, AppName, Pod|
-|szálkészlet munkaszála belépett – várólista hossza|Yes|System. Runtime|szálkészlet munkaszála belépett – várólista hossza|Darabszám|Átlag|Szálkészlet munkaszála belépett munkaelemek várólistájának hossza|Üzembe helyezés, AppName, Pod|
-|szálkészlet munkaszála belépett – szálak száma|Yes|System. Runtime|szálkészlet munkaszála belépett – szálak száma|Darabszám|Átlag|Szálkészlet munkaszála belépett-szálak száma|Üzembe helyezés, AppName, Pod|
-|idő – GC|Yes|System. Runtime|idő – GC|Százalék|Átlag|%-os idő a GC-ben az utolsó GC óta|Üzembe helyezés, AppName, Pod|
+|szálkészlet munkaszála belépett – befejezett elemek – darabszám|Yes|szálkészlet munkaszála belépett – befejezett elemek – darabszám|Darabszám|Átlag|A szálkészlet munkaszála belépett befejezte a munkaelemek darabszámát|Üzembe helyezés, AppName, Pod|
+|szálkészlet munkaszála belépett – várólista hossza|Yes|szálkészlet munkaszála belépett – várólista hossza|Darabszám|Átlag|Szálkészlet munkaszála belépett munkaelemek várólistájának hossza|Üzembe helyezés, AppName, Pod|
+|szálkészlet munkaszála belépett – szálak száma|Yes|szálkészlet munkaszála belépett – szálak száma|Darabszám|Átlag|Szálkészlet munkaszála belépett-szálak száma|Üzembe helyezés, AppName, Pod|
+|idő – GC|Yes|idő – GC|Százalék|Átlag|%-os idő a GC-ben az utolsó GC óta|Üzembe helyezés, AppName, Pod|
 |tomcat. Global. error|Yes|tomcat. Global. error|Darabszám|Összesen|Tomcat globális hiba|Üzembe helyezés, AppName, Pod|
 |tomcat. Global. Received|Yes|tomcat. Global. Received|Bájt|Összesen|Tomcat összesen fogadott bájtok|Üzembe helyezés, AppName, Pod|
 |tomcat. Global. Request. AVG. Time|Yes|tomcat. Global. Request. AVG. Time|Ezredmásodpercben|Átlag|Tomcat-kérelem átlagos ideje|Üzembe helyezés, AppName, Pod|
@@ -202,8 +202,8 @@ További információ: [monitoring Agents – áttekintés](../agents/agents-ove
 |tomcat. Sessions. elutasítva|Yes|tomcat. Sessions. elutasítva|Darabszám|Összesen|A Tomcat-munkamenet elutasította a darabszámot|Üzembe helyezés, AppName, Pod|
 |tomcat.threads.config. max|Yes|tomcat.threads.config. max|Darabszám|Összesen|Tomcat-konfiguráció maximális szálának száma|Üzembe helyezés, AppName, Pod|
 |tomcat. Threads. Current|Yes|tomcat. Threads. Current|Darabszám|Összesen|Tomcat jelenlegi szálak száma|Üzembe helyezés, AppName, Pod|
-|kérelmek összesen|Yes|Microsoft. AspNetCore. hosting|kérelmek összesen|Darabszám|Átlag|A folyamat élettartamán belüli kérelmek teljes száma|Üzembe helyezés, AppName, Pod|
-|munkakészlet|Yes|System. Runtime|munkakészlet|Darabszám|Átlag|A folyamat által használt munkakészlet mennyisége (MB)|Üzembe helyezés, AppName, Pod|
+|kérelmek összesen|Yes|kérelmek összesen|Darabszám|Átlag|A folyamat élettartamán belüli kérelmek teljes száma|Üzembe helyezés, AppName, Pod|
+|munkakészlet|Yes|munkakészlet|Darabszám|Átlag|A folyamat által használt munkakészlet mennyisége (MB)|Üzembe helyezés, AppName, Pod|
 
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft. Automation/automationAccounts

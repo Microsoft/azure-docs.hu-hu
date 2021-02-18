@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b589f98ee78d0709b2a74ba4e364cec0e486e968
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: d129890cc63e5a0e4cbc6139e1de2df7a31f6f77
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547162"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094560"
 ---
 # <a name="secure-azure-digital-twins"></a>Biztonságos Azure digitális Twins
 
@@ -55,7 +55,7 @@ Az Azure **két beépített Azure-szerepkört** biztosít az Azure Digital Twins
 | Azure digitális Twins-Adatolvasó | Csak olvasási hozzáférést biztosít az Azure Digital Twins-erőforrásokhoz | d57506d4-4c8d-48b1-8587-93c323f6a5a3 |
 
 A szerepköröket kétféleképpen rendelheti hozzá:
-* Az Azure Digital Twins hozzáférés-vezérlés (IAM) paneljén a Azure Portalban (lásd: [*Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával*](../role-based-access-control/role-assignments-portal.md))
+* Az Azure Digital Twins hozzáférés-vezérlés (IAM) paneljén a Azure Portalban (lásd: [*Azure-szerepkörök kiosztása az Azure Portal használatával*](../role-based-access-control/role-assignments-portal.md))
 * szerepkör hozzáadására vagy eltávolítására szolgáló CLI-parancsok használatával
 
 A részletes útmutatásért próbálja ki az Azure Digital Twins [*oktatóanyagban: teljes körű megoldás összekapcsolása*](tutorial-end-to-end.md).

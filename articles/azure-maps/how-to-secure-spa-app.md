@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 3b647a02731a4fa404aab4bb648853eea766d92e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 9d2af0bf731ab069a8512cb10feccf5ba18d3fa0
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684072"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092726"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>Egyoldalas alkalmazások biztonságossá tétele nem interaktív bejelentkezéssel
 
@@ -111,7 +111,7 @@ Az Azure *szerepköralapú hozzáférés-vezérlés (Azure RBAC)* hozzáférés�
 
 2. A **szerepkör-hozzárendelések** lap **szerepkör** területén válassza ki a beépített Azure Maps szerepkör-definíciót, például **Azure Maps Adatolvasó** vagy **Azure Maps adatközreműködő**. **A hozzáférés társítása** területen válassza a **függvényalkalmazás** lehetőséget. Válassza ki a résztvevőt név alapján. Kattintson a **Mentés** gombra.
 
-   * A [szerepkör-hozzárendelések hozzáadása vagy eltávolítása](../role-based-access-control/role-assignments-portal.md)című témakörben talál további információt.
+   * Tekintse meg az [Azure-szerepkörök hozzárendelésének](../role-based-access-control/role-assignments-portal.md)részleteit.
 
 > [!WARNING]
 > Azure Maps beépített szerepkör-definíciók nagyon nagy engedélyezési hozzáférést biztosítanak számos Azure Maps REST API-hoz. Az API-k minimális hozzáférésének korlátozásához tekintse meg az [Egyéni szerepkör-definíció létrehozása és a rendszerhez rendelt identitás hozzárendelése](../role-based-access-control/custom-roles.md) az egyéni szerepkör-definícióhoz című témakört. Ez lehetővé teszi az alkalmazás számára a Azure Maps eléréséhez szükséges legalacsonyabb jogosultságot.

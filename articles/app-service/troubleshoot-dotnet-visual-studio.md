@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: a177b22f0f91d82013956bff36eaa57a084c27d1
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 65eb4e8fefb74219c927fe507baceca7c55462be
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576582"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095721"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Alkalmazások hibakeresése Azure App Service a Visual Studióval
 ## <a name="overview"></a>Áttekintés
@@ -49,7 +49,7 @@ A Visual Studio hozzáférést biztosít az alkalmazás-felügyeleti függvénye
    >
    >
 
-    További információ az Azure-erőforrásokhoz való csatlakozásról a Visual studióból: [fiókok, előfizetések és rendszergazdai szerepkörök kezelése](../role-based-access-control/role-assignments-portal.md).
+    További információ az Azure-erőforrásokhoz való csatlakozásról a Visual studióból: [Azure-szerepkörök kiosztása a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md).
 2. A **Server Explorerben** bontsa ki az **Azure** elemet, majd bontsa ki a **app Service** elemet.
 3. Bontsa ki azt az erőforráscsoportot, amely magában foglalja a [ASP.NET-alkalmazás létrehozása Azure app Serviceban](quickstart-dotnet-framework.md)létrehozott alkalmazást, majd kattintson a jobb gombbal az alkalmazás csomópontjára, majd kattintson a **beállítások megtekintése** elemre.
 

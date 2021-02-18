@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/05/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 2fb1a8c3e583a4bdc88f2b61844e9bcb16dc7cdf
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c3142fd41830487453a3cc980a87cdca72cf7213
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367197"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094132"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure-előfizetés számlázási tulajdonjogának átadása másik fióknak
 
@@ -66,7 +66,7 @@ A Visual Studio- és a Microsoft Partner Network-előfizetésekhez havonta ismé
 
 Ha elfogadta egy Azure-előfizetés számlázási tulajdonjogát, javasoljuk, hogy tekintse át a következő lépéseket:
 
-1. Tekintse át és frissítse a szolgáltatásadminisztrátori, a társadminisztrátori és az Azure-beli szerepkör-hozzárendeléseket. További információ: [Azure-beli előfizetés-adminisztrátorok hozzáadása vagy módosítása](add-change-subscription-administrator.md) és [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
+1. Tekintse át és frissítse a szolgáltatásadminisztrátori, a társadminisztrátori és az Azure-beli szerepkör-hozzárendeléseket. További információ: Azure- [előfizetések rendszergazdáinak hozzáadása vagy módosítása](add-change-subscription-administrator.md) és [Azure-szerepkörök kiosztása az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
 1. Frissítse az előfizetés szolgáltatásaihoz tartozó hitelesítő adatokat, például:
    1. Felügyeleti tanúsítványok, amelyek rendszergazdai jogosultságokat biztosítanak a felhasználónak az előfizetés erőforrásaihoz. További információk: [Felügyeleti tanúsítvány létrehozása és feltöltése az Azure szolgáltatáshoz](../../cloud-services/cloud-services-certs-create.md)
    1. A Storage-hoz hasonló szolgáltatások hozzáférési kulcsai. További információkat az [Azure Storage-fiókokkal kapcsolatos tudnivalókat](../../storage/common/storage-account-create.md) ismertető témakörben olvashat.
@@ -126,4 +126,4 @@ Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatá
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse át és frissítse a szolgáltatásadminisztrátori, a társadminisztrátori és az Azure-beli szerepkör-hozzárendeléseket. További információ: [Azure-beli előfizetés-adminisztrátorok hozzáadása vagy módosítása](add-change-subscription-administrator.md) és [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
+- Tekintse át és frissítse a szolgáltatásadminisztrátori, a társadminisztrátori és az Azure-beli szerepkör-hozzárendeléseket. További információ: Azure- [előfizetések rendszergazdáinak hozzáadása vagy módosítása](add-change-subscription-administrator.md) és [Azure-szerepkörök kiosztása az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).

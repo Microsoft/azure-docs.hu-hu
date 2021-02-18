@@ -1,20 +1,20 @@
 ---
-title: A mért számlázás rendellenességének észlelése | Azure piactér
-description: Ismerje meg, hogy a mért számlázások automatikus anomáliának észlelése Hogyan biztosítja ügyfelei számára a kereskedelmi Piactéri ajánlat mért használati díjainak megfelelő számlázást.
+title: A partner Centerben mért számlázási rendellenességek kezelése | Azure piactér
+description: Ismerje meg, hogy a mért számlázások automatikus anomáliának észlelése Hogyan biztosítja ügyfelei számára a kereskedelmi Piactéri ajánlatok mért használati díjait.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 2/17/2021
+ms.date: 2/18/2021
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 7f1bcac49ccb12ea1e0517aed5a139e549451ec0
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 1ff6262a75261c575082f3fc48d588c868ad0b51
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653006"
+ms.locfileid: "101092525"
 ---
-# <a name="anomaly-detection-for-metered-billing"></a>A mért számlázás rendellenességének észlelése
+# <a name="manage-metered-billing-anomalies-in-partner-center"></a>A mért számlázási rendellenességek kezelése a partner Centerben
 
 Az egyéni forgalmi díjas számlázási lehetőség jelenleg a [szolgáltatott szoftverek](plan-saas-offer.md) (SaaS) és az Azure- [alkalmazások](plan-azure-application-offer.md#types-of-plans) számára érhető el egy felügyelt alkalmazási csomaggal.
 
@@ -80,3 +80,4 @@ Ha a túlhasználatot rendellenességként jelölte meg, vagy egy olyan modellt 
 ## <a name="see-also"></a>Lásd még
 - [Díjköteles számlázás az SaaS-hez a kereskedelmi Piactéri mérési szolgáltatás használatával](./partner-center-portal/saas-metered-billing.md)
 - [Felügyelt alkalmazás mért számlázása](./partner-center-portal/azure-app-metered-billing.md)
+- [Rendellenesség-észlelő szolgáltatás forgalmi díjas számlázáshoz](./partner-center-portal/anomaly-detection-service-for-metered-billing.md)

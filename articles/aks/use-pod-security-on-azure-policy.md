@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan védheti meg a hüvelyeket az Azure Kubernetes 
 services: container-service
 ms.topic: article
 ms.date: 09/22/2020
-ms.openlocfilehash: 8e437095b3d527647a453ba89adaa2ab62672177
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 34f2bfe346d7163a254e2ccecd1d7ef63ddb4194
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348525"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092631"
 ---
 # <a name="secure-pods-with-azure-policy"></a>Podok biztonságossá tétele az Azure Policyval
 
@@ -60,7 +60,7 @@ A következő általános korlátozások érvényesek a Kubernetes-fürtök Azur
 A következő korlátozások érvényesek az AK-ra vonatkozó Azure Policy-bővítményre:
 
 - Az [AK Pod biztonsági szabályzat (előzetes verzió)](use-pod-security-policies.md) és az AK Azure Policy bővítménye nem engedélyezhető egyszerre. 
-- A Azure Policy bővítmény által automatikusan kizárt névterek a következő kiértékeléshez: _Kube-System_ , _forgalomirányító-System_ és _AK-periszkóp_.
+- A Azure Policy bővítmény által automatikusan kizárt névterek a következő kiértékeléshez: _Kube-System_, _forgalomirányító-System_ és _AK-periszkóp_. Ha a 1,20-es vagy újabb Kubernetes-es verzióval rendelkező tarka hálózati házirendet használ, a rendszer 2 további névteret automatikusan kizárja, amelyek a _tarka-System_ és a _tigera-operátorok_.
 
 ### <a name="recommendations"></a>Javaslatok
 
@@ -101,11 +101,11 @@ A beépített kezdeményezések mind a [Kubernetes származó Pod biztonsági sz
 
 |[Pod biztonsági házirend-vezérlés](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)| Azure Policy definíció hivatkozása| [Alapterv kezdeményezés](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2Fa8640138-9b0a-4a28-b8cb-1666c838647d) | [Korlátozott kezdeményezés](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2F42b8ef37-b724-4e24-bbc8-7a7708edfe00) |
 |---|---|---|---|
-|Privilegizált tárolók futtatásának letiltása|[Nyilvános felhő](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4)| Igen | Igen
-|A gazdagép-névterek megosztott használatának tiltása|[Nyilvános felhő](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47a1ee2f-2a2a-4576-bf2a-e0e36709c2b8)| Igen | Igen
-|A gazdagép hálózatkezelésének és portjainak használatának korlátozása|[Nyilvános felhő](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82985f06-dc18-4a48-bc1c-b9f4f0098cfe)| Igen | Igen
-|A gazda fájlrendszer használatának korlátozása|[Nyilvános felhő](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F098fc59e-46c7-4d99-9b16-64990e543d75)| Igen | Igen
-|A Linux-funkciók korlátozása az [alapértelmezett készletre](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities)|[Nyilvános felhő](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc26596ff-4d70-4e6a-9a30-c2506bd2f80c) | Igen | Igen
+|Privilegizált tárolók futtatásának letiltása|[Nyilvános felhő](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4)| Igen | Yes
+|A gazdagép-névterek megosztott használatának tiltása|[Nyilvános felhő](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47a1ee2f-2a2a-4576-bf2a-e0e36709c2b8)| Igen | Yes
+|A gazdagép hálózatkezelésének és portjainak használatának korlátozása|[Nyilvános felhő](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82985f06-dc18-4a48-bc1c-b9f4f0098cfe)| Igen | Yes
+|A gazda fájlrendszer használatának korlátozása|[Nyilvános felhő](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F098fc59e-46c7-4d99-9b16-64990e543d75)| Igen | Yes
+|A Linux-funkciók korlátozása az [alapértelmezett készletre](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities)|[Nyilvános felhő](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc26596ff-4d70-4e6a-9a30-c2506bd2f80c) | Igen | Yes
 |Meghatározott mennyiségi típusok használatának korlátozása|[Nyilvános felhő](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F16697877-1118-4fb1-9b65-9898ec2509ec)| - | Igen – engedélyezett kötetek típusai:,,, `configMap` `emptyDir` `projected` `downwardAPI` , `persistentVolumeClaim`|
 |Jogosultság-eszkaláció a gyökérhez|[Nyilvános felhő](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) | - | Yes |
 |A tároló felhasználói és csoportjai azonosítóinak korlátozása|[Nyilvános felhő](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Yes|
@@ -151,9 +151,9 @@ If the built-in initiatives to address pod security do not match your requiremen
 
 Az ak-nak szüksége van a rendszerhüvelyek futtatására a fürtön a kritikus szolgáltatások, például a DNS-feloldás biztosításához. A pod funkcióit korlátozó szabályzatok hatással lehetnek a System Pod stabilitására. Ennek eredményeképpen a következő névterek **ki vannak zárva a házirend kiértékelése során a létrehozási, frissítési és házirend-naplózás során beléptetési kérelmek során**. Ez kényszeríti az ilyen névterek új központi telepítéseit az Azure-szabályzatokból való kizárásra.
 
-1. Kube – rendszerek
+1. kube-system
 1. forgalomirányító – System
-1. Azure – ív
+1. azure-arc
 1. AK – periszkóp
 
 A létrehozás, a frissítés és a naplózás során további egyéni névterek is kizárható a kiértékelésből. Ezeket a kivételeket akkor kell használni, ha olyan speciális hüvelyekkel rendelkezik, amelyek engedélyezett névtérben futnak, és el szeretné kerülni a naplózási szabálysértések aktiválását.
@@ -252,7 +252,7 @@ Hozza létre a pod-t a [kubectl Apply][kubectl-apply] paranccsal, és adja meg a
 kubectl apply -f nginx-unprivileged.yaml
 ```
 
-A pod sikeresen ütemezve. Ha a [kubectl Get hüvely][kubectl-get] parancs használatával tekinti meg a pod állapotát, a pod a következőket *futtatja* :
+A pod sikeresen ütemezve. Ha a [kubectl Get hüvely][kubectl-get] parancs használatával tekinti meg a pod állapotát, a pod a következőket *futtatja*:
 
 ```console
 $ kubectl get pods
@@ -298,7 +298,7 @@ A pod biztonsági házirendből való Migrálás esetén a következő művelete
 
 Az alábbiakban összefoglaljuk a pod biztonsági házirend és a Azure Policy viselkedésének változásait.
 
-|Használati eset| Pod biztonsági szabályzat | Azure Policy |
+|Eset| Pod biztonsági szabályzat | Azure Policy |
 |---|---|---|
 |Telepítés|A pod biztonsági házirend funkció engedélyezése |Azure Policy bővítmény engedélyezése
 |Szabályzatok telepítése| Pod biztonsági házirend-erőforrás üzembe helyezése| Rendeljen Azure-szabályzatokat az előfizetés vagy az erőforráscsoport hatóköréhez. A Kubernetes erőforrás-alkalmazásaihoz a Azure Policy bővítmény szükséges.
