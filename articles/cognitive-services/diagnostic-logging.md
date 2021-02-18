@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: erhopf
-ms.openlocfilehash: e33e8fe6e626700790a3b62265c6889f06e0861b
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: a2005ca7b32136ff0032d27e04035c46b2e4e904
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366604"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595357"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>Diagnosztikai naplózás engedélyezése az Azure Cognitive Services
 
@@ -24,25 +24,25 @@ Ez az útmutató lépésről lépésre bemutatja, hogyan engedélyezheti az Azur
 
 A diagnosztikai naplózás engedélyezéséhez a naplófájlok tárolásához valahol szüksége lesz. Ez az oktatóanyag az Azure Storage és a Log Analytics használatát ismerteti.
 
-* [Azure Storage](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) – a házirend-naplózás, a statikus elemzés vagy a biztonsági mentés diagnosztikai naplóinak megőrzése. A Storage-fióknak nem kell ugyanahhoz az előfizetéshez tartoznia, mint az erőforrás-kibocsátó naplókat, ha a beállítást konfiguráló felhasználó rendelkezik mindkét előfizetéshez megfelelő Azure RBAC-hozzáféréssel.
-* [Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) – egy rugalmas napló keresési és elemzési eszköze, amely lehetővé teszi az Azure-erőforrások által generált nyers naplók elemzését.
+* [Azure Storage](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) – a házirend-naplózás, a statikus elemzés vagy a biztonsági mentés diagnosztikai naplóinak megőrzése. A Storage-fióknak nem kell ugyanahhoz az előfizetéshez tartoznia, mint az erőforrás-kibocsátó naplókat, ha a beállítást konfiguráló felhasználó rendelkezik mindkét előfizetéshez megfelelő Azure RBAC-hozzáféréssel.
+* [Log Analytics](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) – egy rugalmas napló keresési és elemzési eszköze, amely lehetővé teszi az Azure-erőforrások által generált nyers naplók elemzését.
 
 > [!NOTE]
-> További konfigurációs beállítások érhetők el. További információ: [adatok gyűjtése és felhasználása az Azure-erőforrásokból](../azure-monitor/platform/platform-logs-overview.md).
+> További konfigurációs beállítások érhetők el. További információ: [adatok gyűjtése és felhasználása az Azure-erőforrásokból](../azure-monitor/essentials/platform-logs-overview.md).
 
 ## <a name="enable-diagnostic-log-collection"></a>Diagnosztikai naplók gyűjtésének engedélyezése  
 
 Kezdjük a diagnosztikai naplózás engedélyezésével a Azure Portal használatával.
 
 > [!NOTE]
-> Ha engedélyezni szeretné a szolgáltatást a PowerShell vagy az Azure CLI használatával, kövesse az [Azure-erőforrások adatainak összegyűjtése és felhasználása](../azure-monitor/platform/platform-logs-overview.md)című részben található utasításokat.
+> Ha engedélyezni szeretné a szolgáltatást a PowerShell vagy az Azure CLI használatával, kövesse az [Azure-erőforrások adatainak összegyűjtése és felhasználása](../azure-monitor/essentials/platform-logs-overview.md)című részben található utasításokat.
 
 1. Lépjen az Azure Portalra. Ezután keresse meg és válassza ki a Cognitive Services erőforrást. Például a Bing Web Search előfizetése.   
 2. Ezután a bal oldali navigációs menüben keresse meg a **figyelés** elemet, és válassza a **diagnosztikai beállítások** lehetőséget. Ez a képernyő az erőforráshoz korábban létrehozott összes diagnosztikai beállítást tartalmazza.
 3. Ha egy korábban létrehozott erőforrást szeretne használni, kiválaszthatja most. Ellenkező esetben válassza a **+ diagnosztikai beállítás hozzáadása** elemet.
 4. Adja meg a beállítás nevét. Ezután válassza az **archiválás egy Storage-fiókba** lehetőséget, majd **küldje el a log Analyticsnek**.
-5. Ha a rendszer kéri a konfigurálását, válassza ki azt a Storage-fiókot és OMS-munkaterületet, amelyet a diagnosztikai naplók tárolására kíván használni. **Megjegyzés** : Ha nem rendelkezik Storage-fiókkal vagy OMS-munkaterülettel, kövesse az utasításokat, és hozzon létre egyet.
-6. Válassza a **naplózás** , a **RequestResponse** és a **AllMetrics** lehetőséget. Ezután állítsa be a megőrzési időszakot a diagnosztikai napló adataihoz. Ha egy adatmegőrzési szabály értéke nulla, a rendszer határozatlan ideig tárolja az adott naplóhoz tartozó eseményeket.
+5. Ha a rendszer kéri a konfigurálását, válassza ki azt a Storage-fiókot és OMS-munkaterületet, amelyet a diagnosztikai naplók tárolására kíván használni. **Megjegyzés**: Ha nem rendelkezik Storage-fiókkal vagy OMS-munkaterülettel, kövesse az utasításokat, és hozzon létre egyet.
+6. Válassza a **naplózás**, a **RequestResponse** és a **AllMetrics** lehetőséget. Ezután állítsa be a megőrzési időszakot a diagnosztikai napló adataihoz. Ha egy adatmegőrzési szabály értéke nulla, a rendszer határozatlan ideig tárolja az adott naplóhoz tartozó eseményeket.
 7. Kattintson a **Mentés** gombra.
 
 Akár két órát is igénybe vehet, mielőtt a naplózási szolgáltatás elérhetővé válik a lekérdezéshez és az elemzéshez. Ezért ne aggódjon, ha azonnal nem lát semmit.
@@ -111,11 +111,11 @@ by bin(TimeGenerated, 10s), OperationName
 | render areachart kind=unstacked
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Ha szeretné megtudni, hogyan engedélyezheti a naplózást, valamint a különböző Azure-szolgáltatások által támogatott mérőszámokat és naplózási kategóriákat, olvassa el a Microsoft Azure [metrikáinak áttekintését](../azure-monitor/platform/data-platform.md) , valamint az [Azure diagnosztikai naplók áttekintését ismertető](../azure-monitor/platform/platform-logs-overview.md) cikket.
+* Ha szeretné megtudni, hogyan engedélyezheti a naplózást, valamint a különböző Azure-szolgáltatások által támogatott mérőszámokat és naplózási kategóriákat, olvassa el a Microsoft Azure [metrikáinak áttekintését](../azure-monitor/data-platform.md) , valamint az [Azure diagnosztikai naplók áttekintését ismertető](../azure-monitor/essentials/platform-logs-overview.md) cikket.
 * Az Event hubok megismeréséhez olvassa el az alábbi cikkeket:
   * [Mi az Azure Event Hubs?](../event-hubs/event-hubs-about.md)
   * [Bevezetés az Event Hubs használatába](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 * [Az Azure Storage-ból letölthető mérőszámok és diagnosztikai naplók](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-blobs)olvashatók.
-* Olvassa el [a Azure monitor naplókban végzett keresések ismertetése](../azure-monitor/log-query/log-query-overview.md)című témakört.
+* Olvassa el [a Azure monitor naplókban végzett keresések ismertetése](../azure-monitor/logs/log-query-overview.md)című témakört.

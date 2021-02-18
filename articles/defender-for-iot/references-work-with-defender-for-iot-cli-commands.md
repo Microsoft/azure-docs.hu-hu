@@ -7,29 +7,33 @@ ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 2ec682bf76e35b54f58acc1956972c57128edd75
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 93efc89722d3152d92b6f8c8038deaa566741f7c
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523141"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100636560"
 ---
 # <a name="work-with-defender-for-iot-cli-commands"></a>A Defender for IoT parancssori felületi parancsainak használata
 
-Ez a cikk az érzékelők és a helyszíni felügyeleti konzolok CLI-parancsait ismerteti. A parancsok a rendszergazdák, a cyberx-felhasználók és a támogatási felhasználók számára érhetők el.
+Ez a cikk az érzékelők és a helyszíni felügyeleti konzolok CLI-parancsait ismerteti. A parancsok a következő felhasználók számára érhetők el:
 
-Kizárási szabályok definiálása a karbantartási tevékenységek vagy a riasztást nem igénylő tevékenységek tervezésekor.
+- Rendszergazda
+- CyberX 
+- Támogatás
+
+A CLI-vel való munkavégzés megkezdéséhez kapcsolódjon egy terminál használatával. Például: terminál neve `Putty` és `Support` felhasználó. 
 
 ## <a name="create-local-alert-exclusion-rules"></a>Helyi riasztás kizárási szabályainak létrehozása
 
-A következő parancs beírásával hozhat létre kizárási szabályt a parancssori felületre:
+A következő parancsnak a CLI-be történő beírásával létrehozhat egy helyi riasztás kizárási szabályát:
 
 ```azurecli-interactive
 alerts exclusion-rule-create [-h] -n NAME [-ts TIMES] [-dir DIRECTION]  
 [-dev DEVICES] [-a ALERTS]
 ```
 
-A riasztás kizárási szabályaiban megadható attribútumok a következők:
+A következő attribútumok használhatók a riasztás kizárási szabályainak használatával:
 
 | Attribútum | Leírás |
 |--|--|
@@ -42,18 +46,18 @@ A riasztás kizárási szabályaiban megadható attribútumok a következők:
 
 ## <a name="append-local-alert-exclusion-rules"></a>Helyi riasztás kizárási szabályainak hozzáfűzése
 
-Új szabályokat adhat hozzá a riasztások jelenlegi kizárási szabályaihoz a parancssori felület következő parancsának beírásával:
+A helyi riasztás kizárási szabályait a parancssori felület következő parancsának beírásával lehet hozzáfűzni:
 
 ```azurecli-interactive
 alerts exclusion-rule-append [-h] -n NAME [-ts TIMES] [-dir DIRECTION]  
 [-dev DEVICES] [-a ALERTS]
 ```
 
-Az itt használt attribútumok hasonlók a helyi riasztás kizárási szabályainak létrehozásakor leírt attribútumokhoz. A használat itt az attribútumokat alkalmazza a meglévő szabályokra.
+Az itt használt attribútumok megegyeznek a helyi riasztás kizárási szabályok létrehozása szakaszban ismertetett attribútumokkal. A használat különbsége, hogy itt az attribútumok a meglévő szabályokra érvényesek.
 
 ## <a name="show-local-alert-exclusion-rules"></a>Helyi riasztás kizárási szabályainak megjelenítése
 
-A következő parancs megadásával tekintheti meg az összes meglévő kizárási szabályt:
+Adja meg a következő parancsot a kizárási szabályok meglévő listájának bemutatásához:
 
 ```azurecli-interactive
 alerts exclusion-rule-list [-h] -n NAME [-ts TIMES] [-dir DIRECTION]  
@@ -69,7 +73,7 @@ alerts exclusion-rule-remove [-h] -n NAME [-ts TIMES] [-dir DIRECTION]
 [-dev DEVICES] [-a ALERTS]
 ```
 
-A riasztás kizárási szabályai a következő attribútummal használhatók:
+A következő attribútum használható a riasztás kizárási szabályainak használatával:
 
 | Attribútum | Leírás|
 | --------- | ---------------------------------- |
@@ -77,11 +81,11 @@ A riasztás kizárási szabályai a következő attribútummal használhatók:
 
 ## <a name="sync-time-from-the-ntp-server"></a>Szinkronizálási idő az NTP-kiszolgálóról
 
-Engedélyezheti és letilthatja az időszinkronizálást egy NTP-kiszolgálóról.
+Engedélyezheti vagy letilthatja a megadott NTP-kiszolgálóról történő időszinkronizálást.
 
 ### <a name="enable-ntp-sync"></a>NTP-szinkronizálás engedélyezése
 
-A következő parancs beírásával lehetővé válik a megadott NTP-kiszolgáló aktuális idejének rendszeres lekérése:
+Adja meg a következő parancsot, hogy rendszeres időközönként lekérje az időpontot a megadott NTP-kiszolgálóról:
 
 ```azurecli-interactive
 ntp enable IP
@@ -91,7 +95,7 @@ A parancson belül megadható attribútum az NTP-kiszolgáló IP-címe.
 
 ### <a name="disable-ntp-sync"></a>NTP-szinkronizálás letiltása
 
-A következő parancs beírásával letilthatja az időszinkronizálást a megadott NTP-kiszolgálóval:
+Adja meg a következő parancsot az idő szinkronizálásának letiltásához a megadott NTP-kiszolgálóval:
 
 ```azurecli-interactive
 ntp disable IP
@@ -99,15 +103,15 @@ ntp disable IP
 
 A parancson belül megadható attribútum az NTP-kiszolgáló IP-címe.
 
-## <a name="configure-the-network"></a>A hálózat konfigurálása
+## <a name="network-configuration"></a>Hálózati konfiguráció
 
 A következő táblázat a IoT Azure Defender hálózati beállításainak konfigurálásához elérhető parancsokat ismerteti:
 
 |Name|Parancs|Leírás|
 |-----------|-------|-----------|
-|Ping|`ping IP `| A IoT platform Defenderen kívüli címeinek pingelése.|
-|Blink|`network blink`|Engedélyezi a hálózati konfigurációs paraméterek módosítását.|
-|A hálózat újrakonfigurálása |`network edit-settings`| Engedélyezi a hálózati konfigurációs paraméterek módosítását. |
+|Ping|`ping IP`| Egy IoT platformon kívüli címek pingelése.|
+|Blink|`network blink`| Keresse meg a kapcsolatot úgy, hogy az interfész jelzõfényei villognak. |
+|A hálózat újrakonfigurálása |`network edit-settings`| A hálózati konfigurációs paraméterek módosításának engedélyezése. |
 |Hálózati beállítások megjelenítése |`network list`|Megjeleníti a hálózati adapter paramétereit. |
 |A hálózati konfiguráció ellenőrzése |`network validate` |Megadja a kimeneti hálózati beállításokat. <br /> <br />Például: <br /> <br />Aktuális hálózati beállítások: <br /> illesztő: ETH0 <br /> IP: 10.100.100.1 <br />alhálózat: 255.255.255.0 <br />alapértelmezett átjáró: 10.100.100.254 <br />DNS: 10.100.100.254 <br />figyelő felületek: eth1|
 |Tanúsítvány importálása |`certificate import FILE` |Importálja a HTTPS-tanúsítványt. Meg kell adnia a teljes elérési utat, amely egy \* . CRT-fájlhoz vezet. |
@@ -115,7 +119,7 @@ A következő táblázat a IoT Azure Defender hálózati beállításainak konfi
 
 ## <a name="filter-network-configurations"></a>Hálózati konfigurációk szűrése
 
-A `network capture-filter` parancs lehetővé teszi a rendszergazdák számára a nem elemzett hálózati forgalom kiiktatását. A forgalom szűrése egy belefoglalási lista vagy egy kizárási lista használatával.
+A `network capture-filter` parancs lehetővé teszi a rendszergazdáknak, hogy kiküszöböljék a nem elemzett hálózati forgalmat. A forgalmat belefoglalási lista vagy kizárási lista használatával is szűrheti.
 
 ```azurecli-interactive
 network capture-filter
@@ -125,7 +129,7 @@ A parancs beírása után a következő kérdés jelenik meg:
 
 >`Would you like to supply devices and subnet masks you wish to include in the capture filter? [Y/N]:`
 
-Válassza ki a `Y` Nano-fájl megnyitásához, ahol eszközöket, csatornákat, portokat és részhalmazokat adhat hozzá az alábbi szintaxis szerint:
+Válassza ki a `Y` Nano-fájl megnyitásához, ahol az alábbi szintaxis szerint adhat hozzá egy eszközt, csatornát, portot és részhalmazt:
 
 | Attribútum | Leírás |
 |--|--|
@@ -137,11 +141,11 @@ Egy sor eldobásával válassza el az argumentumokat.
 
 Ha tartalmaz egy eszközt, csatornát vagy alhálózatot, az érzékelő feldolgozza az adott argumentum érvényes forgalmát, beleértve a általában nem feldolgozott portokat és forgalmat.
 
-Ezután a következőt kell megadnia:
+Ezután a következő kérdéssel kell megválaszolni:
 
 >`Would you like to supply devices and subnet masks you wish to exclude from the capture filter? [Y/N]:`
 
-Válassza ki a `Y` Nano-fájl megnyitásához, ahol az alábbi szintaxis szerint adhat hozzá eszközöket, csatornákat, portokat és alkészleteket:
+Válassza ki a `Y` Nano-fájl megnyitásához, ahol az alábbi szintaxis szerint adhat hozzá egy eszközt, csatornát, portot és alkészletet:
 
 | Attribútum | Leírás |
 |--|--|
@@ -173,7 +177,7 @@ UDP-és TCP-portok belefoglalása vagy kizárása az összes forgalomhoz.
 
 ### <a name="components"></a>Összetevők
 
-A rendszer a következőket kéri:
+A rendszer a következő kérdést kéri:
 
 >`In which component do you wish to apply this capture filter?`
 
@@ -232,7 +236,7 @@ sudo cyberx-xsense-capture-filter -p all -m all-connected
 
 ## <a name="define-client-and-server-hosts"></a>Ügyfél-és kiszolgáló-gazdagépek definiálása
 
-Ha a IoT Defender nem ismeri fel automatikusan az ügyfél-és kiszolgáló-gazdagépeket, a következő parancs megadásával állíthatja be az ügyfél és a kiszolgáló gazdagépeit:
+Ha a IoT Defender nem ismeri fel automatikusan az ügyfelet és a kiszolgáló gazdagépeit, a következő parancs megadásával állíthatja be az ügyfél és a kiszolgáló gazdagépeit:
 
 ```azurecli-interactive
 directions [-h] [--identifier IDENTIFIER] [--port PORT] [--remove] [--add]  
@@ -256,6 +260,7 @@ A következő táblázat ismerteti a különböző rendszerműveletek végrehajt
 
 |Name|Code|Description|
 |----|----|-----------|
+|Dátum megjelenítése|`date`|Az aktuális dátumot adja vissza GMT formátumban a gazdagépen.|
 |A gazdagép újraindítása|`system reboot`|Újraindítja a gazdagép eszközét.|
 |A gazdagép leállítása|`system shutdown`|Leállítja a gazdagépet.|
 |A System biztonsági mentése|`system backup`|Azonnali biztonsági mentést kezdeményez (nem ütemezett biztonsági mentés).|
@@ -290,6 +295,6 @@ Az eszköz használatakor:
 
 - Erősítse meg a berendezés tartományát (ahogy az a tanúsítványban jelenik meg) a DNS-kiszolgálóval és a megfelelő IP-címmel. 
     
-## <a name="next-steps"></a>Következő lépések
+## <a name="see-also"></a>Lásd még
 
 [Defender for IoT API-érzékelő és felügyeleti konzol API-k](references-work-with-defender-for-iot-apis.md)

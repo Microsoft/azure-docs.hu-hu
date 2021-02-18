@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 552cac01cd492229a19bdbc297665eb7d3ccb401
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: b52b51133f059f028baf470515e886d17077af6a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751291"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593938"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>Start/Stop VMs during off-hours konfigurálása
 
@@ -141,11 +141,11 @@ Ha Start/Stop VMs during off-hours telepítése után módosítani szeretné az 
 
     :::image type="content" source="media/automation-solution-vm-management/azure-monitor.png" alt-text="Képernyőkép a figyelő – műveleti csoportok lapról.":::
 
-2. A StartStop_VM_Notification **lapon kattintson a részletek** elemre. **Details** Ekkor megnyílik az E-mail/SMS/leküldés/hang lap. Frissítse az e-mail-címet, és kattintson **az OK** gombra a módosítások mentéséhez.
+2. A StartStop_VM_Notification **lapon kattintson a részletek** elemre.  Ekkor megnyílik az E-mail/SMS/leküldés/hang lap. Frissítse az e-mail-címet, és kattintson **az OK** gombra a módosítások mentéséhez.
 
     :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="Képernyőkép az e-mailek/SMS/push/Voice lapról, amely egy példaként frissített e-mail-címet mutat be.":::
 
-    Másik lehetőségként további műveleteket is hozzáadhat a műveleti csoporthoz, hogy többet tudjon meg a műveleti csoportokról, lásd: [műveleti csoportok](../azure-monitor/platform/action-groups.md)
+    Másik lehetőségként további műveleteket is hozzáadhat a műveleti csoporthoz, hogy többet tudjon meg a műveleti csoportokról, lásd: [műveleti csoportok](../azure-monitor/alerts/action-groups.md)
 
 A következő példa egy olyan e-mailt küld, amelyet a szolgáltatás a virtuális gépek leállításakor küld.
 
@@ -183,7 +183,7 @@ A szolgáltatás konfigurálása a virtuális gépek leállítására egy adott 
 
 5. A módosítások mentéséhez kattintson az **OK** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A szolgáltatás működés közbeni figyeléséhez tekintse meg a [Start/Stop VMS During off-hours lekérdezési naplóit](automation-solution-vm-management-logs.md).
 * A virtuális gépek kezelése során felmerülő problémák kezeléséhez tekintse meg [Start/Stop VMS During off-hours problémák elhárítása](troubleshoot/start-stop-vm.md)című témakört.

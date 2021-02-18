@@ -3,12 +3,12 @@ title: Gyakori hibák elhárítása
 description: Ismerje meg, hogy miként lehet elhárítani a házirend-definíciók, a különböző SDK-k és a Kubernetes-bővítmények létrehozásával kapcsolatos problémákat.
 ms.date: 01/26/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 0a64346188696cc7cc16d832474ec4ee6befdae2
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 6e0e4067f07266bae9c87fd4443d27314cc28c0b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917743"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592612"
 ---
 # <a name="troubleshoot-errors-with-using-azure-policy"></a>A Azure Policy használatával kapcsolatos hibák elhárítása
 
@@ -87,7 +87,7 @@ Ha továbbra is problémája van a duplikált és testreszabott beépített szab
 
 #### <a name="issue"></a>Probléma
 
-Olyan erőforrásra van szükség, amelyről Azure Policy, hogy a művelet nem zajlik le, és nincs bejegyzés az [Azure-beli tevékenység naplójában](../../../azure-monitor/platform/platform-logs-overview.md).
+Olyan erőforrásra van szükség, amelyről Azure Policy, hogy a művelet nem zajlik le, és nincs bejegyzés az [Azure-beli tevékenység naplójában](../../../azure-monitor/essentials/platform-logs-overview.md).
 
 #### <a name="cause"></a>Ok
 
@@ -123,7 +123,7 @@ Az új vagy frissített erőforrás hatóköréhez tartozó szabályzat-hozzáre
 
 #### <a name="resolution"></a>Feloldás
 
-Egy megtagadási szabályzat-hozzárendelés hibaüzenete tartalmazza a szabályzat-definíciót és a szabályzat-hozzárendelési azonosítókat. Ha az üzenetben szereplő hibaüzenetek nem maradnak meg, akkor a [tevékenység naplójában](../../../azure-monitor/platform/activity-log.md#view-the-activity-log)is elérhető. Ezekkel az információkkal további részleteket tudhat meg az erőforrás-korlátozásokról, és módosíthatja a kérésben szereplő erőforrás-tulajdonságokat az engedélyezett értékek egyeztetéséhez.
+Egy megtagadási szabályzat-hozzárendelés hibaüzenete tartalmazza a szabályzat-definíciót és a szabályzat-hozzárendelési azonosítókat. Ha az üzenetben szereplő hibaüzenetek nem maradnak meg, akkor a [tevékenység naplójában](../../../azure-monitor/essentials/activity-log.md#view-the-activity-log)is elérhető. Ezekkel az információkkal további részleteket tudhat meg az erőforrás-korlátozásokról, és módosíthatja a kérésben szereplő erőforrás-tulajdonságokat az engedélyezett értékek egyeztetéséhez.
 
 ## <a name="template-errors"></a>Sablon hibái
 

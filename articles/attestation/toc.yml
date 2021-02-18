@@ -65,3 +65,6 @@
       href: troubleshoot-guide.md
     - name: TPM és VBS igazolási protokoll
       href: virtualization-based-security-protocol.md
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md

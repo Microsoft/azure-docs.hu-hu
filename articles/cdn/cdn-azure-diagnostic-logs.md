@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
-ms.openlocfilehash: fdb609a243656e2c75159cd2d4e70e2f965ae896
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 96e80de5b8b5ab0a046913ce40ca2d7254dd0133
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352116"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573228"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>Diagnosztikai naplók – Azure Content Delivery Network
 
@@ -44,7 +44,7 @@ Kövesse az alábbi lépéseket a Azure CDN végpont naplózásának engedélyez
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 
-2. A Azure Portal navigáljon a **All resources**  ->  **-CDN-profil** összes erőforrásához
+2. A Azure Portal navigáljon a   ->  **-CDN-profil** összes erőforrásához
 
 2. Válassza ki azt a CDN-végpontot, amelyhez engedélyezni szeretné a diagnosztikai naplókat:
 
@@ -78,7 +78,7 @@ Ha Storage-fiókot szeretne használni a naplók tárolásához, kövesse az al�
 A naplók Log Analytics használatához kövesse az alábbi lépéseket:
 
 >[!NOTE] 
->A lépések végrehajtásához log Analytics-munkaterület szükséges. További információért lásd: **[log Analytics munkaterület létrehozása a Azure Portalban](../azure-monitor/learn/quick-create-workspace.md)** .
+>A lépések végrehajtásához log Analytics-munkaterület szükséges. További információért lásd: **[log Analytics munkaterület létrehozása a Azure Portalban](../azure-monitor/logs/quick-create-workspace.md)** .
     
 1. A **diagnosztikai beállítások neve** mezőben adja meg a diagnosztikai napló beállításainak nevét.
 
@@ -251,12 +251,12 @@ Nem minden metrika érhető el az összes szolgáltatótól, bár az ilyen elté
 
 |Metric                     | Leírás | Microsoft | Verizon | Akamai |
 |---------------------------|-------------|-----------|---------|--------|
-| RequestCountTotal         | A kérelem összes találatának száma ebben az időszakban. | Igen | Igen |Igen |
-| RequestCountHttpStatus2xx | Az 2xx HTTP-kódot eredményező kérések száma (például 200, 202). | Igen | Igen |Igen |
-| RequestCountHttpStatus3xx | Az 3xx HTTP-kódot eredményező kérések száma (például 300, 302). | Igen | Igen |Igen |
-| RequestCountHttpStatus4xx | Az 4xx HTTP-kódot eredményező kérések száma (például 400, 404). | Igen | Igen |Igen |
-| RequestCountHttpStatus5xx | Az 5xx HTTP-kódot eredményező kérések száma (például 500, 504). | Igen | Igen |Igen |
-| RequestCountHttpStatusOthers | Az összes többi HTTP-kód száma (a 2xx-5xx kívül). | Igen | Igen |Igen |
+| RequestCountTotal         | A kérelem összes találatának száma ebben az időszakban. | Igen | Igen |Yes |
+| RequestCountHttpStatus2xx | Az 2xx HTTP-kódot eredményező kérések száma (például 200, 202). | Igen | Igen |Yes |
+| RequestCountHttpStatus3xx | Az 3xx HTTP-kódot eredményező kérések száma (például 300, 302). | Igen | Igen |Yes |
+| RequestCountHttpStatus4xx | Az 4xx HTTP-kódot eredményező kérések száma (például 400, 404). | Igen | Igen |Yes |
+| RequestCountHttpStatus5xx | Az 5xx HTTP-kódot eredményező kérések száma (például 500, 504). | Igen | Igen |Yes |
+| RequestCountHttpStatusOthers | Az összes többi HTTP-kód száma (a 2xx-5xx kívül). | Igen | Igen |Yes |
 | RequestCountHttpStatus200 | Az 200 HTTP-kód válaszát eredményező kérések száma. | Igen | Nem  |Igen |
 | RequestCountHttpStatus206 | Az 206 HTTP-kód válaszát eredményező kérések száma. | Igen | Nem  |Igen |
 | RequestCountHttpStatus302 | Az 302 HTTP-kód válaszát eredményező kérések száma. | Igen | Nem  |Igen |
@@ -267,7 +267,7 @@ Nem minden metrika érhető el az összes szolgáltatótól, bár az ilyen elté
 | RequestCountCacheNoCache | Az eszközre irányuló, a peremhálózati felhasználói konfiguráció miatt nem gyorsítótárazott kérelmek száma. | Igen | Igen | Nem |
 | RequestCountCacheUncacheable | Azon eszközökre irányuló kérelmek száma, amelyek megakadályozták az objektum Cache-Control gyorsítótárazását és a fejlécek lejáratát. Ez a szám azt jelzi, hogy nem szabad gyorsítótárazni a POP-ban vagy a HTTP-ügyfélen. | Igen | Igen | Nem |
 | RequestCountCacheOthers | Az összes olyan kérelem száma, amelynél a gyorsítótár állapota nem szerepel a fentiekben. | Nem | Igen | Nem  |
-| EgressTotal | Kimenő adatforgalom GB-ban | Igen |Igen |Igen |
+| EgressTotal | Kimenő adatforgalom GB-ban | Igen |Igen |Yes |
 | EgressHttpStatus2xx | Kimenő adatátvitel * a 2xx HTTP-állapotkódok GB-ban való kitöltéséhez. | Igen | Igen | Nem  |
 | EgressHttpStatus3xx | Kimenő adatforgalom a 3xx HTTP-állapotkódot tartalmazó válaszok esetében GB-ban. | Igen | Igen | Nem  |
 | EgressHttpStatus4xx | Kimenő adatforgalom a 4xx HTTP-állapotkódot tartalmazó válaszok esetében GB-ban. | Igen | Igen | Nem  |
@@ -369,7 +369,7 @@ Példa tulajdonságai:
 
 ## <a name="additional-resources"></a>További források
 
-* [Azure-beli diagnosztikai naplók](../azure-monitor/platform/platform-logs-overview.md)
+* [Azure-beli diagnosztikai naplók](../azure-monitor/essentials/platform-logs-overview.md)
 * [Core Analytics Azure CDN kiegészítő portálon keresztül](./cdn-analyze-usage-patterns.md)
-* [Azure Monitor-naplók](../azure-monitor/log-query/log-query-overview.md)
+* [Azure Monitor-naplók](../azure-monitor/logs/log-query-overview.md)
 * [Azure Log Analytics REST API](/rest/api/loganalytics)

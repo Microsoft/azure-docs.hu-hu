@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/22/2020
 ms.author: kumud
-ms.openlocfilehash: 6cf082aa33d2063982d85cf0c2fdd68d61072217
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 74e09b4798a648b6a881fb05f1128831ad5f4aff
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216937"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586437"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Hálózati adapter létrehozása, módosítása vagy törlése
 
@@ -49,15 +49,15 @@ Amikor a Azure Portal használatával hoz létre virtuális gépet, a portál eg
 
     |Beállítás|Kötelező?|Részletek|
     |---|---|---|
-    |Name|Igen|A névnek egyedinek kell lennie a kiválasztott erőforráscsoporthoz. Az Azure-előfizetésben valószínűleg több hálózati adapterrel fog rendelkezni. A különböző hálózati adapterek felügyeletét megkönnyítő elnevezési konvenció létrehozásával kapcsolatos javaslatokért lásd: [elnevezési konvenciók](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming). A hálózati adapter létrehozása után a név nem módosítható.|
-    |Virtuális hálózat|Igen|Válassza ki a virtuális hálózatot a hálózati adapterhez. Csak olyan hálózati adaptert rendelhet hozzá egy virtuális hálózathoz, amely ugyanabban az előfizetésben és helyen található, mint a hálózati adapter. A hálózati adapter létrehozása után nem módosíthatja azt a virtuális hálózatot, amelyhez hozzá van rendelve. Ahhoz a virtuális géphez, amelyhez a hálózati adaptert hozzá kívánja adni, ugyanazon a helyen és előfizetésen belül kell lennie, mint a hálózati adapternek.|
-    |Alhálózat|Igen|Válasszon ki egy alhálózatot a kiválasztott virtuális hálózaton belül. Módosíthatja azt az alhálózatot, amelyhez a hálózati adapter hozzá lett rendelve.|
-    |Magánhálózati IP-cím hozzárendelése|Igen| Ebben a beállításban az IPv4-címekhez tartozó hozzárendelési módszert választja. Válasszon a következő hozzárendelési módszerek közül: **dinamikus:** ha ezt a beállítást választja, az Azure automatikusan kiosztja a következő rendelkezésre álló címeket a kiválasztott alhálózat címterület területéről. **Statikus:** Ha ezt a beállítást választja, manuálisan kell hozzárendelni egy elérhető IP-címet a kiválasztott alhálózat címterület területéről. A statikus és a dinamikus címek addig nem változnak, amíg meg nem változtatja őket, vagy a hálózati adaptert törölték. A hozzárendelési módszer a hálózati adapter létrehozása után módosítható. Az Azure DHCP-kiszolgáló a virtuális gép operációs rendszerén belüli hálózati adapterhez rendeli ezt a címeket.|
-    |Hálózati biztonsági csoporttal|Nem| Hagyja a **none** értéket, válasszon ki egy meglévő [hálózati biztonsági csoportot](./network-security-groups-overview.md), vagy [hozzon létre egy hálózati biztonsági csoportot](tutorial-filter-network-traffic.md). A hálózati biztonsági csoportok lehetővé teszik hálózati adapterek hálózati forgalmának szűrését. A hálózati adapterre nulla vagy egy hálózati biztonsági csoportot is alkalmazhat. Nulla vagy egy hálózati biztonsági csoport is alkalmazható arra az alhálózatra, amelyhez a hálózati adapter hozzá van rendelve. Ha hálózati biztonsági csoportot alkalmaz egy hálózati adapterre, és azt az alhálózatot, amelyhez a hálózati adapter hozzá van rendelve, időnként váratlan eredmények történnek. A hálózati adapterekre és alhálózatokra alkalmazott hálózati biztonsági csoportok hibakereséséhez lásd: [hálózati biztonsági csoportok hibáinak megoldása](diagnose-network-traffic-filter-problem.md).|
-    |Előfizetés|Igen|Válasszon ki egy Azure- [előfizetést](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription). Az a virtuális gép, amelyhez csatlakoztatni kívánja a hálózati adaptert, és ahhoz a virtuális hálózathoz, amelyhez csatlakozni kíván, ugyanahhoz az előfizetéshez kell tartoznia.|
-    |Magánhálózati IP-cím (IPv6)|Nem| Ha bejelöli ezt a jelölőnégyzetet, a hálózati adapterhez rendelt IPv4-cím mellett egy IPv6-cím is hozzá van rendelve a hálózati adapterhez. Tekintse meg a jelen cikk IPv6 című szakaszát, amely fontos információkat nyújt az IPv6 hálózati adapterekkel való használatáról. Az IPv6-cím hozzárendelési metódusa nem választható ki. Ha IPv6-cím hozzárendelését választja, akkor azt a rendszer a dinamikus metódussal rendeli hozzá.
+    |Name|Yes|A névnek egyedinek kell lennie a kiválasztott erőforráscsoporthoz. Az Azure-előfizetésben valószínűleg több hálózati adapterrel fog rendelkezni. A különböző hálózati adapterek felügyeletét megkönnyítő elnevezési konvenció létrehozásával kapcsolatos javaslatokért lásd: [elnevezési konvenciók](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming). A hálózati adapter létrehozása után a név nem módosítható.|
+    |Virtuális hálózat|Yes|Válassza ki a virtuális hálózatot a hálózati adapterhez. Csak olyan hálózati adaptert rendelhet hozzá egy virtuális hálózathoz, amely ugyanabban az előfizetésben és helyen található, mint a hálózati adapter. A hálózati adapter létrehozása után nem módosíthatja azt a virtuális hálózatot, amelyhez hozzá van rendelve. Ahhoz a virtuális géphez, amelyhez a hálózati adaptert hozzá kívánja adni, ugyanazon a helyen és előfizetésen belül kell lennie, mint a hálózati adapternek.|
+    |Alhálózat|Yes|Válasszon ki egy alhálózatot a kiválasztott virtuális hálózaton belül. Módosíthatja azt az alhálózatot, amelyhez a hálózati adapter hozzá lett rendelve.|
+    |Magánhálózati IP-cím hozzárendelése|Yes| Ebben a beállításban az IPv4-címekhez tartozó hozzárendelési módszert választja. Válasszon a következő hozzárendelési módszerek közül: **dinamikus:** ha ezt a beállítást választja, az Azure automatikusan kiosztja a következő rendelkezésre álló címeket a kiválasztott alhálózat címterület területéről. **Statikus:** Ha ezt a beállítást választja, manuálisan kell hozzárendelni egy elérhető IP-címet a kiválasztott alhálózat címterület területéről. A statikus és a dinamikus címek addig nem változnak, amíg meg nem változtatja őket, vagy a hálózati adaptert törölték. A hozzárendelési módszer a hálózati adapter létrehozása után módosítható. Az Azure DHCP-kiszolgáló a virtuális gép operációs rendszerén belüli hálózati adapterhez rendeli ezt a címeket.|
+    |Hálózati biztonsági csoporttal|No| Hagyja a **none** értéket, válasszon ki egy meglévő [hálózati biztonsági csoportot](./network-security-groups-overview.md), vagy [hozzon létre egy hálózati biztonsági csoportot](tutorial-filter-network-traffic.md). A hálózati biztonsági csoportok lehetővé teszik hálózati adapterek hálózati forgalmának szűrését. A hálózati adapterre nulla vagy egy hálózati biztonsági csoportot is alkalmazhat. Nulla vagy egy hálózati biztonsági csoport is alkalmazható arra az alhálózatra, amelyhez a hálózati adapter hozzá van rendelve. Ha hálózati biztonsági csoportot alkalmaz egy hálózati adapterre, és azt az alhálózatot, amelyhez a hálózati adapter hozzá van rendelve, időnként váratlan eredmények történnek. A hálózati adapterekre és alhálózatokra alkalmazott hálózati biztonsági csoportok hibakereséséhez lásd: [hálózati biztonsági csoportok hibáinak megoldása](diagnose-network-traffic-filter-problem.md).|
+    |Előfizetés|Yes|Válasszon ki egy Azure- [előfizetést](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription). Az a virtuális gép, amelyhez csatlakoztatni kívánja a hálózati adaptert, és ahhoz a virtuális hálózathoz, amelyhez csatlakozni kíván, ugyanahhoz az előfizetéshez kell tartoznia.|
+    |Magánhálózati IP-cím (IPv6)|No| Ha bejelöli ezt a jelölőnégyzetet, a hálózati adapterhez rendelt IPv4-cím mellett egy IPv6-cím is hozzá van rendelve a hálózati adapterhez. Tekintse meg a jelen cikk IPv6 című szakaszát, amely fontos információkat nyújt az IPv6 hálózati adapterekkel való használatáról. Az IPv6-cím hozzárendelési metódusa nem választható ki. Ha IPv6-cím hozzárendelését választja, akkor azt a rendszer a dinamikus metódussal rendeli hozzá.
     |IPv6-név (csak akkor jelenik meg, ha a **MAGÁNHÁLÓZATI IP-cím (IPv6)** jelölőnégyzet be van jelölve) |Igen, ha a **magánhálózati IP-cím (IPv6)** jelölőnégyzet be van jelölve.| Ezt a nevet a rendszer egy másodlagos IP-konfigurációhoz rendeli hozzá a hálózati adapterhez. További információ az IP-konfigurációkról: [hálózati adapter beállításainak megtekintése](#view-network-interface-settings).|
-    |Erőforráscsoport|Igen|Válasszon ki egy meglévő [erőforráscsoportot](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) , vagy hozzon létre egyet. A hálózati adapterek ugyanabban vagy más erőforráscsoporthoz is létezhetnek, mint a virtuális gép, amelyhez csatlakoztatja, vagy a virtuális hálózathoz, amelyhez csatlakozik.|
+    |Erőforráscsoport|Yes|Válasszon ki egy meglévő [erőforráscsoportot](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) , vagy hozzon létre egyet. A hálózati adapterek ugyanabban vagy más erőforráscsoporthoz is létezhetnek, mint a virtuális gép, amelyhez csatlakoztatja, vagy a virtuális hálózathoz, amelyhez csatlakozik.|
     |Hely|Igen|Az a virtuális gép, amelyhez csatlakoztatni kívánja a hálózati adaptert és a virtuális hálózatot, ugyanazon a [helyen](https://azure.microsoft.com/regions)kell lennie, más néven régiónak.|
 
 A portál nem biztosítja a nyilvános IP-cím hozzárendelését a hálózati adapterhez a létrehozásakor, bár a portál létrehoz egy nyilvános IP-címet, és hozzárendeli azt egy hálózati adapterhez, amikor virtuális gépet hoz létre a portál használatával. Ha meg szeretné tudni, hogyan adhat hozzá nyilvános IP-címet a hálózati adapterhez a létrehozása után, tekintse meg az [IP-címek kezelése](virtual-network-network-interface-addresses.md)című témakört. Ha nyilvános IP-címmel rendelkező hálózati adaptert szeretne létrehozni, akkor a parancssori felület vagy a PowerShell használatával kell létrehoznia a hálózati adaptert.
@@ -90,7 +90,7 @@ A hálózati adapterek többségi beállításait a létrehozása után tekinthe
    - **Tulajdonságok:** A hálózati adapterrel kapcsolatos legfontosabb beállításokat jeleníti meg, beleértve annak MAC-címe (üres, ha a hálózati adapter nincs csatlakoztatva virtuális géphez), és az előfizetése megtalálható a rendszerben.
    - **Érvényes biztonsági szabályok:**  A biztonsági szabályok akkor jelennek meg, ha a hálózati adapter egy futó virtuális géphez van csatlakoztatva, és egy NSG van társítva a hálózati adapterhez, a hozzárendelt alhálózathoz vagy mindkettőhöz. A megjelenített információkkal kapcsolatos további tudnivalókért tekintse meg az [érvényes biztonsági szabályok megtekintése](#view-effective-security-rules)című témakört. További információ a NSG: [hálózati biztonsági csoportok](./network-security-groups-overview.md).
    - **Érvényes útvonalak:** Az útvonalak akkor jelennek meg, ha a hálózati adapter egy futó virtuális géphez van csatlakoztatva. Az útvonalak az Azure alapértelmezett útvonalait, a felhasználó által megadott útvonalakat, valamint az alhálózathoz a hálózati adapterhez hozzárendelt BGP-útvonalak kombinációját jelentik. Ha többet szeretne megtudni a megjelenített tartalmakról, tekintse meg a [hatályos útvonalak megtekintése](#view-effective-routes)című témakört. Az Azure alapértelmezett útvonalakkal és a felhasználó által megadott útvonalakkal kapcsolatos további információkért lásd: az [Útválasztás áttekintése](virtual-networks-udr-overview.md).
-Gyakori Azure Resource Manager beállítások: Ha többet szeretne megtudni a gyakori Azure Resource Manager beállításokról, tekintse meg a [műveletnapló](../azure-monitor/platform/platform-logs-overview.md), a [hozzáférés-vezérlés (iam)](../role-based-access-control/overview.md), a [címkék](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json), a [zárolások](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)és az [Automation szkriptek](../azure-resource-manager/templates/export-template-portal.md)című témakört.
+Gyakori Azure Resource Manager beállítások: Ha többet szeretne megtudni a gyakori Azure Resource Manager beállításokról, tekintse meg a [műveletnapló](../azure-monitor/essentials/platform-logs-overview.md), a [hozzáférés-vezérlés (iam)](../role-based-access-control/overview.md), a [címkék](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json), a [zárolások](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)és az [Automation szkriptek](../azure-resource-manager/templates/export-template-portal.md)című témakört.
 
 <a name="view-settings-commands"></a>**Parancsok**
 
@@ -113,7 +113,7 @@ A DNS-kiszolgálót az Azure DHCP-kiszolgáló rendeli hozzá a virtuális gép 
    - **Egyéni**: beállíthatja a saját DNS-kiszolgálóját a nevek feloldására több virtuális hálózat között. Adja meg a DNS-kiszolgálóként használni kívánt kiszolgáló IP-címét. A megadott DNS-kiszolgáló címe csak ehhez a hálózati adapterhez van hozzárendelve, és felülbírálja a virtuális hálózat DNS-beállításait, amelyhez a hálózati adapter hozzá van rendelve.
      >[!Note]
      >Ha a virtuális gép egy rendelkezésre állási csoport részét képező hálózati adaptert használ, a rendszer az összes olyan DNS-kiszolgálót örökli, amely a rendelkezésre állási csoport részét képező összes hálózati adapterhez meg van adva.
-5. Válassza a **Mentés** lehetőséget.
+5. Kattintson a **Mentés** gombra.
 
 **Parancsok**
 
@@ -134,7 +134,7 @@ A beállítást engedélyezni kell minden olyan virtuális géphez csatlakoztato
 2. Válassza ki azt a hálózati adaptert, amelyen engedélyezni vagy le szeretné tiltani az IP-továbbítást.
 3. Válassza az **IP-konfigurációk** lehetőséget a **Beállítások** szakaszban.
 4. A beállítás módosításához válassza az **engedélyezve** vagy a **Letiltva** (alapértelmezett beállítás) lehetőséget.
-5. Válassza a **Mentés** lehetőséget.
+5. Kattintson a **Mentés** gombra.
 
 **Parancsok**
 
@@ -152,9 +152,9 @@ Módosíthatja az alhálózatot, de nem a virtuális hálózatot, mert a hálóz
 3. Válassza az **IP-konfigurációk** lehetőséget a **Beállítások** területen. Ha bármely felsorolt IP-konfigurációhoz magánhálózati IP-cím tartozik **(statikus)** , a következő lépések végrehajtásával módosítania kell az IP-cím hozzárendelési módszerét dinamikusra. A hálózati adapterhez tartozó alhálózat-hozzárendelés módosításához minden magánhálózati IP-címet hozzá kell rendelni a dinamikus hozzárendelési módszerhez. Ha a címek hozzá vannak rendelve a dinamikus metódushoz, folytassa az ötödik lépéssel. Ha bármely IPv4-cím hozzá van rendelve a statikus hozzárendelési módszerhez, hajtsa végre a következő lépéseket a hozzárendelési módszer dinamikusra váltásához:
    - Válassza ki azt az IP-konfigurációt, amelynél módosítani szeretné az IPv4-cím hozzárendelési módszerét az IP-konfigurációk listájáról.
    - A magánhálózati IP-cím- **hozzárendelési** módszernél válassza a **dinamikus** lehetőséget. Nem rendelhet hozzá IPv6-címeket a statikus hozzárendelési módszerhez.
-   - Válassza a **Mentés** lehetőséget.
+   - Kattintson a **Mentés** gombra.
 4. Válassza ki azt az alhálózatot, amelybe át szeretné helyezni a hálózati adaptert az **alhálózat** legördülő listából.
-5. Válassza a **Mentés** lehetőséget. Az új alhálózathoz tartozó alhálózat-címtartomány új dinamikus címeket rendel hozzá. Miután hozzárendelte a hálózati adaptert egy új alhálózathoz, hozzárendelhet egy statikus IPv4-címeket az új alhálózat-címtartomány közül, ha Ön választja. A hálózati adapter IP-címeinek hozzáadásával, módosításával és eltávolításával kapcsolatos további tudnivalókért tekintse meg az [IP-címek kezelése](virtual-network-network-interface-addresses.md)című témakört.
+5. Kattintson a **Mentés** gombra. Az új alhálózathoz tartozó alhálózat-címtartomány új dinamikus címeket rendel hozzá. Miután hozzárendelte a hálózati adaptert egy új alhálózathoz, hozzárendelhet egy statikus IPv4-címeket az új alhálózat-címtartomány közül, ha Ön választja. A hálózati adapter IP-címeinek hozzáadásával, módosításával és eltávolításával kapcsolatos további tudnivalókért tekintse meg az [IP-címek kezelése](virtual-network-network-interface-addresses.md)című témakört.
 
 **Parancsok**
 
@@ -184,7 +184,7 @@ Ha a hálózati adapter egy virtuális géphez van csatlakoztatva, csak hálóza
 3. A **Beállítások** területen válassza a **hálózati biztonsági csoport** lehetőséget.
 4. Válassza a **Szerkesztés** elemet.
 5. Válassza a **hálózati biztonsági csoport** lehetőséget, majd válassza ki azt a hálózati biztonsági csoportot, amelyet a hálózati adapterhez szeretne rendelni, vagy válassza a **nincs** lehetőséget a hálózati biztonsági csoport leválasztásához.
-6. Válassza a **Mentés** lehetőséget.
+6. Kattintson a **Mentés** gombra.
 
 **Parancsok**
 

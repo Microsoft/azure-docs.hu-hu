@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 77af95f2decbfb81ed930591b03f71fb71780def
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: e71beb4e4b5d23dcd1cffa1f60462d782d37db2e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805248"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572180"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Azure biztonsági alapkonfiguráció biztonsági mentéshez
 
@@ -116,9 +116,9 @@ További információ: [Azure Security](../security/benchmarks/security-baseline
 
 **Útmutató**: Ha a Mars-ügynököt egy NSG vagy Azure Firewall által védett Azure-beli virtuális gépen használja, az Azure-tevékenység naplójának használatával figyelheti a NSG vagy a tűzfal konfigurációját. Előfordulhat, hogy olyan Azure Monitoron belül riasztásokat hoz létre, amelyek elindítják az erőforrások módosításait.
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Műveletnapló-riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](../azure-monitor/platform/alerts-activity-log.md)
+- [Műveletnapló-riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -142,7 +142,7 @@ További információ: [Azure Security](../security/benchmarks/security-baseline
 
 Emellett betöltheti a naplókat a Azure Monitor segítségével a Azure Backup által generált biztonsági adatokat összesítve. A Azure Monitoron belül Log Analytics munkaterülettel kérdezheti le és végezheti el az elemzéseket, és használhat tárolási fiókokat a hosszú távú/archiválási tároláshoz. Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó biztonsági incidensek és események felügyeletét (SIEM).
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/platform/activity-log.md)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 - [Diagnosztikai beállítások használata Recovery Services-tárolók számára](./backup-azure-diagnostic-events.md)
 
@@ -158,7 +158,7 @@ Emellett betöltheti a naplókat a Azure Monitor segítségével a Azure Backup 
 
 Emellett a Azure Backup diagnosztikai eseményeket küld, amelyeket az elemzés, a riasztás és a jelentéskészítés céljából gyűjthet és használhat fel. A Recovery Services-tároló diagnosztikai beállításait a Azure Portal használatával konfigurálhatja. Egy vagy több diagnosztikai eseményt is elküldhet egy Storage-fiókba, az Event hub-ba vagy egy Log Analytics-munkaterületre.
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/platform/activity-log.md)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 - [Diagnosztikai beállítások használata Recovery Services-tárolók számára](./backup-azure-diagnostic-events.md)
 
@@ -178,7 +178,7 @@ Emellett a Azure Backup diagnosztikai eseményeket küld, amelyeket az elemzés,
 
 **Útmutató**: a Azure monitor az Azure Recovery Services-tárolóhoz társított log Analytics-munkaterületek naplózási megőrzési időszakának beállítása a szervezet megfelelőségi előírásai szerint.
 
-- [Napló-megőrzési paraméterek beállítása](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Napló-megőrzési paraméterek beállítása](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -192,9 +192,9 @@ Engedélyezze az Azure-tevékenység naplójának diagnosztikai beállításait,
 
 - [Azure Backup munkaterhelések figyelése](./backup-azure-monitoring-built-in-monitor.md)
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/platform/activity-log.md)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
-- [Azure-Tevékenységnaplók összegyűjtése és elemzése Log Analytics munkaterületen Azure Monitor](../azure-monitor/platform/activity-log.md)
+- [Azure-Tevékenységnaplók összegyűjtése és elemzése Log Analytics munkaterületen Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -212,7 +212,7 @@ Egy Log Analytics munkaterületet is felvehet az Azure Sentinel szolgáltatásba
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-- [Naplózási riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](../azure-monitor/platform/alerts-log.md)
+- [Naplózási riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](../azure-monitor/alerts/alerts-log.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -518,7 +518,7 @@ Ha a MARS-ügynökkel készít biztonsági mentést, vagy egy ügyfél által fe
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használatával riasztásokat hozhat létre, amelyekkel az Azure Recovery Services-tárolók, valamint más kritikus vagy kapcsolódó erőforrások változásai zajlanak.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/platform/alerts-activity-log.md)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 

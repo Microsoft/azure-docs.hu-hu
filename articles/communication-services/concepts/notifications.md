@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d2b77708609f61eeb4ce33148f020027d646836b
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 30cb023b8ca78f252dbf087a604a61b8aa5c6659
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813598"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577395"
 ---
 # <a name="communication-services-notifications"></a>Kommunikációs szolgáltatások értesítései
 
@@ -91,7 +91,7 @@ Ha nem látja a leküldéses értesítéseket az eszközön, három helyen lehet
 
 Az értesítés eldobásának első helye (az Azure Notification Hubs nem fogadta el az Azure kommunikációs szolgáltatásokból érkező értesítéseket) alább látható. A másik két helyen az [eldobott értesítések diagnosztizálása az Azure Notification Hubs-ban](../../notification-hubs/notification-hubs-push-notification-fixer.md)című témakörben talál további információt.
 
-Az egyik lehetőség, hogy megnézze, hogy a kommunikációs szolgáltatások erőforrása küld-e értesítéseket az Azure Notification Hubs számára, hogy megtekinti a `incoming messages` kapcsolódó [Azure Notification hub-metrikák](../../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs)metrikáját.
+Az egyik lehetőség, hogy megnézze, hogy a kommunikációs szolgáltatások erőforrása küld-e értesítéseket az Azure Notification Hubs számára, hogy megtekinti a `incoming messages` kapcsolódó [Azure Notification hub-metrikák](../../azure-monitor/essentials/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs)metrikáját.
 
 Az alábbiakban néhány gyakori helytelen konfigurációt lehet okozni, amelyek miatt az Azure Notification hub nem fogadja el a kommunikációs szolgáltatások erőforrásaitól érkező értesítéseket.
 
@@ -123,7 +123,7 @@ Győződjön meg arról, hogy a kommunikációs szolgáltatások erőforrását 
 
 Ha újragenerálta a csatolt Azure Notification hub kapcsolati karakterláncát, a kapcsolati karakterláncot a kommunikációs szolgáltatások erőforrásában lévő új értékkel kell frissítenie az [értesítési központ újracsatolásával](#notification-hub-provisioning).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](../../event-grid/overview.md)
 * Ha többet szeretne megtudni az Azure Notification hub-fogalmakról, tekintse meg az [azure Notification Hubs dokumentációját](../../notification-hubs/index.yml) .

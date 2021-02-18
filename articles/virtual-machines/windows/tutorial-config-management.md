@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b28d7ee5d2eeb1015695e32e5918bd94f9051050
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a478d9c620219a768983570897715f924565a80f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736668"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594306"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Oktatóanyag: változások figyelése és Windowsos virtuális gépek frissítése az Azure-ban
 
@@ -76,7 +76,7 @@ A virtuális gép Update Managementának engedélyezése:
 
 A rendszer ellenőrzi, hogy engedélyezve van-e a Update Management ezen a virtuális gépen. Az ellenőrzés magában foglalja a Log Analytics munkaterület, a csatolt Automation-fiókok, valamint az, hogy a megoldás szerepel-e a munkaterületen.
 
-[Log Analytics](../../azure-monitor/log-query/log-query-overview.md) munkaterületet használ a szolgáltatások és szolgáltatások, például a Update Management által generált adatok gyűjtéséhez. A munkaterület egyetlen központi helyet biztosít a több forrásból származó adatok áttekintéséhez és elemzéséhez.
+[Log Analytics](../../azure-monitor/logs/log-query-overview.md) munkaterületet használ a szolgáltatások és szolgáltatások, például a Update Management által generált adatok gyűjtéséhez. A munkaterület egyetlen központi helyet biztosít a több forrásból származó adatok áttekintéséhez és elemzéséhez.
 
 Ha további műveleteket szeretne végrehajtani a frissítéseket igénylő virtuális gépeken, Azure Automation használatával runbookok futtathat a virtuális gépeken. Ilyen műveletek közé tartoznak a frissítések letöltése vagy alkalmazása.
 
@@ -86,7 +86,7 @@ Az **Update Management engedélyezése** ablakban válassza ki a log Analytics m
 
 A rendszer az előkészítés során hiányzó alábbi előfeltételek bármelyikét automatikusan hozzáadja:
 
-* [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) munkaterület
+* [Log Analytics](../../azure-monitor/logs/log-query-overview.md) munkaterület
 * [Automatizálás](../../automation/index.yml)
 * [Hibrid runbook Worker](../../automation/automation-hybrid-runbook-worker.md), amely engedélyezve van a virtuális gépen
 
@@ -113,7 +113,7 @@ A virtuális gép új központi telepítésének megadásához válassza a friss
 | **Név** |Adjon meg egy egyedi nevet a frissítés központi telepítésének azonosításához. |
 |**Operációs rendszer**| Válassza a **Linux** vagy a **Windows** lehetőséget.|
 | **Frissítendő csoportok** |Az Azure-ban üzemeltetett virtuális gépek esetében az előfizetés, az erőforráscsoportok, a helyszínek és a címkék kombinációján alapuló lekérdezést adhat meg. Ez a lekérdezés az Azure által üzemeltetett virtuális gépek dinamikus csoportjait hozza létre, amelyek beletartoznak a központi telepítésbe. </br></br>Az Azure-ban nem üzemeltetett virtuális gépek esetén válasszon ki egy meglévő mentett keresést. Ezzel a kereséssel kiválaszthatja a központi telepítésbe felvenni kívánt virtuális gépek egy csoportját. </br></br> További információ: [dinamikus csoportok](../../automation/update-management/configure-groups.md).|
-| **Frissítendő gépek** |Válassza a **mentett keresés**, **importált csoport** vagy **gépek** lehetőséget.<br/><br/>Ha a **gépek** lehetőséget választja, a legördülő listából választhat egyes gépeket. Az egyes gépek készültsége a tábla **frissítési ügynök készültségi** oszlopában látható.</br></br> A számítógépcsoportok Azure Monitor-naplókban való létrehozásának különböző módszereiről a következő témakörben talál további információt: [számítógépcsoportok Azure monitor-naplókban](../../azure-monitor/platform/computer-groups.md) |
+| **Frissítendő gépek** |Válassza a **mentett keresés**, **importált csoport** vagy **gépek** lehetőséget.<br/><br/>Ha a **gépek** lehetőséget választja, a legördülő listából választhat egyes gépeket. Az egyes gépek készültsége a tábla **frissítési ügynök készültségi** oszlopában látható.</br></br> A számítógépcsoportok Azure Monitor-naplókban való létrehozásának különböző módszereiről a következő témakörben talál további információt: [számítógépcsoportok Azure monitor-naplókban](../../azure-monitor/logs/computer-groups.md) |
 |**Frissítési besorolások**|Válassza ki az összes szükséges frissítési besorolást.|
 |**Frissítések belefoglalása/kizárása**|Válassza ezt a lehetőséget a **Belefoglalás/kizárás** ablaktábla megnyitásához. A szerepeltetni kívánt frissítések és a kizárandó módosítások külön lapokon találhatók. További információ a bevonások kezeléséről: a [frissítések központi telepítésének ütemezett időpontja](../../automation/update-management/deploy-updates.md#schedule-an-update-deployment). |
 |**Ütemezési beállítások**|Válassza ki a kezdéshez szükséges időt, és válassza az **egyszer** vagy az **ismétlődő** lehetőséget.|
@@ -199,7 +199,7 @@ Az előző diagramon az idő múlásával történt változások láthatók. Miu
 
 A sávdiagramok minden sora egy másik, nyomon követhető módosítás típusát jelöli. Ezek a típusok a Linux-démonok, a fájlok, a Windows-beállításkulcsok, a szoftverek és a Windows-szolgáltatások. A **módosítás lap a változás** részleteit jeleníti meg. A változások az egyes előfordulások sorrendjében jelennek meg, és a legutóbbi változás látható először.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban konfigurálta és ellenőrizte Change Tracking és Update Management a virtuális géphez. Megtanulta végrehajtani az alábbi műveleteket:
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4cf623ed960fd2efe6fdf506751858796008cef4
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 8e86679e7531bb70d6d4f1a27718c2fc8f0e8a9c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202028"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578537"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>Azure biztonsági alapkonfiguráció az Azure Kubernetes Service-hez
 
@@ -196,9 +196,9 @@ Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életb
 
 Azure Monitor naplók segítségével engedélyezheti és lekérdezheti a naplókat a Master Components, a Kube-apiserver és a Kube-Controller-Manager használatával. Hozza létre és kezelje a kubelet futtató csomópontokat a Container Runtime használatával, és telepítse az alkalmazásaikat a felügyelt Kubernetes API-kiszolgálón. 
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/platform/alerts-activity-log.md)
+- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [A Kubernetes főcsomópont-naplóinak engedélyezése és áttekintése az Azure Kubernetes Service-ben (AKS)](view-master-logs.md)
 
@@ -240,9 +240,9 @@ A szervezeti üzleti követelmények alapján engedélyezheti és elküldheti ez
 
 - [Tekintse át a naplózási sémát, beleértve a naplózási szerepköröket](view-master-logs.md)
 
-- [A tárolók Azure Monitor megismerése](../azure-monitor/insights/container-insights-overview.md)
+- [A tárolók Azure Monitor megismerése](../azure-monitor/containers/container-insights-overview.md)
 
-- [Azure Monitor engedélyezése tárolók számára](../azure-monitor/insights/container-insights-onboard.md)
+- [Azure Monitor engedélyezése tárolók számára](../azure-monitor/containers/container-insights-onboard.md)
 
 - [A Kubernetes főcsomópont-naplóinak engedélyezése és áttekintése az Azure Kubernetes Service-ben (AKS)](view-master-logs.md)
 
@@ -294,7 +294,7 @@ Az adatgyűjtés szükséges a hiányzó frissítések láthatóságának biztos
 
 Útmutató: az Azure Kubernetes szolgáltatás (ak) példányainak **Bevezetése** Azure monitor és a megfelelő Azure log Analytics munkaterület megőrzési időszakának beállítása a szervezet megfelelőségi követelményeinek megfelelően. 
 
-- [Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -312,7 +312,7 @@ Tekintse meg az AK Master Components (Kube-apiserver és Kube-controllermanager)
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/log-query/get-started-queries.md)
+- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/logs/get-started-queries.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -422,7 +422,7 @@ Szabályzatokat és eljárásokat hozhat létre a dedikált rendszergazdai fiók
 
 **Útmutató**: egyszeri bejelentkezés használata az Azure Kubernetes Service (ak) szolgáltatáshoz Azure Active Directory (Azure ad) integrált hitelesítéssel egy AK-fürthöz.
 
-- [A Kubernetes-naplók,-események és a pod-metrikák valós idejű megtekintése](../azure-monitor/insights/container-insights-livedata-overview.md)
+- [A Kubernetes-naplók,-események és a pod-metrikák valós idejű megtekintése](../azure-monitor/containers/container-insights-livedata-overview.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -518,7 +518,7 @@ Vegye figyelembe a támogatási és hibaelhárítási célokra használt szerepk
 **Útmutató**: az Azure Kubernetes szolgáltatás (ak) felhasználói hitelesítésének integrálása Azure Active Directory (Azure ad) használatával. Diagnosztikai beállítások létrehozása az Azure AD-hez, a naplózási és bejelentkezési naplók elküldése egy Azure Log Analytics-munkaterületre. A kívánt riasztások konfigurálása (például ha egy inaktivált fiók megpróbál bejelentkezni) egy Azure Log Analytics-munkaterületen belül.
 - [Azure-tevékenységnaplók integrálása az Azure Monitorba](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Naplózási riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](../azure-monitor/platform/alerts-log.md)
+- [Naplózási riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](../azure-monitor/alerts/alerts-log.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -673,11 +673,11 @@ Riasztások konfigurálása a proaktív értesítésekhez vagy a naplók létreh
 
 Az Azure-tevékenység naplójának használatával magas szinten figyelheti az AK-fürtöket és a kapcsolódó erőforrásokat. A Prometheus-nal integrálva megtekintheti a csomópontokból és Kubernetes származó alkalmazások és munkaterhelések mérőszámait, és lekérdezésekkel egyéni riasztásokat, irányítópultokat és részletes elemzéseket készíthet.
 
-- [A tárolók Azure Monitor megismerése](../azure-monitor/insights/container-insights-overview.md)
+- [A tárolók Azure Monitor megismerése](../azure-monitor/containers/container-insights-overview.md)
 
-- [Azure Monitor engedélyezése tárolók számára](../azure-monitor/insights/container-insights-onboard.md)
+- [Azure Monitor engedélyezése tárolók számára](../azure-monitor/containers/container-insights-onboard.md)
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -1235,7 +1235,7 @@ A biztonsági mentés előtt távolítsa el az állapotokat az alkalmazásokból
 
 A PowerShell-parancsokkal a Key Vault tanúsítványok, kulcsok, felügyelt tárolási fiókok és titkok rendszeres automatikus biztonsági mentését végezheti el. 
 
-Példa:
+Például:
 
 Backup-AzKeyVaultCertificate Backup-AzKeyVaultKey Backup-AzKeyVaultManagedStorageAccount Backup-AzKeyVaultSecret
 
@@ -1259,7 +1259,7 @@ Backup-AzKeyVaultCertificate Backup-AzKeyVaultKey Backup-AzKeyVaultManagedStorag
 
 A PowerShell-parancsokkal rendszeres időközönként Key Vault tanúsítványok, kulcsok, felügyelt tárolási fiókok és titkok adat-visszaállítását végzi. 
 
-Példa:
+Például:
 
 Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedStorageAccount Restore-AzKeyVaultSecret
 

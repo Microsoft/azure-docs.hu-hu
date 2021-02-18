@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 8cfbe26458de630aaf411aade4a31cb4e9c72b17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8015f610dfd9404810a1fa19c951078ebb45ac4f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89295427"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588499"
 ---
 # <a name="diagnostic-logs-schemas"></a>Diagnosztikai naplók sémái
 
@@ -26,13 +26,13 @@ ms.locfileid: "89295427"
 
 [Azure monitor](../../azure-monitor/overview.md) lehetővé teszi a metrikák és diagnosztikai naplók figyelését, amelyek segítenek megérteni az alkalmazások teljesítményét. Nyomon követheti Media Services diagnosztikai naplóit, és riasztásokat és értesítéseket hozhat létre az összegyűjtött metrikák és naplók számára. Naplókat küldhet az [Azure Storage](https://azure.microsoft.com/services/storage/)-ba, továbbíthatja őket az [Azure Event Hubsba](https://azure.microsoft.com/services/event-hubs/), és exportálhatja őket [log Analyticsba](https://azure.microsoft.com/services/log-analytics/), vagy külső szolgáltatásokhoz is használhatja őket.
 
-Részletes információ: [Azure monitor metrikák](../../azure-monitor/platform/data-platform.md) és [Azure monitor diagnosztikai naplók](../../azure-monitor/platform/platform-logs-overview.md).
+Részletes információ: [Azure monitor metrikák](../../azure-monitor/data-platform.md) és [Azure monitor diagnosztikai naplók](../../azure-monitor/essentials/platform-logs-overview.md).
 
 Ez a cikk Media Services diagnosztikai naplók sémáit ismerteti.
 
 ## <a name="top-level-diagnostic-logs-schema"></a>Legfelső szintű diagnosztikai naplók sémája
 
-A legfelső szintű diagnosztikai naplók sémájának részletes ismertetését lásd: [támogatott szolgáltatások, sémák és kategóriák az Azure diagnosztikai naplóihoz](../../azure-monitor/platform/resource-logs-schema.md).
+A legfelső szintű diagnosztikai naplók sémájának részletes ismertetését lásd: [támogatott szolgáltatások, sémák és kategóriák az Azure diagnosztikai naplóihoz](../../azure-monitor/essentials/resource-logs-schema.md).
 
 ## <a name="key-delivery-log-schema"></a>Kulcs kézbesítési naplójának sémája
 

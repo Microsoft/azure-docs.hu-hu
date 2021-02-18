@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: azure-communication-services
 author: mikben
 manager: mikben
@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: a76c6467dac69fd3d21aa659c52227046c166938
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 04e658e3107ac0c9622ca1601eb93b01b9986fef
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94816782"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100645495"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 Az első lépések előtt ügyeljen a következőre:
@@ -28,7 +28,7 @@ Az első lépések előtt ügyeljen a következőre:
 
 ### <a name="create-a-new-c-application"></a>Új C#-alkalmazás létrehozása
 
-A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `ChatQuickstart` . Ez a parancs egy egyszerű "„Helló világ!” alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: **program.cs**.
+A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `ChatQuickstart` . Ez a parancs egy egyszerű "Hello World" C#-projektet hoz létre egyetlen forrásfájlban: **program.cs**.
 
 ```console
 dotnet new console -o ChatQuickstart
@@ -46,7 +46,7 @@ dotnet build
 Az Azure kommunikációs csevegési ügyféloldali kódtár telepítése a .NET-hez
 
 ```PowerShell
-dotnet add package Azure.Communication.Chat --version 1.0.0-beta.3
+dotnet add package Azure.Communication.Chat --version 1.0.0-beta.4
 ``` 
 
 ## <a name="object-model"></a>Objektummodell
@@ -56,11 +56,11 @@ A következő osztályok a C#-hoz készült Azure Communication Services cseveg�
 | Név                                  | Leírás                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | ChatClient | Ez az osztály szükséges a csevegési funkciókhoz. Létrehozza azt az előfizetési adatokkal, és felhasználhatja a szálak létrehozásához, lekéréséhez és törléséhez. |
-| ChatThreadClient | Ez az osztály szükséges a csevegési szál működéséhez. A példányokat a ChatClient keresztül szerezheti be, és használhatja az üzenetek küldésére/fogadására/frissítésére/törlésére, a felhasználók hozzáadására/eltávolítására/lekérésére, valamint a beírási értesítések küldésére |
+| ChatThreadClient | Ez az osztály szükséges a csevegési szál működéséhez. A példányokat a ChatClient keresztül szerezheti be, és használhatja az üzenetek küldésére/fogadására/frissítésére/törlésére, a résztvevők hozzáadására/eltávolítására/beolvasására, valamint a beírási értesítések küldésére |
 
 ## <a name="create-a-chat-client"></a>Csevegési ügyfél létrehozása
 
-Csevegési ügyfél létrehozásához használja a kommunikációs szolgáltatások végpontját és az előfeltételként szükséges lépések részeként létrehozott hozzáférési jogkivonatot. Az `CommunicationIdentityClient` ügyfél-függvénytár osztályát kell használnia `Administration` egy felhasználó létrehozásához, és ki kell állítania a tokent a csevegési ügyfélnek való továbbításhoz. További információ a [felhasználói hozzáférési tokenekről](../../access-tokens.md).
+Csevegési ügyfél létrehozásához használja a kommunikációs szolgáltatások végpontját és az előfeltételként szükséges lépések részeként létrehozott hozzáférési tokent. Az `CommunicationIdentityClient` ügyfél-függvénytár osztályát kell használnia `Administration` egy felhasználó létrehozásához, és ki kell állítania a tokent a csevegési ügyfélnek való továbbításhoz. További információ a [felhasználói hozzáférési tokenekről](../../access-tokens.md).
 
 ```csharp
 using Azure.Communication.Identity;
@@ -69,24 +69,25 @@ using Azure.Communication.Chat;
 // Your unique Azure Communication service endpoint
 Uri endpoint = new Uri("https://<RESOURCE_NAME>.communication.azure.com");
 
-CommunicationUserCredential communicationUserCredential = new CommunicationUserCredential(<Access_Token>);
-ChatClient chatClient = new ChatClient(endpoint, communicationUserCredential);
+CommunicationTokenCredential communicationTokenCredential = new CommunicationTokenCredential(<Access_Token>);
+ChatClient chatClient = new ChatClient(endpoint, communicationTokenCredential);
 ```
 
 ## <a name="start-a-chat-thread"></a>Csevegési szál elindítása
 
-`createChatThread`Csevegési szál létrehozásához használja a metódust.
-- A használatával `topic` témakört adhat ehhez a csevegéshez; A témakör a funkció használatával frissíthető a csevegési szál létrehozása után `UpdateThread` .
-- `members`A tulajdonság használatával adja át a `ChatThreadMember` csevegési szálhoz hozzáadandó objektumok listáját. Az `ChatThreadMember` objektum egy objektummal van inicializálva `CommunicationUser` . Egy objektum lekéréséhez `CommunicationUser` meg kell adnia egy hozzáférési azonosítót, amelyet a következő utasítások alapján hozott létre [egy felhasználó létrehozásához](../../access-tokens.md#create-an-identity) :
+`createChatThread`Csevegési szál létrehozásához használja a chatClient metódusát
+- A használatával `topic` témakört adhat ehhez a csevegéshez; A témakör a funkció használatával frissíthető a csevegési szál létrehozása után `UpdateTopic` .
+- `participants`A tulajdonság használatával adja át a `ChatParticipant` csevegési szálhoz hozzáadandó objektumok listáját. Az `ChatParticipant` objektum egy objektummal van inicializálva `CommunicationIdentifier` . `CommunicationIdentifier` lehet típus `CommunicationUserIdentifier` `MicrosoftTeamsUserIdentifier` vagy `PhoneNumberIdentifier` . Egy objektum lekéréséhez például meg `CommunicationIdentifier` kell adnia egy hozzáférési azonosítót, amelyet a következő utasítások alapján hozott létre [egy felhasználó létrehozásához](../../access-tokens.md#create-an-identity) :
 
-A válasz a `chatThreadClient` létrehozott csevegési szálon végzett műveletek végrehajtásához használható: Tagok hozzáadása a csevegési szálhoz, üzenet küldése, üzenet törlése stb. Tartalmazza azt az `Id` attribútumot, amely a csevegési szál egyedi azonosítója. 
+A createChatThread metódus válasz objektuma tartalmazza a chatThread részleteit. A csevegési szál műveleteivel, például a résztvevők hozzáadásával, üzenet küldésével, üzenet törlésével stb. a chatThreadClient-példánynak a ChatClient-ügyfél GetChatThreadClient metódusának használatával kell példányt létrehoznia. 
 
 ```csharp
-var chatThreadMember = new ChatThreadMember(new CommunicationUser("<Access_ID>"))
+var chatParticipant = new ChatParticipant(communicationIdentifier: new CommunicationUserIdentifier(id: "<Access_ID>"))
 {
     DisplayName = "UserDisplayName"
 };
-ChatThreadClient chatThreadClient = await chatClient.CreateChatThreadAsync(topic: "Chat Thread topic C# sdk", members: new[] { chatThreadMember });
+CreateChatThreadResult createChatThreadResult = await chatClient.CreateChatThreadAsync(topic: "Hello world!", participants: new[] { chatParticipant });
+ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(createChatThreadResult.ChatThread.Id);
 string threadId = chatThreadClient.Id;
 ```
 
@@ -100,21 +101,24 @@ ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(threadId);
 
 ## <a name="send-a-message-to-a-chat-thread"></a>Üzenet küldése csevegési szálnak
 
-A `SendMessage` metódus használatával küldhet üzenetet a szálazonosító által azonosított szálnak.
+`SendMessage`Üzenet küldése egy szálnak.
 
-- `content`A csevegési üzenet tartalmának megadásához használja a következőt:.
-- Ezzel `priority` a beállítással megadhatja az üzenet prioritási szintjét, például a "NORMAL" vagy a "magas" értéket, ha nincs megadva, a "NORMAL" értéket fogja használni.
-- Ezzel a `senderDisplayName` beállítással megadhatja a küldő megjelenítendő nevét, ha nincs megadva, a rendszer üres nevet használ.
-
-`SendChatMessageResult` az üzenet elküldésekor kapott válasz egy azonosítót tartalmaz, amely az üzenet egyedi azonosítója.
+- Az `content` üzenet tartalmának megadásához használja a következőt:.
+- Használja az `type` üzenet tartalmának típusára, például "text" vagy "HTML". Ha nincs megadva, a rendszer a "text" értéket fogja beállítani.
+- A (z `senderDisplayName` ) használatával adja meg a feladó megjelenítendő nevét. Ha nincs megadva, a rendszer üres karakterláncot állít be.
 
 ```csharp
-var content = "hello world";
-var priority = ChatMessagePriority.Normal;
-var senderDisplayName = "sender name";
+var messageId = await chatThreadClient.SendMessageAsync(content:"hello world", type: );
+```
+## <a name="get-a-message"></a>Üzenet beszerzése
 
-SendChatMessageResult sendChatMessageResult = await chatThreadClient.SendMessageAsync(content, priority, senderDisplayName);
-string messageId = sendChatMessageResult.Id;
+A használatával `GetMessage` kérhet le üzenetet a szolgáltatásból.
+`messageId` az üzenet egyedi azonosítója.
+
+`ChatMessage` a válasz visszakapott egy üzenetet, amely tartalmaz egy azonosítót, amely az üzenet egyedi azonosítója a többi mező között. Tekintse meg az Azure. Communication. chat. ChatMessage
+
+```csharp
+ChatMessage chatMessage = await chatThreadClient.GetMessageAsync(messageId);
 ```
 
 ## <a name="receive-chat-messages-from-a-chat-thread"></a>Csevegési üzenetek fogadása csevegési szálból
@@ -137,11 +141,13 @@ await foreach (ChatMessage message in allMessages)
 
 - `Text`: Egy szál tagja által küldött normál csevegési üzenet.
 
-- `ThreadActivity/TopicUpdate`: Az a Rendszerüzenet, amely azt jelzi, hogy a témakör frissítve lett.
+- `Html`: Formázott szöveges üzenet. Vegye figyelembe, hogy a kommunikációs szolgáltatások felhasználói jelenleg nem küldhetnek RichText üzeneteket. Ezt az üzenetet a csapatok felhasználóitól a kommunikációs szolgáltatások felhasználóinak küldött üzenetek támogatják a csapatok együttműködési forgatókönyvekben.
 
-- `ThreadActivity/AddMember`: Az a Rendszerüzenet, amely azt jelzi, hogy egy vagy több tag hozzá lett adva a csevegési szálhoz.
+- `TopicUpdated`: Az a Rendszerüzenet, amely azt jelzi, hogy a témakör frissítve lett. ReadOnly
 
-- `ThreadActivity/DeleteMember`: Az a Rendszerüzenet, amely azt jelzi, hogy a tag el lett távolítva a csevegési szálból.
+- `ParticipantAdded`: Az a Rendszerüzenet, amely azt jelzi, hogy egy vagy több résztvevő hozzá lett adva a csevegési szálhoz. ReadOnly
+
+- `ParticipantRemoved`: A résztvevőt jelző Rendszerüzenet el lett távolítva a csevegési szálból.
 
 További részletek: [üzenetek típusai](../../../concepts/chat/concepts.md#message-types).
 
@@ -164,31 +170,77 @@ string id = "id-of-message-to-delete";
 await chatThreadClient.DeleteMessageAsync(id);
 ```
 
-## <a name="add-a-user-as-member-to-the-chat-thread"></a>Felhasználó hozzáadása a csevegési szálhoz tagként
+## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>Felhasználó felvétele a csevegési szálba résztvevőként
 
-Miután létrehozta a szálat, hozzáadhat és eltávolíthat felhasználókat. A felhasználók hozzáadásával hozzáférést biztosíthat számukra, hogy üzeneteket küldhessen a szálnak, illetve más tagokat vegyen fel/távolítson el. A hívás előtt `AddMembers` Győződjön meg arról, hogy új hozzáférési jogkivonatot és identitást szerzett az adott felhasználó számára. A felhasználónak szüksége lesz erre a hozzáférési jogkivonatra ahhoz, hogy inicializálja a csevegési ügyfelet.
+Miután létrehozta a szálat, hozzáadhat és eltávolíthat felhasználókat. A felhasználók hozzáadásával hozzáférést biztosíthat számukra, hogy üzeneteket küldhessen a szálnak, illetve más résztvevőt vegyen fel/távolítson el. A hívás előtt `AddParticipants` Győződjön meg arról, hogy új hozzáférési jogkivonatot és identitást szerzett az adott felhasználó számára. A felhasználónak szüksége lesz erre a hozzáférési jogkivonatra ahhoz, hogy inicializálja a csevegési ügyfelet.
 
-`AddMembers`A metódus használatával a szálazonosító által azonosított szálat adhat hozzá a szálhoz.
-
- - A használatával `members` listázhatja a csevegési szálba felvenni kívánt tagokat;
- - `User`, kötelező, az új felhasználóhoz kapott identitás.
- - `DisplayName`, nem kötelező, a szál tagja megjelenítendő neve.
- - `ShareHistoryTime`, nem kötelező, a csevegési előzmények megosztásának időpontja a taggal. Ha meg szeretné osztani a előzményeket a csevegési szál kezdete óta, állítsa azt a DateTime. MinValue értékre. Ha a tag hozzáadása előtt nem szeretne előzményeket megosztani, állítsa be az aktuális időpontra. A részleges előzmények megosztásához állítsa azt egy időpontra a szál létrehozása és az aktuális idő között.
+A használatával `AddParticipants` hozzáadhat egy vagy több résztvevőt a csevegési szálhoz. Az egyes szál-résztvevő (k) támogatott attribútumai a következők:
+- `communicationUser`, kötelező, a szál résztvevő identitása.
+- `displayName`, nem kötelező, a szál résztvevő megjelenítendő neve.
+- `shareHistoryTime`, nem kötelező, a csevegési előzmények megosztásának időpontja a résztvevővel.
 
 ```csharp
-ChatThreadMember member = new ChatThreadMember(communicationUser);
-member.DisplayName = "display name member 1";
-member.ShareHistoryTime = DateTime.MinValue; // share all history
-await chatThreadClient.AddMembersAsync(members: new[] {member});
+var josh = new CommunicationUserIdentifier(id: "<Access_ID_For_Josh>");
+var gloria = new CommunicationUserIdentifier(id: "<Access_ID_For_Gloria>");
+var amy = new CommunicationUserIdentifier(id: "<Access_ID_For_Amy>");
+
+var participants = new[]
+{
+    new ChatParticipant(josh) { DisplayName = "Josh" },
+    new ChatParticipant(gloria) { DisplayName = "Gloria" },
+    new ChatParticipant(amy) { DisplayName = "Amy" }
+};
+
+await chatThreadClient.AddParticipantsAsync(participants);
 ```
 ## <a name="remove-user-from-a-chat-thread"></a>Felhasználó eltávolítása csevegési szálból
 
-A felhasználók egy szálhoz való hozzáadásához hasonlóan a csevegési szálból is eltávolíthat felhasználókat. Ehhez nyomon kell követnie a felvett tagok identitását (CommunicationUser).
+A felhasználók egy szálhoz való hozzáadásához hasonlóan a csevegési szálból is eltávolíthat felhasználókat. Ehhez nyomon kell követnie a felvett résztvevő identitását `CommunicationUser` .
 
 ```csharp
-await chatThreadClient.RemoveMemberAsync(communicationUser);
+var gloria = new CommunicationUserIdentifier(id: "<Access_ID_For_Gloria>");
+await chatThreadClient.RemoveParticipantAsync(gloria);
 ```
 
+## <a name="get-thread-participants"></a>Hozzászóláslánc résztvevőinek beolvasása
+
+A `GetParticipants` csevegési szál résztvevőinek beolvasására használható.
+
+```csharp
+AsyncPageable<ChatParticipant> allParticipants = chatThreadClient.GetParticipantsAsync();
+await foreach (ChatParticipant participant in allParticipants)
+{
+    Console.WriteLine($"{((CommunicationUserIdentifier)participant.User).Id}:{participant.DisplayName}:{participant.ShareHistoryTime}");
+}
+```
+
+## <a name="send-typing-notification"></a>Begépelési értesítés küldése
+
+A használatával `SendTypingNotification` jelezheti, hogy a felhasználónak választ kell beírnia a szálra.
+
+```csharp
+await chatThreadClient.SendTypingNotificationAsync();
+```
+
+## <a name="send-read-receipt"></a>Olvasási visszaigazolás küldése
+
+A használatával `SendReadReceipt` értesítheti a többi résztvevőt, hogy a felhasználó beolvassa az üzenetet.
+
+```csharp
+await chatThreadClient.SendReadReceiptAsync(messageId);
+```
+
+## <a name="get-read-receipts"></a>Olvasási visszaigazolások beolvasása
+
+Az `GetReadReceipts` üzenetek állapotának ellenőrzéséhez használja a csevegési szál többi résztvevője által olvasott üzeneteket.
+
+```csharp
+AsyncPageable<ChatMessageReadReceipt> allReadReceipts = chatThreadClient.GetReadReceiptsAsync();
+await foreach (ChatMessageReadReceipt readReceipt in allReadReceipts)
+{
+    Console.WriteLine($"{readReceipt.ChatMessageId}:{((CommunicationUserIdentifier)readReceipt.Sender).Id}:{readReceipt.ReadOn}");
+}
+```
 ## <a name="run-the-code"></a>A kód futtatása
 
 Futtassa az alkalmazást az alkalmazás könyvtárából a `dotnet run` paranccsal.

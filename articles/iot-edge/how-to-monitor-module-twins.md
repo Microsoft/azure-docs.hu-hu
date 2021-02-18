@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1a11d3a9a972188af4cf8f054349da98d69691a3
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: d968fb066e68fe1bb6986c63ce750c5de5c98cf9
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876158"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633178"
 ---
 # <a name="monitor-module-twins"></a>Ikermodulok monitorozása
 
@@ -200,8 +200,8 @@ Ha "A modul identitása nem létezik ehhez a modulhoz" üzenet jelenik meg, ez a
 Két modul áttekintéséhez és szerkesztéséhez:
 
 1. Ha még nincs telepítve, telepítse az [Azure IoT Tools bővítményt](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) a Visual Studio Code-hoz.
-1. Az **Explorerben**bontsa ki az **Azure IoT hub**elemet, majd bontsa ki az eszközt a figyelni kívánt modullal.
-1. Kattintson a jobb gombbal a modulra, és válassza a **modul-dupla szerkesztés**lehetőséget. A rendszer letölti a különálló modul ideiglenes fájlját a számítógépre, és megjeleníti a Visual Studio Code-ban.
+1. Az **Explorerben** bontsa ki az **Azure IoT hub** elemet, majd bontsa ki az eszközt a figyelni kívánt modullal.
+1. Kattintson a jobb gombbal a modulra, és válassza a **modul-dupla szerkesztés** lehetőséget. A rendszer letölti a különálló modul ideiglenes fájlját a számítógépre, és megjeleníti a Visual Studio Code-ban.
 
   ![Modul beszerzése a Visual Studio Code-ban való szerkesztéshez](./media/how-to-monitor-module-twins/edit-module-twin-vscode.png)
 
@@ -213,7 +213,7 @@ Ha módosítja a módosításokat, válassza a szerkesztőben a kód fölötti *
 
 Ha szeretné megtekinteni, hogy a IoT Edge fut-e, használja az az [IoT hub meghívó-Module-Method](how-to-edgeagent-direct-method.md#ping) parancsot az IoT Edge-ügynök pingeléséhez.
 
-Az az [IOT hub Module-Twin](/cli/azure/ext/azure-cli-iot-ext/iot/hub/module-twin) Structure a következő parancsokat biztosítja:
+Az az [IOT hub Module-Twin](/cli/azure/ext/azure-iot/iot/hub/module-twin) Structure a következő parancsokat biztosítja:
 
 * **az IOT hub Module-Twin show** – modul kettős definíciójának megjelenítése.
 * **az IOT hub Module-Twin Update** – modul kettős definíciójának frissítése.

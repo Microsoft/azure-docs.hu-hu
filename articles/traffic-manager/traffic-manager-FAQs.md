@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: duau
-ms.openlocfilehash: 17ccfeb709c530a868a75ecd87052618aaea4846
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: fa8dba12a050e42e258e4224f29e379ff53f09d8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184577"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576669"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager gyakori kérdések (GYIK)
 
@@ -347,7 +347,7 @@ Azure Resource Manager megköveteli az összes erőforráscsoport számára a he
 
 Az egyes végpontok aktuális figyelési állapota a teljes profil mellett a Azure Portal jelenik meg. Ezek az információk a Traffic monitor [REST API](/rest/api/trafficmanager/), a PowerShell- [parancsmagok](/powershell/module/az.trafficmanager)és a [platformfüggetlen Azure CLI](/cli/azure/install-classic-cli)használatával is elérhetők.
 
-A Azure Monitor is használhatja a végpontok állapotának nyomon követéséhez, valamint a vizualizációk megjelenítéséhez. A Azure Monitor használatáról az [Azure monitoring dokumentációjában](../azure-monitor/platform/data-platform.md)olvashat bővebben.
+A Azure Monitor is használhatja a végpontok állapotának nyomon követéséhez, valamint a vizualizációk megjelenítéséhez. A Azure Monitor használatáról az [Azure monitoring dokumentációjában](../azure-monitor/data-platform.md)olvashat bővebben.
 
 ### <a name="can-i-monitor-https-endpoints"></a>Figyelhető a HTTPS-végpontok?
 
@@ -458,7 +458,7 @@ A végpontot elérő Traffic Manager állapot-ellenőrzések száma a következ�
 
 ### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>Hogyan kaphatok értesítést, ha az egyik végpontom leáll?
 
-A Traffic Manager által megadott mérőszámok egyike egy profilban található végpontok állapotának állapota. Ezt a profilban lévő összes végpont összesítésének tekintheti meg (például a végpontok 75%-a kifogástalan), vagy a végpontok szintjén. Traffic Manager mérőszámok elérhetők a Azure Monitoron keresztül, és a [riasztási képességeivel](../azure-monitor/platform/alerts-metric.md) értesítést kaphat, ha módosul a végpont állapotának változása. További részletek: [Traffic Manager mérőszámok és riasztások](traffic-manager-metrics-alerts.md).  
+A Traffic Manager által megadott mérőszámok egyike egy profilban található végpontok állapotának állapota. Ezt a profilban lévő összes végpont összesítésének tekintheti meg (például a végpontok 75%-a kifogástalan), vagy a végpontok szintjén. Traffic Manager mérőszámok elérhetők a Azure Monitoron keresztül, és a [riasztási képességeivel](../azure-monitor/alerts/alerts-metric.md) értesítést kaphat, ha módosul a végpont állapotának változása. További részletek: [Traffic Manager mérőszámok és riasztások](traffic-manager-metrics-alerts.md).  
 
 ## <a name="traffic-manager-nested-profiles"></a>Beágyazott profilok Traffic Manager
 

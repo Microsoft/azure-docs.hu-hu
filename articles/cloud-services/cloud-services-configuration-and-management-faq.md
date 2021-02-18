@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: c5dd09292897d69f90606e8661b4e6cb28090612
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 04a30a2446061df75d133bdbd088b7e71c59cade
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742590"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578224"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Konfigurációs és felügyeleti problémák az Azure Cloud Services (klasszikus) szolgáltatáshoz: gyakori kérdések (GYIK)
 
@@ -240,9 +240,9 @@ A Cloud Serviceshoz tartozó memória-metrikák alapján történő automatikus 
 
 A probléma megkerüléséhez használhatja a Application Insights. Az automatikus méretezés támogatja a Application Insights metrikák forrásaként, és a szerepkör-példányok számának méretezése a vendég metrikája alapján (például "memória").  Be kell állítania Application Insights a Cloud Service Project csomagfájl (*. cspkg) fájljában, és engedélyeznie kell Azure Diagnostics bővítményt a szolgáltatáson a feat megvalósításához.
 
-Ha további információt szeretne arról, hogyan használhatja az egyéni metrikákat a Application Insights segítségével az automatikus skálázás konfigurálásához Cloud Serviceson, tekintse meg az [Azure-beli egyéni metrika automatikus méretezésének első lépéseit](../azure-monitor/platform/autoscale-custom-metric.md) ismertető témakört.
+Ha további információt szeretne arról, hogyan használhatja az egyéni metrikákat a Application Insights segítségével az automatikus skálázás konfigurálásához Cloud Serviceson, tekintse meg az [Azure-beli egyéni metrika automatikus méretezésének első lépéseit](../azure-monitor/autoscale/autoscale-custom-metric.md) ismertető témakört.
 
-A Azure Diagnostics és a Cloud Services Application Insights integrálásával kapcsolatos további információkért lásd: [felhőalapú szolgáltatás, virtuális gép vagy Service Fabric diagnosztikai adatok küldése Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
+A Azure Diagnostics és a Cloud Services Application Insights integrálásával kapcsolatos további információkért lásd: [felhőalapú szolgáltatás, virtuális gép vagy Service Fabric diagnosztikai adatok küldése Application Insights](../azure-monitor/agents/diagnostics-extension-to-application-insights.md)
 
 További információ a Cloud Services Application Insightsének engedélyezéséről: [Application Insights for Azure Cloud Services](../azure-monitor/app/cloudservices.md)
 

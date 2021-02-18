@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 3/16/2020
-ms.openlocfilehash: 73705434aef3ee438c02fbfd6502d30e7620b695
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f5557140d77865a6d4c44316cecd512f877736e0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026454"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577087"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>A Azure Database for PostgreSQL-nagy kapacitású (Citus) metrikáinak beállítása a Azure Portal használatával
 
@@ -26,11 +26,11 @@ A következő műveletek elvégzéséhez beállíthatja a riasztást:
 * Hívja meg a webhookot.
 
 A riasztási szabályokkal kapcsolatos információkat a használatával konfigurálhatja és kérheti le:
-* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
-* [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
+* [Azure Portal](../azure-monitor/alerts/alerts-metric.md#create-with-azure-portal)
+* [Azure CLI](../azure-monitor/alerts/alerts-metric.md#with-azure-cli)
 * [Azure Monitor REST API](/rest/api/monitor/metricalerts)
 
-## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Riasztási szabály létrehozása metrika alapján a Azure Portal
+## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Metrikához tartozó riasztási szabály létrehozása az Azure Portalon
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a figyelni kívánt Azure Database for PostgreSQL-kiszolgálót.
 
 2. Az oldalsáv **figyelés** szakaszában válassza a **riasztások** lehetőséget az alábbiak szerint:
@@ -109,5 +109,5 @@ Mivel a lemez megközelíti a lemezterület korlátját, próbálja ki a követk
 A CPU-használat figyelése hasznos a teljesítmény alapkonfigurációjának létrehozásához. Észreveheti például, hogy a CPU-használat általában 40-60% körül van. Ha a CPU-használat hirtelen megkezdődik a 95% körül, akkor felismerheti az anomáliát. A CPU-használat a szerves növekedést is tükrözheti, de felfedi a kóbor lekérdezést is. A CPU-riasztások létrehozásakor állítsa be a hosszú összesítés részletességét a hosszan tartó növekedéshez, és hagyja figyelmen kívül a pillanatnyi tüskéket.
 
 ## <a name="next-steps"></a>Következő lépések
-* További információ a [webhookok riasztásokban való konfigurálásáról](../azure-monitor/platform/alerts-webhooks.md).
-* [Tekintse át a metrikák gyűjteményét](../azure-monitor/platform/data-platform.md) , és győződjön meg arról, hogy a szolgáltatás elérhető és rugalmas.
+* További információ a [webhookok riasztásokban való konfigurálásáról](../azure-monitor/alerts/alerts-webhooks.md).
+* [Tekintse át a metrikák gyűjteményét](../azure-monitor/data-platform.md) , és győződjön meg arról, hogy a szolgáltatás elérhető és rugalmas.

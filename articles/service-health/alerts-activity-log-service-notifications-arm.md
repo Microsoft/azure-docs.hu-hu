@@ -4,12 +4,12 @@ description: Értesítés küldése SMS-ben, e-mailben vagy webhookon az Azure-s
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/29/2020
-ms.openlocfilehash: 688314a2057964c66baeacbbc49736ea436f5ec5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 532fbae505e0bcaa6ab31a2e935362114537d134
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91630219"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594956"
 ---
 # <a name="quickstart-create-activity-log-alerts-on-service-notifications-using-an-arm-template"></a>Gyors útmutató: műveletnapló-riasztások létrehozása a szolgáltatási értesítésekben ARM-sablon használatával
 
@@ -17,7 +17,7 @@ Ebből a cikkből megtudhatja, hogyan állíthatja be a Azure Resource Manager s
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-A szolgáltatás állapotával kapcsolatos értesítéseket az [Azure-tevékenység naplójában](../azure-monitor/platform/platform-logs-overview.md)tárolja a rendszer. A tevékenység naplójában tárolt, valószínűleg nagy mennyiségű információ miatt külön felhasználói felület van, amely megkönnyíti a riasztások megtekintését és beállítását a szolgáltatás állapotára vonatkozó értesítésekben.
+A szolgáltatás állapotával kapcsolatos értesítéseket az [Azure-tevékenység naplójában](../azure-monitor/essentials/platform-logs-overview.md)tárolja a rendszer. A tevékenység naplójában tárolt, valószínűleg nagy mennyiségű információ miatt külön felhasználói felület van, amely megkönnyíti a riasztások megtekintését és beállítását a szolgáltatás állapotára vonatkozó értesítésekben.
 
 Riasztást kaphat, ha az Azure szolgáltatás-állapotra vonatkozó értesítéseket küld az Azure-előfizetésre. A riasztást a következő alapján állíthatja be:
 
@@ -34,7 +34,7 @@ Azt is beállíthatja, hogy a rendszer kik számára küldje a riasztást:
 - Válasszon ki egy meglévő műveleti csoportot.
 - Hozzon létre egy új műveleti csoportot (amely a jövőbeli riasztásokhoz használható).
 
-A műveletcsoportokkal kapcsolatban további információt a [műveletcsoportok létrehozásáról és kezeléséről](../azure-monitor/platform/action-groups.md) szóló cikkben talál.
+A műveletcsoportokkal kapcsolatban további információt a [műveletcsoportok létrehozásáról és kezeléséről](../azure-monitor/alerts/action-groups.md) szóló cikkben talál.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -199,7 +199,7 @@ Remove-AzResourceGroup -Name my-resource-group
 - Ismerje meg, hogyan állíthat be [Azure Service Health Mobile leküldéses értesítéseket](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw).
 - Megtudhatja, hogyan [konfigurálhat webhook-értesítéseket a meglévő probléma-felügyeleti rendszerekhez](service-health-alert-webhook-guide.md).
 - Tudnivalók a [szolgáltatás állapotával kapcsolatos értesítésekről](service-notifications.md).
-- Tudnivalók az [értesítési ráta korlátozásáról](../azure-monitor/platform/alerts-rate-limiting.md).
-- Tekintse át a [tevékenység naplójának riasztása webhook sémáját](../azure-monitor/platform/activity-log-alerts-webhook.md).
-- [Tekintse át a tevékenységek naplójának riasztásait](../azure-monitor/platform/alerts-overview.md), és Ismerje meg, hogyan fogadhat riasztásokat.
-- További információ a [műveleti csoportokról](../azure-monitor/platform/action-groups.md).
+- Tudnivalók az [értesítési ráta korlátozásáról](../azure-monitor/alerts/alerts-rate-limiting.md).
+- Tekintse át a [tevékenység naplójának riasztása webhook sémáját](../azure-monitor/alerts/activity-log-alerts-webhook.md).
+- [Tekintse át a tevékenységek naplójának riasztásait](../azure-monitor/alerts/alerts-overview.md), és Ismerje meg, hogyan fogadhat riasztásokat.
+- További információ a [műveleti csoportokról](../azure-monitor/alerts/action-groups.md).

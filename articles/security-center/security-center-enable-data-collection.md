@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: be8123d3c8a4acc684610aeaa9ee263c5defa17d
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 8fa2a06b1310e7cd825c918e92ea7af9b9b488de
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813615"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596156"
 ---
 # <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>Ügynökök és bővítmények automatikus kiépítés a Azure Security Centerból
 
@@ -38,8 +38,8 @@ Az adatok gyűjtése a használatával történik:
 |-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Kiadás állapota:          | **Szolgáltatás**: az automatikus kiépítés általánosan elérhető (GA)<br>**Ügynök és bővítmények**: log Analytics Azure-beli virtuális gépek ügynöke, a Microsoft függőségi ügynök előzetes verzióban érhető el, a Kubernetes házirend-bővítménye a ga                |
 | Árképzési                | Ingyenes                                                                                                                                                                                                                         |
-| Támogatott célhelyek: | ![Igen](./media/icons/yes-icon.png) Azure-gépek<br>![Nem](./media/icons/no-icon.png) Azure arc-gépek<br>![Nem](./media/icons/no-icon.png) Kubernetes-csomópontok<br>![Nem](./media/icons/no-icon.png) Virtual Machine Scale Sets |
-| Felhők                 | ![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov, Kína gov, egyéb gov                                                                                                      |
+| Támogatott célhelyek: | ![Yes](./media/icons/yes-icon.png) Azure-gépek<br>![No](./media/icons/no-icon.png) Azure arc-gépek<br>![No](./media/icons/no-icon.png) Kubernetes-csomópontok<br>![No](./media/icons/no-icon.png) Virtual Machine Scale Sets |
+| Felhők                 | ![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) US Gov, Kína gov, egyéb gov                                                                                                      |
 |                         |                                                                                                                                                                                                                              |
 
 
@@ -83,7 +83,7 @@ Az log Analytics-ügynök automatikus kiépítés engedélyezése:
 
     - **Azure-beli virtuális gépek összekötése egy másik munkaterülettel** – a legördülő listából válassza ki a munkaterületet az összegyűjtött adatok tárolásához. A legördülő lista az összes előfizetése összes munkaterületét tartalmazza. Ezzel a lehetőséggel adatokat gyűjthet a különböző előfizetésekben futó virtuális gépekről, és az összeset tárolhatja a kiválasztott munkaterületen.  
 
-        Ha már rendelkezik meglévő Log Analytics munkaterülettel, érdemes lehet ugyanazt a munkaterületet használni (olvasási és írási engedélyeket igényel a munkaterületen). Ez a beállítás akkor hasznos, ha a szervezet központi munkaterületét használja, és a biztonsági adatgyűjtés céljából szeretné használni. További információ a [naplózási és munkaterületekhez való hozzáférés kezelése Azure monitorban](../azure-monitor/platform/manage-access.md).
+        Ha már rendelkezik meglévő Log Analytics munkaterülettel, érdemes lehet ugyanazt a munkaterületet használni (olvasási és írási engedélyeket igényel a munkaterületen). Ez a beállítás akkor hasznos, ha a szervezet központi munkaterületét használja, és a biztonsági adatgyűjtés céljából szeretné használni. További információ a [naplózási és munkaterületekhez való hozzáférés kezelése Azure monitorban](../azure-monitor/logs/manage-access.md).
 
         Ha a kiválasztott munkaterülethez már engedélyezve van egy biztonsági vagy SecurityCenterFree megoldás, a díjszabás automatikusan be lesz állítva. Ha nem, telepítsen egy Security Center megoldást a munkaterületre:
 
@@ -104,7 +104,7 @@ Az log Analytics-ügynök automatikus kiépítés engedélyezése:
 
 1. Válassza az **alkalmaz** lehetőséget a konfiguráció ablaktáblán.
 
-1. Válassza a **Mentés** lehetőséget. Ha egy munkaterületet ki kell építeni, az ügynök telepítése akár 25 percet is igénybe vehet.
+1. Kattintson a **Mentés** gombra. Ha egy munkaterületet ki kell építeni, az ügynök telepítése akár 25 percet is igénybe vehet.
 
 1. A rendszer megkérdezi, hogy szeretné-e újrakonfigurálni azokat a figyelt virtuális gépeket, amelyek korábban egy alapértelmezett munkaterülethez voltak csatlakoztatva:
 
@@ -129,7 +129,7 @@ A log Analytics ügynökön kívüli bővítmény automatikus kiépítés enged�
 
     :::image type="content" source="./media/security-center-enable-data-collection/toggle-kubernetes-add-on.png" alt-text="Váltás az automatikus kiépítés engedélyezéséhez a K8s házirend-bővítményéhez":::
 
-1. Válassza a **Mentés** lehetőséget. Az Azure-szabályzat hozzá van rendelve, és létrejön egy szervizelési feladat.
+1. Kattintson a **Mentés** gombra. Az Azure-szabályzat hozzá van rendelve, és létrejön egy szervizelési feladat.
 
     |Mellék  |Szabályzat  |
     |---------|---------|
@@ -218,7 +218,7 @@ A Log Analytics-ügynök manuális telepítése:
    - [A Windows Log Analytics ügynökének telepítése](../virtual-machines/extensions/oms-windows.md)
    - [A Linux rendszerhez készült Log Analytics-ügynök telepítése](../virtual-machines/extensions/oms-linux.md)
 
-1. Ha az ügynököket a meglévő virtuális gépekre szeretné telepíteni, kövesse az [adatok gyűjtése az Azure Virtual Machinesról](../azure-monitor/learn/quick-collect-azurevm.md) című szakaszt (az **esemény-és teljesítményadatok gyűjtése** nem kötelező).
+1. Ha az ügynököket a meglévő virtuális gépekre szeretné telepíteni, kövesse az [adatok gyűjtése az Azure Virtual Machinesról](../azure-monitor/vm/quick-collect-azurevm.md) című szakaszt (az **esemény-és teljesítményadatok gyűjtése** nem kötelező).
 
 1. Ha az ügynököket a PowerShell használatával szeretné telepíteni, használja a Virtual Machines dokumentációjának utasításait:
 
@@ -262,7 +262,7 @@ Az ügynök automatikus kiépítési funkciójának kikapcsolásához:
 
     :::image type="content" source="./media/security-center-enable-data-collection/agent-toggles.png" alt-text="Bekapcsolja az automatikus kiépítés letiltását az ügynök típusa szerint":::
 
-1. Válassza a **Mentés** lehetőséget. Ha az automatikus kiépítés le van tiltva, az alapértelmezett munkaterület-konfiguráció szakasz nem jelenik meg:
+1. Kattintson a **Mentés** gombra. Ha az automatikus kiépítés le van tiltva, az alapértelmezett munkaterület-konfiguráció szakasz nem jelenik meg:
 
     :::image type="content" source="./media/security-center-enable-data-collection/empty-configuration-column.png" alt-text="Ha az automatikus kiépítés le van tiltva, a konfigurációs cella üres":::
 
@@ -288,7 +288,7 @@ Az ügynök automatikus kiépítési funkciójának kikapcsolásához:
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez a cikk bemutatja, hogyan működik az adatgyűjtés és az automatikus kiépítés a Security Centerban. Ha többet szeretne megtudni a Security Centerről, tekintse meg a következő lapokat:
 
 - [Azure Security Center – gyakran ismételt kérdések](faq-general.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.

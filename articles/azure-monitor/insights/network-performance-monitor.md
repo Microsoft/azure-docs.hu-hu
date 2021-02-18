@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 4ae0a85c8608ff96777bc6b952554f1ccd917306
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: 92326ea4d3de896a67b2953fb612b79948044d08
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530605"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573422"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor megoldás az Azure-ban
 
@@ -76,7 +76,7 @@ A ExpressRoute-figyelő támogatott régiói listája a [dokumentációban](../.
 
 ### <a name="install-and-configure-agents"></a>Ügynökök telepítése és konfigurálása 
 
-Az alapfolyamatok segítségével ügynököket telepíthet a [Windows rendszerű számítógépek Összekapcsolásával Azure monitorhoz](../platform/agent-windows.md), a Linux rendszerű [számítógépeket Azure monitor (előzetes verzió)](../../virtual-machines/extensions/oms-linux.md) és [a Operations Manager Azure monitorhoz](../platform/om-agents.md)való kapcsolódáshoz.
+Az alapfolyamatok segítségével ügynököket telepíthet a [Windows rendszerű számítógépek Összekapcsolásával Azure monitorhoz](../agents/agent-windows.md), a Linux rendszerű [számítógépeket Azure monitor (előzetes verzió)](../../virtual-machines/extensions/oms-linux.md) és [a Operations Manager Azure monitorhoz](../agents/om-agents.md)való kapcsolódáshoz.
 
 ### <a name="where-to-install-the-agents"></a>Az ügynökök telepítése 
 
@@ -266,13 +266,13 @@ A térképen látható topológia 3. rétegbeli topológia, és nem tartalmaz 2.
 
 ## <a name="log-queries-in-azure-monitor"></a>Lekérdezések naplózása Azure Monitor
 
-Az Network Performance Monitor-irányítópulton és-részletezésen keresztül elérhetővé tett összes adat natív módon, a [napló lekérdezésekben](../log-query/log-query-overview.md)is elérhető. A tárházban lévő adatok interaktív elemzését elvégezheti, és különböző forrásokból származó adatokhoz kapcsolhatók. Létrehozhat egyéni riasztásokat és nézeteket is, és exportálhatja az adatfájlokat az Excelbe, Power BIba vagy egy megosztható hivatkozásba. Az irányítópult **gyakori lekérdezések** területén néhány hasznos lekérdezés található, amelyeket kiindulási pontként használhat a saját lekérdezések és jelentések létrehozásához. 
+Az Network Performance Monitor-irányítópulton és-részletezésen keresztül elérhetővé tett összes adat natív módon, a [napló lekérdezésekben](../logs/log-query-overview.md)is elérhető. A tárházban lévő adatok interaktív elemzését elvégezheti, és különböző forrásokból származó adatokhoz kapcsolhatók. Létrehozhat egyéni riasztásokat és nézeteket is, és exportálhatja az adatfájlokat az Excelbe, Power BIba vagy egy megosztható hivatkozásba. Az irányítópult **gyakori lekérdezések** területén néhány hasznos lekérdezés található, amelyeket kiindulási pontként használhat a saját lekérdezések és jelentések létrehozásához. 
 
 ## <a name="alerts"></a>Riasztások
 
-Network Performance Monitor a [Azure monitor](../platform/alerts-overview.md)riasztási képességeit használja.
+Network Performance Monitor a [Azure monitor](../alerts/alerts-overview.md)riasztási képességeit használja.
 
-Ez azt jelenti, hogy minden értesítés a [műveleti csoportok](../platform/action-groups.md)használatával lesz kezelve.  
+Ez azt jelenti, hogy minden értesítés a [műveleti csoportok](../alerts/action-groups.md)használatával lesz kezelve.  
 
 Ha Ön egy NPM-felhasználó, Log Analytics használatával hozza létre a riasztást: 
 1. Ekkor megjelenik egy hivatkozás, amely átirányítja a Azure Portalra. Kattintson rá a portál eléréséhez.
@@ -283,7 +283,7 @@ Ha Ön egy NPM-felhasználó, Log Analytics használatával hozza létre a riasz
 Ha Ön egy NPM-felhasználó, Azure Portal használatával hozza létre a riasztást:  
 1. Dönthet úgy is, hogy közvetlenül adja meg az e-mail-címet, vagy választhatja a riasztások létrehozását a műveleti csoportok használatával.
 2. Ha úgy dönt, hogy közvetlenül adja meg az e-mail-címet, a rendszer létrehoz egy **NPM e-mail-ActionGroup** nevű műveleti csoportot, és hozzáadja az e-mail-azonosítót az adott műveleti csoporthoz.
-3. Ha a műveleti csoportok használata mellett dönt, ki kell választania egy korábban létrehozott műveleti csoportot. Itt megtudhatja, hogyan hozhat létre egy műveleti csoportot [.](../platform/action-groups.md#create-an-action-group-by-using-the-azure-portal) 
+3. Ha a műveleti csoportok használata mellett dönt, ki kell választania egy korábban létrehozott műveleti csoportot. Itt megtudhatja, hogyan hozhat létre egy műveleti csoportot [.](../alerts/action-groups.md#create-an-action-group-by-using-the-azure-portal) 
 4. A riasztás sikeres létrehozása után használhatja a riasztások kezelése hivatkozást a riasztások kezeléséhez. 
 
 Minden alkalommal, amikor riasztást hoz létre, a NPM egy lekérdezés-alapú napló-riasztási szabályt hoz létre Azure Monitorban. A lekérdezés alapértelmezés szerint 5 percenként aktiválódik. Az Azure monitor nem számítja fel a létrehozott első 250-es naplózási riasztási szabályokat, és az 250-es napló riasztási szabályának korlátja fölötti riasztási szabályok számlázása a [Azure monitor díjszabási oldalon, a riasztások díjszabása](https://azure.microsoft.com/pricing/details/monitor/)szerint történik.

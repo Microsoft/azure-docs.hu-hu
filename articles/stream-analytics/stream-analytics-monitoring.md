@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5141c7fcfe1128574145930548f41731529c2ad8
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 484e8853d02aa68c8a8695ba7cc724adb5a8766a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012461"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572971"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>A Stream Analytics feladatok figyelésének és a lekérdezések figyelésének ismertetése
 
@@ -26,7 +26,7 @@ Ekkor megjelenik az ablak:
 ![Stream Analytics feladatok figyelésének irányítópultja](./media/stream-analytics-monitoring/01-stream-analytics-monitoring.png)  
 
 ## <a name="metrics-available-for-stream-analytics"></a>Stream Analytics elérhető metrikák
-| Metrika                 | Definíció                               |
+| Metric                 | Definíció                               |
 | ---------------------- | ---------------------------------------- |
 | Várakozó bemeneti eseményei       | A várakozó bemeneti eseményeinek száma. A metrika nem nulla értéke azt jelenti, hogy a feladatnak nem sikerült megtartania a bejövő események számát. Ha ez az érték lassan növekszik vagy konzisztensen nem nulla, érdemes felmérni a feladatot. További információért tekintse meg a [folyamatos átviteli egységek megismerése és módosítása](stream-analytics-streaming-unit-consumption.md)című témakört. |
 | Adatátalakítási hibák | Azon kimeneti események száma, amelyek nem alakíthatók át a várt kimeneti sémába. A hiba házirendje a "drop" értékre módosítható, hogy eldobják az ebben a forgatókönyvben észlelt eseményeket. |
@@ -48,7 +48,7 @@ Ekkor megjelenik az ablak:
 Ezek a metrikák a [stream Analytics feladatok teljesítményének figyelésére](./stream-analytics-set-up-alerts.md#scenarios-to-monitor)használhatók. 
 
 ## <a name="customizing-monitoring-in-the-azure-portal"></a>A Azure Portal figyelésének testreszabása
-A diagram beállításainak szerkesztése lehetőséggel módosíthatja a diagram, a mérőszámok és az időtartomány típusát. Részletekért lásd: [a figyelés testreszabása](../azure-monitor/platform/data-platform.md).
+A diagram beállításainak szerkesztése lehetőséggel módosíthatja a diagram, a mérőszámok és az időtartomány típusát. Részletekért lásd: [a figyelés testreszabása](../azure-monitor/data-platform.md).
 
   ![Stream Analytics lekérdezési idő gráfja](./media/stream-analytics-monitoring/08-stream-analytics-monitoring.png)  
 
@@ -60,7 +60,7 @@ Ez az idő az alkalmazás legutóbbi kimenetének ideje (azaz az esemény adatai
 ## <a name="get-help"></a>Segítség kérése
 További segítségért próbálja ki a [Microsoft Q&egy kérdés oldalt Azure stream Analytics](/answers/topics/azure-stream-analytics.html)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs (Azure Stream Analytics-feladatok méretezése)](stream-analytics-scale-jobs.md)

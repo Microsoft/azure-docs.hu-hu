@@ -3,12 +3,12 @@ title: Telemetria folyamatos exportálása a Application Insightsból | Microsof
 description: A diagnosztikai és használati adatok exportálása a Microsoft Azure tárolóba, és onnan tölthető le.
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: a6f636ce9fe30c666f08935d5830eb0c12e6cb5e
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 23405faeb7d2151ce0f6492c0d522e0a7f9b84a8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674137"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584232"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Telemetria exportálása az Application Insightsból
 Szeretné megőrizni a telemetria a normál megőrzési időtartamnál hosszabb ideig? Vagy dolgozza fel valamilyen speciális módon? A folyamatos exportálás ideális ehhez. A Application Insights-portálon megjelenített események JSON formátumban exportálhatók Microsoft Azureba. Innen letöltheti az adatait, és bármilyen kódot írhat, amelyet fel kell dolgoznia.  
@@ -21,7 +21,7 @@ A folyamatos exportálás beállítása előtt bizonyos alternatívákat érdeme
 
 * A metrikák vagy a Keresés lap tetején található exportálás gomb lehetővé teszi táblázatok és diagramok Excel-számolótáblába való átvitelét.
 
-* Az [elemzés](../log-query/log-query-overview.md) hatékony lekérdezési nyelvet biztosít a telemetria számára. Az eredmények exportálására is használható.
+* Az [elemzés](../logs/log-query-overview.md) hatékony lekérdezési nyelvet biztosít a telemetria számára. Az eredmények exportálására is használható.
 * Ha [Power BIban lévő adatait szeretné felfedezni](./export-power-bi.md), folyamatos exportálás nélkül is megteheti.
 * Az [adatelérési REST API](https://dev.applicationinsights.io/) lehetővé teszi a telemetria programozott módon való elérését.
 * A telepítő [folyamatos exportálását a PowerShell](/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport)használatával is elérheti.

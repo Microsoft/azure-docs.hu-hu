@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 345748380479d81f1ea0df9ecf327200482a6cd7
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 58aabd52b8c5493671e0a76d0032a6d7c3081f40
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937172"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582046"
 ---
 # <a name="azure-security-baseline-for-azure-data-share"></a>Azure biztonsági alapkonfiguráció Azure-beli adatmegosztáshoz
 
@@ -34,7 +34,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti ezeket az adattábl�
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md) 
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
 - [Ismerkedés a Azure Monitor és a harmadik féltől származó SIEM-integrációval](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
@@ -48,11 +48,11 @@ Alternatív megoldásként engedélyezheti és elvégezheti ezeket az adattábl�
 
 Engedélyezze a diagnosztikai naplókat az Azure-adatmegosztáshoz, pontosabban a diagnosztikai naplókat a MicrosoftDataShareSentShareSnapshotsLog &amp; MicrosoftDataShareReceivedShareSnapshotsLog. Ezek a naplók lehetővé teszik a legfontosabb információk, például a szinkronizálás kezdési idejének, a befejezési idő, az állapot és az egyéb részletek rögzítését. Ezek a naplók kritikus fontosságúak lehetnek a biztonsági incidensek kivizsgálásához és a kriminalisztikai gyakorlatok végrehajtásához.
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](../azure-monitor/platform/platform-logs-overview.md)
+- [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](../azure-monitor/essentials/platform-logs-overview.md)
 
-- [Az Azure-tevékenység naplójának diagnosztikai beállításainak konfigurálása](../azure-monitor/platform/activity-log.md)
+- [Az Azure-tevékenység naplójának diagnosztikai beállításainak konfigurálása](../azure-monitor/essentials/activity-log.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -62,9 +62,9 @@ Engedélyezze a diagnosztikai naplókat az Azure-adatmegosztáshoz, pontosabban 
 
 **Útmutató**: gondoskodjon arról, hogy az Azure-adatmegosztási naplók tárolására használt összes Storage-fiók vagy log Analytics-munkaterület a szervezet megfelelőségi szabályainak megfelelően állítsa be a napló megőrzési időtartamát.
 
-- [Log Analytics munkaterület megőrzési időtartamának konfigurálása](../azure-monitor/platform/manage-cost-storage.md)
+- [Log Analytics munkaterület megőrzési időtartamának konfigurálása](../azure-monitor/logs/manage-cost-storage.md)
 
-- [Erőforrás-naplók tárolása Azure Storage-fiókban](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [Erőforrás-naplók tárolása Azure Storage-fiókban](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -78,9 +78,9 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md) 
 
-- [Log Analytics lekérdezések első lépései](../azure-monitor/log-query/log-analytics-tutorial.md) 
+- [Log Analytics lekérdezések első lépései](../azure-monitor/logs/log-analytics-tutorial.md) 
 
-- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/log-query/get-started-queries.md) 
+- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/logs/get-started-queries.md) 
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -94,7 +94,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 - [Riasztások kezelése Azure Security Centerban](../security-center/security-center-managing-and-responding-alerts.md) 
 
-- [Riasztás a log Analytics-naplófájlok adatkezeléséről](../azure-monitor/learn/tutorial-response.md) 
+- [Riasztás a log Analytics-naplófájlok adatkezeléséről](../azure-monitor/alerts/tutorial-response.md) 
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -209,7 +209,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata Azure monitor riasztások létrehozásához, amikor a módosítások a kritikus Azure-erőforrásokra vonatkoznak.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/platform/alerts-activity-log.md) 
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md) 
 
 **Az Azure Security Center monitorozása**: Igen
 

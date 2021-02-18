@@ -10,12 +10,12 @@ ms.date: 12/09/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 179e60a41a9cd6a2277959b3cd31159c796d845d
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: b0003384676f420c5ece043b1eb6120ed8ee2435
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937287"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574909"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>Tárolók és Blobok névtelen nyilvános olvasási hozzáférésének tiltása
 
@@ -35,7 +35,7 @@ Annak megismeréséhez, hogy a nyilvános hozzáférés letiltása milyen hatás
 
 ### <a name="monitor-anonymous-requests-with-metrics-explorer"></a>Névtelen kérelmek figyelése Metrikaböngésző
 
-A névtelen kérelmek Storage-fiókba való nyomon követéséhez használja az Azure Metrikaböngésző a Azure Portal. További információ a Metrikaböngészőről: az [Azure Metrikaböngésző első lépései](../../azure-monitor/platform/metrics-getting-started.md).
+A névtelen kérelmek Storage-fiókba való nyomon követéséhez használja az Azure Metrikaböngésző a Azure Portal. További információ a Metrikaböngészőről: az [Azure Metrikaböngésző első lépései](../../azure-monitor/essentials/metrics-getting-started.md).
 
 Kövesse az alábbi lépéseket egy olyan metrika létrehozásához, amely nyomon követi a névtelen kérelmeket:
 
@@ -61,7 +61,7 @@ A metrika konfigurálása után a névtelen kérelmek megjelennek a gráfon. Az 
 
 :::image type="content" source="media/anonymous-read-access-prevent/metric-anonymous-blob-requests.png" alt-text="A blob Storage-hoz tartozó összesített névtelen kérelmeket bemutató képernyőkép":::
 
-A riasztási szabályt úgy is konfigurálhatja, hogy értesítést kapjon, ha egy adott számú névtelen kérelem kerül a Storage-fiókjába. További információ: [metrikus riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../../azure-monitor/platform/alerts-metric.md).
+A riasztási szabályt úgy is konfigurálhatja, hogy értesítést kapjon, ha egy adott számú névtelen kérelem kerül a Storage-fiókjába. További információ: [metrikus riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../../azure-monitor/alerts/alerts-metric.md).
 
 ### <a name="analyze-logs-to-identify-containers-receiving-anonymous-requests"></a>Naplók elemzése a névtelen kérelmeket fogadó tárolók azonosításához
 
@@ -69,7 +69,7 @@ Az Azure Storage-naplók rögzítik a Storage-fiókkal kapcsolatos kérések ré
 
 Ha a névtelen kérelmek kiértékeléséhez a kérelmeket az Azure Storage-fiókjába kívánja naplózni, Azure Monitor (előzetes verzió) Azure Storage-naplózást is használhat. További információ: az [Azure Storage figyelése](./monitor-blob-storage.md).
 
-Az Azure Storage Azure Monitor támogatja a naplózási lekérdezések használatát a naplófájlok elemzéséhez. A naplók lekérdezéséhez használhat Azure Log Analytics munkaterületet. További információ a naplók lekérdezéséről [: oktatóanyag: log Analytics lekérdezések első lépései](../../azure-monitor/log-query/log-analytics-tutorial.md).
+Az Azure Storage Azure Monitor támogatja a naplózási lekérdezések használatát a naplófájlok elemzéséhez. A naplók lekérdezéséhez használhat Azure Log Analytics munkaterületet. További információ a naplók lekérdezéséről [: oktatóanyag: log Analytics lekérdezések első lépései](../../azure-monitor/logs/log-analytics-tutorial.md).
 
 > [!NOTE]
 > Az Azure Storage naplózásának előzetes verziója Azure Monitor csak az Azure nyilvános felhőben támogatott. A kormányzati felhők nem támogatják az Azure Storage Azure Monitor-vel való naplózását.
@@ -79,7 +79,7 @@ Az Azure Storage Azure Monitor támogatja a naplózási lekérdezések használa
 Az Azure Storage-beli adatAzure Monitor és az Azure Log Analytics való elemzéséhez először létre kell hoznia egy diagnosztikai beállítást, amely meghatározza, hogy milyen típusú kérelmeket és milyen tárolási szolgáltatásokat szeretne naplózni. Ha diagnosztikai beállítást szeretne létrehozni a Azure Portalban, kövesse az alábbi lépéseket:
 
 1. Regisztráljon az [Azure Storage naplózási Azure monitor előzetes](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)verziójában.
-1. Hozzon létre egy új Log Analytics munkaterületet az Azure Storage-fiókot tartalmazó előfizetésben. A Storage-fiók naplózásának konfigurálása után a naplók a Log Analytics munkaterületen lesznek elérhetők. További információ: [log Analytics munkaterület létrehozása a Azure Portalban](../../azure-monitor/learn/quick-create-workspace.md).
+1. Hozzon létre egy új Log Analytics munkaterületet az Azure Storage-fiókot tartalmazó előfizetésben. A Storage-fiók naplózásának konfigurálása után a naplók a Log Analytics munkaterületen lesznek elérhetők. További információ: [log Analytics munkaterület létrehozása a Azure Portalban](../../azure-monitor/logs/quick-create-workspace.md).
 1. Az Azure Portalon nyissa meg a tárfiókot.
 1. A figyelés szakaszban válassza a **diagnosztikai beállítások (előzetes verzió)** lehetőséget.
 1. A blob Storage-ba irányuló kérelmek naplózásához válassza a **blob** elemet.
@@ -90,7 +90,7 @@ Az Azure Storage-beli adatAzure Monitor és az Azure Log Analytics való elemzé
 
     :::image type="content" source="media/anonymous-read-access-prevent/create-diagnostic-setting-logs.png" alt-text="A naplózási kérelmek diagnosztikai beállításainak létrehozását bemutató képernyőkép":::
 
-Miután létrehozta a diagnosztikai beállítást, a rendszer a Storage-fiókra irányuló kérelmeket a beállításnak megfelelően naplózza. További információ: [diagnosztikai beállítás létrehozása az erőforrás-naplók és-metrikák az Azure-ban való összegyűjtéséhez](../../azure-monitor/platform/diagnostic-settings.md).
+Miután létrehozta a diagnosztikai beállítást, a rendszer a Storage-fiókra irányuló kérelmeket a beállításnak megfelelően naplózza. További információ: [diagnosztikai beállítás létrehozása az erőforrás-naplók és-metrikák az Azure-ban való összegyűjtéséhez](../../azure-monitor/essentials/diagnostic-settings.md).
 
 A Azure Monitor Azure Storage-naplókban elérhető mezőkre vonatkozó hivatkozásokat itt tekintheti meg: [erőforrás-naplók (előzetes verzió)](./monitor-blob-storage-reference.md#resource-logs-preview).
 
@@ -106,7 +106,7 @@ StorageBlobLogs
 | project TimeGenerated, AccountName, AuthenticationType, Uri
 ```
 
-A lekérdezésen alapuló riasztási szabályt úgy is konfigurálhat, hogy értesítést kapjon a névtelen kérelmekről. További információ: a [naplók létrehozása, megtekintése és kezelése Azure monitor használatával](../../azure-monitor/platform/alerts-log.md).
+A lekérdezésen alapuló riasztási szabályt úgy is konfigurálhat, hogy értesítést kapjon a névtelen kérelmekről. További információ: a [naplók létrehozása, megtekintése és kezelése Azure monitor használatával](../../azure-monitor/alerts/alerts-log.md).
 
 ## <a name="remediate-anonymous-public-access"></a>Névtelen nyilvános hozzáférés szervizelése
 
@@ -290,13 +290,13 @@ Az alábbi képen látható az a hiba, amely akkor fordul elő, ha olyan Storage
 
 ## <a name="permissions-for-allowing-or-disallowing-public-access"></a>A nyilvános hozzáférés engedélyezésére vagy letiltására vonatkozó engedélyek
 
-A Storage-fiók **AllowBlobPublicAccess** tulajdonságának beállításához a felhasználónak rendelkeznie kell a Storage-fiókok létrehozásához és kezeléséhez szükséges engedélyekkel. Az ilyen engedélyeket biztosító Azure szerepköralapú hozzáférés-vezérlési (Azure-RBAC) szerepkörök közé tartozik a **Microsoft. Storage/storageAccounts/Write** vagy a **Microsoft. Storage \* /storageAccounts/* _ művelet. A művelettel rendelkező beépített szerepkörök a következők:
+A Storage-fiók **AllowBlobPublicAccess** tulajdonságának beállításához a felhasználónak rendelkeznie kell a Storage-fiókok létrehozásához és kezeléséhez szükséges engedélyekkel. Az ilyen engedélyeket biztosító Azure szerepköralapú hozzáférés-vezérlési (Azure-RBAC) szerepkörök közé tartozik a **Microsoft. Storage/storageAccounts/Write** vagy a **Microsoft. Storage \* /storageAccounts/** művelet. A művelettel rendelkező beépített szerepkörök a következők:
 
 - A Azure Resource Manager [tulajdonosi](../../role-based-access-control/built-in-roles.md#owner) szerepkör
 - A Azure Resource Manager [közreműködő](../../role-based-access-control/built-in-roles.md#contributor) szerepkör
 - A [Storage-fiók közreműködői](../../role-based-access-control/built-in-roles.md#storage-account-contributor) szerepköre
 
-Ezek a szerepkörök nem biztosítanak hozzáférést a Storage-fiókban lévő adatAzure Active Directory (Azure AD) használatával. Ezek közé tartoznak azonban a _ * Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/Action * *, amely hozzáférést biztosít a fiók hozzáférési kulcsaihoz. Ezzel az engedéllyel a felhasználók a fiók hozzáférési kulcsainak használatával férhetnek hozzá a Storage-fiókokban lévő összes adattal.
+Ezek a szerepkörök nem biztosítanak hozzáférést a Storage-fiókban lévő adatAzure Active Directory (Azure AD) használatával. Ezek közé tartoznak azonban a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/művelet**, amely hozzáférést biztosít a fiók hozzáférési kulcsaihoz. Ezzel az engedéllyel a felhasználók a fiók hozzáférési kulcsainak használatával férhetnek hozzá a Storage-fiókokban lévő összes adattal.
 
 A szerepkör-hozzárendeléseket a Storage-fiók szintjére vagy annál magasabbra kell korlátozni ahhoz, hogy a felhasználók engedélyezzék vagy letiltsák a nyilvános hozzáférést a Storage-fiók számára. A szerepkör hatókörével kapcsolatos további információkért lásd: [Az Azure RBAC hatókörének megismerése](../../role-based-access-control/scope-overview.md).
 

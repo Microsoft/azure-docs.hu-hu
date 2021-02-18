@@ -3,12 +3,12 @@ title: Az Azure VMware-megoldás virtuális gépei a Azure Security Center integ
 description: Az Azure VMware-megoldás virtuális gépei az Azure natív biztonsági eszközeivel védhetők az Azure Security Center irányítópulton.
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.openlocfilehash: b37d09d6e8f239586a18c0fa3b1dcd7bfee98102
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 7292ea4486a61f5b0cfd8f656d2763a3ce655e79
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100516362"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578249"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Az Azure VMware-megoldás virtuális gépei a Azure Security Center integrációval védhetők
 
@@ -50,7 +50,7 @@ A Log Analytics munkaterület a riasztások észlelése, a fenyegetések láthat
 
 ## <a name="create-a-log-analytics-workspace"></a>Log Analytics-munkaterület létrehozása
 
-A különböző forrásokból származó adatok gyűjtéséhez Log Analytics munkaterületre van szükség. További információ: [log Analytics munkaterület létrehozása a Azure Portal](../azure-monitor/learn/quick-create-workspace.md). 
+A különböző forrásokból származó adatok gyűjtéséhez Log Analytics munkaterületre van szükség. További információ: [log Analytics munkaterület létrehozása a Azure Portal](../azure-monitor/logs/quick-create-workspace.md). 
 
 ## <a name="deploy-security-center-and-configure-azure-vmware-solution-vms"></a>Az Azure VMware megoldás virtuális gépei Security Center üzembe helyezése és konfigurálása
 
@@ -243,5 +243,5 @@ Létrehozhat lekérdezéseket, vagy használhatja a rendelkezésre álló előre
 Most, hogy elvégezte az Azure VMware-megoldás virtuális gépei elleni védelem biztosítását, érdemes megismernie az alábbiakat:
 
 - Az [Azure Defender irányítópultjának](../security-center/azure-defender-dashboard.md)használata.
-- [Fejlett többlépcsős támadások észlelése az Azure sentinelben](../azure-monitor/learn/quick-create-workspace.md).
+- [Fejlett többlépcsős támadások észlelése az Azure sentinelben](../azure-monitor/logs/quick-create-workspace.md).
 - [Azure VMware-megoldás virtuális gépek életciklus-kezelése](lifecycle-management-of-azure-vmware-solution-vms.md).

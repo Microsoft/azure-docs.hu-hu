@@ -3,12 +3,12 @@ title: Erőforrás-módosítások lekérése
 description: Ismerje meg, hogy miként lehet megkeresni egy erőforrás megváltozását, lekérni a módosított tulajdonságok listáját, és kiértékelni a különbségeket.
 ms.date: 01/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 58dcb7256b0876d5e7fa9d7569db102538f92bab
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 5ad86ec2598cd7f24b8e0cd2208889bb7a088568
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917421"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594651"
 ---
 # <a name="get-resource-changes"></a>Erőforrás-módosítások lekérése
 
@@ -25,7 +25,7 @@ Az észlelés és a részletek változása az alábbi példák esetében hasznos
 - A CMDB néven ismert Configuration Management-adatbázis naprakészen tartása. Ahelyett, hogy az összes erőforrást és a teljes tulajdonságokat egy ütemezett gyakoriságon frissítse, csak a megváltoztatott értéket adja meg.
 - Annak megértése, hogy milyen egyéb tulajdonságok változtak, amikor egy erőforrás megváltoztatta a megfelelőségi állapotot. Ezeknek a további tulajdonságoknak a kiértékelése további, Azure Policy-definíción keresztül felügyelhető tulajdonságokkal is rendelkezhet.
 
-Ez a cikk bemutatja, hogyan gyűjtheti ezeket az információkat az erőforrás-gráf SDK-n keresztül. Ha szeretné megtekinteni ezeket az információkat a Azure Portalban, tekintse meg a Azure Policy [változási előzményeit](../../policy/how-to/determine-non-compliance.md#change-history) vagy az Azure-tevékenység naplójának [módosításait](../../../azure-monitor/platform/activity-log.md#view-the-activity-log). Az alkalmazásoknak az infrastruktúra rétegből való változásairól az alkalmazások telepítésének módjáról az alkalmazás- [módosítási elemzés használata (előzetes verzió)](../../../azure-monitor/app/change-analysis.md) című témakörben olvashat bővebben Azure monitor.
+Ez a cikk bemutatja, hogyan gyűjtheti ezeket az információkat az erőforrás-gráf SDK-n keresztül. Ha szeretné megtekinteni ezeket az információkat a Azure Portalban, tekintse meg a Azure Policy [változási előzményeit](../../policy/how-to/determine-non-compliance.md#change-history) vagy az Azure-tevékenység naplójának [módosításait](../../../azure-monitor/essentials/activity-log.md#view-the-activity-log). Az alkalmazásoknak az infrastruktúra rétegből való változásairól az alkalmazások telepítésének módjáról az alkalmazás- [módosítási elemzés használata (előzetes verzió)](../../../azure-monitor/app/change-analysis.md) című témakörben olvashat bővebben Azure monitor.
 
 > [!NOTE]
 > Az erőforrás-diagram adatainak módosítása a Resource Manager-tulajdonságok. A virtuális gépek változásainak nyomon követéséhez tekintse meg a Azure Automation [változások követése](../../../automation/change-tracking/overview.md) vagy a Azure Policy a virtuális gépekhez [tartozó vendég konfigurációját](../../policy/concepts/guest-configuration.md).

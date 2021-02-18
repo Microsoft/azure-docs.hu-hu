@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 9f7a37fa2101e4a386c9c6f2338f185b3ecdc986
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: e5b42d6102737b778ea5d19cd7da3c2f64881b1b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052617"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585925"
 ---
 # <a name="enable-change-tracking-and-inventory-from-a-runbook"></a>A Change Tracking és az Inventory engedélyezése runbookból
 
@@ -28,7 +28,7 @@ Ez a módszer két runbookok használ:
 
 * Egy Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Egy [Automation-fiók](../automation-security-overview.md) a gépek kezeléséhez.
-* [Log Analytics munkaterület](../../azure-monitor/platform/design-logs-deployment.md)
+* [Log Analytics munkaterület](../../azure-monitor/logs/design-logs-deployment.md)
 * Egy [virtuális gép](../../virtual-machines/windows/quick-create-portal.md).
 * Két Automation-eszköz, amelyet az **enable-AutomationSolution** runbook használ. Ez a runbook, ha még nem létezik az Automation-fiókjában, automatikusan importálja az **enable-MultipleSolution** runbook az első futtatásakor.
     * *LASolutionSubscriptionId*: az előfizetés azonosítója, ahol a log Analytics munkaterület található.

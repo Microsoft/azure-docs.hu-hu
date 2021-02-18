@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: c3bb05af3e0a24ebb10dc98b9174cfb235ddda13
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: aeb92dce41c12ada41175964835d9c89a634a6e3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99555925"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590254"
 ---
 # <a name="connect-data-sources"></a>Adatforrások csatlakoztatása
 
@@ -151,7 +151,7 @@ Azt is megteheti, hogy manuálisan telepítheti az ügynököt egy meglévő Azu
 | **Adattípus** | **A kapcsolódás menete** | **Adatösszekötő?** | **Megjegyzések** |
 |------|---------|-------------|------|
 | AWSCloudTrail | [Az AWS csatlakoztatása](connect-aws.md) | &#10003; | |
-| AzureActivity | Az Azure-tevékenység és a Tevékenységnaplók [összekapcsolása](connect-azure-activity.md) [– Áttekintés](../azure-monitor/platform/platform-logs-overview.md)| &#10003; | |
+| AzureActivity | Az Azure-tevékenység és a Tevékenységnaplók [összekapcsolása](connect-azure-activity.md) [– Áttekintés](../azure-monitor/essentials/platform-logs-overview.md)| &#10003; | |
 | AuditLogs | [Az Azure AD csatlakoztatása](connect-azure-active-directory.md)  | &#10003; | |
 | SigninLogs | [Az Azure AD csatlakoztatása](connect-azure-active-directory.md)  | &#10003; | |
 | AzureFirewall |[Azure Diagnostics](../firewall/firewall-diagnostics.md) | &#10003; | |
@@ -164,9 +164,9 @@ Azt is megteheti, hogy manuálisan telepítheti az ügynököt egy meglévő Azu
 | Microsoft webalkalmazási tűzfal (WAF) – (AzureDiagnostics) |[A Microsoft webalkalmazási tűzfal összekapcsolása](./connect-azure-waf.md) | &#10003; | |
 | SymantecICDx_CL | [A Symantec összekötése](connect-symantec.md) | &#10003; | |
 | ThreatIntelligenceIndicator  | [Fenyegetésfelderítés csatlakoztatása](connect-threat-intelligence.md)  | &#10003; | |
-| VMConnection <br> ServiceMapComputer_CL<br> ServiceMapProcess_CL|  [Azure Monitor szolgáltatás térképe](../azure-monitor/insights/service-map.md)<br>[Azure Monitor a virtuális gépek bevezetését](../azure-monitor/insights/vminsights-enable-overview.md) <br> [Azure Monitor VM-alapú adatfelismerés engedélyezése](../azure-monitor/insights/vminsights-enable-overview.md) <br> [Egyetlen virtuális gép használata a fedélzeten](../azure-monitor/insights/vminsights-enable-portal.md)<br>  [A szabályzaton keresztüli beszállás használata](../azure-monitor/insights/vminsights-enable-policy.md)| &#10007; | VM-alapú adatáttekintési munkafüzet  |
+| VMConnection <br> ServiceMapComputer_CL<br> ServiceMapProcess_CL|  [Azure Monitor szolgáltatás térképe](../azure-monitor/vm/service-map.md)<br>[Azure Monitor a virtuális gépek bevezetését](../azure-monitor/vm/vminsights-enable-overview.md) <br> [Azure Monitor VM-alapú adatfelismerés engedélyezése](../azure-monitor/vm/vminsights-enable-overview.md) <br> [Egyetlen virtuális gép használata a fedélzeten](../azure-monitor/vm/vminsights-enable-portal.md)<br>  [A szabályzaton keresztüli beszállás használata](../azure-monitor/vm/vminsights-enable-policy.md)| &#10007; | VM-alapú adatáttekintési munkafüzet  |
 | DnsEvents | [DNS összekötése](connect-dns.md) | &#10003; | |
-| W3CIISLog | [IIS-naplók összekötése](../azure-monitor/platform/data-sources-iis-logs.md)  | &#10007; | |
+| W3CIISLog | [IIS-naplók összekötése](../azure-monitor/agents/data-sources-iis-logs.md)  | &#10007; | |
 | WireData | [Vezetékes adatkapcsolatok](../azure-monitor/insights/wire-data.md) | &#10007; | |
 | WindowsFirewall | [A Windows tűzfal összekapcsolása](connect-windows-firewall.md) | &#10003; | |
 | AADIP SecurityAlert  | [Az Azure AD Identity Protection csatlakoztatása](connect-azure-ad-identity-protection.md)  | &#10003; | |
@@ -174,7 +174,7 @@ Azt is megteheti, hogy manuálisan telepítheti az ügynököt egy meglévő Azu
 | ASC SecurityAlert  | [Azure Defender-riasztások Összekötése](connect-azure-security-center.md) Azure Security Center  | &#10003; | |
 | MCAS SecurityAlert  | [Microsoft Cloud App Security összekötése](connect-cloud-app-security.md)  | &#10003; | |
 | SecurityAlert | | | |
-| Sysmon (esemény) | [Sysmon összekötése](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Windows-események összekötése](../azure-monitor/platform/data-sources-windows-events.md) <br> [A Sysmon-elemző beszerzése](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | A Sysmon-gyűjtemény alapértelmezés szerint nincs telepítve a virtuális gépeken. A Sysmon-ügynök telepítésével kapcsolatos további információkért lásd: [Sysmon](/sysinternals/downloads/sysmon). |
+| Sysmon (esemény) | [Sysmon összekötése](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Windows-események összekötése](../azure-monitor/agents/data-sources-windows-events.md) <br> [A Sysmon-elemző beszerzése](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | A Sysmon-gyűjtemény alapértelmezés szerint nincs telepítve a virtuális gépeken. A Sysmon-ügynök telepítésével kapcsolatos további információkért lásd: [Sysmon](/sysinternals/downloads/sysmon). |
 | ConfigurationData  | [VM-leltár automatizálása](../automation/change-tracking/overview.md)| &#10007; | |
 | Konfigurációváltozás  | [VIRTUÁLIS gépek követésének automatizálása](../automation/change-tracking/overview.md) | &#10007; | |
 | F5 BIG-IP | [Az F5 BIG-IP csatlakoztatása](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel)  | &#10007; | |

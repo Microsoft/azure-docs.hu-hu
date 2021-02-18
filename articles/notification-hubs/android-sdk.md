@@ -9,12 +9,12 @@ ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 05/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 63841bd603373d0fb325bcf82511ce3fb07b4136
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 31a411cbcecab8192643f86b6b54d09ac03e7f45
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017253"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581710"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-100-preview1"></a>Oktatóanyag: leküldéses értesítések küldése Android-eszközökre a Firebase SDK-Preview1 használatával
 
@@ -37,7 +37,7 @@ Az oktatóanyag elvégzéséhez egy aktív Azure-fiókra lesz szüksége. Ha nin
 A következő elemek is szükségesek:
 
 - A [Android Studio](https://go.microsoft.com/fwlink/?LinkId=389797) legújabb verziója ajánlott.
-- A minimális támogatás a 16-as API-szint.
+- A minimális támogatás a 19-ös API-szint.
 
 ## <a name="create-an-android-studio-project"></a>Android Studio projekt létrehozása
 
@@ -52,7 +52,7 @@ Első lépésként hozzon létre egy projektet a Android Studioban:
 4. A **projekt konfigurálása** lapon tegye a következőket:
    1. Adjon nevet az alkalmazásnak.
    2. Itt adhatja meg a projektfájlok mentési helyét.
-   3. Válassza a **Befejezés** lehetőséget.
+   3. Válassza a **Befejezés** gombot.
 
    :::image type="content" source="media/android-sdk/configure-project.png" alt-text="Projekt konfigurálása":::
 
@@ -106,7 +106,7 @@ Első lépésként hozzon létre egy projektet a Android Studioban:
 
    4. Válasszon ki egy meglévő erőforráscsoportot az **erőforráscsoporthoz**, vagy hozzon létre egy újat.
 
-   5. Kattintson a **Létrehozás** gombra.
+   5. Válassza a **Létrehozás** lehetőséget.
 
       :::image type="content" source="media/android-sdk/create-hub.png" alt-text="Hub létrehozása":::
 
@@ -162,12 +162,8 @@ Az értesítési központ már konfigurálva van a Firebase Cloud Messaging szol
 1. Az alkalmazás **Build. gradle** fájljában adja hozzá a következő sorokat a függőségek szakaszhoz:
 
    ```gradle
-   implementation 'com.microsoft.azure:notification-hubs-android-sdk:1.0.0-preview1@aar'
+   implementation 'com.microsoft.azure:notification-hubs-android-sdk-fcm:1.1.4'
    implementation 'androidx.appcompat:appcompat:1.0.0'
-
-   implementation 'com.google.firebase:firebase-messaging:20.1.5'
-
-   implementation 'com.android.volley:volley:1.1.1'
    ```
 
 2. Adja hozzá a következő tárházat a függőségek szakasz után:
@@ -198,18 +194,23 @@ Az értesítési központ már konfigurálva van a Firebase Cloud Messaging szol
    public class CustomNotificationListener implements NotificationHubListener {
 
       @override
+      public void onNotificationReceived(Context context, RemoteMessage message) {
+    
+         /* The following notification properties are available. */
+         Notification notification = message.getNotification();
+         String title = notification.getTitle();
+         String body = notification.getBody();
+         Map<String, String> data = message.getData();
+    
+         if (message != null) {
+            Log.d(TAG, "Message Notification Title: " + title);
+            Log.d(TAG, "Message Notification Body: " + message);
+         }
 
-      public void onNotificationReceived(Context context, NotificationMessage message) {
-
-      /* The following notification properties are available. */
-
-      String title = message.getTitle();
-      String message = message.getMessage();
-      Map<String, String> data = message.getData();
-
-      if (message != null) {
-         Log.d(TAG, "Message Notification Title: " + title);
-         Log.d(TAG, "Message Notification Body: " + message);
+         if (data != null) {
+             for (Map.Entry<String, String> entry : data.entrySet()) {
+                 Log.d(TAG, "key, " + entry.getKey() + " value " + entry.getValue());
+             }
          }
       }
    }
@@ -254,7 +255,7 @@ Leküldéses értesítéseket küldhet az értesítési központnak a [Azure Por
 
 2. A **platformok** területen válassza az **Android** lehetőséget.
 
-3. Válassza a **Küldés** lehetőséget. Az Android-eszközön még nem jelenik meg értesítés, mert nem futtatta rajta a Mobile alkalmazást. Miután futtatta a Mobile alkalmazást, kattintson ismét a **Küldés** gombra az értesítési üzenet megtekintéséhez.
+3. Kattintson a **Küldés** gombra. Az Android-eszközön még nem jelenik meg értesítés, mert nem futtatta rajta a Mobile alkalmazást. Miután futtatta a Mobile alkalmazást, kattintson ismét a **Küldés** gombra az értesítési üzenet megtekintéséhez.
 
 4. A művelet eredményét a portál oldalának alján található listában tekintheti meg.
 
@@ -270,7 +271,7 @@ Mielőtt a leküldéses értesítéseket egy emulátoron belül teszteli, győz�
 
 Győződjön meg arról is, hogy hozzáadta Google-fiókját a futó emulátorhoz a **Beállítások**  >  **fiókok** területen. Ellenkező esetben az FCM-sel való regisztrációra tett kísérletek **AUTHENTICATION_FAILED** kivételt okozhatnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a Firebase Cloud Messaging szolgáltatást használta az értesítések küldéséhez a szolgáltatásban regisztrált összes Android-eszközre. Ha szeretné megtudni, hogy hogyan küldhet leküldéses értesítéseket adott eszközökre, lépjen tovább a következő oktatóanyagra:
 

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 598c13b0434a364e73471b53c82663b94fb42f4e
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 3bdc0af2ea581954cb5edd2c7d00d286f814506c
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560101"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633597"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Riasztások érvényesítése Azure Security Center
 A dokumentum ismerteti, hogyan ellenőrizheti, hogy a rendszere megfelelően konfigurálva van-e az Azure Security Center riasztásaihoz.
@@ -28,7 +28,7 @@ A riasztások olyan értesítések, amelyeket a Security Center hoz létre, ha f
 További információ: [biztonsági riasztások a Security Centerban](security-center-alerts-overview.md) , valamint a [biztonsági riasztások kezelése és válaszadás](security-center-managing-and-responding-alerts.md)
 
 
-## <a name="generate-sample-azure-defender-alerts"></a>Minta Azure Defender-riasztások előállítása
+## <a name="generate-sample-azure-defender-alerts"></a>Azure Defender-mintariasztások létrehozása
 
 Ha az új, előzetes verziójú riasztásokat használja a [Azure Security Center biztonsági riasztások kezelése és](security-center-managing-and-responding-alerts.md)az azokra való reagálás című témakörben leírtak szerint, néhány kattintással létrehozhat minta riasztásokat a Azure Portal biztonsági riasztások oldaláról.
 
@@ -36,11 +36,6 @@ Használjon példákat a következőhöz:
 
 - Az Azure Defender értékének és funkcióinak kiértékelése
 - érvényesítse a biztonsági riasztásokhoz (például SIEM-integrációhoz, a munkafolyamat-automatizáláshoz és az e-mail-értesítésekhez) létrehozott konfigurációkat.
-
-> [!NOTE]
-> Ez az eljárás megköveteli, hogy az új (előzetes verzió) riasztások elérhetők legyenek a **biztonsági riasztások** oldal tetején található szalagcímben.
->
-> :::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="Az új előzetes riasztási élményre mutató hivatkozást tartalmazó szalagcím":::
 
 Példa riasztások létrehozásához:
 
@@ -97,7 +92,7 @@ Ha az Azure Kubernetes szolgáltatást a Security Centerrel integrálta, tesztel
 
 A Kubernetes-csomópontok és-fürtök védelmével kapcsolatos további információkért lásd: [Bevezetés az Azure Defender for Kubernetes](defender-for-kubernetes-introduction.md) használatába
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez a cikk a riasztások érvényesítési folyamatát mutatta be. Most, hogy már ismeri az érvényesítést, tekintse meg a következő cikkeket:
 
 * [Azure Key Vault-fenyegetésészlelés érvényesítése az Azure Security Centerben](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)
