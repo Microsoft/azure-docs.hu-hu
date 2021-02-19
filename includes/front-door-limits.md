@@ -1,19 +1,19 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: frontdoor
 author: duongau
 ms.service: frontdoor
 ms.topic: include
-ms.date: 05/09/2019
-ms.author: sharadag
+ms.date: 02/18/2021
+ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: 361fb18574e90fc46e45bff8914c51ee1afa2f96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 53d837883daefddd5fa3f0f543eae1d116a5e86a
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89411627"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101102937"
 ---
 | Erőforrás | Korlát |
 | --- | --- |
@@ -35,6 +35,31 @@ ms.locfileid: "89411627"
 | Webalkalmazási tűzfal cookie-nevének hossza | 256 |
 | Webalkalmazási tűzfal HTTP-kérés törzsének mérete megvizsgálva | 128 KB |
 | Webalkalmazási tűzfal – egyéni válasz törzsének hossza | 2 KB |
+
+### <a name="azure-front-door-standardpremium-preview-service-limits"></a>Azure bejárati ajtó standard/prémium (előzetes) szolgáltatási korlátai
+
+*** *Maximum **500** teljes standard és prémium profil/előfizetés.*
+
+| Erőforrás | Szabványos SKU-korlát | Prémium SKU-korlát |
+| --- | --- | --- |
+| Végpontok maximális száma profilban  | 10 | 25 |
+| Egyéni tartomány maximális száma (profil) | 100 | 200 |
+| Csoportonként maximális Origó | 100 | 200 |
+| Maximális titok/profil | 100 | 200 |
+| Biztonsági szabályzatok maximális száma (profil) | 100 | 200 |
+| Szabálykészlet maximális száma profilban | 100 | 200 |
+| Szabálykészlet maximális szabályai | 100 | 100 |
+| Origó maximális forrása csoportonként | 50 | 50 |
+| Útvonalak maximális száma végponton | 100 | 200 |
+| Webalkalmazási tűzfal egyéni szabályoknak megfelelően | 10 | 10 |
+| Webalkalmazási tűzfal IP-címeinek egyeztetési feltétele | 600 | 600 |
+| Webalkalmazási tűzfal karakterláncának egyeztetési feltétel értéke | 10 | 10 |
+| Webalkalmazási tűzfal karakterláncának egyezési értéke | 256 | 256 |
+| Webalkalmazási tűzfal a törzs paraméterének neve után | 256 | 256 |
+| Webalkalmazási tűzfal HTTP-fejlécének neve hossz | 256 | 256 |
+| Webalkalmazási tűzfal cookie-nevének hossza | 256 | 256|
+| Webalkalmazási tűzfal HTTP-kérés törzsének mérete megvizsgálva | 128 KB | 128 KB |
+| Webalkalmazási tűzfal – egyéni válasz törzsének hossza | 2 KB | 2 KB |
 
 ### <a name="timeout-values"></a>Időtúllépési értékek
 #### <a name="client-to-front-door"></a>Ügyfélről a bejárat felé

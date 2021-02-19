@@ -9,12 +9,12 @@ ms.topic: include
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 19806fe24d0ff3b87ebe61b45ac302947c734fa0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 234c3358b98b7af677793fba58c1602a8bd976f0
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895568"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101102818"
 ---
 ## <a name="grant-role-based-access-for-users-to-azure-maps"></a>Szerepköralapú hozzáférés biztosítása a felhasználók számára a Azure Maps
 
@@ -25,13 +25,13 @@ Azure *szerepköralapú hozzáférés-vezérlést (Azure RBAC)* biztosít egy Az
 
 További információk az [Azure ad](../../active-directory/fundamentals/index.yml) -ben a felhasználók címtárának hatékony kezeléséhez.
 
-1. Nyissa meg **Azure Maps-fiókját** . Válassza a **hozzáférés-vezérlés (iam)**  >  **szerepkör-hozzárendelés** elemet.
+1. Nyissa meg **Azure Maps-fiókját**. Válassza a **hozzáférés-vezérlés (iam)**  >  **szerepkör-hozzárendelés** elemet.
 
     ![Hozzáférés biztosítása az Azure RBAC](../media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. A **szerepkör-hozzárendelések** lap **szerepkör** területén válassza ki a beépített Azure Maps szerepkör-definíciót, például **Azure Maps Adatolvasó** vagy **Azure Maps adatközreműködő** . A **hozzáférés társítása** területen válassza az **Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév** lehetőséget. Válassza ki a résztvevőt név alapján. Kattintson a **Mentés** gombra.
+2. A **szerepkör-hozzárendelések** lap **szerepkör** területén válassza ki a beépített Azure Maps szerepkör-definíciót, például **Azure Maps Adatolvasó** vagy **Azure Maps adatközreműködő**. A **hozzáférés társítása** területen válassza az **Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév** lehetőséget. Válassza ki a résztvevőt név alapján. Kattintson a **Mentés** gombra.
 
-   * A [szerepkör-hozzárendelések hozzáadása vagy eltávolítása](../../role-based-access-control/role-assignments-portal.md)című témakörben talál további információt.
+   * Tekintse meg az [Azure-szerepkörök hozzárendelésének](../../role-based-access-control/role-assignments-portal.md)részleteit.
 
 > [!WARNING]
 > Azure Maps beépített szerepkör-definíciók nagyon nagy engedélyezési hozzáférést biztosítanak számos Azure Maps REST API-hoz. Ha minimálisra szeretné korlátozni az API-kat, tekintse meg az [Egyéni szerepkör-definíció létrehozása és a felhasználók társítása](../../role-based-access-control/custom-roles.md) az egyéni szerepkör-definícióhoz című témakört. Ez lehetővé teszi a felhasználók számára, hogy az alkalmazáshoz szükséges legalacsonyabb jogosultsággal rendelkezzenek.

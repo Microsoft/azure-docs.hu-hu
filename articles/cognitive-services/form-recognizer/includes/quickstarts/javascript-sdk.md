@@ -2,22 +2,27 @@
 title: 'Gyors útmutató: űrlap-felismerő ügyféloldali kódtár a JavaScripthez'
 description: Használja az űrlap-felismerő ügyféloldali függvénytárát a JavaScripthez olyan űrlap-feldolgozó alkalmazás létrehozásához, amely Kinyeri a kulcs/érték párokat és a tábla adatait az egyéni dokumentumokból.
 services: cognitive-services
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
-ms.author: pafarley
+ms.author: lajanuar
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e5a131753829edddbb4f385766a2d8697ebd0106
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: ebbf04db36b20420ae6de9d61837bcc4e664036e
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584651"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101102903"
 ---
+<!-- markdownlint-disable MD001 -->
+<!-- markdownlint-disable MD024 -->
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD034 -->
 > [!IMPORTANT]
+>
 > * Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja. Tekintse meg az alábbi dokumentációt. 
 
 [Dokumentáció](../../index.yml)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/formrecognizer/ai-form-recognizer/)  |  [Csomag (NPM)](https://www.npmjs.com/package/@azure/ai-form-recognizer)  |  [Példák](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples)
@@ -28,8 +33,8 @@ ms.locfileid: "99584651"
 * A [Node.js](https://nodejs.org/) aktuális verziója
 * Egy Azure Storage-blob, amely betanítási adathalmazt tartalmaz. A betanítási adatkészletek összeállításával kapcsolatos tippekért és lehetőségekért tekintse meg az [Egyéni modell képzési adatkészletének](../../build-training-data-set.md) létrehozása című témakört. Ebben a rövid útmutatóban használhatja a [minta adathalmaz](https://go.microsoft.com/fwlink/?linkid=2090451) (letöltés és kibontás *sample_data.zip*) **alatt található fájlokat** .
 * Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" hozzon létre egy űrlap-felismerő erőforrást "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Az Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése** elemre.
-    * Az alkalmazás az űrlap-felismerő API-hoz való összekapcsolásához szüksége lesz a létrehozott erőforrás kulcsára és végpontra. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
-    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
+  * Az alkalmazás az űrlap-felismerő API-hoz való összekapcsolásához szüksége lesz a létrehozott erőforrás kulcsára és végpontra. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
+  * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
 
 ## <a name="setting-up"></a>Beállítás
 
@@ -61,7 +66,6 @@ Hozzon létre egy nevű fájlt `index.js` , nyissa meg, és importálja a követ
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_imports)]
 
-
 > [!TIP]
 > Egyszerre szeretné megtekinteni a teljes rövid útmutató kódját? Megtalálhatja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/FormRecognizer/FormRecognizerQuickstart.js), amely a jelen rövid útmutatóban szereplő példákat tartalmazza.
 
@@ -74,18 +78,20 @@ Hozzon létre változókat az erőforrás Azure-végpontjának és-kulcsának l�
 >
 > Ne felejtse el eltávolítani a kulcsot a kódból, ha elkészült, és soha ne tegye közzé nyilvánosan. Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. További információt a Cognitive Services [biztonsági](../../../cognitive-services-security.md) cikkben talál.
 
-## <a name="object-model"></a>Objektummodell 
+## <a name="object-model"></a>Objektummodell
 
 Az űrlap-felismerő használatával két különböző típusú ügyfél hozható létre. Az első az, `FormRecognizerClient` hogy a szolgáltatás lekérdezését felismerő űrlapmezők és tartalom használatával kérdezi le. A második a `FormTrainingClient` használatával egyéni modelleket hozhat létre és kezelhet, amelyeket az elismerés javítása érdekében használhat. 
 
 ### <a name="formrecognizerclient"></a>FormRecognizerClient
+
 `FormRecognizerClient` a következő műveleteit biztosítja:
 
- * Az űrlap mezőinek és tartalmának felismerése az egyéni űrlapok elemzéséhez betanított egyéni modellek használatával. Ezeket az értékeket az objektumok egy gyűjteménye adja vissza `RecognizedForm` .
- * Űrlap tartalmának felismerése, beleértve a táblákat, a sorokat és a szavakat, anélkül, hogy be kellene tanítani a modellt. Az űrlap tartalma objektumok gyűjteményében lesz visszaadva `FormPage` .
- * A beérkezések gyakori mezőinek felismerése, az űrlap-felismerő szolgáltatásban egy előre betanított modell használatával. Ezeket a mezőket és a metaadatokat a gyűjteménye adja vissza `RecognizedReceipt` .
+* Az űrlap mezőinek és tartalmának felismerése az egyéni űrlapok elemzéséhez betanított egyéni modellek használatával. Ezeket az értékeket az objektumok egy gyűjteménye adja vissza `RecognizedForm` .
+* Űrlap tartalmának felismerése, beleértve a táblákat, a sorokat és a szavakat, anélkül, hogy be kellene tanítani a modellt. Az űrlap tartalma objektumok gyűjteményében lesz visszaadva `FormPage` .
+* A beérkezések gyakori mezőinek felismerése, az űrlap-felismerő szolgáltatásban egy előre betanított modell használatával. Ezeket a mezőket és a metaadatokat a gyűjteménye adja vissza `RecognizedReceipt` .
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
+
 `FormTrainingClient` a következő műveleteit biztosítja:
 
 * Egyéni modellek betanítása az egyéni űrlapokon található összes mező és érték elemzéséhez. A `CustomFormModel` visszatérési értéke jelzi, hogy a modell milyen típusú adattípusokat fog elemezni, és hogy milyen mezőket fog kibontani az egyes űrlapokhoz. A betanítási adatkészletek létrehozásával kapcsolatos részletesebb magyarázatért tekintse [meg a szolgáltatás dokumentációját a címke nélküli modell betanításához](#train-a-model-without-labels) .
@@ -95,7 +101,6 @@ Az űrlap-felismerő használatával két különböző típusú ügyfél hozhat
 
 > [!NOTE]
 > A modellek grafikus felhasználói felülettel is betanítható, például az [űrlap-felismerő címkéző eszköz](../../quickstarts/label-tool.md)használatával.
-
 
 ## <a name="code-examples"></a>Kódpéldák
 
@@ -307,7 +312,7 @@ Az URI-ból érkező visszaigazolások elemzéséhez használja a `beginRecogniz
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_receipts)]
 
 > [!TIP]
-> Elemezheti a helyi visszaigazolási képeket is. Tekintse meg a [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) metódusokat, például a **beginRecognizeReceipts**. Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) található mintakód-kódot.
+> Elemezheti a helyi visszaigazolási képeket is. Tekintse meg a [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest&preserve-view=true ) metódusokat, például a **beginRecognizeReceipts**. Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) található mintakód-kódot.
 
 ### <a name="output"></a>Kimenet
 
@@ -326,7 +331,7 @@ First receipt:
 
 ## <a name="manage-your-custom-models"></a>Egyéni modellek kezelése
 
-Ez a szakasz bemutatja, hogyan kezelheti a fiókjában tárolt egyéni modelleket. A következő kód az összes modell-felügyeleti feladatot egyetlen függvényben hajtja végre, példaként. 
+Ez a szakasz bemutatja, hogyan kezelheti a fiókjában tárolt egyéni modelleket. A következő kód az összes modell-felügyeleti feladatot egyetlen függvényben hajtja végre, példaként.
 
 ### <a name="get-number-of-models"></a>Modellek számának beolvasása
 
@@ -334,13 +339,11 @@ A következő kódrészlet lekéri a fiókban jelenleg található modellek szá
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_manage_count)]
 
-
 ### <a name="get-list-of-models-in-account"></a>A fiókban található modellek listájának beolvasása
 
 A következő kódrészlet a fiókban elérhető modellek teljes listáját tartalmazza, beleértve a modell létrehozásának és aktuális állapotának adatait.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_manage_list)]
-
 
 ### <a name="output"></a>Kimenet
 
@@ -381,7 +384,6 @@ Ez a kódrészlet a modellek és a modell-azonosítók többoldalas listáját t
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_manage_listpages)]
 
-
 ### <a name="output"></a>Kimenet
 
 ```console
@@ -396,13 +398,11 @@ A következő függvény a modell AZONOSÍTÓját veszi át, és beolvassa a meg
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_manage_getmodel)]
 
-
 ### <a name="delete-a-model-from-the-resource-account"></a>Modell törlése az erőforrás-fiókból
 
 Az AZONOSÍTÓra hivatkozva egy modellt is törölhet a fiókjából. Ez a függvény törli a modellt a megadott AZONOSÍTÓval. Ez a függvény alapértelmezés szerint nincs meghívva.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_manage_delete)]
-
 
 ### <a name="output"></a>Kimenet
 
@@ -431,7 +431,7 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 
 A következő környezeti változó megadásával megtekintheti a hibakeresési naplókat a tár használatakor.
 
-```
+```console
 export DEBUG=azure*
 ```
 

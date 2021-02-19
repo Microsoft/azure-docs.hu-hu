@@ -2,21 +2,25 @@
 title: 'Gyors útmutató: űrlap-felismerő ügyféloldali kódtár Java-hoz'
 description: A Javához készült űrlap-felismerő ügyféloldali kódtár használatával létrehozhat egy űrlapot feldolgozó alkalmazást, amely Kinyeri a kulcs/érték párokat és a tábla adatait az egyéni dokumentumokból.
 services: cognitive-services
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 09/21/2020
+ms.date: 02/12/2021
 ms.custom: devx-track-java
-ms.author: pafarley
-ms.openlocfilehash: 4f48416153f5a378f9e4eff84802519250488301
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.author: lajanuar
+ms.openlocfilehash: b801838a4db4d95d5d492d50d6b67cf474d95963
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584666"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101102869"
 ---
+<!-- markdownlint-disable MD001 -->
+<!-- markdownlint-disable MD024 -->
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD034 -->
 > [!IMPORTANT]
 > Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja.
 
@@ -28,10 +32,9 @@ ms.locfileid: "99584666"
 * A [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html) aktuális verziója
 * A [Gradle Build eszköz](https://gradle.org/install/)vagy egy másik függőségi kezelő.
 * Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" hozzon létre egy űrlap-felismerő erőforrást "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Az Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése** elemre.
-    * Az alkalmazás az űrlap-felismerő API-hoz való összekapcsolásához szüksége lesz a létrehozott erőforrás kulcsára és végpontra. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
-    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
+  * Az alkalmazás az űrlap-felismerő API-hoz való összekapcsolásához szüksége lesz a létrehozott erőforrás kulcsára és végpontra. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
+  * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
 * Egy Azure Storage-blob, amely betanítási adathalmazt tartalmaz. A betanítási adatkészletek összeállításával kapcsolatos tippekért és lehetőségekért tekintse meg az [Egyéni modell képzési adatkészletének](../../build-training-data-set.md) létrehozása című témakört. Ebben a rövid útmutatóban használhatja a [minta adathalmaz](https://go.microsoft.com/fwlink/?linkid=2090451) (letöltés és kibontás *sample_data.zip*) **alatt található fájlokat** .
-
 
 ## <a name="setting-up"></a>Beállítás
 
@@ -51,34 +54,14 @@ gradle init --type basic
 
 Amikor a rendszer rákérdez a **DSL** kiválasztására, válassza a **Kotlin** lehetőséget.
 
-
 ### <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése
 
 Ez a rövid útmutató a Gradle függőség-kezelőt használja. Megtalálhatja az ügyféloldali függvénytárat és az egyéb függőségi kezelők információit a [Maven központi adattárában](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer).
 
 A projekt *Build. gradle. KTS* fájljában adja meg az ügyféloldali függvénytárat `implementation` utasításként, valamint a szükséges beépülő modulokat és beállításokat.
 
-#### <a name="version-20"></a>[2,0-es verzió](#tab/ga)
-```kotlin
-plugins {
-    java
-    application
-}
-application {
-    mainClass.set("FormRecognizer")
-}
-repositories {
-    mavenCentral()
-}
-dependencies {
-    implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.0.0")
-}
-```
+#### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/preview)
 
-> [!NOTE]
-> Az űrlap-felismerő 3.0.0 SDK a 2,0-es API-verziót tükrözi
-
-#### <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/preview)
 ```kotlin
 plugins {
     java
@@ -97,6 +80,27 @@ dependencies {
 
 > [!NOTE]
 > Az űrlap-felismerő 3.1.0 SDK az API 2,1-es verziójának előzetes verzióját tükrözi
+
+#### <a name="v20"></a>[2.0-s verzió](#tab/ga)
+
+```kotlin
+plugins {
+    java
+    application
+}
+application {
+    mainClass.set("FormRecognizer")
+}
+repositories {
+    mavenCentral()
+}
+dependencies {
+    implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.0.0")
+}
+```
+
+> [!NOTE]
+> Az űrlap-felismerő 3.0.0 SDK az API 2.0-s verzióját tükrözi
 
 ---
 
@@ -133,40 +137,41 @@ Az alkalmazás **fő** metódusában adjon hozzá hívásokat az ebben a rövid 
    :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL-cím lekérése":::
 * Egy olyan űrlap URL-címének lekéréséhez, amely a teszteléshez használható, a fenti lépésekkel lekérheti egy egyedi dokumentum SAS URL-címét a blob Storage-ban. Vagy vegyen fel egy máshol található dokumentum URL-címét.
 * A fenti módszer használatával beolvashatja a beérkezési képek URL-címét is.
+<!-- markdownlint-disable MD024 -->
+#### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/preview)
 
-#### <a name="version-20"></a>[2,0-es verzió](#tab/ga)
-[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_mainvars)]
-
-[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_maincalls)]
-#### <a name="version-21-preview"></a>[2,1-es verzió előnézet](#tab/preview)
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_mainvars)]
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_maincalls)]
 
+#### <a name="v20"></a>[2.0-s verzió](#tab/ga)
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_mainvars)]
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_maincalls)]
+
 ---
 
+## <a name="object-model"></a>Objektummodell
 
-
-## <a name="object-model"></a>Objektummodell 
-
-Az űrlap-felismerő használatával két különböző típusú ügyfél hozható létre. Az első az, `FormRecognizerClient` hogy a szolgáltatás lekérdezését felismerő űrlapmezők és tartalom használatával kérdezi le. A második a `FormTrainingClient` használatával egyéni modelleket hozhat létre és kezelhet, amelyeket az elismerés javítása érdekében használhat. 
+Az űrlap-felismerő használatával két különböző típusú ügyfél hozható létre. Az első az, `FormRecognizerClient` hogy a szolgáltatás lekérdezését felismerő űrlapmezők és tartalom használatával kérdezi le. A második a `FormTrainingClient` használatával egyéni modelleket hozhat létre és kezelhet, amelyeket az elismerés javítása érdekében használhat.
 
 ### <a name="formrecognizerclient"></a>FormRecognizerClient
 
 `FormRecognizerClient` a következő műveleteit biztosítja:
 
-- Az űrlap mezőinek és tartalmának felismerése az egyéni űrlapok elemzéséhez betanított egyéni modellek használatával.  Ezeket az értékeket az objektumok egy gyűjteménye adja vissza `RecognizedForm` . Tekintse meg a példa [Egyéni űrlapok elemzése](#analyze-forms-with-a-custom-model)című témakört.
-- Űrlap tartalmának felismerése, beleértve a táblákat, a sorokat és a szavakat, anélkül, hogy be kellene tanítani a modellt.  Az űrlap tartalma objektumok gyűjteményében lesz visszaadva `FormPage` . Lásd: példa [elemzése elrendezés](#analyze-layout).
-- Az Egyesült államokbeli nyugták általános mezőinek felismerése egy előre képzett beérkezési modell használatával az űrlap-felismerő szolgáltatásban.  Ezeket a mezőket és a metaadatokat az objektumok egy gyűjteménye adja vissza `RecognizedForm` . Lásd: példák [elemzése nyugták](#analyze-receipts).
+* Az űrlap mezőinek és tartalmának felismerése az egyéni űrlapok elemzéséhez betanított egyéni modellek használatával.  Ezeket az értékeket az objektumok egy gyűjteménye adja vissza `RecognizedForm` . Tekintse meg a példa [Egyéni űrlapok elemzése](#analyze-forms-with-a-custom-model)című témakört.
+* Űrlap tartalmának felismerése, beleértve a táblákat, a sorokat és a szavakat, anélkül, hogy be kellene tanítani a modellt.  Az űrlap tartalma objektumok gyűjteményében lesz visszaadva `FormPage` . Lásd: példa [elemzése elrendezés](#analyze-layout).
+* Az Egyesült államokbeli nyugták általános mezőinek felismerése egy előre képzett beérkezési modell használatával az űrlap-felismerő szolgáltatásban.  Ezeket a mezőket és a metaadatokat az objektumok egy gyűjteménye adja vissza `RecognizedForm` . Lásd: példák [elemzése nyugták](#analyze-receipts).
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
 
 `FormTrainingClient` a következő műveleteit biztosítja:
 
-- Egyéni modellek betanítása az egyéni űrlapokon található összes mező és érték elemzéséhez.  A `CustomFormModel` visszatérési értéke jelzi, hogy a modell milyen típusú adattípusokat fog elemezni, és hogy milyen mezőket fog kibontani az egyes űrlapokhoz.
-- Egyéni modellek betanítása az egyéni űrlapok címkézésével megadott mezők és értékek elemzéséhez.  A `CustomFormModel` visszaadja a modell által kinyert mezőket, valamint az egyes mezők becsült pontosságát.
-- A fiókban létrehozott modellek kezelése.
-- Egyéni modell másolása az egyik űrlap-felismerő erőforrásból egy másikba.
+* Egyéni modellek betanítása az egyéni űrlapokon található összes mező és érték elemzéséhez.  A `CustomFormModel` visszatérési értéke jelzi, hogy a modell milyen típusú adattípusokat fog elemezni, és hogy milyen mezőket fog kibontani az egyes űrlapokhoz.
+* Egyéni modellek betanítása az egyéni űrlapok címkézésével megadott mezők és értékek elemzéséhez.  A `CustomFormModel` visszaadja a modell által kinyert mezőket, valamint az egyes mezők becsült pontosságát.
+* A fiókban létrehozott modellek kezelése.
+* Egyéni modell másolása az egyik űrlap-felismerő erőforrásból egy másikba.
 
 > [!NOTE]
 > A modellek grafikus felhasználói felülettel is betanítható, például az [űrlap-felismerő címkéző eszköz](../../quickstarts/label-tool.md)használatával.
@@ -174,15 +179,9 @@ Az űrlap-felismerő használatával két különböző típusú ügyfél hozhat
 ## <a name="code-examples"></a>Kódpéldák
 
 Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő feladatokat a Javához készült űrlap-felismerő ügyféloldali kódtár használatával:
+<!-- markdownlint-disable MD001 -->
+#### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/preview)
 
-#### <a name="version-20"></a>[2,0-es verzió](#tab/ga)
-* [Az ügyfél hitelesítése](#authenticate-the-client)
-* [Elrendezés elemzése](#analyze-layout)
-* [Visszaigazolások elemzése](#analyze-receipts)
-* [Egyéni modell betanítása](#train-a-custom-model)
-* [Űrlapok elemzése egyéni modellel](#analyze-forms-with-a-custom-model)
-* [Egyéni modellek kezelése](#manage-your-custom-models)
-#### <a name="version-21-preview"></a>[2,1-es verzió előnézet](#tab/preview)
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Elrendezés elemzése](#analyze-layout)
 * [Visszaigazolások elemzése](#analyze-receipts)
@@ -191,6 +190,16 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 * [Egyéni modell betanítása](#train-a-custom-model)
 * [Űrlapok elemzése egyéni modellel](#analyze-forms-with-a-custom-model)
 * [Egyéni modellek kezelése](#manage-your-custom-models)
+
+#### <a name="v20"></a>[2.0-s verzió](#tab/ga)
+
+* [Az ügyfél hitelesítése](#authenticate-the-client)
+* [Elrendezés elemzése](#analyze-layout)
+* [Visszaigazolások elemzése](#analyze-receipts)
+* [Egyéni modell betanítása](#train-a-custom-model)
+* [Űrlapok elemzése egyéni modellel](#analyze-forms-with-a-custom-model)
+* [Egyéni modellek kezelése](#manage-your-custom-models)
+
 
 ---
 
@@ -233,15 +242,9 @@ Cell has text $89,024.34.
 Cell has text ET.
 ```
 
-
 ## <a name="analyze-invoices"></a>Számlák elemzése
 
-#### <a name="version-20"></a>[2,0-es verzió](#tab/ga)
-
-> [!IMPORTANT]
-> Ez a funkció nem érhető el a kiválasztott API-verzióban.
-
-#### <a name="version-21-preview"></a>[2,1-es verzió előnézet](#tab/preview)
+#### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/preview)
 
 Ez a szakasz bemutatja, hogyan elemezheti és kinyerheti az értékesítési számlákból származó általános mezőket egy előre betanított modell használatával. A számlázási elemzéssel kapcsolatos további információkért tekintse meg a [számla fogalmi útmutatóját](../../concept-invoices.md).
 
@@ -250,11 +253,16 @@ A számlák URL-címről való elemzéséhez használja a `beginRecognizeInvoice
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_invoice_call)]
 
 > [!TIP]
-> A helyi számlákat is elemezheti. Tekintse meg a [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) metódusokat, például a **beginRecognizeInvoices**. Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) található mintakód-kódot.
+> A helyi számlákat is elemezheti. Tekintse meg a [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable&preserve-view=true) metódusokat, például a **beginRecognizeInvoices**. Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) található mintakód-kódot.
 
 A visszaadott érték a **RecognizedForm** objektumok gyűjteménye: egyet a dokumentumban lévő egyes számlákhoz. A következő kód feldolgozza a számlát a megadott URI-n, és kiírja a fő mezőket és értékeket a konzolra.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_invoice_print)]
+
+#### <a name="v20"></a>[2.0-s verzió](#tab/ga)
+
+> [!IMPORTANT]
+> Ez a funkció nem érhető el a kiválasztott API-verzióban.
 
 ---
 
@@ -270,7 +278,6 @@ Ez a szakasz bemutatja, hogyan lehet a modelleket saját adataival betanítani. 
 Egyéni modellek betanítása az egyéni űrlapokon található összes mező és érték elemzéséhez a betanítási dokumentumok manuális címkézése nélkül.
 
 A következő metódus egy modellt hoz létre egy adott dokumentumon, és kiírja a modell állapotát a konzolra. 
-
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_train_call)]
 
@@ -378,7 +385,7 @@ A visszaigazolások URI-ból való elemzéséhez használja a **beginRecognizeRe
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_call)]
 
 > [!TIP]
-> Elemezheti a helyi visszaigazolási képeket is. Tekintse meg a [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) metódusokat, például a **beginRecognizeReceipts**. Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) található mintakód-kódot.
+> Elemezheti a helyi visszaigazolási képeket is. Tekintse meg a [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable&preserve-view=true) metódusokat, például a **beginRecognizeReceipts**. Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) található mintakód-kódot.
 
 A visszaadott érték egy **RecognizedReceipt** -objektum gyűjteménye: egy a beküldött dokumentum minden oldalához. A kód következő blokkja megismétli a visszaigazolásokat, és kinyomtatja az adatokat a-konzolra.
 
@@ -407,12 +414,7 @@ Total Price: null, confidence: 0.93
 
 ## <a name="analyze-business-cards"></a>Üzleti kártyák elemzése
 
-#### <a name="version-20"></a>[2,0-es verzió](#tab/ga)
-
-> [!IMPORTANT]
-> Ez a funkció nem érhető el a kiválasztott API-verzióban.
-
-#### <a name="version-21-preview"></a>[2,1-es verzió előnézet](#tab/preview)
+#### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/preview)
 
 Ez a szakasz bemutatja, hogyan elemezheti és kinyerheti az angol üzleti kártyákból származó általános mezőket egy előre betanított modell használatával. További információ a névjegykártya-elemzésről: a [Business Cards fogalmi útmutatója](../../concept-business-cards.md).
 
@@ -421,11 +423,16 @@ Az üzleti kártyák URL-címről való elemzéséhez használja a `beginRecogni
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_call)]
 
 > [!TIP]
-> A helyi névjegykártya-lemezképeket is elemezheti. Tekintse meg a [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) metódusokat, például a **beginRecognizeBusinessCards**. Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) található mintakód-kódot.
+> A helyi névjegykártya-lemezképeket is elemezheti. Tekintse meg a [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable&preserve-view=true) metódusokat, például a **beginRecognizeBusinessCards**. Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) található mintakód-kódot.
 
 A visszaadott érték a **RecognizedForm** objektumok gyűjteménye: egyet a dokumentum minden kártyáján. A következő kód feldolgozza a névjegykártyát a megadott URI-n, és kiírja a fő mezőket és értékeket a konzolra.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_print)]
+
+#### <a name="v20"></a>[2.0-s verzió](#tab/ga)
+
+> [!IMPORTANT]
+> Ez a funkció nem érhető el a kiválasztott API-verzióban.
 
 ---
 
@@ -481,8 +488,6 @@ Field Accuracy: 1.00
 Az AZONOSÍTÓra hivatkozva egy modellt is törölhet a fiókjából.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_manage_delete)]
-
-
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 

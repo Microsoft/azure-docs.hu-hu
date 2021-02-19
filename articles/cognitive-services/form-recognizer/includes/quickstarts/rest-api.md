@@ -2,20 +2,24 @@
 title: 'Gyors útmutató: űrlap-felismerő REST API'
 description: Az űrlap-felismerő REST API használatával létrehozhat egy űrlap-feldolgozási alkalmazást, amely Kinyeri a kulcs/érték párokat és a tábla adatait az egyéni dokumentumokból.
 services: cognitive-services
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 12/15/2020
-ms.author: pafarley
-ms.openlocfilehash: 8ba24d5a59beade1429b9d86ed549f1dae3c2f1f
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.author: lajanuar
+ms.openlocfilehash: 08026ea04e7f997ae75f6bdb2cea09e1f41e26a3
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100552833"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101102852"
 ---
+<!-- markdownlint-disable MD001 -->
+<!-- markdownlint-disable MD024 -->
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD034 -->
 > [!NOTE]
 > Ez az útmutató a cURL használatával REST API hívásokat hajt végre. A [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/FormRecognizer/rest) is szerepel egy mintakód, amely bemutatja, hogyan hívhatja meg a REST API-kat a Python használatával.
 
@@ -25,12 +29,11 @@ ms.locfileid: "100552833"
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
 * Egy Azure Storage-blob, amely betanítási adathalmazt tartalmaz. A betanítási adatkészletek összeállításával kapcsolatos tippekért és lehetőségekért tekintse meg az [Egyéni modell képzési adatkészletének](../../build-training-data-set.md) létrehozása című témakört. Ebben a rövid útmutatóban használhatja a [minta adathalmaz](https://go.microsoft.com/fwlink/?linkid=2090451) (letöltés és kibontás *sample_data.zip*) **alatt található fájlokat** .
 * Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" hozzon létre egy űrlap-felismerő erőforrást "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Az Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése** elemre.
-    * Az alkalmazás az űrlap-felismerő API-hoz való összekapcsolásához szüksége lesz a létrehozott erőforrás kulcsára és végpontra. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
-    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
+  * Az alkalmazás az űrlap-felismerő API-hoz való összekapcsolásához szüksége lesz a létrehozott erőforrás kulcsára és végpontra. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
+  * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
 * Egy nyugtát ábrázoló rendszerkép URL-címe. Ehhez a rövid útmutatóhoz [minta képet](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-allinone.jpg) is használhat.
 * Egy névjegykártya-rendszerkép URL-címe. Ehhez a rövid útmutatóhoz [minta képet](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/business_cards/business-card-english.jpg) is használhat.
 * Egy számla rendszerképének URL-címe. Ehhez a rövid útmutatóhoz [minta dokumentumot](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/forms/Invoice_1.pdf) is használhat.
-
 
 ## <a name="analyze-layout"></a>Elrendezés elemzése
 
@@ -40,18 +43,18 @@ Az űrlap-felismerő használatával táblázatokat, kiválasztási jeleket, sz�
 1. Cserélje le az `{subscription key}` elemet az előző lépésből másolt előfizetési kulcsra.
 1. Cserélje le az értékét `\"{your-document-url}` a példa URL-címek egyikére.
 
-# <a name="v20"></a>[2.0-s verzió](#tab/v2-0)    
+### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)
 
+```bash
+curl -v -i POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
+```
+
+### <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
 
 ```bash
 curl -v -i POST "https://{Endpoint}/formrecognizer/v2.0/layout/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
 ```
 
-# <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)    
-
-```bash
-curl -v -i POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
-```
 ---
 
 Olyan választ fog kapni `202 (Success)` , amely tartalmazza a am **Operation-Location** fejlécet. A fejléc értéke olyan műveleti azonosítót tartalmaz, amelynek segítségével lekérdezheti az aszinkron művelet állapotát, és lekérheti az eredményeket. A következő példában az azt követő karakterlánc a `analyzeResults/` művelet azonosítója.
@@ -67,18 +70,20 @@ Az elemzési **[elrendezési](https://westcentralus.dev.cognitive.microsoft.com/
 1. Cserélje le `{Endpoint}` a helyére az űrlap-felismerő előfizetéshez kapott végpontot.
 1. Cserélje le az `{subscription key}` elemet az előző lépésből másolt előfizetési kulcsra.
 1. Cserélje le az `{resultId}` elemet az előző lépésben szereplő műveleti azonosítóra.
+<!-- markdownlint-disable MD024 -->
 
-# <a name="v20"></a>[2.0-s verzió](#tab/v2-0)    
+### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)
+
+```bash
+curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+
+### <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
 
 ```bash
 curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/layout/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 
-
-# <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)  
-```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
 ---
 
 ### <a name="examine-the-results"></a>Az eredmények vizsgálata
@@ -92,111 +97,10 @@ Tekintse meg a következő számla képét és a hozzá tartozó JSON-kimenetet.
 
 :::image type="content" source="../../media/contoso-invoice.png" alt-text="Contoso Project-utasítás dokumentum táblával.":::
 
+### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)
+
 Ezt a kimenetet az egyszerűség kedvéért lerövidítjük. Tekintse [meg a teljes minta kimenetet a githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/sample-layout-output.json).
 
-# <a name="v20"></a>[2.0-s verzió](#tab/v2-0)    
-```json
-{
-    "status": "succeeded",
-    "createdDateTime": "2020-08-20T20:36:52Z",
-    "lastUpdatedDateTime": "2020-08-20T20:36:58Z",
-    "analyzeResult": {
-        "version": "2.0.0",
-        "readResults": [
-            {
-                "page": 1,
-                "language": "en",
-                "angle": 0,
-                "width": 8.5,
-                "height": 11,
-                "unit": "inch",
-                "lines": [
-                    {
-                        "boundingBox": [
-                            0.5826,
-                            0.4411,
-                            2.3387,
-                            0.4411,
-                            2.3387,
-                            0.7969,
-                            0.5826,
-                            0.7969
-                        ],
-                        "text": "Contoso, Ltd.",
-                        "words": [
-                            {
-                                "boundingBox": [
-                                    0.5826,
-                                    0.4411,
-                                    1.744,
-                                    0.4411,
-                                    1.744,
-                                    0.7969,
-                                    0.5826,
-                                    0.7969
-                                ],
-                                "text": "Contoso,",
-                                "confidence": 1
-                            },
-                            {
-                                "boundingBox": [
-                                    1.8448,
-                                    0.4446,
-                                    2.3387,
-                                    0.4446,
-                                    2.3387,
-                                    0.7631,
-                                    1.8448,
-                                    0.7631
-                                ],
-                                "text": "Ltd.",
-                                "confidence": 1
-                            }
-                        ]
-                    },
-                    ...
-                ]
-            }
-        ],
-        "pageResults": [
-            {
-                "page": 1,
-                "tables": [
-                    {
-                        "rows": 5,
-                        "columns": 5,
-                        "cells": [
-                            {
-                                "rowIndex": 0,
-                                "columnIndex": 0,
-                                "text": "Training Date",
-                                "boundingBox": [
-                                    0.5133,
-                                    4.2167,
-                                    1.7567,
-                                    4.2167,
-                                    1.7567,
-                                    4.4492,
-                                    0.5133,
-                                    4.4492
-                                ],
-                                "elements": [
-                                    "#/readResults/0/lines/14/words/0",
-                                    "#/readResults/0/lines/14/words/1"
-                                ]
-                            },
-                            ...
-                        ]
-                    },
-                    ...
-                ]
-            }
-        ]
-    }
-}
-```
-
-# <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)   
 ```json
 {
     "status": "succeeded",
@@ -314,27 +218,124 @@ Ezt a kimenetet az egyszerűség kedvéért lerövidítjük. Tekintse [meg a tel
         ]
     }
 }
-``` 
+```
+
+### <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
+
+Ezt a kimenetet az egyszerűség kedvéért lerövidítjük. Tekintse [meg a teljes minta kimenetet a githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/sample-layout-output.json).
+
+```json
+{
+    "status": "succeeded",
+    "createdDateTime": "2020-08-20T20:36:52Z",
+    "lastUpdatedDateTime": "2020-08-20T20:36:58Z",
+    "analyzeResult": {
+        "version": "2.0.0",
+        "readResults": [
+            {
+                "page": 1,
+                "language": "en",
+                "angle": 0,
+                "width": 8.5,
+                "height": 11,
+                "unit": "inch",
+                "lines": [
+                    {
+                        "boundingBox": [
+                            0.5826,
+                            0.4411,
+                            2.3387,
+                            0.4411,
+                            2.3387,
+                            0.7969,
+                            0.5826,
+                            0.7969
+                        ],
+                        "text": "Contoso, Ltd.",
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    0.5826,
+                                    0.4411,
+                                    1.744,
+                                    0.4411,
+                                    1.744,
+                                    0.7969,
+                                    0.5826,
+                                    0.7969
+                                ],
+                                "text": "Contoso,",
+                                "confidence": 1
+                            },
+                            {
+                                "boundingBox": [
+                                    1.8448,
+                                    0.4446,
+                                    2.3387,
+                                    0.4446,
+                                    2.3387,
+                                    0.7631,
+                                    1.8448,
+                                    0.7631
+                                ],
+                                "text": "Ltd.",
+                                "confidence": 1
+                            }
+                        ]
+                    },
+                    ...
+                ]
+            }
+        ],
+        "pageResults": [
+            {
+                "page": 1,
+                "tables": [
+                    {
+                        "rows": 5,
+                        "columns": 5,
+                        "cells": [
+                            {
+                                "rowIndex": 0,
+                                "columnIndex": 0,
+                                "text": "Training Date",
+                                "boundingBox": [
+                                    0.5133,
+                                    4.2167,
+                                    1.7567,
+                                    4.2167,
+                                    1.7567,
+                                    4.4492,
+                                    0.5133,
+                                    4.4492
+                                ],
+                                "elements": [
+                                    "#/readResults/0/lines/14/words/0",
+                                    "#/readResults/0/lines/14/words/1"
+                                ]
+                            },
+                            ...
+                        ]
+                    },
+                    ...
+                ]
+            }
+        ]
+    }
+}
+```
 
 ---
 
-
-
 ## <a name="analyze-invoices"></a>Számlák elemzése
 
-# <a name="version-20"></a>[2,0-es verzió](#tab/v2-0)
-
-> [!IMPORTANT]
-> Ez a funkció nem érhető el a kiválasztott API-verzióban.
-
-# <a name="version-21-preview"></a>[2,1-es verzió előnézet](#tab/v2-1)
+### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)
 
 A számla elemzésének megkezdéséhez használja az alábbi cURL-parancsot. A számlázási elemzéssel kapcsolatos további információkért tekintse meg a [számla fogalmi útmutatóját](../../concept-invoices.md). A parancs futtatása előtt végezze el a következő módosításokat:
 
 1. Cserélje le `{Endpoint}` a helyére az űrlap-felismerő előfizetéshez kapott végpontot.
 1. Cserélje le a `{your invoice URL}` címet egy számlázási dokumentum URL-címére.
 1. A `{subscription key}` helyére írja be az előfizetési kulcsot.
-
 
 ```bash
 curl -v -i POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key:  {subscription key}" --data-ascii "{'source': '{your invoice URL}'}"
@@ -525,6 +526,11 @@ Ez a JSON-tartalom le lett rövidítve az olvashatóság érdekében. Tekintse [
 }
 ```
 
+### <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
+
+> [!IMPORTANT]
+> Ez a funkció nem érhető el a kiválasztott API-verzióban.
+
 ---
 
 ## <a name="train-a-custom-model"></a>Egyéni modell betanítása
@@ -547,18 +553,19 @@ Ha az Azure Blob-tárolóban található dokumentumokkal szeretne betanítani eg
 
    :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL-cím lekérése":::
 
-# <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
-```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}'}"
-```
+### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)
 
-# <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)    
 ```bash
 curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}'}"
 ```
 
----
+### <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
 
+```bash
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}'}"
+```
+
+---
 
 A `201 (Success)` Válasz egy **Location** fejlécet kap. Ennek a fejlécnek az értéke a betanított új modell azonosítója.
 
@@ -574,17 +581,19 @@ A parancs futtatása előtt végezze el a következő módosításokat:
 
    :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL-cím lekérése":::
 
-# <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
-```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}', 'useLabelFile':true }"
-```
-# <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)    
+### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)
+
 ```bash
 curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}', 'useLabelFile':true}"
 ```
 
----
+### <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
 
+```bash
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}', 'useLabelFile':true }"
+```
+
+---
 
 A `201 (Success)` Válasz egy **Location** fejlécet kap. Ennek a fejlécnek az értéke a betanított új modell azonosítója.
 
@@ -596,16 +605,18 @@ Miután elindította a vonatok műveletét, új műveletet fog használni, **[Eg
 1. Lecserélés az `{subscription key}` előfizetési kulccsal
 1. Cserélje le az `{model ID}` t az előző lépésben kapott modell-azonosítóra.
 
+### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)
 
-# <a name="v20"></a>[2.0-s verzió](#tab/v2-0)    
-```bash
-curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-# <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)    
 ```bash
 curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{model ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
-    
+
+### <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
+
+```bash
+curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+
 ---
 
 `200 (Success)`A következő formátumban kap választ egy JSON-törzsből. Figyelje meg a `"status"` mezőt. Ez az érték a `"ready"` betanítás befejezése után lesz. Ha a modell nem fejeződött be, a parancs újbóli futtatásával újra le kell kérdezni a szolgáltatást. Javasoljuk, hogy a hívások között egy másodperc vagy több intervallum legyen.
@@ -687,20 +698,19 @@ Ezután az újonnan betanított modellt fogja használni a dokumentumok elemzés
 1. Cserélje le `{SAS URL}` egy sas URL-címet a fájlra az Azure Storage-ban. Kövesse a betanítás szakasz lépéseit, de ahelyett, hogy a teljes blob-tároló SAS URL-címét beolvassa, szerezze be egyet az elemezni kívánt fájlhoz.
 1. A `{subscription key}` helyére írja be az előfizetési kulcsot.
 
-# <a name="v20"></a>[2.0-s verzió](#tab/v2-0)    
+### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)
+
+```bash
+curl -v "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{model ID}/analyze?includeTextDetails=true" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ 'source': '{SAS URL}' } "
+```
+
+### <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
 
 ```bash
 curl -v "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}/analyze?includeTextDetails=true" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ 'source': '{SAS URL}' } "
 ```
 
-# <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)    
-```bash
-curl -v "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{model ID}/analyze?includeTextDetails=true" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ 'source': '{SAS URL}' } "
-```
-    
 ---
-
-
 
 Választ fog kapni egy `202 (Success)` **műveleti hely** fejlécével. Ennek a fejlécnek az értéke tartalmazza az elemzési művelet eredményeinek nyomon követésére használt eredmény-azonosítót. Mentse a következő lépés eredmény-AZONOSÍTÓját.
 
@@ -712,14 +722,18 @@ Az elemzési művelet eredményeinek lekérdezéséhez hívja meg az elemzési �
 1. Cserélje le az `{result ID}` azonosítót az előző szakaszban kapott azonosítóra.
 1. A `{subscription key}` helyére írja be az előfizetési kulcsot.
 
-# <a name="v20"></a>[2.0-s verzió](#tab/v2-0)    
-```bash
-curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}/analyzeResults/{result ID}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-# <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)    
+### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)
+
 ```bash
 curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview/custom/models/{model ID}/analyzeResults/{result ID}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
+
+### <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
+
+```bash
+curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}/analyzeResults/{result ID}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+
 ---
 
 `200 (Success)`A következő formátumban kap választ egy JSON-törzsből. A kimenet lerövidítve az egyszerűség kedvéért. Figyelje meg a `"status"` mező alján található mezőt. Ez az érték lesz az elemzési `"succeeded"` művelet befejezésekor. Ha az elemzési művelet nem fejeződött be, újra le kell kérdezni a szolgáltatást a parancs újbóli futtatásával. Javasoljuk, hogy a hívások között egy másodperc vagy több intervallum legyen.
@@ -728,134 +742,8 @@ A címkék nélkül betanított egyéni modellek esetében a kulcs/érték páro
 
 Ez a JSON-kimenet lerövidítve az egyszerűség kedvéért. Tekintse [meg a teljes minta kimenetet a githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/analyze-result-invoice-6.pdf.json).
 
-# <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
-```JSON
-{
-  "status": "succeeded",
-  "createdDateTime": "2020-08-21T00:46:25Z",
-  "lastUpdatedDateTime": "2020-08-21T00:46:32Z",
-  "analyzeResult": {
-    "version": "2.0.0",
-    "readResults": [
-      {
-        "page": 1,
-        "angle": 0,
-        "width": 8.5,
-        "height": 11,
-        "unit": "inch",
-        "lines": [
-          {
-            "text": "Project Statement",
-            "boundingBox": [
-              5.0153,
-              0.275,
-              8.0944,
-              0.275,
-              8.0944,
-              0.7125,
-              5.0153,
-              0.7125
-            ],
-            "words": [
-              {
-                "text": "Project",
-                "boundingBox": [
-                  5.0153,
-                  0.275,
-                  6.2278,
-                  0.275,
-                  6.2278,
-                  0.7125,
-                  5.0153,
-                  0.7125
-                ]
-              },
-              {
-                "text": "Statement",
-                "boundingBox": [
-                  6.3292,
-                  0.275,
-                  8.0944,
-                  0.275,
-                  8.0944,
-                  0.7125,
-                  6.3292,
-                  0.7125
-                ]
-              }
-            ]
-          }, 
-        ...
-        ]
-      }
-    ],
-    "pageResults": [
-      {
-        "page": 1,
-        "keyValuePairs": [
-          {
-            "key": {
-              "text": "Date:",
-              "boundingBox": [
-                6.9722,
-                1.0264,
-                7.3417,
-                1.0264,
-                7.3417,
-                1.1931,
-                6.9722,
-                1.1931
-              ],
-              "elements": [
-                "#/readResults/0/lines/2/words/0"
-              ]
-            },
-            "confidence": 1
-          },
-         ...
-        ],
-        "tables": [
-          {
-            "rows": 4,
-            "columns": 5,
-            "cells": [
-              {
-                "text": "Training Date",
-                "rowIndex": 0,
-                "columnIndex": 0,
-                "boundingBox": [
-                  0.6931,
-                  4.2444,
-                  1.5681,
-                  4.2444,
-                  1.5681,
-                  4.4125,
-                  0.6931,
-                  4.4125
-                ],
-                "confidence": 1,
-                "rowSpan": 1,
-                "columnSpan": 1,
-                "elements": [
-                  "#/readResults/0/lines/15/words/0",
-                  "#/readResults/0/lines/15/words/1"
-                ],
-                "isHeader": true,
-                "isFooter": false
-              },
-              ...
-            ]
-          }
-        ], 
-        "clusterId": 0
-      }
-    ],
-    "documentResults": [],
-    "errors": []
-  }
-}
-```    
-# <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)    
+### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)
+
 ```JSON
 {
   "status": "succeeded",
@@ -997,7 +885,137 @@ Ez a JSON-kimenet lerövidítve az egyszerűség kedvéért. Tekintse [meg a tel
     "errors": []
   }
 }
-``` 
+```
+
+### <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
+
+```JSON
+{
+  "status": "succeeded",
+  "createdDateTime": "2020-08-21T00:46:25Z",
+  "lastUpdatedDateTime": "2020-08-21T00:46:32Z",
+  "analyzeResult": {
+    "version": "2.0.0",
+    "readResults": [
+      {
+        "page": 1,
+        "angle": 0,
+        "width": 8.5,
+        "height": 11,
+        "unit": "inch",
+        "lines": [
+          {
+            "text": "Project Statement",
+            "boundingBox": [
+              5.0153,
+              0.275,
+              8.0944,
+              0.275,
+              8.0944,
+              0.7125,
+              5.0153,
+              0.7125
+            ],
+            "words": [
+              {
+                "text": "Project",
+                "boundingBox": [
+                  5.0153,
+                  0.275,
+                  6.2278,
+                  0.275,
+                  6.2278,
+                  0.7125,
+                  5.0153,
+                  0.7125
+                ]
+              },
+              {
+                "text": "Statement",
+                "boundingBox": [
+                  6.3292,
+                  0.275,
+                  8.0944,
+                  0.275,
+                  8.0944,
+                  0.7125,
+                  6.3292,
+                  0.7125
+                ]
+              }
+            ]
+          }, 
+        ...
+        ]
+      }
+    ],
+    "pageResults": [
+      {
+        "page": 1,
+        "keyValuePairs": [
+          {
+            "key": {
+              "text": "Date:",
+              "boundingBox": [
+                6.9722,
+                1.0264,
+                7.3417,
+                1.0264,
+                7.3417,
+                1.1931,
+                6.9722,
+                1.1931
+              ],
+              "elements": [
+                "#/readResults/0/lines/2/words/0"
+              ]
+            },
+            "confidence": 1
+          },
+         ...
+        ],
+        "tables": [
+          {
+            "rows": 4,
+            "columns": 5,
+            "cells": [
+              {
+                "text": "Training Date",
+                "rowIndex": 0,
+                "columnIndex": 0,
+                "boundingBox": [
+                  0.6931,
+                  4.2444,
+                  1.5681,
+                  4.2444,
+                  1.5681,
+                  4.4125,
+                  0.6931,
+                  4.4125
+                ],
+                "confidence": 1,
+                "rowSpan": 1,
+                "columnSpan": 1,
+                "elements": [
+                  "#/readResults/0/lines/15/words/0",
+                  "#/readResults/0/lines/15/words/1"
+                ],
+                "isHeader": true,
+                "isFooter": false
+              },
+              ...
+            ]
+          }
+        ], 
+        "clusterId": 0
+      }
+    ],
+    "documentResults": [],
+    "errors": []
+  }
+}
+```  
+
 ---
 
 ### <a name="improve-results"></a>Az eredmények javítása
@@ -1012,17 +1030,18 @@ Ez a szakasz bemutatja, hogyan elemezheti és kinyerheti az Egyesült államokbe
 1. Cserélje le a értékét `{your receipt URL}` egy nyugtát ábrázoló rendszerkép URL-címére.
 1. Cserélje le az `{subscription key>` elemet az előző lépésből másolt előfizetési kulcsra.
 
-# <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
+### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)
+
+```bash
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
+```
+
+### <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
 
 ```bash
 curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
 ```
 
-# <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)    
-
-```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
-```
 ---
 
 Olyan választ fog kapni `202 (Success)` , amely tartalmazza a am **Operation-Location** fejlécet. A fejléc értéke olyan műveleti azonosítót tartalmaz, amelynek segítségével lekérdezheti az aszinkron művelet állapotát, és lekérheti az eredményeket. A következő példában az azt követő karakterlánc a `operations/` művelet azonosítója.
@@ -1039,14 +1058,18 @@ Az **elemzés visszaigazolási** API meghívása után hívja meg az **[elemzés
 1. Cserélje le az `{operationId}` elemet az előző lépésben szereplő műveleti azonosítóra.
 1. A `{subscription key}` helyére írja be az előfizetési kulcsot.
 
-# <a name="v20"></a>[2.0-s verzió](#tab/v2-0)  
-```bash
-curl -X GET "https://{Endpoint}/formrecognizer/v2.0/prebuilt/receipt/analyzeResults/{operationId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-# <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)  
+### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)
+
 ```bash
 curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/receipt/analyzeResults/{operationId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
+
+### <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
+
+```bash
+curl -X GET "https://{Endpoint}/formrecognizer/v2.0/prebuilt/receipt/analyzeResults/{operationId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+
 ---
 
 ### <a name="examine-the-response"></a>A válasz vizsgálata
@@ -1388,12 +1411,7 @@ Ezt a kimenetet lerövidíti az olvashatóság érdekében. Tekintse [meg a telj
 
 ## <a name="analyze-business-cards"></a>Üzleti kártyák elemzése
 
-# <a name="v20"></a>[2.0-s verzió](#tab/v2-0)  
-
-> [!IMPORTANT]
-> Ez a funkció nem érhető el a kiválasztott API-verzióban.
-
-# <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)  
+### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)  
 
 Ez a szakasz bemutatja, hogyan elemezheti és kinyerheti az angol üzleti kártyákból származó általános mezőket egy előre betanított modell használatával. További információ a névjegykártya-elemzésről: a [Business Cards fogalmi útmutatója](../../concept-business-cards.md). A névjegykártya elemzésének megkezdéséhez hívja meg a **[Business Card API elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)** az alábbi curl-parancs használatával. A parancs futtatása előtt végezze el a következő módosításokat:
 
@@ -1548,6 +1566,11 @@ Ez a JSON-kimenet lerövidítve az olvashatóság érdekében. Tekintse [meg a t
 
 A parancsfájl addig kinyomtatja a válaszokat a konzolra, amíg be nem fejeződik a **névjegykártya elemzése** művelet.
 
+### <a name="v20"></a>[2.0-s verzió](#tab/v2-0)  
+
+> [!IMPORTANT]
+> Ez a funkció nem érhető el a kiválasztott API-verzióban.
+
 ---
 
 ## <a name="manage-custom-models"></a>Egyéni modellek kezelése
@@ -1559,18 +1582,20 @@ Az alábbi parancs **[Custom models (egyéni modellek](https://westcentralus.dev
 1. Cserélje le `{Endpoint}` a helyére az űrlap-felismerő előfizetéshez kapott végpontot.
 1. Cserélje le az `{subscription key}` elemet az előző lépésből másolt előfizetési kulcsra.
 
-# <a name="v20"></a>[2.0-s verzió](#tab/v2-0)    
-```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models?op=full"
--H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-
-# <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)    
+### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)
 
 ```bash
 curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models?op=full"
 -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
+
+### <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
+
+```bash
+curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models?op=full"
+-H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+
 ---
 
 A `200` következőhöz hasonló JSON-adatkérések sikeresek lesznek. A `"modelList"` elem az összes létrehozott modellt és azok információit tartalmazza.
@@ -1602,17 +1627,18 @@ Egy adott egyéni modell részletes adatainak beolvasásához használja az **[E
 1. Cserélje le az `{subscription key}` elemet az előző lépésből másolt előfizetési kulcsra.
 1. Cserélje le a helyére a `{modelId}` megkeresni kívánt egyéni modell azonosítóját.
 
-# <a name="v20"></a>[2.0-s verzió](#tab/v2-0)    
+### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)
+
+```bash
+curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+
+### <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
 
 ```bash
 curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 
-# <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)    
-
-```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
 ---
 
 A `200` következőhöz hasonló JSON-adatkérések sikeresek lesznek.
@@ -1663,21 +1689,21 @@ Az AZONOSÍTÓra hivatkozva egy modellt is törölhet a fiókjából. Ez a paran
 1. Cserélje le az `{subscription key}` elemet az előző lépésből másolt előfizetési kulcsra.
 1. Cserélje le a helyére a `{modelId}` megkeresni kívánt egyéni modell azonosítóját.
 
-# <a name="v20"></a>[2.0-s verzió](#tab/v2-0)    
+### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)
+
+```bash
+curl -v -X DELETE "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+
+### <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
 
 ```bash
 curl -v -X DELETE "https://{Endpoint}/formrecognizer/v2.0/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 
-# <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)
-
-```bash
-curl -v -X DELETE "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
 ---
 
 `204`Sikeres választ kaphat, amely azt jelzi, hogy a modell törlésre van megjelölve. A modell összetevői 48 órán belül el lesznek távolítva.
-
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -327,6 +327,8 @@
           href: how-to-create-transform.md
         - name: Alapszintű hangátalakítás létrehozása a REST használatával
           href: how-to-create-basic-audio-transform.md
+        - name: Miniatűr sprite létrehozása
+          href: how-to-create-thumbnail-sprites.md
         - name: copyAllBitrateNonInterleaved átalakítás létrehozása a REST használatával
           href: how-to-create-copyallbitratenoninterleaved-transform.md
         - name: Videók másolása kódolás nélkül a REST-tel
@@ -503,5 +505,3 @@
       href: azure-clouds-regions.md
     - name: Regionális kódnevek és végpontok
       href: azure-regions-code-names.md
-    - name: Dokumentációfrissítések
-      href: docs-release-notes.md
