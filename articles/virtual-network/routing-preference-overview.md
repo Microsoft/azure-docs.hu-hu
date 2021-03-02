@@ -11,22 +11,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/02/2020
+ms.date: 02/01/2021
 ms.author: mnayak
-ms.openlocfilehash: 7fdd23aea5e435c94493a0cbe86b6ffcdb0d2e10
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.custom: references_regions
+ms.openlocfilehash: b0235286260910a45523e3236e7ed3a114eaf57f
+ms.sourcegitcommit: 8c93b05c27c7e8a5ba62a4d6fc6fc4d0c3980a21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539070"
+ms.lasthandoff: 02/26/2021
+ms.locfileid: "101601331"
 ---
-# <a name="what-is-routing-preference-preview"></a>Mi az útválasztási preferencia (előzetes verzió)?
+# <a name="what-is-routing-preference"></a>Mi az útválasztási beállítás?
 
 Az Azure-útválasztási beállítások lehetővé teszik, hogy kiválassza, hogyan irányítja át a forgalmat az Azure és az internet között. Megadhatja, hogy a forgalmat a Microsoft hálózatán vagy az INTERNETSZOLGÁLTATÓ hálózatán (a nyilvános interneten) keresztül irányítsa-e. Ezek a beállítások a következő néven is ismertek: *hideg burgonya-útválasztás* és *forró burgonya-útválasztás* . A kimenő adatforgalom díjszabása az Útválasztás kiválasztása alapján változhat. A nyilvános IP-cím létrehozásakor megadhatja az útválasztási beállítást. A nyilvános IP-cím olyan erőforrásokhoz társítható, mint a virtuális gép, a virtuálisgép-méretezési csoportok, az internetre irányuló terheléselosztó stb. Beállíthatja az Azure Storage-erőforrások útválasztási beállításait, például a blobokat, a fájlokat, a webes és az Azure-DataLake is. Alapértelmezés szerint a rendszer az összes Azure-szolgáltatáshoz a Microsoft globális hálózatán keresztül irányítja a forgalmat.
-
-> [!IMPORTANT]
-> Az útválasztási preferencia jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="routing-via-microsoft-global-network"></a>Útválasztás a Microsoft globális hálózatán keresztül
 
@@ -70,13 +67,13 @@ A tároláshoz az elsődleges végpontok mindig a **Microsoft globális hálóza
 * Azure DataLake
 
 ## <a name="pricing"></a>Díjszabás
-A két lehetőség közötti árkülönbség az internetes kimenő adatforgalom díjszabása szerint jelenik meg. Az Útválasztás a **Microsoft globális hálózati** adatátviteli díjszabása szerint megegyezik az aktuális internetes forgalom díjszabásával. A legfrissebb díjszabási információkért tekintse meg az [Azure sávszélesség-díjszabási oldalát](https://azure.microsoft.com/pricing/details/bandwidth/) . 
+A két lehetőség közötti árkülönbség az internetes kimenő adatforgalom díjszabása szerint jelenik meg. Az Útválasztás a **Microsoft globális hálózati** adatátviteli díjszabása szerint megegyezik az aktuális internetes forgalom díjszabásával. A legfrissebb díjszabási információkért tekintse meg az [Azure sávszélesség-díjszabási oldalát](https://azure.microsoft.com/pricing/details/bandwidth/) .
 
 ## <a name="limitations"></a>Korlátozások
 
+* Az útválasztási beállítások jelenleg nem támogatottak az Ausztrália középső régiójában, Ausztráliában Central2, Kelet-Kanadában, Dél-Brazíliában, Közép-Korea és Dél-Korea területén.
 * Az útválasztási beállítások csak a nyilvános IP-címekhez tartozó redundáns szabványos SKU-hoz kompatibilisek. A nyilvános IP-cím alapszintű SKU-jának használata nem támogatott.
 * Az útválasztási beállítások jelenleg csak IPv4 nyilvános IP-címeket támogatnak. Az IPv6 nyilvános IP-címek nem támogatottak.
-* A több hálózati adapterrel rendelkező virtuális gépek esetében csak egy típusú útválasztási beállítás lehet.
 
 
 ## <a name="next-steps"></a>Következő lépések
