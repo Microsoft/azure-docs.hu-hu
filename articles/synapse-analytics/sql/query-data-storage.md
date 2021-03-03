@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: b5025aa322ae26f9dd7c683d0e54762fd33eb355
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: d299afca0bd8070a1da738e02812b64c41a7101c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735381"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675056"
 ---
 # <a name="query-storage-files-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Tárolási fájlok lekérdezése kiszolgáló nélküli SQL-készlettel az Azure szinapszis Analyticsben
 
 A kiszolgáló nélküli SQL-készlet lehetővé teszi, hogy lekérdezze az adatait a saját adattóban. Egy T-SQL-lekérdezési felületet kínál, amely a félig strukturált és a strukturálatlan adatlekérdezéseket is tartalmazza. A lekérdezéshez a következő T-SQL-szempontok támogatottak:
 
-- Teljes [kijelölés](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) felületi terület, beleértve az [SQL-függvények és-operátorok](overview-features.md)többségét.
+- Teljes [kijelölés](/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true) felületi terület, beleértve az [SQL-függvények és-operátorok](overview-features.md)többségét.
 - KÜLSŐ tábla létrehozása SELECT ([CETAS](develop-tables-cetas.md)) – létrehoz egy [külső táblát](develop-tables-external-tables.md) , majd párhuzamosan exportálja a Transact-SQL SELECT utasítás eredményeit az Azure Storage-ba.
 
 További információ a mi és a jelenleg nem támogatott kapcsolatban: a [kiszolgáló nélküli SQL-készlet áttekintő](on-demand-workspace-overview.md) cikke, vagy a következő cikkek:
@@ -184,21 +184,21 @@ Alapértelmezés szerint a `OPENROWSET` függvény megegyezik a forrás mező ne
 - A függvény egy skaláris értéket ad vissza, például: int, decimális és varchar, a megadott elemből és a megadott elérési úton, a beágyazott Type csoportban nem szereplő összes parketta típushoz.
 - Ha az elérési út egy beágyazott típusú elemre mutat, a függvény egy JSON-töredéket ad vissza a megadott elérési út felső elemétől kezdve. A JSON-töredék varchar (8000) típusú.
 - Ha a tulajdonság nem található a megadott column_name, a függvény hibát ad vissza.
-- Ha a tulajdonság nem található a megadott column_pathban, az [elérési út módjától](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true#PATHMODE)függően, a függvény hibát ad vissza, ha a szigorú vagy a null értéket adja meg LAX módban.
+- Ha a tulajdonság nem található a megadott column_pathban, az [elérési út módjától](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true#PATHMODE)függően, a függvény hibát ad vissza, ha a szigorú vagy a null értéket adja meg LAX módban.
 
 A lekérdezési minták esetében tekintse át a beágyazott oszlopok hozzáférési elemeit a [lekérdezési parketta beágyazott típusai](query-parquet-nested-types.md#read-properties-from-nested-object-columns) című cikkben.
 
 #### <a name="access-elements-from-repeated-columns"></a>Elemek elérése ismétlődő oszlopokból
 
-Ha ismétlődő oszlop elemeit szeretné elérni, például egy tömb vagy Térkép elemét, használja a [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) függvényt minden olyan skaláris elemnél, amelyet a projekthez és a biztosításához szükséges:
+Ha ismétlődő oszlop elemeit szeretné elérni, például egy tömb vagy Térkép elemét, használja a [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest&preserve-view=true) függvényt minden olyan skaláris elemnél, amelyet a projekthez és a biztosításához szükséges:
 
 - Beágyazott vagy ismétlődő oszlop, az első paraméterként
-- Egy [JSON-elérési út](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) , amely megadja az elérni kívánt elemet vagy tulajdonságot második paraméterként
+- Egy [JSON-elérési út](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true) , amely megadja az elérni kívánt elemet vagy tulajdonságot második paraméterként
 
-A nem skaláris elemek ismétlődő oszlopokból való eléréséhez használja a [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) függvényt minden olyan nem skaláris elemhez, amelyet a projekthez és a biztosításához szükséges:
+A nem skaláris elemek ismétlődő oszlopokból való eléréséhez használja a [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest&preserve-view=true) függvényt minden olyan nem skaláris elemhez, amelyet a projekthez és a biztosításához szükséges:
 
 - Beágyazott vagy ismétlődő oszlop, az első paraméterként
-- Egy [JSON-elérési út](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) , amely megadja az elérni kívánt elemet vagy tulajdonságot második paraméterként
+- Egy [JSON-elérési út](/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true) , amely megadja az elérni kívánt elemet vagy tulajdonságot második paraméterként
 
 Lásd az alábbi szintaxist:
 
@@ -260,7 +260,7 @@ A demo-adat a következő adatkészleteket tartalmazza:
 | /json/books/                                                 | Könyvekből származó JSON-fájlok                                   |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A különböző fájltípusok lekérdezésével, valamint a nézetek létrehozásával és használatával kapcsolatos további információkért tekintse meg a következő cikkeket:
 

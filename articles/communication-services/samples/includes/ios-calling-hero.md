@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 618efc8d2c3784a487c302661f35d5a284c68178
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 7d39decaa6376c614e48b65ad2fc1b3043aa0a3c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475643"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101682399"
 ---
 [!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
 
@@ -74,8 +74,8 @@ Demonstrációs célokra ez a példa egy nyilvánosan elérhető végpontot hasz
 A további beállításokkal ez a minta támogatja a **Azure Active Directory** (Azure ad) védett végponthoz való csatlakozást, így a felhasználói bejelentkezés szükséges ahhoz, hogy az alkalmazás beolvassa az Azure kommunikációs szolgáltatás tokenjét. Lásd az alábbi lépéseket:
 
 1. Azure Active Directory hitelesítés engedélyezése az alkalmazásban.  
-   - [Az alkalmazás regisztrálása a Azure Active Directory alatt (iOS/macOS platform beállításainak használatával)](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-ios) 
-    - [App Service vagy Azure Functions alkalmazás konfigurálása az Azure AD-bejelentkezés használatára](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad)
+   - [Az alkalmazás regisztrálása a Azure Active Directory alatt (iOS/macOS platform beállításainak használatával)](../../../active-directory/develop/tutorial-v2-ios.md) 
+    - [App Service vagy Azure Functions alkalmazás konfigurálása az Azure AD-bejelentkezés használatára](../../../app-service/configure-authentication-provider-aad.md)
 2. Lépjen a regisztrált alkalmazás áttekintése oldalra Azure Active Directory alkalmazás regisztrációi alatt. Jegyezze fel a `Application (client) ID` , `Directory (tenant) ID` , `Application ID URI`
 
 :::image type="content" source="../media/calling/aad-overview.png" alt-text="Azure Portal Azure Active Directory konfigurálása.":::

@@ -6,12 +6,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: sstein
 ms.reviewer: vanto
-ms.openlocfilehash: 15209bc9dae1f10e1158c805ba7903b9f946766f
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 57f504b15c0a9c72a2cb0f17b486846f44171a25
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593948"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101682431"
 ---
 Ebben a lépésben létrehoz egy [logikai SQL-kiszolgálót](../database/logical-servers.md) és egy AdventureWorksLT-mintát használó [önálló adatbázist](../database/single-database-overview.md) . Az adatbázist Azure Portal menük és képernyők használatával, vagy az Azure Cloud Shell Azure CLI-vagy PowerShell-parancsfájllal is létrehozhatja.
 
@@ -28,20 +28,20 @@ Erőforráscsoport, kiszolgáló és önálló adatbázis létrehozása a Azure 
    ![Hozzáadás az Azure SQL-hez](./media/sql-database-create-single-database/sqldbportal.png)
 
 1. Az **SQL központi telepítési lehetőség kiválasztása** lapon válassza az **SQL-adatbázisok** csempét az **Erőforrás típusa** területen található **önálló adatbázis** elemre. A különböző adatbázisokkal kapcsolatos további információkat a **Részletek megjelenítése** lehetőség kiválasztásával tekintheti meg.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
    ![Önálló adatbázis létrehozása](./media/sql-database-create-single-database/create-single-database.png)
 
 1. Az **SQL-adatbázis létrehozása** űrlap **alapismeretek** lapján a **projekt részletei** területen válassza ki a megfelelő Azure- **előfizetést** , ha még nincs kiválasztva.
-1. Az **erőforráscsoport** területen válassza az **új létrehozása** elemet, írja be a *MyResourceGroup* , majd kattintson **az OK gombra**.
+1. Az **erőforráscsoport** területen válassza az **új létrehozása** elemet, írja be a *MyResourceGroup*, majd kattintson **az OK gombra**.
 1. Az **adatbázis adatai** alatt az **adatbázis neve** mezőbe írja be a következőt: *mySampleDatabase*.
 1. A **kiszolgáló** területen válassza az **új létrehozása** lehetőséget, és töltse ki az **új kiszolgáló** űrlapot a következőképpen:
-   - **Kiszolgáló neve** : adja meg a *portra beállított mysqlserver* , és néhány karaktert az egyediség érdekében.
-   - **Kiszolgáló-rendszergazdai bejelentkezés** : írja be az *Azureus* nevet.
-   - **Password (jelszó** ): adjon meg egy jelszót, amely megfelel a követelményeknek, majd írja be újra a **Jelszó megerősítése** mezőbe.
-   - **Hely** : legördülő lista, válasszon egy helyet, például **(USA) az USA keleti** régióját.
+   - **Kiszolgáló neve**: adja meg a *portra beállított mysqlserver*, és néhány karaktert az egyediség érdekében.
+   - **Kiszolgáló-rendszergazdai bejelentkezés**: írja be az *Azureus* nevet.
+   - **Password (jelszó**): adjon meg egy jelszót, amely megfelel a követelményeknek, majd írja be újra a **Jelszó megerősítése** mezőbe.
+   - **Hely**: legördülő lista, válasszon egy helyet, például **(USA) az USA keleti** régióját.
 
-   Kattintson az **OK** gombra.
+   Válassza az **OK** lehetőséget.
 
    ![Új kiszolgáló](./media/sql-database-create-single-database/new-server.png)
 
@@ -69,6 +69,8 @@ Erőforráscsoport, kiszolgáló és önálló adatbázis létrehozása a Azure 
    További információ a tűzfal beállításairól: az [Azure-szolgáltatások és-erőforrások engedélyezése a kiszolgálóhoz való hozzáféréshez](../database/network-access-controls-overview.md) és [privát végpont hozzáadása](../database/private-endpoint-overview.md).
 
 1. A **További beállítások** lap **adatforrás** szakaszában, a meglévő adatforrások **használatához** válassza a **minta** lehetőséget.
+1. Opcionálisan engedélyezze [Az Azure Defender for SQL](../database/azure-defender-for-sql.md)-t.
+1. Megadhatja a [karbantartási](../database/maintenance-window.md) időszakot is, hogy a tervezett karbantartás a lehető legrövidebb időn belül elvégezze az adatbázisát.
 1. Kattintson a lap alján található **felülvizsgálat + létrehozás** lehetőségre.
 
    ![További beállítások lap](./media/sql-database-create-single-database/additional-settings.png)
