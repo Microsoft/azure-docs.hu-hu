@@ -6,14 +6,18 @@ ms.author: nimag
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: e878aa00261d446d049f5a7b3c68b14bc2fe8a4e
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: d27a79e180a0219773a3094fb85f842773d75183
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100548497"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656616"
 ---
 Ebből a rövid útmutatóból megtudhatja, hogyan indíthat el egy hívást az Azure kommunikációs szolgáltatásokkal a JavaScript-hez készült ügyféloldali kódtár meghívásával.
+Ez a dokumentum hivatkozik a típusokra a következő verzióban: 1.0.0-Beta. 5. a hívó könyvtár.
+
+> [!NOTE]
+> Ez a dokumentum a hívó ügyféloldali kódtár verziójának 1.0.0-Beta. 6 verzióját használja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -102,7 +106,7 @@ Eseménykezelő hozzáadásával kezdeményezheti a hívását, ha a `callButton
 callButton.addEventListener("click", () => {
     // start a call
     const userToCall = calleeInput.value;
-    call = callAgent.call(
+    call = callAgent.startCall(
         [{ communicationUserId: userToCall }],
         {}
     );

@@ -1,33 +1,33 @@
 ---
 title: Tartalom metaadatainak tulajdonságai
 titleSuffix: Azure Cognitive Search
-description: A Blobok metaadat-tulajdonságai megadhatnak tartalmat a keresési index mezőihez, illetve olyan információkat, amelyek a futási időben tájékoztatják az indexelési viselkedést. Ez a cikk az Azure Cognitive Search által támogatott metaadat-tulajdonságokat sorolja fel.
+description: A dokumentumok metaadat-tulajdonságai megadhatnak tartalmat a keresési index mezőihez, illetve olyan információkat, amelyek a futási időben tájékoztatják az indexelési viselkedést. Ez a cikk az Azure Cognitive Search által támogatott metaadat-tulajdonságokat sorolja fel.
 manager: nitinme
 author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/03/2021
-ms.openlocfilehash: 79443785dbd8619e22358631c9c36a3da4ef2e84
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.date: 02/22/2021
+ms.openlocfilehash: cbb35f596a1d32816d1a73b462bf590d9dde0d52
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99477300"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668418"
 ---
-# <a name="content-metadata-properties-used-in-blob-indexing-in-azure-cognitive-search"></a>Az Azure-beli blob-indexelés során használt tartalmi metaadatok tulajdonságai Cognitive Search
+# <a name="content-metadata-properties-used-in-azure-cognitive-search"></a>Az Azure Cognitive Searchban használt tartalmi metaadatok tulajdonságai
 
-A Blobok különböző tartalmakat tartalmazhatnak, és számos ilyen típusú tartalomtípushoz olyan metaadat-tulajdonságok tartoznak, amelyek hasznosak lehetnek a blob indexelésében. Ugyanúgy, mint a szabványos blob-tulajdonságok keresési mezőinek létrehozásához **`metadata_storage_name`** , például létrehozhat mezőket a dokumentum formátumára jellemző metaadatok tulajdonságaihoz.
+A SharePoint Online és az Azure Blob Storage különböző tartalmakat tartalmazhat, és ezeknek a tartalomtípusoknak sok típusa olyan metaadatokat tartalmaz, amelyek hasznosak lehetnek az indexeléshez. Ugyanúgy, mint a szabványos blob-tulajdonságok keresési mezőinek létrehozásához **`metadata_storage_name`** , például létrehozhat mezőket a dokumentum formátumára jellemző metaadatok tulajdonságaihoz.
 
 ## <a name="supported-document-formats"></a>Támogatott dokumentumformátumok
 
-Cognitive Search támogatja a blob-indexelést a következő dokumentum-formátumokhoz:
+Cognitive Search támogatja a blob-indexelést és a SharePoint Online-dokumentumok indexelését a következő dokumentum-formátumokhoz:
 
 [!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
 ## <a name="properties-by-document-format"></a>Tulajdonságok dokumentum formátuma szerint
 
-A következő táblázat összefoglalja az egyes dokumentumok formátumának feldolgozását, és leírja a blob-indexelő által kinyert metaadatok tulajdonságait.
+A következő táblázat összefoglalja az egyes dokumentumok formátumának feldolgozását, valamint ismerteti a blob-indexelő és a SharePoint Online indexelő által kinyert metaadatok tulajdonságait.
 
 | Dokumentum formátuma/tartalmának típusa | Kinyert metaadatok | Feldolgozás részletei |
 | --- | --- | --- |
@@ -62,3 +62,4 @@ A következő táblázat összefoglalja az egyes dokumentumok formátumának fel
 * [Indexelők az Azure Cognitive Searchben](search-indexer-overview.md)
 * [Blobok ismertetése a mesterséges intelligenciával](search-blob-ai-integration.md)
 * [A blob indexelésének áttekintése](search-blob-storage-integration.md)
+* [SharePoint Online indexelés](search-howto-index-sharepoint-online.md)

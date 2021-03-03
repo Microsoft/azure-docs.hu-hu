@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 02/12/2021
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68ed67afc949b3a67936f20a098bca8b6906a598
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 747fa3005930414832878757664f4787157302d5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365548"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645823"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Külső B2B-együttműködés engedélyezése és a vendégmeghívási jogosultság kezelése
 
@@ -78,11 +78,11 @@ Alapértelmezés szerint az összes felhasználó, köztük a vendégek is megh�
    >
    >![E-mailek egyszeri jelszavas beállításának engedélyezése](media/delegate-invitations/enable-email-otp-opted-in.png)
 
-7. A **vendég önkiszolgáló regisztráció engedélyezése felhasználói folyamatokon keresztül (előzetes verzió)** területen válassza az **Igen** lehetőséget, ha olyan felhasználói folyamatokat szeretne létrehozni, amelyek lehetővé teszik a felhasználók számára az alkalmazások regisztrálását. További információ erről a beállításról: önkiszolgáló [bejelentkezési felhasználói folyamat hozzáadása egy alkalmazáshoz (előzetes verzió)](self-service-sign-up-user-flow.md).
+7. A **vendég önkiszolgáló regisztráció engedélyezése felhasználói folyamatokban** lehetőségnél válassza az **Igen** lehetőséget, ha olyan felhasználói folyamatokat szeretne létrehozni, amelyek lehetővé teszik a felhasználók számára az alkalmazások regisztrálását. További információ erről a beállításról: önkiszolgáló [bejelentkezési felhasználói folyamat hozzáadása egy alkalmazáshoz](self-service-sign-up-user-flow.md).
 
     ![Önkiszolgáló regisztráció felhasználói folyamatok beállításán keresztül](./media/delegate-invitations/self-service-sign-up-setting.png)
 
-7. Az **együttműködési korlátozások** területen válassza ki, hogy engedélyezi vagy letiltja a meghívókat a megadott tartományokhoz. További információ: a [vállalatközi felhasználók meghívásának engedélyezése vagy letiltása adott szervezetekben](allow-deny-list.md).
+7. Az **együttműködési korlátozások** területen kiválaszthatja, hogy engedélyezi vagy letiltja a meghívókat a megadott tartományokhoz, és a szövegmezőben megadott tartományneveket ad meg. Több tartománynál adja meg az egyes tartományokat egy új sorban. További információ: a [vállalatközi felhasználók meghívásának engedélyezése vagy letiltása adott szervezetekben](allow-deny-list.md).
 
     ![Együttműködési korlátozások beállításai](./media/delegate-invitations/collaboration-restrictions.png)
 ## <a name="assign-the-guest-inviter-role-to-a-user"></a>A vendég meghívó szerepkör társítása egy felhasználóhoz

@@ -1,0 +1,110 @@
+- name: Az Azure Percept dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Azure Percept platform
+      href: overview-azure-percept.md
+    - name: Azure Percept Studio
+      href: overview-azure-percept-studio.md
+    - name: Azure Percept DK
+      href: overview-azure-percept-dk.md
+    - name: Azure Percept hang
+      href: overview-azure-percept-audio.md
+    - name: Azure Percept AI-modellek
+      href: overview-ai-models.md
+    - name: Fejlett fejlesztés
+      href: overview-advanced-code.md
+    - name: Az Azure Percept biztonsága
+      href: overview-percept-security.md
+    - name: 80/20 integráció
+      href: overview-8020-integration.md
+    - name: Percept-eszközök frissítése
+      href: overview-update-experience.md
+- name: Rövid útmutatók
+  items:
+    - name: Az Azure Percept-eszközök beállítása
+      items:
+        - name: Az Azure Percept DK testetlen és összegyűjtése
+          href: quickstart-percept-dk-unboxing.md
+        - name: Az Azure Percept DK telepítési felületének befejezése
+          href: quickstart-percept-dk-set-up.md
+        - name: Azure Percept – hangbeállítás
+          href: quickstart-percept-audio-setup.md
+- name: Oktatóanyagok
+  items:
+    - name: A prototípus elindítása az Azure Percept
+      items:
+        - name: Kód nélküli jövőkép-megoldás létrehozása és üzembe helyezése
+          href: tutorial-nocode-vision.md
+        - name: Kód nélküli beszédfelismerési megoldás létrehozása és üzembe helyezése
+          href: tutorial-no-code-speech.md
+    - name: Fejlett fejlesztés
+      items:
+        - name: Fejlett fejlesztői oktatóanyag (felhő)
+          href: advanced-development-cloud.md
+        - name: Fejlett fejlesztői oktatóanyag (helyi)
+          href: advanced-development-local.md
+- name: Alapelvek
+  items:
+    - name: Azure Percept hang
+      items:
+        - name: A LED és a gomb viselkedése
+          href: audio-button-led-behavior.md
+- name: Útmutatók
+  items:
+    - name: Látási megoldások fejlesztése az Azure Percept DK-mel
+      items:
+        - name: Tekintse meg a fejlesztői készlet videó streamjét
+          href: how-to-view-video-stream.md
+        - name: AI-modell üzembe helyezése a fejlesztői készlet
+          href: how-to-deploy-model.md
+        - name: Képek rögzítése egy víziós projekthez
+          href: how-to-capture-images.md
+        - name: A fejlesztői készlet telemetria megtekintése
+          href: how-to-view-telemetry.md
+    - name: Beszédfelismerési megoldás fejlesztése az Azure Percept DK-mel
+      items:
+        - name: A hangsegéd konfigurálása az Azure Percept Studióban
+          href: how-to-configure-voice-assistant.md
+        - name: A hangsegéd konfigurálása IoT Hub
+          href: how-to-manage-voice-assistant.md
+    - name: Azure Percept-eszközök frissítése
+      items:
+        - name: A légi frissítések beállítása
+          href: how-to-set-up-over-the-air-updates.md
+        - name: Azure Percept-alapú DK frissítése over-the-Air
+          href: how-to-update-over-the-air.md
+        - name: Azure Percept DK frissítése USB-n keresztül
+          href: how-to-update-via-usb.md
+    - name: Kapcsolódás az Azure Percept DK-hoz
+      items:
+        - name: Kapcsolat SSH-val
+          href: how-to-ssh-into-percept-dk.md
+        - name: Soros kapcsolat
+          href: how-to-connect-to-percept-dk-over-serial.md
+    - name: Eszközök
+      items:
+        - name: Devtools Pack telepítő
+          href: dev-tools-installer.md
+    - name: Hibaelhárítás
+      items:
+        - name: Telepítési élmény – hibaelhárítás
+          href: how-to-troubleshoot-setup.md
+        - name: Általános Azure Percept DK – hibaelhárítás
+          href: troubleshoot-dev-kit.md
+        - name: A látási megoldás hibaelhárítása
+          href: vision-solution-troubleshooting.md
+        - name: Azure Percept – hanghibák elhárítása
+          href: troubleshoot-audio-accessory-speech-module.md
+- name: Referencia
+  items:
+    - name: Azure Percept-eszközök Adatlapja
+      items:
+        - name: Azure Percept DK Adatlap
+          href: azure-percept-dk-datasheet.md
+        - name: Azure Percept-jövőkép Adatlapja
+          href: azure-percept-vision-datasheet.md
+        - name: Azure Percept audio Adatlap
+          href: azure-percept-audio-datasheet.md
+- name: További források
+  items: null

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60d71c44ebaba5b0cbcb03afa41ad15237dceaef
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1e40ad90910f7b2244401386fb01a4e4fefe03ca
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547474"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647404"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Microsoft 365 csoportok elévülési szabályzatának konfigurálása
 
@@ -42,7 +42,7 @@ További információ az Azure AD PowerShell-parancsmagok letöltéséről és t
 
 ## <a name="activity-based-automatic-renewal"></a>Tevékenységalapú automatikus megújítás
 
-Az Azure AD-intelligenciával a csoportok mostantól automatikusan megújulnak, attól függően, hogy legutóbb használták-e őket. Ez a szolgáltatás szükségtelenné teszi a csoport tulajdonosai számára a manuális beavatkozást, mivel az Microsoft 365-szolgáltatások, például az Outlook, a SharePoint vagy a Teams különböző csoportjaiban található felhasználói tevékenységen alapul. Ha például egy tulajdonos vagy egy csoporttag hasonló módon tölt fel egy dokumentumot a SharePointban, látogasson el a csapat csatornára, vagy küldjön egy e-mailt a csoportnak az Outlookban, a rendszer automatikusan megújítja a csoportot, és a tulajdonos nem kap megújítási értesítéseket.
+Az Azure AD-intelligenciával a csoportok mostantól automatikusan megújulnak, attól függően, hogy legutóbb használták-e őket. Ez a szolgáltatás szükségtelenné teszi a csoport tulajdonosai számára a manuális beavatkozást, mivel az Microsoft 365-szolgáltatások, például az Outlook, a SharePoint vagy a Teams különböző csoportjaiban található felhasználói tevékenységen alapul. Ha például egy tulajdonos vagy egy csoporttag hasonló módon tölt fel egy dokumentumot a SharePointban, látogasson el a csapat csatornára, vagy küldjön egy e-mailt a csoportnak az Outlookban, a csoport a csoport érvényességének lejárta előtt 35 nappal automatikusan megújul, és a tulajdonos nem kap megújítási értesítéseket.
 
 ### <a name="activities-that-automatically-renew-group-expiration"></a>A csoport lejáratát automatikusan megújító tevékenységek
 
@@ -65,7 +65,7 @@ A következők olyan szerepkörök, amelyek az Azure AD-ben Microsoft 365 csopor
 Szerepkör | Engedélyek
 -------- | --------
 Globális rendszergazda, csoport rendszergazdája vagy felhasználói rendszergazda | Létrehozhatja, elolvashatja, frissítheti vagy törölheti a Microsoft 365 csoportok lejárati szabályzatának beállításait<br>Bármely Microsoft 365 csoport megújítható
-Felhasználó | Megújíthatja a saját Microsoft 365 csoportját<br>Visszaállíthatja a saját Microsoft 365 csoportját<br>A lejárati szabályzat beállításainak olvasása
+User | Megújíthatja a saját Microsoft 365 csoportját<br>Visszaállíthatja a saját Microsoft 365 csoportját<br>A lejárati szabályzat beállításainak olvasása
 
 A törölt csoportok visszaállítására vonatkozó engedélyekkel kapcsolatos további információkért lásd: [törölt Microsoft 365 csoport visszaállítása Azure Active Directoryban](groups-restore-deleted.md).
 

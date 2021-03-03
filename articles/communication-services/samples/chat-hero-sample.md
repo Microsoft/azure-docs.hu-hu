@@ -9,16 +9,14 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 80fdedb29f70c961431c987558a42d5fa46dfa7d
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 1a28ca967404bf6a5329f8d590a8f1f4f8715407
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98760797"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657026"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Ismerkedés a Group chat Hero-mintával
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 <!----
 > [!WARNING]
@@ -36,13 +34,13 @@ Ebből a rövid útmutatóból megtudhatja, hogyan működik a minta a minta hel
 
 ## <a name="overview"></a>Áttekintés
 
-A mintában ügyféloldali alkalmazás és kiszolgálóoldali alkalmazás is található. Az **ügyféloldali alkalmazás** egy reagáló/Redux webalkalmazás, amely a Microsoft Fluent felhasználói felületének keretrendszerét használja. Ez az alkalmazás olyan ASP.NET Core **kiszolgálóoldali alkalmazásnak** küld kérelmeket, amely segítséget nyújt az ügyféloldali alkalmazásnak az Azure-hoz való kapcsolódáshoz. 
+A mintában ügyféloldali alkalmazás és kiszolgálóoldali alkalmazás is található. Az **ügyféloldali alkalmazás** egy reagáló/Redux webalkalmazás, amely a Microsoft Fluent felhasználói felületének keretrendszerét használja. Ez az alkalmazás olyan ASP.NET Core **kiszolgálóoldali alkalmazásnak** küld kérelmeket, amely segítséget nyújt az ügyféloldali alkalmazásnak az Azure-hoz való kapcsolódáshoz.
 
 A minta így néz ki:
 
 :::image type="content" source="./media/chat/landing-page.png" alt-text="A minta alkalmazás kezdőlapját ábrázoló képernyőfelvétel":::
 
-A "csevegés indítása" gomb megnyomásakor a webalkalmazás a kiszolgálóoldali alkalmazásból lekéri a felhasználói hozzáférési tokent. Ezt a tokent ezután az ügyfélalkalmazás Azure kommunikációs szolgáltatásokhoz való összekapcsolására használják. A jogkivonat lekérése után meg kell adnia a nevét és a Emoji, amely a csevegésben fog megjelenni. 
+A "csevegés indítása" gomb megnyomásakor a webalkalmazás a kiszolgálóoldali alkalmazásból lekéri a felhasználói hozzáférési tokent. Ezt a tokent ezután az ügyfélalkalmazás Azure kommunikációs szolgáltatásokhoz való összekapcsolására használják. A jogkivonat lekérése után meg kell adnia a nevét és a Emoji, amely a csevegésben fog megjelenni.
 
 :::image type="content" source="./media/chat/pre-chat.png" alt-text="Az alkalmazás csevegés előtti képernyőjét ábrázoló képernyőkép.":::
 
@@ -54,7 +52,7 @@ A fő csevegési képernyő összetevői:
 
 - **Fő csevegési felület**: ez az alapvető csevegési élmény, amellyel a felhasználók küldhetnek és kaphatnak üzeneteket. Üzenetek küldéséhez használhatja a beviteli körzetet, és nyomja le az ENTER billentyűt (vagy használja a Küldés gombot). A fogadott csevegési üzeneteket a küldő a helyes névvel és Emoji kategorizálja. A csevegési terület két típusú értesítést fog látni: 1) értesítéseket írhat be, amikor a felhasználó begépeli és 2) az üzenetek küldésére és olvasására vonatkozó értesítéseket.
 - **Fejléc**: ez az a hely, ahol a felhasználó látni fogja a csevegési szál címét, valamint a résztvevő és a beállítások oldalsó sávjának a vezérlését, valamint a csevegési munkamenetből való kilépéshez szükséges vezérlőket.
-- **Oldalsó sáv**: ebben az esetben a rendszer a fejlécben szereplő vezérlők használatával jeleníti meg a résztvevőket és a beállítási információkat. A résztvevők oldalsó sáv tartalmazza a csevegés résztvevőinek listáját, valamint egy hivatkozást, amely meghívja a résztvevőket a csevegési munkamenetbe. A beállítások oldal sáv lehetővé teszi a csevegési szál címének konfigurálását. 
+- **Oldalsó sáv**: ebben az esetben a rendszer a fejlécben szereplő vezérlők használatával jeleníti meg a résztvevőket és a beállítási információkat. A résztvevők oldalsó sáv tartalmazza a csevegés résztvevőinek listáját, valamint egy hivatkozást, amely meghívja a résztvevőket a csevegési munkamenetbe. A beállítások oldal sáv lehetővé teszi a csevegési szál címének konfigurálását.
 
 Az alábbiakban további információkat talál a minta beállításához szükséges előfeltételekről és lépésekről.
 
@@ -102,9 +100,9 @@ A mintát helyileg is tesztelheti úgy, hogy több böngészős munkamenetet nyi
 
 Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek. További információ az [erőforrások tisztításáról](../quickstarts/create-communication-resource.md#clean-up-resources).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
->[!div class="nextstepaction"] 
+>[!div class="nextstepaction"]
 >[A minta letöltése a GitHubról](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
 További információért tekintse át a következő cikkeket:

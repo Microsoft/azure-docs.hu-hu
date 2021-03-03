@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 02/09/2021
-ms.openlocfilehash: 75ea473c8669e9d50d2e9971a20a5fc1c3070779
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7a6213528f204ac31fbcf8a29625787fc73d5153
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368013"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656805"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Azure Private-hivatkozás konfigurálása Azure Machine Learning munkaterülethez
 
@@ -172,7 +172,12 @@ Az Azure Virtual Machinesról a [Virtual Machines dokumentációjában](../virtu
 
 ## <a name="enable-public-access"></a>Nyilvános hozzáférés engedélyezése
 
-Miután a munkaterületet privát végponttal konfigurálta, igény szerint engedélyezheti a munkaterülethez való nyilvános hozzáférést. Így nem távolítja el a privát végpontot. A privát hozzáférés mellett a nyilvános hozzáférést is lehetővé teszi. A magánhálózati kapcsolattal rendelkező munkaterülethez való nyilvános hozzáférés engedélyezéséhez kövesse az alábbi lépéseket:
+Bizonyos helyzetekben előfordulhat, hogy engedélyezni szeretné, hogy valaki egy nyilvános végponton keresztül kapcsolódjon a védett munkaterülethez a VNet helyett. Miután a munkaterületet privát végponttal konfigurálta, igény szerint engedélyezheti a munkaterülethez való nyilvános hozzáférést. Így nem távolítja el a privát végpontot. A VNet mögötti összetevők közötti kommunikáció továbbra is védett. A VNet keresztüli privát hozzáférésen kívül csak a munkaterülethez való nyilvános hozzáférést teszi lehetővé.
+
+> [!WARNING]
+> A nyilvános végponton való kapcsolódáskor a Studio egyes funkciói nem fognak hozzáférni az adataihoz. Ez a probléma akkor fordul elő, ha az adattárolást egy olyan szolgáltatás tárolja, amely a VNet mögött található. Például egy Azure Storage-fiók.
+
+A magánhálózati kapcsolattal rendelkező munkaterülethez való nyilvános hozzáférés engedélyezéséhez kövesse az alábbi lépéseket:
 
 # <a name="python"></a>[Python](#tab/python)
 

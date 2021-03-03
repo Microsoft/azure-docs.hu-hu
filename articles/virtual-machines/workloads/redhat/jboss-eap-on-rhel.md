@@ -4,16 +4,17 @@ description: Vállalati Java-alkalmazások üzembe helyezése a Red Hat JBoss EA
 author: theresa-nguyen
 ms.author: bicnguy
 ms.topic: quickstart
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: redhat
+ms.collection: linux
 ms.assetid: 8a4df7bf-be49-4198-800e-db381cda98f5
 ms.date: 10/30/2020
-ms.openlocfilehash: bd6ff46807c22309679ba7e8518685bb05cc77e2
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 4027e9c336d938c3877e56b0eb59edea6ac1d992
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830717"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671978"
 ---
 # <a name="deploy-enterprise-java-applications-to-azure-with-jboss-eap-on-red-hat-enterprise-linux"></a>Vállalati Java-alkalmazások üzembe helyezése az Azure-on a JBoss EAP használatával Red Hat Enterprise Linux rendszeren
 
@@ -189,7 +190,7 @@ Az előfizetése most már készen áll a RHEL 7,7 vagy a 8,0 BYOS üzembe helye
 
 A JBoss EAP csak a BYOS-modellen keresztül érhető el az Azure-on. A sablon telepítésekor meg kell adnia a RHSM hitelesítő adatait, valamint a RHSM-készlet AZONOSÍTÓját érvényes EAP-jogosultságokkal. Ha nem rendelkezik EAP-jogosultságokkal, a Kezdés előtt szerezzen be egy [JBoss EAP próbaverziós előfizetést](https://access.redhat.com/products/red-hat-jboss-enterprise-application-platform/evaluation) .
 
-## <a name="deployment-options"></a>Üzembe helyezési beállítások
+## <a name="deployment-options"></a>Üzembe helyezési lehetőségek
 
 A sablont a következő módokon helyezheti üzembe:
 
@@ -237,7 +238,7 @@ A következő Gyorsindítás sablonok egyikével kezdheti meg a JBoss EAP-t a RH
 * [JBoss EAP Azure App Service Linux rendszeren](../../../app-service/quickstart-java.md)
 * [A JBoss EAP üzembe helyezése Azure App Service](https://github.com/JasonFreeberg/jboss-on-app-service)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [JBoss EAP 7,2](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.2/)-ről.
 * További információ a [JBoss EAP 7,3](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.3/)-ről.

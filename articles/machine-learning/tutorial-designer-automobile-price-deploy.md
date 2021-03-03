@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.custom: designer
-ms.openlocfilehash: e93f912915303ce903a32ceba4f079593657a4ac
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: ec563371ab505113117707f56c31f506f7fdf377
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576058"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659527"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Oktatóanyag: gépi tanulási modell üzembe helyezése a tervezővel
 
@@ -42,7 +42,7 @@ A folyamat üzembe helyezéséhez először át kell alakítania a betanítási 
 
 1. A folyamat fölötti vászonnál válassza a **következtetés létrehozása folyamat**  >  **valós idejű következtetési folyamat** lehetőséget.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png"alt-text="Képernyőfelvétel a folyamat létrehozása gombról":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png" alt-text="Képernyőfelvétel a folyamat létrehozása gombról":::
 
     A folyamatnak most így kell kinéznie: 
 
@@ -97,13 +97,13 @@ Miután az AK-szolgáltatás befejezte a kiépítést, térjen vissza a valós i
 
 1. Válassza ki a létrehozott AK-fürtöt.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="Az új valós idejű végpont beállítását bemutató képernyőkép":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png" alt-text="Az új valós idejű végpont beállítását bemutató képernyőkép":::
 
     A valós idejű végpont **speciális** beállítása is megváltoztatható.
     
-    |Speciális beállítás|Description|
+    |Speciális beállítás|Leírás|
     |---|---|
-    |Application Insights diagnosztika és adatgyűjtés engedélyezése| Azt határozza meg, hogy az Azure Application Ingishts lehetővé teszi-e az adatok gyűjtését az üzembe helyezett végpontokról. </br> Alapértelmezés szerint: false |
+    |Application Insights diagnosztika és adatgyűjtés engedélyezése| Azt határozza meg, hogy engedélyezi-e az Azure Application Insights az adatok gyűjtését az üzembe helyezett végpontokról. </br> Alapértelmezés szerint: false |
     |Pontozási időkorlát| A webszolgáltatásra irányuló pontozási hívások kényszerített időkorlátja ezredmásodpercben.</br>Alapértelmezés szerint: 60000|
     |Automatikus méretezés engedélyezve|   Azt határozza meg, hogy engedélyezi-e az automatikus skálázást a webszolgáltatáshoz.</br>Alapértelmezés szerint: true|
     |Replikák minimális száma| A webszolgáltatás automatikus skálázásakor használandó tárolók minimális száma.</br>Alapértelmezés szerint: 1|
@@ -137,6 +137,22 @@ Az üzembe helyezés befejeződése után megtekintheti a valós idejű végpont
 1. A végpont teszteléséhez lépjen a test ( **teszt** ) lapra. Itt megadhatja a tesztelési adatokat, és kiválaszthatja a végpont kimenetének ellenőrzése **tesztet** .
 
 További információ a webszolgáltatás használatáról: a [webszolgáltatásként üzembe helyezett modell felhasználása](how-to-consume-web-service.md)
+
+## <a name="limitations"></a>Korlátozások
+
+Ha módosításokat hajt végre a betanítási folyamat során, akkor újra el kell küldenie a betanítási folyamatot, **frissítenie** kell a következtetési folyamatot, és újra le kell futtatnia a következtetési folyamatot.
+
+Vegye figyelembe, hogy csak a betanított modellek lesznek frissítve a következtetési folyamatban, míg az adatátalakítás nem lesz frissítve.
+
+A frissített átalakítás a következtetési folyamatban való használatához regisztrálnia kell az átalakítási modul átalakítási kimenetét adatkészletként.
+
+![Az átalakítási adatkészlet regisztrálását bemutató képernyőkép](./media/tutorial-designer-automobile-price-deploy/register-transformation-dataset.png)
+
+Ezután manuálisan cserélje le a **TD-** modult a következtetési folyamatba a regisztrált adatkészlettel.
+
+![Az átalakítási modul lecserélését bemutató képernyőkép](./media/tutorial-designer-automobile-price-deploy/replace-td-module.png)
+
+Ezután elküldheti a következtetési folyamatot a frissített modellel és átalakítással, és üzembe helyezheti.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

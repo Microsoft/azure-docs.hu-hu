@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3778b6046c750bb131be1e51bf1afdc7b0df7184
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 83c5595dc64b46e1c30f3c36866e0efbbd8d3c7f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116789"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674127"
 ---
 # <a name="design-tables-using-synapse-sql-in-azure-synapse-analytics"></a>Táblázatok kialakítása a szinapszis SQL használatával az Azure szinapszis Analyticsben
 
@@ -28,21 +28,21 @@ A következő táblázat felsorolja a dedikált SQL-készlethez és a kiszolgál
 | Témakör                                                        | dedikált SQL-készlet | kiszolgáló nélküli SQL-készlet |
 | ------------------------------------------------------------ | ------------------ | ----------------------- |
 | [Táblázat kategóriájának meghatározása](#determine-table-category)        | Igen                | Nem                      |
-| [Sémák nevei](#schema-names)                                | Igen                | Yes                     |
+| [Sémák nevei](#schema-names)                                | Igen                | Igen                     |
 | [Táblák nevei](#table-names)                                  | Igen                | Nem                      |
 | [Tábla megőrzése](#table-persistence)                      | Igen                | Nem                      |
 | [Normál tábla](#regular-table)                              | Igen                | Nem                      |
-| [Ideiglenes tábla](#temporary-table)                          | Igen                | Yes                     |
-| [Külső tábla](#external-table)                            | Igen                | Yes                     |
-| [Adattípusok](#data-types)                                    | Igen                | Yes                     |
+| [Ideiglenes tábla](#temporary-table)                          | Igen                | Igen                     |
+| [Külső tábla](#external-table)                            | Igen                | Igen                     |
+| [Adattípusok](#data-types)                                    | Igen                | Igen                     |
 | [Elosztott táblák](#distributed-tables)                    | Igen                | Nem                      |
 | [Kivonat alapján elosztott táblák](#hash-distributed-tables)          | Igen                | Nem                      |
 | [Replikált táblák](#replicated-tables)                      | Igen                | Nem                      |
 | [Ciklikus időszeletelésű táblák](#round-robin-tables)                    | Igen                | Nem                      |
 | [Gyakori terjesztési módszerek a táblákhoz](#common-distribution-methods-for-tables) | Igen                | Nem                      |
-| [Partíciók](#partitions)                                    | Igen                | Yes                     |
+| [Partíciók](#partitions)                                    | Igen                | Igen                     |
 | [Oszlopcentrikus indexek](#columnstore-indexes)                  | Igen                | Nem                      |
-| [Statisztika](#statistics)                                    | Igen                | Yes                     |
+| [Statisztika](#statistics)                                    | Igen                | Igen                     |
 | [Elsődleges kulcs és egyedi kulcs](#primary-key-and-unique-key)    | Igen                | Nem                      |
 | [Táblázatok létrehozásához szükséges parancsok](#commands-for-creating-tables) | Igen                | Nem                      |
 | [Forrásadatok igazítása az adatraktárhoz](#align-source-data-with-the-data-warehouse) | Igen                | Nem                      |
@@ -61,7 +61,7 @@ A [csillag sémák](https://en.wikipedia.org/wiki/Star_schema) a tény-és dimen
 
 ## <a name="schema-names"></a>Sémák nevei
 
-A sémák a hasonló módon használt objektumok csoportosítására alkalmasak. A következő kód egy, az első világháború nevű [felhasználó által definiált sémát](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) hoz létre.
+A sémák a hasonló módon használt objektumok csoportosítására alkalmasak. A következő kód egy, az első világháború nevű [felhasználó által definiált sémát](/sql/t-sql/statements/create-schema-transact-sql?view=azure-sqldw-latest&preserve-view=true) hoz létre.
 
 ```sql
 CREATE SCHEMA wwi;
@@ -69,7 +69,7 @@ CREATE SCHEMA wwi;
 
 ## <a name="table-names"></a>Táblák nevei
 
-Ha több adatbázist telepít át egy helyszíni megoldásból a dedikált SQL-készletbe, az ajánlott eljárás az összes tény, dimenzió és integrációs tábla egyetlen SQL Pool-sémába való áttelepítése. A [wideworldimportersdw adattárházat](/sql/samples/wide-world-importers-dw-database-catalog?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) minta adattárházban lévő összes táblát tárolhatja például egy első világháború nevű sémán belül.
+Ha több adatbázist telepít át egy helyszíni megoldásból a dedikált SQL-készletbe, az ajánlott eljárás az összes tény, dimenzió és integrációs tábla egyetlen SQL Pool-sémába való áttelepítése. A [wideworldimportersdw adattárházat](/sql/samples/wide-world-importers-dw-database-catalog?view=azure-sqldw-latest&preserve-view=true) minta adattárházban lévő összes táblát tárolhatja például egy első világháború nevű sémán belül.
 
 A táblák Szervezetének a dedikált SQL-készletben való megjelenítéséhez a Fact, a Dim és az int előtagot használhatja a táblázatok neveihez. Az alábbi táblázat a Wideworldimportersdw adattárházat sémájának és táblázatának egyes neveit mutatja be.  
 
@@ -108,7 +108,7 @@ Kiszolgáló nélküli SQL-készlet esetén a [CETAS](develop-tables-cetas.md) h
 
 ## <a name="data-types"></a>Adattípusok
 
-A dedikált SQL-készlet a leggyakrabban használt adattípusokat támogatja. A támogatott adattípusok listáját a CREATE TABLE utasításban található [CREATE TABLE-hivatkozás adattípusai](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#DataTypes&preserve-view=true) című témakörben tekintheti meg. Az adattípusok használatával kapcsolatos további információkért lásd az [adattípusokat](../sql/develop-tables-data-types.md).
+A dedikált SQL-készlet a leggyakrabban használt adattípusokat támogatja. A támogatott adattípusok listáját a CREATE TABLE utasításban található [CREATE TABLE-hivatkozás adattípusai](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest#DataTypes&preserve-view=true) című témakörben tekintheti meg. Az adattípusok használatával kapcsolatos további információkért lásd az [adattípusokat](../sql/develop-tables-data-types.md).
 
 ## <a name="distributed-tables"></a>Elosztott táblák
 
@@ -153,7 +153,7 @@ A dedikált SQL-készletek esetében egy particionált tábla tárolja és végr
 Az adattárolást partíciós váltással is megtarthatja. Mivel egy dedikált SQL-készletben lévő adat már el van terjesztve, túl sok partíció lassítja a lekérdezések teljesítményét. További információ: [particionálási útmutató](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).  
 
 > [!TIP]
-> Ha a partíció nem üres táblázatos partícióra vált, érdemes lehet az [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) utasítás TRUNCATE_TARGET kapcsolóját használni, ha a meglévő adatok csonkítva lesznek.
+> Ha a partíció nem üres táblázatos partícióra vált, érdemes lehet az [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?view=azure-sqldw-latest&preserve-view=true) utasítás TRUNCATE_TARGET kapcsolóját használni, ha a meglévő adatok csonkítva lesznek.
 
 Az alábbi kód az átalakított napi adatkészletet egy SalesFact-partícióra vált, és felülírja a meglévőket.
 
@@ -190,7 +190,7 @@ Alapértelmezés szerint a dedikált SQL-készlet fürtözött oszlopcentrikus i
 > [!TIP]
 > Egy halom tábla különösen hasznos lehet az átmeneti adatfájlok (például egy előkészítési tábla) betöltéséhez, amely egy végső táblába lett átalakítva.
 
-A oszlopcentrikus-funkciók listáját a [oszlopcentrikus indexek újdonságai](/sql/relational-databases/indexes/columnstore-indexes-what-s-new?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)című témakörben tekintheti meg. A oszlopcentrikus index teljesítményének növeléséhez tekintse meg [a sorcsoport minőségének maximalizálása a oszlopcentrikus indexekhez](../sql/data-load-columnstore-compression.md)című témakört.
+A oszlopcentrikus-funkciók listáját a [oszlopcentrikus indexek újdonságai](/sql/relational-databases/indexes/columnstore-indexes-what-s-new?view=azure-sqldw-latest&preserve-view=true)című témakörben tekintheti meg. A oszlopcentrikus index teljesítményének növeléséhez tekintse meg [a sorcsoport minőségének maximalizálása a oszlopcentrikus indexekhez](../sql/data-load-columnstore-compression.md)című témakört.
 
 ## <a name="statistics"></a>Statisztika
 
@@ -208,10 +208,10 @@ A dedikált SQL-készlet esetében új üres táblaként hozhat létre táblát.
 
 | T-SQL-utasítás | Leírás |
 |:----------------|:------------|
-| [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Egy üres táblát hoz létre a tábla összes oszlopának és beállításának definiálásával. |
-| [KÜLSŐ TÁBLA LÉTREHOZÁSA](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Létrehoz egy külső táblát. A tábla definícióját a dedikált SQL-készlet tárolja. A tábla az Azure Blob Storage-ban vagy Azure Data Lake Storageban tárolódik. |
-| [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Egy új táblát tölt ki egy SELECT utasítás eredményeivel. A táblázat oszlopai és adattípusai a SELECT utasítás eredményein alapulnak. Az adatok importálásához ez az utasítás külső táblából is kiválasztható. |
-| [KÜLSŐ TÁBLA LÉTREHOZÁSA KIJELÖLÉSKÉNT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Új külső tábla létrehozása egy SELECT utasítás eredményének külső helyre való exportálásával.  A hely vagy az Azure Blob Storage vagy a Azure Data Lake Storage. |
+| [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) | Egy üres táblát hoz létre a tábla összes oszlopának és beállításának definiálásával. |
+| [KÜLSŐ TÁBLA LÉTREHOZÁSA](/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Létrehoz egy külső táblát. A tábla definícióját a dedikált SQL-készlet tárolja. A tábla az Azure Blob Storage-ban vagy Azure Data Lake Storageban tárolódik. |
+| [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) | Egy új táblát tölt ki egy SELECT utasítás eredményeivel. A táblázat oszlopai és adattípusai a SELECT utasítás eredményein alapulnak. Az adatok importálásához ez az utasítás külső táblából is kiválasztható. |
+| [KÜLSŐ TÁBLA LÉTREHOZÁSA KIJELÖLÉSKÉNT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Új külső tábla létrehozása egy SELECT utasítás eredményének külső helyre való exportálásával.  A hely vagy az Azure Blob Storage vagy a Azure Data Lake Storage. |
 
 ## <a name="align-source-data-with-the-data-warehouse"></a>Forrásadatok igazítása az adatraktárhoz
 
@@ -226,20 +226,20 @@ Ha az adatok több adattárból származnak, az adatok az adatraktárba is behel
 
 A dedikált SQL-készlet a más adatbázisok által kínált tábla-funkciók számos, de nem az összes funkcióját támogatja.  Az alábbi lista a dedikált SQL-készletben nem támogatott táblázat-funkciókat mutatja be.
 
-- Külső kulcs, ellenőrzési [táblázat megkötései](/sql/t-sql/statements/alter-table-table-constraint-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [Számított oszlopok](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [Indexelt nézetek](/sql/relational-databases/views/create-indexed-views?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [Sequence](/sql/t-sql/statements/create-sequence-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [Ritka oszlopok](/sql/relational-databases/tables/use-sparse-columns?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- Külső kulcs, ellenőrzési [táblázat megkötései](/sql/t-sql/statements/alter-table-table-constraint-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [Számított oszlopok](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [Indexelt nézetek](/sql/relational-databases/views/create-indexed-views?view=azure-sqldw-latest&preserve-view=true)
+- [Sequence](/sql/t-sql/statements/create-sequence-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [Ritka oszlopok](/sql/relational-databases/tables/use-sparse-columns?view=azure-sqldw-latest&preserve-view=true)
 - Helyettes kulcsok, megvalósítás [identitással](../sql-data-warehouse/sql-data-warehouse-tables-identity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [Szinonimák](/sql/t-sql/statements/create-synonym-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [Eseményindítók](/sql/t-sql/statements/create-trigger-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [Egyedi indexek](/sql/t-sql/statements/create-index-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [Felhasználó által definiált típusok](/sql/relational-databases/native-client/features/using-user-defined-types?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [Szinonimák](/sql/t-sql/statements/create-synonym-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [Eseményindítók](/sql/t-sql/statements/create-trigger-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [Egyedi indexek](/sql/t-sql/statements/create-index-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [Felhasználó által definiált típusok](/sql/relational-databases/native-client/features/using-user-defined-types?view=azure-sqldw-latest&preserve-view=true)
 
 ## <a name="table-size-queries"></a>Táblázat mérete – lekérdezések
 
-A dedikált SQL-készletben egy egyszerű módja annak, hogy azonosítsa az egyes 60-disztribúciókban a táblák által felhasznált helyet és sorokat, hogy a [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)használja.
+A dedikált SQL-készletben egy egyszerű módja annak, hogy azonosítsa az egyes 60-disztribúciókban a táblák által felhasznált helyet és sorokat, hogy a [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?view=azure-sqldw-latest&preserve-view=true)használja.
 
 ```sql
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');

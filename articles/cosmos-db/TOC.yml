@@ -860,6 +860,9 @@
           items:
             - name: Eltérő eredetű erőforrások megosztásának (CORS) konfigurálása
               href: how-to-configure-cross-origin-resource-sharing.md
+            - name: Szerepköralapú hozzáférés-vezérlés konfigurálása
+              href: how-to-setup-rbac.md
+              displayName: 'aad, active directory, rbac'
             - name: Felügyelt identitások használata az adatok eléréséhez
               href: managed-identity-based-authentication.md
               displayName: 'msi, managed service identity, aad, azure active directory, identity'
@@ -1068,7 +1071,7 @@
         - name: Node.js
           href: create-mongodb-nodejs.md
         - name: Python
-          href: create-mongodb-flask.md
+          href: ./mongodb-introduction.md
         - name: Xamarin
           href: create-mongodb-xamarin.md
         - name: Golang
@@ -1103,9 +1106,11 @@
           href: tutorial-global-distribution-mongodb.md
     - name: Alapelvek
       items:
-        - name: Vonalprotokoll-támogatás (3.6)
+        - name: 'API-verzió 4,0'
+          href: mongodb-feature-support-40.md
+        - name: 'API-verzió 3,6'
           href: mongodb-feature-support-36.md
-        - name: Vonalprotokoll-támogatás (3.2)
+        - name: 'API-verzió 3,2'
           href: mongodb-feature-support.md
         - name: GYIK
           href: mongodb-api-faq.md
@@ -1125,7 +1130,7 @@
               href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: Útmutató a migrálást követő folyamatokhoz
               href: mongodb-post-migration.md
-        - name: Frissítés a MongoDB 3.2-ről a 3.6-os verzióra
+        - name: 'Frissítés a 4,0-es vagy 3,6-os API-verzióra'
           href: mongodb-version-upgrade.md
         - name: A kapcsolati sztring lekérése
           href: connect-mongodb-account.md
@@ -1146,6 +1151,8 @@
           href: mongodb-change-streams.md
         - name: Adatindexelés felügyelete
           href: mongodb-indexing.md
+        - name: Több dokumentumból álló tranzakciók használata
+          href: use-multi-document-transactions.md
         - name: Tároló létrehozása – MongoDB API
           href: how-to-create-container-mongodb.md
         - name: Átviteli sebesség kiosztása – MongoDB API
@@ -1374,6 +1381,8 @@
           href: configure-synapse-link.md
         - name: Csatlakozás az Azure Synapse Linkhez
           href: ../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        - name: Analitikus tároló és privát végpontok
+          href: analytical-store-private-endpoints.md
         - name: Lekérdezés az Azure Synapse Sparkkal
           href: ../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Lekérdezés kiszolgáló nélküli SQL-készlettel

@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 430ab980f51ff06ad5e39d6402abf5f649cc6d39
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 027d1bf005ac052bf48e2c0aa3a4a71fc29f36f2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593095"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647438"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Gyors útmutató: alkalmazás regisztrálása a Microsoft Identity platformmal
 
@@ -30,20 +30,20 @@ A Microsoft Identity platform csak a regisztrált alkalmazások esetében végzi
 * Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * A [bérlői gyors üzembe helyezési](quickstart-create-new-tenant.md) útmutató befejezése.
 
-## <a name="register-an-application"></a>Alkalmazás regisztrálása
+## <a name="register-an-application"></a>Egy alkalmazás regisztrálása
 
 Az alkalmazás regisztrálása megbízhatósági kapcsolatot létesít az alkalmazás és a Microsoft Identity platform között. A bizalmi kapcsolat egyirányú: az alkalmazás megbízhatónak tartja a Microsoft Identity platformot, nem pedig fordítva.
 
 Az alkalmazás regisztrációjának létrehozásához kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Jelentkezzen be az <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a>.
 1. Ha több bérlőhöz fér hozzá, a felső menüben a **címtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 1. A **kezelés** területen válassza a **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.
 1. Adja meg az alkalmazás **nevét** . Előfordulhat, hogy az alkalmazás felhasználói láthatják ezt a nevet. Később is megváltoztathatja.
 1. Itt adhatja meg, hogy ki használhatja ki az alkalmazást, más néven a *bejelentkezési közönségnek*.
 
-    | Támogatott fióktípusok | Description |
+    | Támogatott fióktípusok | Leírás |
     |-------------------------|-------------|
     | **Csak az ebben a szervezeti címtárban található fiókok** | Akkor válassza ezt a lehetőséget, ha olyan alkalmazást hoz létre, amelyet csak felhasználók (vagy vendégek) használhatnak *a* bérlőben.<br><br>Gyakran *üzletági (LOB* ) alkalmazásnak nevezik, ez az alkalmazás egy *egybérlős* alkalmazás a Microsoft Identity platformon. |
     | **Tetszőleges szervezeti címtárban található fiókok** | Válassza ezt a lehetőséget, ha azt szeretné, hogy a felhasználók *bármely* Azure Active Directory (Azure ad-) bérlőben használni tudják az alkalmazást. Ez a beállítás akkor lehet hasznos, ha például olyan szoftveres (SaaS) alkalmazást készít, amelyet több szervezet számára szeretne biztosítani.<br><br>Ezt a fajta alkalmazást több- *bérlős* alkalmazásnak nevezzük a Microsoft Identity platformon. |
@@ -110,7 +110,7 @@ Más néven *nyilvános kulcs*, a tanúsítvány az ajánlott hitelesítő adat.
 1. A Azure Portal **Alkalmazásregisztrációk** területen válassza ki az alkalmazást.
 1. Válassza a **tanúsítványok & titkok**  >  **feltöltési tanúsítvány** elemet.
 1. Válassza ki a feltölteni kívánt fájlt. A következő fájltípusok egyikének kell lennie: *. cer*, *. PEM*, *. CRT*.
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 ### <a name="add-a-client-secret"></a>Ügyfél titkos kulcsának hozzáadása
 
@@ -122,7 +122,7 @@ További információ az alkalmazás biztonsági javaslatairól: [Microsoft Iden
 1. Válassza a **tanúsítványok & titkos kulcsok**  >   **új ügyfél titka** lehetőséget.
 1. Adja meg titkos ügyfélkódja leírását.
 1. Válassza ki az időtartamot.
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 1. *Jegyezze fel a titkos kulcs értékét* az ügyfélalkalmazás kódjában való használathoz. Ez a titkos érték *soha nem jelenik meg többé* , miután elhagyja ezt a lapot.
 
 

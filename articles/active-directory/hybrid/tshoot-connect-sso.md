@@ -13,12 +13,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bc638eec174a52d501120d5e53bb2dc9e35b688
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: eef58f6e84fb3b4dec947fa3614b6ec1043ff89e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591174"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644646"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory zökkenőmentes egyetlen Sign-On hibáinak megoldása
 
@@ -32,6 +32,7 @@ Ez a cikk segítséget nyújt a Azure Active Directory (Azure AD) zökkenőmente
 - A 16.0.8730. xxxx és újabb verziókkal rendelkező Win32-ügyfelek (Outlook, Word, Excel és egyebek) nem interaktív folyamat használatával támogatottak. Microsoft 365 Más verziók nem támogatottak; ezeken a verziókon a felhasználók bejelentkeznek a felhasználónevek, de a jelszavak nem. A OneDrive a csendes bejelentkezési élmény érdekében aktiválni kell a [OneDrive csendes konfigurációs szolgáltatást](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) .
 - A zökkenőmentes egyszeri bejelentkezés nem működik a Firefox privát böngészési módjában.
 - A zökkenőmentes egyszeri bejelentkezés nem működik az Internet Explorerben, ha a fokozottan védett mód be van kapcsolva.
+- A zökkenőmentes egyszeri bejelentkezés nem működik privát böngészési módban a Microsoft Edge-ben (örökölt).
 - A zökkenőmentes egyszeri bejelentkezés nem működik az iOS és az Android rendszerű böngészőkben.
 - Ha egy felhasználó túl sok csoporthoz tartozik a Active Directoryban, a felhasználó Kerberos-jegye valószínűleg túl nagy lesz a feldolgozáshoz, és ez a zökkenőmentes egyszeri bejelentkezést eredményezi. Az Azure AD HTTPS-kérések legfeljebb 50 KB méretű fejléceket tartalmazhatnak. A Kerberos-jegyeknek kisebbnek kell lenniük, mint amennyit az Azure AD-összetevők (általában 2-5 KB), például a cookie-k befogadására korlátoznak. Javasoljuk, hogy csökkentse a felhasználók csoporttagságait, és próbálkozzon újra.
 - Ha 30 vagy több Active Directory erdőt szinkronizál, a zökkenőmentes SSO-t nem engedélyezheti Azure AD Connecton keresztül. Megkerülő megoldásként [manuálisan engedélyezheti](#manual-reset-of-the-feature) a szolgáltatást a bérlőn.

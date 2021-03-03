@@ -7,21 +7,18 @@ manager: celestedg
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 05/06/2020
+ms.date: 03/02/2021
 ms.author: mimart
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cddb40a6a43c38079906699d9fa4865c4daf558
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: a199c207e8ea35f1471df9bfd0c4134551b9995f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837090"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653490"
 ---
-# <a name="language-customization-in-azure-active-directory-preview"></a>Nyelvi Testreszabás a Azure Active Directoryban (előzetes verzió)
-
-> [!NOTE]
-> Az önkiszolgáló regisztráció a Azure Active Directory nyilvános előzetes funkciója. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="language-customization-in-azure-active-directory"></a>Nyelvi Testreszabás a Azure Active Directoryban
 
 A Azure Active Directory (Azure AD) nyelvi testreszabása lehetővé teszi a felhasználói folyamat számára, hogy a felhasználók igényeinek megfelelően különböző nyelveket fogadjon. A Microsoft [36 nyelvekhez](#supported-languages)biztosít fordításokat. Akkor is testreszabhatja az attribútumok nevét az attribútumok gyűjteménye lapon, ha a felhasználói élmény csak egyetlen nyelvhez van megadva.
 
@@ -39,7 +36,7 @@ A nyelvi Testreszabás lehetővé teszi a felhasználói folyamat bármely karak
 1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com) Azure ad-rendszergazdaként.
 2. Az **Azure-szolgáltatások** területen válassza a **Azure Active Directory** lehetőséget.
 3. A bal oldali menüben válassza a **külső identitások** lehetőséget.
-4. Válassza a **felhasználói folyamatok (előzetes verzió)** lehetőséget.
+4. Válassza a **felhasználói folyamatok** lehetőséget.
 3. Válassza ki a fordításhoz engedélyezni kívánt felhasználói folyamatot.
 4. Válassza a **nyelvek** lehetőséget.
 5. A felhasználói folyamat **nyelvek** lapján válassza ki a testreszabni kívánt nyelvet.
@@ -156,40 +153,40 @@ Az Azure AD az alábbi nyelvek támogatását tartalmazza. A felhasználói foly
 | Katalán               | CA            | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | cseh                 | CS            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | dán                | da            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
-| német                | de            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
-| görög                 | el            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Német                | de            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Görög                 | el            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | Angolul               | hu            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | spanyol               | es            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | Észt              | et            | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | Baszk                | EU            | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | finn               | Fi            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
-| francia                | fr            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Francia                | fr            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | Gallego              | GL            | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | gudzsaráti              | Gu            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) |
 | héber                | ő            | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | Hindi                 | szia            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | Horvát              | ó            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
-| magyar             | hu            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Magyar             | hu            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | Indonéz            | id            | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
-| olasz               | Ez            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Olasz               | Ez            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | Japán              | Japán            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | Kazak                | KK            | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | kannada               | KN            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) |
-| koreai                | Ko            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Koreai                | Ko            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | Litván            | lt            | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | Lett               | lv            | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | malajálam             | ml            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) |
 | marathi               | Mr            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) |
 | Maláj                 | MS            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | Norvég bokmal      | NB            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) |
-| holland                 | nl            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
-| norvég             | nem            | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Holland                 | nl            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Norvég             | nem            | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | pandzsábi               | PA            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) |
-| lengyel                | pl            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Lengyel                | pl            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | Portugál - Brazília   | pt-br         | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | Portugál - Portugália | pt-pt         | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | Román              | ro            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
-| orosz               | ru            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Orosz               | ru            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | Szlovák                | sk            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | Szlovén             | SL            | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | Szerb – cirillbetűs    | SR-cryl-cs    | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
@@ -198,7 +195,7 @@ Az Azure AD az alábbi nyelvek támogatását tartalmazza. A felhasználói foly
 | tamil                 | ta            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) |
 | telugu                | ttelepítése            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) |
 | Thai                  | adik            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
-| török               | TR            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Török               | TR            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | Ukrán             | uk            | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | Vietnámi            | VI            | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | Kínai – egyszerűsített  | zh-Hans       | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |

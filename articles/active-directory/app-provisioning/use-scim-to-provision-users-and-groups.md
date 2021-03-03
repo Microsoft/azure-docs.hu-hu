@@ -12,12 +12,12 @@ ms.date: 02/01/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 35efcd4059ab654178fb87c133a6f64721caf7d2
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 1445e7959906966c58730521123ae03590bef1b3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989059"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652096"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Oktatóanyag: SCIM-végpont létesítésének fejlesztése és tervezése
 
@@ -882,7 +882,7 @@ A mintakód a kérelmeket a Microsoft. AspNetCore. Authentication. JwtBearer cso
 
 Tulajdonosi jogkivonatra is szükség van a megadott [Poster-tesztek](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) használatához, és helyi hibakeresést végezni a localhost használatával. A mintakód ASP.NET Core környezetekkel módosítja a hitelesítési beállításokat a fejlesztési fázisban, és engedélyezi a saját aláírású jogkivonat használatát.
 
-További információ a ASP.NET Core több környezetéről: [több környezet használata a ASP.net Coreban](https://docs.microsoft.com/aspnet/core/fundamentals/environments).
+További információ a ASP.NET Core több környezetéről: [több környezet használata a ASP.net Coreban](/aspnet/core/fundamentals/environments).
 
 A következő kód azt kényszeríti, hogy a szolgáltatás bármelyik végpontján érkező kérések hitelesítése egy egyéni kulccsal aláírt tulajdonosi jogkivonat használatával történik:
 

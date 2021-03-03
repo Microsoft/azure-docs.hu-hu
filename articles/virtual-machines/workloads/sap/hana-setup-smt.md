@@ -6,20 +6,19 @@ documentationcenter: ''
 author: hermanndms
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: hermannd
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 88b1cd2a5bf33d6401f0d2e15237400e27c72e54
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 990274f34dac0234c2c2d521ca6a260f999671bb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967652"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674519"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>Az SMT-kiszolgáló beállítása SUSE Linux rendszerhez
 SAP HANA nagyméretű példányai nem rendelkeznek közvetlen kapcsolattal az internettel. Ez nem egy egyszerű folyamat, amellyel regisztrálhatja az adott egységet az operációs rendszer szolgáltatójával, valamint letöltheti és alkalmazhatja a frissítéseket. A SUSE Linux rendszerhez készült megoldás egy SMT-kiszolgáló beállítása egy Azure-beli virtuális gépen. A virtuális gépet egy olyan Azure-beli virtuális hálózatban üzemelteti, amely a HANA Large-példányhoz csatlakozik. Ilyen SMT-kiszolgáló esetén a HANA nagyméretű példány egysége regisztrálhatja és letöltheti a frissítéseket. 

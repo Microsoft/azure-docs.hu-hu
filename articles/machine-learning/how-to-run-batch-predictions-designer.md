@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: keli19
 author: likebupt
-ms.date: 09/09/2020
+ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 2ef125f65e13f7a9fa756553b1de148d4849babc
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: dda47d3ff561d4d57045dbb28f8c411e193086d5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553946"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657382"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Batch-előrejelzések futtatása Azure Machine Learning Designer használatával
 
@@ -86,7 +86,7 @@ Most már készen áll a következtetési folyamat üzembe helyezésére. Ezzel 
 
     A párbeszédpanel alján látható, hogy a paramétert a betanítás során használt adatkészlet-azonosító alapértelmezett értékével konfigurálta.
 
-1. Kattintson a **Publish** (Közzététel) elemre.
+1. Válassza a **Közzététel** lehetőséget.
 
 ![Folyamat közzététele](./media/how-to-run-batch-predictions-designer/publish-inference-pipeline.png)
 
@@ -144,6 +144,22 @@ Amikor közzétesz egy folyamatot, megadhatja, hogy az új alapértelmezett foly
 Az új alapértelmezett folyamat a végpont **közzétett folyamatok** lapján is beállítható.
 
 ![Alapértelmezett folyamat beállítása a közzétett folyamat lapon](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
+
+## <a name="limitations"></a>Korlátozások
+
+Ha módosításokat hajt végre a betanítási folyamatban, újra el kell küldenie a betanítási folyamatot, **frissítenie**  kell a következtetési folyamatot, és újra kell futtatnia a következtetési folyamatot.
+
+Vegye figyelembe, hogy a rendszer csak a modelleket frissíti a következtetési folyamatban, az adatátalakítás nem frissül.
+
+A frissített átalakítás a következtetési folyamatban való használatához regisztrálnia kell az átalakítási modul átalakítási kimenetét adatkészletként.
+
+![Az átalakítási adatkészlet regisztrálását bemutató képernyőkép](./media/how-to-run-batch-predictions-designer/register-transformation-dataset.png)
+
+Ezután manuálisan cserélje le a **TD-** modult a következtetési folyamatba a regisztrált adatkészlettel.
+
+![Az átalakítási modul lecserélését bemutató képernyőkép](./media/how-to-run-batch-predictions-designer/replace-td-module-batch-inference-pipeline.png)
+
+Ezután elküldheti a következtetési folyamatot a frissített modellel és átalakítással, és közzéteheti.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -1,26 +1,26 @@
 ---
 title: A hibrid FIDO2 biztonsági kulcs központi telepítésére vonatkozó gyakori kérdések – Azure Active Directory
-description: További információ a jelszó nélküli hibrid FIDO2 biztonsági kulcsok Azure Active Directory használatával történő bejelentkezésével kapcsolatos gyakori kérdésekre (előzetes verzió)
+description: Ismerkedjen meg a jelszó nélküli hibrid FIDO2 biztonsági kulcsok bejelentkezésével kapcsolatos gyakori kérdésekre Azure Active Directory
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 08/19/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98cb990ede7c4d6e261bba05b0b8c97d758e6c32
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: ca4943293f9474d4089267d05460d6d8766b79e6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743530"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646384"
 ---
-# <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad-preview"></a>Gyakori kérdések (GYIK) a hibrid FIDO2 biztonsági kulcsokról az Azure AD-ben (előzetes verzió)
+# <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad"></a>Gyakori kérdések (GYIK) a hibrid FIDO2 biztonsági kulcsaihoz az Azure AD-ben 
 
-Ez a cikk az üzembe helyezéssel kapcsolatos gyakori kérdéseket ismerteti (GYIK) a hibrid Azure AD-hez csatlakoztatott eszközökhöz és a jelszó nélküli bejelentkezéshez a helyszíni erőforrásokhoz. Ezzel a jelszóval nem rendelkező funkcióval engedélyezheti az Azure AD-hitelesítést a Windows 10-es eszközökön a hibrid Azure AD-hez csatlakoztatott eszközökhöz a FIDO2 biztonsági kulcsainak használatával. A felhasználók modern hitelesítő adatokkal (például FIDO2 kulcsokkal) jelentkezhetnek be a Windowsba, és a hagyományos Active Directory tartományi szolgáltatások (AD DS) alapuló erőforrásokhoz hozzáférhetnek a helyszíni erőforrásaik zökkenőmentes egyszeri bejelentkezési (SSO) élményével.
+Ez a cikk az üzembe helyezéssel kapcsolatos gyakori kérdéseket ismerteti (GYIK) a hibrid Azure AD-hez csatlakoztatott eszközökhöz és a jelszó nélküli bejelentkezéshez a helyszíni erőforrásokhoz. Ezzel a jelszóval nem rendelkező funkcióval engedélyezheti az Azure AD-hitelesítést a Windows 10-es eszközökön a hibrid Azure AD-hez csatlakoztatott eszközökhöz a FIDO2 biztonsági kulcsainak használatával. A felhasználók modern hitelesítő adatokkal (például FIDO2 kulcsokkal) jelentkezhetnek be a Windowsba, és a hagyományos Active Directory Domain Services (AD DS) alapuló erőforrásokhoz hozzáférhetnek a helyszíni erőforrásaik zökkenőmentes egyszeri bejelentkezési (SSO) élményével.
 
 A hibrid környezetekben a következő forgatókönyvek támogatottak:
 
@@ -32,9 +32,6 @@ A FIDO2 biztonsági kulcsainak és a helyszíni erőforrások hibrid elérésén
 * [Jelszó nélküli FIDO2 biztonsági kulcsok](howto-authentication-passwordless-security-key.md)
 * [Jelszó nélküli Windows 10](howto-authentication-passwordless-security-key-windows.md)
 * [Jelszó nélküli helyszíni](howto-authentication-passwordless-security-key-on-premises.md)
-
-> [!NOTE]
-> A FIDO2 biztonsági kulcsai a Azure Active Directory nyilvános előzetes verziója. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="security-keys"></a>Biztonsági kulcsok
 
@@ -168,14 +165,14 @@ A fiókok tiltásának feloldásához használja **Active Directory felhasznál�
 
 ## <a name="under-the-hood"></a>technikai részletek
 
-* [Hogyan kapcsolódik az Azure AD Kerberos a helyszíni Active Directory tartományi szolgáltatások környezethez?](#how-is-azure-ad-kerberos-linked-to-my-on-premises-active-directory-domain-services-environment)
+* [Hogyan kapcsolódik az Azure AD Kerberos a helyszíni Active Directory Domain Services környezethez?](#how-is-azure-ad-kerberos-linked-to-my-on-premises-active-directory-domain-services-environment)
 * [Hol tekinthetem meg az AD-ben létrehozott és az Azure AD-ben közzétett Kerberos-kiszolgáló objektumokat?](#where-can-i-view-these-kerberos-server-objects-that-are-created-in-ad-ds-and-published-in-azure-ad)
 * [Miért nem érhető el a helyszíni AD DS regisztrált nyilvános kulcs, így nincs függőség az interneten?](#why-cant-we-have-the-public-key-registered-to-on-premises-ad-ds-so-there-is-no-dependency-on-the-internet)
 * [Hogyan történik a kulcsok elforgatása a Kerberos-kiszolgáló objektumon?](#how-are-the-keys-rotated-on-the-kerberos-server-object)
 * [Miért van szükségünk Azure AD Connectre? A AD DS az Azure AD-ből ír vissza az adatokat?](#why-do-we-need-azure-ad-connect-does-it-write-any-info-back-to-ad-ds-from-azure-ad)
 * [Hogyan néz ki a HTTP-kérelem/-válasz a PRT + részleges TGT kérelmezése során?](#what-does-the-http-requestresponse-look-like-when-requesting-prt-partial-tgt)
 
-### <a name="how-is-azure-ad-kerberos-linked-to-my-on-premises-active-directory-domain-services-environment"></a>Hogyan kapcsolódik az Azure AD Kerberos a helyszíni Active Directory tartományi szolgáltatások környezethez?
+### <a name="how-is-azure-ad-kerberos-linked-to-my-on-premises-active-directory-domain-services-environment"></a>Hogyan kapcsolódik az Azure AD Kerberos a helyszíni Active Directory Domain Services környezethez?
 
 Két részből áll: a helyszíni AD DS környezetből és az Azure AD-bérlőből.
 
@@ -240,7 +237,7 @@ Az Azure AD a titkosított ügyfél kulcsát és az üzenet pufferét a PRT-vál
 | tgt_key_type       | int    | A helyszíni AD DS a KERB_MESSAGE_BUFFERban található ügyfél-kulcshoz és Kerberos-munkamenethez használt kulcs típusa. |
 | tgt_message_buffer | sztring | Base64 kódolású KERB_MESSAGE_BUFFER. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A FIDO2 biztonsági kulcsainak és a helyszíni erőforrások hibrid elérésének megkezdéséhez tekintse meg a következő cikkeket:
 

@@ -9,12 +9,12 @@ ms.author: tchladek
 ms.date: 10/26/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: dd2ffacb176ed3733acba8699d4e870b15dd3c42
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 254d35331459e70ad56bcef43569f51ff6f50a93
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888708"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656210"
 ---
 # <a name="identity-model"></a>Identitásmodell
 
@@ -28,15 +28,15 @@ Az információk a rendszerbe való másolása helyett meg kell őriznie az üzl
 
 ## <a name="identity"></a>Identitás
 
-Az identitásokat az Azure kommunikációs szolgáltatások felügyeleti könyvtára segítségével hozhatja létre. Az identitás azonosítóként szolgál a beszélgetésekben. Hozzáférési tokenek létrehozásához használatos. Ugyanaz az identitás több egyidejű munkamenetben is részt vehet több eszközön. Egy identitás egyszerre több aktív hozzáférési jogkivonattal rendelkezhet. 
+Az identitásokat az Azure kommunikációs szolgáltatások Identity Library használatával hozhatja létre. Az identitás azonosítóként szolgál a beszélgetésekben. Hozzáférési tokenek létrehozásához használatos. Ugyanaz az identitás több egyidejű munkamenetben is részt vehet több eszközön. Egy identitás egyszerre több aktív hozzáférési jogkivonattal rendelkezhet.
 
-Egy identitás, erőforrás vagy előfizetés törlése érvényteleníti az összes hozzáférési jogkivonatát. Ezzel a művelettel az identitáshoz tárolt összes adattal is törlődik. A törölt identitások nem hozhatnak létre új hozzáférési jogkivonatokat, és nem férhetnek hozzá a korábban tárolt adatokhoz (például csevegési üzenetekhez). 
+Egy identitás, erőforrás vagy előfizetés törlése érvényteleníti az összes hozzáférési jogkivonatát. Ezzel a művelettel az identitáshoz tárolt összes adattal is törlődik. A törölt identitások nem hozhatnak létre új hozzáférési jogkivonatokat, és nem férhetnek hozzá a korábban tárolt adatokhoz (például csevegési üzenetekhez).
 
-Az Ön által használt identitások száma nem számítható fel. Ehelyett a primitívek használatára számítunk fel díjat. Az identitások számának nem kell korlátoznia az alkalmazás identitásának az Azure kommunikációs szolgáltatásbeli identitásokra való leképezését. 
+Az Ön által használt identitások száma nem számítható fel. Ehelyett a primitívek használatára számítunk fel díjat. Az identitások számának nem kell korlátoznia az alkalmazás identitásának az Azure kommunikációs szolgáltatásbeli identitásokra való leképezését.
 
 A feltérképezés szabadsága adatvédelmi felelősséggel jár. Ha a felhasználót törölni szeretné a rendszerből, akkor törölnie kell az adott felhasználóhoz társított összes identitást.
 
-Az Azure kommunikációs szolgáltatások nem biztosítanak speciális identitást a névtelen felhasználók számára. Nem tartja meg a felhasználók és az identitások közötti leképezést, és nem tudja megállapítani, hogy az identitás névtelen-e. Megtervezheti az identitási koncepciót, hogy megfeleljen az igényeinek. Javasoljuk, hogy minden egyes alkalmazásnál hozzon létre egy új identitást minden egyes névtelen felhasználó számára. 
+Az Azure kommunikációs szolgáltatások nem biztosítanak speciális identitást a névtelen felhasználók számára. Nem tartja meg a felhasználók és az identitások közötti leképezést, és nem tudja megállapítani, hogy az identitás névtelen-e. Megtervezheti az identitási koncepciót, hogy megfeleljen az igényeinek. Javasoljuk, hogy minden egyes alkalmazásnál hozzon létre egy új identitást minden egyes névtelen felhasználó számára.
 
 Bárki, aki rendelkezik érvényes hozzáférési jogkivonattal, elérheti az aktuális identitás tartalmát. Például a felhasználók hozzáférhetnek az elküldött csevegési üzenetekhez. A hozzáférés csak a hozzáférési jogkivonat részét képező hatókörökre korlátozódik. További információ a jelen cikk [hozzáférési jogkivonatok](#access-tokens) című szakaszában található.
 
@@ -44,7 +44,7 @@ Bárki, aki rendelkezik érvényes hozzáférési jogkivonattal, elérheti az ak
 
 Az Azure kommunikációs szolgáltatás nem replikálja az Azure Identity Management rendszer funkcióit. Nem biztosít lehetőséget az ügyfelek számára az ügyfél-specifikus identitások használatára. Az ügyfelek például nem használhatnak telefonszámot vagy e-mail-címet. Ehelyett az Azure kommunikációs szolgáltatások egyedi azonosítókat biztosítanak. Ezeket az egyedi azonosítókat hozzárendelheti az alkalmazás identitásához. Az Azure kommunikációs szolgáltatások semmilyen olyan információt nem tárolnak, amely felfedi a felhasználók valódi identitását.
 
-Ha el szeretné kerülni, hogy a rendszer hogyan duplikálja az adatokat, tervezze meg, hogyan képezhető le a felhasználók az identitás-tartományból az Azure kommunikációs szolgáltatások identitására. Bármilyen típusú mintát követheti. Használhatja például a 1:1, 1: N, N:1 vagy M:N. Döntse el, hogy egyetlen felhasználó egyetlen identitáshoz vagy több identitáshoz van-e rendelve. 
+Ha el szeretné kerülni, hogy a rendszer hogyan duplikálja az adatokat, tervezze meg, hogyan képezhető le a felhasználók az identitás-tartományból az Azure kommunikációs szolgáltatások identitására. Bármilyen típusú mintát követheti. Használhatja például a 1:1, 1: N, N:1 vagy M:N. Döntse el, hogy egyetlen felhasználó egyetlen identitáshoz vagy több identitáshoz van-e rendelve.
 
 Új identitás létrehozásakor a hozzárendelését az alkalmazás felhasználója vagy felhasználói számára tárolja. Mivel az identitásoknak hozzáférési jogkivonatokra van szükségük, hogy primitívek legyenek, az identitásnak ismertnek kell lennie az alkalmazás felhasználója vagy felhasználói számára.
 
@@ -52,14 +52,14 @@ Ha egy kapcsolódó adatbázist használ a felhasználói adatok tárolásához,
 
 ## <a name="access-tokens"></a>Hozzáférési jogkivonatok
 
-A hozzáférési jogkivonat egy JSON Web Token (JWT), amely az Azure kommunikációs szolgáltatásbeli primitívek elérésére használható. A kibocsátott hozzáférési jogkivonat integritási védelemmel rendelkezik. Ez azt a jogcímeket nem lehet módosítani a kibocsátása után. Így a tulajdonságok, például az identitás, a lejárat vagy a hatókörök manuális módosítása érvényteleníti a hozzáférési jogkivonatot. Ha a primitívek inellenőrzött jogkivonatokkal vannak ellátva, akkor a hozzáférés megtagadva lesz a primitívek számára. 
+A hozzáférési jogkivonat egy JSON Web Token (JWT), amely az Azure kommunikációs szolgáltatásbeli primitívek elérésére használható. A kibocsátott hozzáférési jogkivonat integritási védelemmel rendelkezik. Ez azt a jogcímeket nem lehet módosítani a kibocsátása után. Így a tulajdonságok, például az identitás, a lejárat vagy a hatókörök manuális módosítása érvényteleníti a hozzáférési jogkivonatot. Ha a primitívek inellenőrzött jogkivonatokkal vannak ellátva, akkor a hozzáférés megtagadva lesz a primitívek számára.
 
 A hozzáférési token tulajdonságai a következők:
 * Identitás.
 * Lejárati.
 * Hatókörök.
 
-A hozzáférési token mindig 24 órán át érvényes. A lejárat után a hozzáférési jogkivonat érvénytelenítve lett, és nem használható a primitívek eléréséhez. 
+A hozzáférési token mindig 24 órán át érvényes. A lejárat után a hozzáférési jogkivonat érvénytelenítve lett, és nem használható a primitívek eléréséhez.
 
 Az identitásnak új hozzáférési tokent kell kérnie egy kiszolgálóoldali szolgáltatástól. A *hatókör* -paraméter olyan primitívek nem üres készletét határozza meg, amelyek használhatók. Az Azure kommunikációs szolgáltatások a következő hatóköröket támogatják a hozzáférési tokenek esetében.
 
@@ -69,13 +69,13 @@ Az identitásnak új hozzáférési tokent kell kérnie egy kiszolgálóoldali s
 |VoIP|  Identitások és telefonszámok meghívásának lehetősége|
 
 
-A hozzáférési token lejárati ideje előtti visszavonásához használja az Azure kommunikációs szolgáltatások felügyeleti könyvtárát. A jogkivonat-visszavonás nem azonnali. A propagálás akár 15 percet is igénybe vehet. Egy identitás, erőforrás vagy előfizetés eltávolítása visszavonja az összes hozzáférési jogkivonatot. 
+A hozzáférési token lejárati ideje előtti visszavonásához használja az Azure kommunikációs szolgáltatások identitás-függvénytárát. A jogkivonat-visszavonás nem azonnali. A propagálás akár 15 percet is igénybe vehet. Egy identitás, erőforrás vagy előfizetés eltávolítása visszavonja az összes hozzáférési jogkivonatot.
 
 Ha el szeretné távolítani egy felhasználó hozzáférését bizonyos funkciókhoz, vonja vissza az összes hozzáférési jogkivonatot. Ezután adjon ki egy új hozzáférési jogkivonatot, amely szűkebb hatókörrel rendelkezik.
 
-Az Azure kommunikációs szolgáltatásokban a hozzáférési kulcsok rotációja visszavonja az összes olyan aktív hozzáférési jogkivonatot, amelyet egy korábbi hozzáférési kulcs használatával hoztak létre. Az összes identitás elveszíti az Azure kommunikációs szolgáltatásokhoz való hozzáférést, és új hozzáférési jogkivonatokat kell kiadnia. 
+Az Azure kommunikációs szolgáltatásokban a hozzáférési kulcsok rotációja visszavonja az összes olyan aktív hozzáférési jogkivonatot, amelyet egy korábbi hozzáférési kulcs használatával hoztak létre. Az összes identitás elveszíti az Azure kommunikációs szolgáltatásokhoz való hozzáférést, és új hozzáférési jogkivonatokat kell kiadnia.
 
-Javasoljuk, hogy a hozzáférési jogkivonatokat a kiszolgálóoldali szolgáltatásban, nem pedig az ügyfél alkalmazásában adja meg. Ennek az az oka, hogy a kiállításhoz hozzáférési kulcs vagy felügyelt identitás szükséges. Biztonsági okokból a hozzáférési kulcsok megosztása az ügyfél alkalmazásával nem ajánlott. 
+Javasoljuk, hogy a hozzáférési jogkivonatokat a kiszolgálóoldali szolgáltatásban, nem pedig az ügyfél alkalmazásában adja meg. Ennek az az oka, hogy a kiállításhoz hozzáférési kulcs vagy felügyelt identitás szükséges. Biztonsági okokból a hozzáférési kulcsok megosztása az ügyfél alkalmazásával nem ajánlott.
 
 Az ügyfélalkalmazás olyan megbízható szolgáltatási végpontot használjon, amely képes hitelesíteni az ügyfeleket. A végpontnak hozzáférési jogkivonatokat kell kiadnia a nevükben. További információ: [ügyfél-és kiszolgáló architektúrája](./client-and-server-architecture.md).
 

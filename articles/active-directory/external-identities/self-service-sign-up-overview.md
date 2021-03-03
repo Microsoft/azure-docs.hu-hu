@@ -5,23 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34b08e2e530843dd98c87e424812706247388228
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13023ef93cabcf46924cc2cc76dc2d868c4a1ddd
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87908482"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653565"
 ---
-# <a name="self-service-sign-up-preview"></a>Önkiszolgáló regisztráció (előzetes verzió)
-
-> [!NOTE]
-> Az önkiszolgáló regisztráció a Azure Active Directory nyilvános előzetes funkciója. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="self-service-sign-up"></a>Önkiszolgáló regisztráció
 
 Ha külső felhasználókkal oszt meg egy alkalmazást, előfordulhat, hogy nem mindig tudja előre, hogy kinek van szüksége az alkalmazáshoz való hozzáférésre. Az önkiszolgáló regisztráció engedélyezésével lehetővé teheti a külső felhasználók számára, hogy a meghívókat közvetlenül az egyéni felhasználóknak is regisztrálják. Személyre szabott regisztrációs élményt hozhat létre az önkiszolgáló bejelentkezési felhasználói folyamat testreszabásával. Például megadhatja az Azure AD-vel vagy a közösségi identitással való regisztrációhoz szükséges lehetőségeket, és adatokat gyűjthet a felhasználóról a regisztrációs folyamat során.
 

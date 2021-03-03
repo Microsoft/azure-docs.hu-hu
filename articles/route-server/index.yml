@@ -1,0 +1,41 @@
+### YamlMime:Landing
+title: Az Azure Route Server dokumentációja
+summary: Ismerje meg, hogyan egyszerűsíthető a hálózati virtuális készülékek és a virtuális hálózata közötti dinamikus útválasztás az Azure Route Server használatával.
+metadata:
+  title: Az Azure Route Server dokumentációja
+  description: Tudnivalók az Azure Route Serverről
+  services: route-server
+  ms.service: route-server
+  ms.topic: landing-page
+  author: duongau
+  ms.author: duau
+  ms.date: 03/02/2021
+  ms.openlocfilehash: f235d7118ce207d793c4ba03d357e2db09662c1f
+  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.translationtype: MT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 03/02/2021
+  ms.locfileid: "101680671"
+landingContent:
+- title: Tudnivalók az Azure Route Serverről (előzetes verzió)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Route Server (előzetes verzió)?
+      url: overview.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Útvonal-kiszolgáló létrehozása és konfigurálása – PowerShell
+      url: quickstart-configure-route-server-powershell.md
+    - text: Útvonal-kiszolgáló létrehozása és konfigurálása – parancssori felület
+      url: quickstart-configure-route-server-cli.md
+- title: Tervezés
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: ExpressRoute és VPN Gateway támogatása
+      url: expressroute-vpn-support.md
+    - text: Útválasztási kiszolgáló – gyakori kérdések
+      url: route-server-faq.md

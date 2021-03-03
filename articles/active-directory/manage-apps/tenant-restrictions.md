@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/26/2020
+ms.date: 2/23/2021
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f605b2bb48855d70ea305dcda194b26da71ee9ec
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 611dd5e53ae96e06677b1c4a6a6f009e582b33af
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99252474"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646265"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>A bérlői korlátozások használata a SaaS-Felhőbeli alkalmazásokhoz való hozzáférés kezelésére
 
@@ -27,7 +27,9 @@ A kihíváshoz tartozó Azure Active Directory (Azure AD) megoldás a bérlői k
 
 A bérlői korlátozásokkal a szervezetek meghatározhatják azon bérlők listáját, amelyekhez a felhasználók hozzáférhetnek. Az Azure AD ezt követően csak az engedélyezett bérlők számára biztosít hozzáférést.
 
-Ez a cikk a Microsoft 365 bérlői korlátozásait ismerteti, de a szolgáltatásnak működnie kell minden olyan SaaS Cloud-alkalmazással, amely modern hitelesítési protokollokat használ az Azure AD-vel az egyszeri bejelentkezéshez. Ha SaaS-alkalmazásokat használ az Microsoft 365 által használt bérlőtől eltérő Azure AD-Bérlővel, győződjön meg arról, hogy az összes szükséges bérlő engedélyezett. A SaaS Cloud apps szolgáltatással kapcsolatos további információkért tekintse meg a [Active Directory piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory).
+Ez a cikk a Microsoft 365 bérlői korlátozásait ismerteti, de a szolgáltatás védi az összes olyan alkalmazást, amely a felhasználót az Azure AD számára egyszeri bejelentkezésre küldi. Ha SaaS-alkalmazásokat használ a Microsoft 365 által használt bérlőtől eltérő Azure AD-Bérlővel, győződjön meg arról, hogy minden szükséges bérlő engedélyezett (például B2B együttműködési forgatókönyvekben). A SaaS Cloud apps szolgáltatással kapcsolatos további információkért tekintse meg a [Active Directory piactéren](https://azuremarketplace.microsoft.com/marketplace/apps).
+
+Emellett a bérlői korlátozások funkció mostantól támogatja az [összes Microsoft fogyasztói alkalmazás](#blocking-consumer-applications) (MSA-alkalmazás) használatát, mint például a OneDrive, a Hotmail és a Xbox.com.  Ez egy külön fejlécet használ a `login.live.com` végponthoz, és részletesen a dokumentum végén található.
 
 ## <a name="how-it-works"></a>Működés
 
@@ -39,7 +41,7 @@ A teljes megoldás a következő összetevőket tartalmazza:
 
 3. **Ügyfélszoftver**: a bérlői korlátozások támogatásához az ügyfélszoftvernek közvetlenül az Azure ad-ből kell kérnie a jogkivonatokat, hogy a proxy-infrastruktúra képes legyen a forgalom elfogására. A böngészőalapú Microsoft 365 alkalmazások jelenleg támogatják a bérlői korlátozásokat, mint a modern hitelesítést használó Office-ügyfeleket (például OAuth 2,0).
 
-4. **Modern hitelesítés**: a Cloud servicesnek modern hitelesítést kell használnia a bérlői korlátozások használatához, és le kell tiltania az összes nem engedélyezett bérlő hozzáférését. Az Microsoft 365 Cloud Servicest úgy kell konfigurálni, hogy alapértelmezés szerint modern hitelesítési protokollokat használjanak. A modern hitelesítés Microsoft 365 támogatásával kapcsolatos legfrissebb információkért olvassa el a [frissített Office 365 modern hitelesítés](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)című témakört.
+4. **Modern hitelesítés**: a Cloud servicesnek modern hitelesítést kell használnia a bérlői korlátozások használatához, és le kell tiltania az összes nem engedélyezett bérlő hozzáférését. Az Microsoft 365 Cloud Servicest úgy kell konfigurálni, hogy alapértelmezés szerint modern hitelesítési protokollokat használjanak. A modern hitelesítés Microsoft 365 támogatásával kapcsolatos legfrissebb információkért olvassa el a [frissített Office 365 modern hitelesítés](https://www.microsoft.com/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)című témakört.
 
 A következő ábra a magas szintű forgalmat mutatja be. A bérlői korlátozások csak az Azure AD-ra irányuló adatforgalomra vonatkozó TLS-vizsgálatot igényelnek, a Microsoft 365 Cloud Services esetében nem. Ez a különbség azért fontos, mert az Azure AD-hitelesítéshez használt forgalom mennyisége általában sokkal alacsonyabb, mint a forgalom mennyisége olyan SaaS-alkalmazásokhoz, mint az Exchange Online és a SharePoint Online.
 
@@ -63,22 +65,20 @@ A következő konfiguráció szükséges a bérlői korlátozások a proxy-infra
 
 - Az ügyfeleknek meg kell bízniuk a proxy által a TLS-kommunikációhoz benyújtott tanúsítványlánc számára. Ha például egy belső [nyilvános kulcsokra épülő infrastruktúra (PKI)](/windows/desktop/seccertenroll/public-key-infrastructure) tanúsítványait használja, a belső kiállító főtanúsítvány-hitelesítésszolgáltató tanúsítványának megbízhatónak kell lennie.
 
-- A bérlői korlátozások használatához prémium szintű Azure AD 1 licenc szükséges. 
+- A bérlői korlátozások használatához prémium szintű Azure AD 1 licenc szükséges.
 
 #### <a name="configuration"></a>Konfiguráció
 
-A login.microsoftonline.com, login.microsoft.com és login.windows.net minden bejövő kérelméhez helyezzen be két HTTP-fejlécet: *korlátozza a hozzáférés-bérlők* és a *hozzáférés-kontextus* korlátozását.
+A login.microsoftonline.com, a login.microsoft.com és a login.windows.net kimenő minden kérelemnél helyezzen be két HTTP-fejlécet: *korlátozza a hozzáférés-bérlők és a* *hozzáférés-kontextus korlátozását*.
 
 > [!NOTE]
-> Az SSL-lehallgatások és a fejlécek befecskendezésének konfigurálásakor ügyeljen arra, hogy a https://device.login.microsoftonline.com kizárni kívánt forgalom kimaradjon. Ez az URL-cím használatos az eszközök hitelesítéséhez és a TLS-megszakítások és-ellenőrzés elvégzéséhez, ami zavarhatja az ügyféltanúsítvány-alapú hitelesítést, ami problémákat okozhat az eszközök regisztrációja és az eszközön alapuló feltételes hozzáférés esetén.
-
-
+> Ne tartalmazzon altartományokat a `*.login.microsoftonline.com` proxy konfigurációjában. Ez magában foglalja a device.login.microsoftonline.com, és beavatkozik az ügyféltanúsítvány-alapú hitelesítéssel, amely az eszköz regisztrálása és az eszközökön alapuló feltételes hozzáférési forgatókönyvek esetében használatos. Konfigurálja úgy a proxykiszolgálót, hogy kizárja a TLS-device.login.microsoftonline.com és-ellenőrzésből származó és a fejléc-befecskendezést.
 
 A fejléceknek tartalmazniuk kell a következő elemeket:
 
 - A *hozzáférés és a bérlők korlátozásához* használja a értéket \<permitted tenant list\> , amely a bérlők vesszővel tagolt listája, amely számára engedélyezni szeretné a felhasználók számára a hozzáférést. A Bérlővel regisztrált bármely tartomány felhasználható a bérlő azonosítására ezen a listán, valamint magát a címtár-azonosítót is. A bérlők leírásának mindhárom módjára, a contoso, a fabrikam és a Microsoft számára a következőhöz hasonló név/érték párokat kell kinéznie: `Restrict-Access-To-Tenants: contoso.com,fabrikam.onmicrosoft.com,72f988bf-86f1-41af-91ab-2d7cd011db47`
 
-- A *korlátozás-hozzáférés-kontextushoz* használjon egy egyedi CÍMTÁR-azonosító értékét, amely deklarálja, hogy melyik bérlő állítja be a bérlői korlátozásokat. Ha például a contoso-t a bérlői korlátozási szabályzatot beállító bérlőként szeretné deklarálni, a név/érték párok a következőképpen néznek ki: `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d` .  Ezen a helyen a saját címtár-azonosítót **kell** használnia.
+- A *korlátozás-hozzáférés-kontextushoz* használjon egy egyedi CÍMTÁR-azonosító értékét, amely deklarálja, hogy melyik bérlő állítja be a bérlői korlátozásokat. Ha például a contoso-t a bérlői korlátozási szabályzatot beállító bérlőként szeretné deklarálni, a név/érték párok a következőképpen néznek ki: `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d` .  Ebben a helyen a saját címtár-AZONOSÍTÓját **kell** használnia, hogy naplókat kapjon a hitelesítésekhez.
 
 > [!TIP]
 > A címtár-azonosítót a [Azure Active Directory-portálon](https://aad.portal.azure.com/)találhatja meg. Jelentkezzen be rendszergazdaként, válassza a **Azure Active Directory** lehetőséget, majd válassza a **Tulajdonságok** lehetőséget. 
@@ -88,9 +88,6 @@ A fejléceknek tartalmazniuk kell a következő elemeket:
 Annak megakadályozása érdekében, hogy a felhasználók beillesszenak saját HTTP-fejlécet nem jóváhagyott bérlők számára, a proxynak le kell cserélnie a *korlátozás-hozzáférés – bérlői* fejlécet, ha az már szerepel a bejövő kérelemben.
 
 Az ügyfeleknek kényteleneknek kell lenniük arra, hogy a proxyt használják a login.microsoftonline.com, a login.microsoft.com és a login.windows.net vonatkozó összes kéréshez. Ha például a PAC-fájlok használatával irányítja az ügyfeleket a proxy használatára, a végfelhasználók nem tudják szerkeszteni vagy letiltani a PAC-fájlokat.
-
-> [!NOTE]
-> Ne vegyen fel altartományokat a *. login.microsoftonline.com alatt a proxy konfigurációjában. Ez magában foglalja a device.login.microsoftonline.com, és zavarhatja az ügyféltanúsítvány-alapú hitelesítést, amely az eszközök regisztrációjában és az eszközökön alapuló feltételes hozzáférési helyzetekben használatos. Konfigurálja úgy a proxykiszolgálót, hogy kizárja a TLS-device.login.microsoftonline.com és-ellenőrzésből származó és a fejléc-befecskendezést.
 
 ## <a name="the-user-experience"></a>A felhasználói élmény
 
@@ -122,9 +119,6 @@ A Azure Portal többi jelentéséhez hasonlóan szűrőket is használhat a jele
 - **Állapot**
 - **Date**
 - **Dátum (UTC)** (az UTC egyezményes világidő)
-- **MFA hitelesítési módszer** (többtényezős hitelesítési módszer)
-- **MFA** -hitelesítés részletei (többtényezős hitelesítés részletei)
-- **MFA-eredmény**
 - **IP-cím**
 - **Ügyfél**
 - **Felhasználónév**
@@ -162,21 +156,30 @@ A Hegedűs egy ingyenes webes hibakeresési proxy, amely a HTTP/HTTPS-forgalom r
 
    1. A Hegedűs webes hibakereső eszközében válassza a **szabályok** menüt, és válassza a **szabályok testreszabása...** lehetőséget. a CustomRules-fájl megnyitásához.
 
-   2. Adja hozzá a következő sorokat a függvény elejéhez `OnBeforeRequest` . Cserélje le a \<tenant domain\> -t a Bérlővel regisztrált tartományra (például: `contoso.onmicrosoft.com` ). Cserélje le a helyére a \<directory ID\> bérlő Azure ad GUID azonosítóját.
+   2. Adja hozzá a következő sorokat a függvény elejéhez `OnBeforeRequest` . Cserélje le a \<List of tenant identifiers\> -t a Bérlővel regisztrált tartományra (például: `contoso.onmicrosoft.com` ). Cserélje le a helyére a \<directory ID\> bérlő Azure ad GUID azonosítóját.  Meg **kell** adnia a helyes GUID azonosítót, hogy a naplók megjelenjenek a bérlőben. 
 
-      ```JScript.NET
+   ```JScript.NET
+    // Allows access to the listed tenants.
       if (
           oSession.HostnameIs("login.microsoftonline.com") ||
           oSession.HostnameIs("login.microsoft.com") ||
           oSession.HostnameIs("login.windows.net")
       )
       {
-          oSession.oRequest["Restrict-Access-To-Tenants"] = "<tenant domain>";
-          oSession.oRequest["Restrict-Access-Context"] = "<directory ID>";
+          oSession.oRequest["Restrict-Access-To-Tenants"] = "<List of tenant identifiers>";
+          oSession.oRequest["Restrict-Access-Context"] = "<Your directory ID>";
       }
-      ```
 
-      Ha több bérlőt is engedélyeznie kell, a vesszőt használva válassza el a bérlők nevét. Például:
+    // Blocks access to consumer apps
+      if (
+          oSession.HostnameIs("login.live.com")
+      )
+      {
+          oSession.oRequest["sec-Restrict-Tenant-Access-Policy"] = "restrict-msa";
+      }
+   ```
+
+Ha több bérlőt is engedélyeznie kell, a vesszőt használva válassza el a bérlők nevét. Például:
 
       `oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";`
 
@@ -193,7 +196,33 @@ A proxy-infrastruktúra képességeitől függően lehetősége lehet a beállí
 
 További részletekért tekintse meg a proxykiszolgáló dokumentációját.
 
+## <a name="blocking-consumer-applications"></a>Fogyasztói alkalmazások blokkolása
+
+A Microsoft azon alkalmazásai, amelyek a felhasználói fiókokat és a szervezeti fiókokat, például a [OneDrive](https://onedrive.live.com/) vagy a [Microsoft Learn](https://docs.microsoft.com/learn/)is támogatják, esetenként ugyanazon az URL-címen futhatnak.  Ez azt jelenti, hogy azok a felhasználók, akiknek ehhez az URL-címhez hozzá kell férniük, személyes használatra is hozzá kell férniük, ami nem engedélyezett a működési irányelvekben.
+
+Egyes szervezetek megpróbálják kijavítani ezt a blokkolással, `login.live.com` hogy letiltsák a személyes fiókok hitelesítését.  Ennek számos hátránya van:
+
+1. A blokkoló `login.live.com` blokkolja a személyes fiókok használatát a B2B vendég forgatókönyvekben, ami behatolhat a látogatókra és az együttműködésre.
+1. [Az Autopilot használatához `login.live.com` a](https://docs.microsoft.com/mem/autopilot/networking-requirements) a telepítéshez. Az Intune és az Autopilot forgatókönyvek sikertelenek lehetnek `login.live.com` , ha a blokkolva van.
+1. A MSA szolgáltatásban az telemetria támaszkodó szervezeti és Windows-frissítések nem [fognak működni](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#feature-updates-are-not-being-offered-while-other-updates-are).
+
+### <a name="configuration-for-consumer-apps"></a>A fogyasztói alkalmazások konfigurációja
+
+Míg a `Restrict-Access-To-Tenants` fejléc engedélyezési listaként funkcionál, a MSA blokk megtagadási jelként működik, és közli, hogy a Microsoft-fiók platform nem teszi lehetővé a felhasználók számára, hogy bejelentkezzenek a fogyasztói alkalmazásokba. A jel elküldéséhez a `sec-Restrict-Tenant-Access-Policy` rendszer egy fejlécet küld a meglátogatott forgalomhoz `login.live.com` ugyanazzal a vállalati [](#proxy-configuration-and-requirements)proxyval vagy tűzfallal. A fejléc értékének a számnak kell lennie `restrict-msa` . Ha a fejléc jelen van, és egy fogyasztói alkalmazás közvetlenül próbál bejelentkezni egy felhasználóba, a bejelentkezés le lesz tiltva.
+
+Ekkor a felhasználói alkalmazások hitelesítése nem jelenik meg a [felügyeleti naplókban](#admin-experience), mivel a login.Live.com az Azure ad-től függetlenül fut.
+
+### <a name="what-the-header-does-and-does-not-block"></a>A fejléc funkciója és letiltása
+
+A `restrict-msa` szabályzat tiltja a fogyasztói alkalmazások használatát, de több más típusú forgalom és hitelesítés révén is lehetővé teszi a következőket:
+
+1. Az eszközök felhasználó nélküli forgalma.  Ez magában foglalja az Autopilot, a Windows Update és a szervezeti telemetria adatforgalmát.
+1. A fogyasztói fiókok B2B-hitelesítése. Azok a Microsoft-fiókkal rendelkező felhasználók, akik a [Bérlővel való együttműködésre kérték](https://docs.microsoft.com/azure/active-directory/external-identities/redemption-experience#invitation-redemption-flow) a login.Live.com az erőforrás-bérlő eléréséhez.
+    1. Ezt a hozzáférést a fejléc használatával lehet `Restrict-Access-To-Tenants` engedélyezni vagy megtagadni az adott erőforrás-bérlőhöz való hozzáférés engedélyezéséhez vagy megtagadásához.
+1. Az "áteresztő" hitelesítés, amelyet számos Azure-alkalmazás használ, valamint a Office.com, ahol az alkalmazások az Azure AD használatával jelentkeznek be a fogyasztói felhasználók felhasználói környezetben.
+    1. Ezt a hozzáférést a fejléc használatával is szabályozhatja `Restrict-Access-To-Tenants` , hogy engedélyezze vagy megtagadja a hozzáférést a speciális "továbbító" bérlőhöz ( `f8cdef31-a31e-4b4a-93e4-5f571e91255a` ).  Ha ez a bérlő nem jelenik meg az `Restrict-Access-To-Tenants` engedélyezett tartományok listájában, az Azure ad letiltja a fogyasztói fiókokat az alkalmazásba való bejelentkezéskor.
+
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a [frissített Office 365 modern hitelesítésről](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)
+- További információ a [frissített Office 365 modern hitelesítésről](https://www.microsoft.com/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)
 - Az [Office 365 URL-címeinek és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) áttekintése

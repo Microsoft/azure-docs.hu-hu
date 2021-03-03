@@ -9,20 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: ''
-ms.openlocfilehash: 184f01f27023ce5976e5204bed384df54bab82d4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 76f67204b41a36d10541974e78a22f7d065e144b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950431"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669702"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>Microsoft Azureon futó SAP-tanúsítványok és-konfigurációk
 
@@ -55,7 +54,7 @@ Hivatkozik
 | --- | --- | --- | --- |
 | SAP Business Suite szoftver | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (csak Windows és Oracle Linux), DB2, SAP bemutató |A5-től A11-ig, a D14, a DS11 a DS15_v2 DS11_v2 DS14, a GS1, a GS5, a M64s, a D64s_v3 D2s_v3 a D2as_v4 D64as_v4, E2s_v3 a E64s_v3, E2as_v4 D11, M64ms, M128s, M128ms, M64ls, M32ls, M32ts,, E64as_v4, M208s_v2, M208ms_v2, M416s_v2 |
 | SAP Business all-in-One | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (csak Windows és Oracle Linux), DB2, SAP bemutató |A5-től A11-ig, a D14, a DS11 a DS15_v2 DS11_v2 DS14, a GS1, a GS5, a M64s, a D64s_v3 D2s_v3 a D2as_v4 D64as_v4, E2s_v3 a E64s_v3, E2as_v4 D11, M64ms, M128s, M128ms, M64ls, M32ls, M32ts,, E64as_v4, M208s_v2, M208ms_v2, M416s_v2 |
-| SAP BusinessObjects BI | Windows |N.A. |A5-től A11-ig, a D14, a DS11 a DS15_v2 DS11_v2 DS14, a GS1, a GS5, a M64s, a D64s_v3 D2s_v3 a D2as_v4 D64as_v4, E2s_v3 a E64s_v3, E2as_v4 D11, M64ms, M128s, M128ms, M64ls, M32ls, M32ts,, E64as_v4, M208s_v2, M208ms_v2, M416s_v2 |
+| SAP BusinessObjects BI | Windows |N/A |A5-től A11-ig, a D14, a DS11 a DS15_v2 DS11_v2 DS14, a GS1, a GS5, a M64s, a D64s_v3 D2s_v3 a D2as_v4 D64as_v4, E2s_v3 a E64s_v3, E2as_v4 D11, M64ms, M128s, M128ms, M64ls, M32ls, M32ts,, E64as_v4, M208s_v2, M208ms_v2, M416s_v2 |
 | SAP NetWeaver | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (csak Windows és Oracle Linux), DB2, SAP bemutató |A5-től A11-ig, a D14, a DS11 a DS15_v2 DS11_v2 DS14, a GS1, a GS5, a M64s, a D64s_v3 D2s_v3 a D2as_v4 D64as_v4, E2s_v3 a E64s_v3, E2as_v4 D11, M64ms, M128s, M128ms, M64ls, M32ls, M32ts,, E64as_v4, M208s_v2, M208ms_v2, M416s_v2 |
 
 ## <a name="other-sap-workload-supported-on-azure"></a>Az Azure-ban támogatott egyéb SAP-munkaterhelések

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/27/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 9fac8db6747d1e081fa884ed794e55b98f44577f
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: b69e701177c6f017388521ed05c37de1271c7e60
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652037"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650158"
 ---
 # <a name="tutorial-develop-a-sample-scim-endpoint"></a>Oktatóanyag: minta SCIM-végpont fejlesztése
 
@@ -33,7 +33,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="deploy-your-scim-endpoint-in-azure"></a>A SCIM-végpont üzembe helyezése az Azure-ban
 
-A következő lépésekkel telepítheti a SCIM-végpontot egy szolgáltatásba a [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) és a [Azure app Service](https://docs.microsoft.com/azure/app-service/)használatával. A SCIM-hivatkozási kód helyileg futtatható, helyszíni kiszolgáló által üzemeltetett, vagy egy másik külső szolgáltatásban is üzembe helyezhető.
+A következő lépésekkel telepítheti a SCIM-végpontot egy szolgáltatásba a [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) és a [Azure app Service](../../app-service/index.yml)használatával. A SCIM-hivatkozási kód helyileg futtatható, helyszíni kiszolgáló által üzemeltetett, vagy egy másik külső szolgáltatásban is üzembe helyezhető.
 
 1. Nyissa meg a [hivatkozási kódot](https://github.com/AzureAD/SCIMReferenceCode) a githubon, és válassza a **klónozás vagy a letöltés** lehetőséget.
 

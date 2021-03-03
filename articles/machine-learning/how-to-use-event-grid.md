@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 1fd177273c9dafb04add64d8a8bfef1d81cc65d0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 06b871d29c26241c38be27c4ace8ab7461834fd1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319320"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101655717"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Alkalmazások, folyamatok vagy CI/CD-munkafolyamatok elindítása Azure Machine Learning események alapján (előzetes verzió)
 
@@ -29,9 +29,6 @@ Mikor kell Event Grid használni az eseményvezérelt műveletekhez:
 * Azure-függvény használata a modell regisztrálása után
 * Azure Machine Learning különböző végpontokra irányuló folyamatos átviteli események
 * ML-folyamat elindítása a drift észlelésekor
-
-> [!NOTE] 
-> Jelenleg a runStatusChanged események csak akkor aktiválódnak, ha a futtatási állapot **meghiúsult**
 
 ## <a name="prerequisites"></a>Előfeltételek
 A Event Grid használatához közreműködői vagy tulajdonosi hozzáféréssel kell rendelkeznie a Azure Machine Learning munkaterülethez, ahol eseményeket fog létrehozni.
@@ -84,7 +81,7 @@ Az Azure Machine Learning eseményekre vonatkozó előfizetéseket az Azure szer
   | `Microsoft.MachineLearningServices.DatasetDriftDetected` | `datadrift/{data.DataDriftId}/run/{data.RunId}` | `datadrift/4e694bf5-712e-4e40-b06a-d2a2755212d4/run/my_driftrun1_1550564444_fbbcdc0f` |
   | `Microsoft.MachineLearningServices.RunStatusChanged` | `experiments/{ExperimentId}/runs/{RunId}` | `experiments/b1d7966c-f73a-4c68-b846-992ace89551f/runs/my_exp1_1554835758_38dbaa94` | 
 
-+ **Speciális szűrés** : a Azure Event Grid a közzétett esemény sémája alapján is támogatja a speciális szűrést. Azure Machine Learning az esemény-séma részletei megtalálhatók a [Azure Machine Learning Azure Event Grid esemény sémájában](../event-grid/event-schema-machine-learning.md).  Néhány példaként használható speciális szűrés:
++ **Speciális szűrés**: a Azure Event Grid a közzétett esemény sémája alapján is támogatja a speciális szűrést. Azure Machine Learning az esemény-séma részletei megtalálhatók a [Azure Machine Learning Azure Event Grid esemény sémájában](../event-grid/event-schema-machine-learning.md).  Néhány példaként használható speciális szűrés:
 
   `Microsoft.MachineLearningServices.ModelRegistered`Esemény esetén a modell címke értékének szűréséhez:
 
@@ -120,7 +117,7 @@ Azure Event Grid lehetővé teszi, hogy az ügyfelek olyan, de egymással össze
 
     ![select-events-in-workspace.png](./media/how-to-use-event-grid/select-event.png)
 
-1. Válassza ki a használni kívánt eseménytípus típusát. Az alábbi képernyőképen például a __regisztrált modell__ van kiválasztva, a __modell üzembe helyezése__ , a __Futtatás befejeződött__ és az __adatkészlet-eltolódás észlelhető__ :
+1. Válassza ki a használni kívánt eseménytípus típusát. Az alábbi képernyőképen például a __regisztrált modell__ van kiválasztva, a __modell üzembe helyezése__, a __Futtatás befejeződött__ és az __adatkészlet-eltolódás észlelhető__:
 
     ![hozzáadási esemény típusa](./media/how-to-use-event-grid/add-event-type-updated.png)
 

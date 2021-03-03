@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/02/2020
+ms.date: 02/22/2021
 ms.author: mnayak
-ms.openlocfilehash: 2c6295db96f951abd1fd069535b98639e723d93a
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: f445eab65e8d2448e57bad19c52a4b72732016bb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217566"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672930"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-the-azure-portal"></a>A nyilvános IP-cím útválasztási beállításainak konfigurálása a Azure Portal használatával
 
@@ -32,20 +32,26 @@ Ebből a cikkből megtudhatja, hogyan konfigurálhatja az [útválasztási](./ro
 
 Alapértelmezés szerint a nyilvános IP-cím útválasztási beállítása az összes Azure-szolgáltatáshoz a Microsoft globális hálózatra van állítva, és bármely Azure-szolgáltatáshoz társítható.
 
-> [!IMPORTANT]
-> Az útválasztási preferencia jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-a-public-ip-address-with-a-routing-preference"></a>Nyilvános IP-cím létrehozása útválasztási beállítással
-1. Jelentkezzen be az [Azure Portalra](https://preview.portal.azure.com/).
-2. Válassza az **Erőforrás létrehozása** lehetőséget. 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+2. Válassza az **Erőforrás létrehozása** lehetőséget.
 3. A keresőmezőbe írja be a *nyilvános IP-cím* kifejezést.
 3. A keresési eredmények között válassza a **nyilvános IP-cím** elemet. Ezután a **nyilvános IP-cím** lapon válassza a **Létrehozás** lehetőséget.
-3. Az **útválasztási** beállítások lehetőségnél válassza az **Internet** lehetőséget.
+1. Az SKU esetében válassza a **standard** lehetőséget.
+1. Az **Útválasztás beállításnál** válassza az **Internet** lehetőséget.
 
-      ![Nyilvános IP-cím létrehozása](./media/routing-preference-portal/pip-new.png)
+      ![Nyilvános IP-cím létrehozása](./media/routing-preference-portal/public-ip-new.png)
+1. Az **IPv4 IP-cím konfigurációja** szakaszban adja meg vagy válassza ki az alábbi adatokat:
+
+    | Beállítás | Érték |
+    | ------- | ----- |
+    | Előfizetés | Válassza ki előfizetését.|
+    | Erőforráscsoport | Válassza az **új létrehozása** elemet, írja be a *RoutingPreferenceResourceGroup*, majd kattintson **az OK gombra**. |
+    | Hely | Válassza az **USA keleti régiója** lehetőséget.|
+    | A rendelkezésre állási zóna | Tartsa meg az alapértelmezett érték- **Zone-redundáns** értéket. |
+1. Válassza a **Létrehozás** lehetőséget.
 
     > [!NOTE]
     > A nyilvános IP-címek IPv4- vagy IPv6-címekkel jönnek létre. Az útválasztási beállítások azonban jelenleg csak az IPV4-t támogatják.

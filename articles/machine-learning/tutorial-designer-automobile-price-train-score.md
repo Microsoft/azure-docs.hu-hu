@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: 46098b2b7ebbf219a3c17b4fa40e1fd52344f683
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 7f602f82063e2a8092eecf533a75449231c1e900
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879797"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660984"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer"></a>Oktatóanyag: Autó árának előrejelzése a tervezővel
 
@@ -176,7 +176,7 @@ A **normalizált veszteségek** oszlop eltávolítása után az adatkészlet tov
 
     A folyamatnak ekkor a következőhöz hasonlóan kell kinéznie:
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png"alt-text="Oszlop kijelölése":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png" alt-text="Oszlop kijelölése":::
 
 ## <a name="train-a-machine-learning-model"></a>Gépi tanulási modell betanítása
 
@@ -224,7 +224,7 @@ A modell betanításához adja meg az árat tartalmazó adatkészletet. Az algor
     > [!IMPORTANT]
     > Ügyeljen arra, hogy a **felosztott adatokat** tartalmazó bal oldali kimeneti portok a **betanítási modellhez** kapcsolódjanak. A bal oldali port tartalmazza a betanítási készletet. A megfelelő port tartalmazza a tesztelési készletet.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png"alt-text="Képernyőfelvétel a Train Model modul helyes konfigurációjának megjelenítéséről. A lineáris regressziós modul a betanítási modell moduljának bal oldali portjához csatlakozik, és a felosztott adatmodul csatlakozik a betanítási modell jobb portjához.":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png" alt-text="Képernyőfelvétel a Train Model modul helyes konfigurációjának megjelenítéséről. A lineáris regressziós modul a betanítási modell moduljának bal oldali portjához csatlakozik, és a felosztott adatmodul csatlakozik a betanítási modell jobb portjához.":::
 
 1. Válassza ki a **Train Model** modult.
 
@@ -239,7 +239,7 @@ A modell betanításához adja meg az árat tartalmazó adatkészletet. Az algor
 
     A folyamatnak így kell kinéznie:
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png"alt-text="Képernyőfelvétel: a folyamat helyes konfigurációjának megjelenítése a Train Model modul hozzáadása után.":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png" alt-text="Képernyőfelvétel: a folyamat helyes konfigurációjának megjelenítése a Train Model modul hozzáadása után.":::
 
 ### <a name="add-the-score-model-module"></a>A pontszám modell modul hozzáadása
 
@@ -259,7 +259,7 @@ A **modell kiértékelése** modul használatával kiértékelheti, hogy a model
 
     Az utolsó folyamatnak a következőképpen kell kinéznie:
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png"alt-text="A folyamat helyes konfigurációját ábrázoló képernyőfelvétel.":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png" alt-text="A folyamat helyes konfigurációját ábrázoló képernyőfelvétel.":::
 
 ## <a name="submit-the-pipeline"></a>A folyamat elküldése
 
@@ -288,7 +288,7 @@ A Futtatás után megtekintheti a folyamat futtatásának eredményét. Előszö
 
     Itt láthatja az előrejelzett árakat és a tényleges árakat a tesztelési adatokból.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png"alt-text="Képernyőkép a kimeneti vizualizáció kiemeléséről a mutató feliratú oszlop":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png" alt-text="Képernyőkép a kimeneti vizualizáció kiemeléséről a mutató feliratú oszlop":::
 
 ### <a name="evaluate-models"></a>Modellek kiértékelése
 
@@ -312,7 +312,7 @@ Ugorja át ezt a szakaszt, ha folytatni szeretné az oktatóanyag 2. részét, �
 
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A második részből megtudhatja, hogyan helyezheti üzembe a modellt valós idejű végpontként.
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/11/2021
-ms.openlocfilehash: 9ffc450294f186b77cc7a6c44c10eecf266161d3
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 1857eab485e8651c05959f82cf11e69b6353c575
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526695"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673524"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Az Azure hatáskörébe tartozó forrás-hitelesítés hitelesítő adatai
 
@@ -85,8 +85,9 @@ A következő hitelesítőadat-típusokat támogatja a hatáskörébe:
 - Egyszerű szolgáltatásnév: az **egyszerű szolgáltatásnév kulcsát** hozzáadja a Key Vault titkos kódjához.
 - SQL-hitelesítés: a **jelszót** titkos kulcsként adja hozzá a Key vaulthoz.
 - Fiók kulcsa: a Key Vault titkos kulcsaként adja hozzá a **fiók kulcsát** .
+- ARN szerepkör: az Amazon S3-adatforráshoz adja hozzá az **ARN szerepkört** az AWS-ben. 
 
-További információ: [Secret hozzáadása Key Vaulthoz](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault).
+További információ: [Secret hozzáadása a Key Vaulthoz](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault) , és [új AWS-szerepkör létrehozása a hatáskörébe](register-scan-amazon-s3.md#create-a-new-aws-role-for-purview).
 
 A titkos kulcsok tárolása után a Key vaultban:
 

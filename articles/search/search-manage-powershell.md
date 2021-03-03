@@ -9,17 +9,18 @@ ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/09/2021
-ms.openlocfilehash: c992693bfb278ac559feb6fa82fa947086ceafbb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 111424ab3a3bd6020e70a08ddf2c494996f6f0ea
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381137"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676673"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Azure Cognitive Search szolgáltatás kezelése a PowerShell-lel
 > [!div class="op_single_selector"]
 > * [Portál](search-manage.md)
 > * [PowerShell](search-manage-powershell.md)
+> * [Azure CLI](search-manage-azure-cli.md)
 > * [REST API](/rest/api/searchmanagement/)
 > * [.NET SDK](/dotnet/api/microsoft.azure.management.search)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)
@@ -316,7 +317,7 @@ New-AzPrivateDnsZoneGroup `
     -PrivateDnsZoneConfig $config
 ```
 
-A privát végpontok PowerShellben való létrehozásával kapcsolatos további információkért tekintse meg ezt a [privát hivatkozás](https://docs.microsoft.com/azure/private-link/create-private-endpoint-powershell) rövid útmutatóját.
+A privát végpontok PowerShellben való létrehozásával kapcsolatos további információkért tekintse meg ezt a [privát hivatkozás](../private-link/create-private-endpoint-powershell.md) rövid útmutatóját.
 
 ### <a name="manage-private-endpoint-connections"></a>Magánhálózati végpontok kapcsolatainak kezelése
 
@@ -410,7 +411,7 @@ Azon Azure-erőforrások teljes listája, amelyekhez kimenő privát végpontoka
 A [New-AzSearchSharedPrivateLinkResource](/powershell/module/az.search/New-AzSearchSharedPrivateLinkResource) a megosztott magánhálózati kapcsolati erőforrás létrehozásához használatos. Ne feledje, hogy a parancs futtatása előtt néhány konfigurációra szükség lehet az adatforráshoz.
 
 ```azurepowershell-interactive
-New-AzSearchSharedPrivateLinkResource -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <spl-name> -PrivateLinkResourceId /subscriptions/<alphanumeric-subscription-ID>/resourcegroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/myBlobStorage -GroupId <group-id> -RequestMessage "Please approve" 
+New-AzSearchSharedPrivateLinkResource -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <spl-name> -PrivateLinkResourceId /subscriptions/<alphanumeric-subscription-ID>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/myBlobStorage -GroupId <group-id> -RequestMessage "Please approve" 
 ```
 
 A [Get-AzSearchSharedPrivateLinkResource](/powershell/module/az.search/Get-AzSearchSharedPrivateLinkResource) lehetővé teszi a megosztott magánhálózati kapcsolati erőforrások beolvasását és az állapotuk megtekintését.

@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 26e39b8f0429995bfa336c4971c76f90d903ff55
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 3b2fb1c4e7a08619a0321e188b54bb581f97fd6d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99628954"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661547"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -21,6 +21,9 @@ ms.locfileid: "99628954"
 ## <a name="setting-up"></a>Beállítás
 
 ### <a name="install-the-package"></a>A csomag telepítése
+
+> [!NOTE]
+> Ez a dokumentum a hívó ügyféloldali kódtár verziójának 1.0.0-Beta. 8 verzióját használja.
 
 <!-- TODO: update with instructions on how to download, install and add package to project -->
 Keresse meg a projekt szintjének Build. gradle, és ügyeljen arra, hogy `mavenCentral()` a `buildscript` és a `allprojects`
@@ -48,7 +51,7 @@ Ezután a modul szintjén a Build. gradle adja hozzá a következő sorokat a f�
 ```groovy
 dependencies {
     ...
-    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.2'
+    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.8'
     ...
 }
 
@@ -62,7 +65,8 @@ Az alábbi osztályok és felületek az Azure kommunikációs szolgáltatások �
 | ------------------------------------- | ------------------------------------------------------------ |
 | CallClient| A CallClient a hívó ügyféloldali függvénytár fő belépési pontja.|
 | CallAgent | A CallAgent a hívások indításához és kezeléséhez használatos. |
-| CommunicationUserCredential | A rendszer a CommunicationUserCredential használja jogkivonat-hitelesítő adatként a CallAgent létrehozásához.|
+| CommunicationTokenCredential | A rendszer a CommunicationTokenCredential használja jogkivonat-hitelesítő adatként a CallAgent létrehozásához.|
+| CommunicationIdentifier | A CommunicationIdentifier olyan különböző típusú résztvevőként szolgál, amely egy hívás része lenne.|
 
 ## <a name="initialize-the-callclient-create-a-callagent-and-access-the-devicemanager"></a>Inicializálja a CallClient, hozzon létre egy CallAgent, és nyissa meg a DeviceManager
 
@@ -73,28 +77,28 @@ Az-hoz való hozzáféréshez `DeviceManager` először létre kell hozni egy ca
 ```java
 String userToken = '<user token>';
 CallClient callClient = new CallClient();
-CommunicationUserCredential tokenCredential = new CommunicationUserCredential(userToken);
+CommunicationTokenCredential tokenCredential = new CommunicationTokenCredential(userToken);
 android.content.Context appContext = this.getApplicationContext(); // From within an Activity for instance
-CallAgent callAgent = await callClient.createCallAgent((appContext, tokenCredential).get();
-DeviceManage deviceManager = await callClient.getDeviceManager().get();
+CallAgent callAgent = callClient.createCallAgent((appContext, tokenCredential).get();
+DeviceManage deviceManager = callClient.getDeviceManager().get();
 ```
 A hívó megjelenítendő nevének megadásához használja a következő alternatív módszert:
 
 ```java
 String userToken = '<user token>';
 CallClient callClient = new CallClient();
-CommunicationUserCredential tokenCredential = new CommunicationUserCredential(userToken);
+CommunicationTokenCredential tokenCredential = new CommunicationTokenCredential(userToken);
 android.content.Context appContext = this.getApplicationContext(); // From within an Activity for instance
 CallAgentOptions callAgentOptions = new CallAgentOptions();
 callAgentOptions.setDisplayName("Alice Bob");
-CallAgent callAgent = await callClient.createCallAgent((appContext, tokenCredential, callAgentOptions).get();
-DeviceManage deviceManager = await callClient.getDeviceManager().get();
+CallAgent callAgent = callClient.createCallAgent((appContext, tokenCredential, callAgentOptions).get();
+DeviceManage deviceManager = callClient.getDeviceManager().get();
 ```
 
 
 ## <a name="place-an-outgoing-call-and-join-a-group-call"></a>Helyezzen el egy kimenő hívást, és csatlakozzon egy csoportos híváshoz
 
-Hívás létrehozásához és elindításához meg kell hívnia a `CallAgent.call()` metódust, és meg kell adnia a `Identifier` hívott (k) t.
+Hívás létrehozásához és elindításához meg kell hívnia a `CallAgent.startCall()` metódust, és meg kell adnia a `Identifier` hívott (k) t.
 Egy csoportos híváshoz való csatlakozáshoz meg kell hívnia a `CallAgent.join()` metódust, és meg kell adnia a GroupID. A csoport azonosítóinak GUID vagy UUID formátumúnak kell lenniük.
 
 A hívás létrehozása és a kezdés szinkronban van. A hívási példány lehetővé teszi a hívás összes eseményére való előfizetést.
@@ -104,9 +108,9 @@ Egy másik kommunikációs szolgáltatás felhasználójának hívásához hívj
 ```java
 StartCallOptions startCallOptions = new StartCallOptions();
 Context appContext = this.getApplicationContext();
-CommunicationUser acsUserId = new CommunicationUser(<USER_ID>);
-CommunicationUser participants[] = new CommunicationUser[]{ acsUserId };
-call oneToOneCall = callAgent.call(appContext, participants, startCallOptions);
+CommunicationUserIdentifier acsUserId = new CommunicationUserIdentifier(<USER_ID>);
+CommunicationUserIdentifier participants[] = new CommunicationUserIdentifier[]{ acsUserId };
+call oneToOneCall = callAgent.startCall(appContext, participants, startCallOptions);
 ```
 
 ### <a name="place-a-1n-call-with-users-and-pstn"></a>1: n hívás elhelyezése a felhasználók és a PSTN között
@@ -116,17 +120,17 @@ call oneToOneCall = callAgent.call(appContext, participants, startCallOptions);
 Egy 1: n hívás egy felhasználónak és egy PSTN-számnak a megadásához meg kell adnia a hívott telefonszámát.
 A kommunikációs szolgáltatások erőforrását úgy kell konfigurálni, hogy engedélyezze a PSTN-hívást:
 ```java
-CommunicationUser acsUser1 = new CommunicationUser(<USER_ID>);
-PhoneNumber acsUser2 = new PhoneNumber("<PHONE_NUMBER>");
+CommunicationUserIdentifier acsUser1 = new CommunicationUserIdentifier(<USER_ID>);
+PhoneNumberIdentifier acsUser2 = new PhoneNumberIdentifier("<PHONE_NUMBER>");
 CommunicationIdentifier participants[] = new CommunicationIdentifier[]{ acsUser1, acsUser2 };
 StartCallOptions startCallOptions = new StartCallOptions();
 Context appContext = this.getApplicationContext();
-Call groupCall = callAgent.call(participants, startCallOptions);
+Call groupCall = callAgent.startCall(participants, startCallOptions);
 ```
 
 ### <a name="place-a-11-call-with-video-camera"></a>1:1-hívás elhelyezése videokameráról
 > [!WARNING]
-> Jelenleg csak egy kimenő helyi videós adatfolyam hívható meg a videóban, hogy a helyi kamerákat az API használatával kell enumerálni `deviceManager` `getCameraList` .
+> Jelenleg csak egy kimenő helyi videós adatfolyam hívható meg a videóban, hogy a helyi kamerákat az API használatával kell enumerálni `deviceManager` `getCameras` .
 Miután kiválasztotta a kívánt kamerát, a használatával létrehozhat egy `LocalVideoStream` példányt, és `videoOptions` a tömbben lévő elemként átadhatja azt egy `localVideoStream` `call` metódusnak.
 Ha a hívást csatlakoztatja, a rendszer automatikusan elindít egy video streamet a kiválasztott kamerából más résztvevő (k) felé.
 
@@ -135,7 +139,7 @@ Ha a hívást csatlakoztatja, a rendszer automatikusan elindít egy video stream
 További részletekért lásd a [helyi kamera előzetes](#local-camera-preview) verzióját.
 ```java
 Context appContext = this.getApplicationContext();
-VideoDeviceInfo desiredCamera = callClient.getDeviceManager().get().getCameraList().get(0);
+VideoDeviceInfo desiredCamera = callClient.getDeviceManager().get().getCameras().get(0);
 LocalVideoStream currentVideoStream = new LocalVideoStream(desiredCamera, appContext);
 VideoOptions videoOptions = new VideoOptions(currentVideoStream);
 
@@ -145,20 +149,20 @@ View uiView = previewRenderer.createView(new RenderingOptions(ScalingMode.Fit));
 // Attach the uiView to a viewable location on the app at this point
 layout.addView(uiView);
 
-CommunicationUser[] participants = new CommunicationUser[]{ new CommunicationUser("<acs user id>") };
+CommunicationUserIdentifier[] participants = new CommunicationUserIdentifier[]{ new CommunicationUserIdentifier("<acs user id>") };
 StartCallOptions startCallOptions = new StartCallOptions();
 startCallOptions.setVideoOptions(videoOptions);
-Call call = callAgent.call(context, participants, startCallOptions);
+Call call = callAgent.startCall(context, participants, startCallOptions);
 ```
 
 ### <a name="join-a-group-call"></a>Csatlakozás csoportos híváshoz
 Új csoportos hívás indításához vagy egy folyamatos csoportos híváshoz való csatlakozáshoz meg kell hívnia a "Join" metódust, és egy objektumot kell átadnia egy `groupId` tulajdonsággal. Az értéknek GUID azonosítónak kell lennie.
 ```java
 Context appContext = this.getApplicationContext();
-GroupCallContext groupCallContext = new groupCallContext("<GUID>");
+GroupCallLocator groupCallLocator = new GroupCallLocator("<GUID>");
 JoinCallOptions joinCallOptions = new JoinCallOptions();
 
-call = callAgent.join(context, groupCallContext, joinCallOptions);
+call = callAgent.join(context, groupCallLocator, joinCallOptions);
 ```
 
 ### <a name="accept-a-call"></a>Hívás elfogadása
@@ -166,37 +170,31 @@ Hívás fogadásához hívja meg az "elfogadás" metódust egy hívás objektumo
 
 ```java
 Context appContext = this.getApplicationContext();
-Call incomingCall = retrieveIncomingCall();
-incomingCall.accept(context).get();
+IncomingCall incomingCall = retrieveIncomingCall();
+Call call = incomingCall.accept(context).get();
 ```
 
 Videohívás fogadása a következőn:
 
 ```java
 Context appContext = this.getApplicationContext();
-Call incomingCall = retrieveIncomingCall();
+IncomingCall incomingCall = retrieveIncomingCall();
 AcceptCallOptions acceptCallOptions = new AcceptCallOptions();
 VideoDeviceInfo desiredCamera = callClient.getDeviceManager().get().getCameraList().get(0);
 acceptCallOptions.setVideoOptions(new VideoOptions(new LocalVideoStream(desiredCamera, appContext)));
-incomingCall.accept(context, acceptCallOptions).get();
+Call call = incomingCall.accept(context, acceptCallOptions).get();
 ```
 
-A bejövő hívás az `CallsUpdated` objektumon az eseményre való feliratkozással `callAgent` és a hozzáadott hívásokkal való összekapcsolással kérhető le:
+A bejövő hívást az objektumra való feliratkozással lehet lekérni `onIncomingCall` `callAgent` :
 
 ```java
 // Assuming "callAgent" is an instance property obtained by calling the 'createCallAgent' method on CallClient instance 
 public Call retrieveIncomingCall() {
-    Call incomingCall;
-    callAgent.addOnCallsUpdatedListener(new CallsUpdatedListener() {
-        void onCallsUpdated(CallsUpdatedEvent callsUpdatedEvent) {
+    IncomingCall incomingCall;
+    callAgent.addOnIncomingCallListener(new IncomingCallListener() {
+        void onIncomingCall(IncomingCall inboundCall) {
             // Look for incoming call
-            List<Call> calls = callsUpdatedEvent.getAddedCalls();
-            for (Call call : calls) {
-                if (call.getState() == CallState.Incoming) {
-                    incomingCall = call;
-                    break;
-                }
-            }
+            incomingCall = inboundCall;
         }
     });
     return incomingCall;
@@ -320,11 +318,12 @@ Adja hozzá a következő szolgáltatási definíciót a `AndroidManifest.xml` f
         </service>
 ```
 
-- A hasznos adatok beolvasása után a *handlePushNotification* metódus meghívásával átadható a *kommunikációs szolgáltatások* ügyféloldali könyvtára a *CallAgent* -példányon. A `CallAgent` példány létrehozásához hívja meg a `createCallAgent(...)` metódust az `CallClient` osztályban.
+- A hasznos adatok lekérése után a rendszer átadhatja a *kommunikációs szolgáltatások* ügyféloldali függvénytárának, hogy egy olyan belső *IncomingCallInformation* -objektumba elemezze, amelyet a *handlePushNotification* metódusnak a *CallAgent* -példányon való meghívásával fog kezelni. A `CallAgent` példány létrehozásához hívja meg a `createCallAgent(...)` metódust az `CallClient` osztályban.
 
 ```java
 try {
-    callAgent.handlePushNotification(pushNotificationMessageDataFromFCM).get();
+    IncomingCallInformation notification = IncomingCallInformation.fromMap(pushNotificationMessageDataFromFCM);
+    Future handlePushNotificationFuture = callAgent.handlePushNotification(notification).get();
 }
 catch(Exception e) {
     System.out.println("Something went wrong while handling the Incoming Calls Push Notifications.");
@@ -354,7 +353,7 @@ A hívási tulajdonságokat elérheti, és különböző műveleteket hajthat v�
 A hívás egyedi AZONOSÍTÓjának beolvasása:
 
 ```java
-String callId = call.getCallId();
+String callId = call.getId();
 ```
 
 Ha szeretne többet megtudni a Call vizsgálatban részt vevő többi résztvevőről a `remoteParticipant` `call` példányon:
@@ -377,12 +376,12 @@ CallState callState = call.getState();
 
 Egy hívás aktuális állapotát jelképező karakterláncot ad vissza:
 * "None" – kezdeti hívás állapota
-* "Bejövő" – azt jelzi, hogy a hívás bejövő, vagy el kell fogadni vagy el kell utasítani
 * "Connecting" – a kezdeti átmenet állapota a hívás elhelyezése vagy elfogadása után
-* "Ringing" – kimenő hívás esetén – azt jelzi, hogy a hívás a távoli résztvevők csengőhangja, a "bejövő" ó
+* "Ringing" – kimenő hívás esetén – a hívás a távoli résztvevők csengését jelzi.
 * "EarlyMedia" – egy olyan állapotot jelöl, amelyben a rendszer a hívás csatlakoztatása előtt bejelentést játszik
 * Csatlakoztatott – a hívás csatlakoztatva van
-* "Hold" – a hívás megtartásra kerül, és a helyi végpont és a távoli résztvevő (k) között nem folyik adathordozó.
+* "LocalHold" – a hívást a helyi résztvevő tartja, és a helyi végpont és a távoli résztvevő (k) között nem áramlanak média.
+* "RemoteHold" – a hívást egy távoli résztvevő helyezi üzembe, és a helyi végpont és a távoli résztvevő (k) között nem áramlik média.
 * "Leválasztás" – az átmenet állapota, mielőtt a hívás megszakadt állapotba kerül
 * "Leválasztott" – végső hívás állapota
 
@@ -395,16 +394,24 @@ int code = callEndReason.getCode();
 int subCode = callEndReason.getSubCode();
 ```
 
-Ha meg szeretné tekinteni, hogy az aktuális hívás bejövő hívás-e, tekintse meg a következő `isIncoming` tulajdonságot:
+Ha meg szeretné tekinteni, hogy az aktuális hívás bejövő vagy kimenő hívás-e, vizsgálja meg a `callDirection` tulajdonságot:
 
 ```java
-boolean isIncoming = call.getIsIncoming();
+CallDirection callDirection = call.getCallDirection(); 
+// callDirection == CallDirection.Incoming for incoming call
+// callDirection == CallDirection.Outgoing for outgoing call
 ```
 
 Ha szeretné ellenőrizni, hogy az aktuális mikrofon el van-e némítva, tekintse meg a következő `muted` tulajdonságot:
 
 ```java
 boolean muted = call.getIsMicrophoneMuted();
+```
+
+Annak ellenőrzéséhez, hogy az aktuális hívás rögzítve van-e, tekintse meg a következő `isRecordingActive` tulajdonságot:
+
+```java
+boolean recordinggActive = call.getIsRecordingActive();
 ```
 
 Az aktív videó streamek vizsgálatához tekintse meg a `localVideoStreams` gyűjteményt:
@@ -429,27 +436,27 @@ A videók elindításához a kamerák enumerálását az objektum API-jával kel
 ```java
 VideoDeviceInfo desiredCamera = <get-video-device>;
 Context appContext = this.getApplicationContext();
-currentVideoStream = new LocalVideoStream(desiredCamera, appContext);
-videoOptions = new VideoOptions(currentVideoStream);
-Future startVideoFuture = call.startVideo(currentVideoStream);
+LocalVideoStream currentLocalVideoStream = new LocalVideoStream(desiredCamera, appContext);
+VideoOptions videoOptions = new VideoOptions(currentLocalVideoStream);
+Future startVideoFuture = call.startVideo(currentLocalVideoStream);
 startVideoFuture.get();
 ```
 
 A videó küldésének sikeres megkezdése után a rendszer egy `LocalVideoStream` példányt ad hozzá a `localVideoStreams` gyűjteményhez a hívási példányon.
 
 ```java
-currentVideoStream == call.getLocalVideoStreams().get(0);
+currentLocalVideoStream == call.getLocalVideoStreams().get(0);
 ```
 
-A helyi videó leállításához adja át a `localVideoStream` következő `localVideoStreams` gyűjteményben elérhető példányt:
+A helyi videó leállításához adja át a `LocalVideoStream` következő `localVideoStreams` gyűjteményben elérhető példányt:
 
 ```java
-call.stopVideo(localVideoStream).get();
+call.stopVideo(currentLocalVideoStream).get();
 ```
 
-Átválthat egy másik kamera-eszközre, miközben a videó küldését egy példány meghívásával végezheti el `switchSource` `localVideoStream` :
+Átválthat egy másik kamera-eszközre, miközben a videó küldését egy példány meghívásával végezheti el `switchSource` `LocalVideoStream` :
 ```java
-localVideoStream.switchSource(source).get();
+currentLocalVideoStream.switchSource(source).get();
 ```
 
 ## <a name="remote-participants-management"></a>Távoli résztvevők kezelése
@@ -468,7 +475,7 @@ Bármely adott távoli résztvevő rendelkezik a hozzá társított tulajdonság
 * A távoli résztvevő azonosítójának beolvasása.
 Az identitás az "azonosító" típusok egyike
 ```java
-CommunicationIdentifier participantIdentity = remoteParticipant.getIdentifier();
+CommunicationIdentifier participantIdentifier = remoteParticipant.getIdentifier();
 ```
 
 * A távoli résztvevő állapotának beolvasása.
@@ -477,10 +484,12 @@ ParticipantState state = remoteParticipant.getState();
 ```
 Az állapot lehet az egyik
 * "Tétlen" – kezdeti állapot
+* "EarlyMedia" – a bejelentést csak akkor játssza le a rendszer, ha a résztvevő csatlakozik a híváshoz
+* "Ringing" – a résztvevő hívása csengetés
 * "Connecting" – átmeneti állapot, miközben a résztvevő csatlakozik a híváshoz
 * "Csatlakoztatott" – a résztvevő csatlakozik a híváshoz
 * "Hold" – a résztvevő tart
-* "EarlyMedia" – a bejelentést csak akkor játssza le a rendszer, ha a résztvevő csatlakozik a híváshoz
+* "Inlobby" – a résztvevő az előcsarnokba való felvételre vár. Jelenleg csak a Teams-együttműködési forgatókönyvben használatos
 * "Leválasztott" – végső állapot – a résztvevő nem kapcsolódik a híváshoz
 
 
@@ -510,10 +519,11 @@ List<RemoteVideoStream> videoStreams = remoteParticipant.getVideoStreams(); // [
 Meghívhatja a résztvevőt egy híváshoz (egy felhasználóhoz vagy egy telefonszámhoz) `addParticipant` . Ez szinkron módon visszaküldi a távoli résztvevő példányát.
 
 ```java
-const acsUser = new CommunicationUser("<acs user id>");
-const acsPhone = new PhoneNumber("<phone number>");
+const acsUser = new CommunicationUserIdentifier("<acs user id>");
+const acsPhone = new PhoneNumberIdentifier("<phone number>");
 RemoteParticipant remoteParticipant1 = call.addParticipant(acsUser);
-RemoteParticipant remoteParticipant2 = call.addParticipant(acsPhone);
+AddPhoneNumberOptions addPhoneNumberOptions = new AddPhoneNumberOptions(new PhoneNumberIdentifier("<alternate phone number>"));
+RemoteParticipant remoteParticipant2 = call.addParticipant(acsPhone, addPhoneNumberOptions);
 ```
 
 ### <a name="remove-participant-from-a-call"></a>Résztvevő eltávolítása egy hívásból
@@ -521,9 +531,10 @@ Ha el szeretne távolítani egy résztvevőt a hívásból (vagy egy felhasznál
 Ez a megoldás aszinkron módon fog megjelenni, ha a résztvevő el lett távolítva a hívásból.
 A résztvevő is el lesz távolítva a `remoteParticipants` gyűjteményből.
 ```java
-RemoteParticipant remoteParticipant = call.getParticipants().get(0);
-call.removeParticipant(acsUser).get();
-call.removeParticipant(acsPhone).get();
+RemoteParticipant acsUserRemoteParticipant = call.getParticipants().get(0);
+RemoteParticipant acsPhoneRemoteParticipant = call.getParticipants().get(1);
+call.removeParticipant(acsUserRemoteParticipant).get();
+call.removeParticipant(acsPhoneRemoteParticipant).get();
 ```
 
 ## <a name="render-remote-participant-video-streams"></a>A távoli résztvevő video streamek megjelenítése
@@ -635,13 +646,13 @@ A helyi eszközökhöz való hozzáféréshez használhat enumerálási metódus
 
 ```java
 //  Get a list of available video devices for use.
-List<VideoDeviceInfo> localCameras = deviceManager.getCameraList(); // [VideoDeviceInfo, VideoDeviceInfo...]
+List<VideoDeviceInfo> localCameras = deviceManager.getCameras(); // [VideoDeviceInfo, VideoDeviceInfo...]
 
 // Get a list of available microphone devices for use.
-List<AudioDeviceInfo> localMicrophones = deviceManager.getMicrophoneList(); // [AudioDeviceInfo, AudioDeviceInfo...]
+List<AudioDeviceInfo> localMicrophones = deviceManager.getMicrophones(); // [AudioDeviceInfo, AudioDeviceInfo...]
 
 // Get a list of available speaker devices for use.
-List<AudioDeviceInfo> localSpeakers = deviceManager.getSpeakerList(); // [AudioDeviceInfo, AudioDeviceInfo...]
+List<AudioDeviceInfo> localSpeakers = deviceManager.getSpeakers(); // [AudioDeviceInfo, AudioDeviceInfo...]
 ```
 
 ### <a name="set-default-microphonespeaker"></a>Alapértelmezett mikrofon/hangszóró beállítása
@@ -652,13 +663,13 @@ Ha az ügyfél alapértelmezései nincsenek beállítva, a kommunikációs szolg
 ```java
 
 // Get the microphone device that is being used.
-AudioDeviceInfo defaultMicrophone = deviceManager.getMicrophoneList().get(0);
+AudioDeviceInfo defaultMicrophone = deviceManager.getMicrophones().get(0);
 
 // Set the microphone device to use.
 deviceManager.setMicrophone(defaultMicrophone);
 
 // Get the speaker device that is being used.
-AudioDeviceInfo defaultSpeaker = deviceManager.getSpeakerList().get(0);
+AudioDeviceInfo defaultSpeaker = deviceManager.getSpeakers().get(0);
 
 // Set the speaker device to use.
 deviceManager.setSpeaker(defaultSpeaker);
@@ -697,10 +708,10 @@ PropertyChangedListener callStateChangeListener = new PropertyChangedListener()
         Log.d("The call state has changed.");
     }
 }
-call.addOnCallStateChangedListener(callStateChangeListener);
+call.addOnStateChangedListener(callStateChangeListener);
 
 //unsubscribe
-call.removeOnCallStateChangedListener(callStateChangeListener);
+call.removeOnStateChangedListener(callStateChangeListener);
 ```
 
 ### <a name="collections"></a>Gyűjtemények

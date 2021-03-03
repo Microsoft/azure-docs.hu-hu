@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.author: jlian
-ms.openlocfilehash: 70cea7a388c07bee9caa2e25e4061a3d3bb2b460
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 6f326bafb311acedc48c5a349c78f1cd6bcebc87
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98634091"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661154"
 ---
 # <a name="iot-hub-classic-ip-filter-and-how-to-upgrade"></a>Klasszikus IP-szűrés IoT Hub és frissítés 
 
@@ -88,7 +88,7 @@ A biztonság az Azure IoT Hub-alapú IoT-megoldások fontos aspektusa. A biztons
 
 A IoT Hub végpontok bizonyos IP-címekhez való letiltásához két konkrét használati eset van:
 
-* Az IoT hub csak a megadott IP-címtartományból érkező forgalmat fogadja, és minden mást visszautasít. Például az IoT hub és az [Azure Express Route](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) használatával privát kapcsolatokat hozhat létre az IoT hub és a helyszíni infrastruktúra között.
+* Az IoT hub csak a megadott IP-címtartományból érkező forgalmat fogadja, és minden mást visszautasít. Például az IoT hub és az [Azure Express Route](../expressroute/expressroute-faqs.md#supported-services) használatával privát kapcsolatokat hozhat létre az IoT hub és a helyszíni infrastruktúra között.
 
 * El kell utasítania azokat az IP-címekről érkező forgalmat, amelyeket az IoT hub rendszergazdája gyanúsnak talált.
 
@@ -141,7 +141,7 @@ IP-szűrési szabály törléséhez válassza az adott sorban található kuka i
 
 ### <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>IP-szűrők beolvasása és frissítése az Azure CLI-vel
 
-A IoT Hub IP-szűrőinek lekérhető és frissíthető az [Azure CLI](https://docs.microsoft.com/cli/azure/)-n keresztül.
+A IoT Hub IP-szűrőinek lekérhető és frissíthető az [Azure CLI](/cli/azure/)-n keresztül.
 
 A IoT Hub aktuális IP-szűrőinek lekéréséhez futtassa a következőt:
 
@@ -215,7 +215,7 @@ $iothubResource | Set-AzResource -Force
 
 ### <a name="update-ip-filter-rules-using-rest"></a>IP-szűrési szabályok frissítése a REST használatával
 
-A IoT Hub IP-szűrőjét az Azure erőforrás-szolgáltató REST-végpontjának használatával is lekérheti és módosíthatja. Lásd: `properties.ipFilterRules` a [createorupdate metódusban](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate).
+A IoT Hub IP-szűrőjét az Azure erőforrás-szolgáltató REST-végpontjának használatával is lekérheti és módosíthatja. Lásd: `properties.ipFilterRules` a [createorupdate metódusban](/rest/api/iothub/iothubresource/createorupdate).
 
 ### <a name="ip-filter-rule-evaluation"></a>IP-szűrési szabály kiértékelése
 

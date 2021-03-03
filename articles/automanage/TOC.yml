@@ -8,10 +8,13 @@
 - name: Fogalmak
   expanded: true
   items:
-    - name: Virtual machines (Virtuális gépek)
-      href: automanage-virtual-machines.md
-    - name: Ajánlott eljárások virtuális gépekhez
-      href: virtual-machines-best-practices.md
+    - name: A Linux-alapú autokezelés
+      href: automanage-linux.md
+    - name: A Windows Server felügyeletének autokezelése
+      href: automanage-windows-server.md
+      items:
+        - name: HotPatching melletti telepítéséről az új virtuális gépekhez
+          href: automanage-hotpatch.md
 - name: Útmutató
   expanded: true
   items:

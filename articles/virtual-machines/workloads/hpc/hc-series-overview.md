@@ -3,17 +3,17 @@ title: A HC sorozatú virtuális gépek áttekintése – Azure Virtual Machines
 description: Ismerje meg az Azure-beli HC sorozatú virtuális gépek előzetes verziójának támogatását.
 author: vermagit
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: hpc
 ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: b9fe978da9accd28ea0e538f458325f10c9c5d8d
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 746c7ec91c888d9a55722c00f8765915d0043a98
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831890"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666074"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>A HC sorozatú virtuális gépek áttekintése
 
@@ -56,7 +56,7 @@ Az alábbi ábrán az Azure Hypervisort és a HC-sorozatú virtuális gép szám
 | Operációs rendszer támogatása a CSATOLÓJÁHOZ nincs SR RDMA   | CentOS/RHEL 7.6 +, SLES 12 SP4 +, WinServer 2016 +  |
 | Orchestrator-támogatás        | CycleCloud, köteg  |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [Intel Xeon SP architektúráról](https://software.intel.com/content/www/us/en/develop/articles/intel-xeon-processor-scalable-family-technical-overview.html).
 - Olvassa el a legújabb bejelentéseket és néhány HPC-példát, valamint az eredményeket az [Azure számítási technikai Közösség blogjában](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).

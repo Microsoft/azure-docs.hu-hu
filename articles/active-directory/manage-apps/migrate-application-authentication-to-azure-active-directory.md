@@ -14,12 +14,12 @@ ms.date: 02/05/2021
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd33f9e0b249db6b7c6bd0a0a556d0bb4cf79312
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 0c1a0be0b7834632ba79af7dfe6c3a4fa25c0316
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100101274"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645511"
 ---
 # <a name="migrate-application-authentication-to-azure-active-directory"></a>Alkalmazás-hitelesítés migrálása Azure Active Directoryre
 
@@ -55,13 +55,13 @@ Alkalmazásai valószínűleg a következő típusú hitelesítést használják
 
 **Annak érdekében, hogy a felhasználók könnyen és biztonságosan hozzáférhessenek az alkalmazásokhoz, a cél az, hogy egyetlen hozzáférés-vezérlési és-szabályzatot hozzon létre a helyszíni és a felhőalapú környezetekben.**
 
-A [Azure Active Directory (Azure ad)](/azure/active-directory/fundamentals/active-directory-whatis) univerzális Identity platformot kínál, amely lehetővé teszi, hogy a felhasználók, partnerek és ügyfelek egyetlen identitással férhessenek hozzá a kívánt alkalmazásokhoz, és működjenek együtt bármely platformról és eszközről.
+A [Azure Active Directory (Azure ad)](../fundamentals/active-directory-whatis.md) univerzális Identity platformot kínál, amely lehetővé teszi, hogy a felhasználók, partnerek és ügyfelek egyetlen identitással férhessenek hozzá a kívánt alkalmazásokhoz, és működjenek együtt bármely platformról és eszközről.
 
 ![Azure Active Directory kapcsolat diagramja](media/migrating-application-authentication-to-azure-active-directory-1.jpg)
 
-Az Azure AD [teljes körű Identitáskezelés-kezelési képességekkel](/azure/active-directory/fundamentals/active-directory-whatis#which-features-work-in-azure-ad)rendelkezik. Az alkalmazás-hitelesítés és az Azure AD-engedélyezés egységesítése lehetővé teszi, hogy ezek a képességek milyen előnyöket biztosítanak.
+Az Azure AD [teljes körű Identitáskezelés-kezelési képességekkel](../fundamentals/active-directory-whatis.md#which-features-work-in-azure-ad)rendelkezik. Az alkalmazás-hitelesítés és az Azure AD-engedélyezés egységesítése lehetővé teszi, hogy ezek a képességek milyen előnyöket biztosítanak.
 
-További áttelepítési erőforrások: [https://aka.ms/migrateapps](https://aka.ms/migrateapps)
+További áttelepítési erőforrások: [https://aka.ms/migrateapps](./migration-resources.md)
 
 ## <a name="benefits-of-migrating-app-authentication-to-azure-ad"></a>Az alkalmazások hitelesítésének az Azure AD-be való áttelepítésének előnyei
 
@@ -71,9 +71,9 @@ Az alkalmazás-hitelesítés Azure AD-be való áthelyezésével kezelheti a koc
 
 Az alkalmazások védelme megköveteli, hogy teljes mértékben megtekinthesse az összes kockázati tényezőt. Az alkalmazások Azure AD-be való áttelepítése konszolidálja biztonsági megoldásait. Ezzel a következőket teheti:
 
-- Az alkalmazásokhoz és a kapcsolódó vállalati adatokhoz való biztonságos hozzáférés javítása [feltételes hozzáférési szabályzatok](/azure/active-directory/active-directory-conditional-access-azure-portal), [multi-Factor Authentication](/azure/active-directory/authentication/concept-mfa-howitworks)és valós idejű kockázatkezelési [technológiák használatával](/azure/active-directory/active-directory-identityprotection) .
+- Az alkalmazásokhoz és a kapcsolódó vállalati adatokhoz való biztonságos hozzáférés javítása [feltételes hozzáférési szabályzatok](../conditional-access/overview.md), [multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)és valós idejű kockázatkezelési [technológiák használatával](../identity-protection/overview-identity-protection.md) .
 
-- A rendszerjogosultságú felhasználó hozzáférésének biztosítása a környezethez [az igény szerinti rendszergazdai](/azure/managed-applications/request-just-in-time-access) hozzáféréssel.
+- A rendszerjogosultságú felhasználó hozzáférésének biztosítása a környezethez [az igény szerinti rendszergazdai](../../azure-resource-manager/managed-applications/request-just-in-time-access.md) hozzáféréssel.
 
 - Használja az [Azure ad több-bérlős, földrajzilag elosztott, magas rendelkezésre állású kialakítását](https://cloudblogs.microsoft.com/enterprisemobility/2014/09/02/azure-ad-under-the-hood-of-our-geo-redundant-highly-available-distributed-cloud-directory/)a legfontosabb üzleti igényeknek megfelelően.
 
@@ -85,30 +85,30 @@ Előfordulhat, hogy a szervezete több Identity Access-felügyeleti (IAM) megold
 
 **Az Azure AD-vel csökkentheti az infrastrukturális költségeket:**
 
-- Biztonságos távoli hozzáférés biztosítása helyszíni alkalmazásokhoz az [Azure ad Application proxy](/azure/active-directory/manage-apps/application-proxy)használatával.
+- Biztonságos távoli hozzáférés biztosítása helyszíni alkalmazásokhoz az [Azure ad Application proxy](./application-proxy.md)használatával.
 
-- Az alkalmazások leválasztása a helyszíni hitelesítő adatokról a bérlőn az [Azure ad-t megbízható univerzális identitás-szolgáltatóként állítja](/azure/active-directory/hybrid/plan-connect-user-signin#choosing-the-user-sign-in-method-for-your-organization)be.
+- Az alkalmazások leválasztása a helyszíni hitelesítő adatokról a bérlőn az [Azure ad-t megbízható univerzális identitás-szolgáltatóként állítja](../hybrid/plan-connect-user-signin.md#choosing-the-user-sign-in-method-for-your-organization)be.
 
 ### <a name="increase-productivity"></a>Termelékenység növelése
 
 A gazdaságosság és a biztonság előnye, hogy a szervezetek az Azure AD-t fogadják el, de a teljes bevezetést és megfelelőséget nagyobb valószínűséggel lehet használni. Az Azure AD-vel a következőket teheti:
 
-- A végfelhasználói [egyszeri Sign-On (SSO)](/azure/active-directory/manage-apps/what-is-single-sign-on) felhasználói élményének javítása bármely alkalmazáshoz, bármely eszközről és helyről való zökkenőmentes és biztonságos hozzáférés révén.
+- A végfelhasználói [egyszeri Sign-On (SSO)](./what-is-single-sign-on.md) felhasználói élményének javítása bármely alkalmazáshoz, bármely eszközről és helyről való zökkenőmentes és biztonságos hozzáférés révén.
 
-- Használja ki az önkiszolgáló IAM-képességeket, például az önkiszolgáló [jelszavak alaphelyzetbe](/azure/active-directory/authentication/concept-sspr-howitworks) állítását és a [SelfService](/azure/active-directory/users-groups-roles/groups-self-service-management).
+- Használja ki az önkiszolgáló IAM-képességeket, például az önkiszolgáló [jelszavak alaphelyzetbe](../authentication/concept-sspr-howitworks.md) állítását és a [SelfService](../enterprise-users/groups-self-service-management.md).
 
 - Csökkentse az adminisztrációs terhelést úgy, hogy csak egyetlen identitást kezel az egyes felhasználók számára a felhőben és a helyszíni környezetekben:
 
-  - Felhasználói fiókok üzembe helyezésének [automatizálása](/azure/active-directory/active-directory-saas-app-provisioning) az Azure [ad-](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps)identitások alapján
+  - Felhasználói fiókok üzembe helyezésének [automatizálása](../app-provisioning/user-provisioning.md) az Azure [ad-](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps)identitások alapján
   - Az összes alkalmazás elérése a [Azure Portal](https://portal.azure.com/) MyApps paneljéről
 
-- Lehetővé teheti a fejlesztők számára, hogy hozzáférjenek az alkalmazásaihoz, és javítsák a végfelhasználói élményt a Microsoft [Identity platform](/azure/active-directory/develop/about-microsoft-identity-platform) és a Microsoft Authentication Library (MSAL) használatával.
+- Lehetővé teheti a fejlesztők számára, hogy hozzáférjenek az alkalmazásaihoz, és javítsák a végfelhasználói élményt a Microsoft [Identity platform](../develop/v2-overview.md) és a Microsoft Authentication Library (MSAL) használatával.
 
-- A Felhőbeli erőforrásokhoz való hozzáférést az [Azure ad B2B együttműködés](/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)segítségével teheti elérhetővé. Ezzel megszűnik a pont-pont típusú összevonások a partnereivel való konfigurálásának terhelése.
+- A Felhőbeli erőforrásokhoz való hozzáférést az [Azure ad B2B együttműködés](../external-identities/what-is-b2b.md)segítségével teheti elérhetővé. Ezzel megszűnik a pont-pont típusú összevonások a partnereivel való konfigurálásának terhelése.
 
 ### <a name="address-compliance-and-governance"></a>A címek megfelelősége és irányítása
 
-A vállalati hozzáférési házirendek betartatásával, valamint az alkalmazásokhoz és a kapcsolódó adatokhoz való felhasználói hozzáférés figyelése integrált auditálási eszközök és API-k használatával gondoskodhat a szabályozási követelményeknek való megfelelésről. Az Azure AD használatával a [biztonsági incidensek és események figyelése (SIEM) eszközöket](/azure/active-directory/reports-monitoring/plan-monitoring-and-reporting)használó jelentések segítségével figyelheti az alkalmazás-bejelentkezéseket. A jelentéseket elérheti a portálról vagy az API-król, valamint programozott módon naplózhatja, hogy ki férhet hozzá az alkalmazásaihoz, és hogyan távolíthatja el az inaktív felhasználók hozzáférését hozzáférési felülvizsgálatok útján.
+A vállalati hozzáférési házirendek betartatásával, valamint az alkalmazásokhoz és a kapcsolódó adatokhoz való felhasználói hozzáférés figyelése integrált auditálási eszközök és API-k használatával gondoskodhat a szabályozási követelményeknek való megfelelésről. Az Azure AD használatával a [biztonsági incidensek és események figyelése (SIEM) eszközöket](../reports-monitoring/plan-monitoring-and-reporting.md)használó jelentések segítségével figyelheti az alkalmazás-bejelentkezéseket. A jelentéseket elérheti a portálról vagy az API-król, valamint programozott módon naplózhatja, hogy ki férhet hozzá az alkalmazásaihoz, és hogyan távolíthatja el az inaktív felhasználók hozzáférését hozzáférési felülvizsgálatok útján.
 
 ## <a name="plan-your-migration-phases-and-project-strategy"></a>Tervezze meg az áttelepítési fázisokat és a Project stratégiát
 
@@ -214,11 +214,11 @@ Az alkalmazások áttelepítésének első döntési pontja, hogy mely alkalmaz�
 
 **A Active Directory összevonási szolgáltatások (AD FS) (AD FS) használata egy helyes alkalmazás-leltár összegyűjtéséhez:**
 
-- **Használja az Azure AD Connect Health eszközt.** Ha prémium szintű Azure AD licenccel rendelkezik, javasoljuk, hogy [Azure ad Connect Health](/azure/active-directory/hybrid/how-to-connect-health-adfs) üzembe helyezésével elemezze az alkalmazás használatát a helyszíni környezetben. Az [ADFS Application Report](/azure/active-directory/manage-apps/migrate-adfs-application-activity) (előzetes verzió) használatával felderítheti az áttelepíthető ADFS-alkalmazásokat, és kiértékelheti az áttelepítendő alkalmazás készültségét. Az áttelepítés befejezése után telepítsen [Cloud Discovery](/cloud-app-security/set-up-cloud-discovery) , amely lehetővé teszi, hogy folyamatosan figyelje az árnyékot a szervezetben, ha a felhőben van.
+- **Használja az Azure AD Connect Health eszközt.** Ha prémium szintű Azure AD licenccel rendelkezik, javasoljuk, hogy [Azure ad Connect Health](../hybrid/how-to-connect-health-adfs.md) üzembe helyezésével elemezze az alkalmazás használatát a helyszíni környezetben. Az [ADFS Application Report](./migrate-adfs-application-activity.md) (előzetes verzió) használatával felderítheti az áttelepíthető ADFS-alkalmazásokat, és kiértékelheti az áttelepítendő alkalmazás készültségét. Az áttelepítés befejezése után telepítsen [Cloud Discovery](/cloud-app-security/set-up-cloud-discovery) , amely lehetővé teszi, hogy folyamatosan figyelje az árnyékot a szervezetben, ha a felhőben van.
 
-- **AD FS a napló-elemzést**. Ha nem rendelkezik prémium szintű Azure AD licenccel, javasoljuk, hogy az ADFS-t az Azure AD alkalmazás-áttelepítési eszközökre használja a [PowerShell alapján.](https://github.com/AzureAD/Deployment-Plans/tree/master/ADFS%20to%20AzureAD%20App%20Migration) Tekintse meg a [megoldási útmutatót](https://aka.ms/migrateapps/adfssolutionguide):
+- **AD FS a napló-elemzést**. Ha nem rendelkezik prémium szintű Azure AD licenccel, javasoljuk, hogy az ADFS-t az Azure AD alkalmazás-áttelepítési eszközökre használja a [PowerShell alapján.](https://github.com/AzureAD/Deployment-Plans/tree/master/ADFS%20to%20AzureAD%20App%20Migration) Tekintse meg a [megoldási útmutatót](./migrate-adfs-apps-to-azure.md):
 
-[Alkalmazások áttelepítése Active Directory összevonási szolgáltatások (AD FS)ról (AD FS) az Azure AD-be.](https://aka.ms/migrateapps/adfssolutionguide)
+[Alkalmazások áttelepítése Active Directory összevonási szolgáltatások (AD FS)ról (AD FS) az Azure AD-be.](./migrate-adfs-apps-to-azure.md)
 
 ### <a name="using-other-identity-providers-idps"></a>Más identitás-szolgáltatók (IDP-EK) használata
 
@@ -270,7 +270,7 @@ Az alkalmazások megkeresése után azonosíthatja az alábbi típusú alkalmaz�
 
 A már modernizált alkalmazások legvalószínűbben az Azure AD-be lesznek helyezve. Ezek az alkalmazások már modern hitelesítési protokollokat használnak (például SAML vagy OpenID Connect), és újrakonfigurálható az Azure AD-vel való hitelesítéshez.
 
-Az [Azure ad](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps) -katalógusban megjelenő lehetőségek mellett ezek olyan alkalmazások is lehetnek, amelyek már léteznek a szervezetében vagy bármely olyan gyártótól származó alkalmazásból, amely nem része az Azure ad-katalógusnak ([nem Gallery-alkalmazásoknak)](/azure/active-directory/manage-apps/add-non-gallery-app).
+Az [Azure ad](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps) -katalógusban megjelenő lehetőségek mellett ezek olyan alkalmazások is lehetnek, amelyek már léteznek a szervezetében vagy bármely olyan gyártótól származó alkalmazásból, amely nem része az Azure ad-katalógusnak ([nem Gallery-alkalmazásoknak)](./add-application-portal.md).
 
 A korszerűsítéshez kiválasztott örökölt alkalmazások
 
@@ -288,13 +288,13 @@ Az örökölt hitelesítési protokollokat használó alkalmazások esetében el
 
 - A helyszíni hitelesítési szabványok használatával fejlesztett alkalmazások, amelyek nem rendelkeznek áthelyezési tervvel
 
-Az Azure AD nagyszerű előnyökkel járhat ezeknél a régi alkalmazásokban, mivel lehetővé teszi a modern Azure AD-beli biztonsági és irányítási funkciók használatát, mint például a [multi-Factor Authentication](/azure/active-directory/authentication/concept-mfa-howitworks), a [feltételes hozzáférés](/azure/active-directory/conditional-access/overview), az [Identitásvédelem](/azure/active-directory/identity-protection/), a [delegált alkalmazás-hozzáférés](/azure/active-directory/manage-apps/access-panel-manage-self-service-access)és az alkalmazásokhoz [való hozzáférési felülvizsgálatok](https://docs.microsoft.com/azure/active-directory/governance/manage-user-access-with-access-reviews#create-and-perform-an-access-review) anélkül, hogy az alkalmazást még nem érintik.
+Az Azure AD nagyszerű előnyökkel járhat ezeknél a régi alkalmazásokban, mivel lehetővé teszi a modern Azure AD-beli biztonsági és irányítási funkciók használatát, mint például a [multi-Factor Authentication](../authentication/concept-mfa-howitworks.md), a [feltételes hozzáférés](../conditional-access/overview.md), az [Identitásvédelem](../identity-protection/index.yml), a [delegált alkalmazás-hozzáférés](./access-panel-manage-self-service-access.md)és az alkalmazásokhoz [való hozzáférési felülvizsgálatok](../governance/manage-user-access-with-access-reviews.md#create-and-perform-an-access-review) anélkül, hogy az alkalmazást még nem érintik.
 
-Először is **kiterjesztheti ezeket az alkalmazásokat a felhőbe** az [Azure ad-alkalmazásproxy használatával](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-password-vaulting) egyszerű hitelesítéssel (például a jelszó-tárolóval), hogy a felhasználók gyorsan migrálják a felhasználókat, vagy ha a [partner-integrációnk](https://azure.microsoft.com/services/active-directory/sso/secure-hybrid-access/) segítségével már üzembe helyezte az alkalmazás-továbbítási vezérlőket.
+Először is **kiterjesztheti ezeket az alkalmazásokat a felhőbe** az [Azure ad-alkalmazásproxy használatával](./application-proxy-configure-single-sign-on-password-vaulting.md) egyszerű hitelesítéssel (például a jelszó-tárolóval), hogy a felhasználók gyorsan migrálják a felhasználókat, vagy ha a [partner-integrációnk](https://azure.microsoft.com/services/active-directory/sso/secure-hybrid-access/) segítségével már üzembe helyezte az alkalmazás-továbbítási vezérlőket.
 
 ### <a name="new-line-of-business-lob-apps"></a>Új üzletági (LoB) alkalmazások
 
-Általában LoB-alkalmazásokat fejleszt a szervezete belső használatra. Ha új alkalmazásai vannak a folyamatban, javasoljuk, hogy a [Microsoft Identity platformot](/azure/active-directory/develop/about-microsoft-identity-platform) használja az OpenID Connect megvalósításához.
+Általában LoB-alkalmazásokat fejleszt a szervezete belső használatra. Ha új alkalmazásai vannak a folyamatban, javasoljuk, hogy a [Microsoft Identity platformot](../develop/v2-overview.md) használja az OpenID Connect megvalósításához.
 
 ### <a name="apps-to-deprecate"></a>Elavult alkalmazások
 
@@ -316,10 +316,10 @@ Ebben a fázisban sikeres:
 
   - Azok a rendszerek, amelyekre ezek az alkalmazások csatlakoznak
 
-  - Azt határozza meg, hogy a rendszer áttelepíti, elavult vagy [Azure ad Connecthoz](/azure/active-directory/hybrid/whatis-azure-ad-connect)kapcsolódik-e.
+  - Azt határozza meg, hogy a rendszer áttelepíti, elavult vagy [Azure ad Connecthoz](../hybrid/whatis-azure-ad-connect.md)kapcsolódik-e.
 
 > [!NOTE]
-> Az [alkalmazás-felderítési munkalap](https://download.microsoft.com/download/2/8/3/283F995C-5169-43A0-B81D-B0ED539FB3DD/Application%20Discovery%20worksheet.xlsx) letöltésével rögzítheti az Azure ad-hitelesítésre áttelepíteni kívánt alkalmazásokat, valamint azokat, amelyeket el szeretne hagyni, de a [Azure ad Connect](/azure/active-directory/hybrid/whatis-azure-ad-connect)segítségével kezelheti azokat.
+> Az [alkalmazás-felderítési munkalap](https://download.microsoft.com/download/2/8/3/283F995C-5169-43A0-B81D-B0ED539FB3DD/Application%20Discovery%20worksheet.xlsx) letöltésével rögzítheti az Azure ad-hitelesítésre áttelepíteni kívánt alkalmazásokat, valamint azokat, amelyeket el szeretne hagyni, de a [Azure ad Connect](../hybrid/whatis-azure-ad-connect.md)segítségével kezelheti azokat.
 
 ## <a name="phase-2-classify-apps-and-plan-pilot"></a>2. fázis: alkalmazások osztályozása és a pilóta megtervezése
 
@@ -351,7 +351,7 @@ Dönthet úgy, hogy megkezdi az alkalmazás áttelepítését a legalacsonyabb p
 
 Olyan helyzetekben, ahol az Azure AD és az Identity Services használata nem tapasztalható, érdemes először áthelyezni a **legalacsonyabb prioritású alkalmazásokat** az Azure ad-be. Ez a művelet a lehető legkisebbre csökkentheti az üzleti hatásokat, és lendületet is készíthet. Miután sikeresen áthelyezte ezeket az alkalmazásokat, és megszerezte az érintettek bizalmát, továbbra is áttelepítheti a többi alkalmazást.
 
-Ha nincs egyértelmű prioritás, érdemes megfontolnia az [Azure ad](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps) -katalógusban lévő alkalmazások első áthelyezését, és támogatni a több Identity providert (ADFS vagy okta), mivel azok könnyebben integrálhatók. Valószínű, hogy ezek az alkalmazások a **legmagasabb prioritású alkalmazások** a szervezetben. Az SaaS-alkalmazások Azure AD-val való integrálásának elősegítése érdekében olyan [oktatóanyagokat](/azure/active-directory/saas-apps/tutorial-list) fejlesztettünk ki, amelyek végigvezetik a konfiguráción.
+Ha nincs egyértelmű prioritás, érdemes megfontolnia az [Azure ad](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps) -katalógusban lévő alkalmazások első áthelyezését, és támogatni a több Identity providert (ADFS vagy okta), mivel azok könnyebben integrálhatók. Valószínű, hogy ezek az alkalmazások a **legmagasabb prioritású alkalmazások** a szervezetben. Az SaaS-alkalmazások Azure AD-val való integrálásának elősegítése érdekében olyan [oktatóanyagokat](../saas-apps/tutorial-list.md) fejlesztettünk ki, amelyek végigvezetik a konfiguráción.
 
 Ha az alkalmazások áttelepítésére vonatkozó határidővel rendelkezik, ezek a legmagasabb prioritású alkalmazások gyűjtője a legfontosabb munkaterhelést fogja igénybe venni. Végül kiválaszthatja az alacsonyabb prioritású alkalmazásokat, mivel azok nem változtatják meg a költségeket annak ellenére, hogy áthelyezte a határidőt. Akkor is, ha meg kell újítania a licencet, kis mennyiségű.
 
@@ -399,7 +399,7 @@ Miután besorolta az alkalmazást, és dokumentálta a részleteket, ügyeljen a
 
 ### <a name="plan-a-pilot"></a>Pilóta megtervezése
 
-A teszteléshez kiválasztott alkalmazás (ok) a szervezet legfontosabb identitási és biztonsági követelményeinek felel meg, és az alkalmazás tulajdonosainak egyértelmű bevezetéssel kell rendelkeznie. A pilóták általában külön tesztkörnyezetben futnak. Lásd: [ajánlott eljárások a pilóták számára](/azure/active-directory/fundamentals/active-directory-deployment-plans#best-practices-for-a-pilot) a központi telepítési tervek lapon.
+A teszteléshez kiválasztott alkalmazás (ok) a szervezet legfontosabb identitási és biztonsági követelményeinek felel meg, és az alkalmazás tulajdonosainak egyértelmű bevezetéssel kell rendelkeznie. A pilóták általában külön tesztkörnyezetben futnak. Lásd: [ajánlott eljárások a pilóták számára](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot) a központi telepítési tervek lapon.
 
 **Ne felejtse el a külső partnereit.** Győződjön meg arról, hogy részt vesznek az áttelepítési ütemtervekben és a tesztelésben. Végezetül ellenőrizze, hogy van-e lehetőség az ügyfélszolgálat elérésére a problémák elhárítása esetén.
 
@@ -409,7 +409,7 @@ Egyes alkalmazások egyszerűen áttelepíthetők, mások pedig több kiszolgál
 
 Sok SaaS-alkalmazás gyártójának díja az egyszeri bejelentkezéses kapcsolatok módosításához. Egyeztessen velük, és tervezze meg a következőt:.
 
-Az Azure AD [szolgáltatás korlátaival és korlátozásokkal](/azure/active-directory/users-groups-roles/directory-service-limits-restrictions) is rendelkezik.
+Az Azure AD [szolgáltatás korlátaival és korlátozásokkal](../enterprise-users/directory-service-limits-restrictions.md) is rendelkezik.
 
 ### <a name="app-owner-sign-off"></a>Alkalmazás tulajdonosának kijelentkezése
 
@@ -421,9 +421,9 @@ Az áttelepítési folyamat megkezdése előtt Szánjon időt arra, hogy teljes 
 
 ### <a name="identities-and-data"></a>Identitások és adatkezelés
 
-A legtöbb szervezet konkrét követelményekkel rendelkezik az iparági szegmensek és a szervezeteken belüli feladatok által érintett identitások és adatvédelem terén. Tekintse meg az [identitás-és eszköz-hozzáférési konfigurációkat](/microsoft-365/enterprise/microsoft-365-policies-configurations) , beleértve a [feltételes hozzáférési szabályzatok](/azure/active-directory/active-directory-conditional-access-azure-portal) és a kapcsolódó képességek előírt készletét.
+A legtöbb szervezet konkrét követelményekkel rendelkezik az iparági szegmensek és a szervezeteken belüli feladatok által érintett identitások és adatvédelem terén. Tekintse meg az [identitás-és eszköz-hozzáférési konfigurációkat](/microsoft-365/enterprise/microsoft-365-policies-configurations) , beleértve a [feltételes hozzáférési szabályzatok](../conditional-access/overview.md) és a kapcsolódó képességek előírt készletét.
 
-Ezeket az információkat az Azure AD-vel integrált összes szolgáltatáshoz való hozzáféréshez használhatja fel. A javaslatok összhangban vannak a Microsoft biztonságos pontszámával, valamint az [Azure ad-beli identitások pontszámával](/azure/active-directory/fundamentals/identity-secure-score). A pontszám az alábbiakban nyújt segítséget:
+Ezeket az információkat az Azure AD-vel integrált összes szolgáltatáshoz való hozzáféréshez használhatja fel. A javaslatok összhangban vannak a Microsoft biztonságos pontszámával, valamint az [Azure ad-beli identitások pontszámával](../fundamentals/identity-secure-score.md). A pontszám az alábbiakban nyújt segítséget:
 
 - Az identitásbiztonsági rendszer objektív felmérése
 
@@ -431,7 +431,7 @@ Ezeket az információkat az Azure AD-vel integrált összes szolgáltatáshoz v
 
 - A fejlesztések hatásának felmérése
 
-Ez segít az öt lépés megvalósításában az [identitás-infrastruktúra biztonságossá](/azure/security/azure-ad-secure-steps)tételéhez. Az útmutatást kiindulási pontként használhatja a szervezete számára, és módosíthatja a szabályzatokat, hogy azok megfeleljenek a szervezet igényeinek.
+Ez segít az öt lépés megvalósításában az [identitás-infrastruktúra biztonságossá](../../security/fundamentals/steps-secure-identity.md)tételéhez. Az útmutatást kiindulási pontként használhatja a szervezete számára, és módosíthatja a szabályzatokat, hogy azok megfeleljenek a szervezet igényeinek.
 
 ### <a name="who-is-accessing-your-data"></a>Ki fér hozzá az adatokhoz?
 
@@ -439,11 +439,11 @@ Az Azure AD által támogatott alkalmazások és erőforrások felhasználóinak
 
 - **Belső:** Alkalmazottak, alvállalkozók és szállítók, akik az Ön identitás-szolgáltatóján belüli fiókkal rendelkeznek. Ehhez további kimutatásokra lehet szükség, amelyek különböző szabályokkal rendelkeznek a vezetők vagy más alkalmazottak ellen.
 
-- **Külső:** Gyártók, szállítók, forgalmazók vagy más üzleti partnerek, akik a szervezettel együttműködve az [Azure ad B2B együttműködéssel](/azure/active-directory/b2b/what-is-b2b) rendszeres üzleti tevékenységet folytatnak.
+- **Külső:** Gyártók, szállítók, forgalmazók vagy más üzleti partnerek, akik a szervezettel együttműködve az [Azure ad B2B együttműködéssel](../external-identities/what-is-b2b.md) rendszeres üzleti tevékenységet folytatnak.
 
-Ezekhez a felhasználókhoz csoportokat határozhat meg, és különböző módokon töltheti fel ezeket a csoportokat. Dönthet úgy is, hogy a rendszergazdának manuálisan kell felvennie a tagokat egy csoportba, vagy engedélyezheti a selfservice csoport tagságát. Létrehozhatók olyan szabályok, amelyek a [dinamikus csoportok](/azure/active-directory/users-groups-roles/groups-dynamic-membership)használatával a megadott feltételek alapján automatikusan hozzáadhatják a tagokat a csoportokhoz.
+Ezekhez a felhasználókhoz csoportokat határozhat meg, és különböző módokon töltheti fel ezeket a csoportokat. Dönthet úgy is, hogy a rendszergazdának manuálisan kell felvennie a tagokat egy csoportba, vagy engedélyezheti a selfservice csoport tagságát. Létrehozhatók olyan szabályok, amelyek a [dinamikus csoportok](../enterprise-users/groups-dynamic-membership.md)használatával a megadott feltételek alapján automatikusan hozzáadhatják a tagokat a csoportokhoz.
 
-A külső felhasználók a speciális szempontokat igénylő ügyfelekre is vonatkozhatnak. [Azure ad B2C](/azure/active-directory-b2c/active-directory-b2c-overview)egy külön termék támogatja az ügyfél-hitelesítést. Azonban a dokumentum hatókörén kívül esik.
+A külső felhasználók a speciális szempontokat igénylő ügyfelekre is vonatkozhatnak. [Azure ad B2C](../../active-directory-b2c/overview.md)egy külön termék támogatja az ügyfél-hitelesítést. Azonban a dokumentum hatókörén kívül esik.
 
 ### <a name="devicelocation-used-to-access-data"></a>Az adateléréshez használt eszköz/hely
 
@@ -451,7 +451,7 @@ A felhasználó által az alkalmazás eléréséhez használt eszköz és hely i
 
 ![A felhasználói hely és az adatelérés közötti kapcsolatot bemutató diagram](media/migrating-application-authentication-to-azure-active-directory-6.jpg)
 
-Az erőforrás, a felhasználó és az eszköz ezen szempontjaival az [Azure ad feltételes hozzáférési](/azure/active-directory/active-directory-conditional-access-azure-portal) képességeit is használhatja. A feltételes hozzáférés túllépi a felhasználói engedélyeket: a rendszer a tényezők, például egy felhasználó vagy csoport identitása, a felhasználóhoz csatlakozó hálózat, a használt eszköz és alkalmazás, valamint az elérni kívánt adatok típusának kombinációján alapul. A felhasználónak biztosított hozzáférés ehhez a szélesebb körű feltételekhez alkalmazkodik.
+Az erőforrás, a felhasználó és az eszköz ezen szempontjaival az [Azure ad feltételes hozzáférési](../conditional-access/overview.md) képességeit is használhatja. A feltételes hozzáférés túllépi a felhasználói engedélyeket: a rendszer a tényezők, például egy felhasználó vagy csoport identitása, a felhasználóhoz csatlakozó hálózat, a használt eszköz és alkalmazás, valamint az elérni kívánt adatok típusának kombinációján alapul. A felhasználónak biztosított hozzáférés ehhez a szélesebb körű feltételekhez alkalmazkodik.
 
 ### <a name="exit-criteria"></a>Kilépési feltételek
 
@@ -475,13 +475,13 @@ Az üzleti vásárlást követően a következő lépés az alkalmazások Azure 
 
 Az alábbi eszközök és útmutatás segítségével követheti az alkalmazások Azure AD-ba való átirányításához szükséges pontos lépéseket:
 
-- **Általános áttelepítési útmutató** – az [Azure ad-alkalmazások áttelepítési eszközkészletének](https://aka.ms/migrateapps) tanulmányi, eszközök, e-mail-sablonjai és alkalmazásai az alkalmazások felderítéséhez, besorolásához és áttelepítéséhez használhatók.
+- **Általános áttelepítési útmutató** – az [Azure ad-alkalmazások áttelepítési eszközkészletének](./migration-resources.md) tanulmányi, eszközök, e-mail-sablonjai és alkalmazásai az alkalmazások felderítéséhez, besorolásához és áttelepítéséhez használhatók.
 
-- **SaaS-alkalmazások** – tekintse meg a [több száz SaaS-alkalmazás oktatóanyagok](/azure/active-directory/active-directory-saas-tutorial-list) listáját, valamint a teljes [Azure ad SSO üzembe helyezési tervet](https://aka.ms/ssodeploymentplan) , amely végigvezeti a végpontok közötti folyamaton.
+- **SaaS-alkalmazások** – tekintse meg a [több száz SaaS-alkalmazás oktatóanyagok](../saas-apps/tutorial-list.md) listáját, valamint a teljes [Azure ad SSO üzembe helyezési tervet](https://aka.ms/ssodeploymentplan) , amely végigvezeti a végpontok közötti folyamaton.
 
-- **A helyszínen futó alkalmazások** – megismerheti [Az Azure ad Application Proxyét](/azure/active-directory/manage-apps/application-proxy) , és a teljes [Azure ad Application proxy üzembe helyezési terv](https://aka.ms/AppProxyDPDownload) használatával gyorsan elsajátíthatja a munkát.
+- **A helyszínen futó alkalmazások** – megismerheti [Az Azure ad Application Proxyét](./application-proxy.md) , és a teljes [Azure ad Application proxy üzembe helyezési terv](https://aka.ms/AppProxyDPDownload) használatával gyorsan elsajátíthatja a munkát.
 
-- A fejlesztés alatt álló **alkalmazások** – olvassa el a lépésenkénti [integrációs](/azure/active-directory/develop/active-directory-integrating-applications) és [regisztrációs](/azure/active-directory/develop/active-directory-v2-app-registration) útmutatót.
+- A fejlesztés alatt álló **alkalmazások** – olvassa el a lépésenkénti [integrációs](../develop/quickstart-register-app.md) és [regisztrációs](../develop/quickstart-register-app.md) útmutatót.
 
 Az áttelepítés után dönthet úgy, hogy elküldi a sikeres üzembe helyezést a felhasználókat, és emlékezteti őket a szükséges új lépésekre.
 
@@ -489,7 +489,7 @@ Az áttelepítés után dönthet úgy, hogy elküldi a sikeres üzembe helyezés
 
 Az áttelepítés folyamata során előfordulhat, hogy az alkalmazás már rendelkezik egy, a normál üzembe helyezés során használt tesztkörnyezetben. Továbbra is használhatja ezt a környezetet az áttelepítési teszteléshez. Ha a tesztkörnyezet jelenleg nem érhető el, előfordulhat, hogy az alkalmazás architektúrája alapján Azure App Service vagy az Azure Virtual Machines használatával lehet beállítani egyet. Dönthet úgy, hogy külön Azure AD-bérlőt állít be, amelyet az alkalmazás konfigurációjának fejlesztésekor használ. Ez a bérlő tiszta állapotba kerül, és nem lesz konfigurálva a rendszerekkel való szinkronizálásra.
 
-Az alkalmazások teszteléséhez jelentkezzen be egy teszt felhasználóval, és győződjön meg arról, hogy az összes funkció ugyanaz, mint az áttelepítés előtt. Ha a tesztelés során azt állapítja meg, hogy a felhasználóknak frissíteniük kell az [MFA](/active-directory/authentication/howto-mfa-userstates) -vagy [SSPR](/azure/active-directory/authentication/quickstart-sspr)-beállításokat, vagy ha ezt a funkciót az áttelepítés során adja hozzá, ne felejtse el hozzáadni a végfelhasználói kommunikációs tervhez. Lásd: [MFA](https://aka.ms/mfatemplates) és [SSPR](https://aka.ms/ssprtemplates) végfelhasználói kommunikációs sablonok.
+Az alkalmazások teszteléséhez jelentkezzen be egy teszt felhasználóval, és győződjön meg arról, hogy az összes funkció ugyanaz, mint az áttelepítés előtt. Ha a tesztelés során azt állapítja meg, hogy a felhasználóknak frissíteniük kell az [MFA](/active-directory/authentication/howto-mfa-userstates) -vagy [SSPR](../authentication/tutorial-enable-sspr.md)-beállításokat, vagy ha ezt a funkciót az áttelepítés során adja hozzá, ne felejtse el hozzáadni a végfelhasználói kommunikációs tervhez. Lásd: [MFA](https://aka.ms/mfatemplates) és [SSPR](https://aka.ms/ssprtemplates) végfelhasználói kommunikációs sablonok.
 
 Az alkalmazások áttelepítése után lépjen az [Azure Portalra](https://aad.portal.azure.com/) , és ellenőrizze, hogy sikeres volt-e az áttelepítés. Kövesse az alábbi utasításokat:
 
@@ -497,20 +497,21 @@ Az alkalmazások áttelepítése után lépjen az [Azure Portalra](https://aad.p
 
 - Válassza **a &gt; felhasználók és csoportok kezelése** lehetőséget, ha legalább egy felhasználót vagy csoportot szeretne hozzárendelni az alkalmazáshoz.
 
-- Válassza **a &gt; feltételes hozzáférés kezelése** lehetőséget. Tekintse át a szabályzatok listáját, és ellenőrizze, hogy nem blokkolja-e az alkalmazáshoz való hozzáférést [feltételes hozzáférési szabályzattal](/azure/active-directory/active-directory-conditional-access-azure-portal).
+- Válassza **a &gt; feltételes hozzáférés kezelése** lehetőséget. Tekintse át a szabályzatok listáját, és ellenőrizze, hogy nem blokkolja-e az alkalmazáshoz való hozzáférést [feltételes hozzáférési szabályzattal](../conditional-access/overview.md).
 
 Az alkalmazás konfigurálásának módjától függően ellenőrizze, hogy az SSO megfelelően működik-e.
 
 | Hitelesítéstípus      | Tesztelés                                             |
 | ------------------------ | --------------------------------------------------- |
 | **OAuth/OpenID Connect** | Válassza a **vállalati alkalmazások &gt; engedélyei** lehetőséget, és győződjön meg arról, hogy hozzájárult ahhoz, hogy a szervezetében az alkalmazás felhasználói beállításait használja. |
-| **SAML-alapú egyszeri bejelentkezés** | Használja az **egyszeri bejelentkezés** alatt található [SAML-beállítások tesztelése](/azure/active-directory/develop/howto-v1-debug-saml-sso-issues) gombot. |
-| **Jelszó-alapú egyszeri bejelentkezés** | Töltse le és telepítse a [MyApps biztonságos bejelentkezési bővítményét](/azure/active-directory/user-help/active-directory-saas-access-panel-introduction#my-apps-secure-sign-in-extension). Ez a bővítmény segítséget nyújt a szervezet olyan felhőalapú alkalmazásainak elindításához, amelyekhez egyszeri bejelentkezéses folyamatot kell használni. |
-| **[Alkalmazásproxy](/azure/active-directory/manage-apps/application-proxy)** | Győződjön meg arról, hogy az összekötő fut, és hozzá van rendelve az alkalmazáshoz. További segítségért tekintse meg az [alkalmazásproxy hibaelhárítási útmutatóját](/azure/active-directory/manage-apps/application-proxy-troubleshoot) . |
+| **SAML-alapú egyszeri bejelentkezés** | Használja az **egyszeri bejelentkezés** alatt található [SAML-beállítások tesztelése](./debug-saml-sso-issues.md) gombot. |
+| **Jelszó-alapú egyszeri bejelentkezés** | Töltse le és telepítse a [MyApps biztonságos bejelentkezési bővítményét](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension). Ez a bővítmény segítséget nyújt a szervezet olyan felhőalapú alkalmazásainak elindításához, amelyekhez egyszeri bejelentkezéses folyamatot kell használni. |
+
+| **[Alkalmazásproxy](./application-proxy.md)** | Győződjön meg arról, hogy az összekötő fut, és hozzá van rendelve az alkalmazáshoz. További segítségért tekintse meg az [alkalmazásproxy hibaelhárítási útmutatóját](./application-proxy-troubleshoot.md) . |
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 
-Ha problémákat tapasztal, tekintse meg az [alkalmazások hibaelhárítási útmutatóját](https://aka.ms/troubleshoot-apps) , ahol segítséget kaphat. Lásd még: [az egyéni fejlesztésű alkalmazásba való bejelentkezéssel kapcsolatos problémák](/azure/active-directory/manage-apps/application-sign-in-problem-custom-dev).
+Ha problémákat tapasztal, tekintse meg az [alkalmazások hibaelhárítási útmutatóját](../app-provisioning/isv-automatic-provisioning-multi-tenant-apps.md) , ahol segítséget kaphat. Lásd még: [az egyéni fejlesztésű alkalmazásba való bejelentkezéssel kapcsolatos problémák](./application-sign-in-problem-federated-sso-gallery.md).
 
 ### <a name="plan-rollback"></a>Terv visszaállítása
 
@@ -554,19 +555,21 @@ Miután áttelepítette az alkalmazásokat, számos módon bővítheti a felhasz
 
 **Alkalmazások felderíthetővé tétele**
 
-**Irányítsa a felhasználót** a [MyApps](/azure/active-directory/user-help/my-apps-portal-end-user-access#my-apps-secure-sign-in-extension)portál felületére. Itt hozzáférhetnek az összes felhőalapú alkalmazáshoz, az [Azure ad Connect](/azure/active-directory/hybrid/whatis-azure-ad-connect)használatával elérhetővé tett alkalmazásokhoz, valamint az [alkalmazásproxy](/azure/active-directory/manage-apps/application-proxy) használatával, ha az alkalmazások eléréséhez engedélyekkel rendelkeznek.
+**Irányítsa a felhasználót** a [MyApps](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension)portál felületére. Itt hozzáférhetnek az összes felhőalapú alkalmazáshoz, az [Azure ad Connect](../hybrid/whatis-azure-ad-connect.md)használatával elérhetővé tett alkalmazásokhoz, valamint az [alkalmazásproxy](./application-proxy.md) használatával, ha az alkalmazások eléréséhez engedélyekkel rendelkeznek.
+
 
 A felhasználókat az alkalmazások felderítésére vonatkozó útmutatóban találja:
 
-- A [meglévő egyszeri bejelentkezés](/azure/active-directory/active-directory-saas-custom-apps#existing-single-sign-on) funkció használatával **összekapcsolhatja a felhasználókat bármely alkalmazáshoz**
+- A [meglévő egyszeri bejelentkezés](./view-applications-portal.md) funkció használatával **összekapcsolhatja a felhasználókat bármely alkalmazáshoz**
 
-- Az [önkiszolgáló alkalmazások hozzáférésének](/azure/active-directory/application-access-self-service-how-to)engedélyezése egy alkalmazáshoz, és a **felhasználók hozzáadása a kurátori alkalmazások hozzáadásához**
 
-- [Alkalmazások elrejtése a végfelhasználók](/azure/active-directory/manage-apps/hide-application-from-user-portal) számára (alapértelmezett Microsoft-alkalmazások vagy más alkalmazások), hogy **az általuk igényelt alkalmazások jobban felderíthetők legyenek**
+- Az [önkiszolgáló alkalmazások hozzáférésének](./manage-self-service-access.md)engedélyezése egy alkalmazáshoz, és a **felhasználók hozzáadása a kurátori alkalmazások hozzáadásához**
+
+- [Alkalmazások elrejtése a végfelhasználók](./hide-application-from-user-portal.md) számára (alapértelmezett Microsoft-alkalmazások vagy más alkalmazások), hogy **az általuk igényelt alkalmazások jobban felderíthetők legyenek**
 
 ### <a name="make-apps-accessible"></a>Alkalmazások elérhetővé tétele
 
-**Lehetővé teszi, hogy a felhasználók hozzáférjenek az alkalmazásokhoz a mobileszközökön**. A felhasználók az Intune által felügyelt böngészővel érhetik el az MyApps-portált [iOS](/azure/active-directory/manage-apps/hide-application-from-user-portal) 7,0 vagy újabb vagy [Android](/azure/active-directory/manage-apps/hide-application-from-user-portal) rendszerű eszközökön.
+**Lehetővé teszi, hogy a felhasználók hozzáférjenek az alkalmazásokhoz a mobileszközökön**. A felhasználók az Intune által felügyelt böngészővel érhetik el az MyApps-portált [iOS](./hide-application-from-user-portal.md) 7,0 vagy újabb vagy [Android](./hide-application-from-user-portal.md) rendszerű eszközökön.
 
 A felhasználók az **Intune által felügyelt böngészőt** tölthetik le:
 
@@ -580,7 +583,7 @@ A felhasználók [letöltheti a MyApps biztonságos bejelentkezési bővítmény
 
 - **Az alkalmazások keresése és a legutóbb használt alkalmazások megjelenítése**
 
-- **Automatikusan konvertálja** az [alkalmazásproxy](/azure/active-directory/manage-apps/application-proxy) -ben konfigurált belső URL-címeket a megfelelő külső URL-címekre. A felhasználók mostantól a már ismerős hivatkozásokkal is dolgozhatnak, függetlenül attól, hogy hol vannak.
+- **Automatikusan konvertálja** az [alkalmazásproxy](./application-proxy.md) -ben konfigurált belső URL-címeket a megfelelő külső URL-címekre. A felhasználók mostantól a már ismerős hivatkozásokkal is dolgozhatnak, függetlenül attól, hogy hol vannak.
 
 **Lehetővé teszi, hogy a felhasználók megnyissák alkalmazásaikat a Office.com.**
 
@@ -590,11 +593,11 @@ A felhasználók a [Office.com](https://www.office.com/) **kereshetik meg az alk
 
 Az Azure AD egy központi hozzáférési helyet biztosít az áttelepített alkalmazások kezeléséhez. Lépjen a [Azure Portalra](https://portal.azure.com/) , és engedélyezze a következő képességeket:
 
-- **Biztonságos felhasználói hozzáférés az alkalmazásokhoz.** A [feltételes hozzáférési szabályzatok](/azure/active-directory/active-directory-conditional-access-azure-portal)vagy az [identitások védelme](/azure/active-directory/active-directory-identityprotection)lehetővé teszi az alkalmazásokhoz való felhasználói hozzáférés biztosítását az eszköz állapota, helye és egyéb adatai alapján.
+- **Biztonságos felhasználói hozzáférés az alkalmazásokhoz.** A [feltételes hozzáférési szabályzatok](../conditional-access/overview.md)vagy az [identitások védelme](../identity-protection/overview-identity-protection.md)lehetővé teszi az alkalmazásokhoz való felhasználói hozzáférés biztosítását az eszköz állapota, helye és egyéb adatai alapján.
 
-- **Automatikus kiépítés.** A felhasználók a különböző külső SaaS-alkalmazásokkal való [automatikus kiépítés](/azure/active-directory/manage-apps/user-provisioning) beállítása, amelyekhez a felhasználóknak hozzáférésre van szükségük. A felhasználói identitások létrehozása mellett a felhasználói identitások karbantartását és eltávolítását is magában foglalja az állapot vagy a szerepkörök változása miatt.
+- **Automatikus kiépítés.** A felhasználók a különböző külső SaaS-alkalmazásokkal való [automatikus kiépítés](../app-provisioning/user-provisioning.md) beállítása, amelyekhez a felhasználóknak hozzáférésre van szükségük. A felhasználói identitások létrehozása mellett a felhasználói identitások karbantartását és eltávolítását is magában foglalja az állapot vagy a szerepkörök változása miatt.
 
-- A **felhasználói hozzáférés** **felügyeletének** delegálása. Szükség esetén engedélyezze az önkiszolgáló alkalmazások hozzáférését az alkalmazásokhoz, és *rendeljen hozzá egy üzleti jóváhagyót az alkalmazásokhoz való hozzáférés jóváhagyásához*. Az [önkiszolgáló csoportok kezelése](/azure/active-directory/users-groups-roles/groups-self-service-management)az alkalmazások gyűjteményéhez rendelt csoportokhoz.
+- A **felhasználói hozzáférés** **felügyeletének** delegálása. Szükség esetén engedélyezze az önkiszolgáló alkalmazások hozzáférését az alkalmazásokhoz, és *rendeljen hozzá egy üzleti jóváhagyót az alkalmazásokhoz való hozzáférés jóváhagyásához*. Az [önkiszolgáló csoportok kezelése](../enterprise-users/groups-self-service-management.md)az alkalmazások gyűjteményéhez rendelt csoportokhoz.
 
 - **Rendszergazdai hozzáférés delegálása.** a **címtár-szerepkör** használata rendszergazdai szerepkör (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda vagy az alkalmazás fejlesztője) hozzárendeléséhez a felhasználóhoz.
 
@@ -602,13 +605,13 @@ Az Azure AD egy központi hozzáférési helyet biztosít az áttelepített alka
 
 A [Azure Portal](https://portal.azure.com/) az összes alkalmazás központi helyről történő naplózására is használható.
 
-- Az **alkalmazás** az [Azure ad REporting API](/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal) -val való integrálásával **, vállalati alkalmazásokkal, naplózással** és a kedvenc eszközeibe való integrációval kapcsolatos információkat naplózhatja.
+- Az **alkalmazás** az [Azure ad REporting API](../reports-monitoring/concept-reporting-api.md) -val való integrálásával **, vállalati alkalmazásokkal, naplózással** és a kedvenc eszközeibe való integrációval kapcsolatos információkat naplózhatja.
 
 - **Megtekintheti a** **vállalati alkalmazásokat** használó alkalmazások engedélyeit, a OAuth/OpenID connectet használó alkalmazásokra vonatkozó engedélyeket.
 
-- **Vállalati alkalmazások, bejelentkezések és** bejelentkezési eredmények **beszerzése** . Ugyanazokat az információkat érheti el az [Azure ad Reporting API](/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal) -ból.
+- **Vállalati alkalmazások, bejelentkezések és** bejelentkezési eredmények **beszerzése** . Ugyanazokat az információkat érheti el az [Azure ad Reporting API](../reports-monitoring/concept-reporting-api.md) -ból.
 
-- Az **alkalmazás használatának megjelenítése** az [Azure ad PowerBI](/azure/active-directory/active-directory-reporting-power-bi-content-pack-how-to)
+- Az **alkalmazás használatának megjelenítése** az [Azure ad PowerBI](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
 ### <a name="exit-criteria"></a>Kilépési feltételek
 
@@ -622,7 +625,7 @@ Ebben a fázisban sikeres:
 
 A központi telepítési tervek végigvezetik az Azure AD-megoldások üzleti értékeit, megtervezését, megvalósításának lépéseit és felügyeletét, beleértve az alkalmazások áttelepítési forgatókönyveit is. A szolgáltatás minden olyan funkciót egyesít, amely az Azure AD-funkciók üzembe helyezésének és beszerzésének megkezdéséhez szükséges. Az üzembe helyezési útmutatók olyan tartalmakat foglalnak magukban, mint a Microsoft ajánlott eljárásai, a végfelhasználói kommunikáció, a tervezési útmutatók, a megvalósítás lépései, a tesztelési esetek és egyebek.
 
-Számos [üzembe helyezési csomag](https://aka.ms/deploymentplans) elérhető a saját használatra, és így továbbra is!
+Számos [üzembe helyezési csomag](../fundamentals/active-directory-deployment-plans.md) elérhető a saját használatra, és így továbbra is!
 
 ### <a name="contact-support"></a>Kapcsolatfelvétel a támogatási szolgáltatással
 

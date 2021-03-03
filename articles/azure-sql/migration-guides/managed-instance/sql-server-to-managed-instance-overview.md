@@ -9,13 +9,13 @@ ms.topic: how-to
 author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
-ms.date: 11/06/2020
-ms.openlocfilehash: 9afe50e419f9c180b0b5efcd6182eb693dc6622a
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.date: 02/18/2020
+ms.openlocfilehash: 5485d97638679651a3890e0b7578787e481437c6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99093975"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656278"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Áttelepítési Áttekintés: SQL Server a felügyelt SQL-példányhoz
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -90,6 +90,7 @@ A következő táblázat a javasolt áttelepítési eszközöket sorolja fel:
 |---------|---------|
 |[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md)  | Az első fél Azure-szolgáltatás, amely támogatja az offline módban való áttelepítést az áttelepítési folyamat során állásidőt biztosító alkalmazások esetében. Az online módban való folyamatos áttelepítéstől eltérően az offline módú áttelepítés a teljes adatbázis biztonsági másolatának egyszeri visszaállítását futtatja a forrásról a célra. | 
 |[Natív biztonsági mentés és visszaállítás](../../managed-instance/restore-sample-database-quickstart.md) | A felügyelt SQL-példány támogatja a natív SQL Server adatbázis biztonsági másolatainak (. bak fájlok) VISSZAÁLLÍTÁSát, így a legkönnyebb áttelepítési lehetőség azon ügyfelek számára, akik teljes adatbázis-biztonsági mentést biztosíthatnak az Azure Storage-ba. A teljes és a különbözeti biztonsági másolatok is támogatottak és dokumentálva vannak az [áttelepítési eszközök szakaszban](#migration-assets) , a cikk későbbi részében.| 
+|[A log Replay szolgáltatás (LRS)](../../managed-instance/log-replay-service-migrate.md) | Ez egy felhőalapú szolgáltatás, amely a SQL Server naplózási technológia alapján engedélyezve van a felügyelt példányok számára, így áttelepítési lehetőséget biztosít azon ügyfelek számára, akik teljes, differenciált és naplózási adatbázist tudnak készíteni az Azure Storage-ba. A LRS az Azure Blob Storageról az SQL felügyelt példányra történő biztonsági mentési fájlok visszaállítására szolgál.| 
 | | |
 
 ### <a name="alternative-tools"></a>Alternatív eszközök
@@ -116,6 +117,7 @@ A következő táblázat összehasonlítja a javasolt áttelepítési lehetősé
 |---------|---------|---------|
 |[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md) | – Önálló adatbázisok vagy több adatbázis migrálása nagy léptékben. </br> – Az áttelepítési folyamat során az állásidőt is kielégíti. </br> </br> Támogatott források: </br> -SQL Server (2005-2019) helyszíni vagy Azure-beli virtuális gép </br> – AWS EC2 </br> -AWS RDS </br> -GCP számítási SQL Server VM |  – A nagy léptékű Migrálás automatizálható [PowerShell](../../../dms/howto-sql-server-to-azure-sql-mi-powershell.md)használatával. </br> – Az áttelepítés befejezéséhez szükséges idő az adatbázis méretétől függ, és a biztonsági mentés és a visszaállítás időpontját érinti. </br> – Elegendő állásidőre lehet szükség. |
 |[Natív biztonsági mentés és visszaállítás](../../managed-instance/restore-sample-database-quickstart.md) | – Az egyes üzletági alkalmazás-adatbázisok áttelepíthetők.  </br> – Gyors és egyszerű áttelepítés külön áttelepítési szolgáltatás vagy eszköz nélkül.  </br> </br> Támogatott források: </br> -SQL Server (2005-2019) helyszíni vagy Azure-beli virtuális gép </br> – AWS EC2 </br> -AWS RDS </br> -GCP számítási SQL Server VM | – Az adatbázis biztonsági mentése több szálat használ az adatok Azure Blob Storage-ba történő átvitelének optimalizálása érdekében, de az ISV sávszélesség és az adatbázis mérete hatással lehet az átvitel sebességére. </br> – Az állásidőnek el kell fogadnia a teljes biztonsági mentéshez és visszaállításhoz szükséges időt (amely az adatműveletek mérete).| 
+|[A log Replay szolgáltatás (LRS)](../../managed-instance/log-replay-service-migrate.md) | – Az egyes üzletági alkalmazás-adatbázisok áttelepíthetők.  </br> – Az adatbázisok áttelepítéséhez további szabályozásra van szükség.  </br> </br> Támogatott források: </br> -SQL Server (2008-2019) helyszíni vagy Azure-beli virtuális gép </br> – AWS EC2 </br> -AWS RDS </br> -GCP számítási SQL Server VM | – Az áttelepítés a teljes adatbázis biztonsági mentését vonja maga után SQL Server és másolja a biztonságimásolat-fájlokat az Azure Blob Storageba. A LRS az Azure Blob Storageról az SQL felügyelt példányra történő biztonsági mentési fájlok visszaállítására szolgál. </br> – Az áttelepítési folyamat során visszaállított adatbázisok visszaállítási módban lesznek, és nem használhatók olvasásra vagy írásra, amíg a folyamat be nem fejeződik.| 
 | | | |
 
 ### <a name="alternative-options"></a>Alternatív beállítások
@@ -203,7 +205,7 @@ Egyes szolgáltatások csak akkor érhetők el, ha az [adatbázis kompatibilitá
 
 További segítségért tekintse meg az alábbi, a valós migrációs projektekhez fejlesztett forrásokat.
 
-|Objektum  |Description  |
+|Objektum  |Leírás  |
 |---------|---------|
 |[Adatmunkaterhelés-felmérési modell és eszköz](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Ez az eszköz a javasolt "legmegfelelőbb" cél platformot, a felhő készültségét, valamint az alkalmazások/adatbázisok szervizelési szintjét biztosítja egy adott munkaterhelés esetében. Egyszerű, egykattintásos számítási és jelentéskészítési lehetőséget kínál, amely segít felgyorsítani a nagyméretű ingatlanok értékelését azáltal, hogy lehetővé teszi a és automatizált és egységes célként megadott platform döntési folyamatát.|
 |[DBLoader segédprogram](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|A DBLoader felhasználható a tagolt szövegfájlokból származó adatok SQL Serverba való betöltésére. Ez a Windows-konzol segédprogram a SQL Server natív ügyféloldali bulkload felületet használja, amely a SQL Server összes verzióján működik, beleértve az Azure SQL MI-t is.|

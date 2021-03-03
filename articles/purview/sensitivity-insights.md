@@ -6,19 +6,19 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/24/2020
-ms.openlocfilehash: dffecb48a8faa869cb3df450cc220e86195bbc87
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.date: 01/17/2021
+ms.openlocfilehash: bb8ac82b2e59ec86db89c7eba0ce607fcfc0ac2d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98199376"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676561"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>Az Azure hatáskörébe tartozó adataival kapcsolatos adatelemzések
 
 Ez a útmutató azt ismerteti, hogyan lehet hozzáférni, megtekinteni és szűrni az adataira alkalmazott érzékenységi címkék által biztosított biztonsági információkat.
 
-A támogatott adatforrások a következők: Azure Blob Storage, Azure Data Lake Storage (ADLS) GEN 1, Azure Data Lake Storage (ADLS) GEN 2, SQL Server, Azure SQL Database, Azure SQL felügyelt példány
+A támogatott adatforrások közé tartoznak a következők: Azure Blob Storage, Azure Data Lake Storage (ADLS) GEN 1, Azure Data Lake Storage (ADLS) GEN 2, SQL Server, Azure SQL Database, Azure SQL felügyelt példány, Amazon S3 gyűjtők
 
 Ebben a útmutatóban megismerheti a következőket:
 
@@ -40,7 +40,7 @@ A hatáskörébe tartozó ismeretek megismerése előtt győződjön meg arról,
 
 - [Kibővített Microsoft 365 érzékenységi címkéket az Azure hatáskörébe tartozó eszközökre](create-sensitivity-label.md), és létrehozta vagy kiválasztja az adatokra alkalmazni kívánt címkéket.
 
-- Az egyes adatforrások tesztelési célú ellenőrzésének beállítása és befejezése
+- Állítson be és végezzen vizsgálatot az egyes adatforrásokban. További információkért lásd: [adatforrások kezelése az Azure-ban (előzetes verzió)](manage-data-sources.md) , és [hozzon létre egy vizsgálati szabályt](create-a-scan-rule-set.md).
 
 - Jelentkezzen be a hatáskörébe egy [Adatolvasóval vagy egy adatkezelői szerepkörrel](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)rendelkező fiókkal.
 
@@ -78,7 +78,7 @@ A hatáskörébe ugyanazokat a besorolásokat (más néven [bizalmas adattípuso
 
    A fő **érzékenység címkézése** lap a következő területeket jeleníti meg:
 
-   |Terület  |Description  |
+   |Terület  |Leírás  |
    |---------|---------|
    |**Az érzékenységi címkékkel rendelkező források áttekintése**     |A következőket biztosító csempéket jeleníti meg: <br>– Az adataiban található előfizetések száma. <br>– Az adatain alkalmazott egyedi érzékenységi címkék száma <br>– Az érzékenységi címkékkel rendelkező források száma <br>– Az érzékenységi címkékkel megtalált fájlok és táblák száma|
    |**Legfelső szintű források címkézett adattal (utolsó 30 nap)**     | Megjeleníti az elmúlt 30 napban fellépő trendeket, amelyek az érzékenységi címkékkel rendelkező források számát mutatják.       |
@@ -97,7 +97,7 @@ A további részletekért **tekintse** meg a további részleteket a részletes 
 - **Táblákon alkalmazott leggyakoribb feliratok**
 - **Címkéző tevékenység > címkézett adatként**
 
-Példa:
+Például:
 
 :::image type="content" source="media/insights/sensitivity-label-drilldown-small.png" alt-text="Érzékenységi címke részletezése" lightbox="media/insights/sensitivity-label-drilldown.png":::
 

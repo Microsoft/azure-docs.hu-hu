@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 503d5c5c8d605e56ca510f12cd9c6f5a1f21c0bc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 88fdfa1f449a0b65861ee09f2e78055a606c99d3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417490"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649206"
 ---
 # <a name="governing-on-premises-service-accounts"></a>Helyszíni szolgáltatásfiókok szabályozása
 
@@ -60,11 +60,11 @@ Fontos, hogy a szolgáltatásfiókok az alábbiakhoz legyenek szorosan irányít
 
 A következő beállításokat használhatja szolgáltatásfiókokként használt felhasználói fiókokkal:
 
-* [**Fiók lejárata**](https://docs.microsoft.com/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps): állítsa be, hogy a szolgáltatásfiók a felülvizsgálati időszak után automatikusan lejárjon egy meghatározott időtartamot, kivéve, ha megállapítható, hogy folytatni kell
+* [**Fiók lejárata**](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps): állítsa be, hogy a szolgáltatásfiók a felülvizsgálati időszak után automatikusan lejárjon egy meghatározott időtartamot, kivéve, ha megállapítható, hogy folytatni kell
 
 *  **LogonWorkstations**: korlátozza azokat az engedélyeket, amelyekre a szolgáltatásfiók be tud jelentkezni. Ha helyileg fut a gépen, és csak az adott gépen lévő erőforrásokhoz fér hozzá, korlátozza azt a bejelentkezést bárhol máshol.
 
-* A [**jelszó nem módosítható**](https://docs.microsoft.com/powershell/module/addsadministration/set-aduser?view=win10-ps): akadályozza meg, hogy a szolgáltatásfiók ne módosítsa a saját jelszavát úgy, hogy a paraméter hamis értékre van állítva.
+* A [**jelszó nem módosítható**](/powershell/module/addsadministration/set-aduser?view=win10-ps): akadályozza meg, hogy a szolgáltatásfiók ne módosítsa a saját jelszavát úgy, hogy a paraméter hamis értékre van állítva.
 
  
 ## <a name="build-a-lifecycle-management-process"></a>Életciklus-kezelési folyamat létrehozása
@@ -149,17 +149,17 @@ A kockázatértékelés, miután végzett és dokumentált, hatással lehet a k�
 
 Csak azt követően hozzon létre szolgáltatásfiókot a CMDB, hogy dokumentálja a megfelelő információkat, és elvégzi a kockázatértékelést. A fiókra vonatkozó korlátozásokat a kockázatértékeléshez kell igazítani. Az értékeléshez kapcsolódóan vegye figyelembe a következő korlátozásokat:
 
-* [Fiók lejárata](https://docs.microsoft.com/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps)
+* [Fiók lejárata](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps)
 
-   * A szolgáltatásfiókokként használt összes felhasználói fiók esetében adjon meg egy reális és határozott záró dátumot a használathoz. Ezt a "fiók lejárata" jelzővel állíthatja be. További részletekért tekintse[ meg a set-ADAccountExpiration](https://docs.microsoft.com/powershell/module/addsadministration/set-adaccountexpiration?view=win10-ps)című témakört. 
+   * A szolgáltatásfiókokként használt összes felhasználói fiók esetében adjon meg egy reális és határozott záró dátumot a használathoz. Ezt a "fiók lejárata" jelzővel állíthatja be. További részletekért tekintse[ meg a set-ADAccountExpiration](/powershell/module/addsadministration/set-adaccountexpiration?view=win10-ps)című témakört. 
 
-* Bejelentkezés ([LogonWorkstation](https://docs.microsoft.com/powershell/module/addsadministration/set-aduser?view=win10-ps))
+* Bejelentkezés ([LogonWorkstation](/powershell/module/addsadministration/set-aduser?view=win10-ps))
 
-* [Jelszóházirend](https://docs.microsoft.com/azure/active-directory-domain-services/password-policy) -követelmények
+* [Jelszóházirend](../../active-directory-domain-services/password-policy.md) -követelmények
 
-* Létrehozás egy [szervezeti egységben](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/delegating-administration-of-account-ous-and-resource-ous) , amely csak a Kiemelt jogosultságú felhasználók felügyeletét biztosítja
+* Létrehozás egy [szervezeti egységben](/windows-server/identity/ad-ds/plan/delegating-administration-of-account-ous-and-resource-ous) , amely csak a Kiemelt jogosultságú felhasználók felügyeletét biztosítja
 
-* A szolgáltatásfiók módosításait és a [szolgáltatásfiók használatát](https://www.manageengine.com/products/active-directory-audit/how-to/audit-kerberos-authentication-events.html) [észlelő](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-directory-service-changes) naplózás beállítása és gyűjtése.
+* A szolgáltatásfiók módosításait és a [szolgáltatásfiók használatát](https://www.manageengine.com/products/active-directory-audit/how-to/audit-kerberos-authentication-events.html) [észlelő](/windows/security/threat-protection/auditing/audit-directory-service-changes) naplózás beállítása és gyűjtése.
 
 Ha készen áll az éles környezetbe való üzembe helyezésre, biztonságos hozzáférést biztosít a szolgáltatásfiók számára. 
 
@@ -193,7 +193,7 @@ Az összes engedély eltávolítása után ezt a folyamatot használhatja a fió
 
 3. A szolgáltatási fiók törlése a maradó letiltott házirend betartása után. 
 
-   * A MSAs a felügyelt szolgáltatásfiók-tárolóból [eltávolíthatja](https://docs.microsoft.com/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps) a PowerShell használatával, vagy manuálisan is törölheti azt.
+   * A MSAs a felügyelt szolgáltatásfiók-tárolóból [eltávolíthatja](/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps) a PowerShell használatával, vagy manuálisan is törölheti azt.
 
    * A számítógép-vagy felhasználói fiókok esetében manuálisan is törölheti a fiókot Active Directory.
 

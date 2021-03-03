@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 39973fe8c15364dc214392985cecd8b8bc7834ed
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 9a50d8402515cb7aafa9a1b02c8b8c18412f6618
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878205"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659392"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning-adathalmazok létrehozása
 
@@ -82,7 +82,7 @@ A TabularDatasets megadhat egy időbélyeget az adatok egyik oszlopában, vagy b
 Hozzon létre egy TabularDataset [a PYTHON SDK](#create-a-tabulardataset) -val vagy a [Azure Machine learning Studióval](how-to-connect-data-ui.md#create-datasets).
 
 >[!NOTE]
-> A Azure Machine Learning Studio használatával generált AutoML-munkafolyamatok jelenleg csak a TabularDatasets támogatják. 
+> A Azure Machine Learning Studio használatával generált [AUTOMATIZÁLT ml](concept-automated-ml.md) -munkafolyamatok jelenleg csak a TabularDatasets támogatják. 
 
 ## <a name="access-datasets-in-a-virtual-network"></a>Adatkészletek elérése egy virtuális hálózaton
 
@@ -90,15 +90,20 @@ Ha a munkaterület virtuális hálózatban található, az érvényesítés kiha
 
 <a name="datasets-sdk"></a>
 
-## <a name="create-datasets"></a>Adatkészletek létrehozása
+## <a name="create-datasets-from-datastores"></a>Adatkészletek létrehozása adattárolóból
 
-Ahhoz, hogy az adatok elérhetők legyenek Azure Machine Learning számára, az adatkészleteket az [Azure](how-to-access-data.md) -adattárolók vagy nyilvános webes URL-címek elérési útjaiból kell létrehozni. 
+Ahhoz, hogy az adatok elérhetők legyenek Azure Machine Learning számára, az adatkészleteket [Azure Machine learning](how-to-access-data.md) adattárolók vagy webes URL-címek elérési útjaiból kell létrehozni. 
 
-Adatkészletek létrehozása Azure- [adattárból](how-to-access-data.md) a Python SDK-val:
+> [!TIP] 
+> Létrehozhat adatkészleteket közvetlenül a Storage URL-címekről az identitás-alapú adateléréssel. További információ: a [Kapcsolódás a Storage szolgáltatáshoz identitás-alapú adathozzáféréssel (előzetes verzió)](how-to-identity-based-data-access.md)<br><br>
+Ez a funkció egy [kísérleti](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) előzetes verzió, és bármikor megváltozhat. 
 
-1. Ellenőrizze, hogy rendelkezik `contributor` -e `owner` a regisztrált Azure adattárral.
+ 
+Adatkészletek létrehozása adattárból a Python SDK-val:
 
-2. Hozza létre az adatkészletet az adattár elérési útjaira hivatkozó hivatkozásokkal. Több adattárból is létrehozhat adatkészletet több adattárolóban. Az adatkészletek létrehozásához használt fájlok vagy adatméretek száma nem korlátozott. 
+1. Ellenőrizze, hogy rendelkezik `contributor` -e a `owner` regisztrált Azure Machine learning adattárának mögöttes tárolási szolgáltatásával, vagy hogy rendelkezik-e hozzáféréssel. [Győződjön meg arról, hogy a Storage-fiók engedélyei szerepelnek a Azure Portalban](../role-based-access-control/check-access.md).
+
+1. Hozza létre az adatkészletet az adattár elérési útjaira hivatkozó hivatkozásokkal. Több adattárból is létrehozhat adatkészletet több adattárolóban. Az adatkészletek létrehozásához használt fájlok vagy adatméretek száma nem korlátozott. 
 
 > [!NOTE]
 > Minden egyes adatelérési útvonal esetében néhány kérelmet küld a rendszer a Storage szolgáltatásnak, hogy meggyőződjön arról, hogy egy fájlra vagy mappára mutat. Ez a terhelés csökkentheti a teljesítményt vagy a hibát. Egy 1000-fájlon belüli, egy mappára hivatkozó adatkészlet egy adatútvonalra hivatkozik. Javasoljuk, hogy az optimális teljesítmény érdekében az adattárolók kevesebb mint 100 útvonalára hivatkozó adatkészletet hozzon létre.
@@ -261,7 +266,7 @@ Az [https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-
 További információ a sablonok használatáról: [Azure Resource Manager sablon használata munkaterületek létrehozásához Azure Machine learning számára](how-to-create-workspace-template.md).
 
 
-## <a name="create-datasets-with-azure-open-datasets"></a>Adatkészletek létrehozása az Azure Open-adatkészletekkel
+## <a name="create-datasets-from-azure-open-datasets"></a>Adatkészletek létrehozása az Azure Open-adatkészletekben
 
 Az [Azure Open-adatkészletek](https://azure.microsoft.com/services/open-datasets/) olyan beszerzett nyilvános adatkészletek, amelyekkel pontosabb modelleket adhat hozzá a gépi tanulási megoldásokhoz. Az adatkészletek olyan nyilvános tartományi adatokat foglalnak magukban, mint az időjárás, a népszámlálás, az ünnepnapok, a közbiztonság és a gépi tanulási modellek betanítását és a prediktív megoldások bővítését segítő hely. A nyílt adatkészletek a felhőben vannak Microsoft Azure és az SDK-ban és a Studióban is szerepelnek.
 
@@ -269,7 +274,7 @@ Megtudhatja, hogyan hozhat létre [Azure Machine learning adatkészleteket az Az
 
 ## <a name="train-with-datasets"></a>Betanítás adathalmazok használatával
 
-Az adatkészleteket a gépi tanulási kísérletekben használhatja a ML-modellek betanításához. [További információ az adatkészletek betanításáról](how-to-train-with-datasets.md)
+Az adatkészleteket a gépi tanulási kísérletekben használhatja a ML-modellek betanításához. [További információ az adatkészletek betanításáról](how-to-train-with-datasets.md).
 
 ## <a name="version-datasets"></a>Verziók adatkészletei
 
@@ -287,7 +292,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
                                  create_new_version = True)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, [Hogyan lehet betanítani az adatkészleteket](how-to-train-with-datasets.md).
 * Az automatizált gépi tanulást a TabularDatasets-mel való [betanításhoz](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)használhatja.

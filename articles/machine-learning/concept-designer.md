@@ -10,14 +10,14 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 059b521461969d8148ced90cb3ceffd14a00c4bb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b439c5f084c762d3a256806d2e45dab96832bb78
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322252"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661086"
 ---
-# <a name="what-is-azure-machine-learning-designer"></a>Mi az Azure Machine Learning Designer? 
+# <a name="what-is-azure-machine-learning-designer"></a>Mi az az Azure Machine Learning-tervező? 
 
 
 A Azure Machine Learning Designer lehetővé teszi, hogy vizuálisan összekapcsolja az [adatkészleteket](#datasets) és a [modulokat](#module) egy interaktív vásznon a gépi tanulási modellek létrehozásához. A tervező megismeréséhez tekintse meg a következő [oktatóanyagot: az autó árának előrejelzése a tervezővel](tutorial-designer-automobile-price-train-score.md)
@@ -26,7 +26,7 @@ A Azure Machine Learning Designer lehetővé teszi, hogy vizuálisan összekapcs
 
 A tervező a Azure Machine Learning [munkaterületet](concept-workspace.md) használja a megosztott erőforrások rendszerezéséhez, például:
 
-+ [Folyamatok](#pipeline)
++ [Pipelines](#pipeline)
 + [Adatkészletek](#datasets)
 + [Számítási erőforrások](#compute)
 + [Regisztrált modellek](concept-azure-machine-learning-architecture.md#models)
@@ -81,7 +81,7 @@ A modulok az adatokon végezhető algoritmusok. A tervező több modult is tarta
 
 A modul rendelkezhet a belső algoritmusok konfigurálásához használható paraméterek készletével. Amikor kiválaszt egy modult a vásznon, a modul paraméterei megjelennek a Tulajdonságok panelen a vászontól jobbra. A modell hangolásához módosíthatja a paramétereket a panelen. A tervezőben beállíthatja az egyes modulok számítási erőforrásait. 
 
-:::image type="content" source="./media/concept-designer/properties.png"alt-text="Modul tulajdonságai":::
+:::image type="content" source="./media/concept-designer/properties.png" alt-text="Modul tulajdonságai":::
 
 
 Ha segítségre van az elérhető gépi tanulási algoritmusok könyvtárában, tekintse át a következő témakört: [algoritmus & modul-hivatkozás áttekintése](algorithm-module-reference/module-reference.md). Az algoritmus kiválasztásával kapcsolatos segítségért tekintse meg a [Azure Machine learning algoritmust ismertető lapot](algorithm-cheat-sheet.md).

@@ -9,22 +9,21 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: c51a2a06-6e97-429b-a346-b433a785c9f0
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: juergent
-ms.openlocfilehash: 83c149e92276265b5b5236ae56c475d7307c18e4
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 54bfd7c6e691efbd754e9ea2b804e16b3e07ebbe
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093910"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670975"
 ---
 # <a name="installation-of-sap-hana-on-azure-virtual-machines"></a>SAP HANA telepítése Azure-beli virtuális gépeken
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 Ez az útmutató a HANA Azure-beli virtuális gépeken való üzembe helyezésének megfelelő erőforrásaira mutat. Ez az útmutató arra a dokumentációs erőforrásokra mutat, amelyet a SAP HANA Azure-beli virtuális gépen való telepítése előtt ellenőriznie kell. Így a megfelelő lépések végrehajtásával az Azure-beli virtuális gépeken SAP HANA támogatott konfigurációval végződhet.  
 
 > [!NOTE]

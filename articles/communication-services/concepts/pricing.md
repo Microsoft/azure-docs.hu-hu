@@ -9,17 +9,14 @@ ms.author: mikben
 ms.date: 09/29/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 883be25716d94130984baef5e7a1eab80888a2b9
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: bf255837a08a4810321f2f03cb97838e31a7cddc
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558467"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657757"
 ---
 # <a name="pricing-scenarios"></a>Díjszabási forgatókönyvek
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
 
 Az Azure kommunikációs szolgáltatások díjszabása általában az utólagos elszámolású modellen alapul. A következő példákban szereplő díjak szemléltető célokat szolgálnak, és nem feltétlenül tükrözik a legújabb Azure-díjszabást.
 
@@ -50,7 +47,7 @@ Alice csoportos hívást készített a kollégáival, Bob és Charlie-val. Alice
 
 ### <a name="pricing-example-a-user-of-the-communication-services-js-client-library-joins-a-scheduled-microsoft-teams-meeting"></a>Díjszabási példa: a kommunikációs szolgáltatások JS ügyféloldali kódtár felhasználója egy ütemezett Microsoft Teams-találkozóhoz csatlakozik
 
-Alice egy orvos, aki a betegével találkozott, Bob. Alice csatlakozik a csapat asztali alkalmazásban található látogatáshoz. Bob kap egy hivatkozást az egészségügyi szolgáltató webhelyéről való csatlakozásra, amely a kommunikációs szolgáltatások JS ügyféloldali kódtár használatával csatlakozik az értekezlethez. Bob a mobiltelefonnal fogja használni az értekezletet egy webböngészővel (iPhone Safari használatával). A csevegés a virtuális látogatás során lesz elérhető. 
+Alice egy orvos, aki a betegével találkozott, Bob. Alice csatlakozik a csapat asztali alkalmazásban található látogatáshoz. Bob kap egy hivatkozást az egészségügyi szolgáltató webhelyéről való csatlakozásra, amely a kommunikációs szolgáltatások JS ügyféloldali kódtár használatával csatlakozik az értekezlethez. Bob a mobiltelefonnal fogja használni az értekezletet egy webböngészővel (iPhone Safari használatával). A csevegés a virtuális látogatás során lesz elérhető.
 
 - A hívás összesen 30 percet vesz igénybe.
 - Alice és Bob részt vesz a teljes hívásban. Alice bekapcsolja a videót öt perccel a hívás elindítása után, és megosztja a képernyőjét 13 percig. Bob a teljes híváshoz tartozó videóval rendelkezik.
@@ -60,15 +57,15 @@ Alice egy orvos, aki a betegével találkozott, Bob. Alice csatlakozik a csapat 
 **Költségszámítások**
 
 - 1 résztvevő (Bob) x 30 perc x $0,004/résztvevő/perc = $0,12 [a videó és az audió díja azonos a díjszabásban]
-- 1 résztvevő (Alice) x 30 perc x $0,000/résztvevő/perc = $0,0 *. 
+- 1 résztvevő (Alice) x 30 perc x $0,000/résztvevő/perc = $0,0 *.
 - 1 résztvevő (Bob) x 3 csevegési üzenet x $0,0008 = $0,0024.
-- 1 résztvevő (Alice) x 5 csevegési üzenet x $0,000 = $0,0 *. 
+- 1 résztvevő (Alice) x 5 csevegési üzenet x $0,000 = $0,0 *.
 
 * Alice részvételét a csapatának licence szabályozza. Az Azure-számlán megtekintheti azokat a perceket és csevegéseket, amelyeket a felhasználók a kommunikációs szolgáltatásokat használó felhasználók számára biztosítanak az Ön kényelme érdekében, de ezek a percek és a Teams-ügyféltől származó üzenetek nem kerülnek be
 
-**A látogatás teljes költsége**: 
+**A látogatás teljes költsége**:
 - Felhasználói csatlakozás a kommunikációs szolgáltatások JS-ügyféloldali kódtár használatával: $0,12 + $0,0024 = $0,1224
-- Felhasználói csatlakozás a Teams Desktop alkalmazáshoz: $0 (a csapat licence vonatkozik rájuk) 
+- Felhasználói csatlakozás a Teams Desktop alkalmazáshoz: $0 (a csapat licence vonatkozik rájuk)
 
 
 ## <a name="chat"></a>Csevegés
@@ -79,27 +76,27 @@ A kommunikációs szolgáltatások segítségével javíthatja az alkalmazást, 
 
 Minden elküldött Csevegésnél $0,0008 díjat számítunk fel.
 
-### <a name="pricing-example-chat-between-two-users"></a>Díjszabási példa: csevegés két felhasználó között 
+### <a name="pricing-example-chat-between-two-users"></a>Díjszabási példa: csevegés két felhasználó között
 
 A-vel egy olyan csevegési szálat indít el, amely az Emily használatával megoszt egy frissítést, és 5 üzenetet küld. A csevegés 10 percet vesz igénybe. A és az Emily egy másik 15 üzenetet küld.
 
-**Költségszámítások** 
+**Költségszámítások**
 - Küldött üzenetek száma (5 + 15 + 15) x $0,0008 = $0,028
 
-### <a name="pricing-example-group-chat-with-multiple-users"></a>Díjszabási példa: csoportos csevegés több felhasználóval 
+### <a name="pricing-example-group-chat-with-multiple-users"></a>Díjszabási példa: csoportos csevegés több felhasználóval
 
-Charlie elindít egy csevegési szálat barátaival Casey & Jasmine-vel, hogy megtervezze a nyaralást. Beszélgetnek egy darabig, amelyben Charlie, Casey & jázmin 20, 30 és 18 üzenetet küld. Tisztában vagyunk azzal, hogy a barát Rose-nak érdekes lehet az utazáshoz való csatlakozás is, így hozzá kell adnia a csevegési szálhoz, és meg kell osztania az összes korábbi üzenetet. 
+Charlie elindít egy csevegési szálat barátaival Casey & Jasmine-vel, hogy megtervezze a nyaralást. Beszélgetnek egy darabig, amelyben Charlie, Casey & jázmin 20, 30 és 18 üzenetet küld. Tisztában vagyunk azzal, hogy a barát Rose-nak érdekes lehet az utazáshoz való csatlakozás is, így hozzá kell adnia a csevegési szálhoz, és meg kell osztania az összes korábbi üzenetet.
 
 Rose látja az üzeneteket, és elindítja a csevegést. Az időpontban egy hívást kezdeményeznek, és később úgy dönt, hogy felveszi a beszélgetést. Charlie, jázmin & Rose dönt az utazási dátumokról, és egy újabb 30, 25, 35 üzenetet küld.
 
-**Költségszámítások** 
+**Költségszámítások**
 
 - Küldött üzenetek száma (20 + 30 + 18 + 30 + 25 + 35) x $0,0008 = $0,1264
 
 
 ## <a name="telephony-and-sms"></a>Telefonos funkciók és SMS
 
-## <a name="price"></a>Ár 
+## <a name="price"></a>Ár
 
 A telefonos szolgáltatások díjszabása percenként történik, az SMS-t pedig az üzenetek díjszabása alapján számítjuk fel. A díjszabást a használt szám típusa és helye, valamint a hívások és az SMS-üzenetek rendeltetése határozza meg.
 

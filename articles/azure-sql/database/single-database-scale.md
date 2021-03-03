@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
-ms.date: 09/16/2020
-ms.openlocfilehash: da3c70baccc3c86f2ac57d61539456464e3042b6
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 02/22/2021
+ms.openlocfilehash: 2aba44f6c2f10ead1827e1b1411f3824a0ec2d6c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493406"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658554"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Önálló adatbázis erőforrásainak skálázása az Azure SQL Database-ben
 
@@ -112,6 +112,7 @@ else {
 - Ha a [geo-replikálást](active-geo-replication-configure-portal.md) engedélyező adatbázis visszaminősítése engedélyezve van, az elsődleges adatbázisokat a kívánt szolgáltatási rétegre és számítási méretre kell visszaminősíteni a másodlagos adatbázis visszaminősítése előtt (általános útmutató a legjobb teljesítményhez). Egy másik kiadásra való visszalépéskor követelmény, hogy először az elsődleges adatbázist kell visszaértékelni.
 - A visszaállítási szolgáltatásajánlatok eltérőek a különböző szolgáltatási szintek esetében. Ha az **alapszintű szintre vált** , alacsonyabb biztonsági mentési megőrzési idő van. Lásd: [Azure SQL Database biztonsági mentések](automated-backups-overview.md).
 - Az adatbázis új tulajdonságai nem lesznek alkalmazva, amíg a módosítások be nem fejeződik.
+- Ha adatmásolásra van szükség az adatbázis skálázásához (lásd a [késést](#latency)) a szolgáltatási réteg módosításakor, a skálázási művelettel párhuzamos magas erőforrás-kihasználtság hosszú skálázási időt eredményezhet. A [gyorsított adatbázis-helyreállítással (ADR)](/sql/relational-databases/accelerated-database-recovery-concepts.md)a hosszú ideig futó tranzakciók visszaállítása nem jelentős késési forrás, de a magas párhuzamos erőforrás-használat kevesebb számítási, tárolási és hálózati sávszélesség-erőforrást hagy a méretezéshez, különösen a kisebb számítási méretekhez.
 
 ## <a name="billing"></a>Számlázás
 
@@ -153,6 +154,6 @@ A prémium szinten több mint 1 TB tárterület jelenleg minden régióban elér
   - Az elsődleges adatbázis frissítése földrajzi replikálási kapcsolatban: az elsődleges adatbázison az 1 TB-nál nagyobb maximális méret megváltozása a másodlagos adatbázison ugyanezt a változást indítja el. Mindkét frissítésnek sikeresnek kell lennie ahhoz, hogy az elsődleges módosítás érvénybe lépjen. Az 1 TB-nál nagyobb területi korlátozások érvényesek. Ha a másodlagos olyan régióban található, amely nem támogatja az 1 TB-ot, az elsődleges nem frissül.
 - Az import/export szolgáltatás használata az 1 TB-nál nagyobb P11-vagy P15-adatbázisok betöltéséhez nem támogatott. A SqlPackage.exe használatával [importálhat](database-import.md) és [exportálhat](database-export.md) adatfájlokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A teljes erőforrás-korlátokkal kapcsolatban lásd: [Azure SQL Database virtuális mag-alapú erőforrás-korlátok – önálló adatbázisok](resource-limits-vcore-single-databases.md) és [Azure SQL Database DTU-alapú erőforrás-korlátok – önálló adatbázisok](resource-limits-dtu-single-databases.md).

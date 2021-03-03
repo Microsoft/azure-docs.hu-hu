@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: 5381c12253f3f301099d469639cc75e390ebceff
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 596eca0d73ffc4a590fae9b346658a2c31a1d68c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100360958"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676473"
 ---
 # <a name="creating-indexers-in-azure-cognitive-search"></a>Indexelő létrehozása az Azure Cognitive Searchban
 
@@ -155,7 +155,7 @@ Az indexelő által támogatott változások észlelésének módja az adatforr�
 
 A nagyméretű indexelési terhelések esetében az indexelő nyomon követi az utolsó, a belső "magas vízjelek" által feldolgozott dokumentumot. A jelölő soha nem érhető el az API-ban, de belsőleg az indexelő nyomon követi a leállt helyét. Ha az indexelés folytatódik, vagy egy ütemezett futtatás vagy egy igény szerinti hívás útján, az indexelő a magas vízjelekre hivatkozik, hogy az képes legyen abbahagyni.
 
-Ha törölnie kell a magas vízjeleket, hogy az újraindexelés teljes legyen, használja az [Indexelő alaphelyzetbe állítása](https://docs.microsoft.com/rest/api/searchservice/reset-indexer)lehetőséget. A szelektív újraindexeléshez használja a [képességek alaphelyzetbe állítása](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills) vagy a [dokumentumok alaphelyzetbe állítása című dokumentumot](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-documents). Az API-k alaphelyzetbe állításával törölheti a belső állapotot, és ha engedélyezte a [növekményes](search-howto-incremental-index.md)bővítést, kiürítheti a gyorsítótárat is. További hátteret és az egyes alaphelyzetek összehasonlítását lásd: [Indexelő, készségek és dokumentumok futtatása vagy visszaállítása](search-howto-run-reset-indexers.md).
+Ha törölnie kell a magas vízjeleket, hogy az újraindexelés teljes legyen, használja az [Indexelő alaphelyzetbe állítása](/rest/api/searchservice/reset-indexer)lehetőséget. A szelektív újraindexeléshez használja a [képességek alaphelyzetbe állítása](/rest/api/searchservice/preview-api/reset-skills) vagy a [dokumentumok alaphelyzetbe állítása című dokumentumot](/rest/api/searchservice/preview-api/reset-documents). Az API-k alaphelyzetbe állításával törölheti a belső állapotot, és ha engedélyezte a [növekményes](search-howto-incremental-index.md)bővítést, kiürítheti a gyorsítótárat is. További hátteret és az egyes alaphelyzetek összehasonlítását lásd: [Indexelő, készségek és dokumentumok futtatása vagy visszaállítása](search-howto-run-reset-indexers.md).
 
 ## <a name="know-your-data"></a>Az adatai ismerete
 
@@ -165,7 +165,7 @@ Ha a viszonyítási adatokat egy sorba állítja, létre kell hoznia egy SQL-né
 
 Az összeolvasztott adatok mellett fontos, hogy csak kereshető adatok legyenek lekérdezve. A kereshető adatértékek alfanumerikusak. Cognitive Search nem tud bármilyen formátumú bináris adaton keresni, bár a képfájlok szöveges leírását kinyerheti és kikövetkeztetheti (lásd: [AI](cognitive-search-concept-intro.md)-bővítés) kereshető tartalom létrehozásához. Hasonlóképpen, az AI-bővítés használatával a nagyméretű szövegeket természetes nyelvi modellekkel elemezheti, hogy megkeresse a szerkezetet vagy a kapcsolódó információkat, és új tartalmat adjon hozzá a keresési dokumentumokhoz.
 
-Mivel az indexelő nem javítja az adatproblémákat, szükség lehet az adattisztítás más formáira vagy a manipulációra. További információkért tekintse meg az [Azure Database termék](/azure/?product=databases)termékdokumentációját.
+Mivel az indexelő nem javítja az adatproblémákat, szükség lehet az adattisztítás más formáira vagy a manipulációra. További információkért tekintse meg az [Azure Database termék](../index.yml?product=databases)termékdokumentációját.
 
 ## <a name="know-your-index"></a>Az index megismerése
 

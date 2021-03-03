@@ -12,12 +12,12 @@ ms.date: 02/01/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b948de6ad9e07a650df98ef38104c02462ab532d
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 78f844295c16d15be65f345881ec92fa15a9734a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428031"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649223"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD-hitelesítési és -engedélyezési hibakódok
 
@@ -95,7 +95,7 @@ Ha például a "AADSTS50058" hibakódot kapta, keressen rá a [https://login.mic
 | AADSTS50000 | TokenIssuanceError – probléma van a bejelentkezési szolgáltatással. [Hozzon létre támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) a probléma megoldásához. |
 | AADSTS50001 | InvalidResource – az erőforrás le van tiltva vagy nem létezik. Ellenőrizze az alkalmazás kódjában, hogy megadta-e az elérni kívánt erőforrás URL-címét.  |
 | AADSTS50002 | NotAllowedTenant – a bejelentkezés sikertelen volt, mert a bérlőn korlátozott a proxy hozzáférése. Saját bérlői szabályzat esetén módosíthatja a korlátozott bérlői beállításokat a probléma megoldásához. |
-| AADSTS500021 | A (z) {bérlő} bérlő hozzáférése megtagadva. A AADSTS500021 azt jelzi, hogy a bérlői korlátozási szolgáltatás konfigurálva van, és a felhasználó olyan bérlőhöz próbál hozzáférni, amely nem szerepel a fejlécben megadott engedélyezett bérlők listáján `Restrict-Access-To-Tenant` . További információ: a [bérlői korlátozások használata a SaaS-Felhőbeli alkalmazásokhoz való hozzáférés kezeléséhez](/azure/active-directory/manage-apps/tenant-restrictions).|
+| AADSTS500021 | A (z) {bérlő} bérlő hozzáférése megtagadva. A AADSTS500021 azt jelzi, hogy a bérlői korlátozási szolgáltatás konfigurálva van, és a felhasználó olyan bérlőhöz próbál hozzáférni, amely nem szerepel a fejlécben megadott engedélyezett bérlők listáján `Restrict-Access-To-Tenant` . További információ: a [bérlői korlátozások használata a SaaS-Felhőbeli alkalmazásokhoz való hozzáférés kezeléséhez](../manage-apps/tenant-restrictions.md).|
 | AADSTS50003 | MissingSigningKey – a bejelentkezés nem sikerült, mert hiányzik az aláíró kulcs vagy tanúsítvány. Ennek az lehet az oka, hogy az alkalmazásban nem volt konfigurálva aláíró kulcs. Tekintse át a következő helyen ismertetett felbontásokat: [.. /Manage-apps/Application-Sign-in-problem-Federated-SSO-Gallery.MD # tanúsítvány-vagy kulcs-nincs konfigurálva](../manage-apps/application-sign-in-problem-federated-sso-gallery.md#certificate-or-key-not-configured). Ha továbbra is problémákat tapasztal, lépjen kapcsolatba az alkalmazás tulajdonosával vagy az alkalmazás rendszergazdájával. |
 | AADSTS50005 | DevicePolicyError – a felhasználó olyan platformról próbált meg bejelentkezni egy eszközre, amelyet jelenleg nem támogat a feltételes hozzáférési házirend. |
 | AADSTS50006 | Az InvalidSignature-aláírás ellenőrzése sikertelen volt, mert érvénytelen az aláírás. |
@@ -168,6 +168,7 @@ Ha például a "AADSTS50058" hibakódot kapta, keressen rá a [https://login.mic
 | AADSTS50168 | ChromeBrowserSsoInterruptRequired – az ügyfél képes egyszeri bejelentkezéses jogkivonat beszerzésére a Windows 10-es fiókok bővítményen keresztül, de a jogkivonat nem található a kérelemben, vagy lejárt a megadott jogkivonat. |
 | AADSTS50169 | InvalidRequestBadRealm – a tartomány nem az aktuális szolgáltatási névtér konfigurált tartománya. |
 | AADSTS50170 | MissingExternalClaimsProviderMapping – a külső vezérlők leképezése hiányzik. |
+| AADSTS50173 | FreshTokenNeeded – a megadott támogatás lejárt a visszavonás miatt, és szükség van egy új hitelesítési jogkivonatra. Egy rendszergazda vagy egy felhasználó visszavonta a felhasználó jogkivonatait, ami azt eredményezi, hogy a következő jogkivonat frissítése sikertelen lesz, és újrahitelesítés szükséges. Jelentkezzen be újra a felhasználóval. |
 | AADSTS50177 | ExternalChallengeNotSupportedForPassthroughUsers – az átadó felhasználók nem támogatják a külső kihívásokat. |
 | AADSTS50178 | A SessionControlNotSupportedForPassthroughUsers nem támogatja az áteresztő felhasználók számára a munkamenet-vezérlést. |
 | AADSTS50180 | WindowsIntegratedAuthMissing – integrált Windows-hitelesítésre van szükség. Engedélyezze a Seamless SSO-t a bérlőn. |

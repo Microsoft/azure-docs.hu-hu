@@ -10,19 +10,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 294870d3448886b9cea573a0e79b3ac436941f89
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: b1c03bafd6d97dd6a60defee00d4efe854315631
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696489"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648084"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó üzembe helyezéséhez szükséges a NetSuite konfigurálása
 
 Ennek az oktatóanyagnak a célja, hogy megmutassa a NetSuite OneWorld és az Azure AD-ben elvégzendő lépéseket, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat az Azure AD-ből a NetSuite-ba.
 
 > [!WARNING]
-> Ez a kiépítési integráció a Microsoft által a NetSuite-ba való kiépítéséhez használt NetSuite API-k változása miatt nem fog működni a 2020 februárjában. Ennek eredményeképpen a rendszer hamarosan eltávolítja a NetSuite alkalmazás kiépítési funkcióit a Azure Active Directory Enterprise app Galleryben. Az alkalmazás egyszeri bejelentkezéses funkciója érintetlen marad. A Microsoft a NetSuite-nal együttműködve új, modernizált kiépítési integrációt hoz létre, de jelenleg nincs olyan ETA, amelyen ez a művelet befejeződik.
+> Ez a kiépítési integráció nem fog működni a Microsoft által a NetSuite-ba való kiépítéséhez használt NetSuite API-k változása miatti, a 2021-as Spring frissítésének kiadásával.  Ez a frissítés a NetSuite-ügyfeleket 2021 február és április között éri el. Ennek eredményeképpen a rendszer hamarosan eltávolítja a NetSuite alkalmazás kiépítési funkcióit a Azure Active Directory Enterprise app Galleryben. Az alkalmazás egyszeri bejelentkezéses funkciója érintetlen marad. A Microsoft a NetSuite-nal együttműködve új, modernizált kiépítési integrációt hoz létre, de jelenleg nincs olyan ETA, amelyen ez a művelet befejeződik.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

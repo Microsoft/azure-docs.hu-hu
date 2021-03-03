@@ -2,18 +2,18 @@
 title: Red Hat Enterprise Linux lemezképek helyben történő frissítése az Azure-ban
 description: Ismerje meg, hogyan végezheti el a Red Hat Enterprise 7. x lemezképek helyben történő frissítését a legújabb 8. x verzióra.
 author: mathapli
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: redhat
+ms.collection: linux
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
-ms.reviewer: cynthn
-ms.openlocfilehash: 9b35a3cbe23af91f7f0b8aceecfb8ba3c9720461
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1be0904cc640eff5af7a77bba3abd6aa062991a8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484413"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676075"
 ---
 # <a name="red-hat-enterprise-linux-in-place-upgrades"></a>Helyi frissítések Red Hat Enterprise Linux
 
@@ -136,7 +136,7 @@ A következő hibák gyakran történnek, ha a `leapp preupgrade` folyamat meghi
     Ez a hiba akkor fordul elő, ha a root SSH-hozzáférés nincs engedélyezve a */etc/sshd_configban*. További információt a jelen cikk [előkészületek](#preparations) című szakaszában talál. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ [Az Azure-beli Red Hat-lemezképekről](./redhat-images.md).
 * További információ a [Red Hat frissítési infrastruktúráról](./redhat-rhui.md).
 * További információ a [RHEL BYOS ajánlatáról](./byos.md).

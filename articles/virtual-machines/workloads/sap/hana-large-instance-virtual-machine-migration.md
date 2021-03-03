@@ -6,20 +6,19 @@ documentationcenter: ''
 author: bentrin
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/11/2020
 ms.author: bentrin
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 25eae9f9ba0e28a5aa069972c8c7d5eb2877545f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: cd1cfb0cc8e1868e78b4d284d1b1f4e7e85aa318
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967686"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677042"
 ---
 # <a name="sap-hana-on-azure-large-instance-migration-to-azure-virtual-machines"></a>SAP HANA Azure-beli nagyméretű példányok áttelepítése az Azure-ba Virtual Machines
 Ez a cikk a nagyméretű Azure-példányok lehetséges üzembe helyezési forgatókönyveit ismerteti, és tervezési és áttelepítési módszert kínál a lehető legkevesebb átmeneti állásidő
@@ -116,7 +115,7 @@ Azt jelzi, hogy az új SAP HANA virtuális gép új vagy meglévő vnet/alháló
 ### <a name="vm-sizing-recommendation"></a>VM-méretezési javaslat
 Ez a Migrálás lehetőséget biztosít a HANA számítási motor megfelelő méretének kiszámítására.  A Hana Studióval együtt a HANA [rendszernézeteket](https://help.sap.com/viewer/7c78579ce9b14a669c1f3295b0d8ca16/Cloud/3859e48180bb4cf8a207e15cf25a7e57.html) is használhatja a rendszererőforrás-felhasználás megismeréséhez, ami lehetővé teszi a jobb méretezést a kiadások hatékonyságának szabályozása érdekében.
 
-### <a name="storage"></a>Storage 
+### <a name="storage"></a>Tárolás 
 A tárolási teljesítmény az SAP-alkalmazások felhasználói élményét befolyásoló tényezők egyike.  Egy adott VM-SKU-ra alapozva SAP HANA Azure-beli [virtuális gépek tárolási konfigurációinak](./hana-vm-operations-storage.md)minimális tárolási elrendezése van közzétéve. Javasoljuk, hogy tekintse át ezeket a minimális specifikációkat, és hasonlítsa össze a meglévő HLI rendszerstatisztikával, hogy biztosítsa az új HANA-beli virtuális gép megfelelő i/o-kapacitását és teljesítményét.
 
 Ha a PPG-t az új HANA-beli virtuális géphez és a hozzá tartozó alrendszerekhez konfigurálja, küldjön egy támogatási jegyet a tároló és a virtuális gép közös elhelyezésére és ellenőrzésére. Mivel előfordulhat, hogy a biztonsági mentési megoldás módosítására van szükség, a tárolási költségeket is újra kell látni, hogy elkerülje a működési kiadások meglepetéseit.

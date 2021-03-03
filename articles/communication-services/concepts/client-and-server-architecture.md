@@ -9,20 +9,18 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 2cc7e1d0c108d45383a68258fb6f62fcab87d1f7
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 0dbd1770030eeee8768c0b610171f5f27456ed70
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653815"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656227"
 ---
 # <a name="client-and-server-architecture"></a>Ügyfél és kiszolgáló architektúrája
 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
 <!--
 > [!WARNING]
-> This document is under construction and needs the following items to be addressed: 
+> This document is under construction and needs the following items to be addressed:
 > - Need to add security best practices for token management here
 > - Reference docs:
 > - https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/create-a-token-object
@@ -56,7 +54,7 @@ Számos forgatókönyv a legalkalmasabb a natív alkalmazásokhoz. Az Azure komm
 A telefonos rendszeren keresztüli kommunikáció jelentősen növelheti az alkalmazás elérhetőségét. A PSTN hang-és SMS-forgatókönyvek támogatásához az Azure kommunikációs szolgáltatásokkal közvetlenül a Azure Portal, illetve a REST API-k és az ügyféloldali kódtárak használatával [szerezhetők be telefonszámok](../quickstarts/telephony-sms/get-phone-number.md) . A telefonszámok beszerzése után a rendszer felhasználhatja az ügyfeleket a PSTN-hívással és az SMS-sel együtt a bejövő és kimenő helyzetekben is. A minta architektúra folyamata az alábbiakban található:
 
 > [!Note]
-> A nyilvános előzetes verzióban az Egyesült államokbeli telefonszámok kiosztása az Egyesült Államokban és Kanadában található számlázási címmel rendelkező ügyfelek számára érhető el. 
+> A nyilvános előzetes verzióban az Egyesült államokbeli telefonszámok kiosztása az Egyesült Államokban és Kanadában található számlázási címmel rendelkező ügyfelek számára érhető el.
 
 :::image type="content" source="../media/scenarios/archdiagram-pstn.png" alt-text="A kommunikációs szolgáltatások PSTN-architektúráját bemutató ábra.":::
 

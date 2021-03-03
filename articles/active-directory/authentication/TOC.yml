@@ -158,6 +158,8 @@
       href: howto-authentication-temporary-access-pass.md
     - name: SMS-alapú hitelesítés használata
       href: howto-authentication-sms-signin.md
+    - name: Nem támogatott kétirányú SMS
+      href: how-to-authentication-two-way-sms-unsupported.md
     - name: E-mail cím bejelentkezésének használata
       href: howto-authentication-use-email-signin.md
     - name: Azure AD intelligens zárolás
@@ -173,7 +175,7 @@
               href: active-directory-certificate-based-authentication-ios.md
     - name: Jelentéskészítés
       items:
-        - name: Használat és elemzések
+        - name: Hitelesítési módszerek tevékenység
           href: howto-authentication-methods-usage-insights.md
         - name: SSPR-jelentések
           href: howto-sspr-reporting.md

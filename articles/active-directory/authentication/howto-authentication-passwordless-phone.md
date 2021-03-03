@@ -1,6 +1,6 @@
 ---
 title: Jelszó nélküli bejelentkezés a Microsoft Authenticator app-Azure Active Directory
-description: Jelszó nélküli bejelentkezés engedélyezése az Azure AD-be az Microsoft Authenticator alkalmazással (előzetes verzió)
+description: Jelszó nélküli bejelentkezés engedélyezése az Azure AD-be az Microsoft Authenticator alkalmazás használatával
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62dea67f139857befc7ca24b8b8a105241b5c949
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 51e6cd7efcd0e851c15975aba5ff9b99c615eb7d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626155"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653473"
 ---
-# <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Jelszó nélküli bejelentkezés engedélyezése a Microsoft Authenticator alkalmazással (előzetes verzió)
+# <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app"></a>Jelszó nélküli bejelentkezés engedélyezése a Microsoft Authenticator alkalmazással 
 
 A Microsoft Authenticator alkalmazás jelszó használata nélkül is bejelentkezhet bármely Azure AD-fiókba. Microsoft Authenticator a kulcs-alapú hitelesítés használatával engedélyezhető egy olyan eszközhöz kötött felhasználói hitelesítő adat, amelyben az eszköz PIN-kódot vagy biometrikus adatokat használ. A [vállalati Windows Hello](/windows/security/identity-protection/hello-for-business/hello-identity-verification) hasonló technológiát használ.
 
@@ -40,7 +40,7 @@ Ha jelszó nélküli telefonos bejelentkezést szeretne használni a Microsoft A
 - Az Microsoft Authenticator legújabb verziója iOS 8,0 vagy újabb, vagy Android 6,0 vagy újabb rendszert futtató eszközökön.
 
 > [!NOTE]
-> Ha az Azure AD PowerShell használatával engedélyezte Microsoft Authenticator jelszó nélküli bejelentkezési előnézetet, akkor az a teljes címtárhoz engedélyezve volt. Ha engedélyezi ezt az új metódust, az supercedes a PowerShell-házirendet. Azt javasoljuk, hogy a bérlő összes felhasználója számára engedélyezze az új *hitelesítési módszerek* menüt, ellenkező esetben az új szabályzatban nem szereplő felhasználók nem tudnak többé jelszó nélkül bejelentkezni.
+> Ha az Azure AD PowerShell használatával engedélyezte Microsoft Authenticator jelszó nélküli bejelentkezést, akkor az a teljes címtárhoz engedélyezve volt. Ha engedélyezi ezt az új metódust, az supercedes a PowerShell-házirendet. Azt javasoljuk, hogy a bérlő összes felhasználója számára engedélyezze az új *hitelesítési módszerek* menüt, ellenkező esetben az új szabályzatban nem szereplő felhasználók nem tudnak többé jelszó nélkül bejelentkezni.
 
 ## <a name="enable-passwordless-authentication-methods"></a>Jelszóval nem rendelkező hitelesítési módszerek engedélyezése
 
@@ -58,7 +58,7 @@ A jelszó nélküli telefonos bejelentkezés hitelesítési módszerének enged�
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) *globális rendszergazdai* fiókkal.
 1. Keresse meg és válassza ki *Azure Active Directory*, majd keresse meg a **biztonsági**  >  **hitelesítési módszerek**  >  **házirendjeit**.
-1. A **Microsoft Authenticator (előzetes verzió)** alatt válassza a következő beállításokat:
+1. A **Microsoft Authenticator** területen válassza a következő beállításokat:
    1. **Engedélyezés** – igen vagy nem
    1. **Cél** – az összes felhasználó vagy a felhasználók kiválasztása
 1. Alapértelmezés szerint minden hozzáadott csoport vagy felhasználó számára engedélyezve van a Microsoft Authenticator használata a jelszó nélküli és a leküldéses értesítési módokban ("minden" mód). Ennek módosításához minden sorra:
@@ -104,7 +104,7 @@ Miután a felhasználó felhasználta a jelszó nélküli telefonos bejelentkez�
 
 ## <a name="known-issues"></a>Ismert problémák
 
-Az aktuális előzetes verzióban a következő ismert problémák léteznek.
+A következő ismert problémák léteznek.
 
 ### <a name="not-seeing-option-for-passwordless-phone-sign-in"></a>Nem jelenik meg a jelszó nélküli telefonos bejelentkezés beállítása
 

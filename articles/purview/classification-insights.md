@@ -6,19 +6,19 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/24/2020
-ms.openlocfilehash: a0eed27636a3f65d68489d1f2249db784ba1d722
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.date: 01/17/2021
+ms.openlocfilehash: b6ea3e762ad098e373baa8487d8926105820f226
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196537"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666519"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>Az Azure hatáskörébe tartozó adatok besorolása
 
 Ez a útmutató ismerteti, hogyan lehet hozzáférni, megtekinteni és szűrni az adataihoz tartozó hatáskörébe besorolási jelentéseit.
 
-A támogatott adatforrások közé tartoznak a következők: Azure Blob Storage, Azure Data Lake Storage (ADLS) GEN 1, Azure Data Lake Storage (ADLS) GEN 2, Azure Cosmos DB (SQL API), Azure szinapszis Analytics (korábban SQL DW), Azure SQL Database, Azure SQL felügyelt példány, SQL Server
+A támogatott adatforrások közé tartoznak a következők: Azure Blob Storage, Azure Data Lake Storage (ADLS) GEN 1, Azure Data Lake Storage (ADLS) GEN 2, Azure Cosmos DB (SQL API), Azure szinapszis Analytics (korábban SQL DW), Azure SQL Database, Azure SQL felügyelt példány, SQL Server, Amazon S3 gyűjtők
 
 Ebben a útmutatóban megismerheti a következőket:
 
@@ -33,7 +33,7 @@ A hatáskörébe tartozó ismeretek megismerése előtt győződjön meg arról,
 
 - Állítsa be az Azure-erőforrásokat, és töltse fel a megfelelő fiókokat a tesztelési adatokkal
 
-- Az egyes adatforrások tesztelési célú ellenőrzésének beállítása és befejezése
+- Állítson be és végezzen vizsgálatot az egyes adatforrásokban. További információkért lásd: [adatforrások kezelése az Azure-ban (előzetes verzió)](manage-data-sources.md) , és [hozzon létre egy vizsgálati szabályt](create-a-scan-rule-set.md).
 
 - Jelentkezzen be a hatáskörébe egy [Adatolvasóval vagy egy adatkezelői szerepkörrel](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)rendelkező fiókkal.
 
@@ -62,7 +62,7 @@ A hatáskörébe ugyanazok a bizalmas adattípusok tartoznak, mint a Microsoft 3
 
    A fő **besorolási** információk oldal a következő területeket jeleníti meg:
 
-   |Terület  |Description  |
+   |Terület  |Leírás  |
    |---------|---------|
    |**Besorolásokkal rendelkező források áttekintése**     |A következőket biztosító csempéket jeleníti meg: <br>– Az adataiban talált előfizetések száma <br>– Az adataiban található egyedi besorolások száma <br>– A talált kategorizált források száma <br>– A talált minősített fájlok száma <br>– A talált kategorizált táblák száma         |
    |**Legtöbbet besorolt adatforrások (utolsó 30 nap)**     |Az elmúlt 30 napban a minősített adatokat tartalmazó források számának alakulását mutatja.            |
@@ -81,7 +81,7 @@ A következő **besorolási** ábrák bármelyikében a további részletekért 
 - **Táblázatok leggyakoribb besorolásai**
 - **Besorolási tevékenység > besorolási adatként**
 
-Példa:
+Például:
 
 :::image type="content" source="media/insights/view-classifications-small.png" alt-text="Az összes besorolás megtekintése" lightbox="media/insights/view-classifications.png":::
 

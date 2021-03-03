@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: 53339623ee435362d248b794776681972000173e
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 9de518f53a6054a47a72e40ebe546a32dd48aabe
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258574"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647272"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory Application Management: Újdonságok
 
@@ -34,7 +34,7 @@ ms.locfileid: "99258574"
 - [Active Directory-(Azure AD-) alkalmazásproxy – gyakori kérdések](application-proxy-faq.md)
 - [Oktatóanyag: helyi alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory](application-proxy-add-on-premises-application.md)
 - [Meglévő helyszíni proxykiszolgálók használata](application-proxy-configure-connectors-with-proxy-servers.md)
-- [Üzletági alkalmazások fejlesztése a Azure Active Directory](developer-guidance-for-integrating-applications.md)
+- [Üzletági alkalmazások fejlesztése a Azure Active Directory](../develop/v2-overview.md)
 - [Az Azure AD Application Proxy-összekötők ismertetése](application-proxy-connectors.md)
 - [A csatolt bejelentkezés ismertetése](configure-linked-sign-on.md)
 - [Jelszó alapú egyszeri bejelentkezés ismertetése](configure-password-single-sign-on-non-gallery-applications.md)

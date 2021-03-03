@@ -6,34 +6,33 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 02/11/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6dd95fc8fd0ab0099ac7404d4ca4e4b1851f650f
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 8a16ecd2ee6ed939b2afd0e51e9cf531e419c8af
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359608"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656397"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Biztonságos hozzáférés az adatokhoz az Azure Cosmos DB-ben
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Ez a cikk áttekintést nyújt a [Microsoft Azure Cosmos DBban](https://azure.microsoft.com/services/cosmos-db/)tárolt adathozzáférés biztonságossá tételéről.
+Ez a cikk áttekintést nyújt a Azure Cosmos DB adathozzáférés-vezérléséről.
 
-Azure Cosmos DB kétféle kulcsot használ a felhasználók hitelesítéséhez és az adataihoz és erőforrásaihoz való hozzáférés biztosításához. 
+A Azure Cosmos DB három módszert biztosít az adataihoz való hozzáférés szabályozására.
 
-|Kulcs típusa|További források|
+| Hozzáférés-vezérlés típusa | Jellemzők |
 |---|---|
-|[Elsődleges kulcsok](#primary-keys) |Felügyeleti erőforrásokhoz használatos: adatbázis-fiókok, adatbázisok, felhasználók és engedélyek|
-|[Erőforrás-tokenek](#resource-tokens)|Alkalmazás-erőforrásokhoz használatos: tárolók, dokumentumok, mellékletek, tárolt eljárások, eseményindítók és UDF|
+| [Elsődleges kulcsok](#primary-keys) | Az összes felügyeleti vagy adatműveletet engedélyező közös titok. Mind az írható, mind a csak olvasható változatban megtalálható. |
+| [Szerepköralapú hozzáférés-vezérlés](#rbac) (előzetes verzió) | Részletes, szerepköralapú engedélyezési modell Azure Active Directory (HRE) identitások használatával a hitelesítéshez. |
+| [Erőforrás-tokenek](#resource-tokens)| A natív Azure Cosmos DB felhasználók és engedélyek alapján részletes engedélyezési modell. |
 
-<a id="primary-keys"></a>
+## <a name="primary-keys"></a><a id="primary-keys"></a> Elsődleges kulcsok
 
-## <a name="primary-keys"></a>Elsődleges kulcsok
+Az elsődleges kulcsok hozzáférést biztosítanak az adatbázis-fiókhoz tartozó összes felügyeleti erőforráshoz. Minden fiók két elsődleges kulcsot tartalmaz: egy elsődleges és egy másodlagos kulcsot. A kettős kulcsok célja, hogy lehetővé tegye az újragenerálás vagy a kulcsok leállítását, folyamatos hozzáférést biztosítva a fiókhoz és az adataihoz. Az elsődleges kulcsokkal kapcsolatos további tudnivalókért tekintse meg az [adatbázis biztonsági](database-security.md#primary-keys) cikkét.
 
-Az elsődleges kulcsok hozzáférést biztosítanak az adatbázis-fiókhoz tartozó összes felügyeleti erőforráshoz. Minden fiók két elsődleges kulcsot tartalmaz: egy elsődleges és egy másodlagos kulcsot. A kettős kulcsok célja, hogy újragenerálja vagy leállítsa a kulcsokat, és folyamatos hozzáférést biztosítson fiókjához és adataihoz. Az elsődleges kulcsokkal kapcsolatos további tudnivalókért tekintse meg az [adatbázis biztonsági](database-security.md#primary-keys) cikkét.
-
-### <a name="key-rotation"></a>Kulcs elforgatása<a id="key-rotation"></a>
+### <a name="key-rotation"></a><a id="key-rotation"></a> Kulcs elforgatása
 
 Az elsődleges kulcs elforgatásának folyamata egyszerű. 
 
@@ -64,7 +63,23 @@ Az alábbi mintakód azt szemlélteti, hogyan használható a Azure Cosmos DB fi
 
 :::code language="python" source="~/cosmosdb-python-sdk/sdk/cosmos/azure-cosmos/samples/access_cosmos_with_resource_token.py" id="configureConnectivity":::
 
-## <a name="resource-tokens"></a>Erőforrás-tokenek <a id="resource-tokens"></a>
+## <a name="role-based-access-control-preview"></a><a id="rbac"></a> Szerepköralapú hozzáférés-vezérlés (előzetes verzió)
+
+A Azure Cosmos DB egy beépített szerepköralapú hozzáférés-vezérlési (RBAC) rendszert tesz elérhetővé, amely a következőket teszi lehetővé:
+
+- Az adatkérések hitelesítése Azure Active Directory (HRE) identitással.
+- A részletes, szerepköralapú engedélyezési modellel engedélyezheti az adatkéréseket.
+
+Azure Cosmos DB RBAC az ideális hozzáférés-vezérlési módszer olyan helyzetekben, ahol:
+
+- Nem érdemes közös titkot használni, például az elsődleges kulcsot, és inkább jogkivonat-alapú hitelesítési mechanizmusra támaszkodni.
+- Az Azure AD-identitásokat szeretné használni a kérések hitelesítéséhez,
+- Egy részletes engedélyezési modellre van szükség, amely szigorúan korlátozza, hogy mely adatbázis-műveletek hajthatók végre az identitások számára.
+- A hozzáférés-vezérlési szabályzatokat "szerepkörként" kell megadnia, amelyet több identitáshoz is hozzárendelhet.
+
+A Azure Cosmos DB RBAC kapcsolatos további tudnivalókért tekintse meg [a szerepköralapú hozzáférés-vezérlés konfigurálása a Azure Cosmos db-fiókhoz](how-to-setup-rbac.md) című témakört.
+
+## <a name="resource-tokens"></a><a id="resource-tokens"></a> Erőforrás-tokenek
 
 Az erőforrás-tokenek hozzáférést biztosítanak az adatbázison belüli alkalmazás-erőforrásokhoz. Erőforrás-tokenek:
 
@@ -97,7 +112,7 @@ Az erőforrás-jogkivonat létrehozását és felügyeletét a natív Cosmos DB 
 
 Az erőforrás-tokenek létrehozásához vagy közvetítéséhez használt középső rétegű szolgáltatásra például a [ResourceTokenBroker alkalmazásban](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers)talál példát.
 
-## <a name="users"></a>Felhasználók<a id="users"></a>
+### <a name="users"></a>Felhasználók<a id="users"></a>
 
 Azure Cosmos DB felhasználók egy Cosmos-adatbázishoz vannak társítva.  Minden adatbázis nulla vagy több Cosmos DB felhasználót tartalmazhat. Az alábbi mintakód bemutatja, hogyan hozhat létre Cosmos DB felhasználót a [Azure Cosmos db .net SDK v3](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement)használatával.
 
@@ -111,7 +126,7 @@ User user = await database.CreateUserAsync("User 1");
 > [!NOTE]
 > Minden Cosmos DB felhasználó rendelkezik egy ReadAsync () metódussal, amely a felhasználóhoz társított [engedélyek](#permissions) listájának lekérésére használható.
 
-## <a name="permissions"></a>Engedélyek<a id="permissions"></a>
+### <a name="permissions"></a>Engedélyek<a id="permissions"></a>
 
 Az engedélyezési erőforrás egy felhasználóhoz van társítva, és a tárolóban, valamint a partíciós kulcs szintjén van hozzárendelve. Minden felhasználó nulla vagy több engedélyt is tartalmazhat. Az engedélyezési erőforrás hozzáférést biztosít egy olyan biztonsági jogkivonathoz, amelyhez a felhasználónak szüksége van egy adott partíciós kulcsban található adott tároló vagy információ elérésére tett kísérlet során. Az engedélyezési erőforrások két rendelkezésre álló hozzáférési szintet tartalmazhatnak:
 
@@ -127,7 +142,7 @@ Ha engedélyezi a [diagnosztikai naplókat az adatsík-kérelmek](cosmosdb-monit
 
 * **resourceTokenPermissionMode** – ez a tulajdonság azt az engedélyezési módot jelzi, amelyet az erőforrás-jogkivonat létrehozásakor beállított. Az engedélyezési mód rendelkezhet olyan értékekkel, mint az "all" vagy az "READ".
 
-### <a name="code-sample-to-create-permission"></a>Kód mintája az engedély létrehozásához
+#### <a name="code-sample-to-create-permission"></a>Kód mintája az engedély létrehozásához
 
 Az alábbi mintakód bemutatja, hogyan hozhat létre egy engedélyezési erőforrást, beolvashatja az engedélyezési erőforrás erőforrás-jogkivonatát, és társíthatja az engedélyeket a fent létrehozott [felhasználóhoz](#users) .
 
@@ -142,7 +157,7 @@ user.CreatePermissionAsync(
         resourcePartitionKey: new PartitionKey("012345")));
 ```
 
-### <a name="code-sample-to-read-permission-for-user"></a>A felhasználó számára olvasási engedéllyel rendelkező mintakód
+#### <a name="code-sample-to-read-permission-for-user"></a>A felhasználó számára olvasási engedéllyel rendelkező mintakód
 
 A következő kódrészlet azt mutatja be, hogyan kérhető le a fent létrehozott felhasználóhoz tartozó engedély, és hogyan hozható létre egy új CosmosClient a felhasználó nevében, hatóköre pedig egyetlen partíciós kulcsra terjed ki.
 
@@ -152,6 +167,15 @@ PermissionProperties permissionProperties = await user.GetPermission("permission
 
 CosmosClient client = new CosmosClient(accountEndpoint: "MyEndpoint", authKeyOrResourceToken: permissionProperties.Token);
 ```
+
+## <a name="differences-between-rbac-and-resource-tokens"></a>A RBAC és az erőforrás-tokenek közötti különbségek
+
+| Tárgy | RBAC | Erőforrás-tokenek |
+|--|--|--|
+| Hitelesítés  | Azure Active Directory (Azure AD) szolgáltatással. | A natív Azure Cosmos DB felhasználók alapján<br>Az erőforrás-jogkivonatok Azure AD-val való integrálásához külön munka szükséges az Azure AD-identitások és Azure Cosmos DB felhasználók számára. |
+| Engedélyezés | Szerepköralapú: a szerepkör-definíciók lehetővé teszik az engedélyezett műveletek hozzárendelését, és több identitáshoz is hozzárendelhetők. | Engedély-alapú: minden Azure Cosmos DB felhasználóhoz adathozzáférési engedélyeket kell rendelnie. |
+| Jogkivonat hatóköre | Az HRE jogkivonat a kérelmező identitását tárolja. Ez az identitás az összes hozzárendelt szerepkör-definícióval egyezik az engedélyezés végrehajtásához. | Az erőforrás-jogkivonat egy adott Azure Cosmos DB-erőforrás megadott Azure Cosmos DB felhasználója számára megadott engedéllyel rendelkezik. A különböző erőforrásokra vonatkozó engedélyezési kérelmek eltérő jogkivonatokat igényelhetnek. |
+| Jogkivonat frissítése | Az HRE tokent automatikusan frissíti a Azure Cosmos DB SDK-k, amikor lejár. | Az erőforrás-jogkivonat frissítése nem támogatott. Ha egy erőforrás-jogkivonat lejár, újat kell kiadnia. |
 
 ## <a name="add-users-and-assign-roles"></a>Felhasználók hozzáadása és szerepkörök társítása
 

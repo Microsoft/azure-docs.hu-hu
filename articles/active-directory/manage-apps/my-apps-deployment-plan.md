@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/29/2020
 ms.author: kenwith
 ms.reviewer: baselden
-ms.openlocfilehash: 10e548eb87b7ac4254fa916f804a6710252be7fc
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: f63a8fd05e1a6ed5e41eeb64aa852ff01db295af
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99830719"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645467"
 ---
 # <a name="plan-azure-active-directory-my-apps-configuration"></a>Az alkalmazások konfigurációjának megtervezése Azure Active Directory
 
@@ -143,7 +143,7 @@ Ha integrálnia kell ezeket az alkalmazásokat, meg kell határoznia egy mechani
 
 * [A Chrome, a Firefox, a Microsoft Edge vagy az IE felhasználó által vezérelt letöltése és konfigurálása](../user-help/my-apps-portal-end-user-access.md)
 
-* [Configuration Manager az Internet Explorerben](https://docs.microsoft.com/mem/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
+* [Configuration Manager az Internet Explorerben](/mem/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
 
 A bővítmény lehetővé teszi, hogy a felhasználók bármelyik alkalmazást elindítsák a keresősáv használatával, megkeressék a legutóbb használt alkalmazásokhoz való hozzáférést, és a saját alkalmazások lapra mutató hivatkozást is megkereshetnek.
 
@@ -271,4 +271,3 @@ A [Privileged Identity Management](../privileged-identity-management/pim-configu
 
 [Alkalmazásproxy üzembe helyezésének tervezése](application-proxy-deployment-plan.md)
 
- 

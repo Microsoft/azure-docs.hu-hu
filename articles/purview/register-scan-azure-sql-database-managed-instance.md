@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: f9791fa8932792398efdea39fe0d39a967420596
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: a30980ba61a1dfec918dce1a55e78f1be2a36dd7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491723"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677857"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>Azure SQL Database felügyelt példány regisztrálása és bevizsgálása
 
@@ -117,7 +117,7 @@ Az egyszerű szolgáltatás alkalmazás-azonosítójának és titkos kódjának 
 
     :::image type="content" source="media/register-scan-azure-sql-database-managed-instance/set-up-the-sql-data-source.png" alt-text="Az SQL-adatforrás beállítása":::
 
-1. Válassza a **manuális bevitel** lehetőséget
+1. Válasszon az **Azure-előfizetésből**, válassza ki a megfelelő előfizetést az **Azure-előfizetés** legördülő listáról, és a megfelelő kiszolgálót a **kiszolgáló neve** legördülő listából.
 
 1. Adja meg a **nyilvános végpont teljes tartománynevét** és **portszámát**. Ezután válassza a **Befejezés** lehetőséget az adatforrás regisztrálásához.
 

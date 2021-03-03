@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08a919338789a02d50cbb6976ee50b214cb0d612
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d081754616b40a21b3b842758844eb13e2752569
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417470"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650957"
 ---
 # <a name="securing-standalone-managed-service-accounts"></a>Önálló felügyelt szolgáltatásfiókok biztonságossá tétele
 
@@ -44,7 +44,7 @@ a sMSAs nagyobb biztonságot kínál, mint a szolgáltatásfiókokként használ
 
    * A gazdaszámítógép DNS-neve módosítva.
 
-   * További Sam-accountname vagy DNS-állomásnév paraméterek hozzáadásakor vagy eltávolításakor a [PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/set-adserviceaccount?view=win10-ps) használatával
+   * További Sam-accountname vagy DNS-állomásnév paraméterek hozzáadásakor vagy eltávolításakor a [PowerShell](/powershell/module/addsadministration/set-adserviceaccount?view=win10-ps) használatával
 
 ## <a name="when-to-use-smsas"></a>Mikor kell használni a sMSAs
 
@@ -53,7 +53,7 @@ a sMSAs egyszerűbbé teheti a felügyeleti és biztonsági feladatokat. Akkor h
 > [!NOTE] 
 > Habár a sMSAs-t több szolgáltatáshoz is használhatja, javasoljuk, hogy mindegyik szolgáltatásnak saját identitása legyen a naplózási célokra. 
 
-Ha a szoftver létrehozója nem tudja megállapítani, hogy tud-e MSA használni, tesztelje az alkalmazást. Ehhez hozzon létre egy tesztkörnyezet, és győződjön meg arról, hogy az összes szükséges erőforráshoz hozzáfér. Részletes útmutatásért lásd: [önállóan felügyelt szolgáltatásfiókot létrehozása és telepítése](https://docs.microsoft.com/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting) .
+Ha a szoftver létrehozója nem tudja megállapítani, hogy tud-e MSA használni, tesztelje az alkalmazást. Ehhez hozzon létre egy tesztkörnyezet, és győződjön meg arról, hogy az összes szükséges erőforráshoz hozzáfér. Részletes útmutatásért lásd: [önállóan felügyelt szolgáltatásfiókot létrehozása és telepítése](/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting) .
 
 ### <a name="assess-security-posture-of-smsas"></a>A sMSAs biztonsági helyzetének felmérése
 
@@ -112,7 +112,7 @@ A sMSAs kezeléséhez a következő Active Directory PowerShell-parancsmagokat h
 
 ## <a name="move-to-smsas"></a>Áthelyezés a sMSAs
 
-Ha egy Application Service támogatja a önállóan felügyelt szolgáltatásfiókot-t, de nem csoportosan felügyelt szolgáltatásfiókokat, és jelenleg felhasználói fiókot vagy számítógépfiókot használ a biztonsági környezethez, [hozzon létre és telepítsen egy önállóan felügyelt szolgáltatásfiókot](https://docs.microsoft.com/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting) a kiszolgálón. 
+Ha egy Application Service támogatja a önállóan felügyelt szolgáltatásfiókot-t, de nem csoportosan felügyelt szolgáltatásfiókokat, és jelenleg felhasználói fiókot vagy számítógépfiókot használ a biztonsági környezethez, [hozzon létre és telepítsen egy önállóan felügyelt szolgáltatásfiókot](/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting) a kiszolgálón. 
 
 Ideális esetben helyezze át az erőforrásokat az Azure-ba, és használja az Azure által felügyelt identitásokat vagy egyszerű szolgáltatásokat.
 
@@ -133,4 +133,3 @@ A szolgáltatásfiókok biztonságossá tételéről a következő cikkekben olv
 
 * [Helyszíni szolgáltatásfiókok szabályozása](service-accounts-govern-on-premises.md)
 
- 

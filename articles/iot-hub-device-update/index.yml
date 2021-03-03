@@ -1,0 +1,76 @@
+### YamlMime:Landing
+title: Eszköz frissítése IoT Hub dokumentációhoz
+summary: Az IoT Hub eszköz frissítése olyan szolgáltatás, amely lehetővé teszi, hogy a IoT-eszközökön keresztül telepítsen over-the-Air (OTA) frissítéseket.
+metadata:
+  title: Eszköz frissítése IoT Hub dokumentációhoz
+  description: Az IoT Hub eszköz frissítése olyan szolgáltatás, amely lehetővé teszi, hogy a IoT-eszközökön keresztül telepítsen over-the-Air (OTA) frissítéseket.
+  services: iot-hub
+  ms.service: iot-hub
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  manager: philmea
+  ms.date: 2/17/2021
+  ms.openlocfilehash: 2b47f8b51cf4150659c1d5b8ed1dc145997252ef
+  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.translationtype: MT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 03/02/2021
+  ms.locfileid: "101665761"
+landingContent:
+- title: Az eszköz frissítése
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az IoT Hub eszköz frissítése?
+      url: understand-device-update.md
+  - linkListType: concept
+    links:
+    - text: Az eszköz frissítésének módja Plug and Play
+      url: device-update-plug-and-play.md
+    - text: Az eszköz frissítési hitelesítésének és engedélyezésének ismertetése
+      url: device-update-control-access.md
+    - text: Az eszköz frissítési ügynökének ismertetése
+      url: device-update-agent-overview.md
+    - text: Az eszköz frissítésének értelmezése
+      url: import-concepts.md
+    - text: Az eszköz frissítési csoportjainak ismertetése
+      url: device-update-groups.md
+- title: Ismerkedés az oktatóanyagokkal
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Eszköz frissítése a málna PI-ban
+      url: device-update-raspberry-pi.md
+  - linkListType: tutorial
+    links:
+    - text: Eszköz frissítése szimulátoron
+      url: device-update-simulator.md
+  - linkListType: tutorial
+    links:
+    - text: Eszköz frissítése Ubuntu Server 18,04 x64 Package Agent-ügynökön
+      url: device-update-ubuntu-agent.md
+- title: Útmutató az eszközök frissítéséhez
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Eszköz-frissítési fiók létrehozása
+      url: create-device-update-account.md
+  - linkListType: how-to-guide
+    links:
+    - text: Frissítés importálása
+      url: import-update.md
+  - linkListType: how-to-guide
+    links:
+    - text: Frissítési csoport létrehozása
+      url: create-update-group.md
+  - linkListType: how-to-guide
+    links:
+    - text: Frissítés központi telepítése
+      url: deploy-update.md
+- title: Fejlesztői útmutató
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Az eszköz frissítési ügynökének létrehozása, futtatása és módosítása
+      url: device-update-agent-provisioning.md

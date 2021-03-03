@@ -10,17 +10,17 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: af42b83fc005397d4564b7570eedaff0305a8bc8
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 18282bbe902599c471775a853704e459ea44bac1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653539"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661640"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 Az első lépések előtt ügyeljen a következőre:
 
-- Aktív előfizetéssel rendelkező Azure-fiók létrehozása. Részletekért tekintse meg a [fiók ingyenes létrehozását](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)ismertető témakört. 
+- Aktív előfizetéssel rendelkező Azure-fiók létrehozása. Részletekért tekintse meg a [fiók ingyenes létrehozását](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)ismertető témakört.
 - Telepítse [Node.js](https://nodejs.org/en/download/) aktív LTS-és karbantartási LTS-verzióit (8.11.1 és 10.14.1 ajánlott).
 - Hozzon létre egy Azure kommunikációs szolgáltatások erőforrást. További információ: [Azure kommunikációs erőforrás létrehozása](../../create-communication-resource.md). Ehhez a rövid útmutatóhoz fel kell **jegyeznie az erőforrás-végpontot** .
 - Hozzon létre *három* ACS-felhasználót, és adja ki a felhasználói hozzáférési jogkivonat [felhasználói hozzáférési jogkivonatát](../../access-tokens.md). Ügyeljen arra, hogy a hatókört a **csevegés** értékre állítsa, és **jegyezze fel a jogkivonat karakterláncát, valamint a userId karakterláncot**. A teljes bemutató létrehoz egy szálat két kezdeti résztvevővel, majd felvesz egy harmadik résztvevőt a szálba.
@@ -34,7 +34,7 @@ Először nyissa meg a terminált vagy a parancssorablakot, hozzon létre egy ú
 ```console
 mkdir chat-quickstart && cd chat-quickstart
 ```
-   
+
 A futtatásával `npm init -y` **package.js** hozhat létre az alapértelmezett beállításokkal rendelkező fájlon.
 
 ```console
@@ -48,7 +48,7 @@ A `npm install` paranccsal telepítse az alábbi kommunikációs szolgáltatáso
 ```console
 npm install @azure/communication-common --save
 
-npm install @azure/communication-administration --save
+npm install @azure/communication-identity --save
 
 npm install @azure/communication-signaling --save
 
@@ -86,7 +86,7 @@ Hozzon létre egy fájlt **client.js** nevű projekt gyökérkönyvtárában, ho
 
 ### <a name="create-a-chat-client"></a>Csevegési ügyfél létrehozása
 
-Ha csevegési ügyfelet szeretne létrehozni a webalkalmazásban, akkor a kommunikációs szolgáltatás **végpontját** és az előfeltételként szükséges lépések részeként létrehozott **hozzáférési tokent** fogja használni. 
+Ha csevegési ügyfelet szeretne létrehozni a webalkalmazásban, használja a kommunikációs szolgáltatás **végpontját** és az előfeltételként szükséges lépések részeként létrehozott **hozzáférési jogkivonatot** .
 
 A felhasználói hozzáférési tokenek lehetővé teszik olyan ügyfélalkalmazások összeállítását, amelyek közvetlenül az Azure kommunikációs szolgáltatásokban vannak hitelesítve. Ez a rövid útmutató nem vonatkozik a csevegési alkalmazás jogkivonatait kezelő szolgáltatási rétegek létrehozására. A hozzáférési jogkivonatokkal kapcsolatos további információkért tekintse meg a [csevegési](../../../concepts/chat/concepts.md) architektúrával és a [felhasználói hozzáférési jogkivonatokkal](../../access-tokens.md) kapcsolatos további információkat.
 
@@ -122,7 +122,7 @@ A böngészőben a fejlesztői eszközök konzolján a következőket kell látn
 Azure Communication Chat client created!
 ```
 
-## <a name="object-model"></a>Objektummodell 
+## <a name="object-model"></a>Objektummodell
 A következő osztályok és felületek az Azure kommunikációs szolgáltatások csevegési függvénytárának főbb funkcióit kezelik a JavaScripthez.
 
 | Név                                   | Leírás                                                                                                                                                                           |
@@ -137,7 +137,7 @@ A következő osztályok és felületek az Azure kommunikációs szolgáltatáso
 
 `createThreadRequest` a szál kérelmének leírására szolgál:
 
-- A használatával `topic` témakört adhat ehhez a csevegéshez; A témakör a funkció használatával frissíthető a csevegési szál létrehozása után `UpdateThread` . 
+- A használatával `topic` témakört adhat a csevegéshez. A témaköröket a funkció használatával lehet frissíteni, miután a csevegési szál létrejött `UpdateThread` .
 - A használatával `participants` listázhatja a csevegési szálba felvenni kívánt résztvevőket.
 
 Ha megoldotta, `createChatThread` a metódus a értéket adja vissza `CreateChatThreadResponse` . Ez a modell egy olyan `chatThread` tulajdonságot tartalmaz, amely az `id` újonnan létrehozott szál elérésére használható. Ezután a használatával `id` kérheti le a egy példányát `ChatThreadClient` . A `ChatThreadClient` felhasználható a művelet végrehajtására a szálon belül, például üzenetek küldésére vagy listaelemek fogadására.
@@ -203,7 +203,7 @@ A `sendMessage` metódus használatával küldhet csevegési üzenetet az imént
 
 `sendMessageOptions` a csevegési üzenet kérésének választható mezőinek ismertetése:
 
-- Ezzel `priority` a beállítással adható meg a csevegés prioritási szintje, például a "NORMAL" vagy a "High"; ezzel a tulajdonsággal az alkalmazásban lévő felhasználó felhasználói felületi mutatója lehet, hogy az üzenetre vagy egyéni üzleti logikára lenne szükség.   
+- `priority`A (z) használatával adhatja meg a csevegés prioritási szintjét (például "NORMAL" vagy "magas"). Ezzel a tulajdonsággal megjelenítheti az alkalmazás felhasználóinak felhasználói felületi mutatóját, hogy az üzenetre figyeljen, vagy egyéni üzleti logikát hajtson végre.
 - A használatával `senderDisplayName` adja meg a feladó megjelenítendő nevét;
 
 A válasz `sendChatMessageResult` tartalmaz egy azonosítót, amely az üzenet egyedi azonosítója.
@@ -246,7 +246,7 @@ chatClient.on("chatMessageReceived", (e) => {
 Adja hozzá ezt a kódot a `<RECEIVE A CHAT MESSAGE FROM A CHAT THREAD>` Megjegyzés helyén **client.js**.
 Frissítse a böngésző fület, és a konzolon egy üzenetet kell látnia `Notification chatMessageReceived` .
 
-Azt is megteheti, hogy a csevegési üzeneteket lekérdezi a `listMessages` metódus megadott időközönkénti lekérdezésével. 
+Azt is megteheti, hogy a csevegési üzeneteket lekérdezi a `listMessages` metódus megadott időközönkénti lekérdezésével.
 
 ```JavaScript
 

@@ -6,13 +6,14 @@ ms.author: danis
 ms.date: 10/02/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
-ms.subservice: imaging
-ms.openlocfilehash: 52801d0d7b02bb3637b5edb03072bde04a023de9
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.subservice: image-builder
+ms.collection: linux
+ms.openlocfilehash: f76c3e6c739ae4dd13355d350a01b878e4d4f360
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881788"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666205"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>Az Azure rendszerkép-készítő szolgáltatás hibáinak megoldása
 
@@ -672,6 +673,6 @@ Support Topic: Azure Features
 Support Subtopic: Azure Image Builder
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: az [Azure rendszerkép-készítő áttekintése](../image-builder-overview.md).

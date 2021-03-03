@@ -3,12 +3,12 @@ title: Azure arc-kompatibilis kiszolgálók migrálása régiók között
 description: Megtudhatja, hogyan telepíthet át egy Azure arc-kompatibilis kiszolgálót az egyik régióból a másikba.
 ms.date: 02/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: d4e0f1e41e928ab489f7c2c167eea31785d9bc21
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 251a347205d93af715add52db293d8000438df44
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417771"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650175"
 ---
 # <a name="how-to-migrate-azure-arc-enabled-servers-across-regions"></a>Azure arc-kompatibilis kiszolgálók migrálása régiók között
 
@@ -36,4 +36,4 @@ Az Azure arc-kompatibilis kiszolgálók egyik Azure-régióból a másikba való
 
 * A hibaelhárítási információ a [csatlakoztatott gép ügynökének hibaelhárítása című útmutatóban](troubleshoot-agent-onboard.md)található.
 
-* Megtudhatja, hogyan kezelheti a gépet [Azure Policy](../../governance/policy/overview.md)használatával, például a virtuális gép [vendég konfigurációjában](../../governance/policy/concepts/guest-configuration.md), ellenőrizheti, hogy a gép a várt log Analytics munkaterületre van-e bejelentve, és lehetővé teszi a figyelést a [Azure monitor a virtuális gépek](../../azure-monitor/insights/vminsights-enable-policy.md) házirendjével, és még sok más
+* Megtudhatja, hogyan kezelheti a gépet [Azure Policy](../../governance/policy/overview.md)használatával, például a virtuális gép [vendég konfigurációjában](../../governance/policy/concepts/guest-configuration.md), ellenőrizheti, hogy a gép a várt log Analytics munkaterületre van-e bejelentve, és lehetővé teszi a figyelést a [Azure monitor a virtuális gépek](../../azure-monitor/vm/vminsights-enable-policy.md) házirendjével, és még sok más

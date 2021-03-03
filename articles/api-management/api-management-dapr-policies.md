@@ -3,15 +3,15 @@ title: Azure API Management Dapr integrációs szabályzatok | Microsoft Docs
 description: Ismerkedjen meg az Azure API Management-szabályzatokkal a Dapr-szolgáltatások bővítményeivel való interakcióhoz.
 author: vladvino
 ms.author: vlvinogr
-ms.date: 10/23/2020
+ms.date: 02/18/2021
 ms.topic: article
 ms.service: api-management
-ms.openlocfilehash: b8e253f75f56f961a24a441188b7a8e571622667
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 051bf4398555f318f613c66d58ec65be1d30e215
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99560230"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646809"
 ---
 # <a name="api-management-dapr-integration-policies"></a>API Management Dapr-integrációs szabályzatok
 
@@ -45,21 +45,21 @@ template:
 
 ## <a name="send-request-to-a-service"></a><a name="invoke"></a> Kérelem küldése egy szolgáltatásnak
 
-Ez a házirend beállítja a jelenlegi kérelem cél URL-címét a `http://localhost:3500/v1.0/invoke/{app-id}/method/{method-name}` sablon paramétereinek a szabályzat utasításban megadott értékekkel való lecseréléséhez.
+Ez a házirend beállítja a jelenlegi kérelem cél URL-címét a `http://localhost:3500/v1.0/invoke/{app-id}[.{ns-name}]/method/{method-name}` sablon paramétereinek a szabályzat utasításban megadott értékekkel való lecseréléséhez.
 
 A házirend feltételezi, hogy a Dapr egy oldalkocsis tárolóban fut, amely az átjáróval megegyező Pod-ban található. A kérelem kézhezvétele után a Dapr Runtime a szolgáltatás felderítését és a tényleges meghívást végzi, beleértve a HTTP és a gRPC, az újrapróbálkozások, az elosztott nyomkövetés és a hibakezelés közötti lehetséges protokollok fordítását.
 
 ### <a name="policy-statement"></a>Szabályzati utasítás
 
 ```xml
-<set-backend-service backend-id="dapr" dapr-app-id="app-id" dapr-method="method-name" />
+<set-backend-service backend-id="dapr" dapr-app-id="app-id" dapr-method="method-name" dapr-namespace="ns-name" />
 ```
 
 ### <a name="examples"></a>Példák
 
 #### <a name="example"></a>Példa
 
-Az alábbi példa azt mutatja be, hogy a "back" nevű metódust a "Echo" nevű szolgáltatásban hívja meg. A `set-backend-service` házirend beállítja a cél URL-címet. A szabályzat elküldi `forward-request` a kérelmet a Dapr futtatókörnyezetnek, amely továbbítja azt a szolgáltatásnak.
+Az alábbi példa azt mutatja be, hogy a "back" nevű metódust a "Echo" nevű szolgáltatásban hívja meg. A `set-backend-service` házirend beállítja a cél URL-címét a következőre: `http://localhost:3500/v1.0/invoke/echo.echo-app/method/back` . A szabályzat elküldi `forward-request` a kérelmet a Dapr futtatókörnyezetnek, amely továbbítja azt a szolgáltatásnak.
 
 A `forward-request` szabályzat itt látható az érthetőség kedvéért. A szabályzat általában a globális hatókör "örökölt", a `base` kulcsszón keresztül.
 
@@ -67,7 +67,7 @@ A `forward-request` szabályzat itt látható az érthetőség kedvéért. A sza
 <policies>
     <inbound>
         <base />
-        <set-backend-service backend-id="dapr" dapr-app-id="echo" dapr-method="back" />
+        <set-backend-service backend-id="dapr" dapr-app-id="echo" dapr-method="back" dapr-namespace="echo-app" />
     </inbound>
     <backend>
         <forward-request />
@@ -85,15 +85,16 @@ A `forward-request` szabályzat itt látható az érthetőség kedvéért. A sza
 
 | Elem             | Leírás  | Kötelező |
 |---------------------|--------------|----------|
-| set-háttér-szolgáltatás | Gyökérelem | Yes      |
+| set-háttér-szolgáltatás | Gyökérelem | Igen      |
 
 ### <a name="attributes"></a>Attribútumok
 
 | Attribútum        | Leírás                     | Kötelező | Alapértelmezett |
 |------------------|---------------------------------|----------|---------|
-| háttér-azonosító       | "Dapr" értékre kell állítani           | Yes      | N/A     |
-| dapr-app-ID      | A cél-szolgáltatás neve. Leképezi a [AppID](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) paramétert a Dapr-ben.| Yes | N/A |
-| dapr – metódus      | A metódus vagy URL-cím neve, amelyet a célként szolgáló szolgáltatásban kell meghívni. Leképezi a [metódus-Name](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) paramétert a Dapr-ben.| Yes | N/A |
+| háttér-azonosító       | "Dapr" értékre kell állítani           | Igen      | N/A     |
+| dapr-app-ID      | A cél-szolgáltatás neve. A [AppID](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) paraméter a Dapr-ben való létrehozásához használatos.| Igen | N/A |
+| dapr – metódus      | A metódus vagy URL-cím neve, amelyet a célként szolgáló szolgáltatásban kell meghívni. Leképezi a [metódus-Name](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) paramétert a Dapr-ben.| Igen | N/A |
+| dapr – névtér   | Annak a névtérnek a neve, amelyen a cél-szolgáltatás található. A [AppID](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) paraméter a Dapr-ben való létrehozásához használatos.| Nem | N/A |
 
 ### <a name="usage"></a>Használat
 
@@ -153,19 +154,19 @@ A "háttér" szakasz üres, és a kérés nem lett továbbítva a háttérbe.
 
 | Elem             | Leírás  | Kötelező |
 |---------------------|--------------|----------|
-| közzététel a dapr     | Gyökérelem | Yes      |
+| közzététel a dapr     | Gyökérelem | Igen      |
 
 ### <a name="attributes"></a>Attribútumok
 
 | Attribútum        | Leírás                     | Kötelező | Alapértelmezett |
 |------------------|---------------------------------|----------|---------|
-| közzététel – név      | A cél közzététel-összetevő neve. Leképezi a [pubsubname](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) paramétert a Dapr-ben. Ha nem található, a __témakör__ attribútum értékének a következő formátumban kell lennie: `pubsub-name/topic-name` .    | No       | Nincs    |
-| témakör            | A témakör neve. A [témakör](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) paraméterének leképezése a Dapr-ben.               | Yes      | N/A     |
-| Mellőzés – hiba     | Ha a beállítás értéke arra `true` utasítja a szabályzatot, hogy ne aktiválja [a "hiba"](api-management-error-handling-policies.md) szakaszt a Dapr-futtatókörnyezettől érkező hiba esetén. | No | `false` |
-| Válasz-változó – név | A Dapr-futtatókörnyezet válaszának tárolásához használandó [változók](api-management-policy-expressions.md#ContextVariables) -gyűjtemény bejegyzésének neve | No | Nincs |
-| timeout | Az a várakozási idő (másodpercben), ameddig a Dapr-futtatókörnyezet válaszol. 1 és 240 másodperc között lehet. | No | 5 |
-| sablon | Az üzenet tartalmának átalakításához használni kívánt sablonrendszer-motor. A "Liquid" az egyetlen támogatott érték. | No | Nincs |
-| Content-Type | Az üzenet tartalmának típusa. az "Application/JSON" az egyetlen támogatott érték. | No | Nincs |
+| közzététel – név      | A cél közzététel-összetevő neve. Leképezi a [pubsubname](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) paramétert a Dapr-ben. Ha nem található, a __témakör__ attribútum értékének a következő formátumban kell lennie: `pubsub-name/topic-name` .    | Nem       | Nincs    |
+| témakör            | A témakör neve. A [témakör](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) paraméterének leképezése a Dapr-ben.               | Igen      | N/A     |
+| Mellőzés – hiba     | Ha a beállítás értéke arra `true` utasítja a szabályzatot, hogy ne aktiválja [a "hiba"](api-management-error-handling-policies.md) szakaszt a Dapr-futtatókörnyezettől érkező hiba esetén. | Nem | `false` |
+| Válasz-változó – név | A Dapr-futtatókörnyezet válaszának tárolásához használandó [változók](api-management-policy-expressions.md#ContextVariables) -gyűjtemény bejegyzésének neve | Nem | Nincs |
+| timeout | Az a várakozási idő (másodpercben), ameddig a Dapr-futtatókörnyezet válaszol. 1 és 240 másodperc között lehet. | Nem | 5 |
+| sablon | Az üzenet tartalmának átalakításához használni kívánt sablonrendszer-motor. A "Liquid" az egyetlen támogatott érték. | Nem | Nincs |
+| Content-Type | Az üzenet tartalmának típusa. az "Application/JSON" az egyetlen támogatott érték. | Nem | Nincs |
 
 ### <a name="usage"></a>Használat
 
@@ -236,22 +237,22 @@ A "háttér" szakasz üres, és a kérés nem lett továbbítva a háttérbe.
 
 | Elem             | Leírás  | Kötelező |
 |---------------------|--------------|----------|
-| dapr-kötés meghívása | Gyökérelem | Yes      |
-| metaadatok            | A megadott metaadatokat kulcs/érték párok formájában kell megkötni. Leképezi a [metaadatok](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) tulajdonságot a Dapr-ben. | No |
-| adatok            | Az üzenet tartalma. Leképezi a Dapr [adattulajdonságát](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) . | No |
+| dapr-kötés meghívása | Gyökérelem | Igen      |
+| metaadatok            | A megadott metaadatokat kulcs/érték párok formájában kell megkötni. Leképezi a [metaadatok](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) tulajdonságot a Dapr-ben. | Nem |
+| adatok            | Az üzenet tartalma. Leképezi a Dapr [adattulajdonságát](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) . | Nem |
 
 
 ### <a name="attributes"></a>Attribútumok
 
 | Attribútum        | Leírás                     | Kötelező | Alapértelmezett |
 |------------------|---------------------------------|----------|---------|
-| name            | Cél kötési neve Meg kell egyeznie a Dapr-ben [definiált](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#bindings-structure) kötések nevével.           | Yes      | N/A     |
-| művelet       | Cél művelet neve (kötési specifikus). A Dapr [művelet](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) tulajdonságának leképezése. | No | Nincs |
-| Mellőzés – hiba     | Ha a beállítás értéke arra `true` utasítja a szabályzatot, hogy ne aktiválja [a "hiba"](api-management-error-handling-policies.md) szakaszt a Dapr-futtatókörnyezettől érkező hiba esetén. | No | `false` |
-| Válasz-változó – név | A Dapr-futtatókörnyezet válaszának tárolásához használandó [változók](api-management-policy-expressions.md#ContextVariables) -gyűjtemény bejegyzésének neve | No | Nincs |
-| timeout | Az a várakozási idő (másodpercben), ameddig a Dapr-futtatókörnyezet válaszol. 1 és 240 másodperc között lehet. | No | 5 |
-| sablon | Az üzenet tartalmának átalakításához használni kívánt sablonrendszer-motor. A "Liquid" az egyetlen támogatott érték. | No | Nincs |
-| Content-Type | Az üzenet tartalmának típusa. az "Application/JSON" az egyetlen támogatott érték. | No | Nincs |
+| name            | Cél kötési neve Meg kell egyeznie a Dapr-ben [definiált](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#bindings-structure) kötések nevével.           | Igen      | N/A     |
+| művelet       | Cél művelet neve (kötési specifikus). A Dapr [művelet](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) tulajdonságának leképezése. | Nem | Nincs |
+| Mellőzés – hiba     | Ha a beállítás értéke arra `true` utasítja a szabályzatot, hogy ne aktiválja [a "hiba"](api-management-error-handling-policies.md) szakaszt a Dapr-futtatókörnyezettől érkező hiba esetén. | Nem | `false` |
+| Válasz-változó – név | A Dapr-futtatókörnyezet válaszának tárolásához használandó [változók](api-management-policy-expressions.md#ContextVariables) -gyűjtemény bejegyzésének neve | Nem | Nincs |
+| timeout | Az a várakozási idő (másodpercben), ameddig a Dapr-futtatókörnyezet válaszol. 1 és 240 másodperc között lehet. | Nem | 5 |
+| sablon | Az üzenet tartalmának átalakításához használni kívánt sablonrendszer-motor. A "Liquid" az egyetlen támogatott érték. | Nem | Nincs |
+| Content-Type | Az üzenet tartalmának típusa. az "Application/JSON" az egyetlen támogatott érték. | Nem | Nincs |
 
 ### <a name="usage"></a>Használat
 

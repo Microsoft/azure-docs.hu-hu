@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: b3503dead21eeca32d82e896f889b99d11435642
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 62f4b6c76cafab5c6cc46a73851abce1e38551a1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879731"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677745"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Azure SQL Database regisztrálása és vizsgálata
 
@@ -149,9 +149,7 @@ Ha új Azure SQL Database szeretne regisztrálni az adatkatalógusban, tegye a k
 A **források regisztrálása (Azure SQL Database)** képernyőn tegye a következőket:
 
 1. Adja meg azt a **nevet** , amelyben az adatforrás szerepelni fog a katalógusban.
-1. Válassza ki, hogyan szeretné a kívánt Storage-fiókra mutatni:
-   1. Válasszon az **Azure-előfizetésből**, válassza ki a megfelelő előfizetést az **Azure-előfizetés** legördülő listáról, és a megfelelő kiszolgálót a **kiszolgáló neve** legördülő listából.
-   1. Az **ENTER billentyűt manuálisan** is kiválaszthatja, és megadhatja a **kiszolgáló nevét**.
+1. Válasszon az **Azure-előfizetésből**, válassza ki a megfelelő előfizetést az **Azure-előfizetés** legördülő listáról, és a megfelelő kiszolgálót a **kiszolgáló neve** legördülő listából.
 1. **Fejezze** be az adatforrás regisztrálását.
 
 :::image type="content" source="media/register-scan-azure-sql-database/add-azure-sql-database.png" alt-text="források regisztrálása – beállítások" border="true":::
@@ -161,7 +159,7 @@ A **források regisztrálása (Azure SQL Database)** képernyőn tegye a követk
 > [!NOTE]
 > A vizsgálat törlése nem törli a korábbi Azure SQL Database vizsgálatokból származó eszközöket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure-beli hatáskörébe tartozó adatkatalógus tallózása](how-to-browse-catalog.md)
 - [Keresés az Azure-beli hatáskörébe Data Catalog](how-to-search-catalog.md)

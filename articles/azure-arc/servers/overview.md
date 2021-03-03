@@ -2,18 +2,18 @@
 title: Az Azure arc használatára képes kiszolgálók áttekintése
 description: Ismerje meg, hogyan használhatja az Azure arc-kompatibilis kiszolgálókat az Azure-on kívül üzemeltetett kiszolgálók (például Azure-erőforrások) kezelésére.
 keywords: Azure Automation, DSC, PowerShell, a kívánt állapot konfigurálása, frissítés kezelése, változások követése, leltár, runbookok, Python, grafikus, hibrid
-ms.date: 11/12/2020
+ms.date: 02/18/2021
 ms.topic: overview
-ms.openlocfilehash: be5955e9bf02e591fdbba3f080d034c126379c2f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 615835e5a11fac0b09a56e10084249ea493d794d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584786"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651110"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Mi azok az Azure Arc-kompatibilis kiszolgálók?
 
-Az Azure arc-kompatibilis kiszolgálók lehetővé teszik az Azure-on kívül üzemeltetett Windows-és Linux-gépek, a vállalati hálózat vagy más felhőalapú szolgáltatók felügyeletét a natív Azure-beli virtuális gépek kezelésével összhangban. Ha egy hibrid gép csatlakozik az Azure-hoz, az egy csatlakoztatott gép lesz, és erőforrásként van kezelve az Azure-ban. Minden csatlakoztatott számítógép rendelkezik erőforrás-AZONOSÍTÓval, amely egy erőforráscsoport részét képezi, és a szabványos Azure-konstrukciók, például a Azure Policy és a címkék alkalmazásának előnyei. Az ügyfél helyszíni infrastruktúráját kezelő szolgáltatók a hibrid gépeket ugyanúgy kezelhetik, mint a natív Azure-erőforrásokkal, több ügyfél-környezetben, az [Azure Lighthouse](../../lighthouse/how-to/manage-hybrid-infrastructure-arc.md) és az Azure arc használatával.
+Az Azure arc-kompatibilis kiszolgálók lehetővé teszik az Azure-on *kívül* üzemeltetett Windows-és Linux-alapú fizikai kiszolgálók és virtuális gépek felügyeletét a vállalati hálózaton vagy más felhőalapú szolgáltatón. Ez a kezelési megoldás úgy lett kialakítva, hogy konzisztens legyen a natív Azure-beli virtuális gépek kezelésével. Ha egy hibrid gép csatlakozik az Azure-hoz, az egy csatlakoztatott gép lesz, és erőforrásként van kezelve az Azure-ban. Minden csatlakoztatott számítógép rendelkezik erőforrás-AZONOSÍTÓval, amely egy erőforráscsoport részét képezi, és a szabványos Azure-konstrukciók, például a Azure Policy és a címkék alkalmazásának előnyei. Az ügyfél helyszíni infrastruktúráját kezelő szolgáltatók a hibrid gépeket ugyanúgy kezelhetik, mint a natív Azure-erőforrásokkal, több ügyfél-környezetben, az [Azure Lighthouse](../../lighthouse/how-to/manage-hybrid-infrastructure-arc.md) és az Azure arc használatával.
 
 Ahhoz, hogy ezt a szolgáltatást az Azure-on kívül üzemeltetett hibrid gépekkel is el lehessen juttatni, az Azure-hoz csatlakoztatott számítógép-ügynököt minden olyan gépre telepíteni kell, amelyet az Azure-hoz való csatlakozásra tervez. Ez az ügynök nem nyújt semmilyen egyéb funkciót, és nem helyettesíti az Azure [log Analytics Agent ügynököt](../../azure-monitor/agents/log-analytics-agent.md). A Windows és Linux rendszerhez készült Log Analytics-ügynökre akkor van szükség, ha proaktívan szeretné figyelni a gépen futó operációs rendszert és munkaterheléseket, felügyelheti azt automatizálási runbookok vagy olyan megoldások használatával, mint például a Update Management, vagy más Azure-szolgáltatásokat is használhat, mint például a [Azure Security Center](../../security-center/security-center-introduction.md).
 
@@ -44,7 +44,7 @@ A hibrid gépről Log Analytics munkaterületen gyűjtött és tárolt adatok na
 
 Az Azure arc-kompatibilis kiszolgálókkal rendelkező támogatott régiók végleges listáját az Azure- [termékek régiónként](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc) oldalon tekintheti meg.
 
-A legtöbb esetben a telepítési parancsfájl létrehozásakor kiválasztott helyen kell lennie az Azure-régiónak, amelynek földrajzilag legközelebb kell lennie a számítógép helyéhez. Az inaktív adatok tárolása az Ön által megadott régiót tartalmazó Azure-földrajzon belül történik, amely az Ön által választott régióra is hatással lehet, ha rendelkezik az adatok tartózkodási feltételeivel. Ha az Azure-régió, amellyel a gépet csatlakoztatja, a rendszer áramszünetet érint, a csatlakoztatott gép nem lesz hatással, de előfordulhat, hogy az Azure-t használó felügyeleti műveletek nem lesznek végrehajtva. Regionális kimaradás esetén, ha több, földrajzilag redundáns szolgáltatást támogató hellyel rendelkezik, a legjobb megoldás, ha a gépeket egy másik Azure-régióhoz köti.
+A legtöbb esetben a telepítési parancsfájl létrehozásakor kiválasztott helyen kell lennie az Azure-régiónak, amelynek földrajzilag legközelebb kell lennie a számítógép helyéhez. Az inaktív adatok tárolása az Ön által megadott régiót tartalmazó Azure-földrajzon belül történik, amely az Ön által választott régióra is hatással lehet, ha rendelkezik az adatok tartózkodási feltételeivel. Ha az Azure-régió, amellyel a gépet csatlakoztatja, a rendszer áramszünetet érint, a csatlakoztatott gép nem lesz hatással, de előfordulhat, hogy az Azure-t használó felügyeleti műveletek nem lesznek végrehajtva. Ha van regionális leállás, és ha több hellyel is rendelkezik, amelyek támogatják a földrajzilag redundáns szolgáltatást, akkor a legjobb, ha az egyes helyekhez tartozó gépeket egy másik Azure-régióhoz kapcsolja.
 
 A rendszer a csatlakoztatott géppel kapcsolatos következő metaadatokat gyűjti és tárolja abban a régióban, ahol az Azure arc machine-erőforrás konfigurálva van:
 
@@ -54,6 +54,13 @@ A rendszer a csatlakoztatott géppel kapcsolatos következő metaadatokat gyűjt
 - Csatlakoztatott gépi ügynök verziója
 
 Ha például a gép regisztrálva van az Azure arc-ban az USA keleti régiójában, a rendszer ezeket az adatterületet az Egyesült Államok régiójában tárolja.
+
+### <a name="supported-environments"></a>Támogatott környezetek
+
+Az ív használatára képes kiszolgálók támogatják az Azure-on *kívül* üzemeltetett fizikai kiszolgálók és virtuális gépek kezelését. A virtuális gépeket üzemeltető hibrid felhőalapú környezetek részletes ismertetését lásd: [ügynök – áttekintés. MD # támogatott környezetek].
+
+> [!NOTE]
+> Az ív használatára képes kiszolgálók nem lettek kialakítva és nem támogatottak az Azure-ban futó virtuális gépek kezelésének engedélyezéséhez.
 
 ### <a name="agent-status"></a>Ügynök állapota
 

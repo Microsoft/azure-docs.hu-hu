@@ -2,18 +2,18 @@
 title: Red Hat számítási feladatok az Azure-on – áttekintés | Microsoft Docs
 description: Ismerje meg az Azure-beli Red Hat-termékek ajánlatait.
 author: asinn826
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: redhat
+ms.collection: linux
 ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
-ms.reviewer: cynthn
-ms.openlocfilehash: 09612ff3d86c669801f9e824d367a2b9a5bb10ac
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: bd8f2e5b825f88d1b0e04ed231b85296ac47e998
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830649"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676047"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Red Hat számítási feladatok az Azure-ban
 
@@ -56,7 +56,7 @@ Az Azure csak az utólagos elszámolású RHEL virtuális gépekhez nyújt Red H
 
 A RHUI-frissítéshez kapcsolódó RHEL-lemezképek alapértelmezés szerint a RHEL legújabb másodlagos verziójára csatlakoznak, amikor a `yum update` fut. Ez azt jelenti, hogy egy RHEL 7,4 virtuális gép frissíthető a RHEL 7,7-re, ha egy `yum update` művelet fut rajta. Ez a viselkedés a RHUI kialakításán alapul. A frissítési viselkedés enyhítése érdekében váltson át a normál RHEL-adattárakból a [kiterjesztett frissítési támogatási tárházra](./redhat-rhui.md#rhel-eus-and-version-locking-rhel-vms).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az [Azure-beli RHEL-lemezképekről](./redhat-images.md).
 * További információ a [Red Hat frissítési infrastruktúráról](./redhat-rhui.md).

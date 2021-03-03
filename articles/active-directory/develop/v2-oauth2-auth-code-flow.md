@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/11/2021
+ms.date: 02/23/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 2687141ea870b0af0a4405ebef2261c5a303c767
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: aeed031025b9c494b35886861c273e2a7f9d2ac4
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584112"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653728"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity platform és OAuth 2,0 engedélyezési kód folyamatábrája
 
@@ -68,19 +68,19 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > A kérelem végrehajtásához kattintson az alábbi hivatkozásra. A bejelentkezést követően a böngészőt át kell irányítani a `https://localhost/myapp/` `code` címsorába.
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
-| Paraméter    | Kötelező/nem kötelező | Description |
+| Paraméter    | Kötelező/nem kötelező | Leírás |
 |--------------|-------------|--------------|
 | `tenant`    | kötelező    | A `{tenant}` kérelem elérési útjának értéke használható annak szabályozására, hogy ki jelentkezhet be az alkalmazásba. Az engedélyezett értékek:,, `common` `organizations` `consumers` és bérlői azonosítók. További részletek: [protokoll alapjai](active-directory-v2-protocols.md#endpoints).  |
 | `client_id`   | kötelező    | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felület **(ügyfél) azonosítója** .  |
 | `response_type` | kötelező    | Tartalmaznia kell `code` az engedélyezési kód folyamatát. `id_token` `token` A [hibrid folyamat](#request-an-id-token-as-well-hybrid-flow)használatával is felvehető. |
-| `redirect_uri`  | kötelező | Az alkalmazás redirect_uri, ahol az alkalmazás elküldhet és fogadhat hitelesítési válaszokat. Pontosan meg kell egyeznie a portálon regisztrált redirect_urisével, kivéve, ha az URL-címet kódolni kell. A natív & Mobile apps esetében az alapértelmezett értéket kell használnia `https://login.microsoftonline.com/common/oauth2/nativeclient` .   |
+| `redirect_uri`  | kötelező | Az alkalmazás redirect_uri, ahol az alkalmazás elküldhet és fogadhat hitelesítési válaszokat. Pontosan meg kell egyeznie a portálon regisztrált redirect_urisével, kivéve, ha az URL-címet kódolni kell. Natív & Mobile-alkalmazások esetén az ajánlott értékek egyikét kell használnia  `https://login.microsoftonline.com/common/oauth2/nativeclient` (beágyazott böngészőket használó alkalmazások esetén) vagy `http://localhost` (a rendszerböngészőket használó alkalmazásokhoz). |
 | `scope`  | kötelező    | Egy szóközzel tagolt lista, melyben a felhasználónak jóvá kell hagynia a [hatókört](v2-permissions-and-consent.md) .  A `/authorize` kérelemhez több erőforrást is képes kiszolgálni, így az alkalmazás több, a hívni kívánt webes API-hoz kap beleegyezik. |
 | `response_mode`   | ajánlott | Meghatározza azt a módszert, amelyet az eredményül kapott jogkivonat az alkalmazásba való visszaküldéséhez kell használni. A következők egyike lehet:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` a kódot lekérdezési karakterlánc paraméterként adja meg az átirányítási URI-n. Ha az implicit folyamat használatával kér azonosító jogkivonatot, az `query` [OpenID specifikációban](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)megadott módon nem használható. Ha csak a kódot kéri, használhatja a, vagy a-t is `query` `fragment` `form_post` . `form_post` végrehajt egy BEJEGYZÉST, amely tartalmazza a kódot az átirányítási URI-nak. |
 | `state`                 | ajánlott | A kérelemben szereplő érték, amelyet a rendszer a jogkivonat-válaszban is visszaad. Bármely kívánt tartalom sztringje lehet. A véletlenszerűen generált egyedi érték általában a [helyek közötti kérelmek hamisításának megelőzésére](https://tools.ietf.org/html/rfc6749#section-10.12)szolgál. Az érték az alkalmazásban lévő felhasználó állapotára vonatkozó adatokat is kódolhatja, mielőtt a hitelesítési kérelem bekövetkezett volna, például az oldal vagy a megtekintés. |
 | `prompt`  | választható    | Megadja a szükséges felhasználói beavatkozás típusát. Ebben az esetben az egyetlen érvényes érték a, a `login` `none` és a `consent` .<br/><br/>- `prompt=login` kényszeríti a felhasználót, hogy adja meg hitelesítő adatait a kérésen, és zárja be az egyszeri bejelentkezést.<br/>- `prompt=none` Ez ellentétes – biztosítja, hogy a felhasználó semmilyen interaktív kérdés nélkül is megjelenik. Ha a kérést nem lehet csendes úton végrehajtani az egyszeri bejelentkezésen keresztül, a Microsoft Identity platform hibát ad vissza `interaction_required` .<br/>- `prompt=consent` a a felhasználó bejelentkezése után elindítja a OAuth jóváhagyása párbeszédpanelt, amely arra kéri a felhasználót, hogy adjon engedélyt az alkalmazásnak.<br/>- `prompt=select_account` megszakítja az egyszeri bejelentkezést, amely lehetővé teszi a fiókok kiválasztási élményét, amely a munkamenetben vagy a megjegyzett fiókban található összes fiókot, illetve egy másik fiók használatának lehetőségét választja.<br/> |
 | `login_hint`  | választható    | A használatával előre kitöltheti a felhasználó bejelentkezési oldalának username/e-mail címe mezőjét, ha már ismeri a felhasználónevét. Az alkalmazások gyakran ezt a paramétert fogják használni az ismételt hitelesítés során, miután már kibontotta a felhasználónevet egy korábbi bejelentkezésből a `preferred_username` jogcím használatával.   |
 | `domain_hint`  | választható    | Ha belefoglalja ezt a funkciót, a rendszer kihagyja az e-mailes felderítési folyamatot, amelyet a felhasználó a bejelentkezési oldalon áthalad, ami valamivel fejlettebb felhasználói élményt eredményez, például elküldi őket az összevont identitás-szolgáltatónak. Az alkalmazások gyakran ezt a paramétert fogják használni az ismételt hitelesítés során, ha kinyeri az alkalmazást `tid` egy korábbi bejelentkezésből. Ha a `tid` jogcím értéke `9188040d-6c67-4c5b-b112-36a304b66dad` , használja a ( `domain_hint=consumers` ) értéket. Egyéb esetben használja a t `domain_hint=organizations` .  |
-| `code_challenge`  | ajánlott/szükséges | Az engedélyezési kód támogatásának biztosítására szolgál a Code Exchange (PKCE) igazolási kulcsán keresztül. Kötelező `code_challenge_method` , ha szerepel benne. További információ: [PKCE RFC](https://tools.ietf.org/html/rfc7636). Ezt mostantól ajánlott az összes alkalmazás típusa – a natív alkalmazások, a fürdők és a bizalmas ügyfelek, például a Web Apps. |
+| `code_challenge`  | ajánlott/szükséges | Az engedélyezési kód támogatásának biztosítására szolgál a Code Exchange (PKCE) igazolási kulcsán keresztül. Kötelező `code_challenge_method` , ha szerepel benne. További információ: [PKCE RFC](https://tools.ietf.org/html/rfc7636). Ezt mostantól ajánlott minden alkalmazás-típushoz – a nyilvános és a bizalmas ügyfelekhez is –, és a Microsoft Identity platformnak kell megadnia [egy egyoldalas alkalmazásokhoz az engedélyezési kód folyamatát használva](reference-third-party-cookies-spas.md). |
 | `code_challenge_method` | ajánlott/szükséges | A paraméter kódolásához használt metódus `code_verifier` `code_challenge` . Ennek *a következőnek* kell lennie `S256` , de a specifikáció lehetővé teszi a használatát, `plain` Ha valamilyen okból kifolyólag az ügyfél nem támogatja a sha256. <br/><br/>Ha a szolgáltatás ki van zárva, a rendszer azt `code_challenge` feltételezi, hogy egyszerű szöveg, ha `code_challenge` szerepel benne. A Microsoft Identity platform a és a együttes használatát is támogatja `plain` `S256` . További információ: [PKCE RFC](https://tools.ietf.org/html/rfc7636). Ez az [engedélyezési kód folyamatát használó egylapos alkalmazások](reference-third-party-cookies-spas.md)esetében szükséges.|
 
 
@@ -93,7 +93,7 @@ Miután a felhasználó hitelesíti és beleegyezik, a Microsoft Identity platfo
 Sikeres válasz a `response_mode=query` következőképpen:
 
 ```HTTP
-GET https://login.microsoftonline.com/common/oauth2/nativeclient?
+GET http://localhost?
 code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 &state=12345
 ```
@@ -110,7 +110,7 @@ Akkor is kaphat azonosító jogkivonatot, ha kérelmezi, és az alkalmazás regi
 A rendszer a hibaüzeneteket is elküldheti, hogy `redirect_uri` az alkalmazás megfelelően tudja kezelni őket:
 
 ```HTTP
-GET https://login.microsoftonline.com/common/oauth2/nativeclient?
+GET http://localhost?
 error=access_denied
 &error_description=the+user+canceled+the+authentication
 ```
@@ -124,7 +124,7 @@ error=access_denied
 
 Az alábbi táblázat azokat a hibakódokat ismerteti, amelyeket a rendszer a `error` hiba válaszának paraméterében adhat vissza.
 
-| Hibakód  | Description    | Ügyfél művelete   |
+| Hibakód  | Leírás    | Ügyfél művelete   |
 |-------------|----------------|-----------------|
 | `invalid_request` | Protokollhiba, például hiányzó kötelező paraméter. | Javítsa ki és küldje el újra a kérelmet. Ez a kezdeti tesztelés során általában felmerülő fejlesztési hiba. |
 | `unauthorized_client` | Az ügyfélalkalmazás nem jogosult engedélyezési kód igénylésére. | Ez a hiba általában akkor fordul elő, ha az ügyfélalkalmazás nincs regisztrálva az Azure AD-ben, vagy nem kerül be a felhasználó Azure AD-bérlőbe. Az alkalmazás arra kéri a felhasználót, hogy telepítse az alkalmazást, és hozzáadja azt az Azure AD-hez. |
@@ -162,9 +162,9 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 |`response_type`| Kötelező | A Hozzáadás `id_token` azt jelzi, hogy az alkalmazás a végponttól kapott válaszban azonosító jogkivonatot szeretne kapni a kiszolgálónak `/authorize` .  |
 |`scope`| Kötelező | Az azonosító jogkivonatok esetében frissíteni kell, hogy tartalmazza az azonosító jogkivonat hatóköreit – `openid` és opcionálisan `profile` és `email` . |
 |`nonce`| Kötelező|     Az alkalmazás által generált kérelemben szereplő érték, amelyet a rendszer az eredményül kapott id_token tartalmaz. Az alkalmazás ezután ellenőrizheti ezt az értéket a jogkivonat-Visszajátszási támadások enyhítése érdekében. Az érték általában egy véletlenszerű, egyedi karakterlánc, amely a kérelem forrásának azonosítására szolgál. |
-|`response_mode`| Ajánlott | Meghatározza azt a módszert, amelyet az eredményül kapott jogkivonat az alkalmazásba való visszaküldéséhez kell használni. Az alapértelmezett érték `query` csak egy engedélyezési kód esetében, de `fragment` Ha a kérelem id_token tartalmaz `response_type` .|
+|`response_mode`| Ajánlott | Meghatározza azt a módszert, amelyet az eredményül kapott jogkivonat az alkalmazásba való visszaküldéséhez kell használni. Az alapértelmezett érték `query` csak egy engedélyezési kód esetében, de `fragment` Ha a kérelem id_token tartalmaz `response_type` .  Az alkalmazásokat azonban ajánlott használni `form_post` , különösen akkor, ha `http:/localhost` átirányítási URI-ként használják. |
 
-A `fragment` válaszként való használata problémát okozhat olyan webalkalmazások esetében, amelyek beolvasják a kódot az átirányításból, mivel a böngészők nem adják át a kódrészletet a webkiszolgálónak.  Ezekben az esetekben a válasz mód használata ajánlott az alkalmazások számára, hogy az `form_post` összes adatküldés a kiszolgálónak legyen. 
+A `fragment` válaszként való használata problémát okoz olyan webalkalmazások esetében, amelyek beolvasják a kódot az átirányítás alól, mivel a böngészők nem adják át a töredéket a webkiszolgálónak.  Ezekben az esetekben az alkalmazásoknak a `form_post` Válasz módot kell használniuk annak biztosítására, hogy minden adatküldés a kiszolgálónak. 
 
 #### <a name="successful-response"></a>Sikeres válasz
 
@@ -206,7 +206,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > [!TIP]
 > Próbálja meg végrehajtani a kérelmet postán! (Ne felejtse el lecserélni a `code` ) [ ![ Próbálja meg futtatni ezt a kérelmet postán](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
-| Paraméter  | Kötelező/nem kötelező | Description     |
+| Paraméter  | Kötelező/nem kötelező | Leírás     |
 |------------|-------------------|----------------|
 | `tenant`   | kötelező   | A `{tenant}` kérelem elérési útjának értéke használható annak szabályozására, hogy ki jelentkezhet be az alkalmazásba. Az engedélyezett értékek:,, `common` `organizations` `consumers` és bérlői azonosítók. További részletek: [protokoll alapjai](active-directory-v2-protocols.md#endpoints).  |
 | `client_id` | kötelező  | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lap alkalmazás-(ügyfél-) azonosítója. |
@@ -269,7 +269,7 @@ A következőhöz hasonló hibaüzenetek jelennek meg:
 
 ### <a name="error-codes-for-token-endpoint-errors"></a>Hibakódok jogkivonat-végponti hibákhoz
 
-| Hibakód         | Description        | Ügyfél művelete    |
+| Hibakód         | Leírás        | Ügyfél művelete    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | Protokollhiba, például hiányzó kötelező paraméter. | Javítsa ki a kérést vagy az alkalmazást, és küldje el újra a kérelmet.   |
 | `invalid_grant`    | Az engedélyezési kód vagy a PKCE-ellenőrző érvénytelen vagy lejárt. | Próbálkozzon egy új kéréssel a `/authorize` végponton, és ellenőrizze, hogy helyesek-e a code_verifier paraméter.  |
@@ -328,7 +328,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > Próbálja meg végrehajtani a kérelmet postán! (Ne felejtse el lecserélni a `refresh_token` ) [ ![ Próbálja meg futtatni ezt a kérelmet postán](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 >
 
-| Paraméter     | Típus           | Description        |
+| Paraméter     | Típus           | Leírás        |
 |---------------|----------------|--------------------|
 | `tenant`        | kötelező     | A `{tenant}` kérelem elérési útjának értéke használható annak szabályozására, hogy ki jelentkezhet be az alkalmazásba. Az engedélyezett értékek:,, `common` `organizations` `consumers` és bérlői azonosítók. További részletek: [protokoll alapjai](active-directory-v2-protocols.md#endpoints).   |
 | `client_id`     | kötelező    | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felület **(ügyfél) azonosítója** . |

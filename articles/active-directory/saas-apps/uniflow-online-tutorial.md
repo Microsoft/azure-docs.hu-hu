@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/02/2019
+ms.date: 02/04/2021
 ms.author: jeedes
-ms.openlocfilehash: fc1317ffce7c958f092ad01feff473e123581439
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 0b048e0cb282332c47dade7f13162012d4a0f526
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521764"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101654102"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-uniflow-online"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a uniFLOW online-nal
 
@@ -25,8 +25,6 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a uniFLOW online-t
 * Az Azure AD-ben a uniFLOW online elérésére jogosult vezérlő.
 * Lehetővé teheti, hogy a felhasználók az Azure AD-fiókjával jelentkezzenek be a uniFLOW online-ba.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
-
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,42 +39,43 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 * a uniFLOW online támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 
-## <a name="adding-uniflow-online-from-the-gallery"></a>Online uniFLOW hozzáadása a katalógusból
+## <a name="add-uniflow-online-from-the-gallery"></a>Online uniFLOW hozzáadása a katalógusból
 
 A uniFLOW online Azure AD-be való integrálásának konfigurálásához a katalógusból a felügyelt SaaS-alkalmazások listájára kell uniFLOW online-t hozzáadnia.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **uniFLOW online** kifejezést a keresőmezőbe.
 1. Válassza az **UniFLOW online** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-uniflow-online"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése online uniFLOW
+## <a name="configure-and-test-azure-ad-sso-for-uniflow-online"></a>Az Azure AD SSO konfigurálása és tesztelése online uniFLOW
 
-Konfigurálja és tesztelje az Azure AD SSO-t a uniFLOW online-ban egy **B. Simon**nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a uniFLOW online-ban.
+Konfigurálja és tesztelje az Azure AD SSO-t a uniFLOW online-ban egy **B. Simon** nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a uniFLOW online-ban.
 
-Az Azure AD SSO és a uniFLOW online konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO és a uniFLOW online konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
 1. **[UniFLOW online egyszeri bejelentkezés konfigurálása](#configure-uniflow-online-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    * **[Jelentkezzen be a UniFLOW online-ba a létrehozott teszt felhasználó használatával](#sign-in-to-uniflow-online-using-the-created-test-user)** a felhasználói bejelentkezés teszteléséhez az alkalmazás oldalán.
+    1. **[Jelentkezzen be a UniFLOW online-ba a létrehozott teszt felhasználó használatával](#sign-in-to-uniflow-online-using-the-created-test-user)** a felhasználói bejelentkezés teszteléséhez az alkalmazás oldalán.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)a **uniFLOW online** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. A Azure Portal a **UniFLOW online** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikonra a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minták egyikének használatával:
 
     - `https://<tenant_domain_name>.eu.uniflowonline.com`
     - `https://<tenant_domain_name>.us.uniflowonline.com`
@@ -84,7 +83,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     - `https://<tenant_domain_name>.jp.uniflowonline.com`
     - `https://<tenant_domain_name>.au.uniflowonline.com`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:
+    b. Az **azonosító (Entity ID)** szövegmezőben írja be az URL-címet a következő minták egyikének használatával:
 
     - `https://<tenant_domain_name>.eu.uniflowonline.com`
     - `https://<tenant_domain_name>.us.uniflowonline.com`
@@ -117,7 +116,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
@@ -129,22 +128,16 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a uniFLOW online-hoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **UniFLOW online**lehetőséget.
-1. Az alkalmazás áttekintés lapján lépjen a **kezelés** szakaszra, és válassza a **felhasználók és csoportok**lehetőséget.
-
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
-
-   ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
-
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **UniFLOW online** lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
 > [!NOTE]
-> Ha engedélyezni szeretné, hogy a felhasználók manuális hozzárendelés nélkül férhessenek hozzá az alkalmazáshoz, lépjen a **kezelés** szakaszra, és válassza a **Tulajdonságok**lehetőséget. Ezután módosítsa a **nem**értékre a **felhasználó-hozzárendelés kötelező** paraméterét.
+> Ha engedélyezni szeretné, hogy a felhasználók manuális hozzárendelés nélkül férhessenek hozzá az alkalmazáshoz, lépjen a **kezelés** szakaszra, és válassza a **Tulajdonságok** lehetőséget. Ezután módosítsa a **nem** értékre a **felhasználó-hozzárendelés kötelező** paraméterét.
 
 ## <a name="configure-uniflow-online-sso"></a>UniFLOW online SSO konfigurálása
 
@@ -152,31 +145,31 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. A bal oldali navigációs panelen válassza a **felhasználó** fület.
 
-    ![A képernyőképen a UNIFLOW Online webhelyről kiválasztott felhasználó látható.](./media/uniflow-online-tutorial/configure1.png)
+    ![A képernyőképen a UNIFLOW Online webhelyről kiválasztott felhasználó látható.](./media/uniflow-online-tutorial/configure-1.png)
 
-1. Kattintson az **identitás-szolgáltatók**elemre.
+1. Kattintson az **identitás-szolgáltatók** elemre.
 
-    ![A képernyőképen a kiválasztott identitás-szolgáltatók láthatók.](./media/uniflow-online-tutorial/configure2.png)
+    ![A képernyőképen a kiválasztott identitás-szolgáltatók láthatók.](./media/uniflow-online-tutorial/configure-2.png)
 
-1. Kattintson az **Identity Provider hozzáadása**elemre.
+1. Kattintson az **Identity Provider hozzáadása** elemre.
 
-    ![Képernyőfelvétel: a kiválasztott identitás-szolgáltató hozzáadása.](./media/uniflow-online-tutorial/configure3.png)
+    ![Képernyőfelvétel: a kiválasztott identitás-szolgáltató hozzáadása.](./media/uniflow-online-tutorial/configure-3.png)
 
 1. Az **identitás-szolgáltató hozzáadása** szakaszban hajtsa végre a következő lépéseket:
 
-    ![A képernyőképen az IDENTITY PROVIDER hozzáadása szakasz látható, ahol megadhatja a leírt értékeket.](./media/uniflow-online-tutorial/configure4.png)
+    ![A képernyőképen az IDENTITY PROVIDER hozzáadása szakasz látható, ahol megadhatja a leírt értékeket.](./media/uniflow-online-tutorial/configure-4.png)
 
     a. Adja meg a megjelenítendő nevet: *AZUREAD SSO*.
 
-    b. A **szolgáltató típusa**mezőben válassza a **ws-fed** lehetőséget a legördülő listából.
+    b. A **szolgáltató típusa** mezőben válassza a **ws-fed** lehetőséget a legördülő listából.
 
-    c. A **ws-fed típusnál**válassza a legördülő menüből a **Azure Active Directory** lehetőséget.
+    c. A **ws-fed típusnál** válassza a legördülő menüből a **Azure Active Directory** lehetőséget.
 
     d. Kattintson a **Mentés** gombra.
 
 1. Az **általános** lapon hajtsa végre a következő lépéseket:
 
-    ![A képernyőképen az általános lap látható, ahol megadhatja a leírt értékeket.](./media/uniflow-online-tutorial/configure5.png)
+    ![A képernyőképen az általános lap látható, ahol megadhatja a leírt értékeket.](./media/uniflow-online-tutorial/configure-5.png)
 
     a. Adja meg a megjelenítendő nevet: *AZUREAD SSO*.
 
@@ -184,9 +177,9 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     c. Az **összevonási metaadatok URl-címe** szövegmezőbe illessze be az **alkalmazás-összevonási metaadatok URL-címét** , amelyet a Azure Portal másolt.
 
-    d. Válassza az **Identitáskezelés** **engedélyezettként**lehetőséget.
+    d. Válassza az **Identitáskezelés** **engedélyezettként** lehetőséget.
 
-    e. Válassza az **automatikus felhasználói regisztráció** **aktiválva**lehetőséget.
+    e. Válassza az **automatikus felhasználói regisztráció** **aktiválva** lehetőséget.
 
     f. Kattintson a **Mentés** gombra.
 
@@ -198,12 +191,16 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Jelentkezzen be a teszt felhasználó használatával.
 
-## <a name="additional-resources"></a>További források
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](./tutorial-list.md)
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. A rendszer átirányítja a uniFLOW online bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot. 
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
+* Lépjen közvetlenül a uniFLOW online bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
 
-- [A uniFLOW online kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+* Használhatja a Microsoft saját alkalmazásait. Amikor a saját alkalmazások uniFLOW online csempére kattint, a rendszer átirányítja a uniFLOW online bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
+
+## <a name="next-steps"></a>Következő lépések
+
+A uniFLOW online konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

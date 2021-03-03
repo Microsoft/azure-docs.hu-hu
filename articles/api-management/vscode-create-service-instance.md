@@ -7,18 +7,18 @@ author: vladvino
 ms.author: apimpm
 ms.topic: quickstart
 ms.date: 09/14/2020
-ms.openlocfilehash: fdf7e842959e09a8ec35017031f745cb16d13c6d
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 3105b6f34d7ece81e8145fdd9e89568e66360ddb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400403"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649512"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-using-visual-studio-code"></a>Rövid útmutató: új Azure API Management Service-példány létrehozása a Visual Studio Code használatával
 
 Az Azure API Management (APIM) segít közzétenni az API-kat a külső, a partner- és a belső fejlesztők számára, hogy ki tudják használni az adataikban és szolgáltatásaikban rejlő lehetőségeket. Az API Management a fejlesztők bevonásán, az üzleti elemzéseken, a biztonságon és a védelmen keresztül biztosítja az alapvető kompetenciákat az API-program sikeressé tételéhez. Az APIM segítségével modern API-átjárókat hozhat létre meglévő háttérrendszerekhez, és az üzemeltetés helyétől függetlenül kezelheti azokat. További információt az [Áttekintés](api-management-key-concepts.md) témakörben talál.
 
-Ez a rövid útmutató ismerteti, hogyan hozhat létre új API Management példányt a Visual Studio Code-hoz készült *Azure API Management bővítmény előzetes* verziójával. A bővítmény használatával a API Management-példányon is elvégezheti a gyakori felügyeleti műveleteket.
+Ez a rövid útmutató ismerteti, hogyan hozhat létre új API Management példányt a Visual Studio Code-hoz készült *Azure API Management bővítménnyel* . A bővítmény használatával a API Management-példányon is elvégezheti a gyakori felügyeleti műveleteket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -28,7 +28,7 @@ Továbbá győződjön meg arról, hogy telepítette a következőt:
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 
-- [Azure API Management-bővítmény a Visual Studio Code-hoz (előzetes verzió)](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement&ssr=false#overview)
+- [Azure API Management-bővítmény a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement&ssr=false#overview)
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 

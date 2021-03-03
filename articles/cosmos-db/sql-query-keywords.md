@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: tisande
-ms.openlocfilehash: 09148e65e446d723fbfe7a54602db59ee0739f83
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4711401172c4a2b224c231db4a773e0c4219d3a7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599344"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659834"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB kulcsszavai
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -113,7 +113,7 @@ SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 Egy logikai értéket ad vissza attól függően, hogy egy adott karakterlánc megfelel-e egy megadott mintának. A minta tartalmazhat normál karaktereket és helyettesítő karaktereket. Logikusan egyenértékű lekérdezéseket írhat a `LIKE` kulcsszó vagy a [RegexMatch](sql-query-regexmatch.md) System függvény használatával. Ugyanazt az indexelési kihasználtságot kell figyelembe vennie, függetlenül attól, hogy melyiket választja. Ezért akkor érdemes használni, `LIKE` Ha a szintaxisa nagyobb, mint a reguláris kifejezés.
 
 > [!NOTE]
-> Mivel `LIKE` a képes indexet használni, [létre kell hoznia egy tartomány-indexet](indexing-policy.md) a használatával összehasonlítható tulajdonságokhoz `LIKE` .
+> Mivel `LIKE` a képes indexet használni, [létre kell hoznia egy tartomány-indexet](./index-policy.md) a használatával összehasonlítható tulajdonságokhoz `LIKE` .
 
 A következő helyettesítő karaktereket használhatja hasonló módon:
 
@@ -230,7 +230,7 @@ Az eredmény a következő:
     }]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Bevezetés](sql-query-getting-started.md)
 - [Illesztések](sql-query-join.md)

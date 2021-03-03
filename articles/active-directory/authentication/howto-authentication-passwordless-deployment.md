@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 02/22/2021
 ms.author: baselden
 author: justinha
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24d04c148e8a96e3b1d72c5301f6226df6d9a569
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: dc5916cf4277935f6d7d7f453fd4dd76d7909ef2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530348"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651127"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Jelszóval nem rendelkező hitelesítés központi telepítésének megtervezése Azure Active Directory
 
@@ -149,7 +149,7 @@ A biztonsági kulcsokkal háromféle jelszó nélküli bejelentkezési üzemelő
 
 -    Webalkalmazások Azure Active Directory támogatott böngészőben
 -    Azure Active Directory csatlakoztatott Windows 10-es eszközök
--    Hibrid Azure Active Directory csatlakoztatott Windows 10-es eszközök (előzetes verzió)
+-    Hibrid Azure Active Directory csatlakoztatott Windows 10-es eszközök
      -    Hozzáférést biztosít a felhőalapú és a helyszíni erőforrásokhoz is. További információ a helyszíni erőforrásokhoz való hozzáférésről: [egyszeri bejelentkezés a helyszíni erőforrásokhoz FIDO2-kulcsok használatával](./howto-authentication-passwordless-security-key-on-premises.md)
 
 Engedélyeznie kell a **kompatibilis FIDO2 biztonsági kulcsokat**. A Microsoft bejelentette [a FIDO2 Key vendors-vel való együttműködését](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Microsoft-passwordless-partnership-leads-to-innovation-and-great/ba-p/566493).
@@ -193,7 +193,7 @@ A Windows 10 FIDO2 biztonsági kulcsokkal történő bejelentkezésének engedé
 
 #### <a name="enable-on-premises-integration"></a>Helyszíni integráció engedélyezése
 
-A helyszíni erőforrásokhoz való hozzáférés engedélyezéséhez kövesse a [jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése a helyszíni erőforrásokhoz (előzetes verzió)](howto-authentication-passwordless-security-key-on-premises.md)című témakör lépéseit.
+A helyszíni erőforrásokhoz való hozzáférés engedélyezéséhez kövesse a [jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése a helyszíni erőforrásokhoz](howto-authentication-passwordless-security-key-on-premises.md)című témakör lépéseit.
 
 > [!IMPORTANT]
 > Ezeket a lépéseket minden hibrid Azure AD-hez csatlakoztatott eszközhöz is el kell végezni, hogy FIDO2 biztonsági kulcsokat lehessen használni a Windows 10-es bejelentkezéshez.

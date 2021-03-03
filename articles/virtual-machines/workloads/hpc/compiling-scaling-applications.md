@@ -3,17 +3,17 @@ title: HPC-alkalmazások méretezése – Azure Virtual Machines | Microsoft Doc
 description: Ismerje meg, hogyan méretezheti a HPC-alkalmazásokat az Azure-beli virtuális gépeken.
 author: vermagit
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: hpc
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 7e05d64420cd920242a887b206fd38cd4a655509
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d560b261e058d01040616f3c59ede60e5986c672
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967006"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666976"
 ---
 # <a name="scaling-hpc-applications"></a>HPC-alkalmazások méretezése
 

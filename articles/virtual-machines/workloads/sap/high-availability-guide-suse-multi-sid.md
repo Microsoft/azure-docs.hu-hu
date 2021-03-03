@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
-ms.service: virtual-machines-windows
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 2ce57911434aa0fdf1a5e624090633e75d98a5ad
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 74606909a0bc87caa6acfb0eaf35c05cf35b1858
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484243"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676939"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>Magas rendelkezésre állás az SAP NetWeaver Azure-beli virtuális gépeken SUSE Linux Enterprise Server for SAP Applications multi-SID Guide
 
@@ -113,7 +112,7 @@ A következő lista az (A) SCS és ERS Load Balancer konfigurációját mutatja 
   * A NW2 IP-címe: 10.3.1.16
   * A NW3 IP-címe: 10.3.1.13
 * Mintavételi portok
-  * 620 **00****10** **20** -es port, ezért a NW1, a NW2 és a NW3 mintavételi portok esetében 620 00, 620 10 és 620 20 <strong> &lt; &gt;</strong>
+  * 620  -es port, ezért a NW1, a NW2 és a NW3 mintavételi portok esetében 620 00, 620 10 és 620 20<strong> &lt; &gt; </strong>
 * Terheléselosztási szabályok – 
 * hozzon létre egyet minden példányhoz, azaz: NW1/ASCS, NW2/ASCS és NW3/ASCS.
   * Ha standard Load Balancer használ, válassza a **hektár portok** elemet.
@@ -133,7 +132,7 @@ A következő lista az (A) SCS és ERS Load Balancer konfigurációját mutatja 
   * A NW2 10.3.1.17 IP-címe
   * A NW3 10.3.1.19 IP-címe
 * Mintavételi port
-  * 621 **02****12** **22** -es port, ezért a NW1, a NW2 és a N # mintavételi portok esetében 621 02, 621 12 és 621 22 <strong> &lt; &gt;</strong>
+  * 621  -es port, ezért a NW1, a NW2 és a N # mintavételi portok esetében 621 02, 621 12 és 621 22<strong> &lt; &gt; </strong>
 * Terheléselosztási szabályok – hozzon létre egyet az egyes példányok, azaz a NW1/ERS, a NW2/ERS és a NW3/ERS esetében.
   * Ha standard Load Balancer használ, válassza a **hektár portok** elemet.
   * Ha alapszintű Load Balancer használ, hozzon létre terheléselosztási szabályokat a következő portokhoz
@@ -971,7 +970,7 @@ A bemutatott tesztek egy két csomóponton, több SID-fürtön, három SAP-rends
          rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started slesmsscl2
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]

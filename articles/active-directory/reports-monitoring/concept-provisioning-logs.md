@@ -17,12 +17,12 @@ ms.date: 1/29/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad69df37d2635156873dc59d6fbf700a67ade548
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 284b554581534a8493225fba0b70b074fb7dd982
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99091932"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651937"
 ---
 # <a name="overview-of-provisioning-logs-in-the-azure-portal-preview"></a>A naplók kiépítési naplóinak áttekintése a Azure Portalban (előzetes verzió)
 
@@ -60,8 +60,8 @@ A kiépítési tevékenység jelentésének megtekintéséhez a bérlőnek hozz�
 Az ügyfelek négyféle módon kezelhetik a kiépítési naplókat:
 
 - A naplók elérése a Azure Portalról a következő szakaszban leírtak szerint.
-- A kiépítési naplók továbbítása a [Azure monitorba](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics). Ez a módszer lehetővé teszi a kiterjesztett adatmegőrzést, valamint az egyéni irányítópultok, riasztások és lekérdezések létrehozását.
-- A kiépítési naplók [Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) -ját kérdezi le.
+- A kiépítési naplók továbbítása a [Azure monitorba](../app-provisioning/application-provisioning-log-analytics.md). Ez a módszer lehetővé teszi a kiterjesztett adatmegőrzést, valamint az egyéni irányítópultok, riasztások és lekérdezések létrehozását.
+- A kiépítési naplók [Microsoft Graph API](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) -ját kérdezi le.
 - A kiépítési naplók letöltése CSV-vagy JSON-fájlként.
 
 ## <a name="access-the-logs-from-the-azure-portal"></a>A naplók elérése a Azure Portal
@@ -207,7 +207,7 @@ A letöltött JSON-fájl a letöltés méretének csökkentése érdekében mini
 
 Íme néhány példa arra, hogy hogyan dolgozhat a JSON-fájllal a PowerShell használatával. Bármilyen programozási nyelvet használhat, amellyel Ön is kényelmesen használható.  
 
-Először [olvassa el a JSON-fájlt a](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json?view=powershell-7.1) következő parancs futtatásával:
+Először [olvassa el a JSON-fájlt a](/powershell/module/microsoft.powershell.utility/convertfrom-json?view=powershell-7.1) következő parancs futtatásával:
 
 ` $JSONContent = Get-Content -Path "<PATH TO THE PROVISIONING LOGS FILE>" | ConvertFrom-JSON`
 
@@ -243,7 +243,7 @@ Az alábbi tippek és szempontok a kiépítési jelentésekhez:
 
 A következő táblázat segítségével jobban megismerheti, Hogyan oldhatók meg a kiépítési naplókban talált hibák. A hiányzó hibakódok esetén az oldal alján található hivatkozás használatával küldjön visszajelzést. 
 
-|Hibakód|Description|
+|Hibakód|Leírás|
 |---|---|
 |Ütközés, EntryConflict|Javítsa ki az ütköző attribútum értékeit az Azure AD-ben vagy az alkalmazásban. Vagy tekintse át az egyező attribútumok konfigurációját, ha az ütköző felhasználói fióknak meg kell egyeznie és át kellene vennie. A megfeleltetési attribútumok konfigurálásával kapcsolatos további információkért tekintse át a [dokumentációt](../app-provisioning/customize-application-attributes.md) .|
 |TooManyRequests|A célalkalmazás elutasította ezt a kísérletet a felhasználó frissítésére, mert túlterhelt, és túl sok kérést kapott. Semmit nem kell tennie. A rendszer automatikusan kivonja ezt a kísérletet. A Microsoft értesítette a problémát is.|

@@ -8,12 +8,12 @@ ms.author: nmurav
 ms.date: 12/11/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 1333bd08f8a79969817bcb21aa4580d1994d09ce
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: d2df7255980ca00d405cf80a9fff69ff0511bd17
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594747"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659307"
 ---
 # <a name="call-flow-topologies"></a>Folyamat-topológiák hívása
 Ez a cikk az Azure kommunikációs szolgáltatások hívási folyamat topológiáit ismerteti. Ez egy nagyszerű cikk, amelyből megtudhatja, hogy a vállalati ügyfelek hogyan integrálják a kommunikációs szolgáltatásokat a felügyelt hálózaton belül. A kommunikációs szolgáltatások hívási folyamatainak bevezetéséhez tekintse meg a [folyamatok fogalmi dokumentációját](./call-flows.md).
@@ -26,7 +26,7 @@ A hívási folyamat topológiáinak áttekintése előtt definiálunk néhány, 
 
 Az **ügyfél hálózata** minden Ön által kezelt hálózati szegmenst tartalmaz. Ilyen lehet például a vezetékes és vezeték nélküli hálózatok az irodában, illetve az irodák, az adatközpontok és az internetszolgáltatók között.
 
-Az ügyfél hálózata általában számos olyan hálózati területet tartalmaz, amelyeken tűzfalak és/vagy proxykiszolgálók vannak érvényben, amelyek a szervezet biztonsági házirendjeit érvényesítik. Javasoljuk, hogy [átfogó hálózati értékelést](https://docs.microsoft.com/microsoftteams/3-envision-evaluate-my-environment) végezzen a kommunikációs megoldás optimális teljesítményének és minőségének biztosítása érdekében.
+Az ügyfél hálózata általában számos olyan hálózati területet tartalmaz, amelyeken tűzfalak és/vagy proxykiszolgálók vannak érvényben, amelyek a szervezet biztonsági házirendjeit érvényesítik. Javasoljuk, hogy [átfogó hálózati értékelést](/microsoftteams/3-envision-evaluate-my-environment) végezzen a kommunikációs megoldás optimális teljesítményének és minőségének biztosítása érdekében.
 
 A **kommunikációs szolgáltatások hálózata** az Azure kommunikációs szolgáltatásokat támogató hálózati szegmens. Ezt a hálózatot a Microsoft felügyeli, és a világ minden pontján a legtöbb ügyfél hálózatához hasonló élek vannak elosztva. Ez a hálózat felelős a továbbítási, a csoportos hívások adathordozó-feldolgozásának, valamint a gazdag valós idejű média-kommunikációt támogató egyéb összetevőkért.
 
@@ -199,4 +199,3 @@ A következő dokumentumok érdekesek lehetnek:
 
 - További információ a [hívások típusairól](../concepts/voice-video-calling/about-call-types.md)
 - További információ az [ügyfél-kiszolgáló architektúráról](./client-and-server-architecture.md)
-

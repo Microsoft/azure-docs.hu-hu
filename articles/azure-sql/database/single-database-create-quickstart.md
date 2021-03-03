@@ -10,13 +10,13 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 09/03/2020
-ms.openlocfilehash: cb7a441a6d86cd64847300d1e597cf6f86067282
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.date: 01/27/2021
+ms.openlocfilehash: c0e86cad252da1b5484944c12351d4ee1e39edbe
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740946"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656303"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>Rövid útmutató: Azure SQL Database önálló adatbázis létrehozása
 
@@ -70,6 +70,8 @@ Egyetlen adatbázis létrehozásához a Azure Portal ez a rövid útmutató az A
   
 
 1. A **További beállítások** lap **adatforrás** szakaszában, a meglévő adatforrások **használatához** válassza a **minta** lehetőséget. Ez létrehoz egy AdventureWorksLT-mintaadatbázis, így a lekérdezés és a kísérlet során bizonyos táblák és lekérdezések nem üresek az üres adatbázisokkal szemben.
+1. Opcionálisan engedélyezze [Az Azure Defender for SQL](../database/azure-defender-for-sql.md)-t.
+1. Megadhatja a [karbantartási](../database/maintenance-window.md) időszakot is, hogy a tervezett karbantartás a lehető legrövidebb időn belül elvégezze az adatbázisát.
 1. A lap alján válassza a **felülvizsgálat + létrehozás** elemet:
 
    ![További beállítások lap](./media/single-database-create-quickstart/additional-settings.png)
@@ -105,7 +107,7 @@ startip=0.0.0.0
 endip=0.0.0.0
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen:
 
@@ -309,7 +311,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adatbázis [összekötése és lekérdezése](connect-query-content-reference-guide.md) különböző eszközök és nyelvek használatával:
 > [!div class="nextstepaction"]

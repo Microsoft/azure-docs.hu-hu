@@ -8,12 +8,12 @@ ms.author: bobazile
 ms.date: 02/09/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b258f2ef82e74073e3e4f1aa61b036d423c30300
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 432a9dab851bda65ecf8736d725b08c5e726ac16
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100422463"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659256"
 ---
 # <a name="sip-interface-infrastructure-requirements"></a>A SIP-interfész infrastruktúrájának követelményei 
 
@@ -31,7 +31,7 @@ A SIP-interfész üzembe helyezésének támogatott egybájtos, tartományokra �
 |Munkamenet-szegély vezérlője (SBC)|Támogatott SBC. További információ: [támogatott egybájtos](#supported-session-border-controllers-sbcs).|
 |Az SBC-hez csatlakozó telefonos rendszertörzsek|Egy vagy több, az SBC-hez csatlakozó telefonos törzs. Az SBC a SIP felületen keresztül csatlakozik az Azure kommunikációs szolgáltatáshoz. Az SBC harmadik féltől származó telefonos entitásokhoz (például PBX, analóg telefonos adapterekhez stb.) is csatlakozhat. Az SBC-hez csatlakozó PSTN-kapcsolati lehetőségek is működni fognak. (A PSTN-törzseknek az SBC-hez való konfigurálásához tekintse meg az SBC-szállítókat vagy a törzs szolgáltatóit.)|
 |Azure-előfizetés|Azure-előfizetés, amely az ACS-erőforrások létrehozásához, valamint az SBC-hez való konfiguráláshoz és kapcsolódáshoz használható.|
-|Kommunikációs szolgáltatások hozzáférési jogkivonata|A hívások végrehajtásához érvényes hozzáférési jogkivonatra van szükség `voip` hatókörrel. Lásd: [hozzáférési tokenek](https://docs.microsoft.com/azure/communication-services/concepts/identity-model#access-tokens)|
+|Kommunikációs szolgáltatások hozzáférési jogkivonata|A hívások végrehajtásához érvényes hozzáférési jogkivonatra van szükség `voip` hatókörrel. Lásd: [hozzáférési tokenek](../identity-model.md#access-tokens)|
 |Az SBC nyilvános IP-címe|Egy nyilvános IP-cím, amelyet az SBC-hez való kapcsolódáshoz használhat. Az SBC típusa alapján az SBC a NAT-ot is használhatja.|
 |Az SBC teljes tartományneve (FQDN)|Az SBC teljes tartományneve, ahol a teljes tartománynév tartomány része nem egyezik a Microsoft 365 vagy az Office 365 szervezet regisztrált tartományával. További információ: SBC- [tartománynevek](#sbc-domain-names).|
 |Nyilvános DNS-bejegyzés az SBC számára |Egy nyilvános DNS-bejegyzés az SBC teljes tartománynevét a nyilvános IP-címhez rendeli. |
@@ -47,8 +47,8 @@ A következő táblázat példákat mutat be a bérlőhöz regisztrált DNS-neve
 
 |DNS-név|SBC teljes tartománynevet használhat.|Példa FQDN-nevekre|
 |:--- |:--- |:--- |
-contoso.com|Yes|**Érvényes nevek:**<br/>sbc1.contoso.com<br/>ssbcs15.contoso.com<br/>europe.contoso.com|
-|contoso.onmicrosoft.com|No|Az *. onmicrosoft.com tartományok használata nem támogatott az SBC-neveknél
+contoso.com|Igen|**Érvényes nevek:**<br/>sbc1.contoso.com<br/>ssbcs15.contoso.com<br/>europe.contoso.com|
+|contoso.onmicrosoft.com|Nem|Az *. onmicrosoft.com tartományok használata nem támogatott az SBC-neveknél
 
 Ha Ön Office 365-ügyfél, akkor az SBC-tartomány neve nem egyezhet meg az Office 365-bérlőben regisztrált tartományokban. Az alábbi példa az Office 365 és az Azure kommunikációs szolgáltatás együttes létezését mutatja be:
 
@@ -187,7 +187,7 @@ A Felhőbeli adathordozó processzora és az ACS SDK-alkalmazás közötti, a SI
 
 ## <a name="supported-session-border-controllers-sbcs"></a>Támogatott munkamenet-határellenőrzési vezérlők (egybájtos)
 
-A minősítés folyamatban van. Eközben az ügyfelek használhatnak [csapatoknak minősített munkamenet-vezérlőket](https://docs.microsoft.com/MicrosoftTeams/direct-routing-border-controllers). 
+A minősítés folyamatban van. Eközben az ügyfelek használhatnak [csapatoknak minősített munkamenet-vezérlőket](/MicrosoftTeams/direct-routing-border-controllers). 
 
 ## <a name="next-steps"></a>Következő lépések
 

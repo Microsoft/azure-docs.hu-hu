@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 02/10/2021
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 599cf17e1ab2b85aac77893e8b2d520d412e1cea
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5d43d6f56b48a34fa34baf727508ad8f1c151aa7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417791"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674311"
 ---
 # <a name="connect-to-a-secure-azure-storage-account-from-your-synapse-workspace"></a>Kapcsolódás biztonságos Azure Storage-fiókhoz a szinapszis-munkaterületről
 
@@ -21,7 +21,7 @@ Ez a cikk bemutatja, hogyan csatlakozhat biztonságos Azure Storage-fiókhoz az 
 
 
 ## <a name="secured-azure-storage-accounts"></a>Biztonságos Azure Storage-fiókok
-Az Azure Storage többrétegű biztonsági modellt biztosít, amely lehetővé teszi a Storage-fiókok hozzáférésének védelmét és szabályozását. Beállíthatja, hogy az IP-tűzfalszabályok a kiválasztott nyilvános IP-címtartományok forgalmát biztosítsák a Storage-fiókhoz. A hálózati szabályokat úgy is konfigurálhatja, hogy a kiválasztott virtuális hálózatoktól érkező adatforgalmat biztosítson a Storage-fiókhoz. A kiválasztott IP-címtartományok és hálózati szabályok hozzáférését engedélyező IP-tűzfalszabályok lehetővé teszik, hogy ugyanazon a Storage-fiókon keresztül hozzáférjenek a kiválasztott virtuális hálózatokhoz. Ezek a szabályok a Storage-fiók nyilvános végpontján érvényesek. Nincs szükség hozzáférési szabályokra, hogy engedélyezze a munkaterületen létrehozott felügyelt privát végpontok forgalmát egy Storage-fiókba. A tárolási tűzfalszabályok a meglévő Storage-fiókokra, illetve a létrehozásuk során új Storage-fiókokra is alkalmazhatók. A Storage-fiók védelméről [itt](https://docs.microsoft.com/azure/storage/common/storage-network-security)olvashat bővebben.
+Az Azure Storage többrétegű biztonsági modellt biztosít, amely lehetővé teszi a Storage-fiókok hozzáférésének védelmét és szabályozását. Beállíthatja, hogy az IP-tűzfalszabályok a kiválasztott nyilvános IP-címtartományok forgalmát biztosítsák a Storage-fiókhoz. A hálózati szabályokat úgy is konfigurálhatja, hogy a kiválasztott virtuális hálózatoktól érkező adatforgalmat biztosítson a Storage-fiókhoz. A kiválasztott IP-címtartományok és hálózati szabályok hozzáférését engedélyező IP-tűzfalszabályok lehetővé teszik, hogy ugyanazon a Storage-fiókon keresztül hozzáférjenek a kiválasztott virtuális hálózatokhoz. Ezek a szabályok a Storage-fiók nyilvános végpontján érvényesek. Nincs szükség hozzáférési szabályokra, hogy engedélyezze a munkaterületen létrehozott felügyelt privát végpontok forgalmát egy Storage-fiókba. A tárolási tűzfalszabályok a meglévő Storage-fiókokra, illetve a létrehozásuk során új Storage-fiókokra is alkalmazhatók. A Storage-fiók védelméről [itt](../../storage/common/storage-network-security.md)olvashat bővebben.
 
 ## <a name="synapse-workspaces-and-virtual-networks"></a>Szinapszis-munkaterületek és virtuális hálózatok
 A szinapszis munkaterületek létrehozásakor engedélyezheti a felügyelt virtuális hálózatok társítását. Ha nem engedélyezi a felügyelt virtuális hálózatot a munkaterülethez a létrehozásakor, a munkaterület egy megosztott virtuális hálózatban található, valamint olyan egyéb szinapszis-munkaterületekkel, amelyek nem rendelkeznek felügyelt virtuális hálózattal. Ha engedélyezte a felügyelt virtuális hálózatot a munkaterület létrehozásakor, a munkaterület az Azure szinapszis által kezelt dedikált virtuális hálózattal van társítva. Ezek a virtuális hálózatok nem az ügyfél-előfizetésben jönnek létre. Ezért ezen virtuális hálózatoktól nem fog tudni forgalmat biztosítani a biztonságos Storage-fiókhoz a fent ismertetett hálózati szabályok használatával.  

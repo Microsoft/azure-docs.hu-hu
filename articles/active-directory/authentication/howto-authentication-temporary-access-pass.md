@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/12/2021
+ms.date: 02/19/2021
 ms.author: justinha
 author: inbarckms
 manager: daveba
 ms.reviewer: inbarckms
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56d45119fa86ab47e6a625c628d8cb9763db83bd
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: b0f49f39e6bc291c3242fe739866a015ac154a8b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100520994"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651161"
 ---
 # <a name="configure-temporary-access-pass-in-azure-ad-to-register-passwordless-authentication-methods-preview"></a>Ideiglenes hozzáférési pass beállítása az Azure AD-ben a jelszóval nem rendelkező hitelesítési módszerek regisztrálásához (előzetes verzió)
 
@@ -75,6 +75,9 @@ KOPPINTÁS létrehozásához:
 1. Válassza az alábbi **módszer lehetőséget**, majd kattintson az **ideiglenes hozzáférési pass (előzetes verzió)** lehetőségre.
 1. Definiáljon egyéni aktiválási időt vagy időtartamot, majd kattintson a **Hozzáadás** gombra.
 
+   >[!NOTE]
+   >Az egyszeri KOPPINTÁS használatát a rendszer nem kényszeríti ki, ha a bejelentkezett állapotban van (KMSI) engedélyezve van a bérlőben. Ha egyszeri KOPPINTÁSt hoz létre, mindenképp tiltsa le a KMSI.
+
    ![A TAP létrehozásának képernyőképe](./media/how-to-authentication-temporary-access-pass/create.png)
 
 1. A Hozzáadás után megjelennek a KOPPINTÁS részletei. Jegyezze fel a tényleges KOPPINTÁS értékét. Ezt az értéket a felhasználónak kell megadnia. Ezt az értéket nem tekintheti meg, miután rákattintott **az OK** gombra.
@@ -125,6 +128,7 @@ Tartsa szem előtt a következő korlátozásokat:
 - A vendég felhasználók nem tudnak bejelentkezni egy KOPPINTÁSsal.
 - Az önkiszolgáló jelszó-visszaállítás (SSPR) hatókörében lévő felhasználóknak regisztrálniuk kell a SSPR metódusok egyikét, miután bejelentkezett a KOPPINTÁS lehetőséggel. Ha a felhasználó csak a FIDO2 kulcsot fogja használni, zárja ki őket a SSPR-szabályzatból, vagy tiltsa le a SSPR regisztrációs házirendjét. 
 - KOPPINTson a hálózati házirend-kiszolgáló (NPS) és a Active Directory összevonási szolgáltatások (AD FS) (AD FS) adapterrel nem használható.
+- Ha a KMSI engedélyezve van a bérlőn, az egyszeri KOPPINTÁS használata nem kényszeríthető ki.
 - Ha a zökkenőmentes SSO engedélyezve van a bérlőn, a rendszer felszólítja a felhasználókat a jelszó megadására. Az **ideiglenes hozzáférési pass helyett** a hivatkozás elérhető lesz a felhasználó számára a TAP használatával való bejelentkezéshez.
 
 ![Képernyőkép a TAP használatával](./media/how-to-authentication-temporary-access-pass/alternative.png)

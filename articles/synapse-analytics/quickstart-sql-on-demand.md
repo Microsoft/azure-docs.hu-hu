@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: ffa9e7b5685f9a200f6a403045687626f67f66f4
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 8607355069bbae5983239ddbd3e8752143f31497
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218297"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676345"
 ---
 # <a name="quickstart-use-serverless-sql-pool"></a>Gyors útmutató: kiszolgáló nélküli SQL-készlet használata
 
@@ -153,7 +153,7 @@ A fájlok *JSON* -tárolóban, *címjegyzékekben* tárolódnak, és az alábbi 
 
 ### <a name="query-json-files"></a>JSON-fájlok lekérdezése
 
-Az alábbi lekérdezés azt mutatja be, hogyan használhatók a [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) a skaláris értékek (title, kiadó) egy könyvből való lekéréséhez a *Cryptology-ben a valószínűséggel és statisztikai metódusokkal, a kiválasztott cikkek bevezetésével*:
+Az alábbi lekérdezés azt mutatja be, hogyan használhatók a [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest&preserve-view=true) a skaláris értékek (title, kiadó) egy könyvből való lekéréséhez a *Cryptology-ben a valószínűséggel és statisztikai metódusokkal, a kiválasztott cikkek bevezetésével*:
 
 ```sql
 SELECT

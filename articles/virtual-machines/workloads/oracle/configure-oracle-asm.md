@@ -2,18 +2,18 @@
 title: Az Oracle ASM beállítása Azure Linux rendszerű virtuális gépeken | Microsoft Docs
 description: Az Oracle ASM gyors üzembe helyezése az Azure-környezetben.
 author: dbakevlar
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.reviewer: cynthn
-ms.openlocfilehash: 6f0b58374ae3eb972993b544117d8cbb98371ce5
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: b180a0f148db5222a288958724ad248acd18b565
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602614"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673852"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Az Oracle ASM beállítása Azure Linux rendszerű virtuális gépen  
 
@@ -31,7 +31,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 
 ## <a name="prepare-the-environment"></a>A környezet előkészítése
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Erőforráscsoport létrehozásához használja az az [Group Create](/cli/azure/group) parancsot. Az Azure-erőforráscsoport olyan logikai tároló, amelyben az Azure-erőforrások üzembe helyezése és kezelése történik. Ebben a példában egy *myResourceGroup* nevű erőforráscsoportot a *eastus* régióban.
 
@@ -574,7 +574,7 @@ Sikeresen konfigurálta az Oracle automatizált tárolók kezelését a Oracle D
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Oktatóanyag: Oracle-DataGuard konfigurálása konfigurálása](configure-oracle-dataguard.md)
 

@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: 4b2777bfd9905a1caa8b69b78ff892b661e4dc4b
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 62801d40295762b0066f0d2887d7d528ee7b7c2a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097540"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656822"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Adatcímkéző projekt létrehozása és címkék exportálása 
 
@@ -107,12 +107,9 @@ Ha új lemezképeket szeretne hozzáadni az adatkészlethez, a Növekményes fri
 
 Ha további lemezképeket szeretne hozzáadni a projekthez, a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) használatával töltse fel a blob Storage megfelelő mappájába. 
 
-Jelölje be a **Növekményes frissítés engedélyezése** jelölőnégyzetet, ha azt szeretné, hogy a projekt folyamatosan figyelje az adattár új adatait. Ezeket az adatait naponta egyszer bekerül a projektbe, ha engedélyezve van.
+Jelölje be a **Növekményes frissítés engedélyezése** jelölőnégyzetet, ha azt szeretné, hogy a projekt folyamatosan figyelje az adattár új adatait. Ezeket az adategységeket a rendszer naponta egyszer lekéri a projektbe, így várnia kell, hogy új adatait vegye fel az adattárba, mielőtt a projektben megjelenik.  A projekt **részletek** lapjának **Növekményes frissítés** szakaszában láthatja, hogy mikor frissült az adatok utolsó frissítése.
 
 Törölje a jelet a jelölőnégyzetből, ha nem szeretné, hogy az adattárban megjelenő új lemezképek megjelenjenek a projekthez.
-
-A legutóbbi frissítés időbélyegzője a projekt **részletek** lapjának **Növekményes frissítés** szakaszában található.
-
 
 ## <a name="specify-label-classes"></a>Címke osztályok meghatározása
 

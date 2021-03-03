@@ -10,12 +10,12 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 70f5e17c4cc42201e9aa3d36c9937f6ceb9527d0
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 10904275d382c7f9dbf223ded78cab0adf14992a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880203"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661052"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer"></a>Az adatátalakítás Azure Machine Learning Designerben
 
@@ -76,7 +76,7 @@ Ebben a szakaszban az [Adatfelosztási modul](algorithm-module-reference/split-d
 
 A folyamatnak így kell kinéznie:
 
-:::image type="content" source="./media/how-to-designer-transform-data/split-data.png"alt-text="A folyamat konfigurálását és az adatfelosztási modult bemutató képernyőkép":::
+:::image type="content" source="./media/how-to-designer-transform-data/split-data.png" alt-text="A folyamat konfigurálását és az adatfelosztási modult bemutató képernyőkép":::
 
 
 ## <a name="save-the-datasets"></a>Az adatkészletek mentése
@@ -168,7 +168,7 @@ Ugorja át ezt a szakaszt, ha továbbra is az útmutató 2. részében kívánja
 
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan alakíthat át egy adatkészletet, és hogyan mentheti egy regisztrált adattárba.
 

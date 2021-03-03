@@ -17,12 +17,12 @@ ms.date: 01/21/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2027f713baf2b8039187e933ffc7bb0b68b5cc5f
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: b6ef122cd36c3d4e9135876647075f22158df0d1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631961"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653235"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Ismerkedés a Azure Active Directory Reporting API-val
 
@@ -39,7 +39,7 @@ Ha problémákba ütközik, tekintse meg a [Azure Active Directory támogatásá
 Ha a jelentéskészítési API-t felhasználói beavatkozás nélkül vagy anélkül szeretné elérni, a következőket kell tennie:
 
 1. Szerepkörök kiosztása (biztonsági olvasó, biztonsági rendszergazda, globális rendszergazda)
-2. Alkalmazás regisztrálása
+2. Egy alkalmazás regisztrálása
 3. Engedélyek megadása
 4. Konfigurációs beállítások összegyűjtése
 
@@ -51,7 +51,7 @@ A naplók Microsoft Graph API-végpontja, `https://graph.microsoft.com/v1.0/audi
 
 Az [Identity Protection kockázati észlelések API](/graph/api/resources/identityriskevent?view=graph-rest-beta) -val programozási hozzáférést nyerhet a biztonsági észlelésekhez Microsoft Graph használatával. További információ: Ismerkedés [a Azure Active Directory Identity Protection és Microsoft Graphával](../identity-protection/howto-identity-protection-graph-api.md). 
   
-A [kiépítési naplók API](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) -val programozási hozzáférést is kaphat a bérlőben lévő események kiépítési eseményeihez. 
+A [kiépítési naplók API](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) -val programozási hozzáférést is kaphat a bérlőben lévő események kiépítési eseményeihez. 
 
 ## <a name="apis-with-microsoft-graph-explorer"></a>API-k Microsoft Graph Explorerrel
 

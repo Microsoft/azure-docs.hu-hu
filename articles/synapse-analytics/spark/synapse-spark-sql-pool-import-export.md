@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 11/19/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: e0bdfa4a451269e82b73194e921f9067d848868e
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 66a804f645ee56cce62053a51e6aa4fc25b3c1a9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511083"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671321"
 ---
 # <a name="introduction"></a>Bevezetés
 
@@ -111,7 +111,7 @@ df.write.synapsesql("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
 
 SQL Pool – külső tábla
 
-Egy dedikált SQL-készlet külső táblájába való íráshoz külső adatforrásra és külső FÁJLFORMÁTUMra van szükség a dedikált SQL-készleten.  További információért olvassa el a [külső adatforrás](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) és a [külső fájlformátumok](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) létrehozása a dedikált SQL-készletben című témakört.  Az alábbi példák egy külső adatforrás és a külső fájlformátumok létrehozására szolgálnak a dedikált SQL-készletben.
+Egy dedikált SQL-készlet külső táblájába való íráshoz külső adatforrásra és külső FÁJLFORMÁTUMra van szükség a dedikált SQL-készleten.  További információért olvassa el a [külső adatforrás](/sql/t-sql/statements/create-external-data-source-transact-sql?view=azure-sqldw-latest&preserve-view=true) és a [külső fájlformátumok](/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest&preserve-view=true) létrehozása a dedikált SQL-készletben című témakört.  Az alábbi példák egy külső adatforrás és a külső fájlformátumok létrehozására szolgálnak a dedikált SQL-készletben.
 
 ```sql
 --For an external table, you need to pre-create the data source and file format in dedicated SQL pool using SQL queries:

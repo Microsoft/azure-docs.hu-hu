@@ -4,16 +4,17 @@ description: Java-alkalmazások üzembe helyezése a WildFly a CentOS virtuális
 author: Theresa-Nguyen
 ms.author: bicnguy
 ms.topic: quickstart
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: redhat
+ms.collection: linux
 ms.assetid: 7aa21ef8-9cfb-43e0-bfda-3f10a2a2f3ef
 ms.date: 10/23/2020
-ms.openlocfilehash: 1140f765b21e68e206142cf341649af061ebdd33
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 533d2881688598430ca05e964595352edf993dff
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705302"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676008"
 ---
 # <a name="quickstart-wildfly-on-centos-8"></a>Gyors útmutató: WildFly a CentOS 8-on
 
@@ -95,7 +96,7 @@ A sablont a következő három módon telepítheti:
 * További információ az [Azure-beli Linux-disztribúcióról](../../linux/endorsed-distros.md)
 * [Az Azure Java-fejlesztőknek dokumentációja](https://github.com/JasonFreeberg/jboss-on-app-service)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Éles környezetben tekintse meg a Red Hat JBoss EAP Azure Gyorsindítás ARM-sablonokat:
 

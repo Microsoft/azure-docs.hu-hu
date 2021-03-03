@@ -9,20 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 2ce38add-1078-4bb9-a1da-6f407a9bc910
-ms.service: virtual-machines-windows
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 62803bd450db351290bbc12d650d23a4148a4536
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f539a63907bb7cbe9d04dc3249427357d79d7c87
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022343"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673601"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Azure-infrastruktúra előkészítése az SAP magas rendelkezésre állásához Windows feladatátvevő fürt és fájlmegosztás használatával SAP ASCS/SCS-példányok esetén
 
@@ -219,8 +218,8 @@ A telepítés megkezdése előtt tekintse át a következő cikket:
 | --- | --- | --- | --- |
 | Első fürtcsomópont-ASCS/SCS-fürt | ASCs – 1 | 10.0.6.4 | ASCs – as |
 | Második fürtcsomópont-ASCS/SCS-fürt | ASCs – 2 | 10.0.6.5 | ASCs – as |
-| Fürt hálózatnév |ASCs – CL | 10.0.6.6 | n/a |
-| SAP-PR1 ASCS-fürt hálózati neve |PR1 – ASCs | 10.0.6.7 | n/a |
+| Fürt hálózatnév |ASCs – CL | 10.0.6.6 | n.a. |
+| SAP-PR1 ASCS-fürt hálózati neve |PR1 – ASCs | 10.0.6.7 | n.a. |
 
 
 **1. táblázat**: ASCS/SCS-fürt
@@ -237,8 +236,8 @@ A telepítés megkezdése előtt tekintse át a következő cikket:
 | Első fürtcsomópont | SOFs – 1 | 10.0.6.10 | SOFs – as |
 | Második fürtcsomópont | SOFs – 2 | 10.0.6.11 | SOFs – as |
 | Harmadik fürtcsomópont | SOFs – 3 | 10.0.6.12 | SOFs – as |
-| Fürt hálózatnév | SOFs – CL | 10.0.6.13 | n/a |
-| SAP globális gazdagép neve | sapglobal | Az összes fürtcsomópont IP-címeinek használata | n/a |
+| Fürt hálózatnév | SOFs – CL | 10.0.6.13 | n.a. |
+| SAP globális gazdagép neve | sapglobal | Az összes fürtcsomópont IP-címeinek használata | n.a. |
 
 **3. táblázat**: Scale-Out fájlkiszolgáló-fürt
 
@@ -341,6 +340,6 @@ Miután sikeresen telepítette a Windows Scale-Out fájlkiszolgáló fürtöt, a
 
 Ezek a beállítások az ügyfelekkel lettek tesztelve, és jó kompromisszumot biztosítanak. Elég rugalmasak, de a valós hibák és a virtuális gépek meghibásodása esetén is elég gyors feladatátvételt biztosítanak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az SAP NetWeaver magas rendelkezésre állásának telepítése Windows feladatátvevő fürtön és fájlmegosztás SAP ASCS/SCS-példányokhoz][sap-high-availability-installation-wsfc-file-share]

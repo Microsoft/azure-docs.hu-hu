@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 9ed811f96e08e8ebab2e6fd090a4322d9f7827fb
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: f9152e341ac04209754bbf5f008cd56373967b9f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681624"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677440"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure Disk Storage kiszolgálóoldali titkosítása
 
@@ -51,6 +51,17 @@ Egyelőre az ügyfél által felügyelt kulcsokra a következő korlátozások v
 #### <a name="supported-regions"></a>Támogatott régiók
 
 Az ügyfél által felügyelt kulcsok minden olyan régióban elérhetők, ahol elérhetők a felügyelt lemezek.
+
+Az automatikus kulcs elforgatása előzetes verzióban érhető el, és csak a következő régiókban érhető el:
+
+- USA keleti régiója
+- USA 2. keleti régiója
+- USA déli középső régiója
+- USA nyugati régiója
+- USA 2. nyugati régiója
+- Észak-Európa
+- West Europe
+- Közép-Franciaország
 
 > [!IMPORTANT]
 > Az ügyfél által felügyelt kulcsok az Azure-erőforrások felügyelt identitásait, Azure Active Directory (Azure AD) funkcióját használják. Az ügyfél által felügyelt kulcsok konfigurálásakor a rendszer automatikusan hozzárendel egy felügyelt identitást a borítók alá tartozó erőforrásokhoz. Ha ezt követően áthelyezi az előfizetést, az erőforráscsoportot vagy a felügyelt lemezt egyik Azure AD-címtárból a másikba, a felügyelt lemezekhez társított felügyelt identitás nem kerül át az új bérlőre, így az ügyfél által felügyelt kulcsok nem fognak működni. További információ: [előfizetés továbbítása az Azure ad-címtárak között](../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).

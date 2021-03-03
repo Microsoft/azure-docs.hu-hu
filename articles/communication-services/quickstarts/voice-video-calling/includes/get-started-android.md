@@ -6,14 +6,17 @@ ms.author: marobert
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 02cf175fc0a29795428ce1b3651469532ff3867c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: b4719fcf046ce7ef5d74ccf1863b0400c2c52845
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92438084"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656637"
 ---
 Ebből a rövid útmutatóból megtudhatja, hogyan indíthat el hívást az Android rendszerhez készült ügyféloldali kódtárat hívó Azure kommunikációs szolgáltatással.
+
+> [!NOTE]
+> Ez a dokumentum a hívó ügyféloldali kódtár verziójának 1.0.0-Beta. 8 verzióját használja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -28,17 +31,15 @@ Ebből a rövid útmutatóból megtudhatja, hogyan indíthat el hívást az Andr
 
 Android Studio válassza az új Android Studio projekt indítása lehetőséget.
 
-:::image type="content" source="../media/android/studio-new-project.png" alt-text="Képernyőfelvétel: az &quot;új Android Studio projekt indítása&quot; gomb, amely a Android Studioban van kiválasztva.&quot;:::
+:::image type="content" source="../media/android/studio-new-project.png" alt-text="Képernyőfelvétel: az &quot;új Android Studio projekt indítása&quot; gomb, amely a Android Studioban van kiválasztva.":::
 
-Válassza a &quot;üres tevékenység&quot; projekt sablont a &quot;telefon és a tábla" alatt.
+Válassza a "üres tevékenység" projekt sablont a "telefon és a tábla" alatt.
 
-:::image type="content" source="../media/android/studio-blank-activity.png" alt-text="Képernyőfelvétel: az &quot;új Android Studio projekt indítása&quot; gomb, amely a Android Studioban van kiválasztva.&quot;:::
+:::image type="content" source="../media/android/studio-blank-activity.png" alt-text="Képernyőfelvétel: a Project Template (üres tevékenység) lehetőség van kiválasztva.":::
 
-Válassza a &quot;üres tevékenység&quot; projekt sablont a &quot;telefon és a tábla" minimális ügyféloldali kódtárat.
+Válassza ki az "API 26: Android 8,0 (Oreo)" minimális ügyféloldali kódtárat.
 
-:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Képernyőfelvétel: az &quot;új Android Studio projekt indítása&quot; gomb, amely a Android Studioban van kiválasztva.&quot;:::
-
-Válassza a &quot;üres tevékenység&quot; projekt sablont a &quot;telefon és a tábla":::
+:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Képernyőfelvétel: az &quot;üres tevékenység&quot; lehetőség van kiválasztva a Project template 2. képernyőn.":::
 
 
 ### <a name="install-the-package"></a>A csomag telepítése
@@ -80,7 +81,7 @@ android {
 
 dependencies {
     ...
-    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.2'
+    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.8'
     ...
 }
 ```
@@ -182,8 +183,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.azure.android.communication.common.CommunicationUser;
-import com.azure.android.communication.common.CommunicationUserCredential;
+import com.azure.android.communication.common.CommunicationUserIdentifier;
+import com.azure.android.communication.common.CommunicationTokenCredential;
 import com.azure.communication.calling.CallAgent;
 import com.azure.communication.calling.CallClient;
 import com.azure.communication.calling.StartCallOptions;
@@ -266,6 +267,7 @@ Az alábbi osztályok és felületek az Azure kommunikációs szolgáltatások �
 | CallClient| A CallClient a hívó ügyféloldali függvénytár fő belépési pontja.|
 | CallAgent | A CallAgent a hívások indításához és kezeléséhez használatos. |
 | CommunicationUserCredential | A rendszer a CommunicationUserCredential használja jogkivonat-hitelesítő adatként a CallAgent létrehozásához.|
+| CommunicationIdentifier | A CommunicationIdentifier olyan különböző típusú résztvevőként szolgál, amely egy hívás része lenne.|
 
 ## <a name="create-an-agent-from-the-user-access-token"></a>Ügynök létrehozása a felhasználói hozzáférési tokenből
 
@@ -280,7 +282,7 @@ private void createAgent() {
     String userToken = "<User_Access_Token>";
 
     try {
-        CommunicationUserCredential credential = new CommunicationUserCredential(userToken);
+        CommunicationTokenCredential credential = new CommunicationTokenCredential(userToken);
         callAgent = new CallClient().createCallAgent(getApplicationContext(), credential).get();
     } catch (Exception ex) {
         Toast.makeText(getApplicationContext(), "Failed to create call agent.", Toast.LENGTH_SHORT).show();
@@ -305,7 +307,7 @@ private void startCall() {
 
     callAgent.call(
         getApplicationContext(),
-        new CommunicationUser[] {new CommunicationUser(calleeId)},
+        new CommunicationUserIdentifier[] {new CommunicationUserIdentifier(calleeId)},
         options);
 }
 ```
@@ -315,9 +317,7 @@ private void startCall() {
 
 Az alkalmazás mostantól az eszköztár Run app (alkalmazás futtatása) gombjával (Shift + F10) indítható el. Ellenőrizze, hogy meghívja-e a hívásokat `8:echo123` . Egy előre rögzített üzenet jelenik meg, majd újra megismétli az üzenetet.
 
-:::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="Képernyőfelvétel: az &quot;új Android Studio projekt indítása&quot; gomb, amely a Android Studioban van kiválasztva.&quot;:::
-
-Válassza a &quot;üres tevékenység&quot; projekt sablont a &quot;telefon és a tábla":::
+:::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="A befejezett alkalmazást bemutató képernyőkép.":::
 
 ## <a name="sample-code"></a>Példakód
 

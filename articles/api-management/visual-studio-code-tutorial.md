@@ -6,16 +6,16 @@ author: dlepow
 ms.author: apimpm
 ms.topic: tutorial
 ms.date: 12/10/2020
-ms.openlocfilehash: 6cf5c6f716912689b39264ed71f6a7c55f944ad2
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 0dea8e43d5f09b84c5795bc257cf3331ad919fcb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97439497"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649546"
 ---
 # <a name="tutorial-use-the-api-management-extension-for-visual-studio-code-to-import-and-manage-apis"></a>Oktatóanyag: az API-k importálásához és kezeléséhez használja a Visual Studio Code API Management bővítményét
 
-Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Visual Studio Code-hoz készült API Management bővítmény előzetes verzióját a API Management gyakori műveleteihez. A jól ismert Visual Studio Code-környezet használatával API-kat importálhat, frissíthet, tesztelheti és kezelheti.
+Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Visual Studio Code-hoz készült API Management-bővítményt a API Management gyakori műveleteihez. A jól ismert Visual Studio Code-környezet használatával API-kat importálhat, frissíthet, tesztelheti és kezelheti.
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -32,7 +32,7 @@ A további API Management funkciók bevezetését a [Azure Portal](import-and-pu
 
 ## <a name="prerequisites"></a>Előfeltételek
 - Az [Azure API Management terminológiájának](api-management-terminology.md) ismertetése
-- Győződjön meg arról, hogy telepítette a [Visual Studio Code](https://code.visualstudio.com/) -ot és a legújabb [Azure API Management-bővítményt a Visual Studio Code-hoz (előzetes verzió)](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement&ssr=false#overview)
+- Győződjön meg arról, hogy telepítette a [Visual Studio Code](https://code.visualstudio.com/) -ot és a legújabb [Azure API Management-bővítményt a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement&ssr=false#overview) -hoz
 - [API Management-példány létrehozása](vscode-create-service-instance.md)
 
 ## <a name="import-an-api"></a>API importálása

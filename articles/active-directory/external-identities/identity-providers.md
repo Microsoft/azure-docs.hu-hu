@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ead05598c6ca4d096e1a68c8d640938ecd771c2
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 42ed42a1fc9a2750cc928b5fd03eb4b32f770276
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355511"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644085"
 ---
 # <a name="identity-providers-for-external-identities"></a>Külső identitások identitás-szolgáltatói
 
@@ -27,9 +27,6 @@ Ugyanakkor engedélyezheti a felhasználók számára, hogy különböző identi
 - **Google**: a Google Federation lehetővé teszi, hogy a külső felhasználók meghívókat váltsanak be az alkalmazásaiba saját Gmail-fiókkal való bejelentkezéssel. A Google Federation is használható az önkiszolgáló bejelentkezési felhasználói folyamatokban.
    > [!IMPORTANT]
    > **2021. január 4-én kezdődően** a Google [elavult webnézet-bejelentkezési támogatást jelenít meg](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html). Ha Google-összevonást vagy önkiszolgáló regisztrációt használ a Gmail szolgáltatással, az üzletági [natív alkalmazásokat tesztelje a kompatibilitás](google-federation.md#deprecation-of-webview-sign-in-support)érdekében.
-
-   > [!NOTE]
-   > Ha a jelenlegi önkiszolgáló regisztrációs előzetes verzióban felhasználói folyamat van társítva egy alkalmazáshoz, és a felhasználónak egy meghívót küld az alkalmazásnak, a felhasználó nem fog tudni Gmail-fiókot használni a meghívó beváltásához. Megkerülő megoldásként a felhasználó átléphet az önkiszolgáló bejelentkezési folyamaton. Vagy a meghívást beválthatják egy másik alkalmazáshoz való hozzáféréssel vagy a saját alkalmazások portálján a következő címen: https://myapps.microsoft.com .
 
 - **Facebook**: egy alkalmazás létrehozásakor konfigurálhatja az önkiszolgáló regisztrációt, és engedélyezheti a Facebook-összevonás használatát, hogy a felhasználók saját Facebook-fiókjaik használatával regisztrálhatják az alkalmazást. A Facebook csak önkiszolgáló bejelentkezési felhasználói folyamatokhoz használható, és nem érhető el bejelentkezési lehetőségként, ha a felhasználók meghívókat váltanak ki.
 

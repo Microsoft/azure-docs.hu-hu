@@ -10,19 +10,19 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/05/2021
 ms.author: akjosh
-ms.openlocfilehash: d45535f11568fddd10130d506af3329dcdfb0484
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 741db5ea10847e2fe6711e7ca01d65efb1f09dea
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100580285"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667308"
 ---
 # <a name="use-linux-diagnostic-extension-40-to-monitor-metrics-and-logs"></a>A Linux diagnosztikai bővítmény 4,0 használata a metrikák és naplók figyeléséhez
 
 Ez a dokumentum a Linux diagnosztikai bővítmény 4,0-es és újabb verzióját ismerteti.
 
 > [!IMPORTANT]
-> A 3. * verzióval kapcsolatos információkért tekintse meg  [ezt a dokumentumot](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux-v3). A 2,3-es és régebbi verzióval kapcsolatos információkért tekintse meg [ezt a dokumentumot](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2).
+> A 3. * verzióval kapcsolatos információkért tekintse meg  [ezt a dokumentumot](./diagnostics-linux-v3.md). A 2,3-es és régebbi verzióval kapcsolatos információkért tekintse meg [ezt a dokumentumot](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2).
 
 ## <a name="introduction"></a>Bevezetés
 
@@ -108,7 +108,7 @@ A python2 végrehajtható fájljának aliasnak kell lennie a *Pythonhoz*. Az al�
 A példákban letöltött minta-konfiguráció szabványos adatokat gyűjt, és a táblázatos tárolóba küldi őket. A minta konfigurációjának és tartalmának URL-címe változhat. A legtöbb esetben le kell töltenie a portál beállítások JSON-fájljának másolatát, és testre kell szabnia az igényeinek megfelelően, majd minden olyan sablonnal vagy automatizálással rendelkezik, amely a konfigurációs fájl saját verzióját használja, és nem tölti le az adott URL-címet.
 
 > [!NOTE]
-> Az új Azure Monitor-fogadó engedélyezése esetén a virtuális gépeknek az MSI Auth token generálásához engedélyezve kell lennie a rendszerhez rendelt identitásnak. Ezt a virtuális gép létrehozásakor vagy a virtuális gép létrehozása után teheti meg. A rendszerhez rendelt identitás a portálon, a CLI-n, a PowerShellen és a Resource Manageren keresztül történő engedélyezésének lépései.  [itt](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)részletesen láthatók. 
+> Az új Azure Monitor-fogadó engedélyezése esetén a virtuális gépeknek az MSI Auth token generálásához engedélyezve kell lennie a rendszerhez rendelt identitásnak. Ezt a virtuális gép létrehozásakor vagy a virtuális gép létrehozása után teheti meg. A rendszerhez rendelt identitás a portálon, a CLI-n, a PowerShellen és a Resource Manageren keresztül történő engedélyezésének lépései.  [itt](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)részletesen láthatók. 
 
 #### <a name="azure-cli-sample"></a>Azure CLI-minta
 
@@ -490,7 +490,7 @@ Ilyenek például `LinuxSyslog20170410` a és a `LinuxSyslog20170609` .
 Ez a választható szakasz szabályozza a metrikák küldését a Azure Monitor fogadóba a Storage-fiók és az alapértelmezett vendég metrikák panel mellett.
 
 > [!NOTE]
-> Ehhez engedélyezni kell a rendszerhez rendelt identitást a virtuális gépeken/VMSS. Ez a portál, a CLI, a PowerShell és a Resource Manager használatával végezhető el. A lépéseket [itt](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)találja részletesen. Az engedélyezésének lépései az az CLI, a PowerShell stb. című telepítési mintákban is szerepelnek. 
+> Ehhez engedélyezni kell a rendszerhez rendelt identitást a virtuális gépeken/VMSS. Ez a portál, a CLI, a PowerShell és a Resource Manager használatával végezhető el. A lépéseket [itt](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)találja részletesen. Az engedélyezésének lépései az az CLI, a PowerShell stb. című telepítési mintákban is szerepelnek. 
 
 ```json
   "sinksConfig": {

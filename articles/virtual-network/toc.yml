@@ -99,6 +99,8 @@
           href: ipv6-public-ip-address-prefix.md
         - name: Útválasztási beállítás
           href: routing-preference-overview.md
+        - name: Az útválasztási preferencia nem mért
+          href: routing-preference-unmetered.md
         - name: A nyilvános IP-cím biztonsági alapkonfigurációja
           href: public-ip-security-baseline.md
     - name: Biztonság
@@ -274,6 +276,10 @@
                       href: configure-routing-preference-virtual-machine-powershell.md
                     - name: Azure CLI
                       href: configure-routing-preference-virtual-machine-cli.md
+                - name: Vegyes útválasztási beállítások konfigurálása virtuális géphez
+                  href: routing-preference-mixed-network-adapter-portal.md
+                - name: Útválasztási beállítások konfigurálása AK-fürthöz
+                  href: routing-preference-azure-kubernetes-service-cli.md
     - name: Biztonság
       items:
         - name: Hálózati forgalom szűrése

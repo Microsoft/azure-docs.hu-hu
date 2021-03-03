@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59cc50274b291c23aeec4620ec7a09312cc0c1fb
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: e49ed356f294baca6e339faeebe92ca02b2723df
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762247"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644782"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyors üzembe helyezés
 
@@ -161,10 +161,10 @@ A felhasználók intranetes zónájának beállításai kétféleképpen módos�
     ![Képernyőfelvétel: a "Registry" kiválasztott és a "beállításjegyzék-elem" lehetőség be van jelölve.](./media/how-to-connect-sso-quick-start/sso15.png)
 
 4. Adja meg a következő értékeket a megfelelő mezőkben, majd kattintson **az OK** gombra.
-   - **Kulcs elérési útja**: **_Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-SSO.com\autologon_* _
-   - _* Érték neve * *: **_https_*_
-   - _* Érték típusa * *: **_REG_DWORD_*_
-   - _* Érték * *: **_00000001_*_
+   - **Kulcs elérési útja**: **_Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-SSO.com\autologon_**
+   - **Érték neve**: **_https_**
+   - **Érték típusa**: **_REG_DWORD_**
+   - **Érték**: **_00000001_**
  
      ![Képernyőkép, amely az "új beállításjegyzék tulajdonságai" ablakot jeleníti meg.](./media/how-to-connect-sso-quick-start/sso16.png)
  
@@ -176,7 +176,7 @@ A felhasználók intranetes zónájának beállításai kétféleképpen módos�
 
 A Mozilla Firefox nem használ automatikusan Kerberos-hitelesítést. Az alábbi lépések segítségével minden felhasználónak manuálisan hozzá kell adnia az Azure AD URL-címét a Firefox-beállításaihoz:
 1. Futtassa a Firefoxot, és írja be `about:config` a címsorba. Zárja be a megjelenő értesítéseket.
-2. Keresse meg az _ *Network. Negotiate-auth. megbízható-URI** beállítást. Ez a beállítás felsorolja a Firefox megbízható helyeit a Kerberos-hitelesítéshez.
+2. Keressen rá a **Network. Negotiate – auth. megbízható – URI-** k beállításra. Ez a beállítás felsorolja a Firefox megbízható helyeit a Kerberos-hitelesítéshez.
 3. Kattintson a jobb gombbal, és válassza a **módosítás** lehetőséget.
 4. Adja meg `https://autologon.microsoftazuread-sso.com` a mezőt a mezőben.
 5. Kattintson **az OK gombra** , majd nyissa meg újra a böngészőt.
@@ -205,7 +205,7 @@ A harmadik féltől származó Active Directory Csoportházirend bővítmények 
 
 #### <a name="known-browser-limitations"></a>Böngészőkkel kapcsolatos ismert korlátozások
 
-A zökkenőmentes egyszeri bejelentkezés nem működik a Firefox és a Microsoft Edge böngészők privát böngészési módjában. Emellett az Internet Explorerben nem működik, ha a böngésző fokozottan védett módban fut. A Microsoft Edge Chromium alapján történő következő verziójában a kialakítás nem fog működni InPrivate és Guest módban.
+A zökkenőmentes egyszeri bejelentkezés nem működik a Firefox és a Microsoft Edge (örökölt) böngészők privát böngészési módjában. Emellett az Internet Explorerben nem működik, ha a böngésző fokozottan védett módban fut. A zökkenőmentes egyszeri bejelentkezés a Chromium-alapú Microsoft Edge következő verzióját támogatja, és a fejlesztés InPrivate-és vendég módban is működik.
 
 ## <a name="step-4-test-the-feature"></a>4. lépés: a funkció tesztelése
 
@@ -216,10 +216,10 @@ Egy adott felhasználó szolgáltatásának teszteléséhez győződjön meg arr
   - A funkciót a Csoportházirendon keresztül [építették ki a](#step-3-roll-out-the-feature) felhasználó számára.
 
 A forgatókönyv teszteléséhez, ahol a felhasználó csak a felhasználónevet adja meg, nem pedig a jelszót:
-   - Jelentkezzen be `https://myapps.microsoft.com/` egy új privát böngésző-munkamenetbe.
+   - Jelentkezzen be a következőbe: https://myapps.microsoft.com/ . Ügyeljen arra, hogy törölje a böngésző gyorsítótárát, vagy használjon egy új privát böngésző-munkamenetet az egyik támogatott böngészőben a privát módban.
 
 A következő lépések egyikével tesztelheti azt a forgatókönyvet, amelyben a felhasználónak nem kell megadnia a felhasználónevet vagy a jelszót: 
-   - Jelentkezzen be `https://myapps.microsoft.com/contoso.onmicrosoft.com` egy új privát böngésző-munkamenetbe. A *contoso* helyére írja be a bérlő nevét.
+   - Jelentkezzen be, hogy `https://myapps.microsoft.com/contoso.onmicrosoft.com` törölje a böngésző gyorsítótárát, vagy használjon egy új privát böngésző-munkamenetet az összes támogatott böngészőben a privát módban. A *contoso* helyére írja be a bérlő nevét.
    - Jelentkezzen be `https://myapps.microsoft.com/contoso.com` egy új privát böngésző-munkamenetbe. Cserélje le a *contoso.com* egy ellenőrzött tartományra (nem összevont tartományra) a bérlőn.
 
 ## <a name="step-5-roll-over-keys"></a>5. lépés: kulcsok átadása
@@ -234,7 +234,7 @@ A kulcsok átadására vonatkozó utasításokért lásd [: Azure Active Directo
 >[!IMPORTANT]
 >Ezt a lépést nem kell _azonnal_ végrehajtania, miután engedélyezte a szolgáltatást. A Kerberos-visszafejtési kulcsok legalább 30 naponkénti átadása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Részletes [technikai](how-to-connect-sso-how-it-works.md)tudnivalók: az egyszerű Sign-On funkció működésének megismerése.
 - [Gyakori kérdések](how-to-connect-sso-faq.md): válaszokat kaphat a zökkenőmentes egyszeri bejelentkezéssel kapcsolatos gyakori kérdésekre.

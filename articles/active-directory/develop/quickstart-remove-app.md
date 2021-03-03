@@ -13,12 +13,12 @@ ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: 4afffb558b9cbf53a762b1b2bb1ce544e554feaf
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: a0543905f41abc9c21327159d63f7adaa5b025dc
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103889"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645891"
 ---
 # <a name="how-to-remove-an-application-registered-with-the-microsoft-identity-platform"></a>A Microsoft Identity platformmal regisztrált alkalmazások eltávolítása
 
@@ -36,6 +36,9 @@ A következő fejezetekben megismerheti a következőket:
 ## <a name="remove-an-application-authored-by-you-or-your-organization"></a>A saját maga vagy a szervezete által fejlesztett alkalmazás eltávolítása
 
 A saját maga vagy a szervezete által regisztrált alkalmazásokat egy alkalmazás- és egy szolgáltatásnév-objektum is jelöli a bérlőn. További információkért tekintse meg [az alkalmazás- és szolgáltatásnév-objektumokat](./app-objects-and-service-principals.md) ismertető cikket.
+
+> [!NOTE]
+> Egy alkalmazás törlésével a szolgáltatás egyszerű objektuma is törlődik az alkalmazás saját könyvtárában. A több-bérlős alkalmazások esetében a más címtárakban található szolgáltatásnév-objektumok nem lesznek törölve.
 
 Egy alkalmazás törléséhez az alkalmazás tulajdonosaként vagy rendszergazdai jogosultságokkal kell szerepelnie.
 

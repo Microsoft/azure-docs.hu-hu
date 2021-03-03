@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/27/2021
 ms.author: jeedes
-ms.openlocfilehash: e1cf12d676de84bc18a123fbdf05b1170725eda8
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 3c1ec38e792987f4bd7208c3bf57a882a05f4f46
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99072878"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648050"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-samsung-knox-and-business-services"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Samsung Knox és az üzleti szolgáltatásokkal
 
@@ -31,7 +31,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Samsung Knoxt é
 Első lépésként a következő elemeket kell megadnia:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* Samsung Knox és Business Services egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
+* Egy Samsung Knox-fiók.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -55,7 +55,7 @@ A Samsung Knox és az üzleti szolgáltatások Azure AD-be való integrálásán
 
 ## <a name="configure-and-test-azure-ad-sso-for-samsung-knox-and-business-services"></a>Azure AD SSO konfigurálása és tesztelése Samsung Knox és Business Services esetén
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Samsung Knox és az üzleti szolgáltatások segítségével egy **B. Simon** nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Samsung Knox-ben és az üzleti szolgáltatásokban.
+Konfigurálja és tesztelje az Azure AD SSO-t a Samsung Knox és az üzleti szolgáltatások segítségével egy **B. Simon** nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a [SamsungKnox.com](https://samsungknox.com/)-ben.
 
 Az Azure AD SSO és a Samsung Knox és az üzleti szolgáltatások konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
@@ -78,7 +78,10 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet:  `https://www.samsungknox.com`
+    * A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet: `https://www.samsungknox.com`
+    * A **Válasz URL-címe (a fogyasztói szolgáltatás URL-címe)** szövegmezőbe írja be az URL-címet: `https://central.samsungknox.com/ams/ad/saml/acs`
+    
+    ![Alapszintű SAML-konfigurációs értékek](https://docs.samsungknox.com/assets/merge/ad-sso/basic-saml-configuration.png)
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
@@ -110,7 +113,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ## <a name="configure-samsung-knox-and-business-services-sso"></a>A Samsung Knox és az üzleti szolgáltatások egyszeri bejelentkezésének konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be a Samsung Knox és a Business Services vállalati webhelyre rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a [SamsungKnox.com](https://samsungknox.com/) rendszergazdaként.
 
 1. Kattintson a jobb felső sarokban található **avatarra** .
 
@@ -118,31 +121,28 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. A bal oldali oldalsávon kattintson az **Active Directory-beállítások** elemre, és hajtsa végre a következő lépéseket.
 
-    ![ACTIVE DIRECTORY-BEÁLLÍTÁSOK](./media/samsung-knox-and-business-services-tutorial/sso-settings.png)
+    ![ACTIVE DIRECTORY-BEÁLLÍTÁSOK](https://docs.samsungknox.com/assets/merge/ad-sso/ad-5.png)
 
     a. Az **azonosító (entitás azonosítója)** szövegmezőbe illessze be a Azure Portalba beírt **azonosító** értékét.
 
     b. Az **alkalmazás-összevonási metaadatok URL-címe** szövegmezőbe illessze be az **alkalmazás-összevonási metaadatok URL-címét** , amelyet a Azure Portal másolt.
 
-    c. kattintson a **Kapcsolódás ad SSO-hoz** elemre.
+    c. Kattintson a **Kapcsolódás ad SSO-hoz** elemre.
 
 ### <a name="create-samsung-knox-and-business-services-test-user"></a>Samsung Knox és Business Services tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Samsung Knoxban és az üzleti szolgáltatásokban. A Samsung Knox és az [üzleti szolgáltatások támogatási csapatával](mailto:noreplyk.sec@samsung.com) a felhasználók hozzáadhatók a Samsung Knox és a Business Services platformhoz. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Samsung Knoxban és az üzleti szolgáltatásokban. Tekintse meg a [Knox configure](https://docs.samsungknox.com/admin/knox-configure/Administrators.htm) vagy [Knox Mobile beléptetési](https://docs.samsungknox.com/admin/knox-mobile-enrollment/kme-add-an-admin.htm) rendszergazdai útmutatóit, amelyekben megtudhatja, hogyan hívhat meg egy rendszergazdai vagy tesztelési felhasználót a Samsung Knox-szervezet számára. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. A rendszer átirányítja a Samsung Knox és az üzleti szolgáltatások bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot. 
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. A rendszer átirányítja a [SamsungKnox.com](https://samsungknox.com/), ahol elindíthatja a bejelentkezési folyamatot. 
 
-* Lépjen közvetlenül a Samsung Knox és az üzleti szolgáltatások bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
+* Lépjen közvetlenül a [SamsungKnox.com](https://samsungknox.com/) , és indítsa el innen a bejelentkezési folyamatot.
 
-* Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások Samsung Knox és Business Services csempére kattint, a rendszer átirányítja a Samsung Knox és az üzleti szolgáltatások bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
-
+* Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások Samsung Knox és Business Services csempére kattint, a rendszer átirányítja a [SamsungKnox.com](https://samsungknox.com/). A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
 
 ## <a name="next-steps"></a>Következő lépések
 
-A Samsung Knox és az üzleti szolgáltatások konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+A Samsung Knox és az üzleti szolgáltatások konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

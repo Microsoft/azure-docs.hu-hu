@@ -9,16 +9,14 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b4e600581880ccca4f8716db02064e5bb353787c
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: cb253ebfd8269779adf02dcbc01d7998590ce78c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653781"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657162"
 ---
 # <a name="event-handling-in-azure-communication-services"></a>Események feldolgozása az Azure kommunikációs szolgáltatásokban
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Az Azure kommunikációs szolgáltatásai megbízható, méretezhető és biztonságos módon biztosítják a valós idejű események bejelentésének [Azure Event Gridét](https://azure.microsoft.com/services/event-grid/) . Ennek a cikknek a célja, hogy segítséget nyújtson az alkalmazások konfigurálásában a kommunikációs szolgáltatások eseményeinek figyeléséhez. Előfordulhat például, hogy frissíteni szeretne egy adatbázist, létre kell hoznia egy munkaelemet, és leküldéses értesítést kell küldenie, amikor egy SMS-üzenetet kap a kommunikációs szolgáltatások erőforrásához társított telefonszám.
 
@@ -31,7 +29,7 @@ A Azure Event Grid egy teljes körűen felügyelt esemény-útválasztási szolg
 
 ## <a name="events-types"></a>Események típusai
 
-Az Event Grid [esemény-előfizetések](../../event-grid/concepts.md#event-subscriptions) használatával irányítja az esemény-üzeneteket az előfizetőknek. 
+Az Event Grid [esemény-előfizetések](../../event-grid/concepts.md#event-subscriptions) használatával irányítja az esemény-üzeneteket az előfizetőknek.
 
 Az Azure kommunikációs szolgáltatás a következő típusú eseményeket bocsátja ki:
 
@@ -207,7 +205,7 @@ Ez a szakasz egy példát mutat be, hogy az egyes események milyen módon nézn
 }]
 ```
 
-### <a name="microsoftcommunicationchatthreadcreatedwithuser-event"></a>Microsoft. Communication. ChatThreadCreatedWithUser esemény 
+### <a name="microsoftcommunicationchatthreadcreatedwithuser-event"></a>Microsoft. Communication. ChatThreadCreatedWithUser esemény
 
 ```json
 [{
@@ -265,7 +263,7 @@ Ez a szakasz egy példát mutat be, hogy az egyes események milyen módon nézn
 }]
 ```
 
-### <a name="microsoftcommunicationchatthreadpropertiesupdatedperuser-event"></a>Microsoft. Communication. ChatThreadPropertiesUpdatedPerUser esemény 
+### <a name="microsoftcommunicationchatthreadpropertiesupdatedperuser-event"></a>Microsoft. Communication. ChatThreadPropertiesUpdatedPerUser esemény
 
 ```json
 [{

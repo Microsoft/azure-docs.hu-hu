@@ -9,16 +9,14 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 30cb023b8ca78f252dbf087a604a61b8aa5c6659
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 88948f757c41550124acf20ac1cf0e33cdb3e5ba
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577395"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660157"
 ---
 # <a name="communication-services-notifications"></a>Kommunikációs szolgáltatások értesítései
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Az Azure kommunikációs szolgáltatások csevegési és Meghívási ügyfélszoftvere olyan valós idejű üzenetkezelési csatornát hoz létre, amely lehetővé teszi, hogy a rendszer hatékony, megbízható módon továbbítsa az üzeneteket a csatlakoztatott ügyfeleknek. Ez lehetővé teszi, hogy a bonyolult HTTP-lekérdezési logika megvalósítása nélkül hozzon létre gazdag és valós idejű kommunikációs funkciókat az alkalmazásaiba. A mobil alkalmazásokban azonban ez a jelző csatorna csak akkor marad csatlakoztatva, ha az alkalmazás az előtérben van aktív. Ha azt szeretné, hogy a felhasználók fogadják a bejövő hívásokat vagy csevegési üzeneteket, amíg az alkalmazása a háttérben van, akkor leküldéses értesítéseket kell használnia.
 
@@ -34,7 +32,7 @@ További információ az [Azure kommunikációs szolgáltatásokban zajló esem�
 
 ## <a name="deliver-push-notifications-via-azure-notification-hubs"></a>Leküldéses értesítések kézbesítése az Azure Notification Hubs használatával
 
-Csatlakoztathat egy Azure Notification hub-t a kommunikációs szolgáltatások erőforrásához, hogy automatikusan küldjön leküldéses értesítéseket a felhasználó mobileszközön, amikor bejövő hívást kapnak. Ezeknek a leküldéses értesítéseknek a használatával felébresztheti az alkalmazást a háttérben, és megjelenítheti a felhasználói FELÜLETET, amely lehetővé teszi a felhasználó számára a hívás elfogadását vagy elutasítását. 
+Csatlakoztathat egy Azure Notification hub-t a kommunikációs szolgáltatások erőforrásához, hogy automatikusan küldjön leküldéses értesítéseket a felhasználó mobileszközön, amikor bejövő hívást kapnak. Ezeknek a leküldéses értesítéseknek a használatával felébresztheti az alkalmazást a háttérben, és megjelenítheti a felhasználói FELÜLETET, amely lehetővé teszi a felhasználó számára a hívás elfogadását vagy elutasítását.
 
 :::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="Ábra, amely bemutatja, hogyan integrálódik a kommunikációs szolgáltatások az Azure Notification Hubs.":::
 
@@ -43,13 +41,13 @@ A kommunikációs szolgáltatások az Azure Notification hub-t áteresztő szolg
 > [!NOTE]
 > Jelenleg csak a leküldéses értesítések hívása támogatott.
 
-### <a name="notification-hub-provisioning"></a>Értesítési központ kiépítés 
+### <a name="notification-hub-provisioning"></a>Értesítési központ kiépítés
 
 Ha Notification Hubs használatával szeretne leküldéses értesítéseket küldeni az ügyféleszközök számára, [hozzon létre egy értesítési](../../notification-hubs/create-notification-hub-portal.md) központot a kommunikációs szolgáltatások erőforrásával megegyező előfizetésen belül. Konfigurálnia kell az Azure Notification hub-t a használni kívánt Platform Notification Systemhoz. Ha meg szeretné tudni, hogyan kérhet le leküldéses értesítéseket az ügyfélalkalmazás Notification Hubsről, tekintse meg a [Notification Hubs első lépéseivel foglalkozó](../../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md) témakört, és válassza ki a cél ügyféloldali platformot a lap tetején található legördülő listából.
 
 > [!NOTE]
-> Jelenleg a APNs és az FCM platform támogatott.  
-A APNs platformot jogkivonat-hitelesítési móddal kell konfigurálni. A tanúsítvány-hitelesítési mód jelenleg nem támogatott. 
+> Jelenleg a APNs és az FCM platform támogatott.
+A APNs platformot jogkivonat-hitelesítési móddal kell konfigurálni. A tanúsítvány-hitelesítési mód jelenleg nem támogatott.
 
 Miután konfigurálta az értesítési központot, hozzárendelheti a kommunikációs szolgáltatások erőforrásához úgy, hogy a Azure Resource Manager ügyfelet vagy a Azure Portalon keresztül a hub kapcsolati karakterláncát adja meg. A kapcsolatok karakterláncának engedélyeket kell tartalmaznia `Send` . Javasoljuk, hogy hozzon létre egy másik hozzáférési szabályzatot, amely csak az Ön központjának `Send` megfelelő engedélyekkel rendelkezik. További információ a [Notification Hubs biztonsági és hozzáférési szabályzatokról](../../notification-hubs/notification-hubs-push-notification-security.md)
 
@@ -74,10 +72,10 @@ A portálon navigáljon az Azure kommunikációs szolgáltatások erőforrásaih
 :::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="A leküldéses értesítések beállításait ábrázoló képernyőkép a Azure Portalon belül.":::
 
 > [!NOTE]
-> Ha az Azure Notification hub kapcsolati karakterláncát frissíti, a kommunikációs szolgáltatások erőforrását is frissíteni kell.  
+> Ha az Azure Notification hub kapcsolati karakterláncát frissíti, a kommunikációs szolgáltatások erőforrását is frissíteni kell.
 A hub összekapcsolásának minden változása az adatsíkon (azaz egy értesítés küldésekor) jelenik meg, legfeljebb ``10`` percen belül. Ez akkor is érvényes, ha a hub első alkalommal van társítva, **Ha** az értesítéseket korábban küldték.
 
-### <a name="device-registration"></a>Eszközregisztráció 
+### <a name="device-registration"></a>Eszközregisztráció
 
 Tekintse át a [hanghívási](../quickstarts/voice-video-calling/getting-started-with-calling.md) rövid útmutatót, amelyből megtudhatja, hogyan regisztrálja az eszközt a kommunikációs szolgáltatásokkal.
 

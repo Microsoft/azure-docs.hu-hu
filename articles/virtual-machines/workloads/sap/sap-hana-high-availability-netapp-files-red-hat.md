@@ -6,19 +6,18 @@ documentationcenter: ''
 author: rdeltcheva
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/01/2021
 ms.author: radeltch
-ms.openlocfilehash: b90d703a44cf89961eb0dca02abb1b8ea9cff166
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 2939e00d704f5c2799a1f16822cccdcc963fb73e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259202"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671569"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>A SAP HANA skálázás magas rendelkezésre állása Azure NetApp Filesekkel Red Hat Enterprise Linux
 
@@ -91,7 +90,7 @@ Először olvassa el a következő SAP-megjegyzéseket és dokumentumokat:
     - [A Microsoft Azure-ban való használathoz telepítse a SAP HANA Red Hat Enterprise Linux.](https://access.redhat.com/solutions/3193782)
     - [SAP HANA skálázási rendszer replikálása a pacemaker-fürtön, ha a HANA-fájlrendszerek NFS-megosztásokon találhatók](https://access.redhat.com/solutions/5156571)
 - [NetApp SAP-alkalmazások Microsoft Azure a Azure NetApp Files használatával](https://www.netapp.com/us/media/tr-4746.pdf)
-- [NFS 4.1-es verziójú kötetek az SAP HANA-hoz készült Azure NetApp Filesban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
+- [NFS 4.1-es verziójú kötetek az SAP HANA-hoz készült Azure NetApp Filesban](./hana-vm-operations-netapp.md)
 
 ## <a name="overview"></a>Áttekintés
 
@@ -249,7 +248,7 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Ezután hajtsa vé
         1.  Válassza **a virtuális gép hozzáadása** lehetőséget.
         1.  Válassza a * * virtuális gép * * elemet.
         1.  Válassza ki a SAP HANA-fürthöz tartozó virtuális gépeket és azok IP-címeit.
-        1.  Válassza a **Hozzáadás** elemet.
+        1.  Válassza a **Hozzáadás** lehetőséget.
     1.  Következő lépésként hozzon létre egy állapot-mintavételt:
         1.  Nyissa meg a terheléselosztó-t, válassza az **állapot**-tesztek elemet, majd kattintson a **Hozzáadás** gombra.
         1.  Adja meg az új állapot-mintavétel nevét (például **Hana-HP**).
@@ -701,4 +700,4 @@ Ez a szakasz azt ismerteti, hogyan lehet tesztelni a telepítőt.
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]
 * [Azure Virtual Machines adatbázis-kezelői telepítés az SAP-hoz][dbms-guide]
-* [NFS 4.1-es verziójú kötetek az SAP HANA-hoz készült Azure NetApp Filesban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
+* [NFS 4.1-es verziójú kötetek az SAP HANA-hoz készült Azure NetApp Filesban](./hana-vm-operations-netapp.md)

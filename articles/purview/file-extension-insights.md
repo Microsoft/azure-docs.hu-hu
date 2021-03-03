@@ -6,23 +6,23 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/24/2020
-ms.openlocfilehash: 246a9dcfa35498d99fd403f10e5c17d7707efe84
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.date: 01/17/2021
+ms.openlocfilehash: 5cbfb41d50e055f745864e4d5f8bc15a55d925e7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202623"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668569"
 ---
 # <a name="file-extension-insights-about-your-data-from-azure-purview"></a>Fájlkiterjesztés-elemzések az Azure hatáskörébe tartozó adatokról 
 
 Ez a útmutató ismerteti, hogyan lehet hozzáférni, megtekinteni és szűrni az adataiban található fájlkiterjesztések vagy fájltípusok információit.
 
-A támogatott adatforrások a következők: Azure Blob Storage, Azure Data Lake Storage (ADLS) GEN 1, Azure Data Lake Storage (ADLS) GEN 2
+A támogatott adatforrások a következők: Azure Blob Storage, Azure Data Lake Storage (ADLS) GEN 1, Azure Data Lake Storage (ADLS) GEN 2, Amazon S3 gyűjtők
 
 Ebben a útmutatóban megismerheti a következőket:
 > [!div class="checklist"]
-> * Nyissa meg a hatáskörébe tartozó fiókját az Azure-ból. 
+> * A hatáskörébe tartozó fiók elindítása az Azure-ból 
 > - A fájlkiterjesztés-elemzések megtekintése az adatain
 > - Részletezés a fájlkiterjesztés további részleteiről az adatokon
 
@@ -32,7 +32,7 @@ A hatáskörébe tartozó ismeretek megismerése előtt győződjön meg arról,
 
 - Állítsa be az Azure-erőforrásokat, és töltse fel a megfelelő fiókokat a tesztelési adatokkal
 
-- Az egyes adatforrások tesztelési célú ellenőrzésének beállítása és befejezése
+- Állítson be és végezzen vizsgálatot az egyes adatforrásokban. További információkért lásd: [adatforrások kezelése az Azure-ban (előzetes verzió)](manage-data-sources.md) , és [hozzon létre egy vizsgálati szabályt](create-a-scan-rule-set.md).
 
 - Jelentkezzen be a hatáskörébe egy [Adatolvasóval vagy egy adatkezelői szerepkörrel](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)rendelkező fiókkal.
 
@@ -70,7 +70,7 @@ Az eszközök vizsgálata során az Azure-beli alkalmazás képes észlelni az a
 
 Miután megtekintette az adatbirtokban található fájltípusokkal kapcsolatos magas szintű információkat, részletezheti a helyét, és megtekintheti a bizalmas adatok vizsgálatára szolgáló adatokat.
 
-Példa:
+Például:
 
 :::image type="content" source="media/file-extension-insights/file-extension-drilldown-small.png" alt-text="Fájlkiterjesztés-jelentés – részletezés" lightbox="media/file-extension-insights/file-extension-drilldown.png":::
 

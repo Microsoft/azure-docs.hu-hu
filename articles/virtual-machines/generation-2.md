@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 02/26/2021
 ms.author: jushiman
-ms.openlocfilehash: 61897a790da8a5f52b1b8f8e208629e7755690fa
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: dcc599daaa8d124c7188165ff5e024767a5e3cd7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97759738"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672632"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>2. generációs virtuális gépek támogatása az Azure-on
 
@@ -79,11 +79,13 @@ Az Azure jelenleg nem támogatja a 2. generációs virtuális gépekhez a helysz
 
 | 2. generációs funkció                | Helyszíni Hyper-V | Azure |
 |-------------------------------------|---------------------|-------|
-| Biztonságos rendszerindítás                         | :heavy_check_mark:  | x   |
+| Biztonságos rendszerindítás                         | :heavy_check_mark:  | Megbízható indítással (előzetes verzió)   |
 | Védett virtuális gép                         | :heavy_check_mark:  | x   |
-| vTPM                                | :heavy_check_mark:  | x   |
-| Virtualizálás-alapú biztonság (VBS) | :heavy_check_mark:  | x   |
+| vTPM                                | :heavy_check_mark:  | Megbízható indítással (előzetes verzió)  |
+| Virtualizálás-alapú biztonság (VBS) | :heavy_check_mark:  | Megbízható indítással (előzetes verzió)   |
 | VHDX formátuma                         | :heavy_check_mark:  | x   |
+
+További információ: [megbízható indítás (előzetes verzió)](trusted-launch.md).
 
 ## <a name="features-and-capabilities"></a>Funkciók és képességek
 
@@ -105,7 +107,7 @@ Az Azure jelenleg nem támogatja a 2. generációs virtuális gépekhez a helysz
 | Azure Site Recovery               | :heavy_check_mark: | :heavy_check_mark: |
 | Biztonsági mentés/visszaállítás                    | :heavy_check_mark: | :heavy_check_mark: |
 | Közös Képtár              | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md)             | :heavy_check_mark: | x                |
+| [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md)             | :heavy_check_mark: | :heavy_check_mark:                |
 | [Kiszolgálóoldali titkosítás](disk-encryption.md)            | :heavy_check_mark: | :heavy_check_mark: |
 
 ## <a name="creating-a-generation-2-vm"></a>2. generációs virtuális gép létrehozása
@@ -206,7 +208,7 @@ A 2. generációs virtuális gépeket virtuálisgép-méretezési csoportok hasz
     Igen. További információ: [virtuális gép létrehozása gyorsított hálózatkezeléssel](../virtual-network/create-vm-accelerated-networking-cli.md).
 
 * **A 2. generációs virtuális gépek támogatják a biztonságos rendszerindítást vagy vTPM az Azure-ban?**
-    Az 1. és a 2. generációs virtuális gépek az Azure-ban nem támogatják a biztonságos rendszerindítást vagy vTPM. 
+    A vTPM és a biztonságos rendszerindítás is a 2. generációs virtuális gépekhez készült megbízható indítás (előzetes verzió) funkciói. További információ: [megbízható indítás](trusted-launch.md).
     
 * **A VHDX támogatott a 2. generáción?**  
     Nem, a 2. generációs virtuális gépek csak VHD-t támogatnak.
@@ -224,6 +226,8 @@ A 2. generációs virtuális gépeket virtuálisgép-méretezési csoportok hasz
     1. A **speciális** lapon ellenőrizze, hogy a virtuálisgép- **létrehozási** tulajdonság a **Gen 2** értékre van-e beállítva.
     1. Győződjön meg arról, hogy olyan virtuálisgép- [méretet keres, amely támogatja a Gen2 virtuális gépeket](#generation-2-vm-sizes).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
+
+További információ a [megbízható indításról (előzetes verzió)](trusted-launch-portal.md) a 2. generációs virtuális gépekkel.
 
 Ismerkedjen meg a [2. generációs virtuális gépekkel a Hyper-V-ben](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).

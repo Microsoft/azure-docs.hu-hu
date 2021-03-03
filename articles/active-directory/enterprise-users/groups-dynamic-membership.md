@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c60d54a905f460eb5c26c2f183cd22b175a5b3c4
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 8ca000e105f70f1a4940e7fc9a0292061e94b5ea
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860813"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648645"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>A Azure Active Directory csoportok dinamikus tagsági szabályai
 
@@ -160,7 +160,7 @@ Ha egy felhasználói attribútum értékét össze szeretné hasonlítani szám
 
 
 ### <a name="using-the--match-operator"></a>A-Match operátor használata 
-A **-Match** operátor a reguláris kifejezések egyeztetésére szolgál. Példák:
+A **-Match** operátor a reguláris kifejezések egyeztetésére szolgál. Angol nyelvű Példák:
 
 ```
 user.displayName -match "Da.*"   
@@ -277,6 +277,14 @@ A következő kifejezés kiválasztja azokat a felhasználókat, akik az Intune 
 
 ```
 user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
+```
+
+#### <a name="example-3"></a>3\. példa
+
+A következő kifejezés kiválasztja az összes olyan felhasználót, aki nem rendelkezik asigned-csomaggal:
+
+```
+user.assignedPlans -all (assignedPlan.servicePlanId -eq "")
 ```
 
 ### <a name="using-the-underscore-_-syntax"></a>Az aláhúzásjel ( \_ ) szintaxis használata

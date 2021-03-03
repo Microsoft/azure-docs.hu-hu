@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan módosíthatja a meglévő felügyelt lemezek t
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 01/05/2021
+ms.date: 03/02/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: f67113b2e2afa16456321b0ee2a94ce80fab4d81
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 161aafce1c04e5d09cf08529bcbf1baf6b8a86b1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900960"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674927"
 ---
 # <a name="change-your-performance-tier-using-the-azure-powershell-module-or-the-azure-cli"></a>A teljesítmény szintjeinek módosítása a Azure PowerShell modul vagy az Azure CLI használatával
 
@@ -115,7 +115,37 @@ $disk.Tier
 ```
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="change-the-performance-tier-of-a-disk-without-downtime-preview"></a>Lemez teljesítményi szintjeinek módosítása állásidő nélkül (előzetes verzió)
+
+A teljesítményszint a leállás nélkül is módosítható, így nem kell felszabadítani a virtuális gépet, vagy leválasztani a lemezt a rétegek módosításához. További információért és az előzetes verzióra vonatkozó regisztrációs hivatkozáshoz lásd a [teljesítményszint módosítása állásidő nélkül (előzetes verzió)](#changing-performance-tier-without-downtime-preview) szakaszt.
+
+
+A következő parancsfájl frissíti az alapszinten magasabb méretű lemez szintjét a minta sablonnal [CreateUpdateDataDiskWithTier.js](https://github.com/Azure/azure-managed-disks-performance-tiers/blob/main/CreateUpdateDataDiskWithTier.json)használatával. Cserélje le,,,, `<yourSubScriptionID>` `<yourResourceGroupName>` `<yourDiskName>` `<yourDiskSize>` és `<yourDesiredPerformanceTier>` futtassa a szkriptet:
+
+ ```cli
+subscriptionId=<yourSubscriptionID>
+resourceGroupName=<yourResourceGroupName>
+diskName=<yourDiskName>
+diskSize=<yourDiskSize>
+performanceTier=<yourDesiredPerformanceTier>
+region=EastUS2EUAP
+
+ az login
+
+ az account set --subscription $subscriptionId
+
+ az group deployment create -g $resourceGroupName \
+--template-uri "https://raw.githubusercontent.com/Azure/azure-managed-disks-performance-tiers/main/CreateUpdateDataDiskWithTier.json" \
+--parameters "region=$region" "diskName=$diskName" "performanceTier=$performanceTier" "dataDiskSizeInGb=$diskSize"
+```
+
+A teljesítményi szintek változása akár 15 percet is igénybe vehet. A lemez megváltozásának megerősítéséhez használja a következő parancsot:
+
+```cli
+az resource show -n $diskName -g $resourceGroupName --namespace Microsoft.Compute --resource-type disks --api-version 2020-12-01 --query [properties.tier] -o tsv
+```
+
+## <a name="next-steps"></a>Következő lépések
 
 Ha át kell méreteznie egy lemezt a magasabb teljesítményszint kihasználásához, tekintse meg a következő cikkeket:
 

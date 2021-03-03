@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 06/24/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9afb5a078d5359ed236b44c0a6712985bf8c305
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: d07aa283c40a54ba02faa13b07e466e519bd68ae
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257185"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649421"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Közvetlen összevonás AD FS és külső szolgáltatókkal a vendég felhasználói számára (előzetes verzió)
 
@@ -26,9 +26,7 @@ ms.locfileid: "99257185"
 
 Ez a cikk azt ismerteti, hogyan állítható be a közvetlen összevonás egy másik szervezettel a B2B-együttműködéshez. Beállíthat közvetlen összevonást bármely olyan szervezettel, amelynek az Identity Provider (identitásszolgáltató) támogatja az SAML 2,0 vagy WS-Fed protokollt.
 Ha közvetlen kapcsolatot hoz létre egy partner identitásszolgáltató, az adott tartományhoz tartozó új vendég felhasználók saját identitásszolgáltató által felügyelt szervezeti fiókkal jelentkezhetnek be az Azure AD-bérlőbe, és megkezdhetik a velük való együttműködést. Nincs szükség arra, hogy a vendég felhasználó külön Azure AD-fiókot hozzon létre.
-> [!NOTE]
-> A közvetlen összevonási vendég felhasználóknak be kell jelentkezniük egy olyan hivatkozás használatával, amely tartalmazza a bérlői környezetet (például `https://myapps.microsoft.com/?tenantid=<tenant id>` vagy `https://portal.azure.com/<tenant id>` egy ellenőrzött tartomány esetén `https://myapps.microsoft.com/\<verified domain>.onmicrosoft.com` ). Az alkalmazásokra és az erőforrásokra mutató közvetlen hivatkozásokat is használhatja, amennyiben azok tartalmazzák a bérlői környezetet. A közvetlen összevonási felhasználók jelenleg nem tudnak bejelentkezni olyan közös végpontok használatával, amelyek nem rendelkeznek bérlői környezettel. Például a, a, a vagy a használatakor `https://myapps.microsoft.com` `https://portal.azure.com` `https://teams.microsoft.com` hibaüzenetet fog eredményezni.
- 
+
 ## <a name="when-is-a-guest-user-authenticated-with-direct-federation"></a>Mikor van hitelesítve a vendég felhasználó közvetlen összevonással?
 Miután beállította a közvetlen összevonást egy szervezettel, a meghívott új vendég-felhasználók a közvetlen összevonás használatával lesznek hitelesítve. Fontos megjegyezni, hogy a közvetlen összevonás beállítása nem módosítja a hitelesítési módszert azon vendég felhasználók számára, akik már beváltottak egy meghívót. Íme néhány példa:
  - Ha a vendég felhasználói már beváltották a meghívókat, és ezt követően a szervezethez tartozó közvetlen összevonást is beállította, akkor a vendég felhasználói továbbra is ugyanazt a hitelesítési módszert használják, mint a közvetlen összevonás beállítása előtt.
@@ -42,10 +40,28 @@ A közvetlen összevonás tartományi névterekhez van kötve, például contoso
 ## <a name="end-user-experience"></a>Végfelhasználói élmény 
 A közvetlen összevonással a vendég felhasználók saját szervezeti fiókjával jelentkezhetnek be az Azure AD-bérlőbe. Ha megosztott erőforrásokhoz férnek hozzá, és a rendszer kéri a bejelentkezést, a rendszer átirányítja a közvetlen összevonási felhasználókat a identitásszolgáltató. A sikeres bejelentkezés után a rendszer visszaküldi őket az Azure AD-nek az erőforrások eléréséhez. A közvetlen összevonási felhasználók frissítési jogkivonatai 12 órára érvényesek, az [áteresztő frissítési token alapértelmezett hossza](../develop/active-directory-configurable-token-lifetimes.md#exceptions) az Azure ad-ben. Ha az összevont identitásszolgáltató egyszeri bejelentkezés engedélyezve van, akkor a felhasználó egyszeri bejelentkezést fog tapasztalni, és a kezdeti hitelesítés után nem jelenik meg a bejelentkezési üzenet.
 
+## <a name="sign-in-endpoints"></a>Bejelentkezési végpontok
+
+A közvetlen összevonási vendég felhasználók mostantól bejelentkezhetnek a több-bérlős vagy a Microsoft-alkalmazásokba egy [közös végpont](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) használatával (azaz egy általános alkalmazás URL-címe, amely nem tartalmazza a bérlői környezetet). A következő példák gyakori végpontokra mutatnak:
+
+- `https://teams.microsoft.com`
+- `https://myapps.microsoft.com`
+- `https://portal.azure.com`
+
+A bejelentkezési folyamat során a vendég felhasználó kiválasztja a **bejelentkezési beállításokat**, majd kiválasztja a **Bejelentkezés egy szervezetbe** lehetőséget. A felhasználó ezután beírja a szervezet nevét, és folytatja a bejelentkezést a saját hitelesítő adataival.
+
+A közvetlen összevonási vendég felhasználói olyan alkalmazás-végpontokat is használhatnak, amelyek tartalmazzák a bérlői adatokat, például:
+
+  * `https://myapps.microsoft.com/?tenantid=<your tenant ID>`
+  * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
+  * `https://portal.azure.com/<your tenant ID>`
+
+Azt is megteheti, hogy közvetlen kapcsolatot biztosít az összevonási vendég felhasználóinak egy alkalmazásra vagy erőforrásra, például a bérlői információkkal együtt `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>` .
+
 ## <a name="limitations"></a>Korlátozások
 
 ### <a name="dns-verified-domains-in-azure-ad"></a>DNS által ellenőrzött tartományok az Azure AD-ben
-A összevonása kívánt tartomány ***nem** lehet DNS által ellenőrzött az Azure ad-ben. Engedélyezheti a közvetlen összevonás felügyelet nélküli (e-mailben ellenőrzött vagy "vírusos") Azure AD-bérlők általi beállítását, mivel azok nem DNS-ellenőrzés alatt állnak.
+A összevonása kívánt tartomány ***nem*** lehet DNS-ellenőrzés alatt állni az Azure ad-ben. Engedélyezheti a közvetlen összevonás felügyelet nélküli (e-mailben ellenőrzött vagy "vírusos") Azure AD-bérlők általi beállítását, mivel azok nem DNS-ellenőrzés alatt állnak.
 
 ### <a name="authentication-url"></a>Hitelesítési URL-cím
 A közvetlen összevonás csak olyan házirendek esetében engedélyezett, amelyekben a hitelesítési URL tartománya megegyezik a céltartományban, vagy ha a hitelesítési URL-cím az egyik engedélyezett Identity Provider (ez a lista változhat):
@@ -60,7 +76,7 @@ A közvetlen összevonás csak olyan házirendek esetében engedélyezett, amely
 -   federation.exostar.com
 -   federation.exostartest.com
 
-Ha például az _ * fabrikam. com * * közvetlen összevonását állítja be, a hitelesítési URL-cím `https://fabrikam.com/adfs` továbbítja az ellenőrzést. Az azonos tartományba tartozó gazdagépek is átadhatják például a-t `https://sts.fabrikam.com/adfs` . Azonban a hitelesítési URL-cím `https://fabrikamconglomerate.com/adfs` vagy `https://fabrikam.com.uk/adfs` ugyanahhoz a tartományhoz nem lesz továbbítva.
+Ha például a **fabrikam.com** közvetlen összevonását állítja be, a hitelesítési URL-cím `https://fabrikam.com/adfs` továbbítja az ellenőrzést. Az azonos tartományba tartozó gazdagépek is átadhatják például a-t `https://sts.fabrikam.com/adfs` . Azonban a hitelesítési URL-cím `https://fabrikamconglomerate.com/adfs` vagy `https://fabrikam.com.uk/adfs` ugyanahhoz a tartományhoz nem lesz továbbítva.
 
 ### <a name="signing-certificate-renewal"></a>Tanúsítvány megújításának aláírása
 Ha a metaadatok URL-címét a személyazonosság-szolgáltató beállításaiban adta meg, az Azure AD automatikusan megújítja az aláíró tanúsítványt, amikor lejár. Ha azonban a rendszer a lejárati idő előtt bármilyen okból elforgatja a tanúsítványt, vagy ha nem ad meg metaadat-URL-címet, az Azure AD nem tudja megújítani. Ebben az esetben manuálisan kell frissítenie az aláíró tanúsítványt.
@@ -147,7 +163,7 @@ Ezután konfigurálnia kell az összevonást az Azure AD 1. lépésében konfigu
 
 1. Nyissa meg az [Azure Portal](https://portal.azure.com/). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
 2. Válassza ki a **külső identitások**  >  **összes identitás-szolgáltatóját**.
-3. Válassza ki a elemet, majd válassza az **Új SAML/ws-fed identitásszolgáltató** elemet.
+3. Válassza az **Új SAML/ws-fed identitásszolgáltató** elemet.
 
     ![Új SAML-vagy WS-Fed-identitásszolgáltató hozzáadását jelző gomb](media/direct-federation/new-saml-wsfed-idp.png)
 

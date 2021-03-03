@@ -5,15 +5,15 @@ author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 05/28/2020
+ms.date: 03/02/2021
 ms.author: chrande
 ms.custom: devx-track-js
-ms.openlocfilehash: 2fd2fa7620e57c58f72dad73c1012a19190e8fbc
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: deba6696eb71287902fa3970ed2d83d0b09ac08d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359646"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658486"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB-bővítményi parancsok használata a Azure Cosmos DB API-MongoDB tárolt adatkezeléshez 
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -24,7 +24,7 @@ A MongoDB-hez készült Azure Cosmos DB API-val élvezheti a globális elosztás
 
 ## <a name="mongodb-protocol-support"></a>MongoDB protokoll támogatása
 
-Azure Cosmos DB API-MongoDB kompatibilis a MongoDB Server 3,2-es és 3,6-es verziójával. További részletekért tekintse meg a [támogatott szolgáltatások és szintaxis](mongodb-feature-support.md) című témakört. 
+A Azure Cosmos DB API-MongoDB kompatibilis a MongoDB Server 4,0, 3,6 és 3,2 verziójával. További részletekért tekintse meg a [4,0](mongodb-feature-support-40.md)-es, [3,6](mongodb-feature-support-36.md)-as és [3,2](mongodb-feature-support.md) -es támogatott funkciókat és szintaxist. 
 
 A következő bővítmény-parancsok lehetővé teszik Azure Cosmos DB-specifikus erőforrások adatbázis-kérelmeken keresztüli létrehozását és módosítását:
 
@@ -90,7 +90,7 @@ db.runCommand({customAction: "CreateDatabase", autoScaleSettings: { maxThroughpu
 
 ## <a name="update-database"></a><a id="update-database"></a> Adatbázis frissítése
 
-Az adatbázis-kiterjesztés frissítése parancs frissíti a megadott adatbázishoz társított tulajdonságokat. A következő táblázat a parancson belüli paramétereket ismerteti:
+Az adatbázis-kiterjesztés frissítése parancs frissíti a megadott adatbázishoz társított tulajdonságokat. Az adatbázis kiépített átviteli sebességről az autoskálázásra való módosítása csak az Azure Portalon támogatott. A következő táblázat a parancson belüli paramétereket ismerteti:
 
 |**Mező**|**Típus** |**Leírás** |
 |---------|---------|---------|
@@ -206,8 +206,8 @@ A gyűjtemény létrehozása bővítmény parancs egy új MongoDB-gyűjteményt 
   customAction: "CreateCollection",
   collection: "<Collection Name>",
   shardKey: "<Shard key path>",
-  offerThroughput: (int), // Amount of throughput allocated to a specific collection
-
+  // Replace the line below with "autoScaleSettings: { maxThroughput: (int) }" to use Autoscale instead of Provisioned Throughput. Fill the required Autoscale max throughput setting.
+  offerThroughput: (int) // Provisioned Throughput enabled with required throughput amount set
 }
 ```
 
@@ -292,13 +292,14 @@ db.runCommand({customAction: "CreateCollection", collection: "testCollection", s
 
 ## <a name="update-collection"></a><a id="update-collection"></a> Gyűjtemény frissítése
 
-Az Update Collection Extension parancs frissíti a megadott gyűjteményhez társított tulajdonságokat.
+Az Update Collection Extension parancs frissíti a megadott gyűjteményhez társított tulajdonságokat. Ha a gyűjteményt a kiépített átviteli sebességről az autoskálázásra módosítja, és fordítva, csak az Azure Portalon támogatott.
 
 ```javascript
 {
   customAction: "UpdateCollection",
   collection: "<Name of the collection that you want to update>",
-  offerThroughput: (int) // New throughput that will be set to the collection
+  // Replace the line below with "autoScaleSettings: { maxThroughput: (int) }" if using Autoscale instead of Provisioned Throughput. Fill the required Autoscale max throughput setting. Changing between Autoscale and Provisioned throughput is only supported in the Azure Portal.
+  offerThroughput: (int) // Provisioned Throughput enabled with required throughput amount set
 }
 ```
 

@@ -11,16 +11,16 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 9e4722933ec224712c8d649c0d9d850a9ee3e322
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 1c2a917712cbde95fda9321e56fe1c033ad444aa
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98872009"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659715"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Adatelérés védelme Azure Machine Learning
 
-A Azure Machine Learning megkönnyíti a felhőben tárolt adataihoz való kapcsolódást.  Absztrakt réteget biztosít a mögöttes tárolási szolgáltatáshoz, így biztonságosan férhet hozzá és dolgozhat az adataival anélkül, hogy kódot kellene írnia a tárolási típusra. A Azure Machine Learning a következő adatkezelési képességeket is biztosítja:
+A Azure Machine Learning megkönnyíti a felhőben tárolt adataihoz való kapcsolódást. Absztrakt réteget biztosít a mögöttes tárolási szolgáltatáshoz, így biztonságosan férhet hozzá és dolgozhat az adataival anélkül, hogy kódot kellene írnia a tárolási típusra. A Azure Machine Learning a következő adatkezelési képességeket is biztosítja:
 
 *    Együttműködés a pandák és a Spark DataFrames
 *    Az adatvonal verziószámozása és nyomon követése
@@ -53,7 +53,7 @@ Az alábbi ábra a javasolt munkafolyamat vizuális bemutatását mutatja be.
 <a name="datastores"></a>
 ## <a name="connect-to-storage-with-datastores"></a>Kapcsolódás a tárolóhoz adattárral
 
-Azure Machine Learning adattárolók biztonságosan megőrzik a kapcsolódási adatokat az Azure Storage-ban, így nem kell azt a parancsfájlokba beírni. [Regisztráljon, és hozzon létre egy](how-to-access-data.md) adattárolót, amellyel könnyedén csatlakozhat a Storage-fiókjához, és elérheti a mögöttes Azure Storage szolgáltatásban tárolt adatokat. 
+Azure Machine Learning adattárolók biztonságosan megőrzik a kapcsolódási adatokat az Azure-beli adattároláshoz, így nem kell azt a parancsfájlokba írnia. [Regisztráljon, és hozzon létre egy adattárt](how-to-access-data.md) a Storage-fiókhoz való egyszerű kapcsolódáshoz, és a mögöttes tárolási szolgáltatásban lévő adatokat. 
 
 Az Azure-ban támogatott felhőalapú tárolási szolgáltatások, amelyek adattárként regisztrálhatók:
 
@@ -65,6 +65,9 @@ Az Azure-ban támogatott felhőalapú tárolási szolgáltatások, amelyek adatt
 + Azure Database for PostgreSQL
 + Databricks fájlrendszer
 + Azure Database for MySQL
+
+>[!TIP]
+> Az adattárolók létrehozásának általánosan elérhető funkciói hitelesítő adatokat igényelnek a tárolási szolgáltatások, például az egyszerű szolgáltatásnév vagy a közös hozzáférésű aláírás (SAS) tokenek eléréséhez. Ezeket a hitelesítő adatokat azok a felhasználók érhetik el, akik *olvasói* hozzáféréssel rendelkeznek a munkaterülethez. <br><br>Ha ez problémát jelent,  [hozzon létre egy adattárolót, amely identitás-alapú adatelérést használ a Storage Services (előzetes verzió) szolgáltatáshoz](how-to-identity-based-data-access.md). Ez a funkció egy [kísérleti](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) előzetes verzió, és bármikor megváltozhat.
 
 <a name="datasets"></a>
 ## <a name="reference-data-in-storage-with-datasets"></a>A tárolóban lévő adatkészletekkel való adatforrások
@@ -123,7 +126,7 @@ A gépi tanulás kontextusában az adateltolódás a modellben a teljesítmény 
 
 Az adatkészlet létrehozása című cikkből megtudhatja, hogyan azonosíthatja és [figyelheti](how-to-monitor-datasets.md) az adateltolódást az adatkészletekben lévő új adatokat.
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 + Hozzon létre egy adatkészletet a Azure Machine Learning Studióban vagy a Python SDK-val az [alábbi lépések segítségével.](how-to-create-register-datasets.md)
 + A [minta-jegyzetfüzetekkel](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/)kipróbálhatja az adatkészlet tanítási példáit.

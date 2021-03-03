@@ -6,16 +6,16 @@ ms.service: api-management
 ms.topic: article
 ms.date: 02/05/2021
 ms.author: rongzhang
-ms.openlocfilehash: d41dcb939f981ce9cb6d3eae328cb2eb9adc20c2
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: d8ec04227316088983977f5b487abfa81fb5c525
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100654274"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652402"
 ---
 # <a name="azure-api-management-diagnostics-overview"></a>Az Azure API Management Diagnostics áttekintése
 
-Amikor létrehozta és felügyelte az API-t az Azure API Managementban, elő kell készítenie az esetlegesen felmerülő problémákra, a 404 nem talált hibát a 502 hibás átjáró hibája miatt. A API Management Diagnostics egy intelligens és interaktív megoldás, amely segítséget nyújt a APIM-ben közzétett API-k hibakereséséhez, és nincs szükség konfigurációra. Ha a közzétett API-kkal kapcsolatos problémákba ütközik, API Management a diagnosztika kimutatja, hogy mi a probléma, és végigvezeti Önt a megfelelő információkkal a probléma gyors elhárítása és megoldása érdekében.
+Ha az Azure API Management-ban hoz létre és felügyel egy API-t, elő kell készítenie az esetlegesen felmerülő problémákra, a 404 nem talált hibát a 502 hibás átjáró hibája miatt. A API Management Diagnostics egy intelligens és interaktív megoldás, amely segítséget nyújt a APIM-ben közzétett API-k hibakereséséhez, és nincs szükség konfigurációra. Ha a közzétett API-kkal kapcsolatos problémákba ütközik, API Management a diagnosztika kimutatja, hogy mi a probléma, és végigvezeti Önt a megfelelő információkkal a probléma gyors elhárítása és megoldása érdekében.
 
 Bár ez a felhasználói élmény akkor hasznos, ha az elmúlt 24 órában az API-val kapcsolatos problémákat tapasztalja, az összes diagnosztikai gráf mindig elérhető az elemzéshez.
 

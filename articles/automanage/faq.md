@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: automanage
 ms.workload: infrastructure
 ms.topic: troubleshooting
-ms.date: 09/04/2020
+ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: b8f2b3e1ffde49c8df3c3a6d7c0b9b3751fda5fa
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 214730733780ef3492048f697b1c5e180434a527
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696176"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101654017"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Gyakori kérdések az Azure-beli automanage virtuális gépekről
 
@@ -27,7 +27,7 @@ Ha az Azure-beli probléma nem szerepel ebben a cikkben, látogasson el az [MSDN
 **Milyen előfeltételekre van szükség az Azure automanage szolgáltatás engedélyezéséhez?**
 
 Az alábbi előfeltételek az Azure automanage szolgáltatás engedélyezésének előfeltételei:
-- Csak Windows Server-alapú virtuális gépek
+- Támogatott [Windows Server-verziók](automanage-windows-server.md#supported-windows-server-versions) és [Linux-disztribúciók](automanage-linux.md#supported-linux-distributions-and-versions)
 - A virtuális gépeknek támogatott régióban kell lenniük
 - A felhasználónak megfelelő engedélyekkel kell rendelkeznie
 - Csak a nem méretezési csoportba tartozó virtuális gépek
@@ -42,12 +42,12 @@ Ha az engedélyezésekor új automanage-fiókot használ, rendelkeznie kell a tu
 
 **Mely régiók támogatottak?**
 
-A következő régiókban működő virtuális gépek támogatottak: Nyugat-Európa, USA keleti régiója, USA 2. nyugati régiója, Közép-Kanada, USA nyugati középső régiója, Kelet-Japán.
+A támogatott régiók teljes listája [itt](./automanage-virtual-machines.md#supported-regions)érhető el.
 
 
 **Mely funkciók automatizálják az Azure automatikus felügyeletét?**
 
-Az [itt](virtual-machines-best-practices.md)felsorolt szolgáltatások a virtuális gép életciklusa alatt beléptetések, konfigurálások és figyelők automatikus kezelése.
+Az [itt](automanage-virtual-machines.md)felsorolt szolgáltatások a virtuális gép életciklusa alatt beléptetések, konfigurálások és figyelők automatikus kezelése.
 
 **Az Azure automanage együttműködik az Azure arc-kompatibilis virtuális gépekkel?**
 
@@ -55,12 +55,12 @@ Az automanage jelenleg nem támogatja az arc-kompatibilis virtuális gépeket.
 
 **Testreszabhatók a konfigurációk az Azure automanage szolgáltatásban?**
 
-Az ügyfelek a konfigurációs beállítások segítségével testre szabhatják az adott szolgáltatások beállításait, például a Azure Backup megőrzést. A módosítható beállítások teljes listájáért tekintse meg a dokumentációt [itt](virtual-machines-best-practices.md).
+Az ügyfelek a konfigurációs beállítások segítségével testre szabhatják az adott szolgáltatások beállításait, például a Azure Backup megőrzést. A módosítható beállítások teljes listájáért tekintse meg a dokumentációt [itt](automanage-virtual-machines.md#customizing-an-environment-using-preferences).
 
 
 **Működik az Azure automanage a Linux és a Windows rendszerű virtuális gépekkel?**
 
-Az automanage jelenleg a Windows Server Azure virtuális gépeket támogatja.
+Igen, tekintse meg a támogatott [Windows Server-verziókat](automanage-windows-server.md#supported-windows-server-versions) és [Linux-disztribúciókat](automanage-linux.md#supported-linux-distributions-and-versions).
 
 
 **Szelektíven is alkalmazhatom az automanage-t csak a virtuális gépek készletén?**
@@ -111,7 +111,7 @@ Ha az állapotot *nem sikerült* megtekinteni, a virtuális gép által használ
 A [technikai támogatási esetekről szóló jegyet](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)is megadhat. A **szolgáltatás** beállításnál keresse meg és válassza ki az *automanage* ( *felügyelet és felügyelet) szakaszt a figyelés és kezelés* szakaszban.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbálja meg engedélyezni a Azure Portalban található virtuális gépek autofelügyeletét.
 

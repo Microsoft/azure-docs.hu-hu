@@ -6,29 +6,25 @@ documentationcenter: ''
 author: saghorpa
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cdc6dd49fe98085edf3c6fb16606b9f540b5a3a0
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: a3c4026616b19656c708f4dd4ac8a419f7774198
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608690"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668622"
 ---
 # <a name="operating-system-upgrade"></a>Operációs rendszer frissítése
 Ez a dokumentum ismerteti az operációs rendszer frissítésének részleteit a HANA nagyméretű példányain.
 
 >[!NOTE]
 >Az operációs rendszer verziófrissítése az ügyfél felelőssége, a Microsoft üzemeltetési támogatási szolgálata végigvezeti Önt a frissítés során megtekinthető kulcsfontosságú területeken. A frissítés megtervezése előtt tekintse meg az operációs rendszer gyártóját is.
-
-> [!NOTE]
-> Ez a cikk a *feketelista* kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 
 A HLI egység kiépítés során a Microsoft Operations csapata telepíti az operációs rendszert.
 Az idő múlásával meg kell őriznie az operációs rendszert (például: javítás, hangolás, frissítés stb.) a HLI egységen.
@@ -151,6 +147,6 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 * Rendszer újraindítása.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Tekintse át a [biztonsági mentést és a visszaállítást](hana-overview-high-availability-disaster-recovery.md) az operációs rendszer biztonsági mentése I SKU osztályban.
 - Tekintse át az [operációs rendszer biztonsági másolatát](os-backup-type-ii-skus.md) , amely a 2. típusú SKU osztályhoz tartozó 3. típusú bélyegzőket használja.

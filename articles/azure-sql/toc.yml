@@ -33,6 +33,16 @@
           href: database/features-comparison.md
         - name: Többmodelles funkciók
           href: multi-model-features.md
+        - name: Ütemezett karbantartás
+          items:
+            - name: Karbantartási időszak
+              href: database/maintenance-window.md
+            - name: Karbantartási időszak konfigurálása
+              href: database/maintenance-window-configure.md
+            - name: Karbantartási időszak – gyakori kérdések
+              href: database/maintenance-window-faq.yml
+            - name: Előzetes értesítések
+              href: database/advance-notifications.md
         - name: Memóriabeli OLTP
           href: in-memory-oltp-overview.md
         - name: Historikus táblák

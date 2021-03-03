@@ -6,20 +6,19 @@ documentationcenter: ''
 author: saghorpa
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b34a7665770308b45732711f5d8328eb1d0a785f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 83bf6b6123cf7e0d57296f1f344a264c8a18ed77
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965068"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671050"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>Magas rendelkezésre állás beállítása SUSE rendszeren a STONITH használatával
 Ez a dokumentum részletes útmutatást nyújt a SUSE operációs rendszer magas rendelkezésre állásának beállításához a STONITH eszköz használatával.
@@ -172,7 +171,7 @@ Kattintson a **tovább** gombra, és a fürt konfigurációja befejeződött.
 ## <a name="4---setting-up-the-softdog-watchdog"></a>4. a Softdog watchdog beállítása
 Ez a szakasz a watchdog (softdog) konfigurációját ismerteti.
 
-4,1 adja hozzá a következő sort */etc/init.d/boot.local* a/etc/init.d/boot.local **mindkét** csomóponton.
+4,1 adja hozzá a következő sort  a/etc/init.d/boot.local **mindkét** csomóponton.
 ```
 modprobe softdog
 ```

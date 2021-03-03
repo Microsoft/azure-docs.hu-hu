@@ -1,5 +1,5 @@
 ---
-title: A Azure Cosmos DB használata az Azure szinapszis-kapcsolaton keresztüli Apache Spark használatával (előzetes verzió)
+title: Azure Cosmos DB használata az Azure szinapszis-kapcsolaton keresztüli Apache Spark használatával
 description: A Azure Cosmos DB használata az Azure szinapszis-beli Apache Spark használatával
 services: synapse-analytics
 author: ArnoMicrosoft
@@ -9,19 +9,19 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 28af603c0969419cd2e7b8683373faf3838e2242
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 32e8ad5028920cefd717cdaa5429786c83367f6d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458944"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671270"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link"></a>Azure Cosmos DB használata az Azure szinapszis-kapcsolaton keresztüli Apache Spark használatával
 
-Ebből a cikkből megtudhatja, hogyan kommunikálhat a Azure Cosmos DB a szinapszis Apache Spark használatával. A Scala, a Python, a SparkSQL és a C# teljes körű támogatásával a szinapszis Apache Spark az Azure-beli [szinapszis-hivatkozáson](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)alapuló adatelemzési, adattervezési, adatelemzési és adatelemzési forgatókönyvek (Azure Cosmos db) központi része.
+Ebből a cikkből megtudhatja, hogyan kommunikálhat a Azure Cosmos DB a szinapszis Apache Spark használatával. A Scala, a Python, a SparkSQL és a C# teljes körű támogatásával a szinapszis Apache Spark az Azure-beli [szinapszis-hivatkozáson](../../cosmos-db/synapse-link.md)alapuló adatelemzési, adattervezési, adatelemzési és adatelemzési forgatókönyvek (Azure Cosmos db) központi része.
 
 A következő képességek támogatottak a Azure Cosmos DB való interakció közben:
-* A szinapszis Apache Spark lehetővé teszi az olyan Azure Cosmos DB-tárolókban lévő adatok elemzését, amelyek az Azure szinapszis hivatkozásával közel valós időben engedélyezve vannak, anélkül, hogy ez hatással lenne a tranzakciós számítási feladatok teljesítményére. A következő két lehetőség érhető el a Spark Azure Cosmos DB [analitikai tárolójának](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) lekérdezéséhez:
+* A szinapszis Apache Spark lehetővé teszi az olyan Azure Cosmos DB-tárolókban lévő adatok elemzését, amelyek az Azure szinapszis hivatkozásával közel valós időben engedélyezve vannak, anélkül, hogy ez hatással lenne a tranzakciós számítási feladatok teljesítményére. A következő két lehetőség érhető el a Spark Azure Cosmos DB [analitikai tárolójának](../../cosmos-db/analytical-store-introduction.md) lekérdezéséhez:
     + Betöltés a Spark DataFrame
     + Spark-tábla létrehozása
 * A szinapszis Apache Spark lehetővé teszi az adatAzure Cosmos DBba való betöltését is. Fontos megjegyezni, hogy az adatmennyiséget a tranzakciós tárolón keresztül mindig Azure Cosmos DB tárolóba kell bevenni. Ha a szinapszis-hivatkozás engedélyezve van, az új beszúrások, frissítések és törlések automatikusan szinkronizálva lesznek az analitikai tárolóba.
@@ -164,8 +164,11 @@ val dfStream = spark.readStream.
 Ebben a példában egy streaming DataFrame fog írni egy Azure Cosmos DB tárolóba. Ez a művelet hatással lesz a tranzakciós számítási feladatok teljesítményére és a Azure Cosmos DB tárolón vagy megosztott adatbázison kiépített igénylési egységek felhasználására. Ha a */localWriteCheckpointFolder* mappa nincs létrehozva (az alábbi példában), a rendszer automatikusan létrehozza. 
 
 A **Python** szintaxisa a következő:
+
 ```python
 # To select a preferred list of regions in a multi-region Azure Cosmos DB account, add .option("spark.cosmos.preferredRegions", "<Region1>,<Region2>")
+
+# If you are using managed private endpoints for Azure Cosmos DB analytical store and using batch writes/reads and/or streaming writes/reads to transactional store you should set connectionMode to Gateway. 
 
 streamQuery = dfStream\
         .writeStream\
@@ -183,6 +186,8 @@ streamQuery.awaitTermination()
 A **Scala** egyenértékű szintaxisa a következő lesz:
 ```java
 // To select a preferred list of regions in a multi-region Azure Cosmos DB account, add .option("spark.cosmos.preferredRegions", "<Region1>,<Region2>")
+
+// If you are using managed private endpoints for Azure Cosmos DB analytical store and using batch writes/reads and/or streaming writes/reads to transactional store you should set connectionMode to Gateway. 
 
 val query = dfStream.
             writeStream.
@@ -211,7 +216,7 @@ Ebből a példából megtudhatja, hogyan hivatkozhat a külső kódtárak a JAR-
 ```
 Ha távoli Spark-feladatokra vonatkozó definíciókat szeretne elküldeni egy kiszolgáló nélküli Apache Spark készletbe, megtudhatja, hogyan hivatkozhat a külső könyvtárakra az [oktatóanyag](../spark/apache-spark-job-definitions.md)követésével.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Minták az Azure szinapszis hivatkozásának megkezdéséhez a GitHubon](https://aka.ms/cosmosdb-synapselink-samples)
 * [Ismerje meg, mi támogatott az Azure szinapszis-hivatkozás Azure Cosmos DB](./concept-synapse-link-cosmos-db-support.md)

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0fbf5c07b2d8fd5d754a46484d6b072cc9b682d6
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 78e4b35feb4e830a9f4335614a55d49ca90cd791
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599850"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667634"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Külső táblák használata a szinapszis SQL használatával
 
@@ -29,7 +29,7 @@ A dedikált SQL-készletben a következőhöz használhat külső táblát:
 - Azure Blob Storage és Azure Data Lake Gen2 Transact-SQL-utasításokkal való lekérdezése.
 - Adatok importálása és tárolása az Azure Blob Storage és Azure Data Lake Storage a dedikált SQL-készletbe.
 
-Ha a [CREATE TABLE as Select](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) utasítással együtt használja, a külső táblából való kijelöléssel az adatok importálása az SQL-készletben található táblába történik. A [copy utasításon](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)kívül a külső táblák is hasznosak az adatok betöltéséhez. 
+Ha a [CREATE TABLE as Select](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) utasítással együtt használja, a külső táblából való kijelöléssel az adatok importálása az SQL-készletben található táblába történik. A [copy utasításon](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)kívül a külső táblák is hasznosak az adatok betöltéséhez. 
 
 A betöltési oktatóanyagért lásd: az [Azure Blob Storageból történő adatok betöltésének alapja](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)
 
@@ -60,7 +60,7 @@ Külső tábla, amely az Azure Storage mögöttes hozzáférését az adatforrá
 
 ## <a name="create-external-data-source"></a>KÜLSŐ ADATFORRÁS LÉTREHOZÁSA
 
-A külső adatforrások a Storage-fiókokhoz való kapcsolódáshoz használatosak. A teljes dokumentációt [itt](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)találja.
+A külső adatforrások a Storage-fiókokhoz való kapcsolódáshoz használatosak. A teljes dokumentációt [itt](/sql/t-sql/statements/create-external-data-source-transact-sql?view=azure-sqldw-latest&preserve-view=true)találja.
 
 ### <a name="syntax-for-create-external-data-source"></a>KÜLSŐ ADATFORRÁS létrehozásának szintaxisa
 
@@ -159,7 +159,7 @@ WITH ( LOCATION = 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yel
 
 ## <a name="create-external-file-format"></a>CREATE EXTERNAL FILE FORMAT
 
-Létrehoz egy külső fájlformátum-objektumot, amely meghatározza az Azure Blob Storage vagy Azure Data Lake Storage tárolt külső adatforrásokat. Külső fájlformátum létrehozása előfeltétel egy külső tábla létrehozásához. A teljes dokumentáció [itt](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)található.
+Létrehoz egy külső fájlformátum-objektumot, amely meghatározza az Azure Blob Storage vagy Azure Data Lake Storage tárolt külső adatforrásokat. Külső fájlformátum létrehozása előfeltétel egy külső tábla létrehozásához. A teljes dokumentáció [itt](/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest&preserve-view=true)található.
 
 Külső fájlformátum létrehozásával megadhatja a külső tábla által hivatkozott adatok tényleges elrendezését.
 
@@ -325,7 +325,7 @@ A létrehozandó tábla egy vagy három részének neve. Külső tábla esetén 
 
 <column_definition>,... *n* ]
 
-KÜLSŐ tábla létrehozása lehetővé teszi az oszlopnév, az adattípus, a nullák és a rendezés konfigurálását. Az alapértelmezett MEGKÖTÉS nem használható külső táblákon.
+KÜLSŐ tábla létrehozása lehetővé teszi az oszlopnév, az adattípus és a rendezés konfigurálását. Az alapértelmezett MEGKÖTÉS nem használható külső táblákon.
 
 >[!IMPORTANT]
 >Az oszlopdefinícióknak – az adattípusokat és az oszlopok számát is beleértve – meg kell felelniük a külső fájlok adatainak. Ha ezek között eltérés található, a tényleges adatok lekérdezésekor a fájlsorok vissza lesznek utasítva.
@@ -387,7 +387,7 @@ A Data Lake feltárási képességek használatával létrehozhat és lekérdezh
 
 - A munkaterülethez hozzáféréssel kell rendelkeznie legalább a Storage blob adatközreműködői ARM hozzáférési szerepkörrel a ADLS Gen2 fiókhoz
 
-- A külső táblák létrehozásához és lekérdezéséhez legalább [engedélyre](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#permissions-2&preserve-view=true) van szükség az SQL-készletben vagy az SQL od-ban.
+- A külső táblák létrehozásához és lekérdezéséhez legalább [engedélyre](/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest#permissions-2&preserve-view=true) van szükség az SQL-készletben vagy az SQL od-ban.
 
 Az adatok panelen válassza ki azt a fájlt, amelyből létre szeretné hozni a külső táblát:
 > [!div class="mx-imgBorder"]
@@ -410,6 +410,6 @@ A külső tábla most létrejön, a külső tábla tartalmának későbbi feltá
 > [!div class="mx-imgBorder"]
 >![externaltable5](./media/develop-tables-external-tables/external-table-5.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A lekérdezés eredményeinek az Azure Storage külső táblájába való mentéséhez olvassa el a [CETAS](develop-tables-cetas.md) című cikket. Vagy megkezdheti [a Apache Spark lekérdezését az Azure szinapszis külső tábláihoz](develop-storage-files-spark-tables.md).

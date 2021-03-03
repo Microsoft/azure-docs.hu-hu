@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 9a937336e1628add54ab5f52cdd6ef475d463f7d
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 6a89d225b747f116ed75bbe2e6928ec2a74f9c5e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515988"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101655955"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Azure Machine Learning képzési környezet biztonságossá tétele virtuális hálózatokkal
 
@@ -74,7 +74,7 @@ Ha [felügyelt Azure Machine learning __számítási célt__](concept-compute-ta
 > * Egy Load Balancer
 > 
 > Fürtök esetében ezeket az erőforrásokat a rendszer minden alkalommal törli (és újból létrehozza), amikor a fürt 0 csomópontra van lebontva, azonban az erőforrásokat a rendszer a példány teljes törlése előtt megtartja (a Leállítás nem távolítja el az erőforrásokat). 
-> Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](../azure-resource-manager/management/azure-subscription-service-limits.md) vonatkoznak. Ha a virtuális hálózati erőforráscsoport zárolva van, akkor a számítási fürt/példány törlése sikertelen lesz. A terheléselosztó csak a számítási fürt/példány törlése után törölhető.
+> Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](../azure-resource-manager/management/azure-subscription-service-limits.md) vonatkoznak. Ha a virtuális hálózati erőforráscsoport zárolva van, akkor a számítási fürt/példány törlése sikertelen lesz. A terheléselosztó csak a számítási fürt/példány törlése után törölhető. Gondoskodjon arról is, hogy ne legyenek olyan Azure-szabályzatok, amelyek tiltják a hálózati biztonsági csoportok létrehozását.
 
 
 ### <a name="required-ports"></a><a id="mlcports"></a> Szükséges portok
@@ -83,7 +83,7 @@ Ha a virtuális hálózat védelmét úgy tervezi, hogy korlátozza a nyilvános
 
 A Batch szolgáltatás hálózati biztonsági csoportokat (NSG) helyez üzembe a virtuális gépekhez csatolt hálózati adapterek (NIC-EK) szintjén. Ezek az NSG-k automatikusan konfigurálnak bejövő és kimenő szabályokat a következő forgalom engedélyezéséhez:
 
-- Bejövő TCP-forgalom a 29876-es és a 29877-es portokon a __BatchNodeManagement__ __szolgáltatási címkéjén__ .
+- Bejövő TCP-forgalom a 29876-es és a 29877-es portokon a __BatchNodeManagement__ __szolgáltatási címkéjén__ . A portok közötti adatforgalom titkosítva van, és a Azure Batch használja a Scheduler/Node kommunikációhoz.
 
     ![A BatchNodeManagement szolgáltatás címkéjét használó bejövő szabály](./media/how-to-enable-virtual-network/batchnodemanagement-service-tag.png)
 
@@ -93,7 +93,7 @@ A Batch szolgáltatás hálózati biztonsági csoportokat (NSG) helyez üzembe a
 
 - Kimenő forgalom bármilyen porton keresztül az internetre.
 
-- A számítási példány bejövő TCP-forgalma a 44224-as porton a __AzureMachineLearning__ __szolgáltatási címkéjén__ .
+- A számítási példány bejövő TCP-forgalma a 44224-as porton a __AzureMachineLearning__ __szolgáltatási címkéjén__ . A porton keresztüli forgalom titkosítva van, és az Azure Machine Learning használja a számítási példányokon futó alkalmazásokkal folytatott kommunikációhoz.
 
 > [!IMPORTANT]
 > Körültekintően járjon el a bejövő vagy kimenő szabályok módosításakor és hozzáadásakor a Batch által konfigurált NSG-kben. Ha egy NSG blokkolja a számítási csomópontok felé irányuló kommunikációt, a számítási szolgáltatás nem használhatóra állítja a számítási csomópontok állapotát.

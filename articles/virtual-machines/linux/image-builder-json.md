@@ -3,17 +3,18 @@ title: Azure rendszerkép-készítő sablon létrehozása (előzetes verzió)
 description: Megtudhatja, hogyan hozhat létre sablont az Azure rendszerkép-készítővel való használatra.
 author: danielsollondon
 ms.author: danis
-ms.date: 08/13/2020
+ms.date: 02/18/2021
 ms.topic: reference
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: image-builder
+ms.collection: linux
 ms.reviewer: cynthn
-ms.openlocfilehash: 9ae477dd04237e285915157615dcb6a6b841ca99
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: c2e4a2c2700af99a074dfd640177a6baefe763e2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678255"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670431"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Előzetes verzió: Azure rendszerkép-készítő sablon létrehozása 
 
@@ -308,11 +309,28 @@ Tulajdonságok testreszabása:
 - **sha256Checksum** – a fájl sha256-ellenőrzőösszegének értéke, ezt helyileg létrehozhatja, majd a rendszerkép-szerkesztő ellenőrzőösszeget és érvényesítést végez.
     * A sha256Checksum létrehozása Mac/Linux rendszeren futó terminál használatával: `sha256sum <fileName>`
 
-
-A felügyelői jogosultságokkal futtatandó parancsokhoz előtaggal kell rendelkeznie `sudo` .
-
 > [!NOTE]
 > A beágyazott parancsokat a rendszer a rendszerkép-sablon definíciójának részeként tárolja, ezeket a képek definíciójának kiírásakor láthatja, és a hibaelhárítási célból a Microsoft ügyfélszolgálata is láthatók. Ha bizalmas parancsokkal vagy értékekkel rendelkezik, erősen ajánlott ezeket a parancsfájlokba áthelyezni, és felhasználói identitás használatával hitelesíteni az Azure Storage-ban.
+
+#### <a name="super-user-privileges"></a>Felügyelői jogosultságok
+A felügyelői jogosultságokkal futtatandó parancsok esetében a `sudo` következőt kell megadnia a parancsfájlokhoz, vagy használhatja azt beágyazott parancsokkal, például:
+```json
+                "type": "Shell",
+                "name": "setupBuildPath",
+                "inline": [
+                    "sudo mkdir /buildArtifacts",
+                    "sudo cp /tmp/index.html /buildArtifacts/index.html"
+```
+Példa a sudo-t használó parancsfájlra, amely a scriptUri használatával hivatkozhat:
+```bash
+#!/bin/bash -e
+
+echo "Telemetry: creating files"
+mkdir /myfiles
+
+echo "Telemetry: running sudo 'as-is' in a script"
+sudo touch /myfiles/somethingElevated.txt
+```
 
 ### <a name="windows-restart-customizer"></a>Windows újraindítási testreszabó 
 Az újraindítási testreszabó lehetővé teszi egy Windows rendszerű virtuális gép újraindítását, és várjon, amíg online állapotba kerül, így olyan szoftvereket telepíthet, amelyek újraindítást igényelnek.  
@@ -397,6 +415,10 @@ Operációs rendszer támogatása: Linux és Windows
 Fájl-testreszabó tulajdonságai:
 
 - **sourceUri** – elérhető tárolási végpont, ez lehet GitHub vagy Azure Storage. Csak egy fájlt tölthet le, nem egy teljes könyvtárat. Ha le kell töltenie egy könyvtárat, használjon tömörített fájlt, majd bontsa ki a tömörítést a rendszerhéj vagy a PowerShell-testreszabók használatával. 
+
+> [!NOTE]
+> Ha a sourceUri egy Azure Storage-fiók, függetlenül attól, hogy a blob nyilvánosan megjelölve van-e, meg kell adnia a felügyelt felhasználó identitásának engedélyeit a blobhoz való hozzáféréshez. A tárolási engedélyek megadásához tekintse meg ezt a [példát](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity#create-a-resource-group) .
+
 - **cél** – ez a célhely teljes elérési útja és fájlneve. Minden hivatkozott útvonalnak és alkönyvtárnak léteznie kell, a rendszerhéj vagy a PowerShell-testreszabók használatával előre beállíthatja ezeket. Az elérési út létrehozásához használhatja a parancsfájl-testreszabók lehetőséget. 
 
 Ezt a Windows-címtárak és a Linux-elérési utak támogatják, de vannak különbségek: 
@@ -408,8 +430,6 @@ Ha hiba történt a fájl letöltése vagy egy megadott címtárba való behelye
 
 > [!NOTE]
 > A fájl-testreszabó csak kisméretű fájlok letöltésére alkalmas, < 20 MB-ot. A nagyobb fájlok letöltéséhez parancsfájl vagy beágyazott parancs használatos, a fájlok letöltésére szolgáló kód (például:, Linux `wget` vagy `curl` Windows `Invoke-WebRequest` ).
-
-A fájl-testreszabó fájljai az [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage)használatával tölthetők le az Azure Storage-ból.
 
 ### <a name="windows-update-customizer"></a>Windows Update testreszabása
 Ez a testreszabó a Packer [közösségi Windows Update-kiépítési](https://packer.io/docs/provisioners/community-supported.html) csomagjára épül, amely egy nyílt forráskódú projekt, amelyet a csomagoló Közösség tart fenn. A Microsoft a rendszerkép-készítő szolgáltatással teszteli és érvényesíti a kiépítő szolgáltatást, és támogatja a problémák megoldását, a Microsoft pedig hivatalosan nem támogatja a nyílt forráskódú projektet. A Windows Update-létesítéssel kapcsolatos részletes dokumentációt és segítséget a Project adattárában talál.

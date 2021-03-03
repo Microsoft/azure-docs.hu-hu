@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 12/8/2020
-ms.openlocfilehash: 1b8be7fc6295c6332d26718b5752d2fd8f2a6f73
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 2/22/2021
+ms.openlocfilehash: 4dd7bbe613b30df2611bfe6631950e121235204a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393241"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658588"
 ---
 # <a name="azure-sql-database-serverless"></a>Kiszolgáló nélküli Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -103,9 +103,9 @@ Vegye figyelembe, hogy ha a CPU-kihasználtság alacsony, akkor az aktív gyors�
 
 Az SQL-gyorsítótár növekszik, ahogy az adatok beolvasása a lemezről ugyanúgy történik, mint a kiépített adatbázisokkal azonos sebességgel. Ha az adatbázis foglalt, akkor a gyorsítótár mérete a maximális memória korlátja miatt nem lehet nagyobb.
 
-## <a name="auto-pause-and-auto-resume"></a>Automatikus szüneteltetés és automatikus folytatás
+## <a name="auto-pausing-and-auto-resuming"></a>Automatikus szüneteltetés és automatikus folytatás
 
-### <a name="auto-pause"></a>Automatikus szüneteltetés
+### <a name="auto-pausing"></a>Automatikus szüneteltetés
 
 Az automatikus szüneteltetés akkor aktiválódik, ha az alábbi feltételek mindegyike teljesül az automatikus szüneteltetés késleltetésének időtartama alatt:
 

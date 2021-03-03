@@ -1,36 +1,33 @@
 ---
 title: Jelszó nélküli biztonsági kulcs bejelentkezési Windows-Azure Active Directory
-description: Megtudhatja, hogyan engedélyezheti a jelszó nélküli biztonsági kulcsos bejelentkezést Azure Active Directory FIDO2 biztonsági kulcsok használatával (előzetes verzió)
+description: Megtudhatja, hogyan engedélyezheti a jelszó nélküli biztonsági kulcsos bejelentkezést Azure Active Directory FIDO2 biztonsági kulcsok használatával
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 11/24/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04a46a691b2f629b64cfe09c22813b05c593af1c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 190e9c857f1ec9d19eb89493dc4b4a9fb68fac87
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743462"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653507"
 ---
-# <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése a Windows 10-es eszközökre Azure Active Directory (előzetes verzió)
+# <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése a Windows 10-es eszközökön Azure Active Directory 
 
 Ez a dokumentum a FIDO2 biztonsági kulcson alapuló jelszavas hitelesítésnek a Windows 10-es eszközökön való engedélyezését összpontosítja. Ennek a cikknek a végén be tud jelentkezni az Azure ad-be és a hibrid Azure AD-hez csatlakoztatott Windows 10-es eszközökre az Azure AD-fiókkal egy FIDO2 biztonsági kulcs használatával.
-
-> [!NOTE]
-> A FIDO2 biztonsági kulcsai a Azure Active Directory nyilvános előzetes verziója. További információ az előzetes verziókról: a  [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="requirements"></a>Követelmények
 
 | Eszköz típusa | Azure AD-hez csatlakoztatva | csatlakozik a Hibrid Azure AD-hez |
 | --- | --- | --- |
 | [Azure AD Multi-Factor Authentication](howto-mfa-getstarted.md) | X | X |
-| [A kombinált biztonsági információk regisztrációjának előzetes verziója](concept-registration-mfa-sspr-combined.md) | X | X |
+| [Kombinált biztonsági információk regisztrálása](concept-registration-mfa-sspr-combined.md) | X | X |
 | Kompatibilis [FIDO2 biztonsági kulcsok](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
 | A WebAuthN a Windows 10 1903-es vagy újabb verzióját igényli | X | X |
 | Az [Azure ad-hez csatlakoztatott eszközökhöz](../devices/concept-azure-ad-join.md) a Windows 10 1909-es vagy újabb verziója szükséges | X |   |
@@ -45,7 +42,7 @@ Ez a dokumentum a FIDO2 biztonsági kulcson alapuló jelszavas hitelesítésnek 
 
 A következő forgatókönyvek nem támogatottak:
 
-- Windows Server Active Directory tartományi szolgáltatások (AD DS) tartományhoz csatlakoztatott (csak helyszíni eszközök) telepítése.
+- Windows Server Active Directory Domain Services (AD DS) tartományhoz csatlakoztatott (csak helyszíni eszközök) telepítése.
 - RDP-, VDI-és Citrix-forgatókönyvek biztonsági kulccsal.
 - S/MIME biztonsági kulccsal.
 - "Run as" (Futtatás másként) biztonsági kulcs használatával.
@@ -54,9 +51,9 @@ A következő forgatókönyvek nem támogatottak:
 - Windows 10 rendszerű eszköz beléptetése vagy feloldása több Azure AD-fiókot tartalmazó biztonsági kulccsal. Ez a forgatókönyv a biztonsági kulcshoz hozzáadott utolsó fiókot használja. A WebAuthN lehetővé teszi a felhasználók számára a használni kívánt fiók kiválasztását.
 - Windows 10 1809-es verziót futtató eszköz zárolásának feloldása. A legjobb megoldás, ha a Windows 10 1903-es vagy újabb verzióját használja.
 
-## <a name="prepare-devices-for-preview"></a>Eszközök előkészítése az előzetes verzióra
+## <a name="prepare-devices"></a>Eszközök előkészítése
 
-Az Azure AD-hez csatlakoztatott eszközök, amelyeket a szolgáltatás előzetes verziójában végez, a Windows 10 1909-es vagy újabb verzióját kell futtatnia.
+Az Azure AD-hez csatlakoztatott eszközöknek a Windows 10 1909-es vagy újabb verzióját kell futtatniuk.
 
 A hibrid Azure AD-hez csatlakoztatott eszközöknek a Windows 10 2004-es vagy újabb verzióját kell futtatniuk.
 
@@ -116,7 +113,7 @@ Az Intune által nem felügyelt eszközök esetében a kiépítési csomag telep
 1. Válassza a **Befejezés** gombot.
 1. Az újonnan létrehozott projektben keresse meg a **Futásidejű beállítások**  >  **WindowsHelloForBusiness**  >  **SecurityKeys**  >  **UseSecurityKeyForSignIn**.
 1. Állítsa be a **UseSecurityKeyForSignIn** beállítást *engedélyezve* értékre.
-1. Válassza **Export** ki a  >  **kiépítési csomag** exportálása lehetőséget
+1. Válassza ki a  >  **kiépítési csomag** exportálása lehetőséget
 1. Hagyja meg az alapértelmezett értékeket a **létrehozási** ablakban a **kiépítési csomag leírása** területen, majd kattintson a **tovább** gombra.
 1. Hagyja meg az alapértelmezett értékeket a **létrehozási** ablakban a kiépítési **csomag biztonsági adatainak kiválasztása** területen, majd válassza a **tovább** lehetőséget.
 1. Jegyezze fel, vagy módosítsa a **Build** -ablakok elérési útját a **válassza ki, hová szeretné menteni a kiépítési csomagot** , és válassza a **tovább** lehetőséget.
@@ -129,7 +126,7 @@ Az Intune által nem felügyelt eszközök esetében a kiépítési csomag telep
 
 ### <a name="enable-with-group-policy"></a>Engedélyezés Csoportházirend
 
-A **hibrid Azure ad-hez csatlakoztatott eszközökhöz** a szervezetek a következő csoportházirend-beállítást konfigurálhatják, hogy lehetővé tegyék a. biztonsági kulcsos bejelentkezést. A beállítás a **Számítógép konfigurációja**  >  **Felügyeleti sablonok** a  >  **System**  >  **rendszerbejelentkezés**  >  **bekapcsolása a biztonsági kulcs bekapcsolásakor** szakaszban található:
+A **hibrid Azure ad-hez csatlakoztatott eszközökhöz** a szervezetek a következő csoportházirend-beállítást konfigurálhatják, hogy lehetővé tegyék a. biztonsági kulcsos bejelentkezést. A beállítás a **Számítógép konfigurációja**  >  **Felügyeleti sablonok** a  >    >  **rendszerbejelentkezés**  >  **bekapcsolása a biztonsági kulcs bekapcsolásakor** szakaszban található:
 
 - A házirend **engedélyezésének engedélyezése** lehetővé teszi a felhasználók számára a biztonsági kulcsokkal való bejelentkezést.
 - Ha a házirendet **Letiltva** vagy **nincs konfigurálva** , a felhasználók nem jelentkezhetnek be a biztonsági kulcsokkal.
@@ -150,15 +147,15 @@ Az alábbi példában egy Bala FIDO2 nevű felhasználó már kiépítte a bizto
 
 ## <a name="troubleshooting-and-feedback"></a>Hibaelhárítás és visszajelzés
 
-Ha meg szeretné osztani a visszajelzéseket, vagy problémákat tapasztal a funkció megtekintése közben, ossza meg a Windows visszajelzési központ alkalmazáson keresztül a következő lépésekkel:
+Ha meg szeretné osztani a visszajelzéseket, vagy problémákba ütközik a szolgáltatással kapcsolatban, ossza meg a Windows visszajelzési központ alkalmazáson keresztül a következő lépések segítségével:
 
 1. Indítsa el a **visszajelzési** központot, és ellenőrizze, hogy be van-e jelentkezve.
 1. Küldjön visszajelzést a következő kategorizálás alá:
    - Kategória: biztonság és adatvédelem
    - Alkategória:
-1. A naplók rögzítéséhez használja a problémát a **probléma újbóli létrehozásához** .
+1. A naplók rögzítéséhez használja a lehetőséget a **probléma újbóli létrehozásához**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Helyszíni erőforrásokhoz való hozzáférés engedélyezése az Azure AD-hez és a hibrid Azure AD-hez csatlakoztatott eszközökhöz](howto-authentication-passwordless-security-key-on-premises.md)
 

@@ -6,15 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: mjbrown
-ms.openlocfilehash: db6721754802a3eeda387339498dadb9d25b3685
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 813bb99be0d072ebc9b21dba07ed85671a925910
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526941"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659443"
 ---
 # <a name="azure-role-based-access-control-in-azure-cosmos-db"></a>Azure szerepköralapú hozzáférés-vezérlés Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
+
+> [!NOTE]
+> Ez a cikk a felügyeleti sík Azure Cosmos DB-beli szerepköralapú hozzáférés-vezérlésével kapcsolatos tudnivalókat ismerteti. Ha adatsík-műveleteket használ, tekintse meg az adatsík-műveletekhez alkalmazott szerepköralapú hozzáférés-vezérlés [Azure Cosmos db RBAC](how-to-setup-rbac.md) .
 
 A Azure Cosmos DB beépített Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) biztosít a gyakori felügyeleti forgatókönyvekhez Azure Cosmos DBban. A Azure Active Directory profillal rendelkező személy a felhasználókhoz, csoportokhoz, egyszerű szolgáltatásokhoz vagy felügyelt identitásokhoz rendelheti hozzá ezeket az Azure-szerepköröket az erőforrásokhoz és műveletekhez való hozzáférés engedélyezéséhez vagy megtagadásához Azure Cosmos DB erőforrásokon. A szerepkör-hozzárendelések hatóköre csak a csak vezérlőre vonatkozik, amely hozzáférést biztosít az Azure Cosmos-fiókok,-adatbázisok,-tárolók és-ajánlatok (átviteli sebesség) számára.
 
@@ -69,7 +72,7 @@ Ezzel a beállítással megakadályozható, hogy bármely Cosmos-erőforrás bá
 
 - Tárolt eljárások, eseményindítók vagy felhasználó által definiált függvények módosítása.
 
-Ha az alkalmazások (vagy Azure Portalon keresztüli felhasználók) végrehajtják ezeket a műveleteket, azokat át kell telepíteni az ARM- [sablonok](./manage-with-templates.md), a [PowerShell](manage-with-powershell.md), az [Azure CLI](manage-with-cli.md), a REST vagy az [Azure felügyeleti könyvtár](https://github.com/Azure-Samples/cosmos-management-net)használatával. Vegye figyelembe, hogy az Azure-felügyelet [több nyelven](/azure/?product=featured#languages-and-tools)is elérhető.
+Ha az alkalmazások (vagy Azure Portalon keresztüli felhasználók) végrehajtják ezeket a műveleteket, azokat át kell telepíteni az ARM- [sablonok](./manage-with-templates.md), a [PowerShell](manage-with-powershell.md), az [Azure CLI](manage-with-cli.md), a REST vagy az [Azure felügyeleti könyvtár](https://github.com/Azure-Samples/cosmos-management-net)használatával. Vegye figyelembe, hogy az Azure-felügyelet [több nyelven](../index.yml?product=featured#languages-and-tools)is elérhető.
 
 ### <a name="set-via-arm-template"></a>Beállítás ARM-sablonnal
 

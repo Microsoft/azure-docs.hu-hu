@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 10/16/2020
-ms.openlocfilehash: b8c7792a09dd86e7d4ac043c572f69fc47ee6e63
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3f1e3fd360197310a89a67d43053649d904aeb18
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307172"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677609"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Oktatóanyag: Apache Spark feladatdefiníció létrehozása a szinapszis Studióban
 
@@ -32,7 +32,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 Mielőtt nekilát az oktatóanyagnak, ellenőrizze, hogy megfelel-e a következő feltételeknek:
 
-* Egy Azure szinapszis Analytics-munkaterület. Útmutatásért lásd: [Azure szinapszis Analytics-munkaterület létrehozása](../../machine-learning/how-to-manage-workspace.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#create-a-workspace).
+* Egy Azure szinapszis Analytics-munkaterület. Útmutatásért lásd: [Azure szinapszis Analytics-munkaterület létrehozása](../../machine-learning/how-to-manage-workspace.md).
 * Kiszolgáló nélküli Apache Spark készlet.
 * Egy ADLS Gen2 Storage-fiók. A használni kívánt ADLS Gen2 fájlrendszer **Storage blob-Adattulajdonosának** kell lennie. Ha nem, manuálisan kell hozzáadnia az engedélyt.
 * Ha nem szeretné használni a munkaterület alapértelmezett tárolóját, kapcsolja össze a szükséges ADLS Gen2 Storage-fiókot a szinapszis Studióban. 
@@ -43,11 +43,11 @@ Ebben a szakaszban a PySpark (Python) Apache Spark feladatainak definícióját 
 
 1. Nyissa meg az [Azure szinapszis Studio alkalmazást](https://web.azuresynapse.net/).
 
-2. A Apache Spark-feladatdefiníciók [létrehozásához](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python) nyissa meg a mintaképeket **python.zipához** , majd bontsa ki a tömörített csomagot, és bontsa ki a **WordCount.py** és **shakespeare.txt** fájlokat. 
+2. A Apache Spark-feladatdefiníciók [létrehozásához](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python) nyissa meg a mintaképeket **python.zipához**, majd bontsa ki a tömörített csomagot, és bontsa ki a **WordCount.py** és **shakespeare.txt** fájlokat. 
 
      ![Példák a fájlokra](./media/apache-spark-job-definitions/sample-files.png)
 
-3. Válassza ki az **adatokhoz**  ->  **csatolt**  ->  **Azure Data Lake Storage Gen2** , és töltse fel a **WordCount.py** , és **shakespeare.txt** a ADLS Gen2 fájlrendszerbe. 
+3. Válassza ki az **adatokhoz**  ->  **csatolt**  ->  **Azure Data Lake Storage Gen2**, és töltse fel a **WordCount.py** , és **shakespeare.txt** a ADLS Gen2 fájlrendszerbe. 
 
      ![Python-fájl feltöltése](./media/apache-spark-job-definitions/upload-python-file.png)
 
@@ -85,11 +85,11 @@ Ebben a szakaszban létrehoz egy Apache Spark Apache Spark (Scala) feladatdefin�
 
  1. Nyissa meg az [Azure szinapszis Studio alkalmazást](https://web.azuresynapse.net/).
 
- 2. A Apache Spark-feladatdefiníciók [létrehozásához](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Scala) nyissa meg a mintaképeket **scala.zipához** , majd bontsa ki a tömörített csomagot, és bontsa ki a **WordCount. jar** és **shakespeare.txt** fájlokat. 
+ 2. A Apache Spark-feladatdefiníciók [létrehozásához](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Scala) nyissa meg a mintaképeket **scala.zipához**, majd bontsa ki a tömörített csomagot, és bontsa ki a **WordCount. jar** és **shakespeare.txt** fájlokat. 
  
      ![Sample Files Scala](./media/apache-spark-job-definitions/sample-files-scala.png)
 
- 3. Válassza ki az **adatokhoz**  ->  **csatolt**  ->  **Azure Data Lake Storage Gen2** , és töltse fel a **WordCount. jar** fájlt, és **shakespeare.txt** a ADLS Gen2 fájlrendszerbe.
+ 3. Válassza ki az **adatokhoz**  ->  **csatolt**  ->  **Azure Data Lake Storage Gen2**, és töltse fel a **WordCount. jar** fájlt, és **shakespeare.txt** a ADLS Gen2 fájlrendszerbe.
  
      ![a Scala-struktúra előkészítése](./media/apache-spark-job-definitions/prepare-scala-structure.png)
 
@@ -125,11 +125,11 @@ Ebben a szakaszban létrehoz egy Apache Spark Apache Spark (Scala) feladatdefin�
 Ebben a szakaszban létre fog hozni egy Apache Spark feladatdefiníció a .NET Sparkhoz (C#/F #).
  1. Nyissa meg az [Azure szinapszis Studio alkalmazást](https://web.azuresynapse.net/).
 
- 2. A Apache Spark-feladatdefiníciók [létrehozásához](https://github.com/Azure-Samples/Synapse/tree/master/Spark/DotNET) nyissa meg a mintaképeket **dotnet.zipához** , majd bontsa ki a tömörített csomagot, és bontsa ki a **wordcount.zip** és **shakespeare.txt** fájlokat. 
+ 2. A Apache Spark-feladatdefiníciók [létrehozásához](https://github.com/Azure-Samples/Synapse/tree/master/Spark/DotNET) nyissa meg a mintaképeket **dotnet.zipához**, majd bontsa ki a tömörített csomagot, és bontsa ki a **wordcount.zip** és **shakespeare.txt** fájlokat. 
 
      ![DotNet-minta](./media/apache-spark-job-definitions/sample-dotnet.png)
 
- 3. Válassza ki az **adatokhoz**  ->  **csatolt**  ->  **Azure Data Lake Storage Gen2** , és töltse fel **wordcount.zip** és **shakespeare.txt** a ADLS Gen2 fájlrendszerbe.
+ 3. Válassza ki az **adatokhoz**  ->  **csatolt**  ->  **Azure Data Lake Storage Gen2**, és töltse fel **wordcount.zip** és **shakespeare.txt** a ADLS Gen2 fájlrendszerbe.
  
      ![DotNet-struktúra előkészítése](./media/apache-spark-job-definitions/prepare-dotnet-structure.png)
 
@@ -177,7 +177,7 @@ Apache Spark feladatdefiníció létrehozása után elküldheti azt egy Apache S
 
 ### <a name="scenario-2-view-apache-spark-job-running-progress"></a>2. forgatókönyv: folyamatban lévő Apache Spark-feladatok megtekintése
 
- 1. Válassza a **figyelés** , majd a **Apache Spark alkalmazások** lehetőséget. Megtalálhatja az elküldött Apache Spark alkalmazást.
+ 1. Válassza a **figyelés**, majd a **Apache Spark alkalmazások** lehetőséget. Megtalálhatja az elküldött Apache Spark alkalmazást.
 
      ![Spark-alkalmazás megtekintése](./media/apache-spark-job-definitions/view-spark-application.png)
 

@@ -3,19 +3,20 @@ title: A OpenShift Container platform 3,11 Self-Managed Marketplace-ajánlat üz
 description: A OpenShift Container platform 3,11 Self-Managed Marketplace-ajánlatának üzembe helyezése az Azure-ban.
 author: haroldwongms
 manager: mdotson
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: openshift
+ms.collection: linux
 ms.topic: how-to
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 36adf35c5fbfc3e88b7d9af425ebabc852707e69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f257ed1097f49074d70f45f59e9040265f6cedef
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87374099"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670446"
 ---
 # <a name="configure-prerequisites"></a>Előfeltételek konfigurálása
 
@@ -38,7 +39,7 @@ Ez a legegyszerűbb, de korlátozott testreszabási lehetőségekkel is rendelke
 - **Naplózás**: a EFK naplózása engedélyezve lehet.
 - Az **Azure Cloud Provider**: alapértelmezés szerint engedélyezve van, le lehet tiltani.
 
-A Azure Portal bal felső részén kattintson az **erőforrás létrehozása**elemre, írja be a "openshift Container platform" kifejezést a keresőmezőbe, és nyomja le az ENTER billentyűt.
+A Azure Portal bal felső részén kattintson az **erőforrás létrehozása** elemre, írja be a "openshift Container platform" kifejezést a keresőmezőbe, és nyomja le az ENTER billentyűt.
 
    ![Új erőforrás-keresés](media/openshift-marketplace-self-managed/ocp-search.png)  
 <br>
@@ -48,7 +49,7 @@ Az eredmények lap a listában a **Red Hat OpenShift Container Platform 3,11-** 
    ![Új erőforrás-keresés eredménye](media/openshift-marketplace-self-managed/ocp-searchresult.png)  
 <br>
 
-Kattintson az ajánlatra az ajánlat részleteinek megtekintéséhez. Az ajánlat üzembe helyezéséhez kattintson a **Létrehozás**gombra. Ekkor megjelenik a szükséges paraméterek megadására szolgáló felhasználói felület. Az első képernyő az **alapvető beállítások** panel.
+Kattintson az ajánlatra az ajánlat részleteinek megtekintéséhez. Az ajánlat üzembe helyezéséhez kattintson a **Létrehozás** gombra. Ekkor megjelenik a szükséges paraméterek megadására szolgáló felhasználói felület. Az első képernyő az **alapvető beállítások** panel.
 
    ![Ajánlat címe lap](media/openshift-marketplace-self-managed/ocp-titlepage.png)  
 <br>
@@ -57,7 +58,7 @@ Kattintson az ajánlatra az ajánlat részleteinek megtekintéséhez. Az ajánla
 
 Ha segítséget szeretne kérni bármelyik bemeneti paraméterről, vigye a kurzort ***a paraméter neve melletti*** fölé.
 
-Adja meg a bemeneti paraméterek értékeit, majd kattintson **az OK**gombra.
+Adja meg a bemeneti paraméterek értékeit, majd kattintson **az OK** gombra.
 
 | Bemeneti paraméter | Paraméter leírása |
 |-----------------------|-----------------|
@@ -72,7 +73,7 @@ Adja meg a bemeneti paraméterek értékeit, majd kattintson **az OK**gombra.
 
 **Infrastruktúra-beállítások**
 
-Adja meg a bemeneti paraméterek értékeit, majd kattintson **az OK**gombra.
+Adja meg a bemeneti paraméterek értékeit, majd kattintson **az OK** gombra.
 
 | Bemeneti paraméter | Paraméter leírása |
 |-----------------------|-----------------|
@@ -93,7 +94,7 @@ Adja meg a bemeneti paraméterek értékeit, majd kattintson **az OK**gombra.
 
 **Méret módosítása**
 
-Egy másik virtuálisgép-méret kiválasztásához kattintson a ***méret módosítása***gombra.  Ekkor megnyílik a virtuális gép kiválasztási ablaka.  Válassza ki a kívánt virtuálisgép-méretet, és kattintson a **kiválasztás**elemre.
+Egy másik virtuálisgép-méret kiválasztásához kattintson a ***méret módosítása** _ elemre.  Ekkor megnyílik a virtuális gép kiválasztási ablaka.  Válassza ki a kívánt virtuálisgép-méretet, és kattintson az _ * Select * * (* *) elemre.
 
    ![Virtuális gép méretének kiválasztása](media/openshift-marketplace-self-managed/ocp-selectvmsize.png)  
 <br>
@@ -185,7 +186,7 @@ Erősítse meg a kapcsolattartási adatokat a vásárlás lapon, és kattintson 
 
 ## <a name="connect-to-the-openshift-cluster"></a>Kapcsolódás a OpenShift-fürthöz
 
-Az üzembe helyezés befejezésekor a rendszer lekéri a kapcsolódást a központi telepítés kimenet szakaszából. Kapcsolódjon a OpenShift-konzolhoz a böngészőben a **OpenShift-konzol URL-címének**használatával. azt is megteheti, hogy SSH-t használ a megerősített gazdagépen. Az alábbi példa egy olyan példát mutat be, ahol a rendszergazdai Felhasználónév clusteradmin, a megerősített nyilvános IP-cím DNS teljes tartományneve pedig bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com:
+Az üzembe helyezés befejezésekor a rendszer lekéri a kapcsolódást a központi telepítés kimenet szakaszából. Kapcsolódjon a OpenShift-konzolhoz a böngészőben a **OpenShift-konzol URL-címének** használatával. azt is megteheti, hogy SSH-t használ a megerősített gazdagépen. Az alábbi példa egy olyan példát mutat be, ahol a rendszergazdai Felhasználónév clusteradmin, a megerősített nyilvános IP-cím DNS teljes tartományneve pedig bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com:
 
 ```bash
 $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com
@@ -199,7 +200,7 @@ Az az [Group delete](/cli/azure/group) paranccsal távolítsa el az erőforrásc
 az group delete --name openshiftrg
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Üzembe helyezés utáni feladatok](./openshift-container-platform-3x-post-deployment.md)
 - [A OpenShift üzembe helyezésének hibája az Azure-ban](./openshift-container-platform-3x-troubleshooting.md)

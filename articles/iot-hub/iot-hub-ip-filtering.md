@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/19/2020
 ms.author: jlian
-ms.openlocfilehash: c6544e8ac00744602476207a89567aea5afe5b1d
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 6f83421d4ee56d56875e13ffbdd8ac9dbbf4b6bb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632365"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656363"
 ---
 # <a name="use-ip-filters"></a>IP-szűrők használata
 
@@ -20,7 +20,7 @@ A biztonság az Azure IoT Hub-alapú IoT-megoldások fontos aspektusa. A biztons
 
 ## <a name="when-to-use"></a>A következő esetekben használja
 
-Az IP-szűrő használatával csak a megadott IP-címtartományból érkező forgalmat fogadhatja el, és minden mást visszautasíthat. Például az IoT hub és az [Azure Express Route](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) használatával privát kapcsolatokat hozhat létre az IoT hub és a helyszíni infrastruktúra között.
+Az IP-szűrő használatával csak a megadott IP-címtartományból érkező forgalmat fogadhatja el, és minden mást visszautasíthat. Például az IoT hub és az [Azure Express Route](../expressroute/expressroute-faqs.md#supported-services) használatával privát kapcsolatokat hozhat létre az IoT hub és a helyszíni infrastruktúra között.
 
 ## <a name="default-setting"></a>Alapértelmezett beállítás
 
@@ -164,7 +164,7 @@ $iothubResource | Set-AzResource -Force
 ## <a name="update-ip-filter-rules-using-rest"></a>IP-szűrési szabályok frissítése a REST használatával
 
 
-A IoT Hub IP-szűrőjét az Azure erőforrás-szolgáltató REST-végpontjának használatával is lekérheti és módosíthatja. Lásd: `properties.networkRuleSets` a [createorupdate metódusban](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate).
+A IoT Hub IP-szűrőjét az Azure erőforrás-szolgáltató REST-végpontjának használatával is lekérheti és módosíthatja. Lásd: `properties.networkRuleSets` a [createorupdate metódusban](/rest/api/iothub/iothubresource/createorupdate).
 
 ## <a name="ip-filter-classic-retirement"></a>IP-szűrő (klasszikus) nyugdíjazás
 
@@ -174,7 +174,7 @@ A klasszikus IP-szűrő ki lett vonva. További információ: [IoT hub klassziku
 
 A IoT Hub képességeinek további megismeréséhez lásd:
 
-* [IoT Hub metrikák](iot-hub-metrics.md)
+* [IoT Hub metrikák](./monitor-iot-hub.md)
 * [IoT Hub a magánhálózati és felügyelt identitású virtuális hálózatok támogatása](virtual-network-support.md)
 * [A IoT hub nyilvános hálózati hozzáférésének kezelése](iot-hub-public-network-access.md)
 * [Az IoT Hub monitorozása](monitor-iot-hub.md)

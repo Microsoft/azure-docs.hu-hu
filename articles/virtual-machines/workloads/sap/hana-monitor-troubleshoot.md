@@ -6,20 +6,19 @@ documentationcenter: ''
 author: msjuergent
 manager: bburns
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e560fc996393969eecb45a3fdda24bc940436dc0
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 83743a6985bef8ce6c03e01ed8d10aa740852106
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967720"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668809"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>HANA-oldali monitorozás és hibaelhárítás
 
@@ -106,7 +105,7 @@ Emellett a nyílt forráskódú [IPERF](https://iperf.fr/) eszközt (vagy hasonl
 
 A hibaelhárítással kapcsolatos részletes utasításokért tekintse meg a [hálózati teljesítménnyel és a kapcsolódási problémákkal kapcsolatos SAP HANA hibaelhárítási](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a3/ccdff1aedc4720acb24ed8826938b6/content.htm?frameset=/en/dc/6ff98fa36541e997e4c719a632cbd8/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=142&amp;show_children=false) webhelyét.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 
 A végfelhasználói szempontból az alkalmazás (vagy a rendszer teljes egészében) lassabban fut, nem válaszol, vagy úgy tűnik, hogy nem válaszol, ha probléma van az I/O-teljesítménnyel. SAP HANA Studio **kötetek** lapján megtekintheti a csatlakoztatott köteteket, és az egyes szolgáltatások által használt köteteket.
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 2/2/2021
 ms.author: mimckitt
 ms.custom: rybaker, chmimckitt
-ms.openlocfilehash: 744f265251e9f58ce91085f0e5dd5d1ad13eec69
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 6e6f6ced1cdba429abd914354a5eba861ab127ec
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99625111"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670049"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Windows 10 üzembe helyezése az Azure-ban több-bérlős üzemeltetési jogosultságokkal 
 A Windows 10 Enterprise E3/E5 felhasználónkénti vagy a Windows virtuális asztali hozzáférés felhasználónként (felhasználói előfizetési licencek vagy kiegészítő felhasználói előfizetési licencek) rendelkező ügyfelei számára a Windows 10 rendszerhez készült több-bérlős üzemeltetési jogosultság lehetővé teszi a Windows 10-es licencek felhőbe való bevezetését, valamint a Windows 10 Virtual Machines Azure-beli futtatását anélkül, hogy más licenccel kellene fizetnie. A több-bérlős üzemeltetési jogosultságok csak a Windows 10 rendszerhez (1703-es vagy újabb verzió) érhetők el.
@@ -26,7 +26,7 @@ További információ: több- [bérlős üzemeltetés a Windows 10](https://www.
 
 ## <a name="subscription-licenses-that-qualify-for-multitenant-hosting-rights"></a>A több-bérlős üzemeltetési jogosultságokra jogosult előfizetési licencek
 
-A [Microsoft felügyeleti központjának](https://docs.microsoft.com/microsoft-365/admin/admin-overview/about-the-admin-center?view=o365-worldwide&preserve-view=true)használatával ellenőrizheti, hogy egy felhasználóhoz van-e hozzárendelve Windows 10 támogatott licenc.
+A [Microsoft felügyeleti központjának](/microsoft-365/admin/admin-overview/about-the-admin-center?preserve-view=true&view=o365-worldwide)használatával ellenőrizheti, hogy egy felhasználóhoz van-e hozzárendelve Windows 10 támogatott licenc.
 
 > [!IMPORTANT]
 > A felhasználóknak az alábbi előfizetési licencek egyikével kell rendelkezniük ahhoz, hogy Windows 10 rendszerképeket használjanak az Azure-ban. Ha nem rendelkezik ezekkel az előfizetési licencekkel, akkor a [Cloud Service-partneren](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/) keresztül vagy közvetlenül a [Microsofton](https://www.microsoft.com/microsoft-365?rtc=1)keresztül vásárolhatók meg.

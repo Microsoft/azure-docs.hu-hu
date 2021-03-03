@@ -1,5 +1,5 @@
 ---
-title: Rangsor hasonlósági algoritmusa
+title: Rangsorolási hasonlósági algoritmus konfigurálása
 titleSuffix: Azure Cognitive Search
 description: A hasonlósági algoritmus beállítása az új hasonlósági algoritmus kipróbálható a rangsoroláshoz
 manager: nitinme
@@ -7,36 +7,47 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/13/2020
-ms.openlocfilehash: e2caa09d41abb1842100ed8259e82ec411390ccb
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.date: 03/02/2021
+ms.openlocfilehash: 9f806b512ae8e118fca8f32115c8be3b493fd681
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100520629"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677780"
 ---
-# <a name="ranking-algorithm-in-azure-cognitive-search"></a>Rangsorolási algoritmus az Azure Cognitive Search
+# <a name="configure-ranking-algorithms-in-azure-cognitive-search"></a>Rangsoroló algoritmusok konfigurálása az Azure-ban Cognitive Search
 
-> [!IMPORTANT]
-> 2020. július 15-étől az újonnan létrehozott keresési szolgáltatások automatikusan a BM25 ranking függvényt fogják használni, amely a legtöbb esetben olyan keresési rangsorok biztosítására szolgál, amelyek a jelenlegi alapértelmezett rangsorolásnál jobban illeszkednek a felhasználói elvárásokhoz. A kiváló rangsoroláson felül a BM25 az eredmények hangolására szolgáló konfigurációs beállításokat is lehetővé teszi az olyan tényezők alapján, mint a dokumentumok mérete.  
->
-> Ennek a változásnak a hatására a keresési eredmények sorrendjében valószínűleg kisebb változások jelennek meg. Azok számára, akik szeretnék kipróbálni a változás hatását, a BM25 algoritmus az API-Version 2019-05-06 – Preview és a 2020-06-30-es verzióban érhető el.  
+Az Azure Cognitive Search két hasonlósági besorolási algoritmust támogat:
 
-Ez a cikk azt ismerteti, hogyan használhatók a meglévő keresési szolgáltatások új BM25 ranking algoritmusa az előzetes verziójú API-val létrehozott és lekérdezett új indexekhez.
++ Egy *klasszikus hasonlósági* algoritmus, amelyet az összes keresési szolgáltatás a 2020-ig terjedően használ.
++ A *OKAPI BM25* algoritmus implementációja, amelyet az összes, a július 15. után létrehozott keresési szolgáltatásban használ.
 
-Az Azure Cognitive Search a Okapi BM25 algoritmus ( *BM25Similarity*) hivatalos Lucene implementációjának bevezetésének folyamata, amely a korábban használt *ClassicSimilarity* -implementációt váltja fel. A régebbi ClassicSimilarity algoritmushoz hasonlóan a BM25Similarity egy olyan TF-IDF-szerű lekérési függvény, amely a kifejezés gyakoriságát (TF) és az inverz dokumentum gyakoriságát (IDF) használja változókként az egyes dokumentumokhoz kapcsolódó pontszámok kiszámításához, amelyet aztán a rangsoroláshoz használ a rendszer. 
+A BM25 ranking az új alapértelmezett érték, mivel általában olyan keresési rangsorokat hoz létre, amelyek jobban illeszkednek a felhasználói elvárásokhoz. Emellett a konfigurációs beállításokat is lehetővé teszi az eredmények hangolásához olyan tényezők alapján, mint a dokumentumok mérete. A 2020. július 15. után létrehozott új szolgáltatások esetében az BM25 automatikusan használatos, és az egyetlen hasonlósági algoritmus. Ha a ClassicSimilarity hasonlóságot próbál beállítani egy új szolgáltatáson, a rendszer HTTP 400-es hibát ad vissza, mert a szolgáltatás nem támogatja ezt az algoritmust.
 
-A régebbi klasszikus hasonlósági algoritmushoz hasonlóan elméletileg a BM25 a legfelső szintű, valószínűségi adatok lekérését is felhasználja a fejlesztéshez. A BM25 speciális testreszabási lehetőségeket is kínál, például lehetővé teszi a felhasználó számára, hogy eldöntse, hogyan méretezi a relevancia pontszámát a megfeleltetett kifejezések gyakoriságával.
+A 2020. július 15. előtt létrehozott régebbi szolgáltatások esetében a klasszikus hasonlóság az alapértelmezett algoritmus marad. A régebbi szolgáltatások a BM25 meghívásához a keresési index tulajdonságait is megadhatják az alább leírtak szerint. Ha klasszikusról BM25-re vált, a keresési eredmények sorrendjét is láthatja.
 
-## <a name="how-to-test-bm25-today"></a>A BM25 tesztelése még ma
+> [!NOTE]
+> A szemantikai keresés egy további szemantikai újrarangsoroló algoritmus, amely az elvárások és az eredmények közti különbségeket is leszűkíti. A többi algoritmustól eltérően ez egy kiegészítő funkció, amely egy meglévő eredményhalmaz megismétlésére szolgál. Az előnézeti szemantikai keresési algoritmus használatához létre kell hoznia egy új szolgáltatást, és meg kell adnia egy [szemantikai lekérdezési típust](semantic-how-to-query-request.md). További információ: [szemantikai keresés – áttekintés](semantic-search-overview.md).
 
-Új index létrehozásakor beállíthatja a **hasonlóság** tulajdonságot az algoritmus megadásához. Használhatja a t az `api-version=2019-05-06-Preview` alább látható módon, vagy `api-version=2020-06-30` .
+## <a name="create-a-search-index-for-bm25-scoring"></a>Keresési index létrehozása a BM25 pontozáshoz
+
+Ha olyan keresési szolgáltatást futtat, amelyet 2020. július 15. előtt hozott létre, beállíthatja a hasonlóság tulajdonságot BM25Similarity vagy ClassicSimilarity értékre az index definíciójában. Ha a hasonlóság tulajdonság nincs megadva vagy NULL értékre van állítva, az index a klasszikus algoritmust használja.
+
+A hasonlósági algoritmus csak az index létrehozási idején állítható be. Ha azonban az indexet a BM25 együtt hozza létre, a meglévő indexet frissítheti a BM25 paramétereinek beállításához vagy módosításához.
+
+| Ügyfélkódtár | Hasonlósági tulajdonság |
+|----------------|---------------------|
+| .NET  | [SearchIndex. hasonlóság](/dotnet/api/azure.search.documents.indexes.models.searchindex.similarity) |
+| Java | [SearchIndex.setSimilarity](/java/api/com.azure.search.documents.indexes.models.searchindex.setsimilarity) |
+| JavaScript | [SearchIndex. hasonlóság](/javascript/api/@azure/search-documents/searchindex#similarity) |
+| Python | [a SearchIndex hasonlósági tulajdonsága](/python/api/azure-search-documents/azure.search.documents.indexes.models.searchindex) |
+
+### <a name="rest-example"></a>REST-példa
+
+Használhatja a [REST API](/rest/api/searchservice/create-index)is, ahogy az alábbi példa szemlélteti:
 
 ```http
-PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=2019-05-06-Preview
-```
-
-```json  
+PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=2020-06-30
 {
     "name": "indexName",
     "fields": [
@@ -59,48 +70,28 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 }
 ```
 
-A **hasonlósági** tulajdonság ebben az átmeneti időszakban hasznos, ha mindkét algoritmus elérhető, csak a meglévő szolgáltatásokban. 
-
-| Tulajdonság | Leírás |
-|----------|-------------|
-| hasonlóság | Választható. Az érvényes értékek a következők: *"#Microsoft. Azure. Search. ClassicSimilarity"* vagy *"#Microsoft. Azure. Search. BM25Similarity"*. <br/> A (z `api-version=2019-05-06-Preview` ) 2020. július 15. előtt létrehozott keresési szolgáltatáshoz szükséges vagy újabb. |
-
-A 2020. július 15. után létrehozott új szolgáltatások esetében az BM25 automatikusan használatos, és az egyetlen hasonlósági algoritmus. Ha egy új szolgáltatáshoz próbál meg **hasonlóságot** beállítani `ClassicSimilarity` , a rendszer 400-es hibát ad vissza, mivel ez az algoritmus nem támogatott az új szolgáltatásokban.
-
-A 2020. július 15. előtt létrehozott meglévő szolgáltatások esetében a klasszikus hasonlóság az alapértelmezett algoritmus marad. Ha a **hasonlóság** tulajdonság nincs megadva vagy NULL értékre van állítva, az index a klasszikus algoritmust használja. Ha az új algoritmust szeretné használni, a fentiekben ismertetett **hasonlóságot** kell megadnia.
-
 ## <a name="bm25-similarity-parameters"></a>BM25-hasonlósági paraméterek
 
-A BM25 hasonlósága két felhasználó által testreszabható paramétert hoz létre a számított relevanciás pontszám szabályozása érdekében.
+A BM25 hasonlósága két felhasználó által testreszabható paramétert hoz létre a számított relevanciás pontszám szabályozása érdekében. A BM25 paramétereket az index létrehozásakor, vagy index-frissítésként is megadhatja, ha a BM25 algoritmus meg lett adva az index létrehozásakor.
 
-### <a name="k1"></a>K1 csomag
-
-A *K1* paraméter a méretezési függvényt a dokumentum-lekérdezési pár végső relevanciás pontszámának kifejezése alapján szabályozza.
-
-A nulla érték a "bináris modell" értéket jelöli, ahol az egyetlen egyező kifejezés hozzájárulása megegyezik az összes egyező dokumentummal, függetlenül attól, hogy a kifejezés hány alkalommal jelenik meg a szövegben, míg egy nagyobb K1-érték lehetővé teszi, hogy a pontszám tovább növekedjen, mivel az adott időszak több példánya is megtalálható a dokumentumban. Alapértelmezés szerint az Azure Cognitive Search 1,2 értéket használ a K1 paraméterhez. A magasabb K1-értékek használata olyan esetekben lehet fontos, amikor egy keresési lekérdezésbe több kifejezés is beleszámít. Ezekben az esetekben érdemes lehet olyan dokumentumokat használni, amelyek megfelelnek a különböző lekérdezési kifejezéseknek, amelyek csak egy-egy, több alkalommal egyeznek meg a dokumentumokban. Ha például az "Apollo űrrepülés" kifejezést tartalmazó dokumentumok indexét kérdezi le, érdemes lehet csökkenteni a görög mitológiáról szóló cikk pontszámát, amely az "Apollo" kifejezést néhány tucat alkalommal tartalmazza, a "űrrepülés" kifejezés nélkül, egy másik cikkhez képest, amely kifejezetten megemlíti az "Apollo" és a "űrrepülés" fogalmát egy maroknyi alkalommal. 
- 
-### <a name="b"></a>b
-
-A *b* paraméter azt szabályozza, hogy a dokumentum hossza hogyan befolyásolja a relevancia pontszámát.
-
-A 0,0 érték azt jelenti, hogy a dokumentum hossza nem befolyásolja a pontszámot, míg a 1,0 érték azt jelenti, hogy a dokumentum hosszának a kifejezésre gyakorolt hatását a rendszer normalizálja. A b paraméterhez az Azure Cognitive Searchban használt alapértelmezett érték 0,75. A kifejezés gyakoriságának normalizálása a dokumentum hosszának megfelelően olyan esetekben hasznos, amikor azt szeretnénk, hogy szankcionáljuk a hosszabb dokumentumokat. Bizonyos esetekben a hosszabb dokumentumok (például egy teljes regény) nagyobb valószínűséggel tartalmaznak sok releváns kifejezést a sokkal rövidebb dokumentumokhoz képest.
+| Tulajdonság | Típus | Leírás |
+|----------|------|-------------|
+| K1 csomag | szám | A méretezési függvényt a dokumentum-lekérdezési pár végső relevanciás pontszáma alapján szabályozza. Az értékek általában 0,0 – 3,0, az 1,2 alapértelmezett értékkel. </br></br>A 0,0 érték a "bináris modell" értéket jelöli, ahol az egyetlen egyező kifejezés hozzájárulása megegyezik az összes egyező dokumentummal, függetlenül attól, hogy a kifejezés hány alkalommal jelenik meg a szövegben, míg egy nagyobb K1-érték lehetővé teszi, hogy a pontszám tovább növekedjen, mivel az adott időszak több példánya is megtalálható a dokumentumban. </br></br>A magasabb K1-értékek használata olyan esetekben lehet fontos, amikor egy keresési lekérdezésbe több kifejezés is beleszámít. Ezekben az esetekben érdemes lehet olyan dokumentumokat használni, amelyek megfelelnek a különböző lekérdezési kifejezéseknek, amelyek csak egy-egy, több alkalommal egyeznek meg a dokumentumokban. Ha például az "Apollo űrrepülés" kifejezést tartalmazó dokumentumok indexét kérdezi le, érdemes lehet csökkenteni a görög mitológiáról szóló cikk pontszámát, amely az "Apollo" kifejezést tartalmazza néhány tucat alkalommal, a "űrrepülés" kifejezés nélkül, egy másik cikkhez képest, amely kifejezetten megemlíti az "Apollo" és a "űrrepülés" fogalmát. |
+| b | szám | Azt szabályozza, hogy a dokumentum hossza hogyan befolyásolja a relevancia pontszámát. Az értékek 0 és 1 közöttiek, az alapértelmezett érték a 0,75. </br></br>A 0,0 érték azt jelenti, hogy a dokumentum hossza nem befolyásolja a pontszámot, míg a 1,0 érték azt jelenti, hogy a dokumentum hosszának a kifejezésre gyakorolt hatását a rendszer normalizálja. </br></br>A kifejezés gyakoriságának normalizálása a dokumentum hosszának megfelelően olyan esetekben hasznos, amikor azt szeretnénk, hogy szankcionáljuk a hosszabb dokumentumokat. Bizonyos esetekben a hosszabb dokumentumok (például egy teljes regény) nagyobb valószínűséggel tartalmaznak sok releváns kifejezést a sokkal rövidebb dokumentumokhoz képest. |
 
 ### <a name="setting-k1-and-b-parameters"></a>A K1 és a b paraméterek beállítása
 
-A b vagy K1 értékek testreszabásához egyszerűen adja hozzá őket tulajdonságokként a hasonlósági objektumhoz a BM25 használatakor:
+A b vagy K1 értékek beállításához vagy módosításához adja hozzá őket a BM25 hasonlósági objektumhoz. Ha egy meglévő indexben beállítja vagy megváltoztatja ezeket az értékeket, a rendszer legalább néhány másodpercig offline állapotba helyezi az indexet, ami miatt az aktív indexelési és lekérdezési kérelmek sikertelenek lesznek. Ezért állítsa be a frissítési kérelem "allowIndexDowntime = true" paraméterét:
 
-```json
+```http
+PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=2020-06-30&allowIndexDowntime=true
+{
     "similarity": {
         "@odata.type": "#Microsoft.Azure.Search.BM25Similarity",
         "b" : 0.5,
         "k1" : 1.3
     }
-```
-
-A hasonlósági algoritmus csak az index létrehozási idején állítható be. Ez azt jelenti, hogy a használt hasonlósági algoritmus nem módosítható a meglévő indexek esetében. A *"b"* és a *"K1"* paraméterek módosíthatók a BM25 használó meglévő index-definíció frissítésekor. Ha egy meglévő indexben módosítja ezeket az értékeket, az index legalább néhány másodpercig offline állapotba kerül, így az indexelés és a lekérdezési kérelmek sikertelenek lesznek. Emiatt a frissítési kérelem lekérdezési karakterláncában be kell állítania a "allowIndexDowntime = true" paramétert:
-
-```http
-PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=[api-version]&allowIndexDowntime=true
+}
 ```
 
 ## <a name="see-also"></a>Lásd még  

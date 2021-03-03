@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: bcc44f61ccb7b4a19e7df39ab979669c5aa37da1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f3bd8851fe723461c618499e539c987d79c0d68
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80154899"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650141"
 ---
 # <a name="federation-metadata"></a>Összevonási metaadatok
 
@@ -36,12 +36,12 @@ A bérlői független végpontok az összes Azure AD-Bérlővel közös informá
 ## <a name="federation-metadata-endpoints"></a>Összevonási metaadatok végpontjai
 Az Azure AD az összevonási metaadatokat a következő címen teszi közzé: `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml` .
 
-A **bérlői specifikus végpontok**esetében az a `TenantDomainName` következő típusok egyike lehet:
+A **bérlői specifikus végpontok** esetében az a `TenantDomainName` következő típusok egyike lehet:
 
 * Egy Azure AD-bérlő regisztrált tartományneve, például: `contoso.onmicrosoft.com` .
 * A tartomány nem módosítható bérlői azonosítója, például: `72f988bf-86f1-41af-91ab-2d7cd011db45` .
 
-A **bérlői független végpontok**esetében a a következő: `TenantDomainName` `common` . Ez a dokumentum csak azokat az összevonási metaadatokat sorolja fel, amelyek a login.microsoftonline.com-on üzemeltetett összes Azure AD-bérlő esetében közösek.
+A **bérlői független végpontok** esetében a a következő: `TenantDomainName` `common` . Ez a dokumentum csak azokat az összevonási metaadatokat sorolja fel, amelyek a login.microsoftonline.com-on üzemeltetett összes Azure AD-bérlő esetében közösek.
 
 Például a bérlő-specifikus végpont lehet `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml` . A bérlőtől független végpont [https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml) . Az összevonási metaadatokat tartalmazó dokumentumot úgy tekintheti meg, ha beírja ezt az URL-címet egy böngészőben.
 
@@ -96,7 +96,7 @@ A WS-Federation-specifikus szakaszban egy WS-Federation metaadat-olvasó a `Role
 A következő metaadatok egy minta elemet mutatnak be `RoleDescriptor` .
 
 ```
-<RoleDescriptor xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:fed="https://docs.oasis-open.org/wsfed/federation/200706" xsi:type="fed:SecurityTokenServiceType"protocolSupportEnumeration="https://docs.oasis-open.org/wsfed/federation/200706">
+<RoleDescriptor xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:fed="https://docs.oasis-open.org/wsfed/federation/200706" xsi:type="fed:SecurityTokenServiceType" protocolSupportEnumeration="https://docs.oasis-open.org/wsfed/federation/200706">
 ```
 
 Az SAML-specifikus szakaszban egy WS-Federation metaadat-olvasó egy elemből olvassa be a tanúsítványokat `IDPSSODescriptor` .

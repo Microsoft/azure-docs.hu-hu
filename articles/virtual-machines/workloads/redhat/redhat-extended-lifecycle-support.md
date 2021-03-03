@@ -2,18 +2,18 @@
 title: Red Hat Enterprise Linux – teljes életciklusra kiterjesztett támogatás
 description: További információ a Red Hat Enterprise Extended Lifecycle támogatásának hozzáadásáról
 author: mathapli
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: redhat
+ms.collection: linux
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: mathapli
-ms.reviewer: cynthn
-ms.openlocfilehash: fd36d365eb02819352bc14caf9d8e258a8663c70
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 703732725ae7215d3ff59ad92a4c171a86251c20
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861395"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677190"
 ---
 # <a name="red-hat-enterprise-linux-rhel-extended-lifecycle-support"></a>Red Hat Enterprise Linux (RHEL) bővített életciklus-támogatás
 Ez a cikk a Red Hat Enterprise-lemezképek kiterjesztett életciklus-támogatásával kapcsolatos információkat tartalmaz:
@@ -46,7 +46,7 @@ Közvetlenül a Red Hat-hoz kell fordulnia, és közvetlenül is kaphat támogat
 Nem. Az átalakítás jelenleg nem támogatott az Azure-ban.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure-ban elérhető RHEL-lemezképek teljes listájának megtekintéséhez lásd: [Red Hat Enterprise Linux (RHEL) lemezképek az Azure-ban](./redhat-imagelist.md).
 * További információ az Azure Red Hat frissítési infrastruktúráról: [Red Hat frissítési infrastruktúra az igény szerinti RHEL virtuális gépekhez az Azure-ban](./redhat-rhui.md).

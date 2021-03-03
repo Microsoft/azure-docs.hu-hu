@@ -4,16 +4,17 @@ description: Technikai részletes információk a platform által támogatott á
 author: tanmaygore
 manager: vashan
 ms.service: virtual-machines
+ms.subservice: classic-to-arm-migration
 ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: tagore
-ms.openlocfilehash: bc12d626d8a331981cbbad015b376b826c617209
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 43473b734968b25ca90bd8809c8291625011d46f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735132"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667014"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>Részletes műszaki útmutató a klasszikusból az Azure Resource Manager-alapú üzemi modellbe történő, platform által támogatott migrálásról
 
@@ -179,7 +180,7 @@ A következő táblázatban található erőforrások klasszikus üzemi modellj�
 Az erőforrások klasszikus üzemi modellből a Resource Manager-alapú üzemi modellbe való áttelepítésének részeként frissítenie kell a meglévő automatizálást vagy eszközöket, hogy az a Migrálás után is működjön.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A IaaS-erőforrások platform által támogatott áttelepítésének áttekintése klasszikusról Azure Resource Manager](migration-classic-resource-manager-overview.md)
 * [Az IaaS-erőforrások klasszikusból Azure Resource Manager-alapú környezetbe való áttelepítésének megtervezése](migration-classic-resource-manager-plan.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 1/29/2021
 ms.author: nichola
 ms.custom: aaddev
-ms.openlocfilehash: 5abece0e272d4b72ba6f787ad44b091df5d45226
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e7193ee5d076538689078ce634b8170926df20b6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417540"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653252"
 ---
 # <a name="support-passwordless-authentication-with-fido2-keys-in-apps-you-develop"></a>Jelszavas hitelesítés támogatása FIDO2-kulcsokkal a fejleszthető alkalmazásokban
 
@@ -47,7 +47,7 @@ Először a felhasználó által legutóbb használt bejelentkezési módszert m
 A hitelesítés megvalósításának ajánlott lehetőségei a következők:
 
 - A Microsoft Authentication Libraryt (MSAL) használó .NET Desktop-alkalmazásoknak a Windows Authentication Managert (WAM) kell használniuk. Ez az integráció és a hozzá tartozó előnyök a [githubon vannak dokumentálva](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/wam).
-- A [WebView2](https://docs.microsoft.com/microsoft-edge/webview2/) használatával TÁMOGASSA a FIDO2 egy beágyazott böngészőben.
+- A [WebView2](/microsoft-edge/webview2/) használatával TÁMOGASSA a FIDO2 egy beágyazott böngészőben.
 - Használja a rendszerböngészőt. Az asztali platformokhoz készült MSAL-kódtárak alapértelmezés szerint ezt a módszert használják. A FIDO2 böngésző kompatibilitási oldalának használatával ellenőrizheti, hogy a használt böngésző támogatja-e a FIDO2-hitelesítést.
 
 ### <a name="mobile"></a>Mobil

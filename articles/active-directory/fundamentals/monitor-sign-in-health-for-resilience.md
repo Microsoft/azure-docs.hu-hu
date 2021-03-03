@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40bfa27dba905cb2e9a363c7739f0a43e7c2afdf
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: ad99c8d319a22f8b5388838b9d537de2f610478a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100101238"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650991"
 ---
 # <a name="monitoring-application-sign-in-health-for-resilience"></a>Az alkalmazás bejelentkezési állapotának figyelése a rugalmasság érdekében
 
@@ -51,7 +51,7 @@ Ez a cikk végigvezeti a bejelentkezési állapot munkafüzetének beállítás�
 
 * Log Analytics munkaterület az Azure-előfizetésben, amely naplók küldését Azure Monitor naplókba. 
 
-   * Megtudhatja, hogyan [hozhat létre log Analytics munkaterületet](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
+   * Megtudhatja, hogyan [hozhat létre log Analytics munkaterületet](../../azure-monitor/logs/quick-create-workspace.md)
 
 * Azure Monitor naplókba integrált Azure AD-naplók
 
@@ -94,7 +94,7 @@ Az alábbi útmutatást követve hozhat létre e-mail-riasztásokat a diagramok 
 
  Az alapul szolgáló lekérdezés konfigurálásához és a riasztások beállításához hajtsa végre az alábbi lépéseket. A minta lekérdezést a konfiguráció alapjaként fogja használni. A szakasz végén megjelenik a lekérdezési struktúra magyarázata.
 
-További információ a naplók létrehozásával, megtekintésével és kezelésével kapcsolatban Azure Monitor lásd: a [naplók kezelése riasztások](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log).
+További információ a naplók létrehozásával, megtekintésével és kezelésével kapcsolatban Azure Monitor lásd: a [naplók kezelése riasztások](../../azure-monitor/alerts/alerts-log.md).
 
  
 1. A munkafüzetben válassza a **Szerkesztés** lehetőséget, majd válassza a **lekérdezés ikont** közvetlenül a gráf jobb oldalán.   
@@ -280,10 +280,9 @@ A lekérdezés és a riasztások beállítása után üzleti folyamatokat hozhat
 
 ## <a name="next-steps"></a>Következő lépések
 
-[További információ a munkafüzetekről](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-use-azure-monitor-workbooks)
+[További információ a munkafüzetekről](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
  
 
  
 
- 

@@ -11,31 +11,33 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/03/2020
 ms.custom: how-to, contperf-fy21q1, devx-track-python, data4ml
-ms.openlocfilehash: bb63ac6de6c48bb3853bd235d908ee745ff5279d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 0bc247e473ea96f2f9301eeaebb543b3317c84c7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032847"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659664"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>Kapcsolódás az Azure Storage Services szolgáltatásához
 
-Ebből a cikkből megtudhatja, hogyan **kapcsolódhat az Azure-beli tárolási szolgáltatásokhoz Azure Machine learning adattárolók használatával**. Az adattárolók biztonságosan csatlakoznak az Azure Storage szolgáltatáshoz a hitelesítő adatok és az eredeti adatforrások integritásának veszélyeztetése nélkül. A kapcsolati adatokat, például az előfizetési AZONOSÍTÓját és a jogkivonat-engedélyezést a munkaterülethez társított [Key Vault](https://azure.microsoft.com/services/key-vault/) tárolják, így biztonságosan hozzáférhet a tárolóhoz anélkül, hogy a parancsfájlokban rögzített kódokat kellene megtennie. Az adattárolók létrehozásához és regisztrálásához használhatja a [Azure Machine learning PYTHON SDK](#python) -t vagy a [Azure Machine learning Studio alkalmazást](how-to-connect-data-ui.md) .
+Ebből a cikkből megtudhatja, hogyan csatlakozhat az Azure-beli adattárolási szolgáltatásokhoz Azure Machine Learning adattárral és a [PYTHON SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)-val Azure Machine learning.
 
-Ha az adattárolókat a Azure Machine Learning VS Code bővítménnyel szeretné létrehozni és kezelni, További tudnivalókért tekintse meg a [vs Code erőforrás-kezelési útmutatóját](how-to-manage-resources-vscode.md#datastores) .
-
-[Ezekből az Azure Storage-megoldásokból is létrehozhat adattárakat](#matrix). A nem **támogatott tárolási megoldások esetében**, valamint az adatforgalomnak a ml-kísérletek során történő megtakarítása érdekében [Helyezze át az adatait](#move) egy támogatott Azure Storage-megoldásba.  
+Az adattárolók biztonságosan csatlakoznak a Storage szolgáltatáshoz az Azure-ban anélkül, hogy hitelesítő adatokat kellene megadnia, és az eredeti adatforrásának integritását kockáztatja. A kapcsolati adatokat, például az előfizetési AZONOSÍTÓját és a jogkivonat-engedélyezést a munkaterülethez társított [Key Vault](https://azure.microsoft.com/services/key-vault/) tárolják, így biztonságosan hozzáférhet a tárolóhoz anélkül, hogy a parancsfájlokban rögzített kódokat kellene megtennie. [Ezekhez az Azure Storage-megoldásokhoz kapcsolódó adattárakat](#matrix)is létrehozhat.
 
 Ha szeretné megismerni, hogy az adattárolók hogyan illeszkednek Azure Machine Learning összesített adatelérési munkafolyamataihoz, tekintse meg a [biztonságos hozzáférésről](concept-data.md#data-workflow) szóló cikket.
 
+Az alacsony kódú élményért lásd: az adattárolók [létrehozása és regisztrálása a Azure Machine learning Studio](how-to-connect-data-ui.md#create-datastores)használatával.
+
+>[!TIP]
+> Ez a cikk azt feltételezi, hogy a tárolási szolgáltatáshoz hitelesítő adatokon alapuló hitelesítési hitelesítő adatokkal szeretne csatlakozni, például egy egyszerű szolgáltatásnév vagy egy közös hozzáférésű aláírás (SAS) token. Ne feledje, hogy ha a hitelesítő adatok regisztrálva vannak az adattárolókban, a munkaterület- *olvasó* szerepkörrel rendelkező felhasználók beolvashatják ezeket a hitelesítő adatokat. [További információ a munkaterület- *olvasó* szerepkörről.](how-to-assign-roles.md#default-roles) <br><br>Ha ez problémát jelent, Ismerje meg, hogyan [csatlakozhat a Storage-szolgáltatásokhoz identitás-alapú hozzáféréssel](how-to-identity-based-data-access.md). <br><br>Ez a funkció egy [kísérleti](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) előzetes verzió, és bármikor megváltozhat. 
+
 ## <a name="prerequisites"></a>Előfeltételek
 
-A következők szükségesek:
 - Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
 - Egy [támogatott tárolási típusú](#matrix)Azure Storage-fiók.
 
-- A [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py), vagy a [Azure Machine learning studióhoz](https://ml.azure.com/)való hozzáférés.
+- A [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
 
 - Egy Azure Machine Learning-munkaterület.
   
@@ -59,7 +61,10 @@ A következők szükségesek:
 
 ## <a name="supported-data-storage-service-types"></a>Támogatott adattárolási szolgáltatások típusai
 
-Az adattárolók jelenleg támogatják a kapcsolódási adatok tárolását a következő mátrixban felsorolt tárolási szolgáltatásokhoz.
+Az adattárolók jelenleg támogatják a kapcsolódási adatok tárolását a következő mátrixban felsorolt tárolási szolgáltatásokhoz. 
+
+> [!TIP]
+> A nem **támogatott tárolási megoldások esetében**, valamint az adatforgalomnak a ml-kísérletek során történő megtakarítása érdekében [Helyezze át az adatait](#move) egy támogatott Azure Storage-megoldásba. 
 
 | Tárolási &nbsp; típus | Hitelesítés &nbsp; típusa | [Azure &nbsp; Machine &nbsp; learning Studio](https://ml.azure.com/) | [Az Azure &nbsp; Machine &nbsp; learning &nbsp; Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) |  [Azure &nbsp; Machine &nbsp; learning parancssori felület](reference-azure-machine-learning-cli.md) | [Azure &nbsp; Machine &nbsp; learning – &nbsp; REST API](/rest/api/azureml/) | VS Code
 ---|---|---|---|---|---|---
@@ -88,7 +93,16 @@ Az Azure Storage szolgáltatáshoz való biztonságos kapcsolódás biztosítás
 
 ### <a name="virtual-network"></a>Virtuális hálózat 
 
-Ha az adattároló-fiók egy **virtuális hálózaton** található, további konfigurációs lépések szükségesek ahhoz, hogy Azure Machine learning hozzáférjen az adataihoz. Tekintse meg a [Azure Machine learning Studio használata Azure-beli virtuális hálózatban](how-to-enable-studio-virtual-network.md) című témakört, amely biztosítja, hogy a megfelelő konfigurációs lépések érvényesüljenek az adattár létrehozásakor és regisztrálása során.  
+Alapértelmezés szerint a Azure Machine Learning nem tud kommunikálni tűzfallal vagy virtuális hálózaton belül található Storage-fiókkal. Ha az adattároló-fiók egy **virtuális hálózaton** található, további konfigurációs lépések szükségesek ahhoz, hogy Azure Machine learning hozzáférjen az adataihoz. 
+
+> [!NOTE]
+> Ez az útmutató az [identitás-alapú adathozzáférés (előzetes verzió) használatával létrehozott](how-to-identity-based-data-access.md)adattárolók esetében is érvényes. 
+
+A **PYTHON SDK-felhasználók** számára, hogy a számítási célra szolgáló oktatóanyagon keresztül hozzáférjenek az adatokhoz, a számítási célnak a tároló ugyanazon virtuális hálózatán és alhálózatán belül kell lennie.  
+
+**Azure Machine learning Studio-felhasználók számára** számos funkció támaszkodik az adatok adatkészletből való beolvasására. például adatkészlet-előnézetek, profilok és automatizált gépi tanulás. Ahhoz, hogy ezek a funkciók a virtuális hálózatok mögötti tárolóval működjenek, a [Studióban egy munkaterület által felügyelt identitás](how-to-enable-studio-virtual-network.md) használatával Azure Machine learning a virtuális hálózaton kívülről is elérheti a Storage-fiókot. 
+
+A Azure Machine Learning a virtuális hálózaton kívüli ügyfelektől érkező kéréseket is fogadhat. Annak biztosítása érdekében, hogy a szolgáltatástól adatokat kérő entitás biztonságos legyen, [állítsa be az Azure Private-hivatkozást a munkaterületre](how-to-configure-private-link.md).
 
 ### <a name="access-validation"></a>Hozzáférés ellenőrzése
 
@@ -204,18 +218,27 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
                                                              client_secret=client_secret) # the secret of service principal
 ```
 
-<a name="arm"></a>
 
-## <a name="create-datastores-using-azure-resource-manager"></a>Adattárolók létrehozása Azure Resource Manager használatával
+
+## <a name="create-datastores-with-other-azure-tools"></a>Adattárolók létrehozása más Azure-eszközökkel
+Az adattárolók a Python SDK-val és a Studióval való létrehozása mellett Azure Resource Manager sablonokat vagy a Azure Machine Learning VS Code bővítményt is használhatja. 
+
+<a name="arm"></a>
+### <a name="azure-resource-manager"></a>Azure Resource Manager
 
 Az adattárolók létrehozásához több sablon is [https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-datastore-create-*](https://github.com/Azure/azure-quickstart-templates/tree/master/) használható.
 
 További információ a sablonok használatáról: [Azure Resource Manager sablon használata munkaterületek létrehozásához Azure Machine learning számára](how-to-create-workspace-template.md).
 
+### <a name="vs-code-extension"></a>VS Code-bővítmény
+
+Ha az adattárolókat a Azure Machine Learning VS Code bővítménnyel szeretné létrehozni és felügyelni, látogasson el a [vs Code erőforrás-kezelési útmutató](how-to-manage-resources-vscode.md#datastores) című témakörre, ahol további információt talál.
 <a name="train"></a>
 ## <a name="use-data-in-your-datastores"></a>Adattárolók használata
 
-Az adattár létrehozása után [hozzon létre egy Azure Machine learning adatkészletet](how-to-create-register-datasets.md) az adataival való interakcióhoz. Az adatkészletek a gépi tanulási feladatokhoz, például a képzéshez egy lustán kiértékelt adatforrásba csomagolják az adatokat. Emellett lehetővé teszik az Azure Storage-szolgáltatásokból, például az Azure Blob Storage-ból és a ADLS-ből származó bármilyen formátumú fájlok [letöltését vagy csatlakoztatását](how-to-train-with-datasets.md#mount-vs-download) . A táblázatos adatokat egy Panda vagy Spark DataFrame is betöltheti.
+Az adattár létrehozása után [hozzon létre egy Azure Machine learning adatkészletet](how-to-create-register-datasets.md) az adataival való interakcióhoz. Az adatkészletek a gépi tanulási feladatokhoz, például a képzéshez egy lustán kiértékelt adatforrásba csomagolják az adatokat. 
+
+Az adatkészletek segítségével bármilyen formátumú fájlokat [tölthet le vagy csatlakoztathat](how-to-train-with-datasets.md#mount-vs-download) az Azure Storage-szolgáltatásokból a számítási célra szolgáló modell betanításához. [További információ az adatkészletekkel rendelkező ml-modellek betanításáról](how-to-train-with-datasets.md).
 
 <a name="get"></a>
 

@@ -1,5 +1,5 @@
 ---
-title: Azure arc-kompatibilis bevezetési egyszerű szolgáltatás létrehozása (előzetes verzió)
+title: Bevezető szolgáltatásnév létrehozása az Azure arc-kompatibilis Kubernetes
 services: azure-arc
 ms.service: azure-arc
 ms.date: 02/09/2021
@@ -8,20 +8,20 @@ author: mlearned
 ms.author: mlearned
 description: 'Azure arc-kompatibilis bevezető szolgáltatás létrehozása '
 keywords: Kubernetes, arc, Azure, tárolók
-ms.openlocfilehash: 8772cf7634d9a833af120784e3e7868b41d202c4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bda088bdae5c866493718db94c9a2da89cada8c9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390487"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650346"
 ---
-# <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>Azure arc-kompatibilis bevezetési egyszerű szolgáltatás létrehozása (előzetes verzió)
+# <a name="create-an-onboarding-service-principal-for-azure-arc-enabled-kubernetes"></a>Bevezető szolgáltatásnév létrehozása az Azure arc-kompatibilis Kubernetes
 
 ## <a name="overview"></a>Áttekintés
 
-A Kubernetes-fürtöket az Azure arc szolgáltatásba a korlátozott jogosultságú szerepkör-hozzárendelésekkel rendelkező egyszerű szolgáltatások használatával végezheti el. Ez a képesség a folyamatos integráció és a folyamatos üzembe helyezés (CI/CD) folyamatokban, például az Azure-folyamatokban és a GitHub-műveletekben hasznos.
+A Kubernetes-fürtöket az Azure arc szolgáltatáshoz a korlátozott jogosultságú szerepkör-hozzárendelésekkel rendelkező egyszerű szolgáltatások használatával lehet összekötni. Ez a képesség a folyamatos integráció és a folyamatos üzembe helyezés (CI/CD) folyamatokban, például az Azure-folyamatokban és a GitHub-műveletekben hasznos.
 
-Az alábbi lépéseket követve megismerheti, hogyan használhatók a Kubernetes-fürtök bevezetésére szolgáló egyszerű szolgáltatások az Azure arc szolgáltatásban.
+Az alábbi lépésekkel megtudhatja, hogyan használhatja a Kubernetes-fürtöket az Azure arc szolgáltatáshoz kapcsolódó egyszerű szolgáltatásokat.
 
 ## <a name="create-a-new-service-principal"></a>Új egyszerű szolgáltatás létrehozása
 
@@ -49,11 +49,11 @@ Rendelje hozzá a "Kubernetes-fürt-Azure arc bevezetése" szerepkört az újonn
 
 A korlátozott képességek miatt az ügyfelek könnyedén újra használhatják ezt a résztvevőt több fürt bevezetéséhez.
 
-Az engedélyek további korlátozásához adja meg a megfelelő `--scope` argumentumot a szerepkör hozzárendeléséhez. Ez lehetővé teszi, hogy az ügyfelek korlátozzák a fürt regisztrációját. A különböző paraméterek a következő forgatókönyveket támogatják `--scope` :
+Az engedélyek további korlátozásához adja meg a megfelelő `--scope` argumentumot a szerepkör hozzárendeléséhez. Ez lehetővé teszi a rendszergazdák számára, hogy korlátozzák a fürt regisztrációját az előfizetés vagy az erőforráscsoport hatóköre számára. A különböző paraméterek a következő forgatókönyveket támogatják `--scope` :
 
 | Erőforrás  | `scope` argumentum| Hatás |
 | ------------- | ------------- | ------------- |
-| Előfizetés | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | Az egyszerű szolgáltatás minden olyan fürtöt regisztrálhat egy meglévő erőforráscsoporthoz, amely a megadott előfizetésben van. |
+| Előfizetés | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | Az egyszerű szolgáltatás minden olyan erőforráscsoport számára regisztrálhatja a fürtöt, amely az előfizetés alatt található. |
 | Erőforráscsoport | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | Az egyszerű szolgáltatásnév __csak__ a fürtöket regisztrálja az erőforráscsoporthoz `myGroup` . |
 
 ```console

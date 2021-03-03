@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 02/12/2021
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e02cb23188b552b1779d184a2384835f4195762
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 8bee6a007004253106703ae2c19b940bf3de5d44
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365378"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649291"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Mi az vendég hozzáférés az Azure Active Directory B2B-ben?
 
@@ -85,7 +85,7 @@ Az Azure AD olyan külső identitás-szolgáltatókat támogat, mint például a
 ![Az Identity Providers oldalt ábrázoló képernyőfelvétel](media/what-is-b2b/identity-providers.png)
 
 
-## <a name="create-a-self-service-sign-up-user-flow-preview"></a>Önkiszolgáló bejelentkezési felhasználói folyamat létrehozása (előzetes verzió)
+## <a name="create-a-self-service-sign-up-user-flow"></a>Önkiszolgáló bejelentkezési felhasználói folyamat létrehozása
 
 Az önkiszolgáló regisztrációs felhasználói folyamattal létrehozhat egy regisztrációs élményt azon külső felhasználók számára, akik szeretnének hozzáférni az alkalmazásokhoz. A regisztrálási folyamat részeként különböző közösségi vagy vállalati identitás-szolgáltatók beállításait is megadhatja, és adatokat gyűjthet a felhasználóról. Ismerje meg az [önkiszolgáló regisztrációt és a beállítását](self-service-sign-up-overview.md).
 

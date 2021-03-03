@@ -11,16 +11,16 @@ author: knicholasa
 manager: martinco
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8ed99338a10eb226823c4bd4857d812038ff632
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 039dd8b6fa0769b6798630e666bfbf6de48ccf14
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101094514"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649240"
 ---
 # <a name="browser-support-of-fido2-passwordless-authentication"></a>A FIDO2 jelszavas hitelesítésének böngésző általi támogatása
 
-Azure Active Directory lehetővé teszi, hogy a [FIDO2 biztonsági kulcsait](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless#fido2-security-keys) jelszóval nem rendelkező eszközként lehessen használni. A Microsoft-fiókok FIDO2-hitelesítésének rendelkezésre állása [2018-ben jelent meg](https://techcommunity.microsoft.com/t5/identity-standards-blog/all-about-fido2-ctap2-and-webauthn/ba-p/288910). A közleményben leírtaknak megfelelően a FIDO2 CTAP-specifikáció bizonyos opcionális funkcióit és bővítményeit úgy kell megvalósítani, hogy támogassák a biztonságos hitelesítést a Microsoft-és Azure Active Directory-fiókokkal. Az alábbi ábra azt mutatja, hogy mely böngészők és operációsrendszer-kombinációk támogatják a jelszó-alapú hitelesítés használatát a Azure Active Directory FIDO2-hitelesítési kulcsaival.
+Azure Active Directory lehetővé teszi, hogy a [FIDO2 biztonsági kulcsait](./concept-authentication-passwordless.md#fido2-security-keys) jelszóval nem rendelkező eszközként lehessen használni. A Microsoft-fiókok FIDO2-hitelesítésének rendelkezésre állása [2018-ben jelent meg](https://techcommunity.microsoft.com/t5/identity-standards-blog/all-about-fido2-ctap2-and-webauthn/ba-p/288910). A közleményben leírtaknak megfelelően a FIDO2 CTAP-specifikáció bizonyos opcionális funkcióit és bővítményeit úgy kell megvalósítani, hogy támogassák a biztonságos hitelesítést a Microsofttal és Azure Active Directory fiókokkal. Az alábbi ábra azt mutatja, hogy mely böngészők és operációsrendszer-kombinációk támogatják a jelszó-alapú hitelesítés használatát a Azure Active Directory FIDO2-hitelesítési kulcsaival.
 
 ## <a name="supported-browsers"></a>Támogatott böngészők
 
@@ -35,7 +35,7 @@ Ez a táblázat a Azure Active Directory (Azure AD) és a Microsoft-fiókok (MSA
 
 ## <a name="unsupported-browsers"></a>Nem támogatott böngészők
 
-A következő operációsrendszer-és böngésző-kombinációk nem támogatottak, de a rendszer megvizsgálja a jövőbeli támogatást és tesztelést. Ha szeretné megtekinteni a további operációs rendszer és a böngésző támogatását, küldjön visszajelzést az oldal alján található termék-visszajelzési eszköz használatával.
+A következő operációsrendszer-és böngésző-kombinációk nem támogatottak, de a rendszer megvizsgálja a jövőbeli támogatást és tesztelést. Ha más operációs rendszerre és böngészőre vonatkozó támogatást szeretne látni, küldjön visszajelzést az oldal alján található termék-visszajelzési eszköz használatával.
 
 | Operációs rendszer | Böngésző |
 | ---- | ---- |
@@ -44,18 +44,21 @@ A következő operációsrendszer-és böngésző-kombinációk nem támogatotta
 | Android | Chrome |
 | ChromeOS | Chrome |
 
-## <a name="operating-system-versions-tested"></a>Tesztelt operációsrendszer-verziók
+## <a name="minimum-browser-version"></a>A böngésző legalacsonyabb verziója
 
-A fenti táblázatban szereplő információk az operációs rendszer következő verzióira lettek tesztelve.
+A böngésző minimális verziójára vonatkozó követelmények a következők: 
 
-| Operációs rendszer | Legújabb tesztelt verzió |
-| --- | --- |
-| Windows | Windows 10 20H2 |
-| macOS | OS X 11 Big Sur |
-| Linux | Fedora 32 munkaállomás |
+| Böngésző | Minimális verzió |
+| ---- | ---- |
+| Chrome | 76 |
+| Edge | Windows 10 1903-es verzió<sup>1</sup> |
+| Firefox | Chrome |
+| ChromeOS | 66 |
+
+<sup>1</sup> Az új Chromium-alapú Microsoft Edge-támogatás Fido2 összes verziója. A Microsoft Edge örökölt támogatása a 1903-es verzióban lett hozzáadva.
 
 ## <a name="next-steps"></a>Következő lépések
-[Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése (előzetes verzió)](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-security-key)
+[Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése (előzetes verzió)](./howto-authentication-passwordless-security-key.md)
 
 <!--Image references-->
 [y]: ./media/fido2-compatibility/yes.png

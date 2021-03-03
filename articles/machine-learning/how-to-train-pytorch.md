@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 01/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 962054943a68aa61ac681de97eeebc10fe3f2b0a
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: cb556466a5a76cbb9447538e98a5a2385f7b5614
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216631"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661001"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>PyTorch-modellek betanítása méretekben Azure Machine Learning
 
@@ -285,35 +285,90 @@ Az elosztott PyTorch az Azure ML-Horovod való futtatásával kapcsolatos teljes
 ### <a name="distributeddataparallel"></a>DistributedDataParallel
 Ha a PyTorch beépített [DistributedDataParallel](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html) modulját használja, amely a betanítási kódban a **Torch. Distributed** Package használatával készült, akkor az ELOSZTOTT feladatot az Azure ml-n keresztül is elindíthatja.
 
-Elosztott PyTorch-feladatok DistributedDataParallel való futtatásához adja meg a [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) a `distributed_job_config` ScriptRunConfig konstruktor paraméteréhez. A NCCL-háttér a Torch. Distributed paranccsal való használatához határozza meg `communication_backend='Nccl'` a PyTorchConfiguration. Az alábbi kód egy 2 csomópontos elosztott feladatot fog konfigurálni. A NCCL háttérrendszer az ajánlott háttérrendszer a PyTorch elosztott GPU-képzésekhez.
+Az Azure ML-ben elosztott PyTorch-feladatok elindításához két lehetőség közül választhat:
+1. Folyamaton belüli indítás: adja meg a futtatni kívánt munkavégző folyamatok teljes számát, és az Azure ML az egyes folyamatok indítását fogja kezelni.
+2. Felhasználónkénti indítás a következővel `torch.distributed.launch` : adja `torch.distributed.launch` meg az egyes csomópontokon futtatni kívánt parancsot. A Torch Launch segédprogram kezeli a munkavégző folyamatok indítását az egyes csomópontokon.
 
-Az PyTorchConfiguration-n keresztül konfigurált elosztott PyTorch-feladatok esetében az Azure ML az alábbi környezeti változókat fogja beállítani a számítási cél csomópontjain:
+Ezek az indítási lehetőségek nem rendelkeznek alapvető különbségekkel; nagyrészt a felhasználó preferenciájának vagy a vanília-PyTorch (például villám vagy átfedő arc) épülő keretrendszerek/könyvtárak konvenciói.
 
-* `AZ_BATCHAI_PYTORCH_INIT_METHOD`: A Process csoport megosztott fájlrendszerének inicializálási URL-címe
-* `AZ_BATCHAI_TASK_INDEX`: a munkavégző folyamat globális rangsora
+#### <a name="per-process-launch"></a>Folyamaton belüli indítás
+Ha ezt a lehetőséget szeretné használni az elosztott PyTorch-feladatok futtatásához, tegye a következőket:
+1. Adja meg a betanítási szkriptet és argumentumokat
+2. Hozzon létre egy [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) , és határozza meg a, valamint a `process_count` `node_count` . Az `process_count` megfelel a feladatokhoz futtatni kívánt folyamatok teljes számának. Ez általában egyenlő a GPU-k számával, szorozva a csomópontok számával. Ha `process_count` nincs megadva, az Azure ml alapértelmezés szerint egy folyamatot indít el egy csomóponton.
 
-Ezeket a környezeti változókat a betanítási parancsfájl megfelelő argumentumai között adhatja meg a `arguments` ScriptRunConfig paraméterének használatával.
+Az Azure ML a következő környezeti változókat fogja beállítani:
+* `MASTER_ADDR` – Az a számítógép IP-címe, amely a 0. rangsorban fogja üzemeltetni a folyamatot.
+* `MASTER_PORT` – A gép egy ingyenes portja, amely a 0. rangsorban fogja üzemeltetni a folyamatot.
+* `NODE_RANK` – A csomópont rangja a többcsomópontos képzéshez. A lehetséges értékek a következők: 0 – (csomópontok száma összesen – 1).
+* `WORLD_SIZE` – A folyamatok teljes száma. Ennek egyenlőnek kell lennie az elosztott képzéshez használt összes eszköz (GPU) számával.
+* `RANK` – Az aktuális folyamat (globális) rangsora. A lehetséges értékek: 0 – (globális méret – 1).
+* `LOCAL_RANK` – A folyamat helyi (relatív) rangsora a csomóponton belül. A lehetséges értékek a következők: 0 – (az 1. csomóponton futó folyamatok száma).
+
+Mivel a szükséges környezeti változók az Azure ML-ben lesznek beállítva, [az alapértelmezett környezeti változó inicializálási módszerével](https://pytorch.org/docs/stable/distributed.html#environment-variable-initialization) inicializálhatja a folyamat csoportját a betanítási kódban.
+
+A következő kódrészlet egy 2 csomópontos, 2 folyamat/csomópontos PyTorch-feladatot konfigurál:
+```python
+from azureml.core import ScriptRunConfig
+from azureml.core.runconfig import PyTorchConfiguration
+
+curated_env_name = 'AzureML-PyTorch-1.6-GPU'
+pytorch_env = Environment.get(workspace=ws, name=curated_env_name)
+distr_config = PyTorchConfiguration(process_count=4, node_count=2)
+
+src = ScriptRunConfig(
+  source_directory='./src',
+  script='train.py',
+  arguments=['--epochs', 25],
+  compute_target=compute_target,
+  environment=pytorch_env,
+  distributed_job_config=distr_config,
+)
+
+run = Experiment(ws, 'experiment_name').submit(src)
+```
+
+> [!WARNING]
+> Ha ezt a lehetőséget szeretné használni a többfolyamatos felhasználónkénti képzéshez, az Azure ML Python SDK >= 1.22.0-t kell használnia, ahogy `process_count` az a 1.22.0-ben jelent meg.
+
+> [!TIP]
+> Ha a betanítási szkript olyan információkat ad át, mint a helyi rangsor vagy a rangsor parancsfájl-argumentumként, akkor a környezeti változóra hivatkozhat a következő argumentumokban: `arguments=['--epochs', 50, '--local_rank', $LOCAL_RANK]` .
+
+#### <a name="per-node-launch-with-torchdistributedlaunch"></a>Csomóponton belüli indítás a `torch.distributed.launch`
+A PyTorch a [Torch. Distributed. Launch](https://pytorch.org/docs/stable/distributed.html#launch-utility) segédprogramot nyújtja, amely lehetővé teszi, hogy a felhasználók több folyamat indítását is elindítsák egy csomóponton. A `torch.distributed.launch` modul minden egyes csomóponton több betanítási folyamatot indít el.
+
+A következő lépések bemutatják, hogyan konfigurálhat egy PyTorch-feladatot az Azure ML-ben egy csomópont-indítóval, amely a következő parancs futtatásával egyenértékűnek fogja elérni:
+
+```shell
+python -m torch.distributed.launch --nproc_per_node <num processes per node> \
+  --nnodes <num nodes> --node_rank $NODE_RANK --master_addr $MASTER_ADDR \
+  --master_port $MASTER_PORT --use_env \
+  <your training script> <your script arguments>
+```
+
+1. Adja `torch.distributed.launch` meg a parancsot a `command` konstruktor paraméteréhez `ScriptRunConfig` . Az Azure ML a betanítási fürt minden csomópontján futtatja ezt a parancsot. `--nproc_per_node` kisebbnek vagy egyenlőnek kell lennie az egyes csomópontokon elérhető GPU-k számával. `MASTER_ADDR`, `MASTER_PORT` és az `NODE_RANK` összes Azure ml-vel van beállítva, így a parancsban egyszerűen hivatkozhat a környezeti változókra. Az Azure ML `MASTER_PORT` -re 6105-re van szüksége, de ha kívánja, más értéket is megadhat a `--master_port` parancs argumentumához `torch.distributed.launch` . (A rendszerindító segédprogram alaphelyzetbe állítja a környezeti változókat.)
+2. Hozzon létre egy `PyTorchConfiguration` -t, és határozza meg a `node_count` . Nem kell beállítania, hogy az `process_count` Azure ml alapértelmezetten egy folyamat indítását hajtja végre egy csomóponton, amely a megadott indítási parancsot fogja futtatni.
 
 ```python
 from azureml.core import ScriptRunConfig
 from azureml.core.runconfig import PyTorchConfiguration
 
-args = ['--dist-backend', 'nccl',
-        '--dist-url', '$AZ_BATCHAI_PYTORCH_INIT_METHOD',
-        '--rank', '$AZ_BATCHAI_TASK_INDEX',
-        '--world-size', 2]
+curated_env_name = 'AzureML-PyTorch-1.6-GPU'
+pytorch_env = Environment.get(workspace=ws, name=curated_env_name)
+distr_config = PyTorchConfiguration(node_count=2)
+launch_cmd = "python -m torch.distributed.launch --nproc_per_node 2 --nnodes 2 --node_rank $NODE_RANK --master_addr $MASTER_ADDR --master_port $MASTER_PORT --use_env train.py --epochs 50".split()
 
-src = ScriptRunConfig(source_directory=project_folder,
-                      script='pytorch_mnist.py',
-                      arguments=args,
-                      compute_target=compute_target,
-                      environment=pytorch_env,
-                      distributed_job_config=PyTorchConfiguration(communication_backend='Nccl', node_count=2))
+src = ScriptRunConfig(
+  source_directory='./src',
+  command=launch_cmd,
+  compute_target=compute_target,
+  environment=pytorch_env,
+  distributed_job_config=distr_config,
+)
+
+run = Experiment(ws, 'experiment_name').submit(src)
 ```
 
-Ha inkább a gloo-hátteret szeretné használni az elosztott képzéshez, válassza a `communication_backend='Gloo'` helyet. Az elosztott CPU-képzések esetében ajánlott a gloo háttérrendszer használata.
-
-Az elosztott PyTorch Azure ML-re való futtatásával kapcsolatos teljes oktatóanyagért tekintse meg az [elosztott PyTorch a DistributedDataParallel](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/pytorch/distributed-pytorch-with-nccl-gloo)-mel című témakört.
+Az elosztott PyTorch Azure ML-re való futtatásával kapcsolatos teljes oktatóanyagért tekintse meg az [elosztott PyTorch a DistributedDataParallel](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/pytorch/distributed-pytorch-with-distributeddataparallel)-mel című témakört.
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 

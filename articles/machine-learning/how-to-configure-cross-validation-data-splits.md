@@ -10,13 +10,13 @@ ms.custom: how-to, automl
 ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
-ms.date: 06/16/2020
-ms.openlocfilehash: a781900534156e455c125dffe3b1334820fdf4d5
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.date: 02/23/2021
+ms.openlocfilehash: add84c2cb53a362fc78fc50a6df13b4976e3868d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599056"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661035"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Adatfelosztások és keresztvalidálás konfigurálása az automatizált gépi tanulásban
 
@@ -26,7 +26,7 @@ Ha Azure Machine Learning, ha az automatizált ML-t több ML modell kiépítés�
 
 Az automatizált ML-kísérletek automatikusan végzik a modell érvényesítését. Az alábbi szakaszok azt ismertetik, hogyan lehet tovább testreszabni az érvényesítési beállításokat a [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)-val. 
 
-Az alacsony kódú vagy a kód nélküli felhasználói élményért lásd: [az automatizált gépi tanulási kísérletek létrehozása Azure Machine learning Studióban](how-to-use-automated-ml-for-ml-models.md). 
+Az alacsony kódú vagy a kód nélküli felhasználói élményért lásd: [az automatizált gépi tanulási kísérletek létrehozása Azure Machine learning Studióban](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment). 
 
 > [!NOTE]
 > A Studio jelenleg támogatja a betanítási és érvényesítési adatfelosztást, valamint a több ellenőrzési lehetőséget is, de nem támogatja az egyes adatfájlok megadását az érvényesítési csoport számára. 
@@ -73,6 +73,9 @@ Ha explicit módon nem ad meg `validation_data` vagy `n_cross_validation` param�
 
 Ebben az esetben akár egyetlen adatfájllal is elindítható, és kioszthatja azokat a betanítási és érvényesítési adatkészletekben, vagy megadhat egy külön adatfájlt az érvényesítési készlethez. Mindkét `validation_data` esetben az objektumban lévő paraméter `AutoMLConfig` hozzárendeli az érvényesítési csoportként használandó összes adattípust. Ez a paraméter csak [Azure Machine learning adatkészlet](how-to-create-register-datasets.md) vagy pandák dataframe formájában fogad adatkészleteket.   
 
+> [!NOTE]
+> Az `validation_size` előrejelzési helyzetekben nem támogatott a paraméter.
+
 A következő mintakód kifejezetten meghatározza, hogy a megadott adatmennyiség mely részét `dataset` használja a betanításhoz és az érvényesítéshez.
 
 ```python
@@ -93,7 +96,12 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 
 ## <a name="provide-validation-set-size"></a>Ellenőrzési készlet méretének megadása
 
-Ebben az esetben csak egyetlen adatkészlet van megadva a kísérlethez. Ez a paraméter nincs `validation_data` megadva,  és a megadott adatkészlet hozzá van rendelve a `training_data` paraméterhez.  Az `AutoMLConfig` objektumban beállíthatja, hogy a `validation_size` paraméter a betanítási adatai egy részét kitartsa az érvényesítéshez. Ez azt jelenti, hogy az érvényesítési készletet a megadott kezdeti AutoML osztja fel a rendszer `training_data` . Ennek az értéknek 0,0 és 1,0 közöttinek kell lennie (például a 0,2 azt jelenti, hogy az adatellenőrzések 20%-át az érvényesítési adatként tároljuk).
+Ebben az esetben csak egyetlen adatkészlet van megadva a kísérlethez. Ez a paraméter nincs `validation_data` megadva,  és a megadott adatkészlet hozzá van rendelve a `training_data` paraméterhez.  
+
+Az `AutoMLConfig` objektumban beállíthatja, hogy a `validation_size` paraméter a betanítási adatai egy részét kitartsa az érvényesítéshez. Ez azt jelenti, hogy az érvényesítési készletet a kezdeti megadott értéktől kezdve a rendszer automatizált ML-vel osztja el `training_data` . Ennek az értéknek 0,0 és 1,0 közöttinek kell lennie (például a 0,2 azt jelenti, hogy az adatellenőrzések 20%-át az érvényesítési adatként tároljuk).
+
+> [!NOTE]
+> Az `validation_size` előrejelzési helyzetekben nem támogatott a paraméter. 
 
 Tekintse meg a következő kódrészletet:
 
@@ -111,10 +119,13 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
                             )
 ```
 
-## <a name="set-the-number-of-cross-validations"></a>A Kereszttanúsítványok számának beállítása
+## <a name="k-fold-cross-validation"></a>K-szeres keresztek ellenőrzése
 
-Több ellenőrzés végrehajtásához adja meg a `n_cross_validations` paramétert, és állítsa egy értékre. Ezzel a paraméterrel állítható be, hogy hány több műveletet hajtson végre a rendszer az azonos számú hajtogatás alapján.
+A k-szeres kereszt-ellenőrzés végrehajtásához adja meg a `n_cross_validations` paramétert, és állítsa egy értékre. Ezzel a paraméterrel állítható be, hogy hány több műveletet hajtson végre a rendszer az azonos számú hajtogatás alapján.
 
+> [!NOTE]
+> A `n_cross_validations` paraméter nem támogatott a mélyreható neurális hálózatokat használó besorolási helyzetekben.
+ 
 A következő kódban öt összehajtogatható a kereszt-ellenőrzés. Ebből kifolyólag öt különböző képzés, az egyes képzések 4/5-es, valamint minden egyes, a 1/5-es és az összes érvényesítési Holdout az egyes időpontokban.
 
 Ennek eredményeképpen a metrikák kiszámítása az öt ellenőrzési metrika átlagával történik.
@@ -129,6 +140,31 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
                              primary_metric = 'AUC_weighted',
                              training_data = dataset,
                              n_cross_validations = 5
+                             label_column_name = 'Class'
+                            )
+```
+## <a name="monte-carlo-cross-validation"></a>Monte Carlo – kereszt-ellenőrzés
+
+A Monte Carlo kereszt-ellenőrzésének végrehajtásához adja `validation_size` meg a és a paramétereket is az `n_cross_validations` `AutoMLConfig` objektumban. 
+
+A Monte Carlo Cross Validation esetében az automatikus ML a paraméter által az érvényesítéshez megadott betanítási adatok részét képezi `validation_size` , majd kiosztja a többi adat betanítását. Ezt a folyamatot a paraméterben megadott érték alapján megismétli a rendszer `n_cross_validations` , amely új képzést és érvényesítést generál, véletlenszerűen, minden alkalommal.
+
+> [!NOTE]
+> Az előrejelzési forgatókönyvek esetében nem támogatott a Monte Carlo kereszt-érvényesítése.
+
+A követési kód határozza meg, 7 kiszorul az átellenőrzéshez, és a betanítási adatmennyiség 20%-át kell használni az ellenőrzéshez. Ezért 7 különböző tanítás, az egyes képzések az adatmennyiség 80%-át használják, és minden egyes ellenőrzés az adatmennyiség 20%-át használja minden alkalommal egy másik holdout.
+
+```python
+data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"
+
+dataset = Dataset.Tabular.from_delimited_files(data)
+
+automl_config = AutoMLConfig(compute_target = aml_remote_compute,
+                             task = 'classification',
+                             primary_metric = 'AUC_weighted',
+                             training_data = dataset,
+                             n_cross_validations = 7
+                             validation_size = 0.2,
                              label_column_name = 'Class'
                             )
 ```
@@ -163,7 +199,7 @@ Ha a k-fold vagy a Monte Carlo kereszt-ellenőrzés van használatban, a metrik�
 
 Ha egy egyéni ellenőrző készlet vagy egy automatikusan kiválasztott ellenőrzési készlet van használatban, a modell értékelési mérőszámai csak az adott ellenőrzési készletből vannak kiszámítva, nem a betanítási adatokból.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A kiegyensúlyozatlan és a túlterheléses adatkezelés megakadályozása](concept-manage-ml-pitfalls.md).
 * [Oktatóanyag: automatikus gépi tanulás használata a taxi viteldíjak előrejelzéséhez – az Adatfelosztás szakasz](tutorial-auto-train-models.md#split-the-data-into-train-and-test-sets).

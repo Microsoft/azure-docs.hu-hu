@@ -8,12 +8,12 @@ ms.author: dademath
 ms.date: 07/28/2020
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: 3bf0831084b9dd6f16d8208def87033fc0be2900
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6790335e5aa63f515cd125f31a8ccd7877132c10
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100645441"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661332"
 ---
 ## <a name="download-code"></a>Kód letöltése
 
@@ -23,8 +23,8 @@ A rövid útmutatóhoz tartozó véglegesített kód megkeresése a [githubon](h
 
 - Aktív előfizetéssel rendelkező Azure-fiók. Részletekért tekintse meg a [fiók ingyenes létrehozását](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)ismertető témakört.
 - [Visual Studio Code](https://code.visualstudio.com/) az egyik [támogatott platformon](https://code.visualstudio.com/docs/supporting/requirements#_platforms).
-- [Node.js](https://nodejs.org/), aktív LTS-és karbantartási LTS-verziók (10.14.1 ajánlott). A `node --version` parancs használatával vizsgálja meg a verziót. 
-- A Visual Code [Azure Functions-bővítménye](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions). 
+- [Node.js](https://nodejs.org/), aktív LTS-és karbantartási LTS-verziók (10.14.1 ajánlott). A `node --version` parancs használatával vizsgálja meg a verziót.
+- A Visual Code [Azure Functions-bővítménye](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions).
 - Aktív kommunikációs szolgáltatások erőforrás-és kapcsolati karakterlánca. [Hozzon létre egy kommunikációs szolgáltatások erőforrást](../../quickstarts/create-communication-resource.md).
 
 ## <a name="overview"></a>Áttekintés
@@ -76,7 +76,7 @@ Most folytatjuk az Azure kommunikációs szolgáltatások kódtárainak telepít
 
 A `Identity` könyvtárat a létrehozásához használjuk `User Access Tokens` .
 
-A `npm install` paranccsal telepítheti az Azure Communication Services Felügyeleti ügyféloldali kódtárat a javascripthez.
+A `npm install` paranccsal telepítheti az Azure kommunikációs szolgáltatások Identity ügyféloldali függvénytárát a javascripthez.
 
 ```console
 
@@ -102,7 +102,7 @@ A kapcsolatok karakterláncának beolvasásával kapcsolatos további informáci
 const connectionString = 'INSERT YOUR RESOURCE CONNECTION STRING'
 ```
 
-Ezután módosítjuk az eredeti függvényt a létrehozáshoz `User Access Tokens` . 
+Ezután módosítjuk az eredeti függvényt a létrehozáshoz `User Access Tokens` .
 
 `User Access Tokens` létrehozásához hozzon létre egy felhasználót a `createUser` metódusból. A felhasználó létrehozása után a `issueToken` metódus használatával létrehozhat egy jogkivonatot az adott felhasználó számára, amely az Azure-függvényt adja vissza.
 

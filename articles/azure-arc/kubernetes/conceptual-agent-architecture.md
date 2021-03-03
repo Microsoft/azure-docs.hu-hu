@@ -2,18 +2,18 @@
 title: Azure arc-kompatibilis Kubernetes-ügynök architektúrája
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/17/2021
+ms.date: 02/19/2021
 ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
 description: Ez a cikk az Azure arc-kompatibilis Kubernetes-ügynökök építészeti áttekintését tartalmazza
 keywords: Kubernetes, arc, Azure, tárolók
-ms.openlocfilehash: 287ffdd40dc9ffdb91abb58b305d8b35b0bc3674
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: b4fb836cc7782f4026a28f4af0ca372c76486a31
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652564"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650532"
 ---
 # <a name="azure-arc-enabled-kubernetes-agent-architecture"></a>Azure arc-kompatibilis Kubernetes-ügynök architektúrája
 
@@ -42,7 +42,7 @@ A legtöbb helyszíni adatközpont szigorú hálózati szabályokat kényszerít
 
         | Ügynök | Leírás |
         | ----- | ----------- |
-        | `deployment.apps/clusteridentityoperator` | Az Azure arc-kompatibilis Kubernetes jelenleg csak a [rendszerhez rendelt identitásokat](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)támogatja. `clusteridentityoperator` elindítja az első kimenő kommunikációt. Ez az első kommunikáció lekéri a más ügynökök által az Azure-nal folytatott kommunikációhoz használt Managed Service Identity (MSI) tanúsítványt. |
+        | `deployment.apps/clusteridentityoperator` | Az Azure arc-kompatibilis Kubernetes jelenleg csak a [rendszerhez rendelt identitásokat](../../active-directory/managed-identities-azure-resources/overview.md)támogatja. `clusteridentityoperator` elindítja az első kimenő kommunikációt. Ez az első kommunikáció lekéri a más ügynökök által az Azure-nal folytatott kommunikációhoz használt Managed Service Identity (MSI) tanúsítványt. |
         | `deployment.apps/config-agent` | A fürtön alkalmazott verziókövetés konfigurációs erőforrásainak figyeli a csatlakoztatott fürtöt. Frissíti a megfelelőségi állapotot. |
         | `deployment.apps/controller-manager` | Az Azure arc-összetevők közötti interakciókat kezelő operátorok. |    
         | `deployment.apps/metrics-agent` | Más ív-ügynökök metrikáit gyűjti az optimális teljesítmény ellenőrzéséhez. |
@@ -85,7 +85,7 @@ A legtöbb helyszíni adatközpont szigorú hálózati szabályokat kényszerít
 
 ## <a name="understand-connectivity-modes"></a>A csatlakozási módok ismertetése
 
-| Kapcsolati mód | Description |
+| Kapcsolati mód | Leírás |
 | ----------------- | ----------- |
 | Teljesen csatlakoztatva | Az ügynökök csak kis késleltetéssel kommunikálhatnak az Azure-ban a GitOps-konfigurációk propagálásával, Azure Policy és forgalomirányító házirendek betartatásával, valamint a számítási feladatok metrikáinak és naplófájljainak Azure Monitor való összegyűjtésével. |
 | Félig csatlakoztatott | A által lekért MSI-tanúsítvány `clusteridentityoperator` legfeljebb 90 napig érvényes a tanúsítvány lejárata előtt. A lejárat után az Azure arc-kompatibilis Kubernetes-erőforrás nem működik. Az Azure arc összes funkciójának újraaktiválásához a fürtön törölje és hozza létre újból az Azure arc-kompatibilis Kubernetes-erőforrást és-ügynököket. A 90 nap során legalább 30 naponta egyszer össze kell kapcsolni a fürtöt. |
@@ -93,5 +93,5 @@ A legtöbb helyszíni adatközpont szigorú hálózati szabályokat kényszerít
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Fürt összekötése az Azure-ív használatával](./connect-cluster.md)
+* [Fürt összekötése az Azure-ív használatával](./quickstart-connect-cluster.md)
 * [A konfigurációk fogalmi áttekintése](./conceptual-configurations.md)

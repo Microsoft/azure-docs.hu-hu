@@ -1,26 +1,26 @@
 ---
 title: Ismert problémák és hibaelhárítás a hibrid FIDO2 biztonsági kulcsaihoz – Azure Active Directory
-description: Ismerje meg a Azure Active Directory (előzetes verzió) használatával megjelenő, jelszó nélküli hibrid FIDO2 biztonsági kulcsok hibaelhárításával kapcsolatos ismert problémákat és módszereket.
+description: Ismerkedjen meg néhány ismert problémával, valamint a jelszó nélküli hibrid FIDO2 biztonsági kulcsok a Azure Active Directory használatával történő hibaelhárításának módszereivel.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 08/19/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea034974e85febcffeb2494d87b666a39e524eb1
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 435b27255ce58a3541d6b0d3a76bdf4080aa3962
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743275"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648780"
 ---
-# <a name="troubleshooting-for-hybrid-deployments-of-fido2-security-keys-in-azure-ad-preview"></a>Hibaelhárítás a FIDO2 biztonsági kulcsok hibrid üzembe helyezéséhez az Azure AD-ben (előzetes verzió)
+# <a name="troubleshooting-for-hybrid-deployments-of-fido2-security-keys-in-azure-ad"></a>Hibaelhárítás a FIDO2 biztonsági kulcsainak hibrid üzembe helyezéséhez az Azure AD-ben 
 
-Ez a cikk a hibrid Azure AD-hez csatlakoztatott eszközökre és a helyszíni erőforrásokhoz való jelszó nélküli bejelentkezésre vonatkozó gyakori kérdéseket ismerteti. Ezzel a jelszóval nem rendelkező funkcióval engedélyezheti az Azure AD-hitelesítést a Windows 10-es eszközökön a hibrid Azure AD-hez csatlakoztatott eszközökhöz a FIDO2 biztonsági kulcsainak használatával. A felhasználók modern hitelesítő adatokkal (például FIDO2 kulcsokkal) jelentkezhetnek be a Windowsba, és a hagyományos Active Directory tartományi szolgáltatások (AD DS) alapuló erőforrásokhoz hozzáférhetnek a helyszíni erőforrásaik zökkenőmentes egyszeri bejelentkezési (SSO) élményével.
+Ez a cikk a hibrid Azure AD-hez csatlakoztatott eszközökre és a helyszíni erőforrásokhoz való jelszó nélküli bejelentkezésre vonatkozó gyakori kérdéseket ismerteti. Ezzel a jelszóval nem rendelkező funkcióval engedélyezheti az Azure AD-hitelesítést a Windows 10-es eszközökön a hibrid Azure AD-hez csatlakoztatott eszközökhöz a FIDO2 biztonsági kulcsainak használatával. A felhasználók modern hitelesítő adatokkal (például FIDO2 kulcsokkal) jelentkezhetnek be a Windowsba, és a hagyományos Active Directory Domain Services (AD DS) alapuló erőforrásokhoz hozzáférhetnek a helyszíni erőforrásaik zökkenőmentes egyszeri bejelentkezési (SSO) élményével.
 
 A hibrid környezetekben a következő forgatókönyvek támogatottak:
 
@@ -29,12 +29,9 @@ A hibrid környezetekben a következő forgatókönyvek támogatottak:
 
 A FIDO2 biztonsági kulcsainak és a helyszíni erőforrások hibrid elérésének megkezdéséhez tekintse meg a következő cikkeket:
 
-* [Jelszóval nem rendelkező biztonsági kulcsok](howto-authentication-passwordless-security-key.md)
+* [Jelszó nélküli biztonsági kulcsok](howto-authentication-passwordless-security-key.md)
 * [Jelszó nélküli Windows 10](howto-authentication-passwordless-security-key-windows.md)
-* [Jelszóval nem rendelkező helyszíni](howto-authentication-passwordless-security-key-on-premises.md)
-
-> [!NOTE]
-> A FIDO2 biztonsági kulcsai a Azure Active Directory nyilvános előzetes verziója. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+* [Jelszó nélküli helyszíni](howto-authentication-passwordless-security-key-on-premises.md)
 
 ## <a name="known-issues"></a>Ismert problémák
 
@@ -157,7 +154,7 @@ A tulajdonságok első készlete a helyszíni AD DS környezet objektumaiból sz
 | CloudKeyVersion    | Az Azure AD-objektum *verziószáma* . A fenti *verziónak* meg kell egyeznie. |
 | CloudKeyUpdatedOn  | Az Azure AD-objektum *KeyUpdatedOn* . Meg kell egyeznie a fenti *KeyUpdatedOn* . |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A FIDO2 biztonsági kulcsainak és a helyszíni erőforrások hibrid elérésének megkezdéséhez tekintse meg a következő cikkeket:
 

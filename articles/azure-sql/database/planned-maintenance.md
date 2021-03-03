@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: sstein
-ms.date: 08/25/2020
-ms.openlocfilehash: 3f87f47f652f71a57796d1cacd047b0448b49b7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 1/21/2021
+ms.openlocfilehash: d38ac9731959cf9a23052753b09c9e7819846705
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333035"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101664117"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>Az Azure karbantartási eseményeinek megtervezése Azure SQL Database és az Azure SQL felügyelt példányain
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -31,7 +31,7 @@ Az egyes adatbázisok esetében a Azure SQL Database és az Azure SQL felügyelt
 
 ## <a name="what-to-expect-during-a-planned-maintenance-event"></a>Mire számíthat egy tervezett karbantartási esemény során
 
-A karbantartási esemény a karbantartási esemény elején lévő elsődleges és másodlagos replikák csillagképtől függően egy vagy több feladatátvételt is képes létrehozni. Átlagosan 1,7 feladatátvétel történik egy tervezett karbantartási eseménynél. Az újrakonfigurálások/feladatátvételek általában 30 másodpercen belül befejeződik. Az átlag 8 másodperc. Ha már csatlakoztatva van, az alkalmazásnak újra kapcsolódnia kell az adatbázis új elsődleges replikához. Ha egy új kapcsolatra akkor kerül sor, amikor az adatbázis újrakonfigurálást végez az új elsődleges replika online állapotba lépését megelőzően, akkor a 40613-as hibaüzenet jelenik meg (az adatbázis nem érhető el): a (z) *{servername} kiszolgáló {databasename} adatbázisa jelenleg nem érhető el. Próbálja megismételni a kapcsolatokat később. "* Ha az adatbázis hosszú ideig futó lekérdezéssel rendelkezik, akkor a lekérdezés az újrakonfigurálás során megszakad, és újra kell indítani.
+A karbantartási esemény a karbantartási esemény elején lévő elsődleges és másodlagos replikák csillagképtől függően egy vagy több feladatátvételt is képes létrehozni. Átlagosan 1,7 feladatátvétel történik egy tervezett karbantartási eseménynél. Az újrakonfigurálások/feladatátvételek általában 30 másodpercen belül befejeződik. Az átlag nyolc másodperc. Ha már csatlakoztatva van, az alkalmazásnak újra kapcsolódnia kell az adatbázis új elsődleges replikához. Ha egy új kapcsolatra akkor kerül sor, amikor az adatbázis újrakonfigurálást végez az új elsődleges replika online állapotba lépését megelőzően, akkor a 40613-as hibaüzenet jelenik meg (az adatbázis nem érhető el): a (z) *{servername} kiszolgáló {databasename} adatbázisa jelenleg nem érhető el. Próbálja megismételni a kapcsolatokat később. "* Ha az adatbázis hosszú ideig futó lekérdezéssel rendelkezik, akkor a lekérdezés az újrakonfigurálás során megszakad, és újra kell indítani.
 
 ## <a name="how-to-simulate-a-planned-maintenance-event"></a>Tervezett karbantartási esemény szimulálása
 
@@ -45,7 +45,12 @@ A felhőalapú adatbázis-szolgáltatáshoz csatlakozó összes ügyfél-éles a
 
 Ha az adatbázis bejelentkezési hibákat észlel, tekintse meg az aktuális állapot [Azure Portal](https://portal.azure.com) [Resource Health](../../service-health/resource-health-overview.md#get-started) ablakát. Az állapot előzményei szakasz az egyes események állásidői okát tartalmazza (ha elérhető).
 
+## <a name="maintenance-window-feature"></a>Karbantartási időszak funkció
+
+A karbantartási időszak funkció lehetővé teszi a kiszámítható karbantartási időszakos ütemtervek konfigurálását a jogosult Azure SQL-adatbázisok és SQL-felügyelt példányok esetében. További információért lásd a [karbantartási](maintenance-window.md) időszakot.
+
 ## <a name="next-steps"></a>Következő lépések
 
 - További információ a Azure SQL Database és az Azure SQL felügyelt példányának [Resource Healthéről](resource-health-to-troubleshoot-connectivity.md) .
 - Az újrapróbálkozási logikával kapcsolatos további információkért lásd az [átmeneti hibákra vonatkozó újrapróbálkozási logikát](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors).
+- A karbantartási időszakra vonatkozó ütemtervek konfigurálása a [karbantartási](maintenance-window.md) időszak szolgáltatással.

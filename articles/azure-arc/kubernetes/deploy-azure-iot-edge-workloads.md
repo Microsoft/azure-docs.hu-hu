@@ -2,18 +2,18 @@
 title: Azure IoT Edge számítási feladatok üzembe helyezése (előzetes verzió)
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/10/2021
+ms.date: 02/19/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Azure IoT Edge számítási feladatok üzembe helyezése
 keywords: Kubernetes, arc, Azure, K8s, tárolók
-ms.openlocfilehash: f228b79f14ab24281415cd4bd5964fc86a095d3c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c352455b69360df0b26f5aac38fc40ccb30fb9de
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390436"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650413"
 ---
 # <a name="deploy-azure-iot-edge-workloads-preview"></a>Azure IoT Edge számítási feladatok üzembe helyezése (előzetes verzió)
 
@@ -43,7 +43,7 @@ Az alábbi ábra az Azure arc és a Azure IoT Edge kapcsolatát szemlélteti:
   $ kubectl create secret generic dcs --from-file=fully-qualified-path-to-values.yaml --namespace iotedge
   ```
 
-  Azt is megteheti, hogy távolról is beállíthatja a [fürt konfigurációs példáját](./use-gitops-connected-cluster.md).
+  Azt is megteheti, hogy távolról is beállíthatja a [fürt konfigurációs példáját](./tutorial-use-gitops-connected-cluster.md).
 
 ## <a name="connect-a-cluster"></a>Fürt összekötése
 
@@ -57,10 +57,10 @@ A `az` `connectedk8s` Kubernetes-fürtök Azure-beli összekapcsolásához haszn
 
 A [példában szereplő git](https://github.com/veyalla/edgearc) -tárház az IoT Edge Helm diagramra mutat, és az előfeltételek szakaszban létrehozott titkos kulcsra hivatkozik.
 
-Az `az` Azure CLI `k8sconfiguration` bővítmény használatával hozzon létre egy olyan konfigurációt, amely a csatlakoztatott fürtöt a git-tárházhoz csatolja:
+Az `az` Azure CLI `k8s-configuration` bővítmény használatával hozzon létre egy olyan konfigurációt, amely a csatlakoztatott fürtöt a git-tárházhoz csatolja:
 
   ```
-  az k8sconfiguration create --name iotedge --cluster-name AzureArcIotEdge --resource-group AzureArcTest --operator-instance-name iotedge --operator-namespace azure-arc-iot-edge --enable-helm-operator --helm-operator-chart-version 0.6.0 --helm-operator-chart-values "--set helm.versions=v3" --repository-url "git://github.com/veyalla/edgearc.git" --cluster-scoped
+  az k8s-configuration create --name iotedge --cluster-name AzureArcIotEdge --resource-group AzureArcTest --operator-instance-name iotedge --operator-namespace azure-arc-iot-edge --enable-helm-operator --helm-operator-chart-version 0.6.0 --helm-operator-chart-values "--set helm.versions=v3" --repository-url "git://github.com/veyalla/edgearc.git" --cluster-scoped
   ```
 
 Néhány percen belül meg kell jelennie a fürt névterében üzembe helyezett IoT Edge munkaterhelés-moduloknak `iotedge` . 
@@ -72,7 +72,7 @@ Tekintse meg a `SimulatedTemperatureSensor` névtérben található Pod-naplóka
 A konfiguráció eltávolítása a használatával:
 
 ```
-az k8sconfiguration delete -g AzureArcTest --cluster-name AzureArcIotEdge --name iotedge
+az k8s-configuration delete -g AzureArcTest --cluster-name AzureArcIotEdge --name iotedge
 ```
 
 ## <a name="next-steps"></a>Következő lépések

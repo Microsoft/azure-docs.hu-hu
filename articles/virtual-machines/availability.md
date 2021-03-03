@@ -5,13 +5,13 @@ author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 05/10/2019
-ms.openlocfilehash: a0ea9a0871dd57088473999b28553258ff210038
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.date: 02/18/2021
+ms.openlocfilehash: 6601cd31cf6e332bf292cd887b498a92946d8af7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628764"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668299"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Az Azure-beli virtuális gépek rendelkezésreállási beállításai
 
@@ -53,6 +53,10 @@ Az Azure virtuálisgép-méretezési csoportok lehetővé teszik elosztott terhe
 
 A virtuálisgép-méretezési csoportok a tartalék tartományok és a frissítési tartományok igazításával egyszerűbbé teszik a magas rendelkezésre állás kialakítását. A méretezési csoporthoz csak a tartalék tartományok darabszámát kell megadnia. A méretezési csoportok számára elérhető tartalék tartományok száma régiónként eltérő lehet. Lásd: [virtuális gépek rendelkezésre állásának kezelése az Azure-ban](./manage-availability.md).
 
+**Méretezési csoportok előkészítési módjai**
+
+A virtuálisgép-méretezési csoportok összehangolása lehetővé teszi, hogy nagyobb mértékben szabályozható legyen a méretezési csoport által kezelt virtuálisgép-példányok kezelése. A méretezési csoporton engedélyezheti az egységes vagy a rugalmas előkészítési módot. Az egységes összehangolás nagy mennyiségű állapot nélküli, azonos példányokkal rendelkező számítási feladatokra van optimalizálva. A rugalmas előkészítés (előzetes verzió) az azonos vagy több virtuálisgép-típussal rendelkező, magas rendelkezésre állást jelent. További információ ezekről a [hangszerelési módokról](./virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md) és azok engedélyezéséről.
+
 
 ## <a name="availability-sets"></a>Rendelkezésre állási csoportok
 A rendelkezésre állási csoport a virtuális gépek logikus csoportosítását jelenti, ami lehetővé teszi az Azure számára az alkalmazás felépítésének megértését a redundancia és a rendelkezésre állás biztosításához. Javasoljuk, hogy legalább két virtuális gépet hozzon létre egy rendelkezésre állási csoporton belül, hogy egy magasan elérhető alkalmazást biztosítson, és kielégítse a [99,95%-os Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)-t. Magának a rendelkezésre állási csoportnak nincs díja, csak a létrehozott virtuálisgép-példányért kell fizetnie. Ha egyetlen virtuális gép használja az [Azure Premium SSD](./disks-types.md#premium-ssd)-ket, az Azure SLA a nem tervezett karbantartási eseményekre vonatkozik.
@@ -70,5 +74,5 @@ A rendelkezésre állási csoporton belüli virtuális gépeket is automatikusan
 
 ![Rendelkezésre állási csoportok](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Mostantól a saját Azure-környezetében is használhatja ezeket a rendelkezésre állási és redundanciával kapcsolatos szolgáltatásokat. Javasoljuk, hogy tájékozódjon [az Azure rendelkezésre állásával kapcsolatos ajánlott eljárásokról](/azure/architecture/checklist/resiliency-per-service).

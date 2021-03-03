@@ -1,29 +1,26 @@
 ---
-title: Jelszó nélküli biztonsági kulcs bejelentkezés a helyszíni erőforrásokra (előzetes verzió) – Azure Active Directory
-description: Megtudhatja, hogyan engedélyezheti a jelszó nélküli biztonsági kulcsok bejelentkezését a helyszíni erőforrásokra Azure Active Directory használatával (előzetes verzió)
+title: Jelszó nélküli biztonsági kulcs bejelentkezés a helyszíni erőforrásokra – Azure Active Directory
+description: Megtudhatja, hogyan engedélyezheti a jelszó nélküli biztonsági kulcsok bejelentkezését a helyszíni erőforrásokra Azure Active Directory használatával
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 03/09/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1459442f7d99d1de88a685eed34493da530c1a4
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: db1b559bb4f6a1f8866116c287df5b814500210b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743479"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647472"
 ---
-# <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése a helyszíni erőforrásokhoz Azure Active Directory használatával (előzetes verzió)
+# <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése a helyszíni erőforrásokhoz Azure Active Directory 
 
 Ez a dokumentum az **Azure ad** -hez csatlakoztatott és a **hibrid Azure ad-hez csatlakoztatott** Windows 10 rendszerű eszközökön a helyi erőforrásokhoz való jelszavas hitelesítés engedélyezését összpontosítja. Ez a funkció zökkenőmentes egyszeri bejelentkezést (SSO) biztosít a helyszíni erőforrásokhoz a Microsoft-kompatibilis biztonsági kulcsok használatával.
-
-> [!NOTE]
-> A FIDO2 biztonsági kulcsai a Azure Active Directory nyilvános előzetes verziója. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="sso-to-on-premises-resources-using-fido2-keys"></a>Egyszeri bejelentkezés a helyszíni erőforrásokhoz FIDO2-kulcsok használatával
 
@@ -42,7 +39,7 @@ Létrejön egy Azure AD Kerberos-kiszolgálói objektum a helyszíni Active Dire
 
 ## <a name="requirements"></a>Követelmények
 
-A szervezeteknek el kell végezniük a [jelszó nélküli biztonsági kulcs aláírásának engedélyezése a Windows 10-es eszközökön (előzetes verzió)](howto-authentication-passwordless-security-key.md) a jelen cikkben ismertetett lépések végrehajtása előtt.
+A szervezeteknek el kell végezniük a [jelszó nélküli biztonsági kulcs aláírásának engedélyezése a Windows 10-es eszközökön](howto-authentication-passwordless-security-key.md) című témakör lépéseit a jelen cikkben ismertetett lépések végrehajtása előtt.
 
 A szervezeteknek a következő szoftverekre vonatkozó követelményeket is meg kell felelniük.
 
@@ -64,7 +61,7 @@ A forgatókönyv az egyszeri bejelentkezést (SSO) is támogatja a következő e
 
 A következő forgatókönyvek nem támogatottak:
 
-- Windows Server Active Directory tartományi szolgáltatások (AD DS) tartományhoz csatlakoztatott (csak helyszíni eszközök) központi telepítés.
+- Windows Server Active Directory Domain Services (AD DS) tartományhoz csatlakoztatott (csak helyszíni eszközök) központi telepítés.
 - RDP-, VDI-és Citrix-forgatókönyvek biztonsági kulccsal.
 - S/MIME biztonsági kulccsal.
 - "Run as" (Futtatás másként) biztonsági kulcs használatával.
@@ -156,19 +153,19 @@ Ha a jelszó lejárt, a-vel való bejelentkezés le van tiltva. A várt érték 
 
 ## <a name="troubleshooting-and-feedback"></a>Hibaelhárítás és visszajelzés
 
-Ha meg szeretné osztani a visszajelzéseket, vagy problémákat tapasztal a funkció megtekintése közben, ossza meg a Windows visszajelzési központ alkalmazáson keresztül a következő lépésekkel:
+Ha meg szeretné osztani a visszajelzéseket, vagy problémákba ütközik ezzel a szolgáltatással, ossza meg a Windows visszajelzési központ alkalmazáson keresztül a következő lépésekkel:
 
 1. Indítsa el a **visszajelzési** központot, és ellenőrizze, hogy be van-e jelentkezve.
 1. Küldjön visszajelzést a következő kategorizálás alá:
    - Kategória: biztonság és adatvédelem
    - Alkategória:
-1. A naplók rögzítéséhez használja a problémát a **probléma újbóli létrehozásához** .
+1. A naplók rögzítéséhez használja a lehetőséget a **probléma újbóli létrehozásához**.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
 ### <a name="does-this-work-in-my-on-premises-environment"></a>Működik ez a helyszíni környezetben?
 
-Ez a funkció nem működik tiszta helyszíni Active Directory tartományi szolgáltatások (AD DS) környezetben.
+Ez a funkció nem működik tiszta helyszíni Active Directory Domain Services (AD DS) környezetben.
 
 ### <a name="my-organization-requires-two-factor-authentication-to-access-resources-what-can-i-do-to-support-this-requirement"></a>A szervezetem két faktoros hitelesítést igényel az erőforrásokhoz való hozzáféréshez. Mit tehetek a követelmény támogatásához?
 
@@ -197,6 +194,6 @@ Ha a hibrid Azure AD-hez csatlakoztatott gép tiszta telepítését végzi, a ta
 
 Győződjön meg arról, hogy elegendő tartományvezérlő van, hogy az erőforrás-kérelem kiszolgálásához időben válaszoljon. Annak ellenőrzéséhez, hogy látható-e a szolgáltatást futtató tartományvezérlő, tekintse át a kimenetét `nltest /dsgetdc:contoso /keylist /kdc` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További információ a jelszóval nem rendelkező](concept-authentication-passwordless.md)

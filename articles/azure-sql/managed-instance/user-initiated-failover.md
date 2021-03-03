@@ -9,13 +9,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 02/17/2021
-ms.openlocfilehash: ecd97efbf12fb149037a94749bc899169f2c5a92
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.date: 02/23/2021
+ms.openlocfilehash: c154699b7701b584e465ebea7950d4fe50be961f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101096523"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660797"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Felhasználó által, felügyelt SQL-példányon kezdeményezett manuális feladatátvétel
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -34,7 +34,7 @@ A következő okok miatt érdemes lehet [manuális feladatátvételt](../databas
 - A lekérdezési teljesítmény romlása bizonyos esetekben a manuális feladatátvétel segít enyhíteni a teljesítménnyel kapcsolatos problémát.
 
 > [!NOTE]
-> Annak biztosítása, hogy az alkalmazások az éles környezetben történő üzembe helyezés előtt rugalmasak legyenek, segít csökkenteni az alkalmazás-meghibásodások kockázatát az éles környezetben, és az ügyfelek számára elérhetővé teszi az alkalmazások rendelkezésre állását.
+> Annak biztosítása, hogy az alkalmazások az éles környezetben történő üzembe helyezés előtt rugalmasak legyenek, segít csökkenteni az alkalmazás-meghibásodások kockázatát az éles környezetben, és az ügyfelek számára elérhetővé teszi az alkalmazások rendelkezésre állását. Tudjon meg többet az alkalmazások Felhőbeli készültségének teszteléséről az [alkalmazás-felhő készültségének tesztelése a feladatátvételi rugalmasság érdekében az SQL felügyelt példányának](https://youtu.be/FACWYLgYDL8) videó-újrakódolása című témakörben.
 
 ## <a name="initiate-manual-failover-on-sql-managed-instance"></a>Manuális feladatátvétel kezdeményezése az SQL felügyelt példányán
 
@@ -43,7 +43,7 @@ A következő okok miatt érdemes lehet [manuális feladatátvételt](../databas
 A feladatátvételt kezdeményező felhasználónak a következő Azure-szerepkörök egyikével kell rendelkeznie:
 
 - Előfizetés tulajdonosi szerepköre, vagy
-- Felügyelt példány közreműködői szerepköre, vagy
+- [Felügyelt példány közreműködői](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) szerepköre, vagy
 - Egyéni szerepkör a következő engedélyekkel:
   - `Microsoft.Sql/managedInstances/failover/action`
 
@@ -153,6 +153,6 @@ A feladatátvétel során az ügyféltől való kapcsolat rövid elvesztése, am
 > - A feladatátvétel nem engedélyezett, amíg az új adatbázishoz tartozó első teljes biztonsági mentést az automatizált biztonsági mentési rendszerek végzik.
 
 ## <a name="next-steps"></a>Következő lépések
-
+- Tudjon meg többet az alkalmazások Felhőbeli készültségének teszteléséről az [alkalmazás-felhő készültségének tesztelése a feladatátvételi rugalmasság érdekében az SQL felügyelt példányának](https://youtu.be/FACWYLgYDL8) videó-újrakódolása című témakörben.
 - További információ a felügyelt példány magas rendelkezésre állásáról [Az Azure SQL felügyelt példányain](../database/high-availability-sla.md).
 - Az áttekintést lásd: [Mi az az Azure SQL felügyelt példánya?](sql-managed-instance-paas-overview.md).

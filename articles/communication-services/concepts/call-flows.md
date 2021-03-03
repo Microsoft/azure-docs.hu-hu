@@ -9,26 +9,24 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 79382dde5780827d7b0393858fe8896c5da1b56d
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 5b1d24dc6056de0b8dd19d0d0e52c85055596a1d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100559437"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101664141"
 ---
 # <a name="call-flow-basics"></a>Folyamat alapjai
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Az alábbi szakasz áttekintést nyújt az Azure kommunikációs szolgáltatások hívási folyamatairól. A jelek és a média folyamatai a felhasználók által kezdeményezett hívások típusától függenek. Ilyenek például az egy-az-egyhez típusú VoIP, az egy-az-egyhez PSTN, valamint a VoIP-és PSTN-kapcsolattal rendelkező résztvevők kombinációját tartalmazó csoportos hívások. Tekintse át a [hívások típusait](./voice-video-calling/about-call-types.md).
 
 ## <a name="about-signaling-and-media-protocols"></a>Tudnivalók a jelzésekről és a média protokollokról
 
-Társ-társ vagy csoportos hívás létrehozásakor a rendszer két protokollt használ a színfalak mögött – HTTP (REST) az adathordozók jelzéséhez és SRTP. 
+Társ-társ vagy csoportos hívás létrehozásakor a rendszer két protokollt használ a színfalak mögött – HTTP (REST) az adathordozók jelzéséhez és SRTP.
 
-Az ügyféloldali kódtárak vagy az ügyféloldali kódtárak és a kommunikációs szolgáltatások jelzői közötti jelzések a HTTP REST (TLS) protokollal kezelhetők. A Real-Time Media Traffic (RTP) esetében a User Datagram Protocol (UDP) használata javasolt. Ha a tűzfal megakadályozza az UDP használatát, az ügyféloldali kódtár a Transmission Control Protocol (TCP) adathordozót fogja használni. 
+Az ügyféloldali kódtárak vagy az ügyféloldali kódtárak és a kommunikációs szolgáltatások jelzői közötti jelzések a HTTP REST (TLS) protokollal kezelhetők. A Real-Time Media Traffic (RTP) esetében a User Datagram Protocol (UDP) használata javasolt. Ha a tűzfal megakadályozza az UDP használatát, az ügyféloldali kódtár a Transmission Control Protocol (TCP) adathordozót fogja használni.
 
-Vizsgáljuk meg a jeleket és a média protokollokat különböző forgatókönyvekben. 
+Vizsgáljuk meg a jeleket és a média protokollokat különböző forgatókönyvekben.
 
 ## <a name="call-flow-cases"></a>Folyamat eseteinek hívása
 
@@ -40,7 +38,7 @@ Az egy-az-egyhez típusú VoIP-vagy videohívások esetén a forgalom a legközv
 
 ### <a name="case-2-voip-where-a-direct-connection-between-devices-is-not-possible-but-where-connection-between-nat-devices-is-possible"></a>2. eset: az eszközök közötti közvetlen kapcsolat nem lehetséges, de a NAT-eszközök közötti kapcsolat lehetséges
 
-Ha két eszköz olyan alhálózatokban található, amelyek nem tudnak megérkezni egymáshoz (például Alice működik egy kávézóból, és Bob működik a saját otthoni irodájában), de a NAT-eszközök közötti kapcsolat lehetséges, az ügyféloldali kódtár kapcsolatot létesít a NAT-eszközök használatával. 
+Ha két eszköz olyan alhálózatokban található, amelyek nem tudnak megérkezni egymáshoz (például Alice működik egy kávézóból, és Bob működik a saját otthoni irodájában), de a NAT-eszközök közötti kapcsolat lehetséges, az ügyféloldali kódtár kapcsolatot létesít a NAT-eszközök használatával.
 
 Alice számára a Coffee Shop NAT-je lesz, és Bob számára a hazai iroda NAT-je lesz. Alice eszköze elküldi a NAT külső címeit, és Bob is ugyanezt teszi. Az ügyfél-kódtárak megtudhatják a külső címeket egy olyan KÁBÍTó (munkamenet-bejárási segédprogramok a NAT-hoz) szolgáltatáshoz, amelyet az Azure kommunikációs szolgáltatásai ingyenesen biztosítanak. Az Alice és Bob közötti kézfogást kezelő logika beágyazva van az Azure kommunikációs szolgáltatásokban biztosított ügyféloldali kódtárak közé. (Nincs szükség további konfigurációra)
 
@@ -51,7 +49,7 @@ Alice számára a Coffee Shop NAT-je lesz, és Bob számára a hazai iroda NAT-j
 Ha egy vagy mindkét ügyfél egy szimmetrikus NAT mögött található, egy külön felhőalapú szolgáltatás szükséges az adathordozó továbbításához a két ügyfél kódtára között. Ezt a szolgáltatást kapcsolja be (a NAT-kapcsolaton keresztüli átjárással), és a kommunikációs szolgáltatások is biztosítanak. A kommunikációs szolgáltatások által meghívott ügyféloldali függvénytár automatikusan az észlelt hálózati feltételek alapján kapcsolja be a szolgáltatásokat. A Microsoft TURN Service használatát külön kell fizetni.
 
 :::image type="content" source="./media/call-flows/about-voice-case-3.png" alt-text="A KAPCSOLÁSi kapcsolatokat használó VOIP-hívást ábrázoló ábra.":::
- 
+
 ### <a name="case-4-group-calls-with-pstn"></a>4. eset: csoportos hívások a PSTN-sel
 
 A PSTN-hívások és az adathordozók egyaránt az Azure kommunikációs szolgáltatások telefonos erőforrását használják. Ez az erőforrás más szolgáltatókhoz kapcsolódik.
@@ -78,7 +76,7 @@ Ha az ügyféloldali kódtár nem tud az UDP protokollt használni a tűzfal kor
 
 ### <a name="case-5-communication-services-client-library-and-microsoft-teams-in-a-scheduled-teams-meeting"></a>5. eset: a kommunikációs szolgáltatások ügyféloldali könyvtára és a Microsoft Teams egy ütemezett csapat ülésén
 
-A riasztás a jelző vezérlőn keresztül zajlik. Az adathordozó a média processzorán keresztül áramlik. A jelző vezérlő és a média processzora a kommunikációs szolgáltatások és a Microsoft Teams között van megosztva. 
+A riasztás a jelző vezérlőn keresztül zajlik. Az adathordozó a média processzorán keresztül áramlik. A jelző vezérlő és a média processzora a kommunikációs szolgáltatások és a Microsoft Teams között van megosztva.
 
 :::image type="content" source="./media/call-flows/teams-communication-services-meeting.png" alt-text="A kommunikációs szolgáltatások ügyféloldali függvénytárát és a Teams-ügyfelet bemutató diagram egy ütemezett csapat ülésén.":::
 

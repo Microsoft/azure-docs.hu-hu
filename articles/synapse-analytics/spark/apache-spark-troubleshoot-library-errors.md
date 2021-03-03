@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: conceptual
 ms.date: 01/04/2021
-ms.openlocfilehash: 60ea97ea2df271f867febec3fa0f0826a18dbbbf
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e812fa47d35889a9cf8c671a4df6034812272a6a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417459"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670633"
 ---
 # <a name="troubleshoot-library-installation-errors"></a>A kódtár telepítési hibáinak elhárítása 
 Ahhoz, hogy a harmadik féltől származó vagy helyileg létrehozott kódot elérhetővé tegye az alkalmazásai számára, telepíthet egy függvénytárat az egyik kiszolgáló nélküli Apache Spark-készletre. A requirements.txt fájlban felsorolt csomagok letöltése a PyPi a készlet indításakor történik. Ezt a követelményt a rendszer minden alkalommal felhasználja, amikor egy Spark-példányt létrehoznak a Spark-készletből. Miután telepítette a tárat egy Spark-készlethez, az minden munkamenet számára elérhető lesz, amely ugyanazt a készletet használja. 
@@ -54,7 +54,7 @@ df = spark.createDataFrame(data=data2,schema=schema)
 df.write.csv("abfss://<<ENTER NAME OF FILE SYSTEM>>@<<ENTER NAME OF PRIMARY STORAGE ACCOUNT>>.dfs.core.windows.net/validate_permissions.csv")
 
 ```
-Ha hibaüzenetet kap, valószínűleg hiányzik a szükséges engedélyek. A szükséges engedélyek beszerzésének megismeréséhez tekintse meg a következő dokumentumot: [Storage blob-adatközreműködő vagy tárolási blob-adattulajdonosi engedélyek kiosztása](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal#assign-an-azure-built-in-role).
+Ha hibaüzenetet kap, valószínűleg hiányzik a szükséges engedélyek. A szükséges engedélyek beszerzésének megismeréséhez tekintse meg a következő dokumentumot: [Storage blob-adatközreműködő vagy tárolási blob-adattulajdonosi engedélyek kiosztása](../../storage/common/storage-auth-aad-rbac-portal.md#assign-an-azure-built-in-role).
 
 Emellett, ha egy folyamatot futtat, akkor a munkaterület MSI-fájljának a Storage blob-adattulajdonosi vagy a Storage blob adatközreműködői engedélyekkel is rendelkeznie kell. Ha meg szeretné tudni, hogyan adja meg a munkaterület identitását, keresse fel a következőt: [engedélyek megadása a munkaterület által felügyelt identitáshoz](../security/how-to-grant-workspace-managed-identity-permissions.md).
 
@@ -98,4 +98,3 @@ A környezet újbóli létrehozása és a frissítések ellenőrzése:
 
 ## <a name="next-steps"></a>Következő lépések
 - Az alapértelmezett könyvtárak megtekintése: [Apache Spark verzió támogatása](apache-spark-version-support.md)
-

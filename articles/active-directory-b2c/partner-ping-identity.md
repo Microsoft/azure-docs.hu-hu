@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/20/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 430629f94695f0689422434c8d80fe4e1876e5dd
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 94e7ae93d05ae8ee35028882e14d8da74814d833
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98900177"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650226"
 ---
 # <a name="tutorial-configure-ping-identity-with-azure-active-directory-b2c-for-secure-hybrid-access"></a>Oktatóanyag: a ping-identitás konfigurálása Azure Active Directory B2C a biztonságos hibrid hozzáféréshez
 
@@ -80,7 +80,7 @@ A kezdéshez a következőkre lesz szüksége:
 
 - Azure-előfizetés. Ha még nem rendelkezik ilyennel, szerezzen be egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
-- Egy [Azure ad B2C bérlő](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) , amely az Azure-előfizetéshez van csatolva.
+- Egy [Azure ad B2C bérlő](./tutorial-create-tenant.md) , amely az Azure-előfizetéshez van csatolva.
 
 - Docker-tárolókban vagy közvetlenül Azure-beli virtuális gépeken üzembe helyezett PingAccess és PingFederate.
 
@@ -107,7 +107,7 @@ Az egyezmény követéséhez frissítse a Azure AD B2C kiállítói frissítést
 
 ![a rendszerkép a jogkivonat-beállításokat jeleníti meg](./media/partner-ping/token-setting.png)
 
-A speciális szabályzatokban ez a **IssuanceClaimPattern** metaadat-elemmel konfigurálható a [JWT-jogkivonat kiállítói technikai profiljában](https://docs.microsoft.com/azure/active-directory-b2c/jwt-issuer-technical-profile)lévő **AuthorityWithTfp** értékre.
+A speciális szabályzatokban ez a **IssuanceClaimPattern** metaadat-elemmel konfigurálható a [JWT-jogkivonat kiállítói technikai profiljában](./jwt-issuer-technical-profile.md)lévő **AuthorityWithTfp** értékre.
 
 ## <a name="configure-pingaccesspingfederate"></a>PingAccess/PingFederate konfigurálása
 
@@ -160,7 +160,7 @@ Webes munkamenet létrehozásához kövesse az alábbi lépéseket:
 
 7. Az **ügyfél titkos** kulcsa mezőben adja meg az alkalmazáshoz az Azure ad-ben generált **kulcsot** .
 
-8. Nem kötelező – egyéni jogcímeket hozhat létre és használhat a Microsoft Graph API-val. Ha ezt választja, válassza a **speciális** lehetőséget, és törölje a **kérelem profilját** , és **frissítse a felhasználói attribútumok** beállításait. További információ az egyéni jogcímek használatáról: [egyéni jogcím használata](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access#optional---use-a-custom-claim).
+8. Nem kötelező – egyéni jogcímeket hozhat létre és használhat a Microsoft Graph API-val. Ha ezt választja, válassza a **speciális** lehetőséget, és törölje a **kérelem profilját** , és **frissítse a felhasználói attribútumok** beállításait. További információ az egyéni jogcímek használatáról: [egyéni jogcím használata](../active-directory/manage-apps/application-proxy-configure-single-sign-on-with-headers.md).
 
 9. Válassza a **Mentés** lehetőséget
 
@@ -265,6 +265,6 @@ Konfigurálja a PingFederate hitelesítési házirendjét úgy, hogy az a Azure 
 
 További információkért tekintse át a következő cikkeket
 
-- [Egyéni szabályzatok az Azure AD B2C-ben](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Egyéni szabályzatok az Azure AD B2C-ben](./custom-policy-overview.md)
 
-- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

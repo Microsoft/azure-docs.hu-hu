@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Azure Cosmos DB-dokumentáció
-summary: Azure Cosmos DB – Gyors NoSQL-adatbázis SLA-alapú sebességgel és rendelkezésre állással, automatikus és azonnali skálázhatósággal, valamint a MongoDB-hez és Cassandrához készült nyílt forráskódú API-kkal.
+summary: Azure Cosmos DB – gyors NoSQL-adatbázis SLA-alapú biztonsági sebességgel és rendelkezésre állással, automatikus és azonnali méretezhetőséggel, valamint nyílt forráskódú API-kkal a MongoDB és Cassandra-hoz.
 metadata:
   title: Azure Cosmos DB
-  description: Azure Cosmos DB – Gyors NoSQL-adatbázis SLA-alapú sebességgel és rendelkezésre állással, automatikus és azonnali skálázhatósággal, valamint a MongoDB-hez és Cassandrához készült nyílt forráskódú API-kkal.
+  description: Azure Cosmos DB – gyors NoSQL-adatbázis SLA-alapú biztonsági sebességgel és rendelkezésre állással, automatikus és azonnali méretezhetőséggel, valamint nyílt forráskódú API-kkal a MongoDB és Cassandra-hoz.
   services: service
   ms.service: cosmos-db
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   author: SnehaGunda
   ms.author: sngun
   ms.date: 09/10/2019
-  ms.openlocfilehash: 7ee6db07facb1464428c6d1d8562fdd54216b883
-  ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
-  ms.translationtype: HT
+  ms.openlocfilehash: 0dda9cb110592c9fd9325f607b455d16c32da7f3
+  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/23/2020
-  ms.locfileid: "92485766"
+  ms.lasthandoff: 03/02/2021
+  ms.locfileid: "101658012"
 landingContent:
 - title: Az Azure Cosmos DB bemutatása
   linkLists:
@@ -91,7 +91,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: Vonalprotokoll-kompatibilitás a MongoDB-vel
-      url: mongodb-feature-support-36.md
+      url: mongodb-feature-support-40.md
     - text: A MongoDB bővítmény parancsai
       url: mongodb-custom-commands.md
     - text: Streamek módosítása

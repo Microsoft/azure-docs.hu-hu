@@ -41,7 +41,7 @@
           href: b2b-fundamentals.md
         - name: Külső B2B- és Office 365-megosztás
           href: o365-external-user.md
-        - name: Meghívás érvényesítése
+        - name: Meghívás beváltása és bejelentkezés
           href: redemption-experience.md
         - name: Meghívó e-mail
           href: invitation-email-elements.md
@@ -57,9 +57,9 @@
           href: hybrid-organizations.md
         - name: Identitásszolgáltatók az External Identitieshez
           href: identity-providers.md
-        - name: Önkiszolgáló regisztráció felhasználói folyamatai (előzetes verzió)
+        - name: Önkiszolgáló bejelentkezési felhasználói folyamatok
           href: self-service-sign-up-overview.md
-        - name: Önkiszolgáló regisztrációs API-összekötők (előzetes)
+        - name: Önkiszolgáló bejelentkezési API-összekötők
           href: api-connectors-overview.md
         - name: Azure AD-jogosultságkezelés
           href: self-service-portal.md
@@ -68,23 +68,25 @@
     - name: Útmutatók
       expanded: true
       items:
-        - name: Külső együttműködési beállítások konfigurálása
-          href: delegate-invitations.md
+        - name: B2B-együttműködés beállítása
+          items:
+            - name: Külső együttműködési beállítások konfigurálása
+              href: delegate-invitations.md
+            - name: Tartományok engedélyezése vagy letiltása
+              href: allow-deny-list.md
         - name: Vendégfelhasználók meghívása
           items:
-            - name: B2B felhasználók rendszergazdák általi hozzáadása
+            - name: Vendég felhasználók hozzáadása és meghívása (rendszergazdák számára)
               href: add-users-administrator.md
-            - name: B2B felhasználók információkkal dolgozó szakemberek általi hozzáadása
+            - name: Vendég felhasználóinak meghívása egy alkalmazásra (az alkalmazás tulajdonosainak)
               href: add-users-information-worker.md
             - name: Belső felhasználók meghívása a B2B-be
               href: invite-internal-users.md
-            - name: Meghívások engedélyezése vagy letiltása
-              href: allow-deny-list.md
             - name: B2B felhasználók hozzáadása meghívás nélkül
               href: add-user-without-invite.md
-            - name: Invitation API és testreszabás
+            - name: Meghívások testreszabása API használatával
               href: customize-invitation-api.md
-        - name: Összevonás identitásszolgáltatókkal
+        - name: Összevonása külső identitás-szolgáltatókkal
           items:
             - name: Google-összevonás
               href: google-federation.md
@@ -94,9 +96,9 @@
               href: direct-federation.md
             - name: Példa AD FS-sel végzett közvetlen összevonásra
               href: direct-federation-adfs.md
-        - name: Hitelesítés egyszeri PIN-kóddal
+        - name: Egyszeri jelszó (OTP) engedélyezése
           href: one-time-passcode.md
-        - name: Vendégfelhasználók önkiszolgáló regisztrációja (előzetes verzió)
+        - name: Önkiszolgáló regisztráció hozzáadása a vendég felhasználók számára
           items:
             - name: Önkiszolgáló regisztráció felhasználói folyamatának hozzáadása
               href: self-service-sign-up-user-flow.md

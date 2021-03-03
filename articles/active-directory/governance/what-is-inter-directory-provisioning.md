@@ -11,12 +11,12 @@ ms.date: 10/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df199afd85c788299334087321c3edac8482698d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4246bc4c62fd8e5e73ff18e383b8bf115d25ede8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96168508"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101643836"
 ---
 # <a name="what-is-inter-directory-provisioning"></a>Mi az a címtárak közötti üzembe helyezés?
 
@@ -33,7 +33,7 @@ Az Azure AD jelenleg három módszert támogat a könyvtárak közötti kiépít
 
 - [Azure ad Connect](../hybrid/whatis-azure-ad-connect.md) – a hibrid identitásának teljesítésére és megvalósítására tervezett Microsoft-eszköz, beleértve a Active Directoryról az Azure ad-re történő kiépítést.
 
-- [Azure ad Connect Cloud kiépítés](../cloud-provisioning/what-is-cloud-provisioning.md) – egy új Microsoft-ügynök, amely a hibrid identitási célok teljesítésére és megvalósítására lett tervezve.  A szolgáltatás Active Directory és az Azure AD közötti, kis-és nagyszámú Inter-Directory kiépítési élményt nyújt.
+- [Azure ad Connect Cloud kiépítés](../cloud-sync/what-is-cloud-sync.md) – egy új Microsoft-ügynök, amely a hibrid identitási célok teljesítésére és megvalósítására lett tervezve.  A szolgáltatás Active Directory és az Azure AD közötti, kis-és nagyszámú Inter-Directory kiépítési élményt nyújt.
 
 - [Microsoft Identity Manager](/microsoft-identity-manager/microsoft-identity-manager-2016) – a Microsoft helyszíni identitás-és hozzáférés-kezelési megoldása, amely segít a felhasználók, a hitelesítő adatok, a házirendek és a hozzáférés kezelésében a szervezeten belül. Emellett a a többkönyvtáros kiépítés lehetővé teszi a hibrid identitási környezetek elérését Active Directory, az Azure AD és más címtárakban.
 

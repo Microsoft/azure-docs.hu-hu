@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90b2cd4521613a7b449598f0d097a7ec1c2958c6
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a834d4d30c40b618b1601a7f8901c68143ef4912
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98724542"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648517"
 ---
 # <a name="resilience-through-monitoring-and-analytics"></a>Rugalmasság a monitorozás és az elemzés révén
 
@@ -49,7 +49,7 @@ Például nyomon követheti a következő mérőszámokat, mivel a hirtelen csö
 
    - **Előző időszak**: időbeli diagramok létrehozása az összes kérelem és sikerességi arány változásainak megjelenítéséhez (%) egy korábbi időszakra hivatkozva, például a múlt héten.
 
-- **Riasztás**: a log Analytics használatával olyan [riasztásokat](../../azure-monitor/platform/alerts-log.md) határozhat meg, amelyek akkor jelentkeznek be, amikor hirtelen változások léptek fel a legfontosabb mutatókon. Ezek a változások negatív hatással lehetnek a slo. A riasztások az értesítési módszerek különböző formáját használják, például az e-maileket, az SMS-t és a webhookokat. Első lépésként Definiáljon egy olyan feltételt, amely küszöbértékként működik, és amely riasztást indít el. Például:
+- **Riasztás**: a log Analytics használatával olyan [riasztásokat](../../azure-monitor/alerts/alerts-log.md) határozhat meg, amelyek akkor jelentkeznek be, amikor hirtelen változások léptek fel a legfontosabb mutatókon. Ezek a változások negatív hatással lehetnek a slo. A riasztások az értesítési módszerek különböző formáját használják, például az e-maileket, az SMS-t és a webhookokat. Első lépésként Definiáljon egy olyan feltételt, amely küszöbértékként működik, és amely riasztást indít el. Például:
   - Riasztás a teljes kérelmek hirtelen eldobásával kapcsolatban: riasztás elindítása, ha a kérelmek teljes száma hirtelen csökken. Ha például 25%-kal csökken a kérelmek teljes száma az előző időszakhoz képest, riasztást kell létrehoznia.  
   - Riasztás a sikerességi arány jelentős csökkenése ellen (%): riasztás elindítása, ha a kiválasztott szabályzat sikerességi aránya jelentősen csökken.
   - Riasztás fogadásakor hárítsa el a problémát a Azure AD B2C [log Analytics](../reports-monitoring/howto-install-use-log-analytics-views.md), [Application Insights](../../active-directory-b2c/troubleshoot-with-application-insights.md)és [vs Code bővítményének](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c) használatával. Miután feloldotta a problémát, és telepített egy frissített alkalmazást vagy házirendet, továbbra is figyeli a legfontosabb jelzőket, amíg vissza nem tér a normál tartományhoz.
@@ -57,11 +57,11 @@ Például nyomon követheti a következő mérőszámokat, mivel a hirtelen csö
 - **Szolgáltatás-riasztások**: a [Azure ad B2C szolgáltatási szintű riasztások](../../service-health/service-health-overview.md) segítségével értesítést kaphat a szolgáltatással kapcsolatos problémákról, a tervezett karbantartásról, az egészségügyi tanácsadásról és a biztonsági tanácsadóról.
 
 - **Jelentéskészítés**: [a log Analytics használatával](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)olyan jelentéseket hozhat létre, amelyek segítséget nyújtanak a felhasználói információk, a technikai kihívások és a növekedési lehetőségek megismerésében.
-  - **Állapot-irányítópult**: [Egyéni irányítópultok létrehozása az Azure irányítópult](../../azure-monitor/learn/tutorial-app-dashboards.md) funkciójával, amely támogatja a diagramok log Analytics lekérdezésekkel való hozzáadását. Például azonosíthatja a sikeres és sikertelen bejelentkezések mintáját, a hibák okait és a telemetria a kérések elvégzéséhez használt eszközökről.
+  - **Állapot-irányítópult**: [Egyéni irányítópultok létrehozása az Azure irányítópult](../../azure-monitor/app/tutorial-app-dashboards.md) funkciójával, amely támogatja a diagramok log Analytics lekérdezésekkel való hozzáadását. Például azonosíthatja a sikeres és sikertelen bejelentkezések mintáját, a hibák okait és a telemetria a kérések elvégzéséhez használt eszközökről.
   - **Azure ad B2C utazások elhagyása**: a [munkafüzet](https://github.com/azure-ad-b2c/siem#list-of-abandon-journeys) segítségével nyomon követheti az elhagyott Azure ad B2C utak listáját, ahol a felhasználó elindította a bejelentkezést vagy a regisztrációt, de soha nem fejezte be. Részletesen ismerteti a szabályzat AZONOSÍTÓját és a felhasználó által az utazás megszüntetése előtt végrehajtott lépések részletezését.
   - **Azure ad B2C figyelési munkafüzetek**: a [figyelési munkafüzetek](https://github.com/azure-ad-b2c/siem)használata, beleértve a Azure ad B2C irányítópultot, a többtényezős hitelesítési (MFA) műveleteket, a feltételes hozzáférési jelentést és a keresési naplókat a correlationId alapján, így jobban betekintést nyerhet az Azure ad B2C-környezet állapotára.
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Rugalmassági erőforrások Azure AD B2C-fejlesztőknek](resilience-b2c.md)
   - [Rugalmas végfelhasználói élmény](resilient-end-user-experience.md)

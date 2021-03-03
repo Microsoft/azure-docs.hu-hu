@@ -1,6 +1,6 @@
 ---
 title: Helyszíni Azure AD jelszavas védelem – problémamegoldás
-description: Ismerje meg, hogyan lehet elhárítani az Azure AD jelszavas védelmét helyszíni Active Directory tartományi szolgáltatások környezetekben
+description: Ismerje meg, hogyan lehet elhárítani az Azure AD jelszavas védelmét helyszíni Active Directory Domain Services környezetekben
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ca00785bfe8a99b8a3d620559c4fa492ee60c63
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: f2bbc1c555824d4c632c5bf85a9cd0aa83087fc8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741745"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648725"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>Hibakeresés: helyszíni Azure AD jelszavas védelem
 
@@ -260,7 +260,147 @@ Ha úgy döntött, hogy eltávolítja az Azure AD jelszavas védelem szoftverét
 
    Ez az elérési út eltérő, ha a SYSVOL-megosztás nem alapértelmezett helyen van konfigurálva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="health-testing-with-powershell-cmdlets"></a>Állapot-tesztelés PowerShell-parancsmagokkal
+
+A AzureADPasswordProtection PowerShell-modul két állapottal kapcsolatos parancsmagot tartalmaz, amelyek alapszintű ellenőrzést végeznek a szoftver telepítésének és működésének ellenőrzéséhez. Érdemes futtatni ezeket a parancsmagokat az új központi telepítés beállítása után, később, és a probléma kivizsgálásakor.
+
+Az egyes állapot-tesztek egy alapszintű átadott vagy sikertelen eredményt adnak vissza, és nem kötelező üzenetet. Azokban az esetekben, amikor a hiba oka nem egyértelmű, keresse meg a hiba eseménynaplójának üzeneteit, amelyek magyarázatot kaphatnak a hibára. A szöveges üzenetek engedélyezése is hasznos lehet. További részletekért tekintse meg az [Azure ad jelszavas védelem figyelése](howto-password-ban-bad-on-premises-monitor.md)című témakört.
+
+## <a name="proxy-health-testing"></a>Proxy állapotának tesztelése
+
+A Test-AzureADPasswordProtectionProxyHealth parancsmag két, egyenként futtatható állapot-tesztet támogat. A harmadik mód lehetővé teszi az összes olyan teszt futtatását, amelyek nem igénylik a paraméterek bevitelét.
+
+### <a name="proxy-registration-verification"></a>Proxy regisztrációjának ellenőrzése
+
+Ez a teszt ellenőrzi, hogy a proxy ügynök megfelelően van-e regisztrálva az Azure-ban, és képes-e hitelesíteni az Azure-ban. A sikeres Futtatás a következőképpen fog kinézni:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionProxyHealth -VerifyProxyRegistration
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyProxyRegistration Passed
+```
+
+Ha a rendszer hibát észlel, a teszt sikertelen eredményt ad vissza, és egy nem kötelező hibaüzenetet kap. Példa az egyik lehetséges hibára:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionProxyHealth -VerifyProxyRegistration
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyProxyRegistration Failed No proxy certificates were found - please run the Register-AzureADPasswordProtectionProxy cmdlet to register the proxy.
+```
+
+### <a name="proxy-verification-of-end-to-end-azure-connectivity"></a>Végpontok közötti Azure-kapcsolat proxy-ellenőrzése
+
+Ez a teszt a-VerifyProxyRegistration teszt egy kibővített változata. Ehhez az szükséges, hogy a proxy ügynök megfelelően legyen regisztrálva az Azure-ban, képes legyen hitelesíteni az Azure-ban, végül pedig ellenőrizze, hogy az üzenet sikeresen elküldhető-e az Azure-ba, így ellenőrizheti a teljes végpontok közötti kommunikáció működését.
+
+A sikeres Futtatás a következőképpen fog kinézni:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionProxyHealth -VerifyAzureConnectivity
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyAzureConnectivity Passed
+```
+
+### <a name="proxy-verification-of-all-tests"></a>Az összes teszt proxy-ellenőrzése
+
+Ez a mód lehetővé teszi a parancsmag által támogatott összes teszt tömeges futtatását, amelyek nem igénylik a paraméterek bevitelét. A sikeres Futtatás a következőképpen fog kinézni:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionProxyHealth -TestAll
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyTLSConfiguration  Passed
+VerifyProxyRegistration Passed
+VerifyAzureConnectivity Passed
+```
+
+## <a name="dc-agent-health-testing"></a>DC-ügynök állapotának tesztelése
+
+A Test-AzureADPasswordProtectionDCAgentHealth parancsmag több, egyenként futtatható állapot-ellenőrzést is támogat. A harmadik mód lehetővé teszi az összes olyan teszt futtatását, amelyek nem igénylik a paraméterek bevitelét.
+
+### <a name="basic-dc-agent-health-tests"></a>Alapszintű tartományvezérlő ügynökének állapot-tesztek
+
+Az alábbi tesztek mindegyikét egyenként is futtathatja, és nem fogadja el. Rövid leírás
+
+|DC-ügynök állapotának tesztelése|Leírás|
+| --- | :---: |
+|-VerifyPasswordFilterDll|Ellenőrzi, hogy a jelszó-szűrő DLL-fájlja jelenleg be van-e töltve, és képes-e hívni a DC Agent szolgáltatást.|
+|-VerifyForestRegistration|Ellenőrzi, hogy az erdő jelenleg regisztrálva van-e|
+|-VerifyEncryptionDecryption|Ellenőrzi, hogy az alapszintű titkosítás és a visszafejtés működik-e a Microsoft KDS szolgáltatás használatával|
+|-VerifyDomainIsUsingDFSR|Ellenőrzi, hogy az aktuális tartomány DFSR használ-e a SYSVOL-replikációhoz|
+|-VerifyAzureConnectivity|A végpontok közötti kommunikáció ellenőrzése az Azure-ban bármely elérhető proxy használatával működik|
+
+Íme egy példa a-VerifyPasswordFilterDll teszt átadására; a többi teszt a sikerhez hasonlóan fog kinézni:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -VerifyPasswordFilterDll
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyPasswordFilterDll Passed
+```
+
+### <a name="dc-agent-verification-of-all-tests"></a>Az összes teszt tartományvezérlő-ügynök általi ellenőrzése
+
+Ez a mód lehetővé teszi a parancsmag által támogatott összes teszt tömeges futtatását, amelyek nem igénylik a paraméterek bevitelét. A sikeres Futtatás a következőképpen fog kinézni:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -TestAll
+
+DiagnosticName             Result AdditionalInfo
+--------------             ------ --------------
+VerifyPasswordFilterDll    Passed
+VerifyForestRegistration   Passed
+VerifyEncryptionDecryption Passed
+VerifyDomainIsUsingDFSR    Passed
+VerifyAzureConnectivity    Passed
+```
+
+### <a name="connectivity-testing-using-specific-proxy-servers"></a>Kapcsolat tesztelése adott proxykiszolgálók használatával
+
+Számos hibaelhárítási helyzet magában foglalja a DC-ügynökök és-proxyk közötti hálózati kapcsolat kivizsgálását. Két egészségügyi teszt áll rendelkezésre, amelyek kifejezetten az ilyen jellegű kérdésekre koncentrálnak. Ezek a tesztek megkövetelik, hogy egy adott proxykiszolgáló legyen megadva.
+
+#### <a name="verifying-connectivity-between-a-dc-agent-and-a-specific-proxy"></a>A DC-ügynök és egy adott proxy közötti kapcsolat ellenőrzése
+
+Ez a teszt ellenőrzi a kapcsolatot a DC-ügynöktől a proxy felé irányuló első kommunikációs szakaszon. Ellenőrzi, hogy a proxy megkapja-e a hívást, azonban az Azure-val való kommunikációt nem vesz részt. A sikeres Futtatás a következőképpen néz ki:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -VerifyProxyConnectivity bpl2.bpl.com
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyProxyConnectivity Passed
+```
+
+Az alábbi példa egy olyan meghibásodási állapotot jelez, amelyben a célkiszolgálón futó proxy szolgáltatás le lett állítva:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -VerifyProxyConnectivity bpl2.bpl.com
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyProxyConnectivity Failed The RPC endpoint mapper on the specified proxy returned no results; please check that the proxy service is running on that server.
+```
+
+#### <a name="verifying-connectivity-between-a-dc-agent-and-azure-using-a-specific-proxy"></a>A DC-ügynök és az Azure közötti kapcsolat ellenőrzése (adott proxy használatával)
+
+Ez a teszt a DC-ügynök és az Azure közötti teljes végpontok közötti kapcsolatot ellenőrzi egy adott proxy használatával. A sikeres Futtatás a következőképpen néz ki:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -VerifyAzureConnectivityViaSpecificProxy bpl2.bpl.com
+
+DiagnosticName                          Result AdditionalInfo
+--------------                          ------ --------------
+VerifyAzureConnectivityViaSpecificProxy Passed
+```
+
+## <a name="next-steps"></a>Következő lépések
 
 [Gyakori kérdések az Azure AD jelszavas védelméről](howto-password-ban-bad-on-premises-faq.md)
 

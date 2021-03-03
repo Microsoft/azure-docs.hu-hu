@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/24/2019
+ms.date: 02/09/2021
 ms.author: jeedes
-ms.openlocfilehash: a64abfbdb33a30b41853023af14f54bb88e42c8f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 20e59f134c51662f9530862790d5a47b8bb21d6d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520710"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650722"
 ---
 # <a name="tutorial-integrate-ringcentral-with-azure-active-directory"></a>Oktatóanyag: a RingCentral és a Azure Active Directory integrálása
 
@@ -25,8 +25,6 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a RingCentral a Az
 * A RingCentral-hez hozzáférő Azure AD-beli vezérlés.
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a RingCentral az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
-
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -42,24 +40,24 @@ Első lépésként a következő elemeket kell megadnia:
 
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* A RingCentral támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
+* A RingCentral támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést.
 
-## <a name="adding-ringcentral-from-the-gallery"></a>RingCentral hozzáadása a gyűjteményből
+## <a name="add-ringcentral-from-the-gallery"></a>RingCentral hozzáadása a gyűjteményből
 
 A RingCentral Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a RingCentral a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **RingCentral** kifejezést a keresőmezőbe.
 1. Válassza ki a **RingCentral** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
+## <a name="configure-and-test-azure-ad-sso-for-ringcentral"></a>Azure AD SSO konfigurálása és tesztelése a RingCentral-hez
 
-Konfigurálja és tesztelje az Azure AD SSO-t a RingCentral a **Britta Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a RingCentral-ben.
+Konfigurálja és tesztelje az Azure AD SSO-t a RingCentral a **Britta Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a RingCentral-ben.
 
-Az Azure AD SSO és a RingCentral konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO és a RingCentral konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
@@ -68,20 +66,20 @@ Az Azure AD SSO és a RingCentral konfigurálásához és teszteléséhez hajtsa
     * **[Hozzon létre RingCentral-teszt felhasználót](#create-ringcentral-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-RingCentral rendelkezik.
 1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/) **RingCentral** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. A Azure Portal **RingCentral** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
+1. Az **egyszeres Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** ceruza ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **alapszintű SAML-konfiguráció** szakaszban, ha **szolgáltatói metaadatokat tartalmazó fájllal**rendelkezik, hajtsa végre a következő lépéseket:
+1. Az **alapszintű SAML-konfiguráció** szakaszban, ha **szolgáltatói metaadatokat tartalmazó fájllal** rendelkezik, hajtsa végre a következő lépéseket:
 
-    1. Kattintson a **metaadat-fájl feltöltése**elemre.
-    1. Kattintson a **mappa emblémára** a metaadat-fájl kiválasztásához, majd kattintson a **feltöltés**elemre.
+    1. Kattintson a **metaadat-fájl feltöltése** elemre.
+    1. Kattintson a **mappa emblémára** a metaadat-fájl kiválasztásához, majd kattintson a **feltöltés** elemre.
     1. A metaadat-fájl feltöltése után a rendszer az **alapszintű SAML-konfiguráció** szakaszban automatikusan feltölti az **azonosítót** és a **Válasz URL-** értékeket.
 
     > [!Note]
@@ -89,14 +87,14 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Ha nem rendelkezik **szolgáltatói metaadat-fájllal**, adja meg a következő mezők értékeit:
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet:
+    a. Az **azonosító** szövegmezőbe írja be az URL-címek egyikét:
   
     | Azonosító |
     |--|
     |  `https://sso.ringcentral.com` |
     | `https://ssoeuro.ringcentral.com` |
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet:
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címek egyikét:
 
     | Válasz URL-cím |
     |--|
@@ -111,7 +109,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `Britta Simon`.  
@@ -121,25 +119,19 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Britta Simon nev�
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a RingCentral hozzáférésének biztosításával.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a RingCentral.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **RingCentral**lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
-
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
-
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
-
-1. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **RingCentral** lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
 ## <a name="configure-ringcentral-sso"></a>RingCentral SSO konfigurálása
 
-1. A RingCentral belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
+1. A RingCentral belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése** lehetőségre kattintva.
 
     ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
 
@@ -149,21 +141,21 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 1. Ha manuálisan szeretné beállítani a RingCentral, nyisson meg egy új böngészőablakot, és jelentkezzen be a RingCentral vállalati webhelyére rendszergazdaként, és hajtsa végre a következő lépéseket:
 
-1. A felső részen kattintson az **eszközök**elemre.
+1. A felső részen kattintson az **eszközök** elemre.
 
-    ![A képernyőképen a RingCentral vállalati webhelyről kiválasztott eszközök láthatók.](./media/ringcentral-tutorial/ringcentral1.png)
+    ![A képernyőképen a RingCentral vállalati webhelyről kiválasztott eszközök láthatók.](./media/ringcentral-tutorial/ringcentral-1.png)
 
 1. Navigáljon az **egyszeri bejelentkezéshez**.
 
-    ![Képernyőfelvétel: a Tools (eszközök) menüből kiválasztva egy Sign-On.](./media/ringcentral-tutorial/ringcentral2.png)
+    ![Képernyőfelvétel: a Tools (eszközök) menüből kiválasztva egy Sign-On.](./media/ringcentral-tutorial/ringcentral-2.png)
 
 1. Az **egyszeri bejelentkezési** oldalon az **SSO-konfiguráció** szakaszban az **1. lépésben** kattintson a **Szerkesztés** elemre, és hajtsa végre a következő lépéseket:
 
-    ![Képernyőfelvétel: az S S O konfiguráció lapja, amelyen kiválaszthatja a szerkesztés lehetőséget.](./media/ringcentral-tutorial/ringcentral3.png)
+    ![Képernyőfelvétel: az S S O konfiguráció lapja, amelyen kiválaszthatja a szerkesztés lehetőséget.](./media/ringcentral-tutorial/ringcentral-3.png)
 
 1. Az **egyszeri bejelentkezés beállítása** oldalon hajtsa végre a következő lépéseket:
 
-    ![A képernyőképen az egy Sign-On beállítása oldalon látható, ahol feltöltheti a D P-metaadatokat.](./media/ringcentral-tutorial/ringcentral4.png)
+    ![A képernyőképen az egy Sign-On beállítása oldalon látható, ahol feltöltheti a D P-metaadatokat.](./media/ringcentral-tutorial/ringcentral-4.png)
 
     a. Kattintson a **Tallózás** gombra a Azure Portal letöltött metaadat-fájl feltöltéséhez.
 
@@ -175,15 +167,15 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
     e. A **2. lépésben** kattintson a **Letöltés** gombra a **szolgáltatói metaadat-fájl** letöltéséhez, és töltse fel azt az **SAML alapszintű konfigurációs** szakaszba az **azonosító** és a **Válasz URL-cím** értékének automatikus kitöltéséhez Azure Portalban.
 
-    ![Képernyőfelvétel: az S S O konfiguráció lapja, amelyen kiválaszthatja a letöltés lehetőséget.](./media/ringcentral-tutorial/ringcentral6.png) 
+    ![Képernyőfelvétel: az S S O konfiguráció lapja, amelyen kiválaszthatja a letöltés lehetőséget.](./media/ringcentral-tutorial/ringcentral-6.png) 
 
     f. Ugyanazon a lapon navigáljon az **SSO engedélyezése** szakaszhoz, és hajtsa végre a következő lépéseket:
 
-    ![A képernyőképen az Enable S S O szakasz látható, ahol befejezheti a konfigurációt.](./media/ringcentral-tutorial/ringcentral5.png)
+    ![A képernyőképen az Enable S S O szakasz látható, ahol befejezheti a konfigurációt.](./media/ringcentral-tutorial/ringcentral-5.png)
 
-    * Válassza az **egyszeri bejelentkezési szolgáltatás engedélyezése**lehetőséget.
+    * Válassza az **egyszeri bejelentkezési szolgáltatás engedélyezése** lehetőséget.
 
-    * Jelölje be az **SSO vagy RingCentral hitelesítő adatokkal való bejelentkezés engedélyezése a felhasználóknak**jelölőnégyzetet.
+    * Jelölje be az **SSO vagy RingCentral hitelesítő adatokkal való bejelentkezés engedélyezése a felhasználóknak** jelölőnégyzetet.
 
     * Kattintson a **Mentés** gombra.
 
@@ -191,16 +183,14 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a RingCentral-ben. A [RingCentral ügyfél-támogatási csapattal](https://success.ringcentral.com/RCContactSupp) együttműködve veheti fel a felhasználókat a RingCentral-platformba. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
-### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-Amikor kiválasztja a RingCentral csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a RingCentral, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját.
 
-## <a name="additional-resources"></a>További források
+* Kattintson az alkalmazás tesztelése Azure Portal lehetőségre, és automatikusan be kell jelentkeznie arra a RingCentral, amelyhez be szeretné állítani az egyszeri bejelentkezést.
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
+* Használhatja a Microsoft saját alkalmazásait. Amikor a saját alkalmazások RingCentral csempére kattint, automatikusan be kell jelentkeznie arra a RingCentral, amelyhez be szeretné állítani az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Következő lépések
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)
-
-- [A RingCentral kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+A RingCentral konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

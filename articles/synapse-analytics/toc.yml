@@ -419,7 +419,7 @@
           items:
             - name: Visszaállítási pontok létrehozása
               href: ./backuprestore/sqlpool-create-restore-point.md
-            - name: Synapse SQL-készlet visszaállítása
+            - name: Dedikált SQL-készlet visszaállítása
               href: ./backuprestore/restore-sql-pool.md
         - name: Kezelés és monitorozás
           items:

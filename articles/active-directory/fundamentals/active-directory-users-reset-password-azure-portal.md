@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 397c74203aae2f52ce81844695266cc36fdf3042
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0b42ac7b4e379559d86942279eaa19fe58533840
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370899"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651887"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Felhasználói jelszó visszaállítása az Azure Active Directoryval
 
@@ -35,13 +35,13 @@ Rendszergazdaként alaphelyzetbe állíthatja a felhasználó jelszavát, ha a j
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/) felhasználói rendszergazdaként vagy jelszó-rendszergazdaként. További információ az elérhető szerepkörökről: [rendszergazdai szerepkörök hozzárendelésének Azure Active Directory](../roles/permissions-reference.md#available-roles)
 
-2. Válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**lehetőséget, keresse meg és válassza ki az alaphelyzetbe állítani kívánt felhasználót, majd válassza a **jelszó alaphelyzetbe állítása**lehetőséget.
+2. Válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** lehetőséget, keresse meg és válassza ki az alaphelyzetbe állítani kívánt felhasználót, majd válassza a **jelszó alaphelyzetbe állítása** lehetőséget.
 
     Megjelenik az **Alain Charon-profil** lap a **jelszó alaphelyzetbe állítása** beállítással.
 
     ![Felhasználói profil lapja, a jelszó alaphelyzetbe állítása lehetőség kiemelve](media/active-directory-users-reset-password-azure-portal/user-profile-reset-password-link.png)
 
-3. A **jelszó alaphelyzetbe** állítása lapon válassza a **jelszó alaphelyzetbe állítása**lehetőséget.
+3. A **jelszó alaphelyzetbe** állítása lapon válassza a **jelszó alaphelyzetbe állítása** lehetőséget.
 
     > [!Note]
     > Azure Active Directory használatakor a rendszer automatikusan létrehoz egy ideiglenes jelszót a felhasználó számára. Active Directory helyszíni használatakor hozza létre a felhasználó jelszavát.
@@ -50,6 +50,10 @@ Rendszergazdaként alaphelyzetbe állíthatja a felhasználó jelszavát, ha a j
 
     >[!Note]
     >Az ideiglenes jelszó soha nem jár le. Amikor a felhasználó legközelebb bejelentkezik, a jelszó továbbra is működni fog, függetlenül attól, hogy mennyi idő telt el az ideiglenes jelszó létrehozása óta.
+
+> [!IMPORTANT]
+> Ha a rendszergazda nem tudja alaphelyzetbe állítani a felhasználó jelszavát, és az alkalmazás eseménynaplójában a Azure AD Connect-kiszolgálón a következő hibakód jelenik meg: HR = 80231367, tekintse át a felhasználó Active Directory-attribútumait.  Ha a **AdminCount** attribútum értéke 1, akkor a rendszergazda nem állíthatja alaphelyzetbe a felhasználó jelszavát.  A **AdminCount** attribútumot 0 értékre kell beállítani ahhoz, hogy a rendszergazdák visszaállítsák a felhasználó jelszavát.
+
 
 ## <a name="next-steps"></a>Következő lépések
 

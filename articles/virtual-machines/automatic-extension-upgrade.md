@@ -3,16 +3,17 @@ title: A virtuális gépek és a méretezési csoportok automatikus bővítmény
 description: Megtudhatja, hogyan engedélyezheti az automatikus bővítmény frissítését a virtuális gépek és a virtuálisgép-méretezési csoportok számára az Azure-ban.
 author: mayanknayar
 ms.service: virtual-machines
+ms.subservice: automatic-extension-upgrades
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: manayar
-ms.openlocfilehash: acc014785105d14c3109cfa420f0e9402ca3f534
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 104eada6dc342c21b8da2f409756e9f34c103936
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417559"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668333"
 ---
 # <a name="preview-automatic-extension-upgrade-for-vms-and-scale-sets-in-azure"></a>Előzetes verzió: az Azure-beli virtuális gépek és méretezési csoportok automatikus bővítményének frissítése
 
@@ -21,7 +22,7 @@ Az automatikus bővítmény frissítése az Azure-beli virtuális gépek és az 
  Az automatikus bővítmény frissítése a következő funkciókkal rendelkezik:
 - Azure-beli virtuális gépek és Azure-Virtual Machine Scale Sets esetén támogatott. A Service Fabric Virtual Machine Scale Sets jelenleg nem támogatottak.
 - A frissítések a rendelkezésre állási első üzembe helyezési modellben lesznek alkalmazva (lásd alább).
-- Ha egy Virtual Machine Scale Sets alkalmazza, a Virtual Machine Scale Sets virtuális gépek több mint 20%-a lesz frissítve egyetlen kötegben (egy kötegben legalább egy virtuális gép esetében).
+- Virtuálisgép-méretezési csoport esetén a méretezési csoport virtuális gépei nem több mint 20%-a lesz frissítve egyetlen kötegben. A köteg minimális mérete egy virtuális gép.
 - Minden virtuálisgép-mérettel működik, valamint Windows-és Linux-bővítmények esetén is.
 - Bármikor letilthatja az automatikus frissítést.
 - Az automatikus bővítmények frissítése bármilyen méretű Virtual Machine Scale Sets engedélyezhető.
@@ -36,24 +37,9 @@ Az automatikus bővítmény frissítése az Azure-beli virtuális gépek és az 
 
 
 ## <a name="how-does-automatic-extension-upgrade-work"></a>Hogyan működik az automatikus bővítmény frissítése?
-A bővítmény frissítési folyamata úgy működik, hogy lecseréli a meglévő bővítmény verzióját egy virtuális gépre a bővítmény közzétevője által közzétett új kiterjesztési verzióra. A virtuális gép állapotát az új bővítmény telepítése után figyeli a rendszer. Ha a virtuális gép nem kifogástalan állapotban van a frissítés befejezését követően 5 percen belül, az új bővítmény verziója visszaáll az előző verzióra.
+A bővítmény frissítési folyamata lecseréli a meglévő bővítmény verzióját egy virtuális gépre, amely a bővítmény közzétevője által közzétett, azonos kiterjesztésű új verzióval rendelkezik. A virtuális gép állapotát az új bővítmény telepítése után figyeli a rendszer. Ha a virtuális gép nem kifogástalan állapotban van a frissítés befejezését követően 5 percen belül, a bővítmény verziója visszaáll az előző verzióra.
 
 A rendszer automatikusan újrapróbálkozik egy sikertelen bővítmény frissítésével. Az újrapróbálkozást a rendszer minden egyes nap automatikusan megkísérli a felhasználói beavatkozás nélkül.
-
-
-## <a name="upgrade-process-for-virtual-machine-scale-sets"></a>Virtual Machine Scale Sets frissítési folyamata
-1. A frissítési folyamat megkezdése előtt a Orchestrator biztosítja, hogy a teljes méretezési csoporton belül a virtuális gépek legfeljebb 20%-a sérült (bármilyen okból).
-
-2. A frissítési Orchestrator azonosítja a frissítendő virtuálisgép-példányok kötegét, és a teljes virtuális gép darabszámának maximum 20%-át, egy virtuális gép minimális batch-méretét is felszámítva.
-
-3. A konfigurált alkalmazás-állapoti tesztekkel vagy az alkalmazás-állapottal rendelkező méretezési csoportok esetében a frissítés a virtuális gép Kifogástalan állapotba helyezése érdekében 5 percet vár (vagy a meghatározott állapot mintavételi konfigurációját), mielőtt a következő köteget frissítené. Ha egy virtuális gép a frissítés után nem állítja helyre az állapotát, akkor a rendszer alapértelmezés szerint újratelepíti a virtuális gép előző bővítményének verzióját.
-
-4. A frissítési Orchestrator azt a virtuális gépek százalékos arányát is nyomon követi, amelyek a frissítés után nem Kifogástalan állapotba válnak. A frissítés leáll, ha a frissített példányok több mint 20%-a nem Kifogástalan állapotba kerül a frissítési folyamat során.
-
-A fenti folyamat addig folytatódik, amíg a méretezési csoport összes példánya frissítve nem lett.
-
-A méretezési csoport frissítési Orchestrator az összes köteg frissítése előtt ellenőrzi a teljes méretezési csoport állapotát. A kötegek frissítésekor előfordulhat, hogy a méretezési csoport virtuális gépei állapotát befolyásoló egyidejű tervezett vagy nem tervezett karbantartási tevékenységek lehetnek. Ilyen esetekben, ha a méretezési csoport példányainak több mint 20%-a nem megfelelő állapotba kerül, a méretezési csoport frissítése az aktuális köteg végén leáll.
-
 
 ### <a name="availability-first-updates"></a>Rendelkezésre állás – első frissítések
 A platformmal összehangolt frissítések rendelkezésre állása – első modellje biztosítja, hogy az Azure-beli rendelkezésre állási konfigurációk több rendelkezésre állási szinten legyenek figyelembe véve.
@@ -62,9 +48,9 @@ A frissítés alatt álló virtuális gépek egy csoportja esetében az Azure pl
 
 **Régiók között:**
 - Egy frissítés globálisan zajlik az Azure-ban az Azure-alapú üzembe helyezési hibák megelőzése érdekében.
-- A "fázis" egy vagy több régiót is jelenthet, és a frissítések csak akkor mozognak a fázisok között, ha az adott fázisban található jogosult virtuális gépek frissítése sikeresen megtörtént.
+- A "Phase" egy vagy több régióval rendelkezhet, és a frissítés csak akkor halad át a fázisokban, ha a jogosult virtuális gépek az előző fázisban sikeresen frissültek.
 - A Geo-párosítású régiók nem frissülnek egyidejűleg, és nem lehetnek ugyanabban a regionális fázisban.
-- A frissítés sikerességét a virtuális gépek frissítés utáni állapotának nyomon követésével mérjük. A virtuális gép állapotának nyomon követése a virtuális gép platformjának állapotára vonatkozó mutatókon keresztül történik. Virtual Machine Scale Sets esetén a virtuális gép állapota az Application Health-teszteken vagy az alkalmazás-állapoton keresztül követhető, ha a méretezési csoportra alkalmazva van.
+- A frissítés sikerességét a virtuális gépek frissítés utáni állapotának nyomon követésével mérjük. A virtuális gép állapotának nyomon követése a virtuális gép platformjának állapotára vonatkozó mutatókon keresztül történik. Virtual Machine Scale Sets esetében a virtuálisgép-állapot nyomon követése az Application Health-vizsgálatok vagy az alkalmazás-állapot bővítmény használatával történik, ha a méretezési csoportra alkalmazva van.
 
 **Régión belül:**
 - A különböző Availability Zonesban lévő virtuális gépek egyidejű frissítése nem történik meg.
@@ -75,6 +61,18 @@ A frissítés alatt álló virtuális gépek egy csoportja esetében az Azure pl
 - A Common rendelkezésre állási csoportba tartozó virtuális gépek a frissítési tartomány határain belül frissülnek, a több frissítési tartományba tartozó virtuális gépek pedig nem frissülnek egyszerre.  
 - A közös virtuálisgép-méretezési csoportba tartozó virtuális gépek kötegekben vannak csoportosítva, és frissülnek a frissítési tartomány határain belül.
 
+### <a name="upgrade-process-for-virtual-machine-scale-sets"></a>Virtual Machine Scale Sets frissítési folyamata
+1. A frissítési folyamat megkezdése előtt a Orchestrator biztosítja, hogy a teljes méretezési csoporton belül a virtuális gépek legfeljebb 20%-a sérült (bármilyen okból).
+
+2. A frissítési Orchestrator azonosítja a frissítendő virtuálisgép-példányok kötegét. Egy frissítési köteg legfeljebb 20%-kal rendelkezhet a virtuális gépek teljes számától, és egy virtuális gép minimális batch-mérete is megadható.
+
+3. A konfigurált alkalmazás-állapottal vagy alkalmazás-állapottal rendelkező méretezési csoportok esetében a frissítés a következő köteg frissítése előtt legfeljebb 5 percet vár (vagy a definiált állapot mintavételi konfigurációja), hogy a virtuális gép Kifogástalan állapotba kerüljön. Ha egy virtuális gép a frissítés után nem állítja helyre az állapotát, akkor a rendszer alapértelmezés szerint újratelepíti az előző bővítmény verzióját a virtuális gépen.
+
+4. A frissítési Orchestrator azt a virtuális gépek százalékos arányát is nyomon követi, amelyek a frissítés után nem Kifogástalan állapotba válnak. A frissítés leáll, ha a frissített példányok több mint 20%-a nem Kifogástalan állapotba kerül a frissítési folyamat során.
+
+A fenti folyamat addig folytatódik, amíg a méretezési csoport összes példánya frissítve nem lett.
+
+A méretezési csoport frissítési Orchestrator az összes köteg frissítése előtt ellenőrzi a teljes méretezési csoport állapotát. A kötegek frissítésekor előfordulhat, hogy a méretezési csoport virtuális gépei állapotát befolyásoló egyidejű tervezett vagy nem tervezett karbantartási tevékenységek lehetnek. Ilyen esetekben, ha a méretezési csoport példányainak több mint 20%-a nem megfelelő állapotba kerül, a méretezési csoport frissítése az aktuális köteg végén leáll.
 
 ## <a name="supported-extensions"></a>Támogatott bővítmények
 Az automatikus bővítmény frissítésének előnézete a következő bővítményeket támogatja (és rendszeresen bővülnek):
@@ -258,13 +256,13 @@ az vmss extension set \
 
 ## <a name="extension-upgrades-with-multiple-extensions"></a>Bővítmények frissítése több bővítménnyel
 
-A virtuális gépek vagy virtuálisgép-méretezési csoport több bővítményt is tartalmazhat, amelyeken engedélyezve van az automatikus bővítmény frissítése, továbbá az automatikus bővítmények frissítése nélkül is.  
+Egy virtuális gép vagy virtuálisgép-méretezési csoport több bővítménnyel is rendelkezhet, amelyeken engedélyezve van az automatikus bővítmény frissítése. Ugyanez a virtuális gép vagy méretezési csoport más bővítményekkel is rendelkezhet, ha engedélyezve van az automatikus bővítmény frissítése.  
 
-Ha egy virtuális gép több bővítményt is frissít, akkor előfordulhat, hogy a frissítések kötegelt feldolgozást végeznek. A bővítmények frissítését azonban egyenként kell alkalmazni egy virtuális gépen. Az egyik bővítmény hibája nem befolyásolja az esetlegesen frissíthető többi bővítményt (ka) t. Ha például két bővítmény van ütemezve egy frissítésre, és az első bővítmény frissítése meghiúsul, a második Kiterjesztés továbbra is frissül.
+Ha egy virtuális gép több bővítményt is frissít, akkor előfordulhat, hogy a frissítések kötegbe vannak csoportosítva, de az egyes bővítmények frissítése külön történik a virtuális gépen. Az egyik bővítmény hibája nem befolyásolja az esetlegesen frissíthető többi bővítményt (ka) t. Ha például két bővítmény van ütemezve egy frissítésre, és az első bővítmény frissítése meghiúsul, a második Kiterjesztés továbbra is frissül.
 
-Az automatikus bővítmények frissítése akkor is alkalmazható, ha egy virtuális gép vagy virtuálisgép-méretezési csoport több bővítményt is konfigurál a [bővítmény-előkészítéssel](../virtual-machine-scale-sets/virtual-machine-scale-sets-extension-sequencing.md). A bővítmények sorrendbe állítása a virtuális gép első üzembe helyezésére vonatkozik, és a bővítmények minden további frissítését egymástól függetlenül alkalmazza a rendszer.
+Az automatikus bővítmények frissítése akkor is alkalmazható, ha egy virtuális gép vagy virtuálisgép-méretezési csoport több bővítményt is konfigurál a [bővítmény-előkészítéssel](../virtual-machine-scale-sets/virtual-machine-scale-sets-extension-sequencing.md). A bővítmények sorrendbe állítása a virtuális gép első üzembe helyezése esetén érvényes, és a bővítmények jövőbeli frissítései egymástól függetlenül lesznek alkalmazva.
 
 
 ## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
-> [Tudnivalók az alkalmazás állapotának kiterjesztéséről](./windows/automatic-vm-guest-patching.md)
+> [Tudnivalók az alkalmazás állapotának kiterjesztéséről](../virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension.md)

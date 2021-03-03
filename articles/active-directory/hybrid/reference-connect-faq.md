@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fa195fd8d40c6b67a9c446f0b2320fe47d75259
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 29c0ae8ec210356f6027a46ed01f2a7126ea4a49
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092666"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644731"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect GYIK
 
@@ -201,7 +201,7 @@ A folyamat a környezet méretétől függően több órát is igénybe vehet. A
 **K: kaptam egy e-mailt, amely azt jelzi, hogy az automatikus frissítés már nem működik, és új verziót kell telepíteni. Miért van erre szükség?**  
 A múlt évben a Azure AD Connect egy olyan verzióját adtuk ki, amely bizonyos esetekben letiltotta az automatikus verziófrissítés funkciót a kiszolgálón. Kijavítottuk a problémát Azure AD Connect 1.1.750.0-verzióban. Ha a probléma befolyásolta a problémát, a megoldáshoz PowerShell-parancsfájl futtatásával vagy a Azure AD Connect legújabb verziójára történő manuális frissítéssel csökkentheti. 
 
-A PowerShell-szkript futtatásához [töltse le a parancsfájlt](https://aka.ms/repairaadconnect) , majd futtassa a Azure ad Connect-kiszolgálón egy felügyeleti PowerShell-ablakban. A szkript futtatásának megismeréséhez [tekintse meg ezt a rövid videót](https://aka.ms/repairaadcau).
+A PowerShell-szkript futtatásához [töltse le a parancsfájlt](/samples/browse/?redirectedfrom=TechNet-Gallery) , majd futtassa a Azure ad Connect-kiszolgálón egy felügyeleti PowerShell-ablakban. A szkript futtatásának megismeréséhez [tekintse meg ezt a rövid videót](https://aka.ms/repairaadcau).
 
 A manuális frissítéshez le kell töltenie és futtatnia kell a AADConnect.msi fájl legújabb verzióját.
  

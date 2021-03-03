@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: 92658584030fa83da067eceab391d9bba2f034c0
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 203abe2b6def478dc1747dd4ce638b5b62707612
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93392299"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659222"
 ---
 # <a name="create-external-stream-transact-sql"></a>KÜLSŐ STREAM létrehozása (Transact-SQL)
 
@@ -27,8 +27,8 @@ Az Azure SQL Edge jelenleg csak a következő adatforrásokat támogatja stream-
 | Adatforrás típusa | Input (Bemenet) | Kimenet | Leírás |
 |------------------|-------|--------|------------------|
 | Azure IoT Edge hub | Y | Y | Az adatforrást az adatfolyamok Azure IoT Edge központba való olvasására és írására. További információ: [IoT Edge hub](../iot-edge/iot-edge-runtime.md#iot-edge-hub).|
-| SQL Database | N | I | Adatforrás-kapcsolódás az adatfolyam-adatSQL Databaseba való íráshoz. Az adatbázis lehet egy helyi adatbázis az Azure SQL Edge-ben vagy egy távoli adatbázis SQL Server vagy Azure SQL Database.|
-| Kafka | I | N | Adatforrást egy Kafka-témakörben lévő adatfolyam-adatok olvasásához. A Kafka-támogatás nem érhető el az Azure SQL Edge ARM64 verziójához.|
+| SQL Database | N | Y | Adatforrás-kapcsolódás az adatfolyam-adatSQL Databaseba való íráshoz. Az adatbázis lehet egy helyi adatbázis az Azure SQL Edge-ben vagy egy távoli adatbázis SQL Server vagy Azure SQL Database.|
+| Kafka | Y | N | Adatforrást egy Kafka-témakörben lévő adatfolyam-adatok olvasásához. A Kafka-támogatás nem érhető el az Azure SQL Edge ARM64 verziójához.|
 
 
 
@@ -94,12 +94,12 @@ WITH  ( <with_options> )
 
 - [DATA_SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql/)
 - [FILE_FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql/)
-- **Hely** : az adatforrásban szereplő tényleges adatok vagy helyek neve. 
+- **Hely**: az adatforrásban szereplő tényleges adatok vagy helyek neve. 
    - Az Edge hub vagy a Kafka stream objektumok esetében a Location (hely) megadja az Edge-központ vagy a Kafka-témakör nevét, amelyből olvasni vagy írni kíván.
    - Az SQL stream-objektumok (SQL Server, Azure SQL Database vagy az Azure SQL Edge) helye a tábla nevét adja meg. Ha az adatfolyam ugyanabban az adatbázisban és sémában jön létre, mint a céltábla, akkor csak a tábla neve elegendő. Ellenkező esetben teljes jogosultsággal kell rendelkeznie (<adatbázisnév. schema_name. table_name) a tábla nevével.
    - Az Azure Blob Storage Stream objektum helye a blob-tárolón belül használandó elérésiút-mintát jelenti. A szolgáltatással kapcsolatos további információkért lásd: (/articles/stream-Analytics/stream-Analytics-define-outputs.MD # blob-Storage-and-Azure-adat-Lake-Gen2)
 
-- **INPUT_OPTIONS** : beállítások megadása kulcs-érték párokként olyan szolgáltatásokhoz, mint például a Kafka, a IoT Edge hub, amely az adatfolyam-lekérdezések bemenetei
+- **INPUT_OPTIONS**: beállítások megadása kulcs-érték párokként olyan szolgáltatásokhoz, mint például a Kafka, a IoT Edge hub, amely az adatfolyam-lekérdezések bemenetei
     - PARTÍCIÓk: egy témakörhöz definiált partíciók száma. A használható partíciók maximális száma 32-re van korlátozva.
       - A Kafka bemeneti Streamekre vonatkozik
     - CONSUMER_GROUP: az Event és a IoT hubok az egyik fogyasztói csoporton belül korlátozzák az olvasók számát (5). Ha ezt a mezőt üresen hagyja, a "$Default" fogyasztói csoportot fogja használni.
@@ -111,7 +111,7 @@ WITH  ( <with_options> )
     - OUT_OF_ORDER_EVENT_TOLERANCE: az események addig nem érkeznek meg, amíg a bemenetről az adatfolyam-lekérdezésbe elvégezték az utat. Ezek az események elfogadhatók a-ben, vagy dönthet úgy is, hogy egy meghatározott időszakra szünetelteti az átrendezést.
       - Későbbi használatra fenntartva. Nem vonatkozik az Azure SQL Edge-re.
         
-- **OUTPUT_OPTIONS** : adja meg a beállításokat kulcs-érték párokként a streaming lekérdezésekhez kimenetként támogatott szolgáltatások esetében 
+- **OUTPUT_OPTIONS**: adja meg a beállításokat kulcs-érték párokként a streaming lekérdezésekhez kimenetként támogatott szolgáltatások esetében 
   - REJECT_POLICY: DROP | Próbálkozzon újra a fajokkal az Adatátalakítási hibák esetén. 
     - Az összes támogatott kimenetre vonatkozik 
   - MINIMUM_ROWS:  
@@ -162,7 +162,7 @@ WITH
  
 CREATE EXTERNAL FILE FORMAT myFileFormat  
 WITH (  
-   FORMAT_TYPE = 'JSON', 
+   FORMAT_TYPE = JSON, 
 ); 
  
 CREATE EXTERNAL STREAM Stream_A  

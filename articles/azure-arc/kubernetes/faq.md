@@ -2,18 +2,18 @@
 title: Azure arc-kompatibilis Kubernetes – gyakori kérdések
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/17/2021
+ms.date: 02/19/2021
 ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
 description: Ez a cikk az Azure arc-kompatibilis Kubernetes kapcsolatos gyakori kérdések listáját tartalmazza
 keywords: Kubernetes, arc, Azure, tárolók, konfiguráció, GitOps, GYIK
-ms.openlocfilehash: e0d7501dc1a82940571d0168222c396f61a70bce
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: dc12294b5d53372be5f2e1dd71436973fefbb194
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652496"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647863"
 ---
 # <a name="frequently-asked-questions---azure-arc-enabled-kubernetes"></a>Gyakori kérdések – Azure arc-kompatibilis Kubernetes
 
@@ -32,6 +32,8 @@ Nem. Az összes Azure arc-kompatibilis Kubernetes funkció, beleértve a Azure M
 ## <a name="should-i-connect-my-aks-hci-cluster-and-kubernetes-clusters-on-azure-stack-hub-and-azure-stack-edge-to-azure-arc"></a>Csatlakoztatni kell az AK-HCI-fürtöt és a Kubernetes-fürtöket Azure Stack hub-on, és Azure Stack Edge-t az Azure arc-hoz?
 
 Igen, ha az AK-HCI-fürtöt vagy a Kubernetes-fürtöket Azure Stack Edge-ben vagy Azure Stack hub-on az Azure arc-hoz csatlakoztatja, az Azure Resource Manager-ban erőforrás-ábrázolással Ez az erőforrás-ábrázolás olyan funkciókat bővít ki, mint a fürtkonfiguráció, a Azure Monitor és a Azure Policy (forgalomirányító) a csatlakoztatott Kubernetes-fürtökhöz.
+
+Ha az Azure arc-kompatibilis Kubernetes-fürt Azure Stack Edge, AK Azure Stack HCI (>= április 2021 Update), vagy ak a Windows Server 2019 Datacenter (>= április 2021 Update), akkor a Kubernetes-konfiguráció díjmentesen szerepel.
 
 ## <a name="how-to-address-expired-azure-arc-enabled-kubernetes-resources"></a>Hogyan lehet kezelni a lejárt Azure arc-kompatibilis Kubernetes-erőforrásokat?
 
@@ -70,6 +72,6 @@ Ez a szolgáltatás alapkonfigurációkat (például hálózati házirendeket, s
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Fürt összekötése az Azure-ív használatával](./connect-cluster.md)
+* [Fürt összekötése az Azure-ív használatával](./quickstart-connect-cluster.md)
 * [Konfigurációk létrehozása az ív használatára képes Kubernetes-fürtön](./use-gitops-connected-cluster.md)
 * [A Azure Policy használata a konfigurációk nagy méretekben való alkalmazásához](./use-azure-policy.md)

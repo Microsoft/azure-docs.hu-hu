@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: c67b0bab554f363b8389c5557eadeac6e4c577a2
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: f94134b2a06155b1b1f390175578e501a840038b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625231"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669418"
 ---
 # <a name="self-help-for-serverless-sql-pool"></a>Önkiszolgáló nélküli SQL-készlet – Súgó
 
@@ -30,7 +30,7 @@ Ha a szinapszis Studio nem tud kapcsolatot létesíteni a kiszolgáló nélküli
 ## <a name="query-fails-because-file-cannot-be-opened"></a>A lekérdezés sikertelen, mert a fájl nem nyitható meg
 
 Ha a lekérdezés sikertelen a "fájl nem nyitható meg, mert nem létezik, vagy egy másik folyamat használja", és biztos benne, hogy mindkét fájl létezik, és egy másik folyamat nem használja azt, az azt jelenti, hogy a kiszolgáló nélküli SQL-készlet nem fér hozzá a fájlhoz. Ez a probléma általában azért fordul elő, mert a Azure Active Directory identitása nem rendelkezik jogosultsággal a fájl eléréséhez. Alapértelmezés szerint a kiszolgáló nélküli SQL-készlet a Azure Active Directory identitásával próbál hozzáférni a fájlhoz. A probléma megoldásához megfelelő jogosultságokkal kell rendelkeznie a fájl eléréséhez. Ennek legegyszerűbb módja, ha „Storage-blobadatok közreműködője” szerepkört ad saját magának ahhoz a tárterülethez, amelyet lekérdezni próbál. 
-- [További információért tekintse meg az Azure Active Directory teljes körű tárterülethozzáférés-vezérlési útmutatóját](../../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). 
+- [További információért tekintse meg az Azure Active Directory teljes körű tárterülethozzáférés-vezérlési útmutatóját](../../storage/common/storage-auth-aad-rbac-portal.md). 
 - [A kiszolgáló nélküli SQL-készlethez tartozó hozzáférés-vezérlési fiók elérésének megkeresése az Azure szinapszis Analyticsben](develop-storage-files-storage-access-control.md)
 
 ## <a name="query-fails-because-it-cannot-be-executed-due-to-current-resource-constraints"></a>A lekérdezés sikertelen, mert a jelenlegi erőforrás-megkötések miatt nem hajtható végre. 

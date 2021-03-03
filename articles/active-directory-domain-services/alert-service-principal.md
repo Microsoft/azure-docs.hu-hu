@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
 ms.author: justinha
-ms.openlocfilehash: 00ab5c85a477c9c4080acf252cbbde9d4ce816a9
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 15dba02d3db45d663b8ba0aa7eb93bbc3f388532
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620239"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645874"
 ---
 # <a name="known-issues-service-principal-alerts-in-azure-active-directory-domain-services"></a>Ismert problémák: az egyszerű szolgáltatások riasztásai a Azure Active Directory Domain Services
 
@@ -107,7 +107,7 @@ A hitelesítő adatok szinkronizálásához használt Azure AD-alkalmazás újb�
 
 Miután mindkét alkalmazást törölte, az Azure platform automatikusan újra létrehozza őket, és megkísérli a jelszó-szinkronizálást. A felügyelt tartomány állapota két órán belül automatikusan frissül, és eltávolítja a riasztást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha továbbra is problémákba ütközik, [Nyisson meg egy Azure-támogatási kérést][azure-support] további hibaelhárítási segítségért.
 

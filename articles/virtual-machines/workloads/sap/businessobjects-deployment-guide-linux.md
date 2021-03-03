@@ -8,19 +8,18 @@ manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: a7361dafce30b07e76d971bdcda41cf4b3cd9e6e
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 7a40acf7dea11781a0381e93ea180c5185b7818b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806174"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671919"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>SAP BusinessObjects BI platformtelepítési útmutató Linuxhoz az Azure-on
 
@@ -37,7 +36,7 @@ Ebben a példában a termék verziója és a fájlrendszer elrendezése van hasz
 - Azure Database for MySQL (verzió: 8.0.15)
 - MySQL C API-összekötő – libmysqlclient (verzió: 6.1.11)
 
-| Fájlrendszer        | Leírás                                                                                                               | Méret (GB)             | Tulajdonos  | Group  | Storage                    |
+| Fájlrendszer        | Leírás                                                                                                               | Méret (GB)             | Tulajdonos  | Group  | Tárolás                    |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------|-----------------------|--------|--------|----------------------------|
 | /usr/sap           | Az SAP BOBI-példány, az alapértelmezett tomcat-webalkalmazás és az adatbázis-illesztőprogramok telepítéséhez használt fájlrendszer (ha szükséges) | SAP-Méretezési irányelvek | bl1adm | sapsys | Felügyelt prémium lemez – SSD |
 | /usr/sap/frsinput  | A csatlakoztatási könyvtár a megosztott fájlok között minden olyan BOBI-gazdagépen megtalálható, amelyet bemeneti adattárként fog használni.  | Üzleti igények         | bl1adm | sapsys | Azure NetApp Files         |
@@ -691,7 +690,7 @@ Az alábbiakban az ebben a példában használt egyes szintek vész-helyreállí
 | Azure NetApp Files        | Fájl alapú másolási eszköz az adatreplikáláshoz a másodlagos régióba **vagy** a ANF régiók közötti replikálásra (előzetes verzió) |
 | Azure Database for MySQL  | A tartományok közötti olvasási replikák **vagy** a biztonsági mentés visszaállítása a Geo-redundáns biztonsági mentésből.                             |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Vész-helyreállítás beállítása többrétegű SAP-alkalmazások üzembe helyezéséhez](../../../site-recovery/site-recovery-sap.md)
 - [Azure Virtual Machines az SAP tervezéséhez és megvalósításához](planning-guide.md)

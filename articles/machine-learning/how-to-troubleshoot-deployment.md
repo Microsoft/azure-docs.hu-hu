@@ -10,22 +10,22 @@ ms.author: gopalv
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 4901d73235778a3194fe75b95df9cb81aeeb093b
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 3839dd27d4ae380b268694a93e5910b323411847
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100651680"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657281"
 ---
 # <a name="troubleshooting-remote-model-deployment"></a>Távoli modellek központi telepítésének hibaelhárítása 
 
 Ismerje meg, hogy miként lehet elhárítani és megoldani a modelleket a Azure Container Instances (ACI) és az Azure Kubernetes Service (ak) szolgáltatással való üzembe helyezése során felmerülő gyakori hibák elhárításához és megoldásához Azure Machine Learning használatával.
 
 > [!NOTE]
-> Ha modellt helyez üzembe az Azure Kubernetes Service (ak) szolgáltatásban, javasoljuk, hogy engedélyezze [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-enable-existing-clusters) a fürt számára. Ez segítséget nyújt a fürt állapotának és erőforrás-használatának általános megismerésében. A következő erőforrások is hasznosak lehetnek:
+> Ha modellt helyez üzembe az Azure Kubernetes Service (ak) szolgáltatásban, javasoljuk, hogy engedélyezze [Azure monitor](../azure-monitor/containers/container-insights-enable-existing-clusters.md) a fürt számára. Ez segítséget nyújt a fürt állapotának és erőforrás-használatának általános megismerésében. A következő erőforrások is hasznosak lehetnek:
 >
-> * [Az AK-fürtöt befolyásoló Resource Health események keresése](https://docs.microsoft.com/azure/aks/aks-resource-health)
-> * [Azure Kubernetes Service Diagnostics](https://docs.microsoft.com/azure/aks/concepts-diagnostics)
+> * [Az AK-fürtöt befolyásoló Resource Health események keresése](../aks/aks-resource-health.md)
+> * [Azure Kubernetes Service Diagnostics](../aks/concepts-diagnostics.md)
 >
 > Ha egy modellt nem kifogástalan állapotú vagy túlterhelt fürtre próbál telepíteni, a rendszer problémát tapasztal. Ha segítségre van szüksége az AK-fürtökkel kapcsolatos problémák megoldásához, forduljon az AK-támogatáshoz.
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 02/12/2021
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08f560f076caf90c9c930cedfd6a7ba9c6c8b37d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 95c7ca826eaf7d72cb35985b154458f149ef4a0e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365446"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649315"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B-együttműködésre irányuló meghívás beváltása
 
@@ -28,21 +28,19 @@ Amikor vendég felhasználót ad hozzá a címtárhoz, a vendég felhasználói 
    > - **2021. január 4-én kezdődően** a Google [elavult webnézet-bejelentkezési támogatást jelenít meg](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html). Ha Google-összevonást vagy önkiszolgáló regisztrációt használ a Gmail szolgáltatással, az üzletági [natív alkalmazásokat tesztelje a kompatibilitás](google-federation.md#deprecation-of-webview-sign-in-support)érdekében.
    > - **Október 2021-től kezdve** a Microsoft nem fogja támogatni a meghívások beváltását azáltal, hogy nem felügyelt Azure ad-fiókokat és bérlőket hoz létre vállalatközi együttműködési forgatókönyvek létrehozásához. A felkészülés során javasoljuk, hogy az ügyfelek [e-mail-egyszeri jelszavas hitelesítést](one-time-passcode.md)kérjenek. Szívesen fogadjuk visszajelzését ezen a nyilvános előzetes verzióban, és örömmel vesszük, hogy még több módszert is létre lehetne hozni az együttműködésre.
 
-## <a name="redemption-through-the-invitation-email"></a>Visszaváltás a meghívó e-mailben
+## <a name="redemption-and-sign-in-through-a-common-endpoint"></a>Váltás és bejelentkezés közös végponton keresztül
 
-Ha [a Azure Portal használatával](./b2b-quickstart-add-guest-users-portal.md)ad hozzá egy vendég felhasználót a címtárhoz, a rendszer meghívót küld a vendégnek a folyamatban. Azt is megteheti, hogy a [PowerShell használatával](./b2b-quickstart-invite-powershell.md) küldi el a meghívó e-maileket, ha vendég felhasználókat ad hozzá a címtárhoz. Itt látható a vendég felhasználói felületének leírása, amikor beváltják a hivatkozást az e-mailben.
+A vendég felhasználók mostantól egy közös végponton (URL) keresztül jelentkezhetnek be a több-bérlős vagy a Microsoft-alkalmazásokba `https://myapps.microsoft.com` . Korábban egy közös URL-cím átirányítja a vendég felhasználót a saját otthoni bérlőre az erőforrás-bérlő helyett a hitelesítéshez, így szükség van egy bérlőre vonatkozó hivatkozásra (például `https://myapps.microsoft.com/?tenantid=<tenant id>` ). Most, hogy a vendég felhasználó megtekintheti az alkalmazás közös URL-címét, válassza a **bejelentkezési beállítások lehetőséget**, majd válassza a **Bejelentkezés a szervezetbe** lehetőséget. A felhasználó ezután beírja a szervezet nevét.
 
-1. A vendég a **Microsoft meghívótól** kapott [meghívó e-mailt](./invitation-email-elements.md) kap.
-2. A vendég kiválasztja a **meghívót** az e-mailben.
-3. A vendég a saját hitelesítő adatait fogja használni a címtárba való bejelentkezéshez. Ha a vendégnek nincs olyan fiókja, amely összevonható a címtárral, és nincs engedélyezve az [e-mail egyszeri jelszava (OTP)](./one-time-passcode.md) szolgáltatás. a vendég megkéri, hogy hozzon létre egy személyes [MSA](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) vagy egy [Azure ad](../enterprise-users/directory-self-service-signup.md)önkiszolgáló fiókot. A részletekért tekintse meg a [meghívás beváltási folyamatát](#invitation-redemption-flow) .
-4. A vendég irányítását az alábbiakban ismertetett belefoglalási [élmény](#consent-experience-for-the-guest) vezérli.
+![Gyakori végpont-bejelentkezés](media/redemption-experience/common-endpoint-flow-small.png)
 
+Ezt követően a rendszer átirányítja a felhasználót a bérlői végpontra, ahol bejelentkezhet az e-mail-címükkel, vagy kijelölhet egy Ön által konfigurált identitás-szolgáltatót.
 ## <a name="redemption-through-a-direct-link"></a>Váltás közvetlen kapcsolaton keresztül
 
-A meghívót tartalmazó e-mailek alternatívájaként az alkalmazásra vagy a portálra mutató közvetlen hivatkozást is megadhat. Először hozzá kell adnia a vendég felhasználót a címtárhoz a [Azure Portal](./b2b-quickstart-add-guest-users-portal.md) vagy a [PowerShell](./b2b-quickstart-invite-powershell.md)használatával. Ezután bármilyen [testreszabható módszert használhat az alkalmazások felhasználók számára történő központi telepítéséhez](../manage-apps/end-user-experiences.md), beleértve a közvetlen bejelentkezési hivatkozásokat is. Ha egy vendég közvetlen hivatkozást használ a meghívó e-mail-címe helyett, a rendszer továbbra is az első belefoglalási élményt fogja követni.
+A meghívót tartalmazó e-mail-cím vagy egy alkalmazás közös URL-címének alternatívájaként a vendég közvetlen hivatkozást adhat az alkalmazáshoz vagy a portálhoz. Először hozzá kell adnia a vendég felhasználót a címtárhoz a [Azure Portal](./b2b-quickstart-add-guest-users-portal.md) vagy a [PowerShell](./b2b-quickstart-invite-powershell.md)használatával. Ezután bármilyen [testreszabható módszert használhat az alkalmazások felhasználók számára történő központi telepítéséhez](../manage-apps/end-user-experiences.md), beleértve a közvetlen bejelentkezési hivatkozásokat is. Ha egy vendég közvetlen hivatkozást használ a meghívó e-mail-címe helyett, a rendszer továbbra is az első belefoglalási élményt fogja követni.
 
-> [!IMPORTANT]
-> A közvetlen hivatkozásnak bérlő-specifikusnak kell lennie. Más szóval tartalmaznia kell egy bérlői azonosítót vagy egy ellenőrzött tartományt, hogy a vendég hitelesíthető legyen a bérlőben, ahol a megosztott alkalmazás található. Egy közös URL-cím, például https://myapps.microsoft.com nem fog működni a vendég számára, mert az átirányítja a saját bérlőre a hitelesítéshez. Íme néhány példa a bérlői környezettel kapcsolatos közvetlen hivatkozásokra:
+> [!NOTE]
+> A közvetlen hivatkozás a bérlőre jellemző. Más szóval magában foglalja a bérlői azonosítót vagy az ellenőrzött tartományt, így a vendég hitelesíthető a bérlőben, ahol a megosztott alkalmazás található. Íme néhány példa a bérlői környezettel kapcsolatos közvetlen hivatkozásokra:
  > - Alkalmazások hozzáférési panelje: `https://myapps.microsoft.com/?tenantid=<tenant id>`
  > - Az ellenőrzött tartományhoz tartozó alkalmazások hozzáférési panelje: `https://myapps.microsoft.com/<;verified domain>`
  > - Azure Portal: `https://portal.azure.com/<tenant id>`
@@ -53,6 +51,14 @@ Vannak olyan esetek, amikor a meghívó e-mail-címe közvetlen hivatkozáson ke
  - Előfordulhat, hogy a meghívott felhasználói objektum nem rendelkezik e-mail-címmel, mert ütközik egy Contact objektummal (például egy Outlook Contact objektummal). Ebben az esetben a felhasználónak a meghívót tartalmazó e-mailben kell kattintania a beváltási URL-címre.
  - A felhasználó a meghívott e-mail-cím aliasával jelentkezhet be. (Az alias egy e-mail-fiókhoz társított e-mail-cím.) Ebben az esetben a felhasználónak a meghívót tartalmazó e-mailben kell kattintania a beváltási URL-címre.
 
+## <a name="redemption-through-the-invitation-email"></a>Visszaváltás a meghívó e-mailben
+
+Ha [a Azure Portal használatával](./b2b-quickstart-add-guest-users-portal.md)ad hozzá egy vendég felhasználót a címtárhoz, a rendszer meghívót küld a vendégnek a folyamatban. Azt is megteheti, hogy a [PowerShell használatával](./b2b-quickstart-invite-powershell.md) küldi el a meghívó e-maileket, ha vendég felhasználókat ad hozzá a címtárhoz. Itt látható a vendég felhasználói felületének leírása, amikor beváltják a hivatkozást az e-mailben.
+
+1. A vendég a **Microsoft meghívótól** kapott [meghívó e-mailt](./invitation-email-elements.md) kap.
+2. A vendég kiválasztja a **meghívót** az e-mailben.
+3. A vendég a saját hitelesítő adatait fogja használni a címtárba való bejelentkezéshez. Ha a vendégnek nincs olyan fiókja, amely összevonható a címtárral, és nincs engedélyezve az [e-mail egyszeri jelszava (OTP)](./one-time-passcode.md) szolgáltatás. a vendég megkéri, hogy hozzon létre egy személyes [MSA](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) vagy egy [Azure ad](../enterprise-users/directory-self-service-signup.md)önkiszolgáló fiókot. A részletekért tekintse meg a [meghívás beváltási folyamatát](#invitation-redemption-flow) .
+4. A vendég irányítását az alábbiakban ismertetett belefoglalási [élmény](#consent-experience-for-the-guest) vezérli.
 ## <a name="invitation-redemption-flow"></a>Meghívás beváltási folyamata
 
 Ha a felhasználó a meghívás **elfogadása** hivatkozásra kattint egy [meghívás e-mailben](invitation-email-elements.md), az Azure ad automatikusan beváltja a meghívót a beváltási folyamat alapján, ahogy az alábbi ábrán látható:

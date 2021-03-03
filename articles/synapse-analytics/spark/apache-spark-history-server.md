@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 10/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 94c30cad1e09a01686a9042a6271a152d0f433fd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4471fed7b423fe05147db30afe57f6c845fe640e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995386"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670701"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Apache Spark alkalmazások hibakeresése és diagnosztizálása a kiterjesztett Apache Sparki előzményeket használó kiszolgálón
 
@@ -22,7 +22,7 @@ Ez a cikk útmutatást nyújt arról, hogyan használható a kiterjesztett Apach
 
 A bővítmény tartalmaz egy adatlapot, a Graph fület és a diagnosztika lapot. Használja az **adatok** lapot a Spark-feladathoz tartozó bemeneti és kimeneti adatok vizsgálatához. A **Graph (gráf** ) lapon megtekintheti a feladatok gráfjának adatfolyamait és visszajátszását. A **diagnosztika** lapon az  **adatok elferdítés**, az **idő** és a **végrehajtó használatának elemzése** látható.
 
-## <a name="access-the-apache-spark-history-server"></a>A Apache Spark History-kiszolgáló elérése
+## <a name="access-the-apache-spark-history-server"></a>Hozzáférés az Apache Spark-előzménykiszolgálóhoz
 
 A Apache Spark History Server a webes felhasználói felület a befejezett és futó Spark-alkalmazásokhoz. Az Azure szinapszis Analyticsből megnyithatja az Apache Spark History Server webes felületét.
 
@@ -157,7 +157,7 @@ Mutasson a Graph csomópontra az elemleírás megjelenítéséhez, amikor a fela
 
 A feladatütemezés lapon egy elemleírás és egy kis ikon jelenik meg, ha olyan feladatokkal rendelkeznek, amelyek megfelelnek a következő feltételeknek:
 
-|Condition (Állapot)|Leírás|
+|Feltétel|Leírás|
 |-|-|
 |Az adattorzítás|az adatolvasási méret > a fázisban lévő összes feladat átlagos adatolvasási mérete, valamint az adatolvasási méret > 10 MB|
 |Időbeli döntés|a végrehajtási idő > a szakasz összes feladatának átlagos végrehajtási időpontja * 2 és végrehajtási idő > 2 percen belül|
@@ -236,8 +236,8 @@ A végrehajtói használati gráf megjeleníti a Spark-feladatok végrehajtójá
 
 A rugalmasan elosztott adatkészletek (RDD) használatával a bemeneti/kimeneti adatok nem jelennek meg az adatok lapon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Synapse Analytics](../overview-what-is.md)
-- [.NET Apache Spark dokumentációhoz](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [.NET Apache Spark dokumentációhoz](/dotnet/spark)
 

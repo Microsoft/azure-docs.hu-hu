@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: b5f1fc7f877854dd06fbbe09ff82e47208fa12d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f47ca56fa1b40422edeb0d4e11c24be6f60e49e5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72792051"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666370"
 ---
 # <a name="conditional-cognitive-skill"></a>Feltételes kognitív képességek
 
@@ -43,14 +43,14 @@ A következő elemek egy kifejezés érvényes értékei:
 
 -   A jegyzet elérési útjai (a kifejezésekben szereplő elérési utakat "$ (" és ")" karakterrel kell tagolni)
  <br/>
-    Példák:
+    Angol nyelvű Példák:
     ```
         "= $(/document)"
         "= $(/document/content)"
     ```
 
 -  Literálok (karakterláncok, számok, igaz, hamis, null) <br/>
-    Példák:
+    Angol nyelvű Példák:
     ```
        "= 'this is a string'"   // string (note the single quotation marks)
        "= 34"                   // number
@@ -59,21 +59,21 @@ A következő elemek egy kifejezés érvényes értékei:
     ```
 
 -  Összehasonlító operátorokat használó kifejezések (= =,! =, >=, >, <=, <) <br/>
-    Példák:
+    Angol nyelvű Példák:
     ```
         "= $(/document/language) == 'en'"
         "= $(/document/sentiment) >= 0.5"
     ```
 
 -   Logikai operátorokat használó kifejezések (&&, | |,!, ^) <br/>
-    Példák:
+    Angol nyelvű Példák:
     ```
         "= $(/document/language) == 'en' && $(/document/sentiment) > 0.5"
         "= !true"
     ```
 
 -   Numerikus operátorokat használó kifejezések (+,-, \* ,/,%) <br/>
-    Példák: 
+    Angol nyelvű Példák: 
     ```
         "= $(/document/sentiment) + 0.5"         // addition
         "= $(/document/totalValue) * 1.10"       // multiplication
@@ -85,11 +85,11 @@ Mivel a feltételes képesség támogatja a kiértékelést, ezt kisebb átalak�
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 A bemenetek megkülönböztetik a kis-és nagybetűket.
 
-| Input (Bemenet)   | Leírás |
+| Bevitel   | Leírás |
 |-------------|-------------|
-| feltétel   | Ez a bemenet egy [kiértékelt mező](#evaluated-fields) , amely az értékelendő feltételt jelöli. Ezt az állapotot egy logikai értékre (*true* vagy *false*) kell kiértékelni.   <br/>  Példák: <br/> "= true" <br/> "= $ (/Document/Language) = =" FR " <br/> "= $ (/Document/Pages/ \* /Language) = = $ (/Document/expectedLanguage)" <br/> |
-| whenTrue    | Ez a bemenet egy [kiértékelt mező](#evaluated-fields) , amely a visszatérési értéket jelöli, ha a feltétel *igaz*értékre van kiértékelve. Az állandó sztringeket szimpla idézőjelek ("és") szerint kell megadni. <br/>Mintavételezési értékek: <br/> "=" szerződés ""<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/ \* )" <br/> |
-| whenFalse   | Ez a bemenet egy [kiértékelt mező](#evaluated-fields) , amely a visszatérési értéket jelöli, ha a feltétel *hamis*értékre van kiértékelve. <br/>Mintavételezési értékek: <br/> "=" szerződés ""<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/ \* )" <br/>
+| feltétel   | Ez a bemenet egy [kiértékelt mező](#evaluated-fields) , amely az értékelendő feltételt jelöli. Ezt az állapotot egy logikai értékre (*true* vagy *false*) kell kiértékelni.   <br/>  Angol nyelvű Példák: <br/> "= true" <br/> "= $ (/Document/Language) = =" FR " <br/> "= $ (/Document/Pages/ \* /Language) = = $ (/Document/expectedLanguage)" <br/> |
+| whenTrue    | Ez a bemenet egy [kiértékelt mező](#evaluated-fields) , amely a visszatérési értéket jelöli, ha a feltétel *igaz* értékre van kiértékelve. Az állandó sztringeket szimpla idézőjelek ("és") szerint kell megadni. <br/>Mintavételezési értékek: <br/> "=" szerződés ""<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/ \* )" <br/> |
+| whenFalse   | Ez a bemenet egy [kiértékelt mező](#evaluated-fields) , amely a visszatérési értéket jelöli, ha a feltétel *hamis* értékre van kiértékelve. <br/>Mintavételezési értékek: <br/> "=" szerződés ""<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/ \* )" <br/>
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
 Egyetlen kimenetre van szükség, amelyet egyszerűen "output"-nek nevezünk. A *whenFalse* értéket adja vissza, ha a feltétel hamis vagy *whenTrue* , ha a feltétel igaz.
@@ -98,7 +98,7 @@ Egyetlen kimenetre van szükség, amelyet egyszerűen "output"-nek nevezünk. A 
 
 ### <a name="sample-skill-definition-1-filter-documents-to-return-only-french-documents"></a>1. példa: szakértelem meghatározása: dokumentumok szűrése csak francia dokumentumok visszaküldéséhez
 
-A következő kimenet a mondatok ("/document/frenchSentences") tömbjét adja vissza, ha a dokumentum nyelve francia. Ha a nyelv nem francia, az érték *NULL értékűre*van állítva.
+A következő kimenet a mondatok ("/document/frenchSentences") tömbjét adja vissza, ha a dokumentum nyelve francia. Ha a nyelv nem francia, az érték *NULL értékűre* van állítva.
 
 ```json
 {
@@ -134,7 +134,7 @@ A következő kimenet létrehoz egy jegyzetet ("/document/languageWithDefault"),
 
 ### <a name="sample-skill-definition-3-merge-values-from-two-fields-into-one"></a>Példa a skill definition 3: értékek egyesítése két mezőből egyetlenre
 
-Ebben a példában néhány mondatnak van egy *frenchSentiment* tulajdonsága. Ha a *frenchSentiment* tulajdonság értéke null, a *englishSentiment* értéket szeretnénk használni. A kimenetet egy " *hangulat* " ("/Document/Sentiment/*/Sentiment") nevű tag számára rendeljük hozzá.
+Ebben a példában néhány mondatnak van egy *frenchSentiment* tulajdonsága. Ha a *frenchSentiment* tulajdonság értéke null, a *englishSentiment* értéket szeretnénk használni. A kimenetet egy " *hangulat* " ("/Document/sentences/*/Sentiment") nevű tag számára rendeljük hozzá.
 
 ```json
 {
@@ -173,7 +173,7 @@ Ebben a példában nem használjuk a szakértelem feltételes aspektusát, mert 
 Bizonyos paraméterek kiértékelése megtörténik, ezért különösen körültekintően kell követnie a dokumentált mintát. A kifejezéseknek egyenlő jellel kell kezdődnie. Az elérési utat "$ (" és ")" karakterrel kell elválasztani. Ügyeljen arra, hogy a sztringeket szimpla idézőjelek között helyezze el. Ez segíti az értékelést a karakterláncok és a tényleges elérési utak és operátorok közötti különbségtételben. Győződjön meg arról is, hogy az operátorok körül a szóköz (például egy "*", egy elérési út esetében pedig a szorzás) érték van.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + [Beépített képességek](cognitive-search-predefined-skills.md)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)

@@ -1,0 +1,112 @@
+---
+title: Helyesírás-ellenőrzés hozzáadása
+titleSuffix: Azure Cognitive Search
+description: Csatolja a lekérdezési folyamat helyesírás-javítását, hogy a lekérdezés végrehajtása előtt kijavítsa a lekérdezési feltételekkel kapcsolatos hibákat.
+manager: nitinme
+author: HeidiSteen
+ms.author: heidist
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 03/02/2021
+ms.custom: references_regions
+ms.openlocfilehash: cdc5de8153e8b2e0ea8bb8ea372fe8610ccb895b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101679829"
+---
+# <a name="add-spell-check-to-queries-in-cognitive-search"></a>Helyesírás-ellenőrzés hozzáadása a lekérdezésekhez Cognitive Search
+
+> [!IMPORTANT]
+> A helyesírás-javítás nyilvános előzetes verzióban érhető el, csak az előzetes verziójú REST API. Az előzetes verziójú funkciók a [kiegészítő használati feltételek](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)mellett is elérhetők. A kezdeti előzetes indítás során a speller díjmentesen használható. További információkért lásd a [rendelkezésre állást és a díjszabást](semantic-search-overview.md#availability-and-pricing).
+
+A keresőmotor megkezdése előtt az egyes keresési lekérdezési kifejezések helyesírásának javításával javíthatja a visszahívást. A **helyesírás** -ellenőrző paraméter az összes lekérdezési típus esetében támogatott: [egyszerű](query-simple-syntax.md), [teljes](query-lucene-syntax.md), és az új [szemantikai](semantic-how-to-query-request.md) lehetőség jelenleg nyilvános előzetes verzióban érhető el.
+
+## <a name="prerequisites"></a>Előfeltételek
+
++ Egy meglévő keresési index, amely angol nyelvű tartalmat tartalmaz
+
++ Lekérdezések küldésére szolgáló keresési ügyfél
+
+  A keresési ügyfélnek támogatnia kell az előzetes verziójú REST API-kat a lekérdezési kérelemben. Használhatja a [Poster](search-get-started-rest.md), a [Visual Studio Code](search-get-started-vs-code.md)vagy az Ön által módosított kódot, hogy Rest-hívásokat hajtson végre az előnézeti API-khoz.
+
++ A helyesírás-korrekciót használó [lekérdezési kérelem](/rest/api/searchservice/preview-api/search-documents) "API-Version = 2020-06 -30-Preview", "speller = lexikon" és "queryLanguage = en-us".
+
+  A queryLanguage szükséges a helyesíráshoz, és jelenleg az "en-us" az egyetlen érvényes érték.
+
+> [!Note]
+> A helyesírás-ellenőrző paraméter minden szinten elérhető, ugyanabban a régióban, ahol szemantikai keresést is biztosít. További információkért lásd a [rendelkezésre állást és a díjszabást](semantic-search-overview.md#availability-and-pricing).
+
+## <a name="spell-correction-with-simple-search"></a>Helyesírás-javítás egyszerű kereséssel
+
+Az alábbi példa a beépített Hotels-Sample index használatával mutatja be a helyesírás-korrekciót egy egyszerű, ingyenes szöveges lekérdezésben. A helyesírás-javítás nélkül a lekérdezés nulla eredményt ad vissza. A kijavítással a lekérdezés egy eredményt ad vissza a Johnson család-orientált üdülőhelyének.
+
+```http
+POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30-Preview
+{
+    "search": "famly acitvites",
+    "speller": "lexicon",
+    "queryLanguage": "en-us",
+    "queryType": "simple",
+    "select": "HotelId,HotelName,Description,Category,Tags",
+    "count": true
+}
+```
+
+## <a name="spell-correction-with-full-lucene"></a>Helyesírás-javítás teljes Lucene
+
+A helyesírási javítás az egyes lekérdezési kifejezéseken történik, amelyek elemzést végeznek, ezért a speller paramétert néhány Lucene-lekérdezéssel használhatja, másokat azonban nem.
+
++ Nem kompatibilis lekérdezési űrlapok, amelyek megkerülik a szöveges elemzést: helyettesítő karakter, regex, fuzzy
++ A kompatibilis lekérdezési űrlapok a következők: mezős keresés, közelség, kifejezés fellendítése
+
+Ebben a példában a category (kategória) mezőn, a teljes Lucene szintaxissal, valamint egy hibásan írt lekérdezési kifejezéssel végzett, mezőben lévő keresést használunk. A helyesírás-ellenőrzővel együtt a "Suiite" elírása kijavítva, a lekérdezés pedig sikeres lesz.
+
+```http
+POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30-Preview
+{
+    "search": "Category:(Resort and Spa) OR Category:Suiite",
+    "queryType": "full",
+    "speller": "lexicon",
+    "queryLanguage": "en-us",
+    "select": "Category",
+    "count": true
+}
+```
+
+## <a name="spell-correction-with-semantic-search"></a>Helyesírás-javítás szemantikai kereséssel
+
+Ez a lekérdezés minden kifejezésben, kivéve az egyiket, a helyesírási hibák kijavításával visszaküldi a vonatkozó eredményeket. További információt a [szemantikai lekérdezés létrehozása](semantic-how-to-query-request.md)című témakörben talál.
+
+```http
+POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30-Preview     
+{
+    "search": "hisotoric hotell wiht great restrant nad wiifi",
+    "queryType": "semantic",
+    "speller": "lexicon",
+    "queryLanguage": "en-us",
+    "searchFields": "HotelName,Tags,Description",
+    "select": "HotelId,HotelName,Description,Category,Tags",
+    "count": true
+}
+```
+
+## <a name="language-considerations"></a>Nyelvi megfontolások
+
+A helyesíráshoz szükséges queryLanguage paraméternek konzisztensnek kell lennie az index séma mezőihez rendelt [nyelvi elemzők](index-add-language-analyzers.md) esetében. A lekérdezési kérelemben megadott queryLanguage határozza meg, hogy mely Lexikonokat használja a rendszer a helyesírás-ellenőrzéshez, és a [szemantikai rangsorolási algoritmus](semantic-how-to-query-response.md) bemenetként is használja, ha azt használja. A nyelvi elemzők az indexelés során használatosak, és a keresési indexben lévő egyező dokumentumok beolvasása közben. Ahhoz, hogy konzisztensek legyenek, ha a queryLanguage "en-us", akkor minden nyelvi elemzőnek angol változatnak ("en. Microsoft" vagy "en. Lucene") is kell lennie. 
+
+> [!NOTE]
+> A nyelvtől független elemzők (például a kulcsszó, a Simple, a standard, a stop, a szóköz vagy `standardasciifolding.lucene` a) nem ütköznek a queryLanguage beállításaival.
+
+A lekérdezési kérelemben a beállított queryLanguage a speller, a Answers és a Captions elemre egyformán vonatkozik. Az egyes részek esetében nincs felülbírálás.
+
+Míg a keresési index tartalma több nyelvből is állhat, a lekérdezés bemenete valószínűleg egy. A keresőmotor nem ellenőrzi a queryLanguage, a Language Analyzer és a tartalom összetételének nyelvét, ezért ügyeljen arra, hogy a helytelen eredmények kiépítésének elkerülése érdekében a hatókör-lekérdezések megfelelően legyenek kitéve.
+
+## <a name="next-steps"></a>Következő lépések
+
++ [Szemantikai lekérdezés létrehozása](semantic-how-to-query-request.md)
++ [Alapszintű lekérdezés létrehozása](search-query-create.md)
++ [Teljes Lucene lekérdezési szintaxis használata](query-Lucene-syntax.md)
++ [Egyszerű lekérdezési szintaxis használata](query-simple-syntax.md)
++ [Szemantikai keresés – áttekintés](semantic-search-overview.md)

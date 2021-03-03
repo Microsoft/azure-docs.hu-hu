@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c73bcd8fb4c6b594633abd1ac268bd8dfd78202
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bd4c1adddbf4b13f8e299bd656443c9aaab1d55b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417489"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644827"
 ---
 # <a name="securing-group-managed-service-accounts"></a>Csoportosan felügyelt szolgáltatásfiókok biztonságossá tétele
 
@@ -41,7 +41,7 @@ a csoportosan felügyelt szolgáltatásfiókokat egyetlen identitási megoldást
 A csoportosan felügyelt szolgáltatásfiókokat-t használja előnyben részesített fióktípusként a helyszíni szolgáltatásokhoz, kivéve, ha egy szolgáltatás (például a feladatátvételi fürtszolgáltatás) nem támogatja azt.
 
 > [!IMPORTANT]
-> A szolgáltatás éles környezetben történő üzembe helyezése előtt tesztelni kell a szolgáltatást a csoportosan felügyelt szolgáltatásfiókokat. Ehhez állítson be egy tesztkörnyezet-környezetet, és győződjön meg arról, hogy az alkalmazás használhatja a gMSA, és hozzáférhet az elérni kívánt erőforrásokhoz. További információ: [csoportosan felügyelt szolgáltatásfiókok támogatása](https://docs.microsoft.com/system-center/scom/support-group-managed-service-accounts?view=sc-om-2019).
+> A szolgáltatás éles környezetben történő üzembe helyezése előtt tesztelni kell a szolgáltatást a csoportosan felügyelt szolgáltatásfiókokat. Ehhez állítson be egy tesztkörnyezet-környezetet, és győződjön meg arról, hogy az alkalmazás használhatja a gMSA, és hozzáférhet az elérni kívánt erőforrásokhoz. További információ: [csoportosan felügyelt szolgáltatásfiókok támogatása](/system-center/scom/support-group-managed-service-accounts?view=sc-om-2019).
 
 
 Ha egy szolgáltatás nem támogatja a csoportosan felügyelt szolgáltatásfiókokat használatát, a következő legjobb lehetőség egy önálló felügyelt szolgáltatásfiók (önállóan felügyelt szolgáltatásfiókot) használata. a sMSAs ugyanazokat a funkciókat biztosítja, mint a gMSA, de csak egyetlen kiszolgálón való üzembe helyezésre szolgálnak.
@@ -108,18 +108,18 @@ A csoportosan felügyelt szolgáltatásfiókokat kezeléséhez a következő Act
 `Uninstall-ADServiceAccount`
 
 > [!NOTE]
-> A Windows Server 2012-től kezdődően a *-ADServiceAccount parancsmagok alapértelmezés szerint a csoportosan felügyelt szolgáltatásfiókokat szolgáltatással működnek. További információ a fenti parancsmagok használatáról: [**első lépések csoportosan felügyelt szolgáltatásfiókok**](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)használatával.
+> A Windows Server 2012-től kezdődően a *-ADServiceAccount parancsmagok alapértelmezés szerint a csoportosan felügyelt szolgáltatásfiókokat szolgáltatással működnek. További információ a fenti parancsmagok használatáról: [**első lépések csoportosan felügyelt szolgáltatásfiókok**](/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)használatával.
 
 ## <a name="move-to-a-gmsa"></a>Áthelyezés gMSA
 a csoportosan felügyelt szolgáltatásfiókokat a legbiztonságosabb típusú szolgáltatásfiók a helyszíni igényekhez. Ha átléphet az egyikre, a következőt kell tennie:. Emellett érdemes lehet áthelyezni a szolgáltatásokat az Azure-ba és a szolgáltatási fiókjait az Azure Active Directoryhoz.
 
-1.  Győződjön meg arról, hogy a [KDS legfelső szintű kulcsa van telepítve az erdőben](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/create-the-key-distribution-services-kds-root-key). Ezt a műveletet egyszer kell elvégezni.
+1.  Győződjön meg arról, hogy a [KDS legfelső szintű kulcsa van telepítve az erdőben](/windows-server/security/group-managed-service-accounts/create-the-key-distribution-services-kds-root-key). Ezt a műveletet egyszer kell elvégezni.
 
-2. [Hozzon létre egy új gMSA](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts).
+2. [Hozzon létre egy új gMSA](/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts).
 
 3. Telepítse az új gMSA a szolgáltatást futtató összes gazdagépre.
    > [!NOTE] 
-   > A gMSA gazdagépen való létrehozásával és telepítésével kapcsolatos további információkért, mielőtt konfigurálja a szolgáltatást a gMSA használatára, tekintse meg a következőt: [első lépések csoportosan felügyelt szolgáltatásfiókok](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj128431(v=ws.11)) használatával.
+   > A gMSA gazdagépen való létrehozásával és telepítésével kapcsolatos további információkért, mielőtt konfigurálja a szolgáltatást a gMSA használatára, tekintse meg a következőt: [első lépések csoportosan felügyelt szolgáltatásfiókok](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj128431(v=ws.11)) használatával.
 
  
 4. Módosítsa a szolgáltatás identitását gMSA, és adja meg az üres jelszót.

@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5506a54193efc813927663533ddfd89be3ddf40a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7790bc2895449e8ab21cbd30d7da0e5529eb0562
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461304"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670684"
 ---
 # <a name="azure-synapse-workspace-managed-identity"></a>Az Azure Synapse-munkaterület által kezelt identitás
 
@@ -23,7 +23,7 @@ Ebből a cikkből megismerheti az Azure szinapszis munkaterület felügyelt iden
 
 Az Azure-erőforrások felügyelt identitása Azure Active Directory egyik funkciója. A szolgáltatás automatikusan felügyelt identitást biztosít az Azure-szolgáltatások számára az Azure AD-ben. A felügyelt identitás funkció használatával bármilyen, az Azure AD-hitelesítést támogató szolgáltatáshoz végezhet hitelesítést.
 
-Az Azure-erőforrások felügyelt identitásai a korábban Managed Service Identity (MSI) néven ismert szolgáltatás új neve. További információért lásd: [felügyelt identitások](../../active-directory/managed-identities-azure-resources/overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
+Az Azure-erőforrások felügyelt identitásai a korábban Managed Service Identity (MSI) néven ismert szolgáltatás új neve. További információért lásd: [felügyelt identitások](../../active-directory/managed-identities-azure-resources/overview.md) .
 
 ## <a name="azure-synapse-workspace-managed-identity"></a>Az Azure Synapse-munkaterület által kezelt identitás
 
@@ -56,6 +56,6 @@ A következő ablakban válassza a **felügyelt identitás** lehetőséget a **h
 
 ![Társított szolgáltatás létrehozása 3](./media/synapse-workspace-managed-identity/workspace-managed-identity-4.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ [Az Azure szinapszis-munkaterület felügyelt identitására vonatkozó engedélyek megadásáról](./how-to-grant-workspace-managed-identity-permissions.md)

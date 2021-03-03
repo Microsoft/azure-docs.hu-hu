@@ -6,15 +6,15 @@ ms.author: jagaveer
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.subservice: spot
-ms.date: 03/25/2020
+ms.date: 02/26/2021
 ms.reviewer: cynthn
-ms.custom: jagaveer, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 265f78970f17fe7321db8786c2fb8dd2304bb578
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 33aa553e688b595551c20e8b1432163152865537
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558669"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675017"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>Azure spot Virtual Machines a virtuálisgép-méretezési csoportokhoz 
 
@@ -46,19 +46,38 @@ Jelenleg a következő [típusú ajánlatok](https://azure.microsoft.com/support
 -   Nagyvállalati Szerződés
 -   Utólagos elszámolású ajánlat kódja 003P
 -   Szponzorált
-- A felhőalapú szolgáltató (CSP) esetében forduljon a partnerhez
+- A felhőalapú szolgáltató (CSP) esetében tekintse meg a [partneri központot](https://docs.microsoft.com/partner-center/azure-plan-get-started) , vagy forduljon közvetlenül a partneréhez.
 
 ## <a name="eviction-policy"></a>Kiürítési szabályzat
 
-Az Azure spot virtuálisgép-méretezési csoportok létrehozásakor beállíthatja a kizárási házirendet a *felszabadításhoz* (alapértelmezett) vagy a *törléshez*. 
+Amikor az Azure spot Virtual Machines használatával hoz létre méretezési készletet, beállíthatja a kizárási házirendet a *felszabadításhoz* (alapértelmezett) vagy a *törléshez*. 
 
 A *felszabadított* házirend áthelyezi a kizárt példányokat a leállított, lefoglalt állapotba, ami lehetővé teszi a kizárt példányok újratelepítését. Azonban nem garantálható, hogy a foglalás sikeres lesz. A delefoglalt virtuális gépek a méretezési csoport példánya kvótájának számítanak, és a mögöttes lemezek után díjat számítunk fel. 
 
-Ha szeretné, hogy az Azure-beli virtuálisgép-méretezési csoport példányai törölve legyenek a kizáráskor, beállíthatja a kizárási házirendet a *törléshez*. A törlési házirend beállításával új virtuális gépeket hozhat létre a méretezési csoport példányainak száma tulajdonság növelésével. A kizárt virtuális gépeket a rendszer a mögöttes lemezekkel együtt törli, ezért a tárterületért nem számítunk fel díjat. A méretezési csoportok automatikus skálázási funkciójának használatával automatikusan kipróbálhatja és kompenzálhatja a kizárt virtuális gépeket, azonban nem garantálható, hogy a foglalás sikeres lesz. Javasoljuk, hogy csak az Azure-beli virtuálisgép-méretezési csoportokban használja az autoscale funkciót, ha a törlési szabályzatot a DELETE értékre állítja, hogy elkerülje a lemezek költségeit és a kvóták korlátait. 
+Ha szeretné, hogy a példányok törölve legyenek a kizárásakor, beállíthatja a *törlési* szabályzatot. A törlési házirend beállításával új virtuális gépeket hozhat létre a méretezési csoport példányainak száma tulajdonság növelésével. A kizárt virtuális gépeket a rendszer a mögöttes lemezekkel együtt törli, ezért a tárterületért nem számítunk fel díjat. A méretezési csoportok automatikus skálázási funkciójának használatával automatikusan kipróbálhatja és kompenzálhatja a kizárt virtuális gépeket, azonban nem garantálható, hogy a foglalás sikeres lesz. Javasoljuk, hogy csak az Azure-beli virtuálisgép-méretezési csoportokban használja az autoscale funkciót, ha a törlési szabályzatot a DELETE értékre állítja, hogy elkerülje a lemezek költségeit és a kvóták korlátait. 
 
 A felhasználók bejelentkezhetnek a virtuális gépekre vonatkozó értesítések fogadására az [Azure Scheduled Events](../virtual-machines/linux/scheduled-events.md)használatával. Ez értesíti Önt, ha a virtuális gépek ki vannak zárva, és 30 másodpercen belül befejezi az összes feladatot, és leállítási feladatokat hajt végre a kizárás előtt. 
 
+<a name="bkmk_try"></a>
+## <a name="try--restore-preview"></a>Próbálkozzon & visszaállítással (előzetes verzió)
+
+Ez az új platform szintű szolgáltatás a mesterséges intelligenciával automatikusan megpróbálja visszaállítani a kizárt Azure spot virtuálisgép-példányokat egy méretezési csoporton belül a cél példányszámának fenntartása érdekében. 
+
+> [!IMPORTANT]
+> Próbálja ki, & a visszaállítás jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Próbálkozzon & visszaállítási előnyökkel:
+- Alapértelmezés szerint engedélyezve van, ha egy méretezési csoportba helyez üzembe egy Azure-beli helyszíni virtuális gépet.
+- Megkísérli visszaállítani a kapacitás miatt kizárt Azure spot Virtual Machines.
+- A visszaállított Azure spot Virtual Machines várhatóan hosszabb ideig fut, és a kapacitás kiváltása kisebb valószínűséggel történik.
+- Javítja az Azure-beli helyszíni virtuális gépek élettartamát, így a számítási feladatok hosszabb ideig futnak.
+- Segít Virtual Machine Scale Sets fenntartani az Azure spot Virtual Machines céljának darabszámát, hasonlóan ahhoz, hogy megőrizze az utólagos elszámolású virtuális gépekhez már meglévő Target Count funkciót.
+
+Próbálja meg & a visszaállítást az [autoskálázást](virtual-machine-scale-sets-autoscale-overview.md)használó méretezési csoportokban. A méretezési csoportba tartozó virtuális gépek számát az autoskálázási szabályok vezérlik.
+
 ## <a name="placement-groups"></a>Elhelyezési csoportok
+
 Az elhelyezési csoport egy Azure rendelkezésre állási készlethez hasonló szerkezet, amely saját tartalék tartományokkal és frissítési tartománnyal rendelkezik. A méretezési csoport alapértelmezés szerint egy legfeljebb 100 virtuális gép méretű elhelyezési csoportból áll. Ha a nevű méretezési csoport tulajdonság értéke `singlePlacementGroup` *false (hamis*), a méretezési csoport több elhelyezési csoportból is állhat, és 0 – 1000 virtuális gépet tartalmaz. 
 
 > [!IMPORTANT]
@@ -136,6 +155,24 @@ Adja hozzá `priority` a `evictionPolicy` és a tulajdonságokat a `billingProfi
 ```
 
 Ha törölni szeretné a példányt a kizárása után, módosítsa a paramétert a következőre: `evictionPolicy` `Delete` .
+
+
+## <a name="simulate-an-eviction"></a>Kizárás szimulálása
+
+Az Azure-beli helyszíni virtuális gépek [kizárását szimulálhatja](https://docs.microsoft.com/rest/api/compute/virtualmachines/simulateeviction) annak teszteléséhez, hogy az alkalmazás milyen jól reagáljon a hirtelen kizárásra. 
+
+Cserélje le a következőt az adataira: 
+
+- `subscriptionId`
+- `resourceGroupName`
+- `vmName`
+
+
+```rest
+POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction?api-version=2020-06-01
+```
+
+`Response Code: 204` azt jelenti, hogy a szimulált kizárás sikeres volt. 
 
 ## <a name="faq"></a>GYIK
 

@@ -1,0 +1,117 @@
+### YamlMime:Landing
+title: Az Azure Percept dokumentációja
+summary: Az Azure Percept egy teljes körű megoldás, amely az érzékelésen alapuló mesterséges intelligencia kialakítására és üzembe helyezésére használható.
+metadata:
+  title: Az Azure Percept dokumentációja
+  description: Az Azure Percept egy végpontok közötti Edge-platform.
+  services: azure-percept
+  ms.service: azure-percept
+  ms.topic: landing-page
+  author: elqu20
+  ms.author: v-elqu
+  ms.date: 02/11/2021
+  ms.openlocfilehash: 6c7479b33a78432d5b6aea2c02656e8b250b70c7
+  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.translationtype: MT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 03/02/2021
+  ms.locfileid: "101665753"
+landingContent:
+- title: Mi az Azure Percept?
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Az Azure Percept áttekintése
+      url: overview-azure-percept.md
+    - text: Az Azure Percept DK áttekintése
+      url: overview-azure-percept-dk.md
+    - text: Az Azure Percept hangjának áttekintése
+      url: overview-azure-percept-audio.md
+    - text: Az Azure Percept Studio áttekintése
+      url: overview-azure-percept-studio.md
+    - text: Az Azure Percept biztonsági áttekintése
+      url: overview-percept-security.md
+- title: Ismerkedés az Azure Percept DK-mel
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Az Azure Percept DK testetlen és összegyűjtése
+      url: quickstart-percept-dk-unboxing.md
+    - text: Az Azure Percept DK összekötése az Azure-ba és egy jövőkép AI-modell üzembe helyezése
+      url: quickstart-percept-dk-set-up.md
+  - linkListType: reference
+    links:
+    - text: Azure Percept DK Adatlap
+      url: azure-percept-dk-datasheet.md
+    - text: Azure Percept-jövőkép Adatlapja
+      url: azure-percept-vision-datasheet.md
+    - text: Azure Percept audio Adatlap
+      url: azure-percept-audio-datasheet.md
+- title: Hozzon létre egy kód nélküli, AI-prototípust
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Kód nélküli jövőkép megoldás létrehozása
+      url: tutorial-nocode-vision.md
+  - linkListType: how-to-guide
+    links:
+    - text: Tekintse meg a fejlesztői készlet videó streamjét
+      url: how-to-view-video-stream.md
+    - text: AI-modell üzembe helyezése a fejlesztői készlet
+      url: how-to-deploy-model.md
+    - text: Képek rögzítése egy víziós projekthez
+      url: how-to-capture-images.md
+    - text: A fejlesztői készlet telemetria megtekintése
+      url: how-to-view-telemetry.md
+- title: Ismerkedés az Azure Percept hanggal
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Az Azure Percept hang beállítása
+      url: quickstart-percept-audio-setup.md
+  - linkListType: reference
+    links:
+    - text: Azure Percept audio Adatlap
+      url: azure-percept-audio-datasheet.md
+    - text: Azure Percept – hanghibák elhárítása
+      url: troubleshoot-audio-accessory-speech-module.md
+    - text: Azure Percept hang LED és Button
+      url: audio-button-led-behavior.md
+- title: Kód nélküli hangsegéd megoldás létrehozása
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Kód nélküli hangsegéd létrehozása
+      url: tutorial-no-code-speech.md
+  - linkListType: how-to-guide
+    links:
+    - text: A hangsegéd konfigurálása
+      url: how-to-configure-voice-assistant.md
+    - text: Hangvezérelt asszisztens kezelése
+      url: how-to-manage-voice-assistant.md
+- title: Fejlett fejlesztés az Azure Percept
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Fejlett fejlesztés – áttekintés
+      url: overview-advanced-code.md
+  - linkListType: tutorial
+    links:
+    - text: Fejlett fejlesztés a Cloud Services használatával
+      url: advanced-development-cloud.md
+    - text: Fejlett fejlesztés helyi eszközök használatával
+      url: advanced-development-local.md
+- title: Tartsa naprakészen az Azure Percept DK-t
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Az Azure Percept DK frissítési élményének áttekintése
+      url: overview-update-experience.md
+  - linkListType: how-to-guide
+    links:
+    - text: Frissítések beállítása
+      url: how-to-set-up-over-the-air-updates.md
+    - text: Over-the-Air frissítések
+      url: how-to-update-over-the-air.md
+    - text: Frissítés USB-kapcsolaton keresztül
+      url: how-to-update-via-usb.md

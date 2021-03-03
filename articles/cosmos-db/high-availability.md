@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 16d2bf39d61961e2f83910735db1d0ddf1c91849
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: f22d97f8a4ab5e5b6e275c405cce523e8a7b8e72
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627382"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656550"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Hogyan biztosítja a Azure Cosmos DB magas rendelkezésre állást
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -80,7 +80,7 @@ A regionális leállás ritka eseteiben Azure Cosmos DB biztosítja, hogy az ada
 
 * Az olvasási régió meghibásodása esetén az Azure Cosmos-fiókok bármely konzisztencia-szintet, vagy a három vagy több olvasási régióval való erős konzisztencia esetén is magas rendelkezésre állást biztosítanak az olvasáshoz és íráshoz.
 
-* A három vagy kevesebb teljes régióval erős konzisztenciaet használó Azure Cosmos-fiókok (egy írás, két olvasás) az írási régió meghibásodása során elveszítik az írási rendelkezésre állást. Egy támogatási jegy elküldésével azonban a négy vagy több teljes régióval rendelkező ügyfelek is bejelentkezhetnek a dinamikus olvasási kvórumok használatára. Azok a fiókok, amelyek legalább két olvasási régiót tartanak fenn ebben a konfigurációban, az írási rendelkezésre állást fogják fenntartani.
+* Az Azure Cosmos-fiókok a három régióval való erős konzisztencia használatával (egy írás, két olvasás) az írási régió meghibásodása során is megőrzik az írási rendelkezésre állást. A két régiót és az automatikus feladatátvételt engedélyező fiókok esetében a fiók nem fogadja el az írásokat, amíg a régió nem hibásként van megjelölve, és automatikus feladatátvétel történik.
 
 * Az érintett régiót a rendszer automatikusan leválasztja, és offline állapotba állítja. A [Azure Cosmos db SDK](sql-api-sdk-dotnet.md) -k átirányítják az olvasási hívásokat a következő elérhető régióba az előnyben részesített régiók listájában.
 
@@ -110,7 +110,7 @@ A következő táblázat összefoglalja a különböző fiókok konfigurációin
 |Rendelkezésre állási SLA olvasása  | 99.99% | 99,995% | 99,995% | 99.999% |
 |Zónák hibái – adatvesztés | Adatvesztés | Nincs adatvesztés | Nincs adatvesztés | Nincs adatvesztés |
 |Zónák hibái – rendelkezésre állás | Rendelkezésre állás elvesztése | Nincs rendelkezésre állási veszteség | Nincs rendelkezésre állási veszteség | Nincs rendelkezésre állási veszteség |
-|Regionális leállás – adatvesztés | Adatvesztés |  Adatvesztés | A konzisztencia szintjétől függ. További információt a [konzisztencia, a rendelkezésre állás és a teljesítménybeli kompromisszumok](consistency-levels-tradeoffs.md) című témakörben talál. | A konzisztencia szintjétől függ. További információt a [konzisztencia, a rendelkezésre állás és a teljesítménybeli kompromisszumok](consistency-levels-tradeoffs.md) című témakörben talál.
+|Regionális leállás – adatvesztés | Adatvesztés |  Adatvesztés | A konzisztencia szintjétől függ. További információt a [konzisztencia, a rendelkezésre állás és a teljesítménybeli kompromisszumok](./consistency-levels.md) című témakörben talál. | A konzisztencia szintjétől függ. További információt a [konzisztencia, a rendelkezésre állás és a teljesítménybeli kompromisszumok](./consistency-levels.md) című témakörben talál.
 |Regionális leállás – rendelkezésre állás | Rendelkezésre állás elvesztése | Rendelkezésre állás elvesztése | Nem áll rendelkezésre az olvasási régió meghibásodása miatti adatvesztés, mert az ideiglenes írási régió meghibásodása esetén | Nincs rendelkezésre állási veszteség |
 |Ár (***1** _) | N/A | Kiépített RU/s x 1,25 arány | Kiépített RU/s x 1,25 arány (_ *_2_* *) | Többrégiós írási arány |
 

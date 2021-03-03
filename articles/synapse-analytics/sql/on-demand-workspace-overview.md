@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 87f592f0cff8504fbafba392d20f405640e2578a
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e1a0f4f22411e506cab3b54e955a4cdc16986fe2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682970"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667503"
 ---
 # <a name="serverless-sql-pool-in-azure-synapse-analytics"></a>Kiszolgáló nélküli SQL-készlet az Azure szinapszis Analyticsben 
 
@@ -75,7 +75,7 @@ A biztonság a használatával kényszeríthető:
 
 Támogatott T-SQL:
 
-- A teljes [kijelölési](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) felület támogatott, beleértve az SQL-függvények többségét
+- A teljes [kijelölési](/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true) felület támogatott, beleértve az SQL-függvények többségét
 - CETAS – KÜLSŐ TÁBLA LÉTREHOZÁSA KIJELÖLÉSKÉNT
 - Csak nézetekkel és biztonsággal kapcsolatos DDL-utasítások
 
@@ -89,7 +89,7 @@ A kiszolgáló nélküli SQL-készletnek nincs helyi tárterülete, csak a metaa
 
 ### <a name="extensions"></a>Bővítmények
 
-A következő képességek hozzáadásával lehetővé teszi a zökkenőmentes működést a fájlokban tárolt adatlekérdezések esetében, a kiszolgáló nélküli SQL-készlet pedig kibővíti a meglévő [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) funkciót:
+A következő képességek hozzáadásával lehetővé teszi a zökkenőmentes működést a fájlokban tárolt adatlekérdezések esetében, a kiszolgáló nélküli SQL-készlet pedig kibővíti a meglévő [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql?view=azure-sqldw-latest&preserve-view=true) funkciót:
 
 [Több fájl vagy mappa lekérdezése](query-data-storage.md#query-multiple-files-or-folders)
 
@@ -113,7 +113,7 @@ A kiszolgáló nélküli SQL-készlet az adataihoz való hozzáférés biztosít
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory-integráció és többtényezős hitelesítés
 
-A kiszolgáló nélküli SQL-készlet lehetővé teszi az adatbázis-felhasználó és más Microsoft-szolgáltatások identitásának központilag kezelését [Azure Active Directory integrációval](../../azure-sql/database/authentication-aad-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Ez a funkció egyszerűsíti az engedélyek kezelését és fokozza a biztonságot. A Azure Active Directory (Azure AD) támogatja a [többtényezős hitelesítést](../../azure-sql/database/authentication-mfa-ssms-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA) az adatkezelés és az alkalmazások biztonságának növelésére az egyszeri bejelentkezési folyamat támogatása mellett.
+A kiszolgáló nélküli SQL-készlet lehetővé teszi az adatbázis-felhasználó és más Microsoft-szolgáltatások identitásának központilag kezelését [Azure Active Directory integrációval](../../azure-sql/database/authentication-aad-configure.md). Ez a funkció egyszerűsíti az engedélyek kezelését és fokozza a biztonságot. A Azure Active Directory (Azure AD) támogatja a [többtényezős hitelesítést](../../azure-sql/database/authentication-mfa-ssms-configure.md) (MFA) az adatkezelés és az alkalmazások biztonságának növelésére az egyszeri bejelentkezési folyamat támogatása mellett.
 
 #### <a name="authentication"></a>Hitelesítés
 
@@ -125,7 +125,7 @@ A kiszolgáló nélküli SQL-készlet hitelesítése arra utal, hogy a felhaszn�
 
 - **Azure Active Directory hitelesítés**:
 
-  Ez a hitelesítési módszer Azure Active Directory által felügyelt identitásokat használ. Az Azure AD-felhasználók esetében a többtényezős hitelesítés is engedélyezhető. [Amikor csak lehet](/sql/relational-databases/security/choose-an-authentication-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), használja az Active Directory-hitelesítést (beépített biztonság).
+  Ez a hitelesítési módszer Azure Active Directory által felügyelt identitásokat használ. Az Azure AD-felhasználók esetében a többtényezős hitelesítés is engedélyezhető. [Amikor csak lehet](/sql/relational-databases/security/choose-an-authentication-mode?view=azure-sqldw-latest&preserve-view=true), használja az Active Directory-hitelesítést (beépített biztonság).
 
 #### <a name="authorization"></a>Engedélyezés
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/09/2021
-ms.openlocfilehash: 06f9d336bb04aa26cea4ebcdae1cfd045e1c2a1b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bf8a4e51e23f438265af706914a6bc73ec30f64d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361247"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667660"
 ---
 # <a name="how-to-run-or-reset-indexers-skills-or-documents"></a>Indexelő, szakismeretek vagy dokumentumok futtatása vagy visszaállítása
 
@@ -101,7 +101,7 @@ Ha nem ad meg szakértelmet, a rendszer végrehajtja a teljes készségkészlet,
 > [!IMPORTANT] 
 > A [dokumentumok alaphelyzetbe állítása](/rest/api/searchservice/preview-api/reset-documents) nyilvános előzetes verzióban érhető el, csak az előzetes verziójú REST API. Az előzetes verziójú funkciók a [kiegészítő használati feltételek](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)mellett is elérhetők.
 
-A [dokumentumok alaphelyzetbe állítása API](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-documents) fogadja a dokumentumok kulcsainak listáját, hogy az adott dokumentumokat frissíteni lehessen. Ha meg van adva, az alaphelyzetbe állítási paraméterek a feldolgozott adatoktól függetlenül egyetlen tényezővé válnak. Ha például 20 blob lett hozzáadva vagy frissítve az utolsó indexelő futtatása óta, de csak egy dokumentumot állít vissza, csak az egyik dokumentum lesz feldolgozva.
+A [dokumentumok alaphelyzetbe állítása API](/rest/api/searchservice/preview-api/reset-documents) fogadja a dokumentumok kulcsainak listáját, hogy az adott dokumentumokat frissíteni lehessen. Ha meg van adva, az alaphelyzetbe állítási paraméterek a feldolgozott adatoktól függetlenül egyetlen tényezővé válnak. Ha például 20 blob lett hozzáadva vagy frissítve az utolsó indexelő futtatása óta, de csak egy dokumentumot állít vissza, csak az egyik dokumentum lesz feldolgozva.
 
 A keresési dokumentumban lévő összes mező az adatforrásból származó értékekkel frissül. Nem választhat, és kiválaszthatja a frissíteni kívánt mezőket. 
 

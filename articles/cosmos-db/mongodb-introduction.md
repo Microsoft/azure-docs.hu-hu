@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan tárolhat és lekérdezheti a nagy mennyiségű
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 11/25/2020
+ms.date: 03/02/2021
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: ab335c8cc682f6b33dcb30509d682186a178c676
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 5820592bf06cc9427e12aa0cd79c54dc1f0156e6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861073"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657995"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>MongoDB-hez készült Azure Cosmos DB API
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -24,9 +24,9 @@ Az [Azure Cosmos DB](introduction.md) a Microsoft globálisan elosztott, többmo
 
 ## <a name="wire-protocol-compatibility"></a>Huzal protokoll kompatibilitása
 
-Azure Cosmos DB megvalósítja a MongoDB átviteli protokollt. Ez a megvalósítás lehetővé teszi az átlátható kompatibilitást a natív MongoDB ügyféloldali SDK-k, illesztőprogramok és eszközök használatával. Azure Cosmos DB nem üzemelteti a MongoDB-adatbázis motorját. A MongoDB által támogatott szolgáltatások részletei itt találhatók: 
-- [Azure Cosmos DB API a Mongo DB Engine 3,6-es verziójához](mongodb-feature-support-36.md)
-- [Azure Cosmos DB API a Mongo DB Engine 3,2-es verziójához](mongodb-feature-support.md)
+Azure Cosmos DB megvalósítja a MongoDB átviteli protokollt. Ez a megvalósítás lehetővé teszi az átlátható kompatibilitást a natív MongoDB ügyféloldali SDK-k, illesztőprogramok és eszközök használatával. Azure Cosmos DB üzemelteti a MongoDB-adatbázis motorját. A MongoDB által támogatott szolgáltatások részletei itt találhatók: 
+- [Azure Cosmos DB API a Mongo DB 4,0-es verziójához](mongodb-feature-support-40.md)
+- [Azure Cosmos DB API a Mongo DB 3,6-es verziójához](mongodb-feature-support-36.md)
 
 Alapértelmezés szerint a Azure Cosmos DB API-MongoDB használatával létrehozott új fiókok kompatibilisek az MongoDB Wire protokoll 3,6-es verziójával. Minden olyan MongoDB-ügyfél-illesztőprogram, amely megérti ezt a protokoll-verziót, natív módon csatlakozhat Cosmos DBhoz.
 
@@ -50,7 +50,7 @@ Kövesse a gyors útmutatókat, és hozzon létre egy Azure Cosmos-fiókot, és 
 * [Webalkalmazás létrehozása a MongoDB és a .NET SDK-hoz készült Azure Cosmos DB API-val](create-mongodb-dotnet.md)
 * [A MongoDB és a Java SDK Azure Cosmos DB API-ját használó konzolos alkalmazás létrehozása](create-mongodb-java.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Íme, pár hivatkozás az első lépések megtételéhez:
 

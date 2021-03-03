@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: fe85fd314ba631a26ece4164e317b0977e7cf749
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: ae31265aee7b0919daf0fec9efbe4d5c6aa7cd91
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103668"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653456"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-a-react-spa-using-the-auth-code-flow"></a>Gyors útmutató: bejelentkezés és hozzáférési jogkivonat beszerzése egy reagáló SPA-ban az Auth Code flow használatával
 
@@ -141,7 +141,7 @@ Ez a rövid útmutató a MSAL reagál az engedélyezési kód folyamatára. Az i
 >
 > Görgessen le ugyanabban a fájlban, és frissítse a t `graphMeEndpoint` . 
 > - Cserélje le a `Enter_the_Graph_Endpoint_Herev1.0/me` karakterláncot a `https://graph.microsoft.com/v1.0/me`
-> - `Enter_the_Graph_Endpoint_Herev1.0/me` a végpont az API-hívásokat fogja elvégezni. A fő (globális) Microsoft Graph API szolgáltatásnál adja meg a `https://graph.microsoft.com/` következőt: (a záró továbbítási perjelet is beleértve). További információért lásd a [dokumentációt](https://docs.microsoft.com/graph/deployments).
+> - `Enter_the_Graph_Endpoint_Herev1.0/me` a végpont az API-hívásokat fogja elvégezni. A fő (globális) Microsoft Graph API szolgáltatásnál adja meg a `https://graph.microsoft.com/` következőt: (a záró továbbítási perjelet is beleértve). További információért lásd a [dokumentációt](/graph/deployments).
 >
 >
 >

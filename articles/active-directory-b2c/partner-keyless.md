@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 1/17/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: c8a5666d373852da5ff79490f435b2d66d5cc6e0
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: b817cfc347ee79ff7c9cbb4124e3f2b7e4d2b7ee
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090366"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644255"
 ---
 # <a name="tutorial-configure-keyless-with-azure-active-directory-b2c"></a>Oktatóanyag: a kulcsnélküli konfiguráció konfigurálása Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ A kezdéshez a következőkre lesz szüksége:
 
 - Azure-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
 
-- [Azure ad B2C bérlő](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant). A bérlőt az Azure-előfizetéshez kell kapcsolni.
+- [Azure ad B2C bérlő](./tutorial-create-tenant.md). A bérlőt az Azure-előfizetéshez kell kapcsolni.
 
 - Egy kulcsnélküli Felhőbeli bérlő, ingyenes [próbaverziós fiók](https://keyless.io/go)beszerzése.
 
@@ -50,7 +50,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 ![A kép a kulcsnélküli architektúra diagramját mutatja](./media/partner-keyless/keyless-architecture-diagram.png)
 
-|Lépés | Description |
+|Lépés | Leírás |
 |:-----| :-----------|
 | 1. | A felhasználó egy bejelentkezési oldalon érkezik. A felhasználók kiválaszthatják a bejelentkezést és a regisztrációt, és beírja a felhasználónevet
 | 2. | Az alkalmazás elküldi a felhasználói attribútumokat a Azure AD B2C identitás-ellenőrzéshez.
@@ -74,7 +74,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 5. Válassza az **identitás-szolgáltatók** elemet.
 
-6. Válassza a **Hozzáadás** elemet.
+6. Válassza a **Hozzáadás** lehetőséget.
 
 ### <a name="configure-an-identity-provider"></a>Identitás-szolgáltató konfigurálása
 
@@ -157,6 +157,6 @@ A B2C-azonosítók listáján szereplő új OIDC-azonosítónak kell megjelennie
 
 További információkért tekintse át a következő cikkeket:
 
-- [Egyéni szabályzatok az Azure AD B2C-ben](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Egyéni szabályzatok az Azure AD B2C-ben](./custom-policy-overview.md)
 
-- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

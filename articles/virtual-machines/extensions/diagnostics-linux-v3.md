@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 88f8d62a6321deae8a46d32441625c5960547694
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 6b03d4fb51021019da4c7d31fccf28b0ee157f32
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99982103"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670546"
 ---
 # <a name="use-linux-diagnostic-extension-30-to-monitor-metrics-and-logs"></a>A Linux diagnosztikai bővítmény 3,0 használata a metrikák és naplók figyeléséhez
 
@@ -825,6 +825,6 @@ A EventHubs-végponton közzétett üzenetek felhasználásának megismeréséhe
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Metrikai riasztások létrehozása [Azure monitorban](../../azure-monitor/platform/alerts-classic-portal.md) a begyűjtött mérőszámokhoz.
-* [Figyelési diagramok](../../azure-monitor/platform/data-platform.md) létrehozása a mérőszámokhoz.
+* Metrikai riasztások létrehozása [Azure monitorban](../../azure-monitor/alerts/alerts-classic-portal.md) a begyűjtött mérőszámokhoz.
+* [Figyelési diagramok](../../azure-monitor/data-platform.md) létrehozása a mérőszámokhoz.
 * Megtudhatja, hogyan [hozhat létre virtuálisgép-méretezési készletet](../linux/tutorial-create-vmss.md) a metrikák használatával az automatikus skálázás szabályozásához.

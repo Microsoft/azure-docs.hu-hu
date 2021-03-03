@@ -2,18 +2,17 @@
 title: Az IBM DB2-HADR beállítása Azure-beli virtuális gépeken (VM-EK) | Microsoft Docs
 description: Magas rendelkezésre állású IBM DB2-LUW létrehozása Azure-beli virtuális gépeken (VM).
 author: msjuergent
-ms.service: virtual-machines
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 10/16/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 54bde8c9dd47e88ffdc831ccb9f7833720583238
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: faafce32c3452a5c4ff08783ec2edd28f7f961e9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621382"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671889"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>Az IBM DB2-LUW magas rendelkezésre állása Azure-beli virtuális gépeken SUSE Linux Enterprise Server a pacemakerrel
 
@@ -312,7 +311,7 @@ A következő elemek előtaggal vannak ellátva:
 
 **[A]** a pacemaker konfigurálásának előfeltételei:
 1. Állítsa le mindkét adatbázis-kiszolgálót a db2stop-mel rendelkező User DB2- \<sid> vel.
-1. Változtassa meg a/bin/ksh a rendszerhéj-környezetet a DB2 \<sid> -felhasználó számára. */bin/ksh* Javasoljuk, hogy használja a YaST eszközt. 
+1. Változtassa meg a/bin/ksh a rendszerhéj-környezetet a DB2 \<sid> -felhasználó számára.  Javasoljuk, hogy használja a YaST eszközt. 
 
 
 ### <a name="pacemaker-configuration"></a>Pacemaker-konfiguráció
@@ -409,7 +408,7 @@ Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load
 
    c. Állítsa a **hozzárendelést** **statikus** értékre, és adja meg az elején megadott IP **-cím virtuális IP-** címét.
 
-   d. Kattintson az **OK** gombra.
+   d. Válassza az **OK** lehetőséget.
 
    e. Az új előtér-IP-készlet létrehozása után jegyezze fel a készlet IP-címét.
 
@@ -425,7 +424,7 @@ Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load
 
    e. Válassza ki az IBM DB2-fürthöz tartozó virtuális gépeket.
 
-   f. Kattintson az **OK** gombra.
+   f. Válassza az **OK** lehetőséget.
 
 1. Állapot mintavételének létrehozása:
 
@@ -435,7 +434,7 @@ Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load
 
    c. Válassza a **TCP** lehetőséget a protokoll és a **62500**-es port közül. Tartsa meg az **intervallum** értékét **5** értékre, és tartsa meg a nem kifogástalan **állapot küszöbértékét** **2** értékre.
 
-   d. Kattintson az **OK** gombra.
+   d. Válassza az **OK** lehetőséget.
 
 1. Hozza létre a terheléselosztási szabályokat:
 
@@ -451,7 +450,7 @@ Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load
 
    f. Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
 
-   : Kattintson az **OK** gombra.
+   : Válassza az **OK** lehetőséget.
 
 
 ### <a name="make-changes-to-sap-profiles-to-use-virtual-ip-for-connection"></a>Az SAP-profilok módosítása virtuális IP-cím használatára a kapcsolódáshoz
@@ -483,7 +482,7 @@ A J2EE konfigurációs eszköz használatával megvizsgálhatja vagy frissíthet
 1. A jobb oldali keretben válassza a JDBC/Pool//URL. elemet. \<SAPSID>
 1. Módosítsa az állomásnév nevét a JDBC URL-címében a virtuális állomásnévre.
      `jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0`
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 1. A módosítások mentéséhez válassza a bal felső sarokban található lemez ikont.
 1. A konfigurációs eszköz bezárásához.
 1. Indítsa újra a Java-példányt.
@@ -495,7 +494,7 @@ A naplózási archiválást csak az elsődleges adatbázis hajtja végre. Ha meg
 
 Javasoljuk, hogy olyan közös NFS-megosztást állítson be, amelyben a naplók mindkét csomópontról íródnak. Az NFS-megosztásnak nagyon elérhetőnek kell lennie. 
 
-Használhatja a meglévő, magasan elérhető NFS-megosztásokat a szállításokhoz vagy a profilok címtárához. További információ:
+Használhatja a meglévő, magasan elérhető NFS-megosztásokat a szállításokhoz vagy a profilok címtárához. További információkért lásd:
 
 - [Magas rendelkezésre állás az NFS-en SUSE Linux Enterprise Server Azure-beli virtuális gépeken][nfs-ha] 
 - [Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver-hez SUSE Linux Enterprise Serveron Azure NetApp Files SAP-alkalmazásokhoz](./high-availability-guide-suse-netapp-files.md)
@@ -878,7 +877,7 @@ stonith-sbd     (stonith:external/sbd): Started azibmdb02
      Masters: [ azibmdb02 ]
      Slaves: [ azibmdb01 ]</code></pre>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Magas rendelkezésre állású architektúra és forgatókönyvek az SAP NetWeaver-hoz](./sap-high-availability-architecture-scenarios.md)
 - [A pacemaker beállítása SUSE Linux Enterprise Server az Azure-ban](./high-availability-guide-suse-pacemaker.md)
 

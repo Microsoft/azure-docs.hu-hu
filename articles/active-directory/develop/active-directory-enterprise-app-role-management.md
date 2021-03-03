@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.author: jeedes
-ms.openlocfilehash: aab1f99984ed5286692cbf9dae39fb4f7d28599c
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 3c1b4b3d57bdce4a66adb35717f46d8989ee2453
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652462"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648815"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: az SAML-jogkivonatban kiadott szerepkör-jogcím konfigurálása nagyvállalati alkalmazásokhoz
 
@@ -29,7 +29,7 @@ A Azure Active Directory (Azure AD) használatával testreszabhatja a szerepkör
 - Egyszeri bejelentkezést (SSO) engedélyező előfizetés. Az egyszeri bejelentkezést az alkalmazással kell konfigurálnia.
 
 > [!NOTE]
-> Ez a cikk azt ismerteti, hogyan lehet alkalmazás-szerepköröket létrehozni/frissíteni/törölni az egyszerű szolgáltatásban az Azure AD-ben API-k használatával. Ha az új felhasználói felületet szeretné használni az alkalmazás szerepköreihez, tekintse meg a részleteket [itt](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps).
+> Ez a cikk azt ismerteti, hogyan lehet alkalmazás-szerepköröket létrehozni/frissíteni/törölni az egyszerű szolgáltatásban az Azure AD-ben API-k használatával. Ha az új felhasználói felületet szeretné használni az alkalmazás szerepköreihez, tekintse meg a részleteket [itt](./howto-add-app-roles-in-azure-ad-apps.md).
 
 ## <a name="when-to-use-this-feature"></a>Mikor kell használni ezt a funkciót?
 

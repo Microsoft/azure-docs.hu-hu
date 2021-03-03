@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: 82b72567a0db4dc9dbff9128402d0ee9f40f3512
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 0346b467bc299b4eb6125df04a4449e94c035e47
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100094151"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666461"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Gyors útmutató: Azure-beli hatáskörébe tartozó fiók létrehozása a Azure Portal
 
@@ -117,7 +117,7 @@ Ha szükséges, kövesse az alábbi lépéseket az előfizetés konfigurálásá
    :::image type="content" source="./media/create-catalog-portal/add-purview-instance.png" alt-text="Képernyőfelvétel: Azure hatáskörébe tartozó fiók példányának létrehozása a Azure Portal.":::
 
     > [!Note] 
-    > Az Azure-beli hatáskörébe nem támogatott a fiók áthelyezése a régiók között. Erről az [Azure által támogatott szolgáltatások oldalon](https://docs.microsoft.com/azure/azure-resource-manager/management/region-move-support)talál további információt.
+    > Az Azure-beli hatáskörébe nem támogatott a fiók áthelyezése a régiók között. Erről az [Azure által támogatott szolgáltatások oldalon](../azure-resource-manager/management/region-move-support.md)talál további információt.
 
 1. Az **alapok** lapon tegye a következőket:
     1. Válasszon ki egy **erőforráscsoportot**.

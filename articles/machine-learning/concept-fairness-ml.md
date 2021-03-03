@@ -10,18 +10,18 @@ ms.author: luquinta
 author: luisquintanilla
 ms.date: 01/26/2021
 ms.custom: responsible-ml
-ms.openlocfilehash: 6daa03728a5f323f6f8b749975d31fbca24d5602
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 276c91ad7fb5b09dbe18d989741f0f54b8b0eb09
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98871502"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659681"
 ---
 # <a name="mitigate-unfairness-in-machine-learning-models-preview"></a>A gépi tanulási modellekben való méltánytalanság enyhítése (előzetes verzió)
 
 Ismerje meg, hogy a gépi tanulás és a [Fairlearn](https://fairlearn.github.io/) nyílt forráskódú Python-csomag milyen módon segít enyhíteni a gépi tanulási modellek méltánytalan problémáit. Ha nem tesz erőfeszítéseket a tisztességgel kapcsolatos problémák megismerésére és a tisztességes értékelésre a gépi tanulási modellek létrehozásakor, létrehozhat olyan modelleket, amelyek tisztességtelen eredményeket hoznak létre.
 
-A Fairlearn nyílt forráskódú csomagra vonatkozó [felhasználói útmutató](https://fairlearn.github.io/master/user_guide/index.html) következő összefoglalása leírja, hogyan használhatja azt a kiépített AI-rendszerek tisztaságának értékeléséhez.  A nyílt forráskódú Fairlearn-csomag olyan lehetőségeket is kínál, amelyek segítenek enyhíteni vagy csökkenteni a megfigyelt tisztességgel kapcsolatos problémákat.  Tekintse meg az útmutató és a [minta jegyzetfüzeteket](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) , amelyek lehetővé teszik a mesterséges intelligencia [-](how-to-machine-learning-fairness-aml.md) rendszerek értékelését az Azure Machine Learningon való képzés során.
+A Fairlearn nyílt forráskódú csomagra vonatkozó [felhasználói útmutató](https://fairlearn.github.io/main/user_guide/index.html) következő összefoglalása leírja, hogyan használhatja azt a kiépített AI-rendszerek tisztaságának értékeléséhez.  A nyílt forráskódú Fairlearn-csomag olyan lehetőségeket is kínál, amelyek segítenek enyhíteni vagy csökkenteni a megfigyelt tisztességgel kapcsolatos problémákat.  Tekintse meg az útmutató és a [minta jegyzetfüzeteket](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) , amelyek lehetővé teszik a mesterséges intelligencia [-](how-to-machine-learning-fairness-aml.md) rendszerek értékelését az Azure Machine Learningon való képzés során.
 
 
 ## <a name="what-is-fairness-in-machine-learning-models"></a>Mi a tisztességes a gépi tanulási modellekben?
@@ -107,8 +107,8 @@ A Fairlearn nyílt forráskódú csomag utófeldolgozó biztosít, és csökkent
 | `GridSearch` | A fekete Box megközelítése, amely a valós regressziós teljesítmény-keresés változatát valósítja meg a [valós regresszió: mennyiségi definíciók és a redukáló algoritmusok](https://arxiv.org/abs/1905.12843) által leírt, kötött csoportok elvesztésének algoritmusával. | Regresszió | Bináris | [Kötött csoport elvesztése](#parity-constraints) | Csökkentése |
 | `ThresholdOptimizer` | Utófeldolgozó algoritmus a [felügyelt tanulásban az esélyegyenlőségi lehetőség](https://arxiv.org/abs/1610.02413)alapján. Ez a módszer egy meglévő osztályozó és a bizalmas szolgáltatás bemenetét veszi figyelembe, és az osztályozó előrejelzésének monoton átalakítását származtatja a megadott paritásos megkötések érvénybe léptetéséhez. | Bináris besorolás | Kategorikus | [Demográfiai paritás](#parity-constraints), [equald odds](#parity-constraints) | Feldolgozás utáni |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Megtudhatja, hogyan használhatja a különböző összetevőket a Fairlearn [GitHub](https://github.com/fairlearn/fairlearn/), [felhasználói útmutató](https://fairlearn.github.io/master/user_guide/index.html), [példák](https://fairlearn.github.io/master/auto_examples/)és [minta jegyzetfüzetek](https://github.com/fairlearn/fairlearn/tree/master/notebooks)használatával történő ellenőrzésével.
+- Megtudhatja, hogyan használhatja a különböző összetevőket a Fairlearn [GitHub](https://github.com/fairlearn/fairlearn/), [felhasználói útmutató](https://fairlearn.github.io/main/user_guide/index.html), [példák](https://fairlearn.github.io/main/auto_examples/index.html)és [minta jegyzetfüzetek](https://github.com/fairlearn/fairlearn/tree/master/notebooks)használatával történő ellenőrzésével.
 - Megtudhatja, [Hogyan](how-to-machine-learning-fairness-aml.md) engedélyezheti Azure Machine learning gépi tanulási modelljeinek méltányos értékelését.
 - Tekintse meg a [minta-jegyzetfüzeteket](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) a Azure Machine learning a tisztesség értékelésére szolgáló forgatókönyvekben. 

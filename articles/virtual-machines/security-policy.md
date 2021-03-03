@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: b7f6d30ffa849f78b0f7baa2d84e4fb01f3bf192
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 291b9a210bf5f8cc18ccf8a523e282d3fc85aa28
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500342"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673351"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Szabályzatok biztonsága és használata virtuális gépeken az Azure-ban
 
@@ -63,7 +63,7 @@ A felhőalapú alkalmazások készítése során általános kihívást jelenti 
 
 Az Azure Active Directory (Azure AD) Azure-erőforrások felügyelt identitásai szolgáltatása megoldást kínál erre a problémára. A szolgáltatás automatikusan felügyelt identitást biztosít az Azure-szolgáltatások számára az Azure AD-ben. Ezzel az identitással bármely, az Azure AD-hitelesítést támogató szolgáltatásban, többek között a Key Vaultban is elvégezheti a hitelesítést anélkül, hogy a hitelesítő adatok a kódban szerepelnének.  A virtuális gépen futó kód két végpontból igényelhet jogkivonatot, amely csak a virtuális gépről elérhető. A szolgáltatással kapcsolatos részletesebb információkért tekintse át a [felügyelt identitások az Azure-erőforrások](../active-directory/managed-identities-azure-resources/overview.md) áttekintéséhez lapot.   
 
-## <a name="policies"></a>Szabályzatok
+## <a name="policies"></a>Házirendek
 
 Az [Azure-szabályzatok](../governance/policy/overview.md) segítségével meghatározhatja a szervezet Windows-és Linux- [alapú](./windows/policy.md) [virtuális](./linux/policy.md)gépei kívánt viselkedését. A házirendek használatával a szervezetek különböző egyezményeket és szabályokat alkalmazhatnak a vállalaton belül. A kívánt viselkedés kényszerítésével csökkentheti a kockázatokat, miközben hozzájárul a szervezet sikeréhez.
 
@@ -72,5 +72,5 @@ Az [Azure-szabályzatok](../governance/policy/overview.md) segítségével megha
 Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md)használatával elkülönítheti a feladatait a csapaton belül, és csak a virtuális gépen lévő felhasználók számára biztosíthatja a feladataik elvégzéséhez szükséges hozzáférést. Ahelyett, hogy mindenki számára nem korlátozott engedélyeket adna a virtuális géphez, csak bizonyos műveleteket engedélyezhet. A virtuális gép hozzáférés-vezérlését az [Azure CLI](/cli/azure/role)vagy a[Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)használatával konfigurálhatja a [Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 
-## <a name="next-steps"></a>További lépések
-- Megtudhatja, hogyan figyelheti a virtuális gépek biztonságát a [Linux](../security/fundamentals/overview.md) vagy a [Windows](./tutorial-azure-security.md)Azure Security Center használatával.
+## <a name="next-steps"></a>Következő lépések
+- Megtudhatja, hogyan figyelheti a virtuális gépek biztonságát a [Linux](../security/fundamentals/overview.md) vagy a [Windows](/previous-versions/azure/virtual-machines/tutorial-azure-security)Azure Security Center használatával.

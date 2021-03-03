@@ -1,21 +1,21 @@
 ---
 title: 'Gyors útmutató: Microsoft Graph hívása egy Node.js Console-alkalmazásból | Azure'
 titleSuffix: Microsoft identity platform
-description: Ebből a rövid útmutatóból megtudhatja, hogyan szerezhet be egy Node.js Console-alkalmazás hozzáférési jogkivonatot, és hogyan hívhat meg egy Microsoft Identity platform-végpont által védett API-t az alkalmazás saját identitásával
+description: Ebben a rövid útmutatóban egy olyan mintakód letöltését és futtatását mutatja be, amely bemutatja, hogyan szerezhet be egy Node.js Console-alkalmazás hozzáférési jogkivonatot, és hogyan hívhat meg egy Microsoft Identity platform-végpont által védett API-t az alkalmazás saját identitásával
 services: active-directory
 author: derisen
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
-ms.date: 02/11/2021
+ms.date: 02/17/2021
 ms.author: v-doeris
-ms.openlocfilehash: c550cc8009f0138b9f1803399fbc592b34efbfab
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 4360810d460c5fc8598ce302ad8b82f65d2d819e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100562198"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653745"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-nodejs-console-app-using-apps-identity"></a>Gyors útmutató: token beszerzése és Microsoft Graph API meghívása egy Node.js Console-alkalmazásból az alkalmazás identitásával
 
@@ -29,12 +29,12 @@ Ez a rövid útmutató a [Microsoft hitelesítési függvénytárát használja 
 * [Visual Studio Code](https://code.visualstudio.com/download) vagy más Kódszerkesztő
 
 > [!div renderon="docs"]
-> ## <a name="register-and-download-your-quickstart-application"></a>A gyors üzembe helyezési alkalmazás regisztrálása és letöltése
+> ## <a name="register-and-download-the-sample-application"></a>A minta alkalmazás regisztrálása és letöltése
 >
 > Az első lépésekhez kövesse az alábbi lépéseket.
 >
 > [!div renderon="docs"]
-> #### <a name="step-1-register-your-application"></a>1. lépés: Alkalmazás regisztrálása
+> #### <a name="step-1-register-the-application"></a>1. lépés: az alkalmazás regisztrálása
 > Az alkalmazás regisztrálásához és az alkalmazás regisztrációs információinak a megoldáshoz való kézi hozzáadásához kövesse az alábbi lépéseket:
 >
 > 1. Jelentkezzen be az <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a>.
@@ -50,9 +50,9 @@ Ez a rövid útmutató a [Microsoft hitelesítési függvénytárát használja 
 > 1. A **felhasználó** csomópont alatt válassza a **felhasználó. olvasás. mind** lehetőséget, majd kattintson az **engedélyek hozzáadása** lehetőségre.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> ### <a name="download-and-configure-your-quickstart-app"></a>A Gyorsindítás alkalmazás letöltése és konfigurálása
+> ### <a name="download-and-configure-the-sample-app"></a>A minta alkalmazás letöltése és konfigurálása
 >
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>1. lépés: Az alkalmazás konfigurálása az Azure Portalon
+> #### <a name="step-1-configure-the-application-in-azure-portal"></a>1. lépés: az alkalmazás konfigurálása Azure Portalban
 > Ahhoz, hogy a rövid útmutatóhoz tartozó mintakód működjön, létre kell hoznia egy ügyfél-titkos kulcsot, és hozzá kell adnia Graph API **felhasználóját. Read. All** Application engedély.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [A módosítások elvégzése]()
@@ -60,7 +60,7 @@ Ez a rövid útmutató a [Microsoft hitelesítési függvénytárát használja 
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Már konfigurált](media/quickstart-v2-netcore-daemon/green-check.png) Az alkalmazása már konfigurálva van ezekkel az attribútumokkal.
 
-#### <a name="step-2-download-your-nodejs-project"></a>2. lépés: a Node.js-projekt letöltése
+#### <a name="step-2-download-the-nodejs-sample-project"></a>2. lépés: a Node.js minta projekt letöltése
 
 > [!div renderon="docs"]
 > [A mintakód letöltése](https://github.com/azure-samples/ms-identity-javascript-nodejs-console/archive/main.zip)
@@ -73,7 +73,7 @@ Ez a rövid útmutató a [Microsoft hitelesítési függvénytárát használja 
 > > `Enter_the_Supported_Account_Info_Here`
 
 > [!div renderon="docs"]
-> #### <a name="step-3-configure-your-nodejs-project"></a>3. lépés: a Node.js projekt konfigurálása
+> #### <a name="step-3-configure-the-nodejs-sample-project"></a>3. lépés: a Node.js minta projekt konfigurálása
 >
 > 1. Bontsa ki a zip-fájlt egy helyi mappába a lemez gyökeréhez (például *C:/Azure-Samples*).
 > 1. Szerkessze a *. env* -t, és cserélje le a mezők `TENANT_ID` , `CLIENT_ID` és a `CLIENT_SECRET` következő kódrészlet értékét:
@@ -172,7 +172,7 @@ const msalConfig = {
         clientId: "Enter_the_Application_Id_Here",
         authority: "https://login.microsoftonline.com/Enter_the_Tenant_Id_Here",
         clientSecret: "Enter_the_Client_Secret_Here",
-   } 
+   }
 };
 const cca = new msal.ConfidentialClientApplication(msalConfig);
 ```

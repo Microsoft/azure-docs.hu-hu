@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: ecc69f8e2e281b4456861397bdd5af4ba41448e8
-  ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
-  ms.translationtype: HT
+  ms.openlocfilehash: 578eb6859114eeef9672e7b58e6bb6b56189dc5a
+  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/23/2020
-  ms.locfileid: "92441759"
+  ms.lasthandoff: 03/02/2021
+  ms.locfileid: "101647370"
 landingContent:
 - title: Az External Identities ismertetése
   linkLists:
@@ -69,7 +69,7 @@ landingContent:
     links:
     - text: Felhasználói folyamatok létrehozása az Azure AD B2C-ben
       url: ../../active-directory-b2c/tutorial-create-user-flows.md
-- title: B2B vendégfelhasználók önkiszolgáló regisztrációjának folyamatai (előzetes verzió)
+- title: Önkiszolgáló bejelentkezési folyamatok B2B vendég felhasználók számára
   linkLists:
   - linkListType: overview
     links:

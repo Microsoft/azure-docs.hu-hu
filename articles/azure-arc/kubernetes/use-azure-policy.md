@@ -1,40 +1,38 @@
 ---
-title: Az Azure Policy használata fürtkonfigurációk tömeges alkalmazására (előzetes verzió)
+title: A Azure Policy használata a fürt konfigurációjának méretekben történő alkalmazásához
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/15/2021
+ms.date: 03/02/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: A Azure Policy használata a fürt konfigurációjának méretekben történő alkalmazásához
 keywords: Kubernetes, arc, Azure, K8s, tárolók
-ms.openlocfilehash: 23cd42458c396afd31741c648d713934250a4112
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7f85050666c383ba49730bd88ce1f26d55607e7a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587803"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652147"
 ---
-# <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>Az Azure Policy használata fürtkonfigurációk tömeges alkalmazására (előzetes verzió)
+# <a name="use-azure-policy-to-apply-cluster-configurations-at-scale"></a>A Azure Policy használata a fürt konfigurációjának méretekben történő alkalmazásához
 
 ## <a name="overview"></a>Áttekintés
 
-A Azure Policy segítségével kényszerítheti ki a következő erőforrások valamelyikét, hogy az adott `Microsoft.KubernetesConfiguration/sourceControlConfigurations` alkalmazásra kerüljön:
-*  `Microsoft.Kubernetes/connectedclusters` erőforrás.
-* GitOps-kompatibilis `Microsoft.ContainerService/managedClusters` erőforrás. 
+Az `Microsoft.KubernetesConfiguration/sourceControlConfigurations` Azure arc-kompatibilis Kubernetes-fürtökön () lévő konfigurációk (erőforrástípus) méretezése az Azure Policy használatával végezhető el `Microsoft.Kubernetes/connectedclusters` .
 
 A Azure Policy használatához válasszon ki egy meglévő szabályzat-definíciót, és hozzon létre egy szabályzat-hozzárendelést. A szabályzat-hozzárendelés létrehozásakor:
 1. Adja meg a hozzárendelés hatókörét.
     * A hatókör egy Azure-erőforráscsoport vagy-előfizetés lesz. 
-2. Állítsa be a létrehozandó paraméterek paramétereit `sourceControlConfiguration` . 
+2. Adja meg a létrehozandó konfiguráció paramétereit. 
 
-A hozzárendelés létrehozása után a Azure Policy motor azonosítja a `connectedCluster` `managedCluster` hatókörön belül található összes vagy erőforrást, és alkalmazza a `sourceControlConfiguration` -t a-re.
+A hozzárendelés létrehozása után Azure Policy motor azonosítja a hatókörben található összes Azure arc-kompatibilis Kubernetes-fürtöt, és minden egyes fürtön alkalmazza a konfigurációt.
 
-Több házirend-hozzárendelés használatával engedélyezheti a git-adattárakat, mint az igazság forrásait az egyes fürtökön. Minden szabályzat-hozzárendelés egy másik git-tárház használatára lesz konfigurálva; például egy adattár a központi IT-/fürt-kezelőhöz és más adattárakhoz.
+Több konfigurációt is létrehozhat, amelyek mindegyike egy másik git-tárházra mutat, és több házirend-hozzárendelést használ. Például egy adattár a központi IT-/fürt-kezelőhöz és más adattárakhoz az alkalmazás-munkacsoportok számára.
 
 ## <a name="prerequisite"></a>Előfeltétel
 
-Ellenőrizze, hogy van- `Microsoft.Authorization/policyAssignments/write` e engedélye a hatókörre (előfizetés vagy erőforráscsoport), ahol létre fogja hozni ezt a szabályzat-hozzárendelést.
+Ellenőrizze, hogy van- `Microsoft.Authorization/policyAssignments/write` e engedélye a hatókörre (előfizetés vagy erőforráscsoport), ahol létrehozza ezt a szabályzat-hozzárendelést.
 
 ## <a name="create-a-policy-assignment"></a>Szabályzat-hozzárendelés létrehozása
 
@@ -54,23 +52,20 @@ Ellenőrizze, hogy van- `Microsoft.Authorization/policyAssignments/write` e enge
     * További információ: [szabályzat-hozzárendelés létrehozása](../../governance/policy/assign-policy-portal.md) rövid útmutató és a [nem megfelelő erőforrások szervizelése Azure Policy cikkel](../../governance/policy/how-to/remediate-resources.md).
 1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
-A szabályzat-hozzárendelés létrehozása után a `sourceControlConfiguration` rendszer a hozzárendelés hatókörében található alábbi erőforrások valamelyikére alkalmazza a-t:
-* Új `connectedCluster` erőforrások.
-* Új `managedCluster` erőforrások a telepített GitOps-ügynökökkel. 
+A szabályzat-hozzárendelés létrehozása után a rendszer alkalmazza a konfigurációt a szabályzat-hozzárendelés hatókörében létrehozott új, Azure arc-kompatibilis Kubernetes-fürtökre.
 
-Meglévő fürtök esetében manuálisan kell futtatnia egy szervizelési feladatot. Ez a feladat általában 10 – 20 percet vesz igénybe a szabályzat-hozzárendelés érvénybe léptetéséhez.
+A meglévő fürtök esetében manuálisan kell futtatnia egy szervizelési feladatot. Ez a feladat általában 10 – 20 percet vesz igénybe a szabályzat-hozzárendelés érvénybe léptetéséhez.
 
 ## <a name="verify-a-policy-assignment"></a>Szabályzat-hozzárendelés ellenőrzése
 
-1. A Azure Portal navigáljon az egyik `connectedCluster` erőforráshoz.
+1. A Azure Portal navigáljon az egyik Azure arc-kompatibilis Kubernetes-fürthöz.
 1. Az oldalsáv **Beállítások** szakaszában válassza a **szabályzatok** lehetőséget. 
-    * Az AK-fürt UX-je még nincs implementálva.
     * A szabályzatok listájában meg kell jelennie a korábban létrehozott házirend-hozzárendelésnek, *amely megfelelt* a **megfelelőségi állapot** beállításának.
 1. Az oldalsáv **Beállítások** szakaszában válassza a **konfigurációk** lehetőséget.
-    * A konfigurációk listán látnia kell, `sourceControlConfiguration` hogy a szabályzat-hozzárendelés létrejött.
+    * A konfigurációk listán látnia kell a szabályzat-hozzárendelés által létrehozott konfigurációt.
 1. `kubectl`A paranccsal kérdezheti le a fürtöt. 
-    * Ekkor meg kell jelennie a által létrehozott névtérnek és összetevőknek `sourceControlConfiguration` .
-    * 5 percen belül látnia kell a fürtben a beállított git-tárház jegyzékfájljában leírt összetevőket.
+    * Ekkor meg kell jelennie a konfigurációk erőforrásai által létrehozott névtérnek és összetevőknek.
+    * 5 percen belül (feltételezve, hogy a fürtnek van hálózati kapcsolata az Azure-nal), látnia kell a jegyzékfájlokban a git-tárházban leírt, a fürtön létrehozott objektumokat.
 
 ## <a name="next-steps"></a>Következő lépések
 

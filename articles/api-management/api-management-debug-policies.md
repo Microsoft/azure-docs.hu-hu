@@ -12,21 +12,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/22/2020
 ms.author: apimpm
-ms.openlocfilehash: a8ed834c9ab093ae063e386978bca4d73fa46543
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 2e45d1274cf7332dbca70eaa8fc51f0ac98e5359
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400726"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648016"
 ---
 # <a name="debug-azure-api-management-policies-in-visual-studio-code"></a>Azure API Management-szabályzatok hibakeresése a Visual Studio Code-ban
 
 Az Azure API Management hatékony képességeket biztosítanak az API-közzétevők számára, például a hitelesítés, az engedélyezés, a szabályozás, a gyorsítótárazás és az [átalakítás terén.](api-management-policies.md) A házirendek utasítások gyűjteményei, amelyeket az API-k kérelmei és válaszai szerint egymást követően hajtanak végre. 
 
 Ez a cikk a Visual Studio Code-hoz készült [Azure API Management bővítménnyel](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement)API Management szabályzatok hibakeresését ismerteti. 
-
-> [!NOTE]
-> Ez a funkció nyilvános előzetes verzióban érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -36,7 +33,7 @@ Ez a cikk a Visual Studio Code-hoz készült [Azure API Management bővítménny
 
 * API importálása a API Management-példányba. A lépéseket például [az oktatóanyag: az API-k importálásához és kezeléséhez használja a Visual Studio Code API Management bővítményét](visual-studio-code-tutorial.md).
 
-## <a name="restrictions-and-limitations"></a>Korlátozások és korlátozások
+## <a name="restrictions-and-limitations"></a>Korlátozások
 
 Ez a funkció csak a API Management fejlesztői szintjében érhető el. Minden API Management-példány csak egy egyidejű hibakeresési munkamenetet támogat.
 

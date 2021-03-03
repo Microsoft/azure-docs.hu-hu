@@ -5,14 +5,14 @@ author: TheovanKraay
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
-ms.date: 12/01/2020
+ms.date: 03/02/2021
 ms.author: thvankra
-ms.openlocfilehash: 6d9a74729768a326379b5efddb864a4fee02fa59
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: f9b6e586879b8697660ced7aa6f1e75083e3ee29
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493216"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658571"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API gyakori problémáinak elhárítása
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -32,7 +32,7 @@ Néhány népszerű ok és megoldás a következő:
 A következő hibaüzenet jelenhet meg: `Cannot connect to any host, scheduling retry in 600000 milliseconds` . 
 
 ### <a name="solution"></a>Megoldás
-Ez az ügyféloldali SNAT lehet. A probléma kizárásához kövesse a SNAT címen található lépéseket a [Kimenő kapcsolatok esetében](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) . Ez egy üresjárati időtúllépési probléma is lehet, ha az Azure Load Balancer alapértelmezés szerint 4 perc üresjárati időkorláttal rendelkezik. Tekintse meg a dokumentációt a terheléselosztó [üresjárati időkorlátjában](../load-balancer/load-balancer-tcp-idle-timeout.md?tabs=tcp-reset-idle-portal). Engedélyezze a TCP-t – tartsa életben az illesztőprogram-beállításokat (lásd [alább](#enable-keep-alive-for-java-driver)), és állítsa az `keepAlive` operációs rendszer intervallumát 4 percnél kevesebbre.
+Ez az ügyféloldali SNAT lehet. A probléma kizárásához kövesse a SNAT címen található lépéseket a [Kimenő kapcsolatok esetében](../load-balancer/load-balancer-outbound-connections.md) . Ez egy üresjárati időtúllépési probléma is lehet, ha az Azure Load Balancer alapértelmezés szerint 4 perc üresjárati időkorláttal rendelkezik. Tekintse meg a dokumentációt a terheléselosztó [üresjárati időkorlátjában](../load-balancer/load-balancer-tcp-idle-timeout.md?tabs=tcp-reset-idle-portal). Engedélyezze a TCP-t – tartsa életben az illesztőprogram-beállításokat (lásd [alább](#enable-keep-alive-for-java-driver)), és állítsa az `keepAlive` operációs rendszer intervallumát 4 percnél kevesebbre.
 
  
 

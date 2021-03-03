@@ -9,20 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: cbf18abe-41cb-44f7-bdec-966f32c89325
-ms.service: virtual-machines-windows
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4dfbffcaedb6c544a34e347633d5adc173fab33e
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 8b216fafad5cd2f7406320dce3ec28b8830015d7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655985"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673750"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-azure-shared-disk"></a>SAP ASCS/SCS instance multi-SID magas rendelkezésre állás a Windows Server feladatátvételi fürtszolgáltatással és az Azure megosztott lemezzel
 
@@ -104,11 +103,11 @@ A sorba helyezni replikációs kiszolgáló 1 (ERS1) és a sorba helyezni Replic
 | --- | --- | --- |---| ---|
 | első fürtcsomópont ASCS/SCS-fürt |PR1-ASCs-10 |10.0.0.4 |PR1-ASCs-avset |PR1PPG |
 | második fürtcsomópont ASCS/SCS-fürt |PR1-ASCs-11 |10.0.0.5 |PR1-ASCs-avset |PR1PPG |
-| Fürt hálózatnév | pr1clust |10.0.0.42 (**csak** a Win 2016-fürt esetében) | n/a | n/a |
-| **SID1** ASCS-fürt hálózatnév | PR1 – ascscl |10.0.0.43 | n/a | n/a |
-| **SID1** ERS-fürt hálózatának neve (**csak** ERS2 esetében) | PR1 – erscl |10.0.0.44 | n/a | n/a |
-| **SID2** ASCS-fürt hálózatnév | PR2 – ascscl |10.0.0.45 | n/a | n/a |
-| **SID2** ERS-fürt hálózatának neve (**csak** ERS2 esetében) | PR1 – erscl |10.0.0.46 | n/a | n/a |
+| Fürt hálózatnév | pr1clust |10.0.0.42 (**csak** a Win 2016-fürt esetében) | n.a. | n.a. |
+| **SID1** ASCS-fürt hálózatnév | PR1 – ascscl |10.0.0.43 | n.a. | n.a. |
+| **SID1** ERS-fürt hálózatának neve (**csak** ERS2 esetében) | PR1 – erscl |10.0.0.44 | n.a. | n.a. |
+| **SID2** ASCS-fürt hálózatnév | PR2 – ascscl |10.0.0.45 | n.a. | n.a. |
+| **SID2** ERS-fürt hálózatának neve (**csak** ERS2 esetében) | PR1 – erscl |10.0.0.46 | n.a. | n.a. |
 
 ### <a name="create-azure-internal-load-balancer"></a>Azure belső terheléselosztó létrehozása
 

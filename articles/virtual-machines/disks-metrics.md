@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 8f5b7f8b5cd563f8b265d7051a57b0ac22598d1c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 60486c41ad843cf193ee0648dfcfef66f7668e47
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100617378"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674986"
 ---
 # <a name="disk-performance-metrics"></a>Lemez teljesítményének mérőszámai
 Az Azure mérőszámokat biztosít a Azure Portalban, amelyek betekintést nyújtanak a virtuális gépek és a lemezek teljesítményének módjára. A metrikák egy API-hívás segítségével is beolvashatók. Ez a cikk 3 alszakaszra van bontva:
@@ -129,6 +129,6 @@ Ez a metrika azt jelzi, hogy a 3. és 2. logikai egységben csatolt adatlemezek 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Azure Monitor mérőszámok áttekintése](../azure-monitor/platform/data-platform-metrics.md)
-- [Metrikák összesítésének magyarázata](../azure-monitor/platform/metrics-aggregation-explained.md)
-- [Metrikariasztások létrehozása, megtekintése és kezelése az Azure Monitorral](../azure-monitor/platform/alerts-metric.md)
+- [Azure Monitor mérőszámok áttekintése](../azure-monitor/essentials/data-platform-metrics.md)
+- [Metrikák összesítésének magyarázata](../azure-monitor/essentials/metrics-aggregation-explained.md)
+- [Metrikariasztások létrehozása, megtekintése és kezelése az Azure Monitorral](../azure-monitor/alerts/alerts-metric.md)

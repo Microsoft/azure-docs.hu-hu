@@ -3,18 +3,19 @@ title: OpenShift üzembe helyezése Azure Stack
 description: OpenShift üzembe helyezése Azure Stackban.
 author: haroldwongms
 manager: joraio
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: openshift
+ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 3729dbbc54d15d4641f5e514582f1437e790ef19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: decc66d2d5abd16c084aa19443dbac54e87a9560
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87374039"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667222"
 ---
 # <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>OpenShift-tároló platform vagy OKD üzembe helyezése Azure Stack
 
@@ -63,7 +64,7 @@ Néhány gyakori testreszabási lehetőség, de nem korlátozódik a következő
 
 Az Azure CLI használatával történő üzembe helyezés lépéseinek végrehajtásához kövesse a [OpenShift Container platform](./openshift-container-platform-3x.md) szakasz vagy a [OKD](./openshift-okd.md) szakasz megfelelő szakaszát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Üzembe helyezés utáni feladatok](./openshift-container-platform-3x-post-deployment.md)
 - [A OpenShift üzembe helyezésének hibája az Azure-ban](./openshift-container-platform-3x-troubleshooting.md)

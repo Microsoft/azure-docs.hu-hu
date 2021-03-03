@@ -16,12 +16,12 @@ ms.author: daveba
 ms.reviewer: Nicholak-MS
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9201341631b58da1290da38e100812cc98a5bf5f
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: d117da89188a5a803bc30ffa2822af4efab30226
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547893"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644901"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>A termék neve és a szolgáltatási csomag azonosítója a licenceléshez
 
@@ -139,6 +139,7 @@ A licenceknek [a Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM
 | SKYPE VÁLLALATI PSTN – BELFÖLDI ÉS NEMZETKÖZI TELEFONÁLÁS    | MCOPSTN2  | d3b4fe1f-9992-4930-8acb-ca6ec609365e  | MCOPSTN2 (5a10155d-f5c1-411a-a8ec-e99aae125390) | BELFÖLDI és nemzetközi HÍVÁSi terv (5a10155d-f5c1-411a-a8ec-e99aae125390) |
 | SKYPE VÁLLALATI PSTN – BELFÖLDI HÍVÁS  | MCOPSTN1  | 0dab259f-bf13-4952-b7f8-7db8f131b28d  | MCOPSTN1 (4ed3ff63-69d7-4fb7-b984-5aec7f605ca8) | BELFÖLDI HÍVÁSi terv (4ed3ff63-69d7-4fb7-b984-5aec7f605ca8) |
 | SKYPE vállalati PSTN – belföldi hívás (120 perc)| MCOPSTN5  | 54a152dc-90de-4996-93d2-bc47e670fc06  | MCOPSTN5 (54a152dc-90de-4996-93d2-bc47e670fc06) | BELFÖLDI HÍVÁSi terv (54a152dc-90de-4996-93d2-bc47e670fc06) |
+| TÉMAKÖRBELI TAPASZTALATOK | TOPIC_EXPERIENCES | 4016f256-b063-4864-816e-d818aad600c9 | GRAPH_CONNECTORS_SEARCH_INDEX_TOPICEXP (b74d57b2-58e9-484A-9731-aeccbba954f0)<br/>CORTEX (c815c93d-0759-4bb8-b857-bc921a71be83) | GRÁF-ÖSSZEKÖTŐk keresése az INDEXtel (b74d57b2-58e9-484A-9731-aeccbba954f0)<br/>TÉMAKÖRbeli tapasztalatok (c815c93d-0759-4bb8-b857-bc921a71be83)|
 | O365-BELI TELSTRA-HÍVÁS | MCOPSTNEAU2 | de3312e1-c7b0-46e6-a7c3-a515ff90bc86 | MCOPSTNEAU (7861360b-dc3b-4eba-a3fc-0d323a035746) | AUSTRALIA CALLing PLAN (7861360b-dc3b-4eba-a3fc-0d323a035746) |
 | VISIO ONLINE-CSOMAG 1   | VISIOONLINE_PLAN1 | 4b244418-9658-4451-a2b8-b5e2b364e9bd  | ONEDRIVE_BASIC (da792a53-cbc0-4184-a10d-e544dd34b3c1)<br/>VISIOONLINE (2bdbaf8f-738f-4ac7-9234-3c3ee2ce7d0f) | ONEDRIVE_BASIC (da792a53-cbc0-4184-a10d-e544dd34b3c1)<br/>VISIOONLINE (2bdbaf8f-738f-4ac7-9234-3c3ee2ce7d0f) |
 | VISIO online-csomag 2   | VISIOCLIENT   | c5928f49-12ba-48f7-ada3-0d743a3601d5  | ONEDRIVE_BASIC (da792a53-cbc0-4184-a10d-e544dd34b3c1)<br/>VISIO_CLIENT_SUBSCRIPTION (663a804f-1c30-4ff0-9915-9db84f0d1cea)<br/>VISIOONLINE (2bdbaf8f-738f-4ac7-9234-3c3ee2ce7d0f) | ONEDRIVE_BASIC (da792a53-cbc0-4184-a10d-e544dd34b3c1)<br/>VISIO_CLIENT_SUBSCRIPTION (663a804f-1c30-4ff0-9915-9db84f0d1cea)<br/>VISIOONLINE (2bdbaf8f-738f-4ac7-9234-3c3ee2ce7d0f) |

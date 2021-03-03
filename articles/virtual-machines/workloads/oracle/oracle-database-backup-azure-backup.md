@@ -2,18 +2,19 @@
 title: Oracle Database 19c-adatbázis biztonsági mentése és helyreállítása Azure-beli linuxos virtuális gépeken Azure Backup használatával
 description: Megtudhatja, hogyan készíthet biztonsági másolatot egy Oracle Database 19c-adatbázisról a Azure Backup szolgáltatás használatával.
 author: cro27
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: ac045694e8975509635e03221a8cb9cc84446b55
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 90f86a198ad36c2961f77336092d863953ee45ba
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806409"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673896"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-backup"></a>Oracle Database 19c-adatbázis biztonsági mentése és helyreállítása Azure-beli linuxos virtuális gépeken Azure Backup használatával
 
@@ -199,13 +200,13 @@ Ez a lépés azt feltételezi, hogy rendelkezik egy *vmoracle19c* nevű virtuál
      RMAN> backup as compressed backupset database plus archivelog;
      ```
 
-## <a name="using-azure-backup"></a>Az Azure Backup használata
+## <a name="using-azure-backup-preview"></a>Azure Backup használata (előzetes verzió)
 
 Az Azure Backup szolgáltatás egyszerű, biztonságos és költséghatékony megoldásokat kínál adatai biztonsági mentéséhez és a Microsoft Azure-felhőből történő helyreállításához. A Azure Backup független és elkülönített biztonsági mentéseket biztosít az eredeti adatvesztés elleni védelemhez. A biztonsági másolatok egy helyreállítási tárban vannak tárolva, a helyreállítási pontok beépített kezelésével. A konfiguráció és a méretezhetőség egyszerű, a biztonsági mentések optimalizáltak, és szükség esetén egyszerűen visszaállíthatók.
 
-A Azure Backup szolgáltatás olyan [keretrendszert](../../../backup/backup-azure-linux-app-consistent.md) biztosít a Windows és Linux rendszerű virtuális gépek biztonsági mentése során az alkalmazások konzisztenciájához, mint például az Oracle, a MySQL, a Mongo db, a SAP HANA és a PostGreSQL. Ebbe beletartozik egy előzetes parancsfájl meghívása (az alkalmazások fokozatos leválasztása), mielőtt pillanatképet készít a lemezekről, és meghívja az utólagos parancsfájlt (az alkalmazások feloldásához szükséges parancsokat) a pillanatkép befejezése után, hogy az alkalmazásokat a normál módba adja vissza. A minta előtti parancsfájlokat és a parancsfájlokat a GitHubon is elérhetővé teheti, így a parancsfájlok létrehozása és karbantartása az Ön felelőssége. 
+A Azure Backup szolgáltatás olyan [keretrendszert](../../../backup/backup-azure-linux-app-consistent.md) biztosít a Windows és Linux rendszerű virtuális gépek biztonsági mentése során az alkalmazások konzisztenciájához, mint például az Oracle, a MySQL, a Mongo db és a PostGreSQL. Ebbe beletartozik egy előzetes parancsfájl meghívása (az alkalmazások fokozatos leválasztása), mielőtt pillanatképet készít a lemezekről, és meghívja az utólagos parancsfájlt (az alkalmazások feloldásához szükséges parancsokat) a pillanatkép befejezése után, hogy az alkalmazásokat a normál módba adja vissza. A minta előtti parancsfájlokat és a parancsfájlokat a GitHubon is elérhetővé teheti, így a parancsfájlok létrehozása és karbantartása az Ön felelőssége.
 
-Most Azure Backup egy továbbfejlesztett, előre megírt parancsfájlokat és parancsfájl-közzétételi keretrendszert biztosít, ahol a Azure Backup szolgáltatás a kiválasztott alkalmazásokhoz csomagolt előkészítő parancsfájlokat és parancsfájlok futtatását teszi lehetővé. Azure Backup felhasználó csak az alkalmazás nevét kell megadnia, majd az Azure virtuális gép biztonsági mentése automatikusan meghívja a megfelelő utólagos parancsfájlokat. A becsomagolt előzetes parancsfájlokat és a parancsfájlok utáni parancsfájlokat a Azure Backup csapata tartja karban, így a felhasználók biztosíthatják a parancsfájlok támogatását, tulajdonlását és érvényességét. Jelenleg a továbbfejlesztett keretrendszer támogatott alkalmazásai az *Oracle* és a *MySQL*.
+Most Azure Backup biztosít egy továbbfejlesztett, előre megírt parancsfájlokat és szkriptek utáni keretrendszert (**amely jelenleg előzetes** verzióban érhető el), ahol a Azure Backup szolgáltatás a kiválasztott alkalmazásokhoz csomagolt előre parancsfájlokat és parancsfájlok futtatását teszi lehetővé. Azure Backup felhasználó csak az alkalmazás nevét kell megadnia, majd az Azure virtuális gép biztonsági mentése automatikusan meghívja a megfelelő utólagos parancsfájlokat. A becsomagolt előzetes parancsfájlokat és a parancsfájlok utáni parancsfájlokat a Azure Backup csapata tartja karban, így a felhasználók biztosíthatják a parancsfájlok támogatását, tulajdonlását és érvényességét. Jelenleg a továbbfejlesztett keretrendszer támogatott alkalmazásai az *Oracle* és a *MySQL*.
 
 Ebben a szakaszban Azure Backup továbbfejlesztett keretrendszert használ a futó virtuális gép és az Oracle-adatbázis alkalmazás-konzisztens pillanatképének készítéséhez. Az adatbázis biztonsági mentési módba kerül, amely lehetővé teszi a tranzakciós szempontból konzisztens online biztonsági mentést, miközben Azure Backup pillanatképet készít a virtuális gépek lemezéről. A pillanatkép a tárterület teljes másolata, és nem növekményes vagy másolási írási pillanatkép, ezért ez egy hatékony médium az adatbázis visszaállításához. A Azure Backup alkalmazás-konzisztens pillanatképek használatának előnye, hogy rendkívül gyorsan elvégezhetik az adatbázis nagy mennyiségét, és a pillanatképek a létrehozásuk után azonnal használhatók a visszaállítási műveletekhez anélkül, hogy meg kellene várni a Recovery Services-tárolóba való átvitelre.
 
@@ -314,7 +315,7 @@ Az adatbázis biztonsági mentésének Azure Backup használatához hajtsa végr
    sudo su -
    ```
 
-2. Hozza létre az alkalmazás-konzisztens biztonsági mentési munkakönyvtárat:
+2. Keresse meg a "etc/Azure" mappát. Ha ez nem létezik, hozza létre az alkalmazás-konzisztens biztonsági mentési munkakönyvtárat:
 
    ```bash
    if [ ! -d "/etc/azure" ]; then
@@ -322,7 +323,7 @@ Az adatbázis biztonsági mentésének Azure Backup használatához hajtsa végr
    fi
    ```
 
-3. Hozzon létre egy fájlt a *munkaterhelés. conf* nevű */etc/Azure* könyvtárban az alábbi tartalommal, amelynek a következővel kell kezdődnie: `[workload]` . A következő parancs létrehozza majd a fájlt, és feltölti a tartalmat:
+3. Keresse meg a "munkaterhelés. conf" fájlt a mappán belül. Ha ez nem létezik, hozzon létre egy fájlt a */etc/Azure* könyvtárban a *munkaterhelés. conf* nevű fájlban az alábbi tartalommal, amelynek a következővel kell kezdődnie: `[workload]` . Ha a fájl már létezik, csak szerkessze a mezőket úgy, hogy az megfeleljen a következő tartalomnak. Ellenkező esetben a következő parancs létrehozza a fájlt, és feltölti a tartalmat:
 
    ```bash
    echo "[workload]
@@ -330,14 +331,6 @@ Az adatbázis biztonsági mentésének Azure Backup használatához hajtsa végr
    command_path = /u01/app/oracle/product/19.0.0/dbhome_1/bin/
    timeout = 90
    linux_user = azbackup" > /etc/azure/workload.conf
-   ```
-
-4. Töltse le a preOracleMaster. SQL és a postOracleMaster. SQL parancsfájlt a [GitHub-tárházból](https://github.com/Azure/azure-linux-extensions/tree/master/VMBackup/main/workloadPatch/DefaultScripts) , és másolja őket a */etc/Azure* könyvtárba.
-
-5. A fájlengedélyek módosítása
-
-```bash
-   chmod 744 workload.conf preOracleMaster.sql postOracleMaster.sql 
    ```
 
 ### <a name="trigger-an-application-consistent-backup-of-the-vm"></a>Alkalmazás-konzisztens biztonsági másolat elindítása a virtuális gépen
@@ -970,4 +963,4 @@ az group delete --name rg-oracle
 
 [Oktatóanyag: kiválóan elérhető virtuális gépek létrehozása](../../linux/create-cli-complete.md)
 
-[A virtuális gépek üzembe helyezésének megismerése Azure CLI-mintákkal](../../linux/cli-samples.md)
+[A virtuális gépek üzembe helyezésének megismerése Azure CLI-mintákkal](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)

@@ -104,7 +104,7 @@
     - name: Nagyszámítógépes áthelyezés
       href: ./workloads/mainframe-rehosting/overview.md
     - name: SQL on Virtual Machines
-      href: 'https://docs.microsoft.com/azure/azure-sql/virtual-machines/'
+      href: ../azure-sql/virtual-machines/index.yml
     - name: Nagy teljesítményű számítástechnika (HPC)
       href: /azure/architecture/topics/high-performance-computing/
 - name: példányszám
@@ -164,6 +164,8 @@
               href: ev4-esv4-series.md
             - name: M sorozat
               href: m-series.md
+            - name: Msv2 és Mdsv2 közepes memória sorozat
+              href: msv2-mdsv2-series.md
             - name: Mv2 sorozat
               href: mv2-series.md
             - name: Korlátozott vCPU-k
@@ -255,7 +257,7 @@
     - name: Dedikált gazdagépek
       items:
         - name: Áttekintés
-          href: ./linux/dedicated-hosts.md
+          href: dedicated-hosts.md
         - name: parancssori felület
           href: ./linux/dedicated-hosts-cli.md
         - name: Portál
@@ -293,7 +295,7 @@
         - name: Fenntartott példányok
           items:
             - name: Előre fizetés virtuális gépekért
-              href: ./linux/prepay-reserved-vm-instances.md
+              href: ./prepay-reserved-vm-instances.md
             - name: Előre fizetés dedikált gazdagépekért
               href: prepay-dedicated-hosts-reserved-instances.md
             - name: Mi az az Azure Reservations?
@@ -363,7 +365,7 @@
         - name: Java használata
           href: ./windows/java.md
         - name: Python
-          href: 'https://docs.microsoft.com/samples/azure-samples/virtual-machines-python-manage/azure-virtual-machines-management-samples---python/?context=/azure/virtual-machines/context/context'
+          href: /samples/azure-samples/virtual-machines-python-manage/azure-virtual-machines-management-samples---python/?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
         - name: ARM-sablon használata
           displayName: Azure Resource Manager template
           href: ./windows/ps-template.md
@@ -447,7 +449,7 @@
             - name: Azure Monitor-ügynök
               href: ../azure-monitor/agents/azure-monitor-agent-install.md?context=/azure/virtual-machines/context/context
             - name: Diagnosztikai bővítmény
-              href: ../azure-monitor/platform/diagnostics-extension-overview.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/diagnostics-extension-overview.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Log Analytics
               items:
                 - name: Linux
@@ -642,7 +644,7 @@
     - name: Megosztott rendszerkép-katalógusok
       items:
         - name: Áttekintés
-          href: ./linux/shared-image-galleries.md
+          href: ./shared-image-galleries.md
         - name: parancssori felület
           items:
             - name: Katalógus létrehozása
@@ -786,13 +788,13 @@
     - name: Rendelkezésre állás
       href: availability.md
     - name: Közös elhelyezés
-      href: ./linux/co-location.md
+      href: co-location.md
     - name: Hálózati teljesítmény
       href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?context=/azure/virtual-machines/context/context
     - name: Állapotok és életciklus
       href: states-lifecycle.md
     - name: Automatikus méretezés
-      href: ../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context
+      href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md?context=/azure/virtual-machines/context/context
     - name: Magas rendelkezésre állás
       href: manage-availability.md
     - name: Rendelkezésre állási csoportok
@@ -822,6 +824,8 @@
       href: managed-disks-overview.md
     - name: IaaS-alapú virtuális gépek lemeztípusának kiválasztása
       href: disks-types.md
+    - name: Lemezes redundancia-beállítások
+      href: disks-redundancy.md
     - name: Megosztott lemezek
       href: disks-shared.md
     - name: Megosztott lemezek engedélyezése
@@ -952,8 +956,10 @@
           href: premium-storage-performance.md
         - name: Lemezzel kapcsolatos metrikák
           href: disks-metrics.md
-        - name: Lemezek adatlöket-kezelése
+        - name: Lemezes feltört modellek
           href: disk-bursting.md
+        - name: Igény szerinti kitörés engedélyezése
+          href: disks-enable-bursting.md
         - name: Lemezteljesítmény-szintek
           href: disks-change-performance.md
         - name: Lemez teljesítményi szintjeinek módosítása
@@ -1157,6 +1163,12 @@
           href: ./windows/security-baseline.md
     - name: Javaslatok
       href: security-recommendations.md
+    - name: Megbízható indítás
+      items:
+        - name: Áttekintés
+          href: trusted-launch.md
+        - name: Üzembe helyezés a portál használatával
+          href: trusted-launch-portal.md
     - name: Igény szerinti hozzáférés
       href: ../security-center/security-center-just-in-time.md
     - name: Szabályzat
@@ -1181,7 +1193,7 @@
         - name: Bastion-gazdagép létrehozása
           items:
             - name: Portál
-              href: ../bastion/bastion-create-host-portal.md
+              href: ../bastion/tutorial-create-host-portal.md
             - name: PowerShell
               href: ../bastion/bastion-create-host-powershell.md
             - name: parancssori felület
@@ -1231,9 +1243,9 @@
     - name: Áttekintés
       href: maintenance-and-updates.md
     - name: Automatikus virtuálisgép-vendég-javítás (előzetes verzió)
-      href: ./windows/automatic-vm-guest-patching.md
+      href: automatic-vm-guest-patching.md
     - name: Automatikus bővítmény frissítése (előzetes verzió)
-      href: ./automatic-extension-upgrade.md
+      href: automatic-extension-upgrade.md
     - name: Karbantartásszabályozás
       items:
         - name: Karbantartási értesítések
@@ -1281,7 +1293,7 @@
 - name: Figyelés
   items:
     - name: Áttekintés
-      href: ../azure-monitor/insights/monitor-vm-azure.md?context=/azure/virtual-machines/context/context
+      href: ../azure-monitor/vm/monitor-vm-azure.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
     - name: Virtuális gépek figyelése
       items:
         - name: Windows
@@ -1295,7 +1307,7 @@
         - name: Azure Diagnostics bővítmény
           items:
             - name: Áttekintés
-              href: ../azure-monitor/platform/diagnostics-extension-overview.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/diagnostics-extension-overview.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Linux diagnosztikai bővítmény
               items:
                 - name: '4,0-es verzió'
@@ -1303,16 +1315,16 @@
                 - name: '3,0-es verzió'
                   href: ../virtual-machines/extensions/diagnostics-linux-v3.md?context=/azure/virtual-machines/context/context
                 - name: Metrikák gyűjtése a Telegraf használatával
-                  href: ../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/essentials/collect-custom-metrics-linux-telegraf.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                   displayname: diagnostics extension
         - name: Log Analytics-ügynök
           items:
             - name: Áttekintés
-              href: ../azure-monitor/platform/log-analytics-agent.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/log-analytics-agent.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Linux-ügynökök
               href: ../azure-monitor/agents/agent-linux.md?context=/azure/virtual-machines/context/context
             - name: Log Analytics-átjáró
-              href: ../azure-monitor/platform/gateway.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/gateway.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Ügynökkezelés
               href: ../azure-monitor/agents/agent-manage.md?context=/azure/virtual-machines/context/context
             - name: Az ügynök állapota
@@ -1334,11 +1346,11 @@
                 - name: Egyéni naplók
                   href: ../azure-monitor/agents/data-sources-custom-logs.md?context=/azure/virtual-machines/context/context
                 - name: Egyéni mezők
-                  href: ../azure-monitor/platform/custom-fields.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/logs/custom-fields.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
         - name: Hibaelhárítás
           items:
             - name: A Log Analytics virtuálisgép-bővítménye
-              href: ../azure-monitor/platform/vmext-troubleshoot.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/visualize/vmext-troubleshoot.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
               displayname: 'troubleshoot, troubleshooting'
             - name: A Log Analytics Linux-ügynöke
               href: ../azure-monitor/agents/agent-linux-troubleshoot.md?context=/azure/virtual-machines/context/context
@@ -1346,37 +1358,37 @@
         - name: Azure Monitor virtuális gépekhez
           items:
             - name: Áttekintés
-              href: ../azure-monitor/insights/vminsights-overview.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-overview.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Általános rendelkezésre állás – gyakori kérdések
-              href: ../azure-monitor/insights/vminsights-ga-release-faq.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-ga-release-faq.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: GYIK
               href: ../azure-monitor/faq.md?context=/azure/virtual-machines/context/context#azure-monitor-for-vms
             - name: Monitorozás engedélyezése
               items:
                 - name: Monitorozás engedélyezésének áttekintése
-                  href: ../azure-monitor/insights/vminsights-enable-overview.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/vm/vminsights-enable-overview.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                 - name: Engedélyezés egyetlen Azure-beli virtuális gépen
-                  href: ../azure-monitor/insights/vminsights-enable-portal.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/vm/vminsights-enable-portal.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                 - name: Engedélyezés az Azure Policyval
-                  href: ../azure-monitor/insights/vminsights-enable-policy.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/vm/vminsights-enable-policy.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                 - name: Engedélyezés az Azure PowerShell-lel
-                  href: ../azure-monitor/insights/vminsights-enable-powershell.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/vm/vminsights-enable-powershell.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                 - name: Engedélyezés hibrid környezetben
-                  href: ../azure-monitor/insights/vminsights-enable-hybrid.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/vm/vminsights-enable-hybrid.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Függőségek feltérképezése
-              href: ../azure-monitor/insights/vminsights-maps.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-maps.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Teljesítmény figyelése
-              href: ../azure-monitor/insights/vminsights-performance.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-performance.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Adatelemzés naplólekérdezésekkel
-              href: ../azure-monitor/insights/vminsights-log-search.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-log-search.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Adatok megjelenítése munkafüzetekben
-              href: ../azure-monitor/insights/vminsights-workbooks.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-workbooks.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Riasztási szabályok létrehozása
-              href: ../azure-monitor/insights/vminsights-alerts.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-alerts.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Dependency Agent frissítése
-              href: ../azure-monitor/insights/vminsights-dependency-agent-maintenance.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-dependency-agent-maintenance.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Monitorozás letiltása
-              href: ../azure-monitor/insights/vminsights-optout.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-optout.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
     - name: Virtuálisgép-használat
       href: vm-usage.md
     - name: Virtuális gép címkézése
@@ -1422,7 +1434,7 @@
         - name: Biztonsági másolat készítése több virtuális gépről
           href: ../backup/tutorial-backup-vm-at-scale.md
         - name: Visszaállítási lehetőségek
-          href: /azure/backup/backup-azure-arm-restore-vms
+          href: ../backup/backup-azure-arm-restore-vms.md
         - name: Támogatási mátrix
           href: ../backup/backup-support-matrix-iaas.md
         - name: Díjszabás
@@ -1479,15 +1491,15 @@
     - name: Egyéni adatok
       href: custom-data.md
     - name: Ansible
-      href: 'https://docs.microsoft.com/azure/developer/ansible/'
+      href: /azure/developer/ansible/
     - name: Terraform
-      href: 'https://docs.microsoft.com/azure/developer/terraform/'
+      href: /azure/developer/terraform/
     - name: Jenkins
-      href: 'https://docs.microsoft.com/en-us/azure/developer/jenkins/'
+      href: /azure/developer/jenkins/
     - name: Azure DevOps
       href: ./linux/tutorial-azure-devops-blue-green-strategy.md
 - name: Hibaelhárítás
-  href: 'https://docs.microsoft.com/troubleshoot/azure/virtual-machines/welcome-virtual-machines'
+  href: /troubleshoot/azure/virtual-machines/welcome-virtual-machines
 - name: További források
   items:
     - name: A felhő bevezetésének keretrendszere

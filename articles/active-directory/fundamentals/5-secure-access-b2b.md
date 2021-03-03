@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 654e1c163a16f427958320ea081c38338e0ab4e1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 4206ba7617032e34310682d1468e6b1b661b8c8a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725392"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648587"
 ---
 # <a name="transition-to-governed-collaboration-with-azure-active-directory-b2b-collaboration"></a>Áttérés a szabályozott együttműködésre Azure Active Directory B2B együttműködéssel 
 
@@ -100,7 +100,7 @@ Határozza meg, hogy kik hívhatják meg a vendég felhasználókat az erőforr�
 
 Ha az Azure AD-jogosultságok felügyeletét használja, a külső felhasználókra vonatkozó kérdéseket is megadhat. A kérdések ezután megjelennek a jóváhagyók számára, hogy döntéseket hozzanak. Az egyes [hozzáférési csomagokra vonatkozó szabályzatok](../governance/entitlement-management-access-package-approval-policy.md) különböző csoportjait konfigurálhatja, hogy a jóváhagyók rendelkezzenek a jóváhagyáshoz szükséges adatokkal. Ha például az egyik hozzáférési csomag a szállítói hozzáférésre van szánva, akkor a kérelmező kérheti a szállítói szerződésük számát. Egy másik, szállítók számára szánt hozzáférési csomag kérheti a származási országát.
 
-Ha önkiszolgáló portált használ, az [API-összekötők](../external-identities/api-connectors-overview.md) segítségével további attribútumokat gyűjthet a felhasználókról a regisztráció során. Ezeket az attribútumokat később is használhatja a hozzáférés hozzárendeléséhez. Ha például a regisztrációs folyamat során begyűjti a szállítói AZONOSÍTÓját, akkor az adott attribútum használatával dinamikusan rendelheti hozzá őket egy csoporthoz vagy hozzáférési csomaghoz az adott szolgáltatóhoz. Létrehozhat egyéni attribútumokat a Azure Portalban, és használhatja azokat az önkiszolgáló bejelentkezési felhasználói folyamatokban. Ezeket az attribútumokat a [Microsoft Graph API](../../active-directory-b2c/manage-user-accounts-graph-api.md)használatával is elolvashatja és elvégezheti. 
+Ha önkiszolgáló portált használ, az [API-összekötők](../external-identities/api-connectors-overview.md) segítségével további attribútumokat gyűjthet a felhasználókról a regisztráció során. Ezeket az attribútumokat később is használhatja a hozzáférés hozzárendeléséhez. Ha például a regisztrációs folyamat során begyűjti a szállítói AZONOSÍTÓját, akkor az adott attribútum használatával dinamikusan rendelheti hozzá őket egy csoporthoz vagy hozzáférési csomaghoz az adott szolgáltatóhoz. Létrehozhat egyéni attribútumokat a Azure Portalban, és használhatja azokat az önkiszolgáló bejelentkezési felhasználói folyamatokban. Ezeket az attribútumokat a [Microsoft Graph API](../../active-directory-b2c/microsoft-graph-operations.md)használatával is elolvashatja és elvégezheti. 
 
 ### <a name="troubleshoot-invitation-redemption-to-azure-ad-users"></a>Az Azure AD-felhasználókra való meghívás visszaváltásának hibája
 
@@ -202,7 +202,7 @@ A nem engedélyezett alkalmazások kezelésével kapcsolatos további informáci
 * [Az alkalmazások szankcionálása és visszavonása.](/cloud-app-security/governance-discovery)
 
  
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a következő cikkeket az erőforrásokhoz való külső hozzáférés biztonságossá tételéhez. Javasoljuk, hogy a felsorolt sorrendben végezze el a műveleteket.
 

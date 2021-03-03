@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42b3c3d4d474c61cbe472b4122ac2f80f218bf8d
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 74bfa4987f584bbd3490bc5f4f187dee5bc1bd87
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797259"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646282"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Feltételes hozzáférés VÁLLALATKÖZI együttműködéssel rendelkező felhasználók számára
 
@@ -42,7 +42,7 @@ Az alábbi ábrán a folyamat látható: a ![ kép a vállalatközi vendég felh
 | Lépés | Leírás |
 |--------------|-----------------------|
 | 1. |A felhasználó hozzáférést kér egy másik bérlő erőforrásához. Az erőforrás átirányítja a felhasználót az erőforrás-bérlőre, egy megbízható identitásszolgáltató.|
-| 2. | Az erőforrás-bérlő azonosítja a felhasználót egy [külső e-mail-jelszó (OTP) felhasználóként](https://docs.microsoft.com/azure/active-directory/external-identities/one-time-passcode) , és e-mailt küld a felhasználónak az egyszeri jelszavas hitelesítéssel.|
+| 2. | Az erőforrás-bérlő azonosítja a felhasználót egy [külső e-mail-jelszó (OTP) felhasználóként](./one-time-passcode.md) , és e-mailt küld a felhasználónak az egyszeri jelszavas hitelesítéssel.|
 | 3. | A felhasználó lekéri az OTP-t, és elküldi a kódot. Az erőforrás-bérlő kiértékeli a felhasználót a HITELESÍTÉSSZOLGÁLTATÓI házirendek alapján.
 | 4. | Ha minden HITELESÍTÉSSZOLGÁLTATÓI házirend teljesül, az erőforrás-bérlő kiállít egy jogkivonatot, és átirányítja a felhasználót az erőforráshoz. |
 
@@ -64,7 +64,7 @@ Az erőforrás-bérlő minden esetben az Azure AD-Multi-Factor Authentication fe
 
 5. Ez a forgatókönyv bármilyen identitás – Azure AD vagy személyes Microsoft-fiók (MSA) esetében működik. Ha például a contoso felhasználója a közösségi azonosító használatával hitelesíti magát.
 
-6. A fabrikam-nek elegendő prémium szintű Azure AD-licenccel kell rendelkeznie az Azure AD Multi-Factor Authentication támogatásához. A contoso felhasználója ezt a licencet használja a fabrikam-től. A B2B licenceléssel kapcsolatos információkért tekintse meg az [Azure ad külső identitások számlázási modelljét](https://docs.microsoft.com/azure/active-directory/external-identities/external-identities-pricing) .
+6. A fabrikam-nek elegendő prémium szintű Azure AD-licenccel kell rendelkeznie az Azure AD Multi-Factor Authentication támogatásához. A contoso felhasználója ezt a licencet használja a fabrikam-től. A B2B licenceléssel kapcsolatos információkért tekintse meg az [Azure ad külső identitások számlázási modelljét](./external-identities-pricing.md) .
 
 >[!NOTE]
 >Az Azure AD Multi-Factor Authentication az erőforrás-kiszolgálás révén biztosítja a kiszámíthatóságot.
@@ -115,44 +115,43 @@ Számos tényező befolyásolja a B2B vendég felhasználói számára a HITELES
 
 ### <a name="device-based-conditional-access"></a>Eszközalapú feltételes hozzáférés
 
-A CA-ban lehetőség van arra, hogy megkövetelje a felhasználó [eszközének megfelelőségi vagy hibrid Azure ad-hez való csatlakoztatását](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#device-state-preview). A B2B vendég felhasználók csak akkor tudják kielégíteni a megfelelőséget, ha az erőforrás-bérlő felügyelheti az eszközét. Az eszközöket egyszerre csak egy szervezet felügyelheti. A B2B vendég felhasználói nem tudják kielégíteni a hibrid Azure AD-csatlakozást, mert nem rendelkeznek helyszíni AD-fiókkal. Csak akkor, ha a vendég felhasználó eszköze nem felügyelt, regisztrálhatja vagy regisztrálhatja az eszközét az erőforrás-bérlőben, majd megteheti az eszköz megfelelőségét. A felhasználó ezután eleget tehet az engedélyezési vezérlőnek.
+A CA-ban lehetőség van arra, hogy megkövetelje a felhasználó [eszközének megfelelőségi vagy hibrid Azure ad-hez való csatlakoztatását](../conditional-access/concept-conditional-access-conditions.md#device-state-preview). A B2B vendég felhasználók csak akkor tudják kielégíteni a megfelelőséget, ha az erőforrás-bérlő felügyelheti az eszközét. Az eszközöket egyszerre csak egy szervezet felügyelheti. A B2B vendég felhasználói nem tudják kielégíteni a hibrid Azure AD-csatlakozást, mert nem rendelkeznek helyszíni AD-fiókkal. Csak akkor, ha a vendég felhasználó eszköze nem felügyelt, regisztrálhatja vagy regisztrálhatja az eszközét az erőforrás-bérlőben, majd megteheti az eszköz megfelelőségét. A felhasználó ezután eleget tehet az engedélyezési vezérlőnek.
 
 >[!Note]
 >A külső felhasználók felügyelt eszközének megkövetelése nem ajánlott.
 
 ### <a name="mobile-application-management-policies"></a>Mobilalkalmazás-kezelési szabályzatok
 
-A HITELESÍTÉSSZOLGÁLTATÓ olyan vezérlőket biztosít, mint például a **jóváhagyott ügyfélalkalmazások megkövetelése** , és az **alkalmazás-védelmi szabályzatok megkövetelése** szükséges az eszköz regisztrálásához a bérlőben. Ezeket a vezérlőket csak [iOS-és Android-eszközökön](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#device-platforms)lehet alkalmazni. Ezek a vezérlőelemek azonban nem alkalmazhatók a B2B vendég felhasználóira, ha a felhasználó eszközét már egy másik szervezet felügyeli. Egy mobileszköz nem regisztrálható egyszerre egynél több bérlőn. Ha a mobileszköz felügyeletét egy másik szervezet felügyeli, a rendszer letiltja a felhasználót. Csak akkor regisztrálja az eszközt az erőforrás-bérlőn, ha a vendég felhasználó eszköze nem felügyelt. A felhasználó ezután eleget tehet az engedélyezési vezérlőnek.  
+A HITELESÍTÉSSZOLGÁLTATÓ olyan vezérlőket biztosít, mint például a **jóváhagyott ügyfélalkalmazások megkövetelése** , és az **alkalmazás-védelmi szabályzatok megkövetelése** szükséges az eszköz regisztrálásához a bérlőben. Ezeket a vezérlőket csak [iOS-és Android-eszközökön](../conditional-access/concept-conditional-access-conditions.md#device-platforms)lehet alkalmazni. Ezek a vezérlőelemek azonban nem alkalmazhatók a B2B vendég felhasználóira, ha a felhasználó eszközét már egy másik szervezet felügyeli. Egy mobileszköz nem regisztrálható egyszerre egynél több bérlőn. Ha a mobileszköz felügyeletét egy másik szervezet felügyeli, a rendszer letiltja a felhasználót. Csak akkor regisztrálja az eszközt az erőforrás-bérlőn, ha a vendég felhasználó eszköze nem felügyelt. A felhasználó ezután eleget tehet az engedélyezési vezérlőnek.  
 
 >[!NOTE]
 >A külső felhasználók számára nem ajánlott az alkalmazás védelmi szabályzatának megkövetelése.
 
 ### <a name="location-based-conditional-access"></a>Hely-alapú feltételes hozzáférés
 
-Az IP-címtartományok alapján megadható, [hogy a](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#locations) meghívó szervezet létrehozhat-e olyan megbízható IP-címtartományt, amely meghatározza a partner szervezeteiket.
+Az IP-címtartományok alapján megadható, [hogy a](../conditional-access/concept-conditional-access-conditions.md#locations) meghívó szervezet létrehozhat-e olyan megbízható IP-címtartományt, amely meghatározza a partner szervezeteiket.
 
 A házirendek a **földrajzi helyszínek** alapján is érvényben lehetnek.
 
 ### <a name="risk-based-conditional-access"></a>Kockázatalapú feltételes hozzáférés
 
-A [bejelentkezési kockázati házirend](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#sign-in-risk) érvénybe lép, ha a B2B vendég felhasználója eleget tesz az engedélyezési vezérlőnek. Előfordulhat például, hogy egy szervezetnek közepes vagy magas szintű bejelentkezési kockázatra van szüksége az Azure AD Multi-Factor Authentication. Ha azonban egy felhasználó korábban még nem regisztrált az Azure AD-Multi-Factor Authentication az erőforrás-bérlőben, a felhasználó le lesz tiltva. Ezzel megakadályozható, hogy a rosszindulatú felhasználók regisztrálják saját Azure AD-Multi-Factor Authentication hitelesítő adataikat abban az esetben, ha a felhasználó jelszavát veszélyeztetik.
+A [bejelentkezési kockázati házirend](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk) érvénybe lép, ha a B2B vendég felhasználója eleget tesz az engedélyezési vezérlőnek. Előfordulhat például, hogy egy szervezetnek közepes vagy magas szintű bejelentkezési kockázatra van szüksége az Azure AD Multi-Factor Authentication. Ha azonban egy felhasználó korábban még nem regisztrált az Azure AD-Multi-Factor Authentication az erőforrás-bérlőben, a felhasználó le lesz tiltva. Ezzel megakadályozható, hogy a rosszindulatú felhasználók regisztrálják saját Azure AD-Multi-Factor Authentication hitelesítő adataikat abban az esetben, ha a felhasználó jelszavát veszélyeztetik.
 
-A [felhasználói kockázati házirendet](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#user-risk) azonban nem lehet feloldani az erőforrás-bérlőben. Ha például a nagy kockázatú vendég felhasználók jelszavának módosítására van szükség, akkor a rendszer letiltja a jelszavaknak az erőforrás-címtárban való alaphelyzetbe állítására való képtelenség miatt.
+A [felhasználói kockázati házirendet](../conditional-access/concept-conditional-access-conditions.md#user-risk) azonban nem lehet feloldani az erőforrás-bérlőben. Ha például a nagy kockázatú vendég felhasználók jelszavának módosítására van szükség, akkor a rendszer letiltja a jelszavaknak az erőforrás-címtárban való alaphelyzetbe állítására való képtelenség miatt.
 
 ### <a name="conditional-access-client-apps-condition"></a>Feltételes hozzáférésű ügyfélalkalmazások alkalmazási feltétele
 
-Az [ügyfélalkalmazások feltételei](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps) ugyanúgy viselkednek a B2B vendég felhasználói számára, mint bármely más típusú felhasználó esetében. Megakadályozhatja például, hogy a vendég felhasználók örökölt hitelesítési protokollokat használjanak.
+Az [ügyfélalkalmazások feltételei](../conditional-access/concept-conditional-access-conditions.md#client-apps) ugyanúgy viselkednek a B2B vendég felhasználói számára, mint bármely más típusú felhasználó esetében. Megakadályozhatja például, hogy a vendég felhasználók örökölt hitelesítési protokollokat használjanak.
 
 ### <a name="conditional-access-session-controls"></a>Feltételes hozzáférésű munkamenet-vezérlők
 
-A [munkamenet-vezérlők](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-session) ugyanúgy viselkednek a B2B vendég felhasználói számára, mint bármely más típusú felhasználó esetében.
+A [munkamenet-vezérlők](../conditional-access/concept-conditional-access-session.md) ugyanúgy viselkednek a B2B vendég felhasználói számára, mint bármely más típusú felhasználó esetében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért tekintse meg az Azure AD B2B együttműködés alábbi cikkeit:
 
-- [Mi az az Azure AD B2B együttműködés?](https://docs.microsoft.com/azure/active-directory/external-identities/what-is-b2b)
-- [Identity Protection- és B2B-felhasználók](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-b2b)
+- [Mi az az Azure AD B2B együttműködés?](./what-is-b2b.md)
+- [Identity Protection- és B2B-felhasználók](../identity-protection/concept-identity-protection-b2b.md)
 - [Az External Identities díjszabása](https://azure.microsoft.com/pricing/details/active-directory/)
-- [Gyakori kérdések (GYIK)](https://docs.microsoft.com/azure/active-directory/external-identities/faq)
-
+- [Gyakori kérdések (GYIK)](./faq.md)

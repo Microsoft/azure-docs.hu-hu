@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/12/2021
+ms.date: 02/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 5561a4cdeef725eba7e48d7767aa0ee5d3c6d9cf
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: c47092b1488a79805db69308bcb9a8efde1c0d58
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625448"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653038"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>Oktatóanyag: Azure Active Directory integráció a MobileIron
 
@@ -28,16 +28,16 @@ ms.locfileid: "98625448"
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció MobileIron való konfigurálásához a következő elemek szükségesek:
+Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
-* MobileIron egyszeri bejelentkezésre engedélyezett előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* MobileIron egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* A MobileIron támogatja **az SP és a identitásszolgáltató** által KEZDEMÉNYEZett SSO
+* A MobileIron **az SP és a identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést támogatja.
 
 ## <a name="add-mobileiron-from-the-gallery"></a>MobileIron hozzáadása a gyűjteményből
 
@@ -131,7 +131,7 @@ Ebben a szakaszban engedélyezi a B. Simon számára az Azure egyszeri bejelentk
     ![Egyetlen Sign-On rendszergazdai metaadatok konfigurálása gomb](./media/MobileIron-tutorial/tutorial_MobileIron_adminmetadata.png)
 
 
-##  <a name="create-mobileiron-test-user"></a>MobileIron-tesztelési felhasználó létrehozása
+### <a name="create-mobileiron-test-user"></a>MobileIron-tesztelési felhasználó létrehozása
 
 Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a MobileIron, a MobileIron kell kiépíteni őket.  
 MobileIron esetén a kiépítés manuális feladat.
@@ -157,15 +157,16 @@ MobileIron esetén a kiépítés manuális feladat.
     d. Kattintson a **Kész** gombra.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+
 Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-## <a name="sp-initiated"></a>Az SP inicializálva:
+### <a name="sp-initiated"></a>Az SP inicializálva:
 
 * Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. A rendszer átirányítja a MobileIron bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot.  
 
 * Lépjen közvetlenül a MobileIron bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
 
-##  <a name="idp-initiated"></a>IDENTITÁSSZOLGÁLTATÓ kezdeményezve:
+### <a name="idp-initiated"></a>IDENTITÁSSZOLGÁLTATÓ kezdeményezve:
 
 * Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie arra a MobileIron, amelyhez be szeretné állítani az egyszeri bejelentkezést.
 

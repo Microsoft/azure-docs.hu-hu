@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 711c1ba49ad0f347d30f2c8c40352ed95c1fd057
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 29150f229f1bd6adbbe6a335fdb91a44f3a2345b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221620"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675673"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2-pureScale az Azure-ban
 
@@ -96,9 +96,9 @@ A nagyméretű DB2 pureScale-fürtök 200 terabájt (TB) vagy több prémium szi
 
 Az IBM a InfiniBand hálózatkezelést javasolja egy DB2 pureScale-fürt összes tagjához. A DB2 pureScale a távoli közvetlen memória-hozzáférést (RDMA) is használja, ahol elérhető, a CFs számára.
 
-A telepítés során létre kell hoznia egy Azure- [erőforráscsoportot](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) , amely tartalmazza az összes virtuális gépet. Általánosságban elmondható, hogy az erőforrásokat az élettartamuk alapján csoportosítják, és ki fogják kezelni őket. Az architektúrában található virtuális gépek [gyorsított hálózatkezelést](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)igényelnek. Ez egy olyan Azure-szolgáltatás, amely egységes, rendkívül alacsony hálózati késést biztosít egy virtuális gép számára egy gyökérszintű I/O-virtualizálás (SR-IOV) használatával.
+A telepítés során létre kell hoznia egy Azure- [erőforráscsoportot](../../../../azure-resource-manager/management/overview.md) , amely tartalmazza az összes virtuális gépet. Általánosságban elmondható, hogy az erőforrásokat az élettartamuk alapján csoportosítják, és ki fogják kezelni őket. Az architektúrában található virtuális gépek [gyorsított hálózatkezelést](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)igényelnek. Ez egy olyan Azure-szolgáltatás, amely egységes, rendkívül alacsony hálózati késést biztosít egy virtuális gép számára egy gyökérszintű I/O-virtualizálás (SR-IOV) használatával.
 
-Minden Azure-beli virtuális gép üzembe helyezése egy alhálózattal rendelkező virtuális hálózatban történik: Main, Gluster FS előtér (gfsfe), Gluster FS háttérrendszer (bfsbe), DB2 pureScale (db2be) és DB2 pureScale előtér (db2fe). A telepítési parancsfájl az elsődleges hálózati [adaptereket](https://docs.microsoft.com/azure/virtual-machines/windows/multiple-nics) is létrehozza a fő alhálózatban lévő virtuális gépeken.
+Minden Azure-beli virtuális gép üzembe helyezése egy alhálózattal rendelkező virtuális hálózatban történik: Main, Gluster FS előtér (gfsfe), Gluster FS háttérrendszer (bfsbe), DB2 pureScale (db2be) és DB2 pureScale előtér (db2fe). A telepítési parancsfájl az elsődleges hálózati [adaptereket](../../../windows/multiple-nics.md) is létrehozza a fő alhálózatban lévő virtuális gépeken.
 
 Használjon [hálózati biztonsági csoportokat](../../../../virtual-network/virtual-network-vnet-plan-design-arm.md) a virtuális hálózaton belüli hálózati forgalom korlátozására és az alhálózatok elkülönítésére.
 

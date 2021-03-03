@@ -1,21 +1,21 @@
 ---
-title: Helm-diagramok üzembe helyezése GitOps használatával az arc-kompatibilis Kubernetes-fürtön (előzetes verzió)
+title: Helm-diagramok üzembe helyezése GitOps használatával az arc-kompatibilis Kubernetes-fürtön
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/15/2021
+ms.date: 03/02/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
-description: Az GitOps és a Helm használata az Azure arc-kompatibilis fürt konfigurációjához (előzetes verzió)
+description: Az GitOps és a Helm használata az Azure arc-kompatibilis fürtkonfiguráció konfigurálásához
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, arc, AK, Azure Kubernetes szolgáltatás, tárolók
-ms.openlocfilehash: 2dfb516487d1064f29b4018cc8b322e8db44e53a
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 117fc8dabdce2fdf23cbc2b9fe78137db1c656a5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558515"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647642"
 ---
-# <a name="deploy-helm-charts-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Helm-diagramok üzembe helyezése GitOps használatával az arc-kompatibilis Kubernetes-fürtön (előzetes verzió)
+# <a name="deploy-helm-charts-using-gitops-on-an-arc-enabled-kubernetes-cluster"></a>Helm-diagramok üzembe helyezése GitOps használatával egy arc-kompatibilis Kubernetes-fürtön
 
 A Helm egy nyílt forráskódú csomagoló eszköz, amely a Kubernetes-alkalmazások telepítését és életciklusának kezelését segíti. A Linux-csomagkezelő, például az APT és a yum hasonló, a Helm a Kubernetes-diagramok kezelésére szolgál, amelyek előre konfigurált Kubernetes-erőforrások csomagjai.
 
@@ -23,7 +23,7 @@ Ez a cikk bemutatja, hogyan konfigurálhatja és használhatja a Helm-t az Azure
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ellenőrizze, hogy rendelkezik-e meglévő Azure arc-kompatibilis Kubernetes csatlakoztatott fürttel. Ha csatlakoztatott fürtre van szüksége, tekintse meg az [Azure arc-kompatibilis Kubernetes-fürt csatlakoztatása](./connect-cluster.md)című rövid útmutatót.
+Ellenőrizze, hogy rendelkezik-e meglévő Azure arc-kompatibilis Kubernetes csatlakoztatott fürttel. Ha csatlakoztatott fürtre van szüksége, tekintse meg az [Azure arc-kompatibilis Kubernetes-fürt csatlakoztatása](./quickstart-connect-cluster.md)című rövid útmutatót.
 
 ## <a name="overview-of-using-gitops-and-helm-with-azure-arc-enabled-kubernetes"></a>A GitOps és a Helm használatának áttekintése az Azure arc-kompatibilis Kubernetes
 
@@ -69,7 +69,7 @@ A Helm kiadásának konfigurációja a következő mezőket tartalmazza:
 | `metadata.name` | Kötelező mező. A Kubernetes elnevezési konvenciókat kell követnie. |
 | `metadata.namespace` | Nem kötelező kitölteni. Meghatározza, hogy a rendszer hol hozza létre a kiadást. |
 | `spec.releaseName` | Nem kötelező kitölteni. Ha nincs megadva, a kiadás neve lesz `$namespace-$name` . |
-| `spec.chart.path` | A diagramot tartalmazó könyvtár, amely az adattár gyökeréhez képest van megadva. |
+| `spec.chart.path` | A diagramot tartalmazó könyvtár (az adattár gyökeréhez képest). |
 | `spec.values` | A diagram alapértelmezett paramétereinek értékeinek felhasználói testreszabása. |
 
 A HelmRelease megadott beállítások `spec.values` felülbírálják a `values.yaml` diagram forrásában megadott beállításokat.
@@ -78,30 +78,27 @@ A HelmRelease kapcsolatos további információkért tekintse meg a hivatalos [H
 
 ## <a name="create-a-configuration"></a>Konfiguráció létrehozása
 
-Az Azure CLI-bővítményének használatával `k8sconfiguration` csatlakoztassa a csatlakoztatott fürtöt a példa git-tárházhoz. Adja meg ezt a konfigurációt a név `azure-arc-sample` és a Flux-operátor üzembe helyezése a `arc-k8s-demo` névtérben.
+Az Azure CLI-bővítményének használatával `k8s-configuration` csatlakoztassa a csatlakoztatott fürtöt a példa git-tárházhoz. Adja meg ezt a konfigurációt a név `azure-arc-sample` és a Flux-operátor üzembe helyezése a `arc-k8s-demo` névtérben.
 
 ```console
-az k8sconfiguration create --name azure-arc-sample --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name flux --operator-namespace arc-k8s-demo --operator-params='--git-readonly --git-path=releases' --enable-helm-operator --helm-operator-version='1.2.0' --helm-operator-params='--set helm.versions=v3' --repository-url https://github.com/Azure/arc-helm-demo.git --scope namespace --cluster-type connectedClusters
+az k8s-configuration create --name azure-arc-sample --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name flux --operator-namespace arc-k8s-demo --operator-params='--git-readonly --git-path=releases' --enable-helm-operator --helm-operator-version='1.2.0' --helm-operator-params='--set helm.versions=v3' --repository-url https://github.com/Azure/arc-helm-demo.git --scope namespace --cluster-type connectedClusters
 ```
 
 ### <a name="configuration-parameters"></a>Konfigurációs paraméterek
 
-A konfiguráció létrehozásának testre szabásához további tudnivalókat az [esetlegesen használt paraméterekről](./use-gitops-connected-cluster.md#additional-parameters)olvashat.
+A konfiguráció létrehozásának testreszabásához további tudnivalókat a [paramétereket ismertető](./tutorial-use-gitops-connected-cluster.md#additional-parameters)témakörben olvashat.
 
 ## <a name="validate-the-configuration"></a>A konfiguráció ellenőrzése
 
-Az Azure CLI használatával ellenőrizze, hogy a `sourceControlConfiguration` sikeresen létrejött-e.
+Az Azure CLI használatával ellenőrizze, hogy a konfiguráció létrehozása sikeres volt-e.
 
 ```console
-az k8sconfiguration show --name azure-arc-sample --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
+az k8s-configuration show --name azure-arc-sample --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
 ```
 
-Az `sourceControlConfiguration` erőforrás a megfelelőségi állapottal, az üzenetekkel és a hibakeresési információkkal frissül.
+A konfigurációs erőforrás a megfelelőségi állapottal, az üzenetekkel és a hibakeresési információkkal frissül.
 
-**Kimeneti**
-
-```console
-Command group 'k8sconfiguration' is in preview. It may be changed/removed in a future release.
+```output
 {
   "complianceStatus": {
     "complianceState": "Installed",

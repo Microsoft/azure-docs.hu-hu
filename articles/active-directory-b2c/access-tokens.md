@@ -11,12 +11,12 @@ ms.date: 10/26/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 937041bbb48f112e2c8ed7d222dc7c7ef7ea8d81
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e5168d5e5e3935da267fb26f38735a88bdfd7837
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631393"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101654476"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Hozzáférési jogkivonat kérése az Azure Active Directory B2C-ben
 
@@ -71,7 +71,7 @@ A következő példában ezeket az értékeket fogja lecserélni:
 - `<tenant-name>` – Az Azure AD B2C-bérlőjének neve.
 - `<policy-name>` – Az egyéni szabályzatának vagy felhasználói folyamatának neve.
 - `<application-ID>` – A felhasználói folyamat támogatása érdekében regisztrált webalkalmazás alkalmazásazonosítója.
-- `<redirect-uri>` – Az ügyfélalkalmazás regisztrálásakor megadott **átirányítási URI** .
+- `<redirect-uri>` – Az ügyfélalkalmazás regisztrálásakor megadott **átirányítási URI**.
 
 ```http
 GET https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?
@@ -91,7 +91,7 @@ https://jwt.ms/?code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 Ha sikeresen megkapta az engedélyezési kódot, annak segítségével kérhet hozzáférési jogkivonatot:
 
 ```http
-POST <tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
+POST <tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
 Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 

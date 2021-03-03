@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4b8292d99bd16f9b6f98f4ae8ca82edbfc02ff76
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: cb680221447594b4784f61112655d507397b1c00
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725754"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648849"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Oktatóanyag: Azure Active Directory B2C-bérlő létrehozása
 
@@ -68,7 +68,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
     ![Bérlői űrlap létrehozása a példákban szereplő értékekkel Azure Portal](media/tutorial-create-tenant/review-and-create-tenant.png)
 
 1. Válassza az **Áttekintés + létrehozás** lehetőséget.
-1. Tekintse át a címtár beállításait. Ezután kattintson a **Létrehozás** elemre. [Telepítési hibák elhárítása](https://docs.microsoft.com/azure/azure-resource-manager/templates/common-deployment-errors).
+1. Tekintse át a címtár beállításait. Ezután kattintson a **Létrehozás** elemre. [Telepítési hibák elhárítása](../azure-resource-manager/templates/common-deployment-errors.md).
 
 Egy Azure-előfizetéshez több Azure AD B2C bérlőt is csatolhat számlázási célokra. Bérlő összekapcsolásához rendszergazdai jogosultsággal kell rendelkeznie a Azure AD B2C bérlőben, és az Azure-előfizetésben legalább egy közreműködő szerepkört hozzá kell rendelni. Lásd: [Azure ad B2C bérlő összekapcsolása egy előfizetéssel](billing.md#link-an-azure-ad-b2c-tenant-to-a-subscription).
 
@@ -97,7 +97,7 @@ Ezt a műveletet csak egyszer kell végrehajtania. Mielőtt elvégzi ezeket a l�
 
     ![Azure AD B2C, Kedvencek menü, Microsoft Azure Portal](media/tutorial-create-tenant/portal-08-b2c-favorite.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan végezheti el a következőket:
 

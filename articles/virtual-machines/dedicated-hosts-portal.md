@@ -3,16 +3,17 @@ title: Az Azure dedikált gazdagépek üzembe helyezése a Azure Portal használ
 description: A virtuális gépeket és a méretezési csoportokat a Azure Portal használatával helyezheti üzembe a dedikált gazdagépeken.
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: dedicated-hosts
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 12/07/2020
 ms.author: cynthn
-ms.openlocfilehash: b166363a8c64a4a4c5d34efa55dcaefa09d6df49
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 3bc7909f38e63256d7d708ec189c628662cf8837
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007942"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667336"
 ---
 # <a name="deploy-vms-and-scale-sets-to-dedicated-hosts-using-the-portal"></a>Virtuális gépek és méretezési csoportok üzembe helyezése dedikált gazdagépeken a portál használatával 
 

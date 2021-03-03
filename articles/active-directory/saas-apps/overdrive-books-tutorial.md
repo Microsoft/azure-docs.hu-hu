@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/18/2021
+ms.date: 02/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 745a82300cbbc87070a117cd8dd094236821aee7
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 390ccfa828ebaa0d3dec15990ffeb60cbb24360e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625398"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648577"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-overdrive"></a>Oktatóanyag: Azure Active Directory integráció az Overdrive-nal
 
@@ -37,9 +37,9 @@ Első lépésként a következő elemeket kell megadnia:
 
 Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* Az Overdrive támogatja az **SP** által KEZDEMÉNYEZett SSO-t
+* Az Overdrive támogatja az **SP** által kezdeményezett egyszeri bejelentkezést.
 
-* Az Overdrive a felhasználók üzembe helyezésének **időpontját is** támogatja
+* Az Overdrive a felhasználó üzembe helyezésének **időpontját is** támogatja.
 
 ## <a name="add-overdrive-from-the-gallery"></a>Overdrive hozzáadása a katalógusból
 
@@ -65,7 +65,7 @@ Az Azure AD SSO az Overdrive-val való konfigurálásához és teszteléséhez h
     1. **[Hozzon létre Overdrive-teszt felhasználót](#create-overdrive-test-user)** – ha a felhasználó Azure ad-képviseletéhez csatolt B. Simon-beli partneri jogosultsággal rendelkezik.
 1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
@@ -121,7 +121,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="configure-overdrive-sso"></a>A Overdrive SSO konfigurálása
+## <a name="configure-overdrive-sso"></a>A Overdrive SSO konfigurálása
 
 Az egyszeri bejelentkezés a **Overdrive** -on való konfigurálásához el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portalról a [Overdrive támogatási csapatához](https://help.overdrive.com/). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
@@ -133,7 +133,7 @@ Ebben a szakaszban a Britta Simon nevű felhasználó az Overdrive-ban jön lét
 >Az OverDrive által biztosított bármely más OverDrive felhasználói fiók létrehozására szolgáló eszközt vagy API-t használhatja az Azure AD felhasználói fiókjainak kiépítéséhez.
 >
 
-### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
@@ -141,8 +141,8 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 * Lépjen közvetlenül az Overdrive bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
 
-* Használhatja a Microsoft saját alkalmazásait. Amikor a saját alkalmazások menüben a Overdrive csempére kattint, a rendszer átirányítja az Overdrive bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
+* Használhatja a Microsoft saját alkalmazásait. Amikor a saját alkalmazások menüben a Overdrive csempére kattint, a rendszer átirányítja az Overdrive bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az Overdrive konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Az Overdrive konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

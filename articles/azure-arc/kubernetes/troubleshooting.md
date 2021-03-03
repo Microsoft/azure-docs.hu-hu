@@ -1,36 +1,38 @@
 ---
-title: Az Azure arc-kompatibilis Kubernetes kapcsolatos gyakori problémák elhárítása (előzetes verzió)
+title: Az Azure arc-kompatibilis Kubernetes kapcsolatos gyakori problémák elhárítása
 services: azure-arc
 ms.service: azure-arc
-ms.date: 05/19/2020
+ms.date: 03/02/2020
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Az arc-kompatibilis Kubernetes-fürtökkel kapcsolatos gyakori problémák elhárítása.
 keywords: Kubernetes, arc, Azure, tárolók
-ms.openlocfilehash: 0827386eb6ec089cf7951e8fa513a77fc78aef22
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e1f4e84f16c6b584f1ffbd918a86c251f47efcca
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684089"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101654000"
 ---
-# <a name="azure-arc-enabled-kubernetes-troubleshooting-preview"></a>Azure arc-kompatibilis Kubernetes-hibaelhárítás (előzetes verzió)
+# <a name="azure-arc-enabled-kubernetes-troubleshooting"></a>Azure arc-kompatibilis Kubernetes-hibaelhárítás
 
-Ez a dokumentum a kapcsolatokkal, engedélyekkel és ügynökökkel kapcsolatos gyakori hibaelhárítási forgatókönyveket tartalmaz.
+Ez a dokumentum a kapcsolattal, engedélyekkel és ügynökökkel kapcsolatos problémákhoz nyújt hibaelhárítási útmutatót.
 
 ## <a name="general-troubleshooting"></a>Általános hibaelhárítás
 
-### <a name="azure-cli-set-up"></a>Azure CLI-beállítás
-Az az connectedk8s vagy az k8sconfiguration CLI parancsok használata előtt gondoskodjon arról, hogy az az a megfelelő Azure-előfizetésen működjön.
+### <a name="azure-cli"></a>Azure CLI
+
+`az connectedk8s` `az k8s-configuration` A vagy CLI parancsok használata előtt győződjön meg arról, hogy az Azure CLI úgy van beállítva, hogy a megfelelő Azure-előfizetésen működjön.
 
 ```azurecli
 az account set --subscription 'subscriptionId'
 az account show
 ```
 
-### <a name="azure-arc-agents"></a>Azure-arc ügynökök
-Az Azure arc-kompatibilis Kubernetes összes ügynöke hüvelyként van telepítve a `azure-arc` névtérben. Normál működés esetén az összes hüvelynek futnia kell, és át kell haladnia az állapotuk ellenőrzésével.
+### <a name="azure-arc-agents"></a>Azure arc-ügynökök
+
+Az Azure arc-kompatibilis Kubernetes összes ügynöke hüvelyként van telepítve a `azure-arc` névtérben. Az összes hüvelynek futnia kell, és át kell haladnia az állapotuk ellenőrzésével.
 
 Először ellenőrizze az Azure arc Helm kiadását:
 
@@ -44,9 +46,9 @@ REVISION: 5
 TEST SUITE: None
 ```
 
-Ha a Helm kiadása nem található vagy hiányzik, próbálja újra bevezetni a fürtöt.
+Ha a Helm kiadása nem található vagy hiányzik, próbálja újra [csatlakoztatni a fürtöt az Azure arc-hoz](./connect-cluster.md) .
 
-Ha a Helm kiadása jelen van, és `STATUS: deployed` meghatározza az ügynökök állapotát a használatával `kubectl` :
+Ha a Helm kiadása megtalálható a `STATUS: deployed` -ben, ellenőrizze az ügynökök állapotát az alábbiak használatával `kubectl` :
 
 ```console
 $ kubectl -n azure-arc get deployments,pods
@@ -69,45 +71,42 @@ pod/metrics-agent-58b765c8db-n5l7k              2/2     Running  0       16h
 pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 ```
 
-Az összes hüvelynek a következőnek kell lennie:, és legyen az `STATUS` `Running` vagy a `READY` `3/3` `2/2` . Naplók beolvasása és a visszaadott vagy a hüvelyek leírása `Error` `CrashLoopBackOff` . Ha az ilyen hüvelyek bármelyike állapota beragadt, annak `Pending` oka az lehet, hogy nincs elegendő erőforrás a fürtcsomópontokon. [A fürt vertikális Felskálázása](https://kubernetes.io/docs/tasks/administer-cluster/) ezeket a hüvelyeket az állapotba való áttérésre fogja kérni `Running` .
+Az összes hüvelynek `STATUS` `Running` `3/3` `2/2` a vagy az `READY` oszlop alá kell mutatnia. A naplók beolvasása és a vagy a által visszaadott hüvelyek leírása `Error` `CrashLoopBackOff` . Ha a hüvelyek állapota elakad `Pending` , előfordulhat, hogy nem áll rendelkezésre elegendő erőforrás a fürtcsomópontokon. [A fürt vertikális Felskálázása](https://kubernetes.io/docs/tasks/administer-cluster/) esetén ezek a hüvelyek `Running` állapotba kerülhetnek.
 
 ## <a name="connecting-kubernetes-clusters-to-azure-arc"></a>Kubernetes-fürtök csatlakoztatása az Azure arc-hoz
 
-A fürtök Azure-hoz való csatlakoztatásához az Azure-előfizetéshez és `cluster-admin` a célként megadott fürthöz való hozzáféréshez is hozzá kell férnie. Ha a fürt nem érhető el, vagy nem rendelkezik megfelelő engedélyekkel, az előkészítés sikertelen lesz.
+A fürtök az Azure-hoz való csatlakoztatásához az Azure-előfizetéshez és `cluster-admin` a célként megadott fürthöz való hozzáféréshez is hozzáférést kell adni. Ha nem tudja elérni a fürtöt, vagy nem rendelkezik megfelelő engedélyekkel, a fürt csatlakoztatása az Azure arc-hoz sikertelen lesz.
 
 ### <a name="insufficient-cluster-permissions"></a>Nem elégségesek a fürt engedélyei
 
-Ha a megadott kubeconfig-fájl nem rendelkezik megfelelő engedélyekkel az Azure arc-ügynökök telepítéséhez, az Azure CLI-parancs hibát ad vissza, amely a Kubernetes API meghívására tesz kísérletet.
+Ha a megadott kubeconfig-fájl nem rendelkezik megfelelő engedélyekkel az Azure arc-ügynökök telepítéséhez, az Azure CLI-parancs hibát ad vissza.
 
 ```azurecli
 $ az connectedk8s connect --resource-group AzureArc --name AzureArcCluster
-Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
 Ensure that you have the latest helm version installed before proceeding to avoid unexpected errors.
 This operation might take a while...
 
 Error: list: failed to list: secrets is forbidden: User "myuser" cannot list resource "secrets" in API group "" at the cluster scope
 ```
 
-A fürt tulajdonosának olyan Kubernetes-felhasználót kell használnia, amely a fürt rendszergazdai engedélyeivel rendelkezik.
+A fürtöt az Azure arc-hoz összekötő felhasználónak hozzá kell `cluster-admin` rendelnie egy szerepkört a fürthöz.
 
 ### <a name="installation-timeouts"></a>Telepítési időtúllépések
 
-Az Azure arc-ügynök telepítéséhez tárolók készletét kell futtatni a célként megadott fürtön. Ha a fürt lassú internetkapcsolaton keresztül fut, a tároló rendszerképének lekérése hosszabb időt vehet igénybe, mint az Azure CLI időtúllépése.
+A Kubernetes-fürtök Azure arc-kompatibilis Kubernetes való csatlakoztatásához Azure arc-ügynököket kell telepíteni a fürtön. Ha a fürt lassú internetkapcsolaton keresztül fut, az ügynökök számára a tároló képe hosszabb időt vehet igénybe, mint az Azure CLI-időtúllépés.
 
 ```azurecli
 $ az connectedk8s connect --resource-group AzureArc --name AzureArcCluster
-Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
 Ensure that you have the latest helm version installed before proceeding to avoid unexpected errors.
 This operation might take a while...
 ```
 
 ### <a name="helm-issue"></a>Helm-probléma
 
-A Helm `v3.3.0-rc.1` verziójának olyan [hibája](https://github.com/helm/helm/pull/8527) van, ahol a Helm install/upgrade (amelyet a motorháztető alatt használ a connectedk8s CLI bővítménnyel) a következő hibához vezető összes Hook futtatását eredményezi:
+A Helm `v3.3.0-rc.1` verziója olyan [hibát](https://github.com/helm/helm/pull/8527) tartalmaz, amelyben a Helm install/upgrade (a `connectedk8s` CLI bővítmény által használt) az összes Hook futtatását eredményezi, ami a következő hibához vezet:
 
 ```console
 $ az connectedk8s connect -n shasbakstest -g shasbakstest
-Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
 Ensure that you have the latest helm version installed before proceeding.
 This operation might take a while...
 
@@ -132,15 +131,16 @@ A probléma megoldásához kövesse az alábbi lépéseket:
 ## <a name="configuration-management"></a>Konfigurációkezelés
 
 ### <a name="general"></a>Általános kérdések
-A verziókövetés konfigurációjával kapcsolatos problémák elhárítása érdekében futtassa az az commands with--debug kapcsolót.
+A konfigurációs erőforrással kapcsolatos problémák elhárításához futtassa az parancsot a `--debug` megadott paraméterrel.
 
 ```console
 az provider show -n Microsoft.KubernetesConfiguration --debug
-az k8sconfiguration create <parameters> --debug
+az k8s-configuration create <parameters> --debug
 ```
 
-### <a name="create-source-control-configuration"></a>Verziókövetés konfigurációjának létrehozása
-A Microsoft. Kubernetes/connectedCluster erőforrás közreműködői szerepköre szükséges és elegendő a Microsoft. KubernetesConfiguration/sourceControlConfiguration erőforrás létrehozásához.
+### <a name="create-configurations"></a>Konfigurációk létrehozása
+
+Az Azure arc-kompatibilis Kubernetes erőforrás () írási engedélyei `Microsoft.Kubernetes/connectedClusters/Write` szükségesek és elegendőek a fürtön lévő konfigurációk létrehozásához.
 
 ### <a name="configuration-remains-pending"></a>A konfiguráció továbbra is fennáll `Pending`
 

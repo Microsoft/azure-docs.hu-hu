@@ -1,9 +1,19 @@
-- name: Az Azure Arc-kompatibilis Kubernetes dokumentációja
+- name: Azure Arc-kompatibilis Kubernetes
   href: index.yml
 - name: Áttekintés
   items:
     - name: Az Arc-kompatibilis Kubernetes ismertetése
       href: overview.md
+    - name: Azure arc-ellenőrzési program
+      href: validation-program.md
+- name: Oktatóanyagok
+  items:
+    - name: Konfigurációk üzembe helyezése GitOps használatával
+      href: tutorial-use-gitops-connected-cluster.md
+- name: Rövid útmutatók
+  items:
+    - name: Fürt összekötése az Azure-ív használatával
+      href: quickstart-connect-cluster.md
 - name: Alapelvek
   items:
     - name: Ügynök architektúrája
@@ -16,20 +26,20 @@
   items:
     - name: Csatlakozás az Azure Archoz
       items:
-        - name: Fürt csatlakoztatása
-          href: connect-cluster.md
         - name: Szolgáltatásnév előkészítése
           href: create-onboarding-service-principal.md
+    - name: Kezelés
+      items:
+        - name: Ügynök frissítései
+          href: agent-upgrade.md
     - name: Forgatókönyvek
       items:
-        - name: Konfigurációk üzembe helyezése GitOps használatával
-          href: use-gitops-connected-cluster.md
         - name: Helm-diagramok üzembe helyezése GitOps használatával
           href: use-gitops-with-helm.md
         - name: GitOps kényszerítése az Azure Policyval
           href: use-azure-policy.md
         - name: Monitorozás a tárolókhoz készült Azure Monitor használatával
-          href: ../../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.yml
+          href: ../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.yml
         - name: Belépésvezérlési szabályzatok az Azure Policyval
           href: ../../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.yml
         - name: IoT-alapú számítási feladatok üzembe helyezése

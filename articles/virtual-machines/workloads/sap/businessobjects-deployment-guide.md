@@ -8,19 +8,18 @@ manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-windows
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 0c2deb1ae1d41f8daaed8856f97c4b458930c616
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e753d810bbc2ed1079b58d20a0659bf5e2219d11
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484379"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671897"
 ---
 # <a name="sap-businessobjects-bi-platform-planning-and-implementation-guide-on-azure"></a>SAP BusinessObjects BI platformtervezési és -megvalósítási útmutató az Azure-on
 
@@ -55,7 +54,7 @@ Az alábbi ábrán látható, hogy az SAP BOBI platform nagyméretű üzembe hel
 
 #### <a name="architecture-details"></a>Architektúra részletei
 
-- Terheléselosztó
+- Terheléselosztóval
 
   Az SAP BOBI többpéldányos telepítése esetén a webalkalmazás-kiszolgálók (vagy a webes réteg) két vagy több gazdagépen futnak. Ha a felhasználói terhelést egyenletesen szeretné terjeszteni a webkiszolgálókon, a végfelhasználók és a webkiszolgálók között terheléselosztó is használható. Az Azure-ban [Azure Load Balancer](../../../load-balancer/load-balancer-overview.md) vagy [Azure Application Gateway](../../../application-gateway/overview.md) használatával kezelheti a webkiszolgálók forgalmát.
 
@@ -236,7 +235,7 @@ Az Azure számos virtuális gépet kínál az alkalmazás igényeinek megfelelő
 
 Az SAP BI platform méretezése alapján le kell képeznie az Azure-beli virtuális gépre vonatkozó követelményt, amelyet az Azure az SAP-termék esetében támogat. Az [1928533](https://launchpad.support.sap.com/#/notes/1928533) -es SAP-Megjegyzés jó kiindulási pont, amely az SAP-termékek támogatott Azure-beli virtuálisgép-típusait sorolja fel Windows és Linux rendszeren. Azt is vegye figyelembe, hogy a tisztán támogatott virtuálisgép-típusok kiválasztása után is meg kell vizsgálnia, hogy az adott virtuális gépek típusa elérhető-e az adott régióban. A virtuális gép típusának rendelkezésre állását a [régiók oldalon elérhető termékek területen](https://azure.microsoft.com/global-infrastructure/services/) tekintheti meg. A díjszabási modell kiválasztásához tekintse meg az SAP számítási feladatait [Az Azure Virtual Machines szolgáltatásban](planning-guide.md#azure-virtual-machines-for-sap-workload)
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Tárolás
 
 Az Azure Storage egy Azure által felügyelt felhőalapú szolgáltatás, amely kiválóan elérhető, biztonságos, tartós, méretezhető és redundáns tárolást biztosít. Egyes tárolási típusok esetében korlátozott az SAP-forgatókönyvek használata. Számos Azure-beli tárolási típus azonban jól alkalmazható, vagy speciális SAP-munkaterhelési forgatókönyvekhez van optimalizálva. További információkért tekintse meg [Az Azure Storage-típusok az SAP](planning-guide-storage.md) számítási feladatokhoz című útmutatót, mivel ez kiemeli az SAP-hoz elérhető különböző tárolási lehetőségeket.
 
@@ -256,13 +255,13 @@ Az Azure Storage-ban különböző tárolási típusok érhetők el az ügyfelek
 
 ![SAP BusinessObjects BI platform Storage-elrendezés az Azure-ban](media/businessobjects-deployment-guide/businessobjects-storage-layout.png)
 
-### <a name="networking"></a>Hálózat
+### <a name="networking"></a>Hálózatkezelés
 
 Az SAP BOBI olyan jelentéskészítési és elemzési BI-platform, amely nem rendelkezik üzleti adattal. Így a rendszer a többi adatbázis-kiszolgálóhoz csatlakozik, ahonnan beolvassa az összes információt, és betekintést nyújt a felhasználók számára. Az Azure egy hálózati infrastruktúrát biztosít, amely lehetővé teszi az SAP BI platformmal megvalósítható összes forgatókönyv leképezését, például a helyszíni rendszerhez való csatlakozást, a különböző virtuális hálózatok rendszereit és egyebeket. További információ: [Microsoft Azure hálózatkezelés az SAP-Munkaterheléshez](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/virtual-machines/workloads/sap/planning-guide.md#microsoft-azure-networking).
 
 Az adatbázis-szolgáltatásként kínált szolgáltatások esetében minden újonnan létrehozott adatbázisnak (Azure SQL Database vagy Azure Database for MySQL) van olyan tűzfala, amely blokkolja az összes külső kapcsolatot. Ahhoz, hogy a BI platform virtuális gépei hozzáférhessenek a DBaaS szolgáltatáshoz, meg kell adnia egy vagy több kiszolgálói szintű tűzfalszabályok használatát, hogy engedélyezze a hozzáférést a DBaaS-kiszolgálóhoz. További információ: az Azure SQL Database Azure Database for MySQL és [hálózati hozzáférés-vezérlési](../../../azure-sql/database/network-access-controls-overview.md) szakaszának [Tűzfalszabályok](../../../mysql/concepts-firewall-rules.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [SAP BusinessObjects BI platform Linux rendszeren való üzembe helyezése](businessobjects-deployment-guide-linux.md)
 - [Azure Virtual Machines az SAP tervezéséhez és megvalósításához](planning-guide.md)

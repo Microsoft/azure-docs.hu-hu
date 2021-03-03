@@ -16,12 +16,12 @@ ms.date: 12/14/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82247ae9817e5ff2e26d0862230654021876406b
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 65f69cf492ec3e28d7f4aa86971dc6c91b34bdf5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223277"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644177"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomag erőforrás-szerepköreinek módosítása az Azure AD-jogosultságok kezelésében
 
@@ -90,7 +90,7 @@ További információ: csoportok és [Microsoft 365 csoportok és Microsoft Team
 
     Miután kiválasztotta a csoportot vagy a csapatot, az **altípus** oszlopban a következő altípusok egyike jelenik meg:
 
-    | Altípus | Description |
+    | Altípus | Leírás |
     | --- | --- |
     | Biztonság | Erőforrásokhoz való hozzáférés biztosítására szolgál. |
     | Disztribúció | Az értesítések egy csoportba való küldésére szolgál. |
@@ -144,13 +144,9 @@ Az Azure AD automatikusan hozzá tud rendelni felhasználókat a SharePoint Onli
 
 1. Az **erőforrás-szerepkörök felvétele a csomagba** lapon kattintson a **SharePoint-helyek** elemre a SharePoint Online-webhelyek kiválasztása panel megnyitásához.
 
-    :::image type="content" source="media/entitlement-management-access-package-resources/sharepoint-multigeo-portal.png" alt-text="Hozzáférési csomag – erőforrás-Szerepkörök hozzáadása – SharePoint-helyek kiválasztása – portál nézet":::
+    :::image type="content" source="media/entitlement-management-access-package-resources/resource-sharepoint-add.png" alt-text="Hozzáférési csomag – erőforrás-Szerepkörök hozzáadása – SharePoint-helyek kiválasztása – portál nézet":::
 
-1. Ha a SharePointhoz [több földrajzi](https://docs.microsoft.com/microsoft-365/enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-microsoft-365?view=o365-worldwide) hely van engedélyezve, válassza ki azt a környezetet, amelyben a helyeket ki szeretné választani.
-    
-    :::image type="content" source="media/entitlement-management-access-package-resources/sharepoint-multigeo-select.png" alt-text="Hozzáférési csomag – erőforrás-Szerepkörök hozzáadása – SharePoint multi-Geo-helyek kiválasztása":::
-
-1. Ha a többszörös földrajzi hely nincs engedélyezve, nem kell kiválasztania egy környezetet. Válassza ki azokat a SharePoint Online-webhelyeket, amelyeket fel szeretne venni a hozzáférési csomagba.
+1. Válassza ki azokat a SharePoint Online-webhelyeket, amelyeket fel szeretne venni a hozzáférési csomagba.
 
     ![Hozzáférési csomag – erőforrás-Szerepkörök hozzáadása – SharePoint Online-webhelyek kiválasztása](./media/entitlement-management-access-package-resources/sharepoint-site-select.png)
 

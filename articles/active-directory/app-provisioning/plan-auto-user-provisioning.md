@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/31/2020
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: d36bcbd64c1169c923c6a1decdf907a8a9d6697b
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 9f2b5bf1195682b200b5840459194506e29bcdc6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99255763"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645088"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Automatikus felhasználóátadást használó üzembe helyezés tervezése
 
@@ -322,7 +322,7 @@ A kiépítés során esetlegesen felmerülő problémák elhárításához tekin
 
 * [Naprakészen tarthatja az Azure AD újdonságait](https://azure.microsoft.com/updates/?product=active-directory)
 
-* [Microsoft Q&egy Azure AD-fórumot](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
+* [Microsoft Q&egy Azure AD-fórumot](/answers/topics/azure-active-directory.html)
 
 ## <a name="next-steps"></a>Következő lépések
 * [Automatikus felhasználó-kiépítés konfigurálása](../app-provisioning/configure-automatic-user-provisioning-portal.md)

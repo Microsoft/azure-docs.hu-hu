@@ -5,15 +5,15 @@ author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
 ms.subservice: cosmosdb-mongo
-ms.date: 10/12/2020
+ms.date: 03/02/2021
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 88ef081c75a64b5cb7517ba6994834b3a64a0e6f
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 5302cb7bb3f4683d200f6f9ea106991bb934fc17
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340889"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659902"
 ---
 # <a name="troubleshoot-query-issues-when-using-the-azure-cosmos-db-api-for-mongodb"></a>A MongoDB Azure Cosmos DB API-ját használó lekérdezési problémák elhárítása
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -30,7 +30,7 @@ Ha csökkenti egy lekérdezés RU-díját, általában a késést is csökkenti.
 Ez a cikk példákat tartalmaz, amelyeket újra létrehozhat a [táplálkozási adatkészlet](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)használatával.
 
 > [!NOTE] 
-> Ez a cikk azt feltételezi, hogy a (z) Azure Cosmos DB "s API MongoDB-es 3,6 verzióját használja. Egyes, a 3,2-es verzióban rosszul elvégezhető lekérdezések jelentős mértékben javítják a 3,6-es verziót. [Támogatási kérelem](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)bejelentésével frissítsen a 3,6-es verzióra.
+> Ez a cikk azt feltételezi, hogy Azure Cosmos DB API-ját használja a 3,6-es és újabb verziójú MongoDB-fiókokhoz. Néhány, a 3,2-es verzióban rosszul elvégezhető lekérdezés jelentős újdonságokkal rendelkezik a 3.6 + verzióban. [Támogatási kérelem](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)bejelentésével frissítsen a 3,6-es verzióra.
 
 ## <a name="use-explain-command-to-get-metrics"></a>Metrikák beolvasása $explain parancs használatával
 
@@ -113,7 +113,7 @@ db.coll.find({foodGroup: "Baby Foods"}).explain({"executionStatistics": true })
 
 A `$explain` parancs kimenete hosszadalmas, és részletes információkkal szolgál a lekérdezés végrehajtásáról. Általánosságban elmondható, hogy néhány szakaszt érdemes figyelembe vennie a lekérdezési teljesítmény optimalizálásakor:
 
-| Metrika | Leírás | 
+| Metric | Leírás | 
 | ------ | ----------- |
 | `timeInclusiveMS` | Háttérbeli lekérdezés késése |
 | `pathsIndexed` | Megjeleníti a lekérdezés által használt indexeket | 
@@ -264,7 +264,7 @@ Bármikor hozzáadhat új indexeket, és nem befolyásolhatja az írási és olv
 
 A legtöbb esetben a Azure Cosmos DB API-MongoDB található összesítési műveletek részben az indexeket fogják használni. A lekérdezési motor általában először alkalmazza az egyenlőség és a tartomány szűrőit, és használja az indexeket. A szűrők alkalmazása után a lekérdezési motor kiértékelheti a további szűrőket, és igény szerint betöltheti a fennmaradó dokumentumokat az Összesítés kiszámításához. 
 
-Például:
+Bemutatunk egy példát:
 
 ```
 db.coll.aggregate( [
@@ -345,7 +345,7 @@ Azure Cosmos DB a kiosztott átviteli sebességet a kérelmek egységében (RUs)
 
 Az érték az `estimatedDelayFromRateLimitingInMilliseconds` átviteli sebesség növelésének lehetséges késleltetési előnyeit adja meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Lekérdezési teljesítmény – hibakeresés (SQL API)](troubleshoot-query-performance.md)
-* [Az indexelés kezelése Azure Cosmos DB API-MongoDB](mongodb-indexing.md)
+* [Indexelés kezelése a MongoDB-hez készült Azure Cosmos DB API-ban](mongodb-indexing.md)

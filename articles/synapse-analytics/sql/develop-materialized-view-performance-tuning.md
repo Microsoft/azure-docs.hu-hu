@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: d10b7084cfc49d60e9d14c3c857d1ade839398ac
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e6c3987e2de7f9592a1f7f6086657592e1bf0c16
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305098"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676594"
 ---
 # <a name="performance-tuning-with-materialized-views-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Teljesítmény-Finomhangolás az Azure szinapszis Analytics szolgáltatásban található dedikált SQL-készlettel rendelkező, anyagokból származó nézetekkel
 
@@ -29,7 +29,7 @@ A normál nézet minden alkalommal kiszámítja az adatmegjelenítést, amikor a
 
 Egy anyagilag megtekinthető nézet előre kiszámítja, tárolja és karbantartja az adataikat a dedikált SQL-készletben, ugyanúgy, mint egy tábla.  A rendszer minden alkalommal nem igényel újraszámítást, amikor egy anyagbeli nézet van használatban.  Ezért az olyan lekérdezések, amelyek az összes vagy az adatok egy részhalmazát használják az anyagilag megtekintett nézetekben, gyorsabb teljesítményt tudnak nyerni.  Még jobb is, ha a lekérdezések egy anyagbeli nézetet is használhatnak közvetlen hivatkozás nélkül, ezért nincs szükség az alkalmazás kódjának módosítására.  
 
-A szabványos nézetre vonatkozó követelmények többsége továbbra is érvényes egy anyagbeli nézetre. Az anyag nézet szintaxisának és egyéb követelményeinek részletes ismertetését a következő témakörben találja: [anyagelszámolású nézet létrehozása a Select](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)utasítással.
+A szabványos nézetre vonatkozó követelmények többsége továbbra is érvényes egy anyagbeli nézetre. Az anyag nézet szintaxisának és egyéb követelményeinek részletes ismertetését a következő témakörben találja: [anyagelszámolású nézet létrehozása a Select](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest&preserve-view=true)utasítással.
 
 | Összehasonlítás                     | Nézet                                         | Materialized View
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
@@ -55,8 +55,8 @@ A megfelelően megtervezett, jelentős nézet a következő előnyöket biztosí
 Az egyéb adattárház-szolgáltatókhoz képest a dedikált SQL-készletben megvalósított, jelentős nézetek a következő előnyöket is biztosítják:
 
 - Automatikus és szinkron Adatfrissítés az alaptáblákban tárolt adatváltozásokkal. Nincs szükség felhasználói beavatkozásra.
-- Széleskörű összesítő függvények támogatása. Lásd: [anyagelszámolású nézet létrehozása Select (Transact-SQL) néven](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
-- A lekérdezés-specifikus, jelentős megjelenítésre vonatkozó javaslat támogatása.  Lásd: [Magyarázat (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+- Széleskörű összesítő függvények támogatása. Lásd: [anyagelszámolású nézet létrehozása Select (Transact-SQL) néven](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest&preserve-view=true).
+- A lekérdezés-specifikus, jelentős megjelenítésre vonatkozó javaslat támogatása.  Lásd: [Magyarázat (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="common-scenarios"></a>Gyakori forgatókönyvek  
 
@@ -147,7 +147,7 @@ Az adatraktár-optimalizáló a lekérdezések teljesítményének növelése é
 
 A rendszer az adatraktárban egy, a fürtözött oszlopcentrikus indextel (CCI) rendelkező táblához hasonlóan egy anyagbeli nézetet tárol.  Az adatok egy anyagbeli nézetből történő beolvasása magában foglalja az index vizsgálatát és a változások a különbözeti tárolóból való alkalmazását.  Ha a különbözeti tárolóban lévő sorok száma túl magas, a lekérdezés egy anyagbeli nézetből való feloldása hosszabb időt vehet igénybe, mint az alaptáblák közvetlen lekérdezése.  
 
-A lekérdezési teljesítmény romlásának elkerülése érdekében célszerű a [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) futtatni a nézet overhead_ratio (total_rows/base_view_row) figyeléséhez.  Ha a overhead_ratio túl magas, érdemes lehet újraépíteni az anyagbeli nézetet, hogy a különbözeti tároló összes sora át legyen helyezve a oszlopcentrikus indexbe.  
+A lekérdezési teljesítmény romlásának elkerülése érdekében célszerű a [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?view=azure-sqldw-latest&preserve-view=true) futtatni a nézet overhead_ratio (total_rows/base_view_row) figyeléséhez.  Ha a overhead_ratio túl magas, érdemes lehet újraépíteni az anyagbeli nézetet, hogy a különbözeti tároló összes sora át legyen helyezve a oszlopcentrikus indexbe.  
 
 **Anyagelszámolású nézet és eredményhalmaz gyorsítótárazása**
 

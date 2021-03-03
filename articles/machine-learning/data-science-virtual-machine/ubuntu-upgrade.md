@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Megtudhatja, hogyan frissíthet a CentOS és az Ubuntu 16,04 rendszerről a legújabb Ubuntu 18,04 Data Science Virtual Machinera.
 keywords: Deep learning, AI, adatelemzési eszközök, adatelemzési virtuális gép, csoportos adatelemzési folyamat
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 5b98384d4d735f4c124c6af40d6edbff896900ce
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5b897ff7527d2d60234162ccbdeb08a00260bb1d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320976"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659460"
 ---
 # <a name="upgrade-your-data-science-virtual-machine-to-ubuntu-1804"></a>Adatelemzési virtuális gép frissítése az Ubuntu 18.04-es verziójára
 
@@ -65,7 +64,7 @@ A frissítési folyamat eltarthat egy ideig. Ha a rendszer átadja, a program en
 
 A virtuális gép frissítését és újraindítását követően próbálja meg újra elérni az SSH-n keresztül. Lehetséges, hogy az IP-cím módosult az újraindítás során, ezért a kapcsolódás megkísérlése előtt erősítse meg.
 
-Ha a **távoli GAZDAGÉP azonosításának hibája módosult** , újra kell létrehoznia az SSH hitelesítő adatait.
+Ha a **távoli GAZDAGÉP azonosításának hibája módosult**, újra kell létrehoznia az SSH hitelesítő adatait.
 
 :::image type="content" source="media/ubuntu_upgrade/remote-host-warning.png" alt-text="A távoli gazdagép azonosítását jelző PowerShell-képernyőkép figyelmeztetést váltott ki":::
 
@@ -107,7 +106,7 @@ Ha még nem hozott létre virtuálisgép-pillanatképet az előzőekben leírtak
 
 :::image type="content" source="media/ubuntu_upgrade/portal-disks-search.png" alt-text="Képernyőkép Azure Portal a lemezek keresése lap és a Hozzáadás gomb megjelenítése":::
 
-2. Állítsa be az **előfizetést** , az **erőforráscsoportot** és a **régiót** a virtuális gép pillanatképének értékeire. Válassza ki a létrehozandó lemez **nevét** .
+2. Állítsa be az **előfizetést**, az **erőforráscsoportot** és a **régiót** a virtuális gép pillanatképének értékeire. Válassza ki a létrehozandó lemez **nevét** .
 
 3. Válassza a **forrás típusa** **pillanatképként** lehetőséget, és válassza ki a virtuális gép pillanatképét a **forrás pillanatképként**. Tekintse át és hozza létre a lemezt. 
 

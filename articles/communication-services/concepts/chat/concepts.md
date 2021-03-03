@@ -9,28 +9,26 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9b249bddc4cd269933a39b5baf77995aec1e82b3
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 2360cc8d202ed29051551231d14bef69c0e66ce4
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653934"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657808"
 ---
 # <a name="chat-concepts"></a>Csevegéssel kapcsolatos alapfogalmak
-
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 Az Azure kommunikációs szolgáltatások csevegési ügyfélszoftverei valós idejű SMS-beszélgetések hozzáadására használhatók az alkalmazásokhoz. Ez az oldal a legfontosabb csevegési fogalmakat és képességeket foglalja össze.
 
 Tekintse meg a [kommunikációs szolgáltatások csevegési függvénytárának áttekintését](./sdk-features.md) , hogy többet tudjon meg az adott ügyféloldali függvénytár-nyelvekről és-képességekről.
 
-## <a name="chat-overview"></a>Csevegés – áttekintés 
+## <a name="chat-overview"></a>Csevegés – áttekintés
 
-Csevegési beszélgetések a csevegési szálakon belül történnek. Egy csevegési szál Számos üzenetet és számos felhasználót tartalmazhat. Minden üzenet egyetlen szálhoz tartozik, és egy felhasználó egy vagy több szál része lehet. 
+Csevegési beszélgetések a csevegési szálakon belül történnek. Egy csevegési szál Számos üzenetet és számos felhasználót tartalmazhat. Minden üzenet egyetlen szálhoz tartozik, és egy felhasználó egy vagy több szál része lehet.
 
-A csevegési szál minden felhasználójának neve tag. Egy csevegési szálban akár 250 taggal is rendelkezhet. Csak a szál tagjai küldhetnek és fogadhatnak üzeneteket, vagy hozzáadhatnak vagy eltávolíthatnak tagokat egy csevegési szálban. Az üzenet maximális megengedett mérete körülbelül 28KB. A csevegési szálban lévő összes üzenetet lekérheti a `List/Get Messages` művelettel. A kommunikációs szolgáltatások addig tárolja a csevegési előzményeket, amíg nem hajt végre törlési műveletet a csevegési szálon vagy az üzeneten, vagy amíg egyetlen tag sem marad a csevegési szálban, ahol az árva, és a törlésre van feldolgozva.   
+A csevegési szál minden felhasználójának neve tag. Egy csevegési szálban akár 250 taggal is rendelkezhet. Csak a szál tagjai küldhetnek és fogadhatnak üzeneteket, vagy hozzáadhatnak vagy eltávolíthatnak tagokat egy csevegési szálban. Az üzenet maximális megengedett mérete körülbelül 28KB. A csevegési szálban lévő összes üzenetet lekérheti a `List/Get Messages` művelettel. A kommunikációs szolgáltatások addig tárolja a csevegési előzményeket, amíg nem hajt végre törlési műveletet a csevegési szálon vagy az üzeneten, vagy amíg egyetlen tag sem marad a csevegési szálban, ahol az árva, és a törlésre van feldolgozva.
 
-A több mint 20 taggal rendelkező csevegési szálak esetében a beolvasás és a begépelési mutatók funkció le van tiltva. 
+A több mint 20 taggal rendelkező csevegési szálak esetében a beolvasás és a begépelési mutatók funkció le van tiltva.
 
 ## <a name="chat-architecture"></a>Csevegési architektúra
 
@@ -43,10 +41,10 @@ Két fő részből áll a csevegő architektúra: 1) megbízható szolgáltatás
  - **Ügyfélalkalmazás:**  Az ügyfélalkalmazás csatlakozik a megbízható szolgáltatáshoz, és fogadja a közvetlenül a kommunikációs szolgáltatásokhoz való csatlakozáshoz használt hozzáférési jogkivonatokat. A kapcsolatfelvétel után az ügyfélalkalmazás küldhet és fogadhat üzeneteket.
 
 Javasoljuk, hogy a megbízható szolgáltatási szinten hozza létre a hozzáférési jogkivonatokat. Ebben a forgatókönyvben a kiszolgálói oldal feladata a felhasználók létrehozása és kezelése, valamint a jogkivonatok kiállítása.
-    
+
 ## <a name="message-types"></a>Üzenetek típusai
 
-A kommunikációs szolgáltatások csevegés megosztja a felhasználó által létrehozott üzeneteket, valamint a szál- **tevékenységek** nevű rendszer által generált üzeneteket. A hozzászóláslánc-tevékenységek akkor jönnek létre, amikor egy csevegési szál frissül. `List Messages` `Get Messages` Egy csevegési szál hívásakor az eredmény a felhasználó által generált szöveges üzeneteket, valamint a rendszerüzeneteket is tartalmazza időrendben. Ez segít megállapítani, hogy mikor lett hozzáadva vagy eltávolítva egy tag, vagy mikor frissítették a csevegési szál témakört. A támogatott üzenetek típusai a következők:  
+A kommunikációs szolgáltatások csevegés megosztja a felhasználó által létrehozott üzeneteket, valamint a szál- **tevékenységek** nevű rendszer által generált üzeneteket. A hozzászóláslánc-tevékenységek akkor jönnek létre, amikor egy csevegési szál frissül. `List Messages` `Get Messages` Egy csevegési szál hívásakor az eredmény a felhasználó által generált szöveges üzeneteket, valamint a rendszerüzeneteket is tartalmazza időrendben. Ez segít megállapítani, hogy mikor lett hozzáadva vagy eltávolítva egy tag, vagy mikor frissítették a csevegési szál témakört. A támogatott üzenetek típusai a következők:
 
  - `Text`: Egyszerű szöveges üzenet, amelyet egy felhasználó egy csevegési beszélgetés részeként komponál és küld.
  - `RichText/HTML`: Formázott szöveges üzenet. Vegye figyelembe, hogy a kommunikációs szolgáltatások felhasználói jelenleg nem küldhetnek RichText üzeneteket. Ezt az üzenetet a csapatok felhasználóitól a kommunikációs szolgáltatások felhasználóinak küldött üzenetek támogatják a csapatok együttműködési forgatókönyvekben.
@@ -116,17 +114,17 @@ A kommunikációs szolgáltatások csevegés megosztja a felhasználó által l�
         }
 ```
 
-## <a name="real-time-signaling"></a>Valós idejű jelzés 
+## <a name="real-time-signaling"></a>Valós idejű jelzés
 
 A csevegés JavaScript-ügyféloldali könyvtára valós idejű jelzéseket tartalmaz. Ez lehetővé teszi az ügyfeleknek, hogy valós idejű frissítéseket és beérkező üzeneteket hallgassanak egy csevegési szálra anélkül, hogy le kellene kérdezni az API-kat. Az elérhető események a következők:
 
- - `ChatMessageReceived` – új üzenet küldése egy olyan csevegési szálnak, amelynek tagja a felhasználó. Ezt az eseményt a rendszer nem továbbítja automatikusan generált rendszerüzenetek számára, amelyeket az előző témakörben ismertetünk.  
- - `ChatMessageEdited` – Ha egy üzenet olyan csevegési szálban van szerkesztve, amelynek tagja a felhasználó. 
- - `ChatMessageDeleted` – Ha töröl egy üzenetet egy csevegési szálban, amelynek tagja a felhasználó. 
- - `TypingIndicatorReceived` – Ha egy másik tag egy olyan csevegési szálba ír be egy üzenetet, amelyben a felhasználó tagja. 
- - `ReadReceiptReceived` -Ha egy másik tag elolvasta azt az üzenetet, amelyet a felhasználó elküldött egy csevegési szálban. 
+ - `ChatMessageReceived` – új üzenet küldése egy olyan csevegési szálnak, amelynek tagja a felhasználó. Ezt az eseményt a rendszer nem továbbítja automatikusan generált rendszerüzenetek számára, amelyeket az előző témakörben ismertetünk.
+ - `ChatMessageEdited` – Ha egy üzenet olyan csevegési szálban van szerkesztve, amelynek tagja a felhasználó.
+ - `ChatMessageDeleted` – Ha töröl egy üzenetet egy csevegési szálban, amelynek tagja a felhasználó.
+ - `TypingIndicatorReceived` – Ha egy másik tag egy olyan csevegési szálba ír be egy üzenetet, amelyben a felhasználó tagja.
+ - `ReadReceiptReceived` -Ha egy másik tag elolvasta azt az üzenetet, amelyet a felhasználó elküldött egy csevegési szálban.
 
-## <a name="chat-events"></a>Csevegési események 
+## <a name="chat-events"></a>Csevegési események
 
 A valós idejű jelzések lehetővé teszik, hogy a felhasználók valós időben beszélgessenek. A szolgáltatások a Azure Event Grid segítségével előfizethetnek a csevegéssel kapcsolatos eseményekre. További részletek: Event- [kezelés fogalma](../event-handling.md).
 
@@ -134,13 +132,13 @@ A valós idejű jelzések lehetővé teszik, hogy a felhasználók valós időbe
 
 Az [Azure kognitív API](../../../cognitive-services/index.yml) -k és a csevegési ügyféloldali kódtár segítségével intelligens funkciókat adhat az alkalmazásaihoz. Megteheti például a következőt:
 
-- Lehetővé teheti a felhasználók számára, hogy különböző nyelveken beszélgessenek egymással. 
+- Lehetővé teheti a felhasználók számára, hogy különböző nyelveken beszélgessenek egymással.
 - Egy támogatási ügynök rangsorolhatja a jegyeket úgy, hogy kideríti az ügyféltől beérkező problémák negatív véleményét.
 - Elemezze a beérkező üzeneteket a kulcs észleléséhez és az entitások felismeréséhez, majd az üzenet tartalma alapján kérje meg az alkalmazás felhasználójának a megfelelő adatokat.
 
-Ezt úgy érheti el, ha a megbízható szolgáltatás egy csevegési szál tagjaként működik. Tegyük fel, hogy szeretné engedélyezni a nyelvi fordítást. Ennek a szolgáltatásnak a feladata a többi tag által cserélt üzenetek figyelése [1], a kognitív API-k meghívása a tartalom fordítására a kívánt nyelvre [2, 3], valamint a lefordított eredmény üzenetként való elküldése a csevegési szálban [4]. 
+Ezt úgy érheti el, ha a megbízható szolgáltatás egy csevegési szál tagjaként működik. Tegyük fel, hogy szeretné engedélyezni a nyelvi fordítást. Ennek a szolgáltatásnak a feladata a többi tag által cserélt üzenetek figyelése [1], a kognitív API-k meghívása a tartalom fordítására a kívánt nyelvre [2, 3], valamint a lefordított eredmény üzenetként való elküldése a csevegési szálban [4].
 
-Így az üzenetek előzményei az eredeti és a lefordított üzeneteket is tartalmazzák. Az ügyfélalkalmazás felveheti az eredeti vagy lefordított üzenet megjelenítéséhez szükséges logikát. [Ebből](../../../cognitive-services/translator/quickstart-translator.md) a rövid útmutatóból megtudhatja, hogyan használhatja a kognitív API-kat a szövegek különböző nyelvekre való fordításához. 
+Így az üzenetek előzményei az eredeti és a lefordított üzeneteket is tartalmazzák. Az ügyfélalkalmazás felveheti az eredeti vagy lefordított üzenet megjelenítéséhez szükséges logikát. [Ebből](../../../cognitive-services/translator/quickstart-translator.md) a rövid útmutatóból megtudhatja, hogyan használhatja a kognitív API-kat a szövegek különböző nyelvekre való fordításához.
 
 :::image type="content" source="../media/chat/cognitive-services.png" alt-text="A kommunikációs szolgáltatásokkal való interakciót Cognitive Services bemutató ábra.":::
 

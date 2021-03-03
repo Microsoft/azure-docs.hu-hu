@@ -1,6 +1,6 @@
 ---
 title: Kapcsolat a Sqlcmd
-description: A Sqlcmd parancssori segédprogrammal csatlakozhat, és lekérdezheti a szinapszis SQL-készletét.
+description: A Sqlcmd parancssori segédprogram használatával csatlakozhat egy dedikált SQL-készlethez az Azure szinapszis Analytics szolgáltatásban, és lekérdezheti azokat.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 3d1d8d3ce3afece5a979aadc27cd82dc7ddaf0d5
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f8b4d54585bc70c3ee5f24846e216f75e985cf84
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676228"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675730"
 ---
-# <a name="connect-to-sql-pool-in-azure-synapse-analytics-with-sqlcmd"></a>Kapcsolódás az SQL-készlethez az Azure szinapszis Analytics és a Sqlcmd használatával
+# <a name="connect-to-a-dedicated-sql-pool-in-azure-synapse-analytics-with-sqlcmd"></a>Kapcsolódás dedikált SQL-készlethez az Azure szinapszis Analytics és a Sqlcmd használatával
 
 > [!div class="op_single_selector"]
 >
@@ -28,15 +28,15 @@ ms.locfileid: "98676228"
 > * [Sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 
-Használja az [Sqlcmd] [Sqlcmd] parancssori segédprogramot egy SQL-készlethez való kapcsolódáshoz és lekérdezéshez.  
+A [Sqlcmd] [Sqlcmd] parancssori segédprogram használatával csatlakozhat egy dedikált SQL-készlethez, és lekérdezheti azokat.  
 
 ## <a name="1-connect"></a>1. kapcsolat
 
-A [Sqlcmd] [Sqlcmd] első lépéseihez nyissa meg a parancssort, és írja be a **Sqlcmd** , majd az SQL-készlethez tartozó kapcsolódási karakterláncot. A kapcsolati sztringben a következő paraméterekre van szükség:
+A [Sqlcmd] [Sqlcmd] első lépéseihez nyissa meg a parancssort, és írja be a **Sqlcmd** , majd a dedikált SQL-készlethez tartozó kapcsolódási karakterláncot. A kapcsolati sztringben a következő paraméterekre van szükség:
 
 * **Server (-S):** A kiszolgáló neve `<`kiszolgálónév`>`.database.windows.net formátumban.
-* **Adatbázis (-d):** SQL-készlet neve.
-* **Idézett azonosítók engedélyezése (-I):** Az idézőjelek közé tartozó azonosítókat engedélyezni kell egy SQL Pool-példányhoz való kapcsolódáshoz.
+* **Adatbázis (-d):** dedikált SQL-készlet neve.
+* **Idézett azonosítók engedélyezése (-I):** Az idézőjelek közé tartozó azonosítókat engedélyezni kell egy dedikált SQL Pool-példányhoz való kapcsolódáshoz.
 
 Az SQL Server-hitelesítés használatához meg kell adnia a felhasználónév/jelszó paramétereit:
 

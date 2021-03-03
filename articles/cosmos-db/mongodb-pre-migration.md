@@ -5,14 +5,14 @@ author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 09/01/2020
+ms.date: 03/02/2021
 ms.author: chrande
-ms.openlocfilehash: 72e89a67f2d767c8a104982dbe9eb9e47aec015a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ced795385fdf00e706ea897db80f558b513a9f9d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100574649"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656958"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Áttelepítés előtti lépések a MongoDB-ből Azure Cosmos DB API-MongoDB való áttelepítéshez
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -80,7 +80,7 @@ Hasonló módon a particionálási funkció automatikusan bővíti a kapacitást
 
 ## <a name="index-your-data"></a><a id="indexing"></a>Adatok indexelése
 
-A MongoDB Server 3,6-es verziójában a Azure Cosmos DB API automatikusan indexeli a `_id` mezőt. Ezt a mezőt nem lehet eldobni. Automatikusan kikényszeríti a mező egyediségét `_id` . További mezők indexeléséhez a MongoDB indexkezelési parancsait használja. Ez az automatikus indexelési szabályzat különbözik az Azure Cosmos DB SQL API-tól, amely alapértelmezés szerint az összes mezőt indexeli.
+A MongoDB Server 3,6-es és újabb verzióiban a Azure Cosmos DB API-k automatikusan indexelik a `_id` mezőt. Ezt a mezőt nem lehet eldobni. Automatikusan kikényszeríti a mező egyediségét `_id` . További mezők indexeléséhez alkalmazza a [MongoDB index-Management parancsait](mongodb-indexing.md). Ez az automatikus indexelési szabályzat különbözik az Azure Cosmos DB SQL API-tól, amely alapértelmezés szerint az összes mezőt indexeli.
 
 A Azure Cosmos DB által biztosított indexelési képességek közé tartozik az összetett indexek, az egyedi indexek és az élettartam (TTL) indexek hozzáadása. Az index felügyeleti felülete a parancsra van leképezve `createIndex()` . További információ: [Azure Cosmos db API-MongoDB című cikk indexelése](mongodb-indexing.md).
 

@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 6412036e3f16e2efb3bbf6669f6a31e9dc6e3584
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a18899ffc6b19be6226d9e0a3efd9a9519434601
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89434639"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666219"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>A virtuális gépek üzembe helyezésének hibaelhárítása a Cloud-init használatával
 
@@ -58,7 +58,7 @@ Amíg a virtuális gép fut, szüksége lesz a virtuális gép naplóira, hogy m
 
 - [Soros konzol](../troubleshooting/serial-console-grub-single-user-mode.md)
 
-- A virtuális gép létrehozása előtt [engedélyezze a rendszerindítási diagnosztikát](./tutorial-monitor.md#enable-boot-diagnostics) , majd [tekintse meg](./tutorial-monitor.md#view-boot-diagnostics) őket a rendszerindítás során.
+- A virtuális gép létrehozása előtt [engedélyezze a rendszerindítási diagnosztikát](/previous-versions/azure/virtual-machines/linux/tutorial-monitor#enable-boot-diagnostics) , majd [tekintse meg](/previous-versions/azure/virtual-machines/linux/tutorial-monitor#view-boot-diagnostics) őket a rendszerindítás során.
 
 - [Futtassa az az VM Repair parancsot](../troubleshooting/repair-linux-vm-using-azure-virtual-machine-repair-commands.md) az operációsrendszer-lemez csatlakoztatásához és csatlakoztatásához, amely lehetővé teszi a naplók összegyűjtését:
 ```bash
@@ -89,7 +89,7 @@ Itt talál további információt arról, hogy mit kell keresni az egyes Cloud-i
 
 Alapértelmezés szerint az összes olyan felhő-inicializálási esemény, amelynek prioritása hibakeresés vagy magasabb, a következőre íródik: `/var/log/cloud-init.log` . Ez részletes naplókat biztosít a Cloud-init inicializálásakor előforduló összes eseményről. 
 
-Példa:
+Például:
 
 ```console
 2019-10-10 04:51:25,321 - util.py[DEBUG]: Failed mount of '/dev/sr0' as 'auto': Unexpected error while running command.
@@ -124,7 +124,7 @@ Ha továbbra sem tudja elkülöníteni, hogy miért nem sikerült kiépíteni a 
 
 
 ## <a name="step-4-investigate-why-the-configuration-isnt-being-applied"></a>4. lépés: annak vizsgálata, hogy a konfiguráció miért nincs alkalmazva
-A Cloud-init nem minden hibája végzetes kiépítési hibát eredményez. Ha például a `runcmd` modult egy Cloud-init konfigurációban használja, akkor a futtatott parancsból nem nulla kilépési kód jelenik meg, mert a virtuális gép üzembe helyezése sikertelen lesz. Ennek az az oka, hogy az alapszintű üzembe helyezési funkció után fut, amely a Cloud-init első 3 fázisában történik. A konfiguráció által nem alkalmazott hibák megoldásához tekintse át a 3. lépésben és a Cloud-init modulok naplóit manuálisan. Példa:
+A Cloud-init nem minden hibája végzetes kiépítési hibát eredményez. Ha például a `runcmd` modult egy Cloud-init konfigurációban használja, akkor a futtatott parancsból nem nulla kilépési kód jelenik meg, mert a virtuális gép üzembe helyezése sikertelen lesz. Ennek az az oka, hogy az alapszintű üzembe helyezési funkció után fut, amely a Cloud-init első 3 fázisában történik. A konfiguráció által nem alkalmazott hibák megoldásához tekintse át a 3. lépésben és a Cloud-init modulok naplóit manuálisan. Például:
 
 - `runcmd` – a parancsfájlok hibák nélkül futnak? Futtassa manuálisan a konfigurációt a terminálról, hogy biztosan a várt módon fussanak.
 - Csomagok telepítése – a virtuális gép hozzáférhet a csomagok tárházához?
@@ -133,4 +133,4 @@ A Cloud-init nem minden hibája végzetes kiépítési hibát eredményez. Ha p�
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha továbbra sem tudja elkülöníteni, hogy a Cloud-init miért nem futtatta a konfigurációt, jobban meg kell vizsgálnia, hogy mi történik az egyes felhő-init fázisokban, és mikor futnak a modulok. További információkért lásd: a [Cloud-init-konfiguráció mélyebbre váltása](./cloud-init-deep-dive.md) . 
+Ha továbbra sem tudja elkülöníteni, hogy a Cloud-init miért nem futtatta a konfigurációt, jobban meg kell vizsgálnia, hogy mi történik az egyes felhő-init fázisokban, és mikor futnak a modulok. További információkért lásd: a [Cloud-init-konfiguráció mélyebbre váltása](./cloud-init-deep-dive.md) .

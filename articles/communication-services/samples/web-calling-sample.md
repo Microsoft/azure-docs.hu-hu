@@ -9,22 +9,20 @@ ms.author: mariusu
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fbd5d3c4489d124014e0d956359f64a8ec9c568a
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 5752f20cb433a417a684076338214cd2ea80bc8b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99592789"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658097"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Ismerkedés a webes hívási mintával
 
-A web Calling Sample egy webalkalmazás, amely a kommunikációs szolgáltatások webes hívási ügyféloldali kódtár által nyújtott különböző képességek lépésenkénti bemutatója. 
+A web Calling Sample egy webalkalmazás, amely a kommunikációs szolgáltatások webes hívási ügyféloldali kódtár által nyújtott különböző képességek lépésenkénti bemutatója.
 
 Ez a minta fejlesztők számára készült, és nagyon egyszerűvé teszi a kommunikációs szolgáltatások megkezdését. A felhasználói felülete több szakaszra oszlik, amelyek mindegyike egy "show code" (kód megjelenítése) gombot tartalmaz, amely lehetővé teszi, hogy közvetlenül a böngészőjéből másoljon kódot a saját kommunikációs szolgáltatások alkalmazásba.
 
 ## <a name="get-started-with-the-web-calling-sample"></a>Ismerkedés a webes hívási mintával
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 > [!IMPORTANT]
 > [Ez a minta a githubon érhető el.](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)
@@ -36,7 +34,7 @@ Miután a [webes hívás mintája](https://github.com/Azure-Samples/communicatio
 
 :::image type="content" source="./media/web-calling-tutorial-page-2.png" alt-text="Webes hívási oktatóanyag 2" lightbox="./media/web-calling-tutorial-page-2.png":::
 
-## <a name="user-provisioning-and-sdk-initialization"></a>A felhasználók üzembe helyezése és az SDK inicializálása 
+## <a name="user-provisioning-and-sdk-initialization"></a>A felhasználók üzembe helyezése és az SDK inicializálása
 
 Kattintson a "kiépítési felhasználó és az SDK inicializálása" elemre az SDK inicializálásához a háttér-jogkivonat kiépítési szolgáltatása által kiépített jogkivonat használatával. Ez a háttér-szolgáltatás a-ben érhető el `/project/webpack.config.js` .
 
@@ -52,7 +50,7 @@ Most már készen áll arra, hogy megkezdje a hívások küldését a kommuniká
 
 A kommunikációs szolgáltatások web Calling SDK lehetővé teszi a **1:1**, **1: N** és a **csoportos** hívás használatát.
 
-1:1 vagy 1: N kimenő hívások esetén több kommunikációs szolgáltatás felhasználói identitást is megadhat a vesszővel tagolt értékek használatával történő híváshoz. Megadhat hagyományos (PSTN-) telefonszámokat is, amelyeket vesszővel tagolt értékek használatával hívhat meg. 
+1:1 vagy 1: N kimenő hívások esetén több kommunikációs szolgáltatás felhasználói identitást is megadhat a vesszővel tagolt értékek használatával történő híváshoz. Megadhat hagyományos (PSTN-) telefonszámokat is, amelyeket vesszővel tagolt értékek használatával hívhat meg.
 
 A PSTN-telefonszámok hívásakor adja meg az alternatív hívó AZONOSÍTÓját. A kimenő hívások elhelyezéséhez kattintson a hívás elhelyezése gombra:
 
@@ -80,7 +78,7 @@ Ez a minta kódrészleteket is biztosít a következő képességekhez:
 
 ## <a name="next-steps"></a>Következő lépések
 
->[!div class="nextstepaction"] 
+>[!div class="nextstepaction"]
 >[A minta letöltése a GitHubról](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)
 
 További információért tekintse át a következő cikkeket:

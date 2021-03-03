@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: d366664981894933f9afb177e9147ccae6695872
-ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
+ms.openlocfilehash: 7731aa2eb1a962d4674ed382911ba0058e1ebdaf
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222166"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647506"
 ---
 # <a name="get-appsource-certified-for-azure-active-directory"></a>Azure Active Directory AppSource minősítésének beolvasása
 
@@ -104,9 +104,9 @@ A AppSource-próbaverzióval kapcsolatos további információkért tekintse meg
 
 ## <a name="get-support"></a>Támogatás kérése
 
-Az Azure AD-integrációhoz a [Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-active-directory.html) a-t használjuk a Közösségben, hogy támogatást nyújtsanak.
+Az Azure AD-integrációhoz a [Microsoft Q&](/answers/topics/azure-active-directory.html) a-t használjuk a Közösségben, hogy támogatást nyújtsanak.
 
-Javasoljuk, hogy Kérdezzen rá kérdéseket a [Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-active-directory.html) először, és Böngésszen a meglévő problémák között, és ellenőrizze, hogy valaki megkérdezte-e a kérdést. Győződjön meg arról, hogy a kérdései vagy megjegyzései szerepelnek a címkével [`[azure-active-directory]`](https://docs.microsoft.com/answers/topics/azure-active-directory.html) .
+Javasoljuk, hogy Kérdezzen rá kérdéseket a [Microsoft Q&](/answers/topics/azure-active-directory.html) először, és Böngésszen a meglévő problémák között, és ellenőrizze, hogy valaki megkérdezte-e a kérdést. Győződjön meg arról, hogy a kérdései vagy megjegyzései szerepelnek a címkével [`[azure-active-directory]`](/answers/topics/azure-active-directory.html) .
 
 A következő Megjegyzések szakaszban visszajelzéseket adhat meg, és segítheti a tartalom pontosítását és kialakítását.
 

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: f82a1279a69bf91f37400d5614e8f7b121e72f47
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 6b039d934993d2acee630205c5b5e5d8e0f6145e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258897"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667604"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio"></a>Kapcsolódás a szinapszis SQLhoz a Azure Data Studio használatával
 
@@ -26,7 +26,7 @@ ms.locfileid: "99258897"
 > * [Sqlcmd](get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-A [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) használatával kapcsolódhat a szinapszis SQL-hez, és lekérdezheti őket az Azure szinapszis Analytics szolgáltatásban. 
+A [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio?view=azure-sqldw-latest&preserve-view=true) használatával kapcsolódhat a szinapszis SQL-hez, és lekérdezheti őket az Azure szinapszis Analytics szolgáltatásban. 
 
 ## <a name="connect"></a>Kapcsolódás
 
@@ -73,7 +73,7 @@ A sikeres bejelentkezés után az alábbihoz hasonló irányítópultot kell lá
 
 ## <a name="query"></a>Lekérdezés
 
-A csatlakozást követően lekérdezheti a szinapszis SQLot a példányon támogatott [Transact-SQL (T-SQL)](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) utasítások használatával. Első lépésként válassza az irányítópult nézet **Új lekérdezés** elemét.
+A csatlakozást követően lekérdezheti a szinapszis SQLot a példányon támogatott [Transact-SQL (T-SQL)](/sql/t-sql/language-reference?view=azure-sqldw-latest&preserve-view=true) utasítások használatával. Első lépésként válassza az irányítópult nézet **Új lekérdezés** elemét.
 
 ![Új lekérdezés](./media/get-started-azure-data-studio/5-new-query.png)
 

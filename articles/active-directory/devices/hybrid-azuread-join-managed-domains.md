@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4fb45f222fcf5abd762d97d702925655db6cba60
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7338fb480f76ed1a5edbf9502dc0946d08618a63
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365769"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644918"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Oktatóanyag: A hibrid Azure Active Directory-csatlakozás konfigurálása felügyelt tartományokhoz
 
@@ -82,7 +82,7 @@ Ha nem használ WPAD-t, a Windows 10 1709 rendszertől kezdődően konfigurálha
 
 Ha a szervezete hitelesített kimenő proxyn keresztül fér hozzá az internethez, győződjön meg arról, hogy a Windows 10 rendszerű számítógépek sikeresen hitelesítve vannak a kimenő proxyn. Mivel a Windows 10 rendszerű számítógépek számítógép-környezettel futtatják az eszközök regisztrációját, a kimenő proxy hitelesítését a gépi környezet használatával kell konfigurálni. A konfiguráció követelményeivel kapcsolatban forduljon a kimenő proxy szolgáltatójához.
 
-Ellenőrizze, hogy az eszköz hozzáférhet-e a fenti Microsoft-erőforrásokhoz a rendszerfiókban az [eszköz regisztrálása kapcsolati](https://docs.microsoft.com/samples/azure-samples/testdeviceregconnectivity/testdeviceregconnectivity/) parancsfájl használatával.
+Ellenőrizze, hogy az eszköz hozzáférhet-e a fenti Microsoft-erőforrásokhoz a rendszerfiókban az [eszköz regisztrálása kapcsolati](/samples/azure-samples/testdeviceregconnectivity/testdeviceregconnectivity/) parancsfájl használatával.
 
 ## <a name="configure-hybrid-azure-ad-join"></a>A hibrid Azure AD-csatlakozás konfigurálása
 

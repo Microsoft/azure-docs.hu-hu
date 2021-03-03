@@ -8,17 +8,48 @@ ms.subservice: core
 ms.topic: reference
 ms.author: larryfr
 author: BlackMist
-ms.date: 09/10/2020
-ms.openlocfilehash: c54034ef927bb49a955ef6121f5a8d56b57f0bd3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/18/2021
+ms.openlocfilehash: b19c5e8ca1f7984f33a5cedf37a2774532c79350
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375561"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661103"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
 Ebben a cikkben megismerheti Azure Machine Learning kiadásait.  A teljes SDK-hivatkozási tartalomért keresse fel a Azure Machine Learning [**fő SDK for Python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) -referenciát tartalmazó oldalt.
+
+__RSS-hírcsatorna__: értesítést kap az oldal frissítésekor, ha a következő URL-címet másolja és illeszti be a hírcsatorna-olvasóba: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+## <a name="2021-02-16"></a>2021-02-16
+
+### <a name="azure-machine-learning-sdk-for-python-v1230"></a>Azure Machine Learning SDK a Python v 1.23.0
++ **Új funkciók**
+  + **azureml-core**
+    + [Kísérleti funkció] Támogatás hozzáadása a szinapszis-munkaterület a pénzmosás-hez társított szolgáltatásként való összekapcsolásához
+    + [Kísérleti funkció] Támogatás hozzáadása a szinapszis Spark-készlet a pénzmosás-hez való csatlakoztatásához számítási feladatokhoz
+    + [Kísérleti funkció] Adja meg az identitás-alapú adathozzáférés támogatását. A felhasználók a hitelesítő adatok megadása nélkül regisztrálhatják az adattárt vagy az adatkészleteket. Ilyen esetben a rendszer a felhasználó HRE tokenjét vagy a számítási cél felügyelt identitását fogja használni a hitelesítéshez. További információ [itt](https://aka.ms/data-access).
+  + **azureml-pipeline-steps**
+    + [Kísérleti funkció] [SynapseSparkStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.synapsesparkstep?preserve-view=true&view=azure-ml-py) -támogatás hozzáadása
+  + **azureml-synapse**
+    + [Kísérleti funkció] A Spark Magic támogatásának hozzáadásával interaktív munkamenetet futtathat a szinapszis Spark-készletben.
++ **Hibajavítások és javítások**
+  + **azureml-automl-runtime**
+    + Ebben a frissítésben a AutoML SDK előrejelzési eszközkészletét a Holt tél exponenciális simításával bővítettük. Adott idősorozatok esetében a legjobb modellt a [AICc (korrigált Akaike információs feltétel)](https://otexts.com/fpp3/selecting-predictors.html#selecting-predictors) választja ki, és visszaadja.
+    + A AutoML mostantól két naplófájlt hoz majd egy helyett. A log utasítások az egyik vagy a másik függvényt fogják megkeresni attól függően, hogy melyik folyamatot hozta létre a rendszer a log utasításban.
+    + A modellek betanítása során nem szükségesek a nem megfelelő mintákra vonatkozó előrejelzések. Ez bizonyos esetekben csökkentheti a modell betanítási idejét, különösen az idősorozat-előrejelzési modellekhez.
+  + **azureml-contrib-fairness**
+    + Adjon hozzá egy JSON-sémát a dashboardDictionary-feltöltésekhez.
+  + **azureml-contrib-interpret**
+    + azureml – a README értelmezése frissült, amely azt jelzi, hogy a csomag a következő frissítés során el lesz távolítva, miután október óta elavult, használja inkább a azureml-értelmező csomagot.
+  + **azureml-core**
+    + Korábban lehetséges volt egy kiépítési konfiguráció létrehozása, amely a csomópontok minimális számanál kisebb, mint a csomópontok maximális száma. Ez már kijavítva lett. Ha most megpróbál létrehozni egy létesítési konfigurációt az SDK-val, a következőt `min_nodes < max_nodes` fogja növelni: `ComputeTargetException` .
+    +  A AmlCompute wait_for_completion hibáját javítja, ami azt eredményezte, hogy a függvény visszaadja a vezérlési folyamatot a művelet tényleges befejeződése előtt.
+    + A Run. Fail () már elavult, a Run. tag () futtatásával megjelölheti a Futtatás sikertelenként lehetőséget, vagy a Run. Cancel () parancsot használhatja a Futtatás megszakított állapotának megjelöléséhez.
+    + Hibaüzenet megjelenítése – {} a rendszer a megadott környezet neve mezőben nem karakterláncot várt.
+  + **azureml-train-automl-client**
+    + Kijavítva egy olyan hibát, amely meggátolta a Azure Databricks-fürtökön végrehajtott AutoML-kísérletek megszakítását.
 
 
 ## <a name="2021-02-09"></a>2021-02-09
@@ -54,11 +85,11 @@ Ebben a cikkben megismerheti Azure Machine Learning kiadásait.  A teljes SDK-hi
 ### <a name="azure-machine-learning-studio-notebooks-experience-january-update"></a>Azure Machine Learning Studio notebookok élménye (januári frissítés)
 + **Új funkciók**
   + Natív Markdown-szerkesztő a AzureML-ben. A felhasználók mostantól natív módon tehetik és szerkeszthetik a Markdown-fájlokat a AzureML Studióban.
-  + [Parancsfájlok futtatásának gombja (.,......... R és. sh)](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#run-a-notebook-or-python-script). A felhasználók könnyedén futtathatják a Python, az R és a bash parancsfájlt a AzureML-ben
-  + [Változó Explorer](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#explore-variables-in-the-notebook). Az előugró panelen található változók és adatkeretek tartalmának megismerése. A felhasználók könnyedén láthatják az adattípust, a méretet és a tartalmakat.
-  + [Tartalomjegyzék](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#navigate-with-a-toc). Navigáljon a jegyzetfüzet Markdown fejlécek által jelzett szakaszaihoz.
+  + [Parancsfájlok futtatásának gombja (.,......... R és. sh)](./how-to-run-jupyter-notebooks.md#run-a-notebook-or-python-script). A felhasználók könnyedén futtathatják a Python, az R és a bash parancsfájlt a AzureML-ben
+  + [Változó Explorer](./how-to-run-jupyter-notebooks.md#explore-variables-in-the-notebook). Az előugró panelen található változók és adatkeretek tartalmának megismerése. A felhasználók könnyedén láthatják az adattípust, a méretet és a tartalmakat.
+  + [Tartalomjegyzék](./how-to-run-jupyter-notebooks.md#navigate-with-a-toc). Navigáljon a jegyzetfüzet Markdown fejlécek által jelzett szakaszaihoz.
   + Exportálja a jegyzetfüzetet latex/HTML/... Könnyen megosztható jegyzetfüzet-fájlok létrehozása LaTex, HTML vagy. másolás útján történő exportálással
-  + Intellicode. A ML-alapú eredmények fejlett [intelligens autocomplete-élményt](https://docs.microsoft.com/visualstudio/intellicode/overview)biztosítanak.
+  + Intellicode. A ML-alapú eredmények fejlett [intelligens autocomplete-élményt](/visualstudio/intellicode/overview)biztosítanak.
 
 + **Hibajavítások és javítások**
   + Továbbfejlesztett oldal betöltési ideje
@@ -971,7 +1002,7 @@ Mostantól közvetlenül a Azure Machine Learning Studio webes felületén belü
 
 A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el:
     
-| Webalapú eszköz  |     Description  |
+| Webalapú eszköz  |     Leírás  |
 |---|---|
 | Azure ML Studio notebookok   |     A notebook-fájlok első, osztályon belüli létrehozása és az Azure ML Python SDK-ban elérhető összes művelet támogatása. | 
 
@@ -1483,7 +1514,7 @@ A studióból betaníthatja, tesztelheti, üzembe helyezheti és kezelheti Azure
 
 A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el:
 
-| Webalapú eszköz | Description | 
+| Webalapú eszköz | Leírás | 
 |-|-|-|
 | Notebook VM (előzetes verzió) | Teljes körűen felügyelt felhőalapú munkaállomás | 
 | [Automatikus gépi tanulás](tutorial-first-experiment-automated-ml.md) (előzetes verzió) | Nincs programkód a gépi tanulási modellek fejlesztésének automatizálásához | 

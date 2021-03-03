@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f17f6eb913d1ea54e8db6acd369d165553e16ec
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: c8cae19bd07e1cc87a0aaa25e47cf5f431d566ba
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091040"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653813"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Helyszíni Azure Active Directory jelszavas védelem tervezése és üzembe helyezése
 
@@ -102,7 +102,8 @@ Az Azure AD Password Protection DC-ügynökre az alábbi követelmények vonatko
 
 * Az Azure AD jelszavas védelem tartományvezérlő-ügynök szoftverét futtató összes gépnek Windows Server 2012 vagy újabb rendszert kell futtatnia, beleértve a Windows Server Core kiadásait is.
     * A Active Directory tartományhoz vagy erdőhöz nem szükséges a Windows Server 2012 tartomány működési szintjének (DFL) vagy az erdő működési szintje (FFL). A [tervezési alapelvekben](concept-password-ban-bad-on-premises.md#design-principles)említettek szerint a DC-ügynök vagy a proxy szoftver futtatásához nincs szükség minimális DFL vagy FFL.
-* Az Azure AD jelszavas védelem DC-ügynökét futtató összes gépnek telepítve kell lennie a .NET 4,5-nek.
+* Minden olyan gépen, amelyen telepítve van az Azure AD jelszavas védelmi proxy szolgáltatás, telepíteni kell a .NET 4.7.2-t.
+    * Ha a .NET 4.7.2 még nincs telepítve, töltse le és futtassa a [Windows rendszerhez készült .NET-keretrendszer 4.7.2 offline telepítője által](https://support.microsoft.com/topic/microsoft-net-framework-4-7-2-offline-installer-for-windows-05a72734-2127-a15d-50cf-daf56d5faec2)talált telepítőt.
 * Az Azure AD jelszavas védelem DC Agent szolgáltatást futtató Active Directory tartományoknak elosztott fájlrendszer replikációt (DFSR) kell használniuk a SYSVOL-replikációhoz.
    * Ha a tartomány még nem használja a DFSR-t, az Azure AD jelszavas védelem telepítése előtt át kell telepítenie. További információ [: SYSVOL-replikáció áttelepítési útmutatója: FRS – elosztott fájlrendszer replikációs szolgáltatása](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
 
@@ -122,8 +123,8 @@ Az Azure AD jelszavas védelem proxy szolgáltatására az alábbi követelmény
     > [!NOTE]
     > Az Azure AD jelszavas védelmi proxy szolgáltatás üzembe helyezése kötelezően szükséges az Azure AD-jelszavas védelem üzembe helyezéséhez, annak ellenére, hogy a tartományvezérlő rendelkezik kimenő közvetlen internetkapcsolattal.
 
-* Minden olyan gépen, amelyen telepítve van az Azure AD jelszavas védelmi proxy szolgáltatás, telepítve kell lennie a .NET 4,7-nek.
-    * A .NET 4,7-es verziójához már telepítve kell lennie egy teljesen frissített Windows Server rendszerre. Ha szükséges, töltse le és futtassa a [Windows rendszerhez készült .NET-keretrendszer 4,7 offline telepítőjének](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows)telepítőjét.
+* Minden olyan gépen, amelyen telepítve van az Azure AD jelszavas védelmi proxy szolgáltatás, telepíteni kell a .NET 4.7.2-t.
+    * Ha a .NET 4.7.2 még nincs telepítve, töltse le és futtassa a [Windows rendszerhez készült .NET-keretrendszer 4.7.2 offline telepítője által](https://support.microsoft.com/topic/microsoft-net-framework-4-7-2-offline-installer-for-windows-05a72734-2127-a15d-50cf-daf56d5faec2)talált telepítőt.
 * Az Azure AD jelszavas védelmi proxy szolgáltatást futtató összes gépet úgy kell konfigurálni, hogy a tartományvezérlők számára engedélyezze a proxy szolgáltatásba való bejelentkezést. Ezt a képességet a "számítógép elérése a hálózatról" jogosultság-hozzárendelésen keresztül vezérelheti.
 * Az Azure AD jelszavas védelmi proxy szolgáltatást futtató gépeket úgy kell konfigurálni, hogy engedélyezzék a kimenő TLS 1,2 HTTP-forgalmat.
 * *Globális rendszergazdai* vagy *biztonsági rendszergazdai* fiók az Azure ad jelszavas védelmi proxy szolgáltatás és az erdő Azure ad-vel való regisztrálásához.
@@ -157,7 +158,7 @@ A következő szakaszban az Azure AD jelszavas védelem DC-ügynökeit telepíti
 Válasszon ki egy vagy több kiszolgálót az Azure AD jelszavas védelem proxy szolgáltatásának üzemeltetéséhez. A következő szempontokat kell figyelembe venni a-kiszolgáló (k) esetében:
 
 * Minden ilyen szolgáltatás csak egyetlen erdőhöz biztosít jelszavas házirendeket. A gazdaszámítógépnek csatlakoznia kell az erdő bármely tartományához.
-* A szolgáltatás a proxyt a gyökér-vagy a gyermek tartományokban, illetve ezek kombinációjában is telepítheti.
+* A proxy szolgáltatást a root vagy a Child tartományba, vagy ezek kombinációját is telepítheti.
 * Az erdő minden tartománya és egy jelszavas védelmi proxykiszolgáló között legalább egy TARTOMÁNYVEZÉRLŐnek hálózati kapcsolatra van szüksége.
 * Az Azure AD jelszavas védelmi proxy szolgáltatást egy tartományvezérlőn futtathatja tesztelésre, de a tartományvezérlőhöz internetkapcsolat szükséges. Ez a kapcsolat biztonsági szempontból fontos lehet. Ezt a konfigurációt csak tesztelésre javasoljuk.
 * A redundancia érdekében az erdőn belül legalább két Azure AD-alapú jelszavas védelmi proxykiszolgálót ajánlunk, ahogy azt az előző, [magas rendelkezésre állással kapcsolatos szempontokat](#high-availability-considerations)ismertető szakaszban is említettük.
@@ -200,7 +201,7 @@ Az Azure AD jelszavas védelem proxy szolgáltatásának telepítéséhez hajtsa
 
     Ehhez a parancsmaghoz *globális rendszergazdai* vagy *biztonsági rendszergazdai* hitelesítő adatokra van szükség az Azure-bérlőhöz. Ezt a parancsmagot helyi rendszergazdai jogosultságokkal rendelkező fiókkal is futtatni kell.
 
-    Miután ez a parancs egyszer sikeresen bekerült egy Azure AD-beli jelszavas védelmi proxy szolgáltatásra, a további meghívások sikeresek lesznek, de szükségtelenek.
+    Miután a parancs egyszer sikeresen megtörtént, további meghívások is sikeresek lesznek, de szükségtelenek.
 
     A `Register-AzureADPasswordProtectionProxy` parancsmag a következő három hitelesítési módot támogatja. Az első két mód támogatja az Azure AD Multi-Factor Authentication, de a harmadik mód nem.
 

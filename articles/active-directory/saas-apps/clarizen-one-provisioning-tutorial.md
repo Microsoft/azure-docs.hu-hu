@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: Zhchia
-ms.openlocfilehash: 3754a56d1520118937a9d4aad406ae657b4dd23b
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: f3a19d3c3bf3e4340bb36fd683453541fa15eb6c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673664"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650830"
 ---
 # <a name="tutorial-configure-clarizen-one-for-automatic-user-provisioning"></a>Oktatóanyag: a Clarizen konfigurálása az automatikus felhasználó-kiépítés számára
 
@@ -100,7 +100,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Az értesítő e-mail-címet megjelenítő képernyőkép.](common/provisioning-notification-email.png)
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 1. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory felhasználók Clarizen egyet**.
 

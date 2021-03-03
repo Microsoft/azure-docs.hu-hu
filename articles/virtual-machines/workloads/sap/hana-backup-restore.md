@@ -6,20 +6,19 @@ documentationcenter: ''
 author: saghorpa
 manager: gwallace
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 42333a3feae19b6c3c77494f7e843cac1d9bc078
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3244cbca3df717d3432670a366147408cf2b2c0e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006319"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669119"
 ---
 # <a name="backup-and-restore-of-sap-hana-on-hana-large-instances"></a>SAP HANA biztonsági mentése és visszaállítása a HANA nagyméretű példányain
 
@@ -936,5 +935,5 @@ Most már telepítheti a legújabb HANA beépülő modult az új csomóponton a 
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Lásd: vész [-helyreállítási alapelvek és előkészítés](hana-concept-preparation.md).

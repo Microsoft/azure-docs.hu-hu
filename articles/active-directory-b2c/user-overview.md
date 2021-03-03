@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c3e6c1d6bfa83ef238ef38b25b189510cf142a38
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: c42b79cb8b92b5f96f31eb58f091ff0ce79b84f5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661085"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652130"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C felhasználói fiókjainak áttekintése
 
@@ -80,8 +80,8 @@ A felhasználó bejelentkezhet Azure AD B2C által védett alkalmazásokba, de n
 
 Megadhatja a fogyasztói felhasználói fiók létrehozásakor gyűjtött adatokat. További információ: [felhasználói attribútumok hozzáadása és felhasználói bevitel testreszabása](configure-user-input.md).
 
-A fogyasztói fiókok kezelésével kapcsolatos további információkért lásd: [Azure ad B2C felhasználói fiókok kezelése Microsoft Graphokkal](manage-user-accounts-graph-api.md).
+A fogyasztói fiókok kezelésével kapcsolatos további információkért lásd: [Azure ad B2C felhasználói fiókok kezelése Microsoft Graphokkal](./microsoft-graph-operations.md).
 
 ### <a name="migrate-consumer-user-accounts"></a>Fogyasztói felhasználói fiókok migrálása
 
-Előfordulhat, hogy a meglévő felhasználói fiókokat át kell telepítenie bármely identitás-szolgáltatótól a Azure AD B2Cba. További információ: [felhasználók Áttelepítése Azure ad B2Cra](user-migration.md).
+Előfordulhat, hogy a meglévő felhasználói fiókokat át kell telepítenie bármely identitás-szolgáltatótól a Azure AD B2Cba. További információ: [Felhasználók migrálása az Azure AD B2C-be](user-migration.md).

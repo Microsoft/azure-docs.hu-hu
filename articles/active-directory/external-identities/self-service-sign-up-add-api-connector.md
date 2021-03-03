@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: article
-ms.date: 06/16/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26403c20d7f3274e8f3f2dcae479f72e9a7e3354
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 5265b875769e6a1b8f1728c9c41c0bee00619956
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807020"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647387"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>API-összekötő hozzáadása felhasználói folyamathoz
 
@@ -30,7 +30,7 @@ Az API- [Összekötők](api-connectors-overview.md)használatához először lé
 1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com/) Azure ad-rendszergazdaként.
 2. Az **Azure-szolgáltatások** területen válassza a **Azure Active Directory** lehetőséget.
 3. A bal oldali menüben válassza a **külső identitások** lehetőséget.
-4. Válassza **az összes API-összekötő (előzetes verzió)** lehetőséget, majd válassza az **új API-összekötő** lehetőséget.
+4. Válassza **az összes API-összekötő** lehetőséget, majd az **új API-összekötő** lehetőséget.
 
    ![Új API-összekötő hozzáadása](./media/self-service-sign-up-add-api-connector/api-connector-new.png)
 
@@ -97,7 +97,7 @@ Az alábbi lépéseket követve hozzáadhat egy API-összekötőt egy önkiszolg
 1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com/) Azure ad-rendszergazdaként.
 2. Az **Azure-szolgáltatások** területen válassza a **Azure Active Directory** lehetőséget.
 3. A bal oldali menüben válassza a **külső identitások** lehetőséget.
-4. Válassza a **felhasználói folyamatok (előzetes verzió)** lehetőséget, majd válassza ki azt a felhasználói folyamatot, amelyhez hozzá kívánja adni az API-összekötőt.
+4. Válassza a **felhasználói folyamatok** lehetőséget, majd válassza ki azt a felhasználói folyamatot, amelyhez hozzá kívánja adni az API-összekötőt.
 5. Válassza az **API-összekötők** lehetőséget, majd válassza ki azokat az API-végpontokat, amelyeket a felhasználói folyamat következő lépéseiben szeretne meghívni:
 
    - **Az identitás-szolgáltatóval való bejelentkezés után**
@@ -249,10 +249,10 @@ Content-type: application/json
 
 | Paraméter                                          | Típus              | Kötelező | Leírás                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| version                                            | Sztring            | Yes      | Az API verziója.                                                                                                                                                                                                                                                                |
-| művelet                                             | Sztring            | Yes      | Az értéknek a számnak kell lennie `Continue` .                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | No       | Az értékeket a címtárban tárolhatja, ha a felhasználói folyamat API-összekötő konfigurációjában és **felhasználói attribútumaiban** való **fogadásra vonatkozó jogcímként** van kijelölve. Az értékek a tokenben adhatók vissza, ha **alkalmazási jogcímként** van kiválasztva.                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | No       | A visszaadott jogcímnek nem kell tartalmaznia `_<extensions-app-id>_` . Az értékeket a címtárban kell tárolni, ha a felhasználói folyamat API-összekötő konfigurációjában és **felhasználói attribútumában** való **fogadásra vonatkozó jogcímként** vannak megadva. Egyéni attribútumok nem küldhetők vissza a jogkivonatban. |
+| version                                            | Sztring            | Igen      | Az API verziója.                                                                                                                                                                                                                                                                |
+| művelet                                             | Sztring            | Igen      | Az értéknek a számnak kell lennie `Continue` .                                                                                                                                                                                                                                                              |
+| \<builtInUserAttribute>                            | \<attribute-type> | Nem       | Az értékeket a címtárban tárolhatja, ha a felhasználói folyamat API-összekötő konfigurációjában és **felhasználói attribútumaiban** való **fogadásra vonatkozó jogcímként** van kijelölve. Az értékek a tokenben adhatók vissza, ha **alkalmazási jogcímként** van kiválasztva.                                              |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Nem       | A visszaadott jogcímnek nem kell tartalmaznia `_<extensions-app-id>_` . Az értékeket a címtárban kell tárolni, ha a felhasználói folyamat API-összekötő konfigurációjában és **felhasználói attribútumában** való **fogadásra vonatkozó jogcímként** vannak megadva. Egyéni attribútumok nem küldhetők vissza a jogkivonatban. |
 
 ### <a name="example-of-a-blocking-response"></a>Blokkoló válasz – példa
 
@@ -271,10 +271,10 @@ Content-type: application/json
 
 | Paraméter   | Típus   | Kötelező | Leírás                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
-| version     | Sztring | Yes      | Az API verziója.                                                    |
-| művelet      | Sztring | Yes      | Az értéknek szerepelnie kell `ShowBlockPage`                                              |
-| userMessage | Sztring | Yes      | A felhasználónak megjelenítendő üzenet.                                            |
-| code        | Sztring | No       | Hibakód. Hibakeresési célokra használható. Nem jelenik meg a felhasználó számára. |
+| version     | Sztring | Igen      | Az API verziója.                                                    |
+| művelet      | Sztring | Igen      | Az értéknek szerepelnie kell `ShowBlockPage`                                              |
+| userMessage | Sztring | Igen      | A felhasználónak megjelenítendő üzenet.                                            |
+| code        | Sztring | Nem       | Hibakód. Hibakeresési célokra használható. Nem jelenik meg a felhasználó számára. |
 
 **Végfelhasználói élmény blokkoló válaszokkal**
 
@@ -297,11 +297,11 @@ Content-type: application/json
 
 | Paraméter   | Típus    | Kötelező | Leírás                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
-| version     | Sztring  | Yes      | Az API verziója.                                                    |
-| művelet      | Sztring  | Yes      | Az értéknek a számnak kell lennie `ValidationError` .                                           |
-| status      | Egész szám | Yes      | ValidationError-válasz értékének kell lennie `400` .                        |
-| userMessage | Sztring  | Yes      | A felhasználónak megjelenítendő üzenet.                                            |
-| code        | Sztring  | No       | Hibakód. Hibakeresési célokra használható. Nem jelenik meg a felhasználó számára. |
+| version     | Sztring  | Igen      | Az API verziója.                                                    |
+| művelet      | Sztring  | Igen      | Az értéknek a számnak kell lennie `ValidationError` .                                           |
+| status      | Egész szám | Igen      | ValidationError-válasz értékének kell lennie `400` .                        |
+| userMessage | Sztring  | Igen      | A felhasználónak megjelenítendő üzenet.                                            |
+| code        | Sztring  | Nem       | Hibakód. Hibakeresési célokra használható. Nem jelenik meg a felhasználó számára. |
 
 **Végfelhasználói élmény érvényesítéssel – hiba-válasz**
 

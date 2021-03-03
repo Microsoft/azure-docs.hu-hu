@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: vladvino
 ms.author: apimpm
 ms.date: 11/27/2020
-ms.openlocfilehash: 72e91715398b4920c62afae5f36aa09954a577f9
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: e2842f3e428abb4f0eb628dbb8e446f2714d5d89
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092142"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652385"
 ---
 # <a name="api-management-soft-delete-preview"></a>API Management Soft-Delete (előzetes verzió)
 
 API Management Soft-Delete (előzetes verzió) használatával helyreállíthatja és visszaállíthatja a nemrég törölt API Management (APIM) példányokat.
 
 > [!IMPORTANT]
-> `2020-01-01-preview`A jelen cikkben ismertetett lépések alapján csak a és újabb API-verziókkal törölt API Management-példányok lesznek törölve és helyreállítva. A korábbi API-verziók használatával törölt APIM-példányok továbbra is törlődnek. Azure PowerShell és az Azure CLI jelenleg nem használja a `2020-06-01-preview` verziót, és a rendszer a törlési viselkedést is eredményezi.
+> `2020-06-01-preview`A jelen cikkben ismertetett lépések alapján csak a és újabb API-verziókkal törölt API Management-példányok lesznek törölve és helyreállítva. A korábbi API-verziók használatával törölt APIM-példányok továbbra is törlődnek. Azure PowerShell és az Azure CLI jelenleg nem használja a `2020-06-01-preview` verziót, és a rendszer a törlési viselkedést is eredményezi.
 
 ## <a name="supporting-interfaces"></a>Támogató felületek
 
@@ -31,14 +31,14 @@ A Soft-delete funkció [Rest APIon](/rest/api/apimanagement/2020-06-01-preview/a
 |--|--|--|--|
 | [Létrehozás vagy frissítés](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) | Létrehoz vagy frissít egy API Management szolgáltatást.  | API Management szolgáltatás | Bármelyik |
 | [Létrehozás vagy frissítés](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) `restore` **igaz** értékre beállított tulajdonsággal | API Management szolgáltatás törlésének visszavonása, ha korábban már törölve lett. Ha `restore` meg van adva, és az `true` összes többi tulajdonságra van beállítva, figyelmen kívül lesz hagyva.  | API Management szolgáltatás |  2020-06-01 – előzetes verzió |
-| [Törlés](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/delete) | Egy meglévő API Management-szolgáltatás törlése. | API Management szolgáltatás | 2020-01-01 – előzetes verzió|
+| [Törlés](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/delete) | Egy meglévő API Management-szolgáltatás törlése. | API Management szolgáltatás | 2020-06-01 – előzetes verzió|
 | [Beolvasás név szerint](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) | A Soft-Deleted API Management szolgáltatás név szerint történő beolvasása. | Törölt szolgáltatások | 2020-06-01 – előzetes verzió |
 | [Listázás előfizetés alapján](/rest/api/apimanagement/2020-06-01-preview/deletedservices/listbysubscription) | Felsorolja az adott előfizetés törléséhez rendelkezésre álló összes helyreállítható szolgáltatást. | Törölt szolgáltatások | 2020-06-01 – előzetes verzió
 | [Véglegesen töröl](/rest/api/apimanagement/2020-06-01-preview/deletedservices/purge) | Kiüríti API Management szolgáltatást (törli a törlési lehetőség nélkül). | Törölt szolgáltatások | 2020-06-01 – előzetes verzió
 
-## <a name="soft-delete-behavior"></a>Helyreállítható törlési viselkedés
+## <a name="soft-delete-behavior"></a>Helyreállítható törlés működése
 
-A API Management-példány létrehozásához bármely API-verziót használhat, azonban a `2020-01-01-preview` vagy újabb verziókat kell használnia a APIM-példány törléséhez (és lehetősége van a helyreállításra).
+A API Management-példány létrehozásához bármely API-verziót használhat, azonban a `2020-06-01-preview` vagy újabb verziókat kell használnia a APIM-példány törléséhez (és lehetősége van a helyreállításra).
 
 API Management példány törlésekor a szolgáltatás törölve lesz, így elérhetetlenné válik bármely APIM művelet számára. Ebben az állapotban a APIM-példány csak listázható, állítható helyre vagy törölhető (véglegesen törlődik).
 

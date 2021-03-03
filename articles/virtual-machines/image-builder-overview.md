@@ -6,14 +6,14 @@ ms.author: danis
 ms.date: 05/02/2019
 ms.topic: conceptual
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: image-builder
 ms.reviewer: cynthn
-ms.openlocfilehash: fb596352011bcce3130d22b7277444bc45679f4c
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 1c70edfc3bad2be70d26c71736ca06fcc4a8dcdb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96841481"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672510"
 ---
 # <a name="preview-azure-image-builder-overview"></a>Előzetes verzió: az Azure rendszerkép-szerkesztő áttekintése
 
@@ -103,7 +103,7 @@ Az Azure-rendszerkép-szerkesztő továbbítja a rendszerképet a kiválasztott 
 ## <a name="hyper-v-generation"></a>Hyper-V generáció
 A rendszerkép-készítő jelenleg csak natív módon támogatja a Hyper-V generációs (Gen1) 1 lemezképek létrehozását az Azure Shared Image Gallery (SIG) vagy a Managed Image használatával. Ha Gen2-lemezképeket szeretne létrehozni, akkor forrás-Gen2 lemezképet kell használnia, és a virtuális merevlemezre kell terjesztenie. Ezután létre kell hoznia egy felügyelt rendszerképet a VHD-ből, és be kell szúrnia a SIG-ba Gen2-képként.
  
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
  
 Az Azure Image Builder kipróbálásához tekintse meg a [Linux](./linux/image-builder.md) -és [Windows](./windows/image-builder.md) -rendszerképek készítésével foglalkozó cikkeket.
 

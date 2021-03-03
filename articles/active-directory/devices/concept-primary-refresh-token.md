@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f2b059bb6ae63d7f427ce970b2538da922e2dec
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 46cc8ef1158c02190f905cbe8eb1d12ea7be50a2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837263"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644935"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Mi az az elsődleges frissítési jogkivonat?
 
@@ -103,7 +103,7 @@ A PRT-t a felhasználó által a szolgáltatásba bejelentkezett eszközhöz kö
 * Az **első bejelentkezés során**: az első bejelentkezéskor a rendszer a PRT-ket az eszköz regisztrálása során kriptográfiailag generált kulcs használatával állítja ki. Egy érvényes és működő TPM-mel rendelkező eszközön a TPM védi az eszköz kulcsát, ami megakadályozza a kártékony hozzáférést. A rendszer nem bocsát ki egy PRT-t, ha a megfelelő eszköz kulcsának aláírása nem érvényesíthető.
 * A **jogkivonat-kérelmek és a megújítás során**: Ha egy PRT-t bocsát ki, az Azure ad egy titkosított munkamenetkulcsot is kiad az eszközhöz. Az eszköz regisztrációjának részeként a rendszer az Azure AD-ben generált és eljuttatott nyilvános átviteli kulccsal (tkpub) titkosítja. Ezt a munkamenetkulcsot csak a TPM által védett privát átviteli kulccsal (tkpriv) lehet visszafejteni. A munkamenetkulcs az Azure AD-be küldött kérelmekre vonatkozó, az összes kérelemre vonatkozó (POP) kulcs.  A munkamenet-kulcsot a TPM is védi, és más operációs rendszer-összetevő sem fér hozzá. A jogkivonat-kérelmeket vagy a PRT-megújítási kérelmeket a TPM-en keresztül biztonságosan aláírja a rendszer, ezért nem lehet illetéktelenül módosítani. Az Azure AD érvényteleníti az eszközről érkező olyan kéréseket, amelyeket nem a megfelelő munkamenetkulcs írta alá.
 
-A kulcsoknak a TPM-mel való biztonságossá tételével a rosszindulatú szereplők nem tudják ellopni és visszajátszani a PRT-ket, mivel a TPM nem érhető el, még akkor is, ha egy támadó fizikailag is rendelkezik az eszközön.  Így a TPM használata nagy mértékben javítja az Azure AD-hez csatlakoztatott, a hibrid Azure AD-hez csatlakoztatott és az Azure AD-ban regisztrált eszközök biztonságát a hitelesítő adatok ellopása ellen. A teljesítmény és a megbízhatóság érdekében a TPM 2,0 a Windows 10 összes Azure AD-eszköz regisztrációs forgatókönyvének ajánlott verziója.
+A kulcsoknak a TPM-mel való biztonságossá tételével a PRT-ket a kulcsokat ellopó vagy a PRT-t visszajátszó rosszindulatú szereplőkkel szembeni biztonsága fokozza.  Így a TPM használata nagy mértékben fokozza az Azure AD-hez csatlakoztatott, a hibrid Azure AD-hez csatlakoztatott és az Azure AD által regisztrált eszközök biztonságát a hitelesítő adatok ellopása ellen. A teljesítmény és a megbízhatóság érdekében a TPM 2,0 a Windows 10 összes Azure AD-eszköz regisztrációs forgatókönyvének ajánlott verziója. A Windows 10 1903-es frissítésének elindításával az Azure AD nem használja a TPM 1,2-et a fenti kulcsok bármelyikéhez a megbízhatósági problémák miatt. 
 
 ### <a name="how-are-app-tokens-and-browser-cookies-protected"></a>Hogyan védi az alkalmazás-jogkivonatokat és a böngésző cookie-jait?
 
@@ -111,7 +111,7 @@ A kulcsoknak a TPM-mel való biztonságossá tételével a rosszindulatú szerep
 
 **Böngészőbeli cookie-k**: a Windows 10-es verzióban az Azure ad támogatja a böngésző egyszeri bejelentkezését az Internet Explorerben és a Microsoft Edge-ben a Windows 10-es fiókok bővítmény használatával, a Google Chrome-ban. A biztonsági rendszer nem csak a cookie-k védelmére, hanem a cookie-k elküldésekor használt végpontokra is épül. A böngésző cookie-jai ugyanúgy vannak védve, mint a PRT-k, a munkamenet-kulcs használatával aláírhatja és megvédheti a cookie-kat.
 
-Amikor a felhasználó egy böngészőbeli interakciót kezdeményez, a böngésző (vagy bővítmény) egy COM natív ügyfél-gazdagépet hív meg. A natív ügyfél gazdagépe biztosítja, hogy a lap az egyik engedélyezett tartományból származik. A böngésző más paramétereket is küldhet a natív ügyfél-gazdagép számára, beleértve az egymást megnyitó gazdagépet is, de a natív ügyfél gazdagépe garantálja az állomásnév érvényesítését. A natív ügyfél gazdagépe egy PRT-cookie-t kér a CloudAP beépülő modulból, amely létrehozza és aláírja a TPM által védett munkamenetkulcsot. Mivel a PRT-cookie-t a munkamenetkulcs aláírja, az nem módosítható. Ez a PRT-cookie az Azure AD-hez tartozó kérelem fejlécében található, amely ellenőrzi, hogy az eszköz származik-e. Ha a Chrome böngészőt használja, csak a natív ügyfél-gazdagép jegyzékfájljában explicit módon meghatározott bővítmény hivatkozhat arra, hogy tetszőleges kiterjesztéseket hozzon a kérelmekbe. Miután az Azure AD érvényesíti a PRT cookie-t, egy munkamenet-cookie-t ad ki a böngészőnek. Ez a munkamenet-cookie a PRT-vel kiadott azonos munkamenetkulcs-kulcsot is tartalmazza. A későbbi kérések során a rendszer ellenőrzi, hogy a munkamenetkulcs valóban a cookie-t az eszközhöz köti-e, és megakadályozza a többitől való visszajátszást.
+Amikor a felhasználó egy böngészőbeli interakciót kezdeményez, a böngésző (vagy bővítmény) egy COM natív ügyfél-gazdagépet hív meg. A natív ügyfél gazdagépe biztosítja, hogy a lap az egyik engedélyezett tartományból származik. A böngésző más paramétereket is küldhet a natív ügyfél-gazdagép számára, beleértve az egymást megnyitó gazdagépet is, de a natív ügyfél gazdagépe garantálja az állomásnév érvényesítését. A natív ügyfél gazdagépe egy PRT-cookie-t kér a CloudAP beépülő modulból, amely létrehozza és aláírja a TPM által védett munkamenetkulcsot. Mivel a PRT-cookie-t a munkamenetkulcs aláírja, nagyon nehéz megbirkózni a szolgáltatással. Ez a PRT-cookie az Azure AD-hez tartozó kérelem fejlécében található, amely ellenőrzi, hogy az eszköz származik-e. Ha a Chrome böngészőt használja, csak a natív ügyfél-gazdagép jegyzékfájljában explicit módon meghatározott bővítmény hivatkozhat arra, hogy tetszőleges kiterjesztéseket hozzon a kérelmekbe. Miután az Azure AD érvényesíti a PRT cookie-t, egy munkamenet-cookie-t ad ki a böngészőnek. Ez a munkamenet-cookie a PRT-vel kiadott azonos munkamenetkulcs-kulcsot is tartalmazza. A későbbi kérések során a rendszer ellenőrzi, hogy a munkamenetkulcs valóban a cookie-t az eszközhöz köti-e, és megakadályozza a többitől való visszajátszást.
 
 ## <a name="when-does-a-prt-get-an-mfa-claim"></a>Mikor szerezhet be MFA-jogcímet a PRT?
 
@@ -196,7 +196,7 @@ A következő diagramok illusztrálják a PRT-ket kiállító és megújítási,
 | A | A felhasználó hitelesítő adataival bejelentkezik a Windowsba a PRT beszerzéséhez. Miután a felhasználó megnyitta a böngészőt, a böngésző (vagy a bővítmény) betölti az URL-címeket a beállításjegyzékből. |
 | B | Amikor egy felhasználó megnyit egy Azure AD bejelentkezési URL-címet, a böngésző vagy a bővítmény érvényesíti az URL-címet a beállításjegyzékből beszerzett adatokkal. Ha egyeznek, a böngésző meghívja a natív ügyfél-gazdagépet a jogkivonat lekéréséhez. |
 | C | A natív ügyfél gazdagépe ellenőrzi, hogy az URL-címek szerepelnek-e a Microsoft Identity Providers (Microsoft-fiók vagy az Azure AD) szolgáltatásban, kinyeri az URL-címről érkező egyszeres hívást, és meghívja a CloudAP beépülő modult a PRT-cookie-hoz |
-| T | A CloudAP beépülő modul létrehozza a PRT cookie-t, majd bejelentkezik a TPM-kötésű munkamenetkulcs használatával, és visszaküldi a natív ügyfél-gazdagépre. Mivel a cookie-t a munkamenetkulcs aláírja, azt nem lehet illetéktelenül módosítani. |
+| T | A CloudAP beépülő modul létrehozza a PRT cookie-t, majd bejelentkezik a TPM-kötésű munkamenetkulcs használatával, és visszaküldi a natív ügyfél-gazdagépre. |
 | E | A natív ügyfél-gazdagép visszaadja ezt a PRT-cookie-t a böngészőnek, amely magában foglalja az x-MS-RefreshTokenCredential nevű kérelem fejlécének részeként, és az Azure AD-től kér jogkivonatokat. |
 | F | Az Azure AD ellenőrzi a munkamenet-kulcs aláírását a PRT-cookie-ban, érvényesíti az időpontot, ellenőrzi, hogy az eszköz érvényes-e a bérlőben, és kiadja a weboldalhoz tartozó azonosító jogkivonatot, valamint a böngészőhöz tartozó titkosított munkamenet-cookie-t. |
 

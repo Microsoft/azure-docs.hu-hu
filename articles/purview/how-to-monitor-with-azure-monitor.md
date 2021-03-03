@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: b13d03f05b7225a1c88f6b10b454749bd7b42477
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4cb3965d359980856c238cd563ed8b761754660b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100588345"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667744"
 ---
 # <a name="azure-purview-metrics-in-azure-monitor"></a>Azure-beli hatáskörébe metrikák a Azure Monitor
 
@@ -62,7 +62,7 @@ A Azure Portal metrika szakaszának megismeréséhez olvassa el a következő k�
 
 A következő táblázat tartalmazza a Azure Portal vizsgálatához elérhető metrikák listáját:
 
-| Metrika neve | Metrika névtere | Összesítés típusa | Description |
+| Metrika neve | Metrika névtere | Összesítés típusa | Leírás |
 | ------------------- | ------------------- | ------------------- | ----------------- |
 | Ellenőrzés megszakítva | Automatizált vizsgálat | Sum <br> Darabszám | A megszakított adatforrás összesítése az időszak során |
 | A vizsgálat befejeződött | Automatizált vizsgálat | Sum <br> Darabszám | A befejezett adatforrás összesítése az időszak során |
@@ -83,7 +83,7 @@ Kövesse az Azure-beli hatáskörébe tartozó fiók diagnosztikai beállítása
 
    :::image type="content" source="./media/how-to-monitor-with-azure-monitor/step-two-diagnostic-setting.png" alt-text="A diagnosztikai naplóhoz tartozó Storage-fiók hozzárendelését bemutató képernyőkép." lightbox="./media/how-to-monitor-with-azure-monitor/step-two-diagnostic-setting.png":::
 
-Akár 15 percet is igénybe vehet, és megkezdheti a naplók fogadását az újonnan létrehozott Storage-fiókban. [Lásd: az Azure Storage-fiókban található erőforrás-naplók adatmegőrzési és sémája](../azure-monitor/platform/resource-logs.md#send-to-azure-storage). A diagnosztikai naplók konfigurálása után az események a Storage-fiókba áramlanak.
+Akár 15 percet is igénybe vehet, és megkezdheti a naplók fogadását az újonnan létrehozott Storage-fiókban. [Lásd: az Azure Storage-fiókban található erőforrás-naplók adatmegőrzési és sémája](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage). A diagnosztikai naplók konfigurálása után az események a Storage-fiókba áramlanak.
 
 ### <a name="scanstatuslogevent"></a>ScanStatusLogEvent
 

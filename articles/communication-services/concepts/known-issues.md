@@ -1,6 +1,6 @@
 ---
-title: Azure kommunikációs szolgáltatások – ismert problémák
-description: Ismerje meg az Azure kommunikációs szolgáltatások ismert problémáit
+title: Azure kommunikációs szolgáltatások – gyakori kérdések/ismert problémák
+description: További információ az Azure kommunikációs szolgáltatásokról
 author: mikben
 manager: jken
 services: azure-communication-services
@@ -8,35 +8,35 @@ ms.author: mikben
 ms.date: 10/03/2020
 ms.topic: troubleshooting
 ms.service: azure-communication-services
-ms.openlocfilehash: e9e4b747d9d0ab39a1d0ecef6cf45e4cc0f9e2c5
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: e58335f1e266af651eb5867ca98e9ec979803b94
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99628144"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101655887"
 ---
-# <a name="known-issues-azure-communication-services"></a>Ismert problémák: Azure kommunikációs szolgáltatások
+# <a name="faq--known-issues"></a>GYAKORI kérdések/ismert problémák
+Ez a cikk az Azure kommunikációs szolgáltatásokkal kapcsolatos ismert problémákról és gyakori kérdésekről nyújt információt.
 
-Ez a cikk az Azure kommunikációs szolgáltatásokkal kapcsolatos ismert problémákról nyújt információkat.
+## <a name="faq"></a>GYIK
 
-## <a name="video-streaming-quality-on-chromeandroid"></a>Video streaming-minőség a Chrome/Android rendszeren 
+### <a name="why-is-the-quality-of-my-video-degraded"></a>Miért csökkent a videó minősége?
 
-A video streaming teljesítménye csökkenhet a Chrome Androidon.
+A videó streamek minőségét a stream elindításához használt ügyféloldali megjelenítő mérete határozza meg. Távoli adatfolyamra való feliratkozáskor a fogadó a saját felbontását fogja meghatározni a küldő ügyféloldali megjelenítési méretei alapján.
 
-### <a name="possible-causes"></a>Lehetséges okok
-A távoli adatfolyamok minősége attól függ, hogy az adott stream elindításához használt ügyféloldali megjelenítő felbontása milyen. Távoli adatfolyamra való feliratkozáskor a fogadó a saját felbontását fogja meghatározni a küldő ügyféloldali megjelenítési méretei alapján.
+### <a name="why-is-it-not-possible-to-enumerateselect-micspeaker-devices-on-safari"></a>Miért nem lehetséges a MIC/Speaker-eszközök enumerálása/kiválasztása a Safarion?
 
-## <a name="bluetooth-headset-microphones-are-not-detected"></a>A Bluetooth Headset mikrofonja nem észlelhető
+Az alkalmazások nem tudják enumerálni/kiválasztani a MIC/Speaker eszközöket (például Bluetooth) a Safari iOS/iPad szolgáltatásban. Ez az operációs rendszer korlátozása – mindig csak egy eszköz van.
 
-A Bluetooth-fejhallgató kommunikációs szolgáltatásokhoz való csatlakoztatásával kapcsolatos problémák merülhetnek fel.
+MacOS-hez készült Safari esetében – az alkalmazás nem tudja enumerálni/kiválasztani a beszélőt a kommunikációs szolgáltatások Eszközkezelő – ezeket az operációs rendszer használatával kell kiválasztani. Ha MacOS rendszeren használja a Chrome-t, az alkalmazás a kommunikációs szolgáltatások Eszközkezelő segítségével enumerálhatja vagy kiválaszthatja az eszközöket.
 
-### <a name="possible-causes"></a>Lehetséges okok
-Nincs lehetőség a Bluetooth-mikrofon kiválasztására iOS rendszeren.
+## <a name="known-issues"></a>Ismert problémák
 
+Ez a szakasz az Azure kommunikációs szolgáltatásokkal kapcsolatos ismert problémákról nyújt információkat.
 
-## <a name="repeatedly-switching-video-devices-may-cause-video-streaming-to-temporarily-stop"></a>A video-eszközök többszöri váltásakor előfordulhat, hogy a video streaming átmenetileg leáll
+### <a name="repeatedly-switching-video-devices-may-cause-video-streaming-to-temporarily-stop"></a>A video-eszközök többszöri váltásakor előfordulhat, hogy a video streaming átmenetileg leáll
 
 Előfordulhat, hogy a video-eszközök közötti váltás miatt a videó adatfolyama szüneteltethető, miközben a rendszer a kiválasztott eszközről szerzi be a streamet.
 
-### <a name="possible-causes"></a>Lehetséges okok
+#### <a name="possible-causes"></a>Lehetséges okok
 A médiaadatfolyam-továbbítás és a mobileszközök közötti váltás számítási igényű. A gyakori váltás a teljesítmény romlását okozhatja. A fejlesztőknek javasoljuk, hogy egy másik eszköz elindítása előtt állítsanak le egy adatfolyamot.

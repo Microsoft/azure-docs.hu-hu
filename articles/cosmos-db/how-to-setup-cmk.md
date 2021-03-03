@@ -4,17 +4,20 @@ description: Ismerje meg, hogyan konfigurálhatja az ügyfél által felügyelt 
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 08/05/2020
+ms.date: 02/19/2021
 ms.author: thweiss
-ms.openlocfilehash: e87f6f158265fd8ac210a0a071e35b0bb77df4d9
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 3ee566a598ea7fdf060712c934305ef63467e548
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96338270"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656516"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurálja a felhasználó által kezelt kulcsokat az Azure Cosmos-fiókjához az Azure Key Vaulttal
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
+
+> [!NOTE]
+> Az ügyfél által felügyelt kulcsok Azure Cosmos DB [analitikus tárolóval](analytical-store-introduction.md) való használata jelenleg további konfigurálást igényel a fiókjában. Kérjük, lépjen kapcsolatba [azurecosmosdbcmk@service.microsoft.com](mailto:azurecosmosdbcmk@service.microsoft.com) a részletekkel.
 
 Az Azure Cosmos-fiókban tárolt adatai automatikusan és zökkenőmentesen titkosítva vannak a Microsoft által kezelt kulcsokkal (**szolgáltatás által felügyelt kulcsok**). Lehetőség van arra is, hogy egy második titkosítási réteget adjon hozzá a kezelt kulcsokkal (az **ügyfél által felügyelt kulcsokkal**).
 
@@ -292,6 +295,10 @@ Az Azure Cosmos-fiókban tárolt összes adat titkosítva van az ügyfél által
 
 Ez a funkció jelenleg csak az új fiókok esetében érhető el.
 
+### <a name="is-it-possible-to-use-customer-managed-keys-in-conjunction-with-the-azure-cosmos-db-analytical-store"></a>Használhatók-e az ügyfél által felügyelt kulcsok a Azure Cosmos DB [analitikus tárolóval](analytical-store-introduction.md)együtt?
+
+Igen, de ez jelenleg további konfigurációt igényel a fiókjában. Kérjük, lépjen kapcsolatba [azurecosmosdbcmk@service.microsoft.com](mailto:azurecosmosdbcmk@service.microsoft.com) a részletekkel.
+
 ### <a name="is-there-a-plan-to-support-finer-granularity-than-account-level-keys"></a>Van olyan terv, amely támogatja a legfinomabb részletességet, mint a fiók szintű kulcsok?
 
 Jelenleg nem, de a tároló szintű kulcsok is megtekinthetők.
@@ -322,7 +329,7 @@ Másik lehetőségként a Azure Key Vault-példány összes kulcsának visszavon
 
 Az egyetlen művelet lehetséges, ha a titkosítási kulcs visszavonva van, a fiók törlése.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure Cosmos db adattitkosításáról](./database-encryption-at-rest.md).
 - Tekintse át a [Cosmos db lévő adathozzáférések biztonságos elérését](secure-access-to-data.md)ismertető cikket.

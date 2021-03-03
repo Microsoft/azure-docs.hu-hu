@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 1c4f1951-3613-4a5a-a0af-36b85750c84e
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: c70de186468eb3efacc82c1d5c8802612475fd4d
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: fe98ef297c6bed5ef3d982ed09db361244f75216
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232794"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675692"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines üzembe helyezés az SAP NetWeaver-ben
 
@@ -371,7 +370,7 @@ A következő információk ismerete az SAP-méretezéshez:
 
 Az Azure Resource Manager az Azure-előfizetésében lévő összes alkalmazás-erőforrást az erőforráscsoportok használatával kezelheti. További információt [Az Azure Resource Manager áttekintésében][resource-group-overview] találhat.
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Források
 
 ### <a name="sap-resources"></a><a name="42ee2bdb-1efc-4ec7-ab31-fe4c22769b94"></a>SAP-erőforrások
 
@@ -512,7 +511,7 @@ A Azure Portal adja meg a következő paramétereket a sablonhoz:
 1. **Feltételek és kikötések**:  
     Tekintse át és fogadja el a jogi feltételeket.
 
-1. Válassza a **Vásárlás** lehetőséget.
+1. Válassza a **Beszerzés** lehetőséget.
 
 Az Azure-beli virtuálisgép-ügynök alapértelmezés szerint telepítve van, ha az Azure Marketplace-en lemezképet használ.
 
@@ -652,7 +651,7 @@ A Azure Portal adja meg a következő paramétereket a sablonhoz:
 1. **Feltételek és kikötések**:  
     Tekintse át és fogadja el a jogi feltételeket.
 
-1. Válassza a **Vásárlás** lehetőséget.
+1. Válassza a **Beszerzés** lehetőséget.
 
 #### <a name="install-the-vm-agent-linux-only"></a>A VM-ügynök telepítése (csak Linux)
 
@@ -740,7 +739,7 @@ A Azure Portal adja meg a következő paramétereket a sablonhoz:
 1. **Feltételek és kikötések**:  
     Tekintse át és fogadja el a jogi feltételeket.
 
-1. Válassza a **Vásárlás** lehetőséget.
+1. Válassza a **Beszerzés** lehetőséget.
 
 #### <a name="install-the-vm-agent"></a>A virtuálisgép-ügynök telepítése
 
@@ -1510,7 +1509,7 @@ Az ebben az útmutatóban található, [az SAP-hez készült Azure-bővítmény 
 
 Ha a hibák nem szűnnek meg, [forduljon az ügyfélszolgálathoz][deployment-guide-contact-support].
 
-#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Kapcsolatfelvétel a támogatási szolgáltatással
+#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Kapcsolatfelvétel az ügyfélszolgálattal
 
 Váratlan hiba történt, vagy nincs ismert megoldás. Gyűjtsön a C:\Packages\Plugins\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler \\ \<version\> \Drop (Windows) vagy a/var/log/Azure/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux (Linux) mappában található AzureEnhancedMonitoring_service. log fájlt, és további segítségért forduljon az SAP támogatási szolgálatához.
 

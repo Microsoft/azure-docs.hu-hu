@@ -1,22 +1,22 @@
 ---
-title: Jelszó nélküli bejelentkezés Azure Active Directory (előzetes verzió)
+title: Jelszó nélküli bejelentkezés Azure Active Directory
 description: További tudnivalók a jelszó nélküli bejelentkezés lehetőségeiről Azure Active Directory FIDO2 biztonsági kulcsok vagy a Microsoft Authenticator alkalmazás használatával
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1b82dbe169e01b68e7d4b8a4c243cb72d3a3e8b
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: e36acb5a6a0984b003e4e8deb597bddfc43b064a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013005"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647557"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>A Azure Active Directory jelszóval nem rendelkező hitelesítési beállításai
 
@@ -62,8 +62,6 @@ Azt is lehetővé teheti, hogy az alkalmazott telefonja jelszavas hitelesítési
 
 A hitelesítő alkalmazás minden iOS-vagy Android-telefont erős, jelszóval nem rendelkező hitelesítő adatba kapcsol. A felhasználók bármilyen platformra vagy böngészőbe bejelentkezhetnek, ha értesítést küldenek a telefonjára, és a képernyőn megjelenő számot a telefonján megjelenő telefonszámra, majd a biometrikus (érintés vagy arc) vagy a PIN-kód használatával megerősítik. A telepítés részleteiért tekintse meg [a Microsoft Authenticator alkalmazás letöltése és telepítése](../user-help/user-help-auth-app-download-install.md) című témakört.
 
-Az Azure AD-vel való jelszó nélküli bejelentkezés jelenleg előzetes verzióban érhető el a Microsoft Authenticator alkalmazással. Az Microsoft Authenticator alkalmazás használata másodlagos hitelesítéshez az Azure AD Multi-Factor Authentication, az önkiszolgáló jelszó-visszaállítás (SSPR) vagy az eskü szoftver jogkivonata GA. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 A hitelesítő alkalmazással való jelszóval nem rendelkező hitelesítés a vállalati Windows Hello szolgáltatással megegyező alapszintű mintát követi. Ez egy kicsit bonyolultabb, mivel a felhasználó azonosítására van szükség, hogy az Azure AD megtalálja a használt Microsoft Authenticator alkalmazás verzióját:
 
 ![A Microsoft Authenticator alkalmazással való felhasználói bejelentkezéshez szükséges lépéseket ismertető ábra](./media/concept-authentication-passwordless/authenticator-app-flow.png)
@@ -91,8 +89,6 @@ A FIDO2 biztonsági kulcsai egy nem adattípusra épülő, szabványos jelszavas
 A felhasználók regisztrálhatnak és kijelölhetnek egy FIDO2 biztonsági kulcsot a bejelentkezési felületen a hitelesítés fő eszközeként. Ezek a FIDO2 biztonsági kulcsok általában USB-eszközök, de a Bluetooth vagy az NFC használatát is használhatják. Ha a hitelesítést kezelő hardvereszközt használ, a rendszer megnöveli a fiók biztonságát, mivel nincs olyan jelszó, amely elérhetővé vagy kitalált.
 
 A FIDO2 biztonsági kulcsainak használatával bejelentkezhet az Azure AD-be vagy hibrid Azure AD-hez csatlakoztatott Windows 10-es eszközökre, és egyszeri bejelentkezéssel bejelentkezhet a felhőbe és a helyszíni erőforrásaiba. A felhasználók a támogatott böngészőkbe is bejelentkezhetnek. A FIDO2 biztonsági kulcsai nagyszerű lehetőséget biztosítanak olyan nagyvállalatok számára, akik nagyon érzékenyek a biztonságra, vagy olyan forgatókönyvekkel vagy alkalmazottakkal rendelkeznek, akik nem hajlandók vagy nem tudják használni a telefont második tényezőként.
-
-Az Azure AD-ben a FIDO2 biztonsági kulcsaival való bejelentkezés jelenleg előzetes verzióban érhető el. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ![Bejelentkezés a Microsoft Edge-be egy biztonsági kulccsal](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
@@ -152,15 +148,15 @@ A FIDO2 biztonsági kulcsainak megkezdéséhez kövesse az alábbi útmutatókat
 > [!div class="nextstepaction"]
 > [Jelszó nélküli aláírás engedélyezése a FIDO2 biztonsági kulcsaival](howto-authentication-passwordless-security-key.md)
 
-## <a name="what-scenarios-work-with-the-preview"></a>Milyen forgatókönyvek működnek az előzetes verzióban?
+## <a name="supported-scenarios"></a>Támogatott esetek
 
-Az Azure AD jelszó nélküli bejelentkezési funkciói jelenleg előzetes verzióban érhetők el. A következő szempontokat kell figyelembe venni:
+A következő szempontokat kell figyelembe venni:
 
 - A rendszergazdák engedélyezhetik a jelszóval nem rendelkező hitelesítési módszereket a bérlők számára
 - A rendszergazdák az összes felhasználót megcélozhatja, vagy kiválaszthatják a bérlőn belüli felhasználókat és csoportokat az egyes módszereknél
 - A végfelhasználók a fiók-portálon regisztrálhatják és kezelhetik ezeket a jelszó nélküli hitelesítési módszereket
-- A végfelhasználók ezekkel a jelszó nélküli hitelesítési módszerekkel jelentkezhetnek be
-   - Microsoft Authenticator alkalmazás: olyan helyzetekben működik, ahol az Azure AD-hitelesítés használatban van, beleértve az összes böngészőt, a Windows 10-es (OOBE) beállítása során, valamint az integrált Mobile apps bármely operációs rendszeren.
+- A végfelhasználók a következő, jelszó nélküli hitelesítési módszerekkel jelentkezhetnek be:
+   - Microsoft Authenticator alkalmazás: olyan helyzetekben működik, ahol az Azure AD-hitelesítés használatban van, beleértve az összes böngészőt, a Windows 10-es telepítése során, valamint az integrált Mobile apps-t bármely operációs rendszeren.
    - Biztonsági kulcsok: a Windows 10 és a web zárolási képernyőjén használható böngészők, például a Microsoft Edge (örökölt és új Edge).
 
 ## <a name="choose-a-passwordless-method"></a>Jelszóval nem rendelkező metódus kiválasztása
@@ -179,7 +175,7 @@ A három jelszóval nem rendelkező lehetőség közül választhat, hogy a vál
 
 A következő táblázat segítségével kiválaszthatja, hogy melyik módszer fogja támogatni a követelményeket és a felhasználókat.
 
-|Persona|Forgatókönyv|Környezet|Jelszóval nem rendelkező technológia|
+|Persona|Eset|Környezet|Jelszóval nem rendelkező technológia|
 |:-|:-|:-|:-|
 |**Felügyelet**|Biztonságos hozzáférés egy eszközhöz felügyeleti feladatokhoz|Hozzárendelt Windows 10-es eszköz|Vállalati Windows Hello és/vagy FIDO2 biztonsági kulcs|
 |**Felügyelet**|Felügyeleti feladatok nem Windows rendszerű eszközökön| Mobil-vagy nem Windows-eszköz|Jelszó nélküli bejelentkezés a Microsoft Authenticator alkalmazással|
@@ -187,7 +183,7 @@ A következő táblázat segítségével kiválaszthatja, hogy melyik módszer f
 |**Információkkal dolgozó feldolgozó**|Termelékenységi munka| Mobil-vagy nem Windows-eszköz|Jelszó nélküli bejelentkezés a Microsoft Authenticator alkalmazással|
 |**Frontline Worker**|Kioszkok gyárban, üzemben, kiskereskedelemben vagy adatbevitelben|Megosztott Windows 10-es eszközök|FIDO2 biztonsági kulcsok|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure AD-ben való jelszavas használat megkezdéséhez kövesse az alábbi útmutatók egyikét:
 

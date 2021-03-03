@@ -1,0 +1,45 @@
+- name: Az útválasztási kiszolgáló dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi az az Azure Route Server (előzetes verzió)?
+      href: overview.md
+- name: Rövid útmutatók
+  items:
+    - name: Útvonal-kiszolgáló konfigurálása – PowerShell
+      href: quickstart-configure-route-server-powershell.md
+    - name: Útvonal-kiszolgáló konfigurálása – parancssori felület
+      href: quickstart-configure-route-server-cli.md
+  expanded: true
+- name: Alapelvek
+  items:
+    - name: Útválasztási kiszolgáló – gyakori kérdések
+      href: route-server-faq.md
+    - name: ExpressRoute és Azure VPN-támogatás
+      href: expressroute-vpn-support.md
+- name: Útmutatók
+  items:
+    - name: Az útválasztási kiszolgálóval kapcsolatos problémák elhárítása
+      href: troubleshoot-route-server.md
+- name: Referencia
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/az.network/?view=azps-5.5.0#route
+    - name: Azure CLI
+      href: /cli/azure/network/routeserver?view=azure-cli-latest
+    - name: REST
+      href: /rest/api/virtualwan/virtualhubipconfiguration
+- name: További források
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: Hálózatkezelési blog
+      href: 'https://azure.microsoft.com/blog/topics/networking/'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/routeserver/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates/?product=routeserver'
+    - name: SLA
+      href: 'https://azure.microsoft.com/support/legal/sla/'

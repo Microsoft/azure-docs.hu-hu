@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 5/4/2020
+ms.date: 2/22/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 94c34e6f7cb24ff749e5de95f1c28a496700af80
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c5e7f556f37a1d6d53e0a938490f1099a7be776a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348721"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647421"
 ---
 # <a name="whats-new-for-authentication"></a>A hitelesítés újdonságai
 
@@ -35,7 +35,28 @@ A hitelesítési rendszer folyamatosan módosítja és hozzáadja a szolgáltat�
 
 ## <a name="upcoming-changes"></a>Közelgő változások
 
-Jelenleg nincs ütemezve.  Tekintse meg az alábbi, a vagy az éles környezetben futó módosításokat.
+### <a name="conditional-access-will-only-trigger-for-explicitly-requested-scopes"></a>A feltételes hozzáférés csak explicit módon kért hatókörök esetén aktiválódik
+
+Hatálybalépés **dátuma**: március 2021
+
+Érintett **végpontok**: v 2.0
+
+Érintett **protokoll**: a [dinamikus beleegyezett](v2-permissions-and-consent.md#requesting-individual-user-consent)
+
+A dinamikus megadást használó alkalmazások az összes engedélyt megkapják, még akkor is, ha a `scope` paraméter név szerint nem kérték őket.  Ennek hatására előfordulhat, hogy egy alkalmazás például csak a-t `user.read` , de beleegyezéssel kéri `files.read` az engedélyhez rendelt feltételes hozzáférés továbbítására `files.read` . 
+
+A szükségtelen feltételes hozzáférési kérések számának csökkentése érdekében az Azure AD megváltoztatja a nem kérelmezett hatóköröket az alkalmazásoknak, így csak a explicit módon kért hatókörök váltanak ki feltételes hozzáférést. Ez a változás azt eredményezheti, hogy az alkalmazások az Azure AD korábbi viselkedésére támaszkodnak (azaz ha nem kérték fel az összes engedélyt), mert a kért jogkivonatok hiányoznak az engedélyek.
+
+Az alkalmazások mostantól megkapják a hozzáférési jogkivonatokat, amelyek a kért, valamint a feltételes hozzáférési kérésekhez nem szükséges engedélyekkel rendelkeznek.  A hozzáférési jogkivonat hatóköre megjelenik a jogkivonat-válasz `scope` paraméterében. 
+
+**Példák**
+
+Az alkalmazáshoz a, `user.read` a `files.readwrite` és a `tasks.read` . `files.readwrite` alkalmazza a feltételes hozzáférési szabályzatokat, míg a másik kettő nem. Ha egy alkalmazás jogkivonat-kérelmet küld a számára `scope=user.read` , és a jelenleg bejelentkezett felhasználó nem adott meg semmilyen feltételes hozzáférési szabályzatot, akkor az eredményül kapott jogkivonat lesz a `user.read` és az `tasks.read` engedély. `tasks.read` belefoglalja, mert az alkalmazás beleegyezik a hozzá, és nem igényli feltételes hozzáférési szabályzat érvényesítését. 
+
+Ha az alkalmazás ezután kéri `scope=files.readwrite` , a bérlő által igényelt feltételes hozzáférés aktiválódik, és arra kényszeríti az alkalmazást, hogy megjelenítse az interaktív hitelesítési kérést, ahol a feltételes hozzáférési házirend teljesül.  A visszaadott token mindhárom hatókört tartalmazni fog. 
+
+Ha az alkalmazás ezt követően egy utolsó kérelmet hajt végre a három hatókör bármelyikéhez (például `scope=tasks.read` :), az Azure ad látni fogja, hogy a felhasználó már végrehajtotta a szükséges feltételes hozzáférési szabályzatokat `files.readwrite` , és ismét kiállít egy jogkivonatot, amely mindhárom engedélyekkel rendelkezik. 
+
 
 ## <a name="may-2020"></a>2020. május
 

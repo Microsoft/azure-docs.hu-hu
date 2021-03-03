@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: b3ec3e96aa1ba4bce3893c1af2446bb509a867b6
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 07a3deaf67c4f269b01d62ea25ddb212c1e01f6f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333596"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657536"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>Valós idejű irányítópult létrehozása Azure Cosmos DB és Power BI használatával
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -25,7 +25,7 @@ Ez a cikk a Power BI élő időjárási irányítópult létrehozásához szüks
 A jelentéskészítési irányítópultok több módon is beállíthatók a Azure Cosmos DBban tárolt adatszolgáltatásokhoz. Az elavult követelményektől és az adatmérettől függően a következő táblázat ismerteti az egyes forgatókönyvek jelentéskészítési beállításait:
 
 
-|Használati eset |Telepítés |
+|Eset |Telepítés |
 |---------|---------|
 |1. ad-hoc jelentések létrehozása (frissítés nélkül)    |  [Power BI Azure Cosmos DB-összekötő importálási móddal](powerbi-visualize.md)       |
 |2. ad hoc jelentések létrehozása rendszeres frissítéssel   |  [Power BI Azure Cosmos DB-összekötő importálási móddal (ütemezett rendszeres frissítés)](powerbi-visualize.md)       |
@@ -48,7 +48,7 @@ A Azure Analysis Services teljes körűen felügyelt platformot biztosít a felh
 
 ### <a name="ingest-weather-data-into-azure-cosmos-db"></a>Időjárási adatmennyiség beolvasása a Azure Cosmos DBba
 
-Betöltési folyamat beállítása az [időjárási adatmennyiség](https://catalog.data.gov/dataset/local-weather-archive/resource/c28974a2-fc83-4722-8977-9a701323f729) Azure Cosmos DBba való betöltéséhez. Beállíthat egy [Azure Data Factory (ADF)](../data-factory/connector-azure-cosmos-db.md) feladatot a legújabb időjárási adatoknak a Azure Cosmos db a http-forrás és a Cosmos db fogadó használatával történő rendszeres betöltéséhez.
+Betöltési folyamat beállítása az [időjárási adatmennyiség](https://catalog.data.gov/dataset?groups=climate5434&#topic=climate_navigation) Azure Cosmos DBba való betöltéséhez. Beállíthat egy [Azure Data Factory (ADF)](../data-factory/connector-azure-cosmos-db.md) feladatot a legújabb időjárási adatoknak a Azure Cosmos db a http-forrás és a Cosmos db fogadó használatával történő rendszeres betöltéséhez.
 
 
 ### <a name="connect-power-bi-to-azure-cosmos-db"></a>Power BI összekötése a Azure Cosmos DB
@@ -70,7 +70,7 @@ Betöltési folyamat beállítása az [időjárási adatmennyiség](https://cata
    Attól függően, hogy melyik oszlop és adattípus szerepel a forrás adatkészletben, akkor a RangeStart és a RangeEnd mezőket ennek megfelelően módosíthatja.
 
    
-   |Tulajdonság  |Adattípus  |Szűrés  |
+   |Tulajdonság  |Adattípus  |Szűrő  |
    |---------|---------|---------|
    |_ts     |   Numerikus      |  [_ts] > időtartam. összesmásodperc (RangeStart-#datetime (1970, 1, 1, 0, 0, 0)) és [_ts] < időtartama. összesmásodperc (RangeEnd-#datetime (1970, 1, 1, 0, 0, 0))       |
    |Dátum (például:-2019-08-19)     |   Sztring      | [Document. Date] > DateTime. ToText (RangeStart, "éééé-hh-nn") és [Document. Date] < DateTime. ToText (RangeEnd, "éééé-hh-nn")        |
@@ -94,7 +94,7 @@ Betöltési folyamat beállítása az [időjárási adatmennyiség](https://cata
 
 ### <a name="ingest-weather-data-into-azure-cosmos-db"></a>Időjárási adatmennyiség beolvasása a Azure Cosmos DBba 
 
-Betöltési folyamat beállítása az [időjárási adatmennyiség](https://catalog.data.gov/dataset/local-weather-archive/resource/c28974a2-fc83-4722-8977-9a701323f729) Azure Cosmos DBba való betöltéséhez. Beállíthat egy Azure Data Factory (ADF) feladatot a legújabb időjárási adatoknak a Azure Cosmos DB a HTTP-forrás és a Cosmos DB fogadó használatával történő rendszeres betöltéséhez.
+Betöltési folyamat beállítása az [időjárási adatmennyiség](https://catalog.data.gov/dataset?groups=climate5434&#topic=climate_navigation) Azure Cosmos DBba való betöltéséhez. Beállíthat egy Azure Data Factory (ADF) feladatot a legújabb időjárási adatoknak a Azure Cosmos DB a HTTP-forrás és a Cosmos DB fogadó használatával történő rendszeres betöltéséhez.
 
 ### <a name="connect-azure-analysis-services-to-azure-cosmos-account"></a>Azure Analysis Services összekötése az Azure Cosmos-fiókkal
 
@@ -108,11 +108,11 @@ Betöltési folyamat beállítása az [időjárási adatmennyiség](https://cata
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/tabular-model-designer.png" alt-text="Azure Analysis Services táblázatos modell tervezője":::
 
-1. **Adja hozzá a Azure Cosmos DB adatforrást** – **navigáljon az** adatforrások új adatforrásához, >  **Data Sources**  >  **New Data Source** és adja hozzá a Azure Cosmos DB adatforrást az alábbi képernyőképen látható módon:
+1. **Adja hozzá a Azure Cosmos DB adatforrást** – **navigáljon az** adatforrások új adatforrásához, >    >   és adja hozzá a Azure Cosmos DB adatforrást az alábbi képernyőképen látható módon:
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/add-data-source.png" alt-text="Cosmos DB adatforrás hozzáadása":::
 
-   A Azure Cosmos DBhoz való kapcsolódáshoz adja meg a **fiók URI-ját** , az **adatbázis nevét** és a **tároló nevét**. Most már láthatja az Azure Cosmos-tárolóból származó adatok importálását a Power BIba.
+   A Azure Cosmos DBhoz való kapcsolódáshoz adja meg a **fiók URI-ját**, az **adatbázis nevét** és a **tároló nevét**. Most már láthatja az Azure Cosmos-tárolóból származó adatok importálását a Power BIba.
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/preview-cosmosdb-data.png" alt-text="Előnézet Azure Cosmos DB":::
 
@@ -167,7 +167,7 @@ Betöltési folyamat beállítása az [időjárási adatmennyiség](https://cata
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/load-data-generate-report.png" alt-text="Az adatterhelés és a jelentések készítése":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a Power BIről: a [Power bi első lépései](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/).
 

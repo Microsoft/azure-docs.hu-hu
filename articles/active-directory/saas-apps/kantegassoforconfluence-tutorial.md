@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: ff2d7f45626055cdbc98ca944eecaa01f9bd052b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: be86e04359c29696d208994d85d36b7740b60cc3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459203"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646214"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-confluence"></a>Oktatóanyag: Azure Active Directory integráció a Kantega SSO-val a torkolatánál
 
@@ -67,7 +67,7 @@ A Kantega SSO Azure AD-ba való integrálásának konfigurálásához hozzá kel
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálhatja és tesztelheti a Kantega SSO-val a **Britta Simon**nevű teszt felhasználója alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálhatja és tesztelheti a Kantega SSO-val a **Britta Simon** nevű teszt felhasználója alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolati kapcsolat létesítése szükséges a Kantega SSO-hoz.
 
 Az Azure AD egyszeri bejelentkezés a Kantega SSO-val való összekapcsoláshoz való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Ha az Azure AD egyszeri bejelentkezést Kantega SSO-val szeretné konfigurálni a torkolatánál, hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **Kantega SSO for torkolatánál** Application Integration oldalon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **Kantega SSO for torkolatánál** Application Integration oldalon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -132,11 +132,11 @@ Ha az Azure AD egyszeri bejelentkezést Kantega SSO-val szeretné konfigurálni 
 
 1. Egy másik böngészőablakban jelentkezzen be rendszergazdaként az **összefolyásánál felügyeleti portálra** .
 
-1. Mutasson a fogaskerékre, és kattintson a **bővítmények**elemre.
+1. Mutasson a fogaskerékre, és kattintson a **bővítmények** elemre.
 
     ![Képernyőfelvétel: a "fogaskerék" menü ikon és a "bővítmények" lehetőség van kiválasztva.](./media/kantegassoforconfluence-tutorial/addon1.png)
 
-1. Az **ATLASSIAN-piactér** lapon kattintson az **új bővítmények keresése**elemre.
+1. Az **ATLASSIAN-piactér** lapon kattintson az **új bővítmények keresése** elemre.
 
     ![Képernyőkép, amely a "ATTLASSIAN MARKETPLACE" fület jeleníti meg az "új bővítmények keresése" beállítással.](./media/kantegassoforconfluence-tutorial/addon.png)
 
@@ -168,7 +168,7 @@ Ha az Azure AD egyszeri bejelentkezést Kantega SSO-val szeretné konfigurálni 
 
     ![Képernyőkép, amely megjeleníti az "S A M L" szakaszt a "személyazonosság-szolgáltató hozzáadása" és "Azure Active Directory (Azure AD)" beállítással.](./media/kantegassoforconfluence-tutorial/addon4.png)
 
-1. Válassza az előfizetési szint **alapszintű**lehetőséget.
+1. Válassza az előfizetési szint **alapszintű** lehetőséget.
 
     ![Képernyőkép, amely az "alapszintű" kiválasztott "Azure AD" oldal előkészítését jeleníti meg.](./media/kantegassoforconfluence-tutorial/addon5.png)
 
@@ -196,7 +196,7 @@ Ha az Azure AD egyszeri bejelentkezést Kantega SSO-val szeretné konfigurálni 
 
     b. Kattintson a **Tovább** gombra.
 
-1. Ellenőrizze az aláíró tanúsítványt, és kattintson a **tovább**gombra.
+1. Ellenőrizze az aláíró tanúsítványt, és kattintson a **tovább** gombra.
 
     ![A "Next" gomb kiválasztásával megjelenő "aláírás-ellenőrzés" szakaszt bemutató képernyőkép.](./media/kantegassoforconfluence-tutorial/addon9.png)
 
@@ -226,7 +226,7 @@ Ha az Azure AD egyszeri bejelentkezést Kantega SSO-val szeretné konfigurálni 
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -251,15 +251,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a Kantega SSO számára a torkolatánál.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Kantega SSO**lehetőséget a torkolatánál.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **Kantega SSO** lehetőséget a torkolatánál.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **KANTEGA SSO**lehetőséget a torkolatánál.
+2. Az alkalmazások listában válassza a **KANTEGA SSO** lehetőséget a torkolatánál.
 
     ![Az Kantega SSO az összefolyásánál hivatkozáshoz az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -281,7 +281,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a to
 
 1. Jelentkezzen be a Kantega SSO-ra az összefolyásánál vállalati webhelyre rendszergazdaként.
 
-1. Mutasson a fogaskerékre, és kattintson a **felhasználó-felügyelet**elemre.
+1. Mutasson a fogaskerékre, és kattintson a **felhasználó-felügyelet** elemre.
 
     ![Képernyőfelvétel: a "fogaskerék" ikon és a "felhasználói kezelés" lehetőség van kiválasztva.](./media/kantegassoforconfluence-tutorial/user1.png)
 

@@ -1,24 +1,24 @@
 ---
 title: Oracle-megoldások a Microsoft Azureon | Microsoft Docs
 description: Ismerkedjen meg az Oracle-alkalmazások és-megoldások Microsoft Azureon történő üzembe helyezési lehetőségeivel, beleértve a teljes körű Azure-infrastruktúrán való futtatást vagy az Oracle Cloud Infrastructure (OCI) Felhőbeli kapcsolatait is.
-services: virtual-machines-linux
 documentationcenter: ''
 author: dbakevlar
 tags: azure-resource-management
 ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/05/2020
 ms.author: kegorman
-ms.openlocfilehash: d9b032bbd89f8b6d300650ac54567b07ae3307b8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 971f7c919595f915451faf9266ee3bb18b35087e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94948391"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677172"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Az Azure-beli Oracle-alkalmazások és-megoldások áttekintése
 
@@ -102,4 +102,4 @@ Az Oracle-alkalmazások Azure-beli üzembe helyezése a "saját licenc használa
 
 * További információ az [Azure OCI-vel](oracle-oci-overview.md)való összekapcsolódásáról.
 
-* Tekintse meg az Azure-beli [Oracle-áttekintést](https://myignite.techcommunity.microsoft.com/sessions/82915) az Ignite 2019-ről. 
+* Tekintse meg az Azure-beli [Oracle-áttekintést](https://www.pluralsight.com/courses/microsoft-ignite-session-57) az Ignite 2019-ről. 

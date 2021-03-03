@@ -2,18 +2,18 @@
 title: Mi a megoldás az Oracle WebLogic Server Azure-beli futtatására Virtual Machines
 description: Ismerje meg, hogyan futtathatja az Oracle WebLogic Servert Microsoft Azure Virtual Machineson.
 author: rezar
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
 ms.date: 09/23/2020
 ms.author: rezar
-ms.reviewer: cynthn
-ms.openlocfilehash: 277e9049d2069190a68dd98c22acd60212c1b99d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e2d9ef1d864d18122e7718c9be99eba8b7cf3973
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486691"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672120"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>Melyik megoldásokkal futtatható az Oracle WebLogic Server az Azure Virtual Machinesben?
 
@@ -33,7 +33,7 @@ _Ezek az ajánlatok saját licencet kapnak_. Feltételezik, hogy már megkapta a
 
 Az ajánlatok számos operációsrendszer-, Java-és WLS-verziót támogatnak alaplemezképeken keresztül (például WebLogic Server 14 és JDK 11 Oracle Linux 7,6). Ezek az alaplemezképek az Azure-ban is elérhetők az Azure-ban. Az alaplemezképek olyan ügyfelek számára alkalmasak, akik összetett, testreszabott Azure-alapú üzembe helyezést igényelnek. Az alapképek aktuális készlete [itt](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=WebLogic%20Server%20Base%20Image&page=1)érhető el.
 
-_Ha szeretné, hogy az áttelepítési forgatókönyvek szorosan együttműködve legyenek az ezen ajánlatokat fejlesztő mérnöki csapattal, válassza a [CONTACT ME](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview)_ [Piactéri ajánlat – áttekintés oldalon](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview)található Kapcsolatfelvétel gombot. A program-menedzserek, az építészek és a mérnökök hamarosan megközelítik Önt, és megkezdik a szoros együttműködést. Az áttelepítési forgatókönyvben való együttműködés lehetősége ingyenes, amíg az ajánlatok aktív kezdeti fejlesztés alatt állnak.
+_Ha szeretné, hogy az áttelepítési forgatókönyvek szorosan együttműködve legyenek az ezen ajánlatokat fejlesztő mérnöki csapattal, válassza a [](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview)_ [Piactéri ajánlat – áttekintés oldalon](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview)található Kapcsolatfelvétel gombot. A program-menedzserek, az építészek és a mérnökök hamarosan megközelítik Önt, és megkezdik a szoros együttműködést. Az áttelepítési forgatókönyvben való együttműködés lehetősége ingyenes, amíg az ajánlatok aktív kezdeti fejlesztés alatt állnak.
 
 ## <a name="oracle-weblogic-server-single-node"></a>Oracle WebLogic Server – egyetlen csomópont
 
@@ -57,7 +57,7 @@ A megoldások az éles környezetben felépíthető üzembe helyezési architekt
 
 A megoldások által automatikusan kiépített igényeken túl az ügyfelek rugalmasan testre szabhatják az üzembe helyezést. Valószínű, hogy az alkalmazások üzembe helyezése során az ügyfelek a további Azure-erőforrásokat is integrálják az üzemelő példányokkal. Javasoljuk, hogy visszajelzéseket nyújtson a megoldások további tökéletesítéséről.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Fedezze fel az ajánlatokat az Azure-ban.
 

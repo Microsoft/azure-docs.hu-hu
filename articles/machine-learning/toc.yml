@@ -321,11 +321,14 @@
             - name: Címkézett adathalmazok létrehozása
               displayName: 'data, labels, torchvision'
               href: how-to-use-labeled-dataset.md
-        - name: Adatok lekérése
+        - name: Adat& előkészítésének beolvasása
           items:
             - name: Adatbetöltés az Azure Data Factoryvel
               displayName: 'data, ingestion, adf'
               href: how-to-data-ingest-adf.md
+            - name: Adatelőkészítés az Azure szinapszis szolgáltatással
+              displayName: 'data, data prep, spark, spark pool, cluster, spark cluster,dataset, datastore'
+              href: how-to-data-prep-synapse-spark-pool.md
             - name: DevOps használata adatfeldolgozáshoz
               displayName: 'data, ingestion, devops'
               href: how-to-cicd-data-ingestion.md
@@ -337,6 +340,9 @@
             - name: Csatlakozás az Azure Storage-hoz (Python)
               displayName: 'blob, get, fileshare, access, mount, download, data lake, datastore'
               href: how-to-access-data.md
+            - name: Identitás-alapú adatokhoz való hozzáférés a tárolóhoz
+              displayName: 'blob, access, data lake, datastore, managed identity'
+              href: how-to-identity-based-data-access.md
             - name: Adatok lekérése adattárból (Python)
               displayName: 'data, data set, register, access data'
               href: how-to-create-register-datasets.md
@@ -385,8 +391,8 @@
             - name: Naplók engedélyezése
               displayName: 'troubleshoot, log, files, tracing'
               href: how-to-track-experiments.md
-            - name: Naplók megtekintése
-              displayName: 'troubleshoot, log, files, tracing'
+            - name: Futtatási naplók és metrikák megtekintése
+              displayName: 'troubleshoot, log, files, tracing, metrics'
               href: how-to-monitor-view-training-logs.md
             - name: Futtatások megjelenítése a TensorBoard használatával
               displayName: 'log, monitor, metrics'
@@ -531,6 +537,8 @@
           href: how-to-move-data-in-out-of-pipelines.md
         - name: ML-folyamatok üzembe helyezése (Python)
           href: how-to-deploy-pipelines.md
+        - name: Azure szinapszis Apache Spark-készletek használata ML-folyamatokban (Python)
+          href: how-to-use-synapsesparkstep.md
         - name: Folyamat aktiválása
           href: how-to-trigger-published-pipeline.md
         - name: Tervező (áthúzás)

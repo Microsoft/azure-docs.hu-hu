@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 08/25/2020
 ms.author: alehall
 ms.reviewer: jrasnick
-ms.openlocfilehash: d4beef9383b8e51e1295639c18e745fd0fdf8588
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 8a56b325dd5e1180b1229465965167241fab76a8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98796954"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676463"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-cli"></a>Rövid útmutató: Azure szinapszis-munkaterület létrehozása az Azure CLI-vel
 
@@ -27,7 +27,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy szinapszis-
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Töltse le és telepítse a [jQ](https://stedolan.github.io/jq/download/)-t, amely egy egyszerű és rugalmas parancssori JSON-processzor
-- [Azure Data Lake Storage Gen2 Storage-fiók](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Azure Data Lake Storage Gen2 Storage-fiók](../storage/common/storage-account-create.md)
 
     > [!IMPORTANT]
     > Az Azure szinapszis-munkaterületnek képesnek kell lennie olvasni és írni a kiválasztott ADLS Gen2 fiókot. Továbbá minden olyan Storage-fiókhoz, amelyet elsődleges Storage-fiókként csatol, a Storage-fiók [létrehozásához](../storage/common/storage-account-create.md?tabs=azure-portal#create-a-storage-account) engedélyezni kell a **hierarchikus névteret** a Storage-fiók létrehozása lapon leírtak szerint. 
@@ -44,7 +44,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy szinapszis-
     |StorageAccountResourceGroup| A meglévő ADLS Gen2 Storage-fiók erőforráscsoport neve. |
     |FileShareName| A meglévő Storage-fájlrendszer neve.|
     |SynapseResourceGroup| Válassza ki az Azure szinapszis-erőforráscsoport új nevét. |
-    |Régió| Válasszon egy Azure- [régiót](https://azure.microsoft.com/global-infrastructure/geographies/#overview). |
+    |Region| Válasszon egy Azure- [régiót](https://azure.microsoft.com/global-infrastructure/geographies/#overview). |
     |SynapseWorkspaceName| Válasszon egyedi nevet az új Azure szinapszis-munkaterülethez. |
     |SqlUser| Válasszon egy értéket egy új felhasználónévhez.|
     |SqlPassword| Válasszon biztonságos jelszót.|
@@ -107,6 +107,6 @@ Ha törölni szeretné az Azure szinapszis munkaterületet, hajtsa végre a köv
 az synapse workspace delete --name $SynapseWorkspaceName --resource-group $SynapseResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezután [LÉTREHOZHAT SQL-készleteket](quickstart-create-sql-pool-studio.md) , vagy [létrehozhat Apache Spark készleteket](quickstart-create-apache-spark-pool-studio.md) az adatok elemzésének és vizsgálatának megkezdéséhez.

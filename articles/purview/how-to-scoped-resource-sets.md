@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/17/2021
-ms.openlocfilehash: 517b07eecdbc63754f46fcf1051bf5b987dbc20e
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 8d7d482f38d58c8d6a8959acb51c94c0fb814697
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100654445"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668435"
 ---
 # <a name="create-scoped-resource-set-configuration-rules"></a>Hatókörön belüli erőforrás-készlet konfigurációs szabályainak létrehozása
 
@@ -43,7 +43,7 @@ Kövesse az alábbi lépéseket egy új, hatókörön belüli erőforrás-készl
 
 A hatókörön belüli erőforrás-set szabályok létrehozásakor a következő szintaxissal adhatja meg, hogy mely eszközökre vonatkozik a.
 
-### <a name="static-replacers-single-brackets"></a>Statikus replacers (egyetlen zárójel)
+### <a name="dynamic-replacers-single-brackets"></a>Dinamikus replacers (egyetlen zárójel)
 
 Az egyes zárójelek **dinamikus replacers** használatosak egy hatókörön belüli erőforrás-készlet szabályban. Adjon meg egy dinamikus áthelyező nevet a minősített névben a format paranccsal `{<replacerName:<replacerType>}` . Ha egyeznek, a dinamikus replacers olyan csoportosítási feltételként használatosak, amely azt jelzi, hogy az eszközöknek erőforrás-készletként kell szerepelniük. Ha az eszközök egy erőforrás-készletbe vannak csoportosítva, az erőforrás-készlet minősített elérési útja tartalmazni fogja, `{replacerName}` hogy hol lett megadva a áthelyező.
 
@@ -92,7 +92,7 @@ Az alábbiakban a hatókörön belüli erőforrás-set-szabályok alkalmazásár
 
 SAP-Adatkiemelés teljes és Delta terheléssel
 
-*Bevitelek*
+#### <a name="inputs"></a>Bevitelek
 
 Fájlokat
 -   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/13/saptable_customer_20200101_20200102_01.txt`
@@ -102,7 +102,7 @@ Fájlokat
 -   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/17/saptable_customer_20200101_20200102_02.txt`
 
 
-*Hatókörön belüli erőforrás-set szabály*
+#### <a name="scoped-resource-set-rule"></a>Hatókörön belüli erőforrás-set szabály 
 
 **Hatókör:**https://myazureblob.blob.core.windows.net/bar/
 
@@ -112,7 +112,7 @@ Fájlokat
 
 **Erőforrás-készlet:** True
 
-*Kimenet*
+#### <a name="output"></a>Kimenet 
 
 Egy erőforrás-beállító eszköz
 
@@ -124,7 +124,7 @@ Egy erőforrás-beállító eszköz
 
 IoT az Avro formátumban
 
-*Bevitelek*
+#### <a name="inputs"></a>Bevitelek 
 
 Fájlokat
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
@@ -132,7 +132,7 @@ Fájlokat
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-*Hatókörön belüli erőforrás-készletre vonatkozó szabályok*
+#### <a name="scoped-resource-set-rules"></a>Hatókörön belüli erőforrás-készletre vonatkozó szabályok 
 
 **Hatókör:**https://myazureblob.blob.core.windows.net/bar/
 
@@ -150,9 +150,9 @@ Fájlokat
 
 **Minősített név:**`raw/machinename-90/{date:date}/{time:time}-{id:int}.avro`
 
-**Erőforrás-készlet: true**
+#### <a name="resource-set-true"></a>*Erőforrás-készlet: true* 
 
-*Kimenetek*
+#### <a name="outputs"></a>Kimenetek 
 
 2 erőforrás-készlet 
 
@@ -172,7 +172,7 @@ Fájlokat
 
 IoT az Avro formátumban
 
-*Bevitelek*
+#### <a name="inputs"></a>Bevitelek 
 
 Fájlokat
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
@@ -180,7 +180,7 @@ Fájlokat
 -   `https://myazureblob.blob.core.windows.netbar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-*Hatókörön belüli erőforrás-set szabály*
+#### <a name="scoped-resource-set-rule"></a>Hatókörön belüli erőforrás-set szabály 
 
 **Hatókör:**https://myazureblob.blob.core.windows.net/bar/
 
@@ -190,7 +190,7 @@ Fájlokat
 
 **Erőforrás-készlet:** True
 
-*Kimenetek*
+#### <a name="outputs"></a>Kimenetek 
 
 1. erőforrás-készlet
 
@@ -208,7 +208,7 @@ Fájlokat
 
 Ne csoportosítsa az erőforrás-készleteket
 
-*Bevitelek*
+#### <a name="inputs"></a>Bevitelek 
 
 Fájlokat
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
@@ -216,7 +216,7 @@ Fájlokat
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-*Hatókörön belüli erőforrás-set szabály*
+#### <a name="scoped-resource-set-rule"></a>Hatókörön belüli erőforrás-set szabály 
 
 **Hatókör:**https://myazureblob.blob.core.windows.net/bar/
 
@@ -226,7 +226,7 @@ Fájlokat
 
 **Erőforrás-készlet:** hamis
 
-*Kimenetek*
+#### <a name="outputs"></a>Kimenetek 
 
 4 egyedi eszköz
 

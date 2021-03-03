@@ -7,19 +7,19 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 02/23/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ad9bd8dec94660d94cf3a106d31dafdad06f47a8
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 85d00b393ad169764a2f26e324295308ef49d3ba
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584510"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646578"
 ---
-# <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Munkamenet-viselkedés konfigurálása Azure Active Directory B2Cban
+# <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Munkamenet viselkedésének konfigurálása az Azure Active Directory B2C-ben
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
@@ -73,7 +73,7 @@ Beállíthatja a Azure AD B2C munkamenet viselkedését, beleértve a következ�
 
 - **Webalkalmazás-munkamenet élettartama (perc)** – a sikeres hitelesítés után az Azure ad B2C munkamenet-cookie-t a felhasználó böngészőjében tárolja a rendszer. A munkamenet élettartama 15 és 720 perc közötti értékre állítható be.
 
-- **Webalkalmazás-munkamenet időkorlátja** – azt jelzi, hogy egy munkamenetet a munkamenet élettartama beállítás vagy a bejelentkezett fájl megtartása beállítás meghosszabbítja.
+- **Webalkalmazás-munkamenet időtúllépése** – azt jelzi, hogy a munkamenetet a munkamenet élettartama beállítás vagy a bejelentkezett maradás (KMSI) beállítás hogyan hosszabbítja meg.
   - **Gördülő** – azt jelzi, hogy a munkamenet minden alkalommal ki van-e terjesztve, amikor a felhasználó elvégez egy cookie-alapú hitelesítést (alapértelmezett).
   - **Absolute** – azt jelzi, hogy a felhasználónak a megadott időszak után újra hitelesítenie kell magát.
 
@@ -82,9 +82,7 @@ Beállíthatja a Azure AD B2C munkamenet viselkedését, beleértve a következ�
   - **Alkalmazás** – ez a beállítás lehetővé teszi, hogy a felhasználói munkamenetet kizárólag egy alkalmazáshoz, más alkalmazásoktól függetlenül kezelje. Használhatja például ezt a beállítást, ha azt szeretné, hogy a felhasználó bejelentkezzen a contoso gyógyszertárba, függetlenül attól, hogy a felhasználó már be van-e jelentkezve a contoso-élelmiszerbe.
   - **Házirend** – ez a beállítás lehetővé teszi a felhasználói munkamenetek kizárólag felhasználói folyamatokhoz való fenntartását, az azt használó alkalmazásoktól függetlenül. Ha például a felhasználó már bejelentkezett, és elvégezte a többtényezős hitelesítés (MFA) lépését, a felhasználó több alkalmazás nagyobb biztonságú részeihez is hozzáférhet, ha a munkamenet a felhasználói folyamathoz kötődik, nem jár le.
   - **Letiltva** – ez a beállítás arra kényszeríti a felhasználót, hogy a házirend minden végrehajtásakor a teljes felhasználói folyamaton keresztül fusson.
-::: zone pivot="b2c-custom-policy"
-- A **bejelentkezett üzenet megtartása** – a munkamenet élettartamának meghosszabbítása állandó cookie használatával. A munkamenet aktív marad, miután a felhasználó bezárja és újra megnyitja a böngészőt. A munkamenetet csak akkor vonja vissza a rendszer, ha a felhasználó kijelentkezik. A bejelentkezett eszköz bejelentkezve funkció csak helyi fiókkal történő bejelentkezésre vonatkozik. A bejelentkezett eszköz megtartása beállítás elsőbbséget élvez a munkamenet élettartama során. Ha a Keep Me bejelentkezett funkció engedélyezve van, és a felhasználó kiválasztja azt, akkor ez a szolgáltatás a munkamenet lejárati idejét határozza meg. 
-::: zone-end
+- **Tartsa meg a bejelentkezett (KMSI)** – a munkamenet élettartamát állandó cookie használatával terjeszti ki. Ha ez a funkció engedélyezve van, és a felhasználó kiválasztja, a munkamenet aktív marad még a felhasználó bezárása után is, és újra megnyitja a böngészőt. A munkamenetet csak akkor vonja vissza a rendszer, ha a felhasználó kijelentkezik. A KMSI funkció csak helyi fiókkal történő bejelentkezésre vonatkozik. A KMSI funkció elsőbbséget élvez a munkamenet élettartama felett.
 
 ::: zone pivot="b2c-user-flow"
 
@@ -112,12 +110,43 @@ A munkamenet-viselkedés és az SSO-konfigurációk módosításához adjon hozz
    <SessionExpiryInSeconds>86400</SessionExpiryInSeconds>
 </UserJourneyBehaviors>
 ```
+::: zone-end
 
 ## <a name="enable-keep-me-signed-in-kmsi"></a>Bejelentkezés megtartásának engedélyezése (KMSI)
 
-Engedélyezheti a bejelentkezett funkciók használatát a webes és a natív alkalmazások azon felhasználói számára, akik helyi fiókkal rendelkeznek a Azure Active Directory B2C (Azure AD B2C) címtárban. Ez a szolgáltatás hozzáférést biztosít az alkalmazásnak visszaadott felhasználóknak anélkül, hogy újra meg kellene adnia felhasználónevét és jelszavát. A rendszer visszavonja ezt a hozzáférést, amikor egy felhasználó kijelentkezik.
+Engedélyezheti a KMSI szolgáltatást a webes és a natív alkalmazások felhasználói számára, akik helyi fiókkal rendelkeznek a Azure AD B2C könyvtárban. Ha engedélyezi a szolgáltatást, a felhasználók dönthetnek úgy, hogy bejelentkezve maradnak, így a munkamenet aktív marad a böngésző bezárása után. Ezután újra megnyithatja a böngészőt anélkül, hogy meg kellene adnia a felhasználónevét és jelszavát. A rendszer visszavonja ezt a hozzáférést, amikor egy felhasználó kijelentkezik.
 
 ![Példa a bejelentkezési bejelentkezési oldalára, amely egy bejelentkezve marad jelölőnégyzetet jelenít meg](./media/session-behavior/keep-me-signed-in.png)
+
+
+::: zone pivot="b2c-user-flow"
+
+A KMSI az egyéni felhasználói folyamat szintjén konfigurálható. A felhasználói folyamatok KMSI engedélyezése előtt vegye figyelembe a következőket:
+
+- A KMSI csak a regisztráció és a bejelentkezés (bejelentkezett), a bejelentkezés és a profil szerkesztési felhasználói folyamatainak **ajánlott** verziói esetén támogatott. Ha jelenleg a felhasználói folyamatok **standard** vagy **Legacy Preview-v2** verziója van, és engedélyezni szeretné a KMSI, akkor a felhasználói folyamatok új, **javasolt** verzióit kell létrehoznia.
+- A KMSI nem támogatott a jelszó-visszaállítási vagy a regisztrációs felhasználói folyamatok esetében.
+- Ha engedélyezni szeretné a KMSI a bérlő összes alkalmazásához, javasoljuk, hogy engedélyezze a KMSI a bérlő összes felhasználói folyamata számára. Mivel egy felhasználó több házirenddel is megtekinthető egy munkamenet során, lehetséges, hogy előfordulhat, hogy a KMSI engedélyezése nem engedélyezett, ami eltávolítja a KMSI cookie-t a munkamenetből.
+- A KMSI nem szabad engedélyezni a nyilvános számítógépeken.
+
+### <a name="configure-kmsi-for-a-user-flow"></a>Felhasználói folyamat KMSI konfigurálása
+
+A KMSI engedélyezése a felhasználói folyamat számára:
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés**   szűrőt a felső menüben, és válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
+3. Válassza ki az **összes szolgáltatást** a   Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
+4. Válassza a **felhasználói folyamatok (szabályzatok)** lehetőséget.
+5. Nyissa meg a korábban létrehozott felhasználói folyamatot.
+6. Válassza a **Tulajdonságok** lehetőséget.
+
+7. A  **munkamenet viselkedése** alatt jelölje be **a bejelentkezett munkamenet megtartása lehetőségnél az engedélyezés** lehetőséget. A **munkamenet (nap) bejelentkezve tartása** mellett adjon meg egy 1 és 90 közötti értéket, amely meghatározza, hogy a munkamenet hány napig maradhat nyitva.
+
+
+   ![A bejelentkezett munkamenet fenntartásának engedélyezése](media/session-behavior/enable-keep-me-signed-in.png)
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
 
 A felhasználók nem engedélyezhetik ezt a lehetőséget a nyilvános számítógépeken.
 

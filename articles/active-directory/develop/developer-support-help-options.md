@@ -12,12 +12,12 @@ ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: bce9479d063d091eb4fa68d2452d8a4218d45db9
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: c72a305a7000052be4f11c9c24a76db94de47ace
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219943"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650107"
 ---
 # <a name="support-and-help-options-for-developers"></a>Támogatási és súgó lehetőségek fejlesztőknek
 
@@ -32,11 +32,11 @@ Ha most kezdi az integrációt a Azure Active Directory (Azure AD), a Microsoft-
 
 ## <a name="search"></a>Keresés
 
-Ha a fejlesztéssel kapcsolatos kérdése van, előfordulhat, hogy megtalálja a választ a dokumentációban, a GitHub- [mintákat](https://github.com/azure-samples), vagy választ a [Microsoft Q&](https://docs.microsoft.com/answers/products/) kérdésekre.
+Ha a fejlesztéssel kapcsolatos kérdése van, előfordulhat, hogy megtalálja a választ a dokumentációban, a GitHub- [mintákat](https://github.com/azure-samples), vagy választ a [Microsoft Q&](/answers/products/) kérdésekre.
 
 ### <a name="scoped-search"></a>Hatókörön belüli keresés
 
-A gyorsabb eredmény érdekében a keresés a [Microsoft Q&](https://docs.microsoft.com/answers/products/)a dokumentációt, a kód mintáit pedig a következő lekérdezéssel használhatja a kedvenc keresőmotorjában:
+A gyorsabb eredmény érdekében a keresés a [Microsoft Q&](/answers/products/)a dokumentációt, a kód mintáit pedig a következő lekérdezéssel használhatja a kedvenc keresőmotorjában:
 
 ```
 {Your Search Terms} (site:http://www.docs.microsoft.com/answers/products/ OR site:docs.microsoft.com OR site:github.com/azure-samples OR site:cloudidentity.com OR site:developer.microsoft.com/graph)
@@ -53,24 +53,24 @@ Ahol *{a keresési kifejezések}* megfelelnek a keresési kulcsszavaknak.
 
 ## <a name="post-a-question-to-microsoft-qa"></a>Kérdés közzététele a Microsoft Q&A
 
-A [Microsoft Q&](https://docs.microsoft.com/answers/products/) a a fejlesztéssel kapcsolatos kérdések előnyben részesített csatornája. Itt a fejlesztői közösség és a Microsoft csapattagok tagjai közvetlenül részt vesznek a problémák megoldásában.
+A [Microsoft Q&](/answers/products/) a a fejlesztéssel kapcsolatos kérdések előnyben részesített csatornája. Itt a fejlesztői közösség és a Microsoft csapattagok tagjai közvetlenül részt vesznek a problémák megoldásában.
 
-Ha nem talál választ a kérdésére a kereséssel, küldjön új kérdést a [Microsoft Q&a](https://docs.microsoft.com/answers/products/) -nek. A következő címkék egyikével teheti fel a kérdést, hogy a Közösség könnyebben azonosítsa és válaszolja meg a kérdést:
+Ha nem talál választ a kérdésére a kereséssel, küldjön új kérdést a [Microsoft Q&a](/answers/products/) -nek. A következő címkék egyikével teheti fel a kérdést, hogy a Közösség könnyebben azonosítsa és válaszolja meg a kérdést:
 
 |Összetevő/régió  | Címkék |
 |---------|---------|
-| ADAL-könyvtár | [adal](https://docs.microsoft.com/answers/topics/azure-ad-adal-deprecation.html) |
-| MSAL-könyvtár     | [msal](https://docs.microsoft.com/answers/topics/azure-ad-msal.html) |
-| OWIN middleware  | [[Azure-Active-Directory]](https://docs.microsoft.com/answers/topics/azure-active-directory.html) |
-| [Azure B2B](../external-identities/what-is-b2b.md)  | [[Azure-ad-B2B]](https://docs.microsoft.com/answers/topics/azure-ad-b2b.html) |
-| [Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[Azure-ad-B2C]](https://docs.microsoft.com/answers/topics/azure-ad-b2c.html) |
-| [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[Azure-ad-Graph]](https://docs.microsoft.com/answers/topics/azure-ad-graph.html) |
-| A hitelesítési vagy engedélyezési témakörökhöz kapcsolódó egyéb területek | [[Azure-Active-Directory]](https://docs.microsoft.com/answers/topics/azure-active-directory.html) |
+| ADAL-könyvtár | [adal](/answers/topics/azure-ad-adal-deprecation.html) |
+| MSAL-könyvtár     | [msal](/answers/topics/azure-ad-msal.html) |
+| OWIN middleware  | [[Azure-Active-Directory]](/answers/topics/azure-active-directory.html) |
+| [Azure B2B](../external-identities/what-is-b2b.md)  | [[Azure-ad-B2B]](/answers/topics/azure-ad-b2b.html) |
+| [Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[Azure-ad-B2C]](/answers/topics/azure-ad-b2c.html) |
+| [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[Azure-ad-Graph]](/answers/topics/azure-ad-graph.html) |
+| A hitelesítési vagy engedélyezési témakörökhöz kapcsolódó egyéb területek | [[Azure-Active-Directory]](/answers/topics/azure-active-directory.html) |
 
-Az alábbi bejegyzések a [Microsoft Q&egy olyan](https://docs.microsoft.com/answers/products/) tippeket tartalmaznak, amelyekkel kérdéseket tehet fel, és hogyan adhat hozzá forráskódot. Kövesse az alábbi irányelveket, hogy növelje a közösségi tagok számára a kérdés gyors értékelését és megválaszolását:
+Az alábbi bejegyzések a [Microsoft Q&egy olyan](/answers/products/) tippeket tartalmaznak, amelyekkel kérdéseket tehet fel, és hogyan adhat hozzá forráskódot. Kövesse az alábbi irányelveket, hogy növelje a közösségi tagok számára a kérdés gyors értékelését és megválaszolását:
 
-* [Hogyan tegyen fel egy jó kérdést](https://docs.microsoft.com/answers/articles/24951/how-to-write-a-quality-question.html)
-* [Minimális, teljes és ellenőrizhető példa létrehozása](https://docs.microsoft.com/answers/articles/24907/how-to-write-a-quality-answer.html)
+* [Hogyan tegyen fel egy jó kérdést](/answers/articles/24951/how-to-write-a-quality-question.html)
+* [Minimális, teljes és ellenőrizhető példa létrehozása](/answers/articles/24907/how-to-write-a-quality-answer.html)
 
 ## <a name="create-a-github-issue"></a>GitHub-probléma létrehozása
 

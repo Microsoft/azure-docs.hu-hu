@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c835ddcee332499ef7853d0d2fa4fcdbcf8a1cf
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: c767d114ad6a1b5cb8b9c6bf4c0fe4f2ccd1dae6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988867"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650124"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>A Azure Active Directory újdonságai
 
@@ -48,7 +48,7 @@ A **termék képességei:** Identitás-életciklus kezelése
 
 A múltban a titkos jogkivonat mező üresen maradhat a kiépítés beállításakor az egyéni/BYOA alkalmazásban. Ez a függvény kizárólag tesztelésre szolgál. Frissíti a felhasználói felületet, hogy kötelezővé tegye a mezőt. 
 
-Ezt a követelményt tesztelési célból a böngésző URL-címében található szolgáltatás-jelölő használatával lehet megkerülni. [További információ](../app-provisioning/use-scim-to-provision-users-and-groups.md#authorization-to-provisioning-connectors-in-the-application-gallery).
+Ezt a követelményt tesztelési célból a böngésző URL-címében található szolgáltatás-jelölő használatával lehet megkerülni. [További információk](../app-provisioning/use-scim-to-provision-users-and-groups.md#authorization-to-provisioning-connectors-in-the-application-gallery).
  
 ---
 
@@ -97,7 +97,7 @@ A **termék képességei:** Identitás-életciklus kezelése
  
 A Azure AD Connect Cloud Sync mostantól általánosan elérhető az összes ügyfél számára.
 
-Azure AD Connect a felhő áthelyezi az átalakítási logikát a felhőbe, így csökkentve a helyszíni lábnyomot. Emellett több, a rendelkezésre állást biztosító ügynök üzembe helyezése is elérhető a nagyobb szinkronizálás érdekében. [További információ](https://aka.ms/cloudsyncGA).
+Azure AD Connect a felhő áthelyezi az átalakítási logikát a felhőbe, így csökkentve a helyszíni lábnyomot. Emellett több, a rendelkezésre állást biztosító ügynök üzembe helyezése is elérhető a nagyobb szinkronizálás érdekében. [További információk](https://aka.ms/cloudsyncGA).
  
 ---
 ### <a name="general-availability---attack-simulation-administrator-and-attack-payload-author-built-in-roles"></a>Általános rendelkezésre állás – a támadás szimulációjának rendszergazdája és a támadási adattartalom szerzője beépített szerepkörök
@@ -125,7 +125,7 @@ A **termék képességei:** Access Control
  
 A használati összesítő jelentéseket olvasó szerepkörrel rendelkező felhasználók a bérlői szintű összesített adatokat és a Microsoft 365 felügyeleti központban a használati és termelékenységi pontszámhoz kapcsolódó információkat érhetik el. Azonban nem férhetnek hozzá a felhasználói szint részleteihez vagy az információkhoz. 
 
-A két jelentés Microsoft 365 felügyeleti központjában megkülönböztetjük a bérlői szint összesített adatait és a felhasználói szint részleteit. Ez a szerepkör további védelmi réteget biztosít az egyes felhasználók számára azonosítható adatokhoz. [További információ](../roles/permissions-reference.md#usage-summary-reports-reader).
+A két jelentés Microsoft 365 felügyeleti központjában megkülönböztetjük a bérlői szint összesített adatait és a felhasználói szint részleteit. Ez a szerepkör további védelmi réteget biztosít az egyes felhasználók számára azonosítható adatokhoz. [További információk](../roles/permissions-reference.md#usage-summary-reports-reader).
 
 ---
 
@@ -151,7 +151,7 @@ További információ az alkalmazás-védelem feltételes hozzáférési szabál
 **Szolgáltatás kategóriája:** B2B  
 A **termék képességei:** B2B/B2C
  
-Az e-mailes egyszeri jelszavas szolgáltatás lehetővé teszi, hogy a világ bármely részén működjön együtt bárkivel, ha e-mailben küld egy hivatkozást A meghívott felhasználók ellenőrizhetik személyazonosságát az e-mail-címre küldött egyszeri jelszóval, hogy hozzáférjenek a partner erőforrásaihoz. [További információ](../external-identities/one-time-passcode.md). 
+Az e-mailes egyszeri jelszavas szolgáltatás lehetővé teszi, hogy a világ bármely részén működjön együtt bárkivel, ha e-mailben küld egy hivatkozást A meghívott felhasználók ellenőrizhetik személyazonosságát az e-mail-címre küldött egyszeri jelszóval, hogy hozzáférjenek a partner erőforrásaihoz. [További információk](../external-identities/one-time-passcode.md). 
  
 ---
 
@@ -181,7 +181,7 @@ További információ: [Mi az az Azure ad-ben az automatizált SaaS app User ki�
 
 2021 januárjában a következő 29 új alkalmazást bővítettük az alkalmazás-galériában az összevonási támogatással:
 
-[mySCView](https://dev.myscview.com/), [Talentech](https://talentech.com/contact/), [Bipsync](https://www.bipsync.com/), [OroTimesheet](https://app.orotimesheet.com/login.php), [Mio](https://app.m.io/auth/install/microsoft?scopetype=hub), [Sovelto Easy](https://login.soveltoeasy.fi/), [Supportbench](https://account.supportbench.net/agent/login/) [](https://docs.microsoft.com/azure/active-directory/saas-apps/burp-suite-enterprise-edition-tutorial) ,[Bienvenue formáció](https://formation.bienvenue.pro/login), az [egészségügyi egyszeri bejelentkezés](https://aidaforparents.com/login/organizations) [, a](../saas-apps/contentsquare-sso-tutorial.md) [nemzetközi SOS-segítségnyújtó termékek](../saas-apps/international-sos-assistance-products-tutorial.md), a [NAVEX One](../saas-apps/navex-one-tutorial.md), a [LabLog](../saas-apps/lablog-tutorial.md), a [Oktopost SAML](../saas-apps/oktopost-saml-tutorial.md), a [EPHOTO Dam](../saas-apps/ephoto-dam-tutorial.md), a [fogalom](../saas-apps/notion-tutorial.md) [, a Syndio,](../saas-apps/syndio-tutorial.md)a Yello [Enterprise](../saas-apps/yello-enterprise-tutorial.md), a [TimeClock 365 SAML](../saas-apps/timeclock-365-saml-tutorial.md), a [Nalco E-adatok](https://www.ecolab.com/), a [betöltetlen kitöltő](https://app.vacancy-filler.co.uk/VFMVC/Account/Login), a [Synerise AI növekedési ökoszisztémája](../saas-apps/synerise-ai-growth-ecosystem-tutorial.md) [, a](../saas-apps/aruba-user-experience-insight-tutorial.md)inperverz [adatok biztonsága](../saas-apps/imperva-data-security-tutorial.md), a csalóka [](../saas-apps/perimeter-81-tutorial.md) [-hálózatok,](../saas-apps/illusive-networks-tutorial.md) [a sPlan](../saas-apps/proware-tutorial.md) [-látogató 81](../saas-apps/splan-visitor-tutorial.md)
+[mySCView](https://dev.myscview.com/), [Talentech](https://talentech.com/contact/), [Bipsync](https://www.bipsync.com/), [OroTimesheet](https://app.orotimesheet.com/login.php), [Mio](https://app.m.io/auth/install/microsoft?scopetype=hub), [Sovelto Easy](https://login.soveltoeasy.fi/), [Supportbench](https://account.supportbench.net/agent/login/) [](../saas-apps/burp-suite-enterprise-edition-tutorial.md) ,[Bienvenue formáció](https://formation.bienvenue.pro/login), az [egészségügyi egyszeri bejelentkezés](https://aidaforparents.com/login/organizations) [, a](../saas-apps/contentsquare-sso-tutorial.md) [nemzetközi SOS-segítségnyújtó termékek](../saas-apps/international-sos-assistance-products-tutorial.md), a [NAVEX One](../saas-apps/navex-one-tutorial.md), a [LabLog](../saas-apps/lablog-tutorial.md), a [Oktopost SAML](../saas-apps/oktopost-saml-tutorial.md), a [EPHOTO Dam](../saas-apps/ephoto-dam-tutorial.md), a [fogalom](../saas-apps/notion-tutorial.md) [, a Syndio,](../saas-apps/syndio-tutorial.md)a Yello [Enterprise](../saas-apps/yello-enterprise-tutorial.md), a [TimeClock 365 SAML](../saas-apps/timeclock-365-saml-tutorial.md), a [Nalco E-adatok](https://www.ecolab.com/), a [betöltetlen kitöltő](https://app.vacancy-filler.co.uk/VFMVC/Account/Login), a [Synerise AI növekedési ökoszisztémája](../saas-apps/synerise-ai-growth-ecosystem-tutorial.md) [, a](../saas-apps/aruba-user-experience-insight-tutorial.md)inperverz [adatok biztonsága](../saas-apps/imperva-data-security-tutorial.md), a csalóka [](../saas-apps/perimeter-81-tutorial.md) [-hálózatok,](../saas-apps/illusive-networks-tutorial.md) [a sPlan](../saas-apps/proware-tutorial.md) [-látogató 81](../saas-apps/splan-visitor-tutorial.md)
 
 Itt megtalálhatja az összes alkalmazás dokumentációját is https://aka.ms/AppsTutorial
 
@@ -207,7 +207,7 @@ A **termék képességei:** Jogosultságok kezelése
  
 Mostantól közvetlenül a saját hozzáférési portálról is elindíthatja a csapatokat. 
 
-Ehhez jelentkezzen be a saját hozzáférésbe (Nyissa meg a https://myaccess.microsoft.com/) "hozzáférési csomagok" lehetőséget, majd lépjen az "aktív" lapra, ahol megtekintheti az összes olyan hozzáférési csomagot, amelyhez már van hozzáférése. Ha kibontja a kiválasztott hozzáférési csomagot, és a csapatok fölé viszi, a "Megnyitás" gombra kattintva indíthatja el. [További információ](../governance/entitlement-management-request-access.md).
+Ehhez jelentkezzen be a saját hozzáférésbe (Nyissa meg a https://myaccess.microsoft.com/) "hozzáférési csomagok" lehetőséget, majd lépjen az "aktív" lapra, ahol megtekintheti az összes olyan hozzáférési csomagot, amelyhez már van hozzáférése. Ha kibontja a kiválasztott hozzáférési csomagot, és a csapatok fölé viszi, a "Megnyitás" gombra kattintva indíthatja el. [További információk](../governance/entitlement-management-request-access.md).
  
 ---
 
@@ -539,7 +539,7 @@ A SCIM [kiépítési szolgáltatásának](../app-provisioning/user-provisioning.
 A dátum befejeződik után egy frissítést biztosítunk. Ez az elavultság nem a 2020-es naptári évre van tervezve. 
 
 > [!NOTE]
-> Ez nem befolyásolja a naplókban lévő eseményeket a kiépítési szolgáltatás által kibocsátott szinkronizálási eseményeken kívül. Az eseményeket, például egy alkalmazás létrehozását, a feltételes hozzáférési szabályzatot, a címtárban lévő felhasználót, stb. továbbra is a naplók lesznek kibocsátva a naplókban. [További információ](../reports-monitoring/concept-provisioning-logs.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context).
+> Ez nem befolyásolja a naplókban lévő eseményeket a kiépítési szolgáltatás által kibocsátott szinkronizálási eseményeken kívül. Az eseményeket, például egy alkalmazás létrehozását, a feltételes hozzáférési szabályzatot, a címtárban lévő felhasználót, stb. továbbra is a naplók lesznek kibocsátva a naplókban. [További információk](../reports-monitoring/concept-provisioning-logs.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context).
  
 
 ---
@@ -681,7 +681,7 @@ Az API-összekötők most már használhatók a Azure Active Directory B2C. Az A
 
  Az összes csatlakoztatott szervezet már rendelkezik egy "State" nevű további tulajdonsággal. Az állapot határozza meg, hogyan használja a rendszer a csatlakoztatott szervezetet az "összes konfigurált csatlakoztatott szervezetre" vonatkozó házirendekben. Az érték "konfigurálva" (ami azt jelenti, hogy a szervezet az "all" záradékot használó szabályzatok hatókörében van) vagy "javasolt" (ami azt jelenti, hogy a szervezet nincs a hatókörben).  
 
-A csatlakoztatott szervezetek manuálisan létrehozott alapértelmezett beállítása a "configured". Eközben az automatikusan létrehozott (szabályzatok alapján létrehozott), amelyek lehetővé teszik bármely felhasználó számára, hogy hozzáférést kérjenek, alapértelmezés szerint "javasolt" lesz.  A 9 2020 szeptember előtt létrehozott csatlakoztatott szervezetek beállítása "konfigurálva" lesz. A rendszergazdák szükség szerint frissíthetik ezt a tulajdonságot. [További információ](../governance/entitlement-management-organization.md#managing-a-connected-organization-programmatically).
+A csatlakoztatott szervezetek manuálisan létrehozott alapértelmezett beállítása a "configured". Eközben az automatikusan létrehozott (szabályzatok alapján létrehozott), amelyek lehetővé teszik bármely felhasználó számára, hogy hozzáférést kérjenek, alapértelmezés szerint "javasolt" lesz.  A 9 2020 szeptember előtt létrehozott csatlakoztatott szervezetek beállítása "konfigurálva" lesz. A rendszergazdák szükség szerint frissíthetik ezt a tulajdonságot. [További információk](../governance/entitlement-management-organization.md#managing-a-connected-organization-programmatically).
  
 
 ---
@@ -738,7 +738,7 @@ A szolgáltatás használatának megismeréséhez lásd: a [kiépítés integrá
 **Szolgáltatás kategóriája:** Jelentési  
 A **termék képességei:** & jelentéskészítés figyelése
  
-Mostantól engedélyezheti, hogy az alkalmazások tulajdonosai nyomon kövessék a tevékenységeket a kiépítési szolgáltatással, és hibaelhárítást végezzenek anélkül, hogy emelt szintű szerepkört kellene benyújtaniuk, vagy szűk keresztmetszetet kellene [További információ](../reports-monitoring/concept-provisioning-logs.md).
+Mostantól engedélyezheti, hogy az alkalmazások tulajdonosai nyomon kövessék a tevékenységeket a kiépítési szolgáltatással, és hibaelhárítást végezzenek anélkül, hogy emelt szintű szerepkört kellene benyújtaniuk, vagy szűk keresztmetszetet kellene [További információk](../reports-monitoring/concept-provisioning-logs.md).
  
 ---
 
@@ -806,11 +806,11 @@ Azure AD Connect Cloud kiépítés nyilvános előzetes verziójának frissíté
 
 - Attribútum-hozzárendelési élmény Azure Portal
 
-    Ezzel a funkcióval a rendszergazdák leképezhetők a felhasználó-, csoport-vagy kapcsolattartási attribútumok az AD-ből az Azure AD-be a mai napon elérhető különböző leképezési típusok használatával. Az attribútum-hozzárendelés egy olyan szolgáltatás, amely a Active Directorytól a Azure Active Directoryig áramló attribútumok értékeinek egységesítésére szolgál. Megadhatja, hogy az attribútum értéke közvetlenül az AD-ből az Azure AD-ba kerüljön-e, vagy kifejezések használatával alakítsa át az attribútum értékeit a felhasználók kiépítés során. [További információ](../cloud-provisioning/how-to-attribute-mapping.md)
+    Ezzel a funkcióval a rendszergazdák leképezhetők a felhasználó-, csoport-vagy kapcsolattartási attribútumok az AD-ből az Azure AD-be a mai napon elérhető különböző leképezési típusok használatával. Az attribútum-hozzárendelés egy olyan szolgáltatás, amely a Active Directorytól a Azure Active Directoryig áramló attribútumok értékeinek egységesítésére szolgál. Megadhatja, hogy az attribútum értéke közvetlenül az AD-ből az Azure AD-ba kerüljön-e, vagy kifejezések használatával alakítsa át az attribútum értékeit a felhasználók kiépítés során. [További információ](../cloud-sync/how-to-attribute-mapping.md)
 
 - Igény szerinti kiépítési vagy tesztelési felhasználói élmény
 
-    Ha beállította a konfigurációt, érdemes lehet tesztelni, hogy a felhasználói átalakítás a várt módon működik-e, mielőtt az összes felhasználóra alkalmazná a hatókört. Igény szerinti kiépítés esetén a rendszergazdák megadhatják az AD-felhasználók megkülönböztető nevét (DN), és megtekinthetik, hogy az elvárt módon szinkronizálva vannak-e. Az igény szerinti kiépítés nagyszerű módot biztosít arra, hogy az attribútum-hozzárendelések a várt módon működjenek. [További információ](../cloud-provisioning/how-to-on-demand-provision.md)
+    Ha beállította a konfigurációt, érdemes lehet tesztelni, hogy a felhasználói átalakítás a várt módon működik-e, mielőtt az összes felhasználóra alkalmazná a hatókört. Igény szerinti kiépítés esetén a rendszergazdák megadhatják az AD-felhasználók megkülönböztető nevét (DN), és megtekinthetik, hogy az elvárt módon szinkronizálva vannak-e. Az igény szerinti kiépítés nagyszerű módot biztosít arra, hogy az attribútum-hozzárendelések a várt módon működjenek. [További információ](../cloud-sync/how-to-on-demand-provision.md)
  
 ---
 
@@ -1139,6 +1139,3 @@ A **termék képességei:** Identitás-életciklus kezelése
 A [gyorsjavítások kumulatív csomagja (Build 4.6.263.0)](https://support.microsoft.com/help/4576473/hotfix-rollup-package-build-4-6-263-0-is-available-for-microsoft-ident) elérhető a következőhöz: Microsoft Identity Manager (2016 Service Pack 2 (SP2). Ez a kumulatív csomag a MIM CM, a beszinkronizálási kezelő és a PAM-összetevők frissítéseit tartalmazza. Emellett a 1.1.1301.0-hoz készült általános összekötők buildek a Graph-összekötő frissítéseire is kiterjednek.
 
 ---
- 
-
-

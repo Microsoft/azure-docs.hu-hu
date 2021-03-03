@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Azure Communication Services
-summary: Az Azure Communication Services egy felhőalapú kommunikációs szolgáltatás, amellyel hang-, videó-, csevegési és telefonos funkciókat adhat hozzá az alkalmazásaihoz. Vegye figyelembe, hogy az Azure Communication Services jelenleg nyilvános előzetes verzióban érhető el.
+summary: Az Azure Communication Services egy felhőalapú kommunikációs szolgáltatás, amellyel hang-, videó-, csevegési és telefonos funkciókat adhat hozzá az alkalmazásaihoz.
 metadata:
   title: Azure Communication Services
-  description: Az Azure Communication Services egy felhőalapú kommunikációs szolgáltatás, amellyel hang-, videó-, csevegési és telefonos funkciókat adhat hozzá az alkalmazásaihoz. Vegye figyelembe, hogy az Azure Communication Services jelenleg nyilvános előzetes verzióban érhető el.
+  description: Az Azure Communication Services egy felhőalapú kommunikációs szolgáltatás, amellyel hang-, videó-, csevegési és telefonos funkciókat adhat hozzá az alkalmazásaihoz.
   ms.service: azure-communication-services
   ms.topic: landing-page
   author: mikben
   ms.author: mikben
   ms.date: 08/10/2020
-  ms.openlocfilehash: a39493fd0a1487602fd9cd2ad81fa81900f860d2
-  ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+  ms.openlocfilehash: dd6e3a7685ded2d7f5b292d9436694eddc95163c
+  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 02/18/2021
-  ms.locfileid: "100652700"
+  ms.lasthandoff: 03/02/2021
+  ms.locfileid: "101657587"
 landingContent:
 - title: Az Azure Communication Services ismertetése
   linkLists:
@@ -26,6 +26,8 @@ landingContent:
     links:
     - text: Ügyfélkódtár beállításai
       url: concepts/sdk-options.md
+    - text: Csapatok együttműködése
+      url: concepts/teams-interop.md
 - title: Bevezetés
   linkLists:
   - linkListType: quickstart

@@ -9,16 +9,14 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 98c1ce9367e9bf2aa1a381a772b3cbc73f96b519
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 515921c4e69b7c2cff8e1055182503b5ce89971c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650949"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657145"
 ---
 # <a name="voice-and-video-concepts"></a>A hang- és videóhívással kapcsolatos alapfogalmak
-
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 Az Azure kommunikációs szolgáltatásaival egy vagy több hang-és videohívásokat indíthat és fogadhat. A hívások más internethez csatlakoztatott eszközökre és a régi telefonokra is felhasználhatók. A kommunikációs szolgáltatások JavaScript-, Android-vagy iOS-alapú ügyféloldali kódtárai segítségével olyan alkalmazásokat hozhat létre, amelyek lehetővé teszik a felhasználók számára, hogy privát beszélgetésekben vagy csoportos megbeszéléseken beszéljenek egymással. Az Azure kommunikációs szolgáltatások támogatják a szolgáltatásokból vagy a robotoktól érkező hívásokat.
 
@@ -26,7 +24,7 @@ Az Azure kommunikációs szolgáltatásaival egy vagy több hang-és videohívá
 
 Az Azure kommunikációs szolgáltatásokban többféle típusú hívást végezhet. A hívások típusa határozza meg a jelző sémát, a média forgalmát és a díjszabási modellt.
 
-### <a name="voice-over-ip-voip"></a>Voice over IP (VoIP) 
+### <a name="voice-over-ip-voip"></a>Voice over IP (VoIP)
 
 Ha az alkalmazás egy felhasználója egy internetes vagy adatkapcsolaton keresztül hívja meg az alkalmazás egy másik felhasználóját, a rendszer a hívást a Voice over IP (VoIP) protokollon keresztül kezdeményezi. Ebben az esetben a jelek és az adathordozók is az interneten keresztül jelennek meg.
 
@@ -43,14 +41,14 @@ Az Azure kommunikációs szolgáltatások egy az egyhez típusú hívása akkor 
 Az Azure kommunikációs szolgáltatások csoportos hívása akkor történik, amikor három vagy több résztvevő csatlakozik egymáshoz. A VoIP-és PSTN-kapcsolattal rendelkező felhasználók bármely kombinációja szerepelhet egy csoportos híváson. Az egy-az-egyhez típusú hívások a híváshoz több résztvevő hozzáadásával válthatnak a csoportos hívásba. Az egyik résztvevő lehet egy robot.
 
 ### <a name="supported-video-standards"></a>Támogatott videós szabványok
-Támogatjuk a H. 264 (MPEG-4) 
+Támogatjuk a H. 264 (MPEG-4)
 
 ### <a name="video-quality"></a>Videó minősége
-A natív (iOS, Android) SDK-k teljes HD 1080p verziójának támogatása. A web (JS) SDK esetében a standard HD 720p szabványt támogatjuk. A minőség a rendelkezésre álló sávszélességtől függ.  
+A natív (iOS, Android) SDK-k teljes HD 1080p verziójának támogatása. A web (JS) SDK esetében a standard HD 720p szabványt támogatjuk. A minőség a rendelkezésre álló sávszélességtől függ.
 
 ### <a name="rooms-concept"></a>A szobák fogalma
 A szobák olyan API-k és SDK-k összessége, amelyek segítségével könnyedén hozzáadhat hang-, videó-, képernyőfelvétel-, PSTN-és SMS-interakciókat webhelyéhez vagy natív alkalmazásához.
-Az előzetes verzió ideje alatt a csoport azonosítója segítségével csatlakozhat ugyanahhoz a beszélgetéshez. Tetszőleges számú csoport-azonosítót hozhat létre, és elkülönítheti a felhasználókat a "szobák" használatával. A továbblépés további vezérlőket mutat be a "szobák" körül 
+Az előzetes verzió ideje alatt a csoport azonosítója segítségével csatlakozhat ugyanahhoz a beszélgetéshez. Tetszőleges számú csoport-azonosítót hozhat létre, és elkülönítheti a felhasználókat a "szobák" használatával. A továbblépés további vezérlőket mutat be a "szobák" körül
 
 ## <a name="next-steps"></a>Következő lépések
 

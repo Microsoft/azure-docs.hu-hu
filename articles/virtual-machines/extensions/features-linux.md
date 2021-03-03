@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: 129897d3288a900803efbfba8abf86c276077fa8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 66687f5954894d962a67767669081de15a30c7c3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966071"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672617"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Virtuálisgép-bővítmények és-funkciók Linux rendszerhez
 
@@ -33,7 +33,7 @@ Ez a cikk áttekintést nyújt a virtuálisgép-bővítményekről, az Azure vir
 Számos különböző Azure-beli virtuálisgép-bővítmény érhető el, amelyek mindegyike egy adott használati esettel rendelkezik. Néhány példa:
 
 - A PowerShell kívánt állapot-konfigurációinak alkalmazása a Linux rendszerhez készült DSC-bővítményt futtató virtuális gépre. További információ: az [Azure desired State Configuration bővítménye](https://github.com/Azure/azure-linux-extensions/tree/master/DSC).
-- Egy virtuális gép figyelésének konfigurálása a Microsoft monitoring Agent virtuálisgép-bővítménnyel. További információ: [Linux rendszerű virtuális gép figyelése](../linux/tutorial-monitor.md).
+- Egy virtuális gép figyelésének konfigurálása a Microsoft monitoring Agent virtuálisgép-bővítménnyel. További információ: [Linux rendszerű virtuális gép figyelése](/previous-versions/azure/virtual-machines/linux/tutorial-monitor).
 - Konfigurálja az Azure-infrastruktúra figyelését a Chef vagy az Datadoggal bővítménnyel. További információ: [Chef docs](https://docs.chef.io/azure_portal.html) vagy [datadoggal blog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 
 A folyamat-specifikus bővítmények mellett egyéni szkriptek is elérhetők a Windows-és Linux-alapú virtuális gépekhez. A Linuxhoz készült egyéni szkriptek lehetővé teszik a bash-parancsfájlok futtatását egy virtuális gépen. Az egyéni parancsfájlok olyan Azure-beli központi telepítések tervezésekor hasznosak, amelyek a natív Azure-eszközök által biztosított konfigurációt igénylik. További információ: [linuxos virtuális gép egyéni parancsfájl-bővítménye](custom-script-linux.md).

@@ -2,18 +2,18 @@
 title: Architektúrák Oracle-alkalmazások üzembe helyezéséhez az Azure Virtual Machineson | Microsoft Docs
 description: Alkalmazás-architektúrák Oracle-alkalmazások, például az E-Business Suite, a JD Edwards EnterpriseOne és a PeopleSoft Microsoft Azure virtuális gépeken való üzembe helyezéséhez az Azure-ban vagy az Oracle Cloud Infrastructure-ben (OCI) található adatbázisokkal.
 author: dbakevlar
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: kegorman
-ms.reviewer: cynthn
-ms.openlocfilehash: aa481090e3483e58f6a88304e3e9d8c1a16df3c7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 862bb886c7ec5dfd40c7acdbae2f70f6698a711b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965918"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669925"
 ---
 # <a name="architectures-to-deploy-oracle-applications-on-azure"></a>Architektúrák Oracle-alkalmazások üzembe helyezéséhez az Azure-ban
 
@@ -63,7 +63,7 @@ A következő szakaszok a különböző összetevőket ismertetik magas szinten.
 
 Az alkalmazás szintje el van különítve a saját alhálózatában. Több virtuális gép van beállítva a hibatűréshez és az egyszerű javítások kezeléséhez. Ezeket a virtuális gépeket megosztott tárolók is használhatják, amelyeket Azure NetApp Files és ultra SSD-k kínálnak. Ez a konfiguráció lehetővé teszi a javítások egyszerű üzembe helyezését állásidő nélkül. Az alkalmazási rétegben található gépeket nyilvános Load balancernek kell ellátnia, hogy az EBS-alkalmazások szintjére érkező kéréseket akkor is dolgozza fel a rendszer, ha a réteg egyik gépe hiba miatt offline állapotban van.
 
-### <a name="load-balancer"></a>Terheléselosztó
+### <a name="load-balancer"></a>Terheléselosztóval
 
 Az Azure Load Balancer lehetővé teszi, hogy a magas rendelkezésre állás biztosítása érdekében a számítási feladatok több példányán keresztül ossza el a forgalmat. Ebben az esetben egy nyilvános terheléselosztó van beállítva, mivel a felhasználók hozzáférhetnek az EBS-alkalmazáshoz a weben keresztül. A terheléselosztó elosztja a terhelést mindkét gépre a középső szinten. A nagyobb biztonság érdekében csak a vállalati hálózatról a rendszerhez hozzáférő felhasználóktól érkező adatforgalmat helyek közötti VPN-vagy ExpressRoute-és hálózati biztonsági csoportok használatával.
 

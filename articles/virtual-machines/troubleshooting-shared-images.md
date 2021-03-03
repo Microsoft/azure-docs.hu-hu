@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: 9a905dd61bcc267b47dcd075f54a0ed6563a3797
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 507dd224ddeb935cc8b3718bb2e2628be36066f4
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879629"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676021"
 ---
 # <a name="troubleshoot-shared-image-galleries-in-azure"></a>Megosztott rendszerkép-galériák az Azure-ban – problémamegoldás
 
@@ -52,9 +52,13 @@ Ha problémákat tapasztal a megosztott képtárakon, a képdefiníciókban és 
 **OK**: olyan katalógust próbált törölni, amely legalább egy meglévő rendszerkép-definíciót tartalmaz. A katalógusnak üresnek kell lennie ahhoz, hogy törölni lehessen.  
 **Áthidaló megoldás**: törölje az összes rendszerkép-definíciót a katalógusban, majd folytassa a katalógus törlésével. Ha a rendszerkép definíciója rendszerkép-verziókat tartalmaz, törölnie kell a rendszerkép verzióit, mielőtt törölné a rendszerkép-definíciókat.
 
+*A (z) "<galleryName" katalógus neve \> nem egyedi a (z) "" előfizetésen belül <subscriptionId> . Válasszon egy másik katalógus nevét.*  
+**OK**: van egy már meglévő katalógusa ugyanazzal a névvel, és egy azonos nevű gyűjteményt próbált meg létrehozni.  
+**Megkerülő megoldás**: válasszon másik nevet a gyűjteménynek.
+
 *Az erőforrás-<galleryName \> már létezik a (z \_ ) \> <resourceGroup <1. régiójában \> . Nem hozható létre azonos nevű erőforrás a (z \_ ) <2. régióban \> . Válasszon ki egy új erőforrás-nevet.*  
-**OK**: van egy meglévő, azonos nevű gyűjteménye az erőforráscsoporthoz, és megpróbált létrehozni egy másik katalógust ugyanazzal a névvel, de egy másik régióban.  
-**Megkerülő megoldás**: használjon másik gyűjteményt, vagy használjon másik erőforráscsoportot.
+**OK**: van egy már meglévő katalógusa ugyanazzal a névvel, és egy azonos nevű gyűjteményt próbált meg létrehozni.  
+**Megkerülő megoldás**: válasszon másik nevet a gyűjteménynek.
 
 ## <a name="creating-or-modifying-image-definitions"></a>Rendszerkép-definíciók létrehozása vagy módosítása ##
 
@@ -341,6 +345,6 @@ A **--Expand ReplicationStatus** jelzővel ellenőrizze, hogy befejeződött-e a
 Az [Azure korlátai és kvótái](../azure-resource-manager/management/azure-subscription-service-limits.md) az összes megosztott képkatalógusra, a képdefinícióra és a rendszerkép verzió-erőforrásaira érvényesek. Győződjön meg arról, hogy az előfizetések korlátain belül van. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [megosztott képtárakról](./shared-image-galleries.md).

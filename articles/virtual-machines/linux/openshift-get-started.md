@@ -3,18 +3,19 @@ title: OpenShift az Azure-ban – áttekintés
 description: A OpenShift áttekintése az Azure-ban.
 author: haroldwongms
 manager: mdotson
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: openshift
+ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: 989c67d0d1b1cd8257da089ec9c31f247228018e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aba01fc2317372438bc0d93a6618d518ab03ed0d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87367945"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672313"
 ---
 # <a name="openshift-in-azure"></a>OpenShift az Azure-ban
 
@@ -42,7 +43,7 @@ Mivel az ügyfelek a teljes platformot használják, a saját helyszíni adatkö
 
 A OKD egy [nyílt forráskódú](https://www.okd.io/) , OpenShift által támogatott felső szintű projekt. A OKD telepíthető CentOS vagy Red Hat Enterprise Linux (RHEL) rendszerre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure-beli OpenShift általános előfeltételeinek konfigurálása](./openshift-container-platform-3x-prerequisites.md)
 - [OpenShift-tároló platform üzembe helyezése az Azure-ban](./openshift-container-platform-3x.md)

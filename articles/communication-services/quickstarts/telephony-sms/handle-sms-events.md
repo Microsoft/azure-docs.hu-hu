@@ -9,26 +9,25 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d6409c005e006372f55e77aeb4d977e6b1c45832
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: b3bdbef5680561d60ab4db6ee42033553e691ed3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936275"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660123"
 ---
 # <a name="quickstart-handle-sms-events"></a>Gyors útmutató: SMS-események kezelése
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
-Az Azure kommunikációs szolgáltatások használatának első lépései a kommunikációs szolgáltatások SMS-események kezelésére Azure Event Grid használatával. 
+Az Azure kommunikációs szolgáltatások használatának első lépései a kommunikációs szolgáltatások SMS-események kezelésére Azure Event Grid használatával.
 
 ## <a name="about-azure-event-grid"></a>Tudnivalók Azure Event Grid
 
 A [Azure Event Grid](../../../event-grid/overview.md) egy felhőalapú esemény-szolgáltatás. Ebből a cikkből megtudhatja, hogyan fizethet elő a [kommunikációs szolgáltatás eseményeire](../../concepts/event-handling.md)vonatkozó eseményekre, és hogyan válthat ki egy eseményt az eredmény megtekintéséhez. Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek eseményadatokat dolgoznak fel és műveleteket hajtanak végre. Ebben a cikkben elküldjük az eseményeket egy olyan webalkalmazásnak, amely összegyűjti és megjeleníti az üzeneteket.
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Egy Azure kommunikációs szolgáltatás erőforrása. További részletek az [Azure kommunikációs erőforrás létrehozása című](../create-communication-resource.md) útmutatóban olvashatók.
 - SMS-kompatibilis telefonszám. [Telefonszám beolvasása](./get-phone-number.md).
 
@@ -44,13 +43,13 @@ Az Azure Portalon:
 2. Válassza ki az Event Gridhez használt előfizetést.
 3. A bal oldali menüben, a **Beállítások** területen válassza az **erőforrás-szolgáltatók** elemet.
 4. Keresse ki a **Microsoft.EventGrid** elemet.
-5. Ha nincs regisztrálva, válassza a **Regisztrálás** lehetőséget. 
+5. Ha nincs regisztrálva, válassza a **Regisztrálás** lehetőséget.
 
 Lehetséges, hogy a regisztráció végrehajtása eltart néhány pillanatig. Válassza a **Frissítés** lehetőséget az állapotfrissítéshez. Ha az **Állapot** értéke **Regisztrált**, folytathatja.
 
 ### <a name="event-grid-viewer-deployment"></a>Event Grid Viewer üzembe helyezése
 
-Ebben a rövid útmutatóban a [Azure Event Grid Viewer mintát](/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/) fogjuk használni az események közel valós idejű megtekintéséhez. Ez biztosítja a felhasználó számára a valós idejű hírcsatornák élményét. Emellett az egyes események hasznos adatait is elérhetővé kell tenniük a vizsgálathoz.  
+Ebben a rövid útmutatóban a [Azure Event Grid Viewer mintát](/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/) fogjuk használni az események közel valós idejű megtekintéséhez. Ez biztosítja a felhasználó számára a valós idejű hírcsatornák élményét. Emellett az egyes események hasznos adatait is elérhetővé kell tenniük a vizsgálathoz.
 
 ## <a name="subscribe-to-the-sms-events-using-web-hooks"></a>Előfizetés az SMS-eseményekre webhookok használatával
 
@@ -62,7 +61,7 @@ Kattintson az **esemény-előfizetés hozzáadása** elemre a létrehozási var�
 
 Az **esemény-előfizetés létrehozása** lapon adja meg az esemény-előfizetés **nevét** .
 
-Előfizethet bizonyos eseményekre, hogy elmondja Event Grid a nyomon követni kívánt SMS-események, valamint az események küldésének helyét. Válassza ki azokat az eseményeket, amelyekre elő szeretné fizetni a legördülő menüből. SMS-ben lehetőség van a és a kiválasztására `SMS Received` `SMS Delivery Report Received` . 
+Előfizethet bizonyos eseményekre, hogy elmondja Event Grid a nyomon követni kívánt SMS-események, valamint az események küldésének helyét. Válassza ki azokat az eseményeket, amelyekre elő szeretné fizetni a legördülő menüből. SMS-ben lehetőség van a és a kiválasztására `SMS Received` `SMS Delivery Report Received` .
 
 Ha a rendszer megkéri, hogy adjon meg egy **rendszertéma-nevet**, adjon meg egy egyedi karakterláncot. Ez a mező nincs hatással a felhasználói élményre, és belső telemetria célokra használatos.
 
@@ -70,7 +69,7 @@ Tekintse meg az [Azure kommunikációs szolgáltatások által támogatott esem�
 
 :::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="Képernyőfelvétel: az SMS-ben fogadott és SMS-kézbesítési jelentés bejelölt esemény-típusai.":::
 
-Válassza a **webes Hook** lehetőséget a **végpont típusához**. 
+Válassza a **webes Hook** lehetőséget a **végpont típusához**.
 
 :::image type="content" source="./media/handle-sms-events/select-events-create-linkwebhook.png" alt-text="Képernyőfelvétel: a végpont típusa mező, amely a web Hookra van beállítva.":::
 
@@ -111,7 +110,7 @@ Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, tör�
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhat SMS-eseményeket. SMS-üzeneteket a Event Grid előfizetés létrehozásával fogadhat.
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [SMS küldése](../telephony-sms/send.md)
 
 A következőket is érdemes elvégezheti:

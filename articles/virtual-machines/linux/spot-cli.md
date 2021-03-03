@@ -3,17 +3,18 @@ title: Az Azure spot Virtual Machines üzembe helyezése a CLI használatával
 description: Megtudhatja, hogyan használhatja a CLI-t az Azure spot Virtual Machines üzembe helyezéséhez a költségek megtakarítása érdekében.
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: spot
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: abb29c0826e38af0bbbc1b59e41234acdaaca0f9
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: f1ad1dff695755e88881773bdcbebc2da283b75d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100554787"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669373"
 ---
 # <a name="deploy-azure-spot-virtual-machines-using-the-azure-cli"></a>Az Azure spot Virtual Machines üzembe helyezése az Azure CLI használatával
 

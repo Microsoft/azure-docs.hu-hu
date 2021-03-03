@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 08/04/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 963a84c55a5433a204f387d1936eb7ceee60d913
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 9552e9c6deaabc9c847a8fbd26b1246b073dcc1b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98730040"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673276"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>Oktatóanyag: Azure-alapú virtuális hálózatok létrehozása és felügyelete Windows rendszerű virtuális gépeken az Azure PowerShell-lel
 
@@ -269,7 +269,7 @@ New-AzVM `
 
 Ebben a példában a rendszerkép SQL Server telepítve van, de ez az oktatóanyag nem használható. Ennek részeként megtudhatja, hogyan konfigurálhat egy virtuális gépet a webes forgalom és az adatbázis-kezelés kezelésére szolgáló virtuális gép használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban virtuális gépekhez csatolva hozta létre és biztosította az Azure-hálózatokat. 
 
@@ -280,4 +280,4 @@ Ebben az oktatóanyagban virtuális gépekhez csatolva hozta létre és biztosí
 > * Biztonságos hálózati adatforgalom
 > * Háttérbeli virtuális gép létrehozása
 
-A virtuális gépek lemezeinek védelméről további információért lásd: [biztonsági mentés és vész-helyreállítás lemezek esetén](backup-and-disaster-recovery-for-azure-iaas-disks.md).
+A virtuális gépek lemezeinek védelméről további információért lásd: [biztonsági mentés és vész-helyreállítás lemezek esetén](../backup-and-disaster-recovery-for-azure-iaas-disks.md).

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2020
 ms.author: Zhchia
-ms.openlocfilehash: 4e43ebba9f5f3d0c52d1d03bbf6baca92d5b87a4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c3384effc961c6c588bc2d7f4f75bc386d63076b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96178704"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651577"
 ---
 # <a name="tutorial-configure-github-ae-for-automatic-user-provisioning"></a>Oktatóanyag: a GitHub AE konfigurálása automatikus felhasználó-kiépítési szolgáltatáshoz
 
@@ -111,17 +111,27 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
    |név. formázott|Sztring|
    |displayName|Sztring|
 
-10. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a GitHub AE**-ra lehetőséget.
 
-11. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást a GitHub AE számára, módosítsa a **kiépítési állapotot** **a következőre** a **Settings (beállítások** ) szakaszban.
+11. Tekintse át az Azure AD-ból a GitHub AE-ra szinkronizált csoport attribútumait az **attribútum-hozzárendelés** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a GitHub AE-ban lévő csoportoknak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+
+      |Attribútum|Típus|
+      |---|---|
+      |displayName|Sztring|
+      |externalId|Sztring|
+      |tagok|Referencia|
+
+12. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
+
+13. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást a GitHub AE számára, módosítsa a **kiépítési állapotot** **a következőre** a **Settings (beállítások** ) szakaszban.
 
     ![Kiépítési állapot bekapcsolva](common/provisioning-toggle-on.png)
 
-12. Adja meg azokat a felhasználókat és/vagy csoportokat, amelyeket a GitHub AE számára szeretne kiépíteni a **Beállítások** szakasz **hatókörében** a kívánt értékek kiválasztásával.
+14. Adja meg azokat a felhasználókat és/vagy csoportokat, amelyeket a GitHub AE számára szeretne kiépíteni a **Beállítások** szakasz **hatókörében** a kívánt értékek kiválasztásával.
 
     ![Átadási hatókör](common/provisioning-scope.png)
 
-13. Amikor készen áll az átadásra, kattintson a **Mentés** gombra.
+15. Amikor készen áll az átadásra, kattintson a **Mentés** gombra.
 
     ![Átadási konfiguráció mentése](common/provisioning-configuration-save.png)
 
@@ -133,6 +143,10 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 1. Az [átadási naplókkal](../reports-monitoring/concept-provisioning-logs.md) határozhatja meg, hogy mely felhasználók átadása sikeres, és melyeké sikertelen.
 2. A [folyamatjelzőn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
 3. Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](../app-provisioning/application-provisioning-quarantine-status.md) találhat további információt.  
+
+## <a name="change-log"></a>Változási napló
+
+* 02/18/2021 – a csoportok üzembe helyezésének támogatása.
 
 ## <a name="additional-resources"></a>További források
 

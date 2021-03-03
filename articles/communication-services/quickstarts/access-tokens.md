@@ -1,7 +1,7 @@
 ---
 title: Rövid útmutató – hozzáférési tokenek létrehozása és kezelése
 titleSuffix: An Azure Communication Services quickstart
-description: Ismerje meg, hogyan kezelheti az identitásokat és a hozzáférési jogkivonatokat az Azure Communication Services Felügyeleti ügyféloldali kódtár használatával.
+description: Ismerje meg, hogyan kezelheti az identitásokat és a hozzáférési jogkivonatokat az Azure kommunikációs szolgáltatások identitás-ügyféloldali kódtár használatával.
 author: tomaschladek
 manager: nmurav
 services: azure-communication-services
@@ -10,18 +10,16 @@ ms.date: 08/20/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: 246b8041e7e12ea1a1391cb4690d02892bc31b63
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 8937210b366981d9768e5329989a8ad14f5e8f35
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325297"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657059"
 ---
 # <a name="quickstart-create-and-manage-access-tokens"></a>Rövid útmutató: hozzáférési tokenek létrehozása és kezelése
 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
-Ismerkedés az Azure kommunikációs szolgáltatásokkal a kommunikációs szolgáltatások felügyeleti ügyféloldali kódtár használatával. Lehetővé teszi az identitások létrehozását és a hozzáférési jogkivonatok kezelését. Az identitás az alkalmazás entitását jelöli az Azure kommunikációs szolgáltatásban (például felhasználó vagy eszköz). A hozzáférési tokenek lehetővé teszik a csevegést és az ügyféloldali kódtárak közvetlen hitelesítését az Azure kommunikációs szolgáltatásokkal szemben. Javasoljuk, hogy egy kiszolgálóoldali szolgáltatáshoz hozzáférési jogkivonatokat generáljon. A hozzáférési tokeneket a rendszer a kommunikációs szolgáltatások ügyféloldali kódtárainak inicializálására használja az eszközökön.
+Ismerkedjen meg az Azure kommunikációs szolgáltatásokkal a kommunikációs szolgáltatások Identity ügyféloldali kódtár használatával. Lehetővé teszi az identitások létrehozását és a hozzáférési jogkivonatok kezelését. Az identitás az alkalmazás entitását jelöli az Azure kommunikációs szolgáltatásban (például felhasználó vagy eszköz). A hozzáférési tokenek lehetővé teszik a csevegést és az ügyféloldali kódtárak közvetlen hitelesítését az Azure kommunikációs szolgáltatásokkal szemben. Javasoljuk, hogy egy kiszolgálóoldali szolgáltatáshoz hozzáférési jogkivonatokat generáljon. A hozzáférési tokeneket a rendszer a kommunikációs szolgáltatások ügyféloldali kódtárainak inicializálására használja az eszközökön.
 
 A jelen oktatóanyagban szereplő képekben szereplő díjak kizárólag demonstrációs célokat szolgálnak.
 
@@ -69,7 +67,7 @@ Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 > [!div class="checklist"]
 > * Identitások kezelése
 > * Hozzáférési tokenek kiadása
-> * A kommunikációs szolgáltatások felügyeleti ügyféloldali kódtár használata
+> * A kommunikációs szolgáltatások identitás ügyféloldali kódtár használata
 
 
 > [!div class="nextstepaction"]
@@ -80,4 +78,3 @@ A következőket is érdemes elvégezheti:
  - [A hitelesítés ismertetése](../concepts/authentication.md)
  - [Csevegés hozzáadása az alkalmazáshoz](./chat/get-started.md)
  - [Az ügyfél és a kiszolgáló architektúrájának megismerése](../concepts/client-and-server-architecture.md)
- 

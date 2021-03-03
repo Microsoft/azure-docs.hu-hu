@@ -100,8 +100,10 @@
           href: cache-private-link.md
         - name: Zónaredundancia engedélyezése
           href: cache-how-to-zone-redundancy.md
-        - name: Georeplikáció beállítása
+        - name: OSS geo-replikáció beállítása
           href: cache-how-to-geo-replication.md
+        - name: A vállalati Active geo-replikáció beállítása
+          href: cache-how-to-active-geo-replication.md
         - name: Mentés lefoglalt kapacitással
           href: cache-reserved-pricing.md
         - name: Migrálás az Azure Cache for Redisbe

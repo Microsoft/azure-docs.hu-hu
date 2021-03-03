@@ -1,0 +1,94 @@
+- name: Eszköz frissítése IoT Hub dokumentációhoz
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi az IoT Hub eszköz frissítése?
+      href: understand-device-update.md
+- name: Oktatóanyagok
+  items:
+    - name: Rendszerkép frissítése a málna PI-on
+      href: device-update-raspberry-pi.md
+    - name: Eszköz frissítésének használata szimulátoron
+      href: device-update-simulator.md
+    - name: 'Csomag frissítése Ubuntu Server 18,04 x64 rendszeren'
+      href: device-update-ubuntu-agent.md
+- name: Alapelvek
+  items:
+    - name: Eszköz frissítési fiókja és példánya
+      href: device-update-resources.md
+    - name: Eszköz frissítése felhasználói szerepkörök és hozzáférés
+      href: device-update-control-access.md
+    - name: Eszköz frissítése apt-jegyzékfájl
+      href: device-update-apt-manifest.md
+    - name: Eszköz frissítésének megfelelősége
+      href: device-update-compliance.md
+    - name: Eszköz-frissítési csoportok
+      href: device-update-groups.md
+    - name: Az eszköz frissítésének módja Plug and Play
+      href: device-update-plug-and-play.md
+    - name: Az eszköz frissítésének hálózati követelményei
+      href: device-update-networking.md
+    - name: Eszköz frissítési ügynöke
+      href: device-update-agent-overview.md
+    - name: Eszköz frissítési konfigurációs fájlja
+      href: device-update-configuration-file.md
+    - name: Eszköz frissítési jegyzékfájlja
+      href: update-manifest.md
+    - name: Az eszköz frissítésének módja
+      href: device-update-security.md
+    - name: Leválasztott eszközök támogatása
+      href: connected-cache-disconnected-device-update.md
+    - name: A Microsoft csatlakoztatott gyorsítótár konfigurálása a IoT Hub eszköz frissítéséhez
+      href: connected-cache-configure.md
+- name: Útmutatók
+  items:
+    - name: Eszköz-frissítési fiók létrehozása
+      href: create-device-update-account.md
+    - name: Az eszköz frissítési ügynökének üzembe helyezése
+      href: device-update-agent-provisioning.md
+    - name: Frissítés importálása
+      href: import-update.md
+    - name: Eszköz frissítési csoportjának létrehozása
+      href: create-update-group.md
+    - name: Eszköz frissítésének központi telepítése
+      href: deploy-update.md
+    - name: Eszköz frissítésének központi telepítése
+      href: deploy-update.md
+    - name: Egyetlen szintű Microsoft csatlakoztatott gyorsítótár
+      href: connected-cache-single-level.md
+    - name: Beágyazott szint – Microsoft csatlakoztatott gyorsítótár
+      href: connected-cache-nested-level.md
+    - name: Microsoft csatlakoztatott gyorsítótár ipari IoT (IIOT)
+      href: connected-cache-industrial-iot-nested.md
+    - name: Hibaelhárítás
+      items:
+        - name: Az eszközök frissítéseinek hibáinak megoldása
+          href: troubleshoot-device-update.md
+- name: Referencia
+  items:
+    - name: Eszköz frissítési ügyfelének hibakódai
+      href: device-update-error-codes.md
+- name: További források
+  items:
+    - name: Támogatási és súgólehetőségek
+      href: ../iot-fundamentals/iot-support-help.md
+    - name: Azure IoT-szolgáltatások
+      items:
+        - name: IoT Hub
+          href: ./index.yml
+        - name: IoT Hub Device Provisioning Service
+          href: ../iot-dps/index.yml
+        - name: IoT-központ
+          href: /microsoft-iot-central/
+        - name: IoT Edge
+          href: ../iot-edge/index.yml
+        - name: IoT-megoldásgyorsítók
+          href: ../iot-accelerators/index.yml
+        - name: IoT Plug and Play
+          href: ../iot-pnp/index.yml
+        - name: Azure Maps
+          href: ../azure-maps/index.yml
+        - name: Time Series Insights
+          href: ../time-series-insights/index.yml
+    - name: Kézbesítésoptimalizálás elemet
+      href: 'https://github.com/microsoft/do-client'

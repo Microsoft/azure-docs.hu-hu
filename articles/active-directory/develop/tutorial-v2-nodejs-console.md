@@ -8,14 +8,14 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
-ms.date: 01/12/2021
+ms.date: 02/17/2021
 ms.author: v-doeris
-ms.openlocfilehash: 3d4211acbf6b65ef8f04d00b3936d70bb930ed9e
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 33d3712e25a06419e0ccc5914cdddfae7d85a371
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100562104"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645789"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-in-a-nodejs-console-app"></a>Oktatóanyag: a Microsoft Graph API meghívása egy Node.js Console-alkalmazásban
 
@@ -125,9 +125,9 @@ A *bin* mappában hozzon létre egy *auth.js* nevű fájlt, és adja hozzá a k�
 const msal = require('@azure/msal-node');
 
 /**
- * Configuration object to be passed to MSAL instance on creation. 
+ * Configuration object to be passed to MSAL instance on creation.
  * For a full list of MSAL Node configuration parameters, visit:
- * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/configuration.md 
+ * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/configuration.md
  */
 const msalConfig = {
     auth: {
@@ -139,8 +139,8 @@ const msalConfig = {
 
 /**
  * With client credentials flows permissions need to be granted in the portal by a tenant administrator.
- * The scope is always in the format '<resource>/.default'. For more, visit: 
- * https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow 
+ * The scope is always in the format '<resource>/.default'. For more, visit:
+ * https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow
  */
 const tokenRequest = {
     scopes: [process.env.GRAPH_ENDPOINT + '.default'],
@@ -158,7 +158,7 @@ const cca = new msal.ConfidentialClientApplication(msalConfig);
 
 /**
  * Acquires token with client credentials.
- * @param {object} tokenRequest 
+ * @param {object} tokenRequest
  */
 async function getToken(tokenRequest) {
     return await cca.acquireTokenByClientCredential(tokenRequest);
@@ -212,8 +212,8 @@ const axios = require('axios');
 
 /**
  * Calls the endpoint with authorization bearer token.
- * @param {string} endpoint 
- * @param {string} accessToken 
+ * @param {string} endpoint
+ * @param {string} accessToken
  */
 async function callApi(endpoint, accessToken) {
 
@@ -239,7 +239,7 @@ module.exports = {
 };
 ```
 
-Itt a `callApi` metódus használatával HTTP-kérést lehet végezni `GET` egy olyan védett erőforráson, amely hozzáférési jogkivonatot igényel. A kérés ezután visszaadja a tartalmat a hívónak. Ez a metódus hozzáadja a beszerzett jogkivonatot a *http-engedélyezési fejlécben*. A védett erőforrás itt a Microsoft Graph API [Users végpont](https://docs.microsoft.com/graph/api/user-list) , amely a bérlő azon felhasználóit jeleníti meg, ahol az alkalmazás regisztrálva van.
+Itt a `callApi` metódus használatával HTTP-kérést lehet végezni `GET` egy olyan védett erőforráson, amely hozzáférési jogkivonatot igényel. A kérés ezután visszaadja a tartalmat a hívónak. Ez a metódus hozzáadja a beszerzett jogkivonatot a *http-engedélyezési fejlécben*. A védett erőforrás itt a Microsoft Graph API [Users végpont](/graph/api/user-list) , amely a bérlő azon felhasználóit jeleníti meg, ahol az alkalmazás regisztrálva van.
 
 ## <a name="test-the-app"></a>Az alkalmazás tesztelése
 
@@ -278,7 +278,7 @@ request made to web API at: Fri Jan 22 2021 09:31:52 GMT-0800 (Pacific Standard 
 
 ## <a name="how-the-application-works"></a>Az alkalmazás működése
 
-Ez az alkalmazás a [OAuth 2,0 ügyfél-hitelesítő adatok megadását](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)használja. Ez az engedélytípus általában olyan kiszolgálóközi interakciók esetén használatos, amelyeknek a felhasználóval való azonnali interakció nélkül, a háttérben kell futniuk. A hitelesítő adatok engedélyezési folyamata lehetővé teszi egy webszolgáltatás (bizalmas ügyfél) számára a saját hitelesítő adatainak használatát a felhasználó megszemélyesítése helyett a hitelesítéshez egy másik webszolgáltatás hívásakor. A hitelesítési modellel támogatott alkalmazások típusa általában **démonok** vagy **szolgáltatásfiókok**.
+Ez az alkalmazás a [OAuth 2,0 ügyfél-hitelesítő adatok megadását](./v2-oauth2-client-creds-grant-flow.md)használja. Ez az engedélytípus általában olyan kiszolgálóközi interakciók esetén használatos, amelyeknek a felhasználóval való azonnali interakció nélkül, a háttérben kell futniuk. A hitelesítő adatok engedélyezési folyamata lehetővé teszi egy webszolgáltatás (bizalmas ügyfél) számára a saját hitelesítő adatainak használatát a felhasználó megszemélyesítése helyett a hitelesítéshez egy másik webszolgáltatás hívásakor. A hitelesítési modellel támogatott alkalmazások típusa általában **démonok** vagy **szolgáltatásfiókok**.
 
 Az ügyfél-hitelesítő adatokra vonatkozó kérelem hatóköre az erőforrás neve, majd a `/.default` . Ez a jelölés azt mutatja Azure Active Directory (Azure AD) számára, hogy az alkalmazás regisztrálása során statikusan deklarált alkalmazási szintű engedélyeket használjon. Emellett a **bérlői rendszergazdának** is meg kell adni ezeket az API-engedélyeket.
 

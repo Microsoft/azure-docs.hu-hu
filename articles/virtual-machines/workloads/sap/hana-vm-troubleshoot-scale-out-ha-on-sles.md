@@ -6,19 +6,18 @@ documentationcenter: ''
 author: hermanndms
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: 87758100299eb170a7950a1a7a2c6bd2029b27fb
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: f4c1de484ce2659a7e84a1546a7c49c1d77a7d56
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621552"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674486"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>A kibővíthető magas rendelkezésre állású telepítés ellenőrzése és SAP HANA megoldása a SLES 12 SP3 rendszeren 
 
@@ -554,7 +553,7 @@ Last change: Wed Sep 12 07:46:54 2018 by root via cibadmin on hso-hana-vm-s2-1
 7 nodes configured
 17 resources configured
 
-              **_ Resource management is DISABLED _*_
+              *** Resource management is DISABLED ***
   The cluster will not attempt to start, stop or recover services
 
 Online: [ hso-hana-dm hso-hana-vm-s1-0 hso-hana-vm-s1-1 hso-hana-vm-s1-2 hso-hana-vm-s2-0 hso-hana-vm-s2-1 hso-hana-vm-s2-2 ]
@@ -590,7 +589,7 @@ crm configure property maintenance-mode=false
 </code></pre>
 
 
-Egy másik _ *CRM** parancs beolvassa a teljes fürtkonfiguráció egy Szerkesztőbe, így szerkesztheti. A módosítások mentése után a fürt elindítja a megfelelő műveleteket:
+Egy másik **CRM** -parancs beolvassa a fürt teljes konfigurációját egy Szerkesztőbe, így szerkesztheti azt. A módosítások mentése után a fürt elindítja a megfelelő műveleteket:
 
 <pre><code>
 crm configure edit
@@ -980,6 +979,6 @@ Ez a végső képernyőkép egy átmeneti átmenet **részleteit** mutatja be. A
 ![Hawk Single Transition](media/hana-vm-scale-out-HA-troubleshooting/hawk-5.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a hibaelhárítási útmutató a SAP HANA magas rendelkezésre állását ismerteti a kibővíthető konfigurációban. Az adatbázison kívül az SAP-környezet egy másik fontos összetevője az SAP NetWeaver stack. Ismerje meg az [SAP NetWeaver magas rendelkezésre állását a SUSE Enterprise Linux Servert használó Azure-beli virtuális gépeken][sap-nw-ha-guide-sles].

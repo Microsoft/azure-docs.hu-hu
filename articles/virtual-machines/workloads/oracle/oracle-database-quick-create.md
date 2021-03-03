@@ -2,18 +2,18 @@
 title: Oracle-adatbázis létrehozása Azure-beli virtuális gépen | Microsoft Docs
 description: Gyorsan beszerezhet egy Oracle Database 12c-adatbázist az Azure-környezetben.
 author: dbakevlar
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: kegorman
-ms.reviewer: cynthn
-ms.openlocfilehash: a202c8d176d6b9a8893a7bc5aaad6771942dda04
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: ec6a8382e2c0ce2cb359a62dd3f80fc977c4b1c2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063062"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674659"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Oracle Database létrehozása Azure-beli virtuális gépen
 
@@ -188,16 +188,16 @@ Ebben a feladatban konfigurálnia kell néhány külső végpontot az adatbázis
    echo "/dev/sdc1               /u02                    ext4    defaults        0 0" >> /etc/fstab
    ```
    
-10. Frissítse a ***/etc/hosts** _ fájlt a nyilvános IP-címmel és állomásnévvel.
+10. Frissítse a ***/etc/hosts*** -fájlt a nyilvános IP-címmel és állomásnévvel.
 
-    Módosítsa a _*_nyilvános IP-címet és a VMname_*_ , hogy az tükrözze a tényleges értékeket:
+    Módosítsa a ***nyilvános IP-címet és a VMname*** , hogy az tükrözze a tényleges értékeket:
   
     ```bash
     echo "<Public IP> <VMname>.eastus.cloudapp.azure.com <VMname>" >> /etc/hosts
     ```
 11. Az állomásnév fájljának frissítése
     
-    A következő parancs használatával adja hozzá a virtuális gép tartománynevét a _ */etc/hostname** fájlhoz. Ez azt feltételezi, hogy létrehozta az erőforráscsoportot és a virtuális gépet a **eastus** régióban:
+    A következő parancs használatával adja hozzá a virtuális gép tartománynevét a **/etc/hostname** -fájlhoz. Ez azt feltételezi, hogy létrehozta az erőforráscsoportot és a virtuális gépet a **eastus** régióban:
     
     ```bash
     sed -i 's/$/\.eastus\.cloudapp\.azure\.com &/' /etc/hostname

@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.reviewer: sngun
-ms.openlocfilehash: e537c964d6063b76df63b3d80c5ef72b1ea56c92
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 92a9abec36bd75c594c67843286bf8fa067d7dba
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600249"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658537"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>Az alkalmazás migrálása a Azure Cosmos DB Java SDK v4 használatára
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -33,10 +33,10 @@ Ez a cikk azt ismerteti, hogyan frissítheti a régebbi Azure Cosmos DB Java SDK
 
 A következő táblázat felsorolja a különböző Azure Cosmos DB Java SDK-kat, a csomag nevét és a kiadási információkat:
 
-| Java SDK| Kiadás dátuma | Köteg API-k   | Maven jar  | Java-csomag neve  |API-hivatkozás   | Kibocsátási megjegyzések  |
+| Java SDK| Kiadás dátuma | Köteg API-k   | Maven jar  | Java-csomag neve  |API-hivatkozás   | Release Notes (Kibocsátási megjegyzések)  |
 |-------|------|-----------|-----------|--------------|-------------|---------------------------|
-| Aszinkron 2. x. x  | 2018. június    | Aszinkron (RxJava)  | `com.microsoft.azure::azure-cosmosdb` | `com.microsoft.azure.cosmosdb.rx` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Kibocsátási megjegyzések](sql-api-sdk-async-java.md) |
-| 2. x. x szinkronizálása     | Szeptember 2018    | Sync   | `com.microsoft.azure::azure-documentdb` | `com.microsoft.azure.cosmosdb` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Kibocsátási megjegyzések](sql-api-sdk-java.md)  |
+| Aszinkron 2. x. x  | 2018. június    | Aszinkron (RxJava)  | `com.microsoft.azure::azure-cosmosdb` | `com.microsoft.azure.cosmosdb.rx` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Release Notes (Kibocsátási megjegyzések)](sql-api-sdk-async-java.md) |
+| 2. x. x szinkronizálása     | Szeptember 2018    | Sync   | `com.microsoft.azure::azure-documentdb` | `com.microsoft.azure.cosmosdb` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Release Notes (Kibocsátási megjegyzések)](sql-api-sdk-java.md)  |
 | 3. x. x    | 2019. július    | Aszinkron (reaktor)/Sync  | `com.microsoft.azure::azure-cosmos`  | `com.azure.data.cosmos` | [API](https://azure.github.io/azure-cosmosdb-java/3.0.0/) | - |
 | 4,0   | 2020. június   | Aszinkron (reaktor)/Sync  | `com.azure::azure-cosmos` | `com.azure.cosmos`   | -  | [API](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-cosmos/4.0.1/index.html)  |
 
@@ -145,7 +145,7 @@ client.createDatabaseIfNotExists("YourDatabaseName")
         CosmosContainerProperties containerProperties = 
             new CosmosContainerProperties("YourContainerName", "/id");
         // Create container with specified properties & provisioned throughput
-        return database"createContainerIf"otExists(containerProperties, 400);
+        return database.createContainerIfNotExists(containerProperties, 400);
     }).flatMap(containerResponse -> {
         container = containerResponse.container();
         return Mono.empty();
@@ -504,7 +504,7 @@ Document responseDocument = documentResourceResponse.getResource();
 ```
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Java-alkalmazás létrehozása](create-sql-api-java.md) Azure Cosmos db SQL API-alapú adatkezeléshez a v4 SDK használatával
 * Tudnivalók a [reaktor-alapú Java SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-pattern-guide.md) -k használatáról

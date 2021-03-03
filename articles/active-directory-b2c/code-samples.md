@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 8642f4284770df54704a4e7066054d3bb4640486
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: a75896dde7a23ea346e0af73ed145094e78812ca
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545869"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101654493"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C-mintakódok
 
@@ -27,8 +27,8 @@ Az alábbi táblázat többek között iOS-, Android-, .NET- és Node.js-mintaal
 |--------| ----------- |
 | [ios-swift-native-msal](https://github.com/Azure-Samples/active-directory-b2c-ios-swift-native-msal) | Swift nyelvű iOS-minta, amely az Azure AD B2C-felhasználókat hitelesíti, és meghív egy API-t az OAuth 2.0 használatával. |
 | [android-native-msal](https://github.com/Azure-Samples/ms-identity-android-java#b2cmodefragment-class) | Egy egyszerű Android-alkalmazás, amely azt mutatja be, hogyan használható az MSAL felhasználók hitelesítéséhez az Azure Active Directory B2C segítségével, és hogyan lehet hozzáférni egy webes API-hoz az eredményül kapott jogkivonatokkal. |
-| [ios-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-ios-native-appauth) | Ez a minta azt mutatja be, hogyan használhatók a külső fejlesztőktől származó kódtárak egy olyan iOS-alkalmazás létrehozásához az Objective-C-ben, amely Microsoft identitás-felhasználókat hitelesít az Azure AD B2C identitásszolgáltatáshoz. |
-| [android-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-android-native-appauth) | Ez a minta azt mutatja be, hogyan használhatók a külső fejlesztőktől származó kódtárak egy olyan Android-alkalmazás létrehozásához, amely Microsoft identitás-felhasználókat hitelesít a B2C identitásszolgáltatáshoz, és meghív egy webes API-t OAuth 2.0 hozzáférési jogkivonatok használatával. |
+| [ios-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-ios-native-appauth) | Egy minta, amely bemutatja, hogyan használható egy külső gyártótól származó kódtár egy olyan iOS-alkalmazás létrehozásához a Objective-C-ben, amely hitelesíti a Microsoft Identity Users szolgáltatást a Azure AD B2C Identity Service-ben. |
+| [android-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-android-native-appauth) | Ez a minta bemutatja, hogyan használható egy külső gyártótól származó könyvtár olyan Android-alkalmazás létrehozásához, amely hitelesíti a Microsoft Identity-felhasználókat a B2C Identity Service-ben, és meghívja a webes API-t a OAuth 2,0 hozzáférési jogkivonatok használatával. |
 | [dotnet-desktop](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) | Ez a minta azt mutatja be, hogyan tud egy Windows asztali .NET- (WPF-) alkalmazás bejelentkeztetni egy felhasználót az Azure AD B2C-vel, hogyan szerezhet be egy hozzáférési jogkivonatot az MSAL.NET használatával, és hogyan hívhat meg egy API-t. |
 | [xamarin-native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Egy egyszerű Xamarin Forms-alkalmazás, amely azt mutatja be, hogyan használható az MSAL felhasználók hitelesítéséhez az Azure Active Directory B2C segítségével, és hogyan lehet hozzáférni egy webes API-hoz az eredményül kapott jogkivonatokkal. |
 
@@ -47,8 +47,16 @@ Az alábbi táblázat többek között iOS-, Android-, .NET- és Node.js-mintaal
 
 | Sample | Leírás |
 |--------| ----------- |
-| [MS-Identity-B2C-JavaScript-Spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa) | Webes API-t meghívó egyoldalas alkalmazás (single-page application, SPA). A hitelesítés Azure AD B2C MSAL.js használatával történik. Ez a példa az engedélyezési kód folyamatát használja a PKCE. |
-| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Webes API-t meghívó egyoldalas alkalmazás (single-page application, SPA). A hitelesítés Azure AD B2C MSAL.js használatával történik. Ez a minta az implicit folyamatot használja.|
+| [MS-Identity-B2C-JavaScript-Spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa) | Egy egyoldalas alkalmazás (SPA), amely webes API-t hív meg. A hitelesítés Azure AD B2C MSAL.js használatával történik. Ez a példa az engedélyezési kód folyamatát használja a PKCE. |
+| [JavaScript – NodeJS – felügyelet](https://github.com/Azure-Samples/ms-identity-b2c-javascript-nodejs-management/tree/main/Chapter1) | Egy egyoldalas alkalmazás (SPA), amely a B2C-címtárban lévő felhasználók kezeléséhez Microsoft Graph hív meg. A hitelesítés Azure AD B2C MSAL.js használatával történik. Ez a példa az engedélyezési kód folyamatát használja a PKCE.|
+| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Egy egyoldalas alkalmazás (SPA), amely webes API-t hív meg. A hitelesítés Azure AD B2C MSAL.js használatával történik. Ez a példa az implicit folyamatot használja.|
+
+## <a name="consoledaemon-apps"></a>Konzol/démon alkalmazások
+
+| Sample | Leírás |
+|--------| ----------- |
+| [JavaScript – NodeJS – felügyelet](https://github.com/Azure-Samples/ms-identity-b2c-javascript-nodejs-management/tree/main/Chapter2) | Egy Node.js és Express Console Daemon-alkalmazás, amely a saját identitásával hívja meg a Microsoft Grapht a B2C-címtárban lévő felhasználók kezeléséhez. A hitelesítés Azure AD B2C a MSAL csomópont használatával történik. Ez a példa az engedélyezési kód folyamatát használja.|
+| [dotnetcore – B2C – Fiókkezelés](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management) | A .NET Core Console alkalmazás a saját identitásával hívja meg a Microsoft Grapht a B2C-címtárban lévő felhasználók kezeléséhez. A hitelesítés Azure AD B2C a MSAL.NET használatával történik. Ez a példa az engedélyezési kód folyamatát használja.|
 
 ## <a name="saml-test-application"></a>SAML-teszt alkalmazás
 
@@ -73,7 +81,7 @@ Az alábbi táblázatok a felhasználói folyamatokban lévő webes API-k [API-�
 | Sample                                                                                                            | Leírás                                                                                                                          |
 | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | [Arkóz Labs – csalások és visszaélések elleni védelem](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose) | Ez a minta bemutatja, hogyan védhető meg a felhasználói regisztráció a Arkóz Labs-csalások és a visszaélések elleni védelmi szolgáltatás használatával. |
-| [reCAPTCHA](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-captcha) | Ez a minta bemutatja, hogyan védhető meg a felhasználói regisztrációk a reCAPTCHA-kihívás használatával, hogy megakadályozza az automatikus visszaélést. |
+| [reCAPTCHA](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-captcha) | Ez a minta azt mutatja be, hogyan védhető meg a felhasználói regisztráció a reCAPTCHA-kihívással, hogy megakadályozza az automatikus visszaélést. |
 
 
 ### <a name="identity-verification"></a>Személyazonosság ellenőrzése

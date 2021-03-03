@@ -6,7 +6,7 @@
   items:
     - name: Mi az a Data Science Virtual Machine (DSVM)?
       href: overview.md
-    - name: Az adatelemzési virtuális géphez mellékelt eszközök
+    - name: Eszközök a Data Science Virtual Machine
       href: tools-included.md
 - name: Rövid útmutatók
   expanded: true

@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan állíthatja be az Azure Private-hivatkozást e
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 12/16/2020
+ms.date: 03/02/2021
 ms.author: thweiss
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9a6db0d25165059581d7ffafa5b8e7fd19330c87
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: c684bd38f5e82cc53da002278495c2d4a859edc2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629646"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661290"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Azure Private-hivatkozás konfigurálása Azure Cosmos-fiókhoz
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -22,11 +22,11 @@ Az Azure Private link használatával privát végponton keresztül csatlakozhat
 > [!NOTE]
 > A privát hivatkozás nem akadályozza meg, hogy az Azure Cosmos-végpontok nyilvános DNS-sel legyenek feloldva. A bejövő kérések szűrése az alkalmazás szintjén történik, nem pedig átviteli vagy hálózati szinten.
 
-A privát hivatkozás lehetővé teszi, hogy a felhasználók hozzáférjenek egy Azure Cosmos-fiókhoz a virtuális hálózatból vagy bármely társ virtuális hálózatból. A privát kapcsolatra leképezett erőforrások a VPN-en vagy az Azure-ExpressRoute keresztül is elérhetők a helyszínen keresztül. 
+A privát hivatkozás lehetővé teszi, hogy a felhasználók hozzáférjenek egy Azure Cosmos-fiókhoz a virtuális hálózatból vagy bármely társ virtuális hálózatból. A privát kapcsolatra leképezett erőforrások a VPN-en vagy az Azure-ExpressRoute keresztül is elérhetők a helyszínen keresztül.
 
-Az automatikus vagy manuális jóváhagyási módszer használatával kapcsolódhat egy privát kapcsolattal konfigurált Azure Cosmos-fiókhoz. További információ: a privát hivatkozás dokumentációjának [jóváhagyási munkafolyamat](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow) szakasza. 
+Az automatikus vagy manuális jóváhagyási módszer használatával kapcsolódhat egy privát kapcsolattal konfigurált Azure Cosmos-fiókhoz. További információ: a privát hivatkozás dokumentációjának [jóváhagyási munkafolyamat](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow) szakasza.
 
-Ez a cikk leírja a privát végpontok létrehozásának lépéseit. Feltételezi, hogy az automatikus jóváhagyási módszert használja.
+Ez a cikk a Azure Cosmos DB tranzakciós tárolóhoz tartozó privát végpontok beállítását ismerteti. Feltételezi, hogy az automatikus jóváhagyási módszert használja. Ha az analitikai tárolót használja, tekintse meg [az analitikus tárolóhoz tartozó privát végpontok](analytical-store-private-endpoints.md) című cikket.
 
 ## <a name="create-a-private-endpoint-by-using-the-azure-portal"></a>Hozzon létre egy privát végpontot a Azure Portal használatával
 
@@ -47,7 +47,7 @@ A következő lépésekkel hozhat létre egy meglévő Azure Cosmos-fiókhoz tar
     | Erőforráscsoport | Válasszon ki egy erőforráscsoportot.|
     | **Példány adatai** |  |
     | Name | Adja meg a privát végpont nevét. Ha ezt a nevet hozza, hozzon létre egy egyedit. |
-    |Régió| Válassza ki azt a régiót, ahol a privát hivatkozást telepíteni szeretné. Hozza létre a magánhálózati végpontot ugyanazon a helyen, ahol a virtuális hálózat található.|
+    |Region| Válassza ki azt a régiót, ahol a privát hivatkozást telepíteni szeretné. Hozza létre a magánhálózati végpontot ugyanazon a helyen, ahol a virtuális hálózat található.|
     |||
 1. Válassza a **Tovább: erőforrás** elemet.
 1. A **privát végpont létrehozása – erőforrás** területen adja meg vagy válassza ki az alábbi adatokat:
@@ -74,7 +74,7 @@ A következő lépésekkel hozhat létre egy meglévő Azure Cosmos-fiókhoz tar
     |Privát DNS-zóna |Válassza ki **privatelink.documents.Azure.com**. <br><br/> A magánhálózati DNS-zóna automatikusan meg van határozva. A Azure Portal használatával nem módosítható.|
     |||
 
-1. Válassza a **Felülvizsgálat és létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** lapon az Azure ellenőrzi a konfigurációt.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** lapon az Azure ellenőrzi a konfigurációt.
 1. Amikor megjelenik a **Megfelelt az ellenőrzésen** üzenet, válassza a **Létrehozás** lehetőséget.
 
 Ha jóváhagyta az Azure Cosmos-fiókhoz tartozó privát hivatkozást, akkor a Azure Portalban a **tűzfal és a virtuális hálózatok** ablaktábla **minden hálózat** lehetőség nem érhető el.
@@ -88,8 +88,8 @@ Az alábbi táblázat a különböző Azure Cosmos-fiók API-típusai, a támoga
 |Mongo   |  MongoDB       |  privatelink.mongo.cosmos.azure.com    |
 |Gremlin     | Gremlin        |  privatelink.gremlin.cosmos.azure.com   |
 |Gremlin     |  SQL       |  privatelink.documents.azure.com    |
-|Táblázat    |    Táblázat     |   privatelink.table.cosmos.azure.com    |
-|Táblázat     |   SQL      |  privatelink.documents.azure.com    |
+|Tábla    |    Tábla     |   privatelink.table.cosmos.azure.com    |
+|Tábla     |   SQL      |  privatelink.documents.azure.com    |
 
 ### <a name="fetch-the-private-ip-addresses"></a>A magánhálózati IP-címek beolvasása
 
@@ -671,7 +671,7 @@ Az alábbi korlátozások érvényesek, ha privát hivatkozást használ egy Azu
 
 * Ha Azure Cosmos DB API-ját használja a MongoDB-fiókokhoz, a rendszer csak a kiszolgáló 3,6-es verziójában lévő fiókok esetében támogatja a magánhálózati végpontot (azaz a végpontot a formátumban használó fiókok esetében `*.mongo.cosmos.azure.com` ). A magánhálózati hivatkozás nem támogatott a (z) 3,2-es verziójú kiszolgálókon lévő fiókok esetében (azaz a végpontot használó fiókok esetében `*.documents.azure.com` ). A privát hivatkozás használatához át kell telepítenie a régi fiókokat az új verzióra.
 
-* Ha olyan MongoDB-fiókhoz használ Azure Cosmos DB API-t, amely privát hivatkozást tartalmaz, előfordulhat, hogy egyes eszközök vagy tárak nem működnek, mivel automatikusan kiszűrik a `appName` paramétert a kapcsolati karakterláncból. Ez a paraméter szükséges a fiókhoz való kapcsolódáshoz egy privát végponton keresztül. Bizonyos eszközök, például a Visual Studio Code, nem távolítják el ezt a paramétert a kapcsolatok sztringből, ezért kompatibilisek.
+* Ha egy Azure Cosmos DB API-t használ a MongoDB-fiókhoz, amelyhez privát hivatkozás tartozik, az eszközöknek/könyvtáraknak támogatnia kell a szolgáltatásnév-azonosítót (SNI), vagy át kell adni a `appName` paramétert a kapcsolati karakterláncból a megfelelő csatlakozáshoz. Előfordulhat, hogy egyes régebbi eszközök/könyvtárak nem kompatibilisek a privát kapcsolat funkciójának használatával.
 
 * A hálózati rendszergazdának legalább az engedélyt meg kell adni `Microsoft.DocumentDB/databaseAccounts/PrivateEndpointConnectionsApproval/action` Az Azure Cosmos-fiók hatókörében, hogy automatikusan jóváhagyott privát végpontokat hozzon létre.
 

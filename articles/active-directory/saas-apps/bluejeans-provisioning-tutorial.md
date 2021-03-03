@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: d029f033a3c452587dbeeadf69c46cc99f604031
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 58cd69ebe97d9d0965d7e648b0ded012ac71cd0d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053821"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646126"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés BlueJeans konfigurálása
 
@@ -27,7 +27,7 @@ Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a BlueJeans és a A
 > * Felhasználók létrehozása a BlueJeans-ben
 > * Felhasználók eltávolítása a BlueJeans-ben, ha már nincs szükség hozzáférésre
 > * Felhasználói attribútumok szinkronizálása az Azure AD és a BlueJeans között
-> * [Egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/saas-apps/bluejeans-tutorial) a BlueJeans-be (ajánlott)
+> * [Egyszeri bejelentkezés](./bluejeans-tutorial.md) a BlueJeans-be (ajánlott)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -141,7 +141,7 @@ Ez a művelet elindítja a **Beállítások** szakaszban a **hatókörben** defi
 Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja az üzemelő példányt:
 
 1. Az [átadási naplókkal](../reports-monitoring/concept-provisioning-logs.md) határozhatja meg, hogy mely felhasználók átadása sikeres, és melyeké sikertelen.
-2. A [folyamatjelzőn](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
+2. A [folyamatjelzőn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
 3. Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](../app-provisioning/application-provisioning-quarantine-status.md) találhat további információt.  
 
 ## <a name="connector-limitations"></a>Összekötő korlátozásai

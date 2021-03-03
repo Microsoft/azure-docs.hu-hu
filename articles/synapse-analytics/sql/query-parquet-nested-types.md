@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6df8c3238ed6dfeb37fd10d0a7e97aa839e7bf26
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2ef547bea9ba84665ec7187a5adf2f7a7d87e0a4
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681077"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666321"
 ---
 # <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Beágyazott típusok lekérdezése a parketta és a JSON-fájlokban kiszolgáló nélküli SQL-készlet használatával az Azure szinapszis Analyticsben
 
@@ -147,7 +147,7 @@ FROM
 
 ## <a name="access-elements-from-repeated-columns"></a>Elemek elérése ismétlődő oszlopokból
 
-A következő lekérdezés beolvassa a justSimpleArray. Parque fájlt, és a [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) használatával beolvas egy skaláris elemet egy ismétlődő oszlopból, például egy tömbből vagy térképből:
+A következő lekérdezés beolvassa a justSimpleArray. Parque fájlt, és a [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest&preserve-view=true) használatával beolvas egy skaláris elemet egy ismétlődő oszlopból, például egy tömbből vagy térképből:
 
 ```sql
 SELECT
@@ -172,7 +172,7 @@ Az eredmény a következő:
 
 ## <a name="access-sub-objects-from-complex-columns"></a>Az alárendelt objektumok elérése összetett oszlopokból
 
-A következő lekérdezés beolvassa a mapExample. Parque fájlt, és a [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) használatával lekéri a nem skaláris elemet egy ismétlődő oszlopból, például egy tömbből vagy térképből:
+A következő lekérdezés beolvassa a mapExample. Parque fájlt, és a [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest&preserve-view=true) használatával lekéri a nem skaláris elemet egy ismétlődő oszlopból, például egy tömbből vagy térképből:
 
 ```sql
 SELECT

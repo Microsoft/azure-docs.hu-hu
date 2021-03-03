@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: 5e8b873e0e4e89979769183cfbf0ad473069e897
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 60371888dbc4f0cbc33f1ad1b2a685dbb071c01a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101096426"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670713"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Az Azure-Cognitive Search teljesítményének méretezése
 
@@ -91,7 +91,7 @@ Mivel a replikák az adatai másolatai, több replikát is biztosít az Azure Co
 
 ### <a name="availability-zones"></a>Rendelkezésre állási zónák
 
-[Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview) a régió adatközpontjait különálló fizikai hely csoportokba oszthatja, hogy magas rendelkezésre állást biztosítsanak ugyanazon a régión belül. Cognitive Search esetében az egyes replikák a zónák hozzárendelésének egységei. Egy keresési szolgáltatás egy régión belül fut; a replikái különböző zónákban futnak.
+[Availability Zones](../availability-zones/az-overview.md) a régió adatközpontjait különálló fizikai hely csoportokba oszthatja, hogy magas rendelkezésre állást biztosítsanak ugyanazon a régión belül. Cognitive Search esetében az egyes replikák a zónák hozzárendelésének egységei. Egy keresési szolgáltatás egy régión belül fut; a replikái különböző zónákban futnak.
 
 Availability Zones az Azure Cognitive Search használatával két vagy több replikát adhat hozzá a keresési szolgáltatáshoz. Minden replika a régión belül egy másik rendelkezésre állási zónába kerül. Ha Availability Zones több replikával rendelkezik, a replikák a lehető legegyenletesebb Availability Zones lesznek elosztva.
 

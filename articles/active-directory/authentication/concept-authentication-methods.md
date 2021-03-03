@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/22/2021
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 1459dd41fcdc30a29a5f9f93ec9704083767a342
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0bbaf5fa4f3404b0e4fdb4dc016b703c58910457
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725671"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652079"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Milyen hitelesítési és ellenőrzési módszerek érhetők el az Azure Active Directoryban?
 
@@ -42,8 +42,8 @@ Az alábbi táblázat az elérhető hitelesítési módszerek biztonsági szempo
 |--------------------------------|:--------:|:---------:|:------------:|
 | Vállalati Windows Hello     | Magas     | Magas      | Magas         |
 | A Microsoft Authenticator alkalmazás    | Magas     | Magas      | Magas         |
-| FIDO2 biztonsági kulcs (előzetes verzió)   | Magas     | Magas      | Magas         |
-| A hardver-tokenek ESKÜje (előzetes verzió) | Közepes   | Közepes    | Magas         |
+| FIDO2 biztonsági kulcs             | Magas     | Magas      | Magas         |
+| OATH hardveres jogkivonatok           | Közepes   | Közepes    | Magas         |
 | Az eskü szoftver jogkivonatai           | Közepes   | Közepes    | Magas         |
 | SMS                            | Közepes   | Magas      | Közepes       |
 | Hang                          | Közepes   | Közepes    | Közepes       |
@@ -66,9 +66,9 @@ A következő táblázat azt ismerteti, hogy mikor lehet hitelesítési módszer
 | Metódus                         | Elsődleges hitelesítés | Másodlagos hitelesítés  |
 |--------------------------------|:----------------------:|:-------------------------:|
 | Vállalati Windows Hello     | Igen                    | MFA                       |
-| A Microsoft Authenticator alkalmazás    | Igen (előzetes verzió)          | MFA és SSPR              |
-| FIDO2 biztonsági kulcs (előzetes verzió)   | Igen                    | MFA                       |
-| A hardver-tokenek ESKÜje (előzetes verzió) | Nem                     | MFA                       |
+| A Microsoft Authenticator alkalmazás    | Igen                    | MFA és SSPR              |
+| FIDO2 biztonsági kulcs             | Igen                    | MFA                       |
+| OATH hardveres jogkivonatok           | Nem                     | MFA                       |
 | Az eskü szoftver jogkivonatai           | Nem                     | MFA                       |
 | SMS                            | Igen                    | MFA és SSPR              |
 | Hanghívás                     | Nem                     | MFA és SSPR              |
@@ -80,8 +80,8 @@ Ha többet szeretne megtudni az egyes hitelesítési módszerek működéséről
 
 * [Vállalati Windows Hello](/windows/security/identity-protection/hello-for-business/hello-overview)
 * [A Microsoft Authenticator alkalmazás](concept-authentication-authenticator-app.md)
-* [FIDO2 biztonsági kulcs (előzetes verzió)](concept-authentication-passwordless.md#fido2-security-keys)
-* [A hardver-tokenek ESKÜje (előzetes verzió)](concept-authentication-oath-tokens.md#oath-hardware-tokens-preview)
+* [FIDO2 biztonsági kulcs](concept-authentication-passwordless.md#fido2-security-keys)
+* [OATH hardveres jogkivonatok](concept-authentication-oath-tokens.md#oath-hardware-tokens)
 * [Az eskü szoftver jogkivonatai](concept-authentication-oath-tokens.md#oath-software-tokens)
 * [SMS-bejelentkezés](howto-authentication-sms-signin.md) és- [ellenőrzés](concept-authentication-phone-options.md#mobile-phone-verification)
 * [Telefonhívás ellenőrzése](concept-authentication-phone-options.md)
@@ -96,7 +96,7 @@ A következő további ellenőrzési módszerek használhatók bizonyos helyzete
 * [Biztonsági kérdések](concept-authentication-security-questions.md) – csak a SSPR esetében használatos
 * [E-mail-cím](concept-sspr-howitworks.md#authentication-methods) – csak a SSPR esetében használatos
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az első lépésekhez tekintse meg az [önkiszolgáló jelszó-visszaállítás (SSPR)][tutorial-sspr] és az [Azure ad multi-Factor Authentication][tutorial-azure-mfa]oktatóanyagát.
 

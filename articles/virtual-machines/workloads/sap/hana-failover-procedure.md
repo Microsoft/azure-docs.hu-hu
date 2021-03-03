@@ -6,20 +6,19 @@ documentationcenter: ''
 author: saghorpa
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1daba0819e0164602ae78ece87421834f36fb09a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2a33340524556f5da1703cae3532f053fbe8ba13
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967822"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670989"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>Vészhelyreállítási feladatátvételi eljárás
 
@@ -89,7 +88,7 @@ A következő lépések bemutatják, hogyan állíthatja helyre a SAP HANA üzem
 
    ![A napló inicializálási körzetének beállítása](./media/hana-overview-high-availability-disaster-recovery/initialize_log_dr3.PNG)
 
-1. Válassza a **Befejezés** lehetőséget.
+1. Válassza a **Befejezés** gombot.
 
    ![A DR visszaállítás befejezése](./media/hana-overview-high-availability-disaster-recovery/finish_dr4.PNG)
 

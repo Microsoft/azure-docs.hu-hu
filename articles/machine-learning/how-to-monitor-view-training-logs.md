@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: ea96e1056e6157cfddbdc2f0b6451ed55a74d1de
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 8b2a61a92a25e1c0da9f85439438e75969fcfbf0
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97756058"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661018"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>ML futtatási naplók és metrikák figyelése és megtekintése
 
@@ -78,6 +78,17 @@ A **ScriptRunConfig** használatakor a ```run.wait_for_completion(show_output = 
 
 <a id="queryrunmetrics"></a>
 
+### <a name="logging-run-metrics"></a>Naplózási futtatási metrikák 
+
+A következő módszerek használhatók a naplózási API-kon a metrikák vizualizációinak befolyásolására. Jegyezze fel a naplózott metrikák [szolgáltatási korlátait](https://docs.microsoft.com/azure/machine-learning/resource-limits-quotas-capacity#metrics) . 
+
+|Naplózott érték|Mintakód| Formátum a portálon|
+|----|----|----|
+|Numerikus értékek tömbje| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|Egyváltozós vonalas diagram|
+|Egy numerikus értéket többször is felhasználhat ugyanazzal a metrikai névvel (például a cikluson belül)| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| Egyváltozós vonalas diagram|
+|Sor naplózása 2 numerikus oszloppal ismételten|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Kétváltozós vonalas diagram|
+|Táblázat két numerikus oszloppal|`run.log_table(name='Sine Wave', value=sines)`|Kétváltozós vonalas diagram|
+
 ## <a name="query-run-metrics"></a>Lekérdezés-futtatási metrikák
 
 A betanított modell metrikáit a használatával tekintheti meg ```run.get_metrics()``` . Például a fenti példával meghatározhatja a legjobb modellt úgy, hogy a legalacsonyabb Mean Square error (MSE) értékkel keresi a modellt.
@@ -95,18 +106,6 @@ Az egyes kísérletek nézet esetében válassza a **minden kísérlet** lapot. 
 A futtatási lista tábla szerkesztésével több futtatást is kijelölhet, és megjelenítheti a futtatások utolsó, minimális vagy maximális naplózott értékét. A diagramok testreszabásával összehasonlíthatja a naplózott mérőszámok értékeit és összesítéseit több Futtatás között. 
 
 ![Részletek futtatása a Azure Machine Learning Studióban](media/how-to-track-experiments/experimentation-tab.gif)
-
-### <a name="format-charts"></a>Diagramok formázása 
-
-A következő módszerek használhatók a naplózási API-kon a metrikák vizualizációinak befolyásolására.
-
-|Naplózott érték|Mintakód| Formátum a portálon|
-|----|----|----|
-|Numerikus értékek tömbje| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|Egyváltozós vonalas diagram|
-|Egy numerikus értéket többször is felhasználhat ugyanazzal a metrikai névvel (például a cikluson belül)| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| Egyváltozós vonalas diagram|
-|Sor naplózása 2 numerikus oszloppal ismételten|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Kétváltozós vonalas diagram|
-|Táblázat két numerikus oszloppal|`run.log_table(name='Sine Wave', value=sines)`|Kétváltozós vonalas diagram|
-
 
 ### <a name="view-log-files-for-a-run"></a>Futtatási naplófájlok megtekintése 
 
@@ -182,7 +181,7 @@ Ha figyelni szeretné a futtatásokat egy adott számítási célra a böngész�
 A Futtatás befejezése után már nem jelenik meg ezen a lapon. A befejezett futtatásokkal kapcsolatos információk megtekintéséhez látogasson el a Studio __kísérletek__ szakaszára, és válassza ki a kísérletet, majd futtassa a parancsot. További információért lásd a [befejezett futtatások metrikáinak megtekintése](#view-the-experiment-in-the-web-portal)című szakaszt.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbálja ki a következő lépéseket a Azure Machine Learning használatának megismeréséhez:
 

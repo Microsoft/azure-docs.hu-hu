@@ -6,13 +6,13 @@ ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
-ms.date: 12/01/2020
-ms.openlocfilehash: f778a55c206e012884b44c1fea0a63e2de6b481a
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.date: 02/22/2020
+ms.openlocfilehash: 5285d5b2c7cbe6845fb6043fa1096f94254602e7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97693348"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677830"
 ---
 # <a name="tutorial-navigate-the-azure-purview-preview-home-page-and-search-for-an-asset"></a>Oktatóanyag: navigáljon az Azure-beli hatáskörébe (előzetes verzió) kezdőlapra, és keressen rá egy adott eszközre.
 
@@ -45,7 +45,7 @@ Az alábbi lépések végigvezetik az Azure hatáskörébe tartozó kezdőlapon.
 
 1. Nyissa meg az Azure-beli hatáskörébe tartozó erőforrást a Azure Portalon, és válassza a **hatáskörébe Studio megnyitása** lehetőséget. A rendszer automatikusan átveszi a hatáskörébe Studio kezdőlapját.
 
-   A Kezdőlap tetején megjelenik a katalógus neve és a katalógus-elemzések készlete. Ide tartozik a felhasználók, az adategységek és a Szószedet feltételeinek száma. Az összegzésben láthatja, hogy a teljes és a 113-es szószedetben több mint 200 eszköz található. Ez a szám frissül, mivel a szervezet megvizsgálja és további feltételeket hoz létre az Azure hatáskörébe.
+   A Kezdőlap tetején megjelenik a katalógus neve és a katalógus-elemzések készlete. Ide tartozik a források, az adategységek és a Szószedet feltételeinek száma. Az összegzésben láthatja, hogy a teljes és a 113-es szószedetben több mint 200 eszköz található. Ez a szám frissül, mivel a szervezet megvizsgálja és további feltételeket hoz létre az Azure hatáskörébe.
 
    :::image type="content" source="./media/tutorial-asset-search/purview-home-page.png" alt-text="Az Azure hatáskörébe tartozó kezdőlapot bemutató képernyőkép.":::
 
@@ -95,7 +95,7 @@ Az alábbi lépéseket követve megkeresheti az adategységeket, és megjelölhe
 
     A leírás, a tulajdonos neve és a szakértő neve mező már fel van töltve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Mielőtt továbblép a következő oktatóanyagra ebben a sorozatban, szánjon néhány további időt az Azure hatáskörébe tartozó Kezdőlap megismerésére. Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

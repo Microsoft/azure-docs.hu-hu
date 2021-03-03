@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/14/2020
 ms.author: jeedes
-ms.openlocfilehash: ed136d06f18190124abe4598d580f40e41bf8592
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 20f49c174dde90bc7f1a9b34f3dea3132e9b177e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704220"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644697"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-splan-visitor"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezés (SSO) integrálása sPlan-látogatóval
 
@@ -120,8 +120,8 @@ Hozzon létre egy **Britta Simon** nevű teszt felhasználót a sPlan-látogató
 Tesztelje az Azure AD egyszeri bejelentkezési konfigurációját az alábbi lehetőségek egyikével:
 
 * **Azure Portal**: válassza az **alkalmazás tesztelése** lehetőséget, hogy automatikusan bejelentkezzen arra a sPlan-látogatóba, amelyhez be szeretné állítani az egyszeri bejelentkezést.
-* **Microsoft My apps portál**: válassza a **sPlan-látogató** csempét, hogy automatikusan bejelentkezzen a sPlan-látogatóba, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a saját alkalmazások portálról: [Bejelentkezés és alkalmazások indítása a saját alkalmazások portálján](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* **Microsoft My apps portál**: válassza a **sPlan-látogató** csempét, hogy automatikusan bejelentkezzen a sPlan-látogatóba, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a saját alkalmazások portálról: [Bejelentkezés és alkalmazások indítása a saját alkalmazások portálján](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A sPlan-látogató konfigurálása után [megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlőket a Microsoft Cloud app Securityban](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app). A munkamenet-vezérlők valós időben védik a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáférésből.
+A sPlan-látogató konfigurálása után [megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlőket a Microsoft Cloud app Securityban](/cloud-app-security/proxy-deployment-any-app). A munkamenet-vezérlők valós időben védik a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáférésből.

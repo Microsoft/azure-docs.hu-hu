@@ -11,12 +11,12 @@ ms.reviewer: larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 09/23/2020
-ms.openlocfilehash: a0f813253520d76731a9b49a89b0bcace7c2ef34
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: a907bf61cb7ccb8b6d287840c12a00451cad782f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979164"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657859"
 ---
 # <a name="troubleshooting-the-parallelrunstep"></a>A ParallelRunStep hibaelhárítása
 
@@ -119,7 +119,7 @@ Hozza létre a ParallelRunStep a parancsfájl, a környezeti konfiguráció és 
 - `parallel_run_config`: A `ParallelRunConfig` korábban definiált objektum.
 - `inputs`: Egy vagy több, egybeírt Azure Machine Learning-adathalmaz párhuzamos feldolgozásra particionálva.
 - `side_inputs`: Egy vagy több olyan hivatkozási adat vagy adatkészlet, amelyet nem kell particionálni.
-- `output`: `PipelineData` A kimeneti könyvtárnak megfelelő objektum.
+- `output`: Egy `OutputDatasetConfig` vagy egy olyan `PipelineData` objektum, amely megfelel a kimeneti könyvtárnak.
 - `arguments`: A felhasználói parancsfájlnak átadott argumentumok listája. A unknown_args használatával kérheti le őket a belépési parancsfájlban (nem kötelező).
 - `allow_reuse`: Azt határozza meg, hogy a lépés felhasználja-e az előző eredményeket, ha ugyanazokkal a beállításokkal/bemenetekkel futnak. Ha ez a paraméter `False` , akkor a folyamat végrehajtása során a rendszer mindig új futtatást hoz létre ehhez a lépéshez. (nem kötelező; az alapértelmezett érték: `True` .)
 

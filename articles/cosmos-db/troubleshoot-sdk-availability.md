@@ -3,17 +3,17 @@ title: A többrégiós környezetekben elérhető Azure Cosmos SDK-k rendelkezé
 description: Ismerje meg az Azure Cosmos SDK rendelkezésre állási viselkedését többrégiós környezetben való működés esetén.
 author: ealsur
 ms.service: cosmos-db
-ms.date: 02/16/2021
+ms.date: 02/18/2021
 ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 641b7d44407f8f3760c673f45d69dcfdc8b363b8
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 0720eb01920e39a9bee27e4d00d97acba55b0ad5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650983"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661426"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>A többrégiós környezetekben elérhető Azure Cosmos SDK-k rendelkezésre állásának diagnosztizálása és megoldása
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -47,13 +47,13 @@ Ha **nem állít be előnyben részesített régiót**, az SDK-ügyfél alapért
 > Ha a területi beállításként megadott értékek nem egyeznek a meglévő Azure-régiókkal, a rendszer figyelmen kívül hagyja őket. Ha megegyeznek egy meglévő régióval, de a fiók nem replikálódik rá, akkor az ügyfél az elsődleges régióhoz tartozó következő előnyben részesített régióhoz fog csatlakozni.
 
 > [!WARNING]
-> Ha letiltja a végpont újbóli felderítését (amely hamis értékre van állítva), az ügyfél konfigurációja letiltja a jelen dokumentumban ismertetett összes feladatátvételi és rendelkezésre állási logikát.
-> Ez a konfiguráció a következő paraméterekkel érhető el az egyes Azure Cosmos SDK-ban:
+> A jelen dokumentumban ismertetett feladatátvételi és rendelkezésre állási logika le lehet tiltani az ügyfél konfigurációjában, ami nem ajánlott, kivéve, ha a felhasználói alkalmazás nem fogja tudni kezelni a rendelkezésre állási hibákat. Ez a következő módon érhető el:
 >
-> * A [ConnectionPolicy. EnableEndpointRediscovery](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.enableendpointdiscovery) tulajdonság a .NET v2 SDK-ban.
-> * A [CosmosClientBuilder. endpointDiscoveryEnabled](/java/api/com.azure.cosmos.cosmosclientbuilder.endpointdiscoveryenabled) metódus a Java v4 SDK-ban.
-> * A [CosmosClient.enable_endpoint_discovery](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) paraméter a Python SDK-ban.
-> * A [CosmosClientOptions. ConnectionPolicy. enableEndpointDiscovery](/javascript/api/@azure/cosmos/connectionpolicy#enableEndpointDiscovery) paraméter a JS SDK-ban.
+> * A [ConnectionPolicy. EnableEndpointRediscovery](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.enableendpointdiscovery) tulajdonság beállítása a .NET v2 SDK-ban hamis értékre.
+> * A [CosmosClientOptions. LimitToEndpoint](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.limittoendpoint) tulajdonság beállítása a .net v3 SDK-ban igaz értékre.
+> * A [CosmosClientBuilder. endpointDiscoveryEnabled](/java/api/com.azure.cosmos.cosmosclientbuilder.endpointdiscoveryenabled) metódus beállítása a Java v4 SDK-ban hamis értékre.
+> * A [CosmosClient.enable_endpoint_discovery](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) paraméter beállítása a Python SDK-ban hamis értékre.
+> * A [CosmosClientOptions. ConnectionPolicy. enableEndpointDiscovery](/javascript/api/@azure/cosmos/connectionpolicy#enableEndpointDiscovery) paraméter beállítása a JS SDK-ban hamis értékre.
 
 Normális körülmények között az SDK-ügyfél csatlakozni fog az előnyben részesített régióhoz (ha be van állítva egy területi beállítás) vagy az elsődleges régióra (ha nincs beállítva preferencia), és a műveletek az adott régióra korlátozódnak, kivéve, ha az alábbi esetek bármelyike bekövetkezik.
 

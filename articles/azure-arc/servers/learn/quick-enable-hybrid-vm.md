@@ -3,14 +3,14 @@ title: Hibrid gép összekapcsolása az Azure arc-kompatibilis kiszolgálókkal
 description: Ismerje meg, hogyan csatlakozhat és regisztrálhat hibrid gépet az Azure arc-kompatibilis kiszolgálókon.
 ms.topic: quickstart
 ms.date: 12/15/2020
-ms.openlocfilehash: 68869854cbfcf6d7297137e6239b2229a20c04a1
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: c52b8d1f7098a7a2a88a9770a3b768b7fea31775
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516780"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646826"
 ---
-# <a name="quickstart-connect-hybrid-machine-with-azure-arc-enabled-servers"></a>Gyors útmutató: hibrid gép összekapcsolása az Azure arc-kompatibilis kiszolgálókkal
+# <a name="quickstart-connect-hybrid-machines-with-azure-arc-enabled-servers"></a>Gyors útmutató: hibrid gépek összekapcsolása az Azure arc-kompatibilis kiszolgálókkal
 
 Az [Azure arc-kompatibilis kiszolgálók](../overview.md) lehetővé teszik a helyszíni, Edge és többfelhős környezetekben üzemeltetett Windows és Linux rendszerű gépek felügyeletét és szabályozását. Ebben a rövid útmutatóban üzembe helyezi és konfigurálja a csatlakoztatott gépi ügynököt az Azure-on kívül üzemeltetett Windows-vagy Linux-gépen az arc-kompatibilis kiszolgálók általi felügyelethez.
 
@@ -110,7 +110,7 @@ Miután telepítette az ügynököt, és konfigurálta az Azure arc-kompatibilis
 
 :::image type="content" source="./media/quick-enable-hybrid-vm/enabled-machine.png" alt-text="A számítógép sikeres csatlakoztatása" border="false":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy engedélyezte a Linux vagy Windows rendszerű hibrid gépet, és sikeresen csatlakozott a szolgáltatáshoz, készen áll a Azure Policy az Azure-ban való megfelelőség megismerésére.
 
