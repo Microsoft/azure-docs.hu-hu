@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 5b96e568b57c34fec1c93727aabe8e739a2a45cd
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6e9ae9b8d9d1154d55991d078af0faef65ff654b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448652"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699572"
 ---
 # <a name="kubernetes-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes az Azure Stack Edge Pro GPU-eszközön
 
@@ -57,7 +57,7 @@ Az alkalmazások számítási feladatainak támogatásához csatlakoztathatja az
 
 További információ: Storage-létesítési beállítások a Kubernetes-tárolóban lévő alkalmazások számára az [Azure stack Edge Pro-eszközhöz](azure-stack-edge-gpu-kubernetes-storage.md).
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 A Kubernetes hálózatkezelés lehetővé teszi a Kubernetes-hálózaton belüli kommunikáció konfigurálását, többek között a tárolók közötti hálózatkezelést, a pod-Pod hálózatkezelést, a pod-szolgáltatást és az internetről a szolgáltatásba történő hálózatkezelést. További információ: hálózati modell a [Kubernetes hálózatkezelésben az Azure stack Edge Pro-eszközhöz](azure-stack-edge-gpu-kubernetes-networking.md).
 
@@ -108,8 +108,18 @@ Az alkalmazások Kubernetes-fürtön IoT Edge használatával történő közpon
 
 Az Azure arc egy hibrid felügyeleti eszköz, amely lehetővé teszi, hogy alkalmazásokat helyezzen üzembe a Kubernetes-fürtökön. Az Azure arc azt is lehetővé teszi, hogy a tárolók Azure Monitor használatával megtekinthesse és figyelje a fürtöket. További információért látogasson el a [Mi az Azure-Arc enabled Kubernetes?](../azure-arc/kubernetes/overview.md)című témakörben. Az Azure arc díjszabásával kapcsolatos információkért látogasson el az [Azure arc díjszabására](https://azure.microsoft.com/services/azure-arc/#pricing).
 
+Március 2021-én az Azure arc-kompatibilis Kubernetes általánosan elérhető lesz a felhasználók számára, és a szokásos használati díjak érvényesek. Az előzetes verziójú ügyfélként az Azure arc-kompatibilis Kubernetes az Azure Stack Edge-eszköz (ök) számára ingyenesen elérhető lesz. Az előzetes verziójú ajánlat kihasználása érdekében hozzon létre egy [support Request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest):
 
-## <a name="next-steps"></a>További lépések
+1. A **Probléma típusa** területen válassza a **Számlázás** lehetőséget.
+2. Az **Előfizetés** alatt válassza ki az előfizetését.
+3. A **szolgáltatás** területen válassza **a saját szolgáltatások**, majd az **Azure stack Edge** lehetőséget.
+4. Az **erőforrás** területen válassza ki az erőforrást.
+5. Az **Összefoglalás** területen adja meg a probléma leírását.
+6. A **probléma típusa** területen válassza a **váratlan díjak** lehetőséget.
+7. A **probléma altípusa** alatt válassza **az ingyenes próbaverzióban a díjak megismerése** lehetőséget.
+
+
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a Kubernetes Storage szolgáltatásról [Azure stack Edge Pro-eszközön](azure-stack-edge-gpu-kubernetes-storage.md).
 - A Kubernetes hálózati modell megismerése [Azure stack Edge Pro-eszközön](azure-stack-edge-gpu-kubernetes-networking.md).

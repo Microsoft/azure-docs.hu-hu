@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: bccd1f001cca67a5be3d14c50e6a6db96cb6584c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7356b9bb814f8bca5465fe74d48409b9dbca6d3b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100615285"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731697"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor adatplatform
 
@@ -28,7 +28,7 @@ A [Azure monitor](overview.md) különböző forrásokból származó adatokat g
 ## <a name="observability-data-in-azure-monitor"></a>Megfigyelt adatszolgáltatások Azure Monitor
 A mérőszámokat, a naplókat és az elosztott nyomkövetéseket általában a megfigyelés három pillérének nevezzük. Ezek a különböző típusú adatok, amelyeket a figyelő eszköznek össze kell gyűjtenie, és elemezni kell, hogy elegendő legyen a figyelt rendszer megfelelő megfigyelése. A megfigyelés úgy érhető el, ha több pillérből származó adatokkal korrelál, és az adatok összesítése a figyelt erőforrások teljes készlete között történik. Mivel a Azure Monitor különböző forrásokból származó adatok tárolására szolgálnak, az adatok összekapcsolhatók és elemezhetők a közös eszközkészletek használatával. Emellett a több Azure-előfizetésre és-bérlőre vonatkozó adatokkal is összefügg, valamint más szolgáltatásokra vonatkozó adatok üzemeltetése mellett.
 
-Az Azure-erőforrások jelentős mennyiségű figyelési adattal járnak. Azure Monitor összevonja ezeket az adatokat más forrásokból származó figyelési adatokkal a metrikák vagy naplók platformba. Mindegyiket bizonyos figyelési helyzetekre optimalizáltuk, és mindegyik támogatja a Azure Monitor különböző funkcióit. Az olyan funkciók, mint például az adatelemzés, a vizualizációk vagy a riasztások, meg kell ismerniük a különbségeket, hogy a lehető leghatékonyabb és költséghatékony módon lehessen megvalósítani a szükséges helyzetet. A Azure Monitor például [Application Insights](app/app-insights-overview.md) vagy [Azure monitor for VMS](vm/vminsights-overview.md) elemzési eszközökkel rendelkezik, amelyek lehetővé teszik, hogy az adott figyelési forgatókönyvre koncentráljon anélkül, hogy meg kellene ismernie a két adattípus közötti különbséget. 
+Az Azure-erőforrások jelentős mennyiségű figyelési adattal járnak. Azure Monitor összevonja ezeket az adatokat más forrásokból származó figyelési adatokkal a metrikák vagy naplók platformba. Mindegyiket bizonyos figyelési helyzetekre optimalizáltuk, és mindegyik támogatja a Azure Monitor különböző funkcióit. Az olyan funkciók, mint például az adatelemzés, a vizualizációk vagy a riasztások, meg kell ismerniük a különbségeket, hogy a lehető leghatékonyabb és költséghatékony módon lehessen megvalósítani a szükséges helyzetet. A Azure Monitor, például [Application Insights](app/app-insights-overview.md) vagy a [virtuális](vm/vminsights-overview.md) gépek elemzései olyan elemzési eszközökkel rendelkeznek, amelyek lehetővé teszik az adott figyelési forgatókönyvre való összpontosítást anélkül, hogy meg kellene ismerniük a két adattípus közötti különbséget. 
 
 
 ### <a name="metrics"></a>Mérőszámok

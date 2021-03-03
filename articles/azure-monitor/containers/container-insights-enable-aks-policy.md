@@ -3,20 +3,20 @@ title: Az AK-figyelési addon engedélyezése Azure Policy használatával
 description: Ismerteti, hogyan engedélyezhető az AK-figyelési addon az Azure egyéni szabályzatának használatával.
 ms.topic: conceptual
 ms.date: 02/04/2021
-ms.openlocfilehash: 302fdbbbcadf211339952f4b1bd97dcbb4ab1a85
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 2163527cc83e70913e9a6e11bf2e22f9ed9c6690
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808300"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713898"
 ---
 # <a name="enable-aks-monitoring-addon-using-azure-policy"></a>Az AK-figyelési addon engedélyezése Azure Policy használatával
 Ez a cikk azt ismerteti, hogyan engedélyezhető az AK monitoring addon az Azure egyéni szabályzatával. A figyelési addon egyéni szabályzata az előfizetés vagy az erőforráscsoport hatóköréhez rendelhető hozzá. Ha az Azure Log Analytics munkaterület és az AK-fürt különböző előfizetésekben található, akkor a házirend-hozzárendelés által használt felügyelt identitásnak rendelkeznie kell a szükséges szerepkör-engedélyekkel mind az előfizetésekhez, mind a legalább a Log Analytics munkaterület erőforrásához. Hasonlóképpen, ha a házirend hatóköre az erőforráscsoport, akkor a felügyelt identitásnak rendelkeznie kell a szükséges szerepkör-engedélyekkel a Log Analytics munkaterületen, ha a munkaterület nem szerepel a kiválasztott erőforráscsoport-hatókörben.
 
 Az addon figyeléséhez a következő szerepkörökre van szükség a Azure Policy által használt felügyelt identitásban:
 
- - [Azure-kubernetes-Service-közreműködő-szerepkör](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-contributor-role)
- - [log-Analytics – közreműködő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor)
+ - [Azure-kubernetes-Service-közreműködő-szerepkör](../../role-based-access-control/built-in-roles.md#azure-kubernetes-service-contributor-role)
+ - [log-Analytics – közreműködő](../../role-based-access-control/built-in-roles.md#log-analytics-contributor)
 
 ## <a name="create-and-assign-policy-definition-using-azure-portal"></a>Szabályzat-definíció létrehozása és kiosztása Azure Portal használatával
 
@@ -79,6 +79,5 @@ Az addon figyeléséhez a következő szerepkörökre van szükség a Azure Poli
 
 - További információ a [Azure Policyról](../../governance/policy/overview.md).
 - Ismerje meg, hogyan [működik a Szervizelési biztonság](../../governance/policy/how-to/remediate-resources.md#how-remediation-security-works).
-- További információ a [tárolók Azure Monitoréről](../insights/container-insights-overview.md).
-- Telepítse az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)-t.
-
+- További tudnivalók a [tárolók bepillantást nyerhetnek](./container-insights-overview.md).
+- Telepítse az [Azure CLI](/cli/azure/install-azure-cli)-t.

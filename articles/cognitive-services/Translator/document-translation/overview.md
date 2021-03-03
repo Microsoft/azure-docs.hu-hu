@@ -6,23 +6,23 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 02/11/2021
-ms.openlocfilehash: 255de7d6739691c479e1ae98e37bc6d3e01a6710
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: fc75bfc3b79cd6aed51a44fc47787532a9d61e8b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100643631"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713014"
 ---
 # <a name="what-is-document-translation-preview"></a>Mi a dokumentum fordítása (előzetes verzió)?
 
-A dokumentum fordítása az [Azure Translator](../translator-info-overview.md) Service felhőalapú funkciója, amely a REST API-k Azure kognitív szolgáltatás családjának részét képezi. A dokumentumok fordítási API-ját több mint 70 nyelvre fordítja le, miközben a dokumentum szerkezete és adatformátumának megőrzése mellett.
+A dokumentum fordítása az [Azure Translator](../translator-info-overview.md) Service felhőalapú funkciója, amely a REST API-k Azure kognitív szolgáltatás családjának részét képezi. A dokumentum-fordítási API a dokumentumokat 90 nyelvekre és dialektusokra fordítja le, miközben megőrzi a dokumentumok szerkezetét és az adatformátumot.
 
 ## <a name="document-translation-key-features"></a>Dokumentumok fordítási kulcsának funkciói
 
 | Szolgáltatás | Leírás |
 | ---------| -------------|
 | **Nagyméretű fájlok fordítása**| A teljes dokumentumok aszinkron módon fordíthatók le.|
-|**Számos fájl fordítása**|Több, mint 70 nyelvről származó fájl fordítása.|
+|**Számos fájl fordítása**|Több fájl fordítása 90 nyelvekre és dialektusokra.|
 |**Forrásfájlok megjelenítésének megőrzése**| Fájlok fordítása az eredeti elrendezés és formátum megőrzése mellett.|
 |**Egyéni fordítás alkalmazása**| A dokumentumok általános és [Egyéni fordítási](../customization.md#custom-translator) modellek használatával fordíthatók le.|
 |**Egyéni szószedetek alkalmazása**|Dokumentumok fordítása egyéni szószedetek használatával.|
@@ -38,7 +38,7 @@ A útmutatóban megtudhatja, hogyan kezdheti el gyorsan a dokumentum-fordító h
 
 A dokumentumok fordítása a következő dokumentum-fájltípusokat támogatja:
 
-| Fájl típusa| Fájlkiterjesztés|Description|
+| Fájl típusa| Fájlkiterjesztés|Leírás|
 |---|---|--|
 |Adobe PDF|.pdf|Adobe Acrobat – hordozható dokumentum formátuma|
 |HTML|.html|Hyper-szöveg korrektúrájának nyelve|
@@ -55,7 +55,7 @@ A dokumentumok fordítása a következő dokumentum-fájltípusokat támogatja:
 
 A dokumentumok fordítása a következő Szószedet-fájltípusokat támogatja:
 
-| Fájl típusa| Fájlkiterjesztés|Description|
+| Fájl típusa| Fájlkiterjesztés|Leírás|
 |---|---|--|
 |Honosítási adatcsere fájlformátuma|XLF. , xliff| Párhuzamos dokumentum formátuma, fordítási memória-rendszerek exportálása. A használt nyelvek definiálva vannak a fájlon belül.|
 |Tabulátorral tagolt értékek/TAB|. TSV/. TAB| tabulátorral tagolt nyers adatfájl, amelyet táblázatkezelő programok használnak.|

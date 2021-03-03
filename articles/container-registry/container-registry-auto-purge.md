@@ -2,19 +2,19 @@
 title: Címkék és jegyzékek kiürítése
 description: A kiürítési parancs használatával több címkét és jegyzékfájlt törölhet egy Azure Container registryből az életkor és a címke szűrője alapján, és opcionálisan ütemezhet törlési műveleteket.
 ms.topic: article
-ms.date: 01/27/2021
-ms.openlocfilehash: 11750965ac563d1d5b7ad5ac7b52cf996e791e56
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.date: 02/19/2021
+ms.openlocfilehash: 2dedfdd6eba73b7573743eba60294ac2231ffc56
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954038"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722228"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>Lemezképek automatikus törlése az Azure Container registryből
 
 Ha egy fejlesztési munkafolyamat részeként Azure Container registryt használ, a beállításjegyzék gyorsan kitöltheti azokat a képeket vagy egyéb összetevőket, amelyek rövid idő után nem szükségesek. Előfordulhat, hogy törölni kívánja az összes olyan címkét, amely egy adott időtartamnál régebbi, vagy megfelel a megadott szűrőnek. Ha több összetevőt szeretne gyorsan törölni, ez a cikk bemutatja `acr purge` azt a parancsot, amelyet igény szerinti vagy [ütemezett](container-registry-tasks-scheduled.md) ACR-feladatként is futtathat. 
 
-A `acr purge` parancs jelenleg egy nyilvános tároló-rendszerképben () van terjesztve `mcr.microsoft.com/acr/acr-cli:0.3` , amely forráskódból épül fel az [ACR-CLI-](https://github.com/Azure/acr-cli) tárházban a githubban.
+A `acr purge` parancs jelenleg egy nyilvános tároló-rendszerképben () van terjesztve `mcr.microsoft.com/acr/acr-cli:0.4` , amely forráskódból épül fel az [ACR-CLI-](https://github.com/Azure/acr-cli) tárházban a githubban.
 
 Ebben a cikkben a Azure Cloud Shell vagy az Azure CLI helyi telepítését használhatja az ACR-feladat példáinak futtatásához. Ha helyileg szeretné használni, a 2.0.76 vagy újabb verziót kötelező megadni. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install]. 
 
@@ -45,6 +45,7 @@ Legalább a következő futtatásakor adja meg a következőket `acr purge` :
 * `--untagged` – Megadja, hogy a rendszer törli a társított címkékkel nem rendelkező jegyzékfájlokat (*címkézetlen jegyzékfájlokat*).
 * `--dry-run` -Megadja, hogy a rendszer nem törli az adatokat, de a kimenet ugyanaz, mint ha a parancsot ezen jelző nélkül futtatja. Ez a paraméter a kiürítési parancsok teszteléséhez hasznos, így meggyőződhet róla, hogy nem törli a megőrizni kívánt információkat.
 * `--keep` -Azt adja meg, hogy a rendszer megőrizze a legutóbbi x számú, a törölt címkéket.
+* `--concurrency` -A párhuzamosan feldolgozandó törlési feladatok számát adja meg. Ha nincs megadva ez a paraméter, a rendszer az alapértelmezett értéket használja.
 
 További paraméterekért futtassa a parancsot `acr purge --help` . 
 

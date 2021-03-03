@@ -1,26 +1,26 @@
 ---
-title: Resource Manager-sablonok – minták a Azure Monitor for VMs
-description: Példa Azure Resource Manager sablonokat üzembe helyezésére és a virtuális gépek configureAzure figyelésére.
+title: Resource Manager-sablonok – minták a virtuális gépekhez
+description: Példa Azure Resource Manager sablonok telepítésére és configureVMára.
 ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: 91c8396795a85cd63fa502c4b091b7ca9a42865b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fa18a5f2af79d75c4eba8c6822f1a7ed8ca4efa8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627445"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733754"
 ---
-# <a name="resource-manager-template-samples-for-azure-monitor-for-vms"></a>Resource Manager-sablonok – minták a Azure Monitor for VMs
-Ez a cikk minta [Azure Resource Manager sablonokat](../../azure-resource-manager/templates/template-syntax.md) tartalmaz, amelyek lehetővé teszik a Azure monitor for VMS virtuális gépeken való engedélyezését. Mindegyik minta tartalmaz egy sablonfájlt és egy, a sablonhoz adni kívánt minta értékeket tartalmazó paramétereket tartalmazó fájlt.
+# <a name="resource-manager-template-samples-for-vm-insights"></a>Resource Manager-sablonok – minták a virtuális gépekhez
+Ez a cikk minta- [Azure Resource Manager sablonokat](../../azure-resource-manager/templates/template-syntax.md) tartalmaz, amelyek lehetővé teszik a virtuális gépeken bepillantást a virtuális gépekre. Mindegyik minta tartalmaz egy sablonfájlt és egy, a sablonhoz adni kívánt minta értékeket tartalmazó paramétereket tartalmazó fájlt.
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
 
 ## <a name="configure-workspace"></a>Munkaterület konfigurálása
-Az alábbi minta lehetővé teszi, hogy a Azure Monitor for VMs Log Analytics munkaterületen.
+A következő minta lehetővé teszi, hogy a virtuális gépek bepillantást nyerjenek egy Log Analytics munkaterületre.
 
 
 ### <a name="template-file"></a>Sablonfájl
@@ -98,7 +98,7 @@ Az alábbi minta lehetővé teszi, hogy a Azure Monitor for VMs Log Analytics mu
 
 
 ## <a name="onboard-an-azure-virtual-machine"></a>Azure-beli virtuális gép előkészítése
-Az alábbi minta egy Azure-beli virtuális gépet vesz fel Azure Monitor for VMsba.
+Az alábbi minta egy Azure-beli virtuális gépet hoz létre a virtuális gépekhez.
 
 
 ### <a name="template-file"></a>Sablonfájl
@@ -219,7 +219,7 @@ Az alábbi minta egy Azure-beli virtuális gépet vesz fel Azure Monitor for VMs
 
 
 ## <a name="onboard-an-azure-virtual-machine-scale-set"></a>Azure virtuálisgép-méretezési csoport előkészítése
-Az alábbi minta egy Azure virtuálisgép-méretezési csoport hozzáadását Azure Monitor for VMs.
+Az alábbi minta egy Azure virtuálisgép-méretezési csoport hozzáadását teszi ki a virtuális gépekhez.
 
 
 ### <a name="template-file"></a>Sablonfájl
@@ -340,5 +340,5 @@ Az alábbi minta egy Azure virtuálisgép-méretezési csoport hozzáadását Az
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [További Azure monitor-sablonok beszerzése](../samples/resource-manager-samples.md).
-* [További információ a Azure monitor for VMsról](../vm/vminsights-overview.md).
+* [További Azure monitor-sablonok beszerzése](../resource-manager-samples.md).
+* [További információ a virtuális](vminsights-overview.md)gépekről.

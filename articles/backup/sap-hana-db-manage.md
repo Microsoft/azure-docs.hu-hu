@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépeken lévő SAP HANA adatbázisok biztonsági m
 description: Ebből a cikkből megtudhatja, hogyan kezelheti és figyelheti az Azure-beli virtuális gépeken futó SAP HANA adatbázisok felügyeletére és figyelésére vonatkozó általános feladatokat.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 4c8dc80c7b48217e40d5325b75752e21174ecaae
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 54d3341a83873ad3cc50815f04a0b252bb44438e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95811951"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703766"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Biztonsági másolattal rendelkező SAP HANA-adatbázisok kezelése és monitorozása
 
@@ -92,7 +92,7 @@ Ha helyi biztonsági mentést szeretne készíteni (a HANA Studio/cockpit haszn�
 
 1. Várjon, amíg befejeződik az adatbázis teljes vagy naplózott biztonsági mentése. Az állapot ellenõrzése SAP HANA Studio/pilótafülkében.
 2. az érintett ADATBÁZIShoz
-    1. A backint paramétereinek törlése. Ehhez kattintson duplán a **systemdb**-konfiguráció elemre, majd  >  **Configuration**  >  **válassza az adatbázis**  >  **-szűrő (napló)** lehetőséget.
+    1. A backint paramétereinek törlése. Ehhez kattintson duplán a **systemdb**-konfiguráció elemre, majd  >    >  **válassza az adatbázis**  >  **-szűrő (napló)** lehetőséget.
         * enable_auto_log_backup: nem
         * log_backup_using_backint: false
         * catalog_backup_using_backint: false
@@ -109,7 +109,7 @@ Ha szerkeszteni vagy törölni szeretné a biztonsági mentési katalógust, teg
 
 1. Várjon, amíg befejeződik az adatbázis teljes vagy naplózott biztonsági mentése. Az állapot ellenõrzése SAP HANA Studio/pilótafülkében.
 2. az érintett ADATBÁZIShoz
-    1. A backint paramétereinek törlése. Ehhez kattintson duplán a **systemdb**-konfiguráció elemre, majd  >  **Configuration**  >  **válassza az adatbázis**  >  **-szűrő (napló)** lehetőséget.
+    1. A backint paramétereinek törlése. Ehhez kattintson duplán a **systemdb**-konfiguráció elemre, majd  >    >  **válassza az adatbázis**  >  **-szűrő (napló)** lehetőséget.
         * enable_auto_log_backup: nem
         * log_backup_using_backint: false
         * catalog_backup_using_backint: false
@@ -149,8 +149,6 @@ Megváltoztathatja egy SAP HANA biztonsági másolati elem alapjául szolgáló 
 
 >[!NOTE]
 > A megőrzési időtartam változásai visszamenőlegesen lesznek alkalmazva az újakon kívül az összes korábbi helyreállítási pontra.
->
-> A növekményes biztonsági mentési házirendek nem használhatók SAP HANA adatbázisokhoz. Ezen adatbázisok esetében jelenleg nem támogatott a növekményes biztonsági mentés.
 
 ### <a name="modify-policy"></a>Házirend módosítása
 
@@ -265,6 +263,6 @@ Előfordulhat, hogy a virtuális gépen a munkaterhelés-bővítmény az egyik o
 
 Ezt a beállítást körültekintően használhatja: Ha egy már kifogástalan állapotú virtuális gépen aktiválódik, ez a művelet a bővítmény újraindítását eredményezi. Ennek hatására előfordulhat, hogy az összes folyamatban lévő feladat meghiúsul. Az újbóli regisztrálási művelet elindítása előtt keressen egy vagy több [tünetet](backup-azure-sap-hana-database-troubleshoot.md#re-registration-failures) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogy miként lehet [elhárítani a SAP HANA adatbázisok biztonsági mentése során felmerülő gyakori problémákat.](./backup-azure-sap-hana-database-troubleshoot.md)

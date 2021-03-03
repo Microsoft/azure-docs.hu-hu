@@ -10,12 +10,12 @@ ms.author: wiassaf
 ms.reviewer: sstein
 ms.custom: references_regions
 ms.date: 03/02/2021
-ms.openlocfilehash: 4006cedf5f24ab2fc08e41b58f8acf90c404f668
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9dc4d17ea95362dd915bd1dfdfd82f4cdec611b8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679616"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692810"
 ---
 # <a name="maintenance-window-preview"></a>Karbantartási időszak (előzetes verzió)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -28,7 +28,7 @@ További információ a karbantartási eseményekről: az [Azure karbantartási 
 
 Az Azure rendszeres karbantartási frissítéseket végez a Azure SQL Database és az SQL felügyelt példányának erőforrásairól, amelyek gyakran tartalmazzák a mögöttes hardverek, szoftverek, a mögöttes operációs rendszer (OS) és az SQL-motor frissítését. A karbantartási frissítés során az erőforrások teljes mértékben elérhetők és elérhetők, de a karbantartási frissítések némelyikének feladatátvételre van szükségük, mivel az Azure rövid idő alatt elvégzi a példányok offline állapotba helyezését a karbantartási frissítések (átlagosan nyolc másodperc) alkalmazásával.  A tervezett karbantartási frissítések átlagosan 35 naponta történnek, ami azt jelenti, hogy az ügyfél körülbelül egy tervezett karbantartási eseményt várhat havonta Azure SQL Database vagy SQL felügyelt példányon, és csak az ügyfél által kiválasztott karbantartási időszakokban.   
 
-A karbantartási időszak olyan üzleti számítási feladatokra szolgál, amelyek érzékenyek a lehetséges kapcsolódási megszakításokra, amelyek az alapértelmezett ablakon belül tervezett karbantartási eseményekből származhatnak.  
+A karbantartási időszak olyan üzleti számítási feladatokhoz készült, amelyek nem rugalmasak a tervezett karbantartási eseményekből eredő átmeneti kapcsolódási problémák miatt.
 
 A karbantartási időszakot a Azure Portal, a PowerShell, a CLI vagy az Azure API használatával lehet konfigurálni. Konfigurálható a létrehozáskor, illetve a meglévő SQL-adatbázisok és az SQL-felügyelt példányok esetében is.
 
@@ -37,15 +37,15 @@ A karbantartási időszakot a Azure Portal, a PowerShell, a CLI vagy az Azure AP
 Alapértelmezés szerint az összes Azure SQL Database-adatbázis és felügyelt példány-adatbázis csak napi 5 – 8-án frissül, hogy elkerülje a maximális munkaidő-megszakítást. A helyi időt az erőforrást üzemeltető [Azure-régió](https://azure.microsoft.com/global-infrastructure/geographies/) határozza meg. A karbantartási frissítéseket a következő két További karbantartási időszakra kiválasztva tovább módosíthatja az adatbázisának megfelelő időre:
 
 * **Alapértelmezett** ablak, 5 – 08:00 helyi idő szerint hétfő – vasárnap 
-* Hét napja, 22:00 – 06:00 helyi idő szerint hétfő – csütörtök: **az ügyfél általi bejelentkezés szükséges** 
-* Hétvégi időszak – 10 – 6 helyi idő szerint – vasárnap: **az ügyfél általi bejelentkezés szükséges**  
+* Hét napja, 22:00 – 06:00 helyi idő szerint hétfő – csütörtök
+* Hétvégi időszak, 10 – 6 helyi idő szerint péntek – vasárnap
 
 A karbantartási időszak kiválasztása után a rendszer az összes tervezett karbantartási frissítést csak a választott ablakban fogja elvégezni.   
 
 > [!Note]
 > A tervezett karbantartási frissítések mellett ritka esetekben nem tervezett karbantartási események is okozhatják a rendelkezésre állást. 
 
-### <a name="cost"></a>Költségek
+### <a name="cost-and-eligibility"></a>Cost és támogathatóság
 
 A karbantartási időszak kiválasztása a következő előfizetési [ajánlati típusok](https://azure.microsoft.com/support/legal/offer-details/)esetében díjmentes: utólagos elszámolású, felhőalapú megoldás-szolgáltató (CSP), Microsoft Enterprise vagy Microsoft Customer Agreement.
 

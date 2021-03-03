@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 482a0ba4051fb8b5d1705e0f951a9e075f40bbdb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ed9690a750ad6e1167ba0a0ae4a87b603c4a1f15
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100614058"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717400"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Az Azure Monitor-naplók üzembe helyezésének megtervezése
 
@@ -25,7 +25,7 @@ A Log Analytics munkaterület A következőket biztosítja:
 
 * Az adattárolás földrajzi helye.
 * Az adatelkülönítés azáltal, hogy az ajánlott tervezési stratégiák alapján különböző felhasználói hozzáférési jogosultságokat biztosít.
-* A beállítások konfigurációjának hatóköre, például az [árképzési szintek](../platform/manage-cost-storage.md#changing-pricing-tier), a [megőrzés](../platform/manage-cost-storage.md#change-the-data-retention-period)és [az adatok maximális](../platform/manage-cost-storage.md#manage-your-maximum-daily-data-volume)száma.
+* A beállítások konfigurációjának hatóköre, például az [árképzési szintek](./manage-cost-storage.md#changing-pricing-tier), a [megőrzés](./manage-cost-storage.md#change-the-data-retention-period)és [az adatok maximális](./manage-cost-storage.md#manage-your-maximum-daily-data-volume)száma.
 
 A munkaterületek fizikai fürtökön futnak. Alapértelmezés szerint a rendszer létrehozza és kezeli ezeket a fürtöket. Azok az ügyfelek, akik több mint 4TB töltöttek be, saját dedikált fürtöket szeretnének létrehozni a munkaterületeik számára – lehetővé teszik, hogy jobb szabályozást és magasabb betöltési sebességet nyújtsanak.
 
@@ -64,12 +64,12 @@ Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) segítségével 
 
 A felhasználóhoz hozzáférő adatok az alábbi táblázatban felsorolt tényezők kombinációjával vannak meghatározva. Mindegyiket az alábbi szakasz ismerteti.
 
-| Szempont | Description |
+| Szempont | Leírás |
 |:---|:---|
 | [Hozzáférési mód](#access-mode) | A felhasználó által a munkaterület eléréséhez használt metódus.  Meghatározza az elérhető adatmennyiséget és az alkalmazott hozzáférés-vezérlési módot. |
 | [Hozzáférés-vezérlési mód](#access-control-mode) | A munkaterületre vonatkozó beállítás, amely meghatározza, hogy a rendszer az engedélyeket a munkaterületen vagy az erőforrás szintjén alkalmazza-e. |
-| [Engedélyek](../platform/manage-access.md) | A munkaterülethez vagy erőforráshoz tartozó egyéni vagy felhasználói csoportokra alkalmazott engedélyek. Meghatározza, hogy a felhasználó milyen adatelérési pontokhoz férhet hozzá. |
-| [Táblázat szintű Azure-RBAC](../platform/manage-access.md#table-level-azure-rbac) | Választható részletes engedélyek, amelyek az összes felhasználóra érvényesek, függetlenül azok hozzáférési módjától vagy hozzáférés-vezérlési módjától. Meghatározza, hogy a felhasználó mely adattípusokhoz férhet hozzá. |
+| [Engedélyek](./manage-access.md) | A munkaterülethez vagy erőforráshoz tartozó egyéni vagy felhasználói csoportokra alkalmazott engedélyek. Meghatározza, hogy a felhasználó milyen adatelérési pontokhoz férhet hozzá. |
+| [Táblázat szintű Azure-RBAC](./manage-access.md#table-level-azure-rbac) | Választható részletes engedélyek, amelyek az összes felhasználóra érvényesek, függetlenül azok hozzáférési módjától vagy hozzáférés-vezérlési módjától. Meghatározza, hogy a felhasználó mely adattípusokhoz férhet hozzá. |
 
 ## <a name="access-mode"></a>Hozzáférési mód
 
@@ -91,7 +91,7 @@ A felhasználók két lehetőség közül választhatnak az adatok eléréséhez
     > - Service Fabric
     > - Application Insights
     >
-    > Ellenőrizheti, hogy a naplók megfelelően vannak-e társítva az erőforráshoz egy lekérdezés futtatásával és a kívánt rekordok vizsgálatával. Ha a megfelelő erőforrás-azonosító a [_ResourceId](../platform/log-standard-columns.md#_resourceid) tulajdonságban van, akkor az adatok elérhetők az erőforrás-központú lekérdezések számára.
+    > Ellenőrizheti, hogy a naplók megfelelően vannak-e társítva az erőforráshoz egy lekérdezés futtatásával és a kívánt rekordok vizsgálatával. Ha a megfelelő erőforrás-azonosító a [_ResourceId](./log-standard-columns.md#_resourceid) tulajdonságban van, akkor az adatok elérhetők az erőforrás-központú lekérdezések számára.
 
 A Azure Monitor automatikusan meghatározza a megfelelő módot attól függően, hogy milyen kontextusban végzi a napló keresését. A hatókör mindig a Log Analytics bal felső részén jelenik meg.
 
@@ -102,8 +102,8 @@ A következő táblázat összefoglalja a hozzáférési módokat:
 | Probléma | Munkaterület-környezet | Erőforrás-környezet |
 |:---|:---|:---|
 | Kik az egyes modellek? | Központi felügyelet. Azok a rendszergazdák, akiknek olyan adatgyűjtést és felhasználókat kell konfigurálniuk, akiknek számos erőforráshoz kell hozzáféréssel rendelkezniük. Jelenleg olyan felhasználók számára is szükséges, akiknek az Azure-on kívüli erőforrásokhoz is hozzá kell férniük. | Alkalmazás-csapatok. A figyelt Azure-erőforrások rendszergazdái. |
-| Mire van szükség a felhasználók számára a naplók megtekintéséhez? | Engedélyeket a munkaterületre. Lásd: **munkaterület-engedélyek** a [hozzáférés kezelése munkaterület-engedélyek használatával](../platform/manage-access.md#manage-access-using-workspace-permissions). | Olvasási hozzáférés az erőforráshoz. Lásd: **erőforrás-engedélyek** a [hozzáférés kezelése Azure-engedélyekkel](../platform/manage-access.md#manage-access-using-azure-permissions). Az engedélyek örökölhető (például a tartalmazó erőforráscsoporthoz) vagy közvetlenül az erőforráshoz rendelve. A rendszer automatikusan hozzárendeli az erőforrás naplóihoz tartozó engedélyeket. |
-| Mi az engedélyek hatóköre? | Munkaterület. A munkaterülethez hozzáféréssel rendelkező felhasználók a munkaterületen lévő összes naplót le tudják kérdezni azokról a táblákról, amelyekhez engedéllyel rendelkeznek. Lásd: [Table Access Control](../platform/manage-access.md#table-level-azure-rbac) | Azure-erőforrás. A felhasználó bármely munkaterületről lekérdezheti az egyes erőforrások, erőforráscsoportok vagy előfizetések naplóit, de más erőforrásokhoz nem tud naplókat lekérdezni. |
+| Mire van szükség a felhasználók számára a naplók megtekintéséhez? | Engedélyeket a munkaterületre. Lásd: **munkaterület-engedélyek** a [hozzáférés kezelése munkaterület-engedélyek használatával](./manage-access.md#manage-access-using-workspace-permissions). | Olvasási hozzáférés az erőforráshoz. Lásd: **erőforrás-engedélyek** a [hozzáférés kezelése Azure-engedélyekkel](./manage-access.md#manage-access-using-azure-permissions). Az engedélyek örökölhető (például a tartalmazó erőforráscsoporthoz) vagy közvetlenül az erőforráshoz rendelve. A rendszer automatikusan hozzárendeli az erőforrás naplóihoz tartozó engedélyeket. |
+| Mi az engedélyek hatóköre? | Munkaterület. A munkaterülethez hozzáféréssel rendelkező felhasználók a munkaterületen lévő összes naplót le tudják kérdezni azokról a táblákról, amelyekhez engedéllyel rendelkeznek. Lásd: [Table Access Control](./manage-access.md#table-level-azure-rbac) | Azure-erőforrás. A felhasználó bármely munkaterületről lekérdezheti az egyes erőforrások, erőforráscsoportok vagy előfizetések naplóit, de más erőforrásokhoz nem tud naplókat lekérdezni. |
 | Hogyan férhet hozzá a felhasználói naplókhoz? | <ul><li>**Naplók** indítása **Azure monitor** menüből.</li></ul> <ul><li>**Naplók** indítása **log Analytics munkaterületekről**.</li></ul> <ul><li>Azure Monitor [munkafüzetekből](../visualizations.md#workbooks).</li></ul> | <ul><li>**Naplók** indítása az Azure-erőforrás menüjéből</li></ul> <ul><li>**Naplók** indítása **Azure monitor** menüből.</li></ul> <ul><li>**Naplók** indítása **log Analytics munkaterületekről**.</li></ul> <ul><li>Azure Monitor [munkafüzetekből](../visualizations.md#workbooks).</li></ul> |
 
 ## <a name="access-control-mode"></a>Hozzáférés-vezérlési mód
@@ -125,7 +125,7 @@ A *hozzáférés-vezérlési mód* az egyes munkaterületeken olyan beállítás
     > [!NOTE]
     > Ha egy felhasználó csak erőforrás-jogosultságokkal rendelkezik a munkaterülethez, csak az erőforrás-környezet mód használatával férhetnek hozzá a munkaterülethez, feltételezve, hogy a munkaterület-hozzáférési mód **erőforrás-vagy munkaterület-engedélyek használatára** van beállítva.
 
-A hozzáférés-vezérlési mód a portálon, a PowerShell-lel vagy a Resource Manager-sablonok használatával történő módosításáról további információt a [hozzáférés-vezérlési mód konfigurálása](../platform/manage-access.md#configure-access-control-mode)című témakörben talál.
+A hozzáférés-vezérlési mód a portálon, a PowerShell-lel vagy a Resource Manager-sablonok használatával történő módosításáról további információt a [hozzáférés-vezérlési mód konfigurálása](./manage-access.md#configure-access-control-mode)című témakörben talál.
 
 ## <a name="scale-and-ingestion-volume-rate-limit"></a>Méretezési és betöltési mennyiség maximális száma
 
@@ -133,7 +133,7 @@ A Azure Monitor egy nagy léptékű adatszolgáltatás, amely több ezer ügyfel
 
 Az ügyfelek és a háttér-infrastruktúra Azure Monitorának és elkülönítésének biztosításához egy alapértelmezett betöltési korlátot kell megszabni, amely a tüskékből és az árvizekből származó helyzetek elleni védelemre szolgál. A díjszabási korlát alapértelmezett értéke körülbelül **6 GB/perc** , és a normál betöltés lehetővé tételére szolgál. További részletek a betöltés mennyiségi korlátjának méréséről: [Azure monitor szolgáltatási korlátok](../service-limits.md#data-ingestion-volume-rate).
 
-Azok az ügyfelek, akik kevesebb mint 4TB/napot töltenek be, általában nem teljesítik ezeket a korlátozásokat. Azok az ügyfelek, akik a normál működésük részeként nagyobb mennyiségű vagy tüskékkel rendelkeznek, érdemes áthelyezni a [dedikált fürtökre](../log-query/logs-dedicated-clusters.md) , ahol a betöltési arány határértéke megnövelhető.
+Azok az ügyfelek, akik kevesebb mint 4TB/napot töltenek be, általában nem teljesítik ezeket a korlátozásokat. Azok az ügyfelek, akik a normál működésük részeként nagyobb mennyiségű vagy tüskékkel rendelkeznek, érdemes áthelyezni a [dedikált fürtökre](./logs-dedicated-clusters.md) , ahol a betöltési arány határértéke megnövelhető.
 
 Ha a betöltési arány korlátja aktiválva van, vagy a küszöbérték 80%-ában megjelenik egy esemény a munkaterületen a *műveleti* táblába. Javasoljuk, hogy figyelje, és hozzon létre egy riasztást. További részleteket az [adatfeldolgozási kötetek száma](../service-limits.md#data-ingestion-volume-rate)című részben talál.
 
@@ -144,7 +144,7 @@ Ha a betöltési arány korlátja aktiválva van, vagy a küszöbérték 80%-áb
 
 Ez a forgatókönyv egyetlen munkaterület-kialakítást mutat be az IT-szervezet előfizetésében, amelyet nem korlátozza az adatszuverenitás vagy a szabályozások megfelelősége, vagy le kell képeznie azokat a régiókat, amelyekre az erőforrások telepítve vannak. Lehetővé teszi, hogy a szervezete biztonsági és informatikai felügyeleti csapata kihasználja a jobb integrációt az Azure Access Management szolgáltatással és biztonságosabb hozzáférés-vezérléssel.
 
-Az összes erőforrás, figyelési megoldás és elemzés, például a Application Insights és a Azure Monitor for VMs, a különböző csapatok által karbantartott infrastruktúra és alkalmazások támogatása úgy van konfigurálva, hogy az összegyűjtött naplózási adatokat az informatikai szervezet központi megosztott munkaterületére továbbítsa. Az egyes csoportokban lévő felhasználók hozzáférést kapnak a naplókhoz azokhoz az erőforrásokhoz, amelyekhez hozzáférést kaptak.
+Az összes erőforrás, figyelési megoldás és elemzés, például a Application Insights és a VM-elemzés, a különböző csapatok által fenntartott támogatási infrastruktúra és alkalmazások úgy vannak konfigurálva, hogy továbbítsák az összegyűjtött napló adatait az informatikai szervezet központosított megosztott munkaterületére. Az egyes csoportokban lévő felhasználók hozzáférést kapnak a naplókhoz azokhoz az erőforrásokhoz, amelyekhez hozzáférést kaptak.
 
 A munkaterület architektúrájának üzembe helyezése után a [Azure Policy](../../governance/policy/overview.md)használatával kényszerítheti ki ezt az Azure-erőforrásokra. Lehetővé teszi a szabályzatok meghatározását és az Azure-erőforrások megfelelőségének biztosítását, így az összes erőforrás-naplóját egy adott munkaterületre küldi el. Az Azure-beli virtuális gépekkel vagy a virtuálisgép-méretezési csoportokkal például olyan meglévő házirendeket használhat, amelyek kiértékelik a munkaterület megfelelőségét és a jelentés eredményeit, illetve testreszabhatók, ha nem megfelelőek.  
 
@@ -159,8 +159,8 @@ A modellre való Migrálás megtervezése során vegye figyelembe a következők
 * Azonosítsa az alkalmazási csapatok erőforrásai számára biztosított hozzáférést, és tesztelje a fejlesztési környezetet az éles környezet megvalósítása előtt.
 * Konfigurálja a munkaterületet az **erőforrás-vagy munkaterület-engedélyek használatának** engedélyezéséhez.
 * Távolítsa el az alkalmazás-Teams engedélyt a munkaterület olvasásához és lekérdezéséhez.
-* Engedélyezheti és konfigurálhatja azokat a figyelési megoldásokat, például a tárolók és/vagy Azure Monitor for VMs Azure Monitorét, az Automation-fiók (ok) t, valamint az eredeti munkaterületen üzembe helyezett felügyeleti megoldásokat, például a Update Management, a virtuális gépek indítását és leállítását stb..
+* Engedélyezheti és konfigurálhatja azokat a figyelési megoldásokat, például a Container bepillantást és/vagy Azure Monitor for VMseket, az Automation-fiókokat és a felügyeleti megoldásokat, például a Update Management, az eredeti munkaterületen üzembe helyezett virtuális gépeket stb.).
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az útmutatóban ajánlott biztonsági engedélyek és vezérlőelemek megvalósításához tekintse át a [naplók hozzáférésének kezelése](../platform/manage-access.md)című témakört.
+Az útmutatóban ajánlott biztonsági engedélyek és vezérlőelemek megvalósításához tekintse át a [naplók hozzáférésének kezelése](./manage-access.md)című témakört.

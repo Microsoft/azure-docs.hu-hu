@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 9d8d37e1b161dfc8344d7ff03bc0093d23f86101
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fa826e951b9fe34eb27481718b8f026747011e4e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100614155"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717417"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor – ügyfél által kezelt kulcs 
 
@@ -25,11 +25,11 @@ A inaktív adatok [titkosítása](../../security/fundamentals/encryption-atrest.
 
 Azure Monitor biztosítja, hogy az összes adatok és mentett lekérdezések a Microsoft által felügyelt kulcsok (MMK-EK) használatával titkosítva legyenek. A Azure Monitor a saját [Azure Key Vault](../../key-vault/general/overview.md)tárolt saját kulcs használatával is lehetővé teszi a titkosítást, amely lehetővé teszi a vezérlő számára, hogy bármikor visszavonja az adataihoz való hozzáférést. Azure Monitor a titkosítás használata azonos az [Azure Storage-titkosítás](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption) működésének módjával.
 
-Az ügyfél által felügyelt kulcs olyan [dedikált fürtökön](../log-query/logs-dedicated-clusters.md) érhető el, amelyek magasabb szintű védelmi szintet és irányítást biztosítanak. A dedikált fürtökbe betöltött adat kétszer, a Microsoft által felügyelt kulcsokkal vagy az ügyfél által felügyelt kulcsokkal, illetve az infrastruktúra szintjén egyszer, két különböző titkosítási algoritmus és két különböző kulcs használatával titkosítva van. A [kettős titkosítás](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) védelmet biztosít olyan esetekben, amikor a titkosítási algoritmusok vagy kulcsok egyike sérül. Ebben az esetben a további titkosítási réteg továbbra is védi az adatait. A dedikált fürt lehetővé teszi, hogy az adatai a [Kulcstároló](#customer-lockbox-preview) -vezérlővel is védve legyenek.
+Az ügyfél által felügyelt kulcs olyan [dedikált fürtökön](./logs-dedicated-clusters.md) érhető el, amelyek magasabb szintű védelmi szintet és irányítást biztosítanak. A dedikált fürtökbe betöltött adat kétszer, a Microsoft által felügyelt kulcsokkal vagy az ügyfél által felügyelt kulcsokkal, illetve az infrastruktúra szintjén egyszer, két különböző titkosítási algoritmus és két különböző kulcs használatával titkosítva van. A [kettős titkosítás](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) védelmet biztosít olyan esetekben, amikor a titkosítási algoritmusok vagy kulcsok egyike sérül. Ebben az esetben a további titkosítási réteg továbbra is védi az adatait. A dedikált fürt lehetővé teszi, hogy az adatai a [Kulcstároló](#customer-lockbox-preview) -vezérlővel is védve legyenek.
 
 Az elmúlt 14 napban betöltött adatok a hatékony lekérdezési motor működéséhez a gyors gyorsítótárban (SSD-alapú) is megmaradnak. Ezek az [adat a Microsoft](#key-revocation)kulcsaival is titkosítva van, függetlenül az ügyfél által felügyelt kulcs konfigurációjától Dolgozunk arra, hogy az SSD-adatmennyiséget a 2021 első felében az ügyfél által felügyelt kulccsal titkosítjuk.
 
-Log Analytics dedikált fürtök kapacitás foglalási [díjszabási modellt](../log-query/logs-dedicated-clusters.md#cluster-pricing-model) használnak, amely 1000 GB/nap.
+Log Analytics dedikált fürtök kapacitás foglalási [díjszabási modellt](./logs-dedicated-clusters.md#cluster-pricing-model) használnak, amely 1000 GB/nap.
 
 ## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Az ügyfél által felügyelt kulcs működése Azure Monitor
 
@@ -145,7 +145,7 @@ A fürtök két [felügyelt identitási típust](../../active-directory/managed-
 > [!IMPORTANT]
 > A felhasználó által hozzárendelt felügyelt identitások nem használhatók, ha a Key Vault Private-Link (vNet). Ebben a forgatókönyvben a rendszerhez rendelt felügyelt identitást is használhatja.
 
-Kövesse a [dedikált fürtök című cikkben](../log-query/logs-dedicated-clusters.md#creating-a-cluster)bemutatott eljárást. 
+Kövesse a [dedikált fürtök című cikkben](./logs-dedicated-clusters.md#creating-a-cluster)bemutatott eljárást. 
 
 ## <a name="grant-key-vault-permissions"></a>Key Vault engedélyek megadása
 
@@ -253,7 +253,7 @@ A kérésre adott válasznak a következőhöz hasonlóan kell kinéznie, amikor
 
 A művelet végrehajtásához "írási" engedélyekkel kell rendelkeznie a munkaterülethez és a fürthöz, beleértve a következőt: `Microsoft.OperationalInsights/workspaces/write` és `Microsoft.OperationalInsights/clusters/write` .
 
-Kövesse a [dedikált fürtök című cikkben](../log-query/logs-dedicated-clusters.md#link-a-workspace-to-cluster)bemutatott eljárást.
+Kövesse a [dedikált fürtök című cikkben](./logs-dedicated-clusters.md#link-a-workspace-to-cluster)bemutatott eljárást.
 
 ## <a name="key-revocation"></a>Kulcs visszavonása
 
@@ -387,7 +387,7 @@ További információ a [Microsoft Azure Ügyfélszéfről](../../security/funda
 
 ## <a name="customer-managed-key-operations"></a>Customer-Managed kulcsfontosságú műveletek
 
-A Customer-Managed kulcs dedikált fürtön van megadva, és ezek a műveletek [dedikált fürtben](../log-query/logs-dedicated-clusters.md#change-cluster-properties) jelennek meg.
+A Customer-Managed kulcs dedikált fürtön van megadva, és ezek a műveletek [dedikált fürtben](./logs-dedicated-clusters.md#change-cluster-properties) jelennek meg.
 
 - Az erőforráscsoport összes fürtjének beolvasása  
 - Az összes fürt beolvasása az előfizetésben
@@ -470,8 +470,8 @@ A Customer-Managed kulcs dedikált fürtön van megadva, és ezek a műveletek [
 
   **Fürt frissítése**
   -  400 – a fürt törlési állapotban van. Az aszinkron művelet folyamatban van. A fürtnek a frissítési művelet végrehajtása előtt el kell végeznie a műveletet.
-  -  400 – a KeyVaultProperties nem üres, de helytelen formátumú. Lásd a [kulcs-azonosító frissítését](../platform/customer-managed-keys.md#update-cluster-with-key-identifier-details).
-  -  400 – nem sikerült érvényesíteni a kulcsot a Key Vaultban. Oka lehet az engedélyek hiánya, vagy ha a kulcs nem létezik. Ellenőrizze, hogy a [kulcs-és hozzáférési szabályzatot](../platform/customer-managed-keys.md#grant-key-vault-permissions) Key Vaultban állította-e be.
+  -  400 – a KeyVaultProperties nem üres, de helytelen formátumú. Lásd a [kulcs-azonosító frissítését](#update-cluster-with-key-identifier-details).
+  -  400 – nem sikerült érvényesíteni a kulcsot a Key Vaultban. Oka lehet az engedélyek hiánya, vagy ha a kulcs nem létezik. Ellenőrizze, hogy a [kulcs-és hozzáférési szabályzatot](#grant-key-vault-permissions) Key Vaultban állította-e be.
   -  400 – a kulcs nem helyreállítható. A Key Vaultt a Soft-delete és a Purge-Protection értékre kell beállítani. Lásd: [Key Vault dokumentáció](../../key-vault/general/soft-delete-overview.md)
   -  400 – a művelet most nem hajtható végre. Várjon, amíg az aszinkron művelet befejeződik, és próbálkozzon újra.
   -  400 – a fürt törlési állapotban van. Várjon, amíg az aszinkron művelet befejeződik, és próbálkozzon újra.
@@ -492,5 +492,5 @@ A Customer-Managed kulcs dedikált fürtön van megadva, és ezek a műveletek [
   -  409 – a munkaterület hivatkozása vagy a művelet leválasztása folyamatban.
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a [log Analytics dedikált fürt számlázásáról](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)
-- A [log Analytics-munkaterületek megfelelő kialakításának](../platform/design-logs-deployment.md) megismerése
+- További információ a [log Analytics dedikált fürt számlázásáról](./manage-cost-storage.md#log-analytics-dedicated-clusters)
+- A [log Analytics-munkaterületek megfelelő kialakításának](./design-logs-deployment.md) megismerése

@@ -8,12 +8,13 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: alkohli
-ms.openlocfilehash: f4f1924ce19ccb0f48aa1a7c9a0515fa89505dae
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.custom: references_regions
+ms.openlocfilehash: 7212fc4113c1de0a7aee4c6c02e8fa65f9828680
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652309"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724829"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: gyakori kérdések
 
@@ -48,7 +49,7 @@ A. Data Box lemezek árával kapcsolatos információkért lépjen a [díjszabá
 A.  Azure Data Box lemezek beszerzéséhez jelentkezzen be Azure Portal és hozzon létre egy Data Box-sorrendet a lemezekhez. Adja meg a kapcsolattartási és értesítési adatait. A megrendelés elküldése után a rendelkezésre állás függvényében 10 napon belül szállítjuk Önnek a lemezeket.
 
 ### <a name="q-what-is-the-maximum-amount-of-data-i-can-transfer-with-data-box-disks-in-one-instance"></a>K. Egyszerre legfeljebb mennyi adatot vihetek át a Data Box Disks-lemezekkel?
-A. 5 lemez esetén 8 TB kapacitással (7 TB felhasználható kapacitással) a maximálisan felhasználható kapacitás 35 TB. Így 35 TB-nyi adat vihető át egyetlen példányban. Több adat átviteléhez több lemez megrendelése szükséges.
+A. Öt lemez esetén 8 TB-os kapacitással (7 TB felhasználható kapacitással) a maximálisan felhasználható kapacitás 35 TB. Így 35 TB-nyi adat vihető át egyetlen példányban. Több adat átviteléhez több lemez megrendelése szükséges.
 
 ### <a name="q-how-can-i-check-if-data-box-disks-are-available-in-my-region"></a>K. Honnan tudhatom meg, hogy a Data Box Disk-lemezek elérhetők-e a régiómban? 
 A.  Ha szeretné megtekinteni, hogy jelenleg milyen Data Box lemezek érhetők el, lépjen a [régió rendelkezésre állása területre](data-box-disk-overview.md#region-availability).  
@@ -72,6 +73,18 @@ Az [Azure import/export szolgáltatásból](../import-export/storage-import-expo
 2. Miután a rendszer átmásolta a helyszíni kiszolgáló adatait a lemezekre, a Microsoft által biztosított visszatérési címkék használatával visszaküldheti azokat a kanadai Azure-adatközpontba. A Data Box Disk (ok) ban található, a rendelés létrehozásakor kiválasztott Kanada Azure-régiójában lévő, a cél Storage-fiókba való feltöltésre kerül.
 
 3. Ezután a AzCopy hasonló eszközzel másolhatók az adattárak az USA nyugati régiójában lévő Storage-fiókba. Ez a lépés a Data Box Disk számlázásban nem szereplő [szabványos tárolási](https://azure.microsoft.com/pricing/details/storage/) és [sávszélesség-díjakat](https://azure.microsoft.com/pricing/details/bandwidth/) tartalmazza.
+
+#### <a name="q-does-data-box-disk-store-any-customer-data-outside-of-the-service-region"></a>K. A Data Box Disk a szolgáltatási régión kívül tárolja az ügyféladatokat?
+
+A. Nem. Data Box Disk a szolgáltatási régión kívülről nem tárol ügyféladatokat. Az ügyfél teljes mértékben birtokolja az adatait, és a rendelés létrehozása során kiválasztott Storage-fiók alapján mentheti az adott helyre.  
+
+A vásárlói adatok mellett Data Box Disk adatokat is tartalmaz, amelyek metaadatokat és figyelési naplókat tartalmaznak. Az összes régióban (kivéve Dél-és Délkelet-Ázsiában) a rendszer az adatvesztés elleni védelem [érdekében egy,](../best-practices-availability-paired-regions.md) a Geo-redundáns tárolási fiókon keresztül tárolja és replikálja Data Box Disk az adattárolást.  
+
+A Dél-és Délkelet-Ázsiában található [adattárolási követelmények](https://azure.microsoft.com/global-infrastructure/data-residency/#more-information) miatt Data Box Disk az adat tárolása egy zóna redundáns tárolási (ZRS) fiókban történik, hogy az egyetlen régióban legyen tárolva. Délkelet-Ázsiában az összes Data Box Disk-szolgáltatás a Szingapúrban és Dél-Brazíliában található meg, az adattárolók Brazíliában vannak tárolva. 
+
+Ha a Dél-Brazíliában és Délkelet-Ázsiában található szolgáltatások meghibásodása van, az ügyfelek új rendeléseket hozhatnak létre egy másik régióból. Az új megrendelések a létrehozott régióból lesznek kézbesítve, és az ügyfelek felelősek a Data Box Disk és oda történő szállításért.
+
+
 
 ### <a name="q-how-can-i-recover-my-data-if-an-entire-region-fails"></a>K. Hogyan állíthatom helyre az adatokat, ha egy teljes régió meghibásodik?
 
@@ -110,7 +123,7 @@ Ezek az átvezető időpontok a *becslések*. Az adatközpont, az egyidejű megr
 ## <a name="configure-and-connect"></a>Konfigurálás és csatlakoztatás
  
 ### <a name="q-can-i-specify-the-number-of-data-box-disks-in-the-order"></a>K. Megadhatom a megrendelésben a Data Box Disk-lemezek számát?
-A.  Nem. 8 TB-os lemez (legfeljebb 5 lemez) adható meg az adatmérettől és a lemezek elérhetőségtől függően.  
+A.  Nem. Az adatmérettől és a lemezek rendelkezésre állásának függvényében 8 TB-os lemezeket (legfeljebb öt lemezt) érhet el.  
 
 ### <a name="q-how-do-i-unlock-the-data-box-disks"></a>K. Hogyan oldhatom fel a Data Box Disk-lemezeket? 
 A.  Nyissa meg az Azure Portalon a Data Box Disk-megrendelését, majd az **Eszköz részletei** lehetőséget. Másol le a jelszót. Töltse le az Azure Portalról az operációs rendszerének megfelelő Data Box Disk lemezzárolás-feloldó eszközt. Futtassa azon a számítógépen, amelyről az adatokat a lemezekre szeretné másolni. Adja meg a jelszót a lemezek feloldásához. Ugyanaz a jelszó oldja fel az összes lemezt. 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 68f3b9f9cfa8ea74a8240fab6e47bf737788081f
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 4793216a12b17c4e4ea03f62d5a0ba512febc232
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094324"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735726"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Az Azure ajánlott hálózati biztonsági eljárásai
 Ez a cikk az Azure ajánlott eljárásainak gyűjteményét ismerteti a hálózati biztonság növelése érdekében. Ezek az ajánlott eljárások az Azure hálózatkezelési tapasztalataiból és az ügyfelek, például saját tapasztalataiból származnak.
@@ -206,7 +206,7 @@ Az Azure Private link a következő előnyöket biztosítja:
 - **Globális elérhetőség**: kapcsolódjon a más régiókban futó szolgáltatásokhoz. A fogyasztó virtuális hálózata az A régióban lehet, és a B régióban található szolgáltatásokhoz is csatlakozhat.
 - **Egyszerűen beállítható és kezelhető**: a virtuális hálózatokban már nincs szüksége fenntartott, nyilvános IP-címekre az Azure-erőforrások IP-tűzfalon keresztüli biztonságossá tételéhez. A magánhálózati végpontok beállításához nem szükséges NAT-vagy átjáró-eszköz. A privát végpontok egyszerű munkafolyamaton keresztül konfigurálhatók. A szolgáltatás oldalán könnyedén kezelheti az Azure-szolgáltatási erőforráshoz tartozó kapcsolatkérelmeket is. Az Azure Private link olyan fogyasztóknak és szolgáltatásoknak is működik, amelyek a különböző Azure Active Directory bérlők számára is tartanak. 
     
-Ha többet szeretne megtudni a privát végpontokról és azokról az Azure-szolgáltatásokról és-régiókról, amelyekhez privát végpontok érhetők el, tekintse meg az [Azure privát hivatkozását](https://docs.microsoft.com/azure/private-link/private-link-overview).
+Ha többet szeretne megtudni a privát végpontokról és azokról az Azure-szolgáltatásokról és-régiókról, amelyekhez privát végpontok érhetők el, tekintse meg az [Azure privát hivatkozását](../../private-link/private-link-overview.md).
 
 
 ## <a name="next-steps"></a>Következő lépések

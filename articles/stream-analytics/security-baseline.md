@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e37171fce5dd7fe625550c5f554f211cf148ea07
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6e6ad96da5f5c7901fda1f041c55075552edecde
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591440"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720341"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>Stream Analytics Azure biztonsági alapterve
 
@@ -168,7 +168,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../securi
 
 * [A Azure Stream Analytics diagnosztikai naplókat és tevékenységeket biztosít a felülvizsgálathoz](./stream-analytics-job-diagnostic-logs.md)
 
-* [Adatmegőrzési szabályzat konfigurálása az Azure Storage-fiók naplóihoz](../storage/common/storage-monitor-storage-account.md#configure-logging)
+* [Adatmegőrzési szabályzat konfigurálása az Azure Storage-fiók naplóihoz](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 * [Az adatmegőrzési időszak módosítása Log Analytics](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 

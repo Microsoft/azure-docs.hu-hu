@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 12/16/2020
-ms.openlocfilehash: 242980ac1b89345ed9d8ff903e65129cff3cb917
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.date: 02/23/2021
+ms.openlocfilehash: dc309e85373193e4f5d431f543ff3e59ea5bebc7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964099"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739262"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Adatok megosztása és fogadása az Azure Blob Storage-ból és az Azure Data Lake Storage-ból
 
@@ -24,12 +24,13 @@ Az Azure-beli adatmegosztás támogatja a fájlok, mappák és fájlrendszerek m
 Ha a fájlrendszer, a tárolók vagy a mappák a pillanatkép-alapú megosztásban vannak megosztva, az adatok felhasználói dönthetnek úgy, hogy teljes másolatot készítenek a megosztási adatokról. Vagy használhatják a növekményes pillanatképet is, amely csak az új vagy frissített fájlokat másolja. A növekményes pillanatkép-képesség a fájlok utolsó módosításának időpontján alapul. 
 
 Az azonos nevű meglévő fájlokat a rendszer felülírja egy pillanatkép során. A forrásból törölt fájl nem törlődik a célhelyen. Az üres almappákat a forrás nem másolja át a célhelyre. 
+
 ## <a name="share-data"></a>Adatok megosztása
 
 Az alábbi részekben található információk használatával oszthat meg adatokat az Azure-adatmegosztás használatával. 
 ### <a name="prerequisites-to-share-data"></a>Az adatmegosztásra vonatkozó előfeltételek
 
-* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+* Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 * A címzett Azure-beli bejelentkezési e-mail-címének megkeresése. A címzett e-mail-aliasa nem fog működni a célra.
 * Ha az Azure-beli adattár egy másik Azure-előfizetésben található, mint amelyikben az adatmegosztási erőforrást hozza létre, regisztrálja a [Microsoft. DataShare erőforrás-szolgáltatót](concepts-roles-permissions.md#resource-provider-registration) az előfizetésben, ahol az Azure-adattár található. 
 
@@ -75,7 +76,7 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
 
 1. Válassza **az adatmegosztás megkezdése** lehetőséget.
 
-1. Kattintson a **Létrehozás** gombra.   
+1. Válassza a **Létrehozás** lehetőséget.   
 
 1. Adja meg a megosztás részleteit. Adja meg a nevet, a megosztás típusát, a megosztási tartalmak leírását és a használati feltételeket (opcionális). 
 
@@ -109,7 +110,7 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
 
 1. Válassza a **Folytatás** lehetőséget.
 
-1. A **felülvizsgálat + létrehozás** lapon tekintse át a csomag tartalmát, a beállításokat, a címzetteket és a szinkronizálási beállításokat. Ezután válassza a **Létrehozás** elemet.
+1. A **felülvizsgálat + létrehozás** lapon tekintse át a csomag tartalmát, a beállításokat, a címzetteket és a szinkronizálási beállításokat. Ezután kattintson a **Létrehozás** elemre.
 
 Ezzel létrehozta az Azure-beli adatmegosztást. Az adatmegosztás címzettje elfogadhatja a meghívót. 
 
@@ -184,7 +185,7 @@ Az ebben a szakaszban ismertetett lépéseket követve konfigurálhatja az Adatf
 ### <a name="trigger-a-snapshot"></a>Pillanatkép indítása
 Az ebben a szakaszban szereplő lépések csak a pillanatkép-alapú megosztásra vonatkoznak.
 
-1. A **részletek** lapról aktiválhat egy pillanatképet. A lapon válassza a **Pillanatkép indítása** lehetőséget. Dönthet úgy, hogy az adatok teljes pillanatképét vagy növekményes pillanatképét indítja el. Ha első alkalommal fogadja az adatszolgáltató adatait, válassza a **teljes másolás** lehetőséget. 
+1. A **részletek** lapról aktiválhat egy pillanatképet. A lapon válassza a **Pillanatkép indítása** lehetőséget. Dönthet úgy, hogy az adatok teljes pillanatképét vagy növekményes pillanatképét indítja el. Ha első alkalommal fogadja az adatszolgáltató adatait, válassza a **teljes másolás** lehetőséget. A pillanatképek végrehajtásakor a további Pillanatképek nem indulnak el, amíg az előző végére nem kerül sor.
 
    ![Képernyőkép a trigger-pillanatkép kiválasztásáról.](./media/trigger-snapshot.png "Pillanatfelvétel elindítása.") 
 
@@ -195,5 +196,13 @@ Az ebben a szakaszban szereplő lépések csak a pillanatkép-alapú megosztásr
 ### <a name="view-history"></a>Előzmények megtekintése
 A pillanatképek előzményeit csak pillanatkép-alapú megosztásban tekintheti meg. Az előzmények megjelenítéséhez nyissa meg az **Előzmények** lapot. Itt láthatja az elmúlt 30 napban generált összes pillanatkép előzményeit. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="storage-snapshot-performance"></a>Tárolási Pillanatképek teljesítménye
+A tárolási Pillanatképek teljesítményét számos tényező befolyásolja, a fájlok száma és a megosztott adatok mérete mellett. A saját teljesítményű tesztelést mindig ajánlott elvégezni. Az alábbiakban néhány példát befolyásoló tényezők befolyásolják a teljesítményt.
+
+* Párhuzamos hozzáférés a forrás-és a célként megadott adattárakhoz.  
+* A forrás és a cél adattárolók helye. 
+* Növekményes pillanatkép esetén a megosztott adatkészletben található fájlok száma hatással lehet az utolsó sikeres pillanatkép utáni utolsó módosítási idővel rendelkező fájlok listájának megkeresésére. 
+
+
+## <a name="next-steps"></a>Következő lépések
 Megtanulta, hogyan oszthat meg és fogadhat adatait egy Storage-fiókból az Azure adatmegosztási szolgáltatás használatával. További információ a más adatforrásokból történő megosztásról: [támogatott adattárak](supported-data-stores.md).

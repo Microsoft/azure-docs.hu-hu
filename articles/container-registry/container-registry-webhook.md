@@ -3,16 +3,18 @@ title: Webhookok a beállításjegyzékbeli műveletekre való reagáláshoz
 description: Ismerje meg, hogyan indíthat el eseményeket a webhookok használatával, amikor leküldéses vagy lekéréses műveletek történnek a beállításjegyzékbeli adattárakban.
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 1db1098da81e6cf9ecb262c99f705b77af2efd26
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5374b58ba72727500294a173c26e9a131b29fe34
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004483"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722245"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Azure Container Registry webhookok használata
 
 Az Azure-beli tároló-beállításjegyzékek privát Docker-tárolórendszerképeket tárol és felügyel, hasonlóan ahhoz, ahogyan a Docker Hub nyilvános Docker-rendszerképeket tárol. Emellett a [Helm-diagramok](container-registry-helm-repos.md) (előzetes verzió) adattárházait is üzemeltetheti, amelyekkel alkalmazásokat telepíthet a Kubernetes. A webhookok használatával aktiválhatja az eseményeket, amikor bizonyos műveletek az egyik beállításjegyzékbeli tárházban lépnek életbe. A webhookok a beállításjegyzék szintjén válaszolnak az eseményekre, vagy hatókörük egy adott adattár címkéjére is felhasználhatók. [Földrajzilag replikált](container-registry-geo-replication.md) beállításjegyzék esetén az egyes webhookokat úgy konfigurálja, hogy válaszoljon az adott regionális replika eseményeire.
+
+A webhook végpontjának nyilvánosan elérhetőnek kell lennie a beállításjegyzékből. Konfigurálhatja a beállításjegyzék webhook-kérelmeit a biztonságos végpontra történő hitelesítéshez.
 
 A webhook-kérelmekkel kapcsolatos részletekért lásd: [Azure Container Registry webhook-séma referenciája](container-registry-webhook-reference.md).
 
@@ -89,7 +91,7 @@ Minden webhook törölhető úgy, hogy kiválasztja a webhookot, majd a Azure Po
 az acr webhook delete --registry mycontainerregistry --name myacrwebhook01
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 ### <a name="webhook-schema-reference"></a>Webhook-séma – dokumentáció
 

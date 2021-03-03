@@ -4,21 +4,21 @@ description: Ismerje meg, hogyan hozhatja létre, tekintheti meg és kezelheti a
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 09/18/2018
-ms.openlocfilehash: 015a84ab6f81875407f460c4a45423f3f5e22b7f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/14/2021
+ms.openlocfilehash: 854867bb6f40bdd8f0fac28e69d936a4027760b5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100620975"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714374"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Klasszikus metrikai riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával
 
 > [!WARNING]
-> Ez a cikk bemutatja, hogyan hozhat létre régebbi klasszikus metrikai riasztásokat. Azure Monitor mostantól támogatja [az újabb, közel valós idejű metrikai riasztásokat és új riasztási élményt](../platform/alerts-overview.md). A klasszikus riasztások [kimaradnak a nyilvános](../platform/monitoring-classic-retirement.md) Felhőbeli felhasználók számára, bár az új riasztásokat még nem támogató erőforrások esetében is korlátozott mértékben használják.
+> Ez a cikk bemutatja, hogyan hozhat létre régebbi klasszikus metrikai riasztásokat. Azure Monitor mostantól támogatja [az újabb, közel valós idejű metrikai riasztásokat és új riasztási élményt](./alerts-overview.md). A klasszikus riasztások [kimaradnak](./monitoring-classic-retirement.md) a nyilvános Felhőbeli felhasználók számára, bár a használat továbbra is korlátozott a **2021**-ig. A Azure Government Cloud és az Azure China 21Vianet klasszikus riasztásai a **2024. február 29**-én törlődnek.
 >
 
-A klasszikus metrikus riasztások Azure Monitor lehetővé teszik, hogy értesítést kapjon, ha az egyik mérőszám egy küszöbértéket túlnyúlik. A klasszikus metrikai riasztások olyan régebbi funkciók, amelyek csak a nem dimenziós metrikák esetében engedélyezik a riasztást. Létezik egy metrikus riasztások nevű meglévő újabb funkció, amely továbbfejlesztett funkciókat biztosít a klasszikus metrikai riasztások terén. További információ az új metrikai riasztások funkcióról a [metrikus riasztások áttekintése című témakörben](../platform/alerts-metric-overview.md)olvasható. Ebben a cikkben azt ismertetjük, hogyan hozhatók létre, tekinthetők meg és kezelhetők a klasszikus metrikus riasztási szabályok Azure Portal, az Azure CLI és a PowerShell használatával.
+A klasszikus metrikus riasztások Azure Monitor lehetővé teszik, hogy értesítést kapjon, ha az egyik mérőszám egy küszöbértéket túlnyúlik. A klasszikus metrikai riasztások olyan régebbi funkciók, amelyek csak a nem dimenziós metrikák esetében engedélyezik a riasztást. Létezik egy metrikus riasztások nevű meglévő újabb funkció, amely továbbfejlesztett funkciókat biztosít a klasszikus metrikai riasztások terén. További információ az új metrikai riasztások funkcióról a [metrikus riasztások áttekintése című témakörben](./alerts-metric-overview.md)olvasható. Ebben a cikkben azt ismertetjük, hogyan hozhatók létre, tekinthetők meg és kezelhetők a klasszikus metrikus riasztási szabályok Azure Portal, az Azure CLI és a PowerShell használatával.
 
 ## <a name="with-azure-portal"></a>Azure Portal
 
@@ -134,6 +134,5 @@ Ez a rész bemutatja, hogyan hozhat létre, tekinthet meg és kezelhet klassziku
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Hozzon létre egy klasszikus metrikai riasztást egy Resource Manager-sablonnal](../platform/alerts-enable-template.md).
-- [Klasszikus metrikai riasztást küld egy nem Azure-rendszerről webhook használatával](../platform/alerts-webhooks.md).
-
+- [Hozzon létre egy klasszikus metrikai riasztást egy Resource Manager-sablonnal](./alerts-enable-template.md).
+- [Klasszikus metrikai riasztást küld egy nem Azure-rendszerről webhook használatával](./alerts-webhooks.md).

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 77220fabc78dd10b4299219ef84c1f6eb32ba82e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d732f0e42bc5eef8f72a2b9ce2adee28deb9a67
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85987310"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690970"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database-and-azure-sql-managed-instance"></a>Azure PowerShell minták a Azure SQL Database és az Azure SQL felügyelt példányaihoz
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -68,7 +68,7 @@ A következő táblázat az Azure SQL felügyelt példányának Azure PowerShell
 |---|---|
 |**Felügyelt példányok létrehozása és konfigurálása**||
 | [Felügyelt példány létrehozása és kezelése](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | Ez a PowerShell-szkript bemutatja, hogyan hozhat létre és kezelhet felügyelt példányokat Azure PowerShell használatával. |
-| [Felügyelt példány létrehozása és kezelése a Azure Resource Manager sablon használatával](../managed-instance/scripts/create-powershell-azure-resource-manager-template.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ez a PowerShell-szkript bemutatja, hogyan hozhat létre és kezelhet felügyelt példányokat a Azure PowerShell és a Azure Resource Manager sablon használatával.|
+| [Felügyelt példány létrehozása és kezelése a Azure Resource Manager sablon használatával](../managed-instance/create-template-quickstart.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ez a PowerShell-szkript bemutatja, hogyan hozhat létre és kezelhet felügyelt példányokat a Azure PowerShell és a Azure Resource Manager sablon használatával.|
 | [Adatbázis visszaállítása felügyelt példányra egy másik földrajzi régióban](../managed-instance/scripts/restore-geo-backup.md) | Ez a PowerShell-szkript egy adatbázis biztonsági mentését végzi, és visszaállítja egy másik régióba. Ez a katasztrófa-helyreállítási helyzetek felderítésére szolgál. |
 | **Transzparens adattitkosítás konfigurálása**||
 | [Felügyelt példány transzparens adattitkosításának kezelése a saját kulcsának használatával Azure Key Vault](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ez a PowerShell-szkript átlátható adattitkosítást konfigurál egy Bring Your Own Key forgatókönyvben az Azure SQL felügyelt példányaihoz, a Azure Key Vault egyik kulcsának használatával.|

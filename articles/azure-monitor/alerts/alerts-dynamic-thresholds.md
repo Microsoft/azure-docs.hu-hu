@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 01/04/2021
-ms.openlocfilehash: 31a034a7f52efd915b7a07e1abb953a14839892e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9cf4caf77d14dd1296276ca48827c170ef265e9b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100614708"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718063"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Metrikus riasztások dinamikus küszöbértékekkel Azure Monitor
 
@@ -22,7 +22,7 @@ Szívesen vesszük a visszajelzését, és megtartjuk a jövőt <azurealertsfeed
 
 ## <a name="why-and-when-is-using-dynamic-condition-type-recommended"></a>Miért és Mikor ajánlott használni a dinamikus feltétel típusát?
 
-1. **Skálázható riasztás** – a dinamikus küszöbérték riasztási szabályai egyszerre több száz metrikai sorozatra szabott küszöbértékeket hozhatnak létre, ugyanakkor a riasztási szabályok egyetlen mérőszámon való definiálását is lehetővé teszik. Kevesebb riasztást biztosítanak a létrehozásához és kezeléséhez. A létrehozáshoz Azure Portal vagy a Azure Resource Manager API-t használhatja. A skálázható megközelítés különösen akkor hasznos, ha metrikus dimenziókat használ, vagy ha több erőforrásra, például az összes előfizetési erőforrásra alkalmazza.  [További információ a metrikus riasztások dinamikus küszöbértékekkel való konfigurálásáról a sablonok használatával](../platform/alerts-metric-create-templates.md).
+1. **Skálázható riasztás** – a dinamikus küszöbérték riasztási szabályai egyszerre több száz metrikai sorozatra szabott küszöbértékeket hozhatnak létre, ugyanakkor a riasztási szabályok egyetlen mérőszámon való definiálását is lehetővé teszik. Kevesebb riasztást biztosítanak a létrehozásához és kezeléséhez. A létrehozáshoz Azure Portal vagy a Azure Resource Manager API-t használhatja. A skálázható megközelítés különösen akkor hasznos, ha metrikus dimenziókat használ, vagy ha több erőforrásra, például az összes előfizetési erőforrásra alkalmazza.  [További információ a metrikus riasztások dinamikus küszöbértékekkel való konfigurálásáról a sablonok használatával](./alerts-metric-create-templates.md).
 
 1. **Intelligens metrikai minták felismerése** – a ml-technológia használatával automatikusan észlelhetők a metrikus mintázatok, és a metrikai változásokhoz is alkalmazkodnak az idő múlásával, ami gyakran magában foglalhatja a szezonális (óránkénti/napi/heti) időszakot. A mérőszámok viselkedésének időbeli változása és a mintázattól való eltérések alapján történő riasztása csökkenti az egyes mérőszámok "jobb" küszöbértékét. A dinamikus küszöbértékekben használt ML-algoritmus úgy van kialakítva, hogy megakadályozza a várt mintázattal nem rendelkező zajos (kis pontosságú) vagy nagy (alacsony visszahívás) küszöbértékek használatát.
 
@@ -75,7 +75,7 @@ Ha riasztást szeretne indítani, ha a dinamikus küszöbértékek megsértése 
 
 ## <a name="how-do-you-find-out-why-a-dynamic-thresholds-alert-was-triggered"></a>Honnan tudhatja meg, miért váltott ki a dinamikus küszöbértékek riasztása?
 
-Az aktivált riasztási példányokat a riasztások nézetben tekintheti meg, ha az e-mailben vagy szöveges üzenetben található hivatkozásra kattint, vagy a böngészőben a riasztások nézetét szeretné látni a Azure Portal. [További információ a riasztások nézetről](../platform/alerts-overview.md#alerts-experience).
+Az aktivált riasztási példányokat a riasztások nézetben tekintheti meg, ha az e-mailben vagy szöveges üzenetben található hivatkozásra kattint, vagy a böngészőben a riasztások nézetét szeretné látni a Azure Portal. [További információ a riasztások nézetről](./alerts-overview.md#alerts-experience).
 
 A riasztás nézet a következőket jeleníti meg:
 
@@ -188,4 +188,4 @@ Az előző diagram értelmezéséhez használja az alábbi információkat.
 - **Piros pont és egy fekete kör** – a megengedett tartomány első metrikai értékét jeleníti meg. Ez az az érték, amely egy metrikai riasztást indít el, és aktív állapotba helyezi.
 - **Piros pontok**– a megengedett tartományon kívül eső további mért értékeket jelez. Nem fognak további metrikai riasztásokat kiváltani, a riasztás azonban aktív marad.
 - **Vörös terület** – azt az időpontot jeleníti meg, amikor a metrika értéke kívül esik az engedélyezett tartományon. A riasztás aktív állapotban marad mindaddig, amíg a későbbi mért értékek az engedélyezett tartományon kívül esnek, de új riasztások nem jelennek meg.
-- A **vörös terület vége** – ha a kék vonal az engedélyezett értékeken belül van, a vörös terület leáll, a mért érték pedig kék színűre változik. A metrika riasztásának állapota a piros pont és a fekete körvonal közötti időszakban megoldott értékre van állítva. 
+- A **vörös terület vége** – ha a kék vonal az engedélyezett értékeken belül van, a vörös terület leáll, a mért érték pedig kék színűre változik. A metrika riasztásának állapota a piros pont és a fekete körvonal közötti időszakban megoldott értékre van állítva.

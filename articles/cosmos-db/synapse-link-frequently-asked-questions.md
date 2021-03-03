@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: 885aab68c769c0705994bad34bee6aaa4fdc3f3d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9fb6e94062639d32707f52f66e0b99531884a636
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101658469"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692266"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Gyakori kérdések az Azure Cosmos DB-hez készült Azure Synapse Linkkel kapcsolatban
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -73,6 +73,10 @@ Azure Cosmos DB garantálja a tranzakciós és az analitikai számítási felada
 Igen, konfigurálhat egy [felügyelt privát végpontot](analytical-store-private-endpoints.md) , és korlátozhatja az analitikai tároló hálózati hozzáférését az Azure szinapszis által felügyelt virtuális hálózathoz. A felügyelt privát végpontok létrehozhatnak egy privát hivatkozást az analitikus tárolóhoz. Ez a privát végpont az Azure-adatszolgáltatások többek között a tranzakciós tárolóhoz való írási hozzáférést is korlátozza.
 
 Az Azure szinapszis Analytics-munkaterületen a tranzakciós tároló és az analitikus tároló magánhálózati végpontokat is hozzáadhatja ugyanahhoz a Azure Cosmos DB-fiókhoz. Ha csak analitikai lekérdezéseket szeretne futtatni, akkor előfordulhat, hogy csak az analitikai magánhálózati végpontot szeretné leképezni.
+
+### <a name="can-i-use-customer-managed-keys-with-the-azure-cosmos-db-analytical-store"></a>Használhatom-e az ügyfél által felügyelt kulcsokat a Azure Cosmos DB analitikus tárolóval?
+
+Az adattranzakciós és analitikai tárolók közötti zökkenőmentesen titkosíthatja az ügyfelek által felügyelt kulcsokat automatikus és átlátható módon. Az ügyfél által felügyelt kulcsok Azure Cosmos DB analitikus tárolóval való használata jelenleg további konfigurálást igényel a fiókjában. Részletekért forduljon a [Azure Cosmos db csapatához](mailto:azurecosmosdbcmk@service.microsoft.com)  .
 
 ### <a name="are-delete-and-update-operations-on-the-transactional-store-reflected-in-the-analytical-store"></a>A tranzakciós tárolóban a DELETE és a Update művelet szerepel az analitikus tárolóban?
 

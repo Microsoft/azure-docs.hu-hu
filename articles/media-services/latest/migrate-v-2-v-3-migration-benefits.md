@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 70f64813546c66c0f9e3533e09de192315f75600
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: fb3e09cefa7f87fe2eb1e5013854c7965ea9330e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955071"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698841"
 ---
 # <a name="step-1---understand-the-benefits-of-migrating-to-media-services-api-v3"></a>1. lépés – a Media Services API v3-re való Migrálás előnyeinek megismerése
 
@@ -38,7 +38,7 @@ A v3-as Media Services jelentős mértékben javult.
 | Azure Portal frissítések | A Azure Portal úgy lett frissítve, hogy tartalmazza a V3 API-entitások kezelését. Lehetővé teszi az ügyfeleknek, hogy a portálon élő közvetítést indítsanak, hogyan küldhetnek v3 átalakítási feladatokat, kezelhetik a tartalomkezelési házirendeket, a streaming végpontokat, az API-hozzáférést, a társított Storage-fiókokat és a figyelési feladatokat. |
 | **Fiókok és tárolók** | |
 | Azure szerepköralapú hozzáférés-vezérlés (RBAC) | Az ügyfelek mostantól meghatározhatják saját szerepköreiket, és szabályozhatják az egyes entitásokhoz való hozzáférést a Media Services ARM API-ban. Ez segít a HRE-fiókok által az erőforrásokhoz való hozzáférés szabályozásában. |
-| Felügyelt identitások | A felügyelt identitások nem teszik lehetővé a fejlesztők számára a hitelesítő adatok felügyeletét azáltal, hogy az Azure AD-ben identitást biztosítanak az Azure-erőforráshoz. [Itt](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)tekintheti meg a felügyelt identitások részleteit. |
+| Felügyelt identitások | A felügyelt identitások nem teszik lehetővé a fejlesztők számára a hitelesítő adatok felügyeletét azáltal, hogy az Azure AD-ben identitást biztosítanak az Azure-erőforráshoz. [Itt](../../active-directory/managed-identities-azure-resources/overview.md)tekintheti meg a felügyelt identitások részleteit. |
 | Privát hivatkozás támogatása | Az ügyfelek a VNet lévő PrivateEndpoint keresztül érhetik el Media Services végpontokat a Key Delivery, a LiveEvents és a StreamingEndpoints számára. |
 | [Ügyfél-összekeveredésű kulcsok](concept-use-customer-managed-keys-byok.md) vagy saját kulcs használata (BYOK) támogatása | Az ügyfelek a Azure Key Vault egy kulcsával titkosítják a Media Services-fiókban lévő adataikat. |
 | **Adategységek** | |

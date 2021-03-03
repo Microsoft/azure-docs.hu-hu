@@ -5,27 +5,48 @@ author: normesta
 ms.subservice: blobs
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/04/2020
+ms.date: 02/19/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 52f7b328b013fd520787fca420a45ffdc5e9d9b1
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: a49c51d2afd464e7bea910ae0abe3dd02e939dbc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250808"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718495"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Hálózati fájlrendszer (NFS) 3,0 protokoll támogatása az Azure Blob Storage-ban (előzetes verzió)
 
-A blob Storage mostantól támogatja a Network File System (NFS) 3,0 protokollt. Ez a támogatás lehetővé teszi, hogy a Windows-vagy Linux-ügyfelek egy Azure-beli virtuális gépről (VM) vagy egy helyszíni számítógépről csatlakoztassanak egy tárolót a blob Storage-ban. 
+A blob Storage mostantól támogatja a Network File System (NFS) 3,0 protokollt. Ez a támogatás biztosítja a Linux fájlrendszer kompatibilitását az objektum tárolási skálázása és díjszabása alapján, és lehetővé teszi a Windows-és Linux-ügyfelek számára, hogy egy Azure-beli virtuális gépről (VM) vagy egy helyszíni számítógépről csatlakoztatják a tárolót a blob Storage-ban. 
 
 > [!NOTE]
 > Az NFS 3,0 protokoll támogatása az Azure Blob Storage-ban nyilvános előzetes verzióban érhető el. A standard szintű teljesítményű GPV2 a következő régiókban támogatja: Kelet-Ausztrália, Korea középső régiója és az USA déli középső régiója. Az előzetes verzióban az összes nyilvános régióban a prémium szintű teljesítménnyel rendelkező Block blob is támogatott.
 
+Mindig kihívást jelent a nagy léptékű örökölt számítási feladatok futtatása, például a nagy teljesítményű számítástechnika (HPC) a felhőben. Ennek egyik oka az, hogy az alkalmazások gyakran használnak olyan hagyományos protokollokat, mint az NFS vagy a Server Message Block (SMB) az adateléréshez. Emellett a natív felhőalapú tárolási szolgáltatások olyan objektum-tárterületre összpontosítanak, amely egy hierarchikus névteret és hatékony metaadat-műveleteket biztosító fájlrendszer helyett egyszerű névteret és kiterjedt metaadatokat tartalmaz. 
+
+Blob Storage mostantól támogatja a hierarchikus névteret, és az NFS 3,0 protokoll támogatásával kombinálva az Azure sokkal egyszerűbbé teszi az örökölt alkalmazások futtatását a nagyméretű felhőalapú objektum-tárolók felett. 
+
+## <a name="applications-and-workloads-suited-for-this-feature"></a>A szolgáltatáshoz illeszkedő alkalmazások és munkaterhelések
+
+Az NFS 3,0 protokoll szolgáltatás a legjobb megoldás a nagy teljesítményű, nagy léptékű, nagy mennyiségű számítási feladatokhoz, például a médiafájlok feldolgozásához, a kockázati szimulációk és a genomikai feladatok előkészítéséhez. Érdemes ezt a funkciót bármilyen más típusú munkaterhelés használatára használni, amely több olvasót és sok szálat használ, ami nagy sávszélességet igényel. 
+
+## <a name="nfs-30-and-the-hierarchical-namespace"></a>Az NFS 3,0 és a hierarchikus névtér
+
+Az NFS 3,0 protokoll támogatásához a blobokat hierarchikus névtérbe kell rendezni. Egy hierarchikus névteret is engedélyezhet a Storage-fiók létrehozásakor. A hierarchikus névtér használatát Azure Data Lake Storage Gen2 vezette be. Objektumokat (fájlokat) rendez a címtárak és alkönyvtárak hierarchiájában, ugyanúgy, ahogy a számítógép fájlrendszere is meg van szervezve.  A hierarchikus névtér lineárisan méretezhető, és nem csökkenti az adatkapacitást vagy a teljesítményt. A különböző protokollok kiterjeszthetők a hierarchikus névtérből. Az NFS 3,0 protokoll az egyik ilyen elérhető protokoll.   
+
+> [!div class="mx-imgBorder"]
+> ![hierarchikus névtér](./media/network-protocol-support/hierarchical-namespace-and-nfs-support.png)
+  
+## <a name="data-stored-as-block-blobs"></a>Blokk blobként tárolt adattárolók
+
+Ha engedélyezi az NFS 3,0 protokoll támogatását, a Storage-fiókban lévő összes érték blokk blobként lesz tárolva. A blokkos Blobok a nagy mennyiségű olvasási idejű adatok hatékony feldolgozására vannak optimalizálva. A blokkos Blobok tömbből állnak. Az egyes blokkokat egy blokk-azonosító azonosítja. A blokk Blobok akár 50 000 blokkot is tartalmazhatnak. A blokk-Blobok egyes blokkai eltérő méretűek lehetnek, a fiók által használt szolgáltatás verziójának maximális méretével.
+
+Ha az alkalmazás az NFS 3,0 protokoll használatával kezdeményezi a kérést, a rendszer lefordítja a kérést a Blobok blokkolása műveletekkel együtt. Például az NFS 3,0 olvasási távoli eljáráshívási (RPC) kérelmeket a [blob](/rest/api/storageservices/get-blob) lekérése művelettel fordítja le. Az NFS 3,0 írási RPC-kérelmek lefordítása a [letiltási lista](/rest/api/storageservices/get-block-list), a [put blokk](/rest/api/storageservices/put-block)és a [blokkolási lista](/rest/api/storageservices/put-block-list)kombinációjával történik.
+
 ## <a name="general-workflow-mounting-a-storage-account-container"></a>Általános munkafolyamat: Storage-fiók tárolójának csatlakoztatása
 
-A Storage-fiók tárolójának csatlakoztatásához ezeket a dolgokat kell végrehajtania.
+A Windows-vagy Linux-ügyfelek egy Azure-beli virtuális gépről (VM) vagy egy helyszíni számítógépről is csatlakoztathatók a blob Storage-tárolók. A Storage-fiók tárolójának csatlakoztatásához ezeket a dolgokat kell végrehajtania.
 
 1. Regisztrálja az NFS 3,0 Protocol szolgáltatást az előfizetésével.
 
@@ -58,7 +79,7 @@ Az ügyfél nyilvános vagy [privát végponton](../common/storage-private-endpo
 
 - A Storage-fiókhoz konfigurált VNet. 
 
-  Ebben a cikkben a VNet *elsődleges VNet* tekintjük át. További információ: [hozzáférés engedélyezése egy virtuális hálózatról](../common/storage-network-security.md#grant-access-from-a-virtual-network).
+  Ebben a cikkben a VNet *elsődleges VNet* fogunk hivatkozni. További információ: [hozzáférés engedélyezése egy virtuális hálózatról](../common/storage-network-security.md#grant-access-from-a-virtual-network).
 
 - Olyan VNet, amely ugyanabban a régióban található, mint az elsődleges VNet.
 
@@ -113,6 +134,8 @@ Az előzetes verzió ideje alatt a Storage-fiókban tárolt adatokra ugyanazon a
 
 Az előzetes verzióban nem számítunk fel tranzakciót. A tranzakciók díjszabása változhat, és akkor lesz meghatározva, ha általánosan elérhető.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Első lépésként tekintse meg [a blob Storage csatlakoztatása a hálózati fájlrendszer (NFS) 3,0 protokoll (előzetes verzió) használatával](network-file-system-protocol-support-how-to.md)című témakört.
+- Első lépésként tekintse meg [a blob Storage csatlakoztatása a hálózati fájlrendszer (NFS) 3,0 protokoll (előzetes verzió) használatával](network-file-system-protocol-support-how-to.md)című témakört.
+
+- A teljesítmény optimalizálása érdekében tekintse [meg a hálózati fájlrendszer (NFS) 3,0 teljesítményével kapcsolatos szempontokat az Azure Blob Storage-ban (előzetes verzió)](network-file-system-protocol-support-performance.md).

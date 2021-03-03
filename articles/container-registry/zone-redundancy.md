@@ -2,13 +2,14 @@
 title: Zóna – redundáns beállításjegyzék a magas rendelkezésre állás érdekében
 description: További információ a zónák redundanciának engedélyezéséről a Azure Container Registry. Hozzon létre egy tároló-beállításjegyzéket vagy replikációt egy Azure rendelkezésre állási zónában. A Zone redundancia a prémium szintű szolgáltatási szint egyik funkciója.
 ms.topic: article
-ms.date: 01/07/2021
-ms.openlocfilehash: 7de8ed101d2df9e491c475f522a56580798c49a9
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 02/23/2021
+ms.custom: references_regions
+ms.openlocfilehash: 931adcf8258c48d7df42bd5927e8789d7cc871db
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696278"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738106"
 ---
 # <a name="enable-zone-redundancy-in-azure-container-registry-for-resiliency-and-high-availability"></a>A zónák redundanciának engedélyezése Azure Container Registry a rugalmasság és a magas rendelkezésre állás érdekében
 
@@ -20,7 +21,7 @@ A Zone redundancia a prémium szintű tároló beállításjegyzék-szolgáltat�
 
 ## <a name="preview-limitations"></a>Előzetes verzió korlátozásai
 
-* Jelenleg a következő régiókban támogatott: USA keleti régiója, USA 2. keleti régiója és az USA 2. nyugati régiója.
+* Jelenleg a következő régiókban támogatott: USA keleti régiója, USA 2. keleti régiója, USA 2. nyugati régiója, Észak-Európa, Nyugat-Európa, Kelet-Japán.
 * A régió-átalakítások rendelkezésre állási zónákra jelenleg nem támogatottak. Ha engedélyezni szeretné a rendelkezésre állási zónák támogatását egy adott régióban, a beállításjegyzéket a kívánt régióban kell létrehoznia, a rendelkezésre állási zóna támogatásával, vagy a rendelkezésre állási zóna támogatását engedélyező replikált régiót kell hozzáadnia.
 * A zóna redundancia nem tiltható le egy régióban.
 * Az [ACR-feladatok](container-registry-tasks-overview.md) még nem támogatják a rendelkezésre állási zónákat.
@@ -240,7 +241,7 @@ A parancs kimenetében jegyezze fel a `zoneRedundancy` beállításjegyzék és 
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [rendelkezésre állási zónákat támogató régiókról](../availability-zones/az-region.md).
 * További információ a [megbízhatóság](/azure/architecture/framework/resiliency/overview) kiépítése az Azure-ban.

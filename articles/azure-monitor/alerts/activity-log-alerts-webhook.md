@@ -4,19 +4,19 @@ description: Ismerje meg a webhook URL-címére küldött JSON sémáját, ha a 
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
-ms.openlocfilehash: bdac71655ca0c517624f8aa033ee5bc7fcc9d12a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9f5fbc6b0c7ae77181c8c5afdbaffb4e62dccd12
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100614818"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701144"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhookok az Azure-beli tevékenység naplójának értesítéseihez
 A műveleti csoport definíciójának részeként konfigurálhat webhook-végpontokat a műveletnapló riasztási értesítéseinek fogadására. A webhookok segítségével ezeket az értesítéseket más rendszerekre irányíthatja a feldolgozás utáni vagy egyéni műveletekhez. Ez a cikk bemutatja, hogyan néz ki a HTTP-POST webhookhoz tartozó hasznos adat.
 
-További információ a műveletnapló értesítéseiről: [Azure-Tevékenységnaplók riasztások létrehozása](../platform/activity-log-alerts.md).
+További információ a műveletnapló értesítéseiről: [Azure-Tevékenységnaplók riasztások létrehozása](./activity-log-alerts.md).
 
-A műveleti csoportokról a [műveleti csoportok létrehozása](../platform/action-groups.md)című témakörben olvashat bővebben.
+A műveleti csoportokról a [műveleti csoportok létrehozása](./action-groups.md)című témakörben olvashat bővebben.
 
 > [!NOTE]
 > Használhatja továbbá a [Common Alert sémát](./alerts-common-schema.md)is, amely lehetővé teszi, hogy a webhook-integrációk esetében egyetlen bővíthető és egységesített riasztási adattartalom legyen a Azure monitor összes riasztási szolgáltatásában. [Ismerje meg a riasztási séma általános definícióit.](./alerts-common-schema-definitions.md)
@@ -298,10 +298,10 @@ A szolgáltatás állapotával kapcsolatos értesítési tevékenységekről ér
 | status |Sztring. A művelet állapota. Az általános értékek a következők: elindítva, folyamatban, sikeres, sikertelen, aktív és megoldott. |
 | Részállapot |Általában tartalmazza a megfelelő REST-hívás HTTP-állapotkódot. Tartalmazhat továbbá más, alállapotot leíró karakterláncokat is. Az általános részállapot-értékek közé tartozik az OK (HTTP-állapotkód: 200), létrehozva (HTTP-állapotkód: 201), elfogadva (HTTP-állapotkód: 202), nincs tartalom (HTTP-állapotkód: 204), hibás kérés (HTTP-állapotkód: 400), nem található (HTTP-állapotkód: 404), ütközés (HTTP-állapotkód: 409), belső kiszolgálóhiba (http-állapotkód: 500), a szolgáltatás nem érhető el (http-állapotkód: 503) és az átjáró időtúllépése : 504). |
 
-Az egyéb műveletnapló-riasztásokkal kapcsolatos konkrét séma részleteiért lásd: [Az Azure-tevékenység naplójának áttekintése](../platform/platform-logs-overview.md).
+Az egyéb műveletnapló-riasztásokkal kapcsolatos konkrét séma részleteiért lásd: [Az Azure-tevékenység naplójának áttekintése](../essentials/platform-logs-overview.md).
 
 ## <a name="next-steps"></a>Következő lépések
-* [További információ a tevékenység naplóról](../platform/platform-logs-overview.md).
+* [További információ a tevékenység naplóról](../essentials/platform-logs-overview.md).
 * [Azure Automation-parancsfájlok (runbookok-EK) végrehajtása az Azure-riasztásokon](https://go.microsoft.com/fwlink/?LinkId=627081).
 * [Egy logikai alkalmazás használatával SMS-t küldhet egy Azure-riasztásból a Twilio-on keresztül](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app). Ez a példa metrikus riasztásokra vonatkozik, de úgy módosítható, hogy működjön a tevékenység naplójának riasztásával.
 * [Egy logikai alkalmazás használatával Slack-üzenetet küldhet egy Azure-riasztásból](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app). Ez a példa metrikus riasztásokra vonatkozik, de úgy módosítható, hogy működjön a tevékenység naplójának riasztásával.

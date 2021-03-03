@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla, rarayudu
 ms.topic: conceptual
-ms.date: 02/12/2021
-ms.openlocfilehash: d7ed3fb268920d6f4d015886c560b2d9fcbdc632
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.date: 02/18/2021
+ms.openlocfilehash: 642fa044b3272e311769ddbcc5462cb396563652
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104501"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702555"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Biztonságos hozzáférés és az adatAzure Logic Apps
 
@@ -349,9 +349,9 @@ A [Azure Portalban](https://portal.azure.com)ez a szűrő az eseményindítókat
 
 Az ARM-sablonban adja meg az engedélyezett bejövő IP-címtartományt a logikai alkalmazás erőforrás-definíciójában a `accessControl` szakasz használatával. Ebben a szakaszban a (, `triggers` ) `actions` és a választható `contents` szakaszokat használja, `allowedCallerIpAddresses` Ha a tulajdonságot tartalmazza, `addressRange` és a tulajdonság értékét az *x. x. x. x/x* vagy *x. x. x. x-x. x. x. x* formátumban adja meg az engedélyezett IP-tartományhoz.
 
-* Ha a beágyazott logikai alkalmazás az **egyetlen másik Logic apps** lehetőséget használja, amely csak a Azure Logic apps műveletet használó más logikai alkalmazásokból engedélyezi a bejövő hívásokat, állítsa a `addressRange` tulajdonságot üres tömbre (**[]**).
+* Ha a beágyazott logikai alkalmazás az **egyetlen másik Logic apps** lehetőséget használja, amely csak a beépített Azure Logic apps műveletet használó logikai alkalmazásoktól engedélyezi a bejövő hívásokat, állítsa a `allowedCallerIpAddresses` tulajdonságot egy üres tömbre (**[]**), és *hagyja* ki a `addressRange` tulajdonságot.
 
-* Ha a beágyazott logikai alkalmazás a **megadott IP-címtartományok** beállítást használja más bejövő hívásokhoz, például a http-műveletet használó más logikai alkalmazásokhoz, állítsa a `addressRange` tulajdonságot az engedélyezett IP-tartományra.
+* Ha a beágyazott logikai alkalmazás a **megadott IP-címtartományok** beállítást használja más bejövő hívásokhoz, például a http-műveletet használó más logikai alkalmazásokhoz, adja `allowedCallerIpAddresses` meg a szakaszt, és állítsa a `addressRange` TULAJDONSÁGOT az engedélyezett IP-tartományra.
 
 Ez a példa egy beágyazott logikai alkalmazás erőforrás-definícióját mutatja be, amely csak a beépített Azure Logic Apps műveletet használó logikai alkalmazásokból engedélyezi a bejövő hívásokat:
 
@@ -378,18 +378,14 @@ Ez a példa egy beágyazott logikai alkalmazás erőforrás-definícióját muta
             },
             "accessControl": {
                "triggers": {
-                  "allowedCallerIpAddresses": [
-                     {
-                        "addressRange": []
-                     }
-                  ]
+                  "allowedCallerIpAddresses": []
                },
                "actions": {
-                  "allowedCallerIpAddresses": [
-                     {
-                        "addressRange": []
-                     }
-                  ]
+                  "allowedCallerIpAddresses": []
+               },
+               // Optional
+               "contents": {
+                  "allowedCallerIpAddresses": []
                }
             },
             "endpointsConfiguration": {}

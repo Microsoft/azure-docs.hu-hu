@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2020
 ms.author: memildin
-ms.openlocfilehash: 34d2e8116b7b914803d1bb68b350c9aadd78439f
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: ca3a1083b512709ad5ef070b6f5bd0e363baf80b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98792065"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720749"
 ---
 # <a name="sql-information-protection-policy-in-azure-security-center"></a>SQL Information Protection-szabályzat a Azure Security Center
  
@@ -58,7 +58,7 @@ Ezek mindegyike az alábbi megfelelő lapon látható.
 A Security Center **díjszabása és beállításai** lapon válassza az **SQL Information Protection** lehetőséget.
 
 > [!NOTE]
-> Ez a beállítás csak a bérlői szintű engedélyekkel rendelkező felhasználók számára jelenik meg. [Adja meg a bérlői szintű engedélyeket saját magának](https://docs.microsoft.com/azure/security-center/security-center-management-groups#grant-tenant-wide-permissions-to-yourself).
+> Ez a beállítás csak a bérlői szintű engedélyekkel rendelkező felhasználók számára jelenik meg. [Adja meg a bérlői szintű engedélyeket saját magának](./security-center-management-groups.md#grant-tenant-wide-permissions-to-yourself).
 
 :::image type="content" source="./media/security-center-info-protection-policy/pricing-settings-link-to-information-protection.png" alt-text="Az SQL Information Protection házirend elérése Azure Security Center":::
 
@@ -141,7 +141,7 @@ Letölthet egy JSON-fájlt a megadott címkékkel és adattípusokkal, szerkeszt
 - [Set-AzSqlInformationProtectionPolicy](/powershell/module/az.security/set-azsqlinformationprotectionpolicy): beállítja a hatályos bérlői SQL Information Protection-házirendet.
  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
  
 Ebben a cikkben megtanulta, hogyan határozhat meg egy Information Protection-szabályzatot a Azure Security Centerban. Ha többet szeretne megtudni az SQL-Information Protection használatáról az SQL-adatbázisokban található bizalmas adatok osztályozásához és védelméhez, olvassa el az [adatfelderítés és-besorolás Azure SQL Database](../azure-sql/database/data-discovery-and-classification-overview.md).
 

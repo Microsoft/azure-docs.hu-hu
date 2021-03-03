@@ -7,16 +7,16 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: f90709431ea54a640554b642b96a63c7edac472e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 19cf900b8e943b4f9ee69a6241ebc7ddb5a3dba6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100616728"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704395"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhook-műveletek naplóriasztási szabályokhoz
 
-A [log riasztás](alerts-log.md) támogatja a [webhook műveleti csoportok konfigurálását](../platform/action-groups.md#webhook). Ebben a cikkben leírjuk, hogy milyen tulajdonságok érhetők el, és hogyan konfigurálhatók az egyéni JSON-webhookok.
+A [log riasztás](alerts-log.md) támogatja a [webhook műveleti csoportok konfigurálását](./action-groups.md#webhook). Ebben a cikkben leírjuk, hogy milyen tulajdonságok érhetők el, és hogyan konfigurálhatók az egyéni JSON-webhookok.
 
 > [!NOTE]
 > Az egyéni JSON-alapú webhook jelenleg nem támogatott az API-verzióban `2020-05-01-preview`
@@ -47,7 +47,7 @@ Az alapértelmezett webhook művelet tulajdonságai és az egyéni JSON-paramét
 | *SearchQuery* |#searchquery |A riasztási szabály által használt napló keresési lekérdezése. |
 | *SearchResults* |"IncludeSearchResults": igaz|A lekérdezés által visszaadott rekordok JSON-táblázatként, az első 1 000-rekordokra korlátozódik. "IncludeSearchResults": az igaz érték egy egyéni JSON webhook-definícióban van hozzáadva legfelső szintű tulajdonságként. |
 | *Méretek* |"IncludeDimensions": igaz|Dimenzió érték kombinációk, amelyek a riasztást a JSON-szakaszként váltották ki. "IncludeDimensions": az igaz érték egy egyéni JSON webhook-definícióban van hozzáadva legfelső szintű tulajdonságként. |
-| *Riasztás típusa*| #alerttype | A [metrika mértékének vagy az eredmények számának](../platform/alerts-unified-log.md#measure)megfelelően konfigurált log riasztási szabály típusa.|
+| *Riasztás típusa*| #alerttype | A [metrika mértékének vagy az eredmények számának](./alerts-unified-log.md#measure)megfelelően konfigurált log riasztási szabály típusa.|
 | *Munkaterület azonosítója* |#workspaceid |A Log Analytics munkaterület azonosítója. |
 | *Alkalmazásazonosító* |#applicationid |A Application Insights alkalmazás azonosítója. |
 | *Előfizetés azonosítója* |#subscriptionid |A használt Azure-előfizetés azonosítója. |
@@ -84,7 +84,7 @@ Ez a szakasz a naplókhoz tartozó webhookok mintavételi hasznos adatait mutatj
 A következő minta adattartalom a riasztások Log Analyticson alapuló szabványos webhook-műveletre szolgál:
 
 > [!NOTE]
-> A "súlyosság" mező értéke megváltozik, ha az [örökölt log Analytics riasztási API](../platform/api-alerts.md)-ból [átváltotta az aktuális scheduledQueryRules API](../alerts/alerts-log-api-switch.md) -t.
+> A "súlyosság" mező értéke megváltozik, ha az [örökölt log Analytics riasztási API](./api-alerts.md)-ból [átváltotta az aktuális scheduledQueryRules API](../alerts/alerts-log-api-switch.md) -t.
 
 ```json
 {
@@ -318,8 +318,8 @@ A következő minta hasznos adatokat tartalmaz egy egyéni webhook-művelethez a
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-- Tudnivalók a [riasztásokról az Azure-riasztásokban](../platform/alerts-unified-log.md).
+- Tudnivalók a [riasztásokról az Azure-riasztásokban](./alerts-unified-log.md).
 - Ismerje meg, hogyan [kezelheti a naplózási riasztásokat az Azure-ban](alerts-log.md).
-- Műveleti csoportok létrehozása és kezelése [Az Azure-ban](../platform/action-groups.md).
-- További információ a [Application Insightsról](../log-query/log-query-overview.md).
-- További információ a [naplók lekérdezéséről](../log-query/log-query-overview.md). 
+- Műveleti csoportok létrehozása és kezelése [Az Azure-ban](./action-groups.md).
+- További információ a [Application Insightsról](../logs/log-query-overview.md).
+- További információ a [naplók lekérdezéséről](../logs/log-query-overview.md).

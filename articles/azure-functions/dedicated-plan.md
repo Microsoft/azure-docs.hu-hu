@@ -3,12 +3,12 @@ title: Azure Functions dedikált üzemeltetés
 description: Ismerje meg, hogy milyen előnyökkel jár a Azure Functions futtatása dedikált App Service üzemeltetési tervben.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 0ee32d4c4a7d33664da88b133a1f7011fc09f298
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a9f976eda4a551c302ba7df92fbdbbf7a4fce1d7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591066"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704565"
 ---
 # <a name="dedicated-hosting-plans-for-azure-functions"></a>Dedikált üzemeltetési csomagok Azure Functions
 
@@ -41,7 +41,7 @@ App Service-csomag használata esetén a további virtuálisgép-példányok hoz
 
 ## <a name="app-service-environments"></a>App Service-környezetek
 
-A [app Service Environment](../app-service/environment/intro.md) (bevezetéssel) való futtatása lehetővé teszi a függvények teljes elkülönítését és a app Service csomagnál nagyobb számú példány kihasználását. Első lépésként tekintse meg a következő témakört:.
+A App Service Environment (bevezetéssel) való futtatása lehetővé teszi a függvények teljes elkülönítését és a App Service csomagnál nagyobb számú példány kihasználását. Első lépésként tekintse [meg a app Service környezetek bemutatása](../app-service/environment/intro.md)című témakört.
 
 Ha csak egy virtuális hálózatban szeretné futtatni a Function alkalmazást, ezt a [Prémium csomag](functions-premium-plan.md)használatával teheti meg. További információ: [Azure functions Private site Access létrehozása](functions-create-private-site-access.md). 
 

@@ -68,6 +68,8 @@
           href: azure-file-share-support-matrix.md
         - name: Az Azure Disk Backup támogatási mátrixa
           href: disk-backup-support-matrix.md
+        - name: Azure-Blobok biztonsági mentési támogatási mátrixa
+          href: blob-backup-support-matrix.md
         - name: Active Directory-tartományvezérlők
           href: active-directory-backup-restore.md
         - name: Az Azure Policy támogatott virtuálisgép-termékváltozatai
@@ -132,6 +134,8 @@
           href: backup-center-govern-environment.md
         - name: Műveletek végrehajtása
           href: backup-center-actions.md
+        - name: Közösségi erőforrások
+          href: backup-center-community.md
     - name: Azure-beli virtuális gép biztonsági mentése
       items:
         - name: Áttekintés
@@ -224,6 +228,14 @@
           href: backup-managed-disks.md
         - name: Visszaállítás
           href: restore-managed-disks.md
+    - name: Azure-Blobok biztonsági mentése
+      items:
+        - name: Áttekintés
+          href: blob-backup-overview.md
+        - name: Konfigurálás és kezelés
+          href: blob-backup-configure-manage.md
+        - name: Visszaállítás
+          href: blob-restore.md
     - name: Azure-fájlmegosztások biztonsági mentése
       items:
         - name: Áttekintés
@@ -437,6 +449,10 @@
           href: ./security-controls-policy.md
         - name: Biztonsági alapkonfiguráció
           href: security-baseline.md
+    - name: Hozzáférési szint
+      items:
+        - name: Archiválási szint
+          href: archive-tier-support.md
     - name: Hibaelhárítás
       items:
         - name: Azure VM

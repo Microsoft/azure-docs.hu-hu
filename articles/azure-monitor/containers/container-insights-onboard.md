@@ -1,18 +1,18 @@
 ---
-title: Azure Monitor engedélyezése a tárolók számára | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan engedélyezheti és konfigurálhatja a tárolók Azure Monitorét, hogy megtudja, hogyan hajtja végre a tárolót, és hogy milyen teljesítménnyel kapcsolatos problémákat észlelt a rendszer.
+title: Tárolók bepillantásának engedélyezése | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan engedélyezheti és konfigurálhatja a tárolók elemzését, hogy megtudja, hogyan hajtja végre a tárolót, és hogy milyen teljesítménnyel kapcsolatos problémákat észlelt a rendszer.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 56f60b58cff351aa37e98cdba933c929aaaedab6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 58797221fa3380e4f7533a710e2f8dc658cb676c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100618788"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708356"
 ---
-# <a name="enable-azure-monitor-for-containers"></a>Tárolók Azure Monitor engedélyezése
+# <a name="enable-container-insights"></a>Tároló-felismerés engedélyezése
 
-Ez a cikk áttekintést nyújt a tárolók Azure Monitorának beállításához rendelkezésre álló lehetőségekről a Kubernetes környezetekben üzembe helyezett munkaterhelések teljesítményének figyeléséhez, valamint a következő helyeken:
+Ez a cikk áttekintést nyújt a tárolók betekintésének beállításához rendelkezésre álló lehetőségekről a Kubernetes környezetekben üzembe helyezett munkaterhelések teljesítményének figyeléséhez, valamint a következő helyeken:
 
 - [Azure Kubernetes Service (AKS)](../../aks/index.yml)  
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) -verziók 3. x és 4. x  
@@ -23,7 +23,7 @@ A szolgáltatásban üzemeltetett, önállóan felügyelt Kubernetes-fürtökön
 - Azure, az AK- [motor](https://github.com/Azure/aks-engine) használatával
 - [Azure stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview) vagy helyszíni, az AK-motor használatával.
 
-A következő támogatott módszerek bármelyikével engedélyezheti a tárolók Azure Monitorét egy új központi telepítéshez vagy egy vagy több Kubernetes meglévő központi telepítéséhez:
+A következő támogatott módszerek bármelyikével engedélyezheti a tárolók bevezetését egy új központi telepítéshez vagy a Kubernetes egy vagy több meglévő központi telepítéséhez:
 
 - Azure Portal
 - Azure PowerShell
@@ -44,37 +44,37 @@ Mielőtt elkezdené, győződjön meg arról, hogy teljesítette a következő k
 
 - Log Analytics munkaterülettel rendelkezik.
 
-   A tárolók Azure Monitor Log Analytics munkaterületet támogatnak a [régiókban elérhető termékekben](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)felsorolt régiókban.
+   A tároló-felismerések a [régiókban elérhető termékekben](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)felsorolt régiókban log Analytics munkaterületet támogatnak.
 
    Létrehozhat egy munkaterületet, amikor engedélyezi az új AK-fürt figyelését, vagy lehetővé teszi, hogy a bevezetési élmény hozzon létre egy alapértelmezett munkaterületet az AK-fürt előfizetés alapértelmezett erőforráscsoporthoz. 
    
    Ha saját maga hozza létre a munkaterületet, a következő módon hozhatja létre: 
-   - [Azure Resource Manager](../samples/resource-manager-workspace.md)
-   - [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)
-   - [Az Azure Portal](../learn/quick-create-workspace.md) 
+   - [Azure Resource Manager](../logs/resource-manager-workspace.md)
+   - [PowerShell](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)
+   - [Az Azure Portal](../logs/quick-create-workspace.md) 
    
-   Az alapértelmezett munkaterülethez használt támogatott leképezési párok listáját a következő témakörben tekintheti meg: [régió leképezése Azure monitor for containers](container-insights-region-mapping.md).
+   Az alapértelmezett munkaterülethez használt támogatott leképezési párok listáját a következő témakörben tekintheti meg: [régió leképezése a tárolók bepillantást](container-insights-region-mapping.md).
 
-- Tagja a *log Analytics közreműködői* csoportnak a tárolók figyelésének engedélyezéséhez. A Log Analytics munkaterület elérésének szabályozásáról a [munkaterületek kezelése](../platform/manage-access.md)című témakörben olvashat bővebben.
+- Tagja a *log Analytics közreműködői* csoportnak a tárolók figyelésének engedélyezéséhez. A Log Analytics munkaterület elérésének szabályozásáról a [munkaterületek kezelése](../logs/manage-access.md)című témakörben olvashat bővebben.
 
 - Ön a [ *tulajdonos* csoport](../../role-based-access-control/built-in-roles.md#owner) tagja az AK-fürt erőforrásán.
 
    [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-- A figyelési adat megtekintéséhez [*log Analytics olvasó*](../platform/manage-access.md#manage-access-using-azure-permissions) szerepkörrel kell rendelkeznie a log Analytics munkaterületen, amely a tárolók Azure monitorhoz van konfigurálva.
+- A figyelési adat megtekintéséhez [*log Analytics olvasó*](../logs/manage-access.md#manage-access-using-azure-permissions) szerepkörrel kell rendelkeznie a log Analytics munkaterületen, amely a Container-elemzésekkel van konfigurálva.
 
 - A Prometheus-metrikák alapértelmezés szerint nincsenek összegyűjtve. Mielőtt [konfigurálja az ügynököt](container-insights-prometheus-integration.md) a metrikák gyűjtésére, fontos, hogy áttekintse a [Prometheus dokumentációját](https://prometheus.io/) , hogy megtudja, milyen adatok tölthetők le, és milyen módszerekkel támogatottak.
 
 ## <a name="supported-configurations"></a>Támogatott konfigurációk
 
-A tárolók Azure Monitor hivatalosan a következő konfigurációkat támogatják:
+A tároló-felismerések hivatalosan a következő konfigurációkat támogatják:
 
 - Környezetek: az Azure Red Hat OpenShift, a helyszíni Kubernetes, valamint az Azure-ban és Azure Stack található AK-motor. További információkért tekintse [meg a Azure stack AK-motorját](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview).
 - A Kubernetes és a támogatási szabályzat verziói ugyanazok, mint az [Azure Kubernetes szolgáltatásban (ak)](../../aks/supported-kubernetes-versions.md). 
 
 ## <a name="network-firewall-requirements"></a>Hálózati tűzfalra vonatkozó követelmények
 
-A következő táblázat felsorolja azokat a proxy-és tűzfal-konfigurációs adatokat, amelyek szükségesek ahhoz, hogy a tároló ügynök Azure Monitor kommunikáljon a tárolókkal. Az ügynöktől érkező összes hálózati forgalom a Azure Monitor felé irányul.
+A következő táblázat felsorolja azokat a proxy-és tűzfal-konfigurációs adatokat, amelyek szükségesek ahhoz, hogy a tároló ügynök kommunikáljon a Container-információkkal. Az ügynöktől érkező összes hálózati forgalom a Azure Monitor felé irányul.
 
 |Ügynök erőforrása|Port |
 |--------------|------|
@@ -86,7 +86,7 @@ A következő táblázat felsorolja azokat a proxy-és tűzfal-konfigurációs a
 
 A következő táblázat az Azure China 21Vianet proxy-és tűzfal-konfigurációs információit sorolja fel:
 
-|Ügynök erőforrása|Port |Description | 
+|Ügynök erőforrása|Port |Leírás | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.cn` | 443 | Adatfeldolgozás |
 | `*.oms.opinsights.azure.cn` | 443 | OMS bevezetése |
@@ -94,7 +94,7 @@ A következő táblázat az Azure China 21Vianet proxy-és tűzfal-konfiguráci�
 
 Az alábbi táblázat az Azure US government proxy-és tűzfal-konfigurációs információit sorolja fel:
 
-|Ügynök erőforrása|Port |Description | 
+|Ügynök erőforrása|Port |Leírás | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.us` | 443 | Adatfeldolgozás |
 | `*.oms.opinsights.azure.us` | 443 | OMS bevezetése |
@@ -102,7 +102,7 @@ Az alábbi táblázat az Azure US government proxy-és tűzfal-konfigurációs i
 
 ## <a name="components"></a>Összetevők
 
-A teljesítmény monitorozásának lehetősége egy olyan, a Linux rendszerhez készült Log Analytics ügynök, amelyet kifejezetten a tárolók számára fejlesztettek ki Azure Monitor. Ez a speciális ügynök a fürt összes csomópontjának teljesítményét és eseményeit gyűjti, és az üzembe helyezés során a rendszer automatikusan telepíti és regisztrálja a megadott Log Analytics munkaterületet. 
+A teljesítmény monitorozásának lehetősége egy olyan, a Linux rendszerhez készült Log Analytics ügynök, amely kifejezetten a tároló-elemzések számára lett kifejlesztve. Ez a speciális ügynök a fürt összes csomópontjának teljesítményét és eseményeit gyűjti, és az üzembe helyezés során a rendszer automatikusan telepíti és regisztrálja a megadott Log Analytics munkaterületet. 
 
 Az ügynök verziója Microsoft/OMS: ciprod04202018 vagy újabb, és a formátum a következő formátumban jelenik meg: *mmddyyyy*.
 
@@ -116,7 +116,7 @@ Az ügynök új verziójának felszabadításakor a rendszer automatikusan friss
 >
 > A sablont a fürttel azonos erőforráscsoporthoz kell telepíteni.
 
-A tárolók Azure Monitorának engedélyezéséhez használja az alábbi táblázatban leírt módszerek egyikét:
+A tároló-megállapítások engedélyezéséhez használja az alábbi táblázatban leírt módszerek egyikét:
 
 | Központi telepítés állapota | Metódus | Leírás |
 |------------------|--------|-------------|
@@ -136,4 +136,4 @@ A tárolók Azure Monitorának engedélyezéséhez használja az alábbi táblá
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy engedélyezte a figyelést, megkezdheti az Azure Kubernetes szolgáltatásban (ak), Azure Stack vagy más környezetben üzemeltetett Kubernetes-fürtök teljesítményének elemzését. A Azure Monitor for containers használatának megismeréséhez tekintse meg a [Kubernetes-fürt teljesítményének megtekintése](container-insights-analyze.md)című témakört.
+Most, hogy engedélyezte a figyelést, megkezdheti az Azure Kubernetes szolgáltatásban (ak), Azure Stack vagy más környezetben üzemeltetett Kubernetes-fürtök teljesítményének elemzését. A Container-információk használatának megismeréséhez tekintse meg a [Kubernetes-fürt teljesítményének megtekintése](container-insights-analyze.md)című témakört.

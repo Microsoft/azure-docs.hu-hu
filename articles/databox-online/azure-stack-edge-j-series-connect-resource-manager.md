@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/25/2021
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: ebadfc889eb648b734747e5a2a45662e82aab643
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 0b4a31200b99062a72a02ca62ac8f3bf1206f9c9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546805"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722092"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Azure Resource Manager csatlakoztatása a Azure Stack Edge Pro-eszközön
 
@@ -130,7 +130,7 @@ A Windows-ügyfélnek, amelyen meg kell hívnia a Azure Resource Manager API-kat
 
 A Windows-ügyfélnek meg kell felelnie a következő előfeltételeknek:
 
-1. Futtassa a PowerShell 5,0-es verzióját. A PowerShell 5,0-es vagy újabb verziójának kell lennie. A PowerShell verziójának a rendszeren való vizsgálatához futtassa a következő parancsmagot:
+1. Futtassa a PowerShell 5,0-es verzióját. A PowerShell 5,0-es verziójának kell lennie. A PowerShell Core nem támogatott. A PowerShell verziójának a rendszeren való vizsgálatához futtassa a következő parancsmagot:
 
     ```powershell
     $PSVersionTable.PSVersion

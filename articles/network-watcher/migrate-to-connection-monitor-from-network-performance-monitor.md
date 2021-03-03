@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 0bb46c17ece9a38d9f1e10c79a4b026efa0ece4c
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: e5053284de18740b761df3e5df256cc79d2e8f1c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833796"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698688"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Migrálás a Network Performance Monitorről a kapcsolódási figyelőbe
 
@@ -31,16 +31,17 @@ Network Performance Monitor (NPM) teszteit áttelepítheti az új, továbbfejles
 
 Az áttelepítés a következő eredményeket segíti elő:
 
-* A helyszíni ügynökök és a tűzfalbeállítások ugyanúgy működnek, mint a. Nincs szükség módosításra. Log Analytics Azure-beli virtuális gépekre telepített ügynököket a Network Watcher bővítménnyel kell helyettesíteni.
+* A helyszíni ügynökök és a tűzfalbeállítások ugyanúgy működnek, mint a. Nincs szükség módosításra. Log Analytics Azure-beli virtuális gépekre telepített ügynököket a [Network Watcher bővítménnyel](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-windows)kell helyettesíteni.
 * A meglévő tesztek le vannak képezve a Csatlakozáskezelő > a tesztelési csoport > tesztelési formátumára. A **Szerkesztés** lehetőség kiválasztásával megtekintheti és módosíthatja az új kapcsolat figyelője tulajdonságait, letöltheti a sablonokat, és elküldheti a sablont Azure Resource Manager használatával.
 * Az ügynökök az Log Analytics munkaterületre és a metrikára is küldenek adatokat.
 * Adatfigyelés:
-   * **Log Analyticsban tárolt adatértékek**: az áttelepítés előtt az adatterület abban a munkaterületen marad, amelyben a NPM a NetworkMonitoring táblában van konfigurálva. Az áttelepítés után az adatelérési pont a NetworkMonitoring táblába kerül, és a ConnectionMonitor_CL tábla ugyanabban a munkaterületen található. Miután a tesztek le vannak tiltva a NPM-ben, az adattárolást csak a ConnectionMonitor_CL táblában tárolja a rendszer.
-   * **Napló alapú riasztások, irányítópultok és integrációk**: az új ConnectionMonitor_CL táblázat alapján manuálisan kell szerkesztenie a lekérdezéseket. A riasztások a mérőszámokban való újbóli létrehozásával kapcsolatban lásd: [hálózati kapcsolat figyelése a kapcsolat figyelője szolgáltatással](./connection-monitor-overview.md#metrics-in-azure-monitor).
+   * **Log Analyticsban tárolt adatértékek**: az áttelepítés előtt az adatterület abban a munkaterületen marad, amelyben a NPM a NetworkMonitoring táblában van konfigurálva. Az áttelepítés után az adatelérési pont a NetworkMonitoring táblára, a NWConnectionMonitorTestResult táblára és a NWConnectionMonitorPathResult táblára kerül ugyanabban a munkaterületen. Miután a tesztek le vannak tiltva a NPM-ben, az adattárolást csak a NWConnectionMonitorTestResult tábla és a NWConnectionMonitorPathResult táblában tárolja a rendszer.
+   * **Napló alapú riasztások, irányítópultok és integrációk**: manuálisan kell szerkesztenie a lekérdezéseket az új NWConnectionMonitorTestResult tábla és NWConnectionMonitorPathResult tábla alapján. A riasztások a mérőszámokban való újbóli létrehozásával kapcsolatban lásd: [hálózati kapcsolat figyelése a kapcsolat figyelője szolgáltatással](./connection-monitor-overview.md#metrics-in-azure-monitor).
     
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Győződjön meg arról, hogy a Network Watcher engedélyezve van az előfizetésben és a Log Analytics munkaterület régiójában.
+* Győződjön meg arról, hogy a Network Watcher engedélyezve van az előfizetésben és a Log Analytics munkaterület régiójában. 
+* Ha az Azure virtuális gép egy másik régióhoz vagy előfizetéshez kapcsolódik, mint Log Analytics munkaterületet, akkor győződjön meg arról, hogy a Network Watcher engedélyezve van az adott előfizetéshez és régióhoz.   
 * A telepített Log Analytics-ügynökökkel rendelkező Azure-beli virtuális gépeket a Network Watcher bővítménnyel kell engedélyezni.
 
 ## <a name="migrate-the-tests"></a>A tesztek áttelepíteni
@@ -56,18 +57,19 @@ A tesztek Network Performance Monitorról a következőre történő áttelepít
 
 Az áttelepítés megkezdése után a következő módosítások lépnek érvénybe: 
 * Létrejön egy új Csatlakozáskezelő-erőforrás.
-   * Régiónként egy figyelőt hoznak létre. Helyszíni ügynökökkel végzett tesztek esetén az új figyelő neve a következő lesz: `<workspaceName>_"on-premises"` . Az Azure-ügynökökkel végzett tesztek esetében az új figyelő neve a következő lesz: `<workspaceName>_<Azure_region_name>` .
-   * A figyelési adattárolási szolgáltatás jelenleg ugyanazon a Log Analytics munkaterületen található, amelyben a NPM engedélyezve van, egy új táblázatban Connectionmonitor_CL néven. 
+   * Régiónként egy figyelőt hoznak létre. Helyszíni ügynökökkel végzett tesztek esetén az új figyelő neve a következő lesz: `<workspaceName>_"workspace_region_name"` . Az Azure-ügynökökkel végzett tesztek esetében az új figyelő neve a következő lesz: `<workspaceName>_<Azure_region_name>` .
+   * A figyelési adattárolási szolgáltatás jelenleg ugyanazon a Log Analytics munkaterületen található, amelyben a NPM engedélyezve van, az új táblákban, a NWConnectionMonitorTestResult Table és a NWConnectionMonitorPathResult tábla néven. 
    * A teszt neve a test Group neve alapján kerül továbbításra. A teszt leírása nincs áttelepítve.
-   * A forrás és a cél végpontok létrehozása és használata az új tesztelési csoportban történik. A helyszíni ügynökök esetében a végpontok formátuma a következő: `<workspaceName>_"endpoint"_<FQDN of on-premises machine>` . Az Azure esetében, ha az áttelepítési tesztek olyan ügynököket tartalmaznak, amelyek nem futnak, engedélyeznie kell az ügynököket, és újra kell telepíteni az áttelepítést.
-   * A célport és a Szondázási intervallum átkerül egy *\<testname> TC_* nevű és *TC_ \<testname> _AppThresholdsi* teszt-konfigurációba. A protokoll beállítása a portok értékei alapján történik. A sikeres küszöbértékek és egyéb opcionális tulajdonságok üresen maradnak.
-* A NPM nincs letiltva, ezért az áttelepített tesztek továbbra is küldhetnek adatátvitelt a NetworkMonitoring és ConnectionMonitor_CL táblákba. Ez a megközelítés biztosítja, hogy a meglévő napló alapú riasztások és integrációk ne legyenek hatással.
+   * A forrás és a cél végpontok létrehozása és használata az új tesztelési csoportban történik. A helyszíni ügynökök esetében a végpontok formátuma a következő: `<workspaceName>_<FQDN of on-premises machine>` .
+   * A rendszer áthelyezi a célport és a szondázás intervallumát a és a nevű teszt-konfigurációba `TC_<protocol>_<port>` `TC_<protocol>_<port>_AppThresholds` . A protokoll beállítása a portok értékei alapján történik. Az ICMP esetében a teszt konfigurációk neve a következő: `TC_<protocol>` és `TC_<protocol>_AppThresholds` . A siker küszöbértékei és egyéb opcionális tulajdonságok, ha a beállítás át van telepítve, máskülönben üresen maradnak.
+   * Ha az áttelepítési tesztek olyan ügynököket tartalmaznak, amelyek nem futnak, engedélyeznie kell az ügynököket, és újra kell telepíteni az áttelepítést.
+* A NPM nincs letiltva, ezért az áttelepített tesztek továbbra is küldhetnek adatküldést a NetworkMonitoring táblába, a NWConnectionMonitorTestResult Table és a NWConnectionMonitorPathResult táblába. Ez a megközelítés biztosítja, hogy a meglévő napló alapú riasztások és integrációk ne legyenek hatással.
 * Az újonnan létrehozott Csatlakozáskezelő látható a Csatlakozáskezelőben.
 
 Az áttelepítés után ügyeljen a következőre:
 * Manuálisan tiltsa le a teszteket a NPM. Amíg így tesz, továbbra is díjat kell fizetnie. 
-* A NPM letiltása közben hozza létre újra a riasztásokat a ConnectionMonitor_CL táblában, vagy használjon metrikákat. 
-* Telepítse át a külső integrációkat a ConnectionMonitor_CL táblába. A külső integrációk példái a Power BI-és Grafana található irányítópultok, valamint a biztonsági információkkal és az Event Management-(SIEM-) rendszerekkel való integrációk.
+* A NPM letiltása közben hozza létre újra a riasztásokat a NWConnectionMonitorTestResult és a NWConnectionMonitorPathResult táblákon, vagy használjon metrikákat. 
+* Telepítse át az összes külső integrációt a NWConnectionMonitorTestResult és a NWConnectionMonitorPathResult táblába. A külső integrációk példái a Power BI-és Grafana található irányítópultok, valamint a biztonsági információkkal és az Event Management-(SIEM-) rendszerekkel való integrációk.
 
 
 ## <a name="next-steps"></a>Következő lépések

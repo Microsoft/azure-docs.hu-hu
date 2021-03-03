@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 73496e350a5e40a3945343271b76c6d883991b62
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9ea33c7dca55e22687bd1db873c281caa1a3c4cb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100616995"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719933"
 ---
 # <a name="collect-custom-logs-with-log-analytics-agent-in-azure-monitor"></a>Egyéni naplók gyűjtése Log Analytics-ügynökkel az Azure Monitorban
 
 A Azure Monitor Log Analytics ügynökének egyéni naplói adatforrása lehetővé teszi, hogy a Windows és a Linux rendszerű számítógépeken is gyűjtsön eseményeket a szöveges fájlokból. Számos alkalmazás a szabványos naplózási szolgáltatások, például a Windows-Eseménynapló vagy a syslog helyett szöveges fájlokba naplóz adatokat. Az adatgyűjtés után elemezheti az adatokat a lekérdezések egyes mezőibe, vagy kinyerheti az adatokat a gyűjteménybe az egyes mezőkbe.
 
 > [!IMPORTANT]
-> Ez a cikk az egyéni naplók összegyűjtését ismerteti a [log Analytics ügynökkel](../platform/log-analytics-agent.md) , amely a Azure monitor által használt ügynökök egyike. Más ügynökök különböző adatokat gyűjtenek, és eltérően vannak konfigurálva. A rendelkezésre álló ügynökök és az összegyűjtött adatok listáját lásd: [Azure monitor ügynökök áttekintése](../agents/agents-overview.md) .
+> Ez a cikk az egyéni naplók összegyűjtését ismerteti a [log Analytics ügynökkel](./log-analytics-agent.md) , amely a Azure monitor által használt ügynökök egyike. Más ügynökök különböző adatokat gyűjtenek, és eltérően vannak konfigurálva. A rendelkezésre álló ügynökök és az összegyűjtött adatok listáját lásd: [Azure monitor ügynökök áttekintése](../agents/agents-overview.md) .
 
 ![Egyéni naplók gyűjtése](media/data-sources-custom-logs/overview.png)
 
@@ -78,7 +78,7 @@ Előfordulhat például, hogy egy alkalmazás minden nap létrehoz egy naplófá
 
 A következő táblázat példákat tartalmaz a különböző naplófájlok megadására szolgáló érvényes mintákra.
 
-| Description | Elérési út |
+| Leírás | Elérési út |
 |:--- |:--- |
 | A *c:\logs mappa* összes fájlja. txt kiterjesztéssel a Windows-ügynökön |C:\logs mappa \\ \* . txt |
 | A *c:\logs mappa* összes fájlja a log és a. txt kiterjesztéssel kezdődő névvel a Windows-ügynökön |C:\Logs\log \* . txt |
@@ -105,7 +105,7 @@ Miután Azure Monitor elkezdi a gyűjtést az egyéni naplóból, a rekordjai a 
 > Ha a lekérdezésből hiányzik a RawData tulajdonság, előfordulhat, hogy be kell állítania és újra meg kell nyitnia a böngészőt.
 
 ### <a name="step-6-parse-the-custom-log-entries"></a>6. lépés Az egyéni naplóbejegyzések értelmezése
-A teljes naplóbejegyzés egyetlen, **RawData** nevű tulajdonságban lesz tárolva.  Valószínűleg el szeretné különíteni az egyes bejegyzések különböző adatait az egyes rekordok egyedi tulajdonságaiba. A **RawData** több tulajdonságba való elemzésének lehetőségeiről a [Azure monitorban található szöveges fájlok](../log-query/parse-text.md) elemzése című témakörben talál további információt.
+A teljes naplóbejegyzés egyetlen, **RawData** nevű tulajdonságban lesz tárolva.  Valószínűleg el szeretné különíteni az egyes bejegyzések különböző adatait az egyes rekordok egyedi tulajdonságaiba. A **RawData** több tulajdonságba való elemzésének lehetőségeiről a [Azure monitorban található szöveges fájlok](../logs/parse-text.md) elemzése című témakörben talál további információt.
 
 ## <a name="removing-a-custom-log"></a>Egyéni napló eltávolítása
 A Azure Portal az alábbi eljárással távolíthatja el a korábban definiált egyéni naplókat.
@@ -116,7 +116,7 @@ A Azure Portal az alábbi eljárással távolíthatja el a korábban definiált 
 ## <a name="data-collection"></a>Adatgyűjtés
 Azure Monitor minden egyéni naplóból körülbelül 5 percenként gyűjt új bejegyzéseket.  Az ügynök rögzíti a helyét minden olyan naplófájlban, amelyről gyűjt.  Ha az ügynök egy ideig offline állapotba kerül, akkor a Azure Monitor begyűjti azokat a bejegyzéseket, amelyekből az utolsó lemaradt, még akkor is, ha az ügynök offline állapotban van.
 
-A naplóbejegyzés teljes tartalma egyetlen, **RawData** nevű tulajdonságba íródik.  Az egyes importált naplóbejegyzések több tulajdonságba való elemzéséhez tekintse meg a [szöveges adat Azure monitorban](../log-query/parse-text.md) történő elemzését ismertető témakört.
+A naplóbejegyzés teljes tartalma egyetlen, **RawData** nevű tulajdonságba íródik.  Az egyes importált naplóbejegyzések több tulajdonságba való elemzéséhez tekintse meg a [szöveges adat Azure monitorban](../logs/parse-text.md) történő elemzését ismertető témakört.
 
 ## <a name="custom-log-record-properties"></a>Egyéni naplózási rekord tulajdonságai
 Az egyéni naplók egy olyan típussal rendelkeznek, amely tartalmazza a megadott napló nevét, valamint az alábbi táblázatban szereplő tulajdonságokat.
@@ -125,7 +125,7 @@ Az egyéni naplók egy olyan típussal rendelkeznek, amely tartalmazza a megadot
 |:--- |:--- |
 | TimeGenerated |A rekord Azure Monitor általi gyűjtésének dátuma és időpontja.  Ha a napló időalapú határolójelet használ, akkor ez a bejegyzésből begyűjtött idő. |
 | SourceSystem |Az ügynök típusa, amelyet a rendszer a rekordból gyűjtött. <br> OpsManager – Windows-ügynök, közvetlen kapcsolat vagy System Center Operations Manager <br> Linux – minden Linux-ügynök |
-| RawData |Az összegyűjtött bejegyzés teljes szövege. Valószínűleg ezeket az adatelemzéseket az [egyes tulajdonságokkal szeretné elemezni](../log-query/parse-text.md). |
+| RawData |Az összegyűjtött bejegyzés teljes szövege. Valószínűleg ezeket az adatelemzéseket az [egyes tulajdonságokkal szeretné elemezni](../logs/parse-text.md). |
 | ManagementGroupName |A System Center-műveletek felügyeleti csoportjának neve, ügynökök kezelése.  Más ügynökök esetében ez az AOI-\<workspace ID\> |
 
 
@@ -171,8 +171,8 @@ Az egyéni naplók akkor hasznosak, ha az adatai megfelelnek a fent felsorolt fe
 A következő alternatív stratégiákat kell figyelembe venni abban az esetben, ha az adatok nem gyűjthetők össze az egyéni naplókkal:
 
 - Egyéni parancsfájl vagy más módszer használatával adatokat írhat a Windows- [eseményekre](data-sources-windows-events.md) vagy a [syslog](data-sources-syslog.md) -re, amelyeket a Azure monitor gyűjt. 
-- Az adatküldés közvetlenül a Azure Monitor a http-adatgyűjtő [API](../platform/data-collector-api.md)használatával. 
+- Az adatküldés közvetlenül a Azure Monitor a http-adatgyűjtő [API](../logs/data-collector-api.md)használatával. 
 
 ## <a name="next-steps"></a>Következő lépések
-* Az egyes importált naplóbejegyzések több tulajdonságba való elemzéséhez tekintse meg a [szöveges adat Azure monitorban](../log-query/parse-text.md) történő elemzését ismertető témakört.
-* További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../log-query/log-query-overview.md) .
+* Az egyes importált naplóbejegyzések több tulajdonságba való elemzéséhez tekintse meg a [szöveges adat Azure monitorban](../logs/parse-text.md) történő elemzését ismertető témakört.
+* További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../logs/log-query-overview.md) .

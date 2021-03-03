@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 02/10/2021
-ms.openlocfilehash: 45cbd0fc2a3a6a059274f33e25b577fde1f4a4ab
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b21e5ea8e25844e3e025915b0b9f15162c642f25
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585543"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713439"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Az Azure Monitor dokumentációjának újdonságai
 
@@ -19,18 +19,18 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 ## <a name="january-2021"></a>2021. január 
 
-### <a name="general"></a>Általános 
+### <a name="general"></a>Általános kérdések 
 - [Azure monitor GYIK](faq.md) – a Application Insights eszköz adataihoz hozzáadott bejegyzés.
 ### <a name="agents"></a>Ügynökök  
-- [Windows esemény-nyomkövetés-(ETW-) események gyűjtése az analysis Azure monitor-naplókban](platform/data-sources-event-tracing-windows.md) – új cikk.
-- [Adatgyűjtési szabályok a Azure monitor (előzetes verzió)](platform/data-collection-rule-overview.md) – a PowerShell-és CLI-mintákra mutató hivatkozásokkal bővült.
+- [Windows esemény-nyomkövetés-(ETW-) események gyűjtése az analysis Azure monitor-naplókban](./agents/data-sources-event-tracing-windows.md) – új cikk.
+- [Adatgyűjtési szabályok a Azure monitor (előzetes verzió)](./agents/data-collection-rule-overview.md) – a PowerShell-és CLI-mintákra mutató hivatkozásokkal bővült.
 
 ### <a name="alerts"></a>Riasztások  
-- [Konfigurálja az Azure-t a ITSM-eszközök biztonságos exportálással való összekapcsolására](platform/itsm-connector-secure-webhook-connections-azure-configuration.md) – új cikk.
-- [Az összekötő állapotával kapcsolatos hibák a ITSMC-irányítópulton](platform/itsmc-dashboard-errors.md) – új cikk.
-- [Vizsgálja meg a hibákat a ITSMC-irányítópult használatával](platform/itsmc-dashboard.md) – új cikk.
-- [Azure metric-riasztások](platform/alerts-troubleshoot-metric.md) – a dinamikus küszöbértékekhez hozzáadott szakaszt tartalmaz.
-- [It-szolgáltatásmenedzsmenti csatoló kapcsolatos problémák elhárítása](platform/itsmc-troubleshoot-overview.md) – új cikk.
+- [Konfigurálja az Azure-t a ITSM-eszközök biztonságos exportálással való összekapcsolására](./alerts/itsm-connector-secure-webhook-connections-azure-configuration.md) – új cikk.
+- [Az összekötő állapotával kapcsolatos hibák a ITSMC-irányítópulton](./alerts/itsmc-dashboard-errors.md) – új cikk.
+- [Vizsgálja meg a hibákat a ITSMC-irányítópult használatával](./alerts/itsmc-dashboard.md) – új cikk.
+- [Azure metric-riasztások](./alerts/alerts-troubleshoot-metric.md) – a dinamikus küszöbértékekhez hozzáadott szakaszt tartalmaz.
+- [It-szolgáltatásmenedzsmenti csatoló kapcsolatos problémák elhárítása](./alerts/itsmc-troubleshoot-overview.md) – új cikk.
 
 ### <a name="application-insights"></a>Application Insights
 - [Azure Application Insights telemetria korreláció](app/correlation.md) – nyomkövetési korreláció hozzáadása, ha egy modul egy másikat hív meg a OpenCensus Pythonban.
@@ -47,25 +47,25 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 - [Azure monitor for Azure adatkezelő (előzetes verzió)](insights/data-explorer.md) – új cikk.
 
 ### <a name="logs"></a>Naplók    
-- [Azure monitor ügyfél által felügyelt kulcs](platform/customer-managed-keys.md) – felhasználóhoz rendelt felügyelt identitás bevezetése.
-- A [Azure monitor a dedikált fürtöket naplózza](log-query/logs-dedicated-clusters.md) – frissítette a visszajelzési kódot.
-- [Több szolgáltatás lekérdezése – Azure monitor és Azure adatkezelő (előzetes verzió)](platform/azure-monitor-troubleshooting-logs.md) – új cikk.
+- [Azure monitor ügyfél által felügyelt kulcs](./logs/customer-managed-keys.md) – felhasználóhoz rendelt felügyelt identitás bevezetése.
+- A [Azure monitor a dedikált fürtöket naplózza](./logs/logs-dedicated-clusters.md) – frissítette a visszajelzési kódot.
+- [Több szolgáltatás lekérdezése – Azure monitor és Azure adatkezelő (előzetes verzió)](/azure/azure-monitor/platform/azure-data-explorer-monitor-cross-service-query) – új cikk.
 
 ### <a name="metrics"></a>Mérőszámok
-- [Azure monitor metrikák metrikáinak összesítése és megjelenítése](platform/metrics-aggregation-explained.md) – új cikk.
+- [Azure monitor metrikák metrikáinak összesítése és megjelenítése](./essentials/metrics-aggregation-explained.md) – új cikk.
 
 ### <a name="platform-logs"></a>Platform naplói
-- [Azure monitor erőforrás-naplók támogatott szolgáltatások és kategóriák](platform/resource-logs-categories.md) – új cikk.
+- [Azure monitor erőforrás-naplók támogatott szolgáltatások és kategóriák](./essentials/resource-logs-categories.md) – új cikk.
 
 ### <a name="visualizations"></a>Vizualizációk
-- [Azure monitor munkafüzetek adatforrásai – az](platform/workbooks-data-sources.md) egyesítés és a változás elemzése is megtörténik.
+- [Azure monitor munkafüzetek adatforrásai – az](./visualize/workbooks-data-sources.md) egyesítés és a változás elemzése is megtörténik.
 
 
 ## <a name="december-2020"></a>2020. december
 
-### <a name="general"></a>Általános
+### <a name="general"></a>Általános kérdések
 - [Azure monitor ügyfél által felügyelt kulcshoz](logs/customer-managed-keys.md) hozzáadott hibaüzenetek.
-- Az Event hub-integrációval Azure Monitor hozzáadott szakasszal [integrált partnerek](/partners.md) .
+- Az Event hub-integrációval Azure Monitor hozzáadott szakasszal [integrált partnerek](partners.md) .
 
 ### <a name="agents"></a>Ügynökök
 - [Erőforrás-lekérdezés az Azure Adatkezelő Azure monitor](logs/azure-monitor-data-explorer-proxy.md) -új cikk használatával.
@@ -96,7 +96,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 - [Hibaelhárítás Azure Monitor Application Insights Javához](app/java-standalone-troubleshoot.md) – új cikk.
 
 ### <a name="containers"></a>Tárolók
-- A [tárolók Azure monitor jelentései](insights/container-insights-reports.md) – új cikk.
+- [Jelentések a Container bepillantást](insights/container-insights-reports.md) tartalmazó új cikkben.
 
 ### <a name="logs"></a>Naplók
 - [Azure monitor naplók dedikált fürtök](logs/logs-dedicated-clusters.md) – új automatizált parancsok, a leválasztási és eltávolítási módszerek, valamint a hibaelhárítás.
@@ -121,7 +121,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 ## <a name="november-2020"></a>2020. november
 
-### <a name="general"></a>Általános
+### <a name="general"></a>Általános kérdések
 - [Azure monitor szolgáltatási korlátok](service-limits.md) – frissítve az Azure arc támogatásához.
 
 ### <a name="agents"></a>Ügynökök
@@ -168,16 +168,16 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 ### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
 
-- [Azure monitor for VMS-áttekintés engedélyezése](vm/vminsights-enable-overview.md) – támogatott régiók hozzáadva.
+- A [VM-információk áttekintésének engedélyezése](vm/vminsights-enable-overview.md) – támogatott régiók hozzáadása.
 
-Új cikkek a Azure Monitor for VMs Guest Health szolgáltatáshoz (előzetes verzió)
+Új cikkek a virtuális gépek bepillantást a vendég állapotára (előzetes verzió)
 
-- [Azure Monitor for VMs Guest Health (előzetes verzió)](vm/vminsights-health-overview.md)
-- [Vendég állapottal kapcsolatos riasztások Azure Monitor for VMs (előzetes verzió)](vm/vminsights-health-alerts.md)
-- [A figyelés konfigurálása Azure Monitor for VMs vendég állapota (előzetes verzió)](vm/vminsights-health-configure.md)
-- [A figyelés konfigurálása Azure Monitor for VMs vendég állapota adatgyűjtési szabályokkal (előzetes verzió)](vm/vminsights-health-configure-dcr.md)
-- [Azure Monitor for VMs vendég állapotának engedélyezése (előzetes verzió)](vm/vminsights-health-enable.md)
-- [Azure Monitor for VMs Guest Health (előzetes verzió) – problémamegoldás](vm/vminsights-health-troubleshoot.md)
+- [A VM bepillantást a vendég állapotára (előzetes verzió)](vm/vminsights-health-overview.md)
+- [A virtuális gépekkel kapcsolatos vendég állapottal kapcsolatos riasztások (előzetes verzió)](vm/vminsights-health-alerts.md)
+- [A figyelés konfigurálása a VM-beli betekintő Guest Health szolgáltatásban (előzetes verzió)](vm/vminsights-health-configure.md)
+- [Az adatgyűjtési szabályok (előzetes verzió) használatával konfigurálhatja a virtuális gépek elemzését a vendég állapotában](vm/vminsights-health-configure-dcr.md)
+- [A virtuális gépek bepillantást tevő vendég állapotának engedélyezése (előzetes verzió)](vm/vminsights-health-enable.md)
+- [A virtuális gépekkel kapcsolatban észlelt vendég állapotának hibáinak megoldása (előzetes verzió)](vm/vminsights-health-troubleshoot.md)
 
 
 
@@ -185,7 +185,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 ## <a name="october-2020"></a>2020. október
 
-### <a name="general"></a>Általános
+### <a name="general"></a>Általános kérdések
 - [Azure monitor API-nyugdíjazás](logs/operationalinsights-api-retirement.md) – új cikk.
 
 ### <a name="agents"></a>Ügynökök
@@ -210,9 +210,9 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 - [Ismerkedjen meg az Azure](autoscale/autoscale-get-started.md) -ra épülő autoskálázással az autoskálázás más régióba való áthelyezésével foglalkozó szakaszban.
 
 ### <a name="containers"></a>Tárolók
-- [PV-figyelés konfigurálása a Azure monitor for containers](containers/container-insights-persistent-volumes.md) – új cikk.
-- [A containers agent Azure monitor kezelése](containers/container-insights-manage-agent.md) – az Azure arc-kompatibilis Kubernetes-fürt támogatása hozzáadva.
-- [Metrikai riasztások Azure Monitorről tárolók](containers/container-insights-metric-alerts.md) számára – az Azure arc-kompatibilis Kubernetes-fürt támogatása hozzáadva.
+- [A PV-figyelés konfigurálása a Container bepillantásokkal](containers/container-insights-persistent-volumes.md) – új cikk.
+- [A Container bepillantási ügynök kezelése – az](containers/container-insights-manage-agent.md) Azure arc-kompatibilis Kubernetes-fürt támogatása hozzáadva.
+- [Metrikus riasztások a Container bepillantást](containers/container-insights-metric-alerts.md) követően – az Azure arc-kompatibilis Kubernetes-fürt támogatása hozzáadva.
 
 ### <a name="insights-and-solutions"></a>Bepillantást és megoldásokat
 - [It-szolgáltatásmenedzsmenti csatoló – biztonságos exportálás Azure monitor](alerts/it-service-management-connector-secure-webhook-connections.md) – a ServiceNow-ben hozzáadott szakasz.
@@ -234,13 +234,13 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 ### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
 - [Change Analysis in Azure monitor for VMS](vm/vminsights-change-analysis.md) – új cikk.
 - [Azure monitor for VMS-áttekintés engedélyezése](vm/vminsights-enable-overview.md) – támogatott régiók hozzáadva.
-- A [tárolók Azure monitor frissítése a metrikák](containers/container-insights-update-metrics.md) számára – az Azure arc-kompatibilis Kubernetes-fürt támogatása.
+- A [metrikák tároló](containers/container-insights-update-metrics.md) -információinak frissítése – az Azure arc-kompatibilis Kubernetes-fürt támogatása.
 
 
 
 ## <a name="september-2020"></a>2020. szeptember
 
-### <a name="general"></a>Általános
+### <a name="general"></a>Általános kérdések
 - [Azure monitor GYIK](faq.md) – további szakasz a OpenTelemetry.
 
 ### <a name="agents"></a>Ügynökök
@@ -265,8 +265,8 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 
 ### <a name="containers"></a>Tárolók
-- Az [Azure arc-kompatibilis Kubernetes-fürt konfigurálása az Azure monitor for containers](containers/container-insights-enable-arc-enabled-clusters.md) szolgáltatással – további útmutatást nyújt az egyszerű szolgáltatásnév használatával történő figyelés engedélyezéséhez.
-- [Üzembe helyezés & hPa-metrikák Azure monitor for containers](containers/container-insights-deployment-hpa-metrics.md) – új cikk.
+- Az [Azure arc-kompatibilis Kubernetes-fürt konfigurálása a tároló](containers/container-insights-enable-arc-enabled-clusters.md) -megállapításokkal – további útmutatást nyújt az egyszerű szolgáltatásnév használatával történő figyelés engedélyezéséhez.
+- [Üzembe helyezés & hPa-metrikák a Container bepillantásokkal](containers/container-insights-deployment-hpa-metrics.md) – új cikk.
 
 ### <a name="insights-and-solutions"></a>Bepillantást és megoldásokat
 - [Az Azure cache](insights/redis-cache-insights-overview.md) -hez készült Azure monitor Redis – eltávolított előnézet megjelölése.
@@ -307,7 +307,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 ## <a name="august-2020"></a>2020. augusztus
 
-### <a name="general"></a>Általános
+### <a name="general"></a>Általános kérdések
 
 - A [Azure monitor által figyelt](monitor-reference.md) frissítések Azure monitor ügynök belefoglalásával.
 
@@ -319,7 +319,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 
 #### <a name="new-and-updated-articles-from-restructure-of-agent-content"></a>Új és frissített cikkek az ügynök tartalmának újrastrukturálása esetén
-- [Azure Monitor for VMs-áttekintés engedélyezése](vm/vminsights-enable-overview.md)
+- [A VM-információk áttekintésének engedélyezése](vm/vminsights-enable-overview.md)
 - [Log Analytics-ügynök telepítése Linux rendszerű számítógépeken](agents/agent-linux.md)
 - [Log Analytics-ügynök telepítése Windows rendszerű számítógépeken](agents/agent-windows.md)
 - [Log Analytics-ügynök áttekintése](agents/log-analytics-agent.md)
@@ -344,7 +344,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 
 ### <a name="containers"></a>Tárolók
-- [Üzembe helyezés & hPa-metrikák Azure monitor for containers](containers/container-insights-deployment-hpa-metrics.md) – új cikk.
+- [Üzembe helyezés & hPa-metrikák a Container bepillantásokkal](containers/container-insights-deployment-hpa-metrics.md) – új cikk.
 
 ### <a name="insights"></a>Insights
 - [Azure monitor figyelési megoldásai](insights/solutions.md) – új felhasználói felület frissítése.
@@ -371,8 +371,8 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 ## <a name="july-2020"></a>2020. július
 
-### <a name="general"></a>Általános
-- [Azure monitor üzembe helyezése](deploy-scale.md) Azure monitor for VMS bevezetési tartalom újrastrukturálása.
+### <a name="general"></a>Általános kérdések
+- [Azure monitor üzembe helyezése](deploy-scale.md) – a virtuális gépek bevezetési tartalmának átstrukturálása.
 - Az [Azure Private link használatával biztonságosan csatlakoztathatja a hálózatokat Azure monitor](logs/private-link-security.md) hozzáadott szakaszhoz a korlátok között.
 
 ### <a name="alerts"></a>Riasztások
@@ -389,8 +389,8 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 - Az [Azure Application Insights Profiler-vel kapcsolatos problémák elhárítása](app/profiler-troubleshooting.md) – megjegyzés a ASP.net Core-alkalmazások Azure app Service-on futó hiba a Profilerben. 
 
 ### <a name="containers"></a>Tárolók
-- A [Azure monitor for containers – új cikk értesítéseinek naplózása](containers/container-insights-log-alerts.md) .
-- [Metrikai riasztások Azure monitor a tárolók számára](containers/container-insights-metric-alerts.md) – új cikk.
+- [Riasztások naplózása a Container bepillantásokból](containers/container-insights-log-alerts.md) – új cikk.
+- [Metrikus riasztások a Container bepillantást](containers/container-insights-metric-alerts.md) követően – új cikk.
 
 ### <a name="logs"></a>Naplók
 - [Azure monitor ügyfél által felügyelt kulcshoz](logs/customer-managed-keys.md) hozzáadott hibaüzenet és szakasz CMK-konfiguráció lekérdezésekhez.
@@ -408,18 +408,18 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 ### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
 
-Új és frissített cikkek Azure Monitor for VMs tartalom átszervezéséről
+Új és frissített cikkek a virtuális gép elemzése tartalmának átszervezéséről
 
-- [Mi az Azure Monitor for VMs?](vm/vminsights-overview.md)
-- [Azure Monitor for VMs Log Analytics munkaterület konfigurálása](vm/vminsights-configure-workspace.md)
+- [Mi az a VM-alapú adatfelismerés?](vm/vminsights-overview.md)
+- [Log Analytics munkaterület konfigurálása a virtuális gépekhez](vm/vminsights-configure-workspace.md)
 - [Linux rendszerű számítógépek összekapcsolásának Azure Monitor](agents/agent-linux.md)
 - [Hibrid környezetek Azure Monitorának engedélyezése](vm/vminsights-enable-hybrid.md)
 - [Azure Monitor engedélyezése egyetlen virtuális gép vagy virtuálisgép-méretezési csoport számára a Azure Portal](vm/vminsights-enable-portal.md)
-- [Azure Monitor for VMs engedélyezése Azure Policy használatával](./vm/vminsights-enable-policy.md)
-- [Azure Monitor for VMs-áttekintés engedélyezése](vm/vminsights-enable-overview.md)
-- [Azure Monitor for VMs engedélyezése a PowerShell használatával](vm/vminsights-enable-powershell.md)
-- [Azure Monitor for VMs engedélyezése Resource Manager-sablonok használatával](vm/vminsights-enable-resource-manager.md)
-- [Azure Monitor for VMs engedélyezése a PowerShell vagy a sablonok használatával](./vm/vminsights-enable-powershell.md)
+- [A virtuális gépek bepillantást tesznek a Azure Policy használatával](./vm/vminsights-enable-policy.md)
+- [A VM-információk áttekintésének engedélyezése](vm/vminsights-enable-overview.md)
+- [VIRTUÁLIS gépekkel való bepillantások engedélyezése a PowerShell használatával](vm/vminsights-enable-powershell.md)
+- [A virtuális gépekkel való bepillantások engedélyezése Resource Manager-sablonok használatával](vm/vminsights-enable-resource-manager.md)
+- [VIRTUÁLIS gépekkel való bepillantások engedélyezése a PowerShell vagy a sablonok használatával](./vm/vminsights-enable-powershell.md)
 
 
 ### <a name="visualizations"></a>Vizualizációk
@@ -429,7 +429,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 ## <a name="june-2020"></a>2020. június
 
-### <a name="general"></a>Általános
+### <a name="general"></a>Általános kérdések
 - [Azure monitor üzembe helyezése](deploy-scale.md) – új cikk.
 - [Azure monitor ügyfél által felügyelt kulcs](logs/customer-managed-keys.md) – frissített billingtype tulajdonság. PowerShell-parancsok hozzáadva.
 
@@ -453,9 +453,9 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 ### <a name="containers"></a>Tárolók
 - [A hibrid Kubernetes-fürthöz tartozó új szakasz figyelésének leállítása](containers/container-insights-optout-hybrid.md) az ív-kompatibilis Kubernetes.
-- [Azure arc-kompatibilis Kubernetes-fürt konfigurálása Azure monitor for containers](containers/container-insights-enable-arc-enabled-clusters.md) – új cikk.
-- Az [Azure Red Hat OpenShift v4. x konfigurálása Azure monitor for containers esetében](containers/container-insights-azure-redhat4-setup.md) – frissített előfeltételek.
-- A [tárolók élő adatainak (előzetes verzió) Azure monitor beállítása](containers/container-insights-livedata-setup.md) – eltávolított Megjegyzés az Azure US government szolgáltatásban nem elérhető funkciókról.
+- [Az Azure arc-kompatibilis Kubernetes-fürt konfigurálása a Container bepillantásokkal](containers/container-insights-enable-arc-enabled-clusters.md) – új cikk.
+- [Konfigurálja az Azure Red Hat OpenShift v4. x-et a Container bepillantásokkal](containers/container-insights-azure-redhat4-setup.md) – frissített előfeltételek.
+- [Tároló-elemzések élő adatainak beállítása (előzetes verzió)](containers/container-insights-livedata-setup.md) – a funkció nem érhető el az Azure USA Government szolgáltatásban.
 
 ### <a name="insights"></a>Insights
 - [Gyakori kérdések – Network Performance monitor megoldás az Azure-ban](insights/network-performance-monitor-faq.md) – ExpressRoute-figyelő – gyakori kérdések.
@@ -495,9 +495,9 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 - [Azure-Tevékenységnaplók eseményeinek megtekintése Azure Monitor](./essentials/activity-log.md#view-the-activity-log)
 
 ### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
-- [Engedélyezze a Azure Portal](./vm/vminsights-enable-portal.md) -frissítve Azure monitor for VMS az Azure arc befoglalását.
-- Az Azure arc befoglalásának [engedélyezése Azure monitor for VMS áttekintése](vm/vminsights-enable-overview.md) – frissítve.
-- [Mi az Azure Monitor for VMs?](vm/vminsights-overview.md) -Frissítve az Azure arc befoglalásával.
+- Az Azure arc befoglalásához [engedélyezze a virtuálisgép-bepillantást a Azure Portal](./vm/vminsights-enable-portal.md) -frissítve.
+- A [VM-információk áttekintésének engedélyezése](vm/vminsights-enable-overview.md) – frissítve az Azure arc befoglalására.
+- [Mi az a VM-alapú adatfelismerés?](vm/vminsights-overview.md) -Frissítve az Azure arc befoglalásával.
 
 
 ### <a name="visualizations"></a>Vizualizációk
@@ -509,7 +509,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 ## <a name="may-2020"></a>2020. május
 
-### <a name="general"></a>Általános
+### <a name="general"></a>Általános kérdések
 
 - [Azure monitor GYIK](faq.md) – további szakasz a mérőszámokhoz.
 - [Azure monitor ügyfél által felügyelt kulcs](logs/customer-managed-keys.md) – az általános elérhetőségre való felkészülés különböző változásai.
@@ -523,8 +523,8 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 - [Resource Manager-sablonok – minták a Azure Monitor](/resource-manager-samples.md)
 - [Resource Manager-sablonok – minták a műveleti csoportokhoz](alerts/resource-manager-action-groups.md)
 - [Resource Manager-sablonok – minták az ügynökökhöz](agents/resource-manager-agent.md)
-- [Resource Manager-sablonok minták a tárolók Azure Monitoréhez](containers/resource-manager-container-insights.md)
-- [Resource Manager-sablonok – minták a Azure Monitor for VMs](vm/resource-manager-vminsights.md)
+- [Resource Manager-sablonok minták a tárolók bepillantást](containers/resource-manager-container-insights.md)
+- [Resource Manager-sablonok – minták a virtuális gépekhez](vm/resource-manager-vminsights.md)
 - [Resource Manager-sablonok – minták a diagnosztikai beállításokhoz](essentials/resource-manager-diagnostic-settings.md)
 - [Resource Manager-sablonok – minták Log Analytics munkaterületekhez](logs/resource-manager-workspace.md)
 - [Resource Manager-sablonok – minták a naplók lekérdezéséhez](logs/resource-manager-log-queries.md)
@@ -559,10 +559,10 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 
 ### <a name="containers"></a>Tárolók
-- A [tárolók Azure monitorának engedélyezése](containers/container-insights-onboard.md) – frissített tűzfal-konfigurációs tábla.
-- A [tárolók Azure monitorának frissítése a metrikák](containers/container-insights-update-metrics.md) számára – frissítés a felügyelt identitások használatához a metrikák összegyűjtéséhez.
-- [A tárolók Azure monitor figyelési díja](containers/container-insights-cost.md) – új cikk.
-- [Azure monitor beállítása a tárolók élő adatához (előzetes verzió)](containers/container-insights-livedata-setup.md) – az új fürt szerepkör-kötés támogatása.
+- [A tárolók beszerzésének engedélyezése – a](containers/container-insights-onboard.md) tűzfal konfigurációs táblázatának frissítése.
+- A [mérőszámok tároló](containers/container-insights-update-metrics.md) -információinak frissítése – frissítés a felügyelt identitások használatára a metrikák összegyűjtéséhez.
+- [A Container-eredmények figyelési díja](containers/container-insights-cost.md) – új cikk.
+- [Tároló-elemzések élő adatának beállítása (előzetes verzió)](containers/container-insights-livedata-setup.md) – az új fürt szerepkör-kötés támogatása.
 
 ### <a name="insights"></a>Insights
 - [Azure monitor az Azure cache for Redis (előzetes verzió)](insights/redis-cache-insights-overview.md) – új cikk.
@@ -588,18 +588,18 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 
 ### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
-- A [Azure monitor for VMS áttekintésének engedélyezése](vm/vminsights-enable-overview.md) – az Ubuntu Server támogatott verzióihoz lett hozzáadva. Log Analytics munkaterület által támogatott régiók lettek hozzáadva.
-- A [teljesítmény diagramon való Azure monitor for VMS](vm/vminsights-performance.md) hozzáadásával kapcsolatos korlátozások szakasz a nem elérhető metrikák esetében.
+- A [VM-információk áttekintésének engedélyezése](vm/vminsights-enable-overview.md) – az Ubuntu Server támogatott verzióihoz lett hozzáadva. Log Analytics munkaterület által támogatott régiók lettek hozzáadva.
+- A [teljesítmény és a virtuális](vm/vminsights-performance.md) gépek megállapítása – a korlátozásokkal kapcsolatos korlátozások szakasz a nem elérhető metrikák esetében.
 
 ### <a name="visualizations"></a>Vizualizációk
 - [Azure monitor munkafüzetek és Azure Resource Manager sablonok](visualize/workbooks-automate.md) – a Resource Manager-frissítés hozzáadva egy munkafüzet-sablon telepítéséhez.
-- [Azure monitor munkafüzetek csoportjai](platform/workbooks-groups.md) – új cikk.
+- [Azure monitor munkafüzetek csoportjai](./visualize/workbooks-groups.md) – új cikk.
 - [Azure monitor munkafüzetek – JSON-adatátalakítás JSONPath](visualize/workbooks-jsonpath.md) – új cikk.
 
 
 ## <a name="april-2020"></a>2020. április
 
-### <a name="general"></a>Általános
+### <a name="general"></a>Általános kérdések
 
 - A [Azure monitor ügyfél által felügyelt kulcshoz](logs/customer-managed-keys.md) hozzáadott szakasz az aszinkron műveletekhez
 - [Log Analytics munkaterületek kezelése Azure monitor](logs/manage-access.md) – frissített egyéni naplók szakaszban.
@@ -623,7 +623,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 ### <a name="containers"></a>Tárolók
 
-- Az [Azure Red Hat OpenShift v4. x konfigurálása Azure monitor for containers szolgáltatással](containers/container-insights-azure-redhat4-setup.md) – új cikk.
+- [Az Azure Red Hat OpenShift v4. x konfigurálása a Container bepillantásokkal](containers/container-insights-azure-redhat4-setup.md) – új cikk.
 - [ServiceNow-szinkronizálási problémák manuális javítása](alerts/itsmc-resync-servicenow.md) – új cikk.
 - [Az Azure és a Red Hat OpenShift v4-fürt figyelésének leállítása](containers/container-insights-optout-openshift-v4.md) – új cikk.
 - [Az Azure Red Hat OpenShift v3-fürt figyelésének leállítása](containers/container-insights-optout-openshift-v3.md) – új cikk.
@@ -648,7 +648,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 ## <a name="march-2020"></a>2020. március
 
-### <a name="general"></a>Általános
+### <a name="general"></a>Általános kérdések
 
 - [Azure monitor áttekintése](overview.md) – Azure monitor áttekintő videó hozzáadva.
 - [Azure monitor ügyfél által felügyelt kulcs konfigurációjának](logs/customer-managed-keys.md) általános frissítései.
@@ -671,8 +671,8 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 ### <a name="containers"></a>Tárolók
 
-- [Azure monitor GYIK](faq.md) – Azure monitor tárolók frissítése.
-- [GPU-figyelés konfigurálása a Azure monitor for containers](containers/container-insights-gpu-monitoring.md) – új cikk.
+- [Azure monitor GYIK](faq.md) – a tároló-felismerések frissítése.
+- [A GPU-figyelés konfigurálása a Container bepillantásokkal](containers/container-insights-gpu-monitoring.md) – új cikk.
 
 ### <a name="insights"></a>Insights
 
@@ -696,18 +696,18 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 ### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
 
 - [Azure-beli virtuális gépek figyelése Azure monitor](vm/monitor-vm-azure.md) -új cikkel.
-- Gyors útmutató: az Azure-beli [virtuális gépek Azure monitor](vm/quick-monitor-azure-vm.md) frissítéssel való figyelése Azure monitor for VMS hozzáadásához.
-- [Riasztások Azure monitor for VMS](vm/vminsights-alerts.md) – új cikk.
-- [Azure monitor for VMS áttekintés](vm/vminsights-enable-overview.md) – az ügynök letöltési hivatkozásainak frissítése.
+- Gyors útmutató [: Azure-beli virtuális gépek figyelése Azure monitor](vm/quick-monitor-azure-vm.md) -frissítve a VM-ismeretek hozzáadásához.
+- [A VM-ismeretekből származó riasztások](vm/vminsights-alerts.md) – új cikk.
+- A [VM-információk áttekintésének engedélyezése](vm/vminsights-enable-overview.md) – az ügynök letöltési hivatkozásainak frissítése.
 
-Általánosan elérhető általános frissítések Azure Monitor for VMs
+A VM-információk általánosan elérhető általános frissítései
 
-- [Mi az Azure Monitor for VMs?](vm/vminsights-overview.md)
-- [Azure Monitor for VMs (GA) – gyakori kérdések](vm/vminsights-ga-release-faq.md) 
-- [Azure Monitor for VMs engedélyezése Azure Policy használatával](./vm/vminsights-enable-policy.md) 
-- [A teljesítmény diagram Azure Monitor for VMs](vm/vminsights-performance.md)
-- [Naplók lekérdezése Azure Monitor for VMs](vm/vminsights-log-search.md)
-- [Alkalmazás függőségeinek megtekintése Azure Monitor for VMs](vm/vminsights-maps.md) 
+- [Mi az a VM-alapú adatfelismerés?](vm/vminsights-overview.md)
+- [A VM-ismeretek (GA) gyakori kérdései](vm/vminsights-ga-release-faq.md) 
+- [A virtuális gépek bepillantást tesznek a Azure Policy használatával](./vm/vminsights-enable-policy.md) 
+- [A teljesítmény diagramon való elkészítése a virtuális gépekkel](vm/vminsights-performance.md)
+- [Naplók lekérdezése a VM-elemzésből](vm/vminsights-log-search.md)
+- [Alkalmazás-függőségek megtekintése a VM-alapú ismeretekkel](vm/vminsights-maps.md) 
 
 ### <a name="visualizations"></a>Vizualizációk
 
@@ -735,13 +735,13 @@ Több frissítés a diagnosztikai bővítmény tartalmának újraírása részek
 
 ### <a name="insights-and-solutions"></a>Bepillantást és megoldásokat
 
-#### <a name="azure-monitor-for-containers"></a>Azure Monitor tárolókhoz
+#### <a name="container-insights"></a>Tároló-felismerések
 
-- [Azure Active Directory integrálása az Azure Kubernetes szolgáltatással](../aks/azure-ad-integration-cli.md) – új Megjegyzés a Kubernetes RBAC-kompatibilis fürtöket támogató ügyfélalkalmazás létrehozásához a tárolók Azure monitor támogatásához.
+- [Azure Active Directory integrálása az Azure Kubernetes szolgáltatással](../aks/azure-ad-integration-cli.md) – vegye figyelembe, hogy egy ügyfélalkalmazás létrehozásával támogatja a Kubernetes RBAC-kompatibilis fürtöt a tároló-felismerések támogatásához.
 
-#### <a name="azure-monitor-for-vms"></a>Azure Monitor virtuális gépekhez
+#### <a name="vm-insights"></a>VM-ismeretek
 
-- [Azure monitor for VMS (GA) gyakori kérdések](vm/vminsights-ga-release-faq.md) – a teljesítményadatok tárolási módjának módosítása.
+- Virtuálisgép-elemzések [(GA) – gyakori kérdések](vm/vminsights-ga-release-faq.md) – a teljesítményadatok tárolási módjának módosítása.
 
 #### <a name="office-365"></a>Office 365
 
@@ -770,7 +770,7 @@ Több új cikk a Designer for munkafüzetek átalakítási útmutatójában.
 
 ## <a name="january-2020"></a>2020. január
 
-### <a name="general"></a>Általános
+### <a name="general"></a>Általános kérdések
 
 - [Mi figyeli a Azure Monitor?](monitor-reference.md) – Új cikk.
 
@@ -796,20 +796,20 @@ Több új cikk a Designer for munkafüzetek átalakítási útmutatójában.
 
 ### <a name="insights-and-solutions"></a>Bepillantást és megoldásokat
 
-#### <a name="azure-monitor-for-containers"></a>Azure Monitor tárolókhoz
+#### <a name="container-insights"></a>Tároló-felismerések
 
-- [Azure monitor konfigurálása a containers Agent adatgyűjtéshez](containers/container-insights-agent-config.md) – további részletek az ügynök frissítéséhez az Azure Red Hat OpenShift, és további információkkal bővült az ügynök verziófrissítésének módszerei.
-- [Teljesítmény-riasztások létrehozása a tárolók Azure monitor számára](./containers/container-insights-log-alerts.md) – felülvizsgált információk és frissített lépések a munkaterületen tárolt teljesítményadatok riasztásának létrehozásához munkaterületen belüli riasztások használatával.
-- [Kubernetes-figyelés a Azure monitor for containers szolgáltatással](containers/container-insights-analyze.md) – a Windows Kubernetes-fürtök támogatásáról szóló áttekintő cikk és a elemzésre vonatkozó cikk frissítése.
-- [Azure Red Hat OpenShift-fürtök konfigurálása az Azure monitor for containers](containers/container-insights-azure-redhat-setup.md) szolgáltatással – további részletek az ügynök frissítéséhez az Azure Red Hat OpenShift, és további információkkal bővült az ügynök verziófrissítésének módszerei.
-- [Hibrid Kubernetes-fürtök konfigurálása Azure monitor for containers](containers/container-insights-hybrid-setup.md) használatával – frissítve a biztonságos port hozzáadásának támogatásával: a 10250 a Kubelet cAdvisor.
-- [A containers agent Azure monitor kezelése – az](containers/container-insights-manage-agent.md) Azure Red Hat OpenShift és a metrikák leselejtezésének a viselkedésével és konfigurálásával kapcsolatos frissített részletek a más típusú Kubernetes-fürtökhöz képest.
-- [Azure monitor konfigurálása a containers Prometheus-integrációhoz](containers/container-insights-prometheus-integration.md) – frissített részletek az Azure Red Hat OpenShift származó metrika-leselejtezési viselkedéssel és konfigurációval kapcsolatban, más típusú Kubernetes-fürtökhöz képest.
-- A [tárolók Azure monitorának frissítése a metrikák számára](containers/container-insights-update-metrics.md) – frissített részletek az Azure Red Hat OpenShift a metrika-lekaparás működésével és konfigurálásával, valamint más típusú Kubernetes-fürtökhöz képest.
+- A [tároló-elemzések ügynöke adatgyűjtésének konfigurálása](containers/container-insights-agent-config.md) – további információk az ügynök frissítéséhez az Azure Red Hat OpenShift, és további információkkal bővült az ügynök verziófrissítésének módszerei.
+- [Teljesítmény-riasztások létrehozása a tárolók](./containers/container-insights-log-alerts.md) elemzéséhez – felülvizsgált információk és a munkaterületen tárolt teljesítményadatok riasztások létrehozására vonatkozó frissített lépések a munkaterület-riasztások használatával.
+- [Kubernetes-figyelés a Container](containers/container-insights-analyze.md) -elemzésekkel – a Windows Kubernetes-fürtök támogatásáról szóló áttekintő cikk és a elemzésre vonatkozó cikk frissítése.
+- [Azure Red Hat OpenShift-fürtök konfigurálása a Container bepillantásokkal](containers/container-insights-azure-redhat-setup.md) – további részletek az ügynök frissítéséhez az Azure Red Hat OpenShift, és további információkkal bővült az ügynök verziófrissítésének módszerei.
+- A [hibrid Kubernetes-fürtöket a tároló-bepillantásokkal konfigurálhatja](containers/container-insights-hybrid-setup.md) – frissítve a biztonságos port hozzáadásának támogatásával: a 10250 a Kubelet cAdvisor.
+- [A Container-elemzések ügynökének kezelése](containers/container-insights-manage-agent.md) – az Azure Red Hat OpenShift származó, a metrikák és a konfigurációk, valamint az egyéb típusú Kubernetes-fürtök összevetésével kapcsolatos részletes részletek.
+- A [Container bepillantást a Prometheus-integrációra](containers/container-insights-prometheus-integration.md) – a metrikus adatoknak az Azure Red Hat-OpenShift való működésével és konfigurációval kapcsolatos frissített részletei a más típusú Kubernetes-fürtökhöz képest.
+- A [metrikák tároló](containers/container-insights-update-metrics.md) -elemzésének frissítése – az Azure Red Hat OpenShift származó, a metrikák és a konfiguráció adatainak a Kubernetes-fürtökhöz képest történő frissítésével kapcsolatos részletes részletek.
 
-#### <a name="azure-monitor-for-vms"></a>Azure Monitor virtuális gépekhez
+#### <a name="vm-insights"></a>VM-ismeretek
 
-- [Azure monitor for VMS (GA) – gyakori kérdések](vm/vminsights-ga-release-faq.md) – további információk a munkaterület és az ügynökök új verzióra való frissítéséről.
+- [VM-információk (GA) – gyakori kérdések](vm/vminsights-ga-release-faq.md) – további információ a munkaterület és az ügynökök új verzióra való frissítéséről.
 
 #### <a name="office-365"></a>Office 365
 
@@ -860,10 +860,10 @@ Több új cikk a Designer for munkafüzetek átalakítási útmutatójában.
 
 ### <a name="insights-and-solutions"></a>Bepillantást és megoldásokat
 
-- [Azure monitor a tárolók gyakori kérdéseivel](./faq.md) kapcsolatban – kérdésekkel bővült a képek és a nevek mezői.
+- A Container-elemzések [gyakori kérdései](./faq.md) – további kérdés a rendszerkép és a név mezőkben.
 - [Azure SQL Analytics megoldás a Azure monitor](insights/azure-sql.md) -frissítve adatbázisban vár felügyelt példányok támogatása.
-- [Azure monitor konfigurálása a containers Agent adatgyűjtéshez](containers/container-insights-agent-config.md) – hozzáadott beállítás a enrich_container_logshoz.
-- [Hibrid Kubernetes-fürtök konfigurálása Azure monitor for containers](containers/container-insights-hybrid-setup.md) – hibaelhárítás szakasz.
+- A [tároló-elemzések ügynökének adatgyűjtési](containers/container-insights-agent-config.md) beállítása – a enrich_container_logshoz hozzáadott beállítás.
+- [Hibrid Kubernetes-fürtök konfigurálása a Container bepillantások szolgáltatással](containers/container-insights-hybrid-setup.md) – új hibaelhárítási szakasz.
 - [Active Directory replikáció állapotának figyelése Azure monitor](insights/ad-replication-status.md) -.NET-keretrendszerre vonatkozó előfeltétel-frissítéssel.
 - [Network Performance monitor megoldás az Azure-ban](insights/network-performance-monitor.md) – támogatott régiók.
 - [A Active Directory-környezet optimalizálása Azure monitor](insights/ad-assessment.md) -.NET-keretrendszer előfeltételeinek frissítésével.

@@ -2,17 +2,17 @@
 title: 'Azure VPN Gateway: a csomagok rögzítésének konfigurálása'
 description: További információ a VPN-átjárón használható csomag-rögzítési funkciókról a probléma okának csökkentése érdekében.
 services: vpn-gateway
-author: radwiv
+author: anzaman
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 12/2/2020
-ms.author: radwiv
-ms.openlocfilehash: caa9a0869d7d4bca58b91a0c682177e1408f8300
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.date: 02/22/2021
+ms.author: alzam
+ms.openlocfilehash: 0983139d1c9af235eba4c9f99da7bc9dea3f231b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733806"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726614"
 ---
 # <a name="configure-packet-capture-for-vpn-gateways"></a>A csomagok rögzítésének konfigurálása a VPN-átjárók számára
 
@@ -27,6 +27,7 @@ Az igénytől függően futtathat VPN Gateway csomagok rögzítését az átjár
 A nagy mennyiségű forgalomban felmerülő problémák elkülönítése érdekében hasznos lehet egy öt rekordos szűrő (forrásoldali alhálózat, célként használt alhálózat, forrásport, célport, protokoll) és TCP-jelzők (SYN, ACK, FIN, URG, PSH, első) használata.
 
 Az alábbi JSON-és JSON-sémák az egyes tulajdonságok magyarázatát tartalmazzák. Az alábbiakban néhány korlátozást érdemes figyelembe venni a csomagok rögzítésekor:
+
 - Az itt látható sémában a szűrő egy tömb, de jelenleg egyszerre csak egy szűrőt lehet használni.
 - Egyszerre több, az átjáróra kiterjedő csomagok rögzítése nem futtatható.
 - Egyszerre nem futtathat több csomagot egyetlen kapcsolaton. Egyszerre több csomagot is futtathat különböző kapcsolatokon.
@@ -317,7 +318,13 @@ Az alábbi JSON-és JSON-sémák az egyes tulajdonságok magyarázatát tartalma
 }
 ```
 
-## <a name="set-up-packet-capture-by-using-powershell"></a>A csomagok rögzítésének beállítása a PowerShell használatával
+## <a name="packet-capture---portal"></a>Csomag rögzítése – portál
+
+Megadhatja a csomagok rögzítését a Azure Portalban.
+
+:::image type="content" source="./media/packet-capture/portal.jpg" alt-text="Képernyőkép a csomag rögzítéséről a portálon." lightbox="./media/packet-capture/portal.jpg":::
+
+## <a name="packet-capture---powershell"></a>Csomag rögzítése – PowerShell
 
 Az alábbi példák olyan PowerShell-parancsokat mutatnak be, amelyek elindítják és leállítják a csomagok rögzítését. További információ a paraméterek beállításairól: [Start-AzVirtualnetworkGatewayPacketCapture](/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture).
 
@@ -359,6 +366,6 @@ Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourReso
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a VPN Gatewayről: [Mi az VPN Gateway?](vpn-gateway-about-vpngateways.md)

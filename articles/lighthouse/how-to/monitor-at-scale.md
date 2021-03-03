@@ -3,12 +3,12 @@ title: A delegált erőforrások nagy léptékű figyelése
 description: Megtudhatja, hogyan használhatja hatékonyan a Azure Monitor-naplókat a felügyelt ügyfél-bérlők méretezhető módjában.
 ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: aadd14bb3e4aad61fb2afc0735b5714deedfe301
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 98fd984492276dbdfbc2f8001bca19560764a2a7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593115"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742585"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>A delegált erőforrások nagy léptékű figyelése
 
@@ -49,7 +49,7 @@ A szabályzatok üzembe helyezése után a rendszer az egyes ügyfelek bérlői 
 
 A delegált előfizetések [riasztásait](../../azure-monitor/alerts/alerts-overview.md) megtekintheti a kezelt ügyfelek bérlői számára.
 
-A kezelő Bérlővel a Azure Portal vagy API-k és felügyeleti eszközök segítségével [hozhatja létre, tekintheti meg és kezelheti a tevékenységek naplójának riasztásait](../../azure-monitor/platform/alerts-activity-log.md) .
+A kezelő Bérlővel a Azure Portal vagy API-k és felügyeleti eszközök segítségével [hozhatja létre, tekintheti meg és kezelheti a tevékenységek naplójának riasztásait](../../azure-monitor/alerts/alerts-activity-log.md) .
 
 Ha több ügyfélnél automatikusan szeretné frissíteni a riasztásokat, használjon [Azure Resource Graph](../../governance/resource-graph/overview.md) -lekérdezést a riasztások szűréséhez. A lekérdezést rögzítheti az irányítópulton, és kiválaszthatja az összes megfelelő ügyfelet és előfizetést. Az alábbi lekérdezés például a 0 és 1 súlyossági szintű riasztást jeleníti meg, 60 percenként frissül.
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 79558bd2c8e9bfec0aff47d254944977d271a762
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 8d748f93337a770e0d565bab79fdfb3625bda70d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587814"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735522"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>A helyszíni Hyper-V virtuális gépek Azure-ba való vész-helyreállításának támogatási mátrixa
 
@@ -71,7 +71,7 @@ Vendég virtuálisgép-hálózat: statikus IP-cím (Windows) | Igen | Igen
 Vendég virtuálisgép-hálózat: statikus IP-cím (Linux) | Nem | Nem
 Vendég VM-hálózat: több hálózati adapter | Igen | Igen
 Https-proxy | Nem | Nem
-Site Recovery szolgáltatáshoz való privát hivatkozás | Igen. [További információ](hybrid-how-to-enable-replication-private-endpoints.md). | Igen. [További információ](hybrid-how-to-enable-replication-private-endpoints.md).
+Site Recovery szolgáltatáshoz való privát hivatkozás | Igen. [További információk](hybrid-how-to-enable-replication-private-endpoints.md). | Igen. [További információk](hybrid-how-to-enable-replication-private-endpoints.md).
 
 
 
@@ -143,12 +143,12 @@ Standard szintű Storage | Igen | Igen
 Importálási/exportálási szolgáltatás | Nem | Nem
 Azure Storage-fiókok engedélyezve tűzfallal | Igen. A cél tárolásához és a gyorsítótárhoz. | Igen. A cél tárolásához és a gyorsítótárhoz.
 Storage-fiók módosítása | Nem. A cél Azure Storage-fiók nem módosítható a replikáció engedélyezése után. A vész-helyreállítási szolgáltatás módosításához tiltsa le, majd engedélyezze újra. | Nem
-Biztonságos átvitel lehetőség | Igen
+Biztonságos átvitel lehetőség | Igen | Igen
 
 
 ## <a name="azure-compute-features"></a>Az Azure számítási funkciói
 
-**Funkció** | **Hyper-V Virtual Machine Manager** | **Hyper-V Virtual Machine Manager nélkül**
+**Szolgáltatás** | **Hyper-V Virtual Machine Manager** | **Hyper-V Virtual Machine Manager nélkül**
 --- | --- | ---
 Rendelkezésre állási csoportok | Igen | Igen
 HUB | Igen | Igen  
@@ -172,7 +172,7 @@ FC-lemez | Nem támogatott | Az Előfeltételek ellenőrzése sikertelen, ha nem
 Merevlemez formátuma | VHD <br/><br/> VHDX | A Site Recovery automatikusan átalakítja a VHDX a VHD-re, amikor feladatátvételt hajt végre az Azure-ba. Ha a feladatátvételt a helyszíni rendszerre végzi, a virtuális gépek továbbra is a VHDX formátumot használják.
 BitLocker | Nem támogatott | A virtuális gép replikálásának engedélyezése előtt le kell tiltani a BitLockert.
 a virtuális gép neve | 1 és 63 karakter között. Csak betűket, számokat és kötőjelet tartalmazhat. A virtuális gép nevének betűvel vagy számmal kell kezdődnie és végződnie. | Frissítse az értéket a virtuális gép tulajdonságainál Site Recoveryban.
-Virtuális gép típusa | 1. generációs<br/><br/> 2. generációs – Windows | A 2. generációs virtuális gépek alapszintű operációsrendszer-lemezzel (amely egy vagy két VHDX formázott adatkötetet tartalmaz) és kevesebb mint 300 GB lemezterületet támogat.<br></br>A Linux 2. generációs virtuális gépek nem támogatottak. [További információ](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
+Virtuális gép típusa | 1. generációs<br/><br/> 2. generációs – Windows | A 2. generációs virtuális gépek alapszintű operációsrendszer-lemezzel (amely egy vagy két VHDX formázott adatkötetet tartalmaz) és kevesebb mint 300 GB lemezterületet támogat.<br></br>A Linux 2. generációs virtuális gépek nem támogatottak. [További információk](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
 
 ## <a name="recovery-services-vault-actions"></a>Recovery Services tároló műveletei
 

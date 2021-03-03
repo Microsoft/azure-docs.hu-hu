@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: a521ca80039b68f93bf7c9d98e51d9846e96e985
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e58f63b6ed7fb26a4e3b3069773810c5e5b7cdc3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593825"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732275"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Start/Stop VMs during off-hours áttekintése
 
@@ -39,7 +39,7 @@ A jelenlegi szolgáltatás korlátai a következők:
 
 - A virtuális gépek indítása és leállítása a munkaidőn kívül funkció runbookok egy Azure-beli [futtató fiókkal](./automation-security-overview.md#run-as-accounts)működik. A futtató fiók az előnyben részesített hitelesítési módszer, mert a tanúsítvány-hitelesítést használ olyan jelszó helyett, amely esetleg lejáró vagy gyakran változhat.
 
-- Egy [Azure Monitor log Analytics-munkaterület](../azure-monitor/platform/design-logs-deployment.md) , amely a runbook-feladatok naplóit és a feladatok adatfolyamát tárolja egy munkaterületen, amely lekérdezi és elemzi a feladatokat. Az Automation-fiók összekapcsolható egy új vagy meglévő Log Analytics munkaterülettel, és mindkét erőforrásnak ugyanabban az erőforráscsoporthoz kell lennie.
+- Egy [Azure Monitor log Analytics-munkaterület](../azure-monitor/logs/design-logs-deployment.md) , amely a runbook-feladatok naplóit és a feladatok adatfolyamát tárolja egy munkaterületen, amely lekérdezi és elemzi a feladatokat. Az Automation-fiók összekapcsolható egy új vagy meglévő Log Analytics munkaterülettel, és mindkét erőforrásnak ugyanabban az erőforráscsoporthoz kell lennie.
 
 Javasoljuk, hogy használjon külön Automation-fiókot a Start/Stop VMs during off-hours funkció számára engedélyezett virtuális gépek használatához. Az Azure-modulok verziói gyakran frissülnek, és a paraméterek változhatnak. A szolgáltatás nem frissül ugyanazon a ritmuson, és előfordulhat, hogy az általa használt parancsmagok újabb verziói nem működnek. A frissített modulok az üzemi Automation-fiók (ok) ba való importálása előtt javasoljuk, hogy egy teszt Automation-fiókba importálja, hogy a rendszer ne végezzen kompatibilitási problémákat.
 
@@ -106,7 +106,7 @@ A következő táblázat felsorolja azokat a runbookok, amelyeket a szolgáltat�
 
 Az összes szülő runbookok tartalmazza a `WhatIf` paramétert. Ha igaz értékre van állítva, a paraméter támogatja a runbook által a paraméter nélkül futtatott pontos viselkedést, és ellenőrzi, hogy a megfelelő virtuális gépek célozva vannak-e. A runbook csak akkor hajtja végre a definiált műveleteit, ha a `WhatIf` paraméter értéke hamis.
 
-|Forgatókönyv | Paraméterek | Description|
+|Forgatókönyv | Paraméterek | Leírás|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Meghívva a szülő runbook. Ez a runbook a riasztásokat erőforrás-alapon hozza létre az automatikus leállítási forgatókönyvhöz.|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: true vagy FALSE  | Létrehozza vagy frissíti az Azure riasztási szabályokat a célként megadott előfizetésben vagy erőforráscsoportok virtuális gépeken. <br> `VMList` a a virtuális gépek vesszővel tagolt listája (szóközök nélkül), például: `vm1,vm2,vm3` .<br> `WhatIf` lehetővé teszi a runbook logika érvényesítését a végrehajtás nélkül.|
@@ -158,7 +158,7 @@ A következő táblázat az Automation-fiókban létrehozott alapértelmezett ü
 
 Ne engedélyezze az összes ütemtervet, mert ez az átfedésben lévő ütemezett műveleteket is létrehozhatja. Érdemes eldönteni, hogy mely optimalizálásokat kívánja elvégezni, és ennek megfelelően módosítania kell azokat. További magyarázatért tekintse meg az Áttekintés szakaszban található példákat.
 
-|Ütemterv neve | Gyakoriság | Description|
+|Ütemterv neve | Gyakoriság | Leírás|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | 8 óránként | A **AutoStop_CreateAlert_Parent** runbook 8 óránként futtatja, ami viszont leállítja a virtuálisgép-alapú értékeket `External_Start_ResourceGroupNames` , `External_Stop_ResourceGroupNames` és `External_ExcludeVMNames` változókat. Másik lehetőségként megadhatja a virtuális gépek vesszővel tagolt listáját a `VMList` paraméter használatával.|
 |Scheduled_StopVM | Felhasználó által definiált, napi | A **ScheduledStopStart_Parent** runbook minden nap paraméterével futtatja `Stop` a megadott időpontban. A automatikusan leállítja az összes olyan virtuális gépet, amely megfelel a változó eszközök által meghatározott szabályoknak. A kapcsolódó ütemezett ütemezés engedélyezése **– StartVM**.|

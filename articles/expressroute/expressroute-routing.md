@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: duau
-ms.openlocfilehash: 436e866969d620389818bcebca3c5c37b8805309
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 0dc2b48d02eb8a69afc947891c263ef1510257a7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629034"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721837"
 ---
 # <a name="expressroute-routing-requirements"></a>Az ExpressRoute útválasztási követelményei
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, be kell állítania és kezelnie kell az útválasztást. Egyes kapcsolatszolgáltatók az útválasztás beállítását és kezelését felügyelt szolgáltatásként kínálják. Ellenőrizze kapcsolatszolgáltatójánál, hogy kínálja-e ezt a szolgáltatást. Ha nem, akkor meg kell felelnie az alábbi követelményeknek:
@@ -30,13 +30,22 @@ Fenn kell tartania néhány IP-címblokkot az Ön hálózata és a Microsoft vá
 ### <a name="ip-addresses-used-for-azure-private-peering"></a>Magánhálózati Azure-társviszony-létesítéshez használt IP-címek
 A társviszony-létesítések konfigurálásához privát IP-címeket vagy nyilvános IP-címeket használhat. Az útvonalak konfigurálásához használt címtartományok nem lehetnek átfedésben a virtuális hálózatok az Azure-ban való létrehozásához használt címtartományokkal. 
 
-* Egy /29 vagy két /30 alhálózatot le kell foglalnia az útválasztási felületek számára.
-* Az útválasztáshoz használt alhálózatok privát IP-címeket vagy nyilvános IP-címeket használhatnak.
-* Az alhálózatok nem ütközhetnek az ügyfél által a Microsoft Cloud használatához lefoglalt tartománnyal.
-* Ha egy /29 alhálózatot használ, az két /30 alhálózatra van felosztva. 
-  * Az első /30 alhálózatot az elsődleges kapcsolathoz, a második /30 alhálózatot pedig a másodlagos kapcsolathoz használja a rendszer.
-  * Mindkét /30 alhálózathoz a /30 alhálózat IP-címét kell használnia az útválasztón. A /30 alhálózat második IP-címét a Microsoft használja egy BGP-munkamenet beállításához.
-  * Mindkét BGP-munkamenetet a [rendelkezésre állási SLA szerint](https://azure.microsoft.com/support/legal/sla/) kell beállítania, hogy érvényesek legyenek.  
+* IPv4
+    * Egy /29 vagy két /30 alhálózatot le kell foglalnia az útválasztási felületek számára.
+    * Az útválasztáshoz használt alhálózatok privát IP-címeket vagy nyilvános IP-címeket használhatnak.
+    * Az alhálózatok nem ütközhetnek az ügyfél által a Microsoft Cloud használatához lefoglalt tartománnyal.
+    * Ha egy /29 alhálózatot használ, az két /30 alhálózatra van felosztva. 
+      * Az első /30 alhálózatot az elsődleges kapcsolathoz, a második /30 alhálózatot pedig a másodlagos kapcsolathoz használja a rendszer.
+      * Mindkét /30 alhálózathoz a /30 alhálózat IP-címét kell használnia az útválasztón. A /30 alhálózat második IP-címét a Microsoft használja egy BGP-munkamenet beállításához.
+      * Mindkét BGP-munkamenetet a [rendelkezésre állási SLA szerint](https://azure.microsoft.com/support/legal/sla/) kell beállítania, hogy érvényesek legyenek.
+* IPv6
+    * Az útválasztási felületek esetében le kell foglalni a/125 alhálózatot vagy két/126 alhálózatot.
+    * Az útválasztáshoz használt alhálózatok privát IP-címeket vagy nyilvános IP-címeket használhatnak.
+    * Az alhálózatok nem ütközhetnek az ügyfél által a Microsoft Cloud használatához lefoglalt tartománnyal.
+    * Ha egy /125 alhálózatot használ, az két /126 alhálózatra van felosztva. 
+      * Az első/126 alhálózatot az elsődleges kapcsolathoz, a második/30 alhálózatot pedig a másodlagos kapcsolathoz használja a rendszer.
+      * Mindkét /126 alhálózathoz a /126 alhálózat IP-címét kell használnia az útválasztón. A /126 alhálózat második IP-címét a Microsoft használja egy BGP-munkamenet beállításához.
+      * Mindkét BGP-munkamenetet a [rendelkezésre állási SLA szerint](https://azure.microsoft.com/support/legal/sla/) kell beállítania, hogy érvényesek legyenek.
 
 #### <a name="example-for-private-peering"></a>Példa a privát társviszony-létesítésre
 Ha az a.b.c.d/29 alhálózatot választja a társviszony-létesítés beállítására, az két /30 alhálózatra van felosztva. Az alábbi példában figyelje meg, hogyan használják az a. b. c. d/29 alhálózatot:
@@ -122,7 +131,7 @@ A Microsoft az AS 12076 számot használja az Azure nyilvános, az Azure privát
 Az adatátvitel szimmetriájára nem vonatkoznak követelmények. Az előre és visszafelé haladó útvonalak különböző útválasztópárokon haladhatnak keresztül. Az azonos útvonalakat az Ön tulajdonában lévő több áramköri pár oldaláról kell meghirdetni. Az útvonalmetrikáknak nem kell megegyezniük.
 
 ## <a name="route-aggregation-and-prefix-limits"></a>Útvonal-összevonások és előtagkorlátozások
-Legfeljebb 4000 előtag számunkra történő meghirdetését támogatjuk az Azure privát társviszony-létesítésen keresztül. Ez legfeljebb 10 000 előtagra növelhető, ha az ExpressRoute prémium bővítmény engedélyezve van. BGP-munkamenetenként legfeljebb 200 előtagot fogadunk el az Azure nyilvános és a Microsoft társviszony-létesítés esetében. 
+Akár 4000 IPv4-előtagot és 100 IPv6-előtagokat támogatunk az Azure-beli privát kapcsolaton keresztül. Ez akár 10 000 IPv4-előtaggal is növelhető, ha az ExpressRoute Premium bővítmény engedélyezve van. BGP-munkamenetenként legfeljebb 200 előtagot fogadunk el az Azure nyilvános és a Microsoft társviszony-létesítés esetében. 
 
 A rendszer eldobja a BGP-munkameneteket, ha az előtagok száma meghaladja a korlátot. Csak a privát társviszony-létesítési kapcsolaton fogadjuk el az alapértelmezett útvonalakat. A szolgáltatónak ki kell szűrnie az alapértelmezett útvonalakat és a privát IP-címeket (RFC 1918) az Azure nyilvános és a Microsoft társviszony-létesítési útvonalakból. 
 
@@ -163,7 +172,7 @@ Geopolitikai régiónként több ExpressRoute-kapcsolatcsoportot is vásárolhat
 | USA nyugati középső régiója | 12076:51027 | 12076:52027 | 12076:53027 | 12076:54027 | 12076:55027 |
 | USA északi középső régiója | 12076:51007 | 12076:52007 | 12076:53007 | 12076:54007 | 12076:55007 |
 | USA déli középső régiója | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 | 12076:55008 |
-| USA középső régiója | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 | 12076:55009 |
+| Az USA középső régiója | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 | 12076:55009 |
 | Közép-Kanada | 12076:51020 | 12076:52020 | 12076:53020 | 12076:54020 | 12076:55020 |
 | Kelet-Kanada | 12076:51021 | 12076:52021 | 12076:53021 | 12076:54021 | 12076:55021 |
 | **Dél-Amerika** | |

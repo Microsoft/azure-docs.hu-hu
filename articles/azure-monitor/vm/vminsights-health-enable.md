@@ -1,24 +1,24 @@
 ---
-title: Azure Monitor for VMs vendég állapotának engedélyezése (előzetes verzió)
-description: Útmutatás a Azure Monitor for VMs vendég állapotának engedélyezéséhez az előfizetésben, valamint a virtuális gépek előkészítéséhez.
+title: A virtuális gépek bepillantást tevő vendég állapotának engedélyezése (előzetes verzió)
+description: Ismerteti, hogyan lehet engedélyezni a virtuális gépek beszerzését az előfizetésben, és hogyan kell a virtuális gépeket bevezetni.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: 5a65a986e95f333b6179c71a46edc69ca61acdea
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3747e9190010bd3c0b88dfdbe9da01009316c275
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100617075"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733720"
 ---
-# <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>Azure Monitor for VMs vendég állapotának engedélyezése (előzetes verzió)
-Azure Monitor for VMs vendég állapota lehetővé teszi egy virtuális gép állapotának megtekintését, amelyet a rendszeres időközönként mintavételnek alávetett teljesítmény-mérések határoznak meg. Ez a cikk bemutatja, hogyan engedélyezheti ezt a funkciót az előfizetésében, és hogyan engedélyezheti a vendég figyelését az egyes virtuális gépeken.
+# <a name="enable-vm-insights-guest-health-preview"></a>A virtuális gépek bepillantást tevő vendég állapotának engedélyezése (előzetes verzió)
+A virtuális gép elemzése lehetővé teszi a virtuális gépek állapotának megtekintését olyan teljesítmény-mérési készlet alapján, amely rendszeres időközönként mintavételt végez. Ez a cikk bemutatja, hogyan engedélyezheti ezt a funkciót az előfizetésében, és hogyan engedélyezheti a vendég figyelését az egyes virtuális gépeken.
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
-Azure Monitor for VMs vendég állapota a nyilvános előzetes verzióban a következő korlátozásokkal rendelkezik:
+A virtuálisgép-megállapítások vendég állapota a nyilvános előzetes verzióban a következő korlátozásokkal rendelkezik:
 
 - Jelenleg csak az Azure-beli virtuális gépek támogatottak. A kiszolgálói Azure Arc jelenleg nem támogatott.
 
@@ -36,19 +36,25 @@ A virtuális gépnek az alábbi régiók egyikében kell elhelyezkednie:
 - Ausztrália középső régiója
 - Kelet-Ausztrália
 - Délkelet-Ausztrália
+- Közép-Kanada
 - Közép-India
 - Az USA középső régiója
 - Kelet-Ázsia
 - USA keleti régiója
 - USA 2. keleti régiója
 - USA 2. keleti – EUAP
+- Közép-Franciaország
 - Középnyugat-Németország
 - Kelet-Japán
+- Dél-Korea középső régiója
 - USA északi középső régiója
 - Észak-Európa
 - USA déli középső régiója
+- Dél-Afrika északi régiója
 - Délkelet-Ázsia
+- Észak-Svájc
 - Az Egyesült Királyság déli régiója
+- Az Egyesült Királyság nyugati régiója
 - USA nyugati középső régiója
 - Nyugat-Európa
 - USA nyugati régiója
@@ -57,24 +63,36 @@ A virtuális gépnek az alábbi régiók egyikében kell elhelyezkednie:
 
 Log Analytics munkaterület a következő régiók egyikében kell, hogy legyen:
 
-- USA középső régiója
+- Ausztrália középső régiója
+- Kelet-Ausztrália
+- Délkelet-Ausztrália
+- Közép-Kanada
+- Kanada, India
+- Az USA középső régiója
+- Kelet-Ázsia
 - USA keleti régiója
 - USA 2. keleti régiója
 - USA 2. keleti – EUAP
+- Közép-Franciaország
+- Kelet-Japán
+- USA északi középső régiója
 - Észak-Európa
+- USA déli középső régiója
 - Délkelet-Ázsia
+- Észak-Svájc
 - Az Egyesült Királyság déli régiója
 - Nyugat-európai régió
+- USA nyugati régiója
 - USA 2. nyugati régiója
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A virtuális gépet Azure Monitor for VMsba kell bevezetni.
+- A virtuális gépet a VM-eredményekbe kell bevezetni.
 - A bevezetési lépéseket végrehajtó felhasználónak legalább közreműködői szintű hozzáféréssel kell rendelkeznie ahhoz az előfizetéshez, amelyben a virtuális gép és az adatgyűjtési szabály található.
 - A szükséges Azure-erőforrás-szolgáltatókat a következő szakaszban leírtak szerint kell regisztrálni.
 
 ## <a name="register-required-azure-resource-providers"></a>A szükséges Azure-erőforrás-szolgáltatók regisztrálása
-A következő Azure-erőforrás-szolgáltató regisztrálva van az előfizetéséhez Azure Monitor for VMs vendég állapotának engedélyezéséhez. 
+A következő Azure-erőforrás-szolgáltatók regisztrálva lesznek az előfizetéséhez, hogy lehetővé tegyék a virtuális gépek bepillantást a vendég állapotára. 
 
 - Microsoft. WorkloadMonitor
 - Microsoft. bepillantások
@@ -90,7 +108,7 @@ POST https://management.azure.com/subscriptions/[subscriptionId]/providers/Micro
 ## <a name="enable-a-virtual-machine-using-the-azure-portal"></a>Virtuális gép engedélyezése az Azure Portalon
 Amikor engedélyezi egy virtuális gép vendégállapotát az Azure Portalon, a rendszer elvégzi Ön helyett a szükséges konfigurálásokat. Ide tartozik a szükséges adatgyűjtési szabály létrehozása, a vendég állapot-bővítmény telepítése a virtuális gépen, valamint az adatgyűjtési szabállyal való társítás létrehozása.
 
-A Azure Monitor for VMs első **lépések** nézetében kattintson a virtuális gép frissítési üzenete melletti hivatkozásra, majd kattintson a **frissítés** gombra. Egyszerre több virtuális gépet is kiválaszthat, és egyszerre frissítheti őket.
+A VM-adatok első **lépések** nézetében kattintson a virtuális gép frissítési üzenete melletti hivatkozásra, majd kattintson a **frissítés** gombra. Egyszerre több virtuális gépet is kiválaszthat, és egyszerre frissítheti őket.
 
 ![Az állapotfigyelő funkció engedélyezése a virtuális gépen](media/vminsights-health-enable/enable-agent.png)
 
@@ -107,10 +125,10 @@ A virtuális gépek Azure Resource Manager használatával történő engedélye
 > [!NOTE]
 > Ha a Azure Portal segítségével engedélyez egy virtuális gépet, az itt ismertetett adatgyűjtési szabályt hozza létre a rendszer. Ebben az esetben nem kell elvégeznie ezt a lépést.
 
-A Azure Monitor for VMs vendég állapotában lévő figyelők konfigurációját az [adatgyűjtési szabályok (DCR)](../agents/data-collection-rule-overview.md)tárolja. A vendég állapot-kiterjesztésű virtuális gépeknek ehhez a szabályhoz kell társítaniuk.
+A virtuálisgép-elemzések vendég állapotában lévő figyelők konfigurációját az [adatgyűjtési szabályok (DCR)](../agents/data-collection-rule-overview.md)tárolja. A vendég állapot-kiterjesztésű virtuális gépeknek ehhez a szabályhoz kell társítaniuk.
 
 > [!NOTE]
-> További adatgyűjtési szabályokat hozhat létre a figyelők alapértelmezett konfigurációjának módosításához a [figyelés konfigurálása Azure monitor for VMS vendég állapota (előzetes verzió)](vminsights-health-configure.md)című cikkben leírtak szerint.
+> További adatgyűjtési szabályokat is létrehozhat a figyelők alapértelmezett konfigurációjának módosításához a következő témakörben ismertetett módon: a [figyelés konfigurálása a VM-elemzések vendég állapota (előzetes verzió)](vminsights-health-configure.md).
 
 A sablonhoz a következő paraméterek értékei szükségesek:
 
@@ -414,4 +432,4 @@ az deployment group create --name GuestHealthDeployment --resource-group my-reso
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Azure Monitor for VMs által engedélyezett figyelők testreszabása](vminsights-health-configure.md)
+- [A VM-alapú adatfelismerések által engedélyezett figyelők testreszabása](vminsights-health-configure.md)

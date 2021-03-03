@@ -13,12 +13,12 @@ author: williamdassafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 2/1/2021
-ms.openlocfilehash: 942698e5c42e1f46ff05dacdacdb0d124135a6c4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1f4bd28d2b95aeebe07fcad84d757327622d51f0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390759"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690430"
 ---
 # <a name="automate-management-tasks-using-elastic-jobs-preview"></a>Felügyeleti feladatok automatizálása rugalmas feladatokkal (előzetes verzió)
 
@@ -56,7 +56,7 @@ A rugalmas feladatok [Azure SQL Database-adatbázisokat](sql-database-paas-overv
 
 A T-SQL-szkriptek feladatainak automatizálásához SQL Server és az Azure SQL felügyelt példányában tekintse meg az [SQL Agent](job-automation-managed-instances.md)összetevőt. 
 
-A T-SQL parancsfájl-feladatoknak az Azure szinapszis Analyticsben való automatizálásához érdemes lehet [ismétlődő eseményindítókkal rendelkező folyamatokat](/azure/synapse-analytics/data-integration/concepts-data-factory-differences.md)figyelembe venni, amelyek [a Azure Data Factoryon alapulnak](/azure/synapse-analytics/data-integration/concepts-data-factory-differences).
+A T-SQL parancsfájl-feladatoknak az Azure szinapszis Analyticsben való automatizálásához érdemes lehet [ismétlődő eseményindítókkal rendelkező folyamatokat](../../synapse-analytics/data-integration/concepts-data-factory-differences.md)figyelembe venni, amelyek [a Azure Data Factoryon alapulnak](../../synapse-analytics/data-integration/concepts-data-factory-differences.md).
 
 Érdemes megfigyelni az SQL Agent (SQL Server és az SQL felügyelt példányának részeként elérhető) közötti különbségeket, valamint az adatbázis rugalmas feladattípusát (amely a T-SQL-T hajtja végre az Azure SQL-adatbázisokban vagy-adatbázisokban SQL Server és az Azure SQL felügyelt példányain, az Azure szinapszis Analyticsben).
 

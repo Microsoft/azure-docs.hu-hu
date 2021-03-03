@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 12/21/2020
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 22d7ee518a458143fe25b677b680a964c538904f
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 2e54b8e58e8139c46639187957906790ffb0fe54
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791561"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727685"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>Oktatóanyag: Azure Data Box Gateway kiépítése a Hyper-V-ben
 
@@ -55,7 +55,7 @@ Az eszköz üzembe helyezése előtt győződjön meg az alábbiakról:
 * A gazdarendszer képes elkülöníteni az alábbi erőforrásokat a virtuális eszköz üzembe helyezése érdekében:
 
   * Legalább 4 mag.
-  * Legalább 8 GB RAM.
+  * Legalább 8 GB RAM. Legalább 16 GB RAM használatát javasoljuk.
   * Egy hálózati adapter.
   * Egy 250 GB-OS operációsrendszer-lemez.
   * Egy 2 TB-os virtuális lemez az adathoz.
@@ -193,7 +193,7 @@ Ha a kezdeti konfiguráció során bármilyen más hibával szembesül a helyi w
 * [Diagnosztikai tesztek futtatása a webes felhasználói felület beállításának hibakereséséhez](data-box-gateway-troubleshoot.md#run-diagnostics).
 * [Naplófájlok előállítása és a naplófájlok megtekintése](data-box-gateway-troubleshoot.md#collect-support-package).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a Data Box Gatewayjel kapcsolatos alábbi témakörökkel ismerkedett meg:
 

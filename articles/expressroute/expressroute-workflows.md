@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: duau
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 2742b03bcacd73e7e602666b898417f295905f19
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 24ad325cae2ee71ad49ee8ee055a83ceb8fa7ef2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97034071"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721735"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>Az ExpressRoute kapcsolatcsoport-kiépítési munkafolyamatai és a kapcsolatcsoportok állapotai
 
@@ -77,8 +77,12 @@ A ExpressRoute áramkör kiépítési állapotát a PowerShell, a Azure Portal v
 
 Az Azure Virtual Networkben üzembe helyezett virtuális gépekhez és felhőalapú szolgáltatásokhoz való kapcsolódás engedélyezése a privát társak számára.
 
-* Az 1. elérési út (/30) társítási alhálózata
-* Társítási alhálózat a 2. elérési úthoz (/30)
+* IPv4-alhálózatok:
+    * Az 1. elérési út (/30) társítási alhálózata
+    * Társítási alhálózat a 2. elérési úthoz (/30)
+* IPv6-alhálózatok (nem kötelező):
+    * Társítási alhálózat az 1. elérési úthoz (/126)
+    * Társítási alhálózat a 2. elérési úthoz (/126)
 * A VLAN-azonosító a társításhoz
 * ASN társításhoz
 * ExpressRoute ASN = 12076
@@ -88,8 +92,12 @@ Az Azure Virtual Networkben üzembe helyezett virtuális gépekhez és felhőala
 
 A Microsoft online szolgáltatások, például a Microsoft 365 elérésének engedélyezése. Emellett az összes Azure Pásti-szolgáltatás a Microsoft-partnereken keresztül is elérhető. Gondoskodnia kell arról, hogy a Microsofthoz való csatlakozáshoz külön proxyt vagy Edge-t használjon, mint amelyet az internethez használ. Ha a ExpressRoute és az internet között ugyanazt a szegélyt használja, az aszimmetrikus útválasztást okoz, és a hálózati kapcsolat kimaradást okoz.
 
-* Az 1. elérési út (/30) társítási alhálózatának nyilvános IP-nek kell lennie
-* A 2. elérési út (/30) társítási alhálózata nyilvános IP-címmel kell rendelkeznie
+* IPv4-alhálózatok:
+    * Az 1. elérési út (/30) társítási alhálózatának nyilvános IP-nek kell lennie
+    * A 2. elérési út (/30) társítási alhálózata nyilvános IP-címmel kell rendelkeznie
+* IPv6-alhálózatok (nem kötelező):
+    * Az 1. elérési út (/126) társítási alhálózatának nyilvános IP-címmel kell rendelkeznie
+    * Társítási alhálózat a 2. útvonalhoz (/126) – nyilvános IP-cím kell, hogy legyen.
 * A VLAN-azonosító a társításhoz
 * ASN társításhoz
 * Meghirdetett előtagok – nyilvános IP-előtagnak kell lennie

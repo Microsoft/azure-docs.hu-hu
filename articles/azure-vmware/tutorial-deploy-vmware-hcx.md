@@ -3,12 +3,12 @@ title: Oktatóanyag – VMware HCX üzembe helyezése és konfigurálása
 description: Ismerje meg, hogyan helyezhet üzembe és konfigurálhat VMware HCX-megoldást az Azure VMware-megoldás privát felhője számára.
 ms.topic: tutorial
 ms.date: 11/25/2020
-ms.openlocfilehash: a792f8dbc646f61377cf0a88e1a6e386340f23e8
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: e1df53a7aea0b7642828bba80cd7237e26a7182f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357891"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728229"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>A VMware HCX üzembe helyezése és konfigurálása
 
@@ -76,12 +76,15 @@ Mielőtt telepítené a virtuális berendezést a helyszíni vCenter, le kell t�
 
    :::image type="content" source="media/tutorial-vmware-hcx/find-hcx-ip-address.png" alt-text="Képernyőkép a VMware HCX IP-címről." lightbox="media/tutorial-vmware-hcx/find-hcx-ip-address.png":::
 
-1. Válassza   >  az **identitás** kezelése lehetőséget, és a jelszó azonosításához válassza a **vCenter rendszergazdai jelszó** lehetőséget.
+1. Válassza az  >  **identitás** kezelése lehetőséget. 
+
+   A Private Cloud vCenter és a NSX-T Manager kijelző URL-címei és felhasználói hitelesítő adatai.
 
    > [!TIP]
-   > A vCenter jelszava a saját felhő beállításakor lett meghatározva. Ez ugyanaz a jelszó, amelyet az Azure VMware Solution HCX Managerbe való bejelentkezéshez fog használni.
+   > A vCenter jelszava a saját felhő beállításakor lett meghatározva. Ez ugyanaz a jelszó, amelyet az Azure VMware Solution HCX Managerbe való bejelentkezéshez fog használni. Az új **jelszó létrehozása** lehetőség kiválasztásával új VCENTER és NSX-T jelszavak hozhatók majd fel.
 
-   :::image type="content" source="media/tutorial-vmware-hcx/hcx-admin-password.png" alt-text="hcx jelszavának keresése." lightbox="media/tutorial-vmware-hcx/hcx-admin-password.png":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Saját Felhőbeli vCenter és NSX-kezelő URL-címek és hitelesítő adatok megjelenítése." border="true":::
+
 
 1. Nyisson meg egy böngészőablakot, és jelentkezzen be az Azure VMware Solution HCX Managerbe a `https://x.x.x.9` 443-es porton a **cloudadmin \@ vSphere. local** felhasználói hitelesítő adatokkal
 
@@ -209,7 +212,7 @@ Négy hálózati profilt fog létrehozni:
 
    :::image type="content" source="media/tutorial-vmware-hcx/network-profile-start.png" alt-text="A hálózati profil létrehozásának megkezdéséhez szükséges beállítások képernyőképe." lightbox="media/tutorial-vmware-hcx/network-profile-start.png":::
 
-1. Minden hálózati profilnál válassza ki a hálózat és a port csoportot, adjon meg egy nevet, és hozza létre a szegmens IP-készletét. Ezután válassza a **Létrehozás** elemet. 
+1. Minden hálózati profilnál válassza ki a hálózat és a port csoportot, adjon meg egy nevet, és hozza létre a szegmens IP-készletét. Ezután kattintson a **Létrehozás** elemre. 
 
    :::image type="content" source="media/tutorial-vmware-hcx/example-configurations-network-profile.png" alt-text="Képernyőkép az új hálózati profil részleteiről.":::
 

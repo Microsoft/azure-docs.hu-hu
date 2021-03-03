@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 72e00306563e8cccdd476cf0ae5bfb4ddaa63ecf
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b402dec76f88bfdb0bc4758f94cc6e8e279d8040
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661647"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750232"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -66,7 +66,7 @@ A hitelesítéshez az ügyfélnek a csomagra kell hivatkoznia `azure-communicati
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-common</artifactId>
-    <version>1.0.0</version> 
+    <version>1.0.0-beta.4</version> 
 </dependency>
 ```
 
@@ -141,11 +141,11 @@ A válasz a `chatThreadClient` létrehozott csevegési szálon végzett művelet
 List<ChatParticipant> participants = new ArrayList<ChatParticipant>();
 
 ChatParticipant firstThreadParticipant = new ChatParticipant()
-    .setUser(firstUser)
+    .setCommunicationIdentifier(firstUser)
     .setDisplayName("Participant Display Name 1");
     
 ChatParticipant secondThreadParticipant = new ChatParticipant()
-    .setUser(secondUser)
+    .setCommunicationIdentifier(secondUser)
     .setDisplayName("Participant Display Name 2");
 
 participants.add(firstThreadParticipant);
@@ -207,13 +207,15 @@ chatThreadClient.listMessages().iterableByPage().forEach(resp -> {
 
 `listMessages` a által azonosítható különböző típusú üzeneteket ad vissza `chatMessage.getType()` . Ezek a típusok a következők:
 
-- `Text`: Egy szál résztvevője által küldött normál csevegési üzenet.
+- `text`: Egy szál résztvevője által küldött normál csevegési üzenet.
 
-- `ThreadActivity/TopicUpdate`: Az a Rendszerüzenet, amely azt jelzi, hogy a témakör frissítve lett.
+- `html`: Egy hozzászóláslánc résztvevője által küldött HTML-csevegési üzenet.
 
-- `ThreadActivity/AddMember`: Az a Rendszerüzenet, amely azt jelzi, hogy egy vagy több tag hozzá lett adva a csevegési szálhoz.
+- `topicUpdated`: Az a Rendszerüzenet, amely azt jelzi, hogy a témakör frissítve lett.
 
-- `ThreadActivity/DeleteMember`: Az a Rendszerüzenet, amely azt jelzi, hogy a tag el lett távolítva a csevegési szálból.
+- `participantAdded`: Az a Rendszerüzenet, amely azt jelzi, hogy egy vagy több résztvevő hozzá lett adva a csevegési szálhoz.
+
+- `participantRemoved`: A résztvevőt jelző Rendszerüzenet el lett távolítva a csevegési szálból.
 
 További részletek: [üzenetek típusai](../../../concepts/chat/concepts.md#message-types).
 
@@ -224,7 +226,7 @@ A csevegési szál létrehozása után hozzáadhat és eltávolíthat felhaszná
 `addParticipants`A metódussal vehet fel résztvevőket a szálazonosító által azonosított szálba.
 
 - A használatával `listParticipants` listázhatja a csevegési szálba felvenni kívánt résztvevőket.
-- `user`, kötelező, az a CommunicationUserIdentifier, amelyet a CommunicationIdentityClient hozott létre a [felhasználói hozzáférési jogkivonat rövid útmutatójában](../../access-tokens.md) .
+- `communicationIdentifier`, kötelező, az a CommunicationIdentifier, amelyet a CommunicationIdentityClient hozott létre a [felhasználói hozzáférési jogkivonat rövid útmutatójában](../../access-tokens.md) .
 - `display_name`, nem kötelező, a szál résztvevő megjelenítendő neve.
 - `share_history_time`, nem kötelező, az az idő, amely alapján a csevegési előzmények megoszthatók a résztvevővel. Ha meg szeretné osztani a beszélgetési szál kezdete óta megjelenő előzményeket, állítsa ezt a tulajdonságot bármilyen dátumra vagy kevesebbre, mint a szál létrehozási ideje. Ha a résztvevő hozzáadását megelőzően meg szeretné osztani a korábbi előzményeket, állítsa azt az aktuális dátumra. A részleges előzmények megosztásához állítsa azt a szükséges dátumra.
 
@@ -232,11 +234,11 @@ A csevegési szál létrehozása után hozzáadhat és eltávolíthat felhaszná
 List<ChatParticipant> participants = new ArrayList<ChatParticipant>();
 
 ChatParticipant firstThreadParticipant = new ChatParticipant()
-    .setUser(user1)
+    .setCommunicationIdentifier(identity1)
     .setDisplayName("Display Name 1");
 
 ChatParticipant secondThreadParticipant = new ChatParticipant()
-    .setUser(user2)
+    .setCommunicationIdentifier(identity2)
     .setDisplayName("Display Name 2");
 
 participants.add(firstThreadParticipant);
@@ -247,14 +249,14 @@ AddChatParticipantsOptions addChatParticipantsOptions = new AddChatParticipantsO
 chatThreadClient.addParticipants(addChatParticipantsOptions);
 ```
 
-## <a name="remove-user-from-a-chat-thread"></a>Felhasználó eltávolítása csevegési szálból
+## <a name="remove-participant-from-a-chat-thread"></a>Résztvevő eltávolítása csevegési szálból
 
-A felhasználók egy szálhoz való hozzáadásához hasonlóan a csevegési szálból is eltávolíthat felhasználókat. Ehhez nyomon kell követnie a felvett résztvevők felhasználói identitásait.
+A résztvevők egy szálhoz való hozzáadásához hasonlóan el lehet távolítani a résztvevőket egy csevegési szálból. Ehhez követnie kell a felvett résztvevők identitásait.
 
-Használja `removeParticipant` , ahol `user` a a létrehozott CommunicationUserIdentifier.
+Használja `removeParticipant` , ahol `identifier` a a létrehozott CommunicationIdentifier.
 
 ```Java
-chatThreadClient.removeParticipant(user);
+chatThreadClient.removeParticipant(identity);
 ```
 
 ## <a name="run-the-code"></a>A kód futtatása

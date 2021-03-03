@@ -5,13 +5,13 @@ author: niklarin
 ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: c30c01a18a17981b4e034c9df2cf822e6580430e
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.date: 02/21/2021
+ms.openlocfilehash: a6f049670a6860bbc195b92458945d1a53029b4f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567729"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732802"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>Hálózatkezelés – áttekintés – Azure Database for PostgreSQL – rugalmas kiszolgáló
 
@@ -61,6 +61,8 @@ Az alábbiakban néhány olyan fogalmat talál, amely ismeri a PostgreSQL rugalm
 * **Delegált alhálózat** – A virtuális hálózat alhálózatokat (alhálózatokat) tartalmaz. Az alhálózatok lehetővé teszik, hogy a virtuális hálózatot kisebb címterület-területekre ossza. Az Azure-erőforrások üzembe helyezése egy adott alhálózaton történik egy virtuális hálózaton belül. 
 
    A PostgreSQL rugalmas kiszolgálójának olyan alhálózaton kell lennie, amely a PostgreSQL rugalmas kiszolgáló számára van **delegálva** . Ez a delegálás azt jelenti, hogy csak Azure Database for PostgreSQL rugalmas kiszolgálók használhatják ezt az alhálózatot. Az alhálózatra semmilyen más típusú Azure-erőforrás nem delegálható. Egy alhálózatot delegálhat úgy, hogy hozzárendeli a delegálási tulajdonságát a Microsoft. DBforPostgreSQL/flexibleServers.
+
+   Adja hozzá a `Microsoft.Storage` szolgáltatás végpontját a rugalmas kiszolgálókra delegált alhálózat számára. 
 
 * **Hálózati biztonsági csoportok (NSG)** A hálózati biztonsági csoportokban található biztonsági szabályok lehetővé teszik a virtuális hálózati alhálózatok és hálózati adapterek közötti és onnan kimenő hálózati forgalom típusának szűrését. További információkért tekintse át a [hálózati biztonsági csoport áttekintését](../../virtual-network/network-security-groups-overview.md) .
 
@@ -122,6 +124,6 @@ Azure Database for PostgreSQL – a rugalmas kiszolgáló támogatja az ügyfél
 
 Azure Database for PostgreSQL – a rugalmas kiszolgáló csak Transport Layer Security használatával támogatja a titkosított kapcsolatokat. A TLS 1,0 és a TLS 1,1 összes bejövő kapcsolata meg lesz tagadva. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Megtudhatja, hogyan hozhat létre a [Azure Portal](how-to-manage-virtual-network-portal.md) vagy [Az Azure CLI](how-to-manage-virtual-network-cli.md)-vel egy rugalmas, **privát hozzáféréssel (VNet-integrációval)** rendelkező kiszolgálót.
 * Megtudhatja, hogyan hozhat létre egy rugalmas kiszolgálót **nyilvános hozzáféréssel (engedélyezett IP-címekkel)** [a Azure Portal](how-to-manage-firewall-portal.md) vagy [Az Azure CLI](how-to-manage-firewall-cli.md)-ben.

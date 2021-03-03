@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: 69f0a20bdcba23d947e3d1b573c1a359da245161
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e639762cd1adb7bbbc3fb2ec31f4ce52710e46f9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369420"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711943"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Vész-helyreállítás beállítása többrétegű SAP NetWeaver-alkalmazások telepítéséhez
 
@@ -153,7 +153,7 @@ Az **üzembe helyezés az Azure-** ba lehetőség kiválasztásával telepíthet
 1. Kattintson a **Feladatátvétel tesztelése** elemre.
 1. A feladatátvételi teszt folyamatának elindításához válassza ki a helyreállítási pontot és az Azure-beli virtuális hálózatot.
 1. Ha a másodlagos környezet működik, végezze el az érvényesítést.
-1. Az érvényesítések befejezése után törölje a feladatátvételi környezetet a **feladatátvételi teszt törlése**lehetőség kiválasztásával.
+1. Az érvényesítések befejezése után törölje a feladatátvételi környezetet a **feladatátvételi teszt törlése** lehetőség kiválasztásával.
 
 További információ: a [feladatátvétel tesztelése az Azure-ban site Recovery](site-recovery-test-failover-to-azure.md).
 
@@ -167,5 +167,5 @@ További információ: a [feladatátvétel tesztelése az Azure-ban site Recover
 További információ: [feladatátvétel site Recoveryban](site-recovery-failover.md).
 
 ## <a name="next-steps"></a>Következő lépések
-* További információ a vész-helyreállítási megoldás létrehozásáról az SAP NetWeaver-telepítésekhez Site Recovery használatával. Tekintse meg a letölthető tanulmányi [SAP NetWeaver: vész-helyreállítási megoldás létrehozása a site Recovery](https://aka.ms/asr_sap). A tanulmány a különböző SAP-architektúrákkal kapcsolatos ajánlásokat tárgyalja. A támogatott alkalmazások és virtuálisgép-típusok az Azure-beli SAP-ben láthatók. A vész-helyreállítási megoldás tesztelésére is lehetőség van.
+* További információ a vész-helyreállítási megoldás létrehozásáról az SAP NetWeaver-telepítésekhez Site Recovery használatával. Tekintse meg a letölthető tanulmányi [SAP NetWeaver: vész-helyreállítási megoldás létrehozása a site Recovery](/samples/browse/?redirectedfrom=TechNet-Gallery). A tanulmány a különböző SAP-architektúrákkal kapcsolatos ajánlásokat tárgyalja. A támogatott alkalmazások és virtuálisgép-típusok az Azure-beli SAP-ben láthatók. A vész-helyreállítási megoldás tesztelésére is lehetőség van.
 * További információ [más számítási feladatok replikálásáról](site-recovery-workload.md) site Recovery használatával.

@@ -121,10 +121,14 @@
           href: add-sign-up-and-sign-in-policy.md
         - name: Bejelentkezési szabályzat
           href: add-sign-in-policy.md
-        - name: Jelszó-helyreállítási szabályzat
-          href: add-password-reset-policy.md
-        - name: Jelszó-módosítási szabályzat
-          href: add-password-change-policy.md
+        - name: Új jelszó kérésére vonatkozó szabályzatok
+          items:
+            - name: Új jelszó önkiszolgáló kérése
+              href: add-password-reset-policy.md
+            - name: Önkiszolgáló jelszó-módosítás
+              href: add-password-change-policy.md
+            - name: Jelszó alaphelyzetbe állításának kényszerítése
+              href: force-password-reset.md
         - name: Profilszerkesztési szabályzat
           href: add-profile-editing-policy.md
         - name: Erőforrás-tulajdonosok jelszavára vonatkozó hitelesítőadat-szabályzat
@@ -520,4 +524,4 @@
       href: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
       displayName: technical
     - name: Videók
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c'
+      href: azure-ad-external-identities-videos.md

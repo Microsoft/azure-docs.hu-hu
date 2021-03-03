@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 20ebeb23fe09ba4fd70a724828afadfaa3901abd
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: b02ccb3acb4546e08e7d58159ab9d85bca2d0eed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095661"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711875"
 ---
 # <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Kvóták és szolgáltatási csomagok az Azure Spring Cloud-hoz
 
@@ -32,7 +32,7 @@ Egyéni tartományok | /Azure Spring Cloud Service-példány | 0 | 25
 Állandó kötetek | /Azure Spring Cloud Service-példány | 1 GB/app x 10 alkalmazás | 50 GB/app x 10 alkalmazás
 
 > [!TIP]
-> A szolgáltatási példányok összes példánya esetében a felsorolt díjak a leállított állapotú alkalmazások/központi telepítések esetében érvényesek. Törölje a nem használt alkalmazásokat és központi telepítéseket.
+> A szolgáltatási példányok teljes alkalmazási példányaira vonatkozó korlátozások az alkalmazások és a központi telepítések esetében minden állapotban érvényesek, beleértve a leállított állapotot is. Törölje a nem használt alkalmazásokat vagy központi telepítéseket.
 
 ## <a name="next-steps"></a>Következő lépések
 

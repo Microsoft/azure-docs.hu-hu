@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev , devx-track-azurepowershell
 ms.topic: how-to
 ms.tgt_pltfrm: multiple
-ms.date: 06/26/2020
+ms.date: 02/22/2021
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.openlocfilehash: b07679c6dd5e03131fde1439213783893971a088
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: b27af53d615fa9c0c46699a52a004098dc46b7b2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581822"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688535"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Útmutató: egyszerű szolgáltatásnév létrehozása a Azure PowerShell használatával
 
@@ -72,7 +72,7 @@ A példa 20 másodpercig alvó állapotba lép, hogy az új szolgáltatásnév a
 
 A szerepkör-hozzárendelés hatókörét beállíthatja egy adott erőforráscsoportra a **ResourceGroupName** paraméter használatával. Egy adott erőforrásra is beállíthatja a hatókört a **ResourceType** és a **ResourceName** paraméter együttes használatával. 
 
-Ha **nem rendelkezik Windows 10 vagy Windows Server 2016 operációs** rendszerrel, töltse le az [önaláírt tanúsítvány-generátort](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/) a Microsoft Script Center webhelyről. Bontsa ki a fájl tartalmát, és importálja a szükséges parancsmagot.
+Ha **nem rendelkezik Windows 10 vagy Windows Server 2016 operációs** rendszerrel, töltse le a [New-SelfSignedCertificateEx parancsmagot](https://www.pkisolutions.com/tools/pspki/New-SelfSignedCertificateEx/) a PKI-megoldásokból. Bontsa ki a fájl tartalmát, és importálja a szükséges parancsmagot.
 
 ```powershell
 # Only run if you could not use New-SelfSignedCertificate

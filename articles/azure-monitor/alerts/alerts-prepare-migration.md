@@ -4,22 +4,22 @@ description: Ismerje meg, hogyan módosítható a webhookok, a Logic apps és a 
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 03/19/2018
+ms.date: 02/14/2021
 ms.subservice: alerts
-ms.openlocfilehash: 1d6fc8e4b9baecf02531fc1baa617b87a9d3255c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c88d0b8595434298eb564034a44665c5375457c4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100614618"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701042"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Logikai alkalmazások és runbookok előkészítése a klasszikus riasztási szabályok migrálására
 
 > [!NOTE]
-> Amint azt [korábban bejelentettük](../platform/monitoring-classic-retirement.md), a Azure monitor klasszikus riasztásai kimaradnak a nyilvános Felhőbeli felhasználók számára, bár továbbra is korlátozott használatban vannak az új riasztásokat még nem támogató erőforrások esetében. A riasztások kivonulási dátuma tovább bővült. Hamarosan új dátum jelenik meg.
+> Amint azt [korábban bejelentettük](monitoring-classic-retirement.md), a Azure monitor klasszikus riasztásai kimaradnak a nyilvános Felhőbeli felhasználók számára, bár a használat továbbra is korlátozott, **2021**-ig. A Azure Government Cloud és az Azure China 21Vianet klasszikus riasztásai a **2024. február 29**-én törlődnek.
 >
 
-Ha úgy dönt, hogy önként áttelepíti a klasszikus riasztási szabályokat az új riasztási szabályokra, vegye figyelembe, hogy a két rendszer között van néhány különbség. Ez a cikk ismerteti ezeket a különbségeket, és azt, hogy miként lehet előkészíteni a változást.
+Ha úgy dönt, hogy önként telepíti a klasszikus riasztási szabályokat az új riasztási szabályokra, a két rendszer között van néhány különbség. Ez a cikk ismerteti ezeket a különbségeket, és azt, hogy miként lehet előkészíteni a változást.
 
 ## <a name="api-changes"></a>API-változások
 
@@ -36,7 +36,7 @@ A következő táblázat a klasszikus és az új riasztások programozott interf
 
 ## <a name="notification-payload-changes"></a>Értesítési tartalom változásai
 
-Az értesítési hasznos adatok formátuma némileg eltér a [klasszikus riasztási szabályok](../platform/alerts-webhooks.md) és az [új metrikai riasztások](alerts-metric-near-real-time.md#payload-schema)között. Ha a klasszikus riasztási szabályok által aktivált webhookok, logikai alkalmazások vagy runbook műveletek vannak, akkor frissítenie kell ezeket az értesítési végpontokat az új metrikai riasztások adattartalom-formátumának elfogadásához.
+Az értesítési hasznos adatok formátuma némileg eltér a [klasszikus riasztási szabályok](alerts-webhooks.md) és az [új metrikai riasztások](alerts-metric-near-real-time.md#payload-schema)között. Ha a klasszikus riasztási szabályok webhooktal, Logic app-vagy runbook-műveletekkel rendelkeznek, frissítenie kell a célokat, hogy fogadja el az új adattartalom formátumát.
 
 A következő táblázat segítségével leképezheti a webhook hasznos adatait tartalmazó mezőket a klasszikus formátumból az új formátumba:
 
@@ -153,13 +153,13 @@ A virtuális gépet egy riasztás indításakor leállító runbook teljes péld
 
 ## <a name="partner-integration-via-webhooks"></a>Partner-integráció webhookok használatával
 
-A [klasszikus riasztásokkal integrált partnereink](../platform/partners.md) többsége már támogatja az újabb metrikai riasztásokat az integrációjuk során. Az új metrikai riasztásokkal már működő ismert integrációk a következők:
+A [klasszikus riasztásokkal integrált partnereink](../partners.md) többsége már támogatja az újabb metrikai riasztásokat az integrációjuk során. Az új metrikai riasztásokkal már működő ismert integrációk a következők:
 
 - [PagerDuty](https://www.pagerduty.com/docs/guides/azure-integration-guide/)
 - [OpsGenie](https://docs.opsgenie.com/docs/microsoft-azure-integration)
 - [Signl4 használatával](https://www.signl4.com/blog/mobile-alert-notifications-azure-monitor/)
 
-Ha olyan partner-integrációt használ, amely itt nem szerepel, erősítse meg az integrációs szolgáltatót, hogy az integráció működik az új metrikai riasztásokkal.
+Ha olyan partner-integrációt használ, amely itt nem szerepel, erősítse meg a szolgáltatót, hogy az új metrikai riasztásokkal működik.
 
 ## <a name="next-steps"></a>Következő lépések
 

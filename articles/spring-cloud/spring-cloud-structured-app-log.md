@@ -4,15 +4,15 @@ description: Ez a cikk bemutatja, hogyan lehet strukturált alkalmazás-naplóz�
 author: MikeDodaro
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 02/05/2021
 ms.author: brendanm
 ms.custom: devx-track-java
-ms.openlocfilehash: c5c35fe8a352a1bc3467e9512a7fcbc068375bfb
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: e846da81444ae1632cb7f9a4cd413bc3f9b7b232
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055925"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701943"
 ---
 # <a name="structured-application-log-for-azure-spring-cloud"></a>Az Azure Spring Cloud strukturált alkalmazási naplója
 
@@ -23,16 +23,16 @@ A naplózási lekérdezési élmény javítása érdekében JSON formátumban ke
 
 **JSON-séma követelményei:**
 
-| JSON-kulcs      | JSON-érték típusa|  Kötelező | Oszlop Log Analytics| Description |
+| JSON-kulcs      | JSON-érték típusa|  Kötelező | Oszlop Log Analytics| Leírás |
 | --------------| ------------|-----------|-----------------|--------------------------|
-| időbélyeg     | sztring      |     Yes   | AppTimestamp    | időbélyeg UTC formátumban  |
+| időbélyeg     | sztring      |     Igen   | AppTimestamp    | időbélyeg UTC formátumban  |
 | Tuskózó        | sztring      |     No    | Tuskózó          | Tuskózó                   |
 | szint         | sztring      |     No    | CustomLevel     | naplózási szint                |
 | szál        | sztring      |     No    | Szál          | szál                   |
 | message       | sztring      |     No    | Üzenet         | napló üzenete              |
 | stackTrace    | sztring      |     No    | StackTrace      | kivételek veremének nyomkövetése    |
 | exceptionClass| sztring      |     No    | ExceptionClass  | kivételi osztály neve     |
-| MDC           | beágyazott JSON |     No    |                 | leképezett diagnosztikai környezet|
+| MDC           | beágyazott JSON |     Nem    |                 | leképezett diagnosztikai környezet|
 | MDC. traceId   | sztring      |     No    | TraceId         |az elosztott nyomkövetés nyomkövetési azonosítója|
 | MDC. spanId    | sztring      |     No    | SpanId          |elosztott nyomkövetés tartományának azonosítója |
 |               |             |           |                 |                          |
@@ -238,4 +238,4 @@ AppPlatformLogsforSpring
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-* További információ a napló lekérdezéséről: Ismerkedés [a Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+* További információ a napló lekérdezéséről: Ismerkedés [a Azure monitor](../azure-monitor/logs/get-started-queries.md)

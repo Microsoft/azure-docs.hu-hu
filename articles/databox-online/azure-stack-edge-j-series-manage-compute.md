@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 01/27/2021
 ms.author: alkohli
-ms.openlocfilehash: 4c4fbef807d31e03a79f80db7fd29580074fb8bd
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: bd49edcfaca781ac3d36fbf871ec146b32c64ae3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955454"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733414"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro-gpu"></a>Számítások kezelése a Azure Stack Edge Pro GPU-val
 
@@ -21,11 +21,6 @@ ms.locfileid: "98955454"
 
 Ez a cikk bemutatja, hogyan kezelheti a számításokat IoT Edge szolgáltatáson keresztül az Azure Stack Edge Pro GPU-eszközön. A számítást a Azure Portal vagy a helyi webes felületen keresztül kezelheti. A Azure Portal segítségével kezelheti a modulokat, az eseményindítókat és a IoT Edge konfigurációt, valamint a helyi webes felhasználói felületet a számítási hálózati beállítások kezeléséhez.
 
-Ebben a cikkben az alábbiakkal ismerkedhet meg:
-
-> [!div class="checklist"]
-> * Eseményindítók kezelése
-> * IoT Edge konfiguráció kezelése
 
 
 ## <a name="manage-triggers"></a>Eseményindítók kezelése
@@ -130,6 +125,22 @@ Az eszközhöz tartozó hozzáférési kulcsok szinkronizálásához hajtsa vég
     ![Ha a rendszer kéri, válassza az Igen lehetőséget](media/azure-stack-edge-j-series-manage-compute/refresh-configuration-2.png)
 
 3. A szinkronizálást követően zárja be a párbeszédpanelt.
+
+## <a name="change-external-service-ips-for-containers"></a>Külső szolgáltatás IP-címeinek módosítása tárolók esetén
+
+A Kubernetes külső szolgáltatási IP-címei a Kubernetes-fürtön kívül elérhető szolgáltatások elérésére szolgálnak. Az eszköz aktiválása után a helyi felhasználói felület elérésével beállíthatja vagy módosíthatja a külső szolgáltatási IP-címeket az eszközhöz tartozó tároló munkaterhelésekhez.
+
+
+1. Az eszköz helyi felhasználói felületén lépjen a **számítás** elemre.
+1. Válassza ki azt a portot, amelynek a hálózatát a számításhoz konfigurálta. A megnyíló panelen írja be (új), vagy módosítsa (ha van) a Kubernetes külső szolgáltatás IP-címei. Ezek az IP-címek minden olyan szolgáltatáshoz használhatók, amelyet a Kubernetes-fürtön kívül kell tenni. 
+    - Az eszközön futó szolgáltatáshoz legalább 1 szolgáltatási IP-címet kell használni, amelyet `edgehub` IoT Edge modul használ. 
+    - Szüksége lesz egy IP-re minden további IoT Edge modul vagy tároló számára, amelyet telepíteni kíván. 
+    - Ezek statikus, összefüggő IP-címek.
+
+    ![Kubernetes szolgáltatás IP-címeinek módosítása](media/azure-stack-edge-j-series-manage-compute/change-service-ips-1.png)
+
+1. Kattintson az **Alkalmaz** gombra. Az IP-címek alkalmazása után az eszköz nem igényel újraindítást vagy újraindítást. Az új IP-címek azonnal érvénybe lépnek.
+
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: tyao
 ms.custom: references_regions
-ms.openlocfilehash: dead60b9d8e0872f3d46b1f223ccf5e6697cbd90
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 6a1ec6e0b8862c6ad2b884b019e908e7d2a59a1e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101099200"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715513"
 ---
 # <a name="secure-your-origin-with-private-link-in-azure-front-door-standardpremium-preview"></a>Saját forrásának védelme az Azure-beli előtérben standard/prémium (előzetes verzió)
 
@@ -30,7 +30,7 @@ Az [Azure Private-hivatkozás](../../private-link/private-link-overview.md) lehe
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Az Azure bevezető Premium SKU a Private link Service használatával tud csatlakozni a forráshoz. Alkalmazásai a saját virtuális hálózatban vagy egy, a nyilvános internetről nem elérhető, a saját virtuális hálózaton vagy egy Pásti-szolgáltatás mögött helyezhetők el.
+Az Azure bevezető prémium SKU-jának a webalkalmazás-és a Storage-fiókhoz a Private link Service használatával kapcsolódhat, így nincs szükség a forrás nyilvánosan elérhetővé tételére.
 
 :::image type="content" source="../media/concept-private-link/front-door-private-endpoint-architecture.png" alt-text="Az első ajtós privát végpontok architektúrája":::
 
@@ -38,7 +38,8 @@ Ha engedélyezi a saját forrásra mutató privát hivatkozást az Azure bejára
 
 :::image type="content" source="../media/concept-private-link/enable-private-endpoint.png" alt-text="Privát végpont engedélyezése":::
 
-Az Azure bejárati Premium számos különböző típusú forrást támogat. Ha a forrás a magánhálózaton lévő virtuális gépek készletén található, először létre kell hoznia egy belső standard Load balancert, engedélyeznie kell a Private link Service-t a standard Load Balancer számára, majd ki kell választania az egyéni forrás típusát. A privát kapcsolat konfigurálása lapon válassza a "Microsoft. Network/PrivateLinkServices as Resource Type (erőforrás típusa) lehetőséget. A Pásti-szolgáltatások, például az Azure webalkalmazás és a Storage-fiók esetében először engedélyezheti a Private link Service-t a megfelelő szolgáltatásokból, és kiválaszthatja a Microsoft. Web/Sites elemet a webalkalmazáshoz és a Microsoft. Storage/StorageAccounts a Storage-fiók magánhálózati kapcsolati szolgáltatásaihoz.
+> [!NOTE]
+> Miután engedélyezte a privát kapcsolat forrását, és jóváhagyja a privát végpont conenction, néhány percet vesz igénybe a kapcsolat létesítése. Ebben az időszakban a forráshoz intézett kérések egy előtérben lévő hibaüzenetet kapnak. A hibaüzenet a kapcsolatok létrehozása után fog elindulni.
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -50,6 +51,5 @@ Az Azure-beli előtérben lévő privát végpontok a platform és az Azure bej�
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Ha az Azure bejárati Premiumot a Private link Service használatával Virtual Machines csatlakoztatni, tekintse meg [a privát végpont létrehozása](../../private-link/create-private-endpoint-portal.md)című témakört.
 * Az Azure bejárati prémium csatlakoztatása a webalkalmazáshoz Private link Service [használatával: csatlakozás egy webalkalmazáshoz privát végponton](../../private-link/tutorial-private-endpoint-webapp-portal.md)keresztül.
 * Ha az Azure bejárati Premiumot privát kapcsolaton keresztül szeretné csatlakoztatni a Storage-fiókjához, olvassa el [a Kapcsolódás a Storage-fiókhoz privát végpont használatával](../../private-link/tutorial-private-endpoint-storage-portal.md)című témakört.

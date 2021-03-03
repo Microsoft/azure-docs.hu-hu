@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 08/31/2020
+ms.date: 02/09/2021
 ms.author: aahi
-ms.openlocfilehash: d987797c2c25f685a3c9250afeb17cec3ad3cb2e
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 8444ae08aa2c25c20723b2f8c571422af3b24bc8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369545"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736678"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Oktatóanyag: Power BI integrálása a Text Analytics Cognitive Services-szolgáltatásba
 
@@ -89,7 +89,7 @@ Ha szeretné, az Üres elemek eltávolítása szűrővel ki is szűrheti az üre
 ## <a name="understand-the-api"></a>Az API ismertetése
 <a name="UnderstandingAPI"></a>
 
-A Text Analytics szolgáltatás a [Key Phrases API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6) útján egy HTTP-kéréssel legfeljebb ezer szöveges dokumentumot tud feldolgozni. A Power BI azonban jobban szereti a rekordokat egyenként kezelni, ezért az oktatóanyagban az API-hívásaink mindig csak egyetlen dokumentumot fognak tartalmazni. A Key Phrases API számára minden feldolgozandó dokumentumra a következő mezőket kell megadni.
+A Text Analytics szolgáltatás a [Key Phrases API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V3-0/operations/KeyPhrases) útján egy HTTP-kéréssel legfeljebb ezer szöveges dokumentumot tud feldolgozni. A Power BI azonban jobban szereti a rekordokat egyenként kezelni, ezért az oktatóanyagban az API-hívásaink mindig csak egyetlen dokumentumot fognak tartalmazni. A Key Phrases API számára minden feldolgozandó dokumentumra a következő mezőket kell megadni.
 
 | Mező | Leírás |
 | - | - |
@@ -190,7 +190,7 @@ Most pedig ezzel az oszloppal létrehozunk egy szófelhőt. Első lépésként k
 > [!NOTE]
 > Miért a kivonatolt kulcskifejezéseket használjuk a szófelhő létrehozásához a megjegyzések teljes szövege helyett? A kulcskifejezések az ügyfelek megjegyzéseiből a *fontos* és nem egyszerűen csak a *leggyakoribb* szavakat tartalmazzák. Emellett a szavak méretezését így nem torzítja az, ha valamely szó csak szűk számú megjegyzésben fordul elő nagyon gyakran.
 
-Ha a Word Cloud (Szófelhő) egyéni vizualizációt még nem telepítette, tegye meg. A munkaterület jobb oldalán lévő Vizualizációk panelen kattintson a három pontra ( **...** ), és válassza az **Importálás az áruházból** lehetőséget. Ezután keressen rá a „cloud” (felhő) kifejezésre, és kattintson a **Hozzáadás** gombra a Word Cloud (Szófelhő) vizualizáció mellett. A Power BI telepíti a szófelhő vizualizációt, és tájékoztatja, amint ez sikeresen megtörtént.
+Ha a Word Cloud (Szófelhő) egyéni vizualizációt még nem telepítette, tegye meg. A munkaterület jobb oldalán lévő Vizualizációk panelen kattintson a három pontra (**...**), és válassza az **Importálás az áruházból** lehetőséget. Ezután keressen rá a „cloud” (felhő) kifejezésre, és kattintson a **Hozzáadás** gombra a Word Cloud (Szófelhő) vizualizáció mellett. A Power BI telepíti a szófelhő vizualizációt, és tájékoztatja, amint ez sikeresen megtörtént.
 
 ![[egyéni vizualizáció hozzáadása]](../media/tutorials/power-bi/add-custom-visuals.png)<br><br>
 
@@ -287,7 +287,7 @@ Végezetül íme a korábban bemutatott Key Phrases-függvény egy olyan változ
 in  keyphrases
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 <a name="NextSteps"></a>
 
 További információk a Text Analytics szolgáltatásról, a Power Query M képletnyelvről és a Power BI-ról.

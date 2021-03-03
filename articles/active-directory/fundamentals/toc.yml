@@ -51,6 +51,14 @@
               href: 9-secure-access-teams-sharepoint.md
         - name: Biztonságos szolgáltatásfiókok
           items:
+            - name: Az Azure Service-fiókok bemutatása
+              href: service-accounts-introduction-azure.md
+            - name: Felügyelt identitások biztonságossá tétele
+              href: service-accounts-managed-identities.md
+            - name: Az egyszerű szolgáltatások biztonságossá tétele
+              href: service-accounts-principal.md
+            - name: Az Azure-szolgáltatásfiókok szabályozása
+              href: service-accounts-governing-azure.md
             - name: A helyszíni szolgáltatásfiókok bemutatása
               href: service-accounts-on-premises.md
             - name: A csoport MSAs biztonságossá tétele

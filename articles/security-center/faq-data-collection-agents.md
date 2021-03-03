@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 30744ab97549d585cb6893dc2e2e12009e8cd3fb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 754e9516c5fd47668cbff5bdc64b8dfdeed050d8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100595773"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705134"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Gyakori kérdések – az adatgyűjtés, az ügynökök és a munkaterületek kérdései
 
@@ -29,7 +29,7 @@ A Security Center adatokat gyűjt az Azure-beli virtuális gépekről (VM), a vi
 
 Nem. A Security Center által létrehozott munkaterületek, miközben a csomópontok számlázása Azure Monitor naplókhoz van konfigurálva, nem számítunk fel Azure Monitor naplók díját. Security Center számlázás mindig a Security Center biztonsági házirendje és a munkaterületre telepített megoldások alapján történik:
 
-- **Azure Defender off** – Security Center engedélyezi az "SecurityCenterFree" megoldást az alapértelmezett munkaterületen. Nem számítunk fel díjat, ha az Azure Defender ki van kapcsolva.
+- **Azure Defender off** – Security Center engedélyezi a "SecurityCenterFree" megoldást az alapértelmezett munkaterületen. Nem számítunk fel díjat, ha az Azure Defender ki van kapcsolva.
 
 - Az **Azure Defender on** – Security Center engedélyezi a "biztonsági" megoldást az alapértelmezett munkaterületen.
 
@@ -146,7 +146,7 @@ Ha a Log Analytics ügynök közvetlenül a virtuális gépre van telepítve (ne
 
 A telepített ügynök továbbra is a már konfigurált munkaterülete (ke) t jelenti, és a jelentés a Security Center konfigurált munkaterületre fog jelentést adni (a többsoros vezérlés támogatott a Windows rendszerű gépeken).
 
-Ha a konfigurált munkaterület egy felhasználói munkaterület (nem Security Center alapértelmezett munkaterülete), telepítenie kell a "Security/" SecurityCenterFree "megoldást arra, hogy Security Center a munkaterületre irányuló virtuális gépekről és számítógépekről származó események feldolgozásának megkezdéséhez.
+Ha a konfigurált munkaterület egy felhasználói munkaterület (nem Security Center alapértelmezett munkaterülete), akkor telepítenie kell a "biztonság" vagy a "SecurityCenterFree" megoldást arra, hogy Security Center a munkaterületre jelentett virtuális gépekről és számítógépekről származó események feldolgozásának megkezdéséhez.
 
 Linux rendszerű gépek esetén az ügynök többsoros vezérlése még nem támogatott – ezért ha egy meglévő ügynök telepítését észleli, az automatikus kiépítés nem történik meg, és a gép konfigurációja nem módosul.
 

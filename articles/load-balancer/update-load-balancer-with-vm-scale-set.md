@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/29/2020
 ms.author: irenehua
-ms.openlocfilehash: 1228462dc6437ecce7718c4747d2acb9ae7332cb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 952889777e4236d7fa03fad5b1bdbf98499f7066
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593028"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721310"
 ---
 # <a name="update-or-delete-a-load-balancer-used-by-virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportokkal használt terheléselosztó frissítése vagy törlése
 
@@ -111,6 +111,52 @@ Több IP-konfiguráció hozzáadása:
 1. Az előtérbeli **IP-cím hozzáadása** lapon adja meg az értékeket, majd kattintson **az OK gombra**.
 1. Kövesse az oktatóanyag [5. lépését](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe) és a [6. lépését](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe) , ha új terheléselosztási szabályokra van szükség.
 1. Szükség esetén hozza létre a bejövő NAT-szabályok új készletét az újonnan létrehozott előtér-IP-konfigurációk használatával. Egy példa az előző szakaszban található.
+
+## <a name="multiple-virtual-machine-scale-sets-behind-a-single-load-balancer"></a>Több Virtual Machine Scale Sets egyetlen Load Balancer mögött
+
+Bejövő NAT-készlet létrehozása a Load Balancerban, a virtuálisgép-méretezési csoport hálózati profiljában a bejövő NAT-készletre hivatkozva, végül frissítse a példányokat a módosítások érvénybe léptetéséhez. Ismételje meg az összes Virtual Machine Scale Sets lépéseit.
+
+Ügyeljen arra, hogy különálló bejövő NAT-készleteket hozzon létre, amelyek nem átfedésben vannak a frontend-tartományokkal.
+  
+```azurecli-interactive
+  az network lb inbound-nat-pool create 
+          -g MyResourceGroup 
+          --lb-name MyLb
+          -n MyNatPool 
+          --protocol Tcp 
+          --frontend-port-range-start 80 
+          --frontend-port-range-end 89 
+          --backend-port 80 
+          --frontend-ip-name MyFrontendIpConfig
+  az vmss update 
+          -g MyResourceGroup 
+          -n myVMSS 
+          --add virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerInboundNatPools "{'id':'/subscriptions/mySubscriptionId/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLb/inboundNatPools/MyNatPool'}"
+            
+  az vmss update-instances
+          -–instance-ids *
+          --resource-group MyResourceGroup
+          --name MyVMSS
+          
+  az network lb inbound-nat-pool create 
+          -g MyResourceGroup 
+          --lb-name MyLb
+          -n MyNatPool2
+          --protocol Tcp 
+          --frontend-port-range-start 100 
+          --frontend-port-range-end 109 
+          --backend-port 80 
+          --frontend-ip-name MyFrontendIpConfig2
+  az vmss update 
+          -g MyResourceGroup 
+          -n myVMSS2 
+          --add virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerInboundNatPools "{'id':'/subscriptions/mySubscriptionId/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLb/inboundNatPools/MyNatPool2'}"
+            
+  az vmss update-instances
+          -–instance-ids *
+          --resource-group MyResourceGroup
+          --name MyVMSS2
+```
 
 ## <a name="delete-the-front-end-ip-configuration-used-by-the-virtual-machine-scale-set"></a>A virtuálisgép-méretezési csoport által használt előtér-IP-konfiguráció törlése
 

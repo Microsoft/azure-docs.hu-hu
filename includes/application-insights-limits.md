@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: lagayhar
 ms.custom: include file
-ms.openlocfilehash: eda50bb9f65591cd837b7e74e9d783464de43367
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 1c4f6b876a4aa80c7e51f2bb3ca88234203d0daa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100520687"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726179"
 ---
 A mérőszámok és események másodpercenkénti száma korlátozott a rendszerállapot-kulcs alapján. A korlátozások a választott [díjszabási csomagtól](https://azure.microsoft.com/pricing/details/application-insights/) függően változnak.
 
@@ -21,8 +21,8 @@ A mérőszámok és események másodpercenkénti száma korlátozott a rendszer
 | --- | --- | --- |
 | Napi teljes adatmennyiség | 100 GB | Egy korlát beállításával csökkenthető az adatmennyiség. Ha több adatra van szüksége, növelheti a portálon megjelenő korlátot, amely akár 1 000 GB is lehet. A 1 000 GB-nál nagyobb kapacitások esetében küldjön e-mailt a címre AIDataCap@microsoft.com .
 | Throttling | 32 000 esemény/másodperc | A korlát megállapítása egy percnyi mérés alapján történik.
-| Adatmegőrzési naplók | [30-730 nap](../articles/azure-monitor/app/pricing.md#change-the-data-retention-period)  | Ez az erőforrás [naplókhoz](../articles/azure-monitor/log-query/log-query-overview.md)használható.
-| Adatmegőrzési metrikák | 90 nap| Ez az erőforrás a [Metrikaböngésző](../articles/azure-monitor/platform/metrics-charts.md).
+| Adatmegőrzési naplók | [30-730 nap](../articles/azure-monitor/app/pricing.md#change-the-data-retention-period)  | Ez az erőforrás [naplókhoz](../articles/azure-monitor/logs/log-query-overview.md)használható.
+| Adatmegőrzési metrikák | 90 nap| Ez az erőforrás a [Metrikaböngésző](../articles/azure-monitor/essentials/metrics-charts.md).
 | [Többlépéses rendelkezésre állási teszt](../articles/azure-monitor/app/availability-multistep.md) a részletes eredmények megőrzésével | 90 nap | Ez az erőforrás minden lépésről részletes eredményeket biztosít.
 | Telemetria maximális mérete | 64 kB |
 | Telemetria elemek maximális száma kötegben | 64 K |

@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 11/17/2020
+ms.date: 02/09/2021
 ms.author: aahi
 keywords: szöveg-adatbányászat, érzelmek elemzése, szöveges elemzés
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 6cef9dc65a72134e0aa70db5f89f4934263c48b4
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: cb7bdeb379ee753424d9c975a8c030b0f7890552
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563228"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722279"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Mi a Text Analytics API?
 
 A Text Analytics API egy felhőalapú szolgáltatás, amely természetes nyelvi feldolgozási (NLP) funkciókat biztosít a szöveg-és szöveges elemzésekhez, például a következőkhöz: érzelmek elemzése, közvélemény-kutatás, kulcsfontosságú kifejezés kinyerése, nyelvfelismerés és elnevezett entitások felismerése.
 
-Az API az [Azure Cognitive Services](../index.yml)része, amely a felhőben a gépi tanulási és AI-algoritmusok gyűjteménye a fejlesztési projektekhez. Ezeket a szolgáltatásokat a [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/)vagy az [ügyféloldali kódtár](quickstarts/client-libraries-rest-api.md)használatával is használhatja.
+Az API az [Azure Cognitive Services](../index.yml)része, amely a felhőben a gépi tanulási és AI-algoritmusok gyűjteménye a fejlesztési projektekhez. Ezek a szolgáltatások a REST API [3,0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V3-0/) -es vagy [3,1-](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/)es verziójának vagy az [ügyféloldali függvénytárnak](quickstarts/client-libraries-rest-api.md)a használatával használhatók.
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Whats-New-in-Text-Analytics-Opinion-Mining-and-Async-API/player]
 
@@ -105,7 +105,7 @@ A Text Analytics API minden végpontja nyers szöveges adatokat fogad el. Továb
 
 A Text Analytics API Unicode-kódolást használ a szövegek megjelenítéséhez és a karakterszámok számításához. A kérések elküldhetők UTF-8- és UTF-16-kódolással is, amelyek között nincs számottevő különbség a karakterek számában. A rendszer a Unicode-kódpontokat használja a karakterszám heurisztikus számításához. A két mennyiség a Text Analytics adatkorlátai szempontjából egyenértékű. Ha [`StringInfo.LengthInTextElements`](/dotnet/api/system.globalization.stringinfo.lengthintextelements) a karakterek számának beolvasására használja, ugyanazt a módszert használja az adatméret mérésére.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + [Hozzon létre egy Azure-erőforrást](../cognitive-services-apis-create-account.md) az Text Analytics számára az alkalmazások kulcsának és végpontjának beszerzéséhez.
 

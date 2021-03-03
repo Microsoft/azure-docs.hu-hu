@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan konfigurálhat szerepköralapú hozzáférés-v
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 03/02/2021
 ms.author: thweiss
-ms.openlocfilehash: 49bf67a6703147ed31279e7af8145192d996c1cb
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d83109f380a3044073cf2dd8d10f29027ebb9f41
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662473"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690906"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Szerepköralapú hozzáférés-vezérlés konfigurálása a Azure Cosmos DB-fiókhoz Azure Active Directoryhoz (előzetes verzió)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -101,6 +101,11 @@ A szerepkör-definíciók létrehozásakor a következőket kell megadnia:
     - `/` (fiók szintű),
     - `/dbs/<database-name>` (adatbázis-szint),
     - `/dbs/<database-name>/colls/<container-name>` (Container-Level).
+
+> [!NOTE]
+> Az alább ismertetett műveletek jelenleg a következő címen érhetők el:
+> - Azure PowerShell: [az. CosmosDB Version 2.0.1 – előzetes verzió](https://www.powershellgallery.com/packages/Az.CosmosDB/2.0.1-preview)
+> - Azure CLI: ["cosmosdb-Preview" bővítmény verziója 0.4.0](https://github.com/Azure/azure-cli-extensions/tree/master/src/cosmosdb-preview)
 
 ### <a name="using-azure-powershell"></a>Az Azure PowerShell használata
 
@@ -279,6 +284,11 @@ A szerepkör-definíciók létrehozása után társíthatja őket a HRE-identit�
 > [!NOTE]
 > Ha szerepkör-hozzárendelést szeretne létrehozni egy egyszerű szolgáltatáshoz, ügyeljen arra, hogy a **Azure Active Directory** portál panel **vállalati alkalmazások** szakaszában található **objektumazonosítót** használja.
 
+> [!NOTE]
+> Az alább ismertetett műveletek jelenleg a következő címen érhetők el:
+> - Azure PowerShell: [az. CosmosDB Version 2.0.1 – előzetes verzió](https://www.powershellgallery.com/packages/Az.CosmosDB/2.0.1-preview)
+> - Azure CLI: ["cosmosdb-Preview" bővítmény verziója 0.4.0](https://github.com/Azure/azure-cli-extensions/tree/master/src/cosmosdb-preview)
+
 ### <a name="using-azure-powershell"></a>Az Azure PowerShell használata
 
 Szerepkör társítása identitáshoz:
@@ -354,6 +364,12 @@ Ez a további információ a **DataPlaneRequests** -napló kategóriájában fol
 
 - `aadPrincipalId_g` Megjeleníti a kérelem hitelesítéséhez használt HRE-identitás résztvevő-AZONOSÍTÓját.
 - `aadAppliedRoleAssignmentId_g` Megjeleníti a kérés engedélyezésekor tiszteletben lévő [szerepkör-hozzárendelést](#role-assignments) .
+
+## <a name="limits"></a>Korlátok
+
+- Azure Cosmos DB-fiókkal akár 100 szerepkör-definíciót és 2 000 szerepkör-hozzárendelést is létrehozhat.
+- Az Azure AD-csoport feloldása jelenleg nem támogatott olyan identitások esetén, amelyek több mint 200 csoporthoz tartoznak.
+- Az Azure AD-jogkivonatot a rendszer jelenleg a Azure Cosmos DB szolgáltatásnak küldött egyes kérések fejlécében adja át, ami növeli a hasznos adatok teljes méretét.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 

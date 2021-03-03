@@ -1,22 +1,21 @@
 ---
 title: Network Performance Monitor megoldás-szolgáltatás kapcsolata – Azure Log Analytics
 description: A Network Performance Monitor Service connectivity monitor funkciójának használatával figyelheti a hálózati kapcsolatot bármely olyan végponthoz, amely nyitott TCP-porttal rendelkezik.
-ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: a980c0987106a80751a98c48dfc5780708e6f889
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a5b42e61af398e111b2014f3734a0011a4bee778
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573418"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734162"
 ---
 # <a name="service-connectivity-monitor"></a>Szolgáltatáskapcsolati monitor
 
 > [!IMPORTANT]
-> 2021. július 1-től nem lehet új teszteket felvenni egy meglévő munkaterületre, vagy új munkaterületet engedélyezni Network Performance Monitor. Továbbra is használhatja a 2021. július 1. előtt létrehozott teszteket. A szolgáltatás megszakadásának minimalizálásához a jelenlegi számítási [feladatokhoz telepítse át a teszteket Network Performance monitorról az](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) Azure Network Watcher új, 2024. február 29. előtti kapcsolódási figyelője felé.
+> 2021. július 1-től nem lehet új teszteket felvenni egy meglévő munkaterületre, vagy új munkaterületet engedélyezni Network Performance Monitor. Továbbra is használhatja a 2021. július 1. előtt létrehozott teszteket. A szolgáltatás megszakadásának minimalizálásához a jelenlegi számítási [feladatokhoz telepítse át a teszteket Network Performance monitorról az](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md) Azure Network Watcher új, 2024. február 29. előtti kapcsolódási figyelője felé.
 
 A [Network Performance monitor](network-performance-monitor.md) Service connectivity monitor funkciójának használatával figyelheti a hálózati kapcsolatot bármely olyan végponthoz, amely nyitott TCP-porttal rendelkezik. Ilyen végpontok közé tartoznak a webhelyek, az SaaS-alkalmazások, a Pásti-alkalmazások és az SQL-adatbázisok. 
 
@@ -137,4 +136,3 @@ Az USA-beli kormányzati Virginia régió esetében csak a DOD URL-címek beép�
 
 ## <a name="next-steps"></a>Következő lépések
 [Keresési naplók](../logs/log-query-overview.md) a hálózati teljesítményadatok részletes rekordjainak megtekintéséhez.
-

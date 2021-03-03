@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: bed9cd23abc96c51cad0a13e81ee0b64f0d433b6
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: a201274bf0c06382da790dd051bf5023337970b8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100012304"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723843"
 ---
 # <a name="remove-startstop-vms-during-off-hours-from-automation-account"></a>Start/Stop VMs during off-hours eltávolítása az Automation-fiókból
 
@@ -94,7 +94,7 @@ Az információk ellenőrzése és a fiók törlése után nyomon követheti a m
 
 ## <a name="delete-the-feature"></a>A szolgáltatás törlése
 
-Ha Start/Stop VMs during off-hours szeretne törölni az Automation-fiókból, hajtsa végre a következő lépéseket. Az Automation-fiók és Log Analytics munkaterület nem törlődik a folyamat részeként. Ha nem szeretné megtartani a Log Analytics munkaterületet, manuálisan kell törölnie. További információ a munkaterület törléséről: az [Azure log Analytics munkaterület törlése és helyreállítása](../azure-monitor/platform/delete-workspace.md).
+Ha Start/Stop VMs during off-hours szeretne törölni az Automation-fiókból, hajtsa végre a következő lépéseket. Az Automation-fiók és Log Analytics munkaterület nem törlődik a folyamat részeként. Ha nem szeretné megtartani a Log Analytics munkaterületet, manuálisan kell törölnie. További információ a munkaterület törléséről: az [Azure log Analytics munkaterület törlése és helyreállítása](../azure-monitor/logs/delete-workspace.md).
 
 1. Navigáljon az Automation-fiókjához, és a **kapcsolódó erőforrások** területen válassza a **csatolt munkaterület** lehetőséget.
 

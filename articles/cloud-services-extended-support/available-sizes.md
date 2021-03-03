@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: c3515b559ef647b9a043a04282b4edfc6e7fa9be
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: cd8011782d134031393731a29594d44aba41b2ef
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744398"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713303"
 ---
 # <a name="available-sizes-for-azure-cloud-services-extended-support"></a>Az Azure Cloud Services számára elérhető méretek (bővített támogatás)
 
@@ -21,15 +21,15 @@ Ez a cikk a Cloud Services (kiterjesztett támogatás) példányok számára el�
 
 | Termékváltozat-család |  ACU/mag | 
 |---|---|
-| [A5 – 7](https://docs.microsoft.com/azure/virtual-machines/sizes-previous-gen?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#a-series)| 100 |
-|[A8-A11](https://docs.microsoft.com/azure/virtual-machines/sizes-previous-gen?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#a-series---compute-intensive-instances) | 225* |
-|[Av2](https://docs.microsoft.com/azure/virtual-machines/av2-series) | 100 | 
-|[D](https://docs.microsoft.com/azure/virtual-machines/sizes-previous-gen?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#d-series) | 160 | 
-|[Dv2](https://docs.microsoft.com/azure/virtual-machines/dv2-dsv2-series) | 160 – 190 * |
-|[Dv3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series) | 160 – 190 * |
-|[Ev3](https://docs.microsoft.com/azure/virtual-machines/ev3-esv3-series) | 160 – 190 *
-|[G](https://docs.microsoft.com/azure/virtual-machines/sizes-previous-gen?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#g-series) | 180-240 * |
-|[H](https://docs.microsoft.com/azure/virtual-machines/h-series) | 290 - 300* | 
+| [A5 – 7](../virtual-machines/sizes-previous-gen.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#a-series)| 100 |
+|[A8-A11](../virtual-machines/sizes-previous-gen.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#a-series---compute-intensive-instances) | 225* |
+|[Av2](../virtual-machines/av2-series.md) | 100 | 
+|[D](../virtual-machines/sizes-previous-gen.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#d-series) | 160 | 
+|[Dv2](../virtual-machines/dv2-dsv2-series.md) | 160 – 190 * |
+|[Dv3](../virtual-machines/dv3-dsv3-series.md) | 160 – 190 * |
+|[Ev3](../virtual-machines/ev3-esv3-series.md) | 160 – 190 *
+|[G](../virtual-machines/sizes-previous-gen.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#g-series) | 180-240 * |
+|[H](../virtual-machines/h-series.md) | 290 - 300* | 
 
 >[!NOTE]
 > A * jelzésű ACU-értékek Intel® Turbo technológia használatával növelik a processzor órajelét, és ezáltal a teljesítményt. A növekedés mértéke a virtuális gép méretétől és terhelésétől, valamint az ugyanazon a gazdagépen futó számítási feladatoktól függően eltérő lehet.
@@ -51,14 +51,14 @@ Egy meglévő szerepkör méretének módosításához módosítsa a virtuálisg
 
 ## <a name="get-a-list-of-available-sizes"></a>Az elérhető méretek listájának beolvasása 
 
-Az elérhető méretek listájának lekéréséhez tekintse meg az [erőforrás-SKU-lista](https://docs.microsoft.com/rest/api/compute/resourceskus/list) lehetőséget, és alkalmazza a következő szűrőket:
+Az elérhető méretek listájának lekéréséhez tekintse meg az [erőforrás-SKU-lista](/rest/api/compute/resourceskus/list) lehetőséget, és alkalmazza a következő szűrőket:
 
 
 `ResourceType = virtualMachines ` <br>
 `VMDeploymentTypes = PaaS `
 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 - Tekintse át a Cloud Services [üzembe helyezésének előfeltételeit](deploy-prerequisite.md) (kiterjesztett támogatás).
 - Tekintse át a Cloud Servicesra vonatkozó [gyakori kérdéseket](faq.md) (kiterjesztett támogatás).
 - A [Azure Portal](deploy-portal.md), a [PowerShell](deploy-powershell.md), a [sablon](deploy-template.md) vagy a [Visual Studio](deploy-visual-studio.md)használatával üzembe helyezhet egy felhőalapú szolgáltatást (kiterjesztett támogatás).

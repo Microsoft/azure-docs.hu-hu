@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 02/07/2021
-ms.openlocfilehash: 8de92e1f64389824e02882c02a860e9731a62b25
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: df165b83a6635fbcf72c94a4d16cbdf16c337636
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100617435"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713592"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics munkaterület-adatexportálás Azure Monitorban (előzetes verzió)
 Log Analytics munkaterület-adatexportálás Azure Monitor lehetővé teszi, hogy folyamatosan exportálja a Log Analytics munkaterület kijelölt tábláiból származó adatokat egy Azure Storage-fiókba vagy az Azure-Event Hubsba az összegyűjtött adatok alapján. Ez a cikk részletesen ismerteti ezt a funkciót, valamint az adatexportálás konfigurálásának lépéseit a munkaterületeken.
@@ -40,9 +40,11 @@ Log Analytics munkaterület-adatok exportálásával folyamatosan exportálhatja
 - Ha az adatexportálási szabály nem támogatott táblát tartalmaz, a művelet sikeres lesz, de a tábla mindaddig nem exportálja az összes adatimportálást, amíg a tábla nem támogatott lesz. 
 - Ha az adatexportálási szabály olyan táblát tartalmaz, amely nem létezik, a hiba miatt sikertelen lesz ```Table <tableName> does not exist in the workspace``` .
 - A Log Analytics munkaterület a következők kivételével bármely régióban lehet:
-  - Észak-Svájc
-  - Nyugat-Svájc
   - Azure Government-régiók
+  - Nyugat-Japán
+  - Dél-Brazília délkeleti régiója
+  - Kelet-Norvégia
+  - Észak-Egyesült Arab
 - Létrehozhat két exportálási szabályt egy munkaterületen – a-ben egy szabály lehet az Event hub és egy szabály a Storage-fiókhoz.
 - A célként megadott Storage-fióknak vagy az Event hub-nek ugyanabban a régióban kell lennie, mint a Log Analytics munkaterületnek.
 - Az exportálandó táblázatok neve nem lehet hosszabb 60 karakternél egy Storage-fióknál, és legfeljebb 47 karakterből állhat az Event hub-ban. A hosszú névvel rendelkező táblákat a rendszer nem exportálja.
@@ -72,6 +74,9 @@ Log Analytics adatexportálás írási blobokat írhat a nem módosítható tár
 
 ### <a name="event-hub"></a>Eseményközpont
 A rendszer közel valós időben küldi el az adatait az Event hub számára, mivel Azure Monitor. A rendszer minden olyan adattípushoz létrehoz egy Event hub *-* t, amelyet a név és a tábla neve után exportál. Például a *SecurityEvent* tábla egy *am-SecurityEvent* nevű Event hub számára fog eljuttatni. Ha azt szeretné, hogy az exportált adatai egy adott esemény központhoz jussanak, vagy ha olyan névvel rendelkezik, amely meghaladja az 47 karakteres korlátot, akkor megadhatja a saját Event hub-nevét, és exportálhatja a megadott táblák összes adatait.
+
+> [!IMPORTANT]
+> A [támogatott esemény-hubok száma a névtérben 10](../../event-hubs/event-hubs-quotas#common-limits-for-all-tiers). Ha több mint 10 táblázatot exportál, adja meg a saját Event hub-nevét az összes tábla exportálásához az Event hub-ba. 
 
 Szempontok:
 1. Az "alapszintű" Event hub SKU támogatja a kisebb méretű események [korlátját](../../event-hubs/event-hubs-quotas.md#basic-vs-standard-tiers) , és a munkaterület egyes naplói túllépik azt, és el is lehet dobni. Javasoljuk, hogy a "standard" vagy a "dedikált" Event hub legyen az Exportálás célhelye.

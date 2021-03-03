@@ -1,15 +1,15 @@
 ---
 title: 'Rövid útmutató: új szabályzat-hozzárendelés a Pythonban'
 description: Ebben a rövid útmutatóban a Python használatával hozzon létre egy Azure Policy-hozzárendelést a nem megfelelő erőforrások azonosításához.
-ms.date: 10/14/2020
+ms.date: 03/02/2021
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: aa67b3a2bae2beb62daa6e64871411ee760f802b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: e600f97dafdd1040c22b6e4d9e333f638334b663
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832197"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742330"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-python"></a>Gyors útmutató: szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához a Python használatával
 
@@ -40,7 +40,7 @@ Ahhoz, hogy a Python működjön a Azure Policyval, a könyvtárat hozzá kell a
    az login
    ```
 
-1. A kívánt Python-környezetben telepítse a szükséges kódtárakat az Azure Resource Graph számára:
+1. A kiválasztható Python-környezetben telepítse a szükséges kódtárakat a Azure Policyhoz:
 
    ```bash
    # Add the Python library for Python
@@ -56,7 +56,7 @@ Ahhoz, hogy a Python működjön a Azure Policyval, a könyvtárat hozzá kell a
    > [!NOTE]
    > Ha a Python telepítve van az összes felhasználó számára, akkor ezeket a parancsokat emelt szintű konzolról kell futtatni.
 
-1. Ellenőrizze, hogy telepítve vannak-e a kódtárak. `azure-mgmt-policyinsights`**0.5.0** vagy magasabbnak kell lennie, vagy 9.0.0 vagy magasabbnak kell lennie `azure-mgmt-resource` , és **9.0.0** `azure-cli-core` legalább **2.5.0** -nek kell lennie.
+1. Ellenőrizze, hogy telepítve vannak-e a kódtárak. `azure-mgmt-policyinsights`**0.5.0** vagy magasabbnak kell lennie, vagy 9.0.0 vagy magasabbnak kell lennie `azure-mgmt-resource` , és  `azure-cli-core` legalább **2.5.0** -nek kell lennie.
 
    ```bash
    # Check each installed library
@@ -96,7 +96,7 @@ Hozzárendelés részletei:
 - **policy_definition_id** – a házirend-definíció elérési útja, amely alapján létrehozza a hozzárendelést. Ebben az esetben ez a házirend-definíciós _virtuális gépek azonosítója, amelyek nem használnak felügyelt lemezeket_. Ebben a példában a házirend-definíció beépített, és az elérési út nem tartalmaz felügyeleti csoportot vagy előfizetési adatokat.
 - **hatókör** – a hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrásokat vagy erőforrásokat kíván érvényesíteni. Egy felügyeleti csoportból egy adott erőforrásra terjedhet. Ügyeljen arra, hogy a `{scope}` következő minták egyikét cserélje le:
   - Felügyeleti csoport: `/providers/Microsoft.Management/managementGroups/{managementGroup}`
-  - Előfizetés `/subscriptions/{subscriptionId}`
+  - Előfizetés: `/subscriptions/{subscriptionId}`
   - Erőforráscsoport: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}`
   - Erőforrás `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]`
 - **description (Leírás** ) – mélyebb magyarázat arról, hogy mit tesz a szabályzat, vagy miért van hozzárendelve ehhez a hatókörhöz.

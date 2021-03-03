@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: bc80b7dfd433911ef13906db38f59a76827db258
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: e527cf5fa6a7caaeaf56ea19d684dd0830d5ca8a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905281"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708679"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>A Azure Maps Indoor Maps modul használata
 
@@ -67,7 +67,7 @@ const subscriptionKey = "<Your Azure Maps Primary Subscription Key>";
 
 const map = new atlas.Map("map-id", {
   //use your facility's location
-  center: [-122.13315, 47.63637],
+  center: [-122.13203, 47.63645],
   //or, you can use bounds: [# west, # south, # east, # north] and replace # with your map's bounds
   style: "blank",
   view: 'Auto',
@@ -84,24 +84,24 @@ const map = new atlas.Map("map-id", {
 A csempék beltéri tilesets és térképes stílusának betöltéséhez a *beltéri kezelőt* kell létrehoznia. Hozza létre a *Indoor Managert* a *Térkép objektum* és a megfelelő hozzáadásával `tilesetId` . Ha támogatni szeretné a [dinamikus leképezések stílusát](indoor-map-dynamic-styling.md), meg kell adnia a következőt: `statesetId` . A `statesetId` változó neve megkülönbözteti a kis-és nagybetűket. A kódnak a JavaScripthez hasonlóan kell lennie.
 
 ```javascript
-const tilesetId = "";
-const statesetId = "";
+const tilesetId = "<tilesetId>";
+const statesetId = "<statesetId>";
 
 const indoorManager = new atlas.indoor.IndoorManager(map, {
-    tilesetId: "<tilesetId>",
-    statesetId: "<statesetId>" // Optional
+    tilesetId: tilesetId,
+    statesetId: statesetId // Optional
 });
 ```
 
 Az Ön által megadott állapotadatok lekérdezésének engedélyezéséhez meg kell adnia a `statesetId` és a hívást `indoorManager.setDynamicStyling(true)` . Az állapotadatok lekérdezése lehetővé teszi dinamikus tulajdonságok *vagy állapotok* állapotának dinamikus frissítését. Például egy olyan szolgáltatás, mint a szoba, a dinamikus tulajdonság (*állapot*) nevű lehet `occupancy` . Előfordulhat, hogy az alkalmazás a vizualizáción belüli változást tükröző *állapotra* vonatkozó módosításokat kíván lekérdezni. Az alábbi kód bemutatja, hogyan engedélyezheti az állapot-lekérdezéseket:
 
 ```javascript
-const tilesetId = "";
-const statesetId = "";
+const tilesetId = "<tilesetId>";
+const statesetId = "<statesetId>";
 
 const indoorManager = new atlas.indoor.IndoorManager(map, {
-    tilesetId: "<tilesetId>",
-    statesetId: "<statesetId>" // Optional
+    tilesetId: tilesetId,
+    statesetId: statesetId // Optional
 });
 
 if (statesetId.length > 0) {
@@ -218,9 +218,9 @@ A fájlnak most az alábbi HTML-hez hasonlóan kell kinéznie.
         });
 
         const indoorManager = new atlas.indoor.IndoorManager(map, {
-          levelControl, //level picker
-          tilesetId,
-          statesetId, //optional
+          levelControl: levelControl, //level picker
+          tilesetId: tilesetId,
+          statesetId: statesetId // Optional
         });
 
         if (statesetId.length > 0) {
@@ -244,6 +244,8 @@ A fájlnak most az alábbi HTML-hez hasonlóan kell kinéznie.
 Ha szeretné megtekinteni a beltéri térképet, töltse be azt egy webböngészőbe. Az alábbi képen láthatóhoz hasonlónak kell lennie. Ha a lépcsőház funkcióra kattint, a *szint választó* megjelenik a jobb felső sarokban.
 
   ![beltéri Térkép képe](media/how-to-use-indoor-module/indoor-map-graphic.png)
+
+[Lásd: élő bemutató](https://azuremapscodesamples.azurewebsites.net/?sample=Creator%20indoor%20maps)
 
 ## <a name="next-steps"></a>Következő lépések
 

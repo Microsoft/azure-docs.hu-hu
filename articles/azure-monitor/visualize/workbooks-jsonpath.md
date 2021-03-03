@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
-ms.openlocfilehash: e0be5523cb3846760644d0c81b06d5caa5a35378
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 142853f0d5ed787d0b7aaee1bb118a001f144227
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100616768"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722925"
 ---
 # <a name="how-to-use-jsonpath-to-transform-json-data-in-workbooks"></a>JSON-adatfájlok átalakítása a JSONPath használatával a munkafüzetekbe
 
@@ -22,7 +22,7 @@ A munkafüzetek számos forrásból származó adatok lekérdezésére képesek.
 
 A JSONPath a JSON lekérdezési nyelve, amely az XML XPath-hoz hasonló. Az XPath-hoz hasonlóan a JSONPath lehetővé teszi, hogy a JSON-struktúraből kinyerje az adatgyűjtést és a szűrést.
 
-A JSONPath-átalakítás használatával a munkafüzet szerzője táblázatos struktúrába konvertálhatja a JSON-t. A tábla ezután felhasználható a [munkafüzetek vizualizációinak](../platform/workbooks-overview.md#visualizations)ábrázolására.
+A JSONPath-átalakítás használatával a munkafüzet szerzője táblázatos struktúrába konvertálhatja a JSON-t. A tábla ezután felhasználható a [munkafüzetek vizualizációinak](./workbooks-overview.md#visualizations)ábrázolására.
 
 ## <a name="using-jsonpath"></a>A JSONPath használata
 
@@ -84,5 +84,5 @@ Tegyük fel, hogy a fenti JSON-objektumot az áruház leltárának ábrázolása
 ![ Lekérdezési tétel szerkesztése JSON-adatforrással és a JSON-elérésiút eredményének formátumával](./media/workbooks-jsonpath/query-jsonpath.png)
 
 ## <a name="next-steps"></a>Következő lépések
-- [Munkafüzetek áttekintése](../platform/workbooks-overview.md)
+- [Munkafüzetek áttekintése](./workbooks-overview.md)
 - [Csoportok Azure Monitor munkafüzetekben](workbooks-groups.md)

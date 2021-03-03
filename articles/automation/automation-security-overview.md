@@ -4,14 +4,14 @@ description: Ez a cikk áttekintést nyújt Azure Automation fiók hitelesítés
 keywords: automation-biztonság, automation biztonságossá tétele; automation-hitelesítés
 services: automation
 ms.subservice: process-automation
-ms.date: 02/01/2021
+ms.date: 02/26/2021
 ms.topic: conceptual
-ms.openlocfilehash: e3ed14a0845d90a1b9b951dd5175acf6233f8718
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: c559a81b17b92f48b2d51b7c2d26325d6a1b1cca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99254999"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708900"
 ---
 # <a name="automation-account-authentication-overview"></a>Az Automation-fiókok hitelesítésének áttekintése
 
@@ -44,6 +44,8 @@ Ha többet szeretne megtudni a Azure Resource Manager és a klasszikus üzemi mo
 >A Azure Cloud Solution Provider (CSP) előfizetések csak a Azure Resource Manager modellt támogatják. A nem Azure Resource Manager szolgáltatások nem érhetők el a programban. Ha CSP-előfizetést használ, a klasszikus Azure-beli futtató fiók nem jön létre, de létrejön az Azure-beli futtató fiók. A CSP-előfizetésekkel kapcsolatos további tudnivalókért tekintse meg a [CSP-előfizetésekben elérhető szolgáltatások](/azure/cloud-solution-provider/overview/azure-csp-available-services)című témakört.
 
 Amikor létrehoz egy Automation-fiókot, a futtató fiók alapértelmezés szerint egy időben jön létre. Ha úgy döntött, hogy nem hozza létre az Automation-fiókkal együtt, akkor azt egy későbbi időpontban is létrehozhatja. A klasszikus Azure-beli futtató fiók nem kötelező, és külön jön létre, ha klasszikus erőforrásokat kell kezelnie.
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RWwtF3]
 
 ### <a name="run-as-account"></a>Futtató fiók
 

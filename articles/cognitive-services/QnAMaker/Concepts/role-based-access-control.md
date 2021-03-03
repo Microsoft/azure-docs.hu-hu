@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: c411250f7d850e56c9c54c27e888cba8f3acfece
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 5d5a580e2b7be4699933b43687dcf164bf8f4a4a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522206"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700082"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>Együttműködés más szerzőkkel és szerkesztőkkel
 
@@ -25,7 +25,7 @@ Ez az Azure RBAC szolgáltatás a következőket tartalmazza:
 * A szerzők és szerkesztők gyorsan hozzáadhatók az erőforrás összes tudásbázisához, mivel a vezérlő az erőforrás szintjén van, nem pedig a Tudásbázis szintjén.
 
 > [!NOTE]
-> Ügyeljen arra, hogy adjon hozzá egy egyéni altartományt az erőforráshoz. Az [Egyéni altartománynak](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains) alapértelmezés szerint jelen kell lennie, de ha nem, akkor adja hozzá
+> Ügyeljen arra, hogy adjon hozzá egy egyéni altartományt az erőforráshoz. Az [Egyéni altartománynak](../../cognitive-services-custom-subdomains.md) alapértelmezés szerint jelen kell lennie, de ha nem, akkor adja hozzá
 
 ## <a name="access-is-provided-by-a-defined-role"></a>A hozzáférést egy meghatározott szerepkör adta meg
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 266dc5d62f6224495075546528ad71d806d415ac
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: a23c492d4a81703c0dc6612928a56b5b31d52cae
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903445"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726315"
 ---
 # <a name="implement-dynamic-styling-for-creator-preview-indoor-maps"></a>Dinamikus stílus implementálása a Creator (előzetes) beltéri térképeken
 
@@ -54,11 +54,11 @@ map.events.add("click", function(e){
 
     var features = map.layers.getRenderedShapes(e.position, "indoor");
 
-    var result = features.reduce(function (ids, feature) {
-        if (feature.layer.id == "indoor_unit_office") {
+    features.forEach(function (feature) {
+        if (feature.layer.id == 'indoor_unit_office') {
             console.log(feature);
         }
-    }, []);
+    });
 });
 ```
 
@@ -78,7 +78,7 @@ A következő szakaszban az Office kihasználtsági *állapotát* állíthatja b
     https://atlas.microsoft.com/featureState/state?api-version=1.0&statesetID={statesetId}&featureID=UNIT26&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-3. A **post** kérelem **fejlécében** állítsa a következőre `Content-Type` : `application/json` . A **post** kérelem **törzsében** írja be a következő JSON-t a szolgáltatás frissítéseivel. A frissítés csak akkor lesz mentve, ha a közzétett időbélyegző az előző szolgáltatás állapotának frissítési kérelmében a szolgáltatáshoz használt időbélyegző után van megadva `ID` . Adja át a "foglalt" `keyName` értéket az értékének frissítéséhez.
+3. A **post** kérelem **fejlécében** állítsa a következőre `Content-Type` : `application/json` . A **post** kérelem **törzsében** írja be a következő nyers JSON-t a szolgáltatás frissítéseivel. A frissítés csak akkor lesz mentve, ha a közzétett időbélyegző az előző szolgáltatás állapotának frissítési kérelmében a szolgáltatáshoz használt időbélyegző után van megadva `ID` . Adja át a "foglalt" `keyName` értéket az értékének frissítéséhez.
 
     ```json
     {
@@ -108,9 +108,11 @@ A következő szakaszban az Office kihasználtsági *állapotát* állíthatja b
 
 ### <a name="visualize-dynamic-styles-on-a-map"></a>Dinamikus stílusok megjelenítése térképeken
 
-A böngészőben korábban megnyitott webalkalmazásnak most már tükröznie kell a Térkép funkcióinak frissített állapotát. `UNIT27`a (151) zöld színűnek kell lennie, és `UNIT26` (157) piros színnel kell megjelennie.
+A böngészőben korábban megnyitott webalkalmazásnak most már tükröznie kell a Térkép funkcióinak frissített állapotát. `UNIT27`a (142) zöld színűnek kell lennie, és `UNIT26` (143) piros színnel kell megjelennie.
 
 ![Szabad hely a zöld és a foglalt helyiségben vörös színnel](./media/indoor-map-dynamic-styling/room-state.png)
+
+[Lásd: élő bemutató](https://azuremapscodesamples.azurewebsites.net/?sample=Creator%20indoor%20maps)
 
 ## <a name="next-steps"></a>Következő lépések
 

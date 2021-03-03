@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: 52bf42434640dc965999895549b4fa12a139dcce
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 306298e4338665ef52add7f46d6da8675c97c3e2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999603"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716550"
 ---
 # <a name="find-results-in-bing-search-by-using-azure-logic-apps"></a>Találatok keresése a Bing Searchban Azure Logic Apps használatával
 
@@ -52,11 +52,11 @@ Ha már létezik a kapcsolatai, adja meg a szükséges információkat az trigge
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | Keresési lekérdezés | Yes | <*Keresés – szavak*> | Adja meg a használni kívánt keresési kulcsszavakat. |
-   | Piaci | Yes | <*területi beállítás*> | A keresés területi beállítása. Az alapértelmezett érték az "en-US", de választhat egy másik értéket is. |
-   | Biztonságos Keresés | Yes | <*keresési szint*> | A felnőtt tartalom kizárásának szűrési szintje. Az alapértelmezett érték a "mérsékelt", de egy másik szint van kiválasztva. |
-   | Darabszám | No | <*eredmények – darabszám*> | A megadott számú eredmény visszaadása. Az alapértelmezett érték 20, de egy másik értéket is megadhat. A visszaadott eredmények tényleges száma a megadott számnál kisebb lehet. |
-   | Eltolás | No | <*Kihagyás – érték*> | A kihagyni kívánt eredmények száma az eredmények visszaadása előtt |
+   | Keresési lekérdezés | Igen | <*Keresés – szavak*> | Adja meg a használni kívánt keresési kulcsszavakat. |
+   | Piaci | Igen | <*területi beállítás*> | A keresés területi beállítása. Az alapértelmezett érték az "en-US", de választhat egy másik értéket is. |
+   | Biztonságos Keresés | Igen | <*keresési szint*> | A felnőtt tartalom kizárásának szűrési szintje. Az alapértelmezett érték a "mérsékelt", de egy másik szint van kiválasztva. |
+   | Darabszám | Nem | <*eredmények – darabszám*> | A megadott számú eredmény visszaadása. Az alapértelmezett érték 20, de egy másik értéket is megadhat. A visszaadott eredmények tényleges száma a megadott számnál kisebb lehet. |
+   | Eltolás | Nem | <*Kihagyás – érték*> | A kihagyni kívánt eredmények száma az eredmények visszaadása előtt |
    |||||
 
    Például:
@@ -103,11 +103,11 @@ A műveletek listából válassza ki a kívánt műveletet.
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | Keresési lekérdezés | Yes | <*Keresés – kifejezés*> | Adjon meg egy kifejezést az trigger eredményeinek lekérdezéséhez. A dinamikus tartalom lista mezői közül választhat, vagy létrehozhat egy kifejezést a Kifejezésszerkesztő használatával. |
-   | Piaci | Yes | <*területi beállítás*> | A keresés területi beállítása. Az alapértelmezett érték az "en-US", de választhat egy másik értéket is. |
-   | Biztonságos Keresés | Yes | <*keresési szint*> | A felnőtt tartalom kizárásának szűrési szintje. Az alapértelmezett érték a "mérsékelt", de egy másik szint van kiválasztva. |
-   | Darabszám | No | <*eredmények – darabszám*> | A megadott számú eredmény visszaadása. Az alapértelmezett érték 20, de egy másik értéket is megadhat. A visszaadott eredmények tényleges száma a megadott számnál kisebb lehet. |
-   | Eltolás | No | <*Kihagyás – érték*> | A kihagyni kívánt eredmények száma az eredmények visszaadása előtt |
+   | Keresési lekérdezés | Igen | <*Keresés – kifejezés*> | Adjon meg egy kifejezést az trigger eredményeinek lekérdezéséhez. A dinamikus tartalom lista mezői közül választhat, vagy létrehozhat egy kifejezést a Kifejezésszerkesztő használatával. |
+   | Piaci | Igen | <*területi beállítás*> | A keresés területi beállítása. Az alapértelmezett érték az "en-US", de választhat egy másik értéket is. |
+   | Biztonságos Keresés | Igen | <*keresési szint*> | A felnőtt tartalom kizárásának szűrési szintje. Az alapértelmezett érték a "mérsékelt", de egy másik szint van kiválasztva. |
+   | Darabszám | Nem | <*eredmények – darabszám*> | A megadott számú eredmény visszaadása. Az alapértelmezett érték 20, de egy másik értéket is megadhat. A visszaadott eredmények tényleges száma a megadott számnál kisebb lehet. |
+   | Eltolás | Nem | <*Kihagyás – érték*> | A kihagyni kívánt eredmények száma az eredmények visszaadása előtt |
    |||||
 
    Tegyük fel például, hogy azokat az eredményeket szeretné használni, amelyek kategóriájának neve tartalmazza a "Tech" szót.
@@ -150,9 +150,9 @@ A műveletek listából válassza ki a kívánt műveletet.
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | Kapcsolat neve | Yes | <*kapcsolattípus*> | A kapcsolódáshoz létrehozandó név |
-   | API-verzió | Yes | <*API-Version*> | Alapértelmezés szerint a Bing Search API verziója az aktuális verzióra van beállítva. Szükség szerint a korábbi verziót is kiválaszthatja. |
-   | API-kulcs | Yes | <*API-kulcs*> | A korábban kapott Bing Search API-kulcs. Ha nem rendelkezik kulccsal, szerezze be az [API-kulcsot](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). |  
+   | Kapcsolat neve | Igen | <*kapcsolattípus*> | A kapcsolódáshoz létrehozandó név |
+   | API-verzió | Igen | <*API-Version*> | Alapértelmezés szerint a Bing Search API verziója az aktuális verzióra van beállítva. Szükség szerint a korábbi verziót is kiválaszthatja. |
+   | API-kulcs | Igen | <*API-kulcs*> | A korábban kapott Bing Search API-kulcs. Ha nem rendelkezik kulccsal, szerezze be az [API-kulcsot](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). |  
    |||||  
 
    Például:
@@ -165,7 +165,7 @@ A műveletek listából válassza ki a kívánt műveletet.
 
 A technikai részleteket, például az eseményindítókat, a műveleteket és a korlátozásokat az összekötő hencegő fájlja ismerteti, lásd az [összekötő hivatkozási oldalát](/connectors/bingsearch/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése
 

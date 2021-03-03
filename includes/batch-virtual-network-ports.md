@@ -13,18 +13,16 @@ ms.tgt_pltfrm: na
 ms.date: 01/13/2021
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: 08e7463f4657b2ae5d6da1017c14226e97af7605
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: c625253585cc99c035852b8b9042f939284bad19
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165739"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101751039"
 ---
 ### <a name="general-requirements"></a>Általános követelmények
 
 * A virtuális hálózatnak a Batch-fiókkal megegyező előfizetésben és régióban kell lennie.
-
-* A virtuális hálózatot használó készletnek legfeljebb 4096 csomópontja lehet.
 
 * A készlethez meghatározott alhálózatnak elegendő hozzá nem rendelt IP-címmel kell rendelkeznie ahhoz, hogy helyet tudjon adni a készlethez kijelölt számú virtuális gépnek. Ez a szám a készlet `targetDedicatedNodes` és `targetLowPriorityNodes` tulajdonságának összege. Ha az alhálózaton nincs elegendő hozzá nem rendelt IP-cím, akkor a készlet részlegesen lefoglalja a számítási csomópontokat, és átméretezési hiba következik be.
 
@@ -67,23 +65,29 @@ Nem kell megadnia a NSG a virtuális hálózat alhálózatának szintjén, mert 
 
 Csak akkor konfigurálja a bejövő forgalmat a 3389-es porton (Windows) vagy a 22-es porton (Linux) keresztül, ha engedélyeznie kell a számítási csomópontok külső forrásból való távoli elérését. Linux rendszeren előfordulhat, hogy engedélyezni kell a 22-es portra vonatkozó szabályokat, ha többpéldányos, bizonyos MPI-futtatókörnyezetekkel rendelkező feladatok támogatására van szüksége. E portok forgalmának engedélyezése nem feltétlenül szükséges a készletezett számítási csomópontok használhatóságához.
 
+> [!WARNING]
+> A Batch szolgáltatás IP-címei idővel módosulhatnak. Ezért javasoljuk, hogy használja a `BatchNodeManagement` szolgáltatás címkéjét (vagy egy regionális változatot) az alábbi táblázatokban jelzett NSG-szabályokhoz. Kerülje a NSG-szabályok feltöltését adott batch szolgáltatás IP-címeivel.
+
 **Bejövő biztonsági szabályok**
 
 | Forrás IP-címek | Forrás szolgáltatáscímke | Forrásportok | Cél | Célportok | Protokoll | Műveletek |
 | --- | --- | --- | --- | --- | --- | --- |
-| N/A | `BatchNodeManagement` [Szolgáltatáscímke](../articles/virtual-network/network-security-groups-overview.md#service-tags) (regionális változat használata esetén, a Batch-fiókkal megegyező régióban) | * | Bármelyik | 29876-29877 | TCP | Engedélyezés |
+| N/A | `BatchNodeManagement`[szolgáltatás címkéje](../articles/virtual-network/network-security-groups-overview.md#service-tags) (ha regionális változatot használ, a Batch-fiókkal megegyező régióban) | * | Bármelyik | 29876-29877 | TCP | Engedélyezés |
 | Felhasználók forrás IP-címei a számítási csomópontok és/vagy egy számítási csomópont alhálózatának távoli eléréséhez a Linux többpéldányos feladatai esetében, amennyiben szükséges. | N/A | * | Bármelyik | 3389 (Windows), 22 (Linux) | TCP | Engedélyezés |
-
-> [!WARNING]
-> A Batch szolgáltatás IP-címei idővel módosulhatnak. Ezért erősen ajánlott a `BatchNodeManagement` NSG-szabályokhoz használni a szolgáltatási címkét (vagy a regionális változatot). Kerülje a NSG-szabályok feltöltését adott batch szolgáltatás IP-címeivel.
 
 **Kimenő biztonsági szabályok**
 
 | Forrás | Forrásportok | Cél | Cél szolgáltatáscímkéje | Célportok | Protokoll | Műveletek |
 | --- | --- | --- | --- | --- | --- | --- |
 | Bármelyik | * | [Szolgáltatáscímke](../articles/virtual-network/network-security-groups-overview.md#service-tags) | `Storage` (regionális változat használata esetén, a Batch-fiókkal megegyező régióban) | 443 | TCP | Engedélyezés |
+| Bármelyik | * | [Szolgáltatáscímke](../articles/virtual-network/network-security-groups-overview.md#service-tags) | `BatchNodeManagement` (regionális változat használata esetén, a Batch-fiókkal megegyező régióban) | 443 | TCP | Engedélyezés |
+
+Ahhoz, hogy a `BatchNodeManagement` számítási csomópontok, például a Feladatkezelő-feladatok esetében a Batch szolgáltatáshoz lépjen kapcsolatba, a kimenő érték szükséges.
 
 ### <a name="pools-in-the-cloud-services-configuration"></a>Készletek a Cloud Services konfigurációjában
+
+> [!WARNING]
+> A Cloud Service-konfigurációs készletek elavultak. Használja helyette a virtuális gépek konfigurációs készleteit.
 
 **Támogatott virtuális hálózatok** – Csak a klasszikus virtuális hálózatok
 

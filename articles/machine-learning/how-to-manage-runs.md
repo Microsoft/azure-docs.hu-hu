@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 12/04/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: ec006636ed7e975b696aa32300b32089e3209bb5
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 3eaab31d3948e41a216eaa402c2a11e470a6545d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600472"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691501"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>A betanítási futtatások elindítása, figyelése és megszakítása a Pythonban
 
@@ -112,17 +112,7 @@ A következő elemekre lesz szüksége:
         > További példák a runconfig-fájlokra: [https://github.com/MicrosoftDocs/pipelines-azureml/](https://github.com/MicrosoftDocs/pipelines-azureml/) .
     
         További információ: [az ml Run Submit-script](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
-    
-    # <a name="studio"></a>[Studio](#tab/azure-studio)
-    
-    A következő lépések végrehajtásával elindíthatja a folyamat elküldését a tervezőben:
-    
-    1. Állítsa be a folyamat alapértelmezett számítási célját.
-    
-    1. Válassza a **Futtatás** lehetőséget a folyamat vászon tetején.
-    
-    1. Válasszon ki egy kísérletet a folyamat futásának csoportosításához.
-    
+
     ---
 
 * Futtatás állapotának figyelése
@@ -183,24 +173,128 @@ A következő elemekre lesz szüksége:
     
     # <a name="studio"></a>[Studio](#tab/azure-studio)
     
-    A kísérlethez tartozó aktív futtatások számának megtekintése a Studióban.
+    A futtatások megtekintése a Studióban: 
     
-    1. Navigáljon a **kísérletek** szakaszhoz.
+    1. Navigáljon a **kísérletek** lapra.
     
-    1. Válasszon ki egy kísérletet.
+    1. Válassza ki az **összes kísérletet** egy kísérlet összes futtatásának megtekintéséhez, vagy válassza a **minden Futtatás** lehetőséget a munkaterületen elküldött összes Futtatás megtekintéséhez.
     
-        A kísérlet oldalon láthatja az aktív számítási célok számát és az egyes futtatások időtartamát. 
+        A **minden Futtatás** lapon megadhatja a futtatások listáját címkék, kísérletek, számítási cél alapján, és így jobban rendszerezheti és kihasználhatja a munkáját.  
     
-    1. Testreszabhatja a kísérletet a futtatások összehasonlításához, diagramok hozzáadásához vagy szűrők alkalmazásához való kiválasztásával. Ezeket a módosításokat **Egyéni nézetként** mentheti, így könnyen visszatérhet a munkájához. A munkaterület-engedélyekkel rendelkező felhasználók módosíthatják vagy megtekinthetik az egyéni nézetet. Emellett megoszthatja az egyéni nézetet másokkal az URL-cím böngészőben történő másolásával és beillesztésével.  
+    1. Az oldal testreszabásához válassza a futtatások összevetése, diagramok hozzáadása vagy szűrők alkalmazása lehetőséget. Ezeket a módosításokat **Egyéni nézetként** mentheti, így könnyen visszatérhet a munkájához. A munkaterület-engedélyekkel rendelkező felhasználók módosíthatják vagy megtekinthetik az egyéni nézetet. Emellett a **megosztás nézet** kiválasztásával megoszthatja az egyéni nézetet a csapattagokkal a bővített együttműködéshez.   
     
         :::image type="content" source="media/how-to-manage-runs/custom-views.gif" alt-text="Képernyőfelvétel: egyéni nézet létrehozása":::
     
-    1. Válasszon egy adott futtatási számot.
-    
-    1. A **naplók** lapon diagnosztikai és hibanapló találhatók a folyamat futtatásához.
+    1. A futtatási naplók megtekintéséhez válasszon ki egy adott futtatást, majd a **kimenetek és naplók** lapon keresse meg a futtatásához szükséges diagnosztikai és hibanapló-naplókat.
     
     ---
+
+## <a name="run-description"></a>Futtatás leírása 
+
+Egy futtatási Leírás hozzáadható egy futtatáshoz, amely további kontextust és információkat biztosít a futtatáshoz. Ezeket a leírásokat a Runs (futtatások) listában is megkeresheti, és a Futtatás leírását oszlopként is hozzáadhatja a futtatások listájában. 
+
+Navigáljon a Futtatás **részletei** lapra, és válassza a Szerkesztés vagy a ceruza ikont a futtatásához szükséges leírások hozzáadásához, szerkesztéséhez vagy törléséhez. A futtatások listájának módosításához mentse a módosításokat a meglévő egyéni nézetbe vagy egy új egyéni nézetbe. A Markdown formátuma támogatott a futtatási leírások esetében, amelyek lehetővé teszik a képek beágyazását és mély összekapcsolását az alább látható módon.
+
+:::image type="content" source="media/how-to-manage-runs/rundescription.gif" alt-text="Képernyőkép: Futtatás leírásának létrehozása"::: 
     
+
+## <a name="tag-and-find-runs"></a>Címke és keresés futtatása
+
+Azure Machine Learning a tulajdonságok és címkék segítségével rendszerezheti és lekérdezheti a futtatásokat a fontos információkhoz.
+
+* Tulajdonságok és Címkék hozzáadása
+
+    # <a name="python"></a>[Python](#tab/python)
+    
+    Ha kereshető metaadatokat szeretne hozzáadni a futtatásokhoz, használja a [`add_properties()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueadd-properties-properties-) metódust. A következő kód például hozzáadja a `"author"` tulajdonságot a futtatáshoz:
+    
+    ```Python
+    local_run.add_properties({"author":"azureml-user"})
+    print(local_run.get_properties())
+    ```
+    
+    A tulajdonságok nem változtathatók meg, ezért állandó rekordot hoznak létre naplózási célokra. A következő kódrészlet egy hibát eredményez, mivel a tulajdonság értékeként már hozzáadva lett az `"azureml-user"` `"author"` előző kódban:
+    
+    ```Python
+    try:
+        local_run.add_properties({"author":"different-user"})
+    except Exception as e:
+        print(e)
+    ```
+    
+    A tulajdonságoktól eltérően a címkék változhatnak. A kísérlet felhasználói számára kereshető és hasznos információk hozzáadásához használja a [`tag()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truetag-key--value-none-) metódust.
+    
+    ```Python
+    local_run.tag("quality", "great run")
+    print(local_run.get_tags())
+    
+    local_run.tag("quality", "fantastic run")
+    print(local_run.get_tags())
+    ```
+    
+    Hozzáadhat egyszerű karakterlánc-címkéket is. Ha ezek a címkék a címke szótárában kulcsként jelennek meg, akkor a értékük a következő: `None` .
+    
+    ```Python
+    local_run.tag("worth another look")
+    print(local_run.get_tags())
+    ```
+    
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+    
+    > [!NOTE]
+    > A CLI használatával csak címkéket adhat hozzá vagy frissíthet.
+    
+    Címke hozzáadásához vagy frissítéséhez használja a következő parancsot:
+    
+    ```azurecli-interactive
+    az ml run update -r runid --add-tag quality='fantastic run'
+    ```
+    
+    További információ: [az ml Run Update](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-update).
+    
+    # <a name="studio"></a>[Studio](#tab/azure-studio)
+    
+    Hozzáadhat, szerkeszthet vagy törölhet címkéket a studióból. Navigáljon a Futtatás **részletei** lapra, és válassza a Szerkesztés vagy a ceruza ikont a futtatott címkék hozzáadásához, szerkesztéséhez vagy törléséhez. A címkéket a futtatások listája lapról is megkeresheti és szűrheti.
+    
+    :::image type="content" source="media/how-to-manage-runs/run-tags.gif" alt-text="Képernyőkép: a futtatási Címkék hozzáadása, szerkesztése vagy törlése":::
+    
+    ---
+
+* Lekérdezés tulajdonságai és címkék
+
+    A kísérletek futtatásával lekérdezheti az adott tulajdonságokkal és címkékkel egyező futtatások listáját.
+
+    # <a name="python"></a>[Python](#tab/python)
+    
+    ```Python
+    list(exp.get_runs(properties={"author":"azureml-user"},tags={"quality":"fantastic run"}))
+    list(exp.get_runs(properties={"author":"azureml-user"},tags="worth another look"))
+    ```
+    
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+    
+    Az Azure CLI támogatja a [JMESPath](http://jmespath.org) -lekérdezéseket, amelyek a tulajdonságok és címkék alapján szűrhetik a futtatásokat. Ha JMESPath-lekérdezést szeretne használni az Azure CLI-vel, a paraméterrel kell megadnia `--query` . Az alábbi példák a tulajdonságokat és a címkéket használó lekérdezéseket mutatják be:
+    
+    ```azurecli-interactive
+    # list runs where the author property = 'azureml-user'
+    az ml run list --experiment-name experiment [?properties.author=='azureml-user']
+    # list runs where the tag contains a key that starts with 'worth another look'
+    az ml run list --experiment-name experiment [?tags.keys(@)[?starts_with(@, 'worth another look')]]
+    # list runs where the author property = 'azureml-user' and the 'quality' tag starts with 'fantastic run'
+    az ml run list --experiment-name experiment [?properties.author=='azureml-user' && tags.quality=='fantastic run']
+    ```
+    
+    Az Azure CLI eredményeinek lekérdezésével kapcsolatos további információkért lásd: az [Azure CLI-parancs kimenetének lekérdezése](/cli/azure/query-azure-cli?preserve-view=true&view=azure-cli-latest).
+    
+    # <a name="studio"></a>[Studio](#tab/azure-studio)
+    
+    1. Navigáljon a  **minden Futtatás** listához.
+    
+    1. A keresősáv használatával szűrheti a futtatási metaadatokat, például a címkéket, a leírásokat, a kísérletek nevét és a küldő nevét. A címkék szűrő is használható a címkék szűréséhez. 
+    
+    ---
+
+
 ## <a name="cancel-or-fail-runs"></a>Megszakítás vagy sikertelen Futtatás
 
 Ha hibát észlel, vagy ha a futtatása túl sokáig tart, megszakíthatja a futtatást.
@@ -345,101 +439,6 @@ root_run(current_child_run).log("MyMetric", f"Data from child run {current_child
 
 ```
 
-
-## <a name="tag-and-find-runs"></a>Címke és keresés futtatása
-
-Azure Machine Learning a tulajdonságok és címkék segítségével rendszerezheti és lekérdezheti a futtatásokat a fontos információkhoz.
-
-* Tulajdonságok és Címkék hozzáadása
-
-    # <a name="python"></a>[Python](#tab/python)
-    
-    Ha kereshető metaadatokat szeretne hozzáadni a futtatásokhoz, használja a [`add_properties()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueadd-properties-properties-) metódust. A következő kód például hozzáadja a `"author"` tulajdonságot a futtatáshoz:
-    
-    ```Python
-    local_run.add_properties({"author":"azureml-user"})
-    print(local_run.get_properties())
-    ```
-    
-    A tulajdonságok nem változtathatók meg, ezért állandó rekordot hoznak létre naplózási célokra. A következő kódrészlet egy hibát eredményez, mivel a tulajdonság értékeként már hozzáadva lett az `"azureml-user"` `"author"` előző kódban:
-    
-    ```Python
-    try:
-        local_run.add_properties({"author":"different-user"})
-    except Exception as e:
-        print(e)
-    ```
-    
-    A tulajdonságoktól eltérően a címkék változhatnak. A kísérlet felhasználói számára kereshető és hasznos információk hozzáadásához használja a [`tag()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truetag-key--value-none-) metódust.
-    
-    ```Python
-    local_run.tag("quality", "great run")
-    print(local_run.get_tags())
-    
-    local_run.tag("quality", "fantastic run")
-    print(local_run.get_tags())
-    ```
-    
-    Hozzáadhat egyszerű karakterlánc-címkéket is. Ha ezek a címkék a címke szótárában kulcsként jelennek meg, akkor a értékük a következő: `None` .
-    
-    ```Python
-    local_run.tag("worth another look")
-    print(local_run.get_tags())
-    ```
-    
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-    
-    > [!NOTE]
-    > A CLI használatával csak címkéket adhat hozzá vagy frissíthet.
-    
-    Címke hozzáadásához vagy frissítéséhez használja a következő parancsot:
-    
-    ```azurecli-interactive
-    az ml run update -r runid --add-tag quality='fantastic run'
-    ```
-    
-    További információ: [az ml Run Update](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-update).
-    
-    # <a name="studio"></a>[Studio](#tab/azure-studio)
-    
-    Megtekintheti a tulajdonságokat és a címkéket a Studióban, de nem módosíthatja azokat.
-    
-    ---
-
-* Lekérdezés tulajdonságai és címkék
-
-    A kísérletek futtatásával lekérdezheti az adott tulajdonságokkal és címkékkel egyező futtatások listáját.
-
-    # <a name="python"></a>[Python](#tab/python)
-    
-    ```Python
-    list(exp.get_runs(properties={"author":"azureml-user"},tags={"quality":"fantastic run"}))
-    list(exp.get_runs(properties={"author":"azureml-user"},tags="worth another look"))
-    ```
-    
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-    
-    Az Azure CLI támogatja a [JMESPath](http://jmespath.org) -lekérdezéseket, amelyek a tulajdonságok és címkék alapján szűrhetik a futtatásokat. Ha JMESPath-lekérdezést szeretne használni az Azure CLI-vel, a paraméterrel kell megadnia `--query` . Az alábbi példák a tulajdonságokat és a címkéket használó lekérdezéseket mutatják be:
-    
-    ```azurecli-interactive
-    # list runs where the author property = 'azureml-user'
-    az ml run list --experiment-name experiment [?properties.author=='azureml-user']
-    # list runs where the tag contains a key that starts with 'worth another look'
-    az ml run list --experiment-name experiment [?tags.keys(@)[?starts_with(@, 'worth another look')]]
-    # list runs where the author property = 'azureml-user' and the 'quality' tag starts with 'fantastic run'
-    az ml run list --experiment-name experiment [?properties.author=='azureml-user' && tags.quality=='fantastic run']
-    ```
-    
-    Az Azure CLI eredményeinek lekérdezésével kapcsolatos további információkért lásd: az [Azure CLI-parancs kimenetének lekérdezése](/cli/azure/query-azure-cli?preserve-view=true&view=azure-cli-latest).
-    
-    # <a name="studio"></a>[Studio](#tab/azure-studio)
-    
-    1. Navigáljon a **folyamatok** szakaszhoz.
-    
-    1. A keresősáv használatával szűrheti a folyamatokat a címkék, a leírások, a kísérletezési nevek és a küldő neve alapján.
-    
-    ---
-
 ## <a name="example-notebooks"></a>Példajegyzetfüzetek
 
 A következő jegyzetfüzetek a cikkben ismertetett fogalmakat mutatják be:
@@ -448,7 +447,7 @@ A következő jegyzetfüzetek a cikkben ismertetett fogalmakat mutatják be:
 
 * A Azure Machine Learning SDK-val való futtatásával kapcsolatos további információkért tekintse meg a [futtatási jegyzetfüzet kezelése](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/manage-runs/manage-runs.ipynb)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha szeretné megtudni, hogyan naplózhatja a kísérletek mérőszámait, tekintse meg a következő témakört: a [betanítási mérőszámok](how-to-track-experiments.md).
 * Ha szeretné megismerni, hogyan figyelheti Azure Machine Learning erőforrásait és naplóit, tekintse meg a [figyelés Azure Machine learning](monitor-azure-machine-learning.md).

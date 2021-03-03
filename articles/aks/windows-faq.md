@@ -5,12 +5,12 @@ description: A Windows Server Node-készletek és az alkalmazások számítási 
 services: container-service
 ms.topic: article
 ms.date: 10/12/2020
-ms.openlocfilehash: b20ebe82556bb4db6844511ec0953f4d4e75f383
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: cc5a5ec2bbfb64a1e787277bf67579bad0543cd6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100574729"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739576"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>Gyakori kérdések a Windows Server Node-készletekről az AK-ban
 
@@ -54,6 +54,8 @@ A Windows-csomópontok legújabb javításait a [csomópont-készlet frissítés
 
 A Windows Node-készletekkel rendelkező AK-fürtöknek az Azure CNI (Advanced) hálózatkezelési modellt kell használniuk. A Kubenet (alapszintű) hálózatkezelés nem támogatott. További információ a hálózati modellekkel kapcsolatos különbségekről: az [AK-beli alkalmazások hálózati fogalmai][azure-network-models]. Az Azure CNI hálózati modellje további tervezést és szempontokat igényel az IP-címek kezeléséhez. Az Azure-CNI tervezésével és megvalósításával kapcsolatos további információkért lásd: [Az Azure CNI hálózatkezelésének konfigurálása az AK-ban][configure-azure-cni].
 
+Az AK-fürtökön futó Windows-csomópontok esetében a rendszer alapértelmezés szerint engedélyezi a [közvetlen kiszolgáló visszaküldését (DSR)][dsr] , ha a tarka engedélyezve van.
+
 ## <a name="is-preserving-the-client-source-ip-supported"></a>Az ügyfél forrás-IP-címének megőrzése támogatott?
 
 A Windows-csomópontok jelenleg nem támogatják az [ügyfél forrás IP-címének megőrzését][client-source-ip] .
@@ -91,7 +93,7 @@ A nevet legfeljebb 6 (hat) karakterrel kell megtartania. Ez az AK jelenlegi korl
 
 ## <a name="are-all-features-supported-with-windows-nodes"></a>Támogatottak-e a Windows-csomópontok összes funkciója?
 
-A hálózati házirendek és a kubenet a Windows-csomópontok esetében jelenleg nem támogatottak.
+A Windows-csomópontok jelenleg nem támogatják a Kubenet.
 
 ## <a name="can-i-run-ingress-controllers-on-windows-nodes"></a>Futtathatok bejövő vezérlőket Windows-csomópontokon?
 
@@ -197,3 +199,4 @@ A Windows Server-tárolók az AK-ban való megkezdéséhez [hozzon létre egy ol
 [managed-identity]: use-managed-identity.md
 [hybrid-vms]: ../virtual-machines/windows/hybrid-use-benefit-licensing.md
 [resource-groups]: faq.md#why-are-two-resource-groups-created-with-aks
+[dsr]: ../load-balancer/load-balancer-multivip-overview.md#rule-type-2-backend-port-reuse-by-using-floating-ip

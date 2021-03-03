@@ -2,43 +2,43 @@
 title: Az Azure Monitor-riasztások áttelepítésének ismertetése
 description: Ismerje meg, hogyan működik a riasztások áttelepítése és a problémák elhárítása.
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 02/14/2021
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 0c4c36c61b73e5c5625d02ae581d186e7dc2c9de
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fdac8015cf87ffa0a25a8558668329a8cd82327f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100614465"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737188"
 ---
 # <a name="understand-migration-options-to-newer-alerts"></a>Az új riasztások áttelepítési lehetőségeinek megismerése
 
-A klasszikus riasztások [kimaradnak a nyilvános](../platform/monitoring-classic-retirement.md) Felhőbeli felhasználók számára, bár az új riasztásokat még nem támogató erőforrások esetében is korlátozott mértékben használják. A fennmaradó riasztások áttelepítése, [Azure Government a felhő](../../azure-government/documentation-government-welcome.md)és az [Azure China 21Vianet](https://docs.azure.cn/)hamarosan új dátummal fog bejelenteni.
+A klasszikus riasztások [kimaradnak](./monitoring-classic-retirement.md) a nyilvános Felhőbeli felhasználók számára, bár a használat továbbra is korlátozott a **2021**-ig. A Azure Government Cloud és az Azure China 21Vianet klasszikus riasztásai a **2024. február 29**-én törlődnek.
 
-Ez a cikk azt ismerteti, hogyan működik a manuális áttelepítési és az önkéntes áttelepítési eszköz, amelyet a rendszer a fennmaradó riasztási szabályok áttelepítésére használ. Emellett ismerteti a gyakori problémákra vonatkozó jogorvoslatokat is.
+Ez a cikk azt ismerteti, hogyan működik a manuális áttelepítési és az önkéntes áttelepítési eszköz, amelyet a rendszer a fennmaradó riasztási szabályok áttelepítésére használ. Emellett a gyakori problémák megoldásait is ismerteti.
 
 > [!IMPORTANT]
-> Az áttelepítés nem érinti a tevékenységek naplójának riasztásait (a szolgáltatás állapotával kapcsolatos riasztásokat is beleértve) és a naplózási riasztásokat. Az áttelepítés csak az [itt](../platform/monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform)ismertetett klasszikus riasztási szabályokra vonatkozik.
+> Az áttelepítés nem érinti a tevékenységek naplójának riasztásait (a szolgáltatás állapotával kapcsolatos riasztásokat is beleértve) és a naplózási riasztásokat. Az áttelepítés csak az [itt](./monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform)ismertetett klasszikus riasztási szabályokra vonatkozik.
 
 > [!NOTE]
 > Ha a klasszikus riasztási szabályok érvénytelenek, azaz [elavult metrikákkal](#classic-alert-rules-on-deprecated-metrics) vagy törölt erőforrásokkal rendelkeznek, nem lesznek áttelepítve, és a szolgáltatás kivonása után nem lesznek elérhetők.
 
 ## <a name="manually-migrating-classic-alerts-to-newer-alerts"></a>Klasszikus riasztások manuális áttelepítése újabb riasztásokra
 
-Azok az ügyfelek, akik a fennmaradó riasztások manuális áttelepítését érdeklik, már az alábbi részekben is megtehetik. Ezek a csoportok olyan mérőszámokat is definiálnak, amelyeket az erőforrás-szolgáltató visszavon, és jelenleg nem lehet közvetlenül áttelepíteni.
+Azok az ügyfelek, akik a fennmaradó riasztások manuális áttelepítését érdeklik, már az alábbi részekben is megtehetik. Olyan metrikákat is tartalmaz, amelyeket kivontak, ezért nem lehet közvetlenül áttelepíteni.
 
 ### <a name="guest-metrics-on-virtual-machines"></a>Vendég metrikák a virtuális gépeken
 
-Ahhoz, hogy új metrikai riasztásokat hozzon létre a vendég metrikák esetében, a vendég metrikákat a Azure Monitor egyéni metrikák tárolójába kell elküldeni. Kövesse ezeket az utasításokat a Azure Monitor fogadó diagnosztikai beállításokban való engedélyezéséhez:
+Ahhoz, hogy új metrikai riasztásokat hozzon létre a vendég metrikák esetében, a vendég metrikákat el kell juttatni a Azure Monitor naplók tárolójába. Riasztások létrehozásához kövesse az alábbi utasításokat:
 
-- [Vendég metrikák engedélyezése Windows rendszerű virtuális gépekhez](../platform/collect-custom-metrics-guestos-resource-manager-vm.md)
-- [Vendég mérőszámok engedélyezése Linux rendszerű virtuális gépekhez](../platform/collect-custom-metrics-linux-telegraf.md)
+- [A vendég metrikák gyűjteményének engedélyezése a log analyticsbe](../agents/agent-data-sources.md)
+- [Naplóbeli riasztások létrehozása a Azure Monitorban](./alerts-log.md)
 
-A lépések elvégzése után létrehozhat új metrikai riasztásokat a vendég metrikák használatával. Az új metrikai riasztások létrehozása után törölheti a klasszikus riasztásokat is.
+A vendég mérőszámok és riasztások összegyűjtésének több lehetősége is van. további [információ](../agents/agents-overview.md).
 
-### <a name="storage-account-metrics"></a>Tárfiókok mérőszámai
+### <a name="storage-and-classic-storage-account-metrics"></a>Storage-és klasszikus Storage-fiók metrikái
 
 A rendszer minden klasszikus riasztást áttelepíthet a tárolási fiókokon, kivéve a riasztásokat a következő metrikák esetén:
 
@@ -65,39 +65,22 @@ Cosmos DB metrikákkal kapcsolatos klasszikus riasztások áttelepíthetők, kiv
 - Konzisztenciaszint
 - Http-2xx
 - Http-3xx
-- Http 400
-- HTTP 401
-- Belső kiszolgálóhiba
 - Percenként felhasznált maximális RUPM
 - Maximális RUs másodpercenként
-- Sikertelen kérelmek Mongo száma
-- Sikertelen kérelmek Mongo törlése
-- Mongo – sikertelen kérelmek beszúrása
-- Egyéb sikertelen kérelmek Mongo
 - Mongo egyéb kérések díja
 - Mongo egyéb kérelmek gyakorisága
-- Mongo-lekérdezés sikertelen kérelmei
-- Mongo-frissítési sikertelen kérelmek
 - Megfigyelt olvasási késés
 - Megfigyelt írási késés
 - Szolgáltatás rendelkezésre állása
 - Tárkapacitás
-- Szabályozott kérelmek
-- Összes kérelem
 
-Másodpercenkénti kérelmek másodpercenkénti száma, a konzisztencia szintje, a percenként felhasznált maximális RUPM, a másodpercenkénti maximális mennyiség, a megfigyelt olvasási késés, a megfigyelt írási késés, a tárolási kapacitás jelenleg nem érhető el az [új rendszeren](../platform/metrics-supported.md#microsoftdocumentdbdatabaseaccounts).
+A másodpercenkénti kérelmek másodpercenkénti száma, a Konzisztenciai szint, a percenként felhasználható maximális RUPM, a másodpercenkénti maximális mennyiség, a megfigyelt olvasási késés, a megfigyelt írási késés és a tárolási kapacitás jelenleg nem érhető el az [új rendszeren](../essentials/metrics-supported.md#microsoftdocumentdbdatabaseaccounts).
 
-A kérelmek metrikái, például a http-2xx, a http-3xx, a http 400, a HTTP 401, a belső kiszolgálóhiba, a szolgáltatás rendelkezésre állása, a szabályozott kérelmek és az összes kérelem nem települ át, mert a kérések számlálása eltérő a klasszikus metrikák és az új metrikák között. Ezeket a riasztásokat manuálisan újra létre kell hozni a küszöbértékekkel korrigálva.
-
-A sikertelen kérelmek Mongo tartozó riasztásokat több riasztásra kell bontani, mert nincs olyan kombinált metrika, amely ugyanazt a funkciót biztosítja. A küszöbértékeket megfelelően ki kell igazítani.
-
-### <a name="classic-compute-metrics"></a>Klasszikus számítási mérőszámok
-
-A klasszikus számítási metrikákkal kapcsolatos riasztásokat a rendszer nem telepíti át az áttelepítési eszköz használatával, mivel a klasszikus számítási erőforrások még nem támogatottak az új riasztásokkal. Az ilyen típusú új riasztások támogatása jelenleg nyilvános előzetes verzióban érhető el, és az ügyfelek a klasszikus riasztási szabályok alapján újra létrehozhatnak új egyenértékű riasztási szabályokat.
+A kérések mérőszámait, például a http-2xx, a http-3xx és a szolgáltatás rendelkezésre állását nem telepíti át a rendszer, mert a kérelmek számításának módja eltér a klasszikus metrikák és az új metrikák között. A metrikákkal kapcsolatos riasztásokat manuálisan újra létre kell hozni a küszöbértékekkel korrigálva.
 
 ### <a name="classic-alert-rules-on-deprecated-metrics"></a>Klasszikus riasztási szabályok elavult metrikák esetén
 
-Ezek a klasszikus riasztási szabályok a korábban támogatott metrikák esetében, de végül elavultak voltak. Előfordulhat, hogy az ügyfél kis hányada érvénytelen klasszikus riasztási szabályokat tartalmaz az ilyen mérőszámokra vonatkozóan. Mivel ezek a riasztási szabályok érvénytelenek, nem lesznek áttelepítve.
+A következő klasszikus riasztási szabályok a korábban támogatott metrikák, de végül elavultak. Előfordulhat, hogy az ügyfél kis hányada érvénytelen klasszikus riasztási szabályokat tartalmaz az ilyen mérőszámokra vonatkozóan. Mivel ezek a riasztási szabályok érvénytelenek, nem lesznek áttelepítve.
 
 | Erőforrás típusa| Elavult metrika (ek) |
 |-------------|----------------- |
@@ -112,16 +95,16 @@ Ezek a klasszikus riasztási szabályok a korábban támogatott metrikák eseté
 
 Az áttelepítési eszköz a klasszikus riasztási szabályokat egyenértékű új riasztási szabályokkal és műveleti csoportokkal alakítja át. A klasszikus riasztási szabályok többsége esetében az egyenértékű új riasztási szabályok ugyanazon a metrikán vannak, mint a `windowSize` és a `aggregationType` . Van azonban néhány klasszikus riasztási szabály olyan metrikák esetében, amelyek eltérő, egyenértékű metrikával rendelkeznek az új rendszeren. A klasszikus riasztások áttelepítésére az alábbi alapelvek érvényesek, kivéve, ha az alábbi szakaszban szerepel:
 
-- **Gyakoriság**: azt határozza meg, hogy egy klasszikus vagy új riasztási szabály milyen gyakran ellenőrizze a feltételt. A `frequency` klasszikus riasztási szabályokat a felhasználó nem konfigurálta, és minden erőforrástípus esetében 5 perc volt, kivéve azokat Application Insights összetevőket, amelyekhez 1 perc volt. Ezért az egyenértékű szabályok gyakorisága 5 perc és 1 perc is lehet.
+- **Gyakoriság**: azt határozza meg, hogy egy klasszikus vagy új riasztási szabály milyen gyakran ellenőrizze a feltételt. A `frequency` klasszikus riasztási szabályokat nem konfigurálhatja a felhasználó, és az összes erőforrástípus esetében mindig 5 perc volt. Az egyenértékű szabályok gyakorisága is 5 percre van állítva.
 - **Összesítés típusa**: meghatározza, hogy a metrika hogyan legyen összesítve az adott ablakban. A a `aggregationType` klasszikus riasztások és az új riasztások a legtöbb metrika esetében is megegyeznek. Bizonyos esetekben, mivel a metrika különbözik a klasszikus riasztások és az új riasztások, az egyenértékű `aggregationType` vagy a `primary Aggregation Type` mérőszámhoz megadott értéktől.
-- **Units**: a riasztást létrehozó metrika tulajdonsága. Egyes egyenértékű mérőszámok eltérő egységekkel rendelkeznek. A küszöbértéket szükség szerint korrigálni kell. Ha például az eredeti metrika másodperceket tartalmaz egységként, de az egyenértékű új metrika egységként Ezredmásodperctel rendelkezik, az eredeti küszöbértéket a 1000-es értékkel kell megszorozni, hogy az azonos viselkedést biztosítson.
-- **Ablak mérete**: meghatározza azt az ablakot, amely alatt a metrikai adatok összesítése történik a küszöbértékkel való összehasonlításhoz. A standard `windowSize` értékek, például a 5mins, a 15mins, a 30mins, a 1óra, a 3hours, a 6 óra, a 12 óra, 1 nap, az egyenértékű új riasztási szabály esetében nem történt változás. Más értékek esetén a legközelebb `windowSize` van kiválasztva a használathoz. A legtöbb ügyfél esetében ez a változás nem befolyásolja a változást. Az ügyfelek kis hányada esetében előfordulhat, hogy a küszöbértéket úgy kell megcsípni, hogy pontosan ugyanazt a viselkedést kapja.
+- **Units**: a riasztást létrehozó metrika tulajdonsága. Egyes egyenértékű mérőszámok eltérő egységekkel rendelkeznek. A küszöbértéket szükség szerint korrigálni kell. Ha például az eredeti metrika másodperceket tartalmaz egységként, de az egyenértékű új metrika egységként ezredmásodperctel rendelkezik, az eredeti küszöbértéket a 1000-es értékkel kell megszorozni, hogy az azonos viselkedést biztosítson.
+- **Ablak mérete**: meghatározza azt az ablakot, amely alatt a metrikai adatok összesítése történik a küszöbértékkel való összehasonlításhoz. Standard `windowSize` értékek, például 5 perc, 15 perc, 30 perc, 1 óra, 3 óra, 6 óra, 12 óra, 1 nap, az egyenértékű új riasztási szabály esetében nem történt változás. Más értékek esetén a legközelebbi `windowSize` használatban van. A legtöbb ügyfél esetében ennek a változásnak nincs hatása. Az ügyfelek kis hányada esetében előfordulhat, hogy a küszöbértéket úgy kell megcsípni, hogy pontosan ugyanazt a viselkedést kapja.
 
-A következő fejezetekben részletesen ismertetjük az új rendszer különböző, egyenértékű metrikával rendelkező mérőszámait. A klasszikus és az új riasztási szabályoknál változatlan maradó mérőszámok nem szerepelnek a felsorolásban. [Itt](../platform/metrics-supported.md)megtalálhatja az új rendszer által támogatott mérőszámok listáját.
+A következő fejezetekben részletesen ismertetjük az új rendszer különböző, egyenértékű metrikával rendelkező mérőszámait. A klasszikus és az új riasztási szabályok esetében változatlan maradó metrika nem szerepel a felsorolásban. [Itt](../essentials/metrics-supported.md)megtalálhatja az új rendszer által támogatott mérőszámok listáját.
 
-### <a name="microsoftstorageaccountsservices"></a>Microsoft. StorageAccounts/szolgáltatások
+### <a name="microsoftstoragestorageaccounts-and-microsoftclassicstoragestorageaccounts"></a>Microsoft. Storage/storageAccounts és Microsoft. ClassicStorage/storageAccounts
 
-A Storage-fiókokhoz, például a blobhoz, a táblához, a fájlokhoz és a várólistákhoz a következő metrikák az alábbi módon vannak leképezve az egyenértékű mérőszámokra:
+A Storage-fiókokhoz, például a blobhoz, a táblákhoz, a fájlokhoz és a várólistákhoz a következő metrikák a megfelelő mérőszámokra vannak leképezve az alábbi ábrán látható módon:
 
 | Metrika klasszikus riasztásokban | Egyenértékű metrika az új riasztásokban | Megjegyzések|
 |--------------------------|---------------------------------|---------|
@@ -156,46 +139,23 @@ A Storage-fiókokhoz, például a blobhoz, a táblához, a fájlokhoz és a vár
 | TotalIngress | Bejövő forgalom | |
 | TotalRequests | Tranzakciók | |
 
-### <a name="microsoftinsightscomponents"></a>Microsoft. bepillantások/összetevők
-
-Application Insights esetén az egyenértékű mérőszámok az alábbiak szerint jelennek meg:
-
-| Metrika klasszikus riasztásokban | Egyenértékű metrika az új riasztásokban | Megjegyzések|
-|--------------------------|---------------------------------|---------|
-| rendelkezésre állás. availabilityMetric. Value | availabilityResults/availabilityPercentage|   |
-| rendelkezésre állás. durationMetric. Value | availabilityResults/időtartam| Az eredeti küszöbértéket 1000-ként szorozzuk meg, mivel a klasszikus metrika egysége másodpercben van, és az új érték ezredmásodpercben van.  |
-| basicExceptionBrowser. Count | kivételek/böngésző|  `aggregationType`A "Sum" helyett használja a "Count" értéket. |
-| basicExceptionServer. Count | kivételek/kiszolgáló| `aggregationType`A "Sum" helyett használja a "Count" értéket.  |
-| clientPerformance. clientProcess. Value | browserTimings/processingDuration| Az eredeti küszöbértéket 1000-ként szorozzuk meg, mivel a klasszikus metrika egysége másodpercben van, és az új érték ezredmásodpercben van.  |
-| clientPerformance. networkConnection. Value | browserTimings/networkDuration|  Az eredeti küszöbértéket 1000-ként szorozzuk meg, mivel a klasszikus metrika egysége másodpercben van, és az új érték ezredmásodpercben van. |
-| clientPerformance. receiveRequest. Value | browserTimings/receiveDuration| Az eredeti küszöbértéket 1000-ként szorozzuk meg, mivel a klasszikus metrika egysége másodpercben van, és az új érték ezredmásodpercben van.  |
-| clientPerformance. SendRequest hívás. Value | browserTimings/sendDuration| Az eredeti küszöbértéket 1000-ként szorozzuk meg, mivel a klasszikus metrika egysége másodpercben van, és az új érték ezredmásodpercben van.  |
-| clientPerformance. Total. Value | browserTimings/totalDuration| Az eredeti küszöbértéket 1000-ként szorozzuk meg, mivel a klasszikus metrika egysége másodpercben van, és az új érték ezredmásodpercben van.  |
-| performanceCounter.available_bytes. Value | performanceCounters/memoryAvailableBytes|   |
-| performanceCounter.io_data_bytes_per_sec. Value | performanceCounters/processIOBytesPerSecond|   |
-| performanceCounter.number_of_exceps_thrown_per_sec. Value | performanceCounters/exceptionsPerSecond|   |
-| performanceCounter.percentage_processor_time_normalized. Value | performanceCounters/processCpuPercentage|   |
-| performanceCounter.percentage_processor_time. Value | performanceCounters/processCpuPercentage| A küszöbértéket megfelelő módon módosítani kell, mivel az eredeti metrika az összes mag esetében módosult, és az új metrika egy mag szerint van normalizálva. Az áttelepítési eszköz nem változtatja meg a küszöbértékeket.  |
-| performanceCounter.percentage_processor_total. Value | performanceCounters/processorCpuPercentage|   |
-| performanceCounter.process_private_bytes. Value | performanceCounters/processPrivateBytes|   |
-| performanceCounter.request_execution_time. Value | performanceCounters/requestExecutionTime|   |
-| performanceCounter.requests_in_application_queue. Value | performanceCounters/requestsInQueue|   |
-| performanceCounter.requests_per_sec. Value | performanceCounters/requestsPerSecond|   |
-| kérelem. időtartam | kérelmek/időtartam| Az eredeti küszöbértéket 1000-ként szorozzuk meg, mivel a klasszikus metrika egysége másodpercben van, és az új érték ezredmásodpercben van.  |
-| kérelem. arány | kérelmek/díjszabás|   |
-| requestFailed. Count | kérelmek/sikertelen| `aggregationType`A "Sum" helyett használja a "Count" értéket.   |
-| megtekintés. darabszám | Oldalmegtekintések/darabszám| `aggregationType`A "Sum" helyett használja a "Count" értéket.   |
-
 ### <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
 Cosmos DB esetén az egyenértékű mérőszámok az alábbiak szerint jelennek meg:
 
 | Metrika klasszikus riasztásokban | Egyenértékű metrika az új riasztásokban | Megjegyzések|
 |--------------------------|---------------------------------|---------|
-| AvailableStorage     |AvailableStorage|   |
+| AvailableStorage | AvailableStorage||
 | Adatok mérete | DataUsage| |
 | Dokumentumok száma | DocumentCount||
 | Index mérete | IndexUsage||
+| A szolgáltatás nem érhető el | ServiceAvailability||
+| TotalRequestUnits | TotalRequestUnits||
+| Szabályozott kérelmek | TotalRequests a "StatusCode" = "429" dimenzióval| Az "átlagos" összesítési típus ki van javítva a "Count" értékre.|
+| Belső kiszolgálóhibák | TotalRequests a "StatusCode" = "500"} dimenzióval| Az "átlagos" összesítési típus ki van javítva a "Count" értékre.|
+| HTTP 401 | TotalRequests a "StatusCode" = "401" dimenzióval| Az "átlagos" összesítési típus ki van javítva a "Count" értékre.|
+| Http 400 | TotalRequests a "StatusCode" = "400" dimenzióval| Az "átlagos" összesítési típus ki van javítva a "Count" értékre.|
+| Összes kérelem | TotalRequests| A "Max" összesítési típus ki van javítva a "Count" értékre.|
 | Mongo száma – kérelem díja| MongoRequestCharge a "CommandName" = "Count" dimenzióval||
 | Mongo száma | MongoRequestsCount a "CommandName" = "Count" dimenzióval||
 | Mongo-törlési kérés díja | MongoRequestCharge a "CommandName" = "Delete" dimenzióval||
@@ -205,12 +165,16 @@ Cosmos DB esetén az egyenértékű mérőszámok az alábbiak szerint jelennek 
 | Mongo-lekérdezési kérelem díja | MongoRequestCharge a "CommandName" = "Find" dimenzióval||
 | Mongo-lekérdezési kérelmek gyakorisága | MongoRequestsCount a "CommandName" = "Find" dimenzióval||
 | Mongo frissítési kérelmének díja | MongoRequestCharge a "CommandName" = "Update" dimenzióval||
-| A szolgáltatás nem érhető el| ServiceAvailability||
-| TotalRequestUnits | TotalRequestUnits||
+| Mongo – sikertelen kérelmek beszúrása | MongoRequestCount "CommandName" = "Insert" és "status" = "Failed"| Az "átlagos" összesítési típus ki van javítva a "Count" értékre.|
+| Mongo-lekérdezés sikertelen kérelmei | A MongoRequestCount "CommandName" = "Query" és "status" = "nem sikerült"| Az "átlagos" összesítési típus ki van javítva a "Count" értékre.|
+| Sikertelen kérelmek Mongo száma | MongoRequestCount "CommandName" = "Count" és "status" = "sikertelen"| Az "átlagos" összesítési típus ki van javítva a "Count" értékre.|
+| Mongo-frissítési sikertelen kérelmek | MongoRequestCount "CommandName" = "Update" és "status" = "sikertelen"| Az "átlagos" összesítési típus ki van javítva a "Count" értékre.|
+| Egyéb sikertelen kérelmek Mongo | MongoRequestCount "CommandName" = "other" és "status" = "sikertelen"| Az "átlagos" összesítési típus ki van javítva a "Count" értékre.|
+| Sikertelen kérelmek Mongo törlése | MongoRequestCount "CommandName" = "Delete" és "status" = "sikertelen"| Az "átlagos" összesítési típus ki van javítva a "Count" értékre.|
 
 ### <a name="how-equivalent-action-groups-are-created"></a>Az egyenértékű műveleti csoportok létrehozása
 
-A klasszikus riasztási szabályok a riasztási szabályhoz kötött e-mail-, webhook-, logikai alkalmazás-és runbook-műveletekkel rendelkeznek. Az új riasztási szabályok olyan műveleti csoportokat használnak, amelyek többször is felhasználhatók több riasztási szabályban. Az áttelepítési eszköz egyetlen műveleti csoportot hoz létre ugyanahhoz a műveletekhez, függetlenül attól, hogy hány riasztási szabály használja a műveletet. Az áttelepítési eszköz által létrehozott műveleti csoportok a következő elnevezési formátumot használják: "Migrated_AG *".
+A klasszikus riasztási szabályok a riasztási szabályhoz kötött e-mail-, webhook-, logikai alkalmazás-és runbook-műveletekkel rendelkeznek. Az új riasztási szabályok olyan műveleti csoportokat használnak, amelyek többször is felhasználhatók több riasztási szabályban. Az áttelepítési eszköz egyetlen műveleti csoportot hoz létre ugyanahhoz a művelethez, függetlenül attól, hogy hány riasztási szabály használja a műveletet. Az áttelepítési eszköz által létrehozott műveleti csoportok a következő elnevezési formátumot használják: "Migrated_AG *".
 
 > [!NOTE]
 > A klasszikus riasztások honosított e-maileket küldenek a klasszikus rendszergazdák helyi beállításai alapján, ha a klasszikus rendszergazdai szerepkörök bejelentésére szolgálnak. Az új riasztási e-maileket műveleti csoportokon keresztül küldik el, és csak angol nyelven érhetők el.
@@ -250,13 +214,13 @@ Az előfizetés klasszikus riasztási szabályainak legutóbbi változásai miat
 
 ### <a name="scope-lock-preventing-us-from-migrating-your-rules"></a>A hatókör-zárolás megakadályozza a szabályok áttelepítését
 
-A Migrálás részeként új metrikai riasztások és új műveleti csoportok jönnek létre, és a rendszer törli a klasszikus riasztási szabályokat. A hatókör-zárolás azonban megakadályozhatja az erőforrások létrehozását és törlését. A hatókör-zárolástól függően előfordulhat, hogy egy vagy több szabály nem telepíthető át. A probléma megoldásához távolítsa el az [áttelepítési eszközben](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)felsorolt előfizetés, erőforráscsoport vagy erőforrás hatókör-zárolását, és indítsa el újra az áttelepítést. A hatókör-zárolás nem tiltható le, és az áttelepítési folyamat időtartama alatt el kell távolítani. [További információ a hatóköri zárolások kezeléséről](../../azure-resource-manager/management/lock-resources.md#portal).
+A Migrálás részeként új metrikai riasztások és új műveleti csoportok jönnek létre, és a rendszer törli a klasszikus riasztási szabályokat. A hatókör-zárolás azonban megakadályozhatja az erőforrások létrehozását és törlését. A hatókör-zárolástól függően előfordulhat, hogy egy vagy több szabályt nem sikerült áttelepíteni. A probléma megoldásához távolítsa el az [áttelepítési eszközben](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)felsorolt előfizetés, erőforráscsoport vagy erőforrás hatókör-zárolását, és indítsa el újra az áttelepítést. A hatókör-zárolás nem tiltható le, és az áttelepítési folyamat során el kell távolítani. [További információ a hatóköri zárolások kezeléséről](../../azure-resource-manager/management/lock-resources.md#portal).
 
 ### <a name="policy-with-deny-effect-preventing-us-from-migrating-your-rules"></a>A "megtagadás" hatású szabályzat megakadályozza a szabályok áttelepítését
 
-A Migrálás részeként új metrikai riasztások és új műveleti csoportok jönnek létre, és a rendszer törli a klasszikus riasztási szabályokat. Egy [Azure Policy](../../governance/policy/index.yml) -hozzárendelés azonban megakadályozhatja, hogy erőforrásokat hozzon létre. A szabályzat-hozzárendeléstől függően előfordulhat, hogy egy vagy több szabály nem telepíthető át. A folyamatot blokkoló szabályzat-hozzárendelések az [áttelepítési eszközben](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)jelennek meg. Oldja meg a problémát a következők bármelyikével:
+A Migrálás részeként új metrikai riasztások és új műveleti csoportok jönnek létre, és a rendszer törli a klasszikus riasztási szabályokat. Egy [Azure Policy](../../governance/policy/index.yml) -hozzárendelés azonban megakadályozhatja, hogy erőforrásokat hozzon létre. A szabályzat-hozzárendeléstől függően előfordulhat, hogy egy vagy több szabályt nem sikerült áttelepíteni. A folyamatot blokkoló szabályzat-hozzárendelések az [áttelepítési eszközben](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)jelennek meg. Oldja meg a problémát a következők bármelyikével:
 
-- Az áttelepítési folyamat időtartamára vonatkozó előfizetések, erőforráscsoportok vagy egyedi erőforrások kizárása a szabályzat-hozzárendelésből. [További információ a házirendek Kizárási hatókörének kezeléséről](../../governance/policy/tutorials/create-and-manage.md#remove-a-non-compliant-or-denied-resource-from-the-scope-with-an-exclusion).
+- Az előfizetések, erőforráscsoportok vagy egyedi erőforrások kizárása az áttelepítési folyamat során a házirend-hozzárendelésből. [További információ a házirendek Kizárási hatókörének kezeléséről](../../governance/policy/tutorials/create-and-manage.md#remove-a-non-compliant-or-denied-resource-from-the-scope-with-an-exclusion).
 - Állítsa a "kényszerítési mód" lehetőséget a szabályzat-hozzárendelés **letiltásához** . [További információ a szabályzat-hozzárendelés enforcementMode tulajdonságáról](../../governance/policy/concepts/assignment-structure.md#enforcement-mode).
 - Azure Policy kivételt (előzetes verzió) állítson be az előfizetések, az erőforráscsoportok vagy az egyes erőforrások számára a szabályzat-hozzárendeléshez. [További információ a Azure Policy kivételek struktúrájáról](../../governance/policy/concepts/exemption-structure.md).
 - A "Letiltva", a "naplózás", a "Hozzáfűzés" vagy a "Modify" művelet hatásának eltávolítása vagy módosítása (amely például a hiányzó címkékkel kapcsolatos problémák megoldásához használható). [További információ a szabályzatok hatásának kezeléséről](../../governance/policy/concepts/definition-structure.md#policy-rule).

@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 0430f8efedbcefba551ce3ee81d0db8a654f5b13
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 882c9e50c344b792d70d09017aeca3a2874cb106
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100617128"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700745"
 ---
 # <a name="metric-chart-examples"></a>Metrikus diagram – példák 
 
-Az Azure platform [több mint ezer mérőszámot](../platform/metrics-supported.md)kínál, amelyek közül sok dimenziót tartalmaz. A [dimenzió szűrők](./metrics-charts.md)használatával a [felosztás](./metrics-charts.md), a diagramtípus szabályozása és a diagram beállításainak módosítása lehetővé teszi, hogy hatékony diagnosztikai nézeteket és irányítópultokat hozzon létre, amelyek betekintést nyújtanak az infrastruktúra és az alkalmazások állapotára. Ez a cikk néhány példát mutat be a [Metrikaböngésző](./metrics-charts.md) használatával felépíthető diagramokra, és ismerteti az egyes diagramok konfigurálásához szükséges lépéseket.
+Az Azure platform [több mint ezer mérőszámot](./metrics-supported.md)kínál, amelyek közül sok dimenziót tartalmaz. A [dimenzió szűrők](./metrics-charts.md)használatával a [felosztás](./metrics-charts.md), a diagramtípus szabályozása és a diagram beállításainak módosítása lehetővé teszi, hogy hatékony diagnosztikai nézeteket és irányítópultokat hozzon létre, amelyek betekintést nyújtanak az infrastruktúra és az alkalmazások állapotára. Ez a cikk néhány példát mutat be a [Metrikaböngésző](./metrics-charts.md) használatával felépíthető diagramokra, és ismerteti az egyes diagramok konfigurálásához szükséges lépéseket.
 
 Szeretné megosztani a nagyszerű diagramok példáit a világgal? Járuljon hozzá ehhez az oldalhoz a GitHubon, és ossza meg a saját diagramon megjelenő példákat!
 
@@ -54,4 +54,3 @@ A metrika-választóban válassza ki a Storage-fiókot és a **tranzakciók** me
 
 * Tudnivalók a Azure Monitor- [munkafüzetek](../visualize/workbooks-overview.md) használatáról
 * További információ a [metrika-kezelőről](metrics-charts.md)
-

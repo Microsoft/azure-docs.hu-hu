@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: c8d0ea43410b8d191d3d0b08c2f232bd72c80b20
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b86414758c3b644725e5aa29ca3b314f489508aa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101669630"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693526"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Az Azure hatáskörébe tartozó adatfeliratok automatikus címkézése
 
@@ -102,7 +102,10 @@ A MIP érzékenységi címkéjének az Azure hatáskörébe való kiterjesztés�
 
 **Az érzékenységi címkék kiterjesztése a hatáskörébe:**
 
-A Microsoft 365ban navigáljon a **Information Protection** lapra. A **címkézés kibővítése az eszközökre az Azure-ban**– válassza a **bekapcsolás** gombot, majd a megjelenő megerősítési párbeszédpanelen válassza az **Igen** lehetőséget.
+Az alábbi lépések lehetővé teszik, hogy az érzékenységi címkék elérhetők legyenek az Azure-ban való használatra, ahol az érzékenységi címkéket olyan eszközökre alkalmazhatja, mint például az SQL-oszlopok, az Azure-Blob Storage található fájlok és egyebek.
+
+1. A Microsoft 365ban navigáljon a **Information Protection** lapra. 
+1. A **címkézés kibővítése az eszközökre az Azure-ban**– válassza a **bekapcsolás** gombot, majd a megjelenő megerősítési párbeszédpanelen válassza az **Igen** lehetőséget.
 
 Például:
 

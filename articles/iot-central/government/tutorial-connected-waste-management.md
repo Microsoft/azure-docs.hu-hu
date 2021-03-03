@@ -7,12 +7,12 @@ ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 65245b3c4b7e18670682f7e9e890453e32337644
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: ff7cfb8c7aa8469111d4531da17c7cd184920f9b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820079"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727566"
 ---
 # <a name="tutorial-create-a-connected-waste-management-app"></a>Oktatóanyag: csatlakoztatott hulladékgazdálkodási alkalmazás létrehozása
 
@@ -21,12 +21,13 @@ Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre csatlakoztatott hul
 Pontosabban a következőket sajátíthatja el: 
 
 > [!div class="checklist"]
-> Az alkalmazás létrehozásához használja az Azure IoT Central *csatlakoztatott hulladékgazdálkodási* sablont.
-> Az operátor irányítópultjának megismerése és testreszabása. Fedezze fel a csatlakoztatott hulladékgyűjtő tároló eszköz sablonját.
-> Szimulált eszközök megismerése.
-> A szabályok megismerése és konfigurálása.
-> Feladatok konfigurálása.
-> Testre szabhatja az alkalmazás arculatát.
+> * Az alkalmazás létrehozásához használja az Azure IoT Central *csatlakoztatott hulladékgazdálkodási* sablont.
+> * Az operátor irányítópultjának megismerése és testreszabása. 
+> * Fedezze fel a csatlakoztatott hulladékgyűjtő tároló eszköz sablonját.
+> * Szimulált eszközök megismerése.
+> * A szabályok megismerése és konfigurálása.
+> * Feladatok konfigurálása.
+> * Testre szabhatja az alkalmazás arculatát.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

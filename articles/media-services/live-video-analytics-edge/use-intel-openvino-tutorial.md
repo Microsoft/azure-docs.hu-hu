@@ -4,12 +4,12 @@ description: Ebben az oktatóanyagban az Intel által biztosított AI-modell-kis
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: db018c5c8d8f3990fd465f4d586ef4dc70980542
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 68b5b7561cc31e156a745bcfb07e3203de10d425
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955716"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702215"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Oktatóanyag: élő videó elemzése a OpenVINO™ Model Server – AI bővítménnyel az Intel használatával 
 
@@ -88,11 +88,11 @@ Az előfeltételek részeként letöltötte a mintakód egy mappába. A mintaada
 
 1. Lépjen a *src/Cloud-to-Device-Console-app* mappába. Itt láthatja a *appsettings.js* fájlt, és néhány további fájlt:
 
-    * ***C2D-Console-app. csproj** _ – a Project fájl a Visual Studio Code-hoz.
-    _ ***operations.json** _ – azoknak a műveleteknek a listája, amelyeket futtatni kíván a program.
-    _ ***Program.cs** _ – a minta programkódja. Ez a kód:
+    * ***C2D-Console-app. csproj*** – a Project fájl a Visual Studio Code-hoz.
+    * ***operations.json*** – a program futtatásához használni kívánt műveletek listája.
+    * ***Program.cs*** – a minta programkódja. Ez a kód:
 
-        _ Betölti az alkalmazás beállításait.
+        * Betölti az alkalmazás beállításait.
         * Közvetlen metódusokat hív meg, amelyeket az élő videó Analytics IoT Edge modulban tesz elérhetővé. A modul segítségével elemezheti az élő videó streameket a [közvetlen metódusok](direct-methods.md)meghívásával.
         * Szünetelteti, hogy megvizsgálhatja a program kimenetét a **terminál** ablakban, és megvizsgálhatja a modul által a **kimeneti** ablakban generált eseményeket.
         * Közvetlen metódusokat hív meg az erőforrások törléséhez.
@@ -117,7 +117,7 @@ Az előfeltételek részeként letöltötte a mintakód egy mappába. A mintaada
 
     ![IoT Edge üzembe helyezési jegyzék előállítása](./media/use-intel-openvino-tutorial/generate-deployment-manifest.png)  
 
-    A manifest-fájl *deployment.yolov3.amd64.js* a *src/Edge/config* mappában jön létre.
+    A manifest-fájl *deployment.openvino.amd64.js* a *src/Edge/config* mappában jön létre.
 
 1. Ha befejezte a [mozgás észlelése és a kibocsátó események](detect-motion-emit-events-quickstart.md) rövid útmutatóját, ugorja át ezt a lépést. 
 

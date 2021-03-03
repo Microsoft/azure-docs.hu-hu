@@ -116,14 +116,8 @@
       href: 'https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html'
     - name: Díjszabás és korlátok
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/559960-content-moderator'
-    - name: Tudásbázis
-      href: 'https://cognitive.uservoice.com/knowledgebase/topics/132073-content-moderator'
     - name: Nyelvi támogatás
       href: language-support.md
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: Régiónkénti rendelkezésre állás
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Azure-ütemterv

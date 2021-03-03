@@ -1,19 +1,19 @@
 ---
 title: Az Azure Kubernetes Service (ak)-fürt üzembe helyezésének figyelése | Microsoft Docs
-description: Megtudhatja, hogyan engedélyezheti az előfizetésében már üzembe helyezett tárolók Azure Monitor az Azure Kubernetes Service-(ak-) fürtök figyelését.
+description: Ismerje meg, hogyan engedélyezheti az előfizetésében már üzembe helyezett Azure Kubernetes-szolgáltatási (ak-) fürtök figyelését.
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.custom: devx-track-terraform, devx-track-azurecli
-ms.openlocfilehash: 547c22e4d82aa728009a2fdb42f2c3b481b7a625
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e84e1c4ad3aa3950a433218255ccac3d91435231
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100620068"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717672"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>A már üzembe helyezett Azure Kubernetes Service-(ak-) fürt figyelésének engedélyezése
 
-Ez a cikk azt ismerteti, hogyan állíthat be Azure Monitor a tárolók számára az [Azure Kubernetes Service](../../aks/index.yml) -ben üzemeltetett felügyelt Kubernetes-fürtök figyelésére, amelyek már telepítve vannak az előfizetésében.
+Ez a cikk azt ismerteti, hogyan állítható be a tároló-bepillantást az előfizetésében már üzembe helyezett, az [Azure Kubernetes szolgáltatásban](../../aks/index.yml) üzemeltetett felügyelt Kubernetes-fürtök figyelésére.
 
 Engedélyezheti a már üzembe helyezett AK-fürtök figyelését a támogatott módszerek egyikével:
 
@@ -113,13 +113,13 @@ Ha az AK-fürt figyelését szeretné engedélyezni a Azure Monitor Azure Portal
 
 4. A nem figyelt fürtök listájában keresse meg a tárolót a listában, és kattintson az **Engedélyezés** gombra.
 
-5. Ha egy meglévő Log Analytics munkaterülettel rendelkezik, amely a fürttel azonos előfizetésben található, **Azure monitor a tárolók** lapon, válassza ki a kívánt elemet a legördülő listából.
+5. Ha már rendelkezik egy meglévő Log Analytics munkaterülettel ugyanabban az előfizetésben, mint a fürt, a bevezetéskor a **Container** bevezetése lapon válassza ki azt a legördülő listából.
     A lista előadja az alapértelmezett munkaterületet és helyet, amelyet az AK-tároló üzembe helyez az előfizetésben.
 
     ![AK-tárolók adatellenőrzésének engedélyezése](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >Ha új Log Analytics munkaterületet szeretne létrehozni a figyelési adatok fürtből való tárolásához, kövesse az [log Analytics munkaterület létrehozása](../learn/quick-create-workspace.md)című témakör utasításait. Ügyeljen arra, hogy a munkaterületet ugyanabban az előfizetésben hozza létre, amelyben az AK-tároló telepítve van.
+    >Ha új Log Analytics munkaterületet szeretne létrehozni a figyelési adatok fürtből való tárolásához, kövesse az [log Analytics munkaterület létrehozása](../logs/quick-create-workspace.md)című témakör utasításait. Ügyeljen arra, hogy a munkaterületet ugyanabban az előfizetésben hozza létre, amelyben az AK-tároló telepítve van.
 
 A figyelés engedélyezése után körülbelül 15 percet is igénybe vehet, mielőtt megtekintheti a fürthöz tartozó állapot mérőszámait.
 
@@ -137,13 +137,13 @@ Ha közvetlenül szeretné engedélyezni a figyelést a Azure Portal egyik AK-f�
 
 5. A Kubernetes szolgáltatás áttekintése lapon válassza a **figyelés-** információk elemet.
 
-6. Ha egy meglévő Log Analytics munkaterülettel rendelkezik, amely a fürttel azonos előfizetésben található, **Azure monitor a tárolók** lapon, válassza ki azt a legördülő listából.
+6. Ha egy meglévő Log Analytics munkaterülettel rendelkezik a fürttel azonos előfizetésben, válassza ki **azt a** legördülő listából.
     A lista előadja az alapértelmezett munkaterületet és helyet, amelyet az AK-tároló üzembe helyez az előfizetésben.
 
     ![AK-tároló állapot-figyelésének engedélyezése](./media/container-insights-onboard/kubernetes-onboard-brownfield-02.png)
 
     >[!NOTE]
-    >Ha új Log Analytics munkaterületet szeretne létrehozni a figyelési adatok fürtből való tárolásához, kövesse az [log Analytics munkaterület létrehozása](../learn/quick-create-workspace.md)című témakör utasításait. Ügyeljen arra, hogy a munkaterületet ugyanabban az előfizetésben hozza létre, amelyben az AK-tároló telepítve van.
+    >Ha új Log Analytics munkaterületet szeretne létrehozni a figyelési adatok fürtből való tárolásához, kövesse az [log Analytics munkaterület létrehozása](../logs/quick-create-workspace.md)című témakör utasításait. Ügyeljen arra, hogy a munkaterületet ugyanabban az előfizetésben hozza létre, amelyben az AK-tároló telepítve van.
 
 A figyelés engedélyezése után körülbelül 15 percet is igénybe vehet, mielőtt megtekintheti a fürt működési adatait.
 
@@ -158,7 +158,7 @@ Ez a metódus két JSON-sablont tartalmaz. Az egyik sablon meghatározza a figye
 >A sablont a fürttel azonos erőforráscsoporthoz kell telepíteni.
 >
 
-A Log Analytics munkaterületet létre kell hozni, mielőtt engedélyezi a figyelést a Azure PowerShell vagy a parancssori felület használatával. A munkaterület létrehozásához a [Azure Resource Manager](../samples/resource-manager-workspace.md), a [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)vagy a [Azure Portal](../learn/quick-create-workspace.md)használatával állíthatja be.
+A Log Analytics munkaterületet létre kell hozni, mielőtt engedélyezi a figyelést a Azure PowerShell vagy a parancssori felület használatával. A munkaterület létrehozásához a [Azure Resource Manager](../logs/resource-manager-workspace.md), a [PowerShell](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)vagy a [Azure Portal](../logs/quick-create-workspace.md)használatával állíthatja be.
 
 Ha nem ismeri az erőforrások sablon használatával történő központi telepítésének fogalmát, tekintse meg a következőt:
 
@@ -380,4 +380,4 @@ Néhány perc elteltével a parancs befejeződik, és a megoldáshoz tartozó JS
 
 * Ha problémákat tapasztal a megoldás bevezetésére tett kísérlet során, tekintse át a [hibaelhárítási útmutatót](container-insights-troubleshoot.md) .
 
-* Megtudhatja, [hogyan használhatja](container-insights-analyze.md) a Azure monitor a tárolók számára, hogy az AK-fürtök és a rajtuk futó munkaterhelések állapotát és erőforrás-kihasználtságát összegyűjtse.
+* A figyelés lehetővé teszi, hogy az AK-fürt és a rajtuk futó munkaterhelések állapota és Erőforrás-kihasználtsága összegyűjtse a tároló-információk [használatát](container-insights-analyze.md) .

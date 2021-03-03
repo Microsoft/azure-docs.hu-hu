@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 6b273b864c8329547ef91eb7063a064e0f5cb77d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b1295904f25d38c97578fa6fd6ede4ecd50c0456
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100620875"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728977"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Az Azure és a ITSM-eszközök összekapcsolhatók a biztonságos exportálás használatával
 
 Ebből a cikkből megtudhatja, hogyan konfigurálhatja a kapcsolatot az IT szolgáltatás-kezelő (ITSM) termék vagy szolgáltatás között a biztonságos exportálás használatával.
 
-A biztonságos exportálás a [it-szolgáltatásmenedzsmenti csatoló (ITSMC)](../platform/itsmc-overview.md)frissített verziója. Mindkét verzió lehetővé teszi, hogy munkaelemeket hozzon létre egy ITSM eszközben, amikor Azure Monitor riasztásokat küld. A funkciók mérőszám-, napló-és műveletnapló-riasztásokat tartalmaznak.
+A biztonságos exportálás a [it-szolgáltatásmenedzsmenti csatoló (ITSMC)](./itsmc-overview.md)frissített verziója. Mindkét verzió lehetővé teszi, hogy munkaelemeket hozzon létre egy ITSM eszközben, amikor Azure Monitor riasztásokat küld. A funkciók mérőszám-, napló-és műveletnapló-riasztásokat tartalmaznak.
 
 A ITSMC a Felhasználónév és a jelszó hitelesítő adatait használja. A biztonságos exportálás erősebb hitelesítéssel rendelkezik, mert Azure Active Directoryt (Azure AD) használ. Az Azure AD a Microsoft felhőalapú identitás- és hozzáférés-kezelési szolgáltatása. Segít a felhasználóknak bejelentkezni, és hozzáférni a belső vagy külső erőforrásokhoz. Az Azure AD és a ITSM segítségével azonosíthatja a külső rendszernek elküldett Azure-riasztásokat (az Azure AD-alkalmazás azonosítója alapján).
 
@@ -55,4 +55,4 @@ Az integráció fő előnyei a következők:
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [ITSM-munkaelemek létrehozása az Azure-riasztásokból](../platform/itsmc-overview.md)
+* [ITSM-munkaelemek létrehozása az Azure-riasztásokból](./itsmc-overview.md)

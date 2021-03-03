@@ -9,15 +9,15 @@ manager: diviso
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 01/11/2021
-ms.openlocfilehash: cb5bac06ab6eeaa00e72ba6068328a972b8ac37b
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.date: 03/01/2021
+ms.openlocfilehash: 25340af243217313ce6d3f7205c102d4bcd350b4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98119347"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698110"
 ---
-# <a name="quickstart-explore-the-azure-time-series-insights-gen2-demo-environment"></a>Gyors útmutató: Ismerkedés a Azure Time Series Insights Gen2 bemutató környezettel
+# <a name="quickstart-explore-the-azure-time-series-insights-gen2-demo-environment"></a>Gyorsútmutató: Ismerkedés az Azure Time Series Insights Gen2 bemutatókörnyezettel
 
 Ez a rövid útmutató egy Azure Time Series Insights Gen2-környezettel kapcsolatos első lépéseket mutat be. Az ingyenes bemutatóban megtekintheti az Azure Time Series Insights Gen2 felvett főbb funkciókat.
 
@@ -129,13 +129,6 @@ A Azure Time Series Insights Gen2 és az érzékelő telemetria használatával 
     * Módosítsa a megjelenítést úgy, hogy az összes **generátor** rendszerérzékelője ugyanazon a diagramon legyen.
 
       [![A Megjelenítés módosítása a következőre: mindent tartalmaz](media/v2-update-quickstart/quick-start-generator-system.png)](media/v2-update-quickstart/quick-start-generator-system.png#lightbox)
-
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-
-Most, hogy elvégezte a gyors üzembe helyezést, törölje a létrehozott erőforrásokat:
-
-1. A [Azure Portal](https://portal.azure.com)bal oldali menüjében válassza a **minden erőforrás** lehetőséget, és keresse meg a Azure Time Series Insights Gen2 erőforráscsoportot.
-1. Törölje a teljes erőforráscsoportot (és az abban található összes erőforrást) úgy, hogy kiválasztja az egyes erőforrások **törlését** vagy eltávolítását.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 54b92c24b5a50ef1674dcb47df555b27259a350b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 388a4f06d79116c42bf80cb25d0b133474c02192
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393853"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737630"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Az Azure file shares teljesítményével kapcsolatos problémák elhárítása
 
@@ -50,7 +50,7 @@ Annak ellenőrzéséhez, hogy a megosztást szabályozzák-e, elérheti és hasz
     - ClientShareIngressThrottlingError
     - ClientShareIopsThrottlingError
 
-    Ha többet szeretne megtudni az egyes válaszok típusairól, tekintse meg a [metrikus dimenziókat](https://docs.microsoft.com/azure/storage/files/storage-files-monitoring-reference#metrics-dimensions).
+    Ha többet szeretne megtudni az egyes válaszok típusairól, tekintse meg a [metrikus dimenziókat](./storage-files-monitoring-reference.md#metrics-dimensions).
 
     ![Képernyőkép a prémium szintű fájlmegosztás mérőszámok lehetőségeiről, amely a "Response type" tulajdonság szűrőjét jeleníti meg.](media/storage-troubleshooting-premium-fileshares/metrics.png)
 
@@ -258,13 +258,12 @@ A megerősítéshez használhatja az Azure-mérőszámokat a portálon –
    > [!NOTE]
    > Ha a válaszok típusai nem szerepelnek a **dimenzió értékek** legördülő menüben, ez azt jelenti, hogy az erőforrás nincs szabályozva. A dimenzió értékeinek hozzáadásához a **dimenzióértékek** legördülő lista mellett válassza az **Egyéni érték hozzáadása** lehetőséget, adja meg a respone típusát (például **SuccessWithThrottling**), kattintson az **OK gombra**, majd ismételje meg ezeket a lépéseket a fájlmegosztás összes vonatkozó válaszának hozzáadásához.
 
-8. Kattintson a **dimenzió neve** legördülő listára, és válassza a **fájlmegosztás** lehetőséget.
-9. Kattintson a **dimenzió értékek** legördülő listára, és válassza ki azokat a fájlmegosztás (oka) t, amelyekről riasztást szeretne kapni.
-
+8. **Prémium szintű fájlmegosztás** esetén kattintson a **dimenzió neve** legördülő menüre, majd válassza a **fájlmegosztás** lehetőséget. **Normál fájlmegosztás** esetén ugorjon a **#10 lépésre**.
 
    > [!NOTE]
-   > Ha a fájlmegosztás szabványos fájlmegosztás, válassza a **minden aktuális és jövőbeli értéket**. A dimenzióértékek legördülő lista nem sorolja fel a fájlmegosztást (ka) t, mert a megosztási mérőszámok nem érhetők el a normál fájlmegosztás esetében. A normál fájlmegosztás esetén a rendszer elindítja a riasztásokat, ha a Storage-fiókon belül bármilyen fájlmegosztás szabályozva van, és a riasztás nem azonosítja, hogy mely fájlmegosztás lett szabályozva. Mivel a megosztási mérőszámok nem érhetők el a normál fájlmegosztás esetében, a javaslat egy fájlmegosztási fiókkal rendelkezik.
+   > Ha a fájlmegosztás szabványos fájlmegosztás, a **fájlmegosztás** dimenzió nem sorolja fel a fájlmegosztást (ka) t, mert a megosztási metrikák nem érhetők el a normál fájlmegosztás esetében. A normál fájlmegosztás esetén a rendszer elindítja a riasztásokat, ha a Storage-fiókon belül bármilyen fájlmegosztás szabályozva van, és a riasztás nem azonosítja, hogy mely fájlmegosztás lett szabályozva. Mivel a megosztási mérőszámok nem érhetők el a normál fájlmegosztás esetében, a javaslat egy fájlmegosztási fiókkal rendelkezik.
 
+9. Kattintson a **dimenzió értékek** legördülő listára, és válassza ki azokat a fájlmegosztás (oka) t, amelyekről riasztást szeretne kapni.
 10. Adja meg a **riasztási paramétereket** (a küszöbértéket, az operátort, az Összesítés részletességét és a kiértékelés gyakoriságát), majd kattintson a **kész** gombra.
 
     > [!TIP]

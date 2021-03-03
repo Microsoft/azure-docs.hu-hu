@@ -221,9 +221,9 @@
         - name: A Docker-gazdagépek megerősítése
           displayName: containers
           href: harden-docker-hosts.md
-        - name: Az SQL-hez készült Azure Defender használata
-          href: defender-for-sql-usage.md
-          displayName: 'hybrid, arc'
+    - name: Az SQL-hez készült Azure Defender használata
+      href: defender-for-sql-usage.md
+      displayName: 'hybrid, arc'
     - name: Az Azure Defender használata tárolóregisztrációs adatbázisokhoz
       items:
         - name: Biztonsági rések meglétének ellenőrzése a regisztrációs adatbázis rendszerképei kapcsán
@@ -269,8 +269,6 @@
     - name: A Kubernetes számítási feladatok védelme
       displayName: 'k8s, containers, aks'
       href: kubernetes-workload-protections.md
-    - name: Felhasználói adatok vizsgálatának kezelése
-      href: security-center-investigation-user-data.md
     - name: Bérlőszintű áttekintés
       href: security-center-management-groups.md
     - name: Az SQL Information Protection-szabályzat testreszabása
@@ -292,7 +290,7 @@
           href: faq-vms.md
         - name: Meglévő Azure Log Analytics-felhasználók
           href: faq-azure-monitor-logs.md
-    - name: Beépített biztonsági szabályzatok
+    - name: Az Azure Policy beépített elemei
       displayName: 'samples, policy'
       href: policy-reference.md
     - name: Az Azure-ütemterv blogja

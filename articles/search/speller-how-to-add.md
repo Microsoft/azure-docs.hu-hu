@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: cdc5de8153e8b2e0ea8bb8ea372fe8610ccb895b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: da172e9a7605876711e4a4f32bf4fac698b35109
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679829"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694801"
 ---
 # <a name="add-spell-check-to-queries-in-cognitive-search"></a>Helyesírás-ellenőrzés hozzáadása a lekérdezésekhez Cognitive Search
 
@@ -36,7 +36,7 @@ A keresőmotor megkezdése előtt az egyes keresési lekérdezési kifejezések 
   A queryLanguage szükséges a helyesíráshoz, és jelenleg az "en-us" az egyetlen érvényes érték.
 
 > [!Note]
-> A helyesírás-ellenőrző paraméter minden szinten elérhető, ugyanabban a régióban, ahol szemantikai keresést is biztosít. További információkért lásd a [rendelkezésre állást és a díjszabást](semantic-search-overview.md#availability-and-pricing).
+> A helyesírás-ellenőrző paraméter minden szinten elérhető, ugyanabban a régióban, ahol szemantikai keresést is biztosít. Nem kell regisztrálnia az előzetes verziójú szolgáltatáshoz való hozzáférésre. További információkért lásd a [rendelkezésre állást és a díjszabást](semantic-search-overview.md#availability-and-pricing).
 
 ## <a name="spell-correction-with-simple-search"></a>Helyesírás-javítás egyszerű kereséssel
 
@@ -94,7 +94,13 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 ## <a name="language-considerations"></a>Nyelvi megfontolások
 
-A helyesíráshoz szükséges queryLanguage paraméternek konzisztensnek kell lennie az index séma mezőihez rendelt [nyelvi elemzők](index-add-language-analyzers.md) esetében. A lekérdezési kérelemben megadott queryLanguage határozza meg, hogy mely Lexikonokat használja a rendszer a helyesírás-ellenőrzéshez, és a [szemantikai rangsorolási algoritmus](semantic-how-to-query-response.md) bemenetként is használja, ha azt használja. A nyelvi elemzők az indexelés során használatosak, és a keresési indexben lévő egyező dokumentumok beolvasása közben. Ahhoz, hogy konzisztensek legyenek, ha a queryLanguage "en-us", akkor minden nyelvi elemzőnek angol változatnak ("en. Microsoft" vagy "en. Lucene") is kell lennie. 
+A helyesíráshoz szükséges queryLanguage paraméternek konzisztensnek kell lennie az index séma mezőihez rendelt [nyelvi elemzők](index-add-language-analyzers.md) esetében. 
+
++ a queryLanguage meghatározza, hogy mely lexikonok használhatók a helyesírás-ellenőrzéshez, és a [szemantikai rangsorolási algoritmus](semantic-how-to-query-response.md) bemenetként is használatos, ha "queryType = szemantika" eszközt használ.
+
++ A nyelvi elemzők az indexelés és a lekérdezés végrehajtása során használatosak a keresési indexben található egyező dokumentumok kereséséhez. Példa egy Language Analyzert használó mező-definícióra `"name": "Description", "type": "Edm.String", "analyzer": "en.microsoft"` .
+
+Ha a queryLanguage az "en-us", a helyesírást a legjobb eredmény érdekében kell megadni, akkor a nyelvi elemzőknek angol változatnak ("en. Microsoft" vagy "en. Lucene") is szerepelniük kell.
 
 > [!NOTE]
 > A nyelvtől független elemzők (például a kulcsszó, a Simple, a standard, a stop, a szóköz vagy `standardasciifolding.lucene` a) nem ütköznek a queryLanguage beállításaival.

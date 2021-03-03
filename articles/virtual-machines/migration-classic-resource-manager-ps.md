@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0ffea1e35cd457fc1fa350b1b234360d111fc911
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c750e34e8081cf5a8b3d41cc8c52584a4353a336
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101669262"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695158"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>IaaS-erőforrások migrálása a Klasszikusból a Azure Resource Managerba a PowerShell használatával
 
@@ -165,7 +165,7 @@ Készítse elő a virtuális gépeket a Cloud Service-ben áttelepítésre. Két
     $validate.ValidationMessages
     ```
 
-    A következő parancs megjeleníti az áttelepítést tiltó figyelmeztetéseket és hibákat. Ha az érvényesítés sikeres, átléphet az előkészítési lépésre.
+    A következő parancs megjeleníti az áttelepítést tiltó figyelmeztetéseket és hibákat. Ha az érvényesítési üzenetek nem tartalmaznak hiba típusú üzenetet, akkor átléphet az előkészítési lépésre.
 
     ```powershell
     Move-AzureService -Prepare -ServiceName $serviceName `
@@ -189,7 +189,7 @@ Készítse elő a virtuális gépeket a Cloud Service-ben áttelepítésre. Két
     $validate.ValidationMessages
     ```
 
-    A következő parancs megjeleníti az áttelepítést tiltó figyelmeztetéseket és hibákat. Ha az ellenőrzés sikeres, folytassa a következő előkészítési lépéssel:
+    A következő parancs megjeleníti az áttelepítést tiltó figyelmeztetéseket és hibákat. Ha az érvényesítési üzenetek nem tartalmaznak hibákat, folytassa a következő előkészítési lépéssel:
 
     ```powershell
         Move-AzureService -Prepare -ServiceName $serviceName -DeploymentName $deploymentName `

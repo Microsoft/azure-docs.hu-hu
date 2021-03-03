@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépek teljesítményének figyelése – Azure App
 description: Alkalmazások teljesítményének figyelése Azure-beli virtuális gépekhez és Azure-beli virtuálisgép-méretezési csoportokhoz. A diagram betöltésének és a válaszidő, a függőségi adatok és a riasztások beállítása a teljesítményre.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 48441711c8c6209b25974108fd91d1023fd6e6be
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 0951d1d622f59de4780735fad78ac73649ea2369
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493736"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711481"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>A Azure Monitor Application Insights-ügynök üzembe helyezése Azure-beli virtuális gépeken és Azure-beli virtuálisgép-méretezési csoportokban
 
@@ -16,7 +16,7 @@ Az [Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machine
 
 Ez a cikk bemutatja, hogyan engedélyezheti Application Insights monitorozását a Application Insights ügynökkel, és előzetes útmutatást nyújt a nagyméretű központi telepítések folyamatának automatizálásához.
 > [!IMPORTANT]
-> Az Azure-beli virtuális gépeken és VMSS futó **Java** -alapú alkalmazások **[Application Insights Java 3,0-ügynökkel](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)** vannak felügyelve, amely általánosan elérhető.
+> Az Azure-beli virtuális gépeken és VMSS futó **Java** -alapú alkalmazások **[Application Insights Java 3,0-ügynökkel](./java-in-process-agent.md)** vannak felügyelve, amely általánosan elérhető.
 
 > [!IMPORTANT]
 > Az Azure-beli **virtuális gépeken és VMSS** futó ASP.NET-alkalmazások Azure Application Insights-ügynöke jelenleg nyilvános előzetes verzióban érhető el. A **helyszínen** futó ASP.NET-alkalmazások figyeléséhez használja az [Azure Application Insights-ügynököt a helyszíni kiszolgálók számára](./status-monitor-v2-overview.md), amely általánosan elérhető és teljes mértékben támogatott.
@@ -42,7 +42,7 @@ Az alkalmazások figyelését kétféleképpen engedélyezheti az Azure Virtual 
   * A Application Insights ügynök automatikusan összegyűjti az azonos függőségi jeleket a .NET SDK-val. További információért lásd: [függőségek automatikus gyűjteménye](./auto-collect-dependencies.md#net) .
         
 #### <a name="java"></a>Java
-  * A Javához a **[Application Insights java 3,0-ügynök](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)** ajánlott módszer. A legnépszerűbb kódtárak és keretrendszerek, valamint a naplók és a függőségek [automatikusan begyűjthetők](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent#auto-collected-requests-dependencies-logs-and-metrics), számos [további konfigurációval](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config)
+  * A Javához a **[Application Insights java 3,0-ügynök](./java-in-process-agent.md)** ajánlott módszer. A legnépszerűbb kódtárak és keretrendszerek, valamint a naplók és a függőségek [automatikusan begyűjthetők](./java-in-process-agent.md#auto-collected-requests-dependencies-logs-and-metrics), számos [további konfigurációval](./java-standalone-config.md)
 
 ### <a name="code-based-via-sdk"></a>SDK-n alapuló kód
     
@@ -55,19 +55,19 @@ Az alkalmazások figyelését kétféleképpen engedélyezheti az Azure Virtual 
     > Csak .NET-alkalmazások esetén – ha az ügynök-alapú figyelési és a manuális SDK-alapú rendszerállapotot is észleli, a rendszer csak a manuális rendszerállapot-beállításokat fogja figyelembe venni. Ez megakadályozza az ismétlődő adatok küldését. Ha többet szeretne megtudni erről, tekintse meg az alábbi [hibaelhárítási szakaszt](#troubleshooting) .
 
 #### <a name="net-core"></a>.NET Core
-A .NET Core-alkalmazások figyeléséhez használja az [SDK](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) -t 
+A .NET Core-alkalmazások figyeléséhez használja az [SDK](./asp-net-core.md) -t 
 
 #### <a name="java"></a>Java 
 
-Ha további egyéni telemetria van szüksége a Java-alkalmazásokhoz, tekintse meg a mi [elérhető](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent#send-custom-telemetry-from-your-application), [Egyéni dimenziók](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config#custom-dimensions)hozzáadása vagy a [telemetria processzorok](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-telemetry-processors)használata című témakört. 
+Ha további egyéni telemetria van szüksége a Java-alkalmazásokhoz, tekintse meg a mi [elérhető](./java-in-process-agent.md#send-custom-telemetry-from-your-application), [Egyéni dimenziók](./java-standalone-config.md#custom-dimensions)hozzáadása vagy a [telemetria processzorok](./java-standalone-telemetry-processors.md)használata című témakört. 
 
 #### <a name="nodejs"></a>Node.js
 
-A Node.js alkalmazásához használja az [SDK](https://docs.microsoft.com/azure/azure-monitor/app/nodejs)-t.
+A Node.js alkalmazásához használja az [SDK](./nodejs.md)-t.
 
 #### <a name="python"></a>Python
 
-A Python-alkalmazások figyeléséhez használja az [SDK](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python)-t.
+A Python-alkalmazások figyeléséhez használja az [SDK](./opencensus-python.md)-t.
 
 ## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machines-using-powershell"></a>Azure-beli virtuális gépeken futó .NET-alkalmazások Application Insights ügynökének kezelése a PowerShell használatával
 

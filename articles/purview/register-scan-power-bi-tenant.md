@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: a4883bfce2469af0ee8bcc34933f94b0b5329959
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 2ecc5df9db51bb6c923b9e0f47163e492bd76cfa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518079"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695744"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Power BI bérlő regisztrálása és bevizsgálása (előzetes verzió)
 
@@ -98,11 +98,13 @@ Első lépésként adjon hozzá egy speciális funkció-jelölőt a hatásköré
     > Power BI esetében az adatforrás regisztrálása és vizsgálata csak egy példány esetében engedélyezett.
 
 
-4. Adja meg a vizsgálat nevét. Figyelje meg, hogy az egyetlen támogatott hitelesítési módszer a **felügyelt identitás**.
+4. Adja meg a vizsgálat nevét. Ezután válassza a személyes munkaterületek belefoglalása vagy kizárása lehetőséget. Figyelje meg, hogy az egyetlen támogatott hitelesítési módszer a **felügyelt identitás**.
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-scan-setup.png" alt-text="A Power BI Scan telepítőjét ábrázoló kép":::
 
-    A vizsgálat nevének 3-63 karakter hosszúnak kell lennie, és csak betűket, számokat, aláhúzásokat és kötőjeleket tartalmazhat.  A szóközök nem engedélyezettek.
+    > [!Note]
+    > * Egy vizsgálat konfigurációjának átállítása a személyes munkaterület belefoglalása vagy kizárása esetén a PowerBI-forrás teljes vizsgálatát indítja el.
+    > * A vizsgálat nevének 3-63 karakter hosszúnak kell lennie, és csak betűket, számokat, aláhúzásokat és kötőjeleket tartalmazhat. A szóközök nem engedélyezettek.
 
 5. Egy vizsgálati trigger beállítása. A lehetőségek **egyszer**, **7 naponta** és **30 naponként**.
 

@@ -1,19 +1,18 @@
 ---
 title: A házirend-definíciós struktúra részletei
 description: Leírja, hogyan használhatók a szabályzat-definíciók a szervezeten belüli Azure-erőforrásokra vonatkozó konvenciók létrehozásához.
-ms.date: 10/22/2020
+ms.date: 02/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 607d1d85dbb370305d0337cc311433c37e36c4c0
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 741cfce56554e05d0c5f5a9242a33502b8a6fbe6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493311"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699419"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
-Azure Policy az erőforrásokra vonatkozó konvenciókat hoz létre. A szabályzat-definíciók írják le az erőforrás-megfelelőségi [feltételeket](#conditions) , valamint azt, hogy egy adott feltétel teljesül-e. A feltétel összehasonlítja az erőforrás-tulajdonság [mezőjét](#fields) vagy egy [értéket](#value) egy szükséges értékkel. Az erőforrás-tulajdonságok mezői [aliasok](#aliases)használatával érhetők el. Ha egy erőforrás-tulajdonság egy tömb, a rendszer egy speciális [tömb aliast](#understanding-the--alias) használ az összes tömb összes tagjából származó értékek kiválasztására, és az egyes feltételek alkalmazására.
-További információ a [feltételekről](#conditions).
+Azure Policy az erőforrásokra vonatkozó konvenciókat hoz létre. A szabályzat-definíciók írják le az erőforrás-megfelelőségi [feltételeket](#conditions) , valamint azt, hogy egy adott feltétel teljesül-e. A feltétel összehasonlítja az erőforrás-tulajdonság [mezőjét](#fields) vagy egy [értéket](#value) egy szükséges értékkel. Az erőforrás-tulajdonságok mezői [aliasok](#aliases)használatával érhetők el. Ha egy erőforrás-tulajdonság egy tömb, a rendszer egy speciális [tömb aliast](#understanding-the--alias) használ az összes tömb összes tagjából származó értékek kiválasztására, és az egyes feltételek alkalmazására. További információ a [feltételekről](#conditions).
 
 Az egyezmények meghatározásával szabályozhatja a költségeket, és könnyebben kezelheti az erőforrásokat. Megadhatja például, hogy csak bizonyos típusú virtuális gépek engedélyezettek legyenek. Azt is megkövetelheti, hogy az erőforrások egy adott címkével rendelkezzenek. A házirend-hozzárendeléseket a gyermek erőforrások öröklik. Ha a szabályzat-hozzárendelést egy erőforráscsoporthoz alkalmazza, az az adott erőforráscsoport összes erőforrására érvényes lesz.
 
@@ -118,7 +117,7 @@ A következő erőforrás-szolgáltatói módok jelenleg **előzetes** verziók�
 
 ## <a name="metadata"></a>Metaadatok
 
-A választható `metadata` tulajdonság a házirend-definícióval kapcsolatos adatokat tárolja. Az ügyfelek a szervezete számára hasznos tulajdonságokat és értékeket adhatnak meg `metadata` . Vannak azonban olyan _általános_ tulajdonságok, amelyeket a Azure Policy és a beépített modulok használnak.
+A választható `metadata` tulajdonság a házirend-definícióval kapcsolatos adatokat tárolja. Az ügyfelek a szervezete számára hasznos tulajdonságokat és értékeket adhatnak meg `metadata` . Vannak azonban olyan _általános_ tulajdonságok, amelyeket a Azure Policy és a beépített modulok használnak. Minden `metadata` tulajdonság 1024 karakterből állhat.
 
 ### <a name="common-metadata-properties"></a>Gyakori metaadatok tulajdonságai
 
@@ -286,15 +285,13 @@ Egy feltétel kiértékeli, hogy egy érték megfelel-e bizonyos feltételeknek.
 
 **Kevesebb**, **lessOrEquals**, **nagyobb** és **greaterOrEquals** esetén, ha a tulajdonság típusa nem egyezik a feltétel típusával, a rendszer hibát jelez. A karakterlánc-összehasonlítások használata a használatával történik `InvariantCultureIgnoreCase` .
 
-A **hasonló** és **notLike** feltételek használatakor helyettesítő karaktert kell megadni `*` az értékben.
-Az érték legfeljebb egy helyettesítő karakterből állhat `*` .
+A **hasonló** és **notLike** feltételek használatakor helyettesítő karaktert kell megadni `*` az értékben. Az érték legfeljebb egy helyettesítő karakterből állhat `*` .
 
 A **egyezési** és **notMatch** feltételek használatakor az adott `#` számjegyre, `?` betűre, `.` bármilyen karakterre és bármely más karakterre illeszkedik, amely megfelel a tényleges karakternek. Ha a **egyezés** és a **notMatch** is megkülönbözteti a kis-és nagybetűket, a _stringValue_ kiértékelésére szolgáló összes egyéb feltétel nem tesz különbséget Kis-és nagybetűket megkülönböztető alternatívák a **matchInsensitively** és a **notMatchInsensitively** szolgáltatásban érhetők el.
 
 ### <a name="fields"></a>Mezők
 
-Azok a feltételek, amelyek kiértékelik, hogy az erőforrás-kérelemben szereplő tulajdonságok értékei megfelelnek-e bizonyos feltételeknek egy **mező** kifejezés használatával.
-A következő mezők támogatottak:
+Azok a feltételek, amelyek kiértékelik, hogy az erőforrás-kérelemben szereplő tulajdonságok értékei megfelelnek-e bizonyos feltételeknek egy **mező** kifejezés használatával. A következő mezők támogatottak:
 
 - `name`
 - `fullName`
@@ -324,8 +321,7 @@ A következő mezők támogatottak:
 > `tags.<tagName>`a, `tags[tagName]` , és `tags[tag.with.dots]` továbbra is elfogadható módon deklarálhatja a címkék mezőt. Az előnyben részesített kifejezések azonban a fentiekben láthatók.
 
 > [!NOTE]
-> Az **\[ \* \] aliasra** hivatkozó **mezők** kifejezései a tömb minden elemét egyedileg értékelik ki a logikai **és** az elemek között.
-> További információ: a [tömb erőforrás-tulajdonságainak hivatkozása](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
+> Az **\[ \* \] aliasra** hivatkozó **mezők** kifejezései a tömb minden elemét egyedileg értékelik ki a logikai **és** az elemek között. További információ: a [tömb erőforrás-tulajdonságainak hivatkozása](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
 
 #### <a name="use-tags-with-parameters"></a>Címkék használata paraméterekkel
 
@@ -472,6 +468,7 @@ A **mezők számának** kifejezése egy **' policyrule osztály** -definícióba
 Ha további információt szeretne a tömb tulajdonságainak Azure Policy való használatáról, beleértve a **mezők számának** kiértékelésével kapcsolatos részletes magyarázatot, tekintse meg a [tömb erőforrás-tulajdonságainak hivatkozása](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties)című témakört.
 
 #### <a name="value-count"></a>Értékek száma
+
 Megszámolja, hogy egy tömb hány tagja felel meg a feltételnek. A tömb lehet literális tömb vagy egy [Array paraméterre mutató hivatkozás](#using-a-parameter-value). Az **értékek száma** kifejezések felépítése:
 
 ```json
@@ -500,19 +497,19 @@ A következő korlátokat kell kikényszeríteni:
 
 #### <a name="the-current-function"></a>Az aktuális függvény
 
-A `current()` függvény csak a `count.where` feltételen belül érhető el. Visszaadja a tömb azon tagjának értékét, amelyet a **Count** kifejezés kiértékelése jelenleg felsorol.
+A `current()` függvény csak a `count.where` feltételen belül érhető el. A **szám** kifejezés kiértékelése által jelenleg enumerált tömbbeli tag értékét adja vissza.
 
 **Értékek számának használata**
 
 - `current(<index name defined in count.name>)`. Példa: `current('arrayMember')`.
-- `current()`. Csak akkor engedélyezett, ha a **Value Count** kifejezés nem gyermek egy másik **Count** kifejezésnek. A fentivel megegyező értéket adja vissza.
+- `current()`. Csak akkor engedélyezett, ha az **értékek száma** kifejezés nem egy másik **Count** kifejezés gyermeke. A fentivel megegyező értéket adja vissza.
 
 Ha a hívás által visszaadott érték egy objektum, a tulajdonság-hozzáférések támogatottak. Példa: `current('objectArrayMember').property`.
 
 **Mezők számának használata**
 
 - `current(<the array alias defined in count.field>)`. Például: `current('Microsoft.Test/resource/enumeratedArray[*]')`.
-- `current()`. Csak akkor engedélyezett, ha a **mező száma** kifejezés nem egy másik **Count** kifejezés gyermeke. A fentivel megegyező értéket adja vissza.
+- `current()`. Csak akkor engedélyezett, ha a **mezők száma** kifejezés nem egy másik **Count** kifejezés gyermeke. A fentivel megegyező értéket adja vissza.
 - `current(<alias of a property of the array member>)`. Például: `current('Microsoft.Test/resource/enumeratedArray[*].property')`.
 
 #### <a name="field-count-examples"></a>Mezők száma – példák
@@ -648,7 +645,7 @@ Ha a hívás által visszaadott érték egy objektum, a tulajdonság-hozzáfér�
 }
 ```
 
-2. példa: Ellenőrizze, hogy az erőforrás neve megegyezik-e a megadott név mintázatával. A `current()` függvény nem adja meg az index nevét. Az előző példa az eredmény.
+2. példa: Ellenőrizze, hogy az erőforrás neve megegyezik-e a megadott név mintázatával. A `current()` függvény nem adja meg az index nevét. Az eredmény ugyanaz, mint az előző példában.
 
 ```json
 {
@@ -769,7 +766,7 @@ Azure Policy a következő típusú hatásokat támogatja:
 - **Megtagadás**: eseményt hoz létre a tevékenység naplójában, és sikertelenül kéri a kérést.
 - **DeployIfNotExists**: egy kapcsolódó erőforrás üzembe helyezése, ha még nem létezik
 - **Letiltva**: nem értékeli ki a házirend-szabálynak való megfeleléshez szükséges erőforrásokat
-- **Módosítás**: a definiált címkék hozzáadását, frissítését vagy eltávolítását egy erőforrásból
+- **Módosítás**: felveszi, frissíti vagy eltávolítja a definiált címkéket egy erőforrásból vagy előfizetésből.
 - **EnforceOPAConstraint** (elavult): az Azure-beli önfelügyelt Kubernetes-fürtökhöz az Open Policy Agent beléptetési vezérlőt konfigurálja forgalomirányító v3-vel
 - **EnforceRegoPolicy** (elavult): az Azure Kubernetes Service-ben az Open Policy Agent beléptetési vezérlőt a forgalomirányító v2 protokollal konfigurálja
 
@@ -822,18 +819,18 @@ A következő függvények csak a házirend-szabályokban érhetők el:
   ```
 
 - `ipRangeContains(range, targetRange)`
-    - **tartomány**: [kötelező] karakterlánc – karakterlánc, amely az IP-címek tartományát határozza meg.
-    - **targetRange**: [kötelező] karakterlánc-karakterlánc, amely az IP-címek tartományát határozza meg.
+  - **tartomány**: [kötelező] karakterlánc – karakterlánc, amely az IP-címek tartományát határozza meg.
+  - **targetRange**: [kötelező] karakterlánc-karakterlánc, amely az IP-címek tartományát határozza meg.
 
-    Azt adja vissza, hogy a megadott IP-címtartomány tartalmazza-e a célként megadott IP-címtartományt. Az üres tartományok, illetve az IP-családok közötti keverés nem engedélyezett, és kiértékelési hibát eredményez.
+  Azt adja vissza, hogy a megadott IP-címtartomány tartalmazza-e a célként megadott IP-címtartományt. Az üres tartományok, illetve az IP-családok közötti keverés nem engedélyezett, és kiértékelési hibát eredményez.
 
-    Támogatott formátumok:
-    - Egyetlen IP-cím (példák: `10.0.0.0` , `2001:0DB8::3:FFFE` )
-    - CIDR-tartomány (példák: `10.0.0.0/24` , `2001:0DB8::/110` )
-    - A kezdő és a záró IP-címek által meghatározott tartomány (példák: `192.168.0.1-192.168.0.9` , `2001:0DB8::-2001:0DB8::3:FFFF` )
+  Támogatott formátumok:
+  - Egyetlen IP-cím (példák: `10.0.0.0` , `2001:0DB8::3:FFFE` )
+  - CIDR-tartomány (példák: `10.0.0.0/24` , `2001:0DB8::/110` )
+  - A kezdő és a záró IP-címek által meghatározott tartomány (példák: `192.168.0.1-192.168.0.9` , `2001:0DB8::-2001:0DB8::3:FFFF` )
 
 - `current(indexName)`
-    - Speciális függvény, amely csak a [Count kifejezéseken](#count)belül használható.
+  - Speciális függvény, amely csak [Count kifejezéseken](#count)belül használható.
 
 #### <a name="policy-function-example"></a>Példa a házirend-függvényre
 
@@ -918,7 +915,7 @@ Az **\[\*\]** alias a tömb erőforrás-tulajdonság elemei közül kiválasztot
 | `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | A `ipRules` tömb elemei. |
 | `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | A tulajdonság értékei a `action` tömb egyes elemeiből `ipRules` . |
 
-Egy [mező](#fields) feltételben való használatakor a tömb aliasai lehetővé teszik az egyes tömbbeli elemek összehasonlítását egy célként megadott értékkel. A [Count](#count) kifejezéssel való használat esetén a következő lehetőségek lehetségesek:
+Ha egy [mező](#fields) feltételben szerepel, a tömb aliasai összehasonlítják az egyes tömb elemeit egy célként megadott értékkel. A [Count](#count) kifejezéssel való használat esetén a következő lehetőségek lehetségesek:
 
 - Tömb méretének megkeresése
 - Annak megkeresése, hogy a tömb elemeinek all\any\none megfelel-e egy összetett feltételnek

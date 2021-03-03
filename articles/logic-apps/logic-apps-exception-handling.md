@@ -5,15 +5,15 @@ services: logic-apps
 ms.suite: integration
 author: dereklee
 ms.author: deli
-ms.reviewer: klam, estfan, logicappspm
-ms.date: 01/11/2020
+ms.reviewer: estfan, logicappspm, azla
+ms.date: 02/18/2021
 ms.topic: article
-ms.openlocfilehash: a0c8286b2fb36642723ae28b8bc88e9e49f8a8fb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fbe797937021763bb97ca09e1da792d9a7010f9a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577952"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702504"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Hibák és kivételek kezelése az Azure Logic Appsben
 
@@ -27,7 +27,7 @@ A legalapvetőbb kivételek és hibakezelés érdekében az *újrapróbálkozás
 
 Az újrapróbálkozási szabályzatok típusai:
 
-| Típus | Description |
+| Típus | Leírás |
 |------|-------------|
 | **Alapértelmezett** | Ez a szabályzat legfeljebb négy újrapróbálkozást küld el *exponenciálisan növekvő* intervallumokban, amelyek mérete 7,5 másodperc, de 5 – 45 másodpercre van korlátozva. |
 | **Exponenciális időköz**  | Ez a szabályzat egy exponenciálisan növekvő tartományból érkező véletlenszerű intervallumot vár a következő kérelem elküldése előtt. |
@@ -69,7 +69,7 @@ Vagy manuálisan is megadhatja az újrapróbálkozási házirendet az `inputs` �
 
 *Kötelező*
 
-| Érték | Típus | Description |
+| Érték | Típus | Leírás |
 |-------|------|-------------|
 | <*újrapróbálkozás – házirend-típus*> | Sztring | A használni kívánt újrapróbálkozási szabályzat típusa: `default` ,,, `none` `fixed` vagy `exponential` |
 | <*újrapróbálkozási időköz*> | Sztring | Az újrapróbálkozási időköz, amelyben az értéknek [ISO 8601 formátumot](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)kell használnia. Az alapértelmezett minimális időköz, `PT5S` a maximális intervallum `PT1D` . Az exponenciális időközi szabályzat használatakor különböző minimális és maximális értékeket adhat meg. |
@@ -78,7 +78,7 @@ Vagy manuálisan is megadhatja az újrapróbálkozási házirendet az `inputs` �
 
 *Nem kötelező*
 
-| Érték | Típus | Description |
+| Érték | Típus | Leírás |
 |-------|------|-------------|
 | <*minimális időköz*> | Sztring | Az exponenciális időközi házirend esetében a véletlenszerűen kiválasztott időköz ( [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) ) legkisebb intervalluma |
 | <*maximális időköz*> | Sztring | Az exponenciális időközi házirend esetében a véletlenszerűen kiválasztott időköz ( [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) ) legnagyobb intervalluma |
@@ -263,13 +263,14 @@ A hatókörök korlátozásait lásd: [korlátok és konfiguráció](../logic-ap
 
 ### <a name="get-context-and-results-for-failures"></a>A hibák kontextusának és eredményének beolvasása
 
-Bár a hibák egy hatókörből való kifogása hasznos, előfordulhat, hogy olyan kontextust is szeretne, amely segít megérteni, hogy pontosan milyen műveletek sikertelenek, valamint a visszaadott hibák vagy állapotkódok.
+Bár a hibák egy hatókörből való kifogása hasznos, előfordulhat, hogy olyan kontextust is szeretne, amely segít megérteni, hogy pontosan milyen műveletek sikertelenek, valamint a visszaadott hibák vagy állapotkódok. A [ `result()` függvény](../logic-apps/workflow-definition-language-functions-reference.md#result) egy hatókörrel rendelkező művelet legfelső szintű műveleteiből származó eredményeket adja vissza, ha egyetlen paramétert fogad el, amely a hatókör neve, és olyan tömböt ad vissza, amely az első szintű műveletek eredményét tartalmazza. Ezek a műveleti objektumok ugyanazokat az attribútumokat tartalmazzák, mint a függvény által visszaadott attribútumok `actions()` , például a művelet kezdési időpontja, a Befejezés időpontja, az állapot, a bemenetek, a korrelációs azonosítók és a kimenetek. 
 
-A [`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result) függvény kontextust biztosít a hatókör összes műveletének eredményeiről. A `result()` függvény egyetlen paramétert fogad el, amely a hatókör neve, és egy olyan tömböt ad vissza, amely az adott hatókörből származó összes művelet eredményét tartalmazza. Ezek a műveleti objektumok ugyanazokat az attribútumokat tartalmazzák, mint az `actions()` objektum, például a művelet kezdési ideje, befejezési időpontja, állapota, bemenetei, korrelációs azonosítói és kimenetei. Ha a hatókörön belül meghiúsult műveletek kontextusát szeretné elküldeni, egyszerűen párosíthat egy `@result()` kifejezést a `runAfter` tulajdonsággal.
+> [!NOTE]
+> A `result()` függvény *csak* az első szintű műveletek eredményét adja vissza, és nem a mélyebb beágyazott műveletekből, például a kapcsoló vagy a feltétel műveletből.
 
-Ha műveletet szeretne futtatni egy olyan hatókör minden műveletéhez, amely egy `Failed` eredménnyel rendelkezik, és az eredmények tömbjét a sikertelen műveletek alapján szűri, akkor a `@result()` kifejezéseket egy [**szűrési tömb**](logic-apps-perform-data-operations.md#filter-array-action) művelettel és [**minden**](../logic-apps/logic-apps-control-flow-loops.md) hurokhoz társíthatja. A szűrt eredmény tömböt elvégezheti, és műveleteket hajthat végre az egyes hibákhoz a `For_each` hurok használatával.
+A hatókörben meghiúsult műveletek kontextusának beszerzéséhez használhatja a `@result()` kifejezést a hatókör nevével és a `runAfter` tulajdonsággal. Ha a visszaadott tömböt állapottal rendelkező műveletekre szeretné szűrni `Failed` , adja hozzá a [ **tömb szűrése** műveletet](logic-apps-perform-data-operations.md#filter-array-action). Ha műveletet szeretne futtatni egy visszaadott sikertelen művelethez, hajtsa végre a visszaadott szűrt tömböt, és használja az a értéket [ **minden** hurokhoz](../logic-apps/logic-apps-control-flow-loops.md).
 
-Az alábbi példát követve részletes magyarázatot talál, amely egy HTTP POST-kérést küld a válasz törzsének a "My_Scope" hatókörön belül sikertelen műveletek esetén:
+Az alábbi példát követve részletes magyarázatot talál, amely egy HTTP POST-kérelmet küld a válasz törzsének a "My_Scope" nevű hatókör-műveleten belül sikertelen műveletekhez:
 
 ```json
 "Filter_array": {

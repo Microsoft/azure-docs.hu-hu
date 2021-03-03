@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 02/11/2021
-ms.openlocfilehash: 1425be4fc4e462185f9fee573dc87b04a68bfea4
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 104329928c507c288537704fbbef4e35b65cb445
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650745"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739436"
 ---
 # <a name="create-sas-tokens-for-document-translation"></a>SAS-jogkivonatok létrehozása a dokumentumok fordításához
 
@@ -21,8 +21,8 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre közös hozzáférésű alá
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-* Szüksége lesz egy [**Azure Storage Explorer**](/azure/vs-azure-tools-storage-manage-with-storage-explorer) alkalmazásra, amelyet Windows, MacOS vagy Linux rendszerű fejlesztői környezetben kell telepíteni. A Azure Storage Explorer egy ingyenes eszköz, amely lehetővé teszi az Azure Cloud Storage-erőforrások egyszerű kezelését.
-* A Azure Storage Explorer alkalmazás telepítését követően [kapcsolja össze azt a Storage-fiókot](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows#connect-to-a-storage-account-or-service) , amelyet a dokumentumok fordításához használ.
+* Szüksége lesz egy [**Azure Storage Explorer**](../../../vs-azure-tools-storage-manage-with-storage-explorer.md) alkalmazásra, amelyet Windows, MacOS vagy Linux rendszerű fejlesztői környezetben kell telepíteni. A Azure Storage Explorer egy ingyenes eszköz, amely lehetővé teszi az Azure Cloud Storage-erőforrások egyszerű kezelését.
+* A Azure Storage Explorer alkalmazás telepítését követően [kapcsolja össze azt a Storage-fiókot](../../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#connect-to-a-storage-account-or-service) , amelyet a dokumentumok fordításához használ.
 
 ### <a name="create-your-tokens"></a>Jogkivonatok létrehozása
 
@@ -65,7 +65,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre közös hozzáférésű alá
 ## <a name="create-sas-tokens-for-blobs-in-the-azure-portal"></a>A Blobok SAS-jogkivonatának létrehozása a Azure Portalban
 
 > [!NOTE]
-> Az SAS-jogkivonatok közvetlenül a Azure Portalban való létrehozása jelenleg nem támogatott. Létrehozhat azonban egy [**Azure Storage Explorer**](#create-sas-tokens-with-azure-storage-explorer) sas-tokent, vagy [programozott](/azure/storage/blobs/sas-service-create)módon végezheti el a feladatot.
+> Az SAS-jogkivonatok közvetlenül a Azure Portalban való létrehozása jelenleg nem támogatott. Létrehozhat azonban egy [**Azure Storage Explorer**](#create-sas-tokens-with-azure-storage-explorer) sas-tokent, vagy [programozott](../../../storage/blobs/sas-service-create.md)módon végezheti el a feladatot.
 
 <!-- markdownlint-disable MD024 -->
 ### <a name="prerequisites"></a>Előfeltételek
@@ -104,7 +104,7 @@ Lépjen a [Azure Portalra](https://ms.portal.azure.com/#home) , és navigáljon 
 
 ## <a name="learn-more"></a>Tudjon meg többet
 
-* [A blobok és a tárolók SAS-jogkivonatának létrehozása programozott módon](/azure/storage/blobs/sas-service-create)
+* [A blobok és a tárolók SAS-jogkivonatának létrehozása programozott módon](../../../storage/blobs/sas-service-create.md)
 * [Könyvtárra, tárolóra vagy blobra vonatkozó engedélyek](/rest/api/storageservices/create-service-sas#permissions-for-a-directory-container-or-blob)
 
 ## <a name="next-steps"></a>Következő lépések

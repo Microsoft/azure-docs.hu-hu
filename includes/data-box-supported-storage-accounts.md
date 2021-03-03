@@ -3,14 +3,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 12/23/2020
+ms.date: 02/21/2021
 ms.author: alkohli
-ms.openlocfilehash: 11958c54dd1f54e424b71eb00780f5309a1c0bab
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 112c30fdd242c20f11c43f42ba54e3717e074bbb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209549"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706035"
 ---
 Itt látható a Data Box eszköz támogatott tárolási fiókjainak és tárolási típusainak listája. A Storage-fiókok összes típusával kapcsolatos összes képesség teljes listájáért lásd: [Storage-fiókok típusai](../articles/storage/common/storage-account-overview.md#types-of-storage-accounts).
 
@@ -45,6 +45,7 @@ Az exportálási megrendelések esetében a következő táblázat a támogatott
 > [!IMPORTANT]
 > - Az általános célú fiókok esetében a Data Box nem támogatja az importálási rendelésekhez tartozó üzenetsor-, tábla-és lemez-tárolási típusokat. Az exportálási megrendelések esetében Data Box nem támogatja az üzenetsor-kezelést, a táblát, a lemezt és a Azure Data Lake 2. generációs tárolási típusokat az általános célú fiókokhoz.
 > - A Data Box nem támogatja a Blobok hozzáfűzését a Blob Storagehoz és a Blob Storage fiókok blokkolásához.
+> - A hálózati fájlrendszer (NFS) 3,0 protokoll támogatása az Azure Blob Storage-ban Data Box nem támogatott.
 > - Az oldal blobokra feltöltött adatmennyiségnek 512 bájtnak kell lennie, például VHD-k.
 > - Legfeljebb 80 TB lehet exportálni.
 > - A rendszer nem exportálja a fájl előzményeit és a blob-pillanatképeket.

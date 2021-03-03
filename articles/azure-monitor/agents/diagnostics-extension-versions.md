@@ -1,17 +1,16 @@
 ---
 title: Windows Azure Diagnostics-bővítmény (WAD) konfigurációs sémájának korábbi verziói
 description: Az Azure Virtual Machines, VM Scale Sets, Service Fabric és Cloud Services teljesítmény-számlálóinak gyűjtéséhez szükséges.
-ms.subservice: diagnostic-extension
 ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/29/2020
-ms.openlocfilehash: 3b6dc0e19c181ebf4df2778633f981258023e046
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 57ba1c760fe8919fff95493c5c81da4368894f73
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100617318"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719814"
 ---
 # <a name="windows-azure-diagnostics-extension-wad-configuration-schema-versions-and-history"></a>Windows Azure Diagnostics-bővítmény (WAD) konfigurációs sémájának verziói és előzményei
 Ez a cikk a [Windows (wad)](diagnostics-extension-overview.md) sémájának a Microsoft Azure SDK részeként szállított verziójának Azure Diagnostics korábbi verzióit tartalmazza.  
@@ -47,7 +46,7 @@ Az Azure Diagnostics különböző verziói eltérő konfigurációs sémákat h
 ### <a name="diagnostics-extension-111"></a>Diagnosztikai bővítmény 1,11
 A Azure Monitor-fogadó támogatása. Ez a fogadó csak a teljesítményszámlálók esetében alkalmazható. Lehetővé teszi a virtuális gépen, VMSS vagy Cloud Service-ben gyűjtött teljesítményszámlálók küldését egyéni metrikák Azure Monitor. A Azure Monitor fogadó a következőket támogatja:
 * A Azure Monitor eljuttatott teljesítményszámlálók beolvasása a [Azure monitor metrikák API](/rest/api/monitor/metrics/list) -kon keresztül.
-* Riasztás a Azure Monitor elküldhető összes teljesítményszámlálók számára az új, [egyesített riasztások](../platform/alerts-overview.md) használatával Azure monitor
+* Riasztás a Azure Monitor elküldhető összes teljesítményszámlálók számára az új, [egyesített riasztások](../alerts/alerts-overview.md) használatával Azure monitor
 * A helyettesítő karakterek kezelése a teljesítményszámlálók esetében a mérőszámban a "példány" dimenzió. Ha például összegyűjtötte a "LogicalDisk ( \* )/DiskWrites/sec" számlálót, akkor az egyes logikai lemezek (C:, D: stb.) esetében a "példány" dimenzióra bontva vagy a riasztást is fel lehet osztani a lemezre, illetve a riasztásra.
 
 Azure Monitor definiálása új fogadóként a diagnosztikai bővítmény konfigurációjában
@@ -190,4 +189,3 @@ Ha az Azure SDK 2,4-ból az Azure SDK 2,5-es vagy újabb verziójára frissíti 
 * **A Cloud Service-alkalmazások diagnosztikát csak a szerepkör szintjén lehet konfigurálni, nem pedig a példány szintjén.**
 * **Minden alkalommal, amikor telepíti az alkalmazást, a rendszer frissíti a diagnosztika konfigurációját** – ez paritásos problémákat okozhat, ha módosítja a diagnosztika konfigurációját a Server Explorerben, majd újból üzembe helyezi az alkalmazást.
 * **Az Azure sdk 2,5-as és újabb verzióiban az összeomlási memóriaképek a diagnosztika konfigurációs fájljában vannak konfigurálva, nem pedig a kódban** – ha a kódban beállított összeomlási memóriaképek vannak, akkor manuálisan kell átvinnie a konfigurációt a kódból a konfigurációs fájlba, mivel az összeomlási memóriaképek nem kerülnek át az Azure SDK 2,6-es verzióra való Migrálás során.
-

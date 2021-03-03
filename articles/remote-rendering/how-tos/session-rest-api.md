@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 9eb1bb87792dbc61e7c85dbc20c136499f23f67c
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: 414dc161d7cba2e89d15c47b8da5abdfb7cb3338
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530212"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712164"
 ---
 # <a name="use-the-session-management-rest-api"></a>A munkamenet-kezelési REST API használata
 
@@ -18,7 +18,7 @@ Az Azure távoli renderelési funkciójának használatához létre kell hoznia 
 
 ## <a name="rest-api-reference"></a>REST API-referencia
 
-A REST API [hivatkozás itt található, és](https://docs.microsoft.com/rest/api/mixedreality/2021-01-01preview/remoterendering) [itt](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mixedreality/data-plane/Microsoft.MixedReality)láthatók a hencegés definíciói.
+A REST API [hivatkozás itt található, és](/rest/api/mixedreality/2021-01-01preview/remoterendering) [itt](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mixedreality/data-plane/Microsoft.MixedReality)láthatók a hencegés definíciói.
 Biztosítunk egy PowerShell-szkriptet az [ARR Samples adattárában](https://github.com/Azure/azure-remote-rendering) a *Scripts* mappában, amelyet a *RenderingSession.ps1* nevezünk, amely a szolgáltatás használatát mutatja be. A szkriptet és annak konfigurációját itt találja: [példa PowerShell-parancsfájlok](../samples/powershell-example-scripts.md).
 A [.net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/mixedreality/Azure.MixedReality.RemoteRendering), a Java és a Python SDK-kat is biztosítunk.
 
@@ -26,7 +26,7 @@ A [.net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/mixedreality
 > A késés a távoli renderelés használatakor fontos tényező. A legjobb megoldás az Ön számára legközelebb eső régióban lévő munkamenetek létrehozásához. Az [Azure-késési teszt](https://www.azurespeed.com/Azure/Latency) segítségével meghatározhatja, hogy melyik régió legközelebb Önhöz.
 
 > [!IMPORTANT]
-> Az ügyféleszközök egy renderelési munkamenethez való kapcsolódásához ARR futtatókörnyezeti SDK szükséges. Ezek az SDK-k a [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering?view=remoterendering) és a [C++](https://docs.microsoft.com/cpp/api/remote-rendering/)nyelven érhetők el. A szolgáltatáshoz való kapcsolódás mellett ezek az SDK-k is használhatók a munkamenetek elindításához és leállításához.
+> Az ügyféleszközök egy renderelési munkamenethez való kapcsolódásához ARR futtatókörnyezeti SDK szükséges. Ezek az SDK-k a [.net](/dotnet/api/microsoft.azure.remoterendering?view=remoterendering) és a [C++](/cpp/api/remote-rendering/)nyelven érhetők el. A szolgáltatáshoz való kapcsolódás mellett ezek az SDK-k is használhatók a munkamenetek elindításához és leállításához.
 
 ## <a name="next-steps"></a>Következő lépések
 

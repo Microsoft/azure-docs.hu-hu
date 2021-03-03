@@ -818,6 +818,8 @@
               href: enable-notebooks.md
             - name: Notebookok importálása a GitHubról
               href: import-github-notebooks.md
+            - name: Jegyzetfüzetek közzététele a katalógusban
+              href: publish-notebook-gallery.md
             - name: Beépített Python-notebookparancsok használata
               href: use-python-notebook-features-and-commands.md
             - name: Beépített C#-notebookparancsok használata

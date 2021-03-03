@@ -1,18 +1,18 @@
 ---
-title: Riasztások naplózása Azure Monitorről a tárolók számára | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan hozhat létre egyéni naplózási riasztásokat a memóriához és a CPU-használathoz a Azure Monitor for containers szolgáltatásban.
+title: Riasztások naplózása a Container-adatokból | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan hozhat létre egyéni napló-riasztásokat a memóriához és a CPU-használathoz a Container-adatokból.
 ms.topic: conceptual
 ms.date: 01/05/2021
-ms.openlocfilehash: 4239567c60afda6ca165e097562cb888c731f15a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 64d499d69194ac338d367ae094e42f4c8af23bef
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100614308"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711195"
 ---
-# <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>Naplóriasztások létrehozása a Tárolókhoz készült Azure Monitorból
+# <a name="how-to-create-log-alerts-from-container-insights"></a>Naplóbeli riasztások létrehozása a Container-adatokból
 
-A tárolók Azure Monitor figyeli a felügyelt vagy önállóan felügyelt Kubernetes-fürtökön üzembe helyezett tároló-munkaterhelések teljesítményét. Ahhoz, hogy riasztást kapjon, a cikk azt ismerteti, hogyan hozhat létre log-alapú riasztásokat a következő esetekben az AK-fürtökkel:
+A tároló-felismerések figyelik a felügyelt vagy önállóan felügyelt Kubernetes-fürtökön üzembe helyezett tároló-munkaterhelések teljesítményét. Ahhoz, hogy riasztást kapjon, a cikk azt ismerteti, hogyan hozhat létre log-alapú riasztásokat a következő esetekben az AK-fürtökkel:
 
 - Ha a fürt csomópontjain a CPU vagy a memória kihasználtsága meghaladja a küszöbértéket
 - Ha a processzor vagy a memória kihasználtsága egy vezérlőn belül bármely tárolón meghaladja a küszöbértéket, a megfelelő erőforráson beállított korláthoz képest
@@ -20,9 +20,9 @@ A tárolók Azure Monitor figyeli a felügyelt vagy önállóan felügyelt Kuber
 - *Sikertelen*, *függőben lévő*, *ismeretlen*, *futó* vagy *sikeres* Pod-Phase Counts
 - Ha a fürtcsomópontok szabad lemezterülete meghaladja a küszöbértéket
 
-Ha magas CPU-vagy memóriahasználat-kihasználtságot szeretne használni, vagy kevés a szabad lemezterület a fürtcsomópontokon, használja a metrikai riasztás vagy metrika-mérési riasztás létrehozásához megadott lekérdezéseket. Habár a metrikák riasztásai alacsonyabb késéssel rendelkeznek, mint a naplózási riasztások, a riasztások speciális lekérdezéseket és kifinomultabb kifinomultságot biztosítanak. A naplózási riasztási lekérdezések összehasonlítják a DateTime-et a jelen értékkel a *Now* operátor használatával, és egy óra múlva. (A tárolók Azure Monitor az összes dátumot az egyezményes világidő (UTC) formátumában tárolja.)
+Ha magas CPU-vagy memóriahasználat-kihasználtságot szeretne használni, vagy kevés a szabad lemezterület a fürtcsomópontokon, használja a metrikai riasztás vagy metrika-mérési riasztás létrehozásához megadott lekérdezéseket. Habár a metrikák riasztásai alacsonyabb késéssel rendelkeznek, mint a naplózási riasztások, a riasztások speciális lekérdezéseket és kifinomultabb kifinomultságot biztosítanak. A naplózási riasztási lekérdezések összehasonlítják a DateTime-et a jelen értékkel a *Now* operátor használatával, és egy óra múlva. (A Container bepillantást az összes dátumot az egyezményes világidő (UTC) formátumában tárolja.)
 
-Ha nem ismeri a Azure Monitor riasztásokat, a Kezdés előtt tekintse meg [a Microsoft Azure riasztások áttekintése](../platform/alerts-overview.md) című témakört. Ha többet szeretne megtudni a naplózási lekérdezéseket használó riasztásokról, tekintse meg a következő témakörben [szereplő riasztásokat: Azure monitor](../alerts/alerts-unified-log.md). A metrikus riasztásokról további információt a [metrikus riasztások Azure monitorban](../alerts/alerts-metric-overview.md)című témakörben talál.
+Ha nem ismeri a Azure Monitor riasztásokat, a Kezdés előtt tekintse meg [a Microsoft Azure riasztások áttekintése](../alerts/alerts-overview.md) című témakört. Ha többet szeretne megtudni a naplózási lekérdezéseket használó riasztásokról, tekintse meg a következő témakörben [szereplő riasztásokat: Azure monitor](../alerts/alerts-unified-log.md). A metrikus riasztásokról további információt a [metrikus riasztások Azure monitorban](../alerts/alerts-metric-overview.md)című témakörben talál.
 
 ## <a name="resource-utilization-log-search-queries"></a>Erőforrás-felhasználási naplók keresési lekérdezései
 
@@ -275,7 +275,7 @@ InsightsMetrics
 
 ## <a name="create-an-alert-rule"></a>Riasztási szabály létrehozása
 
-Ez a szakasz egy mérőszám-mérési riasztási szabály létrehozását mutatja be a Azure Monitorről származó teljesítményadatok használatával. Ezt az alapszintű folyamatot számos különböző naplózási lekérdezéssel használhatja, amelyek riasztást küldenek a különböző teljesítményszámlálók esetében. Az első lépésekhez használja a korábban megadott log keresési lekérdezések egyikét. ARM-sablon használatával történő létrehozáshoz tekintse meg [Az Azure-erőforrás-sablon használatával történő naplózási riasztások létrehozásának mintáit](../alerts/alerts-log-create-templates.md).
+Ez a szakasz egy mérőszám-mérési riasztási szabály létrehozását mutatja be a Container-elemzésből származó teljesítményadatokat használva. Ezt az alapszintű folyamatot számos különböző naplózási lekérdezéssel használhatja, amelyek riasztást küldenek a különböző teljesítményszámlálók esetében. Az első lépésekhez használja a korábban megadott log keresési lekérdezések egyikét. ARM-sablon használatával történő létrehozáshoz tekintse meg [Az Azure-erőforrás-sablon használatával történő naplózási riasztások létrehozásának mintáit](../alerts/alerts-log-create-templates.md).
 
 >[!NOTE]
 >A tárolók erőforrás-felhasználására vonatkozó riasztási szabály létrehozásához a következő eljárással kell váltania egy új naplózási riasztási API-ra, amelyet a [váltás API-beállítások a naplók számára](../alerts/alerts-log-api-switch.md)című témakörben talál.
@@ -283,7 +283,7 @@ Ez a szakasz egy mérőszám-mérési riasztási szabály létrehozását mutatj
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A Azure Portal keresse meg és válassza ki **log Analytics munkaterületeket**.
-3. Log Analytics munkaterületek listájában válassza ki a tárolók Azure Monitor támogató munkaterületet. 
+3. A Log Analytics-munkaterületek listájában válassza ki a tároló-bepillantást támogató munkaterületet. 
 4. A bal oldali ablaktáblán válassza a **naplók** lehetőséget a Azure monitor naplók lap megnyitásához. Ezt a lapot használhatja Azure-naplók írásához és végrehajtásához.
 5. A **naplók** lapon illessze be a korábban megadott [lekérdezések](#resource-utilization-log-search-queries) egyikét a **keresési lekérdezés** mezőbe, majd kattintson a **Futtatás** elemre az eredmények ellenőrzéséhez. Ha nem hajtja végre ezt a lépést, a **+ új riasztási** lehetőség nem választható ki.
 6. A log-riasztás létrehozásához válassza az **+ új riasztás** elemet.

@@ -5,14 +5,14 @@ services: azure-app-configuration
 author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 02/23/2021
 ms.author: alkemper
-ms.openlocfilehash: c5e0cc3eb29fb612460b16d8de9dee62949b5bd2
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 7d343e07414dd1c3f9786c1684eb6f14d5f45e51
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979606"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718182"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Beállítások leküldése az alkalmazás konfigurációjához az Azure-folyamatokkal
 
@@ -80,7 +80,7 @@ Az alkalmazás-konfiguráció leküldéses feladata a következő paramétereket
 
 - **Azure-előfizetés**: egy legördülő lista, amely tartalmazza az elérhető Azure-szolgáltatások kapcsolatait. Az elérhető Azure-szolgáltatási kapcsolatok listájának frissítéséhez és frissítéséhez kattintson az **Azure-előfizetés frissítése** gombra a szövegmezőtől jobbra.
 - **Alkalmazás konfigurációja neve**: egy legördülő lista, amely betölti az elérhető konfigurációs tárolókat a kijelölt előfizetésben. Az elérhető konfigurációs tárolók listájának frissítéséhez és frissítéséhez kattintson az **alkalmazás konfigurációjának frissítése** gombra a szövegmezőtől jobbra.
-- **Konfigurációs fájl elérési útja**: a konfigurációs fájl elérési útja. A konfigurációs fájl kiválasztásához Böngésszen a Build-összetevőn. ( `...` a szövegmezőtől jobbra látható gomb).
+- **Konfigurációs fájl elérési útja**: a konfigurációs fájl elérési útja. A konfigurációs fájl kiválasztásához Böngésszen a Build-összetevőn. ( `...` a szövegmezőtől jobbra látható gomb). A támogatott fájlformátumok a következők: YAML, JSON, Properties.
 - **Elválasztó**: a. JSON-és. YML-fájlok összevonásához használt elválasztó.
 - **Mélység**: az a mélység, amelyet a. JSON-és a. YML-fájlok összeolvasztása végez.
 - **Előtag**: az alkalmazás-konfigurációs tárolóba leküldett kulcsok elejéhez fűzött karakterlánc.

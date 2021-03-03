@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2444ec28a2618b638f78926e214de468f56c5e52
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 2f867fa6d4b7e1d864a85106b5d957a53d38eb76
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "95995475"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732538"
 ---
 # <a name="enable-smb-multichannel-on-a-filestorage-account-preview"></a>Többcsatornás SMB engedélyezése FileStorage-fiókban (előzetes verzió) 
 
@@ -28,7 +28,7 @@ Az Azure FileStorage-fiókok támogatják a többcsatornás SMB-t (előzetes ver
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Hozzon létre egy FileStorage-fiókot](storage-how-to-create-premium-fileshare.md).
+- [Hozzon létre egy FileStorage-fiókot](./storage-how-to-create-file-share.md).
 - Ha a Azure PowerShell modult szeretné használni, [telepítse a modul 3.0.1-Preview verzióját](https://www.powershellgallery.com/packages/Az.Storage/3.0.1-preview).
 
 ## <a name="getting-started"></a>Első lépések
@@ -90,7 +90,7 @@ Az Azure CLI még nem támogatja a többcsatornás SMB konfigurálását. Tekint
 > A többcsatornás SMB konfigurációs beállításainak módosítása a Storage-fiókban lévő összes fájlmegosztás esetében érvényes lesz. A módosítások életbe léptetéséhez újra kell csatlakoztatnia a megosztást az ügyfélen.
 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 - [Csatlakoztassa újra a fájlmegosztást](storage-how-to-use-files-windows.md) , hogy kihasználhassa a többcsatornás SMB előnyeit.
 - A [többcsatornás SMB-vel kapcsolatos problémák elhárítása](storage-troubleshooting-files-performance.md#smb-multichannel-option-not-visible-under-file-share-settings).

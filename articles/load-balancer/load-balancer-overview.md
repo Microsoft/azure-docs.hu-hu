@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/25/2021
 ms.author: allensu
-ms.openlocfilehash: 716acec51226e9e4ff47605c3ee2bd9a86be1933
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a514edef1ef1f67fba3efae883ceb46dee249d6e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100588560"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705500"
 ---
 # <a name="what-is-azure-load-balancer"></a>Mi az az Azure Load Balancer?
 
@@ -56,7 +56,7 @@ A standard Load Balancer használatával végrehajtható főbb forgatókönyvek 
 
 - Engedélyezze az IPv6 **[terheléselosztásának](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)** támogatását **[](../virtual-network/ipv6-overview.md)**.
 
-- Standard Load Balancer többdimenziós metrikákat biztosít [Azure monitoron](../azure-monitor/overview.md)keresztül.  Ezek a metrikák szűrhetők, csoportosíthatók és kibonthatók egy adott dimenzióra vonatkozóan.  A szolgáltatás teljesítményének és állapotának aktuális és korábbi betekintést nyújtanak. A [Azure Load Balancer bepillantást nyerhet](https://docs.microsoft.com/azure/load-balancer/load-balancer-insights) előre konfigurált irányítópultot, amely hasznos vizualizációkkal rendelkezik ezekhez a metrikához.  A Resource Health is támogatott. További részletekért tekintse át **[standard Load Balancer diagnosztikát](load-balancer-standard-diagnostics.md)** .
+- Standard Load Balancer többdimenziós metrikákat biztosít [Azure monitoron](../azure-monitor/overview.md)keresztül.  Ezek a metrikák szűrhetők, csoportosíthatók és kibonthatók egy adott dimenzióra vonatkozóan.  A szolgáltatás teljesítményének és állapotának aktuális és korábbi betekintést nyújtanak. A [Azure Load Balancer bepillantást nyerhet](./load-balancer-insights.md) előre konfigurált irányítópultot, amely hasznos vizualizációkkal rendelkezik ezekhez a metrikához.  A Resource Health is támogatott. További részletekért tekintse át **[standard Load Balancer diagnosztikát](load-balancer-standard-diagnostics.md)** .
 
 - Terheléselosztási szolgáltatásokat **[több porton, több IP-címen vagy mindkettőn](./load-balancer-multivip-overview.md)**.
 

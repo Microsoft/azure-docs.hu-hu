@@ -3,12 +3,12 @@ title: Azure-Managed Disks visszaállítása
 description: Ismerje meg, hogyan állíthatja vissza az Azure Managed Diskst a Azure Portalból.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: b9c9a22f25a8003151217bec15b618e3c380e67e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 995217cd17d1e2a16cd7a5f963ee88aa7116d4a7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737376"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703749"
 ---
 # <a name="restore-azure-managed-disks-in-preview"></a>Az Azure Managed Disks visszaállítása (előzetes verzió)
 
@@ -66,7 +66,7 @@ A visszaállítási művelet végrehajtásához a következő előfeltételek sz
     >
     >Ütemezett biztonsági mentések vagy igény szerinti biztonsági mentési művelet során a Azure Backup a lemez biztonsági mentésének konfigurálása során megadott pillanatkép-erőforráscsoport lemezes növekményes pillanatképeit tárolja. A Azure Backup ezeket a növekményes pillanatképeket használja a visszaállítási művelet során. Ha a pillanatképeket törli vagy áthelyezi a pillanatkép-erőforráscsoporthoz, vagy ha a biztonságimásolat-tároló szerepkör-hozzárendeléseit visszavonják a pillanatkép-erőforráscsoport esetében, a visszaállítási művelet sikertelen lesz.
 
-1. Ha a visszaállítani kívánt lemez az [ügyfél által felügyelt kulcsokkal (CMK)](https://docs.microsoft.com/azure/virtual-machines/disks-enable-customer-managed-keys-portal) van titkosítva, vagy ha a [platform által felügyelt kulcsokkal és az ügyfél által felügyelt](https://docs.microsoft.com/azure/virtual-machines/disks-enable-double-encryption-at-rest-portal)kulcsokkal használja a kettős titkosítást, akkor a **lemez titkosítási készletének** erőforrásában rendelje hozzá az **olvasói** szerepkört a biztonságimásolat-tároló felügyelt identitásához.
+1. Ha a visszaállítani kívánt lemez az [ügyfél által felügyelt kulcsokkal (CMK)](../virtual-machines/disks-enable-customer-managed-keys-portal.md) van titkosítva, vagy ha a [platform által felügyelt kulcsokkal és az ügyfél által felügyelt](../virtual-machines/disks-enable-double-encryption-at-rest-portal.md)kulcsokkal használja a kettős titkosítást, akkor a **lemez titkosítási készletének** erőforrásában rendelje hozzá az **olvasói** szerepkört a biztonságimásolat-tároló felügyelt identitásához.
 
 Ha az előfeltételek teljesülnek, kövesse az alábbi lépéseket a visszaállítási művelet végrehajtásához.
 
@@ -131,6 +131,6 @@ A visszaállítási művelet elindítását követően a Backup szolgáltatás l
 
     ![Feladatok listája](./media/restore-managed-disks/list-of-jobs.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Disk Backup – gyakori kérdések](disk-backup-faq.md)

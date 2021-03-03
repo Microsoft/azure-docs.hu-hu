@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: dbe0b5ac207b361a9584603bbe2d59abd5e5ca4e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4f5ea68102e98a9abc3e5a0a31d3153bc1bd1663
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390402"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738225"
 ---
 # <a name="whats-new-in-computer-vision"></a>A Computer Vision újdonságai
 
@@ -50,8 +50,8 @@ A [térbeli elemzési tároló](spatial-analysis-container.md) új verziója meg
 * **Megszakítási változás**: a *personZoneEvent* esemény átnevezve lett a *personZoneEnterExitEvent* névre. Ez az esemény akkor következik be, amikor egy személy belép vagy kilép a zónából, és irányt ad a *personcrossingpolygon* , amely áthaladt a zóna számozott oldalával.
 * A videó URL-címe az összes műveletben "privát paraméterként/elhomályosítva" adható meg. A elhomályosítás most nem kötelező, és csak akkor működik, ha `KEY` `IV` környezeti változókként vannak megadva.
 * A kalibrálás alapértelmezés szerint engedélyezve van az összes művelethez. A letiltásához állítsa be a parancsot `do_calibration: false` .
-* Az automatikus újrakalibrálás támogatása (alapértelmezés szerint letiltva) a `enable_recalibration` paraméterrel, a részletekért tekintse meg a [térbeli elemzési műveleteket](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-operations) ismertető témakört.
-* A kamera-kalibrálási paraméterek a következőre: `DETECTOR_NODE_CONFIG` . Részletekért tekintse meg a [térbeli elemzési műveleteket](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-operations) .
+* Az automatikus újrakalibrálás támogatása (alapértelmezés szerint letiltva) a `enable_recalibration` paraméterrel, a részletekért tekintse meg a [térbeli elemzési műveleteket](./spatial-analysis-operations.md) ismertető témakört.
+* A kamera-kalibrálási paraméterek a következőre: `DETECTOR_NODE_CONFIG` . Részletekért tekintse meg a [térbeli elemzési műveleteket](./spatial-analysis-operations.md) .
 
 
 ## <a name="october-2020"></a>2020. október

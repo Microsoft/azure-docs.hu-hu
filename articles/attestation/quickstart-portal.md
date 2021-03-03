@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a8ab7195958a6c2d5a730c38232eb348d505deda
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: d1310e3c4b4a56a27219cce613e8f6109d32c8c2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593603"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729391"
 ---
 # <a name="quickstart-set-up-azure-attestation-by-using-the-azure-portal"></a>Gyors útmutató: az Azure-igazolás beállítása a Azure Portal használatával
 
@@ -90,7 +90,7 @@ Az ebben a szakaszban ismertetett lépéseket követve megtekintheti, hozzáadha
 1. Lépjen a Azure Portal menüre vagy a kezdőlapra, és válassza az **összes erőforrás** lehetőséget.
 1. A szűrő mezőbe írja be az igazolási szolgáltató nevét.
 1. Válassza ki az igazolási szolgáltatót, és lépjen az Áttekintés oldalra.
-1. Az ablak bal oldalán vagy az alsó ablaktáblán válassza ki a **házirend-aláíró tanúsítványokat** az erőforrás menüben.
+1. Az ablak bal oldalán vagy az alsó ablaktáblán válassza ki a **házirend-aláíró tanúsítványokat** az erőforrás menüben. A hitelesítéshez a tanúsítvány kiválasztását kérő üzenet jelenik meg. A folytatáshoz válassza ki a megfelelő lehetőséget.
 1. Válassza a **házirend-aláíró tanúsítványok letöltése** lehetőséget. A gomb le lesz tiltva a házirend-aláírási követelmény nélkül létrehozott igazolási szolgáltatóknál.
 1. A letöltött szövegfájl minden tanúsítványt JWS-formátumban fog tartalmazni.
 1. Ellenőrizze a tanúsítványok darabszámát és a letöltött tanúsítványokat.
@@ -122,7 +122,7 @@ Ez a szakasz azt ismerteti, hogyan lehet megtekinteni egy igazolási házirendet
 1.  Lépjen a Azure Portal menüre vagy a kezdőlapra, és válassza az **összes erőforrás** lehetőséget.
 1.  A szűrő mezőbe írja be az igazolási szolgáltató nevét.
 1.  Válassza ki az igazolási szolgáltatót, és lépjen az Áttekintés oldalra.
-1.  Az ablak bal oldalán vagy az alsó ablaktáblán válassza a **házirend** lehetőséget az erőforrás menüben.
+1.  Az ablak bal oldalán vagy az alsó ablaktáblán válassza a **házirend** lehetőséget az erőforrás menüben. A hitelesítéshez a tanúsítvány kiválasztását kérő üzenet jelenik meg. A folytatáshoz válassza ki a megfelelő lehetőséget.
 1.  Válassza ki az előnyben részesített **igazolási típust** , és tekintse meg az **aktuális szabályzatot**.
 
 ### <a name="configure-an-attestation-policy"></a>Igazolási házirend konfigurálása
@@ -144,6 +144,7 @@ A szabályzatok JWT vagy szöveges formátumban való feltöltéséhez kövesse 
    A fájlfeltöltés beállításnál a házirend-előnézet szöveges formátumban jelenik meg, és nem szerkeszthető.
 
 1. A beállított szabályzat megtekintéséhez válassza a felső menü **frissítés** elemét.
+
 
 Ha az igazolási szolgáltató házirend-aláírási követelménysel lett létrehozva, kövesse az alábbi lépéseket a szabályzat JWT formátumban való feltöltéséhez.
 

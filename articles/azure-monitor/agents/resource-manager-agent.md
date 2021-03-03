@@ -6,15 +6,15 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: 9f8ad1e9a3c69d4ab629694fb18eab4bce95bb38
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4d4f9b7caed81f8c01e7e2d7e9f94ec3acf3ba92
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627775"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737341"
 ---
 # <a name="resource-manager-template-samples-for-agents-in-azure-monitor"></a>Resource Manager-sablonok – minták a Azure Monitor lévő ügynökökhöz
-Ez a cikk minta [Azure Resource Manager sablonokat](../../azure-resource-manager/templates/template-syntax.md) tartalmaz a [log Analytics-ügynök](../platform/log-analytics-agent.md) és a [diagnosztikai bővítmény](../platform/diagnostics-extension-overview.md) üzembe helyezéséhez és konfigurálásához a Azure monitor-ben. Mindegyik minta tartalmaz egy sablonfájlt és egy, a sablonhoz adni kívánt minta értékeket tartalmazó paramétereket tartalmazó fájlt.
+Ez a cikk minta [Azure Resource Manager sablonokat](../../azure-resource-manager/templates/template-syntax.md) tartalmaz a [log Analytics-ügynök](./log-analytics-agent.md) és a [diagnosztikai bővítmény](./diagnostics-extension-overview.md) üzembe helyezéséhez és konfigurálásához a Azure monitor-ben. Mindegyik minta tartalmaz egy sablonfájlt és egy, a sablonhoz adni kívánt minta értékeket tartalmazó paramétereket tartalmazó fájlt.
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
@@ -421,7 +421,7 @@ Az alábbi példa telepíti a Log Analytics Agent ügynököt egy Linux Azure-be
 Az ebben a szakaszban szereplő minták telepítik a diagnosztikai bővítményt az Azure-beli Windows-és Linux-alapú virtuális gépeken, és az adatgyűjtéshez konfigurálja azokat.
 
 ### <a name="windows"></a>Windows
-A következő minta engedélyezi és konfigurálja a diagnosztikai bővítményt egy Windows Azure-beli virtuális gépen. A konfiguráció részleteit lásd: a [Windows Diagnostics bővítmény sémája](../platform/diagnostics-extension-schema-windows.md).
+A következő minta engedélyezi és konfigurálja a diagnosztikai bővítményt egy Windows Azure-beli virtuális gépen. A konfiguráció részleteit lásd: a [Windows Diagnostics bővítmény sémája](./diagnostics-extension-schema-windows.md).
 
 #### <a name="template-file"></a>Sablonfájl
 
@@ -807,6 +807,6 @@ A következő minta lehetővé teszi a diagnosztikai bővítmény használatát 
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [További Azure monitor-sablonok beszerzése](../samples/resource-manager-samples.md).
-* [További információ a log Analytics-ügynökről](../platform/log-analytics-agent.md).
-* [További információ a diagnosztikai bővítményről](../platform/diagnostics-extension-overview.md).
+* [További Azure monitor-sablonok beszerzése](../resource-manager-samples.md).
+* [További információ a log Analytics-ügynökről](./log-analytics-agent.md).
+* [További információ a diagnosztikai bővítményről](./diagnostics-extension-overview.md).

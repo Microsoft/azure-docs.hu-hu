@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 07/16/2020
-ms.openlocfilehash: 85a5493e1d1c06a68aa9f4b64cd0f3d55c4f5f63
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: afef6b0b868455d806b085a2e1f15f497e8c6799
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99580887"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706724"
 ---
 # <a name="whats-new-in-qna-maker"></a>A QnA Maker újdonságai
 
@@ -64,11 +64,11 @@ Ismerje meg a QnA Maker újdonságait.
 
 ### <a name="october-2019"></a>2019. október
 
-* [Explicit módon állítja be az összes Tudásbázis nyelvét](./index.yml) a QnA Maker szolgáltatásban.
+* Explicit módon állítja be az összes Tudásbázis nyelvét a QnA Maker szolgáltatásban.
 
 ### <a name="september-2019"></a>2019. szeptember
 
-* Importálás és exportálás [xls fájlformátummal](./index.yml)
+* Importálás és exportálás XLS fájlformátummal.
 
 ### <a name="june-2019"></a>2019. június
 

@@ -12,12 +12,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 02/01/2021
-ms.openlocfilehash: beb82f8435aea817a074ce83fddc6a5417b86c26
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6ba1ba9d8c809a805fe8691baf96350b70ec6a51
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417634"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691892"
 ---
 # <a name="automate-management-tasks-using-sql-agent-jobs-in-azure-sql-managed-instance"></a>Felügyeleti feladatok automatizálása SQL Agent-feladatok használatával az Azure SQL felügyelt példányában
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -78,7 +78,7 @@ Az SQL Agent feladatainak számos alapvető fogalma van:
 
 Az SQL Agent-feladatok lépései az SQL Agent által végrehajtandó műveletek sorozatából állnak. Minden lépésnél a következő lépésnek kell megjelennie, ha a lépés sikeres vagy sikertelen, hiba esetén az újrapróbálkozások száma.
 
-Az SQL-ügynök lehetővé teszi, hogy különböző típusú feladatokat hozzon létre, például a Transact-SQL-feladatok lépéseit, amelyek egyetlen Transact-SQL-köteget hajtanak végre az adatbázison, vagy az operációs rendszert [futtató, az](/azure/data-factory/how-to-invoke-ssis-package-managed-instance-agent) egyéni operációsrendszer-parancsfájlt végrehajtó operációsrendszer-parancsot, illetve PowerShell-lépéseket, amelyek lehetővé teszik az adatok SSIS-futtatókörnyezettel való betöltését [, illetve az](../managed-instance/replication-transactional-overview.md) adatbázisból
+Az SQL-ügynök lehetővé teszi, hogy különböző típusú feladatokat hozzon létre, például a Transact-SQL-feladatok lépéseit, amelyek egyetlen Transact-SQL-köteget hajtanak végre az adatbázison, vagy az operációs rendszert [futtató, az](../../data-factory/how-to-invoke-ssis-package-managed-instance-agent.md) egyéni operációsrendszer-parancsfájlt végrehajtó operációsrendszer-parancsot, illetve PowerShell-lépéseket, amelyek lehetővé teszik az adatok SSIS-futtatókörnyezettel való betöltését [, illetve az](../managed-instance/replication-transactional-overview.md) adatbázisból
 
 > [!Note]
 > Az Azure SSIS Integration Runtime az Azure SQL felügyelt példány által üzemeltetett SSISDB való használatával kapcsolatos további információkért lásd: az [Azure SQL felügyelt példányának használata SQL Server Integration Services (SSIS) segítségével Azure Data Factory](/../azure/data-factory/how-to-use-sql-managed-instance-with-ir.md).

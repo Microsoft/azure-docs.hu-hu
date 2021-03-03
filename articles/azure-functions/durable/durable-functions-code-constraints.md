@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: dc301cf7149ad9fcd5bd5c02226afedc4df5e3ee
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 63db8375379144b2ede78d9e7010a350b3f69b12
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833095"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726410"
 ---
 # <a name="orchestrator-function-code-constraints"></a>Orchestrator megkötések
 
@@ -31,7 +31,7 @@ A következő táblázat példákat mutat be olyan API-kra, amelyeket el kell ke
 | API-kategória | Ok | Áthidaló megoldás |
 | ------------ | ------ | ---------- |
 | Dátum és idő  | Az aktuális dátumot vagy időpontot visszaadó API-k determinált, mert a visszaadott érték eltér az egyes visszajátszás esetén. | Használja a [CurrentUtcDateTime](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.currentutcdatetime) tulajdonságot a .net-ben, az `currentUtcDateTime` API-t a JavaScriptben, vagy a Pythonban található API-t, `current_utc_datetime` amely biztonságos az újrajátszás számára. |
-| GUID azonosítók és UUID-ket  | A véletlenszerű GUID vagy UUID értéket visszaadó API-k determinált, mert a generált érték különbözik az egyes visszajátszás esetén. | Véletlenszerű GUID azonosítók biztonságos létrehozásához használja a [NewGuid](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.newguid) -t a .net-ben vagy `newGuid` a JavaScriptben. |
+| GUID azonosítók és UUID-ket  | A véletlenszerű GUID vagy UUID értéket visszaadó API-k determinált, mert a generált érték különbözik az egyes visszajátszás esetén. | A [NewGuid](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.newguid) használata a .net-ben, `newGuid` JavaScriptben és `new_guid` PYTHONBAN a véletlenszerű GUID azonosítók biztonságos létrehozásához. |
 | Véletlenszerű számok | A véletlenszerű számokat visszaadó API-k determinált, mert a generált érték különbözik az egyes ismétlésekhez. | Egy tevékenység függvénnyel véletlenszerű számokat adhat vissza egy előkészítési művelethez. A tevékenység-függvények visszatérési értékei mindig biztonságosak a visszajátszás esetén. |
 | Kötések | A bemeneti és kimeneti kötések általában I/O-műveletek, és determinált. A Orchestrator függvénynek nem szabad közvetlenül használnia még a koordináló [ügyfelet](durable-functions-bindings.md#orchestration-client) és az [entitás-ügyfél](durable-functions-bindings.md#entity-client) kötéseit. | Bemeneti és kimeneti kötések használata az ügyfélen vagy a tevékenységi függvényeken belül. |
 | Network (Hálózat) | A hálózati hívások külső rendszereket érintenek, és determinált. | Hálózati hívások létrehozásához használja a Activity functions funkciót. Ha HTTP-hívást kell létrehoznia a Orchestrator függvényből, használhatja a [tartós http API-kat](durable-functions-http-features.md#consuming-http-apis)is. |

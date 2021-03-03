@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2018
 ms.author: jeedes
-ms.openlocfilehash: fe241a3fd74e1421f1bd3d39087fe776ee7b61d9
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: e1440feacd10935b15195110cd7ea3e20b4d523c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891550"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687634"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>Oktatóanyag: Azure Active Directory integráció az SAML SSO-nal a JIRA by Solution GmbH által
 
@@ -45,7 +45,7 @@ Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Az
 
 ## <a name="adding-an-enterprise-application-for-single-sign-on"></a>Vállalati alkalmazás hozzáadása egyszeri bejelentkezéshez
 
-Az egyszeri bejelentkezés az Azure AD-ben való beállításához hozzá kell adnia egy új vállalati alkalmazást. A katalógusban van egy előre konfigurált alkalmazás, amely **SAML egyszeri bejelentkezést biztosít a JIRA-hez** .
+Az egyszeri bejelentkezés az Azure AD-ben való beállításához hozzá kell adnia egy új vállalati alkalmazást. A katalógusban van egy előre konfigurált alkalmazás, amely **SAML egyszeri bejelentkezést biztosít a JIRA-hez**.
 
 **A következő lépésekkel adhatja hozzá az SAML SSO-t a JIRA by Solution GmbH által a katalógusból:**
 
@@ -200,7 +200,7 @@ A következő lépések végrehajtásával konfigurálhatja az egyszeri bejelent
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban. A felhasználóval tesztelheti az egyszeri bejelentkezést.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -218,7 +218,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -228,7 +228,7 @@ Ebben a szakaszban Simon Britta-t ad hozzá a vállalati alkalmazáshoz, amely l
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában keresse meg az oktatóanyag elején létrehozott vállalati alkalmazást. Ha követi az oktatóanyag lépéseit, a rendszer az **SAML SSO-t az JIRA általi feloldáshoz** . Ha egy másik nevet adott meg, keresse meg a nevet.
+2. Az alkalmazások listában keresse meg az oktatóanyag elején létrehozott vállalati alkalmazást. Ha követi az oktatóanyag lépéseit, a rendszer az **SAML SSO-t az JIRA általi feloldáshoz**. Ha egy másik nevet adott meg, keresse meg a nevet.
 
     ![Az alkalmazások listájában a JIRA által a megoldási GmbH-hez csatolt, SAML SSO](common/all-applications.png)
 
@@ -272,7 +272,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek az S
 
     a. Az **e-mail cím** szövegmezőbe írja be a felhasználó e-mail-címét:  <b>BrittaSimon@contoso.com</b> .
 
-    b. A **teljes név** szövegmezőbe írja be a felhasználó teljes nevét: **Britta Simon** .
+    b. A **teljes név** szövegmezőbe írja be a felhasználó teljes nevét: **Britta Simon**.
 
     c. A **Felhasználónév** szövegmezőbe írja be a felhasználó e-mail-címét: <b>BrittaSimon@contoso.com</b> . 
 
@@ -291,11 +291,11 @@ Az egyszeri bejelentkezést is tesztelheti, ha megnyitja a következőt: `https:
 
 ## <a name="enable-single-sign-on-redirection-for-jira"></a>Egyszeri bejelentkezéses átirányítás engedélyezése a JIRA
 
-Ahogy a korábban is említettük, az egyszeri bejelentkezést jelenleg kétféleképpen indíthatjuk el. Vagy a **Azure Portal** használatával vagy a **JIRA-példányra mutató speciális hivatkozás** használatával. A Solution GmbH SAML SSO beépülő modulja is lehetővé teszi az egyszeri bejelentkezés aktiválását, ha egyszerűen **hozzáfér az JIRA-példányra mutató URL-címekhez** .
+Ahogy a korábban is említettük, az egyszeri bejelentkezést jelenleg kétféleképpen indíthatjuk el. Vagy a **Azure Portal** használatával vagy a **JIRA-példányra mutató speciális hivatkozás** használatával. A Solution GmbH SAML SSO beépülő modulja is lehetővé teszi az egyszeri bejelentkezés aktiválását, ha egyszerűen **hozzáfér az JIRA-példányra mutató URL-címekhez**.
 
 Lényegében az JIRA-t elérő összes felhasználó át lesz irányítva az egyszeri bejelentkezésre, miután aktiválta egy lehetőséget a beépülő modulban.
 
-Az SSO-átirányítás aktiválásához tegye a következőket az **JIRA-példányban** :
+Az SSO-átirányítás aktiválásához tegye a következőket az **JIRA-példányban**:
 
 1. Nyissa meg az SAML SSO beépülő modul konfigurációs lapját a JIRA-ben.
 1. Kattintson a bal oldali panelen található **átirányítás** elemre.
@@ -308,7 +308,7 @@ Az SSO-átirányítás aktiválásához tegye a következőket az **JIRA-példá
 
 1. Nyomja meg a **Beállítások mentése** gombot a jobb felső sarokban.
 
-A beállítás aktiválása után továbbra is elérheti a Felhasználónév/jelszó kérést, ha az **Nosso engedélyezése** beállítás be van jelölve `https://\<server-base-url>/login.jsp?nosso` . Mint mindig, helyettesítse **\<server-base-url>** be az alap URL-címet.
+A beállítás aktiválása után továbbra is elérheti a Felhasználónév/jelszó kérést, ha az **Nosso engedélyezése** beállítás be van jelölve `https://<server-base-url>/login.jsp?nosso` . Mint mindig, helyettesítse **\<server-base-url>** be az alap URL-címet.
 
 
 ## <a name="additional-resources"></a>További források

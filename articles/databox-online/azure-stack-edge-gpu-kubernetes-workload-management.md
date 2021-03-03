@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: ef840b3d9db4e82eeecea37079a08ccb0858a77b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: aac4278c6ce03c43418e99978cd039e24dc01194
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448536"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719270"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-pro-device"></a>Kubernetes a számítási feladatok kezelése a Azure Stack Edge Pro-eszközön
 
@@ -54,6 +54,17 @@ A munkaterhelések üzembe helyezésének három fő módja van. Az üzembe hely
 - **Azure arc-kompatibilis Kubernetes üzembe helyezése**: az Azure arc enabled Kubernetes egy hibrid felügyeleti eszköz, amely lehetővé teszi alkalmazások üzembe helyezését a Kubernetes-fürtökön. A Azure Stack Edge Pro-eszközön keresztül csatlakozik a Kubernetes-fürthöz `azure-arc namespace` . Az ebben a névtérben üzembe helyezett ügynökök felelősek az Azure-hoz való csatlakozásért. A központi telepítési konfigurációt a GitOps-alapú konfiguráció-kezelés használatával alkalmazhatja. 
     
     Az Azure arc-kompatibilis Kubernetes azt is lehetővé teszi, hogy a tárolók Azure Monitor használatával megtekinthesse és figyelje a fürtöt. További információért látogasson el az [Azure arc-kompatibilis Kubernetes?](../azure-arc/kubernetes/overview.md)című témakörre.
+    
+    Március 2021-én az Azure arc-kompatibilis Kubernetes általánosan elérhető lesz a felhasználók számára, és a szokásos használati díjak érvényesek. Az előzetes verziójú ügyfélként az Azure arc-kompatibilis Kubernetes az Azure Stack Edge-eszköz (ök) számára ingyenesen elérhető lesz. Az előzetes verziójú ajánlat kihasználása érdekében hozzon létre egy [support Request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest):
+
+    1. A **Probléma típusa** területen válassza a **Számlázás** lehetőséget.
+    2. Az **Előfizetés** alatt válassza ki az előfizetését.
+    3. A **szolgáltatás** területen válassza **a saját szolgáltatások**, majd az **Azure stack Edge** lehetőséget.
+    4. Az **erőforrás** területen válassza ki az erőforrást.
+    5. Az **Összefoglalás** területen adja meg a probléma leírását.
+    6. A **probléma típusa** területen válassza a **váratlan díjak** lehetőséget.
+    7. A **probléma altípusa** alatt válassza **az ingyenes próbaverzióban a díjak megismerése** lehetőséget.
+
 
 ## <a name="choose-the-deployment-type"></a>A központi telepítés típusának kiválasztása
 
@@ -66,7 +77,7 @@ Az alkalmazások központi telepítése során vegye figyelembe a következő in
 - **IoT vs Azure arc**: az üzembe helyezés megválasztása a termék forgatókönyvének szándékával is függ. Ha olyan alkalmazásokat vagy tárolókat helyez üzembe, amelyek mélyebb integrációt végeznek a IoT vagy a IoT ökoszisztémával, válassza az IoT Edge lehetőséget az alkalmazások telepítéséhez. Ha már rendelkezik Kubernetes üzemelő példányokkal, az Azure arc az előnyben részesített választás lenne.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha helyileg szeretné telepíteni az alkalmazást a kubectl-on keresztül, olvassa el a következőt:
 

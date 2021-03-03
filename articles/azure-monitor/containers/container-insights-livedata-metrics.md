@@ -1,19 +1,19 @@
 ---
-title: A metrikák valós idejű megtekintése a Azure Monitor for containers szolgáltatással | Microsoft Docs
-description: Ez a cikk a metrikák valós idejű nézetét írja le anélkül, hogy a kubectl és a Azure Monitor for containers használatával kellene használnia.
+title: A metrikák valós idejű megtekintése a Container bepillantást nyerhet | Microsoft Docs
+description: Ez a cikk a metrikák valós idejű nézetét mutatja be anélkül, hogy a kubectl-t használja a Container bepillantást.
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.custom: references_regions
-ms.openlocfilehash: 81d7210778fd6b5d75fb4b4fa8e066d2e015174f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2e3a8a417a934374c2c0b256bb65a471d98fdebe
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100616198"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731850"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>A metrikák valós idejű megtekintése
 
-A containers Live-adatok (előzetes verzió) szolgáltatásban Azure Monitor a valós idejű csomópont-és Pod-állapot mérőszámait jeleníti meg. Közvetlen hozzáférést emulál a `kubectl top nodes` , a `kubectl get pods –all-namespaces` és `kubectl get nodes` parancsokhoz, hogy meghívja, elemezze és megjelenítse az ebben az elemzésben szereplő teljesítmény-diagramokban lévő információkat.
+A Container bepillantást élő adatok (előzetes verzió) funkciója lehetővé teszi, hogy valós időben jelenítse meg a csomópont-és Pod-állapot mérőszámait a fürtben. Közvetlen hozzáférést emulál a `kubectl top nodes` , a `kubectl get pods –all-namespaces` és `kubectl get nodes` parancsokhoz, hogy meghívja, elemezze és megjelenítse az ebben az elemzésben szereplő teljesítmény-diagramokban lévő információkat.
 
 Ez a cikk részletes áttekintést nyújt, és segít megérteni a funkció használatát.
 
@@ -26,7 +26,7 @@ Az élő adatszolgáltatások (előzetes verzió) beállításával vagy hibaelh
 
 Az élő adatok (előzetes verzió) funkció közvetlenül a Kubernetes API-hoz érhető el, és a hitelesítési modellel kapcsolatos további információk [itt](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)találhatók.
 
-Ez a szolgáltatás lekérdezési műveletet hajt végre a metrikák végpontokon (beleértve `/api/v1/nodes` a, `/apis/metrics.k8s.io/v1beta1/nodes` és a `/api/v1/pods` ), amely alapértelmezés szerint öt másodpercenként van. Ezeket az adatfájlokat a rendszer a böngészőben gyorsítótárazza, és a **fürt** lapján lévő tárolók Azure monitor a négy teljesítményű diagramban szerepel, a **Go Live (előzetes verzió)** lehetőség kiválasztásával. Minden további lekérdezés táblázatos, öt perces vizualizációs ablakba kerül.
+Ez a szolgáltatás lekérdezési műveletet hajt végre a metrikák végpontokon (beleértve `/api/v1/nodes` a, `/apis/metrics.k8s.io/v1beta1/nodes` és a `/api/v1/pods` ), amely alapértelmezés szerint öt másodpercenként van. Ezeket az adatfájlokat a rendszer a böngészőben gyorsítótárazza, és a **fürt** lapon található, a **(z) Go Live (előzetes verzió)** elemre kattintva a tárolóban bekövetkező négy teljesítményű diagramon ábrázolja őket. Minden további lekérdezés táblázatos, öt perces vizualizációs ablakba kerül.
 
 ![Ugrás az élő lehetőségre a fürt nézetben](./media/container-insights-livedata-metrics/cluster-view-go-live-example-01.png)
 

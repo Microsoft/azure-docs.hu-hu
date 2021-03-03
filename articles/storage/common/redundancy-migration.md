@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 02/19/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 38978982baea41d23958a857b19a1edf2e454f37
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 412e5ac661761d5fda1d375c59511c053a6354a6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98938721"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714782"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Tárfiók replikálási módjának megváltoztatása
 
@@ -41,7 +41,7 @@ Az alábbi táblázat áttekintést nyújt az egyes replikálási típusokról a
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
 | <b>... LRS</b> | N/A | A Azure Portal, a PowerShell vagy a CLI használatával módosítsa a replikálási beállítást<sup>1, 2</sup> | Manuális áttelepítés végrehajtása <br /><br /> OR <br /><br /> Élő áttelepítés kérése | Manuális áttelepítés végrehajtása <br /><br /> OR <br /><br /> Először váltson a GRS/RA-GRS, majd igényeljen élő áttelepítést<sup>1</sup> |
 | <b>... GRS/RA-GRS</b> | A replikálási beállítás módosításához használja a Azure Portal, a PowerShell vagy a CLI-t. | N/A | Manuális áttelepítés végrehajtása <br /><br /> OR <br /><br /> Először váltson a LRS, majd kérjen élő áttelepítést | Manuális áttelepítés végrehajtása <br /><br /> OR <br /><br /> Élő áttelepítés kérése |
-| <b>... ZRS</b> | Manuális áttelepítés végrehajtása | Manuális áttelepítés végrehajtása | N/A | A Azure Portal, a PowerShell vagy a CLI használatával módosítsa a replikálási beállítást<sup>1, 3</sup> |
+| <b>... ZRS</b> | Manuális áttelepítés végrehajtása | Manuális áttelepítés végrehajtása | N/A | Élő áttelepítés kérése |
 | <b>... GZRS/RA-GZRS</b> | Manuális áttelepítés végrehajtása | Manuális áttelepítés végrehajtása | A replikálási beállítás módosításához használja a Azure Portal, a PowerShell vagy a CLI-t. | N/A |
 
 <sup>1</sup> egyszeri kimenő díj.<br />

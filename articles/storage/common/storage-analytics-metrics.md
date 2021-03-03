@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 8f698aadc24d0dc0691743f1d8dd54c5d5fd287e
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: d900ffa4481ba2b6deb21a8325f3f8def8084f84
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220956"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714731"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Storage Analytics metrikák (klasszikus)
 
@@ -25,7 +25,7 @@ Az Azure Storage a Storage Analytics megoldást használja az összesített tran
 - A tárolási szolgáltatáshoz intézett kérelmekkel kapcsolatos problémák diagnosztizálása.
 - Javítsa a szolgáltatást használó alkalmazások teljesítményét.
 
- Storage Analytics metrikák alapértelmezés szerint engedélyezve vannak az új Storage-fiókok esetében. A metrikák a [Azure Portalban](https://portal.azure.com/), a PowerShell vagy az Azure CLI használatával konfigurálhatók. Részletes útmutatásért lásd: [Azure Storage analitikai metrikák (klasszikus) engedélyezése és kezelése](./storage-monitor-storage-account.md). Storage Analytics programozott módon is engedélyezheti a REST API vagy az ügyféloldali kódtár használatával. A szolgáltatás tulajdonságainak beállítása művelettel engedélyezheti a Storage Analytics az egyes szolgáltatásokhoz.  
+ Storage Analytics metrikák alapértelmezés szerint engedélyezve vannak az új Storage-fiókok esetében. A metrikák a [Azure Portalban](https://portal.azure.com/), a PowerShell vagy az Azure CLI használatával konfigurálhatók. Részletes útmutatásért lásd: [Azure Storage analitikai metrikák (klasszikus) engedélyezése és kezelése](./manage-storage-analytics-logs.md). Storage Analytics programozott módon is engedélyezheti a REST API vagy az ügyféloldali kódtár használatával. A szolgáltatás tulajdonságainak beállítása művelettel engedélyezheti a Storage Analytics az egyes szolgáltatásokhoz.  
 
 > [!NOTE]
 > Storage Analytics metrikák érhetők el az Azure Blob Storage-hoz, az Azure üzenetsor-tároláshoz, az Azure Table Storage-hoz és a Azure Fileshoz.
@@ -69,7 +69,7 @@ Az Azure Storage a Storage Analytics megoldást használja az összesített tran
  Ezek a táblák automatikusan létrejönnek, ha Storage Analytics van engedélyezve a tárolási szolgáltatás végpontja számára. Ezek a Storage-fiók névterén keresztül érhetők el, például: `https://<accountname>.table.core.windows.net/Tables("$MetricsTransactionsBlob")` . A metrikák táblázat nem jelenik meg a listázási műveletben, és közvetlenül a tábla nevén keresztül kell elérni.
 
 ## <a name="metrics-alerts"></a>Metrikák riasztásai
-Érdemes lehet riasztásokat beállítani a [Azure Portalban](https://portal.azure.com) , hogy automatikusan értesüljön a tárolási szolgáltatások működésével kapcsolatos fontos változásokról. Részletes útmutatásért lásd a [metrikák riasztások létrehozása](storage-monitor-storage-account.md#create-metric-alerts)című témakört.
+Érdemes lehet riasztásokat beállítani a [Azure Portalban](https://portal.azure.com) , hogy automatikusan értesüljön a tárolási szolgáltatások működésével kapcsolatos fontos változásokról. Részletes útmutatásért lásd a [metrikák riasztások létrehozása](./manage-storage-analytics-logs.md)című témakört.
 
 Ha Storage Explorer eszközzel tölti le ezeket a metrikákat, a Microsoft Excel segítségével elemezheti az adatokat. Az elérhető Storage Explorer eszközök listáját az [Azure Storage-ügyféleszközök](./storage-explorers.md)című témakörben tekintheti meg.
 

@@ -7,12 +7,12 @@ ms.author: abnarain
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: b5becd8ddaf74ab2acd059054a095ce9d21c178f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 49ec43e59989f3fdad8f5731867953cc7cbb5757
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100366840"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699708"
 ---
 # <a name="automated-publishing-for-continuous-integration-and-delivery"></a>Automatizált közzététel a folyamatos integráció és a kézbesítés terén
 
@@ -22,7 +22,7 @@ ms.locfileid: "100366840"
 
 A folyamatos integráció az a gyakorlat, amellyel a rendszer automatikusan és a lehető leghamarabb végezheti el a rendszerbe állítást, és a folyamatos integráció során megjelenő tesztelést követi, és leküldi az átmeneti vagy éles rendszerek módosításait.
 
-Azure Data Factory a folyamatos integráció és a szállítás (CI/CD) azt jelenti, hogy Data Factory folyamatokat az egyik környezetből (fejlesztési, tesztelési, éles) áthelyezi egy másikra. A Azure Data Factory [Azure Resource Manager sablonokat](../azure-resource-manager/templates/overview.md) használ a különböző ADF-entitások (folyamatok, adatkészletek, adatforgalom stb.) konfigurációjának tárolásához. Két javasolt módszer áll rendelkezésre az adatelőállító más környezetbe való előléptetéséhez:
+Az Azure Data Factoryben a folyamatos integráció és teljesítés (CI/CD) a Data Factory-folyamatoknak az egyik (fejlesztési, tesztelési, éles) környezetből egy másikba történő áthelyezését jelenti. A Azure Data Factory [Azure Resource Manager sablonokat](../azure-resource-manager/templates/overview.md) használ a különböző ADF-entitások (folyamatok, adatkészletek, adatforgalom stb.) konfigurációjának tárolásához. Két javasolt módszer áll rendelkezésre az adatelőállító más környezetbe való előléptetéséhez:
 
 - Automatikus üzembe helyezés a Data Factory Azure- [folyamatokkal](/azure/devops/pipelines/get-started/what-is-azure-pipelines)való integrálásával.
 - Manuálisan tölthet fel egy Resource Manager-sablont a Data Factory UX-integrációval Azure Resource Manager használatával.
@@ -119,7 +119,7 @@ Az első lépésekhez kövesse az alábbi lépéseket:
             "build":"node node_modules/@microsoft/azure-data-factory-utilities/lib/index"
         },
         "dependencies":{
-            "@microsoft/azure-data-factory-utilities":"^0.1.2"
+            "@microsoft/azure-data-factory-utilities":"^0.1.3"
         }
     } 
     ```

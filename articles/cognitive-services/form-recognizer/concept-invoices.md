@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 875fa2ad5a3a18c0e2582425a6528730234ac8ed
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: adcfef19de5987b9b4c54f6765589f2ae9868c11
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585075"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736746"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Űrlap-felismerő előre összeépített számlázási modellje
 
@@ -41,7 +41,7 @@ Szüksége lesz egy Azure-előfizetésre ([hozzon létre egyet ingyen](https://a
 
 ### <a name="input-requirements"></a>Bemeneti követelmények 
 
-[!INCLUDE [input reqs](./includes/input-requirements-receipts.md)]
+[!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
 ## <a name="the-analyze-invoice-operation"></a>A számla elemzése művelet
 
@@ -74,14 +74,14 @@ A JSON-kimenet 3 részből áll:
 
 A számlázási szolgáltatás kibontja a szöveget, a táblákat és a 26 számla mezőt. Az alábbiakban láthatók a JSON-kimenetre adott számlán kinyert mezők (az alábbi kimenet ezt a [mintát](./media/sample-invoice.jpg)használja)  
 
-|Név| Típus | Description | Szöveg | Érték (szabványosított kimenet) |
+|Név| Típus | Leírás | Szöveg | Érték (szabványosított kimenet) |
 |:-----|:----|:----|:----| :----|
 | CustomerName | sztring | Az ügyfél számlázása folyamatban van | Microsoft Corp |  |
 | CustomerId | sztring | Az ügyfél hivatkozási azonosítója | CID-12345 |  |
 | PurchaseOrder | sztring | Beszerzési rendelés hivatkozási száma | PO-3333 | |  |
 | InvoiceId | sztring | Az adott számla azonosítója (gyakran "számla száma") | INV-100 | |  |
-| InvoiceDate | dátum | A számla kiadásának dátuma | 11/15/2019 | 
-| DueDate | dátum | A számla fizetési határideje esedékes | 12/15/2019 | 2019-12-15 | 2019-11-15 |
+| InvoiceDate | dátum | A számla kiadásának dátuma | 11/15/2019 | 2019-11-15 |
+| DueDate | dátum | A számla fizetési határideje esedékes | 12/15/2019 | 2019-12-15 |
 | Szállítónév | sztring | A számlát létrehozó szállító | CONTOSO LTD. | |
 | VendorAddress | sztring | A szállító levelezési címe | 123 456th St New York, NY, 10001 | |
 | VendorAddressRecipient | sztring | A VendorAddress társított név | Contoso-központ | |

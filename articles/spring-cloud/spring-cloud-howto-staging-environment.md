@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 82a8da9d2663b03d89ad0819ec6d918bebaf5f5e
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: d610e79773dabb9942352747f1f032b17730ffca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99574729"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738752"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Átmeneti környezet beállítása az Azure Spring Cloud-ban
 
@@ -23,7 +23,7 @@ Ez a cikk bemutatja, hogyan állíthat be átmeneti üzembe helyezést a kék-z�
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure Spring Cloud-példány *standard szintű* **díjszabással**.
-* Azure CLI [Azure Spring Cloud-bővítmény](https://docs.microsoft.com/cli/azure/azure-cli-extensions-overview)
+* Azure CLI [Azure Spring Cloud-bővítmény](/cli/azure/azure-cli-extensions-overview)
 
 Ez a cikk a Spring inicializáló által készített alkalmazást használja. Ha ehhez a példához egy másik alkalmazást szeretne használni, akkor az alkalmazás nyilvános részén egyszerű módosítást kell végeznie az átmeneti üzembe helyezés az éles környezetből való elkülönítéséhez.
 

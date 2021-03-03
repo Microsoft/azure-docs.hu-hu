@@ -8,19 +8,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: lagayhar
-ms.openlocfilehash: 152ba4b1c8a4e09db0bce759f5b67f577ec5d584
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d45d8bed328dc91dfeeabd6ce878074fa1218623
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843892"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737018"
 ---
 # <a name="angular-plugin-for-application-insights-javascript-sdk"></a>Szögletes beépülő modul a Application Insights JavaScript SDK-hoz
 
 A Application Insights JavaScript SDK szögletes beépülő modulja a következőket teszi lehetővé:
 
 - Az útválasztó változásainak követése
-- Szögletes komponensek használati statisztikája
 
 > [!WARNING]
 > A szögletes beépülő modul nem ECMAScript 3 (ES3) kompatibilis.
@@ -38,9 +37,9 @@ npm install @microsoft/applicationinsights-angularplugin-js
 Application Insights példányának beállítása az alkalmazás belépési összetevőjében:
 
 ```js
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ApplicationInsights } from '@microsoft/applicationinsights-web';
-import { AngularPlugin, AngularPluginService } from '@microsoft/applicationinsights-angularplugin-js';
+import { AngularPlugin } from '@microsoft/applicationinsights-angularplugin-js';
 import { Router } from '@angular/router';
 
 @Component({
@@ -48,61 +47,20 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-    private appInsights;
+export class AppComponent {
     constructor(
-        private router: Router,
-        private angularPluginService: AngularPluginService 
+        private router: Router
     ){
         var angularPlugin = new AngularPlugin();
-        this.angularPluginService.init(angularPlugin, this.router);
-        this.appInsights = new ApplicationInsights({ config: {
+        const appInsights = new ApplicationInsights({ config: {
         instrumentationKey: 'YOUR_INSTRUMENTATION_KEY_GOES_HERE',
         extensions: [angularPlugin],
         extensionConfig: {
             [angularPlugin.identifier]: { router: this.router }
         }
         } });
+        appInsights.loadAppInsights();
     }
-
-    ngOnInit() {
-        this.appInsights.loadAppInsights();
-    }
-}
-
-```
-
-Ha a `trackMetric` metódust szeretné használni a szögletes összetevő-használat nyomon követéséhez, adja hozzá `AngularPluginService` szolgáltatóként a fájlt a szolgáltatók listájában `app.module.ts` .
-
-```js
-import { AngularPluginService } from '@microsoft/applicationinsights-angularplugin-js';
-
-@NgModule({
-    ...
-  providers: [ AngularPluginService ],
-})
-export class AppModule { }
-```
-
-Egy összetevő élettartamának nyomon követéséhez hívja `trackMetric` meg az `ngOnDestroy` adott összetevő metódusát. Az összetevő elpusztulása után egy olyan eseményt indít el, `trackMetric` amely a felhasználó időpontját és az összetevő nevét küldi el.
-
-```js
-import { Component, OnDestroy, HostListener } from '@angular/core';
-import { AngularPluginService } from '@microsoft/applicationinsights-angularplugin-js';
-
-@Component({
-  selector: 'app-test',
-  templateUrl: './test.component.html',
-  styleUrls: ['./test.component.css']
-})
-export class TestComponent implements OnDestroy {
-
-  constructor(private angularPluginService: AngularPluginService) {}
-
-  @HostListener('window:beforeunload')
-  ngOnDestroy() {
-    this.angularPluginService.trackMetric();
-  }
 }
 ```
 

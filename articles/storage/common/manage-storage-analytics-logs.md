@@ -9,16 +9,16 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: bc6632b55ba8fd90317a8b5046a3e84d863bf0ef
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 0c182e1093c29206d27a0e55a46dd9a5607fa6ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221609"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701705"
 ---
 # <a name="enable-and-manage-azure-storage-analytics-logs-classic"></a>Azure Storage Analytics naplók engedélyezése és kezelése (klasszikus)
 
-[Azure Storage Analytics](storage-analytics.md) naplókat biztosít a blobokhoz, várólistákhoz és táblákhoz. A [Azure Portal](https://portal.azure.com) a naplók konfigurálására is használható a fiókjában. Ebből a cikkből megtudhatja, hogyan engedélyezheti és kezelheti a naplókat. A metrikák engedélyezésével kapcsolatos információkért lásd: [Azure Storage Analytics metrikák engedélyezése és kezelése (klasszikus)](storage-monitor-storage-account.md).  A Azure Portal megfigyelési adatainak vizsgálatára és tárolására vonatkozó költségekkel jár. További információiért tekintse meg a [Storage Analyticset](storage-analytics.md) bemutató cikket.
+[Azure Storage Analytics](storage-analytics.md) naplókat biztosít a blobokhoz, várólistákhoz és táblákhoz. A [Azure Portal](https://portal.azure.com) a naplók konfigurálására is használható a fiókjában. Ebből a cikkből megtudhatja, hogyan engedélyezheti és kezelheti a naplókat. A metrikák engedélyezésével kapcsolatos információkért lásd: [Azure Storage Analytics metrikák engedélyezése és kezelése (klasszikus)]().  A Azure Portal megfigyelési adatainak vizsgálatára és tárolására vonatkozó költségekkel jár. További információiért tekintse meg a [Storage Analyticset](storage-analytics.md) bemutató cikket.
 
 > [!NOTE]
 > Azt javasoljuk, hogy Storage Analytics naplók helyett Azure Monitor Azure Storage-naplókat használjon. Az Azure Monitor Azure Storage-naplók nyilvános előzetes verzióban érhetők el, és elérhetők az előzetes teszteléshez az összes nyilvános felhőben. Ez az előzetes verzió lehetővé teszi a Blobok (köztük a Azure Data Lake Storage Gen2), a fájlok, a várólisták és a táblák naplófájljainak naplózását. További információt a következő cikkekben talál:
@@ -191,7 +191,7 @@ A naplózási adat idővel felhalmozódhat a fiókban, ami növelheti a tárter�
 
    * Cserélje le a `<storage-account-name>` helyőrző értékét a Storage-fiók nevére. 
 
-6. A [Get-AzStorageServiceLoggingProperty](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageserviceloggingproperty) használatával tekintheti meg az aktuális napló adatmegőrzési szabályzatát. A következő példa a konzolra nyomtatja a blob és a várólista tárolási szolgáltatásainak megőrzési idejét.
+6. A [Get-AzStorageServiceLoggingProperty](/powershell/module/az.storage/get-azstorageserviceloggingproperty) használatával tekintheti meg az aktuális napló adatmegőrzési szabályzatát. A következő példa a konzolra nyomtatja a blob és a várólista tárolási szolgáltatásainak megőrzési idejét.
 
    ```powershell
    Get-AzStorageServiceLoggingProperty -ServiceType Blob, Queue -Context $ctx
@@ -202,7 +202,7 @@ A naplózási adat idővel felhalmozódhat a fiókban, ami növelheti a tárter�
    > [!div class="mx-imgBorder"]
    > ![Adatmegőrzési szabályzat a PowerShell kimenetében](./media/manage-storage-analytics-logs/retention-period-powershell.png)
 
-7. A megőrzési időtartam módosításához használja a [set-AzStorageServiceLoggingProperty](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageserviceloggingproperty) . A következő példa a megőrzési időtartamot 4 napra módosítja.  
+7. A megőrzési időtartam módosításához használja a [set-AzStorageServiceLoggingProperty](/powershell/module/az.storage/set-azstorageserviceloggingproperty) . A következő példa a megőrzési időtartamot 4 napra módosítja.  
 
    ```powershell
    Set-AzStorageServiceLoggingProperty -ServiceType Blob, Queue -RetentionDays 4 -Context $ctx
@@ -290,7 +290,6 @@ Ha letöltötte a napló adatait, megtekintheti a bejegyzéseket a fájlokban. E
 ## <a name="next-steps"></a>Következő lépések
 
 * További információ a Storage Analyticsről: [Storage Analytics](storage-analytics.md) Storage Analytics.
-* [Storage Analytics metrikák konfigurálása](storage-monitor-storage-account.md).
 * További információ a tárolási naplózás konfigurálásához használható .NET-nyelvről: a [Storage ügyféloldali kódtár referenciája](/previous-versions/azure/dn261237(v=azure.100)). 
 * A tárolási naplózásnak a REST API használatával történő konfigurálásával kapcsolatos általános információkért lásd: [Storage Analytics engedélyezése és konfigurálása](/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics).
 * További információ a Storage Analytics naplók formátumáról. Lásd: [Storage Analytics naplózási formátum](/rest/api/storageservices/storage-analytics-log-format).

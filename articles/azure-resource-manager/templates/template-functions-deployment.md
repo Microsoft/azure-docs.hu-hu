@@ -2,13 +2,13 @@
 title: Sablon functions – üzembe helyezés
 description: A Azure Resource Manager-sablonban (ARM-sablonban) használandó függvényeket ismerteti az üzembe helyezési adatok lekéréséhez.
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: 438afc947b07ac7425de365a2d63c427cf53e2ff
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 03/02/2021
+ms.openlocfilehash: a9a073284c62efac4e77f8f9b35e8730c350e5f1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943474"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722721"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>Az ARM-sablonok üzembe helyezési funkciói
 
@@ -321,9 +321,9 @@ Egy paraméter értékét adja vissza. A megadott paraméter nevét meg kell adn
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| parameterName |Yes |sztring |A visszaadni kívánt paraméter neve. |
+| parameterName |Igen |sztring |A visszaadni kívánt paraméter neve. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -470,7 +470,7 @@ A változó értékét adja vissza. A megadott változó nevét meg kell adni a 
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | variableName |Igen |Sztring |A visszaadni kívánt változó neve. |
 
@@ -508,7 +508,7 @@ A megadott változó értéke.
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
 ```bicep
-var storageName = concat('storage', uniqueString(resourceGroup().id))
+var storageName = 'storage${uniqueString(resourceGroup().id)}'
 
 resource myStorage 'Microsoft.Storage/storageAccounts@2019-06-01' = {
   name: storageName

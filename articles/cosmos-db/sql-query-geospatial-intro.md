@@ -5,23 +5,23 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 02/25/2021
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: a2e4e14927932575c9da42392329eea279f922fe
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b20c72ae3ed8a8fffa02fc3a2c86f9f73ba2663b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336163"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692130"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Térinformatikai és GeoJSON helye Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Ez a cikk a Azure Cosmos DB térinformatikai funkciójának bevezetését ismerteti. Jelenleg csak Azure Cosmos DB SQL API-fiókok támogatják a térinformatikai adatok tárolását és elérését. A térinformatikai indexelés dokumentációjának elolvasása után a következő kérdésekre kaphat választ:
+Ez a cikk a Azure Cosmos DB térinformatikai funkciójának bevezetését ismerteti. A térinformatikai indexelés dokumentációjának elolvasása után a következő kérdésekre kaphat választ:
 
 * Hogyan a térbeli adatainak tárolása Azure Cosmos DB-ben?
-* Hogyan lehet lekérdezni a térinformatikai adatAzure Cosmos DB az SQL és a LINQ szolgáltatásban?
+* Hogyan lehet lekérdezni a térbeli adatAzure Cosmos DB az SQL és a LINQ szolgáltatásban?
 * Hogyan engedélyezheti vagy letilthatja a térbeli indexelést a Azure Cosmos DBban?
 
 ## <a name="spatial-data-use-cases"></a>Térbeli adatfelhasználási esetek
@@ -121,9 +121,9 @@ A **sokszög** a csatlakoztatott pontok határa, amelyek egy lezárt LineString 
     "type":"Polygon",
     "coordinates":[ [
         [ 31.8, -5 ],
-        [ 31.8, -4.7 ],
-        [ 32, -4.7 ],
         [ 32, -5 ],
+        [ 32, -4.7 ],
+        [ 31.8, -4.7 ],
         [ 31.8, -5 ]
     ] ]
 }
@@ -214,7 +214,7 @@ await container.CreateItemAsync( new UserProfile
 
 Ha nem rendelkezik a szélességi és a hosszúsági adatokkal, de a fizikai címeket vagy a hely nevét, például a várost vagy az országot/régiót, megkeresheti a tényleges koordinátákat egy olyan helymeghatározáshoz-szolgáltatás használatával, mint a Bing Maps REST Services. További információ a Bing Maps helymeghatározáshoz [itt](/bingmaps/rest-services/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megtanulta, hogyan kezdheti meg a térinformatikai támogatás használatát Azure Cosmos DBban, a következő lehetőségekkel:
 

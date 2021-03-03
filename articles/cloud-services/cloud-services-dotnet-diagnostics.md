@@ -8,19 +8,19 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: e4b5372a2b6e9b833f3a0213d69649b75ae2589b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 97e68d338580132b6927c4cc8b206db60fe93ba2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578193"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703507"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services-classic"></a>Azure Diagnostics engedélyezése az Azure Cloud Services (klasszikus)
 
 > [!IMPORTANT]
 > Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
 
-A Azure Diagnostics hátterének [Azure Diagnostics áttekintését](../azure-diagnostics.md) lásd:.
+A Azure Diagnostics hátterének [Azure Diagnostics áttekintését](../azure-monitor/agents/diagnostics-extension-overview.md) lásd:.
 
 ## <a name="how-to-enable-diagnostics-in-a-worker-role"></a>Diagnosztika engedélyezése feldolgozói szerepkörben
 Ez az útmutató azt ismerteti, hogyan valósítható meg egy olyan Azure feldolgozói szerepkör, amely telemetria-információkat bocsát ki a .NET EventSource osztály használatával. Azure Diagnostics a telemetria adatok gyűjtésére és egy Azure Storage-fiókba való tárolására szolgál. Feldolgozói szerepkör létrehozásakor a Visual Studio automatikusan engedélyezi a diagnosztika 1,0-es verzióját a .NET 2,4-es és korábbi verziójú Azure SDK-k megoldásának részeként. Az alábbi utasítások a feldolgozói szerepkör létrehozási folyamatát, a diagnosztika 1,0 a megoldásból való letiltását, valamint a diagnosztikai 1,2 vagy 1,3 üzembe helyezését ismertetik a feldolgozói szerepkörben.

@@ -1,26 +1,26 @@
 ---
-title: Az eszköz modell-tárházával kapcsolatos fogalmak ismertetése | Microsoft Docs
-description: Megoldás fejlesztőként vagy informatikai szakemberként megismerheti az eszköz modell tárházának alapvető fogalmait.
+title: Az eszköz modellek tárházának fogalmai | Microsoft Docs
+description: Megoldás fejlesztőként vagy informatikai szakemberként megismerheti az eszköz modellek tárházának alapvető fogalmait.
 author: rido-min
 ms.author: rmpablos
 ms.date: 11/17/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b567efe2541bb33c905def73bb78398799b4ed69
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 1a58a2f69b9c6c6742c4b9daf32dd0e13341aac1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920542"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742143"
 ---
-# <a name="device-model-repository"></a>Eszköz modell tárháza
+# <a name="device-models-repository"></a>Eszköz modellek tárháza
 
-Az eszköz modellje (DMR) lehetővé teszi az eszközök építői számára a IoT Plug and Play eszköz modelljeinek felügyeletét és megosztását. Az eszköz modelljei a [digitális Twins modellezési nyelv (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)használatával meghatározott JSON ld-dokumentumok.
+Az eszköz modellek tárháza (DMR) lehetővé teszi az eszközök építői számára a IoT Plug and Play eszköz modelljeinek felügyeletét és megosztását. Az eszköz modelljei a [digitális Twins modellezési nyelv (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)használatával meghatározott JSON ld-dokumentumok.
 
 A DMR meghatározza azt a mintát, amely az DTDL-interfészeket az eszköz kettős modell-azonosítója (DTMI) alapján tárolja a mappák struktúrájában. A DMR található felületet úgy keresheti meg, hogy a DTMI egy relatív elérési útra konvertálja. Például a `dtmi:com:example:Thermostat;1` DTMI lefordítja a következőre: `/dtmi/com/example/thermostat-1.json` .
 
-## <a name="public-device-model-repository"></a>Nyilvános eszköz modell tárháza
+## <a name="public-device-models-repository"></a>Nyilvános eszköz modelljeinek tárháza
 
 A Microsoft a következő tulajdonságokkal rendelkező nyilvános DMR üzemeltet:
 
@@ -28,7 +28,7 @@ A Microsoft a következő tulajdonságokkal rendelkező nyilvános DMR üzemelte
 - Módosíthatatlansági.  A közzétételt követően az illesztőfelület nem frissíthető.
 - Hyper-Scale. A Microsoft biztosítja a szükséges infrastruktúrát ahhoz, hogy biztonságos, méretezhető végpontot hozzon létre, amely lehetővé teszi az eszközök modelljeinek közzétételét és felhasználását.
 
-## <a name="custom-device-model-repository"></a>Egyéni eszköz modell tárháza
+## <a name="custom-device-models-repository"></a>Egyéni eszköz modellek tárháza
 
 Ugyanazt a DMR mintát használva egyéni DMR hozhat létre bármely tárolóeszközben, például helyi fájlrendszerben vagy egyéni HTTP-webkiszolgálókban. Az egyéni DMR ugyanúgy kérhet le eszközöket, mint a nyilvános DMR, ha módosítja a DMR eléréséhez használt alap URL-címet.
 
@@ -37,7 +37,7 @@ Ugyanazt a DMR mintát használva egyéni DMR hozhat létre bármely tárolóesz
 
 ## <a name="public-models"></a>Nyilvános modellek
 
-A modell adattárában tárolt nyilvános eszköz-modellek mindenki számára elérhetők az alkalmazásaikban való használatra és integrálásra. A nyilvános eszközök modelljei lehetővé teszik, hogy az eszköz-építők és a megoldások fejlesztői számára nyílt öko-rendszer használatával megosszák és újra felhasználhassa a IoT Plug and Play eszköz modelljeit.
+A modellek tárházában tárolt nyilvános eszközök modelljei mindenki számára elérhetők, hogy az alkalmazásaikat használják és integrálják. A nyilvános eszközök modelljei lehetővé teszik, hogy az eszköz-építők és a megoldások fejlesztői számára nyílt öko-rendszer használatával megosszák és újra felhasználhassa a IoT Plug and Play eszköz modelljeit.
 
 Tekintse át a modell [közzététele](#publish-a-model) című szakaszt, amely útmutatást nyújt ahhoz, hogyan tehet közzé egy modellt a modell-adattárban annak érdekében, hogy azok nyilvánosak legyenek.
 

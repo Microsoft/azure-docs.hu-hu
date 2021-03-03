@@ -87,10 +87,6 @@
       href: /samples/browse/?products=azure&term=vision
     - name: Korlátok és kvóták
       href: limits-and-quotas.md
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/598141-custom-vision-service'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Régiónkénti rendelkezésre állás

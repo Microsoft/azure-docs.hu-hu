@@ -1,26 +1,23 @@
 ---
-title: Távoli asztal használata Linux rendszerű virtuális gépen az Azure-ban
+title: A xrdp használata Linux rendszeren
 description: Megtudhatja, hogyan telepíthet és konfigurálhat Távoli asztal (xrdp) az Azure-beli Linux rendszerű virtuális gépekhez grafikus eszközök használatával való kapcsolódáshoz
 services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.collection: linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
-ms.date: 09/12/2019
+ms.date: 03/01/2021
 ms.author: cynthn
-ms.openlocfilehash: bea7e38c35ceddafb64937d6e1a6f69d7c727f44
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 448e9f6487b5afc51be9b3dee8e07007c8534a0b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196384"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695175"
 ---
-# <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>A Linux rendszerű virtuális gépekhez való kapcsolódás Távoli asztal telepítése és konfigurálása az Azure-ban
+# <a name="install-and-configure-xrdp-to-use-remote-desktop-with-a-linux-vm"></a>A xrdp telepítése és konfigurálása a Távoli asztal Linux rendszerű virtuális géppel való használatához
+
 Az Azure-ban a Linux rendszerű virtuális gépeket általában egy Secure Shell-(SSH-) kapcsolatok használatával kezelik a parancssorból. A Linux vagy a gyors hibaelhárítási forgatókönyvek esetében a távoli asztal használata egyszerűbb lehet. Ez a cikk részletesen ismerteti, hogyan telepíthet és konfigurálhat egy asztali környezetet ([Xfce](https://www.xfce.org)) és egy távoli asztalt ([Xrdp](http://xrdp.org)) a Linux rendszerű virtuális géphez a Resource Manager-alapú üzemi modell használatával.
 
 
@@ -32,6 +29,7 @@ Ez a cikk egy meglévő Ubuntu 18,04 LTS virtuális gépet igényel az Azure-ban
 
 
 ## <a name="install-a-desktop-environment-on-your-linux-vm"></a>Asztali környezet telepítése Linux rendszerű virtuális gépen
+
 Az Azure-ban a legtöbb Linux rendszerű virtuális gép nem rendelkezik alapértelmezés szerint telepített asztali környezettel. A Linux rendszerű virtuális gépeket általában SSH-kapcsolatokkal, és nem asztali környezettel kezeljük. A Linux különböző asztali környezeteket is választhat. Az asztali környezettől függően egy-két GB lemezterületet is felhasználhat, és 5 – 10 percet is igénybe vehet az összes szükséges csomag telepítéséhez és konfigurálásához.
 
 Az alábbi példa telepíti a Lightweight [Xfce4](https://www.xfce.org/) asztali környezetet egy Ubuntu 18,04 LTS virtuális gépre. A más disztribúciók parancsai némileg eltérőek (a `yum` Red Hat Enterprise Linux telepítésére és a megfelelő `selinux` szabályok konfigurálására, vagy `zypper` például a (z) rendszerre történő telepítésre HASZNÁLHATÓk a SUSE használatára).
@@ -94,9 +92,14 @@ az vm open-port --resource-group myResourceGroup --name myVM --port 3389
 
 
 ## <a name="connect-your-linux-vm-with-a-remote-desktop-client"></a>Linux rendszerű virtuális gép összekötése Távoli asztal ügyféllel
-Nyissa meg a helyi távoli asztali ügyfelet, és kapcsolódjon a Linux rendszerű virtuális gép IP-címéhez vagy DNS-nevéhez. Adja meg a felhasználói fiók felhasználónevét és jelszavát a virtuális gépen a következőképpen:
 
-![Kapcsolódás a xrdp a Távoli asztal ügyfél használatával](./media/use-remote-desktop/remote-desktop-client.png)
+Nyissa meg a helyi távoli asztali ügyfelet, és kapcsolódjon a Linux rendszerű virtuális gép IP-címéhez vagy DNS-nevéhez. 
+
+:::image type="content" source="media/use-remote-desktop/remote-desktop.png" alt-text="Képernyőkép a távoli asztali ügyfélről.":::
+
+Adja meg a felhasználói fiók felhasználónevét és jelszavát a virtuális gépen a következőképpen:
+
+:::image type="content" source="media/use-remote-desktop/xrdp-login.png" alt-text="Képernyőfelvétel a xrdp-naplóról.":::
 
 A hitelesítés után az Xfce asztali környezet betöltődik, és az alábbi példához hasonlóan fog kinézni:
 

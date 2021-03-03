@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: dac5a434d7f7c62d7a20e971294992ea91c79d2b
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 9ac53dab29feddd36a95b8b2b041caaf5c3598d5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625015"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720137"
 ---
 # <a name="tutorial-use-creator-preview-to-create-indoor-maps"></a>Oktatóanyag: a Creator (előzetes verzió) használata beltéri térképek létrehozásához
 
@@ -116,6 +116,7 @@ Az adatfeltöltő API egy hosszú ideig futó tranzakció, amely megvalósítja 
 
     >[!IMPORTANT]
     > Előfordulhat, hogy a dokumentumban szereplő API URL-címeket a létrehozó erőforrás helye alapján kell módosítani. További részletekért lásd: [hozzáférés a Creator Serviceshez (előzetes verzió) ](how-to-manage-creator.md#access-to-creator-services).
+    > Ha hibakódot kap, győződjön meg `"RequiresCreatorResource"` arról, hogy [Azure Maps létrehozó erőforrást](how-to-manage-creator.md) Azure Maps fiókjában.
 
 3. Kattintson a **Küldés** gombra, és várjon, amíg a rendszer feldolgozza a kérést. A kérés befejeződése után lépjen a válasz **fejlécek** lapjára, és keresse meg a **hely** kulcsát. Másolja ki a **hely** kulcsának értékét, amely a `status URL` konverziós kérelemhez tartozó érték. Ezt a következő lépésben fogja használni.
 
@@ -314,7 +315,7 @@ A tileset a térképen megjelenített vektoros csempék halmaza. A tilesets a me
     https://atlas.microsoft.com/featureState/stateset?api-version=1.0&datasetId={datasetId}&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-3. A **post** kérelem **fejlécében** állítsa a következőre `Content-Type` : `application/json` . A **törzsben** adja meg az alábbi stílusokat a és az állapot változásainak megfelelően `occupied` `temperature` . Ha elkészült, kattintson a **Küldés** gombra.
+3. A **post** kérelem **fejlécében** állítsa a következőre `Content-Type` : `application/json` . A **törzsben** adja meg az alábbi nyers JSON-stílusokat a és az állapot változásainak megfelelően `occupied` `temperature` . Ha elkészült, kattintson a **Küldés** gombra.
 
     ```json
     {

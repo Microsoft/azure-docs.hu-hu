@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cognitive-services
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: 661af89ad223978abbefd71dd8008577475c5875
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: db99fa5caff27a24aa04e4780b25ade3f7c25496
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221377"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699929"
 ---
 # <a name="plan-and-manage-costs-for-azure-cognitive-services"></a>Az Azure Cognitive Services költségeinek megtervezése és kezelése
 
@@ -68,7 +68,7 @@ Az Azure-előfizetéssel (korábban pénzügyi kötelezettségvállalásnak neve
 
 <!-- Note to Azure service writer: Modify the following as needed for your service. Replace example screenshots with ones taken for your service. If you need assistance capturing screenshots, ask banders for help. -->
 
-Az Azure-erőforrások Cognitive Services használatával történő használatakor a költségek is felmerülnek. Az Azure Erőforrás-használati egység költségei időintervallumok (másodperc, perc, óra és nap) vagy egységenkénti használat szerint változnak (bájt, megabájt stb.). A kognitív szolgáltatás (vagy Cognitive Services) elindulásakor a költségek felmerülnek, és a költségek [elemzésében](../cost-management/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)láthatja a költségeket.
+Az Azure-erőforrások Cognitive Services használatával történő használatakor a költségek is felmerülnek. Az Azure Erőforrás-használati egység költségei időintervallumok (másodperc, perc, óra és nap) vagy egységenkénti használat szerint változnak (bájt, megabájt stb.). A kognitív szolgáltatás (vagy Cognitive Services) elindulásakor a költségek felmerülnek, és a költségek [elemzésében](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)láthatja a költségeket.
 
 A Cost Analysis használatakor a különböző időintervallumokhoz tartozó grafikonok és táblák Cognitive Services költségeit tekintheti meg. Néhány példa: nap, aktuális és előző hónap, év. A költségeket a költségvetésekkel és az előre jelzett költségekkel is megtekintheti. A hosszabb nézetekre való áttérés a kiadások trendjeinek azonosításához nyújt segítséget. Itt láthatja, hogy hol történt a túltöltés. Ha létrehozta a költségvetést, azt is megteheti, hogy megtekintheti a túllépések helyét.
 

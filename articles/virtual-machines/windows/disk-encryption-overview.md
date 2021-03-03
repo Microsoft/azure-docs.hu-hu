@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 27d962a2cf1a1c453d942d320d65b3e9b9a4b959
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: e9436a9ec7db660fa2d7012df98188b96ea8ee16
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357793"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694308"
 ---
-# <a name="azure-disk-encryption-for-windows-vms"></a>Azure Disk Encryption Windows rendszerű virtuális gépekhez 
+# <a name="azure-disk-encryption-for-windows-vms"></a>Azure Disk Encryption Windows rendszerű virtuális gépekhez
 
-Az Azure Disk Encryption segít az adatok biztonságos megőrzésében a vállalat által előírt biztonsági és megfelelőségi követelmények kielégítése érdekében. A Windows [BitLocker](https://en.wikipedia.org/wiki/BitLocker) szolgáltatásával biztosítja a kötetek titkosítását az Azure Virtual Machines (VM) operációsrendszer-és adatlemezei számára, és integrálva van [Azure Key Vault](../../key-vault/index.yml) a lemezes titkosítási kulcsok és titkos kódok felügyeletéhez és kezeléséhez. 
+Az Azure Disk Encryption segít az adatok biztonságos megőrzésében a vállalat által előírt biztonsági és megfelelőségi követelmények kielégítése érdekében. A Windows [BitLocker](https://en.wikipedia.org/wiki/BitLocker) szolgáltatásával biztosítja a kötetek titkosítását az Azure Virtual Machines (VM) operációsrendszer-és adatlemezei számára, és integrálva van [Azure Key Vault](../../key-vault/index.yml) a lemezes titkosítási kulcsok és titkos kódok felügyeletéhez és kezeléséhez.
+
+Azure Disk Encryption a zóna rugalmas, ugyanúgy, mint Virtual Machines. Részletekért lásd: [Availability Zones támogató Azure-szolgáltatások](../../availability-zones/az-region.md).
 
 Ha [Azure Security Center](../../security-center/index.yml)használ, a rendszer riasztást küld, ha nem titkosított virtuális gépek vannak. A riasztások magas súlyosságot mutatnak, és a javasolt a virtuális gépek titkosítása.
 
@@ -27,19 +29,15 @@ Ha [Azure Security Center](../../security-center/index.yml)használ, a rendszer 
 > - Ha korábban már használta Azure Disk Encryption az Azure AD-vel egy virtuális gép titkosításához, akkor továbbra is ezt a beállítást kell használnia a virtuális gép titkosításához. Részletekért lásd: [Azure Disk Encryption az Azure ad-vel (előző kiadás)](disk-encryption-overview-aad.md) . 
 > - Bizonyos javaslatok növelhetik az adatok, a hálózat vagy a számítási erőforrások használatát, ami további licenc-vagy előfizetési költségeket eredményezhet. Érvényes aktív Azure-előfizetéssel kell rendelkeznie ahhoz, hogy erőforrásokat hozzon létre az Azure-ban a támogatott régiókban.
 
-Néhány perc alatt megismerheti a Windows Azure Disk Encryption alapjait, és a Windows rendszerű virtuális gépek [létrehozása és titkosítása](disk-encryption-cli-quickstart.md) az Azure CLI gyors üzembe helyezésével, valamint a [Windows rendszerű virtuális gép létrehozása és titkosítása az Azure PowerShell](disk-encryption-powershell-quickstart.md)gyors üzembe helyezésével.
+Néhány perc alatt megismerheti a Windows Azure Disk Encryption alapjait, és a Windows rendszerű virtuális gépek [létrehozása és titkosítása az Azure CLI](disk-encryption-cli-quickstart.md) gyors üzembe helyezésével, valamint a [Windows rendszerű virtuális gép létrehozása és titkosítása Azure PowerShell](disk-encryption-powershell-quickstart.md)gyors útmutatóval.
 
 ## <a name="supported-vms-and-operating-systems"></a>Támogatott virtuális gépek és operációs rendszerek
 
 ### <a name="supported-vms"></a>Támogatott virtuális gépek
 
-A Windows rendszerű virtuális gépek [számos méretben](../sizes-general.md)érhetők el. Azure Disk Encryption nem érhető el az [alapszintű, a sorozatú](https://azure.microsoft.com/pricing/details/virtual-machines/series/)virtuális gépeken, illetve a 2 GB-nál kevesebb memóriával rendelkező virtuális gépeken.
+A Windows rendszerű virtuális gépek [számos méretben](../sizes-general.md)érhetők el. A Azure Disk Encryption az 1. és a 2. generációs virtuális gépek esetében támogatott. A Premium Storage szolgáltatással rendelkező virtuális gépek esetében Azure Disk Encryption is elérhető.
 
-A Premium Storage szolgáltatással rendelkező virtuális gépek esetében Azure Disk Encryption is elérhető.
-
-Azure Disk Encryption nem érhető el a [2. generációs virtuális gépeken](../generation-2.md#generation-1-vs-generation-2-capabilities). További kivételeket a [Azure Disk Encryption: nem támogatott forgatókönyvek](disk-encryption-windows.md#unsupported-scenarios)című témakörben talál.
-
-A Azure Disk Encryption nem érhető el a virtuálisgép-rendszerképeken Temp Disks (DV4, Dsv4, Ev4 és Esv4) nélküli virtuális gépeken.  Lásd: Azure-beli [virtuális gépek mérete helyi ideiglenes lemez nélkül](../azure-vms-no-temp-disk.md).
+Azure Disk Encryption nem érhető el az [alapszintű, a sorozatú](https://azure.microsoft.com/pricing/details/virtual-machines/series/)virtuális gépeken, illetve a 2 GB-nál kevesebb memóriával rendelkező virtuális gépeken.  A Azure Disk Encryption nem érhető el a virtuálisgép-rendszerképeken, Temp lemezek nélkül (DV4, Dsv4, Ev4 és Esv4).  Lásd: Azure-beli [virtuális gépek mérete helyi ideiglenes lemez nélkül](../azure-vms-no-temp-disk.md).  További kivételeket a [Azure Disk Encryption: nem támogatott forgatókönyvek](disk-encryption-windows.md#unsupported-scenarios)című témakörben talál.
 
 ### <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
@@ -85,12 +83,11 @@ Az alábbi táblázat az Azure Disk Encryption dokumentációjában használt á
 | Kulcs titkosítási kulcsa (KEK) | Az aszimmetrikus kulcs (RSA 2048), amellyel védetté teheti vagy becsomagolhatja a titkos kulcsot. Megadhatja a hardveres biztonsági modul (HSM) által védett kulcsot vagy szoftveresen védett kulcsot. További információkért tekintse meg a [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) dokumentációját, és [hozzon létre és konfiguráljon egy Key vaultot a Azure Disk Encryptionhoz](disk-encryption-key-vault.md). |
 | PowerShell-parancsmagok | További információ: [Azure PowerShell parancsmagok](/powershell/azure/). |
 
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Rövid útmutató – Windows rendszerű virtuális gép létrehozása és titkosítása az Azure CLI-vel ](disk-encryption-cli-quickstart.md)
-- [Rövid útmutató – Windows rendszerű virtuális gép létrehozása és titkosítása az Azure PowerShell-lel](disk-encryption-powershell-quickstart.md)
+- [Rövid útmutató – Windows rendszerű virtuális gép létrehozása és titkosítása Azure PowerShell](disk-encryption-powershell-quickstart.md)
 - [Azure Disk Encryption-forgatókönyvek Windows rendszerű virtuális gépekhez](disk-encryption-windows.md)
-- [Előfeltételként Azure Disk Encryption parancssori felület parancsfájlja](https://github.com/ejarvi/ade-cli-getting-started)
+- [Előfeltételként Azure Disk Encryption parancssori felület parancsfájlja](https://github.com/ejarvi/ade-cli-getting-started) 
 - [Azure Disk Encryption előfeltételek PowerShell-parancsfájl](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
 - [Key Vault létrehozása és konfigurálása az Azure Disk Encryptionhöz](disk-encryption-key-vault.md)

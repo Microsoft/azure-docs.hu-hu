@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 7a4408b54b663b2cd8abc22772ac1b799ea50de0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56ac58e47bffc73c7079af043ad567a77e8f3323
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87083769"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735505"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Többrétegű IIS-alapú webalkalmazás vészhelyreállításának beállítása
 
@@ -58,7 +58,7 @@ A cikkben szereplő példák esetében a VMware virtuális gépeket az IIS 7,5-e
 
 ### <a name="source-and-target"></a>Forrás és cél
 
-Forgatókönyv | Egy másodlagos helyre | Az Azure-ba
+Eset | Egy másodlagos helyre | Az Azure-ba
 --- | --- | ---
 Hyper-V | Igen | Igen
 VMware | Igen | Igen
@@ -118,14 +118,14 @@ Minden hely kötési adatokat tartalmaz. A kötési információ magában foglal
 
 > [!NOTE]
 >
-> Ha a helyhez tartozó kötést az **összes hozzá nem rendelt**értékre állítja be, nem kell frissítenie ezt a kötést a feladatátvétel után. Továbbá, ha a helyhez társított IP-cím nem módosul a feladatátvétel után, nem kell frissítenie a hely kötését. (Az IP-cím megőrzése az elsődleges és a helyreállítási helyekhez rendelt hálózati architektúrától és alhálózattól függ. Előfordulhat, hogy a frissítése nem valósítható meg a szervezet számára.)
+> Ha a helyhez tartozó kötést az **összes hozzá nem rendelt** értékre állítja be, nem kell frissítenie ezt a kötést a feladatátvétel után. Továbbá, ha a helyhez társított IP-cím nem módosul a feladatátvétel után, nem kell frissítenie a hely kötését. (Az IP-cím megőrzése az elsődleges és a helyreállítási helyekhez rendelt hálózati architektúrától és alhálózattól függ. Előfordulhat, hogy a frissítése nem valósítható meg a szervezet számára.)
 
 ![A TLS/SSL-kötés beállítását bemutató képernyőkép](./media/site-recovery-iis/sslbinding.png)
 
-Ha az IP-címet egy helyhez társította, akkor az összes hely kötését az új IP-címmel frissítse. A hely kötéseinek módosításához adjon hozzá egy [IIS webes szintű frissítési parancsfájlt](https://aka.ms/asr-web-tier-update-runbook-classic) a 3. csoport után a helyreállítási tervben.
+Ha az IP-címet egy helyhez társította, akkor az összes hely kötését az új IP-címmel frissítse. A hely kötéseinek módosításához adjon hozzá egy [IIS webes szintű frissítési parancsfájlt](/samples/browse/?redirectedfrom=TechNet-Gallery) a 3. csoport után a helyreállítási tervben.
 
 #### <a name="update-the-load-balancer-ip-address"></a>A terheléselosztó IP-címének frissítése
-Ha ARR virtuális géppel rendelkezik, az IP-cím frissítéséhez adjon hozzá egy [IIS ARR feladatátvételi parancsfájlt](https://aka.ms/asr-iis-arrtier-failover-script-classic) a 4. csoport után.
+Ha ARR virtuális géppel rendelkezik, az IP-cím frissítéséhez adjon hozzá egy [IIS ARR feladatátvételi parancsfájlt](/samples/browse/?redirectedfrom=TechNet-Gallery) a 4. csoport után.
 
 #### <a name="tlsssl-certificate-binding-for-an-https-connection"></a>TLS/SSL-tanúsítvány kötése HTTPS-kapcsolathoz
 Előfordulhat, hogy egy webhelyhez tartozik egy, a webkiszolgáló és a felhasználó böngészője közötti biztonságos kommunikációt biztosító TLS/SSL-tanúsítvány. Ha a webhely HTTPS-kapcsolattal rendelkezik, és az IIS-kiszolgáló IP-címéhez társított HTTPS-hely kötést is tartalmaz egy TLS/SSL-tanúsítvány kötéssel, akkor új hely kötést kell hozzáadnia a tanúsítványhoz az IIS-alapú virtuális gép feladatátvétel utáni közzétételének IP-címével.
@@ -147,7 +147,7 @@ Ha a virtuális gépek IP-címén alapuló alkalmazásspecifikus függőség van
 3. Kattintson a **Feladatátvétel tesztelése** elemre.
 4. A feladatátvételi teszt folyamatának elindításához válassza ki a helyreállítási pontot és az Azure-beli virtuális hálózatot.
 5. Ha a másodlagos környezet működik, elvégezheti az érvényesítést.
-6. Az érvényesítések befejezése után a feladatátvételi teszt környezet tisztításához válassza az **érvényesítések kész**lehetőséget.
+6. Az érvényesítések befejezése után a feladatátvételi teszt környezet tisztításához válassza az **érvényesítések kész** lehetőséget.
 
 További információ: a [feladatátvétel tesztelése az Azure-ban site Recovery](site-recovery-test-failover-to-azure.md).
 
@@ -160,5 +160,5 @@ További információ: a [feladatátvétel tesztelése az Azure-ban site Recover
 
 További információ: [feladatátvétel site Recoveryban](site-recovery-failover.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ [más alkalmazások replikálásáról](site-recovery-workload.md) site Recovery használatával.

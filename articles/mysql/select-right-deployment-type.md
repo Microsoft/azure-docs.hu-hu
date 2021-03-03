@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: 000de084cf9375347704cc4d3905ca36bdd77ff8
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 125431e6630ccfdd9e0e5d6b2a4ec5fa9b9e58fd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926189"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736185"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Válassza ki a megfelelő MySQL-kiszolgáló lehetőséget az Azure-ban
 
@@ -19,7 +19,7 @@ Az Azure-ban a MySQL-kiszolgáló számítási feladatait üzemeltetett virtuál
 
 A döntés meghozatalakor vegye figyelembe a következő két lehetőséget:
 
-- **Azure Database for MySQL** . Ez a lehetőség egy teljes körűen felügyelt MySQL-adatbázismotor, amely a MySQL Community Edition stabil verzióján alapul. Ez az Azure-beli felhőalapú platformon üzemelő, szolgáltatásként (DBaaS) elérhető, a (z) és a
+- **Azure Database for MySQL**. Ez a lehetőség egy teljes körűen felügyelt MySQL-adatbázismotor, amely a MySQL Community Edition stabil verzióján alapul. Ez az Azure-beli felhőalapú platformon üzemelő, szolgáltatásként (DBaaS) elérhető, a (z) és a
 
   Ha felügyelt MySQL-példányt használ az Azure-ban, beépített funkciókkal rendelkezik, mint például az automatikus javítás, a magas rendelkezésre állás, az automatizált biztonsági másolatok, a rugalmas skálázás, a nagyvállalati szintű biztonság, a megfelelőség és az irányítás, a figyelés és a riasztás, amely egyébként a MySQL-kiszolgáló helyszíni vagy Azure-beli virtuális gépeken való használatának megkövetelése. Ha a MySQL-t szolgáltatásként használja, az utólagos elszámolású, és a vertikális felskálázást és a vertikális felskálázást is megszakíthatja.
   
@@ -35,7 +35,7 @@ A döntés meghozatalakor vegye figyelembe a következő két lehetőséget:
   - Zóna redundáns magas rendelkezésre állása
   - Felügyelt karbantartási időszakok
 
-- **MySQL Azure-beli virtuális gépeken** . Ez a lehetőség a IaaS iparági kategóriába tartozik. Ezzel a szolgáltatással a MySQL-kiszolgálót a felügyelt virtuális gépeken belül futtathatja az Azure Cloud platformon. A MySQL legújabb verzióit és kiadásait telepítheti a virtuális gépre.
+- **MySQL Azure-beli virtuális gépeken**. Ez a lehetőség a IaaS iparági kategóriába tartozik. Ezzel a szolgáltatással a MySQL-kiszolgálót a felügyelt virtuális gépeken belül futtathatja az Azure Cloud platformon. A MySQL legújabb verzióit és kiadásait telepítheti a virtuális gépre.
 
 ## <a name="comparing-the-mysql-deployment-options-in-azure"></a>A MySQL üzembe helyezési lehetőségeinek összehasonlítása az Azure-ban
 
@@ -43,17 +43,19 @@ A fenti lehetőségek közötti fő különbségek a következő táblázatban l
 
 | Attribútum          | Azure Database for MySQL<br/>Önálló kiszolgáló |Azure Database for MySQL<br/>Rugalmas kiszolgáló  |MySQL Azure-beli virtuális gépeken                      |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|:---------------------------------------|
-| MySQL-verzió támogatása | 5,6, 5,7 & 8,0| 5.7 | Bármely verzió|
+| MySQL-verzió támogatása | 5,6, 5,7 & 8,0| 5,7 & 8,0 | Bármely verzió|
 | Számítási skálázás | Támogatott (a és az alapszintű csomagra való skálázás nem támogatott)| Támogatott | Támogatott|
 | Tárterület mérete | 5 GiB – 16 TiB| 5 GiB – 16 TiB | 32 GiB – 32 767 GiB|
 | Online tárterület skálázása | Támogatott| Támogatott| Nem támogatott|
 | Automatikus tárolás skálázása | Támogatott| Előzetes verzióban nem támogatott| Nem támogatott|
+| További IOPs skálázás | Nem támogatott| Támogatott| Nem támogatott|
 | Hálózati kapcsolat | – Nyilvános végpontok kiszolgálói tűzfallal.<br/> – Privát hozzáférés a privát kapcsolat támogatásával.|– Nyilvános végpontok kiszolgálói tűzfallal.<br/> – Privát hozzáférés Virtual Network integrációval.| – Nyilvános végpontok kiszolgálói tűzfallal.<br/> – Privát hozzáférés a privát kapcsolat támogatásával.|
 | Szolgáltatói szerződés (SLA) | 99,99%-os rendelkezésre állási SLA |Előzetes verzióban nem érhető el SLA| 99,99% a Availability Zones használatával|
 | Operációs rendszer javítása| Automatikus  | Automatikus egyéni karbantartási időszak vezérlésével | Végfelhasználók által felügyelt |
 | MySQL-javítás     | Automatikus  | Automatikus egyéni karbantartási időszak vezérlésével | Végfelhasználók által felügyelt |
 | Magas rendelkezésre állás | Az egyetlen rendelkezésre állási zónán belül beépített HA| Beépített HA a rendelkezésre állási zónákon belül és között van | A fürtözés, a replikálás stb. használatával kezelt egyéni felügyelet|
 | Zónaredundancia | Nem támogatott | Támogatott | Támogatott|
+| Zóna elhelyezése | Nem támogatott | Támogatott | Támogatott|
 | Hibrid forgatókönyvek | Támogatott [felhőbe irányuló replikálás](./concepts-data-in-replication.md)| Nem érhető el előzetes verzióban | Végfelhasználók által felügyelt |
 | Olvasási replikák | Támogatott (legfeljebb 5 replika)| Támogatott (legfeljebb 10 replika)| Végfelhasználók által felügyelt |
 | Backup | Automatizált, 7-35 napos megőrzéssel | Automatizált, 1-35 napos megőrzéssel | Végfelhasználók által felügyelt |

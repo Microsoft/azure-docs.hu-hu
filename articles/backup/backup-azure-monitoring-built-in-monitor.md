@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan használhatók a Azure Backup
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 74669a1347fac9f61d028d9cb1f3da174bb71f96
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 2273b66be88cb22a15d0779ed2918ba3d94da1ce
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550343"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713371"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup munkaterhelések figyelése
 
@@ -119,6 +119,18 @@ Ha a gyakoriságot egy óránkénti kivonatoló értékre állították be, és 
 Az aktív riasztások inaktiválása/feloldása érdekében kiválaszthatja az inaktiválni kívánt riasztáshoz tartozó listaelemet. Ekkor megnyílik egy képernyő, amely részletes információkat jelenít meg a riasztásról, és a felül **inaktiválás** gomb jelenik meg. Ha ezt a gombot választja, a riasztás állapota **inaktívra** változik. Inaktiválhat egy riasztást úgy is, hogy a jobb gombbal rákattint a riasztáshoz tartozó listaelemre, és kiválasztja az **inaktiválás** lehetőséget.
 
 ![RS Vault-riasztás inaktiválása](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
+
+## <a name="azure-monitor-alerts-for-azure-backup-preview"></a>Azure Backup (előzetes verzió) Azure Monitor riasztások
+
+A Azure Backup Azure Monitoron keresztül is biztosít riasztásokat, így a felhasználók a különböző Azure-szolgáltatásokban, például a biztonsági mentésben is egységes felhasználói élményt biztosíthatnak a riasztások kezeléséhez. Azure Monitor riasztások segítségével a riasztásokat átirányíthatja a Azure Backup által támogatott értesítési csatornákra, például az e-mailek, a ITSM, a webhook, a Logic app és így tovább.
+
+Ez a funkció jelenleg elérhető a PostgreSQL-kiszolgáló, az Azure-blobok és az Azure-Managed Disks Azure-adatbázisaiban. A riasztások a következő forgatókönyvek esetén jönnek létre, és a biztonsági mentési tárban navigálva, majd a **riasztások** menüpontra kattintva érhetők el:
+
+- Biztonsági másolati adatbázis törlése
+- Sikertelen biztonsági mentés (a biztonsági mentési hibákra vonatkozó riasztások beszerzéséhez regisztrálnia kell a **EnableAzureBackupJobFailureAlertsToAzureMonitor** nevű AFEC-jelzőt a betekintő portálon keresztül)
+- Visszaállítási hiba (ha riasztásokat szeretne kapni a visszaállítási hibákhoz, regisztrálnia kell a **EnableAzureBackupJobFailureAlertsToAzureMonitor** nevű AFEC-jelzőt a betekintő portálon keresztül)
+
+Az Azure Monitor riasztásokkal kapcsolatos további információkért lásd: [a riasztások áttekintése az Azure-ban](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-overview).
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: c29e952e22aaccf31c10de8f6e16d240b4660a23
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 4f9cc8321d5d1d19dbcb8294ad6205b01337ee72
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240715"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715054"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql---flexible-server-preview"></a>Az üzletmenet folytonosságának áttekintése Azure Database for MySQL rugalmas kiszolgálóval (előzetes verzió)
 
@@ -22,12 +22,12 @@ Azure Database for MySQL rugalmas kiszolgáló lehetővé teszi az olyan üzletm
 
 Az alábbi táblázat a rugalmas kiszolgáló által kínált funkciókat mutatja be.
 
-| **Funkció** | **Leírás** | **Korlátozások** |
+| **Szolgáltatás** | **Leírás** | **Korlátozások** |
 | ---------- | ----------- | ------------ |
 | **Biztonsági mentés & helyreállítás** | A rugalmas kiszolgáló automatikusan elvégzi az adatbázisfájlok napi biztonsági mentését, és folyamatosan készíti el a tranzakciónaplókat. A biztonsági mentések megtekinthetők az 1 – 35 nap közötti időszakban. Az adatbázis-kiszolgálót bármikor visszaállíthatja a biztonsági másolatok megőrzési időszakán belüli bármely időpontra. A helyreállítás ideje a visszaállítani kívánt adatok méretétől és a napló-helyreállítás elvégzéséhez szükséges időtől függ. További részletekért tekintse meg a [fogalmak – biztonsági mentés és visszaállítás](./concepts-backup-restore.md) című témakört. |A biztonsági mentési adatterületek a régión belül maradnak |
 | **Helyi redundáns biztonsági mentés** | A rugalmas kiszolgálói biztonsági mentések automatikusan és biztonságosan tárolódnak egy helyi redundáns tárolóban egy adott régióban és ugyanazon rendelkezésre állási zónában. A helyileg redundáns biztonsági másolatok háromszor replikálják a kiszolgáló biztonsági mentési adatfájljait az elsődleges régió egyetlen fizikai helyén belül. A helyileg redundáns biztonsági mentési tár legalább 99,999999999%-os (11 kilenc) tartósságot biztosít az objektumok számára egy adott évben. További részletekért tekintse meg a [fogalmak – biztonsági mentés és visszaállítás](./concepts-backup-restore.md) című témakört.| Minden régióban alkalmazható |
 | **Zóna redundáns magas rendelkezésre állása** | A rugalmas kiszolgáló magas rendelkezésre állású módban is üzembe helyezhető, amely az elsődleges és a készenléti kiszolgálókat két különböző rendelkezésre állási zónában helyezi üzembe a régión belül. Ez védelmet biztosít a zóna szintű hibáktól, és a tervezett és nem tervezett leállási események során csökkenti az alkalmazások leállását is. Az elsődleges kiszolgálóról származó adatok szinkron módon replikálódnak a készenléti replikára. Minden leállás esetén az adatbázis-kiszolgáló automatikusan feladatátvételt végez a készenléti replikára. További részletekért tekintse meg a [fogalmakat – magas rendelkezésre állást](./concepts-high-availability.md) . | Az általános célú és a memóriára optimalizált számítási szintek támogatottak. Csak olyan régiókban érhető el, ahol több zóna is elérhető.|
-| **Prémium fájlmegosztás** | Az adatbázisfájlok tárolása egy nagyon tartós és megbízható Azure Premium-fájlmegosztás formájában történik, amely adatredundanciát biztosít, és egy rendelkezésre állási zónában tárolt replika három másolatával rendelkezik, és automatikus adathelyreállítási képességekkel rendelkezik. További részletekért tekintse meg a [Premium file shares](../../storage/files/storage-how-to-create-premium-fileshare.md) című témakört. | Egy rendelkezésre állási zónán belül tárolt adatértékek |
+| **Prémium fájlmegosztás** | Az adatbázisfájlok tárolása egy nagyon tartós és megbízható Azure Premium-fájlmegosztás formájában történik, amely adatredundanciát biztosít, és egy rendelkezésre állási zónában tárolt replika három másolatával rendelkezik, és automatikus adathelyreállítási képességekkel rendelkezik. További részletekért tekintse meg a [Premium file shares](../../storage/files/storage-how-to-create-file-share.md) című témakört. | Egy rendelkezésre állási zónán belül tárolt adatértékek |
 
 > [!IMPORTANT]
 > Az előzetes verzió ideje alatt a RTO és a RPO SLA nem érhető el. Az ezen a lapon megadott adatok csak az Ön adatait és tervezési célját tartalmazzák.

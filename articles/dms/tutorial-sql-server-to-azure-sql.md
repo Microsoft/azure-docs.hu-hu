@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/03/2021
-ms.openlocfilehash: 6c5d758f94a4ad4e70a8b02a02c7c61097725f63
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: b02572f8f6f6531afba9e24af1d2eab53f5cb6ad
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101094827"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742109"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>Oktatóanyag: SQL Server migrálása Azure SQL Database-példányra kapcsolat nélküli üzemmódban, a DMS használatával
 
@@ -33,10 +33,6 @@ Az alábbiakat fogja elsajátítani:
 > - Hozzon létre egy áttelepítési projektet Azure Database Migration Service használatával.
 > - A migrálás futtatása.
 > - Az áttelepítés monitorozása.
-
-[!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
-
-Ez a cikk a SQL Serverról egy Azure SQL Database-adatbázisba történő offline áttelepítést ismerteti. Az online migrálással kapcsolatban tekintse meg az [SQL Server online migrálása az Azure SQL Database-be a DMS használatával](tutorial-sql-server-azure-sql-online.md) című cikket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -275,7 +271,5 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
 ### <a name="additional-resources"></a>További források
 
-- [SQL-áttelepítés az Azure adatáttelepítési szolgáltatásának](https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyGuid=3b671509-c3cd-4495-8e8f-354acfa09587) gyakorlati laborján keresztül.
-- További információ a Azure SQL Database való online áttelepítéssel kapcsolatos ismert problémákról és korlátozásokról: [Azure SQL Database online áttelepítéssel kapcsolatos ismert problémák és megkerülő megoldások](known-issues-azure-sql-online.md).
 - További információ a Azure Database Migration Serviceről: mi a [Azure Database Migration Service?](./dms-overview.md).
 - További információ a Azure SQL Databaseről: [Mi a Azure SQL Database szolgáltatás?](../azure-sql/database/sql-database-paas-overview.md).

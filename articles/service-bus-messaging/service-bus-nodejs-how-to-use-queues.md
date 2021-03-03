@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 11/09/2020
 ms.author: spelluru
 ms.custom: devx-track-js
-ms.openlocfilehash: 27ffbafb92dd3269e38092b64e2b74f17ff9f09f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3c499dcb5233cbf5cd4048c641d1b38e289cc35f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373079"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739712"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-javascript"></a>Üzenetek küldése és fogadása Azure Service Bus várólistákból (JavaScript)
 Ebből az oktatóanyagból megtudhatja, hogyan használhatja a [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) csomagot egy JavaScript-programban egy Service Bus üzenetsor üzeneteinek küldéséhez és fogadásához.
@@ -206,6 +206,6 @@ Válassza ki a várólistát ezen az **áttekintő** lapon, és navigáljon a **
 Tekintse meg a következő dokumentációt és mintákat: 
 
 - [Az ügyféloldali kódtár Azure Service Bus a JavaScripthez](https://www.npmjs.com/package/@azure/service-bus)
-- [JavaScript-minták](https://docs.microsoft.com/samples/azure/azure-sdk-for-js/service-bus-javascript/)
-- [Írógéppel minták](https://docs.microsoft.com/samples/azure/azure-sdk-for-js/service-bus-typescript/)
+- [JavaScript-minták](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
+- [Írógéppel minták](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
 - [API-referenciadokumentáció](/javascript/api/overview/azure/service-bus)

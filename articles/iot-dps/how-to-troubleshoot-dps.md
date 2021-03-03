@@ -6,14 +6,14 @@ manager: nberdy
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 02/14/2021
 ms.author: xujing
-ms.openlocfilehash: 2d27c4eb1ea4586e0f2eac48930d86217052b2d8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ba81be54592e591f734b05235bb3ce183a07a11c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585454"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709886"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Hibaelhárítás az Azure IoT Hub Device Provisioning Service
 
@@ -32,7 +32,7 @@ Az alábbi eljárás azt ismerteti, hogyan lehet megtekinteni és beállítani a
 4. Válassza ki a kívánt metrikát. 
    <br />A DPS jelenleg három mérőszámot biztosít:
 
-    | Metrika neve | Description |
+    | Metrika neve | Leírás |
     |-------|------------|
     | Igazolási kísérletek | Az eszköz kiépítési szolgáltatásával hitelesíteni próbált eszközök száma|
     | Regisztrációs kísérletek | A sikeres hitelesítés után IoT Hub regisztrálni próbált eszközök száma|
@@ -44,7 +44,7 @@ Az alábbi eljárás azt ismerteti, hogyan lehet megtekinteni és beállítani a
 
 7. Válassza a **feltétel hozzáadása** lehetőséget, majd a kérdésekkel válassza ki a kívánt metrikát és küszöbértéket.
 
-További információ: [Mi a klasszikus riasztás a Microsoft Azureban?](../azure-monitor/alerts/alerts-overview.md)
+További információ: [Azure monitor riasztások](../azure-monitor/platform/alerts-overview.md).
 
 ## <a name="using-log-analytic-to-view-and-resolve-errors"></a>A log Analytics használata a hibák megtekintéséhez és megoldásához
 
@@ -58,7 +58,7 @@ További információ: [Mi a klasszikus riasztás a Microsoft Azureban?](../azur
 
 5. A kívánt naplók összegyűjtésének engedélyezése.
 
-    | Napló neve | Description |
+    | Napló neve | Leírás |
     |-------|------------|
     | DeviceOperations | Eszköz-kapcsolódási eseményekhez kapcsolódó naplók |
     | ServiceOperations | A Service SDK-val kapcsolatos eseménynaplók (például regisztrációs csoportok létrehozása vagy frissítése)|
@@ -75,7 +75,7 @@ További információ: [Mi a klasszikus riasztás a Microsoft Azureban?](../azur
 ## <a name="common-error-codes"></a>Gyakori hibakódok
 Ez a táblázat a gyakori hibák megismerésére és megoldására használható.
 
-| Hibakód| Description | HTTP-állapotkód |
+| Hibakód| Leírás | HTTP-állapotkód |
 |-------|------------|------------|
 | 400 | A kérelem törzse nem érvényes; például nem lehet elemezni, vagy az objektumot nem lehet érvényesíteni.| 400 helytelen formátum |
 | 401 | Az engedélyezési jogkivonat nem érvényesíthető; például lejárt vagy nem vonatkozik a kérelem URI-ra. Ezt a hibakódot a rendszer a TPM-igazolási folyamat részeként is visszaadja az eszközöknek. | 401 Nem engedélyezett|

@@ -40,8 +40,18 @@
           href: 'https://azure.microsoft.com/resources/samples/?service=hdinsight'
     - name: Alapelvek
       items:
-        - name: Apache-összetevők a HDInsighton
-          href: ./hdinsight-component-versioning.md
+        - name: Verziókezelés
+          items:
+            - name: Verziószámozás bemutatása
+              href: ./hdinsight-overview-versioning.md
+            - name: HDInsight-verziók
+              href: ./hdinsight-component-versioning.md
+            - name: 'HDInsight 4,0-es verzió'
+              href: ./hdinsight-40-component-versioning.md
+            - name: A HDInsight 3.6-os verziója
+              href: ./hdinsight-36-component-versioning.md
+            - name: Kivont HDInsight-verziók
+              href: ./hdinsight-retired-versions.md
         - name: Enterprise Security Package
           href: ./enterprise-security-package.md
         - name: Hortonworks kibocsátási megjegyzések
@@ -650,7 +660,7 @@
             - name: Az Apache Kafka használata az IoT Hubbal
               href: ./kafka/apache-kafka-connector-iot-hub.md
             - name: Egyesített sémajegyzék
-              href: ./kafka/schema-registry.md
+              href: ./kafka/apache-kafka-producer-consumer-api.md
             - name: Streaming folyamatok létrehozása
               items:
                 - name: 'Apache Spark, Apache Kafka és Azure Cosmos DB'
@@ -817,6 +827,10 @@
               href: ./interactive-query/apache-hive-query-odbc-driver-powershell.md
         - name: Kezelés
           items:
+            - name: Struktúra-táblák másolása a Storage-fiókok között
+              href: ./interactive-query/hive-migration-across-storage-accounts.md
+            - name: Alapértelmezett Hive-metaadattár migrálása külső metaadattár az Azure HDInsight
+              href: ./interactive-query/hive-default-metastore-export-import.md
             - name: Hive számítási feladatok migrálása HDInsight 4.0-be
               href: ./interactive-query/apache-hive-migrate-workloads.md
             - name: Apache Hive-lekérdezések optimalizálása

@@ -1,22 +1,22 @@
 ---
-title: A tárolók Azure Monitorának figyelési díja | Microsoft Docs
-description: Ez a cikk ismerteti a metrikák figyelési költségeit, & a Azure Monitor által gyűjtött leltározási adatokat, amelyek segítenek az ügyfeleknek a használat és a kapcsolódó költségek kezelésében.
+title: A tárolók bepillantásának figyelési díja | Microsoft Docs
+description: Ez a cikk ismerteti a metrikák figyelési költségeit, & a tároló-elemzések által gyűjtött leltározási adatokat, hogy segítsen az ügyfeleknek a használat és a kapcsolódó költségek kezelésében.
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 0a3118e1dd839eced5e1f15d28feff4bbb58014f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 78387e950d476126d7c2065a530844e44fd59b4f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100620095"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728909"
 ---
-# <a name="understand-monitoring-costs-for-azure-monitor-for-containers"></a>Az Azure Monitor tárolók monitorozásával kapcsolatos költségeinek ismertetése
+# <a name="understand-monitoring-costs-for-container-insights"></a>A tároló-felismerések figyelési költségeinek megismerése
 
-Ez a cikk a tárolók Azure Monitorának díjszabását ismerteti a következők megismerése érdekében:
+Ez a cikk a tároló-megállapítások díjszabását ismerteti a következők megismeréséhez:
 
 * A költségek kezdeti megbecslése az elemzés engedélyezése előtt
 
-* A költségek mérése a tárolók Azure Monitor után egy vagy több tároló számára engedélyezve
+* A költségek mérése azt követően, hogy egy vagy több tároló számára engedélyezve van a tárolók beszerzése
 
 * Az adatgyűjtés szabályozása és a költséghatékonyság csökkentése
 
@@ -27,7 +27,7 @@ A Azure Monitor díjszabási modell elsősorban a GB-ban betöltött adatmennyis
 >[!NOTE]
 >A méretek és a díjszabás csak a mintavételezési becslések esetében használható. A legfrissebb díjszabást a Azure Monitor Log Analytics díjszabási modellje és az Azure-régió Azure Monitor [díjszabási](https://azure.microsoft.com/pricing/details/monitor/) oldalán találja.
 
-A következő összefoglalja, hogy milyen típusú adatokat gyűjt a rendszer a Kubernetes-fürtökről a költségeket befolyásoló és a használat alapján testreszabható tárolók Azure Monitor.
+A következő összefoglalja, hogy milyen típusú adatokat gyűjt a rendszer a Kubernetes-fürtökből a költségeket befolyásoló és a használat alapján testreszabható tároló-elemzésekkel.
 
 - StdOut, a stderr a fürt összes Kubernetes-névterében lévő összes figyelt tárolóból
 
@@ -37,11 +37,11 @@ A következő összefoglalja, hogy milyen típusú adatokat gyűjt a rendszer a 
 
 - A Prometheus-metrikák aktív selejtezése
 
-- A Kubernetes fő csomópontjának naplóinak [diagnosztikai naplója](../../aks/view-master-logs.md) az AK-fürtben a fő összetevők, például a *Kube-apiserver* és a *Kube-Controller-Manager* által generált naplózási adatok elemzéséhez.
+- A Kubernetes fő csomópontjának naplóinak [diagnosztikai naplója](../../aks/view-control-plane-logs.md) az AK-fürtben a fő összetevők, például a *Kube-apiserver* és a *Kube-Controller-Manager* által generált naplózási adatok elemzéséhez.
 
 ## <a name="what-is-collected-from-kubernetes-clusters"></a>A Kubernetes-fürtökből gyűjtött adatok
 
-A tárolók Azure Monitor a Log Analytics-munkaterületen naplózási adatként begyűjtött mérőszámok és leltári elemek előre meghatározott készletét tartalmazzák. Az alább felsorolt mérőszámok alapértelmezés szerint percenként lesznek gyűjtve.
+A tároló-elemzések előre meghatározott mérőszámokat és leltározási elemeket tartalmaznak, amelyeket a rendszer a Log Analytics munkaterületen naplózó adatként írt be. Az alább felsorolt mérőszámok alapértelmezés szerint percenként lesznek gyűjtve.
 
 ### <a name="node-metrics-collected"></a>Összegyűjtött csomópont-metrikák
 
@@ -194,10 +194,10 @@ Ha a Prometheus- [metrikai selejtet](container-insights-prometheus-integration.m
 
 - Győződjön meg arról, hogy a selejtes gyakoriság beállítása optimális (az alapértelmezett érték 60 másodperc). Amíg 15 másodpercre növelheti a gyakoriságot, meg kell győződnie arról, hogy a felkapart metrikák közzé lesznek téve ezen a gyakoriságon. Ellenkező esetben a rendszer sok ismétlődő metrikát továbbít, és a Log Analytics munkaterületre küldi az adatfeldolgozási és-megőrzési költségek hozzáadásakor, de kevesebb értékkel rendelkezik. 
 
-- A tárolók Azure Monitor támogatja a kizáró &-befoglalási listát metrika neve alapján. Ha például a fürtben **kubedns** -metrikákat használ fel, akkor előfordulhat, hogy több százat kell megadnia, amelyek alapértelmezés szerint lekaparják az adatokat, de valószínűleg csak egy részhalmaz érdekli. Erősítse meg, hogy megadta a kaparni kívánt metrikák listáját, vagy kizár másokat, kivéve, ha az adatfeldolgozási kötetre menteni szeretné. Egyszerűen engedélyezheti a selejtet, és nem használhatja a metrikák nagy részét, ami csak a Log Analytics számla további díját fogja felvenni.
+- A Container-bepillantást a kizáró & a mérőszámok neve alapján. Ha például a fürtben **kubedns** -metrikákat használ fel, akkor előfordulhat, hogy több százat kell megadnia, amelyek alapértelmezés szerint lekaparják az adatokat, de valószínűleg csak egy részhalmaz érdekli. Erősítse meg, hogy megadta a kaparni kívánt metrikák listáját, vagy kizár másokat, kivéve, ha az adatfeldolgozási kötetre menteni szeretné. Egyszerűen engedélyezheti a selejtet, és nem használhatja a metrikák nagy részét, ami csak a Log Analytics számla további díját fogja felvenni.
 
 - A pod-megjegyzéseken keresztüli adatkaparás során győződjön meg arról, hogy a névtér alapján szűri, hogy kizárhatja a nem használt névterekről származó Pod-metrikák (például a **fejlesztői és tesztelési** névterek) selejtét.
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ arról, hogyan állapítható meg, hogy milyen költségek várhatók a legutóbbi használati mintákon a tárolók Azure Monitor gyűjtött adatok alapján. lásd: [a használat kezelése és a becsült költségek](../platform/manage-cost-storage.md).
+További információ arról, hogyan állapítható meg, hogy milyen költségek várhatók a legutóbbi használati mintákon a tároló-elemzésekkel gyűjtött adatok alapján. a [használat és a becsült költségek kezelése](../logs/manage-cost-storage.md)című témakörben talál további információt.

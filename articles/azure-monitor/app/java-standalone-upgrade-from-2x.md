@@ -6,12 +6,12 @@ ms.date: 11/25/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: d815c919c2b2d63b093c4290a661cbf508c56012
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: e9208e617eb73786bcb003dc1b55d0d77ca6650f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601067"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704429"
 ---
 # <a name="upgrading-from-application-insights-java-2x-sdk"></a>Frissítés Application Insights Java 2. x SDK-ból
 
@@ -220,3 +220,16 @@ Néhány alkalmazás esetében továbbra is használhatja a korábbi függőség
 Korábban a 2. x SDK-ban a kérelem telemetria tartozó művelet neve is be lett állítva a függőségi telemetria.
 Application Insights Java 3,0 már nem tölti fel a művelet nevét a függőségi telemetria.
 Ha szeretné megtekinteni a művelet nevét, amely a függőségi telemetria szülője, írhat naplókat (Kusto) tartalmazó lekérdezést, amely a függőségi táblából a kérési táblához csatlakozik.
+
+## <a name="2x-sdk-logging-appenders"></a>2. x SDK naplózási hozzáfűzése
+
+Az 3,0-ügynök [automatikusan összegyűjti a naplózást](./java-standalone-config#auto-collected-logging) anélkül, hogy konfigurálnia kellene a naplózási hozzáfűző adatokat.
+Ha 2. x SDK-naplózási hozzáfűzést használ, ezeket eltávolíthatják, mert az 3,0-ügynök nem fogja tudni letiltani őket.
+
+## <a name="2x-sdk-spring-boot-starter"></a>2. x SDK Spring boot Starter
+
+Nincs 3,0 Spring boot Starter.
+Az 3,0-ügynök beállítása és konfigurációja ugyanazokat az [egyszerű lépéseket](./java-in-process-agent.md#quickstart) követi, amelyekkel a Spring boot-t használja.
+
+A 2. x SDK Spring boot Starter-ről való frissítéskor vegye figyelembe, hogy a Felhőbeli szerepkör neve már nem lesz alapértelmezett `spring.application.name` .
+Tekintse meg a [3,0 konfigurációs dokumentációját](./java-standalone-config.md#cloud-role-name) a Felhőbeli szerepkör nevének a 3,0-ben történő beállításához JSON-konfiguráció vagy környezeti változó használatával.

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 5070b64c3900aa4ee1cf51519c7b64362ac37413
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5de909d0d57ae212fa562eb31551e2271d307d47
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596676"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694257"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása, módosítása vagy törlése
 
@@ -361,6 +361,11 @@ A hálózati biztonsági csoportokkal, a biztonsági szabályokkal és az alkalm
 | Microsoft. Network/networkSecurityGroups/Write                 |   Hálózati biztonsági csoport létrehozása vagy frissítése                             |
 | Microsoft. Network/networkSecurityGroups/delete                |   Hálózati biztonsági csoport törlése                                       |
 | Microsoft. Network/networkSecurityGroups/csatlakozás/művelet           |   Hálózati biztonsági csoport hozzárendelése alhálózathoz vagy hálózati adapterhez 
+
+
+>[!NOTE]
+> `write`Egy hálózati biztonsági csoport műveleteinek elvégzéséhez az előfizetési fióknak rendelkeznie kell legalább `read` engedélyekkel az erőforráscsoporthoz, valamint az `Microsoft.Network/networkSecurityGroups/write` engedélyt.
+
 
 ### <a name="network-security-group-rule"></a>Hálózati biztonsági csoport szabálya
 

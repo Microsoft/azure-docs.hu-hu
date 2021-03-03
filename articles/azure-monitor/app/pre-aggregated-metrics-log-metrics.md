@@ -6,12 +6,12 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: c419411b0956cdc42055f0e97a47fc8e4ddb38c9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: acbe535d740eb527d165be1675f31e759851a987
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589736"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717825"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Naplóalapú és előre összesített metrikák az Application Insightsban
 
@@ -48,8 +48,10 @@ Az olyan SDK-k esetében, amelyek nem implementálják az előzetes összesíté
 | .NET Core-és .NET-keretrendszer | Támogatott (V 2.13.1 +)| [TrackMetric](api-custom-events-metrics.md#trackmetric) -n keresztül támogatott| Támogatott (V 2.7.2 +) [GetMetric](get-metric.md) keresztül |
 | Java                         | Nem támogatott       | [TrackMetric](api-custom-events-metrics.md#trackmetric) -n keresztül támogatott| Nem támogatott                           |
 | Node.js                      | Nem támogatott       | [TrackMetric](api-custom-events-metrics.md#trackmetric) -n keresztül támogatott| Nem támogatott                           |
-| Python                       | Nem támogatott       | Támogatott                                 | [OpenCensus. stats](opencensus-python.md#metrics) használatával támogatott |  
+| Python                       | Nem támogatott       | Támogatott                                 | Részben támogatott [OpenCensus. stats](opencensus-python.md#metrics) használatával |  
 
+> [!NOTE]
+>  A Python mérőszámok implementálása a OpenCensus. stats használatával eltér a GetMetric. Részletekért lásd [a Python dokumentációját a metrikákkal](./opencensus-python.md#metrics)kapcsolatban.
 
 ### <a name="codeless-supported-pre-aggregated-metrics-table"></a>Kód nem támogatott előre összesített mérőszámok táblázata
 

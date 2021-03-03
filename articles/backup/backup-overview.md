@@ -4,12 +4,12 @@ description: Áttekintést nyújt a Azure Backup szolgáltatásról, valamint ar
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: 6a30e31dd1462e427faf64966a38c94f9fa56df6
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 2879d104d534733651ba76ab5521541adad0a51c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624472"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725356"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Mi az az Azure App Service?
 
@@ -26,6 +26,7 @@ Az Azure Backup szolgáltatás egyszerű, biztonságos és költséghatékony me
 - **SQL Server Azure-beli virtuális gépeken**  -   [Azure-beli virtuális gépeken futó SQL Server adatbázisok biztonsági mentése](backup-azure-sql-database.md)
 - **Adatbázisok SAP HANA Azure-beli virtuális gépeken**  -  [Azure-beli virtuális gépeken futó SAP HANA-adatbázisok biztonsági mentése](backup-azure-sap-hana-database.md)
 - **Azure Database for PostgreSQL-kiszolgálók (előzetes verzió)**  -   [Készítsen biztonsági mentést az Azure PostgreSQL-adatbázisokról, és őrizze meg a biztonsági mentéseket akár 10 évig](backup-azure-database-postgresql.md)
+- **Azure-Blobok (előzetes verzió)**  -  [Azure-Blobok operatív biztonsági mentésének áttekintése (előzetes verzió)](blob-backup-overview.md)
 
 ![Azure Backup áttekintése](./media/backup-overview/azure-backup-overview.png)
 
@@ -38,7 +39,7 @@ A Azure Backup a következő kulcsfontosságú előnyöket nyújtja:
 - **Könnyen méretezhető** – a Azure Backup az Azure-felhő mögöttes teljesítményének és korlátlan skálájának használatával biztosítja a magas rendelkezésre állást karbantartási vagy figyelési terhelés nélkül.
 - **Korlátlan adatátviteli** lehetőség: a Azure Backup nem korlátozza az átvitt bejövő vagy kimenő adatok mennyiségét, vagy a továbbított adatok díját.
   - Kimenő adatokon a Recovery Services-tárolóból a visszaállítási művelet során átvitt adatok értendők.
-  - Ha az Azure import/export szolgáltatással nagy mennyiségű adat importálására szolgáló offline kezdeti biztonsági mentést hajt végre, akkor a rendszer a bejövő adatokhoz kapcsolódó költségeket is felhasználja.  [További információ](backup-azure-backup-import-export.md).
+  - Ha az Azure import/export szolgáltatással nagy mennyiségű adat importálására szolgáló offline kezdeti biztonsági mentést hajt végre, akkor a rendszer a bejövő adatokhoz kapcsolódó költségeket is felhasználja.  [További információk](backup-azure-backup-import-export.md).
 - **Adatbiztonság megőrzése**: Azure Backup biztosít olyan megoldásokat, amelyekkel biztonságossá teheti az adatátvitelt és [a nyugalmi](backup-azure-security-feature-cloud.md) [állapotban lévő](backup-azure-security-feature.md) adatok védelmét.
 - **Központosított figyelés és felügyelet**: a Azure Backup [beépített monitorozási és riasztási képességeket](backup-azure-monitoring-built-in-monitor.md) biztosít egy Recovery Services-tárolóban. Ezek a képességek további felügyeleti infrastruktúra nélkül érhetők el. A figyelés és a jelentéskészítés méretezését a [Azure monitor használatával](backup-azure-monitoring-use-azuremonitor.md)is növelheti.
 - Alkalmazás **-konzisztens biztonsági másolatok beolvasása**: az alkalmazás-konzisztens biztonsági mentés azt jelenti, hogy egy helyreállítási pont rendelkezik az összes szükséges adattal a biztonsági másolat visszaállításához. A Azure Backup az alkalmazással konzisztens biztonsági mentéseket biztosít, amelyek biztosítják, hogy az adatokat nem kell visszaállítani további javításokkal. Az alkalmazáskonzisztens adatok visszaállítása rövidebb idő alatt végrehajtható, így gyorsan visszatérhet egy működőképes állapotba.

@@ -77,6 +77,8 @@ items:
                 href: manage-data-sources.md
               - name: A Purview-összekötők áttekintése
                 href: purview-connector-overview.md
+              - name: Azure-beli több forrás
+                href: register-scan-azure-multiple-sources.md
               - name: Azure Blob Storage
                 href: register-scan-azure-blob-storage-source.md
                 displayName: Register and scan azure blob storage
@@ -102,8 +104,16 @@ items:
                 href: register-scan-azure-synapse-analytics.md
               - name: Helyszíni SQL Server
                 href: register-scan-on-premises-sql-server.md
+              - name: Oracle
+                href: register-scan-oracle-source.md
               - name: Power BI-bérlő – Portál
                 href: register-scan-power-bi-tenant.md
+              - name: SAP ECC
+                href: register-scan-sapecc-source.md
+              - name: SAP S/4HANA
+                href: register-scan-saps4hana-source.md
+              - name: Teradata
+                href: register-scan-teradata-source.md
               - name: Amazon S3
                 href: register-scan-amazon-s3.md
       - name: Üzleti szószedet
@@ -113,6 +123,10 @@ items:
           - name: Kifejezéssablonok kezelése
             href: how-to-manage-term-templates.md
           - name: Objektumok tömeges szerkesztése szószedet-kifejezések hozzárendeléséhez
+            href: how-to-bulk-edit-assets.md
+      - name: Tömeges szerkesztés
+        items:
+          - name: Eszközök tömeges szerkesztése a jegyzetek és a névjegyek címkézéséhez
             href: how-to-bulk-edit-assets.md
       - name: Besorolás
         items:
@@ -158,3 +172,5 @@ items:
     items:
       - name: Támogatott besorolások
         href: supported-classifications.md
+      - name: ABAP függvények telepítési útmutatója
+        href: abap-functions-deployment-guide.md

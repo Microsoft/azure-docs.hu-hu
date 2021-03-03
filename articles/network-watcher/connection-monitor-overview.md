@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: ccc2b6baba0e97320a5352013dbecfc121188457
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7abaae033d2dbdb329a1f99d8f9845e5965d806c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361026"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712317"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>Hálózati kapcsolat figyelése a kapcsolat figyelője szolgáltatással
 
@@ -89,7 +89,7 @@ A Linux rendszerű gépek esetében a használni kívánt portNumbers manuálisa
 
  Ne feledje, hogy a használt portszámoknak meg kell egyezniük a munkaterületen használt összes ügynökkel. 
 
-A parancsfájl a megoldáshoz szükséges beállításkulcsokat hoz létre. Emellett Windows tűzfal-szabályokat is létrehoz, amelyek lehetővé teszik, hogy az ügynökök TCP-kapcsolatokat hozzanak létre egymással. A parancsfájl által létrehozott beállításkulcsok határozzák meg, hogy naplózzák-e a hibakeresési naplókat és a naplófájlok elérési útját. A parancsfájl a kommunikációhoz használt ügynök TCP-portját is meghatározza. A kulcsok értékeit a parancsfájl automatikusan beállítja. Ezeket a kulcsokat ne módosítsa manuálisan. Alapértelmezés szerint a 8084-es port van megnyitva. Egyéni portot úgy használhat, hogy a portszám paramétert a parancsfájlhoz adja. Ugyanazt a portot használja az összes olyan számítógépen, amelyen a parancsfájl fut. [További](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#network-requirements) információ a log Analytics-ügynökök hálózati követelményeiről
+A parancsfájl a megoldáshoz szükséges beállításkulcsokat hoz létre. Emellett Windows tűzfal-szabályokat is létrehoz, amelyek lehetővé teszik, hogy az ügynökök TCP-kapcsolatokat hozzanak létre egymással. A parancsfájl által létrehozott beállításkulcsok határozzák meg, hogy naplózzák-e a hibakeresési naplókat és a naplófájlok elérési útját. A parancsfájl a kommunikációhoz használt ügynök TCP-portját is meghatározza. A kulcsok értékeit a parancsfájl automatikusan beállítja. Ezeket a kulcsokat ne módosítsa manuálisan. Alapértelmezés szerint a 8084-es port van megnyitva. Egyéni portot úgy használhat, hogy a portszám paramétert a parancsfájlhoz adja. Ugyanazt a portot használja az összes olyan számítógépen, amelyen a parancsfájl fut. [További](../azure-monitor/agents/log-analytics-agent.md#network-requirements) információ a log Analytics-ügynökök hálózati követelményeiről
 
 A parancsfájl csak a Windows tűzfalat konfigurálja helyileg. Ha hálózati tűzfallal rendelkezik, győződjön meg arról, hogy az Network Performance Monitor által használt TCP-portra irányuló forgalmat engedélyezi.
 
@@ -287,7 +287,7 @@ A kapcsolatok figyelése előtt létrehozott AverageRoundtripMs a következő n�
 
 Metrikák használata esetén állítsa be az erőforrástípust a Microsoft. Network/networkWatchers/connectionMonitors
 
-| Metric | Megjelenített név | Unit (Egység) | Összesítés típusa | Description | Dimenziók |
+| Metric | Megjelenített név | Unit (Egység) | Összesítés típusa | Leírás | Dimenziók |
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent (klasszikus) | %-Os mintavétel sikertelen (klasszikus) | Százalék | Átlag | A kapcsolat figyelési mintavételének százalékos aránya meghiúsult. | Nincsenek méretek |
 | AverageRoundtripMs (klasszikus) | Átlagos menetidő (MS) (klasszikus) | Ezredmásodpercben | Átlag | A forrás és a cél között eljuttatott kapcsolat-figyelési mintavételek átlagos hálózati RTT. |             Nincsenek méretek |

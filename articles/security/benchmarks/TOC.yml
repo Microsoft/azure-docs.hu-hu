@@ -235,3 +235,11 @@
   items:
     - name: Hozzárendelés a ASB és a CIS teljesítményteszt között
       href: v2-cis-benchmark.md
+    - name: Azure-biztonság – Alapismeretek
+      href: ../fundamentals/index.yml
+    - name: Megosztott feladatkörök a felhőben
+      href: ../fundamentals/shared-responsibility.md
+    - name: Azure Security Center
+      href: ../../security-center/index.yml
+    - name: Az Azure Security teljesítményteszt Foundation tervezetének mintája
+      href: ../../governance/blueprints/samples/azure-security-benchmark-foundation/index.yml

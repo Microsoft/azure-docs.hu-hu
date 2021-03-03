@@ -1,17 +1,16 @@
 ---
 title: Adatátviteli megoldás a Azure Monitorban | Microsoft Docs
 description: A vezetékes adatok összevont hálózati és teljesítményadatokat Log Analytics ügynökökkel rendelkező számítógépekről. A hálózati adatok és a naplóadatok összevonása segít az adatok összevetésében.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/29/2020
-ms.openlocfilehash: 563104a82da3b6b2263fce46792cf4f627c8f6ad
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5981a5f136d613ffcedda86797d807d2eecfab0d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572343"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713626"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Wire Data 2.0 (előzetes verzió) megoldás a Azure Monitor
 
@@ -26,7 +25,7 @@ A Log Analytics ügynökön kívül az adatátviteli megoldás a Microsoft függ
 > 
 >A vezetékes adatmegoldást használó meglévő ügyfelek továbbra is használhatják azt. Az áttelepítési ütemtervhez útmutatást teszünk közzé a Service Mapre való áttéréshez.
 >
->Az új ügyfeleknek telepíteniük kell a [Service Map megoldást](../vm/service-map.md) vagy [Azure monitor for VMS](../vm/vminsights-overview.md).  Az adatService Map adatkészlete hasonló a vezetékes adatforgalomhoz.  Azure Monitor for VMs tartalmazza a Service Map adatkészletet, amely további teljesítményadatokat és szolgáltatásokkal rendelkezik az elemzéshez. 
+>Az új ügyfeleknek telepíteniük kell a [Service Map megoldást](../vm/service-map.md) vagy a [virtuális](../vm/vminsights-overview.md)gépeket.  Az adatService Map adatkészlete hasonló a vezetékes adatforgalomhoz.  A VM-elemzések tartalmazzák a Service Map adatkészletet, amely további teljesítményadatokat és szolgáltatásokkal rendelkezik az elemzéshez. 
 
 
 Alapértelmezés szerint a Azure Monitor naplózza a CPU-, memória-, lemez-és hálózati teljesítményadatokat a Windows és a Linux rendszerbe épített számlálók, valamint a megadható egyéb teljesítményszámlálók adatait. A hálózati és egyéb adatok gyűjtése valós időben történik az egyes ügynökökre vonatkozóan, beleértve a számítógép által használt alhálózatokat és alkalmazásszintű protokollokat.  A Wire Data a hálózati adatokat az alkalmazások szintjén kezeli, nem a TCP átviteli réteg szintjén.  A megoldás nem veszi figyelembe az önálló ACK-kat és SYN-eket.  Ha a kézfogás befejeződött, onnantól a kapcsolat élőnek számít és Csatlakoztatva jelölést kap. A kapcsolat addig marad élő, amíg mindkét oldal egyetért a szoftvercsatorna nyitva tartásában, és az adatok átvitele oda-vissza lehetséges.  Ha az egyik oldalon lezárja a kapcsolatot, a rendszer leválasztott állapotként jelöli meg.  Ezért csak sikeresen elküldött csomagok által használt sávszélességet veszi számításba, az újraküldött vagy sikertelenül elküldött csomagok nem lesznek jelentve.
@@ -56,10 +55,10 @@ A Wire Data a Microsoft függőségi ügynöktől kapja az adatokat. A Dependenc
 
 | **Csatlakoztatott forrás** | **Támogatott** | **Leírás** |
 | --- | --- | --- |
-| Windows-ügynökök | Yes | A Wire Data adatok elemez és gyűjt a Windows rendszerű ügynökszámítógépekről. <br><br> A Windows rendszerhez készült [log Analytics ügynökön](../agents/agent-windows.md)kívül a Windows-ügynökök a Microsoft függőségi ügynököt is igénylik. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](../vm/vminsights-enable-overview.md#supported-operating-systems) szakaszban. |
-| Linux-ügynökök | Yes | A Wire Data adatokat elemez és gyűjt a Linux rendszerű ügynökszámítógépekről.<br><br> A [Linux rendszerhez készült log Analytics-ügynökön](../vm/quick-collect-linux-computer.md)kívül a Linux-ügynökök igénylik a Microsoft függőségi ügynököt. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](../vm/vminsights-enable-overview.md#supported-operating-systems) szakaszban. |
-| System Center Operations Manage felügyeleti csoport | Yes | A Wire Data adatokat elemez és gyűjt az olyan Windows- és Linux-ügynököktől, amelyek egy csatlakoztatott [System Center Operations Manager felügyeleti csoporthoz](../agents/om-agents.md) tartoznak. <br><br> Szükség van egy közvetlen kapcsolódásra a System Center Operations Manager ügynök számítógépéről Azure Monitorre. |
-| Azure Storage-fiók | No | A Wire Data ügynökszámítógépekről gyűjt adatokat, így az Azure Storage-ből nem tud adatokat gyűjteni. |
+| Windows-ügynökök | Igen | A Wire Data adatok elemez és gyűjt a Windows rendszerű ügynökszámítógépekről. <br><br> A Windows rendszerhez készült [log Analytics ügynökön](../agents/agent-windows.md)kívül a Windows-ügynökök a Microsoft függőségi ügynököt is igénylik. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](../vm/vminsights-enable-overview.md#supported-operating-systems) szakaszban. |
+| Linux-ügynökök | Igen | A Wire Data adatokat elemez és gyűjt a Linux rendszerű ügynökszámítógépekről.<br><br> A [Linux rendszerhez készült log Analytics-ügynökön](../vm/quick-collect-linux-computer.md)kívül a Linux-ügynökök igénylik a Microsoft függőségi ügynököt. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](../vm/vminsights-enable-overview.md#supported-operating-systems) szakaszban. |
+| System Center Operations Manage felügyeleti csoport | Igen | A Wire Data adatokat elemez és gyűjt az olyan Windows- és Linux-ügynököktől, amelyek egy csatlakoztatott [System Center Operations Manager felügyeleti csoporthoz](../agents/om-agents.md) tartoznak. <br><br> Szükség van egy közvetlen kapcsolódásra a System Center Operations Manager ügynök számítógépéről Azure Monitorre. |
+| Azure Storage-fiók | Nem | A Wire Data ügynökszámítógépekről gyűjt adatokat, így az Azure Storage-ből nem tud adatokat gyűjteni. |
 
 Windows rendszeren a Microsoft monitoring Agent (MMA) szolgáltatást a System Center Operations Manager és a Azure Monitor egyaránt használja az adatok összegyűjtéséhez és elküldéséhez. A környezettől függően az ügynököt System Center Operations Manager ügynöknek, Log Analytics ügynöknek, az MMA-nak vagy a közvetlen ügynöknek nevezzük. System Center Operations Manager és Azure Monitor az MMA némileg eltérő verzióját nyújtják. Ezek a verziók az egyes jelentések System Center Operations Manager, Azure Monitor vagy mindkettőre használhatók.
 

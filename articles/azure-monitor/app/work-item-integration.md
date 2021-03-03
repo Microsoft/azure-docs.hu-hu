@@ -3,12 +3,12 @@ title: Munkaelem-integráció (előzetes verzió) – Application Insights
 description: Megtudhatja, hogyan hozhat létre munkaelemeket a GitHubon vagy az Azure DevOps-ban Application Insights beágyazott adatokkal.
 ms.topic: conceptual
 ms.date: 02/9/2021
-ms.openlocfilehash: 0c1d6ffd6a5a39fa49eadc558aa80f365f856df2
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: ba0a67bad3ba47191414d6b406ab6cb4e6b7da78
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100101292"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731918"
 ---
 # <a name="work-item-integration-preview"></a>Munkaelem-integráció (előzetes verzió)
 
@@ -53,7 +53,7 @@ A sablon szerkesztéséhez nyissa meg a **munkaelemek** lapot a *configure (Konf
 
 :::image type="content" source="./media/work-item-integration/edit-template.png" alt-text=" Képernyőfelvétel a munkaelem lapról a ceruza szerkesztése ikon kiválasztásával.":::
 
-A ![ sablon szerkesztésének ](./media/work-item-integration/edit-icon.png) megkezdéséhez válassza a felül a szerkesztési ikon szerkesztése lehetőséget. A munkaelem-sablonok [Azure monitor munkafüzetek](../platform/workbooks-overview.md)alapján működnek. A munkaelem adatai a kulcsszó lekérdezési nyelv használatával jönnek létre. A lekérdezéseket úgy módosíthatja, hogy a csapat számára még nagyobb kontextust adjanak hozzá. Ha végzett a szerkesztéssel, mentse a munkafüzetet a ![ felső eszköztár mentés ikon mentése ikonjára kattintva ](./media/work-item-integration/save-icon.png) .
+A ![ sablon szerkesztésének ](./media/work-item-integration/edit-icon.png) megkezdéséhez válassza a felül a szerkesztési ikon szerkesztése lehetőséget. A munkaelem-sablonok [Azure monitor munkafüzetek](../visualize/workbooks-overview.md)alapján működnek. A munkaelem adatai a kulcsszó lekérdezési nyelv használatával jönnek létre. A lekérdezéseket úgy módosíthatja, hogy a csapat számára még nagyobb kontextust adjanak hozzá. Ha végzett a szerkesztéssel, mentse a munkafüzetet a ![ felső eszköztár mentés ikon mentése ikonjára kattintva ](./media/work-item-integration/save-icon.png) .
 
 :::image type="content" source="./media/work-item-integration/edit-workbook.png" alt-text=" Képernyőkép a munkaelem-sablon munkafüzetéről szerkesztési módban." lightbox="./media/work-item-integration/edit-workbook.png":::
 

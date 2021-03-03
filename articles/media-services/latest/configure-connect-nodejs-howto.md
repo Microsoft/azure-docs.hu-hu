@@ -14,42 +14,70 @@ ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: 9628e46281e267bd1c1fd8277a3a975bc338c6dc
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: ab0113823bb5751828a71a9afd8c474091272e16
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101096051"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724625"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Kapcsolódás Media Services V3 API-hoz – Node.js
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Ez a cikk bemutatja, hogyan csatlakozhat a Azure Media Services v3 node.js SDK-hoz az egyszerű szolgáltatás bejelentkezési módszerének használatával.
+Ez a cikk bemutatja, hogyan csatlakozhat a Azure Media Services v3 node.js SDK-hoz az egyszerű szolgáltatás bejelentkezési módszerének használatával. A *Media-Services-v3-Node-oktatóanyagok* példák tárházában található fájlokkal fog dolgozni. Az *HelloWorld-ListAssets* minta tartalmazza a csatlakozáshoz használandó kódot, amely felsorolja a fiókban lévő eszközöket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+- A Visual Studio Code telepítése.
 - Telepítse a [Node.js](https://nodejs.org/en/download/).
 - Telepítse az [írógéppel](https://www.typescriptlang.org/download).
 - [Hozzon létre egy Media Services fiókot](./create-account-howto.md). Ügyeljen arra, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét.
+- Hozzon létre egy egyszerű szolgáltatásnevet az alkalmazáshoz. Lásd: [hozzáférés API](./access-api-howto.md)-k.<br/>**Pro-tipp!** Tartsa meg az ablak megnyitását, vagy másoljon mindent a JSON lapon a Jegyzettömbbe. 
+- Győződjön meg arról, hogy a [javascripthez készült AZUREMEDIASERVICES SDK](https://www.npmjs.com/package/@azure/arm-mediaservices)legújabb verzióját kapja meg.
 
 > [!IMPORTANT]
-> Tekintse át a Azure Media Services [elnevezési konvenciókat](media-services-apis-overview.md#naming-conventions) az entitások fontos elnevezési korlátozásainak megismeréséhez. 
+> Tekintse át a Azure Media Services [elnevezési konvenciókat](media-services-apis-overview.md#naming-conventions) az entitások fontos elnevezési korlátozásainak megismeréséhez.
 
-## <a name="reference-documentation-for-azurearm-mediaservices"></a>Dokumentáció a következőhöz: @Azure/arm-mediaservices
-- [A Node.jsAzure Media Services moduljainak dokumentációja ](https://docs.microsoft.com/javascript/api/overview/azure/media-services?view=azure-node-latest)
+## <a name="clone-the-nodejs-samples-repo"></a>A Node.JS-minták tárházának klónozása
 
-## <a name="more-developer-documentation-for-nodejs-on-azure"></a>További fejlesztői dokumentáció az Azure-beli Node.js
-- [Azure for JavaScript & Node.js fejlesztők számára](https://docs.microsoft.com/azure/developer/javascript/?view=azure-node-latest)
-- [Media Services forráskód a git hub-tárházban @azure/azure-sdk-for-js](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/mediaservices/arm-mediaservices)
-- [Az Azure Package dokumentációja Node.js-fejlesztőknek](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest)
+Az Azure-mintákban néhány fájl is használható. A Node.JS Samples adattár klónozása.
+
+```git
+git clone https://github.com/Azure-Samples/media-services-v3-node-tutorials.git
+```
 
 ## <a name="install-the-packages"></a>A csomagok telepítése
 
-1. Hozzon létre egy package.jsfájlt a kedvenc szerkesztője használatával.
-1. Nyissa meg a fájlt, és illessze be a következő kódot:
+### <a name="install-azurearm-mediaservices"></a>Telepítése @azure/arm-mediaservices
 
-   Győződjön meg arról, hogy a [javascripthez készült AZUREMEDIASERVICES SDK](https://www.npmjs.com/package/@azure/arm-mediaservices)legújabb verzióját kapja meg.
+```bash
+npm install @azure/arm-mediaservices
+```
+
+### <a name="install-azurems-rest-nodeauth"></a>Telepítése @azure/ms-rest-nodeauth
+
+Telepítse a (z) " @azure/ms-rest-nodeauth ": "^ 3.0.0" minimális verzióját.
+
+```bash
+npm install @azure/ms-rest-nodeauth@"^3.0.0"
+```
+
+Ebben a példában az alábbi csomagokat fogja használni a `package.json` fájlban.
+
+|Csomag|Description|
+|---|---|
+|`@azure/arm-mediaservices`|Azure Media Services SDK. <br/>Győződjön meg arról, hogy a legújabb Azure Media Services csomagot használja, és ellenőrizze, hogy NPM-e a [telepítés @azure/arm-mediaservices ](https://www.npmjs.com/package/@azure/arm-mediaservices).|
+|`@azure/ms-rest-nodeauth` | Az egyszerű szolgáltatásnév vagy a felügyelt identitás használatával történő HRE-hitelesítéshez szükséges|
+|`@azure/storage-blob`|Storage SDK. Fájlok eszközökre való feltöltésekor használatos.|
+|`@azure/ms-rest-js`| A bejelentkezéshez használatos.|
+|`@azure/storage-blob` | Fájlok feltöltésére és letöltésére használható Azure Media Services a kódoláshoz.|
+|`@azure/abort-controller`| A Storage-ügyféllel együtt használatos a hosszú ideig futó letöltési műveletek időkorlátja|
+
+### <a name="create-the-packagejson-file"></a>A package.jslétrehozása fájlon
+
+1. Hozzon létre egy `package.json` fájlt a kedvenc szerkesztő használatával.
+1. Nyissa meg a fájlt, és illessze be a következő kódot:
 
 ```json
 {
@@ -66,43 +94,18 @@ Ez a cikk bemutatja, hogyan csatlakozhat a Azure Media Services v3 node.js SDK-h
 }
 ```
 
-A következő csomagokat kell megadni:
-
-|Csomag|Description|
-|---|---|
-|`@azure/arm-mediaservices`|Azure Media Services SDK. <br/>Győződjön meg arról, hogy a legújabb Azure Media Services csomagot használja, és ellenőrizze, hogy NPM-e a [telepítés @azure/arm-mediaservices ](https://www.npmjs.com/package/@azure/arm-mediaservices).|
-|`@azure/ms-rest-nodeauth` | Az egyszerű szolgáltatásnév vagy a felügyelt identitás használatával történő HRE-hitelesítéshez szükséges|
-|`@azure/storage-blob`|Storage SDK. Fájlok eszközökre való feltöltésekor használatos.|
-|`@azure/ms-rest-js`| A bejelentkezéshez használatos.|
-|`@azure/storage-blob` | Fájlok feltöltésére és letöltésére használható Azure Media Services a kódoláshoz.|
-|`@azure/abort-controller`| A Storage-ügyféllel együtt használatos a hosszú ideig futó letöltési műveletek időkorlátja|
-
-
-A következő parancs futtatásával gondoskodhat arról, hogy a legújabb csomagot használja:
-
-### <a name="install-azurearm-mediaservices"></a>Telepítése @azure/arm-mediaservices
-```
-npm install @azure/arm-mediaservices
-```
-
-### <a name="install-azurems-rest-nodeauth"></a>Telepítése @azure/ms-rest-nodeauth
-
-Telepítse a (z) " @azure/ms-rest-nodeauth ": "^ 3.0.0" minimális verzióját.
-
-```
-npm install @azure/ms-rest-nodeauth@"^3.0.0"
-```
-
 ## <a name="connect-to-nodejs-client-using-typescript"></a>Kapcsolódás Node.js-ügyfélhez a géppel
 
-1. Hozzon létre egy írógéppel. ts fájlt a kedvenc szerkesztő használatával.
-1. Nyissa meg a fájlt, és illessze be a következő kódot.
-1. Hozzon létre egy. env fájlt, és töltse ki a részleteket a Azure Portalból. Lásd: [hozzáférés API](./access-api-howto.md)-k.
 
-### <a name="sample-env-file"></a>Minta. env fájl
-```
-# copy the content of this file to a file named ".env". It should be stored at the root of the repo.
-# The values can be obtained from the API Access page for your Media Services account in the portal.
+
+### <a name="sample-env-file"></a>Minta *. env* fájl
+
+Másolja a fájl tartalmát egy *. env* nevű fájlba. A munkatárház gyökerében kell tárolni. Ezek az értékek, amelyek a portálon Media Services-fiókjához tartozó API-elérési lapon találhatók.
+
+A *. env* fájl létrehozása után megkezdheti a mintákkal való munkát.
+
+```nodejs
+# Values from the API Access page in the portal
 AZURE_CLIENT_ID=""
 AZURE_CLIENT_SECRET= ""
 AZURE_TENANT_ID= ""
@@ -126,8 +129,42 @@ AZURE_ARM_ENDPOINT="https://management.azure.com"
 DRM_SYMMETRIC_KEY="add random base 64 encoded string here"
 ```
 
-## <a name="typescript---hello-world---list-assets"></a>Írógéppel Hello World – eszközök listázása
-Ez a minta bemutatja, hogyan csatlakozhat az Media Services-ügyfélhez egy egyszerű szolgáltatással, és hogyan listázhatja a fiókban lévő eszközöket. Ha új fiókot használ, a lista üresen jelenik meg. A portálon néhány eszköz feltöltésével megjelenítheti az eredményeket.
+## <a name="run-the-sample-application-helloworld-listassets"></a>A minta alkalmazás *HelloWorld futtatása – ListAssets*
+
+1. Könyvtár módosítása a *AMSv3Samples* mappába
+
+```bash
+cd AMSv3Samples
+```
+
+2. Telepítse a fájl *packages.js* használt csomagokat.
+
+```
+npm install 
+```
+
+3. Módosítsa a könyvtárat a *HelloWorld-ListAssets* mappába.
+
+```bash
+cd HelloWorld-ListAssets
+```
+
+4. Indítsa el a Visual Studio Code-ot a AMSv3Samples mappából. Erre azért van szükség, hogy az a mappában induljon el, ahol a ". vscode" mappa és a tsconfig.jsfájl található.
+
+```dotnetcli
+cd ..
+code .
+```
+
+Nyissa meg a *HelloWorld-ListAssets* mappát, és nyissa meg az *index. TS* fájlt a Visual Studio Code Editorban.
+
+Az *index. TS* fájlban nyomja le az F5 billentyűt a hibakereső elindításához. Ekkor megjelenik az eszközök listája, amely akkor jelenik meg, ha már rendelkezik a fiókban lévő eszközökkel. Ha a fiók üres, akkor egy üres lista jelenik meg.  
+
+Ha gyorsan látni szeretné a felsorolt eszközöket, a portál használatával töltsön fel néhány videót. Az eszközök automatikusan létrejönnek, és a szkript újbóli futtatásával a nevüket fogja visszaadni.
+
+### <a name="a-closer-look-at-the-helloworld-listassets-sample"></a>A *HelloWorld-ListAssets* minta alaposabb áttekintése
+
+Az *HelloWorld-ListAssets* minta bemutatja, hogyan csatlakozhat az Media Services-ügyfélhez egy egyszerű szolgáltatással, és hogyan listázhatja a fiókban lévő eszközöket. A kód megjegyzései részletesen ismertetik, hogy mit csinál.
 
 ```ts
 import * as msRestNodeAuth from "@azure/ms-rest-nodeauth";
@@ -174,38 +211,6 @@ main().catch((err) => {
 });
 ```
 
-## <a name="run-the-sample-application-helloworld-listassets"></a>Futtassa a minta alkalmazást HelloWorld-ListAssets
-
-A Node.js-minták tárházának klónozása
-
-```git
-git clone https://github.com/Azure-Samples/media-services-v3-node-tutorials.git
-```
-
-Könyvtár módosítása a AMSv3Samples mappába
-```bash
-cd AMSv3Samples
-```
-
-Telepítse a packages.jsben használt csomagokat a következőn:
-```
-npm install 
-```
-
-Könyvtár módosítása a HelloWorld-ListAssets mappába
-```bash
-cd HelloWorld-ListAssets
-```
-
-Indítsa el a Visual Studio Code-ot a AMSv3Samples mappából. Erre azért van szükség, hogy az a mappában induljon el, ahol a ". vscode" mappa és a tsconfig.jsfájl található.
-```dotnetcli
-cd ..
-code .
-```
-
-Nyissa meg a HelloWorld-ListAssets mappát, és nyissa meg az index. ts fájlt a Visual Studio Code Editorban.
-Az index. TS fájlban nyomja le az F5 billentyűt a hibakereső elindításához. Ekkor megjelenik az eszközök listája, amely akkor jelenik meg, ha már rendelkezik a fiókban lévő eszközökkel. Ha a fiók üres, akkor egy üres lista jelenik meg.  Töltsön fel néhány eszközt a portálon az eredmények megtekintéséhez.
-
 ## <a name="more-samples"></a>További minták
 
 A [tárházban](https://github.com/Azure-Samples/media-services-v3-node-tutorials) a következő minták érhetők el
@@ -219,6 +224,10 @@ A [tárházban](https://github.com/Azure-Samples/media-services-v3-node-tutorial
 
 ## <a name="see-also"></a>Lásd még
 
+- [A Node.jsAzure Media Services moduljainak dokumentációja ](https://docs.microsoft.com/javascript/api/overview/azure/media-services?view=azure-node-latest)
+- [Azure for JavaScript & Node.js fejlesztők számára](https://docs.microsoft.com/azure/developer/javascript/?view=azure-node-latest)
+- [Media Services forráskód a git hub-tárházban @azure/azure-sdk-for-js](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/mediaservices/arm-mediaservices)
+- [Az Azure Package dokumentációja Node.js-fejlesztőknek](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest)
 - [Media Services fogalmak](concepts-overview.md)
 - [NPM telepítése @azure/arm-mediaservices](https://www.npmjs.com/package/@azure/arm-mediaservices)
 - [Azure for JavaScript & Node.js fejlesztők számára](https://docs.microsoft.com/azure/developer/javascript/?view=azure-node-latest)

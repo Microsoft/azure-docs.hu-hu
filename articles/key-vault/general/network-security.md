@@ -2,20 +2,20 @@
 title: Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása – Azure Key Vault
 description: Részletes útmutató Key Vault tűzfalak és virtuális hálózatok konfigurálásához
 services: key-vault
-author: ShaneBala-keyvault
-manager: ravijan
+author: msmbaldwin
+manager: rkarlin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 10/01/2020
-ms.author: sudbalas
+ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3639237a0dc34c521fd3fa52631fdb19c26ec284
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 13ead70f278f12866dbe00b53c487aebcc43304f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936345"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742636"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása
 
@@ -39,7 +39,7 @@ Ha meg szeretné állapítani, hogy a használni kívánt szolgáltatás szerepe
 
 ### <a name="key-vault-firewall-enabled-ipv4-addresses-and-ranges---static-ips"></a>Key Vault tűzfal engedélyezve (IPv4-címek és tartományok – statikus IP-címek)
 
-Ha engedélyezni szeretné egy adott szolgáltatás számára a Key Vault elérését a Key Vault tűzfalon keresztül, akkor a Key Vault tűzfal engedélyezési listájában adhatja hozzá az IP-címét. Ez a konfiguráció a statikus IP-címeket vagy a jól ismert tartományokat használó szolgáltatások esetében ajánlott.
+Ha engedélyezni szeretné egy adott szolgáltatás számára a Key Vault elérését a Key Vault tűzfalon keresztül, akkor a Key Vault tűzfal engedélyezési listájában adhatja hozzá az IP-címét. Ez a konfiguráció a statikus IP-címeket vagy a jól ismert tartományokat használó szolgáltatások esetében ajánlott. Ebben az esetben legfeljebb 1000 CIDR tartomány létezik.
 
 Ha engedélyezni szeretné az Azure-erőforrások IP-címét vagy tartományát, például egy webalkalmazást vagy logikai alkalmazást, hajtsa végre az alábbi lépéseket.
 
@@ -87,7 +87,7 @@ A Key Vault tűzfalak és virtuális hálózatok konfigurálása a Azure Portal 
 5. A megnyíló új panelen válassza ki azt az előfizetést, virtuális hálózatot és alhálózatot, amely számára engedélyezni kívánja a kulcstartó elérését. Ha a kiválasztott virtuális hálózatok és alhálózatok nem rendelkeznek engedélyezett szolgáltatási végpontokkal, erősítse meg, hogy engedélyezni szeretné a szolgáltatási végpontokat, majd válassza az **Engedélyezés** lehetőséget. Az érvénybe léptetés akár 15 percet is igénybe vehet.
 6. Az **IP-hálózatok** területen adja hozzá az IPv4-címtartományokat az IPv4-címtartományok beírásával a [CIDR (osztály nélküli tartományok közötti útválasztás) jelöléssel](https://tools.ietf.org/html/rfc4632) vagy az egyes IP-címekkel.
 7. Ha engedélyezni szeretné a Microsoft megbízható szolgáltatásainak a Key Vault tűzfal megkerülését, válassza az Igen lehetőséget. Az aktuális Key Vault megbízható szolgáltatások teljes listáját az alábbi hivatkozásra kattintva tekintheti meg. [Megbízható szolgáltatások Azure Key Vault](./overview-vnet-service-endpoints.md#trusted-services)
-7. Válassza a **Mentés** lehetőséget.
+7. Kattintson a **Mentés** gombra.
 
 Új virtuális hálózatokat és alhálózatokat is hozzáadhat, majd engedélyezheti az újonnan létrehozott virtuális hálózatok és alhálózatok szolgáltatási végpontját az **+ új virtuális hálózat hozzáadása** lehetőség kiválasztásával. Ezután kövesse az utasításokat.
 
@@ -172,7 +172,7 @@ A következőképpen konfigurálhatja Key Vault tűzfalakat és virtuális hál�
 * Azure CLI-parancsok: [az Key Vault Network-Rule](/cli/azure/keyvault/network-rule)
 * Azure PowerShell parancsmagok: [Get-AzKeyVault](/powershell/module/az.keyvault/get-azkeyvault), [Add-AzKeyVaultNetworkRule](/powershell/module/az.KeyVault/Add-azKeyVaultNetworkRule), [Remove-AzKeyVaultNetworkRule](/powershell/module/az.KeyVault/Remove-azKeyVaultNetworkRule), [Update-AzKeyVaultNetworkRuleSet](/powershell/module/az.KeyVault/Update-azKeyVaultNetworkRuleSet)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Virtuális hálózati szolgáltatás végpontjai Key Vault](overview-vnet-service-endpoints.md)
 * [Azure Key Vault biztonsági áttekintés](security-overview.md)

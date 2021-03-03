@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: lajanuar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dd5b83908ae7c6d62acd3391933028685facf755
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 0665dcbc8de518c5759c52a8fc3aec26859566d6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927474"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728008"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Oktatóanyag: fordítási alkalmazás létrehozása WPF-mel
 
@@ -41,7 +41,7 @@ Ez a lista tartalmazza az oktatóanyagban használt Cognitive Services. Az egyes
 | Szolgáltatás | Szolgáltatás | Leírás |
 |---------|---------|-------------|
 | Translator | [Nyelvek beolvasása](./reference/v3-0-languages.md) | A szöveges fordításhoz támogatott nyelvek teljes listájának beolvasása. |
-| Translator | [Fordítása](./reference/v3-0-translate.md) | Szöveg fordítása több mint 70 nyelvre. |
+| Translator | [Fordítása](./reference/v3-0-translate.md) | Szöveg fordítása 90 nyelvekre és dialektusokra. |
 | Translator | [Kinyomoz](./reference/v3-0-detect.md) | A bemeneti szöveg nyelvének észlelése. Az észlelés megbízhatósági pontszámát tartalmazza. |
 | Bing – Helyesírás-ellenőrzés | [Spell Check](/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | A fordítási pontosság javítása érdekében javítsa a helyesírási hibákat. |
 
@@ -115,7 +115,7 @@ Nézzük meg, hogy mi építünk.
 
 A felhasználói felület a következő összetevőket tartalmazza:
 
-| Név | Típus | Description |
+| Név | Típus | Leírás |
 |------|------|-------------|
 | `FromLanguageComboBox` | ComboBox | Megjeleníti a Microsoft Translator által a szöveges fordításhoz támogatott nyelvek listáját. A felhasználó kiválasztja azt a nyelvet, amelyről a fordítás történik. |
 | `ToLanguageComboBox` | ComboBox | Ugyanazokat a nyelveket jeleníti meg, mint a `FromComboBox` , de azon nyelv kiválasztására szolgál, amelyet a felhasználó lefordít. |
@@ -251,7 +251,7 @@ Az összes projekt be van ágyazva a `MainWindow : Window` osztályba. Kezdjük 
 
 Ebben a kódrészletben két, a fordításhoz elérhető nyelvekkel kapcsolatos információt tartalmazó tag-változót jelentettünk be:
 
-| Változó | Típus | Description |
+| Változó | Típus | Leírás |
 |----------|------|-------------|
 |`languageCodes` | Karakterláncok tömbje |A nyelvkódokat gyorsítótárazza. A Translator szolgáltatás rövid kódokat használ a nyelvek azonosítására (például: `en` = angol). |
 |`languageCodesAndTitles` | Rendezett szótár | A felhasználói felületen megjelenő „felhasználóbarát” neveket képezi le az API által használt rövid kódokra. Az elemeket betűrendbe rendezi, és nem veszi figyelembe a nagy- és kisbetűket. |
@@ -264,7 +264,7 @@ Végül hozzáadunk egy kódot a metódusok meghívásához a fordítási nyelve
 
 ## <a name="get-supported-languages"></a>Támogatott nyelvek lekérése
 
-A Translator jelenleg több mint 70 nyelvet támogat. Mivel az új nyelvi támogatást az idő múlásával vesszük fel, javasoljuk, hogy a fordító által közzétett nyelvi erőforrást ne rögzítjük az alkalmazásban.
+A Translator jelenleg 90 nyelvet és dialektust támogat. Mivel az új nyelvi támogatást az idő múlásával vesszük fel, javasoljuk, hogy a fordító által közzétett nyelvi erőforrást ne rögzítjük az alkalmazásban.
 
 Ebben a szakaszban egy `GET` , a Languages (nyelvek) erőforrásra vonatkozó kérelmet hozunk létre, amely azt határozza meg, hogy szeretnénk-e a fordításhoz elérhető nyelvek listáját használni.
 

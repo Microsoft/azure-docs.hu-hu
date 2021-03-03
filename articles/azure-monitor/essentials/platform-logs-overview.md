@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: d2162a5c3d88eaae69b3a67456fdc29f19b1a79a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7a57a39dd72e2330c2adde2b471bca2f9f2e00a7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100616595"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725849"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Az Azure-platform naplóinak áttekintése
 A platform naplói részletes diagnosztikai és naplózási információkat biztosítanak az Azure-erőforrásokhoz és az Azure-platformtól függenek. Ezek automatikusan létrejönnek, bár bizonyos platform-naplókat egy vagy több megőrzött célhelyre kell továbbítani. Ez a cikk áttekintést nyújt a platform naplóiról, beleértve az általuk biztosított információkat, valamint azt, hogy hogyan konfigurálhatja őket gyűjteményekhez és elemzésekhez.
@@ -22,7 +22,7 @@ A következő táblázat felsorolja az Azure különböző rétegeiben elérhet�
 
 | Napló | Réteg | Leírás |
 |:---|:---|:---|
-| [Erőforrásnaplók](../platform/resource-logs.md) | Azure-erőforrások | Betekintést nyerhet az Azure-erőforrásokon (az *adatsíkon*) végrehajtott műveletekre, például a titkos kulcs beszerzése egy Key Vault vagy egy adatbázisra vonatkozó kérelem elkészítése. Az erőforrás-naplók tartalma az Azure-szolgáltatás és az erőforrás típusa szerint változik.<br><br>*Az erőforrás-naplókat korábban diagnosztikai naplóknak nevezzük.*  |
+| [Erőforrásnaplók](./resource-logs.md) | Azure-erőforrások | Betekintést nyerhet az Azure-erőforrásokon (az *adatsíkon*) végrehajtott műveletekre, például a titkos kulcs beszerzése egy Key Vault vagy egy adatbázisra vonatkozó kérelem elkészítése. Az erőforrás-naplók tartalma az Azure-szolgáltatás és az erőforrás típusa szerint változik.<br><br>*Az erőforrás-naplókat korábban diagnosztikai naplóknak nevezzük.*  |
 | [Tevékenységnapló](../essentials/activity-log.md) | Azure-előfizetés | Betekintést nyújt a műveletekre az előfizetésben lévő egyes Azure-erőforrásokon kívülről (*a felügyeleti síkon*), valamint a Service Health események frissítései mellett. A tevékenység naplójának használatával meghatározhatja a _mi_, _ki_ és _Mikor_ az előfizetésben lévő erőforrásokra vonatkozó írási műveletek (Put, post, DELETE) esetében. Minden egyes Azure-előfizetéshez egyetlen tevékenységi napló van. |
 | [Az Azure Active Directory naplói](../../active-directory/reports-monitoring/overview-reports.md) | Azure-bérlő |  A bejelentkezési tevékenység előzményeit és a Azure Active Directory egy adott bérlő esetében végrehajtott módosítások naplózási nyomvonalát tartalmazza.   |
 
@@ -44,9 +44,9 @@ A különböző Azure platform-naplók megtekintésére és elemzésére külön
 ## <a name="destinations"></a>Célhelyek
 A figyelési követelményektől függően a következő táblázatban szereplő célok közül egy vagy több célhelyre is küldhet platform-naplókat. [Diagnosztikai beállítások létrehozásával](../essentials/diagnostic-settings.md)konfigurálja a platform-naplók célhelyeit.
 
-| Cél | Description |
+| Cél | Leírás |
 |:---|:---|
-| Log Analytics-munkaterület | Elemezze az összes Azure-erőforrás naplóit, és használja ki az összes elérhető funkciót [Azure monitor naplókhoz](../platform/data-platform-logs.md) , beleértve a [naplózási lekérdezéseket](../log-query/log-query-overview.md) és a [naplózási riasztásokat](../alerts/alerts-log.md). Egy interaktív jelentés részeként rögzítheti egy naplóbeli lekérdezés eredményeit egy Azure-irányítópulton, vagy belefoglalhatja azt egy munkafüzetbe. |  |
+| Log Analytics-munkaterület | Elemezze az összes Azure-erőforrás naplóit, és használja ki az összes elérhető funkciót [Azure monitor naplókhoz](../logs/data-platform-logs.md) , beleértve a [naplózási lekérdezéseket](../logs/log-query-overview.md) és a [naplózási riasztásokat](../alerts/alerts-log.md). Egy interaktív jelentés részeként rögzítheti egy naplóbeli lekérdezés eredményeit egy Azure-irányítópulton, vagy belefoglalhatja azt egy munkafüzetbe. |  |
 | Eseményközpont | Platform-naplóbejegyzések küldése az Azure-on kívül, például egy harmadik féltől származó SIEM vagy egyéni telemetria platformra.
 | Azure Storage tárterület | Archiválja a naplókat a naplózáshoz vagy a biztonsági mentéshez. |
 
@@ -61,5 +61,4 @@ A figyelési követelményektől függően a következő táblázatban szereplő
 ## <a name="next-steps"></a>Következő lépések
 
 * [További információ a tevékenység naplóról](../essentials/activity-log.md)
-* [További információ az erőforrás-naplókról](../platform/resource-logs.md)
-
+* [További információ az erőforrás-naplókról](./resource-logs.md)

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 02/22/2021
 ms.author: longl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 016b8bf010f597e963e0901d1ec48486f79bbb35
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: ea6b567d7b48e504d9b79dad568da7170ada5326
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913126"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706826"
 ---
 # <a name="specify-a-face-recognition-model"></a>Arcfelismerési modell megadása
 
@@ -24,7 +24,7 @@ Ez az útmutató bemutatja, hogyan határozhatja meg az Arcfelismerés, az azono
 
 A Face szolgáltatás gépi tanulási modelleket használ a képeken található emberi arcokon végzett műveletek végrehajtásához. Folyamatosan fejlesztjük modelljeink pontosságát az ügyfelek visszajelzései és a kutatás előrehaladása alapján, és ezeket a fejlesztéseket a modell frissítéseiként tesszük elérhetővé. A fejlesztők megadhatják, hogy az Arcfelismerés modell melyik verzióját szeretné használni; kiválaszthatják azt a modellt, amelyik a legjobban megfelel a használati esetnek.
 
-Az Azure Face szolgáltatás három felismerési modellel rendelkezik. A _recognition_01_ (közzétett 2017) és _recognition_02_ (közzétett 2019) modellek folyamatosan támogatottak, így biztosítva a visszamenőleges kompatibilitást a FaceLists-t vagy **PersonGroup** -t használó ügyfelek számára ezekkel a modellekkel. A **FaceList** vagy a **Persongroup** mindig a által létrehozott felismerési modellt fogja használni, és az új arcok társítva lesznek ehhez a modellhez, amikor hozzáadják őket. Ez a létrehozás után nem módosítható, és az ügyfeleknek a megfelelő **FaceList** vagy **PersonGroup** kell használniuk a megfelelő felismerési modellt.
+Az Azure Face szolgáltatás három felismerési modellel rendelkezik. A _recognition_01_ (közzétett 2017) és _recognition_02_ (közzétett 2019) modellek folyamatosan támogatottak, így biztosítva a visszamenőleges kompatibilitást a FaceLists-t vagy **PersonGroup**-t használó ügyfelek számára ezekkel a modellekkel. A **FaceList** vagy a **Persongroup** mindig a által létrehozott felismerési modellt fogja használni, és az új arcok társítva lesznek ehhez a modellhez, amikor hozzáadják őket. Ez a létrehozás után nem módosítható, és az ügyfeleknek a megfelelő **FaceList** vagy **PersonGroup** kell használniuk a megfelelő felismerési modellt.
 
 A későbbi felismerési modelleket a saját kényelmében helyezheti át. azonban új FaceLists és PersonGroups kell létrehoznia az Ön által választott felismerési modellel.
 
@@ -53,7 +53,7 @@ Az [arc-észlelési] API használatakor rendelje hozzá a modell verzióját a (
 * recognition_03
 
 
-Opcionálisan megadhatja a _returnRecognitionModel_ paramétert (az alapértelmezett **Hamis értéket** ) annak jelzésére, hogy a _recognitionModel_ válaszként kell-e visszaadni. Ezért a REST API [Arcfelismerés URL-] címe a következőképpen fog kinézni:
+Opcionálisan megadhatja a _returnRecognitionModel_ paramétert (az alapértelmezett **Hamis értéket**) annak jelzésére, hogy a _recognitionModel_ válaszként kell-e visszaadni. Ezért a REST API [Arcfelismerés URL-] címe a következőképpen fog kinézni:
 
 `https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel]&subscription-key=<Subscription key>`
 
@@ -66,9 +66,9 @@ var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recog
 
 ## <a name="identify-faces-with-specified-model"></a>Arcok azonosítása a megadott modellel
 
-A Face szolgáltatás képes kinyerni az adatokból a képet, és társíthatja azt egy **személy** objektummal (például a Face API-hívás [hozzáadásával](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) ), és több **személy** objektum is tárolható egy **PersonGroup** . Ezt követően egy új arc összehasonlítható egy **PersonGroup** (az [arc-azonosító] hívással), és azonosítható a csoporton belüli megfelelő személy is.
+A Face szolgáltatás képes kinyerni az adatokból a képet, és társíthatja azt egy **személy** objektummal (például a Face API-hívás [hozzáadásával](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) ), és több **személy** objektum is tárolható egy **PersonGroup**. Ezt követően egy új arc összehasonlítható egy **PersonGroup** (az [arc-azonosító] hívással), és azonosítható a csoporton belüli megfelelő személy is.
 
-A **PersonGroup** egyetlen egyedi felismerési modellel kell **rendelkezniük az összes s számára** , és ezt a paramétert használva lehet megadni `recognitionModel` a csoport létrehozásakor ( [PersonGroup-Create] vagy [LargePersonGroup-Create]). Ha nem megadja ezt a paramétert, a rendszer az eredeti `recognition_01` modellt használja. Egy csoport mindig a-val létrehozott felismerési modellt fogja használni, és az új arcok társítva lesznek ehhez a modellhez, amikor hozzáadja őket a rendszerhez. Ez a csoport létrehozása után nem módosítható. Ha szeretné megtekinteni, hogy a **PersonGroup** melyik modellre van konfigurálva, használja a [PersonGroup-Get API-] t a _returnRecognitionModel_ paraméter **true** értékre állításával.
+A **PersonGroup** egyetlen egyedi felismerési modellel kell **rendelkezniük az összes s számára**, és ezt a paramétert használva lehet megadni `recognitionModel` a csoport létrehozásakor ([PersonGroup-Create] vagy [LargePersonGroup-Create]). Ha nem megadja ezt a paramétert, a rendszer az eredeti `recognition_01` modellt használja. Egy csoport mindig a-val létrehozott felismerési modellt fogja használni, és az új arcok társítva lesznek ehhez a modellhez, amikor hozzáadja őket a rendszerhez. Ez a csoport létrehozása után nem módosítható. Ha szeretné megtekinteni, hogy a **PersonGroup** melyik modellre van konfigurálva, használja a [PersonGroup-Get API-] t a _returnRecognitionModel_ paraméter **true** értékre állításával.
 
 Tekintse meg a .NET-ügyfél függvénytárának következő kódrészletét.
 
@@ -94,7 +94,7 @@ Tekintse meg a .NET-ügyfél függvénytárának következő kódrészletét.
 await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_03");
 ```
 
-Ez a kód egy nevű arc listát hoz létre `My face collection` a _recognition_03_ modell használatával a szolgáltatások kinyeréséhez. Ha egy új észlelt arc fölé keres hasonló arcokat, az adott arcot a _recognition_03_ modell használatával kell észlelni ( [Arcfelismerés]). Az előző szakaszban leírtaknak megfelelően a modellnek konzisztensnek kell lennie.
+Ez a kód egy nevű arc listát hoz létre `My face collection` a _recognition_03_ modell használatával a szolgáltatások kinyeréséhez. Ha egy új észlelt arc fölé keres hasonló arcokat, az adott arcot a _recognition_03_ modell használatával kell észlelni ([Arcfelismerés]). Az előző szakaszban leírtaknak megfelelően a modellnek konzisztensnek kell lennie.
 
 Az [arc-Find hasonló API-] ban nincs változás. az észleléshez csak a modell verzióját kell megadnia.
 
@@ -105,10 +105,10 @@ Az [arc-ellenőrzés] API ellenőrzi, hogy két arc ugyanahhoz a személyhez tar
 ## <a name="evaluate-different-models"></a>Különböző modellek kiértékelése
 
 Ha a különböző felismerési modellek teljesítményét össze szeretné hasonlítani a saját adataival, a következőkre lesz szüksége:
-1. Hozzon létre három PersonGroups _recognition_01_ , _recognition_02_ és _recognition_03_ használatával.
-1. A képadatokkal felderítheti az arcokat, és regisztrálhatja őket a következő három **PersonGroup** található **személyekhez** . 
+1. Hozzon létre három PersonGroups _recognition_01_, _recognition_02_ és _recognition_03_ használatával.
+1. A képadatokkal felderítheti az arcokat, és regisztrálhatja őket a következő három **PersonGroup** található **személyekhez**. 
 1. A PersonGroups a PersonGroup-Train API használatával taníthatja.
-1. Tesztelje a Face-azonosulni mindhárom **PersonGroup** , és hasonlítsa össze az eredményeket.
+1. Tesztelje a Face-azonosulni mindhárom **PersonGroup**, és hasonlítsa össze az eredményeket.
 
 
 Ha általában a megbízhatósági küszöbértéket adja meg (a nulla és az egyik közötti érték, amely meghatározza, hogy a modellnek milyen mértékben kell azonosítania egy arcot), előfordulhat, hogy különböző küszöbértékeket kell használnia a különböző modellekhez. Az egyik modell küszöbértéke nem osztható meg egy másikhoz, és nem feltétlenül ugyanazt az eredményt fogja eredményezni.

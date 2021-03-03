@@ -3,50 +3,41 @@ title: Tanúsítvány elforgatása Azure Database for MariaDB
 description: További információ a főtanúsítványok változásairól, amelyek hatással lesznek a Azure Database for MariaDB
 author: mksuni
 ms.author: sumuth
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/18/2021
-ms.openlocfilehash: 66db443c4c52e4994e62a9f83f8a624319b349ab
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 105bc7f14f9ddcc4a64564edc1eebcd17b898bc6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98659886"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698994"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>A legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ változásának megismerése Azure Database for MariaDB
 
-Azure Database for MariaDB az SSL protokollal engedélyezett ügyfélalkalmazás vagy illesztőprogram főtanúsítványát módosítja, az adatbázis-kiszolgálóhoz való [kapcsolódáshoz](concepts-connectivity-architecture.md). A jelenleg elérhető főtanúsítvány a szokásos karbantartási és biztonsági eljárások részeként 2021 (02/15/2021). február 15-én lejár. Ez a cikk további részleteket tartalmaz a közelgő változásokról, az érintett erőforrásokról és azokról a lépésekről, amelyekkel biztosítható, hogy az alkalmazás fenntartsa az adatbázis-kiszolgálóval való kapcsolatot.
-
->[!NOTE]
-> Az ügyfelek visszajelzései alapján a meglévő Baltimore legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ főtanúsítványának elavulttá tételét a 2020. október 15. és 2021. között meghosszabbítottuk. Reméljük, hogy ez a bővítmény elegendő időt biztosít ahhoz, hogy a felhasználók megváltoztassák az ügyfél módosításait, ha azok hatással vannak rájuk.
+Azure Database for MariaDB sikeresen befejezte a főtanúsítvány változását **február 15-én, 2021 (02/15/2021)** a szokásos karbantartási és biztonsági eljárások részeként. Ez a cikk további részleteket tartalmaz a változásokról, az érintett erőforrásokról és azokról a lépésekről, amelyekkel biztosítható, hogy az alkalmazás fenntartsa a kapcsolatot az adatbázis-kiszolgálóval.
 
 > [!NOTE]
 > Ez a cikk a _Slave_ kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
+>
 
-## <a name="what-update-is-going-to-happen"></a>Milyen frissítés fog történni?
+## <a name="why-root-certificate-update-is-required"></a>Miért van szükség a főtanúsítvány frissítésére?
 
-Bizonyos esetekben az alkalmazások egy megbízható hitelesítésszolgáltató (CA) tanúsítványfájl alapján létrehozott helyi Tanúsítványfájl használatával csatlakoznak a biztonságos hálózathoz. Jelenleg az ügyfelek csak az előre definiált tanúsítványt használhatják az [itt](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)található Azure Database for MariaDB-kiszolgálóhoz való kapcsolódáshoz. Azonban a hitelesítésszolgáltató [(CA) böngésző fóruma](https://cabforum.org/)   nemrég közzétette a CA-gyártók által kiállított több tanúsítvány jelentéseit, amelyek nem megfelelőek.
+Az Azure Database for MariaDB felhasználói csak az előre definiált tanúsítvány használatával csatlakozhatnak egy Azure Database for MariaDB-kiszolgálóhoz, amely [itt](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)található. Azonban a hitelesítésszolgáltató [(CA) böngésző fóruma](https://cabforum.org/)   nemrég közzétette a CA-gyártók által kiállított több tanúsítvány jelentéseit, amelyek nem megfelelőek.
 
-Az iparág megfelelőségi követelményeinek megfelelően a CA-szállítók megkezdték a CA-tanúsítványok visszavonását a nem megfelelő hitelesítésszolgáltatók számára, és a kiszolgálókat a megfelelő hitelesítésszolgáltatók által kiadott tanúsítványok használatára kötelezik, valamint a megfelelő hitelesítésszolgáltatóktól származó HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok aláírásával. Mivel a Azure Database for MariaDB jelenleg a nem megfelelő tanúsítványok egyikét használja, amelyeket az ügyfélalkalmazások az SSL-kapcsolataik ellenőrzéséhez használnak, biztosítani kell, hogy a megfelelő lépéseket (lásd alább) a MariaDB-kiszolgálókra gyakorolt lehetséges hatás csökkentése érdekében el kell végezni.
+Az iparág megfelelőségi követelményeinek megfelelően a CA-szállítók megkezdték a CA-tanúsítványok visszavonását a nem megfelelő hitelesítésszolgáltatók számára, és a kiszolgálókat a megfelelő hitelesítésszolgáltatók által kiadott tanúsítványok használatára kötelezik, valamint a megfelelő hitelesítésszolgáltatóktól származó HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok aláírásával. Mivel Azure Database for MariaDB használta ezeket a nem megfelelő tanúsítványokat, a tanúsítványt a megfelelő verzióra kell elforgatni, hogy csökkentse a MySQL-kiszolgálók potenciális fenyegetését.
 
-Az új tanúsítvány az 2021-as (02/15/2021-as) 15. február 15-ig lesz használatban. Ha a kiszolgáló tanúsítványának CA-érvényesítését vagy teljes körű érvényesítését használja egy MySQL-ügyfélről való kapcsolódáskor (sslmode = ellenőrzés-CA vagy sslmode = validate-Full), az alkalmazás konfigurációját a 2021. február 15. előtt kell frissítenie (02/15/2021).
+Az új tanúsítvány be van vezetve, és a 2021-es (02/15/2021-as) március 15. után lép érvénybe. 
 
-## <a name="how-do-i-know-if-my-database-is-going-to-be-affected"></a>Hogyan tudni, hogy az adatbázis érintett lesz-e?
+## <a name="what-change-was-performed-on-february-15-2021-02152021"></a>Mi történt a változás a 2021-es február 15-én (02/15/2021)?
 
-Minden SSL/TLS protokollt használó alkalmazás, és ellenőrizze, hogy a főtanúsítványnak frissítenie kell-e a főtanúsítványt. A kapcsolati karakterlánc áttekintésével megtekintheti, hogy a kapcsolatok ellenőrzik-e a főtanúsítványt.
+2021. február 15-én a [BaltimoreCyberTrustRoot legfelső szintű tanúsítványát](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) az azonos [BaltimoreCyberTrustRoot főtanúsítvány](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) **megfelelő verziójára** cserélték annak biztosítása érdekében, hogy a meglévő ügyfeleknek ne kelljen semmit módosítaniuk, és nincs hatással a kiszolgálóval létesített kapcsolatokra. A módosítás során a [BaltimoreCyberTrustRoot főtanúsítványa](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) **nem lett lecserélve** a [DigiCertGlobalRootG2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) -re, és a módosítás késleltetve lett, hogy több idő legyen az ügyfelek számára a módosításra.
 
-- Ha a kapcsolódási sztring tartalmaz `sslmode=verify-ca` vagy `sslmode=verify-identity` , frissítenie kell a tanúsítványt.
-- Ha a kapcsolódási karakterlánc magában foglalja a,, `sslmode=disable` `sslmode=allow` `sslmode=prefer` vagy `sslmode=require` , nem kell frissítenie a tanúsítványokat.
-- Ha a kapcsolódási karakterlánc nem ad meg sslmode, nem szükséges frissítenie a tanúsítványokat.
+## <a name="do-i-need-to-make-any-changes-on-my-client-to-maintain-connectivity"></a>Kell-e módosítani az ügyfelem számára a kapcsolat fenntartásához?
 
-Ha olyan ügyfelet használ, amely el tudja olvasni a kapcsolódási karakterláncot, tekintse át az ügyfél dokumentációját, és Ismerje meg, hogy igazolja-e a tanúsítványokat.
-A Azure Database for MariaDB sslmode megismeréséhez tekintse át az [SSL-mód leírásait](concepts-ssl-connection-security.md#default-settings).
+Az ügyfél oldalán nincs szükség módosításra. Ha követte az alábbi korábbi javaslatot, továbbra is csatlakozhat mindaddig, amíg a **BaltimoreCyberTrustRoot-tanúsítvány nem törlődik** a kombinált hitelesítésszolgáltatói tanúsítványból. **Javasoljuk, hogy a kapcsolat fenntartása érdekében ne távolítsa el a BaltimoreCyberTrustRoot a kombinált HITELESÍTÉSSZOLGÁLTATÓI tanúsítványból.**
 
-Annak elkerülése érdekében, hogy az alkalmazás rendelkezésre állása megszakadjon a tanúsítványok váratlan visszavonása vagy a visszavont tanúsítvány frissítése miatt, tekintse meg a [**"mire van szükség a kapcsolat fenntartásához"**](concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity) című szakaszt.
-
-## <a name="what-do-i-need-to-do-to-maintain-connectivity"></a>Mit kell tennem a kapcsolat fenntartásához
-
-Az alábbi lépéseket követve elkerülhető, hogy az alkalmazás a tanúsítványok váratlanul visszavont állapotba helyezése miatt megszakadjon, vagy egy visszavont tanúsítvány frissítését. Az a gondolat, hogy létre kell hoznia egy új *. PEM* -fájlt, amely egyesíti az aktuális tanúsítványt és az újat, valamint az SSL-tanúsítvány ellenőrzése során az engedélyezett értékek használatát. Tekintse át az alábbi lépéseket:
+### <a name="previous-recommendation"></a>Előző javaslat
 
 - Töltse le a **BaltimoreCyberTrustRoot**  &  **DigiCertGlobalRootG2** CA-t az alábbi hivatkozások közül:
 
@@ -90,15 +81,15 @@ Az alábbi lépéseket követve elkerülhető, hogy az alkalmazás a tanúsítv�
 - Cserélje le az eredeti legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI PEM-fájlt a kombinált legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI fájlra, és indítsa újra az alkalmazást/ügyfelet.
 - A jövőben a kiszolgálói oldalon üzembe helyezett új tanúsítvány után a HITELESÍTÉSSZOLGÁLTATÓ PEM-fájlját a DigiCertGlobalRootG2. CRT. PEM értékre módosíthatja.
 
-## <a name="what-can-be-the-impact-of-not-updating-the-certificate"></a>Milyen hatással lehet a tanúsítvány frissítésére?
+## <a name="why-was-baltimorecybertrustroot-certificate-not-replaced-to-digicertglobalrootg2-during-this-change-on-february-15-2021"></a>Miért nem váltotta fel a BaltimoreCyberTrustRoot-tanúsítvány a DigiCertGlobalRootG2 a változás során a 2021-es február 15-én?
 
-Ha az itt dokumentált Azure Database for MariaDB kiállított tanúsítványt használja, előfordulhat, hogy az alkalmazás rendelkezésre állása megszakad, mert az adatbázis nem érhető el. Az alkalmazástól függően különböző hibaüzenetek jelenhetnek meg, többek között a következők:
+Kiértékelte az ügyfél készültségét ehhez a változáshoz, és felismerte, hogy sok ügyfelünk a változás kezeléséhez további érdeklődői időt keresett. Annak érdekében, hogy az ügyfelek számára még több időt biztosítson a felkészülésre, úgy döntöttünk, hogy legalább egy évig késleltetjük a DigiCertGlobalRootG2, hogy elegendő idő álljon rendelkezésre az ügyfelek és a végfelhasználók számára. 
 
-- Érvénytelen tanúsítvány/visszavont tanúsítvány
-- A kapcsolat időtúllépés miatt megszakadt
+Javaslataink a felhasználók számára: a fenti lépésekkel hozzon létre egy egyesített tanúsítványt, és kapcsolódjon a kiszolgálóhoz, de ne távolítsa el a BaltimoreCyberTrustRoot-tanúsítványt, amíg el nem küld egy kommunikációt az eltávolításához. 
 
-> [!NOTE]
-> Ne dobja el vagy ne változtassa meg a **Baltimore-tanúsítványt** , amíg meg nem történik a tanúsítvány módosítása. A módosítások elvégzése után elküldjük a kommunikációt, amely után biztonságos számukra a Baltimore-tanúsítvány eldobása.
+## <a name="what-if-we-removed-the-baltimorecybertrustroot-certificate"></a>Mi a teendő, ha eltávolította a BaltimoreCyberTrustRoot-tanúsítványt?
+
+Kapcsolódási hibák lépnek fel a Azure Database for MariaDB-kiszolgálóhoz való csatlakozáskor. A kapcsolat fenntartása érdekében újra [be kell állítania az SSL](howto-configure-ssl.md) -t a [BaltimoreCyberTrustRoot](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) -tanúsítvánnyal.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -110,16 +101,22 @@ Nincs szükség műveletre, ha nem használ SSL/TLS-t.
 
 Nem, nem kell újraindítani az adatbázis-kiszolgálót az új tanúsítvány használatának megkezdéséhez. A tanúsítvány frissítése ügyféloldali változás, és a bejövő ügyfélkapcsolatoknak az új tanúsítvánnyal kell rendelkezniük ahhoz, hogy az adatbázis-kiszolgálóhoz csatlakozzanak.
 
-### <a name="3-what-will-happen-if-i-dont-update-the-root-certificate-before-february-15-2021-02152021"></a>3. mi történik, ha nem frissítem a főtanúsítványt 2021. február 15. előtt (02/15/2021)?
+### <a name="3-how-do-i-know-if-im-using-ssltls-with-root-certificate-verification"></a>3. Hogyan tudni, hogy az SSL/TLS-t használom-e a főtanúsítvány ellenőrzése?
 
-Ha nem frissíti a főtanúsítványt a 2021 (02/15/2021) február 15. előtt, az SSL/TLS protokollon keresztül csatlakozó alkalmazások és a főtanúsítvány ellenőrzése nem fog tudni kommunikálni a MariaDB adatbázis-kiszolgálóval, és az alkalmazás kapcsolati problémákat tapasztal a MariaDB adatbázis-kiszolgálóval.
+A kapcsolati karakterlánc áttekintésével megtekintheti, hogy a kapcsolatok ellenőrzik-e a főtanúsítványt.
+
+- Ha a kapcsolódási sztring tartalmaz `sslmode=verify-ca` vagy `sslmode=verify-identity` , frissítenie kell a tanúsítványt.
+- Ha a kapcsolódási karakterlánc magában foglalja a,, `sslmode=disable` `sslmode=allow` `sslmode=prefer` vagy `sslmode=require` , nem kell frissítenie a tanúsítványokat.
+- Ha a kapcsolódási karakterlánc nem ad meg sslmode, nem szükséges frissítenie a tanúsítványokat.
+
+Ha olyan ügyfelet használ, amely el tudja olvasni a kapcsolódási karakterláncot, tekintse át az ügyfél dokumentációját, és Ismerje meg, hogy igazolja-e a tanúsítványokat.
 
 ### <a name="4-what-is-the-impact-if-using-app-service-with-azure-database-for-mariadb"></a>4. milyen hatással van a App Service és a Azure Database for MariaDB használata?
 
 Az Azure app Services esetében a Azure Database for MariaDBhoz való csatlakozás két lehetséges forgatókönyvet mutat be attól függően, hogy hogyan használja az SSL-t az alkalmazással.
 
-- Ez az új tanúsítvány App Service platform szinten lett hozzáadva. Ha az alkalmazásban App Service platformon található SSL-tanúsítványokat használja, nincs szükség beavatkozásra.
-- Ha kifejezetten az SSL-tanúsítvány elérési útját használja a kódban, akkor le kell töltenie az új tanúsítványt, és frissítenie kell a kódot az új tanúsítvány használatára. Jó példa erre a forgatókönyvre, ha egyéni tárolókat használ a App Service a [app Service dokumentációjában](../app-service/tutorial-multi-container-app.md#configure-database-variables-in-wordpress) megosztva.
+- Ez az új tanúsítvány App Service platform szinten lett hozzáadva. Ha az alkalmazásban App Service platformon található SSL-tanúsítványokat használja, nincs szükség beavatkozásra. Ez a leggyakoribb forgatókönyv. 
+- Ha kifejezetten az SSL-tanúsítvány elérési útját használja a kódban, akkor le kell töltenie az új tanúsítványt, és frissítenie kell a kódot az új tanúsítvány használatára. Jó példa erre a forgatókönyvre, ha egyéni tárolókat használ a App Service az [app Service dokumentációjában](../app-service/tutorial-multi-container-app.md#configure-database-variables-in-wordpress)megosztottként. Ez egy nem gyakori forgatókönyv, de a felhasználók ezt használják.
 
 ### <a name="5-what-is-the-impact-if-using-azure-kubernetes-services-aks-with-azure-database-for-mariadb"></a>5. milyen hatással van az Azure Kubernetes Services (ak) használata a Azure Database for MariaDB?
 
@@ -135,23 +132,19 @@ A saját üzemeltetésű Integration Runtime használó összekötő esetében, 
 
 Nem. Mivel a változás csak az ügyféloldali oldalon csatlakozik az adatbázis-kiszolgálóhoz, nincs szükség karbantartási állásidőre az adatbázis-kiszolgáló számára ehhez a változáshoz.
 
-### <a name="8--what-if-i-cant-get-a-scheduled-downtime-for-this-change-before-february-15-2021-02152021"></a>8. Mi a teendő, ha nem tudok ütemezett állásidőt beolvasni ehhez a változáshoz a 2021. február 15. előtt (02/15/2021)?
+### <a name="8-if-i-create-a-new-server-after-february-15-2021-02152021-will-i-be-impacted"></a>8. Ha új kiszolgálót hoz létre a 2021 (02/15/2021) február 15. után, a rendszer hatással lesz rá?
 
-Mivel a kiszolgálóhoz való csatlakozáshoz használt ügyfeleknek frissíteniük kell a tanúsítvány adatait a [javítás szakaszban](./concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity)leírtak szerint, ebben az esetben nem kell leállást biztosítani a kiszolgálónak.
+A 02/15/2021 2021. február 15. után létrehozott kiszolgálók esetében továbbra is a [BaltimoreCyberTrustRoot](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) fogja használni az alkalmazásokhoz az SSL használatával történő kapcsolódáshoz.
 
-### <a name="9-if-i-create-a-new-server-after-february-15-2021-02152021-will-i-be-impacted"></a>9. Ha új kiszolgálót hoz létre a 2021 (02/15/2021) február 15. után, hatással leszek rá?
+### <a name="9-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>9. milyen gyakran frissíti a Microsoft a tanúsítványait, vagy mi a lejárati szabályzat?
 
-Az 02/15/2021 2021-es február 15. után létrehozott kiszolgálók esetében az SSL használatával történő kapcsolódáshoz használhatja az újonnan kiállított tanúsítványt az alkalmazásaihoz.
+Az Azure Database for MariaDB által használt tanúsítványokat a megbízható hitelesítésszolgáltatók (CA) biztosítják. Így a tanúsítványok támogatása a CA által támogatott tanúsítványok támogatásához van kötve. A [BaltimoreCyberTrustRoot](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) -tanúsítvány a 2025-as lejáratra van ütemezve, ezért a Microsoftnak a lejárat előtt végre kell hajtania a tanúsítvány megváltoztatását. Abban az esetben is, ha előre nem látható hibák jelennek meg az előre meghatározott tanúsítványokban, a Microsoftnak a 2021. február 15-én végrehajtott módosításhoz legkorábbi módon kell elvégeznie a tanúsítvány elforgatását, hogy biztosítsa a szolgáltatás biztonságos és megfelelő megfelelőségét.
 
-### <a name="10-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>10. milyen gyakran frissíti a Microsoft a tanúsítványait, vagy mi a lejárati szabályzat?
-
-Az Azure Database for MariaDB által használt tanúsítványokat a megbízható hitelesítésszolgáltatók (CA) biztosítják. Így a tanúsítványok Azure Database for MariaDB-on való támogatása a CA által támogatott tanúsítványok támogatásához van kötve. Ebben az esetben azonban előfordulhat, hogy az előre meghatározott tanúsítványokban nem előre látható hibák vannak, amelyeket a lehető leghamarabb meg kell oldani.
-
-### <a name="11-if-im-using-read-replicas-do-i-need-to-perform-this-update-only-on-source-server-or-the-read-replicas"></a>11. ha olvasási replikákat használok, ezt a frissítést csak a forráskiszolgálón vagy az olvasási replikán kell elvégezni?
+### <a name="10-if-im-using-read-replicas-do-i-need-to-perform-this-update-only-on-source-server-or-the-read-replicas"></a>10. ha olvasási replikákat használok, ezt a frissítést csak a forráskiszolgálón vagy az olvasási replikán kell elvégezni?
 
 Mivel ez a frissítés ügyféloldali módosítás, ha az ügyfél a másodpéldány-kiszolgálóról olvassa az adatok olvasását, akkor ezeket az ügyfeleken is alkalmaznia kell.
 
-### <a name="12-if-im-using-data-in-replication-do-i-need-to-perform-any-action"></a>12. Ha adatreplikálást használok, végre kell hajtani valamilyen műveletet?
+### <a name="11-if-im-using-data-in-replication-do-i-need-to-perform-any-action"></a>11. Ha adatreplikálást használok, végre kell hajtani valamilyen műveletet?
 
 - Ha az adatok replikálása virtuális gépről (helyszíni vagy Azure-beli virtuális gépre) történik a Azure Database for MySQL, akkor ellenőriznie kell, hogy az SSL-t használja-e a replika létrehozásához. Futtassa a **Slave-állapot megjelenítése** parancsot, és tekintse meg a következő beállítást.
 
@@ -177,18 +170,18 @@ Ha [adatreplikálást](concepts-data-in-replication.md) használ a Azure Databas
   Master_SSL_Key                : ~\azure_mysqlclient_key.pem
   ```
 
-  Ha látja a tanúsítványt a CA_file, SSL_Cert és SSL_Key számára, akkor az [új tanúsítvány](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)hozzáadásával frissítenie kell a fájlt.
+  Ha látja a tanúsítványt a CA_file számára, SSL_Cert és SSL_Key, akkor frissítenie kell a fájlt az [új tanúsítvány](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) hozzáadásával és egy egyesített tanúsítványfájl létrehozásával.
 
 - Ha az adatreplikálás két Azure Database for MySQL között van, akkor a másodpéldányt alaphelyzetbe kell állítania a **hívási MySQL.az_replication_change_master** végrehajtásával, és az új kettős főtanúsítványt adja meg az utolsó paraméterként [master_ssl_ca](howto-data-in-replication.md#link-the-source-and-replica-servers-to-start-data-in-replication).
 
-### <a name="13-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>13. van-e kiszolgálóoldali lekérdezés annak ellenőrzéséhez, hogy az SSL használatban van-e?
+### <a name="12-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>12. van-e kiszolgálóoldali lekérdezés annak ellenőrzéséhez, hogy az SSL használatban van-e?
 
 Annak ellenőrzéséhez, hogy SSL-kapcsolatot használ-e a kiszolgálóhoz való kapcsolódáshoz, tekintse meg az [SSL-ellenőrzést](howto-configure-ssl.md#verify-the-ssl-connection).
 
-### <a name="14-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>14. van szükség beavatkozásra, ha már van a DigiCertGlobalRootG2 a saját tanúsítványfájl?
+### <a name="13-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>13. van szükség beavatkozásra, ha már van a DigiCertGlobalRootG2 a saját tanúsítványfájl?
 
 Nem. Nincs szükség beavatkozásra, ha a tanúsítványfájl már rendelkezik a **DigiCertGlobalRootG2**.
 
-### <a name="15-what-if-i-have-further-questions"></a>15. Mi a teendő, ha további kérdéseim vannak?
+### <a name="14-what-if-i-have-further-questions"></a>14. Mi a teendő, ha további kérdéseim vannak?
 
 Ha kérdése van, választ kaphat a [Microsoft Q&a](mailto:AzureDatabaseformariadb@service.microsoft.com)közösségi szakértőitől. Ha támogatási csomaggal rendelkezik, és technikai segítségre van szüksége, [vegye fel velünk a kapcsolatot](mailto:AzureDatabaseformariadb@service.microsoft.com).

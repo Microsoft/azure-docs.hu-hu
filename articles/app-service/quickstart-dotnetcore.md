@@ -6,12 +6,16 @@ ms.topic: quickstart
 ms.date: 11/23/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperf-fy21q1
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: d7b7d8845eda87132cbfa7981c20c39bb210aa5c
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+adobe-target: true
+adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
+adobe-target-experience: Experience B
+adobe-target-content: ./quickstart-dotnetcore-uiex
+ms.openlocfilehash: 77e0768a617ef79ab8510f88bfdcd41d5647f9bf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032694"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701637"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Rövid útmutató: ASP.NET Core Webalkalmazás létrehozása az Azure-ban
 
@@ -36,7 +40,7 @@ Ha elkészült, egy App Service üzemeltetési csomagból és egy üzembe helyez
 
 Hozzon létre egy ASP.NET Core webalkalmazást a Visual Studióban a következő lépések végrehajtásával:
 
-# <a name="net-core-31"></a>[.NET Core 3,1](#tab/netcore31)
+# <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
 
 1. Nyissa meg a Visual studiót, és válassza **az új projekt létrehozása** lehetőséget.
 
@@ -187,7 +191,7 @@ A következő cikkből megtudhatja, hogyan hozhat létre .NET Core-alkalmazást,
 ::: zone-end  
 
 ::: zone pivot="platform-linux"
-A [linuxon app Service](overview.md#app-service-on-linux) a Linux operációs rendszert használó, jól méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt. Ez a rövid útmutató bemutatja, hogyan hozhat létre [.NET Core](/aspnet/core/)-alkalmazást Linuxon futó App Service-ben. Az alkalmazást az [Azure CLI](/cli/azure/get-started-with-azure-cli)-vel hozza létre, és a git használatával helyezi üzembe a .net Core-kódot az alkalmazásban.
+A [linuxon app Service](overview.md#app-service-on-linux) a Linux operációs rendszert használó, jól méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt. Ez a rövid útmutató bemutatja, hogyan hozhat létre [.net Core](/aspnet/core/) -alkalmazást, és hogyan helyezhet üzembe egy Linux rendszerű app Service az [Azure CLI](/cli/azure/get-started-with-azure-cli)használatával.
 
 ![Az Azure-ban futó mintaalkalmazás](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
@@ -197,7 +201,7 @@ A cikk lépéseit Mac, Windows vagy Linux rendszert futtató gépen is követhet
 
 ## <a name="set-up-your-initial-environment"></a>A kezdeti környezet beállítása
 
-# <a name="net-core-31"></a>[.NET Core 3,1](#tab/netcore31)
+# <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
 
 Az oktatóanyag elvégzéséhez:
 
@@ -258,7 +262,7 @@ az login
 Telepítse a kódot a helyi mappájába (*hellodotnetcore*) a következő `az webapp up` parancs használatával:
 
 ```azurecli
-az webapp up --sku F1 --name <app-name> --os-type linux
+az webapp up --sku F1 --name <app-name>
 ```
 
 - Ha a `az` parancs nem ismerhető fel, győződjön meg arról, hogy az Azure CLI telepítve van a [kezdeti környezet beállítása](#set-up-your-initial-environment)című témakörben leírtak szerint.
@@ -268,7 +272,7 @@ az webapp up --sku F1 --name <app-name> --os-type linux
 
 A parancs végrehajtása több percet is igénybe vehet. A futtatása közben üzeneteket biztosít az erőforráscsoport létrehozásához, a App Service terv és az üzemeltetési alkalmazáshoz, a naplózás konfigurálásához, majd a ZIP-telepítés elindításához. Ezután a következő üzenet jelenik meg: "az alkalmazás elindítható a http:// &lt; app-name &gt; . azurewebsites.net" néven, amely az alkalmazás URL-címe az Azure-ban.
 
-# <a name="net-core-31"></a>[.NET Core 3,1](#tab/netcore31)
+# <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
 
 ![Példa az az WebApp up parancs kimenetére](./media/quickstart-dotnetcore/az-webapp-up-output-3.1.png)
 

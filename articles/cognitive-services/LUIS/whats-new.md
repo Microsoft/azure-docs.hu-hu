@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 02/16/2021
-ms.openlocfilehash: f4ac384a9b1bce944397369cb93392f179643f96
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: bd70bb1a031b61e77fa84ff5567d95dc6d1e8788
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558751"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706741"
 ---
 # <a name="whats-new-in-language-understanding"></a>A Language Understanding újdonságai
 
@@ -56,7 +56,7 @@ Ismerje meg a szolgáltatás újdonságait. Ezek közé tartoznak a kibocsátás
 * Új erőforrások fejlesztők számára
     * [Folyamatos integrációs eszközök](developer-reference-resource.md#continuous-integration-tools)
     * Workshop – gyakorlati tanácsok a [ _természetes Language Understanding_ (NLU) a Luis használatával](developer-reference-resource.md#workshops)
-* [Ügyfél által felügyelt kulcsok](luis-encryption-of-data-at-rest.md) – a saját kulcs használatával titkosíthatja a Luis-ben használt összes adathalmazt
+* [Ügyfél által felügyelt kulcsok](./encrypt-data-at-rest.md) – a saját kulcs használatával titkosíthatja a Luis-ben használt összes adathalmazt
 * [AI show](https://channel9.msdn.com/Shows/AI-Show/New-Features-in-Language-Understanding) (videó) – a Luis új funkcióinak megtekintése
 
 

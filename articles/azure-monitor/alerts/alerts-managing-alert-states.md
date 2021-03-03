@@ -5,16 +5,16 @@ ms.subservice: alerts
 ms.topic: conceptual
 author: anantr
 ms.date: 09/24/2018
-ms.openlocfilehash: fc79ac8853cb441e9d6d49997c03ab983aa4dbf4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fa1701c59f099f5222ab6454cc67b9dc20d1e7e7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100618065"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701110"
 ---
 # <a name="manage-alert-and-smart-group-states"></a>Riasztási és intelligenscsoport-állapotok kezelése
 
-A Azure Monitor riasztásai mostantól [riasztási állapottal és figyelési feltétellel](../platform/alerts-overview.md) rendelkeznek, és Hasonlóképpen az intelligens csoportok [intelligens csoporttal](../platform/alerts-smartgroups-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json)rendelkeznek. Az állapot változásai mostantól a megfelelő riasztáshoz vagy intelligens csoporthoz tartozó előzményekben vannak rögzítve. Ez a cikk végigvezeti az állapot módosításának folyamatán a riasztások és az intelligens csoportok esetében is.
+A Azure Monitor riasztásai mostantól [riasztási állapottal és figyelési feltétellel](./alerts-overview.md) rendelkeznek, és Hasonlóképpen az intelligens csoportok [intelligens csoporttal](./alerts-smartgroups-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json)rendelkeznek. Az állapot változásai mostantól a megfelelő riasztáshoz vagy intelligens csoporthoz tartozó előzményekben vannak rögzítve. Ez a cikk végigvezeti az állapot módosításának folyamatán a riasztások és az intelligens csoportok esetében is.
 
 ## <a name="change-the-state-of-an-alert"></a>Riasztás állapotának módosítása
 

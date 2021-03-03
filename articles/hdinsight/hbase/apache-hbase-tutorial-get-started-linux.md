@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/22/2021
-ms.openlocfilehash: 05e40dd38fc7111521b600908cda38084249e4de
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5de98f5bf57626a408dd5bec8575856074f434c7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98936051"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705670"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Oktatóanyag: az Apache HBase használata az Azure HDInsight
 
@@ -133,7 +133,7 @@ A HBase (a [Cloud BigTable](https://cloud.google.com/bigtable/)implementációja
 
 A HBase több módszert tartalmaz az adatok táblába töltéséhez.  További információ: [Bulk loading](https://hbase.apache.org/book.html#arch.bulk.load) (Kötegelt betöltés).
 
-Egy minta adatfájl található a következő nyilvános blobtárolóban található: `wasb://hbasecontacts\@hditutorialdata.blob.core.windows.net/contacts.txt`.  Az adatfájl tartalma a következő:
+Egy minta adatfájl található a következő nyilvános blobtárolóban található: `wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt`.  Az adatfájl tartalma a következő:
 
 `8396    Calvin Raji      230-555-0191    230-555-0191    5415 San Gabriel Dr.`
 

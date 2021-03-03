@@ -1,18 +1,21 @@
 ---
 title: 'Rövid útmutató: Node.js Webalkalmazás létrehozása'
-description: Percek alatt üzembe helyezheti az első Node.js „Helló világ!” alkalmazás Azure App Service.
+description: Percek alatt üzembe helyezheti az első Node.js Hello World Azure App Service.
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.topic: quickstart
 ms.date: 08/01/2020
 ms.custom: mvc, devcenter, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
-ms.openlocfilehash: b42abfda863ed38eb3c29004630f905edef075c4
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
+adobe-target-experience: Experience B
+adobe-target-content: ./quickstart-nodejs-uiex
+ms.openlocfilehash: 6c6f0543dcfbecd16ba4176272f928ffd0eb54de
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359102"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735114"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Node.js-webalkalmazás létrehozása az Azure-ban
 
@@ -48,9 +51,9 @@ Ismerkedjen meg Azure App Service azáltal, hogy a Visual Studio Code használat
     npm start
     ```
     
-1. Nyissa meg a böngészőt, és navigáljon a gombra `http://localhost:1337` . A böngészőben a következő üzenetnek kell megjelennie: "„Helló világ!” alkalmazás!".
+1. Nyissa meg a böngészőt, és navigáljon a gombra `http://localhost:1337` . A böngészőben a következő üzenetnek kell megjelennie: "Hello World!".
 
-1. A kiszolgáló leállításához nyomja le a **CTRL C billentyűt** + **C** a terminálon.
+1. A kiszolgáló leállításához nyomja le a **CTRL C billentyűt** +  a terminálon.
 
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=create-app)
@@ -69,7 +72,7 @@ Ebben a szakaszban az Node.js alkalmazást a VS Code és a Azure App Service bő
 
     ![Bejelentkezés az Azure-ba](media/quickstart-nodejs/sign-in.png)
 
-1. Az **Azure app Service** EXPLORERBEN a vs Code-ban kattintson a kék felfelé mutató nyíl ikonra az alkalmazás üzembe helyezéséhez az Azure-ban. (Ugyanezt a parancsot a **parancssorból** is meghívhatja ( **CTRL** + **SHIFT** + **P** ) a "üzembe helyezés a webalkalmazásba" parancs beírásával, és a **Azure app Service: üzembe helyezés a webalkalmazásban** ) lehetőségre.
+1. Az **Azure app Service** EXPLORERBEN a vs Code-ban kattintson a kék felfelé mutató nyíl ikonra az alkalmazás üzembe helyezéséhez az Azure-ban. (Ugyanezt a parancsot a **parancssorból** is meghívhatja (**CTRL** + **SHIFT** + **P**) a "üzembe helyezés a webalkalmazásba" parancs beírásával, és a **Azure app Service: üzembe helyezés a webalkalmazásban**) lehetőségre.
 
     :::image type="content" source="media/quickstart-nodejs/deploy.png" alt-text="Képernyőkép az Azure app Service-ről a VS Code-ban, amelyen a kék nyíl ikon van kiválasztva.":::
         
@@ -99,11 +102,11 @@ Ebben a szakaszban az Node.js alkalmazást a VS Code és a Azure App Service bő
 
 1. Ha a rendszer kéri, válassza az **Igen** lehetőséget, és **mindig telepítse a "NodeJS-docs-Hello-World" munkaterületet az (alkalmazás neve)** elemre. Ha az **Igen** lehetőséget választja, a vs Code automatikusan ugyanazt a app Service webalkalmazást célozza meg a későbbi központi telepítésekkel.
 
-1. Ha Linux rendszerre telepíti a rendszert, válassza a **Tallózás webhely** lehetőséget a kérdésben, hogy a telepítés befejezése után megtekintse a frissen telepített webalkalmazást. A böngészőben meg kell jelennie a következőnek: "„Helló világ!” alkalmazás!"
+1. Ha Linux rendszerre telepíti a rendszert, válassza a **Tallózás webhely** lehetőséget a kérdésben, hogy a telepítés befejezése után megtekintse a frissen telepített webalkalmazást. A böngészőben meg kell jelennie a következőnek: "Hello World!"
 
 1. Ha Windows rendszeren telepíti a rendszert, először be kell állítania a Node.js verziószámát a webalkalmazáshoz:
 
-    1. A VS Code-ban bontsa ki a csomópontot az új App Service-hez, kattintson a jobb gombbal az **Alkalmazásbeállítások** elemre, majd válassza az **új beállítás hozzáadása lehetőséget...** :
+    1. A VS Code-ban bontsa ki a csomópontot az új App Service-hez, kattintson a jobb gombbal az **Alkalmazásbeállítások** elemre, majd válassza az **új beállítás hozzáadása lehetőséget...**:
 
         ![Alkalmazás-beállítási parancs hozzáadása](media/quickstart-nodejs/add-setting.png)
 
@@ -194,7 +197,7 @@ Miután telepítette a bővítményt, jelentkezzen be az Azure-fiókjába. A tev
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha a következő hibaüzenet jelenik meg: **"nem található az előfizetés a (z) [előfizetés-azonosítóval]" névvel** , lehetséges, hogy a proxy mögött van, és nem érhető el az Azure API. Konfigurálja a `HTTP_PROXY` és a `HTTPS_PROXY` környezeti változókat a saját proxy-adataival a használatával `export` .
+Ha a következő hibaüzenet jelenik meg: **"nem található az előfizetés a (z) [előfizetés-azonosítóval]" névvel**, lehetséges, hogy a proxy mögött van, és nem érhető el az Azure API. Konfigurálja a `HTTP_PROXY` és a `HTTPS_PROXY` környezeti változókat a saját proxy-adataival a használatával `export` .
 
 ```sh
 export HTTPS_PROXY=https://username:password@proxy:8080
@@ -236,7 +239,7 @@ cd myExpressApp
 npm install
 ```
 
-### <a name="run-the-application"></a>Alkalmazás futtatása
+### <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Ezután győződjön meg arról, hogy az alkalmazás fut. A terminálból indítsa el az alkalmazást a parancs használatával a `npm start` kiszolgáló indításához.
 
@@ -272,11 +275,11 @@ Az **Azure app Service** Explorerben válassza a kék felfelé mutató nyíl iko
 
 1. Válassza ki a jelenleg megnyitott könyvtárat `myExpressApp` .
 
-1. Válassza a **Create New Web App (új Webalkalmazás létrehozása** ) lehetőséget, amely alapértelmezés szerint a Linux rendszeren app Service.
+1. Válassza a **Create New Web App (új Webalkalmazás létrehozása**) lehetőséget, amely alapértelmezés szerint a Linux rendszeren app Service.
 
 1. Írjon be egy globálisan egyedi nevet a webalkalmazásnak, és nyomja le az ENTER billentyűt. Az alkalmazás nevének érvényes karaktereinek neve: "a-z", "0-9" és "-".
 
-1. Válassza ki a **Node.js verzióját** , az LTS használata javasolt.
+1. Válassza ki a **Node.js verzióját**, az LTS használata javasolt.
 
     Az értesítési csatorna az alkalmazáshoz létrehozott Azure-erőforrásokat jeleníti meg.
 
@@ -297,7 +300,7 @@ Miután az üzembe helyezés befejeződött, a kérdésben válassza a **Tallóz
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha a következő hibaüzenet jelenik meg: **"nincs engedélye a könyvtár vagy lap megtekintésére."** , akkor az alkalmazás valószínűleg nem indult el megfelelően. Lépjen a következő szakaszra, és tekintse meg a napló kimenetét, és javítsa ki a hibát. Ha nem tudja kijavítani a problémát, lépjen kapcsolatba velünk az alábbi, a **probléma** elhárítása gombra kattintva. Örömmel segítünk!
+Ha a következő hibaüzenet jelenik meg: **"nincs engedélye a könyvtár vagy lap megtekintésére."**, akkor az alkalmazás valószínűleg nem indult el megfelelően. Lépjen a következő szakaszra, és tekintse meg a napló kimenetét, és javítsa ki a hibát. Ha nem tudja kijavítani a problémát, lépjen kapcsolatba velünk az alábbi, a **probléma** elhárítása gombra kattintva. Örömmel segítünk!
 
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=deploy-app)

@@ -3,12 +3,12 @@ title: Az Azure Backup újdonságai
 description: Ismerkedjen meg a Azure Backup új szolgáltatásaival.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: 5343ec2ae04853492abbaace2432cf94c9fb5a07
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: dd9546002e63072ce9631f5b8e7ac09ab0f5352b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762363"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728178"
 ---
 # <a name="whats-new-in-azure-backup"></a>Az Azure Backup újdonságai
 
@@ -18,6 +18,8 @@ Az új kiadásokról további információt az oldal könyvjelzővel vagy a [fri
 
 ## <a name="updates-summary"></a>Frissítések összegzése
 
+- 2021. február
+  - [Azure-Blobok biztonsági mentése (előzetes verzió)](#backup-for-azure-blobs-in-preview)
 - 2021. január
   - [Azure Disk Backup (előzetes verzió)](#azure-disk-backup-in-preview)
   - [Inaktív adatok titkosítása az ügyfél által felügyelt kulcsokkal (általánosan elérhető)](#encryption-at-rest-using-customer-managed-keys)
@@ -34,6 +36,14 @@ Az új kiadásokról további információt az oldal könyvjelzővel vagy a [fri
   - [Backup SAP HANA a RHEL Azure Virtual Machines (előzetes verzió)](#backup-sap-hana-in-rhel-azure-virtual-machines-in-preview)
   - [A zóna redundáns tárolója (ZRS) a biztonsági mentési adatként (előzetes verzió)](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Az Azure-beli virtuális gépek SQL Server és SAP HANA számítási feladatainak törlése](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="backup-for-azure-blobs-in-preview"></a>Azure-Blobok biztonsági mentése (előzetes verzió)
+
+A Blobok működési biztonsági mentése egy felügyelt, helyi adatvédelmi megoldás, amely lehetővé teszi a blokk Blobok védelmét a különböző adatvesztési forgatókönyvek, például a korrupció, a Blobok törlése, valamint a véletlen tárolási fiókok törlésével szemben. Az adattárolást a forrás Storage-fiókban helyileg tárolják, és szükség esetén a kiválasztott időpontra lehet visszaállítani. Így egyszerű, biztonságos és költséghatékony eszközöket biztosít a Blobok védelméhez.
+
+A Blobok működési biztonsági mentése a Backup Center szolgáltatással együtt integrálható a biztonsági mentési felügyeleti funkciók között, így egyetlen üvegtábla biztosítható, amely a biztonsági másolatok szabályozására, figyelésére, üzemeltetésére és elemzésére használható.
+
+További információ: [Az Azure-Blobok operatív biztonsági mentésének áttekintése (előzetes verzió)](blob-backup-overview.md).
 
 ## <a name="azure-disk-backup-in-preview"></a>Azure Disk Backup (előzetes verzió)
 
@@ -121,6 +131,6 @@ Az Azure-beli virtuális gépekre vonatkozó, a Soft delete támogatása mellett
 
 További információ: az [Azure virtuális gépen futó SQL Server rendszerhez készült Soft delete és SAP HANA az Azure-beli virtuális](soft-delete-sql-saphana-in-azure-vm.md)gépek számítási feladataihoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Backup útmutató és ajánlott eljárások](guidance-best-practices.md)

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 01/11/2021
 ms.author: duau
-ms.openlocfilehash: f780c8c2f932b612ee42e13906f72983b324eefd
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 11a4798c0cb3bc010bbdbae1fcb709951c67781a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108534"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721911"
 ---
 # <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-the-azure-portal"></a>Oktatóanyag: társítások létrehozása és módosítása ExpressRoute-áramkörhöz a Azure Portal használatával
 
@@ -30,7 +30,7 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre és kezelhet útválasztási 
 
 A ExpressRoute-áramkörhöz privát és Microsoft-társítást is beállíthat (az Azure nyilvános társítása elavult az új áramkörök esetében). A társításokat tetszőleges sorrendben lehet konfigurálni. Az egyes társviszony-létesítéseket azonban mindenképp egyenként kell végrehajtania. További információ az útválasztási tartományokról és a társításokról: [ExpressRoute-útválasztási tartományok](expressroute-circuit-peerings.md). A nyilvános hálózattal kapcsolatos további információkért lásd: [nyilvános ExpressRoute](about-public-peering.md).
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > - Microsoft-társítások konfigurálása, frissítése és törlése egy áramkörhöz
 > - Azure-beli privát kapcsolatok konfigurálása, frissítése és törlése egy áramkörhöz
@@ -75,14 +75,17 @@ Ez a szakasz segítséget nyújt egy ExpressRoute-áramkör Microsoft-társi kon
 
 2. Konfigurálja a Microsoft társviszony-létesítést a kapcsolatcsoporthoz. A folytatás előtt győződjön meg arról, hogy rendelkezik a következő információkkal.
 
-   * Az Ön által birtokolt és RIR/IRR regisztrált pár/30 alhálózatot. Ennek érvényes nyilvános IPv4-előtagnak kell lennie. A rendszer egy alhálózatot használ az elsődleges hivatkozáshoz, míg a másikat a másodlagos hivatkozáshoz fogja használni. Az egyes alhálózatokból az első használható IP-címet az útválasztóhoz rendeli hozzá, mivel a Microsoft a második használható IP-címet használja az útválasztóhoz.
+   * Az Ön által birtokolt és RIR/IRR regisztrált alhálózatok párja. A rendszer egy alhálózatot használ az elsődleges hivatkozáshoz, míg a másikat a másodlagos hivatkozáshoz fogja használni. Az egyes alhálózatokból az első használható IP-címet az útválasztóhoz rendeli hozzá, mivel a Microsoft a második használható IP-címet használja az útválasztóhoz. Ezt az alhálózatot három lehetőséggel látja el:
+       * IPv4: két/30 alhálózat. Ennek érvényes nyilvános IPv4-előtagnak kell lennie.
+       * IPv6: két/126 alhálózat. Ezeknek érvényes nyilvános IPv6-ELŐTAGOKNAK kell lenniük.
+       * Mindkettő: két/30 alhálózat és két/126 alhálózat.
    * Egy érvényes VLAN-azonosító a tárviszony-létesítés létrehozásához. Győződjön meg róla, hogy a kapcsolatcsoporton egy másik társviszony-létesítés sem használja ugyanezt a VLAN-azonosítót. Az elsődleges és a másodlagos kapcsolatok esetében ugyanazt a VLAN-azonosítót kell használnia.
    * Egy AS-szám a társviszony-létesítéshez. 2 és 4 bájtos AS-számokat is használhat.
    * Meghirdetett előtagok: megtekintheti a BGP-munkamenetben meghirdetni kívánt összes előtag listáját. A rendszer kizárólag a nyilvános IP-cím-előtagokat fogadja el. Ha előtagokat szeretne elküldeni, vesszővel tagolt listát is küldhet. Az előtagoknak egy RIR/IRR jegyzékben regisztrálva kell lenniük az Ön neve alatt.
    * Nem **kötelező –** Ügyfél ASN: Ha olyan előtagokat hirdet meg, amelyek nincsenek regisztrálva a társítás mint szám mezőben, megadhatja az AS-számot, amelyre regisztrálva van.
    * Útválasztási jegyzék neve: Megadhatja az RIR/IRR jegyzék nevét, amelyben az AS-szám és az előtagok regisztrálva vannak.
    * Nem **kötelező –** Egy MD5-kivonat, ha úgy dönt, hogy használ egyet.
-3. Kiválaszthatja a konfigurálni kívánt társítást, ahogy az az alábbi példában is látható. Válassza ki a Microsoft társviszony-létesítés sorát.
+1. Kiválaszthatja a konfigurálni kívánt társítást, ahogy az az alábbi példában is látható. Válassza ki a Microsoft társviszony-létesítés sorát.
 
    :::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/select-microsoft-peering.png" alt-text="Válassza ki a Microsoft egyenrangú sorát":::
 
@@ -120,6 +123,11 @@ Kiválaszthatja a módosítani kívánt társítás sorát, majd módosíthatja 
 
 Ez a szakasz segítséget nyújt egy ExpressRoute-áramkör Azure-beli privát társ-összevonási konfigurációjának létrehozásához, lekéréséhez, frissítéséhez és törléséhez.
 
+> [!IMPORTANT]
+> A privát társítás IPv6-támogatása jelenleg **nyilvános előzetes** verzióban érhető el. Ha a virtuális hálózatát IPv6-alapú privát ExpressRoute-kapcsolattal szeretné összekapcsolni, győződjön meg arról, hogy a virtuális hálózata kettős verem, és követi az [itt](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)ismertetett irányelveket.
+> 
+> 
+
 ### <a name="to-create-azure-private-peering"></a>Azure privát társviszony-létesítés létrehozása
 
 1. Konfigurálja az ExpressRoute-kapcsolatcsoportot. A folytatás előtt győződjön meg róla, hogy a kapcsolatszolgáltató teljesen kiépítette a kapcsolatcsoportot. 
@@ -136,7 +144,10 @@ Ez a szakasz segítséget nyújt egy ExpressRoute-áramkör Azure-beli privát t
 
 2. Konfigurálja az Azure privát társviszony-létesítést a kapcsolatcsoport számára. A következő lépések elvégzése előtt győződjön meg arról, hogy rendelkezik az alábbi elemekkel:
 
-   * Ön által birtokolt pár/30 alhálózat. A rendszer egy alhálózatot használ az elsődleges hivatkozáshoz, míg a másikat a másodlagos hivatkozáshoz fogja használni. Az egyes alhálózatokból az első használható IP-címet az útválasztóhoz rendeli hozzá, mivel a Microsoft a második használható IP-címet használja az útválasztóhoz.
+   * Olyan alhálózatok párja, amelyek nem tartoznak a virtuális hálózatok számára fenntartott címtartomány részébe. A rendszer egy alhálózatot használ az elsődleges hivatkozáshoz, míg a másikat a másodlagos hivatkozáshoz fogja használni. Az egyes alhálózatokból az első használható IP-címet az útválasztóhoz rendeli hozzá, mivel a Microsoft a második használható IP-címet használja az útválasztóhoz. Ezt az alhálózatot három lehetőséggel látja el:
+       * IPv4: két/30 alhálózat.
+       * IPv6: két/126 alhálózat.
+       * Mindkettő: két/30 alhálózat és két/126 alhálózat.
    * Egy érvényes VLAN-azonosító a tárviszony-létesítés létrehozásához. Győződjön meg róla, hogy a kapcsolatcsoporton egy másik társviszony-létesítés sem használja ugyanezt a VLAN-azonosítót. Az elsődleges és a másodlagos kapcsolatok esetében ugyanazt a VLAN-azonosítót kell használnia.
    * Egy AS-szám a társviszony-létesítéshez. 2 és 4 bájtos AS-számokat is használhat. Ehhez a társhoz az 65515 és 65520 közötti számot is használhatja, amely magában foglalja a többit.
    * Az útvonalakat a helyszíni peremhálózati útválasztóról az Azure-ba kell hirdetni a BGP-n keresztül, amikor konfigurálja a privát társat.

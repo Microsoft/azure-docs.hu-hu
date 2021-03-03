@@ -5,12 +5,12 @@ ms.author: askaur
 ms.date: 02/17/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 93cbc693e340174cf92aa2515d5e09f1ff3c1b31
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0c5ff52e5d3769124cd101b2483f18aea6963d25
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656141"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750188"
 ---
 ## <a name="joining-the-meeting-chat"></a>Az értekezlet csevegésének csatlakoztatása 
 
@@ -304,6 +304,7 @@ Nyissa meg a böngészőt, és navigáljon a gombra http://localhost:8080/ . A k
 
 :::image type="content" source="../acs-join-teams-meeting-chat-quickstart.png" alt-text="Képernyőkép a befejezett JavaScript-alkalmazásról.":::
 
-Szúrja be a Teams Meeting hivatkozást és a szál AZONOSÍTÓját a szövegmezőbe. A *JOIN Teams Meeting* elemre kattintva csatlakozhat a Teams Meeting és csevegési szolgáltatáshoz a kommunikációs szolgáltatások alkalmazásán belül. A csevegés megkezdéséhez navigáljon a lap aljára.
+Szúrja be a Teams Meeting hivatkozást és a szál AZONOSÍTÓját a szövegmezőbe. A Teams Meeting szolgáltatáshoz való csatlakozáshoz kattintson a *Csatlakozás csapatok Értekezlete* gombra. Miután az ACS-felhasználót bevezette az értekezletbe, a kommunikációt a kommunikációs szolgáltatások alkalmazásán belülről is elvégezheti. A csevegés megkezdéséhez navigáljon a lap alján található mezőbe.
 
-**Megjegyzés** – jelenleg csak az üzenetek küldése, fogadása és szerkesztése támogatott a Teams együttműködési forgatókönyvek esetében. Más funkciók, mint például a kijelzők és a kommunikációs szolgáltatások felhasználói a Teams Meeting más felhasználóinak hozzáadásával vagy eltávolításával még nem támogatottak.  
+> [!NOTE] 
+> Jelenleg csak az üzenetek küldése, fogadása és szerkesztése támogatott a Teams együttműködési forgatókönyvek esetében. Más funkciók, mint például a kijelzők és a kommunikációs szolgáltatások felhasználói a Teams Meeting más felhasználóinak hozzáadásával vagy eltávolításával még nem támogatottak.  

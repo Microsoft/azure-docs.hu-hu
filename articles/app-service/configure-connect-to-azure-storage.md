@@ -6,18 +6,18 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: ab27de9274043439f790a8fecd443223e5f26b08
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c3e5ca30b7f0f00b6d647f5fdaeb772900996adc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736204"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720239"
 ---
 # <a name="access-azure-storage-preview-as-a-network-share-from-a-container-in-app-service"></a>Hozzáférés az Azure Storage-hoz (előzetes verzió) hálózati megosztásként App Service-tárolóból
 
 ::: zone pivot="container-windows"
 
-Ez az útmutató bemutatja, hogyan csatlakoztathatja az Azure Storage-fájlokat hálózati megosztásként egy App Service lévő Windows-tárolóhoz. Csak [Azure Files megosztások](../storage/files/storage-how-to-use-files-cli.md) és [prémium fájlok megosztása](../storage/files/storage-how-to-create-premium-fileshare.md) támogatott. Az előnyök közé tartoznak a biztonságos tartalom, a tartalom hordozhatósága, a több alkalmazáshoz való hozzáférés és a több átadási módszer is.
+Ez az útmutató bemutatja, hogyan csatlakoztathatja az Azure Storage-fájlokat hálózati megosztásként egy App Service lévő Windows-tárolóhoz. Csak [Azure Files megosztások](../storage/files/storage-how-to-use-files-cli.md) és [prémium fájlok megosztása](../storage/files/storage-how-to-create-file-share.md) támogatott. Az előnyök közé tartoznak a biztonságos tartalom, a tartalom hordozhatósága, a több alkalmazáshoz való hozzáférés és a több átadási módszer is.
 
 > [!NOTE]
 >Az Azure Storage App Service **előzetes** verzióban érhető el, és **éles környezetben** **nem támogatott** .
@@ -117,7 +117,7 @@ Ha a megosztás az alkalmazáshoz van társítva, akkor a következő parancs fu
 az webapp config storage-account list --resource-group <resource-group> --name <app-name>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 ::: zone pivot="container-windows"
 

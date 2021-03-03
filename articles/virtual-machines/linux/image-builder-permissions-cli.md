@@ -3,17 +3,17 @@ title: Az Azure rendszerkép-készítő szolgáltatás engedélyeinek konfigurá
 description: Az Azure virtuálisgép-rendszerkép-készítő szolgáltatás követelményeinek konfigurálása, beleértve az Azure CLI-vel való jogosultságokat és jogosultságokat
 author: cynthn
 ms.author: danis
-ms.date: 05/06/2020
+ms.date: 03/02/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
-ms.openlocfilehash: accefe6644f8959bb9426a154d4f33e0834fc06c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f9b60af2c9fe16f834ce3098266c03afe2b99667
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674874"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695430"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-azure-cli"></a>Az Azure rendszerkép-készítő szolgáltatás engedélyeinek konfigurálása az Azure CLI használatával
 
@@ -132,7 +132,7 @@ imageResourceGroup=<Resource group>
 identityName="aibIdentity"
 
 # Use *cURL* to download the a sample JSON description 
-curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
+curl https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
 
 # Create a unique role name to avoid clashes in the same Azure Active Directory domain
 imageRoleDefName="Azure Image Builder Image Def"$(date +'%s')
@@ -173,7 +173,7 @@ VnetResourceGroup=<Resource group>
 identityName="aibIdentity"
 
 # Use *cURL* to download the a sample JSON description 
-curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleNetworking.json -o aibRoleNetworking.json
+curl https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleNetworking.json -o aibRoleNetworking.json
 
 # Create a unique role name to avoid clashes in the same domain
 netRoleDefName="Azure Image Builder Network Def"$(date +'%s')
@@ -235,7 +235,7 @@ Cserélje le a következő helyőrző beállításokat:
 | \<Storage account container\> | Tárfiók tárolójának neve |
 | \<Subscription ID\> | Azure-előfizetés |
 
-A felhasználó által hozzárendelt felügyelt identitással kapcsolatos további információkért tekintse meg az [Egyéni rendszerkép létrehozása, amely azure User-Assigned felügyelt identitást használ az Azure Storage-hoz való seemlessly eléréséhez](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage#create-a-custom-image-that-will-use-an-azure-user-assigned-managed-identity-to-seemlessly-access-files-azure-storage). A rövid útmutató végigvezeti a felhasználó által hozzárendelt felügyelt identitás létrehozásán és konfigurálásán egy Storage-fiók eléréséhez.
+A felhasználó által hozzárendelt felügyelt identitással kapcsolatos további információkért tekintse meg az [Egyéni rendszerkép létrehozása, amely azure User-Assigned felügyelt identitást használ az Azure Storage-hoz való seemlessly eléréséhez](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity). A rövid útmutató végigvezeti a felhasználó által hozzárendelt felügyelt identitás létrehozásán és konfigurálásán egy Storage-fiók eléréséhez.
 
 ## <a name="next-steps"></a>Következő lépések
 

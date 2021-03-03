@@ -6,12 +6,12 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: a3b892b5d92feb743d9a538c4e418b1f47e39b03
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d0fd62c0173bec17c217ece5560119749d1a4fc6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100386305"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739334"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory – gyakori kérdések
 
@@ -48,7 +48,7 @@ A Data Factory biztosítja az adatintegrációhoz szükséges adatáramlási st�
     - Körkörös tárolók:
         * A foreach tevékenység egy adott tevékenység egy adott gyűjteményében fog megjelenni egy hurokban. 
 - Trigger-alapú folyamatok:
-    - A folyamatok igény szerint vagy falióra esetén is elindíthatók.
+    - A folyamatok igény szerint indíthatók, a fal órájának időpontjában, vagy az Event Grid által vezérelt témakörök alapján.
 - Különbözeti folyamatok:
     - A paraméterekkel határozható meg a Delta másolás magas vízjele, miközben a dimenzió-vagy hivatkozásokat a helyszíni vagy a felhőben lévő, a helyi vagy a felhőben lévő adattárakba helyezi át az adatoknak a tóba való betöltéséhez.
 

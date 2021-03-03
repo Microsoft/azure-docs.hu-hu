@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: makromer
-ms.openlocfilehash: 3b97f09c2b6f4c5f5352bbaa081e0bcae900ebd5
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 12b640fd97f48e293320593b33ab2fdc54980c0f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808310"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716295"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-data-factory-data-flows"></a>Foglalási kedvezmény alkalmazása Azure Data Factory adatforgalomra
 
@@ -32,7 +32,7 @@ Az alábbi példák azt mutatják be, hogy az ADF-adatfolyam fenntartott kapacit
 - 1. eset: egy ADF-adatáramlási foglalást vásárol, amely 1 órára 80 magot igényel a memória optimalizált számítási feladatokhoz, ha a 80 értéket adja meg a memória típusú optimalizált számítási típus mennyiségének megfelelően. Az Azure Integration Runtime egy órára optimalizált, 144 maggal rendelkező adatfolyamot futtat. Az 64 mag adatáramlási díjait egy órára számítjuk fel. A foglalási kedvezményt egy órányi, 80-nél több memóriára optimalizált használattal érheti el.
 - 2. forgatókönyv: az általános célú számításhoz a 32 értéket az általános célú számítási típushoz tartozó mennyiségű, 1 órás 32-es mag-os adatforgalom foglalásával vásárolhatja meg. Az adatfolyamatokat 1 órára, az általános számítási Azure Integration Runtime 32-es magjainak használatával hibakeresést végez. A foglalási kedvezményt a teljes órányi használatért veheti igénybe.
 
-Az Azure Reservations számlázási használati jelentésekben történő alkalmazásának megismeréséhez és megtekintéséhez lásd [az Azure Reservations használatát ismertető](https://docs.microsoft.com/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea) cikket.
+Az Azure Reservations számlázási használati jelentésekben történő alkalmazásának megismeréséhez és megtekintéséhez lásd [az Azure Reservations használatát ismertető](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) cikket.
 
 ## <a name="need-help-contact-us"></a>Segítségre van szüksége? Kapcsolat
 
@@ -42,4 +42,4 @@ Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatá
 
 Ha többet szeretne megtudni a Azure Reservationsről, tekintse meg a következő cikket:
 
-- [Mi az az Azure Reservations?](https://docs.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations)
+- [Mi az az Azure Reservations?](../cost-management-billing/reservations/save-compute-costs-reservations.md)

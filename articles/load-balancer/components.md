@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: 6ddfe581bb3f2f584fdec0229981321297c9a77f
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 6bf090cde7262fdae9c98ef55227bf2925937dbf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399197"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739831"
 ---
 # <a name="azure-load-balancer-components"></a>Összetevők Azure Load Balancer
 
@@ -133,6 +133,7 @@ Az alapszintű Load Balancer nem támogatja a kimenő szabályokat.
 - A háttérbeli virtuális gép kimenő folyamata egy belső Load Balancer felületére sikertelen lesz.
 - Egy terheléselosztó-szabály nem terjedhet ki két virtuális hálózatra.  A frontendeknek és a háttérbeli példányoknak ugyanabban a virtuális hálózatban kell lenniük.  
 - A továbbítási IP-töredékek nem támogatottak a terheléselosztási szabályokban. Az UDP-és TCP-csomagok IP-töredezettsége nem támogatott a terheléselosztási szabályokban. HA portok terheléselosztási szabályai használhatók a meglévő IP-töredékek továbbítására. További információ: [magas rendelkezésre állású portok – áttekintés](load-balancer-ha-ports-overview.md).
+- Rendelkezésre állási csoportokban csak 1 nyilvános Load Balancer és 1 belső Load Balancer tartozhat
 
 ## <a name="next-steps"></a>Következő lépések
 

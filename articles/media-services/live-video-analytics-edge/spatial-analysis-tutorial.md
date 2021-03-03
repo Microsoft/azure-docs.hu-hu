@@ -3,12 +3,12 @@ title: Élő videók elemzése Computer Vision térbeli elemzéshez – Azure
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Live Video Analytics szolgáltatást az Azure Cognitive Services Computer Vision térbeli Analysis AI funkciójának használatával egy élő videó-hírcsatorna (szimulált) IP-kamerából való elemzéséhez.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: f8a828d27b69fedefe7ccbc2ad7290bf300afc16
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: b20cdb9bbc64f9adc49cfbde4ff80576b149dbcd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526789"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698756"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Élő videó elemzése a Computer Vision for térbeli Analysis (előzetes verzió)
 
@@ -110,7 +110,7 @@ Az alábbi [lépéseket](../../databox-online/azure-stack-edge-gpu-deploy-prep.m
     AAD_TENANT_ID="<AAD Tenant ID>"  
     AAD_SERVICE_PRINCIPAL_ID="<AAD SERVICE_PRINCIPAL ID>"  
     AAD_SERVICE_PRINCIPAL_SECRET="<AAD SERVICE_PRINCIPAL ID>"  
-    VIDEO_INPUT_FOLDER_ON_DEVICE="/home/lvaadmin/samples/input"  
+    VIDEO_INPUT_FOLDER_ON_DEVICE="/home/lvaedgeuser/samples/input"  
     VIDEO_OUTPUT_FOLDER_ON_DEVICE="/var/media"
     APPDATA_FOLDER_ON_DEVICE="/var/local/mediaservices"
     CONTAINER_REGISTRY_USERNAME_myacr="<your container registry username>"  

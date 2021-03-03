@@ -16,12 +16,12 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78dcd9d020923251439a05316569b559c19057d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: effdd156858caf5717aac92433e8bc5f4f6147ad
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89661455"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686869"
 ---
 # <a name="renew-federation-certificates-for-microsoft-365-and-azure-active-directory"></a>Microsoft 365 és Azure Active Directory összevonási tanúsítványainak megújítása
 ## <a name="overview"></a>Áttekintés
@@ -34,7 +34,7 @@ Ez a cikk további információkat tartalmaz a jogkivonat-aláíró tanúsítvá
 * Külső gyártótól származó identitás-szolgáltatót használ.
 
 ## <a name="default-configuration-of-ad-fs-for-token-signing-certificates"></a>AD FS alapértelmezett konfigurációja a jogkivonat-aláíró tanúsítványokhoz
-A jogkivonat-aláírás és a jogkivonat-visszafejtő tanúsítványok általában önaláírt tanúsítványok, és egy évig jók. Alapértelmezés szerint a AD FS tartalmaz egy **autocertificaterollover beállítást**nevű automatikus megújítási folyamatot. Ha AD FS 2,0-es vagy újabb verziót használ, Microsoft 365 és az Azure AD automatikusan frissíti a tanúsítványt a lejárat előtt.
+A jogkivonat-aláírás és a jogkivonat-visszafejtő tanúsítványok általában önaláírt tanúsítványok, és egy évig jók. Alapértelmezés szerint a AD FS tartalmaz egy **autocertificaterollover beállítást** nevű automatikus megújítási folyamatot. Ha AD FS 2,0-es vagy újabb verziót használ, Microsoft 365 és az Azure AD automatikusan frissíti a tanúsítványt a lejárat előtt.
 
 ### <a name="renewal-notification-from-the-microsoft-365-admin-center-or-an-email"></a>Megújítási értesítés a Microsoft 365 felügyeleti központból vagy egy e-mailből
 > [!NOTE]
@@ -140,7 +140,7 @@ Ezekben a forgatókönyvekben minden alkalommal, amikor frissíti a jogkivonat-a
 ### <a name="step-1-ensure-that-ad-fs-has-new-token-signing-certificates"></a>1. lépés: Győződjön meg arról, hogy a AD FS új jogkivonat-aláíró tanúsítványokkal rendelkezik
 **Nem alapértelmezett konfiguráció**
 
-Ha a AD FS nem alapértelmezett konfigurációját használja (ha a **Autocertificaterollover beállítást** **hamis**értékre van állítva), akkor valószínűleg egyéni tanúsítványokat (nem önaláírt) használ. Az AD FS jogkivonat-aláíró tanúsítványok megújításával kapcsolatos további információkért lásd: az [összevont kiszolgálók tanúsítványokra vonatkozó követelményei](/windows-server/identity/ad-fs/design/certificate-requirements-for-federation-servers).
+Ha a AD FS nem alapértelmezett konfigurációját használja (ha a **Autocertificaterollover beállítást** **hamis** értékre van állítva), akkor valószínűleg egyéni tanúsítványokat (nem önaláírt) használ. Az AD FS jogkivonat-aláíró tanúsítványok megújításával kapcsolatos további információkért lásd: az [összevont kiszolgálók tanúsítványokra vonatkozó követelményei](/windows-server/identity/ad-fs/design/certificate-requirements-for-federation-servers).
 
 **Az összevonási metaadatok nem nyilvánosan elérhetők**
 
@@ -157,7 +157,7 @@ Ha viszont az **autocertificaterollover beállítást** értéke **true (igaz**)
    >
 3. Tekintse meg a parancs kimenetét a felsorolt tanúsítványokban. Ha AD FS új tanúsítványt generált, akkor két tanúsítványt kell látnia a kimenetben: az egyiket, amelynél a **IsPrimary** értéke **igaz** , és a közelmúltbeli dátum 5 napon **belül van,** és az egyik, hogy a **IsPrimary** **hamis** , **és a** legkésőbbi egy évig.
 4. Ha csak egy tanúsítvány jelenik meg, és a még **5 napon belül** megjelenő dátum, új tanúsítványt kell létrehoznia.
-5. Új tanúsítvány létrehozásához futtassa a következő parancsot egy PowerShell-parancssorban: `PS C:\>Update-ADFSCertificate –CertificateType token-signing` .
+5. Új tanúsítvány létrehozásához futtassa a következő parancsot egy PowerShell-parancssorban: `PS C:\Update-ADFSCertificate –CertificateType token-signing` .
 6. A frissítés ellenőrzéséhez futtassa újra a következő parancsot: PS C: \> Get-ADFSCertificate – CertificateType jogkivonat-aláírás
 
 Most két tanúsítványnak kell szerepelnie, amelyek közül az egyik **egy még egy év** múlva a későbbiekben, a **IsPrimary** értéke pedig **hamis**.

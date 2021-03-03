@@ -4,14 +4,14 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/06/2020
 ms.author: glenga
-ms.openlocfilehash: b4b2409928b6a4196738c7cc6c7040e781d34686
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bff2f05a95faf9c475189cb5a8003cb7fd9f69be
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "80056581"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701414"
 ---
-1. A függvény futtatásához nyomja le az F5 billentyűt a Visual Studióban. Előfordulhat, hogy engedélyeznie kell egy tűzfal-kivételt, hogy az eszközök kezelni tudják a HTTP-kérelmeket. A függvény helyi futtatásakor a rendszer soha nem kényszeríti ki az engedélyezési szinteket.
+1. A függvény futtatásához nyomja le az <kbd>F5</kbd> billentyűt a Visual Studióban. Előfordulhat, hogy engedélyeznie kell egy tűzfal-kivételt, hogy az eszközök kezelni tudják a HTTP-kérelmeket. A függvény helyi futtatásakor a rendszer soha nem kényszeríti ki az engedélyezési szinteket.
 
 2. Másolja a függvény URL-címét az Azure-függvény futtatókörnyezetéből.
 
@@ -21,4 +21,4 @@ ms.locfileid: "80056581"
 
     ![A függvény által visszaadott localhost válasz a böngészőben](./media/functions-run-function-test-local-vs/functions-run-browser-local-vs.png)
 
-4. A hibakeresés leállításához nyomja le a SHIFT + F5 billentyűkombinációt a Visual Studióban.
+4. A hibakeresés leállításához nyomja le az F5 <kbd>billentyűt</kbd> + <kbd></kbd> a Visual Studióban.

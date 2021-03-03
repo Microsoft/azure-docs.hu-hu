@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/01/2020
 ms.author: trbye
-ms.openlocfilehash: baa48ede04b9de98bd69de69753c97b5fcee7329
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 36885e4673b83d1db7972f03c4a6309f766206c5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525262"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713099"
 ---
 # <a name="what-is-custom-neural-voice"></a>Mi az egyéni neurális hang?
 
-Az egyéni neurális hang egy [szöveg-beszéd](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech) (TTS) funkció, amely lehetővé teszi, hogy a saját hangadatainak mintaként való megadásával egy egyedi, testreszabott szintetikus hanganyagot hozzon létre az alkalmazásaihoz. A szöveg és a beszéd úgy működik, hogy a szövegeket szintetikus beszédre konvertálja egy gépi tanulási modell használatával, amely úgy hangzik, mint a kiválasztott hang. A [REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech)segítségével lehetővé teheti, hogy alkalmazásai [előre elkészített hangokkal](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices) vagy saját, az egyéni neurális [hangvezérelt funkcióval kifejlesztett hangmodellekkel](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice-prepare-data) beszéljenek. Az egyéni neurális hang olyan neurális TTS technológián alapul, amely természetes hangvételt eredményez, amely gyakran nem különböztethető meg az emberi hanghoz képest.
+Az egyéni neurális hang egy [szöveg-beszéd](./text-to-speech.md) (TTS) funkció, amely lehetővé teszi, hogy a saját hangadatainak mintaként való megadásával egy egyedi, testreszabott szintetikus hanganyagot hozzon létre az alkalmazásaihoz. A szöveg és a beszéd úgy működik, hogy a szövegeket szintetikus beszédre konvertálja egy gépi tanulási modell használatával, amely úgy hangzik, mint a kiválasztott hang. A [REST API](./rest-text-to-speech.md)segítségével lehetővé teheti, hogy alkalmazásai [előre elkészített hangokkal](./language-support.md#neural-voices) vagy saját, az egyéni neurális [hangvezérelt funkcióval kifejlesztett hangmodellekkel](./how-to-custom-voice-prepare-data.md) beszéljenek. Az egyéni neurális hang olyan neurális TTS technológián alapul, amely természetes hangvételt eredményez, amely gyakran nem különböztethető meg az emberi hanghoz képest.
 Az egyéni neurális hang reális és természetes hangja a márkákat, a megtestesít gépeket, valamint lehetővé teszi, hogy a felhasználók természetes módon kommunikálni tudjanak az alkalmazásokkal.
 
 > [!NOTE]
@@ -35,7 +35,7 @@ Ezután a fonéma-sorozatot bekerül a neurális akusztikai modellbe, hogy előr
 
 A neurális TTS hangmodelleket mély neurális hálózatokkal tanítják ki az emberi hangok rögzítési mintái alapján. Ebben a [blogban](https://techcommunity.microsoft.com/t5/azure-ai/neural-text-to-speech-extends-support-to-15-more-languages-with/ba-p/1505911)leírjuk, hogyan működik a neurális TTS a legkorszerűbb neurális beszédfelismerési modellekkel. A blog azt is ismerteti, hogyan lehet az univerzális alapmodelleket 2 órányi beszédfelismerési adatokkal (vagy kevesebb mint 2 000 rögzített hosszúságú kimondott szöveg) módosítani, és megtanulni, hogy beszéljen a cél beszélő hangján. Ha szeretné megtudni, hogyan tanítják meg a neurális vocoder, olvassa el a [blogbejegyzésben](https://techcommunity.microsoft.com/t5/azure-ai/azure-neural-tts-upgraded-with-hifinet-achieving-higher-audio/ba-p/1847860).
 
-Az egyéni neurális hang testreszabási képességeinek köszönhetően a neurális TTS motor alkalmazkodik a felhasználói forgatókönyvek jobb illeszkedéséhez. Egyéni neurális hang létrehozásához a [Speech Studio](https://speech.microsoft.com/customvoice) használatával töltse fel a rögzített hang-és a hozzá tartozó parancsfájlokat, és végezze el a modell betanítását és a hang egyéni végpontra való telepítését. A használati esettől függően az egyéni neurális hang használatával valós időben alakíthatja át a szöveget (például egy intelligens virtuális asszisztensben), vagy offline hangtartalmat (például az e-learning-alkalmazásokban használt hanganyagként vagy az e-learning-alkalmazásokban található utasításokban), a felhasználó által megadott szövegbeviteli adatokkal. Ezt a [REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech), a [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started-text-to-speech?tabs=script%2Cwindowsinstall&pivots=programming-language-csharp)vagy egy [webes portálon](https://speech.microsoft.com/audiocontentcreation)keresztül lehet elérni.
+Az egyéni neurális hang testreszabási képességeinek köszönhetően a neurális TTS motor alkalmazkodik a felhasználói forgatókönyvek jobb illeszkedéséhez. Egyéni neurális hang létrehozásához a [Speech Studio](https://speech.microsoft.com/customvoice) használatával töltse fel a rögzített hang-és a hozzá tartozó parancsfájlokat, és végezze el a modell betanítását és a hang egyéni végpontra való telepítését. A használati esettől függően az egyéni neurális hang használatával valós időben alakíthatja át a szöveget (például egy intelligens virtuális asszisztensben), vagy offline hangtartalmat (például az e-learning-alkalmazásokban használt hanganyagként vagy az e-learning-alkalmazásokban található utasításokban), a felhasználó által megadott szövegbeviteli adatokkal. Ezt a [REST API](./rest-text-to-speech.md), a [Speech SDK](./get-started-text-to-speech.md?pivots=programming-language-csharp&tabs=script%2cwindowsinstall)vagy egy [webes portálon](https://speech.microsoft.com/audiocontentcreation)keresztül lehet elérni.
 
 ## <a name="terms-and-definitions"></a>Feltételek és definíciók
 

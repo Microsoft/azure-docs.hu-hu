@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 11/12/2020
-ms.openlocfilehash: bdbbf3e808e1dda0970aaf87d154ee79bea4dcb1
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.date: 02/24/2021
+ms.openlocfilehash: f87ad76e9bb1db4d71716bf860d5fee2d413e8e9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964167"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740375"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Adatok megosztása és fogadása az Azure SQL Database-ből és az Azure Synapse Analyticsből
 
@@ -116,7 +116,7 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
 
 1. Válassza **az adatmegosztás megkezdése** lehetőséget.
 
-1. Kattintson a **Létrehozás** gombra.   
+1. Válassza a **Létrehozás** lehetőséget.   
 
 1. Adja meg a megosztás részleteit. Adja meg a nevet, a megosztás típusát, a megosztási tartalmak leírását és a használati feltételeket (opcionális). 
 
@@ -150,7 +150,7 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
 
 1. Válassza a **Folytatás** lehetőséget.
 
-1. A felülvizsgálat + létrehozás lapon tekintse át a csomag tartalmát, a beállításokat, a címzetteket és a szinkronizálási beállításokat. Kattintson a **Létrehozás** gombra.
+1. A felülvizsgálat + létrehozás lapon tekintse át a csomag tartalmát, a beállításokat, a címzetteket és a szinkronizálási beállításokat. Válassza a **Létrehozás** lehetőséget.
 
 Az Azure-beli adatmegosztás már létrejött, és az adatmegosztás címzettje most már készen áll a meghívás elfogadására. 
 
@@ -275,7 +275,7 @@ Az alábbi lépésekkel konfigurálhatja, hogy hová kívánja fogadni az adatgy
 ### <a name="trigger-a-snapshot"></a>Pillanatkép indítása
 Ezek a lépések csak a pillanatkép-alapú megosztásra vonatkoznak.
 
-1. A pillanatképek elindításához válassza a **részletek** lapot, majd az **trigger pillanatképét**. Itt aktiválhatja az adatok teljes vagy növekményes pillanatképét. Ha az első alkalommal fogadja az adatait az adatszolgáltatótól, válassza a teljes másolás lehetőséget. Az SQL-források esetében csak a teljes pillanatkép támogatott.
+1. A pillanatképek elindításához válassza a **részletek** lapot, majd az **trigger pillanatképét**. Itt aktiválhatja az adatok teljes vagy növekményes pillanatképét. Ha az első alkalommal fogadja az adatait az adatszolgáltatótól, válassza a teljes másolás lehetőséget. Az SQL-források esetében csak a teljes pillanatkép támogatott. A pillanatképek végrehajtásakor a további Pillanatképek nem indulnak el, amíg az előző végére nem kerül sor.
 
    ![Pillanatkép indítása](./media/trigger-snapshot.png "Pillanatkép indítása") 
 
@@ -309,7 +309,7 @@ Az SQL-forrásokból származó adatok megosztásakor a rendszer a következő l
 | ntext |Karakterlánc, char [] |
 | numerikus |Tizedesjegy |
 | nvarchar |Karakterlánc, char [] |
-| valós szám |Egyszeres |
+| valós szám |Egyirányú |
 | ROWVERSION |Bájt [] |
 | idő adattípusúra |DateTime |
 | smallint |Int16 |
@@ -343,5 +343,5 @@ Az SQL-Pillanatképek teljesítményét számos tényező befolyásolja. A sajá
 ## <a name="troubleshoot-sql-snapshot-failure"></a>SQL-pillanatkép hibáinak hibaelhárítása
 A pillanatképek meghibásodásának leggyakoribb oka az, hogy az adatmegosztás nem rendelkezik engedéllyel a forrás-vagy a célként megadott adattárhoz. Ahhoz, hogy adatmegosztási engedélyt adjon a forrás vagy a cél Azure SQL Database vagy az Azure szinapszis Analytics (korábban Azure SQL DW) számára, futtatnia kell a megadott SQL-parancsfájlt az SQL-adatbázishoz való csatlakozáskor Azure Active Directory hitelesítés használatával. További SQL-Pillanatképek hibáinak hibaelhárításához tekintse meg a [Pillanatkép-hiba hibaelhárítása](data-share-troubleshoot.md#snapshots)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Megtanulta, hogyan oszthat meg és fogadhat adatait SQL-forrásokból az Azure adatmegosztási szolgáltatás használatával. Ha többet szeretne megtudni a más adatforrásokból történő megosztásról, folytassa a [támogatott adattárakkal](supported-data-stores.md).

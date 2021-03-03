@@ -5,12 +5,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 1a0b1a0400ae3d43817921e8a336421aee35ccd6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3ea5168641f233f2e9580612a2f245fd8fef860f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378145"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699351"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Az Azure HDInsight kibocsátási megjegyzései
 
@@ -28,10 +28,10 @@ Ez a kiadás a 3,6-es és a HDInsight 4,0-es HDInsight egyaránt érvényes. A H
 
 ## <a name="new-features"></a>Új funkciók
 ### <a name="dav4-series-support"></a>Dav4 sorozat támogatása
-Ebben a kiadásban a HDInsight hozzáadta a Dav4 sorozat támogatását. További információ az [Dav4-sorozatról](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series).
+Ebben a kiadásban a HDInsight hozzáadta a Dav4 sorozat támogatását. További információ az [Dav4-sorozatról](/azure/virtual-machines/dav4-dasv4-series).
 
 ### <a name="kafka-rest-proxy-ga"></a>Kafka REST proxy GA 
-A Kafka REST proxy lehetővé teszi a Kafka-fürttel való interakciót a HTTPS-en keresztül REST API. A Kafka Rest proxy a jelen kiadástól kezdve általánosan elérhető. További információ a [KAFKA Rest proxyról](https://docs.microsoft.com/azure/hdinsight/kafka/rest-proxy).
+A Kafka REST proxy lehetővé teszi a Kafka-fürttel való interakciót a HTTPS-en keresztül REST API. A Kafka Rest proxy a jelen kiadástól kezdve általánosan elérhető. További információ a [KAFKA Rest proxyról](/azure/hdinsight/kafka/rest-proxy).
 
 ### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Áttérés Azure-beli virtuálisgép-méretezési csoportokra
 A HDInsight mostantól Azure-beli virtuális gépeket használ a fürt kiépítéséhez. A szolgáltatás fokozatosan migrálható az [Azure virtuálisgép-méretezési csoportokra](../virtual-machine-scale-sets/overview.md). A teljes folyamat hónapokat is igénybe vehet. A régiók és az előfizetések migrálása után az újonnan létrehozott HDInsight-fürtök felhasználói műveletek nélkül futnak a virtuálisgép-méretezési csoportokban. A rendszer nem várt változást.
@@ -49,14 +49,14 @@ A HDInsight fokozatosan migrálja az Azure-beli virtuálisgép-méretezési csop
 
 
 ### <a name="breaking-change-for-net-for-apache-spark-100"></a>A .NET Apache Spark 1.0.0-hoz való feltörésének változása
-A legújabb kiadással a HDInsight bevezeti a [".net for Apache Spark"](https://github.com/dotnet/spark) könyvtár első hivatalos verziójának v 1.0.0 verzióját. A DataFrame API teljességét biztosítja a Spark 2.4. x és a Spark 3.0. x számára, valamint számos [más funkciót](https://github.com/dotnet/spark/blob/master/docs/release-notes/1.0.0/release-1.0.0.md)is tartalmaz. Ebben a főverzióban módosulnak a módosítások, [a .net for Apache Spark áttelepítési útmutató](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10) a kód és a folyamatok frissítéséhez szükséges lépések megismeréséhez. További információért tekintse meg ezt a [.net for Apache Spark 1.0-s verziójú Azure HDInsight útmutatót](https://docs.microsoft.com/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight).
+A legújabb kiadással a HDInsight bevezeti a [".net for Apache Spark"](https://github.com/dotnet/spark) könyvtár első hivatalos verziójának v 1.0.0 verzióját. A DataFrame API teljességét biztosítja a Spark 2.4. x és a Spark 3.0. x számára, valamint számos [más funkciót](https://github.com/dotnet/spark/blob/master/docs/release-notes/1.0.0/release-1.0.0.md)is tartalmaz. Ebben a főverzióban módosulnak a módosítások, [a .net for Apache Spark áttelepítési útmutató](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10) a kód és a folyamatok frissítéséhez szükséges lépések megismeréséhez. További információért tekintse meg ezt a [.net for Apache Spark 1.0-s verziójú Azure HDInsight útmutatót](/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight).
 
 
 ## <a name="upcoming-changes"></a>Közelgő változások
 A következő módosítások a közelgő kiadásokban fognak történni.
 
 ### <a name="default-cluster-version-will-be-changed-to-40"></a>A fürt alapértelmezett verziója 4,0-re változik
-Február 2021-én a HDInsight-fürt alapértelmezett verziója 3,6-ről 4,0-ra módosul. További információ az elérhető verziókról: [elérhető verziók](./hdinsight-component-versioning.md#available-versions). További információ a [HDInsight 4,0](./hdinsight-version-release.md)újdonságáról.
+Február 2021-én a HDInsight-fürt alapértelmezett verziója 3,6-ről 4,0-ra módosul. További információ az elérhető verziókról: [elérhető verziók](./hdinsight-component-versioning.md). További információ a [HDInsight 4,0](./hdinsight-version-release.md)újdonságáról.
 
 ### <a name="os-version-upgrade"></a>Operációs rendszer verziófrissítése
 A HDInsight az Ubuntu 16,04 – 18,04 operációs rendszer verziójának frissítését végzi. A frissítés a 2021. április előtt fejeződik be.

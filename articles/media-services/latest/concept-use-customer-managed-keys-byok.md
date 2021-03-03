@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 27d357279a54d7abc351370e7afda3a7961bac33
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 4564e28f76aebe7f708c2b6f68903fe67bcefe26
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428554"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698858"
 ---
 # <a name="bring-your-own-key-customer-managed-keys-with-media-services"></a>Saját kulcs használata (ügyfél által felügyelt kulcsok) a Media Services
 
@@ -42,7 +42,7 @@ Megadhatja a kulcs nevét és a kulcs verziószámát, vagy csak a kulcs nevét.
 A Media Services automatikusan támogatja a kettős titkosítást. Az inaktív adatok esetében az első titkosítási réteg egy ügyfél által felügyelt kulcsot vagy egy Microsoft által felügyelt kulcsot használ a `AccountEncryption` fiók beállításától függően.  A REST-adatok titkosításának második rétegét a rendszer automatikusan külön Microsoft által felügyelt kulcs használatával kapja meg. További információ a kettős titkosításról: [Azure Double encryption](../../security/fundamentals/double-encryption.md).
 
 > [!NOTE]
-> A kettős titkosítás automatikusan engedélyezve van a Media Services fiókban. Az ügyfél által felügyelt kulcsot és a dupla titkosítást azonban külön kell konfigurálnia a Storage-fiókban. Lásd: [storege titkosítás](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
+> A kettős titkosítás automatikusan engedélyezve van a Media Services fiókban. Az ügyfél által felügyelt kulcsot és a dupla titkosítást azonban külön kell konfigurálnia a Storage-fiókban. Lásd: [storege titkosítás](../../storage/common/storage-service-encryption.md).
 
 ## <a name="tutorials"></a>Oktatóanyagok
 

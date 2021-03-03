@@ -1,17 +1,16 @@
 ---
 title: Figyelési megoldások célzása Azure Monitorban | Microsoft Docs
 description: A megfigyelési megoldások célzása lehetővé teszi, hogy a figyelési megoldásokat egy adott készletre korlátozza.  Ez a cikk bemutatja, hogyan hozhat létre hatókör-konfigurációt, és hogyan alkalmazhatja azt egy megoldásra.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: 338dc22c7a4f9fbca9f007ae76c092a3fe5f6762
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: cb030456eb3b9e3c81fadd8451b5b0526920ba33
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587243"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728569"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Figyelési megoldások célzása Azure Monitorban (előzetes verzió)
 Amikor felvesz egy figyelési megoldást az előfizetéséhez, a rendszer alapértelmezés szerint automatikusan telepíti a Log Analytics munkaterülethez csatlakoztatott összes Windows-és Linux-ügynököt.  Érdemes lehet felügyelni a költségeket, és korlátozni a megoldáshoz összegyűjtött adatok mennyiségét, ha korlátozza azt egy adott ügynökre.  Ez a cikk azt ismerteti, hogyan használható a megoldások **célzása** , amely egy olyan funkció, amely lehetővé teszi egy hatókör alkalmazását a megoldásokra.

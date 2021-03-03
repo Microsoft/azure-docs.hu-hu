@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 049c24beb6bb1573458779bf0796357fa634898f
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: ba1401696092f5a16ffa21859a9b485e94c5d792
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008570"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736508"
 ---
-# <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>A Linux rendszerhez készült Azure IoT Edge telepítése és kiépítése Windows-eszközön (előzetes verzió)
+# <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>A Linux rendszerhez készült Azure IoT Edge telepítése és üzembe helyezése Windows-eszközön (előzetes verzió)
 
 Az Azure IoT Edge futtatókörnyezet az eszköz IoT Edge eszközre való bekapcsolása. A futtatókörnyezet a PC osztályból az ipari kiszolgálókra is telepíthető. Miután konfigurált egy eszközt az IoT Edge-futtatókörnyezettel, üzembe helyezhet rajta üzleti logikát a felhőből. További információ: [a Azure IoT Edge futtatókörnyezet és az architektúrájának megismerése](iot-edge-runtime.md).
 
@@ -85,7 +85,7 @@ A Windows rendszerhez készült Linux-Azure IoT Edge a következő üzembe helye
 
 A manuális kiépítés könnyebben megkezdhető néhány eszköz megkezdéséhez. A Device kiépítési szolgáltatás számos eszköz kiépítés esetén hasznos.
 
-Ha azt tervezi, hogy az eszköz vagy az eszközök kiépítéséhez az egyik DPS-metódust használja, kövesse a fenti csatolt cikkben található lépéseket a DPS-példány létrehozásához, a DPS-példány összekapcsolásához a IoT Hubhoz, és hozzon létre egy DPS-regisztrációt. *Egyéni regisztrációt* is létrehozhat egyetlen eszközhöz vagy *csoportos regisztrációhoz* az eszközök egy csoportjára. A regisztrációs típusokkal kapcsolatos további információkért tekintse meg az [Azure IoT hub Device Provisioning Service fogalmakat](https://docs.microsoft.com/azure/iot-dps/concepts-service#enrollment).
+Ha azt tervezi, hogy az eszköz vagy az eszközök kiépítéséhez az egyik DPS-metódust használja, kövesse a fenti csatolt cikkben található lépéseket a DPS-példány létrehozásához, a DPS-példány összekapcsolásához a IoT Hubhoz, és hozzon létre egy DPS-regisztrációt. *Egyéni regisztrációt* is létrehozhat egyetlen eszközhöz vagy *csoportos regisztrációhoz* az eszközök egy csoportjára. A regisztrációs típusokkal kapcsolatos további információkért tekintse meg az [Azure IoT hub Device Provisioning Service fogalmakat](../iot-dps/concepts-service.md#enrollment).
 
 ## <a name="create-a-new-deployment"></a>Új központi telepítés létrehozása
 
@@ -97,7 +97,7 @@ A Windows felügyeleti központ kezdőlapján, a kapcsolatok listájában megjel
 
 A Windows felügyeleti központ használatával Windows rendszeren telepítheti és kezelheti a Linux rendszerhez készült Azure IoT Edge a helyi eszközön vagy a távoli felügyelt eszközökön. Ebben az útmutatóban a helyi gazdagép-kapcsolatok célként szolgáló eszközként szolgál a Linux rendszerhez készült Azure IoT Edge telepítéséhez Windows rendszeren.
 
-Ha a helyi eszköz helyett egy távoli céleszköz kíván üzembe helyezni, és nem látja a kívánt céleszköz a listában, kövesse az [eszköz hozzáadásához szükséges utasításokat](https://docs.microsoft.com/windows-server/manage/windows-admin-center/use/get-started#connecting-to-managed-nodes-and-clusters).
+Ha a helyi eszköz helyett egy távoli céleszköz kíván üzembe helyezni, és nem látja a kívánt céleszköz a listában, kövesse az [eszköz hozzáadásához szükséges utasításokat](/windows-server/manage/windows-admin-center/use/get-started#connecting-to-managed-nodes-and-clusters).
 
    ![Kezdeti Windows felügyeleti központ irányítópultja a felsorolt eszközzel](./media/how-to-install-iot-edge-on-windows/windows-admin-center-initial-dashboard.png)
 
@@ -136,7 +136,7 @@ A telepítés befejezése után készen áll az eszköz kiépítésére. Válass
 Ha még nem tette meg, telepítse a Windows rendszerhez készült Linux-IoT Edget a kívánt eszközre.
 
 > [!NOTE]
-> A következő PowerShell-folyamat azt ismerteti, hogyan hozható létre a Windows rendszerű Linux rendszerhez készült Azure IoT Edge helyi központi telepítése. Ha a PowerShell használatával szeretne üzembe helyezést létrehozni egy távoli céleszköz-eszközön, a [távoli PowerShell](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_remote) használatával kapcsolatot létesíthet egy távoli eszközzel, és távolról is futtathatja ezeket a parancsokat az adott eszközön.
+> A következő PowerShell-folyamat azt ismerteti, hogyan hozható létre a Windows rendszerű Linux rendszerhez készült Azure IoT Edge helyi központi telepítése. Ha a PowerShell használatával szeretne üzembe helyezést létrehozni egy távoli céleszköz-eszközön, a [távoli PowerShell](/powershell/module/microsoft.powershell.core/about/about_remote) használatával kapcsolatot létesíthet egy távoli eszközzel, és távolról is futtathatja ezeket a parancsokat az adott eszközön.
 
 1. Egy emelt szintű PowerShell-munkamenetben futtassa a következő parancsok mindegyikét a Linux rendszerhez készült IoT Edge letöltéséhez Windows rendszeren.
 
@@ -173,9 +173,8 @@ Ha még nem tette meg, telepítse a Windows rendszerhez készült Linux-IoT Edge
    Deploy-Eflow
    ```
 
-   <!-- Most likely temporary until cmdlet is fully documented -->
    > [!NOTE]
-   > Ezt a parancsot paraméterek nélkül is futtathatja, vagy opcionálisan testreszabhatja az üzembe helyezést paraméterekkel. Vizsgálja meg a AzureEFLOW. psm1 PowerShell-modult a paraméterek és azok jelentésének megtekintéséhez (lásd: C:\Program Files\WindowsPowerShell\Modules\AzureEFLOW).
+   > Ezt a parancsot paraméterek nélkül is futtathatja, vagy opcionálisan testreszabhatja az üzembe helyezést paraméterekkel. A jelentések megjelenítéséhez tekintse meg [a Linux rendszerhez készült IoT Edge a Windows PowerShell parancsfájl-hivatkozását](reference-iot-edge-for-linux-on-windows-scripts.md#Deploy-Eflow) .
 
 1. A licencfeltételek elfogadásához írja be az "Y" kifejezést.
 
@@ -319,7 +318,10 @@ Ez a szakasz az eszköznek a DPS és az X. 509 tanúsítvánnyal történő auto
 
 Ellenőrizze, hogy a Windows Linux rendszerhez készült IoT Edge telepítése és konfigurálása sikeres volt-e a IoT Edge eszközön.
 
+# <a name="windows-admin-center"></a>[Windows felügyeleti központ](#tab/windowsadmincenter)
+
 1. A csatlakozáshoz válassza ki a IoT Edge eszközt a csatlakoztatott eszközök listájáról a Windows felügyeleti központban.
+
 1. Az eszköz áttekintése oldalon az eszközre vonatkozó információk láthatók:
 
     1. A **IoT Edge modul listája** szakasz a futó modulokat mutatja az eszközön. Ha a IoT Edge szolgáltatás első alkalommal indul el, csak a **edgeAgent** modult kell futtatnia. A edgeAgent modul alapértelmezés szerint fut, és az eszközre telepített további modulok telepítését és elindítását is lehetővé teszi.
@@ -338,6 +340,38 @@ Ellenőrizze, hogy a Windows Linux rendszerhez készült IoT Edge telepítése �
        ```bash
        sudo iotedge check
        ```
+
+---
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+1. Jelentkezzen be a IoT Edge for Linux rendszerű virtuális gépen a következő parancs használatával a PowerShell-munkamenetben:
+
+   ```azurepowershell-interactive
+   Ssh-EflowVm
+   ```
+
+1. Miután bejelentkezett, a következő Linux-paranccsal tekintheti meg a futó IoT Edge modulok listáját:
+
+   ```bash
+   iotedge list
+   ```
+
+1. Ha a IoT Edge-szolgáltatást kell elhárítani, használja a következő Linux-parancsokat.
+
+    1. Ha hibaelhárításra van szükség, kérje le a szolgáltatás naplóit.
+
+       ```bash
+       journalctl -u iotedge
+       ```
+
+    2. Az eszköz használatával `check` ellenőrizze az eszköz konfigurációját és kapcsolódási állapotát.
+
+       ```bash
+       sudo iotedge check
+       ```
+
+---
 
 ## <a name="next-steps"></a>Következő lépések
 

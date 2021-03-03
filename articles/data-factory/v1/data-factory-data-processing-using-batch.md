@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c59e164d67a665a5e99cb5045b3b0cf38e33dc87
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ec04000e678cd3fc55f4681781f91b6d98ea41f5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364273"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730864"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Nagyméretű adatkészletek feldolgozása Data Factory és batch használatával
 > [!NOTE]
@@ -575,9 +575,7 @@ Ebben a lépésben létrehoz egy társított szolgáltatást a Batch-fiókjához
    d. Adja meg a Batch URI-JÁT a **batchUri** JSON tulajdonságához.
 
       > [!IMPORTANT]
-      > A **Batch-fiók** panel URL-címe a következő formátumban van: \<accountname\> . \<region\> . batch.azure.com. A JSON-parancsfájl **batchUri** tulajdonságához el kell távolítania a "accountname" a88. * * az URL-címről. Például: `"batchUri": "https://eastus.batch.azure.com"`.
-      >
-      >
+      > A **Batch-fiók** panel URL-címe a következő formátumban van: `<accountname>.<region>.batch.azure.com` . A `batchUri` JSON-parancsfájlban található tulajdonsághoz el kell távolítania `<accountname>.` az URL-címet. Például: `"batchUri": "https://eastus.batch.azure.com"`.
 
       ![Batch-fiók panel](./media/data-factory-data-processing-using-batch/image9.png)
 

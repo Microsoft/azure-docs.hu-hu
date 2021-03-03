@@ -10,19 +10,19 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 8fa61855b5647c1caefd939af17b70c9d08c2f8f
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: eab1ebb3bf66b28bae80fbf16eaf24dbbc63bfb0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517824"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690532"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database forgalom áttelepítése újabb átjáróra
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Az Azure-infrastruktúra fejlesztésekor a Microsoft rendszeresen frissíti a hardvert, hogy biztosítsa a lehető legjobb felhasználói élményt. Az elkövetkező hónapokban az újabb hardveres generációk számára készült átjárók hozzáadását tervezzük, áttelepítjük a forgalmat, és végül leszerelik a régebbi hardverekre épülő átjárókat egyes régiókban.  
 
-Az ügyfelek az egyes régiókban elérhető átjárók változása előtt is tájékoztatják a szolgáltatás állapotáról szóló értesítéseket. Az ügyfelek [a Azure Portal segítségével állíthatják be a tevékenységek naplójának riasztásait](https://docs.microsoft.com/azure/service-health/alerts-activity-log-service-notifications-portal).
+Az ügyfelek az egyes régiókban elérhető átjárók változása előtt is tájékoztatják a szolgáltatás állapotáról szóló értesítéseket. Az ügyfelek [a Azure Portal segítségével állíthatják be a tevékenységek naplójának riasztásait](../../service-health/alerts-activity-log-service-notifications-portal.md).
 
 A legfrissebb információk a [Azure SQL Database átjáró IP-címei](connectivity-architecture.md#gateway-ip-addresses) táblában lesznek karbantartva.
 

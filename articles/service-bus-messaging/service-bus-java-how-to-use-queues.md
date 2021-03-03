@@ -5,12 +5,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 02/13/2021
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: bfe7835bea4415085279fb77eb85d67ed3f5f0f3
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 1fab8d3f603b3c2c7e3c307d3d2ce53590d7511c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518606"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739763"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-java"></a>Üzenetek küldése és fogadása Azure Service Bus várólistákból (Java)
 Ebben a rövid útmutatóban egy Java-alkalmazást fog létrehozni, amely üzeneteket küld egy Azure Service Bus üzenetsor üzeneteit, és fogadja az üzeneteket. 
@@ -286,7 +286,7 @@ Tekintse meg a következő dokumentációt és mintákat:
 - [Minták a GitHubon](/samples/azure/azure-sdk-for-java/servicebus-samples/)
 - [Java API-referencia](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-messaging-servicebus/7.0.0/index.html)
 
-[Azure SDK for Java]: /azure/developer/java/sdk/java-sdk-azure-get-started
+[Azure SDK for Java]: /azure/developer/java/sdk/get-started
 [Azure Toolkit for Eclipse]: /azure/developer/java/toolkit-for-eclipse/installation
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage

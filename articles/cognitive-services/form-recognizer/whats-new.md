@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: c7b6586f02d14d4e49ce9a5024b19ea15c8d2267
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f194f0bc7ec8d0bf2265c0863f93bfd11337b5f4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364688"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703388"
 ---
 # <a name="whats-new-in-form-recognizer"></a>A Form Recognizer újdonságai
 
@@ -91,7 +91,7 @@ Az **új minták** a githubon érhetők el.
 * **Pénznem-támogatás** – globális pénznemű szimbólumok észlelése és kinyerése.
 * Az **Azure gov** -Form felismerő mostantól elérhető az Azure gov-ben is.
 * **Fokozott biztonsági funkciók**: 
-   * A **saját kulcs** -űrlap felismerője automatikusan titkosítja az adatait, amikor a felhőben megőrzi a védelmet, és segít a szervezeti biztonsági és megfelelőségi kötelezettségvállalások teljesítésében. Alapértelmezés szerint az előfizetés a Microsoft által felügyelt titkosítási kulcsokat használja. Mostantól a saját titkosítási kulcsaival is kezelheti az előfizetését. Az [ügyfél által felügyelt kulcsok – más néven saját kulcs használata (BYOK)](./form-recognizer-encryption-of-data-at-rest.md)– nagyobb rugalmasságot biztosítanak a hozzáférés-vezérlések létrehozásához, forgatásához, letiltásához és visszavonásához. Továbbá az adatok védelméhez használt titkosítási kulcsok naplózására is lehetősége van.  
+   * A **saját kulcs** -űrlap felismerője automatikusan titkosítja az adatait, amikor a felhőben megőrzi a védelmet, és segít a szervezeti biztonsági és megfelelőségi kötelezettségvállalások teljesítésében. Alapértelmezés szerint az előfizetés a Microsoft által felügyelt titkosítási kulcsokat használja. Mostantól a saját titkosítási kulcsaival is kezelheti az előfizetését. Az [ügyfél által felügyelt kulcsok – más néven saját kulcs használata (BYOK)](./encrypt-data-at-rest.md)– nagyobb rugalmasságot biztosítanak a hozzáférés-vezérlések létrehozásához, forgatásához, letiltásához és visszavonásához. Továbbá az adatok védelméhez használt titkosítási kulcsok naplózására is lehetősége van.  
    * **Privát végpontok** – lehetővé teszi, hogy egy virtuális hálózaton (VNet) [biztonságosan hozzáférjenek az adathoz egy privát kapcsolaton keresztül.](../../private-link/private-link-overview.md)
 
 
@@ -123,7 +123,7 @@ Az **új minták** a githubon érhetők el.
 
 ### <a name="security-improvements"></a>Biztonsági fejlesztések
 
-* Mostantól elérhetők a FormRecognizer Customer-Managed kulcsai. További információ: az adattitkosítás inaktív állapotban [az űrlap-felismerő számára](./form-recognizer-encryption-of-data-at-rest.md).
+* Mostantól elérhetők a FormRecognizer Customer-Managed kulcsai. További információ: az adattitkosítás inaktív állapotban [az űrlap-felismerő számára](./encrypt-data-at-rest.md).
 * Felügyelt identitások használata az Azure-erőforrásokhoz való hozzáféréshez Azure Active Directory. További információ: [hozzáférés engedélyezése a felügyelt identitásokhoz](../authentication.md#authorize-access-to-managed-identities).
 
 ## <a name="march-2020"></a>2020. március 

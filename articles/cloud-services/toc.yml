@@ -1,211 +1,212 @@
 - name: Cloud Services (klasszikus) dokumentáció
   href: index.yml
-- name: Áttekintés
   items:
-    - name: Mi az Cloud Services (klasszikus)?
-      href: cloud-services-choose-me.md
-    - name: Felhőszolgáltatás konfigurációs fájljai és csomagja
-      href: cloud-services-model-and-package.md
-- name: Első lépések
-  items:
-    - name: Minta .NET-felhőszolgáltatás
-      href: cloud-services-dotnet-get-started.md
-    - name: Minta Python for Visual Studio-felhőszolgáltatás
-      href: cloud-services-python-ptvs.md
-- name: Alapelvek
-  items:
-    - name: Biztonság
+    - name: Áttekintés
       items:
-        - name: Biztonsági alapkonfiguráció
-          href: security-baseline.md
-- name: Útmutató
-  items:
-    - name: Felkészülés
+        - name: Mi az Cloud Services (klasszikus)?
+          href: cloud-services-choose-me.md
+        - name: Felhőszolgáltatás konfigurációs fájljai és csomagja
+          href: cloud-services-model-and-package.md
+    - name: Első lépések
       items:
-        - name: Virtuálisgép-méretek
-          href: cloud-services-sizes-specs.md
-        - name: Frissítések
-          href: cloud-services-update-azure-service.md
-    - name: Fejlesztés
+        - name: Minta .NET-felhőszolgáltatás
+          href: cloud-services-dotnet-get-started.md
+        - name: Minta Python for Visual Studio-felhőszolgáltatás
+          href: cloud-services-python-ptvs.md
+    - name: Alapelvek
       items:
-        - name: Webes és feldolgozói PHP-szerepkörök létrehozása
-          href: ../cloud-services-php-create-web-role.md
-        - name: Node.js-alkalmazás fejlesztése és üzembe helyezése
-          href: cloud-services-nodejs-develop-deploy-app.md
-        - name: Node.js-webalkalmazás fejlesztése az Express használatával
-          href: cloud-services-nodejs-develop-deploy-express-app.md
-        - name: Tárolás és a Visual Studio
+        - name: Biztonság
           items:
-            - name: A Blob Storage és a kapcsolódó szolgáltatások
-              href: ../visual-studio/vs-storage-cloud-services-getting-started-blobs.md
-            - name: A Queue Storage és a kapcsolódó szolgáltatások
-              href: ../visual-studio/vs-storage-cloud-services-getting-started-queues.md
-            - name: A Table Storage és a kapcsolódó szolgáltatások
-              href: ../visual-studio/vs-storage-cloud-services-getting-started-tables.md
-        - name: Szerepkör adatforgalmi szabályainak konfigurálása
-          href: cloud-services-enable-communication-role-instances.md
-        - name: Cloud Service-életciklusesemények kezelése
-          href: cloud-services-role-lifecycle-dotnet.md
-        - name: Socket.io (Node.js)
-          href: cloud-services-nodejs-chat-app-socketio.md
-        - name: Telefonhívás indítása Twilióról (.NET)
-          href: ../partner-twilio-cloud-services-dotnet-phone-call-web-role.md
-        - name: Indítási feladatok konfigurálása
-          items:
-            - name: Indítási feladatok létrehozása
-              href: cloud-services-startup-tasks.md
-            - name: Gyakori indítási feladatok
-              href: cloud-services-startup-tasks-common.md
-            - name: A .NET telepítése egy felhőszolgáltatásbeli szerepkörön feladatok használatával
-              href: cloud-services-dotnet-install-dotnet.md
-        - name: A Távoli asztal konfigurálása
-          items:
-            - name: Portál
-              href: cloud-services-role-enable-remote-desktop-new-portal.md
-            - name: PowerShell
-              href: cloud-services-role-enable-remote-desktop-powershell.md
-            - name: Visual Studio
-              href: cloud-services-role-enable-remote-desktop-visual-studio.md
-    - name: Üzembe helyezés
+            - name: Biztonsági alapkonfiguráció
+              href: security-baseline.md
+    - name: Útmutató
       items:
-        - name: Felhőszolgáltatás létrehozása és üzembe helyezése a portálon
-          href: cloud-services-how-to-create-deploy-portal.md
-        - name: Üres felhőszolgáltatás-tároló létrehozása PowerShellben
-          href: cloud-services-powershell-create-cloud-container.md
-        - name: Egyéni tartománynév konfigurálása
-          href: cloud-services-custom-domain-name-portal.md
-        - name: Csatlakoztatás egyéni tartományvezérlőhöz
-          href: cloud-services-connect-to-custom-domain.md
-    - name: Szolgáltatás kezelése
-      items:
-        - name: Általános kezelési feladatok
-          href: cloud-services-how-to-manage-portal.md
-        - name: Felhőszolgáltatás konfigurálása
-          href: cloud-services-how-to-configure-portal.md
-        - name: Felhőszolgáltatás felügyelete az Azure Automationnel
-          href: automation-manage-cloud-services.md
-        - name: Az automatikus méretezés konfigurálása
-          href: cloud-services-how-to-scale-portal.md
-        - name: Azure-erőforrások kezelése a Pythonnal
-          href: cloud-services-python-how-to-use-service-management.md
-        - name: Spekulatív végrehajtás kockázatának csökkentése
-          href: mitigate-se.md
-        - name: Vendég operációs rendszer javításai
-          href: cloud-services-guestos-msrc-releases.md
-        - name: Vendég operációs rendszer kivezetése
+        - name: Felkészülés
           items:
-            - name: Kivezetési szabályzat
-              href: cloud-services-guestos-retirement-policy.md
-            - name: 1. család kivezetéséről szóló értesítés
-              href: cloud-services-guestos-family1-retirement.md
-        - name: A vendég operációs rendszer kiadási hírei
-          href: cloud-services-guestos-update-matrix.md
-        - name: 'Cloud Services–szerepkör konfigurálása, XPath-adatlap'
-          href: cloud-services-role-config-xpath.md
-    - name: Tanúsítványok kezelése
-      items:
-        - name: Felhőszolgáltatások és felügyeleti tanúsítványok
-          href: cloud-services-certs-create.md
-        - name: Az SSL konfigurálása
-          href: cloud-services-configure-ssl-certificate-portal.md
-    - name: Figyelés
-      items:
-        - name: Felhőszolgáltatás monitorozása
-          href: cloud-services-how-to-monitor.md
-        - name: Teljesítményszámlálók használata
-          href: diagnostics-performance-counters.md
-        - name: Teljesítmény tesztelése
-          href: /visualstudio/azure/vs-azure-tools-performance-profiling-cloud-services?toc=/azure/cloud-services/toc.json
+            - name: Virtuálisgép-méretek
+              href: cloud-services-sizes-specs.md
+            - name: Frissítések
+              href: cloud-services-update-azure-service.md
+        - name: Fejlesztés
           items:
-            - name: Tesztelés a Visual Studio Profilerével
-              href: cloud-services-performance-testing-visual-studio-profiler.md
-        - name: Diagnosztika engedélyezése
+            - name: Webes és feldolgozói PHP-szerepkörök létrehozása
+              href: ../cloud-services-php-create-web-role.md
+            - name: Node.js-alkalmazás fejlesztése és üzembe helyezése
+              href: cloud-services-nodejs-develop-deploy-app.md
+            - name: Node.js-webalkalmazás fejlesztése az Express használatával
+              href: cloud-services-nodejs-develop-deploy-express-app.md
+            - name: Tárolás és a Visual Studio
+              items:
+                - name: A Blob Storage és a kapcsolódó szolgáltatások
+                  href: ../visual-studio/vs-storage-cloud-services-getting-started-blobs.md
+                - name: A Queue Storage és a kapcsolódó szolgáltatások
+                  href: ../visual-studio/vs-storage-cloud-services-getting-started-queues.md
+                - name: A Table Storage és a kapcsolódó szolgáltatások
+                  href: ../visual-studio/vs-storage-cloud-services-getting-started-tables.md
+            - name: Szerepkör adatforgalmi szabályainak konfigurálása
+              href: cloud-services-enable-communication-role-instances.md
+            - name: Cloud Service-életciklusesemények kezelése
+              href: cloud-services-role-lifecycle-dotnet.md
+            - name: Socket.io (Node.js)
+              href: cloud-services-nodejs-chat-app-socketio.md
+            - name: Telefonhívás indítása Twilióról (.NET)
+              href: ../partner-twilio-cloud-services-dotnet-phone-call-web-role.md
+            - name: Indítási feladatok konfigurálása
+              items:
+                - name: Indítási feladatok létrehozása
+                  href: cloud-services-startup-tasks.md
+                - name: Gyakori indítási feladatok
+                  href: cloud-services-startup-tasks-common.md
+                - name: A .NET telepítése egy felhőszolgáltatásbeli szerepkörön feladatok használatával
+                  href: cloud-services-dotnet-install-dotnet.md
+            - name: A Távoli asztal konfigurálása
+              items:
+                - name: Portál
+                  href: cloud-services-role-enable-remote-desktop-new-portal.md
+                - name: PowerShell
+                  href: cloud-services-role-enable-remote-desktop-powershell.md
+                - name: Visual Studio
+                  href: cloud-services-role-enable-remote-desktop-visual-studio.md
+        - name: Üzembe helyezés
           items:
-            - name: Azure PowerShell
-              href: cloud-services-diagnostics-powershell.md
-            - name: .NET
-              href: cloud-services-dotnet-diagnostics.md
-            - name: Visual Studio
-              href: /visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?toc=/azure/cloud-services/toc.json
-        - name: Diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban
-          href: diagnostics-extension-to-storage.md
-        - name: Felhőszolgáltatás követése a Diagnostics használatával
-          href: cloud-services-dotnet-diagnostics-trace-flow.md
-    - name: Hibaelhárítás
-      items:
-        - name: Hibakeresés
+            - name: Felhőszolgáltatás létrehozása és üzembe helyezése a portálon
+              href: cloud-services-how-to-create-deploy-portal.md
+            - name: Üres felhőszolgáltatás-tároló létrehozása PowerShellben
+              href: cloud-services-powershell-create-cloud-container.md
+            - name: Egyéni tartománynév konfigurálása
+              href: cloud-services-custom-domain-name-portal.md
+            - name: Csatlakoztatás egyéni tartományvezérlőhöz
+              href: cloud-services-connect-to-custom-domain.md
+        - name: Szolgáltatás kezelése
           items:
-            - name: Felhőszolgáltatás beállításai
-              href: /visualstudio/azure/vs-azure-tools-debugging-cloud-services-overview?toc=/azure/cloud-services/toc.json
-            - name: Helyi felhőszolgáltatás a Visual Studióban
-              href: /visualstudio/azure/vs-azure-tools-debug-cloud-services-virtual-machines?toc=/azure/cloud-services/toc.json
-            - name: Közzétett felhőszolgáltatás a Visual Studióban
-              href: /visualstudio/azure/vs-azure-tools-intellitrace-debug-published-cloud-services?toc=/azure/cloud-services/toc.json
-        - name: Felhőszolgáltatás-foglalási hiba
-          href: cloud-services-allocation-failures.md
-        - name: A felhőszolgáltatásbeli szerepkörök újrahasznosításának gyakori okai
-          href: cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md
-        - name: Az alkalmazás nem támogatja a TLS 1.2-t
-          href: applications-dont-support-tls-1-2.md
-        - name: Az alapértelmezett TEMP mappa mérete túl kicsi a szerepkörhöz
-          href: cloud-services-troubleshoot-default-temp-folder-size-too-small-web-worker-role.md
-        - name: Gyakori üzembehelyezési problémák
-          href: cloud-services-troubleshoot-deployment-problems.md
-        - name: A szerepkör nem indult el
-          href: cloud-services-troubleshoot-roles-that-fail-start.md
-        - name: Helyreállítási útmutató
-          href: cloud-services-disaster-recovery-guidance.md
-        - name: Klasszikus virtuálisgép-architektúra munkafolyamata
-          href: cloud-services-workflow-process.md
-        - name: Erőforrás-állapotok támogatása a Cloud Serviceshez
-          href: resource-health-for-cloud-services.md
-        - name: Cloud Services – gyakori kérdések
+            - name: Általános kezelési feladatok
+              href: cloud-services-how-to-manage-portal.md
+            - name: Felhőszolgáltatás konfigurálása
+              href: cloud-services-how-to-configure-portal.md
+            - name: Felhőszolgáltatás felügyelete az Azure Automationnel
+              href: automation-manage-cloud-services.md
+            - name: Az automatikus méretezés konfigurálása
+              href: cloud-services-how-to-scale-portal.md
+            - name: Azure-erőforrások kezelése a Pythonnal
+              href: cloud-services-python-how-to-use-service-management.md
+            - name: Spekulatív végrehajtás kockázatának csökkentése
+              href: mitigate-se.md
+            - name: Vendég operációs rendszer javításai
+              href: cloud-services-guestos-msrc-releases.md
+            - name: Vendég operációs rendszer kivezetése
+              items:
+                - name: Kivezetési szabályzat
+                  href: cloud-services-guestos-retirement-policy.md
+                - name: 1. család kivezetéséről szóló értesítés
+                  href: cloud-services-guestos-family1-retirement.md
+            - name: A vendég operációs rendszer kiadási hírei
+              href: cloud-services-guestos-update-matrix.md
+            - name: 'Cloud Services–szerepkör konfigurálása, XPath-adatlap'
+              href: cloud-services-role-config-xpath.md
+        - name: Tanúsítványok kezelése
           items:
-            - name: Az alkalmazások és szolgáltatások rendelkezésre állásával kapcsolatos gyakori kérdések
-              href: cloud-services-application-and-service-availability-faq.md
-            - name: Konfigurálással és felügyelettel kapcsolatos gyakori kérdések
-              href: cloud-services-configuration-and-management-faq.md
-            - name: Kapcsolatokkal és hálózatkezeléssel kapcsolatos gyakori kérdések
-              href: cloud-services-connectivity-and-networking-faq.md
-            - name: Üzembe helyezéssel kapcsolatos gyakori kérdések
-              href: cloud-services-deployment-faq.md
-- name: Referencia
-  items:
-    - name: Kódminták
-      href: 'https://azure.microsoft.com/resources/samples/?service=cloud-services'
-    - name: .csdef XML-séma
-      href: schema-csdef-file.md
+            - name: Felhőszolgáltatások és felügyeleti tanúsítványok
+              href: cloud-services-certs-create.md
+            - name: Az SSL konfigurálása
+              href: cloud-services-configure-ssl-certificate-portal.md
+        - name: Figyelés
+          items:
+            - name: Felhőszolgáltatás monitorozása
+              href: cloud-services-how-to-monitor.md
+            - name: Teljesítményszámlálók használata
+              href: diagnostics-performance-counters.md
+            - name: Teljesítmény tesztelése
+              href: /visualstudio/azure/vs-azure-tools-performance-profiling-cloud-services?toc=/azure/cloud-services/toc.json
+              items:
+                - name: Tesztelés a Visual Studio Profilerével
+                  href: cloud-services-performance-testing-visual-studio-profiler.md
+            - name: Diagnosztika engedélyezése
+              items:
+                - name: Azure PowerShell
+                  href: cloud-services-diagnostics-powershell.md
+                - name: .NET
+                  href: cloud-services-dotnet-diagnostics.md
+                - name: Visual Studio
+                  href: /visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?toc=/azure/cloud-services/toc.json
+            - name: Diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban
+              href: diagnostics-extension-to-storage.md
+            - name: Felhőszolgáltatás követése a Diagnostics használatával
+              href: cloud-services-dotnet-diagnostics-trace-flow.md
+        - name: Hibaelhárítás
+          items:
+            - name: Hibakeresés
+              items:
+                - name: Felhőszolgáltatás beállításai
+                  href: /visualstudio/azure/vs-azure-tools-debugging-cloud-services-overview?toc=/azure/cloud-services/toc.json
+                - name: Helyi felhőszolgáltatás a Visual Studióban
+                  href: /visualstudio/azure/vs-azure-tools-debug-cloud-services-virtual-machines?toc=/azure/cloud-services/toc.json
+                - name: Közzétett felhőszolgáltatás a Visual Studióban
+                  href: /visualstudio/azure/vs-azure-tools-intellitrace-debug-published-cloud-services?toc=/azure/cloud-services/toc.json
+            - name: Felhőszolgáltatás-foglalási hiba
+              href: cloud-services-allocation-failures.md
+            - name: A felhőszolgáltatásbeli szerepkörök újrahasznosításának gyakori okai
+              href: cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md
+            - name: Az alkalmazás nem támogatja a TLS 1.2-t
+              href: applications-dont-support-tls-1-2.md
+            - name: Az alapértelmezett TEMP mappa mérete túl kicsi a szerepkörhöz
+              href: cloud-services-troubleshoot-default-temp-folder-size-too-small-web-worker-role.md
+            - name: Gyakori üzembehelyezési problémák
+              href: cloud-services-troubleshoot-deployment-problems.md
+            - name: A szerepkör nem indult el
+              href: cloud-services-troubleshoot-roles-that-fail-start.md
+            - name: Helyreállítási útmutató
+              href: cloud-services-disaster-recovery-guidance.md
+            - name: Klasszikus virtuálisgép-architektúra munkafolyamata
+              href: cloud-services-workflow-process.md
+            - name: Erőforrás-állapotok támogatása a Cloud Serviceshez
+              href: resource-health-for-cloud-services.md
+            - name: Cloud Services – gyakori kérdések
+              items:
+                - name: Az alkalmazások és szolgáltatások rendelkezésre állásával kapcsolatos gyakori kérdések
+                  href: cloud-services-application-and-service-availability-faq.md
+                - name: Konfigurálással és felügyelettel kapcsolatos gyakori kérdések
+                  href: cloud-services-configuration-and-management-faq.md
+                - name: Kapcsolatokkal és hálózatkezeléssel kapcsolatos gyakori kérdések
+                  href: cloud-services-connectivity-and-networking-faq.md
+                - name: Üzembe helyezéssel kapcsolatos gyakori kérdések
+                  href: cloud-services-deployment-faq.md
+    - name: Referencia
       items:
-        - name: LoadBalancerProbe-séma
-          href: schema-csdef-loadbalancerprobe.md
-        - name: WebRole-séma
-          href: schema-csdef-webrole.md
-        - name: WorkerRole-séma
-          href: schema-csdef-workerrole.md
-        - name: NetworkTrafficRules-séma
-          href: schema-csdef-networktrafficrules.md
-    - name: .cscfg XML-séma
-      href: schema-cscfg-file.md
+        - name: Kódminták
+          href: 'https://azure.microsoft.com/resources/samples/?service=cloud-services'
+        - name: .csdef XML-séma
+          href: schema-csdef-file.md
+          items:
+            - name: LoadBalancerProbe-séma
+              href: schema-csdef-loadbalancerprobe.md
+            - name: WebRole-séma
+              href: schema-csdef-webrole.md
+            - name: WorkerRole-séma
+              href: schema-csdef-workerrole.md
+            - name: NetworkTrafficRules-séma
+              href: schema-csdef-networktrafficrules.md
+        - name: .cscfg XML-séma
+          href: schema-cscfg-file.md
+          items:
+            - name: Szerepkörséma
+              href: schema-cscfg-role.md
+            - name: NetworkConfiguration-séma
+              href: schema-cscfg-networkconfiguration.md
+        - name: REST
+          href: /rest/api/compute/cloudservices/
+    - name: További források
       items:
-        - name: Szerepkörséma
-          href: schema-cscfg-role.md
-        - name: NetworkConfiguration-séma
-          href: schema-cscfg-networkconfiguration.md
-    - name: REST
-      href: /rest/api/compute/cloudservices/
-- name: További források
-  items:
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/?category=compute'
-    - name: Képzési terv
-      href: /learn/paths/azure-fundamentals/
-    - name: Microsoft Q&A kérdések oldala
-      href: /answers/topics/azure-cloud-services.html
-    - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
-    - name: Díjkalkulátor
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Szolgáltatási hírek
-      href: 'https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform='
-    - name: Videók
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=cloud-services'
+        - name: Azure-ütemterv
+          href: 'https://azure.microsoft.com/roadmap/?category=compute'
+        - name: Képzési terv
+          href: /learn/paths/azure-fundamentals/
+        - name: Microsoft Q&A kérdések oldala
+          href: /answers/topics/azure-cloud-services.html
+        - name: Díjszabás
+          href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
+        - name: Díjkalkulátor
+          href: 'https://azure.microsoft.com/pricing/calculator/'
+        - name: Szolgáltatási hírek
+          href: 'https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform='
+        - name: Videók
+          href: 'https://azure.microsoft.com/documentation/videos/index/?services=cloud-services'

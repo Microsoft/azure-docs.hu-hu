@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d129890cc63e5a0e4cbc6139e1de2df7a31f6f77
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 81a44d4d0025c841cf56e19d6afee5e95bd44a55
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101094560"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730507"
 ---
 # <a name="secure-azure-digital-twins"></a>Biztonságos Azure digitális Twins
 
@@ -92,7 +92,7 @@ Az Azure a felügyelt identitások két típusát támogatja: rendszerhez rendel
 
 Az Azure-beli digitális példányok rendszerhez rendelt felügyelt identitásával hitelesítheti magát egy [Egyéni megadott végponton](concepts-route-events.md#create-an-endpoint). Az Azure Digital Twins támogatja a rendszerhez rendelt identitás-alapú hitelesítést az [Event hub](../event-hubs/event-hubs-about.md) és a [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)   Célhelyek végpontjait, valamint egy [Azure Storage-tároló](../storage/blobs/storage-blobs-introduction.md)   végpontját a [kézbesítetlen levelek eseményeihez](concepts-route-events.md#dead-letter-events). [Event Grid](../event-grid/overview.md)   a végpontok jelenleg nem támogatottak a felügyelt identitások esetében.
 
-Az Azure Digital Twins rendszer által felügyelt identitásának engedélyezéséhez és az események irányításához való használatáról a [*útmutató: felügyelt identitás engedélyezése útválasztási eseményekhez (előzetes verzió)*](how-to-enable-managed-identities.md)című témakörben talál útmutatást.
+Az Azure Digital Twins rendszer által felügyelt identitásának engedélyezéséhez és az események irányításához való használatáról a [*útmutató: felügyelt identitás engedélyezése útválasztási eseményekhez (előzetes verzió)*](./how-to-enable-managed-identities-portal.md)című témakörben talál útmutatást.
 
 ## <a name="private-network-access-with-azure-private-link-preview"></a>Privát hálózati hozzáférés az Azure Private Linktel (előzetes verzió)
 
@@ -106,7 +106,7 @@ A privát végpont az Azure VNet IP-címét használja. A magánhálózaton lév
 
 Az Azure Digital Twins-példány privát végpontjának konfigurálása lehetővé teszi az Azure-beli digitális Twins-példányok védelmét, valamint a nyilvános kitettség kiiktatását, valamint az adatoknak a VNet való kiszűrése elkerülését.
 
-Az Azure Digital Twins privát hivatkozásának beállításával kapcsolatos útmutatásért tekintse meg az [*útmutató: privát hozzáférés engedélyezése privát kapcsolattal (előzetes verzió)*](how-to-enable-private-link.md)című témakört.
+Az Azure Digital Twins privát hivatkozásának beállításával kapcsolatos útmutatásért tekintse meg az [*útmutató: privát hozzáférés engedélyezése privát kapcsolattal (előzetes verzió)*](./how-to-enable-private-link-portal.md)című témakört.
 
 ### <a name="design-considerations"></a>Kialakítási szempontok 
 

@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: 96872a067d2414254aec3f212542dadabdf2bd6f
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: d99ec80308152ce9e4870da809acaa25c663d98d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791741"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715700"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>A Poster használata a kérelmek Azure digitális Twins API-khoz való küldéséhez
 
@@ -140,7 +140,7 @@ Egy példa lekérdezés folytatásához ez a cikk a lekérdezési API-t (és ann
 1. Győződjön meg arról, hogy a *fejlécek* lapon a kérelemhez megjelenített fejlécek megfelelnek a dokumentációban leírt feltételeknek. Ennél a kérésnél több fejléc automatikusan ki lett töltve. A lekérdezési API esetében a fejléc egyik beállítása sem szükséges, így ez a lépés megtörténik.
 1. Győződjön meg arról, hogy a *törzs* lapon a kérelemhez megjelenített törzs megfelel a dokumentációban ismertetett követelményeknek. A lekérdezési API esetében egy JSON-törzs szükséges a lekérdezés szövegének megadásához. Itt látható egy példa erre a kérelemre, amely a példányban található összes digitális ikrek lekérdezését hajtja végre:
 
-   :::image type="content" source="media/how-to-use-postman/postman-request-body.png" alt-text="Az új kérelem részleteiben megjelenik a törzs lap. Egy nyers JSON-törzset tartalmaz, amelynek a &quot;SELECT * FROM DIGITALTWINS&quot; lekérdezése van."lightbox="media/how-to-use-postman/postman-request-body.png":::
+   :::image type="content" source="media/how-to-use-postman/postman-request-body.png" alt-text="Az új kérelem részleteiben megjelenik a törzs lap. Egy nyers JSON-törzset tartalmaz, amelynek a &quot;SELECT * FROM DIGITALTWINS&quot; lekérdezése van." lightbox="media/how-to-use-postman/postman-request-body.png":::
 
    Az Azure Digital Twins-lekérdezések készítésével kapcsolatos további információkért lásd [*: útmutató: a Twin gráf lekérdezése*](how-to-query-graph.md).
 
@@ -154,6 +154,6 @@ A kérelem elküldése után a válasz részletei a kérelem alatt, a Poster abl
 
 Összehasonlíthatja a dokumentációban megadott, várt válaszokra adott választ is, hogy ellenőrizze az eredményt, vagy többet tudjon meg az esetlegesen felmerülő hibákról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a digitális Twins API-król, olvassa el a következő [*témakört: útmutató: az Azure Digital Twins API-k és SDK*](how-to-use-apis-sdks.md)-k használata, illetve a [REST API-k dokumentációjának](/rest/api/azure-digitaltwins/)megtekintése.

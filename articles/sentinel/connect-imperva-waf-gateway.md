@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 3094d20a921f9aa13e111e7af60955ce934b91db
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: a37abf369d1f34dc8f4a27802dfad88dab79be44
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99566733"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698433"
 ---
 # <a name="connect-your-imperva-waf-gateway-appliance-to-azure-sentinel"></a>A inperverz WAF-átjáró berendezésének összekötése az Azure Sentinel használatával
 
@@ -35,7 +35,7 @@ Ez a cikk azt ismerteti, hogyan csatlakoztatható a inperverz WAF Gateway kész�
 
 - Olvasási és írási engedélyekkel kell rendelkeznie az Azure Sentinel-munkaterületen.
 
-- Olvasási jogosultsággal kell rendelkeznie a munkaterület megosztott kulcsaihoz. [További információ a munkaterület kulcsairól](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key).
+- Olvasási jogosultsággal kell rendelkeznie a munkaterület megosztott kulcsaihoz. [További információ a munkaterület kulcsairól](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key).
 
 ## <a name="send-imperva-waf-gateway-logs-to-azure-sentinel"></a>Inperverza WAF-átjáró naplófájljainak küldése az Azure Sentinelnek
 

@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: 965e765e22a4da8f2ac3b7151337cf62b65be4fe
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 3106ec1a45b307207624e5cd077a222acccc83d1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732611"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692827"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Alkalmazás csatlakoztatása felügyelt Azure SQL-példányhoz
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -105,7 +105,7 @@ A kapcsolódási problémák elhárításához tekintse át a következőket:
 
    ![bejövő/kimenő számok](./media/connect-application-instance/ingress-egress-numbers.png)
 
-- Győződjön meg arról, hogy az ügyfélszámítógép (amely a VPN-ügyfelet futtatja) útválasztási bejegyzéseket tartalmaz az összes elérni kívánt virtuális hálózathoz. Az útvonalak a-ben tárolódnak `%AppData%\ Roaming\Microsoft\Network\Connections\Cm\<GUID>\routes.txt` .
+- Győződjön meg arról, hogy az ügyfélszámítógép (amely a VPN-ügyfelet futtatja) útválasztási bejegyzéseket tartalmaz az összes elérni kívánt virtuális hálózathoz. Az útvonalak a-ben tárolódnak `%AppData%\Roaming\Microsoft\Network\Connections\Cm\<GUID>\routes.txt` .
 
    ![route.txt](./media/connect-application-instance/route-txt.png)
 
@@ -154,7 +154,7 @@ Az eszközök és illesztőprogramok következő minimális verziói ajánlottak
 |SSMS| 18,0 vagy [újabb](/sql/ssms/download-sql-server-management-studio-ssms) |
 |[SMO](/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) vagy újabb |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az SQL felügyelt példányáról: [Mi az SQL felügyelt példánya?](sql-managed-instance-paas-overview.md).
 - Az új felügyelt példányok létrehozásával kapcsolatos oktatóanyagért lásd: [felügyelt példány létrehozása](instance-create-quickstart.md).

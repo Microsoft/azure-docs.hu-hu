@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan replikálhatja a HDInsight-fürtökben a kaptá
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: 3dd894a46b666703f64e44336c0bf022da8a063a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 2e57b7d8121ac0bd6fc9cb693750c41a0ef6a5bc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98941341"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733057"
 ---
 # <a name="how-to-use-apache-hive-replication-in-azure-hdinsight-clusters"></a>Apache Hive replikáció használata az Azure HDInsight-fürtökben
 
@@ -17,9 +17,9 @@ Az adatbázisok és a raktárak kontextusában a replikáció az entitások egyi
 
 A struktúra replikációja az évek során újabb verziókkal bővült, ami jobb funkciókat biztosít, és gyorsabb és kevesebb erőforrás-igényű. Ebben a cikkben a kaptár-replikációt (Replv2) tárgyaljuk, amelyet a HDInsight 3,6 és a HDInsight 4,0 típusú fürtök egyaránt támogatnak.
 
-## <a name="advantages-of-replv2"></a>A Replv2 előnyei
+## <a name="advantages-of-replv2"></a>A replv2 előnyei
 
-A kaptár [ReplicationV2](https://cwiki.apache.org/confluence/display/Hive/HiveReplicationv2Development) vagy (Replv2) az alábbi előnyökkel jár a kaptár [IMPORTÁLÁSi-exportálását](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ImportExport)használó kaptár-replikáció első verziójában:
+A [kaptár ReplicationV2](https://cwiki.apache.org/confluence/display/Hive/HiveReplicationv2Development) (más néven Replv2) az alábbi előnyökkel jár a struktúra [IMPORTÁLÁSi-exportálását](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ImportExport)használó kaptár-replikáció első verziójában:
 
 - Eseményvezérelt növekményes replikáció
 - Időponthoz való replikálás  

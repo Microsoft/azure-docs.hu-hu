@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ab21c6dc95ef39e6273dac405ba58e748890fc1a
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 547d96a9591b99318a74977106e99511c9c80507
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968432"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687107"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-fiori"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az SAP Fiorital
 
@@ -146,7 +146,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![metaadat-fájl kiválasztása](common/browse-upload-metadata.png)
 
-    c. A metaadat-fájl feltöltése után a rendszer automatikusan kitölti az **azonosítót** és a **Válasz URL-címeket** az **alapszintű SAML-konfiguráció** ablaktáblán. A **bejelentkezési URL-cím** mezőbe írjon be egy URL-címet, amely a következő mintával rendelkezik: `https:\//\<your company instance of SAP Fiori\>` .
+    c. A metaadat-fájl feltöltése után a rendszer automatikusan kitölti az **azonosítót** és a **Válasz URL-címeket** az **alapszintű SAML-konfiguráció** ablaktáblán. A **bejelentkezési URL-cím** mezőbe írjon be egy URL-címet, amely a következő mintával rendelkezik: `https://<your company instance of SAP Fiori>` .
 
     > [!NOTE]
     > Néhány ügyfél a helytelenül konfigurált **Válasz URL-** értékekkel kapcsolatos hibákat jelez. Ha ezt a hibát látja, a következő PowerShell-parancsfájl használatával állíthatja be a példány helyes válaszának URL-címét:
@@ -169,7 +169,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     1. Az **1. paraméter** listából válassza a **User. userPrincipalName** elemet.
 
-    1. Válassza a **Mentés** lehetőséget.
+    1. Kattintson a **Mentés** gombra.
 
        ![A felhasználói jogcímek kezelése panel](./media/sapfiori-tutorial/nameidattribute.png)
 
@@ -193,7 +193,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -251,7 +251,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![A megbízható szolgáltató és az identitás összevonásának lapja az SAP-ban](./media/sapfiori-tutorial/tutorial-sapnetweaver-trustedprovider.png)
 
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
     ![A Hozzáadás lehetőség az identitás-összevonás lapon](./media/sapfiori-tutorial/tutorial-sapnetweaver-addidentityprovider.png)
 

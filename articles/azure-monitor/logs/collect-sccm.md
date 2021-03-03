@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/30/2020
-ms.openlocfilehash: 540ca293afdd7514793b8eec390b4751885859df
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f2d2670b974555b83ec622b22eb2dae8f3c9899b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100618458"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710978"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Configuration Manager összekötése a Azure Monitor
 A Microsoft Endpoint Configuration Manager-Azure Monitor környezet összekapcsolásával szinkronizálhatja az eszköz-gyűjtési adatait, és Azure Monitor és Azure Automation is hivatkozhat ezekre a gyűjteményekre.  
@@ -44,7 +44,7 @@ A következő lépések összefoglalják a Configuration Manager integráció ko
 
 ## <a name="grant-configuration-manager-with-permissions-to-log-analytics"></a>Engedélyezési Configuration Manager engedélyezése Log Analytics
 
-A következő eljárásban a *közreműködő* szerepkört a log Analytics munkaterületen a Configuration Manager korábban létrehozott ad-alkalmazáshoz és egyszerű szolgáltatáshoz adja meg. Ha még nem rendelkezik munkaterülettel, a folytatás előtt tekintse [meg a Munkaterületek létrehozása a Azure monitorban](../learn/quick-create-workspace.md) című témakört. Ez lehetővé teszi, hogy a Configuration Manager hitelesítse és kapcsolódjon a Log Analytics-munkaterülethez.  
+A következő eljárásban a *közreműködő* szerepkört a log Analytics munkaterületen a Configuration Manager korábban létrehozott ad-alkalmazáshoz és egyszerű szolgáltatáshoz adja meg. Ha még nem rendelkezik munkaterülettel, a folytatás előtt tekintse [meg a Munkaterületek létrehozása a Azure monitorban](./quick-create-workspace.md) című témakört. Ez lehetővé teszi, hogy a Configuration Manager hitelesítse és kapcsolódjon a Log Analytics-munkaterülethez.  
 
 > [!NOTE]
 > Configuration Manager esetében meg kell adnia az engedélyeket a Log Analytics munkaterületen. Ellenkező esetben hibaüzenet jelenik meg, amikor a Configuration Manager konfigurációs varázslóját használja.
@@ -148,9 +148,8 @@ A gyűjtemények importálása után láthatja, hány számítógépet észlelt 
 
 ![Képernyőfelvétel: a számítógép-csoportok speciális beállításai a C C M-hez, amely az importálási Configuration Manager gyűjteményi tagságok kiválasztásának lehetőségét mutatja.](./media/collect-sccm/sccm-computer-groups02.png)
 
-Ha rákattint valamelyikre, a naplófájl-szerkesztő megnyílik az összes importált csoport vagy az egyes csoportokhoz tartozó összes számítógép között. A [naplóbeli keresés](../log-query/log-query-overview.md)használatával további részletes elemzéseket végezhet a gyűjtemény tagsági adataiban.
+Ha rákattint valamelyikre, a naplófájl-szerkesztő megnyílik az összes importált csoport vagy az egyes csoportokhoz tartozó összes számítógép között. A [naplóbeli keresés](./log-query-overview.md)használatával további részletes elemzéseket végezhet a gyűjtemény tagsági adataiban.
 
 ## <a name="next-steps"></a>Következő lépések
 
-A [naplók keresési](../log-query/log-query-overview.md) funkciójának használatával megtekintheti a Configuration Manager adataival kapcsolatos részletes információkat.
-
+A [naplók keresési](./log-query-overview.md) funkciójának használatával megtekintheti a Configuration Manager adataival kapcsolatos részletes információkat.

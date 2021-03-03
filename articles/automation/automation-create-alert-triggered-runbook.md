@@ -3,18 +3,18 @@ title: Azure Automation runbook elindítására szolgáló riasztás használata
 description: Ez a cikk azt ismerteti, hogyan indíthat el egy runbook az Azure-riasztások kiváltásakor.
 services: automation
 ms.subservice: process-automation
-ms.date: 04/29/2019
+ms.date: 02/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: add2bbb7b8f9eeb72c8c58b8c54b070a6b14d8e6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0483b171ee65ac55d65261140738bc5c1838873f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100586069"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732292"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Azure Automation runbook elindítására szolgáló riasztás használata
 
-A [Azure monitor](../azure-monitor/overview.md) segítségével figyelheti az Azure-ban a legtöbb szolgáltatáshoz tartozó alapszintű mérőszámokat és naplókat. Azure Automation runbookok a [műveleti csoportok](../azure-monitor/alerts/action-groups.md) használatával vagy klasszikus riasztásokkal hívhatja a feladatok a riasztások alapján történő automatizálásához. Ebből a cikkből megtudhatja, hogyan konfigurálhat és futtathat egy runbook riasztások használatával.
+A [Azure monitor](../azure-monitor/overview.md) segítségével figyelheti az Azure-ban a legtöbb szolgáltatáshoz tartozó alapszintű mérőszámokat és naplókat. A feladatok a riasztások alapján történő automatizálásához a [műveleti csoportok](../azure-monitor/platform/action-groups.md) segítségével Azure Automation runbookok hívható meg. Ebből a cikkből megtudhatja, hogyan konfigurálhat és futtathat egy runbook riasztások használatával.
 
 ## <a name="alert-types"></a>Riasztástípusok
 
@@ -29,7 +29,7 @@ Az Automation runbookok háromféle riasztási típust használhat:
 
 Amikor egy riasztás meghívja a runbook, a tényleges hívás egy HTTP POST-kérelem a webhooknak. A POST kérelem törzse egy JSON-formátumú objektumot tartalmaz, amely a riasztáshoz kapcsolódó hasznos tulajdonságokkal rendelkezik. Az alábbi táblázat felsorolja az egyes riasztási típusok adatforgalmi sémájára mutató hivatkozásokat:
 
-|Riasztás  |Description|Hasznos adatok sémája  |
+|Riasztás  |Leírás|Hasznos adatok sémája  |
 |---------|---------|---------|
 |[Gyakori riasztás](../azure-monitor/alerts/alerts-common-schema.md)|A gyakori riasztási séma, amely szabványosítja a riasztási értesítések fogyasztási élményét az Azure-ban még ma.|Gyakori riasztási adattartalom sémája|
 |[Tevékenység naplójának riasztása](../azure-monitor/alerts/activity-log-alerts.md)    |Értesítés küldése, ha az Azure-tevékenység naplójában minden új esemény megfelel bizonyos feltételeknek. Ha például egy művelet a `Delete VM` **myProductionResourceGroup** -ban vagy egy új, aktív állapotú Azure Service Health eseményt jelenít meg.| [Műveletnapló riasztási hasznos sémája](../azure-monitor/alerts/activity-log-alerts-webhook.md)        |

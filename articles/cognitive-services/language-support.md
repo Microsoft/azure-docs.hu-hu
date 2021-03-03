@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 5cde7e677bd0121954b01cf9bb8defe45111a5b2
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 8d518d540e50d96486fa98eea3c3267685776668
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369188"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706282"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Természetes nyelvi támogatás az Azure Cognitive Services
 
@@ -24,7 +24,7 @@ Az Azure Cognitive Services lehetővé teszi, hogy olyan alkalmazásokat építs
 Ezek a Cognitive Services nyelvtől függetlenek, és nem rendelkeznek az emberi nyelvtől függően korlátozásokkal.
 
 * [Anomaly Detector (előzetes verzió)](./anomaly-detector/index.yml)
-* [Custom Vision](./Custom-Vision-Service/index.yml)
+* [Custom Vision](./custom-vision-service/index.yml)
 * [Face](./face/index.yml)
 * [Personalizer](./personalizer/index.yml)
 
@@ -32,7 +32,7 @@ Ezek a Cognitive Services nyelvtől függetlenek, és nem rendelkeznek az emberi
 
 * [Computer Vision](./computer-vision/language-support.md)
 * [Form Recognizer (előzetes verzió)](./form-recognizer/language-support.md)
-* [Ink Recognizer (előzetes verzió)](./ink-recognizer/language-support.md)
+* [Ink Recognizer (előzetes verzió)](/previous-versions/azure/cognitive-services/Ink-Recognizer/language-support)
 * [Video Indexer](../media-services/video-indexer/language-identification-model.md#guidelines-and-limitations)
 
 ## <a name="language"></a>Nyelv
@@ -43,7 +43,7 @@ Ezek a Cognitive Services nyelvtől függetlenek, és nem rendelkeznek az emberi
 * [Text Analytics](./text-analytics/language-support.md)
 * [Fordító](./translator/language-support.md)
 
-## <a name="speech"></a>Beszéd
+## <a name="speech"></a>Speech
 
 * [Beszédfelismerési szolgáltatás: beszéd – szöveg](./speech-service/language-support.md#speech-to-text)
 * [Beszédfelismerési szolgáltatás: szövegről beszédre](./speech-service/language-support.md#text-to-speech)

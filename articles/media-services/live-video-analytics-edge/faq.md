@@ -3,18 +3,18 @@ title: Élő videó-elemzés IoT Edge GYIK-ban – Azure
 description: Ez a cikk a IoT Edge élő videó-elemzésekkel kapcsolatos gyakori kérdésekre ad választ.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 0cb378bf614582070dd1bdd0a11706b26437af53
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 72a07a1a509aebcd7ba4048d0c84e913481c978e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880050"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702249"
 ---
 # <a name="live-video-analytics-on-iot-edge-faq"></a>Élő video Analytics IoT Edge GYIK
 
 Ez a cikk a Azure IoT Edge élő videó-elemzésekkel kapcsolatos gyakori kérdésekre ad választ.
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 **Milyen rendszerváltozókat használhatok a Graph topológia definíciójában?**
 
@@ -230,7 +230,7 @@ Igen. A Prometheus-mérőszámokat felhasználhatja, és közzéteheti őket az 
 
 **Használhatom Azure Monitor a saját adathordozó-diagramok állapotának, metrikáinak és teljesítményének megtekintéséhez a felhőben vagy a peremen?**
 
-Igen, támogatjuk ezt a megközelítést. További információ: [Azure monitor mérőszámok áttekintése](../../azure-monitor/platform/data-platform-metrics.md).
+Igen, támogatjuk ezt a megközelítést. További információ: [Azure monitor mérőszámok áttekintése](../../azure-monitor/essentials/data-platform-metrics.md).
 
 **Vannak olyan eszközök, amelyek megkönnyítik a Media Services IoT Edge modul figyelését?**
 
@@ -246,6 +246,6 @@ További információ: [figyelés és naplózás](monitoring-logging.md) .
 
 A számlázási részleteket lásd: [Media Services díjszabása](https://azure.microsoft.com/pricing/details/media-services/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Gyors útmutató: az élő videó Analytics használatának első lépései IoT Edge](get-started-detect-motion-emit-events-quickstart.md)

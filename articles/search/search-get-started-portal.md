@@ -1,39 +1,37 @@
 ---
 title: Keresési index létrehozása a Azure Portalban
 titleSuffix: Azure Cognitive Search
-description: Ebben a Azure Portal rövid útmutatóban az adatimportálás varázsló segítségével hozhatja létre, betöltheti és kérdezheti le az első keresési indexet az Azure Cognitive Searchban.
+description: Hozza létre, töltse be és kérdezze le az első keresési indexet a Azure Portal adatimportálás varázslójával. Ez a rövid útmutató egy fiktív szállodai adathalmazt használ a mintaadatok számára.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 12/12/2020
-ms.openlocfilehash: 1e9d63c88cf0cd6f65db99b2bc878797770d53cd
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.date: 03/02/2021
+ms.openlocfilehash: 1be165bfe7cca44e8a928933c3c8fe926ad7d4c9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368630"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694835"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Gyors útmutató: Azure Cognitive Search index létrehozása a Azure Portal
 
-Hozza létre első indexét az **adatimportálás** varázsló használatával, valamint egy beépített minta adatforrást, amely fiktív szállodai adataiból áll. A varázsló végigvezeti a keresési index (Hotels-Sample-index) létrehozásán, hogy percek alatt írjon érdekes lekérdezéseket. 
+Hozza létre első keresési indexét az **adatimportálás** varázslóval, valamint egy beépített minta adatforrást, amely fiktív szállodai adataiból áll. A varázsló végigvezeti a keresési index (Hotels-Sample-index) létrehozásán, hogy percek alatt írjon érdekes lekérdezéseket. 
 
 Bár ebben a rövid útmutatóban nem fogja használni a beállításokat, a varázsló tartalmaz egy oldalt az AI-bővítéshez, így szöveget és struktúrát tud kinyerni a képfájlokból és a strukturálatlan szövegből. Az AI-bővítést is tartalmazó hasonló bemutatóért lásd [: gyors útmutató: kognitív Készségkészlet létrehozása](cognitive-search-quickstart-blob.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, a következőkkel kell rendelkeznie:
-
 + Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/).
 
-+ Egy Azure Cognitive Search szolgáltatás. [Hozzon létre egy szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat. 
++ Egy Azure Cognitive Search szolgáltatás (bármilyen szintű, bármely régió). [Hozzon létre egy szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat. 
 
 ### <a name="check-for-space"></a>Szabad terület ellenőrzése
 
-Sok ügyfél az ingyenes szolgáltatással kezdi. Ez a verzió három indexre, három adatforrásra és három indexelőre korlátozódik. Mielőtt hozzákezdene, ellenőrizze, hogy elegendő hellyel rendelkezik-e további elemek számára. Az oktatóanyagban minden objektumból egyet hozhat majd létre.
+Sok ügyfél az ingyenes szolgáltatással kezdi. Az ingyenes csomag három indexre, három adatforrásra és három indexelő korlátozódik. Mielőtt hozzákezdene, ellenőrizze, hogy elegendő hellyel rendelkezik-e további elemek számára. Az oktatóanyagban minden objektumból egyet hozhat majd létre.
 
-A szolgáltatás irányítópultjának fejezetei azt mutatják be, hogy hány index, indexelő és adatforrás van. 
+A szolgáltatás áttekintése oldalon megtudhatja, hogy hány index, indexelő és adatforrás van. 
 
 :::image type="content" source="media/search-get-started-portal/tiles-indexers-datasources.png" alt-text="Indexek, indexelő és adatforrások listája":::
 
@@ -70,14 +68,18 @@ Most kihagyjuk ezt a lépést, és közvetlenül a cél- **index testreszabásá
 
 ### <a name="step-3---configure-index"></a>3. lépés – index konfigurálása
 
-Az index létrehozása általában egy kód alapú feladat, amely az adatgyűjtés előtt fejeződött be. Ha azonban ez az oktatóanyag azt jelzi, a varázsló létrehozhat egy alapszintű indexet bármely feltérképezhető adatforrás számára. Az indexhez szükség van legalább egy névre és egy mezőgyűjteményre, amely mezők közül az egyiket a dokumentum kulcsaként kell megjelölni. Ez az egyes dokumentumok egyedi azonosítására szolgál. Emellett nyelvi elemzőket vagy javaslatokat is megadhat, ha automatikus kiegészítést vagy javasolt lekérdezéseket szeretne használni.
+A beépített Hotels-minta index esetében az alapértelmezett index séma van definiálva. Néhány speciális szűrési példa kivételével a dokumentációban és a mintaként szolgáló, a Hotel-Samples indexet célozó lekérdezések az index definícióján fognak futni:
+
+:::image type="content" source="media/search-get-started-portal/hotelsindex.png" alt-text="Generált szállodák indexe":::
+
+A kód alapú gyakorlatban általában az index létrehozása az adatgyűjtés előtt fejeződik be. Az adatok importálása varázsló ezeket a lépéseket a feltérképezhető adatforrások alapszintű indexének létrehozásával tömöríti. Az indexhez szükség van legalább egy névre és egy mezőgyűjteményre, amely mezők közül az egyiket a dokumentum kulcsaként kell megjelölni. Ez az egyes dokumentumok egyedi azonosítására szolgál. Emellett nyelvi elemzőket vagy javaslatokat is megadhat, ha automatikus kiegészítést vagy javasolt lekérdezéseket szeretne használni.
 
 A mezők adattípusokkal és attribútumokkal rendelkeznek. A fent látható jelölőnégyzetek *indexattribútumok*, amelyek a mező használati módját szabályozzák.
 
-* **Lekérhető**: azt jelenti, hogy a mező a keresési eredmények listájában jelenik meg. Az egyes mezők kikapcsolási korlátként való megjelöléséhez törölje ezt a jelölőnégyzetet, például a csak szűrési kifejezésekben használt mezőknél.
-* A **kulcs** az egyedi dokumentum azonosítója. Mindig sztring, és kötelező megadni.
-* **Szűrhető**, **rendezhető** és rendszerezhető annak meghatározása, hogy a mezők szűrő, rendezés **vagy csiszolt** navigációs szerkezetben vannak-e használva.
-* **Kereshető**: azt jelenti, hogy a mező szerepel a teljes szöveges keresésben. A sztringek kereshetők. A numerikus és logikai mezőket gyakran nem kereshetőként jelölik meg.
++ **Lekérhető**: azt jelenti, hogy a mező a keresési eredmények listájában jelenik meg. Az egyes mezők kikapcsolási korlátként való megjelöléséhez törölje ezt a jelölőnégyzetet, például a csak szűrési kifejezésekben használt mezőknél.
++ A **kulcs** az egyedi dokumentum azonosítója. Mindig sztring, és kötelező megadni.
++ **Szűrhető**, **rendezhető** és rendszerezhető annak meghatározása, hogy a mezők szűrő, rendezés **vagy csiszolt** navigációs szerkezetben vannak-e használva.
++ **Kereshető**: azt jelenti, hogy a mező szerepel a teljes szöveges keresésben. A sztringek kereshetők. A numerikus és logikai mezőket gyakran nem kereshetőként jelölik meg.
 
 A tárolási követelmények nem változnak a kijelölés eredményeként. Ha például több mezőben állítja be a lekérdezhető **attribútumot** , a tárolási követelmények nem lépnek fel.
 
@@ -87,10 +89,7 @@ Alapértelmezés szerint a varázsló átvizsgálja a adatforrást egyedi azonos
 
    Ha a varázslót Másodszor futtatja egy meglévő szálláshely-adatforrás használatával, az index nem lesz alapértelmezett attribútumokkal konfigurálva. A jövőbeli importálások attribútumait manuálisan kell kiválasztani. 
 
-   :::image type="content" source="media/search-get-started-portal/hotelsindex.png" alt-text="Generált szállodák indexe":::
-
-2. Folytassa a következő oldallal.
-
+1. Folytassa a következő oldallal.
 
 ### <a name="step-4---configure-indexer"></a>4. lépés – indexelő konfigurálása
 
@@ -104,7 +103,7 @@ Kattintson a **Submit (Küldés** ) gombra az indexelő létrehozásához és eg
 
 ## <a name="monitor-progress"></a>Figyelési folyamat
 
-A varázslónak el kell végeznie az indexelő lista listáját, ahol nyomon követheti a folyamat előrehaladását. Az önnavigációhoz lépjen az Áttekintés lapra, és kattintson az **Indexelő** elemre.
+A varázslónak el kell végeznie az indexelő lista listáját, ahol nyomon követheti a folyamat előrehaladását. Az önnavigációhoz lépjen az Áttekintés lapra, és kattintson az **Indexelő** fülre.
 
 Több percet is igénybe vehet, amíg a portál frissíti az oldalt, de az újonnan létrehozott indexelő megjelenik a listában, amelynek állapota "folyamatban" vagy sikeres, valamint az indexelt dokumentumok száma.
 
@@ -112,7 +111,7 @@ Több percet is igénybe vehet, amíg a portál frissíti az oldalt, de az újon
 
 ## <a name="view-the-index"></a>Az index megtekintése
 
-A szolgáltatás fő lapja az Azure Cognitive Search szolgáltatásban létrehozott erőforrásokra mutató hivatkozásokat tartalmaz.  Az imént létrehozott index megtekintéséhez kattintson az **indexek** elemre a hivatkozások listájában. 
+A szolgáltatás áttekintése lap az Azure Cognitive Search szolgáltatásban létrehozott erőforrásokra mutató hivatkozásokat tartalmaz.  Az imént létrehozott index megtekintéséhez kattintson az **indexek** elemre a hivatkozások listájában. 
 
 Várjon, amíg frissül a portál oldala. Néhány perc elteltével az indexnek a dokumentumok száma és a tárterület mérete alapján kell megjelennie.
 
@@ -120,7 +119,9 @@ Várjon, amíg frissül a portál oldala. Néhány perc elteltével az indexnek 
 
 Ebből a listából rákattinthat az imént létrehozott *Hotels-Sample* indexre, és megtekintheti az index sémát. és opcionálisan hozzáadhat új mezőket. 
 
-A **mezők** lap az index sémát jeleníti meg. Görgessen a lista aljára, és adjon meg egy új mezőt. A legtöbb esetben nem módosíthatja a meglévő mezőket. A meglévő mezők fizikai ábrázolással rendelkeznek az Azure Cognitive Searchban, ezért nem módosíthatók, még a kódban sem. Egy meglévő mező alapvető módosításához hozzon létre egy új indexet, és vidd az eredetit.
+A **mezők** lap az index sémát jeleníti meg. Ha lekérdezéseket ír, és ellenőriznie kell, hogy egy mező szűrhető vagy rendezhető, ezen a lapon láthatók az attribútumok.
+
+Görgessen a lista aljára, és adjon meg egy új mezőt. Habár mindig létrehozhat egy új mezőt, a legtöbb esetben nem módosíthatja a meglévő mezőket. A meglévő mezők fizikai ábrázolással rendelkeznek a keresési szolgáltatásban, ezért nem módosíthatók, még a kódban sem. Egy meglévő mező alapvető módosításához hozzon létre egy új indexet, és vidd az eredetit.
 
    :::image type="content" source="media/search-get-started-portal/sample-index-def.png" alt-text="példa indexdefinícióra":::
 
@@ -142,11 +143,11 @@ A **Search Explorer** csak [REST API kérelmek](/rest/api/searchservice/search-d
 
    :::image type="content" source="media/search-get-started-portal/search-explorer-cmd.png" alt-text="Keresési ablak parancs":::
 
-2. Az **index** legördülő menüben válassza a  *Hotels-Sample-index* lehetőséget. Kattintson az **API-verzió** legördülő menüre, és ellenőrizze, hogy mely REST API-k érhetők el. Az alábbi lekérdezésekhez használja az általánosan elérhető verziót (2020-06-30).
+1. Az **index** legördülő menüben válassza a  *Hotels-Sample-index* lehetőséget. Kattintson az **API-verzió** legördülő menüre, és ellenőrizze, hogy mely REST API-k érhetők el. Az alábbi lekérdezésekhez használja az általánosan elérhető verziót (2020-06-30).
 
    :::image type="content" source="media/search-get-started-portal/search-explorer-changeindex.png" alt-text="Index és API-parancsok":::
 
-3. A keresősáv alatt illessze be az alábbi lekérdezési karakterláncokat, és kattintson a **Keresés** gombra.
+1. A keresősáv alatt illessze be az alábbi lekérdezési karakterláncokat, és kattintson a **Keresés** gombra.
 
    :::image type="content" source="media/search-get-started-portal/search-explorer-query-string-example.png" alt-text="Lekérdezési karakterlánc és Keresés gomb":::
 
@@ -158,19 +159,19 @@ Megadhatja a kifejezéseket és kifejezéseket, hasonlóan a Bing vagy a Google 
 
 #### <a name="example-string-query-searchspa"></a>Példa (karakterlánc-lekérdezés): `search=spa`
 
-* A **keresési** paraméter segítségével megadhatja a teljes szöveges keresés kulcsszavas keresését. ebben az esetben a rendszer a dokumentum bármely kereshető mezőjében visszaküldi a *Spa* -t tartalmazó adatokat.
++ A **keresési** paraméter segítségével megadhatja a teljes szöveges keresés kulcsszavas keresését. ebben az esetben a rendszer a dokumentum bármely kereshető mezőjében visszaküldi a *Spa* -t tartalmazó adatokat.
 
-* A **Keresési ablak** JSON-formátumban adja vissza az eredményeket, amely részletes és nehezen olvasható lehet, ha a dokumentumok sűrű szerkezettel rendelkeznek. Ez szándékos; a teljes dokumentum láthatósága a fejlesztés szempontjából fontos, különösen a tesztelés során. A jobb felhasználói élmény érdekében olyan kódot kell írnia, amely [a keresési eredmények kezelésével](search-pagination-page-layout.md) kiemeli a fontosabb elemeket.
++ A **Keresési ablak** JSON-formátumban adja vissza az eredményeket, amely részletes és nehezen olvasható lehet, ha a dokumentumok sűrű szerkezettel rendelkeznek. Ez szándékos; a teljes dokumentum láthatósága a fejlesztés szempontjából fontos, különösen a tesztelés során. A jobb felhasználói élmény érdekében olyan kódot kell írnia, amely [a keresési eredmények kezelésével](search-pagination-page-layout.md) kiemeli a fontosabb elemeket.
 
-* A dokumentumokban minden mező „lekérdezhetőként” van jelölve az indexben. Az index attribútumainak megtekintéséhez a portálon kattintson a *Hotels-Sample* elemre az **indexek** listájában.
++ A dokumentumokban minden mező „lekérdezhetőként” van jelölve az indexben. Az index attribútumainak megtekintéséhez a portálon kattintson a *Hotels-Sample* elemre az **indexek** listájában.
 
 #### <a name="example-parameterized-query-searchspacounttruetop10"></a>Példa (paraméteres lekérdezés): `search=spa&$count=true&$top=10`
 
-* A **&** szimbólum a keresési paraméterek hozzáfűzésére szolgál, amelyek bármilyen sorrendben megadhatók.
++ A **&** szimbólum a keresési paraméterek hozzáfűzésére szolgál, amelyek bármilyen sorrendben megadhatók.
 
-* A **$Count = True** paraméter a visszaadott dokumentumok teljes számát adja vissza. Ez az érték a keresési eredmények elejénél található. A szűrőlekérdezések ellenőrzéséhez megfigyelheti a **$count=true** paraméter által jelentett módosításokat. A kisebb darabszámok azt jelzik, hogy a szűrő működik.
++ A **$Count = True** paraméter a visszaadott dokumentumok teljes számát adja vissza. Ez az érték a keresési eredmények elejénél található. A szűrőlekérdezések ellenőrzéséhez megfigyelheti a **$count=true** paraméter által jelentett módosításokat. A kisebb darabszámok azt jelzik, hogy a szűrő működik.
 
-* A **$Top = 10** érték a legmagasabb rangsorolt 10 dokumentumot adja vissza a teljes összegből. Alapértelmezés szerint az Azure Cognitive Search az első 50 legjobb egyezést adja vissza. A **$top** paraméter használatával növelheti vagy csökkentheti a mennyiséget.
++ A **$Top = 10** érték a legmagasabb rangsorolt 10 dokumentumot adja vissza a teljes összegből. Alapértelmezés szerint az Azure Cognitive Search az első 50 legjobb egyezést adja vissza. A **$top** paraméter használatával növelheti vagy csökkentheti a mennyiséget.
 
 ### <a name="filter-the-query"></a><a name="filter-query"></a> A lekérdezés szűrése
 
@@ -178,9 +179,9 @@ A **$filter** paraméter hozzáfűzésekor a szűrők megjelennek a keresési k�
 
 #### <a name="example-filtered-searchbeachfilterrating-gt-4"></a>Példa (szűrt): `search=beach&$filter=Rating gt 4`
 
-* A **$filter** paraméter olyan eredményeket ad vissza, amelyek megfelelnek a megadott feltételeknek. Ebben az esetben a 4-nél nagyobb minősítések.
++ A **$filter** paraméter olyan eredményeket ad vissza, amelyek megfelelnek a megadott feltételeknek. Ebben az esetben a 4-nél nagyobb minősítések.
 
-* A szűrőszintaxis egy OData-konstrukció. További információk: [OData-szűrőszintaxis](/rest/api/searchservice/odata-expression-syntax-for-azure-search).
++ A szűrőszintaxis egy OData-konstrukció. További információk: [OData-szűrőszintaxis](/rest/api/searchservice/odata-expression-syntax-for-azure-search).
 
 ### <a name="facet-the-query"></a><a name="facet-query"></a> A lekérdezés értékkorlátozása
 
@@ -188,19 +189,18 @@ Az értékkorlátozó szűrők megjelennek a keresési kérésekben. A facet par
 
 #### <a name="example-faceted-with-scope-reduction-searchfacetcategorytop2"></a>Példa (hatókörszűkítéssel korlátozva): `search=*&facet=Category&$top=2`
 
-* a **Search =** _ egy üres keresés. Az üres keresések mindenben keresnek. Az üres lekérdezések elküldésének egyik oka a teljes dokumentumkészlet szűrése vagy értékkorlátozása lehet. Például azt szeretné, hogy egy aspektusban lévő navigációs struktúra az index összes szállodájának álljon.
-_ a **facet** olyan navigációs szerkezetet ad vissza, amelyet átadhat egy felhasználói felületi vezérlőnek. Kategóriákat és egy számot ad vissza. Ebben az esetben a kategóriák egy *kategóriának* megfelelő mezőn alapulnak. Nincs összesítés az Azure Cognitive Searchban, de megközelítheti az összesítést a használatával `facet` , amely az egyes kategóriákban lévő dokumentumok számát adja meg.
++ A **search=*** egy üres keresés. Az üres keresések mindenben keresnek. Az üres lekérdezések elküldésének egyik oka a teljes dokumentumkészlet szűrése vagy értékkorlátozása lehet. Például azt szeretné, hogy egy aspektusban lévő navigációs struktúra az index összes szállodájának álljon.
++ A **facet** paraméter olyan navigációs szerkezetet ad vissza, amelyet továbbíthat egy felhasználói felületi vezérlőnek. Kategóriákat és egy számot ad vissza. Ebben az esetben a kategóriák egy *kategóriának* megfelelő mezőn alapulnak. Nincs összesítés az Azure Cognitive Searchban, de megközelítheti az összesítést a használatával `facet` , amely az egyes kategóriákban lévő dokumentumok számát adja meg.
 
-* A **$top=2** paraméter két dokumentumot ad vissza, így bemutatja, hogy a `top` használatával csökkentheti és növelheti is az eredményeket.
++ A **$top=2** paraméter két dokumentumot ad vissza, így bemutatja, hogy a `top` használatával csökkentheti és növelheti is az eredményeket.
 
 #### <a name="example-facet-on-numeric-values-searchspafacetrating"></a>Példa (a numerikus értékekre korlátozva): `search=spa&facet=Rating`
 
-* Ez a lekérdezés az értékelés dimenziója, a *Spa* szöveges keresésekor. A *minősítés* kifejezése egy dimenzióként adható meg, mert a mező lekérhető, szűrhető, és az indexben látható, valamint a benne foglalt értékek (numerikus, 1 – 5) alapján kategorizálható a listák csoportjaiba.
++ Ez a lekérdezés az értékelés dimenziója, a *Spa* szöveges keresésekor. A *minősítés* kifejezése egy dimenzióként adható meg, mert a mező lekérhető, szűrhető, és az indexben látható, valamint a benne foglalt értékek (numerikus, 1 – 5) alapján kategorizálható a listák csoportjaiba.
 
-* Csak a szűrhető mezők értéke korlátozható. Csak a lekérdezhető mezők adhatók vissza az eredményekben.
++ Csak a szűrhető mezők értéke korlátozható. Csak a lekérdezhető mezők adhatók vissza az eredményekben.
 
-* A *minősítés* mező dupla pontosságú lebegőpontos, és a csoportosítás pontos értékkel történik. További információ az intervallumok szerinti csoportosításról (például "3 csillagos minősítések", "4 csillagos minősítések" stb.): részletes [Navigálás megvalósítása az Azure Cognitive Searchban](./search-faceted-navigation.md#filter-based-on-a-range).
-
++ A *minősítés* mező dupla pontosságú lebegőpontos, és a csoportosítás pontos értékkel történik. További információ az intervallumok szerinti csoportosításról (például "3 csillagos minősítések", "4 csillagos minősítések" stb.): részletes [Navigálás megvalósítása az Azure Cognitive Searchban](./search-faceted-navigation.md#filter-based-on-a-range).
 
 ### <a name="highlight-search-results"></a><a name="highlight-query"></a> Keresési eredmények kiemelése
 
@@ -208,13 +208,13 @@ A találatok kiemelése a kulcsszóval megegyező szöveg formázását jelenti,
 
 #### <a name="example-highlighter-searchbeachhighlightdescription"></a>Példa (kiemelő): `search=beach&highlight=Description`
 
-* Ebben a példában a formázott Word- *strand* könnyebben látható a Leírás mezőben.
++ Ebben a példában a formázott Word- *strand* könnyebben látható a Leírás mezőben.
 
 #### <a name="example-linguistic-analysis-searchbeacheshighlightdescription"></a>Példa (nyelvi elemzés): `search=beaches&highlight=Description`
 
-* A teljes szöveges keresés felismeri a Word-űrlapok alapvető változatait. Ebben az esetben a keresési eredmények a "Beach" Kiemelt szövegét tartalmazzák azon szállodák esetében, amelyeken a kifejezés a kereshető mezőkben szerepel, a "strandok" kifejezésre adott kulcsszavas keresésre válaszul. A nyelvészeti elemzés következtében ugyanazon szó különböző alakjai is megjelenhetnek az eredmények között. 
++ A teljes szöveges keresés felismeri a Word-űrlapok alapvető változatait. Ebben az esetben a keresési eredmények a "Beach" Kiemelt szövegét tartalmazzák azon szállodák esetében, amelyeken a kifejezés a kereshető mezőkben szerepel, a "strandok" kifejezésre adott kulcsszavas keresésre válaszul. A nyelvészeti elemzés következtében ugyanazon szó különböző alakjai is megjelenhetnek az eredmények között. 
 
-* Az Azure Cognitive Search a Lucene és a Microsofttól származó 56-elemzőt is támogatja. Az Azure Cognitive Search alapértelmezés szerint a standard Lucene Analyzer.
++ Az Azure Cognitive Search a Lucene és a Microsofttól származó 56-elemzőt is támogatja. Az Azure Cognitive Search alapértelmezés szerint a standard Lucene Analyzer.
 
 ### <a name="try-fuzzy-search"></a><a name="fuzzy-search"></a> Az intelligens keresés kipróbálása
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 33be57832d9364b859042cd38349c2437bcfcb18
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: a7735de9763f3924cd6baae6af1258f6448c874e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358146"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690923"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Feladatátvevő fürt példányai SQL Server az Azure-ban Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,13 +41,13 @@ A feladatátvevő fürtök példányai az Azure-SQL Serverokkal Virtual Machines
 További információ: az [Azure-beli SQL Server virtuális gépekkel kapcsolatos ajánlott eljárások](hadr-cluster-best-practices.md#quorum). 
 
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 
 A hagyományos helyszíni fürtözött környezetekben a Windows feladatátvevő fürt a Tárolóhálózati (SAN) tárolót használja, amelyet mindkét csomópont a megosztott tárolóként is elérhet. SQL Server fájlok vannak tárolva a megosztott tárolóban, és csak az aktív csomópont fér hozzá egyszerre a fájlokhoz. 
 
 Az Azure-beli virtuális gépeken SQL Server különböző lehetőségeket kínál megosztott tárolási megoldásként SQL Server feladatátvevő fürt példányainak üzembe helyezéséhez: 
 
-||[Azure megosztott lemezek](../../../virtual-machines/disks-shared.md)|[Prémium fájlmegosztás](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[Közvetlen tárolóhelyek (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
+||[Azure megosztott lemezek](../../../virtual-machines/disks-shared.md)|[Prémium fájlmegosztás](../../../storage/files/storage-how-to-create-file-share.md) |[Közvetlen tárolóhelyek (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
 |---------|---------|---------|---------|
 |**Operációs rendszer minimális verziója**| Mind |Windows Server 2012|Windows Server 2016|
 |**Minimális SQL Server-verzió**|Mind|SQL Server 2012|SQL Server 2016|
@@ -96,7 +96,7 @@ A [közvetlen tárolóhelyek](/windows-server/storage/storage-spaces/storage-spa
 - Támogatja az Azure Blob cache-t, így az olvasások helyileg is kiszolgálható a gyorsítótárból. (A frissítések egyszerre lesznek replikálva mindkét csomópontra.) 
 - Támogatja a FileStream. 
 
-**Korlátozások**
+**Korlátozások:**
 - Csak a Windows Server 2016-es és újabb verzióiban érhető el. 
 - A rendelkezésre állási zónák nem támogatottak.
 - Ugyanazt a lemezterületet igényli mindkét virtuális géphez csatlakoztatva. 
@@ -107,7 +107,7 @@ Első lépésként tekintse meg [a SQL Server feladatátvevő fürt példányát
 
 ### <a name="premium-file-share"></a>Prémium fájlmegosztás
 
-A [prémium szintű fájlmegosztás](../../../storage/files/storage-how-to-create-premium-fileshare.md) a [Azure Files](../../../storage/files/index.yml)egyik funkciója. A prémium szintű fájlmegosztás SSD-támogatással rendelkezik, és következetesen alacsony késéssel rendelkezik. Ezek teljes mértékben támogatottak a Windows Server 2012-es vagy újabb verzióiban SQL Server 2012-es vagy újabb feladatátvevő fürt példányaival. A prémium fájlmegosztás nagyobb rugalmasságot biztosít, mivel leállás nélkül átméretezheti és méretezheti a fájlmegosztást.
+A [prémium szintű fájlmegosztás](../../../storage/files/storage-how-to-create-file-share.md) a [Azure Files](../../../storage/files/index.yml)egyik funkciója. A prémium szintű fájlmegosztás SSD-támogatással rendelkezik, és következetesen alacsony késéssel rendelkezik. Ezek teljes mértékben támogatottak a Windows Server 2012-es vagy újabb verzióiban SQL Server 2012-es vagy újabb feladatátvevő fürt példányaival. A prémium fájlmegosztás nagyobb rugalmasságot biztosít, mivel leállás nélkül átméretezheti és méretezheti a fájlmegosztást.
 
 **Támogatott operációs rendszer**: Windows Server 2012 és újabb verziók   
 **Támogatott SQL-verzió**: SQL Server 2012-es és újabb verziók   
@@ -116,7 +116,7 @@ A [prémium szintű fájlmegosztás](../../../storage/files/storage-how-to-creat
 - Csak megosztott tárolási megoldás a virtuális gépekhez több rendelkezésre állási zónában elosztva. 
 - Teljes körűen felügyelt fájlrendszer egyetlen számjegyből álló késéssel és a betört I/O-teljesítménnyel. 
 
-**Korlátozások**
+**Korlátozások:**
 - Csak a Windows Server 2012-es és újabb verzióiban érhető el. 
 - A FileStream nem támogatott. 
 
@@ -161,7 +161,7 @@ A teljes bővítmény olyan funkciókat támogat, mint például az automatikus 
 
 ### <a name="msdtc"></a>MSDTC 
 
-Az Azure Virtual Machines támogatja a Microsoft Elosztott tranzakciók koordinátora (MSDTC) szolgáltatást a Windows Server 2019 rendszeren a fürtözött megosztott kötetek (CSV) és az [azure standard Load Balancer](../../../load-balancer/load-balancer-overview.md) , illetve az Azure-beli megosztott lemezeket használó SQL Server virtuális gépeken. 
+Az Azure Virtual Machines támogatja a Microsoft Distributed Transaction Coordinator (MSDTC) szolgáltatást a Windows Server 2019 rendszeren a fürtözött megosztott kötetek (CSV) és az [azure standard Load Balancer](../../../load-balancer/load-balancer-overview.md) , illetve az Azure-beli megosztott lemezeket használó SQL Server virtuális gépeken. 
 
 Az Azure Virtual Machines az MSDTC nem támogatott a Windows Server 2016-es vagy korábbi verzióiban fürtözött megosztott kötetekkel, mert:
 
@@ -173,7 +173,7 @@ Az Azure Virtual Machines az MSDTC nem támogatott a Windows Server 2016-es vagy
 
 Tekintse át a [fürt konfigurációjának ajánlott eljárásait](hadr-cluster-best-practices.md), majd [készítse elő a SQL Server VMt a következőre:](failover-cluster-instance-prepare-vm.md). 
 
-További információ: 
+További információkért lásd: 
 
 - [Windows-fürtök technológiái](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server feladatátvevő fürt példányai](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

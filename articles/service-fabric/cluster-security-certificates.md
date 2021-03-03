@@ -3,12 +3,12 @@ title: X. 509 tanúsítványalapú hitelesítés Service Fabric fürtben
 description: Ismerje meg a tanúsítványalapú hitelesítést Service Fabric-fürtökben, valamint a tanúsítványokkal kapcsolatos problémák észlelését, enyhítését és javítását.
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 8af0246e0e576f9877c4c5e3b1f1a4314ae29827
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 2d94e5cc78afbabde38eb38e0c4f89381bd67167
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901249"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729691"
 ---
 # <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>X. 509 tanúsítványalapú hitelesítés Service Fabric-fürtökben
 
@@ -182,7 +182,7 @@ Korábban már említettük, hogy egy Service Fabric-fürt biztonsági beállít
 
 Ahogy említettük, a tanúsítvány ellenőrzése mindig magában foglalja a tanúsítvány láncának kiépítése és kiértékelése. A CA által kiállított tanúsítványok esetében ez a látszólag egyszerű operációsrendszer-API-hívás általában több kimenő hívást eredményez a nyilvános kulcsokra épülő PKI különböző végpontjai, a válaszok gyorsítótárazása és így tovább. A tanúsítvány-ellenőrzési hívások gyakorisága Service Fabric-fürtben a PKI-végpontok bármely problémája csökkentheti a fürt rendelkezésre állását, vagy lerövidítheti a lebontást. Amíg a kimenő hívásokat nem lehet letiltani (lásd alább a gyakori kérdések című szakaszt), a következő beállításokkal elvégezhető a CRL-hívások meghibásodása által okozott érvényesítési hibák maszkolása.
 
-  * CrlCheckingFlag – a "biztonság" szakaszban a sztring UINT konvertálva. Ennek a beállításnak az értékét a Service Fabric a tanúsítványlánc állapotával kapcsolatos hibák kiszűrésére használja a lánc kiépítése viselkedésének megváltoztatásával; a rendszer átadja a Win32 CryptoAPI [CertGetCertificateChain](/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatechain) hívásának a "dwFlags" paraméternek, és a függvény által elfogadott jelzők érvényes kombinációja lehet. A 0 érték kikényszeríti a Service Fabric futtatókörnyezetet, hogy figyelmen kívül hagyja a megbízhatósági állapottal kapcsolatos hibákat – ez nem ajánlott, mivel a használata jelentős biztonsági kockázatot jelenthet. Az alapértelmezett érték a 0x40000000 (CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT).
+  * CrlCheckingFlag – a "biztonság" szakaszban a sztringet UINT konvertálták. Ennek a beállításnak az értékét a Service Fabric a tanúsítványlánc állapotával kapcsolatos hibák kiszűrésére használja a lánc kiépítése viselkedésének megváltoztatásával; a rendszer átadja a Win32 CryptoAPI [CertGetCertificateChain](/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatechain) hívásának a "dwFlags" paraméternek, és a függvény által elfogadott jelzők érvényes kombinációja lehet. A 0 érték kikényszeríti a Service Fabric futtatókörnyezetet, hogy figyelmen kívül hagyja a megbízhatósági állapottal kapcsolatos hibákat – ez nem ajánlott, mivel a használata jelentős biztonsági kockázatot jelenthet. Az alapértelmezett érték a 0x40000000 (CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT).
 
   Mikor érdemes használni: helyi teszteléshez olyan önaláírt tanúsítványokkal vagy fejlesztői tanúsítványokkal, amelyek nincsenek teljesen kialakítva/nem rendelkeznek megfelelő nyilvános kulcsokra épülő infrastruktúrával a tanúsítványok támogatásához. A Erdőmbe közötti váltás során a gapped környezetekben is használhatja a megoldást.
 
@@ -197,7 +197,7 @@ Ahogy említettük, a tanúsítvány ellenőrzése mindig magában foglalja a ta
     </Section>
   ```
 
-  * IgnoreCrlOfflineError – a "biztonság" szakaszban a logikai érték a "false" alapértelmezett értéke. A "visszavont kapcsolat nélküli" lánc kiépítési hibájának állapota (vagy egy további lánc házirend-érvényesítési hiba állapota) letiltására szolgáló parancsikont jelöl.
+  * IgnoreCrlOfflineError – a "biztonság" szakaszban található logikai érték, amelynek alapértelmezett értéke "false". A "visszavont kapcsolat nélküli" lánc kiépítési hibájának állapota (vagy egy további lánc házirend-érvényesítési hiba állapota) letiltására szolgáló parancsikont jelöl.
 
   Mikor kell használni: helyi tesztelés, vagy a megfelelő PKI által nem támogatott fejlesztői tanúsítványokkal. Gapped-környezetekben, vagy ha a nyilvános kulcsokra épülő infrastruktúra nem érhető el, a megoldást használja.
 

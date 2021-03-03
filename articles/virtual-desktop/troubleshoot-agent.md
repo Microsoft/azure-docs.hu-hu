@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: b71c5426b6fba6f232b5a7aa42347f6b25d46299
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: b0fc5bd16aaa455ce3f6d634ce35e9a389a6f13b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101094955"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732581"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>A Windows rendszerű virtuális asztali ügynökkel kapcsolatos gyakori problémák elhárítása
 
@@ -22,11 +22,19 @@ A Windows rendszerű virtuális asztali ügynök több tényező miatt is okozha
 
 Ez a cikk végigvezeti a gyakori forgatókönyvek megoldásain, valamint a kapcsolódási problémák megoldásán.
 
+>[!NOTE]
+>A munkamenet-kapcsolattal és a Windows rendszerű virtuális asztali ügynökkel kapcsolatos problémák elhárításához javasoljuk, hogy tekintse át az eseménynaplókat **Eseménynapló**  >  **Windows-naplók**  >  **alkalmazásban**. Keresse meg azokat az eseményeket, amelyek az alábbi források egyikével rendelkeznek a probléma azonosításához:
+>
+>- WVD-Agent
+>- WVD-Agent-Updater
+>- RDAgentBootLoader
+>- MsiInstaller
+
 ## <a name="error-the-rdagentbootloader-andor-remote-desktop-agent-loader-has-stopped-running"></a>Hiba: a RDAgentBootLoader és/vagy Távoli asztal ügynök betöltője leállt
 
 Ha a következő problémák valamelyikét látja, ez azt jelenti, hogy a rendszerindító betöltő, amely betölti az ügynököt, nem tudta megfelelően telepíteni az ügynököt, és az ügynök szolgáltatás nem fut:
 - A **RDAgentBootLoader** leállt vagy nem fut.
-- **Távoli asztal ügynök betöltője** nem rendelkezik állapottal.
+- Nincs állapot a **Távoli asztal ügynök betöltője** számára.
 
 A probléma megoldásához indítsa el a RDAgent rendszerindítási betöltőjét:
 
@@ -63,9 +71,9 @@ A probléma megoldásához hozzon létre egy érvényes regisztrációs jogkivon
    > [!div class="mx-imgBorder"]
    > ![Képernyőfelvétel az 1. IsRegistered](media/isregistered-registry.png)
 
-## <a name="error-agent-cannot-connect-to-broker-with-invalid_form-or-not_found-url"></a>Hiba: az ügynök nem tud csatlakozni a közvetítőhöz INVALID_FORM vagy NOT_FOUND. URL-cím
+## <a name="error-agent-cannot-connect-to-broker-with-invalid_form"></a>Hiba: az ügynök nem tud kapcsolódni a közvetítőhöz INVALID_FORM
 
-Nyissa meg **Eseménynapló**  >  **Windows-naplók**  >  **alkalmazást**. Ha a 3277 AZONOSÍTÓJÚ eseményt látja, **INVALID_FORM** vagy **NOT_FOUND.** A leírásban szereplő URL-cím nem stimmel az ügynök és a közvetítő közötti kommunikációval. Az ügynök nem tud kapcsolódni a közvetítőhöz, és nem tud elérni egy adott URL-címet. Ennek oka lehet a tűzfal vagy a DNS-beállítások.
+Nyissa meg **Eseménynapló**  >  **Windows-naplók**  >  **alkalmazást**. Ha olyan eseményt lát a 3277 AZONOSÍTÓval, amely a leírásban a "INVALID_FORM" kifejezést írja, akkor hiba történt az ügynök és a közvetítő közötti kommunikáció során. Az ügynök nem tud csatlakozni a közvetítőhöz, vagy bizonyos tűzfal vagy DNS-beállítások miatt nem érhető el egy adott URL-cím.
 
 A probléma megoldásához tekintse meg, hogy elérhető-e a BrokerURI és a BrokerURIGlobal:
 1. Nyissa meg a beállításszerkesztőt. 
@@ -100,13 +108,43 @@ A probléma megoldásához tekintse meg, hogy elérhető-e a BrokerURI és a Bro
 8. Ha a hálózat blokkolja ezeket az URL-címeket, akkor fel kell oldania a szükséges URL-címek blokkolását. További információ: a [szükséges URL-címek listája](safe-url-list.md).
 9. Ha ez nem oldja meg a problémát, győződjön meg arról, hogy nem rendelkezik olyan csoportházirend-titkosítással, amely letiltja az ügynököt a közvetítőhöz való kapcsolódásra. A Windows virtuális asztal ugyanazt a TLS 1,2 titkosítási algoritmust használja, mint az [Azure bejárati ajtó](../frontdoor/front-door-faq.MD#what-are-the-current-cipher-suites-supported-by-azure-front-door). További információ: a [kapcsolatbiztonsági](network-connectivity.md#connection-security).
 
-## <a name="error-3703-or-3019"></a>Hiba: 3703 vagy 3019
+## <a name="error-3703"></a>Hiba: 3703
 
-Nyissa meg **Eseménynapló**  >  **Windows-naplók**  >  **alkalmazást**. Ha a 3703 AZONOSÍTÓJÚ eseményt látja, amely azt mondja **Rd-átjáró URL-cím: nem érhető** el, vagy ha a leírásban a 3019 azonosítójú esemény szerepel, az ügynök nem tudja elérni az átjáró URL-címeit vagy a web socket Transport URL-címeket. Ahhoz, hogy sikeresen csatlakozhasson a munkamenet-gazdagéphez, és engedélyezze a végpontok számára a hálózati forgalmat a korlátozások megkerülése érdekében, fel kell oldania a [szükséges URL](safe-url-list.md)-címek listáját. Győződjön meg arról is, hogy a tűzfal vagy a proxy beállításai nem blokkolja ezeket az URL-címeket. Az URL-címek blokkolásának feloldása szükséges a Windows virtuális asztal használatához.
+Nyissa meg **Eseménynapló**  >  **Windows-naplók**  >  **alkalmazást**. Ha a leírásban "RD-átjáró URL: nem érhető el" értékkel 3703 rendelkező eseményt lát, az ügynök nem tudja elérni az átjáró URL-címeit. Ahhoz, hogy sikeresen csatlakozhasson a munkamenet-gazdagéphez, és engedélyezze a végpontok számára a hálózati forgalmat a korlátozások megkerülése érdekében, fel kell oldania a [szükséges URL](safe-url-list.md)-címek listáját. Győződjön meg arról is, hogy a tűzfal vagy a proxy beállításai nem blokkolja ezeket az URL-címeket. Az URL-címek blokkolásának feloldása szükséges a Windows virtuális asztal használatához.
 
 A probléma megoldásához ellenőrizze, hogy a tűzfal és/vagy a DNS-beállítások nem blokkolja-e ezeket az URL-címeket:
 1. [A Azure Firewall használatával biztosíthatja a Windows rendszerű virtuális asztali környezetek központi telepítését.](../firewall/protect-windows-virtual-desktop.md)
 2. Konfigurálja a [Azure Firewall DNS-beállításait](../firewall/dns-settings.md).
+
+## <a name="error-3019"></a>Hiba: 3019
+
+Nyissa meg **Eseménynapló**  >  **Windows-naplók**  >  **alkalmazást**. Ha a 3019 AZONOSÍTÓJÚ eseményt látja, ez azt jelenti, hogy az ügynök nem tudja elérni a web socket Transport URL-címeket. Ahhoz, hogy sikeresen csatlakozhasson a munkamenet-gazdagéphez, és lehetővé tegye a hálózati forgalom számára a korlátozások megkerülését, fel kell oldania a [szükséges URL-címek listájában](safe-url-list.md)felsorolt URL-címeket. Az Azure hálózati csapatával gondoskodhat arról, hogy a tűzfal, a proxy és a DNS-beállítások ne blokkolja ezeket az URL-címeket. A hálózati nyomkövetési naplókat is megtekintheti annak azonosításához, hogy a Windows rendszerű virtuális asztali szolgáltatás hol legyen blokkolva. Ha támogatási kérelmet nyit meg erre a hibára vonatkozóan, ügyeljen arra, hogy a hálózati nyomkövetési naplókat csatolja a kérelemhez.
+
+## <a name="error-installationhealthcheckfailedexception"></a>Hiba: InstallationHealthCheckFailedException
+
+Nyissa meg **Eseménynapló**  >  **Windows-naplók**  >  **alkalmazást**. Ha olyan eseményt lát, amelynek azonosítója 3277, amely a leírásban a "InstallationHealthCheckFailedException" kifejezést jelzi, az azt jelenti, hogy a verem-figyelő nem működik, mert a terminálkiszolgáló bekapcsolta a verem-figyelő beállításkulcsot.
+
+A probléma megoldása:
+1. Ellenőrizze, hogy működik-e [a verem-figyelő](#error-stack-listener-isnt-working-on-windows-10-2004-vm).
+2. Ha a verem-figyelő nem működik, [manuálisan távolítsa el, majd telepítse újra a verem összetevőt](#error-vms-are-stuck-in-unavailable-or-upgrading-state).
+
+## <a name="error-endpoint_not_found"></a>Hiba: ENDPOINT_NOT_FOUND
+
+Nyissa meg **Eseménynapló**  >  **Windows-naplók**  >  **alkalmazást**. Ha olyan eseményt lát, amelynek azonosítója 3277, ami azt jelenti, hogy a (z) "ENDPOINT_NOT_FOUND" szerepel a leírásban, ami azt jelenti, hogy a közvetítő nem talált végpontot a kapcsolat létesítéséhez. Ez a probléma a következő okok egyike miatt fordulhat elő:
+
+- Nincsenek virtuális gépek a gazdagépen
+- A gazdagép-készletben lévő virtuális gépek nem aktívak
+- A gazdagép-készletben lévő összes virtuális gép túllépte a maximális munkamenet-korlátot
+- A gazdagép-készletben lévő virtuális gépek egyike sem fut az ügynök szolgáltatásban
+
+A probléma megoldása:
+
+1. Győződjön meg arról, hogy a virtuális gép be van kapcsolva, és nem lett eltávolítva a gazdagép-készletből.
+2. Győződjön meg arról, hogy a virtuális gép nem lépte túl a maximális munkamenet-korlátot.
+3. Győződjön meg arról, hogy az [ügynök szolgáltatás fut](#error-the-rdagentbootloader-andor-remote-desktop-agent-loader-has-stopped-running) , és a [verem-figyelő működik](#error-stack-listener-isnt-working-on-windows-10-2004-vm).
+4. Győződjön [meg arról, hogy az ügynök csatlakozni tud a közvetítőhöz](#error-agent-cannot-connect-to-broker-with-invalid_form).
+5. Győződjön [meg arról, hogy a virtuális gép rendelkezik érvényes regisztrációs jogkivonattal](#error-invalid_registration_token).
+6. Győződjön meg arról, hogy [a virtuális gép regisztrációs jogkivonata nem járt le](faq.md#how-often-should-i-turn-my-vms-on-to-prevent-registration-issues). 
 
 ## <a name="error-installmsiexception"></a>Hiba: InstallMsiException
 
@@ -176,15 +214,21 @@ A probléma megoldása:
 8. A **ClusterSettings** területen keresse meg a **SessionDirectoryListener** , és győződjön meg róla, hogy az adatértéke **RDP-SxS..**..
 9. Ha a **SessionDirectoryListener** nem **RDP-SxS...** értékre van állítva, kövesse az [ügynök és a rendszerindítási betöltő eltávolítása](#step-1-uninstall-all-agent-boot-loader-and-stack-component-programs) szakasz lépéseit az ügynök, a rendszerindító betöltő és a stack-összetevők eltávolításához, majd [telepítse újra az ügynököt és a rendszerindítási betöltőt](#step-4-reinstall-the-agent-and-boot-loader). Ezzel újra fogja telepíteni a párhuzamos veremet.
 
-## <a name="error-users-keep-getting-disconnected-from-session-hosts"></a>Hiba: a felhasználók továbbra is leválasztják a munkamenet-gazdagépeket
+## <a name="error-heartbeat-issue-where-users-keep-getting-disconnected-from-session-hosts"></a>Hiba: a szívveréssel kapcsolatos probléma, hogy a felhasználók megszakítják a munkamenet-gazdagépek leválasztását
 
-Nyissa meg **Eseménynapló**  >  **Windows-naplók**  >  **alkalmazást**. Ha a 0 AZONOSÍTÓJÚ eseményt látja, amely szerint a leírásban és/vagy a felhasználók **CheckSessionHostDomainIsReachableAsync** a munkamenet-gazdagépekről, a kiszolgáló nem vesz fel szívverést a Windows rendszerű virtuális asztali szolgáltatásból.
+Ha a kiszolgáló nem vesz fel szívverést a Windows rendszerű virtuális asztali szolgáltatásból, módosítania kell a szívverés küszöbértékét. Kövesse az ebben a szakaszban található utasításokat, ha az alábbi esetek közül egy vagy több vonatkozik Önre:
 
-A probléma megoldásához módosítsa a szívverés küszöbértékét:
+- **CheckSessionHostDomainIsReachableAsync** -hibát kapott
+- **ConnectionBrokenMissedHeartbeatThresholdExceeded** -hibát kapott
+- **ConnectionEstablished kapott: UnexpectedNetworkDisconnect** hiba
+- A felhasználói ügyfelek továbbra is le vannak választva
+- A felhasználók a munkamenet-gazdagépekről leválasztva maradnak
+
+A szívverési küszöbérték módosítása:
 1. Nyissa meg a parancssort rendszergazdaként.
 2. Adja meg a **qwinsta** parancsot, és futtassa.
 3. Két verem-összetevőnek kell megjelennie: **RDP-TCP** és **RDP-SxS**. 
-   - A használt operációs rendszer verziójától függően előfordulhat, hogy az **RDP-SxS** a Build száma követi. Ha igen, ügyeljen rá, hogy később írja le ezt a számot.
+   - A használt operációs rendszer verziójától függően előfordulhat, hogy az **RDP-SxS** a Build száma követi. Ha igen, ügyeljen rá, hogy később jegyezze fel ezt a számot.
 4. Nyissa meg a Beállításszerkesztőt.
 5. Nyissa meg a **HKEY_LOCAL_MACHINE**  >  **System**  >  **CurrentControlSet**  >  **Control**  >  **Terminal Server**  >  **WinStations**.
 6. A **WinStations** alatt több mappát is láthat a különböző stack-verziókhoz. Válassza ki azt a mappát, amely megfelel a 3. lépésben szereplő verziószámnak.
@@ -194,6 +238,9 @@ A probléma megoldásához módosítsa a szívverés küszöbértékét:
    - HeartbeatDropCount: 60 
 8. Indítsa újra a virtuális gépet.
 
+>[!NOTE]
+>Ha a szívverési küszöbérték módosítása nem oldja meg a problémát, lehet, hogy egy mögöttes hálózati probléma merülhet fel, hogy kapcsolatba kell lépnie az Azure hálózati csapatával.
+
 ## <a name="error-downloadmsiexception"></a>Hiba: DownloadMsiException
 
 Nyissa meg **Eseménynapló**  >  **Windows-naplók**  >  **alkalmazást**. Ha a 3277 AZONOSÍTÓJÚ eseményt látja, amely a leírásban **DownloadMsiException** , nincs elég hely a lemezen a RDAgent.
@@ -201,6 +248,11 @@ Nyissa meg **Eseménynapló**  >  **Windows-naplók**  >  **alkalmazást**. Ha a
 A probléma megoldásához a következő lépésekkel szabadítson fel lemezterületet a lemezen:
    - A felhasználó által már nem használt fájlok törlése
    - A virtuális gép tárolókapacitásának növelése
+
+## <a name="error-agent-fails-to-update-with-missingmethodexception"></a>Hiba: az ügynök nem tud frissíteni a MissingMethodException
+
+Nyissa meg **Eseménynapló**  >  **Windows-naplók**  >  **alkalmazást**. Ha a leírásban "MissingMethodException: metódus nem található" értékkel 3389 rendelkező eseményt lát, ez azt jelenti, hogy a Windows rendszerű virtuális asztali ügynök frissítése nem sikerült, és egy korábbi verzióra lett visszaváltva. Ennek az lehet az oka, hogy a virtuális gépeken jelenleg telepített .NET-keretrendszer verziószáma alacsonyabb, mint 4.7.2. A probléma megoldásához frissítenie kell a .NET-et 4.7.2 vagy újabb verzióra a [.NET-keretrendszer dokumentációjának](https://support.microsoft.com/topic/microsoft-net-framework-4-7-2-offline-installer-for-windows-05a72734-2127-a15d-50cf-daf56d5faec2)telepítési utasításait követve.
+
 
 ## <a name="error-vms-are-stuck-in-unavailable-or-upgrading-state"></a>Hiba: a virtuális gépek nem állnak rendelkezésre vagy verziófrissítés állapotban vannak
 
@@ -210,7 +262,7 @@ Nyisson meg egy PowerShell-ablakot rendszergazdaként, és futtassa a következ�
 Get-AzWvdSessionHost -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> | Select-Object *
 ```
 
-Ha a munkamenet-gazdagép vagy a gazdagépen lévő gazdagépek állapota mindig nem **érhető el** vagy nem **frissíthető**, akkor előfordulhat, hogy az ügynök vagy a verem telepítése sikertelen volt.
+Ha a munkamenet-gazdagép vagy a gazdagépen lévő gazdagépek állapota mindig "nem érhető el" vagy "verziófrissítés", az ügynök vagy a verem nem lett sikeresen telepítve.
 
 A probléma megoldásához telepítse újra az egymás melletti verem:
 1. Nyisson meg egy parancssort rendszergazdaként.
@@ -253,7 +305,7 @@ A virtuális gép neve már regisztrálva van, és valószínűleg duplikált.
 A probléma megoldása:
 1. Kövesse a [munkamenet-gazdagép eltávolítása a gazdagép-készletből](#step-2-remove-the-session-host-from-the-host-pool) című szakasz lépéseit.
 2. [Hozzon létre egy másik virtuális gépet](expand-existing-host-pool.md#add-virtual-machines-with-the-azure-portal). Ügyeljen arra, hogy egyedi nevet adjon a virtuális gépnek.
-3. Lépjen a Azure Portal] ( https://portal.azure.com) és nyissa meg a gazdagép azon készletének **Áttekintés** lapját, amelyen a virtuális gép volt. 
+3. Lépjen a [Azure Portalra](https://portal.azure.com) , és nyissa meg a gazdagép azon készletének **Áttekintés** lapját, amelyen a virtuális gép volt. 
 4. Nyissa meg a **munkamenet-gazdagépek** lapot, és ellenőrizze, hogy az összes munkamenet-gazdagép szerepel-e az adott alkalmazáskészletben.
 5. Várjon 5-10 percet, amíg a munkamenet-gazdagép állapota **elérhetővé válik**.
 
@@ -320,12 +372,12 @@ Amikor eltávolítja a munkamenet-gazdagépet a gazdagépről, a munkamenet-gazd
 ### <a name="step-4-reinstall-the-agent-and-boot-loader"></a>4. lépés: az ügynök és a rendszerindítási betöltő újratelepítése
 
 Az ügynök és a rendszerindítási betöltő legújabb verziójának újratelepítésével a párhuzamos verem és a Genfi figyelési ügynök is automatikusan települ. Az ügynök és a rendszerindító betöltő újratelepítése:
-1. Jelentkezzen be a virtuális GÉPRE rendszergazdaként, és kövesse a [virtuális gépek regisztrálása](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool) a **Windows rendszerű virtuális asztali ügynök** és a **Windows rendszerű virtuális asztali ügynök rendszerbetöltője** letöltéséhez című témakör útmutatását.
+1. Jelentkezzen be a virtuális gépre rendszergazdaként, és használja az ügynök telepítőjének megfelelő verzióját a központi telepítéshez attól függően, hogy a virtuális gép melyik verzióját futtatja. Ha Windows 10-es virtuális géppel rendelkezik, kövesse a [virtuális gépek regisztrálása](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool) a **Windows rendszerű virtuális asztali ügynök** és a **Windows rendszerű virtuális asztali ügynök betöltője** letöltéséhez című témakör útmutatását. Ha Windows 7 rendszerű virtuális géppel rendelkezik, kövesse a [virtuális gépek regisztrálása](deploy-windows-7-virtual-machine.md#configure-a-windows-7-virtual-machine) a **Windows rendszerű virtuális asztali ügynök** és a **Windows rendszerű virtuális asztali ügynök kezelőjének** letöltéséhez című cikk 13-14. lépéseit.
 
    > [!div class="mx-imgBorder"]
    > ![Az ügynök és a rendszerbetöltő letöltési oldalának képernyőképe](media/download-agent.png)
 
-2. Kattintson a jobb gombbal az imént letöltött ügynökre és rendszerindító rendszerbetöltő telepítőre.
+2. Kattintson a jobb gombbal az ügynökre, és töltse le a letöltött rendszerbetöltő telepítőket.
 3. Válassza ki a **Tulajdonságok** elemet.
 4. Válassza a **Letiltás feloldása** lehetőséget.
 5. Kattintson az **OK** gombra.

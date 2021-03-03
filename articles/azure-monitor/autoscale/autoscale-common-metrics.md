@@ -4,12 +4,12 @@ description: Megtudhatja, hogy mely metrikákat használják általában a Cloud
 ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
-ms.openlocfilehash: f358efb8f99066dc1d7a564ad36d6ed1290853e0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4b763f39d3b88a7884e89dddbc2c483c1bb84d31
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100617738"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717774"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Általános mérőszámok automatikus skálázása Azure Monitor
 
@@ -33,8 +33,8 @@ Ha az előző eset értéke TRUE (igaz), akkor tekintse át a [PowerShell haszn�
 ### <a name="host-metrics-for-resource-manager-based-windows-and-linux-vms"></a>A Resource Manager-alapú Windows és Linux rendszerű virtuális gépek gazdagép-metrikái
 Az Azure-beli virtuális gép és a VMSS esetében alapértelmezés szerint a következő gazdagép-szintű metrikák vannak kibocsátva Windows-és Linux-példányokban. Ezek a metrikák írják le az Azure-beli virtuális gépet, de az Azure VM-gazdagépről gyűjtik, nem pedig a vendég virtuális gépen telepített ügynökön keresztül. Ezeket a metrikákat az automatikus skálázási szabályokban használhatja.
 
-- [A Resource Manager-alapú Windows és Linux rendszerű virtuális gépek gazdagép-metrikái](../platform/metrics-supported.md#microsoftcomputevirtualmachines)
-- [A Resource Manager-alapú Windows-és Linux-VM Scale Sets gazdagép-metrikái](../platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
+- [A Resource Manager-alapú Windows és Linux rendszerű virtuális gépek gazdagép-metrikái](../essentials/metrics-supported.md#microsoftcomputevirtualmachines)
+- [A Resource Manager-alapú Windows-és Linux-VM Scale Sets gazdagép-metrikái](../essentials/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
 
 ### <a name="guest-os-metrics-for-resource-manager-based-windows-vms"></a>Vendég operációs rendszer metrikái a Resource Manager-alapú Windows rendszerű virtuális gépekhez
 Amikor létrehoz egy virtuális gépet az Azure-ban, a diagnosztika a diagnosztika bővítmény használatával engedélyezhető. A diagnosztikai bővítmény a virtuális gép belsejéből származó mérőszámok készletét bocsátja ki. Ez azt jelenti, hogy az alapértelmezés szerint nem kibocsátott mérőszámok autoskálázása is megtörténik.
@@ -186,4 +186,3 @@ A virtuálisgép-méretezési csoportok esetében frissítheti a Resource Manage
 > Service Bus esetében az erőforráscsoport fogalma nem létezik, de a Azure Resource Manager régiónként létrehoz egy alapértelmezett erőforráscsoportot. Az erőforráscsoport általában az "alapértelmezett-ServiceBus-[region]" formátumban van. Például: "default-ServiceBus-EastUS", "default-ServiceBus-WestUS", "default-ServiceBus-AustraliaEast" stb.
 >
 >
-

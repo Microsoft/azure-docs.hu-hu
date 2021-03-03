@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/02/2020
-ms.openlocfilehash: a693761bcecab87e343014127ad37077c2569e21
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 7466e143f345ea305c7e9ef118d09fb6f685ac16
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552450"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694486"
 ---
 # <a name="how-to-create-import-and-export-glossary-terms"></a>Szószedet használati feltételeinek létrehozása, importálása és exportálása
 
@@ -88,6 +88,10 @@ Ha a kiválasztott feltételek ugyanahhoz a lejárati sablonhoz tartoznak, expor
 1. Ha a szószedetben szerepel, alapértelmezés szerint az **Exportálás** gomb le van tiltva. Miután kiválasztotta az exportálni kívánt kifejezéseket, az **Exportálás** gomb engedélyezve lesz, ha a kijelölt feltételek ugyanahhoz a sablonhoz tartoznak.
 
 2. Válassza az **Exportálás** lehetőséget a kiválasztott feltételek letöltéséhez.
+
+ > [!Important]
+   > Ha a hierarchiában lévő feltételek különböző lejárati sablonokhoz tartoznak, akkor azokat egymástól eltérő módon kell felosztani. CSV-fájlok importáláshoz. Egy kifejezés szülőjének frissítése jelenleg nem támogatott az importálási folyamat használatával.
+
 
 ## <a name="next-steps"></a>Következő lépések
 

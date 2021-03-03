@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 09/22/2020
-ms.openlocfilehash: 64bdbf1005f0283438777b3bb2ba1d3312b6e140
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8dac947aea95dc79118032eb0996b6ba14f16363
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627451"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714110"
 ---
 # <a name="resource-manager-template-samples-for-log-alert-rules-in-azure-monitor"></a>Resource Manager-sablonok – minták a Azure Monitor naplózási riasztási szabályaihoz
 Ez a cikk példákat tartalmaz [Azure Resource Manager sablonokból](../../azure-resource-manager/templates/template-syntax.md) , amelyek a napló lekérdezési riasztásait Azure monitorban hozhatják létre és konfigurálják. Mindegyik minta tartalmaz egy sablonfájlt és egy, a sablonhoz adni kívánt minta értékeket tartalmazó paramétereket tartalmazó fájlt.
@@ -479,4 +479,4 @@ Az alábbi minta egy olyan szabályt hoz létre, amely bármilyen erőforrást c
 ## <a name="next-steps"></a>Következő lépések
 
 * [További Azure monitor-sablonok beszerzése](../resource-manager-samples.md).
-* [További információ a riasztási szabályokról](../platform/alerts-overview.md).
+* [További információ a riasztási szabályokról](./alerts-overview.md).

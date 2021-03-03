@@ -6,19 +6,19 @@ author: asudbring
 ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
-ms.date: 11/24/2020
-ms.openlocfilehash: d94736656f691da9e893e4619a2299a061acd8e8
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.date: 02/24/2021
+ms.openlocfilehash: 7fc964abf7e6832341ad8b1ad55711b3a9993506
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611202"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712511"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>Oktatóanyag: régiók közötti Azure Load Balancer létrehozása a Azure Portal használatával
 
 A régiók közötti terheléselosztó biztosítja, hogy a szolgáltatások globálisan elérhetők legyenek több Azure-régió között. Ha az egyik régió meghibásodik, a rendszer átirányítja a forgalmat a legközelebbi, legközelebb egészséges regionális Load balancerbe.  
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hozza létre a régiók közötti Load balancert.
@@ -41,28 +41,29 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 ## <a name="sign-in-to-azure-portal"></a>Bejelentkezés az Azure portálra
 
-[Jelentkezzen](https://portal.azure.com) be az Azure betekintő portálra.
+[Jelentkezzen](https://preview.portal.azure.com) be az Azure betekintő portálra.
 
 ## <a name="create-cross-region-load-balancer"></a>Régiók közötti Load Balancer létrehozása
 
 Ebben a szakaszban egy régiók közötti terheléselosztó és egy nyilvános IP-cím jön létre.
 
-1. A képernyő bal felső részén válassza az **erőforrás létrehozása > hálózatkezelés > Load Balancer** lehetőséget, vagy keressen **Load Balancer** a keresőmezőbe.
-
-2. A **Load Balancer létrehozása** lap **alapok** lapján adja meg a következő információkat, vagy válassza ki az alábbi adatokat: 
+1. Válassza az **Erőforrás létrehozása** lehetőséget. 
+2. A keresőmezőbe írja be a **Load Balancer** kifejezést. Válassza a **Load Balancer** elemet a keresési eredmények között.
+3. A **terheléselosztó** lapon válassza a **Létrehozás** lehetőséget.
+4. A **Load Balancer létrehozása** lap **alapok** lapján adja meg a következő információkat, vagy válassza ki az alábbi adatokat: 
 
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
     | Előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza az **új létrehozása** elemet, és írja be a **CreateCRLBTutorial-RG** karakterláncot a szövegmezőbe.|
     | Name                   | Adja meg a **myLoadBalancer-CR** értéket                                   |
-    | Region         | Válassza az **USA nyugati** régiója lehetőséget.                                        |
+    | Region         | Válassza ki az USA **nyugati** régióját.                                        |
     | Típus          | Válassza a **Nyilvános** lehetőséget.                                        |
-    | Termékváltozat           | **Standard** kiválasztása |
+    | Termékváltozat           | Hagyja meg az alapértelmezett **standard** értéket. |
     | Szint           | **Globális** kiválasztása |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget.|
     | Nyilvános IP-cím | Írja be a **myPublicIP-CR** karakterláncot a szövegmezőbe.|
-    | Útválasztási beállítás| **Microsoft hálózat** kiválasztása |
+    | Útválasztási beállítás| Válassza a **Microsoft Network** lehetőséget. </br> Az útválasztási beállításokkal kapcsolatos további információkért lásd: [Mi az útválasztási preferencia (előzetes verzió)?](../virtual-network/routing-preference-overview.md). |
 
     > [!NOTE]
     > A régiók közötti Load-Balancer csak a következő otthoni régiókban telepíthető: USA 2. keleti régiója, USA nyugati régiója, **Nyugat-Európa, Délkelet-Ázsia, USA középső régiója, Észak-Európa, Kelet-Ázsia**. További információ: **https://aka.ms/homeregionforglb**.
@@ -89,7 +90,7 @@ Hozza létre a **myBackendPool-CR háttér-** címkészlet, hogy tartalmazza a r
 
 3. A **háttérbeli készlet hozzáadása** lapon a név mezőbe írja be a következőt: **myBackendPool-CR**.
 
-4. Válassza a **Hozzáadás** elemet.
+4. Válassza a **Hozzáadás** lehetőséget.
 
 4. Válassza a **myBackendPool-CR** elemet.
 
@@ -101,7 +102,7 @@ Hozza létre a **myBackendPool-CR háttér-** címkészlet, hogy tartalmazza a r
 
 7. Ismételje meg a 4-6 lépést a **myLoadBalancer-R2** hozzáadásához.
 
-8. Válassza a **Hozzáadás** elemet.
+8. Válassza a **Hozzáadás** lehetőséget.
 
     :::image type="content" source="./media/tutorial-cross-region-portal/add-to-backendpool.png" alt-text="Regionális terheléselosztó hozzáadása a háttérkészletek-hez" border="true":::
 

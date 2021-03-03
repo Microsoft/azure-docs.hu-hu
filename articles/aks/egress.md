@@ -5,12 +5,12 @@ description: Megtudhatja, hogyan hozhat létre és használhat statikus nyilván
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 81b99478358ec3d670e8d783fba27603483614ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2eefeecfa550683dafcf66d936837e2a891c4c84
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87563245"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726546"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Statikus nyilvános IP-cím használata a kimenő forgalomhoz egy *alapszintű* SKU Load Balancer használatával az Azure Kubernetes szolgáltatásban (ak)
 
@@ -24,7 +24,7 @@ Ez a cikk azt feltételezi, hogy az Azure alapszintű Load Balancer használja. 
 
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
-Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra.  `az --version`A verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
 
 > [!IMPORTANT]
 > Ez a cikk az *alapszintű* SKU Load balancert használja egyetlen csomópontos készlettel. Ez a konfiguráció több csomópontos készlet esetében nem érhető el, mivel az *alapszintű* SKU Load Balancer több csomópontos készlet esetében nem támogatott. További információ a *standard* SKU Load Balancer használatáról: [nyilvános standard Load Balancer használata az Azure Kubernetes szolgáltatásban (ak)][slb] .
@@ -33,7 +33,7 @@ Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a tele
 
 Az AK-fürtök kimenő forgalma [Azure Load Balancer konvenciókat][outbound-connections]követi. Az első Kubernetes-szolgáltatás létrehozása előtt `LoadBalancer` egy AK-fürt ügynök-csomópontjai nem tartoznak egyetlen Azure Load Balancer-készletbe sem. Ebben a konfigurációban a csomópontok nem rendelkeznek példány-szintű nyilvános IP-címmel. Az Azure a kimenő forgalmat olyan nyilvános forrású IP-címekre fordítja le, amely nem konfigurálható vagy determinisztikus.
 
-Ha létrejön egy Kubernetes-szolgáltatás, az `LoadBalancer` ügynök csomópontjai hozzáadódnak egy Azure Load Balancer készlethez. A kimenő forgalom esetében az Azure a terheléselosztó által konfigurált első nyilvános IP-címet fordítja le. Ez a nyilvános IP-cím csak az adott erőforrás élettartama esetén érvényes. Ha törli a Kubernetes terheléselosztó szolgáltatást, a rendszer a társított terheléselosztó és az IP-cím is törlődik. Ha egy adott IP-címet szeretne hozzárendelni, vagy IP-címet kíván megőrizni az újratelepített Kubernetes-szolgáltatásokhoz, létrehozhat és használhat statikus nyilvános IP-címet.
+Ha létrejön egy Kubernetes-szolgáltatás, az `LoadBalancer` ügynök csomópontjai hozzáadódnak egy Azure Load Balancer készlethez. Load Balancer Basic (alapszintű) beállítás egyetlen előtér-felületet választ ki a kimenő folyamatokhoz, ha a kimenő folyamatok esetében több (nyilvános) IP-frontend szerepel. Ez a kijelölés nem konfigurálható, és a kiválasztási algoritmust véletlenszerűen kell figyelembe venni. Ez a nyilvános IP-cím csak az adott erőforrás élettartama esetén érvényes. Ha törli a Kubernetes terheléselosztó szolgáltatást, a rendszer a társított terheléselosztó és az IP-cím is törlődik. Ha egy adott IP-címet szeretne hozzárendelni, vagy IP-címet kíván megőrizni az újratelepített Kubernetes-szolgáltatásokhoz, létrehozhat és használhat statikus nyilvános IP-címet.
 
 ## <a name="create-a-static-public-ip"></a>Statikus nyilvános IP-cím létrehozása
 

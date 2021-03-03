@@ -1,26 +1,26 @@
 ---
-title: Resource Manager-sablonok minták a tárolók Azure Monitoréhez
-description: Példa Azure Resource Manager sablonok telepítésére és a configureAzure figyelésére.
+title: Resource Manager-sablonok minták a tárolók bepillantást
+description: Példa Azure Resource Manager sablonok telepítésére és configureContainerára.
 ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: e33bb6ae04f0b11a25a7ab87362bc243ee19c79c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f75278663abde8d4b0f47c8df1dbbdbc298bcafb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627433"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723333"
 ---
-# <a name="resource-manager-template-samples-for-azure-monitor-for-containers"></a>Resource Manager-sablonok minták a tárolók Azure Monitoréhez
+# <a name="resource-manager-template-samples-for-container-insights"></a>Resource Manager-sablonok minták a tárolók bepillantást
 Ez a cikk minta [Azure Resource Manager sablonokat](../../azure-resource-manager/templates/template-syntax.md) tartalmaz a log Analytics-ügynök üzembe helyezéséhez és konfigurálásához Azure monitor-ben. Mindegyik minta tartalmaz egy sablonfájlt és egy, a sablonhoz adni kívánt minta értékeket tartalmazó paramétereket tartalmazó fájlt.
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
 
 ## <a name="enable-for-aks-cluster"></a>Az AK-fürt engedélyezése
-Az alábbi minta lehetővé teszi, hogy a tárolók egy AK-fürtön legyenek Azure Monitor.
+Az alábbi minta lehetővé teszi a tárolók bepillantást egy AK-fürtön.
 
 
 ### <a name="template-file"></a>Sablonfájl
@@ -357,4 +357,4 @@ Az alábbi minta lehetővé teszi, hogy a tárolók egy AK-fürtön legyenek Azu
 ## <a name="next-steps"></a>Következő lépések
 
 * [További Azure monitor-sablonok beszerzése](../resource-manager-samples.md).
-* [További információ a tárolók Azure Monitoréről](../containers/container-insights-overview.md).
+* [További tudnivalók a tárolók bepillantást nyerhetnek](../containers/container-insights-overview.md).

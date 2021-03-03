@@ -9,12 +9,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: e3422f468d1355245fb31e8f04d5f8625f583c37
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 84fdca96f2ce42c608e7def98f6a3400964cfe46
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462190"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691926"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL-kapcsolati beállítások
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -104,7 +104,7 @@ az sql server update -n sql-server-name -g sql-server-group --set publicNetworkA
 
 A minimális [Transport Layer Security (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) verzió beállítása lehetővé teszi, hogy az ügyfelek kiválaszthatják, hogy az SQL Database milyen verziójú TLS-verziót használ.
 
-Jelenleg a TLS 1.0-s, 1.1-es és 1.2-es verziója támogatott. Egy minimális TLS-verzió beállítása biztosítja, hogy az újabb TLS-verziók támogatottak legyenek. A TLS 1.1-es verziójánál újabb verzió kiválasztása például azt jelenti, hogy a rendszer csak a TLS 1.1-es és 1.2-es verziójú kapcsolatokat fogadja el, a TLS 1.0-s verziójúakat elutasítja. Miután megerősítette, hogy az alkalmazások támogatják, ajánlott az 1.2-es minimális TLS-verziót beállítani. Ez a verzió tartalmazza a korábbi verziókban található biztonsági rések javításait, és ez az Azure SQL-adatbázisban támogatott legmagasabb TLS-verzió.
+Jelenleg a TLS 1.0-s, 1.1-es és 1.2-es verziója támogatott. Egy minimális TLS-verzió beállítása biztosítja, hogy az újabb TLS-verziók támogatottak legyenek. Például a TLS 1,1-es verziójának kiválasztása azt jelenti, hogy a rendszer csak a TLS 1,1 és 1,2 kapcsolatait fogadja el, és a TLS 1,0-mel való kapcsolat el lett utasítva. Miután megerősítette, hogy az alkalmazások támogatják, ajánlott az 1.2-es minimális TLS-verziót beállítani. Ez a verzió tartalmazza a korábbi verziókban található biztonsági rések javításait, és ez az Azure SQL-adatbázisban támogatott legmagasabb TLS-verzió.
 
 > [!IMPORTANT]
 > A minimális TLS-verzió alapértelmezett értéke az összes verzió engedélyezése. A TLS verziójának betartatása után nem lehet visszaállítani az alapértelmezett értéket.
@@ -217,7 +217,7 @@ az resource show --ids %sqlserverid%
 az resource update --ids %sqlserverid% --set properties.connectionType=Proxy
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Azure SQL Database kapcsolatok működésének áttekintését a [kapcsolati architektúrában](connectivity-architecture.md)tekintheti át.
 - További információ a kiszolgálók kapcsolódási házirendjének módosításáról: [Conn-Policy](/cli/azure/sql/server/conn-policy).

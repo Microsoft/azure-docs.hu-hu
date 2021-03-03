@@ -3,16 +3,16 @@ title: Az Azure Security teljesítményteszt Foundation tervezetének áttekint�
 description: Az Azure Security teljesítményteszt Foundation alaptervi mintájának áttekintése és architektúrája.
 ms.date: 02/17/2020
 ms.topic: sample
-ms.openlocfilehash: b3b58f2fb603e23e4b188e527fa4fc60f4041a29
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: ed497eff85e07b6a51939907bc751f3b40c99b30
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095269"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741871"
 ---
 # <a name="overview-of-the-azure-security-benchmark-foundation-blueprint-sample"></a>Az Azure Security teljesítményteszt Foundation tervének áttekintése minta
 
-Az Azure Security teljesítményteszt alaptervi mintája olyan alapszintű infrastruktúra-mintákat tartalmaz, amelyek segítségével biztonságos és megfelelő Azure-környezetet hozhat létre. A terv segít olyan felhőalapú architektúra üzembe helyezésében, amely az akkreditációs vagy megfelelőségi követelményekkel rendelkező forgatókönyvekhez nyújt megoldást. Ez az alapszintű tervrajzi minta az [Azure biztonsági teljesítményteszt minta tervezetének](../azure-security-benchmark/index.md)kiterjesztése. Üzembe helyezi és konfigurálja a hálózati határokat, a figyelést és az egyéb erőforrásokat az [Azure biztonsági teljesítménytesztben](../../../../security/benchmarks/index.yml)definiált szabályzatokkal és egyéb guardrails való igazodva.
+Az Azure Security teljesítményteszt alaptervi mintája olyan alapszintű infrastruktúra-mintákat tartalmaz, amelyek segítségével biztonságos és megfelelő Azure-környezetet hozhat létre. A terv segít olyan felhőalapú architektúra üzembe helyezésében, amely az akkreditációs vagy megfelelőségi követelményekkel rendelkező forgatókönyvekhez nyújt megoldást. Ez az alapszintű tervrajzi minta az [Azure biztonsági teljesítményteszt minta tervezetének](../azure-security-benchmark.md)kiterjesztése. Üzembe helyezi és konfigurálja a hálózati határokat, a figyelést és az egyéb erőforrásokat az [Azure biztonsági teljesítménytesztben](../../../../security/benchmarks/index.yml)definiált szabályzatokkal és egyéb guardrails való igazodva.
 
 ## <a name="architecture"></a>Architektúra
 
@@ -23,7 +23,7 @@ A terv üzembe helyez egy olyan központi virtuális hálózatot, amely közös 
 
 Ez a terv számos Azure-szolgáltatást üzembe helyez, hogy biztonságos, felügyelt, nagyvállalati használatra kész alapot biztosítson. A környezet összetevői:
 
-- [Azure monitor naplókat](../../../../azure-monitor/platform/data-platform-logs.md) és egy Azure Storage-fiókot az erőforrás-naplók, a tevékenységek naplói, a metrikák és a hálózatok forgalmának biztosítása érdekében központi helyen tárolja az egyszerű lekérdezés, elemzés, archiválás és riasztás céljából.
+- [Azure monitor naplókat](../../../../azure-monitor/logs/data-platform-logs.md) és egy Azure Storage-fiókot az erőforrás-naplók, a tevékenységek naplói, a metrikák és a hálózatok forgalmának biztosítása érdekében központi helyen tárolja az egyszerű lekérdezés, elemzés, archiválás és riasztás céljából.
 - [Azure Security Center](../../../../security-center/security-center-introduction.md) (standard verzió) az Azure-erőforrások veszélyforrások elleni védelmének biztosításához.
 - Az [Azure Virtual Network](../../../../virtual-network/virtual-networks-overview.md) a központban, amely támogatja az alhálózatokat a helyszíni hálózattal való kapcsolathoz, a bejövő és a kimenő adatforgalmat az internethez való csatlakozáshoz, valamint opcionális alhálózatokat a további felügyeleti vagy felügyeleti szolgáltatások üzembe helyezéséhez. A küllő Virtual Network alhálózatokat tartalmaz az alkalmazások számítási feladatainak üzemeltetéséhez. További alhálózatokat az üzembe helyezést követően lehet létrehozni a megfelelő forgatókönyvek támogatásához.
 - [Azure Firewall](../../../../firewall/overview.md) az összes kimenő internetes forgalom átirányításához és a bejövő internetes forgalom engedélyezéséhez a Jump Box használatával. (Az alapértelmezett tűzfalszabályok blokkolják az összes internetes bejövő és kimenő forgalmat, a szabályokat pedig az üzembe helyezés után kell konfigurálni.)

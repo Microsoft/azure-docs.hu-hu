@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 02/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: a784127cfd6019629f1c2714d0f36850406c3b9d
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 3f8e23fdeb0a05d2c19f131cf79a079426a9b494
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99548771"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726495"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Modulok kezelése az Azure Automationben
 
@@ -142,6 +142,7 @@ Az az modul az Automation-fiókba való importálása nem importálja automatiku
 
 * Amikor egy runbook meghívja a parancsmagot egy modulból.
 * Amikor egy runbook explicit módon importálja a modult az [import-Module](/powershell/module/microsoft.powershell.core/import-module) parancsmaggal.
+* Amikor egy runbook explicit módon importálja a modult a [using Module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_using?view=powershell-7.1#module-syntax) utasítással. A using utasítás a Windows PowerShell 5,0-től kezdve támogatott, és támogatja az osztályok és az enumerálási típusok importálását.
 * Ha egy runbook egy másik függő modult importál.
 
 Az az modulokat a Azure Portal importálhatja. Ne feledje, hogy csak a szükséges modulokat importálja, nem a teljes az. Automation-modult. Mivel az [az. accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) a többi az modultól való függőség, ügyeljen arra, hogy a modult minden más előtt importálja.

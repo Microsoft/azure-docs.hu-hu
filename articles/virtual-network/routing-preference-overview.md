@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2021
 ms.author: mnayak
-ms.custom: references_regions
-ms.openlocfilehash: b0235286260910a45523e3236e7ed3a114eaf57f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 56fd9898065dd55b9a56547a775f7f2aa4a56156
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101672949"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693730"
 ---
 # <a name="what-is-routing-preference"></a>Mi az útválasztási beállítás?
 
@@ -71,7 +70,7 @@ A két lehetőség közötti árkülönbség az internetes kimenő adatforgalom 
 
 ## <a name="limitations"></a>Korlátozások
 
-* Az útválasztási beállítások jelenleg nem támogatottak az Ausztrália középső régiójában, Ausztráliában Central2, Kelet-Kanadában, Dél-Brazíliában, Közép-Korea és Dél-Korea területén.
+
 * Az útválasztási beállítások csak a nyilvános IP-címekhez tartozó redundáns szabványos SKU-hoz kompatibilisek. A nyilvános IP-cím alapszintű SKU-jának használata nem támogatott.
 * Az útválasztási beállítások jelenleg csak IPv4 nyilvános IP-címeket támogatnak. Az IPv6 nyilvános IP-címek nem támogatottak.
 

@@ -12,12 +12,12 @@ author: emlisa
 ms.author: emlisa
 ms.reviewer: sstein, emlisa
 ms.date: 10/28/2020
-ms.openlocfilehash: 53b6b4f5d783029cb53de71fe3c47b8cb2d26968
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 5e84831798ec1c5f42facb04a25da9d8631b9d04
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593418"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690583"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Magas rendelkezésre állás Azure SQL Database és SQL felügyelt példányhoz
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -52,7 +52,7 @@ Az általános célú szolgáltatási szint zóna redundáns konfigurációja [A
 
 Az általános célú réteg zónájának redundáns konfigurációja két réteget tartalmaz:  
 
-- Egy állapot-nyilvántartó adatréteget, amely a ZRS PFS-ben (. MDF/. ldf) tárolt adatbázis-fájlokat (a zóna redundáns [tárolási prémium fájlmegosztást](../../storage/files/storage-how-to-create-premium-fileshare.md)) tárolja. A [zóna-redundáns tárolás](../../storage/common/storage-redundancy.md) használatával az adatfájlok és a naplófájlok szinkronban vannak másolva három fizikailag elkülönített Azure rendelkezésre állási zónában.
+- Egy állapot-nyilvántartó adatréteget, amely a ZRS PFS-ben (. MDF/. ldf) tárolt adatbázis-fájlokat (a zóna redundáns [tárolási prémium fájlmegosztást](../../storage/files/storage-how-to-create-file-share.md)) tárolja. A [zóna-redundáns tárolás](../../storage/common/storage-redundancy.md) használatával az adatfájlok és a naplófájlok szinkronban vannak másolva három fizikailag elkülönített Azure rendelkezésre állási zónában.
 - Az sqlservr.exe folyamatot futtató állapot nélküli számítási réteg, amely csak átmeneti és gyorsítótárazott adatokból áll, például a TempDB, a csatolt SSD modell-adatbázisainak, valamint a gyorsítótár, a puffer-készlet és a oszlopcentrikus-készletnek a memóriában történő megtervezésére. Ezt az állapot nélküli csomópontot az Azure Service Fabric üzemelteti, amely inicializálja sqlservr.exe, szabályozza a csomópont állapotát, és szükség esetén feladatátvételt hajt végre egy másik csomóponton. A felesleges általános célú adatbázisok esetében a tartalék kapacitású csomópontok más Availability Zonesban azonnal elérhetők a feladatátvételhez.
 
 Az általános célú szolgáltatási rétegek magas rendelkezésre állású architektúrájának zóna redundáns verzióját az alábbi ábra szemlélteti:

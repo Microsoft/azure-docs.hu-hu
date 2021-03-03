@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: f0d062766f0a5d58fbcaaa32b1df5a5e40c783b4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 17c7609afeef8b5129e3bfe252def74b45cb4208
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100613488"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719950"
 ---
 # <a name="install-the-azure-monitor-agent-preview"></a>A Azure Monitor-ügynök telepítése (előzetes verzió)
 Ez a cikk a [Azure monitor ügynöknek](azure-monitor-agent-overview.md) az Azure-beli virtuális gépeken és az Azure arc-kompatibilis kiszolgálókon való telepítésének különböző lehetőségeit ismerteti, valamint az [adatgyűjtési szabályokkal rendelkező társítások](data-collection-rule-azure-monitor-agent.md) létrehozási lehetőségeit, amelyek meghatározzák, hogy az ügynöknek milyen adatokat kell gyűjtenie.
@@ -42,7 +42,7 @@ A Resource Manager-sablonok segítségével telepítheti az Azure Monitor ügyn�
 Példák az ügynök telepítésére és a társítás létrehozásához a következőkből: 
 
 - [Sablon a Azure Monitor-ügynök telepítéséhez (Azure és Azure arc)](../agents/resource-manager-agent.md#azure-monitor-agent-preview) 
-- [Az adatgyűjtési szabállyal való társítást létrehozó sablon](../samples/resource-manager-data-collection-rules.md)
+- [Az adatgyűjtési szabállyal való társítást létrehozó sablon](./resource-manager-data-collection-rules.md)
 
 Telepítse a sablonokat a [Resource Manager-sablonok bármely üzembe helyezési módszerével](../../azure-resource-manager/templates/deploy-powershell.md) , például az alábbi parancsokkal.
 

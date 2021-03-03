@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperf-fy21q1
-ms.date: 02/16/2021
+ms.date: 02/24/2021
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 56d04abe73020cef09383d4f79a58f037c266a93
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 6e5b553ea3be7e5b4b1d8cb396b35fdf2d5796a9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547996"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721769"
 ---
 # <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
@@ -55,7 +55,8 @@ Az Azure Firewall az alábbi ismert hibákkal rendelkezik:
 
 |Probléma  |Leírás  |Kockázatcsökkentés  |
 |---------|---------|---------|
-A nem TCP/UDP-protokollokra (például ICMP) vonatkozó hálózati szűrési szabályok nem működnek az internetre irányuló forgalom esetében|A nem TCP/UDP protokollok hálózati szűrési szabályai nem működnek a SNAT a nyilvános IP-címével. A nem TCP/UDP-protokollok a küllők alhálózatai és a virtuális hálózatok között támogatottak.|Az Azure Firewall a Standard Load Balancert használja, [amely jelenleg nem támogatja a forráshálózati címfordítást az IP-protokollokon](../load-balancer/load-balancer-overview.md). A forgatókönyv egy későbbi kiadásban való támogatásának lehetőségeit vizsgálja.|
+|Ha az IP-címről származó szabályt az IP-csoportra frissíti, vagy fordítva a portálon keresztül, mindkét típus mentésre kerül, de csak egy jelenik meg a portálon.|Ez a probléma klasszikus szabályokkal történik.<br><br>Ha a portál használatával frissíti egy NAT-szabály forrásának típusát az IP-címről az IP-csoportra, vagy fordítva, akkor mindkét típust menti a háttérbe, de csak az újonnan frissített típust jeleníti meg.<br><br>Ugyanez a probléma akkor jelentkezik, ha a hálózat vagy az alkalmazás szabályának típusát IP-címről vagy IP-csoport típusra frissíti, vagy fordítva.|A portál javításának célja a 2021. márciusi.<br><br>Addig is használhatja a Azure PowerShell, az Azure CLI vagy az API-t egy szabály módosításához az IP-címről az IP-csoportra, vagy fordítva.|
+|A nem TCP/UDP-protokollokra (például ICMP) vonatkozó hálózati szűrési szabályok nem működnek az internetre irányuló forgalom esetében|A nem TCP/UDP protokollok hálózati szűrési szabályai nem működnek a SNAT a nyilvános IP-címével. A nem TCP/UDP-protokollok a küllők alhálózatai és a virtuális hálózatok között támogatottak.|Az Azure Firewall a Standard Load Balancert használja, [amely jelenleg nem támogatja a forráshálózati címfordítást az IP-protokollokon](../load-balancer/load-balancer-overview.md). A forgatókönyv egy későbbi kiadásban való támogatásának lehetőségeit vizsgálja.|
 |A PowerShell és a CLI nem támogatja az ICMP-t|A Azure PowerShell és a CLI nem támogatja az ICMP-t érvényes protokollként a hálózati szabályokban.|Az ICMP protokollt a Portálon és a REST API is használhatja protokollként. Hamarosan felvesszük az ICMP-t a PowerShellben és a CLI-ben.|
 |Az FQDN-címkék protokoll: port megadását igénylik|Az FQDN-címkékkel rendelkező alkalmazás-szabályok port: protokoll-definíciót igényelnek.|A port:protokoll értékként használhat **https**-t. Azon dolgozunk, hogy ezt a mezőt nem kötelező megadni, ha FQDN-címkéket használunk.|
 |A tűzfal más erőforráscsoporthoz vagy előfizetésbe való áthelyezése nem támogatott|A tűzfal más erőforráscsoporthoz vagy előfizetésbe való áthelyezése nem támogatott.|A funkció támogatása a közúti térképen is elérhető. Ahhoz, hogy egy tűzfalat áthelyezzen másik erőforráscsoportba vagy előfizetésbe, először törölnie kell az aktuális példányt, és újra létre kell hoznia az új erőforráscsoportban vagy előfizetésben.|

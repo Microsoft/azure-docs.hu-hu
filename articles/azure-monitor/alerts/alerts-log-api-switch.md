@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: 55f433786ed9dd40b08bb64395a6bbc50800add4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e07abdda805205701a10ca3bf295b7b0d2e71766
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100616288"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718029"
 ---
 # <a name="upgrade-to-the-current-log-alerts-api-from-legacy-log-analytics-alert-api"></a>Frissítés az aktuális log riasztások API-ra örökölt Log Analytics riasztási API-ból
 
@@ -19,23 +19,23 @@ ms.locfileid: "100616288"
 > Ez a cikk csak az Azure Public szolgáltatásra vonatkozik (**nem** Azure Government vagy az Azure China Cloud-ba).
 
 > [!NOTE]
-> Ha a felhasználó úgy dönt, hogy a jelenlegi [SCHEDULEDQUERYRULES API](/rest/api/monitor/scheduledqueryrules) -ra vált, nem lehet visszatérni a régebbi [örökölt log Analytics riasztási API](../platform/api-alerts.md)-ra.
+> Ha a felhasználó úgy dönt, hogy a jelenlegi [SCHEDULEDQUERYRULES API](/rest/api/monitor/scheduledqueryrules) -ra vált, nem lehet visszatérni a régebbi [örökölt log Analytics riasztási API](./api-alerts.md)-ra.
 
-A múltban a felhasználók a [korábbi log Analytics riasztási API](../platform/api-alerts.md) -t használták a naplózási riasztási szabályok kezeléséhez. Az aktuális munkaterületek a [SCHEDULEDQUERYRULES API](/rest/api/monitor/scheduledqueryrules)-t használják. Ez a cikk a régi API-ról az aktuális API-ra való áttérés előnyeit és folyamatát ismerteti.
+A múltban a felhasználók a [korábbi log Analytics riasztási API](./api-alerts.md) -t használták a naplózási riasztási szabályok kezeléséhez. Az aktuális munkaterületek a [SCHEDULEDQUERYRULES API](/rest/api/monitor/scheduledqueryrules)-t használják. Ez a cikk a régi API-ról az aktuális API-ra való áttérés előnyeit és folyamatát ismerteti.
 
 ## <a name="benefits"></a>Előnyök
 
 - Egyetlen sablon a riasztási szabályok létrehozásához (korábban három különálló sablon szükséges).
 - Önálló API Log Analytics munkaterületekhez vagy Application Insights erőforrásokhoz.
-- A [PowerShell-parancsmagok támogatják a használatát](../platform/alerts-log.md#managing-log-alerts-using-powershell).
+- A [PowerShell-parancsmagok támogatják a használatát](./alerts-log.md#managing-log-alerts-using-powershell).
 - A megszakítások összehangolása az összes többi riasztási típussal.
-- Több olyan külső erőforrásra (például Log Analytics munkaterületekre vagy Application Insights erőforrásokra) [kiterjedő több munkaterület-naplózási riasztás](../log-query/cross-workspace-query.md) létrehozása.
+- Több olyan külső erőforrásra (például Log Analytics munkaterületekre vagy Application Insights erőforrásokra) [kiterjedő több munkaterület-naplózási riasztás](../logs/cross-workspace-query.md) létrehozása.
 - A felhasználók megadhatnak dimenziókat a riasztások felosztásához az "aggregált on" paraméter használatával.
 - A naplózási riasztások kiterjesztett időtartama legfeljebb két napos adat lehet (korábban csak egy nap).
 
 ## <a name="impact"></a>Hatás
 
-- Minden új szabályt létre kell hozni/szerkeszteni kell az aktuális API-val. Tekintse meg a [minta használata az Azure Resource template](alerts-log-create-templates.md) használatával és a [minta használata a PowerShell](../platform/alerts-log.md#managing-log-alerts-using-powershell)segítségével című témakört.
+- Minden új szabályt létre kell hozni/szerkeszteni kell az aktuális API-val. Tekintse meg a [minta használata az Azure Resource template](alerts-log-create-templates.md) használatával és a [minta használata a PowerShell](./alerts-log.md#managing-log-alerts-using-powershell)segítségével című témakört.
 - Mivel a szabályok Azure Resource Manager nyomon követett erőforrásokat az aktuális API-ban, és egyedinek kell lenniük, a szabályok erőforrás-azonosítója a következő struktúrára fog váltani: `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` . A riasztási szabály megjelenítendő nevei változatlanok maradnak.
 
 ## <a name="process"></a>Folyamat
@@ -104,7 +104,7 @@ Ha a Log Analytics munkaterület nincs bekapcsolva, a válasz a következőket:
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a [Azure monitor-log riasztásokról](../platform/alerts-unified-log.md).
+- További információ a [Azure monitor-log riasztásokról](./alerts-unified-log.md).
 - Ismerje meg, hogyan [kezelheti a naplózási riasztásokat az API használatával](alerts-log-create-templates.md).
-- Megtudhatja, hogyan [kezelheti a naplózási riasztásokat a PowerShell használatával](../platform/alerts-log.md#managing-log-alerts-using-powershell).
-- További információ az [Azure-riasztások felhasználói élményéről](../platform/alerts-overview.md).
+- Megtudhatja, hogyan [kezelheti a naplózási riasztásokat a PowerShell használatával](./alerts-log.md#managing-log-alerts-using-powershell).
+- További információ az [Azure-riasztások felhasználói élményéről](./alerts-overview.md).

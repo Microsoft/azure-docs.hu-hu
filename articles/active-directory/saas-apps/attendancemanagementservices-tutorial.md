@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: ec07d36ad544f293064e877520bb4a7a4c9b269d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 1f404d3613f9de8daadc4bb2ceb39282cf3b619e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457616"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688994"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>Oktatóanyag: Azure Active Directory integráció a részvételi felügyeleti szolgáltatásokkal
 
@@ -67,7 +67,7 @@ A részvételi kezelési szolgáltatások Azure AD-be való integrálásának ko
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a részvételi kezelési szolgáltatásokkal a **Britta Simon**nevű teszt felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a részvételi kezelési szolgáltatásokkal a **Britta Simon** nevű teszt felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolatra van szükség a részvételi felügyeleti szolgáltatásokban.
 
 Az Azure AD egyszeri bejelentkezés a részvételi felügyeleti szolgáltatásokkal való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés a következő lépésekkel konfigurálható a részvételi felügyeleti szolgáltatásokkal:
 
-1. A [Azure Portal](https://portal.azure.com/)a **részvételi felügyeleti szolgáltatások** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **részvételi felügyeleti szolgáltatások** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -134,7 +134,7 @@ Az Azure AD egyszeri bejelentkezés a következő lépésekkel konfigurálható 
 
     ![Képernyőfelvétel: ablak, amelyen elvégezheti az ebben a lépésben ismertetett feladatokat.](./media/attendancemanagementservices-tutorial/user2.png)
 
-    a. Válassza **az SAML-hitelesítés használata**lehetőséget.
+    a. Válassza **az SAML-hitelesítés használata** lehetőséget.
 
     b. Az **azonosító** szövegmezőbe illessze be a Azure Portalból másolt **Azure ad-azonosító** érték értékét.
 
@@ -142,7 +142,7 @@ Az Azure AD egyszeri bejelentkezés a következő lépésekkel konfigurálható 
 
     d. Kattintson a **fájl kiválasztása** lehetőségre az Azure ad-ből letöltött tanúsítvány feltöltéséhez.
 
-    e. Válassza a **jelszó-hitelesítés letiltása**lehetőséget.
+    e. Válassza a **jelszó-hitelesítés letiltása** lehetőséget.
 
     f. Kattintson a **regisztráció** elemre.
 
@@ -150,7 +150,7 @@ Az Azure AD egyszeri bejelentkezés a következő lépésekkel konfigurálható 
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -174,15 +174,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon az Azure egyszeri bejelentkezés használatára teszi lehetővé, hogy hozzáférést biztosítson a részvételi felügyeleti szolgáltatásokhoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **részvételi kezelési szolgáltatások**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **részvételi kezelési szolgáltatások** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **részvételi kezelési szolgáltatások**elemet.
+2. Az alkalmazások listában válassza a **részvételi kezelési szolgáltatások** elemet.
 
     ![A részvételi felügyeleti szolgáltatások hivatkozása az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -208,7 +208,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a r�
 
     ![A képernyőképen a nem latin karaktereket használó lapokon kiválasztott felhasználói felügyelet látható.](./media/attendancemanagementservices-tutorial/user5.png)
 
-1. Kattintson az **új szabályok bejelentkezés**elemre.
+1. Kattintson az **új szabályok bejelentkezés** elemre.
 
     ![A képernyőképen a plusz lehetőség kiválasztása látható.](./media/attendancemanagementservices-tutorial/user3.png)
 
@@ -216,7 +216,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a r�
 
     ![Képernyőfelvétel: a leírt feladatok elvégzéséhez használható ablak.](./media/attendancemanagementservices-tutorial/user4.png)
 
-    a. A **OBCiD** szövegmezőbe írja be a felhasználóhoz hasonló e-mail címet `BrittaSimon\@contoso.com` .
+    a. A **OBCiD** szövegmezőbe írja be a felhasználóhoz hasonló e-mail címet `BrittaSimon@contoso.com` .
 
     b. A **jelszó** szövegmezőbe írja be a felhasználó jelszavát.
 

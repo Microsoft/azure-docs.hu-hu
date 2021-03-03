@@ -31,6 +31,8 @@
       items:
         - name: A csatlakoztatott gépi ügynök áttekintése
           href: agent-overview.md
+        - name: A helyszíni üzembe helyezés tervezése
+          href: plan-at-scale-deployment.md
         - name: Gépek csatlakoztatása az Azure Archoz az Azure Portalról
           href: onboard-portal.md
         - name: Nagy mennyiségű gép csatlakoztatása szolgáltatásnév használatával

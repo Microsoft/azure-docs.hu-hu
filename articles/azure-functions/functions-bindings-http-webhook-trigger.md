@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: e64f8cded851427636a19e16cccd78932dd6baac
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: a9bb87206ccb0dca56c1744d5578eac7a17418c7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054957"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726393"
 ---
 # <a name="azure-functions-http-trigger"></a>HTTP-trigger Azure Functions
 
@@ -547,7 +547,7 @@ A Python nem támogatja az attribútumokat.
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `HttpTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 | **típusa** | n.a.| Kötelező – a következőre kell beállítani: `httpTrigger` . |
 | **irányba** | n.a.| Kötelező – a következőre kell beállítani: `in` . |
@@ -751,7 +751,7 @@ A következő konfiguráció azt mutatja be, hogyan adja `{id}` át a paraméter
 
 Ha útvonal-paramétereket használ, az `invoke_URL_template` automatikusan létrejön a függvényhez. Az ügyfelek az URL-címmel megtudhatják, hogy milyen paramétereket kell átadniuk az URL-címben, amikor a függvényt az URL-cím használatával hívja meg. Navigáljon a [Azure Portal](https://portal.azure.com) , majd válassza a **függvény URL-címének lekérése** lehetőséget a http által aktivált függvények egyikéhez.
 
-Az Azure Resource Manager API-k használatával programozott módon férhet hozzá a `invoke_URL_template` [List](https://docs.microsoft.com/rest/api/appservice/webapps/listfunctions) functions vagy a [Get függvényhez](https://docs.microsoft.com/rest/api/appservice/webapps/getfunction).
+Az Azure Resource Manager API-k használatával programozott módon férhet hozzá a `invoke_URL_template` [List](/rest/api/appservice/webapps/listfunctions) functions vagy a [Get függvényhez](/rest/api/appservice/webapps/getfunction).
 
 ## <a name="working-with-client-identities"></a>Ügyfél-identitások használata
 

@@ -3,13 +3,13 @@ title: A Azure Monitorrel integrált partnerek
 description: Ismerkedjen meg Azure Monitor partnereivel, és hogyan férhet hozzá az integrációhoz szükséges dokumentációhoz.
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 09/21/2020
-ms.openlocfilehash: 5f97097d21beab12c5f58161751a1bc340fa6cf7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/19/2021
+ms.openlocfilehash: 8b4a30fb26a0b66d31fe16016e0a88fbfb9bbd03
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100616808"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710991"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor-partnerintegrációk
 
@@ -101,6 +101,8 @@ Az új Azure-Datadog integráció révén a szervezetek mostantól teljes mért�
 -   Az Azure-előfizetés számlázásával egységes számlázást kaphat a Datadoggal szolgáltatáshoz.
 
 Regisztráljon az új Datadoggal-integráció [nyilvános előzetes](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4z3T2aGXUZPslUNJ3YpcapURFBHSUJIMVJTWDM5VUFPMVkyTVhMVlYzMS4u) verziójára az Azure-ban.  A nyilvános előzetes verzió az Azure Marketplace-en lesz elérhető, október 2020.
+
+Előfizetés az [Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/datadog1591740804488.dd_liftr_v2?tab=Overview) elérhető "datadoggal-integráció az Azure-nal" előzetes verziójára
 
 Ha továbbra is az előző manuálisan konfigurált integrációt használja, tekintse [meg a dokumentációt a datadoggal webhelyén](https://docs.datadoghq.com/integrations/azure/).
 
@@ -333,15 +335,15 @@ A Turbonomic a teljesítmény, a költséghatékonyság és a megfelelőség val
 
 A figyelési és az Azure Event hub szolgáltatásba való átirányításához Azure Monitor használatával könnyedén integrálhat néhány külső SIEM-és figyelési eszközzel. A következő partnerekről ismert, hogy az Event hub használatával integrálva van. 
 
-| Eszköz | Az Azure-ban üzemeltetve | Description |
+| Eszköz | Az Azure-ban üzemeltetve | Leírás |
 |:---|:---| :---|
-|  IBM QRadar | No | A Microsoft Azure DSM és Microsoft Azure Event hub protokoll letölthető [az IBM támogatási webhelyéről](https://www.ibm.com/support). Az Azure-nal való integrációról a [QRADAR DSM-konfigurációjában](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)olvashat bővebben. |
-| Splunk | No | A [Splunk Microsoft Azure Add-On](https://splunkbase.splunk.com/app/3757/) egy nyílt forráskódú projekt, amely elérhető a Splunkbase-ben. <br><br> Ha nem telepíthet bővítményt a splunk-példányban, például ha proxyt használ, vagy ha a splunk-felhőben fut, ezeket az eseményeket a [splunk Azure Function](https://github.com/Microsoft/AzureFunctionforSplunkVS)használatával továbbíthatja a splunk http-esemény gyűjtője számára, amelyet az Event hub új üzenetei is aktiválnak. |
-| SumoLogic | No | Az SumoLogic adatok az Event hub-ból való felhasználásának beállítására vonatkozó utasítások [Az Azure-beli audit-alkalmazás eseménynaplójában érhetők el az Event hub-ból](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub). |
-| ArcSight | No | A ArcSight Azure Event hub intelligens összekötő a [ArcSight intelligens összekötő gyűjteményének](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)részeként érhető el. |
-| Syslog-kiszolgáló | No | Ha Azure Monitor-adatforrást közvetlenül egy syslog-kiszolgálóra szeretné továbbítani, használhat egy [Azure-függvényen alapuló megoldást](https://github.com/miguelangelopereira/azuremonitor2syslog/).
-| LogRhythm | No| [Itt](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)találhat útmutatást a naplók LogRhythm való összegyűjtéséhez. 
-|Logz.io | Yes | További információ: [Ismerkedés az Azure-on futó Java-alkalmazások Logz.IO használatával a figyelés és a naplózás](/azure/developer/java/fundamentals/java-get-started-with-logzio) használatába
+|  IBM QRadar | Nem | A Microsoft Azure DSM és Microsoft Azure Event hub protokoll letölthető [az IBM támogatási webhelyéről](https://www.ibm.com/support). Az Azure-nal való integrációról a [QRADAR DSM-konfigurációjában](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)olvashat bővebben. |
+| Splunk | Nem | A [Splunk Microsoft Azure Add-On](https://splunkbase.splunk.com/app/3757/) egy nyílt forráskódú projekt, amely elérhető a Splunkbase-ben. <br><br> Ha nem telepíthet bővítményt a splunk-példányban, például ha proxyt használ, vagy ha a splunk-felhőben fut, ezeket az eseményeket a [splunk Azure Function](https://github.com/Microsoft/AzureFunctionforSplunkVS)használatával továbbíthatja a splunk http-esemény gyűjtője számára, amelyet az Event hub új üzenetei is aktiválnak. |
+| SumoLogic | Nem | Az SumoLogic adatok az Event hub-ból való felhasználásának beállítására vonatkozó utasítások [Az Azure-beli audit-alkalmazás eseménynaplójában érhetők el az Event hub-ból](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub). |
+| ArcSight | Nem | A ArcSight Azure Event hub intelligens összekötő a [ArcSight intelligens összekötő gyűjteményének](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)részeként érhető el. |
+| Syslog-kiszolgáló | Nem | Ha Azure Monitor-adatforrást közvetlenül egy syslog-kiszolgálóra szeretné továbbítani, használhat egy [Azure-függvényen alapuló megoldást](https://github.com/miguelangelopereira/azuremonitor2syslog/).
+| LogRhythm | Nem| [Itt](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)találhat útmutatást a naplók LogRhythm való összegyűjtéséhez. 
+|Logz.io | Igen | További információ: [Ismerkedés az Azure-on futó Java-alkalmazások Logz.IO használatával a figyelés és a naplózás](/azure/developer/java/fundamentals/java-get-started-with-logzio) használatába
 
 
 ## <a name="next-steps"></a>Következő lépések

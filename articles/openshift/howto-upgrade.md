@@ -7,12 +7,12 @@ ms.date: 1/10/2021
 author: sakthi-vetrivel
 ms.author: suvetriv
 keywords: ARO, openshift, az ARO, Red Hat, CLI
-ms.openlocfilehash: 2c2c8607374493aa4e1135bbef0156b9c0b66fa6
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 742da12bd3a10cd1f541e9c43f654cfe7df04340
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100634975"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720885"
 ---
 # <a name="upgrade-an-azure-red-hat-openshift-aro-cluster"></a>Azure Red Hat OpenShift-(ARO-) fürt frissítése
 
@@ -20,7 +20,7 @@ Az ARO-fürt életciklusának része a legújabb OpenShift-verzió rendszeres fr
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ehhez a cikkhez az Azure CLI újabb verziójának 2.0.65 kell futtatnia. Az aktuális verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli) ismertető témakört.
+Ehhez a cikkhez az Azure CLI újabb verziójának 2.0.65 kell futtatnia. Az aktuális verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető témakört.
 
 Ez a cikk azt feltételezi, hogy egy meglévő Azure Red Hat OpenShift-fürthöz hozzáférése van jogosultságokkal rendelkező felhasználóként `admin` .
 
@@ -39,4 +39,3 @@ Válassza ki a frissíteni kívánt verziót, majd kattintson a **frissítés** 
 ## <a name="next-steps"></a>Következő lépések
 - [Az ARO-fürtök frissítése az OC CLI használatával](https://docs.openshift.com/container-platform/4.6/updating/updating-cluster-between-minor.html)
 - Az elérhető OpenShift-tároló platform-tanácsadókkal és-frissítésekkel kapcsolatos információkat a Customer Portal [hibajavítások című szakaszában](https://access.redhat.com/downloads/content/290/ver=4.6/rhel---8/4.6.0/x86_64/product-errata) találja.
-  

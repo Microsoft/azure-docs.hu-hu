@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 67902073b1484835d23566c91cbfae6f1d80d249
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 47ea5ea73c581313f90791ca6d7892ebad3f666b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900469"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690685"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>Oktatóanyag: két felügyelt példány közötti replikáció konfigurálása
 
@@ -51,7 +51,7 @@ Ha úgy konfigurálja az SQL felügyelt példányt, hogy közzétevőként és/v
 - A közzétevő felügyelt példánya ugyanazon a virtuális hálózaton van, mint a terjesztő és az előfizető, vagy a [VPN-átjárók](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) mind a három entitás virtuális hálózatai között vannak konfigurálva. 
 - A kapcsolat SQL-hitelesítést használ a replikációs résztvevők között.
 - Egy Azure Storage-fiók megosztása a replikációs munkakönyvtárhoz.
-- Az 445-as (TCP kimenő) port a felügyelt példányok NSG biztonsági szabályaiban van megnyitva az Azure-fájlmegosztás eléréséhez.  Ha hibát tapasztal `failed to connect to azure storage \<storage account name> with os error 53` , hozzá kell adnia egy kimenő szabályt a megfelelő SQL felügyelt példány alhálózatának NSG.
+- Az 445-as (TCP kimenő) port a felügyelt példányok NSG biztonsági szabályaiban van megnyitva az Azure-fájlmegosztás eléréséhez.  Ha hibát tapasztal `failed to connect to azure storage <storage account name> with os error 53` , hozzá kell adnia egy kimenő szabályt a megfelelő SQL felügyelt példány alhálózatának NSG.
 
 ## <a name="1---create-a-resource-group"></a>1 – erőforráscsoport létrehozása
 
@@ -293,7 +293,7 @@ Futtassa az alábbi T-SQL-kódrészletet további sorok beszúrásához a közz�
 INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A kiadvány eldobásához futtassa az alábbi T-SQL-parancsot:
 

@@ -4,12 +4,12 @@ description: Az általános riasztási séma megismerése, miért érdemes haszn
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: aa619976c8fa03b925d66e884ad03fc4e385693e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 70e37f8f1c9391eee5901f611bae579efe1cd9b9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100614715"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737290"
 ---
 # <a name="common-alert-schema"></a>Gyakori riasztási séma
 
@@ -52,7 +52,7 @@ A közös riasztási sémát a Portálon és a REST APIon keresztül is engedél
 > 1. A következő típusú riasztások alapértelmezés szerint támogatják a közös sémát (nem kötelező megadni):
 >     * Intelligens észlelési riasztások
 > 1. A következő típusú riasztások jelenleg nem támogatják a közös sémát:
->     * [Azure monitor for VMS](../insights/vminsights-overview.md) által generált riasztások
+>     * A VM- [ismeretek](../vm/vminsights-overview.md) által generált riasztások
 >     * [Azure Cost Management](../../cost-management-billing/manage/cost-management-budget-scenario.md) által generált riasztások
 
 ### <a name="through-the-azure-portal"></a>A Azure Portal

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/24/2020
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
-ms.openlocfilehash: f50628395526783face11fcb1438e2716135b640
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d22174b269ba9cea3b2c9cb9de2b5521df2786fa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584026"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704412"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Azure Monitor beállítása a Python-alkalmazáshoz
 
@@ -221,6 +221,15 @@ A nyomon követett telemetria Azure Monitorba való elküldése előtt történ�
 
 ### <a name="metrics"></a>Mérőszámok
 
+A OpenCensus. stats 4 aggregációs módszert támogat, de részleges támogatást biztosít a Azure Monitor számára:
+
+- **Darabszám:** A mérési pontok számának száma. Az érték kumulatív, az újraindításkor csak 0-ra növelhető és állítható vissza. 
+- **Összeg:** A mérési pontok összege. Az érték kumulatív, az újraindításkor csak 0-ra növelhető és állítható vissza. 
+- **LastValue:** Megtartja az utolsó rögzített értéket, minden mást elveszít.
+- **Eloszlás:** A mérési pontok hisztogram eloszlása **Az Azure-exportőr nem támogatja** ezt a metódust.
+
+### <a name="count-aggregation-example"></a>Számlálási összesítési példa
+
 1. Először hozzon elő néhány helyi metrikai adatokat. Egy egyszerű mérőszámot hozunk létre, amely nyomon követheti, hogy a felhasználó hányszor válassza ki az **ENTER** billentyűt.
 
     ```python
@@ -320,7 +329,7 @@ A nyomon követett telemetria Azure Monitorba való elküldése előtt történ�
         main()
     ```
 
-1. Az exportőr rögzített időközönként küld metrikai adatokat Azure Monitor. Az alapértelmezett érték 15 másodpercenként. Egyetlen mérőszámot követünk nyomon, így a metrikai adatok minden, a benne foglalt értékkel és időbélyegzővel rendelkeznek, minden intervallumban elküldve. Az adat a alatt található `customMetrics` .
+1. Az exportőr rögzített időközönként küld metrikai adatokat Azure Monitor. Az alapértelmezett érték 15 másodpercenként. Egyetlen mérőszámot követünk nyomon, így a metrikai adatok minden, a benne foglalt értékkel és időbélyegzővel rendelkeznek, minden intervallumban elküldve. Az érték kumulatív, az újraindításkor csak 0-ra növelhető és állítható vissza. Az itt található `customMetrics` , de a `customMetrics` Tulajdonságok valueCount, a valueSum, a valueMin, a valueMax és a valueStdDev tulajdonságokat nem használjuk fel hatékonyan.
 
 #### <a name="performance-counters"></a>Teljesítményszámlálók
 

@@ -7,19 +7,19 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 9da725c433ad5d6233fd164d256692ca407714fc
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 16546432c8c0a23d5c9dc471fe8c62ced5eca993
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206452"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687532"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>Számlázási adatok feltöltése az Azure-ba, és megtekintés a Azure Portal
 
 > [!IMPORTANT] 
->  Az előzetes verzió ideje alatt az Azure arc-kompatibilis adatszolgáltatások használata díjmentes. Bár a számlázási rendszer befejezi a teljes számlázási mérőszámot, a $0 értékre van állítva.  Ha ezt a forgatókönyvet követi, a számlázási adatokat a jelenleg **hibrid adatszolgáltatásoknak** és a Microsoft nevű típusú erőforrásoknak is megtekintheti **. AzureData/ `<resource type>` **. Ekkor megtekintheti az egyes adatszolgáltatások rekordjait – az Azure-ívet, amelyet Ön hoz létre, de minden egyes rekordot $0-ra számlázunk.
+>  Az előzetes verzió ideje alatt az Azure arc-kompatibilis adatszolgáltatások használata díjmentes. Bár a számlázási rendszer befejezi a teljes számlázási mérőszámot, a $0 értékre van állítva.  Ha ezt a forgatókönyvet követi, a számlázási adatokat a jelenleg **hibrid adatszolgáltatásoknak** és a Microsoft nevű típusú erőforrásoknak is megtekintheti **. AzureData/ `<resource type>`**. Ekkor megtekintheti az egyes adatszolgáltatások rekordjait – az Azure-ívet, amelyet Ön hoz létre, de minden egyes rekordot $0-ra számlázunk.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -111,8 +111,9 @@ azdata arc dc upload -p usage.json
 
 A következő lépésekkel tekintheti meg a számlázási adatAzure Portalt:
 
-1. Nyissa meg a Azure Portal a speciális URL-cím használatával:  [https://aka.ms/arcdata](https://aka.ms/arcdata) .
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 1. A képernyő felső részén található keresőmezőbe **Cost Management** majd kattintson a Cost Management szolgáltatásra.
+1. A **Cost Management áttekintés** alatt kattintson a **Cost Management** fülre.
 1. Kattintson a bal oldali **Cost Analysis** lapra.
 1. A nézet tetején kattintson a **Cost by Resource (erőforrás-ellenőrzés** ) gombra.
 1. Győződjön meg arról, hogy a hatóköre arra az előfizetésre van beállítva, amelyben az adatszolgáltatási erőforrásokat létrehozták.
@@ -150,7 +151,7 @@ A Azure Portalban ellenőrizheti a számlázási adatfájlokat.
 > [!IMPORTANT]
 > Miután létrehozta a számlázási exportálási feladatot, várjon 4 órát, mielőtt folytatná a következő lépéseket.
 
-1. A portál felső részén található keresőmezőbe írja be a **Storage-fiókok** kifejezést, majd kattintson a **Storage-fiókok**elemre.
+1. A portál felső részén található keresőmezőbe írja be a **Storage-fiókok** kifejezést, majd kattintson a **Storage-fiókok** elemre.
 3. Kattintson arra a Storage-fiókra, amelyet a fenti számlázási exportálási feladatok létrehozásakor adott meg.
 4. Kattintson a bal oldalon található tárolók elemre.
 5. Kattintson arra a tárolóra, amelyet a fenti számlázási exportálási feladatok létrehozásakor adott meg.
@@ -158,5 +159,5 @@ A Azure Portalban ellenőrizheti a számlázási adatfájlokat.
 7. Bontsa ki a létrehozott mappákat és fájlokat, majd kattintson az egyik létrehozott. csv fájlra.
 8. Kattintson a **Letöltés** gombra, amely menti a fájlt a helyi letöltések mappájába.
 9. Nyissa meg a fájlt egy. csv-fájl megjelenítővel, például az Excel használatával.
-10. Szűrje az eredményeket úgy, hogy csak az **Erőforrás típusú**sorok jelenjenek meg  =  `Microsoft.AzureData/<data service resource type` .
+10. Szűrje az eredményeket úgy, hogy csak az **Erőforrás típusú** sorok jelenjenek meg  =  `Microsoft.AzureData/<data service resource type` .
 11. Látni fogja, hogy hány óra elteltével használták a rendszer a példányt a UsageQuantity oszlop aktuális 24 órában.

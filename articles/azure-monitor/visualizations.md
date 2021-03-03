@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/25/2021
-ms.openlocfilehash: ffdafbe991d3cd78e45c4804fd6cc5377099acbc
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 29164bbb205e9f3ad59ac28200b5c6cd1e47bf39
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589420"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707574"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Adatok megjelenítése az Azure Monitorból
 Ez a cikk az Azure Monitorban tárolt napló-és metrikai adatok megjelenítéséhez használható módszerek összegzését tartalmazza.
@@ -138,7 +138,7 @@ A naplózási és metrikai adatokban lévő adatokhoz a Azure Monitor API-n kere
 - A lekérdezések mérete legfeljebb 8 MB, a lekérdezés végrehajtási ideje pedig 110 másodperc.
 
 ## <a name="next-steps"></a>Következő lépések
-- Tudnivalók a [Azure monitor által gyűjtött adatokról](/data-platform.md).
+- Tudnivalók a [Azure monitor által gyűjtött adatokról](data-platform.md).
 - Ismerje meg az [Azure-irányítópultokat](../azure-portal/azure-portal-dashboards.md).
 - Tudnivalók a [Metrikaböngésző](essentials/metrics-getting-started.md)
 - További tudnivalók a [munkafüzetek](./visualize/workbooks-overview.md)használatáról.

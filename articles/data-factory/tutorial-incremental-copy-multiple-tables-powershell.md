@@ -7,17 +7,17 @@ ms.reviewer: douglasl, maghan
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 06/10/2020
-ms.openlocfilehash: bf6d4642b672f2b2d76d567b793349bc40f8550b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/18/2021
+ms.openlocfilehash: bd29c91efe419ec36b2adc337ecfd1ea7fd71f71
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384843"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739317"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>Több táblázatból származó adatok növekményes betöltése SQL Server Azure SQL Database a PowerShell használatával
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ebben az oktatóanyagban egy Azure Data Factory hoz létre egy olyan folyamattal, amely egy SQL Server-adatbázis több táblájából származó különbözeti adatok betöltését Azure SQL Database.    
 

@@ -8,20 +8,20 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 482c11395ff5dbbf2dd5bb8100451c3442f2f333
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: cfa5be01a0d36764086c6c9adf97e6cb166d2bb6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744514"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728161"
 ---
 # <a name="configure-scaling-options-with-azure-cloud-services-extended-support"></a>Skálázási beállítások konfigurálása az Azure Cloud Services (bővített támogatás) 
 
 A feltételek beállíthatók úgy, hogy Cloud Services (kiterjesztett támogatás) központi telepítéseket engedélyezzen a be-és kiskálázáshoz. Ezek a feltételek a CPU-használat, a lemez terhelése és a hálózati terhelés alapján állíthatók be. 
 
 A Cloud Service-környezetek skálázásának konfigurálásakor vegye figyelembe a következő információkat:
-- A skálázás az alapvető használatot befolyásolja. A nagyobb szerepkörű példányok több magot használnak, és csak az előfizetés alapvető korlátján belül méretezhetők. További információk: [Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
-- A várólista-üzenetkezelési küszöbérték alapján történő skálázás támogatott. További információ: Ismerkedés [Az Azure üzenetsor-tárolóval](https://docs.microsoft.com/azure/storage/queues/storage-dotnet-how-to-use-queues).
+- A skálázás az alapvető használatot befolyásolja. A nagyobb szerepkörű példányok több magot használnak, és csak az előfizetés alapvető korlátján belül méretezhetők. További információk: [Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései](../azure-resource-manager/management/azure-subscription-service-limits.md).
+- A várólista-üzenetkezelési küszöbérték alapján történő skálázás támogatott. További információ: Ismerkedés [Az Azure üzenetsor-tárolóval](../storage/queues/storage-dotnet-how-to-use-queues.md).
 - A felhőalapú szolgáltatás (kiterjesztett támogatás) alkalmazásai magas rendelkezésre állásának biztosítása érdekében győződjön meg arról, hogy két vagy több szerepkör-példánnyal kell telepíteni.
 - Az egyéni autoskálázás csak akkor fordulhat elő, ha az összes szerepkör **üzemkész** állapotban van.
 
@@ -61,7 +61,7 @@ A Cloud Service-környezetek skálázásának konfigurálásakor vegye figyelemb
 
     :::image type="content" source="media/enable-scaling-5.png" alt-text="A rendszerkép a Azure Portal meglévő méretezési szabályának módosítását mutatja be":::
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 - Tekintse át a Cloud Services [üzembe helyezésének előfeltételeit](deploy-prerequisite.md) (kiterjesztett támogatás).
 - Tekintse át a Cloud Servicesra vonatkozó [gyakori kérdéseket](faq.md) (kiterjesztett támogatás).
 - A [Azure Portal](deploy-portal.md), a [PowerShell](deploy-powershell.md), a [sablon](deploy-template.md) vagy a [Visual Studio](deploy-visual-studio.md)használatával üzembe helyezhet egy felhőalapú szolgáltatást (kiterjesztett támogatás).

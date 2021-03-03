@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-nov-2020
 ms.topic: tutorial
 ms.date: 02/03/2021
-ms.openlocfilehash: 359f268f69918ccfd9fe34a28c3f8d1c79988393
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 84eed7d48dfe0230ea023d171e2b640bdf50dbe3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575616"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715666"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>Oktatóanyag: a MongoDB migrálása Azure Cosmos DB API-ra a MongoDB online-hoz a DMS használatával
 
@@ -36,7 +36,7 @@ Ez az oktatóanyag azt ismerteti, hogyan lehet a Azure Database Migration Servic
 > * Azure Cosmos DBban lévő adatellenőrzés. 
 > * Ha elkészült, fejezze be az áttelepítést. 
 
-Ebben az oktatóanyagban áttelepít egy adatkészletet egy Azure-beli virtuális gépen üzemeltetett MongoDB, Azure Cosmos DB API-ját a MongoDB számára minimális állásidővel Azure Database Migration Service használatával. Ha még nincs beállítva MongoDB-forrás, tekintse [meg a MongoDB telepítése és konfigurálása Windowsos virtuális gépen az Azure-ban](../virtual-machines/windows/install-mongodb.md)című cikket.
+Ebben az oktatóanyagban áttelepít egy adatkészletet egy Azure-beli virtuális gépen üzemeltetett MongoDB, Azure Cosmos DB API-ját a MongoDB számára minimális állásidővel Azure Database Migration Service használatával. Ha még nincs beállítva MongoDB-forrás, tekintse [meg a MongoDB telepítése és konfigurálása Windowsos virtuális gépen az Azure-ban](/previous-versions/azure/virtual-machines/windows/install-mongodb)című cikket.
 
 > [!NOTE]
 > A Azure Database Migration Service használata az online áttelepítés végrehajtásához a prémium szintű díjszabás alapján kell létrehoznia egy példányt.

@@ -2,15 +2,15 @@
 title: Sablonspecifikációk létrehozása és üzembe helyezése
 description: Leírja, hogyan lehet létrehozni a sablon specifikációit, és megoszthatja őket a szervezet más felhasználóival.
 ms.topic: conceptual
-ms.date: 01/14/2021
+ms.date: 03/02/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 762c483883d391c436065b13b54f127f1618d7f9
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: e4efc63ffa49b1c8ca44fc806e37e4aa91cd76c8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734915"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700388"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager sablon specifikációi (előzetes verzió)
 
@@ -246,6 +246,78 @@ az deployment group create \
 
 ---
 
+## <a name="versioning"></a>Verziókezelés
+
+A sablon specifikációjának létrehozásakor meg kell adnia a verzió nevét. A sablon kódjának megismétlése után frissítheti a meglévő verziót (gyorsjavítások esetén), vagy közzétehet egy új verziót. A verzió egy szöveges karakterlánc. Dönthet úgy, hogy bármely verziószámozási rendszer követését választja, beleértve a szemantikai verziószámozást is. A sablon specifikációjának felhasználója megadhatja a telepítéskor használni kívánt verziót.
+
+## <a name="use-tags"></a>Címkék használata
+
+A [címkék](../management/tag-resources.md) segítségével logikailag rendszerezheti az erőforrásokat. A Azure PowerShell és az Azure CLI használatával hozzáadhat címkéket a sablonhoz:
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+New-AzTemplateSpec `
+  -Name storageSpec `
+  -Version 1.0a `
+  -ResourceGroupName templateSpecsRg `
+  -Location westus2 `
+  -TemplateFile ./mainTemplate.json `
+  -Tag @{Dept="Finance";Environment="Production"}
+```
+
+# <a name="cli"></a>[Parancssori felület](#tab/azure-cli)
+
+```azurecli
+az ts create \
+  --name storageSpec \
+  --version "1.0a" \
+  --resource-group templateSpecRG \
+  --location "westus2" \
+  --template-file "./mainTemplate.json" \
+  --tags Dept=Finance Environment=Production
+```
+
+---
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+Set-AzTemplateSpec `
+  -Name storageSpec `
+  -Version 1.0a `
+  -ResourceGroupName templateSpecsRg `
+  -Location westus2 `
+  -TemplateFile ./mainTemplate.json `
+  -Tag @{Dept="Finance";Environment="Production"}
+```
+
+# <a name="cli"></a>[Parancssori felület](#tab/azure-cli)
+
+```azurecli
+az ts update \
+  --name storageSpec \
+  --version "1.0a" \
+  --resource-group templateSpecRG \
+  --location "westus2" \
+  --template-file "./mainTemplate.json" \
+  --tags Dept=Finance Environment=Production
+```
+
+---
+
+A megadott Version paraméterrel rendelkező, de a címke/címkék paraméter nélküli sablon létrehozásakor vagy módosításakor:
+
+- Ha a sablon specifikációja létezik, és rendelkezik címkékkel, de a verzió nem létezik, az új verzió örökli ugyanazokat a címkéket, mint a meglévő sablon specifikációja.
+
+A sablon specifikációjának létrehozásakor vagy módosításakor a címke/címkék paraméter és a megadott Version paraméter is szerepel:
+
+- Ha a sablon specifikációja és a verziószám nem létezik, a címkék az új sablonhoz és az új verzióhoz is hozzáadódnak.
+- Ha a sablon specifikációja létezik, de a verzió nem létezik, a címkék csak az új verzióhoz lesznek hozzáadva.
+- Ha a sablon specifikációja és verziója is létezik, a címkék csak a verzióra érvényesek.
+
+Ha olyan sablont módosít, amelynek a címkéje/címkéje paraméter meg van adva, de a megadott Version paraméter nélkül, a címkéket a rendszer csak a sablon specifikációjában adja hozzá.
+
 ## <a name="create-a-template-spec-with-linked-templates"></a>Sablon létrehozása a csatolt sablonokkal
 
 Ha a sablon fő sablonja a csatolt sablonokra hivatkozik, akkor a PowerShell és a CLI parancsok automatikusan megtalálják és becsomagolják a csatolt sablonokat a helyi meghajtóról. Nem kell manuálisan konfigurálnia a Storage-fiókokat vagy-adattárakat a sablonhoz tartozó specifikációk futtatásához – minden a sablon spec-erőforrása önálló.
@@ -332,11 +404,7 @@ A következő példa hasonló a korábbi példához, de a tulajdonsággal hivatk
 
 A sablon specifikációinak összekapcsolásával kapcsolatos további információkért lásd [: oktatóanyag: sablonra vonatkozó spec telepítése csatolt sablonként](template-specs-deploy-linked-template.md).
 
-## <a name="versioning"></a>Verziókezelés
-
-A sablon specifikációjának létrehozásakor meg kell adnia a verzió nevét. A sablon kódjának megismétlése után frissítheti a meglévő verziót (gyorsjavítások esetén), vagy közzétehet egy új verziót. A verzió egy szöveges karakterlánc. Dönthet úgy, hogy bármely verziószámozási rendszer követését választja, beleértve a szemantikai verziószámozást is. A sablon specifikációjának felhasználója megadhatja a telepítéskor használni kívánt verziót.
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A sablon specifikációjának létrehozásához és üzembe helyezéséhez lásd: gyors útmutató [: sablon létrehozása és üzembe helyezése specifikáció](quickstart-create-template-specs.md).
 

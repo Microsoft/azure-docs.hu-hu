@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 02/26/2021
 ms.author: alkohli
-ms.openlocfilehash: 0c35bde40cac9629f084d69d52f119651b5655f7
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 6c9e8938feb3c3444d01f9d37476589776707425
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98784477"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703184"
 ---
 # <a name="return-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro-eszköz visszaküldése
 
@@ -30,26 +30,16 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ## <a name="erase-data-from-the-device"></a>Adatok törlése az eszközről
 
-Az eszközön lévő adatlemezek adatainak törléséhez alaphelyzetbe kell állítania az eszközt. Az eszközt a helyi webes felületen vagy a PowerShell-felületen keresztül állíthatja alaphelyzetbe.
+Az eszközön lévő adatlemezek adatainak törléséhez alaphelyzetbe kell állítania az eszközt.
 
-Az Alaphelyzetbe állítás előtt hozzon létre egy másolatot a helyi adatmennyiségről az eszközön, ha szükséges. Az adatok az eszközről egy Azure Storage-tárolóba másolhatók.
+Az Alaphelyzetbe állítás előtt hozzon létre egy másolatot a helyi adatmennyiségről az eszközön, ha szükséges. Az adatok az eszközről egy Azure Storage-tárolóba másolhatók. 
 
-Az eszköz visszaküldését még az eszköz alaphelyzetbe állítása előtt is elindíthatja. 
+Az eszköz visszaküldését még az eszköz alaphelyzetbe állítása előtt is elindíthatja.
 
-Ha az eszközt a helyi webes felületen szeretné visszaállítani, hajtsa végre az alábbi lépéseket.
+Alaphelyzetbe állíthatja az eszközt a helyi webes felületen vagy a PowerShellben. PowerShell-utasításokért lásd: [az eszköz alaphelyzetbe állítása](./azure-stack-edge-connect-powershell-interface.md#reset-your-device).
 
-1. A helyi webes KEZELŐFELÜLETen lépjen a **karbantartás > eszköz alaphelyzetbe állítása** elemre.
-2. Válassza az **eszköz alaphelyzetbe állítása** lehetőséget.
 
-    ![Eszköz alaphelyzetbe állítása](media/azure-stack-edge-return-device/device-reset-1.png)
-
-3. Ha a rendszer megerősítést kér, tekintse át a figyelmeztetést, és kattintson az **Igen** gombra a folytatáshoz.
-
-    ![Alaphelyzetbe állítás megerősítése](media/azure-stack-edge-return-device/device-reset-2.png)  
-
-Az Alaphelyzetbe állítás törli az adat-adatlemezekről. Az eszközön tárolt adatmennyiségtől függően ez a folyamat körülbelül 30-40 percet vesz igénybe.
-
-Másik lehetőségként kapcsolódjon az eszköz PowerShell-felületéhez, és használja a `Reset-HcsAppliance` parancsmagot az adatok adatlemezekről való törléséhez. További információ: [az eszköz alaphelyzetbe állítása](azure-stack-edge-connect-powershell-interface.md#reset-your-device).
+[! Belefoglalás] [adatok alaphelyzetbe állítása az eszközről](../../includes/azure-stack-edge-device-reset.md)
 
 > [!NOTE]
 > - Ha új eszközre cserél vagy frissít, javasoljuk, hogy csak az új eszköz megérkezése után állítsa alaphelyzetbe az eszközt.
@@ -67,15 +57,15 @@ A visszatérési folyamat elindításához hajtsa végre az alábbi lépéseket.
 
     1. Adja meg az eszköz sorozatszámát. Az eszköz sorozatszámának beszerzéséhez nyissa meg az eszköz helyi webes FELÜLETét, és válassza az **Áttekintés** lehetőséget.  
     
-    ![1. eszköz sorozatszáma](media/azure-stack-edge-return-device/device-serial-number-1.png) 
+       ![1. eszköz sorozatszáma](media/azure-stack-edge-return-device/device-serial-number-1.png) 
 
-    2. Adja meg a szolgáltatás címkéjének számát, amely az eszköz egyedi öt vagy több karakteres azonosítója. A szolgáltatás címkéje az eszköz jobb alsó sarkában található (az eszközre való szembenézés során). Húzza ki az információs címkét (ez egy kiugró címke panel). Ez a panel olyan rendszerinformációkat tartalmaz, mint a szolgáltatási címke, a hálózati adapterek, a MAC-címek stb. 
+    2. Adja meg a szolgáltatási címke számát. A szolgáltatás címkéjének száma öt vagy több karaktert tartalmazó azonosító, amely egyedi az eszközön. A szolgáltatás címkéje az eszköz jobb alsó sarkában található (az eszközre való szembenézés során). Húzza ki az információs címkét (ez egy kiugró címke panel). Ez a panel olyan rendszerinformációkat tartalmaz, mint a szolgáltatási címke, a hálózati adapterek, a MAC-címek stb. 
     
-    ![1. szolgáltatási címke száma](media/azure-stack-edge-return-device/service-tag-number-1.png)
+       ![1. szolgáltatási címke száma](media/azure-stack-edge-return-device/service-tag-number-1.png)
 
     3. A legördülő listából válassza ki a visszatérés okát.
 
-    ![Eszköz visszaküldése 2](media/azure-stack-edge-return-device/return-device-2.png) 
+       ![Eszköz visszaküldése 2](media/azure-stack-edge-return-device/return-device-2.png) 
 
 3. A **szállítás részletei** területen:
 
@@ -84,7 +74,7 @@ A visszatérési folyamat elindításához hajtsa végre az alábbi lépéseket.
 
     ![Visszaadott eszköz 3](media/azure-stack-edge-return-device/return-device-3.png)
 
-4. Tekintse át az **adatvédelmi feltételeket** , és jelölje be a megtekintett megjegyzéssel rendelkező jelölőnégyzetet, és fogadja el az adatvédelmi feltételeket.
+4. Tekintse át az **adatvédelmi feltételeket**, és jelölje be a jelölőnégyzetet a megjegyzésben, amelyet áttekintett, és fogadja el az adatvédelmi feltételeket.
 
 5. Válassza a **visszatérés kezdeményezése** lehetőséget.
 
@@ -109,7 +99,7 @@ Az alábbi lépéseket követve ütemezhet egy felvételt.
 
     1. Hívja fel a helyi UPS-t (ország-/régióspecifikus ingyenes szám).
     2. A hívásban adja meg a fordított szállítólevél nyomon követésének számát a nyomtatott címkén látható módon.
-    3. Ha a nyomkövetési szám nincs feltüntetve, a UPS-nek további díjat kell fizetnie a felvétel során.
+    3. Ha a nyomkövetési szám nincs feltüntetve, a UPS-nek külön díjat kell fizetnie a felvétel során.
 
     A felvétel ütemezése helyett a Azure Stack Edge Pro-t is elhúzhatja a legközelebbi legördülő helyen.
 
@@ -123,8 +113,8 @@ Miután az eszközt megkapta az Azure-adatközpontban, a rendszer megkeresi az e
 
 Az eszközt törölheti a Azure Portalban:
 
-- Miután elvégezte a rendelést, és az eszközt a Microsoft előkészítette.
-- Miután visszaküldte az eszközt a Microsoftnak, átadja az Azure-adatközpont fizikai vizsgálatát, és Azure Stack Edge Pro műveleti csapatának hívásával ellenőrizheti, hogy az eszköz visszakapott-e.
+- Miután elvégezte a megrendelés elvégzését, és még az eszköz előkészítése előtt a Microsoft.
+- Miután visszaadott egy eszközt a Microsoftnak, és a Azure Stack Edge Pro Operations csapata meghívott annak megerősítésére, hogy az eszköz vissza lett-e vonva. Az operatív csapat addig nem hívja meg a hívást, amíg a visszaadott eszköz át nem adja a fizikai ellenőrzést az Azure-adatközpontban.
 
 Ha aktiválta az eszközt egy másik előfizetéshez vagy helyhez, a Microsoft egy munkanapon belül áthelyezi a rendelését az új előfizetésre vagy helyre. A megrendelés áthelyezése után törölheti ezt az erőforrást.
 
@@ -142,6 +132,6 @@ A következő lépésekkel törölheti az eszközt és az erőforrást Azure Por
 Az eszköz és a hozzá tartozó erőforrás sikeres törlése után értesítést kap.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [szerezhet be helyettesítő Azure stack Edge Pro-eszközt](azure-stack-edge-replace-device.md).

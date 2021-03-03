@@ -6,14 +6,15 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 02/17/2021
+ms.date: 02/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 46a60642e177a2bfb9e8fb996427ea45f6777468
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.custom: references_regions
+ms.openlocfilehash: a692aeba312b6fcad580eac901f4b7bc65f059fc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652785"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730575"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: gyakori kérdések
 
@@ -68,6 +69,16 @@ Például abban az esetben, ha az importálási forgatókönyvben volt olyan ada
 2. Miután megtörtént a helyszíni Adatmásolás a Data Boxre, a rendszer visszaküldi az eszközt a kanadai Azure-adatközpontba. A Data Boxban található, majd a rendelés létrehozásakor kiválasztott Kanada Azure-régiójában lévő, a cél Storage-fiókba való feltöltésre kerül.
 
 3. Ezután a AzCopy hasonló eszközzel másolhatók az adattárak az USA nyugati régiójában lévő Storage-fiókba. Ez a lépés a Data Box számlázásban nem szereplő [szabványos tárolási](https://azure.microsoft.com/pricing/details/storage/) és [sávszélesség-díjakat](https://azure.microsoft.com/pricing/details/bandwidth/) tartalmazza.
+
+#### <a name="q-does-data-box-store-any-customer-data-outside-of-the-service-region"></a>K. A Data Box a szolgáltatási régión kívül tárolja az ügyféladatokat?
+
+A. Nem. Data Box a szolgáltatási régión kívülről nem tárol ügyféladatokat. Az ügyfél teljes mértékben birtokolja az adatait, és a rendelés létrehozása során kiválasztott Storage-fiók alapján mentheti az adott helyre.  
+
+A vásárlói adatok mellett Data Box adatokat is tartalmaz, amelyek az eszközhöz kapcsolódó biztonsági összetevőket, az eszköz és a szolgáltatás figyelési naplóit, valamint a szolgáltatással kapcsolatos metaadatokat tartalmaznak. Az adatvesztés elleni védelem érdekében az összes régióban (kivéve a Dél-és Délkelet-ázsiai régiókat) a rendszer egy geo-redundáns Storage-fiókkal tárolja és replikálja a párosított régióba Data Boxi az adatvesztést.  
+
+A Dél-és Délkelet-Ázsiában található [adattárolási követelmények](https://azure.microsoft.com/global-infrastructure/data-residency/#more-information) miatt Data Box az adat tárolása egy zóna redundáns tárolási (ZRS) fiókban történik, hogy az egyetlen régióban legyen tárolva. Délkelet-Ázsiában az összes Data Box-szolgáltatás a Szingapúrban és Dél-Brazíliában található meg, az adattárolók Brazíliában vannak tárolva. 
+
+Ha a Dél-Brazíliában és Délkelet-Ázsiában található szolgáltatások meghibásodása van, az ügyfelek új rendeléseket hozhatnak létre egy másik régióból. Az új megrendelések a létrehozott régióból lesznek kézbesítve, és az ügyfelek felelősek a Data Box eszköz és az oda való szállításért.
 
 ### <a name="q-how-can-i-recover-my-data-if-an-entire-region-fails"></a>K. Hogyan állíthatom helyre az adatokat, ha egy teljes régió meghibásodik?
 

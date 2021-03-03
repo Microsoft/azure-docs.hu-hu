@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/04/2020
-ms.openlocfilehash: d63627c00f6fd06ba00a9d8a905891238ce94697
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 11a6d21a7a066d331a92453e9aaa876800da0bf4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100613825"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700541"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Egyéni nézetek létrehozása a Azure Monitor View Designer használatával
 A Azure Monitor Tervező nézetében számos egyéni nézetet hozhat létre a Azure Portalban, amelyek segíthetnek a Log Analytics munkaterületen lévő adatmegjelenítésben. Ez a cikk áttekintést nyújt az egyéni nézetek létrehozásához és szerkesztéséhez szükséges tervezőről és eljárásokról.
@@ -34,14 +34,14 @@ A nézetek a Azure Portal Azure Monitor **Áttekintés** lapján jelennek meg. N
 
 A tervező nézettel létrehozott nézetek a következő táblázatban ismertetett elemeket tartalmazzák:
 
-| Rész | Description |
+| Rész | Leírás |
 |:--- |:--- |
 | Csempék | Megjelenik a Azure Monitor **áttekintése** oldalon. Az egyes csempék az általa képviselt egyéni nézet vizuális összegzését jelenítik meg. Mindegyik csempe típusa különböző vizualizációkat biztosít a rekordokhoz. Az egyéni nézet megjelenítéséhez ki kell választania egy csempét. |
 | Egyéni nézet | Egy csempe kiválasztásakor jelenik meg. Minden nézet egy vagy több vizualizációs alkatrészt tartalmaz. |
-| Vizualizációs részek | Egy vagy több [naplózási lekérdezésen](../log-query/log-query-overview.md)alapuló adatvizualizáció megjelenítése a log Analytics munkaterületen. A legtöbb rész tartalmaz egy fejlécet, amely egy magas szintű vizualizációt és egy listát mutat be, amely a legfontosabb eredményeket jeleníti meg. Az egyes típusok a Log Analytics munkaterületen lévő rekordok különböző vizualizációit biztosítják. A részben található elemeket kiválasztva olyan napló-lekérdezést hajthat végre, amely részletes rekordokat tartalmaz. |
+| Vizualizációs részek | Egy vagy több [naplózási lekérdezésen](../logs/log-query-overview.md)alapuló adatvizualizáció megjelenítése a log Analytics munkaterületen. A legtöbb rész tartalmaz egy fejlécet, amely egy magas szintű vizualizációt és egy listát mutat be, amely a legfontosabb eredményeket jeleníti meg. Az egyes típusok a Log Analytics munkaterületen lévő rekordok különböző vizualizációit biztosítják. A részben található elemeket kiválasztva olyan napló-lekérdezést hajthat végre, amely részletes rekordokat tartalmaz. |
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
-A nézetek létrehozásához vagy módosításához legalább [közreműködői szintű engedélyekre](../platform/manage-access.md#manage-access-using-azure-permissions) van szükség a log Analytics munkaterületen. Ha nem rendelkezik ezzel az engedéllyel, a Tervező nézet nem jelenik meg a menüben.
+A nézetek létrehozásához vagy módosításához legalább [közreműködői szintű engedélyekre](../logs/manage-access.md#manage-access-using-azure-permissions) van szükség a log Analytics munkaterületen. Ha nem rendelkezik ezzel az engedéllyel, a Tervező nézet nem jelenik meg a menüben.
 
 
 ## <a name="work-with-an-existing-view"></a>Meglévő nézet használata
@@ -54,7 +54,7 @@ A beállításokat a következő táblázat ismerteti:
 | Beállítás | Leírás |
 |:--|:--|
 | Frissítés   | A legújabb adattal frissíti a nézetet. | 
-| Naplók      | Megnyitja a [log Analytics](../log-query/log-query-overview.md) , hogy a rendszer naplózza az adatelemzési lekérdezéseket. |
+| Naplók      | Megnyitja a [log Analytics](../logs/log-query-overview.md) , hogy a rendszer naplózza az adatelemzési lekérdezéseket. |
 | Szerkesztés       | A nézet megnyitása a tervezőben a tartalom és a konfiguráció szerkesztéséhez.  |
 | Klónozás      | Létrehoz egy új nézetet, és megnyitja a Tervező nézetben. Az új nézet neve megegyezik az eredeti névvel, de a *Másolás* hozzá van fűzve. |
 | Dátumtartomány | Állítsa be a nézetbe foglalt adatok dátum-és időtartomány-szűrőjét. Ezt a dátumtartományt a nézetben a lekérdezésekben beállított dátumtartomány előtt alkalmazza a rendszer.  |

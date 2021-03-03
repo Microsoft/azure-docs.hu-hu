@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: f57ff130fcf61ae8f831cda33c9510b37a5880e5
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a908709e49bed1e07a5fdfecd165c45f8792987c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627823"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725594"
 ---
 # <a name="resource-manager-template-samples-for-log-analytics-workspaces-in-azure-monitor"></a>Resource Manager-sablonok – minták Log Analytics munkaterületekhez Azure Monitor
 Ez a cikk mintákat [Azure Resource Manager sablonokat](../../azure-resource-manager/templates/template-syntax.md) tartalmaz log Analytics munkaterületek létrehozásához és konfigurálásához Azure monitorban. Mindegyik minta tartalmaz egy sablonfájlt és egy, a sablonhoz adni kívánt minta értékeket tartalmazó paramétereket tartalmazó fájlt.
@@ -824,6 +824,6 @@ Az alábbi minta egy meglévő munkaterülethez hozzáadja az [IIS-naplók](../a
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [További Azure monitor-sablonok beszerzése](../samples/resource-manager-samples.md).
-* [További információ a log Analytics munkaterületekről](../learn/quick-create-workspace.md).
+* [További Azure monitor-sablonok beszerzése](../resource-manager-samples.md).
+* [További információ a log Analytics munkaterületekről](./quick-create-workspace.md).
 * [További információ az ügynök adatforrásairól](../agents/agent-data-sources.md).

@@ -11,12 +11,12 @@ author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
 ms.date: 11/18/2020
-ms.openlocfilehash: e4917d03e3c0fb8109f9ad9bdcea9e7c1cdcd5df
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 862d33e523562511796999d82b67d2b4b11efaf3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108058"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690615"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatikus biztonsági mentések – Azure SQL Database & SQL felügyelt példánya
 
@@ -229,17 +229,15 @@ Az alapértelmezett PITR biztonsági mentési megőrzési időszakot a Azure Por
 
 ### <a name="change-the-pitr-backup-retention-period-by-using-the-azure-portal"></a>A PITR biztonsági mentés megőrzési időszakának módosítása a Azure Portal használatával
 
-Ha módosítani szeretné a PITR biztonsági mentési megőrzési időtartamát az aktív adatbázisokhoz a Azure Portal használatával, lépjen a kiszolgálóra vagy a felügyelt példányra azokra az adatbázisokra, amelyek megőrzési időtartamát módosítani kívánja. 
+Ha módosítani szeretné a PITR biztonsági mentési megőrzési időtartamát az aktív adatbázisokhoz a Azure Portal használatával, lépjen a kiszolgálóra vagy a felügyelt példányra azokra az adatbázisokra, amelyek megőrzési időtartamát módosítani kívánja. A bal oldali ablaktáblán válassza a **biztonsági másolatok** lehetőséget, majd válassza az **adatmegőrzési szabályzatok** fület. Válassza ki azokat az adatbázis (oka) t, amelyeken módosítani szeretné a PITR biztonsági másolatának megőrzését. Ezután válassza a **megőrzés beállítása** a műveleti sávon lehetőséget.
+
+
 
 #### <a name="sql-database"></a>[SQL Database](#tab/single-database)
-
-A SQL Database PITR biztonsági mentési megőrzésének változásai a portál kiszolgáló lapján hajthatók végre. A kiszolgálón található adatbázisok PITR megtartásának módosításához lépjen a kiszolgáló áttekintés paneljére. Válassza a **biztonsági másolatok kezelése** lehetőséget a bal oldali ablaktáblán, válassza ki az adatbázisokat a módosítás hatókörében, majd válassza a **megőrzés konfigurálása** a képernyő tetején:
 
 ![PITR-megőrzés, kiszolgáló szintjének módosítása](./media/automated-backups-overview/configure-backup-retention-sqldb.png)
 
 #### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
-
-Az SQL felügyelt példány PITR biztonsági mentési megőrzésének módosításai egyedi adatbázis-szinten hajthatók végre. Ha módosítani szeretné a PITR biztonsági mentési megőrzését egy példány-adatbázishoz a Azure Portal, lépjen az egyes adatbázisok áttekintés paneljére. Ezután válassza a **biztonsági másolatok megőrzésének konfigurálása** lehetőséget a képernyő tetején:
 
 ![PITR-megőrzés, felügyelt példány módosítása](./media/automated-backups-overview/configure-backup-retention-sqlmi.png)
 

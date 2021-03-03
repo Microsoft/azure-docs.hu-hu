@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: b0cafcbc9fa6f0fcb31f44b44dfbe4fc3e10c17d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 1fe36dc7b3c04f033c1b693b657e07bcf42e3223
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656071"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715003"
 ---
 # <a name="connect-data-from-microsoft-defender-for-identity-formerly-azure-advanced-threat-protection"></a>Adatok összekapcsolása a Microsoft Defender identitásával (korábbi nevén az Azure Advanced Threat Protection)
 
@@ -27,7 +27,9 @@ ms.locfileid: "94656071"
 > A Microsoft Defender for Identity adatösszekötő az Azure Sentinel szolgáltatásban jelenleg nyilvános előzetes verzióban érhető el.
 > Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Egyetlen kattintással továbbíthatja a [Microsoft Defender for Identity](/azure-advanced-threat-protection/what-is-atp) naplóit az Azure sentinelbe.
+Ez a cikk azt ismerteti, hogyan továbbíthatja a biztonsági riasztásokat a [Microsoft defenderből az](/azure-advanced-threat-protection/what-is-atp) Azure sentinelbe. 
+
+A biztonsági riasztások mellett az állapotadatok továbbításához a Microsoft Defender for Identity-t a syslog-kiszolgálóval kell integrálni. További információt a [Microsoft Defender for Identity dokumentációjában](/defender-for-identity/setting-syslog)talál. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 

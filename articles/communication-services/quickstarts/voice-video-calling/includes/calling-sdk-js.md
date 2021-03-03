@@ -4,16 +4,16 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 3830025d761c94e2b0b0bc3e66389d66794b946c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4a9454abc2c4e41d711a4aef6a30438a72d27edb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661565"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750289"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - Egy központilag telepített kommunikációs szolgáltatások erőforrása. [Hozzon létre egy kommunikációs szolgáltatások erőforrást](../../create-communication-resource.md).
 - A a `User Access Token` hívási ügyfél engedélyezéséhez. További információ a [beszerzéséről `User Access Token` ](../../access-tokens.md)
 - Opcionális: fejezze be a gyors üzembe helyezési útmutatót az [alkalmazáshoz való hívás hozzáadásával](../getting-started-with-calling.md)
@@ -63,7 +63,7 @@ const deviceManager = await callClient.getDeviceManager()
 
 ## <a name="place-an-outgoing-call"></a>Kimenő hívás elhelyezése
 
-Egy hívás létrehozásához és elindításához a CallAgent egyik API-t kell használnia, és meg kell adnia egy felhasználót, amelyet a kommunikációs szolgáltatások identitás-ügyféloldali kódtár használatával hozott létre.
+Egy hívás létrehozásához és elindításához a CallAgent egyik API-t kell használnia, és meg kell adnia a kommunikációs szolgáltatások felügyeleti ügyféloldali kódtár használatával létrehozott felhasználót.
 
 A hívás létrehozása és a kezdés szinkronban van. A hívási példány lehetővé teszi a hívási eseményekre való előfizetést.
 
@@ -254,10 +254,10 @@ A helyi végpont némításához vagy a némítás feloldásához használhatja 
 
 ```js
 
-//mute local device
+//mute local device 
 await call.mute();
 
-//unmute local device
+//unmute local device 
 await call.unmute();
 
 ```
@@ -401,7 +401,7 @@ A távoli résztvevők videó streamek és a képernyő-megosztási streamek lis
 const remoteVideoStream: RemoteVideoStream = call.remoteParticipants[0].videoStreams[0];
 const streamType: MediaStreamType = remoteVideoStream.mediaStreamType;
 ```
-
+ 
 A megjelenítéséhez `RemoteVideoStream` elő kell fizetnie egy `isAvailableChanged` eseményre.
 Ha a `isAvailable` tulajdonság módosul `true` , a távoli résztvevő egy streamet küld.
 Ha ez megtörténik, hozzon létre egy új példányt `Renderer` , majd hozzon létre egy új `RendererView` példányt az aszinkron `createView` metódus használatával.  Ezután csatolhat `view.target` bármilyen felhasználóifelület-elemet.
@@ -581,7 +581,7 @@ const isRecordingActiveChangedHandler = () => {
 };
 
 callRecordingApi.on('isRecordingActiveChanged', isRecordingActiveChangedHandler);
-
+               
 ```
 
 ## <a name="call-transfer-management"></a>Hívásátirányítás kezelése

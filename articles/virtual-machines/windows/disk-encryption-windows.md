@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: df74a15a84ba04addb75b021d3b77b06cfe2ea48
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 29a63d598ada8c413316fbf18bb87597afdf62de
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96781113"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693832"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption-forgatókönyvek Windows rendszerű virtuális gépekhez
 
@@ -151,7 +151,7 @@ Titkosítás engedélyezése a NVMe-lemezeken:
 
 A titkosítás a következő esetekben marad a NVMe-lemezeken:
 - Virtuális gép újraindítása
-- VMSS-rendszerkép
+- Virtuálisgép-méretezési csoport rendszerképének alaphelyzetbe állítása
 - Operációs rendszer cseréje
 
 A NVMe lemezek a következő helyzetekben nem lesznek inicializálva:
@@ -260,16 +260,15 @@ A Azure Disk Encryption a következő forgatókönyvek, funkciók és technológ
 - Windows Server-tárolók, amelyek mindegyik tárolóhoz dinamikus köteteket hoznak létre.
 - Ideiglenes operációsrendszer-lemezek.
 - Megosztott/elosztott fájlrendszerek titkosítása, például (de nem kizárólag a) DFS, a GFS, a DRDB és a CephFS.
-- Titkosított virtuális gépek áthelyezése másik előfizetésbe vagy régióba.
+- Titkosított virtuális gép áthelyezése másik előfizetésre vagy régióba.
 - Egy titkosított virtuális gép rendszerképének vagy pillanatképének létrehozása, és annak használata további virtuális gépek telepítéséhez.
-- Gen2 virtuális gépek (lásd: [a 2. generációs virtuális gépek támogatása az Azure](../generation-2.md#generation-1-vs-generation-2-capabilities)-ban)
 - Az M sorozatú virtuális gépek írásgyorsító lemezzel.
 - Az ADE alkalmazása olyan virtuális gépre, amely kiszolgálóoldali titkosítással titkosított lemezeket tartalmaz [az ügyfél által felügyelt kulcsokkal](../disk-encryption.md) (SSE + CMK). Az SSE és a CMK az ADE-sel titkosított virtuális gépek adatlemezére való alkalmazása nem támogatott forgatókönyv is.
 - Az ADE-sel titkosított virtuális gépek áttelepítése, vagy az ADE-sel való titkosítása már **megtörtént,** az [ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosításhoz](../disk-encryption.md).
 - Azure-beli virtuálisgép- [méretek helyi ideiglenes lemez nélkül](../azure-vms-no-temp-disk.md); pontosabban a DV4, a Dsv4, a Ev4 és a Esv4.
 - Virtuális gépek titkosítása feladatátvevő fürtökben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Disk Encryption áttekintése](disk-encryption-overview.md)
 - [Azure Disk Encryption – mintaszkriptek](disk-encryption-sample-scripts.md)

@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 2fb9677f0874de1fb715082d58a0e354880e654b
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 86caf39e0d31a41ca454c65311ff2fab52b56f5b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358078"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691161"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Egy prémium szintű fájlmegosztás (SQL Server Azure-beli virtuális gépeken) létrehozása
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Ez a cikk azt ismerteti, hogyan lehet egy [prémium szintű fájlmegosztás](../../../storage/files/storage-how-to-create-premium-fileshare.md)használatával létrehozni egy SQL Server Azure Virtual Machines (VM) rendszerű feladatátvevő fürt példányát.
+Ez a cikk azt ismerteti, hogyan lehet egy [prémium szintű fájlmegosztás](../../../storage/files/storage-how-to-create-file-share.md)használatával létrehozni egy SQL Server Azure Virtual Machines (VM) rendszerű feladatátvevő fürt példányát.
 
 A prémium szintű fájlmegosztás Közvetlen tárolóhelyek (SSD)-alapú, következetesen alacsony késésű fájlmegosztás, amely teljes mértékben támogatott a Windows Server 2012-es vagy újabb verzióiban a feladatátvevő fürt példányain SQL Server 2012-es vagy későbbi verziókban. A prémium szintű fájlmegosztás nagyobb rugalmasságot biztosít, ami lehetővé teszi a fájlmegosztás átméretezését és méretezését leállás nélkül.
 
@@ -37,7 +37,7 @@ A cikkben szereplő utasítások elvégzése előtt a következőket kell tennie
 - Azure-előfizetés.
 - Egy olyan fiók, amely rendelkezik objektumok létrehozásához szükséges engedélyekkel mind az Azure-beli virtuális gépeken, mind pedig a Active Directory.
 - [Két vagy több előkészített Windows Azure-beli virtuális gép](failover-cluster-instance-prepare-vm.md) egy [rendelkezésre állási csoporton](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) belül vagy különböző [rendelkezésre állási zónákban](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address).
-- A fürtözött meghajtóként használandó [prémium fájlmegosztás](../../../storage/files/storage-how-to-create-premium-fileshare.md) az adatfájlok adatbázisának tárolási kvótája alapján.
+- A fürtözött meghajtóként használandó [prémium fájlmegosztás](../../../storage/files/storage-how-to-create-file-share.md) az adatfájlok adatbázisának tárolási kvótája alapján.
 - A [PowerShell](/powershell/azure/install-az-ps)legújabb verziója. 
 
 ## <a name="mount-premium-file-share"></a>Prémium fájlmegosztás csatlakoztatása
@@ -209,7 +209,7 @@ Ha a forgalmat az aktuális elsődleges csomópontnak megfelelően szeretné ir�
 
 ## <a name="limitations"></a>Korlátozások
 
-- A Microsoft Elosztott tranzakciók koordinátora (MSDTC) nem támogatott a Windows Server 2016-es és korábbi verzióiban. 
+- A Microsoft Distributed Transaction Coordinator (MSDTC) nem támogatott a Windows Server 2016-es és korábbi verzióiban. 
 - A FileStream nem támogatott egy prémium szintű fájlmegosztást használó feladatátvevő fürt esetén. A FileStream használatához [közvetlen tárolóhelyek](failover-cluster-instance-storage-spaces-direct-manually-configure.md) vagy [Azure Shared Disks](failover-cluster-instance-azure-shared-disks-manually-configure.md) használatával helyezze üzembe a fürtöt.
 - Csak az SQL IaaS-ügynök bővítménnyel való regisztráció [egyszerűsített felügyeleti módban](sql-server-iaas-agent-extension-automate-management.md#management-modes) támogatott. 
 
@@ -222,6 +222,6 @@ Ha a prémium fájlmegosztás nem az Ön számára megfelelő, az Azure-beli [me
 
 További tudnivalókat az Azure-beli [virtuális gépekkel](failover-cluster-instance-overview.md) és a [fürt konfigurálásával kapcsolatos ajánlott eljárásokkal](hadr-cluster-best-practices.md)foglalkozó, a SQL Server az Azure-ban című témakörben 
 
-További információ: 
+További információkért lásd: 
 - [Windows-fürtök technológiái](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server feladatátvevő fürt példányai](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

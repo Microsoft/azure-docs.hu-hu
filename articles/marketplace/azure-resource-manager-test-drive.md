@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/19/2020
 ms.author: trkeya
 author: trkeya
-ms.openlocfilehash: fd3fa04d2d7e868476838788dd9cf0e27c07aeca
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2addf415c39691b4e662f304522a418aa8a778c2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461765"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730371"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager tesztelési meghajtó
 
@@ -73,9 +73,9 @@ A paraméterekhez bármilyen érvényes nevet használhat; a test Drive felismer
 
 ### <a name="accepted-parameter-metadata-types"></a>Elfogadott paraméterek metaadatainak típusai
 
-| Metaadat típusa   | Paraméter típusa  | Description     | Minta értéke    |
+| Metaadat típusa   | Paraméter típusa  | Leírás     | Minta értéke    |
 |---|---|---|---|
-| **BaseUri**     | sztring          | A központi telepítési csomag alap URI-ja| `https:\//\<\..\>.blob.core.windows.net/\<\..\>` |
+| **BaseUri**     | sztring          | A központi telepítési csomag alap URI-ja| `https://<..>.blob.core.windows.net/<..>` |
 | **username**    | sztring          | Új véletlenszerű Felhasználónév.| admin68876      |
 | **alaphelyzetbe állítása**    | biztonságos karakterlánc    | Új véletlenszerű jelszó | LP! ACS \^ 2kh     |
 | **munkamenet-azonosító**   | sztring          | Egyedi tesztelési meghajtó munkamenet-azonosítója (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
@@ -313,10 +313,10 @@ Az utolsó szakasz a tesztelési meghajtók automatikus üzembe helyezése az Az
    3. Adja meg az alkalmazás nevét.
    4. Válassza ki a **webalkalmazás/API** **típusát** .
    5. Adjon meg bármilyen értéket a bejelentkezési URL-címben, ez a mező nincs használatban.
-   6. Kattintson a **Létrehozás** gombra.
+   6. Válassza a **Létrehozás** lehetőséget.
    7. Az alkalmazás létrehozása után válassza a **Tulajdonságok**  >  **több-bérlős beállítást** , majd a **Mentés** lehetőséget.
 
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
 5. Másolja ki az alkalmazás AZONOSÍTÓját a regisztrált alkalmazáshoz, és illessze be a test Drive (teszt) mezőbe.
 
@@ -334,7 +334,7 @@ Az utolsó szakasz a tesztelési meghajtók automatikus üzembe helyezése az Az
 
       ![Engedélyek hozzáadása](media/test-drive/access-control-permissions.jpg)
 
-   1. Válassza a **Mentés** lehetőséget.
+   1. Kattintson a **Mentés** gombra.
 
 7. **Azure ad alkalmazás** hitelesítési kulcs létrehozása. A **kulcsok** területen adja meg a **kulcs leírását**, állítsa be az időtartamot, hogy **Soha ne járjon le** (a lejárt kulcs megszakítja a tesztelési meghajtót éles környezetben), majd válassza a **Mentés** lehetőséget. Másolja és illessze be ezt az értéket a szükséges tesztvezetés mezőjébe.
 
@@ -354,7 +354,7 @@ Ne törölje az ügyfelek számára kiépített tesztvezetés-példányokat. a t
 
 Ha már elégedett az előzetes verzió ajánlatával, itt az ideje, hogy **éljünk**! Végső felülvizsgálati folyamattal ellenőrizheti a teljes végpontok közötti élményt. Ha elutasítjuk az ajánlatot, elküldjük Önnek az ajánlat mérnöki kapcsolattartóját, amely elmagyarázza, mit kell rögzíteni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha követte az ajánlat a partner Centerben való létrehozásához szükséges utasításokat, a vissza nyílra kattintva térjen vissza ehhez a témakörhöz.
 - További információ a tesztelési meghajtók egyéb típusairól: [Mi a test Drive?](what-is-test-drive.md).

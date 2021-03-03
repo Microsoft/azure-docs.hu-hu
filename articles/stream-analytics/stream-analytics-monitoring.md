@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 484e8853d02aa68c8a8695ba7cc724adb5a8766a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3356e0bdd45b6a213ef5ef4a814e64585d8e8924
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572971"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726767"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>A Stream Analytics feladatok figyelésének és a lekérdezések figyelésének ismertetése
 
@@ -30,6 +30,7 @@ Ekkor megjelenik az ablak:
 | ---------------------- | ---------------------------------------- |
 | Várakozó bemeneti eseményei       | A várakozó bemeneti eseményeinek száma. A metrika nem nulla értéke azt jelenti, hogy a feladatnak nem sikerült megtartania a bejövő események számát. Ha ez az érték lassan növekszik vagy konzisztensen nem nulla, érdemes felmérni a feladatot. További információért tekintse meg a [folyamatos átviteli egységek megismerése és módosítása](stream-analytics-streaming-unit-consumption.md)című témakört. |
 | Adatátalakítási hibák | Azon kimeneti események száma, amelyek nem alakíthatók át a várt kimeneti sémába. A hiba házirendje a "drop" értékre módosítható, hogy eldobják az ebben a forgatókönyvben észlelt eseményeket. |
+| CPU-kihasználtság%-ban (előzetes verzió)       | A feladatokban felhasznált CPU százalékos aránya. Ha ez a metrika következetesen meghaladja a 80%-ot, az azt jelentheti, hogy a feladatának szűk keresztmetszete van a CPU-használat során, és valószínűleg a bemeneti események várakozó beolvasását okozza. A feladatokhoz lefoglalt SUs számának növelésével csökkentheti az ilyen problémákat. |
 | Korai bemeneti események       | Azok az események, amelyek esetében az alkalmazás időbélyeg-értéke korábbi, mint 5 perc. |
 | Sikertelen függvények kérései | A sikertelen Azure Machine Learning függvények hívásának száma (ha van). |
 | Függvények eseményei        | Az Azure Machine Learning függvénynek eljuttatott események száma (ha van). |
@@ -42,7 +43,7 @@ Ekkor megjelenik az ablak:
 | Megrendelésen kívüli események    | Azon események száma, amelyek eldobása vagy kiigazított időbélyege miatt a rendszer eldobott egy megadott időbélyegzőt, és az esemény rendezési házirendje alapján történt. Ezt befolyásolhatja a nem sorrendben beállított tűréshatárok ablakának konfigurációja. |
 | Kimeneti események          | Az Stream Analyticsi feladatoknak a kimeneti célra, az események száma alapján továbbított mennyisége. |
 | Futásidejű hibák         | A lekérdezések feldolgozásával kapcsolatos hibák teljes száma (kivéve az események betöltése vagy az eredmények kihelyezése során talált hibákat) |
-| SU% kihasználtsága       | Ha az Erőforrás kihasználtsága következetesen meghaladja a 80%-ot, a rendszer megnöveli a vízjel késleltetését, és a várakozó események száma nő, és a folyamatos átviteli egységeket is növelni kell. A magas kihasználtság azt jelzi, hogy a feladatoknak a maximálisan lefoglalt erőforrásokhoz való közelségét kell használnia. |
+| SU% kihasználtsága       | A feladatokhoz használt memória százalékos aránya. Ha a SU% kihasználtsága következetesen meghaladja a 80%-ot, a rendszer felveszi a vízjel késleltetését, és a várakozó események száma nő, érdemes lehet növelni a folyamatos átviteli egységeket. A magas kihasználtság azt jelzi, hogy a feladatoknak a maximálisan lefoglalt erőforrásokhoz való közelségét kell használnia. |
 | Vízjel késleltetése       | A feladatokban lévő összes kimenet összes partícióján a maximális vízjel-késleltetés. |
 
 Ezek a metrikák a [stream Analytics feladatok teljesítményének figyelésére](./stream-analytics-set-up-alerts.md#scenarios-to-monitor)használhatók. 

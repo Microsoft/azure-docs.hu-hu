@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: reference
-ms.openlocfilehash: fe684d15e2ce9b8d302db4eb6bd31dd1416abf21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd8686cc396d5fcee20590fbac8bccaf187b024d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83196545"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735947"
 ---
 # <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
 
@@ -20,11 +20,13 @@ Az Azure-adatközpontok stabil, kis késleltetésű hálózati kapcsolatai eleng
 
 A hálózati követelmények pontos feltételei a konkrét használati esettől függenek, például a távoli jelenet gráfon végzett módosítások számával és gyakoriságával, valamint a megjelenített nézet bonyolultságával, de számos iránymutatással gondoskodhat arról, hogy a lehető legjobb élmény legyen:
 
-* Az internetkapcsolatnak legalább **40 MB/** s sebességű, illetve **5 MB/s sebességű** , az Azure távoli renderelés egyetlen felhasználói munkamenete számára szükséges támogatását kell támogatnia, feltéve, hogy nincs versengő forgalom a hálózaton. A jobb élmény érdekében ajánlott magasabb díjszabást javasolni. Ha több felhasználóval is rendelkezik ugyanazon a hálózaton, ezek a követelmények a megfelelő skálázással rendelkeznek.
+* Az internetkapcsolatnak legalább **40 MB/** s sebességű, illetve **5 MB/s sebességű** , az Azure távoli renderelés egyetlen felhasználói munkamenete számára szükséges támogatását kell támogatnia, feltéve, hogy nincs versengő forgalom a hálózaton. A jobb élmény érdekében ajánlott magasabb díjszabást javasolni. 
+* A **Wi-Fi** az ajánlott hálózati típus, mivel az alacsony késésű, nagy sávszélességű és stabil kapcsolatot támogat. Egyes mobil hálózatok olyan Jitter-t vezetnek be, amely gyenge felhasználói élményt eredményezhet. 
 * Az **5 GHz-es Wi-Fi együttes** használata általában jobb eredményeket eredményez, mint az 2,4 GHz-es Wi-Fi sávban, bár mindkettőnek működnie kell.
 * Ha a közelben más Wi-Fi hálózatok vannak, ne használja a többi hálózat által használt Wi-Fi csatornákat. A hálózati ellenőrzési eszközök, például a [WifiInfoView](https://www.nirsoft.net/utils/wifi_information_view.html) segítségével ellenőrizheti, hogy a Wi-Fi hálózat által használt csatornák szabadok-e a versengő forgalomtól.
 * Szigorúan **Kerülje a Wi-Fi repeaterek vagy a** LAN-alapú hálózati kábeles továbbítás használatát.
 * **Kerülje a versengő sávszélességet** – például a video-vagy játék-adatfolyamot – ugyanazon a Wi-Fi hálózaton.
+* Ha több eszköze is van ugyanazon a hozzáférési ponton, a követelmények a megfelelő skálázással rendelkeznek. Ha több hozzáférési ponttal rendelkezik egy adott környezetben, az eszközök terheléselosztása a hozzáférési pontokon keresztül történik, így azok egyenletesen oszlanak el.
 * A **jó Wi-Fi a jelerősség** elengedhetetlen. Ha lehetséges, maradjon a Wi-Fi hozzáférési ponthoz, és elkerülje az ügyfél-eszköz és a hozzáférési pontok közötti akadályokat.
 * Győződjön meg arról, hogy mindig csatlakozik a **legközelebbi Azure-adatközponthoz** a [régiójában](regions.md). Minél közelebb van az adatközponthoz, annál kisebb a hálózati késés, ami óriási hatással van a hologramos stabilitásra.
 
@@ -43,12 +45,12 @@ Válasszon egy Önhöz legközelebb eső kiszolgálót, és futtassa a tesztet. 
    * Az Azure Remote rendering esetében **ajánlott** : kb. 100 Mbps és 10 Mbps.
 Javasoljuk, hogy a tesztet többször is futtassa, és a legrosszabb eredményeket használja.
 1. **Használjon olyan eszközt, mint a www.azurespeed.com, amely az Azure-adatközpontok késését méri**. Válassza ki az Azure-alapú távoli renderelés által támogatott Azure-adatközpontot (lásd a [támogatott régiókat](regions.md)), és futtasson **késési tesztet**. Ha a megjelenő számok variációban szerepelnek, akkor az eredményeket egy kis idő elteltével kell megadnia.
-   * Az Azure távoli renderelés **minimális követelménye** : a késésnek konzisztensnek kell lennie, mint 100 MS.
-   * Az Azure Remote rendering esetében **ajánlott** : a késésnek a 70 MS-nál kisebbnek kell lennie.
+   * Az Azure távoli renderelés **minimális követelménye** : a késésnek konzisztensnek kell lennie, mint 80 MS.
+   * Az Azure Remote rendering esetében **ajánlott** : a késésnek a 40 MS-nál kisebbnek kell lennie.
 
 Habár az alacsony késés nem garantálható, hogy az Azure távoli renderelés jól működik a hálózaton, általában úgy láttuk, hogy olyan helyzetekben, amikor a tesztek sikeresen sikeresek voltak.
 Ha olyan összetevőket észlel, mint például az instabil, a vibrálás vagy az Ugrás Hologramok az Azure távoli renderelés futtatásakor, tekintse meg a [hibaelhárítási útmutatót](../resources/troubleshoot.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Gyors útmutató: modell megjelenítése egységgel](../quickstarts/render-model.md)

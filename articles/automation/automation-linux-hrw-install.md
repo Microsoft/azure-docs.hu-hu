@@ -3,14 +3,14 @@ title: Linuxos hibrid Runbook-feldolgozó üzembe helyezése Azure Automation
 description: Ez a cikk azt ismerteti, hogyan telepíthet egy Azure Automation hibrid Runbook-feldolgozót a runbookok Linux-alapú gépeken való futtatásához a helyi adatközpontban vagy a felhőalapú környezetben.
 services: automation
 ms.subservice: process-automation
-ms.date: 11/23/2020
+ms.date: 02/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: 58c340c97bd8e46c5a588b4bf0ba2673712ffb95
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 543ae640871699c7e1fffda46463752483ff6a4e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581189"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708917"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker üzembe helyezése
 
@@ -43,12 +43,15 @@ A hibrid Runbook feldolgozói szerepkörhöz a [log Analytics ügynök](../azure
 A hibrid Runbook Worker szolgáltatás a következő disztribúciókat támogatja. Az összes operációs rendszer x64-ként van feltételezve. az x86 semmilyen operációs rendszer esetén nem támogatott.
 
 * Amazon Linux 2012,09 – 2015,09
-* CentOS Linux 5, 6 és 7
+* CentOS Linux 5, 6, 7 és 8
 * Oracle Linux 5, 6 és 7
-* Red Hat Enterprise Linux Server 5, 6 és 7
+* Red Hat Enterprise Linux Server 5, 6, 7 és 8
 * Debian GNU/Linux 6, 7 és 8
 * Ubuntu 12,04 LTS, 14,04 LTS, 16,04 LTS és 18,04 LTS
-* SUSE Linux Enterprise Server 12
+* 12 és 15 SUSE Linux Enterprise Server
+
+> [!IMPORTANT]
+> A Update Management funkció engedélyezése előtt, amely a rendszer hibrid Runbook feldolgozói szerepkörtől függ, erősítse meg az [itt](update-management/overview.md#supported-operating-systems)támogatott disztribúciókat.
 
 ### <a name="minimum-requirements"></a>Minimális követelmények
 
@@ -87,11 +90,11 @@ A linuxos hibrid Runbook-feldolgozók korlátozott számú Runbook-típust támo
 
 |Runbook típusa | Támogatott |
 |-------------|-----------|
-|Python 2 |Yes |
+|Python 2 |Igen |
 |PowerShell |Igen<sup>1</sup> |
-|PowerShell-munkafolyamat |No |
-|Grafikus |No |
-|Grafikus PowerShell-munkafolyamat |No |
+|PowerShell-munkafolyamat |Nem |
+|Grafikus |Nem |
+|Grafikus PowerShell-munkafolyamat |Nem |
 
 <sup>1</sup> A PowerShell-runbookok a PowerShell Core-t kell telepíteni a Linux rendszerű gépen. A telepítésének megismeréséhez lásd: [a PowerShell Core telepítése Linux rendszeren](/powershell/scripting/install/installing-powershell-core-on-linux) .
 

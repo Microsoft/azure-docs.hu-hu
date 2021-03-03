@@ -10,17 +10,17 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: cea87f23bcd9dc21ab9f594d6cb0d6008ef98f13
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ca6ef57db062ff22b20a8e968eaac39388b9551f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661664"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750055"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 Az első lépések előtt ügyeljen a következőre:
-- Aktív előfizetéssel rendelkező Azure-fiók létrehozása. Részletekért tekintse meg a [fiók ingyenes létrehozását](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)ismertető témakört.
-- A [Visual Studio](https://visualstudio.microsoft.com/downloads/) telepítése
+- Aktív előfizetéssel rendelkező Azure-fiók létrehozása. Részletekért tekintse meg a [fiók ingyenes létrehozását](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)ismertető témakört. 
+- A [Visual Studio](https://visualstudio.microsoft.com/downloads/) telepítése 
 - Hozzon létre egy Azure kommunikációs szolgáltatások erőforrást. További információ: [Azure kommunikációs erőforrás létrehozása](../../create-communication-resource.md). Ehhez a rövid útmutatóhoz fel kell jegyeznie az erőforrás- **végpontot** .
 - [Felhasználói hozzáférési jogkivonat](../../access-tokens.md). Ügyeljen arra, hogy a hatókört a "csevegés" értékre állítsa, és jegyezze fel a jogkivonat karakterláncát, valamint a userId karakterláncot.
 
@@ -47,7 +47,7 @@ Az Azure kommunikációs csevegési ügyféloldali kódtár telepítése a .NET-
 
 ```PowerShell
 dotnet add package Azure.Communication.Chat --version 1.0.0-beta.4
-```
+``` 
 
 ## <a name="object-model"></a>Objektummodell
 
@@ -60,7 +60,7 @@ A következő osztályok a C#-hoz készült Azure Communication Services cseveg�
 
 ## <a name="create-a-chat-client"></a>Csevegési ügyfél létrehozása
 
-Csevegési ügyfél létrehozásához használja a kommunikációs szolgáltatások végpontját és az előfeltételként szükséges lépések részeként létrehozott hozzáférési tokent. A `CommunicationIdentityClient` felhasználó létrehozásához és a csevegési ügyfélnek átadandó jogkivonat kiküldéséhez az Identity ügyféloldali függvénytár osztályát kell használnia.
+Csevegési ügyfél létrehozásához használja a kommunikációs szolgáltatások végpontját és az előfeltételként szükséges lépések részeként létrehozott hozzáférési tokent. Az `CommunicationIdentityClient` ügyfél-függvénytár osztályát kell használnia `Administration` egy felhasználó létrehozásához, és ki kell állítania a tokent a csevegési ügyfélnek való továbbításhoz.
 
 További információ a [felhasználói hozzáférési tokenekről](../../access-tokens.md).
 
@@ -69,6 +69,8 @@ Ez a rövid útmutató nem fedi le a csevegési alkalmazás jogkivonatait kezel�
 ```csharp
 using Azure.Communication.Identity;
 using Azure.Communication.Chat;
+using Azure;
+using Azure.Communication
 
 // Your unique Azure Communication service endpoint
 Uri endpoint = new Uri("https://<RESOURCE_NAME>.communication.azure.com");
@@ -83,7 +85,7 @@ ChatClient chatClient = new ChatClient(endpoint, communicationTokenCredential);
 - A használatával `topic` témakört adhat ehhez a csevegéshez; A témakör a funkció használatával frissíthető a csevegési szál létrehozása után `UpdateTopic` .
 - `participants`A tulajdonság használatával adja át a `ChatParticipant` csevegési szálhoz hozzáadandó objektumok listáját. Az `ChatParticipant` objektum egy objektummal van inicializálva `CommunicationIdentifier` . `CommunicationIdentifier` lehet típus `CommunicationUserIdentifier` `MicrosoftTeamsUserIdentifier` vagy `PhoneNumberIdentifier` . Egy objektum lekéréséhez például meg `CommunicationIdentifier` kell adnia egy hozzáférési azonosítót, amelyet a következő utasítások alapján hozott létre [egy felhasználó létrehozásához](../../access-tokens.md#create-an-identity) :
 
-A metódus válasz objektuma `createChatThread` tartalmazza a `chatThread` részleteket. A csevegési szál műveleteivel, például a résztvevők hozzáadásával, üzenet küldésével, üzenet törlésével stb. az `chatThreadClient` ügyfél példányát az `GetChatThreadClient` ügyfél metódusának használatával kell létrehoznia `ChatClient` .
+A createChatThread metódus válasz objektuma tartalmazza a chatThread részleteit. A csevegési szál műveleteivel, például a résztvevők hozzáadásával, üzenet küldésével, üzenet törlésével stb. a chatThreadClient-példánynak a ChatClient-ügyfél GetChatThreadClient metódusának használatával kell példányt létrehoznia. 
 
 ```csharp
 var chatParticipant = new ChatParticipant(communicationIdentifier: new CommunicationUserIdentifier(id: "<Access_ID>"))
@@ -112,7 +114,7 @@ ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(threadId);
 - A (z `senderDisplayName` ) használatával adja meg a feladó megjelenítendő nevét. Ha nincs megadva, a rendszer üres karakterláncot állít be.
 
 ```csharp
-var messageId = await chatThreadClient.SendMessageAsync(content:"hello world", type: );
+var messageId = await chatThreadClient.SendMessageAsync(content:"hello world", type: ChatMessageType.Text);
 ```
 ## <a name="get-a-message"></a>Üzenet beszerzése
 
@@ -133,7 +135,7 @@ A csevegési üzeneteket lekérheti úgy, hogy a `GetMessages` csevegési szál 
 AsyncPageable<ChatMessage> allMessages = chatThreadClient.GetMessagesAsync();
 await foreach (ChatMessage message in allMessages)
 {
-    Console.WriteLine($"{message.Id}:{message.Sender.Id}:{message.Content}");
+    Console.WriteLine($"{message.Id}:{message.Id}:{message.Content}");
 }
 ```
 

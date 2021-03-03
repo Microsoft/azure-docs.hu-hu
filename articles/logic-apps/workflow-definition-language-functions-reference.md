@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: reference
-ms.date: 01/13/2021
-ms.openlocfilehash: 4ed5a26e1f871f7ac5fd8f29f0a66bc39a8013a1
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.date: 02/18/2021
+ms.openlocfilehash: 484ee9e67aa2adc11529f8a2239a813b3b12f7b2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507248"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702487"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>A függvények kifejezésekben való használatát ismertető útmutató a Azure Logic Apps és az energiagazdálkodás automatizálásához
 
@@ -282,7 +282,7 @@ Az egyes függvényekkel kapcsolatos teljes referenciáért tekintse meg a [bet�
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | Egy művelet adott részének törzsét adja vissza egy olyan kimenetben, amely több részből áll. |
 | [kimenetek](../logic-apps/workflow-definition-language-functions-reference.md#outputs) | Egy művelet kimenetének visszaadása futásidőben. |
 | [paraméterek](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | A munkafolyamat-definícióban leírt paraméterek értékének visszaadása. |
-| [találat](../logic-apps/workflow-definition-language-functions-reference.md#result) | A megadott hatókörű műveletben lévő összes művelet bemeneteit és kimeneteit adja vissza, például, `For_each` , `Until` és `Scope` . |
+| [találat](../logic-apps/workflow-definition-language-functions-reference.md#result) | A legfelső szintű műveletek bemeneteit és kimeneteit adja vissza a megadott hatókörű műveletben (például `For_each` ,, `Until` és `Scope` ) belül. |
 | [eseményindító](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | Egy trigger kimenetének visszaadása futásidőben vagy más JSON-név és érték párokból. Lásd még: [triggerOutputs](#triggerOutputs) és [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody). |
 | [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Egy trigger `body` kimenetének visszaadása futásidőben. Lásd: [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
 | [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | Egy olyan értéket adjon vissza, amely megfelel egy kulcsnévnek a *Form-* vagy az *űrlap-kódolású* trigger kimenetében. |
@@ -682,7 +682,7 @@ addProperty(<object>, '<property>', <value>)
 | --------- | -------- | ---- | ----------- |
 | <*objektum*> | Igen | Objektum | A JSON-objektum, amelyben hozzá kíván adni egy tulajdonságot |
 | <*tulajdonság*> | Igen | Sztring | A hozzáadni kívánt tulajdonság neve |
-| <*érték*> | Igen | Bármely | A tulajdonság értéke |
+| <*érték*> | Igen | Bármelyik | A tulajdonság értéke |
 |||||
 
 | Visszatérési érték | Típus | Leírás |
@@ -701,7 +701,7 @@ addProperty(<object>['<parent-property>'], '<child-property>', <value>)
 | <*objektum*> | Igen | Objektum | A JSON-objektum, amelyben hozzá kíván adni egy tulajdonságot |
 | <*szülő-tulajdonság*> | Igen | Sztring | Annak a szülő tulajdonságnak a neve, amelyhez hozzá kívánja adni a gyermek tulajdonságot |
 | <*gyermek-tulajdonság*> | Igen | Sztring | A hozzáadandó gyermek tulajdonság neve |
-| <*érték*> | Igen | Bármely | A megadott tulajdonsághoz beállított érték |
+| <*érték*> | Igen | Bármelyik | A megadott tulajdonsághoz beállított érték |
 |||||
 
 | Visszatérési érték | Típus | Leírás |
@@ -1129,7 +1129,7 @@ bool(<value>)
 
 | Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*érték*> | Igen | Bármely | A logikai értékké konvertálandó érték. |
+| <*érték*> | Igen | Bármelyik | A logikai értékké konvertálandó érték. |
 |||||
 
 Ha `bool()` objektumot használ, az objektum értékének egy olyan sztringnek vagy egész számnak kell lennie, amely logikai értékké konvertálható.
@@ -1169,7 +1169,7 @@ coalesce(<object_1>, <object_2>, ...)
 
 | Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*első – nem null értékű – tétel*> | Bármely | Az első olyan érték, amely nem null. Ha az összes paraméter null értékű, a függvény Null értéket ad vissza. |
+| <*első – nem null értékű – tétel*> | Bármelyik | Az első olyan érték, amely nem null. Ha az összes paraméter null értékű, a függvény Null értéket ad vissza. |
 ||||
 
 *Példa*
@@ -1887,7 +1887,7 @@ first([<collection>])
 
 | Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*első gyűjtemény – tétel*> | Bármely | A gyűjtemény első eleme |
+| <*első gyűjtemény – tétel*> | Bármelyik | A gyűjtemény első eleme |
 ||||
 
 *Példa*
@@ -2294,13 +2294,13 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 | Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*kifejezés*> | Igen | Logikai | Az ellenőrzési kifejezés |
-| <*valueIfTrue*> | Igen | Bármely | A kifejezés igaz értéke esetén visszaadott érték |
-| <*valueIfFalse*> | Igen | Bármely | A kifejezés hamis értéke esetén visszaadott érték |
+| <*valueIfTrue*> | Igen | Bármelyik | A kifejezés igaz értéke esetén visszaadott érték |
+| <*valueIfFalse*> | Igen | Bármelyik | A kifejezés hamis értéke esetén visszaadott érték |
 |||||
 
 | Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*megadott – visszatérési érték*> | Bármely | A megadott érték, amely attól függ, hogy a kifejezés igaz vagy hamis. |
+| <*megadott – visszatérési érték*> | Bármelyik | A megadott érték, amely attól függ, hogy a kifejezés igaz vagy hamis. |
 ||||
 
 *Példa*
@@ -2387,7 +2387,7 @@ item()
 
 | Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*aktuális – tömb – elem*> | Bármely | A művelet aktuális iterációjának aktuális eleme a tömbben |
+| <*aktuális – tömb – elem*> | Bármelyik | A művelet aktuális iterációjának aktuális eleme a tömbben |
 ||||
 
 *Példa*
@@ -2416,7 +2416,7 @@ items('<loopName>')
 
 | Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*elem*> | Bármely | A megadott a-minden hurokhoz tartozó aktuális ciklusból származó elem |
+| <*elem*> | Bármelyik | A megadott a-minden hurokhoz tartozó aktuális ciklusból származó elem |
 ||||
 
 *Példa*
@@ -3235,7 +3235,7 @@ parameters('<parameterName>')
 
 | Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*paraméter – érték*> | Bármely | A megadott paraméter értéke |
+| <*paraméter – érték*> | Bármelyik | A megadott paraméter értéke |
 ||||
 
 *Példa*
@@ -3451,7 +3451,12 @@ Itt látható a frissített JSON-objektum:
 
 ### <a name="result"></a>result
 
-Visszaadja a bemeneteket és kimeneteket a megadott hatókörű műveletben (például a `For_each` , `Until` vagy művelet) belül található összes műveletből `Scope` . Ez a függvény akkor hasznos, ha egy sikertelen művelet eredményét adja vissza, így diagnosztizálhatja és kezelheti a kivételeket. További információ: [a környezet és a hibák eredményeinek beolvasása](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures).
+A megadott hatókörű műveletekben lévő legfelső szintű műveletek eredményének visszaadása, például: a `For_each` , `Until` , vagy `Scope` művelet. A `result()` függvény egyetlen paramétert fogad el, amely a hatókör neve, és egy olyan tömböt ad vissza, amely az adott hatókör első szintű műveleteiből származó információkat tartalmazza. Ezek a műveleti objektumok ugyanazokat az attribútumokat tartalmazzák, mint a függvény által visszaadott attribútumok `actions()` , például a művelet kezdési időpontja, a Befejezés időpontja, az állapot, a bemenetek, a korrelációs azonosítók és a kimenetek.
+
+> [!NOTE]
+> Ez a függvény *csak* a hatókörön belüli művelet első szintű műveleteiből származó információkat adja vissza, nem pedig mélyebben beágyazott műveletekből, például kapcsoló-vagy feltételi műveletből.
+
+Ezzel a függvénnyel például lekérheti a sikertelen műveletek eredményeit, így diagnosztizálhatja és kezelheti a kivételeket. További információ: [a környezet és a hibák eredményeinek beolvasása](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures).
 
 ```
 result('<scopedActionName>')
@@ -3459,17 +3464,17 @@ result('<scopedActionName>')
 
 | Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*scopedActionName*> | Igen | Sztring | Annak a hatókörön belüli műveletnek a neve, amelyből vissza kell adni a bemeneteket és kimeneteket az összes belső műveletből |
+| <*scopedActionName*> | Igen | Sztring | Annak a hatókörön belüli műveletnek a neve, ahol a bemeneteket és kimeneteket szeretné használni a hatókörben lévő legfelső szintű műveletekben |
 ||||
 
 | Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*tömb – objektum*> | Tömb objektum | Egy tömb, amely a megadott hatókörű műveletben megjelenő összes műveletből származó bemeneteket és kimeneteket tartalmaz. |
+| <*tömb – objektum*> | Tömb objektum | Egy tömb, amely bemeneti és kimeneti adatokat tartalmaz a megadott hatókörben lévő minden legfelső szintű műveletből. |
 ||||
 
 *Példa*
 
-Ez a példa egy adott HTTP-művelet összes iterációjának bemeneteit és kimeneteit adja vissza egy `For_each` hurokon belül a `result()` műveletben a függvény használatával `Compose` :
+Ez a példa visszaadja a bemeneteket és kimeneteket egy olyan HTTP-művelet minden iterációján belül, amely egy `For_each` hurokban található a `result()` műveletben a függvény használatával `Compose` :
 
 ```json
 {
@@ -3582,7 +3587,7 @@ setProperty(<object>, '<property>', <value>)
 | --------- | -------- | ---- | ----------- |
 | <*objektum*> | Igen | Objektum | Az a JSON-objektum, amelynek a tulajdonságát be szeretné állítani |
 | <*tulajdonság*> | Igen | Sztring | A beállítani kívánt meglévő vagy új tulajdonság neve |
-| <*érték*> | Igen | Bármely | A megadott tulajdonsághoz beállított érték |
+| <*érték*> | Igen | Bármelyik | A megadott tulajdonsághoz beállított érték |
 |||||
 
 Ha a gyermek tulajdonságot egy alárendelt objektumban szeretné beállítani, használjon `setProperty()` helyette egy beágyazott hívást. Ellenkező esetben a függvény csak a gyermek objektumot adja vissza kimenetként.
@@ -3596,7 +3601,7 @@ setProperty(<object>['<parent-property>'], '<parent-property>', setProperty(<obj
 | <*objektum*> | Igen | Objektum | Az a JSON-objektum, amelynek a tulajdonságát be szeretné állítani |
 | <*szülő-tulajdonság*> | Igen | Sztring | A beállítani kívánt gyermek tulajdonsággal rendelkező Parent tulajdonság neve |
 | <*gyermek-tulajdonság*> | Igen | Sztring | A beállítani kívánt gyermek tulajdonság neve |
-| <*érték*> | Igen | Bármely | A megadott tulajdonsághoz beállított érték |
+| <*érték*> | Igen | Bármelyik | A megadott tulajdonsághoz beállított érték |
 |||||
 
 | Visszatérési érték | Típus | Leírás |
@@ -3880,7 +3885,7 @@ string(<value>)
 
 | Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*érték*> | Igen | Bármely | Az átalakítandó érték. Ha ez az érték null értékű, vagy a null értéket ad vissza, az érték üres sztring ( `""` ) értékre lesz konvertálva. <p><p>Ha például egy karakterlánc-változót olyan nem létező tulajdonsághoz rendel hozzá, amely hozzáfér az `?` operátorhoz, akkor a Null érték üres karakterlánccá lesz konvertálva. Egy Null érték összehasonlítása azonban nem ugyanaz, mint egy üres karakterlánc összevetése. |
+| <*érték*> | Igen | Bármelyik | Az átalakítandó érték. Ha ez az érték null értékű, vagy a null értéket ad vissza, az érték üres sztring ( `""` ) értékre lesz konvertálva. <p><p>Ha például egy karakterlánc-változót olyan nem létező tulajdonsághoz rendel hozzá, amely hozzáfér az `?` operátorhoz, akkor a Null érték üres karakterlánccá lesz konvertálva. Egy Null érték összehasonlítása azonban nem ugyanaz, mint egy üres karakterlánc összevetése. |
 |||||
 
 | Visszatérési érték | Típus | Leírás |
@@ -4677,7 +4682,7 @@ variables('<variableName>')
 
 | Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*változó – érték*> | Bármely | A megadott változó értéke |
+| <*változó – érték*> | Bármelyik | A megadott változó értéke |
 ||||
 
 *Példa*
@@ -4784,14 +4789,14 @@ xpath('<xml>', '<xpath>')
 
 | Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*XML*> | Igen | Bármely | Az XPath-kifejezés értékének megfelelő csomópontok vagy értékek keresésére szolgáló XML-karakterlánc |
-| <*XPath*> | Igen | Bármely | Az egyező XML-csomópontok vagy-értékek kereséséhez használt XPath-kifejezés |
+| <*XML*> | Igen | Bármelyik | Az XPath-kifejezés értékének megfelelő csomópontok vagy értékek keresésére szolgáló XML-karakterlánc |
+| <*XPath*> | Igen | Bármelyik | Az egyező XML-csomópontok vagy-értékek kereséséhez használt XPath-kifejezés |
 |||||
 
 | Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*XML – csomópont*> | XML | XML-csomópont, ha csak egyetlen csomópont felel meg a megadott XPath-kifejezésnek |
-| <*érték*> | Bármely | Egy XML-csomópont értéke, ha csak egyetlen érték egyezik a megadott XPath-kifejezéssel |
+| <*érték*> | Bármelyik | Egy XML-csomópont értéke, ha csak egyetlen érték egyezik a megadott XPath-kifejezéssel |
 | [<*XML-csomópont1*>, <*xml-Csomópont2*>,...] </br>-vagy- </br>[<*érték1*>, <*érték2*>,...] | Tömb | A megadott XPath-kifejezésnek megfelelő XML-csomópontokkal vagy-értékekkel rendelkező tömb |
 ||||
 

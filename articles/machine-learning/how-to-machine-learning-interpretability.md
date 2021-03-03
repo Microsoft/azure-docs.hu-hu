@@ -10,20 +10,20 @@ ms.custom: how-to, responsible-ml
 ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
-ms.date: 11/16/2020
-ms.openlocfilehash: 6784361dde67d7dcc1423d9edbcc92ec513ff6d4
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.date: 02/25/2021
+ms.openlocfilehash: 2c61cfaf0e97f7d483239a23e5eea52b51c6a126
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222632"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690209"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Modell értelmezése Azure Machine Learningban (előzetes verzió)
 
 
-## <a name="overview-of-model-interpretability"></a>A modell értelmezésének áttekintése
+## <a name="model-interpretability-overview"></a>Modell-értelmező áttekintése
 
-A tolmácsolás kritikus fontosságú az adatszakértők, a könyvvizsgálók és az üzleti döntéshozók számára, így biztosítva a vállalati szabályzatoknak, az iparági szabványoknak és a kormányzati szabályozásoknak való megfelelést:
+A modell értelmezése kritikus fontosságú az adatszakértők, a könyvvizsgálók és az üzleti döntéshozók számára, hogy biztosítsák a vállalati szabályzatoknak, az iparági szabványoknak és a kormányzati szabályozásoknak való megfelelést:
 
 + Az adatszakértőknek meg kell adniuk modelljeiket a vezetők és az érdekelt felek számára, hogy megértsék az eredmények értékét és pontosságát. Emellett a modelljeik hibakereséséhez és a megalapozott döntések meghozatalához is szükségesek. 
 
@@ -31,15 +31,15 @@ A tolmácsolás kritikus fontosságú az adatszakértők, a könyvvizsgálók é
 
 + Az üzleti döntéshozóknak szem előtt kell tartaniuk az átláthatóságot a végfelhasználók számára. Ez lehetővé teszi, hogy a megbízhatóságot megszerezzék és megőrizzék.
 
-
 A modell fejlesztésének két fő fázisában fontos a gépi tanulási modell elmagyarázása.
+
 + A betanítási fázisban a modell-tervezők és-értékelők a modell értelmező kimenetét használhatják a hipotézisek ellenőrzéséhez és az érdekelt felekkel való bizalom kiépítéséhez. Emellett a modellen alapuló elemzéseket is felhasználják a hibakereséshez, a modell viselkedésének érvényesítéséhez, valamint a modell méltánytalan vagy jelentéktelen funkcióinak ellenőrzéséhez.
 
 + A következtetési fázisban az üzembe helyezett modellek átláthatósága lehetővé teszi a vezetők számára, hogy megértsék a modell működésének módját, valamint azt, hogy a rendszer hogyan kezeli és befolyásolja a valós életben lévő döntéseket. 
 
 ## <a name="interpretability-with-azure-machine-learning"></a>Értelmezés Azure Machine Learning
 
-Az értelmező osztályok a következő SDK-csomagon keresztül érhetők el: (útmutató a [Azure Machine learning SDK-csomagjainak telepítéséhez](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py))
+A modell-értelmező osztályok a következő SDK-csomagon keresztül érhetők el: (útmutató az [SDK-csomagok telepítéséhez a Azure Machine learning](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py))
 
 * `azureml.interpret`, a Microsoft által támogatott funkciókat tartalmaz.
 
@@ -52,11 +52,7 @@ Az SDK osztályok és metódusok használatával a következőket teheti:
 + A valós idejű adatkészletek modell-értelmezésének megvalósítása a képzés és a következtetések során.
 + Interaktív vizualizációs irányítópult használatával felderítheti az adatmintákat és magyarázatokat a képzés ideje alatt
 
-
 A gépi tanulásban a **funkciók** a célként megadott adatpontok előrejelzésére szolgáló adatmezők. Például a hitelkockázat előrejelzéséhez az életkor, a fiók mérete és a fiók kora adatmezőket lehet használni. Ebben az esetben a kor, a fiók mérete és a fiók kora **funkciók**. A szolgáltatás fontossága azt mutatja be, hogy az egyes adatmezők hogyan érintik a modell előrejelzéseit. Előfordulhat például, hogy az életkor nagy mértékben használatban van az előrejelzésben, míg a fiók mérete és kora nem befolyásolja jelentősen az előrejelzési értékeket. Ez a folyamat lehetővé teszi, hogy az adatszakértők elmagyarázzák az eredményül kapott előrejelzéseket, így az érdekelt felek betekintést nyerhetnek a modellbe a legfontosabb funkciókba.
-
-Ismerje meg a támogatott értelmező technikákat, a támogatott gépi tanulási modelleket és a támogatott futtatási környezeteket itt.
-
 
 ## <a name="supported-interpretability-techniques"></a>Támogatott értelmezési technikák
 
@@ -70,9 +66,6 @@ Ismerje meg a támogatott értelmező technikákat, a támogatott gépi tanulás
 |A rendszermag magyarázatának kialakítása| A SHAP kernel-magyarázata egy speciálisan súlyozott, helyi lineáris regressziót használ az **egyes modellek** formálási értékeinek becsléséhez.|Modell – agnosztikus|
 |Elmagyarázó (globális helyettes)| Az adatutánozás elmagyarázása a [globális helyettesítő modellek](https://christophm.github.io/interpretable-ml-book/global.html) a tábla modelljeinek utánzására való betanításának gondolatán alapul. A globális helyettesítő modell egy belsőleg értelmezhető modell, amely úgy van kitanítva, hogy a lehető legpontosabban közelítse meg a **fekete Box-modellek** előrejelzéseit. Az adatszakértők a helyettesítő modellt úgy tudják értelmezni, hogy levonja a fekete Box-modellel kapcsolatos következtetéseket. A következő értelmezhető modellek egyikét használhatja helyettesítő modellként: LightGBM (LGBMExplainableModel), lineáris regresszió (LinearExplainableModel), sztochasztikus gradiens deillatos modell (SGDExplainableModel) és döntési fa (DecisionTreeExplainableModel).|Modell – agnosztikus|
 |A permutáció funkció fontossági magyarázata (PFI)| A permutáció funkció fontossága egy olyan módszer, amely a [Breiman véletlenszerű erdőkkel kapcsolatos tanulmányai](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) által ihletett besorolási és regressziós modellek magyarázatára szolgál (lásd: 10. szakasz). Magas szinten a működésének módja az, hogy a teljes adatkészlet esetében véletlenszerűen végzi el az adatok egy funkciójának a kiszámítását, és kiszámítja, hogy a teljesítmény mérőszáma milyen mértékben változik. Minél nagyobb a változás, annál fontosabb a funkció. A PFI megmagyarázhatja a **mögöttes modellek** általános viselkedését, de nem magyarázza el az egyes előrejelzéseket. |Modell – agnosztikus|
-
-
-
 
 A fent ismertetett értelmező technikák mellett egy másik, a nevű SHAP-alapú magyarázat is támogatott `TabularExplainer` . A modelltől függően `TabularExplainer` a támogatott SHAP-magyarázatok egyikét használja:
 

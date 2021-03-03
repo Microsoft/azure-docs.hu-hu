@@ -6,12 +6,12 @@ ms.author: elhorton
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 02/11/2021
-ms.openlocfilehash: 4935037ec0152b089c7c685b6bdd0e605d89f3f2
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 4d9546c8a912176117e42f2a6bbef3058331383b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100654942"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702674"
 ---
 # <a name="overview-of-azure-iot-device-sdks"></a>Az Azure IoT Device SDK-k áttekintése
 
@@ -70,7 +70,7 @@ Ezek az SDK-k korlátozott számítási vagy memória-erőforrásokkal rendelkez
 
 * [GitHub-adattár](https://github.com/azure-rtos/threadx)
 * [Első lépések útmutatók](https://github.com/azure-rtos/getting-started) és [további minták](https://github.com/azure-rtos/samples)
-* [Referenciadokumentáció](https://docs.microsoft.com/azure/rtos/threadx/)
+* [Referenciadokumentáció](/azure/rtos/threadx/)
 
 ### <a name="unconstrained-device-sdks"></a>Nem korlátozott eszköz SDK-k
 Ezek az SDK-k bármely olyan eszközön futtathatók, amely támogatja a magasabb rendű nyelvi futtatókörnyezetet. Ide tartoznak az eszközök, például a számítógépek, a málna-és az okostelefonok. Ezek elsősorban a nyelv alapján különböztethetők meg, így bármelyik könyvtárat kiválaszthatja, amely legjobban megfelel a csapatának és forgatókönyvének.
@@ -125,7 +125,7 @@ Az Azure IoT olyan szolgáltatás-SDK-kat is kínál, amelyek lehetővé teszik 
 
 Az IoT Hub Service SDK-k lehetővé teszik olyan alkalmazások összeállítását, amelyek könnyen kommunikálhatnak a IoT Hubekkel az eszközök és a biztonság kezeléséhez. Ezeket az SDK-kat használhatja a felhőből az eszközre irányuló üzenetek küldéséhez, közvetlen metódusok meghívásához az eszközökön, az eszköz tulajdonságainak frissítését és egyebeket.
 
-[**További információ a IoT hub**](https://azure.microsoft.com/services/iot-hub/)  |  [ **Egy eszköz vezérlésének kipróbálása**](/azure/iot-hub/quickstart-control-device-python)
+[**További információ a IoT hub**](https://azure.microsoft.com/services/iot-hub/)  |  [ **Egy eszköz vezérlésének kipróbálása**](../iot-hub/quickstart-control-device-python.md)
 
 **C# IoT hub Service SDK**: [GitHub-adattár](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service)  |  [csomag](https://www.nuget.org/packages/Microsoft.Azure.Devices/)  |  [minták](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service/samples)  |  [dokumentációja](/dotnet/api/microsoft.azure.devices)
 
@@ -139,7 +139,7 @@ Az IoT Hub Service SDK-k lehetővé teszik olyan alkalmazások összeállítás�
 
 Az Azure Digital Twins egy szolgáltatásként nyújtott platform, amely lehetővé teszi, hogy a teljes környezetek digitális modelljein alapuló ismereti diagramokat hozzanak létre. Ezek a környezetek lehetnek olyan épületek, gyárak, gazdaságok, energiahálózatok, vasutak, stadionok és sok más – akár a teljes város is. Ezek a digitális modellek olyan elemzések megszerzésére használhatók, amelyek jobb termékeket, optimalizált műveleteket, csökkentett költségeket és áttörést jelentő felhasználói élményt nyújtanak. Az Azure IoT szolgáltatás SDK-kat kínál, amelyek megkönnyítik az Azure digitális ikrek hatékonyságát használó alkalmazások készítését.
 
-[**További információ az Azure digitális Twins**](https://azure.microsoft.com/services/digital-twins/)  |  szolgáltatásról [ **ADT-alkalmazás kódja**](/azure/digital-twins/tutorial-code)
+[**További információ az Azure digitális Twins**](https://azure.microsoft.com/services/digital-twins/)  |  szolgáltatásról [ **ADT-alkalmazás kódja**](../digital-twins/tutorial-code.md)
 
 **C# ADT Service SDK**: [GitHub-adattár](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)  |  [csomag](https://www.nuget.org/packages/Azure.DigitalTwins.Core)  |  [minták](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core/samples)  |  [dokumentációja](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)
 
@@ -153,7 +153,7 @@ Az Azure Digital Twins egy szolgáltatásként nyújtott platform, amely lehető
 
 A IoT Hub Device Provisioning Service (DPS) egy olyan IoT Hub segítő szolgáltatása, amely lehetővé teszi, hogy az emberi beavatkozás nélkül, a megfelelő IoT hub-ra való leválasztást, valamint a jobb oldali üzembe helyezést. A DPS lehetővé teszi több millió eszköz üzembe helyezését biztonságos és skálázható módon. A DPS szolgáltatás SDK-k lehetővé teszik olyan alkalmazások létrehozását, amelyek a regisztrációs csoportok létrehozásával és tömeges műveletek végrehajtásával biztonságosan kezelhetik az eszközeiket.
 
-[**További információ az eszköz kiépítési szolgáltatásáról**](/azure/iot-dps/)  |  [ **Próbáljon meg létrehozni egy csoportos regisztrációt X. 509-eszközökhöz**](/azure/iot-dps/quick-enroll-device-x509-csharp)
+[**További információ az eszköz kiépítési szolgáltatásáról**](../iot-dps/index.yml)  |  [ **Próbáljon meg létrehozni egy csoportos regisztrációt X. 509-eszközökhöz**](../iot-dps/quick-enroll-device-x509-csharp.md)
 
 **C# Device kiépítési szolgáltatás SDK**: [GitHub-adattár](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service)  |  [csomag](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/)  |  [minták](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples)  |  [dokumentációja](/dotnet/api/microsoft.azure.devices.provisioning.service?view=azure-dotnet&preserve-view=true)
 

@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2020
-ms.openlocfilehash: 089c0739ff091d49734cad048c2bfb10d857617c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 96eab2d93ae0212568f8ef23e32a35016cb17248
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100616898"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732054"
 ---
 # <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>Az IIS-naplók összegyűjtése Log Analytics ügynökkel Azure Monitor
-A Internet Information Services (IIS) olyan naplófájlokban tárolja a felhasználói tevékenységeket, amelyeket az Log Analytics ügynök gyűjthet, és [Azure monitor naplókban](../platform/data-platform.md)tárol.
+A Internet Information Services (IIS) olyan naplófájlokban tárolja a felhasználói tevékenységeket, amelyeket az Log Analytics ügynök gyűjthet, és [Azure monitor naplókban](../data-platform.md)tárol.
 
 > [!IMPORTANT]
-> Ez a cikk ismerteti az IIS-naplók összegyűjtését az [log Analytics ügynökkel](../platform/log-analytics-agent.md) , amely a Azure monitor által használt ügynökök egyike. Más ügynökök különböző adatokat gyűjtenek, és eltérően vannak konfigurálva. A rendelkezésre álló ügynökök és az összegyűjtött adatok listáját lásd: [Azure monitor ügynökök áttekintése](../agents/agents-overview.md) .
+> Ez a cikk ismerteti az IIS-naplók összegyűjtését az [log Analytics ügynökkel](./log-analytics-agent.md) , amely a Azure monitor által használt ügynökök egyike. Más ügynökök különböző adatokat gyűjtenek, és eltérően vannak konfigurálva. A rendelkezésre álló ügynökök és az összegyűjtött adatok listáját lásd: [Azure monitor ügynökök áttekintése](../agents/agents-overview.md) .
 
 ![IIS-naplók](media/data-sources-iis-logs/overview.png)
 
@@ -65,7 +65,7 @@ Az IIS-naplóbejegyzések típusa **W3CIISLog** , és a következő táblázatba
 ## <a name="log-queries-with-iis-logs"></a>Lekérdezések naplózása IIS-naplókkal
 Az alábbi táblázat különböző példákat tartalmaz az IIS-naplóbejegyzések lekérésére szolgáló naplókra.
 
-| Lekérdezés | Description |
+| Lekérdezés | Leírás |
 |:--- |:--- |
 | W3CIISLog |Az összes IIS-naplózási rekord. |
 | W3CIISLog &#124;, ahol scStatus = = 500 |Az összes IIS-naplózási rekord 500-as visszatérési állapottal. |
@@ -75,4 +75,4 @@ Az alábbi táblázat különböző példákat tartalmaz az IIS-naplóbejegyzés
 
 ## <a name="next-steps"></a>Következő lépések
 * A Azure Monitor konfigurálásával más [adatforrásokat](../agents/agent-data-sources.md) is gyűjthet az elemzéshez.
-* További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../log-query/log-query-overview.md) .
+* További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../logs/log-query-overview.md) .

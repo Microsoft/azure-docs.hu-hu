@@ -1,24 +1,23 @@
 ---
 title: Network Performance Monitor megoldás az Azure-ban | Microsoft Docs
 description: A Network Performance Monitor az Azure-ban a hálózat teljesítményének közel valós idejű figyelését segíti a hálózati teljesítménnyel kapcsolatos szűk keresztmetszetek észlelése és megkeresése érdekében.
-ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 92326ea4d3de896a67b2953fb612b79948044d08
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: dd9f35a0b7c3bb5c2c5888765e4ebac436b4cde1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573422"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711127"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor megoldás az Azure-ban
 
 ![Network Performance Monitor szimbólum](./media/network-performance-monitor/npm-symbol.png)
 
 > [!IMPORTANT]
-> 2021. július 1-től nem lehet új teszteket felvenni egy meglévő munkaterületre, vagy új munkaterületet engedélyezni Network Performance Monitor. Továbbra is használhatja a 2021. július 1. előtt létrehozott teszteket. A szolgáltatás megszakadásának minimalizálásához a jelenlegi számítási [feladatokhoz telepítse át a teszteket Network Performance monitorról az](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) Azure Network Watcher új, 2024. február 29. előtti kapcsolódási figyelője felé.
+> 2021. július 1-től nem lehet új teszteket felvenni egy meglévő munkaterületre, vagy új munkaterületet engedélyezni Network Performance Monitor. Továbbra is használhatja a 2021. július 1. előtt létrehozott teszteket. A szolgáltatás megszakadásának minimalizálásához a jelenlegi számítási [feladatokhoz telepítse át a teszteket Network Performance monitorról az](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md) Azure Network Watcher új, 2024. február 29. előtti kapcsolódási figyelője felé.
 
 A Network Performance Monitor egy felhőalapú hibrid hálózati figyelési megoldás, amely a hálózati infrastruktúra különböző pontjai közötti hálózati teljesítmény figyelését segíti. Emellett monitorozhatja a hálózat szolgáltatással és az alkalmazás végpontjaival való kapcsolatát is, illetve az Azure ExpressRoute teljesítményét is figyelheti. 
 
@@ -301,4 +300,4 @@ A díjszabással kapcsolatos információk [online állapotban](network-performa
 * **Csatlakozzon a kohorszhoz:** Mindig érdeklik, hogy az új ügyfelek csatlakozzanak a kohorszhoz. Ennek részeként korai hozzáférést kap az új funkciókhoz, és lehetőséget nyújt a Network Performance Monitor javítására. Ha érdekli a csatlakozás, töltse ki ezt a [gyors kérdőívet](https://aka.ms/npmcohort). 
 
 ## <a name="next-steps"></a>Következő lépések 
-További információ a [Teljesítményfigyelőről](network-performance-monitor-performance-monitor.md), a [szolgáltatás-csatlakozási figyelőről](network-performance-monitor-performance-monitor.md)és a [ExpressRoute-figyelőről](network-performance-monitor-expressroute.md). 
+További információ a [Teljesítményfigyelőről](network-performance-monitor-performance-monitor.md), a [szolgáltatás-csatlakozási figyelőről](network-performance-monitor-performance-monitor.md)és a [ExpressRoute-figyelőről](network-performance-monitor-expressroute.md).

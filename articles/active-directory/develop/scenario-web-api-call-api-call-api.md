@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 2c69cea7055476bcc4c4a28cea0a0cf8c8f66f88
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: bbb42a4955ff0b4fbbac58830ec5c8aecf04915d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753461"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686733"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Webes API-kat meghívó webes API: az API meghívása
 
@@ -29,9 +29,15 @@ A jogkivonat meghívása után meghívhat egy védett webes API-t. Általában a
 
 A *Microsoft. Identity. Web* használatakor három felhasználási forgatókönyv áll rendelkezésre:
 
-- [1. lehetőség: a Microsoft Graph meghívása az Microsoft Graph SDK-val](#option-1-call-microsoft-graph-with-the-sdk)
-- [2. lehetőség: alárendelt webes API meghívása a segítő osztállyal](#option-2-call-a-downstream-web-api-with-the-helper-class)
-- [3. lehetőség: alárendelt webes API meghívása a segítő osztály nélkül](#option-3-call-a-downstream-web-api-without-the-helper-class)
+- [Webes API-kat meghívó webes API: az API meghívása](#a-web-api-that-calls-web-apis-call-an-api)
+  - [Vezérlő kódja](#controller-code)
+- [ASP.NET Core](#aspnet-core)
+      - [1. lehetőség: a Microsoft Graph meghívása az SDK-val](#option-1-call-microsoft-graph-with-the-sdk)
+      - [2. lehetőség: alárendelt webes API meghívása a segítő osztállyal](#option-2-call-a-downstream-web-api-with-the-helper-class)
+      - [3. lehetőség: alárendelt webes API meghívása a segítő osztály nélkül](#option-3-call-a-downstream-web-api-without-the-helper-class)
+- [Java](#java)
+- [Python](#python)
+  - [Következő lépések](#next-steps)
 
 #### <a name="option-1-call-microsoft-graph-with-the-sdk"></a>1. lehetőség: a Microsoft Graph meghívása az SDK-val
 
@@ -159,10 +165,10 @@ private String callMicrosoftGraphMeEndpoint(String accessToken){
 ```
 
 # <a name="python"></a>[Python](#tab/python)
-A folyamatot bemutató minta a MSAL Python-val még nem érhető el.
+A folyamatot bemutató minta a MSAL Python-val az [MS-Identity-Python-on-a nevében](https://github.com/Azure-Samples/ms-identity-python-on-behalf-of)érhető el.
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ebben a forgatókönyvben lévő következő cikkre való áttéréssel váltson [éles környezetbe](scenario-web-api-call-api-production.md).

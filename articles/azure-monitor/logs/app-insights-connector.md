@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: 2e103bb3cce364aeb5c25dcc2b54bf78c6993ca0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2dda18232e0cf3afa63a01814e776b90988e0b10
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100618678"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704344"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Connector felügyeleti megoldás (elavult)
 
@@ -22,7 +22,7 @@ ms.locfileid: "100618678"
 >
 >A meglévő kapcsolatok 2019 június 30-ig továbbra is működni fognak.  A OMS-portál elavult használata esetén nincs lehetőség a meglévő kapcsolatok konfigurálására és eltávolítására a portálon. A meglévő kapcsolatok eltávolításához lásd: [az összekötő eltávolítása](#removing-the-connector-with-powershell) az alábbi PowerShell-lel a PowerShell használatával.
 >
->Több alkalmazás naplózási információinak lekérdezéséhez Application Insights tekintse meg a [több Azure Monitor Application Insights erőforrás egységesítését](../log-query/unify-app-resource-data.md)ismertető témakört. További információ a OMS-portál érvénytelenítéséről: a [OMS-portál áthelyezése az Azure](../platform/oms-portal-transition.md)-ba.
+>Több alkalmazás naplózási információinak lekérdezéséhez Application Insights tekintse meg a [több Azure Monitor Application Insights erőforrás egységesítését](./unify-app-resource-data.md)ismertető témakört. További információ a OMS-portál érvénytelenítéséről: a [OMS-portál áthelyezése az Azure](./oms-portal-transition.md)-ba.
 >
 > 
 
@@ -42,12 +42,12 @@ A megoldás használatakor a következőket teheti:
 
 A legtöbb más Log Analytics-megoldástól eltérően az ügynökök nem gyűjtenek adatokat az Application Insights Connector. A megoldás által használt összes adatok közvetlenül az Azure-ból származnak.
 
-| Összekapcsolt forrás | Támogatott | Description |
+| Összekapcsolt forrás | Támogatott | Leírás |
 | --- | --- | --- |
-| [Windows-ügynökök](./../agents/agent-windows.md) | No | A megoldás nem gyűjt adatokat a Windows-ügynököktől. |
-| [Linux-ügynökök](../vm/quick-collect-linux-computer.md) | No | A megoldás nem gyűjt adatokat a Linux-ügynököktől. |
-| [SCOM felügyeleti csoport](../agents/om-agents.md) | No | A megoldás nem gyűjt adatokat a csatlakoztatott SCOM felügyeleti csoportba tartozó ügynököktől. |
-| [Azure Storage-fiók](../essentials/resource-logs.md#send-to-log-analytics-workspace) | No | A megoldás nem gyűjt adatokat az Azure Storage-ból. |
+| [Windows-ügynökök](./../agents/agent-windows.md) | Nem | A megoldás nem gyűjt adatokat a Windows-ügynököktől. |
+| [Linux-ügynökök](../vm/quick-collect-linux-computer.md) | Nem | A megoldás nem gyűjt adatokat a Linux-ügynököktől. |
+| [SCOM felügyeleti csoport](../agents/om-agents.md) | Nem | A megoldás nem gyűjt adatokat a csatlakoztatott SCOM felügyeleti csoportba tartozó ügynököktől. |
+| [Azure Storage-fiók](../essentials/resource-logs.md#send-to-log-analytics-workspace) | Nem | A megoldás nem gyűjt adatokat az Azure Storage-ból. |
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -318,5 +318,4 @@ ApplicationInsights | summarize by ApplicationName
 
 ## <a name="next-steps"></a>Következő lépések
 
-- A Application Insights-alkalmazások részletes adatainak megtekintéséhez használja a [log Search kifejezést](../log-query/log-query-overview.md) .
-
+- A Application Insights-alkalmazások részletes adatainak megtekintéséhez használja a [log Search kifejezést](./log-query-overview.md) .

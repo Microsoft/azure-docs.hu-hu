@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 02/08/2021
-ms.openlocfilehash: 92d75289fd4459db8c469a4cb562fe28e8aab779
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 1cea159e6939463352102d7d3ff3dafbdea71b5a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989003"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710319"
 ---
 # <a name="cognitive-services-docs-whats-new-for-january-1-2021---january-31-2021"></a>Cognitive Services docs: Újdonságok január 1-től 2021 – január 31., 2021
 
@@ -29,31 +29,31 @@ ms.locfileid: "99989003"
 
 **Új cikkek**
 
-- [Oktatóanyag: adatok tömeges kinyerése Azure Data Factory használatával](/azure/cognitive-services/form-recognizer/tutorial-bulk-processing.md)
+- [Oktatóanyag: adatok tömeges kinyerése Azure Data Factory használatával](./form-recognizer/tutorial-bulk-processing.md)
 
 **Frissített cikkek**
 
-- [Mi a Form Recognizer?](/azure/cognitive-services/form-recognizer/overview.md)
+- [Mi a Form Recognizer?](./form-recognizer/overview.md)
 
 ## <a name="immersive-reader"></a>Modern olvasó
 
 **Frissített cikkek**
 
-- [Részletes olvasó erőforrás létrehozása és Azure Active Directory hitelesítés konfigurálása](/azure/cognitive-services/immersive-reader/how-to-create-immersive-reader.md)
+- [Részletes olvasó erőforrás létrehozása és Azure Active Directory hitelesítés konfigurálása](./immersive-reader/how-to-create-immersive-reader.md)
 
 ## <a name="personalizer"></a>Personalizer
 
 **Frissített cikkek**
 
-- [A funkciók a műveletekkel és környezettel kapcsolatos információk](/azure/cognitive-services/personalizer/concepts-features.md)
+- [A funkciók a műveletekkel és környezettel kapcsolatos információk](./personalizer/concepts-features.md)
 
 ## <a name="text-analytics"></a>Text Analytics
 
 **Frissített cikkek**
 
-- [Text Analytics API v3 nyelvi támogatás](/azure/cognitive-services/text-analytics/language-support.md)
-- [Migrálás a Text Analytics API 3. x verziójára](/azure/cognitive-services/text-analytics/migration-guide.md)
-- [A Text Analytics API újdonságai.](/azure/cognitive-services/text-analytics/whats-new.md)
+- [Text Analytics API v3 nyelvi támogatás](./text-analytics/language-support.md)
+- [Migrálás a Text Analytics API 3. x verziójára](./text-analytics/migration-guide.md)
+- [A Text Analytics API újdonságai.](./text-analytics/whats-new.md)
 
 ## <a name="community-contributors"></a>Közösségi közreműködők
 

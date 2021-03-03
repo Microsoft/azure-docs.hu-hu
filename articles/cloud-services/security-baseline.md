@@ -4,15 +4,15 @@ description: Az Azure Cloud Services biztonsági alapterve az Azure biztonsági 
 author: msmbaldwin
 ms.service: cloud-services
 ms.topic: conceptual
-ms.date: 11/02/2020
+ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 28be34e9323697759b2492d86b968f8e3d47a28e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 105fd185900692669fdc40e0c47a03474524e250
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572044"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731102"
 ---
 # <a name="azure-security-baseline-for-azure-cloud-services"></a>Azure biztonsági alapkonfiguráció az Azure Cloud Services
 
@@ -24,23 +24,23 @@ Ha szeretné megtekinteni, hogyan Cloud Services teljes mértékben leképezni a
 
 ## <a name="network-security"></a>Hálózati biztonság
 
-*További információt az [Azure biztonsági teljesítményteszt: hálózati biztonság](../security/benchmarks/security-control-network-security.md)című témakörben talál.*
+*További információ: [Azure Security Benchmark: Hálózati biztonság](../security/benchmarks/security-control-network-security.md).*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Azure-erőforrások biztosítása virtuális hálózatokon belül
 
 **Útmutató**: hozzon létre egy klasszikus Azure-Virtual Network külön nyilvános és magánhálózati alhálózattal, hogy kikényszerítse a megbízható portok és IP-címtartományok alapján történő elkülönítést. Ezeknek a virtuális hálózatoknak és alhálózatoknak a klasszikus Virtual Network (klasszikus üzembe helyezési) alapú erőforrásoknak kell lenniük, és nem a jelenlegi Azure Resource Manager erőforrásai.  
 
-Engedélyezheti vagy megtagadhatja a forgalmat egy hálózati biztonsági csoporttal, amely a hozzáférés-vezérlési szabályokat tartalmazza a forgalmi irány, a protokoll, a forrás címe és a port, valamint a célcím és a port alapján. A hálózati biztonsági csoport szabályai bármikor módosíthatók, és az összes társított példányra érvényesek lesznek a módosítások.
+Engedélyezheti vagy megtagadhatja a forgalmat egy hálózati biztonsági csoporttal, amely a hozzáférés-vezérlési szabályokat tartalmazza a forgalmi irány, a protokoll, a forrás címe és a port, valamint a célcím és a port alapján. A hálózati biztonsági csoport szabályai bármikor megváltoztathatók, és a rendszer minden társított példányra alkalmazza a módosításokat.
 
 Microsoft Azure Cloud Services (klasszikus) nem helyezhető el Azure Resource Manager virtuális hálózatokban. A Resource Manager-alapú virtuális hálózatok és a klasszikus üzembe helyezési alapú virtuális hálózatok azonban a peering használatával csatlakoztathatók. 
 
 - [Hálózati biztonsági csoport áttekintése](../virtual-network/network-security-groups-overview.md)
 
-- [Társviszony létesítése virtuális hálózatok között](./cloud-services-connectivity-and-networking-faq.md?preserve-view=true#how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services)
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
+- [Társviszony létesítése virtuális hálózatok között](https://docs.microsoft.com/azure/cloud-services/cloud-services-connectivity-and-networking-faq#how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1,2: a virtuális hálózatok, alhálózatok és hálózati adapterek konfigurációjának és forgalmának figyelése és naplózása
 
@@ -58,11 +58,11 @@ Engedélyezze a hálózati biztonsági csoport adatfolyam-naplóit, és küldje 
 
 - [Cloud Services konfigurációs fájl](schema-cscfg-file.md)
 
-- [Azure Policy által támogatott szolgáltatások listája](/cli/azure/azure-services-the-azure-cli-can-manage?preserve-view=)
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
+- [Azure Policy által támogatott szolgáltatások listája](/cli/azure/azure-services-the-azure-cli-can-manage)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="13-protect-critical-web-applications"></a>1,3: a kritikus webalkalmazások megóvása
 
@@ -72,9 +72,9 @@ Engedélyezze a hálózati biztonsági csoport adatfolyam-naplóit, és küldje 
 
 - [TLS/SSL-tanúsítványok konfigurálása](cloud-services-configure-ssl-certificate-portal.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: az ismert kártékony IP-címekkel folytatott kommunikáció megtagadása
 
@@ -89,15 +89,15 @@ A bejövő adatforgalom megakadályozása a Cloud Services alapértelmezett URL-
 
 Megtagadási szabály konfigurálása a klasszikus előfizetés-rendszergazdai hozzárendelések esetében. Alapértelmezés szerint a belső végpontok meghatározása után a kommunikáció bármely szerepkörről a szerepkör belső végpontja számára korlátozás nélkül elvégezhető. A kommunikáció korlátozásához hozzá kell adnia egy NetworkTrafficRules elemet a ServiceDefinition elemhez a szolgáltatás definíciós fájljában.
 
-- [Hogyan lehet letiltani vagy letiltani a bejövő forgalmat a felhőalapú szolgáltatás alapértelmezett URL-címére](./cloud-services-connectivity-and-networking-faq.md?preserve-view=true#how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service)
+- [Hogyan lehet letiltani vagy letiltani a bejövő forgalmat a felhőalapú szolgáltatás alapértelmezett URL-címére](https://docs.microsoft.com/azure/cloud-services/cloud-services-connectivity-and-networking-faq#how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service)
 
-- [Azure DDOS Protection](./cloud-services-connectivity-and-networking-faq.md?preserve-view=true#how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service)
+- [Azure DDOS Protection](https://docs.microsoft.com/azure/cloud-services/cloud-services-connectivity-and-networking-faq#how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service)
 
-- [Adott IP-cím blokkolása](cloud-services-startup-tasks-common.md#block-a-specific-ip-address)
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
+- [Adott IP-cím blokkolása](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks-common#block-a-specific-ip-address)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="15-record-network-packets"></a>1,5: hálózati csomagok rögzítése
 
@@ -107,21 +107,21 @@ A folyamat naplózásának konfigurálása hálózati biztonsági csoportban. Te
 
 - [A folyamat naplózásának konfigurálása hálózati biztonsági csoporton](../virtual-machines/extensions/network-watcher-linux.md)
 
-- [A flow-naplók konfigurálásával kapcsolatos további információkért látogasson el ide:](/cli/azure/azure-services-the-azure-cli-can-manage?preserve-view=)
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
+- [A flow-naplók konfigurálásával kapcsolatos további információkért látogasson el ide:](/cli/azure/azure-services-the-azure-cli-can-manage)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: hálózati behatolás-észlelési/Behatolás-megelőzési rendszerek (AZONOSÍTÓk/IP-címek) üzembe helyezése
 
 **Útmutató**: az Azure Cloud Services nem rendelkezik beépített azonosítókkal vagy IP-címekkel. Az ügyfelek a szervezeti követelmények alapján választhatják ki és helyezhetik üzembe a további hálózati AZONOSÍTÓkat vagy IP-címeket az Azure Marketplace-en. Harmadik féltől származó megoldások használatakor ügyeljen arra, hogy alaposan tesztelje a kiválasztott AZONOSÍTÓkat vagy IP-címeket az Azure Cloud Services a megfelelő működés és működés biztosítása érdekében.
 
-- [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall) 
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
+- [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1,7: webalkalmazások forgalmának kezelése
 
@@ -139,9 +139,9 @@ Használja a TLS 1,2 protokollt, amely a leggyakrabban használt módszer az ada
 
 - [Application Gateway üzembe helyezése](../application-gateway/quick-create-portal.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: a hálózati eszközök szabványos biztonsági konfigurációinak fenntartása
 
@@ -151,9 +151,9 @@ Ha a szolgáltatás egy virtuális hálózat része, a hálózat konfigurációs
 
 Vegye figyelembe, hogy Azure Policy nem támogatott az Azure Cloud Services a konfiguráció kényszerítéséhez.
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="110-document-traffic-configuration-rules"></a>1,10: a dokumentum forgalmának konfigurációs szabályai
 
@@ -163,9 +163,9 @@ Az egyes hálózati biztonsági csoportokra vonatkozó szabályok "Description" 
 
 - [Hálózati forgalom szűrése hálózati biztonsági csoport szabályaival](../virtual-network/tutorial-filter-network-traffic.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: automatikus eszközök használata a hálózati erőforrások konfigurációjának figyelésére és a változások észlelésére
 
@@ -175,17 +175,17 @@ Betekintést nyerhet az Azure-ba, az előfizetési szintű eseményekbe. Ilyen i
 
 Hozzon létre egy diagnosztikai beállítást, amely elküldi a műveletnapló Azure Monitor, Azure Event Hubs az Azure-on kívülre vagy az Azure Storage-ba archiválásra. Az értesítési riasztások Azure Monitor konfigurálása, ha az Azure-Cloud Services kritikus erőforrásai módosulnak. 
 
-- [Azure-tevékenység naplója](../azure-monitor/essentials/activity-log.md)
+- [Azure-tevékenység naplója](/azure/azure-monitor/platform/activity-log)
 
-- [Műveletnapló-riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](../azure-monitor/alerts/alerts-activity-log.md)
+- [Műveletnapló-riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](/azure/azure-monitor/platform/alerts-activity-log)
 
 - [Traffic Manager figyelés](../traffic-manager/traffic-manager-monitoring.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
 
-## <a name="logging-and-monitoring"></a>Naplózás és figyelés
+**Azure Security Center figyelés**: nincs
+
+## <a name="logging-and-monitoring"></a>Naplózás és monitorozás
 
 *További információt az [Azure biztonsági teljesítményteszt: naplózás és figyelés](../security/benchmarks/security-control-logging-monitoring.md)című témakörben talál.*
 
@@ -193,11 +193,11 @@ Hozzon létre egy diagnosztikai beállítást, amely elküldi a műveletnapló A
 
 **Útmutató**: az azure-Cloud Services Azure-erőforrásainak időforrásait a Microsoft fenntartja. Előfordulhat, hogy az ügyfeleknek olyan hálózati szabályt kell létrehozniuk, amely lehetővé teszi a környezetében használt időkiszolgálóhoz való hozzáférést az 123-as porton keresztül az UDP protokollal.
 
-- [NTP-kiszolgáló elérése](../firewall/protect-windows-virtual-desktop.md#additional-considerations)
-
-**Az Azure Security Center monitorozása**: Igen
+- [NTP-kiszolgáló elérése](https://docs.microsoft.com/azure/firewall/protect-windows-virtual-desktop#additional-considerations)
 
 **Felelősség**: Megosztott
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="22-configure-central-security-log-management"></a>2,2: a központi biztonsági naplók felügyeletének konfigurálása
 
@@ -218,9 +218,9 @@ Tekintse át az Azure Sentinel dokumentációját az elérhető összekötők é
 
 - [SIEM-integráció konfigurálása az Azure Event Hubs használatával](../security-center/continuous-export.md)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: az Azure-erőforrások naplózásának engedélyezése
 
@@ -231,17 +231,17 @@ Megtekintheti a tevékenység naplójában lévő egyes események változási e
 
 Az Azure Cloud Services a rendelkezésre állás, a teljesítmény, a hibák és a használat Application Insights figyelésére használható. Az egyéni diagramok hozzáadhatók a Application Insightshoz, így a leginkább fontos információk láthatók. A szerepkör-példány adatait az Azure Cloud Services projektben található Application Insights SDK-val lehet gyűjteni. 
 
-- [A diagnosztika bekapcsolása a Visual Studióban az üzembe helyezés előtt](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?preserve-view=true#to-turn-on-diagnostics-in-visual-studio-before-deployment)
+- [A diagnosztika bekapcsolása a Visual Studióban az üzembe helyezés előtt](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#to-turn-on-diagnostics-in-visual-studio-before-deployment)
 
-- [Változási előzmények megtekintése](../azure-monitor/essentials/activity-log.md#view-change-history)
+- [Változási előzmények megtekintése](/azure/azure-monitor/platform/activity-log#view-change-history)
 
 - [Azure Cloud Service Application Insights (klasszikus)](../azure-monitor/app/cloudservices.md)
 
-- [Diagnosztika beállítása az Azure Cloud Service (klasszikus) és a Virtual Machines szolgáltatáshoz](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?preserve-view=true&toc=%2fazure%2fcloud-services%2ftoc.json)
-
-**Az Azure Security Center monitorozása**: Igen
+- [Diagnosztika beállítása az Azure Cloud Service (klasszikus) és a Virtual Machines szolgáltatáshoz](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: a biztonsági napló tárolási adatmegőrzésének konfigurálása
 
@@ -251,9 +251,9 @@ Vegye figyelembe, hogy a speciális figyelés a figyelni kívánt szerepkörön 
 
 - [Bevezetés a Cloud Service Monitorozásba](cloud-services-how-to-monitor.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="26-monitor-and-review-logs"></a>2,6: naplók figyelése és áttekintése
 
@@ -269,11 +269,11 @@ Az Azure diagnosztikai bővítmény egy Azure Storage-fiókban gyűjti és táro
 
 - [Diagnosztika engedélyezése az Azure Cloud Services a PowerShell használatával](cloud-services-diagnostics-powershell.md)
 
-- [Diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban](diagnostics-extension-to-storage.md?&amp;preserve-view=true)
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
+- [Diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban](https://docs.microsoft.com/azure/cloud-services/diagnostics-extension-to-storage?&amp;preserve-view=true)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2,7: riasztások engedélyezése rendellenes tevékenységekhez
 
@@ -281,23 +281,23 @@ Az Azure diagnosztikai bővítmény egy Azure Storage-fiókban gyűjti és táro
 
 - [Integrálás SIEM-mel](../security-center/continuous-export.md)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="28-centralize-anti-malware-logging"></a>2,8: kártevő szoftverek közötti naplózás központosítása
 
 **Útmutató**: az Azure-hoz készült Microsoft antimalware védi az azure-Cloud Servicesokat és a virtuális gépeket. Lehetősége van harmadik féltől származó biztonsági megoldások üzembe helyezésére is, például a webalkalmazási tűzoltó falakra, a hálózati tűzfalakra, az antimalware-ra, a behatolás észlelésére és megelőzésére szolgáló rendszerekre (AZONOSÍTÓk vagy IP-címek) és egyebekre.
 
-- [Mik azok a funkciók és képességek, amelyeket az Azure alapszintű IP-címei/azonosítója és a DDOS biztosít](./cloud-services-configuration-and-management-faq.md?preserve-view=true#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
+- [Mik azok a funkciók és képességek, amelyeket az Azure alapszintű IP-címei/azonosítója és a DDOS biztosít](https://docs.microsoft.com/azure/cloud-services/cloud-services-configuration-and-management-faq#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
 
 **Felelősség**: Ügyfél
 
+**Azure Security Center figyelés**: nincs
+
 ## <a name="identity-and-access-control"></a>Identitás- és hozzáférés-vezérlés
 
-*További információt az [Azure biztonsági teljesítményteszt: identitás-és hozzáférés-vezérlés](../security/benchmarks/security-control-identity-access-control.md)című témakörben talál.*
+*További információt az [Azure biztonsági teljesítményteszt: Identity and Access Control](../security/benchmarks/security-control-identity-access-control.md)című témakörben talál.*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: a felügyeleti fiókok leltárának karbantartása
 
@@ -315,21 +315,21 @@ Get-AzRoleAssignment – IncludeClassicAdministrators
 
 Tekintse át a klasszikus előfizetés felügyeleti szerepkörei közötti különbségeket. 
 
-- [Három klasszikus előfizetés felügyeleti szerepkör közötti különbségek](../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
+- [Három klasszikus előfizetés felügyeleti szerepkör közötti különbségek](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles#classic-subscription-administrator-roles)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3,3: dedikált rendszergazdai fiókok használata
 
 **Útmutató**: javasoljuk, hogy hozzon létre szabványos működési eljárásokat a dedikált rendszergazdai fiókok használata során, a rendelkezésre álló szerepkörök alapján, valamint az Azure-Cloud Services erőforrásainak üzemeltetéséhez és kezeléséhez szükséges engedélyekkel.
 
-- [A klasszikus előfizetés felügyeleti szerepkörei közötti különbségek](../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
+- [A klasszikus előfizetés felügyeleti szerepkörei közötti különbségek](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles#classic-subscription-administrator-roles)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: egyszeri bejelentkezés (SSO) használata Azure Active Directory
 
@@ -337,9 +337,9 @@ Tekintse át a klasszikus előfizetés felügyeleti szerepkörei közötti kül�
 
 - [Mi az egyszeri bejelentkezés (SSO)](../active-directory/manage-apps/what-is-single-sign-on.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: dedikált gépek (privilegizált hozzáférési munkaállomások) használata az összes felügyeleti feladathoz
 
@@ -347,15 +347,15 @@ Tekintse át a klasszikus előfizetés felügyeleti szerepkörei közötti kül�
 
 - [A biztonságos, Azure által felügyelt munkaállomások ismertetése](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [Az Azure AD MFA engedélyezése](../active-directory/authentication/howto-mfa-getstarted.md)
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
+- [A Azure Active Directory (Azure AD) többtényezős hitelesítésének engedélyezése](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Felelősség**: Ügyfél
 
+**Azure Security Center figyelés**: nincs
+
 ## <a name="data-protection"></a>Adatvédelem
 
-*További információt az [Azure biztonsági teljesítményteszt: Adatvédelem](../security/benchmarks/security-control-data-protection.md)című témakörben talál.*
+*További információ: [Azure Security Benchmark: Adatvédelem](../security/benchmarks/security-control-data-protection.md).*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: bizalmas információk leltárának fenntartása
 
@@ -375,9 +375,9 @@ Tekintse át az Azure Cloud Service REST API-jai dokumentációját, és hozzon 
 
 - [Csomag beolvasása](/rest/api/compute/cloudservices/rest-get-package)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: bizalmas adatok tárolására vagy feldolgozására szolgáló rendszerek elkülönítése
 
@@ -389,11 +389,11 @@ Az Azure Cloud Service Certificate elem "permissionLevel" tulajdonságát is sze
 
 - [Felügyeleti csoportok létrehozása](../governance/management-groups/create-management-group-portal.md)
 
-- [WebRole-séma](schema-csdef-webrole.md#Certificate)
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
+- [WebRole-séma](https://docs.microsoft.com/azure/cloud-services/schema-csdef-webrole#Certificate)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: a bizalmas adatok jogosulatlan átvitelének figyelése és letiltása
 
@@ -401,9 +401,9 @@ Az Azure Cloud Service Certificate elem "permissionLevel" tulajdonságát is sze
 
 - [Az ügyféladatok Azure-beli védelmének ismertetése](../security/fundamentals/protection-customer-data.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
-
 **Felelősség**: Megosztott
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: minden bizalmas adat titkosítása az átvitel során
 
@@ -413,15 +413,15 @@ Az Azure-Cloud Serviceshoz csatolt szolgáltatás-tanúsítványok használata, 
 
 Hitelesítés a felügyeleti API-val felügyeleti tanúsítványokkal – a felügyeleti tanúsítványok lehetővé teszik a hitelesítését a klasszikus üzemi modellel. Számos program és eszköz (például a Visual Studio vagy az Azure SDK) ezeket a tanúsítványokat használja a különböző Azure-szolgáltatások konfigurációjának és üzembe helyezésének automatizálására. 
 
-További információért az Azure Service Management API programozott hozzáférést biztosít a Azure Portal által elérhető Service Management-funkciókhoz. A Pythonhoz készült Azure SDK használható az Azure-Cloud Services és az Azure Storage-fiókok kezelésére. A Pythonhoz készült Azure SDK becsomagolja a Service Management API REST API. Minden API-művelet a TLS protokollon keresztül történik, és az X. 509 v3 tanúsítványok használatával kölcsönösen hitelesítve van. A kezelési szolgáltatás az Azure-ban futó szolgáltatáson belülről érhető el. Emellett közvetlenül az interneten keresztül is elérhető bármely olyan alkalmazásból, amely képes HTTPS-kéréseket küldeni és HTTPS-válaszokat fogadni.
+A klasszikus üzembe helyezési modell API-val kapcsolatos további információkért a Azure Portalon keresztül elérhető klasszikus üzemi modell-funkciók programozott hozzáférését biztosítjuk. A Pythonhoz készült Azure SDK használható az Azure-Cloud Services és az Azure Storage-fiókok kezelésére. A Pythonhoz készült Azure SDK becsomagolja a klasszikus üzembe helyezési modell API-t, amely egy REST API. Minden API-művelet a TLS protokollon keresztül történik, és az X. 509 v3 tanúsítványok használatával kölcsönösen hitelesítve van. A kezelési szolgáltatás az Azure-ban futó szolgáltatáson belülről érhető el. Emellett közvetlenül az interneten keresztül is elérhető bármely olyan alkalmazásból, amely képes HTTPS-kéréseket küldeni és HTTPS-válaszokat fogadni.
 
 - [TLS konfigurálása alkalmazáshoz az Azure-ban](cloud-services-configure-ssl-certificate-portal.md)
 
-- [A Service Management használata a Pythonból](cloud-services-python-how-to-use-service-management.md)
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
+- [A klasszikus üzembe helyezési modell használata a Pythonból](cloud-services-python-how-to-use-service-management.md)
 
 **Felelősség**: Megosztott
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: aktív felderítési eszköz használata a bizalmas adatok azonosítására
 
@@ -429,9 +429,9 @@ További információért az Azure Service Management API programozott hozzáfé
 
 - [Az ügyféladatok Azure-beli védelmének ismertetése](../security/fundamentals/protection-customer-data.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
-
 **Felelősség**: Megosztott
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: a gazdagép-alapú adatvesztés-megelőzés használata a hozzáférés-vezérlés kikényszeríthető
 
@@ -443,37 +443,37 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 - [Az ügyféladatok Azure-beli védelmének ismertetése](../security/fundamentals/protection-customer-data.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
-
 **Felelősség**: Megosztott
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: bizalmas adatok titkosítása a nyugalmi állapotban
 
-**Útmutató**: az Azure Cloud Services nem támogatja a titkosítást. Ennek az az oka, hogy az Azure Cloud Services úgy vannak kialakítva, hogy állapot nélküliek legyenek. Az Azure Cloud Services támogatja a külső tárterületet (például az Azure Storage-t), amely alapértelmezés szerint titkosított a nyugalmi állapotban.  
+**Útmutató**: az Azure Cloud Services nem támogatja a titkosítást. Ennek az az oka, hogy az Azure Cloud Services úgy lett kialakítva, hogy állapot nélküli legyen. Az Azure Cloud Services támogatja a külső tárterületet (például az Azure Storage-t), amely alapértelmezés szerint titkosított a nyugalmi állapotban.  
 
 Az ideiglenes lemezekben tárolt alkalmazásadatok nem titkosítottak. Az ügyfél feladata, hogy szükség szerint felügyelje és titkosítsa ezeket az adatvédelmet.  
 
 - [Inaktív adatok Azure-ban való titkosításának ismertetése](../security/fundamentals/encryption-atrest.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: a kritikus Azure-erőforrások változásainak naplózása és riasztása
 
-**Útmutató**: a Azure monitor klasszikus metrikai riasztásokat használhat, ha értesítést szeretne kapni, ha a kritikus erőforrásokra alkalmazott mérőszámok egyike küszöbértéket tesz elérhetővé. A klasszikus metrikai riasztások olyan régebbi funkciók, amelyek csak a nem dimenziós metrikák esetében engedélyezik a riasztást. Létezik egy metrikus riasztások nevű meglévő újabb funkció, amely továbbfejlesztett funkciókat biztosít a klasszikus metrikai riasztások terén. 
+**Útmutató**: a Azure monitor klasszikus metrikai riasztásokat használhat, ha értesítést szeretne kapni, ha a kritikus erőforrásokra alkalmazott mérőszámok egyike küszöbértéket tesz elérhetővé. A klasszikus metrikai riasztások olyan régebbi funkciók, amelyek csak a nem dimenziós metrikák esetében engedélyezik a riasztást. Létezik egy metrikus riasztások nevű meglévő újabb funkció, amely továbbfejlesztett funkciókat biztosít a klasszikus metrikai riasztások során. 
 
 Emellett a Application Insights képes figyelni az Azure Cloud Services-alkalmazásokat a rendelkezésre állás, a teljesítmény, a hibák és a használat tekintetében. Ez a Application Insights SDK-k összesített adatait használja az Azure-Cloud Services Azure Diagnostics adataival.
 
-- [Klasszikus metrikai riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](../azure-monitor/alerts/alerts-classic-portal.md)
+- [Klasszikus metrikai riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](/azure/azure-monitor/platform/alerts-classic-portal)
 
-- [Metrikus riasztások áttekintése](../azure-monitor/alerts/alerts-metric-overview.md) 
+- [Metrikus riasztások áttekintése](/azure/azure-monitor/platform/alerts-metric-overview) 
 
 - [Azure Cloud Service Application Insights (klasszikus)](../azure-monitor/app/cloudservices.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ## <a name="vulnerability-management"></a>Biztonságirés-kezelés
 
@@ -493,11 +493,11 @@ Amikor egy ügyfél egy adott operációsrendszer-verziót választ az Azure Clo
 
 - [A Cloud Service konfigurálása (klasszikus)](cloud-services-how-to-configure-portal.md)
 
-- [Vendég operációs rendszer verziójának kezelése](cloud-services-how-to-configure-portal.md#manage-guest-os-version)
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
+- [Vendég operációs rendszer verziójának kezelése](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-configure-portal#manage-guest-os-version)
 
 **Felelősség**: Megosztott
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="53-deploy-an-automated-patch-management-solution-for-third-party-software-titles"></a>5,3: automatikus javítási megoldás üzembe helyezése harmadik féltől származó szoftverek címeihez
 
@@ -505,9 +505,9 @@ Amikor egy ügyfél egy adott operációsrendszer-verziót választ az Azure Clo
 
 Ez lehetővé teszi, hogy Update Management a harmadik féltől származó szoftverrel rendelkező frissítési adattárként Configuration Manager használó gépeket.
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: kockázatértékelési folyamat használatával rangsorolhatja a felderített biztonsági rések szervizelését
 
@@ -523,13 +523,13 @@ Javasoljuk a következő forgatókönyvek megvalósítását:
 
 Támogató dokumentáció:
 
-- [Az Azure-erőforrások kockázati kiértékelése](../security/fundamentals/ddos-best-practices.md#risk-evaluation-of-your-azure-resources)
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
+- [Az Azure-erőforrások kockázati kiértékelése](https://docs.microsoft.com/azure/security/fundamentals/ddos-best-practices#risk-evaluation-of-your-azure-resources)
 
 **Felelősség**: Ügyfél
 
-## <a name="inventory-and-asset-management"></a>Leltár- és eszközfelügyelet
+**Azure Security Center figyelés**: nincs
+
+## <a name="inventory-and-asset-management"></a>Leltár-és eszközfelügyelet
 
 *További információt az [Azure biztonsági teljesítményteszt: leltár és eszközkezelés](../security/benchmarks/security-control-inventory-asset-management.md)című témakörben talál.*
 
@@ -537,25 +537,25 @@ Támogató dokumentáció:
 
 **Útmutató**: nem alkalmazható az Azure Cloud Servicesra. Ez a javaslat a számítási erőforrások IaaS vonatkozik.
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6,3: jogosulatlan Azure-erőforrások törlése
 
 **Útmutató**: javasoljuk, hogy rendszeresen összehangolja a leltárt, és gondoskodjon arról, hogy a jogosulatlan erőforrások törlése az előfizetésből időben történjen.
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6,4: jóváhagyott Azure-erőforrások leltárának meghatározása és karbantartása
 
 **Útmutató**: az ügyfélnek jóváhagyott Azure-erőforrásokat és jóváhagyott szoftvereket kell meghatároznia a számítási erőforrásokhoz.
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: a nem jóváhagyott Azure-erőforrások figyelése
 
@@ -576,9 +576,9 @@ További részletek a hivatkozott hivatkozásokon érhetők el.
 
 - [Adaptív alkalmazásvezérlők](../security-center/security-center-adaptive-application.md)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: a nem jóváhagyott szoftveralkalmazások figyelése a számítási erőforrásokon belül
 
@@ -604,9 +604,9 @@ További részletek a hivatkozott hivatkozásokon érhetők el.
 
 - [Adaptív alkalmazásvezérlők](../security-center/security-center-adaptive-application.md)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: nem jóváhagyott Azure-erőforrások és szoftveralkalmazások eltávolítása
 
@@ -632,9 +632,9 @@ További részletek a hivatkozott hivatkozásokon érhetők el.
 
 - [Adaptív alkalmazásvezérlők](../security-center/security-center-adaptive-application.md)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="68-use-only-approved-applications"></a>6,8: csak jóváhagyott alkalmazások használata
 
@@ -660,9 +660,9 @@ További részletek a hivatkozott hivatkozásokon érhetők el.
 
 - [Adaptív alkalmazásvezérlők](../security-center/security-center-adaptive-application.md)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6,10: a jóváhagyott szoftverek leltárának fenntartása
 
@@ -683,9 +683,9 @@ További részletek a hivatkozott hivatkozásokon érhetők el.
 
 - [Adaptív alkalmazásvezérlők](../security-center/security-center-adaptive-application.md)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="612-limit-users-ability-to-execute-scripts-in-compute-resources"></a>6,12: korlátozza a felhasználók számára a parancsfájlok végrehajtásának lehetőségét a számítási erőforrásokban
 
@@ -711,9 +711,9 @@ További részletek a hivatkozott hivatkozásokon érhetők el.
 
 - [Adaptív alkalmazásvezérlők](../security-center/security-center-adaptive-application.md)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fizikailag vagy logikailag elkülöníthető a nagy kockázatú alkalmazások
 
@@ -725,9 +725,9 @@ További részletek a hivatkozott hivatkozásokon érhetők el.
 
 - [Oktatóanyag – hálózati adatforgalom szűrése hálózati biztonsági csoporttal a Azure Portal használatával](../virtual-network/tutorial-filter-network-traffic.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ## <a name="secure-configuration"></a>Biztonságos konfiguráció
 
@@ -741,41 +741,41 @@ A Azure Portal válassza a Security Center, majd a számítási &amp; alkalmazá
 
 - [Biztonsági javaslatok – gyorsútmutató](../security-center/recommendations-reference.md)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: biztonságos Azure-erőforrás-konfigurációk karbantartása
 
 **Útmutató**: nem alkalmazható az Azure Cloud Servicesra. Ez a klasszikus üzembehelyezési modellen alapul. Ajánlott külső gyártótól származó megoldást használni a biztonságos Azure-erőforrás-konfigurációk fenntartásához
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: az Azure-erőforrások biztonságos tárolása
 
 **Útmutató**: az Azure Cloud Service konfigurációs fájlja az erőforrások működési attribútumait tárolja. A konfigurációs fájlok másolatát biztonságos Storage-fiókba is tárolhatja.
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7,7: az Azure-erőforrások konfigurációs felügyeleti eszközeinek üzembe helyezése
 
 **Útmutató**: nem alkalmazható az Azure Cloud Servicesra. Ez a klasszikus üzemi modellen alapul, és nem felügyelhető Azure Resource Manager üzembe helyezés-alapú konfigurációs eszközeivel.
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7,8: konfigurációs felügyeleti eszközök telepítése operációs rendszerekhez
 
 **Útmutató**: nem alkalmazható az Azure Cloud Servicesra. Ez az ajánlás az infrastruktúra-szolgáltatás (IaaS) alapú számítási erőforrások esetében alkalmazható.
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7,9: automatikus konfigurációs monitorozás megvalósítása Azure-erőforrásokhoz
 
@@ -783,9 +783,9 @@ A Azure Portal válassza a Security Center, majd a számítási &amp; alkalmazá
 
 - [Javaslatok szervizelése Azure Security Center](../security-center/security-center-remediate-recommendations.md)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: az operációs rendszerek automatikus konfiguráció-figyelésének megvalósítása
 
@@ -793,9 +793,9 @@ A Azure Portal válassza a Security Center, majd a számítási &amp; alkalmazá
 
 - [Az Azure Security Center tárolókra vonatkozó ajánlásainak értelmezése](../security-center/container-security.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="711-manage-azure-secrets-securely"></a>7,11: az Azure-titkok biztonságos kezelése
 
@@ -805,11 +805,11 @@ A titkos kulcsokat, például az Azure Cloud Services használt hitelesítő ada
 
 Emellett ajánlott a titkos kulcsok tárolása az Azure Cloud Services-ban használt tanúsítványokhoz egy biztonságos tárolóban.
 
-- [Távoli asztal konfigurálása a PowerShellből](cloud-services-role-enable-remote-desktop-powershell.md#configure-remote-desktop-from-powershell)
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
+- [Távoli asztal konfigurálása a PowerShellből](https://docs.microsoft.com/azure/cloud-services/cloud-services-role-enable-remote-desktop-powershell#configure-remote-desktop-from-powershell)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: a hitelesítő adatok nem szándékolt expozíciójának megszüntetése
 
@@ -820,11 +820,11 @@ A kezdéshez egy egyszerű szöveges jelszót kell megadnia, amely a ConvertTo-S
 
 Tárolja a titkos kulcsokat az Azure Cloud Servicesban használt tanúsítványokhoz egy biztonságos tárolási helyre.
 
-- [Távoli asztal konfigurálása a PowerShellből](cloud-services-role-enable-remote-desktop-powershell.md#configure-remote-desktop-from-powershell)
-
-**Azure Security Center – monitorozás**: Nem értelmezhető
+- [Távoli asztal konfigurálása a PowerShellből](https://docs.microsoft.com/azure/cloud-services/cloud-services-role-enable-remote-desktop-powershell#configure-remote-desktop-from-powershell)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ## <a name="malware-defense"></a>Kártevők elleni védelem
 
@@ -840,19 +840,19 @@ Engedélyezze a antimalware bővítményt egy PowerShell-parancsfájllal az Azur
 
 Válassza ki az adaptív alkalmazás-vezérlés funkciót Azure Security Center, egy intelligens, automatizált, teljes körű megoldás. Segít megerősíteni a gépeket a kártevők ellen, és lehetővé teszi a kártékony alkalmazások futtatására tett kísérletek letiltását vagy riasztását, beleértve azokat is, amelyeket antimalware-megoldások okozhatnak.
 
-- [Hogyan adhatok hozzá antimalware-bővítményt az Azure-Cloud Services automatizált módon](./cloud-services-configuration-and-management-faq.md?preserve-view=true#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
+- [Hogyan adhatok hozzá antimalware-bővítményt az Azure-Cloud Services automatizált módon](https://docs.microsoft.com/azure/cloud-services/cloud-services-configuration-and-management-faq#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
 
-- [Kártevő szoftverek üzembe helyezésének forgatókönyvei](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)
+- [Kártevő szoftverek üzembe helyezésének forgatókönyvei](https://docs.microsoft.com/azure/security/fundamentals/antimalware#antimalware-deployment-scenarios)
 
 - [Adaptív alkalmazásvezérlők](../security-center/security-center-adaptive-application.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ## <a name="incident-response"></a>Incidensmegoldás
 
-*További információt az [Azure biztonsági teljesítményteszt: incidens válasza](../security/benchmarks/security-control-incident-response.md)című témakörben talál.*
+*További információ: [Azure Security Benchmark: Incidensek kezelése](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: incidens-válaszi útmutató létrehozása
 
@@ -866,19 +866,19 @@ Válassza ki az adaptív alkalmazás-vezérlés funkciót Azure Security Center,
 
 - [Az ügyfél a NIST számítógépes biztonsági incidensek kezelési útmutatóját is kihasználhatja a saját incidens-válasz tervének létrehozásával kapcsolatos támogatáshoz](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: incidensek pontozásának és rangsorolási eljárásának létrehozása
 
-**Útmutató**: a Azure Security Center súlyosságot rendel az egyes riasztásokhoz, hogy a prioritások alapján ki lehessen deríteni, hogy mely riasztásokat kell először megvizsgálni. A súlyosság azon alapul, hogy az Security Center milyen mértékben szerepel a riasztás kibocsátásához használt elemzésben vagy elemzésben, valamint azt a megbízhatósági szintet, amely a riasztáshoz vezető tevékenység mögött rosszindulatú szándékú volt. 
+**Útmutató**: a Azure Security Center súlyosságot rendel az egyes riasztásokhoz, hogy a prioritások alapján ki lehessen deríteni, hogy mely riasztásokat kell először megvizsgálni. A súlyosság azon alapul, hogy az Security Center milyen mértékben szerepel a riasztás kibocsátásához használt elemzésben vagy elemzésben, valamint a riasztást eredményező tevékenység mögötti rosszindulatú szándékkal. 
 
 Egyértelműen megjelölheti az előfizetéseket (például éles környezetben, nem éles környezetben), és létrehozhat egy elnevezési rendszert az Azure-erőforrások egyértelmű azonosításához és kategorizálásához.
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="103-test-security-response-procedures"></a>10,3: biztonsági reagálási eljárások tesztelése
 
@@ -886,9 +886,9 @@ Egyértelműen megjelölheti az előfizetéseket (például éles környezetben,
 
 - [Tekintse meg a NIST kiadványát: útmutató az IT-csomagok és-képességek teszteléséhez, betanításához és edzésprogramjának kidolgozásához](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: biztonsági incidensek elérhetőségének biztosítása és riasztási értesítések konfigurálása biztonsági incidensekhez
 
@@ -896,9 +896,9 @@ Egyértelműen megjelölheti az előfizetéseket (például éles környezetben,
 
 - [A Azure Security Center biztonsági kapcsolattartó beállítása](../security-center/security-center-provide-security-contact-details.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: biztonsági riasztások beépítése az incidensek gyorsreagáló rendszerébe
 
@@ -908,9 +908,9 @@ Egyértelműen megjelölheti az előfizetéseket (például éles környezetben,
 
 - [Riasztások streamelése az Azure Sentinelbe](../sentinel/connect-azure-security-center.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10,6: a biztonsági riasztásokra adott válasz automatizálása
 
@@ -918,9 +918,9 @@ Egyértelműen megjelölheti az előfizetéseket (például éles környezetben,
 
 - [A Munkafolyamat-automatizálás és a Logic Apps konfigurálása](../security-center/workflow-automation.md)
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Behatolási tesztek és Red Team-gyakorlatok
 
@@ -928,15 +928,17 @@ Egyértelműen megjelölheti az előfizetéseket (például éles környezetben,
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: az Azure-erőforrások rendszeres behatolásának tesztelése, valamint az összes kritikus biztonsági vizsgálat szervizelésének biztosítása
 
-**Útmutató**: kövesse a Microsoft részvételi szabályait, hogy a behatolási tesztek ne sértsék a Microsoft-házirendeket: https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1 
+**Útmutató**: kövesse a Microsoft Cloud penetráció tesztelési szabályait, amelyekkel biztosíthatja, hogy a behatolási tesztek ne sértsék a Microsoft-házirendeket. A Microsoft által felügyelt felhőalapú infrastruktúrán, szolgáltatásokon és alkalmazásokon végzett riasztási és élő behatolási tesztek végrehajtásához használja a Microsoft stratégiáját és végrehajtási tervét. 
 
-- [További információt a Microsoft által felügyelt felhőalapú infrastruktúrával, szolgáltatásokkal és alkalmazásokkal kapcsolatos, a Microsoft által felügyelt felhő-infrastruktúra,-szolgáltatások és-alkalmazások fejlesztésére vonatkozó stratégiáról és végrehajtásáról itt talál.](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+- [Behatolástesztelési beavatkozási szabályok](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1) 
 
-**Azure Security Center – monitorozás**: Nem értelmezhető
+- [Riasztási tesztek a Microsoft-felhőben](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Felelősség**: Megosztott
 
+**Azure Security Center figyelés**: nincs
+
 ## <a name="next-steps"></a>Következő lépések
 
-- Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
-- További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)
+- [Az Azure Security Benchmark v2 áttekintésének](/azure/security/benchmarks/overview) megtekintése
+- További tudnivalók az [Azure biztonsági alapterveiről](/azure/security/benchmarks/security-baselines-overview)

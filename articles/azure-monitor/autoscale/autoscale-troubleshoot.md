@@ -4,12 +4,12 @@ description: A Service Fabric, Virtual Machines, Web Apps és Cloud Services szo
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.subservice: autoscale
-ms.openlocfilehash: 8936d1b94082291f5c081c47f8331cc64042896b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a0fed6c2d06edcb2c9eb8d715feb0ef6c6ade46f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100617598"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711399"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Az Azure-méretezés hibaelhárítása
  
@@ -24,14 +24,14 @@ Az autoskálázási szolgáltatás metrikákat és naplókat biztosít a skálá
   
 ## <a name="autoscale-metrics"></a>Metrikák autoskálázása
 
-Az autoscale [négy mérőszámot](../platform/metrics-supported.md#microsoftinsightsautoscalesettings) biztosít a működésének megismeréséhez. 
+Az autoscale [négy mérőszámot](../essentials/metrics-supported.md#microsoftinsightsautoscalesettings) biztosít a működésének megismeréséhez. 
 
 - **Megfigyelt metrika értéke** – a skálázási műveletet a méretezési művelet elvégzésére kiválasztott metrika értékeként, az autoskálázási motor által látott vagy számított értékkel. Mivel egy automatikus méretezési beállítás több szabállyal is rendelkezhet, így több metrikai forrás is lehet, a "metrikus forrás" használatával szűrhet dimenzióként.
 - **Metrika küszöbértéke** – a méretezési művelet elvégzéséhez beállított küszöbérték. Mivel egy automatikus méretezési beállítás több szabállyal is rendelkezhet, így több metrikai forrás is lehet, a "metrika szabály" használatával szűrheti a dimenziót.
 - **Megfigyelt kapacitás** – a célként megadott erőforrás példányainak aktív száma, ahogyan azt az autoskálázási motor látja.
 - **Kezdeményezett skálázási műveletek** – Az automatikus skálázási motor által kezdeményezett horizontális fel- és leskálázási műveletek száma. A kibővített és a műveletek méretezése alapján is szűrhet.
 
-Az [Metrikaböngésző](../platform/metrics-getting-started.md) használatával egyetlen helyen ábrázolhatja a fenti metrikákat. A diagramnak a következőknek kell megjelennie:
+Az [Metrikaböngésző](../essentials/metrics-getting-started.md) használatával egyetlen helyen ábrázolhatja a fenti metrikákat. A diagramnak a következőknek kell megjelennie:
 
   - a tényleges metrika
   - a metrika, amelyet az autoskálázási motor látott/kiszámított
@@ -87,7 +87,7 @@ Az alsó diagramon néhány érték látható.
  - A **megfigyelt kapacitás** (lila) megjeleníti az autoskálázási motor által látott példányszámot. 
  - A **metrika küszöbértéke** (Világoszöld) 10 értékre van állítva. 
 
-Ha több méretezési műveletre vonatkozó szabály van, akkor a metrikák, illetve a **szűrő hozzáadása** lehetőséggel egy adott forrás vagy szabály alapján megtekintheti a metrikát. A metrikai diagramok felosztásával kapcsolatos további információkért lásd a [metrikus diagramok speciális funkcióit – felosztás](../platform/metrics-charts.md#apply-splitting)
+Ha több méretezési műveletre vonatkozó szabály van, akkor a metrikák, illetve a **szűrő hozzáadása** lehetőséggel egy adott forrás vagy szabály alapján megtekintheti a metrikát. A metrikai diagramok felosztásával kapcsolatos további információkért lásd a [metrikus diagramok speciális funkcióit – felosztás](../essentials/metrics-charts.md#apply-splitting)
 
 ## <a name="example-3---understanding-autoscale-events"></a>3. példa – az autoscale-események ismertetése
 
@@ -97,13 +97,13 @@ A legutóbbi méretezési műveletek megtekintéséhez a **futtatási előzmény
 
 ## <a name="autoscale-resource-logs"></a>Erőforrás-naplók autoskálázása
 
-Ugyanaz, mint bármely más Azure-erőforrás esetében, az autoskálázási szolgáltatás [erőforrás-naplókat](../platform/platform-logs-overview.md)biztosít. A naplóknak két kategóriája van.
+Ugyanaz, mint bármely más Azure-erőforrás esetében, az autoskálázási szolgáltatás [erőforrás-naplókat](../essentials/platform-logs-overview.md)biztosít. A naplóknak két kategóriája van.
 
 - **Autoscale-értékelések** – az autoskálázási motor rögzíti az egyes feltételek kiértékeléséhez szükséges bejegyzéseket minden egyes ellenőrzés alkalmával.  A bejegyzés tartalmazza a metrikák megfigyelt értékeinek részleteit, a kiértékelt szabályokat, valamint azt, hogy a kiértékelés a méretezési műveletet eredményezte-e.
 
 - Automatikus **skálázási műveletek** – a motor az automatikus skálázási szolgáltatás által kezdeményezett, a skálázási műveletek eredményeivel (sikeres, sikertelen, és az automatikus skálázási szolgáltatás által látott méretezési művelettel) kapcsolatos eseményeket rögzíti.
 
-A Azure Monitor támogatott szolgáltatásokhoz hasonlóan a [diagnosztikai beállítások](../platform/diagnostic-settings.md) segítségével is átirányíthatja ezeket a naplókat:
+A Azure Monitor támogatott szolgáltatásokhoz hasonlóan a [diagnosztikai beállítások](../essentials/diagnostic-settings.md) segítségével is átirányíthatja ezeket a naplókat:
 
 - részletes elemzés a Log Analytics munkaterülethez
 - Event Hubs, majd a nem Azure-eszközökhöz
@@ -206,4 +206,4 @@ Riasztási szabályok létrehozásával értesítést kaphat az autoscale művel
 További információ: az [erőforrás-naplók autoskálázása](autoscale-resource-log-schema.md)
 
 ## <a name="next-steps"></a>Következő lépések
-Olvassa el az [autoscale ajánlott eljárásaival](autoscale-best-practices.md)kapcsolatos információkat. 
+Olvassa el az [autoscale ajánlott eljárásaival](autoscale-best-practices.md)kapcsolatos információkat.

@@ -1,19 +1,19 @@
 ---
-title: A tárolók Azure Monitorának frissítése a metrikák számára | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan frissítheti Azure Monitor a tárolók számára az összesített metrikák vizsgálatát és riasztását támogató egyéni metrikák funkció engedélyezéséhez.
+title: A mérőszámok tároló-információinak frissítése | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan frissítheti a tároló-elemzéseket az összesített metrikák vizsgálatát és riasztását támogató egyéni metrikák funkció engedélyezéséhez.
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 37c19cd074e9ce1985d5d0e82137d8603913d4bd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: edca7e4e8f6a9ea8dd9efdaafab8c906efd671b6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100615298"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708271"
 ---
-# <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>A tárolókhoz készült Azure Monitor frissítése a metrikák engedélyezéséhez
+# <a name="how-to-update-container-insights-to-enable-metrics"></a>A mérőszámok engedélyezésének módja a tároló-felismerések frissítéséhez
 
-A tárolók Azure Monitor támogatja az Azure Kubernetes Services (ak) és az Azure arc által engedélyezett Kubernetes-fürtök csomópontjainak és hüvelyének begyűjtését, valamint a Azure Monitor metrikák tárolóba írását. Ennek a változásnak a célja, hogy jobb ütemezést nyújtson az összesített számítások (AVG, Darabszám, max. min.) bemutatása a teljesítménymutatók esetében, támogatja a teljesítmény-diagramok Azure Portal-irányítópultokon való rögzítését, valamint a metrikai riasztások támogatását.
+A tárolók bepillantást nyerhetnek az Azure Kubernetes Services (ak) és az Azure arc által engedélyezett Kubernetes-fürtök csomópontjainak és hüvelyének összegyűjtésének támogatásával, valamint a Azure Monitor metrikai tárolóba való írásával. Ennek a változásnak a célja, hogy jobb ütemezést nyújtson az összesített számítások (AVG, Darabszám, max. min.) bemutatása a teljesítménymutatók esetében, támogatja a teljesítmény-diagramok Azure Portal-irányítópultokon való rögzítését, valamint a metrikai riasztások támogatását.
 
 >[!NOTE]
 >Ez a funkció jelenleg nem támogatja az Azure Red Hat OpenShift-fürtöket.
@@ -47,7 +47,7 @@ Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és haszn�
 
 ## <a name="upgrade-a-cluster-from-the-azure-portal"></a>Fürt frissítése a Azure Portal
 
-A tárolók Azure Monitor által figyelt meglévő AK-fürtök esetében, **Miután kiválasztotta** a fürtöt, hogy az állapotát a többfürtes nézetből Azure monitor vagy közvetlenül a fürtből tekintse meg, a bal oldali ablaktáblán található elemzések megadásával tekintse meg a portál felső részén látható szalagcímet.
+A tároló-elemzések által figyelt meglévő AK-fürtök esetében, miután kiválasztotta a fürtöt a több fürt Azure Monitor vagy közvetlenül a fürtről, a bal oldali ablaktáblán található elemzések lehetőség **kiválasztásával** megtekintheti a portál tetején látható szalagcímet.
 
 ![Az AK-fürt szalagcímének frissítése Azure Portal](./media/container-insights-update-metrics/portal-banner-enable-01.png)
 

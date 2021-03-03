@@ -2,14 +2,14 @@
 title: Webhelyek rendelkezésre állásának és válaszkészségének megfigyelése | Microsoft Docs
 description: Webes teszteket állíthat be az Application Insightsban. Riasztásokat kaphat, ha egy webhely elérhetetlenné válik vagy lassan válaszol.
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 02/14/2021
 ms.reviewer: sdash
-ms.openlocfilehash: 41338760034918dce30ffb45c738588a2aa29786
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0ea44aad43a3dd6f11656a45dc7d0e619187fc22
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585947"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729028"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Bármely webhely rendelkezésre állásának monitorozása
 
@@ -72,7 +72,6 @@ Az első rendelkezésre állási kérelem létrehozásához nyissa meg a rendelk
 |Beállítás| Magyarázat
 |----|----|----|
 |**Közel valós idejű (előzetes verzió)** | Javasoljuk, hogy a közel valós idejű riasztásokat használja. Az ilyen típusú riasztások konfigurálása a rendelkezésre állási teszt létrehozása után történik.  |
-|**Klasszikus** | Már nem ajánlott klasszikus riasztásokat használni az új rendelkezésre állási tesztekhez.|
 |**Riasztási hely küszöbértéke**|Legalább 3/5 helyet ajánlunk. A riasztási hely küszöbértéke és a tesztelési helyek száma közötti optimális kapcsolat a **riasztási hely küszöbértéke**  =  **– 2, legalább öt tesztelési hely.**|
 
 ### <a name="location-population-tags"></a>Hely populációjának címkéi

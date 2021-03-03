@@ -4,12 +4,12 @@ description: Összefoglalja a támogatási beállításokat és az Azure Disk Ba
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 7d6de863a45bcadd73e847cbf407c13363952151
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 922bd532275cdd6b09df83b0e9d36fdec1da0b47
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806104"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707217"
 ---
 # <a name="azure-disk-backup-support-matrix-in-preview"></a>Az Azure Disk Backup támogatási mátrixa (előzetes verzió)
 
@@ -58,7 +58,7 @@ További régiók lesznek bejelentve, amikor elérhetővé válnak.
 
 - Jelenleg (az előzetes verzió alatt) a PowerShell és az Azure CLI használata a lemezek biztonsági mentésének és visszaállításának konfigurálásához nem támogatott.
 
-- A biztonsági mentés konfigurálásakor a rendszer biztonsági mentésre kijelölt lemezt és a pillanatképek tárolására szolgáló pillanatkép-erőforráscsoportot ugyanahhoz az előfizetéshez kell tartoznia. Nem hozható létre növekményes pillanatkép a lemez előfizetésén kívüli adott lemezhez. További információ a felügyelt lemez [növekményes pillanatképekről](../virtual-machines/windows/disks-incremental-snapshots-portal.md#restrictions) . A pillanatképek erőforráscsoport kiválasztásával kapcsolatos további információkért lásd:  [biztonsági mentés konfigurálása](backup-managed-disks.md#configure-backup).
+- A biztonsági mentés konfigurálásakor a rendszer biztonsági mentésre kijelölt lemezt és a pillanatképek tárolására szolgáló pillanatkép-erőforráscsoportot ugyanahhoz az előfizetéshez kell tartoznia. Nem hozható létre növekményes pillanatkép a lemez előfizetésén kívüli adott lemezhez. További információ a felügyelt lemez [növekményes pillanatképekről](../virtual-machines/disks-incremental-snapshots.md#restrictions) . A pillanatképek erőforráscsoport kiválasztásával kapcsolatos további információkért lásd:  [biztonsági mentés konfigurálása](backup-managed-disks.md#configure-backup).
 
 - A sikeres biztonsági mentési és visszaállítási műveletek esetén a biztonsági mentési tár felügyelt identitásához szerepkör-hozzárendelésekre van szükség. Csak a dokumentációban megadott szerepkör-definíciókat használja. A más szerepkörök (például a tulajdonos, a közreműködők stb.) használata nem támogatott. Jogosultsági problémák merülhetnek fel, ha a szerepkörök kiosztása után hamarosan elindítja a biztonsági mentési vagy visszaállítási műveletek konfigurálását. Ennek az az oka, hogy a szerepkör-hozzárendelések érvénybe léptetése néhány percet vesz igénybe.
 

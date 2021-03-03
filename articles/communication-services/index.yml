@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Azure Communication Services
-summary: Az Azure Communication Services egy felhőalapú kommunikációs szolgáltatás, amellyel hang-, videó-, csevegési és telefonos funkciókat adhat hozzá az alkalmazásaihoz.
+summary: Az Azure Communication Services egy felhőalapú kommunikációs szolgáltatás, amellyel hang-, videó-, csevegési és telefonos funkciókat adhat hozzá az alkalmazásaihoz. Vegye figyelembe, hogy az Azure Communication Services jelenleg nyilvános előzetes verzióban érhető el.
 metadata:
   title: Azure Communication Services
-  description: Az Azure Communication Services egy felhőalapú kommunikációs szolgáltatás, amellyel hang-, videó-, csevegési és telefonos funkciókat adhat hozzá az alkalmazásaihoz.
+  description: Az Azure Communication Services egy felhőalapú kommunikációs szolgáltatás, amellyel hang-, videó-, csevegési és telefonos funkciókat adhat hozzá az alkalmazásaihoz. Vegye figyelembe, hogy az Azure Communication Services jelenleg nyilvános előzetes verzióban érhető el.
   ms.service: azure-communication-services
   ms.topic: landing-page
   author: mikben
   ms.author: mikben
   ms.date: 08/10/2020
-  ms.openlocfilehash: dd6e3a7685ded2d7f5b292d9436694eddc95163c
-  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.openlocfilehash: 4727e7ca3e0831483811c77be34e69f794cfb576
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/02/2021
-  ms.locfileid: "101657587"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101690515"
 landingContent:
 - title: Az Azure Communication Services ismertetése
   linkLists:

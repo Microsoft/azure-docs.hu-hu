@@ -1,24 +1,24 @@
 ---
 title: Az Azure Kubernetes Service-fürt figyelésének leállítása | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan szüntetheti meg az Azure AK-fürt figyelését a tárolók Azure Monitorával.
+description: Ez a cikk azt ismerteti, hogyan szüntetheti meg az Azure AK-fürt figyelését a Container-információkkal.
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 476934d84d8ffc63336ec620432db3507b2cbb34
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: eab34f27d1e33b166971203082cce99fb2b0e106
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100616188"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723537"
 ---
-# <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>Az Azure Kubernetes Service (AKS) tárolókhoz készült Azure Monitorral való monitorozásának leállítása
+# <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-container-insights"></a>Az Azure Kubernetes szolgáltatás (ak) figyelésének leállítása a Container bepillantást
 
 Miután engedélyezte az AK-fürt figyelését, leállíthatja a fürt figyelését, ha úgy dönt, hogy már nem szeretné figyelni. Ez a cikk bemutatja, hogyan hajthatja végre ezt az Azure CLI vagy a megadott Azure Resource Manager sablonok használatával.  
 
 
 ## <a name="azure-cli"></a>Azure CLI
 
-A tárolók Azure Monitor letiltásához használja az az [AK disable-addons](/cli/azure/aks#az-aks-disable-addons) parancsot. A parancs eltávolítja az ügynököt a fürtcsomópontokből, nem távolítja el a megoldást, vagy a már összegyűjtött és a Azure Monitor erőforrásban tárolt adatokat.  
+Az az [AK disable-addons](/cli/azure/aks#az-aks-disable-addons) paranccsal tiltsa le a tárolók bepillantást. A parancs eltávolítja az ügynököt a fürtcsomópontokből, nem távolítja el a megoldást, vagy a már összegyűjtött és a Azure Monitor erőforrásban tárolt adatokat.  
 
 ```azurecli
 az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
@@ -165,4 +165,4 @@ ProvisioningState       : Succeeded
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha a munkaterület csak a fürt figyelésének támogatásához lett létrehozva, és már nincs rá szükség, manuálisan kell törölnie. Ha nem ismeri a munkaterületek törlésének módját, tekintse meg az [Azure log Analytics munkaterület törlése a Azure Portal](../platform/delete-workspace.md)használatával című témakört. Ne felejtse el a 4. lépésben korábban átmásolt **munkaterület-erőforrás azonosítóját** , amelyre szüksége lesz.
+Ha a munkaterület csak a fürt figyelésének támogatásához lett létrehozva, és már nincs rá szükség, manuálisan kell törölnie. Ha nem ismeri a munkaterületek törlésének módját, tekintse meg az [Azure log Analytics munkaterület törlése a Azure Portal](../logs/delete-workspace.md)használatával című témakört. Ne felejtse el a 4. lépésben korábban átmásolt **munkaterület-erőforrás azonosítóját** , amelyre szüksége lesz.

@@ -4,12 +4,12 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan kezelheti az Azure-b
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 665dfc64e750f448fc4c1a2d7e18f0cb6552f223
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e8baf7f2589cd7d9054911516253b49253397871
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100371770"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713286"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Oktatóanyag: SAP HANA-adatbázisok kezelése Azure-beli virtuális gépen az Azure CLI használatával
 
@@ -80,7 +80,7 @@ cb110094-9b15-4c55-ad45-6899200eb8dd  SAPHANA
 
 ## <a name="create-incremental-backup-policy"></a>Növekményes biztonsági mentési szabályzat létrehozása
 
-Növekményes biztonsági mentési szabályzat létrehozásához hajtsa végre az az [biztonsági mentési szabályzat létrehozása](https://docs.microsoft.com/cli/azure/backup/policy#az_backup_policy_create) parancsot a következő paraméterekkel:
+Növekményes biztonsági mentési szabályzat létrehozásához hajtsa végre az az [biztonsági mentési szabályzat létrehozása](/cli/azure/backup/policy#az_backup_policy_create) parancsot a következő paraméterekkel:
 
 * **--Backup-Management-Type** – Azure munkaterhelés
 * **--munkaterhelés-Type** -SAPHana
@@ -231,6 +231,7 @@ JSON-minta (sappolicy.js):
   "type": "Microsoft.RecoveryServices/vaults/backupPolicies"
 } 
 ```
+
 A szabályzat sikeres létrehozása után a parancs kimenete a parancs végrehajtásakor paraméterként megadott JSON-t jeleníti meg.
 
 A szabályzat következő szakaszának módosításával megadhatja a biztonsági mentés kívánt gyakoriságát és a növekményes biztonsági mentések megőrzését.

@@ -7,21 +7,21 @@ ms.topic: reference
 ms.date: 09/30/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: a050e9832537dd9b6690c7f9409bfbb5b795af2c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c2cea95dba3be02b9db584b0650761cb2d640283
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100613461"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728773"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure Activity log esemény sémája
-Az [Azure-tevékenység naplója](../platform/platform-logs-overview.md) betekintést nyújt az Azure-ban történt előfizetési szintű eseményekre. Ez a cikk a tevékenységek naplójának kategóriáit és az egyes sémákat ismerteti. 
+Az [Azure-tevékenység naplója](./platform-logs-overview.md) betekintést nyújt az Azure-ban történt előfizetési szintű eseményekre. Ez a cikk a tevékenységek naplójának kategóriáit és az egyes sémákat ismerteti. 
 
 A séma attól függően változhat, hogy hogyan fér hozzá a naplóhoz:
  
 - A cikkben ismertetett sémák akkor érhetők el, amikor a [Rest APIról](/rest/api/monitor/activitylogs)fér hozzá a tevékenység naplójához. Ez a séma akkor is használatos, amikor a Azure Portal egy eseményének megtekintésekor a **JSON** lehetőséget választja.
-- Ha [diagnosztikai beállítást](../platform/diagnostic-settings.md) használ a műveletnapló Azure Storage-ba vagy Azure Event Hubsba való elküldéséhez, tekintse meg a séma utolsó szakaszának [sémáját a Storage-fiók és az esemény-hubok](#schema-from-storage-account-and-event-hubs) szakaszban.
-- A tevékenység naplójának Log Analytics-munkaterületre való elküldéséhez [diagnosztikai beállítással](../platform/diagnostic-settings.md) [Azure monitor adathivatkozást](/azure/azure-monitor/reference/) a sémához.
+- Ha [diagnosztikai beállítást](./diagnostic-settings.md) használ a műveletnapló Azure Storage-ba vagy Azure Event Hubsba való elküldéséhez, tekintse meg a séma utolsó szakaszának [sémáját a Storage-fiók és az esemény-hubok](#schema-from-storage-account-and-event-hubs) szakaszban.
+- A tevékenység naplójának Log Analytics-munkaterületre való elküldéséhez [diagnosztikai beállítással](./diagnostic-settings.md) [Azure monitor adathivatkozást](/azure/azure-monitor/reference/) a sémához.
 
 ## <a name="severity-level"></a>Súlyossági szint
 A tevékenység naplójának minden bejegyzése súlyossági szinttel rendelkezik. A súlyossági szint a következő értékek egyike lehet:  
@@ -36,7 +36,7 @@ A tevékenység naplójának minden bejegyzése súlyossági szinttel rendelkezi
 Az egyes erőforrás-szolgáltatók devlopers válassza ki az erőforrás-bejegyzéseik súlyossági szintjeit. Ennek eredményeképpen a tényleges súlyossága attól függően változhat, hogy az alkalmazás hogyan épül fel. Előfordulhat például, hogy a "kritikus" állapotú elemek elkülönítése egy adott erőforrás esetében nem olyan fontos, mint a "hibák" egy olyan erőforrástípus esetében, amely az Azure-alkalmazás központi eleme. Ügyeljen arra, hogy ez a tény a riasztást kiváltó események meghatározásakor vegye figyelembe.  
 
 ## <a name="categories"></a>Kategóriák
-A tevékenység naplójának minden eseménye egy adott kategóriával rendelkezik, amelyet az alábbi táblázat ismertet. Az egyes kategóriákra és azok sémájára vonatkozó további részletekért tekintse meg az alábbi szakaszt, amikor a portál, a PowerShell, a CLI és a REST API a tevékenység naplóját éri el. A séma különbözik [a tevékenység naplójának tárolóba vagy Event Hubsba való továbbításakor](../platform/resource-logs.md#send-to-azure-event-hubs). Az [erőforrás-naplók sémájának](../platform/resource-logs-schema.md) tulajdonságainak leképezése a cikk utolsó szakaszában található.
+A tevékenység naplójának minden eseménye egy adott kategóriával rendelkezik, amelyet az alábbi táblázat ismertet. Az egyes kategóriákra és azok sémájára vonatkozó további részletekért tekintse meg az alábbi szakaszt, amikor a portál, a PowerShell, a CLI és a REST API a tevékenység naplóját éri el. A séma különbözik [a tevékenység naplójának tárolóba vagy Event Hubsba való továbbításakor](./resource-logs.md#send-to-azure-event-hubs). Az [erőforrás-naplók sémájának](./resource-logs-schema.md) tulajdonságainak leképezése a cikk utolsó szakaszában található.
 
 | Kategória | Leírás |
 |:---|:---|
@@ -141,7 +141,7 @@ Ez a kategória a Resource Manageren keresztül végrehajtott összes létrehoz�
 ```
 
 ### <a name="property-descriptions"></a>Tulajdonságok leírása
-| Elem neve | Description |
+| Elem neve | Leírás |
 | --- | --- |
 | engedélyezés |Az esemény Azure RBAC-tulajdonságainak blobja. Általában a "művelet", a "szerepkör" és a "hatókör" tulajdonságokat tartalmazza. |
 | hívó |Annak a felhasználónak az e-mail-címe, aki a művelet, UPN-jogcím vagy SPN jogcím alapján végrehajtotta a rendelkezésre állást. |
@@ -288,7 +288,7 @@ Ez a kategória az Azure-erőforrásokra vonatkozó összes erőforrás-állapot
 ```
 
 ### <a name="property-descriptions"></a>Tulajdonságok leírása
-| Elem neve | Description |
+| Elem neve | Leírás |
 | --- | --- |
 | csatornák | Mindig a "rendszergazda, művelet" |
 | correlationId | A karakterlánc formátumú GUID. |
@@ -381,7 +381,7 @@ Ez a kategória a klasszikus Azure-riasztások összes aktiválásának rekordj�
 ```
 
 ### <a name="property-descriptions"></a>Tulajdonságok leírása
-| Elem neve | Description |
+| Elem neve | Leírás |
 | --- | --- |
 | hívó | Mindig Microsoft. bepillantást/alertRules |
 | csatornák | Mindig a "rendszergazda, művelet" |
@@ -407,7 +407,7 @@ Ez a kategória a klasszikus Azure-riasztások összes aktiválásának rekordj�
 A tulajdonságok mező a riasztási esemény forrásától függően eltérő értékeket fog tartalmazni. Két gyakori riasztási esemény szolgáltatója a tevékenységek naplójának riasztásai és a metrikák riasztásai.
 
 #### <a name="properties-for-activity-log-alerts"></a>A műveletnapló-riasztások tulajdonságai
-| Elem neve | Description |
+| Elem neve | Leírás |
 | --- | --- |
 | Properties. subscriptionId | A tevékenység naplójának eseményéhez tartozó előfizetés-azonosító, amely miatt a tevékenység naplójának riasztási szabálya aktiválva lett. |
 | Properties. eventDataId | A tevékenység naplójának eseményéhez tartozó esemény-azonosító, amely miatt a tevékenység naplójának riasztási szabálya aktiválva lett. |
@@ -418,7 +418,7 @@ A tulajdonságok mező a riasztási esemény forrásától függően eltérő é
 | tulajdonságok. status | A tevékenység naplózási eseményének állapota, amely miatt a rendszer aktiválja a tevékenység naplójának riasztási szabályát.|
 
 #### <a name="properties-for-metric-alerts"></a>Metrikus riasztások tulajdonságai
-| Elem neve | Description |
+| Elem neve | Leírás |
 | --- | --- |
 | Tulajdonságok. RuleUri | A metrika riasztási szabályának erőforrás-azonosítója. |
 | Tulajdonságok. RuleName | A metrika riasztási szabályának neve. |
@@ -491,7 +491,7 @@ Ez a kategória tartalmazza az adott előfizetésben definiált, az előfizetés
 ```
 
 ### <a name="property-descriptions"></a>Tulajdonságok leírása
-| Elem neve | Description |
+| Elem neve | Leírás |
 | --- | --- |
 | hívó | Mindig Microsoft. bepillantást/autoscaleSettings |
 | csatornák | Mindig a "rendszergazda, művelet" |
@@ -581,7 +581,7 @@ Ez a kategória tartalmazza a Azure Security Center által generált riasztások
 ```
 
 ### <a name="property-descriptions"></a>Tulajdonságok leírása
-| Elem neve | Description |
+| Elem neve | Leírás |
 | --- | --- |
 | csatornák | Mindig "művelet" |
 | correlationId | A karakterlánc formátumú GUID. |
@@ -662,7 +662,7 @@ Ez a kategória a szolgáltatásokhoz létrehozott új javaslatok rekordját tar
 
 ```
 ### <a name="property-descriptions"></a>Tulajdonságok leírása
-| Elem neve | Description |
+| Elem neve | Leírás |
 | --- | --- |
 | csatornák | Mindig "művelet" |
 | correlationId | A karakterlánc formátumú GUID. |
@@ -772,7 +772,7 @@ Ez a kategória a [Azure Policy](../../governance/policy/overview.md)által vég
 
 ### <a name="policy-event-property-descriptions"></a>Házirend-esemény tulajdonságainak leírása
 
-| Elem neve | Description |
+| Elem neve | Leírás |
 | --- | --- |
 | engedélyezés | Az esemény Azure RBAC-tulajdonságainak tömbje. Az új erőforrások esetében ez a művelet és a kiértékelést kiváltó kérelem hatóköre. A meglévő erőforrások esetében a művelet a következő: "Microsoft. Resources/checkPolicyCompliance/Read". |
 | hívó | Új erőforrások esetén a központi telepítést kezdeményező identitás. Meglévő erőforrások esetében a Microsoft Azure Policy bepillantást az RP GUID azonosító. |
@@ -804,10 +804,10 @@ Ez a kategória a [Azure Policy](../../governance/policy/overview.md)által vég
 
 
 ## <a name="schema-from-storage-account-and-event-hubs"></a>A Storage-fiók és az Event hubok sémája
-Amikor az Azure-tevékenység naplóját egy Storage-fiókba vagy egy Event hubhoz viszi, az adatforrások az [erőforrás-napló sémáját](../platform/resource-logs-schema.md)követik. Az alábbi táblázat a fenti sémák tulajdonságainak hozzárendelését mutatja be az erőforrás-naplók sémába.
+Amikor az Azure-tevékenység naplóját egy Storage-fiókba vagy egy Event hubhoz viszi, az adatforrások az [erőforrás-napló sémáját](./resource-logs-schema.md)követik. Az alábbi táblázat a fenti sémák tulajdonságainak hozzárendelését mutatja be az erőforrás-naplók sémába.
 
 > [!IMPORTANT]
-> A Storage-fiókba írt tevékenység-naplófájlok formátuma JSON-sorokra módosult november 1. és 2018. között. A formátum változásának részleteiért lásd: [felkészülés a formátum módosítására Azure monitor erőforrás-naplók archiválása egy Storage-fiókba](../platform/resource-logs-blob-format.md) .
+> A Storage-fiókba írt tevékenység-naplófájlok formátuma JSON-sorokra módosult november 1. és 2018. között. A formátum változásának részleteiért lásd: [felkészülés a formátum módosítására Azure monitor erőforrás-naplók archiválása egy Storage-fiókba](./resource-logs-blob-format.md) .
 
 
 | Erőforrás-naplók sémájának tulajdonsága | Műveletnapló REST API Schema tulajdonság | Jegyzetek |
@@ -894,5 +894,5 @@ A következő példa egy olyan eseményt mutat be, amely ezt a sémát használj
 
 
 ## <a name="next-steps"></a>Következő lépések
-* [További információ a tevékenység naplóról](../platform/platform-logs-overview.md)
-* [Diagnosztikai beállítás létrehozása a műveletnapló Log Analytics munkaterületre, Azure Storage-ba vagy Event hubokba való küldéséhez](../platform/diagnostic-settings.md)
+* [További információ a tevékenység naplóról](./platform-logs-overview.md)
+* [Diagnosztikai beállítás létrehozása a műveletnapló Log Analytics munkaterületre, Azure Storage-ba vagy Event hubokba való küldéséhez](./diagnostic-settings.md)

@@ -3,14 +3,14 @@ title: Azure Backup-jelentések konfigurálása
 description: Azure Backup jelentések konfigurálása és megtekintése Log Analytics és Azure-munkafüzetek használatával
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 78ab22bece54caa15e23021e594eaa0742505f79
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 62bb59a8a77d11e30e54298317a35e1f883a9622
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591983"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710617"
 ---
-# <a name="configure-azure-backup-reports-preview"></a>Azure Backup-jelentések konfigurálása (előzetes verzió)
+# <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 
 A biztonsági mentési rendszergazdákra vonatkozó gyakori követelmény, hogy a biztonsági másolatok alapján bepillantást nyerjen a hosszú idő alatt álló adatokat. Ilyen megoldás esetén a következő esetekben használhatók:
 
@@ -139,6 +139,20 @@ Ha kiválasztja a **házirend-optimalizálások** csempét, majd a **biztonsági
 A lap tetején található **biztonságimásolat-kezelési típus** szűrőnek az **Azure-beli virtuális gépen lévő elemek SQL-** nek kell lennie, és **be kell SAP HANAa az Azure VM** -be, hogy a rács a várt módon jelenjen meg az adatbázis-számítási feladatok számára.
 
 ![Optimalizálás lap – biztonsági mentési ütemterv optimalizálása](./media/backup-azure-configure-backup-reports/optimize-backup-schedule.png)
+
+###### <a name="policy-adherence"></a>Szabályzatok betartása
+
+Ezen a lapon megadhatja, hogy az összes biztonsági mentési példány rendelkezik-e legalább egy sikeres biztonsági mentéssel minden nap. Megtekintheti a házirend betartását az adott időszakra vagy a biztonsági mentési példány alapján.
+
+###### <a name="email-azure-backup-reports"></a>E-mail-Azure Backup jelentések
+
+A biztonsági mentési jelentésekben elérhető **e-mail-jelentés** funkció használatával automatizált feladatokat hozhat létre, amelyekkel rendszeres jelentéseket fogadhat e-mailben. Ez a funkció egy olyan logikai alkalmazás üzembe helyezését mutatja be az Azure-környezetben, amely az Ön által megadott bemenetek alapján lekérdezi a kiválasztott Log Analytics (LA) munkaterületről származó adatokat.
+
+A logikai alkalmazás létrehozása után engedélyeznie kell a kapcsolatokat Azure Monitor naplókhoz és az Office 365-hez. Ehhez keresse meg **Logic apps** a Azure Portal, és keresse meg a létrehozott feladat nevét. Az **API-kapcsolatok** menüpont kiválasztásával megnyílik az engedélyezéshez szükséges API-kapcsolatok listája.
+
+###### <a name="customize-azure-backup-reports"></a>Azure Backup jelentések testreszabása
+
+A biztonsági mentési jelentések a függvényeket használják Azure Monitor naplókon. Ezek a függvények a (z) LA nyers Azure Backup tábláiban található adatokon működnek, és olyan formázott adatokat adnak vissza, amelyek segítségével egyszerűen lekérheti az összes biztonsági mentéssel kapcsolatos entitás információit egyszerű lekérdezések használatával.
 
 ## <a name="export-to-excel"></a>Exportálás Excelbe
 

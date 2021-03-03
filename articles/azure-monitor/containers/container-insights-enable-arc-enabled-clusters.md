@@ -1,28 +1,28 @@
 ---
-title: Az Azure arc-kompatibilis Kubernetes-fürt konfigurálása az Azure Monitor for containers szolgáltatással | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan konfigurálhatja a figyelést Azure Monitor az Azure arc-kompatibilis Kubernetes-fürtökön található tárolók esetében.
+title: Azure arc-kompatibilis Kubernetes-fürt konfigurálása a Container bepillantást biztosító szolgáltatással | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan konfigurálható a figyelés az Azure arc-kompatibilis Kubernetes-fürtökön található tároló-információkkal.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 77b536141f0e7c6094964011719a0e536e8d33f1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 307f9d9928042410dc9b4443aba5c019c592980c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100620085"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711297"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Azure Arc-kompatibilis Kubernetes-fürt monitorozásának engedélyezése
 
-A tárolók Azure Monitor széles körű monitorozást biztosítanak az Azure Kubernetes szolgáltatás (ak) és az AK-beli motor fürtök számára. Ez a cikk azt ismerteti, hogyan engedélyezhető az Azure-on kívül üzemeltetett Kubernetes-fürtök figyelése az Azure arc használatával, hasonló figyelési élmény eléréséhez.
+A Container-eredmények széles körű monitorozást biztosítanak az Azure Kubernetes szolgáltatás (ak) és az AK-os motor fürtök számára. Ez a cikk azt ismerteti, hogyan engedélyezhető az Azure-on kívül üzemeltetett Kubernetes-fürtök figyelése az Azure arc használatával, hasonló figyelési élmény eléréséhez.
 
-A tárolók Azure Monitor a Kubernetes egy vagy több meglévő központi telepítésére is engedélyezhetők PowerShell vagy bash parancsfájl használatával.
+A Kubernetes egy vagy több meglévő üzemelő példánya számára engedélyezhető a PowerShell vagy bash parancsfájl használatával.
 
 ## <a name="supported-configurations"></a>Támogatott konfigurációk
 
-A tárolók Azure Monitor támogatja az Azure arc-kompatibilis Kubernetes (előzetes verzió) figyelését az [Áttekintés](container-insights-overview.md) című cikkben leírtak szerint, a következő funkciók kivételével:
+A Container-megállapítások támogatják az Azure arc-kompatibilis Kubernetes (előzetes verzió) figyelését az [Áttekintés](container-insights-overview.md) című cikkben leírtak szerint, a következő funkciók kivételével:
 
 - Élő adatértékek (előzetes verzió)
 
-A következő Azure Monitor a tárolók esetében hivatalosan támogatott:
+A következő hivatalosan támogatott a Container bepillantást:
 
 - A Kubernetes és a támogatási szabályzat verziói ugyanazok, mint a [támogatott AK](../../aks/supported-kubernetes-versions.md)-verziók.
 
@@ -36,15 +36,15 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következőkkel
 
 - Egy Log Analytics-munkaterület.
 
-    A tárolók Azure Monitor Log Analytics munkaterületet támogatnak az Azure [Products By Region régióban](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)felsorolt régiókban. Saját munkaterület létrehozásához [Azure Resource Manager](../samples/resource-manager-workspace.md), a [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)vagy a [Azure Portal](../learn/quick-create-workspace.md)használatával hozható létre.
+    A Container-bepillantást az Azure [Products By Region régiójában](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)felsorolt régiók log Analytics munkaterületét támogatják. Saját munkaterület létrehozásához [Azure Resource Manager](../logs/resource-manager-workspace.md), a [PowerShell](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)vagy a [Azure Portal](../logs/quick-create-workspace.md)használatával hozható létre.
 
-- A tárolók Azure Monitor szolgáltatásainak engedélyezéséhez és eléréséhez legalább az Azure-előfizetéshez tartozó Azure- *közreműködő* szerepkör tagjának kell lennie, és a Log Analytics munkaterület [*log Analytics közreműködő*](../platform/manage-access.md#manage-access-using-azure-permissions) szerepkörének tagjának kell lennie a tárolók Azure monitor.
+- Az Azure-előfizetésben szereplő funkciók engedélyezéséhez és eléréséhez legalább az Azure *közreműködő* szerepkör tagjának kell lennie az Azure-előfizetésben, valamint a Log Analytics munkaterület [*log Analytics közreműködő*](../logs/manage-access.md#manage-access-using-azure-permissions) szerepkörének tagja.
 
 - Ön tagja a [közreműködő](../../role-based-access-control/built-in-roles.md#contributor) szerepkörnek az Azure arc fürterőforrás-erőforráson.
 
-- A figyelési adat megtekintéséhez a [*log Analytics olvasói*](../platform/manage-access.md#manage-access-using-azure-permissions) szerepkörhöz tartozó jogosultsággal rendelkező log Analytics-munkaterületnek kell lennie a tárolók Azure monitor.
+- A figyelési adat megtekintéséhez Ön a [*log Analytics olvasói*](../logs/manage-access.md#manage-access-using-azure-permissions) szerepkör tagja, és a log Analytics munkaterületet tároló-elemzésekkel konfigurálta.
 
-- A [Helm-ügyfél](https://helm.sh/docs/using_helm/) a megadott Kubernetes-fürthöz tartozó tárolók diagramjának Azure monitor bevezetéséhez.
+- [Helm-ügyfél](https://helm.sh/docs/using_helm/) a megadott Kubernetes-fürthöz tartozó Container bepillantást tartalmazó diagram előkészítéséhez.
 
 - A következő proxy-és tűzfal-konfigurációs információk szükségesek a Linux rendszerhez készült Log Analytics-ügynöknek a Azure Monitorval való kommunikációhoz:
 
@@ -247,7 +247,7 @@ bash enable-monitoring.sh --resource-id $azureArcClusterResourceId --client-id $
 
 ## <a name="configure-proxy-endpoint"></a>Proxy végpontjának konfigurálása
 
-A tárolók számára Azure Monitor tároló ügynökkel konfigurálható egy proxy végpont, amely lehetővé teszi, hogy az a proxykiszolgáló használatával kommunikáljon. A tároló ügynök és a Azure Monitor közötti kommunikáció HTTP-vagy HTTPS-proxykiszolgáló lehet, és a névtelen és az alapszintű hitelesítés (username/Password) is támogatott.
+A tároló-megállapítások tároló ügynökével konfigurálhat egy proxy végpontot, hogy az a proxykiszolgáló használatával kommunikáljon. A tároló ügynök és a Azure Monitor közötti kommunikáció HTTP-vagy HTTPS-proxykiszolgáló lehet, és a névtelen és az alapszintű hitelesítés (username/Password) is támogatott.
 
 A proxy konfigurációs értékének szintaxisa a következő: `[protocol://][user:password@]proxyhost[:port]`
 
@@ -284,10 +284,10 @@ export proxyEndpoint=https://<user>:<password>@<proxyhost>:<port>
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Ha a figyelés engedélyezve van az arc-kompatibilis Kubernetes-fürt és a rajtuk futó munkaterhelések állapotának és erőforrás-felhasználásának összegyűjtéséhez, Ismerje meg, [hogyan használhatja](container-insights-analyze.md) a Azure monitor for containers szolgáltatást.
+- Ha a figyelés engedélyezve van az arc-kompatibilis Kubernetes-fürt és a rajtuk futó számítási feladatok állapotának és erőforrás-felhasználásának összegyűjtéséhez, Ismerje meg, [hogyan használhatók](container-insights-analyze.md) a Container-információk.
 
 - Alapértelmezés szerint a tároló ügynök gyűjti az összes névtérben futó összes tároló StdOut/stderr-tárolójának naplóit, kivéve a Kube rendszert. Ha az adott névtérhez vagy névterekhez tartozó tároló-naplózási gyűjteményt szeretne konfigurálni, tekintse át a Container-elemzések [ügynökének konfigurációját](container-insights-agent-config.md) a kívánt adatgyűjtési beállítások ConfigMap-konfigurációs fájlra való konfigurálásához.
 
 - A Prometheus-metrikák a fürtből való beolvasásához és elemzéséhez tekintse át a [Prometheus-metrikák leselejtezésének konfigurálása](container-insights-prometheus-integration.md)
 
-- A következő témakörből megtudhatja, hogyan állíthatja le az arc-kompatibilis Kubernetes-fürt figyelését a tárolók Azure Monitorával: [a hibrid fürt figyelésének leállítása](container-insights-optout-hybrid.md#how-to-stop-monitoring-on-arc-enabled-kubernetes).
+- Ha meg szeretné tudni, hogyan állíthatja le az arc-kompatibilis Kubernetes-fürtöt a tároló-információkkal, tekintse meg [a hibrid fürt figyelésének leállítása](container-insights-optout-hybrid.md#how-to-stop-monitoring-on-arc-enabled-kubernetes)című témakört.

@@ -6,12 +6,12 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.date: 02/05/2021
-ms.openlocfilehash: d41646ef1ef964db38245009717554eaeb783824
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: c4d6ebc8d57857deeb2a5cc71867484bd3519ea6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526306"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699684"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-data-factory-data-flows"></a>A fenntartott kapacitással rendelkező erőforrások költségeinek megtakarítása – Azure Data Factory adatforgalom
 
@@ -21,12 +21,12 @@ Az utólagos elszámolású díjszabáshoz képest a számítási erőforrások 
 
 A foglalást nem kell hozzárendelni egy adott gyári vagy integrációs futtatókörnyezethez. A meglévő gyárak vagy újonnan üzembe helyezett üzemek automatikusan megkapják a kedvezményt. A foglalás megvásárlásával véglegesíti az adatáramlás számítási költségeinek egy vagy három évre történő felhasználását. A foglalás megvásárlása után a foglalási attribútumoknak megfelelő számítási díjakra már nem számítunk fel díjat az utólagos elszámolású díjszabásban. 
 
-A [fenntartott kapacitást](https://portal.azure.com) a foglalások [elöl vagy havi fizetéssel](https://docs.microsoft.com/azure/cost-management-billing/reservations/prepare-buy-reservation.md)is megvásárolhatja. Fenntartott kapacitás vásárlása:
+A [fenntartott kapacitást](https://portal.azure.com) a foglalások [elöl vagy havi fizetéssel](../cost-management-billing/reservations/prepare-buy-reservation.md)is megvásárolhatja. Fenntartott kapacitás vásárlása:
 
 - Legalább egy Nagyvállalati vagy egyéni előfizetéshez tulajdonosi szerepkörrel kell rendelkeznie, utólagos elszámolású díjszabással.
 - Nagyvállalati előfizetések esetében engedélyezni kell a **Fenntartott példányok hozzáadása** beállítást az [EA Portalon](https://ea.azure.com). Ha ez a beállítás le van tiltva, akkor az előfizetés egyik nagyvállalati rendszergazdájának kell lennie. Fenntartott kapacitás.
 
-Ha többet szeretne megtudni arról, hogy a vállalati ügyfelek és az utólagos elszámolású ügyfelek milyen díjat számítanak fel a foglalások beszerzésére, tekintse meg az [Azure foglalás használatának ismertetése a nagyvállalati beléptetéssel](https://docs.microsoft.com/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea) és [Az Azure foglalás használatának](https://docs.microsoft.com/azure/cost-management-billing/reservations/understand-reserved-instance-usage)ismertetése az utólagos elszámolású előfizetéshez.
+Ha többet szeretne megtudni arról, hogy a vállalati ügyfelek és az utólagos elszámolású ügyfelek milyen díjat számítanak fel a foglalások beszerzésére, tekintse meg az [Azure foglalás használatának ismertetése a nagyvállalati beléptetéssel](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) és [Az Azure foglalás használatának](../cost-management-billing/reservations/understand-reserved-instance-usage.md)ismertetése az utólagos elszámolású előfizetéshez.
 
 > [!NOTE]
 > A fenntartott kapacitás megvásárlása nem foglalja le előre a használatra vonatkozó infrastruktúra-erőforrásokat (virtuális gépeket vagy fürtöket).
@@ -49,7 +49,7 @@ Tegyük fel például, hogy a folyamatot óránként, a 32 maggal optimalizált 
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Foglalások lemondása, cseréje vagy visszatérítése
 
-Bizonyos korlátozásokkal lehetősége van a foglalások lemondására, cseréjére és visszatérítésére. További információkért lásd: [Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations).
+Bizonyos korlátozásokkal lehetősége van a foglalások lemondására, cseréjére és visszatérítésére. További információkért lásd: [Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ## <a name="need-help-contact-us"></a>Segítségre van szüksége? Kapcsolat
 

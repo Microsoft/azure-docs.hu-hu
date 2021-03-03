@@ -7,12 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 02/16/2018
 ms.subservice: alerts
-ms.openlocfilehash: 3ca776a1869874042a6a97cdd59dc00d3a917d33
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 98558c2b1525094277dd6c165349f25ce5cd3b23
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100614505"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717876"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>SMS-riasztás viselkedése a műveleti csoportokban
 
@@ -30,7 +30,7 @@ Egy műveleti csoport részeként konfigurált SMS-fogadó SMS-t kap, ha riaszt�
 * A gazdagépbejegyzés, amelyre a riasztást elküldték
 * A riasztás címe
 
-| VÁLASZ | Description |
+| VÁLASZ | Leírás |
 | ----- | ----------- |
 | Megbénít `<Action Group Short name>` | Letiltja a további SMS-ket a műveleti csoportból |
 | ENGEDÉLYEZÉSE `<Action Group Short name>` | Az SMS újbóli engedélyezése a műveleti csoportból |
@@ -42,7 +42,6 @@ Egy műveleti csoport részeként konfigurált SMS-fogadó SMS-t kap, ha riaszt�
 >Ha egy felhasználó leiratkozott az SMS-riasztásokból, de ezt követően új műveleti csoportba kerül. SMS-riasztásokat kapnak az új műveleti csoporthoz, de az összes korábbi műveleti csoportból leiratkozott maradnak.
 
 ## <a name="next-steps"></a>Következő lépések
-[Tekintse át a tevékenységek naplójának riasztásait](../platform/alerts-overview.md) , és Ismerje meg, hogyan kaphat riasztást  
+[Tekintse át a tevékenységek naplójának riasztásait](./alerts-overview.md) , és Ismerje meg, hogyan kaphat riasztást  
 További információ az [SMS-díjak korlátozásáról](alerts-rate-limiting.md)  
-További információ a [műveleti csoportokról](../platform/action-groups.md)
-
+További információ a [műveleti csoportokról](./action-groups.md)

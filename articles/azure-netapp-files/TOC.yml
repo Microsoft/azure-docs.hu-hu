@@ -29,6 +29,8 @@
           href: azure-netapp-files-performance-metrics-volumes.md
         - name: Teljesítménytesztek Linuxhoz
           href: performance-benchmarks-linux.md
+        - name: A Kerberos teljesítményére gyakorolt hatás a NFSv 4.1 rendszeren
+          href: performance-impact-kerberos.md
         - name: Az Oracle-adatbázis teljesítménye az Azure NetApp Files önálló kötetein
           href: performance-oracle-single-volumes.md
         - name: Az SMB-teljesítménnyel kapcsolatos gyakori kérdések

@@ -7,18 +7,17 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: laobri
 author: lobrien
-ms.date: 02/01/2021
+ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 894b0fcddaead6ce60e1becc7221c4f5e608de48
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 5a83211654ad1abafff59d5968c191ec1fa63616
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492297"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692402"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Adatok áthelyezése gép tanulási folyamatok lépéseibe és azok között (Python)
-
 
 Ez a cikk egy Azure Machine Learning folyamat lépései közötti adatimportálási,-átalakítási és-áthelyezési kódot tartalmaz. Az adatAzure Machine Learningi működésének áttekintését lásd: az [Azure Storage-szolgáltatásokban tárolt adathozzáférés](how-to-access-data.md). Azure Machine Learning folyamatok előnyeiről és struktúrájáról a [Mi a Azure Machine learning-folyamat?](concept-ml-pipelines.md)című témakörben olvashat.
 
@@ -29,7 +28,7 @@ Ez a cikk bemutatja, hogyan végezheti el a következőket:
 - Az `Dataset` adat felosztása részhalmazokra, például betanítási és érvényesítési részhalmazokra
 - Objektumok létrehozása az `OutputFileDatasetConfig` adatok átviteléhez a következő folyamat lépéséhez
 - `OutputFileDatasetConfig`Objektumok használata bemenetként a folyamat lépéseihez
-- Hozzon létre új `Dataset` objektumokat, `OutputFileDatasetConfig` amelyeket meg szeretne őrizni
+- Hozzon létre új `Dataset` objektumokat a `OutputFileDatasetConfig` wisƒh, hogy megmaradjon
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -64,10 +63,12 @@ Számos módon hozhatók létre és regisztrálhatók `Dataset` objektumok. A t�
 datastore = Datastore.get(workspace, 'training_data')
 iris_dataset = Dataset.Tabular.from_delimited_files(DataPath(datastore, 'iris.csv'))
 
-cats_dogs_dataset = Dataset.File.from_files(
-    paths='https://download.microsoft.com/download/3/E/1/3E1C3F21-ECDB-4869-8368-6DEBA77B919F/kagglecatsanddogs_3367a.zip',
-    archive_options=ArchiveOptions(archive_type=ArchiveType.ZIP, entry_glob='**/*.jpg')
-)
+datastore_path = [
+    DataPath(datastore, 'animals/dog/1.jpg'),
+    DataPath(datastore, 'animals/dog/2.jpg'),
+    DataPath(datastore, 'animals/cat/*.jpg')
+]
+cats_dogs_dataset = Dataset.File.from_files(path=datastore_path)
 ```
 
 Az adatkészletek különböző lehetőségekkel és különböző forrásokból való létrehozásával, a regisztrálással és a Azure Machine Learning felhasználói felületen való áttekintésével, valamint az adatméretnek a számítási kapacitással való interakciójának és verziószámozásának megismerésével kapcsolatban lásd: [Azure Machine learning adatkészletek létrehozása](how-to-create-register-datasets.md). 
@@ -200,7 +201,7 @@ with open(args.output_path, 'w') as f:
 
 Miután a kezdeti folyamat lépése adatokat ír az `OutputFileDatasetConfig` elérési útra, és ennek a kezdeti lépésnek a kimenete lesz, egy későbbi lépéshez bemenetként is használható. 
 
-A következő kódban 
+A következő kódban: 
 
 * `step1_output_data` azt jelzi, hogy a PythonScriptStep kimenete `step1` a ADLS Gen 2 adattárba íródik a `my_adlsgen2` feltöltési hozzáférési módban. További információ a szerepkör- [engedélyek beállításáról](how-to-access-data.md#azure-data-lake-storage-generation-2) : az adat visszaírása ADLS Gen 2 adattárba. 
 
@@ -223,7 +224,7 @@ step2 = PythonScriptStep(
     script_name="step2.py",
     compute_target=compute,
     runconfig = aml_run_config,
-    arguments = ["--pd", step1_output_data.as_input]
+    arguments = ["--pd", step1_output_data.as_input()]
 
 )
 
@@ -239,6 +240,15 @@ step1_output_ds = step1_output_data.register_on_complete(name='processed_data',
                                                          description = 'files from step1`)
 ```
 
+## <a name="delete-outputfiledatasetconfig-contents-when-no-longer-needed"></a>Tartalom törlése, `OutputFileDatasetConfig` Ha már nincs rá szükség
+
+Az Azure nem törli automatikusan a-val írt köztes adatkészleteket `OutputFileDatasetConfig` . Ha el szeretné kerülni a nagy mennyiségű szükségtelen adatok tárolási díját, akkor a következők valamelyikét kell megadnia:
+
+* Programozott módon törölheti a közbenső adatmennyiséget a folyamat futásának végén, ha már nincs rá szükség
+* Használjon rövid távú tárolási házirenddel rendelkező blob Storage-t a köztes adattároláshoz (lásd: a [költségek optimalizálása az Azure Blob Storage hozzáférési szintjeinek automatizálásával](../storage/blobs/storage/blobs/storage-lifecycle-management-concepts.md)) 
+* A már nem szükséges adatfeldolgozások rendszeres felülvizsgálata és törlése
+
+További információ: [Azure Machine learning költségeinek tervezése és kezelése](concept-plan-manage-cost.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

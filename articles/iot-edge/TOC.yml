@@ -251,6 +251,8 @@
       href: how-to-create-test-certificates.md
     - name: Windowsos eszközkezelési szkriptek
       href: reference-windows-scripts.md
+    - name: IoT Edge Linux rendszeren Windows-parancsfájlok esetén
+      href: reference-iot-edge-for-linux-on-windows-scripts.md
     - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: További források

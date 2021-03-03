@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter, devx-track-java
-ms.openlocfilehash: ed8948ddeddf25272355cd1dc06d4e95c52f7f62
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 1edfbca2f2a16aeebc1244b298426dc46d72c6d5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035257"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708815"
 ---
 # <a name="create-your-first-java-function-in-azure-using-intellij"></a>Az első Java-függvény létrehozása az Azure-ban a IntelliJ használatával
 
@@ -56,13 +56,13 @@ A Java-függvények az Azure-ban való létrehozásához és közzétételéhez 
 
    ![Az eszközről történő bejelentkezéshez használt böngésző][intellij-azure-link-ms-account]
 
-6. A **Előfizetések kiválasztása** párbeszédpanelen válassza ki a használni kívánt előfizetést, majd kattintson az **OK** gombra.
+6. Az **előfizetések kiválasztása** párbeszédpanelen válassza ki a használni kívánt előfizetéseket, majd kattintson a **kiválasztás** gombra.
 
    ![Az Előfizetések kiválasztása párbeszédpanel][intellij-azure-login-select-subs]
    
 ## <a name="create-your-local-project"></a>A helyi projekt létrehozása
 
-Ebben a szakaszban a Azure Toolkit for IntelliJ segítségével létrehoz egy helyi Azure Functions projektet. A cikk későbbi részében a függvény kódját közzé fogja tenni az Azure-ban. 
+Ebben a szakaszban a Azure Toolkit for IntelliJ segítségével létrehoz egy helyi Azure Functions projektet. A cikk későbbi részében közzéteszi a függvény kódját az Azure-ban. 
 
 1. Nyissa meg a IntelliJ üdvözlő párbeszédpaneljét, válassza az *új projekt létrehozása* elemet új projekt varázsló megnyitásához, majd válassza a *Azure functions* lehetőséget.
 
@@ -151,7 +151,7 @@ Ebben a szakaszban a Azure Toolkit for IntelliJ segítségével létrehoz egy he
       ![A képernyőképen a helyi menüből kiválasztott törlés látható.](media/functions-create-first-java-intellij/delete-function.png)
       
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Létrehozott egy Java-projektet egy HTTP által aktivált függvénnyel, futtatta azt a helyi gépen, és üzembe helyezte az Azure-ban. Most terjessze ki a függvényt...
 

@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 21b84a40621f5a529c09dc0c03e024c4ea6d5c95
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 98a3965160e7ab6c86ba8c6d3a4dfd75af4c6dbb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99531582"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750376"
 ---
 Az oktatóanyaghoz a következő Azure-erőforrások szükségesek:
 
@@ -36,10 +36,10 @@ Ebben a rövid útmutatóban azt javasoljuk, hogy az Azure-előfizetésében lé
     1. **Hálózati adapter** – lehetővé teszi, hogy egy Azure-beli virtuális gép kommunikáljon az internettel, az Azure-ral és más erőforrásokkal.
     1. **Megerősített kapcsolat** – ez lehetővé teszi, hogy a böngésző és a Azure Portal használatával kapcsolódjon a virtuális géphez.
     1. **Nyilvános IP-cím** – lehetővé teszi, hogy az Azure-erőforrások kommunikáljanak az internettel és a nyilvánosan elérhető Azure-szolgáltatásokkal
-    1. **Virtuális hálózat** – az Azure-erőforrások, például a virtuális gépek számos típusa lehetővé teszi, hogy biztonságosan kommunikáljanak egymással, az internettel és a helyszíni hálózatokkal. További információ a [virtuális hálózatokról](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
+    1. **Virtuális hálózat** – az Azure-erőforrások, például a virtuális gépek számos típusa lehetővé teszi, hogy biztonságosan kommunikáljanak egymással, az internettel és a helyszíni hálózatokkal. További információ a [virtuális hálózatokról](../../../../../virtual-network/virtual-networks-overview.md)
     1. **IoT hub** – ez egy központi üzenetsor, amely a IoT-alkalmazás, a IoT Edge-modulok és az általa kezelt eszközök közötti kétirányú kommunikációra szolgál.
     1. **Media Service-fiók** – ez segíti az Azure-beli médiatartalmak felügyeletét és továbbítását.
-    1. **Storage-fiók** – rendelkeznie kell egy elsődleges Storage-fiókkal, és tetszőleges számú másodlagos Storage-fiók társítható a Media Services-fiókjához. További információ: [Azure Storage-fiókok Azure Media Services fiókokkal](https://docs.microsoft.com/azure/media-services/latest/storage-account-concept).
+    1. **Storage-fiók** – rendelkeznie kell egy elsődleges Storage-fiókkal, és tetszőleges számú másodlagos Storage-fiók társítható a Media Services-fiókjához. További információ: [Azure Storage-fiókok Azure Media Services fiókokkal](../../../../latest/storage-account-concept.md).
     1. **Container Registry** – ez segít a privát Docker-tárolók rendszerképeinek és a kapcsolódó összetevők tárolásában és kezelésében.
 1. A szkript befejeződése után válassza ki a kapcsos zárójeleket, hogy elérhetővé tegye a mappastruktúrát. A *~/clouddrive/LVA-Sample* könyvtárban néhány fájl jelenik meg. Ebben a rövid útmutatóban a következők szerepelnek:
 

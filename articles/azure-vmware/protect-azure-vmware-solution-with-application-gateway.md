@@ -3,12 +3,12 @@ title: Az Azure Application Gateway használatával biztosíthatja webalkalmazá
 description: Az Azure Application Gateway konfigurálása az Azure VMware-megoldáson futó webalkalmazások biztonságos megjelenítéséhez.
 ms.topic: how-to
 ms.date: 02/10/2021
-ms.openlocfilehash: 9b10c206114ca922cc11bd8cb0321941b8ba672c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1ad615efe0de86a49714914507227b7cc1dca4cb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384197"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733584"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>Az Azure Application Gateway használatával biztosíthatja webalkalmazásait az Azure VMware-megoldásban
 
@@ -35,7 +35,7 @@ Az ábrán az Azure VMware Solution web Applications használatával végzett Ap
 
 :::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="A Application Gateway Azure VMware-megoldás webalkalmazásaival való ellenőrzéséhez használt tesztelési forgatókönyvet bemutató ábra." border="false":::
 
-A Application Gateway példány egy dedikált alhálózaton van üzembe helyezve a központban. Azure-beli nyilvános IP-címmel rendelkezik. Ajánlott a virtuális hálózat szabványos DDoS-védelmének aktiválása. A webkiszolgáló egy, a NSX T0 és T1 átjáró mögötti Azure VMware-megoldáshoz tartozó saját felhőben üzemel. Az Azure VMware-megoldás [ExpressRoute Global REACH](../expressroute/expressroute-global-reach.md) használ az elosztóval és a helyszíni rendszerekkel való kommunikáció engedélyezésére.
+A Application Gateway példány egy dedikált alhálózaton van üzembe helyezve a központban. Azure-beli nyilvános IP-címmel rendelkezik. A virtuális hálózat [Azure DDoS Protection szabványának](../ddos-protection/ddos-protection-overview.md) aktiválása ajánlott. A webkiszolgáló egy, a NSX T0 és T1 átjáró mögötti Azure VMware-megoldáshoz tartozó saját felhőben üzemel. Az Azure VMware-megoldás [ExpressRoute Global REACH](../expressroute/expressroute-global-reach.md) használ az elosztóval és a helyszíni rendszerekkel való kommunikáció engedélyezésére.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -193,3 +193,4 @@ Most, hogy a Application Gateway használatával gondoskodik az Azure VMware-meg
 - [Az Azure Application Gateway konfigurálása különböző forgatókönyvekhez](../application-gateway/configuration-overview.md).
 - [Traffic Manager üzembe helyezése az Azure VMware-megoldás](deploy-traffic-manager-balance-workloads.md)számítási feladatainak terheléselosztásához.
 - [Azure NetApp Files integrálása az Azure VMware megoldás-alapú munkaterhelésekkel](netapp-files-with-azure-vmware-solution.md).
+- [Azure-erőforrások védelme virtuális hálózatokban](../ddos-protection/ddos-protection-overview.md)

@@ -6,12 +6,12 @@ author: MS-jgol
 ms.author: jgol
 ms.date: 05/31/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0dda015d820d81fdd13eced384f97362e2ee3339
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9ead123338a410daf53569ff577dfc8c728a8ddf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587565"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708492"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>Mi az Auto-Instrumentation vagy a kód-Azure Monitor Application Insights?
 
@@ -45,27 +45,27 @@ Ha további integrációkat adunk hozzá, az automatikus rendszerállapot-kialak
 A Windows rendszeren futó Azure App Service alkalmazás-figyelése a [.NET-alkalmazások](./azure-web-apps.md?tabs=net) .net számára érhető el, és alapértelmezés szerint engedélyezve van.
 
 #### <a name="netcore"></a>. NETCore
-A figyelése [. A NETCore-alkalmazások](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=netcore) egyetlen kattintással engedélyezhetők.
+A figyelése [. A NETCore-alkalmazások](./azure-web-apps.md?tabs=netcore) egyetlen kattintással engedélyezhetők.
 
 #### <a name="java"></a>Java
-A App Service Windows rendszeren futó Java-alkalmazások figyelésére szolgáló portál integrációja jelenleg nem érhető el, azonban a kód módosítása nélkül is hozzáadhat Application Insights [Java 3,0 önálló ügynököt](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) az alkalmazáshoz anélkül, hogy az alkalmazásokat a app Servicere telepítené. A Application Insights Java 3,0-ügynök általánosan elérhető.
+A App Service Windows rendszeren futó Java-alkalmazások figyelésére szolgáló portál integrációja jelenleg nem érhető el, azonban a kód módosítása nélkül is hozzáadhat Application Insights [Java 3,0 önálló ügynököt](./java-in-process-agent.md) az alkalmazáshoz anélkül, hogy az alkalmazásokat a app Servicere telepítené. A Application Insights Java 3,0-ügynök általánosan elérhető.
 
 #### <a name="nodejs"></a>Node.js
-Node.js-alkalmazások figyelése a Windowsban jelenleg nem engedélyezhető a portálon. Node.js alkalmazások figyeléséhez használja az [SDK](https://docs.microsoft.com/azure/azure-monitor/app/nodejs)-t.
+Node.js-alkalmazások figyelése a Windowsban jelenleg nem engedélyezhető a portálon. Node.js alkalmazások figyeléséhez használja az [SDK](./nodejs.md)-t.
 
 ### <a name="linux"></a>Linux
 
 #### <a name="netcore"></a>. NETCore
-A figyeléshez. A Linux rendszeren futó NETCore-alkalmazások az [SDK](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)-t használják.
+A figyeléshez. A Linux rendszeren futó NETCore-alkalmazások az [SDK](./asp-net-core.md)-t használják.
 
 #### <a name="java"></a>Java 
-A Java-alkalmazások App Service figyelésének engedélyezése a portálon a Linuxon nem érhető el, de [Application Insights java 3,0-ügynököt](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) is hozzáadhat az alkalmazáshoz, mielőtt a app Servicere telepítené az alkalmazásokat. A Application Insights Java 3,0-ügynök általánosan elérhető.
+A Java-alkalmazások App Service figyelésének engedélyezése a portálon a Linuxon nem érhető el, de [Application Insights java 3,0-ügynököt](./java-in-process-agent.md) is hozzáadhat az alkalmazáshoz, mielőtt a app Servicere telepítené az alkalmazásokat. A Application Insights Java 3,0-ügynök általánosan elérhető.
 
 #### <a name="nodejs"></a>Node.js
-A [Linux rendszeren futó app Service-alkalmazások Node.js figyelése](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=nodejs) nyilvános előzetes verzióban érhető el, és a Azure Portal-ben is engedélyezhető, minden régióban elérhető. 
+A [Linux rendszeren futó app Service-alkalmazások Node.js figyelése](./azure-web-apps.md?tabs=nodejs) nyilvános előzetes verzióban érhető el, és a Azure Portal-ben is engedélyezhető, minden régióban elérhető. 
 
 #### <a name="python"></a>Python
-Az SDK használata a [Python-alkalmazás figyelésére](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python) 
+Az SDK használata a [Python-alkalmazás figyelésére](./opencensus-python.md) 
 
 ## <a name="azure-functions"></a>Azure Functions
 
@@ -77,7 +77,7 @@ Az Azure Kubernetes szolgáltatás kód nélküli üzembe helyezése jelenleg a 
 
 ## <a name="azure-windows-vms-and-virtual-machine-scale-set"></a>Azure Windows-alapú virtuális gépek és virtuálisgép-méretezési csoport
 
-Az Azure-beli virtuális gépek és a virtuálisgép-méretezési csoport automatikus kiosztása a [.net](./azure-vm-vmss-apps.md) és a [Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)esetében is elérhető.  
+Az Azure-beli virtuális gépek és a virtuálisgép-méretezési csoport automatikus kiosztása a [.net](./azure-vm-vmss-apps.md) és a [Java](./java-in-process-agent.md)esetében is elérhető.  
 
 ## <a name="on-premises-servers"></a>Helyszíni kiszolgálók
 Egyszerűen engedélyezheti a helyszíni Windows- [kiszolgálók .NET-alkalmazásokhoz](./status-monitor-v2-overview.md) és [Java](./java-in-process-agent.md)-alkalmazásokhoz való figyelését.
@@ -90,4 +90,3 @@ A sokoldalú Java önálló ügynök bármilyen környezetben működik, nincs s
 * [Application Insights áttekintése](./app-insights-overview.md)
 * [Alkalmazás-hozzárendelés](./app-map.md)
 * [Végpontok közötti teljesítmény figyelése](../app/tutorial-performance.md)
-

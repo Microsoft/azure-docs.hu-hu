@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 08/19/2019
 ms.custom: mvc, sec-javascript-october2019
-ms.openlocfilehash: 6cc9c6af4592956b6498e826ef65b556e5780f34
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2e267682118c4ba6fe25c11a4ae5088916d0e6fb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100628673"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736984"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Adatok gyűjtése egy Azure-beli virtuális gépről Azure Monitor
 
@@ -141,4 +141,4 @@ Most, hogy már gyűjti a működési és teljesítményadatokat a Windows vagy 
 Az adatok megtekintésének és elemzésének ismertetéséhez lépjen tovább az útmutatóhoz.
 
 > [!div class="nextstepaction"]
-> [Adatok megtekintése és elemzése a Log Analyticsben](../log-query/log-analytics-tutorial.md)
+> [Adatok megtekintése és elemzése a Log Analyticsben](../logs/log-analytics-tutorial.md)

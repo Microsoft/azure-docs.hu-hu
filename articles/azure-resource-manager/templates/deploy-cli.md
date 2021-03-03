@@ -1,18 +1,18 @@
 ---
 title: Erőforrások üzembe helyezése az Azure CLI-vel és sablonnal
-description: Erőforrások üzembe helyezése az Azure-ban a Azure Resource Manager és az Azure CLI használatával. Az erőforrások egy Resource Manager-sablonban vannak meghatározva.
+description: Erőforrások üzembe helyezése az Azure-ban a Azure Resource Manager és az Azure CLI használatával. Az erőforrások egy Resource Manager-sablonban vagy egy bicep-fájlban vannak meghatározva.
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: 6a8efcebcd6ae18eaf91c6ec1e7df184db8c244c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/02/2021
+ms.openlocfilehash: 547b860869738f3cfe12d6a22262829ef132a671
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378672"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741123"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>Erőforrások üzembe helyezése ARM-sablonokkal és Azure CLI-vel
 
-Ez a cikk azt ismerteti, hogyan használható az Azure CLI Azure Resource Manager-sablonokkal (ARM-sablonokkal) az erőforrások Azure-beli üzembe helyezéséhez. Ha nem ismeri az Azure-megoldások üzembe helyezésével és kezelésével kapcsolatos fogalmakat, tekintse meg a [sablonok üzembe helyezésének áttekintése](overview.md)című témakört.
+Ez a cikk azt ismerteti, hogyan használható az Azure CLI Azure Resource Manager-sablonokkal (ARM-sablonokkal) vagy a bicep-fájllal az erőforrások Azure-beli üzembe helyezéséhez. Ha nem ismeri az Azure-megoldások üzembe helyezésével és kezelésével kapcsolatos fogalmakat, tekintse meg a [sablonok üzembe helyezésének áttekintése](overview.md) vagy a [bicep – áttekintés](bicep-overview.md)című témakört.
 
 Az üzembe helyezési parancsok az Azure CLI 2.2.0-as verziójában változtak. A cikkben szereplő példákhoz az Azure CLI 2.2.0 vagy újabb verziójára van szükség.
 
@@ -27,13 +27,13 @@ Az üzembe helyezést egy erőforráscsoport, egy előfizetés, egy felügyeleti
 * Egy **erőforráscsoporthoz** való üzembe helyezéshez használja [az az Deployment Group Create](/cli/azure/deployment/group#az-deployment-group-create):
 
   ```azurecli-interactive
-  az deployment group create --resource-group <resource-group-name> --template-file <path-to-template>
+  az deployment group create --resource-group <resource-group-name> --template-file <path-to-template-or-bicep>
   ```
 
 * Egy **előfizetésre** való üzembe helyezéshez használja az [az Deployment sub Create](/cli/azure/deployment/sub#az-deployment-sub-create):
 
   ```azurecli-interactive
-  az deployment sub create --location <location> --template-file <path-to-template>
+  az deployment sub create --location <location> --template-file <path-to-template-or-bicep>
   ```
 
   Az előfizetési szintű központi telepítésekkel kapcsolatos további információkért lásd: [erőforráscsoportok és erőforrások létrehozása az előfizetési szinten](deploy-to-subscription.md).
@@ -41,7 +41,7 @@ Az üzembe helyezést egy erőforráscsoport, egy előfizetés, egy felügyeleti
 * Egy **felügyeleti csoportba** való központi telepítéshez használja az [az Deployment mg Create](/cli/azure/deployment/mg#az-deployment-mg-create):
 
   ```azurecli-interactive
-  az deployment mg create --location <location> --template-file <path-to-template>
+  az deployment mg create --location <location> --template-file <path-to-template-or-bicep>
   ```
 
   További információ a felügyeleti csoport szintű központi telepítésekről: [erőforrások létrehozása a felügyeleti csoport szintjén](deploy-to-management-group.md).
@@ -49,14 +49,14 @@ Az üzembe helyezést egy erőforráscsoport, egy előfizetés, egy felügyeleti
 * Egy **bérlőn** való üzembe helyezéshez használja az [az Deployment bérlő Create](/cli/azure/deployment/tenant#az-deployment-tenant-create):
 
   ```azurecli-interactive
-  az deployment tenant create --location <location> --template-file <path-to-template>
+  az deployment tenant create --location <location> --template-file <path-to-template-or-bicep>
   ```
 
   A bérlői szintű központi telepítésekkel kapcsolatos további információkért lásd: [erőforrások létrehozása a bérlő szintjén](deploy-to-tenant.md).
 
-Minden hatókör esetében a sablont telepítő felhasználónak rendelkeznie kell az erőforrások létrehozásához szükséges engedélyekkel.
+Minden hatókör esetében a sablont vagy a bicep-fájlt telepítő felhasználónak rendelkeznie kell az erőforrások létrehozásához szükséges engedélyekkel.
 
-## <a name="deploy-local-template"></a>Helyi sablon üzembe helyezése
+## <a name="deploy-local-template-or-bicep-file"></a>Helyi sablon vagy bicep-fájl üzembe helyezése
 
 A sablont telepítheti a helyi gépről, vagy egy külső tárolóból. Ez a szakasz egy helyi sablon központi telepítését ismerteti.
 
@@ -66,13 +66,13 @@ Ha nem létező erőforráscsoporthoz végez üzembe helyezést, hozzon létre e
 az group create --name ExampleGroup --location "Central US"
 ```
 
-Helyi sablon üzembe helyezéséhez használja a (z `--template-file` ) paramétert a telepítési parancsban. Az alábbi példa azt is bemutatja, hogyan lehet beállítani a sablonból származó paraméterérték értékét.
+Helyi sablon vagy bicep-fájl üzembe helyezéséhez használja a `--template-file` paramétert a telepítési parancsban. Az alábbi példa azt is bemutatja, hogyan lehet megadni egy paraméter értékét.
 
 ```azurecli-interactive
 az deployment group create \
   --name ExampleDeployment \
   --resource-group ExampleGroup \
-  --template-file azuredeploy.json \
+  --template-file <path-to-template-or-bicep> \
   --parameters storageAccountType=Standard_GRS
 ```
 
@@ -83,6 +83,9 @@ Az üzembe helyezés eltarthat néhány percig. Amikor befejeződik, megjelenik 
 ```
 
 ## <a name="deploy-remote-template"></a>Távoli sablon üzembe helyezése
+
+> [!NOTE]
+> Az Azure CLI jelenleg nem támogatja a bicep-fájlok eltávolítását.
 
 Az ARM-sablonok helyi gépen való tárolása helyett érdemes lehet őket külső helyen tárolni. Sablonokat tárolhat egy olyan verziókövetési rendszer adattárában is, mint a GitHub. Tárolhatja azokat egy Azure-tárfiókban is, ahol megosztva érhető el a vállalat számára.
 
@@ -144,6 +147,9 @@ Az egyidejű központi telepítésekkel való ütközések elkerülése érdeké
 
 ## <a name="deploy-template-spec"></a>Sablon üzembe helyezése – spec
 
+> [!NOTE]
+> Az Azure CLI jelenleg nem támogatja a sablonhoz tartozó specifikációk létrehozását a bicep-fájlok biztosításával. Azonban létrehozhat egy ARM-sablont vagy egy bicep-fájlt a [Microsoft. Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) erőforrással a sablon specifikációjának telepítéséhez. Íme egy [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/create-template-spec-using-template/azuredeploy.bicep).
+
 Helyi vagy távoli sablon telepítése helyett hozzon létre egy [specifikációt](template-specs.md). A sablon spec egy ARM-sablont tartalmazó Azure-előfizetésben található erőforrás. Megkönnyíti a sablon biztonságos megosztását a szervezetben lévő felhasználókkal. Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával hozzáférést biztosíthat a sablon specifikációjának. Ez a funkció jelenleg előzetes verzióban érhető el.
 
 Az alábbi példák bemutatják, hogyan hozhat létre és helyezhet üzembe egy sablon-specifikációt.
@@ -186,7 +192,7 @@ A beágyazott paraméterek átadásához adja meg az értékeket a következőbe
 ```azurecli-interactive
 az deployment group create \
   --resource-group testgroup \
-  --template-file demotemplate.json \
+  --template-file <path-to-template-or-bicep> \
   --parameters exampleString='inline string' exampleArray='("value1", "value2")'
 ```
 
@@ -197,7 +203,7 @@ Emellett beolvashatja a fájl tartalmát, és megadhatja a tartalmat beágyazott
 ```azurecli-interactive
 az deployment group create \
   --resource-group testgroup \
-  --template-file demotemplate.json \
+  --template-file <path-to-template-or-bicep> \
   --parameters exampleString=@stringContent.txt exampleArray=@arrayContent.json
 ```
 
@@ -236,7 +242,7 @@ Használjon idézőjeleket a JSON-körben, amelyeket át szeretne adni az objekt
 
 ### <a name="parameter-files"></a>Paraméter fájljai
 
-Ahelyett, hogy a paramétereket beágyazott értékekként adná át a szkriptben, egyszerűbbnek találhatja egy olyan JSON-fájl használatát, amely tartalmazza a paraméterértékeket. A paraméter fájljának helyi fájlnak kell lennie. A külső paraméterek fájljai nem támogatottak az Azure CLI-vel.
+Ahelyett, hogy a paramétereket beágyazott értékekként adná át a szkriptben, egyszerűbbnek találhatja egy olyan JSON-fájl használatát, amely tartalmazza a paraméterértékeket. A paraméter fájljának helyi fájlnak kell lennie. A külső paraméterek fájljai nem támogatottak az Azure CLI-vel. Mindkét ARM-sablon és a bicep-fájl JSON-paramétereket használ.
 
 A paraméterfájlról a [Resource Manager-paraméterfájl létrehozása](parameter-files.md) című cikk nyújt további információkat.
 
@@ -274,7 +280,7 @@ Ha többsoros karakterláncokkal vagy megjegyzésekkel rendelkező sablont szere
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Ha hibát tapasztal a sikeres üzembe helyezéshez, olvassa el a [hiba visszaállítása a sikeres központi telepítéshez](rollback-on-error.md)című témakört.
-- Ha meg szeretné adni, hogyan kezelje az erőforráscsoport meglévő erőforrásait, de a sablonban nincs definiálva, tekintse meg a [Azure Resource Manager üzembe helyezési módokat](deployment-modes.md).
-- Ha meg szeretné tudni, hogyan határozhat meg paramétereket a sablonban, tekintse meg [az ARM-sablonok szerkezetének és szintaxisának megismerése](template-syntax.md)című részt.
-- A gyakori telepítési hibák megoldásával kapcsolatos tippekért lásd: [gyakori Azure-telepítési hibák elhárítása Azure Resource Managerokkal](common-deployment-errors.md).
+* Ha hibát tapasztal a sikeres üzembe helyezéshez, olvassa el a [hiba visszaállítása a sikeres központi telepítéshez](rollback-on-error.md)című témakört.
+* Ha meg szeretné adni, hogyan kezelje az erőforráscsoport meglévő erőforrásait, de a sablonban nincs definiálva, tekintse meg a [Azure Resource Manager üzembe helyezési módokat](deployment-modes.md).
+* Ha meg szeretné tudni, hogyan határozhat meg paramétereket a sablonban, tekintse meg [az ARM-sablonok szerkezetének és szintaxisának megismerése](template-syntax.md)című részt.
+* A gyakori telepítési hibák megoldásával kapcsolatos tippekért lásd: [gyakori Azure-telepítési hibák elhárítása Azure Resource Managerokkal](common-deployment-errors.md).

@@ -3,20 +3,20 @@ title: Biztonsági mentések monitorozása és üzemeltetése a Backup Centerrel
 description: Ez a cikk bemutatja, hogyan figyelheti és működtetheti a biztonsági másolatok méretét a Backup Center használatával
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 9ce3b0f00c51e9b466a9ed040b677df811448b1d
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 1c40f7804a0f0bb7694e6df205648d3ad20ad80e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98893778"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719542"
 ---
-# <a name="monitor-and-operate-backups-using-backup-center-preview"></a>Biztonsági másolatok figyelése és üzemeltetése a Backup Centerben (előzetes verzió)
+# <a name="monitor-and-operate-backups-using-backup-center"></a>Biztonsági mentések monitorozása és üzemeltetése a Backup Centerrel
 
 Biztonsági mentési rendszergazdaként a Backup centert egyetlen Ablaktáblaként használhatja a feladatok és a biztonsági másolatok napi rendszerességű nyomon követéséhez. A Backup Center használatával is elvégezheti a rendszeres műveleteket, például az igény szerinti biztonsági mentési kérelmekre való válaszadást, a biztonsági másolatok visszaállítását, a biztonsági mentési házirendek létrehozását és így tovább.
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
 
-* A Backup Center jelenleg támogatott az Azure virtuális gépek biztonsági mentése, az SQL az Azure VM Backup szolgáltatásban, SAP HANA az Azure virtuális gépek biztonsági mentése, Azure Files biztonsági mentés és a Azure Database for PostgreSQL kiszolgáló biztonsági mentése.
+* A Backup Center jelenleg támogatott az Azure-beli virtuális gépek biztonsági mentése, az SQL az Azure VM Backup szolgáltatásban, SAP HANA az Azure virtuális gép biztonsági mentésében, Azure Files Backup, Azure Blob Backup, Azure Managed Disks Backup és Azure Database for PostgreSQL Server Backup.
 * A támogatott és nem támogatott forgatókönyvek részletes listáját a [támogatási mátrixban](backup-center-support-matrix.md) találja.
 
 ## <a name="backup-instances"></a>Biztonsági mentési példányok

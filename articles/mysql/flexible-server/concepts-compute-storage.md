@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/28/2021
-ms.openlocfilehash: 765ff76578e48135d2e7d4d9200c1868d2501df4
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 9b5a2c5d004e63c602a30f7808586e97a0e436e8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581448"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720936"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Számítási és tárolási lehetőségek Azure Database for MySQL – rugalmas kiszolgáló (előzetes verzió)
 
@@ -72,7 +72,7 @@ A rendelkezésre álló kiszolgálói típusok részletes leírása a következ�
 Ha további részleteket szeretne megtudni a rendelkezésre álló számítási sorozatokról, tekintse meg az Azure virtuális gép dokumentációját, amely a [feltört (B sorozatú)](../../virtual-machines/sizes-b-series-burstable.md), [általános célú (Ddsv4 sorozat)](../../virtual-machines/ddv4-ddsv4-series.md)és a [memóriára optimalizált (Edsv4-sorozat)](../../virtual-machines/edv4-edsv4-series.md).
 
 >[!NOTE]
->Ha a virtuális gép indítása/leállítása vagy újraindítása után a kihasználható [(B sorozatos) számítási réteg](../../virtual-machines/sizes-b-series-burstable.md) elvész, előfordulhat, hogy a kreditek elvesznek. További információ: [feltört (B sorozatú) gyakori kérdések](https://docs.microsoft.com/azure/virtual-machines/sizes-b-series-burstable#q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart).
+>Ha a virtuális gép indítása/leállítása vagy újraindítása után a kihasználható [(B sorozatos) számítási réteg](../../virtual-machines/sizes-b-series-burstable.md) elvész, előfordulhat, hogy a kreditek elvesznek. További információ: [feltört (B sorozatú) gyakori kérdések](../../virtual-machines/sizes-b-series-burstable.md#q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart).
 
 ## <a name="storage"></a>Tárolás
 
@@ -83,7 +83,7 @@ A kiépített tárterület a rugalmas kiszolgáló számára elérhető tároló
 
 A tárterület-felhasználást a Azure Portalban (Azure Monitor) figyelheti a tárolási korlát, a tárolási százalék és a felhasznált tároló metrikáinak használatával. A metrikák megismeréséhez tekintse meg a [figyelési cikket](./concepts-monitoring.md) . 
 
-### <a name="reaching-the-storage-limit"></a>A tárolási korlát elérése
+### <a name="reaching-the-storage-limit"></a>Tárhelykorlát elérése
 
 Ha a kiszolgálón felhasznált tárterület közel van a kiosztott korlát eléréséhez, a kiszolgáló írásvédett módba kerül, hogy megvédje az elveszett írásokat a kiszolgálón. Azok a kiszolgálók, amelyek kisebb, mint 100 GiB kiépített tárolóval rendelkeznek, csak olvashatóként vannak megjelölve, ha az ingyenes tárterület kevesebb, mint 5%-a kiépített tároló mérete. A több mint 100 GiB kiosztott tárterülettel rendelkező kiszolgálók csak olvashatóként vannak megjelölve, ha az ingyenes tárterület 5 GiB-nál kisebb.
 

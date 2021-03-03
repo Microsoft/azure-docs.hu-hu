@@ -4,15 +4,15 @@ description: Az Azure Marketplace-en futó virtuális gépek (VM-lemezképek) te
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
-author: iqshahmicrosoft
-ms.author: iqshah
+author: mathapli
+ms.author: mathapli
 ms.date: 01/18/2021
-ms.openlocfilehash: 80dc19a58d212bb6ab8d608e222cd3a0bd3990d1
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: adcd91d58b3bb5fde3ffa81c828c58d4b6db48d4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600992"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721157"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Virtuális gépek minősítésének hibáinak megoldása
 
@@ -32,7 +32,7 @@ Virtuálisgép-bővítmények engedélyezése:
 1. Válassza ki a linuxos virtuális gépet.
 1. Lépjen a **diagnosztikai beállítások menüpontra**.
 1. Az alapmátrixok engedélyezéséhez frissítse a **Storage-fiókot**.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
    ![Képernyőfelvétel: a vendég szintű figyelés engedélyezése.](./media/create-vm/vm-certification-issues-solutions-1.png)
 
@@ -54,7 +54,7 @@ Győződjön meg arról, hogy a virtuális gép üzembe helyezési folyamatát s
 
 A kiépítési problémák a következő meghibásodási helyzetekben lehetnek:
 
-|Használati eset|Hiba|Ok|Megoldás|
+|Eset|Hiba|Ok|Megoldás|
 |---|---|---|---|
 |1|Érvénytelen virtuális merevlemez (VHD)|Ha a VHD-láblécben megadott cookie-érték helytelen, a VHD-fájl érvénytelennek tekintendő.|Hozza létre újra a lemezképet, és küldje el a kérést.|
 |2|Érvénytelen blob-típus|A virtuális gép kiépítés meghiúsult, mert a használt blokk egy oldal típusa helyett blob típusú.|Hozza létre újra a lemezképet, és küldje el a kérést.|
@@ -77,7 +77,7 @@ A VHD-formázott Blobok 512 bájtos lábléctel rendelkeznek ebben a formátumba
 |Merevlemez láblécének mezői|Méret (bájt)|
 |---|---|
 Cookie|8
-Szolgáltatások|4
+Funkciók|4
 Fájlformátum verziója|4
 Adateltolás|8
 Időbélyegző|4
@@ -126,7 +126,7 @@ Töltse le a [Microsoft minősítési eszközkészletet](azure-vm-image-test.md)
 
 A következő táblázat felsorolja az eszközkészlet által futtatott Linux-tesztelési eseteket. A teszt érvényesítése a leírásban van megadva.
 
-|Használati eset|Teszteset|Leírás|
+|Eset|Teszteset|Leírás|
 |---|---|---|
 |1|Bash-előzmények|A rendszer a virtuális gép rendszerképének létrehozása előtt törli a bash-előzmények fájljait.|
 |2|Linux-ügynök verziója|Telepíteni kell az Azure Linux Agent 2.2.41 vagy újabb verzióját.|
@@ -144,7 +144,7 @@ A következő táblázat felsorolja az eszközkészlet által futtatott Linux-te
 
 Tekintse meg az alábbi táblázatot a tesztelési esetek futtatásakor előforduló gyakori hibákról:
 
-| Használati eset | Teszteset | Hiba | Megoldás |
+| Eset | Teszteset | Hiba | Megoldás |
 | --- | --- | --- | --- |
 | 1 | Linux-ügynök verziója – tesztelési eset | A Linux-ügynök minimális verziója 2.2.41 vagy újabb. Ezt a követelményt a 2020. május 1. óta kötelező megadni. | Frissítse a Linux-ügynök verzióját. 2,241 vagy újabb verziónak kell lennie. További információért látogasson el a [Linux-ügynök verziójának frissítése oldalra](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support). |
 | 2 | Bash-előzmények tesztelési esete | Hiba történik, ha az elküldött képen a bash-előzmények mérete meghaladja az 1 kilobájtot (KB). A méret 1 KB-ra korlátozódik annak biztosítására, hogy a bash History-fájlja ne tartalmazzon potenciálisan bizalmas adatokat. | Oldja fel a virtuális merevlemezt egy másik működő virtuális gépre, és módosítsa a méretet 1 KB vagy annál kisebb értékre. Törölje például az `.bash` Előzmények fájljait. |
@@ -156,7 +156,7 @@ Tekintse meg az alábbi táblázatot a tesztelési esetek futtatásakor előford
 
 A következő táblázat felsorolja az eszközkészlet által futtatott Windows-tesztelési eseteket, valamint a tesztek ellenőrzésének leírását:
 
-|Használati eset |Tesztelési esetek|Leírás|
+|Eset |Tesztelési esetek|Leírás|
 |---|---|---|
 |1|Operációs rendszer architektúrája|Az Azure csak a 64 bites operációs rendszereket támogatja.|
 |2|Felhasználói fióktól való függőség|Az alkalmazás végrehajtása nem függhet a rendszergazdai fióktól.|
@@ -594,8 +594,37 @@ Ezután tegye közzé újra az ajánlatot.
 
 A közzétételi folyamat befejezéséhez tekintse meg az [ajánlatok áttekintése és közzététele](review-publish-offer.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+### <a name="vm-images-with-limited-access-or-requiring-custom-templates"></a>Korlátozott hozzáférésű vagy egyéni sablonokat igénylő virtuálisgép-rendszerképek
+
+#### <a name="locked-down-or-ssh-disabled-offer"></a>Zárolt (vagy) SSH-letiltott ajánlat
+
+  Az SSH-val letiltott (Linux esetében) vagy RDP-letiltott (Windows rendszeren) típusú, zárolt virtuális gépekként közzétett lemezképek. Vannak olyan speciális üzleti forgatókönyvek, amelyek miatt a közzétevők csak korlátozott hozzáférést engedélyeznek a nem/a néhány felhasználó számára. Az ellenőrzési ellenőrzések során előfordulhat, hogy a zárolt virtuális gépek nem teszik lehetővé bizonyos hitelesítési parancsok végrehajtását.
+
+
+#### <a name="custom-templates"></a>Egyéni sablonok
+
+   Általánosságban elmondható, hogy az egyes VM-ajánlatok alatt közzétett összes lemezkép a telepítéshez a standard ARM-sablont követi. Vannak azonban olyan helyzetek, amikor a közzétevőnek testre kell szabnia a virtuális gépek üzembe helyezése során (például több hálózati adaptert kell konfigurálni).
+    
+   Az alábbi forgatókönyvek (nem teljes) alapján a kiadó egyéni sablonokat használ a virtuális gép üzembe helyezéséhez:
+
+   * A virtuális géphez további hálózati alhálózatok szükségesek.
+   * Az ARM-sablonba beszúrandó további metaadatok.
+   * Az ARM-sablon végrehajtásának előfeltételeit képező parancsok.
+
+### <a name="vm-extensions"></a>Virtuálisgép-bővítmények   
+
+   Az Azure virtuálisgép-bővítmények olyan kisméretű alkalmazások, amelyek üzembe helyezés utáni konfigurációs és automatizálási feladatokat biztosítanak az Azure-beli virtuális gépeken. Ha egy virtuális gépen például szoftver telepítésére, vírusvédelemre vagy egy szkript futtatására van szükség, erre felhasználható egy virtuálisgép-bővítmény. 
+
+   A linuxos virtuálisgép-bővítmények érvényesítéséhez a következők szükségesek ahhoz, hogy a rendszerkép része legyen:
+* Az Azure Linux-ügynök nagyobb 2.2.41
+* Python-verzió 2,8 felett 
+
+
+További információért látogasson el a [VM-bővítményre](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux).
+     
+## <a name="next-steps"></a>Következő lépések
 
 - [Virtuálisgép-ajánlat tulajdonságainak konfigurálása](azure-vm-create-properties.md)
 - [Aktív Piactéri előnyök](partner-center-portal/marketplace-rewards.md)
 - Ha kérdése vagy visszajelzése van a fejlesztéssel kapcsolatban, forduljon a [partner Center ügyfélszolgálatához](https://aka.ms/marketplacepublishersupport).
+ 

@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/16/2021
 ms.author: juliako
-ms.openlocfilehash: c8fcd6e662a0beff61209de4b5c4331618b45ea1
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 3a64bb261db39efb63b35004f1daa0452b4f0672
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653303"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715156"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer kibocsátási megjegyzései
 
@@ -47,7 +47,7 @@ Az újonnan hozzáadott hang hatással van a szolgáltatásra a fájl indexelés
 
 Az előző hangeffektusok modelljében szereplő **tapsolt** esemény típusa már ki van kinyerve a tömeg- **reagálási** esemény típusának egy részébe.
 
-Ha úgy dönt, hogy a [video Indexer](https://www.videoindexer.ai/) webhelyén megtekinti a videó **helyeit** , a hangeffektusok megjelennek az oldalon.
+Ha úgy dönt, hogy **megtekinti a videót** a [video Indexer](https://www.videoindexer.ai/) webhelyén, a hangeffektusok megjelennek az oldalon.
 
 :::image type="content" source="./media/release-notes/audio-detection.png" alt-text="Hangesemények észlelése":::
 

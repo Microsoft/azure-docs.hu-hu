@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/16/2021
+ms.date: 02/24/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: cc9431d08823bd3bfba423fcc5e9dc14d2a37faa
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 2acc3d104786be330e3e799ad7bd96d703587581
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652955"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738990"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Az Azure import/export szolgáltatás használata az Azure-ba való adatimportálásra Blob Storage
 
@@ -68,7 +68,7 @@ A meghajtók előkészítéséhez végezze el a következő lépéseket.
 6. A meghajtó BitLocker-kulcsának beszerzéséhez futtassa a következő parancsot:
 
     `manage-bde -protectors -get <DriveLetter>:`
-7. A lemez előkészítéséhez futtassa a következő parancsot. **Az adatmérettől függően ez több órát is igénybe vehet.**
+7. A lemez előkészítéséhez futtassa a következő parancsot. **Az adatmérettől függően a lemez előkészítése több óráig is eltarthat.**
 
     ```powershell
     ./WAImportExport.exe PrepImport /j:<journal file name> /id:session<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite
@@ -86,13 +86,14 @@ A meghajtók előkészítéséhez végezze el a következő lépéseket.
     |BK     |A meghajtó BitLocker-kulcsa. A numerikus jelszava a kimenetből `manage-bde -protectors -get D:`      |
     |/srcdir:     |A szállítandó lemez meghajtóbetűjele, majd a `:\` . Például: `D:\`.         |
     |/dstdir:     |A cél tároló neve az Azure Storage-ban.         |
-    |/blobtype:     |Ezzel a beállítással adható meg, hogy milyen típusú blobokat kíván importálni az alkalmazásba. A blokk Blobok esetében ez a `BlockBlob` és a Blobok esetében is `PageBlob` .         |
-    |/skipwrite:     |Ez a beállítás azt határozza meg, hogy nincs szükség új adatmásolásra és a lemezen lévő meglévő adatfeldolgozásra.          |
+    |/blobtype:     |Ezzel a beállítással adható meg, hogy milyen típusú blobokat kíván importálni az alkalmazásba. A Block Blobok esetében a blob típusa `BlockBlob` és az oldal Blobok `PageBlob` .         |
+    |/skipwrite:     | Azt határozza meg, hogy a lemezre való másoláshoz és a lemezen lévő meglévő adatsorokhoz nincs szükség új adatfeldolgozásra.          |
     |/enablecontentmd5:     |Ha a beállítás engedélyezve van, biztosítja, hogy az MD5 kiszámítva legyen, és az `Content-md5` egyes Blobok tulajdonságként legyen beállítva. Ezt a lehetőséget csak akkor használja, ha a `Content-md5` mezőt az Azure-ba való feltöltés után szeretné használni. <br> Ez a beállítás nincs hatással az adatintegritás-ellenőrzésre (alapértelmezés szerint ez történik). A beállítással megnövelhető az adatok felhőbe való feltöltéséhez szükséges idő.          |
 8. Ismételje meg az előző lépést minden egyes leszállításra szoruló lemez esetében. A rendszer a megadott névvel rendelkező naplófájlt hoz létre a parancssor minden futtatásához.
 
     > [!IMPORTANT]
     > * A Journal-fájllal együtt egy `<Journal file name>_DriveInfo_<Drive serial ID>.xml` fájl is jön létre ugyanabban a mappában, ahol az eszköz található. Ha a naplófájl túl nagy, a rendszer a naplófájl helyett a. xml fájlt használja.
+   > * A portál által engedélyezett naplófájl maximális mérete 2 MB. Ha a naplófájl túllépi ezt a korlátot, a rendszer hibaüzenetet küld.
 
 ## <a name="step-2-create-an-import-job"></a>2. lépés: importálási feladatok létrehozása
 
@@ -132,7 +133,7 @@ Az alábbi lépések végrehajtásával hozzon létre egy importálási feladato
 
    * Válassza ki a szolgáltatót a legördülő listából. Ha a FedEx/DHL-től eltérő szolgáltatót szeretne használni, válasszon ki egy meglévő lehetőséget a legördülő menüből. Lépjen kapcsolatba Azure Data Box operatív csapatával a `adbops@microsoft.com`  használni kívánt szolgáltatóra vonatkozó információkkal.
    * Adjon meg egy érvényes, a szállítóval létrehozott számlaszámot. A Microsoft ezt a fiókot használja a meghajtók visszaszállításához az importálási feladatok befejezését követően. Ha nem rendelkezik fiókkal, hozzon létre egy [FedEx](https://www.fedex.com/us/oadr/) vagy [DHL](https://www.dhl.com/) Carrier-fiókot.
-   * Adjon meg egy teljes és érvényes nevet, telefont, e-mailt, utcanév-címet, várost, irányítószámot, államot/régiót és országot/régiót.
+   * Adjon meg egy teljes és érvényes nevet, telefont, e-mailt, házszámot, várost, irányítószámot, államot/régiót és országot/régiót.
 
        > [!TIP]
        > E-mail-cím egyetlen felhasználóhoz való megadása helyett adjon meg egy csoportos e-mailt. Ez biztosítja, hogy értesítést kapjon, még akkor is, ha a rendszergazda elhagyja.
@@ -323,7 +324,7 @@ Install-Module -Name Az.ImportExport
 
 ## <a name="step-3-optional-configure-customer-managed-key"></a>3. lépés (nem kötelező): az ügyfél által felügyelt kulcs konfigurálása
 
-Hagyja ki ezt a lépést, és folytassa a következő lépéssel, ha a Microsoft által felügyelt kulccsal szeretné védetté tenni a meghajtók BitLocker-kulcsait. Ha saját kulcsát szeretné beállítani a BitLocker-kulcs védeleméhez, kövesse az [ügyfél által felügyelt kulcsok konfigurálása az Azure-beli Importálás/exportálás Azure Key Vault az Azure Portal](storage-import-export-encryption-key-portal.md)
+Hagyja ki ezt a lépést, és folytassa a következő lépéssel, ha a Microsoft által felügyelt kulccsal szeretné védetté tenni a meghajtók BitLocker-kulcsait. Ha saját kulcsot szeretne beállítani a BitLocker-kulcs védeleméhez, kövesse az [ügyfél által felügyelt kulcsok konfigurálása a Azure Key Vault az Azure-beli Importálás/Exportálás az Azure Portalban](storage-import-export-encryption-key-portal.md)című témakör utasításait.
 
 ## <a name="step-4-ship-the-drives"></a>4. lépés: a meghajtók szállítása
 

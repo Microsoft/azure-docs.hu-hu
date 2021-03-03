@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Az Azure Functions dokumentációja
-summary: Az Azure Functions olyan igény szerinti, felhőalapú szolgáltatás, amely az alkalmazások futtatásához szükséges összes, folyamatosan frissülő infrastruktúrát és erőforrást biztosítja. Így Ön a legfontosabb kódolási feladatokra koncentrálhat, a többit pedig az Azure Functionsre bízhatja. Az Azure Functions többek között webes API-k készítésére, adatbázis-változásokra adott válaszokra, IoT-streamek feldolgozására és üzenetsorok kezelésére is használható.
+summary: Az Azure Functions olyan igény szerinti, felhőalapú szolgáltatás, amely az alkalmazások futtatásához szükséges összes, folyamatosan frissülő infrastruktúrát és erőforrást biztosítja. Az Ön számára leginkább fontos kódrészletekre koncentrálhat, és a függvények kezelik a többit. A függvények kiszolgáló nélküli számítási feladatokat biztosítanak az Azure-hoz. A függvények használatával webes API-kat hozhat létre, válaszolhat az adatbázis változásaira, feldolgozhatja a IoT adatfolyamokat, kezelheti az üzenetsor-kezeléseket és egyebeket.
 metadata:
   title: Az Azure Functions dokumentációja
-  description: Az Azure Functions olyan igény szerinti, felhőalapú szolgáltatás, amely az alkalmazások futtatásához szükséges összes, folyamatosan frissülő infrastruktúrát és erőforrást biztosítja. Így Ön a legfontosabb kódolási feladatokra koncentrálhat, a többit pedig az Azure Functionsre bízhatja. Az Azure Functions többek között webes API-k készítésére, adatbázis-változásokra adott válaszokra, IoT-streamek feldolgozására és üzenetsorok kezelésére is használható.
+  description: Az Azure Functions olyan igény szerinti, felhőalapú szolgáltatás, amely az alkalmazások futtatásához szükséges összes, folyamatosan frissülő infrastruktúrát és erőforrást biztosítja. Így Ön a legfontosabb kódolási feladatokra koncentrálhat, a többit pedig az Azure Functionsre bízhatja. A függvények kiszolgáló nélküli számítási feladatokat biztosítanak az Azure-hoz. Az Azure Functions többek között webes API-k készítésére, adatbázis-változásokra adott válaszokra, IoT-streamek feldolgozására és üzenetsorok kezelésére is használható.
   ms.service: azure-functions
   ms.topic: landing-page
   author: ggailey777
   ms.author: azfundocs
   ms.date: 09/17/2019
-  ms.openlocfilehash: 65b2c25bde616f8a2bbc9abf6439871d288306b9
-  ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+  ms.openlocfilehash: 4d856232d2f0780852a1f369548b08012d124834
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 02/14/2021
-  ms.locfileid: "100363032"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101729164"
 landingContent:
 - title: Az Azure Functions ismertetése
   linkLists:

@@ -5,14 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-ms.date: 06/10/2020
+ms.date: 03/02/2021
 ms.author: caya
-ms.openlocfilehash: 26f53a8f93d4d51ec8f8fd91051496a46670f432
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 2564fd38056241fd48f58f5f6039bf64f92b6741
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397348"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714408"
 ---
 # <a name="what-is-application-gateway-ingress-controller"></a>Mi az Application Gateway beáramló vezérlő?
 A Application Gateway beáramlási vezérlő (AGIC) egy Kubernetes-alkalmazás, amely lehetővé teszi, hogy az [Azure Kubernetes Service (ak)](https://azure.microsoft.com/services/kubernetes-service/) ügyfelei kihasználják az azure natív [Application Gateway](https://azure.microsoft.com/services/application-gateway/) L7 Load-balancert a felhőalapú szoftverek interneten való elérhetővé tételéhez. A AGIC figyeli az üzemeltetett Kubernetes-fürtöt, és folyamatosan frissíti egy Application Gateway, hogy a kiválasztott szolgáltatások elérhetők legyenek az internethez.
@@ -37,7 +37,7 @@ A AGIC a Kubernetes beáramlási [erőforrással](https://kubernetes.io/docs/use
   - Integrált webalkalmazási tűzfal
 
 ## <a name="difference-between-helm-deployment-and-aks-add-on"></a>A Helm üzembe helyezése és az AK Add-On közötti különbség
-Kétféle módon telepíthet AGIC az AK-fürthöz. Az első módszer a Helm; a második az AK-n keresztül bővítmény. Az AGIC-k AK-bővítményként való üzembe helyezésének elsődleges előnye, hogy sokkal egyszerűbb, mint a Helmon keresztül történő üzembe helyezés. Új telepítés esetén telepíthet egy új Application Gatewayt és egy új AK-fürtöt, amely AGIC engedélyezhető az Azure CLI egyik sorában. A bővítmény egy teljes körűen felügyelt szolgáltatás is, amely további előnyöket biztosít, például az automatikus frissítéseket és a megnövekedett támogatást. A Helm használatával központilag telepített AGIC nem támogatottak az AK-ban, de az AK-bővítményként üzembe helyezett AGIC is támogatja. 
+Kétféle módon telepíthet AGIC az AK-fürthöz. Az első módszer a Helm; a második az AK-n keresztül bővítmény. Az AGIC-k AK-bővítményként való üzembe helyezésének elsődleges előnye, hogy sokkal egyszerűbb, mint a Helmon keresztül történő üzembe helyezés. Új telepítés esetén telepíthet egy új Application Gatewayt és egy új AK-fürtöt, amely AGIC engedélyezhető az Azure CLI egyik sorában. A bővítmény egy teljes körűen felügyelt szolgáltatás is, amely további előnyöket biztosít, például az automatikus frissítéseket és a megnövekedett támogatást. A Microsoft teljes mértékben támogatja a AGIC (Helm és AK bővítmény) üzembe helyezésének mindkét módját. Emellett a bővítmény lehetővé teszi az AK-nal való jobb integrációt az első osztályú bővítményként.
 
 A AGIC-bővítmény továbbra is Pod-ként van telepítve az ügyfél AK-beli fürtjében, de van néhány különbség a Helm üzembe helyezési verziója és a AGIC kiegészítő verziója között. Az alábbi lista a két verzió közötti különbségeket sorolja fel: 
   - A Helm központi telepítési értékei nem módosíthatók az AK bővítményben:
@@ -50,29 +50,9 @@ A AGIC-bővítmény továbbra is Pod-ként van telepítve az ügyfél AK-beli f�
   - Mivel a AGIC-bővítmény felügyelt szolgáltatás, a rendszer automatikusan frissíti az ügyfeleket a AGIC-bővítmény legújabb verziójára, a AGIC-on keresztül központilag telepített, az ügyfél által manuálisan frissíteni kívánt AGIC. 
 
 > [!NOTE]
-> A AGIC AK-bővítményének üzembe helyezési módszere jelenleg előzetes verzióban érhető el. Nem javasoljuk, hogy éles környezetben futó számítási feladatokat még előzetes verzióban is futtasson, így ha kíváncsi rá, javasoljuk, hogy hozzon létre egy új fürtöt a kipróbálásához. 
+> Az ügyfelek csak egy AGIC-bővítményt telepíthetnek, és az egyes AGIC-bővítmények jelenleg csak egy Application Gateway tudnak megcélozni. Olyan központi telepítések esetén, amelyeknek több AGIC vagy több AGICs kell megcéloznia egy Application Gateway, továbbra is használja a Helm használatával telepített AGIC. 
 
-A következő táblázatok rendezik, hogy jelenleg milyen forgatókönyvek támogatottak a Helm üzembe helyezési verziójával és a AGIC AK-bővítményének verziójával. 
-
-### <a name="aks-add-on-agic-single-aks-cluster"></a>AK-bővítmény AGIC (egyetlen AK-fürt)
-|                  |1 Application Gateway |2 + Application Gateway-átjárók |
-|------------------|---------|--------|
-|**1 AGIC**|Igen, ez támogatott |Nem, ez a várakozó fájlok |
-|**2 + AGICs**|Nem, csak 1 AGIC támogatott/fürt |Nem, csak 1 AGIC támogatott/fürt |
-
-### <a name="helm-deployed-agic-single-aks-cluster"></a>Helm központilag telepített AGIC (egyetlen AK-fürt)
-|                  |1 Application Gateway |2 + Application Gateway-átjárók |
-|------------------|---------|--------|
-|**1 AGIC**|Igen, ez támogatott |Nem, ez a várakozó fájlok |
-|**2 + AGICs**|Megosztott ProhibitedTarget funkciót kell használnia, és meg kell néznie a különálló névtereket. |Igen, ez támogatott |
-
-### <a name="helm-deployed-agic-2-aks-clusters"></a>Helm központilag telepített AGIC (2 + AK-fürtök)
-|                  |1 Application Gateway |2 + Application Gateway-átjárók |
-|------------------|---------|--------|
-|**1 AGIC**|N.A. |N.A. |
-|**2 + AGICs**|Megosztott ProhibitedTarget funkciót kell használnia |N/A |
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [**Ak Add-On Greenfield üzembe helyezése**](tutorial-ingress-controller-add-on-new.md): útmutatás a AGIC-bővítmény, az AK és a Application Gateway telepítéséhez az üres-pala infrastruktúrán.
 - [**Ak Add-On rozsdaövezetek rehabilitálása üzembe helyezése**](tutorial-ingress-controller-add-on-existing.md): telepítse a AGIC bővítményt egy AK-fürtön egy meglévő Application Gateway.
 - [**Helm Greenfield üzembe helyezése**](ingress-controller-install-new.md): telepítse a AGIC-t a Helm, az új AK-fürt és az új Application Gateway az üres-pala infrastruktúrán keresztül.

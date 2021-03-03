@@ -3,14 +3,15 @@ title: Tudnivalók a virtuális gépek tartalmának naplózásáról
 description: Megtudhatja, hogyan használja a Azure Policy a vendég konfigurációs ügyfelet a beállítások naplózására a virtuális gépeken belül.
 ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5d1503680ea2ca7d0ff7c8adae19c05abfe441c0
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 33a492eb3c8c175bfcdc6a13cb467ed2f180c1e1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104807"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702878"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy vendégkonfigurációjának ismertetése
+
 
 A Azure Policy a számítógépeken belül is naplózhatja a beállításokat, mind az Azure-ban, mind az [arc-csatlakoztatott gépeken](../../../azure-arc/servers/overview.md)futó gépek esetében. Az érvényesítést a Vendégkonfiguráció bővítmény és ügyfél végzi. A bővítmény az ügyfélen keresztül ellenőrzi a beállításokat, például a következőket:
 
@@ -20,13 +21,15 @@ A Azure Policy a számítógépeken belül is naplózhatja a beállításokat, m
 
 Jelenleg a legtöbb Azure Policy vendég konfigurációs házirend definíciója csak a számítógépen belüli naplózási beállításokat definiálja. Nem alkalmaznak konfigurációkat. A kivétel egy, az [alábbiakban hivatkozott](#applying-configurations-using-guest-configuration)beépített szabályzat.
 
+[A dokumentum videó-átjárása elérhető](https://youtu.be/Y6ryD3gTHOs).
+
 ## <a name="enable-guest-configuration"></a>Vendég konfiguráció engedélyezése
 
 A környezetben lévő gépek állapotának naplózásához, beleértve az Azure-ban és az arc-csatlakoztatott gépeken található gépeket is, tekintse át a következő adatokat.
 
 ## <a name="resource-provider"></a>Erőforrás-szolgáltató
 
-A vendég konfiguráció használatához regisztrálnia kell az erőforrás-szolgáltatót. Az erőforrás-szolgáltató automatikusan regisztrálva van, ha a vendég konfigurációs szabályzatának hozzárendelése a portálon történik. Manuálisan is regisztrálhat a [portálon](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal), [Azure PowerShellon](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)vagy az [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli)-n keresztül.
+A vendég konfiguráció használatához regisztrálnia kell az erőforrás-szolgáltatót. Ha a vendég konfigurációs szabályzatának hozzárendelését a portálon keresztül hajtja végre, vagy ha az előfizetés regisztrálva van Azure Security Center, akkor az erőforrás-szolgáltató automatikusan regisztrálva lesz. Manuálisan is regisztrálhat a [portálon](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal), [Azure PowerShellon](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)vagy az [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli)-n keresztül.
 
 ## <a name="deploy-requirements-for-azure-virtual-machines"></a>Azure-beli virtuális gépekre vonatkozó követelmények üzembe helyezése
 
@@ -62,13 +65,13 @@ A vendég-konfigurációs szabályzatok definíciói az új verziókhoz tartozna
 
 |Publisher|Name|Verziók|
 |-|-|-|
-|Canonical|Ubuntu Server|14,04 – 18,04|
-|Credativ|Debian|8 és újabb verziók|
-|Microsoft|Windows Server|2012 és újabb verziók|
+|Canonical|Ubuntu Server|14,04 – 20,04|
+|Credativ|Debian|8 - 10|
+|Microsoft|Windows Server|2012 – 2019|
 |Microsoft|Windows-ügyfél|Windows 10|
-|OpenLogic|CentOS|7,3 és újabb verziók|
-|Red Hat|Red Hat Enterprise Linux|7,4 – 7,8|
-|SUSE|SLES|12 SP3 – SP5|
+|OpenLogic|CentOS|7,3 – 8|
+|Red Hat|Red Hat Enterprise Linux|7,4 – 8|
+|SUSE|SLES|12 SP3 – SP5, 15|
 
 Az egyéni virtuálisgép-lemezképeket a vendég-konfigurációs házirend definíciói támogatják, feltéve, hogy a fenti táblázatban szereplő operációs rendszerek egyike.
 
@@ -114,9 +117,26 @@ A vendég-konfigurációs házirend definíciói a **AuditIfNotExists** hatást 
 A **AuditIfNotExists** házirend-definíciók nem adják vissza a megfelelőségi eredményeket, amíg az összes követelmény nem teljesül a gépen. A követelmények az Azure-beli [virtuális gépek üzembe helyezési követelményei](#deploy-requirements-for-azure-virtual-machines) című szakaszban olvashatók.
 
 > [!IMPORTANT]
-> A vendég konfigurációjának előzetes kiadásában egy kezdeményezésre volt szükség a **DeployIfNoteExists** és a **AuditIfNotExists** -definíciók összevonásához. A **DeployIfNotExists** -definíciók már nem szükségesek. A definíciók és a intiaitives címkével vannak ellátva, `[Deprecated]` de a meglévő hozzárendelések továbbra is működni fognak. További információért lásd a következő blogbejegyzéset: a [vendég konfigurációjának naplózási házirendjeihez kiadott fontos változás](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
+> A vendég konfigurációjának előzetes kiadásában egy kezdeményezésre volt szükség a **DeployIfNoteExists** és a **AuditIfNotExists** -definíciók összevonásához. A **DeployIfNotExists** -definíciók már nem szükségesek. A definíciók és a kezdeményezések címkével vannak ellátva, `[Deprecated]` de a meglévő hozzárendelések továbbra is működni fognak. További információért lásd a következő blogbejegyzéset: a [vendég konfigurációjának naplózási házirendjeihez kiadott fontos változás](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
 
-Azure Policy a vendég konfigurációja erőforrás-szolgáltató **complianceStatus** tulajdonságot **használja a megfelelőségi csomópont** megfelelőségének jelentéséhez. További információ: a [megfelelőségi adatok beszerzése](../how-to/get-compliance-data.md).
+### <a name="what-is-a-guest-assignment"></a>Mi az a vendég-hozzárendelés?
+
+Ha egy Azure Policy van hozzárendelve, ha a "vendég konfigurációja" kategóriába tartozik, a rendszer metaadatokat tartalmaz a vendég-hozzárendelés leírásához.
+A vendég-hozzárendelések egy gép és egy Azure Policy-forgatókönyv közötti kapcsolatként is megtekinthetők.
+Az alábbi kódrészlet például társítja az Azure Windows alapkonfigurációt a minimális verziószámmal a `1.0.0` szabályzat hatálya alá tartozó gépekhez. Alapértelmezés szerint a vendég-hozzárendelés csak a gép naplózását fogja elvégezni.
+
+```json
+"metadata": {
+    "category": "Guest Configuration",
+    "guestConfiguration": {
+        "name": "AzureWindowsBaseline",
+        "version": "1.*"
+    }
+//additional metadata properties exist
+```
+
+A vendég-hozzárendeléseket a rendszer automatikusan létrehoz egy gépen a vendég konfigurációs szolgáltatásban. Az erőforrástípus `Microsoft.GuestConfiguration/guestConfigurationAssignments`.
+Azure Policy a vendég-hozzárendelési erőforrás **complianceStatus** tulajdonságát használja a megfelelőségi állapot jelentéséhez. További információ: a [megfelelőségi adatok beszerzése](../how-to/get-compliance-data.md).
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Az operációs rendszer beállításainak naplózása az iparági alapkonfigurációkat követve
 
@@ -201,6 +221,12 @@ A vendég konfiguráció beépített házirendjének mintái a következő helys
 - [Beépített szabályzat-definíciók – vendég konfigurációja](../samples/built-in-policies.md#guest-configuration)
 - [Beépített kezdeményezések – vendég konfigurációja](../samples/built-in-initiatives.md#guest-configuration)
 - [Azure Policy Samples GitHub-tárház](https://github.com/Azure/azure-policy/tree/master/built-in-policies/policySetDefinitions/Guest%20Configuration)
+
+### <a name="video-overview"></a>Videó – áttekintés
+
+A Azure Policy vendég konfigurációjának következő áttekintése a ITOps-beszélgetések 2021-es verziójában érhető el.
+
+[Alapkonfigurációk szabályozása hibrid kiszolgálói környezetekben Azure Policy Guest Configuration használatával](https://techcommunity.microsoft.com/t5/itops-talk-blog/ops114-governing-baselines-in-hybrid-server-environments-using/ba-p/2109245)
 
 ## <a name="next-steps"></a>Következő lépések
 

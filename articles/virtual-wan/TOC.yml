@@ -74,10 +74,14 @@
           href: azure-monitor-insights.md
     - name: Helyek közötti kapcsolat
       items:
-        - name: Információk az IPsec-házirendekről
+        - name: Tudnivalók a S2S IPsec-házirendjeiről
           href: virtual-wan-ipsec.md
         - name: Több ISP-hivatkozás – Azure-beli elérési út kiválasztása
           href: path-selection-multiple-links.md
+    - name: Pont–hely kapcsolat
+      items:
+        - name: Tudnivalók a P2S IPsec-házirendjeiről
+          href: point-to-site-ipsec.md
     - name: Biztonság
       items:
         - name: Biztonsági alapkonfiguráció
@@ -108,6 +112,8 @@
           href: connect-virtual-network-gateway-vwan.md
         - name: Egyéni IPsec-szabályzat konfigurálása
           href: virtual-wan-custom-ipsec-portal.md
+        - name: NAT-szabályok konfigurálása
+          href: nat-rules-vpn-gateway.md
     - name: Felhasználói VPN-kapcsolatok (pont–hely)
       items:
         - name: Felhasználói VPN-kapcsolat létrehozása

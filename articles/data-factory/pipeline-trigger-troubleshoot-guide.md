@@ -7,12 +7,12 @@ ms.date: 12/15/2020
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: 1a5f665627da1b08ec57b04863a58f227c673af4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 2950c175acfdda33394c93649a3e2c41d1264dd2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944901"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705993"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>A folyamat-összehangolás és az eseményindítók hibáinak megoldása Azure Data Factory
 
@@ -78,13 +78,32 @@ Azure Data Factory kiértékeli az összes levél szintű tevékenység eredmén
 1. Tevékenység szintű ellenőrzések végrehajtása a [folyamat hibáinak és hibáinak kezelésével](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459).
 1. A Azure Logic Apps használatával rendszeres időközönként figyelheti a folyamatokat a [gyár lekérdezését](/rest/api/datafactory/pipelineruns/querybyfactory)követően.
 
-## <a name="monitor-pipeline-failures-in-regular-intervals"></a>Folyamat-meghibásodások figyelése rendszeres időközönként
+### <a name="how-to-monitor-pipeline-failures-in-regular-intervals"></a>Folyamat-meghibásodások figyelése rendszeres időközönként
 
 Előfordulhat, hogy a sikertelen Data Factory folyamatokat nem kell figyelnie, például 5 percet. A folyamatot a végpont használatával kérdezheti le és szűrheti a folyamat futtatását egy adatok gyárában. 
 
-Állítson be egy Azure Logic app-alkalmazást, amely 5 percenként lekérdezi az összes meghiúsult folyamatot a következő témakörben leírtak szerint: [query by Factory](/rest/api/datafactory/pipelineruns/querybyfactory). Ezt követően az incidenseket bejelenthetjük a Ticketing rendszerbe.
+**Megoldás** Beállíthat egy Azure logikai alkalmazást, amely 5 percenként lekérdezi az összes meghiúsult folyamatot a következő témakörben leírtak szerint: [query by Factory](/rest/api/datafactory/pipelineruns/querybyfactory). Ezt követően az incidenseket bejelenthetjük a jegyrendszer rendszerébe.
 
 További információ: [értesítések küldése Data Factoryről, 2. rész](https://www.mssqltips.com/sqlservertip/5962/send-notifications-from-an-azure-data-factory-pipeline--part-2/).
+
+### <a name="degree-of-parallelism--increase-does-not-result-in-higher-throughput"></a>A párhuzamossági fok növekedése nem eredményez nagyobb átviteli sebességet
+
+**Ok** 
+
+A *foreach* párhuzamossági foka valójában a maximális párhuzamossági fok. Egy adott időpontban nem garantálunk bizonyos számú végrehajtást, de ez a paraméter garantálja, hogy soha nem haladnak a beállított érték fölé. Ezt korlátként kell látnia, hogy kihasználja a forrásokhoz és a mosdóhoz való egyidejű hozzáférés szabályozásakor.
+
+*Foreach* kapcsolatos ismert tények
+ * A foreach rendelkezik egy batchs count (n) nevű tulajdonsággal, ahol az alapértelmezett érték 20, a Max pedig 50.
+ * A kötegek száma n, az n várólisták létrehozásához használatos. Később megbeszéljük a várólisták kiépítésének részleteit.
+ * Minden üzenetsor egymás után fut, de több várólista is futtatható párhuzamosan.
+ * A várólisták előre lettek létrehozva. Ez azt jelenti, hogy a futásidejű modulban nincs szükség a várólisták kiegyensúlyozására.
+ * Egyszerre legfeljebb egy, várólistára feldolgozható elemnek kell lennie. Ez azt jelenti, hogy a legtöbb n elem feldolgozása egy adott időpontban történik.
+ * A foreach teljes feldolgozási ideje megegyezik a leghosszabb várólista feldolgozási idejével. Ez azt jelenti, hogy a foreach tevékenység a várólisták kiépítésének módjától függ.
+ 
+**Resolution** (Osztás)
+
+ * A *SetVariable* tevékenységet ne használja a párhuzamosan futó *rendszerekben* .
+ * A várólisták létrehozási módjának figyelembevételével az ügyfél növelheti a foreach teljesítményét úgy, hogy több *foreaches* állít be, ahol minden foreach hasonló feldolgozási idővel rendelkező elemek lesznek. Ez biztosítja, hogy a hosszú távú feldolgozásokat párhuzamosan dolgozza fel a rendszer.
 
 ## <a name="next-steps"></a>Következő lépések
 

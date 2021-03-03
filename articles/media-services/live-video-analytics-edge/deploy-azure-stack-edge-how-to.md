@@ -3,12 +3,12 @@ title: Élő video Analytics üzembe helyezése Azure Stack Edge-ben
 description: Ez a cikk azokat a lépéseket sorolja fel, amelyek segítséget nyújtanak az élő videók elemzésének üzembe helyezéséhez az Azure Stack Edge-ben.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: cc3dcfaa96034e807d3d82e75eedc0f6a82eff08
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: d49167890009d58b21c3678cb89f608bad665abd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551008"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730269"
 ---
 # <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>Élő video Analytics üzembe helyezése Azure Stack Edge-ben
 
@@ -42,7 +42,7 @@ Az Azure Stack Edge egy szolgáltatásként nyújtott hardveres megoldás, és e
 * [Azure Stack Edge/Data Box Gateway erőforrás létrehozása](../../databox-online/azure-stack-edge-deploy-prep.md)
 * [Telepítés és beállítás](../../databox-online/azure-stack-edge-deploy-install.md)
 * [Kapcsolatok és aktiválás](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md)
-* [IoT Hub csatlakoztatása Azure Stack Edge-hez](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-deploy-configure-compute#configure-compute)
+* [IoT Hub csatlakoztatása Azure Stack Edge-hez](../../databox-online/azure-stack-edge-gpu-deploy-configure-compute.md#configure-compute)
 ### <a name="enable-compute-prerequisites-on-the-azure-stack-edge-local-ui"></a>A számítási előfeltételek engedélyezése az Azure Stack Edge helyi felhasználói felületén
 
 A folytatás előtt győződjön meg az alábbiakról:
@@ -234,17 +234,22 @@ Kövesse ezeket az utasításokat az IoT hubhoz való kapcsolódáshoz az Azure 
     
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-* Kubernetes API-hozzáférés (kubectl).
+* **Kubernetes API-hozzáférés (kubectl)**
 
-    * Kövesse a dokumentációt, és konfigurálja a gépet [a Kubernetes-fürthöz való hozzáféréshez](https://review.docs.microsoft.com/azure/databox-online/azure-stack-edge-j-series-create-kubernetes-cluster?toc=%2Fazure%2Fdatabox-online%2Fazure-stack-edge-gpu%2Ftoc.json&bc=%2Fazure%2Fdatabox-online%2Fazure-stack-edge-gpu%2Fbreadcrumb%2Ftoc.json&branch=release-tzl#debug-kubernetes-issues).
-    * Az összes telepített IoT Edge modul a `iotedge` névteret használja. Ügyeljen arra, hogy a kubectl használatakor is szerepeljen.
-* Modulok naplói
+    * Kövesse a dokumentációt, és konfigurálja a gépet [a Kubernetes-fürthöz való hozzáféréshez](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-create-kubernetes-cluster).
+    * Az összes telepített IoT Edge modul a `iotedge` névteret használja. Ügyeljen arra, hogy a kubectl használatakor is szerepeljen.  
 
-    Az `iotedge` eszköz nem érhető el a naplók beszerzéséhez. A naplók vagy a cső fájlba való megtekintéséhez [kubectl-naplókat](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs)  kell használnia. Példa: <br/>  `kubectl logs deployments/mediaedge -n iotedge --all-containers`
-* Pod-és csomópont-metrikák
+* **Modulok naplói**
 
-    A [kubectl Top](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#top)  használatával megtekintheti a pod és a Node metrikákat. (Ez a funkció a következő Azure Stack Edge kiadásban lesz elérhető. >v2007)<br/>`kubectl top pods -n iotedge`
-* Modul hálózati moduljának felderítése Azure Stack Edge-ben szükség van arra, hogy a modul rendelkezzen a createOptions-ben található gazda porttal. Ekkor a modul megcímezhető lesz `moduleName:hostport` .
+    Az `iotedge` eszköz nem érhető el a naplók beszerzéséhez. A naplók vagy a cső fájlba való megtekintéséhez [kubectl-naplókat](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs)  kell használnia. Példa: <br/>  `kubectl logs deployments/mediaedge -n iotedge --all-containers`  
+
+* **Pod-és csomópont-metrikák**
+
+    A [kubectl Top](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#top)  használatával megtekintheti a pod és a Node metrikákat.
+    <br/>`kubectl top pods -n iotedge` 
+
+* **Modul hálózatkezelése**   
+Azure Stack Edge-modul felderítéséhez szükség van arra, hogy a modul rendelkezzen a createOptions-ben található gazda porttal. Ekkor a modul megcímezhető lesz `moduleName:hostport` .
     
     ```json
     "createOptions": {
@@ -256,10 +261,11 @@ Kövesse ezeket az utasításokat az IoT hubhoz való kapcsolódáshoz az Azure 
     }
     ```
     
-* Kötet csatlakoztatása
+* **Kötet csatlakoztatása**
 
     Egy modul nem fog elindulni, ha a tároló egy meglévő és nem üres könyvtárba próbál kötetet csatlakoztatni.
-* Megosztott memória
+
+* **Megosztott memória a gRPC használatakor**
 
     Az Azure Stack Edge-erőforrások megosztott memóriája a gazdagép IPC használatával bármely névtérben a hüvelyek között támogatott.
     Az Edge-modul megosztott memóriájának konfigurálása IoT Hub-n keresztül történő üzembe helyezéshez.
@@ -272,7 +278,7 @@ Kövesse ezeket az utasításokat az IoT hubhoz való kapcsolódáshoz az Azure 
         }
     ...
         
-    (Advanced) Configuring shared memory on a K8s Pod or Deployment manifest for deployment via K8s API.
+    //(Advanced) Configuring shared memory on a K8s Pod or Deployment manifest for deployment via K8s API
     spec:
         ...
         template:
@@ -281,14 +287,14 @@ Kövesse ezeket az utasításokat az IoT hubhoz való kapcsolódáshoz az Azure 
         ...
     ```
     
-* Speciális Pod közös elhelyezés
+* **Speciális Pod közös elhelyezés**
 
     Ha a K8s használatával helyez üzembe olyan egyéni következtetési megoldásokat, amelyek a gRPC-n keresztül kommunikálnak az élő videó-elemzéssel, gondoskodnia kell arról, hogy a hüvelyek az élő videó elemzési moduljaival megegyező csomópontokon legyenek telepítve.
 
-    * 1. lehetőség – csomópont-affinitás és beépített csomópont-címkék használata a közös elhelyezéshez.
+    * **1. lehetőség** – csomópont-affinitás és beépített csomópont-címkék használata a közös elhelyezéshez.
 
     Jelenleg az egyéni konfiguráció NodeSelector úgy tűnik, hogy a felhasználók nem rendelkeznek hozzáféréssel a csomópontokon a címkék beállításához. Az ügyfél topológiája és elnevezési konvenciói alapján azonban lehetséges, hogy a [beépített csomópont-címkéket](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#built-in-node-labels)is használhatják. A nodeAffinity szakasz az élő videó elemzésével Azure Stack Edge-erőforrásokra hivatkozik, így a következtetések megadhatók a közös elhelyezés érdekében.
-    * 2. lehetőség – a pod affinitás használata a közös elhelyezéshez (ajánlott).
+    * **2. lehetőség** – a pod affinitás használata a közös elhelyezéshez (ajánlott).
 A Kubernetes támogatja a [Pod affinitást](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#inter-pod-affinity-and-anti-affinity)  , amely az ugyanazon a csomóponton lévő hüvelyeket is ütemezhet. Az élő video Analytics modulra hivatkozó podAffinity-szakasz a következtetést kihasználva a következő helyen érhető el:.
 
     ```json   
@@ -310,6 +316,31 @@ A Kubernetes támogatja a [Pod affinitást](https://kubernetes.io/docs/concepts/
                 values:
                 - mediaedge
             topologyKey: "kubernetes.io/hostname"
+    ```
+* **404 hibakód a modul használatakor `rtspsim`**  
+A tároló pontosan egy mappából olvassa be a videókat a tárolón belül. Ha egy külső mappát a tároló képén belül már létezőhöz rendel, akkor a Docker elrejti a tároló rendszerképében lévő fájlokat.  
+ 
+    Ha például nincsenek kötések, a tároló rendelkezhet a következő fájlokkal:  
+    ```
+    root@rtspsim# ls /live/mediaServer/media  
+    /live/mediaServer/media/camera-300s.mkv  
+    /live/mediaServer/media/win10.mkv  
+    ```
+     
+    A gazdagép a következő fájlokkal rendelkezhet:
+    ```    
+    C:\MyTestVideos> dir
+    Test1.mkv
+    Test2.mkv
+    ```
+     
+    Ha azonban a telepítési jegyzékfájlban a következő kötést adja hozzá, a Docker felülírja a/live/mediaServer/media tartalmát, hogy az megfeleljen a gazdagépen lévőknek.
+    `C:\MyTestVideos:/live/mediaServer/media`
+    
+    ```
+    root@rtspsim# ls /live/mediaServer/media
+    /live/mediaServer/media/Test1.mkv
+    /live/mediaServer/media/Test2.mkv
     ```
 
 ## <a name="next-steps"></a>Következő lépések

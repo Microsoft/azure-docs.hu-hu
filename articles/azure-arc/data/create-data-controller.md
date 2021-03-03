@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 02/11/2021
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: dd20a76ebc833320050c87862ad5022e99cd453a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 329df78bb5829695b95fcca5b7ed7e1439ced821
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384962"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688365"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Az Azure arc-adatkezelő létrehozása
 
@@ -37,7 +37,7 @@ Jelenleg a Kubernetes-szolgáltatások és-disztribúciók támogatott listája 
 
 > [!IMPORTANT]
 > * A Kubernetes minimális támogatott verziója v 1.17. További információ: [ismert problémák](./release-notes.md#known-issues) . 
-> * A OCP minimális támogatott verziója 4,3.
+> * A OCP minimális támogatott verziója 4,5.
 > * A [kapcsolati követelményekből](connectivity.md) megtudhatja, milyen kapcsolatra van szükség a környezet és az Azure között.
 > * Tekintse meg a [tárolási konfigurációs útmutatót](storage-configuration.md) , amelyből megtudhatja, hogyan konfigurálhatja az állandó tárterületet.
 > * Ha az Azure Kubernetes szolgáltatást használja, a fürt feldolgozói csomópontjának virtuálisgép-méretének legalább **Standard_D8s_v3nak** kell lennie, és **prémium szintű lemezeket** kell használnia. A fürt nem terjedhet több rendelkezésre állási zónára. 

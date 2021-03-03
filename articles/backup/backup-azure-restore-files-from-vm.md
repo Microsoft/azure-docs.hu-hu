@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan állíthatja helyre a fájlok
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9bd66c1e3c89c8974adc3970f8595e5100878088
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: c5a027773a55347b71c1e6a66d24d7fdb99220d0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567135"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725509"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gép biztonsági mentéséből
 
@@ -76,6 +76,11 @@ A letöltött végrehajtható fájlt nem futtathatja a Windows-tárolóhelyekhez
 ### <a name="virtual-machine-backups-having-large-disks"></a>Nagyméretű lemezekkel rendelkező virtuális gépek biztonsági mentései
 
 Ha a biztonsági másolattal rendelkező gépen nagy számú lemez (>16) vagy nagyméretű lemez található (> 4 TB), nem ajánlott a szkriptet ugyanarra a gépre végrehajtani a visszaállításhoz, mert jelentős hatással lesz a virtuális gépre. Ehelyett ajánlott külön virtuális gépet használni a fájl-helyreállításhoz (Azure VM D2v3 virtuális gépek), majd leállítani, ha nem szükséges. 
+
+Lásd: a fájlok biztonsági mentésének követelményei a nagyméretű lemezzel rendelkező virtuális gépekről:<br>
+[Windows operációs rendszer](#for-backed-up-vms-with-large-disks-windows)<br>
+[Linux operációs rendszer](#for-backed-up-vms-with-large-disks-linux)
+
 
 ## <a name="step-3-os-requirements-to-successfully-run-the-script"></a>3. lépés: az operációs rendszerre vonatkozó követelmények a parancsfájl sikeres futtatásához
 
@@ -378,7 +383,7 @@ A szülő/biztonsági mentés alatt lévő virtuális gépen található összes
 A parancsfájl csak olvasási hozzáférést biztosít egy helyreállítási ponthoz, és csak 12 órára érvényes. Ha korábban szeretné eltávolítani a hozzáférést, jelentkezzen be Azure Portal/PowerShell/parancssori felületre, és hajtson végre **leválasztott lemezeket** az adott helyreállítási ponthoz. A parancsfájl azonnal érvénytelenítve lesz.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [állíthatja vissza a fájlokat a PowerShell](./backup-azure-vms-automation.md#restore-files-from-an-azure-vm-backup) használatával
 - Ismerje meg, hogyan [állíthatja vissza a fájlokat az Azure CLI-n keresztül](./tutorial-restore-files.md)

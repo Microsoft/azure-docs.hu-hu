@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/14/2021
+ms.date: 02/22/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 99521a746a16a2d0de310fc6cfb2d2272e7b2593
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 0bfc09a372584a25c23060cef33d1f698e6d5ff3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706490"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712606"
 ---
 # <a name="azure-importexport-system-requirements"></a>Az Azure Import/Export rendszerkövetelményei
 
@@ -43,7 +43,10 @@ Az Azure import/export szolgáltatás a következő típusú Storage-fiókokat t
 
 - Standard általános célú v2 Storage-fiókok (a legtöbb esetben ajánlott)
 - Blob Storage-fiókok
-- Általános célú v1 Storage-fiókok (klasszikus vagy Azure Resource Manager üzemelő példányok),
+- Általános célú v1 Storage-fiókok (klasszikus vagy Azure Resource Manager üzemelő példányok)
+
+> [!IMPORTANT]
+> A hálózati fájlrendszer (NFS) 3,0 protokoll támogatása az Azure Blob Storage-ban nem támogatott az Azure import/export szolgáltatásban.
 
 A Storage-fiókokkal kapcsolatos további információkért lásd: az [Azure Storage-fiókok áttekintése](../storage/common/storage-account-overview.md).
 
@@ -92,6 +95,6 @@ A nagy számú meghajtó több feladaton is elosztható, és a létrehozható fe
 
 Merevlemezek előkészítésekor és az adatok WAImportExport eszközzel történő másolásakor külső USB-adaptereket is használhat. A legtöbbet a polcon lévő USB 3,0 vagy újabb rendszerű adaptereknek működniük kell.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Transfer data with the AzCopy Command-Line Utility (Adatátvitel az AzCopy parancssori segédprogrammal)](../storage/common/storage-use-azcopy-v10.md)

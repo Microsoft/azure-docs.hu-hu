@@ -4,14 +4,14 @@ description: Az Azure Application Insights intelligens észlelési szabályok ke
 ms.topic: conceptual
 author: harelbr
 ms.author: harelbr
-ms.date: 06/26/2019
+ms.date: 02/14/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 169ad40e32f688ae20a9d02f61db161844b1254a
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: e3a7b71cd8975957754ba014ecc700484c27a6d7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890513"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726121"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Application Insights intelligens észlelési szabályok kezelése Azure Resource Manager-sablonok használatával
 
@@ -21,8 +21,8 @@ Ez a módszer akkor használható, ha új Application Insights erőforrásokat t
 ## <a name="smart-detection-rule-configuration"></a>Intelligens észlelési szabály konfigurációja
 
 Az intelligens detektálási szabályokhoz a következő beállításokat konfigurálhatja:
-- Ha a szabály engedélyezve van (az alapértelmezett érték **igaz** .)
-- Ha az e-maileket el kell juttatni az előfizetés [figyelési olvasójának](../../role-based-access-control/built-in-roles.md#monitoring-reader) felhasználóinak, illetve a [közreműködői szerepkörök figyelésére](../../role-based-access-control/built-in-roles.md#monitoring-contributor) , ha észlelés található (az alapértelmezett érték **igaz** .)
+- Ha a szabály engedélyezve van (az alapértelmezett érték **igaz**.)
+- Ha az e-maileket el kell juttatni az előfizetés [figyelési olvasójának](../../role-based-access-control/built-in-roles.md#monitoring-reader) felhasználóinak, illetve a [közreműködői szerepkörök figyelésére](../../role-based-access-control/built-in-roles.md#monitoring-contributor) , ha észlelés található (az alapértelmezett érték **igaz**.)
 - Minden további e-mail-címzett, akinek értesítést kell kapnia, amikor észlelés található.
     -  Az e-mail-konfiguráció nem érhető el az _előzetes_ verzióként megjelölt intelligens észlelési szabályokhoz.
 
@@ -152,7 +152,7 @@ Az alábbi táblázat az intelligens észlelési szabályok neveit mutatja, ahog
 
 ### <a name="failure-anomalies-alert-rule"></a>Hibák rendellenességének riasztási szabálya
 
-Ez a Azure Resource Manager sablon azt mutatja be, hogyan állíthatók be a meghibásodási rendellenességek riasztási szabálya 2 súlyossággal. Az új Azure-riasztási platformnak ez a meghibásodási rendellenesség miatti riasztási szabálynak az új verziója, amely a klasszikus [riasztások nyugdíjazási folyamatának](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/)részeként kivont klasszikus verziót váltja fel.
+Ez a Azure Resource Manager sablon azt mutatja be, hogyan állíthatók be a meghibásodási rendellenességek riasztási szabálya 2 súlyossággal.
 
 > [!NOTE]
 > A hiba anomália egy globális szolgáltatás, ezért a szabály helye a globális helyen jön létre.

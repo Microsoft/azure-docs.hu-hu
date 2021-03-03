@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: af98811e158b9613e41389e08e19cb36797aa272
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 810aaae9634a7de8d07b6d49edd0c6c2eda96754
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790593"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730881"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>REST-végpontok hívása Azure Logic Apps használatával
 
@@ -44,13 +44,13 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a beépített htt
 
 Ez a beépített trigger HTTP-kérést küld egy REST API leíró hencegő fájl URL-címére, és egy olyan választ ad vissza, amely tartalmazza a fájl tartalmát.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Nyissa meg az üres logikai alkalmazást a Logic app Designerben.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Nyissa meg az üres logikai alkalmazást a Logic app Designerben.
 
 1. A tervezőben a keresőmezőbe írja be szűrőként a "hencegés" kifejezést. Az **Eseményindítók** listából válassza ki a **http + hencegő** eseményindítót.
 
    ![HTTP + hencegő trigger kiválasztása](./media/connectors-native-http-swagger/select-http-swagger-trigger.png)
 
-1. A **hencegő végpont URL-címe** mezőbe írja be a hencegő fájl URL-címét, majd kattintson a **Tovább gombra** .
+1. A **hencegő végpont URL-címe** mezőbe írja be a hencegő fájl URL-címét, majd kattintson a **Tovább gombra**.
 
    Ez a példa a [Cognitive Services Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)az USA nyugati régiójában található hencegő URL-címet használja:
 
@@ -80,7 +80,7 @@ Ez a beépített trigger HTTP-kérést küld egy REST API leíró hencegő fájl
 
 Ez a beépített művelet HTTP-kérést küld a REST API leíró hencegő fájl URL-címére, és egy választ ad vissza, amely tartalmazza a fájl tartalmát.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Nyissa meg a logikai alkalmazást a Logic app Designerben.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Nyissa meg a logikai alkalmazást a Logic app Designerben.
 
 1. Válassza ki azt a lépést, amelyben hozzá szeretné adni a HTTP + hencegés műveletet, és válassza az **új lépés** lehetőséget.
 
@@ -90,7 +90,7 @@ Ez a beépített művelet HTTP-kérést küld a REST API leíró hencegő fájl 
 
     ![HTTP + hencegés művelet kiválasztása](./media/connectors-native-http-swagger/select-http-swagger-action.png)
 
-1. A **hencegő végpont URL-címe** mezőbe írja be a hencegő fájl URL-címét, majd kattintson a **Tovább gombra** .
+1. A **hencegő végpont URL-címe** mezőbe írja be a hencegő fájl URL-címét, majd kattintson a **Tovább gombra**.
 
    Ez a példa a [Cognitive Services Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)az USA nyugati régiójában található hencegő URL-címet használja:
 
@@ -135,7 +135,7 @@ Hivatkozhat olyan hencegő fájlra, amely nem üzemeltetett, vagy nem felel meg 
 
    Bár ez a példa a [Azure Portal](https://portal.azure.com)használja, használhat egy eszközt, például [Azure Storage Explorert](https://storageexplorer.com/), vagy automatikusan konfigurálhatja ezt a beállítást a [PowerShell-parancsfájl](https://github.com/logicappsio/EnableCORSAzureBlob/blob/master/EnableCORSAzureBlob.ps1)használatával.
 
-1. [Hozzon létre egy BLOB-tárolót](../storage/blobs/storage-quickstart-blobs-portal.md). A tároló **Áttekintés** paneljén válassza a **hozzáférési szint módosítása** lehetőséget. A **nyilvános hozzáférési szint** listából válassza a **blob (névtelen olvasási hozzáférés csak blobokhoz)** lehetőséget, majd kattintson **az OK gombra** .
+1. [Hozzon létre egy BLOB-tárolót](../storage/blobs/storage-quickstart-blobs-portal.md). A tároló **Áttekintés** paneljén válassza a **hozzáférési szint módosítása** lehetőséget. A **nyilvános hozzáférési szint** listából válassza a **blob (névtelen olvasási hozzáférés csak blobokhoz)** lehetőséget, majd kattintson **az OK gombra**.
 
 1. [Töltse fel a hencegő fájlt a blob-tárolóba](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), vagy a [Azure Portalon](https://portal.azure.com) vagy [Azure Storage Exploreron](https://storageexplorer.com/)keresztül.
 

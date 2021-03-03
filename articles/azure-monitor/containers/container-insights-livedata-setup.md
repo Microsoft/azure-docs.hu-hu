@@ -1,19 +1,19 @@
 ---
-title: Azure Monitor beállítása az élő adattárolók számára (előzetes verzió) | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan állíthatja be a tároló-naplók valós idejű nézetét (StdOut/stderr) és az eseményeket anélkül, hogy a kubectl-t használja a tárolók Azure Monitor.
+title: Tároló-elemzések élő adatértékének beállítása (előzetes verzió) | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan állíthatja be a tároló-naplók (StdOut/stderr) valós idejű nézetét és az eseményeket a kubectl és a tároló-elemzések használata nélkül.
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 3c176b2db659577d585ac077eebe0484203eb9cf
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4302bdbb3d71c890f7fb0cfb82ab5f8d5aecbd43
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100614318"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713779"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>Az élő adatszolgáltatások (előzetes verzió) beállításának beállítása
 
-Ha szeretné megtekinteni az Azure Kubernetes Service-(ak-) fürtökön Azure Monitorekkel rendelkező élő adatok (előzetes verzió) megtekintését, konfigurálnia kell a hitelesítést, hogy engedélyt adjon a Kubernetes adataihoz való hozzáférésre. Ez a biztonsági konfiguráció lehetővé teszi a valós idejű hozzáférést az adataihoz a Kubernetes API-n keresztül közvetlenül a Azure Portal.
+Ha szeretné megtekinteni az Azure Kubernetes Service (ak)-fürtökből származó élő adatok (előzetes verzió) adatait, konfigurálnia kell a hitelesítést, hogy engedélyt adjon a Kubernetes adataihoz való hozzáférésre. Ez a biztonsági konfiguráció lehetővé teszi a valós idejű hozzáférést az adataihoz a Kubernetes API-n keresztül közvetlenül a Azure Portal.
 
 Ez a szolgáltatás a következő módszereket támogatja a naplók, események és metrikák elérésének vezérléséhez:
 
@@ -46,7 +46,7 @@ A Azure Portal megkéri, hogy ellenőrizze a Azure Active Directory-fürt bejele
 
 Annak érdekében, hogy ne kelljen további konfigurációs módosításokat alkalmaznia ahhoz, hogy a Kubernetes felhasználói szerepköre **clusterUser** az élő adat (előzetes verzió) szolgáltatáshoz a [Kubernetes RBAC](#configure-kubernetes-rbac-authorization) engedélyezésének engedélyezése után, az AK felvette a **Kubernetes** nevű új clusterMonitoringUser. Ez a fürtcsomópont-kötés minden szükséges engedéllyel rendelkezik a Kubernetes API és a végpontok eléréséhez az élő adat (előzetes verzió) funkció kihasználása érdekében.
 
-Ahhoz, hogy az élő adat (előzetes verzió) funkció ezzel az új felhasználóval használható legyen, az [Azure Kubernetes Service cluster felhasználói](../../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role) vagy [közreműködői](../../role-based-access-control/built-in-roles.md#contributor) szerepkör tagjának kell lennie az AK-fürt erőforrásán. A tárolók Azure Monitor, ha engedélyezve vannak, alapértelmezés szerint a clusterMonitoringUser használatával történő hitelesítésre van konfigurálva. Ha a clusterMonitoringUser szerepkör-kötés nem létezik a fürtön, a rendszer a **clusterUser** használja a hitelesítéshez. A közreműködő hozzáférést biztosít a clusterMonitoringUser (ha létezik), és az Azure Kuberenetes Service-fürt felhasználója hozzáférést biztosít a clusterUser. Ezen két szerepkör bármelyike elegendő hozzáférést biztosít a szolgáltatás használatához.
+Ahhoz, hogy az élő adat (előzetes verzió) funkció ezzel az új felhasználóval használható legyen, az [Azure Kubernetes Service cluster felhasználói](../../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role) vagy [közreműködői](../../role-based-access-control/built-in-roles.md#contributor) szerepkör tagjának kell lennie az AK-fürt erőforrásán. Ha engedélyezve van a tárolók elemzése, úgy van beállítva, hogy alapértelmezés szerint a clusterMonitoringUser használja a hitelesítést. Ha a clusterMonitoringUser szerepkör-kötés nem létezik a fürtön, a rendszer a **clusterUser** használja a hitelesítéshez. A közreműködő hozzáférést biztosít a clusterMonitoringUser (ha létezik), és az Azure Kuberenetes Service-fürt felhasználója hozzáférést biztosít a clusterUser. Ezen két szerepkör bármelyike elegendő hozzáférést biztosít a szolgáltatás használatához.
 
 Az AK január 2020-én kiadta ezt az új szerepkör-kötést, így a január 2020 előtt létrehozott fürtök nem rendelkeznek. Ha olyan fürtöt hoz létre, amely a január 2020 előtt lett létrehozva, akkor az új **clusterMonitoringUser** hozzáadhatja egy meglévő fürthöz, ha VÉGREHAJT egy Put műveletet a fürtön, vagy bármilyen más műveletet hajt végre a fürtön, amely egy Put műveletet végez a fürtön, például frissíti a fürt verzióját.
 
@@ -106,7 +106,7 @@ Az Azure AD-ügyfél regisztrációját újra be kell állítani, hogy a Azure P
 A Kubernetes speciális biztonsági beállításaival kapcsolatos további információkért tekintse át a [Kubernetes dokumentációját](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
 
 >[!NOTE]
->Ha új Kubernetes RBAC-kompatibilis fürtöt hoz létre, tekintse meg a [Azure Active Directory integrálása az Azure Kubernetes szolgáltatással](../../aks/azure-ad-integration-cli.md) című témakört, és kövesse az Azure ad-hitelesítés konfigurálásának lépéseit. Az ügyfélalkalmazás létrehozásának lépései során az ebben a szakaszban található Megjegyzés kiemeli a két átirányítási URL-címet, amelyeket az alábbi 3. lépésben megadott tárolók Azure Monitorához kell létrehoznia.
+>Ha új Kubernetes RBAC-kompatibilis fürtöt hoz létre, tekintse meg a [Azure Active Directory integrálása az Azure Kubernetes szolgáltatással](../../aks/azure-ad-integration-cli.md) című témakört, és kövesse az Azure ad-hitelesítés konfigurálásának lépéseit. Az ügyfélalkalmazás létrehozásának lépései során az ebben a szakaszban található Megjegyzés kiemeli a két átirányítási URL-címet, amelyeket az alábbi 3. lépésben megadott tároló-felismerésekhez kell létrehoznia.
 
 ### <a name="client-registration-reconfiguration"></a>Ügyfél-regisztráció újrakonfigurálása
 

@@ -1,20 +1,20 @@
 ---
-title: Érzékelők beléptetése és kezelése a Defender for IoT portálon
+title: Érzékelők és előfizetések előkészítése és felügyelete a Defender for IoT portálon
 description: Ismerje meg, hogyan végezheti el az érzékelők bevezetését, megtekintését és kezelését a Defender for IoT portálon.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/27/2020
+ms.date: 2/18/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 7cc4fe4e2b675fb1b46bb4404d892c02a1f00553
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 63b3b450e289b40aa9acbfb0d5170e8eb57f9e58
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526860"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733261"
 ---
-# <a name="onboard-and-manage-sensors-in-the-defender-for-iot-portal"></a>Érzékelők beléptetése és kezelése a Defender for IoT portálon
+# <a name="onboard-and-manage-sensors-and-subscriptions-in-the-defender-for-iot-portal"></a>Érzékelők és előfizetések előkészítése és felügyelete a Defender for IoT portálon
 
 Ez a cikk bemutatja, hogyan végezheti el az érzékelők bevezetését, megtekintését és kezelését a [Defender for IoT portálon](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started).
 
@@ -78,8 +78,8 @@ A **helyek és érzékelők** szerkesztési lehetőségeivel szerkesztheti az é
 
 Szerkesztés:
 
-1. Kattintson a jobb gombbal a szerkeszteni kívánt érzékelő három pontra (**...**).
-1. Válassza a Szerkesztés elemet.
+1. Válassza ki a szerkeszteni kívánt érzékelő **három** pontot (**..**.).
+1. Válassza a **Szerkesztés** elemet.
 1. Frissítse az érzékelő zónát, vagy hozzon létre egy új zónát.
 
 ### <a name="delete-a-sensor"></a>Érzékelő törlése
@@ -122,6 +122,24 @@ Előfordulhat, hogy újra kell aktiválnia az érzékelőt, mert a következőke
 8. Válassza a **feltöltés** lehetőséget, és válassza ki az előkészítési érzékelő lapról mentett fájlt.
 
 9. Válassza az **aktiválás** lehetőséget.
+
+## <a name="offboard-a-subscription"></a>Előfizetés regisztrációjának megszüntetésére szolgáló
+
+Az előfizetések havi rendszerességgel kezelhetők. Ha regisztrációjának megszüntetésére szolgáló egy előfizetést, az előfizetés után a hónap végéig számlázunk. 
+
+Távolítsa el az előfizetéshez társított összes érzékelőt, mielőtt offboarding az előfizetést. Az érzékelők törlésével kapcsolatos további információkért lásd: [szenzorok törlése](#delete-a-sensor). 
+
+Előfizetés regisztrációjának megszüntetésére szolgáló:
+
+1. Navigáljon a **díjszabás** oldalra.
+1. Válassza ki az előfizetést, majd kattintson a **Törlés** ikonra :::image type="icon" source="media/how-to-manage-sensors-on-the-cloud/delete-icon.png" border="false"::: .
+1. A megerősítő felugró ablakban jelölje be a jelölőnégyzetet annak megerősítéséhez, hogy törölte az előfizetéshez társított összes érzékelőt.
+
+    :::image type="content" source="media/how-to-manage-sensors-on-the-cloud/offboard-popup.png" alt-text="Jelölje be a jelölőnégyzetet, és válassza ki a regisztrációjának megszüntetésére szolgáló, hogy regisztrációjának megszüntetésére szolgáló az érzékelőt.":::
+
+1. Kattintson a **regisztrációjának megszüntetésére szolgáló** gombra. 
+
+A helyszíni környezet nincs hatással, de az érzékelőt el kell távolítani a helyszíni környezetből, vagy újra hozzá kell rendelni az érzékelőt egy másik előfizetéshez, hogy a kapcsolódó adatok ne legyenek a helyszíni felügyeleti konzolra áramlanak. 
 
 ## <a name="see-also"></a>Lásd még
 

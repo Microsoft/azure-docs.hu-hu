@@ -3,12 +3,12 @@ title: Tárolók és szolgáltatások erőforrás-szabályozása
 description: Az Azure Service Fabric segítségével megadhatja a folyamatként vagy tárolóként futó szolgáltatások erőforrás-kérelmeit és korlátait.
 ms.topic: conceptual
 ms.date: 8/9/2017
-ms.openlocfilehash: 889fce77c1a3a743e9805ec482a9c87b9bf8da65
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: d760766870c8c2be0a2d2384f6d012b75bc92fbd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172861"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735658"
 ---
 # <a name="resource-governance"></a>Erőforrások szabályozása
 
@@ -95,12 +95,12 @@ Ha meg szeretné hagyni az operációs rendszer pufferét, és a csomóponton fu
 A legtöbb ügyfél és forgatókönyv esetében a processzor és a memória csomópont-kapacitásának automatikus észlelése az ajánlott konfiguráció (alapértelmezés szerint az automatikus észlelés be van kapcsolva). Ha azonban a csomópont-kapacitások teljes manuális beállítására van szüksége, a fürt csomópontjainak leírására szolgáló mechanizmus használatával konfigurálhatja azokat a csomópont-típusok alapján. Íme egy példa arra, hogyan állíthatja be a csomópont típusát négy maggal és 2 GB memóriával:
 
 ```xml
-    <NodeType Name="MyNodeType">
-      <Capacities>
-        <Capacity Name="servicefabric:/_CpuCores" Value="4"/>
-        <Capacity Name="servicefabric:/_MemoryInMB" Value="2048"/>
-      </Capacities>
-    </NodeType>
+    <NodeType Name="MyNodeType">
+      <Capacities>
+        <Capacity Name="servicefabric:/_CpuCores" Value="4"/>
+        <Capacity Name="servicefabric:/_MemoryInMB" Value="2048"/>
+      </Capacities>
+    </NodeType>
 ```
 
 Ha a rendelkezésre álló erőforrások automatikus észlelése engedélyezve van, és a csomóponti kapacitások manuálisan vannak definiálva a fürt jegyzékfájljában, Service Fabric ellenőrzi, hogy a csomópont rendelkezik-e elegendő erőforrással a felhasználó által definiált kapacitás támogatásához:
@@ -120,8 +120,8 @@ A rendelkezésre álló erőforrások automatikus észlelése kikapcsolható, ha
 Az optimális teljesítmény érdekében a következő beállítást is be kell kapcsolni a fürt jegyzékfájljában:
 
 ```xml
-<Section Name="PlacementAndLoadBalancing">
-    <Parameter Name="PreventTransientOvercommit" Value="true" />
+<Section Name="PlacementAndLoadBalancing">
+    <Parameter Name="PreventTransientOvercommit" Value="true" />
     <Parameter Name="AllowConstraintCheckFixesDuringApplicationUpgrade" Value="true" />
 </Section>
 ```
@@ -160,7 +160,7 @@ Ebben a példában az `CpuCores` attribútum az 1 CPU Core **ServicePackageA**-h
 
 A **ServicePackageA** csak olyan csomópontokon helyezhetők el, ahol a **csomóponton elhelyezett összes szervizcsomag CPU-kérelmei összegének** kivonása után a fennmaradó CPU-kapacitás nagyobb vagy egyenlő, mint 1 mag. A csomóponton a szervizcsomag egyetlen mag-ra lesz korlátozva. A szervizcsomag két kódot tartalmaz (**CodeA1** és **CodeA2**), és mindkettőben megadja az `CpuShares` attribútumot. A CpuShares 512:256-es arányát használjuk az egyes kódokhoz tartozó CPU-korlátok kiszámítására. Így a CodeA1 a mag kétharmadára korlátozódik, és a CodeA2 a mag egy harmadára lesz korlátozva. Ha a CpuShares nincsenek megadva az összes kódhoz, Service Fabric egyenlően osztja el a CPU-korlátot a kettő között.
 
-Míg a CpuShares megadott érték a szervizcsomag összesített CPU-korlátjának relatív részét képviseli, a kódok memóriájának értéke abszolút értékben van megadva. Ebben a példában az `MemoryInMB` attribútum a 1024 MB memória-kérések megadására szolgál mind a CodeA1, mind a CodeA2 esetében. Mivel a memória korlátja ( `MemoryInMBLimit` attribútuma) nincs megadva, a Service Fabric a megadott kérési értékeket is használja a kód csomagjainak korlátaiként. A szervizcsomaghoz tartozó memória-kérést (és korlátot) a rendszer a memória-kérelem (és a korlát) értékeinek összege alapján számítja ki. Így a **ServicePackageA**és a korlát 2048 MB-ként lesz kiszámítva.
+Míg a CpuShares megadott érték a szervizcsomag összesített CPU-korlátjának relatív részét képviseli, a kódok memóriájának értéke abszolút értékben van megadva. Ebben a példában az `MemoryInMB` attribútum a 1024 MB memória-kérések megadására szolgál mind a CodeA1, mind a CodeA2 esetében. Mivel a memória korlátja ( `MemoryInMBLimit` attribútuma) nincs megadva, a Service Fabric a megadott kérési értékeket is használja a kód csomagjainak korlátaiként. A szervizcsomaghoz tartozó memória-kérést (és korlátot) a rendszer a memória-kérelem (és a korlát) értékeinek összege alapján számítja ki. Így a **ServicePackageA** és a korlát 2048 MB-ként lesz kiszámítva.
 
 A **ServicePackageA** csak olyan csomópontra kerül, ahol a **csomóponton elhelyezett összes szervizcsomaghoz tartozó memória-kérelmek összegének** kivonása után az 2048 MB-nál nagyobb vagy azzal egyenlő. A csomóponton mindkét kód csomagjai 1024 MB-nyi memóriára lesznek korlátozva. A kódok (tárolók vagy folyamatok) nem képesek több memóriát lefoglalni ennél a korlátnál, és ennek megkísérlése a memóriában lévő kivételeket eredményez.
 
@@ -177,7 +177,7 @@ A **ServicePackageA** csak olyan csomópontra kerül, ahol a **csomóponton elhe
     </Policies>
   </ServiceManifestImport>
 ```
-Ez a példa `CpuCoresLimit` azokat a és `MemoryInMBLimit` attribútumokat használja, amelyek csak a 7,2-es és újabb verziójú SF-verziókban érhetők el. A CpuCoresLimit attribútum a **ServicePackageA**1 mag CPU-korlátjának megadására szolgál. Mivel a CPU-kérelem ( `CpuCores` attribútum) nincs megadva, a rendszer 0 értéknek számít. `MemoryInMBLimit` az attribútummal megadható a CodeA1 és a CodeA2 1024 MB-os memória-korlátja, és mivel a kérések ( `MemoryInMB` attribútumok) nincsenek megadva, a rendszer 0-ként számít. A **ServicePackageA** vonatkozó memória-kérelem és-korlát így 0 és 2048 között van kiszámítva. Mivel a **ServicePackageA** -hez tartozó CPU-és memória-kérések is 0, nem jelent terhelést a CRM számára az elhelyezés, a `servicefabric:/_CpuCores` és a `servicefabric:/_MemoryInMB` metrikák esetében. Ezért egy erőforrás-irányítási szempontból a **ServicePackageA** bármely csomópontra elhelyezhető, **a fennmaradó kapacitástól függetlenül**. A csomóponton az 1. példához hasonlóan a CodeA1 a Core és 1024 MB memória kétharmadára korlátozódik, és a CodeA2 a Core és a 1024 MB memória egyharmadát fogja korlátozni.
+Ez a példa `CpuCoresLimit` azokat a és `MemoryInMBLimit` attribútumokat használja, amelyek csak a 7,2-es és újabb verziójú SF-verziókban érhetők el. A CpuCoresLimit attribútum a **ServicePackageA** 1 mag CPU-korlátjának megadására szolgál. Mivel a CPU-kérelem ( `CpuCores` attribútum) nincs megadva, a rendszer 0 értéknek számít. `MemoryInMBLimit` az attribútummal megadható a CodeA1 és a CodeA2 1024 MB-os memória-korlátja, és mivel a kérések ( `MemoryInMB` attribútumok) nincsenek megadva, a rendszer 0-ként számít. A **ServicePackageA** vonatkozó memória-kérelem és-korlát így 0 és 2048 között van kiszámítva. Mivel a **ServicePackageA** -hez tartozó CPU-és memória-kérések is 0, nem jelent terhelést a CRM számára az elhelyezés, a `servicefabric:/_CpuCores` és a `servicefabric:/_MemoryInMB` metrikák esetében. Ezért egy erőforrás-irányítási szempontból a **ServicePackageA** bármely csomópontra elhelyezhető, **a fennmaradó kapacitástól függetlenül**. A csomóponton az 1. példához hasonlóan a CodeA1 a Core és 1024 MB memória kétharmadára korlátozódik, és a CodeA2 a Core és a 1024 MB memória egyharmadát fogja korlátozni.
 
 **3. példa: RequestsAndLimits-specifikáció**
 ```xml
@@ -249,7 +249,7 @@ Az erőforrás-szabályozásnak a Service Fabric-szolgáltatásokra való alkalm
 * Sérült állapotban végződő csomópontok
 * Nem válaszol Service Fabric fürt felügyeleti API-jai
 
-Az ilyen helyzetek elkerülése érdekében Service Fabric lehetővé teszi, hogy a *csomóponton futó összes Service Fabric felhasználói szolgáltatáshoz érvényesítse az erőforrás-korlátozásokat* (mind a szabályozott, mind a nem szabályozott), hogy a felhasználói szolgáltatások soha ne használják a megadott mennyiségű erőforrást. Ezt úgy érheti el, ha a ClusterManifest PlacementAndLoadBalancing szakaszában a EnforceUserServiceMetricCapacities konfiguráció értékét True értékre állítja. Ez a beállítás alapértelmezés szerint ki van kapcsolva.
+Az ilyen helyzetek elkerülése érdekében Service Fabric lehetővé teszi, hogy a *csomóponton futó összes Service Fabric felhasználói szolgáltatáshoz érvényesítse az erőforrás-korlátozásokat* (mind a szabályozott, mind a nem szabályozott), hogy a felhasználói szolgáltatások soha ne használják a megadott mennyiségű erőforrást. Ezt úgy érheti el, ha a ClusterManifest PlacementAndLoadBalancing szakaszában a EnforceUserServiceMetricCapacities konfiguráció értékét True értékre állítja. Ez a beállítás alapértelmezés szerint ki van kapcsolva.
 
 ```xml
 <SectionName="PlacementAndLoadBalancing">
@@ -260,7 +260,7 @@ Az ilyen helyzetek elkerülése érdekében Service Fabric lehetővé teszi, hog
 További megjegyzések:
 
 * Az erőforrás-korlátozás kényszerítése csak a `servicefabric:/_CpuCores` és az `servicefabric:/_MemoryInMB` erőforrás-metrikára vonatkozik
-* Az erőforrás-korlátozás kényszerítése csak akkor működik, ha az erőforrás-metrikák csomópont-kapacitása Service Fabric elérhető az automatikus észlelési mechanizmuson keresztül, vagy a felhasználók manuálisan, a csomópontok kapacitásának megadásával (ahogy azt az [erőforrás-irányítás engedélyezése](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance) című szakasz ismerteti).Ha a csomópont kapacitása nincs konfigurálva, az erőforrás-korlát kényszerítési funkciója nem használható, mert Service Fabric nem tudja, hogy mennyi erőforrást kell lefoglalni a felhasználói szolgáltatásokhoz.Ha a "EnforceUserServiceMetricCapacities" érték igaz, de a csomópont kapacitása nincs konfigurálva, a Service Fabric állapot figyelmeztetést ad ki.
+* Az erőforrás-korlátozás kényszerítése csak akkor működik, ha az erőforrás-metrikák csomópont-kapacitása Service Fabric elérhető az automatikus észlelési mechanizmuson keresztül, vagy a felhasználók manuálisan, a csomópontok kapacitásának megadásával (ahogy azt az [erőforrás-irányítás engedélyezése](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance) című szakasz ismerteti). Ha a csomópont kapacitása nincs konfigurálva, az erőforrás-korlát kényszerítési funkciója nem használható, mert Service Fabric nem tudja, hogy mennyi erőforrást kell lefoglalni a felhasználói szolgáltatásokhoz. Ha a "EnforceUserServiceMetricCapacities" érték igaz, de a csomópont kapacitása nincs konfigurálva, a Service Fabric állapot figyelmeztetést ad ki.
 
 ## <a name="other-resources-for-containers"></a>A tárolók egyéb erőforrásai
 

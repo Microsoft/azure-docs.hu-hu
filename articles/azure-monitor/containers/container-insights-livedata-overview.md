@@ -1,26 +1,26 @@
 ---
-title: Élő adatértékek (előzetes verzió) megtekintése az Azure Monitor for containers szolgáltatással | Microsoft Docs
-description: Ez a cikk a Kubernetes-naplók,-események és a pod-metrikák valós idejű nézetét írja le anélkül, hogy a kubectl-t használja a tárolók Azure Monitor.
+title: Élő adatértékek (előzetes verzió) megtekintése a Container bepillantásokkal | Microsoft Docs
+description: Ez a cikk a Kubernetes-naplók,-események és-Pod-metrikák valós idejű nézetét írja le anélkül, hogy kubectl kellene használni a Container bepillantást.
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: 3655ff8e5879aa4113753b5529c1e484fb079401
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7e644680916097bc453c30be63a7db324df5f8f6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100614325"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711229"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>A Kubernetes-naplók,-események és a pod-metrikák valós idejű megtekintése
 
-A tárolók Azure Monitor tartalmazza az élő adatok (előzetes verzió) szolgáltatást, amely egy fejlett diagnosztikai funkció, amely lehetővé teszi az Azure Kubernetes szolgáltatás (ak) tároló-naplófájljainak (StdOut/stderror), az események és a pod-metrikák közvetlen elérését. Közvetlen hozzáférést tesz elérhetővé a `kubectl logs -c` , az `kubectl get` eseményekhez és a szolgáltatásokhoz `kubectl top pods` . A konzol ablaktáblán láthatók a tároló-motor által generált naplók, események és mérőszámok, amelyek a hibák valós idejű hibaelhárítását segítik elő.
+A Container-elemzések tartalmazzák az élő adatok (előzetes verzió) szolgáltatást, amely egy fejlett diagnosztikai funkció, amely lehetővé teszi az Azure Kubernetes szolgáltatás (ak) tároló-naplófájljainak (StdOut/stderror), az események és a pod metrikák elérését. Közvetlen hozzáférést tesz elérhetővé a `kubectl logs -c` , az `kubectl get` eseményekhez és a szolgáltatásokhoz `kubectl top pods` . A konzol ablaktáblán láthatók a tároló-motor által generált naplók, események és mérőszámok, amelyek a hibák valós idejű hibaelhárítását segítik elő.
 
 Ez a cikk részletes áttekintést nyújt, és segít megérteni a funkció használatát.
 
 Az élő adatszolgáltatások (előzetes verzió) beállításához vagy hibaelhárításához tekintse át a [telepítési útmutatót](container-insights-livedata-setup.md). Ez a funkció közvetlenül hozzáfér a Kubernetes API-hoz, és a hitelesítési modellel kapcsolatos további információ [itt](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)található.
 
 ## <a name="view-deployment-live-logs-preview"></a>Üzembe helyezési élő naplók megtekintése (előzetes verzió)
-Az alábbi eljárást követve megtekintheti az olyan központi telepítések élő naplóit, amelyek a tárolók Azure Monitor által nem figyelt AK-fürtök részét képezik. Ha a fürt Azure Monitort használ a tárolók számára, akkor az alábbi eljárással tekintheti meg a csomópontok, vezérlők, tárolók és központi telepítések élő adatait.
+A következő eljárással tekintheti meg az olyan központi telepítések élő naplóit, amelyek a tárolók által nem figyelt AK-fürtök részét képezik. Ha a fürt tároló-elemzéseket használ, akkor az alábbi eljárással tekintheti meg a csomópontok, vezérlők, tárolók és központi telepítések élő adatait.
 
 1. A Azure Portal tallózással keresse meg az AK fürterőforrás-csoportot, és válassza ki az AK-erőforrást.
 

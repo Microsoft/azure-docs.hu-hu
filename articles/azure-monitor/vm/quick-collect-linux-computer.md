@@ -13,16 +13,16 @@ ms.topic: quickstart
 ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: ef6e31968f85407e8055315becdc1337b474ad70
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: dbe51930ec92ec4f89738dc5d543003f45acebf9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100628660"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733822"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Gyors útmutató: adatok gyűjtése Linux rendszerű számítógépről hibrid környezetben Azure Monitor
 
-A [Azure monitor](../overview.md) adatokat gyűjthet közvetlenül a környezetében található fizikai vagy virtuális Linux rendszerű számítógépekről egy log Analytics munkaterületre, amely részletes elemzést és korrelációt biztosít. A [log Analytics ügynök](../agents/log-analytics-agent.md) telepítése lehetővé teszi, hogy a Azure monitor adatközpontból vagy más felhőalapú környezetből gyűjtsön adatokat. Ez a rövid útmutató bemutatja, hogyan konfigurálhat és gyűjthet adatokat a Linux-kiszolgálóról néhány egyszerű lépéssel. Az Azure Linux virtuális gépekkel kapcsolatos további információkért lásd: [adatok gyűjtése az Azure Virtual Machines szolgáltatással kapcsolatban](../learn/quick-collect-azurevm.md).  
+A [Azure monitor](../overview.md) adatokat gyűjthet közvetlenül a környezetében található fizikai vagy virtuális Linux rendszerű számítógépekről egy log Analytics munkaterületre, amely részletes elemzést és korrelációt biztosít. A [log Analytics ügynök](../agents/log-analytics-agent.md) telepítése lehetővé teszi, hogy a Azure monitor adatközpontból vagy más felhőalapú környezetből gyűjtsön adatokat. Ez a rövid útmutató bemutatja, hogyan konfigurálhat és gyűjthet adatokat a Linux-kiszolgálóról néhány egyszerű lépéssel. Az Azure Linux virtuális gépekkel kapcsolatos további információkért lásd: [adatok gyűjtése az Azure Virtual Machines szolgáltatással kapcsolatban](./quick-collect-azurevm.md).  
 
 A támogatott konfiguráció megismeréséhez tekintse meg a [támogatott operációs rendszerek](../agents/agents-overview.md#supported-operating-systems) és [hálózati tűzfal konfigurálása](../agents/log-analytics-agent.md#network-requirements)című témakört.
  
@@ -166,4 +166,4 @@ Most, hogy már gyűjti a működési és teljesítményadatokat a linuxos szám
 Az adatok megtekintésének és elemzésének ismertetéséhez lépjen tovább az útmutatóhoz.
 
 > [!div class="nextstepaction"]
-> [Adatok megtekintése és elemzése a Log Analyticsben](../log-query/log-analytics-tutorial.md)
+> [Adatok megtekintése és elemzése a Log Analyticsben](../logs/log-analytics-tutorial.md)

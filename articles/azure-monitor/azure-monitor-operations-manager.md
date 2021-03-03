@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2021
-ms.openlocfilehash: b1262533c3398a774b85e4143289a9b7c342aeab
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e9f0a285df6013334970b971e46079b9e78b19cb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593574"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728960"
 ---
 # <a name="azure-monitor-for-existing-operations-manager-customers"></a>Azure Monitor meglévő Operations Manager ügyfelek számára
 Ez a cikk útmutatást nyújt azokhoz az ügyfelekhez, akik jelenleg használják a [System Center Operations Managert](/system-center/scom/welcome) , és az üzleti alkalmazások és egyéb erőforrások az Azure-ba való áttelepítésének megtervezése [Azure Monitorre](overview.md) Azt feltételezi, hogy a végső cél a felhőbe való teljes átállás, amely a lehető legtöbb Operations Manager funkciót helyettesíti a Azure Monitor, az üzleti és informatikai működési követelmények veszélyeztetése nélkül. 
@@ -56,7 +56,7 @@ A környezet az Azure-ba való áthelyezést megelőzően a helyszínen vagy egy
 
 Az Azure-ba való Migrálás a IaaS-val kezdődik, és az üzleti alkalmazásokat támogató virtuális gépeket az Azure-ba helyezi. Ezeknek az alkalmazásoknak és a kiszolgálói szoftvereknek a figyelésére vonatkozó követelmények nem változnak, és továbbra is a meglévő felügyeleti csomagokkal folytathatja a Operations Manager használatát ezeken a kiszolgálókon. 
 
-Az Azure-előfizetések létrehozásakor a Azure Monitor az Azure-szolgáltatásokhoz is engedélyezve van. A szolgáltatás automatikusan gyűjti a platform metrikáit és a tevékenység naplóját, és az erőforrás-naplókat úgy konfigurálja, hogy a rendszer az összes rendelkezésre álló telemetria interaktív módon elemezheti a naplók lekérdezésével. Az Azure Monitor for VMs a virtuális gépeken lehetővé teszi, hogy elemezze a teljes környezet figyelési adatait, valamint hogy felderítse a gépek és a folyamatok közötti kapcsolatokat. Az Azure arc-kompatibilis kiszolgálók engedélyezésével kiterjesztheti Azure Monitor használatát a helyszíni fizikai és virtuális gépekre. 
+Az Azure-előfizetések létrehozásakor a Azure Monitor az Azure-szolgáltatásokhoz is engedélyezve van. A szolgáltatás automatikusan gyűjti a platform metrikáit és a tevékenység naplóját, és az erőforrás-naplókat úgy konfigurálja, hogy a rendszer az összes rendelkezésre álló telemetria interaktív módon elemezheti a naplók lekérdezésével. A virtuális gépeken a virtuálisgép-elemzések segítségével elemezheti a teljes környezet figyelési adatait, és felderítheti a gépek és a folyamatok közötti kapcsolatokat. Az Azure arc-kompatibilis kiszolgálók engedélyezésével kiterjesztheti Azure Monitor használatát a helyszíni fizikai és virtuális gépekre. 
 
 Minden üzleti alkalmazás esetében engedélyezheti a Application Insights. Azonosítja az egyes alkalmazások különböző összetevőit, megkezdi a használati és teljesítményadatok gyűjtését és a kódban előforduló hibák azonosítását. Rendelkezésre állási teszteket hozhat létre a külső alkalmazások proaktív teszteléséhez, és riasztást küld a teljesítményre és a rendelkezésre állásra vonatkozó problémákra. Bár a Application Insights olyan hatékony szolgáltatásokat nyújt, amelyek nem szerepelnek a Operations Managerban, továbbra is az üzleti alkalmazásaihoz fejlesztett egyéni felügyeleti csomagokat használja, mivel azok olyan figyelési forgatókönyveket tartalmaznak, amelyeket a Azure Monitor még nem szabályoz. 
 
@@ -89,21 +89,21 @@ Az [Azure felügyeleti csomagja](https://www.microsoft.com/download/details.aspx
 ## <a name="monitor-server-software-and-local-infrastructure"></a>A kiszolgálói szoftver és a helyi infrastruktúra figyelése
 Ha a gépeket a felhőbe helyezi át, a szoftver figyelési követelményei nem változnak. A továbbiakban nem kell figyelnie a fizikai összetevőket, mivel azok virtualizáltak, a vendég operációs rendszernek és a számítási feladatainak azonban a környezettől függetlenül ugyanazok a követelmények.
 
-A [Azure monitor for VMS](vm/vminsights-overview.md) az Azure monitor elsődleges funkciója a virtuális gépek és a vendég operációs rendszer és a munkaterhelések figyeléséhez. A Operations Managerhöz hasonlóan a Azure Monitor for VMs egy ügynököt használ a virtuális gépek vendég operációs rendszeréről származó adatok gyűjtéséhez. Ez ugyanaz a teljesítmény-és esemény-adat, amelyet általában a felügyeleti csomagok használnak az elemzéshez és a riasztáshoz. Nem léteznek még meglévő szabályok az adott gépeken futó üzleti alkalmazások és kiszolgálói szoftverek problémáinak azonosítására és riasztására. Létre kell hoznia saját riasztási szabályait, hogy proaktívan értesüljön az észlelt problémákról.
+A virtuális gépek és a vendég operációs rendszerek és a munkaterhelések figyelése Azure Monitor elsődleges funkciója a virtuálisgép- [bepillantást](vm/vminsights-overview.md) . A Operations Managerhoz hasonlóan a VM-elemzések ügynök használatával gyűjtenek adatokat a virtuális gépek vendég operációs rendszeréről. Ez ugyanaz a teljesítmény-és esemény-adat, amelyet általában a felügyeleti csomagok használnak az elemzéshez és a riasztáshoz. Nem léteznek még meglévő szabályok az adott gépeken futó üzleti alkalmazások és kiszolgálói szoftverek problémáinak azonosítására és riasztására. Létre kell hoznia saját riasztási szabályait, hogy proaktívan értesüljön az észlelt problémákról.
 
-[![Azure Monitor for VMs teljesítmény](media/azure-monitor-operations-manager/vm-insights-performance.png)](media/azure-monitor-operations-manager/vm-insights-performance.png#lightbox)
+[![VIRTUÁLIS gépekkel kapcsolatos eredmények](media/azure-monitor-operations-manager/vm-insights-performance.png)](media/azure-monitor-operations-manager/vm-insights-performance.png#lightbox)
 
 Azure Monitor emellett nem méri a virtuális gépen futó különböző alkalmazások és szolgáltatások állapotát. A metrikai riasztások automatikusan feloldhatók, ha egy érték egy küszöbérték alá csökken, de Azure Monitor jelenleg nem tudja meghatározni a gépen futó alkalmazások és szolgáltatások állapotának feltételeit, és nem biztosítja az állapot összesítését a kapcsolódó összetevők állapotának csoportosításához.
 
 > [!NOTE]
-> A [Azure monitor for VMS új vendég állapotra vonatkozó funkciója](vm/vminsights-health-overview.md) mostantól nyilvános előzetes verzióban érhető el, és a teljesítmény-mérőszámok egy készletének állapota alapján riasztást küld. Ez kezdetben a vendég operációs rendszerhez kapcsolódó teljesítményszámlálók adott készletére korlátozódik, a virtuális gépen futó alkalmazások és egyéb számítási feladatok azonban nem.
+> Mostantól nyilvános előzetes verzióban érhető el a virtuális gépek új [vendég állapotának szolgáltatása](vm/vminsights-health-overview.md) , amely a teljesítmény-mérőszámok egy készletének állapota alapján riasztást küld. Ez kezdetben a vendég operációs rendszerhez kapcsolódó teljesítményszámlálók adott készletére korlátozódik, a virtuális gépen futó alkalmazások és egyéb számítási feladatok azonban nem.
 > 
-> [![Azure Monitor for VMs vendég állapota](media/azure-monitor-operations-manager/vm-insights-guest-health.png)](media/azure-monitor-operations-manager/vm-insights-guest-health.png#lightbox)
+> [![A virtuális gép bepillantást nyújt a vendég állapotára](media/azure-monitor-operations-manager/vm-insights-guest-health.png)](media/azure-monitor-operations-manager/vm-insights-guest-health.png#lightbox)
 
-A gépeken a hibrid környezetekben a szoftverek monitorozása jellemzően Azure Monitor for VMs és Operations Manager kombinációját használja, az egyes gépek követelményeitől és a lejárat a Azure Monitor-on belüli működési folyamatainak a kiépítéséhez. Mindkét platform használja a Microsoft Management agentet (amelyet a Azure Monitor Log Analytics ügynökének nevezünk), így egyszerre egyetlen gépet is megfigyelheti.
+A gépek hibrid környezetben történő figyelése jellemzően a virtuálisgép-bepillantást és a Operations Manager kombinációját használja, az egyes gépek követelményeitől és a lejárat a Azure Monitor-on belüli működési folyamatainak kiépítésével függően. Mindkét platform használja a Microsoft Management agentet (amelyet a Azure Monitor Log Analytics ügynökének nevezünk), így egyszerre egyetlen gépet is megfigyelheti.
 
 > [!NOTE]
-> A jövőben Azure Monitor for VMs a jelenleg nyilvános előzetes verzióban elérhető [Azure monitor-ügynökre](agents/azure-monitor-agent-overview.md)fog térni. Kompatibilis lesz a Microsoft monitoring Agent szolgáltatással, így ugyanaz a virtuális gép továbbra is képes lesz figyelni mindkét platformon.
+> A jövőben a virtuálisgép-bepillantást a [Azure monitor ügynökre](agents/azure-monitor-agent-overview.md)vált, amely jelenleg nyilvános előzetes verzióban érhető el. Kompatibilis lesz a Microsoft monitoring Agent szolgáltatással, így ugyanaz a virtuális gép továbbra is képes lesz figyelni mindkét platformon.
 
 Továbbra is használhatja a Operations Manager olyan funkciókhoz, amelyeket a Azure Monitor még nem biztosít. Ide tartoznak a kritikus kiszolgálói szoftverek, például az IIS, az SQL Server vagy az Exchange felügyeleti csomagjai. Emellett olyan egyéni felügyeleti csomagokat is használhat, amelyek olyan helyszíni infrastruktúrához lettek kifejlesztve, amely nem érhető el Azure Monitor. Továbbra is használhatja a Operations Manager, ha szorosan integrálva van az operatív folyamataiba, amíg át nem kerül a szolgáltatási műveletek korszerűsítésére, ha Azure Monitor és más Azure-szolgáltatások bővíteni vagy helyettesíteni lehet. 
 
@@ -114,9 +114,9 @@ Azure Monitor fo virtuális gépek használatával növelheti az aktuális monit
 - A [naplók](logs/log-query-overview.md) használatával interaktív módon elemezheti a telemetria a virtuális gépekről a többi Azure-erőforrásból származó adatokkal.
 - A [naplózási riasztási szabályokat](alerts/alerts-log-query.md) több virtuális gép összetett logikája alapján hozhatja létre.
 
-[![Azure Monitor for VMs Térkép](media/azure-monitor-operations-manager/vm-insights-map.png)](media/azure-monitor-operations-manager/vm-insights-map.png#lightbox)
+[![VM-alapú bepillantást Térkép](media/azure-monitor-operations-manager/vm-insights-map.png)](media/azure-monitor-operations-manager/vm-insights-map.png#lightbox)
 
-Az Azure Virtual Machines szolgáltatáson kívül a Azure Monitor for VMs a helyszíni és más Felhőbeli gépeket is képes figyelni az [Azure arc-kompatibilis kiszolgálók](../azure-arc/servers/overview.md)használatával. Az arc-kompatibilis kiszolgálók lehetővé teszik az Azure-on kívül üzemeltetett Windows-és Linux-gépek, a vállalati hálózat vagy más felhőalapú szolgáltatók felügyeletét a natív Azure-beli virtuális gépek kezelésével összhangban.
+Az Azure Virtual Machines szolgáltatáson kívül a VM-információk az [Azure arc-kompatibilis kiszolgálók](../azure-arc/servers/overview.md)használatával is megfigyelhetők a helyszíni és más Felhőbeli gépeken. Az arc-kompatibilis kiszolgálók lehetővé teszik az Azure-on kívül üzemeltetett Windows-és Linux-gépek, a vállalati hálózat vagy más felhőalapú szolgáltatók felügyeletét a natív Azure-beli virtuális gépek kezelésével összhangban.
 
 
 
@@ -131,7 +131,7 @@ Ha az üzleti alkalmazások figyelése a Operations Manager [.NET-alkalmazás te
 - Kivételek észlelése és részletezése verem-nyomkövetési és kapcsolódó kérelmek esetén.
 - Speciális elemzések elvégzése olyan funkciók használatával, mint az [elosztott nyomkövetés](app/distributed-tracing.md) és az [intelligens észlelés](app/proactive-diagnostics.md).
 - A [metrika-kezelő](essentials/metrics-getting-started.md) használatával interaktívan elemezheti a teljesítményadatokat.
-- A [naplók](logs/log-query-overview.md) segítségével interaktívan elemezheti az összegyűjtött telemetria az Azure-szolgáltatásokhoz és Azure monitor for VMS gyűjtött adatokkal együtt.
+- A [naplók](logs/log-query-overview.md) segítségével interaktív módon elemezheti az összegyűjtött telemetria, valamint az Azure-szolgáltatásokhoz és a virtuális gépekhez gyűjtött adatokhoz kapcsolódó adatokat.
 
 [![Application Insights](media/azure-monitor-operations-manager/application-insights.png)](media/azure-monitor-operations-manager/application-insights.png#lightbox)
 
@@ -150,5 +150,5 @@ Az útmutató további részeiben az alapszintű stratégiát követve továbbra
 - A hibrid figyelési környezet tervezésével és megvalósításával kapcsolatos további részletekért tekintse meg a [felhőalapú figyelési útmutatót](/azure/cloud-adoption-framework/manage/monitor/) a Azure Monitor és System Center Operations Manager részletes összehasonlításához.
 - További információ a [Azure monitor Azure-erőforrások monitorozásáról](essentials/monitor-azure-resource.md).
 - További információ a [Azure monitor Azure-beli virtuális gépek monitorozásáról](vm/monitor-vm-azure.md).
-- További információ a [Azure monitor for VMsról](vm/vminsights-overview.md).
+- További információ a [virtuális](vm/vminsights-overview.md)gépekről.
 - További információ a [Application Insightsról](app/app-insights-overview.md).

@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/28/2021
-ms.openlocfilehash: 46c7952247babd528b230dfa0e70b0eb47878912
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 7b5223bc08c470a0e8722b76b80473aaa235b51a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99217754"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727158"
 ---
 # <a name="best-practices-for-optimal-performance-of-your-azure-database-for-mysql---single-server"></a>Ajánlott eljárások az Azure Database for MySQL – egyetlen kiszolgáló optimális teljesítményéhez
 
@@ -65,7 +65,7 @@ Javasoljuk, hogy tesztelje és figyelje az újraindítási időt annak biztosít
 Ha menteni szeretné a puffer állapotát a kiszolgáló leállításakor, állítsa a Server paramétert a következőre: `innodb_buffer_pool_dump_at_shutdown` `ON` . Hasonlóképpen állítsa be a kiszolgálói paramétert a `innodb_buffer_pool_load_at_startup` `ON` puffer-készlet állapotának visszaállításához a kiszolgáló indításakor. A kiszolgáló paraméter értékének csökkentésével és finomhangolásával szabályozhatja az indítási és újraindítási időpontra gyakorolt hatást `innodb_buffer_pool_dump_pct` . Alapértelmezés szerint ez a paraméter a következőre van beállítva: `25` .
 
 > [!Note]
-> A InnoDB puffer-készlet bemelegedési paramétereit csak az általános célú tároló kiszolgálók támogatják, legfeljebb 16 TB tárhellyel. További információ a [Azure Database for MySQL tárolási lehetőségeiről](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage).
+> A InnoDB puffer-készlet bemelegedési paramétereit csak az általános célú tároló kiszolgálók támogatják, legfeljebb 16 TB tárhellyel. További információ a [Azure Database for MySQL tárolási lehetőségeiről](./concepts-pricing-tiers.md#storage).
 
 ## <a name="next-steps"></a>Következő lépések
 

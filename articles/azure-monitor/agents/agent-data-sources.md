@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 2947f1c484f013c2d0bef9899b849f7ea761d89e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8b0debed6e0865f39cd42c7003347b2510600f81
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100613596"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720018"
 ---
 # <a name="log-analytics-agent-data-sources-in-azure-monitor"></a>Log Analytics Agent adatforrások a Azure Monitor
-Az [log Analytics](../platform/log-analytics-agent.md) ügynököt használó virtuális gépekről Azure monitor gyűjtött adatokat az [log Analytics munkaterületen](../platform/data-platform-logs.md)konfigurált adatforrások határozzák meg.   Minden adatforrás egy adott típusú rekordokat hoz létre, amelyek mindegyike rendelkezik saját tulajdonságokkal.
+Az [log Analytics](./log-analytics-agent.md) ügynököt használó virtuális gépekről Azure monitor gyűjtött adatokat az [log Analytics munkaterületen](../logs/data-platform-logs.md)konfigurált adatforrások határozzák meg.   Minden adatforrás egy adott típusú rekordokat hoz létre, amelyek mindegyike rendelkezik saját tulajdonságokkal.
 
 > [!IMPORTANT]
-> Ez a cikk az [log Analytics-ügynök](../platform/log-analytics-agent.md) adatforrásait ismerteti, amely a Azure monitor által használt ügynökök egyike. Más ügynökök különböző adatokat gyűjtenek, és eltérően vannak konfigurálva. A rendelkezésre álló ügynökök és az összegyűjtött adatok listáját lásd: [Azure monitor ügynökök áttekintése](agents-overview.md) .
+> Ez a cikk az [log Analytics-ügynök](./log-analytics-agent.md) adatforrásait ismerteti, amely a Azure monitor által használt ügynökök egyike. Más ügynökök különböző adatokat gyűjtenek, és eltérően vannak konfigurálva. A rendelkezésre álló ügynökök és az összegyűjtött adatok listáját lásd: [Azure monitor ügynökök áttekintése](agents-overview.md) .
 
 ![Naplózási adatgyűjtés](media/agent-data-sources/overview.png)
 
@@ -51,7 +51,7 @@ Minden konfiguráció az adott munkaterülethez csatlakozó összes ügynök sz�
 ## <a name="data-collection"></a>Adatgyűjtés
 Az adatforrás-konfigurációk olyan ügynököknek érkeznek, amelyek néhány percen belül közvetlenül kapcsolódnak Azure Monitorhoz.  A megadott adatokat a rendszer az ügynöktől gyűjti, és közvetlenül az egyes adatforrásokra vonatkozó időközönként továbbítja Azure Monitor.  Tekintse meg az egyes adatforrások dokumentációját ezekre a részletekre.
 
-A csatlakoztatott felügyeleti csoportok System Center Operations Manager ügynökei esetében az adatforrás-konfigurációk felügyeleti csomagokba lesznek lefordítva, és alapértelmezés szerint 5 percenként érkeznek a felügyeleti csoportba.  Az ügynök letölti a felügyeleti csomagot, és a megadott adatokat gyűjti. Az adatforrástól függően a rendszer elküldi az adatforrást egy olyan felügyeleti kiszolgálónak, amely továbbítja az adatAzure Monitor, vagy az ügynök elküldi az adatAzure Monitornak a felügyeleti kiszolgáló nélkül. További részletekért lásd: az [Azure-beli figyelési megoldások adatgyűjtési adatai](../monitor-reference.md) .  A Operations Manager összekapcsolásával és Azure Monitorával kapcsolatos részletekért olvassa el a konfigurációt a System Center Operations Manager- [integráció konfigurálása](../platform/om-agents.md)című cikkből.
+A csatlakoztatott felügyeleti csoportok System Center Operations Manager ügynökei esetében az adatforrás-konfigurációk felügyeleti csomagokba lesznek lefordítva, és alapértelmezés szerint 5 percenként érkeznek a felügyeleti csoportba.  Az ügynök letölti a felügyeleti csomagot, és a megadott adatokat gyűjti. Az adatforrástól függően a rendszer elküldi az adatforrást egy olyan felügyeleti kiszolgálónak, amely továbbítja az adatAzure Monitor, vagy az ügynök elküldi az adatAzure Monitornak a felügyeleti kiszolgáló nélkül. További részletekért lásd: az [Azure-beli figyelési megoldások adatgyűjtési adatai](../monitor-reference.md) .  A Operations Manager összekapcsolásával és Azure Monitorával kapcsolatos részletekért olvassa el a konfigurációt a System Center Operations Manager- [integráció konfigurálása](./om-agents.md)című cikkből.
 
 Ha az ügynök nem tud csatlakozni a Azure Monitorhoz vagy Operations Managerhoz, akkor továbbra is gyűjti az adatokat, amelyeket a kapcsolat létrehozásakor fog teljesíteni.  Az adatvesztés elvész, ha az adatmennyiség eléri a gyorsítótár maximális méretét az ügyfél számára, vagy ha az ügynök 24 órán belül nem tud kapcsolatot létesíteni.
 
@@ -60,5 +60,5 @@ A Azure Monitor által gyűjtött összes naplózási adatokat a munkaterületen
 
 ## <a name="next-steps"></a>Következő lépések
 * Ismerkedjen meg azokkal a [figyelési megoldásokkal](../insights/solutions.md) , amelyek a Azure monitor funkciókat bővítik, és adatokat gyűjtenek a munkaterületen.
-* További információ az adatforrásokból és a figyelési megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../log-query/log-query-overview.md) .  
-* [Riasztások](../platform/alerts-overview.md) konfigurálása az adatforrásokból és a figyelési megoldásokból gyűjtött kritikus adatok proaktív értesítésére.
+* További információ az adatforrásokból és a figyelési megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../logs/log-query-overview.md) .  
+* [Riasztások](../alerts/alerts-overview.md) konfigurálása az adatforrásokból és a figyelési megoldásokból gyűjtött kritikus adatok proaktív értesítésére.

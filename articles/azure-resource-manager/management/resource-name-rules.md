@@ -3,12 +3,12 @@ title: Erőforrás-elnevezési korlátozások
 description: Az Azure-erőforrások elnevezési szabályait és korlátozásait mutatja be.
 ms.topic: conceptual
 ms.date: 01/27/2021
-ms.openlocfilehash: dbe19dae4509e1dd6aa95763e4d034c339bb0531
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 40e17e518baec40d31918d24ab5b61da741f540a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220853"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700473"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Az Azure-erőforrásokra vonatkozó elnevezési szabályok és korlátozások
 
@@ -110,7 +110,7 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | batchAccounts | Régió | 3–24 | Kisbetűk és számok. |
+> | batchAccounts | Region | 3–24 | Kisbetűk és számok. |
 > | batchAccounts/alkalmazások | batch-fiók | 1-64 | Alfanumerikus karakterek, aláhúzások és kötőjelek. |
 > | batchAccounts/tanúsítványok | batch-fiók | 5-45 | Alfanumerikus karakterek, aláhúzások és kötőjelek. |
 > | batchAccounts/készletek | batch-fiók | 1-64 | Alfanumerikus karakterek, aláhúzások és kötőjelek. |
@@ -397,6 +397,9 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > | --- | --- | --- | --- |
 > | actionGroups | erőforráscsoport | 1-260 | Nem használható:<br>`/&%\?` <br><br>Nem végződhet szóközzel vagy ponttal.  |
 > | összetevők | erőforráscsoport | 1-260 | Nem használható:<br>`%&\?/` <br><br>Nem végződhet szóközzel vagy ponttal.  |
+> | scheduledQueryRules | erőforráscsoport | 1-260 | Nem használható:<br>`*<>%{}&:\\?/#` <br><br>Nem végződhet szóközzel vagy ponttal.  |
+> | metricAlerts | erőforráscsoport | 1-260 | Nem használható:<br>`*#&+:<>?@%{}\/` <br><br>Nem végződhet szóközzel vagy ponttal.  |
+> | activityLogAlerts | erőforráscsoport | 1-260 | Nem használható:<br>`<>*%{}&:\\?+/#` <br><br>Nem végződhet szóközzel vagy ponttal.  |
 
 ## <a name="microsoftiotcentral"></a>Microsoft. IoTCentral
 

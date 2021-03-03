@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2020
 ms.author: sausin
-ms.openlocfilehash: 0f932eed2f1d58e8470a24ea595e21712deb7f03
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 89d7a6f8beb004f57a00dfe75e4cc387c8591b1e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021898"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716584"
 ---
 # <a name="custom-commands-encryption-of-data-at-rest"></a>Custom Commands – Inaktív adatok titkosítása
 
 Az egyéni parancsok automatikusan titkosítják az adataikat, amikor azok a felhőben is megmaradnak. Az egyéni parancsok szolgáltatás titkosítása védi az adatait, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében.
 
 > [!NOTE]
-> Az egyéni parancsok szolgáltatás nem engedélyezi automatikusan a titkosítást az alkalmazáshoz társított LUIS-erőforrásokhoz. Ha szükséges, engedélyeznie kell a [Luis-erőforrás titkosítását innen.](./../LUIS/luis-encryption-of-data-at-rest.md)
+> Az egyéni parancsok szolgáltatás nem engedélyezi automatikusan a titkosítást az alkalmazáshoz társított LUIS-erőforrásokhoz. Ha szükséges, engedélyeznie kell a [Luis-erőforrás titkosítását innen.](../luis/encrypt-data-at-rest.md)
 
 ## <a name="about-cognitive-services-encryption"></a>Tudnivalók a Cognitive Services titkosításról
 Az adattitkosítás és visszafejtés az [FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) -kompatibilis [256 bites AES-](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) titkosítás használatával történik. A titkosítás és a visszafejtés átlátható, ami azt jelenti, hogy a titkosítás és a hozzáférés felügyelve van. Az adatok alapértelmezés szerint védettek, a titkosítás használatához pedig sem a kódot, sem az alkalmazást nem kell módosítania.

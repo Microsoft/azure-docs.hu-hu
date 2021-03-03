@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 91ef5ca35cc96aa2028522d370ffbade45ecc2de
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: de67e356e54328944c55f41dc0c9670e2540e82e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779770"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694376"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption Linux rendszerű virtuális gépekhez 
 
-Az Azure Disk Encryption segít az adatok biztonságos megőrzésében a vállalat által előírt biztonsági és megfelelőségi követelmények kielégítése érdekében. A Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) szolgáltatásával biztosítja a kötetek titkosítását az Azure Virtual Machines (VM) operációsrendszer-és adatlemezei számára, és integrálva van [Azure Key Vault](../../key-vault/index.yml) a lemezes titkosítási kulcsok és titkos kódok felügyeletéhez és kezeléséhez. 
+Az Azure Disk Encryption segít az adatok biztonságos megőrzésében a vállalat által előírt biztonsági és megfelelőségi követelmények kielégítése érdekében. A Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) szolgáltatásával biztosítja a kötetek titkosítását az Azure Virtual Machines (VM) operációsrendszer-és adatlemezei számára, és integrálva van [Azure Key Vault](../../key-vault/index.yml) a lemezes titkosítási kulcsok és titkos kódok felügyeletéhez és kezeléséhez.
+
+Azure Disk Encryption a zóna rugalmas, ugyanúgy, mint Virtual Machines. Részletekért lásd: [Availability Zones támogató Azure-szolgáltatások](../../availability-zones/az-region.md).
 
 Ha [Azure Security Center](../../security-center/index.yml)használ, a rendszer riasztást küld, ha nem titkosított virtuális gépek vannak. A riasztások magas súlyosságot mutatnak, és a javasolt a virtuális gépek titkosítása.
 
@@ -26,7 +28,6 @@ Ha [Azure Security Center](../../security-center/index.yml)használ, a rendszer 
 > [!WARNING]
 > - Ha korábban már használta Azure Disk Encryption az Azure AD-vel egy virtuális gép titkosításához, továbbra is ezt a beállítást kell használnia a virtuális gép titkosításához. Részletekért lásd: [Azure Disk Encryption az Azure ad-vel (előző kiadás)](disk-encryption-overview-aad.md) . 
 > - Bizonyos javaslatok növelhetik az adatok, a hálózat vagy a számítási erőforrások használatát, ami további licenc-vagy előfizetési költségeket eredményezhet. Érvényes aktív Azure-előfizetéssel kell rendelkeznie ahhoz, hogy erőforrásokat hozzon létre az Azure-ban a támogatott régiókban.
-> - Jelenleg a 2. generációs virtuális gépek nem támogatják a Azure Disk Encryption. További részleteket a [2. generációs virtuális gépek támogatása az Azure](../generation-2.md) -ban című témakörben talál.
 
 A Linux rendszerű [virtuális gépek létrehozása és](disk-encryption-cli-quickstart.md) titkosítása az Azure CLI gyors üzembe helyezésével, valamint a [linuxos virtuális gép létrehozása és titkosítása Azure PowerShell](disk-encryption-powershell-quickstart.md)gyors üzembe helyezéssel néhány perc alatt elsajátíthatja a Linux Azure Disk Encryptionének alapjait.
 
@@ -34,7 +35,11 @@ A Linux rendszerű [virtuális gépek létrehozása és](disk-encryption-cli-qui
 
 ### <a name="supported-vms"></a>Támogatott virtuális gépek
 
-A Linux rendszerű virtuális gépek [számos méretben](../sizes.md)érhetők el. Azure Disk Encryption nem érhető el az [alapszintű, a-sorozatú](https://azure.microsoft.com/pricing/details/virtual-machines/series/)virtuális gépeken, illetve a minimális memória követelményeinek nem megfelelő virtuális gépeken:
+A Linux rendszerű virtuális gépek [számos méretben](../sizes.md)érhetők el. A Azure Disk Encryption az 1. és a 2. generációs virtuális gépek esetében támogatott. A Premium Storage szolgáltatással rendelkező virtuális gépek esetében Azure Disk Encryption is elérhető.
+
+Lásd: Azure-beli [virtuális gépek mérete helyi ideiglenes lemez nélkül](../azure-vms-no-temp-disk.md).
+
+Az Azure Disk Encryption nem érhető el az [alapszintű, a sorozatú](https://azure.microsoft.com/pricing/details/virtual-machines/series/)virtuális gépeken, illetve a minimális memória követelményeinek nem megfelelő virtuális gépeken:
 
 | Virtuális gép | Minimális memória követelménye |
 |--|--|
@@ -42,13 +47,9 @@ A Linux rendszerű virtuális gépek [számos méretben](../sizes.md)érhetők e
 | Linux rendszerű virtuális gépek az adatok és az operációsrendszer-kötetek titkosításakor, valamint a gyökér (/) fájlrendszer használatának helye 4 GB vagy kevesebb | 8 GB |
 | Linux rendszerű virtuális gépek az adatok és az operációsrendszer-kötetek titkosítása esetén, valamint a gyökér (/) fájlrendszer használatának helye meghaladja a 4GB-ot | A rendszerindító fájlrendszer használata * 2. Például egy 16 GB-os rendszerszintű fájlrendszer-használat legalább 32GB RAM memóriát igényel |
 
-Miután az operációsrendszer-lemez titkosítási folyamata befejeződött a Linux rendszerű virtuális gépeken, a virtuális gép beállítható úgy, hogy kevesebb memóriával fusson. 
+Miután az operációsrendszer-lemez titkosítási folyamata befejeződött a Linux rendszerű virtuális gépeken, a virtuális gép beállítható úgy, hogy kevesebb memóriával fusson.
 
-A Premium Storage szolgáltatással rendelkező virtuális gépek esetében Azure Disk Encryption is elérhető.
-
-Azure Disk Encryption nem érhető el a [2. generációs virtuális gépeken](../generation-2.md#generation-1-vs-generation-2-capabilities) és a [Lsv2 sorozatú virtuális gépeken](../lsv2-series.md). További kivételeket a [Azure Disk Encryption: nem támogatott forgatókönyvek](disk-encryption-linux.md#unsupported-scenarios)című témakörben talál.
-
-A Azure Disk Encryption nem érhető el a virtuálisgép-rendszerképeken Temp Disks (DV4, Dsv4, Ev4 és Esv4) nélküli virtuális gépeken.  Lásd: Azure-beli [virtuális gépek mérete helyi ideiglenes lemez nélkül](../azure-vms-no-temp-disk.md).
+További kivételeket a [Azure Disk Encryption: nem támogatott forgatókönyvek](disk-encryption-linux.md#unsupported-scenarios)című témakörben talál.
 
 ### <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
@@ -58,6 +59,7 @@ A Azure Disk Encryption az [Azure által támogatott Linux-disztribúciók](endo
 
 Az Azure által nem támogatott Linux Server-disztribúciók nem támogatják a Azure Disk Encryption; a támogatottak közül csak a következő disztribúciók és verziók támogatják a Azure Disk Encryption:
 
+
 | Publisher | Ajánlat | Termékváltozat | URN | Titkosításhoz támogatott kötet típusa |
 | --- | --- |--- | --- |
 | Canonical | Ubuntu | 18,04 – LTS | Canonical: UbuntuServer: 18.04-LTS: legújabb | Operációs rendszer és az adatlemez |
@@ -65,9 +67,12 @@ Az Azure által nem támogatott Linux Server-disztribúciók nem támogatják a 
 | Canonical | Ubuntu 16.04 | 16,04 – NAPONTA – LTS | Canonical: UbuntuServer: 16.04-DAILY-LTS: legújabb | Operációs rendszer és az adatlemez |
 | Canonical | Ubuntu-14.04.5</br>[Az Azure-ban beállított kernel 4,15-es vagy újabb verzióra frissült](disk-encryption-troubleshooting.md) | 14.04.5-LTS | Canonical: UbuntuServer: 14.04.5-LTS: legújabb | Operációs rendszer és az adatlemez |
 | Canonical | Ubuntu-14.04.5</br>[Az Azure-ban beállított kernel 4,15-es vagy újabb verzióra frissült](disk-encryption-troubleshooting.md) | 14.04.5 – NAPI – LTS | Canonical: UbuntuServer: 14.04.5-DAILY-LTS: legújabb | Operációs rendszer és az adatlemez |
+| RedHat | RHEL 8 – LVM | 8 – LVM | RedHat: RHEL: 8 – LVM: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
+| RedHat | RHEL 8,2 | 8.2 | RedHat: RHEL: 8.2: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
+| RedHat | RHEL 8,1 | 8.1 | RedHat: RHEL: 8.1: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
+| RedHat | RHEL 7 – LVM | 7 – LVM | RedHat: RHEL: 7 – LVM: 7.8.2020111201 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RedHat | RHEL 7,8 | 7,8 | RedHat: RHEL: 7,8: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RedHat | RHEL 7,7 | 7.7 | RedHat: RHEL: 7.7: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
-| RedHat | RHEL 7 – LVM | 7 – LVM | RedHat: RHEL: 7 – LVM: 7.8.2020111201 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RedHat | RHEL 7,6 | 7.6 | RedHat: RHEL: 7.6: legutóbbi | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RedHat | RHEL 7.5 | 7,5 | RedHat: RHEL: 7.5: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RedHat | RHEL 7,4 | 7,4 | RedHat: RHEL: 7.4: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
@@ -75,9 +80,12 @@ Az Azure által nem támogatott Linux Server-disztribúciók nem támogatják a 
 | RedHat | RHEL 7,2 | 7.2 | RedHat: RHEL: 7.2: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RedHat | RHEL 6,8 | 6.8 | RedHat: RHEL: 6.8: legújabb | Adatlemez (lásd az alábbi megjegyzést) |
 | RedHat | RHEL 6,7 | 6.7 | RedHat: RHEL: 6.7: legújabb | Adatlemez (lásd az alábbi megjegyzést) |
+| OpenLogic | CentOS 8 – LVM | 8 – LVM | OpenLogic: CentOS-LVM: 8-LVM: legújabb | Operációs rendszer és az adatlemez |
+| OpenLogic | CentOS 8,2 | 8_2 | OpenLogic: CentOS: 8_2: legújabb | Operációs rendszer és az adatlemez |
+| OpenLogic | CentOS 8,1 | 8_1 | OpenLogic: CentOS: 8_1: legújabb | Operációs rendszer és az adatlemez |
+| OpenLogic | CentOS 7 – LVM | 7 – LVM | OpenLogic: CentOS-LVM: 7-LVM: 7.8.2020111100 | Operációs rendszer és az adatlemez |
 | OpenLogic | CentOS 7,8 | 7,8 | OpenLogic: CentOS: 7_8: legújabb | Operációs rendszer és az adatlemez |
 | OpenLogic | CentOS 7,7 | 7.7 | OpenLogic: CentOS: 7.7: legújabb | Operációs rendszer és az adatlemez |
-| OpenLogic | CentOS 7 – LVM | 7 – LVM | OpenLogic: CentOS-LVM: 7-LVM: 7.8.2020111100 | Operációs rendszer és az adatlemez |
 | OpenLogic | CentOS 7,6 | 7.6 | OpenLogic: CentOS: 7.6: legújabb | Operációs rendszer és az adatlemez |
 | OpenLogic | CentOS 7.5 | 7,5 | OpenLogic: CentOS: 7.5: legújabb | Operációs rendszer és az adatlemez |
 | OpenLogic | CentOS 7.4 | 7,4 | OpenLogic: CentOS: 7.4: legújabb | Operációs rendszer és az adatlemez |
@@ -145,10 +153,10 @@ Az alábbi táblázat az Azure Disk Encryption dokumentációjában használt á
 | PowerShell-parancsmagok | További információ: [Azure PowerShell parancsmagok](/powershell/azure/). |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Rövid útmutató – linuxos virtuális gép létrehozása és titkosítása az Azure CLI-vel ](disk-encryption-cli-quickstart.md)
-- [Rövid útmutató – linuxos virtuális gép létrehozása és titkosítása az Azure PowerShell-lel](disk-encryption-powershell-quickstart.md)
+- [Rövid útmutató – Linux rendszerű virtuális gép létrehozása és titkosítása Azure PowerShell](disk-encryption-powershell-quickstart.md) 
 - [Azure Disk Encryption-forgatókönyvek Linux rendszerű virtuális gépeken](disk-encryption-linux.md)
 - [Előfeltételként Azure Disk Encryption parancssori felület parancsfájlja](https://github.com/ejarvi/ade-cli-getting-started)
 - [Azure Disk Encryption előfeltételek PowerShell-parancsfájl](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)

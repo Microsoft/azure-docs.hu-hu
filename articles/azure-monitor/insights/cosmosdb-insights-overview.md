@@ -5,12 +5,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: fdf482f5afc444aff77c2ab528a4e333a0282c3d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d88bf65f1bd94e29bd9f60f5597d655f0040623b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582365"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725762"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Azure Cosmos DB Azure Monitor megismerése
 
@@ -71,7 +71,7 @@ Válassza ki a **hibák** elemet az oldal tetején, és megnyílik a munkafüzet
 
 ![Képernyőfelvétel a HTTP-kérelem típusa szerinti bontásban fellépő hibákról](./media/cosmosdb-insights-overview/failures.png)
 
-| Code |  Description       | 
+| Code |  Leírás       | 
 |-----------|:--------------------|
 | `200 OK`  | A következő REST-műveletek egyike sikeres volt: </br>– Erőforrás lekérése. </br> -Erőforrásra kerül. </br> – KÖZZÉTÉTEL egy erőforráson. </br> – KÖZZÉTÉTEL a tárolt eljárási erőforráson a tárolt eljárás végrehajtásához.|
 | `201 Created` | Az erőforrás-létrehozás utáni művelet sikeres. |
@@ -87,13 +87,51 @@ Válassza ki a **kapacitás** elemet az oldal tetején, és megnyílik a munkaf�
 
 Az áttekintő munkafüzethez hasonlóan az **előfizetés** oszlopban egy Azure Cosmos db erőforrás melletti legördülő lista is megjelenik, amely az adatbázist alkotó egyes tárolók részletezését mutatja.
 
-### <a name="operations"></a>Üzemeltetés 
+### <a name="operations"></a>Üzemeltetés
 
-Válassza a lap tetején a **műveletek** lehetőséget, majd megnyílik a munkafüzet sablonjának **műveletek** rész. Lehetővé teszi, hogy a kérések típusa szerinti bontásban megtekintse a kérelmeket. 
+Válassza a lap tetején a **műveletek** lehetőséget, majd megnyílik a munkafüzet sablonjának **műveletek** rész. Lehetővé teszi, hogy a kérések típusa szerinti bontásban megtekintse a kérelmeket.
 
 Tehát az alábbi példában láthatja, hogy `eastus-billingint` az olvasási kérelmeket elsődlegesen fogadja, de kis számú upsert és a létrehozási kéréseket. Míg a `westeurope-billingint` kérelem szempontjából csak olvasható, legalább az elmúlt négy órában, hogy a munkafüzet aktuális hatóköre a Time Range paraméterén keresztül történjen.
 
-![Műveleti munkafüzet](./media/cosmosdb-insights-overview/operation.png) 
+![Műveleti munkafüzet](./media/cosmosdb-insights-overview/operation.png)
+
+## <a name="view-from-an-azure-cosmos-db-resource"></a>Megtekintés Azure Cosmos DB erőforrásból
+
+1. Keresse meg vagy válassza ki a meglévő Azure Cosmos DB fiókokat.
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-search.png" alt-text="Azure Cosmos DB keresése." border="true":::
+
+2. Miután megnyitotta a Azure Cosmos DB fiókját, a figyelés szakaszban válassza az elemzések **(előzetes verzió)** vagy a **munkafüzetek** lehetőséget az átviteli sebesség, a kérelmek, a tárolás, a rendelkezésre állás, a késés, a rendszer és a fiókok kezelésének további elemzéséhez.
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-overview.png" alt-text="Cosmos DB információk áttekintése." border="true":::
+
+### <a name="time-range"></a>Időtartomány
+
+Alapértelmezés szerint az **időtartomány** mező az **elmúlt 24 órában** jeleníti meg az adatait. Az időtartományt úgy módosíthatja, hogy az utolsó 5 perctől az elmúlt hét napig bárhol megjelenjen az adatok. Az időtartomány-választó olyan **Egyéni** üzemmódot is tartalmaz, amely lehetővé teszi a kezdő/befejező dátumok beírását a kiválasztott fiók rendelkezésre álló adatokon alapuló egyéni időkeretének megtekintéséhez.
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-time-range.png" alt-text="Cosmos DB időtartomány." border="true":::
+
+### <a name="insights-overview"></a>Az információk áttekintése
+
+Az **Áttekintés** lapon a kiválasztott Azure Cosmos db fiók leggyakoribb metrikái láthatók, többek között a következők:
+
+* Összes kérelem
+* Sikertelen kérelmek (429s)
+* Normalizált RU-felhasználás (max.)
+* Adatok & indexelési használat
+* Fiók metrikáinak Cosmos DB gyűjtemény szerint
+
+**Kérelmek összesen:** Ez a gráf a fiókra vonatkozó összes kérést megjeleníti, állapotkód szerint lebontva. A gráf alján lévő egységek az adott időszakra vonatkozó összes kérelem összege.
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-total-requests.png" alt-text="Cosmos DB összes kérelem gráfja." border="true":::
+
+**Sikertelen kérelmek (429s)**: Ez a gráf a sikertelen kérelmeket a 429-es állapotkód szerint jeleníti meg. A gráf alján lévő egységek az adott időszakra vonatkozó összes sikertelen kérelem összege.
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-429.png" alt-text="Cosmos DB sikertelen kérelmek gráfja." border="true":::
+
+**Normalizált ru-használat (max.)**: Ez a diagram a megadott időszakra vonatkozóan a NORMALIZÁLt ru-fogyasztási egységek 0-100%-a maximális százalékos arányát adja meg.
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-normalized-ru.png" alt-text="Cosmos DB normalizált RU-felhasználás." border="true":::
 
 ## <a name="pin-export-and-expand"></a>PIN-kód, exportálás és Kibontás
 

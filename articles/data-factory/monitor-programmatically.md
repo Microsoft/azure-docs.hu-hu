@@ -7,12 +7,12 @@ ms.date: 01/16/2018
 author: dcstwh
 ms.author: weetok
 ms.custom: devx-track-python
-ms.openlocfilehash: 038da033c2bdf78a0a2547cc713944bc11bf093d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6c913c7c623c77baea0c575d06d2c44709af43fa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379896"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740439"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Azure-beli adatgyár programozott figyelése
 
@@ -30,7 +30,7 @@ Ha több mint 45 napig szeretné megőrizni a folyamat adatait, állítsa be a s
 
 ## <a name="pipeline-run-information"></a>Folyamat futtatási adatai
 
-A folyamat futási tulajdonságainak megtekintéséhez tekintse meg a [PIPELINERUN API-referenciát](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/get#pipelinerun). Egy folyamat futása eltérő állapotú az életciklusa során, a futtatási állapot lehetséges értékei a következők:
+A folyamat futási tulajdonságainak megtekintéséhez tekintse meg a [PIPELINERUN API-referenciát](/rest/api/datafactory/pipelineruns/get#pipelinerun). Egy folyamat futása eltérő állapotú az életciklusa során, a futtatási állapot lehetséges értékei a következők:
 
 * Várólistán
 * Folyamatban
@@ -163,5 +163,4 @@ A folyamat PowerShell használatával történő létrehozásának és figyelés
 A PowerShell-parancsmagokkal kapcsolatos teljes dokumentációért lásd: [Data Factory PowerShell-parancsmagok leírása](/powershell/module/az.datafactory).
 
 ## <a name="next-steps"></a>Következő lépések
-Lásd: [folyamatok figyelése Azure monitor cikk használatával](monitor-using-azure-monitor.md) , amelyből megtudhatja, hogyan használhatja a Azure Monitor a Data Factory folyamatok figyelésére. 
-
+Lásd: [folyamatok figyelése Azure monitor cikk használatával](monitor-using-azure-monitor.md) , amelyből megtudhatja, hogyan használhatja a Azure Monitor a Data Factory folyamatok figyelésére.

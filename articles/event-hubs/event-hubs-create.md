@@ -3,12 +3,12 @@ title: Azure rövid útmutató – Event hub létrehozása a Azure Portal haszn�
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Event hub-t Azure Portal használatával.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: c1244317655815da91429585eff9ffbcc16662d4
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 6bd9d247db6cd5a956ff4bce9b70f1f8a5a7499a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435501"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742041"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Rövid útmutató: Eseményközpont létrehozása az Azure Portallal
 Az Azure Event Hubs egy Big streaming platform-és esemény-betöltési szolgáltatás, amely másodpercenként több millió eseményt képes fogadni és feldolgozni. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
@@ -21,7 +21,7 @@ A rövid útmutató elvégzéséhez győződjön meg róla, hogy rendelkezik az 
 
 - Egy Azure-előfizetés. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az erőforráscsoport Azure-erőforrások logikai gyűjteménye. Minden erőforrás üzembe helyezése és kezelése erőforráscsoportban történik. Erőforráscsoport létrehozása:
 
@@ -33,7 +33,7 @@ Az erőforráscsoport Azure-erőforrások logikai gyűjteménye. Minden erőforr
 1. Az **előfizetés** mezőben válassza ki annak az Azure-előfizetésnek a nevét, amelyben létre kívánja hozni az erőforráscsoportot.
 1. Adja **meg az erőforráscsoport egyedi nevét**. A rendszer azonnal ellenőrzi, hogy a név elérhető-e az aktuálisan kiválasztott Azure-előfizetésben.
 1. Válassza ki az erőforráscsoport **régióját** .
-1. Válassza a **felülvizsgálat + létrehozás** lehetőséget.
+1. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
 
    ![Erőforráscsoport – létrehozás](./media/event-hubs-quickstart-portal/resource-groups2.png)
 1. A **felülvizsgálat + létrehozás** lapon válassza a **Létrehozás** lehetőséget. 
@@ -87,12 +87,12 @@ Ha eseményközpontot szeretne létrehozni egy névtérben, végezze el a követ
 
     A **partíciók számának** beállítása lehetővé teszi, hogy integrálással a felhasználást számos fogyasztó között. További információ: [Partitions (partíciók](event-hubs-scalability.md#partitions)).
 
-    Az **üzenet-megőrzési** beállítás határozza meg, hogy a Event Hubs szolgáltatás mennyi ideig tart az adatokban. A beállítás maximális korlátaival kapcsolatban lásd: [kvóták és korlátozások](event-hubs-quotas.md).
+    Az **üzenet-megőrzési** beállítás határozza meg, hogy a Event Hubs szolgáltatás mennyi ideig tart az adatokban. További információ: [Event megtartás](event-hubs-features.md#event-retention).
 1. Az Event hub létrehozásának állapotát a riasztásokban tekintheti meg. Az Event hub létrehozása után megjelenik az Event hubok listájában.
 
     ![Az Event hub létrehozva](./media/event-hubs-quickstart-portal/event-hub-created.png)
     
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben egy erőforráscsoportot, egy Event Hubs-névteret és egy eseményközpontot hozott létre. Az események esemény-központból (vagy) való küldésével kapcsolatos részletes utasításokért tekintse meg a következő oktatóanyagokat: 
 

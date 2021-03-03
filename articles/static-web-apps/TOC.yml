@@ -18,6 +18,9 @@
           href: get-started-cli.md
 - name: Alapelvek
   items:
+    - name: Konfiguráció
+      href: configuration.md
+      displayName: Routing
     - name: API-támogatás az Azure Functions szolgáltatással
       href: apis.md
     - name: Útvonalak
@@ -42,6 +45,8 @@
       href: application-settings.md
     - name: Előtérbeli keretrendszerek és kódtárak konfigurálása
       href: front-end-frameworks.md
+    - name: Üzembe helyezési tokenek alaphelyzetbe állítása
+      href: deployment-token-management.md
 - name: Oktatóanyagok
   items:
     - name: Közzététel statikuswebhely-generátorból

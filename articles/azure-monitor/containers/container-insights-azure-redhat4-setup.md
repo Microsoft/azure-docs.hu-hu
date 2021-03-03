@@ -1,30 +1,30 @@
 ---
-title: Az Azure Red Hat OpenShift v4. x konfigurálása az Azure Monitor for containers szolgáltatással | Microsoft Docs
+title: Az Azure Red Hat OpenShift v4. x konfigurálása a Container bepillantást tartalmazó szolgáltatással | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a Kubernetes-fürtök figyelését az Azure Red Hat OpenShift 4-es vagy újabb verziójában üzemeltetett Azure Monitor.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: e6668ac22c6c0f53c7511cfb76bf50c5474f3a76
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a9e04818f1a915a853d32b5db408a521cdae9f4c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100620108"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713932"
 ---
-# <a name="configure-azure-red-hat-openshift-v4x-with-azure-monitor-for-containers"></a>Az Azure Red Hat OpenShift v4. x konfigurálása Azure Monitor for containers szolgáltatással
+# <a name="configure-azure-red-hat-openshift-v4x-with-container-insights"></a>Az Azure Red Hat OpenShift v4. x konfigurálása a Container bepillantást tartalmazó szolgáltatással
 
-A tárolók Azure Monitor széles körű monitorozást biztosítanak az Azure Kubernetes Service (ak) és az AK-os motor fürtök számára. Ez a cikk azt ismerteti, hogyan lehet hasonló figyelési élményt elérni az [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) 4. x verziójában üzemeltetett Kubernetes-fürtök figyelésének engedélyezésével.
+A Container bepillantást nyerhet az Azure Kubernetes Service (ak) és az KABAi motor fürtök széles körű figyelési felületét. Ez a cikk azt ismerteti, hogyan lehet hasonló figyelési élményt elérni az [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) 4. x verziójában üzemeltetett Kubernetes-fürtök figyelésének engedélyezésével.
 
 >[!NOTE]
 >Az Azure Red Hat OpenShift támogatása jelenleg nyilvános előzetes verzióban érhető el.
 >
 
-Az ebben a cikkben ismertetett támogatott módszerek használatával engedélyezheti a tárolók Azure Monitorét az Azure Red Hat OpenShift v4. x egy vagy több meglévő példányához.
+A jelen cikkben ismertetett támogatott módszerek használatával engedélyezheti a tárolók bepillantást az Azure Red Hat OpenShift v4. x-es verziójának egy vagy több példányára.
 
 Meglévő fürt esetén futtassa ezt a [bash-szkriptet az Azure CLI-ben](/cli/azure/openshift#az-openshift-create&preserve-view=true).
 
 ## <a name="supported-and-unsupported-features"></a>Támogatott és nem támogatott funkciók
 
-A tárolók Azure Monitor támogatja az Azure Red Hat OpenShift v4. x figyelését az [Azure monitor for containers áttekintése](container-insights-overview.md)című témakörben leírtak szerint, a következő funkciók kivételével:
+A Container-megállapítások az Azure Red Hat OpenShift v4. x figyelését támogatják a [Container-információk áttekintése](container-insights-overview.md)című témakörben leírtak szerint, a következő funkciók kivételével:
 
 - Élő adatértékek (előzetes verzió)
 - A fürtcsomópontok és a hüvelyek [metrikáinak összegyűjtése](container-insights-update-metrics.md) és tárolása a Azure monitor metrikai adatbázisban
@@ -39,13 +39,13 @@ A tárolók Azure Monitor támogatja az Azure Red Hat OpenShift v4. x figyelés�
 
 - A [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) parancssori eszköz
 
-- Egy [Log Analytics-munkaterület](../platform/design-logs-deployment.md).
+- Egy [Log Analytics-munkaterület](../logs/design-logs-deployment.md).
 
-    A tárolók Azure Monitor Log Analytics munkaterületet támogatnak az Azure [Products By Region régióban](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)felsorolt régiókban. Saját munkaterület létrehozásához [Azure Resource Manager](../samples/resource-manager-workspace.md), a [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)vagy a [Azure Portal](../learn/quick-create-workspace.md)használatával hozható létre.
+    A Container-bepillantást az Azure [Products By Region régiójában](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)felsorolt régiók log Analytics munkaterületét támogatják. Saját munkaterület létrehozásához [Azure Resource Manager](../logs/resource-manager-workspace.md), a [PowerShell](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)vagy a [Azure Portal](../logs/quick-create-workspace.md)használatával hozható létre.
 
-- A tárolók Azure Monitor szolgáltatásainak engedélyezéséhez és eléréséhez legalább egy Azure- *közreműködő* szerepkörrel kell rendelkeznie az Azure-előfizetésben, valamint egy [*log Analytics közreműködő*](../platform/manage-access.md#manage-access-using-azure-permissions) szerepkört a log Analytics munkaterületen, amely a tárolók Azure monitor van konfigurálva.
+- A tároló-betekintő funkcióinak engedélyezéséhez és eléréséhez legalább egy Azure- *közreműködő* szerepkörrel kell rendelkeznie az Azure-előfizetésben, valamint egy [*log Analytics közreműködő*](../logs/manage-access.md#manage-access-using-azure-permissions) szerepkört a log Analytics munkaterületen, amely a tároló-felismerésekkel van konfigurálva.
 
-- A figyelési adat megtekintéséhez [*log Analytics olvasó*](../platform/manage-access.md#manage-access-using-azure-permissions) szerepkörrel kell rendelkeznie a log Analytics munkaterületen, amely a tárolók Azure monitorhoz van konfigurálva.
+- A figyelési adat megtekintéséhez [*log Analytics olvasó*](../logs/manage-access.md#manage-access-using-azure-permissions) szerepkörrel kell rendelkeznie a log Analytics munkaterületen, amely a Container-elemzésekkel van konfigurálva.
 
 ## <a name="enable-monitoring-for-an-existing-cluster"></a>Meglévő fürt figyelésének engedélyezése
 
@@ -68,7 +68,7 @@ Ha engedélyezni szeretné az Azure-ban a megadott bash-parancsfájllal üzembe 
     adminPassword=$(az aro list-credentials -g $clusterResourceGroup -n $clusterName --query 'kubeadminPassword' -o tsv)
     apiServer=$(az aro show -g $clusterResourceGroup -n $clusterName --query apiserverProfile.url -o tsv)
     oc login $apiServer -u $adminUserName -p $adminPassword
-    # openshift project name for azure monitor for containers
+    # openshift project name for Container insights
     openshiftProjectName="azure-monitor-for-containers"
     oc new-project $openshiftProjectName
     # get the kube config context
@@ -150,7 +150,7 @@ A figyelés engedélyezése után körülbelül 15 percet is igénybe vehet, mie
 
 ### <a name="enable-monitoring-from-the-azure-portal"></a>A Azure Portal figyelésének engedélyezése
 
-A tárolók Azure Monitor több fürtből álló nézete kiemeli az Azure Red Hat OpenShift-fürtöket, amelyek nem rendelkeznek figyeléssel a nem **figyelt fürtök** lapon. A fürt melletti **Engedélyezés** lehetőség nem kezdeményezi a figyelés bevezetését a portálról. A rendszer átirányítja erre a cikkre, hogy manuálisan engedélyezze a figyelést a jelen cikk korábbi részében ismertetett lépések követésével.
+A tároló-felismerések többfürtes nézete kiemeli az Azure Red Hat OpenShift-fürtöket, amelyek nem rendelkeznek figyeléssel a nem **figyelt fürtök** lapon. A fürt melletti **Engedélyezés** lehetőség nem kezdeményezi a figyelés bevezetését a portálról. A rendszer átirányítja erre a cikkre, hogy manuálisan engedélyezze a figyelést a jelen cikk korábbi részében ismertetett lépések követésével.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
@@ -166,10 +166,10 @@ A tárolók Azure Monitor több fürtből álló nézete kiemeli az Azure Red Ha
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Most, hogy engedélyezte a figyelést, hogy összegyűjtse a RedHat OpenShift 4. x-es verzióját és a rajtuk futó munkaterheléseket, megtudhatja, [hogyan használhatja](container-insights-analyze.md) a Azure monitor for containers szolgáltatást.
+- Most, hogy engedélyezte a figyelést, hogy összegyűjtse a RedHat OpenShift 4. x-es verziójának és a rajtuk futó munkaterheléseknek az állapotát és erőforrás-kihasználtságát, Ismerje meg, [hogyan használhatja](container-insights-analyze.md) a Container-információkat.
 
 - Alapértelmezés szerint a tároló ügynök összegyűjti az *StdOut* és a *stderr* tároló naplóit az összes olyan tárolóból, amely az összes névtérben fut, kivéve a Kube rendszert. Egy adott névtérhez vagy névterekhez tartozó tároló-naplózási gyűjtemény konfigurálásához tekintse át a tároló-elemzési [ügynök konfigurációját](container-insights-agent-config.md) a *ConfigMap* -konfigurációs fájlhoz használni kívánt adatgyűjtési beállítások konfigurálásához.
 
 - A Prometheus-metrikák a fürtből való leselejtezéséhez és elemzéséhez tekintse át a [Prometheus-metrikák leselejtezésének konfigurálása](container-insights-prometheus-integration.md)című ismertetőt.
 
-- Ha meg szeretné tudni, hogyan állíthatja le a fürt figyelését a tárolók Azure Monitor használatával, tekintse meg [Az Azure Red Hat OpenShift-fürt figyelésének leállítása](./container-insights-optout-openshift-v3.md)című témakört.
+- Ha szeretné megtudni, hogyan állíthatja le a fürt figyelését a tároló-információk használatával, tekintse meg az [Azure Red Hat OpenShift-fürt figyelésének leállítása](./container-insights-optout-openshift-v3.md)című témakört.

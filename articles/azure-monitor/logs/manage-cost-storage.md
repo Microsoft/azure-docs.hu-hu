@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/31/2021
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: d4ead88fb34d6475dae66d9708d7203eb94eaef1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4e711eb70c1fa099dd67b1ec23a0e8014ee11e47
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100617078"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731391"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>A használat és a költségek felügyelete Azure Monitor-naplókkal    
 
@@ -268,7 +268,7 @@ A kezdéshez itt láthatók az ajánlott beállítások a táblában a függvén
 - Riasztási szabály neve: elérte a napi adatkorlátot
 - Súlyosság: figyelmeztetés (1. pont)
 
-Miután meghatározta a riasztást, és elérte a korlátot, a rendszer riasztást indít el, és végrehajtja a műveleti csoportban definiált választ. E-mailben és SMS-ben értesítheti a csapatot, vagy automatizálhatja a műveleteket webhookok, Automation runbookok vagy [külső ITSM-megoldásokkal való integráció](../platform/itsmc-definition.md#create-itsm-work-items-from-azure-alerts)révén. 
+Miután meghatározta a riasztást, és elérte a korlátot, a rendszer riasztást indít el, és végrehajtja a műveleti csoportban definiált választ. E-mailben és SMS-ben értesítheti a csapatot, vagy automatizálhatja a műveleteket webhookok, Automation runbookok vagy [külső ITSM-megoldásokkal való integráció](../alerts/itsmc-definition.md#create-itsm-work-items-from-azure-alerts)révén. 
 
 ## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>A vártnál magasabb szintű használatot okozó hibák elhárítása
 
@@ -488,8 +488,8 @@ Néhány javaslat a gyűjtött naplók mennyiségének csökkentésére:
 | AzureDiagnostics           | [Erőforrás-napló gyűjteményének](../essentials/diagnostic-settings.md#create-in-azure-portal) módosítása a következőre: <br> – Csökkentse a Log Analytics számára naplókat küldő erőforrások számát <br> – Csak a szükséges naplókat gyűjtse |
 | Megoldásadatok olyan számítógépekről, amelyeknek nincs szükségük a megoldásra | A [megoldás célcsoportja](../insights/solution-targeting.md) csak a szükséges számítógépek adatainak gyűjtésére használható. |
 | Application Insights | A következő lehetőségeinek áttekintése: [https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume](managing Application Insights data volume) |
-| [SQL-elemzés](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | A naplózási beállítások finomhangolásához használja a [set-AzSqlServerAudit](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserveraudit) . |
-| Azure Sentinel | Tekintse át azokat a [Sentinel-adatforrásokat](https://docs.microsoft.com/azure/sentinel/connect-data-sources) , amelyeket mostanában engedélyezett a további adatmennyiség forrásaként. |
+| [SQL-elemzés](../insights/azure-sql.md) | A naplózási beállítások finomhangolásához használja a [set-AzSqlServerAudit](/powershell/module/az.sql/set-azsqlserveraudit) . |
+| Azure Sentinel | Tekintse át azokat a [Sentinel-adatforrásokat](../../sentinel/connect-data-sources.md) , amelyeket mostanában engedélyezett a további adatmennyiség forrásaként. |
 
 ### <a name="getting-nodes-as-billed-in-the-per-node-pricing-tier"></a>Csomópontok beolvasása az egyes csomópontok díjszabási szintjei szerint
 

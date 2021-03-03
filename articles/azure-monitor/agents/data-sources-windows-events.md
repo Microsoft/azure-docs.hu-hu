@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: c911b3a2ef927bf000513665dfafd735e3bcf181
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b747a4b58c9c460178d415d0b45ade814723d8fe
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100615535"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719865"
 ---
 # <a name="collect-windows-event-log-data-sources-with-log-analytics-agent"></a>Windows-Eseménynapló adatforrásainak összegyűjtése Log Analytics ügynökkel
 A Windows-eseménynaplók az egyik leggyakoribb [adatforrások](../agents/agent-data-sources.md) a Windows rendszerű virtuális gépeken található log Analytics ügynökök számára, mivel számos alkalmazás a Windows-eseménynaplóba ír.  Az eseményeket összegyűjtheti a szabványos naplókból, például a rendszerből és az alkalmazásból is, és megadhatja a figyelni kívánt alkalmazások által létrehozott egyéni naplókat.
 
 > [!IMPORTANT]
-> Ez a cikk a Windows-események összegyűjtését ismerteti a [log Analytics ügynökkel](../platform/log-analytics-agent.md) , amely a Azure monitor által használt ügynökök egyike. Más ügynökök különböző adatokat gyűjtenek, és eltérően vannak konfigurálva. A rendelkezésre álló ügynökök és az összegyűjtött adatok listáját lásd: [Azure monitor ügynökök áttekintése](../agents/agents-overview.md) .
+> Ez a cikk a Windows-események összegyűjtését ismerteti a [log Analytics ügynökkel](./log-analytics-agent.md) , amely a Azure monitor által használt ügynökök egyike. Más ügynökök különböző adatokat gyűjtenek, és eltérően vannak konfigurálva. A rendelkezésre álló ügynökök és az összegyűjtött adatok listáját lásd: [Azure monitor ügynökök áttekintése](../agents/agents-overview.md) .
 
 ![Windows-események](media/data-sources-windows-events/overview.png)     
 
@@ -63,7 +63,7 @@ A Windows-események rekordjainak típusa **esemény** , és a tulajdonságok a 
 ## <a name="log-queries-with-windows-events"></a>Lekérdezések naplózása Windows-eseményekkel
 Az alábbi táblázat a Windows-események rekordjait lekérő lekérdezések különböző példáit ismerteti.
 
-| Lekérdezés | Description |
+| Lekérdezés | Leírás |
 |:---|:---|
 | Esemény |Minden Windows-esemény. |
 | Az Event &#124;, ahol a EventLevelName = = "Error" |Minden Windows-esemény, amelynek súlyossága a hiba. |
@@ -73,5 +73,5 @@ Az alábbi táblázat a Windows-események rekordjait lekérő lekérdezések k�
 
 ## <a name="next-steps"></a>Következő lépések
 * A Log Analytics konfigurálásával más [adatforrásokat](../agents/agent-data-sources.md) is gyűjthet az elemzéshez.
-* További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../log-query/log-query-overview.md) .  
+* További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../logs/log-query-overview.md) .  
 * [Teljesítményszámlálók gyűjteményének](data-sources-performance-counters.md) konfigurálása a Windows-ügynökökből.

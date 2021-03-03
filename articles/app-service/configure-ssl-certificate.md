@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 15a77835e3e618c17b9839aa5a010cd4d29cebe1
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: e563981d3a68375105256aa6015aa94ada91326b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653112"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711705"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>TLS-/SSL-tanúsítvány hozzáadása az Azure App Service-ben
 
@@ -394,5 +394,5 @@ Most törölheti a App Service tanúsítványt. A bal oldali navigációs sávon
 * [Egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel Azure App Service](configure-ssl-bindings.md)
 * [HTTPS kényszerítése](configure-ssl-bindings.md#enforce-https)
 * [A TLS 1.1/1.2 kényszerítése](configure-ssl-bindings.md#enforce-tls-versions)
-* [TLS/SSL-tanúsítvány használata a kódban Azure App Service](configure-ssl-certificate-in-code.md)
+* [TLS-/SSL-tanúsítvány használata a kódban az Azure App Service-ben](configure-ssl-certificate-in-code.md)
 * [Gyakori kérdések: App Service tanúsítványok](./faq-configuration-and-management.md)

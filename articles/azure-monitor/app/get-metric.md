@@ -5,12 +5,12 @@ ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: b4a255235b2c6d772ab9a05dffacd4574ddd3280
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0ce2651d5cfcb1578d78982af109a004aaac11f4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584184"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719780"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>Egyéni metrika-gyűjtemény a .NET-ben és a .NET Core-ban
 
@@ -33,7 +33,7 @@ A szabályozás különösen fontos a mintavétel során, mivel a szabályozás 
 Az összefoglalás az `GetMetric()` ajánlott megközelítés, mivel az előzetes összesítést végzi, az összes Track () hívás értékeit összesíti, és percenként egyszer küld egy összegzést/összesítést. Ez jelentősen csökkentheti a költségek és a teljesítmény terhelését azáltal, hogy kevesebb adatpontot küld el, miközben továbbra is összegyűjti az összes releváns információt.
 
 > [!NOTE]
-> Csak a .NET-és .NET Core SDK-k rendelkeznek GetMetric () metódussal. Ha Java-t használ, használhat [mikrométer mérőszámokat](./micrometer-java.md) vagy `TrackMetric()` . Python esetén a [OpenCensus. stats](./opencensus-python.md#metrics) használatával egyéni metrikákat küldhet. A JavaScript és a Node.js továbbra is használhatja `TrackMetric()` , de tartsa szem előtt az előző szakaszban leírt kikötéseket.
+> Csak a .NET-és .NET Core SDK-k rendelkeznek GetMetric () metódussal. Ha Java-t használ, használhat [mikrométer mérőszámokat](./micrometer-java.md) vagy `TrackMetric()` . A JavaScript és a Node.js továbbra is használhatja `TrackMetric()` , de tartsa szem előtt az előző szakaszban leírt kikötéseket. Python esetén a [OpenCensus. stats](./opencensus-python.md#metrics) használatával egyéni metrikákat küldhet, de a metrikák implementációja eltérő.
 
 ## <a name="getting-started-with-getmetric"></a>A GetMetric első lépései
 
@@ -69,7 +69,7 @@ namespace WorkerService3
             // Here "computersSold", a custom metric name, is being tracked with a value of 42 every second.
             while (!stoppingToken.IsCancellationRequested)
             {
-                _telemetryClient.GetMetric("computersSold").TrackValue(42);
+                _telemetryClient.GetMetric("ComputersSold").TrackValue(42);
 
                 _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
                 await Task.Delay(1000, stoppingToken);
@@ -89,7 +89,7 @@ Application Insights Telemetry: {"name":"Microsoft.ApplicationInsights.Dev.00000
 "ai.internal.sdkVersion":"m-agg2c:2.12.0-21496",
 "ai.internal.nodeName":"Test-Computer-Name"},
 "data":{"baseType":"MetricData",
-"baseData":{"ver":2,"metrics":[{"name":"computersSold",
+"baseData":{"ver":2,"metrics":[{"name":"ComputersSold",
 "kind":"Aggregation",
 "value":1722,
 "count":41,
@@ -101,6 +101,9 @@ Application Insights Telemetry: {"name":"Microsoft.ApplicationInsights.Dev.00000
 ```
 
 Ez az egyetlen telemetria-elem 41 különböző metrikai mérések összesítését jelöli. Mivel ugyanezt az értéket küldi újra és újra, egy 0-as szórás *(szórás)* van, amely megegyezik a *maximális (max)* és a *minimális (min)* értékkel. Az *Value* tulajdonság az összesített egyedi értékek összegét jelöli.
+
+> [!NOTE]
+> A GetMetric nem támogatja az utolsó érték (azaz a "mérőműszer") követését vagy a hisztogramok/eloszlások követését.
 
 Ha megvizsgáljuk a Application Insights erőforrást a naplók (Analytics) szolgáltatásban, ez az egyéni telemetria-elem a következőképpen fog kinézni:
 
@@ -283,7 +286,7 @@ computersSold.TrackValue(100, "Dim1Value1", "Dim2Value3");
 // The above call does not track the metric, and returns false.
 ```
 
-* `seriesCountLimit` a metrika által tartalmazott adatsorozatok maximális száma. Ha elérte ezt a korlátot, a meghívja a következőt: `TrackValue()` .
+* `seriesCountLimit` a metrika által tartalmazott adatsorozatok maximális száma. Ha elérte ezt a korlátot, a `TrackValue()` rendszer nem fogja követni a hívásokat.
 * `valuesPerDimensionLimit` a dimenziók eltérő értékeinek megkorlátja hasonló módon.
 * `restrictToUInt32Values` meghatározza, hogy a nem negatív egész értékeket kell-e követni.
 

@@ -6,19 +6,19 @@ ms.author: aul
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: d6731673c2b9918b3b19d14f45d51a6424ef86f3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7c43d1e4dda10cca6b868ef814ec8298d6e21fd0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100619428"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736967"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-transition-guide"></a>Azure Monitor a Designer és a munkafüzetek közötti áttérési útmutató megtekintése
 A [tervező](view-designer.md) a Azure monitor egyik funkciója, amely lehetővé teszi, hogy egyéni nézeteket hozzon létre, amelyek segítségével megjelenítheti a log Analytics-munkaterületen lévő, diagramokkal, listákkal és időpontokkal kapcsolatos adatait. A rendszer átváltotta a munkafüzeteket, hogy rugalmas vászonra legyen szükség az adatelemzéshez és a Azure Portalon belüli, gazdag vizualizációs jelentések létrehozásához. Ebből a cikkből megtudhatja, hogyan lehet áttérni a tervezőből a munkafüzetekbe. 
 
 
 ## <a name="workbooks-overview"></a>Munkafüzetek áttekintése
-A [munkafüzetek](../insights/vminsights-workbooks.md) szövegeket, [naplókat](/azure/data-explorer/kusto/query/), metrikákat és paramétereket egyesítenek gazdag interaktív jelentésekben. A csoporttagok ugyanazzal az Azure-erőforrásokkal való hozzáféréssel is szerkeszthetők a munkafüzetek.
+A [munkafüzetek](../vm/vminsights-workbooks.md) szövegeket, [naplókat](/azure/data-explorer/kusto/query/), metrikákat és paramétereket egyesítenek gazdag interaktív jelentésekben. A csoporttagok ugyanazzal az Azure-erőforrásokkal való hozzáféréssel is szerkeszthetők a munkafüzetek.
 
 A munkafüzetek hasznosak a következő forgatókönyvekhez:
 

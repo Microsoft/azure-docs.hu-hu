@@ -7,18 +7,39 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 51e8f01726c732604199ff08323f073d508da66e
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 6a5460a691658bda1cd60e503be8c98433c9c343
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602316"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720154"
 ---
 # <a name="examples-of-an-attestation-policy"></a>Példa igazolási házirendre
 
-Az igazolási szabályzat az igazolási tanúsítványok feldolgozására szolgál, és meghatározza, hogy az Azure-igazolás kiadja-e az igazolási jogkivonatot. Az igazolási jogkivonat létrehozása egyéni házirendekkel szabályozható. Az alábbiakban néhány példa az igazolási házirendre.
+Az igazolási szabályzat az igazolási tanúsítványok feldolgozására szolgál, és meghatározza, hogy az Azure-igazolás kiadja-e az igazolási jogkivonatot. Az igazolási jogkivonat létrehozása egyéni házirendekkel szabályozható. Az alábbiakban néhány példa az igazolási házirendre. 
 
-## <a name="default-policy-for-an-sgx-enclave"></a>SGX ENKLÁVÉHOZ enklávé alapértelmezett szabályzata 
+## <a name="sample-custom-policy-for-an-sgx-enclave"></a>Egyéni szabályzat mintája egy SGX ENKLÁVÉHOZ enklávéhoz 
+
+```
+version= 1.0;
+authorizationrules
+{
+       [ type=="x-ms-sgx-is-debuggable", value==false ]
+        && [ type=="x-ms-sgx-product-id", value==<product-id> ]
+        && [ type=="x-ms-sgx-svn", value>= 0 ]
+        && [ type=="x-ms-sgx-mrsigner", value=="<mrsigner>"]
+    => permit();
+};
+issuancerules {
+c:[type=="x-ms-sgx-mrsigner"] => issue(type="<custom-name>", value=c.value);
+};
+
+```
+További információ az Azure-igazolás által generált bejövő jogcímekről: [jogcím-készletek](/azure/attestation/claim-sets). A bejövő jogcímeket a szabályzatok szerzői az egyéni szabályzatok engedélyezési szabályainak meghatározására használhatják. 
+
+A kiállítási szabályok szakasz nem kötelező. Ebben a szakaszban a felhasználók további kimenő jogcímeket hozhatnak létre az igazolási jogkivonatban egyéni névvel. További információ a szolgáltatás által az igazolási jogkivonatban létrehozott kimenő jogcímekről: [jogcím-készletek](/azure/attestation/claim-sets).
+
+## <a name="default-policy-for-an-sgx-enclave"></a>SGX ENKLÁVÉHOZ enklávé alapértelmezett szabályzata
 
 ```
 version= 1.0;
@@ -38,17 +59,18 @@ issuancerules
 };
 ```
 
-## <a name="sample-custom-policy-for-an-sgx-enclave"></a>Egyéni szabályzat mintája egy SGX ENKLÁVÉHOZ enklávéhoz 
+Az alapértelmezett házirendben használt jogcímek elavultnak tekintendők, de teljes mértékben támogatottak, és a jövőben is szerepelni fognak. A nem elavult jogcím-nevek használata javasolt. A javasolt jogcímek neveivel kapcsolatos további információkért lásd: [jogcím-készletek](/azure/attestation/claim-sets). 
+
+## <a name="sample-custom-policy-to-support-multiple-sgx-enclaves"></a>Egyéni szabályzat mintája több SGX ENKLÁVÉHOZ enklávé támogatásához
 
 ```
 version= 1.0;
-authorizationrules
+authorizationrules 
 {
-       [ type=="x-ms-sgx-is-debuggable", value==false ]
-        && [ type=="x-ms-sgx-product-id", value==<product-id> ]
-        && [ type=="x-ms-sgx-svn", value>= 0 ]
-        && [ type=="x-ms-sgx-mrsigner", value=="<mrsigner>"]
-    => permit();
+    [ type=="x-ms-sgx-is-debuggable", value==true ]&&
+    [ type=="x-ms-sgx-mrsigner", value=="mrsigner1"] => permit(); 
+    [ type=="x-ms-sgx-is-debuggable", value==true ]&& 
+    [ type=="x-ms-sgx-mrsigner", value=="mrsigner2"] => permit(); 
 };
 ```
 
@@ -66,7 +88,7 @@ eyJhbGciOiJSU0EyNTYiLCJ4NWMiOlsiTUlJQzFqQ0NBYjZnQXdJQkFnSUlTUUdEOUVGakJcdTAwMkJZ
 
 </br>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Igazolási szabályzat létrehozása és aláírása](author-sign-policy.md)
 - [Az Azure-igazolás beállítása a PowerShell használatával](quickstart-powershell.md)

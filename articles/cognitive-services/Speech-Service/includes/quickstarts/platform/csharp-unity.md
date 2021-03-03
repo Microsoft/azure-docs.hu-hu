@@ -11,17 +11,17 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 58ce8dc67488c42485f2fac73e514c5639b11cf9
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 895943b00ef2c2541b7de6cc81648877c9a73c0d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100551311"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750292"
 ---
 Ez az útmutató bemutatja, hogyan telepítheti az [Unity](https://unity3d.com/) [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t.
 
 > [!NOTE]
-> Az Unity Speech SDK támogatja a Windows Desktopot (x86 és x64) vagy Univerzális Windows-platform (x86, x64, ARM/ARM64), Android (x86, ARM32/64) és iOS (x64 Simulator, ARM32 és ARM64)
+> Az egységhez készült Speech SDK támogatja a Windows Desktopot (x86 és x64) vagy Univerzális Windows-platform (x86, x64, ARM/ARM64), Android (x86, ARM32/64) és iOS (x64 Simulator és ARM64)
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 

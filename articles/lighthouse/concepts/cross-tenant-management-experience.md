@@ -3,12 +3,12 @@ title: Bérlők közötti felügyeleti megoldások
 description: Az Azure-beli delegált erőforrás-kezelés lehetővé teszi a több-bérlős felügyeleti élményt.
 ms.date: 02/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 97b28409a7f180ffbf4f8766ee281710d6226019
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 644cac70ef6459a1b0be45e9ab8f2757fafddeed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573084"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699249"
 ---
 # <a name="cross-tenant-management-experiences"></a>Bérlők közötti felügyeleti megoldások
 
@@ -97,8 +97,8 @@ A legtöbb feladat és szolgáltatás a felügyelt bérlők delegált erőforrá
 
 - A delegált előfizetésekre vonatkozó riasztások megtekintése, valamint a riasztások megtekintésének és frissítésének lehetősége az összes előfizetésben
 - A delegált előfizetések tevékenységi naplójának részleteinek megtekintése
-- [Log Analytics](../../azure-monitor/platform/service-providers.md): a távoli munkaterületekről származó adatok lekérdezése több bérlőn (vegye figyelembe, hogy az ügyfél bérlői munkaterületeiről származó adatokhoz való hozzáféréshez használt Automation-fiókokat ugyanabban a bérlőben kell létrehozni)
-- [Műveletnapló-riasztások létrehozása, megtekintése és kezelése](../../azure-monitor/platform/alerts-activity-log.md) az ügyfelek bérlői számára
+- [Log Analytics](../../azure-monitor/logs/service-providers.md): a távoli munkaterületekről származó adatok lekérdezése több bérlőn (vegye figyelembe, hogy az ügyfél bérlői munkaterületeiről származó adatokhoz való hozzáféréshez használt Automation-fiókokat ugyanabban a bérlőben kell létrehozni)
+- [Műveletnapló-riasztások létrehozása, megtekintése és kezelése](../../azure-monitor/alerts/alerts-activity-log.md) az ügyfelek bérlői számára
 - Hozzon létre riasztásokat az olyan ügyfél-bérlők számára, amelyek automatizálják az automatizálást, például Azure Automation runbookok vagy Azure Functionst a bérlő kezelése webhookokon keresztül
 - [Diagnosztikai beállítások](../..//azure-monitor/essentials/diagnostic-settings.md) létrehozása az ügyfelek bérlői számára az erőforrás-naplók elküldéséhez a munkaterületek kezeléséhez a bérlőben
 - SAP-alapú számítási [feladatokhoz az SAP-megoldások metrikáinak figyelése összesített nézettel az ügyfél-bérlők között](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)

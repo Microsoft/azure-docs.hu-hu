@@ -9,12 +9,12 @@ ms.workload: azure-vs
 ms.topic: tutorial
 ms.date: 10/5/2020
 ms.author: ghogen
-ms.openlocfilehash: b12f8beeee054e547a6b58750d8482d32ee14453
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: 80aa160c53b278137467dba2afa41384c7c4f378
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747257"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722670"
 ---
 # <a name="create-and-deploy-a-azure-cloud-service-extended-support-using-visual-studio"></a>Azure Cloud Service (bővített támogatás) létrehozása és üzembe helyezése a Visual Studióval
 
@@ -63,7 +63,7 @@ A Visual Studio Azure Project társításokkal rendelkezik a megoldásban szerep
 - **Szolgáltatás-definíciós fájl** – meghatározza az alkalmazás futásidejű beállításait, beleértve a szükséges szerepköröket, a végpontokat és a virtuális gépek méretét.
 - **Szolgáltatás-konfigurációs fájl** – beállítja, hogy egy szerepkör hány példánya fusson, és milyen beállítások vannak definiálva a szerepkörhöz.
 
-További információ ezekről a fájlokról: [Azure Cloud Service-szerepkörök konfigurálása a Visual Studióval](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service).
+További információ ezekről a fájlokról: [Azure Cloud Service-szerepkörök konfigurálása a Visual Studióval](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service).
 
 ## <a name="publish-a-cloud-service"></a>Felhőalapú szolgáltatás közzététele
 
@@ -75,7 +75,7 @@ További információ ezekről a fájlokról: [Azure Cloud Service-szerepkörök
 
 1. **Fiók** – válasszon ki egy fiókot, vagy válassza a fiók **hozzáadása** lehetőséget a fiók legördülő listában.
 
-1. **Válassza ki az előfizetést** – válassza ki az üzemelő példányhoz használni kívánt előfizetést. A Cloud Services üzembe helyezéséhez használt előfizetés (kiterjesztett támogatás) tulajdonosi vagy közreműködői szerepkörökkel kell rendelkeznie a szerepköralapú hozzáférés-vezérlés (RBAC) használatával. Ha az előfizetése nem rendelkezik ezekkel a szerepkörökkel, a folytatás előtt tekintse meg [a szerepkör-hozzárendelés hozzáadásához szükséges lépéseket](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-steps) .
+1. **Válassza ki az előfizetést** – válassza ki az üzemelő példányhoz használni kívánt előfizetést. A Cloud Services üzembe helyezéséhez használt előfizetés (kiterjesztett támogatás) tulajdonosi vagy közreműködői szerepkörökkel kell rendelkeznie a szerepköralapú hozzáférés-vezérlés (RBAC) használatával. Ha az előfizetése nem rendelkezik ezekkel a szerepkörökkel, a folytatás előtt tekintse meg [a szerepkör-hozzárendelés hozzáadásához szükséges lépéseket](../role-based-access-control/role-assignments-steps.md) .
 
 1. Kattintson a **tovább** gombra a **Beállítások** lapra való áttéréshez.
 
@@ -105,7 +105,7 @@ További információ ezekről a fájlokról: [Azure Cloud Service-szerepkörök
 
    ![Diagnosztikai beállítások](./media/diagnostics-settings.png)
 
-   A diagnosztika lehetővé teszi az Azure Cloud Service (vagy Azure-beli virtuális gép) hibáinak megoldását. További információ a diagnosztika szolgáltatásról: [a diagnosztika konfigurálása az Azure Cloud Services és Virtual Machines](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines). További információ a Application Insightsről: [Mi az Application Insights?](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)
+   A diagnosztika lehetővé teszi az Azure Cloud Service (vagy Azure-beli virtuális gép) hibáinak megoldását. További információ a diagnosztika szolgáltatásról: [a diagnosztika konfigurálása az Azure Cloud Services és Virtual Machines](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines). További információ a Application Insightsről: [Mi az Application Insights?](../azure-monitor/app/app-insights-overview.md)
 
 1. Az **Összefoglalás** lapra való áttéréshez kattintson a **tovább** gombra.
 
@@ -124,6 +124,6 @@ Gratulálunk! Közzétette a kiterjesztett támogatási Cloud Service-projektet 
 
 Az oktatóanyag alapján létrehozott Azure-erőforrások törléséhez nyissa meg a [Azure Portal](https://portal.azure.com), válassza az **erőforráscsoportok** lehetőséget, keresse meg és nyissa meg a szolgáltatás létrehozásához használt erőforráscsoportot, majd válassza az **erőforráscsoport törlése** elemet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Állítsa be a folyamatos integrációt (CI) a **közzétételi** képernyőn a **configure (Konfigurálás** ) gomb használatával. További információt az Azure- [folyamatok dokumentációjában](https://docs.microsoft.com/azure/devops/pipelines)talál.
+Állítsa be a folyamatos integrációt (CI) a **közzétételi** képernyőn a **configure (Konfigurálás** ) gomb használatával. További információt az Azure- [folyamatok dokumentációjában](/azure/devops/pipelines)talál.

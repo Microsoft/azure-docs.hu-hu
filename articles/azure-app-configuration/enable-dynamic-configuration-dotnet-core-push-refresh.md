@@ -14,12 +14,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/25/2020
 ms.author: abarora
-ms.openlocfilehash: 553c5081947ad784a8cdae6ad0eb92fc3e2a2c85
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 977982bf1a36b4b85524df2513f2272fe4a8d1bf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99982196"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701518"
 ---
 # <a name="tutorial-use-dynamic-configuration-using-push-refresh-in-a-net-core-app"></a>Oktatóanyag: dinamikus konfiguráció használata a leküldéses frissítéssel egy .NET Core-alkalmazásban
 
@@ -27,7 +27,7 @@ Az App Configuration .NET Core ügyféloldali függvénytár támogatja a konfig
 
 1. Lekérdezési modell: ez az alapértelmezett viselkedés, amely lekérdezést használ a konfiguráció változásainak észlelésére. Ha egy beállítás gyorsítótárazott értéke lejár, a következő hívást `TryRefreshAsync` `RefreshAsync` küld a kiszolgálónak, hogy ellenőrizze, hogy megváltozott-e a konfiguráció, és szükség esetén lekéri a frissített konfigurációt.
 
-1. Leküldéses modell: ez az [alkalmazás konfigurációs eseményeivel](./concept-app-configuration-event.md) azonosítja a konfiguráció módosításait. Miután az alkalmazás konfigurációja beállítja a kulcs értékének változási eseményeinek Azure Event Gridre való küldését, az alkalmazás ezeket az eseményeket használhatja a konfiguráció frissítéséhez szükséges kérelmek teljes számának optimalizálásához. Az alkalmazások dönthetnek úgy, hogy előfizethetnek ezekre közvetlenül a Event Grid, vagy az egyik [támogatott eseménykezelőt](https://docs.microsoft.com/azure/event-grid/event-handlers) , például egy webhookot, egy Azure-függvényt vagy egy Service Bus témakört.
+1. Leküldéses modell: ez az [alkalmazás konfigurációs eseményeivel](./concept-app-configuration-event.md) azonosítja a konfiguráció módosításait. Miután az alkalmazás konfigurációja beállítja a kulcs értékének változási eseményeinek Azure Event Gridre való küldését, az alkalmazás ezeket az eseményeket használhatja a konfiguráció frissítéséhez szükséges kérelmek teljes számának optimalizálásához. Az alkalmazások dönthetnek úgy, hogy előfizethetnek ezekre közvetlenül a Event Grid, vagy az egyik [támogatott eseménykezelőt](../event-grid/event-handlers.md) , például egy webhookot, egy Azure-függvényt vagy egy Service Bus témakört.
 
 Az alkalmazások dönthetnek úgy, hogy előfizethetnek ezekre az eseményekre közvetlenül a Event Grid vagy egy webhookon keresztül, illetve az események Azure Service Busba való továbbításával is. A Azure Service Bus SDK egy API-t biztosít egy olyan üzenetkezelő regisztrálásához, amely leegyszerűsíti ezt a folyamatot olyan alkalmazások esetében, amelyek nem rendelkeznek HTTP-végponttal, vagy nem kívánják lekérdezni az Event gridet a változások folyamatos változásairól.
 
@@ -50,7 +50,7 @@ Az oktatóanyag elvégzéséhez telepítse a [.net Core SDK](https://dotnet.micr
 
 ## <a name="set-up-azure-service-bus-topic-and-subscription"></a>Azure Service Bus témakör és előfizetés beállítása
 
-Ez az oktatóanyag a Event Grid Service Bus integrációját használja, hogy leegyszerűsítse a konfigurációs változások észlelését azon alkalmazások esetében, amelyek folyamatosan nem kívánják lekérdezni az alkalmazás konfigurációját. A Azure Service Bus SDK egy API-t biztosít egy olyan üzenetkezelő regisztrálásához, amely a konfiguráció frissítésére használható, ha az alkalmazás konfigurációjában változások észlelhetők. Kövesse a rövid útmutató lépéseit [: a Azure Portal használatával hozzon létre egy Service Bus témakört és előfizetést](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal) a Service Bus-névtér,-témakör és-előfizetés létrehozásához.
+Ez az oktatóanyag a Event Grid Service Bus integrációját használja, hogy leegyszerűsítse a konfigurációs változások észlelését azon alkalmazások esetében, amelyek folyamatosan nem kívánják lekérdezni az alkalmazás konfigurációját. A Azure Service Bus SDK egy API-t biztosít egy olyan üzenetkezelő regisztrálásához, amely a konfiguráció frissítésére használható, ha az alkalmazás konfigurációjában változások észlelhetők. Kövesse a rövid útmutató lépéseit [: a Azure Portal használatával hozzon létre egy Service Bus témakört és előfizetést](../service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal.md) a Service Bus-névtér,-témakör és-előfizetés létrehozásához.
 
 Az erőforrások létrehozása után adja hozzá a következő környezeti változókat. Ezeket a rendszer a konfigurációs változásokhoz tartozó eseménykezelő regisztrálására használja az alkalmazás kódjában.
 
@@ -81,7 +81,7 @@ Az erőforrások létrehozása után adja hozzá a következő környezeti vált
     ![Alkalmazás-konfigurációs esemény-előfizetések](./media/event-subscription-view.png)
 
 > [!NOTE]
-> A konfigurációs módosítások előfizetése során a rendszer egy vagy több szűrőt is használhat az alkalmazásnak eljuttatott események számának csökkentésére. Ezek [Event Grid előfizetési szűrők](https://docs.microsoft.com/azure/event-grid/event-filtering) vagy [Service Bus előfizetési szűrők](https://docs.microsoft.com/azure/service-bus-messaging/topic-filters)segítségével konfigurálhatók. Az előfizetési szűrő például arra használható, hogy csak az eseményekre fizessen elő olyan változásokra, amelyek egy adott karakterlánccal kezdődnek.
+> A konfigurációs módosítások előfizetése során a rendszer egy vagy több szűrőt is használhat az alkalmazásnak eljuttatott események számának csökkentésére. Ezek [Event Grid előfizetési szűrők](../event-grid/event-filtering.md) vagy [Service Bus előfizetési szűrők](../service-bus-messaging/topic-filters.md)segítségével konfigurálhatók. Az előfizetési szűrő például arra használható, hogy csak az eseményekre fizessen elő olyan változásokra, amelyek egy adott karakterlánccal kezdődnek.
 
 ## <a name="register-event-handler-to-reload-data-from-app-configuration"></a>Az eseménykezelő regisztrálása az alkalmazások konfigurációjának betöltéséhez
 
@@ -171,7 +171,7 @@ namespace TestConsole
 }
 ```
 
-A [SetDirty](https://docs.microsoft.com/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.iconfigurationrefresher.setdirty) metódussal lehet beállítani a gyorsítótárazott értéket a frissítésre regisztrált kulcs-értékekhez. Ezzel biztosíthatja, hogy a következő hívással `RefreshAsync` vagy `TryRefreshAsync` újból érvényesítse a gyorsítótárazott értékeket az alkalmazás konfigurációjával, és szükség esetén frissítse őket.
+A [SetDirty](/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.iconfigurationrefresher.setdirty) metódussal lehet beállítani a gyorsítótárazott értéket a frissítésre regisztrált kulcs-értékekhez. Ezzel biztosíthatja, hogy a következő hívással `RefreshAsync` vagy `TryRefreshAsync` újból érvényesítse a gyorsítótárazott értékeket az alkalmazás konfigurációjával, és szükség esetén frissítse őket.
 
 A rendszer véletlenszerű késleltetést ad hozzá, mielőtt a gyorsítótárazott érték inkonzisztensként van megjelölve, hogy csökkentse a lehetséges szabályozást, ha egyszerre több példány frissül. A gyorsítótárazott érték alapértelmezett maximális késleltetése 30 másodperc, de felülbírálható egy opcionális `TimeSpan` paraméternek a metódusba való átadásával `SetDirty` .
 

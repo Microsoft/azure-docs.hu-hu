@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 47883c742d77a88adb662e8dded0723f0e105385
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 3a5c98b3fad76d2206d1fcba79663063e22ecdbc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044186"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737970"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Az Azure Digital Twins Twin gráf lekérdezése
 
@@ -21,7 +21,7 @@ Ez a cikk lekérdezési példákat és részletes útmutatást nyújt az **Azure
 
 Ez a cikk a lekérdezés nyelvi felépítését és a digitális ikrek gyakori lekérdezési műveleteit bemutató példákkal kezdődik. Ezután leírja, hogyan futtathat lekérdezéseket az Azure Digital Twins [query API](/rest/api/digital-twins/dataplane/query) vagy egy [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis)használatával.
 
-> [!TIP]
+> [!NOTE]
 > Ha az alábbi lekérdezéseket API-vagy SDK-hívással futtatja, a lekérdezés szövegét egyetlen sorba kell bontania.
 
 ## <a name="show-all-digital-twins"></a>Az összes digitális ikrek megjelenítése
@@ -36,8 +36,8 @@ Digitális ikrek beolvasása **Tulajdonságok** alapján (beleértve az azonosí
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty1":::
 
-> [!TIP]
-> A Digital Twin AZONOSÍTÓját a rendszer a metaadatok mező használatával kérdezi le `$dtId` .
+> [!NOTE]
+> Egy digitális ikerpéldány azonosítója a `$dtId` metaadat-mezővel kérdezhető le.
 
 Azt is megteheti, **hogy egy bizonyos tulajdonság definiálva van-e**. Itt látható egy olyan lekérdezés, amely a megadott *Location* tulajdonsággal rendelkező ikreket tartalmaz:
 
@@ -50,6 +50,10 @@ Ez segít az ikreknek a *címke* tulajdonságai alapján való beszerzésében, 
 Az ikreket **egy tulajdonság típusa** alapján is elérheti. Íme egy lekérdezés, amely olyan ikreket kap, amelyek *hőmérsékleti* tulajdonsága egy szám:
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty3":::
+
+>[!TIP]
+> Ha egy tulajdonság típusa típusú `Map` , közvetlenül a lekérdezésben használhatja a Térkép kulcsait és értékeit, például a következőt:
+> :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty4":::
 
 ## <a name="query-by-model"></a>Lekérdezés modell szerint
 
@@ -88,10 +92,10 @@ Mindhárom argumentumot együtt is át lehet adni: `IS_OF_MODEL(twinCollection, 
 
 A digitális ikrek **kapcsolatain** alapuló lekérdezések esetén az Azure digitális Twins lekérdezési nyelvének speciális szintaxisa van.
 
-A kapcsolatok a záradék lekérdezési hatókörében vannak behúzva `FROM` . A "klasszikus" SQL-Type nyelvek egyik fontos különbsége, hogy az ebben a `FROM` záradékban szereplő kifejezések nem táblázatos jellegűek, a záradék pedig az `FROM` entitások közötti kapcsolat bejárását fejezi ki, és a (z) Azure digitális Twins-verziójával van írva `JOIN` .
+A kapcsolatok a `FROM` záradékkal vannak bevonva a lekérdezés hatókörébe. A "klasszikus" SQL-Type nyelvek egyik fontos különbsége, hogy az ebben a `FROM` záradékban szereplő kifejezések nem táblázatos jellegűek, a záradék pedig az `FROM` entitások közötti kapcsolat bejárását fejezi ki, és a (z) Azure digitális Twins-verziójával van írva `JOIN` .
 
-Ne felejtse el, hogy az Azure Digital Twins [modell](concepts-models.md) képességeivel a kapcsolatok nem léteznek az ikrektől függetlenül. Ez azt jelenti, hogy az Azure Digital Twins lekérdezési nyelve `JOIN` egy kicsit eltér az általános SQL `JOIN` -től, mivel itt nem lehet egymástól függetlenül lekérdezni a kapcsolatokat, és egy Twin-hez kell kötni.
-A különbség befoglalásához a kulcsszó a `RELATED` `JOIN` kettős kapcsolatokra mutató hivatkozásokat használja a záradékban.
+Ne felejtse el, hogy az Azure Digital Twins [modell](concepts-models.md) képességeivel a kapcsolatok nem léteznek az ikrektől függetlenül. Ez azt jelenti, hogy az Azure Digital Twins lekérdezési nyelvben a `JOIN` kissé eltér az általános SQL-beli `JOIN`-tól, mert a kapcsolatok itt nem kérdezhetők le külön, hanem egy ikerpéldányhoz kell kötni azokat.
+Ennek a különbségnek a megnyilvánulása, hogy a `JOIN` záradékban a `RELATED` kulcsszóval lehet egy ikerpéldány kapcsolatainak halmazára hivatkozni.
 
 A következő szakasz több példát mutat be, hogy ez hogyan néz ki.
 
@@ -107,11 +111,11 @@ Példa a kapcsolaton alapuló lekérdezésre. Ez a kódrészlet kiválasztja az 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByRelationship1":::
 
 > [!NOTE]
-> A fejlesztőnek nem kell `JOIN` összekapcsolnia ezt a záradékban található kulcs értékével `WHERE` (vagy a definícióban szereplő kulcs értékének megadásával `JOIN` ). Ezt a korrelációt a rendszer automatikusan kiszámítja, mivel a kapcsolat tulajdonságai maguk határozzák meg a célként megadott entitást.
+> A fejlesztőnek nem kell `JOIN` összekapcsolnia ezt a záradékban található kulcs értékével `WHERE` (vagy a definícióban szereplő kulcs értékének megadásával `JOIN` ). Ezt az összefüggést a rendszer automatikusan számítja ki, mivel maguk a kapcsolat tulajdonságai azonosítják a célentitást.
 
 ### <a name="query-the-properties-of-a-relationship"></a>Kapcsolat tulajdonságainak lekérdezése
 
-Hasonlóan ahhoz, ahogy a digitális ikrek rendelkeznek a DTDL-on keresztül leírt tulajdonságokkal, a kapcsolatok is rendelkezhetnek tulajdonságokkal. Az ikreket **a kapcsolataik tulajdonságai alapján** kérdezheti le.
+Hasonlóan ahhoz, ahogyan a digitális ikerpéldányok a DTDL által leírt tulajdonságokkal rendelkeznek, a kapcsolatoknak is lehetnek tulajdonságaik. Az ikreket **a kapcsolataik tulajdonságai alapján** kérdezheti le.
 Az Azure digitális Twins lekérdezési nyelve lehetővé teszi a kapcsolatok szűrését és kivetítését azáltal, hogy a záradékon belül egy aliast rendel a kapcsolathoz `JOIN` .
 
 Példaként vegyünk egy olyan *servicedBy* -kapcsolatot, amely *reportedCondition* tulajdonsággal rendelkezik. Az alábbi lekérdezésben ez a kapcsolat az "R" aliast kapja, hogy hivatkozzon a tulajdonságára.
@@ -220,12 +224,17 @@ A következő kódrészlet az ügyfélalkalmazás [.net (C#) SDK](/dotnet/api/ov
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="RunQuery":::
 
-Ez a hívás egy [BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin?view=azure-dotnet&preserve-view=true) objektum formájában adja vissza a lekérdezés eredményét.
+Az ebben a hívásban használt lekérdezés a digitális ikrek listáját adja vissza, amelyet a fenti példa [BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin?view=azure-dotnet&preserve-view=true) -objektumokkal képvisel. Az egyes lekérdezésekhez tartozó adatok visszatérési típusa az utasítással megadott feltételektől függ `SELECT` :
+* A-vel kezdődő lekérdezések `SELECT * FROM ...` visszaküldik a digitális Twins (amelyek `BasicDigitalTwin` objektumokként szerializálható vagy más, az Ön által létrehozott egyéni digitális különálló típusok) listáját adják vissza.
+* A formátumban kezdődő lekérdezések `SELECT <A>, <B>, <C> FROM ...` egy szótárt adnak vissza kulcsokkal, `<A>` `<B>` és `<C>` .
+* Az utasítások más formátuma is `SELECT` elvégezhető egyéni adatértékek visszaküldéséhez. Érdemes lehet saját osztályokat létrehozni a nagyon testreszabott eredményhalmaz kezelésére. 
+
+### <a name="query-with-paging"></a>Lekérdezés lapozással
 
 A lekérdezési hívások támogatják a lapozást. Íme egy teljes példa a `BasicDigitalTwin` lekérdezési eredmény típusaként a hibakezelés és a lapozás használatával:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="FullQuerySample":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az [Azure Digital Twins API-kkal és SDK](how-to-use-apis-sdks.md)-kkal kapcsolatban, beleértve a cikkből származó lekérdezések futtatásához használt LEKÉRDEZÉSi API-t.

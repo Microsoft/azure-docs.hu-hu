@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 7841affc7a8988cb113af3b728ae117093000011
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 46b056c22a6d1c70a729f5b9558f53c685a878f0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257457"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732853"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL – rugalmas kiszolgáló (előzetes verzió)
 
@@ -24,7 +24,7 @@ Ebben a cikkben áttekintjük és bemutatjuk a rugalmas kiszolgáló üzembe hel
 
 ## <a name="overview"></a>Áttekintés
 
-Azure Database for MySQL rugalmas kiszolgáló egy teljes körűen felügyelt adatbázis-szolgáltatás, amely részletesebb szabályozást és rugalmasságot biztosít az adatbázis-felügyeleti funkciók és a konfigurációs beállítások felett. Általánosságban elmondható, hogy a szolgáltatás nagyobb rugalmasságot és kiszolgáló-konfigurációt biztosít a felhasználói követelmények alapján. A rugalmas kiszolgáló architektúrája lehetővé teszi a felhasználók számára, hogy az egyetlen rendelkezésre állási zónában és több rendelkezésre állási zónában is magas rendelkezésre állást engedélyezzenek A rugalmas kiszolgálók jobb költség-optimalizálási ellenőrzéseket is biztosítanak, amelyek lehetővé teszik a kiszolgáló és a feltört SKU-hálózat leállítását/elindítását, ideális olyan számítási feladatokhoz, amelyeknek nincs szükségük teljes számítási kapacitás A szolgáltatás jelenleg a MySQL 5,7 közösségi verzióját támogatja. A szolgáltatás jelenleg előzetes verzióban érhető el, és ma már számos [Azure-régióban](https://azure.microsoft.com/global-infrastructure/services/)elérhető.
+Azure Database for MySQL rugalmas kiszolgáló egy teljes körűen felügyelt adatbázis-szolgáltatás, amely részletesebb szabályozást és rugalmasságot biztosít az adatbázis-felügyeleti funkciók és a konfigurációs beállítások felett. Általánosságban elmondható, hogy a szolgáltatás nagyobb rugalmasságot és kiszolgáló-konfigurációt biztosít a felhasználói követelmények alapján. A rugalmas kiszolgáló architektúrája lehetővé teszi a felhasználók számára, hogy az egyetlen rendelkezésre állási zónában és több rendelkezésre állási zónában is magas rendelkezésre állást engedélyezzenek A rugalmas kiszolgálók jobb költség-optimalizálási ellenőrzéseket is biztosítanak, amelyek lehetővé teszik a kiszolgáló és a feltört SKU-hálózat leállítását/elindítását, ideális olyan számítási feladatokhoz, amelyeknek nincs szükségük teljes számítási kapacitás A szolgáltatás jelenleg a MySQL 5,7 és a 8,0 közösségi verzióját támogatja. A szolgáltatás jelenleg előzetes verzióban érhető el, és ma már számos [Azure-régióban](https://azure.microsoft.com/global-infrastructure/services/)elérhető.
 
 A rugalmas kiszolgálók a legmegfelelőbbek a következőhöz: 
 - Hatékonyabb vezérlést és testreszabást igénylő alkalmazások fejlesztése.

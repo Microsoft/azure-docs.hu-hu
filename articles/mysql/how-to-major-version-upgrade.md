@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: how-to
 ms.date: 1/28/2021
-ms.openlocfilehash: ea2dc877c7bc6db387985e7b5cd1153e195ab4f1
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 471ccd6176bd8821ce7e40fde6d961bd9bcf7f0c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509570"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702147"
 ---
 # <a name="major-version-upgrade-in-azure-database-for-mysql-single-server"></a>Főverzió frissítése Azure Database for MySQL egyetlen kiszolgálón
 
@@ -59,7 +59,7 @@ Az alábbi lépéseket követve elvégezheti a MySQL 5,6-kiszolgáló Azure-adat
  
    Ehhez a frissítéshez az Azure CLI 2.16.0 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van. Futtassa az az version parancsot a telepített verzió és a függő kódtárak megkereséséhez. A legújabb verzióra az az upgrade paranccsal frissíthet.
 
-2. A bejelentkezés után futtassa az az [MySQL Server upgrade](https://docs.microsoft.com/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_upgrade&preserve-view=true) parancsot:
+2. A bejelentkezés után futtassa az az [MySQL Server upgrade](/cli/azure/mysql/server?preserve-view=true&view=azure-cli-latest#az_mysql_server_upgrade) parancsot:
 
    ```azurecli
    az mysql server upgrade --name testsvr --resource-group testgroup --subscription MySubscription --target-server-version 5.7"
@@ -89,7 +89,7 @@ A MySQL 5,6-ről a MySQL 5,7-re minimális állásidőt lehet frissíteni, ha ol
 
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a meglévő Azure Database for MySQL 5,6.
 
-2. Hozzon létre egy [olvasási replikát](https://docs.microsoft.com/azure/mysql/concepts-read-replicas#create-a-replica) az elsődleges kiszolgálóról.
+2. Hozzon létre egy [olvasási replikát](./concepts-read-replicas.md#create-a-replica) az elsődleges kiszolgálóról.
 
 3. [Frissítse az olvasási replikát](#perform-major-version-upgrade-from-mysql-56-to-mysql-57-on-read-replica-using-azure-portal) az 5,7-es verzióra.
 
@@ -105,7 +105,7 @@ A MySQL 5,6-ről a MySQL 5,7-re minimális állásidőt lehet frissíteni, ha ol
 
    Ha az állapota `Slave_IO_Running` és `Slave_SQL_Running` a értéke "igen", és a "0" értékre van állítva `Seconds_Behind_Master` , a replikálás jól működik. `Seconds_Behind_Master` azt jelzi, hogy a replika milyen későn van. Ha az érték nem "0", az azt jelenti, hogy a replika frissítéseket dolgoz fel. Ha a megerősítés `Seconds_Behind_Master` értéke "0", akkor a replikáció leállítása biztonságos.
 
-6. A [replikáció leállításával](https://docs.microsoft.com/azure/mysql/howto-read-replicas-portal#stop-replication-to-a-replica-server)előléptetheti az olvasási replikát az elsődlegesre.
+6. A [replikáció leállításával](./howto-read-replicas-portal.md#stop-replication-to-a-replica-server)előléptetheti az olvasási replikát az elsődlegesre.
 
 7. Mutasson az alkalmazást az új elsődleges (korábbi replika) kiszolgálóra, amely a 5,7-es kiszolgálót futtatja. Minden kiszolgálón egyedi a kapcsolatok karakterlánca. Frissítse az alkalmazást, hogy a forrás helyett a (korábbi) replikára mutasson.
 

@@ -7,12 +7,12 @@ ms.date: 08/25/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 97dc0fe5a3720a41dd63583c222762d832d636ea
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 933ddfb5fa5d58231e954dfd54bcc069b53dfe56
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436997"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721514"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-starter"></a>CI/CD-folyamat létrehozása IoT Edgehoz az Azure DevOps Starter-vel
 
@@ -28,7 +28,17 @@ A DevOps Starter egy CI/CD-folyamatot hoz létre az Azure DevOps. Létrehozhat e
 
 1. A bal oldali panelen válassza az **erőforrás létrehozása** lehetőséget, majd keresse meg a **DevOps Starter** elemet.  
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
+
+1. Alapértelmezés szerint a DevOps Starter beállítása a GitHub használatával történik. A jelen útmutató funkcióinak kihasználásához váltson a DevOps Starter-re az Azure DevOps használatával történő beállításhoz. Kövesse a **change Settings (beállítások módosítása** ) hivatkozást.
+
+   ![Válassza a beállítások módosítása lehetőséget a GitHubról az Azure DevOps való váltáshoz](./media/how-to-devops-starter/create-with-github-change-settings.png)
+
+1. A jobb oldali ablaktáblában válassza az **Azure DevOps** csempét, majd kattintson a **kész** gombra.
+
+   ![Válassza ki az Azure DevOps a DevOps alapszintű létrehozásához](./media/how-to-devops-starter/select-azure-devops.png)
+
+   Ekkor látnia kell, hogy a DevOps Starter beállítása az Azure DevOps.
 
 ## <a name="create-a-new-application-pipeline"></a>Új alkalmazás-folyamat létrehozása
 
@@ -129,7 +139,7 @@ Az előző szakaszban az Azure DevOps Starter automatikusan konfigurálta a IoT 
 
 Törölheti Azure App Service és az egyéb kapcsolódó erőforrásokat, amelyeket akkor hozott létre, ha már nincs rá szükség. Használja a **delete** funkciót a DevOps Starter irányítópultján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedjen meg az Azure DevOps Azure IoT Edgeával kapcsolatos feladatokkal a [folyamatos integráció és a folyamatos üzembe helyezés Azure IoT Edge](how-to-continuous-integration-continuous-deployment.md)
 * A IoT Edge központi telepítésének megismerése az [egyes eszközök IoT Edge központi telepítések megismeréséhez](module-deployment-monitoring.md)

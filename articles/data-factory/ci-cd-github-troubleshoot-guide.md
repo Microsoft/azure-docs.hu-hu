@@ -7,12 +7,12 @@ ms.reviewer: susabat
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 12/03/2020
-ms.openlocfilehash: 091c0cb20877090453f38ab922cc2bd277e90093
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5c33ef9559d9ce67eea62ee7f78425d18010c1cb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393751"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727957"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>A CI-CD-k, az Azure DevOps és a GitHub-problémák hibaelhárítása Az ADF-ben 
 
@@ -162,7 +162,7 @@ Egészen a közelmúltig csak az ADF-folyamatnak a központi telepítésekhez va
 
 #### <a name="resolution"></a>Feloldás
 
-A CI/CD-folyamat ki lett bővítve. Az **automatikus közzétételi** funkció az ADF UX összes Azure Resource Manager (ARM) sablonjának funkcióit végrehajtja, ellenőrzi és exportálja. Egy nyilvánosan elérhető NPM-csomagon keresztül teszi a logikát [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) . Ez lehetővé teszi, hogy programozott módon aktiválja ezeket a műveleteket ahelyett, hogy az ADF felhasználói felületére ugorjon, majd kattintson a gombra. Így a CI/CD-folyamatok **valódi** folyamatos integrációs élményt biztosítanak. A részletekért kövesse az [ADF CI/CD közzétételének tökéletesítése](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment-improvements) című témakört. 
+A CI/CD-folyamat ki lett bővítve. Az **automatikus közzétételi** funkció az ADF UX összes Azure Resource Manager (ARM) sablonjának funkcióit végrehajtja, ellenőrzi és exportálja. Egy nyilvánosan elérhető NPM-csomagon keresztül teszi a logikát [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) . Ez lehetővé teszi, hogy programozott módon aktiválja ezeket a műveleteket ahelyett, hogy az ADF felhasználói felületére ugorjon, majd kattintson a gombra. Így a CI/CD-folyamatok **valódi** folyamatos integrációs élményt biztosítanak. A részletekért kövesse az [ADF CI/CD közzétételének tökéletesítése](./continuous-integration-deployment-improvements.md) című témakört. 
 
 ###  <a name="cannot-publish-because-of-4mb-arm-template-limit"></a>4MB nál ARM-sablon korlátja miatt nem lehet közzétenni  
 
@@ -176,7 +176,45 @@ Azure Resource Manager korlátozza a sablon méretének 4MB nál. Korlátozza a 
 
 #### <a name="resolution"></a>Feloldás
 
-Kis és közepes mérető megoldások esetében könnyebb egyetlen sablont megérteni és karbantartani. Így az összes erőforrás és értéke egyetlen fájlban látható. Speciális felhasználási helyzetekben a megoldás csatolt sablonokkal bontható fel a kívánt összetevőkre. A [csatolt és beágyazott sablonok használata esetén](https://docs.microsoft.com/azure/azure-resource-manager/templates/linked-templates?tabs=azure-powershell)kövesse az ajánlott eljárásokat.
+Kis és közepes mérető megoldások esetében könnyebb egyetlen sablont megérteni és karbantartani. Így az összes erőforrás és értéke egyetlen fájlban látható. Speciális felhasználási helyzetekben a megoldás csatolt sablonokkal bontható fel a kívánt összetevőkre. A [csatolt és beágyazott sablonok használata esetén](../azure-resource-manager/templates/linked-templates.md?tabs=azure-powershell)kövesse az ajánlott eljárásokat.
+
+### <a name="cannot-connect-to-git-enterprise"></a>Nem lehet csatlakozni a GIT Enterprise-hoz 
+
+##### <a name="issue"></a>Probléma
+
+Engedélyekkel kapcsolatos problémák miatt nem lehet csatlakozni a GIT Enterprise-hoz. A következőhöz hasonló hiba látható: **422 – feldolgozható entitás.**
+
+#### <a name="cause"></a>Ok
+
+Nem konfigurálta a OAuth az ADF-hez. Az URL-cím helytelenül van konfigurálva.
+
+##### <a name="resolution"></a>Feloldás
+
+Először a OAuth-hozzáférést kell megadnia az ADF-hez. Ezután a GIT Enterprise-hoz való kapcsolódáshoz a helyes URL-címet kell használnia. A konfigurációt az ügyfél-szervezet (ek) ra kell beállítani, mert az ADF szolgáltatás először próbálkozik. https://hostname/api/v3/search/repositories?q=user%3 <customer credential> .. és sikertelen. Ezután megpróbálja https://hostname/api/v3/orgs/ <vaorg> / <repo> és sikeres lesz. 
+ 
+### <a name="recover-from-a-deleted-data-factory"></a>Helyreállítás a törölt adatok gyárból
+
+#### <a name="issue"></a>Probléma
+Az ügyfél törölte az adatgyárat vagy a Data Factory tartalmazó erőforráscsoportot. Szeretné tudni, hogyan kell visszaállítani a törölt adatgyárat.
+
+#### <a name="cause"></a>Ok
+
+A Data Factory csak akkor állítható helyre, ha az ügyfélen van konfigurálva a verziókövetés (DevOps vagy git). Ezzel az összes legújabb közzétett erőforrást fogja visszaállítani, és nem állítja vissza a **nem** közzétett folyamatot, az adatkészletet és a társított szolgáltatást.
+
+Ha nincs verziókövetés, nem lehet helyreállítani egy törölt Data Factory a háttérből, mert a szolgáltatás a törölt parancsot fogadja, a példány törlődik, és a biztonsági mentés nem lett tárolva.
+
+#### <a name="resoloution"></a>Resoloution
+A következő lépésekkel állíthatja helyre a törölt Data Factory, amely a verziókövetés:
+
+ * Hozzon létre egy új Azure Data Factory.
+
+ * Konfigurálja újra a git-t ugyanazokkal a beállításokkal, de győződjön meg arról, hogy a meglévő Data Factory erőforrásokat importálja a kiválasztott tárházba, és válassza az új ág lehetőséget.
+
+ * Hozzon létre egy lekéréses kérelmet az együttműködési ág változásainak egyesítéséhez és közzétételéhez.
+
+ * Ha az ügyfél egy saját üzemeltetésű Integration Runtimet törölt az ADF-ben, akkor létre kell hoznia egy új példányt az új ADF-ben, majd el kell távolítania és újra kell telepítenie a példányt a helyszíni gépen/virtuális gépen a kapott új kulccsal. Az IR beállításának befejeződése után az ügyfélnek módosítania kell a társított szolgáltatást, hogy az új IR-re mutasson, és tesztelje a kapcsolatot, vagy a hiba **érvénytelen hivatkozással meghiúsul.**
+
+
 
 ## <a name="next-steps"></a>Következő lépések
 

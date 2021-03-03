@@ -47,12 +47,19 @@
       items:
         - name: A Marketplace-ből származó előnyei
           href: gtm-your-marketplace-benefits.md
-        - name: Együttes értékesítési partnerek bevonása
-          href: marketplace-co-sell.md
-        - name: Együttes értékesítési lehetőség a Partnerközpontban
-          href: commercial-marketplace-co-sell.md
-        - name: Együttes értékesítési megoldások migrálása az OCP GTM-ből
-          href: co-sell-solution-migration.md
+          items: null
+        - name: Együttes értékesítés a Microsofttal
+          items:
+            - name: Közös értékesítés – áttekintés
+              href: marketplace-co-sell.md
+            - name: Közös értékesítésre vonatkozó követelmények
+              href: co-sell-requirements.md
+            - name: Közös értékesítés konfigurálása
+              href: commercial-marketplace-co-sell.md
+            - name: A közös értékesítés állapotának ellenőrzése
+              href: co-sell-status.md
+            - name: Együttes értékesítési megoldások migrálása az OCP GTM-ből
+              href: co-sell-solution-migration.md
         - name: Viszonteladás CSP-partnereken keresztül
           href: cloud-solution-providers.md
         - name: A Connect program regisztrálási útmutatója
@@ -203,6 +210,8 @@
           href: partner-center-portal/azure-iot-edge-module-creation.md
         - name: IoT Edge-modulok technikai eszközeinek előkészítése
           href: partner-center-portal/create-iot-edge-module-asset.md
+        - name: Előzetes tanúsítási ellenőrzőlista
+          href: iot-edge-checklist.md
     - name: Felügyelt szolgáltatásra vonatkozó ajánlatok
       items:
         - name: Felügyelt szolgáltatási ajánlat megtervezése
@@ -395,6 +404,8 @@
       href: commercial-marketplace-co-sell-countries.md
     - name: Együttes értékesítés államkódjai
       href: commercial-marketplace-co-sell-states.md
+    - name: Hivatkozási architektúra diagramja
+      href: reference-architecture-diagram.md
     - name: Kategóriák és alkategóriák
       href: categories.md
     - name: Támogatott HTML-címkék

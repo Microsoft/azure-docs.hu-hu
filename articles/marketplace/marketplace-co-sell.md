@@ -1,96 +1,87 @@
 ---
-title: Partneri szerepvállalás – Microsoft kereskedelmi piactér
+title: Közös értékesítés a Microsoft értékesítési csapatával és partnereivel – áttekintés
 description: A Microsoft partner Center közös értékesítési programja a partnereknek segítséget nyújt a jelentős ügyfélkör eléréséhez és új értékesítések létrehozásához.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 2/05/2021
-ms.openlocfilehash: abd47a17392e53770802b61e4ee6561252cc4c1e
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.date: 2/24/2021
+ms.openlocfilehash: 5d6b05b9656879f174d92d75ca8b188f7e74e5a1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581567"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721140"
 ---
-# <a name="co-sell-partner-engagement"></a>Együttes értékesítési partnerek bevonása
+# <a name="co-sell-with-microsoft-sales-teams-and-partners-overview"></a>Közös értékesítés a Microsoft értékesítési csapatával és partnereivel – áttekintés
 
-A közös értékesítést használó program használatával a Microsoft-értékesítők közös értékesítési lehetőségekkel dolgozhatnak közvetlenül, és feloldhatók a kereskedelmi Piactéren keresztül értékesített jelentős további kereskedelmi és értékesítési előnyök.
+A Microsofttal való közös értékesítés a Microsoft és a partneri ökoszisztéma együttműködésen alapuló bevonásával van meghatározva. Ez a folyamat magában foglalja az igények felépítése, az értékesítések megtervezése, az értékesítési érdeklődők megosztása, a partner-partneri kapcsolaton alapuló értékesítés felgyorsítását és a piactér által vezetett kereskedelem megvalósítását
 
-A közös értékesítésre szolgáló program a **szellemi tulajdon (IP) révén megismételhető, csomagolt ajánlatok** és a **Microsoft Technology Embedded szolgáltatásokhoz készült szolgáltatások** esetében érhető el. A közös értékesítési programban a legtöbb ajánlat típusa a kereskedelmi piactéren is elérhető. A további követelményeknek megfelelő ajánlatok **közös értékesítésre kész** vagy **közös értékesítésű incentivized** válnak.
+Ha úgy dönt, hogy közösen értékesíti az ajánlatot, a Microsoft értékesítési csapatával és a Microsoft partnereivel is dolgozhat közös értékesítési lehetőségekkel. Ez feloldja az előnyöket a kereskedelmi piactér online áruházakban való értékesítés során: az Azure Marketplace és a Microsoft AppSource.
 
-- A **közös értékesítésre kész** ajánlatok a Microsoft Field Sellers számára érhetők el. A Microsoft-értékesítők használatakor a közös értékesítési program segítséget nyújt a Microsoft által felügyelt ügyfelek nagy közösségének, hogy együttműködjön az üzleti növekedés felgyorsítására szolgáló értékesítési lehetőségekkel.
+Az együttes értékesítési lehetőségek a [vezető](./partner-center-portal/commercial-marketplace-get-customer-leads.md), a Microsoft értékesítési csapatával vagy a Microsoft partnereivel folytatott együttműködés eredményei, így megoldást biztosítanak az ügyfelek számára.
 
-    :::image type="content" source="./media/marketplace-publishers-guide/marketplace-co-sell-v2.png" alt-text="Diagram, amely bemutatja, hogyan történik a közös értékesítés a Microsoft által felügyelt ügyfeleken megosztva, elfogadva és megnyert értékesítési érdeklődők esetén.":::
+[![Diagram, amely bemutatja, hogyan történik a közös értékesítés a Microsoft által felügyelt ügyfeleken megosztva, elfogadva és megnyert értékesítési érdeklődők esetén.](./media/marketplace-publishers-guide/marketplace-co-sell-v2.png)](./media/marketplace-publishers-guide/marketplace-co-sell-v2.png#lightbox)
 
-- **Közös értékesítésű incentivized** Az IP-címek a Microsoft értékesítési csoportjaival együttműködve, az alább felsorolt Piactéri előnyök mellett is igénybe vehetik a Microsoft Field Sellers ösztönzőit.</li></ul>
+Ezek a megoldások (más néven ajánlatok) tartalmazhatják a szellemi tulajdon (IP) és a Microsoft-technológiákat támogató szolgáltatások által létrehozott szoftvereket.
 
-## <a name="marketplace-benefits-for-incentivized-offers"></a>A piactér előnyei incentivized-ajánlatok számára
+## <a name="co-sell-opportunities"></a>Közös értékesítés lehetőségei
 
-Az **Azure-beli IP-incentivized** állapotot elérő ajánlatok ezen további Piactéri előnyökkel járnak:
+A közös értékesítés lehetőség bármilyen típusú együttműködés a Microsoft értékesítési csapatával, a Microsoft partnereivel vagy mindkettővel az ügyfelek igényeinek megfelelő termékek és megoldások értékesítéséhez. A közös értékesítés főbb kategóriái a következők:
 
-- A Piactéri szolgáltatási díj 20%-ról 10%-ra csökken. Ez a kedvezmény a kereskedelmi Piactéren keresztül eladott IaaS vagy SaaS-ajánlatra vonatkozik. További információkért lásd: [kereskedelmi piactér szolgáltatási díjai](marketplace-commercial-transaction-capabilities-and-considerations.md#commercial-marketplace-service-fees).
-- A Cloud Solution Provider (CSP) partnerei 10%-os kedvezményt kapnak a IaaS vagy SaaS-ajánlat értékesítéséhez. További információ a CSP programról a [Cloud Solution Provider programban](cloud-solution-providers.md).
-- Az ajánlat kereskedelmi piactéren keresztüli értékesítései hozzájárulnak az ügyfelek Azure-beli felhasználási kötelezettségeihez. A jogosult ügyfelek a Azure Portal **"Azure Benefit jogosult"** jelöléssel látják el az ajánlatot. További részletekért lásd az [Azure-beli fogyasztási kötelezettségvállalás előnyeit](azure-consumption-commitment-benefit.md).
-- Az **Azure-beli IP-incentivized** vagy **Business Applications közös értékesítésű incentivized** -állapotot elérő ajánlatok a kirakatokban **"előnyben részesített megoldások"** jelvényt kapnak. A jelvény az ajánlat minőségének, teljesítményének és az ügyfelek igényeinek egy adott iparági vertikális vagy megoldási területen való kezelésére való képességének növelését segíti elő. További információ: [Microsoft AppSource és az Azure Marketplace előnyben részesített megoldásai](preferred-solutions.md).
+- **Közös értékesítés a Microsoft értékesítési csapatával** – egy vagy több Microsoft értékesítési csapattal együttműködve aktívan teljesítheti az ügyfelek igényeit. Ez magában foglalhatja az ajánlatok, a Microsoft ajánlatai vagy mindkettő értékesítését is. Ön és a Microsoft értékesítési csapatai azonosítják és megoszthatják az ügyfelek lehetőségeit, amelyekben a megoldásai megfelelőek lehetnek.
+- **Partner-Partner (P2P)** – együttműködés egy másik Microsoft-partnerrel az ügyfél problémáinak aktív megoldásához.
+- **Private Deal** – megoszthatja a Microsofttól függetlenül, hogy a Microsoft jelentéskészítési rendszerében hogyan jelenik meg az elemzés és az előrejelzés.
+- **Megoldás-Assessment (SA)** – olyan partnerekkel együttműködve, akiket a megoldás értékelései üzleti csapata a Microsoft-technológiákat használó vagy azt megtervező ügyfelek technológiai igényeinek eléréséhez használ.
 
-## <a name="co-sell-publishing-steps-and-requirements"></a>Közzétételi lépések és követelmények együttes értékesítése
+## <a name="co-sell-statuses"></a>Közös értékesítés állapotok
 
-Ez a táblázat azokat a lépéseket és követelményeket sorolja fel, amelyekkel a Piactéri ajánlat közös értékesítésre kész vagy közös értékesítésű incentivized. Nem minden kereskedelmi Piactéri ajánlat típusa konfigurálható a partner Centerben még a közös értékesítéshez. A közös értékesítést támogató ajánlati típusok legújabb listáját lásd: [közös értékesítés lehetőség a kereskedelmi piactéren](commercial-marketplace-co-sell.md). 
+Az ajánlaton négy olyan közös értékesítési állapotot lehet alkalmazni, amely alkalmazható a következőre:
 
-|Lépés    |Csomag típusa    |Követelmények    |Közös értékesítés állapota    |
-|----    |-------------    |------------    |---------------   |
-|<ol start=1><li>Hozzon létre egy fiókot a partner Centerben, és tegye közzé ajánlatát a kereskedelmi piactéren.</li>|Mind|<ul><li>Az ajánlat megfelel a kereskedelmi piactér közzétételi követelményeinek.</li><li>Rendelkezik egy teljes körű üzleti profillal a partner Centerben.</li></ul>| A piacon |
-|<ol start=2><li>Kötelező közös értékesítésű anyagok beküldése.</li>|IP- *ajánlatok* [közös értékesítéssel lehetőséggel a kereskedelmi piactéren](commercial-marketplace-co-sell.md)|[Szükséges anyagok feltöltése a partner Centerben](#how-to-submit-co-sell-materials-in-partner-center)|Közös értékesítés kész|
-||IP-  ajánlatok [közös értékesítés nélkül lehetőség a kereskedelmi piactéren](commercial-marketplace-co-sell.md)|<ul><li>A kötelező közös értékesítéshez szükséges dokumentáció biztosítására irányuló kérelem a [Felhőbeli szakértőkkel](https://partner.microsoft.com/campaigns/ced-nomination-form/) való együttműködéshez.</li></ul>|Közös értékesítés kész|
-||Tanácsadási szolgáltatások|<ul><li>A kötelező közös értékesítéshez szükséges dokumentáció biztosítására irányuló kérelem a [Felhőbeli szakértőkkel](https://partner.microsoft.com/campaigns/ced-nomination-form/) való együttműködéshez.</li><li>Aktív arany kompetencia.</li></ul>|Közös értékesítés kész|
-|<ol start=3><li>Minősítés az IP-címek közös értékesítésének ösztönzésére</li>|Azure-alkalmazások, Azure-tárolók, IoT Edge modulok, SaaS, virtuális gépek|A közös értékesítés megteremtése után két további követelmény van: <ul> 1. követelmény: a következők elérése:<ul><li>*A szervezet szintjén:* teljesíti az Azure által felhasznált bevételt, vagy meghaladja az $100 000 USD-t a záró 12 hónap során.</li><li>*Az ajánlat szintjén:* összesített piactér – $100 000 USD értékű, számlázott bevétel.</li></ul><br>2. követelmény: az ajánlat infrastruktúrájának több mint 50%-át az Azure-on kell futtatni:<ul><li>IP- *ajánlatok* [közös értékesítéssel lehetőséggel a kereskedelmi piactéren](commercial-marketplace-co-sell.md): feltölthet egy architektúra-diagramot a partner Centerben a közös értékesítési dokumentumokkal a véleményezéshez.</li><li>IP-  ajánlatok [közös értékesítés nélkül lehetőség a kereskedelmi piactéren](commercial-marketplace-co-sell.md): feltölthet egy architektúra-diagramot a OCP GTM.|Azure IP közös értékesítésű incentivized|
-||Dynamics|<ul><li>Aktív regisztrációja van a prémium szintű ISV-vel.</li></ul>|Business Applications közös értékesítésű incentivized|
-|||
+- Nem közös értékesítésre kész
+- Közös értékesítés kész
+- Azure IP közös értékesítésű incentivized
+- Biz-alkalmazások ISV-kapcsolat Premium  
 
-További információ a megoldási ajánlatok közös értékesítésével kapcsolatos követelményekről: a [közös értékesítésre vonatkozó követelmények](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status).
+A közös értékesítéssel kapcsolatos állapotok elérésére vonatkozó követelményekről a [közös értékesítéssel kapcsolatos követelmények](co-sell-requirements.md)című témakörben olvashat bővebben.
 
-## <a name="how-to-submit-co-sell-materials-in-partner-center"></a>Közös értékesítésű anyagok beküldése a partner Centerben
+## <a name="benefits-of-co-sell-ready-status"></a>A közös értékesítésre kész állapot előnyei
 
-Az alábbi lépéseket követve közvetlenül a partner Centerben kezdheti meg a közös értékesítést. További részletekért lásd: [közös értékesítés lehetőség a kereskedelmi piactéren](commercial-marketplace-co-sell.md).
+A közös értékesítésre kész állapot lehetővé teszi a megoldásait a Microsoft értékesítési csapatoknak. A Microsoft értékesítési csapatával és a Microsoft partnereivel közösen értékesítheti a Microsoft által felügyelt ügyfelek nagy közösségét, hogy az üzleti növekedés felgyorsítására szolgáló értékesítési lehetőségekkel működjenek együtt.
 
-1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard/home).
-1. A bal oldali panelen válassza a **kereskedelmi piactér**  >  **áttekintése** lehetőséget, majd válassza ki azt az ajánlatot, amelyet közösen szeretne értékesíteni.
+Ha szeretné megismerni, hogyan lehet a közös értékesítésre kész és az Azure IP közös értékesítési állapotát elérni, tekintse meg a közös értékesítésre [kész és a közös értékesítésű incentivized vonatkozó követelményeket](co-sell-requirements.md).
 
-    > [!NOTE]
-    > A közös értékesítési programhoz egy új, még közzé nem tett ajánlatot vagy egy már közzétett ajánlatot is csatlakoztathat.
+## <a name="benefits-of-co-sell-incentivized-status"></a>A közös értékesítésű incentivized állapotának előnyei
 
-1. A bal oldali menüben válassza a **közös értékesítés a Microsofttal** lehetőséget.
+A _közös értékesítéssel rendelkező incentivized_ -állapot magában foglalja az _Azure IP Co-Selling incentivized_ és a _BIZ apps ISV_-t, a prémium szintű ösztönzést. Ezek az állapotok ösztönözniük-partnerekkel értékesítik az ajánlatot. Ennek az állapotnak a megvalósításához el kell érnie a közös értékesítésre kész állapotot is. A közös értékesítéssel rendelkező incentivized-státusz a közös értékesítésre kész megoldások előnyeit keresi, és további ösztönzőket szerezhet a Microsoft értékesítési csapatai számára, és jogosult a piactéren elérhető további előnyökre.
 
-    [![Ez a rendszerkép a közös értékesítés helyét mutatja a Microsoft lapon.](media/co-sell/co-sell-with-microsoft-tab.png)](media/co-sell/co-sell-with-microsoft-tab.png#lightbox)
+Az Azure IP közös értékesítésének incentivized-állapota az alábbi típusú ajánlatokra alkalmazható:
 
-1. Adja meg az alapszintű tőzsdei adatokat, amelyek segítségével a Microsoft-értékesítők gyorsan rendezhetik és felfedezhetik az ajánlatot a **Listázás** szakaszban. (*Kötelező: minden mező.*)
+- Azure-alkalmazás
+- Azure-tároló
+- Azure-beli virtuális gép
+- IoT Edge modul
+- Szolgáltatott szoftver (SaaS)
 
-    :::image type="content" source="media/co-sell/co-sell-listing-section.png" alt-text="Ez a képen a közös értékesítés lap Listázás szakasza látható.":::  
+Az alábbi típusú ajánlatokra alkalmazhatók a biz apps ISV-vel való csatlakozási prémium ösztönző állapota:
 
-1. Adja meg az ajánlat részleteit, és töltse fel a biztosítékokat a **dokumentumok** szakaszban. A Microsoft Sellers ezeket az információkat az ajánlat ajánlása és értékesítése céljából fogja használni. *(Kötelező: megoldás/ajánlat egy-pager és megoldás/ajánlat pitch Deck. Az Azure IP közös értékesítésének incentivized állapotának eléréséhez szükséges: hivatkozás architektúra diagram.)*
+- Dynamics 365 Business Central
+- Dynamics 365 a Customer engagement & PowerApps
+- A Dynamics 365 for Operations
 
-    [![Ez a rendszerkép a dokumentumok szakaszt jeleníti meg a közös értékesítés lapon.](media/co-sell/co-sell-documents-section.png)](media/co-sell/co-sell-documents-section.png#lightbox)
+Azok az ajánlatok, amelyek az _Azure IP-incentivized_ vagy a _BIZ apps ISV_ -ket érik el, a prémium szintű ösztönző állapotot kapják meg a következő kereskedelmi piactéren:
 
-1. Töltse fel az értékesítési kapcsolattartási adatokat a **névjegyek** szakaszban. Előfordulhat, hogy a Microsoft-értékesítők felhasználhatják ezeket a partnereket az ajánlatával kapcsolatos további információk igényléséhez. (*Kötelező: kapcsolat minden olyan földrajzi helyhez, ahol az ajánlat elérhetővé válik.*)
+- A Piactéri szolgáltatási díj 20%-ról 10%-ra csökken. Ez a kedvezmény a kereskedelmi piactéren eladott, szolgáltatásként nyújtott infrastruktúra-(IaaS-) megoldás vagy szolgáltatott szoftver (SaaS) megoldásra vonatkozik. További információkért lásd: [kereskedelmi piactér szolgáltatási díjai](marketplace-commercial-transaction-capabilities-and-considerations.md#commercial-marketplace-service-fees).
+- A Cloud Solution Provider (CSP) partnerei 10%-os kedvezményt kapnak a IaaS-megoldás vagy az SaaS-ajánlat értékesítéséhez. További információ a CSP programról: [Cloud Solution Provider program](cloud-solution-providers.md).
+- Az ajánlat kereskedelmi piactéren keresztüli értékesítései hozzájárulnak az ügyfelek Azure-beli felhasználási kötelezettségeihez. A jogosult ügyfelek láthatják, hogy az ajánlat az **Azure kedvezményként** van megjelölve Azure Portalban. További információkért lásd: Azure-beli [fogyasztási kötelezettségvállalás juttatása](azure-consumption-commitment-benefit.md).
+- Az _Azure-beli IP-incentivized_ vagy biz- _alkalmazások ISV-ket összekötő prémium ösztönző_ állapotot elérő ajánlatok **előnyben részesített megoldások** jelvényt kapnak az online áruházak ajánlati lista lapján. A jelvény az ajánlat minőségének, teljesítményének és az ügyfelek igényeinek egy adott iparági vertikális vagy megoldási területen való kezelésére való képességének növelését segíti elő. További információ: [Microsoft AppSource és az Azure Marketplace előnyben részesített megoldásai](preferred-solutions.md).
 
-    [![Ez a rendszerkép a kapcsolatok szakaszt jeleníti meg a közös értékesítés lapon.](media/co-sell/co-sell-contacts-section.png)](media/co-sell/co-sell-contacts-section.png#lightbox)
-
-1. A folytatás előtt mentse a piszkozatot.
-1. Miután elvégezte az ajánlat összes szükséges részét, elküldheti azt véleményezésre és közzétételre. A jobb felső sarokban válassza a **felülvizsgálat és közzététel** lehetőséget. Tekintse át az ajánlat részleteit, majd válassza a **Közzététel** lehetőséget.
-
-> [!NOTE]
-> Már nem kell felvennie a kapcsolatot az ajánlat közös értékesítésre való kinevezésével. Miután elvégezte az összes kötelező mezőt a közös értékesítés a Microsoft oldalon, és újból közzéteszi az ajánlatot, áttekintjük az ajánlatot annak megállapításához, hogy az megfelel-e a közös értékesítési állapotra vonatkozó követelményeknek.
-
-## <a name="see-your-offers-co-sell-status"></a>Az ajánlat közös értékesítéssel kapcsolatos állapotának megtekintése
-
-A [kereskedelmi piactéren a közös értékesítés lehetőséggel](commercial-marketplace-co-sell.md)rendelkező ajánlatok esetében az ajánlat áttekintés lapján láthatja az ajánlat aktuális közös értékesítésének állapotát:
-
-[![Ez a rendszerkép az ajánlatok aktuális közös értékesítési állapotát jeleníti meg.](media/co-sell/co-sell-status.png)](media/co-sell/co-sell-status.png#lightbox)
+Ha szeretné megtudni, hogyan érhető el a közös értékesítésre kész és közös értékesítésű incentivized-állapot, tekintse meg a következőt: [együttes értékesítésre kész és közös értékesítésű incentivized követelmények](co-sell-requirements.md).
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a [Microsofttal való értékesítésről](https://partner.microsoft.com/membership/sell-with-microsoft).
-- További információ a [kereskedelmi piactéren elérhető közös értékesítési lehetőségekről](commercial-marketplace-co-sell.md).
-- Olvassa el a [közös értékesítésű](https://aka.ms/Co-sellPartnerengagementguidepartnerlink) forgatókönyv (PDF) című részt.
+- A követelményekkel kapcsolatos további információkért lásd: a [Ready és a Co-Selling incentivized-követelmények együttes értékesítése](co-sell-requirements.md)
+- A közös értékesítésre vonatkozó ajánlat konfigurálásához tekintse meg a [kereskedelmi Piactéri ajánlat közös értékesítésének beállítása](commercial-marketplace-co-sell.md) című témakört.
+- A közös értékesítés állapotának ellenőrzéséhez tekintse meg az [ajánlat közös értékesítéssel kapcsolatos állapotának ellenőrzése](co-sell-status.md)című témakört.
+- További információ a [Microsofttal való közös értékesítésről](https://partner.microsoft.com/membership/sell-with-microsoft).

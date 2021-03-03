@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 78c21e9515965f1c15315967f6a19a0df2838dc2
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 395c274630131c2ae5f451443913e1e69c7c422a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591195"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738701"
 ---
 # <a name="msix-app-attach-faq"></a>MSIX-alkalmazás csatolása – GYIK
 
@@ -61,7 +61,7 @@ Az MSIX-alkalmazást használó gazdagépeken található összes virtuális gé
 
 ## <a name="can-i-use-msix-app-attach-for-http-or-https"></a>Használhatom a HTTP-vagy HTTPs-alapú MSIX-alkalmazást?
 
-Az MSIX-alkalmazás csatolását használó gazdagépek részét képező összes virtuális gépnek olvasási engedéllyel kell rendelkeznie a MSIX lemezképek tárolására szolgáló fájlmegosztás számára. Ha Azure Files van használatban, a RBAC és az NTFS-engedélyeket is meg kell adni.
+A MSIX-alkalmazás HTTP-n vagy HTTPs-en keresztüli csatlakoztatása jelenleg nem támogatott.
 
 ## <a name="can-i-restage-the-same-msix-application"></a>Megpihenhető-e a MSIX-alkalmazás is?
 
@@ -69,7 +69,7 @@ Igen. Megadhatja a már újraelőkészített alkalmazásokat, és ez nem okoz hi
 
 ## <a name="does-msix-app-attach-support-self-signed-certificates"></a>Az MSIX alkalmazás csatolja az önaláírt tanúsítványokat?
 
-A MSIX-alkalmazás HTTP-n vagy HTTPs-en keresztüli csatlakoztatása jelenleg nem támogatott.
+Igen. Telepítenie kell az önaláírt tanúsítványt az összes olyan munkamenet-gazda virtuális gépre, ahol a MSIX-alkalmazás csatolva van az önaláírt alkalmazás üzemeltetéséhez.
 
 
 ## <a name="next-steps"></a>Következő lépések

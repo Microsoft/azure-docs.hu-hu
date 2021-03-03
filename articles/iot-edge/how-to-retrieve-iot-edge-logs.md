@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 69f7ec5114ad650f33eae740a54a3821b76ef2ac
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 65d95533e4cff02866111881f036225f9f544852
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475539"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719015"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>Naplók beolvasása IoT Edge központi telepítésből
 
@@ -33,7 +33,18 @@ Habár nem szükséges, a szolgáltatással való legjobb kompatibilitás érdek
 <{Log Level}> {Timestamp} {Message Text}
 ```
 
-`{Log Level}` a [syslog súlyossági szintjének formátumát](https://wikipedia.org/wiki/Syslog#Severity_level) kell követnie, és a következő formátumban kell `{Timestamp}` formázni: `yyyy-MM-dd hh:mm:ss.fff zzz` .
+`{Timestamp}` a értéket kell formázni `yyyy-MM-dd hh:mm:ss.fff zzz` , és az `{Log Level}` alábbi táblázatot kell követnie, amely a [syslog standard súlyossági kódjából](https://wikipedia.org/wiki/Syslog#Severity_level)származtatja a súlyossági szintet.
+
+| Érték | Severity |
+|-|-|
+| 0 | Sürgősségi |
+| 1 | Riasztás |
+| 2 | Kritikus |
+| 3 | Hiba |
+| 4 | Figyelmeztetés |
+| 5 | Megjegyzčs |
+| 6 | Tájékoztató |
+| 7 | Hibakeresés |
 
 A [IoT Edge naplózó osztálya](https://github.com/Azure/iotedge/blob/master/edge-util/src/Microsoft.Azure.Devices.Edge.Util/Logger.cs) kanonikus implementációként szolgál.
 

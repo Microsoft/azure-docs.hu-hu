@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 0d7259972693b9ca12e0801007cbd3c0af45ca1c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 2acf5178e7d1cfdf907146d733150a48e9696a5e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937331"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712351"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>SaaS-teljesítési API-k 2-es verziója a kereskedelmi piactéren
 
@@ -968,8 +968,8 @@ A *terv módosítása*, a *mennyiség módosítása* és a *leiratkozási* műve
 
 A kiadói támogatási lehetőségekért lásd: [a kereskedelmi piactér program támogatása a partner Centerben](../support.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a kereskedelmi [Piactéri mérési szolgáltatás API-kat](marketplace-metering-service-apis.md) a kereskedelmi piactéren elérhető SaaS-ajánlatok további lehetőségeiért.
 
-Tekintse át és használja a jelen dokumentumban ismertetett API-kra épülő [SaaS SDK](https://github.com/Azure/Microsoft-commercial-marketplace-transactable-SaaS-offer-SDK) -t.
+Tekintse át és használja az [ügyfeleket különböző programozási nyelvekhez és mintákhoz](https://github.com/microsoft/commercial-marketplace-samples).

@@ -6,18 +6,14 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
 ms.custom: references_regions
-ms.openlocfilehash: 4380f14610fb0775c82aa79ec7cda9dc70cf0715
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: dd91622344263dc366a76c913ce0be95718550cd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722691"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705160"
 ---
 # <a name="system-requirements"></a>System requirements (Rendszerkövetelmények)
-
-> [!IMPORTANT]
-> Az **Azure távoli renderelés** jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Ez a fejezet az *Azure Remote rendering* (ARR) használatával való együttműködés minimális rendszerkövetelményeit sorolja fel.
 
@@ -71,7 +67,7 @@ Hálózati problémák elhárításához tekintse meg a [hibaelhárítási útmu
 
 A távoli renderelési virtuális gépek megosztott IP-címeket használnak a következő IP-tartományokból:
 
-| Név             | Régió         | IP-előtag         |
+| Name             | Region         | IP-előtag         |
 |------------------|:---------------|:------------------|
 | Kelet-Ausztrália   | australiaeast  | 20.53.44.240/28   |
 | USA keleti régiója          | eastus         | 20.62.129.224/28  |
@@ -122,6 +118,6 @@ Az egységgel való fejlesztéshez telepítse a következőt:
   * **UWP** – univerzális Windows-platform-Build támogatása
   * **IL2CPP** – Windows Build-támogatás (IL2CPP)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Gyors útmutató: modell megjelenítése egységgel](../quickstarts/render-model.md)

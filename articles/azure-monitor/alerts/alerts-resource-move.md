@@ -5,18 +5,18 @@ author: harelbr
 ms.author: harelbr
 ms.topic: how-to
 ms.custom: subject-moving-resources
-ms.date: 06/26/2020
+ms.date: 02/14/2021
 ms.subservice: alerts
-ms.openlocfilehash: b09c7f1ff429a3daf675b0f44cc8b64f27e79a07
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 435f7b9b585b4effe6b06d78587845bf53a7d051
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100614538"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714204"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>Riasztási szabályok vagy műveleti szabályok frissítése, ha a célként megadott erőforrás egy másik Azure-régióba kerül át
 
-Ez a cikk azt ismerteti, hogy a meglévő [riasztási szabályok](../platform/alerts-overview.md) és [műveleti szabályok](./alerts-action-rules.md) miért befolyásolhatják a más Azure-erőforrások régiók közötti áthelyezését, valamint a problémák azonosítását és megoldását. A főbb [erőforrás-áthelyezési dokumentációban talál](../../azure-resource-manager/management/move-region.md) további információt arról, hogy az erőforrás hogyan mozdul el a régiók között, és hogyan lehet az áthelyezési folyamat megtervezéséhez szükséges ellenőrzőlista.
+Ez a cikk azt ismerteti, hogy a meglévő [riasztási szabályok](./alerts-overview.md) és [műveleti szabályok](./alerts-action-rules.md) miért befolyásolhatják a más Azure-erőforrások régiók közötti áthelyezését, valamint a problémák azonosítását és megoldását. A főbb [erőforrás-áthelyezési dokumentációban talál](../../azure-resource-manager/management/move-region.md) további információt arról, hogy az erőforrás hogyan mozdul el a régiók között, és hogyan lehet az áthelyezési folyamat megtervezéséhez szükséges ellenőrzőlista.
 
 ## <a name="why-the-problem-exists"></a>Miért létezik a probléma?
 
@@ -48,7 +48,6 @@ A probléma a következő szabályok típusaira vonatkozik:
 
 - Tevékenységnapló-riasztási szabályok
 - Műveletszabályok
-- Klasszikus riasztások
 - Metrikai riasztások – további információkért tekintse meg a [metrikák alapján a következő szakasz riasztási szabályait](#alert-rules-based-on-metrics).
 
 > [!NOTE]
@@ -112,4 +111,4 @@ Ha a hatókörben lévő erőforrások **közül csak néhány** lett áthelyezv
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a [Riasztási értesítések](alerts-troubleshoot.md), a [metrikus riasztások](alerts-troubleshoot-metric.md)és a [naplózási riasztások](alerts-troubleshoot-log.md)egyéb problémáinak kijavításáról. 
+További információ a [Riasztási értesítések](alerts-troubleshoot.md), a [metrikus riasztások](alerts-troubleshoot-metric.md)és a [naplózási riasztások](alerts-troubleshoot-log.md)egyéb problémáinak kijavításáról.

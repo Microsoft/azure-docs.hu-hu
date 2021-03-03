@@ -9,12 +9,12 @@ ms.custom:
 - references_regions
 - fasttrack-edit
 - devx-track-azurecli
-ms.openlocfilehash: 26dd3f7df5a71c687bfb4935f290e7a54b4e01fe
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 3061329ad9dcb368dab586acc2146e6fb4e23028
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610267"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708713"
 ---
 # <a name="azure-functions-premium-plan"></a>Prémium csomag Azure Functions
 
@@ -142,7 +142,7 @@ az functionapp plan update -g <resource_group> -n <premium_plan_name> --min-inst
 
 A csomag létrehozásakor vagy skálázásakor három példány mérete közül választhat. Az egyes példányok kiosztása után a rendszer a másodpercenként kiosztott magok és memóriák teljes számát számlázza. Az alkalmazás igény szerint automatikusan több példányra is kibővíthető.
 
-|Termékváltozat|Cores|Memória|Storage|
+|Termékváltozat|Cores|Memória|Tárolás|
 |--|--|--|--|
 |EP1|1|3.5 GB|250GB|
 |EP2|2|7GB|250GB|
@@ -154,7 +154,7 @@ Ha egy olyan gépen fut, amely több memóriát használ, nem mindig jelenti azt
 
 A JavaScript-függvények alkalmazásait például a Node.js alapértelmezett memória-korlátja korlátozza. A rögzített memória korlátjának növeléséhez adja hozzá az alkalmazás `languageWorkers:node:arguments` értékét a következő értékkel: `--max-old-space-size=<max memory in MB>` .
 
-A 4 GB-nál több memóriával rendelkező csomagok esetében ügyeljen arra, hogy a bitszáma platform beállítása az `64 Bit` [általános beállítások](/azure/app-service/configure-common#configure-general-settings)területen legyen.
+A 4 GB-nál több memóriával rendelkező csomagok esetében ügyeljen arra, hogy a bitszáma platform beállítása az `64 Bit` [általános beállítások](../app-service/configure-common.md#configure-general-settings)területen legyen.
 
 ## <a name="region-max-scale-out"></a>Régió maximális felskálázása
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 03/02/2021
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4337d8935c10ce17ad5d3747468d55b2fe6daa21
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a574cacbabf1c0d1730430153a3c0afcad6582c6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677539"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694359"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link"></a>Kiszolgáló nélküli SQL-készlettel rendelkező lekérdezés Azure Cosmos DB az Azure-beli szinapszis-hivatkozással
 
@@ -22,10 +22,7 @@ A kiszolgáló nélküli SQL-készletek lehetővé teszik az [Azure szinapszis-h
 
 Azure Cosmos DB lekérdezéséhez a [OpenRowset](develop-openrowset.md) függvény a teljes [kijelölés](/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true) felületét támogatja, amely az [SQL-függvények és operátorok](overview-features.md)többségét tartalmazza. A lekérdezés eredményeit olyan módon is tárolhatja, amely Azure Cosmos DB adatokat olvas be az Azure Blob Storage vagy Azure Data Lake Storage használatával, [külső tábla létrehozása Select](develop-tables-cetas.md#cetas-in-serverless-sql-pool) (CETAS) néven. A kiszolgáló nélküli SQL-készlet lekérdezési eredményei jelenleg nem tárolhatók a CETAS használatával Azure Cosmos DB.
 
-Ebből a cikkből megtudhatja, hogyan írhat lekérdezést olyan kiszolgáló nélküli SQL-készlettel, amely az Azure szinapszis-hivatkozással engedélyezett Azure Cosmos DB tárolóból származó adatok lekérdezésére szolgál. Ezután további információt olvashat a kiszolgáló nélküli SQL-készlet nézeteinek létrehozásáról Azure Cosmos DB tárolók között, és összekapcsolhatja őket az [oktatóanyag](./tutorial-data-analyst.md)Power bi modelljeivel.
-
-> [!IMPORTANT]
-> Ez az oktatóanyag egy [Azure Cosmos db jól definiált sémával](../../cosmos-db/analytical-store-introduction.md#schema-representation)rendelkező tárolót használ.  Ne használja a függvény eredményhalmaz sémáját anélkül, `OPENROWSET` `WITH` hogy a záradék egy teljes megbízhatósági sémával beolvassa az adatokat egy tárolóból, mert a lekérdezési élmény összhangban van a és a jól definiált séma alapján. Visszajelzését az [Azure szinapszis Analytics visszajelzési fórumában](https://feedback.azure.com/forums/307516-azure-synapse-analytics)teheti közzé. A visszajelzések megadásához az [Azure szinapszis link Product csapatával](mailto:cosmosdbsynapselink@microsoft.com) is kapcsolatba léphet.
+Ebből a cikkből megtudhatja, hogyan írhat lekérdezést olyan kiszolgáló nélküli SQL-készlettel, amely az Azure szinapszis-hivatkozással engedélyezett Azure Cosmos DB tárolóból származó adatok lekérdezésére szolgál. Ezután további információt olvashat a kiszolgáló nélküli SQL-készlet nézeteinek létrehozásáról Azure Cosmos DB tárolók között, és összekapcsolhatja őket az [oktatóanyag](./tutorial-data-analyst.md)Power bi modelljeivel. Ez az oktatóanyag egy [Azure Cosmos db jól definiált sémával](../../cosmos-db/analytical-store-introduction.md#schema-representation)rendelkező tárolót használ.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -377,7 +374,7 @@ Ha le kell kérdezni Azure Cosmos DB fiókokat a Mongo DB API-típusból, többe
 
 ### <a name="query-items-with-full-fidelity-schema"></a>Teljes megbízhatósági sémával rendelkező elemek lekérdezése
 
-A teljes hűségű séma lekérdezése során explicit módon meg kell adnia az SQL-típust és a várt Azure Cosmos DB tulajdonság típusát a `WITH` záradékban. Ne használja `OPENROWSET` záradék nélkül `WITH` a jelentésekben, mert az eredményhalmaz formátuma a visszajelzés alapján változhat.
+A teljes hűségű séma lekérdezése során explicit módon meg kell adnia az SQL-típust és a várt Azure Cosmos DB tulajdonság típusát a `WITH` záradékban.
 
 Az alábbi példában feltételezzük, hogy a `string` tulajdonság megfelelő típusa, `geo_id` és a tulajdonság típusa a következő `int32` `cases` :
 
@@ -415,7 +412,6 @@ Ebben a példában az esetek száma a következőképpen van tárolva: `int32` ,
 
 ## <a name="known-issues"></a>Ismert problémák
 
-- Ne használja azt a sémát, amelyet a `OPENROWSET` záradék nélküli függvény `WITH` biztosít, mivel a lekérdezési élmény a felhasználói visszajelzések alapján jól definiált sémával is összehangolható. A visszajelzések megadásához forduljon az [Azure szinapszis link Product csapatához](mailto:cosmosdbsynapselink@microsoft.com).
 - A kiszolgáló nélküli SQL-készlet egy fordítási idő figyelmeztetést ad vissza, ha az `OPENROWSET` oszlop rendezése nem rendelkezik UTF-8 kódolással. A `OPENROWSET` T-SQL-utasítás használatával egyszerűen módosíthatja az aktuális adatbázisban futó összes függvény alapértelmezett rendezését `alter database current collate Latin1_General_100_CI_AS_SC_UTF8` .
 
 A lehetséges hibák és hibaelhárítási műveletek az alábbi táblázatban láthatók.

@@ -1,20 +1,20 @@
 ---
-title: Azure Monitor for VMs engedélyezése Azure Policy használatával
-description: Ismerteti, hogyan engedélyezhető Azure Monitor for VMs több Azure-beli virtuális gép vagy virtuálisgép-méretezési csoport számára a Azure Policy használatával.
+title: A virtuális gépek bepillantást tesznek a Azure Policy használatával
+description: Leírja, hogyan engedélyezheti a VM-információkat több Azure-beli virtuális gép vagy virtuálisgép-méretezési csoport számára a Azure Policy használatával.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 4da0610de1f71cd422ec684ea633a4474c078862
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a63a647f3d76e3cc2616f05fe96d86dbdd36e74d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100619828"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707540"
 ---
-# <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>Azure Monitor for VMs engedélyezése Azure Policy használatával
-Ez a cikk azt ismerteti, hogyan engedélyezhető Azure Monitor for VMs az Azure-beli virtuális gépekhez vagy az Azure arc (előzetes verzió) szolgáltatással összekapcsolt hibrid virtuális géphez Azure Policy használatával. Azure Policy lehetővé teszi olyan szabályzat-definíciók hozzárendelését, amelyek telepítik a szükséges ügynököket az Azure-környezet Azure Monitor for VMséhez, és automatikusan engedélyezik a virtuális gépek figyelését minden egyes virtuális gép létrehozásakor. Azure Monitor for VMs egy olyan szolgáltatást biztosít, amely lehetővé teszi a nem megfelelő virtuális gépek felderítését és szervizelését a környezetben. Használja ezt a funkciót ahelyett, hogy közvetlenül a Azure Policy használatával kellene dolgoznia.
+# <a name="enable-vm-insights-by-using-azure-policy"></a>A virtuális gépek bepillantást tesznek a Azure Policy használatával
+Ez a cikk bemutatja, hogyan engedélyezheti a VM-ismereteket az Azure-beli virtuális gépekhez vagy az Azure arc (előzetes verzió) szolgáltatással összekapcsolt hibrid virtuális géphez Azure Policy használatával. Azure Policy lehetővé teszi, hogy olyan szabályzat-definíciókat rendeljen hozzá, amelyek a szükséges ügynököket telepítik az Azure-környezetben lévő virtuális gépekhez, és automatikusan engedélyezik a virtuális gépek figyelését minden egyes virtuális gép létrehozásakor. A VM-alapú adatáttekintések lehetővé teszik a nem megfelelő virtuális gépek felderítését és szervizelését a környezetben. Használja ezt a funkciót ahelyett, hogy közvetlenül a Azure Policy használatával kellene dolgoznia.
 
 Ha még nem ismeri a Azure Policyt, rövid bevezetést kaphat a [Azure monitor üzembe helyezéséről a Azure Policy használatával](../deploy-scale.md).
 
@@ -22,15 +22,15 @@ Ha még nem ismeri a Azure Policyt, rövid bevezetést kaphat a [Azure monitor �
 > Ha Azure Policyt szeretne használni az Azure-beli virtuálisgép-méretezési csoportokkal, vagy közvetlenül az Azure-beli virtuális gépeket engedélyező Azure Policy szeretne dolgozni, tekintse meg a [Azure monitor üzembe helyezése méretezéssel Azure Policy használatával](../deploy-scale.md#azure-monitor-for-vms)
 
 ## <a name="prerequisites"></a>Előfeltételek
-- [Hozzon létre és konfiguráljon egy log Analytics munkaterületet](../insights/vminsights-configure-workspace.md).
-- A [támogatott operációs rendszerekkel](../insights/vminsights-enable-overview.md#supported-operating-systems) biztosíthatja, hogy a virtuális gép vagy a virtuálisgép-méretezési csoport operációs rendszere támogatott legyen. 
+- [Hozzon létre és konfiguráljon egy log Analytics munkaterületet](./vminsights-configure-workspace.md).
+- A [támogatott operációs rendszerekkel](./vminsights-enable-overview.md#supported-operating-systems) biztosíthatja, hogy a virtuális gép vagy a virtuálisgép-méretezési csoport operációs rendszere támogatott legyen. 
 
 
-## <a name="azure-monitor-for-vms-initiative"></a>Azure Monitor for VMs kezdeményezés
-A Azure Monitor for VMs beépített szabályzat-definíciókat biztosít a Log Analytics-ügynök és a függőségi ügynök telepítéséhez az Azure Virtual Machines szolgáltatásban. A kezdeményezés **engedélyezése Azure monitor for VMS** tartalmazza ezeket a szabályzat-definíciókat. Ezt a kezdeményezést hozzárendelheti egy felügyeleti csoporthoz, előfizetéshez vagy erőforráscsoporthoz, hogy automatikusan telepítse az ügynököket az adott hatókörben lévő Windows vagy Linux rendszerű Azure-beli virtuális gépekre.
+## <a name="vm-insights-initiative"></a>VM-bepillantást kezdeményező kezdeményezés
+A virtuálisgép-bepillantást a Log Analytics-ügynök és a függőségi ügynök Azure-beli virtuális gépekre való telepítéséhez beépített szabályzat-definíciók biztosítják. A kezdeményezés **lehetővé teszi** , hogy a virtuális gépek elemzése tartalmazza ezeket a szabályzat-definíciókat. Ezt a kezdeményezést hozzárendelheti egy felügyeleti csoporthoz, előfizetéshez vagy erőforráscsoporthoz, hogy automatikusan telepítse az ügynököket az adott hatókörben lévő Windows vagy Linux rendszerű Azure-beli virtuális gépekre.
 
 ## <a name="open-policy-coverage-feature"></a>Házirend-lefedettségi funkció megnyitása
-**Azure monitor for VMS szabályzatok lefedettségének** eléréséhez nyissa meg a **virtuális gépeket** a Azure Portal **Azure monitor** menüjében. Válassza a további bevezetési **Beállítások lehetőséget** , majd **engedélyezze** az Engedélyezés lehetőséget a **házirend használata** beállításnál.
+A virtuálisgép- **bepillantást biztosító házirend-lefedettség** eléréséhez nyissa meg a Azure Portal **Azure monitor** menüjében található **virtuális gépeket** . Válassza a további bevezetési **Beállítások lehetőséget** , majd **engedélyezze** az Engedélyezés lehetőséget a **házirend használata** beállításnál.
 
 [![Azure Monitor virtuális gépekről – első lépések lap](./media/vminsights-enable-policy/get-started-page.png)](./media/vminsights-enable-policy/get-started-page.png#lightbox)
 
@@ -39,7 +39,7 @@ Ha még nem rendelkezik hozzárendeléssel, akkor a **házirend hozzárendelése
 
 [![Hozzárendelés létrehozása](media/vminsights-enable-policy/create-assignment.png)](media/vminsights-enable-policy/create-assignment.png#lightbox)
 
-Ez ugyanaz az oldal, amellyel a Azure Policy egy kezdeményezést rendelhet hozzá, azzal a különbséggel, hogy a kiválasztott hatókörrel hardcoded, és az **Azure monitor for VMS kezdeményezés engedélyezése** definíciója. Igény szerint módosíthatja a **hozzárendelés nevét** , és hozzáadhat egy **leírást**. Válassza a **kizárások** lehetőséget, ha kizárást szeretne biztosítani a hatókörhöz. A hatókör lehet például egy felügyeleti csoport, és megadhat egy előfizetést az adott felügyeleti csoportban a hozzárendelésből való kizáráshoz.
+Ez ugyanaz a lap, amellyel Azure Policy-kezdeményezést rendelhet hozzá, azzal a különbséggel, hogy a kiválasztott hatókörrel hardcoded, és a virtuális gépek elemzésének **engedélyezése** kezdeményezési definícióját. Igény szerint módosíthatja a **hozzárendelés nevét** , és hozzáadhat egy **leírást**. Válassza a **kizárások** lehetőséget, ha kizárást szeretne biztosítani a hatókörhöz. A hatókör lehet például egy felügyeleti csoport, és megadhat egy előfizetést az adott felügyeleti csoportban a hozzárendelésből való kizáráshoz.
 
 [![Kezdeményezés kiosztása](media/vminsights-enable-policy/assign-initiative.png)](media/vminsights-enable-policy/assign-initiative.png#lightbox)
 
@@ -53,9 +53,9 @@ A **Parameters (paraméterek** ) lapon válasszon ki egy **log Analytics munkate
 A létrehozás **gombra kattintva** tekintse át a hozzárendelés részleteit, és kattintson a Create **(létrehozás)** gombra. Ne hozzon létre szervizelési feladatot ezen a ponton, mivel valószínűleg több szervizelési feladatra lesz szüksége a meglévő virtuális gépek engedélyezéséhez. Lásd a [megfelelőségi eredmények szervizelését](#remediate-compliance-results) alább.
 
 ## <a name="review-compliance"></a>Megfelelőség áttekintése
-A hozzárendelések létrehozása után áttekintheti és kezelheti a lefedettséget a felügyeleti csoportokban és előfizetésekben a **Azure monitor for VMS kezdeményezés engedélyezése** lehetőségnél. Ez azt mutatja, hogy hány virtuális gép létezik az egyes felügyeleti csoportokban vagy előfizetésekben, valamint a megfelelőségi állapotukban.
+A hozzárendelés létrehozása után áttekintheti és kezelheti a virtuális gépek bevezetésének **engedélyezése** kezdeményezést a felügyeleti csoportok és előfizetések között. Ez azt mutatja, hogy hány virtuális gép létezik az egyes felügyeleti csoportokban vagy előfizetésekben, valamint a megfelelőségi állapotukban.
 
-[![Azure Monitor for VMs házirend kezelése lap](media/vminsights-enable-policy/manage-policy-page-01.png)](media/vminsights-enable-policy/manage-policy-page-01.png#lightbox)
+[![A virtuális gépekkel kapcsolatos irányelvek kezelése lap](media/vminsights-enable-policy/manage-policy-page-01.png)](media/vminsights-enable-policy/manage-policy-page-01.png#lightbox)
 
 
 A következő táblázat az ebben a nézetben található információk leírását tartalmazza.
@@ -105,11 +105,11 @@ Kattintson a **szervizelés** elemre a Szervizelési feladat létrehozásához *
 [![Képernyőfelvétel: a szabályzat szervizelési panelje a figyeléshez | Virtual Machines.](media/vminsights-enable-policy/remediation.png)](media/vminsights-enable-policy/remediation.png#lightbox)
 
 
-A Szervizelési feladatok befejezését követően a virtuális gépeknek meg kell felelniük a Azure Monitor for VMs telepített és engedélyezett ügynököknek. 
+A Szervizelési feladatok befejezését követően a virtuális gépeknek meg kell felelniük a VM-adatokhoz telepített és engedélyezett ügynököknek. 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy a figyelés engedélyezve van a virtuális gépek számára, ezek az információk a Azure Monitor for VMssal való elemzéshez érhetők el. 
+Most, hogy a figyelés engedélyezve van a virtuális gépek számára, ezek az információk a VM-elemzések révén érhetők el. 
 
-- A felderített alkalmazások függőségeinek megtekintéséhez lásd: [Azure monitor for VMS Térkép megtekintése](vminsights-maps.md). 
-- Az Azure-beli [virtuális gépek teljesítményének megtekintése](vminsights-performance.md)a szűk keresztmetszetek és a virtuális gépek teljesítményének teljes kihasználtsága alapján:. 
+- A felderített alkalmazások függőségeinek megtekintéséhez lásd: virtuálisgép- [észlelési Térkép megtekintése](vminsights-maps.md). 
+- Az Azure-beli [virtuális gépek teljesítményének megtekintése](vminsights-performance.md)a szűk keresztmetszetek és a virtuális gépek teljesítményének teljes kihasználtsága alapján:.

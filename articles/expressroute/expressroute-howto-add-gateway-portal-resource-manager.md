@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 843d0b8cfd75e8cbdf45ac535cc9486aa42442d6
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 56e35c23eacdf98db283ba5d8c2e32687cbe0ea8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "91761797"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740902"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Oktatóanyag: virtuális hálózati átjáró konfigurálása a ExpressRoute-hez a Azure Portal használatával
 > [!div class="op_single_selector"]
@@ -50,6 +50,11 @@ A feladat lépései a következő konfigurációs hivatkozási listán szereplő
 
 A konfigurálás megkezdése előtt tekintse meg az alábbi lépések [videóit](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network) .
 
+> [!IMPORTANT]
+> A privát társítás IPv6-támogatása jelenleg **nyilvános előzetes** verzióban érhető el. Ha a virtuális hálózatát IPv6-alapú privát ExpressRoute-kapcsolattal szeretné összekapcsolni, győződjön meg arról, hogy a virtuális hálózata kettős verem, és követi az [IPv6 for Azure VNet](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)vonatkozó irányelveket.
+> 
+> 
+
 ## <a name="create-the-gateway-subnet"></a>Az átjáróalhálózat létrehozása
 
 1. A [portálon](https://portal.azure.com)navigáljon ahhoz a Resource Manager-beli virtuális hálózathoz, amelyhez virtuális hálózati átjárót szeretne létrehozni.
@@ -58,9 +63,13 @@ A konfigurálás megkezdése előtt tekintse meg az alábbi lépések [videóit]
    
     :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-gateway-subnet.png" alt-text="Az átjáró alhálózatának hozzáadása":::
 
-1. Az alhálózat **nevénél** automatikusan megjelenik a „GatewaySubnet” érték. Ez az érték szükséges ahhoz, hogy az Azure felismerje, hogy az alhálózat egy átjáró alhálózata. Állítsa be az automatikusan kitöltött **címtartomány** értékeit, hogy megfeleljenek a konfigurációs követelményeinek. Javasoljuk, hogy hozzon létre egy átjáró-alhálózatot egy/27 vagy nagyobb (/26,/25 stb.). Ezután kattintson az **OK** gombra az értékek mentéséhez és az átjáró-alhálózat létrehozásához.
+1. Az alhálózat **nevénél** automatikusan megjelenik a „GatewaySubnet” érték. Ez az érték szükséges ahhoz, hogy az Azure felismerje, hogy az alhálózat egy átjáró alhálózata. Állítsa be az automatikusan kitöltött **címtartomány** értékeit, hogy megfeleljenek a konfigurációs követelményeinek. Javasoljuk, hogy hozzon létre egy átjáró-alhálózatot egy/27 vagy nagyobb (/26,/25 stb.).
 
-    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-subnet-gateway.png" alt-text="Az alhálózat hozzáadása":::
+    Ha kettős veremből álló virtuális hálózatot használ, és az IPv6-alapú privát ExpressRoute-t szeretné használni, kattintson az **IP6-címterület hozzáadása** és a bemeneti **IPv6-címtartomány** értékei elemre.
+
+Ezután kattintson az **OK** gombra az értékek mentéséhez és az átjáró-alhálózat létrehozásához.
+
+    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-subnet-gateway.png" alt-text="Adding the subnet":::
 
 ## <a name="create-the-virtual-network-gateway"></a>Virtuális hálózati átjáró létrehozása
 
@@ -71,13 +80,18 @@ A konfigurálás megkezdése előtt tekintse meg az alábbi lépések [videóit]
     | --------| ----- |
     | Előfizetés | Ellenőrizze, hogy a megfelelő előfizetés van-e kiválasztva. |
     | Erőforráscsoport | Ha kiválasztja a virtuális hálózatot, az erőforráscsoport automatikusan lesz kiválasztva. | 
-    | Név | Nevezze el az átjárót. Ez nem ugyanaz, mint az átjáró alhálózatának elnevezése. Ez a létrehozandó átjáró-objektum neve.|
-    | Régió | Módosítsa a **régió** mezőt úgy, hogy arra a helyre mutasson, ahol a virtuális hálózat található. Ha a hely nem arra a régióra mutat, ahol a virtuális hálózata, a virtuális hálózat nem jelenik meg a virtuális hálózat választása legördülő menüben. |
+    | Name | Nevezze el az átjárót. Ez nem ugyanaz, mint az átjáró alhálózatának elnevezése. Ez a létrehozandó átjáró-objektum neve.|
+    | Region | Módosítsa a **régió** mezőt úgy, hogy arra a helyre mutasson, ahol a virtuális hálózat található. Ha a hely nem arra a régióra mutat, ahol a virtuális hálózata, a virtuális hálózat nem jelenik meg a virtuális hálózat választása legördülő menüben. |
     | Átjáró típusa | **ExpressRoute** kiválasztása|
     | Termékváltozat | Válassza ki az átjáró SKU-t a legördülő listából. |
     | Virtuális hálózat | Válassza a *TestVNet* lehetőséget. |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget.|
     | Nyilvános IP-cím | Adja meg a nyilvános IP-cím nevét. |
+
+    > [!IMPORTANT]
+    > Ha IPv6-alapú ExpressRoute-t szeretne használni, győződjön meg arról, hogy az az SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ) elemet használja az **SKU**-hoz.
+    > 
+    > 
 
 1. Válassza a **felülvizsgálat + létrehozás** lehetőséget, majd **hozza létre** az átjáró létrehozásának megkezdéséhez. A rendszer érvényesíti a beállításokat, és az átjáró üzembe helyezése megtörténik. A virtuális hálózati átjáró létrehozása akár 45 percet is igénybe vehet.
 
@@ -89,7 +103,7 @@ Ha már nincs szüksége a ExpressRoute-átjáróra, keresse meg az átjárót a
 
 :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/delete-gateway.png" alt-text="Virtuális hálózati átjáró törlése":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Miután létrehozta a VNet-átjárót, összekapcsolhatja a VNet egy ExpressRoute-áramkörrel. 
 
 > [!div class="nextstepaction"]

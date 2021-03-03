@@ -5,12 +5,12 @@ ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
 ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: e4d4b7e01eb5799bee604c05e1660a7a45188763
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 2910ea3f896ba3920126737965ca9c9dbabcfeb3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223340"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709104"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>Egyéni tartománynév konfigurálása Azure App Serviceban Traffic Manager integrációval
 
@@ -75,7 +75,7 @@ Miután befejezte a DNS-rekordok hozzáadását vagy módosítását a tartomán
 
 ### <a name="what-about-root-domains"></a>Mi a legfelső szintű tartomány?
 
-Mivel a Traffic Manager csak a CNAME rekordokkal rendelkező egyéni tartomány-hozzárendeléseket támogatja, és mivel a DNS-szabványok nem támogatják a CNAME-rekordokat a gyökérszintű tartományok leképezéséhez (például **contoso.com**), Traffic Manager nem támogatja a legfelső szintű tartományok leképezését. A probléma megkerüléséhez használjon URL-átirányítást az alkalmazás szintjén. ASP.NET Core például használhatja az [URL-cím újraírását](/aspnet/core/fundamentals/url-rewriting). Ezután használja a Traffic Manager az altartomány (**www.contoso.com**) elosztásához. Egy másik módszer, [hogy létrehoz egy alias rekordot a tartománynév APEX-hoz, amely egy Azure Traffic Manager-profilra hivatkozik](https://docs.microsoft.com/azure/dns/tutorial-alias-tm). Például: contoso.com. Az átirányító szolgáltatás helyett beállíthatja, hogy a Azure DNS egy Traffic Manager-profilra hivatkozzon közvetlenül a zónából. 
+Mivel a Traffic Manager csak a CNAME rekordokkal rendelkező egyéni tartomány-hozzárendeléseket támogatja, és mivel a DNS-szabványok nem támogatják a CNAME-rekordokat a gyökérszintű tartományok leképezéséhez (például **contoso.com**), Traffic Manager nem támogatja a legfelső szintű tartományok leképezését. A probléma megkerüléséhez használjon URL-átirányítást az alkalmazás szintjén. ASP.NET Core például használhatja az [URL-cím újraírását](/aspnet/core/fundamentals/url-rewriting). Ezután használja a Traffic Manager az altartomány (**www.contoso.com**) elosztásához. Egy másik módszer, [hogy létrehoz egy alias rekordot a tartománynév APEX-hoz, amely egy Azure Traffic Manager-profilra hivatkozik](../dns/tutorial-alias-tm.md). Például: contoso.com. Az átirányító szolgáltatás helyett beállíthatja, hogy a Azure DNS egy Traffic Manager-profilra hivatkozzon közvetlenül a zónából. 
 
 A magas rendelkezésre állási forgatókönyvek esetében Traffic Manager nélkül is megvalósíthat terheléselosztási DNS-telepítést, ha több *olyan rekordot* hoz létre, amely a legfelső szintű tartományból az egyes alkalmazás-példányok IP-címére mutat. Ezután [rendelje hozzá ugyanazt a gyökértartomány-példányt az összes alkalmazás-példányhoz](app-service-web-tutorial-custom-domain.md#map-an-a-record). Mivel ugyanaz a tartománynév nem rendelhető hozzá két különböző alkalmazáshoz ugyanabban a régióban, ez a beállítás csak akkor működik, ha az alkalmazás különböző régiókban található.
 

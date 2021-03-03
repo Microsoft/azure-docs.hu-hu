@@ -1,15 +1,15 @@
 ---
 title: A riasztások és az értesítések monitorozásának áttekintése az Azure-ban
-description: Az Azure-beli riasztások áttekintése. Riasztások, klasszikus riasztások és a riasztások felülete.
+description: A riasztások áttekintése Azure Monitor
 ms.subservice: alerts
 ms.topic: conceptual
-ms.date: 01/28/2018
-ms.openlocfilehash: 96e15c1e07d437855b6553757295800406a4cf4c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/14/2021
+ms.openlocfilehash: e2d447b7407ed874d9c183c5cd2009882f1d6b3b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100614625"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723588"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>A Microsoft Azure riasztásainak áttekintése 
 
@@ -94,7 +94,7 @@ Ehelyett [a REST API-k használatával programozott módon enumerálhatja az el�
 > [!NOTE]
    >  Csak az elmúlt 30 napban generált riasztások érhetők el.
 
-A klasszikus riasztások nem jelennek meg vagy követhetik nyomon. Módosíthatja az előfizetéseket vagy a szűrő paramétereit az oldal frissítéséhez. 
+Módosíthatja az előfizetéseket vagy a szűrő paramétereit az oldal frissítéséhez.
 
 ![A riasztások oldalának képernyőképe](media/alerts-overview/alerts-page.png)
 
@@ -167,7 +167,7 @@ Ha kiválaszt egy riasztást, ez a lap a riasztás részleteit jeleníti meg, é
 
 A riasztás részletei lapon a következő témakörök találhatók:
 
-| Section | Description |
+| Section | Leírás |
 |:---|:---|
 | Összefoglalás | Megjeleníti a riasztás tulajdonságait és egyéb fontos információit. |
 | Előzmények | Felsorolja a riasztás által végrehajtott műveleteket és a riasztáson végrehajtott módosításokat. Jelenleg csak az állapot változásaira korlátozódik. |

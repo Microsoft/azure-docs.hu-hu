@@ -5,15 +5,15 @@ description: Hitelesítés az Azure-alkalmazások konfigurációjában a felügy
 author: AlexandraKemperMS
 ms.author: alkemper
 ms.service: azure-app-configuration
-ms.custom: devx-track-csharp
+ms.custom: devx-track-csharp, fasttrack-edit
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: 483af51cbaeb8f7b295adb4231e65f742e3f53a1
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: b1de1a24a506c049782443e4d32039c28fece436
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185461"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718250"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Felügyelt identitások használata az App Configuration eléréséhez
 
@@ -72,7 +72,7 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
 
 1. Az **előfizetés** területen válassza ki az Azure-előfizetését. Válassza ki az alkalmazás App Service erőforrását.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
     ![Felügyelt identitás hozzáadása](./media/add-managed-identity.png)
 
@@ -139,6 +139,15 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
     ```
     ---
 
+    > [!NOTE]
+    > Ha **felhasználó által hozzárendelt felügyelt identitást** szeretne használni, ügyeljen arra, hogy a ClientId a [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet&preserve-view=true)létrehozásakor határozza meg.
+    >```
+    >config.AddAzureAppConfiguration(options =>
+    >   options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential(<your_clientId>)));
+    >```
+    >Ahogy az Azure- [erőforrások felügyelt identitások szolgáltatásával kapcsolatos gyakori kérdések](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request), az alapértelmezett módszer a felügyelt identitás használatának feloldása. Ebben az esetben az Azure Identity Library arra kényszeríti, hogy adja meg a kívánt identitást, hogy elkerülje a bokréták futásidejű problémáit (például ha új felhasználó által hozzárendelt felügyelt identitást ad hozzá, vagy ha a rendszer által hozzárendelt felügyelt identitás engedélyezve van). Ezért akkor is meg kell adnia a clientId, ha csak egy felhasználó által hozzárendelt felügyelt identitás van definiálva, és nincs rendszerhez rendelt felügyelt identitás.
+
+
 1. Ha az alkalmazás konfigurációs értékeit és Key Vault hivatkozásokat is szeretné használni, frissítse a *program.cs* az alább látható módon. Ez a kód a (z `SetCredential` ) részeként meghívja `ConfigureKeyVault` a konfigurációs szolgáltatót, hogy milyen hitelesítő adatokat használjon a Key Vault hitelesítéshez.
 
     ### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
@@ -193,6 +202,8 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
 
     > [!NOTE]
     > A `ManagedIdentityCredential` csak a felügyelt identitások hitelesítését támogató szolgáltatások Azure-környezetekben működik. Nem működik a helyi környezetben. A [`DefaultAzureCredential`](/dotnet/api/azure.identity.defaultazurecredential) kód használata a helyi és az Azure-környezetekben egyaránt működik, mivel a szolgáltatás néhány hitelesítési lehetőségre visszaesik, beleértve a felügyelt identitást is.
+    > 
+    > Ha az Azure-ban üzembe helyezett **asigned felügyelt identitást** szeretne használni `DefaultAzureCredential` , akkor [a clientId kell megadnia](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme#specifying-a-user-assigned-managed-identity-with-the-defaultazurecredential).
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 

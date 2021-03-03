@@ -7,12 +7,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: c3b44c7b8761010deeecba1f8ed80727fe635f2b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d6fb4954ff616bccd9b237aedb3001b0a8d592dc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100620685"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717196"
 ---
 # <a name="workbook-drop-down-parameters"></a>Munkafüzet legördülő paraméterei
 
@@ -154,5 +154,5 @@ dependencies
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Ismerkedjen](../platform/workbooks-overview.md#visualizations) meg a munkafüzetek számos gazdag vizualizációs lehetőségével.
-* A munkafüzet erőforrásaihoz való hozzáférés [szabályozása](../platform/workbooks-access-control.md) és megosztása.
+* [Ismerkedjen](./workbooks-overview.md#visualizations) meg a munkafüzetek számos gazdag vizualizációs lehetőségével.
+* A munkafüzet erőforrásaihoz való hozzáférés [szabályozása](./workbooks-access-control.md) és megosztása.

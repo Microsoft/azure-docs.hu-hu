@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 0650a173b02e1b8f1f829953be1dd852024e6f65
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 541448f08e4ce9961d34063dcc225bf89d969a73
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524515"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703371"
 ---
 # <a name="create-a-custom-voice"></a>Egyéni hang létrehozása
 
@@ -60,7 +60,7 @@ Gondolja át újra a hosszúságú kimondott szöveg az alacsony kiejtési ponts
 
 > [!NOTE]
 > Szükség van arra, hogy ha egyéni neurális hangot használ, regisztrálnia kell a hangfelvételt a **hangtehetség** lapon. A rögzítési parancsfájl előkészítésekor ügyeljen arra, hogy az alábbi mondattal megszerezze a hangfelvételi visszajelzéseket a hanganyagok használatával a TTS hangmodell létrehozásához és a szintetikus beszéd létrehozásához. "I [állapot az első és az utolsó név] tisztában vagyok azzal, hogy a hangfelvételeket [a vállalat neve] fogja használni a hang szintetikus verziójának létrehozásához és használatához."
-Ezt a mondatot fogjuk használni annak ellenőrzéséhez, hogy a betanítási adatkészletekben lévő felvételeket ugyanaz a személy végzi-e, mint a beleegyezik. [További információ az adatai feldolgozásáról, valamint a hangalapú tehetségek ellenőrzésének módjáról](https://aka.ms/CNV-data-privacy). 
+Ezt a mondatot fogjuk használni annak ellenőrzéséhez, hogy a betanítási adatkészletekben lévő felvételeket ugyanaz a személy végzi-e, mint a beleegyezik. [További információ az adatai feldolgozásáról, valamint a hangalapú tehetségek ellenőrzésének módjáról](/legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext). 
 
 ## <a name="build-your-custom-voice-model"></a>Egyéni hangmodell létrehozása
 
@@ -87,7 +87,7 @@ Az adatkészlet ellenőrzése után felhasználhatja az egyéni hangmodell össz
 5. Válassza ki a **betanítási módszert** a következő lépésben. 
 
     > [!NOTE]
-    > Ha szeretné betanítani a neurális hangvételt, meg kell adnia egy hangtehetségi profilt a hangfelvételt tartalmazó hangfelvételi fájllal, amely a beszédfelismerési adatok használatával betanítja az egyéni hangmodellt. Az egyéni neurális hang korlátozott hozzáféréssel érhető el. Győződjön meg róla, hogy tisztában van a [felelős AI-követelményekkel](https://aka.ms/gating-overview) , és [alkalmazza a hozzáférést itt](https://aka.ms/customneural). 
+    > Ha szeretné betanítani a neurális hangvételt, meg kell adnia egy hangtehetségi profilt a hangfelvételt tartalmazó hangfelvételi fájllal, amely a beszédfelismerési adatok használatával betanítja az egyéni hangmodellt. Az egyéni neurális hang korlátozott hozzáféréssel érhető el. Győződjön meg róla, hogy tisztában van a [felelős AI-követelményekkel](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) , és [alkalmazza a hozzáférést itt](https://aka.ms/customneural). 
     
     Ezen az oldalon azt is megadhatja, hogy a parancsfájlt a teszteléshez töltse fel. A tesztelési parancsfájlnak 1Mb-nál kisebb txt-fájlnak kell lennie. A támogatott kódolási formátum a következőkből áll: ANSI/ASCII, UTF-8, UTF-8-BOM, UTF-16-LE vagy UTF-16-BE. A Kimondás minden bekezdése külön hangot fog eredményezni. Ha az összes mondatot egyetlen hanggal szeretné egyesíteni, egy bekezdésben végezze el azokat. 
 
@@ -126,7 +126,7 @@ Az egyes képzések automatikusan 100 minta hangfájlt hoznak majd a modell tesz
 
 3.  A modell részletei lapon a **tesztelés** lapon találja a minta hangfájlokat. 
 
-A hang minősége számos tényezőtől függ, többek között a betanítási adatok méretétől, a rögzítés minőségétől, a átiratok pontosságával, valamint a betanítási adatok rögzített hangjának a kívánt használati esethez tartozó személyiségével, és így tovább. Ha többet szeretne megtudni [a technológiával kapcsolatos képességekről és korlátozásokról, valamint a modell minőségének javításához ajánlott eljárásokról](https://aka.ms/CNV-limits). 
+A hang minősége számos tényezőtől függ, többek között a betanítási adatok méretétől, a rögzítés minőségétől, a átiratok pontosságával, valamint a betanítási adatok rögzített hangjának a kívánt használati esethez tartozó személyiségével, és így tovább. Ha többet szeretne megtudni [a technológiával kapcsolatos képességekről és korlátozásokról, valamint a modell minőségének javításához ajánlott eljárásokról](/legal/cognitive-services/speech-service/custom-neural-voice/characteristics-and-limitations-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext). 
 
 ## <a name="create-and-use-a-custom-voice-endpoint"></a>Egyéni hang-végpont létrehozása és használata
 

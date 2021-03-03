@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: b4f828c675df9625d6d4889dbc31bbc4b9f887ed
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 9b18b24686908ac92f97ea0cae892369919ae4d6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97386714"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721019"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>A Azure Database for MySQL korlátozásai
 A következő szakaszok ismertetik a kapacitást, a tárolási motor támogatását, a jogosultságok támogatását, az adatmanipulációs nyilatkozatok támogatását és az adatbázis-szolgáltatás működési korlátait. Lásd még a MySQL-adatbázismotor esetében alkalmazandó [általános korlátozásokat](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) is.
@@ -29,7 +29,7 @@ A szolgáltatás nem támogatja a jelszavakat, például a "validate_password" �
 
 ## <a name="storage-engines"></a>Storage-motorok
 
-A MySQL számos tárolási motort támogat. Azure Database for MySQL rugalmas kiszolgálón a következő tárolási motorok támogatottak és nem támogatottak:
+A MySQL számos tárolási motort támogat. Azure Database for MySQL a következő tárolási motorok támogatottak és nem támogatottak:
 
 ### <a name="supported"></a>Támogatott
 - [InnoDB](https://dev.mysql.com/doc/refman/5.7/en/innodb-introduction.html)

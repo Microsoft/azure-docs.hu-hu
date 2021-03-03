@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: duau
-ms.openlocfilehash: 6c6d33a36c4a0b71932e8c19c8f6dd105c33817c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 17677ea89b04659de66b9bda35975b96ff33473a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368332"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740783"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Oktatóanyag: HTTPS konfigurálása Front Door egyéni tartományon
 
@@ -84,7 +84,7 @@ A saját tanúsítványát is használhatja a HTTPS szolgáltatás engedélyezé
 > [!WARNING]
 > Az Azure bejárati ajtaja jelenleg csak az előfizetésben lévő Key Vault fiókokat támogatja, mint a bejárati ajtó konfigurálása. Ha nem a Front Door-előfizetéshez tartozó Key Vault-tárolót választ, az hibát eredményez.
 
-2. Azure Key Vault-tanúsítványok: Ha már rendelkezik tanúsítvánnyal, feltöltheti közvetlenül az Azure Key Vault-fiókjába, vagy létrehozhat egy új tanúsítványt közvetlenül az Azure Key Vaultban azokkal a hitelesítésszolgáltató (CA) partnerekkel, amelyekkel az Azure Key Vault integrálva van. **Titkos**tanúsítvány helyett a tanúsítványt **tanúsítvány** -objektumként töltse fel.
+2. Azure Key Vault-tanúsítványok: Ha már rendelkezik tanúsítvánnyal, feltöltheti közvetlenül az Azure Key Vault-fiókjába, vagy létrehozhat egy új tanúsítványt közvetlenül az Azure Key Vaultban azokkal a hitelesítésszolgáltató (CA) partnerekkel, amelyekkel az Azure Key Vault integrálva van. **Titkos** tanúsítvány helyett a tanúsítványt **tanúsítvány** -objektumként töltse fel.
 
 > [!NOTE]
 > Saját TLS/SSL-tanúsítvány esetén a bejárati ajtó nem támogatja az EC titkosítási algoritmusokkal rendelkező tanúsítványokat.
@@ -108,11 +108,11 @@ Adja meg az Azure-előfizetési engedélyt a Azure Key Vault fiókban találhat�
 
 1. A Key Vault-fiók BEÁLLÍTÁSOK területén válassza a **Hozzáférési szabályzatok**, majd az **Új hozzáadása** lehetőséget új szabályzat létrehozásához.
 
-2. A **Rendszerbiztonsági tag kijelölése** területen keresse meg az **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037** elemet, és válassza ki a **Microsoft.Azure.Frontdoor** lehetőséget. Válassza a **Kiválasztás** lehetőséget.
+2. A **Rendszerbiztonsági tag kijelölése** területen keresse meg az **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037** elemet, és válassza ki a **Microsoft.Azure.Frontdoor** lehetőséget. Kattintson a **Kiválasztás** elemre.
 
-3. A **titkos engedélyek**területen válassza a **beolvasás** lehetőséget, hogy a bejárati ajtó beolvassa a tanúsítványt.
+3. A **titkos engedélyek** területen válassza a **beolvasás** lehetőséget, hogy a bejárati ajtó beolvassa a tanúsítványt.
 
-4. A **tanúsítvány engedélyei**területen válassza a **beolvasás** lehetőséget, hogy a bejárati ajtó beolvassa a tanúsítványt.
+4. A **tanúsítvány engedélyei** területen válassza a **beolvasás** lehetőséget, hogy a bejárati ajtó beolvassa a tanúsítványt.
 
 5. Válassza az **OK** lehetőséget. 
 
@@ -133,12 +133,7 @@ Adja meg az Azure-előfizetési engedélyt a Azure Key Vault fiókban találhat�
     Az Azure bejárati ajtó a következő információkat tartalmazza: 
     - Az előfizetés azonosítójához tartozó Key Vault-fiókok. 
     - A kiválasztott Key Vaultban található tanúsítványok (titkos kódok). 
-    - A tanúsítvány elérhető verziói. 
-
-> [!NOTE]
-> Ha üresen hagyja a tanúsítvány verzióját, a következőhöz vezetne:
-> - A tanúsítvány legújabb verziója kiválasztva.
-> - A tanúsítványok a legújabb verzióra való automatikus elforgatása, amikor a tanúsítvány egy újabb verziója érhető el a Key Vault.
+    - A tanúsítvány elérhető verziói.
  
 5. Saját tanúsítvány használatakor nem szükséges tartományérvényesítés. Lépjen tovább a [Várakozás a propagálásra](#wait-for-propagation) részhez.
 
@@ -278,9 +273,9 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 * Töltse fel a tanúsítványt a Key Vaultba.
 * Tartomány érvényesítése.
-* Engedélyezze a HTTPS-t az egyéni tartományhoz.
+* Engedélyezze a HTTPS protokollt az egyéni tartományhoz.
 
-Ha meg szeretné tudni, hogyan állíthatja be a Geo-szűrési szabályzatot a bejárati ajtóhoz, folytassa a következő oktatóanyaggal.
+Ha meg szeretné tudni, hogyan állíthat be egy geo-szűrési szabályzatot az előtérben, folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
 > [Geo-szűrési szabályzat beállítása](front-door-geo-filtering.md)

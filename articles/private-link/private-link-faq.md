@@ -1,5 +1,5 @@
 ---
-title: Azure Private-hivatkozás – gyakori kérdések (GYIK)
+title: Azure Private Link – gyakori kérdések (GYIK)
 description: További információ az Azure Private linkről.
 services: private-link
 author: malopMSFT
@@ -7,14 +7,14 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: b56c57a0b803a41c095f6f25f69a18a815d182f1
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 4e81d8f88a7c01b6d302bcdaa88559159bed04ea
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582009"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709409"
 ---
-# <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure Private-hivatkozás – gyakori kérdések (GYIK)
+# <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure Private Link – gyakori kérdések (GYIK)
 
 ## <a name="private-link"></a>Private Link
 
@@ -65,6 +65,12 @@ A privát kapcsolati szolgáltatást többféleképpen is méretezheti:
 - Háttérbeli virtuális gépek hozzáadása a standard Load Balancer mögötti készlethez 
 - Adjon hozzá egy IP-címet a privát kapcsolati szolgáltatáshoz. Privát kapcsolati szolgáltatásként legfeljebb 8 IP-címet engedélyezünk.  
 - Adja hozzá a standard Load Balancerhoz az új Private link Service-t. A Load Balancer legfeljebb nyolc magánhálózati kapcsolati szolgáltatást engedélyez.   
+
+### <a name="what-is-natnetwork-address-translation-ip-configuration-used-in-private-link-service-how-can-i-scale-in-terms-of-available-ports-and-connections"></a>Mi a NAT (hálózati címfordítás) IP-konfigurációja a Private link Service-ben? Hogyan méretezhetők a rendelkezésre álló portok és kapcsolatok? 
+
+A NAT IP-konfiguráció biztosítja, hogy a forrás (fogyasztói oldal) és a célként megadott (szolgáltatói) címtartomány között ne legyenek IP-ütközések, ha forrás NAT-t biztosít a privát kapcsolati forgalomhoz a célhely oldalon (szolgáltató oldalon). A NAT IP-címe forrás IP-címként jelenik meg a szolgáltatás által fogadott összes csomaghoz és a cél IP-címéhez a szolgáltatás által küldött összes csomag esetében.  A NAT IP-címet a szolgáltató virtuális hálózatában található bármely alhálózatból lehet kiválasztani. 
+
+Mindegyik NAT-IP 64 GB/s TCP-kapcsolatot (64 kilobájt portot) biztosít a standard Load Balancer mögötti virtuális gépeken. További kapcsolatok méretezéséhez és hozzáadásához hozzáadhat új NAT IP-címeket, vagy további virtuális gépeket adhat hozzá a standard Load Balancerhoz. Így a portok rendelkezésre állását és a további kapcsolatok engedélyezését is lehetővé teszi. A kapcsolatok elosztása a NAT-IP-címek és a standard Load Balancer mögötti virtuális gépek között történik.
 
 ### <a name="can-i-connect-my-service-to-multiple-private-endpoints"></a>A szolgáltatáshoz több privát végpont is csatlakoztatható?
 Igen. Egy privát kapcsolati szolgáltatás több privát végpontról is fogadhat kapcsolatokat. Egy privát végpont azonban csak egy privát kapcsolati szolgáltatáshoz tud csatlakozni.  

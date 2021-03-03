@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 8491eb02fd61f291904d57990b3785ce93239964
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b2369a6380c7b74302d32366d0604fca616fc3ed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98935256"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698229"
 ---
 # <a name="troubleshooting-azure-spring-cloud-in-virtual-networks"></a>Az Azure Spring Cloud hibaelhárítása a Virtual Networks szolgáltatásban
 
@@ -24,20 +24,20 @@ Az Azure Spring Cloud-példány létrehozásához elegendő engedély szüksége
 
 Ha a Azure Portal használatával állítja be az Azure Spring Cloud Service-példányt, akkor a Azure Portal érvényesíti az engedélyeket.
 
-Az Azure Spring Cloud Service-példány az [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)használatával történő beállításához ellenőrizze a következőket:
+Az Azure Spring Cloud Service-példány az [Azure CLI](/cli/azure/get-started-with-azure-cli)használatával történő beállításához ellenőrizze a következőket:
 
 - Az előfizetés aktív.
 - A helyet az Azure Spring Cloud támogatja.
 - A példányhoz tartozó erőforráscsoport már létre van hozva.
 - Az erőforrás neve megfelel az elnevezési szabálynak. Csak kisbetűket, számokat és kötőjeleket tartalmazhat. Az első karakternek betűnek kell lennie. Az utolsó karakternek betűnek vagy számnak kell lennie. Az értéknek 2 és 32 karakter közöttinek kell lennie.
 
-Ha az Azure Spring Cloud Service-példányt a Resource Manager-sablonnal szeretné beállítani, tekintse át [a Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)című témakört.
+Ha az Azure Spring Cloud Service-példányt a Resource Manager-sablonnal szeretné beállítani, tekintse át [a Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](../azure-resource-manager/templates/template-syntax.md)című témakört.
 
 ### <a name="common-creation-issues"></a>Gyakori létrehozási problémák
 
 | Hibaüzenet | A hiba kijavítása |
 |------|------|
-| Az Azure Spring Cloud által létrehozott erőforrásokat a szabályzat nem engedélyezte. | A hálózati erőforrások akkor jönnek létre, amikor üzembe helyezi az Azure Spring Cloudt a saját virtuális hálózatán. Ellenőrizze, hogy van-e [Azure Policy](https://docs.microsoft.com/azure/governance/policy/overview) definiálva a létrehozás blokkolásához. Nem sikerült létrehozni az erőforrásokat a következő hibaüzenetben:. |
+| Az Azure Spring Cloud által létrehozott erőforrásokat a szabályzat nem engedélyezte. | A hálózati erőforrások akkor jönnek létre, amikor üzembe helyezi az Azure Spring Cloudt a saját virtuális hálózatán. Ellenőrizze, hogy van-e [Azure Policy](../governance/policy/overview.md) definiálva a létrehozás blokkolásához. Nem sikerült létrehozni az erőforrásokat a következő hibaüzenetben:. |
 | A megadott alhálózatok útválasztási táblákhoz vannak társítva. Kérjük, szüntesse meg őket. | Jelenleg nem támogatott az Azure Spring Cloud üzembe helyezése a meglévő útválasztási táblázatokhoz társított alhálózatban, majd az újbóli próbálkozás. |
 | A szükséges forgalom nem allowlisted. | Az [Azure Spring Cloud VNET való futtatásával](spring-cloud-vnet-customer-responsibilities.md) kapcsolatban a szükséges adatforgalom allowlisted érdekében tekintse meg az ügyfél feladatait. |
 
@@ -47,4 +47,4 @@ Ez a probléma akkor fordul elő, ha a virtuális hálózat egyéni DNS-beállí
 
 ## <a name="other-issues"></a>Egyéb problémák
 
-[Gyakori Azure Spring Cloud-problémák elhárítása](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-troubleshoot).
+[Gyakori Azure Spring Cloud-problémák elhárítása](./spring-cloud-troubleshoot.md).

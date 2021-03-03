@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2018
-ms.openlocfilehash: b73fa9702a95897afbca53e2de70dcabc04a4665
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: abcd95a0c433b59df6e7a564e5db948ea2a9eaf5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100613898"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717213"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Útmutató a tervezői csempék Azure Monitor való megtekintéséhez
 A Azure Monitor Tervező nézetében számos egyéni nézetet hozhat létre a Azure Portalban, amelyek segíthetnek a Log Analytics munkaterületen lévő adatmegjelenítésben. Ez a cikk az egyéni nézetekben elérhető csempék beállításairól nyújt útmutatást.
@@ -24,7 +24,7 @@ További információ a tervező nézetéről:
 
 A következő táblázat ismerteti az elérhető tervezői csempéket:  
 
-| Csempe | Description |
+| Csempe | Leírás |
 |:--- |:--- |
 | [Szám](#number-tile) |Egy lekérdezés rekordjainak száma. |
 | [Két szám](#two-numbers-tile) |Két különböző lekérdezésből származó rekordok száma. |
@@ -36,7 +36,7 @@ A következő táblázat ismerteti az elérhető tervezői csempéket:
 A következő szakaszok részletesen ismertetik a csempék típusát és azok tulajdonságait.
 
 > [!NOTE]
-> A nézetekben lévő csempék a Log Analytics munkaterületen található [naplókon](../log-query/log-query-overview.md) alapulnak. Jelenleg nem támogatják a [több erőforrás lekérdezését](../log-query/cross-workspace-query.md) az adatok Application Insightsból való lekéréséhez.
+> A nézetekben lévő csempék a Log Analytics munkaterületen található [naplókon](../logs/log-query-overview.md) alapulnak. Jelenleg nem támogatják a [több erőforrás lekérdezését](../logs/cross-workspace-query.md) az adatok Application Insightsból való lekéréséhez.
 
 ## <a name="number-tile"></a>Szám csempe
 A **szám** csempe a rekordok számát jeleníti meg egy napló lekérdezésből és egy címkéből.
@@ -46,7 +46,7 @@ A **szám** csempe a rekordok számát jeleníti meg egy napló lekérdezésből
 | Beállítás | Leírás |
 |:--- |:--- |
 | Név |A csempe tetején megjelenő szöveg |
-| Description |A csempe neve alatt megjelenő szöveg |
+| Leírás |A csempe neve alatt megjelenő szöveg |
 | **Csempe** | |
 | Jelmagyarázat |Az érték alatt megjelenő szöveg |
 | Lekérdezés |A futtatott lekérdezés. Megjelenik a lekérdezés által visszaadott rekordok száma. |
@@ -64,7 +64,7 @@ Ez a csempe a rekordok számát jeleníti meg két különböző naplózási lek
 | Beállítás | Leírás |
 |:--- |:--- |
 | Név |A csempe tetején megjelenő szöveg |
-| Description |A csempe neve alatt megjelenő szöveg |
+| Leírás |A csempe neve alatt megjelenő szöveg |
 | **Első csempe** | |
 | Jelmagyarázat |Az érték alatt megjelenő szöveg |
 | Lekérdezés |A futtatott lekérdezés. Megjelenik a lekérdezés által visszaadott rekordok száma. |
@@ -85,7 +85,7 @@ A **fánk** csempe egyetlen számot jelenít meg, amely összefoglalja a log lek
 | Beállítás | Leírás |
 |:--- |:--- |
 | Név |A csempe tetején megjelenő szöveg |
-| Description |A csempe neve alatt megjelenő szöveg |
+| Leírás |A csempe neve alatt megjelenő szöveg |
 | **Gyűrű** | |
 | Lekérdezés |A fánkhoz futtatott lekérdezés. Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus érték. A lekérdezés általában a *mérték* kulcsszó használatával összegzi az eredményeket. |
 | **Gyűrű** |**> központ** |
@@ -109,7 +109,7 @@ Ez a csempe egy olyan vonalas diagram, amely egyszerre több adatsorozatot jelen
 | Beállítás | Leírás |
 |:--- |:--- |
 | Név |A csempe tetején megjelenő szöveg |
-| Description |A csempe neve alatt megjelenő szöveg |
+| Leírás |A csempe neve alatt megjelenő szöveg |
 | **Vonalas diagram** | |
 | Lekérdezés |A vonalas diagramhoz futtatott lekérdezés Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus érték. A lekérdezés általában a *mérték* kulcsszó használatával összegzi az eredményeket. Ha a lekérdezés az *intervallum* kulcsszót használja, az x tengely ezt az időtartamot használja. Ha a lekérdezés nem használja az *intervallum* kulcsszót, az x tengely óránkénti időközöket használ. |
 | **Vonalas diagram** |**> Y tengely** |
@@ -130,7 +130,7 @@ Ez a csempe egy olyan vonalas diagrammal is rendelkezik, amely egyszerre több a
 | Beállítás | Leírás |
 |:--- |:--- |
 | Név |A csempe tetején megjelenő szöveg |
-| Description |A csempe neve alatt megjelenő szöveg |
+| Leírás |A csempe neve alatt megjelenő szöveg |
 | **Vonalas diagram** | |
 | Lekérdezés |A vonalas diagramhoz futtatott lekérdezés Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus érték. A lekérdezés általában a *mérték* kulcsszó használatával összegzi az eredményeket. Ha a lekérdezés az *intervallum* kulcsszót használja, az x tengely ezt az időtartamot használja. Ha a lekérdezés nem használja az *intervallum* kulcsszót, az x tengely óránkénti időközöket használ. |
 | **Vonalas diagram** |**> ábrafelirat** |
@@ -155,7 +155,7 @@ A **két idővonal** csempe a két naplózási lekérdezés eredményét jelení
 | Beállítás | Leírás |
 |:--- |:--- |
 | Név |A csempe tetején megjelenő szöveg |
-| Description |A csempe neve alatt megjelenő szöveg |
+| Leírás |A csempe neve alatt megjelenő szöveg |
 | Első diagram | |
 | Jelmagyarázat |Az első adatsorozat ábrafelirata alatt megjelenő szöveg |
 | Szín |Az első adatsorozat oszlopaihoz használt szín |
@@ -173,5 +173,5 @@ A **két idővonal** csempe a két naplózási lekérdezés eredményét jelení
 
 
 ## <a name="next-steps"></a>Következő lépések
-* Útmutató a csempék lekérdezéseit támogató [naplók lekérdezéséhez](../log-query/log-query-overview.md) .
+* Útmutató a csempék lekérdezéseit támogató [naplók lekérdezéséhez](../logs/log-query-overview.md) .
 * [Vizualizációs részek](view-designer-parts.md) hozzáadása az egyéni nézethez.

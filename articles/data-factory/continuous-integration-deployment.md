@@ -6,13 +6,13 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: maghan
 ms.topic: conceptual
-ms.date: 12/17/2020
-ms.openlocfilehash: c0d3ba8d9bea9fade58ed4a65c6d3ae43ef6acb3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/18/2021
+ms.openlocfilehash: 2fd8911ca11ee6dfcf795347e1fe7f2c36a2b636
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383602"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716524"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és teljesítés az Azure Data Factoryben
 
@@ -20,9 +20,9 @@ ms.locfileid: "100383602"
 
 ## <a name="overview"></a>Áttekintés
 
-A folyamatos integráció az a gyakorlat, amellyel a rendszer automatikusan és a lehető leghamarabb teszteli a kód egyes módosításait. A folyamatos teljesítés a folyamatos integráció során megjelenő tesztelést követi, és leküldi a módosításokat egy átmeneti vagy éles rendszerbe.
+A folyamatos integráció az a gyakorlat, amellyel a rendszer automatikusan és a lehető leghamarabb teszteli a kód egyes módosításait. A folyamatos teljesítés a folyamatos integráció során zajló tesztelést követi, és egy előkészítési vagy éles rendszerbe küldi le a módosításokat.
 
-Azure Data Factory a folyamatos integráció és a szállítás (CI/CD) azt jelenti, hogy Data Factory folyamatokat az egyik környezetből (fejlesztési, tesztelési, éles) áthelyezi egy másikra. A Azure Data Factory [Azure Resource Manager sablonokat](../azure-resource-manager/templates/overview.md) használ a különböző ADF-entitások (folyamatok, adatkészletek, adatforgalom stb.) konfigurációjának tárolásához. Két javasolt módszer áll rendelkezésre az adatelőállító más környezetbe való előléptetéséhez:
+Az Azure Data Factoryben a folyamatos integráció és teljesítés (CI/CD) a Data Factory-folyamatoknak az egyik (fejlesztési, tesztelési, éles) környezetből egy másikba történő áthelyezését jelenti. A Azure Data Factory [Azure Resource Manager sablonokat](../azure-resource-manager/templates/overview.md) használ a különböző ADF-entitások (folyamatok, adatkészletek, adatforgalom stb.) konfigurációjának tárolásához. Két javasolt módszer áll rendelkezésre az adatelőállító más környezetbe való előléptetéséhez:
 
 -    Automatikus üzembe helyezés a Data Factory Azure- [folyamatokkal](/azure/devops/pipelines/get-started/what-is-azure-pipelines) való integrálásával
 -    Manuálisan tölthet fel egy Resource Manager-sablont a Data Factory UX-integrációval Azure Resource Manager használatával.
@@ -199,7 +199,7 @@ A (z) adatfeldolgozó csapata a cikk alján található, [előzetes és üzembe 
 
 ## <a name="use-custom-parameters-with-the-resource-manager-template"></a>Egyéni paraméterek használata Resource Manager-sablonnal
 
-Ha a fejlesztői gyárhoz tartozik egy társított git-tárház, felülbírálhatja a sablon közzétételével vagy exportálásával generált Resource Manager-sablon alapértelmezett paramétereit. A következő forgatókönyvekben érdemes lehet felülbírálni az alapértelmezett paraméterezés-sablont:
+Ha a fejlesztői gyárhoz tartozik egy társított git-tárház, felülbírálhatja a sablon közzétételével vagy exportálásával generált Resource Manager-sablon alapértelmezett paramétereit. Az alapértelmezett Resource Manager-paraméterek konfigurációját a következő helyzetekben érdemes felülbírálni:
 
 * Automatikus CI/CD-t használ, és módosítani szeretné néhány tulajdonságot a Resource Manager üzembe helyezése során, de a tulajdonságok alapértelmezés szerint nem paraméterek.
 * A gyár olyan nagy méretű, hogy az alapértelmezett Resource Manager-sablon érvénytelen, mert több, mint a maximálisan megengedett paraméterek (256).
@@ -210,11 +210,14 @@ Ha a fejlesztői gyárhoz tartozik egy társított git-tárház, felülbírálha
     * A adatfolyam újraértékelési logikája a paraméterek csökkentése érdekében, például a folyamat paramétereinek mindegyike azonos értékkel rendelkezik, csak a globális paramétereket használhatja.
     * Az egyik adatfeldolgozót több adatfolyamatra is kioszthatja.
 
-Az alapértelmezett paraméterezés-sablon felülbírálásához nyissa meg a felügyeleti központot, és válassza a **paraméterezés sablon** lehetőséget a verziókövetés szakaszban. Válassza a **Sablon szerkesztése** lehetőséget a paraméterezés sablon kódjának megnyitásához. 
+Az alapértelmezett Resource Manager-paraméter konfigurációjának felülbírálásához lépjen a **felügyelet** hubhoz, és válassza az **ARM-sablon** lehetőséget a "verziókövetés" szakaszban. Az **ARM** -paraméterek konfigurálása szakaszban kattintson az ikon **szerkesztése** lehetőségre a "paraméter-konfiguráció szerkesztése" elemre, hogy megnyissa a Resource Manager-paraméter konfigurációs kódjának szerkesztőjét.
 
 ![Egyéni paraméterek kezelése](media/author-management-hub/management-hub-custom-parameters.png)
 
-Egyéni paraméterezés-sablon létrehozásához létrehoz egy **arm-template-parameters-definition.js** nevű fájlt a git-ág gyökérkönyvtárában. Pontosan ezt a fájlnevet kell használnia.
+> [!NOTE]
+> Az **ARM-paraméterek konfigurálása** csak "git módban" engedélyezett. Jelenleg le van tiltva "élő mód" vagy "Data Factory" módban.
+
+Az egyéni Resource Manager-paraméterek konfigurációjának létrehozásakor létrejön egy **arm-template-parameters-definition.js** nevű fájl a git-ág gyökérkönyvtárában. Pontosan ezt a fájlnevet kell használnia.
 
 ![Egyéni paraméterek fájlja](media/continuous-integration-deployment/custom-parameters.png)
 
@@ -223,7 +226,7 @@ Az együttműködési ág közzétételét követően Data Factory beolvassa ezt
 Egy Resource Manager-sablon exportálásakor Data Factory beolvassa ezt a fájlt attól függően, hogy melyik ág éppen dolgozik, és nem az együttműködési ágat. A fájlt létrehozhatja vagy szerkesztheti egy privát ág alapján, ahol tesztelheti a módosításokat úgy, hogy kiválasztja az **ARM-sablon exportálása** lehetőséget a felhasználói felületen. Ezután egyesítheti a fájlt az együttműködési ágban.
 
 > [!NOTE]
-> Az egyéni paraméterezés-sablonok nem változtatják meg az ARM-sablon 256-as korlátját. Lehetővé teszi a paraméteres tulajdonságok számának kiválasztását és csökkentését.
+> Az egyéni Resource Manager-paraméterek konfigurációja nem változtatja meg az ARM-sablon 256-as korlátját. Lehetővé teszi a paraméteres tulajdonságok számának kiválasztását és csökkentését.
 
 ### <a name="custom-parameter-syntax"></a>Egyéni paraméter szintaxisa
 
@@ -244,7 +247,7 @@ Az alábbi útmutatást követve az egyéni paraméterek fájljának létrehozá
  
 ### <a name="sample-parameterization-template"></a>Minta paraméterezés-sablon
 
-Az alábbi példa azt szemlélteti, hogy a paraméterezés-sablonok hogyan néznek ki:
+Az alábbi példa egy Resource Manager-paraméterek konfigurációjának megjelenését szemlélteti:
 
 ```json
 {

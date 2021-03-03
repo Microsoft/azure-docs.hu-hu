@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 13282962886d8682b6056d10f8f0cc5a7f626d60
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 84124f33f6aa02f63c0c47a24bd7d2a71ced2d11
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946023"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699300"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Gyakori kérdések
 
@@ -61,7 +61,7 @@ Igen. További összetevők telepítéséhez vagy a fürtkonfiguráció testresz
 
 - [HDInsight](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) az alkalmazások telepítéséhez.
 
-A támogatott összetevők listáját lásd: [Mik a Apache Hadoop összetevők és verziók érhetők el a HDInsight-ben?](./hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions)
+A támogatott összetevők listáját lásd: [Mik a Apache Hadoop összetevők és verziók érhetők el a HDInsight-ben?](./hdinsight-component-versioning.md)
 
 ### <a name="can-i-upgrade-the-individual-components-that-are-pre-installed-on-the-cluster"></a>Frissíthetem a fürtön előre telepített egyes összetevőket?
 
@@ -234,7 +234,7 @@ Hajtsa végre az alábbi műveletek egyikét:
 
 ### <a name="how-can-i-set-up-auditing-for-my-blob-storage-account"></a>Hogyan állíthatok be naplózást a blob Storage-fiókomhoz?
 
-A blob Storage-fiókok naplózásához a [Azure Portal a Storage-fiók figyelése](../storage/common/storage-monitor-storage-account.md)című eljárással konfigurálhatja a figyelést. Egy HDFS-naplózási napló csak a helyi HDFS fájlrendszer (hdfs://mycluster) naplózási információit tartalmazza.  Nem tartalmazza a távoli tárterületen végzett műveleteket.
+A blob Storage-fiókok naplózásához a [Azure Portal a Storage-fiók figyelése](../storage/common/manage-storage-analytics-logs.md)című eljárással konfigurálhatja a figyelést. Egy HDFS-naplózási napló csak a helyi HDFS fájlrendszer (hdfs://mycluster) naplózási információit tartalmazza.  Nem tartalmazza a távoli tárterületen végzett műveleteket.
 
 ### <a name="how-can-i-transfer-files-between-a-blob-container-and-an-hdinsight-head-node"></a>Hogyan vihetők át fájlok egy blob-tároló és egy HDInsight-csomópont között?
 

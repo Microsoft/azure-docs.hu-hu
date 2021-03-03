@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9fd10d6a4fb748a61b5e1d9e27777c2fa1134039
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: d45b2ec8814ec2b7f02da99500aa1e72ec525d65
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225613"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695702"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>A OPENROWSET használata kiszolgáló nélküli SQL-készlettel az Azure szinapszis Analyticsben
 
@@ -97,6 +97,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })
 [ , PARSER_VERSION = 'parser_version' ]
 [ , HEADER_ROW = { TRUE | FALSE } ]
 [ , DATAFILETYPE = { 'char' | 'widechar' } ]
+[ , CODEPAGE = { 'ACP' | 'OEM' | 'RAW' | 'code_page' } ]
 ```
 
 ## <a name="arguments"></a>Argumentumok
@@ -237,6 +238,10 @@ Meghatározza, hogy a CSV-fájl fejlécet tartalmaz-e. Az alapértelmezett ért�
 ADATFÁJLTÍPUS = {' char ' | "(widechar)"}
 
 A kódolást adja meg: az UTF8-hoz használt char ((widechar)) a UTF16-fájlok esetében használatos.
+
+KÓDLAP = {"ACP" | "OEM" | "NYERS" | "code_page"}
+
+Megadja az adatfájlban szereplő adatkód oldalát. Az alapértelmezett érték 65001 (UTF-8 kódolás). Erről a lehetőségről [itt](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15#codepage)talál további információt.
 
 ## <a name="fast-delimited-text-parsing"></a>Gyors tagolt szöveg elemzése
 

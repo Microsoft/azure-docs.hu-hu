@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan konfigurálhatja és kezelheti a Azure Monitorb
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 5fc9b1f75faec7f2be8f9e6126fdacf9697413f6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1a837ac9aa94effa021d5395fb4856d1d5df2e90
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100620528"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718148"
 ---
 # <a name="action-rules-preview"></a>Műveleti szabályok (előzetes verzió)
 
@@ -105,7 +105,7 @@ Ha a váltásban a **műveleti csoport** lehetőséget választja, akkor adjon h
 Utolsó lépésként adja meg a következő adatokat a műveleti szabályhoz:
 * Name
 * Az erőforráscsoport, amelyben mentve van
-* Description
+* Leírás
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -209,7 +209,7 @@ A contoso szeretné letiltani az értesítéseket minden, a **ContosoSub** -hez 
 
 ### <a name="scenario-3-action-group-defined-at-a-resource-group"></a>3. forgatókönyv: erőforráscsoport által definiált műveleti csoport
 
-A contoso [metrikus riasztást adott meg egy előfizetési szinten](../platform/alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor). De meg szeretné határozni azokat a műveleteket, amelyek kifejezetten az erőforráscsoport **ContosoRG** létrehozott riasztásokhoz kapcsolódnak.
+A contoso [metrikus riasztást adott meg egy előfizetési szinten](./alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor). De meg szeretné határozni azokat a műveleteket, amelyek kifejezetten az erőforráscsoport **ContosoRG** létrehozott riasztásokhoz kapcsolódnak.
 
 **Megoldás:** Műveleti szabály létrehozása a alábbiakkal:
 * Hatókör = **ContosoRG**
@@ -253,11 +253,11 @@ az monitor action-rule delete --resource-group MyResourceGroupName --name MyActi
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
-Az [eredmények száma](../platform/alerts-unified-log.md) lehetőséggel létrehozott riasztások a teljes keresési eredmény használatával hoznak létre egyetlen riasztási példányt (amely több számítógép között is terjedhet). Ebben a forgatókönyvben, ha egy műveleti szabály a **riasztási környezet (hasznos adattartalom)** szűrőt használja, akkor az a riasztási példányon működik, amíg van egyezés. A korábban ismertetett 2. forgatókönyvben, ha a generált naplózási riasztás keresési eredményei mind a **Computer-01** , mind a **Computer-02** karakterláncot tartalmazzák, a teljes értesítés le lesz tiltva. Nincs értesítés létrehozva a **Computer-02-** hez.
+Az [eredmények száma](./alerts-unified-log.md) lehetőséggel létrehozott riasztások a teljes keresési eredmény használatával hoznak létre egyetlen riasztási példányt (amely több számítógép között is terjedhet). Ebben a forgatókönyvben, ha egy műveleti szabály a **riasztási környezet (hasznos adattartalom)** szűrőt használja, akkor az a riasztási példányon működik, amíg van egyezés. A korábban ismertetett 2. forgatókönyvben, ha a generált naplózási riasztás keresési eredményei mind a **Computer-01** , mind a **Computer-02** karakterláncot tartalmazzák, a teljes értesítés le lesz tiltva. Nincs értesítés létrehozva a **Computer-02-** hez.
 
 ![A diagramon a műveleti szabályok és a naplózási riasztások láthatók, amelyek egyetlen riasztási példánnyal vannak kiemelve.](media/alerts-action-rules/action-rules-log-alert-number-of-results.png)
 
-Ha a riasztásokat a műveleti szabályokkal szeretné legjobban használni, hozzon létre naplózási riasztásokat a [metrika mértékének](../platform/alerts-unified-log.md) beállításával. Ezzel a beállítással külön riasztási példányok jönnek létre a definiált csoport mező alapján. Ezt követően a 2. forgatókönyvben különálló riasztási példányok jönnek létre a **Computer-01** és a **Computer-02** esetében. A forgatókönyvben ismertetett műveleti szabály miatt a rendszer csak a **számítógép-01** értesítését letiltja. A **számítógép-02-** es értesítés a szokásos módon folytatódik.
+Ha a riasztásokat a műveleti szabályokkal szeretné legjobban használni, hozzon létre naplózási riasztásokat a [metrika mértékének](./alerts-unified-log.md) beállításával. Ezzel a beállítással külön riasztási példányok jönnek létre a definiált csoport mező alapján. Ezt követően a 2. forgatókönyvben különálló riasztási példányok jönnek létre a **Computer-01** és a **Computer-02** esetében. A forgatókönyvben ismertetett műveleti szabály miatt a rendszer csak a **számítógép-01** értesítését letiltja. A **számítógép-02-** es értesítés a szokásos módon folytatódik.
 
 ![Műveleti szabályok és naplók riasztásai (eredmények száma)](media/alerts-action-rules/action-rules-log-alert-metric-measurement.png)
 
@@ -287,7 +287,7 @@ Miután meghatározta a riasztási szabály céljának erőforrását, megtekint
 
 ### <a name="can-i-see-the-alerts-that-have-been-suppressed-by-an-action-rule"></a>Megtekinthetem a műveleti szabály által letiltott riasztásokat?
 
-A [riasztások listája oldalon](../platform/alerts-managing-alert-instances.md)kiválaszthatja az **elnyomási állapot** nevű további oszlopot is. Ha a riasztási példány értesítését a rendszer letiltotta, akkor az az állapot jelenik meg a listában.
+A [riasztások listája oldalon](./alerts-managing-alert-instances.md)kiválaszthatja az **elnyomási állapot** nevű további oszlopot is. Ha a riasztási példány értesítését a rendszer letiltotta, akkor az az állapot jelenik meg a listában.
 
 ![Letiltott riasztási példányok](media/alerts-action-rules/action-rules-suppressed-alerts.png)
 
@@ -321,4 +321,4 @@ A VM1 összes riasztása esetén a Action Group AG1 egyszer aktiválódik. Ha a 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [További információ az Azure-beli riasztásokról](../platform/alerts-overview.md)
+- [További információ az Azure-beli riasztásokról](./alerts-overview.md)

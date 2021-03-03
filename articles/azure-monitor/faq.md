@@ -7,19 +7,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 212828493a381ca118d3bdc54428bddba9bd842a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6840abe507543c4e03448401f091b6caa0a466c6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577570"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717451"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor gyakori kérdések
 
 A Microsoft gyakori kérdései a Azure Monitorkal kapcsolatos gyakori kérdések listája. Ha további kérdése van, látogasson el a [vitafórumra](/answers/questions/topics/single/24223.html) , és tegye fel kérdéseit. Ha egy kérdést gyakran megkérdeznek, azt a cikkhez adja hozzá, hogy gyorsan és könnyen elérhető legyen.
 
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 ### <a name="what-is-azure-monitor"></a>Mi az Azure Monitor?
 [Azure monitor](overview.md) egy Azure-szolgáltatás, amely teljesítmény-és rendelkezésre állási monitorozást biztosít az Azure-ban, más felhőalapú környezetekben vagy helyszíni környezetben futó alkalmazások és szolgáltatások számára. Azure Monitor a különböző forrásokból származó adatokat egy közös adatplatformba gyűjti, ahol elemezni lehet a trendeket és a rendellenességeket. A Azure Monitor gazdag funkciói segítenek gyorsan azonosítani és reagálni azokra a kritikus helyzetekre, amelyek hatással lehetnek az alkalmazásra.
@@ -54,7 +54,7 @@ Tekintse meg az [Application Insights által használt IP-címeket, és log Anal
 A Azure Monitor különböző forrásokból gyűjt adatokat, beleértve az Azure platformról és erőforrásokból, az egyéni alkalmazásokból és a virtuális gépeken futó ügynököktől származó naplókat és mérőszámokat. Más szolgáltatások, például a Azure Security Center és a Network Watcher adatokat gyűjtenek egy Log Analytics munkaterületen, így Azure Monitor adatokkal elemezhetők. A naplók és a metrikák REST API használatával egyéni adatokat is küldhet Azure Monitor. Tekintse [meg Azure monitor figyelési adatforrásait](agents/data-sources.md).
 
 ### <a name="what-data-is-collected-by-azure-monitor"></a>Milyen adatokat gyűjtenek a Azure Monitor? 
-Azure Monitor a különböző forrásokból származó adatokat [naplókba](logs/data-platform-logs.md) vagy [metrikába](essentials/data-platform-metrics.md)gyűjti. Az egyes adattípusok viszonylagos előnyökkel rendelkeznek, és mindegyikük a Azure Monitor szolgáltatásainak egy adott készletét támogatja. Minden Azure-előfizetéshez egyetlen metrikai adatbázis van, míg a követelményektől függően több Log Analytics munkaterületet is létrehozhat a naplók gyűjtéséhez. Lásd: [Azure monitor adatplatform](/data-platform.md).
+Azure Monitor a különböző forrásokból származó adatokat [naplókba](logs/data-platform-logs.md) vagy [metrikába](essentials/data-platform-metrics.md)gyűjti. Az egyes adattípusok viszonylagos előnyökkel rendelkeznek, és mindegyikük a Azure Monitor szolgáltatásainak egy adott készletét támogatja. Minden Azure-előfizetéshez egyetlen metrikai adatbázis van, míg a követelményektől függően több Log Analytics munkaterületet is létrehozhat a naplók gyűjtéséhez. Lásd: [Azure monitor adatplatform](data-platform.md).
 
 ### <a name="is-there-a-maximum-amount-of-data-that-i-can-collect-in-azure-monitor"></a>Van-e a Azure Monitor összegyűjtött adatok maximális mennyisége?
 A begyűjthető metrikus adatok mennyisége nincs korlátozva, de ezeket az adatokat legfeljebb 93 napig tároljuk. Lásd: [mérőszámok megőrzése](essentials/data-platform-metrics.md#retention-of-metrics). Az összegyűjtött naplózási adatok mennyisége nem korlátozható, de a Log Analytics munkaterülethez választott díjszabási szinten is hatással lehet. Tekintse meg a [díjszabás részleteit](https://azure.microsoft.com/pricing/details/monitor/).
@@ -86,7 +86,7 @@ P
 Az adatok el lettek távolítva a munkaterületről a [megőrzési időtartamnak](logs/manage-cost-storage.md#change-the-data-retention-period)megfelelően. A megadott adatokat adatvédelmi vagy megfelelőségi okokból is törölheti. További információkért lásd: [privát adatok exportálása és törlése](logs/personal-data-mgmt.md#how-to-export-and-delete-private-data) .
 
 ### <a name="is-log-analytics-storage-immutable"></a>Nem változtathatók Log Analytics a tárolók?
-Az adatbázis-tárolóban tárolt adatmennyiség nem módosítható a betöltés után, de törölhető [a *kiürítési* API-útvonalon keresztül a magánjellegű adattörléshez](platform/personal-data-mgmt.md#delete). Bár az adat nem módosítható, bizonyos minősítésekhez szükséges, hogy az adat nem módosítható és nem törölhető a tárolóban. Az adatmódosíthatatlansági a nem módosítható [tárolóként](../storage/blobs/storage-blob-immutability-policies-manage.md)konfigurált Storage-fiókba történő [adatexportálással](platform/logs-data-export.md) érhető el.
+Az adatbázis-tárolóban tárolt adatmennyiség nem módosítható a betöltés után, de törölhető [a *kiürítési* API-útvonalon keresztül a magánjellegű adattörléshez](./logs/personal-data-mgmt.md#delete). Bár az adat nem módosítható, bizonyos minősítésekhez szükséges, hogy az adat nem módosítható és nem törölhető a tárolóban. Az adatmódosíthatatlansági a nem módosítható [tárolóként](../storage/blobs/storage-blob-immutability-policies-manage.md)konfigurált Storage-fiókba történő [adatexportálással](./logs/logs-data-export.md) érhető el.
 
 ### <a name="what-is-a-log-analytics-workspace"></a>Mi a Log Analytics-munkaterület?
 A Azure Monitor által gyűjtött összes naplózási adatokat egy Log Analytics munkaterületen tárolja a rendszer. A munkaterület lényegében egy olyan tároló, amelyben a naplózási adatokat különböző forrásokból gyűjti a rendszer. Lehet, hogy az összes figyelési adathoz egyetlen Log Analytics munkaterület tartozik, vagy több munkaterületre vonatkozó követelmények is lehetnek. Lásd: [a Azure monitor naplók üzembe helyezésének megtervezése](logs/design-logs-deployment.md).
@@ -283,7 +283,7 @@ Ezt a módszert nem ajánlott az API verziójának feltöltésére használni. A
 
 Egy asztali alkalmazás, amelyet az IIS-webkiszolgálóban használhat a Application Insights webalkalmazásokban való konfigurálásához. Nem gyűjt telemetria: leállíthatja, ha nem konfigurál egy alkalmazást. 
 
-[További információ](app/monitor-performance-live-website-now.md#questions).
+[További információk](app/monitor-performance-live-website-now.md#questions).
 
 ### <a name="what-telemetry-is-collected-by-application-insights"></a>Milyen telemetria gyűjtenek Application Insights?
 
@@ -328,7 +328,7 @@ A [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/)használatával megk
 * Kiszolgáló telemetria: a Application Insights modul gyűjti az ügyfél IP-címét. Ha be van állítva, a rendszer nem gyűjti `X-Forwarded-For` .
 * Ha többet szeretne megtudni arról, hogy az IP-cím és a térinformatikai adatok hogyan lesznek begyűjtve Application Insights tekintse meg ezt a [cikket](./app/ip-collection.md).
 
-Beállíthatja `ClientIpHeaderTelemetryInitializer` , hogy az IP-cím más fejlécből legyen végrehajtva. Egyes rendszerekben például egy proxy, egy terheléselosztó vagy egy CDN helyezi át őket `X-Originating-IP` . [További információ](https://apmtips.com/posts/2016-07-05-client-ip-address/).
+Beállíthatja `ClientIpHeaderTelemetryInitializer` , hogy az IP-cím más fejlécből legyen végrehajtva. Egyes rendszerekben például egy proxy, egy terheléselosztó vagy egy CDN helyezi át őket `X-Originating-IP` . [További információk](https://apmtips.com/posts/2016-07-05-client-ip-address/).
 
 A [Power bi](app/export-power-bi.md ) segítségével megjelenítheti a kérések telemetria egy térképen.
 
@@ -607,7 +607,7 @@ A OpenTelemetry-gyűjtőt a [GitHub információs fájlja](https://github.com/op
 A [OpenCensus](https://opencensus.io/) az [OpenTelemetry](https://opentelemetry.io/)előfutára. A Microsoft segített összekapcsolni a [OpenTracing](https://opentracing.io/) és a OpenCensus-t, hogy OpenTelemetry hozzon létre, amely a világ egyetlen megfigyelhető szabványa. Azure Monitor jelenlegi [éles környezetben – az ajánlott PYTHON SDK](app/opencensus-python.md) a OpenCensus-on alapul, de végül az összes Azure monitor SDK-k a OpenTelemetry-on alapulnak.
 
 
-## <a name="azure-monitor-for-containers"></a>Azure Monitor tárolókhoz
+## <a name="container-insights"></a>Tároló-felismerések
 
 ### <a name="what-does-other-processes-represent-under-the-node-view"></a>Mit jelent a *többi folyamat* a csomópont nézet alatt?
 
@@ -676,11 +676,11 @@ Ha az első lehetőség a lekérdezés módosítása miatt nem megfelelő, akkor
 
 ### <a name="can-i-view-metrics-collected-in-grafana"></a>Megtekinthetem a Grafana összegyűjtött mérőszámokat?
 
-A tárolók Azure Monitor támogatja a Grafana-irányítópultokon a Log Analytics munkaterületen tárolt mérőszámok megtekintését. A Grafana [irányítópult-tárházból](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) letölthető sablon segítségével elsajátíthatja az első lépéseket, és megtudhatja, hogyan kérdezheti le a figyelt fürtök további adatait az egyéni Grafana-irányítópultok megjelenítéséhez. 
+A tároló-felismerések támogatják a Log Analytics munkaterületen a Grafana-irányítópultokon tárolt mérőszámok megtekintését. A Grafana [irányítópult-tárházból](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) letölthető sablon segítségével elsajátíthatja az első lépéseket, és megtudhatja, hogyan kérdezheti le a figyelt fürtök további adatait az egyéni Grafana-irányítópultok megjelenítéséhez. 
 
-### <a name="can-i-monitor-my-aks-engine-cluster-with-azure-monitor-for-containers"></a>Megfigyelhető az AK-motor fürtje Azure Monitor for containers használatával?
+### <a name="can-i-monitor-my-aks-engine-cluster-with-container-insights"></a>Figyelhető az AK-motor fürtje a Container bepillantást?
 
-A tárolók Azure Monitor támogatja az Azure-ban üzemeltetett, AK-motor (korábbi nevén ACS-motor) fürt (ek) ben üzembe helyezett, a tároló munkaterheléseit. További részletek és áttekintés a forgatókönyv figyelésének engedélyezéséhez szükséges lépésekről: a [Azure monitor használata a tárolók számára az AK-motorhoz](https://github.com/microsoft/OMS-docker/tree/aks-engine).
+A Container-adatok az Azure-ban üzemeltetett, az AK-Engine (korábbi nevén ACS-motor) fürtökön üzembe helyezett, a tárolók által használt munkaterheléseket támogatják. További részletekért és a forgatókönyv figyelésének engedélyezéséhez szükséges lépések áttekintését lásd: a [Container-információk használata az AK-motorhoz](https://github.com/microsoft/OMS-docker/tree/aks-engine).
 
 ### <a name="why-dont-i-see-data-in-my-log-analytics-workspace"></a>Miért nem láthatók a Log Analytics munkaterület adatai?
 
@@ -696,11 +696,11 @@ Ha a **Microsoft. OperationsManagement előfizetés-regisztrációja hiányzik**
 
 ### <a name="is-there-support-for-kubernetes-rbac-enabled-aks-clusters"></a>Támogatja a Kubernetes RBAC-kompatibilis AK-fürtöket?
 
-A tároló-figyelési megoldás nem támogatja a Kubernetes RBAC, de a tárolók esetében Azure Monitor is támogatott. Előfordulhat, hogy a megoldás részleteit tartalmazó lap nem jeleníti meg a megfelelő információkat a fürtök adatait megjelenítő pengék között.
+A tároló-figyelési megoldás nem támogatja a Kubernetes RBAC, de a tároló-megállapítások esetében támogatott. Előfordulhat, hogy a megoldás részleteit tartalmazó lap nem jeleníti meg a megfelelő információkat a fürtök adatait megjelenítő pengék között.
 
 ### <a name="how-do-i-enable-log-collection-for-containers-in-the-kube-system-namespace-through-helm"></a>Hogyan lehetővé teszi a naplók gyűjtését a Kube-System névtérben a Helm használatával?
 
-Alapértelmezés szerint le van tiltva a Kube-rendszernévtérben lévő tárolók naplójának gyűjteménye. A omsagent egy környezeti változó beállításával engedélyezhető a naplók gyűjteménye. További információ: [Azure monitor for containers](https://aka.ms/azuremonitor-containers-helm-chart) GitHub oldal. 
+Alapértelmezés szerint le van tiltva a Kube-rendszernévtérben lévő tárolók naplójának gyűjteménye. A omsagent egy környezeti változó beállításával engedélyezhető a naplók gyűjteménye. További információ: [Container bepillantások](https://aka.ms/azuremonitor-containers-helm-chart) GitHub lapja. 
 
 ### <a name="how-do-i-update-the-omsagent-to-the-latest-released-version"></a>Hogyan frissíteni a omsagent a legújabb kiadású verzióra?
 
@@ -708,7 +708,7 @@ Az ügynök frissítésének megismeréséhez tekintse meg az [ügynökök kezel
 
 ### <a name="how-do-i-enable-multi-line-logging"></a>Hogyan a többsoros naplózás engedélyezése?
 
-A tárolók számára jelenleg Azure Monitor nem támogatja a többsoros naplózást, de vannak elérhető áthidaló megoldások. Az összes szolgáltatást JSON formátumban is konfigurálhatja, majd a Docker/Moby egyetlen sorba írja azokat.
+A tárolók jelenleg nem támogatják a többsoros naplózást, de rendelkezésre állnak a megkerülő megoldások. Az összes szolgáltatást JSON formátumban is konfigurálhatja, majd a Docker/Moby egyetlen sorba írja azokat.
 
 Például becsomagolhatja a naplót JSON-objektumként, ahogy az alábbi példában is látható egy példa node.js alkalmazáshoz:
 
@@ -732,30 +732,30 @@ A probléma részletes megtekintéséhez tekintse meg a következő GitHub- [hiv
 
 ### <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>Az élő naplók engedélyezésekor Hogyan az Azure AD-hibák elhárítása? 
 
-A következő hibaüzenet jelenhet meg: a **kérelemben megadott válasz URL-cím nem egyezik az alkalmazáshoz konfigurált válasz URL-címekkel: "<Application ID \> "**. A megoldás megoldása a következő cikkben található: a [tárolók információinak valós idejű megtekintése Azure monitor a tárolók](containers/container-insights-livedata-setup.md#configure-ad-integrated-authentication)használatával. 
+A következő hibaüzenet jelenhet meg: a **kérelemben megadott válasz URL-cím nem egyezik az alkalmazáshoz konfigurált válasz URL-címekkel: "<Application ID \> "**. A megoldás megoldása a következő cikkben található: a tárolók [információinak valós idejű megtekintése a tároló-elemzések](containers/container-insights-livedata-setup.md#configure-ad-integrated-authentication)használatával. 
 
 ### <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>Miért nem tudom frissíteni a fürtöt a bevezetést követően?
 
-Ha egy AK-fürthöz engedélyezte a Azure Monitort a tárolók számára, akkor törölje azt a Log Analytics-munkaterületet, amelyhez a fürt az adatokat küldi, amikor a fürt frissítésére tett kísérlet során sikertelen lesz. Ennek megkerüléséhez le kell tiltania a figyelést, majd újra engedélyeznie kell, hogy az előfizetés egy másik érvényes munkaterületre hivatkozik. Ha újra megpróbálja végrehajtani a fürt frissítését, akkor a folyamatnak sikeresen fel kell dolgoznia és el kell végeznie a műveletet.  
+Ha egy AK-fürthöz engedélyezte a tároló-elemzést, akkor törölje azt a Log Analytics munkaterületet, amelyen a fürt az adatokat küldi, a fürt frissítésére tett kísérlet során sikertelen lesz. Ennek megkerüléséhez le kell tiltania a figyelést, majd újra engedélyeznie kell, hogy az előfizetés egy másik érvényes munkaterületre hivatkozik. Ha újra megpróbálja végrehajtani a fürt frissítését, akkor a folyamatnak sikeresen fel kell dolgoznia és el kell végeznie a műveletet.  
 
 ### <a name="which-ports-and-domains-do-i-need-to-openallow-for-the-agent"></a>Mely portokra és tartományokra van szükségem az ügynök megnyitásához/engedélyezéséhez?
 
 Tekintse meg a [hálózati tűzfalra vonatkozó követelményeket](containers/container-insights-onboard.md#network-firewall-requirements) a proxyra és a tűzfalra vonatkozó konfigurációs információkhoz, amelyek a tároló ügynökhöz szükségesek az Azure, az Azure US government és az Azure China 21Vianet-felhők esetében.
 
 
-## <a name="azure-monitor-for-vms"></a>Azure Monitor virtuális gépekhez
+## <a name="vm-insights"></a>VM-ismeretek
 
 ### <a name="can-i-onboard-to-an-existing-workspace"></a>Bejelentkezhetek egy meglévő munkaterületre?
-Ha a virtuális gépek már csatlakoznak egy Log Analytics-munkaterülethez, akkor továbbra is használhatja ezt a munkaterületet, ha Azure Monitor for VMsbe bevezetésre kerül, amennyiben az a [támogatott régiók](vm/vminsights-configure-workspace.md#supported-regions)egyikében található.
+Ha a virtuális gépek már csatlakoznak egy Log Analytics munkaterülethez, akkor továbbra is használhatja ezt a munkaterületet a VM-információk bevezetéséhez, amennyiben az a [támogatott régiók](vm/vminsights-configure-workspace.md#supported-regions)egyikében található.
 
 
 ### <a name="can-i-onboard-to-a-new-workspace"></a>Bejelentkezhetek egy új munkaterületre? 
-Ha a virtuális gépek jelenleg nem kapcsolódnak meglévő Log Analytics-munkaterülethez, létre kell hoznia egy új munkaterületet az adatai tárolásához. Az új alapértelmezett munkaterület létrehozása automatikusan történik, ha egyetlen Azure-beli virtuális gépet állít be Azure Monitor for VMs a Azure Portal keresztül.
+Ha a virtuális gépek jelenleg nem kapcsolódnak meglévő Log Analytics-munkaterülethez, létre kell hoznia egy új munkaterületet az adatai tárolásához. Az új alapértelmezett munkaterület létrehozása automatikusan történik, ha egyetlen Azure-beli virtuális gépet konfigurál a virtuális gépekhez a Azure Portalon keresztül.
 
-Ha úgy dönt, hogy a parancsfájl-alapú módszert használja, ezeket a lépéseket a [Azure monitor for VMS engedélyezése Azure PowerShell vagy Resource Manager-sablon használatával](./vm/vminsights-enable-powershell.md) című cikkben tárgyaljuk. 
+Ha úgy dönt, hogy a parancsfájl-alapú módszert használja, ezeket a lépéseket a [virtuális gépek Azure PowerShell vagy Resource Manager-sablon használatával](./vm/vminsights-enable-powershell.md) történő használatának engedélyezése című cikk ismerteti. 
 
 ### <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>Mi a teendő, ha a virtuális gép már jelent egy meglévő munkaterületet?
-Ha már begyűjti az adatait a virtuális gépekről, lehetséges, hogy már konfigurálta az adatok jelentését egy meglévő Log Analytics-munkaterületre.  Ha a munkaterület az egyik támogatott régióban található, akkor a Azure Monitor for VMst engedélyezheti a meglévő munkaterületen.  Ha a már használt munkaterület nem a támogatott régiókban található, akkor a Azure Monitor for VMs jelenleg nem fog tudni bejelentkezni.  Aktívan dolgozunk a további régiók támogatásán.
+Ha már begyűjti az adatait a virtuális gépekről, lehetséges, hogy már konfigurálta az adatok jelentését egy meglévő Log Analytics-munkaterületre.  Ha a munkaterület a támogatott régiókban található, akkor a virtuális gépekkel kapcsolatos bepillantást engedélyezheti a meglévő munkaterületen.  Ha a már használt munkaterület nem a támogatott régiók egyikében van, akkor jelenleg nem fog tudni bejelentkezni a virtuális gépekre.  Aktívan dolgozunk a további régiók támogatásán.
 
 
 ### <a name="why-did-my-vm-fail-to-onboard"></a>Miért nem sikerült bejelentkezni a virtuális gépre?
@@ -763,7 +763,7 @@ Amikor Azure-beli virtuális gépet telepít a Azure Portalból, a következő l
 
 * Ha ez a beállítás be van jelölve, egy alapértelmezett Log Analytics munkaterület jön létre.
 * A Log Analytics ügynök virtuálisgép-bővítmény használatával települ az Azure-beli virtuális gépekre, ha azt meg kell határozni.  
-* A Azure Monitor for VMs Map-függőségi ügynök az Azure-beli virtuális gépeken bővítmény használatával van telepítve, ha azt meg kell határozni. 
+* A virtuálisgép-megállapítási Térkép függőségi ügynöke az Azure-beli virtuális gépeken bővítmény használatával van telepítve, ha azt kötelező megadni. 
 
 A bevezetési folyamat során a fent ismertetett állapotot vizsgáljuk, hogy az értesítési állapotot a portálon vissza lehessen adni. A munkaterület és az ügynök telepítésének konfigurálása általában 5 – 10 percet vesz igénybe. A figyelési információk megtekintése a portálon további 5 – 10 percet vesz igénybe.  
 
@@ -776,10 +776,10 @@ A teljesítmény-diagramok frissítve lettek a *InsightsMetrics* táblában tár
 Ha nem látja a teljesítményadatokat a lemez táblában vagy egyes teljesítmény-diagramoknál, akkor előfordulhat, hogy a teljesítményszámlálók nem konfigurálhatók a munkaterületen. A megoldáshoz futtassa a következő [PowerShell-szkriptet](./vm/vminsights-enable-powershell.md).
 
 
-### <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>Miben különbözik az Azure Monitor for VMs Map funkció a Service Maptól?
-Az Azure Monitor for VMs-leképezési funkció Service Mapon alapul, de a következő különbségek vannak:
+### <a name="how-is-vm-insights-map-feature-different-from-service-map"></a>Miben különbözik a virtuálisgép-bepillantást a szolgáltatás Service Map?
+A virtuálisgép-bepillantást kiképező funkció a Service Mapon alapul, de a következő különbségek vannak:
 
-* A Térkép nézet a virtuális gép paneljéről, illetve a Azure Monitor alatt Azure Monitor for VMs érhető el.
+* A Térkép nézet a virtuális gép paneljéről és a Azure Monitor alatti VM-adatokból érhető el.
 * A térképen lévő kapcsolatok most már rákattintanak, és megjelenítik a kapcsolat metrikájának adatait a kijelölt kapcsolat oldalsó paneljén.
 * Létezik egy új API, amely a térképek létrehozásához használható összetettebb térképek jobb támogatásához.
 * A figyelt virtuális gépek már szerepelnek az ügyféloldali csoport csomópontban, és a fánk diagramon látható a csoportban lévő figyelt vs nem figyelt virtuális gépek aránya.  A csoport kibontásakor a számítógépek listájának szűrésére is használható.
@@ -787,19 +787,19 @@ Az Azure Monitor for VMs-leképezési funkció Service Mapon alapul, de a követ
 * A Térkép stílusa úgy lett frissítve, hogy jobban konzisztens legyen az Application-adatokból származó app Map szolgáltatással.
 * Az oldalsó panelek frissítve lettek, és nem rendelkeznek a Service Map-Update Management, a Change Tracking, a Security és a Service Desk által támogatott teljes integrációs készlettel. 
 * A csoportok és gépek leképezésre való kiválasztásának lehetősége frissítve lett, és mostantól támogatja az előfizetéseket, az erőforráscsoportok, az Azure virtuálisgép-méretezési csoportokat és a Cloud Services szolgáltatást.
-* Az új Service Map számítógépcsoportok nem hozhatók létre a Azure Monitor for VMs Map szolgáltatásban.  
+* Új Service Map számítógépcsoportok nem hozhatók létre a virtuálisgép-alapú leképezési szolgáltatásban.  
 
 ### <a name="why-do-my-performance-charts-show-dotted-lines"></a>Miért mutatnak pontozott vonalakat a teljesítmény-diagramok?
 Ez néhány ok miatt fordulhat elő.  Abban az esetben, ha az adatgyűjtésben hézag van, a vonalakat pontozott értékre ábrázoljuk.  Ha módosította az adatmintavételezés gyakoriságát az engedélyezett teljesítményszámlálók esetében (az alapértelmezett beállítás az adatok gyűjtése 60 másodpercenként), a diagramon szaggatott vonalakat láthat, ha a diagramhoz a keskeny időtartományt választja, a mintavételi gyakoriság pedig kisebb, mint a diagramon használt gyűjtő mérete (például a mintavételezés gyakorisága 10 percenként, a diagram minden gyűjtője pedig 5 perc).  Ha szélesebb időtartományt szeretne megtekinteni, akkor a diagram sorai nem pontokként, hanem folytonos vonalakként jelennek meg.
 
-### <a name="are-groups-supported-with-azure-monitor-for-vms"></a>Támogatottak-e a csoportok Azure Monitor for VMs?
+### <a name="are-groups-supported-with-vm-insights"></a>Támogatottak-e a virtuális gépekkel való bepillantást támogató csoportok?
 Igen, a függőségi ügynök telepítése után adatokat gyűjtünk a virtuális gépekről az előfizetés, az erőforráscsoport, a virtuálisgép-méretezési csoportok és a Cloud Services alapján.  Ha már használta a Service Map és létrehozott számítógép-csoportokat, ezek is megjelennek.  A számítógépcsoportok akkor is megjelennek a csoportok szűrőben, ha létrehozta őket a megtekintett munkaterülethez. 
 
 ### <a name="how-do-i-see-the-details-for-what-is-driving-the-95th-percentile-line-in-the-aggregate-performance-charts"></a>Hogyan tekintse meg a 95. percentilis-sor az összesített teljesítményű diagramokon való vezetésének részleteit?
 Alapértelmezés szerint a lista úgy van rendezve, hogy megjelenítse azokat a virtuális gépeket, amelyek a 95. percentilis legmagasabb értékkel rendelkeznek a kiválasztott metrika esetében, kivéve a rendelkezésre álló memória diagramot, amely az 5. percentilis legalacsonyabb értékkel rendelkező gépeket jeleníti meg.  A diagramra kattintva megnyílik a **legfelső N listanézet**  nézet a megfelelő metrika kiválasztásával.
 
 ### <a name="how-does-the-map-feature-handle-duplicate-ips-across-different-vnets-and-subnets"></a>Hogyan kezeli a Map szolgáltatás a duplikált IP-címeket különböző virtuális hálózatok és alhálózatokon?
-Ha az IP-tartományokat virtuális gépek vagy Azure virtuálisgép-méretezési csoportok között duplikálja az alhálózatok és a virtuális hálózatok között, akkor Azure Monitor for VMs leképezés helytelen információk megjelenítésére vezethet. Ez egy ismert probléma, amely a tapasztalatok fejlesztését vizsgálja.
+Ha az IP-tartományokat virtuális gépek vagy Azure virtuálisgép-méretezési csoportok között duplikálja az alhálózatok és a virtuális hálózatok között, akkor a VM-információk leképezése helytelen adatok megjelenítéséhez vezethet. Ez egy ismert probléma, amely a tapasztalatok fejlesztését vizsgálja.
 
 ### <a name="does-map-feature-support-ipv6"></a>Támogatja az IPv6 a Map funkciót?
 A Térkép funkció jelenleg csak az IPv4-t támogatja, és az IPv6 támogatását vizsgáljuk. Az IPv6-on belül bújtatott IPv4-t is támogatja.
@@ -809,7 +809,7 @@ Habár a nagy és összetett konfigurációk kezelésére tettük elérhetővé 
 
 ### <a name="why-does-the-network-chart-on-the-performance-tab-look-different-than-the-network-chart-on-the-azure-vm-overview-page"></a>Miért különbözik a hálózati diagram a teljesítmény lapon, mint a hálózati diagram az Azure-beli virtuális gépek áttekintő oldalán?
 
-Az Azure-beli virtuális gépek áttekintő lapja diagramokat jelenít meg a vendég virtuális gép tevékenységének mérése alapján.  Az Azure-beli virtuális gépek áttekintő hálózati diagramja csak a számlázásra kerülő hálózati forgalmat jeleníti meg.  Ez nem tartalmazza a virtuális hálózatok közötti forgalmat.  A Azure Monitor for VMs számára megjelenített adatok és diagramok a vendég virtuális gépről származó adatokon alapulnak, és a hálózati diagram megjeleníti az összes bejövő és kimenő TCP/IP-forgalmat, beleértve a virtuális gépek közötti hálózatot is.
+Az Azure-beli virtuális gépek áttekintő lapja diagramokat jelenít meg a vendég virtuális gép tevékenységének mérése alapján.  Az Azure-beli virtuális gépek áttekintő hálózati diagramja csak a számlázásra kerülő hálózati forgalmat jeleníti meg.  Ez nem tartalmazza a virtuális hálózatok közötti forgalmat.  A VM-elemzésekhez megjelenített adatok és diagramok a vendég virtuális gépről származó adatokon alapulnak, és a hálózati diagram megjeleníti a virtuális gép számára bejövő és kimenő összes TCP/IP-forgalmat, beleértve a virtuális hálózatok közötti hálózatot is.
 
 ### <a name="how-is-response-time-measured-for-data-stored-in-vmconnection-and-displayed-in-the-connection-panel-and-workbooks"></a>Hogyan mérjük a válaszidő a VMConnection tárolt és a kapcsolatok paneljén és a munkafüzetek között?
 
@@ -818,9 +818,9 @@ A válaszidő egy közelítés. Mivel nem használjuk az alkalmazás kódját, n
 Ez a közelítés a kérelmek/válaszok alapjául szolgáló protokollok esetében jól működik: egyetlen kérelem érkezik a hálózatra, és egyetlen válasz érkezik. Ez a HTTP (S) esetén (csővezeték nélkül), de más protokollok esetében nem teljesül.
 
 ### <a name="are-there-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Vannak korlátozások, ha a Log Analytics ingyenes díjszabási csomagot használom?
-Ha az *ingyenes* díjszabási csomaggal konfigurálta a Azure monitort egy log Analytics munkaterülettel, Azure monitor for VMS a Térkép funkció csak a munkaterülethez csatlakozó öt csatlakoztatott gépet fogja támogatni. Ha az ingyenes munkaterülethez öt virtuális gép csatlakozik, az egyik virtuális gép leválasztását követően később egy új virtuális gépet csatlakoztat, az új virtuális gép nem lesz figyelve, és a Térkép oldalon jelenik meg.  
+Ha az *ingyenes* díjszabási csomaggal konfigurálta a Azure monitort egy log Analytics munkaterülettel, a VM-alapú információ-hozzárendelési funkció csak a munkaterülethez csatlakozó öt csatlakoztatott gépet fogja támogatni. Ha az ingyenes munkaterülethez öt virtuális gép csatlakozik, az egyik virtuális gép leválasztását követően később egy új virtuális gépet csatlakoztat, az új virtuális gép nem lesz figyelve, és a Térkép oldalon jelenik meg.  
 
-Ebben az esetben a virtuális gép megnyitásakor a **kipróbálás most** lehetőséggel fog megjelenni, és a bal oldali ablaktáblában kiválaszthatja a **bepillantást** , még azután is, hogy már telepítve van a virtuális gépen.  Azonban nem kell megadnia a beállításokat, mivel ez általában akkor fordul elő, ha a virtuális gép nem lett előkészítve a Azure Monitor for VMs. 
+Ebben az esetben a virtuális gép megnyitásakor a **kipróbálás most** lehetőséggel fog megjelenni, és a bal oldali ablaktáblában kiválaszthatja a **bepillantást** , még azután is, hogy már telepítve van a virtuális gépen.  Azonban nem kell megadnia a beállításokat, mivel ez általában akkor fordul elő, ha a virtuális gép nem lett bevezetve a virtuális gépekhez. 
 
 
 ## <a name="next-steps"></a>Következő lépések

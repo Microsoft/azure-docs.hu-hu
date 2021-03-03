@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 02/01/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 83c49eea8bda10d665c0a08666276e905c60c584
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: cfbbb7064fcadc06714b237066bb6a009246baac
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493702"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709087"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Linux Python-alkalmazás konfigurálása a Azure App Servicehoz
 
@@ -372,6 +372,7 @@ A következő szakaszokban további útmutatást talál az adott problémákkal 
 - [Az alkalmazás nem jelenik meg – az alapértelmezett alkalmazás megjelenítése](#app-doesnt-appear)
 - [Az alkalmazás nem jelenik meg – a "szolgáltatás nem érhető el" üzenet](#service-unavailable)
 - [Nem található setup.py vagy requirements.txt](#could-not-find-setuppy-or-requirementstxt)
+- [ModuleNotFoundError indításkor](#modulenotfounderror-when-app-starts)
 - [A jelszó nem jelenik meg az SSH-munkamenetben, ha be van írva](#other-issues)
 - [Úgy tűnik, hogy az SSH-munkamenetben lévő parancsok ki lesznek vágva](#other-issues)
 - [A statikus eszközök nem jelennek meg a Django alkalmazásban](#other-issues)
@@ -404,6 +405,10 @@ A következő szakaszokban további útmutatást talál az adott problémákkal 
 - **A log stream a következőt jeleníti meg: "nem található Setup.py vagy requirements.txt; Nem fut a pip telepítése. "**: a Oryx-létrehozási folyamat nem találta a *requirements.txt* fájlt.
 
     - Csatlakozzon az [SSH](#open-ssh-session-in-browser) -n keresztül a Web App-tárolóhoz, és ellenőrizze, hogy a *requirements.txt* neve helyesen van-e, és létezik-e közvetlenül a *site/wwwroot* alatt. Ha nem létezik, tegye meg a fájlt a tárházban, és tartalmazza a központi telepítés részét képező helyet. Ha egy különálló mappában van, helyezze át a gyökerébe.
+
+#### <a name="modulenotfounderror-when-app-starts"></a>ModuleNotFoundError az alkalmazás indításakor
+
+Ha a következőhöz hasonló hibaüzenet jelenik meg `ModuleNotFoundError: No module named 'example'` , ez azt jelenti, hogy a Python nem talált egy vagy több modult az alkalmazás indításakor. Ez leggyakrabban akkor fordul elő, ha a virtuális környezetet a kóddal telepíti. A virtuális környezetek nem hordozhatóek, így a virtuális környezet nem helyezhető üzembe az alkalmazás kódjával. Ehelyett Oryx hozzon létre egy virtuális környezetet, és telepítse a csomagokat a webalkalmazásba egy Alkalmazásbeállítások létrehozásával, `SCM_DO_BUILD_DURING_DEPLOYMENT` és állítsa be a következőre: `1` . Ez arra kényszeríti a Oryx, hogy telepítse a csomagokat, amikor App Service üzembe helyezését végzi. További információkért tekintse [meg ezt a cikket a virtuális környezet hordozhatóságáról](https://azure.github.io/AppService/2020/12/11/cicd-for-python-apps.html).
 
 #### <a name="other-issues"></a>Egyéb problémák
 

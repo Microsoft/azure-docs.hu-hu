@@ -42,7 +42,7 @@ Az adategységek védelméhez az eszközöket a tárolási oldal titkosításáv
 
 ## <a name="storage-account-double-encryption"></a>Storage-fiók kettős titkosítása
 
-A Storage-fiókok támogatják a kettős titkosítást, de a második réteget explicit módon engedélyezni kell. Lásd: [Az Azure Storage titkosítása a nyugalmi állapotban lévő adatokhoz](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#doubly-encrypt-data-with-infrastructure-encryption).  
+A Storage-fiókok támogatják a kettős titkosítást, de a második réteget explicit módon engedélyezni kell. Lásd: [Az Azure Storage titkosítása a nyugalmi állapotban lévő adatokhoz](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption).  
 
 ## <a name="storage-account-errors"></a>Storage-fiókok hibái
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: 9ac283721526488f587fcabc68348dafac1835db
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: cd79c928afdb3563b47374869cff577f9221d360
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033353"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705772"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Biztonsági modul üzembe helyezése a IoT Edge eszközön
 
@@ -34,7 +34,7 @@ A következő lépésekkel telepítheti a Defendert a IoT biztonsági moduljána
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-1. A IoT Hub ellenőrizze, hogy az eszköz IoT Edge- [eszközként](../iot-edge/how-to-manual-provision-symmetric-key.md#register-a-new-device)van-e regisztrálva.
+1. A IoT Hub ellenőrizze, hogy az eszköz IoT Edge- [eszközként](../iot-edge/how-to-register-device.md#register-a-new-device)van-e regisztrálva.
 
 1. A IoT Edge modulhoz tartozó Defender számára szükséges, hogy a [naplózott keretrendszer](https://linux.die.net/man/8/auditd) telepítve legyen a IoT Edge eszközön.
 
@@ -179,7 +179,7 @@ Ha problémába ütközik, a tároló naplói a legjobb módszer a IoT Edge bizt
 
 1. Ellenőrizze, hogy a következő tárolók futnak-e:
 
-   | Név | KÉP |
+   | Name | KÉP |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.2 |
    | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |
@@ -195,7 +195,7 @@ Ha problémába ütközik, a tároló naplói a legjobb módszer a IoT Edge bizt
 
 1. A részletes naplókhoz adja hozzá a következő környezeti változót a **azureiotsecurity** modul telepítéséhez: `logLevel=Debug` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A konfigurációs beállításokkal kapcsolatos további információkért folytassa a modul konfigurálásának útmutatójában.
 > [!div class="nextstepaction"]

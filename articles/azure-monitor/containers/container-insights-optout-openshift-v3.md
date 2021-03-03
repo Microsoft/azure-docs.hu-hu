@@ -1,14 +1,14 @@
 ---
 title: Az Azure Red Hat OpenShift v3-fürt figyelésének leállítása | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan állíthatja le a Azure Monitor for containers szolgáltatással az Azure Red Hat OpenShift-fürt figyelését.
+description: Ez a cikk azt ismerteti, hogyan állíthatja le az Azure Red Hat OpenShift-fürt figyelését a Container bepillantást.
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 7e6ab46940ed29a98b3988c00c92d6c691d6e0f0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6a278898942e40d3347791d31a3c38341df01f7c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621208"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731816"
 ---
 # <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>Az Azure Red Hat OpenShift v3-fürt figyelésének leállítása
 
@@ -21,7 +21,7 @@ ms.locfileid: "100621208"
 > Kövesse ezt az útmutatót [egy Azure Red Hat OpenShift 4-fürt létrehozásához](../../openshift/tutorial-create-cluster.md).
 > Ha konkrét kérdései vannak, vegye [fel velünk a kapcsolatot](mailto:aro-feedback@microsoft.com).
 
-Miután engedélyezte az Azure Red Hat OpenShift 3. x verziójú fürt figyelését, leállíthatja a fürt figyelését Azure Monitor for containers használatával, ha úgy dönt, hogy már nem szeretné figyelni. Ez a cikk bemutatja, hogyan hajthatja végre ezt a Azure Resource Manager sablonnal.  
+Miután engedélyezte az Azure Red Hat OpenShift 3. x verziójú fürt figyelését, leállíthatja a fürt figyelését a tároló-megállapításokkal, ha úgy dönt, hogy már nem szeretné figyelni. Ez a cikk bemutatja, hogyan hajthatja végre ezt a Azure Resource Manager sablonnal.  
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
 
@@ -137,4 +137,4 @@ ProvisioningState       : Succeeded
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha a munkaterület csak a fürt figyelésének támogatásához lett létrehozva, és már nincs rá szükség, manuálisan kell törölnie. Ha nem ismeri a munkaterület törlésének módját, tekintse meg [Az Azure log Analytics munkaterület törlése](../platform/delete-workspace.md)című témakört.
+Ha a munkaterület csak a fürt figyelésének támogatásához lett létrehozva, és már nincs rá szükség, manuálisan kell törölnie. Ha nem ismeri a munkaterület törlésének módját, tekintse meg [Az Azure log Analytics munkaterület törlése](../logs/delete-workspace.md)című témakört.

@@ -6,21 +6,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/19/2020
+ms.date: 02/23/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to activate Azure Stack Edge Pro R device so I can use it to transfer data to Azure.
-ms.openlocfilehash: c1408c25ea7e5d805d17e084899b0ffeb6cfec28
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bae12b5ad7ce6c079161f42e1d6fe3e6c08e3f4b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468253"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727532"
 ---
 # <a name="tutorial-activate-azure-stack-edge-pro-r-device"></a>Oktatóanyag: Azure Stack Edge Pro R-eszköz aktiválása
 
 Ez az oktatóanyag azt ismerteti, hogyan aktiválhatja Azure Stack Edge Pro R-eszközét a helyi webes felhasználói felület használatával.
 
-Az aktiválási folyamat körülbelül 5 percet vesz igénybe.
+Az aktiválási folyamat körülbelül 5 percet vesz igénybe.  
 
 Ebben az oktatóanyagban megismerte a következőket:
 
@@ -97,7 +97,7 @@ Az eszköz aktiválása befejeződött. Mostantól megosztásokat is hozzáadhat
 
 Ha az aktiválás során problémák merülnek fel, ugorjon az [aktiválási és Azure Key Vault hibák elhárítása](azure-stack-edge-gpu-troubleshoot-activation.md#activation-errors)lehetőségre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megismerte a következőket:
 

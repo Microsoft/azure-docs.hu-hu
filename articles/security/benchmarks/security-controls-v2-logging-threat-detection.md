@@ -4,19 +4,21 @@ description: Azure Security teljesítményteszt v2 naplózás és fenyegetések 
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2a0ce52c094739ffbbce2f93a41b2533222066b8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 43119a51be2359ed2ddfb4e5d5fa629badedb054
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576806"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720681"
 ---
 # <a name="security-control-v2-logging-and-threat-detection"></a>Security Control v2: naplózás és fenyegetések észlelése
 
-A naplózás és a fenyegetések észlelése kiterjed az Azure-beli fenyegetések észlelésére, valamint az Azure-szolgáltatások naplófájljainak engedélyezésére, gyűjtésére és tárolására. Ebbe beletartozik az észlelési, vizsgálati és szervizelési folyamatok engedélyezése a vezérlőkkel, hogy magas színvonalú riasztásokat készítsen a natív veszélyforrások észlelésével az Azure-szolgáltatásokban; magában foglalja a naplók gyűjtését is Azure Monitor, központosítva a biztonsági elemzést az Azure Sentinel, az időszinkronizálás és a naplózás megőrzése mellett. 
+A naplózás és a fenyegetések észlelése kiterjed az Azure-beli fenyegetések észlelésére, valamint az Azure-szolgáltatások naplófájljainak engedélyezésére, gyűjtésére és tárolására. Ebbe beletartozik az észlelési, vizsgálati és szervizelési folyamatok engedélyezése a vezérlőkkel, hogy magas színvonalú riasztásokat készítsen a natív veszélyforrások észlelésével az Azure-szolgáltatásokban; magában foglalja a naplók gyűjtését is Azure Monitor, központosítva a biztonsági elemzést az Azure Sentinel, az időszinkronizálás és a naplózás megőrzése mellett.
+
+A megfelelő beépített Azure Policy megjelenítéséhez tekintse meg [Az Azure biztonsági teljesítményteszt szabályozási megfelelőségének beépített kezdeményezésének részleteit: naplózás és fenyegetések észlelése](../../governance/policy/samples/azure-security-benchmark#logging-and-threat-detection)
 
 ## <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1: az Azure-erőforrások fenyegetés-észlelésének engedélyezése
 
@@ -28,7 +30,7 @@ Győződjön meg arról, hogy a különböző típusú Azure-eszközöket figyel
 
 Használja a Azure Security Center beépített veszélyforrások észlelésére szolgáló funkciót, amely az Azure-szolgáltatások telemetria figyelésén és a szolgáltatási naplók elemzésén alapul. Az adatok gyűjtése a Log Analytics ügynök használatával történik, amely beolvassa a különböző biztonsággal kapcsolatos konfigurációkat és eseménynaplókat a rendszerből, és az adatokat a munkaterületre másolja az elemzéshez. 
 
-Emellett az Azure Sentinel használatával elemzési szabályokat hozhat létre, amelyek a környezetében meghatározott feltételeknek megfelelő veszélyforrásokat vadásznak. A szabályok a feltételek teljesülése esetén eredményeznek incidenseket, így az egyes incidensek megvizsgálható. Az Azure Sentinel a fenyegetések észlelési képességének növelése érdekében importálhatja a harmadik féltől származó veszélyforrások felderítését is. 
+Emellett az Azure Sentinel használatával elemzési szabályokat hozhat létre, amelyek a környezetében meghatározott feltételeknek megfelelő veszélyforrásokat vadásznak. A szabályok a feltételek teljesülése esetén eredményeznek incidenseket, így az egyes incidensek megvizsgálható. Az Azure Sentinel a fenyegetések észlelési képességének növelése érdekében importálhatja a harmadik féltől származó fenyegetések felderítését is. 
 
 - [Fenyegetésvédelem az Azure Security Centerben](../../security-center/azure-defender.md)
 
@@ -46,11 +48,11 @@ Emellett az Azure Sentinel használatával elemzési szabályokat hozhat létre,
 
 - [Biztonsági műveletek](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
-- [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
+- [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Alkalmazások biztonsága és DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
-- [Fenyegetésészlelési intelligencia](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
+- [Fenyegetések felderítése](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
 ## <a name="lt-2-enable-threat-detection-for-azure-identity-and-access-management"></a>LT-2: Fenyegetések észlelésének engedélyezése az Azure-beli identitás- és hozzáférés-kezeléshez
 
@@ -83,11 +85,11 @@ Azure Security Center riasztást is beállíthat bizonyos gyanús tevékenysége
 
 - [Biztonsági műveletek](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
-- [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
+- [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-- [Alkalmazások biztonsága és DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+- [Alkalmazások biztonsága és DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-- [Fenyegetésészlelési intelligencia](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
+- [Fenyegetések felderítése](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
 ## <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3: Naplózás engedélyezése Azure-beli hálózati tevékenységekhez
 
@@ -95,7 +97,9 @@ Azure Security Center riasztást is beállíthat bizonyos gyanús tevékenysége
 |--|--|--|--|
 | LT-3 | 9,3, 12,2, 12,5, 12,8 | AU-3, AU-6, AU-12, SI-4 |
 
-A hálózati biztonsági csoport (NSG) erőforrás-naplói, NSG-naplók, Azure Firewall naplók és webalkalmazási tűzfal (WAF) naplófájljainak engedélyezése és gyűjtése a biztonsági elemzésekhez az incidensek vizsgálatának, a fenyegetések vadászatának és a biztonsági riasztások generálásának támogatásához. A folyamat naplóit elküldheti egy Azure Monitor Log Analytics munkaterületre, majd a Traffic Analytics használatával betekintést biztosíthat. Győződjön meg arról, hogy a DNS-lekérdezési naplók gyűjtése segítséget nyújt a más hálózati adatok korrelációs biztosításához.
+A hálózati biztonsági csoport (NSG) erőforrás-naplói, NSG-naplók, Azure Firewall naplók és webalkalmazási tűzfal (WAF) naplófájljainak engedélyezése és gyűjtése a biztonsági elemzésekhez az incidensek vizsgálatának, a fenyegetések vadászatának és a biztonsági riasztások generálásának támogatásához. A folyamat naplóit elküldheti egy Azure Monitor Log Analytics munkaterületre, majd a Traffic Analytics használatával betekintést biztosíthat.
+
+Győződjön meg arról, hogy a DNS-lekérdezési naplók gyűjtése segítséget nyújt a más hálózati adatok korrelációs biztosításához.
 
 - [Hálózati biztonsági csoport folyamatábráinak engedélyezése](../../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
@@ -117,11 +121,11 @@ A hálózati biztonsági csoport (NSG) erőforrás-naplói, NSG-naplók, Azure F
 
 - [Biztonsági műveletek](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
-- [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
+- [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Alkalmazások biztonsága és DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
-- [Fenyegetésészlelési intelligencia](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
+- [Fenyegetések felderítése](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
 ## <a name="lt-4-enable-logging-for-azure-resources"></a>LT-4: Naplózás engedélyezése Azure-erőforrásokhoz
 
@@ -131,7 +135,7 @@ A hálózati biztonsági csoport (NSG) erőforrás-naplói, NSG-naplók, Azure F
 
 Az Azure-erőforrások naplózásának engedélyezése a megfelelőség, a fenyegetések észlelése, a vadászat és az incidensek vizsgálatához szükséges követelmények teljesítése érdekében. 
 
-Azure Security Center és Azure Policy használatával engedélyezheti az erőforrás-naplókat és naplózhatja az adatok gyűjtését az Azure-erőforrásokon a naplózási, biztonsági és erőforrás-naplókhoz való hozzáféréshez. A automatikusan elérhető tevékenység-naplók közé tartozik az eseményforrás, a dátum, a felhasználó, az időbélyeg, a forráscím, a célcím és más hasznos elemek. 
+Azure Security Center és Azure Policy használatával engedélyezheti az erőforrás-naplókat és naplózhatja az adatok gyűjtését az Azure-erőforrásokon a naplózási, biztonsági és erőforrás-naplókhoz való hozzáféréshez. A automatikusan elérhető tevékenység-naplók közé tartozik az eseményforrás, a dátum, a felhasználó, az időbélyeg, a forráscím, a célcím és más hasznos elemek.
 
 - [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](../../azure-monitor/essentials/platform-logs-overview.md)
 
@@ -145,9 +149,9 @@ Azure Security Center és Azure Policy használatával engedélyezheti az erőfo
 
 Infrastruktúra és végpontbiztonság 
 
-- [Alkalmazások biztonsága és DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+- [Alkalmazások biztonsága és DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-- [Fenyegetésészlelési intelligencia](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
+- [Fenyegetések felderítése](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
 ## <a name="lt-5-centralize-security-log-management-and-analysis"></a>LT-5: Biztonsági naplók kezelésének és elemzésének központosítása
 
@@ -155,13 +159,13 @@ Infrastruktúra és végpontbiztonság
 |--|--|--|--|
 | LT-5 | 6,5, 6,6 | AU-3, SI-4 |
 
-Központosítsa a naplózási tárolást és elemzést a korreláció engedélyezéséhez. Minden naplózási forrás esetében ellenőrizze, hogy rendelkezik-e az adatok tulajdonosával, a hozzáférési útmutatással, a tárolási hellyel, az adatok feldolgozásához és eléréséhez, valamint az adatmegőrzési követelményekhez használt eszközökhöz.
+Központosítsa a naplózási tárolást és elemzést a korreláció engedélyezéséhez. Minden egyes naplózási forrás esetében ellenőrizze, hogy rendelkezik-e az adatok tulajdonosával, a hozzáférési útmutatással, a tárolási hellyel, az adatok feldolgozásához és eléréséhez, valamint az adatmegőrzési követelményekhez használt eszközökhöz.
 
-Győződjön meg arról, hogy integrálja az Azure-tevékenységek naplóit a központi naplózásba. Naplók betöltése Azure Monitor használatával a végponti eszközök, a hálózati erőforrások és más biztonsági rendszerek által generált biztonsági adatokat összesítve. Azure Monitor a Log Analytics-munkaterületek használatával kérdezheti le és végezheti el az elemzéseket, és használhatja az Azure Storage-fiókokat hosszú távú és archiválási tároláshoz.
+Győződjön meg arról, hogy az Azure-tevékenységek naplóit integrálja a központi naplózásba. Naplók betöltése Azure Monitor használatával a végponti eszközök, a hálózati erőforrások és más biztonsági rendszerek által generált biztonsági adatokat összesítve. Azure Monitor a Log Analytics-munkaterületek használatával kérdezheti le és végezheti el az elemzéseket, és használhatja az Azure Storage-fiókokat hosszú távú és archiválási tároláshoz.
 
 Emellett az Azure Sentinel vagy egy harmadik féltől származó SIEM-nek is engedélyezi az adatok bevezetését.
 
-Számos szervezet úgy dönt, hogy a gyakran használt és az Azure-tárolót használja a ritkábban használt adatokhoz az Azure Sentinel használatával. 
+Számos szervezet úgy dönt, hogy a gyakran használt és az Azure-tárolót használja a ritkábban használt adatokhoz az Azure Sentinel használatával.
 
 - [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md)
 
@@ -189,7 +193,7 @@ Azure Monitor az Log Analytics munkaterület megőrzési időszakát a szervezet
 
 - [Az adatmegőrzési időszak módosítása Log Analytics](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Adatmegőrzési szabályzat konfigurálása az Azure Storage-fiók naplóihoz](../../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [Adatmegőrzési szabályzat konfigurálása az Azure Storage-fiók naplóihoz](../../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 - [Azure Security Center riasztások és javaslatok exportálása](../../security-center/continuous-export.md)
 
@@ -199,9 +203,9 @@ Azure Monitor az Log Analytics munkaterület megőrzési időszakát a szervezet
 
 - [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Alkalmazások biztonsága és DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+- [Alkalmazások biztonsága és DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-- [Biztonsági műveletek](/azure/cloud-adoption-framework/organize/cloud-security-operations-center) 
+- [Biztonsági műveletek](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Biztonsági megfelelőség kezelése](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
@@ -211,7 +215,7 @@ Azure Monitor az Log Analytics munkaterület megőrzési időszakát a szervezet
 |--|--|--|--|
 | LT-7 | 6.1 | AU-8 |
 
-A Microsoft a legtöbb Azure-beli és SaaS-szolgáltatáshoz időforrást tart fenn. A virtuális gépek esetében a Microsoft alapértelmezett NTP-kiszolgálóját használja az időszinkronizáláshoz, hacsak nincs konkrét követelménye.  Ha létre kell hoznia a saját Network Time Protocol (NTP) kiszolgálót, gondoskodjon az UDP-szolgáltatás 123-es portjának védelméről.
+A Microsoft a legtöbb Azure-beli és SaaS-szolgáltatáshoz időforrást tart fenn. A virtuális gépek esetében a Microsoft alapértelmezett NTP-kiszolgálóját használja az időszinkronizáláshoz, hacsak nincs konkrét követelménye. Ha létre kell hoznia a saját Network Time Protocol (NTP) kiszolgálót, gondoskodjon az UDP-szolgáltatás 123-es portjának védelméről.
 
 Az Azure-on belüli erőforrások által generált összes napló biztosítja az időbélyegeket az alapértelmezés szerint megadott időzónával.
 

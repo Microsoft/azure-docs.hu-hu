@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 88138cc1366dcef68aeccf652af05704e72c8e15
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d3c3eff32120438fd891cb32fe98d73424f82b7f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627499"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734145"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>Oktatóanyag: erőforrás-naplók összegyűjtése és elemzése Azure-erőforrásból
 
@@ -93,7 +93,7 @@ Az adatok beolvasása egy Log Analytics munkaterületről a Kusto lekérdezési 
 
 
 5. Írjon be egy lekérdezést, és kattintson a **Futtatás** elemre az eredmények vizsgálatához. 
-6. Lásd: Ismerkedés [a naplók lekérdezésével a Azure monitorban](../log-query/get-started-queries.md) a naplók írásához.
+6. Lásd: Ismerkedés [a naplók lekérdezésével a Azure monitorban](../logs/get-started-queries.md) a naplók írásához.
 
     ![Napló lekérdezése](media/tutorial-resource-logs/log-query-1.png)
 
@@ -104,4 +104,4 @@ Az adatok beolvasása egy Log Analytics munkaterületről a Kusto lekérdezési 
 Most, hogy megismerte, hogyan gyűjthet erőforrás-naplókat egy Log Analytics munkaterületre, hogyan elemezheti az adatokat a naplók írásához.
 
 > [!div class="nextstepaction"]
-> [Ismerkedés az Azure Monitor-naplólekérdezésekkel](../log-query/get-started-queries.md)
+> [Ismerkedés az Azure Monitor-naplólekérdezésekkel](../logs/get-started-queries.md)

@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: ca0e95d311adedf613ed168927491dfa85b1cabd
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 7ec938a13d04cf3400e4d3df0eeda051c61d35ad
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095321"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724268"
 ---
 # <a name="azure-storage-compliance-offerings"></a>Azure Storage-megfelelőségi ajánlatok
 
 Annak érdekében, hogy a szervezetek megfeleljenek az egyéni adatgyűjtésre és-felhasználásra vonatkozó nemzeti, regionális és iparági követelményeknek, Microsoft Azure & az Azure Storage kínálja a legátfogóbb minősítési készletet és a felhőalapú szolgáltatók tanúsítványait.
 
-A megfelelőségi ajánlatokat alább találja az Azure Storage-ban, hogy a szolgáltatás az Azure Storage szolgáltatás használatával legyen szabályozva. Ezek a következő Azure Storage-ajánlatokra érvényesek: Blobok, fájlok, várólisták, táblák, lemezek, ritka tárolás és Premium Storage.
+A megfelelőségi ajánlatokat alább találja az Azure Storage-ban, hogy a szolgáltatás az Azure Storage szolgáltatás használatával legyen szabályozva. A következő Azure Storage-ajánlatokra érvényesek: Blobok (ADLS Gen2), fájlok, várólisták, táblák, lemezek, ritka elérésű tárolás és Premium Storage.
 
 ## <a name="global"></a>Globális
 

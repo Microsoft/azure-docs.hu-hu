@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/19/2021
+ms.date: 03/02/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 78958dc0f95d2bc7a9e393ac2e769a97f7e92efa
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 955d3330d3f08d7e7f024ec2c36941d02244d9ba
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100556438"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726836"
 ---
 # <a name="azure-storage-redundancy"></a>Redundancia az Azure Storage szolgáltatásban
 
@@ -87,10 +87,11 @@ A Storage-fiók létrehozásakor ki kell választania a fiók elsődleges régi�
 
 Az Azure Storage két lehetőséget kínál az adatok másodlagos régióba történő másolására:
 
-- A **Georedundáns tárolás (GRS)** az adatokat szinkron módon, az LRS használatával háromszor másolja le az elsődleges régió egy fizikai helyére. Ezután aszinkron módon másolja át az adatokat a másodlagos régió egy fizikai helyére.
-- A **geo-Zone-redundáns tárolás (GZRS)** az összes Azure-beli rendelkezésre állási zónában szinkron módon másolja az adatait az elsődleges régióban az ZRS használatával. Ezután aszinkron módon másolja át az adatokat a másodlagos régió egy fizikai helyére.
+- A **Georedundáns tárolás (GRS)** az adatokat szinkron módon, az LRS használatával háromszor másolja le az elsődleges régió egy fizikai helyére. Ezután aszinkron módon másolja át az adatokat a másodlagos régió egy fizikai helyére. A másodlagos régión belül az adatait a LRS használatával egyidejűleg háromszor másolja a rendszer.
+- A **geo-Zone-redundáns tárolás (GZRS)** az összes Azure-beli rendelkezésre állási zónában szinkron módon másolja az adatait az elsődleges régióban az ZRS használatával. Ezután aszinkron módon másolja át az adatokat a másodlagos régió egy fizikai helyére. A másodlagos régión belül az adatait a LRS használatával egyidejűleg háromszor másolja a rendszer.
 
-A GRS és a GZRS közötti elsődleges különbség az, hogy az elsődleges régióban hogyan replikálódnak az adathalmazok. A másodlagos régión belül a LRS használatával a rendszer mindig szinkron módon replikálja az adatátvitelt. A másodlagos régióban lévő LRS megvédi adatait a hardver meghibásodása ellen.
+> [!NOTE]
+> A GRS és a GZRS közötti elsődleges különbség az, hogy az elsődleges régióban hogyan replikálódnak az adathalmazok. A másodlagos régión belül a LRS használatával a rendszer mindig szinkron módon replikálja az adatátvitelt. A másodlagos régióban lévő LRS megvédi adatait a hardver meghibásodása ellen.
 
 A GRS vagy a GZRS esetében a másodlagos régióban lévő információk nem érhetők el olvasási vagy írási hozzáférés esetén, kivéve, ha feladatátvétel történik a másodlagos régióval. Ha olvasási hozzáférést szeretne adni a másodlagos régióhoz, konfigurálja a Storage-fiókot az olvasási hozzáférésű geo-redundáns tárolás (RA-GRS) vagy az olvasási hozzáférésű földrajzi zóna – redundáns tárolás (RA-GZRS) használatára. További információ: [olvasási hozzáférés az adatokhoz a másodlagos régióban](#read-access-to-data-in-the-secondary-region).
 

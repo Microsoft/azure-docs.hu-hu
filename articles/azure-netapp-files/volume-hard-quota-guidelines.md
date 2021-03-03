@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: b-juche
-ms.openlocfilehash: b173342c1c384213e88f216334b5e03cd8b7bea7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b25d312e6710a07f523c4acdb0fd4b970ce4a2d7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374490"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740086"
 ---
 # <a name="what-changing-to-volume-hard-quota-means-for-your-azure-netapp-files-service"></a>Mi a mennyiségű kemény kvóta módosítása a Azure NetApp Files szolgáltatáshoz
 
 A szolgáltatás kezdetétől Azure NetApp Files kapacitás-készlet létesítési és automatikus növekedési mechanizmust használtak. Azure NetApp Files kötetek kiosztása a kiválasztott réteg és méret alapján, az ügyfél által kiosztott kapacitás készletén történik. A mennyiségi méretek (kvóták) a teljesítmény és a kapacitás biztosítására szolgálnak, és a kvóták bármikor módosíthatók. Ez azt jelenti, hogy a kötet kvótája jelenleg a kötet sávszélességének szabályozására szolgáló teljesítmény. Jelenleg a kapacitás kitöltésekor a kapacitás automatikusan növekszik.   
 
 > [!IMPORTANT] 
-> A kötet és a kapacitás-készlet kiépítés Azure NetApp Files viselkedése *manuális* és *ellenőrizhető* mechanizmusra változik. **2021. április 1-től kezdődően a mennyiségi méretek (kvóta) kezeli a sávszélesség-teljesítményt, valamint a kiosztott kapacitást, és a mögöttes kapacitású készletek már nem fognak automatikusan növekedni.** 
+> A kötet és a kapacitás-készlet kiépítés Azure NetApp Files viselkedése *manuális* és *ellenőrizhető* mechanizmusra változik. **2021. április 1-től kezdődően a mennyiségi méretek (kvóta) kezeli a sávszélesség-teljesítményt, valamint a kiosztott kapacitást, és a mögöttes kapacitások készlete már nem fog automatikusan növekedni.** 
 
 ## <a name="reasons-for-the-change-to-volume-hard-quota"></a>A mennyiségi rögzített kvóta változásának okai
 
@@ -185,8 +185,8 @@ Bizonyos esetekben a gazdagép-kapacitási készlet nem rendelkezik elegendő ka
 
 A kötet vagy a kapacitási készlet méretének manuális módosításához használhatja a [Azure NETAPP Files CLI-eszközöket](azure-netapp-files-sdk-cli.md#cli-tools), beleértve az Azure CLI-t és Azure PowerShellt is.  A következő két parancs használható Azure NetApp Files kötet-és készlet-erőforrások kezeléséhez:  
 
-* [`az netappfiles pool`](https://docs.microsoft.com/cli/azure/netappfiles/pool?view=azure-cli-latest&preserve-view=true)
-* [`az netappfiles volume`](https://docs.microsoft.com/cli/azure/netappfiles/volume?view=azure-cli-latest&preserve-view=true)
+* [`az netappfiles pool`](/cli/azure/netappfiles/pool?preserve-view=true&view=azure-cli-latest)
+* [`az netappfiles volume`](/cli/azure/netappfiles/volume?preserve-view=true&view=azure-cli-latest)
 
 Azure NetApp Files erőforrások Azure CLI-vel való kezeléséhez nyissa meg a Azure Portal, és válassza ki az Azure **Cloud Shell** hivatkozást a menüsáv tetején: 
 
@@ -196,13 +196,13 @@ A művelettel megnyílik a Azure Cloud Shell:
 
 [![Képernyőkép, amely Cloud Shell ablakot jelenít meg. ](../media/azure-netapp-files/hard-quota-update-cloud-shell-window.png)](../media/azure-netapp-files/hard-quota-update-cloud-shell-window.png#lightbox)
 
-Az alábbi példák a következő parancsokat használják a kötetek méretének [megjelenítéséhez](https://docs.microsoft.com/cli/azure/netappfiles/volume?view=azure-cli-latest#az-netappfiles-volume-show&preserve-view=true) és [frissítéséhez](https://docs.microsoft.com/cli/azure/netappfiles/volume?view=azure-cli-latest#az-netappfiles-volume-update&preserve-view=true) :
+Az alábbi példák a következő parancsokat használják a kötetek méretének [megjelenítéséhez](/cli/azure/netappfiles/volume?preserve-view=true&view=azure-cli-latest#az-netappfiles-volume-show) és [frissítéséhez](/cli/azure/netappfiles/volume?preserve-view=true&view=azure-cli-latest#az-netappfiles-volume-update) :
  
 [![Képernyőkép a kötet méretének megjelenítéséhez a PowerShell használatával. ](../media/azure-netapp-files/hard-quota-update-powershell-volume-show.png)](../media/azure-netapp-files/hard-quota-update-powershell-volume-show.png#lightbox)
 
 [![Képernyőkép a kötet méretének frissítéséhez a PowerShell használatával. ](../media/azure-netapp-files/hard-quota-update-powershell-volume-update.png)](../media/azure-netapp-files/hard-quota-update-powershell-volume-update.png#lightbox)
 
-Az alábbi példák a következő parancsokat használják a kapacitási készlet méretének [megjelenítéséhez](https://docs.microsoft.com/cli/azure/netappfiles/pool?view=azure-cli-latest#az-netappfiles-pool-show&preserve-view=true) és [frissítéséhez](https://docs.microsoft.com/cli/azure/netappfiles/pool?view=azure-cli-latest#az-netappfiles-pool-update&preserve-view=true) :
+Az alábbi példák a következő parancsokat használják a kapacitási készlet méretének [megjelenítéséhez](/cli/azure/netappfiles/pool?preserve-view=true&view=azure-cli-latest#az-netappfiles-pool-show) és [frissítéséhez](/cli/azure/netappfiles/pool?preserve-view=true&view=azure-cli-latest#az-netappfiles-pool-update) :
 
 [![Képernyőfelvétel: a PowerShell használatával jeleníthető meg a kapacitási készlet mérete. ](../media/azure-netapp-files/hard-quota-update-powershell-pool-show.png)](../media/azure-netapp-files/hard-quota-update-powershell-pool-show.png#lightbox) 
 
@@ -277,4 +277,4 @@ A [ANFCapacityManager GitHub oldalán](https://github.com/ANFTechTeam/ANFCapacit
 
 ## <a name="next-steps"></a>Következő lépések
 * [A kapacitáskészlet vagy kötet átméretezése](azure-netapp-files-resize-capacity-pools-or-volumes.md) 
-* [Az Azure NetApp Files metrikái](azure-netapp-files-metrics.md) 
+* [Az Azure NetApp Files metrikái](azure-netapp-files-metrics.md)

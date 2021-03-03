@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 02/24/2021
 ms.custom: template-quickstart
 keywords: Kubernetes, arc, Azure, fürt
-ms.openlocfilehash: 8eb177f0c80d7ed2df70c75ca476a1dfe33c8425
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c50266ce0afd6dd3f5860e3259d2b22af817834c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665468"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689249"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>Gyors útmutató: meglévő Kubernetes-fürt összekötése az Azure-ív használatával 
 
@@ -25,7 +25,7 @@ Ebben a rövid útmutatóban kihasználjuk az Azure arc-kompatibilis Kubernetes 
 
 * Ellenőrizze, hogy rendelkezik-e:
     * Egy felhasználható Kubernetes-fürt.
-    * Egy `kubeconfig` fájl.
+    * Egy fájl, amely arra `kubeconfig` a fürtre mutat, amelyhez csatlakozni szeretne az Azure-ívet.
     * "READ" és "Write" engedély a felhasználóhoz vagy a szolgáltatáshoz, amely csatlakozik az Azure arc-kompatibilis Kubernetes erőforrástípus () létrehozásához `Microsoft.Kubernetes/connectedClusters` .
 * Telepítse a [Helm 3 legújabb kiadását](https://helm.sh/docs/intro/install).
 * Telepítse a következő Azure arc-kompatibilis Kubernetes CLI-bővítményeit >= 1.0.0:
@@ -68,16 +68,6 @@ Ebben a rövid útmutatóban kihasználjuk az Azure arc-kompatibilis Kubernetes 
 | `https://login.microsoftonline.com`                                                                            | Azure Resource Manager tokenek beolvasásához és frissítéséhez szükséges.                                                                                    |  
 | `https://mcr.microsoft.com`                                                                            | A tároló lemezképének lekéréséhez szükséges az Azure arc-ügynökökhöz.                                                                  |  
 | `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`, `https://wcus.his.arc.azure.com`, `https://scus.his.arc.azure.com`, `https://sea.his.arc.azure.com`, `https://uks.his.arc.azure.com`, `https://wus2.his.arc.azure.com`, `https://ae.his.arc.azure.com`, `https://eus2.his.arc.azure.com`, `https://ne.his.arc.azure.com` |  A rendszer által hozzárendelt Managed Service Identity (MSI) tanúsítványok lekéréséhez szükséges.                                                                  |
-
-
-## <a name="install-the-azure-arc-enabled-kubernetes-cli-extensions"></a>Az Azure arc-kompatibilis Kubernetes CLI-bővítményeinek telepítése
-
-Írja be a következő parancsokat:  
-
-    ```azurecli
-    az extension add --name connectedk8s
-    az extension add --name k8s-configuration
-    ```
 
 ## <a name="register-the-two-providers-for-azure-arc-enabled-kubernetes"></a>A két szolgáltató regisztrálása az Azure arc-kompatibilis Kubernetes
 
@@ -147,6 +137,9 @@ eastus      AzureArcTest
       "type": "Microsoft.Kubernetes/connectedClusters"
     }
     ```
+
+> [!TIP]
+> A megadott Location paraméter nélkül a fenti parancs létrehozza az Azure arc-kompatibilis Kubernetes-erőforrást az erőforráscsoporthoz megegyező helyen. Ha egy másik helyen szeretné létrehozni az Azure arc-kompatibilis Kubernetes-erőforrást `--location <region>` , `-l <region>` akkor a vagy a parancsot kell megadnia a parancs futtatásakor `az connectedk8s connect` .
 
 ## <a name="verify-cluster-connection"></a>Fürt kapcsolatainak ellenőrzése
 

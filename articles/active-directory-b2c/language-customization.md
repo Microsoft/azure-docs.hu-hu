@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e29ef68bb6f02e329d0406cd80dceb25beab8932
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 418f0797343a64728c4e48084b09bd0e426cec62
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101645908"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686410"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Nyelvi Testreszabás a Azure Active Directory B2Cban
 
@@ -226,7 +226,7 @@ Az elem [LocalizedResources](localization.md#localizedresources) `Localization` 
 A honosított erőforrások elemeit a tartalom definíciójában és a támogatni kívánt nyelveken konfigurálhatja. Az angol és a spanyol nyelvű egyesített regisztrációs vagy bejelentkezési lapok testreszabásához az `LocalizedResources` elem lezárása után adja hozzá a következő elemeket `</SupportedLanguages>` .
 
 > [!NOTE]
-> Az alábbi példában az `#` egyes sorok koldulása során hozzáadott egy font szimbólumot, így easly megtalálhatja a képernyőn megjelenő honosított címkéket.
+> Az alábbi példában az `#` egyes sorok elején a font szimbólumot vesszük fel, így könnyen megtalálhatja a honosított címkéket a képernyőn.
 
 ```xml
 <!--Local account sign-up or sign-in page English-->

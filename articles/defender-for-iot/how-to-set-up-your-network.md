@@ -4,15 +4,15 @@ description: Ismerkedjen meg a megoldási architektúrával, a hálózati elők�
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 01/03/2021
+ms.date: 02/18/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 4ceedf4d05c6f92e5c32da95f8b54fc6c95de01c
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 0f85eebbfa8fcdfd9ad6e31a564f27b5d9bfbdfc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526510"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733244"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>Tudnivalók az Azure Defender for IoT Network telepítőről
 
@@ -22,7 +22,7 @@ Az Azure Defender for IoT folyamatos internetkapcsolatot biztosító veszélyfor
 
 **Defender a IoT helyszíni felügyeleti konzolján**: a helyszíni felügyeleti konzol az összes hálózati eszköz összevont nézetét biztosítja. Valós idejű áttekintést nyújt a Key OT és a IoT kockázati indikátorokról és riasztásokról az összes létesítményben. Szorosan integrálva van a SOC-munkafolyamatokkal és-forgatókönyvekkel, így egyszerűen rangsorolhatja a kockázatcsökkentő tevékenységeket és a fenyegetések közötti összefüggéseket. 
 
-**Defender a IoT-portál IoT:** A Defender for IoT alkalmazás segítséget nyújthat a megoldások megvásárlásához, a szoftverek telepítéséhez és frissítéséhez, valamint a TI csomagok frissítéséhez. 
+**Defender a IoT-portálon:** A Defender for IoT alkalmazás segítséget nyújthat a megoldások megvásárlásához, a szoftverek telepítéséhez és frissítéséhez, valamint a TI csomagok frissítéséhez. 
 
 Ez a cikk a megoldási architektúrával, a hálózati előkészítéssel, az előfeltételekkel és további információkkal segíti a hálózat sikeres beállítását a Defender IoT-készülékekkel való együttműködéshez. Az ebben a cikkben található információkkal dolgozó olvasóknak az OT és az IoT hálózatok működtetésében és kezelésében kell jártasnak lenniük. Ilyenek például az Automation-mérnökök, a berendezésgyártás, az OT hálózati infrastruktúra-szolgáltatók, a kiberbiztonsági-csapatok, a CISOs vagy a informatikai igazgatók.
 

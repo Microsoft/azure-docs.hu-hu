@@ -2,13 +2,13 @@
 title: Kimenetek a sablonokban
 description: Ismerteti, hogyan lehet kimeneti értékeket definiálni egy Azure Resource Manager sablonban (ARM-sablon) és a bicep-fájlban.
 ms.topic: conceptual
-ms.date: 02/17/2021
-ms.openlocfilehash: 0371a5293b302a2eb0febb010fc16caa8355eb18
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.date: 02/19/2021
+ms.openlocfilehash: 91feb1a0b653e4b6e96e38df57f87af27e4676f5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653798"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703834"
 ---
 # <a name="outputs-in-arm-templates"></a>Kimenetek ARM-sablonokban
 
@@ -35,7 +35,21 @@ A JSON esetében adja hozzá a `outputs` szakaszt a sablonhoz. A kimeneti érté
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+A bicep, használja a `output` kulcsszót.
+
+A következő példában a a `publicIP` bicep fájlban üzembe helyezett nyilvános IP-cím azonosítója. A kimeneti érték a nyilvános IP-cím teljes tartománynevét kapja meg.
+
+```bicep
+output hostname string = publicIP.properties.dnsSettings.fqdn
+```
+
+---
+
 Ha olyan tulajdonságot kell kiadnia, amely kötőjelet tartalmaz a névben, a név helyett szögletes zárójeleket használjon. A helyett használja például a következőt:  `['property-name']` `.property-name` .
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -58,16 +72,6 @@ Ha olyan tulajdonságot kell kiadnia, amely kötőjelet tartalmaz a névben, a n
 ```
 
 # <a name="bicep"></a>[Bicep](#tab/bicep)
-
-A bicep, használja a `output` kulcsszót.
-
-A következő példában a a `publicIP` bicep fájlban üzembe helyezett nyilvános IP-cím szimbolikus neve. A kimeneti érték a nyilvános IP-cím teljes tartománynevét kapja meg.
-
-```bicep
-output hostname string = publicIP.properties.dnsSettings.fqdn
-```
-
-Ha olyan tulajdonságot kell kiadnia, amely kötőjelet tartalmaz a névben, a név helyett szögletes zárójeleket használjon. A helyett használja például a következőt:  `['property-name']` `.property-name` .
 
 ```bicep
 var user = {
@@ -99,9 +103,7 @@ A JSON-ban adja hozzá az `condition` elemet annak meghatározásához, hogy a r
 
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
-A feltételes kimenet jelenleg nem érhető el a bicep számára.
-
-Az `?` operátorral azonban a feltételektől függően két érték egyikét adhatja vissza.
+Ha feltételes kimenetet szeretne megadni a bicep, használja a `?` kezelőt. A következő példa egy végpont URL-címét vagy egy feltételtől függően üres karakterláncot ad vissza.
 
 ```bicep
 param deployStorage bool = true

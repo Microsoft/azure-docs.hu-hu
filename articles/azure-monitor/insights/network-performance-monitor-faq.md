@@ -1,24 +1,23 @@
 ---
 title: Gyakori kérdések – Network Performance Monitor megoldás az Azure-ban | Microsoft Docs
 description: Ez a cikk az Azure-Network Performance Monitorokkal kapcsolatos gyakori kérdéseket rögzíti. Network Performance Monitor (NPM) segít a hálózatok teljesítményének közel valós idejű figyelésében, valamint a hálózati teljesítmény szűk keresztmetszetének észlelésében és megkeresésében.
-ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: c58f94bcdb659eed67ebf023af473545d8cee1a7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 909cbd6174fe7eceaa8b53b5ba44fe72990b56d9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587267"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708050"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor megoldás – gyakori kérdések
 
 ![Network Performance Monitor szimbólum](media/network-performance-monitor-faq/npm-symbol.png)
 
 > [!IMPORTANT]
-> 2021. július 1-től nem lehet új teszteket felvenni egy meglévő munkaterületre, vagy új munkaterületet engedélyezni Network Performance Monitor. Továbbra is használhatja a 2021. július 1. előtt létrehozott teszteket. A szolgáltatás megszakadásának minimalizálásához a jelenlegi számítási [feladatokhoz telepítse át a teszteket Network Performance monitorról az](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) Azure Network Watcher új, 2024. február 29. előtti kapcsolódási figyelője felé.
+> 2021. július 1-től nem lehet új teszteket felvenni egy meglévő munkaterületre, vagy új munkaterületet engedélyezni Network Performance Monitor. Továbbra is használhatja a 2021. július 1. előtt létrehozott teszteket. A szolgáltatás megszakadásának minimalizálásához a jelenlegi számítási [feladatokhoz telepítse át a teszteket Network Performance monitorról az](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md) Azure Network Watcher új, 2024. február 29. előtti kapcsolódási figyelője felé.
 
 Ez a cikk az Azure-beli Network Performance Monitor (NPM) kapcsolatos gyakori kérdéseket (GYIK) rögzíti
 

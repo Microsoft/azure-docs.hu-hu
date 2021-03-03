@@ -3,12 +3,12 @@ title: Azure-erőforrások adatainak megtekintése és szűrése
 description: Szűrje az adatokat, és használjon különböző nézeteket az Azure-erőforrások jobb megismeréséhez.
 ms.topic: how-to
 ms.date: 09/11/2020
-ms.openlocfilehash: d1bd00a9e7f8c9c18484378f7c21d3bacdac2d3f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: d3ad0c225a260fd0ae6b131b951b53c28042f4d9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745893"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738633"
 ---
 # <a name="view-and-filter-azure-resource-information"></a>Azure-erőforrások adatainak megtekintése és szűrése
 
@@ -50,6 +50,18 @@ Nézet törlése:
 
 1. A **"minden erőforrás" panel mentett nézeteiben** válassza ki a nézetet, majd válassza a **Törlés** ikon ![ Törlés nézet ikont ](media/manage-filter-resource-views/icon-delete.png) .
 
+## <a name="export-information-from-a-view"></a>Adatok exportálása nézetből
+
+Az erőforrásadatokat egy nézetből is exportálhatja. Adatok exportálása CSV formátumban:
+
+1. Válassza **az EXPORTÁLÁS CSV-** be lehetőséget.
+
+    :::image type="content" source="media/manage-filter-resource-views/export-csv.png" alt-text="Képernyőfelvétel a CSV formátumba való exportálásról":::
+
+1. Mentse helyileg a fájlt, majd nyissa meg az Excelben vagy egy másik alkalmazásban, amely támogatja a CSV formátumot. 
+
+A portál körüli Navigálás során más területeket is láthat, amelyekben az információk, például az egyes erőforráscsoportok exportálhatók.
+
 ## <a name="summarize-resources-with-visuals"></a>Erőforrások összefoglalása vizualizációkkal
 
 Az eddig megtekintett nézetek _listáját_ láthatjuk, de vannak olyan _összegző nézetek_ is, amelyek vizualizációkat tartalmaznak. Ezeket a nézeteket mentheti és használhatja, ahogyan a nézeteket is listázhatja. A szűrők a két típusú nézet között maradnak. Szabványos nézetek érhetők el, például az alább látható **hely** nézet, valamint az adott szolgáltatásokhoz kapcsolódó nézetek, például az Azure Storage **állapot** nézete.
@@ -88,7 +100,7 @@ Erőforrás-gráf lekérdezésének futtatása:
 
     További információ: [az első Resource Graph-lekérdezés futtatása az Azure Resource Graph Explorerben](../governance/resource-graph/first-query-portal.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Azure Portal áttekintése](azure-portal-overview.md)
 

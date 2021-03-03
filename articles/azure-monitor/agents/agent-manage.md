@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
-ms.openlocfilehash: e8ee45a1bf6a45be1fd976d3fb1b8aba60d2b989
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ca36c35d859e651c0d949f4b7fbb28137d01af90
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100613536"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734961"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Windows és Linux rendszerhez készült Log Analytics-ügynök kezelése és karbantartása
 
@@ -164,7 +164,7 @@ A következő lépések bemutatják, hogyan lehet újrakonfigurálni a Linux-üg
 A módosítások életbe léptetéséhez nem kell újraindítani az ügynök szolgáltatását.
 
 ## <a name="update-proxy-settings"></a>Proxybeállítások frissítése
-Ha úgy szeretné konfigurálni az ügynököt, hogy az üzembe helyezés után proxykiszolgálón vagy [log Analytics átjárón](../platform/gateway.md) keresztül kommunikáljon a szolgáltatással, a feladat elvégzéséhez használja az alábbi módszerek egyikét.
+Ha úgy szeretné konfigurálni az ügynököt, hogy az üzembe helyezés után proxykiszolgálón vagy [log Analytics átjárón](./gateway.md) keresztül kommunikáljon a szolgáltatással, a feladat elvégzéséhez használja az alábbi módszerek egyikét.
 
 ### <a name="windows-agent"></a>Windows-ügynök
 

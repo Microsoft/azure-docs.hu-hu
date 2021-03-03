@@ -2,13 +2,13 @@
 title: Alkalmazások és az alkalmazások másolása a készlet csomópontjaira
 description: Ismerje meg, hogyan másolhat alkalmazásokat és információkat a készlet csomópontjaira.
 ms.topic: how-to
-ms.date: 02/10/2021
-ms.openlocfilehash: a5933a1c52e2848b6b414f1750bb24515fb9f28a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/18/2021
+ms.openlocfilehash: 0109171fd78dc11058daa30bf4604bebc1eeb857
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378502"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703647"
 ---
 # <a name="copy-applications-and-data-to-pool-nodes"></a>Alkalmazások és az alkalmazások másolása a készlet csomópontjaira
 
@@ -33,10 +33,6 @@ Ha a készleten futó összes feladat egy olyan alkalmazást (. exe) futtat, ame
 A készlet minden csomópontján telepítendő alkalmazásokhoz vagy adathoz az [alkalmazáscsomag](batch-application-packages.md)használatát érdemes használni. Nincs hozzárendelve telepítési parancs egy alkalmazáscsomag számára, de az indítási tevékenységgel bármilyen telepítési parancsot futtathat. Ha az alkalmazás nem igényel telepítést, vagy nagy mennyiségű fájlt tartalmaz, ezt a metódust használhatja.
 
 Az alkalmazáscsomag akkor hasznos, ha nagy számú fájlt használ, mert sok fájl hivatkozását egy kis adattartalomhoz kombinálhatja. Ha több mint 100 különálló erőforrást próbál felvenni egyetlen feladatba, előfordulhat, hogy a Batch szolgáltatás egy adott feladat belső rendszerkorlátain kívül esik. Az alkalmazáscsomag akkor is hasznos, ha ugyanazon alkalmazás számos különböző verziójával rendelkezik, és ezek közül kell választania.
-
-## <a name="extensions"></a>Bővítmények
-
-A [bővítmények](create-pool-extensions.md) olyan kisméretű alkalmazások, amelyek megkönnyítik a kiépítés utáni konfigurálást és a telepítést a Batch számítási csomópontokon. Készlet létrehozásakor kiválaszthat egy támogatott bővítményt, amelyet a számítási csomópontokon a kiépített módon telepíthet. Ezt követően a bővítmény végrehajthatja a kívánt műveletet.
 
 ## <a name="job-preparation-task-resource-files"></a>Feladat-előkészítési feladat erőforrás-fájljai
 

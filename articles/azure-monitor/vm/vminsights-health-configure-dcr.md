@@ -1,36 +1,36 @@
 ---
-title: A figyelés konfigurálása Azure Monitor for VMs vendég állapota adatgyűjtési szabályokkal (előzetes verzió)
-description: Útmutatás a Azure Monitor for VMs vendég állapotának alapértelmezett figyeléséhez Resource Manager-sablonok használatával.
+title: Az adatgyűjtési szabályok (előzetes verzió) használatával konfigurálhatja a virtuális gépek elemzését a vendég állapotában
+description: Ismerteti, hogyan lehet módosítani az alapértelmezett monitorozást a virtuális gépeken a vendégek számára a Resource Manager-sablonok használatával.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2020
-ms.openlocfilehash: 2001fece40267ca2e3256e699d2dc253ceb10f0c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 907aea16b018fb5dd3846db546787d132f8f5a9f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100620618"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731221"
 ---
-# <a name="configure-monitoring-in-azure-monitor-for-vms-guest-health-using-data-collection-rules-preview"></a>A figyelés konfigurálása Azure Monitor for VMs vendég állapota adatgyűjtési szabályokkal (előzetes verzió)
-[Azure monitor for VMS vendég állapota](vminsights-health-overview.md) lehetővé teszi egy virtuális gép állapotának megtekintését, amelyet a rendszeres időközönként mintavételnek alávetett teljesítmény-mérések határoznak meg. Ez a cikk azt ismerteti, hogyan módosíthatja az alapértelmezett figyelést több virtuális gépen az adatgyűjtési szabályok használatával.
+# <a name="configure-monitoring-in-vm-insights-guest-health-using-data-collection-rules-preview"></a>Az adatgyűjtési szabályok (előzetes verzió) használatával konfigurálhatja a virtuális gépek elemzését a vendég állapotában
+A [virtuális gép elemzése lehetővé teszi](vminsights-health-overview.md) a virtuális gépek állapotának megtekintését olyan teljesítmény-mérési készlet alapján, amely rendszeres időközönként mintavételt végez. Ez a cikk azt ismerteti, hogyan módosíthatja az alapértelmezett figyelést több virtuális gépen az adatgyűjtési szabályok használatával.
 
 
 ## <a name="monitors"></a>Monitorozások
-A virtuális gép állapotát az egyes figyelők [állapotának összesítése](vminsights-health-overview.md#health-rollup-policy) határozza meg. Az alábbi táblázatban látható két típusú figyelő szerepel a Azure Monitor for VMs vendég állapotában.
+A virtuális gép állapotát az egyes figyelők [állapotának összesítése](vminsights-health-overview.md#health-rollup-policy) határozza meg. A virtuális gépeken a következő táblázatban látható módon két típusú figyelőt láthat:
 
-| Monitor | Description |
+| Monitor | Leírás |
 |:---|:---|
 | Egységmonitor | Egy erőforrás vagy alkalmazás valamilyen jellemzőjét méri. Ez lehet egy teljesítményszámláló ellenőrzése az erőforrás teljesítményének vagy rendelkezésre állásának meghatározása céljából. |
 | Összesített monitor | Több monitort csoportosít egyetlen összesített állapot biztosításához. Egy összesített monitor egy vagy több egységmonitort és más összesített monitorokat tartalmazhat. |
 
-A Azure Monitor for VMs Guest Health által használt figyelők készlete és azok konfigurációja nem módosítható közvetlenül. [Felülbírálásokat](#overrides) is létrehozhat, ha módosítja az alapértelmezett konfiguráció viselkedését. A felülbírálások definiálva vannak az adatgyűjtési szabályokban. Több felülbírálást tartalmazó adatgyűjtési szabályt is létrehozhat a szükséges figyelési konfiguráció eléréséhez.
+A virtuálisgép-bepillantások vendég állapota által használt figyelők készlete nem módosítható közvetlenül. [Felülbírálásokat](#overrides) is létrehozhat, ha módosítja az alapértelmezett konfiguráció viselkedését. A felülbírálások definiálva vannak az adatgyűjtési szabályokban. Több felülbírálást tartalmazó adatgyűjtési szabályt is létrehozhat a szükséges figyelési konfiguráció eléréséhez.
 
 ## <a name="monitor-properties"></a>Figyelő tulajdonságai
 Az alábbi táblázat az egyes figyelőket konfiguráló tulajdonságokat ismerteti.
 
-| Tulajdonság | Monitorozások | Description |
+| Tulajdonság | Monitorozások | Leírás |
 |:---|:---|:---|
 | Engedélyezve | Összesítés<br>Unit (Egység) | Ha az értéke igaz, a rendszer kiszámítja az állapot figyelőt, és a virtuális gép állapotát is hozzájárul. Riasztási riasztást aktiválhat. |
 | Riasztások kezelése | Összesítés<br>Unit (Egység) | Ha az értéke TRUE (igaz), a figyelő riasztást küld, ha nem Kifogástalan állapotra vált. Ha hamis, a figyelő állapota továbbra is hozzájárul a virtuális gép állapotához, amely riasztást vált ki. |
@@ -103,9 +103,9 @@ A vendég állapota bővítményként van implementálva a Azure Monitor ügynö
 | Elem | Kötelező | Leírás |
 |:---|:---|:---|
 | `name` | Igen | A bővítmény felhasználó által definiált karakterlánca. |
-| `streams` | Yes | Azon adatfolyamok listája, amelyekhez vendég állapotú adatmennyiséget küld a rendszer. Ennek tartalmaznia kell a **Microsoft-HealthStateChange**.  |
-| `extensionName` | Yes | A bővítmény neve. Ennek **HealthExtension** kell lennie. |
-| `extensionSettings` | Yes | Az `healthRuleOverride` alapértelmezett konfigurációra alkalmazandó elemek tömbje. |
+| `streams` | Igen | Azon adatfolyamok listája, amelyekhez vendég állapotú adatmennyiséget küld a rendszer. Ennek tartalmaznia kell a **Microsoft-HealthStateChange**.  |
+| `extensionName` | Igen | A bővítmény neve. Ennek **HealthExtension** kell lennie. |
+| `extensionSettings` | Igen | Az `healthRuleOverride` alapértelmezett konfigurációra alkalmazandó elemek tömbje. |
 
 
 ## <a name="extensionsettings-element"></a>extensionSettings elem
@@ -122,8 +122,8 @@ A bővítmény beállításait tartalmazza.
 | Elem | Kötelező | Leírás |
 |:---|:---|:---|
 | `schemaVersion` | Igen | A Microsoft által meghatározott karakterlánc, amely az elem várt sémáját jelöli. Jelenleg 1,0-re kell állítani |
-| `contentVersion` | No | A felhasználó által az állapot-konfiguráció különböző verzióinak nyomon követésére megadott karakterlánc, ha szükséges. |
-| `healthRuleOverrides` | Yes | Az `healthRuleOverride` alapértelmezett konfigurációra alkalmazandó elemek tömbje. |
+| `contentVersion` | Nem | A felhasználó által az állapot-konfiguráció különböző verzióinak nyomon követésére megadott karakterlánc, ha szükséges. |
+| `healthRuleOverrides` | Igen | Az `healthRuleOverride` alapértelmezett konfigurációra alkalmazandó elemek tömbje. |
 
 ## <a name="healthrulesoverrides-element"></a>healthRulesOverrides elem
 Egy vagy több olyan `healthRuleOverride` elemet tartalmaz, amelyek mindegyike felülbírálást határoz meg.
@@ -143,10 +143,10 @@ Egy vagy több olyan `healthRuleOverride` elemet tartalmaz, amelyek mindegyike f
 | Elem | Kötelező | Leírás |
 |:---|:---|:---|
 | `scopes` | Igen | Egy vagy több hatókör listája, amelyek meghatározzák azokat a virtuális gépeket, amelyekre ez a felülbírálás vonatkozik. Annak ellenére, hogy a DCR egy virtuális géphez van társítva, a virtuális gépnek az alkalmazandó felülbírálás hatókörén belül kell lennie. |
-| `monitors` | Yes | Egy vagy több olyan karakterlánc listája, amely meghatározza, hogy mely figyelők kapják meg ezt a felülbírálást.  |
-| `monitorConfiguration` | No | A figyelő konfigurációja, beleértve az állapotokat és azok kiszámításának módját. |
-| `alertConfiguration` | No | Riasztás konfigurálása a figyelőhöz. |
-| `isEnabled` | No | Meghatározza, hogy a figyelő engedélyezve van-e vagy sem. A figyelő letiltotta a speciális *letiltott* állapotra és állapotokra való váltást, kivéve, ha az újból engedélyezve van. Ha nincs megadva, a figyelő örökli az állapotát a hierarchiában lévő szülő figyelőtől. |
+| `monitors` | Igen | Egy vagy több olyan karakterlánc listája, amely meghatározza, hogy mely figyelők kapják meg ezt a felülbírálást.  |
+| `monitorConfiguration` | Nem | A figyelő konfigurációja, beleértve az állapotokat és azok kiszámításának módját. |
+| `alertConfiguration` | Nem | Riasztás konfigurálása a figyelőhöz. |
+| `isEnabled` | Nem | Meghatározza, hogy a figyelő engedélyezve van-e vagy sem. A figyelő letiltotta a speciális *letiltott* állapotra és állapotokra való váltást, kivéve, ha az újból engedélyezve van. Ha nincs megadva, a figyelő örökli az állapotát a hierarchiában lévő szülő figyelőtől. |
 
 
 ## <a name="scopes-element"></a>hatókörök elem
@@ -227,12 +227,12 @@ Ha kevesebb minta van a lookback időszakban, mint a `minSamples` , a figyelő a
 | Elem | Kötelező | Leírás | 
 |:---|:---|:---|
 | `evaluationFrequencySecs` | Nem | Meghatározza az állapot értékelésének gyakoriságát. A rendszer minden figyelőt kiértékel az ügynök indításakor és a paraméter által később meghatározott rendszeres időközönként. |
-| `lookbackSecs`   | No | A lookback ablak mérete másodpercben. |
-| `evaluationType` | No | `min` – minimális értéket kell kiállítani a teljes mintából<br>`max` – a teljes mintából maximális értéket kell megadni<br>`avg` – a minták értékének átlagát adja meg<br>`all` – Hasonlítsa össze a készlet minden egyes értékét a küszöbértékek értékével. A figyelő kapcsolók állapota csak akkor, ha a készletben szereplő összes minta megfelel a küszöbértéknek. |
-| `minSamples`     | No | Az érték kiszámításához használandó értékek minimális száma. |
-| `maxSamples`     | No | Az érték kiszámításához használandó értékek maximális száma. |
-| `warningCondition`  | No | A figyelmeztetési feltétel küszöbértéke és összehasonlító logikája. |
-| `criticalCondition` | No | A kritikus feltétel küszöbértéke és összehasonlító logikája. |
+| `lookbackSecs`   | Nem | A lookback ablak mérete másodpercben. |
+| `evaluationType` | Nem | `min` – minimális értéket kell kiállítani a teljes mintából<br>`max` – a teljes mintából maximális értéket kell megadni<br>`avg` – a minták értékének átlagát adja meg<br>`all` – Hasonlítsa össze a készlet minden egyes értékét a küszöbértékek értékével. A figyelő kapcsolók állapota csak akkor, ha a készletben szereplő összes minta megfelel a küszöbértéknek. |
+| `minSamples`     | Nem | Az érték kiszámításához használandó értékek minimális száma. |
+| `maxSamples`     | Nem | Az érték kiszámításához használandó értékek maximális száma. |
+| `warningCondition`  | Nem | A figyelmeztetési feltétel küszöbértéke és összehasonlító logikája. |
+| `criticalCondition` | Nem | A kritikus feltétel küszöbértéke és összehasonlító logikája. |
 
 
 ## <a name="warningcondition-element"></a>warningCondition elem
@@ -249,8 +249,8 @@ Meghatározza a figyelmeztetési feltétel küszöbértékét és összehasonlí
 | Tulajdonság | Kötelező | Leírás | 
 |:---|:---|:---|
 | `isEnabled` | Nem | Megadja, hogy engedélyezve van-e a feltétel. Ha **hamis** értékre van állítva, akkor a feltétel le van tiltva, bár a küszöbérték és az operátor tulajdonságai is megadhatók. |
-| `threshold` | No | A kiértékelt érték összehasonlítására szolgáló küszöbérték meghatározása. |
-| `operator`  | No | Meghatározza az összehasonlító operátort a küszöbérték kifejezésben való használathoz. Lehetséges értékek: >, <, >=, <=, = =. |
+| `threshold` | Nem | A kiértékelt érték összehasonlítására szolgáló küszöbérték meghatározása. |
+| `operator`  | Nem | Meghatározza az összehasonlító operátort a küszöbérték kifejezésben való használathoz. Lehetséges értékek: >, <, >=, <=, = =. |
 
 
 ## <a name="criticalcondition-element"></a>criticalCondition elem
@@ -267,8 +267,8 @@ Meghatározza a kritikus feltétel küszöbértékét és összehasonlító logi
 | Tulajdonság | Kötelező | Leírás | 
 |:---|:---|:---|
 | `isEnabled` | Nem | Megadja, hogy engedélyezve van-e a feltétel. Ha **hamis** értékre van állítva, akkor a feltétel le van tiltva, bár a küszöbérték és az operátor tulajdonságai is megadhatók. |
-| `threshold` | No | A kiértékelt érték összehasonlítására szolgáló küszöbérték meghatározása. |
-| `operator`  | No | Meghatározza az összehasonlító operátort a küszöbérték kifejezésben való használathoz. Lehetséges értékek: >, <, >=, <=, = =. |
+| `threshold` | Nem | A kiértékelt érték összehasonlítására szolgáló küszöbérték meghatározása. |
+| `operator`  | Nem | Meghatározza az összehasonlító operátort a küszöbérték kifejezésben való használathoz. Lehetséges értékek: >, <, >=, <=, = =. |
 
 ## <a name="sample-data-collection-rule"></a>Minta adatgyűjtési szabály
 A vendég figyelését lehetővé tevő minta adatgyűjtési szabály: [virtuális gép engedélyezése Resource Manager-sablon használatával](vminsights-health-enable.md#enable-a-virtual-machine-using-resource-manager-template).

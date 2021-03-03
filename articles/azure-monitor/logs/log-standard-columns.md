@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/09/2020
-ms.openlocfilehash: e8d89de079a50159bbed9c38487effb0c89448c2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/25/2021
+ms.openlocfilehash: c479f525435139b2f92838bf15edf4563aeed4e2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100615885"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704123"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Szabványos oszlopok a Azure Monitor-naplókban
 Azure Monitor naplókban lévő adatokat egy [log Analytics munkaterületen vagy Application Insights alkalmazásban található rekordok halmaza tárolja](../logs/data-platform-logs.md), amelyek mindegyike egy adott adattípussal rendelkezik, amely egyedi oszlopokkal rendelkezik. Számos adattípus szabványos oszlopokat tartalmaz, amelyek több típusra is jellemzőek. Ez a cikk ezeket az oszlopokat ismerteti, és példákat tartalmaz arra, hogyan használhatja őket a lekérdezésekben.
@@ -20,6 +20,10 @@ A Application Insights munkaterület-alapú alkalmazásai Log Analytics munkater
 
 > [!NOTE]
 > A standard oszlopok némelyike nem jelenik meg a séma nézetben vagy az IntelliSense Log Analyticsban, és a lekérdezési eredményekben nem jelennek meg, kivéve, ha explicit módon megadja az oszlopot a kimenetben.
+> 
+
+## <a name="tenantid"></a>TenantId
+A **TenantId** oszlop a log Analytics munkaterület munkaterületének azonosítóját tárolja.
 
 ## <a name="timegenerated-and-timestamp"></a>TimeGenerated és időbélyeg
 A **TimeGenerated** (log Analytics munkaterület) és az **időbélyeg** (Application Insights alkalmazás) oszlopai azt a dátumot és időpontot tartalmazzák, ameddig a rekordot az adatforrás hozta létre. További részletekért lásd: a [naplózási adatok betöltési ideje Azure monitorban](../logs/data-ingestion-time.md) .
@@ -49,6 +53,10 @@ exceptions
 
 ## <a name="_timereceived"></a>\_TimeReceived
 A **\_ TimeReceived** oszlop azt a dátumot és időpontot tartalmazza, ameddig a rekord az Azure-felhőben lévő Azure monitor betöltési ponttól érkezett. Ez hasznos lehet az adatforrás és a felhő közötti késési problémák azonosításához. Ilyen például egy hálózati probléma, ami késlelteti az ügynöktől küldött adatok késését. További részletekért lásd: a [naplózási adatok betöltési ideje Azure monitorban](../logs/data-ingestion-time.md) .
+
+> [!NOTE]
+> A **\_ TimeReceived** oszlop minden használatkor ki van számítva. Ez a folyamat erőforrás-igényes. Pontosítsa a használatát a nagy számú rekord szűréséhez. A függvény ismétlődő használata a lekérdezés végrehajtásának nagyobb időtartamára vezethet.
+
 
 Az alábbi lekérdezés átlagos késést biztosít egy ügynöktől származó esemény-rekordok esetében óránként. Ez magában foglalja az ügynök és a felhő közötti időt, valamint azt, hogy a rekord teljes ideje elérhető legyen a naplók lekérdezéséhez.
 
@@ -238,6 +246,6 @@ union withsource = tt *
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a [Azure monitor naplózási adatainak tárolásáról](../log-query/log-query-overview.md).
-- Vegyen fel egy leckét a [naplók írásához](../log-query/get-started-queries.md).
+- További információ a [Azure monitor naplózási adatainak tárolásáról](./log-query-overview.md).
+- Vegyen fel egy leckét a [naplók írásához](./get-started-queries.md).
 - Bemutatjuk [, hogyan csatlakozhatnak táblákhoz a naplók lekérdezésében](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#joins).

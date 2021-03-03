@@ -11,35 +11,39 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 12/16/2020
-ms.openlocfilehash: 983fc2cd7e9863361776d5a9d5bc02359fccd510
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fad19d360f7c476ba71a9bbe00b58387b92f8ac4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100580817"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690556"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>A biztonsági másolatok hosszú távú megőrzésének Azure SQL Database kezelése
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-A Azure SQL Database-ben beállíthat egy adatbázist [hosszú távú biztonsági mentési adatmegőrzési](long-term-retention-overview.md) HÁZIRENDDEL (ltr), amellyel az adatbázis biztonsági másolatait külön Azure Blob Storage-tárolókban, akár 10 évig is megtarthatja. Ezután a Azure Portal vagy a PowerShell használatával helyreállíthat egy adatbázist a biztonsági másolatokkal. A [felügyelt Azure SQL-példányok](../managed-instance/long-term-backup-retention-configure.md) hosszú távú megőrzését is beállíthatja, de jelenleg korlátozott nyilvános előzetes verzióban érhető el.
+A Azure SQL Database segítségével beállíthatja a [biztonsági másolatok hosszú távú megőrzési](long-term-retention-overview.md) szabályát (ltr), hogy a biztonsági mentések automatikusan megmaradjanak a különálló Azure Blob Storage-tárolókban akár 10 évig. Ezután a Azure Portal vagy a PowerShell használatával helyreállíthat egy adatbázist a biztonsági másolatokkal. A hosszú távú adatmegőrzési szabályzatok az [Azure SQL felügyelt példányai](../managed-instance/long-term-backup-retention-configure.md)esetében is támogatottak.
 
 ## <a name="using-the-azure-portal"></a>Az Azure Portal használata
 
-A következő részben bemutatjuk, Azure Portal hogyan konfigurálhatja a hosszú távú adatmegőrzést, megtekintheti a biztonsági mentéseket hosszú távú adatmegőrzéssel, és visszaállíthatja a biztonsági mentést a hosszú távú adatmegőrzésből.
+A következő részben bemutatjuk, hogyan használhatja a Azure Portal a hosszú távú adatmegőrzési házirendek beállítására, a rendelkezésre álló hosszú távú adatmegőrzési biztonsági másolatok kezelésére, valamint a rendelkezésre álló biztonsági másolatból történő visszaállításra.
 
 ### <a name="configure-long-term-retention-policies"></a>Hosszú távú adatmegőrzési szabályzatok konfigurálása
 
 A SQL Database konfigurálhatja úgy, hogy az [automatizált biztonsági mentéseket](long-term-retention-overview.md) a szolgáltatási szinten megőrzött időtartamnál hosszabb ideig is megőrizze.
 
-1. A Azure Portal válassza ki a SQL Server példányát, majd kattintson a **biztonsági mentések kezelése** lehetőségre. A **házirendek konfigurálása** lapon jelölje be annak az adatbázisnak a jelölőnégyzetét, amelyen a biztonsági másolatok hosszú távú megőrzési szabályzatait be szeretné állítani vagy módosítani kívánja. Ha az adatbázis melletti jelölőnégyzet nincs bejelölve, a házirend módosításai nem lesznek érvényesek az adott adatbázisra.  
+1. A Azure Portal navigáljon a kiszolgálóhoz, majd válassza a **biztonsági mentések** lehetőséget. Válassza a **megőrzési szabályzatok** fület a biztonsági másolatok megőrzési beállításainak módosításához.
 
-   ![biztonsági másolatok kezelése hivatkozás](./media/long-term-backup-retention-configure/ltr-configure-ltr.png)
+   ![adatmegőrzési szabályzatok](./media/long-term-backup-retention-configure/ltr-policies-tab.png)
 
-2. A **házirendek konfigurálása** panelen válassza ki, hogy meg kívánja-e őrizni a hetente, havonta vagy évenkénti biztonsági mentést, és adja meg a megőrzési időtartamot.
+2. Az adatmegőrzési házirendek lapon válassza ki azokat az adatbázis (oka) t, amelyeken a biztonsági másolatok hosszú távú megőrzési szabályzatait be szeretné állítani vagy módosítani kívánja. A nem kijelölt adatbázisokat a rendszer nem érinti.
 
-   ![házirendek konfigurálása](./media/long-term-backup-retention-configure/ltr-configure-policies.png)
+   ![adatbázis kiválasztása a biztonsági mentési adatmegőrzési szabályzatok konfigurálásához](./media/long-term-backup-retention-configure/ltr-policies-tab-configure.png)
 
-3. Ha elkészült, kattintson az **alkalmaz** gombra.
+3. A **házirendek konfigurálása** panelen adja meg a heti, havi vagy éves biztonsági mentések kívánt megőrzési időtartamát. Válasszon egy "0" megőrzési időtartamot annak jelzésére, hogy a biztonsági másolatok hosszú távú megőrzését nem kell beállítani.
+
+   ![házirendek konfigurálása panel](./media/long-term-backup-retention-configure/ltr-configure-policies.png)
+
+4. Válassza az **alkalmaz** lehetőséget a kiválasztott adatmegőrzési beállítások az összes kiválasztott adatbázisra való alkalmazásához.
 
 > [!IMPORTANT]
 > Ha engedélyezi a biztonsági másolatok hosszú távú megőrzési szabályát, akkor akár 7 napig is eltarthat, amíg az első biztonsági mentés láthatóvá válik, és visszaállítható. A LTR biztonsági mentési cadance kapcsolatos részletekért lásd a [biztonsági másolatok hosszú távú megőrzését](long-term-retention-overview.md)ismertető témakört.
@@ -48,21 +52,23 @@ A SQL Database konfigurálhatja úgy, hogy az [automatizált biztonsági mentés
 
 Megtekintheti az adott adatbázis számára a LTR házirenddel megőrzött biztonsági másolatokat, és visszaállíthatja azokat a biztonsági másolatokból.
 
-1. A Azure Portal válassza ki a kiszolgálót, majd kattintson a **biztonsági mentések kezelése** lehetőségre. A **rendelkezésre álló biztonsági másolatok** lapon válassza ki azt az adatbázist, amelynek elérhető biztonsági másolatait szeretné megtekinteni.
+1. A Azure Portal navigáljon a kiszolgálóhoz, majd válassza a **biztonsági mentések** lehetőséget. Egy adott adatbázis rendelkezésre álló LTR biztonsági másolatainak megtekintéséhez válassza a **kezelés** lehetőséget a rendelkezésre álló ltr biztonsági mentések oszlopban. Ekkor megjelenik egy ablaktábla a kiválasztott adatbázishoz elérhető LTR biztonsági mentések listájával.
 
-   ![adatbázis kiválasztása](./media/long-term-backup-retention-configure/ltr-available-backups-select-database.png)
+   ![az elérhető biztonsági másolatok felhasználói felülete](./media/long-term-backup-retention-configure/ltr-available-backups-tab.png)
 
-1. Az **elérhető biztonsági másolatok** panelen tekintse át az elérhető biztonsági másolatokat.
+1. A megjelenő **elérhető ltr biztonsági másolatok** panelen tekintse át az elérhető biztonsági másolatokat. Kiválaszthat egy biztonsági mentést, amelyről vissza lehet állítani vagy törölni.
 
-   ![biztonsági másolatok megtekintése](./media/long-term-backup-retention-configure/ltr-available-backups.png)
+   ![elérhető LTR biztonsági mentések megtekintése](./media/long-term-backup-retention-configure/ltr-available-backups-manage.png)
 
-1. Válassza ki azt a biztonsági másolatot, amelyről vissza kívánja állítani, majd adja meg az új adatbázis nevét.
+1. Az elérhető LTR biztonsági másolatból való visszaállításhoz válassza ki azt a biztonsági másolatot, amelyről vissza szeretne állítani, majd válassza a **visszaállítás** lehetőséget.
 
-   ![visszaállítás](./media/long-term-backup-retention-configure/ltr-restore.png)
+   ![Visszaállítás az elérhető LTR biztonsági másolatból](./media/long-term-backup-retention-configure/ltr-available-backups-restore.png)
 
-1. Kattintson **az OK** gombra az adatbázis visszaállításához az Azure Storage-beli biztonsági másolatból az új adatbázisba.
+1. Válassza ki az új adatbázis nevét, majd válassza a **felülvizsgálat + létrehozás** lehetőséget a visszaállítás részleteinek áttekintéséhez. A **Létrehozás** gombra kattintva állíthatja vissza az adatbázist a kiválasztott biztonsági másolatból.
 
-1. Az eszköztáron kattintson az értesítési ikonra a visszaállítási feladat állapotának megtekintéséhez.
+   ![visszaállítási részletek konfigurálása](./media/long-term-backup-retention-configure/restore-ltr.png)
+
+1. Az eszköztáron kattintson az értesítés ikonra a visszaállítási feladatok állapotának megtekintéséhez.
 
    ![visszaállítási feladat állapota](./media/long-term-backup-retention-configure/restore-job-progress-long-term.png)
 

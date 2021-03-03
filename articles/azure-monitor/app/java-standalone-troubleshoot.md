@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan lehet elhárítani a Java-ügynököt a Azure M
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 90e0ceb6ba9d696eb446d607ed2f2f134733618e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 286354ecf508dec7b9ba7633bf3b5c7ddc6bfd91
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881136"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737057"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Hibaelhárítási útmutató: Azure Monitor Application Insights Javához
 
@@ -45,15 +45,23 @@ A rendszer csak akkor rögzíti a naplózást, ha először megfelel a naplózá
 
 A legjobb módszer annak megállapítására, hogy egy adott naplózási utasítás megfelel-e a naplózási keretrendszerek konfigurált küszöbértékének, annak ellenőrzéséhez, hogy megjelenik-e a normál alkalmazási naplóban (például fájl vagy konzol).
 
+Azt is vegye figyelembe, hogy ha kivételt ad át a naplózó, akkor a rendszer a tábla helyett a Azure Portal megjeleníti a naplófájlt (és kivételt) `exceptions` `traces` .
+
 További részletekért tekintse meg az [automatikusan összegyűjtött naplózási konfigurációt](./java-standalone-config.md#auto-collected-logging) .
 
 ## <a name="import-ssl-certificates"></a>SSL-tanúsítványok importálása
 
 Ez a szakasz segítséget nyújt az SSL-tanúsítványokkal kapcsolatos kivételek elhárításához és kijavításához a Java-ügynök használata esetén.
 
-A probléma megoldásához két különböző elérési út szükséges.
+A probléma megoldásához két különböző elérési út van:
+* Alapértelmezett Java-tároló használata esetén
+* Egyéni Java-tároló használata esetén
 
-### <a name="if-using-a-default-java-keystore"></a>Alapértelmezett Java-tároló használata esetén:
+Ha nem tudja biztosan, hogy melyik elérési utat szeretné követni, ellenőrizze, hogy van-e JVM ARG `-Djavax.net.ssl.trustStore=...` .
+Ha _nincs_ ilyen JVM ARG, akkor valószínűleg az alapértelmezett Java-tárolót használja.
+_Ha egy_ ilyen JVM ARG-t használ, akkor valószínűleg egyéni tárolót használ, és a JVM ARG az egyéni tárolóra mutat.
+
+### <a name="if-using-the-default-java-keystore"></a>Ha az alapértelmezett Java-tárolót használja:
 
 Általában az alapértelmezett Java-tároló már rendelkezik az összes HITELESÍTÉSSZOLGÁLTATÓI főtanúsítvánnyal. Előfordulhat azonban, hogy bizonyos kivételek, például a betöltési végpont tanúsítványa más főtanúsítvánnyal is aláírható. Ezért javasoljuk, hogy a probléma megoldásához kövesse a következő három lépést:
 

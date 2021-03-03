@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 02/02/2021
-ms.openlocfilehash: aa18baf9739663c7132a49d3d07434b9d187f02b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 34613633b6b27fc3387e6a9fa63caf4a194ba963
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100588746"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691229"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>A Azure SQL Database és az Azure szinapszis Analytics-kiszolgálók erőforrás-korlátai
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -70,7 +70,7 @@ A magas lemezterület-használat során a megoldás a következőkre terjed ki:
 - Az adatbázis vagy a rugalmas készlet maximális méretének növelése, vagy további tárhely hozzáadása. Lásd: [önálló adatbázis-erőforrások méretezése](single-database-scale.md) és [rugalmas készlet erőforrásainak méretezése](elastic-pool-scale.md).
 - Ha az adatbázis egy rugalmas készletben található, akkor azt is megteheti, hogy az adatbázist a készleten kívülre helyezi, hogy a tárolóhelye ne legyen megosztva más adatbázisokkal.
 - Adatbázis zsugorítása a nem használt terület felszabadításához. További információ: [a tárterület kezelése Azure SQL Databaseban](file-space-manage.md).
-- Ellenőrizze, hogy a magas lemezterület-kihasználtságot az állandó verziójú tároló (PVS) méretében lévő tüske okozza-e. A PVS az egyes adatbázisok részét képezi, és a  [gyorsított adatbázis-helyreállítás](../accelerated-database-recovery.md)megvalósítására szolgál. Az aktuális PVS-méret megállapításához tekintse meg a [PVS hibaelhárítását](https://docs.microsoft.com/sql/relational-databases/accelerated-database-recovery-management#troubleshooting)ismertető témakört. A nagyméretű PVS méretének gyakori oka egy hosszú ideig (órákban) nyitott tranzakció, amely megakadályozza a régebbi verziók törlését a PVS-ben.
+- Ellenőrizze, hogy a magas lemezterület-kihasználtságot az állandó verziójú tároló (PVS) méretében lévő tüske okozza-e. A PVS az egyes adatbázisok részét képezi, és a  [gyorsított adatbázis-helyreállítás](../accelerated-database-recovery.md)megvalósítására szolgál. Az aktuális PVS-méret megállapításához tekintse meg a [PVS hibaelhárítását](/sql/relational-databases/accelerated-database-recovery-management#troubleshooting)ismertető témakört. A nagyméretű PVS méretének gyakori oka egy hosszú ideig (órákban) nyitott tranzakció, amely megakadályozza a régebbi verziók törlését a PVS-ben.
 
 ### <a name="sessions-and-workers-requests"></a>Munkamenetek és feldolgozók (kérelmek)
 
@@ -97,7 +97,7 @@ A memórián kívüli hibák észlelésekor a megoldás a következőkre terjed 
 - Az adatbázis vagy a rugalmas készlet szolgáltatási szintjeinek vagy számítási méretének növelése. Lásd: [önálló adatbázis-erőforrások méretezése](single-database-scale.md) és [rugalmas készlet erőforrásainak méretezése](elastic-pool-scale.md).
 - A lekérdezések és a konfiguráció optimalizálása a memória kihasználtságának csökkentése érdekében. Az alábbi táblázat ismerteti az általános megoldásokat.
 
-|Megoldás|Description|
+|Megoldás|Leírás|
 | :----- | :----- |
 |A memóriabeli támogatások méretének csökkentése|A memória-támogatással kapcsolatos további információkért tekintse meg a [SQL Server memória-engedélyezés](https://techcommunity.microsoft.com/t5/sql-server/understanding-sql-server-memory-grant/ba-p/383595) blogbejegyzésének ismertetése című témakört. A túlzottan nagy memória-támogatás elkerülésére szolgáló közös megoldás a [statisztikák](/sql/relational-databases/statistics/statistics) naprakészen tartása. Ez a lekérdezési motor által a memória-használat pontosabb becslését eredményezi, így elkerülhető a szükségtelenül nagy memória-támogatás.</br></br>Az adatbázis-kezelő a 140-es és újabb kompatibilitási szintet használó adatbázisokban automatikusan megváltoztathatja a memória-engedélyezési méretet a [Batch Mode memória-engedélyezési visszajelzések](/sql/relational-databases/performance/intelligent-query-processing#batch-mode-memory-grant-feedback)használatával. Az adatbázis-kezelő a 150-es és újabb kompatibilitási szintet használó adatbázisokban hasonlóan a [sor módú memória-engedélyezési visszajelzéseket](/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)is használja a leggyakoribb soros üzemmódú lekérdezéseknél. Ez a beépített funkció segít elkerülni a memórián belüli hibákat a szükségtelenül nagy memória-támogatás miatt.|
 |A lekérdezési terv gyorsítótára méretének csökkentése|Az adatbázismotor gyorsítótárazza a memóriában a lekérdezési terveket, így elkerülhető a lekérdezés-végrehajtás minden lekérdezési tervének fordítása. Ha el szeretné kerülni, hogy a lekérdezési terv gyorsítótára a csak egyszer használt gyorsítótárazási csomagokat okozza, engedélyezze a OPTIMIZE_FOR_AD_HOC_WORKLOADS [adatbázis-hatókörű konfigurációt](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql).|

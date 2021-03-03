@@ -1,0 +1,31 @@
+- name: Az Azure Storage által ellenőrzött partneri megoldások
+  href: /azure/storage/solution-integration
+- name: Azure Storage Analytics és Big adatpartnerek
+  items:
+    - name: Az ellenőrzött partnerek áttekintése
+      href: .\validated-partners\analytics\partner-overview.md
+  expanded: false
+- name: 'Azure Storage-Archívum, biztonsági mentési és BCDR-partnerek'
+  items:
+    - name: Az ellenőrzött partnerek áttekintése
+      href: .\validated-partners\backup-archive-disaster-recovery\partner-overview.md
+    - name: CommVault rövid útmutató
+      href: .\validated-partners\backup-archive-disaster-recovery\commvault\commvault-solution-guide.md
+    - name: Veeam rövid útmutató
+      href: .\validated-partners\backup-archive-disaster-recovery\veeam\veeam-solution-guide.md
+  expanded: false
+- name: Azure Storage-tároló megoldási partnerei
+  items:
+    - name: Az ellenőrzött partnerek áttekintése
+      href: .\validated-partners\container-solutions\partner-overview.md
+  expanded: false
+- name: Az Azure Storage adatkezelési és-áttelepítési partnerei
+  items:
+    - name: Az ellenőrzött partnerek áttekintése
+      href: .\validated-partners\data-management\partner-overview.md
+  expanded: false
+- name: Azure Storage – elsődleges és másodlagos Storage-partnerek
+  items:
+    - name: Az ellenőrzött partnerek áttekintése
+      href: .\validated-partners\primary-secondary-storage\partner-overview.md
+  expanded: false

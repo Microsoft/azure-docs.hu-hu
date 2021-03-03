@@ -3,15 +3,15 @@ title: Automatizálási feladatok létrehozása Azure-erőforrások kezeléséhe
 description: Olyan automatizált feladatokat állíthat be, amelyek segítségével felügyelheti az Azure-erőforrásokat, és figyelheti a költségeket a Azure Logic Appson futó munkafolyamatok létrehozásával.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: deli, jonfan, logicappspm
+ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: 2b3b40b5958df52dabf92155a1de809578f1d374
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.date: 02/19/2021
+ms.openlocfilehash: 8180fe8554e5fff83e4caef8c245839518649ca1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201120"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719049"
 ---
 # <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a>Azure-erőforrások kezelése és a költségek figyelése automatizálási feladatok létrehozásával (előzetes verzió)
 
@@ -71,13 +71,15 @@ Ezzel szemben az Azure Automation egy felhőalapú automatizálási és konfigur
 
    ![Képernyőfelvétel: a Storage-fiók "feladatok" ablaktáblája, ahol az eszköztáron a "Hozzáadás" lehetőség van kiválasztva](./media/create-automation-tasks-azure-resources/add-automation-task.png)
 
-1. A **feladat hozzáadása** ablaktábla **sablon kiválasztása**területén válassza ki a létrehozni kívánt feladat sablonját, és válassza a **Tovább: hitelesítés**lehetőséget.
+1. A **feladat hozzáadása** ablaktábla **sablon kiválasztása** területén válassza ki a létrehozni kívánt feladat sablonját. Ha a következő lap nem jelenik meg, válassza a **következő: hitelesítés** lehetőséget.
 
    Ez a példa továbbra is fennáll, ha a **havi költség küldése erőforrás** -feladathoz sablont választja.
 
    ![Képernyőkép, amely a következő beállításokat jeleníti meg: "erőforrás havi költségének küldése" és "Next: Authentication"](./media/create-automation-tasks-azure-resources/select-task-template.png)
 
-1. A **hitelesítés**alatt a **kapcsolatok** szakaszban válassza a **Létrehozás** az egyes kapcsolatokhoz lehetőséget, hogy hitelesítő adatokat adjon meg az adott kapcsolathoz. Az egyes feladatokban található kapcsolatok típusai a feladat alapján változnak.
+1. A **hitelesítés** alatt a **kapcsolatok** szakaszban válassza a **Létrehozás** lehetőséget minden olyan kapcsolathoz, amely megjelenik a feladatban, így hitelesítő adatokat adhat meg az összes kapcsolathoz. Az egyes feladatokban található kapcsolatok típusai a feladat alapján változnak.
+
+   Ez a példa csak a feladat által igényelt kapcsolatok egyikét jeleníti meg.
 
    ![A Azure Resource Manager-kapcsolatok kiválasztott "Create" beállítását bemutató képernyőkép](./media/create-automation-tasks-azure-resources/create-authenticate-connections.png)
 
@@ -89,9 +91,9 @@ Ezzel szemben az Azure Automation egy felhőalapú automatizálási és konfigur
 
    ![A sikeresen létrehozott kapcsolatokat bemutató képernyőkép](./media/create-automation-tasks-azure-resources/create-connection-success.png)
 
-1. Az összes szükséges kapcsolat hitelesítése után válassza a **Tovább: konfigurálás**lehetőséget.
+1. Az összes kapcsolat hitelesítése után válassza a **Tovább: konfigurálás** lehetőséget, ha a következő lap nem jelenik meg.
 
-1. A **konfiguráció**területen adja meg a feladat nevét és a feladathoz szükséges egyéb információkat. Ha elkészült, válassza a **Létrehozás** lehetőséget.
+1. A **konfiguráció** területen adja meg a feladat nevét és a feladathoz szükséges egyéb információkat. Ha elkészült, válassza a **Létrehozás** lehetőséget.
 
    > [!NOTE]
    > A feladat neve nem módosítható a létrehozás után, ezért olyan nevet adjon meg, amely továbbra is érvényes, ha [szerkeszti az alapul szolgáló munkafolyamatot](#edit-task-workflow). Az alapul szolgáló munkafolyamaton végrehajtott módosítások csak a létrehozott feladatra vonatkoznak, nem a sablonra.
@@ -107,7 +109,7 @@ Ezzel szemben az Azure Automation egy felhőalapú automatizálási és konfigur
    ![Az Automation-feladatok listáját megjelenítő képernyőkép](./media/create-automation-tasks-azure-resources/automation-tasks-list.png)
 
    > [!TIP]
-   > Ha a feladat nem jelenik meg azonnal, próbálja meg frissíteni a feladatok listáját, vagy várjon egy kicsit a frissítés előtt. Az eszköztáron válassza a **frissítés**lehetőséget.
+   > Ha a feladat nem jelenik meg azonnal, próbálja meg frissíteni a feladatok listáját, vagy várjon egy kicsit a frissítés előtt. Az eszköztáron válassza a **frissítés** lehetőséget.
 
    A kiválasztott feladat futtatása után egy e-mailt kap, amely a következő példához hasonlít:
 
@@ -121,9 +123,9 @@ Az alábbi lépéseket követve megtekintheti a feladatok előzményeit, valamin
 
 1. A [Azure Portal](https://portal.azure.com)keresse meg azt az erőforrást, amelynek a feladatait át szeretné tekinteni.
 
-1. Az erőforrás menü **Beállítások**területén válassza az **automatizálási feladatok**elemet.
+1. Az erőforrás menü **Beállítások** területén válassza az **automatizálási feladatok** elemet.
 
-1. A feladatok listában keresse meg az áttekinteni kívánt feladatot. A feladat **futtatások** oszlopában válassza a **nézet**lehetőséget.
+1. A feladatok listában keresse meg az áttekinteni kívánt feladatot. A feladat **futtatások** oszlopában válassza a **nézet** lehetőséget.
 
    ![A feladatot és a kiválasztott "View" lehetőséget megjelenítő képernyőkép](./media/create-automation-tasks-azure-resources/view-runs-for-task.png)
 
@@ -182,9 +184,9 @@ A feladatok módosításához a következő lehetőségek közül választhat:
 
 1. A [Azure Portal](https://portal.azure.com)keresse meg a frissíteni kívánt feladatot tartalmazó erőforrást.
 
-1. Az erőforrás menü **automatizálás**területén válassza a **feladatok**elemet.
+1. Az erőforrás menü **automatizálás** területén válassza a **feladatok** elemet.
 
-1. A feladatok listában keresse meg a frissíteni kívánt feladatot. Nyissa meg a feladat ellipsziseit (**..**.), és válassza **a Szerkesztés a következőben: beágyazott**lehetőséget.
+1. A feladatok listában keresse meg a frissíteni kívánt feladatot. Nyissa meg a feladat ellipsziseit (**..**.), és válassza **a Szerkesztés a következőben: beágyazott** lehetőséget.
 
    ![Képernyőkép, amely megjeleníti a megnyitott ellipszisek menüt és a kijelölt lehetőséget, a "beágyazott szerkesztés" elemet.](./media/create-automation-tasks-azure-resources/view-task-inline.png)
 
@@ -194,7 +196,7 @@ A feladatok módosításához a következő lehetőségek közül választhat:
 
    ![A hitelesítés lapot, a meglévő kapcsolatokat és a kijelölt ellipszisek menüt megjelenítő képernyőkép](./media/create-automation-tasks-azure-resources/edit-connections.png)
 
-1. A többi feladat tulajdonságainak frissítéséhez válassza a **Tovább: konfigurálás**lehetőséget.
+1. A többi feladat tulajdonságainak frissítéséhez válassza a **Tovább: konfigurálás** lehetőséget.
 
    Az ebben a példában szereplő feladathoz a szerkesztéshez csak az e-mail-cím használható.
 
@@ -213,7 +215,7 @@ Amikor megváltoztatja egy automatizálási feladat hátterében lévő munkafol
 
 1. A [Azure Portal](https://portal.azure.com)keresse meg a frissíteni kívánt feladatot tartalmazó erőforrást.
 
-1. Az erőforrás menü **automatizálás**területén válassza a **feladatok**elemet.
+1. Az erőforrás menü **automatizálás** területén válassza a **feladatok** elemet.
 
 1. A feladatok listában keresse meg a frissíteni kívánt feladatot. Nyissa meg a feladat ellipsziseit (**..**.), majd válassza a **Megnyitás lehetőséget Logic apps**.
 
@@ -223,7 +225,7 @@ Amikor megváltoztatja egy automatizálási feladat hátterében lévő munkafol
 
    ![Képernyőfelvétel: a feladat megjelenítése Azure Logic Apps nézetben a kijelölt áttekintés ablaktáblán](./media/create-automation-tasks-azure-resources/task-logic-apps-view.png)
 
-1. Az alapul szolgáló munkafolyamat a Logic app Designerben való megnyitásához a logikai alkalmazás menüjében válassza a **Logic app Designer**elemet.
+1. Az alapul szolgáló munkafolyamat a Logic app Designerben való megnyitásához a logikai alkalmazás menüjében válassza a **Logic app Designer** elemet.
 
    ![Képernyőkép a "Logic app Designer" menüpont kiválasztásáról és tervezői felületéről az alapul szolgáló munkafolyamattal](./media/create-automation-tasks-azure-resources/view-task-workflow-logic-app-designer.png)
 
@@ -231,15 +233,15 @@ Amikor megváltoztatja egy automatizálási feladat hátterében lévő munkafol
 
 1. A munkafolyamat klónozásához és a másolt verzió szerkesztéséhez kövesse az alábbi lépéseket:
 
-   1. A logikai alkalmazás munkafolyamatának menüjében válassza az **Áttekintés**lehetőséget.
+   1. A logikai alkalmazás munkafolyamatának menüjében válassza az **Áttekintés** lehetőséget.
 
-   1. Az Áttekintés ablaktábla eszköztárán válassza a **klónozás**elemet.
+   1. Az Áttekintés ablaktábla eszköztárán válassza a **klónozás** elemet.
 
-   1. A logikai alkalmazás létrehozása ablaktáblán a **név**területen adjon meg egy új nevet a másolt logikai alkalmazás munkafolyamatának.
+   1. A logikai alkalmazás létrehozása ablaktáblán a **név** területen adjon meg egy új nevet a másolt logikai alkalmazás munkafolyamatának.
 
-      A **logikai alkalmazás állapotának**kivételével a többi tulajdonság nem érhető el szerkesztésre. 
+      A **logikai alkalmazás állapotának** kivételével a többi tulajdonság nem érhető el szerkesztésre. 
       
-   1. A **logikai alkalmazás állapota**területen válassza a **Letiltva** lehetőséget, hogy a klónozott munkafolyamat ne fusson, amíg a módosításokat végzi. Engedélyezheti a munkafolyamatot, amikor készen áll a módosítások tesztelésére.
+   1. A **logikai alkalmazás állapota** területen válassza a **Letiltva** lehetőséget, hogy a klónozott munkafolyamat ne fusson, amíg a módosításokat végzi. Engedélyezheti a munkafolyamatot, amikor készen áll a módosítások tesztelésére.
 
    1. Miután az Azure befejezte a klónozott munkafolyamat üzembe helyezését, keresse meg és nyissa meg ezt a munkafolyamatot a Logic app Designerben.
 
@@ -251,11 +253,11 @@ Amikor megváltoztatja egy automatizálási feladat hátterében lévő munkafol
 
    További információ az ismétlődési eseményindítóról: [ismétlődő feladatok és munkafolyamatok létrehozása, ütemezése és futtatása az ismétlődési eseményindítóval](../connectors/connectors-native-recurrence.md). További információ a használható egyéb eseményindítókkal és műveletekkel kapcsolatban: [összekötők Azure Logic Appshoz](../connectors/apis-list.md).
 
-1. A módosítások mentéséhez a tervező eszköztárán válassza a **Mentés**lehetőséget.
+1. A módosítások mentéséhez a tervező eszköztárán válassza a **Mentés** lehetőséget.
 
    ![A tervező eszköztárat és a kiválasztott "Mentés" parancsot megjelenítő képernyőkép](./media/create-automation-tasks-azure-resources/save-updated-workflow.png)
 
-1. A frissített munkafolyamat teszteléséhez és futtatásához a tervező eszköztárán válassza a **Futtatás**lehetőséget.
+1. A frissített munkafolyamat teszteléséhez és futtatásához a tervező eszköztárán válassza a **Futtatás** lehetőséget.
 
    A Futtatás befejezése után a tervező megjeleníti a munkafolyamat futtatásának részleteit.
 
@@ -265,7 +267,7 @@ Amikor megváltoztatja egy automatizálási feladat hátterében lévő munkafol
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 
-Szeretnék hallani! A hibák jelentéséhez, visszajelzések megadásához vagy az előzetes verzióval kapcsolatos kérdések feltevéséhez [forduljon a Azure Logic apps csapatához](mailto:logicapps@microsoft.com).
+Szeretnék hallani! A hibák jelentéséhez, visszajelzések megadásához vagy az előzetes verzióval kapcsolatos kérdések feltevéséhez [forduljon a Azure Logic apps csapatához](mailto:logicappspm@microsoft.com).
 
 ## <a name="next-steps"></a>Következő lépések
 

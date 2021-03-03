@@ -101,7 +101,7 @@
     - name: Referencia
       items:
         - name: Dokumentum fordítási API-referenciája
-          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/translator/translation'
+          href: /rest/api/cognitiveservices/translator/documenttranslation
 - name: Custom Translator
   items:
     - name: Áttekintés

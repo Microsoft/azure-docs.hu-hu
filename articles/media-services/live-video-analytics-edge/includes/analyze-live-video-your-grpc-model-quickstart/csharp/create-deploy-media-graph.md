@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: c99a9086171192e5d954fb5a9bfbe5d2d7ef4ea5
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 8a9149119bc754ff0715f2841925da01301faecd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99569600"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750536"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>A mintaadatok vizsgálata és szerkesztése
 
@@ -26,11 +26,11 @@ Az előfeltételek részeként letöltötte a mintakód egy mappába. A mintaada
 1. Szerkessze a *operations.js* fájlt:
  
     * Módosítsa a Graph-topológiára mutató hivatkozást:
-    * `"topologyUrl"` : `"https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/grpcExtension/2.0/topology.json"`
+    * `"topologyUrl"` : `"https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/motion-with-grpcExtension/2.0/topology.json"`
     * A GraphInstanceSet alatt szerkessze a gráf topológiájának nevét, hogy az megfeleljen az előző hivatkozásban szereplő értéknek:
-    * `"topologyName"` : `"InferencingWithGrpcExtension"`
+    * `"topologyName"` : `"EVROnMotionPlusGrpcExtension"`
     * A GraphTopologyDelete alatt szerkessze a nevet:
-    * `"name"` : `"InferencingWithGrpcExtension"`
+    * `"name"` : `"EVROnMotionPlusGrpcExtension"`
 
 > [!NOTE]
 > <p>
@@ -51,7 +51,7 @@ Az előfeltételek részeként letöltötte a mintakód egy mappába. A mintaada
 >   },
 >   "dataTransfer": {
 >       "mode": "sharedMemory",
->       "SharedMemorySizeMiB": "5"
+>       "SharedMemorySizeMiB": "256"
 >   },
 >   "image": {
 >       "scale": {
@@ -107,10 +107,10 @@ Az előfeltételek részeként letöltötte a mintakód egy mappába. A mintaada
         > A fenti lépések feltételezik, hogy a telepítési parancsfájl által létrehozott virtuális gépet használja. Ha ehelyett saját Edge-eszközt használ, lépjen a peremhálózati eszközre, és futtassa az alábbi parancsokat **rendszergazdai jogosultságokkal** a rövid útmutatóhoz használt minta videofájl lekéréséhez és tárolásához:  
 
         ```
-        mkdir /home/lvaadmin/samples
-        mkdir /home/lvaadmin/samples/input    
-        curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaadmin/samples/input/camera-300s.mkv  
-        chown -R lvaadmin /home/lvaadmin/samples/  
+        mkdir /home/lvaedgeuser/samples
+        mkdir /home/lvaedgeuser/samples/input    
+        curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaedgeuser/samples/input/camera-300s.mkv  
+        chown -R lvalvaedgeuser:localusergroup /home/lvaedgeuser/samples/  
         ```
     * A **lvaExtension** modul, amely a YOLOv3 objektum-észlelési modell, amely kommunikációs módszerként használja a gRPC-et, és a számítógépeket a lemezképekre alkalmazza, és az Objektumtípusok több osztályát adja vissza.
     
@@ -167,7 +167,7 @@ Az előfeltételek részeként letöltötte a mintakód egy mappába. A mintaada
       "@apiVersion": "2.0",
       "name": "Sample-Graph-1",
       "properties": {
-        "topologyName": "InferencingWithGrpcExtension",
+        "topologyName": "EVROnMotionPlusGrpcExtension",
         "description": "Sample graph description",
         "parameters": [
           {

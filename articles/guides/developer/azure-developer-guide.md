@@ -6,12 +6,12 @@ ms.service: azure
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 1caab392af1dab4f2e706d7372b0a1d9b5e62db6
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 12b90bf709cb20bed844940570663a76052a540d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101091210"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738939"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure fejlesztői útmutató az első lépésekhez
 
@@ -63,7 +63,7 @@ A meglévő alkalmazásokat áttelepítheti App Servicera az [Online áttelepít
 
 A IaaS-szolgáltatóként az Azure lehetővé teszi az alkalmazás üzembe helyezését vagy áttelepítését Windows vagy Linux rendszerű virtuális gépekre. Az Azure Virtual Network együtt az Azure Virtual Machines támogatja a Windows vagy Linux rendszerű virtuális gépek Azure-ba való telepítését. A virtuális gépekkel teljes mértékben vezérelheti a gép konfigurációját. Virtuális gépek használatakor az összes kiszolgáló szoftver telepítésére, konfigurálására, karbantartására és az operációs rendszerre vonatkozó javítások felelősek.
 
-A virtuális gépekhez tartozó szabályozás szintje miatt a kiszolgálói munkaterhelések széles körét futtathatja az Azure-ban, amelyek nem illeszkednek a Pásti-modellbe. Ezek a számítási feladatok közé tartoznak az adatbázis-kiszolgálók, a Windows Server Active Directory és a Microsoft SharePoint. További információkért tekintse meg a [Linux](../../virtual-machines/linux/index.yml) vagy a [Windows rendszerhez](../../virtual-machines/windows/index.yml)készült Virtual Machines dokumentációját.
+A virtuális gépekhez tartozó szabályozás szintje miatt a kiszolgálói munkaterhelések széles körét futtathatja az Azure-ban, amelyek nem illeszkednek a Pásti-modellbe. Ezek a számítási feladatok közé tartoznak az adatbázis-kiszolgálók, a Windows Server Active Directory és a Microsoft SharePoint. További információkért tekintse meg a [Linux](../../virtual-machines/index.yml) vagy a [Windows rendszerhez](../../virtual-machines/index.yml)készült Virtual Machines dokumentációját.
 
 > **Használat esetén**: Virtual Machines használata, ha az alkalmazás-infrastruktúra teljes körű vezérlését szeretné végezni, vagy a helyszíni alkalmazások számítási feladatait az Azure-ba kívánja áttelepíteni anélkül, hogy módosítani kellene.
 >

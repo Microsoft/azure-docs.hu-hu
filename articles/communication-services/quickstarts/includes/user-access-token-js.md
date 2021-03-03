@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 3de4b3869b5df0da4c71eade1fe4f684653dc265
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 381cba23175086a4d9bac7cc0ba71807bc248056
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657087"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750138"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -93,24 +93,6 @@ const connectionString = process.env['COMMUNICATION_SERVICES_CONNECTION_STRING']
 const identityClient = new CommunicationIdentityClient(connectionString);
 ```
 
-Azt is megteheti, hogy elkülöníti a végpontot és a hozzáférési kulcsot.
-```javascript
-// This code demonstrates how to fetch your endpoint and access key
-// from an environment variable.
-const endpoint = process.env["COMMUNICATION_SERVICES_ENDPOINT"];
-const accessKey = process.env["COMMUNICATION_SERVICES_ACCESSKEY"];
-const tokenCredential = new AzureKeyCredential(accessKey);
-// Instantiate the identity client
-const identityClient = new CommunicationIdentityClient(endpoint, tokenCredential)
-```
-
-Felügyelt identitás beállítása esetén lásd: [felügyelt](../managed-identity.md)identitások használata, felügyelt identitással is hitelesíthető.
-```javascript
-const endpoint = process.env["COMMUNICATION_SERVICES_ENDPOINT"];
-const tokenCredential = new DefaultAzureCredential();
-var client = new CommunicationIdentityClient(endpoint, tokenCredential);
-```
-
 ## <a name="create-an-identity"></a>Identitás létrehozása
 
 Az Azure kommunikációs szolgáltatások egy egyszerűsített identitási könyvtárat tartanak fenn. A `createUser` metódus használatával hozzon létre egy új bejegyzést a címtárban egyedi értékkel `Id` . Tárolja a kapott identitást az alkalmazás felhasználóinak való leképezéssel. Például úgy, hogy az alkalmazás-kiszolgáló adatbázisában tárolja őket. Az identitást később kell megadni a hozzáférési tokenek kiküldéséhez.
@@ -122,11 +104,11 @@ console.log(`\nCreated an identity with ID: ${identityResponse.communicationUser
 
 ## <a name="issue-access-tokens"></a>Hozzáférési tokenek kiadása
 
-A `getToken` metódus használatával kiállíthat egy hozzáférési jogkivonatot egy már meglévő kommunikációs szolgáltatás identitásához. A paraméter olyan `scopes` primitívek készletét határozza meg, amelyek engedélyezik ezt a hozzáférési jogkivonatot. Tekintse meg a [támogatott műveletek listáját](../../concepts/authentication.md). A paraméter új példánya az `communicationUser` Azure kommunikációs szolgáltatás identitásának karakterlánc-ábrázolása alapján hozható létre.
+A `issueToken` metódus használatával kiállíthat egy hozzáférési jogkivonatot egy már meglévő kommunikációs szolgáltatás identitásához. A paraméter olyan `scopes` primitívek készletét határozza meg, amelyek engedélyezik ezt a hozzáférési jogkivonatot. Tekintse meg a [támogatott műveletek listáját](../../concepts/authentication.md). A paraméter új példánya az `communicationUser` Azure kommunikációs szolgáltatás identitásának karakterlánc-ábrázolása alapján hozható létre.
 
 ```javascript
 // Issue an access token with the "voip" scope for an identity
-let tokenResponse = await identityClient.getToken(identityResponse, ["voip"]);
+let tokenResponse = await identityClient.issueToken(identityResponse, ["voip"]);
 const { token, expiresOn } = tokenResponse;
 console.log(`\nIssued an access token with 'voip' scope that expires at ${expiresOn}:`);
 console.log(token);
@@ -134,10 +116,22 @@ console.log(token);
 
 A hozzáférési jogkivonatok olyan rövid élettartamú hitelesítő adatok, amelyeket újra kell adni. Ha ezt nem teszi meg, az alkalmazás felhasználói élményének megszakadását okozhatja. A `expiresOn` Response tulajdonság a hozzáférési jogkivonat élettartamát jelzi.
 
+## <a name="create-an-identity-and-issue-an-access-token-within-the-same-request"></a>Identitás létrehozása és hozzáférési jogkivonat kiadása ugyanazon a kérésen belül
+
+A `createUserWithToken` metódus használatával hozzon létre egy kommunikációs szolgáltatások identitását, és adja meg a hozzá tartozó hozzáférési jogkivonatot. A paraméter olyan `scopes` primitívek készletét határozza meg, amelyek engedélyezik ezt a hozzáférési jogkivonatot. Tekintse meg a [támogatott műveletek listáját](../../concepts/authentication.md).
+
+```javascript
+// Issue an identity and an access token with the "voip" scope for the new identity
+let identityTokenResponse = await this.client.createUserWithToken(["voip"]);
+const { token, expiresOn, user } = identityTokenResponse;
+console.log(`\nCreated an identity with ID: ${user.communicationUserId}`);
+console.log(`\nIssued an access token with 'voip' scope that expires at ${expiresOn}:`);
+console.log(token);
+```
 
 ## <a name="refresh-access-tokens"></a>Hozzáférési jogkivonatok frissítése
 
-A hozzáférési tokenek frissítése olyan egyszerű, mintha `getToken` ugyanazzal az identitással telefonáljon, mint a tokenek kibocsátásához. Emellett meg kell adnia a `scopes` frissített tokeneket is.
+A hozzáférési tokenek frissítése olyan egyszerű, mintha `issueToken` ugyanazzal az identitással telefonáljon, mint a tokenek kibocsátásához. Emellett meg kell adnia a `scopes` frissített tokeneket is. 
 
 ```javascript
 // // Value of identityResponse represents the Azure Communication Services identity stored during identity creation and then used to issue the tokens being refreshed
@@ -149,7 +143,7 @@ let refreshedTokenResponse = await identityClient.issueToken(identityResponse, [
 
 Bizonyos esetekben explicit módon visszavonhatja a hozzáférési jogkivonatokat. Például amikor egy alkalmazás felhasználója megváltoztatja a szolgáltatásban való hitelesítéshez használt jelszót. `revokeTokens`A metódus érvénytelenít minden aktív hozzáférési jogkivonatot, amely az identitás számára lett kiállítva.
 
-```javascript
+```javascript  
 await identityClient.revokeTokens(identityResponse);
 console.log(`\nSuccessfully revoked all access tokens for identity with ID: ${identityResponse.communicationUserId}`);
 ```

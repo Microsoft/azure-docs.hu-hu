@@ -6,12 +6,12 @@ author: MSNev
 ms.author: newylie
 ms.date: 06/05/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 30c7caef4143b1a7cdba959971ff7689f986cb9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6295a56abbf3466c68b968c935936dbc10e22fb5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333256"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711416"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>Az SDK betöltési hibáinak elhárítása JavaScript-webalkalmazásokhoz
 
@@ -68,7 +68,7 @@ Az időszakos hálózati csatlakozási hibák csökkentése érdekében minden C
  
 ## <a name="application-insights-cdn-outage"></a>Application Insights CDN-kimaradás
 
-Megerősítheti, hogy van-e Application Insights CDN-kimaradás, ha közvetlenül a böngészőből próbál hozzáférni a CDN-végponthoz (például https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js) egy másik helyről, mint a végfelhasználók valószínűleg a saját fejlesztői gépről) (feltéve, hogy a szervezet nem blokkolja ezt a tartományt).
+Megerősítheti, hogy van-e Application Insights CDN-kimaradás, ha közvetlenül a böngészőből próbál hozzáférni a CDN-végponthoz (például https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js vagy https://js.monitor.azure.com/scripts/b/ai.2.min.js) egy másik helyről, mint a végfelhasználók valószínűleg a saját fejlesztői gépről) (feltéve, hogy a szervezet nem blokkolja ezt a tartományt).
 
 Ha megerősíti, hogy van leállás, [hozzon létre egy új támogatási jegyet](https://azure.microsoft.com/support/create-ticket/) , vagy próbálja meg módosítani az SDK letöltéséhez használt URL-címet.
 
@@ -106,7 +106,7 @@ Ha a rendszer kivételeket jelez az SDK-szkriptben (például ai.2.min.js), akko
 
 A hibás konfiguráció ellenőrzéséhez módosítsa a kódrészletbe átadott konfigurációt (ha még nincs), hogy csak karakterlánc-értékként tartalmazza a kialakítási kulcsot.
 
-> src: " https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js ",<br />
+> src: " https://js.monitor.azure.com/scripts/b/ai.2.min.js ",<br />
 > cfg: {<br />
 > instrumentationKey: "INSTRUMENTATION_KEY"<br />
 > }});<br />
@@ -134,7 +134,7 @@ Ha továbbra sem sikerül az inicializálás, próbálja meg engedélyezni a ```
 > [!WARNING]
 > Ez csak fejlesztő beállítás, és nem szabad engedélyezni a teljes éles környezetben, mivel elveszti a telemetria.
 
-> src: " https://az416426.vo.msecnd.net/scripts/b/ai.2.js ",<br />
+> src: " https://js.monitor.azure.com/scripts/b/ai.2.min.js ",<br />
 > cfg: {<br />
 > instrumentationKey: "INSTRUMENTATION_KEY",<br />
 > enableDebug: true<br />

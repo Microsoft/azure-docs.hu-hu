@@ -3,12 +3,12 @@ title: Állásidő, SLA és kimaradási munkafüzet – Application Insights
 description: Kiszámíthatja és bejelentheti az SLA-t a webes tesztek számára egyetlen üvegtábla használatával a Application Insights-erőforrások és az Azure-előfizetések között.
 ms.topic: conceptual
 ms.date: 02/8/2021
-ms.openlocfilehash: 884d65d10ab0360957360efa8bf9dc4cac59949b
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: d225627a27bffd9088956e5aee37ca543e528d4a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989328"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714051"
 ---
 # <a name="downtime-sla-and-outages-workbook"></a>Állásidő, SLA és kimaradási munkafüzet
 
@@ -51,13 +51,13 @@ Az kimaradások **és a leállás** lapon a teszt által lebontott összes leál
 
 ## <a name="edit-the-report"></a>A jelentés szerkesztése
 
-A jelentést szerkesztheti úgy, mint bármely más [Azure monitor munkafüzetet](../platform/workbooks-overview.md). A csoportok igényei alapján testreszabhatja a lekérdezéseket és a vizualizációkat.
+A jelentést szerkesztheti úgy, mint bármely más [Azure monitor munkafüzetet](../visualize/workbooks-overview.md). A csoportok igényei alapján testreszabhatja a lekérdezéseket és a vizualizációkat.
 
 :::image type="content" source="./media/sla-report/edit.gif" alt-text=" A Szerkesztés gombra kattintva megváltoztathatja a vizualizációt egy tortadiagramon." lightbox="./media/sla-report/edit.gif":::
 
 ### <a name="log-analytics"></a>Log Analytics
 
-A lekérdezések [log Analytics](../log-query/log-analytics-overview.md) futnak, és más jelentésekben vagy irányítópultokon is használhatók. Távolítsa el a paraméter korlátozását, és használja újra az alapvető lekérdezést.
+A lekérdezések [log Analytics](../logs/log-analytics-overview.md) futnak, és más jelentésekben vagy irányítópultokon is használhatók. Távolítsa el a paraméter korlátozását, és használja újra az alapvető lekérdezést.
 
 :::image type="content" source="./media/sla-report/logs.gif" alt-text=" A napló lekérdezésének GIF-je." lightbox="./media/sla-report/logs.gif":::
 
@@ -69,6 +69,6 @@ A jelentés megosztható a csapatokkal, a vezetőséggel, vagy az irányítópul
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Log Analytics lekérdezés-optimalizálási tippek](../log-query/query-optimization.md).
-- Megtudhatja, hogyan [hozhat létre diagramot a munkafüzetekben](../platform/workbooks-chart-visualizations.md).
+- [Log Analytics lekérdezés-optimalizálási tippek](../logs/query-optimization.md).
+- Megtudhatja, hogyan [hozhat létre diagramot a munkafüzetekben](../visualize/workbooks-chart-visualizations.md).
 - Ismerje meg, hogyan figyelheti meg webhelyét a [rendelkezésre állási tesztekkel](monitor-web-app-availability.md).

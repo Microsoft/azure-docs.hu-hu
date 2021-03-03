@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6e926211a0d86fef55608ede574dca53487f267c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c9813108c05cabbd071a9d919452682bd6ad69e7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732727"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731952"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> A Application Insights Snapshot Debugger engedélyezésével vagy a pillanatképek megtekintésével kapcsolatos problémák elhárítása
 Ha engedélyezte Application Insights Snapshot Debugger az alkalmazáshoz, de nem tekinti meg a kivételekhez tartozó pillanatképeket, a következő utasításokat követve elháríthatja a hibát.
@@ -35,9 +35,10 @@ Ha ez nem oldja meg a problémát, tekintse meg a következő kézi hibaelhárí
 
 Győződjön meg arról, hogy a megfelelő kialakítási kulcsot használja a közzétett alkalmazásban. A rendszerállapot-kulcsot általában a ApplicationInsights.config fájlból olvassa be a rendszer. Ellenőrizze, hogy az érték megegyezik-e a portálon megjelenő Application Insights erőforrás rendszerállapot-kulcsával.
 
-## <a name="check-ssl-client-settings-aspnet"></a><a id="SSL"></a>SSL-ügyfélbeállítások (ASP.NET) keresése
+## <a name="check-tlsssl-client-settings-aspnet"></a><a id="SSL"></a>TLS/SSL-ügyfélbeállítások keresése (ASP.NET)
 
-Ha Azure App Service vagy az IIS szolgáltatásban egy virtuális gépen üzemeltetett ASP.NET-alkalmazás található, akkor az alkalmazás a hiányzó SSL biztonsági protokoll miatt nem tud csatlakozni a Snapshot Debugger szolgáltatáshoz.
+Ha olyan ASP.NET-alkalmazással rendelkezik, amelyet Azure App Service vagy az IIS-ben üzemeltet a virtuális gépen, az alkalmazás nem tud csatlakozni a Snapshot Debugger szolgáltatáshoz, mert hiányzik az SSL biztonsági protokoll.
+
 [A Snapshot Debugger végponthoz a TLS 1,2-es verziója szükséges](snapshot-debugger-upgrade.md?toc=/azure/azure-monitor/toc.json). Az SSL biztonsági protokollok készlete a httpRuntime targetFramework értékének egyike, amely a System. Web szakaszban található, web.config. Ha a httpRuntime targetFramework: 4.5.2 vagy alacsonyabb, akkor a TLS 1,2 alapértelmezés szerint nem szerepel.
 
 > [!NOTE]
@@ -64,6 +65,10 @@ Ha a .NET Core előzetes verzióját használja, vagy az alkalmazása Applicatio
 
 ## <a name="check-the-diagnostic-services-site-extension-status-page"></a>A diagnosztikai szolgáltatások helyének bővítményének állapota lap
 Ha a Snapshot Debugger a portál [Application Insights paneljén](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) engedélyezte, azt a diagnosztikai szolgáltatások helyének bővítménye engedélyezte.
+
+> [!NOTE]
+> Application Insights Snapshot Debugger kód nélküli telepítése a .NET Core támogatási szabályzatot követi.
+> További információ a támogatott futtatókörnyezetekről: [.net Core támogatási szabályzat](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
 
 A bővítmény állapot lapját a következő URL-címen tekintheti meg: `https://{site-name}.scm.azurewebsites.net/DiagnosticServices`
 

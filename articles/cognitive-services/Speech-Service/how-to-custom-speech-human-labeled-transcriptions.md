@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: erhopf
-ms.openlocfilehash: db3d8f4424f59d8432221753af776a5b55859882
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: af6ced49071b7fbae983508e68964aa064ef38e1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388855"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700031"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Emberi címkével ellátott átiratok létrehozása
 
 Ha szeretné javítani az elismerés pontosságát, különösen azokat a problémákat, amelyek a szavak törlésekor vagy helytelen helyettesítése miatt következnek, az emberi címkével ellátott átírásokat érdemes használni a hangadatokkal együtt. Mik az emberi feliratú átiratok? Ez egyszerűen, egy hangfájl szó szerinti Word-átirata.
 
-Az elismerés javításához nagy minta szükséges az átírási adatgyűjtéshez, javasoljuk, hogy 10 és 20 órányi átírást adjon meg. Ezen az oldalon áttekintjük a kiváló minőségű átírások létrehozásához kialakított irányelveket. Ez az útmutató területi beállítással van elválasztva, és az angol, a mandarin kínai és a német nyelvű szakaszt is tartalmazza.
+Az elismerés javításához nagy minta szükséges az átírási adatgyűjtéshez, javasoljuk, hogy a rendszer 1 – 20 órányi átírási időt biztosítson. A beszédfelismerési szolgáltatás akár 20 órányi hang betanítását fogja használni. Ezen az oldalon áttekintjük a kiváló minőségű átírások létrehozásához kialakított irányelveket. Ez az útmutató területi beállítással van elválasztva, és az angol, a mandarin kínai és a német nyelvű szakaszt is tartalmazza.
 
 > [!NOTE]
 > Nem minden alapmodell támogatja a hangfájlok testreszabását. Ha egy alapmodell nem támogatja azt, akkor a képzés a kapcsolódó szöveggel megegyező módon fogja használni a beírások szövegét. A hangadatokkal való képzést támogató alapmodellek listáját a [nyelvi támogatásban](language-support.md#speech-to-text) találhatja meg.

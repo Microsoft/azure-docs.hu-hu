@@ -4,14 +4,14 @@ description: Váltson az alapértelmezett értesítési címzettekre az intellig
 ms.topic: conceptual
 author: harelbr
 ms.author: harelbr
-ms.date: 03/13/2019
+ms.date: 02/14/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0bf3a95814aadf687efcc27294b760e14f7d45d8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fa14f0dd40a30a4750d9bb102d8e67608f958135
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585631"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734502"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>Az e-mail értesítések intelligens észlelésének változása
 
@@ -27,7 +27,7 @@ Ez a módosítás az összes intelligens észlelési szabályra hatással lesz, 
 
 * Az intelligens észlelési szabályok előzetesként vannak megjelölve. Ezek az intelligens észlelési szabályok jelenleg nem támogatják az e-mail-értesítéseket.
 
-* Hiba anomália szabály. Ez a szabály elindítja az új alapértelmezett szerepkörök célzását, miután áttelepítette azt egy klasszikus riasztásból az egyesített riasztások platformra (További információ [itt](../alerts/monitoring-classic-retirement.md)található.)
+* Hiba anomália szabály.
 
 ## <a name="how-to-prepare-for-this-change"></a>Felkészülés ehhez a változáshoz
 

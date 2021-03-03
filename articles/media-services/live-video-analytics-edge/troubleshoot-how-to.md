@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: ee5ae7ca8b52d44f21c35df23ef92f61d38fc3c3
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: d766843f58bc2cdd0dcdddfad337b23fefb28768
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051295"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698739"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Élő videó-elemzések hibáinak megoldása IoT Edge
 
@@ -105,7 +105,7 @@ Az **[élő videó elemzési erőforrásainak telepítési parancsfájljának](h
 * **A sablon központi telepítése a szabályzat megsértése miatt nem sikerült.**
     * A probléma megoldásához működjön együtt a rendszergazdával, és győződjön meg arról, hogy a hívás (ok) hoz létre virtuális gépet az SSH-hitelesítés blokkolásának mellőzéséhez. Erre nem lesz szükség, mert olyan biztonságos megerősített hálózatot használunk, amely felhasználónevet és jelszót igényel az Azure-erőforrásokkal való kommunikációhoz. Ezeket a hitelesítő adatokat a rendszer a **~/clouddrive/lva-sample/vm-edge-device-credentials.txt** fájlban tárolja Cloud Shell a virtuális gép sikeres létrehozása, üzembe helyezése és a IoT hubhoz való csatolása után.
 * A telepítési parancsfájl nem tud létrehozni egyszerű szolgáltatásnevet és/vagy Azure-erőforrásokat.
-    * A probléma megkezdéséhez ellenőrizze, hogy az előfizetés és az Azure-bérlő nem érte el a maximális szolgáltatási korlátot. További információ az [Azure ad szolgáltatás korlátairól és korlátozásáról](https://docs.microsoft.com/azure/active-directory/enterprise-users/directory-service-limits-restrictions) , valamint az [Azure-előfizetések és-szolgáltatások korlátairól, kvótáinak és megkötéséről.](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)
+    * A probléma megkezdéséhez ellenőrizze, hogy az előfizetés és az Azure-bérlő nem érte el a maximális szolgáltatási korlátot. További információ az [Azure ad szolgáltatás korlátairól és korlátozásáról](../../active-directory/enterprise-users/directory-service-limits-restrictions.md) , valamint az [Azure-előfizetések és-szolgáltatások korlátairól, kvótáinak és megkötéséről.](../../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 > [!TIP]
 > Ha további problémák merülhetnek fel, amelyekhez segítségre lehet szüksége, **[Gyűjtse össze a naplókat, és nyújtson be egy támogatási jegyet](#collect-logs-for-submitting-a-support-ticket)**. A következő címen küldhet nekünk egy e-mailt a címen: **[amshelp@microsoft.com](mailto:amshelp@microsoft.com)** .

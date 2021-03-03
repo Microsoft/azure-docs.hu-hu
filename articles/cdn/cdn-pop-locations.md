@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2020
 ms.author: allensu
-ms.openlocfilehash: 46fd9285f550b1a730b9040c46bacd7e34650b1e
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 7db905af85a6f4c157ee6d019e8e3a3feeeb4b4a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511671"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722619"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Lefedettség Azure CDN Metro szerint 
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ Ez a cikk felsorolja az Azure Content Delivery Network-(CDN-) termékek földraj
 > Mivel az egyes Azure CDN termékek különböző módon használják a CDN-infrastruktúrákat, a Microsoft javasolja, hogy a POP-helyszínek használatával döntse el, hogy melyik Azure CDN terméket kívánja használni. Ehelyett vegye figyelembe a funkcióit és a végfelhasználói teljesítményt. Tesztelje a teljesítményt minden Azure CDN termékkel, hogy kiválassza a megfelelő terméket a felhasználók számára. 
 > 
 
-| Régió | Microsoft | Verizon | Akamai |
+| Region | Microsoft | Verizon | Akamai |
 | --- | --- | --- | --- |
 | Észak-Amerika | Toronto, Kanada<br />Vancouver, Kanada<br />Montreal, Kanada<br />Querétaro, Mexikó<br />San Juan, Puerto Rico<br />Ashburn, VA, USA<br />Atlanta, GA, USA<br />Raleigh, NC, USA<br />Boston, MA, USA<br />Cheyenne, WY, USA<br />Minneapolis, MN, USA<br />Chicago, IL, USA<br /> Dallas, TX, USA<br />Denver, CO, USA<br />Honolulu, HI, USA<br />Houston, TX, USA<br />Las Vegas, NV, USA<br />Los Angeles, CA, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Newark, NJ, USA<br />Phoenix, AZ, USA<br />Portland, OR, USA<br />San Antonio, TX, USA<br />San Jose, CA, USA<br />Seattle, WA, USA | Guadalajara, Mexikó<br />Mexikóváros, Mexikó<br />Puebla, Mexikó<br />Querétaro, Mexikó<br />Atlanta, GA, USA<br />Boston, MA, USA<br />Chicago, IL, USA<br />Dallas, TX, USA<br />Denver, CO, USA<br />Detroit, MI, USA<br />Los Angeles, CA, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Philadelphia, PA, USA<br />San Jose, CA, USA<br />Seattle, WA, USA<br />Washington, DC, USA <br /> Ashburn, VA, USA <br /> Phoenix, AZ, USA | Kanada<br />Mexikó<br />USA |
 | Dél-Amerika | Campinas, Brazília<br />Rio de Janeiro, Brazília<br />Sao Paulo, Brazília<br />Santiago, Chile<br />Bogota, Kolumbia<br />Buenos Aires, Argentína | Buenos Aires, Argentína<br />Rio de Janeiro, Brazília<br />São Paulo, Brazília<br />Valparaíso, Chile<br />Bogota, Kolumbia<br />Barranquilla, Kolumbia<br />Medellin, Kolumbia<br />Quito, Ecuador<br />Lima, Peru | Argentína<br />Brazília<br />Chile<br />Kolumbia<br />Ecuador<br />Peru<br />Uruguay |
@@ -48,5 +48,5 @@ Ez a cikk felsorolja az Azure Content Delivery Network-(CDN-) termékek földraj
 | Ausztrália és Új-Zéland | Brisbane, Ausztrália<br />Melbourne, Ausztrália<br />Perth, Ausztrália<br />Sydney, Ausztrália<br />Auckland, Új-Zéland | Melbourne, Ausztrália<br />Sydney, Ausztrália<br />Auckland, Új-Zéland | Ausztrália<br />Új-Zéland |
 
 
-## <a name="next-steps"></a>További lépések
-* A allowlisting legújabb IP-címeinek lekéréséhez tekintse meg az [Azure CDN Edge API](/rest/api/cdn/edgenodes)-t.
+## <a name="next-steps"></a>Következő lépések
+* A allowlisting legújabb IP-címeinek lekéréséhez tekintse meg az [Azure CDN Edge API](https://github.com/Azure/azure-docs-rest-apis/blob/master/docs-ref-autogen/cdn/cdn/EdgeNodes/)-t.

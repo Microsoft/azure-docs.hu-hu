@@ -7,14 +7,14 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 3/18/2020
-ms.openlocfilehash: 51c194ca9b091bc685f293320750da55925ad49d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 20b54afdfbb5641def921ffc17b3c38f6650acab
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91565615"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736219"
 ---
-# <a name="what-is-azure-database-for-mysql"></a>Mi az Azure Database for MySQL?
+# <a name="what-is-azure-database-for-mysql"></a>Mi az az Azure Database for MySQL?
 
 A Azure Database for MySQL a Microsoft Cloud-on alapuló, a [MySQL Community Edition](https://www.mysql.com/products/community/) (a GPLv2 licenc alatt elérhető) adatbázismotor, a 5,6, a 5,7 és a 8,0 verziók alapján készült, a Microsoft felhőben található, Az Azure Database for MySQL a következőket nyújtja:
 
@@ -50,7 +50,7 @@ Az egykiszolgálós telepítési mód részletes áttekintéséhez tekintse meg 
 
 ### <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL – rugalmas kiszolgáló (előzetes verzió)
 
-Azure Database for MySQL rugalmas kiszolgáló egy teljes körűen felügyelt adatbázis-szolgáltatás, amely részletesebb szabályozást és rugalmasságot biztosít az adatbázis-felügyeleti funkciók és a konfigurációs beállítások felett. Általánosságban a szolgáltatás a felhasználói követelmények alapján nagyobb rugalmasságot és testreszabást biztosít. A rugalmas kiszolgáló architektúrája lehetővé teszi a felhasználók számára, hogy az egyetlen rendelkezésre állási zónában és több rendelkezésre állási zónában is magas rendelkezésre állást engedélyezzenek A rugalmas kiszolgálók jobb költség-optimalizálási vezérlőket biztosítanak a kiszolgáló és a feltört számítási szint leállítására/indítására, ideális olyan munkaterhelésekhez, amelyek folyamatosan teljes számítási kapacitást igényelnek. A szolgáltatás jelenleg támogatja a MySQL 5,7 közösségi verzióját, és hamarosan újabb verziókat ad hozzá. A szolgáltatás jelenleg nyilvános előzetes verzióban érhető el, ma már számos [Azure-régióban](https://azure.microsoft.com/global-infrastructure/services/)elérhető.
+Azure Database for MySQL rugalmas kiszolgáló egy teljes körűen felügyelt adatbázis-szolgáltatás, amely részletesebb szabályozást és rugalmasságot biztosít az adatbázis-felügyeleti funkciók és a konfigurációs beállítások felett. Általánosságban a szolgáltatás a felhasználói követelmények alapján nagyobb rugalmasságot és testreszabást biztosít. A rugalmas kiszolgáló architektúrája lehetővé teszi a felhasználók számára, hogy az egyetlen rendelkezésre állási zónában és több rendelkezésre állási zónában is magas rendelkezésre állást engedélyezzenek A rugalmas kiszolgálók jobb költség-optimalizálási vezérlőket biztosítanak a kiszolgáló és a feltört számítási szint leállítására/indítására, ideális olyan munkaterhelésekhez, amelyek folyamatosan teljes számítási kapacitást igényelnek. A szolgáltatás a MySQL 5,7 és a 8,0 közösségi verzióját támogatja. A szolgáltatás jelenleg nyilvános előzetes verzióban érhető el, ma már számos [Azure-régióban](https://azure.microsoft.com/global-infrastructure/services/)elérhető.
 
 A rugalmas kiszolgálók a legmegfelelőbbek a következőhöz: 
 - Hatékonyabb vezérlést és testreszabást igénylő alkalmazások fejlesztése.
@@ -68,7 +68,7 @@ Ezenkívül a következő elérhetőségeken léphet velünk kapcsolatba:
 - Ha a fiókjával van probléma, nyújtson be [támogatási kérelmet](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) az Azure Portalon.
 - Ha visszajelzést szeretne küldeni vagy új szolgáltatásokat kérne, hozzon létre egy bejegyzést a [UserVoice-on](https://feedback.azure.com/forums/597982-azure-database-for-mysql).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Database for MySQL két üzembe helyezési módjáról, és az igényeinek megfelelő lehetőségek közül választhat.
 

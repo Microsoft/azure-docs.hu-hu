@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: cc44c7121cfc03b78ff820f6c50a88f646d599e0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b5dd06c148c53517214b47b39f083c99d0f37e0b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578995"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712198"
 ---
 # <a name="connect-your-non-azure-machines-to-security-center"></a>Nem Azure-beli gépek összekapcsolásának Security Center
 
@@ -40,7 +40,7 @@ További információ az [Azure arc használatára képes kiszolgálókról](../
 
 **Az Azure arc üzembe helyezése:**
 
-- Egy gépen kövesse a gyors útmutató [: hibrid gép összekapcsolása Azure arc-kompatibilis kiszolgálókkal](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)című témakör utasításait.
+- Egy gépen kövesse a gyors útmutató [: hibrid gépek összekapcsolása Azure arc-kompatibilis kiszolgálókkal](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)című témakör utasításait.
 - Ha több gépet szeretne összekapcsolni az ív használatára képes kiszolgálókon, lásd: [hibrid gépek összekapcsolása az Azure-ba a Scale](../azure-arc/servers/onboard-service-principal.md) -ben
 
 > [!TIP]

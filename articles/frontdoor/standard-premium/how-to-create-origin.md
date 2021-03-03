@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: qixwang
-ms.openlocfilehash: 47134712bb953d9194bd943e228bae681877dcaa
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: ebc71ea2d354caf0c8f31b1231ecc1487237dd29
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101098876"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741888"
 ---
 # <a name="set-up-an-azure-front-door-standardpremium-preview-origin"></a>Azure bejárati ajtó standard/prémium (előzetes verzió) forrásának beállítása
 
@@ -60,16 +60,16 @@ Ahhoz, hogy létre tudja hozni az Azure bejárati ajtó standard/prémium forrá
     > [!IMPORTANT]
     > A konfiguráció során az API-k nem ellenőrzik, hogy a forrás elérhetetlenné válik-e az előtérben lévő környezetekben. Győződjön meg arról, hogy a bejárati ajtó elérheti a forrást.
 
-1. Válassza a **Hozzáadás** lehetőséget az új forrás létrehozásához. A létrehozott forrásnak szerepelnie kell a forrás listában a csoporttal
+1. Válassza a **Hozzáadás** lehetőséget az új forrás létrehozásához. A létrehozott forrásnak szerepelnie kell a forrás listában a csoporttal.
   
-    :::image type="content" source="../media/how-to-create-origin/add-origin-view.png" alt-text="Képernyőkép a forrás hozzáadása oldalról.":::
+    :::image type="content" source="../media/how-to-create-origin/origin-list-view.png" alt-text="Képernyőkép a forrásról a lista nézetben.":::
 
 1. A **Hozzáadás** gombra kattintva adja hozzá a forrás csoportot az aktuális végponthoz. A kezdőpontnak szerepelnie kell a forrás csoport paneljén.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha már nincs szüksége rá, kattintson a **...** elemre, majd a legördülő listából válassza a **Törlés** lehetőséget.
 
-:::image type="content" source="../media/how-to-create-origin/add-origin-view.png" alt-text="A Origin csoport törlésének képernyőképe.":::
+:::image type="content" source="../media/how-to-create-origin/delete-origin-group.png" alt-text="A Origin csoport törlésének képernyőképe.":::
 
 Ha már nincs szüksége a forrás törlésére, kattintson a.. **.** elemre, majd válassza a **Törlés** lehetőséget a legördülő menüből. 
 

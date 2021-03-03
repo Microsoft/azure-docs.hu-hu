@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 03/02/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b83c9b0ece933ad71810c50e89ae296aa218ec75
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: ac247b9dc70c565621d3544d14e2f76ff12fda47
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98613666"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689317"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-sync"></a>A Azure AD Connect Cloud Sync használatának előfeltételei
 Ez a cikk útmutatást nyújt az Azure Active Directory (Azure AD) felhőalapú szinkronizálásának kiválasztásához és használatához a személyazonossági megoldásként.
@@ -26,7 +26,7 @@ Azure AD Connect Cloud Sync használatához a következőkre lesz szüksége:
 
 - Tartományi rendszergazda vagy vállalati rendszergazdai hitelesítő adatok a Azure AD Connect Cloud Sync gMSA (csoportosan felügyelt szolgáltatásfiók) létrehozásához az ügynök szolgáltatás futtatásához. 
 - Egy hibrid identitás-rendszergazdai fiók az Azure AD-bérlőhöz, amely nem vendég felhasználó.
-- Helyszíni kiszolgáló a kiépítési ügynökhöz Windows 2012 R2 vagy újabb rendszerrel.  A kiszolgálónak a [Active Directory felügyeleti rétegek modellje](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)alapján 0. rétegű kiszolgálónak kell lennie.
+- Helyszíni kiszolgáló a kiépítési ügynökhöz Windows 2016 vagy újabb rendszerrel.  A kiszolgálónak a [Active Directory felügyeleti rétegek modellje](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)alapján 0. rétegű kiszolgálónak kell lennie.
 - Helyszíni tűzfal-konfigurációk.
 
 ## <a name="group-managed-service-accounts"></a>Csoportosan felügyelt szolgáltatásfiókok
@@ -35,7 +35,7 @@ A csoportosan felügyelt szolgáltatásfiók egy felügyelt tartományi fiók, a
 ### <a name="prerequisites-for-gmsa"></a>A gMSA előfeltételei:
 1.  A gMSA tartomány erdő Active Directory sémáját frissíteni kell a Windows Server 2012-re.
 2.  [POWERSHELL RSAT-modulok](/windows-server/remote/remote-server-administration-tools) egy tartományvezérlőn
-3.  A tartomány legalább egy tartományvezérlőjén a Windows Server 2012 operációs rendszernek kell futnia.
+3.  A tartomány legalább egy tartományvezérlőjén a Windows Server 201 operációs rendszernek kell futnia.
 4.  Egy tartományhoz csatlakoztatott kiszolgáló, amelyen az ügynök telepítve van, Windows Server 2012 vagy újabb rendszernek kell lennie.
 
 ### <a name="custom-gmsa-account"></a>Egyéni gMSA-fiók
@@ -65,7 +65,7 @@ A [IdFix eszköz](/office365/enterprise/prepare-directory-attributes-for-synch-w
 
 ### <a name="in-your-on-premises-environment"></a>Helyszíni környezetben
 
-1. Azonosítson egy Windows Server 2012 R2 vagy újabb rendszert futtató, tartományhoz csatlakoztatott gazdagépet legalább 4 GB RAM-mal és .NET 4.7.1 + futtatókörnyezettel.
+1. Azonosítson egy Windows Server 2016 vagy újabb rendszert futtató, tartományhoz csatlakoztatott gazdagépet legalább 4 GB RAM-mal és .NET 4.7.1 + futtatókörnyezettel.
 
 2. A helyi kiszolgálón található PowerShell végrehajtási házirendet nem definiált vagy RemoteSigned értékre kell beállítani.
 

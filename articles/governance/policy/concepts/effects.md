@@ -1,14 +1,14 @@
 ---
 title: A hatások működésének megismerése
 description: Azure Policy definíciók különböző effektusokkal rendelkeznek, amelyek meghatározzák a megfelelőség felügyeletének és jelentésének módját.
-ms.date: 10/05/2020
+ms.date: 02/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: e72e94766dce2660409e729bc43eb107fb9ab39a
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 67445b3d0d63b3827f82822de00412bdab67c5ab
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883078"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741820"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy effektusok ismertetése
 
@@ -266,8 +266,7 @@ A AuditIfNotExists hasonlóan a DeployIfNotExists házirend-definíciója is vé
 
 ### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists kiértékelése
 
-Az DeployIfNotExists körülbelül 15 perccel azután fut le, hogy egy erőforrás-szolgáltató kezelte az erőforrás-létrehozási vagy-frissítési kérelmet, és sikeres állapotkódot adott vissza. A sablonok központi telepítése akkor történik, ha nincsenek kapcsolódó erőforrások, vagy ha a **ExistenceCondition** által meghatározott erőforrások nem értékelik az igaz értéket.
-A központi telepítés időtartama a sablonban található erőforrások bonyolultságával függ.
+Az DeployIfNotExists körülbelül 15 perccel azután fut le, hogy az erőforrás-szolgáltató egy létrehozási vagy frissítési előfizetést vagy erőforrás-kérést kezelt, és sikeres állapotkódot adott vissza. A sablonok központi telepítése akkor történik, ha nincsenek kapcsolódó erőforrások, vagy ha a **ExistenceCondition** által meghatározott erőforrások nem értékelik az igaz értéket. A központi telepítés időtartama a sablonban található erőforrások bonyolultságával függ.
 
 A kiértékelési ciklusokban az erőforrásoknak megfelelő DeployIfNotExists-effektussal rendelkező házirend-definíciók nem megfelelőként vannak megjelölve, de az adott erőforráson nem végeznek műveleteket. A meglévő, nem megfelelő erőforrások szervizelése [szervizelési feladattal](../how-to/remediate-resources.md)javítható.
 
@@ -482,8 +481,7 @@ Példa: forgalomirányító v2 belépésvezérlési szabály, amely csak a megad
 
 ## <a name="modify"></a>Módosítás
 
-A módosítás a létrehozás vagy a frissítés során az erőforrásokhoz tartozó tulajdonságok vagy címkék hozzáadására, frissítésére és eltávolítására szolgál.
-Gyakori példa az olyan erőforrásokra vonatkozó címkék frissítése, mint például a costCenter. A meglévő, nem megfelelő erőforrások szervizelése [szervizelési feladattal](../how-to/remediate-resources.md)javítható. Egyetlen módosítási szabálynak tetszőleges számú művelete lehet.
+A módosítással hozzáadhat, frissíthet vagy eltávolíthat tulajdonságokat vagy címkéket az előfizetésben vagy az erőforrásban a létrehozás vagy a frissítés során. Gyakori példa az olyan erőforrásokra vonatkozó címkék frissítése, mint például a costCenter. A meglévő, nem megfelelő erőforrások szervizelése [szervizelési feladattal](../how-to/remediate-resources.md)javítható. Egyetlen módosítási szabálynak tetszőleges számú művelete lehet.
 
 A módosítás a következő műveleteket támogatja:
 
@@ -675,7 +673,7 @@ Ha az 1. és a 2. házirend mindkét esetben megtagadta a Megtagadás hatását,
 
 Minden hozzárendelés külön kiértékelésre kerül. Ilyen esetben nincs lehetőség arra, hogy egy erőforrás a hatókörben lévő eltérések miatt nem csúszik meg. A rétegbeli házirend-definíciók nettó eredményét **összesítő legszigorúbbnak** tekinti a rendszer. Ha például az 1. és a 2. szabályzat is megtagadási hatást gyakorolt, az átfedésben lévő és ütköző házirend-definíciók letiltják az erőforrásokat. Ha továbbra is szüksége van az erőforrás létrehozására a cél hatókörében, tekintse át az egyes hozzárendelések kizárásait a megfelelő házirend-hozzárendelések érvényesítéséhez a megfelelő hatókörökre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](definition-structure.md) szakaszt.

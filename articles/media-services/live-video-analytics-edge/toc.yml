@@ -51,6 +51,9 @@
         - name: Az OVMS-sel HTTP-bővítményen keresztül
           displayName: 'intel, OpenVINO'
           href: use-intel-openvino-tutorial.md
+        - name: OV DL Streamtel a gRPC-bővítményen keresztül
+          displayName: 'intel, OpenVINO DL Streamer'
+          href: use-intel-grpc-vas-tutorial.md
         - name: Custom Vision használata
           href: custom-vision-tutorial.md
         - name: Térbeli elemzés használata
@@ -90,6 +93,8 @@
       href: create-custom-azure-resource-manager-role-how-to.md
     - name: Üzembe helyezés IoT Edge-eszközön
       href: deploy-iot-edge-device.md
+    - name: Üzembe helyezés egy IoT Edge Linuxon Windows rendszeren
+      href: deploy-iot-edge-linux-on-windows.md
     - name: Monitorozás és naplózás
       href: monitoring-logging.md
     - name: Felvétel lejátszása

@@ -1,19 +1,19 @@
 ---
-title: Interaktív jelentések létrehozása (Azure Monitor virtuális gépekhez) munkafüzetek használatával
-description: Egyszerűsítse az összetett jelentéskészítést az előre definiált és az egyéni paraméteres munkafüzetekkel a Azure Monitor for VMs számára.
+title: Interaktív jelentések készítése a virtuális gépekről a munkafüzetekből
+description: Egyszerűsítse a komplex jelentéskészítést előre definiált és egyéni paraméteres munkafüzetekkel a virtuális gépekhez.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 43cdb9de111bdea5486e49a56d58d38279b685c7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1e2f6c7a6b4a36eb1aa4230f62ee4b0c2a1c57c3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100619598"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731289"
 ---
-# <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Interaktív jelentések létrehozása (Azure Monitor virtuális gépekhez) munkafüzetek használatával
+# <a name="create-interactive-reports-vm-insights-with-workbooks"></a>Interaktív jelentések készítése a virtuális gépekről a munkafüzetekből
 
 A munkafüzetek szövegeket, [naplókat](/azure/data-explorer/kusto/query/), metrikákat és paramétereket egyesítenek gazdag interaktív jelentésekben. A munkafüzetek szerkeszthető más csapattagok számára, akik ugyanahhoz az Azure-erőforrásokhoz férnek hozzá.
 
@@ -24,9 +24,9 @@ A munkafüzetek hasznosak a következő forgatókönyvekhez:
 * Megoszthatja a virtuális gép átméretezési kísérletének eredményét a csapat más tagjaival. Megadhatja a kísérlet szöveggel kapcsolatos céljait, majd megjelenítheti a kísérlet kiértékeléséhez használt egyes használati metrikákat és elemzési lekérdezéseket, valamint egyértelmű hívási feladatokkal, hogy az egyes metrikák a fenti vagy a cél alatt voltak-e.
 * A leállás következményeinek jelentése a virtuális gép használatáról, az adatok összevonásáról, a szöveg magyarázatáról, valamint a következő lépések megvitatására a leállások jövőbeli megelőzése érdekében.
 
-A következő táblázat összefoglalja azokat a munkafüzeteket, amelyeket a Azure Monitor for VMs tartalmaz a kezdéshez.
+A következő táblázat összefoglalja azokat a munkafüzeteket, amelyekkel a virtuális gépek bepillantást nyerhet a kezdéshez.
 
-| Munkafüzet | Description | Hatókör |
+| Munkafüzet | Leírás | Hatókör |
 |----------|-------------|-------|
 | Teljesítmény | A Top N List és Diagrams nézet testreszabható verzióját jeleníti meg egyetlen munkafüzetben, amely az összes engedélyezett Log Analytics teljesítményszámlálókat kihasználja.| Skálán |
 | Teljesítményszámlálók | Felső N diagramos nézet a teljesítményszámlálók széles készletében. | Skálán |
@@ -96,7 +96,7 @@ A lekérdezési szakaszban nagyon rugalmasak, és a következő kérdésekre leh
 
 Nem csak a virtuális gép kontextusában, a munkafüzetből indított lekérdezésre korlátozódik. Több virtuális gépen is lekérdezheti, Log Analytics munkaterületeken, ha rendelkezik hozzáférési engedéllyel az erőforrásokhoz.
 
-Adatok befoglalása más Log Analytics munkaterületekről vagy egy adott Application Insights alkalmazásból a **munkaterület** -azonosító használatával. Ha többet szeretne megtudni az erőforrások közötti lekérdezésekről, tekintse meg a [hivatalos útmutatást](../log-query/cross-workspace-query.md).
+Adatok befoglalása más Log Analytics munkaterületekről vagy egy adott Application Insights alkalmazásból a **munkaterület** -azonosító használatával. Ha többet szeretne megtudni az erőforrások közötti lekérdezésekről, tekintse meg a [hivatalos útmutatást](../logs/cross-workspace-query.md).
 
 ### <a name="advanced-analytic-query-settings"></a>Speciális analitikus lekérdezési beállítások
 
@@ -137,7 +137,7 @@ VMConnection
 
 ## <a name="adding-metrics-sections"></a>Metrikaszakaszok hozzáadása
 
-A metrikák részben teljes hozzáférést biztosítanak a Azure Monitor metrikák adatait az interaktív jelentésekhez. Azure Monitor for VMs az előre elkészített munkafüzetek általában analitikus lekérdezési adatokat tartalmaznak metrikus adatok helyett.  Dönthet úgy, hogy metrikus adatokkal rendelkező munkafüzeteket hoz létre, így teljes mértékben kihasználhatja mindkét funkció előnyeit egy helyen. Lehetősége van arra is, hogy az erőforrásokból származó metrikus adatokat bármely olyan előfizetésből lehívhatja, amelyhez hozzáfér.
+A metrikák részben teljes hozzáférést biztosítanak a Azure Monitor metrikák adatait az interaktív jelentésekhez. A VM-elemzésekben az előre elkészített munkafüzetek általában analitikus lekérdezési adatokat tartalmaznak metrikus adatok helyett.  Dönthet úgy, hogy metrikus adatokkal rendelkező munkafüzeteket hoz létre, így teljes mértékben kihasználhatja mindkét funkció előnyeit egy helyen. Lehetősége van arra is, hogy az erőforrásokból származó metrikus adatokat bármely olyan előfizetésből lehívhatja, amelyhez hozzáfér.
 
 Itt látható egy példa arra, hogy a virtuális gép adatai egy munkafüzetbe kerüljenek, és a CPU-teljesítmény rácsos megjelenítését biztosítják:
 
@@ -244,4 +244,4 @@ Egy munkafüzetre mutató hivatkozás rögzítése egy Azure-irányítópulton:
 
 - A korlátozások és a virtuális gépek teljes teljesítményének azonosításához lásd: az Azure-beli [virtuális gépek teljesítményének megtekintése](vminsights-performance.md).
 
-- Az észlelt alkalmazások függőségeivel kapcsolatos további tudnivalókért lásd: [Azure monitor for VMS Térkép megtekintése](vminsights-maps.md).
+- A felderített alkalmazások függőségeivel kapcsolatos további információkért lásd: virtuálisgép- [észlelési Térkép megtekintése](vminsights-maps.md).

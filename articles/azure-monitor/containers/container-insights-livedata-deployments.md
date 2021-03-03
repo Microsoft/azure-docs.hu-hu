@@ -1,19 +1,19 @@
 ---
-title: Tárolók üzembe helyezésének Azure Monitor megtekintése (előzetes verzió) | Microsoft Docs
-description: Ez a cikk a Kubernetes-telepítések valós idejű nézetét írja le anélkül, hogy a kubectl-t használja a tárolók Azure Monitor.
+title: Tároló-betekintő példányok megtekintése (előzetes verzió) | Microsoft Docs
+description: Ez a cikk a Kubernetes üzemelő példányok valós idejű nézetét írja le anélkül, hogy a kubectl-t használja a Container bepillantást.
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.custom: references_regions
-ms.openlocfilehash: 2f1eac82ce67818c7bf86ce3ca8924155d8ee2aa
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c6eaac209234f7352395502c6761312cf258108f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100616265"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713915"
 ---
 # <a name="how-to-view-deployments-preview-in-real-time"></a>Központi telepítések (előzetes verzió) valós idejű megtekintése
 
-A Azure Monitor for containers (előzetes verzió) szolgáltatásban a központi telepítések (előzetes verzió) funkció valós időben közvetlen hozzáférést emulál a Kubernetes üzembe helyezési objektumaihoz a `kubeclt get deployments` és a `kubectl describe deployment {your deployment}` parancsokkal.
+A tárolók bepillantást nyerhetnek a központi telepítések (előzetes verzió) funkció valós időben közvetlen hozzáférést emulál a Kubernetes üzembe helyezési objektumaihoz a `kubeclt get deployments` és `kubectl describe deployment {your deployment}` parancsokkal.
 
 >[!NOTE]
 >Ez a funkció nem támogatja a [privát fürtökként](https://azure.microsoft.com/updates/aks-private-cluster/) engedélyezett AK-fürtöket. A szolgáltatás csak akkor tud működni, ha közvetlenül a böngészőből, egy proxykiszolgálón keresztül éri el a Kubernetes API-t. Ha engedélyezi a hálózati biztonságot, hogy letiltsa a Kubernetes API-t ebből a proxyból, azzal a forgalmat is letiltja.
@@ -56,7 +56,7 @@ Amikor kijelöl egy központi telepítést a listából, a rendszer automatikusa
 
 Az üzembe helyezés részleteinek áttekintése közben valós időben láthatja a tároló naplóit és eseményeit. Jelölje be az **élő konzol megjelenítése** és az élő adat(előnézet) konzol ablaktábla az üzembe helyezések adatrács alatt jelenik meg, ahol a folyamatos adatfolyamban megtekintheti az élő naplókat. Ha a beolvasás állapotjelzője egy zöld pipa jelenik meg, amely a panel jobb szélén található, az azt jelenti, hogy a rendszer lekéri az adatait, és megkezdi a folyamatos átvitelt a konzolra.
 
-Azt is megteheti, hogy a névtér vagy a fürt szintjén események alapján végzi a szűrést. Ha többet szeretne megtudni a konzolon tárolt adatmegjelenítésről, tekintse meg az [élő adatszolgáltatások (előzetes verzió) megtekintését a tárolók Azure monitor](container-insights-livedata-overview.md).
+Azt is megteheti, hogy a névtér vagy a fürt szintjén események alapján végzi a szűrést. Ha többet szeretne megtudni a-konzolon tárolt adatmegjelenítésről, tekintse meg az [élő adatszolgáltatások (előzetes verzió) megtekintése a tárolók](container-insights-livedata-overview.md)elemzésével című témakört.
 
 ![Az üzemelő példányok élő adatmegjelenítést mutatnak a konzolon](./media/container-insights-livedata-deployments/deployments-console-view-events.png)
 

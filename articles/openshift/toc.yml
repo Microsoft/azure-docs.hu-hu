@@ -55,7 +55,7 @@
             - name: ARO 4-tárolókhoz készült Azure Monitor konfigurálása (előzetes verzió)
               href: ../azure-monitor/insights/container-insights-azure-redhat4-setup.md
             - name: ARO 4-tárolókhoz készült Azure Monitor letiltása (előzetes verzió)
-              href: ../azure-monitor/insights/container-insights-optout-openshift-v4.md
+              href: ../azure-monitor/containers/container-insights-optout-openshift-v4.md
     - name: Alkalmazások fejlesztése és futtatása
       items:
         - name: Open Liberty-/WebSphere Liberty-alkalmazás üzembe helyezése
@@ -80,10 +80,10 @@
             - name: Azure Monitor az Azure Red Hat OpenShift 3.11-ben lévő tárolókhoz (előzetes verzió)
               items:
                 - name: Az Azure Monitor konfigurálása az Azure Red Hat OpenShift 3.11-ben lévő tárolókhoz
-                  href: ../azure-monitor/insights/container-insights-azure-redhat-setup.md
+                  href: ../azure-monitor/containers/container-insights-azure-redhat-setup.md
                   maintainContext: true
                 - name: Az Azure Monitor letiltása az Azure Red Hat OpenShift 3.11-ben lévő tárolókhoz
-                  href: ../azure-monitor/insights/container-insights-optout-openshift-v3.md
+                  href: ../azure-monitor/containers/container-insights-optout-openshift-v3.md
                   maintainContext: true
         - name: Kiemelt tárolók futtatása az Azure Red Hat OpenShift 3.11-ben
           href: howto-run-privileged-containers.md

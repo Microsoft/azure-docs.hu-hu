@@ -21,7 +21,7 @@
       href: tutorial-configure-ldaps.md
     - name: Jelszókivonat szinkronizálásának konfigurálása
       href: tutorial-configure-password-hash-sync.md
-    - name: Replikakészlet létrehozása (előzetes verzió)
+    - name: Replikakészlet létrehozása
       href: tutorial-create-replica-set.md
     - name: Testre szabott felügyelt tartomány létrehozása
       href: tutorial-create-instance-advanced.md
@@ -43,7 +43,7 @@
       href: administration-concepts.md
     - name: Gyakori üzembehelyezési forgatókönyvek
       href: scenarios.md
-    - name: Replikakészletek (előzetes verzió)
+    - name: Replikakészletek
       href: concepts-replica-sets.md
     - name: Erdők és megbízhatóságok
       items:

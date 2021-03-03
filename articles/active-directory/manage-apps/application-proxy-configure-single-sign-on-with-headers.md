@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: d4cd69a90c4af2f996bd965ffaa145dce761018f
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 512316b78a0d6422daf5e268ef30db72ccbcfaeb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259536"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688314"
 ---
-# <a name="header-based-single-sign-on-for-on-premises-apps-with-azure-ad-app-proxy-preview"></a>Fejléc-alapú egyszeri bejelentkezés Azure AD alkalmazás proxyval rendelkező helyszíni alkalmazásokhoz (előzetes verzió)
+# <a name="header-based-single-sign-on-for-on-premises-apps-with-azure-ad-app-proxy"></a>Fejléc-alapú egyszeri bejelentkezés Azure AD alkalmazás proxyval rendelkező helyszíni alkalmazásokhoz
 
 Az Azure Active Directory (Azure AD) alkalmazásproxy natív módon támogatja az egyszeri bejelentkezéses hozzáférést olyan alkalmazásokhoz, amelyek fejléceket használnak a hitelesítéshez. Az Azure AD-ben az alkalmazás által igényelt fejléc-értékeket is konfigurálhatja. A fejléc értékei az Application proxyn keresztül lesznek továbbítva az alkalmazásnak. A következő előnyökkel jár, ha natív támogatást kíván használni az alkalmazásproxy-alapú hitelesítéshez az alkalmazásproxy használatával:  
 

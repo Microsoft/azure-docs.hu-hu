@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: e5236bb7034ae4d5f86ab2f8f965bdbfbc3d6ccd
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: cbff2e774fae1f71624aa3cdbd83bfb21e3a9586
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832045"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721463"
 ---
 # <a name="tutorial-modify-and-build-the-live-video-analytics-gateway-modules"></a>Oktatóanyag: az élő videó elemzési átjáró moduljainak módosítása és összeállítása
 
@@ -25,11 +25,13 @@ Az előző oktatóanyagok a modulok előre elkészített képeit használják.
 
 Az oktatóanyag lépéseinek elvégzéséhez a következőkre lesz szüksége:
 
-* [Node.js](https://nodejs.org/en/download/) V10-es vagy újabb verzió
-* A [Visual Studio Code](https://code.visualstudio.com/Download) és a [TSLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin) bővítmény telepítve van
-* [Docker](https://www.docker.com/products/docker-desktop) -motor
-* [Azure Container Registry](../../container-registry/index.yml) a modulok verzióinak üzemeltetéséhez.
-* Egy [Azure Media Services](../../media-services/index.yml) -fiók. Ha befejezte az előző oktatóanyagokat, újra felhasználhatja a korábban létrehozottt.
+
+> [!div class="checklist"]
+> * [Node.js](https://nodejs.org/en/download/) V10-es vagy újabb verzió
+> * A [Visual Studio Code](https://code.visualstudio.com/Download) és a [TSLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin) bővítmény telepítve van
+> * [Docker](https://www.docker.com/products/docker-desktop) -motor
+> * [Azure Container Registry](../../container-registry/index.yml) a modulok verzióinak üzemeltetéséhez.
+> * Egy [Azure Media Services](../../media-services/index.yml) -fiók. Ha befejezte az előző oktatóanyagokat, újra felhasználhatja a korábban létrehozottt.
 
 ## <a name="clone-the-repository"></a>A tárház klónozása
 

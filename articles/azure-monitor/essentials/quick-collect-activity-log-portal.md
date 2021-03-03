@@ -6,15 +6,15 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 2e6dc55b54bc3abaea22544d457f98307596c5dd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1316512badd69b545e39a47ea5da3ca6a0902482
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100628904"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734281"
 ---
 # <a name="send-azure-activity-log-to-log-analytics-workspace-using-azure-portal"></a>Azure-tevékenység naplójának küldése Log Analytics munkaterületre a Azure Portal használatával
-A Tevékenységnapló az Azure előfizetési szintű eseményekkel kapcsolatos megállapításokat biztosító platformnaplója. Olyan információkat tartalmaz, mint az erőforrások módosításának vagy a virtuális gépek indításának az időpontja. Megtekintheti a tevékenység naplóját a Azure Portal vagy beolvashatja a bejegyzéseket a PowerShell és a parancssori felület használatával. Ez a rövid útmutató azt ismerteti, hogyan használható a Azure Portal egy Log Analytics-munkaterület létrehozásához és egy diagnosztikai beállításhoz, hogy elküldje a tevékenység naplóját Azure Monitor naplókba, ahol elemezheti a [napló lekérdezések](../log-query/log-query-overview.md) használatával, és más funkciók, például a [naplók](../alerts/alerts-log-query.md) és a [munkafüzetek](../visualize/workbooks-overview.md)használatát is lehetővé teheti. 
+A Tevékenységnapló az Azure előfizetési szintű eseményekkel kapcsolatos megállapításokat biztosító platformnaplója. Olyan információkat tartalmaz, mint az erőforrások módosításának vagy a virtuális gépek indításának az időpontja. Megtekintheti a tevékenység naplóját a Azure Portal vagy beolvashatja a bejegyzéseket a PowerShell és a parancssori felület használatával. Ez a rövid útmutató azt ismerteti, hogyan használható a Azure Portal egy Log Analytics-munkaterület létrehozásához és egy diagnosztikai beállításhoz, hogy elküldje a tevékenység naplóját Azure Monitor naplókba, ahol elemezheti a [napló lekérdezések](../logs/log-query-overview.md) használatával, és más funkciók, például a [naplók](../alerts/alerts-log-query.md) és a [munkafüzetek](../visualize/workbooks-overview.md)használatát is lehetővé teheti. 
 
 ## <a name="sign-in-to-azure-portal"></a>Bejelentkezés az Azure portálra
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen. 
@@ -73,7 +73,7 @@ Bontsa ki az egyik rekordot a részletes tulajdonságainak megtekintéséhez.
 
 
 ## <a name="next-steps"></a>Következő lépések
-Ebben a rövid útmutatóban úgy konfigurálta a tevékenység naplóját, hogy az Log Analytics munkaterületre legyen küldve. Mostantól más adatokat is konfigurálhat a munkaterületre, ahol elemezheti azt a Azure Monitor található [naplók](../log-query/log-query-overview.md) használatával, és olyan funkciókat használhat, mint például a [naplózási riasztások](../alerts/alerts-log-query.md) és a [munkafüzetek](../visualize/workbooks-overview.md). A következő lépésekkel gyűjtsön [erőforrás-naplókat](../essentials/resource-logs.md) az Azure-erőforrásokból, amelyek a tevékenység naplójában lévő adatokat szolgáltatva betekintést nyújtanak az egyes erőforrásokon végrehajtott műveletekre.
+Ebben a rövid útmutatóban úgy konfigurálta a tevékenység naplóját, hogy az Log Analytics munkaterületre legyen küldve. Mostantól más adatokat is konfigurálhat a munkaterületre, ahol elemezheti azt a Azure Monitor található [naplók](../logs/log-query-overview.md) használatával, és olyan funkciókat használhat, mint például a [naplózási riasztások](../alerts/alerts-log-query.md) és a [munkafüzetek](../visualize/workbooks-overview.md). A következő lépésekkel gyűjtsön [erőforrás-naplókat](../essentials/resource-logs.md) az Azure-erőforrásokból, amelyek a tevékenység naplójában lévő adatokat szolgáltatva betekintést nyújtanak az egyes erőforrásokon végrehajtott műveletekre.
 
 
 > [!div class="nextstepaction"]

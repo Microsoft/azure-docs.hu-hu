@@ -5,12 +5,12 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 1/21/2021
 ms.author: cachai
-ms.openlocfilehash: 2c3f207e98f574bb6c43f87d34b0a404e263e83c
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: ceef827f7406f8915d205349372a43626c917e4b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806979"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729232"
 ---
 # <a name="azure-functions-networking-options"></a>Az Azure Functions hálózatkezelési lehetőségei
 
@@ -87,7 +87,7 @@ További információ: [Virtual Network szolgáltatás-végpontok](../virtual-ne
 
 ## <a name="restrict-your-storage-account-to-a-virtual-network"></a>A Storage-fiók korlátozása virtuális hálózatra 
 
-Egy Function-alkalmazás létrehozásakor létre kell hoznia egy általános célú Azure Storage-fiókot, amely támogatja a blobot, a várólistát és a Table Storage-t.  Ezt a Storage-fiókot lecserélheti egy, a szolgáltatási végpontokkal vagy privát végponttal védett tárolóval.  Ez a funkció jelenleg csak a Windows prémium csomagokkal működik.  Egy privát hálózatra korlátozódó Storage-fiókkal rendelkező függvény beállítása:
+Egy Function-alkalmazás létrehozásakor létre kell hoznia egy általános célú Azure Storage-fiókot, amely támogatja a blobot, a várólistát és a Table Storage-t.  Ezt a Storage-fiókot lecserélheti egy, a szolgáltatási végpontokkal vagy privát végponttal védett tárolóval.  Ez a funkció jelenleg csak a standard és a prémium szintű összes támogatott SKU-vnet működik, kivéve a Flex-bélyegzőket, ahol a vnet csak a prémium SKU esetében érhető el. Egy privát hálózatra korlátozódó Storage-fiókkal rendelkező függvény beállítása:
 
 1. Hozzon létre egy olyan függvényt, amely nem rendelkezik engedélyezett szolgáltatási végpontokkal.
 1. Konfigurálja a függvényt a virtuális hálózathoz való kapcsolódáshoz.
@@ -184,7 +184,7 @@ A következő API-k lehetővé teszik a regionális virtuális hálózati integr
 
 [!INCLUDE [app-service-web-vnet-troubleshooting](../../includes/app-service-web-vnet-troubleshooting.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a hálózatkezelésről és a Azure Functions:
 

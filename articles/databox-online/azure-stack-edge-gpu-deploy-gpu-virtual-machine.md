@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 12/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 7534052412c2bee0f31e352fc577d376c11215c3
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: cb6b8e310f46cd98c4d3343d44fd83a3cc714a32
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804937"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730711"
 ---
 # <a name="gpu-vms-for-your-azure-stack-edge-pro-device"></a>GPU virtuális gépek a Azure Stack Edge Pro-eszközhöz
 
@@ -110,8 +110,8 @@ A GPU virtuális gépek eszközön való üzembe helyezéséhez kövesse az alá
 1. A virtuális gép létrehozása után telepítse a GPU bővítményt a bővítmény sablonnal. Linux rendszerű virtuális gépek esetén lásd: a [GPU-bővítmény telepítése Linuxra](#gpu-extension-for-linux) és Windows rendszerű virtuális gépekre: [a GPU-bővítmény telepítése Windows](#gpu-extension-for-windows)rendszerre.
 
 1. A GPU-bővítmény telepítésének ellenőrzéséhez kapcsolódjon a GPU virtuális géphez:
-    1. Windows rendszerű virtuális gép használata esetén kövesse a [Kapcsolódás Windows rendszerű virtuális géphez](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-windows-vm)című témakör lépéseit. [Ellenőrizze a telepítést](#verify-windows-driver-installation).
-    1. Ha Linux rendszerű virtuális gépet használ, kövesse a [Kapcsolódás Linux rendszerű virtuális géphez](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-linux-vm)című témakör lépéseit. [Ellenőrizze a telepítést](#verify-linux-driver-installation).
+    1. Windows rendszerű virtuális gép használata esetén kövesse a [Kapcsolódás Windows rendszerű virtuális géphez](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-a-windows-vm)című témakör lépéseit. [Ellenőrizze a telepítést](#verify-windows-driver-installation).
+    1. Ha Linux rendszerű virtuális gépet használ, kövesse a [Kapcsolódás Linux rendszerű virtuális géphez](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-a-linux-vm)című témakör lépéseit. [Ellenőrizze a telepítést](#verify-linux-driver-installation).
 
 1. Ha szükséges, a számítási hálózatot visszakapcsolhatja, amire szüksége van. 
 
@@ -545,7 +545,7 @@ A bővítmény végrehajtásának kimenete a következő fájlba van naplózva: 
 
 Az illesztőprogram telepítésének ellenőrzéséhez kövesse az alábbi lépéseket:
 
-1. Kapcsolódjon a GPU virtuális géphez. Kövesse a [Kapcsolódás Linux rendszerű virtuális géphez](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-linux-vm)című témakör utasításait. 
+1. Kapcsolódjon a GPU virtuális géphez. Kövesse a [Kapcsolódás Linux rendszerű virtuális géphez](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-a-linux-vm)című témakör utasításait. 
 
     Itt látható egy mintakimenet:
 
@@ -638,6 +638,6 @@ Requestld IsSuccessStatusCode StatusCode ReasonPhrase
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure Resource Manager-parancsmagok](/powershell/module/azurerm.resources/?view=azurermps-6.13.0&preserve-view=true)

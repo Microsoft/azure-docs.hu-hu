@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 933ac96d0cf98e0068575e5a70b0f42a157eb611
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c00205e2931400caa64f35db962d94a732f2524
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827466"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714493"
 ---
 # <a name="back-up-your-app-in-azure"></a>Adatok biztonsági mentése az Azure-ban
 A [Azure app Service](overview.md) biztonsági mentési és visszaállítási funkciója lehetővé teszi, hogy egyszerűen hozza létre az alkalmazások biztonsági másolatait manuálisan vagy ütemezés szerint. Beállíthatja, hogy a biztonsági másolatok határozatlan ideig maradjanak. Az alkalmazást visszaállíthatja egy korábbi állapot pillanatképére a meglévő alkalmazás felülírásával vagy egy másik alkalmazásra való visszaállítással.
@@ -44,16 +44,16 @@ A biztonsági mentési funkció a következő adatbázis-megoldásokat támogatj
 * A biztonsági mentési és visszaállítási funkció használatához a App Service tervnek a **standard**, **prémium** vagy **elkülönített** szinten kell lennie. További információ a App Service terv magasabb szintű használatára való méretezéséről: alkalmazás felskálázása [Az Azure-ban](manage-scale-up.md). A **prémium** és az **elkülönített** szintek nagyobb számú napi biztonsági mentést tesznek lehetővé, mint a **standard** szint.
 * Szüksége lesz egy Azure Storage-fiókra és-tárolóra abban az előfizetésben, amelyben a biztonsági mentéshez használni kívánt alkalmazás található. Az Azure Storage-fiókokkal kapcsolatos további információkért lásd: az [Azure Storage-fiók áttekintése](../storage/common/storage-account-overview.md).
 * A biztonsági másolatok akár 10 GB-nyi alkalmazás-és adatbázis-tartalommal is rendelkezhetnek. Ha a biztonsági másolat mérete meghaladja ezt a korlátot, hibaüzenet jelenik meg.
-* A TLS-kompatibilis Azure Database for MySQL biztonsági mentései nem támogatottak. Ha a biztonsági mentés be van állítva, a rendszer sikertelen biztonsági másolatokat fog kapni.
-* A TLS-kompatibilis Azure Database for PostgreSQL biztonsági mentései nem támogatottak. Ha a biztonsági mentés be van állítva, a rendszer sikertelen biztonsági másolatokat fog kapni.
+* A TLS-kompatibilis Azure Database for MySQL biztonsági mentései nem támogatottak. Ha a biztonsági mentés konfigurálva van, akkor a biztonsági mentési hibákba ütközik.
+* A TLS-kompatibilis Azure Database for PostgreSQL biztonsági mentései nem támogatottak. Ha a biztonsági mentés konfigurálva van, akkor a biztonsági mentési hibákba ütközik.
 * Az alkalmazáson belüli MySQL-adatbázisokat konfiguráció nélkül automatikusan biztonsági másolat készül. Ha az alkalmazáson belüli MySQL-adatbázisok esetében manuálisan állítja be a beállításokat, például a kapcsolatok karakterláncok hozzáadását, előfordulhat, hogy a biztonsági másolatok nem működnek megfelelően.
-* Ha tűzfallal védett Storage-fiókot használ, a biztonsági másolatok célhelye nem támogatott. Ha a biztonsági mentés be van állítva, a rendszer sikertelen biztonsági másolatokat fog kapni.
+* Ha tűzfallal védett Storage-fiókot használ, a biztonsági másolatok célhelye nem támogatott. Ha a biztonsági mentés konfigurálva van, akkor a biztonsági mentési hibákba ütközik.
 
 
 <a name="manualbackup"></a>
 
 ## <a name="create-a-manual-backup"></a>Manuális biztonsági mentés létrehozása
-1. A [Azure Portal](https://portal.azure.com)navigáljon az alkalmazás lapjára, majd válassza a **biztonsági mentések**lehetőséget. Megjelenik a **biztonsági másolatok** lap.
+1. A [Azure Portal](https://portal.azure.com)navigáljon az alkalmazás lapjára, majd válassza a **biztonsági mentések** lehetőséget. Megjelenik a **biztonsági másolatok** lap.
 
     ![Biztonsági másolatok oldal](./media/manage-backup/access-backup-page.png)
 
@@ -70,23 +70,23 @@ A biztonsági mentési funkció a következő adatbázis-megoldásokat támogatj
 
 3. A **biztonsági mentési konfiguráció** lapon kattintson a **Storage nincs konfigurálva** a Storage-fiók konfigurálása elemre.
 
-    :::image type="content" source="./media/manage-backup/configure-storage.png" alt-text="Képernyőkép a szalagcímről egy üzenettel, amely frissíti a App Service tervet a biztonsági mentési és visszaállítási funkció eléréséhez.":::
+    :::image type="content" source="./media/manage-backup/configure-storage.png" alt-text="Képernyőfelvétel a biztonsági mentési tár szakaszról a nincs konfigurálva beállítással.":::
 
-4. Válassza ki a biztonsági mentési célhelyet a **Storage-fiók** és a **tároló**kiválasztásával. A Storage-fióknak ugyanahhoz az előfizetéshez kell tartoznia, mint annak az alkalmazásnak, amelyről biztonsági másolatot szeretne készíteni. Ha szeretné, létrehozhat egy új Storage-fiókot vagy egy új tárolót a megfelelő lapokon. Ha elkészült, kattintson a **kiválasztás**gombra.
+4. Válassza ki a biztonsági mentési célhelyet a **Storage-fiók** és a **tároló** kiválasztásával. A Storage-fióknak ugyanahhoz az előfizetéshez kell tartoznia, mint annak az alkalmazásnak, amelyről biztonsági másolatot szeretne készíteni. Ha szeretné, létrehozhat egy új Storage-fiókot vagy egy új tárolót a megfelelő lapokon. Ha elkészült, kattintson a **kiválasztás** gombra.
 
-5. A **biztonsági mentési konfiguráció** lapon, amely továbbra is nyitva marad, konfigurálhatja a **biztonsági mentési adatbázist**, majd kiválaszthatja a biztonsági másolatokban szerepeltetni kívánt adatbázisokat (SQL Database vagy MySQL), majd kattintson **az OK**gombra.
+5. A **biztonsági mentési konfiguráció** lapon, amely továbbra is nyitva marad, konfigurálhatja a **biztonsági mentési adatbázist**, majd kiválaszthatja a biztonsági másolatokban szerepeltetni kívánt adatbázisokat (SQL Database vagy MySQL), majd kattintson **az OK** gombra.
 
-    :::image type="content" source="./media/manage-backup/configure-database.png" alt-text="Képernyőkép a szalagcímről egy üzenettel, amely frissíti a App Service tervet a biztonsági mentési és visszaállítási funkció eléréséhez.":::
+    :::image type="content" source="./media/manage-backup/configure-database.png" alt-text="Képernyőkép a biztonsági mentési adatbázisról szakasz, amely tartalmazza a Belefoglalás a biztonsági mentésbe lehetőséget.":::
 
     > [!NOTE]
     > Ahhoz, hogy egy adatbázis megjelenjen a listában, a kapcsolati karakterláncnak léteznie kell az **alkalmazás Alkalmazásbeállítások** lapjának **kapcsolati karakterláncok** szakaszában. 
     >
-    > Az alkalmazáson belüli MySQL-adatbázisokat konfiguráció nélkül automatikusan biztonsági másolat készül. Ha az alkalmazáson belüli MySQL-adatbázisok esetében manuálisan állítja be a beállításokat, például a kapcsolatok karakterláncok hozzáadását, előfordulhat, hogy a biztonsági másolatok nem működnek megfelelően.
+    > Az alkalmazáson belüli MySQL-adatbázisokat konfiguráció nélkül automatikusan biztonsági másolat készül. Ha az alkalmazáson belüli MySQL-adatbázisok beállításait manuálisan hajtja végre, például a kapcsolatok karakterláncok hozzáadását, előfordulhat, hogy a biztonsági másolatok nem működnek megfelelően.
     > 
     > 
 
-6. A **biztonsági mentési konfiguráció** lapon kattintson a **Mentés**gombra.
-7. A **biztonsági másolatok** lapon kattintson a **biztonsági mentés**elemre.
+6. A **biztonsági mentési konfiguráció** lapon kattintson a **Mentés** gombra.
+7. A **biztonsági másolatok** lapon kattintson a **biztonsági mentés** elemre.
 
     ![BackUpNow gomb](./media/manage-backup/manual-backup.png)
 

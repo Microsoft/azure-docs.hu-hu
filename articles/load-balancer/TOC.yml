@@ -160,8 +160,6 @@
           href: load-balancer-troubleshoot-health-probe-status.md
         - name: Háttérbeli készlet (VM) forgalma
           href: load-balancer-troubleshoot-backend-traffic.md
-        - name: Gyakori telepítési hibák
-          href: load-balancer-common-deployment-errors.md
         - name: Kimenő kapcsolatok gyakori problémáinak elhárítása
           href: troubleshoot-outbound-connection.md
         - name: Az erőforrások állapotával és a bejövő rendelkezésre állással kapcsolatos hibák elhárítása
@@ -191,6 +189,8 @@
       displayName: ARM
     - name: Gyakori hibakódok az Azure Instance Metadata Service (IMDS) szolgáltatáshoz
       href: troubleshoot-load-balancer-imds.md
+    - name: Gyakori telepítési hibák
+      href: load-balancer-common-deployment-errors.md
 - name: További források
   items:
     - name: Fejlessze a készségeit a Microsoft Learnnel

@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
 ms.date: 02/01/2021
-ms.openlocfilehash: 5771f95da7b63c6c16bb581b84cc28c4b838ec27
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 6c4d63862f4e02f3fd525021921b02cde6d10f61
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259016"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699334"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Az Azure API elérése a Poster FHIR
 
@@ -24,7 +24,7 @@ Egy ügyfélalkalmazás egy [Rest APIon](https://www.hl7.org/fhir/http.html)kere
 
 - Egy FHIR-végpont az Azure-ban. Ezt beállíthatja a felügyelt Azure API-FHIR vagy az Azure-hoz készült nyílt forráskódú FHIR-kiszolgáló használatával. A felügyelt Azure API beállítása a FHIR [Azure Portal](fhir-paas-portal-quickstart.md), [POWERSHELL](fhir-paas-powershell-quickstart.md)vagy [Azure CLI](fhir-paas-cli-quickstart.md)használatával.
 - Egy  [ügyfélalkalmazás](register-confidential-azure-ad-client-app.md) , amelyet a FHIR szolgáltatás eléréséhez fog használni.
-- A FHIR szolgáltatás eléréséhez engedélyeket kapott (például "FHIR adatközreműködői") az ügyfélalkalmazás számára. További információ: [configure Azure RBAC for FHIR](https://docs.microsoft.com/azure/healthcare-apis/configure-azure-rbac)
+- A FHIR szolgáltatás eléréséhez engedélyeket kapott (például "FHIR adatközreműködői") az ügyfélalkalmazás számára. További információ: [configure Azure RBAC for FHIR](./configure-azure-rbac.md)
 - A Posting telepítése megtörtént. A következő címről kérheti le: [https://www.getpostman.com](https://www.getpostman.com)
 
 ## <a name="fhir-server-and-authentication-details"></a>FHIR-kiszolgáló és-hitelesítés részletei

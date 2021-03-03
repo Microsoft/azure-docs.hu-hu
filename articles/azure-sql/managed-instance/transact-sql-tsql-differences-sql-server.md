@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 1/12/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: d43f794d6d73e26d791c5a11961470d2131b8951
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a182ca3ba70b9faa1ba67fdb6c91a4eaf8e766ef
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378621"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691195"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL felügyelt példányának T-SQL-különbségei
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -277,7 +277,7 @@ A következő beállítások nem módosíthatók:
 - `SINGLE_USER`
 - `WITNESS`
 
-Egyes `ALTER DATABASE` utasítások (például a [set containering beállítása](https://docs.microsoft.com/sql/relational-databases/databases/migrate-to-a-partially-contained-database?#converting-a-database-to-partially-contained-using-transact-sql)) átmenetileg sikertelenek lehetnek, például az adatbázis automatikus biztonsági mentése vagy közvetlenül az adatbázis létrehozása után. Ebben az esetben újra `ALTER DATABASE` kell próbálkozni a következő utasítással. További információ a kapcsolódó hibaüzenetekről: [Megjegyzések szakasz](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true&tabs=sqlpool#remarks-2).
+Egyes `ALTER DATABASE` utasítások (például a [set containering beállítása](/sql/relational-databases/databases/migrate-to-a-partially-contained-database#converting-a-database-to-partially-contained-using-transact-sql)) átmenetileg sikertelenek lehetnek, például az adatbázis automatikus biztonsági mentése vagy közvetlenül az adatbázis létrehozása után. Ebben az esetben újra `ALTER DATABASE` kell próbálkozni a következő utasítással. További információ a kapcsolódó hibaüzenetekről: [Megjegyzések szakasz](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&tabs=sqlpool&view=azuresqldb-mi-current#remarks-2).
 
 További információ: [Alter Database](/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options).
 
@@ -395,12 +395,12 @@ A [szemantikai keresés](/sql/relational-databases/search/semantic-search-sql-se
 Az SQL felügyelt példányában lévő csatolt kiszolgálók korlátozott számú célt támogatnak:
 
 - A támogatott célok: SQL felügyelt példány, SQL Database, Azure szinapszis SQL [Server](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) nélküli és dedikált készletek, valamint SQL Server példányok. 
-- Az elosztott írható tranzakciók csak felügyelt példányok között lehetségesek. További információ: [Elosztott tranzakciók](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview). Az MS DTC azonban nem támogatott.
+- Az elosztott írható tranzakciók csak felügyelt példányok között lehetségesek. További információ: [Elosztott tranzakciók](../database/elastic-transactions-overview.md). Az MS DTC azonban nem támogatott.
 - A nem támogatott célok a fájlok, a Analysis Services és az egyéb RDBMS. Próbálja meg natív CSV-importálást használni az Azure Blob Storage használatával `BULK INSERT` vagy a `OPENROWSET` fájlok importálása helyett, vagy töltsön le fájlokat egy [kiszolgáló nélküli SQL-készlettel az Azure szinapszis Analyticsben](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/).
 
 Műveletek: 
 
-- A [példányok közötti](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview) írási tranzakciók csak felügyelt példányok esetén támogatottak.
+- A [példányok közötti](../database/elastic-transactions-overview.md) írási tranzakciók csak felügyelt példányok esetén támogatottak.
 - `sp_dropserver` egy csatolt kiszolgáló eldobása esetén támogatott. Lásd: [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
 - A `OPENROWSET` függvényt csak SQL Server példányokon lehet lekérdezéseket végrehajtani. Lehetnek felügyelt, helyszíni vagy virtuális gépek. Lásd: [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql).
 - A `OPENDATASOURCE` függvényt csak SQL Server példányokon lehet lekérdezéseket végrehajtani. Lehetnek felügyelt, helyszíni vagy virtuális gépek. `SQLNCLI`Szolgáltatóként csak a, `SQLNCLI11` , és `SQLOLEDB` értékek támogatottak. Például: `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`. Lásd: [index](/sql/t-sql/functions/opendatasource-transact-sql).

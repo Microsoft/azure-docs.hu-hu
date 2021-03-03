@@ -3,12 +3,12 @@ title: Készlet létrehozása rendelkezésre állási zónák között
 description: Megtudhatja, hogyan hozhat létre többszakaszos házirenddel rendelkező batch-készletet a hibák elleni védelem érdekében.
 ms.topic: how-to
 ms.date: 01/28/2021
-ms.openlocfilehash: 98109e1b74106bc636eaa715575e4b30ab29f9e2
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 56e718bedf504b8e69598c2d99ab8b889a470b89
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99056109"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725288"
 ---
 # <a name="create-an-azure-batch-pool-across-availability-zones"></a>Azure Batch-készlet létrehozása Availability Zones között
 
@@ -22,7 +22,7 @@ A Batch az Azure-ra vonatkozó paritást tart fenn Availability Zones támogatá
 
 Ahhoz, hogy a Batch-készlet le legyen foglalva a rendelkezésre állási zónák között, a készletet létrehozó Azure-régiónak támogatnia kell a kért VM SKU-t egynél több zónában. Ezt úgy ellenőrizheti, ha meghívja az [erőforrás-SKU-lista API](/rest/api/compute/resourceskus/list) -t, és ellenőrzi a [resourceSku](/rest/api/compute/resourceskus/list#resourcesku) **locationInfo** mezőjét. Győződjön meg arról, hogy a kért VM SKU-ban több zóna is támogatott.
 
-A [felhasználói előfizetés módú batch-fiókok](accounts.md#batch-accounts)esetében győződjön meg arról, hogy az előfizetés, amelyben a készletet létrehozza, nem rendelkezik zónára vonatkozó korlátozással a kért VM-SKU-ra vonatkozóan. Ennek megerősítéséhez hívja meg a [Resource SKU List API](/rest/api/compute/resourceskus/list) -t, és ellenőrizze a [ResourceSkuRestrictions](/rest/api/compute/resourceskus/list#resourceskurestrictions). Ha a zóna korlátozása létezik, egy [támogatási jegyet](../azure-portal/supportability/sku-series-unavailable.md) is elküldhet a zóna korlátozásának eltávolításához.
+A [felhasználói előfizetés módú batch-fiókok](accounts.md#batch-accounts)esetében győződjön meg arról, hogy az előfizetés, amelyben a készletet létrehozza, nem rendelkezik zónára vonatkozó korlátozással a kért VM-SKU-ra vonatkozóan. Ennek megerősítéséhez hívja meg a [Resource SKU List API](/rest/api/compute/resourceskus/list) -t, és ellenőrizze a [ResourceSkuRestrictions](/rest/api/compute/resourceskus/list#resourceskurestrictions). Ha a zóna korlátozása létezik, egy [támogatási jegyet](/troubleshoot/azure/general/region-access-request-process) is elküldhet a zóna korlátozásának eltávolításához.
 
 Azt is vegye figyelembe, hogy nem hozhat létre olyan készletet, amely a csomópontok közötti kommunikációt lehetővé teszi, és a [InfiniBand támogató VM SKU](../virtual-machines/workloads/hpc/enable-infiniband.md)-t használ.
 
@@ -83,4 +83,3 @@ A kérés törzse
 - Ismerje meg a [Batch szolgáltatás munkafolyamatát és az elsődleges erőforrásokat](batch-service-workflow-features.md) , például a készleteket, a csomópontokat, a feladatokat és a feladatokat.
 - Ismerje meg [, hogyan hozhat létre készletet egy Azure-beli virtuális hálózat alhálózatában](batch-virtual-network.md).
 - Tudnivalók a [Azure batch-készletek nyilvános IP-címek nélküli létrehozásáról](./batch-pool-no-public-ip-address.md).
-

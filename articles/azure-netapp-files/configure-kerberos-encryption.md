@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/09/2020
+ms.date: 02/18/2021
 ms.author: b-juche
-ms.openlocfilehash: b7e40eb936a6151f0f31c34c5a8030153a87f08c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6ff87d046c60f588e133010895ec3e7ce08cb71f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571093"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740562"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Az NFSv 4.1 Kerberos-titkosításának konfigurálása az Azure NetApp Fileshoz
 
@@ -112,66 +112,11 @@ Az NFS-ügyfél konfigurálásához kövesse az [NFS-ügyfél konfigurálása Az
 
 ## <a name="performance-impact-of-kerberos-on-nfsv41"></a><a name="kerberos_performance"></a>A Kerberos teljesítményére gyakorolt hatás a NFSv 4.1 rendszeren 
 
-Ez a szakasz segítséget nyújt a Kerberos NFSv 4.1-es teljesítményére gyakorolt hatásának megismerésében.
-
-### <a name="available-security-options"></a>Elérhető biztonsági beállítások 
-
-A NFSv 4.1-kötetek jelenleg elérhető biztonsági beállítások a következők: 
-
-* a **SEC = sys** helyi UNIX UID és GID használ az NFS-műveletek hitelesítéséhez AUTH_SYS használatával.
-* **mp = a krb5** a Kerberos V5-et használja a helyi UNIX-UID és a GID helyett a felhasználók hitelesítéséhez.
-* **SEC = a Krb5i** Kerberos V5 protokollt használ a felhasználók hitelesítéséhez, és az adatok illetéktelen módosításának megakadályozásához biztonságos ellenőrzőösszegek használatával végzi az NFS-műveletek integritásának ellenőrzését.
-* **mp = a Krb5p** Kerberos V5 protokollt használ a felhasználók hitelesítéséhez és az integritás ellenőrzéséhez. Titkosítja az NFS-forgalmat, hogy megakadályozza a forgalom elemzését. Ez a lehetőség a legbiztonságosabb beállítás, de a legnagyobb teljesítménnyel is jár.
-
-### <a name="performance-vectors-tested"></a>Tesztelt teljesítmény-vektorok
-
-Ez a szakasz a különböző beállítások egyetlen ügyféloldali teljesítményére gyakorolt hatását ismerteti `sec=*` .
-
-* A teljesítményre gyakorolt hatás két szinten lett tesztelve: alacsony Egyidejűség (alacsony terhelés) és magas Egyidejűség (az I/O és az átviteli sebesség felső határértéke).  
-* A munkaterhelések három típusát tesztelték:  
-    * Kis művelet véletlenszerű olvasási/írási (FIO használatával)
-    * Nagyméretű művelet szekvenciális olvasási/írási (FIO használatával)
-    * Metaadatok nagy mennyiségű számítási feladattal, például a git-vel generált alkalmazások
-
-### <a name="expected-performance-impact"></a>Várható teljesítmény-hatás 
-
-A fókusz két területből áll: a kis-és nagybetűkből álló terheléssel. Az alábbi listában a teljesítményre gyakorolt hatás biztonsági beállításai láthatók a biztonsági beállítások és forgatókönyvek szerint. Minden összehasonlítás a `sec=sys` biztonsági paraméterrel történik. A teszt egyetlen köteten, egyetlen ügyfél használatával lett végrehajtva. 
-
-A krb5 teljesítményére gyakorolt hatás:
-
-* Alacsony Egyidejűség (r/w):
-    * A szekvenciális késés megnövelte a 0,3 MS-ot.
-    * A véletlenszerű I/O-késés nagyobb, mint 0,2 MS.
-    * A metaadatok I/O-késése nagyobb, mint 0,2 MS.
-* Magas Egyidejűség (r/w): 
-    * A krb5 nem befolyásolta a maximális szekvenciális átviteli sebességet.
-    * A teljes véletlenszerű I/O-érték 30%-kal csökkent a tiszta olvasási munkaterhelések esetében, mivel a számítási feladatok a tiszta írásra váltanak. 
-    * A metaadatok maximális munkaterhelése 30%-kal csökkent.
-
-A krb5i teljesítményére gyakorolt hatás: 
-
-* Alacsony Egyidejűség (r/w):
-    * A szekvenciális késés megnövelte a 0,5 MS-ot.
-    * A véletlenszerű I/O-késés nagyobb, mint 0,2 MS.
-    * A metaadatok I/O-késése nagyobb, mint 0,2 MS.
-* Magas Egyidejűség (r/w): 
-    * A maximális soros átviteli sebesség 70%-kal csökkent, a munkaterhelés-elegytől függetlenül.
-    * A maximális véletlenszerű I/O-érték 50%-kal csökkent a tiszta olvasási munkaterhelések esetében, és az általános hatás 25%-ra csökken, mivel a munkaterhelés a tiszta írásra vált. 
-    * A metaadatok maximális munkaterhelése 30%-kal csökkent.
-
-A krb5p teljesítményére gyakorolt hatás:
-
-* Alacsony Egyidejűség (r/w):
-    * A szekvenciális késés megnövelte a 0,8 MS-ot.
-    * A véletlenszerű I/O-késés nagyobb, mint 0,2 MS.
-    * A metaadatok I/O-késése nagyobb, mint 0,2 MS.
-* Magas Egyidejűség (r/w): 
-    * A maximális soros átviteli sebesség 85%-kal csökkent, a munkaterhelés-elegytől függetlenül. 
-    * A teljes véletlenszerű I/O-érték 65%-kal csökkent a tiszta olvasási munkaterhelések esetében, és az általános hatás 43%-ra csökken, mivel a munkaterhelés a tiszta írásra változik. 
-    * A metaadatok maximális munkaterhelése 30%-kal csökkent.
+Ismernie kell az NFSv 4.1-es kötetek, a tesztelt teljesítmény-vektorok és a Kerberos teljesítményének várt teljesítményét. A részletekért lásd: a [Kerberos teljesítményére gyakorolt hatás a nfsv 4.1-es köteteken](performance-impact-kerberos.md) .  
 
 ## <a name="next-steps"></a>Következő lépések  
 
+* [A Kerberos teljesítményére gyakorolt hatás a NFSv 4.1-es köteteken](performance-impact-kerberos.md)
 * [NFSv 4.1 – Kerberos mennyiségi problémák elhárítása](troubleshoot-nfsv41-kerberos-volumes.md)
 * [Gyakori kérdések a Azure NetApp Files](azure-netapp-files-faqs.md)
 * [NFS-kötet létrehozása az Azure NetApp Files számára](azure-netapp-files-create-volumes.md)

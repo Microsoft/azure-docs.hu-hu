@@ -3,17 +3,17 @@ title: A Windows rendszerű virtuális asztal újdonságai – Azure
 description: Új szolgáltatások és Termékfrissítések a Windows rendszerű virtuális asztali gépekhez.
 author: Heidilohr
 ms.topic: overview
-ms.date: 01/29/2021
+ms.date: 02/23/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: 1deec49cfeca65628485ed105e0919f2c2b18b17
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: a2afd47db01725c56f4fe571f1b464818653081d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575313"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737494"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>A Windows rendszerű virtuális asztal újdonságai
 
@@ -39,6 +39,26 @@ Tekintse meg ezeket a cikkeket a Windows rendszerű virtuális asztali és Távo
 ## <a name="fslogix-updates"></a>FSLogix-frissítések
 
 Kíváncsi a FSLogix legújabb frissítéseire? Tekintse [meg a FSLogix újdonságait](/fslogix/whats-new).
+
+## <a name="february-2021"></a>2021. február
+
+A következőképpen módosult a február 2021.
+
+### <a name="portal-experience"></a>Portal-felület
+
+Az alábbi módokon javítottuk a Azure Portal élményt:
+
+- Tömeges kiürítési mód a gazdagépeken a munkamenet-gazdagép rács lapján. 
+- A MSIX-alkalmazás csatolása mostantól elérhető nyilvános előzetes verzióként.
+- Rögzített gazdagép-készlet – áttekintési információ sötét üzemmódhoz.
+
+### <a name="eu-metadata-storage-now-in-public-preview"></a>Nyilvános előzetes verzióban elérhető az EU metaadat-tárolója
+
+Most az Európa (EU) Földrajzának nyilvános előzetesét üzemeltetjük tárolási lehetőségként a Windows rendszerű virtuális asztali szolgáltatás metaadatainak számára. Az ügyfelek a szolgáltatásbeli objektumaik létrehozásakor választhatnak Nyugat-vagy Észak-Európában. A gazdagépekhez tartozó szolgáltatási objektumokat és metaadatokat az egyes régiókkal társított Azure-földrajz fogja tárolni. További információért olvassa el [a nyilvános előzetes verziót bejelentő blogbejegyzést](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/announcing-public-preview-of-windows-virtual-desktop-service/m-p/2143939).
+
+### <a name="teams-on-windows-virtual-desktop-plugin-updates"></a>Csapatok a Windows rendszerű virtuális asztali beépülő modul frissítésein
+
+Továbbfejlesztettük a videohívás minőségét a Windows rendszerű virtuális asztali beépülő modulban a leggyakrabban jelentett problémák megoldásával, például ha a képernyő hirtelen sötét vagy a videó és hang deszinkronizálva lesz. Ezek a tökéletesítések az egyvideós nézet teljesítményét növelhetik az aktív hangszórók váltásával. Olyan problémát is kijavítunk, amelyben a speciális karaktereket tartalmazó hardvereszközök nem voltak elérhetők a csapatokban.
 
 ## <a name="january-2021"></a>2021. január
 

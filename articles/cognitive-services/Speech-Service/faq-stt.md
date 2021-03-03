@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: panosper
-ms.openlocfilehash: 21924ad5da8833ca5cf8373270ed1bfd3facfdc9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1ebba3231a7b3a86b98bcc14d1257412d1557ff3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388617"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738191"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Beszéd szöveggel kapcsolatos gyakori kérdések
 
 Ha nem talál választ a kérdéseire ebben a GYIK-ban, tekintse meg az [egyéb támogatási lehetőségeket](../cognitive-services-support-options.md?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext%253fcontext%253d%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext).
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 **K: mi a különbség az alapmodell és a szöveges modell egyéni beszéde között?**
 
@@ -138,7 +138,9 @@ Lásd: [a Speech Services kvótái és korlátai](speech-services-quotas-and-lim
 
 **A**: hangadatokkal rendelkező modell képzése hosszú folyamat lehet. Az adatmennyiségtől függően több napot is igénybe vehet, hogy egyéni modellt hozzon létre. Ha egy héten belül nem végezhető el, a szolgáltatás megszakíthatja a betanítási műveletet, és sikertelenként jelentheti a modellt.
 
-A gyorsabb eredmény érdekében használja az egyik olyan [régiót](custom-speech-overview.md#set-up-your-azure-account) , ahol a dedikált hardver elérhető a betanításhoz. Általánosságban elmondható, hogy a szolgáltatás naponta körülbelül 10 órányi hangadatot dolgoz fel az ilyen hardverrel rendelkező régiókban. A szolgáltatás csak a napi 1 órányi hangmennyiséget dolgozza fel naponta más régiókban. A teljes körűen betanított modellt egy másik régióba másolhatja a [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription)használatával. A csak szöveggel rendelkező képzés sokkal gyorsabb, és általában percek alatt fejeződik be.
+Használja az egyik olyan [régiót](custom-speech-overview.md#set-up-your-azure-account) , ahol a dedikált hardver elérhető a betanításhoz. A beszédfelismerési szolgáltatás akár 20 órányi hang használatát fogja használni ezekben a régiókban. Más régiókban a szolgáltatás legfeljebb 8 órát vesz igénybe.
+
+Általánosságban elmondható, hogy a szolgáltatás naponta körülbelül 10 órányi hangadatot dolgoz fel a régiókban dedikált hardverrel. A szolgáltatás csak a napi 1 órányi hangmennyiséget dolgozza fel naponta más régiókban. A teljes körűen betanított modellt egy másik régióba másolhatja a [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription)használatával. A csak szöveggel rendelkező képzés sokkal gyorsabb, és általában percek alatt fejeződik be.
 
 Egyes alapmodellek nem szabhatók testre a hangadatokkal. Számukra a szolgáltatás csak az átirat szövegét fogja használni a betanításhoz, és figyelmen kívül hagyja a hangadatokat. A képzések ezután sokkal gyorsabbak lesznek, és az eredmények ugyanúgy fognak megjelenni, mint a csak szöveggel végzett képzés. A hangadatokkal való képzést támogató alapmodellek listáját a [nyelvi támogatásban](language-support.md#speech-to-text) találhatja meg.
 

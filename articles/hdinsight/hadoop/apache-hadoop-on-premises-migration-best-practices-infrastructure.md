@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: f66e13046a34bddfd27912e23ce51f75006fd9fa
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 309053c2d7a0f9482016f1bd83e0c61dcd31bec5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932152"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740664"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight-infrastruktúrára – ajánlott eljárások
 
@@ -36,7 +36,7 @@ További információt a [HDInsight-fürtök kapacitásának megtervezése](../h
 
 ## <a name="use-recommended-virtual-machine-type-for-cluster"></a>Ajánlott virtuálisgép-típus használata a fürthöz
 
-Az egyes HDInsight-fürtökhöz ajánlott virtuálisgép-típusokat az [alapértelmezett csomópont-konfiguráció és a virtuális gépek méretei](../hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters) című témakörben talál.
+Az egyes HDInsight-fürtökhöz ajánlott virtuálisgép-típusokat az [alapértelmezett csomópont-konfiguráció és a virtuális gépek méretei](../hdinsight-supported-node-configuration.md) című témakörben talál.
 
 ## <a name="check-hadoop-components-availability-in-hdinsight"></a>Hadoop-összetevők rendelkezésre állásának keresése a HDInsight-ben
 
@@ -73,7 +73,7 @@ A helyszíni fürtökben elérhető, de nem a HDInsight-fürtök részét képez
 |Palantír|IaaS 
 |Sailpoint|IaaS 
 
-További információ: [Apache Hadoop különböző HDInsight-verziókban elérhető összetevők](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions) .
+További információ: [Apache Hadoop különböző HDInsight-verziókban elérhető összetevők](../hdinsight-component-versioning.md) .
 
 ## <a name="customize-hdinsight-clusters-using-script-actions"></a>HDInsight-fürtök testreszabása parancsfájl-műveletek használatával
 

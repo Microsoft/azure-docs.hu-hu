@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 09/11/2020
-ms.openlocfilehash: a95cacafc5b1d00b1e4d04fd84cdda2de72b6a59
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 4545c3529baf92e2f90d9289ec6828ad9a720e3a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523005"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738004"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory adatforgalmának hibáinak megoldása
 
@@ -132,7 +132,7 @@ Ez a cikk az adatfolyamatok Azure Data Factoryban történő leképezésének gy
  
 - **Üzenet**: a fürt kifogyott a memóriából a végrehajtás során, próbálkozzon újra egy integrációs modul használatával, amely nagyobb alapszámmal és/vagy memória-optimalizált számítási típussal rendelkezik.
 - **Okok**: a fürt elfogyott a memóriából.
-- **Javaslat**: a hibakeresési fürtök fejlesztési célokra szolgálnak. Használja ki az adatok mintavételezésének megfelelő számítási típust és méretet az adattartalom futtatásához. A legjobb teljesítmény érdekében tekintse meg a [adatfolyam Performance útmutatót](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-performance) a adatfolyamok hangolásához.
+- **Javaslat**: a hibakeresési fürtök fejlesztési célokra szolgálnak. Használja ki az adatok mintavételezésének megfelelő számítási típust és méretet az adattartalom futtatásához. A legjobb teljesítmény érdekében tekintse meg a [adatfolyam Performance útmutatót](./concepts-data-flow-performance.md) a adatfolyamok hangolásához.
 
 ### <a name="error-code-df-executor-illegalargument"></a>Hibakód: DF-végrehajtó-illegalArgument
 - **Üzenet**: Ellenőrizze, hogy helyes-e a társított szolgáltatás elérési kulcsa.
@@ -182,7 +182,7 @@ Ez a cikk az adatfolyamatok Azure Data Factoryban történő leképezésének gy
 
 - **Üzenet**: érvénytelen tartomány van megadva.
 - **Okok**: meghatározatlan
-- **Javaslat**: Ellenőrizze a paraméter értékét, és adjon meg érvényes tartományt a hivatkozás: [Excel-tulajdonságok](https://docs.microsoft.com/azure/data-factory/format-excel#dataset-properties)alapján.
+- **Javaslat**: Ellenőrizze a paraméter értékét, és adjon meg érvényes tartományt a hivatkozás: [Excel-tulajdonságok](./format-excel.md#dataset-properties)alapján.
 
 - **Üzenet**: érvénytelen Excel-fájl van megadva, amíg csak az. xlsx és az. xls támogatott
 - **Okok**: meghatározatlan
@@ -204,7 +204,7 @@ Ez a cikk az adatfolyamatok Azure Data Factoryban történő leképezésének gy
 
 ### <a name="error-code-4502"></a>Hibakód: 4502
 - **Üzenet**: jelentős párhuzamos MappingDataflow-végrehajtások vannak, amelyek meghibásodást okoznak a Integration Runtime alatti szabályozás miatt.
-- **Okok**: sok adatfolyam tevékenység fut egyszerre a Integration Runtime. További információ a [Azure Data Factory korlátozásokról](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#data-factory-limits).
+- **Okok**: sok adatfolyam tevékenység fut egyszerre a Integration Runtime. További információ a [Azure Data Factory korlátozásokról](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits).
 - **Javaslat**: abban az esetben, ha párhuzamosan szeretné futtatni az adatfolyam-tevékenységeket, ossza meg ezeket több integrációs futtatókörnyezettel.
 
 

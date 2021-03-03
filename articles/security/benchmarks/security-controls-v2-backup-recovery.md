@@ -4,19 +4,21 @@ description: Azure Security teljesítményteszt v2 – biztonsági mentés és h
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 089cf521a7c5428833be340001c88b870c568a8f
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: fd9a01868230efd9e9078171359d81302b472cd3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368885"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724421"
 ---
 # <a name="security-control-v2-backup-and-recovery"></a>Security Control v2: biztonsági mentés és helyreállítás
 
 A biztonsági mentés és helyreállítás kiterjed a vezérlőkre, így biztosítva, hogy az adatokat és a konfigurációkat a különböző szolgáltatási rétegek végzik, ellenőrzik és védik.
+
+A megfelelő beépített Azure Policy megjelenítéséhez tekintse meg [Az Azure biztonsági teljesítményteszt szabályozási megfelelőségének beépített kezdeményezését ismertető témakört: biztonsági mentés és helyreállítás](../../governance/policy/samples/azure-security-benchmark#backup-and-recovery)
 
 ## <a name="br-1-ensure-regular-automated-backups"></a>BR-1: rendszeres automatikus biztonsági mentések biztosítása
 
@@ -26,7 +28,7 @@ A biztonsági mentés és helyreállítás kiterjed a vezérlőkre, így biztos�
 
 Győződjön meg arról, hogy biztonsági mentést készít a rendszerekről és az adatbázisokról, hogy egy váratlan esemény után fenntartsa az üzletmenet folytonosságát. Ezt a helyreállítási pontok célkitűzésének (RPO) és a helyreállítási idő célkitűzésének (RTO) bármely célkitűzése határozza meg.
 
-Engedélyezze Azure Backup és konfigurálja a biztonsági mentési forrást (például Azure-beli virtuális gépeket, SQL Server, HANA-adatbázisokat vagy fájlmegosztást), valamint a kívánt gyakoriságot és megőrzési időt.  
+Engedélyezze Azure Backup és konfigurálja a biztonsági mentési forrást (például Azure-beli virtuális gépeket, SQL Server, HANA-adatbázisokat vagy fájlmegosztást), valamint a kívánt gyakoriságot és megőrzési időt.
 
 A magasabb szintű védelem érdekében engedélyezheti a Geo-redundáns tárolási lehetőséget, hogy a biztonsági mentési adatokat egy másodlagos régióba replikálja, és a helyreállítást a régiók közötti visszaállítás használatával végezze el.
 
@@ -54,15 +56,15 @@ A magasabb szintű védelem érdekében engedélyezheti a Geo-redundáns tárol�
 |--|--|--|--|
 | BR – 2 | 10,2 | CP-9 |
 
-Győződjön meg róla, hogy a biztonsági másolatok védve vannak a támadásokkal szemben. Ennek tartalmaznia kell a biztonsági másolatok titkosítását a titkosság elvesztése elleni védelem érdekében.   
+Győződjön meg arról, hogy a biztonsági másolatok védve vannak a támadásokkal szemben. Ennek tartalmaznia kell a biztonsági másolatok titkosítását a titkosság elvesztése elleni védelem érdekében.
 
-Az Azure Backup-t használó helyszíni biztonsági másolatok esetén a rendszer az Ön által megadott hozzáférési kód használatával biztosítja a titkosítást. Az Azure-szolgáltatások rendszeres biztonsági mentése esetén a biztonsági mentési adatokat az Azure platform által felügyelt kulcsok használatával automatikusan titkosítja a rendszer. Megadhatja, hogy a biztonsági mentéseket az ügyfél által felügyelt kulcs használatával titkosítsa. Ebben az esetben ügyeljen arra, hogy az ügyfél által felügyelt kulcs a Key vaultban is a biztonsági mentési hatókörben legyen. 
+Az Azure Backup-t használó helyszíni biztonsági másolatok esetén a rendszer az Ön által megadott hozzáférési kód használatával biztosítja a titkosítást. Az Azure-szolgáltatások rendszeres biztonsági mentése esetén a biztonsági mentési adatokat az Azure platform által felügyelt kulcsok használatával automatikusan titkosítja a rendszer. Megadhatja, hogy a biztonsági mentéseket az ügyfél által felügyelt kulcs használatával titkosítsa. Ebben az esetben ügyeljen arra, hogy az ügyfél által felügyelt kulcs a Key vaultban is a biztonsági mentési hatókörben legyen.
 
 A biztonsági másolatok és az ügyfelek által felügyelt kulcsok elleni védelem érdekében használja az Azure szerepköralapú hozzáférés-vezérlést Azure Backup, Azure Key Vault vagy más erőforrásokkal. Emellett speciális biztonsági funkciók is engedélyezhetők az MFA megköveteléséhez, mielőtt a biztonsági másolatok módosíthatók vagy törölhetők.
 
 - [A Azure Backup biztonsági funkcióinak áttekintése](../../backup/security-overview.md)
 
-- [Biztonsági mentési adatai titkosítása az ügyfél által felügyelt kulcsokkal](../../backup/encryption-at-rest-with-cmk.md) 
+- [Biztonsági mentési adatok titkosítása ügyfelek által felügyelt kulcsok használatával](../../backup/encryption-at-rest-with-cmk.md) 
 
 - [Key Vault kulcsok biztonsági mentése az Azure-ban](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
@@ -104,7 +106,7 @@ Rendszeres időközönként végezze el a biztonsági mentés adatvisszaállít�
 |--|--|--|--|
 | BR – 4 | 10,4 | CP-9 |
 
-Győződjön meg arról, hogy rendelkezik olyan mértékekkel, amelyek megakadályozzák a kulcsok elvesztését és helyreállítását. Engedélyezze a helyreállítható törlést és a végleges törléssel szembeni védelmet az Azure Key Vaultban, hogy megvédje a kulcsokat a véletlen vagy rosszindulatú törléssel szemben.  
+Győződjön meg arról, hogy rendelkezik olyan mértékekkel, amelyek megakadályozzák a kulcsok elvesztését és helyreállítását. Engedélyezze a helyreállítható törlést és a végleges törléssel szembeni védelmet az Azure Key Vaultban, hogy megvédje a kulcsokat a véletlen vagy rosszindulatú törléssel szemben.
 
 - [Helyreállítható törlés és a végleges törléssel szembeni védelem engedélyezése kulcstartóban](../../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 

@@ -6,16 +6,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 01/20/2021
+ms.date: 02/09/2021
 ms.custom: devx-track-java
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: 92b78cae7d1af5dc71509381afd7eaf3f962a8fa
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4c87dc9f11a6a9780d77b39597e0479ccb6863d8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100514958"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101751011"
 ---
 <a name="HOLTop"></a>
 
@@ -26,10 +26,6 @@ ms.locfileid: "100514958"
 # <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
 
 [Dokumentáció](/java/api/overview/azure/ai-textanalytics-readme)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics)  |  [Csomag](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.0.0)  |  [Példák](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
-
-# <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
-
-Ez a cikk az API 3. x verzióját ismerteti.
 
 ---
 
@@ -76,10 +72,6 @@ Hozzon létre egy Maven-projektet az előnyben részesített IDE-vagy fejleszté
 
 > [!TIP]
 > Egyszerre szeretné megtekinteni a teljes rövid útmutató kódját? Megtalálhatja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/TextAnalytics/TextAnalyticsSamples.java), amely a jelen rövid útmutatóban szereplő példákat tartalmazza. 
-
-# <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
-
-Ez a cikk az API 3. x verzióját ismerteti.
 
 ---
 
@@ -136,10 +128,6 @@ public static void main(String[] args) {
         AnalyzeOperationExample(client)
 }
 ```
-
-# <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
-
-Ez a cikk az API 3. x verzióját ismerteti.
 
 ---
 
@@ -321,10 +309,6 @@ Recognized document sentiment: positive, positive score: 1.0, neutral score: 0.0
 Recognized sentence sentiment: positive, positive score: 1.0, neutral score: 0.0, negative score: 0.0.
 Recognized sentence sentiment: neutral, positive score: 0.21, neutral score: 0.77, negative score: 0.02.
 ```
-
-# <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
-
-Ez a cikk az API 3. x verzióját ismerteti.
 
 ---
 
@@ -570,10 +554,6 @@ Matches:
 Text: BASIC, Score: 0.33
 ```
 
-# <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
-
-Ez a cikk az API 3. x verzióját ismerteti.
-
 ---
 
 ## <a name="key-phrase-extraction"></a>Kulcskifejezések kinyerése
@@ -683,9 +663,5 @@ Az elemzési művelettel is felderítheti a személyes és a kulcsfontosságú k
 # <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
 
 Ez a funkció az 3,0-es verzióban nem érhető el.
-
-# <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
-
-Ez a funkció az 2,1-es verzióban nem érhető el.
 
 ---

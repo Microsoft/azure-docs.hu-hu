@@ -1,70 +1,62 @@
 ---
 title: Telemetria processzorok (előzetes verzió) – Azure Monitor Application Insights Javához
-description: Telemetria-processzorok konfigurálása a Azure Monitor Application Insights Javához
+description: Ismerje meg, hogyan konfigurálhatja a telemetria-processzorokat Azure Monitor Application Insights Javához.
 ms.topic: conceptual
 ms.date: 10/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: c0745dd4069c64292fbcaef666d843ae2d25f7b3
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 35e53454e5b2c6265082bbedb4a8b60e82df7191
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632580"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734570"
 ---
 # <a name="telemetry-processors-preview---azure-monitor-application-insights-for-java"></a>Telemetria processzorok (előzetes verzió) – Azure Monitor Application Insights Javához
 
 > [!NOTE]
-> Ez a funkció még mindig előzetes verzióban érhető el.
+> A telemetria processzorok funkciója előzetes verzióban érhető el.
 
-A Application Insights Java 3,0-ügynöke most már rendelkezik a telemetria-alapú adatfeldolgozáshoz szükséges képességekkel az exportálás előtt.
+A Application Insights Java 3,0-ügynöke a telemetria-adatfeldolgozást az adatexportálás előtt képes feldolgozni.
 
-A telemetria processzorok néhány felhasználási esete a következő:
- * Bizalmas adatok maszkolása
- * Egyéni dimenziók feltételes hozzáadása
- * Frissítse az összesítéshez és megjelenítéshez használt nevet a Azure Portal
- * Drop span attribútumok a betöltési díjak szabályozásához
+Íme néhány felhasználási eset a telemetria processzorok esetében:
+ * Bizalmas adatok létrehozása.
+ * Adja meg az egyéni dimenziók feltételeit.
+ * Frissítse a span nevet, amely a Azure Portal hasonló telemetria összesítésére szolgál.
+ * Drop span attribútumok a betöltési költségek szabályozásához.
 
 ## <a name="terminology"></a>Terminológia
 
-Mielőtt beugorjunk a telemetria processzorokra, fontos tisztában lennie azzal, hogy mire vonatkozik a kifejezés.
+Mielőtt elsajátítja a telemetria processzorokat, ismernie kell *az időtartamot.* A span a következő általános kifejezése:
 
-A span a következő három dolog egyik általános kifejezése:
+* Egy bejövő kérelem.
+* Kimenő függőség (például távoli hívás egy másik szolgáltatásnak).
+* Folyamaton belüli függőség (például a szolgáltatás alösszetevői végzik a munkát).
 
-* Bejövő kérelem
-* Kimenő függőség (például távoli hívás egy másik szolgáltatásnak)
-* Folyamaton belüli függőség (például a szolgáltatás alösszetevői végzik a munkát)
-
-A telemetria processzorok esetében a span fontos összetevői a következők:
+A telemetria processzorok esetében ezek a span-összetevők fontosak:
 
 * Name
 * Attribútumok
 
-A span neve a kérelmekhez és a függőségekhez használt elsődleges megjelenítés a Azure Portalban.
-
-A span attribútumok az adott kérelem vagy függőség standard és egyéni tulajdonságait jelölik.
+A span neve a kérések és a függőségek elsődleges megjelenítése a Azure Portalban. A span attribútumok az adott kérelem vagy függőség standard és egyéni tulajdonságait jelölik.
 
 ## <a name="telemetry-processor-types"></a>Telemetria processzor típusai
 
-Jelenleg két típusú telemetria processzor létezik.
+Jelenleg a telemetria processzorok kétféle típusa van az attribútumok processzorai és a span processzorok számára.
 
-#### <a name="attribute-processor"></a>Attribútum processzora
+Az attribútum-processzor beillesztheti, frissítheti, törölheti vagy kivonatoló attribútumokat adhat meg.
+Használhat egy reguláris kifejezést is egy vagy több új attribútum egy meglévő attribútumból való kinyeréséhez.
 
-Az attribútum-feldolgozó képes az attribútumok beszúrására, frissítésére, törlésére vagy kivonatolására.
-Egy vagy több új attribútum egy meglévő attribútumból való kinyerése (reguláris kifejezéssel) is elvégezhető.
-
-#### <a name="span-processor"></a>Span processzor
-
-A span processzor képes frissíteni a telemetria nevét.
-Kinyerheti (reguláris kifejezéssel) egy vagy több új attribútumot is a span nevéből.
+A span processzorok frissíthetik a telemetria nevét.
+Egy reguláris kifejezés használatával is kinyerhető egy vagy több új attribútum a span nevéből.
 
 > [!NOTE]
-> Vegye figyelembe, hogy a telemetria-processzorok jelenleg csak karakterlánc típusú attribútumokat dolgozzák fel, és nem a logikai vagy a szám típusú attribútumokat dolgozzák fel.
+> A telemetria-processzorok jelenleg csak a String típusú attribútumokat dolgozzák fel. A logikai vagy a szám típusú attribútumokat nem dolgozzák fel.
 
 ## <a name="getting-started"></a>Első lépések
 
-Hozzon létre egy nevű konfigurációs fájlt `applicationinsights.json` , és helyezze ugyanabba a könyvtárba `applicationinsights-agent-*.jar` , a következő sablonnal.
+A kezdéshez hozzon létre egy *applicationinsights.js* nevű konfigurációs fájlt. Mentse azt ugyanabban a könyvtárban, mint a *applicationinsights-Agent- \* . jar*. Használja az alábbi sablont.
 
 ```json
 {
@@ -88,29 +80,27 @@ Hozzon létre egy nevű konfigurációs fájlt `applicationinsights.json` , és 
 }
 ```
 
-## <a name="includeexclude-criteria"></a>Feltételek belefoglalása/kizárása
+## <a name="include-criteria-and-exclude-criteria"></a>Feltételek és kizáró feltételek belefoglalása
 
 Mindkét attribútum-feldolgozó és a span processzor támogatja `include` a választható és a `exclude` feltételt.
-A processzor csak azokra a feltétekre lesz alkalmazva, amelyek megfelelnek a `include` feltételnek (ha meg van határozva) _, és_ nem felelnek meg a `exclude` feltételeinek (ha van ilyen).
+A processzort csak azokra a feltétekre lehet alkalmazni, amelyek megfelelnek a feltételeknek (ha meg van határozva `include` ) _, és_ nem felelnek `exclude` meg a feltételeinek (ha meg van határozva).
 
-A beállítás konfigurálásához a `include` és/vagy a (z) és/vagy legalább egy, illetve az `exclude` `matchType` egyik `spanNames` `attributes` szükséges.
-A belefoglalási/kizárási konfiguráció több megadott feltételt is támogat.
-Az összes megadott feltételnek igaz értékűnek kell lennie, ha egyezés történik. 
+Ha ezt a beállítást szeretné konfigurálni, a `include` vagy a `exclude` (vagy mindkettő) területen adja meg a legalább egyet, illetve a vagy a elemet `matchType` `spanNames` `attributes` .
+A belefoglalási konfiguráció több megadott feltételt is engedélyez.
+Az összes megadott feltételnek igaz értékre kell kiértékelnie, hogy egyezést eredményez. 
 
-**Kötelező mező**: 
-* `matchType` meghatározza, hogy a `spanNames` rendszer hogyan értelmezze az elemeket és a `attributes` tömböket. A lehetséges értékek: `regexp` és `strict`. 
+* **Kötelező mező**: `matchType` szabályozza a `spanNames` tömbökben és `attributes` tömbökben lévő elemek értelmezését. A lehetséges értékek a következők: `regexp` és `strict` . 
 
-Nem **kötelező mezők**: 
-* `spanNames` legalább egy elemnek meg kell egyeznie. 
-* `attributes` meghatározza az egyeztetni kívánt attribútumok listáját. Ezeknek az attribútumoknak pontosan egyezniük kell egymással.
-
+* Nem **kötelező mezők**: 
+    * `spanNames` legalább egy elemnek meg kell egyeznie. 
+    * `attributes` meghatározza az egyeztetni kívánt attribútumok listáját. Ezeknek az attribútumoknak pontosan egyezniük kell, hogy egyezzenek a találatokkal.
+    
 > [!NOTE]
-> Ha mindkettő `include` és `exclude` a meg van adva, a tulajdonságok a `include` Tulajdonságok előtt lesznek bejelölve `exclude` .
+> Ha mindkettő `include` és `exclude` a meg van adva, a tulajdonságokat a `include` Tulajdonságok ellenőrzése előtt ellenőrzi a rendszer `exclude` .
 
-#### <a name="sample-usage"></a>Példa a használatra
+### <a name="sample-usage"></a>Minta használata
 
 ```json
-
 "processors": [
   {
     "type": "attribute",
@@ -143,15 +133,20 @@ Nem **kötelező mezők**:
   }
 ]
 ```
-További tudnivalókat a [telemetria Processor példák](./java-standalone-telemetry-processors-examples.md) dokumentációjában talál.
+További információ: [telemetria Processor examples](./java-standalone-telemetry-processors-examples.md).
 
 ## <a name="attribute-processor"></a>Attribútum processzora
 
-Az attribútumok feldolgozó a span attribútumait módosítja. Lehetőség van arra is, hogy belefoglalja vagy kizárja a felölelő képességeket. A konfigurációs fájlban megadott sorrendben végrehajtott műveletek listáját veszi figyelembe. A támogatott műveletek a következők:
+Az attribútum-feldolgozó módosítja egy span attribútumait. Támogathatja az elterjedések belefoglalásának vagy kizárásának lehetőségét is. A konfigurációs fájl által megadott sorrendben végrehajtott műveletek listáját veszi figyelembe. A processzor a következő műveleteket támogatja:
 
+- `insert`
+- `update`
+- `delete`
+- `hash`
+- `extract`
 ### `insert`
 
-Egy olyan új attribútum beszúrása, amelyben a kulcs még nem létezik.   
+A `insert` művelet beszúr egy új attribútumot a megjelenő ablakba, ahol a kulcs még nem létezik.   
 
 ```json
 "processors": [
@@ -167,14 +162,14 @@ Egy olyan új attribútum beszúrása, amelyben a kulcs még nem létezik.
   }
 ]
 ```
-A `insert` művelethez a következők szükségesek
-  * `key`
-  * az egyik `value` vagy `fromAttribute`
-  * `action`:`insert`
+A `insert` művelethez a következő beállítások szükségesek:
+* `key`
+* `value`Vagy`fromAttribute`
+* `action`: `insert`
 
 ### `update`
 
-Egy olyan attribútum frissítése, amelyben a kulcs létezik
+A `update` művelet frissíti egy attribútumot az átfedésekben, ahol a kulcs már létezik.
 
 ```json
 "processors": [
@@ -190,15 +185,15 @@ Egy olyan attribútum frissítése, amelyben a kulcs létezik
   }
 ]
 ```
-A `update` művelethez a következők szükségesek
-  * `key`
-  * az egyik `value` vagy `fromAttribute`
-  * `action`:`update`
+A `update` művelethez a következő beállítások szükségesek:
+* `key`
+* `value`Vagy`fromAttribute`
+* `action`: `update`
 
 
 ### `delete` 
 
-Attribútum törlése egy tartományból
+A `delete` művelet töröl egy attribútumot egy tartományból.
 
 ```json
 "processors": [
@@ -213,13 +208,13 @@ Attribútum törlése egy tartományból
   }
 ]
 ```
-A `delete` művelethez a következők szükségesek
-  * `key`
-  * `action`: `delete`
+A `delete` művelethez a következő beállítások szükségesek:
+* `key`
+* `action`: `delete`
 
 ### `hash`
 
-Kivonatok (SHA1) meglévő attribútumérték
+A `hash` művelet kivonatai (SHA1) egy meglévő attribútumérték.
 
 ```json
 "processors": [
@@ -234,16 +229,16 @@ Kivonatok (SHA1) meglévő attribútumérték
   }
 ]
 ```
-A `hash` művelethez a következők szükségesek
+A `hash` művelethez a következő beállítások szükségesek:
 * `key`
-* `action` : `hash`
+* `action`: `hash`
 
 ### `extract`
 
 > [!NOTE]
-> Ez a funkció csak a 3.0.2 és újabb verziókban érhető el
+> A `extract` szolgáltatás csak a 3.0.2 és újabb verziókban érhető el.
 
-Kinyeri az értékeket a szabályban megadott, a bemeneti kulcstól a reguláris kifejezési szabály használatával. Ha a célként megadott kulcs már létezik, a rendszer felülbírálja. Ehhez hasonlóan viselkedik a [](#extract-attributes-from-span-name) `toAttributes` meglévő attribútummal rendelkező span Processor beállításhoz a forrásként.
+A `extract` művelet kibontja az értékeket egy reguláris kifejezéssel a bemeneti kulcsból a szabály által megadott kulcsokra. Ha a célként megadott kulcs már létezik, felülbírálva van. Ez a művelet úgy viselkedik, mint a [kiterjedési processzor](#extract-attributes-from-the-span-name) `toAttributes` beállítása, ahol a meglévő attribútum a forrás.
 
 ```json
 "processors": [
@@ -259,28 +254,24 @@ Kinyeri az értékeket a szabályban megadott, a bemeneti kulcstól a reguláris
   }
 ]
 ```
-A `extract` művelethez a következők szükségesek
+A `extract` művelethez a következő beállítások szükségesek:
 * `key`
 * `pattern`
-* `action` : `extract`
+* `action`: `extract`
 
-További tudnivalókat a [telemetria Processor példák](./java-standalone-telemetry-processors-examples.md) dokumentációjában talál.
+További információ: [telemetria Processor examples](./java-standalone-telemetry-processors-examples.md).
 
 ## <a name="span-processor"></a>Span processzor
 
-A span processzor a span neve alapján módosítja a span tartomány nevét vagy attribútumait. Lehetőség van arra is, hogy belefoglalja vagy kizárja a felölelő képességeket.
+A span processzor a span neve alapján módosítja a span tartomány nevét vagy attribútumait. Támogathatja az elterjedések belefoglalásának vagy kizárásának lehetőségét is.
 
 ### <a name="name-a-span"></a>Egy span neve
 
-A név szakasz részeként a következő beállítás szükséges:
+A `name` szakaszhoz a `fromAttributes` beállítás szükséges. Ezeknek az attribútumoknak az értékei a konfiguráció által megadott sorrendben összefűzött új név létrehozására szolgálnak. A processzor csak akkor fogja módosítani a span Name nevet, ha az összes ilyen attribútum megtalálható a teljes tartományon.
 
-* `fromAttributes`: A kulcsok attribútumának értéke a konfigurációban megadott sorrendben új név létrehozására szolgál. Az összes attribútum kulcsát meg kell adni abban a tartományon belül, amelynek át kell neveznie a processzort.
-
-A következő beállítás opcionálisan konfigurálható:
-
-* `separator`: A rendszer a megadott karakterláncot használja az értékek felosztásához.
+A `separator` beállítás megadása nem kötelező. Ez a beállítás egy karakterlánc. Az értékek felosztására van beállítva.
 > [!NOTE]
-> Ha az Átnevezés attól függ, hogy az attribútumok processzora milyen attribútumokat módosít, győződjön meg arról, hogy a csővezeték-specifikációban az attribútumok processzora után a span processzor van megadva.
+> Ha az Átnevezés az attribútumok processzorra támaszkodik az attribútumok módosításához, győződjön meg arról, hogy a folyamat-specifikációban az attribútumok processzora van megadva a span processzor.
 
 ```json
 "processors": [
@@ -297,16 +288,26 @@ A következő beállítás opcionálisan konfigurálható:
 ] 
 ```
 
-### <a name="extract-attributes-from-span-name"></a>Attribútumok kinyerése a tartomány nevéből
+### <a name="extract-attributes-from-the-span-name"></a>Attribútumok kinyerése a span nevéből
 
-Lefoglalja a reguláris kifejezések listáját, hogy egyezzen a tartomány nevével, és kinyerje az attribútumokat az alkifejezések alapján. A szakaszban meg kell adni `toAttributes` .
+A `toAttributes` szakasz felsorolja azokat a reguláris kifejezéseket, amelyek megfelelnek a span nevének. Attribútumok kibontása alkifejezések alapján.
 
-A következő beállítások szükségesek:
+A `rules` beállítás megadása kötelező. Ez a beállítás felsorolja azokat a szabályokat, amelyek segítségével kinyerheti az attribútumok értékeit a tartomány nevéből. 
 
-`rules` : Azoknak a szabályoknak a listája, amelyekkel kinyerheti az attribútumok értékeit a tartomány neve alapján. A span Name értékeit a kinyert attribútumok neve váltja fel. A lista minden szabálya regex minta sztring. A span nevet a rendszer a regexben ellenőrzi. Ha a regex egyezik, a regex összes megnevezett alkifejezése attribútumként lesz kibontva, és hozzá lesz adva a tartományhoz. Az egyes alkifejezések neve az attribútumérték és az alkifejezések egyezési részévé válik. Az span Name egyező részét a kinyert attribútum neve váltja fel. Ha az attribútumok már léteznek a span-ban, a rendszer felülírja őket. A folyamat a megadott sorrendben minden szabálynál megismétlődik. Minden további szabály az előző szabály feldolgozását követően kimenetként működik.
+A span Name értékeit a kinyert attribútumok neve váltja fel. A lista minden szabálya egy reguláris kifejezés (regex) mintázatának karakterlánca. 
+
+Az értékek a kinyert attribútumok neveivel helyettesíthetők:
+
+1. A span nevet a rendszer a regexben ellenőrzi. 
+1. Ha a regex egyezik, a regex összes megnevezett alkifejezése attribútumként lesz kibontva. 
+1. A kibontott attribútumok hozzáadódnak a tartományhoz. 
+1. Minden alkifejezés neve egy attribútum neve lesz. 
+1. Az alkifejezés egyezésének értéke lesz az attribútumérték. 
+1. Az span Name egyező részét a kinyert attribútum neve váltja fel. Ha az attribútumok már léteznek a span-ban, a rendszer felülírja őket. 
+ 
+Ezt a folyamatot a megadott sorrendben minden szabálynál meg kell ismételni. Minden további szabály az előző szabály kimenetét képező span névben működik.
 
 ```json
-
 "processors": [
   {
     "type": "span",
@@ -324,26 +325,26 @@ A következő beállítások szükségesek:
 
 ```
 
-## <a name="list-of-attributes"></a>Attribútumok listája
+## <a name="common-span-attributes"></a>Általános span attribútumok
 
-Az alábbiakban felsorolunk néhány gyakori, a telemetria processzorokban használható span-attribútumot.
+Ez a szakasz felsorolja a telemetria processzorok által használható általános span-attribútumokat.
 
 ### <a name="http-spans"></a>HTTP-Átívelés
 
 | Attribútum  | Típus | Description | 
 |---|---|---|
 | `http.method` | sztring | HTTP-kérelem módszere.|
-| `http.url` | sztring | Teljes HTTP-kérelem URL-címe az űrlapon `scheme://host[:port]/path?query[#fragment]` . Általában a töredék nem kerül át HTTP-n keresztül, de ha ismert, mégis szerepelnie kell bennük.|
+| `http.url` | sztring | Teljes HTTP-kérelem URL-címe az űrlapon `scheme://host[:port]/path?query[#fragment]` . A töredék általában nem HTTP-n keresztül történik. Ha azonban ismert a töredék, azt bele kell foglalni.|
 | `http.status_code` | szám | [Http-válasz állapotának kódja](https://tools.ietf.org/html/rfc7231#section-6)|
-| `http.flavor` | sztring | A használt HTTP-protokoll típusa |
+| `http.flavor` | sztring | A HTTP-protokoll típusa. |
 | `http.user_agent` | sztring | Az ügyfél által eljuttatott [http User-Agent](https://tools.ietf.org/html/rfc7231#section-5.5.3) fejléc értéke. |
 
 ### <a name="jdbc-spans"></a>JDBC-átívelő
 
 | Attribútum  | Típus | Description  |
 |---|---|---|
-| `db.system` | sztring | Az adatbázis-kezelő rendszer (adatbázisok kezelése) által használt termék azonosítója. |
+| `db.system` | sztring | Az adatbázis-kezelő rendszer (adatbázisok) által használt termék azonosítója. |
 | `db.connection_string` | sztring | Az adatbázishoz való kapcsolódáshoz használt kapcsolati karakterlánc. Javasoljuk, hogy távolítsa el a beágyazott hitelesítő adatokat.|
 | `db.user` | sztring | Az adatbázis eléréséhez használt Felhasználónév. |
-| `db.name` | sztring | Ez az attribútum az elérni kívánt adatbázis nevének jelentésére szolgál. Az adatbázist átváltó parancsok esetén ezt a célként megadott adatbázisra kell beállítani (még akkor is, ha a parancs sikertelen).|
-| `db.statement` | sztring | Az adatbázis-utasítás végrehajtása folyamatban van.|
+| `db.name` | sztring | Az elérni kívánt adatbázis nevének jelentésére szolgáló sztring. Az adatbázist átváltó parancsok esetén a karakterláncot a célként megadott adatbázisra kell beállítani, még akkor is, ha a parancs végrehajtása sikertelen.|
+| `db.statement` | sztring | Az adatbázis-utasítás fut.|

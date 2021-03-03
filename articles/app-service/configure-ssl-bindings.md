@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: f7301809b3befc41110a32062d6e478c412fa56e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be5000b6f9153839b926932c82c9f8fa3ab93f5f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981121"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704837"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel Azure App Service
 
@@ -52,16 +52,16 @@ A következő útmutató követése:
 
 Hajtsa végre a következő lépéseket:
 
-A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali menüjében válassza a app Services lehetőséget **App Services**  >  **\<app-name>** .
+A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali menüjében válassza a app Services lehetőséget   >  **\<app-name>** .
 
 Az alkalmazás bal oldali navigációs sávján indítsa el a **TLS/SSL kötési** párbeszédpanelt a következő lépésekkel:
 
-- **Egyéni tartományok**kijelölése  >  **kötés hozzáadása**
-- **TLS/SSL-beállítások**kiválasztása  >  **TLS/SSL-kötés hozzáadása**
+- **Egyéni tartományok** kijelölése  >  **kötés hozzáadása**
+- **TLS/SSL-beállítások** kiválasztása  >  **TLS/SSL-kötés hozzáadása**
 
 ![Kötés hozzáadása a tartományhoz](./media/configure-ssl-bindings/secure-domain-launch.png)
 
-Az **egyéni tartomány**területen válassza ki azt az egyéni tartományt, amelyhez hozzá szeretné adni a kötést.
+Az **egyéni tartomány** területen válassza ki azt az egyéni tartományt, amelyhez hozzá szeretné adni a kötést.
 
 Ha az alkalmazás már rendelkezik tanúsítvánnyal a kiválasztott egyéni tartományhoz, lépjen a [kötés közvetlen létrehozása](#create-binding) elemre. Ellenkező esetben folytassa a munkát.
 
@@ -77,7 +77,7 @@ Ha az alkalmazás nem rendelkezik tanúsítványokkal a kiválasztott egyéni ta
 
 ### <a name="create-binding"></a>Kötés létrehozása
 
-A következő táblázat segítségével konfigurálhatja a TLS-kötést a **TLS/SSL-kötés** párbeszédpanelen, majd kattintson a **kötés hozzáadása**elemre.
+A következő táblázat segítségével konfigurálhatja a TLS-kötést a **TLS/SSL-kötés** párbeszédpanelen, majd kattintson a **kötés hozzáadása** elemre.
 
 | Beállítás | Leírás |
 |-|-|
@@ -85,7 +85,7 @@ A következő táblázat segítségével konfigurálhatja a TLS-kötést a **TLS
 | Privát Tanúsítvány ujjlenyomata | A kötni kívánt tanúsítvány. |
 | TLS/SSL-típus | <ul><li>**[SNI SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)** – több SNI SSL kötés adható hozzá. Ez a beállítás lehetővé teszi, hogy több TLS/SSL-tanúsítvány biztosítson több tartományt ugyanazon az IP-címen. A legtöbb modern böngésző (például az Internet Explorer, a Chrome, a Firefox és az Opera) támogatja a SNI (További információ: [kiszolgálónév jelzése](https://wikipedia.org/wiki/Server_Name_Indication)).</li><li>**IP SSL** – csak egy IP SSL kötés adható hozzá. Ez a beállítás csak egy TLS/SSL-tanúsítványt engedélyez egy dedikált nyilvános IP-cím biztonságossá tételéhez. Miután konfigurálta a kötést, kövesse a következő témakörben ismertetett lépéseket: [IP SSL rekordok](#remap-records-for-ip-ssl)visszavonása.<br/>IP SSL csak **standard** vagy újabb verzióban támogatott. </li></ul> |
 
-A művelet befejezése után az egyéni tartomány TLS/SSL-állapota **biztonságosra**változik.
+A művelet befejezése után az egyéni tartomány TLS/SSL-állapota **biztonságosra** változik.
 
 ![A TLS/SSL-kötés sikerült](./media/configure-ssl-bindings/secure-domain-finished.png)
 
@@ -108,9 +108,9 @@ Két módosítást kell végeznie, potenciálisan:
 
 A különböző böngészőkben keresse meg az alkalmazást, és ellenőrizze, hogy az alkalmazás elérhető-e `https://<your.custom.domain>` .
 
-:::image type="content" source="./media/configure-ssl-bindings/app-with-custom-ssl.png" alt-text="Képernyőkép: a contoso.com URL-cím kiemelésével megjeleníthető példa az egyéni tartományra való tallózásra.&quot;:::
+:::image type="content" source="./media/configure-ssl-bindings/app-with-custom-ssl.png" alt-text="Képernyőkép: a contoso.com URL-cím kiemelésével megjeleníthető példa az egyéni tartományra való tallózásra.":::
 
-Az alkalmazás kódja a &quot;x-appservice-proto" fejlécen keresztül ellenőrizheti a protokollt. A fejléc értéke `http` vagy `https` . 
+Az alkalmazás kódja a "x-appservice-proto" fejlécen keresztül ellenőrizheti a protokollt. A fejléc értéke `http` vagy `https` . 
 
 > [!NOTE]
 > Ha az alkalmazás tanúsítvány-ellenőrzési hibákat ad, valószínűleg önaláírt tanúsítványt használ.
@@ -129,7 +129,7 @@ A bejövő IP-cím akkor is megváltozhat, ha törli a kötést, még akkor is, 
 
 Alapértelmezés szerint bárki elérheti az alkalmazást HTTP használatával. A HTTP-kéréseket átirányíthatja a HTTPS-portra.
 
-Az alkalmazás lapjának bal oldali navigációs sávján válassza az **SSL-beállítások**elemet. Ezután a **HTTPS Only** (Csak HTTPS) területen válassza az **On** (Be) elemet.
+Az alkalmazás lapjának bal oldali navigációs sávján válassza az **SSL-beállítások** elemet. Ezután a **HTTPS Only** (Csak HTTPS) területen válassza az **On** (Be) elemet.
 
 ![HTTPS kényszerítése](./media/configure-ssl-bindings/enforce-https.png)
 
@@ -143,7 +143,7 @@ Ha a művelet befejeződött, nyissa meg az alkalmazásra mutató HTTP URL-címe
 
 Az alkalmazása alapértelmezés szerint a [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.2-t engedélyezi, amely az iparági szabványok, például a [PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard) szerint ajánlott TLS-szint. A TLS más verzióinak kényszerítéséhez kövesse az alábbi lépéseket:
 
-Az alkalmazás lapjának bal oldali navigációs sávján válassza az **SSL-beállítások**elemet. Ezután a **TLS version** (TLS-verzió) szakaszban válassza ki a kívánt TLS minimális verzióját. Ez a beállítás csak a bejövő hívásokat szabályozza. 
+Az alkalmazás lapjának bal oldali navigációs sávján válassza az **SSL-beállítások** elemet. Ezután a **TLS version** (TLS-verzió) szakaszban válassza ki a kívánt TLS minimális verzióját. Ez a beállítás csak a bejövő hívásokat szabályozza. 
 
 ![A TLS 1.1 vagy 1.2 kényszerítése](./media/configure-ssl-bindings/enforce-tls1-2.png)
 
@@ -159,13 +159,13 @@ A nyelvspecifikus konfigurációs útmutatók, például a [Linux Node.js konfig
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>További erőforrások
 
-* [TLS/SSL-tanúsítvány használata a kódban Azure App Service](configure-ssl-certificate-in-code.md)
+* [TLS-/SSL-tanúsítvány használata a kódban az Azure App Service-ben](configure-ssl-certificate-in-code.md)
 * [Gyakori kérdések: App Service tanúsítványok](./faq-configuration-and-management.md)

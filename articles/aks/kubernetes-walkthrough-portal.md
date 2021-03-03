@@ -1,17 +1,17 @@
 ---
-title: AK-fürt létrehozása a portálon
+title: 'Gyors útmutató: AK-fürt üzembe helyezése a Azure Portal használatával'
 titleSuffix: Azure Kubernetes Service
 description: Megtudhatja, hogyan hozhat létre gyorsan Kubernetes-fürtöt, hogyan helyezhet üzembe egy alkalmazást, és hogyan figyelheti a teljesítményt az Azure Kubernetes szolgáltatásban (ak) a Azure Portal használatával.
 services: container-service
 ms.topic: quickstart
 ms.date: 01/13/2021
-ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 7f59924b2a50f29e01d46e12389e5ca52769225d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.custom: mvc, seo-javascript-october2019, contperfq3
+ms.openlocfilehash: 443c9e0cebe2a45386b63b3a0bc4a813d243e49e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578694"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714561"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Gyors útmutató: Azure Kubernetes Service (ak) fürt üzembe helyezése a Azure Portal használatával
 
@@ -47,7 +47,7 @@ Az AKS-fürt létrehozásához hajtsa végre az alábbi lépéseket:
 
 4. A **csomópont-készletek** lapon tartsa meg az alapértelmezett beállításokat. A képernyő alján kattintson a **Tovább: hitelesítés** elemre.
     > [!CAUTION]
-    > Az új HRE-szolgáltatások létrehozása több percet is igénybe vehet, így az egyszerű szolgáltatásnév nem talált hibákat és érvényesítési hibákat Azure Portalban. Ha ezt tapasztalja, látogasson el [ide](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster) a mérsékléshez.
+    > Az új HRE-szolgáltatások létrehozása több percet is igénybe vehet, így az egyszerű szolgáltatásnév nem talált hibákat és érvényesítési hibákat Azure Portalban. Ha ezt tapasztalja, tekintse meg az [Azure Kubernetes-szolgáltatással kapcsolatos gyakori problémák elhárításával kapcsolatos problémákat](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster) .
 
 5. A **Hitelesítés** lapon konfigurálja az alábbiakat:
     - Hozzon létre egy új szolgáltatásnevet úgy, hogy a **Szolgáltatásnév** mezőben meghagyja az **(új) alapértelmezett szolgáltatásnév** értéket. De használhat egy már meglévőt is, ha a *Szolgáltatásnév konfigurálása* lehetőséget választja. Ha meglévőt használ, meg kell adnia az SPN ügyfél-azonosítót és a titkos kulcsot.
@@ -78,7 +78,7 @@ Az [az aks get-credentials][az-aks-get-credentials] paranccsal konfigurálható 
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-A fürthöz való csatlakozás ellenőrzéséhez használja a [kubectl get][kubectl-get] parancsot a fürtcsomópontok listájának lekéréséhez.
+A fürthöz való kapcsolódás ellenőrzéséhez használja a `kubectl get` parancsot a fürtcsomópontok listájának visszaküldéséhez.
 
 ```console
 kubectl get nodes
@@ -93,7 +93,7 @@ aks-agentpool-14693408-0   Ready     agent     15m       v1.11.5
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-A Kubernetes jegyzékfájl a fürt kívánt állapotát határozza meg, például a tároló lemezképeit. Ebben a rövid útmutatóban egy jegyzékfájlt használunk az Azure Vote-alkalmazás futtatásához szükséges összes objektum létrehozásához. Ez a jegyzékfájl két [Kubernetes-telepítést][kubernetes-deployment] tartalmaz – egyet az Azure-beli szavazás Python-alkalmazásaihoz, a másikat pedig egy Redis-példányhoz. Két [Kubernetes][kubernetes-service] -szolgáltatás is létrejön – egy belső szolgáltatás a Redis-példányhoz, és egy külső szolgáltatás, amely az Azure vote alkalmazást az internetről éri el.
+A Kubernetes jegyzékfájl a fürt kívánt állapotát határozza meg, például a tároló lemezképeit. Ebben a rövid útmutatóban egy jegyzékfájlt használunk az Azure Vote-alkalmazás futtatásához szükséges összes objektum létrehozásához. Ez a jegyzékfájl két Kubernetes-telepítést tartalmaz – egyet az Azure-beli szavazás Python-alkalmazásaihoz, a másikat pedig egy Redis-példányhoz. Két Kubernetes-szolgáltatás is létrejön – egy belső szolgáltatás a Redis-példányhoz, és egy külső szolgáltatás, amely az Azure vote alkalmazást az internetről éri el.
 
 A Cloud Shell egy szövegszerkesztővel hozzon létre egy nevű fájlt `azure-vote.yaml` , például: `code azure-vote.yaml` `nano azure-vote.yaml` vagy `vi azure-vote.yaml` . Ezután másolja a következő YAML-definíciót:
 
@@ -185,7 +185,7 @@ spec:
     app: azure-vote-front
 ```
 
-Telepítse az alkalmazást a [kubectl Apply][kubectl-apply] paranccsal, és adja meg a YAML-jegyzékfájl nevét:
+Telepítse az alkalmazást a `kubectl apply` paranccsal, és adja meg a YAML-jegyzékfájl nevét:
 
 ```console
 kubectl apply -f azure-vote.yaml
@@ -204,7 +204,7 @@ service "azure-vote-front" created
 
 Az alkalmazás futtatásakor a Kubernetes szolgáltatás az előtér-alkalmazást az internethez teszi elérhetővé. A folyamat eltarthat pár percig.
 
-A folyamat állapotának monitorozásához használja [kubectl get service][kubectl-get] parancsot a `--watch` argumentummal.
+A folyamat figyeléséhez használja az `kubectl get service` `--watch` argumentumot a paranccsal.
 
 ```console
 kubectl get service azure-vote-front --watch
@@ -267,7 +267,7 @@ Ebben a rövid útmutatóban előre létrehozott tároló-lemezképeket használ
 
 Ebben a rövid útmutatóban egy Kubernetes-fürtöt és azon egy többtárolós alkalmazást helyezett üzembe.
 
-Az AKS-sel kapcsolatos további információkért és a kódtól az üzembe helyezésig terjedő teljes útmutatóért folytassa a Kubernetes-fürtöket bemutató oktatóanyaggal.
+Ha többet szeretne megtudni az AK-ról egy teljes példán keresztül, beleértve az alkalmazások létrehozását, üzembe helyezését Azure Container Registry, a futó alkalmazások frissítését és a fürt méretezését és frissítését, folytassa a Kubernetes-fürt oktatóanyagával.
 
 > [!div class="nextstepaction"]
 > [AK-oktatóanyag][aks-tutorial]
@@ -288,6 +288,3 @@ Az AKS-sel kapcsolatos további információkért és a kódtól az üzembe hely
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 [http-routing]: ./http-application-routing.md
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
-[azure-dev-spaces]: ../dev-spaces/index.yml
-[kubernetes-deployment]: concepts-clusters-workloads.md#deployments-and-yaml-manifests
-[kubernetes-service]: concepts-network.md#services

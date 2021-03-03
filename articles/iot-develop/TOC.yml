@@ -1,8 +1,8 @@
-- name: IoT-eszközök és-alkalmazások fejlesztése
+- name: IoT-eszközök fejlesztése
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Mi a IoT eszköz-és alkalmazásfejlesztés?
+    - name: Mi a IoT-eszközök fejlesztése?
       href: about-iot-develop.md
     - name: Melyik SDK-t használjam?
       href: about-iot-sdks.md
@@ -22,7 +22,7 @@
 - name: Oktatóanyagok
   items:
     - name: IoT-eszközök biztonságos csatlakoztatása a felhőhöz
-      href: 'https://docs.microsoft.com/learn/paths/securely-connect-iot-devices/'
+      href: /learn/paths/securely-connect-iot-devices/
 - name: Alapelvek
   items:
     - name: Az eszközök fejlesztőinek csatlakoztatási lehetőségei

@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 701fe4ffc6147086dde740bfdb2dc7db92508e28
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 327bc687c466a30d4f92810e48dc08f822f752ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100380236"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726427"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Oktatóanyag: funkció-jelzők használata egy ASP.NET Core alkalmazásban
 
@@ -74,7 +74,7 @@ public class Startup
 ```
 
 
-Ha szűrőket használ a szolgáltatás jelzőjén, meg kell adnia a [Microsoft. FeatureManagement. FeatureFilters](/dotnet/api/microsoft.featuremanagement.featurefilters) névteret, és fel kell vennie egy hívást a [AddFeatureFilters](/dotnet/api/microsoft.featuremanagement.ifeaturemanagementbuilder.addfeaturefilter) -be annak a szűrőnek a nevét, amelyet a metódus általános típusaként kíván használni. A funkciók dinamikus engedélyezésével és letiltásával kapcsolatos további információkért tekintse meg a [szolgáltatások szakaszos bevezetésének engedélyezése a célzott célközönségek számára](/azure/azure-app-configuration/howto-targetingfilter-aspnet-core)című témakört.
+Ha szűrőket használ a szolgáltatás jelzőjén, meg kell adnia a [Microsoft. FeatureManagement. FeatureFilters](/dotnet/api/microsoft.featuremanagement.featurefilters) névteret, és fel kell vennie egy hívást a [AddFeatureFilters](/dotnet/api/microsoft.featuremanagement.ifeaturemanagementbuilder.addfeaturefilter) -be annak a szűrőnek a nevét, amelyet a metódus általános típusaként kíván használni. A funkciók dinamikus engedélyezésével és letiltásával kapcsolatos további információkért tekintse meg a [szolgáltatások szakaszos bevezetésének engedélyezése a célzott célközönségek számára](./howto-targetingfilter-aspnet-core.md)című témakört.
 
 Az alábbi példa bemutatja, hogyan használható a beépített szolgáltatás szűrője `PercentageFilter` :
 
@@ -211,14 +211,14 @@ Az egyezmény szerint a `FeatureManagement` JSON-dokumentum szakasza a szolgált
 
 * `FeatureA`*be van kapcsolva*.
 * `FeatureB`*ki van kapcsolva*.
-* `FeatureC` egy tulajdonsággal megnevezett szűrőt ad meg `Percentage` `Parameters` . `Percentage` konfigurálható szűrő. Ebben a példában a `Percentage` jelző 50 százalékos valószínűségét adja `FeatureC` *meg*. A szolgáltatási szűrők használatával kapcsolatos útmutatóért lásd a [feltételes funkciók jelzői funkcióinak használata a szolgáltatás szűrőinek](/azure/azure-app-configuration/howto-feature-filters-aspnet-core)használatával című témakört.
+* `FeatureC` egy tulajdonsággal megnevezett szűrőt ad meg `Percentage` `Parameters` . `Percentage` konfigurálható szűrő. Ebben a példában a `Percentage` jelző 50 százalékos valószínűségét adja `FeatureC` *meg*. A szolgáltatási szűrők használatával kapcsolatos útmutatóért lásd a [feltételes funkciók jelzői funkcióinak használata a szolgáltatás szűrőinek](./howto-feature-filters-aspnet-core.md)használatával című témakört.
 
 
 
 
 ## <a name="use-dependency-injection-to-access-ifeaturemanager"></a>Függőségi befecskendezés használata a IFeatureManager való hozzáféréshez 
 
-Egyes műveletekhez, például a szolgáltatás-jelzők manuális ellenőrzéséhez le kell kérnie a [IFeatureManager](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement.ifeaturemanager?view=azure-dotnet-preview)egy példányát. ASP.NET Core MVC-ben a szolgáltatások kezelője `IFeatureManager` függőségi befecskendezéssel érhető el. A következő példában egy típusú argumentumot `IFeatureManager` adnak hozzá a vezérlő konstruktorának aláírásához. A futtatókörnyezet automatikusan feloldja a hivatkozást, és megadja a felületet a konstruktor hívásakor. Ha olyan alkalmazás-sablont használ, amelyben a vezérlőhöz már tartozik egy vagy több függőségi injekció argumentum a konstruktorban, például `ILogger` `IFeatureManager` :
+Egyes műveletekhez, például a szolgáltatás-jelzők manuális ellenőrzéséhez le kell kérnie a [IFeatureManager](/dotnet/api/microsoft.featuremanagement.ifeaturemanager?view=azure-dotnet-preview)egy példányát. ASP.NET Core MVC-ben a szolgáltatások kezelője `IFeatureManager` függőségi befecskendezéssel érhető el. A következő példában egy típusú argumentumot `IFeatureManager` adnak hozzá a vezérlő konstruktorának aláírásához. A futtatókörnyezet automatikusan feloldja a hivatkozást, és megadja a felületet a konstruktor hívásakor. Ha olyan alkalmazás-sablont használ, amelyben a vezérlőhöz már tartozik egy vagy több függőségi injekció argumentum a konstruktorban, például `ILogger` `IFeatureManager` :
 
 ### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
     

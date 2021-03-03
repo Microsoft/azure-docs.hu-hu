@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 8d0f1e711b325b1b9ce4e431c1438e511384e8a0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b042049c803ad04b54bb6c2a242ca1008bc17dd3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100615198"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734519"
 ---
 # <a name="advanced-features-of-the-azure-metrics-explorer"></a>Az Azure Metrics Explorer speciális funkciói
 
 > [!NOTE]
-> Ez a cikk azt feltételezi, hogy már ismeri a Azure Monitor Azure Metrics Explorer szolgáltatásának alapvető funkcióit. Ha Ön új felhasználó, és szeretné megismerni, hogyan hozhatja létre első mérőszámát, tekintse meg a következő témakört: első [lépések a metrikák Explorerrel](../platform/metrics-getting-started.md).
+> Ez a cikk azt feltételezi, hogy már ismeri a Azure Monitor Azure Metrics Explorer szolgáltatásának alapvető funkcióit. Ha Ön új felhasználó, és szeretné megismerni, hogyan hozhatja létre első mérőszámát, tekintse meg a következő témakört: első [lépések a metrikák Explorerrel](./metrics-getting-started.md).
 
 Azure Monitor a [metrikák](data-platform-metrics.md) a mért értékek, valamint a begyűjtött és az idő múlásával tárolt darabszámok sorozata. A metrikák lehetnek standard (más néven "platform") vagy egyéni. 
 
@@ -49,11 +49,11 @@ Ha elégedett a kijelöléssel, válassza az **alkalmaz** lehetőséget.
 ### <a name="view-metrics-across-multiple-resources"></a>Metrikák megtekintése több erőforrás között
 Néhány erőforrástípus több erőforráson is lekérdezheti a metrikákat. Az erőforrásoknak ugyanahhoz az előfizetéshez és helyhez kell esniük. **Az erőforrástípusok menü felső** részén keresse meg ezeket az erőforrásokat. 
 
-További információ: [több erőforrás kiválasztása](../platform/metrics-dynamic-scope.md#select-multiple-resources).
+További információ: [több erőforrás kiválasztása](./metrics-dynamic-scope.md#select-multiple-resources).
 
 ![Képernyőkép a több erőforrást ábrázoló típusokról.](./media/metrics-charts/multi-resource-scope.png)
 
-Több erőforrással kompatibilis típusok esetén lekérdezheti a metrikákat egy előfizetésben vagy több erőforráscsoport között. További információ: [válasszon erőforráscsoportot vagy előfizetést](../platform/metrics-dynamic-scope.md#select-a-resource-group-or-subscription).
+Több erőforrással kompatibilis típusok esetén lekérdezheti a metrikákat egy előfizetésben vagy több erőforráscsoport között. További információ: [válasszon erőforráscsoportot vagy előfizetést](./metrics-dynamic-scope.md#select-a-resource-group-or-subscription).
 
 ## <a name="multiple-metric-lines-and-charts"></a>Több metrikai vonal és diagram
 
@@ -67,7 +67,7 @@ Tegyük fel például, hogy öt Storage-fiókkal rendelkezik, és szeretné tudn
 
 ### <a name="multiple-metrics-on-the-same-chart"></a>Több metrika ugyanazon a diagramon
 
-Ha több metrikát szeretne megtekinteni ugyanazon a diagramon, először [hozzon létre egy új diagramot](../platform/metrics-getting-started.md#create-your-first-metric-chart). Ezután válassza a **metrika hozzáadása** elemet. Ismételje meg ezt a lépést egy másik metrika egyazon diagramon való hozzáadásához.
+Ha több metrikát szeretne megtekinteni ugyanazon a diagramon, először [hozzon létre egy új diagramot](./metrics-getting-started.md#create-your-first-metric-chart). Ezután válassza a **metrika hozzáadása** elemet. Ismételje meg ezt a lépést egy másik metrika egyazon diagramon való hozzáadásához.
 
 > [!NOTE]
 > A diagramok általában nem keverik a különböző mértékegységeket használó mérőszámokat. Tegyük fel például, hogy nem keveri az egyik mérőszámot, amely ezredmásodperceket használ egy másikhoz. Ne keverje az olyan metrikákat, amelyek méretezése jelentősen eltér. 
@@ -86,7 +86,7 @@ Ha mérőszámot ad hozzá egy diagramhoz, a metrikák kezelője automatikusan e
 
 Mielőtt eltérő összesítéseket használ egy diagramon, tisztában kell lennie azzal, hogy a metrikák kezelője hogyan kezeli őket. A metrikák egy adott időszakban rögzített mérési (vagy "metrikus értékek") sorozatok. Amikor Kirajzol egy diagramot, a kiválasztott metrika értékei külön lesznek összesítve az *időgabona* során. 
 
-Kiválaszthatja az időgabona méretét a metrikai tallózó [időválasztó paneljének](../platform/metrics-getting-started.md#select-a-time-range)használatával. Ha nem választja ki explicit módon az időkeretet, a rendszer alapértelmezés szerint a jelenleg kijelölt időtartományt használja. Az időtartam megállapítása után az egyes időkeretek során rögzített metrikai értékeket összesíti a diagramon, egy adatpontot és egy időszeletet.
+Kiválaszthatja az időgabona méretét a metrikai tallózó [időválasztó paneljének](./metrics-getting-started.md#select-a-time-range)használatával. Ha nem választja ki explicit módon az időkeretet, a rendszer alapértelmezés szerint a jelenleg kijelölt időtartományt használja. Az időtartam megállapítása után az egyes időkeretek során rögzített metrikai értékeket összesíti a diagramon, egy adatpontot és egy időszeletet.
 
 Tegyük fel például, hogy egy diagram a *kiszolgáló válaszideje* mérőszámot jeleníti meg. Az *átlagos* összesítést használja az *elmúlt 24 órában*. Ebben a példában:
 
@@ -230,6 +230,42 @@ Megnyílik a riasztási szabály létrehozási panelje. A panelen megjelenik a d
 
 További információ: [metrikai riasztások létrehozása, megtekintése és kezelése](../alerts/alerts-metric.md).
 
+## <a name="correlate-metrics-to-logs"></a>Metrikák korrelációja a naplókhoz
+Annak érdekében, hogy az ügyfél a metrikák diagramján észlelje a rendellenességek kiváltó okát, a naplókba való részletezést hoztunk létre. A naplók részletezése lehetővé teszi az ügyfelek számára, hogy a metrikák diagramon a naplókhoz és lekérdezésekhez kapcsolódnak. 
+
+Mielőtt belemerülünk a felhasználói élménybe, először be szeretnénk írni a különböző típusú naplókat és lekérdezéseket. 
+
+| Időszak             | Definíció  | 
+|------------------|-------------|
+| Tevékenységnaplók    | Betekintést nyújt a műveletekre az előfizetésben lévő egyes Azure-erőforrásokon kívülről (a felügyeleti síkon), valamint a Service Health események frissítései mellett. A tevékenység naplójának használatával meghatározhatja a mi, ki és mikor az előfizetésben lévő erőforrásokra vonatkozó írási műveletek (PUT, POST, DELETE) esetében. Minden egyes Azure-előfizetéshez egyetlen tevékenységi napló van.  |   
+| Diagnosztikai napló   | Betekintést nyerhet az Azure-erőforrásokon (az adatsíkon) végrehajtott műveletekre, például a titkos kulcs beszerzése egy Key Vault vagy egy adatbázisra vonatkozó kérelem elkészítése. Az erőforrás-naplók tartalma az Azure-szolgáltatás és az erőforrás típusa szerint változik. **Megjegyzés:** A szolgáltatást a szolgáltatásnak kell megadnia, és az ügyfélnek kell engedélyeznie  | 
+| Ajánlott napló | Forgatókönyv-alapú lekérdezések, amelyekkel az ügyfél kihasználhatja a metrikák a mérőszámok Explorerben való vizsgálatát.  |
+
+Jelenleg a naplók részletezése elérhető az erőforrás-szolgáltatók kiválasztásához. A naplók felhasználói felületének teljes részletezését biztosító erőforrás-szolgáltatók a következők: 
+
+* Application Insights 
+* Automatikus méretezés 
+* App Services  
+* Tárolás  
+
+Alább látható egy példa a Application Insights erőforrás-szolgáltatóra.
+
+![Az App bepillantások metrikáinak paneljén észlelt hibák](./media/metrics-charts/drill-into-log-ai.png)
+
+A sikertelen kérelmekben lévő tüske diagnosztizálásához kattintson a "részletezés naplókba" elemre.
+
+![Képernyőkép a naplók legördülő menüjéről](./media/metrics-charts/drill-into-logs-dropdown.png)
+
+Ha a hiba lehetőségre kattint, a rendszer egy egyéni meghibásodási panelt fog eredményezni, amely a sikertelen műveleti műveleteket, a leggyakoribb kivételeket és a függőségeket biztosítja. 
+
+![Képernyőkép az App bepillantást nem okozó panelről](./media/metrics-charts/ai-failure-blade.png)
+
+### <a name="common-problems-with-drill-into-logs"></a>Gyakori problémák a naplók részletezésével
+
+* A napló és a lekérdezések le vannak tiltva – az ajánlott naplók és lekérdezések megtekintéséhez át kell irányítani a diagnosztikai naplókat a Log Analytics. Ebből a [dokumentumból](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) megtudhatja, hogyan teheti ezt meg. 
+* Csak a tevékenységi naplók vannak megadva – a naplózási funkció csak az erőforrás-szolgáltatók kiválasztása esetén érhető el. Alapértelmezés szerint a rendszer a tevékenységek naplóit is megadja. 
+
+ 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
 Ha a diagramon nem jelennek meg adatok, tekintse át a következő hibaelhárítási információkat:
@@ -242,6 +278,5 @@ Ha a diagramon nem jelennek meg adatok, tekintse át a következő hibaelhárít
 
 ## <a name="next-steps"></a>Következő lépések
 
-A használható irányítópultok metrikák használatával történő létrehozásával kapcsolatban lásd: [Egyéni KPI-irányítópultok létrehozása](../learn/tutorial-app-dashboards.md).
+A használható irányítópultok metrikák használatával történő létrehozásával kapcsolatban lásd: [Egyéni KPI-irányítópultok létrehozása](../app/tutorial-app-dashboards.md).
 
- 

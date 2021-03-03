@@ -10,8 +10,6 @@
   items:
     - name: Biztonságtechnikai képességek
       href: technical-capabilities.md
-    - name: Beépített biztonsági vezérlők
-      href: security-controls.md
 - name: Azure-platform és -infrastruktúra
   items:
     - name: Infrastruktúra biztonsága

@@ -7,18 +7,18 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/08/2020
-ms.openlocfilehash: 63613307847ba2bf617d7a6a1018d083dc5db3fe
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 809dc6d0958b754911362f933e9fe964bce9c679
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393122"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727923"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Az Azure Blob Storage-ban lévő Adatmásolás és-átalakítás Azure Data Factory használatával
 
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
-> * [1-es verzió](v1/data-factory-azure-blob-connector.md)
-> * [Aktuális verzió](connector-azure-blob-storage.md)
+> - [1-es verzió](v1/data-factory-azure-blob-connector.md)
+> - [Aktuális verzió](connector-azure-blob-storage.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -39,7 +39,7 @@ Ez az Azure Blob Storage-összekötő a következő tevékenységek esetében t�
 
 A másolási tevékenységhez a blob Storage-összekötő a következőket támogatja:
 
-- Blobok másolása általános célú Azure Storage-fiókokba és gyors/lassú blob Storage-tárolóba. 
+- Blobok másolása általános célú Azure Storage-fiókokba és gyors/lassú blob Storage-tárolóba.
 - Blobok másolása egy fiók kulcsával, egy szolgáltatás közös hozzáférésű aláírásával (SAS), egy egyszerű szolgáltatással vagy egy felügyelt identitással az Azure erőforrás-hitelesítésekhez.
 - Blobok másolása blokkból, hozzáfűzésből vagy blobokból, és az adatok másolása csak a Blobok blokkolására.
 - Blobok másolása, illetve a Blobok elemzése vagy generálása [támogatott fájlformátumokkal és tömörítési kodekekkel](supported-file-formats-and-compression-codecs.md).
@@ -73,15 +73,15 @@ A Data Factory a következő tulajdonságokat támogatja a Storage-fiók kulcsos
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A **Type** tulajdonságot **AzureBlobStorage** (javasolt) vagy **AzureStorage** értékre kell beállítani (lásd a következő megjegyzéseket). |Yes |
-| connectionString | Határozza meg a **ConnectionString** tulajdonsághoz való kapcsolódáshoz szükséges adatokat. <br/> Azt is megteheti, hogy Azure Key Vault a fiók kulcsát, és lekéri a `accountKey` konfigurációt a kapcsolatok sztringből. További információkért tekintse meg a következő mintákat és az [áruház hitelesítő adatait Azure Key Vault](store-credentials-in-key-vault.md) cikkben. |Yes |
-| Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Használhatja az Azure Integration Runtime vagy a saját üzemeltetésű integrációs modult (ha az adattár egy magánhálózaton található). Ha ez a tulajdonság nincs megadva, a szolgáltatás az alapértelmezett Azure Integration Runtime-t használja. |No |
+| típus | A `type` tulajdonságot `AzureBlobStorage` (javasolt) vagy `AzureStorage` (lásd a következő megjegyzéseket) kell megadni. | Igen |
+| connectionString | Határozza meg a tulajdonsághoz való kapcsolódáshoz szükséges adatokat `connectionString` . <br/> Azt is megteheti, hogy Azure Key Vault a fiók kulcsát, és lekéri a `accountKey` konfigurációt a kapcsolatok sztringből. További információkért tekintse meg a következő mintákat és az [áruház hitelesítő adatait Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
+| Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Használhatja az Azure Integration Runtime vagy a saját üzemeltetésű integrációs modult (ha az adattár egy magánhálózaton található). Ha ez a tulajdonság nincs megadva, a szolgáltatás az alapértelmezett Azure Integration Runtime-t használja. | Nem |
 
 >[!NOTE]
 >A fiók kulcsos hitelesítésének használata esetén a másodlagos Blob service végpont nem támogatott. Más hitelesítési típusokat is használhat.
 
 >[!NOTE]
->Ha a "AzureStorage" típusú társított szolgáltatást használja, a rendszer továbbra is támogatja. Javasoljuk azonban, hogy az új "AzureBlobStorage" társított szolgáltatástípus-típust használja tovább.
+>Ha a `AzureStorage` Type társított szolgáltatást használja, azt a rendszer továbbra is támogatja. Azt javasoljuk azonban, hogy az új `AzureBlobStorage` társított szolgáltatás típusát használja tovább.
 
 **Példa**
 
@@ -91,11 +91,11 @@ A Data Factory a következő tulajdonságokat támogatja a Storage-fiók kulcsos
     "properties": {
         "type": "AzureBlobStorage",
         "typeProperties": {
-            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
+          "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
         },
         "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
-            "type": "IntegrationRuntimeReference"
+          "referenceName": "<name of Integration Runtime>",
+          "type": "IntegrationRuntimeReference"
         }
     }
 }
@@ -110,19 +110,19 @@ A Data Factory a következő tulajdonságokat támogatja a Storage-fiók kulcsos
         "type": "AzureBlobStorage",
         "typeProperties": {
             "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;",
-            "accountKey": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "accountKey": {
+                "type": "AzureKeyVaultSecret",
+                "store": {
+                    "referenceName": "<Azure Key Vault linked service name>",
+                    "type": "LinkedServiceReference"
+                },
+                "secretName": "<secretName>"
             }
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
             "type": "IntegrationRuntimeReference"
-        }            
+        }
     }
 }
 ```
@@ -131,7 +131,7 @@ A Data Factory a következő tulajdonságokat támogatja a Storage-fiók kulcsos
 
 A közös hozzáférésű aláírások delegált hozzáférést biztosítanak a Storage-fiók erőforrásaihoz. A megosztott elérési aláírás használatával a megadott időpontra korlátozhatja az ügyfél számára a Storage-fiókban lévő objektumokra vonatkozó engedélyek megadását. 
 
-Nem kell megosztania a fiók hozzáférési kulcsait. A közös hozzáférésű aláírás egy URI, amely magában foglalja a lekérdezési paramétereit. a tárolási erőforrásokhoz való hitelesített hozzáféréshez szükséges összes információ. A megosztott hozzáférési aláírással rendelkező tárolási erőforrások eléréséhez az ügyfélnek csak a közös hozzáférési aláírásban kell átadnia a megfelelő konstruktort vagy metódust. 
+Nem kell megosztania a fiók hozzáférési kulcsait. A közös hozzáférésű aláírás egy URI, amely magában foglalja a lekérdezési paramétereit. a tárolási erőforrásokhoz való hitelesített hozzáféréshez szükséges összes információ. A megosztott hozzáférési aláírással rendelkező tárolási erőforrások eléréséhez az ügyfélnek csak a közös hozzáférési aláírásban kell átadnia a megfelelő konstruktort vagy metódust.
 
 A közös hozzáférésű aláírásokkal kapcsolatos további információkért lásd: közös hozzáférésű aláírások [: a közös hozzáférésű aláírás modelljének megismerése](../storage/common/storage-sas-overview.md).
 
@@ -143,12 +143,12 @@ A Data Factory a következő tulajdonságokat támogatja a közös hozzáférés
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A **Type** tulajdonságot **AzureBlobStorage** (javasolt) vagy **AzureStorage** értékre kell beállítani (lásd a következő megjegyzést). |Yes |
-| sasUri | A Storage-erőforrásokhoz, például a blobhoz vagy a tárolóhoz tartozó megosztott elérési aláírás URI azonosítójának megadása. <br/>A mező megjelölése **SecureString** -ként, hogy biztonságosan tárolja Data Factoryban. A SAS-tokent Azure Key Vault is elhelyezheti az automatikus elforgatás és a jogkivonat-rész eltávolításához. További információkért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vaultban](store-credentials-in-key-vault.md). |Yes |
-| Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Használhatja az Azure Integration Runtime vagy a saját üzemeltetésű integrációs modult (ha az adattár egy magánhálózaton található). Ha ez a tulajdonság nincs megadva, a szolgáltatás az alapértelmezett Azure Integration Runtime-t használja. |No |
+| típus | A `type` tulajdonságot `AzureBlobStorage` (javasolt) vagy `AzureStorage` (lásd a következő megjegyzést) kell megadni. | Igen |
+| sasUri | A Storage-erőforrásokhoz, például a blobhoz vagy a tárolóhoz tartozó megosztott elérési aláírás URI azonosítójának megadása. <br/>A mező megjelölése úgy, `SecureString` hogy biztonságosan tárolja Data Factoryban. A SAS-tokent Azure Key Vault is elhelyezheti az automatikus elforgatás és a jogkivonat-rész eltávolításához. További információkért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vaultban](store-credentials-in-key-vault.md). | Igen |
+| Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Használhatja az Azure Integration Runtime vagy a saját üzemeltetésű integrációs modult (ha az adattár egy magánhálózaton található). Ha ez a tulajdonság nincs megadva, a szolgáltatás az alapértelmezett Azure Integration Runtime-t használja. | Nem |
 
 >[!NOTE]
->Ha a "AzureStorage" típusú társított szolgáltatást használja, a rendszer továbbra is támogatja. Javasoljuk azonban, hogy az új "AzureBlobStorage" társított szolgáltatástípus-típust használja tovább.
+>Ha a `AzureStorage` Type társított szolgáltatást használja, azt a rendszer továbbra is támogatja. Azt javasoljuk azonban, hogy az új `AzureBlobStorage` társított szolgáltatás típusát használja tovább.
 
 **Példa**
 
@@ -183,13 +183,13 @@ A Data Factory a következő tulajdonságokat támogatja a közös hozzáférés
                 "type": "SecureString",
                 "value": "<SAS URI of the Azure Storage resource without token e.g. https://<accountname>.blob.core.windows.net/>"
             },
-            "sasToken": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
+            "sasToken": {
+                "type": "AzureKeyVaultSecret",
+                "store": {
                     "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName with value of SAS token e.g. ?sv=<storage version>&st=<start time>&se=<expire time>&sr=<resource>&sp=<permissions>&sip=<ip range>&spr=<protocol>&sig=<signature>>" 
+                    "type": "LinkedServiceReference"
+                },
+                "secretName": "<secretName with value of SAS token e.g. ?sv=<storage version>&st=<start time>&se=<expire time>&sr=<resource>&sp=<permissions>&sip=<ip range>&spr=<protocol>&sig=<signature>>"
             }
         },
         "connectVia": {
@@ -227,14 +227,14 @@ Ezek a tulajdonságok egy Azure Blob Storage-beli társított szolgáltatás ese
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A **Type** tulajdonságot **AzureBlobStorage** értékre kell beállítani. |Yes |
-| serviceEndpoint | Határozza meg az Azure Blob Storage szolgáltatás végpontját a mintázatával `https://<accountName>.blob.core.windows.net/` . |Yes |
-| accountKind | Adja meg a Storage-fiók típusát. Az engedélyezett értékek a következők: **Storage** (általános célú v1), **StorageV2** (általános célú v2), **BlobStorage** vagy **BlockBlobStorage**. <br/> Ha az Azure Blob társított szolgáltatást adatforgalomban használja, a felügyelt identitás vagy egyszerű szolgáltatásnév hitelesítése nem támogatott, ha a fiók típusa üres vagy "Storage". Adja meg a megfelelő fiók típusát, válasszon másik hitelesítést, vagy frissítse a Storage-fiókját az általános célú v2-re. |No |
-| servicePrincipalId | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját. | Yes |
-| servicePrincipalKey | Az alkalmazás kulcsának meghatározása. Ezt a mezőt **SecureString** kell megjelölni, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Yes |
-| Bérlő | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. Lekéri a Azure Portal jobb felső sarkában látható fölé. | Yes |
-| azureCloudType | Az egyszerű szolgáltatás hitelesítéséhez adja meg az Azure Cloud Environment típusát, amelyre a Azure Active Directory alkalmazás regisztrálva van. <br/> Az engedélyezett értékek a következők: **AzurePublic**, **AzureChina**, **AzureUsGovernment** és **AzureGermany**. Alapértelmezés szerint a rendszer az adatfeldolgozó felhőalapú környezetét használja. | No |
-| Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Használhatja az Azure Integration Runtime vagy a saját üzemeltetésű integrációs modult (ha az adattár egy magánhálózaton található). Ha ez a tulajdonság nincs megadva, a szolgáltatás az alapértelmezett Azure Integration Runtime-t használja. |No |
+| típus | A **Type** tulajdonságot **AzureBlobStorage** értékre kell beállítani. | Igen |
+| serviceEndpoint | Határozza meg az Azure Blob Storage szolgáltatás végpontját a mintázatával `https://<accountName>.blob.core.windows.net/` . | Igen |
+| accountKind | Adja meg a Storage-fiók típusát. Az engedélyezett értékek a következők: **Storage** (általános célú v1), **StorageV2** (általános célú v2), **BlobStorage** vagy **BlockBlobStorage**. <br/> Ha az Azure Blob társított szolgáltatást adatforgalomban használja, a felügyelt identitás vagy egyszerű szolgáltatásnév hitelesítése nem támogatott, ha a fiók típusa üres vagy "Storage". Adja meg a megfelelő fiók típusát, válasszon másik hitelesítést, vagy frissítse a Storage-fiókját az általános célú v2-re. | Nem |
+| servicePrincipalId | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját. | Igen |
+| servicePrincipalKey | Az alkalmazás kulcsának meghatározása. Ezt a mezőt **SecureString** kell megjelölni, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
+| Bérlő | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. Lekéri a Azure Portal jobb felső sarkában látható fölé. | Igen |
+| azureCloudType | Az egyszerű szolgáltatás hitelesítéséhez adja meg az Azure Cloud Environment típusát, amelyre a Azure Active Directory alkalmazás regisztrálva van. <br/> Az engedélyezett értékek a következők: **AzurePublic**, **AzureChina**, **AzureUsGovernment** és **AzureGermany**. Alapértelmezés szerint a rendszer az adatfeldolgozó felhőalapú környezetét használja. | Nem |
+| Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Használhatja az Azure Integration Runtime vagy a saját üzemeltetésű integrációs modult (ha az adattár egy magánhálózaton található). Ha ez a tulajdonság nincs megadva, a szolgáltatás az alapértelmezett Azure Integration Runtime-t használja. | Nem |
 
 >[!NOTE]
 >Ha a blob-fiókja lehetővé teszi a [Soft delete](../storage/blobs/soft-delete-blob-overview.md)használatát, az egyszerű szolgáltatás hitelesítése nem támogatott az adatfolyamban.
@@ -287,10 +287,10 @@ Ezek a tulajdonságok egy Azure Blob Storage-beli társított szolgáltatás ese
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A **Type** tulajdonságot **AzureBlobStorage** értékre kell beállítani. |Yes |
-| serviceEndpoint | Határozza meg az Azure Blob Storage szolgáltatás végpontját a mintázatával `https://<accountName>.blob.core.windows.net/` . |Yes |
-| accountKind | Adja meg a Storage-fiók típusát. Az engedélyezett értékek a következők: **Storage** (általános célú v1), **StorageV2** (általános célú v2), **BlobStorage** vagy **BlockBlobStorage**. <br/> Ha az Azure Blob társított szolgáltatást adatforgalomban használja, a felügyelt identitás vagy egyszerű szolgáltatásnév hitelesítése nem támogatott, ha a fiók típusa üres vagy "Storage". Adja meg a megfelelő fiók típusát, válasszon másik hitelesítést, vagy frissítse a Storage-fiókját az általános célú v2-re. |No |
-| Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Használhatja az Azure Integration Runtime vagy a saját üzemeltetésű integrációs modult (ha az adattár egy magánhálózaton található). Ha ez a tulajdonság nincs megadva, a szolgáltatás az alapértelmezett Azure Integration Runtime-t használja. |No |
+| típus | A **Type** tulajdonságot **AzureBlobStorage** értékre kell beállítani. | Igen |
+| serviceEndpoint | Határozza meg az Azure Blob Storage szolgáltatás végpontját a mintázatával `https://<accountName>.blob.core.windows.net/` . | Igen |
+| accountKind | Adja meg a Storage-fiók típusát. Az engedélyezett értékek a következők: **Storage** (általános célú v1), **StorageV2** (általános célú v2), **BlobStorage** vagy **BlockBlobStorage**. <br/> Ha az Azure Blob társított szolgáltatást adatforgalomban használja, a felügyelt identitás vagy egyszerű szolgáltatásnév hitelesítése nem támogatott, ha a fiók típusa üres vagy "Storage". Adja meg a megfelelő fiók típusát, válasszon másik hitelesítést, vagy frissítse a Storage-fiókját az általános célú v2-re. | Nem |
+| Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Használhatja az Azure Integration Runtime vagy a saját üzemeltetésű integrációs modult (ha az adattár egy magánhálózaton található). Ha ez a tulajdonság nincs megadva, a szolgáltatás az alapértelmezett Azure Integration Runtime-t használja. | Nem |
 
 > [!NOTE]
 > Ha a blob-fiókja lehetővé teszi a [Soft delete](../storage/blobs/soft-delete-blob-overview.md)használatát, a felügyelt identitások hitelesítése nem támogatott az adatfolyamban.
@@ -327,10 +327,10 @@ A következő tulajdonságok támogatottak az Azure Blob Storage `location` -ban
 
 | Tulajdonság   | Leírás                                                  | Kötelező |
 | ---------- | ------------------------------------------------------------ | -------- |
-| típus       | Az adatkészlet helyének **Type** tulajdonságát **AzureBlobStorageLocation** értékre kell állítani. | Yes      |
-| tároló  | A blob-tároló.                                          | Yes      |
-| folderPath | A mappa elérési útja az adott tárolóban. Ha helyettesítő karaktert szeretne használni a mappa szűréséhez, hagyja ki ezt a beállítást, és a tevékenység forrásának beállításainál válassza ki azt. | No       |
-| fileName   | A fájl neve a megadott tárolóban és a mappa elérési útja alatt. Ha helyettesítő karaktereket szeretne használni a fájlok szűréséhez, hagyja ki ezt a beállítást, és határozza meg, hogy a tevékenység forrásának beállításaiban. | No       |
+| típus       | Az adatkészlet helyének **Type** tulajdonságát **AzureBlobStorageLocation** értékre kell állítani. | Igen      |
+| tároló  | A blob-tároló.                                          | Igen      |
+| folderPath | A mappa elérési útja az adott tárolóban. Ha helyettesítő karaktert szeretne használni a mappa szűréséhez, hagyja ki ezt a beállítást, és a tevékenység forrásának beállításainál válassza ki azt. | Nem       |
+| fileName   | A fájl neve a megadott tárolóban és a mappa elérési útja alatt. Ha helyettesítő karaktereket szeretne használni a fájlok szűréséhez, hagyja ki ezt a beállítást, és határozza meg, hogy a tevékenység forrásának beállításaiban. | Nem       |
 
 **Példa**
 
@@ -371,21 +371,21 @@ A következő tulajdonságok támogatottak az Azure Blob Storage `storeSettings`
 
 | Tulajdonság                 | Leírás                                                  | Kötelező                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| típus                     | A **Type** tulajdonságot a `storeSettings` **AzureBlobStorageReadSettings** értékre kell állítani. | Yes                                           |
+| típus                     | A **Type** tulajdonságot a `storeSettings` **AzureBlobStorageReadSettings** értékre kell állítani. | Igen                                           |
 | ***Keresse meg a másolandó fájlokat:*** |  |  |
 | 1. lehetőség: statikus elérési út<br> | Másolás az adatkészletben megadott tárolóból vagy mappából vagy fájlból. Ha az összes blobot egy tárolóból vagy mappából kívánja átmásolni, a következőképpen adhatja meg: `wildcardFileName` `*` . |  |
-| 2. lehetőség: blob-előtag<br>-előtag | A blob nevének előtagja a forrás Blobok szűréséhez az adatkészletben konfigurált megadott tárolóban. Azok a Blobok vannak kiválasztva, amelyeknél a nevek kezdődnek `container_in_dataset/this_prefix` . A szolgáltatás kiszolgálóoldali szűrőjét használja a blob Storage-hoz, ami jobb teljesítményt nyújt, mint a helyettesítő karakteres szűrő.<br><br>Ha előtagot használ, és úgy dönt, hogy a fájl alapú fogadóba másol egy megőrzött hierarchiát, a rendszer megőrzi az utolsó "/" előtag utáni alútvonalat. Tegyük fel például, hogy rendelkezik forrással  `container/folder/subfolder/file.txt` , és konfigurálja az előtagot `folder/sub` , majd a megőrzött fájl elérési útja `subfolder/file.txt` . | No                                                          |
-| 3. lehetőség: helyettesítő karakter<br>- wildcardFolderPath | A mappa elérési útja a forrás mappák szűréséhez az adatkészletben konfigurált megadott tárolóban helyettesítő karakterekkel. <br>Az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (nulla vagy egyetlen karakternek felel meg). A (z `^` ) használatával elkerülheti, hogy a Mappanév helyettesítő karakterrel vagy a Escape-karakterrel rendelkezik. <br>További példákat a [mappák és a fájlok szűrésére szolgáló példákban](#folder-and-file-filter-examples)talál. | No                                            |
-| 3. lehetőség: helyettesítő karakter<br>- wildcardFileName | Az adott tároló és mappa elérési útjának (vagy helyettesítő mappa elérési útjának) a forrásfájlok szűrésére szolgáló helyettesítő karakterrel rendelkező fájlnév. <br>Az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (nulla vagy egyetlen karakternek felel meg). `^`Ha a fájl neve helyettesítő karakter vagy a escape-karakter található, akkor a (z) használatával elkerülheti a menekülési karaktert. További példákat a [mappák és a fájlok szűrésére szolgáló példákban](#folder-and-file-filter-examples)talál. | Yes |
-| 4. lehetőség: a fájlok listája<br>- fileListPath | Egy adott fájl másolását jelzi. Mutasson egy szövegfájlra, amely tartalmazza a másolni kívánt fájlok listáját, soronként egy fájlt, amely az adatkészletben konfigurált útvonal relatív elérési útja.<br/>Ha ezt a beállítást használja, ne adjon meg fájlnevet az adatkészletben. További példákat a [fájllista példákban](#file-list-examples)talál. |No |
+| 2. lehetőség: blob-előtag<br>-előtag | A blob nevének előtagja a forrás Blobok szűréséhez az adatkészletben konfigurált megadott tárolóban. Azok a Blobok vannak kiválasztva, amelyeknél a nevek kezdődnek `container_in_dataset/this_prefix` . A szolgáltatás kiszolgálóoldali szűrőjét használja a blob Storage-hoz, ami jobb teljesítményt nyújt, mint a helyettesítő karakteres szűrő.<br><br>Ha előtagot használ, és úgy dönt, hogy a fájl alapú fogadóba másol egy megőrzött hierarchiát, a rendszer megőrzi az utolsó "/" előtag utáni alútvonalat. Tegyük fel például, hogy rendelkezik forrással  `container/folder/subfolder/file.txt` , és konfigurálja az előtagot `folder/sub` , majd a megőrzött fájl elérési útja `subfolder/file.txt` . | Nem                                                          |
+| 3. lehetőség: helyettesítő karakter<br>- wildcardFolderPath | A mappa elérési útja a forrás mappák szűréséhez az adatkészletben konfigurált megadott tárolóban helyettesítő karakterekkel. <br>Az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (nulla vagy egyetlen karakternek felel meg). A (z `^` ) használatával elkerülheti, hogy a Mappanév helyettesítő karakterrel vagy a Escape-karakterrel rendelkezik. <br>További példákat a [mappák és a fájlok szűrésére szolgáló példákban](#folder-and-file-filter-examples)talál. | Nem                                            |
+| 3. lehetőség: helyettesítő karakter<br>- wildcardFileName | Az adott tároló és mappa elérési útjának (vagy helyettesítő mappa elérési útjának) a forrásfájlok szűrésére szolgáló helyettesítő karakterrel rendelkező fájlnév. <br>Az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (nulla vagy egyetlen karakternek felel meg). `^`Ha a fájl neve helyettesítő karakter vagy a escape-karakter található, akkor a (z) használatával elkerülheti a menekülési karaktert. További példákat a [mappák és a fájlok szűrésére szolgáló példákban](#folder-and-file-filter-examples)talál. | Igen |
+| 4. lehetőség: a fájlok listája<br>- fileListPath | Egy adott fájl másolását jelzi. Mutasson egy szövegfájlra, amely tartalmazza a másolni kívánt fájlok listáját, soronként egy fájlt, amely az adatkészletben konfigurált útvonal relatív elérési útja.<br/>Ha ezt a beállítást használja, ne adjon meg fájlnevet az adatkészletben. További példákat a [fájllista példákban](#file-list-examples)talál. | Nem |
 | ***További beállítások:*** |  | |
-| rekurzív | Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. Vegye figyelembe, hogy ha a **rekurzív** értéke **true (igaz** ), a fogadó pedig egy fájl alapú tároló, a fogadó nem másolja vagy hozza létre az üres mappát vagy almappát. <br>Az engedélyezett értékek: **true** (alapértelmezett) és **false (hamis**).<br>Ez a tulajdonság nem érvényes a konfiguráláskor `fileListPath` . |No |
-| deleteFilesAfterCompletion | Azt jelzi, hogy a rendszer törli-e a bináris fájlokat a forrás-áruházból, miután sikeresen áthelyezte a célhelyre. A fájl törlése fájl alapján történik, így ha a másolási tevékenység meghiúsul, néhány fájl már át lett másolva a célhelyre, és törlődik a forrásból, míg mások továbbra is a forrás-áruházban maradnak. <br/>Ez a tulajdonság csak bináris fájlok másolási forgatókönyv esetén érvényes. Az alapértelmezett érték: false. |No |
-| modifiedDatetimeStart    | A fájlok a következő attribútum alapján vannak szűrve: utoljára módosítva. <br>A fájlok akkor lesznek kiválasztva, ha az utolsó módosítás időpontja a és a közötti időintervallumon belül van `modifiedDatetimeStart` `modifiedDatetimeEnd` . Az idő az UTC-időzónára vonatkozik "2018-12-01T05:00:00Z" formátumban. <br> A tulajdonságok lehetnek **Null értékűek**, ami azt jelenti, hogy a rendszer nem alkalmazza a file Attribute szűrőt az adatkészletre.  Ha a `modifiedDatetimeStart` dátum datetime értékkel rendelkezik `modifiedDatetimeEnd` , de **Null** értékű, akkor azok a fájlok lesznek kiválasztva, amelyek utolsó módosított attribútuma nagyobb vagy egyenlő, mint a DateTime érték.  Ha a `modifiedDatetimeEnd` dátum datetime értékkel rendelkezik `modifiedDatetimeStart` , de **Null** értékű, akkor azok a fájlok lesznek kiválasztva, amelyek utolsó módosítási attribútuma kisebb a DateTime értéknél.<br/>Ez a tulajdonság nem érvényes a konfiguráláskor `fileListPath` . | No                                            |
-| modifiedDatetimeEnd      | Lásd fentebb.                                               | No                                            |
-| enablePartitionDiscovery | A particionált fájlok esetében adja meg, hogy szeretné-e elemezni a partíciókat a fájl elérési útján, majd adja hozzá őket további forrásként szolgáló oszlopként.<br/>Az engedélyezett értékek: **false** (alapértelmezett) és **true (igaz**). | No                                            |
-| partitionRootPath | Ha engedélyezve van a partíciók felderítése, akkor a particionált mappák adatoszlopként való olvasásához a gyökér elérési útját kell megadni.<br/><br/>Ha nincs megadva, a rendszer alapértelmezés szerint<br/>– Ha a fájl elérési útját használja az adatkészletben vagy a forrásban található fájlok listáján, a partíció gyökerének elérési útja az adatkészletben konfigurált útvonal.<br/>– Ha helyettesítő mappa szűrőt használ, a partíció gyökerének elérési útja az első helyettesítő karakter előtti Alútvonal.<br/>– Ha előtagot használ, a partíció gyökerének elérési útja az utolsó "/" előtti Alútvonal. <br/><br/>Tegyük fel például, hogy az adatkészletben az elérési utat "root/Folder/Year = 2020/hónap = 08/Day = 27" értékre konfigurálja:<br/>– Ha a partíció gyökerének elérési útját "gyökér/mappa/év = 2020" értékre állítja, a másolási tevékenység két további oszlopot fog előállítani, `month` és a `day` "08" és "27" értéket is kijelöli a fájlokban lévő oszlopokon kívül.<br/>– Ha nincs megadva a partíció gyökerének elérési útja, nem jön létre további oszlop. | No                                            |
-| maxConcurrentConnections | A tárterület egyidejű kapcsolatainak száma. Csak akkor kell megadni, ha az adattárban való egyidejű kapcsolatokat szeretné korlátozni. | No                                            |
+| rekurzív | Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. Vegye figyelembe, hogy ha a **rekurzív** értéke **true (igaz** ), a fogadó pedig egy fájl alapú tároló, a fogadó nem másolja vagy hozza létre az üres mappát vagy almappát. <br>Az engedélyezett értékek: **true** (alapértelmezett) és **false (hamis**).<br>Ez a tulajdonság nem érvényes a konfiguráláskor `fileListPath` . | Nem |
+| deleteFilesAfterCompletion | Azt jelzi, hogy a rendszer törli-e a bináris fájlokat a forrás-áruházból, miután sikeresen áthelyezte a célhelyre. A fájl törlése fájl alapján történik, így ha a másolási tevékenység meghiúsul, néhány fájl már át lett másolva a célhelyre, és törlődik a forrásból, míg mások továbbra is a forrás-áruházban maradnak. <br/>Ez a tulajdonság csak bináris fájlok másolási forgatókönyv esetén érvényes. Az alapértelmezett érték: false. | Nem |
+| modifiedDatetimeStart    | A fájlok a következő attribútum alapján vannak szűrve: utoljára módosítva. <br>A fájlok akkor lesznek kiválasztva, ha az utolsó módosítás időpontja a és a közötti időintervallumon belül van `modifiedDatetimeStart` `modifiedDatetimeEnd` . Az idő az UTC-időzónára vonatkozik "2018-12-01T05:00:00Z" formátumban. <br> A tulajdonságok lehetnek **Null értékűek**, ami azt jelenti, hogy a rendszer nem alkalmazza a file Attribute szűrőt az adatkészletre.  Ha a `modifiedDatetimeStart` dátum datetime értékkel rendelkezik `modifiedDatetimeEnd` , de **Null** értékű, akkor azok a fájlok lesznek kiválasztva, amelyek utolsó módosított attribútuma nagyobb vagy egyenlő, mint a DateTime érték.  Ha a `modifiedDatetimeEnd` dátum datetime értékkel rendelkezik `modifiedDatetimeStart` , de **Null** értékű, akkor azok a fájlok lesznek kiválasztva, amelyek utolsó módosítási attribútuma kisebb a DateTime értéknél.<br/>Ez a tulajdonság nem érvényes a konfiguráláskor `fileListPath` . | Nem                                            |
+| modifiedDatetimeEnd      | Lásd fentebb.                                               | Nem                                            |
+| enablePartitionDiscovery | A particionált fájlok esetében adja meg, hogy szeretné-e elemezni a partíciókat a fájl elérési útján, majd adja hozzá őket további forrásként szolgáló oszlopként.<br/>Az engedélyezett értékek: **false** (alapértelmezett) és **true (igaz**). | Nem                                            |
+| partitionRootPath | Ha engedélyezve van a partíciók felderítése, akkor a particionált mappák adatoszlopként való olvasásához a gyökér elérési útját kell megadni.<br/><br/>Ha nincs megadva, a rendszer alapértelmezés szerint<br/>– Ha a fájl elérési útját használja az adatkészletben vagy a forrásban található fájlok listáján, a partíció gyökerének elérési útja az adatkészletben konfigurált útvonal.<br/>– Ha helyettesítő mappa szűrőt használ, a partíció gyökerének elérési útja az első helyettesítő karakter előtti Alútvonal.<br/>– Ha előtagot használ, a partíció gyökerének elérési útja az utolsó "/" előtti Alútvonal. <br/><br/>Tegyük fel például, hogy az adatkészletben az elérési utat "root/Folder/Year = 2020/hónap = 08/Day = 27" értékre konfigurálja:<br/>– Ha a partíció gyökerének elérési útját "gyökér/mappa/év = 2020" értékre állítja, a másolási tevékenység két további oszlopot fog előállítani, `month` és a `day` "08" és "27" értéket is kijelöli a fájlokban lévő oszlopokon kívül.<br/>– Ha nincs megadva a partíció gyökerének elérési útja, nem jön létre további oszlop. | Nem                                            |
+| maxConcurrentConnections | A tárterület egyidejű kapcsolatainak száma. Csak akkor kell megadni, ha az adattárban való egyidejű kapcsolatokat szeretné korlátozni. | Nem                                            |
 
 > [!NOTE]
 > A Parquet/tagolt szöveges formátum esetében a következő szakaszban említett másolási tevékenység forrásának **BlobSource** -típusa továbbra is támogatott a visszamenőleges kompatibilitás érdekében. Javasoljuk, hogy az új modellt addig használja, amíg a Data Factory authoring felhasználói felülete be nem vált az új típusok létrehozásához.
@@ -442,10 +442,10 @@ Az Azure Blob Storage-ban a következő tulajdonságok támogatottak a `storeSet
 
 | Tulajdonság                 | Leírás                                                  | Kötelező |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| típus                     | A **Type** tulajdonságot a `storeSettings` **AzureBlobStorageWriteSettings** értékre kell állítani. | Yes      |
-| copyBehavior             | Meghatározza a másolási viselkedést, ha a forrás fájl-alapú adattárból származó fájlok.<br/><br/>Az engedélyezett értékek a következők:<br/><b>-PreserveHierarchy (alapértelmezett)</b>: megőrzi a fájl-hierarchiát a célmappában. A forrásfájl relatív elérési útja a forrás mappájához azonos a célfájl relatív elérési útjával.<br/><b>-FlattenHierarchy</b>: a forrás mappából származó összes fájl a célmappa első szintjén van. A célként megadott fájlok automatikusan generált névvel rendelkeznek. <br/><b>-MergeFiles</b>: az összes fájlt egyesíti a forrás mappájából egy fájlba. Ha meg van adva a fájl vagy a blob neve, az egyesített fájl neve a megadott név. Ellenkező esetben ez egy automatikusan létrehozott fájl neve. | No       |
-| blockSizeInMB | Határozza meg a blokk méretét (megabájtban), amely a Blobok adatírására szolgál. További [információ a blokkos blobokról](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs). <br/>Az engedélyezett érték *4 MB és 100 MB között* van. <br/>Alapértelmezés szerint a Data Factory automatikusan meghatározza a blokk méretét a forrás-áruház típusa és adatai alapján. A blob Storage-ba való nem bináris másolás esetén az alapértelmezett blokkolási méret 100 MB, így a mérete (legfeljebb) 4,95 TB adat lehet. Nem lehet optimális, ha az adatai nem nagyméretűak, különösen akkor, ha a saját üzemeltetésű integrációs modult olyan gyenge hálózati kapcsolatokkal használja, amelyek működési időtúllépést vagy teljesítménnyel kapcsolatos problémákat okoznak. Explicit módon megadhatja a blokk méretét, miközben biztosítja, hogy `blockSizeInMB*50000` az adattároláshoz elég nagy legyen. Ellenkező esetben a másolási tevékenység futtatása sikertelen lesz. | No |
-| maxConcurrentConnections | A tárterület egyidejű kapcsolatainak száma. Csak akkor kell megadni, ha az adattárban való egyidejű kapcsolatokat szeretné korlátozni. | No       |
+| típus                     | A tulajdonságot a következőre kell `type` `storeSettings` beállítani: `AzureBlobStorageWriteSettings` . | Igen      |
+| copyBehavior             | Meghatározza a másolási viselkedést, ha a forrás fájl-alapú adattárból származó fájlok.<br/><br/>Az engedélyezett értékek a következők:<br/><b>-PreserveHierarchy (alapértelmezett)</b>: megőrzi a fájl-hierarchiát a célmappában. A forrásfájl relatív elérési útja a forrás mappájához azonos a célfájl relatív elérési útjával.<br/><b>-FlattenHierarchy</b>: a forrás mappából származó összes fájl a célmappa első szintjén van. A célként megadott fájlok automatikusan generált névvel rendelkeznek. <br/><b>-MergeFiles</b>: az összes fájlt egyesíti a forrás mappájából egy fájlba. Ha meg van adva a fájl vagy a blob neve, az egyesített fájl neve a megadott név. Ellenkező esetben ez egy automatikusan létrehozott fájl neve. | Nem       |
+| blockSizeInMB | Határozza meg a blokk méretét (megabájtban), amely a Blobok adatírására szolgál. További [információ a blokkos blobokról](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs). <br/>Az engedélyezett érték *4 MB és 100 MB között* van. <br/>Alapértelmezés szerint a Data Factory automatikusan meghatározza a blokk méretét a forrás-áruház típusa és adatai alapján. A blob Storage-ba való nem bináris másolás esetén az alapértelmezett blokkolási méret 100 MB, így a mérete (legfeljebb) 4,95 TB adat lehet. Nem lehet optimális, ha az adatai nem nagyméretűak, különösen akkor, ha a saját üzemeltetésű integrációs modult olyan gyenge hálózati kapcsolatokkal használja, amelyek működési időtúllépést vagy teljesítménnyel kapcsolatos problémákat okoznak. Explicit módon megadhatja a blokk méretét, miközben biztosítja, hogy `blockSizeInMB*50000` az adattároláshoz elég nagy legyen. Ellenkező esetben a másolási tevékenység futtatása sikertelen lesz. | Nem |
+| maxConcurrentConnections | A tárterület egyidejű kapcsolatainak száma. Csak akkor kell megadni, ha az adattárban való egyidejű kapcsolatokat szeretné korlátozni. | Nem       |
 
 **Példa**
 
@@ -523,12 +523,13 @@ Amikor fájlokat másol az Amazon S3-ból, az Azure Blob Storage-ból vagy Azure
 ## <a name="mapping-data-flow-properties"></a>Adatfolyam-tulajdonságok leképezése
 
 Az adatok leképezési folyamatokban való átalakításakor az alábbi formátumokban olvashat és írhat fájlokat az Azure Blob Storage-ból:
-* [Avro](format-avro.md#mapping-data-flow-properties)
-* [Tagolt szöveg](format-delimited-text.md#mapping-data-flow-properties)
-* [Delta](format-delta.md#mapping-data-flow-properties)
-* [Excel](format-excel.md#mapping-data-flow-properties)
-* [JSON](format-json.md#mapping-data-flow-properties)
-* [Parquet](format-parquet.md#mapping-data-flow-properties)
+
+- [Avro](format-avro.md#mapping-data-flow-properties)
+- [Tagolt szöveg](format-delimited-text.md#mapping-data-flow-properties)
+- [Delta](format-delta.md#mapping-data-flow-properties)
+- [Excel](format-excel.md#mapping-data-flow-properties)
+- [JSON](format-json.md#mapping-data-flow-properties)
+- [Parquet](format-parquet.md#mapping-data-flow-properties)
 
 A megadott beállítások formázása az adott formátum dokumentációjában található. További információ: [forrás-átalakítás a](data-flow-source.md) leképezési adatfolyamban és a fogadó [átalakítás a leképezési folyamatokban](data-flow-sink.md).
 
@@ -544,17 +545,17 @@ A forrás tárolóban válasszon egy olyan fájlt, amely megfelel a mintának. C
 
 Helyettesítő karakteres példák:
 
-* ```*``` A karakterek tetszőleges halmazát jelöli.
-* ```**``` Rekurzív címtár-beágyazást jelöl.
-* ```?``` Egy karaktert cserél le.
-* ```[]``` A szögletes zárójelek egy vagy több karakterének felel meg.
+- `*` A karakterek tetszőleges halmazát jelöli.
+- `**` Rekurzív címtár-beágyazást jelöl.
+- `?` Egy karaktert cserél le.
+- `[]` A szögletes zárójelek egy vagy több karakterének felel meg.
 
-* ```/data/sales/**/*.csv``` Az összes. csv fájl beolvasása a/Data/Sales. alatt
-* ```/data/sales/20??/**/``` A 20. század összes fájljának beolvasása.
-* ```/data/sales/*/*/*.csv``` A. csv fájlokat a/Data/Sales. alatt két szinten kéri le.
-* ```/data/sales/2004/*/12/[XY]1?.csv``` Az összes. csv-fájl beolvasása 2004 decemberében, X vagy Y előtaggal, kétjegyű számmal.
+- `/data/sales/**/*.csv` Az összes. csv fájl beolvasása a/Data/Sales. alatt
+- `/data/sales/20??/**/` A 20. század összes fájljának beolvasása.
+- `/data/sales/*/*/*.csv` A. csv fájlokat a/Data/Sales. alatt két szinten kéri le.
+- `/data/sales/2004/*/12/[XY]1?.csv` Az összes. csv-fájl beolvasása 2004 decemberében, X vagy Y előtaggal, kétjegyű számmal.
 
-**Partíció gyökerének elérési útja:** Ha a fájlban particionált mappák vannak ```key=value``` formázva (például: `year=2019` ), akkor a partíciós mappa fájának legfelső szintjét hozzárendelheti az adatfolyam adatfolyamához tartozó oszlop nevéhez.
+**Partíció gyökerének elérési útja:** Ha a fájlban particionált mappák vannak `key=value` formázva (például: `year=2019` ), akkor a partíciós mappa fájának legfelső szintjét hozzárendelheti az adatfolyam adatfolyamához tartozó oszlop nevéhez.
 
 Először állítson be egy helyettesítő karaktert, amely tartalmazza az összes olyan elérési utat, amely a particionált mappák és az olvasni kívánt levél fájlok.
 
@@ -574,17 +575,17 @@ Ha a forrásfájlokat másik helyre szeretné áthelyezni a feldolgozás után, 
 
 Ha a forrás elérési útja helyettesítő karakterrel rendelkezik, a szintaxis a következőképpen fog kinézni:
 
-```/data/sales/20??/**/*.csv```
+`/data/sales/20??/**/*.csv`
 
 A következőt adhatja meg:
 
-```/data/sales```
+`/data/sales`
 
 És a következőt adhatja meg:
 
-```/backup/priorSales```
+`/backup/priorSales`
 
-Ebben az esetben a rendszer a/Data/Sales alatt forrásozott összes fájlt áthelyezi a/backup/priorSales.
+Ebben az esetben az alatta lévő összes fájl `/data/sales` átkerül a következőre: `/backup/priorSales` .
 
 > [!NOTE]
 > A fájl műveletei csak akkor futnak, amikor egy folyamaton belül indítja el az adatfolyamatot (a folyamat hibakeresési vagy végrehajtási futtatása), amely az adatfolyamok végrehajtása tevékenységet használja egy folyamaton belül. A fájl műveletei *nem* futnak adatfolyam-hibakeresési módban.
@@ -600,11 +601,11 @@ A fogadó átalakításban az Azure Blob Storage-ban egy tárolóba vagy egy map
 **Törölje a mappát:** Meghatározza, hogy a célmappa törlődik-e az adatírás előtt.
 
 **Fájlnév beállítás:** Meghatározza, hogy a célfájl hogyan legyen elnevezve a célmappában. A fájlnév beállításai a következők:
-   * **Default (alapértelmezett**): a Spark használatával a fájlok a részek alapértelmezett értékei alapján megtalálhatók.
-   * **Minta**: adjon meg egy mintát, amely egy partíción lévő kimeneti fájlokat sorolja fel. A **hitelek [n]. csv** például loans1.csv, loans2.csv és így tovább fog létrejönni.
-   * **/Partíció**: adjon meg egy fájlnevet partícióként.
-   * **Oszlopbeli adatként**: állítsa a kimeneti fájlt egy oszlop értékére. Az elérési út az adatkészlet-tárolóhoz viszonyítva nem a célmappához képest. Ha a mappa elérési útja szerepel az adatkészletben, a rendszer felülbírálja.
-   * **Kimenet egyetlen fájlba**: a particionált kimeneti fájlok egyetlen elnevezett fájlba kombinálhatók. Az elérési út az adatkészlet mappájához képest relatív. Vegye figyelembe, hogy az egyesítési művelet valószínűleg sikertelen lehet a csomópont méretétől függően. A nagyméretű adatkészletek esetében ez a beállítás nem ajánlott.
+   - **Default (alapértelmezett**): a Spark használatával a fájlok a részek alapértelmezett értékei alapján megtalálhatók.
+   - **Minta**: adjon meg egy mintát, amely egy partíción lévő kimeneti fájlokat sorolja fel. Például a következőt `loans[n].csv` fogja létrehozni:, `loans1.csv` `loans2.csv` és így tovább.
+   - **/Partíció**: adjon meg egy fájlnevet partícióként.
+   - **Oszlopbeli adatként**: állítsa a kimeneti fájlt egy oszlop értékére. Az elérési út az adatkészlet-tárolóhoz viszonyítva nem a célmappához képest. Ha a mappa elérési útja szerepel az adatkészletben, a rendszer felülbírálja.
+   - **Kimenet egyetlen fájlba**: a particionált kimeneti fájlok egyetlen elnevezett fájlba kombinálhatók. Az elérési út az adatkészlet mappájához képest relatív. Vegye figyelembe, hogy az egyesítési művelet valószínűleg sikertelen lehet a csomópont méretétől függően. A nagyméretű adatkészletek esetében ez a beállítás nem ajánlott.
 
 **Összes idézet:** Meghatározza, hogy az összes értéket idézőjelek közé kell-e foglalni.
 
@@ -629,13 +630,13 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [törlési tevék
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet **Type** tulajdonságát **AzureBlob** értékre kell állítani. |Yes |
-| folderPath | A tároló és a mappa elérési útja a blob Storage-ban. <br/><br/>Az elérési út a tároló neve nélkül használható helyettesítő szűrőt. Az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (nulla vagy egyetlen karakternek felel meg). `^`Ha a mappa neve helyettesítő karakter vagy a escape-karakter található, akkor a (z) használatával elkerülheti a menekülési karaktert. <br/><br/>Példa: myblobcontainer/myblobfolder/. További példákat a [mappák és a fájlok szűrésére szolgáló példákban](#folder-and-file-filter-examples)talál. |Igen, a másolási vagy keresési tevékenység esetében nem a GetMetadata tevékenységhez |
-| fileName | A megadott **folderPath** érték alatti Blobok neve vagy helyettesítő szűrője. Ha nem ad meg értéket ehhez a tulajdonsághoz, az adatkészlet a mappában található összes blobra mutat. <br/><br/>A szűrő esetében az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (nulla vagy egyetlen karakternek felel meg).<br/>– 1. példa: `"fileName": "*.csv"`<br/>– 2. példa: `"fileName": "???20180427.txt"`<br/>`^`Ha a fájl neve helyettesítő karakter vagy a escape-karakter található, akkor a (z) használatával elkerülheti a menekülési karaktert.<br/><br/>Ha nincs megadva a **fájlnév** egy kimeneti adatkészlethez, és a **preserveHierarchy** nincs megadva a tevékenység fogadójában, a másolási tevékenység automatikusan létrehozza a blob nevét a következő mintával: "*adat. [ tevékenység futtatási azonosítója GUID]. [GUID if FlattenHierarchy]. [formátum, ha konfigurálva]. [tömörítés, ha konfigurálva]*". Például: "Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. gz". <br/><br/>Ha egy táblázatos forrásból másol egy tábla nevét egy lekérdezés helyett, akkor a név minta a következő: "*[Table Name]. [ Format]. [tömörítés, ha konfigurálva]*". Például: "MyTable.csv". |No |
-| modifiedDatetimeStart | A fájlok a következő attribútum alapján vannak szűrve: utoljára módosítva. A fájlok akkor lesznek kiválasztva, ha az utolsó módosítás időpontja a és a közötti időintervallumon belül van `modifiedDatetimeStart` `modifiedDatetimeEnd` . Az időpontot az UTC időzónára alkalmazza a "2018-12-01T05:00:00Z" formátumban. <br/><br/> Vegye figyelembe, hogy a beállítás engedélyezése hatással lesz az adatáthelyezés általános teljesítményére, ha nagy mennyiségű fájlt szeretne szűrni. <br/><br/> A tulajdonságok lehetnek **Null értékűek**, ami azt jelenti, hogy a rendszer nem alkalmazza a file Attribute szűrőt az adatkészletre.  Ha a `modifiedDatetimeStart` dátum datetime értékkel rendelkezik `modifiedDatetimeEnd` , de **Null** értékű, akkor azok a fájlok lesznek kiválasztva, amelyek utolsó módosított attribútuma nagyobb vagy egyenlő, mint a DateTime érték.  Ha a `modifiedDatetimeEnd` dátum datetime értékkel rendelkezik `modifiedDatetimeStart` , de **Null** értékű, akkor azok a fájlok lesznek kiválasztva, amelyek utolsó módosítási attribútuma kisebb a DateTime értéknél.| No |
-| modifiedDatetimeEnd | A fájlok a következő attribútum alapján vannak szűrve: utoljára módosítva. A fájlok akkor lesznek kiválasztva, ha az utolsó módosítás időpontja a és a közötti időintervallumon belül van `modifiedDatetimeStart` `modifiedDatetimeEnd` . Az időpontot az UTC időzónára alkalmazza a "2018-12-01T05:00:00Z" formátumban. <br/><br/> Vegye figyelembe, hogy a beállítás engedélyezése hatással lesz az adatáthelyezés általános teljesítményére, ha nagy mennyiségű fájlt szeretne szűrni. <br/><br/> A tulajdonságok lehetnek **Null értékűek**, ami azt jelenti, hogy a rendszer nem alkalmazza a file Attribute szűrőt az adatkészletre.  Ha a `modifiedDatetimeStart` dátum datetime értékkel rendelkezik `modifiedDatetimeEnd` , de **Null** értékű, akkor azok a fájlok lesznek kiválasztva, amelyek utolsó módosított attribútuma nagyobb vagy egyenlő, mint a DateTime érték.  Ha a `modifiedDatetimeEnd` dátum datetime értékkel rendelkezik `modifiedDatetimeStart` , de **Null** értékű, akkor azok a fájlok lesznek kiválasztva, amelyek utolsó módosítási attribútuma kisebb a DateTime értéknél.| No |
-| formátumban | Ha fájlokat szeretne másolni a fájl alapú tárolók között (bináris másolás), ugorja át a formátum szakaszt a bemeneti és a kimeneti adatkészlet-definíciókban is.<br/><br/>Ha a fájlokat egy adott formátummal szeretné elemezni vagy előállítani, a következő fájlformátum-típusok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat** és **ParquetFormat**. A **Type (típus** ) tulajdonságot állítsa a **Format** értékre a következő értékek egyikére. További információ: [szöveg formátuma](supported-file-formats-and-compression-codecs-legacy.md#text-format), JSON- [Formátum](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Avro formátum](supported-file-formats-and-compression-codecs-legacy.md#avro-format), [ork-formátum](supported-file-formats-and-compression-codecs-legacy.md#orc-format)és [parketta formátuma](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) . |Nem (csak bináris másolási forgatókönyv esetén) |
-| tömörítés | Adja meg az adattömörítés típusát és szintjét. További információ: [támogatott fájlformátumok és tömörítési kodekek](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>A támogatott típusok a **gzip**, a **deflate**, a **BZip2** és a **ZipDeflate**.<br/>A támogatott szintek **optimálisak** és **leggyorsabbak**. |No |
+| típus | Az `type` adatkészlet tulajdonságát be kell állítani `AzureBlob` . | Igen |
+| folderPath | A tároló és a mappa elérési útja a blob Storage-ban. <br/><br/>Az elérési út a tároló neve nélkül használható helyettesítő szűrőt. Az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (nulla vagy egyetlen karakternek felel meg). `^`Ha a mappa neve helyettesítő karakter vagy a escape-karakter található, akkor a (z) használatával elkerülheti a menekülési karaktert. <br/><br/>Példa: `myblobcontainer/myblobfolder/` . További példákat a [mappák és a fájlok szűrésére szolgáló példákban](#folder-and-file-filter-examples)talál. | Igen, a másolási vagy keresési tevékenység esetében nem a GetMetadata tevékenységhez |
+| fileName | A Blobok neve vagy helyettesítő szűrője a megadott `folderPath` érték alatt. Ha nem ad meg értéket ehhez a tulajdonsághoz, az adatkészlet a mappában található összes blobra mutat. <br/><br/>A szűrő esetében az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (nulla vagy egyetlen karakternek felel meg).<br/>– 1. példa: `"fileName": "*.csv"`<br/>– 2. példa: `"fileName": "???20180427.txt"`<br/>`^`Ha a fájl neve helyettesítő karakter vagy a escape-karakter található, akkor a (z) használatával elkerülheti a menekülési karaktert.<br/><br/>Ha `fileName` nincs megadva a kimeneti adatkészlethez `preserveHierarchy` , és nincs megadva a tevékenység fogadójában, a másolási tevékenység automatikusan létrehozza a blob nevét a következő mintával: "*adat. [ tevékenység futtatási azonosítója GUID]. [GUID if FlattenHierarchy]. [formátum, ha konfigurálva]. [tömörítés, ha konfigurálva]*". Például: "Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. gz". <br/><br/>Ha egy táblázatos forrásból másol egy lekérdezés helyett egy Táblanév használatával, a név minta `[table name].[format].[compression if configured]` . Például: "MyTable.csv". | Nem |
+| modifiedDatetimeStart | A fájlok a következő attribútum alapján vannak szűrve: utoljára módosítva. A fájlok akkor lesznek kiválasztva, ha az utolsó módosítás időpontja a és a közötti időintervallumon belül van `modifiedDatetimeStart` `modifiedDatetimeEnd` . Az időpontot az UTC időzónára alkalmazza a "2018-12-01T05:00:00Z" formátumban. <br/><br/> Vegye figyelembe, hogy a beállítás engedélyezése hatással lesz az adatáthelyezés általános teljesítményére, ha nagy mennyiségű fájlt szeretne szűrni. <br/><br/> A tulajdonságok lehetnek `NULL` , ami azt jelenti, hogy a rendszer nem alkalmazza a file Attribute szűrőt az adatkészletre.  Ha a `modifiedDatetimeStart` dátum datetime értékkel `modifiedDatetimeEnd` rendelkezik `NULL` , de az, hogy a legutóbb módosított attribútum nagyobb vagy egyenlő, mint a DateTime érték, akkor a rendszer kijelöli.  Ha a `modifiedDatetimeEnd` dátum datetime értékkel rendelkezik, de az `modifiedDatetimeStart` , hogy `NULL` a legutóbb módosított attribútum kevesebb legyen, mint a DateTime érték, a rendszer kijelöli.| Nem |
+| modifiedDatetimeEnd | A fájlok a következő attribútum alapján vannak szűrve: utoljára módosítva. A fájlok akkor lesznek kiválasztva, ha az utolsó módosítás időpontja a és a közötti időintervallumon belül van `modifiedDatetimeStart` `modifiedDatetimeEnd` . Az időpontot az UTC időzónára alkalmazza a "2018-12-01T05:00:00Z" formátumban. <br/><br/> Vegye figyelembe, hogy a beállítás engedélyezése hatással lesz az adatáthelyezés általános teljesítményére, ha nagy mennyiségű fájlt szeretne szűrni. <br/><br/> A tulajdonságok lehetnek `NULL` , ami azt jelenti, hogy a rendszer nem alkalmazza a file Attribute szűrőt az adatkészletre.  Ha a `modifiedDatetimeStart` dátum datetime értékkel `modifiedDatetimeEnd` rendelkezik `NULL` , de az, hogy a legutóbb módosított attribútum nagyobb vagy egyenlő, mint a DateTime érték, akkor a rendszer kijelöli.  Ha a `modifiedDatetimeEnd` dátum datetime értékkel rendelkezik, de az `modifiedDatetimeStart` , hogy `NULL` a legutóbb módosított attribútum kevesebb legyen, mint a DateTime érték, a rendszer kijelöli.| Nem |
+| formátumban | Ha fájlokat szeretne másolni a fájl alapú tárolók között (bináris másolás), ugorja át a formátum szakaszt a bemeneti és a kimeneti adatkészlet-definíciókban is.<br/><br/>Ha a fájlokat egy adott formátummal szeretné elemezni vagy előállítani, a következő fájlformátum-típusok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat** és **ParquetFormat**. A **Type (típus** ) tulajdonságot állítsa a **Format** értékre a következő értékek egyikére. További információ: [szöveg formátuma](supported-file-formats-and-compression-codecs-legacy.md#text-format), JSON- [Formátum](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Avro formátum](supported-file-formats-and-compression-codecs-legacy.md#avro-format), [ork-formátum](supported-file-formats-and-compression-codecs-legacy.md#orc-format)és [parketta formátuma](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) . | Nem (csak bináris másolási forgatókönyv esetén) |
+| tömörítés | Adja meg az adattömörítés típusát és szintjét. További információ: [támogatott fájlformátumok és tömörítési kodekek](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>A támogatott típusok a **gzip**, a **deflate**, a **BZip2** és a **ZipDeflate**.<br/>A támogatott szintek **optimálisak** és **leggyorsabbak**. | Nem |
 
 >[!TIP]
 >A mappában található összes blob másolásához csak a **folderPath** kell megadni.<br>Ha egyetlen blobot szeretne másolni egy adott névvel, adja meg a **folderPath** és a **fájlnévhez tartozó fájlnevet** .<br>Ha egy mappában lévő Blobok egy részhalmazát szeretné másolni, akkor a **folderPath** és a **fájlnevet** helyettesítő karakteres szűrővel kell megadnia. 
@@ -674,9 +675,9 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [törlési tevék
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának **Type** tulajdonságát **BlobSource** értékre kell állítani. |Yes |
-| rekurzív | Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. Vegye figyelembe, hogy ha a **rekurzív** értéke **true (igaz** ), a fogadó pedig egy fájl alapú tároló, a fogadó nem másolja vagy hozza létre az üres mappát vagy almappát.<br/>Az engedélyezett értékek: **true** (alapértelmezett) és **false (hamis**). | No |
-| maxConcurrentConnections | A tárterület egyidejű kapcsolatainak száma. Csak akkor kell megadni, ha az adattárban való egyidejű kapcsolatokat szeretné korlátozni. | No |
+| típus | A `type` másolási tevékenység forrásának tulajdonságát a következőre kell állítani: `BlobSource` . | Igen |
+| rekurzív | Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. Vegye figyelembe, hogy ha a (z) értékre `recursive` van állítva `true` , a fogadó egy fájl alapú tároló, akkor a fogadó nem másol vagy hoz létre üres mappát vagy almappát.<br/>Az engedélyezett értékek: `true` (alapértelmezett) és `false` . | Nem |
+| maxConcurrentConnections | A tárterület egyidejű kapcsolatainak száma. Csak akkor kell megadni, ha az adattárban való egyidejű kapcsolatokat szeretné korlátozni. | Nem |
 
 **Példa**
 
@@ -714,9 +715,9 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [törlési tevék
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység fogadójának **Type** tulajdonságát **BlobSink** értékre kell állítani. |Yes |
-| copyBehavior | Meghatározza a másolási viselkedést, ha a forrás fájl-alapú adattárból származó fájlok.<br/><br/>Az engedélyezett értékek a következők:<br/><b>-PreserveHierarchy (alapértelmezett)</b>: megőrzi a fájl-hierarchiát a célmappában. A forrásfájl a forrás mappájához relatív elérési útja megegyezik a célfájl relatív elérési útjával.<br/><b>-FlattenHierarchy</b>: a forrás mappából származó összes fájl a célmappa első szintjén van. A célként megadott fájlok automatikusan generált névvel rendelkeznek. <br/><b>-MergeFiles</b>: az összes fájlt egyesíti a forrás mappájából egy fájlba. Ha meg van adva a fájl vagy a blob neve, az egyesített fájl neve a megadott név. Ellenkező esetben ez egy automatikusan létrehozott fájl neve. | No |
-| maxConcurrentConnections | A tárterület egyidejű kapcsolatainak száma. Csak akkor kell megadni, ha az adattárban való egyidejű kapcsolatokat szeretné korlátozni. | No |
+| típus | A `type` másolási tevékenység fogadójának tulajdonságát be kell állítani `BlobSink` . | Igen |
+| copyBehavior | Meghatározza a másolási viselkedést, ha a forrás fájl-alapú adattárból származó fájlok.<br/><br/>Az engedélyezett értékek a következők:<br/><b>-PreserveHierarchy (alapértelmezett)</b>: megőrzi a fájl-hierarchiát a célmappában. A forrásfájl a forrás mappájához relatív elérési útja megegyezik a célfájl relatív elérési útjával.<br/><b>-FlattenHierarchy</b>: a forrás mappából származó összes fájl a célmappa első szintjén van. A célként megadott fájlok automatikusan generált névvel rendelkeznek. <br/><b>-MergeFiles</b>: az összes fájlt egyesíti a forrás mappájából egy fájlba. Ha meg van adva a fájl vagy a blob neve, az egyesített fájl neve a megadott név. Ellenkező esetben ez egy automatikusan létrehozott fájl neve. | Nem |
+| maxConcurrentConnections | A tárterület egyidejű kapcsolatainak száma. Csak akkor kell megadni, ha az adattárban való egyidejű kapcsolatokat szeretné korlátozni. | Nem |
 
 **Példa**
 

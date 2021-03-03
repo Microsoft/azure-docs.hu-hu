@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/26/2020
+ms.date: 2/18/2021
 ms.author: shhazam
-ms.openlocfilehash: 06cf8b5f35bdebed0ebaa9e6949261d7c0d516f2
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: c224dc3f919471e769717f308aff9ae58630d421
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522563"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712759"
 ---
 # <a name="get-started-with-defender-for-iot"></a>Ismerkedés a Defender IoT
 
@@ -69,6 +69,8 @@ Regisztráció:
 1. Válassza ki a **fedélzeti előfizetés** elemet.
 1. A **díjszabás** lapon válasszon ki egy előfizetést, vagy hozzon létre egy újat, és adja hozzá a véglegesített eszközök számát.
 1. Válassza a helyszíni **felügyeleti konzol letöltése** lapot, és mentse a letöltött aktiválási fájlt. Ez a fájl tartalmazza az Ön által megadott összesített véglegesített eszközöket. A rendszer a kezdeti bejelentkezés után feltölti a fájlt a felügyeleti konzolra.
+
+További információ az előfizetés regisztrációjának megszüntetésére szolgáló: [regisztrációjának megszüntetésére szolgáló](how-to-manage-sensors-on-the-cloud.md#offboard-a-subscription).
 
 ## <a name="3-install-and-set-up-the-on-premises-management-console"></a>3. a helyszíni felügyeleti konzol telepítése és beállítása
 
@@ -126,8 +128,9 @@ További információ: [érzékelők összekapcsolása a helyszíni felügyeleti
 ## <a name="7-populate-azure-sentinel-with-alert-information-optional"></a>7. az Azure Sentinel feltöltése riasztási információkkal (opcionális)
 
 Riasztási információk küldése az Azure Sentinelnek az Azure Sentinel konfigurálásával. Lásd: [adatok összekötése a defenderből a IoT az Azure Sentinel](how-to-configure-with-sentinel.md)szolgáltatásba.
-## <a name="next-steps"></a>Következő lépések
 
-[Üdvözli a IoT készült Azure Defender!](overview.md)
+## <a name="see-also"></a>Lásd még
 
-[Azure Defender a IoT architektúrához](architecture.md)
+- [Üdvözli a IoT készült Azure Defender!](overview.md)
+
+- [Azure Defender a IoT architektúrához](architecture.md)

@@ -113,6 +113,9 @@
       items:
         - name: Azure CLI
           href: sample-scripts-azure-cli.md
+        - name: Az Azure Policy beépített elemei
+          displayName: 'samples, policies, definitions'
+          href: ./policy-reference.md
     - name: Alapelvek
       items:
         - name: Kiszolgálók
@@ -572,14 +575,6 @@
         - name: Valós idejű irányítópult tervezése
           href: tutorial-design-database-hyperscale-realtime.md
           displayName: 'hyperscale, tutorial, real-time'
-    - name: Példák
-      items:
-        - name: Azure CLI
-          href: sample-scripts-azure-cli.md
-          displayName: 'samples, azure cli'
-        - name: Az Azure Policy beépített elemei
-          displayName: 'samples, policies, definitions'
-          href: ./policy-reference.md
     - name: Alapelvek
       items:
         - name: Elosztott adatok

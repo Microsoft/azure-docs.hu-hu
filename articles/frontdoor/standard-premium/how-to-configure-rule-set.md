@@ -7,24 +7,19 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: yuajia
-ms.openlocfilehash: e2fe475b171a99ec27ed162511db289891066e00
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 6863c492059ccee152ecf3d03a09e61793576bcb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101098881"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715598"
 ---
-# <a name="configure-a-rule-set"></a>Szabálykészlet konfigurálása
+# <a name="configure-a-rule-set-with-azure-front-door-standardpremium-preview"></a>Szabálykészlet beállítása az Azure bejárati ajtó standard/prémium (előzetes verzió)
 
 > [!Note]
 > Ez a dokumentáció az Azure bejárati ajtó standard/Premium (előzetes verzió) verziójához készült. Információt keres az Azure bejárati ajtóról? Megtekintés [itt](../front-door-overview.md).
 
-Ez az oktatóanyag bemutatja, hogyan hozhat létre egy szabálykészlet és az első szabálykészlet a Azure Portalban. 
-
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
-> [!div class="checklist"]
-> - Szabálykészlet beállítása a portál használatával.
-> - Szabálykészlet törlése a AFD-profilból a portál használatával
+Ez a cikk bemutatja, hogyan hozhat létre egy szabálykészlet és az első szabálykészlet a Azure Portalban. Ezután megtudhatja, hogyan rendelje hozzá a szabályt egy útvonalhoz a szabálykészlet vagy a Endpoint Manager használatával.
 
 > [!IMPORTANT]
 > Az Azure bejárati ajtó standard/Premium (előzetes verzió) jelenleg nyilvános előzetes verzióban érhető el.
@@ -33,7 +28,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az oktatóanyag lépéseinek elvégzése előtt először létre kell hoznia egy Azure-beli bejárati ajtót (standard/prémium). További információ: gyors üzembe helyezés Azure-beli előtérben [standard/prémium szintű profil létrehozása](create-front-door-portal.md).
+* A szabálykészlet konfigurálásához először létre kell hoznia egy Azure bejárati ajtót (standard/prémium). További információ: gyors üzembe helyezés Azure-beli előtérben [standard/prémium szintű profil létrehozása](create-front-door-portal.md).
 
 ## <a name="configure-rule-set-in-azure-portal"></a>Szabálykészlet konfigurálása Azure Portal
 
@@ -65,11 +60,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     1. Válassza ki a nem *társított* hivatkozást.
      
 
-    1. Ezután az **útvonal hozzárendelése** panelen válassza ki azt a végpontot és útvonalat, amelyet a szabálykészlet alapján szeretne hozzárendelni. 
+    1. Ezután az **útvonal hozzárendelése** lapon válassza ki azt a végpontot és útvonalat, amelyet a szabálykészlet alapján szeretne hozzárendelni. 
     
         :::image type="content" source="../media/how-to-configure-rule-set/front-door-associate-rule-set.png" alt-text="Az útvonal létrehozása lap képernyőképe.":::    
         
-    1. Kattintson a *tovább* gombra a szabálykészlet-megrendelések módosításához, ha több szabálykészlet van a kijelölt útvonal alatt. A szabálykészlet felülről lefelé lesz végrehajtva. A rendeléseket a szabálykészlet kiválasztásával és a feljebb vagy lejjebb történő mozgatásával módosíthatja. Ezután válassza a *hozzárendelés* lehetőséget.
+    1. Válassza a *tovább* lehetőséget a szabálykészlet-megrendelések módosításához, ha több szabálykészlet van a kijelölt útvonal alatt. A szabálykészlet felülről lefelé lesz végrehajtva. A rendeléseket a szabálykészlet kiválasztásával és a feljebb vagy lejjebb történő mozgatásával módosíthatja. Ezután válassza a *hozzárendelés* lehetőséget.
     
         > [!Note]
         > Ezen a lapon csak egyetlen útvonallal rendelkező szabálykészlet társítható. Ha egy szabálykészlet több útvonalhoz van társítva, használja a Endpoint Managert.
@@ -86,15 +81,15 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     
         :::image type="content" source="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-1.png" alt-text="Képernyőkép a végpont kiválasztásáról a Endpoint Managerben." lightbox="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-1-expanded.png":::
 
-    1. Kattintson a *végpont szerkesztése* elemre.  
+    1. Válassza a *végpont szerkesztése* lehetőséget.  
     
         :::image type="content" source="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-2.png" alt-text="Képernyőkép a végpont szerkesztése lehetőség kiválasztásáról a Endpoint Managerben." lightbox="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-2-expanded.png":::
 
-    1. Kattintson az útvonalra. 
+    1. Válassza ki az útvonalat. 
     
          :::image type="content" source="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-3.png" alt-text="Képernyőkép az útvonal kiválasztásáról.":::
     
-    1. Az *útvonal frissítése* panelen, a *szabályok* területen válassza ki azt a szabályt, amelyet az útvonalhoz szeretne rendelni a legördülő listából. Ezt követően módosíthatja a rendeléseket úgy, hogy a beállított szabály fel és le értékre van állítva. 
+    1. Az *útvonal frissítése* lap *szabályok* területén válassza ki a legördülő listából azt a szabályt, amelyet hozzá szeretne rendelni az útvonalhoz. Ezt követően módosíthatja a rendeléseket úgy, hogy a beállított szabály fel és le értékre van állítva. 
     
         :::image type="content" source="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-4.png" alt-text="Képernyőkép az útvonal frissítése oldalról.":::
     
@@ -106,7 +101,7 @@ Az előző lépésekben konfigurálta és társította az útvonalhoz beállíto
 
 1. Nyissa meg a **szabálykészlet lapot** a **Beállítások** területen a szabálykészlet az összes társított útvonalból való társításának megszüntetéséhez.
 
-1. Bontsa ki az útvonalat, és kattintson a három pontra, majd az *útvonal szerkesztése* lehetőségre.
+1. Bontsa ki az útvonalat, és válassza ki a három pontot. Ezután válassza *az útvonal szerkesztése* lehetőséget.
 
    :::image type="content" source="../media/how-to-configure-rule-set/front-door-disassociate-rule-set-1.png" alt-text="Képernyőkép az útvonal kibontásáról a szabálykészlet beállításban.":::
 
@@ -124,15 +119,6 @@ Az előző lépésekben konfigurálta és társította az útvonalhoz beállíto
 
 1. A szabálykészlet már törölve lett.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
-
-* Szabálykészlet létrehozása
-* Rendeljen hozzá egy szabályt a AFD útvonalhoz.
-* Szabálykészlet törlése a AFD-profilból
-
-Ha meg szeretné tudni, hogyan adhat hozzá biztonsági fejléceket a szabálykészlet használatával, folytassa a következő oktatóanyaggal.
-
-> [!div class="nextstepaction"]
-> [Biztonsági fejlécek beállított szabályokkal]()
+Ismerje meg, hogyan adhat hozzá [biztonsági fejléceket a szabályokhoz](how-to-add-security-headers.md).

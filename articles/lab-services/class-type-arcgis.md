@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: nicolela
-ms.openlocfilehash: 8d5356f7fd2661d9743d1058a147a0b20f62850e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 530597a72b19afa1e80b5c7640b105d86479b1c1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373708"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740103"
 ---
 # <a name="set-up-a-lab-for-arcmaparcgis-desktop"></a>Labor beállítása a ArcMap\ArcGIS Desktophoz
 
@@ -24,7 +24,7 @@ Az Azure-előfizetés beszerzése után létrehozhat egy új Labor-fiókot Azure
 
 ### <a name="lab-account-settings"></a>Tesztkörnyezet-Fiókbeállítások
 
-Engedélyezze a labor-fiókok beállításait az alábbi táblázatban leírtak szerint.  Az Azure Marketplace-lemezképek engedélyezésével kapcsolatos további információkért lásd: [Az Azure Marketplace-lemezképek elérhetővé tétele a labor-készítők](https://docs.microsoft.com/azure/lab-services/specify-marketplace-images)számára.
+Engedélyezze a labor-fiókok beállításait az alábbi táblázatban leírtak szerint.  Az Azure Marketplace-lemezképek engedélyezésével kapcsolatos további információkért lásd: [Az Azure Marketplace-lemezképek elérhetővé tétele a labor-készítők](./specify-marketplace-images.md)számára.
 
 | Tesztkörnyezet-fiók beállítása | Utasítások |
 | ------------------- | ------------ |
@@ -34,7 +34,7 @@ Engedélyezze a labor-fiókok beállításait az alábbi táblázatban leírtak 
 
 A ArcGIS Desktop által kínált licencelési típus [egyidejű használati licenc](https://desktop.arcgis.com/en/license-manager/latest/license-manager-basics.htm).  Ehhez telepítenie kell a ArcGIS License Managert a licenckiszolgálóra.  A License Manager nyomon követi a szoftver azon példányainak számát, amelyek egyszerre futtathatók.  A License Manager kiszolgálón való beállításával kapcsolatos további információkért tekintse meg a [License Manager útmutatóját](https://desktop.arcgis.com/en/license-manager/latest/welcome.htm).
 
-A licenckiszolgáló általában a helyszíni hálózatban található, vagy egy Azure-beli virtuális hálózaton belül fut.  A licenckiszolgáló beállítása után meg kell adnia [a virtuális hálózatot](https://docs.microsoft.com/azure/lab-services/how-to-connect-peer-virtual-network) a [labor-fiókjával](https://docs.microsoft.com/azure/lab-services/tutorial-setup-lab-account).  A tesztkörnyezet létrehozása előtt el kell végeznie a hálózati társítást, hogy a labor virtuális gépei hozzáférhessenek a licenckiszolgálóhoz, és fordítva.
+A licenckiszolgáló általában a helyszíni hálózatban található, vagy egy Azure-beli virtuális hálózaton belül fut.  A licenckiszolgáló beállítása után meg kell adnia [a virtuális hálózatot](./how-to-connect-peer-virtual-network.md) a [labor-fiókjával](./tutorial-setup-lab-account.md).  A tesztkörnyezet létrehozása előtt el kell végeznie a hálózati társítást, hogy a labor virtuális gépei hozzáférhessenek a licenckiszolgálóhoz, és fordítva.
 
 További információ: [Licenckiszolgáló beállítása megosztott erőforrásként](how-to-create-a-lab-with-shared-resource.md).
 

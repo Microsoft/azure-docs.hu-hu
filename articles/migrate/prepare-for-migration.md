@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: 979f40e13aab71f02a316e4ddf60306170166845
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 543fb7474c0a9efc41667945c89489054a44d657
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753926"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724489"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Helyszíni gépek előkészítése az Azure-ba való áttelepítésre
 
@@ -35,7 +35,7 @@ A táblázat összefoglalja a Azure Migrate felderítési, felmérési és átte
 
 **Forgatókönyv** | **Projekt** | **Felderítés/Értékelés** | **Migrálás**
 --- | --- | --- | ---
-**VMware virtuális gépek** | Egy Azure Migrate-projektben akár 35 000 virtuális gépet is felderítheti és felbecsülheti. | Akár 10 000 VMware virtuális gépet is felfedezheti egyetlen [Azure Migrate berendezéssel](common-questions-appliance.md) a VMware-hez. | **Ügynök nélküli áttelepítés**: egyszerre legfeljebb 300 virtuális gépet lehet replikálni. A legjobb teljesítmény érdekében javasoljuk, hogy hozzon létre több köteget a virtuális gépeken, ha több mint 50 rendelkezik.<br/><br/> **Ügynök-alapú áttelepítés**: a [replikációs berendezést](migrate-replication-appliance.md) nagy számú virtuális gép replikálására is [felskálázással](./agent-based-migration-architecture.md#performance-and-scaling) végezheti el.<br/><br/> A portálon egyszerre legfeljebb 10 gépet választhat a replikáláshoz. Több gép replikálásához vegyen fel 10-es kötegeket.
+**VMware virtuális gépek** | Egy Azure Migrate-projektben akár 35 000 virtuális gépet is felderítheti és felbecsülheti. | Akár 10 000 VMware virtuális gépet is felfedezheti egyetlen [Azure Migrate berendezéssel](common-questions-appliance.md) a VMware-hez. | **Ügynök nélküli áttelepítés**: egyszerre legfeljebb 500 virtuális gépet lehet replikálni az egyes vCenter Serverokból. **Ügynök-alapú áttelepítés**: a [replikációs berendezést](migrate-replication-appliance.md) nagy számú virtuális gép replikálására is [felskálázással](./agent-based-migration-architecture.md#performance-and-scaling) végezheti el.<br/><br/> A portálon egyszerre legfeljebb 10 gépet választhat a replikáláshoz. Több gép replikálásához vegyen fel 10-es kötegeket.
 **Hyper-V virtuális gépek** | Egy Azure Migrate-projektben akár 35 000 virtuális gépet is felderítheti és felbecsülheti. | Akár 5 000 Hyper-V virtuális gép felderítése egyetlen Azure Migrate berendezéssel | Egy berendezés nem használatos a Hyper-V áttelepítéséhez. Ehelyett a Hyper-V replikációs szolgáltató minden Hyper-V-gazdagépen fut.<br/><br/> A replikációs kapacitást a teljesítménnyel kapcsolatos tényezők, például a virtuális gépek elváltozása és a replikációs adatok feltöltési sávszélessége befolyásolja.<br/><br/> A portálon egyszerre legfeljebb 10 gépet választhat a replikáláshoz. Több gép replikálásához vegyen fel 10-es kötegeket.
 **Fizikai gépek** | Akár 35 000 gépet is felderítheti és felbecsülheti egyetlen Azure Migrate projektben. | Akár 250 fizikai kiszolgálót is felderítheti egyetlen Azure Migrate berendezéssel a fizikai kiszolgálók számára. | A [replikációs berendezés](migrate-replication-appliance.md) a nagy számú kiszolgáló replikálására is [méretezhető](./agent-based-migration-architecture.md#performance-and-scaling) .<br/><br/> A portálon egyszerre legfeljebb 10 gépet választhat a replikáláshoz. Több gép replikálásához vegyen fel 10-es kötegeket.
 
@@ -116,7 +116,7 @@ A Azure Migrate automatikusan végrehajtja ezeket a műveleteket ezen verziók e
 - SUSE Linux Enterprise Server 12 SP1 +
 - SUSE Linux Enterprise Server 15 SP1
 - Ubuntu 19,04, 19,10, 18.04 LTS, 16.04 LTS, 14.04 LTS
-- Debian 8, 7
+- Debian 9, 8, 7
 - Oracle Linux 7,7, 7,7-CI
 
 Más verziók esetében készítse elő a gépeket a táblázatban foglaltak szerint.  
@@ -183,12 +183,12 @@ Helyszíni Linux rendszerű gépeken:
 
 Az áttelepítés után hajtsa végre a következő lépéseket a létrehozott Azure-beli virtuális gépeken:
 
-1. Ha az interneten keresztül szeretne csatlakozni a virtuális géphez, rendeljen egy nyilvános IP-címet a virtuális géphez. Az Azure-beli virtuális gép számára eltérő nyilvános IP-címet kell használnia, mint amelyet a helyszíni géphez használt. [További információ](../virtual-network/virtual-network-public-ip-address.md).
+1. Ha az interneten keresztül szeretne csatlakozni a virtuális géphez, rendeljen egy nyilvános IP-címet a virtuális géphez. Az Azure-beli virtuális gép számára eltérő nyilvános IP-címet kell használnia, mint amelyet a helyszíni géphez használt. [További információk](../virtual-network/virtual-network-public-ip-address.md).
 2. Győződjön meg arról, hogy a virtuális gép hálózati biztonsági csoport (NSG) szabályai engedélyezik a bejövő kapcsolatokat az RDP-vagy SSH-porton.
 3. A virtuális gép megtekintéséhez tekintse meg a [rendszerindítási diagnosztikát](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) .
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Döntse el, hogy melyik módszert szeretné használni a [VMWare virtuális gépek Azure-ba való áttelepítéséhez](server-migrate-overview.md) , vagy a [Hyper-V virtuális gépek](tutorial-migrate-hyper-v.md) vagy [fizikai kiszolgálók, illetve virtualizált vagy felhőalapú virtuális gépek](tutorial-migrate-physical-virtual-machines.md)áttelepítésének megkezdéséhez.
 

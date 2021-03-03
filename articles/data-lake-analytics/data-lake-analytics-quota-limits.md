@@ -2,17 +2,14 @@
 title: Kvóták és korlátok módosítása az Azure Data Lake Analyticsben
 description: Megtudhatja, hogyan állíthatja be és növelheti a kvótákat és a korlátokat Azure Data Lake Analytics (ADLA) fiókokban.
 ms.service: data-lake-analytics
-author: omidm1
-ms.author: omidm
-ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 03/15/2018
-ms.openlocfilehash: fd032235f286b5db1930e9c9c6d730b5424aa4eb
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 416b77fd86316acb8098531257e12b591a0ff052
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220839"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710175"
 ---
 # <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>Kvóták és korlátok módosítása az Azure Data Lake Analyticsben
 
@@ -53,7 +50,7 @@ A fiókban egyszerre futtatható feladatok maximális száma. Ezen érték felet
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válasszon egy meglévő ADLA-fiókot.
 3. Kattintson a **Tulajdonságok** elemre.
-4. Az igényeinek megfelelően módosítsa a **maximális**au-t, a **futó feladatok maximális számát**és a **feladat beküldési korlátait** .
+4. Az igényeinek megfelelően módosítsa a **maximális** au-t, a **futó feladatok maximális számát** és a **feladat beküldési korlátait** .
 
 ## <a name="increase-maximum-quota-limits"></a>Maximális kvóták korlátozása
 

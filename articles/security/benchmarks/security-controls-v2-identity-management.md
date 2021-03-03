@@ -4,19 +4,21 @@ description: Azure Security teljesítményteszt v2 – Identitáskezelés
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 33f5dff65fa7ad8274051f784f2e61dc8366d389
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: f76ebf8609b5f4ac587800359a5cbb0c6f967f3c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368851"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698603"
 ---
 # <a name="security-control-v2-identity-management"></a>Security Control v2: Identitáskezelés
 
 Az Identitáskezelés kiterjed a biztonságos identitás-és hozzáférés-vezérlések létrehozására Azure Active Directory használatával. Ez magában foglalja az egyszeri bejelentkezést, az erős hitelesítéseket, a felügyelt identitásokat (és a szolgáltatási alapelveket) az alkalmazásokhoz, a feltételes hozzáféréshez és a fiókok rendellenességének figyeléséhez.
+
+A megfelelő beépített Azure Policy megjelenítéséhez tekintse meg [Az Azure biztonsági teljesítményteszt szabályozási megfelelőségének beépített kezdeményezésének részleteit: Identitáskezelés](../../governance/policy/samples/azure-security-benchmark#identity-management)
 
 ## <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1: Az Azure Active Directory, mint központi identitáskezelő és hitelesítési rendszer szabványosítása
 
@@ -24,12 +26,12 @@ Az Identitáskezelés kiterjed a biztonságos identitás-és hozzáférés-vezé
 |--|--|--|--|
 | IM-1 | 16,1, 16,2, 16,4, 16,5 | IA-2, IA-8, AC-2, AC-3 |
 
-Azure Active Directory (Azure AD) az Azure alapértelmezett identitás-és hozzáférés-kezelési szolgáltatása. Érdemes szabványosítani az Azure AD-t, hogy irányítani tudja vele a szervezet identitás- és hozzáférés-vezérlését a következőkben:
+Azure Active Directory (Azure AD) az Azure alapértelmezett identitás-és hozzáférés-kezelési szolgáltatása. Egységesítse az Azure AD-ben a szervezet identitás-és hozzáférés-kezelésének szabályozását a ben:
 - a Microsoft felhőalapú erőforrásaiban, például az Azure Portalon, az Azure Storage-ban, az Azure-beli (Linux és Windows rendszerű) virtuális gépeken, az Azure Key Vaultban, illetve a PaaS- és az SaaS-alkalmazásokban;
 
 - a szervezet erőforrásaiban, például az Azure-on vagy a vállalati hálózat erőforrásain lévő alkalmazásokban.
 
-Kitüntetett figyelmet kell fordítani rá a cég vagy szervezet felhőalapú biztonsági gyakorlatában, hogy az Azure AD-t biztonságossá tegyék. Az Azure AD megad egy identitásbiztonsági pontszámot, amely alapján kiértékelheti, milyen az identitásbiztonság állapota a Microsoft ajánlott eljárásokra vonatkozó javaslataihoz képest. A pontszám segít felmérni, hogy a használt konfiguráció milyen mértékben felel meg az ajánlott eljárásokkal kapcsolatos javaslatoknak, és javíthatja a cég vagy szervezet biztonsági állapotát.
+Az Azure AD biztonságossá tételének magas prioritásnak kell lennie a szervezet felhőalapú biztonsági gyakorlatában. Az Azure AD egy biztonságos azonosítási pontszámot biztosít, amellyel a Microsoft ajánlott eljárási javaslataihoz képest értékelheti a személyazonosság biztonsági helyzetét. A pontszám segít felmérni, hogy a használt konfiguráció milyen mértékben felel meg az ajánlott eljárásokkal kapcsolatos javaslatoknak, és javíthatja a cég vagy szervezet biztonsági állapotát.
 
 Megjegyzés: Az Azure AD támogatja a külső identitásszolgáltatókat, így a Microsoft-fiók nélküli felhasználók is bejelentkezhetnek az alkalmazásokba és erőforrásokba egy külső identitással.
 
@@ -37,7 +39,7 @@ Megjegyzés: Az Azure AD támogatja a külső identitásszolgáltatókat, így a
 
 - [Azure AD-példány létrehozása és konfigurálása](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-- [Azure AD-bérlők meghatározása](https://azure.microsoft.com/resources/securing-azure-environments-with-azure-active-directory/)  
+- [Azure AD-bérlők meghatározása](https://azure.microsoft.com/resources/securing-azure-environments-with-azure-active-directory/)
 
 - [Külső identitásszolgáltatók használata alkalmazásokhoz](../../active-directory/external-identities/identity-providers.md)
 
@@ -63,7 +65,7 @@ Megjegyzés: Az Azure AD támogatja a külső identitásszolgáltatókat, így a
 
 A nem emberi fiókok, például a szolgáltatások vagy az automatizálás esetében az Azure által felügyelt identitások használata helyett az erőforrások eléréséhez és a kód végrehajtásához hatékonyabb emberi fiókot kell létrehoznia. Az Azure által felügyelt identitások hitelesítése az Azure AD-hitelesítést támogató Azure-szolgáltatásokban és-erőforrásokban történik. A hitelesítés az előre meghatározott hozzáférés-engedélyezési szabályokon keresztül engedélyezett, a forráskódban vagy a konfigurációs fájlokban lévő, nehezen kódolt hitelesítő adatok elkerülésével. 
 
-A felügyelt identitásokat nem támogató szolgáltatások esetében az Azure AD használatával hozzon létre egy egyszerű szolgáltatásnevet a korlátozott engedélyekkel az erőforrás szintjén.  Javasoljuk, hogy konfigurálja a tanúsítvány hitelesítő adataival rendelkező egyszerű szolgáltatásokat, és térjen vissza az ügyfél titkos kulcsaihoz. Mindkét esetben a Azure Key Vault az Azure által felügyelt identitásokkal együtt használható, így a futásidejű környezet (például egy Azure-függvény) lekérheti a hitelesítő adatokat a kulcstartóból.
+A felügyelt identitásokat nem támogató szolgáltatások esetében az Azure AD használatával hozzon létre egy egyszerű szolgáltatásnevet a korlátozott engedélyekkel az erőforrás szintjén. Javasoljuk, hogy konfigurálja a tanúsítvány hitelesítő adataival rendelkező egyszerű szolgáltatásokat, és térjen vissza az ügyfél titkos kulcsaihoz. Mindkét esetben a Azure Key Vault az Azure által felügyelt identitásokkal együtt használható, így a futásidejű környezet (például egy Azure-függvény) lekérheti a hitelesítő adatokat a kulcstartóból.
 
 - [Azure-beli felügyelt identitások](../../active-directory/managed-identities-azure-resources/overview.md)
 
@@ -111,16 +113,17 @@ Az Azure AD egyszeri bejelentkezés (SSO) használatával felügyelheti és bizt
 |--|--|--|--|
 | IM-4 | 4,2, 4,4 4,5, 11,5, 12,11, 16,3 | AC-2, AC-3, IA-2, IA-4 |
 
-Az Azure AD a többtényezős hitelesítéssel (MFA) és az erős, jelszóval nem rendelkező metódusokkal támogatja az erős hitelesítési vezérlést.  
-- Többtényezős hitelesítés: engedélyezze az Azure AD MFA-t, és kövesse Azure Security Center identitás-és hozzáférés-kezelési javaslatait az MFA-telepítéshez. Az MFA kikényszeríthető minden felhasználóra, kiválaszthatja a felhasználókat vagy a felhasználónkénti szinten a bejelentkezési feltételek és kockázati tényezők alapján. 
+Az Azure AD a többtényezős hitelesítéssel (MFA) és az erős, jelszóval nem rendelkező metódusokkal támogatja az erős hitelesítési vezérlést.
 
-- Jelszóval nem rendelkező hitelesítés: három jelszóval nem rendelkező hitelesítési lehetőség érhető el: a vállalati Windows Hello, Microsoft Authenticator alkalmazás és a helyszíni hitelesítési módszerek, például az intelligens kártyák. 
+- Többtényezős hitelesítés: engedélyezze az Azure AD MFA-t, és kövesse Azure Security Center identitás-és hozzáférés-kezelési javaslatait az MFA-telepítéshez. Az MFA kikényszeríthető minden felhasználóra, kiválaszthatja a felhasználókat vagy a felhasználónkénti szinten a bejelentkezési feltételek és kockázati tényezők alapján.
+
+- Jelszóval nem rendelkező hitelesítés: három jelszóval nem rendelkező hitelesítési lehetőség érhető el: a vállalati Windows Hello, Microsoft Authenticator alkalmazás és a helyszíni hitelesítési módszerek, például az intelligens kártyák.
 
 A rendszergazda és a Kiemelt jogosultságú felhasználók számára győződjön meg arról, hogy az erős hitelesítési módszer legmagasabb szintje van használatban, majd ezt követi a megfelelő erős hitelesítési házirend kiosztása más felhasználók számára.
 
-Ha az Azure AD-hitelesítéshez továbbra is az örökölt jelszó-alapú hitelesítést használja, vegye figyelembe, hogy a csak felhőalapú fiókok (az Azure-ban közvetlenül létrehozott felhasználói fiókok) rendelkeznek alapértelmezett alapkonfiguráció-házirenddel. És a hibrid fiókok (a helyszíni Active Directoryból származó felhasználói fiókok) a helyszíni jelszóházirend-szabályzatokat követik. A jelszó-alapú hitelesítés használatakor az Azure AD jelszavas védelmet biztosít, amely megakadályozza, hogy a felhasználók könnyen kitalált jelszavakat állítsanak be. A Microsoft globális listát biztosít a telemetria alapján frissített tiltott jelszavakról, és az ügyfelek igényeik alapján is kiterjeszthetik a listát (például branding, kulturális referenciák stb.). Ez a jelszavas védelem csak felhőalapú és hibrid fiókok esetében használható. 
+Ha az Azure AD-hitelesítéshez továbbra is az örökölt jelszó-alapú hitelesítést használja, vegye figyelembe, hogy a csak felhőalapú fiókok (az Azure-ban közvetlenül létrehozott felhasználói fiókok) rendelkeznek alapértelmezett alapkonfiguráció-házirenddel. És a hibrid fiókok (a helyszíni Active Directoryból származó felhasználói fiókok) a helyszíni jelszóházirend-szabályzatokat követik. A jelszó-alapú hitelesítés használatakor az Azure AD jelszavas védelmet biztosít, amely megakadályozza, hogy a felhasználók könnyen kitalált jelszavakat állítsanak be. A Microsoft globális listát biztosít a telemetria alapján frissített tiltott jelszavakról, és az ügyfelek igényeik alapján is kiterjeszthetik a listát (például branding, kulturális referenciák stb.). Ez a jelszavas védelem csak felhőalapú és hibrid fiókok esetében használható.
 
-Megjegyzés: a jelszó-hitelesítő adatokon alapuló hitelesítés csak a népszerű támadási módszerekre van kitéve. A nagyobb biztonság érdekében használjon erős hitelesítést, például MFA-t és egy erős jelszóházirend-beállítást. A külső gyártóktól származó alkalmazások és Marketplace-szolgáltatások esetében, amelyek alapértelmezett jelszavakkal rendelkezhetnek, a kezdeti szolgáltatás telepítése során érdemes módosítani. 
+Megjegyzés: a jelszó-hitelesítő adatokon alapuló hitelesítés csak a népszerű támadási módszerekre van kitéve. A nagyobb biztonság érdekében használjon erős hitelesítést, például MFA-t és egy erős jelszóházirend-beállítást. A külső gyártóktól származó alkalmazások és Marketplace-szolgáltatások esetében, amelyek alapértelmezett jelszavakkal rendelkezhetnek, a kezdeti szolgáltatás telepítése során érdemes módosítani.
 
 - [MFA engedélyezése az Azure-ban](../../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -155,7 +158,7 @@ Az Azure AD a következő adatforrásokat biztosítja:
 
 -   Kockázatosként megjelölt felhasználók – A kockázatos felhasználó egy olyan felhasználói fiókot jelöl, amelynek elképzelhető, hogy sérült a biztonsága.
 
-Ezek az adatforrások az Azure Monitorral, az Azure Sentinellel vagy külső SIEM-rendszerekkel is integrálhatók.
+Ezek az adatforrások a Azure Monitor, az Azure Sentinel vagy a harmadik féltől származó SIEM rendszerekkel integrálhatók.
 
 Azure Security Center riasztást is beállíthat bizonyos gyanús tevékenységekről, például a sikertelen hitelesítési kísérletekről, valamint az előfizetésben elavult fiókokról. 
 
@@ -175,7 +178,7 @@ Az Azure komplex veszélyforrások elleni védelem (ATP) olyan biztonsági megol
 
 - [Adatok összekapcsolásának Azure AD Identity Protection](../../sentinel/connect-azure-ad-identity-protection.md)
 
-- [Azure Advanced Threat Protection](/azure-advanced-threat-protection/what-is-atp)
+- [Microsoft Defender for Identity](/azure-advanced-threat-protection/what-is-atp)
 
 **Felelősség**: Ügyfél
 
@@ -219,7 +222,7 @@ Az Azure AD feltételes hozzáférés használatával részletesebb hozzáféré
 
 Implementálja az Azure DevOps hitelesítőadat-olvasót a kódban található hitelesítő adatok azonosításához. A hitelesítő adatok képolvasó a felderített hitelesítő adatoknak a biztonságosabb helyszínekre (például Azure Key Vault) való áthelyezését is javasolja
 
-A GitHubhoz használhatja a natív titkoskód-szűrési funkciót a kódon belüli hitelesítő adatok vagy másféle titkos kódok felismerésére.
+A GitHub esetében a natív titkos keresési funkcióval azonosíthatók a kódokon belül a hitelesítő adatok vagy a titkok más formája.
 
 - [A hitelesítő adatok beolvasójának beállítása](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
@@ -241,9 +244,9 @@ A GitHubhoz használhatja a natív titkoskód-szűrési funkciót a kódon belü
 
 Győződjön meg arról, hogy rendelkezik a modern hozzáférés-vezérléssel és a munkamenet-figyeléssel a régi alkalmazásokhoz, valamint az általuk tárolt és feldolgozott adatkezelés Habár a VPN-eket általában a régi alkalmazások elérésére használják, gyakran csak alapszintű hozzáférés-vezérléssel és korlátozott munkamenet-figyeléssel rendelkeznek.
 
-Az Azure AD Application Proxy lehetővé teszi az örökölt helyszíni alkalmazások közzétételét a távoli felhasználók számára egyszeri bejelentkezéssel (SSO), miközben explicit módon érvényesíti a távoli felhasználók és az eszközök megbízhatóságát az Azure AD feltételes hozzáféréssel. 
+Az Azure AD Application Proxy lehetővé teszi az örökölt helyszíni alkalmazások közzétételét a távoli felhasználók számára egyszeri bejelentkezéssel (SSO), miközben explicit módon érvényesíti a távoli felhasználók és az eszközök megbízhatóságát az Azure AD feltételes hozzáféréssel.
 
-Azt is megteheti, Microsoft Cloud App Security egy felhőalapú hozzáférés-vezérlési (CASB) szolgáltatás, amely lehetővé teszi a felhasználók alkalmazás-munkameneteinek figyelését és a blokkoló műveletek (a régi helyszíni alkalmazások és a felhőalapú szoftverek (SaaS) alkalmazások) monitorozását. 
+Azt is megteheti, Microsoft Cloud App Security egy felhőalapú hozzáférés-vezérlési (CASB) szolgáltatás, amely lehetővé teszi a felhasználók alkalmazás-munkameneteinek figyelését és a blokkoló műveletek (a régi helyszíni alkalmazások és a felhőalapú szoftverek (SaaS) alkalmazások) monitorozását.
 
 - [Azure-AD Application Proxy](../../active-directory/manage-apps/application-proxy.md#what-is-application-proxy)
 

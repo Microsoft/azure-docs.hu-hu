@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: how-to
 ms.date: 02/16/2021
-ms.openlocfilehash: 37b9860546f9fd16045906ce9385a1590c46b970
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: a0d8532d19aff41bc5e7defb3b58462e81018749
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100556347"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712929"
 ---
 # <a name="create-a-translator-resource"></a>Fordítói erőforrás létrehozása
 
@@ -57,7 +57,7 @@ A Translator szolgáltatás két különböző típusú erőforráson keresztül
 
 1. **Erőforráscsoport**. A kiválasztott Azure-erőforráscsoport az új erőforráshoz tartozó virtuális tárolóként szolgál. Létrehozhat egy új erőforráscsoportot, vagy hozzáadhatja az erőforrást egy korábban már meglévő erőforráscsoporthoz, amely ugyanazokat az életciklusokat, engedélyeket és házirendeket is megosztja.
 
-1. **Erőforrás-régió**. Válassza a **globális** lehetőséget, ha vállalatának vagy alkalmazásának egy adott régióra van szüksége. A Translator egy nem regionális szolgáltatás, amely egy adott Azure-régiótól függ. *Lásd:* [régiók és Availability Zones az Azure-ban](/azure/availability-zones/az-overview).
+1. **Erőforrás-régió**. Válassza a **globális** lehetőséget, ha vállalatának vagy alkalmazásának egy adott régióra van szüksége. A Translator egy nem regionális szolgáltatás, amely egy adott Azure-régiótól függ. *Lásd:* [régiók és Availability Zones az Azure-ban](../../availability-zones/az-overview.md).
 
 1. **Név**. Adja meg az erőforráshoz választott nevet. A választott névnek egyedinek kell lennie az Azure-on belül.
 

@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: f885945dfb6910df919038106487db912d87caee
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c06123b33c7f467e12742cf6180d821e647b5115
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100616335"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711552"
 ---
 # <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>Windows-és Linux-teljesítményű adatforrások gyűjtése Log Analytics-ügynökkel
 A Windows és Linux rendszerű teljesítményszámlálók betekintést nyújtanak a hardver-összetevők, operációs rendszerek és alkalmazások teljesítményére.  A Azure Monitor a teljesítmény-és a hosszú távú elemzéshez és jelentéskészítéshez kapcsolódóan rendszeres időközönként gyűjthetik be a Log Analytics ügynököktől származó teljesítményszámlálókat a közel valós idejű (vizsgálja) elemzéshez.
 
 > [!IMPORTANT]
-> Ez a cikk a teljesítményadatok összegyűjtését ismerteti [log Analytics ügynökkel](../platform/log-analytics-agent.md) , amely a Azure monitor által használt ügynökök egyike. Más ügynökök különböző adatokat gyűjtenek, és eltérően vannak konfigurálva. A rendelkezésre álló ügynökök és az összegyűjtött adatok listáját lásd: [Azure monitor ügynökök áttekintése](../agents/agents-overview.md) .
+> Ez a cikk a teljesítményadatok összegyűjtését ismerteti [log Analytics ügynökkel](./log-analytics-agent.md) , amely a Azure monitor által használt ügynökök egyike. Más ügynökök különböző adatokat gyűjtenek, és eltérően vannak konfigurálva. A rendelkezésre álló ügynökök és az összegyűjtött adatok listáját lásd: [Azure monitor ügynökök áttekintése](../agents/agents-overview.md) .
 
 ![Teljesítményszámlálók](media/data-sources-performance-counters/overview.png)
 
@@ -28,7 +28,7 @@ Amikor először konfigurálja a Windows-vagy Linux-teljesítményszámlálókat
 
 A Windows-teljesítményszámlálók esetében kiválaszthatja az egyes teljesítményszámlálók egy adott példányát. A Linux-teljesítményszámlálók esetében az egyes kiválasztott számlálók a szülő számláló összes alárendelt számlálóján érvényesek. A következő táblázat a Linux és a Windows teljesítményszámlálói számára elérhető általános példányokat mutatja be.
 
-| Példány neve | Description |
+| Példány neve | Leírás |
 | --- | --- |
 | \_Összesen |Összes példány összesen |
 | \* |Minden példány |
@@ -77,7 +77,7 @@ A gyűjteni kívánt teljesítmény-mérőszámok minden objektumát vagy kateg�
 
 Az ebben az elemben található paramétereket a következő táblázat ismerteti.
 
-| Paraméterek | Description |
+| Paraméterek | Leírás |
 |:--|:--|
 | objektum \_ neve | A gyűjtemény objektumának neve. |
 | példányok \_ regexje |  Egy *reguláris kifejezés* , amely meghatározza, hogy mely példányokat kell gyűjteni. Az érték: az `.*` összes példányt megadja. Ha csak az összes példány processzor-metrikáit szeretné összegyűjteni \_ , megadhatja a következőt: `_Total` . Ha csak a crond vagy sshd példányok feldolgozási metrikáit szeretné összegyűjteni, megadhatja a következőt: `(crond\|sshd)` . |
@@ -205,7 +205,7 @@ A teljesítményadatokat a teljesítmény **típusa és a** következő tábláz
 ## <a name="log-queries-with-performance-records"></a>Lekérdezések naplózása a teljesítménnyel kapcsolatos rekordokkal
 Az alábbi táblázat különböző példákat tartalmaz a teljesítményadatokat lekérő lekérdezések naplózására.
 
-| Lekérdezés | Description |
+| Lekérdezés | Leírás |
 |:--- |:--- |
 | Teljesítmény |Minden teljesítményadatok |
 | Teljesítményfigyelő &#124;, ahol a számítógép = = "Sajátgép" |Egy adott számítógépről származó összes teljesítményadatok |
@@ -224,5 +224,5 @@ Az alábbi táblázat különböző példákat tartalmaz a teljesítményadatoka
 
 ## <a name="next-steps"></a>Következő lépések
 * [Teljesítményszámlálók gyűjtése Linux-alkalmazásokból](data-sources-linux-applications.md) , beleértve a MySQL-t és az Apache HTTP-kiszolgálót.
-* További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../log-query/log-query-overview.md) .  
-* Az összegyűjtött adatok [Power BIba](../platform/powerbi.md) való exportálása további vizualizációk és elemzések céljából.
+* További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../logs/log-query-overview.md) .  
+* Az összegyűjtött adatok [Power BIba](../visualize/powerbi.md) való exportálása további vizualizációk és elemzések céljából.

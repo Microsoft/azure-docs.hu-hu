@@ -2,13 +2,13 @@
 title: Diagnosztikai naplók beállítása – Azure Event hub | Microsoft Docs
 description: Ismerje meg, hogyan állíthatja be a tevékenységek naplóit és a diagnosztikai naplókat az Azure-beli Event hubokhoz.
 ms.topic: article
-ms.date: 10/27/2020
-ms.openlocfilehash: dc5cbea31583a4e8126897b2dcda63b216438e1b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/25/2021
+ms.openlocfilehash: 538ff86f1ef4c06bb5400af3fbd2394134aa17f3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573177"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742534"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Diagnosztikai naplók beállítása az Azure-eseményközpontokhoz
 
@@ -207,7 +207,7 @@ Event Hubs Virtual Network (VNet) kapcsolati esemény JSON az alábbi táblázat
 | `Count` | Az adott művelet előfordulásainak száma |
 | `ResourceId` | Azure Resource Manager erőforrás-azonosító. |
 
-A virtuális hálózati naplók csak akkor jönnek létre, ha a névtér engedélyezi a hozzáférést a **kiválasztott hálózatokról** vagy **adott IP-címekről** (IP-szűrési szabályok). Ha nem szeretné korlátozni a névtérhez való hozzáférést ezekkel a funkciókkal, és továbbra is szeretné lekérni a virtuális hálózati naplókat a Event Hubs névtérhez csatlakozó ügyfelek IP-címeinek nyomon követéséhez, a következő megkerülő megoldást használhatja. Engedélyezze az IP-szűrést, és adja hozzá a teljes címezhető IPv4-tartományt (1.0.0.0/1-255.0.0.0/1). A Event Hubs nem támogatja az IPv6-tartományokat. 
+A virtuális hálózati naplók csak akkor jönnek létre, ha a névtér engedélyezi a hozzáférést a **kiválasztott hálózatokról** vagy **adott IP-címekről** (IP-szűrési szabályok). Ha nem szeretné korlátozni a névtérhez való hozzáférést ezekkel a funkciókkal, és továbbra is szeretné lekérni a virtuális hálózati naplókat a Event Hubs névtérhez csatlakozó ügyfelek IP-címeinek nyomon követéséhez, a következő megkerülő megoldást használhatja. [Engedélyezze az IP-szűrést](event-hubs-ip-filtering.md), és adja hozzá a teljes címezhető IPv4-tartományt (1.0.0.0/1-255.0.0.0/1). Event Hubs IP-szűrés nem támogatja az IPv6-tartományokat. Vegye figyelembe, hogy a naplófájl IPv6-formátumában a magánhálózati végpontok címei is megjelenhetnek. 
 
 ### <a name="example"></a>Példa
 

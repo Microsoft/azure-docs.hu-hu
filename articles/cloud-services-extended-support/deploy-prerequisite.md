@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 42416b1fc06ff59a68a6f5044b8bcca5dc7f035f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 1473305d7da57d1216ef05c0b88a0f69d586784b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880186"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728110"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Az Azure Cloud Services üzembe helyezésének előfeltételei (bővített támogatás)
 
@@ -42,7 +42,7 @@ CloudServices           Microsoft.Compute    Registered
 ## <a name="required-service-configuration-cscfg-file-updates"></a>Szükséges szolgáltatási konfigurációs (. cscfg) fájlok frissítései
 
 ### <a name="1-virtual-network"></a>1) Virtual Network
-A Cloud Service (bővített támogatás) központi telepítéseknek virtuális hálózatban kell lenniük. A virtuális hálózat a [Azure Portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal), a [PowerShell](https://docs.microsoft.com/azure/virtual-network/quick-create-powershell), az [Azure CLI](https://docs.microsoft.com/azure/virtual-network/quick-create-cli) vagy az [ARM sablon](https://docs.microsoft.com/azure/virtual-network/quick-create-template)segítségével hozható létre. A virtuális hálózatot és az alhálózatokat is hivatkozni kell a szolgáltatás konfigurációjában (. cscfg) a [NetworkConfiguration](schema-cscfg-networkconfiguration.md) szakaszban. 
+A Cloud Service (bővített támogatás) központi telepítéseknek virtuális hálózatban kell lenniük. A virtuális hálózat a [Azure Portal](../virtual-network/quick-create-portal.md), a [PowerShell](../virtual-network/quick-create-powershell.md), az [Azure CLI](../virtual-network/quick-create-cli.md) vagy az [ARM sablon](../virtual-network/quick-create-template.md)segítségével hozható létre. A virtuális hálózatot és az alhálózatokat is hivatkozni kell a szolgáltatás konfigurációjában (. cscfg) a [NetworkConfiguration](schema-cscfg-networkconfiguration.md) szakaszban. 
 
 A felhőalapú szolgáltatással azonos erőforráscsoporthoz tartozó virtuális hálózatok esetében a szolgáltatás konfigurációs (. cscfg) fájljában csak a virtuális hálózat nevére lehet hivatkozni. Ha a virtuális hálózat és a felhőalapú szolgáltatás két különböző erőforráscsoporthoz van, akkor a virtuális hálózat teljes Azure Resource Manager AZONOSÍTÓját meg kell adni a szolgáltatás konfigurációs (. cscfg) fájljában.
  
@@ -103,7 +103,7 @@ A következő méretek elavultak a Azure Resource Managerban. Ha azonban tovább
  Ilyen lehet például a következő: `<WorkerRole name="WorkerRole1" vmsize="Medium"` `<WorkerRole name="WorkerRole1" vmsize="Standard_A2"` .
  
 > [!NOTE]
-> Az elérhető méretek listájának lekéréséhez tekintse meg az [erőforrás-SKU-lista](https://docs.microsoft.com/rest/api/compute/resourceskus/list) lehetőséget, és alkalmazza a következő szűrőket: <br>
+> Az elérhető méretek listájának lekéréséhez tekintse meg az [erőforrás-SKU-lista](/rest/api/compute/resourceskus/list) lehetőséget, és alkalmazza a következő szűrőket: <br>
 `ResourceType = virtualMachines ` <br>
 `VMDeploymentTypes = PaaS `
 
@@ -120,9 +120,9 @@ A régi távoli asztali bővítményeket használó központi telepítéseknek e
 
 ## <a name="key-vault-creation"></a>Key Vault létrehozása 
 
-A Key Vault a Cloud Serviceshoz társított tanúsítványok (kiterjesztett támogatás) tárolására szolgál. Adja hozzá a tanúsítványokat a Key Vaulthoz, majd hivatkozzon a tanúsítvány ujjlenyomatai megfelelnek a szolgáltatás konfigurációs fájljában. Emellett engedélyeznie kell Key Vault a megfelelő engedélyekhez, hogy a Cloud Services (bővített támogatás) erőforrás beolvassa a titkos kulcsként tárolt tanúsítványt Key Vault. A Key Vault a [Azure Portal](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal)és a  [PowerShell](https://docs.microsoft.com/azure/key-vault/general/quick-create-powershell)használatával hozható létre. A Key Vault ugyanabban a régióban és előfizetésben kell létrehozni, mint a Cloud Service. További információ: [tanúsítványok használata az Azure Cloud Services (bővített támogatás)](certificates-and-key-vault.md).
+A Key Vault a Cloud Serviceshoz társított tanúsítványok (kiterjesztett támogatás) tárolására szolgál. Adja hozzá a tanúsítványokat a Key Vaulthoz, majd hivatkozzon a tanúsítvány ujjlenyomatai megfelelnek a szolgáltatás konfigurációs fájljában. Emellett engedélyeznie kell Key Vault a megfelelő engedélyekhez, hogy a Cloud Services (bővített támogatás) erőforrás beolvassa a titkos kulcsként tárolt tanúsítványt Key Vault. A Key Vault a [Azure Portal](../key-vault/general/quick-create-portal.md)és a  [PowerShell](../key-vault/general/quick-create-powershell.md)használatával hozható létre. A Key Vault ugyanabban a régióban és előfizetésben kell létrehozni, mint a Cloud Service. További információ: [tanúsítványok használata az Azure Cloud Services (bővített támogatás)](certificates-and-key-vault.md).
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 - Tekintse át a Cloud Services [üzembe helyezésének előfeltételeit](deploy-prerequisite.md) (kiterjesztett támogatás).
 - A [Azure Portal](deploy-portal.md), a [PowerShell](deploy-powershell.md), a [sablon](deploy-template.md) vagy a [Visual Studio](deploy-visual-studio.md)használatával üzembe helyezhet egy felhőalapú szolgáltatást (kiterjesztett támogatás).
 - Tekintse át a Cloud Servicesra vonatkozó [gyakori kérdéseket](faq.md) (kiterjesztett támogatás).

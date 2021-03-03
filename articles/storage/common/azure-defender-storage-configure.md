@@ -1,5 +1,5 @@
 ---
-title: Az Azure Defender beállítása a Storage szolgáltatáshoz
+title: Az Azure Defender tároláshoz konfigurálása
 titleSuffix: Azure Storage
 description: Konfigurálja az Azure Defender for Storage-t a fiókban észlelt rendellenességek észlelése érdekében, és értesítse a fiókjához való hozzáférésre potenciálisan ártalmas kísérleteket.
 services: storage
@@ -10,26 +10,26 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: 0bda32aaab301fe9ed685f0bfd6d4596fab4e5db
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: cdfc54b1eca3b07202148b7099884a04f35939ef
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789012"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698144"
 ---
-# <a name="configure-azure-defender-for-storage"></a>Az Azure Defender beállítása a Storage szolgáltatáshoz
+# <a name="configure-azure-defender-for-storage"></a>Az Azure Defender tároláshoz konfigurálása
 
-Az Azure Defender for Storage egy további biztonsági intelligenciát biztosít, amely szokatlan és potenciálisan ártalmas kísérleteket észlel a Storage-fiókok eléréséhez vagy kiaknázásához. Ez a védelmi réteg lehetővé teszi, hogy biztonsági szakértő vagy biztonsági figyelő rendszerek kezelése nélkül foglalkozzon a fenyegetésekkel.
+Az Azure Defender for Storage a biztonsági intelligencia újabb rétegét kínálja, amely észleli a tárfiókok elérésére vagy kihasználására tett szokatlan és esetleg kártékony próbálkozásokat. Ez a védelmi réteg biztonsági szakértelem vagy fejlett biztonsági figyelőrendszerek üzemeltetése nélkül is lehetővé teszi Önnek, hogy reagáljon a fenyegetésekre.
 
-A biztonsági riasztások akkor lépnek életbe, ha a tevékenységben anomáliák vannak. Ezek a biztonsági riasztások integrálva vannak [Azure Security Centerekkel](https://azure.microsoft.com/services/security-center/), és e-mailben is elküldjük az előfizetés-rendszergazdáknak, a gyanús tevékenységek részleteivel és a fenyegetések kivizsgálásával és javításával kapcsolatos ajánlásokkal együtt.
+A biztonsági riasztások akkor aktiválódnak, ha a tevékenységben rendellenességek történnek. Ezek a biztonsági riasztások integrálva vannak [Azure Security Centerekkel](https://azure.microsoft.com/services/security-center/), és e-mailben is elküldjük az előfizetés-rendszergazdáknak, a gyanús tevékenységek részleteivel és a fenyegetések kivizsgálásával és javításával kapcsolatos ajánlásokkal együtt.
 
-A szolgáltatás betölti az olvasási, írási és törlési kérelmek erőforrás-naplóit a blob Storage-ba, és Azure Files a veszélyforrások észleléséhez. Az Azure Defender által indított riasztások vizsgálatához Storage Analytics naplózás használatával tekintheti meg a kapcsolódó tárolási tevékenységeket. További információ: a **naplózás konfigurálása** a [Storage-fiók figyelése a Azure Portalban](storage-monitor-storage-account.md#configure-logging).
+A szolgáltatás betölti az olvasási, írási és törlési kérelmek erőforrás-naplóit a blob Storage-ba, és Azure Files a veszélyforrások észleléséhez. Az Azure Defender által indított riasztások vizsgálatához Storage Analytics naplózás használatával tekintheti meg a kapcsolódó tárolási tevékenységeket. További információ: a **naplózás konfigurálása** a [Storage-fiók figyelése a Azure Portalban](./manage-storage-analytics-logs.md#configure-logging).
 
 ## <a name="availability"></a>Rendelkezésre állás
 
-A Storage-hoz készült Azure Defender jelenleg blob Storage, Azure Files és Azure Data Lake Storage Gen2 számára érhető el. Az Azure Defendert támogató fióktípus például az általános célú v2, a blobok és a blob Storage-fiókok. Az Azure Defender for Storage a nyilvános felhőkben és az USA kormányzati felhőkben is elérhető, de nem más szuverén vagy Azure Government Felhőbeli régiókban.
+Az Azure Defender for Storage jelenleg a Blob Storage, az Azure Files és Azure Data Lake Storage Gen2 szolgáltatásokhoz érhető el. Azure Defendert támogató fióktípusok többek között az általános célú v2, a blokkblob és a Blob Storage-fiókok. Az Azure Defender for Storage elérhető minden nyilvános felhőben és az USA-beli kormányzati felhőkben, de nem érhető el más szuverén vagy Azure Government-felhőrégiókban.
 
-Az Azure Blob Storage API-kat és a Data Lake Storage API-kat használó Data Lake Storage támogatási tranzakciókat engedélyező hierarchikus névtereket tartalmazó fiókok. Az Azure-fájlmegosztás támogatja a tranzakciókat az SMB protokollon keresztül.
+Azon hierarchikus névtereket tartalmazó fiókok, amelyekben a Data Lake Storage engedélyezett, egyaránt támogatják az Azure Blob Storage API-kat és a Data Lake Storage API-kat. Az Azure-fájlmegosztások támogatják az SMB protokollon keresztül végbemenő tranzakciókat.
 
 A díjszabással kapcsolatos részletekért, beleértve az ingyenes 30 napos próbaverziót is, tekintse meg a [Azure Security Center díjszabási oldalát](https://azure.microsoft.com/pricing/details/security-center/).
 
@@ -66,10 +66,10 @@ Az Azure Defender mostantól engedélyezve van az előfizetésben található ö
 ### <a name="portal"></a>[Portál](#tab/azure-portal)
 
 1. Indítsa el a [Azure Portal](https://portal.azure.com/).
-1. Nyissa meg a tárfiókot. A **Beállítások** területen válassza a **fokozott biztonság** lehetőséget.
-1. Válassza **Az Azure Defender engedélyezése a tárolóhoz** lehetőséget.
+1. Nyissa meg a tárfiókot. A **Beállítások** területen válassza a **Speciális biztonság** lehetőséget.
+1. Válassza az **Azure Defender for Storage bekapcsolása** lehetőséget.
 
-    :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-portal.png" alt-text="Képernyőfelvétel: az Azure Defender engedélyezése a Storage-ban Security Center":::
+    :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-portal.png" alt-text="Az Azure Defender Azure Storage-fiókhoz való engedélyezését bemutató képernyőkép":::
 
 Az Azure Defender mostantól engedélyezve van ehhez a Storage-fiókhoz.
 
@@ -84,15 +84,15 @@ Egy Azure Policy használatával engedélyezheti az Azure Defender számára a S
 1. Indítsa el az Azure **Policy-fogalommeghatározások** lapot.
 1. Keresse meg az **Azure Defender üzembe helyezése a Storage-fiókokra** vonatkozó házirendet.
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy-definitions.png" alt-text="Képernyőfelvétel: az Azure Defender engedélyezése a Storage-ban Security Center":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy-definitions.png" alt-text="Házirend alkalmazása az Azure Defender Storage-fiókok engedélyezéséhez":::
 
 1. Válasszon ki egy Azure-előfizetést vagy erőforráscsoportot.
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy2.png" alt-text="Képernyőfelvétel: az Azure Defender engedélyezése a Storage-ban Security Center":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy2.png" alt-text="Válassza ki az előfizetést vagy az erőforráscsoportot a házirend hatóköréhez ":::
 
 1. Rendelje hozzá a szabályzatot.
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy1.png" alt-text="Képernyőfelvétel: az Azure Defender engedélyezése a Storage-ban Security Center":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy1.png" alt-text="Házirend kiosztása az Azure Defender tárterületének engedélyezéséhez":::
 
 ### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
@@ -111,25 +111,25 @@ Használja a következő PowerShell-parancsmagokat:
 
 ---
 
-## <a name="explore-security-anomalies"></a>Biztonsági rendellenességek megismerése
+## <a name="explore-security-anomalies"></a>A biztonsági rendellenességek bemutatása
 
-Ha a tárolási tevékenységek rendellenességeket tapasztalnak, e-mailben értesítést kap a gyanús biztonsági eseményről. Az esemény részletei a következők:
+Ha a tárolási tevékenységekben rendellenességek lépnek fel, e-mailben kap értesítést a gyanús biztonsági eseményről. Az esemény részletei a következők:
 
 - A rendellenesség természete
 - A tárfiók neve
-- Az esemény időpontja
-- A tárolási típus
-- A lehetséges okok
-- A vizsgálat lépései
-- A szervizelés lépései
+- Esemény időpontja
+- Tárolás típusa
+- Lehetséges okok
+- Vizsgálati lépések
+- Az elhárítás lépései
 
-Az e-mail emellett tartalmazza a lehetséges okokat és az ajánlott műveleteket is a lehetséges fenyegetések kivizsgálásához és enyhítéséhez.
+Az e-mail tartalmazza továbbá a lehetséges okokat, valamint a lehetséges fenyegetések kivizsgálásához és enyhítéséhez ajánlott műveleteket is.
 
-:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert-email.png" alt-text="Képernyőfelvétel: az Azure Defender engedélyezése a Storage-ban Security Center":::
+:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert-email.png" alt-text="Azure Defender tárolási riasztási e-mail":::
 
 Az aktuális biztonsági riasztásokat a Azure Security Center [biztonsági riasztások csempéről](../../security-center/security-center-managing-and-responding-alerts.md)tekintheti meg és kezelheti. Ha egy adott riasztásra kattint, a rendszer részletesen ismerteti az aktuális fenyegetés kivizsgálásával és a jövőbeli fenyegetésekkel kapcsolatos műveleteket.
 
-:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert.png" alt-text="Képernyőfelvétel: az Azure Defender engedélyezése a Storage-ban Security Center":::
+:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert.png" alt-text="Azure Defender tárolási riasztás":::
 
 ## <a name="security-alerts"></a>Biztonsági riasztások
 

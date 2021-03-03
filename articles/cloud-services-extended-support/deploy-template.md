@@ -8,38 +8,42 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: eb59bb43d493609ae408a402eaea2dcc9c6fab29
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 71217e6379c02191311f5d93cb439d9da20080bc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100548777"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706962"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Cloud Service (kiterjesztett támogatás) üzembe helyezése ARM-sablonok használatával
 
-Ez az oktatóanyag bemutatja, hogyan hozhat létre felhőalapú szolgáltatást (kiterjesztett támogatás) az [ARM-sablonok](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)használatával. 
+Ez az oktatóanyag bemutatja, hogyan hozhat létre felhőalapú szolgáltatást (kiterjesztett támogatás) az [ARM-sablonok](../azure-resource-manager/templates/overview.md)használatával. 
 
 > [!IMPORTANT]
 > A Cloud Services (bővített támogatás) jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
 ## <a name="before-you-begin"></a>Előkészületek
-1. Tekintse át a Cloud Services [telepítésének előfeltételeit](deploy-prerequisite.md) (kiterjesztett támogatás), és hozza létre a kapcsolódó erőforrásokat. 
 
-2. Hozzon létre egy új erőforráscsoportot a [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal) vagy a [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-powershell)használatával. Ez a lépés nem kötelező, ha meglévő erőforráscsoportot használ. 
+1. Tekintse át a Cloud Services [telepítésének előfeltételeit](deploy-prerequisite.md) (kiterjesztett támogatás), és hozza létre a kapcsolódó erőforrásokat.
+
+2. Hozzon létre egy új erőforráscsoportot a [Azure Portal](/azure/azure-resource-manager/management/manage-resource-groups-portal) vagy a [PowerShell](/azure/azure-resource-manager/management/manage-resource-groups-powershell)használatával. Ez a lépés nem kötelező, ha meglévő erőforráscsoportot használ.
  
-3. Hozzon létre egy új Storage-fiókot a [Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal) vagy a [PowerShell](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-powershell)használatával. Ez a lépés nem kötelező, ha meglévő Storage-fiókot használ. 
+3. Hozzon létre egy új Storage-fiókot a [Azure Portal](/azure/storage/common/storage-account-create?tabs=azure-portal) vagy a [PowerShell](/azure/storage/common/storage-account-create?tabs=azure-powershell)használatával. Ez a lépés nem kötelező, ha meglévő Storage-fiókot használ.
 
-4. Töltse fel a szolgáltatás definíciós (. csdef) és a szolgáltatás konfigurációs (. cscfg) fájljait a Storage-fiókba a [Azure Portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#upload-a-block-blob), a [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs-upload?toc=/azure/storage/blobs/toc.json) vagy a [PowerShell](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-powershell#upload-blobs-to-the-container)használatával. Szerezze be mindkét fájl SAS URI azonosítóját az oktatóanyag későbbi részében, az ARM-sablonhoz való hozzáadáshoz. 
+4. Töltse fel a szolgáltatás definíciós (. csdef) és a szolgáltatás konfigurációs (. cscfg) fájljait a Storage-fiókba a [Azure Portal](/azure/storage/blobs/storage-quickstart-blobs-portal#upload-a-block-blob), a [AzCopy](/azure/storage/common/storage-use-azcopy-blobs-upload?toc=/azure/storage/blobs/toc.json) vagy a [PowerShell](/azure/storage/blobs/storage-quickstart-blobs-powershell#upload-blobs-to-the-container)használatával. Szerezze be mindkét fájl SAS URI azonosítóját az oktatóanyag későbbi részében, az ARM-sablonhoz való hozzáadáshoz.
 
-5. Választható Hozzon létre egy kulcstartót, és töltse fel a tanúsítványokat. 
-    -  A tanúsítványok a szolgáltatással és a szolgáltatásba való biztonságos kommunikáció lehetővé tételéhez csatolhatók a Cloud Serviceshez. A tanúsítványok használatához a ujjlenyomatai megfelelnek meg kell adni a szolgáltatás konfigurációs (. cscfg) fájljában, és fel kell tölteni a Kulcstartóba. Key Vault hozható létre a [Azure Portal](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal) vagy a [PowerShell](https://docs.microsoft.com/azure/key-vault/general/quick-create-powershell)használatával. 
-    - A társított Key Vaultnak ugyanabban a régióban és előfizetésben kell lennie, mint a Cloud Service.   
-    - A kapcsolódó Key Vaultnak engedélyezni kell a megfelelő engedélyeket, hogy a Cloud Services (bővített támogatás) erőforrás lekérje a tanúsítványt a Key Vaultból. További információ: [tanúsítványok és Key Vault](certificates-and-key-vault.md)
+5. Választható Hozzon létre egy kulcstartót, és töltse fel a tanúsítványokat.
+
+    -  A tanúsítványok a szolgáltatással és a szolgáltatásba való biztonságos kommunikáció lehetővé tételéhez csatolhatók a Cloud Serviceshez. A tanúsítványok használatához a ujjlenyomatai megfelelnek meg kell adni a szolgáltatás konfigurációs (. cscfg) fájljában, és fel kell tölteni a kulcstartóba. Kulcstartó hozható létre a [Azure Portal](/azure/key-vault/general/quick-create-portal) vagy a [PowerShell](/azure/key-vault/general/quick-create-powershell)használatával.
+    - A társított Key vaultnak ugyanabban a régióban és előfizetésben kell lennie, mint a Cloud Service.
+    - A társított Key vaultnak engedélyezve kell lennie ahhoz, hogy a Cloud Services (kiterjesztett támogatás) erőforrás beolvassa a tanúsítványokat a Key Vaultból. További információ: [tanúsítványok és Key Vault](certificates-and-key-vault.md)
     - A Key vaultot az alábbi lépésekben bemutatott ARM-sablon OsProfile szakaszában kell hivatkozni.
 
-## <a name="deploy-a-cloud-service-extended-support"></a>Cloud Service üzembe helyezése (kiterjesztett támogatás) 
+## <a name="deploy-a-cloud-service-extended-support"></a>Cloud Service üzembe helyezése (kiterjesztett támogatás)
+
 1. Hozzon létre egy virtuális hálózatot. A virtuális hálózat nevének meg kell egyeznie a szolgáltatás konfigurációs (. cscfg) fájljának hivatkozásaival. Ha meglévő virtuális hálózatot használ, hagyja ki ezt a szakaszt az ARM-sablonból.
 
     ```json
@@ -68,7 +72,7 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre felhőalapú szolgáltatást 
     ] 
     ```
     
-     Új virtuális hálózat létrehozásakor adja hozzá a következőt a `dependsOn` szakaszhoz, és győződjön meg arról, hogy a platform létrehozza a virtuális hálózatot a Cloud Service létrehozása előtt. 
+     Új virtuális hálózat létrehozásakor adja hozzá a következőt a `dependsOn` szakaszhoz, és győződjön meg arról, hogy a platform létrehozza a virtuális hálózatot a Cloud Service létrehozása előtt.
 
     ```json
     "dependsOn": [ 
@@ -100,7 +104,7 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre felhőalapú szolgáltatást 
     ] 
     ```
      
-     Ha új IP-címet hoz létre, adja hozzá a következőt a `dependsOn` szakaszhoz, és győződjön meg arról, hogy a platform létrehozza az IP-címet a felhőalapú szolgáltatás létrehozása előtt. 
+     Ha új IP-címet hoz létre, adja hozzá a következőt a `dependsOn` szakaszhoz, és győződjön meg arról, hogy a platform létrehozza az IP-címet a felhőalapú szolgáltatás létrehozása előtt.
     
     ```json
     "dependsOn": [ 
@@ -108,7 +112,7 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre felhőalapú szolgáltatást 
           ] 
     ```
  
-3. Hozzon létre egy hálózati profil objektumot, és rendelje hozzá a nyilvános IP-címet a terheléselosztó felületéhez. A platform automatikusan létrehoz egy Load balancert.  
+3. Hozzon létre egy hálózati profil objektumot, és rendelje hozzá a nyilvános IP-címet a terheléselosztó felületéhez. A platform automatikusan létrehoz egy Load balancert.
 
     ```json
     "networkProfile": { 
@@ -134,7 +138,7 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre felhőalapú szolgáltatást 
     ```
  
 
-4. Adja hozzá a Key Vault-referenciát az  `OsProfile`   ARM-sablon szakaszában. A Key Vault a Cloud Serviceshoz társított tanúsítványok (kiterjesztett támogatás) tárolására szolgál. Adja hozzá a tanúsítványokat a Key Vaulthoz, majd hivatkozzon a tanúsítvány ujjlenyomatai megfelelnek (. cscfg). Emellett engedélyeznie kell Key Vault a megfelelő engedélyekhez, hogy a Cloud Services (bővített támogatás) erőforrás beolvassa a titkos kulcsként tárolt tanúsítványt Key Vault. A Key Vaultnak ugyanabban a régióban és előfizetésben kell lennie, mint a Cloud Service, és egyedi névvel kell rendelkeznie. További információ: [tanúsítványok használata Cloud Services használatával (kiterjesztett támogatás)](certificates-and-key-vault.md).
+4. Adja hozzá a Key Vault-referenciát az  `OsProfile`   ARM-sablon szakaszában. A Key Vault a Cloud Serviceshoz társított tanúsítványok (kiterjesztett támogatás) tárolására szolgál. Adja hozzá a tanúsítványokat a Key Vaulthoz, majd hivatkozzon a tanúsítvány ujjlenyomatai megfelelnek (. cscfg). Emellett engedélyeznie kell Key Vault a megfelelő engedélyekhez, hogy a Cloud Services (bővített támogatás) erőforrás beolvassa a titkos kulcsként tárolt tanúsítványt Key Vault. A Key vaultnak ugyanabban a régióban és előfizetésben kell lennie, mint a Cloud Service, és egyedi névvel kell rendelkeznie. További információ: [tanúsítványok használata Cloud Services használatával (kiterjesztett támogatás)](certificates-and-key-vault.md).
      
     ```json
     "osProfile": { 
@@ -154,71 +158,70 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre felhőalapú szolgáltatást 
     ```
   
     > [!NOTE]
-    > A SourceVault a Key Vault ARM-erőforrás azonosítója. Ezeket az információkat a Key Vault tulajdonságok szakaszában található erőforrás-azonosító megkeresésével érheti el. 
+    > A SourceVault az ARM-erőforrás azonosítója a kulcstartóhoz. Ezeket az információkat a kulcstartó tulajdonságok szakaszában található erőforrás-azonosító megkeresésével érheti el.
     > - a certificateUrl a **titkos azonosítóként** megjelölt kulcstartóban található tanúsítványhoz való navigálással érhető el.  
    >  - a certificateUrl https://{kulcstartó-endpoin}/Secrets/{secretname}/{Secret-ID} formátumúnak kell lenniük.
 
-5. Hozzon létre egy szerepkör-profilt. Győződjön meg arról, hogy a szerepkörök száma, a szerepkör neve, a példányok száma az egyes szerepkörökben és méretek azonos a szolgáltatás konfigurációja (. cscfg), a Service Definition (. csdef) és a role Profile szakaszban az ARM-sablonban. 
+5. Hozzon létre egy szerepkör-profilt. Győződjön meg arról, hogy a szerepkörök száma, a szerepkör neve, a példányok száma az egyes szerepkörökben és méretek azonos a szolgáltatás konfigurációja (. cscfg), a Service Definition (. csdef) és a role Profile szakaszban az ARM-sablonban.
     
     ```json
-    "roleProfile": { 
-          "roles": { 
-          "value": [ 
-            { 
-              "name": "WebRole1", 
-              "sku": { 
-                "name": "Standard_D1_v2", 
-                "capacity": "1" 
-              } 
-            }, 
-            { 
-              "name": "WorkerRole1", 
-              "sku": { 
-                "name": "Standard_D1_v2", 
-                "capacity": "1" 
-              } 
+    "roleProfile": {
+      "roles": {
+        "value": [
+          {
+            "name": "WebRole1",
+            "sku": {
+              "name": "Standard_D1_v2",
+              "capacity": "1"
+            }
+          },
+          {
+            "name": "WorkerRole1",
+            "sku": {
+              "name": "Standard_D1_v2",
+              "capacity": "1"
             } 
-        }
+          } 
+        ]
+      }
     }   
     ```
 
-6. Választható Hozzon létre egy bővítmény-profilt a bővítmények Felhőbeli szolgáltatáshoz való hozzáadásához. Ebben a példában a távoli asztal és a Windows Azure Diagnostics bővítményt vesszük fel. 
+6. Választható Hozzon létre egy bővítmény-profilt a bővítmények Felhőbeli szolgáltatáshoz való hozzáadásához. Ebben a példában a távoli asztal és a Windows Azure Diagnostics bővítményt vesszük fel.
     
     ```json
         "extensionProfile": {
-              "extensions": [
-                {
-                  "name": "RDPExtension",
-                  "properties": {
-                    "autoUpgradeMinorVersion": true,
-                    "publisher": "Microsoft.Windows.Azure.Extensions",
-                    "type": "RDP",
-                    "typeHandlerVersion": "1.2.1",
-                    "settings": "<PublicConfig>\r\n <UserName>[Insert Username]</UserName>\r\n <Expiration>1/21/2022 12:00:00 AM</Expiration>\r\n</PublicConfig>",
-                    "protectedSettings": "<PrivateConfig>\r\n <Password>[Insert Password]</Password>\r\n</PrivateConfig>"
-                  }
-                },
-                {
-                  "name": "Microsoft.Insights.VMDiagnosticsSettings_WebRole1",
-                  "properties": {
-                    "autoUpgradeMinorVersion": true,
-                    "publisher": "Microsoft.Azure.Diagnostics",
-                    "type": "PaaSDiagnostics",
-                    "typeHandlerVersion": "1.5",
-                    "settings": "[parameters('wadPublicConfig_WebRole1')]",
-                    "protectedSettings": "[parameters('wadPrivateConfig_WebRole1')]",
-                    "rolesAppliedTo": [
-                      "WebRole1"
-              ]
+          "extensions": [
+            {
+              "name": "RDPExtension",
+              "properties": {
+                "autoUpgradeMinorVersion": true,
+                "publisher": "Microsoft.Windows.Azure.Extensions",
+                "type": "RDP",
+                "typeHandlerVersion": "1.2.1",
+                "settings": "<PublicConfig>\r\n <UserName>[Insert Username]</UserName>\r\n <Expiration>1/21/2022 12:00:00 AM</Expiration>\r\n</PublicConfig>",
+                "protectedSettings": "<PrivateConfig>\r\n <Password>[Insert Password]</Password>\r\n</PrivateConfig>"
+              }
+            },
+            {
+              "name": "Microsoft.Insights.VMDiagnosticsSettings_WebRole1",
+              "properties": {
+                "autoUpgradeMinorVersion": true,
+                "publisher": "Microsoft.Azure.Diagnostics",
+                "type": "PaaSDiagnostics",
+                "typeHandlerVersion": "1.5",
+                "settings": "[parameters('wadPublicConfig_WebRole1')]",
+                "protectedSettings": "[parameters('wadPrivateConfig_WebRole1')]",
+                "rolesAppliedTo": [
+                  "WebRole1"
+                ]
+              }
             }
-          }
-        ]
-      }
+          ]
+        }
+    ```
 
-  
-    ```    
-
-7. Tekintse át a teljes sablont. 
+7. Tekintse át a teljes sablont.
 
     ```json
     {
@@ -266,12 +269,12 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre felhőalapú szolgáltatást 
           "metadata": {
              "description": "Public configuration of Windows Azure Diagnostics extension"
           }
-         },
+        },
         "wadPrivateConfig_WebRole1": {
           "type": "securestring",
           "metadata": {
             "description": "Private configuration of Windows Azure Diagnostics extension"
-         }
+          }
         },
         "vnetName": {
           "type": "string",
@@ -411,7 +414,7 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre felhőalapú szolgáltatást 
                 }
               ]
             },
-        "extensionProfile": {
+            "extensionProfile": {
               "extensions": [
                 {
                   "name": "RDPExtension",
@@ -445,14 +448,15 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre felhőalapú szolgáltatást 
       ]
     }
     ```
- 
+
 8. Telepítse a sablont és a paramétert (a sablonfájl paramétereit definiálva) a Cloud Service (bővített támogatás) központi telepítésének létrehozásához. Kérjük, szükség szerint tekintse át ezeket a [sablonokat](https://github.com/Azure-Samples/cloud-services-extended-support) .
 
     ```powershell
-    New-AzResourceGroupDeployment -ResourceGroupName “ContosOrg"  -TemplateFile "file path to your template file” -TemplateParameterFile "file path to your parameter file"
+    New-AzResourceGroupDeployment -ResourceGroupName "ContosOrg" -TemplateFile "file path to your template file" -TemplateParameterFile "file path to your parameter file"
     ```
- 
+
 ## <a name="next-steps"></a>Következő lépések 
+
 - Tekintse át a Cloud Servicesra vonatkozó [gyakori kérdéseket](faq.md) (kiterjesztett támogatás).
 - A [Azure Portal](deploy-portal.md), a [PowerShell](deploy-powershell.md), a [sablon](deploy-template.md) vagy a [Visual Studio](deploy-visual-studio.md)használatával üzembe helyezhet egy felhőalapú szolgáltatást (kiterjesztett támogatás).
 - Látogasson el a [Cloud Services (bővített támogatás) minták tárházára](https://github.com/Azure-Samples/cloud-services-extended-support)

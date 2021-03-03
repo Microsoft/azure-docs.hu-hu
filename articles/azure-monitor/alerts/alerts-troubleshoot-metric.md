@@ -6,25 +6,25 @@ ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 01/21/2021
 ms.subservice: alerts
-ms.openlocfilehash: 1908232184218316a1a887f17f2fc8104529a0e7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 79cc7e1e4b574533fcad4592134109c52897e9ba
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100614528"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737256"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Az Azure Monitor metrikaalapú riasztásaival kapcsolatos hibák elhárítása 
 
 Ez a cikk a Azure Monitor [metrikus riasztásokkal](alerts-metric-overview.md) kapcsolatos gyakori problémákat és azok hibaelhárítását ismerteti.
 
-Azure Monitor riasztások proaktívan értesítik Önt, ha fontos feltételek találhatók a megfigyelési adataiban. Lehetővé teszik a problémák azonosítását és megcímzését, mielőtt a felhasználók a rendszerértesítéseket. A riasztással kapcsolatos további információkért lásd: [a Microsoft Azure riasztások áttekintése](../platform/alerts-overview.md).
+Azure Monitor riasztások proaktívan értesítik Önt, ha fontos feltételek találhatók a megfigyelési adataiban. Lehetővé teszik a problémák azonosítását és megcímzését, mielőtt a felhasználók a rendszerértesítéseket. A riasztással kapcsolatos további információkért lásd: [a Microsoft Azure riasztások áttekintése](./alerts-overview.md).
 
 ## <a name="metric-alert-should-have-fired-but-didnt"></a>Metrikus riasztást kellett volna kilőtt, de nem 
 
 Ha úgy gondolja, hogy egy metrikai riasztásnak kilőtte, de nem volt tűz, és nem található a Azure Portalban, próbálkozzon a következő lépésekkel:
 
 1. **Konfiguráció** – tekintse át a metrika riasztási szabályának konfigurációját, és győződjön meg arról, hogy megfelelően van-e konfigurálva:
-    - Győződjön meg arról, hogy az **összesítési típus** és az **Összesítés részletessége (időszak)** a vártnak megfelelően van-e konfigurálva. Az **összesítési típus** határozza meg, hogy a metrikai értékek hogyan legyenek összesítve (további részletek [itt](../platform/metrics-aggregation-explained.md#aggregation-types)), és az **Összesítés részletessége (időszak)** szabályozza, hogy a kiértékelés milyen mértékben összesíti a mérőszám értékeit a riasztási szabály futtatásakor.
+    - Győződjön meg arról, hogy az **összesítési típus** és az **Összesítés részletessége (időszak)** a vártnak megfelelően van-e konfigurálva. Az **összesítési típus** határozza meg, hogy a metrikai értékek hogyan legyenek összesítve (további részletek [itt](../essentials/metrics-aggregation-explained.md#aggregation-types)), és az **Összesítés részletessége (időszak)** szabályozza, hogy a kiértékelés milyen mértékben összesíti a mérőszám értékeit a riasztási szabály futtatásakor.
     -  Győződjön meg arról, hogy a **küszöbérték** vagy az **érzékenység** a vártnak megfelelően van-e konfigurálva.
     - A dinamikus küszöbértékeket használó riasztási szabályok esetében ellenőrizze, hogy a speciális beállítások konfigurálva vannak-e, mivel a **szabálysértések száma** kiszűrheti a riasztásokat, és **figyelmen kívül hagyhatja az adatvesztést, mielőtt** hatással lehet a küszöbértékek kiszámítására.
 
@@ -69,10 +69,10 @@ Ha úgy gondolja, hogy a mérőszám riasztása nem lett elindítva, de a követ
 ## <a name="cant-find-the-metric-to-alert-on---virtual-machines-guest-metrics"></a>Nem található a riasztást a virtuális gépek vendég metrikáit jelző metrika
 
 Ha riasztást szeretne kapni a virtuális gépek vendég operációs rendszerére vonatkozó metrikáról (például memória, lemezterület), győződjön meg arról, hogy telepítette a szükséges ügynököt az adatok Azure Monitor metrikához való összegyűjtéséhez:
-- [Windows rendszerű virtuális gépek esetén](../platform/collect-custom-metrics-guestos-resource-manager-vm.md)
-- [Linux rendszerű virtuális gépek esetén](../platform/collect-custom-metrics-linux-telegraf.md)
+- [Windows rendszerű virtuális gépek esetén](../essentials/collect-custom-metrics-guestos-resource-manager-vm.md)
+- [Linux rendszerű virtuális gépek esetén](../essentials/collect-custom-metrics-linux-telegraf.md)
 
-További információ az adatoknak a virtuális gép vendég operációs rendszerből való összegyűjtéséről: [itt](../insights/monitor-vm-azure.md#guest-operating-system).
+További információ az adatoknak a virtuális gép vendég operációs rendszerből való összegyűjtéséről: [itt](../vm/monitor-vm-azure.md#guest-operating-system).
 
 > [!NOTE] 
 > Ha a vendég metrikákat úgy konfigurálta, hogy egy Log Analytics munkaterületre legyenek küldve, a metrikák a Log Analytics munkaterület-erőforrás alatt jelennek meg, és **csak** az azokat figyelő riasztási szabály létrehozása után kezdenek adatokat megjeleníteni. Ehhez kövesse a [naplók metrikariasztásának konfigurálására](./alerts-metric-logs.md#configuring-metric-alert-for-logs) szolgáló lépéseket.
@@ -84,8 +84,8 @@ További információ az adatoknak a virtuális gép vendég operációs rendsze
 
 Ha egy adott metrikához szeretne riasztást létrehozni, de nem látja a metrikát a riasztási szabály létrehozásakor, ellenőrizze az alábbiakat:
 - Ha nem lát az erőforrásra vonatkozó metrikákat, [ellenőrizze, hogy a metrikaalapú riasztások támogatják-e az erőforrás típusát](./alerts-metric-near-real-time.md).
-- Ha lát az erőforrásra vonatkozó metrikákat, de egy adott metrikát nem talál, [ellenőrizze, hogy a metrika elérhető-e](../platform/metrics-supported.md), és ha igen, a leírásában ellenőrizze, hogy nem csak az erőforrás bizonyos verzióiban vagy kiadásában érhető-e el.
-- Ha a metrika nem érhető el az erőforráshoz, előfordulhat, hogy az erőforrásnaplókban elérhető lesz, és naplóriasztásokkal monitorozható. Itt tekinthet meg további információt az [erőforrásnaplóknak az Azure-erőforrásokból történő gyűjtésével és elemzésével](../learn/tutorial-resource-logs.md) kapcsolatban.
+- Ha lát az erőforrásra vonatkozó metrikákat, de egy adott metrikát nem talál, [ellenőrizze, hogy a metrika elérhető-e](../essentials/metrics-supported.md), és ha igen, a leírásában ellenőrizze, hogy nem csak az erőforrás bizonyos verzióiban vagy kiadásában érhető-e el.
+- Ha a metrika nem érhető el az erőforráshoz, előfordulhat, hogy az erőforrásnaplókban elérhető lesz, és naplóriasztásokkal monitorozható. Itt tekinthet meg további információt az [erőforrásnaplóknak az Azure-erőforrásokból történő gyűjtésével és elemzésével](../essentials/tutorial-resource-logs.md) kapcsolatban.
 
 ## <a name="cant-find-the-metric-dimension-to-alert-on"></a>Nem található a riasztásra vonatkozó metrikai dimenzió.
 
@@ -211,7 +211,7 @@ Győződjön meg arról, hogy a megfelelő CLI-parancsokat használja a metrikai
 
 - Ha a `Metric not found` következő hibaüzenetet kapja:
 
-   - Platform metrika esetén: Ügyeljen arra, hogy a **metrika** nevét [a Azure monitor támogatott metrikák lapról](../platform/metrics-supported.md)használja, nem a **metrika megjelenítendő nevét** .
+   - Platform metrika esetén: Ügyeljen arra, hogy a **metrika** nevét [a Azure monitor támogatott metrikák lapról](../essentials/metrics-supported.md)használja, nem a **metrika megjelenítendő nevét** .
 
    - Egyéni metrika esetén: Győződjön meg arról, hogy a metrika már ki van bocsátva (nem hozható létre riasztási szabály egy olyan egyéni metrika esetében, amely még nem létezik), és hogy az egyéni metrika névterét biztosítja (lásd a Resource Manager- [sablon példáját](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric))
 

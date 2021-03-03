@@ -6,6 +6,8 @@
       href: overview.md
     - name: Kibocsátási megjegyzések
       href: release-notes.md
+    - name: Ismert problémák
+      href: known-issues.md
 - name: Rövid útmutatók
   items:
     - name: Adatkezelő létrehozása
@@ -180,6 +182,8 @@
               href: configure-managed-instance.md
             - name: 'Monitorozás, naplóelemzés, számlázási információ, Azure Portal'
               href: monitoring-log-analytics-azure-portal-managed-instance.md
+            - name: Magas rendelkezésre állás
+              href: managed-instance-high-availability.md
             - name: Törlés
               href: delete-managed-instance.md
         - name: Migrate

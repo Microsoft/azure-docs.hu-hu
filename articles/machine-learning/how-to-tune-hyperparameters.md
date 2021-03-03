@@ -8,15 +8,15 @@ ms.reviewer: sgilley
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 01/29/2021
+ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: a4be95561c097191803f2faa271c5d6bba875869
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 0212ed1378dbb1d2165e9333a38fa911598c4c6d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430369"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691484"
 ---
 # <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>Hiperparaméter a modell finomhangolása Azure Machine Learning
 
@@ -25,7 +25,7 @@ A hatékony hiperparaméter-hangolás automatizálása Azure Machine Learning [H
 1. A paraméter keresési területének megadása
 1. Az optimalizáláshoz használandó elsődleges metrika meghatározása  
 1. Korai megszakítási szabályzat megadása alacsony teljesítményű futtatásokhoz
-1. Erőforrások lefoglalása
+1. Erőforrások létrehozása és kiosztása
 1. Kísérlet elindítása a megadott konfigurációval
 1. A betanítási futtatások megjelenítése
 1. Válassza ki a modellhez legmegfelelőbb konfigurációt
@@ -119,7 +119,7 @@ param_sampling = RandomParameterSampling( {
 
 A [rácsos mintavételezés](/python/api/azureml-train-core/azureml.train.hyperdrive.gridparametersampling?preserve-view=true&view=azure-ml-py) támogatja a különálló hiperparaméterek beállítása. Használjon rácsos mintavételezést, ha a költségkeretet a keresési területtel való kimerítő kereséshez is használhatja. Az alacsony teljesítményű futtatások korai megszakítását támogatja.
 
-Egy egyszerű rácsos keresést hajt végre az összes lehetséges értéken. A rács mintavételezése csak a hiperparaméterek beállítása használatával használható `choice` . Például a következő területnek hat mintája van:
+A rács mintavételezése egyszerű rácsos keresést tesz elérhetővé az összes lehetséges értéken. A rács mintavételezése csak a hiperparaméterek beállítása használatával használható `choice` . Például a következő területnek hat mintája van:
 
 ```Python
 from azureml.train.hyperdrive import GridParameterSampling
@@ -133,7 +133,7 @@ param_sampling = GridParameterSampling( {
 
 #### <a name="bayesian-sampling"></a>Bayes-féle mintavételezés
 
-A [Bayes mintavételezés](/python/api/azureml-train-core/azureml.train.hyperdrive.bayesianparametersampling?preserve-view=true&view=azure-ml-py) a Bayes optimalizációs algoritmuson alapul. A mintákat az előző minták végrehajtása alapján választja ki, így az új minták javítják az elsődleges metrikát.
+A [Bayes mintavételezés](/python/api/azureml-train-core/azureml.train.hyperdrive.bayesianparametersampling?preserve-view=true&view=azure-ml-py) a Bayes optimalizációs algoritmuson alapul. A mintákat a korábbi minták alapján választja, így az új minták javítják az elsődleges metrikát.
 
 A többhelyes mintavételezés használata akkor ajánlott, ha elegendő költségkerettel rendelkezik a hiperparaméter-terület megismeréséhez. A legjobb eredmények elérése érdekében javasoljuk, hogy legfeljebb 20 alkalommal fusson a beállított hiperparaméterek beállítása száma. 
 
@@ -203,7 +203,7 @@ Azure Machine Learning a következő korai megszakítási szabályzatokat támog
 
 ### <a name="bandit-policy"></a>Bandita-szabályzat
 
-A [Bandit-szabályzat](/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?preserve-view=true&view=azure-ml-py#&preserve-view=truedefinition) a Slack Factor/Slack és a kiértékelési időköz alapján történik. A Bandit leáll, ha az elsődleges metrika nem a legjobb teljesítményű futtatáshoz képest a megadott Slack Factor/Slack értéken belül van.
+A [Bandit-szabályzat](/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?preserve-view=true&view=azure-ml-py#&preserve-view=truedefinition) a Slack Factor/Slack és a kiértékelési időköz alapján történik. A Bandit akkor fejeződik be, ha az elsődleges metrika nem a legsikeresebb Futtatás megadott tartalékidő-tényezője/Slack-mennyisége szerint fut.
 
 > [!NOTE]
 > A Bayes mintavételezés nem támogatja a korai megszakítást. A Bayes-mintavétel használatakor állítsa be a t `early_termination_policy = None` .
@@ -226,7 +226,7 @@ Ebben a példában a korai megszakítási szabályzatot minden intervallumban al
 
 ### <a name="median-stopping-policy"></a>Középérték leállítása házirend
 
-A [középérték leállítása](/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy?preserve-view=true&view=azure-ml-py) a futtatások által jelentett elsődleges metrikák futtatási átlagán alapuló korai megszakítási házirend. Ez a szabályzat az összes betanítási Futtatás átlagát számítja ki, és az elsődleges metrikai értékek rosszabbak lesznek, mint az átlagok középértéke.
+A [középérték leállítása](/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy?preserve-view=true&view=azure-ml-py) a futtatások által jelentett elsődleges metrikák futtatási átlagán alapuló korai megszakítási házirend. Ez a szabályzat az összes betanítási Futtatás átlagát számítja ki, és leállítja azokat a futtatásokat, amelyek elsődleges metrikai értéke rosszabb, mint az átlagok középértéke.
 
 Ez a szabályzat a következő konfigurációs paramétereket veszi figyelembe:
 * `evaluation_interval`: a házirend alkalmazásának gyakorisága (opcionális paraméter).
@@ -238,7 +238,7 @@ from azureml.train.hyperdrive import MedianStoppingPolicy
 early_termination_policy = MedianStoppingPolicy(evaluation_interval=1, delay_evaluation=5)
 ```
 
-Ebben a példában a korai megszakítási szabályzatot minden olyan intervallumban alkalmazni kell, amely az 5. értékelési intervallumtól kezdődően történik. A Futtatás leállt az 5. intervallumban, ha a legjobb elsődleges metrikája rosszabb, mint a futó átlagok középértéke a 1:5-as időszakra az összes betanítási futtatás során.
+Ebben a példában a korai megszakítási szabályzatot minden olyan intervallumban alkalmazni kell, amely az 5. értékelési intervallumtól kezdődően történik. A Futtatás leállt az 5. intervallumban, ha a legjobb elsődleges metrikája rosszabb, mint a futó átlagok középértéke az összes betanítási időszakban 1:5 intervallumban.
 
 ### <a name="truncation-selection-policy"></a>Csonkítás kiválasztási szabályzata
 
@@ -271,7 +271,7 @@ policy=None
 * Egy olyan konzervatív szabályzat esetében, amely megtakarítást biztosít az ígéretes feladatok megszakítása nélkül, vegye fontolóra az `evaluation_interval` 1 és 5 közötti adatmegőrzési szabályzatot `delay_evaluation` . Ezek a konzervatív beállítások, amelyek körülbelül 25%-35%-os megtakarítást biztosítanak az elsődleges metrika elvesztése nélkül (kiértékelési adatok alapján).
 * Az agresszívebb megtakarítások esetében a Bandit-szabályzatot egy kisebb, megengedett tartalékidő-vagy csonkolt kiválasztási szabályzattal kell használni, amelynek nagyobb a csonkítás százalékaránya.
 
-## <a name="allocate-resources"></a>Erőforrások lefoglalása
+## <a name="create-and-assign-resources"></a>Erőforrások létrehozása és kiosztása
 
 Az erőforrás-költségkeret szabályozása a betanítási futtatások maximális számának megadásával.
 
@@ -302,18 +302,28 @@ A [hiperparaméter hangolási kísérlet konfigurálásához adja meg](/python/a
 * A korai megszakítási szabályzat
 * Az elsődleges metrika
 * Erőforrás-elosztási beállítások
-* ScriptRunConfig `src`
+* ScriptRunConfig `script_run_config`
 
 A ScriptRunConfig az a betanítási szkript, amely a mintául szolgáló hiperparaméterek beállítása fog futni. Meghatározza az erőforrásokat (egy vagy több csomópontot) és a használni kívánt számítási célt.
 
 > [!NOTE]
->A ben megadott számítási célnak `src` elegendő erőforrással kell rendelkeznie a párhuzamossági szint kielégítéséhez. További információ a ScriptRunConfig: a [betanítási futtatások konfigurálása](how-to-set-up-training-targets.md).
+>A-ben használt számítási célnak `script_run_config` elegendő erőforrással kell rendelkeznie a párhuzamossági szint kielégítéséhez. További információ a ScriptRunConfig: a [betanítási futtatások konfigurálása](how-to-set-up-training-targets.md).
 
 Konfigurálja a hiperparaméter hangolási kísérletet:
 
 ```Python
 from azureml.train.hyperdrive import HyperDriveConfig
-hd_config = HyperDriveConfig(run_config=src,
+from azureml.train.hyperdrive import RandomParameterSampling, BanditPolicy, uniform, PrimaryMetricGoal
+
+param_sampling = RandomParameterSampling( {
+        'learning_rate': uniform(0.0005, 0.005),
+        'momentum': uniform(0.9, 0.99)
+    }
+)
+
+early_termination_policy = BanditPolicy(slack_factor=0.15, evaluation_interval=1, delay_evaluation=10)
+
+hd_config = HyperDriveConfig(run_config=script_run_config,
                              hyperparameter_sampling=param_sampling,
                              policy=early_termination_policy,
                              primary_metric_name="accuracy",
@@ -321,6 +331,36 @@ hd_config = HyperDriveConfig(run_config=src,
                              max_total_runs=100,
                              max_concurrent_runs=4)
 ```
+
+A `HyperDriveConfig` Beállítja a paraméternek átadott paramétereket `ScriptRunConfig script_run_config` . A- `script_run_config` ben pedig a paramétereket továbbítja a betanítási parancsfájlnak. A fenti kódrészlet a minta notebook [-Betanításból, a hiperparaméter és a PyTorch-vel való üzembe helyezésből](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch/train-hyperparameter-tune-deploy-with-pytorch)származik. Ebben a példában a `learning_rate` és a `momentum` Paraméterek be lesznek hangolva. A futtatások korai leállítását az a határozza meg `BanditPolicy` , amely leállítja azt a futtatást, amelynek elsődleges metrikája kívül esik a `slack_factor` (lásd: [BanditPolicy-osztály referenciája](python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py)). 
+
+A mintából származó következő kód azt mutatja be, hogy a rendszer hogyan fogadja el, elemezze és átadja a betanítási parancsfájl függvényének a beérkező értékeket `fine_tune_model` :
+
+```python
+# from pytorch_train.py
+def main():
+    print("Torch version:", torch.__version__)
+
+    # get command-line arguments
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--num_epochs', type=int, default=25,
+                        help='number of epochs to train')
+    parser.add_argument('--output_dir', type=str, help='output directory')
+    parser.add_argument('--learning_rate', type=float,
+                        default=0.001, help='learning rate')
+    parser.add_argument('--momentum', type=float, default=0.9, help='momentum')
+    args = parser.parse_args()
+
+    data_dir = download_data()
+    print("data directory is: " + data_dir)
+    model = fine_tune_model(args.num_epochs, data_dir,
+                            args.learning_rate, args.momentum)
+    os.makedirs(args.output_dir, exist_ok=True)
+    torch.save(model, os.path.join(args.output_dir, 'model.pt'))
+```
+
+> [!Important]
+> Minden hiperparaméter-Futtatás újraindítja a képzést, beleértve a modell és _az összes adatbetöltő_ újrafordítását is. Ezt a költségeket egy Azure Machine Learning folyamat vagy manuális folyamat használatával csökkentheti, így a képzés futtatása előtt a lehető legtöbb adatelőkészítési műveletet végrehajthatja. 
 
 ## <a name="submit-hyperparameter-tuning-experiment"></a>Hiperparaméter-hangolási kísérlet elküldése
 
@@ -335,7 +375,6 @@ hyperdrive_run = experiment.submit(hd_config)
 ## <a name="warm-start-hyperparameter-tuning-optional"></a>Meleg indítás hiperparaméter finomhangolása (nem kötelező)
 
 A modell legjobb hiperparaméter-értékeinek megkeresése ismétlődő folyamat lehet. A hiperparaméter hangolásának felgyorsításához újra felhasználhatja az előző öt futtatási ismereteket.
-
 
 A meleg kezdést a mintavételi módszertől függően másképp kell kezelni:
 - **Bayes mintavételezés**: az előző futtatásból származó kísérletek az új minták kiválasztására és az elsődleges metrika javítására szolgáló korábbi ismeretekként használatosak.
@@ -368,7 +407,7 @@ A hiperparaméter hangolási kísérletet beállíthatja úgy, hogy az egy korá
 ```Python
 from azureml.train.hyperdrive import HyperDriveConfig
 
-hd_config = HyperDriveConfig(run_config=src,
+hd_config = HyperDriveConfig(run_config=script_run_config,
                              hyperparameter_sampling=param_sampling,
                              policy=early_termination_policy,
                              resume_from=warmstart_parents_to_resume_from,

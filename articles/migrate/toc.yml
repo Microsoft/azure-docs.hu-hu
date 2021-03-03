@@ -68,6 +68,12 @@
           href: tutorial-migrate-aws-virtual-machines.md
         - name: GCP-példányok migrálása
           href: tutorial-migrate-gcp-virtual-machines.md
+    - name: Tárolóba helyezése
+      items:
+        - name: Tárolóba helyezése ASP.NET alkalmazások és Migrálás AK-ra
+          href: tutorial-containerize-aspnet-kubernetes.md
+        - name: Java-webalkalmazások tárolóba helyezése és migrálása AK-ra
+          href: tutorial-containerize-java-kubernetes.md
 - name: Alapelvek
   items:
     - name: Általános
@@ -180,6 +186,8 @@
               href: how-to-migrate-vmware-vms-with-cmk-disks.md
         - name: Migrálás skálázása
           items:
+            - name: VMware virtuális gépek áttelepítésének méretezése az ügynök nélküli replikációs módszer használatával
+              href: how-to-scale-out-for-migration.md
             - name: Nagy számú virtuális gép migrálásának automatizálása
               href: how-to-migrate-at-scale.md
             - name: VMWare-migrálás automatizálása

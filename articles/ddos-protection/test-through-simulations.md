@@ -11,23 +11,26 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: e95495e48725a68ab1fe3f37d235e5765b2c8015
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 3be8682b3a12f06aa83db1791cb0ed125bbcee7e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806239"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719236"
 ---
 # <a name="test-through-simulations"></a>Tesztelés szimulációk használatával
 
 Érdemes tesztelni a feltételezéseket arról, hogy a szolgáltatások hogyan reagálnak a támadásokra az időszakos szimulációk végrehajtásával. A tesztelés során ellenőrizze, hogy a szolgáltatások vagy alkalmazások továbbra is a várt módon működnek-e, és nincs-e fennakadás a felhasználói élményben. Azonosítsa a technológiai és a feldolgozási szempontból mutatkozó hiányosságokat, és foglalja bele őket a DDoS-válasz stratégiájába. Javasoljuk, hogy hajtsa végre az ilyen teszteket átmeneti környezetekben vagy nem csúcsidőben, hogy csökkentse az éles környezetre gyakorolt hatást.
 
-A [BreakingPoint Cloud](https://www.ixiacom.com/products/breakingpoint-cloud)-t, egy önkiszolgáló forgalmi generátort hoztunk létre egy olyan felület létrehozásához, amelyben az Azure-ügyfelek a szimulációk DDoS Protection használatára képes nyilvános végpontokon keresztül forgalmat generálnak. A szimulációval a következőket végezheti el:
+Partnerkapcsolatra léptünk a [BreakingPoint Clouddal](https://www.ixiacom.com/products/breakingpoint-cloud), amely egy önkiszolgáló forgalomgenerátor, hogy létrehozzunk egy olyan felületet, ahol az Azure-ügyfelek a DDoS Protectionnel ellátott nyilvános végpontok forgalmát szimulálhatják. A szimulációt a következőkhöz használhatja:
 
-- Annak ellenőrzése, hogy a Azure DDoS Protection Hogyan védi az Azure-erőforrásokat a DDoS-támadásokkal szemben.
-- Optimalizálja az incidensek megválaszolásának folyamatát a DDoS-támadás alatt.
-- A DDoS-megfelelőség dokumentálása.
-- A hálózati biztonsági csapatok betanítása.
+- Megtapasztalhatja, hogy az Azure DDoS Protection hogyan segít az Azure-erőforrások DDoS-támadások elleni védelmében.
+- Optimalizálhatja az incidensekre való válaszadást DDoS-támadás közben.
+- Dokumentálhatja a DDoS-megfelelőséget.
+- Betaníthatja a hálózati biztonsági csapatokat.
+
+> [!NOTE]
+> A BreakingPoint Cloud csak a nyilvános felhőben érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

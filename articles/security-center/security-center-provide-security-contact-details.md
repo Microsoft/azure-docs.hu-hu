@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2021
 ms.author: memildin
-ms.openlocfilehash: 4dc9855afe7ed53db120f4dbc6c09ac4db0f58d9
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: d5c8ad0c4d9995a36b95ad2e67878f678887bfd2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988570"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701977"
 ---
 # <a name="configure-email-notifications-for-security-alerts"></a>E-mail-értesítések konfigurálása biztonsági riasztásokhoz 
 
@@ -61,7 +61,7 @@ E-mailes értesítéseket küldhet magánszemélyeknek vagy az adott Azure-szere
 1. A biztonsági kapcsolattartási adatok előfizetésre való alkalmazásához válassza a **Mentés** lehetőséget.
 
 ## <a name="customize-the-alerts-email-notifications-through-the-api"></a>A riasztások e-mail-értesítéseinek testreszabása az API-n keresztül
-Az e-mailes értesítéseket a megadott REST APIon is kezelheti. A részletekért tekintse meg a [SECURITYCONTACTS API dokumentációját](https://docs.microsoft.com/rest/api/securitycenter/securitycontacts).
+Az e-mailes értesítéseket a megadott REST APIon is kezelheti. A részletekért tekintse meg a [SECURITYCONTACTS API dokumentációját](/rest/api/securitycenter/securitycontacts).
 
 Ez egy példa az PUT-kérelemre a biztonsági kapcsolatfelvételi konfiguráció létrehozásakor:
 

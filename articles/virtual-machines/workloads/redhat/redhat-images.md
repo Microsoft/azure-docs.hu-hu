@@ -7,13 +7,14 @@ ms.subservice: redhat
 ms.collection: linux
 ms.topic: article
 ms.date: 02/10/2020
-ms.author: alsin
-ms.openlocfilehash: 03c033ac5d0f20bbfd4f5dccfb5c2900596d2a41
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.author: mathapli
+ms.reviewer: cynthn
+ms.openlocfilehash: 42e0788a25efa5124f24a77b48469d6ed8265dfc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101673133"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694682"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux rendszerképek áttekintése
 
@@ -108,6 +109,8 @@ A RHEL 8 képtípusának részletei alább láthatók.
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | 8 | A RHEL alverzió és a közzétett dátum összefűzött értékei (például 8.0.20191023) | Ezek a képek a standard Red Hat-adattárakhoz csatlakoztatott, 8 LVM-particionált rendszerképek RHEL.
 |RedHat | RHEL | 8 – Gen2 | A RHEL alverzió és a közzétett dátum összefűzött értékei (például 8.0.20191024) | Ezek a lemezképek a Hyper-V 2. generációs RHEL 8 LVM-particionált rendszerképek a standard Red Hat-tárházhoz csatlakoztatva. További információ az Azure-beli 2. generációs virtuális gépekről: a [2. generációs virtuális gépek támogatása az Azure](../../generation-2.md)-ban.
+|RedHat | RHEL | RHEL – SAP-APPS | A RHEL alverzió és a közzétett dátum összefűzött értékei (például 8.1.2021012201) | Ezek a rendszerképek RHEL az SAP-alkalmazások rendszerképeihez. Az SAP-alkalmazások tárházait és az alap RHEL-Tárházak elérésére jogosultak.
+|RedHat | RHEL | RHEL – SAP-HA | A RHEL alverzió és a közzétett dátum összefűzött értékei (például 8.1.2021010602) | Ezek a rendszerképek a magas rendelkezésre állású és a frissítési szolgáltatások RHEL az SAP számára. Jogosultak az SAP-megoldások és-alkalmazások Tárházak, valamint a magas rendelkezésre állású adattárak és a RHEL E4S-Tárházak elérésére. A számlázás a RHEL Premium, az SAP Premium és a magas rendelkezésre állás díját foglalja magában az alap számítási díj alapján.
 
 ## <a name="rhel-extended-support-add-ons"></a>RHEL kiterjesztett támogatása – bővítmények
 

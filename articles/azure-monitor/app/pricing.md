@@ -7,12 +7,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 2/7/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: db5506f1f1fcabf3a922115c24aa64e35b888fbd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1f19366ac8fd7aedadcca0287540262516ad060c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573754"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726180"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Használat és költségek kezelése az Application Insights szolgáltatásban
 
@@ -294,7 +294,7 @@ A pénznem és a régió aktuális áraiért lásd: [Application Insights díjsz
 
 ### <a name="understanding-billed-usage-on-the-legacy-enterprise-per-node-tier"></a>Az örökölt vállalati (csomóponton belüli) díj számlázásának ismertetése 
 
-Az alább leírtak szerint az örökölt nagyvállalati (csomóponton belüli) szint az előfizetésben lévő összes Application Insights-erőforrás használatát ötvözi a csomópontok számának és az adatok túlterhelésének kiszámításához. A kombinált folyamat miatt a rendszer az **előfizetésben lévő összes Application Insights erőforrás használatát csak az egyik erőforrásra vonatkozóan** jelenti.  Így összehangolhatja a [számlázott használatot](https://docs.microsoft.com/azure/azure-monitor/app/pricing#viewing-application-insights-usage-on-your-azure-bill) az egyes Application Insights-erőforrásoknál megfigyelt használattal. 
+Az alább leírtak szerint az örökölt nagyvállalati (csomóponton belüli) szint az előfizetésben lévő összes Application Insights-erőforrás használatát ötvözi a csomópontok számának és az adatok túlterhelésének kiszámításához. A kombinált folyamat miatt a rendszer az **előfizetésben lévő összes Application Insights erőforrás használatát csak az egyik erőforrásra vonatkozóan** jelenti.  Így összehangolhatja a [számlázott használatot](#viewing-application-insights-usage-on-your-azure-bill) az egyes Application Insights-erőforrásoknál megfigyelt használattal. 
 
 > [!WARNING]
 > Az örökölt nagyvállalati (csomópont-) szinten Application Insights erőforrások használatának és megismerésének összetettsége miatt erősen ajánlott az aktuális utólagos elszámolású díjszabás használata. 

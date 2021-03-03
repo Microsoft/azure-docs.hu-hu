@@ -3,12 +3,12 @@ title: Azure VMware-megoldás saját felhő létrehozása
 description: Az Azure VMware-megoldás saját felhővel való létrehozásának lépései a Azure Portal használatával.
 ms.topic: include
 ms.date: 02/17/2021
-ms.openlocfilehash: 983dccfaa9ea43955bfecc68bbbe432c579d51d1
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: da79881e609f982960468a8f26c98178f972ad43
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653133"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725404"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-create-private-cloud.md -->
 
@@ -26,8 +26,6 @@ ms.locfileid: "100653133"
    | **Erőforrás neve** | Az Azure VMware-megoldás saját Felhőbeli neve. |
    | **Termékváltozat** | Válassza ki a következő SKU-értéket: AV36 |
    | **Hosts** | A saját felhőalapú fürtbe felvenni kívánt gazdagépek száma. Az alapértelmezett érték 3, amely az üzembe helyezés után növelhető vagy csökkenthető.  |
-   | **vCenter rendszergazdai jelszava** | Adja meg a Felhőbeli rendszergazdai jelszót. |
-   | **NSX-T kezelő jelszava** | Adjon meg egy NSX-T rendszergazdai jelszót. |
    | **Címterület** | Adja meg a CIDR-hálózat IP-címét a privát felhőhöz, például 10.175.0.0/22. |
    | **Virtual Network** | Válasszon ki egy Virtual Network, vagy hozzon létre egy újat az Azure VMware megoldás saját felhőhöz.  |
 

@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan méretezheti az Azure-ban az erőforrás-webalk
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 6ac3ebb4cf007141967786f51243c741a6045c83
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 081e06fbd6506c76a068d7207e29efb66502a9dd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100617658"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726053"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Ismerkedés az Azure-beli automatikus skálázással
 Ez a cikk azt ismerteti, hogyan állíthatja be az erőforráshoz tartozó autoskálázási beállításokat a Microsoft Azure Portalban.
@@ -128,7 +128,7 @@ Ez a szakasz azt ismerteti, hogyan helyezheti át az Azure-beli autoskálázást
 ### <a name="move"></a>Áthelyezés
 A [REST API](/rest/api/monitor/autoscalesettings/createorupdate) használatával hozzon létre egy autoskálázási beállítást az új környezetben. A célként megadott régióban létrehozott automatikusan skálázási beállítás a forrás régiójában lévő autoskálázási beállítás másolata lesz.
 
-A forrás régióban az autoscale beállítással létrehozott [diagnosztikai beállítások](../platform/diagnostic-settings.md) nem helyezhetők át. A cél régióban újra létre kell hoznia a diagnosztikai beállításokat, miután befejeződött az autosales beállítások létrehozása. 
+A forrás régióban az autoscale beállítással létrehozott [diagnosztikai beállítások](../essentials/diagnostic-settings.md) nem helyezhetők át. A cél régióban újra létre kell hoznia a diagnosztikai beállításokat, miután befejeződött az autosales beállítások létrehozása. 
 
 ### <a name="learn-more-about-moving-resources-across-azure-regions"></a>További információ az erőforrások Azure-régiók közötti áthelyezéséről
 Ha többet szeretne megtudni az erőforrások régiók közötti áthelyezéséről és az Azure-beli vész-helyreállításról, olvassa el az [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../../azure-resource-manager/management/move-resource-group-and-subscription.md) című témakört.

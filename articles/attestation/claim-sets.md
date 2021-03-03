@@ -7,26 +7,27 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: eb08bb262806cb662822a75898196546a5c1058e
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 23bcfcb92a7fa642e111a67bf92c1306a606bb2a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762538"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704803"
 ---
 # <a name="claim-sets"></a>Jogcímkészletek
 
 A Microsoft Azure igazolást használó enklávék igazolása során létrehozott jogcímek az alábbi kategóriákba oszthatók:
 
-- **Bejövő jogcímek**: Microsoft Azure igazolások által generált jogcímek az igazolási bizonyítékok elemzése után, és a szabályzatok szerzői által az engedélyezési szabályok definiálására használhatók egy egyéni házirendben
+- **Bejövő jogcímek**: Microsoft Azure igazolások által az igazolási bizonyítékok elemzése után generált jogcímek, valamint a szabályzatok szerzői által használható engedélyezési szabályok definiálása egyéni házirendben
 
 - **Kimenő jogcímek**: az Azure-igazolás által generált jogcímek és az igazolási jogkivonatban az összes jogcímet tartalmazza
 
-- **Tulajdonság jogcímei**: az Azure-igazolás által kimenetként létrehozott jogcímek. Tartalmazza az igazolási jogkivonat tulajdonságait jelképező jogcímeket, például a jelentés kódolását, a jelentés érvényességi időtartamát stb.
+- **Property jogcímek**: az Azure-igazolás által kimenetként létrehozott jogcímek. Tartalmazza az igazolási jogkivonat tulajdonságait jelképező jogcímeket, például a jelentés kódolását, a jelentés érvényességi időtartamát stb.
 
 ### <a name="common-incoming-claims-across-all-attestation-types"></a>Gyakori bejövő jogcímek az összes igazolási típus között
 
-Az alábbi jogcímeket az Azure igazolása hozza létre, és az engedélyezési szabályok definiálására használható egy egyéni szabályzatban:
+Az alábbi jogcímeket az Azure igazolása hozza létre, és a szabályzatok szerzője az összes igazolási típushoz egyéni szabályzatban határozhat meg engedélyezési szabályokat.
+
 - **x-MS-ver**: JWT séma verziója (várhatóan "1,0")
 - **x-MS-igazolás-típus**: az igazolás típusát jelképező karakterlánc-érték 
 - **x-MS-Policy-hash**: az Azure igazolási értékelési szabályzatának kivonata BASE64URL-ként kiszámítva (sha256 (UTF8 (BASE64URL (Policy Text))))
@@ -44,7 +45,9 @@ policy_signer | x-MS-Policy-aláíró
 
 ### <a name="common-outgoing-claims-across-all-attestation-types"></a>Általános kimenő jogcímek az összes igazolási típus között
 
-Az alábbi, az [IETF JWT](https://tools.ietf.org/html/rfc7519) által definiált jogcímek, amelyeket az Azure igazolása használ a Response objektumban:
+Az alábbi jogcímek a szolgáltatás által az összes igazolási típushoz tartozó igazolási jogkivonat részét képezik.
+
+Forrás: az [IETF JWT](https://tools.ietf.org/html/rfc7519) által meghatározottak szerint
 
 - **"kezdeményezés" (JWT ID) jogcím**
 - **"ISS" (kiállítói) jogcím**
@@ -52,10 +55,12 @@ Az alábbi, az [IETF JWT](https://tools.ietf.org/html/rfc7519) által definiált
 - **"exp" (lejárati idő) jogcím**
 - **"NBF" (nem korábban) jogcím**
 
-Az [IETF által megevett](https://tools.ietf.org/html/draft-ietf-rats-eat-03#page-9) és az Azure-igazolás által a Response objektumban használt jogcímek:
+Forrás: [IETF](https://tools.ietf.org/html/draft-ietf-rats-eat-03#page-9) által meghatározott
+
 - **"Alkalmi jogcím" (alkalom)**
 
-Az alábbi jogcímek alapértelmezés szerint a bejövő jogcímek alapján jönnek létre
+Az alábbi jogcímeket a rendszer alapértelmezés szerint az igazolási jogkivonatban tartalmazza a bejövő jogcímek alapján:
+
 - **x-MS-ver**: JWT séma verziója (várhatóan "1,0")
 - **x-MS-igazolás-típus**: az igazolás típusát jelképező karakterlánc-érték 
 - **x-MS-Policy-hash**: karakterlánc-érték, amely tartalmazza a BASE64URL által kiszámított sha256-kivonatot (sha256 (UTF8 (BASE64URL)))
@@ -65,7 +70,8 @@ Az alábbi jogcímek alapértelmezés szerint a bejövő jogcímek alapján jön
 
 ### <a name="incoming-claims-specific-to-sgx-attestation"></a>SGX ENKLÁVÉHOZ-igazolásra vonatkozó bejövő jogcímek
 
-Az alábbi jogcímeket a szolgáltatás hozza létre a SGX ENKLÁVÉHOZ igazoláshoz, és az engedélyezési szabályok definiálására használható egy egyéni szabályzatban:
+Az alábbi jogcímeket az Azure igazolása hozza létre, és a szabályzatok szerzői a SGX ENKLÁVÉHOZ-igazoláshoz egyéni szabályzatban határozzák meg az engedélyezési szabályokat.
+
 - **x-MS-SGX enklávéhoz-** a-hibakereső: logikai érték, amely azt jelzi, hogy az enklávéban engedélyezve van-e a hibakeresés
 - **x-MS-SGX enklávéhoz-Product-ID**
 - **x-MS-SGX enklávéhoz-mrsigner**: az idézőjel "mrsigner" mezőjének hexadecimális kódolású értéke
@@ -74,7 +80,8 @@ Az alábbi jogcímeket a szolgáltatás hozza létre a SGX ENKLÁVÉHOZ igazolá
 
 ### <a name="outgoing-claims-specific-to-sgx-attestation"></a>A SGX ENKLÁVÉHOZ-igazolásra vonatkozó kimenő jogcímek
 
-Az alábbi jogcímeket a szolgáltatás hozza létre, és a SGX ENKLÁVÉHOZ-igazoláshoz tartozó Response objektum tartalmazza:
+Az alábbi jogcímeket a szolgáltatás az igazolási jogkivonatban hozza létre és tartalmazza a SGX ENKLÁVÉHOZ-igazoláshoz.
+
 - **x-MS-SGX enklávéhoz-** a-hibakereső: logikai érték, amely azt jelzi, hogy az enklávéban engedélyezve van-e a hibakeresés
 - **x-MS-SGX enklávéhoz-Product-ID**
 - **x-MS-SGX enklávéhoz-mrsigner**: az idézőjel "mrsigner" mezőjének hexadecimális kódolású értéke
@@ -145,6 +152,6 @@ Az Azure-igazolás által a VBS igazoláshoz kiadott jogcímek a TPM-igazolásho
   - **Maximális érték (idő)**: egy év percben.
 - **omit_x5c**: logikai jogcím, amely azt jelzi, hogy az Azure-igazolásnak ki kell-e hagyni a szolgáltatás hitelességének igazolásához használt tanúsítványt. Ha az értéke igaz, a rendszer hozzáadja a x5t az igazolási jogkivonathoz. Ha hamis (alapértelmezett), a rendszer hozzáadja a x5c az igazolási jogkivonathoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Igazolási szabályzat létrehozása és aláírása](author-sign-policy.md)
 - [Az Azure-igazolás beállítása a PowerShell használatával](quickstart-powershell.md)

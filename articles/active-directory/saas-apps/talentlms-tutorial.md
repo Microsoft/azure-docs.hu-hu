@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 1b65191e97402f2fb352c56664dad085c448242c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 84d50d19a8356418a5cbf1f93784e5b8816d4be5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650624"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689351"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>Oktatóanyag: Azure Active Directory integráció a TalentLMS
 
@@ -170,11 +170,11 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Ta
 
     ![Felhasználó hozzáadása](./media/talentlms-tutorial/IC777299.png "Felhasználó hozzáadása")  
 
-    a. Az **Utónév** szövegmezőbe írja be a felhasználó utónevét, például a **Britta** nevet.
+    a. Az **Utónév** szövegmezőbe írja be a felhasználó nevét (például: `Britta` ).
 
-    b. A **vezetékneve** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon** nevet.
+    b. A **vezetéknév** szövegmezőbe írja be a felhasználó vezetéknevét (például: `Simon` ).
  
-    c. Az **e-mail cím** szövegmezőbe írja be a felhasználóhoz hasonló e-mail címet `brittasimon\@contoso.com` .
+    c. Az **e-mail cím** szövegmezőbe írja be a felhasználóhoz hasonló e-mail címet `brittasimon@contoso.com` .
 
     d. Kattintson az **Add User** (Felhasználó hozzáadása) elemre.
 

@@ -1,22 +1,21 @@
 ---
 title: Network Performance Monitor megoldás az Azure Log Analyticsban | Microsoft Docs
 description: A Network Performance Monitor ExpressRoute-figyelő funkciójának használatával figyelheti a végpontok közötti kapcsolatot és a teljesítményt a fiókirodák és az Azure között az Azure ExpressRoute-en keresztül.
-ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
-ms.openlocfilehash: 477512c0b1de8548e2aa1e2971a5d831e84d2139
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0b005e46e9f9a740fee153e063bebf108c22b303
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578380"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725696"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute-figyelő
 
 > [!IMPORTANT]
-> 2021. július 1-től nem lehet új teszteket felvenni egy meglévő munkaterületre, vagy új munkaterületet engedélyezni Network Performance Monitor. Továbbra is használhatja a 2021. július 1. előtt létrehozott teszteket. A szolgáltatás megszakadásának minimalizálásához a jelenlegi számítási [feladatokhoz telepítse át a teszteket Network Performance monitorról az](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) Azure Network Watcher új, 2024. február 29. előtti kapcsolódási figyelője felé.
+> 2021. július 1-től nem lehet új teszteket felvenni egy meglévő munkaterületre, vagy új munkaterületet engedélyezni Network Performance Monitor. Továbbra is használhatja a 2021. július 1. előtt létrehozott teszteket. A szolgáltatás megszakadásának minimalizálásához a jelenlegi számítási [feladatokhoz telepítse át a teszteket Network Performance monitorról az](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md) Azure Network Watcher új, 2024. február 29. előtti kapcsolódási figyelője felé.
 
 A [Network Performance monitor](network-performance-monitor.md) Azure ExpressRoute monitor funkciójának használatával megfigyelheti a végpontok közötti kapcsolatot és a teljesítményt a fiókirodák és az Azure között, az Azure ExpressRoute-en keresztül. A legfontosabb előnyök a következők: 
 
@@ -112,7 +111,7 @@ Network Performance Monitor segítséget nyújt több áramköri kapcsolati prob
 
 Az értesítési kódokat láthatja, és riasztásokat állíthat be rajtuk a **LogAnalytics**-on keresztül. A **NPM diagnosztika** lapon az összes aktivált diagnosztikai üzenet leírását láthatja.
 
-| Értesítési kód (naplók) | Description |
+| Értesítési kód (naplók) | Leírás |
 | --- | --- |
 | 5501 | A ExpressRoute áramkör másodlagos kapcsolata nem haladhat át |
 | 5502 | A ExpressRoute áramkör elsődleges kapcsolata nem haladhat át |
@@ -144,4 +143,3 @@ Az értesítési kódokat láthatja, és riasztásokat állíthat be rajtuk a **
 
 ## <a name="next-steps"></a>Következő lépések
 [Keresési naplók](../logs/log-query-overview.md) a hálózati teljesítményadatok részletes rekordjainak megtekintéséhez.
-

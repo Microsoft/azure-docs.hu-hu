@@ -1,17 +1,17 @@
 ---
-title: Azure Monitor-jelentések tárolók számára
-description: A Azure Monitor által a tárolók számára gyűjtött adatok elemzéséhez rendelkezésre álló jelentéseket ismerteti.
+title: Jelentések a Container bepillantást
+description: Ismerteti a tárolók által összegyűjtött adatok elemzéséhez rendelkezésre álló jelentéseket.
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 94709cf4a8b579447c11f91f9bc6863ab4b4fe08
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ab704ed184d9d67ddfba5aede385899faf2a56de
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582318"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704276"
 ---
-# <a name="reports-in-azure-monitor-for-containers"></a>Azure Monitor-jelentések tárolók számára
-Az Azure Monitor for containers szolgáltatásban lévő jelentések ajánlott, beépített Azure- [munkafüzetek](../visualize/workbooks-overview.md). Ez a cikk az elérhető különböző jelentéseket és azok elérését ismerteti.
+# <a name="reports-in-container-insights"></a>Jelentések a Container bepillantást
+A Container bepillantást tartalmazó jelentései a beépített [Azure-munkafüzetek](../visualize/workbooks-overview.md)ajánlottak. Ez a cikk az elérhető különböző jelentéseket és azok elérését ismerteti.
 
 ## <a name="viewing-reports"></a>Jelentések megtekintése
 A Azure Portal **Azure monitor** menüjében válassza a **tárolók** lehetőséget. A **figyelés** szakaszban válassza ki az adatokat, **válasszon ki egy** adott fürtöt, majd válassza a **jelentések (előzetes verzió)** lapot. 

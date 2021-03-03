@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
-ms.openlocfilehash: 040c487df83c117e177b8a8b0e8fddde8682c67f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ae95580a8c192f0815623461fb21ec9ecf52ae26
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100614025"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700643"
 ---
 # <a name="archive-data-from-log-analytics-workspace-to-azure-storage-using-logic-app"></a>Adatok archiválása Log Analytics munkaterületről az Azure Storage-ba a logikai alkalmazás használatával
 Ez a cikk azt ismerteti, hogyan lehet a [Azure Logic apps](../../logic-apps/index.yml) segítségével lekérdezni a Azure monitor és az Azure Storage szolgáltatásba küldött log Analytics munkaterületről származó adatok lekérdezésére szolgáló módszert. Akkor használja ezt a folyamatot, ha a naplózási és megfelelőségi forgatókönyvek Azure Monitor naplózási adatait szeretné exportálni, vagy egy másik szolgáltatás számára engedélyezi az adatok lekérését.  
@@ -118,7 +118,7 @@ AzureActivity
     ResourceId = _ResourceId 
 ```
 
-Az **időtartomány** meghatározza azokat a rekordokat, amelyeket a lekérdezés a **TimeGenerated** oszlop alapján fog tartalmazni. Ezt a lekérdezésben kiválasztott időtartomány értékével megegyező vagy annál nagyobb értékre kell beállítani. Mivel ez a lekérdezés nem a **TimeGenerated** oszlopot használja, **a lekérdezés** beállításban nem érhető el. Az időtartományra vonatkozó további részletekért lásd a [lekérdezés hatókörét](../log-query/scope.md) . 
+Az **időtartomány** meghatározza azokat a rekordokat, amelyeket a lekérdezés a **TimeGenerated** oszlop alapján fog tartalmazni. Ezt a lekérdezésben kiválasztott időtartomány értékével megegyező vagy annál nagyobb értékre kell beállítani. Mivel ez a lekérdezés nem a **TimeGenerated** oszlopot használja, **a lekérdezés** beállításban nem érhető el. Az időtartományra vonatkozó további részletekért lásd a [lekérdezés hatókörét](./scope.md) . 
 
 Válassza az **utolsó 4 óra** lehetőséget az **időtartománynál**. Ezzel biztosíthatja, hogy a **TimeGenerated** nagyobb betöltési idővel rendelkező rekordok szerepeljenek az eredményekben.
    
@@ -210,6 +210,6 @@ Lépjen a Azure Portal **Storage-fiókok** menüjére, és válassza ki a Storag
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a [Azure monitor lévő naplók lekérdezéséről](../log-query/log-query-overview.md).
+- További információ a [Azure monitor lévő naplók lekérdezéséről](./log-query-overview.md).
 - További információ a [Logic apps](../../logic-apps/index.yml)
 - További információ az [energiagazdálkodás automatizálásáról](https://flow.microsoft.com).

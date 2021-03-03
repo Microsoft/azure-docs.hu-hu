@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 02/11/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 19ce054ce29b744f900676ecf4e55af3487d9891
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c775d81b88c891d6d8ea0a4597b4fa4fee29c86a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373470"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737545"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>MSIX-alkalmazás csatolásának beállítása az Azure Portal használatával
 
@@ -36,6 +36,7 @@ A MSIX-alkalmazás csatolásának konfigurálásához a következők szükséges
 - Egy MSIX csomagolt alkalmazás kibővült egy fájlmegosztásba feltöltött MSIX-rendszerképbe.
 - Egy fájlmegosztás a Windows rendszerű virtuális asztali környezetben, ahol a MSIX-csomagot tárolja a rendszer.
 - A MSIX-rendszerkép feltöltésének helyét a gazdagépen lévő összes virtuális gép (VM) számára is elérhetővé kell tenni. A felhasználóknak csak olvasási jogosultsággal kell rendelkezniük a rendszerkép eléréséhez.
+- Ha a tanúsítvány nem nyilvánosan megbízható, kövesse a [tanúsítványok telepítése](app-attach.md#install-certificates)című témakör utasításait.
 
 ## <a name="turn-off-automatic-updates-for-msix-app-attach-applications"></a>Az automatikus frissítések kikapcsolása a MSIX alkalmazáshoz
 

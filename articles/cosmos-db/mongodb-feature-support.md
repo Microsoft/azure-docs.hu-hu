@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 652be939136139620f6ec024fe98463113c6fb4a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 61c034d6365909ca6255adcdc0c75e5a8ddd6cb4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657519"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692249"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>MongoDB-hez készült Azure Cosmos DB API (3.2-es verzió): támogatott funkciók és szintaxis
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -22,7 +22,7 @@ Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-sz
 A Azure Cosmos DB API-MongoDB való használatával élvezheti a használt MongoDB előnyeit, és az összes olyan vállalati funkciót, amelyet a Cosmos DB biztosít: [globális elosztás](distribute-data-globally.md), [automatikus](partitioning-overview.md)horizontális felskálázás, rendelkezésre állási és késési garanciák, az összes mező automatikus indexelése, a titkosítás nyugalmi állapotban, biztonsági mentések és sok más további lehetőség.
 
 > [!NOTE]
-> Ez a cikk a MongoDB 3,2-hez készült Azure Cosmos DB API-ját ismerteti. A 3,6-es és a 4,0-es verzió MongoDB lásd: [MongoDB 3,6 támogatott szolgáltatások és szintaxis](mongodb-feature-support-36.md) és [MongoDB 4,0 támogatott szolgáltatások és szintaktikai](mongodb-feature-support-40.md) cikkek.
+> A MongoDB-hez készült Cosmos DB API 3,2-es verziója nem rendelkezik aktuális tervekkel az életciklus végéhez (EOL). A jövőbeli EOL vonatkozó minimális figyelmeztetés három év.
 
 ## <a name="protocol-support"></a>Protokollok támogatása
 

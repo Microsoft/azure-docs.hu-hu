@@ -13,18 +13,18 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 675f6b9ac3ebb05539432b5febc279275f9de7f6
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 8a6f23a5f4ce497c38358f06394f0f0aa97f9889
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98785769"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739661"
 ---
 # <a name="create-a-secure-service-fabric-linux-cluster-in-azure"></a>Biztonságos Service Fabric-fürt létrehozása az Azure-ban
 
 Ez a parancs létrehoz egy önaláírt tanúsítványt, hozzáadja egy kulcstartóhoz, és helyileg letölti a tanúsítványt.  A rendszer az új tanúsítványt a fürt védelmére használja a telepítést követően.  Meglévő tanúsítványt is használhat egy új létrehozása helyett.  A tanúsítvány tulajdonosnevének mindkét esetben egyeznie kell a Service Fabric-fürthöz való hozzáféréshez használt tartománnyal. Ez a megfeleltetés szükséges ahhoz, hogy a TLS-t biztosítani lehessen a fürt HTTPS-felügyeleti végpontjai és Service Fabric Explorer számára. Nem szerezhet be TLS/SSL-tanúsítványt a `.cloudapp.azure.com` tartomány hitelesítésszolgáltatótól. Egyéni tartománynevet kell beszereznie a fürt számára. Amikor tanúsítványt igényel egy hitelesítésszolgáltatótól, a tanúsítvány tulajdonosnevének meg kell felelnie a fürthöz használt egyéni tartománynévnek.
 
-Amennyiben szükséges, telepítse az [Azure CLI-t](/en-us/cli/azure/install-azure-cli).
+Amennyiben szükséges, telepítse az [Azure CLI-t](cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -47,6 +47,6 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 |---|---|
 | [az sf cluster create](/cli/azure/sf/cluster) | Létrehoz egy új Service Fabric-fürtöt.  |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [Service Fabric parancssori felület példái](../samples-cli.md) között további Service Fabric parancssori felületi példákat talál az Azure Service Fabrichez.

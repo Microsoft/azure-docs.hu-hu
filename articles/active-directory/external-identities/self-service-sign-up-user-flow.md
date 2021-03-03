@@ -11,26 +11,31 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a08cc9f5b6bf7f02666406bcc541edb677196eeb
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 883e658fd3f03eb50d54e548ffac49e23b340808
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101647336"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688644"
 ---
-# <a name="add-a-self-service-sign-up-user-flow-to-an-app"></a>Önkiszolgáló bejelentkezési felhasználói folyamat hozzáadása egy alkalmazáshoz
+# <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Önkiszolgáló bejelentkezési felhasználói folyamat hozzáadása egy alkalmazáshoz (előzetes verzió)
 
-Felhasználói folyamatokat hozhat létre a szervezete által készített alkalmazásokhoz. Ha a felhasználói folyamatot egy alkalmazással társítja, lehetővé teszi, hogy engedélyezze a regisztrálást az alkalmazáson. Több alkalmazást is kiválaszthat a felhasználói folyamathoz való társításhoz. Miután hozzárendelte a felhasználói folyamatot egy vagy több alkalmazáshoz, a felhasználók, akik meglátogatják az alkalmazást, regisztrálhatnak, és elérhetik a vendég fiókot a felhasználói folyamaton konfigurált beállítások használatával.
+> [!NOTE]
+> A cikkben említett funkciók némelyike Azure Active Directory nyilvános előzetes verziójú funkciói. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+A létrehozott alkalmazások esetében olyan felhasználói folyamatokat hozhat létre, amelyek lehetővé teszik, hogy egy felhasználó regisztráljon az alkalmazásra, és hozzon létre egy új vendég fiókot. Az önkiszolgáló regisztrációs felhasználói folyamat meghatározza azokat a lépéseket, amelyeket a felhasználó a regisztráció során követ, az azonosítókat, amelyeket a felhasználók használhatnak, valamint a gyűjteni kívánt felhasználói attribútumokat. Egy vagy több alkalmazást egyetlen felhasználói folyamathoz rendelhet hozzá.
 
 > [!NOTE]
 > A felhasználói folyamatokat a szervezet által készített alkalmazásokkal társíthatja. A felhasználói folyamatok nem használhatók Microsoft-alkalmazásokhoz, például a SharePointhoz vagy a Teams szolgáltatáshoz.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-### <a name="add-social-identity-providers-optional"></a>Közösségi identitású szolgáltatók hozzáadása (nem kötelező)
+### <a name="add-identity-providers-optional"></a>Identitás-szolgáltatók hozzáadása (nem kötelező)
 
-Az Azure AD az önkiszolgáló regisztráció alapértelmezett identitás-szolgáltatója. Ez azt jelenti, hogy a felhasználók alapértelmezés szerint egy Azure AD-fiókkal regisztrálhatnak. A közösségi identitással rendelkező szolgáltatók a Google-és Facebook-fiókok támogatásához is felvehetők a regisztrációs folyamatokban.
+Az Azure AD az önkiszolgáló regisztráció alapértelmezett identitás-szolgáltatója. Ez azt jelenti, hogy a felhasználók alapértelmezés szerint egy Azure AD-fiókkal regisztrálhatnak. Az önkiszolgáló bejelentkezési felhasználói folyamatokban olyan közösségi identitás-szolgáltatókat is használhat, mint például a Google és a Facebook, a Microsoft-fiók (előzetes verzió) és az e-mailek egyszeri jelszava (előzetes verzió).
 
+- [Microsoft-fiók (előzetes verzió) identitás-szolgáltatója](microsoft-account.md)
+- [Egyszeri jelszavas hitelesítés e-mailben](one-time-passcode.md)
 - [Facebook hozzáadása a közösségi identitású szolgáltatók listájához](facebook-federation.md)
 - [A Google hozzáadása a közösségi identitású szolgáltatók listájához](google-federation.md)
 

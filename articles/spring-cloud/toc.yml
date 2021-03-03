@@ -188,3 +188,6 @@
     - name: Az Azure Policy beépített elemei
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
+    - name: Újdonságok
+      displayName: What's New
+      href: 'https://azure.microsoft.com/updates/?query=spring'

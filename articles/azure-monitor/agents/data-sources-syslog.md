@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 2d7406c1e801a07f10342c47e7334e6a12bfd449
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0d9804d088e1f193e0adf1fa26adbbe5d3680097
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100616325"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729198"
 ---
 # <a name="collect-syslog-data-sources-with-log-analytics-agent"></a>Syslog-adatforrások gyűjtése Log Analytics ügynökkel
 A syslog egy olyan eseménynaplózási protokoll, amely közös a Linux rendszerben. Az alkalmazások elküldik a helyi gépen tárolt vagy a syslog-gyűjtőnek küldött üzeneteket. A Linux rendszerhez készült Log Analytics-ügynök telepítésekor a helyi syslog démont úgy konfigurálja, hogy továbbítsa az üzeneteket az ügynöknek. Az ügynök ezután elküldi az üzenetet, hogy Azure Monitor, ahol létrejön egy megfelelő rekord.  
 
 > [!IMPORTANT]
-> Ez a cikk ismerteti a syslog-események összegyűjtését a [log Analytics ügynökkel](../platform/log-analytics-agent.md) , amely a Azure monitor által használt ügynökök egyike. Más ügynökök különböző adatokat gyűjtenek, és eltérően vannak konfigurálva. A rendelkezésre álló ügynökök és az összegyűjtött adatok listáját lásd: [Azure monitor ügynökök áttekintése](../agents/agents-overview.md) .
+> Ez a cikk ismerteti a syslog-események összegyűjtését a [log Analytics ügynökkel](./log-analytics-agent.md) , amely a Azure monitor által használt ügynökök egyike. Más ügynökök különböző adatokat gyűjtenek, és eltérően vannak konfigurálva. A rendelkezésre álló ügynökök és az összegyűjtött adatok listáját lásd: [Azure monitor ügynökök áttekintése](../agents/agents-overview.md) .
 
 > [!NOTE]
 > Azure Monitor támogatja a rsyslog vagy syslog-ng által küldött üzenetek gyűjteményét, ahol a rsyslog az alapértelmezett démon. A syslog-események gyűjteménye nem támogatja az alapértelmezett syslog démont a Red Hat Enterprise Linux, a CentOS és a Oracle Linux verzió (sysklog) 5. verziójában. A rendszernapló-adatok ezen disztribúciók ezen verziójából való összegyűjtéséhez a [rsyslog démont](http://rsyslog.com) telepíteni és konfigurálni kell a sysklog lecserélése érdekében.
@@ -57,7 +57,7 @@ Konfigurálja a syslog-t az Log Analytics munkaterület [Speciális beállítás
 Alapértelmezés szerint a rendszer az összes konfigurációs módosítást automatikusan leküldi az összes ügynöknek. Ha minden Linux-ügynökön manuálisan szeretné konfigurálni a syslog-t, törölje a jelet az *alábbi konfiguráció alkalmazása a saját gépekre* jelölőnégyzetből.
 
 ### <a name="configure-syslog-on-linux-agent"></a>A syslog konfigurálása Linux-ügynökön
-Ha a [log Analytics-ügynök Linux-ügyfélre van telepítve](../learn/quick-collect-linux-computer.md), egy alapértelmezett syslog-konfigurációs fájlt telepít, amely meghatározza a begyűjtött üzenetek létesítményét és súlyosságát. A fájl módosításával módosíthatja a konfigurációt. A konfigurációs fájl különbözik attól függően, hogy az ügyfél melyik syslog démont telepítette.
+Ha a [log Analytics-ügynök Linux-ügyfélre van telepítve](../vm/quick-collect-linux-computer.md), egy alapértelmezett syslog-konfigurációs fájlt telepít, amely meghatározza a begyűjtött üzenetek létesítményét és súlyosságát. A fájl módosításával módosíthatja a konfigurációt. A konfigurációs fájl különbözik attól függően, hogy az ügyfél melyik syslog démont telepítette.
 
 > [!NOTE]
 > Ha szerkeszti a syslog-konfigurációt, újra kell indítania a syslog démont a módosítások érvénybe léptetéséhez.
@@ -222,7 +222,7 @@ A syslog-rekordok rendelkeznek **syslog** típussal, és rendelkeznek a követke
 ## <a name="log-queries-with-syslog-records"></a>Lekérdezések naplózása syslog-rekordokkal
 Az alábbi táblázat a syslog-rekordokat lekérő lekérdezések különböző példáit mutatja be.
 
-| Lekérdezés | Description |
+| Lekérdezés | Leírás |
 |:--- |:--- |
 | Rendszernapló |Minden syslog. |
 | Syslog &#124;, ahol a SeverityLevel = = "hiba" |Minden syslog-rekord, amelynek súlyossága a hiba. |
@@ -230,7 +230,6 @@ Az alábbi táblázat a syslog-rekordokat lekérő lekérdezések különböző 
 | Syslog &#124; összefoglalja a AggregatedValue = count () szolgáltatást a létesítmény szerint |Syslog-rekordok száma a létesítmény alapján. |
 
 ## <a name="next-steps"></a>Következő lépések
-* További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../log-query/log-query-overview.md) .
-* [Egyéni mezők](./../platform/custom-fields.md) használatával elemezheti az adatokat a syslog-rekordokból az egyes mezőkbe.
-* [Linux-ügynökök konfigurálása](../learn/quick-collect-linux-computer.md) más típusú adatok gyűjtéséhez.
-
+* További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../logs/log-query-overview.md) .
+* [Egyéni mezők](../logs/custom-fields.md) használatával elemezheti az adatokat a syslog-rekordokból az egyes mezőkbe.
+* [Linux-ügynökök konfigurálása](../vm/quick-collect-linux-computer.md) más típusú adatok gyűjtéséhez.

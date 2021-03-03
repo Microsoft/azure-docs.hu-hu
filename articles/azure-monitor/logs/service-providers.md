@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: 5f69de583dea14be3c7ce3ab6779af549e95de75
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 09b5a6bd11db1a8faa29e7b3871156f9c28d1140
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100619475"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717383"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Szolgáltatók Azure Monitor naplófájljai
 
@@ -48,7 +48,7 @@ Az elosztott architektúra előnyei a következők:
 
 Az elosztott architektúra hátrányai a következők:
 
-* Az olyan eszközök, mint például a Azure Monitor munkafüzetek, központilag jeleníthető meg és elemezhető az ügyfél-bérlők között, ami lassabb élményt eredményezhet, különösen az adatok több mint 50 + munkaterületen való elemzésekor.
+* Az olyan eszközök, mint például a Azure Monitor munkafüzetek, központilag jeleníthető meg és elemezhető az [ügyfél-bérlők között](cross-workspace-query.md) , ami lassabb élményt eredményezhet, különösen az adatok több mint 50 + munkaterületen való elemzésekor.
 * Ha az ügyfeleket nem az Azure-beli delegált erőforrás-kezeléshez rendeli, a szolgáltatói rendszergazdákat az ügyfél címtárában kell kiépíteni, és a szolgáltató számára nehezebb a nagyszámú ügyfél-bérlő kezelése egyszerre.
 
 ### <a name="2-central---logs-are-stored-in-a-workspace-located-in-the-service-provider-tenant"></a>2. a központi naplók tárolása a szolgáltatói bérlőben található munkaterületen történik
@@ -85,7 +85,7 @@ A naplók központi helyen történő megvalósításának két lehetősége van
 
 * Munkaterületek létrehozásának automatizálása a [PowerShell](../logs/powershell-workspace-configuration.md) használatával
 
-* [Riasztások](../platform/alerts-overview.md) használata a meglévő rendszerekkel való integrációhoz
+* [Riasztások](../alerts/alerts-overview.md) használata a meglévő rendszerekkel való integrációhoz
 
 * Összegző jelentések előállítása [Power bi](../visualize/powerbi.md) használatával
 

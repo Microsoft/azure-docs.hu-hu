@@ -11,12 +11,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: f0bb354bce0c4696f60e2be5c6186760518c7431
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: ad8a9f7af9ddabe969d090f80378ba5ff891d7f1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549186"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691943"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Oktatóanyag: besorolási modell létrehozása automatizált ML-vel Azure Machine Learning
 
@@ -159,7 +159,7 @@ Az adatai betöltését és konfigurálását követően beállíthatja a kísé
 
     1. Válassza a **további konfigurációs beállítások megtekintése** lehetőséget, és töltse fel a mezőket az alábbiak szerint. Ezek a beállítások hatékonyabban szabályozzák a betanítási feladatot. Ellenkező esetben a rendszer az alapértelmezett értékeket a kísérletezés és az adatértékek alapján alkalmazza.
 
-        További &nbsp; konfigurációk|Description|&nbsp;Az &nbsp; oktatóanyag értéke
+        További &nbsp; konfigurációk|Leírás|&nbsp;Az &nbsp; oktatóanyag értéke
         ------|---------|---
         Elsődleges metrika| Az értékelési metrika, amelyet a Machine learning algoritmusa fog mérni.|AUC_weighted
         A legjobb modell ismertetése| A automatikusan mutatja az automatizált ML által létrehozott legjobb modell magyarázatát.| Engedélyezés
@@ -187,6 +187,30 @@ Az alábbi lépésekben a **részletek** és a **metrikák** lapokon navigálhat
 
 ![Iteráció részleteinek futtatása](./media/tutorial-first-experiment-automated-ml/run-detail.gif)
 
+## <a name="model-explanations"></a>Modell magyarázatai
+
+Amíg a modellek befejeződik, megtekintheti a modell magyarázatait is, és megtekintheti, hogy mely adatszolgáltatások (nyers vagy mérnöki) befolyásolhatják az adott modell előrejelzéseit. 
+
+Ezek a modell-magyarázatok igény szerint hozhatók létre, és a **magyarázatok (előzetes verzió)** lap részét képező modell magyarázatai irányítópulton vannak összefoglalva.
+
+A modell magyarázatának létrehozásához 
+ 
+1. Válassza az **1. Futtatás** elemet a **modellek** képernyőre való visszatéréshez. 
+1. Válassza a **modellek** fület.
+1. Ebben az oktatóanyagban válassza ki az első **MaxAbsScaler, a LightGBM** modellt.
+1. Válassza a felső **modell magyarázata** gombot. A jobb oldalon megjelenik a **magyarázat modell** panel. 
+1. Válassza ki a korábban létrehozott **automl-számítást** . Ez a számítási fürt egy alárendelt futtatást kezdeményez a modell magyarázatának létrehozásához.
+1. Válassza a **Létrehozás** alul lehetőséget. Egy zöld sikert jelző üzenet jelenik meg a képernyő felső részén. 
+    >[!NOTE]
+    > A magyarázó művelet végrehajtása körülbelül 2-5 percet vesz igénybe.
+1. Kattintson a **magyarázatok (előnézet)** gombra. Ez a lap a magyarázat futtatásának befejeződése után töltődik fel.
+1. A bal oldali ablaktáblán bontsa ki a panelt, és válassza ki azt a sort, amely a **szolgáltatások** területen a **RAW** elemet tartalmazza. 
+1. Kattintson a jobb oldalon az **összesítő funkció fontossága** fülre. Ez a diagram mutatja, hogy mely adatszolgáltatások befolyásolják a kiválasztott modell előrejelzéseit. 
+
+    Ebben a példában az *időtartam* úgy tűnik, hogy a leginkább befolyásolja a modell előrejelzéseit.
+    
+    ![Modell magyarázatának irányítópultja](media/tutorial-first-experiment-automated-ml/model-explanation-dashboard.png)
+
 ## <a name="deploy-the-best-model"></a>A legjobb modell üzembe helyezése
 
 Az automatizált gépi tanulási felület lehetővé teszi a legjobb modell üzembe helyezését webszolgáltatásként néhány lépésben. Az üzembe helyezés a modell integrációja, így előre jelezhető az új adatmennyiség, és azonosíthatók a lehetséges lehetőségek is. 
@@ -211,7 +235,7 @@ Ezt a modellt üzembe helyezjük, de javasoljuk, hogy az üzembe helyezés kör�
     Központi telepítés leírása| Az első automatizált gépi tanulási kísérlet üzembe helyezése
     Számítási típus | Azure számítási példány kiválasztása (ACI)
     Hitelesítés engedélyezése| Letiltás lehetőséget. 
-    Egyéni központi telepítések használata| Letiltás lehetőséget. Lehetővé teszi az alapértelmezett illesztőprogram-fájl (pontozási parancsfájl) és a környezeti fájl számára az automatikusan generált értéket. 
+    Egyéni központi telepítések használata| Letiltás lehetőséget. Lehetővé teszi az alapértelmezett illesztőprogram-fájl (pontozási parancsfájl) és a környezeti fájl automatikus generálását. 
     
     Ebben a példában a *speciális* menüben megadott alapértékeket használjuk. 
 

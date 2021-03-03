@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/10/2021
+ms.date: 02/20/2021
 ms.author: b-juche
-ms.openlocfilehash: 4d992bcc202dc8bdacdda6426371df1adb1ec3e6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2da2ae01e92ae2751f9f26e005579bad9911330a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379114"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738735"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Pillanatképek kezelése az Azure NetApp Filesszal
 
@@ -257,6 +257,9 @@ A hangerő visszaállítása lehetőség a kötetek Pillanatképek menüjében t
 ## <a name="delete-snapshots"></a>Pillanatképek törlése  
 
 Törölheti azokat a pillanatképeket, amelyeket már nem kell megtartania. 
+
+> [!IMPORTANT]
+> A pillanatkép törlési művelete nem vonható vissza. A törölt Pillanatképek nem állíthatók helyre. 
 
 1. Ugrás a kötetek **Pillanatképek** menüjére. Kattintson a jobb gombbal a törölni kívánt pillanatképre. Válassza a **Törlés** elemet.
 

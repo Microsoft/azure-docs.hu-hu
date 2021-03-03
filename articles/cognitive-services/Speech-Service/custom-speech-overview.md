@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
 ms.custom: contperf-fy21q2; references_regions
-ms.openlocfilehash: f2dca513b4413f1761ea1b21bf71f90bb27d3053
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 39370659e71a7d281914b360eea83eb0b68b25ba
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388651"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716567"
 ---
 # <a name="what-is-custom-speech"></a>Mi az a Custom Speech?
 
@@ -45,7 +45,9 @@ Ez a diagram a [Speech Studio Custom Speech területét](https://aka.ms/customsp
 Ahhoz, hogy a [Speech Studio](https://speech.microsoft.com/customspeech) segítségével egyéni modellt hozzon létre, rendelkeznie kell egy Azure-fiókkal és egy Speech Service-előfizetéssel. Ha nem rendelkezik fiókkal és előfizetéssel, [próbálja ki ingyenesen a Speech szolgáltatást](overview.md#try-the-speech-service-for-free).
 
 > [!NOTE]
-> Ha egy egyéni modellt szeretne **hangadatokkal** betanítani, válasszon a következő régiók közül, amelyekhez dedikált hardver áll rendelkezésre a betanításhoz. Ez csökkenti a modell betanításához szükséges időt.
+> Mindenképpen hozzon létre egy standard (S0) előfizetést. Az ingyenes (F0) előfizetések nem támogatottak.
+
+Ha egy egyéni modellt szeretne **hangadatokkal** betanítani, válasszon a következő régiók közül, amelyekhez dedikált hardver áll rendelkezésre a betanításhoz. Ez csökkenti a modell betanításához szükséges időt, és lehetővé teszi, hogy több hangfelvételt használjon a képzéshez. Ezekben a régiókban a beszédfelismerési szolgáltatás akár 20 órányi hang használatát is felhasználhatja a képzéshez. más régiókban a szolgáltatás legfeljebb 8 órát vesz igénybe.
 
 * Kelet-Ausztrália
 * Közép-Kanada
@@ -61,9 +63,6 @@ Ahhoz, hogy a [Speech Studio](https://speech.microsoft.com/customspeech) segíts
 * USA-beli államigazgatás – Virginia
 * Nyugat-Európa
 * USA 2. nyugati régiója
-
-> [!NOTE]
-> Mindenképpen hozzon létre egy standard (S0) előfizetést. Az ingyenes (F0) előfizetések nem támogatottak.
 
 Miután létrehozta az Azure-fiókot és a Speech Service-előfizetést, be kell jelentkeznie a [Speech studióba](https://speech.microsoft.com/customspeech) , és hozzá kell kötnie az előfizetését.
 

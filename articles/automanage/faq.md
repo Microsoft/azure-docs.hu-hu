@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: 214730733780ef3492048f697b1c5e180434a527
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0b4e116210cf68dc672122ad4ddc98f85067f3b8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101654017"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688008"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Gyakori kérdések az Azure-beli automanage virtuális gépekről
 
@@ -80,7 +80,7 @@ Az Azure automanage szolgáltatás díjmentesen elérhető nyilvános előzetes 
 
 **Alkalmazhatom az Azure Policy használatával történő autofelügyeletet?**
 
-Igen, van egy beépített szabályzatunk, amely automatikusan alkalmazza az automatikus felügyeletet a megadott hatókörön belüli összes virtuális gépre. A konfigurációs profilt (DevTest vagy éles környezet) is meg kell adnia az automatikus felügyelet fiókkal együtt. További információ az Azure Policy szolgáltatással való autofelügyelet engedélyezéséről [itt](virtual-machines-policy-enable.md).
+Igen, van egy beépített szabályzatunk, amely automatikusan alkalmazza az automatikus felügyeletet a megadott hatókörön belüli összes virtuális gépre. A környezeti konfigurációt (DevTest vagy éles környezet) is meg kell adnia az automatikus felügyelet fiókkal együtt. További információ az Azure Policy szolgáltatással való autofelügyelet engedélyezéséről [itt](virtual-machines-policy-enable.md).
 
 
 **Mi az az automanage Account?**
@@ -93,9 +93,9 @@ Az automatikus felügyelet fiók egy MSI (Managed Service Identity), amely bizto
 Ha a virtuális gép egy meglévő Log Analytics-munkaterülethez van csatolva, a következő megoldások alkalmazásával fogjuk felhasználni a munkaterületet: Change Tracking, leltár és Update Management. Az adott munkaterülethez csatlakozó összes virtuális gépnek engedélyezve lesznek ezek a megoldások.
 
 
-**Módosíthatom a virtuális gép konfigurációs profilját?**
+**Módosíthatom a virtuális gép környezetét?**
 
-Ekkor le kell tiltania a virtuális gép automatikus felügyeletét, majd újra engedélyeznie kell az automatikus felügyeletet a kívánt konfigurációs profillal és beállításokkal.
+Ekkor le kell tiltania a virtuális gép automatikusan felügyelt funkcióját, majd újra engedélyeznie kell az automatikusan felügyelt környezetet a kívánt környezettel és beállításokkal.
 
 
 **Ha a virtuális gép már konfigurálva van egy szolgáltatáshoz (például Update Management), az automatikusan kezeli az újrakonfigurálást?**

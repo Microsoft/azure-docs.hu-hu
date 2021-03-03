@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: ambapat
 ms.openlocfilehash: 1e7ea0dc929fdbb4ca306405e6ed8993ed2e4afe
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/03/2021
 ms.locfileid: "100386101"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>HSM-védelemmel ellátott kulcsok importálása a Key Vaultba (BYOK)
@@ -72,7 +72,7 @@ A következő táblázat a BYOK használatának előfeltételeit sorolja fel Azu
 
 ## <a name="supported-key-types"></a>Támogatott kulcstípusok
 
-|Kulcs neve|Kulcs típusa|Kulcs mérete/görbe|Forrás|Description|
+|Kulcs neve|Kulcs típusa|Kulcs mérete/görbe|Forrás|Leírás|
 |---|---|---|---|---|
 |Key Exchange-kulcs (KEK)|RSA| 2 048 bites<br />3 072 bites<br />4 096 bites|Azure Key Vault HSM|HSM-alapú RSA-kulcspár generálása Azure Key Vault|
 |Célként megadott kulcs|

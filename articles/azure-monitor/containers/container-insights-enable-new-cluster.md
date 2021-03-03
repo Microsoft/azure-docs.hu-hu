@@ -1,19 +1,19 @@
 ---
 title: Új Azure Kubernetes Service-(ak-) fürt figyelése | Microsoft Docs
-description: Megtudhatja, hogyan engedélyezheti a figyelést egy új Azure Kubernetes Service (ak) fürthöz a Azure Monitor for containers előfizetéssel.
+description: Ismerje meg, hogyan engedélyezheti a figyelést egy új Azure Kubernetes Service-(ak-) fürthöz a Container bepillantást biztosító előfizetéssel.
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.custom: devx-track-terraform, devx-track-azurecli
-ms.openlocfilehash: 19c4a88cee8776136593b041e94dd14c7c9c28d6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9b6c4f8a05b8e7a350ebd5afd677e8bb2ee6e9b4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100620055"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717570"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>Új Azure Kubernetes Service-(ak-) fürt figyelésének engedélyezése
 
-Ez a cikk azt ismerteti, hogyan állítható be Azure Monitor for containers az [Azure Kubernetes Service](../../aks/index.yml) -ben üzemeltetett felügyelt Kubernetes-fürt figyelésére, amelyet az előfizetésében üzembe helyezésre készül.
+Ez a cikk azt ismerteti, hogyan állítható be a tárolók elemzése az [Azure Kubernetes Service](../../aks/index.yml) -ben üzemeltetett felügyelt Kubernetes-fürt figyelésére, amely az előfizetésében való üzembe helyezésre készül.
 
 A támogatott módszerek egyikének használatával engedélyezheti az AK-fürtök figyelését:
 
@@ -34,14 +34,14 @@ Ha [új AK-fürtöt helyez üzembe a Terraform használatával](/azure/developer
 >[!NOTE]
 >Ha a Terraform használata mellett dönt, akkor a Terraform Azure RM Provider 1.17.0 vagy újabb verzióját kell futtatnia.
 
-Ha Azure Monitor szeretne hozzáadni a tárolóhoz a munkaterülethez, tekintse meg a [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) és a profil befejezéséhez a [**addon_profile**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) , majd a **oms_agent** megadása című témakört. 
+Ha tároló-bepillantást szeretne adni a munkaterületre, tekintse meg a [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) , és fejezze be a profilt a [**addon_profile**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) , és adja meg a **oms_agent**. 
 
 Miután engedélyezte a figyelést, és az összes konfigurációs feladat sikeresen befejeződött, két módon figyelheti a fürt teljesítményét:
 
 * Közvetlenül az AK-fürtben válassza az **állapot** lehetőséget a bal oldali ablaktáblán.
 * A kiválasztott fürt AK-fürt lapjának **figyelés tároló-bepillantások** csempéjét választva. Azure Monitor a bal oldali ablaktáblán válassza az **állapot** lehetőséget. 
 
-  ![A tárolók Azure Monitor kiválasztásának lehetőségei az AK-ban](./media/container-insights-onboard/kubernetes-select-monitoring-01.png)
+  ![Lehetőségek a Container-bepillantások kiválasztásához az AK-ban](./media/container-insights-onboard/kubernetes-select-monitoring-01.png)
 
 A figyelés engedélyezése után körülbelül 15 percet is igénybe vehet, mielőtt megtekintheti a fürthöz tartozó állapot mérőszámait. 
 
@@ -117,5 +117,5 @@ Néhány perc elteltével a parancs befejeződik, és a megoldáshoz tartozó JS
 
 * Ha problémákat tapasztal a megoldás bevezetésére tett kísérlet során, tekintse át a [hibaelhárítási útmutatót](container-insights-troubleshoot.md) .
 
-* Megtudhatja, [hogyan használhatja](container-insights-analyze.md) a Azure monitor a tárolók számára, hogy az AK-fürtök és a rajtuk futó munkaterhelések állapotát és erőforrás-kihasználtságát összegyűjtse.
+* A figyelés lehetővé teszi, hogy az AK-fürt és a rajtuk futó munkaterhelések állapota és Erőforrás-kihasználtsága összegyűjtse a tároló-információk [használatát](container-insights-analyze.md) .
 

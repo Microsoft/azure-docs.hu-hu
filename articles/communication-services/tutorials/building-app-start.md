@@ -8,14 +8,16 @@ ms.author: nmurav
 ms.date: 01/03/2012
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d682524ae3ff5b82233a69959a309a7495e30bed
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: cd535227b421f4fb56dac3afb37033e3d77f75f7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101658063"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691535"
 ---
 # <a name="tutorial-prepare-a-web-app-for-azure-communication-services-nodejs"></a>Oktatóanyag: webalkalmazás előkészítése az Azure kommunikációs szolgáltatásokhoz (Node.js)
+
+[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Az Azure kommunikációs szolgáltatások segítségével valós idejű kommunikációt adhat hozzá alkalmazásaihoz. Ebből az oktatóanyagból megtudhatja, hogyan állíthat be egy olyan webalkalmazást, amely támogatja az Azure kommunikációs szolgáltatásokat. Ez egy bevezető oktatóanyag, amely új fejlesztők számára készült, akik a valós idejű kommunikációt szeretnék kezdeni.
 
@@ -55,7 +57,7 @@ A helyi fejlesztési környezet a következőképpen lesz konfigurálva:
 
 Az ügyféloldali alkalmazáshoz szükséges különböző függőségek letöltéséhez és telepítéséhez Node.js fogjuk használni. Az Azure-ban üzemeltetett statikus fájlok létrehozásához ezt fogjuk használni, így nem kell aggódnia a kiszolgálón történő konfigurálásával kapcsolatban.
 
-A Windows-fejlesztők [ezt a NodeJS-oktatóanyagot](/windows/nodejs/setup-on-windows) követve konfigurálhatják a csomópontot, a NVM és a NPM.
+A Windows-fejlesztők [ezt a NodeJS-oktatóanyagot](/windows/nodejs/setup-on-windows) követve konfigurálhatják a csomópontot, a NVM és a NPM. 
 
 Ezt az oktatóanyagot az LTS 12.20.0 verziójának használatával teszteltük. A NVM telepítése után a következő PowerShell-paranccsal telepítheti a használni kívánt verziót:
 
@@ -159,7 +161,7 @@ module.exports ={
     output: {
         filename:'app.js',
         path: path.resolve(__dirname, 'dist'),
-    }
+    }     
 }
 ```
 
@@ -216,7 +218,7 @@ A fájlnak most így kell kinéznie:
 }
 ```
 
-Hozzáadta a NPM-ből használható parancsot.
+Hozzáadta a NPM-ből használható parancsot. 
 
 :::image type="content" source="./media/step-one-pic-12.png" alt-text="package.jsmódosítása":::
 
@@ -277,13 +279,13 @@ npm run build:dev
 A konzol megjeleníti, hogy a kiszolgáló hol fut. Alapértelmezés szerint ez a érték `http://localhost:8080` . A Build: dev parancs a korábban hozzáadott parancs `package.json` .
 
  :::image type="content" source="./media/step-one-pic-16.png" alt-text="Fejlesztői kiszolgáló indítása":::
-
+ 
  Navigáljon a böngésző címsorába, és az előző lépésekben konfigurált lapot és riasztást kell látnia.
-
+ 
   :::image type="content" source="./media/step-one-pic-17.png" alt-text="HTML-lap":::
-
-
-Amíg a kiszolgáló fut, módosíthatja a kódot, és a kiszolgáló és a HTML-oldal automatikusan újratöltődik.
+  
+ 
+Amíg a kiszolgáló fut, módosíthatja a kódot, és a kiszolgáló és a HTML-oldal automatikusan újratöltődik. 
 
 Ezután nyissa meg a `app.js` fájlt a Visual Studio Code-ban, és törölje a következőt: `alert('Hello world alert!');` . Mentse a fájlt, és ellenőrizze, hogy a riasztás eltűnik-e a böngészőből.
 
@@ -321,11 +323,11 @@ const { merge } = require('webpack-merge');
  ```
 
 Vegye figyelembe, hogy ez a konfiguráció a webpack.common.js (ahol a bemeneti fájlt és az eredmények tárolásának helyét) egyesíti a rendszer, és a módot "éles" értékre állítja be.
-
+ 
 A alkalmazásban `package.json` adja hozzá a következő kódot:
 
 ```JavaScript
-"build:prod": "webpack --config webpack.prod.js"
+"build:prod": "webpack --config webpack.prod.js" 
 ```
 
 A fájlnak a következőhöz kell hasonlítania:
@@ -339,14 +341,14 @@ A fájlnak a következőhöz kell hasonlítania:
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:dev": "webpack-dev-server --config webpack.dev.js",
-    "build:prod": "webpack --config webpack.prod.js"
+    "build:prod": "webpack --config webpack.prod.js" 
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@azure/communication-calling": "^1.0.0-beta.6",
-    "@azure/communication-common": "^1.0.0"
+    "@azure/communication-calling": "^1.0.0-beta.3",
+    "@azure/communication-common": "^1.0.0-beta.3"
   },
   "devDependencies": {
     "webpack": "^4.42.0",
@@ -366,13 +368,13 @@ A terminál futtatásakor:
 npm run build:prod
 ```
 
-A parancs létrehoz egy `dist` mappát és egy éles környezetben felkészített `app.js` statikus fájlt.
+A parancs létrehoz egy `dist` mappát és egy éles környezetben felkészített `app.js` statikus fájlt. 
 
  :::image type="content" source="./media/step-one-pic-21.png" alt-text="Éles környezet létrehozása":::
-
-
+ 
+ 
 ### <a name="deploy-your-app-to-azure-storage"></a>Az alkalmazás üzembe helyezése az Azure Storage-ban
-
+ 
 Másolja `index.html` `app.css` a mappát a `dist` mappába.
 
 A `dist` mappában hozzon létre egy új fájlt, és nevezze el `404.html` . Másolja a következő korrektúrát a fájlba:
@@ -397,45 +399,45 @@ Mentse a fájlt (CTRL + S).
 Kattintson a jobb gombbal, és válassza a üzembe helyezés statikus webhelyre az Azure Storage használatával lehetőséget.
 
 :::image type="content" source="./media/step-one-pic-22.png" alt-text="Az Azure üzembe helyezésének megkezdése":::
-
+ 
 A `Select subscription` mezőben válassza az "Bejelentkezés az Azure-ba (vagy az ingyenes Azure-fiók létrehozása" lehetőséget, ha még nem hozott létre előfizetést)
-
+ 
 :::image type="content" source="./media/step-one-pic-23.png" alt-text="Bejelentkezés az Azure-ba":::
-
+ 
 Válassza a `Create new Storage Account`  >  `Advanced` következőket:
 
  :::image type="content" source="./media/step-one-pic-24.png" alt-text="A Storage-fiók csoportjának létrehozása":::
-
+ 
  Adja meg a tárolási csoport nevét:
-
+ 
  :::image type="content" source="./media/step-one-pic-25.png" alt-text="Név hozzáadása a fiókhoz":::
-
+ 
 Szükség esetén hozzon létre egy új erőforráscsoportot:
-
+ 
   :::image type="content" source="./media/step-one-pic-26.png" alt-text="Új csoport létrehozása":::
-
+  
   Az "igen" válasz szeretné engedélyezni a statikus webhely üzemeltetését? "
-
+  
   :::image type="content" source="./media/step-one-pic-27.png" alt-text="A statikus webhely üzemeltetését engedélyező lehetőség kiválasztása":::
-
+  
 Fogadja el az alapértelmezett fájlnevet a "adja meg az index dokumentum nevét" kifejezést a fájl létrehozásakor `index.html` .
 
-Írja be a következőt `404.html` : "adja meg a 404-es hiba-dokumentum elérési útját".
-
-Válassza ki az alkalmazás helyét. A kiválasztott hely határozza meg, hogy a rendszer melyik adathordozó-processzort fogja használni a következő hívási alkalmazásban a csoportos hívásokban.
+Írja be a következőt `404.html` : "adja meg a 404-es hiba-dokumentum elérési útját".  
+  
+Válassza ki az alkalmazás helyét. A kiválasztott hely határozza meg, hogy a rendszer melyik adathordozó-processzort fogja használni a következő hívási alkalmazásban a csoportos hívásokban. 
 
 Az Azure kommunikációs szolgáltatás az alkalmazás helye alapján kiválasztja a média processzorát.
 
 :::image type="content" source="./media/step-one-pic-28.png" alt-text="Hely kiválasztása":::
-
-Várjon, amíg az erőforrás és a webhely létre nem jön.
-
+  
+Várjon, amíg az erőforrás és a webhely létre nem jön. 
+ 
 Kattintson a Tallózás a webhelyen lehetőségre:
 
 :::image type="content" source="./media/step-one-pic-29.png" alt-text="Az üzembe helyezés befejeződött":::
-
+ 
 A böngésző fejlesztői eszközeiből ellenőrizheti a forrást, és megtekintheti az éles környezetben előkészített fájlt.
-
+ 
 :::image type="content" source="./media/step-one-pic-30.png" alt-text="Webhely":::
 
 Nyissa meg a [Azure Portal](https://portal.azure.com/#home), válassza ki az erőforráscsoportot, válassza ki a létrehozott alkalmazást, és keresse meg a következőt: `Settings`  >  `Static website` . Láthatja, hogy a statikus webhelyek engedélyezve vannak, és jegyezze fel az elsődleges végpontot, az indexelési dokumentumot és a hiba elérési útját tartalmazó dokumentumot.
@@ -446,7 +448,7 @@ A "Blob service" területen válassza a "tárolók" lehetőséget, és két tár
 
 :::image type="content" source="./media/step-one-pic-32.png" alt-text="Tároló konfigurációja":::
 
-A `$web` Visual Studióban létrehozott és az Azure-ban üzembe helyezett fájlokat megtekintheti.
+A `$web` Visual Studióban létrehozott és az Azure-ban üzembe helyezett fájlokat megtekintheti. 
 
 :::image type="content" source="./media/step-one-pic-33.png" alt-text="Üzembe helyezés":::
 

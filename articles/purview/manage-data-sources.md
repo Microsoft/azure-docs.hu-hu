@@ -7,27 +7,16 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 8714c3c3794186d6c21a0513bd7700764c000b6d
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 90a873b7de6ccc1ba21a05bf4c0e288ed668cac0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694790"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694461"
 ---
 # <a name="manage-data-sources-in-azure-purview-preview"></a>Adatforrások kezelése az Azure hatáskörébe (előzetes verzió)
 
-Ebből a cikkből megtudhatja, hogyan regisztrálhat új adatforrásokat, hogyan kezelheti az adatforrások gyűjteményeit, és hogyan tekintheti meg a forrásokat az Azure hatáskörébe (előzetes verzió). Az Azure-beli hatáskörébe a következő adatforrások tartoznak:
-
-* Helyszíni SQL Server
-* 1. generációs Azure Data Lake Storage 
-* 2. generációs Azure Data Lake Storage
-* Azure Blob Storage
-* Azure Data Explorer
-* Azure SQL DB
-* Azure SQL DB felügyelt példány
-* Azure Synapse Analytics (korábban SQL DW)
-* Azure Cosmos DB
-* Power BI
+Ebből a cikkből megtudhatja, hogyan regisztrálhat új adatforrásokat, hogyan kezelheti az adatforrások gyűjteményeit, és hogyan tekintheti meg a forrásokat az Azure hatáskörébe (előzetes verzió)
 
 ## <a name="register-a-new-source"></a>Új forrás regisztrálása
 
@@ -75,7 +64,7 @@ Gyűjtemények hierarchiájának létrehozásához rendeljen magasabb szintű gy
 
 A hierarchiában lévő források eltávolításához válassza a *nincs lehetőséget* a szülő számára. A nem fölérendelt források a Térkép nézet pontozott mezőjébe vannak csoportosítva, és a nyilak nem kapcsolódnak a szülőhöz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan regisztrálhat és vizsgálhat különféle adatforrásokat:
 

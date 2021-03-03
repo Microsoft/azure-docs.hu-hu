@@ -1,22 +1,22 @@
 ---
-title: Metrikai riasztások Azure Monitorről tárolók számára
-description: Ez a cikk a Azure Monitor for containers nyilvános előzetes verziójában elérhető javasolt metrikai riasztásokat tekinti át.
+title: Metrikus riasztások a Container bepillantást követően
+description: Ez a cikk a nyilvános előzetes verzióban elérhető, a Container betekintő szolgáltatásokból származó ajánlott metrikai riasztásokat tekinti át.
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: 59c8d7b58809c981130d2ce92406fb5b1ce146ff
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f19959c76d31422a0bdf898a6fa41e6b168e2e61
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100618798"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728892"
 ---
-# <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Ajánlott metrikai riasztások (előzetes verzió) Azure Monitorről tárolók számára
+# <a name="recommended-metric-alerts-preview-from-container-insights"></a>Ajánlott metrikai riasztások (előzetes verzió) a Container-adatokból
 
-Ha riasztást szeretne kapni a Rendszererőforrásokkal kapcsolatos problémákról, amikor a maximális keresletet tapasztalják, és a közeli kapacitást futtatják, a Azure Monitor a tárolók esetében a Azure Monitor naplókban tárolt teljesítményadatok alapján kell létrehoznia a naplózási riasztást. A tárolók Azure Monitor mostantól nyilvános előzetes verzióban elérhető, előre konfigurált metrikus riasztási szabályokat is tartalmaz az AK-hoz és az Azure arc-kompatibilis Kubernetes-fürthöz.
+Ha riasztást szeretne kapni a Rendszererőforrásokkal kapcsolatos problémákról, amikor a maximális keresletet tapasztalják, és a közeli kapacitást futtatják, a tárolók bepillantást nyerhetnek a Azure Monitor naplókban tárolt teljesítményadatok alapján. A Container-adatok mostantól nyilvános előzetes verzióban elérhető, előre konfigurált metrikus riasztási szabályokat tartalmaznak az AK-hoz és az Azure arc-kompatibilis Kubernetes-fürthöz.
 
 Ez a cikk a tapasztalatok áttekintését és útmutatást nyújt a riasztási szabályok konfigurálásához és kezeléséhez.
 
-Ha nem ismeri a Azure Monitor riasztásokat, a Kezdés előtt tekintse meg [a Microsoft Azure riasztások áttekintése](../platform/alerts-overview.md) című témakört. A metrikus riasztásokkal kapcsolatos további tudnivalókért tekintse meg [a metrikus riasztások Azure monitorban](../alerts/alerts-metric-overview.md)című témakört.
+Ha nem ismeri a Azure Monitor riasztásokat, a Kezdés előtt tekintse meg [a Microsoft Azure riasztások áttekintése](../alerts/alerts-overview.md) című témakört. A metrikus riasztásokkal kapcsolatos további tudnivalókért tekintse meg [a metrikus riasztások Azure monitorban](../alerts/alerts-metric-overview.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,13 +31,13 @@ Mielőtt elkezdené, erősítse meg a következőket:
     * Futtassa a parancsot: `kubectl describe <omsagent-pod-name> --namespace=kube-system` . A visszaadott állapotban jegyezze fel a kimenet omsagent található **rendszerkép** *a következőben* :. 
     * A **csomópontok** lapon válassza ki a fürtcsomópont csomópontot, majd a jobb oldalon a **Tulajdonságok** ablaktáblán jegyezze fel az értéket az **ügynök képcímkéje** területen.
 
-    Az AK-hoz megadott értéknek **ciprod05262020** vagy újabb verziójúnak kell lennie. Az Azure arc-kompatibilis Kubernetes-fürtön látható értéknek **ciprod09252020** vagy újabb verziójúnak kell lennie. Ha a fürt rendelkezik egy régebbi verzióval, tekintse meg a [Hogyan lehet frissíteni a Azure monitor for containers Agent](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster) című témakört a legújabb verzió beszerzésének lépéseihez.
+    Az AK-hoz megadott értéknek **ciprod05262020** vagy újabb verziójúnak kell lennie. Az Azure arc-kompatibilis Kubernetes-fürtön látható értéknek **ciprod09252020** vagy újabb verziójúnak kell lennie. Ha a fürt rendelkezik egy régebbi verzióval, tekintse meg a tároló-beolvasás [ügynök frissítése](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster) a legújabb verzió beszerzéséhez szükséges lépéseket.
 
     Az ügynök kiadásával kapcsolatos további információkért lásd az [ügynök kiadási előzményei](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)című témakört. A metrikák gyűjtésének ellenőrzéséhez használhatja a Azure Monitor metrikák Explorert, és ellenőrizheti, hogy a **metrikai névtér** tartalmazza-e az **észlelt** adatokat. Ha igen, megkezdheti a riasztások beállítását. Ha nem jelenik meg a begyűjtött metrikák, a fürtszolgáltatási tag vagy az MSI nem rendelkezik a szükséges engedélyekkel. Annak ellenőrzéséhez, hogy az SPN vagy az MSI a **figyelési metrikák közzétevői** szerepkör tagja-e, kövesse a [fürt frissítése az Azure CLI](container-insights-update-metrics.md#upgrade-per-cluster-using-azure-cli) -vel című szakaszban ismertetett lépéseket a szerepkör-hozzárendelés megerősítéséhez és beállításához.
 
 ## <a name="alert-rules-overview"></a>Riasztási szabályok áttekintése
 
-A Azure Monitor for containers szolgáltatással kapcsolatos riasztásokhoz a következő metrikai riasztások tartoznak az AK-hoz és az Azure arc-kompatibilis Kubernetes-fürtökhöz:
+Ha riasztást szeretne kapni a fontos kérdésekben, a Container-információk a következő metrikai riasztásokat tartalmazzák az AK-hoz és az Azure arc-kompatibilis Kubernetes-fürtökhöz:
 
 |Név| Leírás |Alapértelmezett küszöbérték |
 |----|-------------|------------------|
@@ -108,15 +108,15 @@ Az alábbi lépéseket követve engedélyezheti a metrika riasztásait a Azure P
 
 ### <a name="from-the-azure-portal"></a>Az Azure Portalról
 
-Ez a szakasz bemutatja, hogyan engedélyezhető a tárolók metrikai riasztása (előzetes verzió) Azure Monitor a Azure Portal.
+Ez a szakasz bemutatja, hogyan engedélyezheti a Container bepillantást a riasztást (előzetes verzió) a Azure Portalból.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. A tárolók metrikáinak riasztása (előzetes verzió) szolgáltatáshoz Azure Monitor való hozzáféréshez közvetlenül egy AK-fürtből lehet hozzáférni, ha a Azure Portal bal oldali ablaktáblájában **kijelöli** az eredményeket.
+2. A Container bepillantások metrikáinak riasztás (előzetes verzió) szolgáltatáshoz való hozzáférés közvetlenül egy AK-fürtből érhető el **, ha a** Azure Portal bal oldali panelén található adatok kiválasztásával.
 
 3. A parancssorban válassza a **javasolt riasztások** lehetőséget.
 
-    ![A Azure Monitor ajánlott riasztások lehetőség a tárolók esetében](./media/container-insights-metric-alerts/command-bar-recommended-alerts.png)
+    ![Ajánlott riasztások lehetőség a tároló-felismerésekben](./media/container-insights-metric-alerts/command-bar-recommended-alerts.png)
 
 4. Az **ajánlott riasztások** tulajdonságlapja automatikusan megjelenik az oldal jobb oldalán. Alapértelmezés szerint a listában szereplő összes riasztási szabály le van tiltva. Az **Engedélyezés** lehetőség kiválasztását követően létrejön a riasztási szabály, és a szabály neve frissül, hogy tartalmazza a riasztási erőforrásra mutató hivatkozást.
 
@@ -198,7 +198,7 @@ Az alapszintű lépések a következők:
 
 ## <a name="edit-alert-rules"></a>Riasztási szabályok szerkesztése
 
-Megtekintheti és kezelheti Azure Monitor a tárolók riasztási szabályaihoz, a küszöbértékének szerkesztéséhez vagy egy [műveleti csoport](../alerts/action-groups.md) konfigurálásához az AK-fürthöz. Ha ezeket a műveleteket a Azure Portal és az Azure parancssori felületéről is végrehajtja, akkor közvetlenül az AK-fürtből is elvégezhető a tárolók Azure Monitor.
+Megtekintheti és kezelheti a tároló-elemzések riasztási szabályait, módosíthatja annak küszöbértékét, vagy beállíthat egy [műveleti csoportot](../alerts/action-groups.md) az AK-fürthöz. Ha ezeket a műveleteket a Azure Portal és az Azure CLI segítségével hajtja végre, akkor közvetlenül az AK-fürtből is elvégezhető a Container bepillantást.
 
 1. A parancssorban válassza a **javasolt riasztások** lehetőséget.
 

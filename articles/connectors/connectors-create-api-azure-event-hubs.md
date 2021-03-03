@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
-ms.openlocfilehash: 198a5da63ed90937c53f7f12f3559f15100e8f19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65da8e07c01561577fe7eff449bfc10348c7f277
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88031433"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716601"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Események monitorozása, fogadása és küldése az Azure Event Hubs és az Azure Logic Apps használatával
 
@@ -37,20 +37,20 @@ Győződjön meg arról, hogy a logikai alkalmazás hozzáfér az Event hub-hoz,
 
 1. Nyissa meg a Event Hubs *névteret*, nem egy adott Event hub-t. 
 
-1. A névtér menü **Beállítások**területén válassza a **megosztott elérési házirendek**elemet. A **jogcímek**területen győződjön meg arról, hogy rendelkezik az adott névtérhez **tartozó jogosultságokkal** .
+1. A névtér menü **Beállítások** területén válassza a **megosztott elérési házirendek** elemet. A **jogcímek** területen győződjön meg arról, hogy rendelkezik az adott névtérhez **tartozó jogosultságokkal** .
 
    ![Az Event hub-névtér engedélyeinek kezelése](./media/connectors-create-api-azure-event-hubs/event-hubs-namespace.png)
 
 1. Ha később manuálisan szeretné megadni a kapcsolódási adatokat, szerezze be a Event Hubs névtérhez tartozó kapcsolódási karakterláncot.
 
-   1. A **házirend**területen válassza a **RootManageSharedAccessKey**lehetőséget.
+   1. A **házirend** területen válassza a **RootManageSharedAccessKey** lehetőséget.
 
    1. Keresse meg az elsődleges kulcshoz tartozó kapcsolatok sztringjét. Válassza a másolás gombot, és mentse a kapcsolatok karakterláncát későbbi használatra.
 
       ![Event Hubs névtérbeli kapcsolatok karakterláncának másolása](media/connectors-create-api-azure-event-hubs/find-event-hub-namespace-connection-string.png)
 
       > [!TIP]
-      > Annak ellenőrzéséhez, hogy a kapcsolati karakterlánc társítva van-e a Event Hubs névteréhez vagy egy adott Event hub-hoz, győződjön meg arról, hogy a kapcsolati karakterlánc nem rendelkezik a `EntityPath`   paraméterrel. Ha ezt a paramétert találja, a kapcsolati karakterlánc egy adott Event hub "Entity" értékre vonatkozik, és nem a logikai alkalmazáshoz használandó helyes sztring.
+      > Annak ellenőrzéséhez, hogy a kapcsolati karakterlánc társítva van-e a Event Hubs névteréhez vagy egy adott Event hub-hoz, győződjön meg arról, hogy a kapcsolati karakterlánc nem rendelkezik a `EntityPath` paraméterrel. Ha ezt a paramétert találja, a kapcsolati karakterlánc egy adott Event hub "Entity" értékre vonatkozik, és nem a logikai alkalmazáshoz használandó helyes sztring.
 
 1. Most folytassa a [Event Hubs-trigger hozzáadásával](#add-trigger) vagy [egy Event Hubs művelet hozzáadásával](#add-action).
 
@@ -98,7 +98,7 @@ Ebből a példából megtudhatja, hogyan indíthat el egy logikai alkalmazás-mu
    | **Kezdési idő** | Nem | Adja meg a kezdő időpontot a következő formátumban: <p>ÉÉÉÉ-hh-NNTóó: PP: mm, ha időzónát választ<p>-vagy-<p>ÉÉÉÉ-hh-NNTóó: PP: ssZ, ha nem jelöl ki időzónát<p>További információ: [ismétlődő feladatok és munkafolyamatok létrehozása és futtatása Azure Logic Appssal](../connectors/connectors-native-recurrence.md). |
    ||||
 
-1. Ha elkészült, a tervező eszköztárán válassza a **Mentés**lehetőséget.
+1. Ha elkészült, a tervező eszköztárán válassza a **Mentés** lehetőséget.
 
 1. Most folytassa a logikai alkalmazáshoz egy vagy több művelet hozzáadását azokkal a feladatokkal, amelyeket el szeretne végezni az trigger eredményeivel. 
 
@@ -112,10 +112,10 @@ Azure Logic Apps a [művelet](../logic-apps/logic-apps-overview.md#logic-app-con
 
 1. A Azure Portal vagy a Visual Studióban nyissa meg a logikai alkalmazást Logic Apps Designerben. Ez a példa a Azure Portal használja.
 
-1. Az trigger vagy a művelet alatt válassza az **új lépés**lehetőséget.
+1. Az trigger vagy a művelet alatt válassza az **új lépés** lehetőséget.
 
    A meglévő lépések közötti művelet hozzáadásához vigye az egeret a csatlakozás nyíl fölé. 
-   Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
+   Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása** lehetőséget.
 
 1. A keresőmezőbe írja be szűrőként az "Event hubok" kifejezést.
 A műveletek listából válassza a következő műveletet: **esemény küldése – Event Hubs**
@@ -140,7 +140,7 @@ A műveletek listából válassza a következő műveletet: **esemény küldése
 
    ![Példa küldése eseményre](./media/connectors-create-api-azure-event-hubs/event-hubs-send-event-action-example.png)
 
-1. Ha elkészült, a tervező eszköztárán válassza a **Mentés**lehetőséget.
+1. Ha elkészült, a tervező eszköztárán válassza a **Mentés** lehetőséget.
 
 <a name="create-connection"></a>
 
@@ -156,14 +156,14 @@ A műveletek listából válassza a következő műveletet: **esemény küldése
    | **Event Hubs névtér** | Igen | <*Event-hubok – névtér*> | Válassza ki a használni kívánt Event Hubs névteret. |
    |||||  
 
-   Példa:
+   Például:
 
    ![Event hub-kapcsolat létrehozása](./media/connectors-create-api-azure-event-hubs/create-event-hubs-connection-1.png)
 
-   A kapcsolódási karakterlánc manuális megadásához válassza a **kapcsolódási adatok manuális megadása**lehetőséget. 
+   A kapcsolódási karakterlánc manuális megadásához válassza a **kapcsolódási adatok manuális megadása** lehetőséget. 
    Megtudhatja [, hogyan keresheti meg a kapcsolódási karakterláncot](#permissions-connection-string).
 
-2. Válassza ki a használni kívánt Event Hubs szabályzatot, ha még nincs kiválasztva. Válassza a **Létrehozás**lehetőséget.
+2. Válassza ki a használni kívánt Event Hubs szabályzatot, ha még nincs kiválasztva. Válassza a **Létrehozás** lehetőséget.
 
    ![Event hub-kapcsolat létrehozása, 2. rész](./media/connectors-create-api-azure-event-hubs/create-event-hubs-connection-2.png)
 

@@ -3,12 +3,12 @@ title: Sablonfüggvények
 description: Ismerteti a Azure Resource Manager-sablonban (ARM-sablonban) használandó függvényeket az értékek lekéréséhez, a karakterláncok és a numerikus karakterek használatához, valamint a telepítési információk lekéréséhez.
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: 2d124893cbe1694671231fd206f8e44cc20f6204
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: dbda5c635a5189158424363c341b269d331a5fdc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931707"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707319"
 ---
 # <a name="arm-template-functions"></a>ARM-sablon függvények
 
@@ -34,6 +34,10 @@ A legtöbb függvény ugyanúgy működik, amikor az erőforráscsoportot, az el
 <a id="take" aria-hidden="true"></a>
 <a id="union" aria-hidden="true"></a>
 
+## <a name="any-function"></a>Bármely függvény
+
+A [bármely függvény](template-functions-any.md) a bicep-ben érhető el az adattípussal kapcsolatos figyelmeztetések feloldásához.
+
 ## <a name="array-functions"></a>Tömb függvények
 
 A Resource Manager számos funkciót biztosít a tömbök használatához.
@@ -47,11 +51,11 @@ A Resource Manager számos funkciót biztosít a tömbök használatához.
 * [kereszteződés](template-functions-array.md#intersection)
 * [utolsó](template-functions-array.md#last)
 * [length](template-functions-array.md#length) (hossz)
-* [min](template-functions-array.md#min)
+* [p](template-functions-array.md#min)
 * [Max](template-functions-array.md#max)
 * [tartomány](template-functions-array.md#range)
 * [kihagyása](template-functions-array.md#skip)
-* [take](template-functions-array.md#take)
+* [eltarthat](template-functions-array.md#take)
 * [Union](template-functions-array.md#union)
 
 <a id="coalesce" aria-hidden="true"></a>
@@ -125,12 +129,12 @@ A Resource Manager a következő funkciókat biztosítja a logikai feltételekke
 
 A Resource Manager a következő függvényeket biztosítja az egész számokkal való használathoz:
 
-* [hozzáadása](template-functions-numeric.md#add)
+* [add](template-functions-numeric.md#add)
 * [copyIndex](template-functions-numeric.md#copyindex)
 * [div](template-functions-numeric.md#div)
 * [float](template-functions-numeric.md#float)
 * [int](template-functions-numeric.md#int)
-* [min](template-functions-numeric.md#min)
+* [p](template-functions-numeric.md#min)
 * [Max](template-functions-numeric.md#max)
 * [mod](template-functions-numeric.md#mod)
 * [mul](template-functions-numeric.md#mul)
@@ -148,7 +152,7 @@ A Resource Manager számos funkciót biztosít az objektumok használatához.
 * [kereszteződés](template-functions-object.md#intersection)
 * [JSON](template-functions-object.md#json)
 * [length](template-functions-object.md#length) (hossz)
-* [NULL](template-functions-object.md#null)
+* [null](template-functions-object.md#null)
 * [Union](template-functions-object.md#union)
 
 <a id="extensionResourceId" aria-hidden="true"></a>
@@ -237,9 +241,9 @@ A Resource Manager a következő függvényeket biztosítja a karakterláncok ha
 * [kihagyása](template-functions-string.md#skip)
 * [felosztása](template-functions-string.md#split)
 * [startsWith](template-functions-string.md#startswith)
-* [karakterlánc](template-functions-string.md#string)
+* [sztring](template-functions-string.md#string)
 * [substring](template-functions-string.md#substring)
-* [take](template-functions-string.md#take)
+* [eltarthat](template-functions-string.md#take)
 * [toLower](template-functions-string.md#tolower)
 * [toUpper](template-functions-string.md#toupper)
 * [Trim](template-functions-string.md#trim)

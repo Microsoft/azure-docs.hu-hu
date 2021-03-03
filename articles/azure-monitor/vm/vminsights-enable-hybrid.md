@@ -1,28 +1,28 @@
 ---
 title: Hibrid környezetek Azure Monitorának engedélyezése
-description: Ez a cikk azt ismerteti, hogyan engedélyezhető a Azure Monitor for VMs egy vagy több virtuális gépet tartalmazó hibrid felhőalapú környezetben.
+description: Ez a cikk azt ismerteti, hogyan engedélyezheti a virtuális gépeket egy vagy több virtuális gépet tartalmazó hibrid felhőalapú környezethez.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: d56b1ed7b4923b054ad6864b713fc2a26d95f7e2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6518906f264077ac88a90513a237840f7f814247
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100619865"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731272"
 ---
-# <a name="enable-azure-monitor-for-vms-for-a-hybrid-virtual-machine"></a>Hibrid virtuális gépek Azure Monitor for VMsának engedélyezése
-Ez a cikk azt ismerteti, hogyan engedélyezhető a Azure Monitor for VMs az Azure-on kívüli virtuális gépekhez, beleértve a helyszíni és más felhőalapú környezeteket is.
+# <a name="enable-vm-insights-for-a-hybrid-virtual-machine"></a>Virtuálisgép-bepillantások engedélyezése hibrid virtuális gépekhez
+Ez a cikk bemutatja, hogyan engedélyezheti a VM-információkat az Azure-on kívüli virtuális gépekhez, beleértve a helyszíni és más felhőalapú környezeteket is.
 
 > [!IMPORTANT]
-> A hibrid virtuális gépek engedélyezésének ajánlott módja az [Azure-arc](../../azure-arc/servers/overview.md) engedélyezése a kiszolgálókhoz, hogy a virtuális gépek engedélyezve legyenek Azure monitor for VMS az Azure-beli virtuális gépekhez hasonló folyamatok használatával. Ez a cikk a hibrid virtuális gépek előkészítését ismerteti, ha úgy dönt, hogy nem használja az Azure-ívet.
+> A hibrid virtuális gépek engedélyezésének ajánlott módja az [Azure-arc](../../azure-arc/servers/overview.md) engedélyezése a kiszolgálókhoz, így a virtuális gépek az Azure-beli virtuális gépekhez hasonló folyamatok használatával engedélyezhetők a virtuálisgép-megállapításokhoz. Ez a cikk a hibrid virtuális gépek előkészítését ismerteti, ha úgy dönt, hogy nem használja az Azure-ívet.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Hozzon létre és konfiguráljon egy log Analytics munkaterületet](../insights/vminsights-configure-workspace.md).
-- A [támogatott operációs rendszerekkel](../insights/vminsights-enable-overview.md#supported-operating-systems) biztosíthatja, hogy a virtuális gép vagy a virtuálisgép-méretezési csoport operációs rendszere támogatott legyen. 
+- [Hozzon létre és konfiguráljon egy log Analytics munkaterületet](./vminsights-configure-workspace.md).
+- A [támogatott operációs rendszerekkel](./vminsights-enable-overview.md#supported-operating-systems) biztosíthatja, hogy a virtuális gép vagy a virtuálisgép-méretezési csoport operációs rendszere támogatott legyen. 
 
 
 ## <a name="overview"></a>Áttekintés
@@ -31,13 +31,13 @@ Az Azure-on kívüli virtuális gépekhez azonos Log Analytics ügynökre és f�
 A Log Analytics ügynök telepítésével kapcsolatos részletekért lásd: [Windows rendszerű számítógépek Összekapcsolása Azure monitor](../agents/agent-windows.md) vagy Linux rendszerű [számítógépek összekapcsolása Azure monitor](../agents/agent-linux.md) . A függőségi ügynök részletei ebben a cikkben találhatók. 
 
 ## <a name="firewall-requirements"></a>A tűzfalra vonatkozó követelmények
-A Log Analytics ügynökre vonatkozó tűzfalszabályok a [log Analytics ügynök áttekintése című témakörben](../agents/log-analytics-agent.md#network-requirements)találhatók. A Azure Monitor for VMs Map-függőségi ügynök nem küld magába adatokat, és nem igényel semmilyen módosítást a tűzfalakon vagy a portokon. A leképezési adatokat mindig a Log Analytics ügynök továbbítja a Azure Monitor szolgáltatáshoz közvetlenül vagy az [Operations Management Suite-átjárón](../../azure-monitor/agents/gateway.md) keresztül, ha az informatikai biztonsági szabályzatok nem engedélyezik a hálózaton lévő számítógépek számára az internethez való kapcsolódást.
+A Log Analytics ügynökre vonatkozó tűzfalszabályok a [log Analytics ügynök áttekintése című témakörben](../agents/log-analytics-agent.md#network-requirements)találhatók. A virtuálisgép-elemzések hozzárendelési ügynöke nem küld magához adatokat, és nem igényel semmilyen módosítást a tűzfalakon vagy a portokon. A leképezési adatokat mindig a Log Analytics ügynök továbbítja a Azure Monitor szolgáltatáshoz közvetlenül vagy az [Operations Management Suite-átjárón](../../azure-monitor/agents/gateway.md) keresztül, ha az informatikai biztonsági szabályzatok nem engedélyezik a hálózaton lévő számítógépek számára az internethez való kapcsolódást.
 
 
 ## <a name="dependency-agent"></a>Függőségi ügynök
 
 >[!NOTE]
->Az ebben a szakaszban ismertetett információk a [Service Map megoldásra](../insights/service-map.md)is érvényesek.  
+>Az ebben a szakaszban ismertetett információk a [Service Map megoldásra](./service-map.md)is érvényesek.  
 
 A függőségi ügynököt a következő helyekről töltheti le:
 
@@ -177,8 +177,8 @@ Ellenőrizze a C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log fáj
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy a figyelés engedélyezve van a virtuális gépek számára, ezek az információk a Azure Monitor for VMssal való elemzéshez érhetők el.
+Most, hogy a figyelés engedélyezve van a virtuális gépek számára, ezek az információk a VM-elemzések révén érhetők el.
 
-- A felderített alkalmazások függőségeinek megtekintéséhez lásd: [Azure monitor for VMS Térkép megtekintése](vminsights-maps.md).
+- A felderített alkalmazások függőségeinek megtekintéséhez lásd: virtuálisgép- [észlelési Térkép megtekintése](vminsights-maps.md).
 
 - Az Azure-beli [virtuális gépek teljesítményének megtekintése](vminsights-performance.md)a szűk keresztmetszetek és a virtuális gépek teljesítményének teljes kihasználtsága alapján:.

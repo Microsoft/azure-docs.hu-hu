@@ -7,12 +7,12 @@ ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: d0c132d1aa7a37dc8e7620352bb7b9a078d79a09
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: eebcfb98d4e155ca965b9e4c68a862afa08a46ca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571606"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727430"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Több-bérlős modell kiépítése 
 
@@ -415,18 +415,10 @@ Az erőforráscsoport törlése név szerint:
 
 4. A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. A megerősítéshez írja be újra az erőforráscsoport nevét, majd kattintson a **Törlés** elemre. A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- További információ: [IoT hub eszköz](concepts-device-reprovision.md) újraépítése 
-- További részletekért lásd: [az előzőleg automatikusan kiépített eszközök](how-to-unprovision-devices.md) kiépítése. 
+> [!div class="nextstepaction"]
+> Az újratelepítéssel kapcsolatos további tudnivalókért tekintse meg az [eszközök újraépítése IoT hub](concepts-device-reprovision.md)
 
-
-
-
-
-
-
-
-
-
-
+> [!div class="nextstepaction"]
+> További információ a megszüntetésről: [a korábban automatikusan kiépített eszközök kiépítése](how-to-unprovision-devices.md) .

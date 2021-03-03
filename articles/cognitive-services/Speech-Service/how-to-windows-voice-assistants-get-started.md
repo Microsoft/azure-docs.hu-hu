@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: 77d756bc0c7bbdfa38bb1262638ef85b051fc234
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: b50b98095cdfe0e6ec19c89b57887ebc4a0f6317
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026488"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713048"
 ---
 # <a name="getting-started-with-voice-assistants-on-windows"></a>Első lépések a hangsegédek Windowson való használatáról
 
@@ -34,7 +34,7 @@ A Windowshoz készült hangsegédek fejlesztésének megkezdéséhez meg kell gy
 
 A Windows rendszerhez készült teljesen testre szabott hangügynökhöz szükséges egyes erőforrásokhoz a Microsoft erőforrásai szükségesek. A [UWP Hangsegéd mintája](windows-voice-assistants-faq.md#the-uwp-voice-assistant-sample) ezeknek az erőforrásoknak a mintáit tartalmazza a kezdeti fejlesztéshez és teszteléshez, ezért ez a szakasz nem szükséges a kezdeti fejlesztéshez.
 
-- **Kulcsszavas modell:** A hangaktiváláshoz egy. bin fájl formájában a Microsoft kulcsszavas modellje szükséges. A UWP hangsegéd mintájában megadott. bin fájl a "contoso" kulcsszóra van betanítva.
+- **Kulcsszavas modell:** A hangaktiváláshoz egy. bin fájl formájában a Microsoft kulcsszavas modellje szükséges. A UWP hangsegéd mintájában megadott. bin-fájl a *contoso* kulcsszóra van betanítva.
 - **Korlátozott hozzáférésű szolgáltatás tokenje:** Mivel a ConversationalAgent API-k hozzáférést biztosítanak a mikrofon hanghoz, a korlátozott hozzáférésű szolgáltatásokra vonatkozó korlátozások védik a védelmet. Korlátozott hozzáférésű szolgáltatás használatához be kell szereznie egy korlátozott hozzáférés-szolgáltatási tokent, amely az alkalmazás csomag-identitásához csatlakozik a Microsofttól.
 
 ## <a name="establish-a-dialog-service"></a>Párbeszédpanel-szolgáltatás létrehozása

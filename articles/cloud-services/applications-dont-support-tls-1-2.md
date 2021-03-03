@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 03/16/2020
 ms.author: tagore
-ms.openlocfilehash: 70bcf5bce1c8c07633baf070149a9bb80c331d9c
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: cf7746cc55e81593a1788608cced1253f295a5c4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742573"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738378"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>A TLS 1,2-et nem támogató alkalmazások hibaelhárítása
 
@@ -316,13 +316,13 @@ Adja hozzá a következő kódrészletet a meglévő szolgáltatási definíció
 Íme egy példa, amely a feldolgozói szerepkört és a webes szerepkört is megjeleníti. 
 
 ```
-<?xmlversion="1.0"encoding="utf-8"?> 
-<ServiceDefinitionname="CloudServiceName"xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition"schemaVersion="2015-04.2.6"> 
-    <WebRolename="WebRole1"vmsize="Standard_D1_v2"> 
+<?xmlversion="1.0" encoding="utf-8"?> 
+<ServiceDefinitionname="CloudServiceName" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2015-04.2.6"> 
+    <WebRolename="WebRole1" vmsize="Standard_D1_v2"> 
         <Sites> 
             <Sitename="Web"> 
                 <Bindings> 
-                    <Bindingname="Endpoint1"endpointName="Endpoint1"/> 
+                    <Bindingname="Endpoint1" endpointName="Endpoint1"/> 
                 </Bindings> 
             </Site> 
         </Sites> 
@@ -331,10 +331,10 @@ Adja hozzá a következő kódrészletet a meglévő szolgáltatási definíció
             </Task> 
         </Startup> 
         <Endpoints> 
-            <InputEndpointname="Endpoint1"protocol="http"port="80"/> 
+            <InputEndpointname="Endpoint1" protocol="http" port="80"/> 
         </Endpoints> 
     </WebRole> 
-<WorkerRolename="WorkerRole1"vmsize="Standard_D1_v2"> 
+<WorkerRolename="WorkerRole1" vmsize="Standard_D1_v2"> 
     <Startup> 
         <Task executionContext="elevated" taskType="simple" commandLine="RunTLSSettings.cmd"> 
         </Task> 

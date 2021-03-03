@@ -158,6 +158,8 @@
           href: ingress-controller-install-existing.md
         - name: AKS bejövő forgalma Helmen keresztül (zöldmezős)
           href: ingress-controller-install-new.md
+        - name: Migrálás a Helm üzembe helyezése az AK-bővítménybe
+          href: ingress-controller-migration.md
         - name: Az AKS bejövőforgalom-vezérlő bővítmény letiltása és újbóli engedélyezése
           href: ingress-controller-disable-addon.md
         - name: Cookie-affinitás engedélyezése

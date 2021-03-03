@@ -4,14 +4,14 @@ description: Ismerje meg, hogyan hozhat létre egy olyan AK-fürtöt, amely biza
 author: agowdamsft
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 2/8/2020
+ms.date: 2/25/2020
 ms.author: amgowda
-ms.openlocfilehash: 866c8340cf9c16d768f4035326aa2ec52dbf1401
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 51b0813849236d9335d1482019f740fc8b23749f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653363"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703286"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-with-confidential-computing-nodes-dcsv2-using-azure-cli"></a>Gyors útmutató: Azure Kubernetes Service (ak) fürt üzembe helyezése bizalmas számítástechnikai csomópontokkal (DCsv2) az Azure CLI használatával
 
@@ -26,7 +26,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan helyezhet üzembe egy Azure K
 
 ### <a name="confidential-computing-node-features-dcxs-v2"></a>A bizalmas számítástechnikai csomópont funkciói (DC <x> s-v2)
 
-1. Csak Linux-tárolókat támogató linuxos munkavégző csomópontok
+1. Linux-tárolókat támogató linuxos munkavégző csomópontok
 1. 2. generációs VM Ubuntu 18,04 Virtual Machines csomópontokkal
 1. Intel SGX ENKLÁVÉHOZ-alapú CPU titkosított oldal gyorsítótár-memóriával (EPC). [További információk](./faq.md)
 1. Támogató Kubernetes-verzió 1.16 +
@@ -37,41 +37,8 @@ Az üzembe helyezési oktatóanyaghoz az alábbiak szükségesek:
 
 1. Aktív Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot a](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) Kezdés előtt
 1. Az Azure CLI verziójának 2.0.64 vagy újabb verziója telepítve van és konfigurálva van a telepítési gépen ( `az --version` a verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését](../container-registry/container-registry-get-started-azure-cli.md) ismertető témakört.
-1. Azure [AK – előzetes verziójú bővítmény](https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview) minimális verziója 0.5.0
 1. Az előfizetésében legalább hat **DC <x> s-v2** mag használható. Alapértelmezés szerint a virtuális gép az Azure-előfizetések 8 maggal kapcsolatos bizalmas számítástechnikai kvótáját is felszámítja. Ha olyan fürtöt szeretne kiépíteni, amely több mint 8 magot igényel, kövesse az [alábbi](../azure-portal/supportability/per-vm-quota-requests.md) utasításokat a kvóta növeléséhez
 
-## <a name="cli-based-preparation-steps-required-for-add-on-in-preview---optional-but-recommended"></a>CLI-alapú előkészítési lépések (az előzetes verzióhoz szükséges bővítményhez – nem kötelező, de ajánlott)
-Az alábbi útmutatást követve engedélyezheti a bizalmas számítástechnikai bővítményt az AK-on.
-
-### <a name="step-1-installing-the-cli-prerequisites"></a>1. lépés: a parancssori felület előfeltételeinek telepítése
-
-A következő Azure CLI-parancsokkal telepítheti a 0.5.0-bővítményt vagy újabb verziót:
-
-```azurecli-interactive
-az extension add --name aks-preview
-az extension list
-```
-A következő Azure CLI-parancsokkal frissítheti az AK-előnézeti CLI-bővítményt:
-
-```azurecli-interactive
-az extension update --name aks-preview
-```
-### <a name="step-2-azure-confidential-computing-addon-feature-registration-on-azure"></a>2. lépés: az Azure bizalmas számítástechnikai addon funkcióinak regisztrálása az Azure-ban
-A AKS-ConfidentialComputingAddon regisztrálása az Azure-előfizetésben. Ez a funkció hozzáadja a SGX ENKLÁVÉHOZ-eszköz beépülő modul daemonset elemet a részletek [itt](./confidential-nodes-aks-overview.md#confidential-computing-add-on-for-aks)tárgyalt módon:
-1. SGX ENKLÁVÉHOZ illesztőprogram beépülő modul
-```azurecli-interactive
-az feature register --name AKS-ConfidentialComputingAddon --namespace Microsoft.ContainerService
-```
-Több percet is igénybe vehet, amíg az állapot regisztrálva jelenik meg. A regisztrációs állapotot az "az Feature List" parancs használatával tekintheti meg. Ez a szolgáltatás regisztrációja csak egyszer érhető el az előfizetések esetében. Ha korábban már regisztrálták, ugorja át a fenti lépést:
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-ConfidentialComputingAddon')].{Name:name,State:properties.state}"
-```
-Ha az állapot regisztrálva értékre van állítva, frissítse a Microsoft. Tárolószolgáltatás erőforrás-szolgáltató regisztrációját az "az Provider Register" parancs használatával:
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
 ## <a name="creating-new-aks-cluster-with-confidential-computing-nodes-and-add-on"></a>Új AK-fürt létrehozása bizalmas számítástechnikai csomópontokkal és bővítményekkel
 Kövesse az alábbi utasításokat a bizalmas számítástechnikai képességgel rendelkező csomópontok hozzáadásához.
 

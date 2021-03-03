@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: surmb
-ms.openlocfilehash: 93af3183ae9e969d14a35ce4e365d48895ef4e79
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 81eaf95a4918590c6eaa2c17a45e6925a1a67992
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216674"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726512"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>HTTP-fejlécek és URL-cím újraírása Application Gateway
 
@@ -60,9 +60,9 @@ Az Application Gateway Azure Portal használatával történő újraírásának 
 Az Újraírási műveletek segítségével megadhatja az átírni kívánt URL-címet, a kérelmek fejléceit vagy a válasz fejléceit, valamint azt az új értéket, amelyre át kívánja írni azokat. Az URL-cím vagy egy új vagy meglévő fejléc értéke az alábbi típusú értékekre állítható be:
 
 * Szöveg
-* Kérelem fejléce A kérelem fejlécének megadásához a következő szintaxist kell használnia ({http_req_*headerName*})
-* Válaszfejléc. A válasz fejlécének megadásához a {http_resp_*headerName*} szintaxist kell használnia.
-* Kiszolgálói változó. A kiszolgálói változó megadásához a {var_*serverVariable*} szintaxist kell használnia. Tekintse meg a támogatott kiszolgálói változók listáját
+* Kérelem fejléce A kérelem fejlécének megadásához a következő szintaxist kell használnia ({http_req_ *headerName*})
+* Válaszfejléc. A válasz fejlécének megadásához a {http_resp_ *headerName*} szintaxist kell használnia.
+* Kiszolgálói változó. A kiszolgálói változó megadásához a {var_ *serverVariable*} szintaxist kell használnia. Tekintse meg a támogatott kiszolgálói változók listáját
 * A szöveg, a kérelem fejléce, a válasz fejléce és a kiszolgálói változó kombinációja. 
 
 ## <a name="rewrite-conditions"></a>Újraírási feltételek
@@ -100,7 +100,7 @@ Ha a teljes értéket szeretné használni, ne említse meg a számot. Egyszerű
 
 ## <a name="server-variables"></a>Kiszolgálói változók
 
-A Application Gateway kiszolgálói változók használatával tárolja a kiszolgálóval kapcsolatos hasznos információkat, az ügyféllel létesített kapcsolatokat és a jelenlegi kérést a kapcsolatban. A tárolt információk közé tartoznak például az ügyfél IP-címe és a webböngésző típusa. A kiszolgálói változók dinamikusan változnak, például új lap betöltésekor vagy űrlap közzétételekor. Ezeket a változókat használhatja az Újraírási feltételek kiértékeléséhez és a fejlécek újraírásához. Ha a kiszolgálói változók értékét szeretné használni a fejlécek újraírásához, ezeket a változókat a {var_*serverVariableName*} szintaxisban kell megadnia.
+A Application Gateway kiszolgálói változók használatával tárolja a kiszolgálóval kapcsolatos hasznos információkat, az ügyféllel létesített kapcsolatokat és a jelenlegi kérést a kapcsolatban. A tárolt információk közé tartoznak például az ügyfél IP-címe és a webböngésző típusa. A kiszolgálói változók dinamikusan változnak, például új lap betöltésekor vagy űrlap közzétételekor. Ezeket a változókat használhatja az Újraírási feltételek kiértékeléséhez és a fejlécek újraírásához. Ha a kiszolgálói változók értékét szeretné használni a fejlécek újraírásához, ezeket a változókat a {var_ *serverVariableName*} szintaxisban kell megadnia.
 
 Az Application Gateway a következő kiszolgálói változókat támogatja:
 
@@ -114,7 +114,7 @@ Az Application Gateway a következő kiszolgálói változókat támogatja:
 | client_tcp_rtt            | Az ügyfél TCP-kapcsolataival kapcsolatos információk. Az TCP_INFO socket beállítást támogató rendszereken érhető el. |
 | client_user               | A HTTP-hitelesítés használatakor a rendszer a hitelesítéshez megadott felhasználónevet adja meg. |
 | gazda                      | A sorrend sorrendjében: az állomásnév a kérelem sorából, az állomásnév a gazdagép-kérelem fejléce mezőből, vagy egy kérelemnek megfelelő kiszolgálónév. Példa: a kérelemben a `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` Host érték lesz `contoso.com` |
-| cookie_*neve*             | A *név* cookie.                                           |
+| cookie_ *neve*             | A *név* cookie.                                           |
 | http_method               | Az URL-kérelem elvégzéséhez használt metódus. Például: GET vagy POST. |
 | http_status               | A munkamenet állapota. Például: 200, 400 vagy 403.           |
 | http_version              | A kérelem protokollja. Általában HTTP/1.0, HTTP/1.1 vagy HTTP/2.0. |
@@ -164,7 +164,7 @@ Ha egy háttérbeli alkalmazás átirányítási választ küld, előfordulhat, 
 
 Mivel a App Service egy több-bérlős szolgáltatás, a kérelemben szereplő állomásfejléc használatával irányítja át a kérést a megfelelő végpontra. Az App Services alapértelmezett tartományneve *. azurewebsites.net (Say contoso.azurewebsites.net), amely eltér az Application Gateway tartománynevétől (mondjuk contoso.com). Mivel az ügyfél eredeti kérelme az Application Gateway tartománynevét (contoso.com) adja meg állomásnévként, az Application Gateway megváltoztatja az állomásnevet a contoso.azurewebsites.net. Ez a módosítás lehetővé teszi, hogy az App Service átirányítsa a kérést a megfelelő végpontra.
 
-Amikor az App Service átirányítási választ küld, ugyanazt a gazdagépet használja a válaszának Location fejlécében, mint az Application gatewaytől kapott kérelemben szereplőnek. Így az ügyfél közvetlenül a contoso.azurewebsites.net/path2 küldi a kérést az Application Gateway (contoso.com/path2) helyett. Az Application Gateway megkerülése nem kívánatos.
+Amikor az App Service átirányítási választ küld, ugyanazt a gazdagépet használja a válaszának Location fejlécében, mint az Application gatewaytől kapott kérelemben szereplőnek. Így az ügyfél a kérést közvetlenül az `contoso.azurewebsites.net/path2` Application Gateway () szolgáltatáson keresztül teszi elérhetővé `contoso.com/path2` . Az Application Gateway megkerülése nem kívánatos.
 
 A probléma megoldásához állítsa be a hostname értéket a Location (hely) fejlécben az Application Gateway tartománynevére.
 
@@ -211,15 +211,15 @@ Ha olyan forgatókönyveket szeretne elérni, amelyekben a háttér-készletet a
 
 * A harmadik szabály olyan feltételt tartalmaz, amely ellenőrzi a *Kategória = kellékek* *QUERY_STRING* változóját, és olyan műveletet tartalmaz, amely átírja az URL-címet/*listing3* , és **újraértékeli az elérésiút-leképezést** .
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-2.png" alt-text="URL-Újraírási forgatókönyv 1-1.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-2.png" alt-text="URL-Újraírási forgatókönyv 1-2.":::
 
  
 
 **2. lépés (b):** Az Újraírási készlet hozzárendelése a fenti elérésiút-alapú szabály alapértelmezett elérési útjával
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-3.png" alt-text="URL-Újraírási forgatókönyv 1-1.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-3.png" alt-text="URL-Újraírási forgatókönyv 1-3.":::
 
-Ha a felhasználó *contoso.com/Listing?category=any*kér, akkor a rendszer az alapértelmezett elérési utat fogja egyeztetni, mivel az elérésiút-leképezésben (/listing1,/listing2,/listing3) található egyik elérésiút-minta sem egyezik. Mivel ezzel az útvonallal társította a fenti Újraírási készletet, a rendszer kiértékeli ezt az Újraírási készletet. Mivel a lekérdezési karakterlánc nem felel meg az Újraírási készletben szereplő 3 Újraírási szabály feltételének, ezért nem kerül sor újraírásra, így a kérést a rendszer változatlanul az alapértelmezett elérési úttal ( *GenericList*) társított háttérre irányítja.
+Ha a felhasználó *contoso.com/Listing?category=any* kér, akkor a rendszer az alapértelmezett elérési utat fogja egyeztetni, mivel az elérésiút-leképezésben (/listing1,/listing2,/listing3) található egyik elérésiút-minta sem egyezik. Mivel ezzel az útvonallal társította a fenti Újraírási készletet, a rendszer kiértékeli ezt az Újraírási készletet. Mivel a lekérdezési karakterlánc nem felel meg az Újraírási készletben szereplő 3 Újraírási szabály feltételének, ezért nem kerül sor újraírásra, így a kérést a rendszer változatlanul az alapértelmezett elérési úttal ( *GenericList*) társított háttérre irányítja.
 
  Ha a felhasználó *contoso.com/Listing?category=Shoes kér,* akkor a rendszer az alapértelmezett elérési utat fogja megfeleltetni. Ebben az esetben azonban az első szabály feltétele megegyezik, és ezért a feltételhez társított művelet lesz végrehajtva, amely újraírja az URL-útvonalat a/*listing1*  , és újraértékeli az elérési út térképét. Ha a rendszer újraértékeli az elérési utat, a kérelem most már megegyezik a minta */listing1* társított útvonallal, és a kérést a rendszer az ehhez a mintához társított háttérre irányítja, amely ShoesListBackendPool
 
@@ -234,11 +234,11 @@ Ebben az esetben Application Gateway rögzíthet paramétereket az URL-címről,
 
 **Feltétel** – ha a kiszolgálói változó `uri_path` megegyezik a mintázattal `/(.+)/(.+)`
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-1.png" alt-text="URL-Újraírási forgatókönyv 1-1.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-1.png" alt-text="URL-Újraírási forgatókönyv 2-1.":::
 
 **Művelet** – az URL-cím `buy.aspx` és a lekérdezési karakterlánc beállítása a következőre: `category={var_uri_path_1}&product={var_uri_path_2}`
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-2.png" alt-text="URL-Újraírási forgatókönyv 1-1.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-2.png" alt-text="URL-Újraírási forgatókönyv 2-2.":::
 
 A fentiekben ismertetett forgatókönyvhöz kapcsolódó lépésenkénti útmutató: az [URL-cím újraírása Application Gateway használatával Azure Portal](rewrite-url-portal.md)
 
@@ -248,7 +248,7 @@ URL-cím újraírása esetén Application Gateway a kérésnek a háttérbe val�
 
 URL-átirányítás esetén Application Gateway átirányítási választ küld az ügyfélnek az új URL-címmel. Ehhez viszont az ügyfélnek újra el kell küldenie a kérését az átirányításban megadott új URL-címre. Az URL-cím, amelyet a felhasználó lát a böngészőben, frissíti az új URL-címet
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-rewrite-vs-redirect.png" alt-text="URL-Újraírási forgatókönyv 1-1.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-rewrite-vs-redirect.png" alt-text="Újraírás vs átirányítás.":::
 
 ## <a name="limitations"></a>Korlátozások
 

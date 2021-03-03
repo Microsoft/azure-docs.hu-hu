@@ -6,17 +6,14 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 05a2eaeb3b716988a8ae1eddcaa5a5a58cc3776a
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2ab719b47245f3adc2fba610f9c0473868889a7e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675696"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711450"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Az Application Insights Profiler engedélyezésével vagy megtekintésével kapcsolatos problémák elhárítása
-
-> [!CAUTION]
-> Hiba történt a Profiler futtatásához a Azure App Service ASP.NET Core alkalmazásaihoz. Javítunk, de eltarthat néhány hétig, hogy világszerte üzembe helyezzük. A hiba megkerüléséhez adja hozzá a Application Insights SDK-t az alkalmazáshoz az [itt](./asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio)található utasításokkal.
 
 ## <a name="general-troubleshooting"></a><a id="troubleshooting"></a>Általános hibaelhárítás
 
@@ -67,6 +64,7 @@ Ha a nyomkövetésekben párhuzamos szálak láthatók, határozza meg, hogy mel
 Támogatási jegy küldése a portálon. Ügyeljen arra, hogy a hibaüzenetben szerepeljen a korrelációs azonosító.
 
 ## <a name="troubleshoot-profiler-on-azure-app-service"></a>A Azure App Service Profiler hibáinak megoldása
+
 A Profiler megfelelő működéséhez:
 * A Web App Service-csomagnak alapszintű vagy magasabb szintűnek kell lennie.
 * A webalkalmazásnak Application Insights engedélyezve kell lennie.
@@ -95,6 +93,10 @@ Ha a Profiler nem működik Önnek, letöltheti a naplót, és elküldheti a csa
 
 ### <a name="check-the-diagnostic-services-site-extension-status-page"></a>A diagnosztikai szolgáltatások helyének bővítményének állapota lap
 Ha a Profiler engedélyezte a portálon a [Application Insights ablaktáblán](profiler.md) , azt a diagnosztikai szolgáltatások helyének bővítménye engedélyezte.
+
+> [!NOTE]
+> Application Insights Profiler kód nélküli telepítése a .NET Core támogatási szabályzatot követi.
+> További információ a támogatott futtatókörnyezetekről: [.net Core támogatási szabályzat](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
 
 A bővítmény állapot lapját a következő URL-címen tekintheti meg: `https://{site-name}.scm.azurewebsites.net/DiagnosticServices`
 
@@ -140,7 +142,7 @@ Ha a webalkalmazást egy olyan Web Apps erőforrásra telepíti újra, amelyen a
 
 *A könyvtár nem üres: \\ Kezdőlap \\ hely \\ wwwroot \\ App_Data \\ feladatok*
 
-Ez a hiba akkor fordul elő, ha a web Deploy szkriptből vagy az Azure-folyamatokból futtatja. A megoldás a következő további központi telepítési paramétereket adja hozzá a web Deploy feladathoz:
+Ez a hiba akkor fordul elő, ha a web Deploy szkriptből vagy az Azure-folyamatokból futtatja. A megoldás a következő központi telepítési paramétereket adja hozzá a web Deploy feladathoz:
 
 ```
 -skip:Directory='.*\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler.*' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs\\continuous$' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs$'  -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data$'

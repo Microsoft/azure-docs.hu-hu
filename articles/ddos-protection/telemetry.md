@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 0a8c30076231aecb17505dd0d7a2fe4e7be485a3
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 0be184921ff0bd6b98dd2975acb4e0d5c8b26ba0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522665"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716193"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>DDoS Protection-telemetria megtekintése és konfigurálása
 
-Azure DDoS Protection a standard részletes támadási elemzéseket és vizualizációkat biztosít a DDoS Attack Analytics használatával. A DDoS-támadásokkal szemben a virtuális hálózatokat védő ügyfelek részletesen megtekinthetik a támadási forgalmat, valamint a támadás enyhítésére tett lépéseket a támadásokkal kapcsolatos kockázatcsökkentő jelentésekben & a kockázatcsökkentő folyamat naplófájljait. A gazdag telemetria Azure Monitoron keresztül érhető el, beleértve a DDoS-támadások időtartama alatt részletes mérőszámokat is. A riasztás konfigurálható a DDoS Protection által elérhetővé tett Azure Monitor metrikák bármelyikéhez. A naplózás az [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md), a splunk (Azure Event Hubs), a OMS log Analytics és az Azure Storage szolgáltatással is integrálható a Azure monitor diagnosztikai felületen keresztül haladó elemzésekhez.
+Azure DDoS Protection a standard részletes támadási elemzéseket és vizualizációkat biztosít a DDoS Attack Analytics használatával. A DDoS-támadásokkal szemben a virtuális hálózatokat védő ügyfelek részletesen megtekinthetik a támadási forgalmat, valamint a támadás enyhítésére tett lépéseket a támadásokkal kapcsolatos kockázatcsökkentő jelentésekben & a kockázatcsökkentő folyamat naplófájljait. A gazdag telemetria Azure Monitoron keresztül érhető el, beleértve a DDoS-támadások időtartama alatt részletes mérőszámokat is. A DDoS Protection által közzétett Azure Monitor-metrikákhoz konfigurálhatók riasztások. A naplózás az [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md), a splunk (Azure Event Hubs), a OMS log Analytics és az Azure Storage szolgáltatással is integrálható a Azure monitor diagnosztikai felületen keresztül haladó elemzésekhez.
 
 Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 
@@ -34,10 +34,10 @@ Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 > [!NOTE]
 > Míg Azure Portal több **összesítési** lehetőség is megjelenik, az egyes metrikák esetében csak az alábbi táblázatban felsorolt összesítési típusok támogatottak. Elnézést kérünk erre a zűrzavarra, és dolgozunk a megoldásban.
 
-A következő [metrikák](../azure-monitor/platform/metrics-supported.md#microsoftnetworkpublicipaddresses) érhetők el Azure DDoS Protection standard. Ezek a metrikák a diagnosztikai beállításokon keresztül is exportálhatók (lásd: a [DDoS diagnosztikai naplózás megtekintése és konfigurálása](diagnostic-logging.md)).
+A következő [metrikák](../azure-monitor/essentials/metrics-supported.md#microsoftnetworkpublicipaddresses) érhetők el Azure DDoS Protection standard. Ezek a metrikák a diagnosztikai beállításokon keresztül is exportálhatók (lásd: a [DDoS diagnosztikai naplózás megtekintése és konfigurálása](diagnostic-logging.md)).
 
 
-| Metric | Metrika megjelenítendő neve | Unit (Egység) | Aggregáció típusa | Description |
+| Metric | Metrika megjelenítendő neve | Unit (Egység) | Aggregáció típusa | Leírás |
 | --- | --- | --- | --- | --- |
 | BytesDroppedDDoS | Bejövő bájtok elvetve DDoS | BytesPerSecond | Maximum | Bejövő bájtok elvetve DDoS| 
 | BytesForwardedDDoS | Bejövő bájtok továbbított DDoS | BytesPerSecond | Maximum | Bejövő bájtok továbbított DDoS |
@@ -66,15 +66,15 @@ A következő [metrikák](../azure-monitor/platform/metrics-supported.md#microso
 
 - Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 - Az oktatóanyag lépéseinek elvégzése előtt először létre kell hoznia egy [Azure DDoS standard Protection-csomagot](manage-ddos-protection.md) , és a DDoS Protection szabványnak engedélyezve kell lennie egy virtuális hálózaton.
-- A DDoS figyeli a virtuális hálózaton belüli erőforrásokhoz rendelt nyilvános IP-címeket. Ha nem rendelkezik nyilvános IP-címmel rendelkező erőforrásokkal a virtuális hálózaton, először létre kell hoznia egy nyilvános IP-címmel rendelkező erőforrást. Az [Azure-szolgáltatások virtuális hálózata](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) (beleértve az Azure Load balancert, ahol a háttérbeli virtuális gépek a virtuális hálózaton vannak), a Resource Managerrel telepített összes erőforrás nyilvános IP-címét nyomon követheti, kivéve Azure app Service környezetekben. Az oktatóanyag folytatásához gyorsan létrehozhat egy Windows vagy [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) [rendszerű](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépet.  
+- A DDoS figyeli a virtuális hálózaton belüli erőforrásokhoz rendelt nyilvános IP-címeket. Ha nincsenek nyilvános IP-címmel rendelkező erőforrások a virtuális hálózatban, először létre kell hoznia egy nyilvános IP-című erőforrást. Az [Azure-szolgáltatások virtuális hálózata](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) (beleértve az Azure Load balancert, ahol a háttérbeli virtuális gépek a virtuális hálózaton vannak), a Resource Managerrel telepített összes erőforrás nyilvános IP-címét nyomon követheti, kivéve Azure app Service környezetekben. Az oktatóanyag folytatásához gyorsan létrehozhat egy Windows vagy [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) [rendszerű](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépet.  
 
 ## <a name="view-ddos-protection-telemetry"></a>DDoS Protection-telemetria megtekintése
 
-A támadás telemetria valós időben Azure Monitor biztosítjuk. A telemetria csak akkor érhető el, ha egy nyilvános IP-cím mérséklés alatt áll. 
+Az Azure Monitor valós időben biztosítja a támadásokkal kapcsolatos telemetriát. A telemetria csak akkor érhető el, ha egy nyilvános IP-cím mérséklés alatt áll. 
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) , és keresse meg a DDoS Protection tervet.
 2. A **Figyelés** területen kattintson a **Metrikák** elemre.
-3. Válassza a **hatókör** elemet. Válassza ki azt az **előfizetést** , amely a naplózni kívánt nyilvános IP-címet tartalmazza, válassza ki a **nyilvános IP-címet** az **erőforrástípus** mezőben, majd válassza ki azt a nyilvános IP-címet, amelyre a metrikákat naplózni kívánja, majd válassza az **alkalmaz** lehetőséget.
+3. Válassza ki a **hatókört**. Válassza ki azt az **előfizetést** , amely a naplózni kívánt nyilvános IP-címet tartalmazza, válassza ki a **nyilvános IP-címet** az **erőforrástípus** mezőben, majd válassza ki azt a nyilvános IP-címet, amelyre a metrikákat naplózni kívánja, majd válassza az **alkalmaz** lehetőséget.
 4. Válassza ki az **összesítési** típust **Max**.
 
 A metrikák nevei különböző típusú csomagokat és bájtokat, illetve csomagokat, a címkék neveinek alapszintű összeállításával az egyes mérőszámokban az alábbiak szerint:

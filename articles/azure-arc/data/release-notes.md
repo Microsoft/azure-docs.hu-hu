@@ -7,25 +7,44 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 02/11/2021
+ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: f303ddb4d32da4c4cb6609f3ceec34e5c83529a8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d3eb4e4b45a13872a11515dd4f53fcbbc069a954
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391456"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686682"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Kibocsátási megjegyzések – az Azure arc-kompatibilis adatszolgáltatások (előzetes verzió)
 
+Ez a cikk a közelmúltban kiadott vagy továbbfejlesztett Azure arc-kompatibilis adatszolgáltatások képességeit, funkcióit és fejlesztéseit emeli ki. 
+
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+
+## <a name="february-2021"></a>2021. február
+
+### <a name="new-capabilities-and-features"></a>Új képességek és funkciók
+
+Az Azure-beli adatcli ( `azdata` ) verziószáma: 20.3.1. Töltse le a következő címen: [https://aka.ms/azdata](https://aka.ms/azdata) . Telepítheti `azdata` Az Azure-beli [adatok parancssori felületét ( `azdata` )](/sql/azdata/install/deploy-install-azdata)is.
+
+A további frissítések a következők:
+
+- Azure Arc-kompatibilis, felügyelt SQL-példány
+   - Magas rendelkezésre állás az Always On rendelkezésre állási csoportokkal
+
+- Azure arc engedélyezve PostgreSQL nagy kapacitású Azure Data Studio: 
+   - Az áttekintő lap megjeleníti a csomópontok szerint részletezett kiszolgálócsoport állapotát.
+   - Most már elérhetővé vált egy új tulajdonságlap a kiszolgálócsoport további részleteinek megjelenítéséhez.
+   - Postgres-motor paramétereinek konfigurálása a **csomópont-paraméterek** lapról =
+
+A kiadással kapcsolatos problémák esetén lásd: [ismert problémák – Azure arc-kompatibilis adatszolgáltatások (előzetes verzió)](known-issues.md)
 
 ## <a name="january-2021"></a>2021. január
 
 ### <a name="new-capabilities-and-features"></a>Új képességek és funkciók
 
 Az Azure-beli adatcli ( `azdata` ) verziószáma: 20.3.0. Töltse le a következő címen: [https://aka.ms/azdata](https://aka.ms/azdata) . Telepítheti `azdata` Az Azure-beli [adatok parancssori felületét ( `azdata` )](/sql/azdata/install/deploy-install-azdata)is.
-
 
 A további frissítések a következők:
 - A honosított portál 17 új nyelven érhető el

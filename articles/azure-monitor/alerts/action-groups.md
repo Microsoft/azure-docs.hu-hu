@@ -3,15 +3,15 @@ title: Műveletcsoportok létrehozása és felügyelete az Azure Portalon
 description: Megtudhatja, hogyan hozhat létre és kezelhet műveleti csoportokat a Azure Portalban.
 author: dkamstra
 ms.topic: conceptual
-ms.date: 01/28/2021
+ms.date: 02/25/2021
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 8905c3e4dfa1053646ede5c0b62149844e21ee7d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 50fb898e1ea55d0bcc09fc10dfee051ca7b1d809
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100617248"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701161"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Műveletcsoportok létrehozása és felügyelete az Azure Portalon
 A műveleti csoport az Azure-előfizetés tulajdonosa által meghatározott értesítési beállítások gyűjteménye. Azure Monitor és Service Health riasztások használata műveleti csoportok segítségével értesíti a felhasználókat arról, hogy riasztást váltott ki. A különböző riasztások ugyanazt a műveleti csoportot vagy különböző műveleti csoportokat használhatják a felhasználó igényeitől függően. 
@@ -118,6 +118,8 @@ Tekintse meg az [Azure-előfizetési szolgáltatási](../../azure-resource-manag
 A műveleti csoportban korlátozott számú Runbook művelet lehet. 
 
 ### <a name="azure-app-push-notifications"></a>Azure-alkalmazás leküldéses értesítései
+Engedélyezze a leküldéses értesítéseket a [Azure Mobile App](https://azure.microsoft.com/features/azure-portal/mobile-app/) számára úgy, hogy megadja a fiók azonosítójaként használt e-mail-címet a Azure Mobile App konfigurálásakor.
+
 Előfordulhat, hogy egy műveleti csoportban korlátozott számú Azure-alkalmazási művelet van.
 
 ### <a name="email"></a>E-mail
@@ -139,11 +141,11 @@ Ha nem kap értesítéseket az *elsődleges e-mail-címére*, akkor a következ�
 2. Kattintson a minden felhasználó elemre (a bal oldali ablaktáblában), és megjelenik a felhasználók listája (a jobb oldali ablaktáblában).
 3. Válassza ki azt a felhasználót, amelynek az *elsődleges e-mail-* adatait szeretné áttekinteni.
 
-  :::image type="content" source="media/action-groups/active-directory-user-profile.png" alt-text="Példa a felhasználói profil áttekintésére."border="true":::
+  :::image type="content" source="media/action-groups/active-directory-user-profile.png" alt-text="Példa a felhasználói profil áttekintésére." border="true":::
 
 4. Ha a felhasználói profilban a kapcsolattartási adatok területen az "E-mail" lap üres, akkor kattintson a felül található *Szerkesztés* gombra, és adja hozzá az *elsődleges e-mailt* , és nyomja meg a *Mentés* gombot a felső részen.
 
-  :::image type="content" source="media/action-groups/active-directory-add-primary-email.png" alt-text="Példa az elsődleges e-mailek hozzáadására."border="true":::
+  :::image type="content" source="media/action-groups/active-directory-add-primary-email.png" alt-text="Példa az elsődleges e-mailek hozzáadására." border="true":::
 
 A műveleti csoportban korlátozott számú e-mail művelet lehet. Tekintse meg a [díjszabási információkat](./alerts-rate-limiting.md) ismertető cikket.
 
@@ -153,7 +155,7 @@ Meghívja a meglévő HTTP-trigger végpontját [Azure Functionsban](../../azure
 A műveleti csoportban korlátozott számú Function művelet lehet.
 
 ### <a name="itsm"></a>ITSM
-A ITSM művelethez ITSM-kapcsolat szükséges. Megtudhatja, hogyan hozhat létre [ITSM-kapcsolatokat](../platform/itsmc-overview.md).
+A ITSM művelethez ITSM-kapcsolat szükséges. Megtudhatja, hogyan hozhat létre [ITSM-kapcsolatokat](./itsmc-overview.md).
 
 A műveleti csoportban korlátozott számú ITSM művelet lehet. 
 
@@ -191,7 +193,7 @@ A műveleti csoportok webhook művelettel kihasználhatja a Azure Active Directo
 Connect-AzureAD -TenantId "<provide your Azure AD tenant ID here>"
     
 # This is your Azure AD Application's ObjectId. 
-$myAzureADApplicationObjectId = "<the Object Id of your Azure AD Application>"
+$myAzureADApplicationObjectId = "<the Object ID of your Azure AD Application>"
     
 # This is the Action Groups Azure AD AppId
 $actionGroupsAppId = "461e8683-5575-4561-ac7f-899cc907d62a"
@@ -334,7 +336,7 @@ Tekintse meg a [műveleti csoport IP](../app/ip-addresses.md) -címeit a forrás
 ## <a name="next-steps"></a>Következő lépések
 * További információ az [SMS-riasztás viselkedéséről](./alerts-sms-behavior.md).  
 * Ismerkedjen meg [a tevékenység naplójának riasztása webhook sémával](./activity-log-alerts-webhook.md).  
-* További információ a [ITSM-csatolóról](../platform/itsmc-overview.md).
+* További információ a [ITSM-csatolóról](./itsmc-overview.md).
 * További információ a riasztások [díjszabásának korlátozásáról](./alerts-rate-limiting.md) .
-* [Tekintse át a tevékenységek naplójának riasztásait](../platform/alerts-overview.md), és Ismerje meg, hogyan fogadhat riasztásokat.  
+* [Tekintse át a tevékenységek naplójának riasztásait](./alerts-overview.md), és Ismerje meg, hogyan fogadhat riasztásokat.  
 * Megtudhatja, hogyan [konfigurálhatja a riasztásokat, amikor egy szolgáltatás állapotáról értesítést küldenek](../../service-health/alerts-activity-log-service-notifications-portal.md).

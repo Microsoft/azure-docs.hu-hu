@@ -1,35 +1,36 @@
 ---
-title: Telemetria processors példák – Azure Monitor Application Insights Javához
-description: Példák telemetria-processzorok bemutatása Azure Monitor Application Insights Javához
+title: Telemetria processzor-példák – Azure Monitor Application Insights Javához
+description: Ismerkedjen meg azokkal a példákkal, amelyek telemetria-processzorokat jelenítenek meg Azure Monitor Application Insights Javához.
 ms.topic: conceptual
 ms.date: 12/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: 9b29c9611359c97c4097ad0b90ee2673bb28f37c
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 0978bd669855d264ed6dfa5eeddc45ad499aa2a5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696312"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734587"
 ---
-# <a name="telemetry-processors-examples---azure-monitor-application-insights-for-java"></a>Telemetria processors példák – Azure Monitor Application Insights Javához
+# <a name="telemetry-processor-examples---azure-monitor-application-insights-for-java"></a>Telemetria processzor-példák – Azure Monitor Application Insights Javához
 
-## <a name="includeexclude-samples"></a>Minták belefoglalása/kizárása
+Ez a cikk példákat tartalmaz a Java-Application Insights telemetria processzorokra. Mintákat is talál a konfigurációk belefoglalásához és kizárásához. Emellett mintákat is talál a Attribute processors és a span processzorok számára.
+## <a name="include-and-exclude-samples"></a>Minták belefoglalása és kizárása
 
-### <a name="1-include-spans"></a>1. belefoglalási felölelés
+Ebben a szakaszban láthatja, hogyan lehet belefoglalni és kizárni a felölelt. Azt is megtudhatja, hogyan zárhat ki több ívelt, és hogyan alkalmazhat szelektív feldolgozást.
+### <a name="include-spans"></a>Belefoglalási felölelés
 
-A következő mutatja be, hogy az attribútumok processzora milyen felöleli. A processzor nem dolgozza fel az összes olyan átnyúlt, amely nem felel meg a tulajdonságoknak.
+Ez a szakasz azt mutatja be, hogyan lehet felölelni egy attribútum-processzort. A processzor által nem feldolgozott tulajdonságokkal rendelkező átnyúló.
 
-A következő feltételeknek kell teljesülniük a egyezéshez:
-* A span névnek a következőnek kell lennie: "spana" vagy "spanB" 
+A egyezéshez a span nevének egyenlőnek vagy értéknek kell lennie `spanA` `spanB` . 
 
-Az alábbiak a belefoglalási tulajdonságokat és a processzor-műveleteket is megegyeznek.
+Ezek a lépések megfelelnek a belefoglalási tulajdonságokkal, és a rendszer alkalmazza a processzor műveleteit:
 * Span1 neve: "spana" attribútumok: {env: dev, test_request: 123, credit_card: 1234}
 * Span2 neve: "spanB" attribútumok: {env: dev, test_request: false}
 * Span3 neve: "spana" attribútumok: {env: 1, test_request: dev, credit_card: 1234}
 
-A következő span nem egyezik a belefoglalási tulajdonságokkal, és a processzor műveletei nem lesznek alkalmazva.
+Ez az időtartam nem egyezik a belefoglalási tulajdonságokkal, és a processzor műveletei nem alkalmazhatók:
 * Span4 neve: "spanC" attribútumok: {env: dev, test_request: false}
 
 ```json
@@ -58,19 +59,18 @@ A következő span nem egyezik a belefoglalási tulajdonságokkal, és a process
 }
 ```
 
-### <a name="2-exclude-spans"></a>2. kihagyás kizárása
+### <a name="exclude-spans"></a>Elterjedések kizárása
 
-Az alábbi részekben látható, hogy az attribútumok processzora nem terjed ki. A processzor nem dolgozza fel az összes olyan átnyúlt, amely megfelel a tulajdonságoknak.
+Ez a szakasz azt mutatja be, hogyan lehet kizárni egy attribútum-feldolgozó felölelét. A processzor által nem feldolgozott tulajdonságok átívelnek.
 
-A következő feltételeknek kell teljesülniük a egyezéshez:
-* A span névnek a következőnek kell lennie: "spana" vagy "spanB" 
+A egyezéshez a span nevének egyenlőnek vagy értéknek kell lennie `spanA` `spanB` .
 
-A következők olyan átnyúlnak, amelyek megfelelnek a kizárási tulajdonságoknak, és a processzor műveletei nem alkalmazhatók.
+A következő találatok egyeznek a kizárás tulajdonságaival, és a processzor műveletei nem alkalmazhatók:
 * Span1 neve: "spana" attribútumok: {env: dev, test_request: 123, credit_card: 1234}
 * Span2 neve: "spanB" attribútumok: {env: dev, test_request: false}
 * Span3 neve: "spana" attribútumok: {env: 1, test_request: dev, credit_card: 1234}
 
-A következő tartomány nem felel meg a kizárási tulajdonságokkal és a processzor műveleteivel.
+Ez az időtartam nem felel meg a kizárási tulajdonságoknak, és a rendszer alkalmazza a processzor műveleteit:
 * Span4 neve: "spanC" attribútumok: {env: dev, test_request: false}
 
 ```json
@@ -99,19 +99,19 @@ A következő tartomány nem felel meg a kizárási tulajdonságokkal és a proc
 }
 ```
 
-### <a name="3-excludemulti-spans"></a>3. a ExcludeMulti átível
+### <a name="exclude-spans-by-using-multiple-criteria"></a>Kihagyott kilépések több feltétel használatával
 
-Az alábbi részekben látható, hogy az attribútumok processzora nem terjed ki. A processzor nem dolgozza fel az összes olyan átnyúlt, amely megfelel a tulajdonságoknak.
+Ez a szakasz azt mutatja be, hogyan lehet kizárni egy attribútum-feldolgozó felölelét. A processzor által nem feldolgozott tulajdonságok átívelnek.
 
-A következő feltételeknek kell teljesülniük a egyezéshez:
-* Egy attribútumnak ("env", "dev") léteznie kell egy egyezés tartományában.
-* Ha van egy "test_request" kulccsal rendelkező attribútum a span-ben, akkor egyezés van.
+Az egyeztetéshez a következő feltételeknek kell teljesülniük:
+* Egy attribútumnak (például `env` vagy `dev` ) léteznie kell a tartományon belül.
+* A span attribútumnak rendelkeznie kell kulccsal `test_request` .
 
-A következők olyan átnyúlnak, amelyek megfelelnek a kizárási tulajdonságoknak, és a processzor műveletei nem alkalmazhatók.
+A következő találatok egyeznek a kizárás tulajdonságaival, és a processzor műveletei nem alkalmazhatók.
 * Span1 neve: "spanB" attribútumok: {env: dev, test_request: 123, credit_card: 1234}
 * Span2 neve: "spana" attribútumok: {env: dev, test_request: false}
 
-A következő tartomány nem felel meg a kizárási tulajdonságokkal és a processzor műveleteivel.
+A következő span nem felel meg a kizárási tulajdonságoknak, és a rendszer alkalmazza a processzor műveleteit:
 * Span3 neve: "spanB" attribútumok: {env: 1, test_request: dev, credit_card: 1234}
 * Span4 neve: "spanC" attribútumok: {env: dev, dev_request: false}
 
@@ -151,16 +151,16 @@ A következő tartomány nem felel meg a kizárási tulajdonságokkal és a proc
 }
 ```
 
-### <a name="4-selective-processing"></a>4. szelektív feldolgozás
+### <a name="selective-processing"></a>Szelektív feldolgozás
 
-Az alábbi cikk azt mutatja be, hogy a rendszer hogyan alkalmazza a processzorra kiterjedő span tulajdonságokat. A `include` Tulajdonságok azt mondják, hogy melyeket kell belefoglalni, és a `exclude` Tulajdonságok további kiszűrési felskálázásokat tartalmaznak, amelyek nem lesznek feldolgozva.
+Ebből a szakaszból megtudhatja, hogyan határozhatja meg, hogy a rendszer milyen tartományokra alkalmazza ezt a processzort. A belefoglalási tulajdonságok azt jelzik, hogy mely átnyúlt kell feldolgozni. A kihagyott tulajdonságok kiszűrése kiszűri a nem feldolgozott tulajdonságokat.
 
-Az alábbi konfigurációval az alábbi, a tulajdonságok és a processzor műveletekkel egyező találatok vannak alkalmazva:
+A következő konfigurációban ezek a tulajdonságok megfelelnek a tulajdonságoknak, és a rendszer a processzor műveleteit alkalmazza:
 
 * Span1 neve: "spanB" attribútumok: {env: Production, test_request: 123, credit_card: 1234, redact_trace: "false"}
 * Span2 neve: "spana" attribútumok: {env: előkészítés, test_request: false, redact_trace: true}
 
-A következő találatok nem egyeznek meg a tulajdonságok belefoglalása és a processzor műveleteivel:
+Ezek az átnyúló tulajdonságok nem egyeznek a belefoglalási tulajdonságokkal, és a processzor műveletei nem alkalmazhatók:
 * Span3 neve: "spanB" attribútumok: {env: Production, test_request: true, credit_card: 1234, redact_trace: false}
 * Span4 neve: "spanC" attribútumok: {env: dev, test_request: false}
 
@@ -206,7 +206,7 @@ A következő találatok nem egyeznek meg a tulajdonságok belefoglalása és a 
 
 ### <a name="insert"></a>Beszúrás
 
-A következő új attribútumot szúr be {"attribute1": "attributeValue1"}, hogy a "attribute1" kulcs nem létezik.
+Az alábbi minta beszúrja az új attribútumot olyanra, `{"attribute1": "attributeValue1"}` ahol a kulcs `attribute1` nem létezik.
 
 ```json
 {
@@ -230,7 +230,7 @@ A következő új attribútumot szúr be {"attribute1": "attributeValue1"}, hogy
 
 ### <a name="insert-from-another-key"></a>Beszúrás másik kulcsból
 
-Az alábbi érték a "anotherkey" attribútum értékét használja a (z) {"newKey": "anotherkey" attribútum értékének a megtalálása érdekében, hogy a "newKey" kulcs nem létezik. Ha a "anotherkey" attribútum nem létezik, a rendszer nem szúr be új attribútumot a felölelő értékekre.
+A következő minta az attribútum értékének használatával `anotherkey` szúrja be az új attribútumot, `{"newKey": "<value from attribute anotherkey>"}` ahol a kulcs `newKey` nem létezik. Ha az attribútum `anotherkey` nem létezik, a rendszer nem szúr be új attribútumot a felölelő elembe.
 
 ```json
 {
@@ -254,7 +254,7 @@ Az alábbi érték a "anotherkey" attribútum értékét használja a (z) {"newK
 
 ### <a name="update"></a>Frissítés
 
-A következő frissíti az attribútumot {"db. Secret": "kitakart"} értékre, és frissíti a "Boo" attribútumot a "foo" attribútum értéke alapján. A "Boo" attribútum nélküli Átívelés nem változik.
+Az alábbi minta frissíti az attribútumot a következőre: `{"db.secret": "redacted"}` . Frissíti az attribútumot az `boo` attribútum értékének használatával `foo` . Az attribútum nem `boo` módosul.
 
 ```json
 {
@@ -283,7 +283,7 @@ A következő frissíti az attribútumot {"db. Secret": "kitakart"} értékre, �
 
 ### <a name="delete"></a>Törlés
 
-Az alábbi "credit_card" kulccsal rendelkező attribútum törlését mutatja be.
+Az alábbi példa bemutatja, hogyan törölhet egy kulcsot tartalmazó attribútumot `credit_card` .
 
 ```json
 {
@@ -306,7 +306,7 @@ Az alábbi "credit_card" kulccsal rendelkező attribútum törlését mutatja be
 
 ### <a name="hash"></a>Kivonat
 
-Az alábbi táblázat a kivonatoló létező attribútumok értékeit mutatja be.
+Az alábbi példa bemutatja, hogyan lehet a meglévő attribútumok értékeit kiszámítani.
 
 ```json
 {
@@ -329,13 +329,13 @@ Az alábbi táblázat a kivonatoló létező attribútumok értékeit mutatja be
 
 ### <a name="extract"></a>Kinyerés
 
-Az alábbi példa bemutatja, hogyan lehet a regex használatával új attribútumokat létrehozni egy másik attribútum értéke alapján.
-Például: http. URL = ' http://example.com/path?queryParam1=value1 , queryParam2 = érték2 ', a következő attribútumok lesznek beszúrva:
-* httpProtocol: http
-* httpDomain: example.com
-* httpPath: elérési út
-* httpQueryParams: queryParam1 = érték1, queryParam2 = érték2
-* a http. URL-cím értéke nem változik.
+Az alábbi minta azt mutatja be, hogyan használható egy reguláris kifejezés (regex) új attribútumok létrehozására egy másik attribútum értéke alapján.
+A megadott példa `http.url = http://example.com/path?queryParam1=value1,queryParam2=value2` a következő attribútumokat szúrja be:
+* httpProtocol: `http`
+* httpDomain: `example.com`
+* httpPath: `path`
+* httpQueryParams: `queryParam1=value1,queryParam2=value2`
+* http. URL: *nincs* változás
 
 ```json
 {
@@ -357,8 +357,8 @@ Például: http. URL = ' http://example.com/path?queryParam1=value1 , queryParam
 }
 ```
 
-Az alábbi példa bemutatja, hogyan lehet feldolgozni a regexp-mintázatnak megfelelő span névvel rendelkező átnyúló folyamatokat.
-Ez a processzor eltávolítja a "token" attribútumot, és a "password" attribútumot eltorzítja az elterjedések között, ahol a span neve megegyezik az "Auth" értékkel \* és ha a span neve nem egyezik a "login" értékkel \* .
+Az alábbi minta azt mutatja be, hogyan lehet feldolgozni az olyan átnyúló folyamatokat, amelyek a regex-mintáknak megfelelő span névvel rendelkeznek
+Ez a processzor eltávolítja az `token` attribútumot. Felfedi az `password` attribútumot az elterjedésekben, ahol a span neve megegyezik `auth.*` , és a span neve nem egyezik `login.*` .
 
 ```json
 {
@@ -401,7 +401,7 @@ Ez a processzor eltávolítja a "token" attribútumot, és a "password" attribú
 
 ### <a name="name-a-span"></a>Egy span neve
 
-A következő példa a "db. SVC", a "művelet" és az "id" attribútum értékeit adja meg a span új nevét (ebben a sorrendben), a "::" értékkel elválasztva.
+Az alábbi minta az attribútumok, a és a értékeit határozza meg `db.svc` `operation` `id` . A tartomány új nevét a (z) Ezen attribútumok alapján, ebben a sorrendben, az értékkel elválasztva képezi `::` .
 ```json
 {
   "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
@@ -423,9 +423,9 @@ A következő példa a "db. SVC", a "művelet" és az "id" attribútum értékei
 }
 ```
 
-### <a name="extract-attributes-from-span-name"></a>Attribútumok kinyerése a tartomány nevéből
+### <a name="extract-attributes-from-a-span-name"></a>Attribútumok kinyerése egy tartomány nevéből
 
-Tegyük fel, hogy a bemeneti span neve/API/v1/Document/12345678/Update. A következő eredmények a kimeneti span névben való alkalmazása a/api/v1/document/{documentId}/update új "documentId" = "12345678" attribútumot ad hozzá a tartományhoz.
+Tegyük fel, hogy a bemeneti span neve a (z `/api/v1/document/12345678/update` ). A következő minta a kimeneti tartomány nevét eredményezi `/api/v1/document/{documentId}/update` . Hozzáadja az új attribútumot `documentId=12345678` a span értékhez.
 ```json
 {
   "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
@@ -446,11 +446,11 @@ Tegyük fel, hogy a bemeneti span neve/API/v1/Document/12345678/Update. A követ
 }
 ```
 
-### <a name="extract-attributes-from-span-name-with-include-and-exclude"></a>Attribútumok kinyerése a span neve és a Belefoglalás és kizárás
+### <a name="extract-attributes-from-a-span-name-by-using-include-and-exclude"></a>Attribútumok kinyerése egy tartomány nevéből Belefoglalás és kizárás használatával
 
-A következő mutatja be, hogy átnevezi a span nevet a (z) {operation_website} értékre, és hozzáadja a (z) {Key: operation_website, Value: oldSpanName} attribútumot, ha a span a következő tulajdonságokkal rendelkezik:
-- A span neve "/" karakterláncot tartalmaz a sztringben.
-- A span neve nem "adományozó/változás".
+Az alábbi minta azt mutatja be, hogyan módosíthatja a span nevét a következőre: `{operation_website}` . `operation_website` `{oldSpanName}` Ha a span a következő tulajdonságokkal rendelkezik, egy kulcs és egy értékkel rendelkező attribútumot adhat hozzá:
+- A span neve a `/` karakterláncban bárhol szerepel.
+- A span neve nem `donot/change` .
 ```json
 {
   "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",

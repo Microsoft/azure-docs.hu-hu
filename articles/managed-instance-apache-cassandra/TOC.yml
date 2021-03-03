@@ -1,0 +1,28 @@
+- name: Azure felügyelt példány az Apache Cassandra dokumentációhoz
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi az az Azure felügyelt példány az Apache Cassandra-hoz?
+      href: introduction.md
+- name: Alapelvek
+  items:
+    - name: GYIK
+      href: faq.md
+    - name: Felügyelt példány vs Azure Cosmos DB Cassandra API
+      href: compare-cosmosdb-managed-instance.md
+- name: Rövid útmutatók
+  items:
+    - name: Fürt létrehozása – portál
+      href: create-cluster-portal.md
+    - name: Fürt létrehozása – parancssori felület
+      href: create-cluster-cli.md
+    - name: Hibrid fürt konfigurálása
+      href: configure-hybrid-cluster.md
+    - name: Spark-fürt üzembe helyezése a Databricks
+      href: deploy-cluster-databricks.md
+- name: Útmutatók
+  items:
+    - name: Kezelés az Azure CLI-vel
+      href: manage-resources-cli.md
+    - name: Metrikák megjelenítése a Prometheus-ben a Grafana
+      href: visualize-prometheus-grafana.md

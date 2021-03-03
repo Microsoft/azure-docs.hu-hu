@@ -1,0 +1,56 @@
+### YamlMime:Landing
+title: Az Azure Storage által ellenőrzött partneri megoldások dokumentációja
+summary: Az Azure Storage által ellenőrzött partneri megoldások speciális forgatókönyveket tesznek lehetővé az Azure Storage platformon.
+metadata:
+  title: Az Azure Storage által ellenőrzött partneri megoldások
+  description: Az Azure Storage által ellenőrzött partneri megoldások speciális forgatókönyveket tesznek lehetővé az Azure Storage platformon.
+  services: storage
+  ms.service: storage
+  ms.topic: landing-page
+  ms.collection: collection
+  author: beber-msft
+  ms.author: beber
+  ms.date: 12/08/2020
+  ms.openlocfilehash: 2e9a2ac1e8d33020a94c2c783d3d695a459fcea5
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.translationtype: MT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101749120"
+landingContent:
+- title: Azure Storage Analytics és Big adatpartnerek
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Ellenőrzött Azure Storage Analytics partnerek
+      url: .\validated-partners\analytics\partner-overview.md
+- title: Azure Storage-Archívum, biztonsági mentési és BCDR partnerek
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Ellenőrzött Azure Storage-Archívum és BCDR-partnerek
+      url: .\validated-partners\backup-archive-disaster-recovery\partner-overview.md
+  - linkListType: quickstart
+    links:
+    - text: CommVault rövid útmutató
+      url: .\validated-partners\backup-archive-disaster-recovery\commvault\commvault-solution-guide.md
+    - text: Veeam rövid útmutató
+      url: .\validated-partners\backup-archive-disaster-recovery\veeam\veeam-solution-guide.md
+- title: Azure Storage-tároló megoldási partnerei
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Ellenőrzött Azure Storage Container megoldás-partnerek
+      url: .\validated-partners\container-solutions\partner-overview.md
+- title: Az Azure Storage adatkezelési és-áttelepítési partnerei
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Ellenőrzött Azure Storage-adatkezelési és-áttelepítési partnerek
+      url: .\validated-partners\data-management\partner-overview.md
+- title: Azure Storage – elsődleges és másodlagos Storage-partnerek
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Ellenőrzött partnerek elsődleges és másodlagos tároláshoz
+      url: .\validated-partners\primary-secondary-storage\partner-overview.md

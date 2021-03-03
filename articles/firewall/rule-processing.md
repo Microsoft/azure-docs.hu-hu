@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/18/2020
+ms.date: 03/01/2021
 ms.author: victorh
-ms.openlocfilehash: 01f7aa61d3bfb3c712320bbf138160a7ff8197c7
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: bbf838cfa2a6addc665df4b62e2322d056778b49
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95502200"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741361"
 ---
 # <a name="configure-azure-firewall-rules"></a>Azure Firewall szabályok konfigurálása
 Megadhatja a NAT-szabályokat, a hálózati szabályokat és az alkalmazásokra vonatkozó szabályokat a Azure Firewall. A szabályok gyűjteményeit a rendszer a szabály típusa szerint dolgozza fel a prioritási sorrendben, a számok számát pedig a 100 – 65 000 értéknél nagyobb számra csökkenti. A szabálygyűjtemény neve csak betűket, számokat, aláhúzásokat, pontokat és kötőjeleket tartalmazhat. Betűvel vagy számmal kell kezdődnie, és betűvel, számmal vagy aláhúzással kell végződnie. A név maximális hossza 80 karakter.
@@ -38,7 +38,7 @@ November 9. előtt, 2020 **minden** jelentett **TCP**, **UDP** vagy **ICMP**. Í
 
 ### <a name="nat-rules"></a>NAT-szabályok
 
-A bejövő internetkapcsolatot a célként megadott hálózati címfordítás (DNAT) konfigurálásával engedélyezheti [az oktatóanyag: a bejövő forgalom szűrése Azure Firewall DNAT a Azure Portal használatával](tutorial-firewall-dnat.md). A NAT-szabályok prioritásban lesznek alkalmazva a hálózati szabályok előtt. Ha talál egyezést, egy implicit megfelelő hálózati szabályt ad hozzá a lefordított forgalom engedélyezéséhez. Ezt a viselkedést felülírhatja, ha explicit módon hozzáad egy hálózatiszabály-készletet, amely megtagadja azokat a szabályokat, amelyek a lefordított adatforgalomhoz tartoznak.
+A bejövő internetkapcsolatot a célként megadott hálózati címfordítás (DNAT) konfigurálásával engedélyezheti [az oktatóanyag: a bejövő forgalom szűrése Azure Firewall DNAT a Azure Portal használatával](tutorial-firewall-dnat.md). A NAT-szabályok prioritásban lesznek alkalmazva a hálózati szabályok előtt. Ha talál egyezést, egy implicit megfelelő hálózati szabályt ad hozzá a lefordított forgalom engedélyezéséhez. Biztonsági okokból az ajánlott módszer egy adott internetes forrás hozzáadása, amely lehetővé teszi a DNAT hozzáférését a hálózathoz, és a helyettesítő karakterek használatának elkerülését.
 
 Az alkalmazás szabályai nem alkalmazhatók a bejövő kapcsolatokra. Ha tehát a bejövő HTTP/S forgalmat szeretné szűrni, használja a webalkalmazási tűzfalat (WAF). További információ: [Mi az az Azure webalkalmazási tűzfal?](../web-application-firewall/overview.md)
 

@@ -5,30 +5,81 @@ services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/27/2020
+ms.date: 02/12/2021
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 801f0f03b49d20c84a4531bd0daad7630a0ed01d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 54c29d76757916a8eea54af16babdae21b809a19
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585050"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101751023"
 ---
-## <a name="common-scenarios"></a>Gyakori forgatókönyvek
-A következő forgatókönyvek nagy mértékben kihasználhatják a betörést:
-- A **rendszerindítási időpontok javítása** – a betörést követően a példány jelentősen gyorsabb ütemben fog indulni. A Premium-kompatibilis virtuális gépek alapértelmezett operációsrendszer-lemeze például a P4-lemez, amely legfeljebb 120 IOPS és 25 MB/s kiépített teljesítményű. A Betöréssel a P4 akár 3500 IOPS-t és 170 MB/s-ot is biztosít, ami lehetővé teszi a rendszerindítási időt a 6X felgyorsításához.
-- **Kötegelt feladatok feldolgozása** – egyes alkalmazások számítási feladatai ciklikus jellegűek, és az idő nagy részében alapvető teljesítményt igényelnek, és rövid időn belül nagyobb teljesítményt igényelnek. Erre példa egy olyan könyvelési program, amely naponta dolgozza fel a tranzakciókat, amelyek kis mennyiségű lemezterületet igényelnek. A hónap végén a olyan jelentések egyeztetését végzi el, amelyek sokkal nagyobb mennyiségű lemezes forgalmat igényelnek.
-- **Felkészülés a forgalmi csúcsokra** – a webkiszolgálók és alkalmazásaik bármikor felhasználhatják a forgalmat. Ha a webkiszolgálót a virtuális gépek vagy lemezek a burst használatával végzik, a kiszolgálók jobban fel vannak szerelve a forgalmi tüskék kezelésére. 
+## <a name="disk-level-bursting"></a>Lemez szintű burst
+
+### <a name="on-demand-bursting-preview"></a>Igény szerinti burst (előzetes verzió)
+
+A lemezek igény szerinti felszakítási modelljét használó lemezek az eredeti kiépített célokon túl, a számítási feladatokhoz képest akár a maximális burst célpontig is kitörtek. Egy 1 TiB P30-lemezen például a kiépített IOPS 5000 IOPS. Ha engedélyezve van a lemez kitörése ezen a lemezen, a számítási feladatok az IOs-et a lemezre is kiállíthatják a 30 000 IOPS és 1 000 MBps maximális burst teljesítményével.
+
+Ha azt szeretné, hogy a számítási feladatok gyakran fussanak a kiépített Perf-cél után, a lemez kitörése nem költséghatékony. Ebben az esetben azt javasoljuk, hogy a lemez teljesítményszint [magasabb szintűre](../articles/virtual-machines/disks-performance-tiers.md) változzon, a jobb alapteljesítményhez. Tekintse át a számlázási adatokat, és mérje fel, hogy a számítási feladatok forgalmi mintája alapján.
+
+Az igény szerinti kitörés engedélyezése előtt Ismerje meg a következőket:
+
+[!INCLUDE [managed-disk-bursting-regions-limitations](managed-disk-bursting-regions-limitations.md)]
+
+#### <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
+
+[!INCLUDE [managed-disk-bursting-availability](managed-disk-bursting-availability.md)]
+
+#### <a name="billing"></a>Számlázás
+
+Az igény szerinti Felskálázási modellt használó lemezekre óradíjat kell felszámolni, és a tranzakciós költségek minden, a kiépített célponton túli feltört tranzakcióra érvényesek. A tranzakciós költségeket az utólagos elszámolású modell alapján számítjuk fel, a nem gyorsítótárazott lemezes IOs-en alapulva, beleértve az olvasásokat és az írásokat is, amelyek túllépik a kiosztott célokat. A következő példa egy számlázási órában használt lemezes forgalmi mintákat szemlélteti:
+
+Lemez konfigurációja: prémium SSD – 1 TiB (P30), a lemez kitörése engedélyezve.
+
+- 00:00:00 – 00:10:00 lemez IOPS a 5 000 IOPS kiépített célja alatt 
+- 00:10:01 – 00:10:10 az alkalmazás egy batch-feladatot adott ki, ami miatt a lemez IOPS a 6 000 IOPS 10 másodpercig. 
+- 00:10:11 – 00:59:00 lemez IOPS a 5 000 IOPS kiépített célja alatt 
+- 00:59:01 – 01:00:00 az alkalmazás egy másik batch-feladatot adott ki, ami miatt a lemez IOPS a 7 000 IOPS for 60 másodperc 
+
+Ebben a számlázási órában a feltört költségek a következő két költségből állnak:
+
+Az első díj a $X (a régió által meghatározott) burst-előfizetési átalánya. Ezt az átalány-díjat a rendszer mindig a csatolási állapot figyelmen kívül hagyásával veszi fel, amíg le nem áll. 
+
+A második a burst tranzakciós díj. A lemez kitörése két alkalommal történt. 00:10:01 – 00:10:10, a halmozott burst tranzakció (6 000 – 5 000) X 10 = 10 000. 00:59:01 – 01:00:00, a halmozott burst tranzakció (7 000 – 5 000) X 60 = 120 000. A teljes burst tranzakció a 10 000 + 120 000 = 130 000. A burst tranzakciós költséget a $Y 13 10 000 egység (a regionális díjszabás alapján) alapján számítjuk fel.
+
+Ezzel a számlázási óra lemezre bontásának teljes költsége $X + $Y értékkel egyenlő. Ugyanez a számítás érvényes a MBps kiépített céljára. A 256 kb IO-méretével a több mint MB értékű tranzakciókat fordítjuk. Ha a lemez forgalma meghaladja a kiépített IOPS és a MBps-célt is, az alábbi példára kattintva kiszámíthatja a burst tranzakciókat. 
+
+Lemez konfigurációja: prémium SSD – 1 TB (P30), a lemez kitörése engedélyezve.
+
+- 00:00:01 – 00:00:05 az alkalmazás egy batch-feladatot adott ki, ami azt eredményezte, hogy a lemez IOPS a 10 000 IOPS és az 300 MBps-ra 5 másodpercig.
+- 00:00:06 – 00:00:10 az alkalmazás kiállított egy helyreállítási feladatot, ami 6 000 miatt a lemez IOPS a-es és az 600 MBps-ra 5 másodpercig.
+
+A burst tranzakciót a rendszer a IOPS vagy a MBps-burst tranzakciók maximális számaként veszi figyelembe. 00:00:01 – 00:00:05, a halmozott burst tranzakció Max ((10 000 – 5 000), (300-200) * 1024/256) * 5 = 25 000 tranzakció. 00:00:06 – 00:00:10, a halmozott burst tranzakció Max ((6 000 – 5 000), (600-200) * 1024/256) * 5 = 8 000 tranzakció. Ezen felül a burst-feltöltési átalány díját is bemutatjuk, hogy az igény szerinti lemez kitörésének teljes díja legyen. 
+
+A számítási feladatok értékeléséhez tekintse meg a [Managed Disks díjszabási oldalát](https://azure.microsoft.com/pricing/details/managed-disks/) , amely részletesen ismerteti a díjszabást, és használja az [Azure díjszabási számológépét](https://azure.microsoft.com/pricing/calculator/?service=storage) . 
+
+### <a name="credit-based-bursting"></a>Kredit-alapú kitörés
+
+A kredit-alapú adatmennyiség az Azure nyilvános, kormányzati és kínai felhőkben található összes régióban P20 és kisebb méretekben érhető el. Alapértelmezés szerint a lemezes kitörés engedélyezve van a támogatott lemezterületek összes új és meglévő központi telepítésén. A VM-szintű kitörés csak a kredit alapú kitörést használja.
+
+### <a name="virtual-machine-level-bursting"></a>Virtuális gépek – szintű kitörés
+A virtuális gépek szintjének feltört támogatása a nyilvános felhőben lévő összes régióban elérhető a következő támogatott méreteken: 
+- [Lsv2 sorozat](../articles/virtual-machines/lsv2-series.md)
+
+Az USA nyugati középső régiójában a következő támogatott méretek esetében is elérhető a virtuális gépek szintjének kitörése:
+- [Dv3 és DSv3 sorozat](../articles/virtual-machines/dv3-dsv3-series.md)
+- [Ev3 és Esv3 sorozat](../articles/virtual-machines/ev3-esv3-series.md)
+
+Alapértelmezés szerint a kitörés engedélyezve van az azt támogató virtuális gépeken.
 
 ## <a name="bursting-flow"></a>Feltört folyamat
-A feltört kreditrendszer a virtuális gép szintjén és a lemez szintjén is azonos módon alkalmazható. Az erőforrás, amely egy virtuális gép vagy egy lemez, teljes értékű Kredittel fog kezdődni. Ezek a kreditek lehetővé teszik, hogy 30 percen belül a maximális burst sebességgel feltörten. A feltört kreditek akkor halmozódnak fel, ha az erőforrás a teljesítményük lemezes tárterületének korlátai szerint fut. Az összes olyan IOPS és MB/s esetében, amelyet az erőforrás a teljesítmény korlátozása alatt használ, elkezdi a kreditek összegyűjtését. Ha az erőforrás felhalmozott kreditekkel rendelkezik, és a számítási feladathoz szükség van az extra teljesítményre, akkor az erőforrás ezeket a krediteket a teljesítmény korlátja fölé helyezheti, hogy a lemez i/o-teljesítménye megfeleljen az igényeknek.
 
-
+A feltört kreditrendszer a virtuális gép szintjén és a lemez szintjén is azonos módon használható. Az erőforrás, amely egy virtuális gép vagy egy lemez, a saját burst-gyűjtőben teljes értékű Kredittel fog kezdődni. Ezek a kreditek lehetővé teszik, hogy akár 30 percet is igénybe vehet a maximális burst arányban. A kreditek felhalmozódása akkor történik meg, amikor az erőforrás IOPS vagy MB/s kihasználtsága az erőforrás teljesítményének megcélzása alatt áll. Ha az erőforrás feltörte az elszámolási krediteket, és a számítási feladatnak extra teljesítményre van szüksége, az erőforrás ezeket a krediteket a teljesítménybeli korlátok fölé helyezheti, és növelheti a teljesítményt a munkaterhelés iránti igények kielégítése érdekében.
 
 ![Feltört gyűjtő diagramja](media/managed-disks-bursting/bucket-diagram.jpg)
 
-Ez a teljes körűen azt mutatja be, hogyan szeretné használni a 30 percet a kitöréstől. Akár 30 percet is igénybe vehet a nap folyamán, vagy szórványosan. A termék üzembe helyezése után a rendszer készen áll a teljes értékű kreditekre, és ha a kreditek elvégzése egy napnál kevesebb időt vesz igénybe, a kreditek teljes összegét újra fel kell venni. Saját belátása szerint felhalmozhatja és elköltheti a feltört krediteket, és a 30 perces gyűjtőnek nem kell megismételni a feltört időt. Az egyik dolog, ami azt jelzi, hogy a burst felhalmozódása különbözik az egyes erőforrásoktól, mert a használaton kívüli IOPS, valamint a teljesítményük alatti MB/s értéken alapul. Ez azt jelenti, hogy a magasabb alapszintű teljesítményű termékek az alacsonyabb alapkonfigurációt használó termékeknél gyorsabban felmerülhetnek a feltört mennyiségű terméknél. Egy tevékenység nélküli P1 lemez üresjárati ideje például 120 IOPS, míg a P20-lemezek másodpercenként 2 300 IOPS-t kapnak, és tevékenység nélkül üresjáratban vannak.
+A rendelkezésre álló kreditek elköltése Önnek. A 30 perces burst kreditet a nap folyamán egymás után vagy szórványosan használhatja fel. Az erőforrások üzembe helyezésekor a kreditek teljes kiosztása áll rendelkezésre. A Kimerítés során a rendszer kevesebb mint egy napot vesz igénybe a feltöltéshez. A kreditek a saját belátása szerint elkölthető, a burst gyűjtőnek nem kell teljesnek lennie ahhoz, hogy az erőforrások feltörtek legyenek. A burst felhalmozódás az egyes erőforrásoktól függ, mivel ez a használaton kívüli IOPS és MB/s-on alapul. A magasabb alapszintű teljesítmény-erőforrások az alacsonyabb alapszintű erőforrásoknál gyorsabban felmerülhetnek a feltört kreditek. Például egy P1 lemez üresjárata 120 IOPS-t fog felhalmozni, míg az alapszintű P20 lemezek száma másodpercenként 2 300 IOPS.
 
 ## <a name="bursting-states"></a>Feltört állapotok
 Három állapottal rendelkezhet, ha az erőforrás a kitört állapotban van:
@@ -36,7 +87,7 @@ Három állapottal rendelkezhet, ha az erőforrás a kitört állapotban van:
 - **Burst** – az erőforrás forgalma több, mint a teljesítmény célját használja. A burst forgalom egymástól függetlenül fogja felhasználni a IOPS vagy a sávszélességtől kapott krediteket.
 - **Állandó** – az erőforrás forgalma pontosan a teljesítmény célpontja.
 
-## <a name="examples-of-bursting"></a>Példák a kitörésre
+## <a name="bursting-examples"></a>Feltört példák
 
 Az alábbi példák azt mutatják be, hogyan működik a kitörés a különböző virtuális gépekkel és lemezes kombinációkkal. Ahhoz, hogy a példák könnyen követhető legyenek, a MB/s-ra fogunk összpontosítani, de ugyanezt a logikát a IOPS függetlenül alkalmazza a rendszer.
 
@@ -53,15 +104,15 @@ Az alábbi példák azt mutatják be, hogyan működik a kitörés a különböz
 
  Amikor a virtuális gép elindul, lekéri az operációs rendszer lemezéről az adatok lekérését. Mivel az operációsrendszer-lemez egy rendszerindító virtuális gép része, az operációsrendszer-lemez tele lesz a feltört kreditekkel. Ezek a kreditek lehetővé teszik, hogy az operációs rendszer lemeze elindítsa az indítást 170 MB/s-on.
 
-![A virtuális gép 192 MB/s sebességre vonatkozó kérést küld az operációsrendszer-lemezre, az operációsrendszer-lemez az 170 MB/s adatokkal válaszol.](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-startup.jpg)
+![A virtuális gép 192 MB/s sebességre vonatkozó kérést küld az operációsrendszer-lemezre, az operációsrendszer-lemez az 170 MB/s adatokkal válaszol.](media/managed-disks-bursting/nonbursting-vm-bursting-disk/nonbursting-vm-bursting-disk-startup.jpg)
 
 A rendszerindítás befejezése után egy alkalmazás fut a virtuális gépen, és nem kritikus fontosságú számítási feladattal rendelkezik. Ehhez a munkaterheléshez 15 MB/S érték szükséges, amely egyenletesen oszlik el az összes lemez között.
 
-![Az alkalmazás 15 MB/s átviteli sebességre vonatkozó kérést küld a virtuális géphez, a virtuális gép igénybe veszi és elküldi az egyes lemezeket 5 MB/s-ra, az egyes lemezek 5 MB/s értéket adnak vissza, a virtuális gép 15 MB/s értéket ad vissza az alkalmazásnak.](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-idling.jpg)
+![Az alkalmazás 15 MB/s átviteli sebességre vonatkozó kérést küld a virtuális géphez, a virtuális gép igénybe veszi és elküldi az egyes lemezeket 5 MB/s-ra, az egyes lemezek 5 MB/s értéket adnak vissza, a virtuális gép 15 MB/s értéket ad vissza az alkalmazásnak.](media/managed-disks-bursting/nonbursting-vm-bursting-disk/nonbursting-vm-bursting-disk-idling.jpg)
 
 Ezután az alkalmazásnak fel kell dolgoznia egy batch-feladatot, amely 192 MB/s memóriát igényel. az operációsrendszer-lemez 2 MB/s-ot használ, a többi pedig egyenletesen oszlik meg az adatlemezek között.
 
-![Az alkalmazás 192 MB/s sebességű, virtuális gépre vonatkozó kérést küld, a virtuális gép kérést küld, és az adatlemezekre (95 MB/s) és 2 MB/s-ra kéri az operációsrendszer-lemezre küldött kérések nagy részét, az adatlemezek pedig a kereslet kielégítéséhez, és az összes lemez visszaadja a kért átviteli sebességet a virtuális géphez](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-bursting.jpg)
+![Az alkalmazás 192 MB/s sebességű, virtuális gépre vonatkozó kérést küld, a virtuális gép kérést küld, és az adatlemezekre (95 MB/s) és 2 MB/s-ra kéri az operációsrendszer-lemezre küldött kérések nagy részét, az adatlemezek pedig a kereslet kielégítéséhez, és az összes lemez visszaadja a kért átviteli sebességet a virtuális géphez](media/managed-disks-bursting/nonbursting-vm-bursting-disk/nonbursting-vm-bursting-disk-bursting.jpg)
 
 ### <a name="burstable-virtual-machine-with-non-burstable-disks"></a>Feltört virtuális gép nem feltört lemezekkel
 **VIRTUÁLIS gépek és lemezek kombinációja:** 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 0ab7cdfb3d699a8415739565aae5d4326002bc43
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c621584fa1dbed06873ac0867e20201e94c4a757
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389144"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699681"
 ---
 # <a name="manage-device-event-alert-notifications-on-azure-stack-edge-pro-resources"></a>Eszköz-riasztási értesítések kezelése Azure Stack Edge Pro-erőforrásokon
 
@@ -23,7 +23,7 @@ Ez a cikk azt ismerteti, hogyan hozhatók létre műveleti szabályok a Azure Po
 
 A műveleti szabályok riasztási értesítéseket indíthatnak vagy hagyhatnak el. A műveleti szabály hozzá van adva egy *műveleti csoporthoz* – az értesítési beállítások egy készlete, amely a felhasználók értesítésére szolgál, akik az erőforrás vagy az erőforrások készletének különböző kontextusában aktiválva vannak.
 
-További információ a műveleti szabályokról: [műveleti szabály konfigurálása](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#configuring-an-action-rule). A műveleti csoportokkal kapcsolatos további információkért lásd: [műveleti csoportok létrehozása és kezelése a Azure Portalban](/azure/azure-monitor/platform/action-groups).
+További információ a műveleti szabályokról: [műveleti szabály konfigurálása](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#configuring-an-action-rule). A műveleti csoportokkal kapcsolatos további információkért lásd: [műveleti csoportok létrehozása és kezelése a Azure Portalban](../azure-monitor/alerts/action-groups.md).
 
 > [!NOTE]
 > A műveleti szabályok funkció előzetes verzióban érhető el. Egyes képernyők és lépések megváltozhatnak, mivel a folyamat finomítva van.
@@ -34,7 +34,7 @@ További információ a műveleti szabályokról: [műveleti szabály konfigurá
 Az Azure Stack Edge-eszközhöz tartozó műveleti szabály létrehozásához hajtsa végre a következő lépéseket a Azure Portalben.
 
 > [!NOTE]
-> Ezek a lépések olyan műveleti szabályt hoznak létre, amely értesítéseket küld egy műveleti csoportnak. További információ az értesítések letiltására szolgáló műveleti szabály létrehozásáról: [műveleti szabály konfigurálása](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#configuring-an-action-rule).
+> Ezek a lépések olyan műveleti szabályt hoznak létre, amely értesítéseket küld egy műveleti csoportnak. További információ az értesítések letiltására szolgáló műveleti szabály létrehozásáról: [műveleti szabály konfigurálása](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#configuring-an-action-rule).
 
 1. Nyissa meg az Azure Stack Edge eszközt a Azure Portal, majd lépjen a **figyelés > riasztások** elemre. Válassza a **műveletek kezelése** lehetőséget.
 
@@ -72,7 +72,7 @@ Az Azure Stack Edge-eszközhöz tartozó műveleti szabály létrehozásához ha
 
    2. A **szűrők** területen adja hozzá az alkalmazni kívánt szűrőket. Az egyes szűrők esetében válassza ki a szűrő típusát, az **operátort** és az **értéket**.
    
-      A szűrési beállítások listáját a [szűrési feltételek](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#filter-criteria)című részben tekintheti meg.
+      A szűrési beállítások listáját a [szűrési feltételek](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#filter-criteria)című részben tekintheti meg.
 
       Az alábbi mintakód az összes riasztásra vonatkozik, a 2., 3. és 4. súlyossági szinten, a figyelő szolgáltatás pedig Azure Stack peremhálózati erőforrásokra.
 
@@ -85,11 +85,11 @@ Az Azure Stack Edge-eszközhöz tartozó műveleti szabály létrehozásához ha
    ![Műveleti csoport beállítása az értesítéseket küldő műveleti szabály létrehozásához](media/azure-stack-edge-gpu-manage-device-event-alert-notifications/new-action-rule-action-group-01.png)
 
    > [!NOTE]
-   > Ha olyan szabályt szeretne létrehozni, amely letiltja az értesítéseket, válassza az **Eltávolítás** lehetőséget. További információ: [műveleti szabály konfigurálása](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#configuring-an-action-rule).
+   > Ha olyan szabályt szeretne létrehozni, amely letiltja az értesítéseket, válassza az **Eltávolítás** lehetőséget. További információ: [műveleti szabály konfigurálása](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#configuring-an-action-rule).
 
 6. Válassza ki a műveleti szabállyal használni kívánt műveleti csoportot. Ezután kattintson a **Kiválasztás** gombra. Az új műveleti szabály hozzá lesz adva a kiválasztott műveleti csoport értesítési beállításaihoz.
 
-   Ha új műveleti csoportot kell létrehoznia, válassza a **+ műveleti csoport létrehozása** lehetőséget, majd kövesse a [műveleti csoport létrehozása a Azure Portal használatával](/azure/azure-monitor/platform/action-groups#create-an-action-group-by-using-the-azure-portal)című szakasz lépéseit.
+   Ha új műveleti csoportot kell létrehoznia, válassza a **+ műveleti csoport létrehozása** lehetőséget, majd kövesse a [műveleti csoport létrehozása a Azure Portal használatával](../azure-monitor/alerts/action-groups.md#create-an-action-group-by-using-the-azure-portal)című szakasz lépéseit.
 
    ![Válassza ki a szabályhoz használni kívánt műveleti csoportot, majd válassza a kiválasztás lehetőséget.](media/azure-stack-edge-gpu-manage-device-event-alert-notifications/new-action-rule-action-group-02.png)
 
@@ -123,8 +123,8 @@ Az e-mail-értesítés a következőhöz hasonlóan fog kinézni.
 
 ## <a name="next-steps"></a>Következő lépések
 
-<!-- - See [Create and manage action groups in the Azure portal](/azure/azure-monitor/platform/action-groups) for guidance on creating a new action group.
-- See [Configure an action rule](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#configuring-an-action-rule) for more info about creating action rules that send or suppress alert notifications. -2 bullets referenced above. Making room for local tasks in "Next Steps." --> 
+<!-- - See [Create and manage action groups in the Azure portal](../azure-monitor/alerts/action-groups.md) for guidance on creating a new action group.
+- See [Configure an action rule](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#configuring-an-action-rule) for more info about creating action rules that send or suppress alert notifications. -2 bullets referenced above. Making room for local tasks in "Next Steps." --> 
 - Az eszközök eseményeinek, a hardver állapotának és a metrikák diagramjának áttekintését lásd: [a Azure stack Edge Pro figyelése](azure-stack-edge-monitor.md) . 
 - A Azure Monitor Azure Stack Edge Pro GPU-eszközökhöz való optimalizálásával kapcsolatos információkért tekintse meg a [Azure monitor használatát](azure-stack-edge-gpu-enable-azure-monitor.md) ismertető témakört.
-- Az egyes riasztások kezelésével kapcsolatos információkért tekintse meg a [metrikus riasztások létrehozása, megtekintése és kezelése Azure monitor hivatkozás használatával](/azure/azure-monitor/platform/alerts-metric) című témakört.
+- Az egyes riasztások kezelésével kapcsolatos információkért tekintse meg a [metrikus riasztások létrehozása, megtekintése és kezelése Azure monitor hivatkozás használatával](../azure-monitor/alerts/alerts-metric.md) című témakört.

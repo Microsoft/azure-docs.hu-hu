@@ -4,12 +4,12 @@ description: Azure Blockchain Service-hez készült Blockchain-Data Manager lét
 ms.date: 03/30/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: f067f4413f6ad8541cd36a7581f9243bed4e195f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 867a51b60afa56005bbb297b345f8a9260160ab8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87023738"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722636"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>A Blockchain Data Manager konfigurálása az Azure CLI-vel
 
@@ -73,9 +73,9 @@ JSON-konfiguráció – példa Blockchain Manager-példány létrehozására az 
 
 ``` json
 {
-    "location": "eastus",
-    "properties": {
-    }
+    "location": "eastus",
+    "properties": {
+    }
 }
 ```
 
@@ -137,11 +137,11 @@ Konfiguráció JSON-példa egy bemeneti erőforrás létrehozásához az *USA ke
 
 ``` json
 {
-    "location": "eastus",
-    "properties": {
-        "inputType": "Ethereum",
-        "dataSource": {
-            "resourceId": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/blockchainMembers/<Blockchain member>/transactionNodes/transaction-node"
+    "location": "eastus",
+    "properties": {
+        "inputType": "Ethereum",
+        "dataSource": {
+            "resourceId": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/blockchainMembers/<Blockchain member>/transactionNodes/transaction-node"
         }
     }
 }
@@ -209,11 +209,11 @@ Konfigurációs JSON-példa: hozzon létre egy kimeneti erőforrást az *USA kel
 
 ``` json
 {
-    "location": "eastus",
-    "properties": {
-        "outputType": "EventGrid",
-        "dataSource": {
-            "resourceId": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.EventGrid/topics/<event grid topic>"
+    "location": "eastus",
+    "properties": {
+        "outputType": "EventGrid",
+        "dataSource": {
+            "resourceId": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.EventGrid/topics/<event grid topic>"
         }
     }
 }
@@ -286,9 +286,9 @@ Konfigurációs JSON-példa egy alkalmazás-erőforrás létrehozására az *USA
 
 ``` json
 {
-    "location": "eastus",
-    "properties": {
-        "artifactType": "EthereumSmartContract",
+    "location": "eastus",
+    "properties": {
+        "artifactType": "EthereumSmartContract",
         "content": {
             "abiFileUrl": "<ABI URL>",
             "bytecodeFileUrl": "<Bytecode URL>",
@@ -352,7 +352,7 @@ az resource invoke-action \
 
 ### <a name="start-instance-example"></a>Példány indítása példa
 
-Indítsa el a *mywatcher*nevű Data Manager Blockchain-példányt.
+Indítsa el a *mywatcher* nevű Data Manager Blockchain-példányt.
 
 ``` azurecli-interactive
 az resource invoke-action \
@@ -377,7 +377,7 @@ az resource invoke-action \
 
 ### <a name="stop-watcher-example"></a>Figyelő leállítása – példa
 
-Állítson le egy *mywatcher*nevű példányt.
+Állítson le egy *mywatcher* nevű példányt.
 
 ``` azurecli-interactive
 az resource invoke-action \
@@ -413,7 +413,7 @@ az resource delete \
                    --resource-type Microsoft.blockchain/watchers
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbálja ki a következő oktatóanyagot, amely egy blockchain-tranzakciós Blockchain-kezelőt hoz létre a Data Manager és Azure Cosmos DB használatával.
 

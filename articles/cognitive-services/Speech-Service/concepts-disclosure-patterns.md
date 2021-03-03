@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: shlo
-ms.openlocfilehash: 425096bf7cb75ae3560c06cbcd32778536dc1952
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: aec553b473e0fb2688224e8a8d027f7e9f3a6025
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537340"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716618"
 ---
 # <a name="disclosure-design-patterns"></a>Közzététel-tervezési minták
 Most, hogy&#39;ve meghatározta a szintetikus hangalapú felhasználói felület megfelelő [szintű közzétételét](concepts-disclosure-guidelines.md#disclosure-assessment) , jó időt&#39;s a lehetséges tervezési minták megismerésére.
@@ -245,6 +245,6 @@ A közzétételi lehetőség használata a zökkenőmentes működés érdekébe
 
 ## <a name="see-also"></a>Lásd még
 
-* [A hangalapú tehetségek közzététele](https://docs.microsoft.com/legal/cognitive-services/speech-service/disclosure-voice-talent?context=/azure/cognitive-services/speech-service/context/context)
+* [A hangalapú tehetségek közzététele](/legal/cognitive-services/speech-service/disclosure-voice-talent?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)
 * [Útmutató a szintetikus hangtechnológia felelős üzembe helyezéséhez](concepts-guidelines-responsible-deployment-synthetic.md)
 * [A közzététel módja](concepts-disclosure-guidelines.md)

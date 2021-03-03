@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 01/26/2021
+ms.date: 02/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 961e30cf17bf385647f4482c6f767641c6b891af
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 0a57e45b264badffd0305eb6ac5b3c8f7c42adf3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791678"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695124"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Oktatóanyag: az első keresőalkalmazás létrehozása a .NET SDK használatával
 
@@ -49,9 +49,11 @@ Csak egy hívás kérdezi le az indexet, és visszaadja az eredményeket.
 
 ## <a name="overview"></a>Áttekintés
 
-Ez az oktatóanyag egy meglévő, futtatott minta-indexet használ, így olyan keresési oldal létrehozására összpontosíthat, amely egy lekérdezési karakterláncot gyűjt a kérelemhez, és visszaadja az eredményeket. Az index fiktív szállodai adathalmazt tartalmaz. Ha már rendelkezik alapszintű oldallal, a következő leckében javíthatja a lapozást, az aspektusokat és a fajta élményt.
+Ez az oktatóanyag a Hotels-Sample-indexet használja, amelyet gyorsan létrehozhat saját keresési szolgáltatásán az [adatimportálási](search-get-started-portal.md)útmutató lépéseit követve. Az index az összes keresési szolgáltatás beépített adatforrásaként elérhető, fiktív szállodai adatforrást tartalmaz.
 
-Az oktatóanyagban szereplő kód befejezett verziója a következő projektben található:
+Ebben az oktatóanyagban az első lecke egy alapszintű lekérdezési struktúrát és egy keresési oldalt hoz létre, amelyet a következő leckében fog növelni, hogy tartalmazza a lapozást, a dimenziókat és az előre megadott élményt.
+
+A kód befejezett verziója a következő projektben található:
 
 * [1 – alapszintű keresés – oldal (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/1-basic-search-page)
 
@@ -59,7 +61,9 @@ Ez az oktatóanyag a Azure.Search.Documents (11-es verzió) csomag használatár
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mivel a Microsoft által üzemeltetett nyilvános minta keresési indexet használ, nincs szükség keresési szolgáltatásra vagy Azure-fiókra ehhez az oktatóanyaghoz.
+* [Meglévő keresési szolgáltatás](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) [létrehozása](search-create-service-portal.md) vagy keresése.
+
+* Hozza létre a Hotels-Sample-indexet a gyors útmutató [: keresési index létrehozása](search-get-started-portal.md)című témakörben leírtak alapján.
 
 * [Visual Studio](https://visualstudio.microsoft.com/)
 
@@ -103,12 +107,12 @@ Hozzon létre egy projektet a semmiből, és erősítse meg az Azure-Cognitive S
 
 Ehhez a mintához nyilvánosan elérhető szállodai adatszolgáltatásokat használunk. Ezek az adat a 50 kitalált nevek és leírások tetszőleges gyűjteménye, amely kizárólag a bemutató adatának biztosítása céljából hozható létre. Az ilyen típusú adateléréshez adjon meg egy nevet és egy API-kulcsot.
 
-1. Nyissa **meg aappsettings.jst** , és cserélje le az alapértelmezett sorokat a következő névre és kulcsra. Az itt megjelenő API-kulcs nem egy példa a kulcsra, hanem *pontosan* a szükséges kulcsot kell elérnie. A fájlnak most így kell kinéznie.
+1. Nyissa meg a **appsettings.jst** , és cserélje le az alapértelmezett sorokat a keresési szolgáltatás URL-címére (formátum `https://<service-name>.search.windows.net` ) és a keresési szolgáltatás [rendszergazdai vagy lekérdezési API-kulcsára](search-security-api-keys.md) . Mivel nem kell indexet létrehoznia vagy frissítenie, használhatja az oktatóanyaghoz tartozó lekérdezési kulcsot.
 
     ```csharp
     {
-        "SearchServiceName": "azs-playground",
-        "SearchServiceQueryApiKey": "EA4510A6219E14888741FCFC19BFBB82"
+        "SearchServiceName": "<YOUR-SEARCH-SERVICE-URI>",
+        "SearchServiceQueryApiKey": "<YOUR-SEARCH-SERVICE-API-KEY>"
     }
     ```
 
@@ -569,7 +573,7 @@ Vegye figyelembe az alábbi elvihetőket a projektből:
 * Az aszinkron hívások kis bonyolultságot adhatnak a vezérlőhöz, de az ajánlott eljárás, ha minőségi alkalmazásokat szeretne fejleszteni.
 * Az alkalmazás egyszerű szöveges keresést hajtott végre, amelyet a **searchOptions**-ben beállított beállítások határoznak meg. Ez az osztály azonban számos olyan taggal feltölthető, amely kifinomultságot ad a kereséshez. Nem sok további munka szükséges ahhoz, hogy ez az alkalmazás lényegesen nagyobb teljesítményű legyen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felhasználói élmény javítása érdekében vegyen fel további funkciókat, például a lapozást (oldalszámok vagy végtelen görgetés használatával), valamint az automatikus kiegészítés/javaslatok lehetőséget. Összetettebb keresési lehetőségeket is megvizsgálhat (például a földrajzi keresést egy adott pont egy adott sugarán belül, a keresési eredmények sorrendje alapján).
 

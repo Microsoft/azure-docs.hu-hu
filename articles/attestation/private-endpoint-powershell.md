@@ -7,18 +7,21 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5c2b88ad7bef5fb8f7ba576e5f7b416f7458378c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 92080f119567d185ca6a5bccf0e89d8d10213f3b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98731601"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732309"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-powershell"></a>Rövid útmutató: privát végpont létrehozása Azure PowerShell használatával
 
 Ismerkedjen meg az Azure Private-hivatkozással, ha privát végpontot használ az Azure-igazoláshoz való biztonságos csatlakozáshoz.
 
 Ebben a rövid útmutatóban létrehoz egy privát végpontot az Azure-igazoláshoz, és üzembe helyez egy virtuális gépet a magánhálózati kapcsolatok teszteléséhez.  
+
+> [!NOTE]
+> Az aktuális implementáció csak automatikus jóváhagyási lehetőséget tartalmaz. Az előfizetésnek fehér listának kell lennie, hogy el tudja érni a magánhálózati végpontok létrehozását. Az alábbi lépések elvégzése előtt lépjen kapcsolatba a szolgáltatás csapatával, vagy küldjön Azure-támogatási kérést az [Azure támogatási oldalára](https://azure.microsoft.com/support/options/) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 

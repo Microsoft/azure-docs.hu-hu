@@ -3,15 +3,15 @@ title: Az Azure-partneri megoldások Apache Kafka hibaelhárítása
 description: Ez a cikk tájékoztatást nyújt az Azure-beli felhőalapú felhővel kapcsolatos hibaelhárításról és gyakran ismételt kérdésekről (GYIK).
 ms.service: partner-services
 ms.topic: conceptual
-ms.date: 01/15/2021
+ms.date: 02/18/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: cbf166086a489165e8100dafd7c212ab6c298b41
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: b1e4b06fcbecf11d7d5f58a583fe3bd6643d99ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253525"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709394"
 ---
 # <a name="troubleshooting-apache-kafka-for-confluent-cloud-solutions"></a>A felhőalapú megoldások Apache Kafka hibaelhárítása
 
@@ -28,6 +28,16 @@ Az ajánlat az Azure Marketplace-en való megtalálásához kövesse az alábbi 
 1. Válassza ki az alkalmazás csempét.
 
 Ha az ajánlat nem jelenik meg, forduljon a [Fluent támogatási szolgálathoz](https://support.confluent.io). A Azure Active Directory bérlői AZONOSÍTÓjának az engedélyezett bérlők listáján kell lennie. A bérlői azonosító megkeresésének megismeréséhez tekintse meg [az Azure Active Directory bérlői azonosítójának megkeresése](../../active-directory/fundamentals/active-directory-how-to-find-tenant.md)című témakört.
+
+## <a name="purchase-errors"></a>Vásárlási hibák
+
+* A vásárlás sikertelen, mert egy érvényes bankkártya nincs csatlakoztatva az Azure-előfizetéshez, vagy egy fizetési mód nincs társítva az előfizetéshez.
+
+  Használjon másik Azure-előfizetést. Vagy adja hozzá vagy frissítse a hitelkártyát vagy a fizetési módot az előfizetéshez. További információ: [a kreditek és a fizetési mód frissítése](../../cost-management-billing/manage/change-credit-card.md).
+
+* Az EA-előfizetés nem teszi lehetővé a piactéren történő vásárlást.
+
+  Használjon másik előfizetést. Vagy ellenőrizze, hogy engedélyezve van-e az EA-előfizetés a piactéren történő vásárláshoz. További információ: a [Piactéri vásárlások engedélyezése](../../cost-management-billing/manage/ea-azure-marketplace.md#enabling-azure-marketplace-purchases). Ha ezek a beállítások nem oldják meg a problémát, forduljon az [Fluent támogatáshoz](https://support.confluent.io).
 
 ## <a name="conflict-error"></a>Ütközési hiba
 
@@ -65,6 +75,6 @@ Ha az SSO nem működik az Fluent Cloud SaaS-portálon, ellenőrizze, hogy a hel
 
 Ha a probléma továbbra is fennáll, forduljon a [Fluent támogatási szolgálathoz](https://support.confluent.io).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [kezelheti Apache Kafka-példányát](manage.md) az Fluent felhőhöz.

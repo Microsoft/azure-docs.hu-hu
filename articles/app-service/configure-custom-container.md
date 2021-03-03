@@ -2,14 +2,14 @@
 title: Egyéni tároló konfigurálása
 description: Megtudhatja, hogyan konfigurálhat egyéni tárolókat a Azure App Serviceban. A cikk a leggyakoribb konfigurációs feladatokat ismerteti.
 ms.topic: article
-ms.date: 09/22/2020
+ms.date: 02/23/2021
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: a7582bbb866a63820abbd959e06628eda5d57e29
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 8083c3c0c88d904ccb3ec75ae69a699867bd0f25
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007636"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704871"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Egyéni tároló konfigurálása az Azure App Service-hez
 
@@ -111,7 +111,7 @@ A PowerShellben:
 Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"DB_HOST"="myownserver.mysql.database.azure.com"}
 ```
 
-Az alkalmazás futtatásakor a rendszer automatikusan a folyamatba befecskendezi a App Service alkalmazás beállításait környezeti változókként. 
+Az alkalmazás futtatásakor a rendszer automatikusan a folyamatba befecskendezi a App Service alkalmazás beállításait környezeti változókként. A tároló környezeti változóit az URL-cím segítségével ellenőrizheti `https://<app-name>.scm.azurewebsites.net/Env)` .
 
 ::: zone pivot="container-windows"
 Az IIS vagy a .NET-keretrendszer (4,0 vagy újabb) alapú tárolók esetében a rendszer a `System.ConfigurationManager` .NET-alkalmazás beállításait és a kapcsolatok karakterláncait app Service automatikusan befecskendezi. Minden más nyelv vagy keretrendszer esetében környezeti változókként vannak megadva a folyamathoz, a következő megfelelő előtagok egyikével:
@@ -292,44 +292,55 @@ A csoportosan felügyelt szolgáltatásfiókok (csoportosan felügyelt szolgált
 
 ## <a name="enable-ssh"></a>SSH engedélyezése
 
-Az SSH lehetővé teszi a tároló és az ügyfél közötti biztonságos kommunikációt. Ahhoz, hogy egy egyéni tároló támogassa az SSH-t, fel kell vennie azt a Docker.
+Az SSH lehetővé teszi a tároló és az ügyfél közötti biztonságos kommunikációt. Ahhoz, hogy egy egyéni tároló támogassa az SSH-t, fel kell vennie magát a Docker-rendszerképbe.
 
 > [!TIP]
-> Az összes beépített Linux-tároló hozzá lett adva az SSH-utasításokhoz a rendszerkép-tárházban. A [Node.js 10,14 adattárral](https://github.com/Azure-App-Service/node/blob/master/10.14) az alábbi utasításokat követve megtekintheti, hogyan engedélyezhető ott.
+> A App Service összes beépített Linux-tárolója hozzá lett adva az SSH-utasításokhoz a rendszerkép-tárházban. A [Node.js 10,14 adattárral](https://github.com/Azure-App-Service/node/blob/master/10.14) az alábbi utasításokat követve megtekintheti, hogyan engedélyezhető ott. A Node.js beépített rendszerképben lévő konfiguráció némileg eltérő, de alapvetően ugyanez a helyzet.
 
-- A [futtatási](https://docs.docker.com/engine/reference/builder/#run) utasítás használatával telepítse az SSH-kiszolgálót, és állítsa be a rendszergazdai fiók jelszavát a következőre: `"Docker!"` . Az [alpesi Linux](https://hub.docker.com/_/alpine)-alapú rendszerképekhez például a következő parancsokat kell megadnia:
+- Vegyen fel [egy sshd_config fájlt](https://man.openbsd.org/sshd_config) a tárházba, az alábbi példához hasonlóan.
 
-    ```Dockerfile
-    RUN apk add openssh \
-         && echo "root:Docker!" | chpasswd 
     ```
-
-    Ez a konfiguráció nem engedélyezi a külső kapcsolatokat a tárolóval. Az SSH csak `https://<app-name>.scm.azurewebsites.net` a és a közzétételi hitelesítő adatokkal való hitelesítéssel érhető el.
-
-- Adja hozzá [ezt a sshd_config fájlt](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config) a rendszerkép-tárházhoz, és a [másolási](https://docs.docker.com/engine/reference/builder/#copy) utasítás használatával másolja a fájlt a */etc/ssh/* könyvtárba. *Sshd_config* fájlokról további információt az [OpenBSD dokumentációjában](https://man.openbsd.org/sshd_config)talál.
-
-    ```Dockerfile
-    COPY sshd_config /etc/ssh/
+    Port            2222
+    ListenAddress       0.0.0.0
+    LoginGraceTime      180
+    X11Forwarding       yes
+    Ciphers aes128-cbc,3des-cbc,aes256-cbc,aes128-ctr,aes192-ctr,aes256-ctr
+    MACs hmac-sha1,hmac-sha1-96
+    StrictModes         yes
+    SyslogFacility      DAEMON
+    PasswordAuthentication  yes
+    PermitEmptyPasswords    no
+    PermitRootLogin     yes
+    Subsystem sftp internal-sftp
     ```
 
     > [!NOTE]
-    > Az *sshd_config* fájlnak tartalmaznia kell a következő elemeket:
+    > Ez a fájl az OpenSSH-t konfigurálja, és tartalmaznia kell a következő elemeket:
+    > - `Port` 2222 értékre kell állítani.
     > - A `Ciphers` beállításnak tartalmaznia kell legalább egy elemet a következő listából: `aes128-cbc,3des-cbc,aes256-cbc`.
     > - A `MACs` beállításnak tartalmaznia kell legalább egy elemet a következő listából: `hmac-sha1,hmac-sha1-96`.
 
-- A következő [utasítás használatával](https://docs.docker.com/engine/reference/builder/#expose) nyissa meg a tárolóban az 2222-es portot. Bár a gyökér jelszava ismert, a 2222-es port nem érhető el az internetről. A szolgáltatás csak a privát virtuális hálózat híd hálózatán lévő tárolók számára érhető el.
+- A Docker adja hozzá a következő parancsokat:
 
     ```Dockerfile
+    # Install OpenSSH and set the password for root to "Docker!". In this example, "apk add" is the install instruction for an Alpine Linux-based image.
+    RUN apk add openssh \
+         && echo "root:Docker!" | chpasswd 
+
+    # Copy the sshd_config file to the /etc/ssh/ directory
+    COPY sshd_config /etc/ssh/
+
+    # Open port 2222 for SSH access
     EXPOSE 80 2222
     ```
+
+    Ez a konfiguráció nem engedélyezi a külső kapcsolatokat a tárolóval. A tároló 2222-es portja csak a privát virtuális hálózatok hálózati hidakon belül érhető el, és nem érhető el az interneten található támadók számára.
 
 - A tároló indítási parancsfájljában indítsa el az SSH-kiszolgálót.
 
     ```bash
     /usr/sbin/sshd
     ```
-
-    Példaként tekintse meg, hogy az alapértelmezett [Node.js 10,14 tároló](https://github.com/Azure-App-Service/node/blob/master/10.14/startup/init_container.sh) hogyan indítja el az SSH-kiszolgálót.
 
 ## <a name="access-diagnostic-logs"></a>Diagnosztikai naplók elérése
 

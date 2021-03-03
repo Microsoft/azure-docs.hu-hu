@@ -10,12 +10,12 @@ ms.date: 2/11/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: d006168de89a2709ed607568f36cacf5f924efcb
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 5c79ea68e648cd3d78f94eb2272b6f32e3c4806f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653503"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750305"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 Az első lépések előtt ügyeljen a következőre:
@@ -53,9 +53,11 @@ pod 'AzureCommunicationChat', '~> 1.0.0-beta.8'
 
 Telepítse a függőségeket, ez egy Xcode-munkaterületet is létrehoz: `pod install`
 
+**A pod telepítésének futtatása után nyissa meg újra a projektet a Xcode-ben az újonnan létrehozott lehetőség kiválasztásával `.xcworkspace` .**
+
 ### <a name="setup-the-placeholders"></a>A helyőrzők beállítása
 
-Nyissa meg a munkaterület fájlt `ChatQuickstart.xcworkspace` a Xcode-ben, majd nyissa meg a t `ViewController.swift` .
+Nyissa meg a munkaterületet a `ChatQuickstart.xcworkspace` Xcode, majd nyissa meg `ViewController.swift` .
 
 Ebben a rövid útmutatóban felvesszük a kódját `viewController` , és megtekintjük a kimenetet a Xcode-konzolon. Ez a rövid útmutató nem foglalkozik a felhasználói felület iOS-ben való létrehozásával. 
 

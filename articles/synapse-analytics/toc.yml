@@ -552,6 +552,10 @@
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
         - name: Spark-feladatdefiníciók küldése
           href: ./spark/apache-spark-job-definitions.md
+        - name: Azure szinapszis Spark alkalmazási szintű metrikáinak összekötése és figyelése
+          href: ./spark/connect-monitor-azure-synapse-spark-application-level-metrics.md
+        - name: Az alkalmazás szintű metrikák figyelése a Prometheus és a Grafana Apache Spark
+          href: ./spark/use-prometheus-grafana-to-monitor-apache-spark-application-level-metrics.md
     - name: Alapelvek
       items:
         - name: Apache Spark
@@ -566,17 +570,21 @@
           href: ./spark/apache-spark-machine-learning-concept.md
         - name: Notebooks
           href: ./spark/apache-spark-notebook-concept.md
+        - name: Csomagkezelés
+          href: ./spark/apache-spark-azure-portal-add-libraries.md
         - name: Figyelési eszközök
           href: monitoring/how-to-monitor-spark-applications.md
     - name: Útmutatók
       items:
         - name: A Delta Lake használata
           href: ./spark/apache-spark-delta-lake-overview.md
-        - name: Kódtárak kezelése
+        - name: Csomagok kezelése
           items:
-            - name: Kódtárak létrehozása és kezelése
-              href: ./spark/apache-spark-azure-portal-add-libraries.md
-            - name: A kódtár telepítési hibáinak elhárítása
+            - name: Python-csomagok kezelése
+              href: ./spark/apache-spark-manage-python-packages.md
+            - name: Scala-csomagok kezelése
+              href: ./spark/apache-spark-manage-scala-packages.md
+            - name: Python-csomag telepítési hibáinak elhárítása
               href: ./spark/apache-spark-troubleshoot-library-errors.md
         - name: Jegyzetfüzetek és IDE-eszközök használata
           items:

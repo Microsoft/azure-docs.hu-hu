@@ -3,12 +3,12 @@ title: NSX hálózati összetevők konfigurálása az Azure VMware-megoldásban
 description: Ismerje meg, hogyan konfigurálhatja az NSX-T hálózati szegmenseket az Azure VMware-megoldás konzoljának használatával.
 ms.topic: how-to
 ms.date: 02/16/2021
-ms.openlocfilehash: dbed29fb1063b78386f9ec1e2ee00d9c685a944e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 0478582a9bc4fb77a1784c27ec4f5c302d6b89fc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417705"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716997"
 ---
 # <a name="configure-nsx-network-components-in-azure-vmware-solution"></a>NSX hálózati összetevők konfigurálása az Azure VMware-megoldásban
 
@@ -36,13 +36,9 @@ NSX-T szegmenst hozhat létre és konfigurálhat a Azure Portal Azure VMware-meg
 >[!NOTE]
 >Ha DHCP-T szeretne használni, [konfigurálnia kell egy DHCP-kiszolgálót vagy DHCP-továbbítót](#create-a-dhcp-server-or-dhcp-relay-in-the-azure-portal) , mielőtt NSX-T-szegmenseket hozna létre és konfigurál.
 
-1. Az Azure VMware-megoldás saját felhőben a **munkaterhelés hálózat** területen válassza a **szegmensek**  >  **Hozzáadás** lehetőséget.
+1. Az Azure VMware-megoldás saját felhőben a **munkaterhelés hálózat** területen válassza a **szegmensek**  >  **Hozzáadás** lehetőséget. Adja meg az új logikai szegmens részleteit, és kattintson **az OK gombra**.
 
    :::image type="content" source="media/configure-nsx-network-components-azure-portal/add-new-nsxt-segment.png" alt-text="Az új szegmens hozzáadását bemutató képernyőkép.":::
-
-1. Adja meg az új logikai szegmens részleteit.
-
-   :::image type="content" source="media/configure-nsx-network-components-azure-portal/create-new-segment-details.png" alt-text="Az új szegmens részleteit ábrázoló képernyőkép.":::
    
    - **Szegmens neve** – a vCenter látható logikai kapcsoló neve.
    - **Alhálózati átjáró** – átjáró IP-címe a logikai kapcsoló alhálózatához alhálózati maszkkal. A virtuális gépek logikai kapcsolóhoz vannak csatolva, és az ehhez a kapcsolóhoz csatlakozó összes virtuális gép ugyanahhoz az alhálózathoz tartozik.  Emellett az ehhez a logikai szegmenshez csatolt összes virtuális gépnek ugyanahhoz a szegmenshez tartozó IP-címet kell továbbítania.
@@ -50,8 +46,6 @@ NSX-T szegmenst hozhat létre és konfigurálhat a Azure Portal Azure VMware-meg
    - **Csatlakoztatott átjáró**  -  *Alapértelmezés szerint ki van választva, és csak olvasható.*  1. rétegbeli átjáró és a szegmens információ típusa. 
       - **T1** – az 1. rétegbeli átjáró neve a NSX-T kezelőjében. Az Azure VMware-megoldás saját felhője egy NSX-T réteg-0 átjáró aktív/aktív módban, valamint egy alapértelmezett NSX-T 1. rétegbeli átjáró aktív/készenléti módban.  Az Azure VMware-megoldás konzolján létrehozott szegmensek csak az alapértelmezett 1. rétegbeli átjáróhoz csatlakoznak, a szegmensek munkaterhelései pedig East-West és North-South kapcsolattal rendelkeznek. A NSX-T Manager használatával csak további 1. rétegbeli átjárókat hozhat létre. Az NSX-T Manager konzolból létrehozott 1. szintű átjárók nem láthatók az Azure VMware Solution konzolon. 
       - Az Azure VMware-megoldás által támogatott **típus** -átfedési szegmens.
-
-1. A szegmens létrehozásához és az 1. rétegbeli átjáróhoz csatolásához kattintson **az OK gombra** . 
 
    A szegmens már látható az Azure VMware Solution Console, a NSX-T Manger és a vCenter között.
 
@@ -157,24 +151,12 @@ Az alapértelmezett DNS-zónát és FQDN-zónát úgy konfigurálja, hogy DNS-le
 
 ### <a name="step-2-configure-dns-service"></a>2. lépés DNS-szolgáltatás konfigurálása
 
-1. Válassza a **DNS-szolgáltatás** lapot, válassza a **Hozzáadás** lehetőséget, majd adja meg a következőket:
+1. Válassza a **DNS-szolgáltatás** lapot, majd válassza a **Hozzáadás** lehetőséget. Adja meg a részleteket, és kattintson **az OK gombra**.
 
    :::image type="content" source="media/configure-nsx-network-components-azure-portal/nsxt-workload-networking-configure-dns-service.png" alt-text="A DNS-szolgáltatáshoz szükséges adatokat bemutató képernyőkép.":::
 
-   1. A DNS-szolgáltatás neve.
-
-   1. Adja meg a DNS-szolgáltatás IP-címét.
-
-   1. Válassza ki a DNS-zónák lapon létrehozott alapértelmezett DNS-zónát.
-
-   1. Válassza ki a DNS-zónák lapon hozzáadott FQDN-zónákat.
-
-   1. Válassza ki a **naplózási szintet**.
-
    >[!TIP]
    >Az **1. rétegbeli átjáró** alapértelmezés szerint ki van választva, és az Azure VMware-megoldás telepítésekor létrehozott átjárót tükrözi.
-
-1. Válassza az **OK** lehetőséget. 
 
    A DNS-szolgáltatás hozzáadása sikeresen megtörtént.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: d1ba698cd95a074c021aa351a98eb12fc8ae0fc3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0b0dd584aee4a7647a3028ea20b517c0d74a330a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100617918"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734740"
 ---
 # <a name="connector-status-errors-in-the-itsmc-dashboard"></a>Az összekötő állapotával kapcsolatos hibák a ITSMC irányítópultján
 
@@ -56,7 +56,9 @@ A következő szakaszok ismertetik az irányítópult összekötő állapota sza
 
 ## <a name="invalid-refresh-token"></a>Érvénytelen frissítési jogkivonat
 
-**Hiba**: a AccessToken és a RefreshToken érvénytelen. A felhasználónak újra kell hitelesítenie magát. "
+**Hiba**: 
+  * "A AccessToken és a RefreshToken érvénytelen. A felhasználónak újra kell hitelesítenie magát. "
+  * "Nem lehetett szinkronizálni a sablonok konfigurációját az eseményekhez, a riasztásokhoz, az incidensekhez. További részletekért tekintse meg a kivételt jelző üzenetet. "
 
 **OK**: a frissítési jogkivonat lejárt.
 

@@ -8,12 +8,12 @@ ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: e914bcece9a30270d12d5c2cc09d3fd1014783c6
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 482e6c9f2e25b867574090a1f34e95f466916ba9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916507"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711841"
 ---
 # <a name="azure-file-share-protocols"></a>Azure fájlmegosztás protokollok
 
@@ -26,6 +26,7 @@ Azure Files két protokollt biztosít az Azure-fájlmegosztás csatlakoztatásá
 |Hozzáférési protokollok     |NFS 4,1         |SMB 2,1, SMB 3,0         |
 |Ajánlott operációs rendszer     |Linux kernel 4.3-as és újabb verziója         |Windows 2008 R2 +, Linux kernel 4.11 +         |
 |[Elérhető szintek](storage-files-planning.md#storage-tiers)     |Prémium szintű Storage         |Premium Storage, tranzakciós optimalizált, gyors elérésű, ritka elérésű         |
+|Számlázási modell         |[Kiosztott kapacitás kifizetése](https://docs.microsoft.com/azure/storage/files/understanding-billing#provisioned-model)         |A [prémium szintű csomag kiépített kapacitása](https://docs.microsoft.com/azure/storage/files/understanding-billing#provisioned-model), a [standard szintű](https://docs.microsoft.com/azure/storage/files/understanding-billing#pay-as-you-go-model) utólagos elszámolású csomagért fizetendő díj         |
 |[Redundancia](storage-files-planning.md#redundancy)     |LRS, ZRS         |LRS, ZRS, GRS         |
 |Hitelesítés     |Csak gazdagép-alapú hitelesítés        |Identitás-alapú hitelesítés, felhasználó alapú hitelesítés         |
 |Engedélyek     |UNIX-stílusú engedélyek         |NTFS-stílusú engedélyek         |

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: c37693bc6c9ce1cc5fed6c06ecb7fe628c315176
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f5855d7ab1f7ba8e11334f1373fb10166f47003a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573586"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708254"
 ---
 # <a name="deploy-azure-monitor"></a>Az Azure Monitor üzembe helyezése
 Az Azure-erőforrások figyelésének engedélyezése Azure Monitor az Azure Monitor-összetevők konfigurálását és az Azure-erőforrások konfigurálását is lehetővé teszi, hogy a gyűjtéshez Azure Monitor figyelési adatokat készítsenek. Ez a cikk a Azure Monitor teljes megvalósításához szükséges különböző lépéseket ismerteti az Azure-előfizetésében lévő összes erőforrás figyelésére szolgáló közös konfiguráció használatával. Az egyes lépésekhez tartozó alapszintű leírások a részletes konfigurációs követelményekre mutató hivatkozásokkal is rendelkeznek.
@@ -22,7 +22,7 @@ Az Azure-erőforrások figyelésének engedélyezése Azure Monitor az Azure Mon
 ## <a name="configuration-goals"></a>Konfigurációs célok
 A Azure Monitor teljes megvalósításának célja, hogy összegyűjtse az összes rendelkezésre álló adatot az összes felhőalapú erőforrásból és alkalmazásból, és lehetővé tegye, hogy az adatok alapján minél több funkciót lehessen Azure Monitor.
 
-A Azure Monitor által gyűjtött adatokat [Azure monitor metrikák](essentials/data-platform-metrics.md) vagy [Azure monitor naplók](logs/data-platform-logs.md)kapják meg. Mindegyik különböző típusú adattípust tárol, és különböző típusú elemzéseket és riasztásokat tesz lehetővé. A különböző típusú riasztások leírását lásd: [Azure monitor mérőszámok és naplók összehasonlítása](/data-platform.md) a [Microsoft Azure riasztások](alerts/alerts-overview.md) összevetésével és áttekintésével. 
+A Azure Monitor által gyűjtött adatokat [Azure monitor metrikák](essentials/data-platform-metrics.md) vagy [Azure monitor naplók](logs/data-platform-logs.md)kapják meg. Mindegyik különböző típusú adattípust tárol, és különböző típusú elemzéseket és riasztásokat tesz lehetővé. A különböző típusú riasztások leírását lásd: [Azure monitor mérőszámok és naplók összehasonlítása](data-platform.md) a [Microsoft Azure riasztások](alerts/alerts-overview.md) összevetésével és áttekintésével. 
 
 Néhány adat elküldhető mind a metrikák, mind a naplók számára a különböző funkciókkal való kihasználása érdekében. Ezekben az esetekben előfordulhat, hogy mindegyiket külön kell konfigurálnia. A metrikus adatokat például automatikusan elküldi az Azure-erőforrások a metrikák számára, amely támogatja a metrikák és a metrikai riasztásokat. Minden erőforráshoz létre kell hoznia egy diagnosztikai beállítást, hogy ugyanazokat a metrikákat küldje el a naplókhoz, ami lehetővé teszi, hogy a Log Analytics használatával elemezze a teljesítménnyel kapcsolatos trendeket más naplózási adatokkal. Az alábbi szakaszokban megtalálhatja az adatküldés helyét, és tartalmazza az egyes lépéseket, amelyek szükségesek az összes lehetséges helyhez való adatküldéshez.
 
@@ -84,32 +84,32 @@ Nézze meg, [mi figyeli a Azure monitor?](monitor-reference.md) a Azure monitor 
 
 A virtuális gépek hasonló adatokat hoznak, mint más Azure-erőforrásokat, de szüksége van egy ügynökre, amely adatokat gyűjt a vendég operációs rendszerből. A Azure Monitor által használt ügynökök összehasonlításához tekintse meg [Azure monitor ügynökök áttekintése](agents/agents-overview.md) című témakört. 
 
-A [Azure monitor for VMS](vm/vminsights-overview.md) a log Analytics ügynök és a függőségi ügynök használatával gyűjt adatokat a virtuális gépek vendég operációs rendszeréről, így ezeket az információkat az elemzés megvalósításának részeként is üzembe helyezheti. Ez lehetővé teszi, hogy a Log Analytics ügynök más, például Azure Security Center használó szolgáltatásokhoz.
+A [VM](vm/vminsights-overview.md) -elemzések a log Analytics ügynök és a függőségi ügynök használatával gyűjtenek adatokat a virtuális gépek vendég operációs rendszeréről, így ezeket az információkat az elemzés megvalósításának részeként is üzembe helyezheti. Ez lehetővé teszi, hogy a Log Analytics ügynök más, például Azure Security Center használó szolgáltatásokhoz.
 
 
 [![Azure-beli virtuális gép ](media/deploy/deploy-azure-vm.png) üzembe helyezése](media/deploy/deploy-azure-vm.png#lightbox)
 
 
-### <a name="configure-workspace-for-azure-monitor-for-vms"></a>Munkaterület konfigurálása Azure Monitor for VMshoz
-Azure Monitor for VMs egy Log Analytics-munkaterületet igényel, amely általában ugyanaz, mint a más Azure-erőforrásokból származó adatok gyűjtéséhez létrehozott. A virtuális gépek engedélyezése előtt hozzá kell adnia a munkaterülethez Azure Monitor for VMs szükséges megoldást.
+### <a name="configure-workspace-for-vm-insights"></a>Munkaterület konfigurálása a virtuális gépekhez – áttekintés
+A VM-elemzések Log Analytics munkaterületet igényelnek, amely általában ugyanaz, mint a más Azure-erőforrásokból származó adatok gyűjtéséhez létrehozott. A virtuális gépek engedélyezése előtt hozzá kell adnia a virtuálisgép-bepillantást igénylő megoldást a munkaterülethez.
 
-További részletekért lásd: [log Analytics munkaterület konfigurálása Azure monitor for VMS](vm/vminsights-configure-workspace.md) számára a Log Analytics munkaterület Azure monitor for VMshoz való konfigurálásával kapcsolatban.
+Lásd: [log Analytics munkaterület konfigurálása a VM](vm/vminsights-configure-workspace.md) -információkhoz a log Analytics munkaterület virtuálisgép-információkhoz való konfigurálásának részleteiért.
 
-### <a name="enable-azure-monitor-for-vms-on-each-virtual-machine"></a>Azure Monitor for VMs engedélyezése minden virtuális gépen
-Miután konfigurálta a munkaterületet, engedélyezheti az egyes virtuális gépeket a Log Analytics ügynök és a függőségi ügynök telepítésével. Az ügynökök telepítésére több módszer is rendelkezésre áll, beleértve a Azure Policy, amelyek lehetővé teszik az egyes virtuális gépek automatikus konfigurálását a létrehozásuk során. A Azure Monitor for VMs által összegyűjtött teljesítményadatokat és folyamat-adatokat Azure Monitor naplók tárolják.
+### <a name="enable-vm-insights-on-each-virtual-machine"></a>Virtuálisgép-bepillantást nyerhet minden virtuális gépen
+Miután konfigurálta a munkaterületet, engedélyezheti az egyes virtuális gépeket a Log Analytics ügynök és a függőségi ügynök telepítésével. Az ügynökök telepítésére több módszer is rendelkezésre áll, beleértve a Azure Policy, amelyek lehetővé teszik az egyes virtuális gépek automatikus konfigurálását a létrehozásuk során. A virtuálisgép-elemzések által összegyűjtött teljesítményadatokat és folyamat-adatokat Azure Monitor naplók tárolja.
 
-Az ügynökök virtuális gépekre történő üzembe helyezéséhez és a figyeléshez való engedélyezéséhez tekintse meg az [Azure monitor for VMS engedélyezése – áttekintés](vm/vminsights-enable-overview.md) című témakört.
+A virtuális gépekhez tartozó ügynökök üzembe helyezéséhez és a figyeléshez való engedélyezéséhez tekintse meg a [VM-információk áttekintését ismertető](vm/vminsights-enable-overview.md) cikket.
 
 ### <a name="configure-workspace-to-collect-events"></a>Munkaterület konfigurálása események gyűjtéséhez
-Azure Monitor for VMs gyűjti a teljesítményadatokat, valamint a folyamatok részleteit és függőségeit az egyes virtuális gépek vendég operációs rendszeréről. A Log Analytics ügynök naplókat is gyűjthet a vendégtől, beleértve az eseménynaplót a Windowsból és a syslog-ből a Linuxból. Lekéri a naplók konfigurációját a Log Analytics munkaterületről, amelyhez csatlakozik. Csak egyszer kell konfigurálnia a munkaterületet, és minden alkalommal, amikor egy ügynök csatlakozik, letölti a konfigurációs módosításokat. 
+A VM-elemzések a Teljesítményadatok és a folyamatok részleteit és függőségeit gyűjtik össze az egyes virtuális gépek vendég operációs rendszeréről. A Log Analytics ügynök naplókat is gyűjthet a vendégtől, beleértve az eseménynaplót a Windowsból és a syslog-ből a Linuxból. Lekéri a naplók konfigurációját a Log Analytics munkaterületről, amelyhez csatlakozik. Csak egyszer kell konfigurálnia a munkaterületet, és minden alkalommal, amikor egy ügynök csatlakozik, letölti a konfigurációs módosításokat. 
 
 Az ügynök virtuális gépei további adatainak gyűjtéséhez tekintse Log Analytics meg az [ügynök adatforrásait Azure monitorban](agents/agent-data-sources.md) .
 
 > [!NOTE]
-> A munkaterületet úgy is beállíthatja, hogy teljesítményszámlálókat gyűjtsön, de ez valószínűleg redundáns, Azure Monitor for VMs által összegyűjtött teljesítményadatokat eredményez. A munkaterület által gyűjtött teljesítményadatokat a rendszer a *perf* táblában tárolja, míg Azure monitor for VMS által gyűjtött teljesítményadatokat a *InsightsMetrics* táblában tárolja. Csak akkor konfigurálja a teljesítményadatokat a munkaterületen, ha a Azure Monitor for VMs által még nem gyűjtött számlálókat igényel.
+> A munkaterületet a teljesítményszámlálók összegyűjtésére is beállíthatja, de ez valószínűleg redundáns a VM-elemzések által összegyűjtött teljesítményadatokat is. A munkaterület által összegyűjtött teljesítményadatokat a rendszer a *perf* táblában tárolja, míg a VM-elemzések által gyűjtött teljesítményadatokat a *InsightsMetrics* tábla tárolja. Csak akkor konfigurálja a teljesítményadatokat a munkaterületen, ha olyan számlálókat követel meg, amelyeket a virtuális gépek által még nem gyűjtöttek be.
 
 ### <a name="diagnostic-extension-and-telegraf-agent"></a>Diagnosztikai bővítmény és a-Grafi ügynök
-A Azure Monitor for VMs a Log Analytics-ügynököt használja, amely teljesítményadatokat küld egy Log Analytics munkaterületre, de nem Azure Monitor metrikákat. Ezeknek az adatoknak a metrikák számára történő elküldése lehetővé teszi, hogy a Metrikaböngésző és metrikus riasztásokkal is használható legyen. Ehhez szükség van a diagnosztikai bővítményre a Windows rendszeren és a Linuxon futó, a (z) szolgáltatásban.
+A VM-elemzések a Log Analytics ügynököt használják, amely teljesítményadatokat küld egy Log Analytics munkaterületre, de nem Azure Monitor metrikákat. Ezeknek az adatoknak a metrikák számára történő elküldése lehetővé teszi, hogy a Metrikaböngésző és metrikus riasztásokkal is használható legyen. Ehhez szükség van a diagnosztikai bővítményre a Windows rendszeren és a Linuxon futó, a (z) szolgáltatásban.
 
 Az ügynökök telepítésével és konfigurálásával kapcsolatos részleteket lásd: a [Windows Azure Diagnostics bővítmény (wad) telepítése és konfigurálása](agents/diagnostics-extension-windows-install.md) , valamint [Egyéni metrikák gyűjtése Linux rendszerű virtuális gépekhez a InfluxData-Graf ügynökkel](essentials/collect-custom-metrics-linux-telegraf.md) .
 

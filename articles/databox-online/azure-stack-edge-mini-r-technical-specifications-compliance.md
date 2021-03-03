@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: e6dff06e92126e2fc4538273e229dcb0904e3101
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3a0b87f04e60fd56d543c7c7a752cd788e087c78
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466675"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727481"
 ---
 # <a name="azure-stack-edge-mini-r-technical-specifications"></a>A Azure Stack Edge mini R műszaki specifikációi
 
@@ -80,9 +80,9 @@ A következő táblázat az áramellátási egység specifikációit tartalmazza
 
 ## <a name="included-battery"></a>Befoglalt akkumulátor
 
-Az Azure Stack Edge mini R-eszköz tartalmaz egy, a tápegység által felszámított bevezető akkumulátort is. 
+Az Azure Stack Edge mini R-eszköz tartalmaz egy, a tápegység által felszámított bevezető akkumulátort is.
 
-A bevezető akkumulátorral együtt további 2590-es típusú akkumulátort is használhat az eszköznek a díjak közötti kibővítéséhez. Az akkumulátornak meg kell felelnie a használati országban érvényes összes biztonsági, szállítási és környezeti előírásnak.
+A bevezető akkumulátorral együtt további 2590-es [típusú akkumulátort](https://www.bren-tronics.com/bt-70791ck.html) is használhat az eszköznek a díjak közötti kibővítéséhez. Az akkumulátornak meg kell felelnie a használati országban érvényes összes biztonsági, szállítási és környezeti előírásnak.
 
 
 | Specifikáció           | Érték                      |
@@ -118,7 +118,7 @@ A következő táblázat felsorolja az eszköz súlyát, beleértve az akkumulá
 Ez a szakasz felsorolja a bekerítési környezettel kapcsolatos specifikációkat, például a hőmérsékletet, a páratartalmat és a magasságot.
 
 
-|     Specifikációk             |     Description                                                          |
+|     Specifikációk             |     Leírás                                                          |
 |--------------------------------|--------------------------------------------------------------------------|
 |     Hőmérséklet-tartomány          |     0 – 43 ° C (működési)                                              |
 |     Rezgés                  |     MIL-STD-810 metódus 514,7 *<br> Eljárás I CAT 4, 20                  |
@@ -128,6 +128,6 @@ Ez a szakasz felsorolja a bekerítési környezettel kapcsolatos specifikációk
 **Minden hivatkozás a MIL-STD-810G változásra 1 (2014)*
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Stack Edge mini R üzembe helyezése](azure-stack-edge-placeholder.md)

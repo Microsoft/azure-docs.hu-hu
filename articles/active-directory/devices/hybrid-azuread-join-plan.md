@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c4ed5dfee80c33009874361ae6b4d23ec00bc26
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 419823086fd7ba05ba5023216be302576350e30a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99573330"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687285"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Útmutató: a hibrid Azure Active Directory JOIN implementációjának megtervezése
 
@@ -95,6 +95,7 @@ Első tervezési lépésként tekintse át a környezetet, és állapítsa meg, 
 Ha a Windows 10 tartományhoz csatlakoztatott eszközök az Azure AD-t a bérlőhöz [regisztrálják](overview.md#getting-devices-in-azure-ad) , akkor a hibrid Azure ad-hez csatlakoztatott és az Azure ad-beli regisztrált eszközök kettős állapotát eredményezheti. Javasoljuk, hogy a forgatókönyv automatikus megoldásához frissítsen a Windows 10 1803 (KB4489894 alkalmazott) vagy újabb verzióra. Az 1803-os kiadásokban a hibrid Azure AD-csatlakozás engedélyezése előtt manuálisan el kell távolítania az Azure AD-beli regisztrált állapotot. A 1803-es és újabb verzióiban a következő módosítások történtek a kettős állapot elkerüléséhez:
 
 - Egy felhasználó meglévő Azure AD-beli regisztrált állapota automatikusan törlődik, <i>Miután az eszköz hibrid Azure ad-hez csatlakozik, és ugyanaz a felhasználó jelentkezik be</i>. Ha például a felhasználó egy Azure AD-beli regisztrált állapottal rendelkezik az eszközön, akkor az A felhasználó kettős állapota csak akkor törlődik, ha a felhasználó bejelentkezik az eszközre. Ha több felhasználó is van ugyanazon az eszközön, akkor a kettős állapotot a rendszer egyenként megtisztítja, amikor a felhasználók bejelentkeznek. Az Azure AD regisztrált állapotának eltávolítása mellett a Windows 10 törli az eszköz regisztrációját az Intune-ból vagy más MDM is, ha a regisztráció az Azure AD regisztrálásának részeként történt automatikus regisztrációval.
+- Ez a változás nem érinti az Azure AD-ban regisztrált állapotot az eszközön lévő összes helyi fiókon. Csak a tartományi fiókokra vonatkozik. Így az Azure AD-beli regisztrált állapot a helyi fiókoknál még a felhasználó bejelentkezése után sem lesz automatikusan eltávolítva, mert a felhasználó nem tartományi felhasználó. 
 - Megakadályozhatja, hogy a tartományhoz csatlakoztatott eszköz regisztrálva legyen az Azure AD-ben, ha hozzáadja a következő beállításértéket a HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin: "BlockAADWorkplaceJoin" = DWORD: 00000001.
 - Windows 10 1803 rendszerben, ha a vállalati Windows Hello konfigurálva van, a felhasználónak újra kell telepítenie a Windows Hello for businesst a kettős állapot törlése után. Ez a probléma a KB4512509-mel foglalkozott
 
@@ -166,7 +167,7 @@ Előfordulhat, hogy a helyszíni AD-felhasználók UPN-felhasználónevei eltér
 
 Az alábbi táblázat részletesen ismerteti ezen helyszíni AD UPN-ket a Windows 10 hibrid Azure AD JOIN szolgáltatásban
 
-| A helyszíni AD UPN típusa | Alkalmazási tartomány típusa | Windows 10 verzió | Description |
+| A helyszíni AD UPN típusa | Alkalmazási tartomány típusa | Windows 10 verzió | Leírás |
 | ----- | ----- | ----- | ----- |
 | Irányítható | Összevont | 1703-es kiadásból | Általánosan elérhető |
 | Nem irányítható | Összevont | 1803-es kiadásból | Általánosan elérhető |

@@ -10,16 +10,16 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 7/16/2020
 ms.author: jonbeck
-ms.openlocfilehash: d805fb926131e047572887758b10506e4edd5944
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1e2eddd821bb7a9d2050913efef3d73b406e32f7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183379"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733210"
 ---
 # <a name="tutorial-creating-a-new-child-dns-zone"></a>Oktatóanyag: új gyermek DNS-zóna létrehozása
 
-Az oktatóanyag a következőket ismerteti: 
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni: 
 
 > [!div class="checklist"]
 > * Bejelentkezés az Azure Portalra.
@@ -50,7 +50,7 @@ Kétféle módon hozhatja létre a gyermek DNS-zónáját.
 ## <a name="create-child-dns-zone-via-create-dns-zone"></a>Gyermek DNS-zóna létrehozása DNS-zóna létrehozása révén
 
 Ebben a lépésben létrehozunk egy új, **subdomain.contoso.com** nevű gyermek DNS-zónát, és delegáljuk a meglévő szülő DNS-zóna **contoso.com**. A DNS-zónát a **DNS-zóna létrehozása** lap lapfülei segítségével hozza létre.
-1.  Az Azure Portal menüjében vagy a **Kezdőlapon** lapon válassza az **Erőforrás létrehozása** elemet. Megjelenik az **új** ablak.
+1.  Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet. Megjelenik az **új** ablak.
 1.  Válassza a **hálózatkezelés**, majd a **DNS-zóna** lehetőséget, majd kattintson a **Hozzáadás** gombra.
 
 1.  Az **alapvető beállítások** lapon írja be vagy válassza ki a következő értékeket:
@@ -81,7 +81,8 @@ Létrehozhat egy új alárendelt DNS-zónát is, és delegálhatja azt a szülő
 1.  Válassza a **Next (tovább** ) gombot, majd a **következőt: felülvizsgálat + létrehozás**.
 1.  A **felülvizsgálat + létrehozás** lapon tekintse át az összegzést, javítsa ki az érvényesítési hibákat, majd válassza a **Létrehozás** lehetőséget.
 
-    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-inline.png" alt-text="Képernyőkép a kijelölt gyermek zónáról" border="true"  lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-expanded.png":::
+    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-inline.png" alt-text="Képernyőkép a kijelölt gyermek zónáról" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-expanded.png":::
+
 ## <a name="verify-child-dns-zone"></a>Gyermek DNS-zóna ellenőrzése
 Most, hogy létrehozta a *subdomain.contoso.com* új alárendelt DNS-zónáját. Annak ellenőrzéséhez, hogy a delegálás megfelelően történt-e, ellenőrizze, hogy a alárendelt zónához tartozó névkiszolgáló-(NS-) rekordok szerepelnek-e a szülő zónában az alább leírtak szerint.  
 

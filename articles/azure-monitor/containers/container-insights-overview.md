@@ -1,18 +1,18 @@
 ---
-title: A tárolók Azure Monitor áttekintése | Microsoft Docs
-description: Ez a cikk azokat a tárolókat ismerteti Azure Monitor, amelyek az AK-tárolók bevezetési megoldását figyelik, valamint a általa nyújtott értéket az AK-fürtök és az Azure-Container Instances állapotának figyelésével.
+title: A Container betekintésének áttekintése | Microsoft Docs
+description: Ez a cikk azokat a tároló-megállapításokat ismerteti, amelyek az AK Container bepillantást és a általa nyújtott értéket figyelik az AK-fürtök és az Azure-Container Instances állapotának monitorozásával.
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: a9b9e155884b20c19b9b82994a3b9b1bdf53f27a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1055e2228c6625ae24e6bf388cf297e3e3363666
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621188"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723384"
 ---
-# <a name="azure-monitor-for-containers-overview"></a>Tárolókhoz készült Azure Monitor – áttekintés
+# <a name="container-insights-overview"></a>A Container-információk áttekintése
 
-A tárolók Azure Monitor a-ben üzembe helyezett tároló-munkaterhelések teljesítményének figyelésére szolgáló szolgáltatás:
+A Container bepillantást a szolgáltatás a következőre telepített tároló-munkaterhelések teljesítményének figyelésére szolgál:
 
 - Az [Azure Kubernetes szolgáltatásban (ak)](../../aks/intro-kubernetes.md) üzemeltetett fürtök Managed Kubernetes
 - Az Azure-ban üzemeltetett önfelügyelt Kubernetes-fürtök az [AK motor](https://github.com/Azure/aks-engine) használatával
@@ -21,17 +21,17 @@ A tárolók Azure Monitor a-ben üzembe helyezett tároló-munkaterhelések telj
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)
 - [Azure arc-kompatibilis Kubernetes](../../azure-arc/kubernetes/overview.md) (előzetes verzió)
 
-A tárolók Azure Monitor támogatja a Linux és a Windows Server 2019 operációs rendszert futtató fürtöket. Az általa támogatott tároló-futtatókörnyezetek a Docker, a Moby és az olyan ICC-kompatibilis futtatókörnyezetek, mint például az ICC-O és a tárolók.
+A tároló-felismerések támogatják a Linux és a Windows Server 2019 operációs rendszert futtató fürtöket. Az általa támogatott tároló-futtatókörnyezetek a Docker, a Moby és az olyan ICC-kompatibilis futtatókörnyezetek, mint például az ICC-O és a tárolók.
 
 A tárolók monitorozása kritikus fontosságú, különösen akkor, ha éles fürtöt futtat, több alkalmazással.
 
-A tárolók Azure Monitor a teljesítmény láthatóságát azáltal, hogy a mérőszámok API-n keresztül Kubernetes elérhető vezérlőket, csomópontokat és tárolókat gyűjt a memória és a processzor metrikáinak összegyűjtéséhez. A rendszer a tárolónaplókat is gyűjti.  Miután engedélyezte a Kubernetes-fürtök figyelését, a rendszer automatikusan összegyűjti a metrikákat és a naplókat a linuxos Log Analytics-ügynök egy tárolós verziójában. A metrikák a metrikák tárolójába íródnak, és a rendszer a napló adatait a [log Analytics](../log-query/log-query-overview.md) munkaterülethez társított naplók tárolójába írja.
+A tároló-felismerések teljesítménybeli láthatóságot biztosítanak azáltal, hogy a mérőszámok API-n keresztül Kubernetes elérhető vezérlőket, csomópontokat és tárolókat gyűjtenek a memória és a processzor metrikáinak összegyűjtésével. A rendszer a tárolónaplókat is gyűjti.  Miután engedélyezte a Kubernetes-fürtök figyelését, a rendszer automatikusan összegyűjti a metrikákat és a naplókat a linuxos Log Analytics-ügynök egy tárolós verziójában. A metrikák a metrikák tárolójába íródnak, és a rendszer a napló adatait a [log Analytics](../logs/log-query-overview.md) munkaterülethez társított naplók tárolójába írja.
 
-![Azure Monitor a tárolók architektúrához](./media/container-insights-overview/azmon-containers-architecture-01.png)
+![Tároló-felismerési architektúra](./media/container-insights-overview/azmon-containers-architecture-01.png)
 
-## <a name="what-does-azure-monitor-for-containers-provide"></a>Mit nyújt a tárolók Azure Monitor?
+## <a name="what-does-container-insights-provide"></a>Mit biztosít a tárolók betekintése?
 
-A tárolók Azure Monitor a Azure Monitor különböző funkcióit használó átfogó figyelési élményt nyújt. Ezek a funkciók lehetővé teszik a Linux és a Windows Server 2019 operációs rendszert futtató Kubernetes-fürt teljesítményének és állapotának, valamint a tároló munkaterhelésének megismerését. A tárolókhoz készült Azure Monitor használatával megteheti a következőket:
+A Container-elemzések átfogó figyelési élményt biztosítanak a Azure Monitor különböző szolgáltatásainak használatával. Ezek a funkciók lehetővé teszik a Linux és a Windows Server 2019 operációs rendszert futtató Kubernetes-fürt teljesítményének és állapotának, valamint a tároló munkaterhelésének megismerését. A Container bepillantást a következőket teheti:
 
 * Azonosítsa a csomóponton futó AK-tárolókat, valamint a processzor és a memória átlagos kihasználtságát. Ez az információ segít azonosítani az erőforrás szűk keresztmetszeteit.
 * Azonosítsa a tároló-csoportok és a Azure Container Instancesban üzemeltetett tárolók processzorát és memóriájának kihasználtságát.
@@ -56,19 +56,18 @@ A Windows Server-fürtök Linux-fürthöz képest történő figyelésének fő 
 - Csak a pod környezetek figyelhetők meg, nem pedig a Docker-környezetek.
 - Az előzetes kiadásban legfeljebb 30 Windows Server-tároló támogatott. Ez a korlátozás nem vonatkozik a Linux-tárolók esetében.
 
-Tekintse meg az alábbi videót, amely egy köztes szintű részletes bemutatót biztosít, amely segít megismerni az AK-fürt Azure Monitor for containers szolgáltatással való figyelését.
+Tekintse meg az alábbi videót, amely egy köztes szintű részletes bemutatót biztosít, amely segít megismerni az AK-fürtöket a tároló-megállapításokkal.
 
-> [!VIDEO https://www.youtube.com/embed/RjsNmapggPU]
+> [!VIDEO https://youtu.be/XEdwGvS2AwA]
 
 ## <a name="how-do-i-access-this-feature"></a>Hogyan hozzáférni a szolgáltatáshoz?
 
-A tárolók Azure Monitor kétféleképpen, Azure Monitor vagy közvetlenül a kiválasztott AK-fürtből érheti el. A Azure Monitor globális perspektívát biztosít az összes üzembe helyezett tárolóról, amelyeket figyel, és amelyek nem, így lehetővé teszi az előfizetések és erőforráscsoportok keresését és szűrését, majd a kiválasztott tárolóból származó tárolók Azure Monitorének részletezését.  Ellenkező esetben közvetlenül egy kiválasztott AK-tárolóból is elérheti a szolgáltatást az AK-ból származó lapról.
+A Container bepillantást kétféleképpen érheti el, Azure Monitor vagy közvetlenül a kiválasztott AK-fürtből. A Azure Monitor globális perspektívát biztosít az összes üzembe helyezett tárolóról, amelyek figyelése és nem, így lehetővé teszi az előfizetések és az erőforráscsoportok keresését és szűrését, majd a kiválasztott tárolóból való betekintést nyújt a tárolóba.  Ellenkező esetben közvetlenül egy kiválasztott AK-tárolóból is elérheti a szolgáltatást az AK-ból származó lapról.
 
-![A tárolók Azure Monitor elérési módszereinek áttekintése](./media/container-insights-overview/azmon-containers-experience.png)
+![A tároló-információk elérésére szolgáló módszerek áttekintése](./media/container-insights-overview/azmon-containers-experience.png)
 
-Ha az AK-n kívül futó Docker-és Windows-tároló gazdagépek figyelését és felügyeletét érdekli, tekintse meg a [tároló-figyelési megoldást](../insights/containers.md).
+Ha az AK-n kívül futó Docker-és Windows-tároló gazdagépek figyelését és felügyeletét érdekli, tekintse meg a [tároló-figyelési megoldást](./containers.md).
 
 ## <a name="next-steps"></a>Következő lépések
 
-A Kubernetes-fürt figyelésének megkezdéséhez tekintse át, [hogyan engedélyezheti a tárolók Azure monitor](container-insights-onboard.md) a figyelés engedélyezéséhez szükséges követelmények és a rendelkezésre álló módszerek megismerése érdekében.
-
+A Kubernetes-fürt figyelésének megkezdéséhez tekintse át, [hogyan engedélyezheti a tárolók bepillantást](container-insights-onboard.md) a követelmények és az elérhető módszerek megismeréséhez a figyelés engedélyezéséhez.

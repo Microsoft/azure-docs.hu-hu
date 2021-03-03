@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 09/11/2020
-ms.openlocfilehash: 87951c0366090c1ea4eba490d114771e47bf452c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 304c359296c4fbff79dd367facd8bbb98c8903b5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627529"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731442"
 ---
 # <a name="resource-manager-template-samples-for-diagnostic-settings-in-azure-monitor"></a>Resource Manager-sablonok – minták a diagnosztikai beállításokhoz Azure Monitor
 Ez a cikk minta [Azure Resource Manager sablonokat](../../azure-resource-manager/templates/template-syntax.md) tartalmaz az Azure-erőforrások diagnosztikai beállításainak létrehozásához. Mindegyik minta tartalmaz egy sablonfájlt és egy, a sablonhoz adni kívánt minta értékeket tartalmazó paramétereket tartalmazó fájlt.
@@ -349,7 +349,7 @@ Az alábbi minta egy Azure SQL Database diagnosztikai beállítását hozza lét
 ```
 
 ## <a name="diagnostic-setting-for-recovery-services-vault"></a>Diagnosztikai beállítás a Recovery Services-tárolóhoz
-Az alábbi minta egy Azure Recovery Services-tároló diagnosztikai beállítását hozza létre a sablonhoz egy típusú erőforrás hozzáadásával `microsoft.recoveryservices/vaults/providers/diagnosticSettings` . Ez a példa az [Azure erőforrás-naplókban](../platform/resource-logs.md#send-to-log-analytics-workspace)leírt gyűjteményi módot adja meg. `Dedicated`A tulajdonság megadása vagy megadása `AzureDiagnostics` `logAnalyticsDestinationType` .
+Az alábbi minta egy Azure Recovery Services-tároló diagnosztikai beállítását hozza létre a sablonhoz egy típusú erőforrás hozzáadásával `microsoft.recoveryservices/vaults/providers/diagnosticSettings` . Ez a példa az [Azure erőforrás-naplókban](./resource-logs.md#send-to-log-analytics-workspace)leírt gyűjteményi módot adja meg. `Dedicated`A tulajdonság megadása vagy megadása `AzureDiagnostics` `logAnalyticsDestinationType` .
 
 ### <a name="template-file"></a>Sablonfájl
 
@@ -812,5 +812,5 @@ A következő minta létrehoz egy diagnosztikai beállítást a Storage-fiókban
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [További Azure monitor-sablonok beszerzése](../samples/resource-manager-samples.md).
+* [További Azure monitor-sablonok beszerzése](../resource-manager-samples.md).
 * [További információ a diagnosztikai beállításokról](../essentials/diagnostic-settings.md).

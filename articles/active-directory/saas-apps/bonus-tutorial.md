@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: d83a2bc4723686920b487998a2040e5be02d4e1a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e93d03ac9ec404a18b480a0cd1bfe289944b60d8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456959"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689113"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>Oktatóanyag: Azure Active Directory integráció a Bonus-nal
 
@@ -67,7 +67,7 @@ Az Azure AD-be való bónuszok integrálásának konfigurálásához bónuszokat
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD-alapú egyszeri bejelentkezést az **Britta Simon**nevű teszt-felhasználó alapján, prémium szintűen konfigurálja és teszteli.
+Ebben a szakaszban az Azure AD-alapú egyszeri bejelentkezést az **Britta Simon** nevű teszt-felhasználó alapján, prémium szintűen konfigurálja és teszteli.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolatra van szükség.
 
 Az Azure AD egyszeri bejelentkezés prémium szintű konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés prémium szintű konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **prémium** szintű alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **prémium** szintű alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -128,10 +128,10 @@ Az Azure AD egyszeri bejelentkezés prémium szintű konfigurálásához hajtsa 
 
 1. Egy másik böngészőablakban jelentkezzen be a **bónusz** bérlőbe.
 
-1. A felső eszköztáron kattintson a **Beállítások** , majd az **integrációk és alkalmazások**elemre.
+1. A felső eszköztáron kattintson a **Beállítások** , majd az **integrációk és alkalmazások** elemre.
 
     ![Rendkívüli közösségi szakasz](./media/bonus-tutorial/ic773686.png "Bonusly")
-1. Az **egyszeri bejelentkezés**területen válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés** területen válassza az **SAML** lehetőséget.
 
 1. Az **SAML** párbeszédpanelen hajtsa végre a következő lépéseket:
 
@@ -141,7 +141,7 @@ Az Azure AD egyszeri bejelentkezés prémium szintű konfigurálásához hajtsa 
 
     b. A **identitásszolgáltató bejelentkezési URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-címet**, amelyet a Azure Portalból másolt.
 
-    c. A **identitásszolgáltató kiállító** szövegmezőben illessze be az **Azure ad-azonosító**értékét, amelyet a Azure Portalból másolt.
+    c. A **identitásszolgáltató kiállító** szövegmezőben illessze be az **Azure ad-azonosító** értékét, amelyet a Azure Portalból másolt.
     
     d. Illessze be Azure Portalba másolt **ujjlenyomatot** a **CERT ujjlenyomat** szövegmezőbe.
     
@@ -151,7 +151,7 @@ Az Azure AD egyszeri bejelentkezés prémium szintű konfigurálásához hajtsa 
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -175,15 +175,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést, ha prémium szintű hozzáférést biztosít.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **bónuszok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **bónuszok** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **bónuszok**lehetőséget.
+2. Az alkalmazások listában válassza a **bónuszok** lehetőséget.
 
     ![Az alkalmazások listájában szereplő prémium hivatkozás](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -216,7 +216,7 @@ Ha engedélyezni szeretné, hogy az Azure AD-felhasználók bejelentkezzenek a B
 
     ![Felhasználók és bónuszok](./media/bonus-tutorial/ic781042.png "Felhasználók és bónuszok")
 
-1. Kattintson a **felhasználók kezelése**lehetőségre.
+1. Kattintson a **felhasználók kezelése** lehetőségre.
 
     ![Felhasználók kezelése](./media/bonus-tutorial/ic781043.png "Felhasználók kezelése")
 
@@ -228,11 +228,11 @@ Ha engedélyezni szeretné, hogy az Azure AD-felhasználók bejelentkezzenek a B
 
     ![Képernyőfelvétel: a felhasználó hozzáadása párbeszédpanel, amelyen megadhatja ezeket az adatokat.](./media/bonus-tutorial/ic781045.png "Felhasználó hozzáadása")  
 
-    a. Az **Utónév** szövegmezőbe írja be a felhasználó utónevét, például a **Britta**nevet.
+    a. Az **Utónév** szövegmezőbe írja be a felhasználó utónevét, például a **Britta** nevet.
 
-    b. A **vezetékneve** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon**nevet.
+    b. A **vezetékneve** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon** nevet.
 
-    c. Az **e-mail** szövegmezőbe írja be a felhasználóhoz hasonló e-mail címet `brittasimon\@contoso.com` .
+    c. Az **e-mail** szövegmezőbe írja be a felhasználóhoz hasonló e-mail címet `brittasimon@contoso.com` .
 
     d. Kattintson a **Mentés** gombra.
 

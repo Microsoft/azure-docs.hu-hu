@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 02/16/2021
+ms.date: 02/25/2021
 ms.author: victorh
-ms.openlocfilehash: e823e1efc66592e9f48b7ff5e53a176a4e8cb514
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: ff5c6961e64deddc8e52dc92a7c34b5b369a44ed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100549725"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715564"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>Azure Firewall Premium előzetes verziójának funkciói
 
@@ -80,7 +80,20 @@ A kategóriákat a **felelősség**, a **nagy sávszélesség**, az **üzleti ha
 
 #### <a name="category-exceptions"></a>Kategória kivételei
 
-Kivételeket hozhat létre a webes kategória szabályaihoz. Hozzon létre egy külön engedélyezési vagy megtagadási szabályt a szabály gyűjtési csoportjában magasabb prioritással. Beállíthat például egy olyan szabálygyűjtemény-gyűjteményt `www.linkedin.com` , amely az 100-es prioritással rendelkezik, és olyan szabálygyűjtemény használatát teszi lehetővé, amely megtagadja a **közösségi hálózatkezelést** a 200-es prioritással. Ez létrehozza a kivételt az előre definiált **közösségi hálózat** webes kategóriához. 
+Kivételeket hozhat létre a webes kategória szabályaihoz. Hozzon létre egy külön engedélyezési vagy megtagadási szabályt a szabály gyűjtési csoportjában magasabb prioritással. Beállíthat például egy olyan szabálygyűjtemény-gyűjteményt `www.linkedin.com` , amely az 100-es prioritással rendelkezik, és olyan szabálygyűjtemény használatát teszi lehetővé, amely megtagadja a **közösségi hálózatkezelést** a 200-es prioritással. Ez létrehozza a kivételt az előre definiált **közösségi hálózat** webes kategóriához.
+
+#### <a name="categorization-change"></a>Kategorizálási változás
+
+A kategorizálási változást a következő lehetőségekkel kérheti le:
+
+ - úgy gondolja, hogy egy teljes tartománynevet vagy URL-címet más kategóriába kell tartoznia 
+ 
+vagy 
+
+- egy Kategorizálatlan FQDN vagy URL-cím javasolt kategóriája
+
+Szívesen küld egy kérelmet a következő címen: [https://aka.ms/azfw-webcategories-request](https://aka.ms/azfw-webcategories-request) .
+ 
 
 ## <a name="known-issues"></a>Ismert problémák
 
@@ -98,6 +111,7 @@ Nem megbízható ügyfél által aláírt tanúsítványok|Az ügyfél által al
 |Nem megfelelő forrás IP-cím a riasztásokban a HTTP-IDP (TLS-ellenőrzés nélkül).|Ha az egyszerű szöveges HTTP-forgalom használatban van, és a IDP új riasztást ad ki, és a cél nyilvános IP-cím, a megjelenített forrás IP-címe helytelen (a belső IP-cím az eredeti IP-cím helyett jelenik meg).|Javítás ütemezése a GA-ban.|
 |Tanúsítvány propagálása|A HITELESÍTÉSSZOLGÁLTATÓI tanúsítványnak a tűzfalon való alkalmazása után a tanúsítvány érvénybe léptetéséhez 5-10 percet is igénybe vehet.|Javítás ütemezése a GA-ban.|
 |IDP megkerülése|A IDP megkerülése nem működik a TLS-leállított forgalom esetében, és a forrás IP-cím és a forrás IP-csoportok nem támogatottak.|Javítás ütemezése a GA-ban.|
+|TLS 1,3-támogatás|A TLS 1,3 részlegesen támogatott. Az ügyfél és a tűzfal közötti TLS-alagút a TLS 1,2-alapú, a tűzfaltól a külső webkiszolgálóig a TLS 1,3-alapú.|A frissítések vizsgálata folyamatban van.|
 
 
 

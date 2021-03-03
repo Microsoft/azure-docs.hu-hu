@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 96d8c32791bd968dd8740a2d4633496b42e9f3f4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 26cfdf05847b01d28a8574483acc89cfeced0ffa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100617568"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717740"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Speciális automatikus méretezési konfiguráció a Resource Manager-sablonokkal VM Scale Sets
 A Virtual Machine Scale Sets méretezési és kibővíthető teljesítmény-metrikai küszöbértékek, ismétlődő ütemterv vagy egy adott dátum alapján. A méretezési műveletekhez e-mail-és webhook-értesítéseket is konfigurálhat. Ez a forgatókönyv egy virtuálisgép-méretezési csoport Resource Manager-sablonnal történő konfigurálásának példáját mutatja be.
@@ -36,7 +36,7 @@ Ebben az útmutatóban a méretezési csoportokra vonatkozóan a [Azure erőforr
 
 3. Mostantól további profilokat és szabályokat adhat hozzá az ütemterv vagy a speciális követelmények alapján. Létrehozunk egy három profillal rendelkező autoskálázási beállítást. Az autoscale-profilok és-szabályok megértéséhez tekintse át az [ajánlott eljárások az autoscale](autoscale-best-practices.md)-ben című témakört.  
 
-    | Profilok & szabályok | Description |
+    | Profilok & szabályok | Leírás |
     |--- | --- |
     | **Profil** |**Teljesítmény/metrika-alapú** |
     | Szabály |Service Bus üzenetsor-üzenetek száma > x |
@@ -243,9 +243,9 @@ Ezekkel a hivatkozásokkal többet tudhat meg az automatikus skálázásról.
 
 [Ajánlott eljárások az Azure-ra való autoskálázáshoz](autoscale-best-practices.md)
 
-[Az autoskálázás kezelése a PowerShell használatával](../samples/powershell-samples.md#create-and-manage-autoscale-settings)
+[Az autoskálázás kezelése a PowerShell használatával](../powershell-samples.md#create-and-manage-autoscale-settings)
 
-[Az autoskálázás kezelése a parancssori felület használatával](../samples/cli-samples.md#autoscale)
+[Az autoskálázás kezelése a parancssori felület használatával](../cli-samples.md#autoscale)
 
 [Webhook & e-mail-értesítések konfigurálása az autoskálázáshoz](autoscale-webhook-email.md)
 

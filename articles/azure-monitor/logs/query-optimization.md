@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 53f189921a44d63d7e344fb733519661f5b17dc6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e7ab83b2b16a1340b354b9333d00c8166b5cfdf9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100619578"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722959"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Naplók optimalizálása Azure Monitorban
 Azure Monitor naplók az [Azure adatkezelő (ADX)](/azure/data-explorer/) használatával tárolják a naplófájlokat, és lekérdezéseket futtatnak az adatok elemzéséhez. Létrehozza, kezeli és karbantartja a ADX-fürtöket, és optimalizálja azokat a log Analysis számítási feladatokhoz. Amikor lekérdezést futtat, az optimalizált, és a munkaterület-adatok tárolására szolgáló megfelelő ADX-fürtre irányítja. A Azure Monitor-naplók és az Azure Adatkezelő számos automatikus lekérdezés-optimalizálási mechanizmust használ. Míg az automatikus optimalizálás jelentős lökést nyújt, bizonyos esetekben jelentősen növelheti a lekérdezési teljesítményt. Ez a cikk ismerteti a teljesítménnyel kapcsolatos szempontokat és számos technikát a kijavításához.
@@ -322,7 +322,7 @@ Azure Monitor naplókban lévő összes napló particionálva van a **TimeGenera
 
 A 15 napnál hosszabb időtartamú lekérdezések olyan lekérdezések, amelyek túlzott erőforrást használnak. A 90 napnál hosszabb időtartamú lekérdezések visszaélésszerű lekérdezésnek minősülnek, és lehetséges, hogy szabályozva vannak.
 
-Az időtartomány beállítható az időtartomány-választóval a Log Analytics képernyőn a [lekérdezési hatókör és az időtartomány Azure Monitor log Analyticsban](../log-query/scope.md#time-range)leírt módon. Ez az ajánlott módszer, mivel a kiválasztott időtartomány átadása a háttérnek a lekérdezés metaadatainak használatával történik. 
+Az időtartomány beállítható az időtartomány-választóval a Log Analytics képernyőn a [lekérdezési hatókör és az időtartomány Azure Monitor log Analyticsban](./scope.md#time-range)leírt módon. Ez az ajánlott módszer, mivel a kiválasztott időtartomány átadása a háttérnek a lekérdezés metaadatainak használatával történik. 
 
 Egy másik módszer, ha explicit módon belefoglalja a lekérdezés **TimeGenerated** a [Where](/azure/kusto/query/whereoperator) feltételt. Ezt a módszert kell használnia, mivel biztosítja, hogy az időtartam rögzített, még akkor is, ha a lekérdezés más felületről van használatban.
 Győződjön meg arról, hogy a lekérdezés minden részén van **TimeGenerated** szűrő. Ha egy lekérdezés allekérdezéseket tartalmaz a különböző táblákból vagy ugyanabból a táblából származó adatok beolvasására, akkor mindegyiknek saját, [Where](/azure/kusto/query/whereoperator) feltételt kell tartalmaznia.

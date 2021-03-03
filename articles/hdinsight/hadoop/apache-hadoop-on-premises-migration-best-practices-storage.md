@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: 8d87d2164a5131b71a2000243c37553610497750
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 89a2a659e195afcae336c930a101ed0c0b470cb4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944859"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715411"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight
 
@@ -31,7 +31,7 @@ Az Azure Storage lehet földrajzilag replikálható. Bár a Geo-replikáció fö
 
 Az alábbi formátumok egyike használható az Azure Storage-ban tárolt adateléréshez:
 
-|Adatelérési formátum |Description |
+|Adatelérési formátum |Leírás |
 |---|---|
 |`wasb:///`|Az alapértelmezett tárterületet titkosítatlan kommunikációval érheti el.|
 |`wasbs:///`|Az alapértelmezett tároló elérése titkosított kommunikáció használatával.|
@@ -75,7 +75,7 @@ További információért tekintse át a következő cikkeket:
 - [A blob Storage méretezhetőségi és teljesítménybeli céljai](../../storage/blobs/scalability-targets.md)
 - [A Microsoft Azure Storage teljesítmény- és skálázhatósági ellenőrzőlistája](../../storage/blobs/storage-performance-checklist.md)
 - [Microsoft Azure Storage felügyelete, diagnosztizálása és hibaelhárítása](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)
-- [Tárfiók monitorozása az Azure Portalon](../../storage/common/storage-monitor-storage-account.md)
+- [Tárfiók monitorozása az Azure Portalon](../../storage/common/manage-storage-analytics-logs.md)
 
 ### <a name="azure-data-lake-storage-gen1"></a>1. generációs Azure Data Lake Storage
 
@@ -153,7 +153,7 @@ A HDInsight alapértelmezés szerint teljes hozzáféréssel rendelkezik a fürt
 
 1. Nyissa meg a  [SASToken.py](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature/blob/master/Python/SASToken.py) fájlt, és módosítsa a következő értékeket:
 
-    |Jogkivonat tulajdonsága|Description|
+    |Jogkivonat tulajdonsága|Leírás|
     |---|---|
     |policy_name|A létrehozandó házirend létrehozásához használandó név.|
     |storage_account_name|A Storage-fiók neve.|
@@ -202,7 +202,7 @@ Az Azure Storage helyileg redundáns tárolást (LRS) biztosít, de a kritikus f
 
 További információért tekintse át a következő cikkeket:
 
-- [Azure Storage-replikáció](../../storage/common/storage-redundancy.md)
+- [Azure Storage replication (Azure Storage replikáció)](../../storage/common/storage-redundancy.md)
 - [Vészhelyzeti útmutató a Azure Data Lake Storage Gen1 (ADLS)](../../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
 
 ## <a name="attach-additional-azure-storage-accounts-to-cluster"></a>További Azure Storage-fiókok csatlakoztatása a fürthöz

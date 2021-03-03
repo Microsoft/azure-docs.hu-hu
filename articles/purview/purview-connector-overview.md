@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/13/2020
-ms.openlocfilehash: 88fb9c823df6ae5df345911ccce1c579009fba02
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 08b22af8743082bab1d547205e51917cb9d92a11
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "96780212"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695770"
 ---
 # <a name="supported-data-stores"></a>Támogatott adattárak
 
@@ -28,10 +28,14 @@ A hatáskörébe a következő adattárakat támogatja. Az egyes adattárokra ka
 ||[1. generációs Azure Data Lake Storage](register-scan-adls-gen1.md)|Igen| Igen| Igen| Igen| Igen| Igen|
 ||[Azure Data Lake Storage Gen2](register-scan-adls-gen2.md)|Igen| Igen| Igen| Igen| Igen| Igen|
 ||[Azure SQL Database](register-scan-azure-sql-database.md)|Igen| Igen| Nem| Igen| Igen| Igen|
-||[Felügyelt Azure SQL Database-példány](register-scan-azure-sql-database-managed-instance.md)|Igen| Igen| Nem| Igen| Igen| Igen|
+||[Felügyelt példány Azure SQL Database](register-scan-azure-sql-database-managed-instance.md)|Igen| Igen| Nem| Igen| Igen| Igen|
 ||[Azure Synapse Analytics (korábban SQL DW)](register-scan-azure-synapse-analytics.md)|Igen| Igen| Nem| Igen| Igen| Igen|
-|Adatbázis|[SQL Server](register-scan-on-premises-sql-server.md)|Igen| Igen| Nem| Igen| Igen| Igen|
+|Adatbázis|[Oracle DB](register-scan-oracle-source.md)|Igen| Igen| Nem| Nem| Nem| Igen|
+||[SQL Server](register-scan-on-premises-sql-server.md)|Igen| Igen| Nem| Igen| Igen| Igen|
+||[Teradata](register-scan-teradata-source.md)|Igen| Igen| Nem| Nem| Nem| Igen|
 |Power BI|[Power BI](register-scan-power-bi-tenant.md)|Igen| Igen| Nem| Nem| Nem| Igen|
+|Szolgáltatások és alkalmazások|[SAP ECC](register-scan-sapecc-source.md)|Igen| Igen| Nem| Igen| Igen| Igen|
+||[SAP-S4HANA](register-scan-saps4hana-source.md)|Igen| Igen| Nem| Igen| Igen| Igen|
 
 ## <a name="next-steps"></a>Következő lépések
 

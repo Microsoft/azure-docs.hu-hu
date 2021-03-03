@@ -6,18 +6,18 @@ ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: 3ee29e6c65dcd2b2226dc4dc7844b3b02a571a4f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d3f8da7e985e62ce0b40c6dddcd137cce8561e59
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100614485"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717859"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Azure Monitor riasztásokkal kapcsolatos problémák elhárítása
 
 Ez a cikk Azure Monitor riasztásokkal és értesítésekkel kapcsolatos gyakori problémákat ismerteti.
 
-Azure Monitor riasztások proaktívan értesítik Önt, ha fontos feltételek találhatók a megfigyelési adataiban. Lehetővé teszik a problémák azonosítását és megcímzését, mielőtt a felhasználók a rendszerértesítéseket. A riasztással kapcsolatos további információkért lásd: [a Microsoft Azure riasztások áttekintése](../platform/alerts-overview.md).
+Azure Monitor riasztások proaktívan értesítik Önt, ha fontos feltételek találhatók a megfigyelési adataiban. Lehetővé teszik a problémák azonosítását és megcímzését, mielőtt a felhasználók a rendszerértesítéseket. A riasztással kapcsolatos további információkért lásd: [a Microsoft Azure riasztások áttekintése](./alerts-overview.md).
 
 Ha problémája van egy riasztás égetésével vagy a várt módon nem égetéssel, tekintse meg az alábbi cikkeket. A Azure Portal "fired" riasztásokat láthat.
 
@@ -36,7 +36,7 @@ Ha látja az aktivált riasztást az Azure Portalon, de nem kapta meg a hozzá b
 
 1. **Egy [műveleti szabály](../alerts/alerts-action-rules.md)letiltotta az e-mailt**?
 
-    Ennek az ellenőrzéséhez kattintson az aktivált riasztásra a portálon, és tekintse meg a letiltott [műveletcsoportok](../platform/action-groups.md) előzménylapját:
+    Ennek az ellenőrzéséhez kattintson az aktivált riasztásra a portálon, és tekintse meg a letiltott [műveletcsoportok](./action-groups.md) előzménylapját:
 
     ![Riasztási műveleti szabály elnyomásának előzményei](media/alerts-troubleshoot/history-action-rule.png)
 
@@ -92,7 +92,7 @@ Ha látja az aktivált riasztást a portálon, de nem kapta meg a hozzá beáll�
 
 1. **Egy [műveleti szabály](../alerts/alerts-action-rules.md)letiltotta a műveletet?**
 
-    Ennek az ellenőrzéséhez kattintson az aktivált riasztásra a portálon, és tekintse meg a letiltott [műveletcsoportok](../platform/action-groups.md) előzménylapját: 
+    Ennek az ellenőrzéséhez kattintson az aktivált riasztásra a portálon, és tekintse meg a letiltott [műveletcsoportok](./action-groups.md) előzménylapját: 
 
     ![Riasztási műveleti szabály elnyomásának előzményei](media/alerts-troubleshoot/history-action-rule.png)
 
@@ -125,7 +125,7 @@ Ha lát egy aktivált riasztást a portálon, de a hozzá konfigurált művelet 
 
 1. **Egy műveleti szabály letiltotta a műveletet?**
 
-    Ennek az ellenőrzéséhez kattintson az aktivált riasztásra a portálon, és tekintse meg a letiltott [műveletcsoportok](../platform/action-groups.md) előzménylapját:
+    Ennek az ellenőrzéséhez kattintson az aktivált riasztásra a portálon, és tekintse meg a letiltott [műveletcsoportok](./action-groups.md) előzménylapját:
 
     ![Riasztási műveleti szabály elnyomásának előzményei](media/alerts-troubleshoot/history-action-rule.png)
  
@@ -133,15 +133,15 @@ Ha lát egy aktivált riasztást a portálon, de a hozzá konfigurált művelet 
 
 1. **Nem aktiválódik a webhook?**
 
-    1. **Le lettek tiltva a forrás IP-címei?**
+    1. **Le vannak tiltva a forrás IP-címek?**
     
-       Adja hozzá azokat az [IP-címeket](../platform/action-groups.md#action-specific-information) , amelyeket a webhook meghív az engedélyezési listára.
+       Adja hozzá azokat az [IP-címeket](./action-groups.md#action-specific-information) , amelyeket a webhook meghív az engedélyezési listára.
 
-    1. **A webhook-végpont megfelelően működik?**
+    1. **Megfelelően működik a webhook-végpont?**
 
        Ellenőrizze, hogy a konfigurált webhook-végpont helyes-e, és hogy a végpont megfelelően működik-e. Tekintse meg a webhook naplóit, vagy instrumentálja úgy a kódját, hogy átvizsgálható legyen (például naplózza a bejövő hasznos adatokat).
 
-    1. **A Slack vagy a Microsoft Teams szolgáltatást hívja?**  
+    1. **A Slack vagy a Microsoft Teams alkalmazást próbálja hívni?**  
     Ezek a végpontok meghatározott JSON-formátumot várnak el. Kövesse [ezeket az utasításokat](../alerts/action-groups-logic-app.md), hogy inkább egy logikai alkalmazási műveletet konfiguráljon.
 
     1. **A webhook nem válaszol, vagy hibát adott vissza?** 
@@ -180,12 +180,12 @@ Ha megkapta a riasztást, de úgy véli, hogy egyes mezők hiányoznak belőle v
 
     Ellenőrizze, hogy a műveleti szinten megadott formátum az elvárt-e. Előfordulhat például, hogy olyan riasztásokra válaszoló programkódot (webhook, függvény, logikai alkalmazás stb.) fejlesztett, amely egy adott formátumot vár el, de a művelet során később Ön vagy egy másik személy eltérő formátumot adott meg.  
 
-    Továbbá ellenőrizze a hasznosadat-formátumot (JSON) a [tevékenységnapló-riasztásokhoz](../alerts/activity-log-alerts-webhook.md), a [naplókeresési riasztásokhoz](../alerts/alerts-log-webhook.md) (Application Insights és naplóelemzés), a [metrikariasztásokhoz](alerts-metric-near-real-time.md#payload-schema), az [általános riasztási sémához](../alerts/alerts-common-schema-definitions.md) és az elavult [klasszikus metrikariasztásokhoz](../platform/alerts-webhooks.md).
+    Továbbá ellenőrizze a hasznosadat-formátumot (JSON) a [tevékenységnapló-riasztásokhoz](../alerts/activity-log-alerts-webhook.md), a [naplókeresési riasztásokhoz](../alerts/alerts-log-webhook.md) (Application Insights és naplóelemzés), a [metrikariasztásokhoz](alerts-metric-near-real-time.md#payload-schema), az [általános riasztási sémához](../alerts/alerts-common-schema-definitions.md) és az elavult [klasszikus metrikariasztásokhoz](./alerts-webhooks.md).
 
  
 1. **Műveletnapló riasztásai: a tevékenység naplójában elérhető információk?** 
 
-    A [műveletnapló riasztásai](../platform/activity-log-alerts.md) olyan riasztások, amelyek az Azure-beli tevékenységi naplóba írt eseményeken alapulnak, például az Azure-erőforrások, a szolgáltatás állapotára és az erőforrás-állapotra vonatkozó események létrehozására, frissítésére vagy törlésére, valamint Azure Advisor és Azure Policy eredményeire vonatkozó eseményeket. Ha a tevékenységnaplón alapuló riasztást kapott, de egyes szükséges mezők hiányoznak vagy helytelenül lettek kitöltve, első lépésként tekintse meg az eseményeket a tevékenységnaplóban. Ha az Azure-erőforrás nem töltötte ki a tevékenységnaplójában a keresett mezőket, akkor ezek a mezők nem kerülnek bele a megfelelő riasztásba. 
+    A [műveletnapló riasztásai](./activity-log-alerts.md) olyan riasztások, amelyek az Azure-beli tevékenységi naplóba írt eseményeken alapulnak, például az Azure-erőforrások, a szolgáltatás állapotára és az erőforrás-állapotra vonatkozó események létrehozására, frissítésére vagy törlésére, valamint Azure Advisor és Azure Policy eredményeire vonatkozó eseményeket. Ha a tevékenységnaplón alapuló riasztást kapott, de egyes szükséges mezők hiányoznak vagy helytelenül lettek kitöltve, első lépésként tekintse meg az eseményeket a tevékenységnaplóban. Ha az Azure-erőforrás nem töltötte ki a tevékenységnaplójában a keresett mezőket, akkor ezek a mezők nem kerülnek bele a megfelelő riasztásba. 
 
 ## <a name="action-rule-is-not-working-as-expected"></a>A műveleti szabály nem a várt módon működik 
 
@@ -250,4 +250,4 @@ Ha hiba történt a [műveleti szabály](../alerts/alerts-action-rules.md)létre
 
 ## <a name="next-steps"></a>Következő lépések
 - Ha naplózási riasztást használ, tekintse meg a [riasztások hibaelhárítása](./alerts-troubleshoot-log.md)című témakört is.
-- Lépjen vissza a [Azure Portal](https://portal.azure.com) , és ellenőrizze, hogy megoldotta-e a problémát a fenti útmutatás alapján 
+- Lépjen vissza a [Azure Portal](https://portal.azure.com) , és ellenőrizze, hogy megoldotta-e a problémát a fenti útmutatás alapján

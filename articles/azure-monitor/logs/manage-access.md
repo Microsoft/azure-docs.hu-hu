@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: f16e5363af7de2152a7fa73bb52219d87971a249
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: bc03d8cdcaf0079ef15e648d16fd5656d9da368c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101091199"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725679"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Naplóadatok és munkaterületek elérésének felügyelete az Azure Monitorban
 
@@ -162,7 +162,7 @@ A *Log Analytics közreműködő* szerepkör tagjai a következőket végezhetik
 
 A Log Analytics közreműködő szerepkör a következő Azure-műveleteket tartalmazza:
 
-| Engedély | Description |
+| Engedély | Leírás |
 | ---------- | ----------- |
 | `*/read`     | Az összes erőforrás és erőforrás-konfiguráció megtekintése. Ez a következők megtekintését foglalja magában: <br> Virtuális gépi bővítmény állapota <br> Az Azure Diagnostics konfigurációja az erőforrásokon <br> Az összes erőforrás tulajdonságai és beállításai. <br> A munkaterületek számára lehetővé teszi, hogy a teljes korlátozás alá eső engedélyek beolvassák a munkaterület beállítását, és lekérdezéseket végezzenek az adatokon. Lásd a fenti részletesebb beállításokat. |
 | `Microsoft.Automation/automationAccounts/*` | Azure Automation-fiókok létrehozása és konfigurálása, beleértve runbookok hozzáadását és szerkesztését |
@@ -189,7 +189,7 @@ Javasoljuk, hogy az erőforrás szintjén (munkaterület) végezze el a hozzáre
 
 Ha a felhasználók erőforrás-kontextusos hozzáférés használatával kérdeznek le naplókat egy munkaterületről, a következő engedélyek lesznek az erőforráshoz:
 
-| Engedély | Description |
+| Engedély | Leírás |
 | ---------- | ----------- |
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>Angol nyelvű Példák:<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | Képes megtekinteni az erőforrás összes naplózási adatforrását.  |
 | `Microsoft.Insights/diagnosticSettings/write` | A diagnosztikai beállítások konfigurálásának lehetősége az erőforráshoz tartozó naplók beállításának engedélyezéséhez. |
@@ -285,7 +285,7 @@ A fenti példák az engedélyezett táblák listáját határozzák meg. Ez a p�
 
 ### <a name="custom-logs"></a>Egyéni naplók
 
- Az egyéni naplók az adatforrásokból, például az egyéni naplókból és a HTTP-adatgyűjtő API-ból jönnek létre. A naplók típusának legegyszerűbb azonosításához ellenőrizze az egyéni naplók területen felsorolt táblákat [a log sémában](../log-query/log-analytics-tutorial.md#table-schema).
+ Az egyéni naplók az adatforrásokból, például az egyéni naplókból és a HTTP-adatgyűjtő API-ból jönnek létre. A naplók típusának legegyszerűbb azonosításához ellenőrizze az egyéni naplók területen felsorolt táblákat [a log sémában](./log-analytics-tutorial.md#table-schema).
 
  Egyéni naplókhoz nem lehet hozzáférést biztosítani, de az összes egyéni naplóhoz hozzáférést biztosíthat. Ha az összes egyéni naplóhoz hozzáféréssel rendelkező szerepkört szeretne létrehozni, hozzon létre egy egyéni szerepkört a következő műveletek használatával:
 
@@ -312,4 +312,4 @@ Előfordulhat, hogy az egyéni naplók olyan forrásokból származnak, amelyek 
 
 * Az adatközpontban vagy más felhőalapú környezetben található számítógépek adatainak összegyűjtéséhez tekintse meg [log Analytics ügynök áttekintését](../agents/log-analytics-agent.md) .
 
-* Lásd: adatok [gyűjtése az Azure Virtual Machines](../learn/quick-collect-azurevm.md) szolgáltatásról az Azure-beli virtuális gépekről történő adatgyűjtés konfigurálásához.
+* Lásd: adatok [gyűjtése az Azure Virtual Machines](../vm/quick-collect-azurevm.md) szolgáltatásról az Azure-beli virtuális gépekről történő adatgyűjtés konfigurálásához.

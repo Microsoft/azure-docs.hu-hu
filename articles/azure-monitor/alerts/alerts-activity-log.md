@@ -4,12 +4,12 @@ description: Hozzon létre műveletnapló-riasztásokat a Azure Portal, egy Azur
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 83023cca6b034ee0e9acddfa081f09eb47b9fb1e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bb4c1410d046389ae9e82986c6b0ed3d133fcf2a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621025"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704463"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Műveletnapló-riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával  
 
@@ -26,7 +26,9 @@ Riasztási szabályok létrehozásakor ügyeljen a következőkre:
 
 - A hatókörbeli előfizetés nem különbözik a riasztást létrehozó előfizetéstől.
 - A feltételnek az a szint, állapot, hívó, Erőforráscsoport, erőforrás-azonosító vagy erőforrástípus típusú eseménynek kell lennie, amelyen a riasztás konfigurálva van.
-- Nincs "anyOf" feltétel vagy beágyazott feltétel a riasztási konfiguráció JSON-fájljában. Alapvetően csak egy "allOf" feltétel engedélyezett a további "allOf" vagy "anyOf" feltételek nélkül.
+- Csak egy "allOf" feltétel engedélyezett.
+- A "AnyOf" több feltételt is lehetővé tesz több mező esetében (például ha az "állapot" vagy az "alállapot" mező értéke egy bizonyos érték). Vegye figyelembe, hogy a "AnyOf" használata jelenleg csak a riasztási szabály létrehozásához használható ARM-sablonok használatával.
+- A "ContainsAny" lehetővé teszi ugyanazon mező több értékének engedélyezését (például ha a "művelet" egyenlő a "Delete" vagy a "Modify" kifejezéssel). Vegye figyelembe, hogy a "ContainsAny" használata jelenleg csak a riasztási szabály létrehozásához használható ARM-sablonok használatával.
 - Ha a kategória "adminisztratív", akkor a riasztásban meg kell adnia legalább az előző feltétel egyikét. Előfordulhat, hogy nem hoz létre olyan riasztást, amely minden alkalommal aktiválódik, amikor létrejön egy esemény a tevékenység naplóiban.
 - Nem hozhatók létre riasztások a tevékenység naplójának riasztási kategóriájában lévő eseményekhez.
 
@@ -92,7 +94,7 @@ Használja az alábbi eljárást.
     - **Leírás**: az új riasztási szabály leírása.
     - **Riasztás mentése az erőforráscsoporthoz**: válassza ki azt az erőforráscsoportot, amelybe menteni szeretné ezt az új szabályt.
 
-5. A **Művelettípus** alatt, a legördülő menüből válassza ki azt a műveleti csoportot, amelyet hozzá szeretne rendelni ehhez az új riasztási szabályhoz. Vagy [hozzon létre egy új műveleti csoportot](../platform/action-groups.md) , és rendelje hozzá az új szabályhoz. Új csoport létrehozásához válassza az **+ új csoport** lehetőséget.
+5. A **Művelettípus** alatt, a legördülő menüből válassza ki azt a műveleti csoportot, amelyet hozzá szeretne rendelni ehhez az új riasztási szabályhoz. Vagy [hozzon létre egy új műveleti csoportot](./action-groups.md) , és rendelje hozzá az új szabályhoz. Új csoport létrehozásához válassza az **+ új csoport** lehetőséget.
 
 6. Ha a létrehozás után engedélyezni szeretné a szabályokat, válassza az **Igen** lehetőséget a **szabály engedélyezése a létrehozáskor** beállításnál.
 7. Válassza a **Riasztási szabály létrehozása** lehetőséget.
@@ -287,6 +289,5 @@ A műveletnapló riasztási szabályának erőforrásai eltávolíthatók az Azu
 
 - További információ a [tevékenységi naplók webhook-sémájáról](./activity-log-alerts-webhook.md).
 - Olvassa el [a Tevékenységnaplók áttekintését](./activity-log-alerts.md).
-- További információ a [műveleti csoportokról](../platform/action-groups.md).  
+- További információ a [műveleti csoportokról](./action-groups.md).  
 - Tudnivalók a [szolgáltatás állapotával kapcsolatos értesítésekről](../../service-health/service-notifications.md).
-

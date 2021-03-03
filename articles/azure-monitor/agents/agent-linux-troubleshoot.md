@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 7e01d234b5b94997cbfd275c4b4566ec4fa332a0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 136e063f6d272589c609bad93532df025a15a68d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100613581"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723622"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>A Linuxhoz készült Log Analytics-ügynökkel kapcsolatos hibák elhárítása 
 
@@ -92,7 +92,7 @@ Láttuk, hogy az ügynök tiszta újratelepítése megoldja a legtöbb problém�
 | NOT_DEFINED | Mivel a szükséges függőségek nincsenek telepítve, a auoms naplózott beépülő modul nem lesz telepítve. | Sikertelen volt a auoms telepítése, a csomag naplózása megtörtént. |
 | 2 | Érvénytelen beállítás van megadva a rendszerhéj-csomagban. Futtatás `sudo sh ./omsagent-*.universal*.sh --help` használatra |
 | 3 | A rendszerhéj-csomagban nincs megadva lehetőség. Futtatás `sudo sh ./omsagent-*.universal*.sh --help` a használathoz. |
-| 4 | Érvénytelen a csomag típusa vagy a proxybeállítások érvénytelenek; omsagent –*rpm*. sh csomagok csak rpm-alapú rendszereken telepíthetők, és a omsagent-*deb*. sh csomagok csak a Debian-alapú rendszereken telepíthetők. Javasoljuk, hogy a [legújabb kiadásban](../learn/quick-collect-linux-computer.md#install-the-agent-for-linux)használja az univerzális telepítőt. Tekintse át a proxybeállítások ellenőrzését is. |
+| 4 | Érvénytelen a csomag típusa vagy a proxybeállítások érvénytelenek; omsagent –*rpm*. sh csomagok csak rpm-alapú rendszereken telepíthetők, és a omsagent-*deb*. sh csomagok csak a Debian-alapú rendszereken telepíthetők. Javasoljuk, hogy a [legújabb kiadásban](../vm/quick-collect-linux-computer.md#install-the-agent-for-linux)használja az univerzális telepítőt. Tekintse át a proxybeállítások ellenőrzését is. |
 | 5 | A rendszerhéj-csomagot root-ként kell végrehajtani, vagy 403 hiba történt az előkészítés során. Futtassa a parancsot a használatával `sudo` . |
 | 6 | Érvénytelen a csomag architektúrája, vagy hiba történt a bevezetéskor visszaadott 200-es hiba miatt. a omsagent-*x64.sh csomagok csak 64 bites rendszerekre telepíthetők, és a omsagent-* x86.sh csomagok csak 32 bites rendszereken telepíthetők. Töltse le a megfelelő csomagot az architektúrához a [legújabb kiadásban](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest). |
 | 17 | Nem sikerült telepíteni a OMS-csomagot. Tekintse át a parancs kimenetét a gyökérszintű hiba miatt. |
@@ -116,7 +116,7 @@ Láttuk, hogy az ügynök tiszta újratelepítése megoldja a legtöbb problém�
 | --- | --- |
 | 2 | A omsadmin parancsfájl érvénytelen beállítást adott meg. Futtatás `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` a használathoz. |
 | 3 | A omsadmin parancsfájlhoz megadott konfiguráció érvénytelen. Futtatás `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` a használathoz. |
-| 4 | A omsadmin parancsfájlhoz megadott proxy érvénytelen. Ellenőrizze a proxyt, és tekintse [meg a http-proxy használatára vonatkozó dokumentációt](../platform/log-analytics-agent.md#firewall-requirements). |
+| 4 | A omsadmin parancsfájlhoz megadott proxy érvénytelen. Ellenőrizze a proxyt, és tekintse [meg a http-proxy használatára vonatkozó dokumentációt](./log-analytics-agent.md#firewall-requirements). |
 | 5 | 403 HTTP-hiba érkezett a következőtől: Azure Monitor. A részletekért tekintse meg a omsadmin parancsfájl teljes kimenetét. |
 | 6 | Nem 200 HTTP-hiba érkezett a következőtől: Azure Monitor. A részletekért tekintse meg a omsadmin parancsfájl teljes kimenetét. |
 | 7 | Nem lehet csatlakozni a Azure Monitorhoz. A részletekért tekintse meg a omsadmin parancsfájl teljes kimenetét. |
@@ -198,7 +198,7 @@ A kimeneti beépülő modul alatt törölje a következő szakasz megjegyzését
 
 2. Tekintse át a [Proxybeállítások frissítése](agent-manage.md#update-proxy-settings) szakaszt, és ellenőrizze, hogy megfelelően konfigurálta-e az ügynököt egy proxykiszolgálón keresztül történő kommunikációhoz.    
 
-3. Ellenőrizze, hogy a Azure Monitor [hálózati tűzfal követelményei](../platform/log-analytics-agent.md#firewall-requirements) listán szereplő végpontok megfelelően vannak-e hozzáadva az engedélyezési listához. Ha Azure Automation használ, a szükséges hálózati konfigurációs lépések a fentiekben is összekapcsolhatók.
+3. Ellenőrizze, hogy a Azure Monitor [hálózati tűzfal követelményei](./log-analytics-agent.md#firewall-requirements) listán szereplő végpontok megfelelően vannak-e hozzáadva az engedélyezési listához. Ha Azure Automation használ, a szükséges hálózati konfigurációs lépések a fentiekben is összekapcsolhatók.
 
 ## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>Probléma: 403-as hibaüzenet jelenik meg a bevezetési kísérlet során
 
@@ -447,7 +447,7 @@ A következő lehetőség használatával folytathatja a bevezetést `--purge`
 ### <a name="resolution"></a>Feloldás 
 A probléma megoldásához hajtsa végre az alábbi lépéseket.
 1. Távolítsa el a bővítményt a Azure Portalból.
-2. Telepítse az ügynököt az [utasításokat](../learn/quick-collect-linux-computer.md)követve.
+2. Telepítse az ügynököt az [utasításokat](../vm/quick-collect-linux-computer.md)követve.
 3. Indítsa újra az ügynököt a következő parancs futtatásával: `sudo /opt/microsoft/omsagent/bin/service_control restart` .
 * Várjon néhány percet, és a kiépítés állapota **sikeresen kiépítve** értékre változik.
 

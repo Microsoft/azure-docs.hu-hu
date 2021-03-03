@@ -9,18 +9,18 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 5465fa63a3dff71de2e370281df9351e2bac76c7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a5ccaa95c8f29395770395076f75f36019a4355c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790525"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737681"
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 
 Azure Storage Analytics naplózást végez, és metrikai adatokat biztosít egy Storage-fiókhoz. Ezeket az adatokat felhasználhatja a kérelmek nyomon követéséhez, a használati trendek elemzéséhez és a Storage-fiókkal kapcsolatos problémák diagnosztizálásához.
 
-Storage Analytics használatához külön kell engedélyeznie a figyelni kívánt szolgáltatásokhoz. Engedélyezheti a [Azure Portal](https://portal.azure.com). További információ: [Storage-fiók figyelése a Azure Portalban](storage-monitor-storage-account.md). Storage Analytics programozott módon is engedélyezheti a REST API vagy az ügyféloldali kódtár használatával. A [blob szolgáltatás tulajdonságainak](/rest/api/storageservices/set-blob-service-properties)beállítása, a [várólista-szolgáltatás tulajdonságainak](/rest/api/storageservices/set-queue-service-properties)beállítása, a [Table szolgáltatás tulajdonságainak beállítása](/rest/api/storageservices/set-table-service-properties)és a [Fájlszolgáltatások tulajdonságainak beállítása](/rest/api/storageservices/Get-File-Service-Properties) művelettel engedélyezheti a Storage Analytics az egyes szolgáltatásokhoz.
+Storage Analytics használatához külön kell engedélyeznie a figyelni kívánt szolgáltatásokhoz. Engedélyezheti a [Azure Portal](https://portal.azure.com). További információ: [Storage-fiók figyelése a Azure Portalban](./manage-storage-analytics-logs.md). Storage Analytics programozott módon is engedélyezheti a REST API vagy az ügyféloldali kódtár használatával. A [blob szolgáltatás tulajdonságainak](/rest/api/storageservices/set-blob-service-properties)beállítása, a [várólista-szolgáltatás tulajdonságainak](/rest/api/storageservices/set-queue-service-properties)beállítása, a [Table szolgáltatás tulajdonságainak beállítása](/rest/api/storageservices/set-table-service-properties)és a [Fájlszolgáltatások tulajdonságainak beállítása](/rest/api/storageservices/Get-File-Service-Properties) művelettel engedélyezheti a Storage Analytics az egyes szolgáltatásokhoz.
 
 Az összesített adatokat egy jól ismert blobban (naplózáshoz) és jól ismert táblákban (a metrikák esetében) tárolják, amelyek a Blob service és az Table service API-k használatával érhetők el.
 
@@ -46,6 +46,6 @@ A fiók tárolási szolgáltatására tett minden kérelem számlázható vagy n
 Storage Analytics adatok megtekintésekor használhatja a [Storage Analytics naplózott műveletek és állapotüzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) témakör táblázatait, amelyekkel meghatározhatja, hogy mely kérések legyenek számlázva. Ezután összehasonlíthatja a naplókat és a metrikákat az állapotüzenetek adataival, hogy megtudja, van-e terhelve egy adott kérelemért. Az előző témakör tábláival is megvizsgálhatja a tárolási szolgáltatás vagy az egyes API-műveletek rendelkezésre állását.
 
 ## <a name="next-steps"></a>Következő lépések
-* [Tárfiók monitorozása az Azure Portalon](storage-monitor-storage-account.md)
+* [Tárfiók monitorozása az Azure Portalon](./manage-storage-analytics-logs.md)
 * [Storage Analytics metrikák](storage-analytics-metrics.md)
 * [Storage Analytics-naplózás](storage-analytics-logging.md)

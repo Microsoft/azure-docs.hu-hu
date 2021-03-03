@@ -1,26 +1,26 @@
 ---
-title: Kubernetes-figyelés a Azure Monitor for containers szolgáltatással | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan tekintheti meg és elemezheti a Kubernetes-fürtök teljesítményét a tárolók Azure Monitorával.
+title: Kubernetes-figyelés a Container bepillantásokkal | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan tekintheti meg és elemezheti a Kubernetes-fürtök teljesítményét a Container-elemzésekkel.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 9bb21f7a651d773806a96bb19044abf3bc7dda5d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 432de02d22a418e92a7487001ae8c128323f3685
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100620205"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711348"
 ---
-# <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>A Kubernetes-fürt teljesítményének figyelése a Azure Monitor for containers szolgáltatással
+# <a name="monitor-your-kubernetes-cluster-performance-with-container-insights"></a>A Kubernetes-fürt teljesítményének figyelése a Container bepillantást
 
-A tárolók Azure Monitor a teljesítmény-diagramok és az állapotadatok segítségével figyelheti az Azure Kubernetes szolgáltatásban (ak), Azure Stack vagy más környezetben üzemeltetett Kubernetes-fürtök munkaterhelését két perspektívából. Közvetlenül a fürtből is megfigyelhető, vagy megtekintheti az előfizetésben lévő összes fürtöt Azure Monitorból. A Azure Container Instances megtekintése akkor is lehetséges, ha egy adott AK-fürtöt figyel.
+A tárolók elemzése során a teljesítmény-diagramok és az állapotadatok segítségével figyelheti az Azure Kubernetes szolgáltatásban (ak), Azure Stack vagy más környezetben üzemeltetett Kubernetes-fürtök munkaterhelését két perspektívából. Közvetlenül a fürtből is megfigyelhető, vagy megtekintheti az előfizetésben lévő összes fürtöt Azure Monitorból. A Azure Container Instances megtekintése akkor is lehetséges, ha egy adott AK-fürtöt figyel.
 
 Ez a cikk segít megérteni a két perspektívát, és hogyan segíti a Azure Monitor az észlelt problémák gyors felmérését, kivizsgálását és megoldását.
 
-További információ a tárolók Azure Monitorének engedélyezéséről: [Azure monitor a tárolók számára](container-insights-onboard.md).
+További információ a tárolók bevezetésének engedélyezéséről: a [Container](container-insights-onboard.md)-információk előkészítése.
 
 A Azure Monitor egy több fürtből álló nézetet biztosít, amely a Linux és a Windows Server 2019 operációs rendszert futtató összes figyelt Kubernetes-fürt állapotát megjeleníti az előfizetésekben található erőforráscsoportok között. Megjeleníti a megoldás által nem figyelt környezetekben felderített fürtöket. Azonnal megismerheti a fürt állapotát, és itt megtekintheti a csomópont-és vezérlő teljesítmény lapját, vagy megnyithatja a fürthöz tartozó teljesítménymutatókat. A felderített és nem ellenőrzöttként azonosított AK-fürtök esetében bármikor engedélyezheti a figyelést.
 
-A Windows Server-fürtök egy Linux-fürthöz képest Azure Monitor használatával történő figyelésének fő különbségeit [itt](container-insights-overview.md#what-does-azure-monitor-for-containers-provide) találja az áttekintő cikkben.
+A Windows Server-fürtök egy Linux-fürthöz képest történő figyelésének fő különbségeit [itt](container-insights-overview.md#what-does-azure-monitor-for-containers-provide) találja az áttekintő cikkben.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -37,7 +37,7 @@ A rácsban megjelenített eredmények köre a következő fürtök megjeleníté
 * Az Azure Kubernetes Service-ben üzemeltetett **Azure** -AK-és AKS-Engine-fürtök
 * **Azure stack (előzetes verzió)** – AKS-Engine-alapú fürtök Azure stack
 * **Nem Azure (előzetes verzió)** – a helyszínen üzemeltetett Kubernetes-fürtök
-* **Összes** – az Azure-ban üzemeltetett összes Kubernetes-fürt, Azure stack és helyszíni környezetek megtekintése a tárolók Azure monitor
+* Az Azure-ban üzemeltetett összes Kubernetes-fürt, a Azure Stack és a helyszíni környezetek **teljes** megtekintése
 
 Egy adott környezetből származó fürtök megtekintéséhez válassza ki az oldal bal felső sarkában található **környezetek** pirulát.
 
@@ -59,7 +59,7 @@ A benne foglalt állapotok a következők:
 * **Nem található**: vagy a munkaterületet, az erőforráscsoportot vagy az előfizetést, amely a megoldás munkaterületét tartalmazza.
 * Nem **engedélyezett**: a felhasználónak nincs engedélye a munkaterületen lévő információk olvasásához.
 * **Hiba**: hiba történt az adatok munkaterületről való beolvasására tett kísérlet során.
-* **Helytelenül van konfigurálva: Azure monitor** a tárolók nem megfelelően vannak konfigurálva a megadott munkaterületen.
+* **Helytelenül van konfigurálva: a** tároló-felismerések nem lettek megfelelően konfigurálva a megadott munkaterületen.
 * **Nincsenek adatértékek**: az elmúlt 30 percben a munkaterületre nem jelentettek adathalmazt.
 
 Az állapot kiszámítja a fürt általános állapotát úgy, hogy a három állapot közül a *legrosszabbat* egy kivétellel adja ki. Ha a három állam bármelyike ismeretlen, a teljes fürt állapota **ismeretlen**.
@@ -88,7 +88,7 @@ A fürtök listájából kiválaszthatja a **fürt** lapját a fürt nevének ki
 
 ## <a name="view-performance-directly-from-a-cluster"></a>Teljesítmény megtekintése közvetlenül a fürtből
 
-A tárolók Azure monitorhoz való hozzáférése közvetlenül egy AK-fürtből érhető el, ha a bal oldali ablaktáblában kiválasztja az **adatáttekintési**  >  **fürtöt** , vagy ha a fürt lehetőséget választotta a több fürt nézetből. A fürtre vonatkozó információk négy perspektívába vannak rendezve:
+A tároló-betekintő adatokhoz való hozzáférés közvetlenül egy AK-fürtből érhető el, ha a bal oldali ablaktáblában kijelöli az **adatáttekintési**  >  **fürtöt** , vagy ha a fürt lehetőséget választotta a több fürtből álló nézetből. A fürtre vonatkozó információk négy perspektívába vannak rendezve:
 
 - Fürt
 - Csomópontok
@@ -109,13 +109,13 @@ A teljesítmény-diagramok négy teljesítménymutatót jelenítenek meg:
 - **Csomópontok száma**: a csomópontok száma és állapota a Kubernetes. A megjelenített fürtcsomópontok állapota összesen, kész és nem üzemkész. A diagram felett a választóban egyenként vagy kombinálva is szűrhetők.
 - **Aktív Pod darabszám**: a Kubernetes származó Pod-darabszám és-állapot. A képviselt hüvelyek állapota összesen, függőben, fut, ismeretlen, sikeres vagy sikertelen. A diagram felett a választóban egyenként vagy kombinálva is szűrhetők.
 
-A bal és jobb nyílbillentyűk használatával a diagramon lévő egyes adatpontokon keresztül válthat. Használja a fel és le nyílbillentyűket a percentilis-vonalakon való váltáshoz. Az egyik diagram jobb felső sarkában válassza a rögzítés ikont, hogy rögzítse a kiválasztott diagramot az utoljára megtekintett Azure-irányítópulton. Az irányítópultról átméretezheti és áthelyezheti a diagramot. Ha kiválasztja a diagramot az irányítópultról, a rendszer átirányítja Azure Monitor a tárolók számára, és betölti a megfelelő hatókört és nézetet.
+A bal és jobb nyílbillentyűk használatával a diagramon lévő egyes adatpontokon keresztül válthat. Használja a fel és le nyílbillentyűket a percentilis-vonalakon való váltáshoz. Az egyik diagram jobb felső sarkában válassza a rögzítés ikont, hogy rögzítse a kiválasztott diagramot az utoljára megtekintett Azure-irányítópulton. Az irányítópultról átméretezheti és áthelyezheti a diagramot. Ha kiválasztja a diagramot az irányítópultról, átirányítja a tároló elemzésére, és betölti a megfelelő hatókört és nézetet.
 
-A tárolók Azure Monitor támogatja a Azure Monitor [metrikák Explorert](../essentials/metrics-getting-started.md)is, ahol saját diagramokat hozhat létre, összekapcsolhatja és megvizsgálhatja a trendeket, és rögzítheti az irányítópultokat. A metrikák Explorerrel a mérőszámok [metrika-alapú riasztási szabályának](../alerts/alerts-metric.md)alapjaként beállított feltételeket is használhatja.
+A tároló-megállapítások a Azure Monitor [metrikák Explorer](../essentials/metrics-getting-started.md)használatát is támogatják, ahol saját diagramokat hozhat létre, összekapcsolhatja és megvizsgálhatja a trendeket, és rögzítheti az irányítópultokat. A metrikák Explorerrel a mérőszámok [metrika-alapú riasztási szabályának](../alerts/alerts-metric.md)alapjaként beállított feltételeket is használhatja.
 
 ## <a name="view-container-metrics-in-metrics-explorer"></a>Tároló metrikáinak megtekintése a metrikák Explorerben
 
-A metrikák Explorerben megtekintheti az összesített csomópont-és Pod-kihasználtsági metrikákat Azure Monitor a tárolók számára. A következő táblázat összefoglalja a részleteket, amelyekkel megismerheti, Hogyan jeleníthető meg a metrikai diagramok a tároló metrikáinak megjelenítéséhez.
+A mérőszámok Explorerben megtekintheti az összesített csomópont-és Pod-kihasználtsági mérőszámokat a Container-adatokból. A következő táblázat összefoglalja a részleteket, amelyekkel megismerheti, Hogyan jeleníthető meg a metrikai diagramok a tároló metrikáinak megjelenítéséhez.
 
 |Névtér | Metric | Leírás |
 |----------|--------|-------------|
@@ -297,12 +297,12 @@ Az Azure Network Policy Manager olyan tájékoztató Prometheus-metrikákat tart
 
 ## <a name="workbooks"></a>Munkafüzetek
 
-A munkafüzetek szövegeket, naplókat, metrikákat és paramétereket egyesítenek olyan gazdag interaktív jelentésekben, amelyek lehetővé teszik a fürt teljesítményének elemzését. A tárolók Azure Monitor számára elérhető munkafüzetek leírását a [tárolók Azure monitorban található munkafüzetek](../insights/container-insights-reports.md) című részben tekintheti meg.
+A munkafüzetek szövegeket, naplókat, metrikákat és paramétereket egyesítenek olyan gazdag interaktív jelentésekben, amelyek lehetővé teszik a fürt teljesítményének elemzését. A Container bepillantást nyerhető munkafüzetek leírását a [Container-](../insights/container-insights-reports.md) információkban található munkafüzetek című részben tekintheti meg.
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Tekintse át a [teljesítménnyel kapcsolatos riasztások létrehozása a Azure monitor for containers](./container-insights-log-alerts.md) szolgáltatással című témakört, amelyből megtudhatja, hogyan hozhat létre riasztásokat magas CPU-és memóriahasználat esetén a DevOps vagy működési folyamatok és eljárások
+- Tekintse át a [teljesítménnyel kapcsolatos riasztások létrehozása a tárolók](./container-insights-log-alerts.md) beszerzésével című témakört, amelyből megtudhatja, hogyan hozhat létre riasztásokat magas CPU-és memóriahasználat esetén a DevOps vagy működési folyamatok és eljárások támogatásához
 
 - Megtekintheti a [napló lekérdezési példáit](container-insights-log-search.md#search-logs-to-analyze-data) , amelyekkel előre definiált lekérdezéseket és példákat tekinthet meg a fürtök riasztásához, megjelenítéséhez vagy elemzéséhez.
 

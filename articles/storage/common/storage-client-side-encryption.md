@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: eb1891b7201d8e1d3d18b0e01817ee943ae6341f
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 9d00b6aa09ef19b1e6892e0e90536e45dd3bce79
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100548182"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718522"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Titkosítás és Azure Key Vault Client-Side Microsoft Azure Storage
 
@@ -132,6 +132,8 @@ Két szükséges csomag Key Vault integrációhoz:
 * Az Azure. Core tartalmazza a `IKeyEncryptionKey` és a `IKeyEncryptionKeyResolver` felületet. A Storage ügyféloldali kódtára a .NET-hez már meg van határozva függőségként.
 * Az Azure. Security. kulcstartó. Keys (v4. x) tartalmazza a Key Vault REST-ügyfelet, valamint az ügyféloldali titkosításhoz használt kriptográfiai ügyfeleket.
 
+A Key Vault a nagy értékű főkulcsok számára készült, és az egyes Key Vault sávszélesség-szabályozási korlátját szem előtt tartva tervezték. Az Azure. Security. kulcstartó. Keys 4.1.0 nem rendelkezik olyan `IKeyEncryptionKeyResolver` implementációval, amely támogatja a kulcsok gyorsítótárazását. A gyorsítótárazásnak a szabályozás miatt szükségesnek kell lennie, [ezt a mintát](https://docs.microsoft.com/samples/azure/azure-sdk-for-net/azure-key-vault-proxy/) követheti egy gyorsítótárazási réteg behelyezése egy `Azure.Security.KeyVault.Keys.Cryptography.KeyResolver` példányba.
+
 # <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
 
 Három Key Vault csomag létezik:
@@ -140,15 +142,15 @@ Három Key Vault csomag létezik:
 * A Microsoft. Azure. kulcstartó (v3. x) tartalmazza a Key Vault REST-ügyfelet.
 * A Microsoft. Azure. kulcstartó. Extensions (v3. x) olyan bővítményi kódot tartalmaz, amely titkosítási algoritmusok, valamint egy RSAKey és egy SymmetricKey implementációit tartalmazza. Ez az alapszintű és a kulcstartó névtertől függ, és funkciókat biztosít az összesített feloldó definiálásához (ha a felhasználók több Key providert kívánnak használni) és a gyorsítótárazási kulcs feloldóját. Bár a Storage ügyféloldali kódtár nem függ közvetlenül ettől a csomagtól, ha a felhasználók Azure Key Vault szeretnék tárolni a kulcsaikat, vagy hogy a Key Vault-bővítményeket használják a helyi és a felhőalapú titkosítási szolgáltatók felhasználásához, erre a csomagra lesz szükségük.
 
-A v11 Key Vault használatáról további információt a [v11 titkosítási kód mintáit](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples)ismertető témakörben talál.
-
----
-
 A Key Vault a nagy értékű főkulcsok számára készült, és az egyes Key Vault sávszélesség-szabályozási korlátját szem előtt tartva tervezték. Ha Key Vault használatával ügyféloldali titkosítást végez, az előnyben részesített modell a titokként tárolt szimmetrikus főkulcsok használata Key Vault és helyi gyorsítótárban. A felhasználóknak a következőket kell tenniük:
 
 1. Hozzon létre egy titkos kulcsot, és töltse fel Key Vaultba.
 2. A titkos kulcs alapazonosítójának használatával oldja fel a titkosítás jelenlegi verzióját, és gyorsítótárazza ezeket az információkat helyileg. CachingKeyResolver használata a gyorsítótárazáshoz; a felhasználók nem várhatóan saját gyorsítótárazási logikát implementálnak.
 3. Használja a gyorsítótárazási feloldót bemenetként a titkosítási házirend létrehozásakor.
+
+A v11 Key Vault használatáról további információt a [v11 titkosítási kód mintáit](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples)ismertető témakörben talál.
+
+---
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 

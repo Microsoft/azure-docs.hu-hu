@@ -7,15 +7,15 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.subservice: logs
-ms.openlocfilehash: c7e18250a6f11504aa29d8df190da974499470ab
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: dde18460862eb2ac61ed7e9bbf95d70ecf61496b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609046"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726019"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Diagnosztikai beállítások létrehozása a platformnaplók és -metrikák más célhelyekre való küldéséhez
-Az Azure [platform-naplói](../platform/platform-logs-overview.md) , beleértve az Azure-tevékenység naplóját és az erőforrás-naplókat, részletes diagnosztikai és naplózási információkat biztosítanak az Azure-erőforrásokhoz és az Azure-platformtól függenek. A [platform metrikáit](../platform/data-platform-metrics.md) a rendszer alapértelmezés szerint gyűjti, és általában a Azure monitor metrikai adatbázisban tárolja. Ez a cikk a diagnosztikai beállítások létrehozásával és konfigurálásával kapcsolatos részletes információkat tartalmaz a platform metrikáinak és a platformok naplóinak különböző célhelyekre küldéséhez.
+Az Azure [platform-naplói](./platform-logs-overview.md) , beleértve az Azure-tevékenység naplóját és az erőforrás-naplókat, részletes diagnosztikai és naplózási információkat biztosítanak az Azure-erőforrásokhoz és az Azure-platformtól függenek. A [platform metrikáit](./data-platform-metrics.md) a rendszer alapértelmezés szerint gyűjti, és általában a Azure monitor metrikai adatbázisban tárolja. Ez a cikk a diagnosztikai beállítások létrehozásával és konfigurálásával kapcsolatos részletes információkat tartalmaz a platform metrikáinak és a platformok naplóinak különböző célhelyekre küldéséhez.
 
 > [!IMPORTANT]
 > Mielőtt diagnosztikai beállítást hozna létre a műveletnapló számára, először le kell tiltania az örökölt konfigurációkat. További részletek: [örökölt gyűjteményi módszerek](../essentials/activity-log.md#legacy-collection-methods) .
@@ -31,21 +31,21 @@ Az alábbi videó végigvezeti az útválasztási platform naplófájljainak a d
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4AvVO]
 
 > [!NOTE]
-> A rendszer automatikusan elküldi a [platform metrikáit](../platform/metrics-supported.md) [Azure monitor mérőszámok](../platform/data-platform-metrics.md)számára. A diagnosztikai beállítások használatával bizonyos Azure-szolgáltatások metrikái küldhetők Azure Monitor naplókba más megfigyelési adatokkal való elemzéshez, bizonyos korlátozásokkal rendelkező [naplók](../log-query/log-query-overview.md) használatával. 
+> A rendszer automatikusan elküldi a [platform metrikáit](./metrics-supported.md) [Azure monitor mérőszámok](./data-platform-metrics.md)számára. A diagnosztikai beállítások használatával bizonyos Azure-szolgáltatások metrikái küldhetők Azure Monitor naplókba más megfigyelési adatokkal való elemzéshez, bizonyos korlátozásokkal rendelkező [naplók](../logs/log-query-overview.md) használatával. 
 >  
 >  
-> A többdimenziós metrikák diagnosztikai beállításokon keresztül történő küldése jelenleg nem támogatott. A dimenziókkal rendelkező metrikák egybesimított, egydimenziós metrikákként vannak exportálva, összesített dimenzióértékekkel. *Például*: a Blockchain "IOReadBytes" mérőszáma megvizsgálható és a csomópontok szintjén is felvehető. A diagnosztikai beállításokon keresztüli exportáláskor azonban az exportált metrika az összes csomópont olvasási bájtjaiként jelenik meg. Emellett a belső korlátozások miatt nem minden metrika exportálható Azure Monitor naplókba/Log Analyticsba. További információkért tekintse meg az [exportálható mérőszámok listáját](../platform/metrics-supported-export-diagnostic-settings.md). 
+> A többdimenziós metrikák diagnosztikai beállításokon keresztül történő küldése jelenleg nem támogatott. A dimenziókkal rendelkező metrikák egybesimított, egydimenziós metrikákként vannak exportálva, összesített dimenzióértékekkel. *Például*: a Blockchain "IOReadBytes" mérőszáma megvizsgálható és a csomópontok szintjén is felvehető. A diagnosztikai beállításokon keresztüli exportáláskor azonban az exportált metrika az összes csomópont olvasási bájtjaiként jelenik meg. Emellett a belső korlátozások miatt nem minden metrika exportálható Azure Monitor naplókba/Log Analyticsba. További információkért tekintse meg az [exportálható mérőszámok listáját](./metrics-supported-export-diagnostic-settings.md). 
 >  
 >  
-> Az egyes mérőszámokra vonatkozó korlátozások megszerzéséhez javasoljuk, hogy manuálisan kibontsa azokat a [metrikák használatával REST API](/rest/api/monitor/metrics/list) és importálja őket Azure monitor naplókba a [Azure monitor adatgyűjtő API](../platform/data-collector-api.md)használatával.  
+> Az egyes mérőszámokra vonatkozó korlátozások megszerzéséhez javasoljuk, hogy manuálisan kibontsa azokat a [metrikák használatával REST API](/rest/api/monitor/metrics/list) és importálja őket Azure monitor naplókba a [Azure monitor adatgyűjtő API](../logs/data-collector-api.md)használatával.  
 
 
 ## <a name="destinations"></a>Célhelyek
 A platform naplói és metrikái a következő táblázatban található célhelyekre küldhetők. 
 
-| Cél | Description |
+| Cél | Leírás |
 |:---|:---|
-| [Log Analytics munkaterület](../platform/design-logs-deployment.md) | A naplók és mérőszámok Log Analytics-munkaterületre való küldése lehetővé teszi, hogy a Azure Monitor által gyűjtött más figyelési adatokkal elemezze azokat a hatékony naplózási lekérdezésekkel, valamint más Azure Monitor funkciók, például riasztások és vizualizációk kihasználása érdekében. |
+| [Log Analytics munkaterület](../logs/design-logs-deployment.md) | A naplók és mérőszámok Log Analytics-munkaterületre való küldése lehetővé teszi, hogy a Azure Monitor által gyűjtött más figyelési adatokkal elemezze azokat a hatékony naplózási lekérdezésekkel, valamint más Azure Monitor funkciók, például riasztások és vizualizációk kihasználása érdekében. |
 | [Event Hubs](../../event-hubs/index.yml) | A naplók és metrikák küldésének Event Hubs lehetővé teszi az adatok továbbítását külső rendszerekre, például harmadik féltől származó SIEM-re és más log Analytics-megoldásokra.  |
 | [Azure Storage-fiók](../../storage/blobs/index.yml) | A naplók és mérőszámok Azure Storage-fiókba való archiválása hasznos lehet a naplózás, a statikus elemzés vagy a biztonsági mentés során. Azure Monitor naplókhoz és egy Log Analytics munkaterülethez képest az Azure Storage kevésbé költséges, és a naplók határozatlan ideig tarthatók.  |
 
@@ -99,7 +99,7 @@ A Azure Portal diagnosztikai beállításait a Azure Monitor menüből vagy az e
 
 4. **Kategória részletei (mit kell átirányítani)** – jelölje be a jelölőnégyzetet minden olyan adatkategória esetében, amelyet később szeretne elküldeni a célhelyekre. A kategóriák listája az egyes Azure-szolgáltatásokra változik.
 
-     - A **AllMetrics** az erőforrás platformjának mérőszámait az Azure naplók tárolójába irányítja, de a napló formájában. Ezeket a mérőszámokat általában csak a Azure Monitor metrikák idősorozat-adatbázisába küldik. Küldje el őket a Azure Monitor naplók tárolójába (amely Log Analyticson keresztül kereshető) segíti a különböző naplókon belüli keresésre szolgáló lekérdezésekben való integrálását. Lehetséges, hogy ez a beállítás nem érhető el az összes erőforrástípus esetében. Ha ez támogatott, [Azure monitor támogatott mérőszámok](../platform/metrics-supported.md) felsorolják, hogy milyen mérőszámokat gyűjt a rendszer a milyen típusú erőforrásokhoz.
+     - A **AllMetrics** az erőforrás platformjának mérőszámait az Azure naplók tárolójába irányítja, de a napló formájában. Ezeket a mérőszámokat általában csak a Azure Monitor metrikák idősorozat-adatbázisába küldik. Küldje el őket a Azure Monitor naplók tárolójába (amely Log Analyticson keresztül kereshető) segíti a különböző naplókon belüli keresésre szolgáló lekérdezésekben való integrálását. Lehetséges, hogy ez a beállítás nem érhető el az összes erőforrástípus esetében. Ha ez támogatott, [Azure monitor támogatott mérőszámok](./metrics-supported.md) felsorolják, hogy milyen mérőszámokat gyűjt a rendszer a milyen típusú erőforrásokhoz.
 
        > [!NOTE]
        > Tekintse meg a jelen cikk korábbi részében Azure Monitor naplókra vonatkozó útválasztási mérőszámok korlátozását.  
@@ -111,7 +111,7 @@ A Azure Portal diagnosztikai beállításait a Azure Monitor menüből vagy az e
 
       ![Küldés Log Analytics vagy Event Hubs](media/diagnostic-settings/send-to-log-analytics-event-hubs.png)
 
-    1. **Log Analytics** – adja meg az előfizetést és a munkaterületet.  Ha nem rendelkezik munkaterülettel, a [továbblépés előtt létre kell hoznia egyet](../learn/quick-create-workspace.md).
+    1. **Log Analytics** – adja meg az előfizetést és a munkaterületet.  Ha nem rendelkezik munkaterülettel, a [továbblépés előtt létre kell hoznia egyet](../logs/quick-create-workspace.md).
 
     1. **Event hubok** – Itt adhatja meg a következő feltételeket:
        - Az az előfizetés, amely az Event hub részét képezi
@@ -132,14 +132,14 @@ A Azure Portal diagnosztikai beállításait a Azure Monitor menüből vagy az e
 
 6. Kattintson a **Mentés** gombra.
 
-Néhány pillanat elteltével megjelenik az új beállítás az erőforráshoz tartozó beállítások listájában, és a rendszer a naplókat a megadott célhelyre továbbítja az új esemény-adatforrások létrehozásakor. Egy esemény kibocsátásakor akár 15 percet is igénybe vehet, amikor megjelenik [egy log Analytics munkaterületen](../platform/data-ingestion-time.md).
+Néhány pillanat elteltével megjelenik az új beállítás az erőforráshoz tartozó beállítások listájában, és a rendszer a naplókat a megadott célhelyre továbbítja az új esemény-adatforrások létrehozásakor. Egy esemény kibocsátásakor akár 15 percet is igénybe vehet, amikor megjelenik [egy log Analytics munkaterületen](../logs/data-ingestion-time.md).
 
 ## <a name="create-using-powershell"></a>Létrehozás a PowerShell használatával
 
-A [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) parancsmaggal hozzon létre diagnosztikai beállítást [Azure PowerShell](../samples/powershell-samples.md)használatával. A parancsmag dokumentációját a paraméterek leírását ismertető cikkben találja.
+A [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) parancsmaggal hozzon létre diagnosztikai beállítást [Azure PowerShell](../powershell-samples.md)használatával. A parancsmag dokumentációját a paraméterek leírását ismertető cikkben találja.
 
 > [!IMPORTANT]
-> Ez a metódus nem használható az Azure-beli tevékenység naplójában. Ehelyett [hozzon létre diagnosztikai beállítást a Azure monitor Resource Manager-sablonnal](../samples/resource-manager-diagnostic-settings.md) egy Resource Manager-sablon létrehozásához és a PowerShell használatával történő telepítéséhez.
+> Ez a metódus nem használható az Azure-beli tevékenység naplójában. Ehelyett [hozzon létre diagnosztikai beállítást a Azure monitor Resource Manager-sablonnal](./resource-manager-diagnostic-settings.md) egy Resource Manager-sablon létrehozásához és a PowerShell használatával történő telepítéséhez.
 
 A következő példa egy PowerShell-parancsmagot tartalmaz a diagnosztikai beállítások mind a három célhely használatával történő létrehozásához.
 
@@ -152,7 +152,7 @@ Set-AzDiagnosticSetting -Name KeyVault-Diagnostics -ResourceId /subscriptions/xx
 Az az [monitor diagnosztikai-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) paranccsal hozzon létre egy diagnosztikai beállítást az [Azure CLI](/cli/azure/monitor)használatával. A paraméterek leírását a parancs dokumentációjában találja.
 
 > [!IMPORTANT]
-> Ez a metódus nem használható az Azure-beli tevékenység naplójában. Ehelyett a [Azure monitor diagnosztikai beállítás használatával Resource Manager-sablonnal](../samples/resource-manager-diagnostic-settings.md) hozzon létre egy Resource Manager-sablont, és telepítse azt a CLI-vel.
+> Ez a metódus nem használható az Azure-beli tevékenység naplójában. Ehelyett a [Azure monitor diagnosztikai beállítás használatával Resource Manager-sablonnal](./resource-manager-diagnostic-settings.md) hozzon létre egy Resource Manager-sablont, és telepítse azt a CLI-vel.
 
 A következő példa egy CLI-parancsot mutat be a diagnosztikai beállítások mind a három célhely használatával történő létrehozásához.
 
@@ -168,7 +168,7 @@ az monitor diagnostic-settings create  \
 ```
 
 ## <a name="create-using-resource-manager-template"></a>Létrehozás Resource Manager-sablonnal
-A diagnosztikai beállítások a Resource Manager-sablonnal történő létrehozásához vagy frissítéséhez tekintse meg a [Resource Manager-sablonok mintákat a Azure monitor diagnosztikai beállításaihoz](../samples/resource-manager-diagnostic-settings.md) .
+A diagnosztikai beállítások a Resource Manager-sablonnal történő létrehozásához vagy frissítéséhez tekintse meg a [Resource Manager-sablonok mintákat a Azure monitor diagnosztikai beállításaihoz](./resource-manager-diagnostic-settings.md) .
 
 ## <a name="create-using-rest-api"></a>Létrehozás a REST API használatával
 A diagnosztikai beállítások a [Azure Monitor REST API](/rest/api/monitor/)használatával történő létrehozásához vagy frissítéséhez tekintse meg a [diagnosztikai beállításokat](/rest/api/monitor/diagnosticsettings) .
@@ -197,4 +197,4 @@ Ha ezt a hibaüzenetet kapja, frissítse az üzemelő példányokat, hogy a prob
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [További információ az Azure platform naplóiról](../platform/platform-logs-overview.md)
+- [További információ az Azure platform naplóiról](./platform-logs-overview.md)

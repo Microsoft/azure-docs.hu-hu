@@ -4,12 +4,12 @@ description: Ez a cikk a Azure Automation az állapot Azure Automation-konfigur�
 ms.author: magoedte
 ms.topic: conceptual
 ms.date: 01/26/2021
-ms.openlocfilehash: 0add7eed6abbe6c137d423ee4a7ef5f0f60072e3
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 36331e9c07926d4d3ffff136aefa2f9a77d47cb4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98900208"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708883"
 ---
 # <a name="azure-automation-network-configuration-details"></a>Azure Automation hálózati konfiguráció részletei
 
@@ -26,7 +26,7 @@ A hibrid Runbook-feldolgozó számára a következő portokra és URL-címekre v
 
 ### <a name="network-planning-for-hybrid-runbook-worker"></a>A hibrid Runbook-feldolgozók hálózati tervezése
 
-Ahhoz, hogy a rendszer vagy a felhasználó hibrid Runbook feldolgozója Azure Automationhoz kapcsolódjon és regisztráljon, hozzáféréssel kell rendelkeznie az ebben a részben ismertetett portszámhoz és URL-címekhez. A munkavégzőnek hozzáféréssel kell rendelkeznie a Log Analytics ügynökhöz a Azure Monitor Log Analytics munkaterülethez való csatlakozáshoz [szükséges portokhoz és URL-címekhez](../azure-monitor/platform/agent-windows.md) .
+Ahhoz, hogy a rendszer vagy a felhasználó hibrid Runbook feldolgozója Azure Automationhoz kapcsolódjon és regisztráljon, hozzáféréssel kell rendelkeznie az ebben a részben ismertetett portszámhoz és URL-címekhez. A munkavégzőnek hozzáféréssel kell rendelkeznie a Log Analytics ügynökhöz a Azure Monitor Log Analytics munkaterülethez való csatlakozáshoz [szükséges portokhoz és URL-címekhez](../azure-monitor/agents/agent-windows.md) .
 
 Ha rendelkezik egy adott régióhoz definiált Automation-fiókkal, akkor a hibrid Runbook-feldolgozó kommunikációt korlátozhatja az adott regionális adatközpontra. Tekintse át a [Azure Automation által használt DNS-rekordokat](how-to/automation-region-dns-records.md) a szükséges DNS-rekordokhoz.
 

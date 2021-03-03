@@ -6,14 +6,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: quickstart
-ms.date: 10/15/2020
+ms.date: 02/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: 325f39b695d80c14ed7097d071380b937458546c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8aeba13954283ca35c3eb0060a0e588ba6a7adbe
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021486"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707134"
 ---
 # <a name="quickstart-connect-to-a-vm-securely-through-a-browser-via-private-ip-address"></a>Gyors útmutató: biztonságos virtuális gép csatlakoztatása a böngészőben egy privát IP-cím használatával
 
@@ -46,21 +46,21 @@ A konfiguráció létrehozásakor a következő példában szereplő értékeket
 |**Név** | **Érték** |
 | --- | --- |
 | Virtuális gép| TestVM |
-| Erőforráscsoport | TestRG |
+| Erőforráscsoport | TestRG1 |
 | Region | USA keleti régiója |
-| Virtuális hálózat | TestVNet1 |
-| Címtér | 10.0.0.0/16 |
-| Alhálózatok | Előtér: 10.0.0.0/24 |
+| Virtuális hálózat | VNet1 |
+| Címtér | 10.1.0.0/16 |
+| Alhálózatok | Előtér: 10.1.0.0/24 |
 
 **Azure-megerősített értékek:**
 
 |**Név** | **Érték** |
 | --- | --- |
-| Név | TestVNet1-Bastion |
+| Name | VNet1-Bastion |
 | + Alhálózat neve | AzureBastionSubnet |
-| AzureBastionSubnet-címek | Egy alhálózaton belüli VNet-címtartomány egy/27 alhálózati maszkkal. Például: 10.0.1.0/27.  |
+| AzureBastionSubnet-címek | Egy alhálózaton belüli VNet-címtartomány egy/27 alhálózati maszkkal. Például: 10.1.1.0/27.  |
 | Nyilvános IP-cím |  Új létrehozása |
-| Nyilvános IP-cím | VNet1BastionPIP  |
+| Nyilvános IP-cím | VNet1 – IP  |
 | Nyilvános IP-cím SKU |  Standard  |
 | Hozzárendelés  | Statikus |
 
@@ -71,42 +71,42 @@ A megerősített gazdagépek konfigurálásának néhány különböző módja v
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Navigáljon arra a virtuális gépre, amelyhez csatlakozni szeretne, majd válassza a **Kapcsolódás** lehetőséget.
 
-   :::image type="content" source="./media/quickstart-host-portal/vm-settings.png" alt-text="virtuális gép beállításai" lightbox="./media/quickstart-host-portal/vm-settings.png":::
+   :::image type="content" source="./media/quickstart-host-portal/vm-connect.png" alt-text="Képernyőfelvétel a virtuális gép beállításairól." lightbox="./media/quickstart-host-portal/vm-connect.png":::
 1. A legördülő listából válassza a **Bastion** lehetőséget.
+
+   :::image type="content" source="./media/quickstart-host-portal/bastion.png" alt-text="A Bastion legördülő lista képernyőképe." lightbox="./media/quickstart-host-portal/bastion.png":::
 1. A **TestVM | A kapcsolat lapon** válassza a **megerősített használata** lehetőséget.
 
-   :::image type="content" source="./media/quickstart-host-portal/select-bastion.png" alt-text="Megerősített" border="false":::
+   :::image type="content" source="./media/quickstart-host-portal/select-bastion.png" alt-text="A Bastion használatának képernyőképe.":::
 
-1. A **megerősített** lapon töltse ki a következő beállítások mezőket:
+1. A **kapcsolat az Azure Bastion használatával** lapon adja meg az értékeket.
 
-   * **Név**: nevezze el a megerősített gazdagépet.
-   * **Alhálózat**: Ez a virtuális hálózati címtartomány, amelyre a megerősített erőforrást telepíteni fogja. Az alhálózatot a **AzureBastionSubnet** névvel kell létrehozni. Használjon legalább/27 vagy nagyobb (/27,/26,/25 stb.) alhálózatot.
-   * Válassza az **alhálózat konfigurációjának kezelése** lehetőséget.
-1. Az **alhálózatok** lapon válassza a **+ alhálózat** lehetőséget.
+   * **1. lépés:** Az értékek előre ki vannak töltve, mert közvetlenül a virtuális gépről hozza létre a megerősített gazdagépet.
 
-   :::image type="content" source="./media/quickstart-host-portal/subnet.png" alt-text="+ Alhálózat":::
-    
-1. Az **alhálózat hozzáadása** oldalon a **név** mezőbe írja be a következőt: **AzureBastionSubnet**.
-   * Az alhálózati címtartomány területen válassza ki a virtuális hálózati címtartomány keretén belül található alhálózati címeket.
-   * Ne módosítsa a többi beállítást. Az alhálózat módosításainak elfogadásához és mentéséhez kattintson **az OK gombra** .
+   * **2. lépés:** A Címterület előre fel van töltve a javasolt címtartomány alapján. A AzureBastionSubnet legalább/27 vagy nagyobb (/26,/25 stb.) címnek kell lennie.
 
-   :::image type="content" source="./media/quickstart-host-portal/add-subnet.png" alt-text="Alhálózat hozzáadása":::
-1. A böngészőben a Vissza gombra kattintva lépjen vissza a **megerősített** oldalra, és folytassa az értékek megadását.
-   * **Nyilvános IP-cím**: ne **hozzon létre újként**.
-   * **Nyilvános IP-cím neve**: a nyilvános IP-cím erőforrásának neve.
-   * **Hozzárendelés**: az alapértelmezett érték a statikus. Az Azure Bastion-hez nem használhat dinamikus hozzárendelést.
+   :::image type="content" source="./media/quickstart-host-portal/create-subnet.png" alt-text="Képernyőkép a megerősített alhálózat létrehozásáról.":::
+
+1. A AzureBastionSubnet létrehozásához kattintson az **alhálózat létrehozása** elemre.
+1. Az alhálózat létrehozása után az oldal automatikusan továbblép a 3. **lépésre**. A 3. lépésben használja a következő értékeket:
+
+   * **Név:** Nevezze el a megerősített gazdagépet.
+   * **Nyilvános IP-cím:** Válassza az **Új létrehozása** lehetőséget.
+   * **Nyilvános IP-cím neve:** A nyilvános IP-cím erőforrásának neve.
+   * **Nyilvános IP-cím SKU:** Előre konfigurálva **standardként**
+   * **Hozzárendelés:** Előre konfigurálva **statikusra**. Az Azure Bastion-hez nem használhat dinamikus hozzárendelést.
    * **Erőforráscsoport**: ugyanazt az erőforráscsoportot, mint a virtuális gép.
 
-   :::image type="content" source="./media/quickstart-host-portal/validate.png" alt-text="A megerősített gazdagép létrehozása":::
-1. Válassza a **Létrehozás** lehetőséget a megerősített gazdagép létrehozásához. Az Azure ellenőrzi a beállításokat, majd létrehozza a gazdagépet. A gazdagép és az erőforrásai 5 percet vesznek igénybe a létrehozás és a telepítés során.
+   :::image type="content" source="./media/quickstart-host-portal/create-bastion.png" alt-text="A 3. lépés képernyőképe.":::
+1. Az értékek befejezése után válassza az **Azure Bastion létrehozása az alapértelmezett beállításokkal** lehetőséget. Az Azure ellenőrzi a beállításokat, majd létrehozza a gazdagépet. A gazdagép és az erőforrásai 5 percet vesznek igénybe a létrehozás és a telepítés során.
 
-## <a name="connect"></a><a name="connect"></a>Kapcsolódás
+## <a name="connect"></a><a name="connect"></a>Csatlakozni
 
 Miután a megerősített állapotot telepítette a virtuális hálózatra, a képernyő a kapcsolódás lapra változik.
 
 1. Írja be a virtuális gép felhasználónevét és jelszavát. Ezután válassza a **kapcsolat** lehetőséget.
 
-   :::image type="content" source="./media/quickstart-host-portal/connect-vm.png" alt-text="A képernyőfelvételen a kapcsolat az Azure Bastion használatával párbeszédablak látható.":::
+   :::image type="content" source="./media/quickstart-host-portal/connect.png" alt-text="A képernyőfelvételen a kapcsolat az Azure Bastion használatával párbeszédablak látható.":::
 1. Az ehhez a virtuális géphez tartozó RDP-kapcsolat közvetlenül a Azure Portal (HTML5-en keresztül) lesz megnyitva a 443-as port és a megerősített szolgáltatás használatával.
 
    :::image type="content" source="./media/quickstart-host-portal/connected.png" alt-text="RDP-kapcsolat":::
@@ -121,7 +121,7 @@ Ha végzett a virtuális hálózat és a virtuális gépek használatával, tör
 
 1. Adja meg az erőforráscsoport **nevét, írja be az erőforráscsoport nevét** , majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy megerősített gazdagépet hozott létre a virtuális hálózathoz, majd biztonságosan kapcsolódott egy virtuális géphez a Bastion használatával. Ezután folytassa a következő lépéssel, ha egy virtuálisgép-méretezési csoporthoz szeretne csatlakozni.
 

@@ -3,12 +3,12 @@ title: Figyelés és naplózás – Azure
 description: Ez a cikk áttekintést nyújt a IoT Edge élő videó-elemzések monitorozásáról és naplózásáról.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: a77ca6cf9dc66d1efda5741266f1a2eecc2599c0
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: e81b1e98fb30bb8876c78c8c911585f5448db8f2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507818"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730242"
 ---
 # <a name="monitoring-and-logging"></a>Monitorozás és naplózás
 
@@ -305,27 +305,70 @@ A következő lépésekkel engedélyezheti a metrikák gyűjteményét az élő 
      `AZURE_CLIENT_SECRET`: A használni kívánt alkalmazás titkát adja meg.  
      
      >[!TIP]
-     > Az egyszerű szolgáltatás a **figyelési metrikák közzétevői** szerepkörének megadására szolgál. Az egyszerű szolgáltatásnév létrehozásához és a szerepkör hozzárendeléséhez kövesse az **[egyszerű szolgáltatásnév létrehozása](https://docs.microsoft.com/azure/azure-arc/data/upload-metrics-and-logs-to-azure-monitor?pivots=client-operating-system-macos-and-linux#create-service-principal)** című témakör lépéseit.
+     > Az egyszerű szolgáltatás a **figyelési metrikák közzétevői** szerepkörének megadására szolgál. Az egyszerű szolgáltatásnév létrehozásához és a szerepkör hozzárendeléséhez kövesse az **[egyszerű szolgáltatásnév létrehozása](../../azure-arc/data/upload-metrics-and-logs-to-azure-monitor.md?pivots=client-operating-system-macos-and-linux#create-service-principal)** című témakör lépéseit.
 
 1. A modulok üzembe helyezése után a metrikák egyetlen névtér alatt jelennek meg Azure Monitorban. A metrikák nevei megegyeznek a Prometheus által kibocsátott jelekkel. 
 
    Ebben az esetben a Azure Portalban nyissa meg az IoT hubot, és válassza a **metrikák** lehetőséget a bal oldali ablaktáblán. Itt kell látnia a metrikákat.
 
-A Prometheus és a [log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/log-analytics-tutorial)használatával olyan metrikákat hozhatja ki és [figyelheti](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported) , mint a használt CPUPercent, MemoryUsedPercent stb. A Kusto lekérdezési nyelv használatával az alábbi módon írhat lekérdezéseket, és beolvashatja a IoT Edge-modulok által használt CPU-százalékot.
-```kusto
-let cpu_metrics = promMetrics_CL
-| where Name_s == "edgeAgent_used_cpu_percent"
-| extend dimensions = parse_json(Tags_s)
-| extend module_name = tostring(dimensions.module_name)
-| where module_name in ("lvaEdge","yolov3","tinyyolov3")
-| summarize cpu_percent = avg(Value_d) by bin(TimeGenerated, 5s), module_name;
-cpu_metrics
-| summarize cpu_percent = sum(cpu_percent) by TimeGenerated
-| extend module_name = "Total"
-| union cpu_metrics
-```
+### <a name="log-analytics-metrics-collection"></a>Log Analytics metrikák gyűjteménye
+A [Prometheus-végpont](https://prometheus.io/docs/practices/naming/) és a [log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/log-analytics-tutorial)használatával olyan metrikákat hozhatja ki és [figyelheti](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported) , mint például a felhasznált CPUPercent, a MemoryUsedPercent stb.   
 
-[![Diagram, amely a Kusto-lekérdezés használatával jeleníti meg a metrikákat.](./media/telemetry-schema/metrics.png)](./media/telemetry-schema/metrics.png#lightbox)
+> [!NOTE]
+> Az alábbi konfiguráció nem gyűjt naplókat, **csak metrikákat**. A gyűjtő modul kiterjeszthető a naplók összegyűjtésére és feltöltésére is.
+
+[![A metrikák gyűjteményét log Analytics használatával bemutató diagram.](./media/telemetry-schema/log-analytics.png)](./media/telemetry-schema/log-analytics.png#lightbox)
+
+1. Tudnivalók a [metrikák gyűjtéséről](https://github.com/Azure/iotedge/tree/master/edge-modules/MetricsCollector)
+1. Docker CLI-parancsok használatával hozza létre a [Docker-fájlt](https://github.com/Azure/iotedge/tree/master/edge-modules/MetricsCollector/docker/linux) , és tegye közzé a rendszerképet az Azure Container registryben.
+    
+   További információ arról, hogy a Docker CLI-vel hogyan lehet leküldeni a tároló-beállításjegyzéket: [leküldéses és lekéréses Docker-rendszerképek](../../container-registry/container-registry-get-started-docker-cli.md). A Azure Container Registry kapcsolatos további információkért tekintse meg a [dokumentációt](../../container-registry/index.yml).
+
+1. A leküldéses Azure Container Registry befejezését követően a rendszer beszúrja a következőt az üzembe helyezési jegyzékbe:
+    ```json
+    "azmAgent": {
+      "settings": {
+        "image": "{AZURE_CONTAINER_REGISTRY_LINK_TO_YOUR_METRICS_COLLECTOR}"
+      },
+      "type": "docker",
+      "version": "1.0",
+      "status": "running",
+      "restartPolicy": "always",
+      "env": {
+        "LogAnalyticsWorkspaceId": { "value": "{YOUR_LOG_ANALYTICS_WORKSPACE_ID}" },
+        "LogAnalyticsSharedKey": { "value": "{YOUR_LOG_ANALYTICS_WORKSPACE_SECRET}" },
+        "LogAnalyticsLogType": { "value": "IoTEdgeMetrics" },
+        "MetricsEndpointsCSV": { "value": "http://edgeHub:9600/metrics,http://edgeAgent:9600/metrics,http://lvaEdge:9600/metrics" },
+        "ScrapeFrequencyInSecs": { "value": "30 " },
+        "UploadTarget": { "value": "AzureLogAnalytics" }
+      }
+    }
+    ```
+    > [!NOTE]
+    > A modulok `edgeHub` `edgeAgent` és a `lvaEdge` telepítési jegyzékfájlban definiált modulok nevei. Győződjön meg arról, hogy a modulok nevei egyeznek.   
+
+    A következő lépésekkel érheti el és állíthatja be az `LogAnalyticsWorkspaceId` `LogAnalyticsSharedKey` értékeket:
+    1. Ugrás a Azure Portal
+    1. Log Analytics munkaterületek keresésének megtekintése
+    1. Miután megtalálta a Log Analytics munkaterületet, navigáljon a `Agents management` bal oldali navigációs ablaktáblán található lehetőségre.
+    1. Megtalálhatja a munkaterület AZONOSÍTÓját és a használható titkos kulcsokat.
+
+1. Ezután hozzon létre egy munkafüzetet a `Workbooks` bal oldali navigációs ablaktábla fülére kattintva.
+1. A Kusto lekérdezési nyelv használatával az alábbi módon írhat lekérdezéseket, és beolvashatja a IoT Edge modulok által használt CPU-százalékarányt.
+    ```kusto
+    let cpu_metrics = IoTEdgeMetrics_CL
+    | where Name_s == "edgeAgent_used_cpu_percent"
+    | extend dimensions = parse_json(Tags_s)
+    | extend module_name = tostring(dimensions.module_name)
+    | where module_name in ("lvaEdge","yolov3","tinyyolov3")
+    | summarize cpu_percent = avg(Value_d) by bin(TimeGenerated, 5s), module_name;
+    cpu_metrics
+    | summarize cpu_percent = sum(cpu_percent) by TimeGenerated
+    | extend module_name = "Total"
+    | union cpu_metrics
+    ```
+
+    [![Diagram, amely a Kusto-lekérdezés használatával jeleníti meg a metrikákat.](./media/telemetry-schema/metrics.png)](./media/telemetry-schema/metrics.png#lightbox)
 ## <a name="logging"></a>Naplózás
 
 Más IoT Edge modulokhoz hasonlóan a peremhálózati eszközön is ellenőrizheti [a tároló naplóit](../../iot-edge/troubleshoot.md#check-container-logs-for-issues) . A naplókba írt adatokat a [következő modul két](module-twin-configuration-schema.md) tulajdonságának használatával konfigurálhatja:

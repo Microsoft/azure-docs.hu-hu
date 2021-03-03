@@ -7,14 +7,14 @@ ms.reviewer: cynthn
 ms.service: virtual-machines
 ms.subservice: security
 ms.topic: how-to
-ms.date: 02/26/2021
+ms.date: 03/02/2021
 ms.custom: template-how-to
-ms.openlocfilehash: cd39ec9653efba9adabb9ae2076e5a042c69abe2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4c4ad2a1350632d381cc258049ee85c87766f9b5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679764"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694121"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>Megbízható indítást engedélyező virtuális gép üzembe helyezése (előzetes verzió)
 
@@ -31,7 +31,7 @@ A [megbízható indítás](trusted-launch.md) egy módszer a [2. generációs](g
 
 Hozzon létre egy virtuális gépet, amelyen engedélyezve van a megbízható indítás.
 
-1. Jelentkezzen be az Azure [Portalra](https://portal.azure.com).
+1. Jelentkezzen be az Azure [Portalra](https://aka.ms/TL_preview).
 1. **Virtual Machines** keresése.
 1. A **szolgáltatások** területen válassza a **virtuális gépek** lehetőséget.
 1. A **virtuális gépek** lapon válassza a **Hozzáadás**, majd a **virtuális gép** lehetőséget.

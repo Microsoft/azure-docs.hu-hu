@@ -4,16 +4,16 @@ description: Az alkalmazások teljesítményének figyelése az Azure app Servic
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: 74b39219b3b18c8de0214367d141085f6dc5f674
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7661066bc2666070c8b3ed9263b1223c09d6c720
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573999"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734723"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Az Azure App Service teljesítményének monitorozása
 
-Az [Azure app Services](../../app-service/index.yml) -on futó ASP.NET és ASP.net Core-alapú webalkalmazások figyelésének engedélyezése mostantól minden eddiginél egyszerűbb. Mivel korábban a hely kiterjesztésének manuális telepítésére volt szükség, alapértelmezés szerint a legújabb bővítmény/ügynök már be van építve az App Service-lemezképbe. Ebből a cikkből megtudhatja, hogyan engedélyezheti Application Insights monitorozását, valamint előzetes útmutatást nyújt a nagyméretű központi telepítések folyamatának automatizálásához.
+Az [Azure app Services](../../app-service/index.yml) -on futó ASP.NET, ASP.NET Core és Node.js-alapú webalkalmazások figyelésének engedélyezése mostantól minden eddiginél könnyebben használható. Mivel korábban a hely kiterjesztésének manuális telepítésére volt szükség, alapértelmezés szerint a legújabb bővítmény/ügynök már be van építve az App Service-lemezképbe. Ebből a cikkből megtudhatja, hogyan engedélyezheti Application Insights monitorozását, valamint előzetes útmutatást nyújt a nagyméretű központi telepítések folyamatának automatizálásához.
 
 > [!NOTE]
 > Application Insights hely bővítményének manuális hozzáadása a **fejlesztői eszközök**  >  **bővítményein** keresztül elavult. Ez a bővítmény-telepítési módszer az egyes új verziók manuális frissítéseitől függ. A bővítmény legújabb stabil kiadása mostantól a App Service rendszerkép részeként van  [előtelepítve](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) . A fájlok a ben találhatók, `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` és automatikusan frissülnek az egyes stabil kiadásokkal. Ha követi az ügynök-alapú utasításokat az alábbi figyelés engedélyezéséhez, az automatikusan eltávolítja az elavult bővítményt.
@@ -61,11 +61,11 @@ Az alkalmazások figyelését kétféleképpen engedélyezheti az Azure App Serv
         
 | Adatok | ASP.NET alapszintű gyűjtemény | ASP.NET ajánlott gyűjtemény |
 | --- | --- | --- |
-| Processzor-, memória- és I/O-használati trendek hozzáadása |Igen |Yes |
-| Használati trendek gyűjtése, a rendelkezésreállási eredmények és a tranzakciók összevetése | Igen |Yes |
-| A gazdafolyamat által nem kezelt kivételek gyűjtése | Igen |Yes |
-| Az APM-metrikák pontosságának növelése terhelés alatt, mintavételezés használatakor | Igen |Yes |
-| Mikroszolgáltatások összevetése kérési és függőségi határokon keresztül | Nem (csak egypéldányos APM-képességek) |Yes |
+| Processzor-, memória- és I/O-használati trendek hozzáadása |Igen |Igen |
+| Használati trendek gyűjtése, a rendelkezésreállási eredmények és a tranzakciók összevetése | Igen |Igen |
+| A gazdafolyamat által nem kezelt kivételek gyűjtése | Igen |Igen |
+| Az APM-metrikák pontosságának növelése terhelés alatt, mintavételezés használatakor | Igen |Igen |
+| Mikroszolgáltatások összevetése kérési és függőségi határokon keresztül | Nem (csak egypéldányos APM-képességek) |Igen |
 
 3. Ha olyan beállításokat szeretne konfigurálni, mint például a mintavétel, amelyet korábban a applicationinsights.config fájlon keresztül szabályozhat, mostantól a megfelelő előtaggal használhatja ugyanezeket a beállításokat az Alkalmazásbeállítások használatával. 
 
@@ -97,7 +97,7 @@ A ASP.NET Core, az önálló üzemelő példányok és a Linux-alapú alkalmazá
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-A app Service webalkalmazás **Beállítások** területén  >  **válassza a Application Insights**  >  **Engedélyezés** lehetőséget. Node.js ügynök-alapú figyelés jelenleg előzetes verzióban érhető el.
+A Windows-ügynökön alapuló figyelés nem támogatott, és a Linuxon való engedélyezéshez látogasson el a [Node.js app Service dokumentációra](../../app-service/configure-language-nodejs.md?pivots=platform-linux#monitor-with-application-insights).
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -170,6 +170,7 @@ Ahhoz, hogy a telemetria-gyűjtést Application Insights használatával engedé
 |XDT_MicrosoftApplicationInsights_Mode |  Az alapértelmezett módban csak az alapvető funkciók engedélyezettek az optimális teljesítmény biztosításához. | `default` vagy `recommended`. |
 |InstrumentationEngine_EXTENSION_VERSION | Azt szabályozza, hogy a bináris Újraírási motor `InstrumentationEngine` be legyen-e kapcsolva. Ez a beállítás teljesítménybeli következményekkel jár, és a hatás a hideg indítás/indítás ideje. | `~1` |
 |XDT_MicrosoftApplicationInsights_BaseExtensions | Azt szabályozza, hogy az SQL & Azure Table szövege a függőségi hívásokkal együtt rögzítve lesz-e. Teljesítményre vonatkozó figyelmeztetés: a rendszer az alkalmazás hideg indítási idejét fogja érinteni. Ehhez a beállításhoz a szükséges `InstrumentationEngine` . | `~1` |
+|XDT_MicrosoftApplicationInsights_PreemptSdk | Csak ASP.NET Core alkalmazásokhoz. Az együttműködési (együttműködés) engedélyezése Application Insights SDK-val. Betölti a bővítményt az SDK-val, és a használatával telemetria küld (letiltja a Application Insights SDK-t). |`1`|
 
 ### <a name="app-service-application-settings-with-azure-resource-manager"></a>Alkalmazás-beállítások App Service Azure Resource Manager
 

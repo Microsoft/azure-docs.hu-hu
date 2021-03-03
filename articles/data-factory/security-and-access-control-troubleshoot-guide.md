@@ -4,14 +4,14 @@ description: Ismerje meg, hogy miként lehet elhárítani a Azure Data Factory b
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 02/04/2021
+ms.date: 02/24/2021
 ms.author: lle
-ms.openlocfilehash: 0dac0dcb272b602be8b921bce0ffc68c05cb9cbd
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: fa410441203c50d96c0de1d9188fb73b6fd4d577
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375170"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706151"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Biztonsági és hozzáférés-vezérlési problémák elhárítása Azure Data Factory
 
@@ -107,7 +107,7 @@ A probléma megoldásához tegye a következőket:
 
 Nem lehet regisztrálni az IR hitelesítési kulcsot a saját üzemeltetésű virtuális gépen, mert a magánhálózati kapcsolat engedélyezve van. A következő hibaüzenet jelenik meg:
 
-"Nem sikerült lekérni a Service tokent az ADF szolgáltatásból a (z) * * * * * * * * * * * * * * * * * * * * * * * * * * * 0,1250079 másodperc, a hibakód a következő: InvalidGatewayKey, tevékenységazonosító: XXXXXXX és részletes hibaüzenet az ügyfél IP-címe nem érvényes magánhálózati IP-cím, mert az adatelőállító nem tudta elérni a nyilvános hálózatot, így nem tud hozzáférni a felhőhöz a sikeres kapcsolat érdekében."
+"Nem sikerült lekérni a Service tokent az ADF szolgáltatásból a (z) * * * * * * * * * * * * * * * * * * * * * * * * * * * 0,1250079 Másodszor, a hibakód a következő: InvalidGatewayKey, tevékenységazonosító: XXXXXXX és részletes hibaüzenet az ügyfél IP-címe nem érvényes magánhálózati IP-cím, mert az adatelőállító nem tudott hozzáférni a nyilvános hálózathoz, így nem tudja elérni a felhőt a sikeres kapcsolat létrehozásához."
 
 #### <a name="cause"></a>Ok
 
@@ -142,7 +142,6 @@ A probléma megoldásához tegye a következőket:
 
 1. Adja hozzá ismét az IR-hitelesítési kulcsot az Integration Runtime-ban.
 
-
 **2\. megoldás**
 
 A probléma megoldásához nyissa meg a [Azure Data Factory Azure-beli privát hivatkozását](./data-factory-private-link.md).
@@ -150,6 +149,45 @@ A probléma megoldásához nyissa meg a [Azure Data Factory Azure-beli privát h
 Próbálja meg engedélyezni a nyilvános hálózati hozzáférést a felhasználói felületen a következő képernyőképen látható módon:
 
 ![Képernyőfelvétel: "engedélyezve" vezérlő a "nyilvános hálózati hozzáférés engedélyezése" beállításnál a hálózatkezelés ablaktáblán.](media/self-hosted-integration-runtime-troubleshoot-guide/enable-public-network-access.png)
+
+### <a name="adf-private-dns-zone-overrides-azure-resource-manager-dns-resolution-causing-not-found-error"></a>A privát DNS-zónák automatikus kiváltása Azure Resource Manager DNS-feloldási hibát okozó "nem található" hiba
+
+#### <a name="cause"></a>Ok
+Mind a Azure Resource Manager, mind az ADF ugyanazt a privát zónát használja, amely az ügyfél privát DNS-beli potenciális ütközését hozza létre olyan forgatókönyv esetén, amelyben a Azure Resource Manager rekordok nem találhatók.
+
+#### <a name="solution"></a>Megoldás
+1. Saját DNS zónák **privatelink.Azure.com** megkeresése Azure Portalban.
+![Képernyőkép a saját DNS zónák megkereséséről.](media/security-access-control-troubleshoot-guide/private-dns-zones.png)
+2. Ellenőrizze, hogy van-e egy rekord **ADF**.
+![Képernyőfelvétel egy rekordról.](media/security-access-control-troubleshoot-guide/a-record.png)
+3.  Válassza a **virtuális hálózati kapcsolatok**, majd az összes rekord törlése lehetőséget.
+![Képernyőfelvétel a virtuális hálózati kapcsolatról.](media/security-access-control-troubleshoot-guide/virtual-network-link.png)
+4.  Azure Portal navigáljon az adatgyárhoz, és hozza létre újra a Azure Data Factory portál privát végpontját.
+![Képernyőkép a privát végpont újbóli létrehozásáról.](media/security-access-control-troubleshoot-guide/create-private-endpoint.png)
+5.  Térjen vissza saját DNS zónákhoz, és ellenőrizze, hogy van-e új **privatelink.ADF.Azure.com** a saját DNS-zónában.
+![Képernyőfelvétel az új DNS-rekordról.](media/security-access-control-troubleshoot-guide/check-dns-record.png)
+
+### <a name="connection-error-in-public-endpoint"></a>Csatlakoztatási hiba a nyilvános végponton
+
+#### <a name="symptoms"></a>Hibajelenségek
+
+Amikor az Azure Blob Storage fiók nyilvános hozzáférését másolja, a folyamat véletlenszerűen leáll a következő hiba miatt.
+
+Például: az Azure Blob Storage fogadó Azure IR (nyilvános, nem felügyelt VNet) használ, és a Azure SQL Database forrás használta a felügyelt VNet IR-t. Vagy a forrás/fogadó a felügyelt VNet IR-t használja csak a Storage nyilvános eléréssel.
+
+`
+<LogProperties><Text>Invoke callback url with req:
+"ErrorCode=UserErrorFailedToCreateAzureBlobContainer,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Unable to create Azure Blob container. Endpoint: XXXXXXX/, Container Name: test.,Source=Microsoft.DataTransfer.ClientLibrary,''Type=Microsoft.WindowsAzure.Storage.StorageException,Message=Unable to connect to the remote server,Source=Microsoft.WindowsAzure.Storage,''Type=System.Net.WebException,Message=Unable to connect to the remote server,Source=System,''Type=System.Net.Sockets.SocketException,Message=A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond public ip:443,Source=System,'","Details":null}}</Text></LogProperties>.
+`
+
+#### <a name="cause"></a>Ok
+
+Az ADF továbbra is használhatja a felügyelt VNet IR-t, de ilyen hiba merülhet fel, mivel az Azure Blob Storage felügyelt VNet való nyilvános végpontja nem megbízható a tesztelési eredmény alapján, és az Azure Blob Storage és Azure Data Lake Gen2 nem támogatott nyilvános Virtual Network végponton keresztül a felügyelt [virtuális hálózatok & felügyelt privát végpontok](https://docs.microsoft.com/azure/data-factory/managed-virtual-network-private-endpoint#outbound-communications-through-public-endpoint-from-adf-managed-virtual-network)alapján történő csatlakoztatására.
+
+#### <a name="solution"></a>Megoldás
+
+- Ha a felügyelt VNet IR-t használja, a forráson és a fogadó oldalon is engedélyezve van a magánhálózati végpont.
+- Ha továbbra is a nyilvános végpontot szeretné használni, átválthat a nyilvános IR-re a forráshoz és a fogadóhoz tartozó felügyelt VNet használata helyett. Ha a nyilvános IR-re vált, az ADF továbbra is használhatja a felügyelt VNet IR-t, ha a felügyelt VNet IR-je még létezik.
 
 ## <a name="next-steps"></a>Következő lépések
 

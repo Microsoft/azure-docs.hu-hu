@@ -4,19 +4,21 @@ description: Az Azure Security teljesítményteszt v2 adatvédelme
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 687c344aefc70729c85fb37d615ec0a272ff4fde
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: c8d907062835f18393946b04f1f1e9d5ec345411
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368868"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735760"
 ---
 # <a name="security-control-v2-data-protection"></a>Biztonság-vezérlés v2: Adatvédelem
 
 Az adatvédelem magában foglalja az adatvédelem inaktív állapotban, továbbításkor és a jogosult hozzáférési mechanizmusok útján történő felügyeletét. Ez magában foglalja a bizalmas adategységek felderítését, osztályozását, védelmének és figyelését a hozzáférés-vezérlés, a titkosítás és az Azure-beli naplózás használatával.
+
+A megfelelő beépített Azure Policy megjelenítéséhez tekintse meg [Az Azure Security benchmark szabályozási megfelelőségének beépített kezdeményezését](../../governance/policy/samples/azure-security-benchmark#data-protection) ismertető témakört: Adatvédelem
 
 ## <a name="dp-1-discovery-classify-and-label-sensitive-data"></a>DP-1: Bizalmas adatok felderítése, besorolása és címkézése
 
@@ -24,9 +26,9 @@ Az adatvédelem magában foglalja az adatvédelem inaktív állapotban, tovább�
 |--|--|--|--|
 | DP-1 | 13,1, 14,5, 14,7 | SC-28 |
 
-Felderítheti, osztályozhatja és címkézheti a bizalmas adatokat, így megtervezheti a megfelelő vezérlőket, hogy biztosítsa a bizalmas adatok tárolását, feldolgozását és biztonságos továbbítását a szervezet technológiai rendszereinek segítségével. 
+Felderítheti, osztályozhatja és címkézheti a bizalmas adatokat, így megtervezheti a megfelelő vezérlőket, hogy biztosítsa a bizalmas adatok tárolását, feldolgozását és biztonságos továbbítását a szervezet technológiai rendszereinek segítségével.
 
-Az Azure-ban, a helyszínen, az Office 365-ben és máshol lévő Office-dokumentumokban található bizalmas információkhoz használja az Azure Information Protectiont (és a hozzá tartozó vizsgálati eszközt). 
+Az Azure-ban, a helyszínen, az Office 365-ben és máshol lévő Office-dokumentumokban található bizalmas információkhoz használja az Azure Information Protectiont (és a hozzá tartozó vizsgálati eszközt).
 
 Az Azure SQL Information Protection segítséget nyújthat az Azure SQL-adatbázisokban tárolt adatok besorolásában és címkézésében.
 
@@ -38,7 +40,7 @@ Az Azure SQL Information Protection segítséget nyújthat az Azure SQL-adatbáz
 
 **Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Alkalmazások biztonsága és DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)  
+- [Alkalmazások biztonsága és DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 - [Adatbiztonság](/azure/cloud-adoption-framework/organize/cloud-security-data-security) 
 
@@ -84,9 +86,9 @@ Az Azure Information Protection (AIP) a besorolt és címkézett információk m
 
 Ha az adatveszteség-megelőzési (data loss prevention, DLP) megfelelőséghez szükséges, egy gazdagépalapú DLP-megoldással észlelési és/vagy megelőzési célú vezérlőket kényszeríthet ki az adatok kiszivárogtatásának megakadályozása érdekében.
 
-- [Az Azure SQL ATP engedélyezése](../../azure-sql/database/threat-detection-overview.md)
+- [Azure Defender SQL-hez](../../azure-sql/database/azure-defender-for-sql.md)
 
-- [Az Azure Storage ATP engedélyezése](../../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center)
+- [Azure Defender tároláshoz](../../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center)
 
 **Felelősség**: Megosztott
 
@@ -104,11 +106,11 @@ Ha az adatveszteség-megelőzési (data loss prevention, DLP) megfelelőséghez 
 |--|--|--|--|
 | DP-4 | 14,4 | SC-8 |
 
-A hozzáférés-vezérlés kiegészítéseként az átvitt adatoknak védelmet kell biztosítani a "sávon kívüli" támadásoktól (pl. forgalom-rögzítés) a titkosítás használatával, hogy a támadók ne tudják egyszerűen beolvasni vagy módosítani az adatokat. 
+A hozzáférés-vezérlés kiegészítéseként a továbbításban lévő adatokat a titkosítás használatával kell védeni a "sávon kívüli" támadások (például a forgalom rögzítése) ellen, így biztosítva, hogy a támadók ne tudják egyszerűen olvasni vagy módosítani az adatokat.
 
-Habár ez nem kötelező a magánhálózaton lévő forgalom esetében, ez kritikus fontosságú a külső és a nyilvános hálózatok forgalmában. HTTP-forgalom esetén győződjön meg arról, hogy az Azure-erőforrásokhoz csatlakozó összes ügyfél egyeztetheti a TLS v 1.2-es vagy újabb verzióját. A Távoli felügyelet érdekében titkosítatlan protokoll helyett használja az SSH-t (Linuxon) vagy RDP/TLS (Windows rendszeren). Az elavult SSL-, TLS-és SSH-verziók és protokollok, valamint a gyenge titkosítások le lesznek tiltva.  
+Habár ez nem kötelező a magánhálózaton lévő forgalom esetében, ez kritikus fontosságú a külső és a nyilvános hálózatok forgalmában. HTTP-forgalom esetén győződjön meg arról, hogy az Azure-erőforrásokhoz csatlakozó összes ügyfél egyeztetheti a TLS v 1.2-es vagy újabb verzióját. A Távoli felügyelet érdekében titkosítatlan protokoll helyett használja az SSH-t (Linuxon) vagy RDP/TLS (Windows rendszeren). Az elavult SSL-, TLS-és SSH-verziók és protokollok, valamint a gyenge titkosítások le lesznek tiltva.
 
-Alapértelmezés szerint az Azure titkosítást biztosít az Azure-adatközpontok közötti adatátvitelhez. 
+Alapértelmezés szerint az Azure titkosítást biztosít az Azure-adatközpontok közötti adatátvitelhez.
 
 - [A titkosítás ismertetése az Azure-ban](../fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 

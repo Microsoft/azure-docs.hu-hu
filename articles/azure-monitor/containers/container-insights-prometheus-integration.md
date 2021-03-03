@@ -1,18 +1,18 @@
 ---
-title: Azure Monitor konfigurálása a tárolók Prometheus-integrációhoz | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan konfigurálható a Azure Monitor a containers Agent számára a Kubernetes-fürthöz tartozó, a Prometheus-ből származó mérőszámok leselejtezéséhez.
+title: A tároló-bepillantást a Prometheus-integráció konfigurálása | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan konfigurálható a Container bepillantást biztosító ügynök a Prometheus-metrikák és a Kubernetes-fürt között.
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: f5a9b364bc3e51307bd44d8338485f482bda6e1e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8affeb472b9452e4d234e99e5ea6bb4509770fac
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100618768"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731731"
 ---
-# <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>Prometheus-metrikák Azure Monitorral való, tárolókra vonatkozó gyűjtésének konfigurálása
+# <a name="configure-scraping-of-prometheus-metrics-with-container-insights"></a>A Prometheus-metrikák leselejtezésének konfigurálása a Container bepillantást
 
-A [Prometheus](https://prometheus.io/) egy népszerű, nyílt forráskódú metrikus monitorozási megoldás, amely a [Felhőbeli natív számítási alaprendszer](https://www.cncf.io/)részét képezi. A tárolók Azure Monitor zökkenőmentes bevezetési élményt biztosít a Prometheus-metrikák gyűjtéséhez. A Prometheus használatához általában egy Prometheus-kiszolgálót kell beállítania és kezelnie egy tárolóval. A Azure Monitor integrálásával a Prometheus-kiszolgáló nem szükséges. Csak a Prometheus mérőszámok végpontját kell közzétennie az exportőrökön vagy a hüvelyeken (alkalmazáson) keresztül, és a tárolók Azure Monitor számára a tárolók számára a mérőszámokat fel lehet kaparni. 
+A [Prometheus](https://prometheus.io/) egy népszerű, nyílt forráskódú metrikus monitorozási megoldás, amely a [Felhőbeli natív számítási alaprendszer](https://www.cncf.io/)részét képezi. A Container-információk zökkenőmentes bevezetést biztosítanak a Prometheus-metrikák gyűjtéséhez. A Prometheus használatához általában egy Prometheus-kiszolgálót kell beállítania és kezelnie egy tárolóval. A Azure Monitor integrálásával a Prometheus-kiszolgáló nem szükséges. Csak a Prometheus mérőszámok végpontját kell közzétennie az exportőrökön vagy a hüvelyeken (alkalmazáson) keresztül, és a tárolók adatellenőrzéséhez használt tároló ügynök a mérőszámokat fel tudja kaparni. 
 
 ![A Container monitoring architektúra a Prometheus számára](./media/container-insights-prometheus-integration/monitoring-kubernetes-architecture.png)
 
@@ -42,20 +42,20 @@ A Prometheus-metrikák aktív kaparása a következő két szempont egyikével v
 | Kubernetes szolgáltatás | Fürtre kiterjedő | `http://my-service-dns.my-namespace:9100/metrics` <br>`https://metrics-server.kube-system.svc.cluster.local/metrics` |
 | URL/végpont | Csomópontok és/vagy fürtök széles skálája | `http://myurl:9101/metrics` |
 
-URL-cím megadása esetén a tárolók Azure Monitor csak a végpontot kaparják le. Ha a Kubernetes szolgáltatás meg van adva, a rendszer feloldja a szolgáltatás nevét a fürt DNS-kiszolgálójának használatával az IP-cím lekéréséhez, majd a feloldott szolgáltatás selejtét.
+Ha meg van adva egy URL-cím, a tárolók csak a végpontot kaparják le. Ha a Kubernetes szolgáltatás meg van adva, a rendszer feloldja a szolgáltatás nevét a fürt DNS-kiszolgálójának használatával az IP-cím lekéréséhez, majd a feloldott szolgáltatás selejtét.
 
 |Hatókör | Kulcs | Adattípus | Érték | Leírás |
 |------|-----|-----------|-------|-------------|
 | Fürtre kiterjedő | | | | Az alábbi három módszer egyikének megadásával adhatja meg a metrikák végpontjait. |
-| | `urls` | Sztring | Vesszővel tagolt tömb | HTTP-végpont (a megadott IP-cím vagy érvényes URL-elérési út). Példa: `urls=[$NODE_IP/metrics]`. ($NODE _IP a tárolók paraméterhez megadott Azure Monitor, és a csomópont IP-címe helyett használható. Csak nagybetűnek kell lennie.) |
+| | `urls` | Sztring | Vesszővel tagolt tömb | HTTP-végpont (a megadott IP-cím vagy érvényes URL-elérési út). Példa: `urls=[$NODE_IP/metrics]`. ($NODE _IP egy adott Container bepillantást megadó paraméter, és a csomópont IP-címe helyett használható. Csak nagybetűnek kell lennie.) |
 | | `kubernetes_services` | Sztring | Vesszővel tagolt tömb | Kubernetes-szolgáltatások tömbje, amely az Kube-State-mérőszámokból származó mérőszámokat lekaparja. Például: `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics",http://my-service-dns.my-namespace:9100/metrics]`.|
-| | `monitor_kubernetes_pods` | Logikai | true (igaz) vagy false (hamis) | Ha a a `true` fürtre kiterjedő beállításokban van beállítva, Azure monitor a tárolók ügynöke a Kubernetes-hüvelyt a teljes fürtön megkarcolja a következő Prometheus-megjegyzésekkel:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
+| | `monitor_kubernetes_pods` | Logikai | true (igaz) vagy false (hamis) | Ha `true` a fürtre kiterjedő beállításokban van beállítva, a Container bepillantást nyerhet a Kubernetes hüvelyek között a teljes fürtön a következő Prometheus-megjegyzésekhez:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
 | | `prometheus.io/scrape` | Logikai | true (igaz) vagy false (hamis) | Engedélyezi a hüvely leselejtezését. `monitor_kubernetes_pods` értékre kell állítani `true` . |
 | | `prometheus.io/scheme` | Sztring | http vagy https | Az alapértelmezett érték a HTTP-n keresztüli selejtezés. Ha szükséges, állítsa a következőre: `https` . | 
 | | `prometheus.io/path` | Sztring | Vesszővel tagolt tömb | A HTTP-erőforrás elérési útja, amelyből a mérőszámokat be kell olvasni. Ha a metrikák elérési útja nem `/metrics` , adja meg ezt a jegyzetet. |
 | | `prometheus.io/port` | Sztring | 9102 | Itt adhatja meg a kaparni kívánt portot. Ha a port nincs beállítva, az alapértelmezett érték 9102 lesz. |
 | | `monitor_kubernetes_pods_namespaces` | Sztring | Vesszővel tagolt tömb | A Kubernetes hüvelyek mérőszámait tartalmazó névterek engedélyezési listája.<br> Például: `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]` |
-| Csomópont szintű | `urls` | Sztring | Vesszővel tagolt tömb | HTTP-végpont (a megadott IP-cím vagy érvényes URL-elérési út). Példa: `urls=[$NODE_IP/metrics]`. ($NODE _IP a tárolók paraméterhez megadott Azure Monitor, és a csomópont IP-címe helyett használható. Csak nagybetűnek kell lennie.) |
+| Csomópont szintű | `urls` | Sztring | Vesszővel tagolt tömb | HTTP-végpont (a megadott IP-cím vagy érvényes URL-elérési út). Példa: `urls=[$NODE_IP/metrics]`. ($NODE _IP egy adott Container bepillantást megadó paraméter, és a csomópont IP-címe helyett használható. Csak nagybetűnek kell lennie.) |
 | Csomópont-vagy fürt szintű | `interval` | Sztring | 60s | A gyűjtési időköz alapértelmezett értéke egy perc (60 másodperc). A (z) *[prometheus_data_collection_settings. node]* és/vagy *[prometheus_data_collection_settings. cluster]* gyűjteményt a következő időegységekhez módosíthatja: s, m, h. |
 | Csomópont-vagy fürt szintű | `fieldpass`<br> `fielddrop`| Sztring | Vesszővel tagolt tömb | Az engedélyezés ( `fieldpass` ) és a tiltás () listaelem beállításával megadhat bizonyos mérőszámokat, amelyeket nem a végpontból lehet gyűjteni `fielddrop` . Először be kell állítania az engedélyezési listát. |
 
@@ -124,7 +124,7 @@ A ConfigMap konfigurációs fájljának a következő fürtökhöz való konfigu
         ```
 
         >[!NOTE]
-        >$NODE _IP a tárolók paraméterének egy konkrét Azure Monitor, és a csomópont IP-címe helyett használható. Minden nagybetűnek kell lennie. 
+        >A $NODE _IP egy adott Container betekintő paraméter, amely a csomópont IP-címe helyett használható. Minden nagybetűnek kell lennie. 
 
     - A Prometheus-metrikák kaparása egy Pod-Megjegyzés megadásával konfigurálható a következő lépések végrehajtásával:
 
@@ -241,7 +241,7 @@ A következő lépésekkel konfigurálhatja a ConfigMap konfigurációs fájljá
         ```
 
         >[!NOTE]
-        >$NODE _IP a tárolók paraméterének egy konkrét Azure Monitor, és a csomópont IP-címe helyett használható. Minden nagybetűnek kell lennie. 
+        >A $NODE _IP egy adott Container betekintő paraméter, amely a csomópont IP-címe helyett használható. Minden nagybetűnek kell lennie. 
 
     - A Prometheus-metrikák kaparása egy Pod-Megjegyzés megadásával konfigurálható a következő lépések végrehajtásával:
 
@@ -330,7 +330,7 @@ A Azure Monitor és az ügynök által jelentett összes konfigurációs/leselej
 
 ## <a name="view-prometheus-metrics-in-grafana"></a>Prometheus-metrikák megtekintése a Grafana-ben
 
-A tárolók Azure Monitor támogatja a Grafana-irányítópultokon a Log Analytics munkaterületen tárolt mérőszámok megtekintését. A Grafana [irányítópult-tárházból](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) letölthető sablon segítségével elsajátíthatja az első lépéseket, és megtudhatja, hogyan kérdezheti le a figyelt fürtök további adatait az egyéni Grafana-irányítópultok megjelenítéséhez. 
+A tároló-felismerések támogatják a Log Analytics munkaterületen a Grafana-irányítópultokon tárolt mérőszámok megtekintését. A Grafana [irányítópult-tárházból](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) letölthető sablon segítségével elsajátíthatja az első lépéseket, és megtudhatja, hogyan kérdezheti le a figyelt fürtök további adatait az egyéni Grafana-irányítópultok megjelenítéséhez. 
 
 ## <a name="review-prometheus-data-usage"></a>A Prometheus-adatok használatának áttekintése
 
@@ -364,8 +364,8 @@ A kimenet az alábbihoz hasonló eredményeket fog megjeleníteni:
 
 ![Adatfeldolgozási kötet lekérdezési eredményeinek naplózása](./media/container-insights-prometheus-integration/log-query-example-usage-02.png)
 
-Az adatfelhasználás és az elemzési költségek figyelésével kapcsolatos további információk a [használat és a költségek kezelése Azure monitor naplók használatával](../platform/manage-cost-storage.md)című témakörben találhatók.
+Az adatfelhasználás és az elemzési költségek figyelésével kapcsolatos további információk a [használat és a költségek kezelése Azure monitor naplók használatával](../logs/manage-cost-storage.md)című témakörben találhatók.
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ az stdout, a stderr és a környezeti változók ügynök-gyűjtési beállításainak konfigurálásáról a tároló munkaterhelései [között.](container-insights-agent-config.md) 
+További információ az stdout, a stderr és a környezeti változók ügynök-gyűjtési beállításainak konfigurálásáról a tároló munkaterhelései [között.](container-insights-agent-config.md)

@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 518baa47fd16d69bf935cd3253f5bebeb413b513
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c24d88e47569da430153dedfd1ff68a584083775
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680616"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695243"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-cli"></a>Gyors útmutató: útválasztási kiszolgáló létrehozása és konfigurálása az Azure CLI használatával 
 
@@ -33,7 +33,23 @@ Ebből a cikkből megtudhatja, hogyan konfigurálhatja az Azure Route Servert a 
 
 ###  <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Jelentkezzen be Azure-fiókjába, és válassza ki előfizetését. 
 
-[!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)] 
+A konfiguráció megkezdéséhez jelentkezzen be az Azure-fiókjába. Ha a "kipróbálás" Cloud Shell használja, automatikusan bejelentkezett. Az alábbi példák segítséget nyújtanak a kapcsolódáshoz:
+
+```azurecli-interactive
+az login
+```
+
+Keresse meg a fiókot az előfizetésekben.
+
+```azurecli-interactive
+az account list
+```
+
+Válassza ki azt az előfizetést, amelyhez ExpressRoute-áramkört kíván létrehozni.
+
+```azurecli-interactive
+az account set --subscription "<subscription ID>"
+```
 
 ### <a name="create-a-resource-group-and-virtual-network"></a>Erőforráscsoport és virtuális hálózat létrehozása 
 

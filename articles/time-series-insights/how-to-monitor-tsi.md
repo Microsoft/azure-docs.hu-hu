@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: 940f7efc7130ef80817be3b42e3c0eff83588a90
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a46ddeddfcefcd4d6e7f87747fe36cfc6ec82e35
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587992"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737562"
 ---
 # <a name="monitoring-time-series-insights"></a>Figyelés Time Series Insights
 
@@ -63,7 +63,7 @@ A következő kategóriákból gyűjthet naplókat Azure Time Series Insights:
 
 ## <a name="analyzing-metrics"></a>Mérőszámok elemzése
 
-A metrikákat a Azure Monitor menüből megnyitva elemezheti Azure Time Series Insights mérőszámait, valamint más Azure-szolgáltatások metrikáit is. Az eszköz használatával kapcsolatos részletekért lásd: az [Azure Metrikaböngésző használatának első lépései](../azure-monitor/platform/metrics-getting-started.md) .
+A metrikákat a Azure Monitor menüből megnyitva elemezheti Azure Time Series Insights mérőszámait, valamint más Azure-szolgáltatások metrikáit is. Az eszköz használatával kapcsolatos részletekért lásd: az [Azure Metrikaböngésző használatának első lépései](../azure-monitor/essentials/metrics-getting-started.md) .
 
 A gyűjtött platform metrikáinak listáját itt tekintheti meg: [Monitoring Azure Time Series Insights adatok referenciája](how-to-monitor-tsi-reference.md#metrics)
 
@@ -115,7 +115,7 @@ Az alábbi lekérdezések segítségével figyelheti Azure Time Series Insights 
 
 ## <a name="alerts"></a>Riasztások
 
-Azure Monitor riasztások proaktívan értesítik Önt, ha fontos feltételek találhatók a megfigyelési adataiban. Lehetővé teszik a rendszeren észlelt problémák azonosítását és megoldását, mielőtt az ügyfelek bejelentkeznek. Riasztásokat állíthat be a [metrikák](../azure-monitor/platform/alerts-metric-overview.md), [naplók](../azure-monitor/platform/alerts-unified-log.md)és a [tevékenység naplójában](../azure-monitor/platform/activity-log-alerts.md). A különböző típusú riasztásokhoz előnyök és hátrányok tartoznak.
+Azure Monitor riasztások proaktívan értesítik Önt, ha fontos feltételek találhatók a megfigyelési adataiban. Lehetővé teszik a rendszeren észlelt problémák azonosítását és megoldását, mielőtt az ügyfelek bejelentkeznek. Riasztásokat állíthat be a [metrikák](../azure-monitor/alerts/alerts-metric-overview.md), [naplók](../azure-monitor/alerts/alerts-unified-log.md)és a [tevékenység naplójában](../azure-monitor/alerts/activity-log-alerts.md). A különböző típusú riasztásokhoz előnyök és hátrányok tartoznak.
 
 A platform metrikái alapján létrehozott riasztási szabályok létrehozásakor vegye figyelembe, hogy a darabszámban összegyűjtött Time Series Insights platform metrikák esetében előfordulhat, hogy egyes összesítések nem lesznek elérhetők vagy használhatók.
 

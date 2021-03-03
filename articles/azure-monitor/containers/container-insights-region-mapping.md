@@ -1,19 +1,19 @@
 ---
-title: Azure Monitor a tárolók régiójának leképezéséhez
-description: A Azure Monitor a tárolók, a Log Analytics munkaterület és az egyéni metrikák között támogatott régió-hozzárendeléseket ismerteti.
+title: Tároló-áttekintési régió leképezései
+description: Ismerteti a tárolók beolvasása, Log Analytics munkaterület és az egyéni metrikák között támogatott régió-leképezéseket.
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9b77242de3e7845a97874b663266103bf00a8e66
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f9e910b1352109608becb82609e85e26d27d2cd1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100619418"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728875"
 ---
-# <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>A tárolók Azure Monitor által támogatott régió-hozzárendelések
+# <a name="region-mappings-supported-by-container-insights"></a>A Container-bepillantást támogató régió-hozzárendelések
 
- A tárolók Azure Monitorának engedélyezésekor csak bizonyos régiók támogatottak egy Log Analytics-munkaterület és egy AK-fürt összekapcsolásához, valamint az Azure Monitor elküldött egyéni metrikák összegyűjtéséhez.
+ A tárolók megállapításának engedélyezésekor csak bizonyos régiók támogatottak egy Log Analytics munkaterület és egy AK-fürt összekapcsolásához, valamint a Azure Monitor számára elküldött egyéni metrikák összegyűjtéséhez.
 
 ## <a name="log-analytics-workspace-supported-mappings"></a>Log Analytics munkaterület által támogatott leképezések
 
@@ -53,4 +53,4 @@ Az Azure Kubernetes Services (ak) fürtök csomópontjaiból és hüvelyből sz�
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az AK-fürt figyelésének megkezdéséhez tekintse át az [Azure monitor a tárolók számára című témakört](container-insights-onboard.md) , és Ismerje meg a figyelés engedélyezésének követelményeit és rendelkezésre álló módszereit.  
+Az AK-fürt figyelésének megkezdéséhez tekintse át, [hogyan engedélyezheti a tároló-bepillantást](container-insights-onboard.md) a követelmények és az elérhető módszerek megismeréséhez a figyelés engedélyezéséhez.  

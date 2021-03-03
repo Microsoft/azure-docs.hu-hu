@@ -7,15 +7,15 @@ author: bwren
 ms.author: bwren
 ms.date: 10/05/2018
 ms.custom: mvc
-ms.openlocfilehash: e790486758d6a5e3181df01f85e1213cca3fa12d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 67d03636b118db71502a6245e60f71c94afdddf6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627768"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701008"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Eseményekre való válaszadás Azure Monitor-riasztásokkal
-Az Azure Monitor-riasztások azonosítják a Log Analytics-adattárban található fontos információkat. A riasztásokat riasztási szabályok hozzák létre, amelyek rendszeres időközönként automatikusan naplókereséseket futtatnak. Ha a naplókeresés eredménye megfelel bizonyos feltételeknek, létrejön egy riasztásbejegyzés, amelyet konfigurálni lehet egy automatikus válasz végrehajtására.  Ez az oktatóanyag a [Log Analytics-adatokat tartalmazó irányítópultok létrehozása és megosztása](../learn/tutorial-logs-dashboards.md) oktatóanyag folytatása.   
+Az Azure Monitor-riasztások azonosítják a Log Analytics-adattárban található fontos információkat. A riasztásokat riasztási szabályok hozzák létre, amelyek rendszeres időközönként automatikusan naplókereséseket futtatnak. Ha a naplókeresés eredménye megfelel bizonyos feltételeknek, létrejön egy riasztásbejegyzés, amelyet konfigurálni lehet egy automatikus válasz végrehajtására.  Ez az oktatóanyag a [Log Analytics-adatokat tartalmazó irányítópultok létrehozása és megosztása](../visualize/tutorial-logs-dashboards.md) oktatóanyag folytatása.   
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -31,7 +31,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 ## <a name="create-alerts"></a>Riasztások létrehozása
 A riasztásokat riasztási szabályok hozzák létre az Azure Monitorban, és rendszeres időközönként automatikusan mentett lekérdezéseket vagy egyéni naplókereséseket futtathatnak.  Riasztásokat megadott teljesítménymetrikák alapján, illetve bizonyos események létrehozásakor vagy hiányakor hozhat létre, illetve akkor, ha egy adott időtartományon belül több esemény jön létre.  A riasztások segítségével értesülhet például arról, ha az átlagos processzorhasználat meghalad egy bizonyos küszöbértéket, ha hiányzik egy frissítés, vagy ha létrejön egy esemény, amikor egy adott Windows-szolgáltatás vagy Linux-démon nem fut.  Ha a naplókeresés eredménye megfelel bizonyos feltételeknek, létrejön egy riasztás. A szabály ekkor automatikusan futtathat egy vagy több műveletet, például értesíti Önt a riasztásról, vagy meghív egy másik folyamatot. 
 
-A következő példában létrehoz egy metrikamérési riasztási szabályt az [adatok vizualizációját ismertető oktatóanyagban](../learn/tutorial-logs-dashboards.md) mentett *Azure-beli virtuális gépek – Processzorhasználat* lekérdezés alapján.  Létrejön egy riasztás minden egyes, a 90%-os küszöbértéket meghaladó virtuális géphez.  
+A következő példában létrehoz egy metrikamérési riasztási szabályt az [adatok vizualizációját ismertető oktatóanyagban](../visualize/tutorial-logs-dashboards.md) mentett *Azure-beli virtuális gépek – Processzorhasználat* lekérdezés alapján.  Létrejön egy riasztás minden egyes, a 90%-os küszöbértéket meghaladó virtuális géphez.  
 
 1. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
 2. Új riasztás létrehozásához a bal oldali panelen válassza a **Riasztások** elemet, majd kattintson az oldal tetején található **Új riasztási szabály** elemre.<br><br> ![Új riasztási szabály létrehozása](./media/tutorial-response/alert-rule-02.png)<br>
@@ -69,4 +69,4 @@ Ez az oktatóanyag bemutatta, hogyan képesek a riasztási szabályok proaktíva
 Kövesse ezt a hivatkozást az előre felépített Log Analytics-szkriptminták megtekintéséhez.  
 
 > [!div class="nextstepaction"]
-> [Log Analytics-szkriptminták](../samples/powershell-samples.md)
+> [Log Analytics-szkriptminták](../powershell-samples.md)

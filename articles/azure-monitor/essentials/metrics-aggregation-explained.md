@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.subservice: metrics
-ms.openlocfilehash: c47c316c82d8c510b4446e4335a219f400d476e4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a88a52163f03d2bffb0c9c4eab53fd814d9554fb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100615228"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725866"
 ---
 # <a name="azure-monitor-metrics-metrics-aggregation-and-display-explained"></a>Azure Monitor metrikák metrikáinak összesítése és megjelenítése
 
@@ -101,7 +101,7 @@ A metrikák az egyes erőforrásokhoz vannak rögzítve. A metrikák gyűjtésé
 
 Ha mérőszámot diagramot ábrázol a metrika Explorerben, akkor a diagramot egy dimenzió alapján "feloszthatja".  A diagram felosztása azt jelenti, hogy az alapul szolgáló adatokat részletesebben tekinti át, és azt, hogy az adatok a metrika Explorerben legyenek kiosztva vagy szűrve.
 
-A [Microsoft. ApiManagement/Service](../platform/metrics-supported.md#microsoftapimanagementservice) *például számos mérőszám esetében tartalmaz egy* dimenziót. 
+A [Microsoft. ApiManagement/Service](./metrics-supported.md#microsoftapimanagementservice) *például számos mérőszám esetében tartalmaz egy* dimenziót. 
 
 - A **kapacitás** egy ilyen metrika. A *hely* dimenziója azt jelenti, hogy az alapul szolgáló rendszer metrikus rekordot tárol az egyes helyek kapacitása helyett, nem csupán egyet az összesített összeghez. Ezután lekérheti vagy feloszthatja ezeket az információkat egy mérőszám-diagramon.  
 
@@ -109,7 +109,7 @@ A [Microsoft. ApiManagement/Service](../platform/metrics-supported.md#microsofta
 
 - Az egyik rugalmasabb metrika, **kérelem**, 7 különböző dimenzióval rendelkezik. 
  
-Az egyes metrikákkal és a rendelkezésre álló dimenziókkal kapcsolatos részletekért olvassa el a Azure Monitor [által támogatott mérőszámokat](../platform/metrics-supported.md) . Emellett az egyes erőforrás-szolgáltatók és típusok dokumentációjában további információk is megadhatók a méretekről és azok mértékéről.
+Az egyes metrikákkal és a rendelkezésre álló dimenziókkal kapcsolatos részletekért olvassa el a Azure Monitor [által támogatott mérőszámokat](./metrics-supported.md) . Emellett az egyes erőforrás-szolgáltatók és típusok dokumentációjában további információk is megadhatók a méretekről és azok mértékéről.
 
 A felosztással és szűréssel együtt a probléma kiásására is használható. Az alábbi példa egy olyan ábrát mutat be, amely a virtuális gépek egy csoportjának *átlagos írási bájtjait* mutatja. Az összes virtuális gép összesítését ezzel a metrikával láttuk el, de érdemes lehet bemutatni, hogy a körülbelül 6 – 6. között valóban a felelős. Ugyanaz a gép? Hány gép vesz részt?  
 

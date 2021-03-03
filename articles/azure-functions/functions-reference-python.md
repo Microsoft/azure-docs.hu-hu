@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan fejlesztheti a függvényeket a Python használ
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: a13b4463d2a9c32a3487f839c0bf53b4c5bd2963
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 78965a1a09272663c52469b8ccd91988f30b53cc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735843"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708696"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python fejlesztői útmutató
 
@@ -20,6 +20,9 @@ Python-fejlesztőként a következő cikkek egyike is érdekli:
 | Első lépések | Alapelvek| Forgatókönyvek/minták |
 | -- | -- | -- | 
 | <ul><li>[Python-függvény a Visual Studio Code használatával](./create-first-function-vs-code-csharp.md?pivots=programming-language-python)</li><li>[Python-függvény a Terminal/Command parancssorral](./create-first-function-cli-csharp.md?pivots=programming-language-python)</li></ul> | <ul><li>[Fejlesztői útmutató](functions-reference.md)</li><li>[Üzemeltetési lehetőségek](functions-scale.md)</li><li>[Teljesítménnyel &nbsp; kapcsolatos megfontolások](functions-best-practices.md)</li></ul> | <ul><li>[Képek besorolása a PyTorch használatával](machine-learning-pytorch.md)</li><li>[Azure Automation-minta](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[Gépi tanulás a TensorFlow-val](functions-machine-learning-tensorflow.md)</li><li>[Python-minták tallózása](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
+
+> [!NOTE]
+> Noha a [Python-alapú Azure functions helyileg fejlesztheti a Windows](./azure-functions/create-first-function-vs-code-python#run-the-function-locally)rendszeren, a Python csak Linux-alapú üzemeltetési csomag esetén támogatott az Azure-ban való futtatáskor. Tekintse meg a támogatott [operációs rendszerek/futtatókörnyezet-](./azure-functions/functions-scale#operating-systemruntime) kombinációk listáját.
 
 ## <a name="programming-model"></a>Programozási modell
 
@@ -633,7 +636,7 @@ A következő lista a gyakori problémákkal kapcsolatos hibaelhárítási útmu
 
 Az összes ismert probléma és szolgáltatás kérését a [GitHub-problémák](https://github.com/Azure/azure-functions-python-worker/issues) listája követheti nyomon. Ha probléma lép fel, és a GitHubon nem találja a problémát, nyisson meg egy új problémát, és adja meg a probléma részletes leírását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkat találhat az alábbi forrásokban:
 

@@ -1,20 +1,21 @@
 ---
-title: Azure virtuális WAN alapértelmezett IPsec-házirendjei | Microsoft Docs
+title: Virtuális WAN-helyek közötti IPsec-házirendek
+titleSuffix: Azure Virtual WAN
 description: Ismerje meg az Azure-beli virtuális WAN IPsec-kapcsolati házirendjeit, beleértve az alapértelmezett kezdeményező-és válaszadói házirendeket és az egyéni házirend-kombinációkat.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 02/24/2021
 ms.author: cherylmc
-ms.openlocfilehash: 30c58a26a326370a2566bc9ebbec33bfbd4b3173
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94225ea6ef8b53a83388b2be6ea3b32c1e5204bf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267363"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726682"
 ---
-# <a name="virtual-wan-default-policies-for-ipsec-connectivity"></a>Virtuális WAN alapértelmezett házirendjei az IPsec-kapcsolathoz
+# <a name="site-to-site-ipsec-policies"></a>Helyek közötti IPsec-házirendek
 
 Ez a cikk az IPsec-házirendek támogatott kombinációit mutatja be.
 
@@ -29,4 +30,5 @@ Ez a cikk az IPsec-házirendek támogatott kombinációit mutatja be.
 ## <a name="next-steps"></a>Következő lépések
 
 Az Egyéni IPsec-házirend konfigurálásának lépéseiért lásd: [Egyéni IPsec-házirend konfigurálása a virtuális WAN-](virtual-wan-custom-ipsec-portal.md)hoz.
+
 További információ a virtuális WAN-ról: az [Azure Virtual WAN](virtual-wan-about.md) és az [Azure Virtual WAN gyakori kérdései](virtual-wan-faq.md).

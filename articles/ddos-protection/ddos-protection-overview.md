@@ -1,5 +1,5 @@
 ---
-title: Azure DDoS Protection standard áttekintése
+title: Az Azure DDoS Protection Standard áttekintése
 description: Ismerje meg, hogy az Azure DDoS Protection Standard a DDoS-támadások elleni védelem érdekében hogyan kombinálható az alkalmazástervezés ajánlott eljárásaival.
 services: virtual-network
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: 71eada0dcd7f7684e6c6be935bcb44405eb95322
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 2b0f8a73a6852883f87ba9fc4333cb6fa8101a39
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626206"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703116"
 ---
-# <a name="azure-ddos-protection-standard-overview"></a>Az Azure DDoS Protection Standard áttekintése
+# <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection standard áttekintése
 
 Az elosztott szolgáltatásmegtagadásos (DDoS-) támadások az egyik legnagyobb rendelkezésreállási és biztonsági kockázatot jelentik az olyan felhasználók számára, akik alkalmazásaikat a felhőbe helyezik át. A DDoS-támadás megpróbál kimeríteni egy alkalmazás erőforrásait, így az alkalmazás nem érhető el a legitim felhasználók számára. A DDoS-támadások bármilyen, az interneten keresztül nyilvánosan elérhető végpontot megcélozhatnak.
 
@@ -54,7 +54,7 @@ A standard díjszabással kapcsolatos további információkért tekintse meg a 
 
 ## <a name="reference-architectures"></a>Referenciaarchitektúrák
 
-DDoS Protection standard a [virtuális hálózatban üzembe helyezett szolgáltatásokhoz](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)lett tervezve. Más szolgáltatások esetében az alapértelmezett DDoS Protection alapszintű szolgáltatás érvényes. A támogatott architektúrákkal kapcsolatos további tudnivalókért tekintse meg a [DDoS Protection hivatkozási architektúrák](https://docs.microsoft.com/azure/ddos-protection/ddos-protection-reference-architectures)című témakört. 
+DDoS Protection standard a [virtuális hálózatban üzembe helyezett szolgáltatásokhoz](../virtual-network/virtual-network-for-azure-services.md)lett tervezve. Más szolgáltatások esetében az alapértelmezett DDoS Protection alapszintű szolgáltatás érvényes. A támogatott architektúrákkal kapcsolatos további tudnivalókért tekintse meg a [DDoS Protection hivatkozási architektúrák](./ddos-protection-reference-architectures.md)című témakört. 
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -158,9 +158,6 @@
           href: batch-sig-images.md
         - name: Készlet létrehozása felügyelt rendszerkép erőforrással
           href: batch-custom-images.md
-        - name: Készlet létrehozása Availability Zones között
-          displayName: 'region, zonal policy'
-          href: create-pool-availability-zones.md
         - name: Készlet létrehozása a lemeztitkosítás engedélyezése mellett
           href: disk-encryption.md
         - name: Készlet létrehozása egy virtuális hálózaton belül
@@ -172,8 +169,6 @@
         - name: Készlet létrehozása nyilvános IP-címek nélkül
           displayName: private
           href: batch-pool-no-public-ip-address.md
-        - name: Bővítmények használata készletekkel
-          href: create-pool-extensions.md
         - name: Felügyelt identitások konfigurálása
           displayName: user-assigned
           href: managed-identity-pools.md

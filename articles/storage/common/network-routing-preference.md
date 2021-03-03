@@ -1,26 +1,26 @@
 ---
-title: Hálózati útválasztási beállítások konfigurálása (előzetes verzió)
+title: Hálózati útválasztási beállítások
 titleSuffix: Azure Storage
-description: Konfigurálja az Azure Storage-fiók hálózati útválasztási beállításait (előzetes verzió) annak megadásához, hogy a hálózati forgalom hogyan legyen átirányítva a fiókjához az interneten keresztül.
+description: A hálózati útválasztási beállítások lehetővé teszik annak megadását, hogy a hálózati forgalom hogyan legyen átirányítva a fiókjához az interneten keresztül.
 services: storage
 author: santoshc
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 02/11/2021
 ms.author: santoshc
-ms.reviewer: tamram
+ms.reviewer: normesta
 ms.subservice: common
 ms.custom: references_regions
-ms.openlocfilehash: 601c8dfb4b4e2f16da5c560f67e2d251a5d3072a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6b6c90259c552895360281b393e15773c6e101e3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362743"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726937"
 ---
-# <a name="configure-network-routing-preference-for-azure-storage-preview"></a>Hálózati útválasztási beállítások konfigurálása az Azure Storage-hoz (előzetes verzió)
+# <a name="network-routing-preference-for-azure-storage"></a>Hálózati útválasztási preferencia az Azure Storage-hoz
 
-Megadhatja az Azure Storage-fiókhoz tartozó hálózati [útválasztási](../../virtual-network/routing-preference-overview.md) beállításokat (előzetes verzió) annak megadásához, hogy a hálózati forgalom hogyan legyen átirányítva a fiókjához az interneten keresztül. Alapértelmezés szerint az internetről érkező forgalmat a rendszer a [Microsoft globális hálózatán](../../networking/microsoft-global-network.md)keresztül továbbítja a Storage-fiók nyilvános végpontjának. Az Azure Storage további lehetőségeket biztosít annak konfigurálására, hogy a rendszer hogyan irányítsa át a forgalmat a Storage-fiókjába.
+Konfigurálhatja az Azure Storage-fiók hálózati [útválasztási beállításait](../../virtual-network/routing-preference-overview.md) annak megadásához, hogy a hálózati forgalom hogyan legyen átirányítva a fiókjába az ügyfeleken keresztül az interneten keresztül. Alapértelmezés szerint az internetről érkező forgalmat a rendszer a [Microsoft globális hálózatán](../../networking/microsoft-global-network.md)keresztül továbbítja a Storage-fiók nyilvános végpontjának. Az Azure Storage további lehetőségeket biztosít annak konfigurálására, hogy a rendszer hogyan irányítsa át a forgalmat a Storage-fiókjába.
 
 Az útválasztási beállítások konfigurálása lehetővé teszi, hogy rugalmasan optimalizálja a forgalmat a prémium szintű hálózati teljesítmény vagy a költséghatékonyság érdekében. Útválasztási beállítások konfigurálásakor megadhatja, hogy alapértelmezés szerint a rendszer hogyan irányítsa át a forgalmat a Storage-fiók nyilvános végpontjának. A Storage-fiókhoz adott útválasztási végpontokat is közzéteheti.
 
@@ -37,9 +37,11 @@ Az alábbi ábra azt mutatja be, hogy az ügyfél és a Storage-fiók közötti 
 
 ![Az Azure Storage útválasztási beállításainak áttekintése](media/network-routing-preference/routing-options-diagram.png)
 
-További információ az útválasztási beállításokról az Azure-ban: [Mi az útválasztási preferencia (előzetes verzió)?](../../virtual-network/routing-preference-overview.md).
+További információ az útválasztási beállításokról az Azure-ban: [Mi az útválasztási preferencia?](../../virtual-network/routing-preference-overview.md).
 
 ## <a name="routing-configuration"></a>Útválasztási konfiguráció
+
+Az útválasztási beállítások és az útvonal-specifikus végpontok konfigurálását bemutató lépésenkénti útmutatásért lásd: a [hálózati útválasztási beállítások konfigurálása az Azure Storage szolgáltatáshoz](configure-network-routing-preference.md).
 
 A Microsoft globális hálózat és az internetes útválasztás lehetőség közül választhat alapértelmezett útválasztási előnyként a Storage-fiók nyilvános végpontja számára. Az alapértelmezett útválasztási beállítások az Azure-on kívüli ügyfelektől érkező összes forgalomra érvényesek, és a Azure Data Lake Storage Gen2, blob Storage, Azure Files és statikus webhelyek végpontját érintik. Az útválasztási beállítások konfigurálása az Azure-várólisták vagy az Azure-táblák esetében nem támogatott.
 
@@ -65,7 +67,7 @@ Ha rendelkezik egy olvasási hozzáféréssel rendelkező geo-redundáns tárol�
 
 A közzétett Route-specifikus végpontok kapcsolatainak karakterláncai a [Azure Portal](https://portal.azure.com)használatával másolhatók. Ezek a kapcsolatok a meglévő Azure Storage SDK-kkal és API-kkal közös kulcsos hitelesítéshez használhatók.
 
-## <a name="about-the-preview"></a>Az előzetes verzió ismertetése
+## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
 Az Azure Storage-hoz készült útválasztási beállítások a következő régiókban érhetők el:
 
@@ -100,16 +102,17 @@ Az Azure Storage-hoz készült útválasztási beállítások a következő rég
 - Kelet-Ausztrália 
 - Délkelet-Ausztrália 
 
-A következő ismert problémák hatással vannak az Azure Storage-hoz készült útválasztási beállításokra:
+Az alábbi ismert problémák az Azure Storage útválasztási beállításait érintik:
 
 - A Microsoft globális hálózathoz tartozó útvonal-specifikus végponthoz tartozó hozzáférési kérelmek sikertelenek, HTTP-hiba: 404 vagy azzal egyenértékű. A Microsoft globális hálózaton keresztüli útválasztás a várt módon működik, ha a nyilvános végpont alapértelmezett útválasztási beállításaként van beállítva.
 
 ## <a name="pricing-and-billing"></a>Árak és számlázás
 
-A díjszabással és a számlázással kapcsolatos részletekért tekintse meg a [Mi az útválasztási preferencia (előzetes verzió)](../../virtual-network/routing-preference-overview.md#pricing)című témakör **díjszabását** .
+A díjszabással és a számlázással kapcsolatos részletekért tekintse meg a [Mi az útválasztási beállítások](../../virtual-network/routing-preference-overview.md#pricing) **díjszabása** című szakaszt.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Mi az útválasztási preferencia (előzetes verzió)?](../../virtual-network/routing-preference-overview.md)
+- [Mi az útválasztási beállítás?](../../virtual-network/routing-preference-overview.md)
+- [Hálózati útválasztási beállítás konfigurálása](configure-network-routing-preference.md)
 - [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](storage-network-security.md)
 - [Biztonsági javaslatok a blob Storage-hoz](../blobs/security-recommendations.md)

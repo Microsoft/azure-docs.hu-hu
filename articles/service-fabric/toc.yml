@@ -448,12 +448,14 @@
           href: how-to-managed-cluster-vmss-extension.md
         - name: A felügyelt fürt konfigurálása
           href: how-to-managed-cluster-configuration.md
+        - name: NSG-szabályok és egyéb felügyelt fürt hálózati beállításainak hozzáadása
+          href: how-to-managed-cluster-networking.md
         - name: Felügyelt fürtözött alkalmazások üzembe helyezése ARM-sablon használatával
           href: how-to-managed-cluster-app-deployment-template.md
-        - name: Felügyelt és felügyelt identitással rendelkező felügyelt fürt konfigurálása
-          href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
         - name: Lemez titkosításának engedélyezése a felügyelt fürtcsomópontok esetében
           href: how-to-enable-managed-cluster-disk-encryption.md
+        - name: Felügyelt fürt csomópontjainak használata
+          href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
     - name: Tervezés és előkészítés
       items:
         - name: Fürtkapacitás tervezése

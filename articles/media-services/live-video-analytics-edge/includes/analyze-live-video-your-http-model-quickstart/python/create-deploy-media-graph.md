@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 7b9ed5dda925793eff4f85408c5eb494f5ac0925
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: cd3c615a296934d8e06a062125a72c322d05dd7e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99569539"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750219"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>A mintaadatok vizsgálata és szerkesztése
 
@@ -69,10 +69,10 @@ Az előfeltételek részeként letöltötte a mintakód egy mappába. A mintaada
         > A fenti lépések feltételezik, hogy a telepítési parancsfájl által létrehozott virtuális gépet használja. Ha ehelyett saját Edge-eszközt használ, lépjen a peremhálózati eszközre, és futtassa az alábbi parancsokat **rendszergazdai jogosultságokkal** a rövid útmutatóhoz használt minta videofájl lekéréséhez és tárolásához:  
         
         ```
-        mkdir /home/lvaadmin/samples
-        mkdir /home/lvaadmin/samples/input    
-        curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaadmin/samples/input/camera-300s.mkv  
-        chown -R lvaadmin /home/lvaadmin/samples/  
+        mkdir /home/lvaedgeuser/samples
+        mkdir /home/lvaedgeuser/samples/input    
+        curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaedgeuser/samples/input/camera-300s.mkv  
+        chown -R lvalvaedgeuser:localusergroup /home/lvaedgeuser/samples/  
         ```
     * A **yolov3** modul, amely a yolov3 objektum-észlelési modell, amely a számítógépekre vonatkozó jövőképet alkalmaz a lemezképekre, és több objektumtípust ad vissza.
  

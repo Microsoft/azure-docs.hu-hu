@@ -3,12 +3,12 @@ title: Ismerkedés a Live Video Analytics szolgáltatással IoT Edge-Azure-ban
 description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a IoT Edge Live Video Analytics szolgáltatást. Ismerje meg, hogyan derítheti fel a mozgást egy élő videó streamben.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: d9f2637166c3807e36f4304e9394bf2ecf91d88c
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 57edf1721249f839f5c781756b3e09bf59888dab
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99573806"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730286"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Gyors útmutató: első lépések – élő videó-elemzés IoT Edge
 
@@ -69,10 +69,10 @@ Ebben a rövid útmutatóban azt javasoljuk, hogy az Azure-előfizetésében lé
     1. **Hálózati adapter** – lehetővé teszi, hogy egy Azure-beli virtuális gép kommunikáljon az internettel, az Azure-ral és más erőforrásokkal.
     1. **Megerősített kapcsolat** – ez lehetővé teszi, hogy a böngésző és a Azure Portal használatával kapcsolódjon a virtuális géphez.
     1. **Nyilvános IP-cím** – lehetővé teszi, hogy az Azure-erőforrások kommunikáljanak az internettel és a nyilvánosan elérhető Azure-szolgáltatásokkal
-    1. **Virtuális hálózat** – az Azure-erőforrások, például a virtuális gépek számos típusa lehetővé teszi, hogy biztonságosan kommunikáljanak egymással, az internettel és a helyszíni hálózatokkal. További információ a [virtuális hálózatokról](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
+    1. **Virtuális hálózat** – az Azure-erőforrások, például a virtuális gépek számos típusa lehetővé teszi, hogy biztonságosan kommunikáljanak egymással, az internettel és a helyszíni hálózatokkal. További információ a [virtuális hálózatokról](../../virtual-network/virtual-networks-overview.md).
     1. **IoT hub** – ez egy központi üzenetsor, amely a IoT-alkalmazás, a IoT Edge-modulok és az általa kezelt eszközök közötti kétirányú kommunikációra szolgál.
     1. **Media Service-fiók** – ez segíti az Azure-beli médiatartalmak felügyeletét és továbbítását.
-    1. **Storage-fiók** – rendelkeznie kell egy elsődleges Storage-fiókkal, és tetszőleges számú másodlagos Storage-fiók társítható a Media Services-fiókjához. További információ: [Azure Storage-fiókok Azure Media Services fiókokkal](https://docs.microsoft.com/azure/media-services/latest/storage-account-concept).
+    1. **Storage-fiók** – rendelkeznie kell egy elsődleges Storage-fiókkal, és tetszőleges számú másodlagos Storage-fiók társítható a Media Services-fiókjához. További információ: [Azure Storage-fiókok Azure Media Services fiókokkal](../latest/storage-account-concept.md).
     1. **Container Registry** – ez segít a privát Docker-tárolók rendszerképeinek és a kapcsolódó összetevők tárolásában és kezelésében.
 
 A szkript kimenetében az erőforrások táblázata felsorolja az IoT hub nevét. Keresse meg az erőforrás típusát **`Microsoft.Devices/IotHubs`** , és jegyezze fel a nevet. Ezt a nevet a következő lépésben kell megadnia.  

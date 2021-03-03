@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 0fc57b87e5ec1d7f47d9f9d74698af56172246ec
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ab7d4bf0b8d8ca32dafe6f19b46047eca89a7734
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100617495"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733975"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS-portál áthelyezése az Azure-ba
 
@@ -64,7 +64,7 @@ Mindkét esetben a rendszergazdának manuálisan kell hozzárendelnie a megfelel
  
 
 ## <a name="new-workspaces"></a>Új munkaterületek
-Már nem tud új munkaterületeket létrehozni a OMS-portál használatával. A Azure Portal új munkaterületének létrehozásához kövesse az [log Analytics munkaterületének létrehozása a Azure Portalban](../learn/quick-create-workspace.md) című témakör útmutatását.
+Már nem tud új munkaterületeket létrehozni a OMS-portál használatával. A Azure Portal új munkaterületének létrehozásához kövesse az [log Analytics munkaterületének létrehozása a Azure Portalban](./quick-create-workspace.md) című témakör útmutatását.
 
 ## <a name="changes-to-alerts"></a>Riasztások módosításai
 
@@ -73,9 +73,9 @@ Már nem tud új munkaterületeket létrehozni a OMS-portál használatával. A 
 A riasztások [kiterjeszthetők a Azure Portal](../alerts/alerts-unified-log.md) meglévő riasztásokra továbbra is MEGJELENNEK a OMS-portálon, de csak Azure Portal kezelhetik. Ha programozott módon fér hozzá a riasztásokhoz a Log Analytics riasztási REST API vagy Log Analytics a riasztási erőforrás-sablon használatával, az API-hívások, a Azure Resource Manager sablonok és a PowerShell-parancsok műveletei helyett műveleti csoportokat kell használnia.
 
 ### <a name="alert-management-solution"></a>Riasztások kezelése megoldás
-Egy korábbi bejelentés változása esetén a [riasztások kezelésére szolgáló megoldás](../platform/alert-management-solution.md) továbbra is elérhető lesz, és a Azure Portal teljes mértékben támogatja. Továbbra is telepítheti a megoldást az Azure Marketplace-ről.
+Egy korábbi bejelentés változása esetén a [riasztások kezelésére szolgáló megoldás](../insights/alert-management-solution.md) továbbra is elérhető lesz, és a Azure Portal teljes mértékben támogatja. Továbbra is telepítheti a megoldást az Azure Marketplace-ről.
 
-Habár a riasztások kezelésére szolgáló megoldás továbbra is elérhető, javasoljuk, hogy [Azure monitor egyesített riasztási felületét](../platform/alerts-overview.md) használja az összes Azure-beli riasztás megjelenítéséhez és kezeléséhez. Ez az új élmény natív módon összesíti a több forrásból származó riasztásokat az Azure-ban, beleértve a Log Analytics érkező riasztásokat. Ha Azure Monitor egyesített riasztási felületét használja, a riasztások kezelésére szolgáló megoldás csak a riasztások a System Center Operation Managerből az Azure-ba való integrálásának engedélyezéséhez szükséges. Azure Monitor egyesített riasztási felületén láthatja a riasztások eloszlását, kihasználhatja a kapcsolódó riasztások automatizált csoportosítását intelligens csoportok használatával, és több előfizetésben is megtekintheti a riasztásokat, miközben gazdag szűrőket alkalmaz. A riasztások kezelésének jövőbeli fejlődése elsődlegesen az új felhasználói felületről lesz elérhető. 
+Habár a riasztások kezelésére szolgáló megoldás továbbra is elérhető, javasoljuk, hogy [Azure monitor egyesített riasztási felületét](../alerts/alerts-overview.md) használja az összes Azure-beli riasztás megjelenítéséhez és kezeléséhez. Ez az új élmény natív módon összesíti a több forrásból származó riasztásokat az Azure-ban, beleértve a Log Analytics érkező riasztásokat. Ha Azure Monitor egyesített riasztási felületét használja, a riasztások kezelésére szolgáló megoldás csak a riasztások a System Center Operation Managerből az Azure-ba való integrálásának engedélyezéséhez szükséges. Azure Monitor egyesített riasztási felületén láthatja a riasztások eloszlását, kihasználhatja a kapcsolódó riasztások automatizált csoportosítását intelligens csoportok használatával, és több előfizetésben is megtekintheti a riasztásokat, miközben gazdag szűrőket alkalmaz. A riasztások kezelésének jövőbeli fejlődése elsődlegesen az új felhasználói felületről lesz elérhető. 
 
 A riasztás-felügyeleti megoldás által gyűjtött adatok (a riasztási típussal rendelkező rekordok) továbbra is Log Analytics, amíg a megoldás telepítve van a munkaterületre. 
 
@@ -83,7 +83,7 @@ A riasztás-felügyeleti megoldás által gyűjtött adatok (a riasztási típus
 A OMS Mobile alkalmazás a OMS-portálral együtt lesz kivezetve. A OMS Mobile App helyett az informatikai infrastruktúrával, az irányítópultokkal és a mentett lekérdezésekkel kapcsolatos információkhoz férhet hozzá a Azure Portal közvetlenül a mobileszközön lévő böngészőjéből. Riasztások beszerzéséhez konfigurálnia kell az [Azure-műveleti csoportokat](../alerts/action-groups.md) , hogy SMS vagy hanghívás formájában fogadják az értesítéseket
 
 ## <a name="application-insights-connector-and-solution"></a>Application Insights Connector és megoldás
-A [Application Insights Connector](../logs/app-insights-connector.md) lehetővé teszi Application Insights-adatLog Analytics munkaterületre való felvételét. Ez az adatismétlődés az infrastruktúra és az alkalmazásadatok láthatóságának engedélyezéséhez szükséges. A 2019 márciusában kibővített adatmegőrzési támogatással és az [erőforrások több Azure Monitor Application Insights erőforrással](../log-query/unify-app-resource-data.md) [való ellátásának](../logs/cross-workspace-query.md) lehetősége mellett nem szükséges duplikálni az Application Insights-erőforrások adatait, és nem kell elküldeni a log Analyticsba. Application Insights Emellett az összekötő az alkalmazások tulajdonságainak egy részhalmazát is elküldi Log Analyticsra, a több erőforrásra kiterjedő lekérdezések pedig fokozott rugalmasságot biztosítanak.  
+A [Application Insights Connector](../logs/app-insights-connector.md) lehetővé teszi Application Insights-adatLog Analytics munkaterületre való felvételét. Ez az adatismétlődés az infrastruktúra és az alkalmazásadatok láthatóságának engedélyezéséhez szükséges. A 2019 márciusában kibővített adatmegőrzési támogatással és az [erőforrások több Azure Monitor Application Insights erőforrással](./unify-app-resource-data.md) [való ellátásának](../logs/cross-workspace-query.md) lehetősége mellett nem szükséges duplikálni az Application Insights-erőforrások adatait, és nem kell elküldeni a log Analyticsba. Application Insights Emellett az összekötő az alkalmazások tulajdonságainak egy részhalmazát is elküldi Log Analyticsra, a több erőforrásra kiterjedő lekérdezések pedig fokozott rugalmasságot biztosítanak.  
 
 Ennek megfelelően a Application Insights Connector elavult, és az Azure Marketplace-en lett eltávolítva, valamint a OMS-portál elavult a 2019. március 30-án. A meglévő kapcsolatok 2019 június 30-ig továbbra is működni fognak. A OMS-portál elavult használata esetén nincs lehetőség a meglévő kapcsolatok konfigurálására és eltávolítására a portálon. Ez a 2019 januárban elérhetővé válik, és REST API az [Azure Updates](https://azure.microsoft.com/updates/)szolgáltatásban értesítést fog kapni. 
 

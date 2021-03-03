@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: eff51c8568ce82c9d8d21bff7a2ba079c291679c
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 45f4ca6349c14f21ce48a1fcf34b7fc8998dd278
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007295"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733516"
 ---
 # <a name="get-started-with-custom-voice"></a>Bevezetés a Custom Voice szolgáltatásba
 
@@ -39,10 +39,10 @@ Az alábbi ábra az egyéni hangmodellek [Egyéni hangportál](https://aka.ms/cu
 
 ## <a name="custom-neural-voices"></a>Egyéni neurális hangok
 
-Az egyéni hang jelenleg a standard és a neurális szintet is támogatja. Az egyéni neurális hang lehetővé teszi, hogy a felhasználók magasabb színvonalú hangmodelleket hozzanak létre, miközben kevesebb adatra van szükségük, és olyan mértékeket biztosít, amelyek segítséget nyújtanak az AI felelősségteljes Javasoljuk, hogy az egyéni neurális hang használatával reálisabb hangokat fejlesszen a természetesebb társalgási felületek számára, és lehetővé tegye, hogy az ügyfelek és a végfelhasználók a legújabb szöveg-beszéd technológia előnyeit a felelős módon használják. [További információ az egyéni neurális hangokról](https://aka.ms/CNV-Transparency-Note). 
+Az egyéni hang jelenleg a standard és a neurális szintet is támogatja. Az egyéni neurális hang lehetővé teszi, hogy a felhasználók magasabb színvonalú hangmodelleket hozzanak létre, miközben kevesebb adatra van szükségük, és olyan mértékeket biztosít, amelyek segítséget nyújtanak az AI felelősségteljes Javasoljuk, hogy az egyéni neurális hang használatával reálisabb hangokat fejlesszen a természetesebb társalgási felületek számára, és lehetővé tegye, hogy az ügyfelek és a végfelhasználók a legújabb szöveg-beszéd technológia előnyeit a felelős módon használják. [További információ az egyéni neurális hangokról](/legal/cognitive-services/speech-service/custom-neural-voice/transparency-note-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext). 
 
 > [!NOTE]
-> A Microsoft elkötelezettsége a felelős AI megtervezésének részeként korlátozott az egyéni neurális hang használata. Csak az alkalmazások felülvizsgálatát követően férhet hozzá a technológiához, és Ön kötelezte magát arra, hogy a felelős AI-alapelvekkel való összhangban használja azt. Tekintse meg [a szabályzatot a hozzáférés korlátozása](https://aka.ms/gating-overview) és [itt érvényes](https://aka.ms/customneural). Az egyéni hang standard és neurális verziója által támogatott [nyelvek](language-support.md#customization) és [régiók](regions.md#custom-voices) eltérőek. A Kezdés előtt tekintse meg a részleteket.  
+> A Microsoft elkötelezettsége a felelős AI megtervezésének részeként korlátozott az egyéni neurális hang használata. Csak az alkalmazások felülvizsgálatát követően férhet hozzá a technológiához, és Ön kötelezte magát arra, hogy a felelős AI-alapelvekkel való összhangban használja azt. Tekintse meg [a szabályzatot a hozzáférés korlátozása](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) és [itt érvényes](https://aka.ms/customneural). Az egyéni hang standard és neurális verziója által támogatott [nyelvek](language-support.md#customization) és [régiók](regions.md#custom-voices) eltérőek. A Kezdés előtt tekintse meg a részleteket.  
 
 ## <a name="set-up-your-azure-account"></a>Azure-fiók beállítása
 
@@ -71,7 +71,7 @@ Az első projekt létrehozásához válassza a **szöveg – beszéd/egyéni han
 
 Ha a nem neurális (vagy standard) egyéni hangvételt használja, vegye figyelembe, hogy az alábbi lépéseket követve azonnal áttelepíti az egyéni neurális hangra. Az egyéni neurális hangvételre való áttérés segít, hogy reálisabb hangokat fejlesszen még természetesebb felületi felületeknél, és lehetővé tegye, hogy az ügyfelek és a végfelhasználók a legújabb szöveg-beszéd technológia előnyeit a felelős módon hasznosítsák. 
 
-1. Tekintse meg [a szabályzatot a hozzáférés korlátozása](https://aka.ms/gating-overview) és [itt érvényes](https://aka.ms/customneural). Vegye figyelembe, hogy az egyéni neurális hangszolgáltatáshoz való hozzáférésre a Microsoft saját belátása szerint jogosult a jogosultsági feltételek alapján. Az ügyfelek csak az alkalmazásuk felülvizsgálatát követően férhetnek hozzá a technológiához, és elkötelezték magukat, hogy a [felelős AI-alapelvekkel](https://microsoft.com/ai/responsible-ai) és a [viselkedési szabályzattal](https://aka.ms/custom-neural-code-of-conduct)összhangban használják azt. 
+1. Tekintse meg [a szabályzatot a hozzáférés korlátozása](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) és [itt érvényes](https://aka.ms/customneural). Vegye figyelembe, hogy az egyéni neurális hangszolgáltatáshoz való hozzáférésre a Microsoft saját belátása szerint jogosult a jogosultsági feltételek alapján. Az ügyfelek csak az alkalmazásuk felülvizsgálatát követően férhetnek hozzá a technológiához, és elkötelezték magukat, hogy a [felelős AI-alapelvekkel](https://microsoft.com/ai/responsible-ai) és a [viselkedési szabályzattal](/legal/cognitive-services/speech-service/tts-code-of-conduct?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)összhangban használják azt. 
 2. Az alkalmazás jóváhagyása után megkapja a "neurális" betanítási funkció elérését. Ügyeljen arra, hogy az [Egyéni hangportálra](https://speech.microsoft.com/customvoice) az alkalmazásban megadott Azure-előfizetéssel jelentkezzen be. 
     > [!IMPORTANT]
     > A hangtehetségek elleni védelemhez, valamint a hangmodellek jogosulatlan rögzítéssel vagy a hangtehetségek nyugtázása nélkül történő betanításának megakadályozásához az ügyfélnek fel kell töltenie egy rögzített nyilatkozatot a hangtehetséghez, amely a saját beleegyezik. A rögzítési parancsfájl előkészítésekor ügyeljen rá, hogy tartalmazza ezt a mondatot. "I [állapot az első és az utolsó név] tisztában vagyok azzal, hogy a hangfelvételeket [a vállalat neve] fogja használni a hang szintetikus verziójának létrehozásához és használatához."

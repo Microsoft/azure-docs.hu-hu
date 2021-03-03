@@ -3,12 +3,13 @@ title: Gyakran ismételt kérdések az Azure Kubernetes szolgáltatásról (ak)
 description: Válaszok az Azure Kubernetes szolgáltatással (ak) kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 6c2eddf3b7002b101fed8face4a58f2d2b2f4878
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.custom: references_regions
+ms.openlocfilehash: 6d7ea48722e6604fe67d7a4ddcb12870623d9354
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820262"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739627"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Gyakori kérdések az Azure Kubernetes Service-szel (AKS) kapcsolatban
 
@@ -134,7 +135,7 @@ A Windows Server rendszerhez készült csomópont-támogatás olyan korlátozás
 
 Az AK SLA-garanciákat biztosít opcionális kiegészítő szolgáltatásként, amely a [rendelkezésre állási SLA][uptime-sla]-t tartalmazza. 
 
-Az alapértelmezés szerint kínált ingyenes SLA nem garantálja a magas rendelkezésre állású API Server-végpontot (a szolgáltatási szint célkitűzése 99,5%). Előfordulhat, hogy a frissítés, a nem kifogástalan állapotú alátét csomópontok, a platformok karbantartása stb. Ha a munkaterhelés nem tűri a APIServer újraindítását, javasoljuk, hogy használja a rendelkezésre állási SLA-t.
+Az alapértelmezés szerint kínált ingyenes SKU nem rendelkezik társított szolgáltatói *szerződéssel*, de a szolgáltatási szint *célkitűzése* 99,5%. Előfordulhat, hogy a frissítés, a nem megfelelő állapotú alátétek csomópontja, a platform karbantartása, az alkalmazások túlnyomó része az API-kiszolgáló és a kérések között az átmeneti kapcsolódási problémák észlelhetők. Ha a munkaterhelés nem tűri az API-kiszolgáló újraindítását, javasoljuk, hogy használja a rendelkezésre állási SLA-t.
 
 ## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>Alkalmazhatom az Azure-beli foglalási kedvezményeket az AK-ügynökök csomópontjaira?
 
@@ -202,7 +203,7 @@ A Log Analytics ügynök támogatott, mert a Microsoft által felügyelt bővít
 
 ## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>Az AK a fürt régióján kívül tárolja a vásárlói adatmennyiséget?
 
-Az ügyféladatok egyetlen régióban való tárolását lehetővé tevő szolgáltatás jelenleg csak a Ázsia és a Csendes-óceáni térség geo Délkelet-ázsiai régiójában (Szingapúr) érhető el. Az összes többi régió esetében az ügyféladatokat a Geo tárolja.
+Az ügyféladatok egyetlen régióban való tárolását lehetővé tevő funkció jelenleg csak az Ázsia és a Csendes-óceáni térség geo és Dél-Brazília (Sao Paulo állam) régiójában, a Geo-ban érhető el. Az összes többi régió esetében az ügyféladatokat a Geo tárolja.
 
 ## <a name="are-aks-images-required-to-run-as-root"></a>A root-ként való futtatáshoz AK-lemezképek szükségesek?
 

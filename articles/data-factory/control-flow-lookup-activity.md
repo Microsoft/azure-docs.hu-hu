@@ -5,28 +5,32 @@ author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: 5f46e2871aa0017f0a4b33df04a8ae9058c59e17
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/25/2021
+ms.openlocfilehash: 4b2fb49899b6a676520fe0912dd122dd72cce023
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385472"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712912"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Keresési tevékenység a Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-A keresési tevékenység lekérheti az adatkészletet a Azure Data Factory által támogatott adatforrásokból. A következő esetekben használja:
-- Dinamikusan határozza meg, hogy mely objektumok fognak működni egy későbbi tevékenységben, ahelyett, hogy az objektum nevét rögzítette. Néhány objektum például fájlok és táblák.
+A keresési tevékenység lekérheti az adatkészletet a Azure Data Factory által támogatott adatforrásokból. azt is megteheti, hogy dinamikusan meghatározza, hogy mely objektumok működhetnek egy későbbi tevékenységben, ahelyett, hogy az objektum nevét keményen kellene kezelni. Néhány objektum például fájlok és táblák.
 
-A keresési tevékenység beolvassa és visszaadja egy konfigurációs fájl vagy tábla tartalmát. Egy lekérdezés vagy tárolt eljárás végrehajtásának eredményét is visszaadja. A keresési tevékenység kimenete egy későbbi másolási vagy átalakítási tevékenységben is használható, ha ez egy egyedi érték. A kimenet egy ForEach tevékenységben használható, ha az attribútumok tömbje.
+A keresési tevékenység beolvassa és visszaadja egy konfigurációs fájl vagy tábla tartalmát. Egy lekérdezés vagy tárolt eljárás végrehajtásának eredményét is visszaadja. A kimenet lehet egy egypéldányos érték vagy attribútumok tömbje, amely egy későbbi másolási, átalakítási vagy vezérlési folyamat tevékenységekben, például a ForEach tevékenységben is felhasználható.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
-A keresési tevékenység a következő adatforrásokat támogatja. 
+Vegye figyelembe a következőket:
 
-A keresési tevékenység legfeljebb 5000 sort tud visszaadni; Ha az eredményhalmaz több rekordot tartalmaz, a rendszer az első 5000 sort adja vissza. A keresési tevékenység kimenete legfeljebb 4 MB méretű, a tevékenységek sikertelenek lesznek, ha a méret meghaladja a korlátot. Jelenleg a keresési tevékenység leghosszabb időtartama 24 óra.
+- A keresési tevékenység legfeljebb **5000 sort** tud visszaadni; Ha az eredményhalmaz több rekordot tartalmaz, a rendszer az első 5000 sort adja vissza.
+- A keresési tevékenység kimenete legfeljebb **4 MB** méretű, a tevékenységek sikertelenek lesznek, ha a méret meghaladja a korlátot. 
+- Az időkorlát előtti keresési tevékenység leghosszabb időtartama **24 óra**.
+- Ha lekérdezési vagy tárolt eljárást használ az adatkereséshez, ügyeljen arra, hogy a rendszer visszaadja az egyik eredményhalmaz értékét. Ellenkező esetben a keresési tevékenység sikertelen lesz.
+
+A keresési tevékenység a következő adatforrásokat támogatja. 
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
@@ -53,8 +57,8 @@ A keresési tevékenység legfeljebb 5000 sort tud visszaadni; Ha az eredményha
 
 Név | Leírás | Típus | Kötelező?
 ---- | ----------- | ---- | --------
-adatkészlet | A keresés adatkészlet-hivatkozását adja meg. Az egyes kapcsolódó összekötők című cikk **adatkészlet tulajdonságai** szakaszában talál részleteket. | Kulcs/érték pár | Yes
-source | Adatkészlet-specifikus forrás tulajdonságokat tartalmaz, ugyanazokat a másolási tevékenység forrását. A részletek a **másolási tevékenység tulajdonságai** szakaszban olvashatók a kapcsolódó összekötők cikkeiben. | Kulcs/érték pár | Yes
+adatkészlet | A keresés adatkészlet-hivatkozását adja meg. Az egyes kapcsolódó összekötők című cikk **adatkészlet tulajdonságai** szakaszában talál részleteket. | Kulcs/érték pár | Igen
+source | Adatkészlet-specifikus forrás tulajdonságokat tartalmaz, ugyanazokat a másolási tevékenység forrását. A részletek a **másolási tevékenység tulajdonságai** szakaszban olvashatók a kapcsolódó összekötők cikkeiben. | Kulcs/érték pár | Igen
 firstRowOnly | Azt jelzi, hogy csak az első sort vagy az összes sort kívánja-e visszaadni. | Logikai | Nem. A mező alapértelmezett értéke: `true`.
 
 > [!NOTE]
@@ -381,7 +385,7 @@ A következő két típusú formátumot használhatja a **sourcetable.js** fájl
 
 | Korlátozás | Áthidaló megoldás |
 |---|---|
-| A keresési tevékenység legfeljebb 5 000 sort tartalmaz, és legfeljebb 2 MB méretű. | Tervezzen olyan kétszintű folyamatot, amelyben a külső folyamat egy belső folyamaton keresztül történik, amely nem haladja meg a maximálisan megengedett sorokat vagy méretet. |
+| A keresési tevékenység legfeljebb 5 000 sort tartalmaz, és legfeljebb 4 MB méretűnek kell lennie. | Tervezzen olyan kétszintű folyamatot, amelyben a külső folyamat egy belső folyamaton keresztül történik, amely nem haladja meg a maximálisan megengedett sorokat vagy méretet. |
 | | |
 
 ## <a name="next-steps"></a>Következő lépések

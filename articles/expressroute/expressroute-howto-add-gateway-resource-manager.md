@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 9f01961ec7c7f8e0a4e2d72e28e6def50e93ad5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b75e6e0a8b79f374900e6cb2dfc49680d3d0190
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854307"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739058"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>Oktatóanyag: virtuális hálózati átjáró konfigurálása ExpressRoute a PowerShell használatával
 > [!div class="op_single_selector"]
@@ -53,6 +53,11 @@ A feladat lépései a következő konfigurációs hivatkozási listán szereplő
 | Típus | *ExpressRoute* |
 | Átjáró nyilvános IP-címe  | *gwpip* |
 
+> [!IMPORTANT]
+> A privát társítás IPv6-támogatása jelenleg **nyilvános előzetes** verzióban érhető el. Ha a virtuális hálózatát IPv6-alapú privát ExpressRoute-kapcsolattal szeretné összekapcsolni, győződjön meg arról, hogy a virtuális hálózata kettős verem, és követi az [itt](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)ismertetett irányelveket.
+> 
+> 
+
 ## <a name="add-a-gateway"></a>Átjáró hozzáadása
 
 1. Az Azure-hoz való kapcsolódáshoz futtassa a parancsot `Connect-AzAccount` .
@@ -77,6 +82,11 @@ A feladat lépései a következő konfigurációs hivatkozási listán szereplő
    ```azurepowershell-interactive
    Add-AzVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet -AddressPrefix 192.168.200.0/26
    ```
+    Ha kettős veremből álló virtuális hálózatot használ, és a ExpressRoute IPv6-alapú privát kapcsolatot szeretne használni, hozzon létre helyette egy kettős veremű átjáró-alhálózatot.
+
+   ```azurepowershell-interactive
+   Add-AzVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet -AddressPrefix "10.0.0.0/26","ace:daa:daaa:deaa::/64"
+   ```
 1. Állítsa be a konfigurációt.
 
    ```azurepowershell-interactive
@@ -97,11 +107,15 @@ A feladat lépései a következő konfigurációs hivatkozási listán szereplő
    ```azurepowershell-interactive
    $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
    ```
-1. Hozzon létre egy átjárót. Ebben a lépésben a **-GatewayType** különösen fontos. A **ExpressRoute**értéket kell használnia. A parancsmagok futtatása után az átjáró 45 percet is igénybe vehet.
+1. Hozzon létre egy átjárót. Ebben a lépésben a **-GatewayType** különösen fontos. A **ExpressRoute** értéket kell használnia. A parancsmagok futtatása után az átjáró 45 percet is igénybe vehet.
 
    ```azurepowershell-interactive
    New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Expressroute -GatewaySku Standard
    ```
+> [!IMPORTANT]
+> Ha IPv6-alapú ExpressRoute-t szeretne használni, ügyeljen arra, hogy az az SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ) beállítást használja a **-gatewaysku paraméterben**.
+> 
+> 
 
 ## <a name="verify-the-gateway-was-created"></a>Az átjáró létrehozásának ellenőrzése
 Az átjáró létrehozásának ellenőrzéséhez használja a következő parancsokat:
@@ -129,7 +143,7 @@ Az átjáró eltávolításához használja az alábbi parancsot:
 Remove-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Miután létrehozta a VNet-átjárót, összekapcsolhatja a VNet egy ExpressRoute-áramkörrel. 
 
 > [!div class="nextstepaction"]

@@ -3,12 +3,12 @@ title: Azure-beli virtuális gép fájljának helyreállítása – problémameg
 description: A fájlok és mappák Azure-beli virtuális gépekről történő helyreállításakor felmerülő problémák elhárítása.
 ms.topic: troubleshooting
 ms.date: 07/12/2020
-ms.openlocfilehash: c4d0d233237cb477d72efea0b91d4e5288e2a302
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0ee856b10c6a5fbea6f6f76b2082949ab9c1e0db
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735877"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700303"
 ---
 # <a name="troubleshoot-issues-in-file-recovery-of-an-azure-vm-backup"></a>Az Azure-beli virtuális gépek biztonsági mentésének fájl-helyreállításával kapcsolatos problémák elhárítása
 
@@ -36,7 +36,7 @@ Ez a szakasz az esetlegesen megjelenő hibaüzenetek hibaelhárításának lép�
 
 **Javasolt művelet**: a parancsfájl letöltése után 12 órával a rendszer érvénytelenné válik, és nem futtatható. Lépjen a portálra, és töltsön le egy új parancsfájlt a fájl-helyreállítás folytatásához.
 
-### <a name="iscsi_tcp-module-cant-be-loaded-or-iscsi_tcp_module-not-found"></a>iscsi_tcp modul nem tölthető be (vagy) iscsi_tcp_module nem található
+### <a name="iscsi_tcp-module-cant-be-loaded-or-iscsi_tcp_module-not-found"></a>Az iscsi_tcp modult nem lehet betölteni (vagy) az iscsi_tcp modul nem található
 
 **Javasolt művelet**: a probléma megoldásához kövesse a [szkriptek letöltésének](#the-script-downloads-successfully-but-fails-to-run)lépéseit, de a Futtatás nem sikerült.
 
@@ -88,7 +88,7 @@ A probléma megoldásához kövesse az operációs rendszerének lépéseit.
 Amikor első alkalommal futtatja a parancsfájlt a Windows Server 2012 R2 és a Windows Server 2016 rendszeren (a Storage-készletekkel), előfordulhat, hogy a rendszer csak olvashatóként csatlakoztatja a tárolót a virtuális géphez.
 
 >[!Tip]
-> Győződjön meg arról, [hogy rendelkezik a megfelelő géppel a szkript futtatásához](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script).
+> Győződjön meg arról, [hogy rendelkezik a megfelelő géppel a szkript futtatásához](./backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script).
 
 A probléma megoldásához kézzel rendeljen hozzá írási és olvasási hozzáférést a tárolóhoz, és csatolja a virtuális lemezeket:
 
@@ -108,7 +108,7 @@ A probléma megoldásához kézzel rendeljen hozzá írási és olvasási hozzá
 
 A fájlok helyreállítása során a Backup szolgáltatás a köteteket és az automatikus csatlakoztatásokat is észleli. Ha azonban a biztonsági másolatban szereplő lemezek nyers partíciókkal rendelkeznek, ezek a lemezek nem automatikusan vannak csatlakoztatva, és az adatlemez nem látható a helyreállításhoz.
 
-A probléma megoldásához nyissa meg a [fájlok helyreállítása Azure-beli virtuális gépekről biztonsági mentést](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#lvmraid-arrays-for-linux-vms).
+A probléma megoldásához nyissa meg a [fájlok helyreállítása Azure-beli virtuális gépekről biztonsági mentést](./backup-azure-restore-files-from-vm.md#lvmraid-arrays-for-linux-vms).
 
 #### <a name="linux-file-recovery-fails-because-the-os-couldnt-identify-the-file-system"></a>A Linux-fájlok helyreállítása sikertelen, mert az operációs rendszer nem tudta azonosítani a fájlrendszert
 
@@ -122,7 +122,7 @@ A probléma megoldásához ellenőrizze, hogy a kötet titkosítva van-e egy kü
 
    ![Képernyőfelvétel: a parancs eredményének megjelenítése a blokkos eszközök listázásához.](./media/backup-azure-restore-files-from-vm/disk-without-volume-5.png)
 
-1. Ellenőrizze a fájlrendszert és a titkosítást. Ha a kötet titkosítva van, a File Recovery nem támogatott. További információ: [Az Azure-beli virtuális gépek biztonsági mentésének támogatási mátrixa](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#support-for-file-level-restore).
+1. Ellenőrizze a fájlrendszert és a titkosítást. Ha a kötet titkosítva van, a File Recovery nem támogatott. További információ: [Az Azure-beli virtuális gépek biztonsági mentésének támogatási mátrixa](./backup-support-matrix-iaas.md#support-for-file-level-restore).
 
 ### <a name="disks-are-attached-but-the-volumes-arent-mounted"></a>A lemezek csatlakoztatva vannak, de a kötetek nincsenek csatlakoztatva
 
@@ -139,7 +139,7 @@ A Windows rendszerhez készült fájl-helyreállítási parancsfájl futtatásak
 A probléma azonosításához és megoldásához hajtsa végre a következő lépéseket:
 
 >[!Tip]
->Győződjön meg arról, [hogy rendelkezik a megfelelő géppel a szkript futtatásához](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script).
+>Győződjön meg arról, [hogy rendelkezik a megfelelő géppel a szkript futtatásához](./backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script).
 
 1. A **cmd** ablakban futtassa a **diskmgmt** parancsot a **Lemezkezelés** megnyitásához.
 1. Keresse meg a további lemezeket. A következő példában a **2. lemez** egy további lemez.
@@ -159,9 +159,9 @@ A probléma azonosításához és megoldásához hajtsa végre a következő lé
 #### <a name="linux"></a>Linux
 
 >[!Tip]
->Győződjön meg arról, [hogy rendelkezik a megfelelő géppel a szkript futtatásához](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script).
+>Győződjön meg arról, [hogy rendelkezik a megfelelő géppel a szkript futtatásához](./backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script).
 
-Ha a védett linuxos virtuális gép LVM vagy RAID tömböket használ, kövesse a [fájlok helyreállítása Azure-beli virtuális gép biztonsági mentésének](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#lvmraid-arrays-for-linux-vms)lépéseit.
+Ha a védett linuxos virtuális gép LVM vagy RAID tömböket használ, kövesse a [fájlok helyreállítása Azure-beli virtuális gép biztonsági mentésének](./backup-azure-restore-files-from-vm.md#lvmraid-arrays-for-linux-vms)lépéseit.
 
 ### <a name="you-cant-copy-the-files-from-mounted-volumes"></a>A fájlok nem másolhatók a csatlakoztatott kötetekről
 
@@ -169,6 +169,6 @@ A másolás meghiúsulhat a következő hibával: "0x80070780: a fájl nem érhe
 
 Ellenőrizze, hogy a forráskiszolgálón van-e engedélyezve a lemez deduplikálása. Ha igen, győződjön meg arról, hogy a visszaállítási kiszolgáló a meghajtókon is engedélyezte a deduplikálás szolgáltatást. A deduplikálás nem állítható be úgy, hogy ne legyenek deduplikálni a meghajtókat a visszaállítási kiszolgálón.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Fájlok és mappák helyreállítása az Azure-beli virtuális gépek biztonsági másolatából](backup-azure-restore-files-from-vm.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
-ms.openlocfilehash: c833d87b8d85c75c4f050f0130ddfd74342f4c52
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 8aa5a52a06713b4f00b43205a57148049a8ef8da
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99566769"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711960"
 ---
 # <a name="connect-your-akamai-security-events-collector-to-azure-sentinel"></a>A Akamai Security Events Collector összekötése az Azure Sentinel szolgáltatással
 
@@ -35,7 +35,7 @@ Ez a cikk azt ismerteti, hogyan csatlakoztatható a Akamai Security Events Colle
 
 - Olvasási és írási engedélyekkel kell rendelkeznie az Azure Sentinel-munkaterületen.
 
-- Olvasási jogosultsággal kell rendelkeznie a munkaterület megosztott kulcsaihoz. [További információ a munkaterület kulcsairól](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key).
+- Olvasási jogosultsággal kell rendelkeznie a munkaterület megosztott kulcsaihoz. [További információ a munkaterület kulcsairól](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key).
 
 ## <a name="send-akamai-security-events-logs-to-azure-sentinel"></a>Akamai biztonsági események naplófájljainak elküldése az Azure Sentinelbe
 

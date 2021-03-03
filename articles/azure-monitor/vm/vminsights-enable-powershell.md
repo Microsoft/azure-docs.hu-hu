@@ -1,33 +1,33 @@
 ---
-title: Azure Monitor for VMs engedélyezése a PowerShell használatával
-description: Útmutatás az Azure-beli virtuális gépekhez vagy a virtuálisgép-méretezési csoportokhoz való Azure Monitor for VMs Azure PowerShell használatával történő engedélyezéséhez.
+title: VIRTUÁLIS gépekkel való bepillantások engedélyezése a PowerShell használatával
+description: Útmutatás az Azure-beli virtuális gépekhez és a virtuálisgép-méretezési csoportokhoz Azure PowerShell használatával történő engedélyezéséhez.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 83b17e021ce8003b5dbd279886edfdc199f58ce3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 47ac71797684f82dfd94acff2d18bca11b2f50d1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100619788"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717077"
 ---
-# <a name="enable-azure-monitor-for-vms-using-powershell"></a>Azure Monitor for VMs engedélyezése a PowerShell használatával
-Ez a cikk azt ismerteti, hogyan engedélyezhető a Azure Monitor for VMs Azure-beli virtuális gépeken a PowerShell használatával. Ez az eljárás a következő módon használható:
+# <a name="enable-vm-insights-using-powershell"></a>VIRTUÁLIS gépekkel való bepillantások engedélyezése a PowerShell használatával
+Ez a cikk bemutatja, hogyan engedélyezheti a VM-információkat az Azure Virtual Machines szolgáltatásban a PowerShell használatával. Ez az eljárás a következő módon használható:
 
 - Azure virtuális gép
 - Azure virtuálisgép-méretezési csoport
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Hozzon létre és konfiguráljon egy log Analytics munkaterületet](../insights/vminsights-configure-workspace.md).
-- A [támogatott operációs rendszerekkel](../insights/vminsights-enable-overview.md#supported-operating-systems) biztosíthatja, hogy a virtuális gép vagy a virtuálisgép-méretezési csoport operációs rendszere támogatott legyen. 
+- [Hozzon létre és konfiguráljon egy log Analytics munkaterületet](./vminsights-configure-workspace.md).
+- A [támogatott operációs rendszerekkel](./vminsights-enable-overview.md#supported-operating-systems) biztosíthatja, hogy a virtuális gép vagy a virtuálisgép-méretezési csoport operációs rendszere támogatott legyen. 
 
 
 ## <a name="powershell-script"></a>PowerShell-parancsprogram
 
-Több virtuális gép vagy virtuálisgép-méretezési csoport Azure Monitor for VMsának engedélyezéséhez használja a Azure PowerShell-gyűjteményben elérhető PowerShell-parancsfájlt [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights). Ez a szkript a következő lépésekből áll:
+Ha több virtuális gépre vagy virtuálisgép-méretezési csoportra szeretné engedélyezni a virtuális gépeket, használja a [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights)PowerShell-parancsfájlt, amely a Azure PowerShell gyűjteményből érhető el. Ez a szkript a következő lépésekből áll:
 
 - Minden virtuális gép és virtuálisgép-méretezési csoport az előfizetésben.
 - A *ResourceGroup* által megadott hatókörön belüli erőforráscsoport.
@@ -139,7 +139,7 @@ PARAMETERS
     Specify to use a PolicyAssignmentName for source and to reinstall (move to a new workspace)
 ```
 
-Az alábbi példa a mappában található PowerShell-parancsok használatát mutatja be Azure Monitor for VMs és a várt kimenet megismeréséhez:
+Az alábbi példa azt mutatja be, hogyan használhatja a mappában található PowerShell-parancsokat a virtuális gépek bepillantást tevő és a várt kimenet megértéséhez:
 
 ```powershell
 $WorkspaceId = "<GUID>"
@@ -190,5 +190,5 @@ Failed: (0)
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Lásd: [Azure monitor for VMS leképezés használata](vminsights-maps.md) a felderített alkalmazások függőségeinek megtekintéséhez. 
+* A felderített alkalmazások függőségeinek megtekintéséhez lásd a virtuálisgép-információk [leképezésének használata](vminsights-maps.md) című témakört. 
 * Lásd: az Azure-beli [virtuális gépek teljesítményének megtekintése](vminsights-performance.md) a szűk keresztmetszetek, a teljes kihasználtság és a virtuális gép teljesítményének azonosításához.

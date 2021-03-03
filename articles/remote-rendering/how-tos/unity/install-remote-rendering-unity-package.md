@@ -5,43 +5,66 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/26/2020
 ms.topic: how-to
-ms.openlocfilehash: 3704d1a418baeec18c3303b8203a0185790cbcc7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9454bef52798650fc431f8df994e1a964662b453
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85564311"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720824"
 ---
 # <a name="install-the-remote-rendering-package-for-unity"></a>A Unity Remote Rendering-csomagjának telepítése
 
 Az Azure távoli renderelés egy Unity-csomagot használ az integráció egységbe való beágyazásához.
-
-## <a name="manage-the-remote-rendering-packages-in-unity"></a>A távoli renderelési csomagok kezelése az egységben
-
-Az Unity-csomagok olyan tárolók, amelyek az Unity [csomagkezelő](https://docs.unity3d.com/Packages/com.unity.package-manager-ui@1.8/manual/index.html)használatával kezelhetők.
 Ez a csomag tartalmazza a teljes C# API-t, valamint az Azure Remote rendering és az Unity használatával szükséges összes beépülő modult.
 A csomagok esetében az egység elnevezési sémája a következő: **com. microsoft. Azure. Remote-rendering**.
 
-A csomag nem része az [ARR Samples adattárnak](https://github.com/Azure/azure-remote-rendering), és nem érhető el az egység belső csomagjának beállításjegyzékében. Ha hozzá szeretne adni egy projekthez, manuálisan kell szerkesztenie a projekt `manifest.md` fájlját a következők hozzáadásához:
+A Unity csomag telepítéséhez a következő lehetőségek közül választhat:
 
-```json
-{
-  "scopedRegistries": [
-    {
-      "name": "Azure Mixed Reality Services",
-      "url": "https://api.bintray.com/npm/microsoft/AzureMixedReality-NPM/",
-      "scopes": ["com.microsoft.azure"]
-    }
-   ],
-  "dependencies": {
-    "com.microsoft.azure.remote-rendering": "0.1.31",
-    ...existing dependencies...
-  }
-}
-```
+## <a name="install-remote-rendering-package-using-the-mixed-reality-feature-tool"></a>Távoli renderelési csomag telepítése a kevert valóság funkció eszköz használatával
 
-A hozzáadása után a Unity csomagkezelő segítségével ellenőrizheti, hogy a legújabb verziót használja-e.
-Részletesebb útmutatást az [oktatóanyagban talál: távoli modellek megtekintése](../../tutorials/unity/view-remote-models/view-remote-models.md).
+[A vegyes valóság funkciós eszköz](https://aka.ms/MRFeatureToolDocs) ([Letöltés](https://aka.ms/mrfeaturetool)) egy olyan eszköz, amellyel a vegyes valóság funkcióinak egységes projektjeibe integrálhatók. A csomag nem része az [ARR Samples adattárnak](https://github.com/Azure/azure-remote-rendering), és nem érhető el az egység belső csomagjának beállításjegyzékében.
+
+A csomag egy projekthez való hozzáadásához a következőket kell tennie:
+1. [A vegyes valóság funkció eszköz letöltése](https://aka.ms/mrfeaturetool)
+1. Kövesse az eszköz használatának [teljes utasításait](https://aka.ms/MRFeatureToolDocs) .
+1. A **szolgáltatások felderítése** lapon jelölje be a **Microsoft Azure távoli renderelési** csomaghoz tartozó jelölőnégyzetet, és válassza ki a projekthez hozzáadni kívánt csomag verzióját.
+
+![Mixed_Reality_feature_tool_package](media/mixed-reality-feature-tool-package.png)
+
+A helyi csomag frissítéséhez csak válasszon egy újabb verziót a vegyes valóság funkció eszközről, és telepítse. Előfordulhat, hogy a csomag frissítése időnként konzol hibáihoz vezethet. Ha ez történik, próbálkozzon a projekt bezárásával és újbóli megnyitásával.
+
+## <a name="install-remote-rendering-package-manually"></a>Távoli renderelési csomag manuális telepítése
+
+A távoli renderelési csomag manuális telepítéséhez a következőket kell tennie:
+
+1. Töltse le a csomagot a vegyes valóság csomagjai NPM-csatornán `https://pkgs.dev.azure.com/aipmr/MixedReality-Unity-Packages/_packaging/Unity-packages/npm/registry` .
+    * Használhatja a [NPM](https://www.npmjs.com/get-npm) , és a következő parancs futtatásával letöltheti a csomagot az aktuális mappába.
+      ```
+      npm pack com.microsoft.azure.remote-rendering --registry https://pkgs.dev.azure.com/aipmr/MixedReality-Unity-Packages/_packaging/Unity-packages/npm/registry
+      ```
+
+    * Vagy használhatja a PowerShell-szkriptet `Scripts/DownloadUnityPackages.ps1` az [Azure-Remote-rendering GitHub-adattárból](https://github.com/Azure/azure-remote-rendering).
+        * A tartalmának szerkesztése `Scripts/unity_sample_dependencies.json`
+          ```json
+          {
+            "packages": [
+              {
+                "name": "com.microsoft.azure.remote-rendering", 
+                "version": "latest", 
+                "registry": "https://pkgs.dev.azure.com/aipmr/MixedReality-Unity-Packages/_packaging/Unity-packages/npm/registry"
+              }
+            ]
+          }
+          ```
+
+        * Futtassa a következő parancsot a PowerShellben a csomag a megadott célhelyre való letöltéséhez.
+          ```
+          DownloadUnityPackages.ps1 -DownloadDestDir <destination directory>
+          ```
+
+1. [Telepítse a letöltött csomagot](https://docs.unity3d.com/Manual/upm-ui-tarball.html) az Unity csomagkezelő segítségével.
+
+A helyi csomag frissítéséhez csak futtassa újra a megfelelő parancsot, és importálja újra a csomagot. Előfordulhat, hogy a csomag frissítése időnként konzol hibáihoz vezethet. Ha ez történik, próbálkozzon a projekt bezárásával és újbóli megnyitásával.
 
 ## <a name="unity-render-pipelines"></a>Unity renderelési folyamatok
 
@@ -49,7 +72,7 @@ A távoli renderelés a és a együttesével is működik **:::no-loc text="Univ
 
 A használatához a **:::no-loc text="Universal render pipeline":::** csomagját az Unity-ben kell telepíteni. Ezt az egység **csomagkezelő** felhasználói felületén (a csomag neve **univerzális RP**, a 7.3.1-es vagy újabb verzióban) vagy a fájlon keresztül teheti meg, az `Packages/manifest.json` [Unity Project Setup oktatóanyagban](../../tutorials/unity/view-remote-models/view-remote-models.md#include-the-azure-remote-rendering-package)leírtak szerint.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Unity game Objects és Components](objects-components.md)
 * [Oktatóanyag: távoli modellek megtekintése](../../tutorials/unity/view-remote-models/view-remote-models.md)

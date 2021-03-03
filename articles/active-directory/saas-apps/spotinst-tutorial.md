@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: d9c9ac87e655cf9178d58f04b502f7e781d1fef7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 402b5a975b3ded8327edcea81b680e9990bac39e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181407"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686565"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-spotinst"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Spotinst
 
@@ -89,7 +89,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentiek mellett a Spotinst alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Name (Név) | Forrás attribútum|
+    | Name | Forrás attribútum|
     | -----| --------------- |
     | E-mail | User. mail |
     | FirstName | User. givenName |
@@ -171,9 +171,9 @@ Ennek a szakasznak a célja egy Britta Simon nevű felhasználó létrehozása a
 
     ![Képernyőfelvétel: a felhasználó hozzáadása szakasz, ahol megadhatja a leírt értékeket.](./media/spotinst-tutorial/adduser2.png)
 
-    * A **teljes név** szövegmezőbe írja be a felhasználó teljes nevét (például **BrittaSimon**).
+    * A **teljes név** szövegmezőbe írja be a felhasználóhoz hasonló teljes nevet `BrittaSimon` .
 
-    * Az **e-mail** szövegmezőbe írja be a felhasználó e-mail címét, például: `brittasimon\@contoso.com` .
+    * Az **e-mail** szövegmezőbe írja be a felhasználó e-mail címét, például: `brittasimon@contoso.com` .
 
     * Válassza ki a szervezeti **szerepkör, a fiók szerepkör és a fiókok** szervezetre vonatkozó részleteit.
 

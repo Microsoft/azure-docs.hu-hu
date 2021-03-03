@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 01/12/2021
+ms.date: 02/26/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: e3f92f445068b98c12069577ddf61a71568e403b
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 8b5e74d12af92b5d300e638bee27020a5af5383c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98871553"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690379"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Mik azok a Azure Machine Learning folyamatok?
 
@@ -95,22 +95,27 @@ experiment = Experiment(ws, 'MyExperiment')
 
 input_data = Dataset.File.from_files(
     DataPath(datastore, '20newsgroups/20news.pkl'))
+prepped_data_path = OutputFileDatasetConfig(name="output_path")
 
 dataprep_step = PythonScriptStep(
     name="prep_data",
     script_name="dataprep.py",
-    compute_target=cluster,
-    arguments=[input_dataset.as_named_input('raw_data').as_mount(), dataprep_output]
-    )
-output_data = OutputFileDatasetConfig()
-input_named = input_data.as_named_input('input')
-
-steps = [ PythonScriptStep(
-    script_name="train.py",
-    arguments=["--input", input_named.as_download(), "--output", output_data],
+    source_directory="prep_src",
     compute_target=compute_target,
-    source_directory="myfolder"
-) ]
+    arguments=["--prepped_data_path", prepped_data_path],
+    inputs=[input_dataset.as_named_input('raw_data').as_mount() ]
+    )
+
+prepped_data = prepped_data_path.read_delimited_files()
+
+train_step = PythonScriptStep(
+    name="train",
+    script_name="train.py",
+    compute_target=compute_target,
+    arguments=["--prepped_data", prepped_data],
+    source_directory="train_src"
+)
+steps = [ dataprep_step, train_step ]
 
 pipeline = Pipeline(workspace=ws, steps=steps)
 
@@ -118,9 +123,13 @@ pipeline_run = experiment.submit(pipeline)
 pipeline_run.wait_for_completion()
 ```
 
-A kódrészlet a Common Azure Machine Learning Objects, a, a `Workspace` `Datastore` , a [ComputeTarget](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py)és a () karakterrel kezdődik `Experiment` . Ezután a kód létrehozza a tárolni kívánt objektumokat `input_data` `output_data` . A a `input_data` [FileDataset](/python/api/azureml-core/azureml.data.filedataset?preserve-view=true&view=azure-ml-py) egy példánya, a `output_data` pedig a  [OutputFileDatasetConfig](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py)példánya. Az `OutputFileDatasetConfig` alapértelmezett viselkedés a kimenet másolása az `workspaceblobstore` adattárba az elérési út alatt `/dataset/{run-id}/{output-name}` , ahol a a `run-id` Futtatás azonosítója, és `output-name` egy automatikusan generált érték, ha a fejlesztő nem adja meg.
+A kódrészlet a Common Azure Machine Learning Objects, a, a `Workspace` `Datastore` , a [ComputeTarget](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py)és a () karakterrel kezdődik `Experiment` . Ezután a kód létrehozza a tárolni kívánt objektumokat `input_data` `prepped_data_path` . A a `input_data` [FileDataset](/python/api/azureml-core/azureml.data.filedataset?preserve-view=true&view=azure-ml-py) egy példánya, a `prepped_data_path` pedig a  [OutputFileDatasetConfig](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py)példánya. Az `OutputFileDatasetConfig` alapértelmezett viselkedés a kimenet másolása az `workspaceblobstore` adattárba az elérési út alatt `/dataset/{run-id}/{output-name}` , ahol a a `run-id` Futtatás azonosítója, és `output-name` egy automatikusan generált érték, ha a fejlesztő nem adja meg.
 
-A tömb `steps` egyetlen elemet `PythonScriptStep` tartalmaz, amely az adatobjektumokat fogja használni, és futtatja a parancsot `compute_target` . Ezután a kód maga hozza létre az `Pipeline` objektumot, és átadja a munkaterületet és a Steps tömböt. Az `experiment.submit(pipeline)` Azure ml-folyamat futtatásának megkezdésére irányuló hívás. A `wait_for_completion()` folyamat befejeződéséig a blokkoló hívás. 
+Az adatelőkészítési kód (nem látható), a tagolt fájlokat írja a következőre: `prepped_data_path` . Az adatok előkészítési lépésének kimeneteit `prepped_data` a betanítási lépésnek megfelelően adja át a rendszer. 
+
+A tömb `steps` a következő két `PythonScriptStep` s-t tartalmazza: `dataprep_step` és `train_step` . A Azure Machine Learning elemzi az adatfüggőséget, `prepped_data` és korábban futtatja azt `dataprep_step` `train_step` . 
+
+Ezután a kód maga hozza létre az `Pipeline` objektumot, és átadja a munkaterületet és a Steps tömböt. Az `experiment.submit(pipeline)` Azure ml-folyamat futtatásának megkezdésére irányuló hívás. A `wait_for_completion()` folyamat befejeződéséig a blokkoló hívás. 
 
 Ha többet szeretne megtudni a folyamat adataihoz való csatlakoztatásáról, tekintse meg az [adathozzáférés a Azure Machine Learningban](concept-data.md) és az adatáthelyezés a következőbe: [ml-folyamat lépései (Python)](how-to-move-data-in-out-of-pipelines.md)című cikk adatait. 
 
@@ -145,7 +154,7 @@ A gépi tanulási munkafolyamatok folyamatainak használatának fő előnyei a k
 | **Modularitás** | Az érintett területek elkülönítése és a változások elkülönítése lehetővé teszi, hogy a szoftverek gyorsabb ütemben, magasabb színvonalú minőségben fejlődjenek. | 
 |**Együttműködés**|A folyamatok lehetővé teszik az adatszakértők számára, hogy működjenek együtt a gépi tanulási tervezési folyamat minden területén, miközben egyidejűleg dolgozhatnak a folyamat lépésein.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Machine Learning folyamatok egy hatékony létesítmény, amely megkezdi az értékek megvalósítását a korai fejlesztési fázisokban. Az érték növekszik, ahogy a csapat és a projekt növekszik. Ez a cikk azt ismerteti, hogyan vannak megadva a folyamatok a Azure Machine Learning Python SDK-val és az Azure-ban. Láthatta néhány egyszerű forráskódot, és bevezette néhányat a `PipelineStep` rendelkezésre álló osztályokba. Érdemes a Azure Machine Learning folyamatok használatát, valamint azt, hogy az Azure hogyan futtatja őket. 
 

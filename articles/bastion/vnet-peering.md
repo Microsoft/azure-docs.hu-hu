@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 472261666c86b666efd09c7217d12e5a795a50d9
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: f72a3739fac1e7d6afdafd2676ea6fcefe847b2a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094887"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710583"
 ---
 # <a name="vnet-peering-and-azure-bastion-preview"></a>VNet-peering és Azure Bastion (előzetes verzió)
 
@@ -40,9 +40,15 @@ Ez az ábra egy Azure-alapú megerősített telepítés architektúráját mutat
 **Lépéseket**
 
 1. Kapcsolódjon a Azure Portal bármely HTML5 böngésző használatával.
-1. Válassza ki a virtuális gépet, amelyhez csatlakozni szeretne.
-1. Az Azure Bastion zökkenőmentesen észlelhető a különböző VNet.
-1. Egyetlen kattintással megnyílik az RDP/SSH-munkamenet a böngészőben. Az RDP és az SSH egyidejű munkamenet-korlátaival kapcsolatban lásd: [RDP-és SSH-munkamenetek](bastion-faq.md#limits).
+2. Győződjön meg arról, hogy **olvasási** hozzáférése van a célként megadott virtuális géphez és a társ VNet. Emellett az alábbi erőforrásokra vonatkozó olvasási jogosultsággal keresse meg a következőt:
+   * Olvasó szerepkör a virtuális gépen.
+   * Olvasó szerepkör a hálózati adapteren a virtuális gép magánhálózati IP-címével.
+   * Olvasó szerepkör az Azure-beli megerősített erőforráson.
+   * A Virtual Network olvasó szerepköre (nem szükséges, ha nincs egyenrangú virtuális hálózat).
+3. Ha szeretné megtekinteni a megerősített adatpontot a **Kapcsolódás** legördülő menüben, ki kell választania az **előfizetéshez > globális előfizetéshez** hozzáférő köv-ket.
+4. Válassza ki a virtuális gépet, amelyhez csatlakozni szeretne.
+5. Az Azure Bastion zökkenőmentesen észlelhető a különböző VNet.
+6. Egyetlen kattintással megnyílik az RDP/SSH-munkamenet a böngészőben. Az RDP és az SSH egyidejű munkamenet-korlátaival kapcsolatban lásd: [RDP-és SSH-munkamenetek](bastion-faq.md#limits).
 
   :::image type="content" source="../../includes/media/bastion-vm-rdp/connect-vm.png" alt-text="Kapcsolódás":::
 

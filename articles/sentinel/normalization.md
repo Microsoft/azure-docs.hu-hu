@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: 35b3f4fe5703e9ce902553f992dfa44cea7db78f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5d847ac7ed805ad88bc24ed63896edc6f7596f9b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570456"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729776"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Normalizálás az Azure Sentinelben
 
@@ -130,7 +130,7 @@ Az egyes elemzők lehetőségre kattintva megtekintheti az általa használt mö
 > A mentett függvények az Azure Sentinel-táblázatok helyett bármilyen lekérdezésben használhatók, beleértve a vadászati és észlelési lekérdezéseket is. További információkért lásd:
 >
 > - [Adatnormalizálás az Azure Sentinel szolgáltatásban](normalization.md#parsers)
-> - [Szöveg elemzése Azure Monitor naplókban](/azure/azure-monitor/log-query/parse-text)
+> - [Szöveg elemzése Azure Monitor naplókban](../azure-monitor/logs/parse-text.md)
 >
 #### <a name="customizing-parsers"></a>Elemzők testreszabása
 

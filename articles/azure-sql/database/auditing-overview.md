@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 02/03/2021
+ms.date: 02/28/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 0e85019c8f02b8a4a97426d50a30d047b95378a1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8635e3590d4196e407dfc591a55ee240806358ed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572291"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691518"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>A Azure SQL Database és az Azure szinapszis Analytics naplózása
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -46,7 +46,9 @@ SQL Database naplózást a következőre használhatja:
 
 - A **Premium Storage** jelenleg **nem támogatott**.
 - **Azure Data Lake Storage Gen2 Storage-fiók** **hierarchikus névtere** jelenleg **nem támogatott**.
-- A naplózás engedélyezése szüneteltetett **Azure szinapszison** nem támogatott. A naplózás engedélyezéséhez folytassa az Azure szinapszis futtatásával.
+- A naplózás engedélyezése szüneteltetett **Azure szinapszison** nem támogatott. A naplózás engedélyezéséhez indítsa el ismét az Azure Synapse-et.
+- Az **Azure SZINAPSZIS SQL-készletek** naplózása **csak** az alapértelmezett naplózási műveleti csoportokat támogatja.
+
 
 #### <a name="define-server-level-vs-database-level-auditing-policy"></a><a id="server-vs-database-level"></a>A kiszolgáló szintű és az adatbázis szintű naplózási szabályzat meghatározása
 
@@ -73,9 +75,9 @@ Egy naplózási szabályzat definiálható egy adott adatbázishoz, vagy az Azur
 - Ha egy nem módosítható napló-tárolót szeretne konfigurálni a kiszolgáló vagy az adatbázis szintű naplózási eseményekhez, kövesse az [Azure Storage által biztosított utasításokat](../../storage/blobs/storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes). Győződjön meg arról, hogy a nem módosítható blob-tároló konfigurálásakor a **további Hozzáfűzések engedélyezése** jelölőnégyzet be van jelölve.
 - A naplókat egy VNet vagy tűzfal mögötti Azure Storage-fiókba is írhatja. A konkrét utasításokért lásd: [a VNet és a tűzfal mögötti Storage-fiókba való írás naplózása](audit-write-storage-account-behind-vnet-firewall.md).
 - A naplózási formátumra, a tárolási mappa hierarchiájának és az elnevezési konvenciók részleteiért tekintse meg a [blob naplózási napló formátumának referenciáját](./audit-log-format.md).
-- Az [írásvédett replikák](read-scale-out.md) naplózása automatikusan engedélyezve van. A tárolási mappák hierarchiájának, az elnevezési konvencióknak és a napló formátumának további részleteiért tekintse meg a [SQL Database a naplózási napló formátumát](audit-log-format.md).
+- A naplózás automatikusan engedélyezve van az [írásvédett replikákon](read-scale-out.md). A tárolási mappák hierarchiájának, az elnevezési konvencióknak és a napló formátumának további részleteiért tekintse meg a [SQL Database a naplózási napló formátumát](audit-log-format.md).
 - Az Azure AD-hitelesítés használatakor a sikertelen bejelentkezések rekordjai *nem* jelennek meg az SQL-naplóban. A sikertelen bejelentkezési naplózási rekordok megtekintéséhez látogasson el a [Azure Active Directory portálra](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md), amely az események adatait naplózza.
-- A bejelentkezéseket az átjáró irányítja ahhoz a konkrét példányhoz, ahol az adatbázis található.  A HRE-bejelentkezések esetében a hitelesítő adatok ellenőrzése megtörténik, mielőtt a felhasználóval bejelentkeznek a kért adatbázisba.  Meghibásodás esetén a kért adatbázis soha nem érhető el, ezért nem történik naplózás.  SQL-bejelentkezések esetén a hitelesítő adatokat a rendszer ellenőrzi a kért adatokon, így ebben az esetben naplózni lehet őket.  A sikeres bejelentkezések, amelyek nyilvánvalóan elérik az adatbázist, mindkét esetben naplózásra kerülnek.
+- A bejelentkezéseket az átjáró ahhoz a konkrét példányhoz irányítja, amelyben az adatbázis található.  AAD-bejelentkezések esetén a rendszer azt megelőzően ellenőrzi a hitelesítő adatokat, mielőtt megkísérelné a kért adatbázisba való bejelentkezést az adott felhasználóval.  Sikertelenség esetén a kért adatbázis elérése sosem történik meg, így naplózás sem zajlik.  SQL-bejelentkezések esetén a hitelesítő adatokat a rendszer ellenőrzi a kért adatokon, így ebben az esetben naplózni lehet őket.  A sikeres bejelentkezéseket, amelyek nyilvánvalóan elérik az adatbázist, mindkét esetben naplózza a rendszer.
 - A naplózási beállítások konfigurálása után bekapcsolhatja az új veszélyforrások észlelése funkciót, és konfigurálhatja az e-maileket a biztonsági riasztások fogadására. A veszélyforrások észlelése esetén a rendellenes adatbázis-tevékenységekkel kapcsolatos proaktív riasztásokat kap, amelyek potenciális biztonsági fenyegetéseket jelezhetnek. További információkért lásd: [a fenyegetések észlelésének első lépései](threat-detection-overview.md).
 
 ## <a name="set-up-auditing-for-your-server"></a><a id="setup-auditing"></a>A kiszolgáló naplózásának beállítása
@@ -151,7 +153,7 @@ Ha konfigurálni szeretné a naplók írását az Event hubhoz, válassza az **E
 
 Ha úgy döntött, hogy naplókat ír Azure Monitor naplókba:
 
-- Használja az [Azure Portalt](https://portal.azure.com). Nyissa meg a megfelelő adatbázist. Az adatbázis **naplózási** lapjának felső részén válassza a **naplók megtekintése** lehetőséget.
+- Használja az [Azure Portalt](https://portal.azure.com). Nyissa meg a vonatkozó adatbázist. Az adatbázis **naplózási** lapjának felső részén válassza a **naplók megtekintése** lehetőséget.
 
     ![naplók megtekintése](./media/auditing-overview/auditing-view-audit-logs.png)
 
@@ -175,13 +177,13 @@ Ha úgy döntött, hogy naplókat ír Azure Monitor naplókba:
 Ha úgy döntött, hogy naplókat ír az Event hub-ba:
 
 - Az Event hub naplózási adatainak felhasználása érdekében be kell állítania egy streamet az események felhasználásához, és egy célhoz kell írnia azokat. További információ: [Azure Event Hubs dokumentáció](../index.yml).
-- Az Event hub naplófájljai az [Apache Avro](https://avro.apache.org/) -események törzsében vannak rögzítve, és az UTF-8 kódolást használó JSON-formázással vannak tárolva. A naplók olvasásához használhat [Avro-eszközöket](../../event-hubs/event-hubs-capture-overview.md#use-avro-tools) vagy hasonló eszközöket, amelyek ezt a formátumot dolgozzák fel.
+- Az Event hub naplófájljai az [Apache Avro](https://avro.apache.org/) -események törzsében vannak rögzítve, és az UTF-8 kódolást használó JSON-formázással vannak tárolva. A naplók olvasásához [Avro-eszközöket](../../event-hubs/event-hubs-capture-overview.md#use-avro-tools) vagy a formátum feldolgozására képes hasonló eszközöket használhat.
 
 Ha úgy döntött, hogy naplózza a naplókat egy Azure Storage-fiókba, a naplók megtekintéséhez több módszer is használható:
 
 - A rendszer összesíti a naplókat a telepítés során kiválasztott fiókban. A naplókat a [Azure Storage Explorer](https://storageexplorer.com/)eszközzel is megismerheti. Az Azure Storage-ban a naplózási naplók a **sqldbauditlogs** nevű tárolóban lévő blob-fájlok gyűjteményében lesznek mentve. A tárolási mappák hierarchiájának, az elnevezési konvencióknak és a napló formátumának további részleteiért tekintse meg a [SQL Database a naplózási napló formátumát](./audit-log-format.md).
 
-- Használja az [Azure Portalt](https://portal.azure.com).  Nyissa meg a megfelelő adatbázist. Az adatbázis **naplózási** lapjának felső részén kattintson a **naplók megtekintése** elemre.
+- Használja az [Azure Portalt](https://portal.azure.com).  Nyissa meg a vonatkozó adatbázist. Az adatbázis **naplózási** lapjának felső részén kattintson a **naplók megtekintése** elemre.
 
     ![Képernyőkép: az adatbázis naplózási lapján Kiemelt naplók megtekintése gomb.](./media/auditing-overview/7_auditing_get_started_blob_view_audit_logs.png)
 

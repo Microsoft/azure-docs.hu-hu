@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 02/04/2021
-ms.openlocfilehash: 9136947767bffb7bea800cdd2a735794baf8f329
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.date: 02/22/2021
+ms.openlocfilehash: 887245bbbefa1c0232313b638203206b623d506b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007363"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729708"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Az Azure Sentinel újdonságai
 
@@ -29,6 +29,37 @@ A feljegyzett funkciók jelenleg előzetes verzióban érhetők el. Az [Azure el
 >
 > Ön is hozzájárulhat! Csatlakozzon hozzánk az [Azure Sentinel Threat Hunters GitHub-közösségében](https://github.com/Azure/Azure-Sentinel/wiki).
 > 
+
+## <a name="february-2021"></a>2021. február
+
+- [UEBA az entitások oldalán](#ueba-insights-in-the-entity-page)
+- [Javított incidensek keresése](#improved-incident-search)
+
+### <a name="ueba-insights-in-the-entity-page"></a>UEBA az entitások oldalán
+
+Az Azure Sentinel-entitások részletes oldalain [betekintési panel](identify-threats-with-entity-behavior-analytics.md#entity-insights)jelenik meg, amely az entitás viselkedési információit jeleníti meg, és segít a rendellenességek és a biztonsági fenyegetések gyors azonosításában.
+
+Ha engedélyezve van a [UEBA](ueba-enrichments.md), és legalább négy napos időkeretet választott ki, akkor ez a betekintő ablaktábla a következő új szakaszt is tartalmazza a UEBA-eredményekhez:
+
+|Section  |Leírás  |
+|---------|---------|
+|**UEBA-ismeretek**     | A rendellenes felhasználói tevékenységek összegzése: <br>-Földrajzi helyeken, eszközökön és környezeteken keresztül<br>– A felhasználók saját előzményeihez képest időbeli és gyakorisági horizonton keresztül <br>– A társak viselkedéséhez képest <br>-A szervezet viselkedéséhez képest     |
+|**Felhasználói partnerek biztonsági csoporttagság alapján**     |   Felsorolja az Azure AD biztonsági csoportok tagságán alapuló felhasználói partnereket, így biztosítva a biztonsági műveleti csapatok számára a hasonló engedélyekkel rendelkező más felhasználók listáját.  |
+|**Felhasználói hozzáférési engedélyek az Azure-előfizetéshez**     |     Megjeleníti a felhasználó hozzáférési engedélyeit az Azure-előfizetésekhez közvetlenül elérhető, vagy Azure AD-csoportokon/egyszerű szolgáltatásokon keresztül.   |
+|**A felhasználóval kapcsolatos veszélyforrás-mutatók**     |  A felhasználó tevékenységeiben szereplő IP-címekkel kapcsolatos ismert fenyegetések gyűjteményét listázza. A fenyegetéseket a fenyegetés típusa és családja sorolja fel, és a Microsoft fenyegetési intelligencia szolgáltatása gazdagítja őket.       |
+|     |         |
+
+### <a name="improved-incident-search"></a>Javított incidensek keresése
+
+Javítottuk az Azure Sentinel incidensek keresésének élményét, ami lehetővé teszi, hogy gyorsabban navigáljon az incidenseken keresztül, amikor egy adott fenyegetést vizsgál meg.
+
+Ha az Azure Sentinelben incidenseket keres, mostantól a következő incidensek közül választhat:
+
+- ID (Azonosító)
+- Cím
+- Termék
+- Tulajdonos
+- Címke
 
 ## <a name="january-2021"></a>2021. január
 
@@ -47,7 +78,7 @@ Az Azure Sentinel ütemezett elemzési szabály varázsló most a következő fe
 
 -   Egy bővíthető szerkesztési ablak, amely több képernyős területet biztosít a lekérdezés megtekintéséhez.
 -   A lekérdezés kódjában szereplő legfontosabb szavak kiemelése.
--   Kibontott automatikus kiegészítési támogatás.
+-   Bővített automatikus kiegészítés támogatása.
 -   Valós idejű lekérdezések érvényessége. A lekérdezésben szereplő hibák mostantól piros blokkként jelennek meg a görgetősávon, és a **szabály logikája** lap neve piros pont. Emellett a hibákkal rendelkező lekérdezések nem menthetők.
 
 További információ: [oktatóanyag: fenyegetések észlelése](tutorial-detect-threats-built-in.md).
@@ -57,7 +88,7 @@ Az Azure Sentinel mostantól támogatja az új az [. SecurityInsights](https://w
 
 Az az **. SecurityInsights** modul támogatja a közös Azure Sentinel-használati eseteket, például az incidensekkel való interakciót a szobrok, a súlyosság, a tulajdonos és így tovább, a megjegyzések és címkék hozzáadásával és könyvjelzők létrehozásával.
 
-Habár javasoljuk, hogy a CI/CD-folyamathoz [Azure Resource Manager-(ARM-)](/azure/azure-resource-manager/templates/) sablonokat használjon, az az **. SecurityInsights** modul az üzembe helyezés utáni feladatok esetében hasznos, és a SoC automationt célozza meg.  Például a SOC Automation tartalmazhatja az adatösszekötők konfigurálásának lépéseit, az elemzési szabályok létrehozását, illetve az Automation-műveletek az elemzési szabályokhoz való hozzáadását.
+Habár javasoljuk, hogy a CI/CD-folyamathoz [Azure Resource Manager-(ARM-)](../azure-resource-manager/templates/index.yml) sablonokat használjon, az az **. SecurityInsights** modul az üzembe helyezés utáni feladatok esetében hasznos, és a SoC automationt célozza meg.  Például a SOC Automation tartalmazhatja az adatösszekötők konfigurálásának lépéseit, az elemzési szabályok létrehozását, illetve az Automation-műveletek az elemzési szabályokhoz való hozzáadását.
 
 További információkért, beleértve az elérhető parancsmagok teljes listáját és leírását, a paraméterek leírását és a példákat lásd az az [. SecurityInsights PowerShell-dokumentációban](/powershell/module/az.securityinsights/).
 
@@ -85,7 +116,7 @@ Az Azure Sentinel mostantól támogatja a dedikált Log Analytics-fürtöket kö
 
 A dedikált fürtök lehetővé teszik olyan funkciók használatát, mint az ügyfél által felügyelt kulcsok, a kulcstároló, a kettős titkosítás és a több munkaterületre kiterjedő lekérdezések, ha ugyanazon a fürtön több munkaterülettel rendelkezik.
 
-További információ: [Azure monitor naplók dedikált fürtök](https://docs.microsoft.com/azure/azure-monitor/log-query/logs-dedicated-clusters).
+További információ: [Azure monitor naplók dedikált fürtök](../azure-monitor/logs/logs-dedicated-clusters.md).
 
 ### <a name="logic-apps-managed-identities"></a>Logic apps – felügyelt identitások
 
@@ -97,7 +128,7 @@ Az Azure Sentinel mostantól támogatja a felügyelt identitások használatát 
 
 További információkért lásd:
 
-- [Hitelesítés felügyelt identitással Azure Logic Apps](/azure/logic-apps/create-managed-service-identity)
+- [Hitelesítés felügyelt identitással Azure Logic Apps](../logic-apps/create-managed-service-identity.md)
 - [Az Azure Sentinel Logic Apps-összekötő dokumentációja](/connectors/azuresentinel) 
 
 ### <a name="improved-rule-tuning-with-the-analytics-rule-preview-graphs-public-preview"></a>Továbbfejlesztett szabályok finomhangolása az analitikai szabályok előzetes verziójának diagramjaival (nyilvános előzetes verzió)
@@ -151,18 +182,18 @@ Az Azure Sentinel a Log Analytics ügynök használatával eljuttatja az esemén
 > A Log Analytics ügynök más néven OMS-ügynök vagy a Microsoft monitoring Agent (MMA). 
 > 
 
-További információkért tekintse meg a [log Analytics dokumentációját](/azure/azure-monitor/platform/log-analytics-agent) és a [log Analytics ügynök kibocsátási megjegyzéseit](https://github.com/microsoft/OMS-Agent-for-Linux/releases).
+További információkért tekintse meg a [log Analytics dokumentációját](../azure-monitor/agents/log-analytics-agent.md) és a [log Analytics ügynök kibocsátási megjegyzéseit](https://github.com/microsoft/OMS-Agent-for-Linux/releases).
 ## <a name="november-2020"></a>2020. november
 
 - [A Logic Apps forgatókönyvek figyelése az Azure Sentinelben](#monitor-your-logic-apps-playbooks-in-azure-sentinel)
 - [Microsoft 365 Defender-összekötő (nyilvános előzetes verzió)](#microsoft-365-defender-connector-public-preview)
 ### <a name="monitor-your-logic-apps-playbooks-in-azure-sentinel"></a>A Logic Apps forgatókönyvek figyelése az Azure Sentinelben
 
-Az Azure Sentinel mostantól integrálva van az [Azure log apps](/azure/logic-apps/)szolgáltatással, amely segít a feladatok, az üzleti folyamatok és a munkafolyamatok ütemtervének, automatizálásának és összehangolásának előkészítésében.
+Az Azure Sentinel mostantól integrálva van az [Azure log apps](../logic-apps/index.yml)szolgáltatással, amely segít a feladatok, az üzleti folyamatok és a munkafolyamatok ütemtervének, automatizálásának és összehangolásának előkészítésében.
 
 Egy Azure-beli logikai alkalmazást használhat az Azure Sentinelben, amely egy incidens létrehozásakor automatikusan meghívható, illetve osztályozásakor és incidensek használata esetén is. 
 
-A forgatókönyvek állapotának, teljesítményének és felhasználásának betekintéséhez, beleértve a Azure Logic Apps-mel felvett adatokat is, egy forgatókönyvek **állapotának monitorozása** nevű [Azure-munkafüzetet](/azure/azure-monitor/platform/workbooks-overview) adtunk hozzá. 
+A forgatókönyvek állapotának, teljesítményének és felhasználásának betekintéséhez, beleértve a Azure Logic Apps-mel felvett adatokat is, egy forgatókönyvek **állapotának monitorozása** nevű [Azure-munkafüzetet](../azure-monitor/visualize/workbooks-overview.md) adtunk hozzá. 
 
 A forgatókönyvek **állapotának figyelése** munkafüzettel figyelheti a forgatókönyvek állapotát, vagy a sikeres vagy sikertelen futtatások mennyiségében megkeresheti a rendellenességeket. 
 
@@ -172,9 +203,9 @@ A forgatókönyvek **állapotának figyelésére szolgáló** munkafüzet mostan
 
 További információkért lásd:
 
-- [Logic Apps dokumentáció](/azure/logic-apps/monitor-logic-apps-log-analytics#set-up-azure-monitor-logs)
+- [Logic Apps dokumentáció](../logic-apps/monitor-logic-apps-log-analytics.md#set-up-azure-monitor-logs)
 
-- [Az Azure Monitor dokumentációja](/azure/azure-monitor/platform/activity-log#send-to-log-analytics-workspace)
+- [Az Azure Monitor dokumentációja](../azure-monitor/essentials/activity-log.md#send-to-log-analytics-workspace)
 
 ### <a name="microsoft-365-defender-connector-public-preview"></a>Microsoft 365 Defender-összekötő (nyilvános előzetes verzió)
  

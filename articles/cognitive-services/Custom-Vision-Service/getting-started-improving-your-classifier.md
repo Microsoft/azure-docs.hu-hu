@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 328bfe57c675d49aa951388e2808fcecfe8da8b5
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: ae0112292994fdcf88e80abff8ab52e5971cb0ed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100096531"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731085"
 ---
 # <a name="how-to-improve-your-custom-vision-model"></a>A Custom Vision-modell javítása
 
-Ebből az útmutatóból megtudhatja, hogyan javíthatja a Custom Vision Service modell minőségét. Az [osztályozó](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) vagy az [objektum-Kiderítő](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector) minősége függ az Ön által megadott címkézett adatok mennyiségétől, minőségétől és számától, valamint a teljes adatkészlet arányos mennyiségével. A megfelelő modellnek van egy kiegyensúlyozott betanítási adatkészlete, amely arra szolgál, hogy mi lesz elküldve. Egy ilyen modell kiépítésének folyamata iterációs jellegű. gyakori, hogy eltarthat néhány kört a képzéstől a várt eredmények eléréséhez.
+Ebből az útmutatóból megtudhatja, hogyan javíthatja a Custom Vision Service modell minőségét. Az [osztályozó](./getting-started-build-a-classifier.md) vagy az [objektum-Kiderítő](./get-started-build-detector.md) minősége függ az Ön által megadott címkézett adatok mennyiségétől, minőségétől és számától, valamint a teljes adatkészlet arányos mennyiségével. A megfelelő modellnek van egy kiegyensúlyozott betanítási adatkészlete, amely arra szolgál, hogy mi lesz elküldve. Egy ilyen modell kiépítésének folyamata iterációs jellegű. gyakori, hogy eltarthat néhány kört a képzéstől a várt eredmények eléréséhez.
 
 A következő általános minta a pontosabb modellek betanításához nyújt segítséget:
 

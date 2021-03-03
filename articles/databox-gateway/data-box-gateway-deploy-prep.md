@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 10/15/2020
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 40de216a9bcb173d9dfebf39d05fb9cb12579301
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: ceda5015770ad0b9898def181fa7199f119920db
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937343"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706095"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>Oktatóanyag: Felkészülés a Azure Data Box Gateway üzembe helyezésére
 
@@ -65,7 +65,7 @@ A virtuális eszköz üzembe helyezése előtt győződjön meg az alábbiakról
 - A gazdarendszernek képesnek kell lennie az alábbi erőforrásokat a virtuális Data Box-eszköz üzembe helyezésére elkülöníteni:
   
   - Legalább 4 virtuális processzor.
-  - Legalább 8 GB RAM.
+  - Legalább 8 GB RAM. Legalább 16 GB RAM használatát javasoljuk.
   - Egy hálózati adapter.
   - 250 GB-os operációsrendszer-lemez.
   - 2 TB-os virtuális lemez a rendszeradatok számára.
@@ -122,7 +122,7 @@ Data Box Gateway-erőforrás létrehozásához hajtsa végre a következő lép�
     |Beállítás  |Érték  |
     |---------|---------|
     |Név   |Az erőforrást azonosító valódi név.<br>A név 2 – 50 karakterből áll, és betűket, számokat és kötőjeleket tartalmaz. <br> A névnek betűvel vagy számmal kell kezdődnie és végződnie. |
-    |Régió  |Válassza ki azt a régiót, ahol üzembe szeretné helyezni az erőforrást. Válassza ki azt a földrajzi régiót, ahová az eszközt telepíteni szeretné. <br> Az összes olyan régió listájának megtekintéséhez, ahol az adatok alapátjáró/Azure Stack peremhálózati erőforrásai elérhetők, tekintse meg az [Azure-termékek régió alapján elérhetővé](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)tételeit. <br> A Azure Government az [Azure-régiókban](https://azure.microsoft.com/global-infrastructure/regions/) felsorolt összes kormányzati régió elérhető.|
+    |Region  |Válassza ki azt a régiót, ahol üzembe szeretné helyezni az erőforrást. Válassza ki azt a földrajzi régiót, ahová az eszközt telepíteni szeretné. <br> Az összes olyan régió listájának megtekintéséhez, ahol az adatok alapátjáró/Azure Stack peremhálózati erőforrásai elérhetők, tekintse meg az [Azure-termékek régió alapján elérhetővé](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)tételeit. <br> A Azure Government az [Azure-régiókban](https://azure.microsoft.com/global-infrastructure/regions/) felsorolt összes kormányzati régió elérhető.|
 
    Ezután válassza a **felülvizsgálat + létrehozás** lehetőséget a megrendelés áttekintéséhez.
 

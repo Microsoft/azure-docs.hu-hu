@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 48501a2796f4d826a20af559058490a14785b53e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0503f6910186b42bf381c662c7942e37c28bfdf0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84738634"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709512"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>A hálózati forgalom mintáinak megjelenítése a virtuális gépekről és a nyílt forráskódú eszközök használatával
 
@@ -25,7 +25,7 @@ A csomagok rögzítése olyan hálózati adatokkal rendelkezik, amelyek lehetőv
 
 Az Azure Network Watcher lehetővé teszi az adatok rögzítését azáltal, hogy elvégzi a csomagok rögzítését a hálózaton. Ez a cikk bemutatja, hogyan jelenítheti meg és elemezheti a CapAnalysis és a Network Watcher használatával betekintést a csomagokba.
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Eset
 
 Az Azure-beli virtuális gépen üzembe helyezett egyszerű webalkalmazások nyílt forráskódú eszközöket szeretnének használni a hálózati forgalom megjelenítéséhez, hogy gyorsan azonosítsák a folyamatok mintáit és az esetleges rendellenességeket. A Network Watcher segítségével beszerezheti a hálózati környezet csomagjainak rögzítését, és közvetlenül tárolhatja azt a Storage-fiókjában. A CapAnalysis ezután közvetlenül a Storage-blobból betöltheti a csomagokat, és megjelenítheti annak tartalmát.
 
@@ -47,7 +47,7 @@ A Network Watcher által készített csomagok rögzítését közvetlenül is fe
 
 A CapAnalysis mutató hivatkozás megadásakor ügyeljen arra, hogy egy SAS-tokent Fűzzön hozzá a Storage-blob URL-címéhez.  Ehhez navigáljon a megosztott hozzáférési aláíráshoz a Storage-fiókból, jelölje ki az engedélyezett engedélyeket, majd nyomja le az SAS létrehozása gombot a jogkivonat létrehozásához. Ezután hozzáfűzheti az SAS-tokent a csomag rögzítési tárolójának blob URL-címéhez.
 
-Az eredményül kapott URL-cím a következő URL-címhez hasonlóan fog kinézni: `http:\//storageaccount.blob.core.windows.net/container/location?addSASkeyhere`
+Az eredményül kapott URL-cím a következő URL-címhez hasonlóan fog kinézni: `http://storageaccount.blob.core.windows.net/container/location?addSASkeyhere`
 
 
 ### <a name="analyzing-packet-captures"></a>A csomagok rögzítésének elemzése
@@ -90,7 +90,7 @@ A CapAnalysis számos lehetőséget kínál a csomagok rögzítésének megjelen
 
 Network Watcher a csomag rögzítési funkciója lehetővé teszi a hálózati kriminalisztikai műveletek elvégzéséhez szükséges adatok rögzítését és a hálózati forgalom jobb megismerését. Ebben az esetben megmutatjuk, hogyan lehet a csomagok rögzítését Network Watcher egyszerűen integrálható a nyílt forráskódú vizualizációs eszközökkel. A nyílt forráskódú eszközökkel, például a CapAnalysis a csomagok rögzítésének megjelenítéséhez a részletes csomagok vizsgálatát és a hálózati forgalomon belüli trendek gyors felismerését teszi lehetővé.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a NSG folyamatokról, látogasson el a [NSG flow naplóiba](network-watcher-nsg-flow-logging-overview.md)
 

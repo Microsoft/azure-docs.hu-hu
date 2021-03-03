@@ -49,14 +49,16 @@
       href: how-to-configure-https-custom-domain.md
     - name: Útvonal társítása
       href: how-to-configure-route.md
+    - name: Szabálykészlet konfigurálása
+      href: how-to-configure-rule-set.md
     - name: Biztonsági fejlécek konfigurálása szabálykészlet segítségével
       href: how-to-add-security-headers.md
     - name: Gyorsítótár kiürítése
       href: how-to-cache-purge.md
     - name: Tömörítés
       href: how-to-compression.md
-    - name: Privát hivatkozás engedélyezése
-      href: how-to-enable-private-link.md
+    - name: Privát hivatkozás engedélyezése a webalkalmazáshoz
+      href: how-to-enable-private-link-web-app.md
     - name: Naplózás
       href: how-to-logs.md
     - name: Monitorozás és riasztások

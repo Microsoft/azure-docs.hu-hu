@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: a2348e0578b60c59fd7205037bd42d7bb1e84fae
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 6f677c8753f09e146d300186e19217568952b417
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98953699"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705398"
 ---
 # <a name="terminology-and-entity-changes-between-media-services-v2-and-v3"></a>Terminológia és entitások változása Media Services v2 és v3 között
 
@@ -56,10 +56,10 @@ Tekintse át Media Services v3 erőforrásokra alkalmazott elnevezési konvenci�
 | `Job`<!-- row --> | `Job` | Hozzon létre egy t a `Transform` létrehozása előtt `Job` . | Nem | Nem |
 | `JobTemplate`<!-- row --> | `Transform` | Használjon `Transform` helyette. Az átalakítás egy adott feladatokból származó különálló entitás, amely újra felhasználható. | Nem | Nem |
 | `Locator`<!-- row --> | `StreamingLocator` | <!--empty --> | Igen | Nem |
-| `MediaProcessor`<!-- row --> | <!-- empty --> | Ahelyett, hogy megkeresi a `MediaProcessor` nevet, használja a kívánt beállításkészletet az átalakítás definiálásához. A használt beállításkészlet határozza meg a rendszer által használt adathordozó-processzort. Lásd: kódolási témakörök a [forgatókönyv-alapú kódolásban](migrate-v-2-v-3-migration-scenario-based-encoding.md). <!--Probably needs a link to its own article so customers know Indexerv1 maps to AudioAnalyzerPreset in basic mode, etc.--> | No | NA (ReadOnly a v2-ben) |
+| `MediaProcessor`<!-- row --> | <!-- empty --> | Ahelyett, hogy megkeresi a `MediaProcessor` nevet, használja a kívánt beállításkészletet az átalakítás definiálásához. A használt beállításkészlet határozza meg a rendszer által használt adathordozó-processzort. Lásd: kódolási témakörök a [forgatókönyv-alapú kódolásban](migrate-v-2-v-3-migration-scenario-based-encoding.md). <!--Probably needs a link to its own article so customers know Indexerv1 maps to AudioAnalyzerPreset in basic mode, etc.--> | Nem | NA (ReadOnly a v2-ben) |
 | `NotificationEndPoint`<!-- row --> | <!--empty --> | A v3-as értesítések Azure Event Grid használatával kezelhetők. A `NotificationEndpoint` Event Grid előfizetés-regisztráció váltja fel, amely a kapott értesítések típusának konfigurációját is magában foglalja (a v2-ben a feladat `JobNotificationSubscription` , a `TaskNotificationSubscription` feladat és a telemetria kezelése `ComponentMonitoringSetting` ). A v2 telemetria Azure Event Grid és Azure Monitor között osztották fel, hogy illeszkedjenek a nagyobb Azure-ökoszisztémák fejlesztéséhez. | Nem | Nem |
 | `Program`<!-- row --> | `LiveOutput` | Az élő kimenetek mostantól a V3 API-ban lévő programokat cserélik le.  | Nem | Nem |
-| `StreamingEndpoint`<!-- row --> | `StreamingEndpoint` | A folyamatos átviteli végpontok elsődlegesek maradnak. Ezek a dinamikus csomagolás, a titkosítás és a HLS és a DASH tartalom továbbítására szolgálnak mind az élő, mind az igény szerinti folyamatos átvitelhez, vagy közvetlenül a forrástól, vagy a CDN-n keresztül. Az új funkciók közé tartozik a jobb Azure Monitor integráció és a diagramok támogatása. |  Igen | Yes |
+| `StreamingEndpoint`<!-- row --> | `StreamingEndpoint` | A folyamatos átviteli végpontok elsődlegesek maradnak. Ezek a dinamikus csomagolás, a titkosítás és a HLS és a DASH tartalom továbbítására szolgálnak mind az élő, mind az igény szerinti folyamatos átvitelhez, vagy közvetlenül a forrástól, vagy a CDN-n keresztül. Az új funkciók közé tartozik a jobb Azure Monitor integráció és a diagramok támogatása. |  Igen | Igen |
 | `Task`<!-- row --> | `JobOutput` | Lecserélte `JobOutput` (amely már nem különálló entitás az API-ban).  Lásd: kódolási témakörök a [forgatókönyv-alapú kódolásban](migrate-v-2-v-3-migration-scenario-based-encoding.md). | Nem | Nem |
 | `TaskTemplate`<!-- row --> | `TransformOutput` | Lecserélte `TransformOutput` (amely már nem különálló entitás az API-ban). Lásd: kódolási témakörök a [forgatókönyv-alapú kódolásban](migrate-v-2-v-3-migration-scenario-based-encoding.md). | Nem | Nem |
 | `Inputs`<!-- row --> | `Inputs` | A bemenetek és kimenetek jelenleg a feladatok szintjén vannak. Lásd: kódolási témakörök a [forgatókönyv-alapú kódolásban](migrate-v-2-v-3-migration-scenario-based-encoding.md) | Nem | Nem |
@@ -73,7 +73,7 @@ Tekintse át Media Services v3 erőforrásokra alkalmazott elnevezési konvenci�
 | **Kódolás** <!--new row --> |||
 | Kódolási átviteli sebesség <!--new row --> | átviteli sebesség (Kbit/s): 128 (Kbit/s)| bitek másodpercenként: ex: 128000 (BITS/másodperc)|
 | DRM-FairPlay kódolása <!--new row --> | Media Services v2-ben megadható az inicializálási vektor (IV). | Media Services v3-as verzióban nem adható meg a FairPlay IV.|
-| Prémium szintű kódoló <!--new row --> | Prémium szintű kódoló és örökölt indexelő| A [prémium szintű kódoló](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset) és az örökölt [Media Analytics-processzorok](https://docs.microsoft.com/azure/media-services/previous/legacy-components) (Azure Media Services indexelő 2 előzetes, Face redactor stb.) nem érhetők el a v3-n keresztül. A hangcsatorna-hozzárendelés támogatását a standard kódolóhoz egészítették ki.  [A Media Services kódolással kapcsolatos dokumentációban](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json)lásd: hang.  | Lásd: kódolási témakörök a [forgatókönyv-alapú kódolásban](migrate-v-2-v-3-migration-scenario-based-encoding.md) |
+| Prémium szintű kódoló <!--new row --> | Prémium szintű kódoló és örökölt indexelő| A [prémium szintű kódoló](../previous/media-services-encode-asset.md) és az örökölt [Media Analytics-processzorok](../previous/legacy-components.md) (Azure Media Services indexelő 2 előzetes, Face redactor stb.) nem érhetők el a v3-n keresztül. A hangcsatorna-hozzárendelés támogatását a standard kódolóhoz egészítették ki.  [A Media Services kódolással kapcsolatos dokumentációban](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json)lásd: hang.  | Lásd: kódolási témakörök a [forgatókönyv-alapú kódolásban](migrate-v-2-v-3-migration-scenario-based-encoding.md) |
 | **Átalakítások és feladatok** <!--new row -->|||
 | A feladatok alapú feldolgozás HTTPS <!--new row --> |<!-- empty -->| A fájl alapú feladatok feldolgozásához a bemenetként HTTPS URL-címet használhat. Nem kell már az Azure-ban tárolt tartalmat használnia, és nem kell eszközöket létrehoznia. |
 | ARM-sablonok a feladatokhoz <!--new row --> | Az ARM-sablonok nem léteznek a v2-ben. | Az átalakító használatával újrafelhasználható konfigurációk hozhatók létre, Azure Resource Manager sablonok hozhatók létre, és a feldolgozási beállítások elkülöníthetők több ügyfél vagy bérlő között. |

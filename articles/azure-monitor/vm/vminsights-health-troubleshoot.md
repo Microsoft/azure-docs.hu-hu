@@ -1,20 +1,20 @@
 ---
-title: Azure Monitor for VMs Guest Health (előzetes verzió) – problémamegoldás
-description: Ismerteti azokat a hibaelhárítási lépéseket, amelyek a Azure Monitor for VMs állapotával kapcsolatos problémák esetén elvégezhető.
+title: A virtuális gépekkel kapcsolatban észlelt vendég állapotának hibáinak megoldása (előzetes verzió)
+description: Ismerteti azokat a hibaelhárítási lépéseket, amelyek a virtuális gépek elemzésekor felmerülő problémák esetén is elvégezhető.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/08/2020
-ms.openlocfilehash: da8097341f8499be4e28fa37c06d963d057966ea
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6ae0a9e20d6aad7200729419ece333d80e652c3c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100614865"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703919"
 ---
-# <a name="troubleshoot-azure-monitor-for-vms-guest-health-preview"></a>Azure Monitor for VMs Guest Health (előzetes verzió) – problémamegoldás
-Ez a cikk azokat a hibaelhárítási lépéseket ismerteti, amelyeket a Azure Monitor for VMs állapotával kapcsolatos problémák esetén is végrehajthat.
+# <a name="troubleshoot-vm-insights-guest-health-preview"></a>A virtuális gépekkel kapcsolatban észlelt vendég állapotának hibáinak megoldása (előzetes verzió)
+Ez a cikk azokat a hibaelhárítási lépéseket ismerteti, amelyekkel a virtuális gépek elemzésekor felmerülő problémák merülhetnek fel.
 
 ## <a name="error-message-that-no-data-is-available"></a>Hibaüzenet, amely nem érhető el. 
 
@@ -34,7 +34,7 @@ Ellenőrizze, hogy a Azure Monitor ügynök bővítménye és a vendég virtuál
 ![Virtuálisgép-bővítmények](media/vminsights-health-troubleshoot/extensions.png)
 
 ### <a name="verify-the-system-assigned-identity-is-enabled-on-the-virtual-machine"></a>Ellenőrizze, hogy engedélyezve van-e a rendszerhez rendelt identitás a virtuális gépen
-Ellenőrizze, hogy a rendszerhez rendelt identitás engedélyezve van-e a virtuális gépen. Válassza az **identitás** lehetőséget a virtuális gép menüjében a Azure Portal. 
+Ellenőrizze, hogy a rendszerhez rendelt identitás engedélyezve van-e a virtuális gépen. Válassza az **identitás** lehetőséget a virtuális gép menüjében a Azure Portal. Ha a felhasználó által felügyelt identitás engedélyezve van, a rendszer által felügyelt identitás állapotától függetlenül Azure Monitor ügynök nem fog tudni kommunikálni a konfigurációs szolgáltatással, és a vendég állapotának kiterjesztése nem fog működni.
 
 ![Rendszerhez rendelt identitás](media/vminsights-health-troubleshoot/system-identity.png)
 
@@ -48,4 +48,4 @@ Ez a hiba azt jelzi, hogy a **Microsoft. WorkloadMonitor** erőforrás-szolgált
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [A Azure Monitor for VMs vendég állapotának áttekintése](vminsights-health-overview.md)
+- [A VM-információk vendég állapotának áttekintése](vminsights-health-overview.md)

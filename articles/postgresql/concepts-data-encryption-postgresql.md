@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: d9624fd899649f4e54c5bd509ed5961b862632dd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 66faa2b3e6d24c264e2fe26ab42eeaffd48384f6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581585"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732836"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Egyetlen kiszolgálóból álló adattitkosítás Azure Database for PostgreSQL ügyfél által felügyelt kulccsal
 
@@ -60,7 +60,7 @@ Ha a kiszolgáló a Key vaultban tárolt ügyfél által felügyelt kulcs haszn�
 A Key Vault konfigurálásának követelményei a következők:
 
 * Key Vault és Azure Database for PostgreSQL egyetlen kiszolgálónak ugyanahhoz a Azure Active Directory (Azure AD) bérlőhöz kell tartoznia. A több-bérlős Key Vault és a kiszolgálói interakciók nem támogatottak. A Key Vault erőforrás áthelyezéséhez ezt követően újra kell konfigurálnia az adattitkosítást.
-* A Key vaultot a törölt tárolók megőrzéséhez 90 nappal kell beállítani. Ha a meglévő kulcstartó kisebb számmal lett konfigurálva, létre kell hoznia egy új kulcstartót, mivel a létrehozás után nem módosítható.
+* A Key vaultot a törölt tárolók megtartásához 90 nappal kell beállítani. Ha a meglévő kulcstartó kisebb számmal lett konfigurálva, létre kell hoznia egy új kulcstartót, mivel a létrehozás után nem módosítható.
 * Az adatvesztés elleni védelem érdekében engedélyezze a Soft delete funkciót a Key vaultban, ha véletlen kulcs (vagy Key Vault) törlése történik. A Soft-Deleted erőforrásokat 90 napig őrzi meg a rendszer, hacsak a felhasználó addig nem helyreállítja vagy törli őket. A helyreállítás és törlés műveletekhez saját engedélyek tartoznak egy Key Vault hozzáférési házirendben. A Soft-delete funkció alapértelmezés szerint ki van kapcsolva, de a PowerShell vagy az Azure CLI használatával is engedélyezhető (vegye figyelembe, hogy nem engedélyezheti a Azure Portal). 
 * A törlési védelem engedélyezése a törölt tárolók és tároló objektumok kötelező megőrzési időtartamának betartatásához
 * Az egyedi felügyelt identitás használatával adja meg az Azure Database for PostgreSQL egyetlen kiszolgáló hozzáférését a Key vaulthoz a Get, a wrapKey és a unwrapKey engedélyekkel. A Azure Portal az egyedi "szolgáltatás" identitás automatikusan létrejön, ha az adattitkosítás engedélyezve van a PostgreSQL-kiszolgálón. A Azure Portal használatakor részletes útmutatásért lásd: [Azure Database for PostgreSQL az egyetlen Azure Portal kiszolgáló adattitkosítása](howto-data-encryption-portal.md) .

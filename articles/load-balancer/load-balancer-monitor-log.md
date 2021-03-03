@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 7a456057bc088264cefb91be9f3e5069b29474a1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 36937ace82d2bd8d4317f90a375042de10fe719f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596810"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709818"
 ---
 # <a name="azure-monitor-logs-for-azure-standard-load-balancer"></a>Azure Monitor naplók az Azure standard Load Balancer
 
@@ -74,7 +74,7 @@ A tevékenységnaplózás automatikusan engedélyezve van minden Resource Manage
 
 ## <a name="view-and-analyze-the-activity-log"></a>A tevékenységnapló megtekintése és elemzése
 
-A rendszer alapértelmezés szerint létrehozza a tevékenység naplóját. A [cikk utasításait](../azure-monitor/platform/activity-log.md)követve beállíthatja, hogy az előfizetési szinten exportálható legyen. További információ ezekről a naplókról: a [tevékenység naplóinak megtekintése az erőforrásokkal kapcsolatos műveletek figyelése](../azure-resource-manager/management/view-activity-logs.md) című cikkben.
+A rendszer alapértelmezés szerint létrehozza a tevékenység naplóját. A [cikk utasításait](../azure-monitor/essentials/activity-log.md)követve beállíthatja, hogy az előfizetési szinten exportálható legyen. További információ ezekről a naplókról: a [tevékenység naplóinak megtekintése az erőforrásokkal kapcsolatos műveletek figyelése](../azure-resource-manager/management/view-activity-logs.md) című cikkben.
 
 A következő módszerek bármelyikével megtekintheti és elemezheti a tevékenység naplójának adatai:
 
@@ -113,4 +113,4 @@ A Azure Load Balancer metrika-naplók exportálási funkciója a következő kor
 
 ## <a name="next-steps"></a>Következő lépések
 * [Tekintse át a terheléselosztó elérhető mérőszámait](./load-balancer-standard-diagnostics.md)
-* [Lekérdezések létrehozása és tesztelése a következő Azure Monitor utasítások alapján](../azure-monitor/log-query/log-query-overview.md)
+* [Lekérdezések létrehozása és tesztelése a következő Azure Monitor utasítások alapján](../azure-monitor/logs/log-query-overview.md)

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 96b9754908f437ccf81e002e9e9dd17af0bab4e3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 46004d81756809958e359c2a0b72c143599c2853
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019075"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706758"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Ismerje meg, hogy a LUIS-alkalmazás milyen jó hosszúságú kimondott szöveg
 
@@ -54,7 +54,7 @@ Végezze el az alábbi példát a hosszúságú kimondott szöveg:
 |Szeretnék beolvasni egy számítógépet, hogyan tudok?|
 |Mikor lehet a számítógépem?|
 
-A "számítógép" alapvető kifejezés nem változtatható meg. Használjon olyan alternatívákat, mint az asztali számítógép, a laptop, a munkaállomás vagy akár a gép. A LUIS intelligens módon kikövetkeztetheti a szinonimákat a kontextusból, de ha hosszúságú kimondott szöveg hoz létre a betanításhoz, mindig érdemes megváltoznia.
+A fő kifejezés itt, a *számítógép*, nem változtatható meg. Használjon olyan alternatívákat, mint az asztali számítógép, a laptop, a munkaállomás vagy akár a gép. A LUIS intelligens módon kikövetkeztetheti a szinonimákat a kontextusból, de ha hosszúságú kimondott szöveg hoz létre a betanításhoz, mindig érdemes megváltoznia.
 
 ## <a name="example-utterances-in-each-intent"></a>Példa hosszúságú kimondott szöveg az egyes leképezésekben
 
@@ -138,7 +138,7 @@ Ha a Word Choice vagy a Word megállapodás megegyezik, de nem ugyanazt a dolgot
 
 A következő hosszúságú kimondott szöveg a szó `fair` egy homográfia. A helyesírása ugyanaz, de a jelentése eltérő:
 
-|Kimondott szöveg|
+|Beszédelem|
 |--|
 |Milyen megyei vásárok történnek a Seattle területén ezen a nyáron?|
 |A Seattle felülvizsgálati vásár jelenlegi minősítése?|

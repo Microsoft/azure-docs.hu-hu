@@ -4,19 +4,21 @@ description: Azure Security teljesítményteszt v2 hálózati biztonság
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4c87dd905ae842647e7ec2e365abf450caf352b0
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: fbe71b0ae7bf711d740cbba38c84b68de553f031
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369327"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698552"
 ---
 # <a name="security-control-v2-network-security"></a>Security Control v2: hálózati biztonság
 
 A hálózati biztonság magában foglalja az Azure-hálózatok biztonságossá tételéhez és védelméhez szükséges vezérlőket. Ez magában foglalja a virtuális hálózatok biztonságossá tételét, a magánhálózati kapcsolatok létrehozását, a külső támadások megelőzését és enyhítését, valamint a DNS biztonságossá tételét.
+
+A megfelelő beépített Azure Policy megjelenítéséhez tekintse meg [Az Azure biztonsági teljesítményteszt szabályozási megfelelőségének beépített kezdeményezésének részleteit: hálózati biztonság](../../governance/policy/samples/azure-security-benchmark#network-security)
 
 ## <a name="ns-1-implement-security-for-internal-traffic"></a>NS-1: a belső forgalom biztonságának megvalósítása
 
@@ -24,9 +26,9 @@ A hálózati biztonság magában foglalja az Azure-hálózatok biztonságossá t
 |--|--|--|--|
 | NS-1 | 9,2, 9,4, 14,1, 14,2, 14,3 | AC-4, CA-3, SC-7 |
 
-Győződjön meg arról, hogy az összes Azure-beli virtuális hálózat olyan vállalati szegmentálási elvet követ, amely az üzleti kockázatokhoz igazodik. A szervezet számára nagyobb kockázatot jelentő rendszereknek el kell különíteni a saját virtuális hálózatán belül, és megfelelően védeni kell őket egy hálózati biztonsági csoporttal (NSG) és/vagy Azure Firewallával. 
+Győződjön meg arról, hogy az összes Azure-beli virtuális hálózat olyan vállalati szegmentálási elvet követ, amely az üzleti kockázatokhoz igazodik. A szervezet számára nagyobb kockázatot jelentő rendszereknek el kell különíteni a saját virtuális hálózatán belül, és megfelelően védeni kell őket egy hálózati biztonsági csoporttal (NSG) és/vagy Azure Firewallával.
 
-Az alkalmazások és a vállalati szegmentálási stratégia alapján korlátozhatja vagy engedélyezheti a belső erőforrások közötti forgalmat a hálózati biztonsági csoport szabályai alapján. A meghatározott, jól definiált alkalmazások (például egy 3 rétegű alkalmazás) esetében ez lehet egy nagyon biztonságos "megtagadás alapértelmezés szerint, kivétel" módszer. Előfordulhat, hogy ez nem jól méretezhető, ha sok alkalmazás és végpont kommunikál egymással. A Azure Firewall olyan helyzetekben is használhatja, ahol a központi felügyelet nagyszámú vállalati szegmensben vagy küllőn (egy sugaras vagy küllős topológiában) szükséges. 
+Az alkalmazások és a vállalati szegmentálási stratégia alapján korlátozhatja vagy engedélyezheti a belső erőforrások közötti forgalmat a hálózati biztonsági csoport szabályai alapján. A meghatározott, jól definiált alkalmazások (például egy 3 rétegű alkalmazás) esetében ez lehet egy nagyon biztonságos "megtagadás alapértelmezés szerint, kivétel" módszer. Előfordulhat, hogy ez nem jól méretezhető, ha sok alkalmazás és végpont kommunikál egymással. A Azure Firewall olyan helyzetekben is használhatja, ahol a központi felügyelet nagyszámú vállalati szegmensben vagy küllőn (egy sugaras vagy küllős topológiában) szükséges.
 
 Azure Security Center adaptív hálózati korlátozással olyan hálózati biztonsági csoport konfigurációit ajánlhatja, amelyek korlátozzák a portokat és a forrás IP-címeket a külső hálózati forgalmi szabályokra való hivatkozás alapján.
 
@@ -44,9 +46,9 @@ Az Azure Sentinel használatával felderítheti az örökölt nem biztonságos p
 
 **Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
+- [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)     
+- [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Alkalmazások biztonsága és DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -56,11 +58,11 @@ Az Azure Sentinel használatával felderítheti az örökölt nem biztonságos p
 |--|--|--|--|
 | NS – 2 | N/A | CA-3, AC-17, MA-4 |
 
-Az Azure ExpressRoute vagy az Azure virtual private Network (VPN) használatával privát kapcsolatokat hozhat létre az Azure-adatközpontok és a helyszíni infrastruktúra között egy közös elhelyezésű környezetben. A ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át, így megbízhatóbbak, gyorsabbak és kevesebb késéssel rendelkeznek, mint a szokásos internetes kapcsolatok. Pont – hely típusú VPN-és helyek közötti VPN esetén a VPN-beállítások és az Azure ExpressRoute bármely kombinációja segítségével a helyszíni eszközöket vagy hálózatokat egy virtuális hálózathoz is összekapcsolhatja.
+Az Azure ExpressRoute vagy az Azure virtual private Network (VPN) használatával privát kapcsolatokat hozhat létre az Azure-adatközpontok és a helyszíni infrastruktúra között egy közös elhelyezésű környezetben. A ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át, így megbízhatóbbak, gyorsabbak és kevesebb késéssel rendelkeznek, mint a szokásos internetkapcsolatok. Pont – hely típusú VPN-és helyek közötti VPN esetén a VPN-beállítások és az Azure ExpressRoute bármely kombinációja segítségével a helyszíni eszközöket vagy hálózatokat egy virtuális hálózathoz is összekapcsolhatja.
 
-Ha két vagy több virtuális hálózatot szeretne összekapcsolni az Azure-ban, használja a virtuális hálózati társ-vagy magánhálózati kapcsolatot. A kiszolgált virtuális hálózatok közötti hálózati forgalom magán, és az Azure-beli gerinces hálózaton marad. 
+Ha két vagy több virtuális hálózatot szeretne összekapcsolni az Azure-ban, használja a virtuális hálózati társ-vagy magánhálózati kapcsolatot. A kiszolgált virtuális hálózatok közötti hálózati forgalom magán, és az Azure-beli gerinces hálózaton marad.
 
-- [A ExpressRoute kapcsolati modelljei](../../expressroute/expressroute-connectivity-models.md) 
+- [A ExpressRoute kapcsolati modelljei](../../expressroute/expressroute-connectivity-models.md)
 
 - [Az Azure VPN áttekintése](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
 
@@ -72,11 +74,11 @@ Ha két vagy több virtuális hálózatot szeretne összekapcsolni az Azure-ban,
 
 **Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
+- [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)    
+- [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-- [Alkalmazások biztonsága és DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+- [Alkalmazások biztonsága és DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 ## <a name="ns-3-establish-private-network-access-to-azure-services"></a>NS-3: Privát hálózati hozzáférés létesítése Azure-szolgáltatásokhoz
 
@@ -84,9 +86,9 @@ Ha két vagy több virtuális hálózatot szeretne összekapcsolni az Azure-ban,
 |--|--|--|--|
 | NS-3 | 14,1 | AC-4, CA-3, SC-7 |
 
-Az Azure privát hivatkozásával lehetővé teheti az Azure-szolgáltatásokhoz való privát hozzáférést a virtuális hálózatokról az Internet átlépése nélkül. Olyan helyzetekben, amikor az Azure Private-hivatkozás még nem érhető el, használja az Azure Virtual Network szolgáltatás-végpontokat.  Az Azure Virtual Network Service-végpontok biztonságos hozzáférést biztosítanak a szolgáltatásokhoz az Azure gerinces hálózaton keresztül optimalizált útvonalon keresztül.  
+Az Azure privát hivatkozásával lehetővé teheti az Azure-szolgáltatásokhoz való privát hozzáférést a virtuális hálózatokról az Internet átlépése nélkül. Olyan helyzetekben, amikor az Azure Private-hivatkozás még nem érhető el, használja az Azure Virtual Network szolgáltatás-végpontokat. Az Azure Virtual Network Service-végpontok biztonságos hozzáférést biztosítanak a szolgáltatásokhoz az Azure gerinces hálózaton keresztül optimalizált útvonalon keresztül.
 
-Az Azure-szolgáltatások által kínált hitelesítés és adatforgalmi biztonság mellett a privát hozzáférés további védelmet nyújt. 
+A privát hozzáférés az Azure-szolgáltatások által kínált hitelesítéssel és adatforgalommal kapcsolatos további védelmi részletes mérték.
 
 - [Az Azure privát hivatkozásának megismerése](../../private-link/private-link-overview.md)
 
@@ -96,9 +98,9 @@ Az Azure-szolgáltatások által kínált hitelesítés és adatforgalmi biztons
 
 **Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
+- [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
+- [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Alkalmazások biztonsága és DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -111,10 +113,10 @@ Az Azure-szolgáltatások által kínált hitelesítés és adatforgalmi biztons
 Az Azure-erőforrások védelmet nyújthatnak a külső hálózatokból érkező támadások ellen, beleértve az elosztott szolgáltatásmegtagadási (DDoS) támadásokat, az alkalmazás-specifikus támadásokat, valamint a kéretlen és potenciálisan kártékony internetes forgalmat. Az Azure a következő natív képességeket tartalmazza:
 -   A Azure Firewall használatával védelmet biztosíthat az alkalmazások és szolgáltatások számára az internetről és más külső helyekről származó, potenciálisan rosszindulatú forgalom ellen. 
 
--   A webalkalmazási tűzfal (WAF) képességei az Azure Application Gateway, az Azure bejárati ajtó és az Azure Content Delivery Network (CDN) segítségével védik az alkalmazásokat, szolgáltatásokat és API-kat az alkalmazási rétegbeli támadásokkal szemben. 
+-   A webalkalmazási tűzfal (WAF) képességei az Azure Application Gateway, az Azure bejárati ajtó és az Azure Content Delivery Network (CDN) segítségével védik az alkalmazásokat, szolgáltatásokat és API-kat az alkalmazási rétegbeli támadásokkal szemben.
 
--   Az adatvédelmet a DDoS-támadások ellen biztosíthatja az Azure-beli virtuális hálózatokon a DDoS standard szintű védelem engedélyezésével. 
--   A Azure Security Center használatával azonosíthatja a fentiekkel kapcsolatos hibás konfigurációs kockázatokat. 
+-   Az adatvédelmet a DDoS-támadások ellen biztosíthatja az Azure-beli virtuális hálózatokon a DDoS standard szintű védelem engedélyezésével.
+-   A Azure Security Center használatával azonosíthatja a fentiekkel kapcsolatos hibás konfigurációs kockázatokat.
 
 - [Azure Firewall dokumentáció](../../firewall/index.yml)
 
@@ -128,7 +130,7 @@ Az Azure-erőforrások védelmet nyújthatnak a külső hálózatokból érkező
 
 - [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+- [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Alkalmazások biztonsága és DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -138,7 +140,7 @@ Az Azure-erőforrások védelmet nyújthatnak a külső hálózatokból érkező
 |--|--|--|--|
 | NS-5 | 12,6, 12,7 | SI-4 |
 
-Azure Firewall veszélyforrások felderítésére szolgáló szűréssel riasztást használhat, és/vagy blokkolhatja az ismert kártékony IP-címekre és tartományokra irányuló, illetve onnan érkező forgalmat. Az IP-címek és -tartományok forrása a Microsoft veszélyforrás-felderítési hírcsatornája. Ha a hasznos adatok vizsgálatára van szükség, egy külső gyártótól származó behatolás-észlelési/beléptetési megakadályozó rendszer (AZONOSÍTÓk/IP-címek) üzembe helyezése az Azure Marketplace-en a hasznos adatok ellenőrzésére Másik lehetőségként a gazdagép-alapú AZONOSÍTÓk/IP-címek vagy a gazdagép-alapú végpontok észlelése és válasza (EDR) megoldást is használhat hálózati AZONOSÍTÓk/IP-címek helyett vagy ahelyett.  
+Azure Firewall veszélyforrások felderítésére szolgáló szűréssel riasztást használhat, és/vagy blokkolhatja az ismert kártékony IP-címekre és tartományokra irányuló, illetve onnan érkező forgalmat. Az IP-címek és -tartományok forrása a Microsoft veszélyforrás-felderítési hírcsatornája. Ha szükség van a hasznos adatok vizsgálatára, az Azure Marketplace-en üzembe helyezheti az adattartalom-ellenőrzési képességekkel rendelkező harmadik féltől származó behatolás-észlelési/Behatolás-megelőzési rendszereket (AZONOSÍTÓk/IP-címek Másik lehetőségként a gazdagép-alapú AZONOSÍTÓk/IP-címek vagy a gazdagép-alapú végpontok észlelése és válasza (EDR) megoldást is használhat hálózati AZONOSÍTÓk/IP-címek helyett vagy ahelyett.
 
 Megjegyzés: Ha rendelkezik az AZONOSÍTÓk/IP-címek használatára vonatkozó szabályozási vagy egyéb követelményekkel, ügyeljen arra, hogy a rendszer mindig hangolja a magas színvonalú riasztásokat az SIEM-megoldáshoz. 
 
@@ -146,17 +148,17 @@ Megjegyzés: Ha rendelkezik az AZONOSÍTÓk/IP-címek használatára vonatkozó 
 
 - [Az Azure Marketplace harmadik féltől származó azonosító képességeket is tartalmaz](https://azuremarketplace.microsoft.com/marketplace?search=IDS)
 
-- [Microsoft Defender ATP EDR-képesség](/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
+- [A Microsoft Defender for Endpoint funkció](/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
 
 **Felelősség**: Ügyfél
 
 **Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
+- [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
+- [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-- [Alkalmazások biztonsága és DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+- [Alkalmazások biztonsága és DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 ## <a name="ns-6-simplify-network-security-rules"></a>NS-6: a hálózati biztonsági szabályok egyszerűsítése
 
@@ -164,7 +166,7 @@ Megjegyzés: Ha rendelkezik az AZONOSÍTÓk/IP-címek használatára vonatkozó 
 |--|--|--|--|
 | NS-6 | 1.5 | IA – 4 |
 
-Egyszerűsítse a hálózati biztonsági szabályokat a szolgáltatási címkék és az alkalmazás-biztonsági csoportok (ASG-EK) kihasználásával. 
+Egyszerűsítse a hálózati biztonsági szabályokat a szolgáltatási címkék és az alkalmazás-biztonsági csoportok (ASG-EK) kihasználásával.
 
 A hálózati biztonsági csoportokon vagy Azure Firewall a hálózati hozzáférés-vezérlések definiálásához használja Virtual Network szolgáltatás címkéit. Biztonsági szabályok létrehozása során szolgáltatáscímkéket használhat bizonyos IP-címek helyett. A szolgáltatási címke nevének megadásával a szabály forrás vagy cél mezőjében engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával.
 
@@ -178,9 +180,9 @@ Az alkalmazás biztonsági csoportjaival is egyszerűsítheti az összetett bizt
 
 **Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
+- [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)    
+- [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Alkalmazások biztonsága és DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -190,9 +192,9 @@ Az alkalmazás biztonsági csoportjaival is egyszerűsítheti az összetett bizt
 |--|--|--|--|
 | NS-7 | N/A | SC-20, SC-21 |
 
-Kövesse a DNS-biztonság ajánlott eljárásait a gyakori támadásokkal szemben, például a DNS-t, a DNS-erősítési támadásokat, a DNS-mérgezést és a hamisítást stb. 
+Kövesse a DNS-biztonság ajánlott eljárásait a gyakori támadásokkal szemben, például a DNS-t, a DNS-erősítési támadásokat, a DNS-mérgezést és a hamisítást stb.
 
-Ha a rendszer a mérvadó DNS-szolgáltatásként Azure DNS használja, győződjön meg arról, hogy a DNS-zónák és-rekordok védelme az Azure RBAC és az erőforrás-zárolások használatával a véletlen vagy rosszindulatú módosításokkal szemben. 
+Ha a rendszer a mérvadó DNS-szolgáltatásként Azure DNS használja, győződjön meg arról, hogy a DNS-zónák és-rekordok védelme az Azure RBAC és az erőforrás-zárolások használatával a véletlen vagy rosszindulatú módosításokkal szemben.
 
 - [Azure DNS áttekintése](../../dns/dns-overview.md)
 
@@ -204,8 +206,8 @@ Ha a rendszer a mérvadó DNS-szolgáltatásként Azure DNS használja, győződ
 
 **Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
+- [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
+- [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Alkalmazások biztonsága és DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)

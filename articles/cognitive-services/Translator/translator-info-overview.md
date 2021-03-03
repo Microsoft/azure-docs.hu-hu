@@ -12,16 +12,16 @@ ms.date: 02/15/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: fordító, szöveg fordítása, gépi fordítás, fordítási szolgáltatás
-ms.openlocfilehash: 12f6d22f263747a8c43b2d98e6ade1de78aea1ce
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 72df700d38cad3ee31ef438d7df1c890acde9e6b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100556256"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727974"
 ---
 # <a name="what-is-the-translator-service"></a>Mi a Translator Service?
 
-A Translator egy felhőalapú gépi fordítási szolgáltatás, amely az intelligens alkalmazások készítéséhez használt, a kognitív API-k [Cognitive Services](../../index.yml?panel=ai&pivot=products) családjának részét képezi. A Translator egyszerűen integrálható alkalmazásaiba, webhelyeire, eszközeibe és megoldásaiba. Lehetővé teszi a többnyelvű felhasználói élmény [több mint 70 nyelven](./language-support.md)való hozzáadását. Minden olyan hardveres platformon használható, amely bármilyen operációs rendszerrel rendelkezik szöveges fordításhoz.
+A Translator egy felhőalapú gépi fordítási szolgáltatás, amely az intelligens alkalmazások készítéséhez használt, a kognitív API-k [Cognitive Services](../../index.yml?panel=ai&pivot=products) családjának részét képezi. A Translator egyszerűen integrálható alkalmazásaiba, webhelyeire, eszközeibe és megoldásaiba. Lehetővé teszi a többnyelvű felhasználói élmények hozzáadását [90 nyelven és dialektusban](./language-support.md). Minden olyan hardveres platformon használható, amely bármilyen operációs rendszerrel rendelkezik szöveges fordításhoz.
 
 ## <a name="about-microsoft-translator"></a>A Microsoft Translator ismertetése
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: b29f4034b12ce43e6c051e454601f196365469f3
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 0fc291403997cdccbfa190fcd5739e97c47eab6a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636980"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729436"
 ---
 # <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>A Azure Files Container Storage Interface (CSI) illesztőprogramjainak használata az Azure Kubernetes Service-ben (ak) (előzetes verzió)
 
@@ -35,11 +35,11 @@ A Kubernetes-kötetekkel kapcsolatos további információkért lásd: az [AK-be
 
 A tárolási osztályok a Azure Files megosztások létrehozásának módját határozzák meg. A rendszer automatikusan létrehoz egy Storage-fiókot a [csomópont-erőforráscsoport][node-resource-group] számára a tárolási osztállyal való használatra a Azure Files megosztások tárolásához. Válasszon az alábbi [Azure Storage-redundancia SKU][storage-skus] - *skuName* közül:
 
-* **Standard_LRS** : standard, helyileg redundáns tárolás
-* **Standard_GRS** : standard geo-redundáns tárolás
-* **Standard_ZRS** : standard zóna – redundáns tárolás
-* **Standard_RAGRS** : standard olvasási hozzáférésű geo-redundáns tárolás
-* **Premium_LRS** : prémium helyileg redundáns tárolás
+* **Standard_LRS**: standard, helyileg redundáns tárolás
+* **Standard_GRS**: standard geo-redundáns tárolás
+* **Standard_ZRS**: standard zóna – redundáns tárolás
+* **Standard_RAGRS**: standard olvasási hozzáférésű geo-redundáns tárolás
+* **Premium_LRS**: prémium helyileg redundáns tárolás
 
 > [!NOTE]
 > Azure Files támogatja az Azure Premium Storaget. A prémium fájlmegosztás minimális megosztása 100 GB.
@@ -226,7 +226,7 @@ az provider register --namespace Microsoft.Storage
 
 ### <a name="create-a-storage-account-for-the-nfs-file-share"></a>Hozzon létre egy Storage-fiókot az NFS-fájlmegosztás számára
 
-[Hozzon létre egy `Premium_LRS` ](../storage/files/storage-how-to-create-premium-fileshare.md) Az NFS-megosztások támogatásához a következő konfigurációkat tartalmazó Azure Storage-fiók:
+[Hozzon létre egy `Premium_LRS` ](../storage/files/storage-how-to-create-file-share.md) Az NFS-megosztások támogatásához a következő konfigurációkat tartalmazó Azure Storage-fiók:
 - fiók típusa: FileStorage
 - biztonságos átvitel szükséges (csak HTTPS-forgalom engedélyezése): false
 - Válassza ki az ügynök csomópontjainak virtuális hálózatát a tűzfalakban és a virtuális hálózatokban – ezért érdemes lehet a Storage-fiókot a MC_ erőforráscsoporthoz létrehozni.
@@ -256,7 +256,7 @@ storageclass.storage.k8s.io/azurefile-csi created
 ```
 
 ### <a name="create-a-deployment-with-an-nfs-backed-file-share"></a>Központi telepítés létrehozása NFS-alapú fájlmegosztás esetén
-A [stateful set](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml) `data.txt` következő parancs az [kubectl Apply][kubectl-apply] paranccsal történő üzembe helyezésével olyan állapot-nyilvántartó készletet helyezhet üzembe, amely időbélyegeket ment egy fájlba:
+A [](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml) `data.txt` következő parancs az [kubectl Apply][kubectl-apply] paranccsal történő üzembe helyezésével olyan állapot-nyilvántartó készletet helyezhet üzembe, amely időbélyegeket ment egy fájlba:
 
  ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/statefulset.yaml
@@ -304,7 +304,7 @@ $ kubectl exec -it busybox-azurefile-0 -- cat c:\mnt\azurefile\data.txt # on Win
 (...)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure-lemezek CSI-illesztőprogramjainak használatáról további információt az [Azure-lemezek használata a CSI-illesztőprogramokkal](azure-disk-csi.md)című témakörben talál.
 - További információ a tárolással kapcsolatos ajánlott eljárásokról: [ajánlott eljárások a tároláshoz és a biztonsági mentésekhez az Azure Kubernetes szolgáltatásban][operator-best-practices-storage].

@@ -6,13 +6,13 @@ ms.author: dech
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 05/19/2020
-ms.openlocfilehash: 8315369d2100036a50aae770267aa04bceb2dfb0
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.date: 02/22/2021
+ms.openlocfilehash: f7002b3968e91447a26315f31347ad469aa5daca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339801"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690651"
 ---
 # <a name="import-notebooks-from-a-github-repo-into-azure-cosmos-db"></a>Jegyzetfüzetek importálása egy GitHub-tárházból a Azure Cosmos DBba
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -57,7 +57,12 @@ A módosítások véglegesítése után a szokásos GitHub-folyamat során álta
 
 :::image type="content" source="./media/import-github-notebooks/commit-changes-github.png" alt-text="Jegyzetfüzetek szerkesztése és módosítások elvégzése a GitHubon":::
 
-## <a name="next-steps"></a>További lépések
+A jegyzetfüzet szerkesztése után [közzéteheti azt a jegyzetfüzet-galériában](publish-notebook-gallery.md). 
+
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg [Azure Cosmos db Jupyter notebookok](cosmosdb-jupyter-notebooks.md) előnyeit.
-
+* [Ismerkedés a notebook Samples-galériával](https://cosmos.azure.com/gallery.html)
+* [Jegyzetfüzetek közzététele a Azure Cosmos DB notebook-galériában](publish-notebook-gallery.md)
+* [A Python notebook funkcióinak és parancsainak használata](use-python-notebook-features-and-commands.md)
+* [C# Notebook-funkciók és-parancsok használata](use-csharp-notebook-features-and-commands.md)

@@ -3,12 +3,12 @@ title: Application Insights eltávolítása a Visual Studióban – Azure Monito
 description: A ASP.NET és a ASP.NET Core Application Insights SDK eltávolítása a Visual Studióban.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 5bfa6ee21cc1a55f653c0e79807a14ac34082e73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d70413fa6a47e2d41693db6eb705f31b2a2b1b2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981473"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704310"
 ---
 # <a name="how-to-remove-application-insights-in-visual-studio"></a>Application Insights eltávolítása a Visual Studióban
 
@@ -27,7 +27,7 @@ Application Insights eltávolításához el kell távolítania az alkalmazás AP
     > [!NOTE]
     > Ha a nyomkövetési gyűjtemény engedélyezve van, először el kell távolítania a Microsoft. ApplicationInsights. TraceListener. Adja meg `Uninstall-package Microsoft.ApplicationInsights.TraceListener` az alábbi lépéseket a Microsoft. ApplicationInsights. Web eltávolításához.
 
-1. Adja meg a következő parancsot: `Uninstall-Package Microsoft.ApplicationInsights.Web -RemoveDependencies`
+1. Adja meg a következő parancsot: `Uninstall-Package Microsoft.ApplicationInsights.Web -RemoveDependencies`
 
     A parancs beírása után a rendszer eltávolítja a Application Insights csomagot és annak összes függőségét a projektből.
     
@@ -39,17 +39,17 @@ Application Insights eltávolításához el kell távolítania az alkalmazás AP
 
     ![A felső menüben kattintson az eszközök > NuGet Package Manager > csomagkezelő konzol](./media/remove-application-insights/package-manager.png)
 
-1. Adja meg a következő parancsot: ` Uninstall-Package Microsoft.ApplicationInsights.AspNetCore -RemoveDependencies`
+1. Adja meg a következő parancsot: ` Uninstall-Package Microsoft.ApplicationInsights.AspNetCore -RemoveDependencies`
 
     A parancs beírása után a rendszer eltávolítja a Application Insights csomagot és annak összes függőségét a projektből.
 
 ---
 
-## <a name="uninstall-using-the-visual-studio-nugetui"></a>Eltávolítás a Visual Studio NuGet felhasználói felületének használatával
+## <a name="uninstall-using-the-visual-studio-nuget-ui"></a>Eltávolítás a Visual Studio NuGet felhasználói felületének használatával
 
 # <a name="net"></a>[.NET](#tab/net)
 
-1. A *Solution Explorer*   jobb oldali megoldáskezelő kattintson a jobb gombbal a **megoldás**elemre,   és válassza a **megoldás NuGet-csomagok kezelése**lehetőséget.
+1. A jobb oldali *megoldáskezelő* kattintson a jobb gombbal a **megoldás** elemre, és válassza a **megoldás NuGet-csomagok kezelése** lehetőséget.
 
     Ekkor megjelenik egy képernyő, amely lehetővé teszi a projekt részét képező összes NuGet szerkesztését.
     
@@ -57,32 +57,32 @@ Application Insights eltávolításához el kell távolítania az alkalmazás AP
 
     > [!NOTE]
     > Ha a nyomkövetési gyűjtemény engedélyezve van, először el kell távolítania a Microsoft. ApplicationInsights. TraceListener elemet a függőségek eltávolítása nélkül, majd az alábbi lépések végrehajtásával távolítsa el a Microsoft. ApplicationInsights. Web elemet a kiválasztott függőségek eltávolítása lehetőséggel.
-    
-1. Kattintson a "Microsoft. ApplicationInsights. Web" csomagra.A jobb oldalon jelölje be a *projekt*melletti jelölőnégyzetet az   összes projekt kiválasztásához.
-    
-1. Ha az eltávolításkor az összes függőséget el szeretné távolítani, jelölje be a **Beállítások**   legördülő menü alatti lehetőséget a projekt kijelölt részében.
 
-    Az *eltávolítási beállítások*területen jelölje be a *függőségek eltávolítása*elem melletti jelölőnégyzetet.
+1. Kattintson a **Microsoft. ApplicationInsights. Web** csomagra. A jobb oldalon jelölje be a **projekt** melletti jelölőnégyzetet az összes projekt kiválasztásához.
+
+1. Ha az eltávolításkor az összes függőséget el szeretné távolítani, jelölje be a beállítások legördülő menü alatti **lehetőséget** a projekt kijelölt részében.
+
+    Az *eltávolítási beállítások* területen jelölje be a *függőségek eltávolítása* elem melletti jelölőnégyzetet.
 
 1. Válassza az **Eltávolítás** lehetőséget.
     
     ![Képernyőfelvétel: a Microsoft. ApplicationInsights. Web ablak, melyben a függőségek eltávolítása és a Kiemelt eltávolítás van kijelölve.](./media/remove-application-insights/uninstall-framework.png)
 
-    Ekkor megjelenik egy párbeszédpanel, amely megjeleníti az alkalmazásból eltávolítandó összes függőséget.Az eltávolításhoz kattintson **az OK gombra**   .
+    Ekkor megjelenik egy párbeszédpanel, amely megjeleníti az alkalmazásból eltávolítandó összes függőséget. Az eltávolításhoz kattintson **az OK gombra** .
     
     ![A képernyőképen egy párbeszédpanel jelenik meg, amelyen az eltávolítandó függőségek jelennek meg.](./media/remove-application-insights/preview-uninstall-framework.png)
     
-1.  Az eltávolítás után a *megoldáskezelő*a "ApplicationInsights.config" és a "AiHandleErrorAttribute.cs" is megjelenik.A két fájlt manuálisan is törölheti.
+1.  Az eltávolítás után a *megoldáskezelő* a "ApplicationInsights.config" és a "AiHandleErrorAttribute.cs" is megjelenik. A két fájlt manuálisan is törölheti.
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-1. A *Solution Explorer*   jobb oldali megoldáskezelő kattintson a jobb gombbal a **megoldás**elemre,   és válassza a **megoldás NuGet-csomagok kezelése**lehetőséget.
+1. A jobb oldali *megoldáskezelő* kattintson a jobb gombbal a **megoldás** elemre, és válassza a **megoldás NuGet-csomagok kezelése** lehetőséget.
 
     Ekkor megjelenik egy képernyő, amely lehetővé teszi a projekt részét képező összes NuGet szerkesztését.
 
     ![Kattintson a jobb gombbal a megoldásra, a Megoldáskezelő, majd válassza a megoldás NuGet-csomagok kezelése lehetőséget.](./media/remove-application-insights/manage-nuget-core.png)
 
-1. Kattintson a "Microsoft. ApplicationInsights. AspNetCore" csomagra. A jobb oldalon jelölje be a *projekt* melletti jelölőnégyzetet az összes projekt kiválasztásához, majd válassza az **Eltávolítás**lehetőséget.
+1. Kattintson a "Microsoft. ApplicationInsights. AspNetCore" csomagra. A jobb oldalon jelölje be a *projekt* melletti jelölőnégyzetet az összes projekt kiválasztásához, majd válassza az **Eltávolítás** lehetőséget.
 
     ![Jelölje be a függőségek eltávolítása, majd az Eltávolítás elemet.](./media/remove-application-insights/uninstall-core.png)
 

@@ -2,16 +2,20 @@
 title: Telemetria folyamatos exportálása a Application Insightsból | Microsoft Docs
 description: A diagnosztikai és használati adatok exportálása a Microsoft Azure tárolóba, és onnan tölthető le.
 ms.topic: conceptual
-ms.date: 05/26/2020
-ms.openlocfilehash: 23405faeb7d2151ce0f6492c0d522e0a7f9b84a8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/19/2021
+ms.custom: references_regions
+ms.openlocfilehash: e7831123834df9186310453106c50261373160ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584232"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737035"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Telemetria exportálása az Application Insightsból
 Szeretné megőrizni a telemetria a normál megőrzési időtartamnál hosszabb ideig? Vagy dolgozza fel valamilyen speciális módon? A folyamatos exportálás ideális ehhez. A Application Insights-portálon megjelenített események JSON formátumban exportálhatók Microsoft Azureba. Innen letöltheti az adatait, és bármilyen kódot írhat, amelyet fel kell dolgoznia.  
+
+> [!IMPORTANT]
+> A folyamatos exportálás elavult. [Telepítse át a munkaterületen alapuló Application Insights erőforrást](convert-classic-resource.md) a telemetria exportálásához szükséges [diagnosztikai beállítások](#diagnostic-settings-based-export) használatára.
 
 > [!NOTE]
 > A folyamatos exportálás csak a klasszikus Application Insights-erőforrások esetén támogatott. A [munkaterület-alapú Application Insights-erőforrásoknak](./create-workspace-resource.md) [diagnosztikai beállításokat](./create-workspace-resource.md#export-telemetry) kell használniuk.
@@ -27,6 +31,44 @@ A folyamatos exportálás beállítása előtt bizonyos alternatívákat érdeme
 * A telepítő [folyamatos exportálását a PowerShell](/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport)használatával is elérheti.
 
 A folyamatos exportálás után a rendszer a szokásos [megőrzési időszakra](./data-retention-privacy.md)vonatkozóan a Application Insightsban is elérhetővé teszi az adatok tárolását
+
+## <a name="supported-regions"></a>Támogatott régiók
+
+A folyamatos exportálás a következő régiókban támogatott:
+
+* Délkelet-Ázsia
+* Közép-Kanada
+* Közép-India
+* Észak-Európa
+* Az Egyesült Királyság déli régiója
+* Kelet-Ausztrália
+* Kelet-Japán
+* Dél-Korea középső régiója
+* Közép-Franciaország
+* Kelet-Ázsia
+* USA nyugati régiója
+* Central US
+* USA 2. keleti régiója
+* USA déli középső régiója
+* USA 2. nyugati régiója
+* Dél-Afrika északi régiója
+* USA északi középső régiója
+* Dél-Brazília
+* Észak-Svájc
+* Délkelet-Ausztrália
+* Az Egyesült Királyság nyugati régiója
+* Középnyugat-Németország
+* Nyugat-Svájc
+* Ausztrália 2. középső régiója
+* UAE középső régiója
+* Dél-Brazília
+* Ausztrália középső régiója
+* Észak-Egyesült Arab
+* Kelet-Norvégia
+* Nyugat-Japán
+
+> [!NOTE]
+> A **Nyugat-Európában** és az **USA keleti** régiójában már konfigurált alkalmazások támogatottak, de ezekben a régiókban az új alkalmazások bevezetése nem támogatott.
 
 ## <a name="continuous-export-advanced-storage-configuration"></a>Folyamatos exportálás speciális tárolási konfiguráció
 

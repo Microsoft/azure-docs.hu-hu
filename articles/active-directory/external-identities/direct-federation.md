@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d07aa283c40a54ba02faa13b07e466e519bd68ae
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 598cbf303c8a87675833b8d87f05055771e46f55
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101649421"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687243"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Közvetlen összevonás AD FS és külső szolgáltatókkal a vendég felhasználói számára (előzetes verzió)
 
@@ -42,13 +42,7 @@ A közvetlen összevonással a vendég felhasználók saját szervezeti fiókjá
 
 ## <a name="sign-in-endpoints"></a>Bejelentkezési végpontok
 
-A közvetlen összevonási vendég felhasználók mostantól bejelentkezhetnek a több-bérlős vagy a Microsoft-alkalmazásokba egy [közös végpont](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) használatával (azaz egy általános alkalmazás URL-címe, amely nem tartalmazza a bérlői környezetet). A következő példák gyakori végpontokra mutatnak:
-
-- `https://teams.microsoft.com`
-- `https://myapps.microsoft.com`
-- `https://portal.azure.com`
-
-A bejelentkezési folyamat során a vendég felhasználó kiválasztja a **bejelentkezési beállításokat**, majd kiválasztja a **Bejelentkezés egy szervezetbe** lehetőséget. A felhasználó ezután beírja a szervezet nevét, és folytatja a bejelentkezést a saját hitelesítő adataival.
+A közvetlen összevonási vendég felhasználók mostantól bejelentkezhetnek a több-bérlős vagy a Microsoft-alkalmazásokba egy [közös végpont](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) használatával (azaz egy általános alkalmazás URL-címe, amely nem tartalmazza a bérlői környezetet). A bejelentkezési folyamat során a vendég felhasználó kiválasztja a **bejelentkezési beállításokat**, majd kiválasztja a **Bejelentkezés egy szervezetbe** lehetőséget. A felhasználó ezután beírja a szervezet nevét, és folytatja a bejelentkezést a saját hitelesítő adataival.
 
 A közvetlen összevonási vendég felhasználói olyan alkalmazás-végpontokat is használhatnak, amelyek tartalmazzák a bérlői adatokat, például:
 

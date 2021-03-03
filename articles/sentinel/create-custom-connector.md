@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2021
 ms.author: bagol
-ms.openlocfilehash: 90646339ef41d0629a4d1ce8efed4b50427d3b2b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 25f83088bdc55dbafe7ccf0ff06b0c6595c9ea71
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417902"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724353"
 ---
 # <a name="resources-for-creating-azure-sentinel-custom-connectors"></a>Erőforrások az Azure Sentinel egyéni összekötők létrehozásához
 
@@ -36,12 +36,12 @@ A következő táblázat összehasonlítja a jelen cikkben ismertetett egyéni �
 
 |Metódus leírása  |Képesség | Kiszolgáló nélküli    |Összetettség  |
 |---------|---------|---------|---------|
-|**[Log Analytics ügynök](#connect-with-the-log-analytics-agent)** <br>A legjobb megoldás a helyi és a IaaS-forrásokból származó fájlok gyűjtésére   | Csak a fájl gyűjtése  |   No      |Alacsony         |
+|**[Log Analytics ügynök](#connect-with-the-log-analytics-agent)** <br>A legjobb megoldás a helyi és a IaaS-forrásokból származó fájlok gyűjtésére   | Csak a fájl gyűjtése  |   Nem      |Alacsony         |
 |**[LogStash](#connect-with-logstash)** <br>A legjobb a helyszíni és a IaaS-forrásokhoz, az olyan forrásokhoz, amelyekhez elérhető egy beépülő modul, valamint a Logstash-t már ismerő szervezetek  | Az elérhető beépülő modulok és az egyéni bővítmények jelentős rugalmasságot biztosítanak.   |   Nem a virtuális gép vagy a virtuálisgép-fürt futtatására van szükség           |   Alacsony számos forgatókönyvet támogat a beépülő modulok esetében      |
-|**[Logic Apps](#connect-with-logic-apps)** <br>Magas költséghatékonyság; Kerülje a nagy mennyiségű adatforgalom elkerülését <br>A legjobb kis mennyiségű felhőalapú forrásokhoz  | A kód nélküli programozás lehetővé teszi a korlátozott rugalmasságot, és nem támogatja az algoritmusok megvalósítását.<br><br> Ha egy elérhető művelet már nem támogatja a követelményeit, az egyéni műveletek létrehozása bonyolultságot adhat.    |    Yes         |   Alacsony egyszerű, kódolású fejlesztés      |
-|**[PowerShell](#connect-with-powershell)** <br>A legjobb a prototípusokhoz és a rendszeres fájlfeltöltésekhez | A fájlok gyűjtésének közvetlen támogatása. <br><br>A PowerShell segítségével további források gyűjthetők össze, de a kódolást és a parancsfájlt szolgáltatásként kell konfigurálni.      |No               |  Alacsony       |
+|**[Logic Apps](#connect-with-logic-apps)** <br>Magas költséghatékonyság; Kerülje a nagy mennyiségű adatforgalom elkerülését <br>A legjobb kis mennyiségű felhőalapú forrásokhoz  | A kód nélküli programozás lehetővé teszi a korlátozott rugalmasságot, és nem támogatja az algoritmusok megvalósítását.<br><br> Ha egy elérhető művelet már nem támogatja a követelményeit, az egyéni műveletek létrehozása bonyolultságot adhat.    |    Igen         |   Alacsony egyszerű, kódolású fejlesztés      |
+|**[PowerShell](#connect-with-powershell)** <br>A legjobb a prototípusokhoz és a rendszeres fájlfeltöltésekhez | A fájlok gyűjtésének közvetlen támogatása. <br><br>A PowerShell segítségével további források gyűjthetők össze, de a kódolást és a parancsfájlt szolgáltatásként kell konfigurálni.      |Nem               |  Alacsony       |
 |**[Log Analytics API](#connect-with-the-log-analytics-api)** <br>A legjobb az integrációt megvalósító ISV-ket és az egyedi gyűjtési követelményekhez   | A kód összes funkcióját támogatja.  | A megvalósítástól függ           |     Magas    |
-|**[Azure functions](#connect-with-azure-functions)** A legjobb a nagy mennyiségű felhőalapú forrásokhoz és az egyedi gyűjtési követelményekhez  | A kód összes funkcióját támogatja.  |  Yes             |     Magas programozási ismeretek szükségesek    |
+|**[Azure functions](#connect-with-azure-functions)** A legjobb a nagy mennyiségű felhőalapú forrásokhoz és az egyedi gyűjtési követelményekhez  | A kód összes funkcióját támogatja.  |  Igen             |     Magas programozási ismeretek szükségesek    |
 |     |         |                |
 
 > [!TIP]
@@ -55,9 +55,9 @@ A következő táblázat összehasonlítja a jelen cikkben ismertetett egyéni �
 
 Ha az adatforrás fájlokat biztosít, javasoljuk, hogy az egyéni összekötő létrehozásához használja a Azure Monitor Log Analytics-ügynököt.
 
-- További információ: [egyéni naplók gyűjtése Azure monitorban](/azure/azure-monitor/platform/data-sources-custom-logs).
+- További információ: [egyéni naplók gyűjtése Azure monitorban](../azure-monitor/agents/data-sources-custom-logs.md).
 
-- Példa erre a módszerre: [Egyéni JSON-adatforrások gyűjtése a Linux rendszerhez készült log Analytics-ügynökkel Azure monitorban](/azure/azure-monitor/platform/data-sources-json).
+- Példa erre a módszerre: [Egyéni JSON-adatforrások gyűjtése a Linux rendszerhez készült log Analytics-ügynökkel Azure monitorban](../azure-monitor/agents/data-sources-json.md).
 
 ## <a name="connect-with-logstash"></a>Kapcsolat a Logstash
 
@@ -83,7 +83,7 @@ A hasznos Logstash beépülő modulok példáit lásd:
 
 ## <a name="connect-with-logic-apps"></a>Kapcsolat Logic Apps
 
-Hozzon létre egy [Azure Logic app](/azure/logic-apps/) -kiszolgálót, amely létrehoz egy kiszolgáló nélküli, egyéni összekötőt az Azure Sentinel számára.
+Hozzon létre egy [Azure Logic app](../logic-apps/index.yml) -kiszolgálót, amely létrehoz egy kiszolgáló nélküli, egyéni összekötőt az Azure Sentinel számára.
 
 > [!NOTE]
 > A kiszolgáló nélküli összekötők a Logic Apps használatával való létrehozásakor kényelmesek lehetnek, ha az összekötők Logic Apps használatával nagy mennyiségű adattal is költséges lehet.
@@ -93,11 +93,11 @@ Hozzon létre egy [Azure Logic app](/azure/logic-apps/) -kiszolgálót, amely l�
 
 1. A **Logic apps elindításához használja a következő eseményindítók egyikét**:
 
-    |Eseményindító  |Description  |
+    |Eseményindító  |Leírás  |
     |---------|---------|
-    |**Ismétlődő feladat**     |   Például úgy ütemezze a logikai alkalmazást, hogy az adatok rendszeres lekérdezését meghatározott fájlokból, adatbázisokból vagy külső API-kból olvassa be. <br>További információ: [ismétlődő feladatok és munkafolyamatok létrehozása, beosztása és futtatása Azure Logic Appsban](/azure/connectors/connectors-native-recurrence).      |
-    |**Igény szerinti indítás**     | Igény szerint futtathatja a logikai alkalmazást manuális adatgyűjtés és tesztelés céljából. <br>További információkért lásd:  [logikai alkalmazások hívása, elindítása vagy beágyazása HTTPS-végpontok használatával](/azure/logic-apps/logic-apps-http-endpoint).        |
-    |**HTTP/S végpont**     |  A folyamatos átvitelhez ajánlott, és ha a forrásrendszer el tudja indítani az adatátvitelt. <br>További információ: szolgáltatás- [végpontok hívása http vagy https](/azure/connectors/connectors-native-http)protokollon keresztül.       |
+    |**Ismétlődő feladat**     |   Például úgy ütemezze a logikai alkalmazást, hogy az adatok rendszeres lekérdezését meghatározott fájlokból, adatbázisokból vagy külső API-kból olvassa be. <br>További információ: [ismétlődő feladatok és munkafolyamatok létrehozása, beosztása és futtatása Azure Logic Appsban](../connectors/connectors-native-recurrence.md).      |
+    |**Igény szerinti indítás**     | Igény szerint futtathatja a logikai alkalmazást manuális adatgyűjtés és tesztelés céljából. <br>További információkért lásd:  [logikai alkalmazások hívása, elindítása vagy beágyazása HTTPS-végpontok használatával](../logic-apps/logic-apps-http-endpoint.md).        |
+    |**HTTP/S végpont**     |  A folyamatos átvitelhez ajánlott, és ha a forrásrendszer el tudja indítani az adatátvitelt. <br>További információ: szolgáltatás- [végpontok hívása http vagy https](../connectors/connectors-native-http.md)protokollon keresztül.       |
     |     |         |
 
 1. Az **események beolvasásához használja az összes logikai alkalmazás-összekötőt**. Például:
@@ -112,9 +112,9 @@ Hozzon létre egy [Azure Logic app](/azure/logic-apps/) -kiszolgálót, amely l�
 
 1. **Készítse elő a lekérdezni kívánt adatokat**.
 
-    Például a [JSON elemzése művelettel](/azure/logic-apps/logic-apps-perform-data-operations#parse-json-action) elérheti a JSON-tartalmak tulajdonságait, így kiválaszthatja ezeket a tulajdonságokat a dinamikus tartalmak listájából, ha a logikai alkalmazás bemeneteit adja meg.
+    Például a [JSON elemzése művelettel](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) elérheti a JSON-tartalmak tulajdonságait, így kiválaszthatja ezeket a tulajdonságokat a dinamikus tartalmak listájából, ha a logikai alkalmazás bemeneteit adja meg.
 
-    További információ: [adatműveletek végrehajtása a Azure Logic Appsban](/azure/logic-apps/logic-apps-perform-data-operations).
+    További információ: [adatműveletek végrehajtása a Azure Logic Appsban](../logic-apps/logic-apps-perform-data-operations.md).
 
 1. **Az log Analyticsba írja az** adatbevitelt.
 
@@ -174,14 +174,14 @@ Az Azure Sentinel Log Analytics adatgyűjtő API használatával közvetítheti 
 
 A REST-végpontok közvetlen meghívása során még több programozásra van szükség, ugyanakkor nagyobb rugalmasságot biztosít.
 
-További információkért tekintse meg a [log Analytics adatgyűjtő API](/azure/azure-monitor/platform/data-collector-api)-t, különösen az alábbi példákat:
+További információkért tekintse meg a [log Analytics adatgyűjtő API](../azure-monitor/logs/data-collector-api.md)-t, különösen az alábbi példákat:
 
-- [C#](https://docs.microsoft.com/azure/azure-monitor/platform/data-collector-api#c-sample)
-- [Python 2](https://docs.microsoft.com/azure/azure-monitor/platform/data-collector-api#python-2-sample)
+- [C#](../azure-monitor/logs/data-collector-api.md#c-sample)
+- [Python 2](../azure-monitor/logs/data-collector-api.md#python-2-sample)
 
 ## <a name="connect-with-azure-functions"></a>Kapcsolat Azure Functions
 
-A kiszolgáló nélküli egyéni összekötők létrehozásához használja a Azure Functions és a REST API-t, valamint a különböző kódolási nyelveket, például a [PowerShellt](/azure/azure-functions/functions-reference-powershell).
+A kiszolgáló nélküli egyéni összekötők létrehozásához használja a Azure Functions és a REST API-t, valamint a különböző kódolási nyelveket, például a [PowerShellt](../azure-functions/functions-reference-powershell.md).
 
 Példa erre a módszerre:
 
@@ -189,7 +189,7 @@ Példa erre a módszerre:
 - [Az okta egyetlen Sign-On összekötése az Azure Sentinel szolgáltatással az Azure Function használatával](connect-okta-single-sign-on.md)
 - [A Proofpoint KOPPINTson az Azure Sentinelre az Azure-függvény használatával](connect-proofpoint-tap.md)
 - [A Qualys virtuális gép összekötése az Azure Sentinel szolgáltatással az Azure Function használatával](connect-qualys-vm.md)
-- [XML-, CSV-vagy egyéb adatformátumok beolvasása](/azure/azure-monitor/platform/create-pipeline-datacollector-api#ingesting-xml-csv-or-other-formats-of-data)
+- [XML-, CSV-vagy egyéb adatformátumok beolvasása](../azure-monitor/logs/create-pipeline-datacollector-api.md#ingesting-xml-csv-or-other-formats-of-data)
 - [Nagyítás figyelése az Azure sentinelrel](https://techcommunity.microsoft.com/t5/azure-sentinel/monitoring-zoom-with-azure-sentinel/ba-p/1341516) (blog)
 - [Függvényalkalmazás üzembe helyezése az Office 365 Management API-beli adatgyűjtéshez az Azure sentinelben](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/O365%20Data) (Azure Sentinel GitHub-Közösség)
 

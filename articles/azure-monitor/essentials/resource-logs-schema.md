@@ -4,12 +4,12 @@ description: Ismerje meg az Azure-erőforrás-naplók támogatott szolgáltatás
 ms.subservice: logs
 ms.topic: reference
 ms.date: 09/01/2020
-ms.openlocfilehash: b37535b67ed1873c5a492e28e6bf4da8c67c7e5d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7c426074bbeb2792f152063d938e867b86dc1f6f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100616475"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717536"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Az Azure-erőforrás naplóihoz tartozó általános és szolgáltatás-specifikus séma
 
@@ -23,7 +23,7 @@ Az erőforrástípus (a `resourceId` tulajdonságban elérhető) és a `category
 
 ## <a name="top-level-common-schema"></a>Legfelső szintű közös séma
 
-| Name | Kötelező vagy nem kötelező | Description |
+| Name | Kötelező vagy nem kötelező | Leírás |
 |---|---|---|
 | time | Kötelező | Az esemény időbélyegzője (UTC). |
 | resourceId | Kötelező | Az eseményt kibocsátó erőforrás erőforrás-azonosítója. A bérlői szolgáltatások esetében ez a/tenants/Tenant-ID/Providers/Provider-Name. formátumú. |
@@ -73,7 +73,7 @@ Az erőforrás-naplók sémája az erőforrás és a napló kategóriától füg
 | Front Door | [Bejárati ajtó naplózása](../../frontdoor/front-door-diagnostics.md) |
 | IoT Hub | [IoT Hub műveletek](../../iot-hub/monitor-iot-hub-reference.md#resource-logs) |
 | Key Vault |[Azure Key Vault naplózás](../../key-vault/general/logging.md) |
-| Kubernetes Service |[Azure Kubernetes-naplózás](../../aks/view-master-logs.md#log-event-schema) |
+| Kubernetes Service |[Azure Kubernetes-naplózás](../../aks/view-control-plane-logs.md#log-event-schema) |
 | Load Balancer |[Naplóelemzés az Azure Load Balancerhez](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Logic Apps B2B egyéni követési séma](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Network Security Groups (Hálózati biztonsági csoportok) |[Naplóelemzés hálózati biztonsági csoportokhoz](../../virtual-network/virtual-network-nsg-manage-log.md) |

@@ -176,7 +176,7 @@
     - name: Jelentéskészítés
       items:
         - name: Hitelesítési módszerek tevékenység
-          href: howto-authentication-methods-usage-insights.md
+          href: howto-authentication-methods-activity.md
         - name: SSPR-jelentések
           href: howto-sspr-reporting.md
         - name: MFA-jelentések

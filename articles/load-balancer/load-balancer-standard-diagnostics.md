@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2021
 ms.author: allensu
-ms.openlocfilehash: fbde2b95b7aca205f164dc45c1f0170cc4da74fb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 29584a9453fa052745f417cba0bbe940766c30e9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581893"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699079"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Metrikák, riasztások és az erőforrások állapotának diagnosztikái a standard Load Balancerben
 
@@ -34,7 +34,7 @@ Azure Load Balancer többdimenziós metrikákat biztosít az Azure-metrikák has
 
 A különböző standard Load Balancer konfigurációk a következő metrikákat biztosítják:
 
-| Metric | Erőforrás típusa | Description | Ajánlott aggregáció |
+| Metric | Erőforrás típusa | Leírás | Ajánlott aggregáció |
 | --- | --- | --- | --- |
 | Adatútvonalak rendelkezésre állása | Nyilvános és belső Load Balancer | A standard szintű Load Balancer folyamatosan kihasználja a régió és a terheléselosztó elülső rétege közötti adatútvonalat egészen a virtuális gépet támogató SDN-veremig. Amíg a kifogástalan állapotú példányok megmaradnak, a mérés ugyanazt az útvonalat követi, mint az alkalmazás elosztott terhelésű forgalma. Az ügyfelek által használt adatútvonal szintén érvényesítve lesz. A mérés nem látható az alkalmazás számára, és nincs hatással más műveletekre.| Átlag |
 | Állapotadat-mintavétel állapota | Nyilvános és belső Load Balancer | A standard Load Balancer egy elosztott állapot-ellenőrzési szolgáltatást használ, amely figyeli az alkalmazás-végpont állapotát a konfigurációs beállításoknak megfelelően. Ez a metrika a terheléselosztó készletében lévő példányok összesített vagy végponti szűrt nézetét biztosítja. Láthatja, hogyan tekinti meg a Load Balancer az alkalmazás állapotát az állapotminta konfigurációja alapján. |  Átlag |
@@ -72,18 +72,7 @@ A standard Load Balancer erőforrások metrikáinak megtekintése:
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>Többdimenziós mérőszámok programozott módon történő beolvasása API-kon keresztül
 
-A többdimenziós metrikák definícióinak és értékeinek beolvasására szolgáló API-útmutatásért lásd: [Azure Monitoring REST API útmutató](../azure-monitor/essentials/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api). Ezek a metrikák megírhatók egy Storage-fiókba az "összes metrika" kategóriához tartozó [diagnosztikai beállítás](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) hozzáadásával. 
-
-### <a name="configure-alerts-for-multi-dimensional-metrics"></a>Riasztások konfigurálása többdimenziós mérőszámokhoz ###
-
-Az Azure standard Load Balancer támogatja a könnyen konfigurálható riasztásokat a többdimenziós metrikák esetében. Egyéni küszöbértékeket állíthat be bizonyos mérőszámokhoz, hogy a riasztásokat a különböző súlyossági szintekkel aktiválja, így biztosítva az erőforrás-figyelési élményt.
-
-A riasztások konfigurálása:
-1. Ugrás a terheléselosztó riasztási alpaneljére
-1. Új riasztási szabály létrehozása
-    1.  Riasztási feltétel konfigurálása
-    1.  Választható Műveleti csoport hozzáadása az automatikus javításhoz
-    1.  A riasztás súlyosságának, nevének és leírásának megadása, amely lehetővé teszi az intuitív reagálást
+A többdimenziós metrikák definícióinak és értékeinek beolvasására szolgáló API-útmutatásért lásd: [Azure Monitoring REST API útmutató](../azure-monitor/essentials/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api). Ezek a metrikák megírhatók egy Storage-fiókba az "összes metrika" kategóriához tartozó [diagnosztikai beállítás](../azure-monitor/essentials/diagnostic-settings.md) hozzáadásával. 
 
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>Gyakori diagnosztikai forgatókönyvek és javasolt nézetek
 
@@ -228,15 +217,41 @@ A diagram a következő információkat jeleníti meg:
 A diagram lehetővé teszi, hogy az ügyfelek az üzembe helyezést a saját maguk is tudják elhárítani anélkül, hogy meg kellene állapítaniuk vagy fel kellene kérniük a más problémák előfordulását. A szolgáltatás nem volt elérhető, mert az állapot-mintavétel hibás konfiguráció vagy hibás alkalmazás miatt sikertelen volt.
 </details>
 
+## <a name="configure-alerts-for-multi-dimensional-metrics"></a>Riasztások konfigurálása többdimenziós mérőszámokhoz ###
+
+Az Azure standard Load Balancer támogatja a könnyen konfigurálható riasztásokat a többdimenziós metrikák esetében. Egyéni küszöbértékeket állíthat be bizonyos mérőszámokhoz, hogy a riasztásokat a különböző súlyossági szintekkel aktiválja, így biztosítva az erőforrás-figyelési élményt.
+
+A riasztások konfigurálása:
+1. Ugrás a terheléselosztó riasztási alpaneljére
+1. Új riasztási szabály létrehozása
+    1.  Riasztási feltétel konfigurálása
+    1.  Választható Műveleti csoport hozzáadása az automatikus javításhoz
+    1.  A riasztás súlyosságának, nevének és leírásának megadása, amely lehetővé teszi az intuitív reagálást
+
+### <a name="inbound-availability-alerting"></a>Bejövő rendelkezésre állási riasztások
+Ha riasztást szeretne kapni a bejövő rendelkezésre állásról, két külön riasztást hozhat létre az adatelérési út rendelkezésre állása és az állapot-mintavételi állapot metrikái alapján. Az ügyfelek különböző forgatókönyvekkel rendelkezhetnek, amelyek konkrét riasztási logikát igényelnek, de az alábbi példák a legtöbb konfiguráció esetében hasznosak lesznek.
+
+Az adatelérési út rendelkezésre állása esetén riasztást kaphat, ha egy meghatározott terheléselosztási szabály elérhetetlenné válik. Ezt a riasztást úgy is beállíthatja, hogy riasztási feltételt állít be az adatelérési útvonal rendelkezésre állására, és felosztja az összes aktuális és jövőbeli értéket a előtér-porthoz és a előtér-IP-címhez. Ha úgy állítja be a riasztási logikát, hogy a nullánál kisebb vagy egyenlő legyen, akkor a riasztás akkor válik aktívvá, ha a terheléselosztási szabályok nem válaszolnak. Állítsa be az Összesítés részletességét és a kiértékelés gyakoriságát a kívánt kiértékelésnek megfelelően. 
+
+Az állapot mintavételi állapotával riasztást kaphat, ha egy adott háttérbeli példány nem tud jelentős ideig válaszolni az állapot-ellenőrzésre. Állítsa be a riasztási feltételt a Health mintavételi állapot metrikájának használatára, valamint a háttérbeli IP-cím és a háttér-port alapján történő felosztásra. Ez biztosítja, hogy külön riasztást küldjön az egyes háttérrendszer-példányok egy adott port forgalmának kiszolgálására. Használja az **átlagos** összesítési típust, és állítsa be a küszöbértéket annak megfelelően, hogy milyen gyakran történjen a háttérbeli példány vizsgálata, és hogy mit gondol az egészséges küszöbértékre. 
+
+A háttérbeli készlet szintjén is riasztást kaphat, ha nem oszt meg semmilyen dimenzióval, és nem használja az **átlagos** összesítési típust. Ezzel a beállítással riasztási szabályokat állíthat be, például a riasztást, ha a háttérbeli készlet tagjainak 50%-a nem megfelelő állapotú.
+
+### <a name="outbound-availability-alerting"></a>Kimenő rendelkezésre állási riasztások
+A kimenő rendelkezésre állás konfigurálásához két külön riasztást konfigurálhat a SNAT-kapcsolatok száma és a SNAT használt portok metrikáinak használatával.
+
+A kimenő kapcsolódási hibák észleléséhez állítson be egy riasztást a SNAT-kapcsolatok száma és a szűrés a kapcsolódási állapot = sikertelen értékkel. Használja a **teljes** összesítést. Ezt a háttérbeli IP-cím beállításával is eloszthatja az összes aktuális és jövőbeli értékre, hogy a rendszer külön riasztást küldjön minden olyan backend-példány esetében, amely sikertelen kapcsolatokat észlelt. Állítsa be a küszöbértéket nullánál nagyobb értékre, vagy nagyobb értéket, ha a kimenő kapcsolódási hibák várhatóan megjelennek.
+
+A használt SNAT-portok segítségével nagyobb kockázatot jelenthet a SNAT és a kimenő kapcsolatok meghibásodása. A riasztás használatakor győződjön meg róla, hogy a háttérbeli IP-cím és protokoll alapján van felosztva, és az **átlagos** összesítést használja. A küszöbértéket úgy állítsa be, hogy az egyes példányokban lefoglalt portok száma nagyobb legyen, mint a nem biztonságos. Előfordulhat például, hogy alacsony súlyosságú riasztást állít be, ha a háttérbeli példány a lefoglalt portok 75%-át és nagy súlyosságot használ, ha a lefoglalt portok 90%-át vagy 100%-át használja.  
 ## <a name="resource-health-status"></a><a name = "ResourceHealth"></a>Erőforrás állapotának állapota
 
 A standard Load Balancer erőforrások állapotának állapota a meglévő **erőforrás** -állapoton keresztül érhető el a **monitor > Service Health**. A rendszer **két percenként** értékeli az adatelérési út rendelkezésre állásának mérésével, amely meghatározza, hogy elérhetők-e a előtér-terheléselosztási végpontok.
 
-| Erőforrás állapotának állapota | Description |
+| Erőforrás állapotának állapota | Leírás |
 | --- | --- |
 | Elérhető | A standard Load Balancer erőforrása kifogástalan és elérhető. |
-| Csökkentett teljesítményű | A standard Load Balancer platform vagy felhasználó által kezdeményezett események hatással vannak a teljesítményre. Az adatelérési út rendelkezésre állására vonatkozó metrika 90%-osnál rosszabb, de 25%-osnál jobb állapotot jelentett legalább két percig. A teljesítmény mérsékelten befolyásolhatja a teljesítményt. [Kövesse a hibaelhárítási RHC útmutatót](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) , és állapítsa meg, hogy vannak-e olyan felhasználó által kezdeményezett események, amelyek hatással vannak a rendelkezésre állásra.
-| Nem érhető el | A standard Load Balancer erőforrás nem kifogástalan állapotú. A DataPath rendelkezésre állási metrikája kevesebb, mint 25%-os állapotot jelentett legalább két percen belül. Jelentős teljesítménybeli hatást vagy a bejövő kapcsolatok elérhetőségének hiányát tapasztalhatja. Előfordulhat, hogy a felhasználó vagy a platform eseményei nem állnak rendelkezésre. [Kövesse a hibaelhárítási RHC útmutatót](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) , és állapítsa meg, hogy vannak-e olyan felhasználó által kezdeményezett események, amelyek befolyásolják a rendelkezésre állást. |
+| Csökkentett teljesítményű | A standard Load Balancer platform vagy felhasználó által kezdeményezett események hatással vannak a teljesítményre. Az adatelérési út rendelkezésre állására vonatkozó metrika 90%-osnál rosszabb, de 25%-osnál jobb állapotot jelentett legalább két percig. A teljesítmény mérsékelten befolyásolhatja a teljesítményt. [Kövesse a hibaelhárítási RHC útmutatót](./troubleshoot-rhc.md) , és állapítsa meg, hogy vannak-e olyan felhasználó által kezdeményezett események, amelyek hatással vannak a rendelkezésre állásra.
+| Nem érhető el | A standard Load Balancer erőforrás nem kifogástalan állapotú. A DataPath rendelkezésre állási metrikája kevesebb, mint 25%-os állapotot jelentett legalább két percen belül. Jelentős teljesítménybeli hatást vagy a bejövő kapcsolatok elérhetőségének hiányát tapasztalhatja. Előfordulhat, hogy a felhasználó vagy a platform eseményei nem állnak rendelkezésre. [Kövesse a hibaelhárítási RHC útmutatót](./troubleshoot-rhc.md) , és állapítsa meg, hogy vannak-e olyan felhasználó által kezdeményezett események, amelyek befolyásolják a rendelkezésre állást. |
 | Ismeretlen | A standard Load Balancer erőforrás erőforrás-állapotának állapota még nem frissült, vagy nem kapott adatelérési utat az elmúlt 10 percben. Ennek az állapotnak átmenetinek kell lennie, és a megfelelő állapot fog megjelenni, amint az adatok beérkeznek. |
 
 A nyilvános standard Load Balancer erőforrások állapotának megtekintése:
@@ -263,7 +278,7 @@ Az általános erőforrás állapotának leírása a [RHC dokumentációjában](
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Ismerje meg, hogyan tekintheti meg a Load Balancerhoz előre konfigurált mérőszámokat [az információk használatával](https://docs.microsoft.com/azure/load-balancer/load-balancer-insights)
+- Ismerje meg, hogyan tekintheti meg a Load Balancerhoz előre konfigurált mérőszámokat [az információk használatával](./load-balancer-insights.md)
 - További információ a [standard Load Balancerról](./load-balancer-overview.md).
 - További információ a [terheléselosztó kimenő kapcsolatáról](./load-balancer-outbound-connections.md).
 - A [Azure monitor](../azure-monitor/overview.md)megismerése.

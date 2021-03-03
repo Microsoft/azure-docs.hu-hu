@@ -6,12 +6,12 @@ ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 55a3cd6b02b9eeb774a084552c086acbfb9966cb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e9431aac203b831a0ffe22b835acf4677061780c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100615705"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707785"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Hálózatok biztonságos csatlakoztatása az Azure Monitorhoz az Azure Private Linkkel
 
@@ -157,9 +157,53 @@ Most, hogy rendelkezik a AMPLS kapcsolódó erőforrásokkal, hozzon létre egy 
  
    e.    Válassza a **Létrehozás** lehetőséget. 
 
-    ![Képernyőkép a Select Private Endpoint2 létrehozásáról](./media/private-link-security/ampls-select-private-endpoint-create-5.png)
+    ![Képernyőkép a privát végpont részleteinek kiválasztásáról.](./media/private-link-security/ampls-select-private-endpoint-create-5.png)
 
 Most létrehozott egy új, ehhez a AMPLS csatlakozó privát végpontot.
+
+## <a name="review-and-validate-your-private-link-setup"></a>A privát hivatkozás beállításainak áttekintése és ellenőrzése
+
+### <a name="reviewing-your-endpoints-dns-settings"></a>A végpont DNS-beállításainak áttekintése
+A létrehozott privát végpontnak most már négy DNS-zónával kell rendelkeznie:
+
+[![Képernyőkép a privát végpont DNS-zónái.](./media/private-link-security/private-endpoint-dns-zones.png)](./media/private-link-security/private-endpoint-dns-zones-expanded.png#lightbox)
+
+* privatelink-monitor-Azure-com
+* privatelink-OMS-opinsights-Azure-com
+* privatelink-ODS-opinsights-Azure-com
+* privatelink-agentsvc-Azure-Automation-net
+
+Ezek a zónák adott Azure Monitor végpontokat képeznek le a privát IP-címekre a privát végpont VNet tartozó IP-címekből.
+
+#### <a name="privatelink-monitor-azure-com"></a>Privatelink-monitor-Azure-com
+Ez a zóna a Azure Monitor által használt globális végpontokat fedi le, ami azt jelenti, hogy ezek a végpontok olyan kérelmeket szolgálnak ki, amelyek az összes erőforrást figyelembe veszik. Ehhez a zónához a következőhöz hozzárendelt végpontoknak kell szerepelniük:
+* `in.ai` -(Application Insights betöltési végpont, globális és regionális bejegyzést fog látni
+* `api` -Application Insights és Log Analytics API-végpont
+* `live` -Application Insights élő metrikák végpontja
+* `profiler` -Application Insights Profiler-végpont
+* `snapshot`-Application Insights Pillanatképek végpont [ ![ képernyőképe saját DNS Zone monitor – Azure-com.](./media/private-link-security/dns-zone-privatelink-monitor-azure-com.png)](./media/private-link-security/dns-zone-privatelink-monitor-azure-com-expanded.png#lightbox)
+
+#### <a name="privatelink-oms-opinsights-azure-com"></a>privatelink-OMS-opinsights-Azure-com
+Ez a zóna a OMS-végpontokra vonatkozó munkaterület-specifikus hozzárendeléseket ismerteti. Minden munkaterülethez meg kell jelennie egy olyan bejegyzésnek, amely az ehhez a privát végponthoz kapcsolódó AMPLS van társítva.
+[![Képernyőkép a saját DNS Zone OMS-opinsights-Azure-com.](./media/private-link-security/dns-zone-privatelink-oms-opinsights-azure-com.png)](./media/private-link-security/dns-zone-privatelink-oms-opinsights-azure-com-expanded.png#lightbox)
+
+#### <a name="privatelink-ods-opinsights-azure-com"></a>privatelink-ODS-opinsights-Azure-com
+Ez a zóna az ODS-végpontokra vonatkozó munkaterület-specifikus hozzárendelést, Log Analytics betöltési végpontját fedi le. Minden munkaterülethez meg kell jelennie egy olyan bejegyzésnek, amely az ehhez a privát végponthoz kapcsolódó AMPLS van társítva.
+[![Képernyőkép a saját DNS Zone ODS-opinsights-Azure-com-ről.](./media/private-link-security/dns-zone-privatelink-ods-opinsights-azure-com.png)](./media/private-link-security/dns-zone-privatelink-ods-opinsights-azure-com-expanded.png#lightbox)
+
+#### <a name="privatelink-agentsvc-azure-automation-net"></a>privatelink-agentsvc-Azure-Automation-net
+Ez a zóna az ügynök szolgáltatás-automatizálási végpontokra vonatkozó munkaterület-specifikus hozzárendeléseket ismerteti. Minden munkaterülethez meg kell jelennie egy olyan bejegyzésnek, amely az ehhez a privát végponthoz kapcsolódó AMPLS van társítva.
+[![A saját DNS Zone Agent SVC-Azure-Automation-net képernyőképe.](./media/private-link-security/dns-zone-privatelink-agentsvc-azure-automation-net.png)](./media/private-link-security/dns-zone-privatelink-agentsvc-azure-automation-net-expanded.png#lightbox)
+
+### <a name="validating-you-are-communicating-over-a-private-link"></a>Annak ellenőrzése, hogy privát kapcsolaton keresztül kommunikál-e
+* Annak ellenőrzéséhez, hogy a rendszer elküldte a kéréseket a privát végponton és a magánhálózati IP-címekre leképezett végpontokon, áttekintheti azokat egy hálózati követéssel az eszközökön, vagy akár a böngészőben is. Például a munkaterület vagy alkalmazás lekérdezésére tett kísérlet során győződjön meg arról, hogy a kérést az API-végponthoz rendelt magánhálózati IP-címre küldi, ebben a példában ez a *172.17.0.9*.
+
+    Megjegyzés: egyes böngészők más DNS-beállításokat is használhatnak (lásd a [böngésző DNS-beállításait](#browser-dns-settings)). Ellenőrizze, hogy a DNS-beállítások érvényesek-e.
+
+* Annak biztosításához, hogy a munkaterület vagy az összetevő ne kapjon nyilvános hálózatokról érkező kéréseket (a AMPLS-on keresztül nem csatlakozik), állítsa be az erőforrás nyilvános betöltését és a lekérdezési jelzőket a *nem* értékre a [privát hivatkozások hatókörén kívüli hozzáférés kezelése](#manage-access-from-outside-of-private-links-scopes)részben leírtaknak
+
+* A védett hálózat egyik ügyfelétől a `nslookup` DNS-zónákban felsorolt végpontok bármelyikére használhatja. A DNS-kiszolgáló az alapértelmezés szerint használt nyilvános IP-címek helyett a hozzárendelt magánhálózati IP-címekre kell feloldania.
+
 
 ## <a name="configure-log-analytics"></a>A Log Analytics konfigurálása
 
@@ -170,7 +214,7 @@ Nyissa meg az Azure Portalt. A Log Analytics munkaterület erőforrás menüjéb
 ### <a name="connected-azure-monitor-private-link-scopes"></a>Csatlakoztatott Azure Monitor privát kapcsolati hatókörök
 A munkaterülethez csatlakozó összes hatókör megjelenik ezen a képernyőn. A hatókörökhöz való csatlakozás (AMPLSs) lehetővé teszi, hogy az egyes AMPLS csatlakoztatott virtuális hálózatról érkező hálózati forgalom elérje ezt a munkaterületet. A kapcsolat létrehozása a következővel azonos hatással van a hatókörre, ahogy azt a [Azure monitor erőforrások csatlakoztatása](#connect-azure-monitor-resources)során hajtottuk végre. Új kapcsolat hozzáadásához válassza a **Hozzáadás** lehetőséget, majd válassza ki a Azure monitor privát hivatkozás hatókörét. A kapcsolódáshoz válassza az **alkalmaz** lehetőséget. Vegye figyelembe, hogy a munkaterületek 5 AMPLS-objektumhoz kapcsolódhatnak, ahogy azt a [korlátozásokban és korlátozásokban](#restrictions-and-limitations)is említettük. 
 
-### <a name="access-from-outside-of-private-links-scopes"></a>Hozzáférés a privát hivatkozások hatókörén kívülről
+### <a name="manage-access-from-outside-of-private-links-scopes"></a>A privát hivatkozások hatókörén kívüli hozzáférés kezelése
 A lap alsó részén lévő beállítások vezérlik a nyilvános hálózatokról való hozzáférést, azaz a fent felsorolt hatókörökön keresztül nem csatlakoztatott hálózatokat. A **nyilvános hálózati hozzáférés engedélyezése** a betöltéshez **nem** blokkolja a csatlakoztatott hatókörökön kívüli gépekről származó naplók betöltését. A **nyilvános hálózati hozzáférés engedélyezése a lekérdezésekhez** **nem** blokkolja a hatókörökön kívüli gépekről érkező lekérdezéseket. Ez magában foglalja a munkafüzetek, irányítópultok, API-alapú ügyfél-élmények, a Azure Portalon belüli bepillantások és egyéb funkciók használatával történő lekérdezéseket. A Azure Portalon kívül futó tapasztalatok, és a lekérdezés Log Analytics az adatnak is futnia kell a privát csatolt VNET.
 
 ### <a name="exceptions"></a>Kivételek
@@ -207,7 +251,7 @@ Másodszor, azt is szabályozhatja, hogy ez az erőforrás Hogyan érhető el a 
 
 A megfigyelt számítási feladatokat üzemeltető erőforrásokat a privát hivatkozáshoz kell hozzáadnia. Az alábbi [dokumentációból](../../app-service/networking/private-endpoint.md) megtudhatja, hogyan teheti meg ezt a app Services.
 
-A hozzáférés ezen a módon való korlátozása csak a Application Insights erőforrásban lévő értékekre vonatkozik. A konfiguráció módosításait, beleértve a hozzáférési beállítások be-és kikapcsolását is, Azure Resource Manager kezeli. Ehelyett a megfelelő szerepkörök, engedélyek, hálózati vezérlők és naplózás használatával korlátozza a hozzáférést a Resource Managerhez. További információ: [Azure monitor szerepkörök, engedélyek és biztonság](../roles-permissions-security.md).
+A hozzáférés ezen a módon való korlátozása csak a Application Insights erőforrásban lévő értékekre vonatkozik. Azonban a konfiguráció módosításait, például a hozzáférési beállítások be-és kikapcsolását, a Azure Resource Manager kezeli. Ezért a megfelelő szerepkörök, engedélyek, hálózati vezérlők és naplózás használatával korlátozhatja a hozzáférést a Resource Managerhez. További információ: [Azure monitor szerepkörök, engedélyek és biztonság](../roles-permissions-security.md).
 
 > [!NOTE]
 > A munkaterület-alapú Application Insights teljes biztonsága érdekében le kell zárnia a Application Insights erőforráshoz és a mögöttes Log Analytics munkaterülethez való hozzáférést.
@@ -218,14 +262,14 @@ A hozzáférés ezen a módon való korlátozása csak a Application Insights er
 Ahogy azt a [saját hivatkozásának megtervezése](#planning-your-private-link-setup)című részben leírtak szerint, egy privát hivatkozás beállítása akár egyetlen erőforrásra is hatással van az adott hálózat összes Azure monitor erőforrására, valamint más, azonos DNS-t használó hálózatokra. Ezzel kihívást jelenthet a bevezetési folyamat. Vegye figyelembe a következő lehetőségeket:
 
 * A legegyszerűbb és legbiztonságosabb megközelítése az összes Application Insights-összetevő hozzáadása a AMPLS. Azokhoz az összetevőkhöz, amelyeken más hálózatokból is el szeretné érni a hozzáférést, ne hagyja az Igen értékre a "nyilvános internet-hozzáférés engedélyezése a betöltéshez/lekérdezéshez" jelzőt (az alapértelmezett érték).
-* Hálózatok elkülönítése – ha a küllős virtuális hálózatok használatával (vagy a szolgáltatáshoz is igazodik), kövesse az [Azure-beli sugaras hálózati topológia](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)útmutatását. Ezután állítsa be a privát kapcsolat beállításait a megfelelő küllős virtuális hálózatok. Ügyeljen arra, hogy a DNS-zónák elkülönítése is megtörténjen, mivel a DNS-zónák más küllős hálózatokkal való megosztása a [DNS-felülbírálásokat](#the-issue-of-dns-overrides)eredményezi.
+* Hálózatok elkülönítése – ha a küllős virtuális hálózatok használatával (vagy a szolgáltatáshoz is igazodik), kövesse az [Azure-beli sugaras hálózati topológia](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)útmutatását. Ezután állítsa be a privát kapcsolat beállításait a megfelelő küllős virtuális hálózatok. Ügyeljen arra, hogy a DNS-zónák elkülönítése is megtörténjen, mivel a DNS-zónák más küllős hálózatokkal való megosztása a [DNS-felülbírálásokat](#the-issue-of-dns-overrides)eredményezi.
 * Egyéni DNS-zónák használata adott alkalmazásokhoz – ez a megoldás lehetővé teszi, hogy a privát kapcsolaton keresztül válassza ki Application Insights összetevőket, miközben az összes többi forgalmat a nyilvános útvonalakon tartja.
-    - Hozzon létre egy [Egyéni DNS-zónát](https://docs.microsoft.com/azure/private-link/private-endpoint-dns), és adjon meg egy egyedi nevet, például Internal.monitor.Azure.com
+    - Hozzon létre egy [Egyéni DNS-zónát](../../private-link/private-endpoint-dns.md), és adjon meg egy egyedi nevet, például Internal.monitor.Azure.com
     - Hozzon létre egy AMPLS és egy privát végpontot, és válassza a **nem** lehetőséget az automatikus integrálásra a magánhálózati DNS-sel
-    - Nyissa meg a magánhálózati végpont – > DNS-konfigurációt, és tekintse át a következőhöz hasonló teljes tartománynevek javasolt leképezését: ![ képernyőkép a DNS-zóna javasolt konfigurációjának létrehozásáról](./media/private-link-security/private-endpoint-fqdns.png)
+    - Nyissa meg a magánhálózati végpont-> DNS-konfigurációt, és tekintse át a teljes tartománynevek javasolt leképezését.
     - Válassza a konfiguráció hozzáadása lehetőséget, és válassza ki az imént létrehozott internal.monitor.azure.com zónát
     - Rekordok hozzáadása a ![ konfigurált DNS-zóna fenti képernyőképéhez](./media/private-link-security/private-endpoint-global-dns-zone.png)
-    - Nyissa meg a Application Insights összetevőt, és másolja a [kapcsolati karakterláncát](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string).
+    - Nyissa meg a Application Insights összetevőt, és másolja a [kapcsolati karakterláncát](../app/sdk-connection-string.md).
     - Azokat az alkalmazásokat vagy parancsfájlokat, amelyek privát hivatkozáson keresztül Szeretnék meghívni ezt az összetevőt, a kapcsolati karakterláncot a EndpointSuffix = Internal. monitor. Azure. com használatával kell használniuk.
 * Végpontok leképezése a gazdagépeken a DNS helyett, hogy csak egy adott számítógépről/virtuális gépről férhessen hozzá a saját hálózatán:
     - Állítson be egy AMPLS és egy privát végpontot, és válassza ki, hogy **ne** legyen automatikus integráció a magánhálózati DNS-sel 
@@ -280,7 +324,7 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace k
 A Azure Monitor-portál használatának, például a Application Insights és a Log Analytics használatához engedélyeznie kell a Azure Portal és a Azure Monitor bővítmények számára a magánhálózatok elérését. Vegye fel a **AzureActiveDirectory**, a **AzureResourceManager**, a **AzureFrontDoor. FirstParty** és a **AzureFrontDoor. frontend** [szolgáltatás címkéit](../../firewall/service-tags.md) a hálózati biztonsági csoportba.
 
 ### <a name="querying-data"></a>Adatok lekérdezése
-Az [ `externaldata` operátor](https://docs.microsoft.com/azure/data-explorer/kusto/query/externaldata-operator?pivots=azuremonitor) nem támogatott privát kapcsolaton keresztül, mert beolvassa az adatokat a Storage-fiókokból, de nem garantálja, hogy a tárterületet privát módon éri el.
+Az [ `externaldata` operátor](/azure/data-explorer/kusto/query/externaldata-operator?pivots=azuremonitor) nem támogatott privát kapcsolaton keresztül, mert beolvassa az adatokat a Storage-fiókokból, de nem garantálja, hogy a tárterületet privát módon éri el.
 
 ### <a name="programmatic-access"></a>Szoftveres hozzáférés
 

@@ -6,18 +6,18 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 12/03/2020
 ms.author: msangapu
-ms.openlocfilehash: 8892723ec1a53c59e3e6183b5d53c2e61db4e5d0
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 7d6f9564328f81b71c62a4243c5f4cc209a29d8f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575228"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714476"
 ---
 # <a name="monitor-app-service-instances-using-health-check"></a>App Service példányok figyelése állapot-ellenőrzés használatával
 
 ![Állapot-ellenőrzési hiba][2]
 
-Ez a cikk az App Service példányok figyelésére használja a Azure Portal állapot-ellenőrzését. Az állapot-ellenőrzés a nem kifogástalan állapotú példányok eltávolításával növeli az alkalmazás rendelkezésre állását. Az [app Service-tervet](/azure/app-service/overview-hosting-plans) két vagy több példányra kell méretezni az állapot-ellenőrzési szolgáltatás használatához. Az állapot-ellenőrzési útvonalnak ellenőriznie kell az alkalmazás kritikus összetevőit. Ha például az alkalmazás egy adatbázistól és egy üzenetkezelő rendszertől függ, az állapot-ellenőrzési végpontnak csatlakoznia kell ezekhez az összetevőkhöz. Ha az alkalmazás nem tud csatlakozni egy kritikus összetevőhöz, az elérési útnak egy 500 szintű választ kell visszaadnia, amely azt jelzi, hogy az alkalmazás nem kifogástalan állapotú.
+Ez a cikk az App Service példányok figyelésére használja a Azure Portal állapot-ellenőrzését. Az állapot-ellenőrzés a nem kifogástalan állapotú példányok eltávolításával növeli az alkalmazás rendelkezésre állását. Az [app Service-tervet](./overview-hosting-plans.md) két vagy több példányra kell méretezni az állapot-ellenőrzési szolgáltatás használatához. Az állapot-ellenőrzési útvonalnak ellenőriznie kell az alkalmazás kritikus összetevőit. Ha például az alkalmazás egy adatbázistól és egy üzenetkezelő rendszertől függ, az állapot-ellenőrzési végpontnak csatlakoznia kell ezekhez az összetevőkhöz. Ha az alkalmazás nem tud csatlakozni egy kritikus összetevőhöz, az elérési útnak egy 500 szintű választ kell visszaadnia, amely azt jelzi, hogy az alkalmazás nem kifogástalan állapotú.
 
 ## <a name="what-app-service-does-with-health-checks"></a>App Service az állapot-ellenőrzésekkel
 
@@ -48,7 +48,7 @@ Ez a cikk az App Service példányok figyelésére használja a Azure Portal ál
 
 Az állapot-ellenőrzési beállítások konfigurálása mellett a következő [Alkalmazásbeállítások](configure-common.md)is megadhatók:
 
-| Alkalmazás-beállítás neve | Megengedett értékek | Description |
+| Alkalmazás-beállítás neve | Megengedett értékek | Leírás |
 |-|-|-|
 |`WEBSITE_HEALTHCHECK_MAXPINGFAILURES` | 2 - 10 | A pingelési hibák maximális száma. Ha például a értékre van állítva `2` , a rendszer eltávolítja a példányokat a `2` sikertelen pingelések után. Emellett, ha a vertikális felskálázást végzi, App Service Pingeli az állapot-ellenőrzési útvonalat, hogy az új példányok készen álljanak. |
 |`WEBSITE_HEALTHCHECK_MAXUNHEALTYWORKERPERCENT` | 0 - 100 | Ha el szeretné kerülni, hogy az egészséges példányok ne legyenek túlterhelve, a példányok több mint fele ki lesz zárva. Ha például egy App Service csomag négy példányra van méretezve, és a három nem kifogástalan állapotú, akkor a legtöbb kettő kizárja. A másik két példány (egy kifogástalan és egy sérült) továbbra is fogadja a kérelmeket. Abban a legrosszabb esetben, ha az összes példány állapota nem kifogástalan, a rendszer nem zárja ki az egyiket sem. A viselkedés felülbírálásához állítsa a és a közötti értéket `0` `100` . A magasabb érték azt jelenti, hogy A rendszer eltávolítja a nem megfelelő állapotú példányokat (az alapértelmezett érték 50). |

@@ -1,25 +1,25 @@
 ---
-title: Naplók lekérdezése Azure Monitor for VMs
-description: Azure Monitor for VMs a megoldás metrikákat és naplózási adatokat gyűjt, és ez a cikk ismerteti a rekordokat, és példákat tartalmaz a lekérdezésekre.
+title: Naplók lekérdezése a VM-elemzésből
+description: A VM-elemzési megoldás metrikákat és naplózási adatokat gyűjt, és ez a cikk ismerteti a rekordokat, és példákat tartalmaz a lekérdezésekre.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: ae0bc6ea35d5c6e3ebe0cd7f232e5c8b1e637d9d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bbecb15173c929aee46e7d1eeb5e83aab86430f5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100619778"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713524"
 ---
-# <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>Naplók lekérdezése Azure Monitor for VMs
+# <a name="how-to-query-logs-from-vm-insights"></a>Naplók lekérdezése a VM-elemzésből
 
-A Azure Monitor for VMs a teljesítmény-és a kapcsolatok mérőszámait, a számítógép-és feldolgozási leltári adatokat, valamint az állapotadatok adatait és a Azure Monitor Log Analytics munkaterületére továbbítja azokat.  Ezek az adatAzure Monitor [lekérdezésekhez](../log-query/log-query-overview.md) érhetők el. Ezeket az információkat olyan forgatókönyvekre alkalmazhatja, amelyek tartalmazzák az áttelepítés megtervezését, a kapacitás elemzését, a felderítést és az igény szerinti teljesítménnyel kapcsolatos hibaelhárítást.
+A VM-elemzések a teljesítmény és a kapcsolatok mérőszámait, a számítógép-és feldolgozási leltári adatokat, valamint az állapotadatok adatait és a Azure Monitor Log Analytics munkaterületére továbbítják.  Ezek az adatAzure Monitor [lekérdezésekhez](../logs/log-query-overview.md) érhetők el. Ezeket az információkat olyan forgatókönyvekre alkalmazhatja, amelyek tartalmazzák az áttelepítés megtervezését, a kapacitás elemzését, a felderítést és az igény szerinti teljesítménnyel kapcsolatos hibaelhárítást.
 
 ## <a name="map-records"></a>Rekordok leképezése
 
-A rendszer óránként létrehoz egy rekordot minden egyedi számítógéphez és folyamathoz, valamint a folyamat vagy számítógép indításakor vagy Azure Monitor for VMs Térkép funkciójának indításakor generált rekordokon kívül. Ezek a rekordok a következő táblákban található tulajdonságokkal rendelkeznek. A ServiceMapComputer_CL események mezői és értékei a ServiceMap Azure Resource Manager API-ban lévő számítógép-erőforrás mezőire vannak leképezve. A ServiceMapProcess_CL események mezői és értékei a ServiceMap Azure Resource Manager API-ban található folyamat-erőforrás mezőire vannak leképezve. A ResourceName_s mező megegyezik a megfelelő Resource Manager-erőforrásban található Name mezővel. 
+A rendszer óránként létrehoz egy rekordot minden egyes egyedi számítógéphez és folyamathoz, valamint a folyamat vagy számítógép indításakor vagy a virtuális gépekre vonatkozó Térkép funkcióba való bevezetéskor generált rekordokon kívül. Ezek a rekordok a következő táblákban található tulajdonságokkal rendelkeznek. A ServiceMapComputer_CL események mezői és értékei a ServiceMap Azure Resource Manager API-ban lévő számítógép-erőforrás mezőire vannak leképezve. A ServiceMapProcess_CL események mezői és értékei a ServiceMap Azure Resource Manager API-ban található folyamat-erőforrás mezőire vannak leképezve. A ResourceName_s mező megegyezik a megfelelő Resource Manager-erőforrásban található Name mezővel. 
 
 Az egyedi folyamatok és számítógépek azonosításához belsőleg generált tulajdonságok tartoznak:
 
@@ -112,7 +112,7 @@ A *VMConnection* táblában lévő összes RemoteIp-tulajdonságot a rendszer az
 |:--|:--|
 |MaliciousIp |A RemoteIp címe |
 |IndicatorThreadType |Az észlelt veszélyforrás a következő értékek egyike: *botnet*, *C2*, *CryptoMining*, *Darknet*, *DDos*, *MaliciousUrl*, *malware*, *phishing*, *proxy*, *PUA*, *List*.   |
-|Description |A megfigyelt fenyegetés leírása. |
+|Leírás |A megfigyelt fenyegetés leírása. |
 |TLPLevel |A forgalmi lámpa protokoll (TLP) szintje az egyik definiált érték, a *fehér*, a *zöld*, a *sárga* és a *vörös*. |
 |Megbízhatóság |Az értékek *0 – 100*. |
 |Súlyosság |Az értékek *0 – 5*, ahol az *5* a legsúlyosabb, a *0* pedig egyáltalán nem súlyos. Az alapértelmezett érték *3*.  |
@@ -233,7 +233,7 @@ A *VMProcess* rendelkező rekordok a függőségi ügynökkel rendelkező kiszol
 |Group | A feldolgozó csoport neve. Az ugyanabban a csoportban lévő folyamatok logikailag kapcsolódnak egymáshoz, például ugyanannak a terméknek vagy rendszerösszetevőnek a része. |
 |StartTime | A folyamat készletének kezdési ideje |
 |FirstPid | A folyamat első PID-je |
-|Description | A folyamat leírása |
+|Leírás | A folyamat leírása |
 |CompanyName | A vállalat neve |
 |InternalName | A belső név |
 |TermékNév | A termék neve |
@@ -473,6 +473,6 @@ A jelenleg a *InsightsMetrics* táblába összegyűjtött teljesítményszámlá
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Ha a Azure Monitor naplóbeli lekérdezések írásakor új, tekintse át a következő [témakört: log Analytics használata](../log-query/log-analytics-tutorial.md) a Azure Portal a naplók írásához.
+* Ha a Azure Monitor naplóbeli lekérdezések írásakor új, tekintse át a következő [témakört: log Analytics használata](../logs/log-analytics-tutorial.md) a Azure Portal a naplók írásához.
 
-* További információ a [keresési lekérdezések írásához](../log-query/get-started-queries.md).
+* További információ a [keresési lekérdezések írásához](../logs/get-started-queries.md).

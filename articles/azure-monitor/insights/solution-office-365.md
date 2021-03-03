@@ -1,17 +1,16 @@
 ---
 title: Office 365 felügyeleti megoldás az Azure-ban
 description: Ez a cikk részletesen ismerteti az Office 365-megoldás konfigurálását és használatát az Azure-ban.  A Azure Monitorban létrehozott Office 365-rekordok részletes leírását tartalmazza.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: d031b64b36bd7ff91c64960642cfbf00fb1682ab
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: be5409f7130f0e79b77871a2657609e8ddb76e36
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587301"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728637"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365 felügyeleti megoldás az Azure-ban (előzetes verzió)
 
@@ -462,7 +461,7 @@ Ezek a rekordok a SharePoint-fájl műveleteire adott válaszként jönnek létr
 
 A következő táblázat példákat tartalmaz a megoldás által gyűjtött frissítési rekordok lekérdezésére.
 
-| Lekérdezés | Description |
+| Lekérdezés | Leírás |
 | --- | --- |
 |Az Office 365-előfizetés összes műveletének száma |OfficeActivity &#124; összegzések száma () művelet szerint |
 |SharePoint-webhelyek használata|OfficeActivity &#124;, ahol a OfficeWorkload = ~ "SharePoint" &#124; összesítések száma () SiteUrl szerint \| rendezve|

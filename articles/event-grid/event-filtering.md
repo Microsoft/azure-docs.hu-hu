@@ -2,13 +2,13 @@
 title: Azure Event Grid eseményeinek szűrése
 description: Ismerteti, hogyan szűrhetők az események Azure Event Grid előfizetés létrehozásakor.
 ms.topic: conceptual
-ms.date: 12/03/2020
-ms.openlocfilehash: bc3e84037693fcd909961ba409871d947ef1de7d
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.date: 02/26/2021
+ms.openlocfilehash: 7253c4a38660b0041f27918309efae21675fdc8f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574906"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721956"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Event Grid-előfizetések esemény-szűrésének ismertetése
 
@@ -54,9 +54,493 @@ A következő JSON-szintaxis a tárgy szerinti szűréshez:
 Az adatmezőkben lévő értékek alapján történő szűréshez és az összehasonlító operátor megadásához használja a speciális szűrési lehetőséget. A speciális szűrés területen a következőket kell megadnia:
 
 * operátor típusa – az összehasonlítás típusa.
-* kulcs – a szűréshez használt esemény adatai mezője. Ez lehet szám, logikai vagy karakterlánc.
+* kulcs – a szűréshez használt esemény adatai mezője. Ez lehet egy szám, egy logikai, egy karakterlánc vagy egy tömb.
 * értékek – a kulcshoz összehasonlítandó érték vagy értékek.
 
+## <a name="key"></a>Kulcs
+A kulcs a szűréshez használt esemény adatai mezője. Ez lehet egy szám, egy logikai, egy karakterlánc vagy egy tömb. A **Event Grid sémában** lévő eseményekhez használja a következő értékeket a kulcshoz:,,,, `ID` `Topic` `Subject` `EventType` `DataVersion` vagy eseményvezérelt adatok (például `data.key1` ).
+
+A **Felhőbeli események sémájában** lévő eseményekhez használja a következő értékeket a kulcshoz:,,, `eventid` `source` `eventtype` `eventtypeversion` vagy eseményvezérelt adatok (például `data.key1` ).
+
+**Egyéni bemeneti séma** esetén használja az esemény adatmezőit (például `data.key1` ).
+
+Az adat szakasz mezőinek eléréséhez használja a `.` (dot) jelölést. Például a `data.sitename` `data.appEventTypeDetail.action` `sitename` `action` következő minta eseményhez való hozzáféréshez vagy az alkalmazáshoz.
+
+```json
+    "data": {
+        "appEventTypeDetail": {
+            "action": "Started"
+        },
+        "siteName": "<site-name>",
+        "clientRequestId": "None",
+        "correlationRequestId": "None",
+        "requestId": "292f499d-04ee-4066-994d-c2df57b99198",
+        "address": "None",
+        "verb": "None"
+    },
+```
+
+
+## <a name="values"></a>Értékek
+Az értékek a következőket okozhatják: number, string, Boolean vagy Array.
+
+
+## <a name="operators"></a>Operátorok
+
+A **számok** számára elérhető operátorok a következők:
+
+## <a name="numberin"></a>NumberIn
+A NumberIn operátor igaz értéket ad vissza, ha a **kulcs** értéke a megadott **szűrési** értékek egyike. A következő példában ellenőrzi, hogy a `counter` szakaszban az attribútum értéke `data` 5 vagy 1. 
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberIn",
+    "key": "data.counter",
+    "values": [
+        5,
+        1
+    ]
+}]
+```
+
+
+Ha a kulcs tömb, a rendszer a tömbben lévő összes értéket ellenőrzi a szűrési értékek tömbje alapján. Itt látható a (z) kulcsot tartalmazó pszeudo `[v1, v2, v3]` -kód: és a szűrő: `[a, b, c]` . A rendszer figyelmen kívül hagyja a szűrő adattípusának megfelelő adattípusú kulcs-értékeket.
+
+```
+FOR_EACH filter IN (a, b, c)
+    FOR_EACH key IN (v1, v2, v3)
+        IF filter == key
+            MATCH
+```
+
+## <a name="numbernotin"></a>NumberNotIn
+A NumberNotIn igaz értéket ad vissza, ha a **kulcs** értéke **nem** a megadott **szűrési** értékek egyike. A következő példában ellenőrzi, hogy a `counter` szakasz attribútumának értéke `data` nem 41 és 0. 
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberNotIn",
+    "key": "data.counter",
+    "values": [
+        41,
+        0
+    ]
+}]
+```
+
+Ha a kulcs tömb, a rendszer a tömbben lévő összes értéket ellenőrzi a szűrési értékek tömbje alapján. Itt látható a (z) kulcsot tartalmazó pszeudo `[v1, v2, v3]` -kód: és a szűrő: `[a, b, c]` . A rendszer figyelmen kívül hagyja a szűrő adattípusának megfelelő adattípusú kulcs-értékeket.
+
+```
+FOR_EACH filter IN (a, b, c)
+    FOR_EACH key IN (v1, v2, v3)
+        IF filter == key
+            FAIL_MATCH
+```
+
+## <a name="numberlessthan"></a>NumberLessThan
+A NumberLessThan operátor igaz értéket ad vissza, ha a **kulcs** értéke **kisebb** a megadott **szűrő** értéknél. A következő példában ellenőrzi, hogy a `counter` szakasz attribútumának értéke kisebb-e, `data` mint 100. 
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberLessThan",
+    "key": "data.counter",
+    "value": 100
+}]
+```
+
+Ha a kulcs tömb, a rendszer a tömbben lévő összes értéket ellenőrzi a szűrő értékével. Itt látható a következő kulcsot tartalmazó pszeudo-kód: `[v1, v2, v3]` . A rendszer figyelmen kívül hagyja a szűrő adattípusának megfelelő adattípusú kulcs-értékeket.
+
+```
+FOR_EACH key IN (v1, v2, v3)
+    IF key < filter
+        MATCH
+```
+
+## <a name="numbergreaterthan"></a>NumberGreaterThan
+A NumberGreaterThan operátor igaz értéket ad vissza, ha a **kulcs** értéke **nagyobb** a megadott **szűrő** értéknél. A következő példában ellenőrzi, hogy a szakaszban szereplő attribútum értéke nagyobb-e, `counter` `data` mint 20. 
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberGreaterThan",
+    "key": "data.counter",
+    "value": 20
+}]
+```
+
+Ha a kulcs tömb, a rendszer a tömbben lévő összes értéket ellenőrzi a szűrő értékével. Itt látható a következő kulcsot tartalmazó pszeudo-kód: `[v1, v2, v3]` . A rendszer figyelmen kívül hagyja a szűrő adattípusának megfelelő adattípusú kulcs-értékeket.
+
+```
+FOR_EACH key IN (v1, v2, v3)
+    IF key > filter
+        MATCH
+```
+
+## <a name="numberlessthanorequals"></a>NumberLessThanOrEquals
+A NumberLessThanOrEquals operátor igaz értéket ad vissza, ha a **kulcs** értéke **kisebb vagy egyenlő, mint** a megadott **szűrő** értéke. A következő példában ellenőrzi, hogy a `counter` szakasz attribútumának értéke `data` 100-nál kisebb vagy egyenlő-e. 
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberLessThanOrEquals",
+    "key": "data.counter",
+    "value": 100
+}]
+```
+
+Ha a kulcs tömb, a rendszer a tömbben lévő összes értéket ellenőrzi a szűrő értékével. Itt látható a következő kulcsot tartalmazó pszeudo-kód: `[v1, v2, v3]` . A rendszer figyelmen kívül hagyja a szűrő adattípusának megfelelő adattípusú kulcs-értékeket.
+
+```
+FOR_EACH key IN (v1, v2, v3)
+    IF key <= filter
+        MATCH
+```
+
+## <a name="numbergreaterthanorequals"></a>NumberGreaterThanOrEquals
+A NumberGreaterThanOrEquals operátor igaz értéket ad vissza, ha a **kulcs** értéke **nagyobb vagy egyenlő, mint** a megadott **szűrő** értéke. A következő példában ellenőrzi, hogy a `counter` szakasz attribútumának értéke `data` nagyobb vagy egyenlő-e, mint 30. 
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberGreaterThanOrEquals",
+    "key": "data.counter",
+    "value": 30
+}]
+```
+
+Ha a kulcs tömb, a rendszer a tömbben lévő összes értéket ellenőrzi a szűrő értékével. Itt látható a következő kulcsot tartalmazó pszeudo-kód: `[v1, v2, v3]` . A rendszer figyelmen kívül hagyja a szűrő adattípusának megfelelő adattípusú kulcs-értékeket.
+
+```
+FOR_EACH key IN (v1, v2, v3)
+    IF key >= filter
+        MATCH
+```
+
+## <a name="numberinrange"></a>NumberInRange
+A NumberInRange operátor igaz értéket ad vissza, ha a **kulcs** értéke a megadott **szűrési tartományok** egyikében van. Az alábbi példában ellenőrzi, hogy a `key1` szakasz attribútumának értéke a következő `data` két tartomány egyikében van-e: 3,14159-999,95, 3000-4000. 
+
+```json
+{
+    "operatorType": "NumberInRange",
+    "key": "data.key1",
+    "values": [[3.14159, 999.95], [3000, 4000]]
+}
+```
+
+A `values` tulajdonság a tartományok tömbje. Az előző példában ez két tartomány tömbje. Az alábbi példa egy olyan tömböt mutat be, amelynek egy tartománya van. 
+
+**Tömb egyetlen tartománnyal:** 
+```json
+{
+    "operatorType": "NumberInRange",
+    "key": "data.key1",
+    "values": [[3000, 4000]]
+}
+```
+
+Ha a kulcs tömb, a rendszer a tömbben lévő összes értéket ellenőrzi a szűrési értékek tömbje alapján. Itt látható a következő pszeudo-kód: `[v1, v2, v3]` és a szűrő: tartományok tömbje. Ebben az ál-kódban `a` a `b` tömb minden tartományának alsó és felső értéke. A rendszer figyelmen kívül hagyja a szűrő adattípusának megfelelő adattípusú kulcs-értékeket.
+
+```
+FOR_EACH (a,b) IN filter.Values
+    FOR_EACH key IN (v1, v2, v3)
+       IF key >= a AND key <= b
+           MATCH
+```
+
+
+## <a name="numbernotinrange"></a>NumberNotInRange
+A NumberNotInRange operátor igaz értéket ad vissza, ha a **kulcs** értéke **nem** szerepel a megadott **szűrési tartományokban**. Az alábbi példában ellenőrzi, hogy a `key1` szakasz attribútumának értéke a következő `data` két tartomány egyikében van-e: 3,14159-999,95, 3000-4000. Ha igen, az operátor hamis értéket ad vissza. 
+
+```json
+{
+    "operatorType": "NumberNotInRange",
+    "key": "data.key1",
+    "values": [[3.14159, 999.95], [3000, 4000]]
+}
+```
+A `values` tulajdonság a tartományok tömbje. Az előző példában ez két tartomány tömbje. Az alábbi példa egy olyan tömböt mutat be, amelynek egy tartománya van.
+
+**Tömb egyetlen tartománnyal:** 
+```json
+{
+    "operatorType": "NumberNotInRange",
+    "key": "data.key1",
+    "values": [[3000, 4000]]
+}
+```
+
+Ha a kulcs tömb, a rendszer a tömbben lévő összes értéket ellenőrzi a szűrési értékek tömbje alapján. Itt látható a következő pszeudo-kód: `[v1, v2, v3]` és a szűrő: tartományok tömbje. Ebben az ál-kódban `a` a `b` tömb minden tartományának alsó és felső értéke. A rendszer figyelmen kívül hagyja a szűrő adattípusának megfelelő adattípusú kulcs-értékeket.
+
+```
+FOR_EACH (a,b) IN filter.Values
+    FOR_EACH key IN (v1, v2, v3)
+        IF key >= a AND key <= b
+            FAIL_MATCH
+```
+
+
+A **logikai értékek** számára elérhető operátor a következő: 
+
+## <a name="boolequals"></a>BoolEquals
+A BoolEquals operátor igaz értéket ad vissza, ha a **kulcs** értéke a megadott logikai érték **szűrő**. A következő példában ellenőrzi, hogy a `isEnabled` `data` szakaszban található attribútum értéke `true` . 
+
+```json
+"advancedFilters": [{
+    "operatorType": "BoolEquals",
+    "key": "data.isEnabled",
+    "value": true
+}]
+```
+
+Ha a kulcs egy tömb, a rendszer a tömbben lévő összes értéket ellenőrzi a logikai érték szűrésével. Itt látható a következő kulcsot tartalmazó pszeudo-kód: `[v1, v2, v3]` . A rendszer figyelmen kívül hagyja a szűrő adattípusának megfelelő adattípusú kulcs-értékeket.
+
+```
+FOR_EACH key IN (v1, v2, v3)
+    IF filter == key
+        MATCH
+```
+
+A **karakterláncok** elérhető operátorai a következők:
+
+## <a name="stringcontains"></a>StringContains
+A **StringContains** igaz értéket ad vissza, ha a **kulcs** értéke a megadott **szűrési** értékek bármelyikét **tartalmazza** (alkarakterláncok). A következő példában ellenőrzi, hogy a `key1` szakasz attribútumának értéke tartalmazza-e a `data` megadott alsztringek valamelyikét: `microsoft` vagy `azure` . Például `azure data factory` `azure` :. 
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringContains",
+    "key": "data.key1",
+    "values": [
+        "microsoft", 
+        "azure"
+    ]
+}]
+```
+
+Ha a kulcs tömb, a rendszer a tömbben lévő összes értéket ellenőrzi a szűrési értékek tömbje alapján. Itt látható a (z) kulcsot tartalmazó pszeudo `[v1, v2, v3]` -kód: és a szűrő: `[a,b,c]` . A rendszer figyelmen kívül hagyja a szűrő adattípusának megfelelő adattípusú kulcs-értékeket.
+
+```
+FOR_EACH filter IN (a, b, c)
+    FOR_EACH key IN (v1, v2, v3)
+        IF key CONTAINS filter
+            MATCH
+```
+
+## <a name="stringnotcontains"></a>StringNotContains
+A **StringNotContains** operátor igaz értéket ad vissza, ha  a kulcs **nem tartalmazza** a megadott **szűrési** értékeket alkarakterláncként. Ha a kulcs egy megadott értéket tartalmaz egy alsztringként, az operátor hamis értéket ad vissza. A következő példában az operátor csak akkor ad vissza igaz értéket, ha a `key1` szakasz attribútumának értéke `data` nem `contoso` és `fabrikam` alsztring. 
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringNotContains",
+    "key": "data.key1",
+    "values": [
+        "contoso", 
+        "fabrikam"
+    ]
+}]
+```
+
+Ha a kulcs tömb, a rendszer a tömbben lévő összes értéket ellenőrzi a szűrési értékek tömbje alapján. Itt látható a (z) kulcsot tartalmazó pszeudo `[v1, v2, v3]` -kód: és a szűrő: `[a,b,c]` . A rendszer figyelmen kívül hagyja a szűrő adattípusának megfelelő adattípusú kulcs-értékeket.
+
+```
+FOR_EACH filter IN (a, b, c)
+    FOR_EACH key IN (v1, v2, v3)
+        IF key CONTAINS filter
+            FAIL_MATCH
+```
+
+## <a name="stringbeginswith"></a>StringBeginsWith
+A **StringBeginsWith** operátor igaz értéket ad vissza, ha a **kulcs** értéke a megadott **szűrési** értékek bármelyikével **kezdődik** . A következő példában ellenőrzi, hogy a szakaszban szereplő attribútum értéke a vagy a karakterrel kezdődik-e `key1` `data` `event` `grid` . Például a következővel `event hubs` kezdődik: `event` .  
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringBeginsWith",
+    "key": "data.key1",
+    "values": [
+        "event", 
+        "message"
+    ]
+}]
+```
+
+Ha a kulcs tömb, a rendszer a tömbben lévő összes értéket ellenőrzi a szűrési értékek tömbje alapján. Itt látható a (z) kulcsot tartalmazó pszeudo `[v1, v2, v3]` -kód: és a szűrő: `[a,b,c]` . A rendszer figyelmen kívül hagyja a szűrő adattípusának megfelelő adattípusú kulcs-értékeket.
+
+```
+FOR_EACH filter IN (a, b, c)
+    FOR_EACH key IN (v1, v2, v3)
+        IF key BEGINS_WITH filter
+            MATCH
+```
+
+## <a name="stringnotbeginswith"></a>StringNotBeginsWith
+A **StringNotBeginsWith** operátor igaz értéket ad vissza, ha a **kulcs** értéke **nem** a megadott **szűrési** értékekkel kezdődik. A következő példában ellenőrzi, hogy a szakaszban szereplő attribútum értéke nem a vagy a értékkel kezdődik-e `key1` `data` `event` `message` .
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringNotBeginsWith",
+    "key": "data.key1",
+    "values": [
+        "event", 
+        "message"
+    ]
+}]
+```
+
+Ha a kulcs tömb, a rendszer a tömbben lévő összes értéket ellenőrzi a szűrési értékek tömbje alapján. Itt látható a (z) kulcsot tartalmazó pszeudo `[v1, v2, v3]` -kód: és a szűrő: `[a,b,c]` . A rendszer figyelmen kívül hagyja a szűrő adattípusának megfelelő adattípusú kulcs-értékeket.
+
+```
+FOR_EACH filter IN (a, b, c)
+    FOR_EACH key IN (v1, v2, v3)
+        IF key BEGINS_WITH filter
+            FAIL_MATCH
+```
+
+## <a name="stringendswith"></a>StringEndsWith
+A **StringEndsWith** operátor igaz értéket ad vissza, ha a **kulcs** értéke a megadott **szűrési** értékek egyikével **végződik** . A következő példában ellenőrzi, hogy a `key1` szakasz attribútumának értéke a vagy a értékre `data` végződik- `jpg` e `jpeg` `png` . Például a következővel `eventgrid.png` végződik: `png` .
+
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringEndsWith",
+    "key": "data.key1",
+    "values": [
+        "jpg", 
+        "jpeg", 
+        "png"
+    ]
+}]
+```
+
+Ha a kulcs tömb, a rendszer a tömbben lévő összes értéket ellenőrzi a szűrési értékek tömbje alapján. Itt látható a (z) kulcsot tartalmazó pszeudo `[v1, v2, v3]` -kód: és a szűrő: `[a,b,c]` . A rendszer figyelmen kívül hagyja a szűrő adattípusának megfelelő adattípusú kulcs-értékeket.
+
+```
+FOR_EACH filter IN (a, b, c)
+    FOR_EACH key IN (v1, v2, v3)
+        IF key ENDS_WITH filter
+            MATCH
+```
+
+## <a name="stringnotendswith"></a>StringNotEndsWith
+A **StringNotEndsWith** operátor igaz értéket ad vissza, ha a **kulcs** értéke **nem** a megadott **szűrési** értékek bármelyikével végződik. A következő példában ellenőrzi, hogy a `key1` szakasz attribútumának értéke nem a vagy a értékre `data` végződik- `jpg` e `jpeg` `png` . 
+
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringNotEndsWith",
+    "key": "data.key1",
+    "values": [
+        "jpg", 
+        "jpeg", 
+        "png"
+    ]
+}]
+```
+
+Ha a kulcs tömb, a rendszer a tömbben lévő összes értéket ellenőrzi a szűrési értékek tömbje alapján. Itt látható a (z) kulcsot tartalmazó pszeudo `[v1, v2, v3]` -kód: és a szűrő: `[a,b,c]` . A rendszer figyelmen kívül hagyja a szűrő adattípusának megfelelő adattípusú kulcs-értékeket.
+
+```
+FOR_EACH filter IN (a, b, c)
+    FOR_EACH key IN (v1, v2, v3)
+        IF key ENDS_WITH filter
+            FAIL_MATCH
+```
+
+## <a name="stringin"></a>StringIn
+A **StringIn** operátor ellenőrzi, hogy a **kulcs** értéke **pontosan egyezik** -e a megadott **szűrési** értékek egyikével. A következő példában ellenőrzi, hogy a `key1` `data` szakaszban található attribútum értéke `exact` vagy `string` vagy `matches` . 
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringIn",
+    "key": "data.key1",
+    "values": [
+        "contoso", 
+        "fabrikam", 
+        "factory"
+    ]
+}]
+```
+
+Ha a kulcs tömb, a rendszer a tömbben lévő összes értéket ellenőrzi a szűrési értékek tömbje alapján. Itt látható a (z) kulcsot tartalmazó pszeudo `[v1, v2, v3]` -kód: és a szűrő: `[a,b,c]` . A rendszer figyelmen kívül hagyja a szűrő adattípusának megfelelő adattípusú kulcs-értékeket.
+
+```
+FOR_EACH filter IN (a, b, c)
+    FOR_EACH key IN (v1, v2, v3)
+        IF filter == key
+            MATCH
+```
+
+## <a name="stringnotin"></a>StringNotIn
+A **StringNotIn** operátor ellenőrzi, hogy a **kulcs** értéke **nem egyezik** -e a megadott **szűrési** értékek egyikével sem. A következő példában ellenőrzi, hogy a `key1` szakaszban található attribútum értéke `data` nem `aws` és `bridge` . 
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringNotIn",
+    "key": "data.key1",
+    "values": [
+        "aws", 
+        "bridge"
+    ]
+}]
+```
+
+Ha a kulcs tömb, a rendszer a tömbben lévő összes értéket ellenőrzi a szűrési értékek tömbje alapján. Itt látható a (z) kulcsot tartalmazó pszeudo `[v1, v2, v3]` -kód: és a szűrő: `[a,b,c]` . A rendszer figyelmen kívül hagyja a szűrő adattípusának megfelelő adattípusú kulcs-értékeket.
+
+```
+FOR_EACH filter IN (a, b, c)
+    FOR_EACH key IN (v1, v2, v3)
+        IF filter == key
+            FAIL_MATCH
+```
+
+
+Az összes karakterlánc-összehasonlítás nem különbözteti meg a kis-és nagybetűket.
+
+> [!NOTE]
+> Ha a JSON-esemény nem tartalmazza a speciális szűrő kulcsát, a szűrő a következő operátorok esetében **nem felel** meg: NumberGreaterThan, NumberGreaterThanOrEquals, NumberLessThan, NumberLessThanOrEquals, NumberIn, BoolEquals, StringContains, StringNotContains, StringBeginsWith, StringNotBeginsWith, StringEndsWith, StringNotEndsWith, StringIn. evaulated.
+> 
+>A szűrő a következő operátoroknak **megfelelően evaulated** : NumberNotIn, StringNotIn.
+
+
+## <a name="isnullorundefined"></a>IsNullOrUndefined
+A IsNullOrUndefined operátor igaz értéket ad vissza, ha a kulcs értéke NULL vagy nincs meghatározva. 
+
+```json
+{
+    "operatorType": "IsNullOrUndefined",
+    "key": "data.key1"
+}
+```
+
+A következő példában a key1 hiányzik, így az operátor igaz értékre értékeli. 
+
+```json
+{ 
+    "data": 
+    { 
+        "key2": 5 
+    } 
+}
+```
+
+A következő példában a key1 NULL értékre van állítva, így az operátor igaz értékre lesz kiértékelve.
+
+```json
+{
+    "data": 
+    { 
+        "key1": null
+    }
+}
+```
+
+Ha a key1 bármilyen más érték szerepel ezekben a példákban, az operátor kiértékeli a hamis értéket. 
+
+## <a name="isnotnull"></a>IsNotNull
+A IsNotNull operátor igaz értéket ad vissza, ha a kulcs értéke nem NULL vagy nincs meghatározva. 
+
+```json
+{
+    "operatorType": "IsNotNull",
+    "key": "data.key1"
+}
+```
+
+## <a name="or-and-and"></a>VAGY és és
 Ha több értékkel rendelkező egyetlen szűrőt ad meg, a rendszer egy **vagy** műveletet hajt végre, így a Key mező értékének az alábbi értékek egyikének kell lennie. Alább bemutatunk egy példát:
 
 ```json
@@ -93,78 +577,45 @@ Ha több különböző szűrőt ad meg, a **és** a művelet befejeződött, íg
 ]
 ```
 
-### <a name="operators"></a>Operátorok
+## <a name="cloudevents"></a>CloudEvents 
+A **CloudEvents sémában** lévő eseményekhez használja a következő értékeket a kulcshoz: `eventid` ,,, `source` `eventtype` `eventtypeversion` vagy eseményvezérelt adatok (például `data.key1` ). 
 
-A **számok** számára elérhető operátorok a következők:
+[A bővítmény környezeti attribútumait is használhatja a CloudEvents 1,0-ben](https://github.com/cloudevents/spec/blob/v1.0.1/spec.md#extension-context-attributes). A következő példában a `comexampleextension1` és a `comexampleothervalue` kiterjesztési környezeti attribútumok. 
 
-* NumberGreaterThan
-* NumberGreaterThanOrEquals
-* NumberLessThan
-* NumberLessThanOrEquals
-* NumberIn
-* NumberNotIn
+```json
+{
+    "specversion" : "1.0",
+    "type" : "com.example.someevent",
+    "source" : "/mycontext",
+    "id" : "C234-1234-1234",
+    "time" : "2018-04-05T17:31:00Z",
+    "subject": null,
+    "comexampleextension1" : "value",
+    "comexampleothervalue" : 5,
+    "datacontenttype" : "application/json",
+    "data" : {
+        "appinfoA" : "abc",
+        "appinfoB" : 123,
+        "appinfoC" : true
+    }
+}
+```
 
-A **logikai értékek** számára elérhető operátor a következő: 
-- BoolEquals
+Íme egy példa egy bővítmény környezeti attribútumának egy szűrőben való használatára.
 
-A **karakterláncok** elérhető operátorai a következők:
+```json
+"advancedFilters": [{
+    "operatorType": "StringBeginsWith",
+    "key": "comexampleothervalue",
+    "values": [
+        "5", 
+        "1"
+    ]
+}]
+```
 
-* StringContains
-* StringBeginsWith
-* StringEndsWith
-* StringIn
-* StringNotIn
 
-Az összes karakterlánc-összehasonlítás **nem** megkülönbözteti a kis-és nagybetűket.
-
-> [!NOTE]
-> Ha a JSON-esemény nem tartalmazza a speciális szűrő kulcsát, a szűrő evaulated, mivel a következő operátorok **nem egyeznek** : 
-> - NumberGreaterThan
-> - NumberGreaterThanOrEquals
-> - NumberLessThan
-> - NumberLessThanOrEquals
-> - NumberIn
-> - BoolEquals
-> - StringContains
-> - StringBeginsWith
-> - StringEndsWith
-> - StringIn
-> 
->A szűrő a következő operátoroknak **megfelelően** evaulated:
-> - NumberNotIn
-> - StringNotIn
-
-### <a name="key"></a>Kulcs
-
-A Event Grid sémában lévő eseményekhez használja a következő értékeket a kulcshoz:
-
-* ID (Azonosító)
-* Témakör
-* Tárgy
-* EventType
-* DataVersion
-* Esemény-és adatértékek (például az key1)
-
-A Cloud Events sémában lévő események esetében használja a következő értékeket a kulcshoz:
-
-* Napszállta
-* Forrás
-* EventType
-* EventTypeVersion
-* Esemény-és adatértékek (például az key1)
-
-Egyéni bemeneti séma esetén használja az esemény adatmezőit (például az adatok. key1).
-
-### <a name="values"></a>Értékek
-
-Az értékek a következőket tehetik:
-
-* szám
-* sztring
-* boolean
-* array
-
-### <a name="limitations"></a>Korlátozások
+## <a name="limitations"></a>Korlátozások
 
 A speciális szűrés a következő korlátozásokkal rendelkezik:
 
@@ -175,156 +626,11 @@ A speciális szűrés a következő korlátozásokkal rendelkezik:
 
 Ugyanaz a kulcs több szűrőben is használható.
 
-### <a name="examples"></a>Példák
-
-### <a name="stringcontains"></a>StringContains
-
-```json
-"advancedFilters": [{
-    "operatorType": "StringContains",
-    "key": "data.key1",
-    "values": [
-        "microsoft", 
-        "azure"
-    ]
-}]
-```
-
-### <a name="stringbeginswith"></a>StringBeginsWith
-
-```json
-"advancedFilters": [{
-    "operatorType": "StringBeginsWith",
-    "key": "data.key1",
-    "values": [
-        "event", 
-        "grid"
-    ]
-}]
-```
-
-### <a name="stringendswith"></a>StringEndsWith
-
-```json
-"advancedFilters": [{
-    "operatorType": "StringEndsWith",
-    "key": "data.key1",
-    "values": [
-        "jpg", 
-        "jpeg", 
-        "png"
-    ]
-}]
-```
-
-### <a name="stringin"></a>StringIn
-
-```json
-"advancedFilters": [{
-    "operatorType": "StringIn",
-    "key": "data.key1",
-    "values": [
-        "exact", 
-        "string", 
-        "matches"
-    ]
-}]
-```
-
-### <a name="stringnotin"></a>StringNotIn
-
-```json
-"advancedFilters": [{
-    "operatorType": "StringNotIn",
-    "key": "data.key1",
-    "values": [
-        "aws", 
-        "bridge"
-    ]
-}]
-```
-
-### <a name="numberin"></a>NumberIn
-
-```json
-
-"advancedFilters": [{
-    "operatorType": "NumberIn",
-    "key": "data.counter",
-    "values": [
-        5,
-        1
-    ]
-}]
-
-```
-
-### <a name="numbernotin"></a>NumberNotIn
-
-```json
-"advancedFilters": [{
-    "operatorType": "NumberNotIn",
-    "key": "data.counter",
-    "values": [
-        41,
-        0,
-        0
-    ]
-}]
-```
-
-### <a name="numberlessthan"></a>NumberLessThan
-
-```json
-"advancedFilters": [{
-    "operatorType": "NumberLessThan",
-    "key": "data.counter",
-    "value": 100
-}]
-```
-
-### <a name="numbergreaterthan"></a>NumberGreaterThan
-
-```json
-"advancedFilters": [{
-    "operatorType": "NumberGreaterThan",
-    "key": "data.counter",
-    "value": 20
-}]
-```
-
-### <a name="numberlessthanorequals"></a>NumberLessThanOrEquals
-
-```json
-"advancedFilters": [{
-    "operatorType": "NumberLessThanOrEquals",
-    "key": "data.counter",
-    "value": 100
-}]
-```
-
-### <a name="numbergreaterthanorequals"></a>NumberGreaterThanOrEquals
-
-```json
-"advancedFilters": [{
-    "operatorType": "NumberGreaterThanOrEquals",
-    "key": "data.counter",
-    "value": 30
-}]
-```
-
-### <a name="boolequals"></a>BoolEquals
-
-```json
-"advancedFilters": [{
-    "operatorType": "BoolEquals",
-    "key": "data.isEnabled",
-    "value": true
-}]
-```
 
 
-## <a name="next-steps"></a>További lépések
+
+
+## <a name="next-steps"></a>Következő lépések
 
 * Az események PowerShell-lel és az Azure CLI-vel való szűrésével kapcsolatos további tudnivalókért lásd: [Események szűrése Event Grid](how-to-filter-events.md).
 * Az Event Grid használatának gyors megkezdéséhez tekintse meg [az egyéni események létrehozása és irányítása Azure Event Grid](custom-event-quickstart.md)használatával című témakört.

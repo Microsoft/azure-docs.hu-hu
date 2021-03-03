@@ -7,13 +7,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/30/2020
-ms.openlocfilehash: 7ed1d9db09357b0702188c01a802600ff6350aff
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.date: 02/19/2021
+ms.openlocfilehash: b8754742c572a8dbc1f55c64e47bec640d757d65
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147266"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739368"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>Keresési átalakítás a leképezési adatfolyamban
 
@@ -38,8 +38,6 @@ A keresési transzformáció hasonló a bal külső illesztéshez. Az elsődlege
 **Egyezés:** Csak akkor látható, ha nincs bejelölve a "több sor egyeztetése" beállítás. Válassza ki, hogy az összes sor, az első egyezés vagy az utolsó egyezés egyezik-e. Minden sor ajánlott, mert a leggyorsabb végrehajtást hajtja végre. Ha az első sor vagy az utolsó sor van kiválasztva, meg kell adnia a rendezési feltételeket.
 
 **Keresési feltételek:** Válassza ki, hogy mely oszlopok egyeznek meg. Ha az egyenlőségi feltétel teljesül, a sorok egyezésnek tekintendők. Vigye a kurzort, és válassza a "számított oszlop" lehetőséget egy érték kinyeréséhez az [adatfolyam kifejezésének nyelvével](data-flow-expression-functions.md).
-
-A keresési átalakítás csak az esélyegyenlőségi egyezéseket támogatja. Ha testre szeretné szabni a keresési kifejezést úgy, hogy más operátorokat is tartalmazzon, például a nagyobbat, mint a, a [JOIN transzformációban érdemes kereszt illesztést](data-flow-join.md#custom-cross-join)használni. A Cross JOIN utasítással elkerülhetők az esetleges Descartes-féle hibák a végrehajtás során.
 
 Mindkét stream összes oszlopa szerepel a kimeneti adatok között. Ismétlődő vagy nem kívánt oszlopok eldobásához vegyen fel egy [Select transzformációt](data-flow-select.md) a keresési transzformáció után. Az oszlopok elhelyezhetők vagy átnevezhető egy fogadó átalakításban.
 

@@ -4,12 +4,12 @@ description: Ez az oktatóanyag azt ismerteti, hogyan tehet elérhetővé egy he
 ms.topic: tutorial
 ms.custom: devx-track-dotnet
 ms.date: 06/23/2020
-ms.openlocfilehash: bb2b9b5ed7c263762cc24b8eb2e6d66215147c4c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7669bc07ad91933cd31bd2ccd10eaf830d98de7c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935704"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710787"
 ---
 # <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Oktatóanyag: helyszíni WCF REST-szolgáltatás közzététele külső ügyfél számára az Azure WCF Relay használatával
 
@@ -53,20 +53,20 @@ A szolgáltatási szerződés meghatározza a szolgáltatás által támogatott 
 
 ### <a name="create-a-relay-contract-with-an-interface"></a>Továbbító szerződés létrehozása illesztőfelülettel
 
-1. Indítsa el a Microsoft Visual studiót rendszergazdaként. Ehhez kattintson a jobb gombbal a Visual Studio program ikonjára, majd válassza a **Futtatás rendszergazdaként**lehetőséget.
-1. A Visual Studióban válassza az **új projekt létrehozása**lehetőséget.
-1. A **create a New Project (új projekt létrehozása**) területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget a C# számára, és válassza a **tovább**lehetőséget
-1. Nevezze el a projekt *EchoService* , és válassza a **Létrehozás**lehetőséget.
+1. Indítsa el a Microsoft Visual studiót rendszergazdaként. Ehhez kattintson a jobb gombbal a Visual Studio program ikonjára, majd válassza a **Futtatás rendszergazdaként** lehetőséget.
+1. A Visual Studióban válassza az **új projekt létrehozása** lehetőséget.
+1. A **create a New Project (új projekt létrehozása**) területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget a C# számára, és válassza a **tovább** lehetőséget
+1. Nevezze el a projekt *EchoService* , és válassza a **Létrehozás** lehetőséget.
 
    ![Konzolalkalmazás létrehozása][2]
 
-1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése**lehetőséget. A **NuGet csomagkezelő**területén válassza a **Tallózás**elemet, majd keresse meg és válassza a **WindowsAzure. ServiceBus**elemet. Válassza a **telepítés**lehetőséget, és fogadja el a használati feltételeket.
+1. **Megoldáskezelő** kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése** lehetőséget. A **NuGet csomagkezelő** területén válassza a **Tallózás** elemet, majd keresse meg és válassza a **WindowsAzure. ServiceBus** elemet. Válassza a **telepítés** lehetőséget, és fogadja el a használati feltételeket.
 
     ![Service Bus csomag][3]
 
    Ez a csomag automatikusan hozzáadja a Service Bus-könyvtárakra és a WCF-re mutató hivatkozásokat `System.ServiceModel` . A [System.ServiceModel](/dotnet/api/system.servicemodel) az a névtér, amely lehetővé teszi a programozott hozzáférést a WCF alapszintű szolgáltatásaihoz. A Service Bus számos WCF-objektumot és -attribútumot használ a szolgáltatási szerződések meghatározására.
 
-1. Adja hozzá a következő `using` utasításokat a *program.cs*tetején:
+1. Adja hozzá a következő `using` utasításokat a *program.cs* tetején:
 
     ```csharp
     using System.ServiceModel;
@@ -180,12 +180,12 @@ Az Azure Relay létrehozásához egy felület használatával először létre k
 
 A konfigurációs fájl hasonló a WCF konfigurációs fájlhoz. Tartalmazza a szolgáltatás nevét, végpontját és kötését. A végpont az a hely, Azure Relay az ügyfelek és a gazdagépek számára lehetővé teszi az egymással való kommunikációt. A kötés a kommunikációhoz használt protokoll típusa. A fő különbség az, hogy ez a konfigurált szolgáltatási végpont egy [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) kötésre hivatkozik, amely nem része a .NET-keretrendszernek. A [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) a szolgáltatás által meghatározott kötések egyike.
 
-1. A **megoldáskezelő**kattintson duplán a **App.config** lehetőségre a fájl megnyitásához a Visual Studio Editorban.
+1. A **megoldáskezelő** kattintson duplán a **App.config** lehetőségre a fájl megnyitásához a Visual Studio Editorban.
 1. Az `<appSettings>` elemben cserélje le a helyőrzőket a szolgáltatási névtér nevére, valamint a korábbi lépésben másolt SAS-kulcsra.
 1. A `<system.serviceModel>` címkéken belül adjon hozzá egy `<services>` elemet. Egyetlen konfigurációs fájlban több továbbító alkalmazást is meghatározhat. Ez az oktatóanyag viszont csak egyet határoz meg.
 
     ```xml
-    <?xmlversion="1.0"encoding="utf-8"?>
+    <?xmlversion="1.0" encoding="utf-8"?>
     <configuration>
       <system.serviceModel>
         <services>
@@ -439,16 +439,16 @@ A következő feladat egy ügyfélalkalmazás létrehozása és a később megva
 
 1. Hozzon létre egy új projektet a jelenlegi Visual Studio-megoldásban az ügyfél számára:
 
-   1. A **Megoldáskezelőban**kattintson a jobb gombbal az aktuális megoldásra (ne a projektre) **Add**, majd válassza az  >  **új projekt**hozzáadása elemet.
+   1. A **Megoldáskezelőban** kattintson a jobb gombbal az aktuális megoldásra (ne a projektre) , majd válassza az  >  **új projekt** hozzáadása elemet.
    1. Az **Add a New Project (új projekt hozzáadása**) lapon válassza ki a **(.NET-keretrendszer)** lehetőséget a C# számára, majd kattintson a **Tovább gombra**.
-   1. Nevezze el a Project *EchoClient* , és válassza a **Létrehozás**lehetőséget.
+   1. Nevezze el a Project *EchoClient* , és válassza a **Létrehozás** lehetőséget.
 
-1. **Megoldáskezelő**a **EchoClient** projektben kattintson duplán a **program.cs** elemre, hogy megnyissa a fájlt a szerkesztőben, ha még nincs megnyitva.
+1. **Megoldáskezelő** a **EchoClient** projektben kattintson duplán a **program.cs** elemre, hogy megnyissa a fájlt a szerkesztőben, ha még nincs megnyitva.
 1. Módosítsa a névtér alapértelmezett `EchoClient` nevét a következőre: `Microsoft.ServiceBus.Samples`.
 1. Telepítse a [Service Bus NuGet csomagot](https://www.nuget.org/packages/WindowsAzure.ServiceBus):
 
-   1. **Megoldáskezelő**kattintson a jobb gombbal a **EchoClient** elemre, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
-   1. Válassza a **Tallózás**elemet, majd keresse meg és válassza ki a **WindowsAzure. ServiceBus**elemet. Válassza a **telepítés**lehetőséget, és fogadja el a használati feltételeket.
+   1. **Megoldáskezelő** kattintson a jobb gombbal a **EchoClient** elemre, majd válassza a **NuGet-csomagok kezelése** lehetőséget.
+   1. Válassza a **Tallózás** elemet, majd keresse meg és válassza ki a **WindowsAzure. ServiceBus** elemet. Válassza a **telepítés** lehetőséget, és fogadja el a használati feltételeket.
 
       ![A Service Bus-csomag telepítése][4]
 
@@ -508,12 +508,12 @@ namespace Microsoft.ServiceBus.Samples
 
 Ebben a lépésben létrehoz egy *App.config* fájlt egy alapszintű ügyfélalkalmazás számára, amely hozzáfér az ebben az oktatóanyagban korábban létrehozott szolgáltatáshoz. Ez a *App.config* -fájl határozza meg az egyezményt, a kötést és a végpont nevét. A feladatokhoz használt kód megtalálható az eljárást követő példában.
 
-1. **Megoldáskezelő**a **EchoClient** projektben kattintson duplán a **App.config** lehetőségre a fájl megnyitásához a Visual Studio Editorban.
+1. **Megoldáskezelő** a **EchoClient** projektben kattintson duplán a **App.config** lehetőségre a fájl megnyitásához a Visual Studio Editorban.
 1. Az `<appSettings>` elemben cserélje le a helyőrzőket a szolgáltatási névtér nevére, valamint a korábbi lépésben másolt SAS-kulcsra.
 1. A `system.serviceModel` elemen belül adjon hozzá egy `<client>` elemet.
 
     ```xml
-    <?xmlversion="1.0"encoding="utf-8"?>
+    <?xmlversion="1.0" encoding="utf-8"?>
     <configuration>
       <system.serviceModel>
         <client>
@@ -534,7 +534,7 @@ Ebben a lépésben létrehoz egy *App.config* fájlt egy alapszintű ügyfélalk
 
     Ez a kód a végpont nevét határozza meg. Meghatározza továbbá a szolgáltatásban definiált szerződést és azt is, hogy az ügyfélalkalmazás a TCP-t használja a Azure Relay való kommunikációhoz. A következő lépés a végpont neve használatával ezt a végpont-konfigurációt összekapcsolja a szolgáltatás URI-jával.
 
-1. Válassza **File**  >  **a fájl mentés összes mentése**lehetőséget.
+1. Válassza   >  **a fájl mentés összes mentése** lehetőséget.
 
 ### <a name="example-of-the-appconfig-file"></a>Példa a App.config fájlra
 
@@ -571,7 +571,7 @@ Ebben a szakaszban egy alapszintű ügyfélalkalmazás megvalósítását hajtja
 * Végrehajtja az alkalmazásspecifikus feladatokat.
 * Bezárja a kapcsolatot.
 
-Azonban az egyik fő különbség az, hogy az ügyfélalkalmazás egy csatornát használ a Relay szolgáltatáshoz való kapcsolódáshoz. A szolgáltatás a **ServiceHost**hívását használja. A feladatokhoz használt kód megtalálható az eljárást követő példában.
+Azonban az egyik fő különbség az, hogy az ügyfélalkalmazás egy csatornát használ a Relay szolgáltatáshoz való kapcsolódáshoz. A szolgáltatás a **ServiceHost** hívását használja. A feladatokhoz használt kód megtalálható az eljárást követő példában.
 
 ### <a name="implement-a-client-application"></a>Ügyfélalkalmazás implementálása
 
@@ -724,17 +724,17 @@ namespace Microsoft.ServiceBus.Samples
 ## <a name="run-the-applications"></a>Az alkalmazások futtatása
 
 1. Válassza a CTRL + SHIFT + B billentyűkombinációt a megoldás felépítéséhez. Ez a művelet létrehozza az ügyfél-projektet és az előző lépésekben létrehozott szolgáltatási projektet is.
-1. Az ügyfélalkalmazás futtatása előtt győződjön meg arról, hogy a szolgáltatásalkalmazás fut. **Megoldáskezelő**kattintson a jobb gombbal a **EchoService** -megoldásra, majd válassza a **Tulajdonságok parancsot**.
-1. A **tulajdonságlapok**, **Általános tulajdonságok**  >  **indítási projekt**, majd **több indítási projekt**közül választhat. Győződjön meg arról, hogy a lista első eleme az **EchoService**.
+1. Az ügyfélalkalmazás futtatása előtt győződjön meg arról, hogy a szolgáltatásalkalmazás fut. **Megoldáskezelő** kattintson a jobb gombbal a **EchoService** -megoldásra, majd válassza a **Tulajdonságok parancsot**.
+1. A **tulajdonságlapok**, **Általános tulajdonságok**  >  **indítási projekt**, majd **több indítási projekt** közül választhat. Győződjön meg arról, hogy a lista első eleme az **EchoService**.
 1. Az **Action** (Művelet) mezőt állítsa az **EchoService** és az **EchoClient** projekt esetén is **Start** (Indítás) értékűre.
 
     ![Projekt tulajdonságlapjának lapja][5]
 
-1. Válassza a **projektek függőségei**lehetőséget. A **projektek**területen válassza a **EchoClient**lehetőséget. A- **től függ**, hogy a **EchoService** van-e kiválasztva.
+1. Válassza a **projektek függőségei** lehetőséget. A **projektek** területen válassza a **EchoClient** lehetőséget. A- **től függ**, hogy a **EchoService** van-e kiválasztva.
 
     ![Projekt függőségei][6]
 
-1. A **tulajdonságlapok**bezárásához kattintson **az OK gombra** .
+1. A **tulajdonságlapok** bezárásához kattintson **az OK gombra** .
 1. Válassza az F5 lehetőséget mindkét projekt futtatásához.
 1. Mindkét konzolablak megnyílik, és a rendszer a névtér nevének megadását kéri. Először a szolgáltatásnak kell futnia, ezért a **EchoService** -konzol ablakban adja meg a névteret, majd válassza az ENTER billentyűt.
 1. Ezután a konzol felszólítja az SAS-kulcs megadására. Adja meg az SAS-kulcsot, és válassza az ENTER billentyűt.
@@ -766,7 +766,7 @@ namespace Microsoft.ServiceBus.Samples
 
 1. Ezzel a módszerrel folytathatja szöveges üzenetek küldését az ügyfélről a szolgáltatásba. Ha elkészült, válassza az ENTER lehetőséget az ügyfél és a szolgáltatás konzolján a Windows mindkét alkalmazás befejezéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Folytassa a következő oktatóanyaggal:
 

@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99ad0963677b9ef536deacc2122130186afe0726
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 37e41a00c1489d5b7b4822fec8bb4da35e917826
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98016966"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686461"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health műveletek
 Ez a témakör az Azure Active Directory (Azure AD) kapcsolati állapotának használatával végrehajtható különböző műveleteket ismerteti.
@@ -46,8 +46,6 @@ A Azure AD Connect Health szolgáltatás beállítható úgy, hogy e-mail-értes
 > Ha probléma merül fel a szinkronizálási kérések feldolgozásakor a háttér-szolgáltatásban, ez a szolgáltatás értesítő e-mailt küld a bérlő adminisztratív kapcsolattartási e-mail-címére (i). Meghallottuk az ügyfelek visszajelzéseit, hogy bizonyos esetekben az üzenetek mennyisége megfizethetetlenül nagy, így az üzenetek elküldésének módját módosítjuk. 
 >
 > Ahelyett, hogy minden alkalommal elküldje az üzenetet minden szinkronizálási hibához, a háttér-szolgáltatás által visszaadott összes hiba napi kivonatát küldi el a rendszer. Ez lehetővé teszi, hogy az ügyfelek hatékonyabban dolgozzák fel ezeket a hibákat, és csökkentik az ismétlődő hibaüzenetek számát.
->
-> Ezt a változást a 2020. január 15-én tervezzük meg.
 
 ## <a name="delete-a-server-or-service-instance"></a>Kiszolgáló vagy szolgáltatás példányának törlése
 
@@ -133,7 +131,7 @@ Ha engedélyezni szeretné, hogy a felhasználói hozzáférés a Azure AD Conne
 #### <a name="step-2-add-users-and-groups-and-assign-roles"></a>2. lépés: felhasználók és csoportok hozzáadása és szerepkörök társítása
 1. A **Konfigurálás** szakaszban kattintson a **felhasználók** elemre.<br>
    ![Képernyőkép a Azure AD Connect Health Resource Sidebarról](./media/how-to-connect-health-operations/startRBAC.png)
-2. Válassza a **Hozzáadás** elemet.
+2. Válassza a **Hozzáadás** lehetőséget.
 3. A **szerepkör kiválasztása** panelen válasszon ki egy szerepkört (például **tulajdonos**).<br>
    ![Képernyőkép a Azure AD Connect Health és az Azure RBAC konfigurálási menüjéről](./media/how-to-connect-health-operations/RBAC_add.png)
 4. Írja be a célként megadott felhasználó vagy csoport nevét vagy azonosítóját. Egyszerre csak egy vagy több felhasználót vagy csoportot választhat ki. Kattintson a **Kiválasztás** elemre.
@@ -166,7 +164,7 @@ Eltávolíthatja a Azure AD Connect Health és az Azure RBAC felvett felhasznál
 
 [//]: # (RBAC szakasz vége)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Azure AD Connect Health ügynök telepítése](how-to-connect-health-agent-install.md)
 * [Az Azure AD Connect Health használata az AD FS szolgáltatással](how-to-connect-health-adfs.md)

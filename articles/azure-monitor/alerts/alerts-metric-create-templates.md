@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 10/7/2020
 ms.subservice: alerts
-ms.openlocfilehash: 304a7adf69ed3622cf2031cfbebb920bff5238cc
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5589697771227c8105adcce61e4daeebdb315391
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100614705"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714340"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Metrikariasztás létrehozása Resource Manager-sablonnal
 
@@ -27,7 +27,7 @@ Az alapszintű lépések a következők:
 
 1. Használja az alábbi sablonok egyikét egy olyan JSON-fájlként, amely leírja, hogyan kell létrehozni a riasztást.
 2. Szerkessze és használja a megfelelő paramétereket tartalmazó fájlt JSON-ként a riasztás testreszabásához.
-3. A `metricName` paraméter esetében tekintse meg a [Azure monitor támogatott mérőszámok](../platform/metrics-supported.md)rendelkezésre álló mérőszámait.
+3. A `metricName` paraméter esetében tekintse meg a [Azure monitor támogatott mérőszámok](../essentials/metrics-supported.md)rendelkezésre álló mérőszámait.
 4. A sablon üzembe helyezése [bármely üzembe helyezési módszer](../../azure-resource-manager/templates/deploy-powershell.md)használatával.
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Egyszerű statikus küszöbérték-metrikai riasztás sablonja
@@ -1247,7 +1247,7 @@ az deployment group create \
 
 Az alábbi sablonnal speciális statikus küszöbértéket tartalmazó metrikai szabályt hozhat létre egyéni metrika esetén.
 
-Ha többet szeretne megtudni az Azure Monitor lévő egyéni metrikákkal kapcsolatban, tekintse meg [a Azure monitor egyéni metrikáit](../platform/metrics-custom-overview.md).
+Ha többet szeretne megtudni az Azure Monitor lévő egyéni metrikákkal kapcsolatban, tekintse meg [a Azure monitor egyéni metrikáit](../essentials/metrics-custom-overview.md).
 
 Ha egyéni metrika esetén riasztási szabályt hoz létre, meg kell adnia a metrika nevét és a metrikai névteret is. Győződjön meg arról is, hogy az egyéni metrika már be van jelentkezve, mivel nem hozható létre riasztási szabály olyan egyéni metrika esetében, amely még nem létezik.
 
@@ -1503,7 +1503,7 @@ az deployment group create \
 
 >[!NOTE]
 >
-> Egy adott egyéni metrika metrikai névterét megkeresheti az [Egyéni metrikák a Azure Portal használatával történő tallózásával](../platform/metrics-custom-overview.md#browse-your-custom-metrics-via-the-azure-portal) .
+> Egy adott egyéni metrika metrikai névterét megkeresheti az [Egyéni metrikák a Azure Portal használatával történő tallózásával](../essentials/metrics-custom-overview.md#browse-your-custom-metrics-via-the-azure-portal) .
 
 
 ## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>Több erőforrást figyelő metrikai riasztás sablonja
@@ -3624,7 +3624,6 @@ az deployment group create \
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ [Az Azure-beli riasztásokról](../platform/alerts-overview.md)
+- További információ [Az Azure-beli riasztásokról](./alerts-overview.md)
 - Megtudhatja, hogyan [hozhat létre műveleti csoportot Resource Manager-sablonokkal](../alerts/action-groups-create-resource-manager-template.md)
 - A JSON szintaxis és tulajdonságok esetében lásd: [Microsoft. metricAlerts/](/azure/templates/microsoft.insights/metricalerts) a sablon referenciája.
-

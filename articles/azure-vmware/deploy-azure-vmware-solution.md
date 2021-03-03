@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan használhatja a tervezési szakaszban összegy�
 ms.topic: tutorial
 ms.custom: contperf-fy21q3
 ms.date: 02/17/2021
-ms.openlocfilehash: bfd057a19ebe26a66d11b52ddf17c285a1f9a308
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 6f1e587894d51eae2af4e9f76114f53f27ffefe1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652734"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703858"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Azure VMware-megoldás üzembe helyezése és konfigurálása
 
@@ -62,7 +62,14 @@ Ebben a példában az üzembe helyezés során a 10.74.72.0/22 hálózat bemenet
 
 Jelentkezzen be az előző lépésben létrehozott Jump Box-ba. Miután bejelentkezett, nyisson meg egy webböngészőt, és lépjen be, és jelentkezzen be a vCenter és a NSX-T Manager alkalmazásba.  
 
-Azonosíthatja a vCenter, és a NSX-T kezelő konzol IP-címeit és hitelesítő adatait a Azure Portal.  Válassza ki saját felhőjét, majd az **Áttekintés** nézetben válassza az **identitás > alapértelmezett** lehetőséget. 
+Azonosíthatja a vCenter, és a NSX-T kezelő konzol IP-címeit és hitelesítő adatait a Azure Portal.  Válassza ki saját felhőjét, majd az  >  **identitás** kezelése lehetőséget.
+
+>[!TIP]
+>Válassza az **új jelszó létrehozása** lehetőséget új VCENTER és NSX-T jelszavak létrehozásához.
+
+:::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Saját Felhőbeli vCenter és NSX-kezelő URL-címek és hitelesítő adatok megjelenítése." border="true":::
+
+
 
 ## <a name="create-a-network-segment-on-azure-vmware-solution"></a>Hálózati szegmens létrehozása Azure VMware-megoldással
 

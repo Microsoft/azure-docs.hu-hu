@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 89bf920a5a5dd833425f1b41bd206beaae9d30fd
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 64432e2717057c1ff6bb09e0158ddb779d5b5373
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946266"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742602"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Régiók közötti Load Balancer (előzetes verzió)
 
@@ -35,7 +35,7 @@ Az Azure standard Load Balancer támogatja a régiók közötti terheléseloszt�
 * [Meglévő terheléselosztó megoldás létrehozása](#build-cross-region-solution-on-existing-azure-load-balancer) tanulási görbe nélkül
 
 > [!IMPORTANT]
-> A régiók közötti terheléselosztó jelenleg előzetes verzióban érhető el, és a portálon helyezhető üzembe. **https://preview.portal.azure.com** A szolgáltatás megtekintéséhez és telepítéséhez jelentkezzen be. </br> </br>
+> A régiók közötti terheléselosztó jelenleg előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A régiók közötti terheléselosztás a regionális standard Load Balancer esetében is ugyanazokat az előnyöket kínálja, mint a nagy teljesítmény és a kis késleltetés. 
@@ -79,7 +79,7 @@ További információ: [Azure Load Balancer elosztási módjának konfigurálás
 
 ### <a name="ability-to-scale-updown-behind-a-single-endpoint"></a>Egyetlen végpont mögötti vertikális Felskálázási képesség
 
-Ha a régiók közötti terheléselosztó globális végpontját elérhetővé teszi az ügyfelek számára, a globális végpont mögötti regionális telepítéseket adhat hozzá vagy távolíthat el az ügyfelek hatása nélkül. 
+Ha a régiók közötti terheléselosztó globális végpontját elérhetővé teszi az ügyfelek számára, a globális végpont mögötti regionális telepítéseket felveheti vagy eltávolíthatja megszakítás nélkül. 
 
 <!---To learn about how to add or remove a regional deployment from the backend, read more [here](TODO: Insert CLI doc here).--->
 
@@ -94,7 +94,7 @@ A régiók közötti terheléselosztó háttér-készlete egy vagy több region�
 
 A meglévő terheléselosztó-környezetek hozzáadása egy régiós terheléselosztó számára egy magasan elérhető, régiók közötti környezetben történő üzembe helyezéshez.
 
-A **hazai régió** , ahol a régiók közötti terheléselosztó üzembe van helyezve. Ez a régió nem befolyásolja a forgalom irányításának módját. Ha egy otthoni régió leáll, nem befolyásolja a forgalom áramlását.
+A **hazai régió** , ahol a régiók közötti terheléselosztó üzembe van helyezve. Ez a régió nem befolyásolja a forgalom irányításának módját. Ha egy otthoni régió leáll, a forgalmi folyamat nem érinti a forgalmat.
 
 ### <a name="home-regions"></a>Otthoni régiók
 * USA 2. keleti régiója
@@ -137,13 +137,13 @@ A régiók közötti terheléselosztó a megfelelő regionális terheléseloszt�
 
 * A régiók közötti előtér-IP-konfigurációk csak nyilvánosak. A belső frontend jelenleg nem támogatott.
 
-* Magán-vagy belső terheléselosztó nem adható hozzá a régiók közötti terheléselosztó háttér-készletéhez 
+* A magánhálózati vagy belső terheléselosztó nem adható hozzá a régiók közötti terheléselosztó háttér-készletéhez 
 
 * A régiók közötti IPv6-előtérbeli IP-konfigurációk nem támogatottak. 
 
 * Az állapot-mintavétel jelenleg nem konfigurálható. Az alapértelmezett állapot-mintavétel 20 másodpercenként automatikusan gyűjti a regionális terheléselosztó rendelkezésre állási adatait. 
 
-* Az Azure kubernetes szolgáltatás (ak) jelenleg nem integrálható a régiók közötti Load Balancer. A kapcsolat elvesztését el kell végezni, ha egy több régióból álló Load Balancer állít be egy, az AK-val üzembe helyezett nyilvános Load Balancer előtt.
+* Az Azure Kubernetes Service (ak) szolgáltatással való integráció jelenleg nem érhető el. A kapcsolat elvesztése akkor fordul elő, amikor a régiók közötti terheléselosztó üzembe helyezése az AK nyilvános terheléselosztó szolgáltatással történik.
 
 ## <a name="pricing-and-sla"></a>Díjszabás és SLA
 A régión kívüli terheléselosztó a standard Load Balancer [SLA](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/ ) -át osztja meg.

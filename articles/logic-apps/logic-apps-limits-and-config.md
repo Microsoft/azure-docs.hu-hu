@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 02/05/2021
-ms.openlocfilehash: 19c7d37d62ec54e57127f5993e8bae4d4e9a2908
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/18/2021
+ms.openlocfilehash: b80c5cb469f881ee0950d618c3bae5fa1fc1e026
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388532"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699045"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Információ az Azure Logic Apps korlátozásaival és konfigurálásával kapcsolatban
 
@@ -139,7 +139,7 @@ Egyetlen logikai alkalmazás definíciójának korlátai:
 
 | Name | Korlát | Jegyzetek |
 | ---- | ----- | ----- |
-| Művelet: végrehajtások száma 5 percenként | 100 000 az alapértelmezett korlát, de a 300 000 a maximális korlát. | Ha az alapértelmezett korlátot a logikai alkalmazás maximális értékére szeretné emelni, tekintse meg az előzetes verzióban elérhető, [magas átviteli sebességű módban történő futtatást](#run-high-throughput-mode). Vagy [a számítási feladatok több logikai alkalmazásban is eloszthatók a](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling) szükséges módon. |
+| Művelet: végrehajtások száma 5 percenként, gördülő intervallum | -100 000 végrehajtások (alapértelmezett) <p><p>-300 000 végrehajtások (maximum nagy átviteli sebességű módban)  | A logikai alkalmazás maximális korlátjának növeléséhez tekintse meg az előzetes verzióban elérhető, [magas átviteli sebességű módban történő futtatást](#run-high-throughput-mode). Vagy [a számítási feladatok több logikai alkalmazásban is eloszthatók a](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling) szükséges módon. |
 | Művelet: egyidejű kimenő hívások | ~2.500 | Csökkentheti az egyidejű kérések számát, vagy igény szerint csökkentheti az időtartamot. |
 | Futásidejű végpont: egyidejű bejövő hívások | ~ 1 000 | Csökkentheti az egyidejű kérések számát, vagy igény szerint csökkentheti az időtartamot. |
 | Futásidejű végpont: olvasási hívások/5 perc  | 60.000 | Ez a korlát a logikai alkalmazás futtatási előzményeiből származó nyers bemenetek és kimenetek lekérésére irányuló hívásokra vonatkozik. Szükség szerint több alkalmazásban is terjesztheti a munkaterhelést. |
@@ -151,7 +151,7 @@ Egyetlen logikai alkalmazás definíciójának korlátai:
 
 #### <a name="run-in-high-throughput-mode"></a>Futtatás nagy teljesítményű módban
 
-Egyetlen logikai alkalmazás definíciójában az 5 percenként végrehajtandó műveletek száma [alapértelmezett korláttal](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)rendelkezik. Ha az alapértelmezett korlátot a logikai alkalmazás maximális értékére szeretné emelni, engedélyezheti a magas átviteli sebességet, amely előzetes verzióban érhető el. Vagy [a számítási feladatok több logikai alkalmazásban is eloszthatók a](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling) szükséges módon.
+Egyetlen logikai alkalmazás definíciójában az 5 percenként végrehajtandó műveletek száma [alapértelmezett korláttal](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)rendelkezik. Ha az alapértelmezett korlátot a logikai alkalmazás [maximális](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) korlátja fölé kívánja emelni, amely az alapértelmezett határérték háromszorosa, engedélyezheti az előzetes verzióban elérhető nagy adatátviteli módot. Vagy [a számítási feladatok több logikai alkalmazásban is eloszthatók a](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling) szükséges módon.
 
 1. A Azure Portal a logikai alkalmazás menüjének **Beállítások** területén válassza a **munkafolyamat-beállítások** elemet.
 

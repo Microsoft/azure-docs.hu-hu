@@ -6,16 +6,16 @@ services: storage
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 10/26/2020
+ms.date: 3/02/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: e872d28063a3e0671558ee4d388cad280b94f45b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 620afb0ca5de7c6a89db107fb4616748473f0809
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596921"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701654"
 ---
 # <a name="monitoring-azure-files"></a>Figyelés Azure Files
 
@@ -481,21 +481,10 @@ A naplóbejegyzések csak akkor jönnek létre, ha a szolgáltatás-végpontra i
 
 - Sikeres kérések
 - Sikertelen kérések, köztük az időtúllépések, torlódások, valamint a hálózati, hitelesítési és egyéb hibák
-- Megosztott elérési aláírást (SAS) vagy OAuth használó kérelmek, beleértve a sikertelen és sikeres kérelmeket
-- Elemzési adatokra irányuló kérelmek (a klasszikus naplózási adatok a **$logs** tárolóban és az osztály metrikájának adatai a **$metric** táblákban)
+- Kerberos, NTLM vagy közös hozzáférésű aláírást (SAS) használó kérelmek, beleértve a sikertelen és sikeres kérelmeket
+- Elemzési adatokra irányuló kérelmek (a klasszikus naplózási adatok a **$logs** tárolóban és a klasszikus metrikai adatok a **$metric** táblákban)
 
 A Azure Files szolgáltatás által kezdeményezett kérelmek (például a naplók létrehozása vagy törlése) nem kerülnek naplózásra. A naplózott SMB-és REST-kérelmek teljes listáját lásd: [Storage naplózott műveletek és állapotüzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) , valamint [Azure Files monitorozási adatok referenciája](storage-files-monitoring-reference.md).
-
-### <a name="log-anonymous-requests"></a>Névtelen kérelmek naplózása
-
- A rendszer a következő típusú névtelen kérelmeket naplózza:
-
-- Sikeres kérések
-- Kiszolgálóhibák
-- Ügyfél- és kiszolgálóoldali időtúllépési hibák
-- Sikertelen GET kérelmek a 304 hibakódmal (nincs módosítva)
-
-Az összes többi sikertelen névtelen kérelmet nem naplózza a rendszer. A naplózott SMB-és REST-kérelmek teljes listáját lásd: [Storage naplózott műveletek és állapotüzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) , valamint [Azure Files monitorozási adatok referenciája](storage-files-monitoring-reference.md).
 
 ### <a name="accessing-logs-in-a-storage-account"></a>Naplófájlok elérése a Storage-fiókban
 
@@ -631,13 +620,12 @@ A következő táblázat a riasztásra vonatkozó példákat és a riasztáshoz 
    > [!NOTE]
    > Ha a válaszok típusai nem szerepelnek a **dimenzió értékek** legördülő menüben, ez azt jelenti, hogy az erőforrás nincs szabályozva. A dimenzió értékeinek hozzáadásához a **dimenzióértékek** legördülő lista mellett válassza az **Egyéni érték hozzáadása** lehetőséget, adja meg a respone típusát (például **SuccessWithThrottling**), kattintson az **OK gombra**, majd ismételje meg ezeket a lépéseket a fájlmegosztás összes vonatkozó válaszának hozzáadásához.
 
-8. Kattintson a **dimenzió neve** legördülő listára, és válassza a **fájlmegosztás** lehetőséget.
-9. Kattintson a **dimenzió értékek** legördülő listára, és válassza ki azokat a fájlmegosztás (oka) t, amelyekről riasztást szeretne kapni.
-
+8. **Prémium szintű fájlmegosztás** esetén kattintson a **dimenzió neve** legördülő menüre, majd válassza a **fájlmegosztás** lehetőséget. **Normál fájlmegosztás** esetén ugorjon a **#10 lépésre**.
 
    > [!NOTE]
-   > Ha a fájlmegosztás szabványos fájlmegosztás, válassza a **minden aktuális és jövőbeli értéket**. A dimenzióértékek legördülő lista nem sorolja fel a fájlmegosztást (ka) t, mert a megosztási mérőszámok nem érhetők el a normál fájlmegosztás esetében. A normál fájlmegosztás esetén a rendszer elindítja a riasztásokat, ha a Storage-fiókon belül bármilyen fájlmegosztás szabályozva van, és a riasztás nem azonosítja, hogy mely fájlmegosztás lett szabályozva. Mivel a megosztási mérőszámok nem érhetők el a normál fájlmegosztás esetében, a javaslat egy fájlmegosztási fiókkal rendelkezik.
+   > Ha a fájlmegosztás szabványos fájlmegosztás, a **fájlmegosztás** dimenzió nem sorolja fel a fájlmegosztást (ka) t, mert a megosztási metrikák nem érhetők el a normál fájlmegosztás esetében. A normál fájlmegosztás esetén a rendszer elindítja a riasztásokat, ha a Storage-fiókon belül bármilyen fájlmegosztás szabályozva van, és a riasztás nem azonosítja, hogy mely fájlmegosztás lett szabályozva. Mivel a megosztási mérőszámok nem érhetők el a normál fájlmegosztás esetében, a javaslat egy fájlmegosztási fiókkal rendelkezik.
 
+9. Kattintson a **dimenzió értékek** legördülő listára, és válassza ki azokat a fájlmegosztás (oka) t, amelyekről riasztást szeretne kapni.
 10. Adja meg a **riasztási paramétereket** (a küszöbértéket, az operátort, az Összesítés részletességét és a kiértékelés gyakoriságát), majd kattintson a **kész** gombra.
 
     > [!TIP]
@@ -654,12 +642,12 @@ A következő táblázat a riasztásra vonatkozó példákat és a riasztáshoz 
 3. Kattintson az **erőforrás szerkesztése** lehetőségre, válassza ki a Storage-fiók **fájljának erőforrás-típusát** , majd kattintson a **kész** gombra. Ha például a Storage-fiók neve `contoso` , válassza ki az `contoso/file` erőforrást.
 4. Feltétel hozzáadásához kattintson a **feltétel hozzáadása** elemre.
 5. Ekkor megjelenik a Storage-fiók által támogatott jelek listája, és válassza ki a **fájl kapacitása** mérőszámot.
-6. A **jel logikai beállítása** panelen kattintson a **dimenzió neve** legördülő menüre, majd válassza a **fájlmegosztás** lehetőséget.
-7. Kattintson a **dimenzió értékek** legördülő listára, és válassza ki azokat a fájlmegosztás (oka) t, amelyekről riasztást szeretne kapni.
+6. **Prémium szintű fájlmegosztás** esetén kattintson a **dimenzió neve** legördülő menüre, majd válassza a **fájlmegosztás** lehetőséget. **Normál fájlmegosztás** esetén ugorjon a **#8 lépésre**.
 
    > [!NOTE]
-   > Ha a fájlmegosztás szabványos fájlmegosztás, válassza a **minden aktuális és jövőbeli értéket**. A dimenzióértékek legördülő lista nem sorolja fel a fájlmegosztást (ka) t, mert a megosztási mérőszámok nem érhetők el a normál fájlmegosztás esetében. A normál fájlmegosztás riasztásai a Storage-fiókban lévő összes fájlmegosztás alapján vannak kiosztva. Mivel a megosztási mérőszámok nem érhetők el a normál fájlmegosztás esetében, a javaslat egy fájlmegosztási fiókkal rendelkezik.
+   > Ha a fájlmegosztás szabványos fájlmegosztás, a **fájlmegosztás** dimenzió nem sorolja fel a fájlmegosztást (ka) t, mert a megosztási metrikák nem érhetők el a normál fájlmegosztás esetében. A normál fájlmegosztás riasztásai a Storage-fiókban lévő összes fájlmegosztás alapján vannak kiosztva. Mivel a megosztási mérőszámok nem érhetők el a normál fájlmegosztás esetében, a javaslat egy fájlmegosztási fiókkal rendelkezik.
 
+7. Kattintson a **dimenzió értékek** legördülő listára, és válassza ki azokat a fájlmegosztás (oka) t, amelyekről riasztást szeretne kapni.
 8. Adja meg a **küszöbértéket** bájtban megadva. Ha például a fájlmegosztás mérete 100 TiB, és riasztást szeretne kapni, ha a fájlmegosztás mérete a kapacitás 80%-ában van megadva, akkor a küszöbérték értéke 87960930222080.
 9. Adja meg a **riasztási paraméterek** hátralévő részét (az Összesítés részletességét és a kiértékelés gyakoriságát), majd kattintson a **kész** gombra.
 10. Kattintson a **műveleti csoportok hozzáadása** lehetőségre egy **műveleti csoport** (e-mail, SMS stb.) a riasztáshoz való hozzáadásához, vagy egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
@@ -673,12 +661,12 @@ A következő táblázat a riasztásra vonatkozó példákat és a riasztáshoz 
 3. Kattintson az **erőforrás szerkesztése** lehetőségre, válassza ki a Storage-fiók **fájljának erőforrás-típusát** , majd kattintson a **kész** gombra. Ha például a Storage-fiók neve contoso, válassza ki a contoso/fájl erőforrást.
 4. Feltétel hozzáadásához kattintson a **feltétel hozzáadása** elemre.
 5. Ekkor megjelenik a Storage-fiók által támogatott jelek listája, és válassza ki a **kimenő** forgalom metrikáját.
-6. A **jel logikai beállítása** panelen kattintson a **dimenzió neve** legördülő menüre, majd válassza a **fájlmegosztás** lehetőséget.
-7. Kattintson a **dimenzió értékek** legördülő listára, és válassza ki azokat a fájlmegosztás (oka) t, amelyekről riasztást szeretne kapni.
+6. **Prémium szintű fájlmegosztás** esetén kattintson a **dimenzió neve** legördülő menüre, majd válassza a **fájlmegosztás** lehetőséget. **Normál fájlmegosztás** esetén ugorjon a **#8 lépésre**.
 
    > [!NOTE]
-   > Ha a fájlmegosztás szabványos fájlmegosztás, válassza a **minden aktuális és jövőbeli értéket**. A dimenzióértékek legördülő lista nem sorolja fel a fájlmegosztást (ka) t, mert a megosztási mérőszámok nem érhetők el a normál fájlmegosztás esetében. A normál fájlmegosztás riasztásai a Storage-fiókban lévő összes fájlmegosztás alapján vannak kiosztva. Mivel a megosztási mérőszámok nem érhetők el a normál fájlmegosztás esetében, a javaslat egy fájlmegosztási fiókkal rendelkezik.
+   > Ha a fájlmegosztás szabványos fájlmegosztás, a **fájlmegosztás** dimenzió nem sorolja fel a fájlmegosztást (ka) t, mert a megosztási metrikák nem érhetők el a normál fájlmegosztás esetében. A normál fájlmegosztás riasztásai a Storage-fiókban lévő összes fájlmegosztás alapján vannak kiosztva. Mivel a megosztási mérőszámok nem érhetők el a normál fájlmegosztás esetében, a javaslat egy fájlmegosztási fiókkal rendelkezik.
 
+7. Kattintson a **dimenzió értékek** legördülő listára, és válassza ki azokat a fájlmegosztás (oka) t, amelyekről riasztást szeretne kapni.
 8. Adja meg a **536870912000** bájtos értéket a küszöbértékhez. 
 9. Kattintson az **összesítési részletesség** legördülő listára, és válassza a **24 óra** lehetőséget.
 10. Válassza ki az **értékelés gyakoriságát** , és **kattintson a kész gombra**.

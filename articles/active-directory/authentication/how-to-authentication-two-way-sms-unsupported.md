@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 02/25/2021
+ms.date: 03/02/2021
 ms.author: justinha
 author: rhicock
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e90a6060a9c8202f7f743a0ee433f89b9dc9fdd
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d25ed1e46823ec6d820addf3944c96c97fcabcb8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662228"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689028"
 ---
 # <a name="two-way-sms-unsupported"></a>Nem támogatott kétirányú SMS
 
@@ -27,7 +27,7 @@ Az e-mailes értesítések és a Azure Portal Service Health Notifications (Port
 ## <a name="required-actions"></a>Szükséges műveletek
 
 1. Engedélyezze a mobil alkalmazást a felhasználók számára, ha még nem tette volna meg. További információ: [a Mobile App Authentication engedélyezése az MFA-kiszolgálóval](howto-mfaserver-deploy-mobileapp.md).
-1. Értesítse a végfelhasználókat az MFA-kiszolgáló [felhasználói portáljának](howto-mfaserver-deploy-userportal.md) megkereséséhez a Mobile App aktiválásához. Az ajánlott ellenőrzési lehetőség a [Microsoft Authenticator alkalmazás](https://www.microsoft.com/account/authenticator) , mivel biztonságosabb, mint a kétirányú SMS-ben. További információkért lásd: itt az ideje, hogy lekérje [a telefonos átvitelt a hitelesítéshez](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752).
+1. Értesítse a végfelhasználókat az MFA-kiszolgáló [felhasználói portáljának](howto-mfaserver-deploy-userportal.md) megkereséséhez a Mobile App aktiválásához. Az ajánlott ellenőrzési lehetőség a [Microsoft Authenticator alkalmazás](https://www.microsoft.com/en-us/account/authenticator) , mivel biztonságosabb, mint a kétirányú SMS-ben. További információkért lásd: itt az ideje, hogy lekérje [a telefonos átvitelt a hitelesítéshez](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752).
 1. Módosítsa a felhasználói beállításokat kétirányú szöveges üzenetről a Mobile App értékre alapértelmezett módszerként.
 
 ## <a name="faq"></a>GYIK

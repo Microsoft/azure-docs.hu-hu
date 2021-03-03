@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 50ab66a1f98d06d79a46d61f683d56822b619721
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: ef1a49301cf150f92d30c163dee262a22f1515d9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007040"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714952"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Azure Service Fabric-fürt üzembe helyezése Availability Zones
 Az Azure-beli Availability Zones magas rendelkezésre állású ajánlat, amely védelmet nyújt alkalmazásai és adatai számára az adatközpont hibáiból. A rendelkezésre állási zónák egy Azure-régión belüli, független energiaellátással, hűtéssel és hálózatkezeléssel ellátott egyedi fizikai helyek.
@@ -345,7 +345,7 @@ A zónák virtuálisgép-méretezési csoportokon való engedélyezéséhez a k�
 
 * Az első érték a **Zones** tulajdonság, amely meghatározza a virtuálisgép-méretezési csoport Availability Zones.
 * A második érték a "singlePlacementGroup" tulajdonság, amelyet igaz értékre kell beállítani. **A 3 AZ-ra kiterjedő méretezési csoport legfeljebb 300 virtuális gépet képes méretezni, akár "singlePlacementGroup = true" értékkel.**
-* A harmadik érték a "zoneBalance", amely biztosítja a zónák szigorú kiegyensúlyozását, ha az igaz értékre van állítva. Azt javasoljuk, hogy ezt a beállítást állítsa igaz értékre a virtuális gépek zónák közötti kiegyensúlyozatlan eloszlásának elkerülése érdekében. További információ a [zoneBalancing](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing).
+* A harmadik érték a "zoneBalance", amely biztosítja a zónák szigorú kiegyensúlyozását. Ennek "igaz" értékűnek kell lennie a virtuális gépek zónák közötti kiegyensúlyozatlan eloszlásának elkerüléséhez. A zónák közötti, kiegyensúlyozatlan virtuálisgép-eloszlású fürtök kevésbé valószínű, hogy megmaradnak a zónában a scenatio. További információ a [zoneBalancing](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing).
 * A FaultDomain és a UpgradeDomain felülbírálásokat nem szükséges konfigurálni.
 
 ```json
@@ -409,7 +409,7 @@ A több rendelkezésre állási zóna támogatásához engedélyezni kell a Serv
 > * A nyilvános IP-cím és a Load Balancer erőforrásnak a cikkben korábban ismertetett standard SKU-t kell használnia.
 > * a nodeType "multipleAvailabilityZones" tulajdonsága csak a nodeType létrehozásakor adható meg, és később nem módosítható. Ezért a meglévő nodeTypes nem konfigurálhatók ezzel a tulajdonsággal.
 > * Ha a "sfZonalUpgradeMode" ki van hagyva vagy "hierarchikus" értékre van állítva, a fürt és az alkalmazás központi telepítése lassabb lesz, mert a fürtben több frissítési tartomány található. Fontos, hogy megfelelően módosítsa a frissítési szabályzat időtúllépését, hogy az a 15 frissítési tartományhoz tartozó frissítési idő időtartamára legyen beépítve.
-> * Javasoljuk, hogy a fürt megbízhatósági szintjét a Platinum értékre állítsa, hogy a fürt ne maradjon le az egyik zónában.
+> * Állítsa be a **reliabilityLevel = Platinum** fürtöt annak biztosítására, hogy a fürt megmaradjon az egy zóna lefelé irányuló forgatókönyvben.
 
 >[!NOTE]
 > Ajánlott eljárásként javasoljuk, hogy a sfZonalUpgradeMode Hierarchikusra állítsa, vagy hagyja figyelmen kívül. Az üzembe helyezés során a virtuális gépek a kisebb mennyiségű replikát és/vagy az azok biztonságosabbá tételét érintő replikálási eloszlását fogja követni.

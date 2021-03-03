@@ -1,17 +1,16 @@
 ---
 title: Alert Management megoldás az Azure Log Analyticsban | Microsoft Docs
 description: A Log Analytics Alert Management megoldása segít elemezni az összes riasztást a környezetben.  A Log Analyticson belül létrehozott riasztások összevonása mellett a a csatlakoztatott System Center Operations Manager-felügyeleti csoportokból származó riasztásokat Log Analyticsba importálja.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
-ms.openlocfilehash: 1771801068b08b987fc9b756af6099d45ae5ea9e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6f3761b1c933d113bf65c70370c29bcfa7950eea
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100616415"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728654"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Alert Management megoldás az Azure-ban Log Analytics
 
@@ -40,11 +39,11 @@ A megoldási felügyeleti csomagok frissítéseivel kapcsolatban lásd: [Az Oper
 ### <a name="agents"></a>Ügynökök
 Az alábbi táblázat áttekintést nyújt az ebben a megoldásban támogatott összekapcsolt forrásokról.
 
-| Összekapcsolt forrás | Támogatás | Description |
+| Összekapcsolt forrás | Támogatás | Leírás |
 |:--- |:--- |:--- |
-| [Windows-ügynökök](../agents/agent-windows.md) | No |A közvetlen Windows-ügynökök nem állítanak elő riasztásokat.  Log Analytics riasztások hozhatók létre a Windows-ügynökökből gyűjtött eseményekből és teljesítményadatokat. |
-| [Linux-ügynökök](../vm/quick-collect-linux-computer.md) | No |A közvetlen Linux-ügynökök nem hoznak fel riasztásokat.  Log Analytics riasztások hozhatók létre a Linux-ügynökökből gyűjtött eseményekből és teljesítményadatokat.  A Nagios és a Zabbix riasztások gyűjtése a Linux-ügynököt igénylő kiszolgálókról történik. |
-| [System Center Operations Manage felügyeleti csoport](../agents/om-agents.md) |Yes |Operations Manager ügynökön létrehozott riasztásokat a rendszer a felügyeleti csoportba küldi, majd továbbítja Log Analyticsnak.<br><br>Nem szükséges közvetlen kapcsolódás Operations Manager ügynököktől Log Analytics. A riasztási adatok továbbítása a felügyeleti csoportból a Log Analytics adattárba történik. |
+| [Windows-ügynökök](../agents/agent-windows.md) | Nem |A közvetlen Windows-ügynökök nem állítanak elő riasztásokat.  Log Analytics riasztások hozhatók létre a Windows-ügynökökből gyűjtött eseményekből és teljesítményadatokat. |
+| [Linux-ügynökök](../vm/quick-collect-linux-computer.md) | Nem |A közvetlen Linux-ügynökök nem hoznak fel riasztásokat.  Log Analytics riasztások hozhatók létre a Linux-ügynökökből gyűjtött eseményekből és teljesítményadatokat.  A Nagios és a Zabbix riasztások gyűjtése a Linux-ügynököt igénylő kiszolgálókról történik. |
+| [System Center Operations Manage felügyeleti csoport](../agents/om-agents.md) |Igen |Operations Manager ügynökön létrehozott riasztásokat a rendszer a felügyeleti csoportba küldi, majd továbbítja Log Analyticsnak.<br><br>Nem szükséges közvetlen kapcsolódás Operations Manager ügynököktől Log Analytics. A riasztási adatok továbbítása a felügyeleti csoportból a Log Analytics adattárba történik. |
 
 
 ### <a name="collection-frequency"></a>A gyűjtés gyakorisága
@@ -101,7 +100,7 @@ A megoldás nem importálja a riasztásokat a System Center Operations Managerb�
 ## <a name="sample-log-searches"></a>Naplókeresési minták
 A következő táblázat a megoldás által gyűjtött riasztási rekordokra vonatkozó példákat tartalmaz: 
 
-| Lekérdezés | Description |
+| Lekérdezés | Leírás |
 |:---|:---|
 | Riasztási &#124;, ahol a SourceSystem = = "OpsManager" és a AlertSeverity = = "Error" és a TimeRaised > ago (24 óra) |Az elmúlt 24 órában kiváltott kritikus riasztások |
 | Riasztási &#124;, ahol a AlertSeverity = = "figyelmeztetés" és a TimeRaised > ago (24 óra) |Az elmúlt 24 órában kiváltott figyelmeztető riasztások |

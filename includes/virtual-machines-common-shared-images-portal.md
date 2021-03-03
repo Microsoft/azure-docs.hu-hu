@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: e7a4af2c18bfc2b8fbd6149dab12c0bcfc665341
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 7bf71f55e1b49a9280b25cfcc01090afbd0c42db
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878823"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750991"
 ---
 ## <a name="create-an-image-gallery"></a>Rendszerkép-gyűjtemény létrehozása
 
@@ -93,10 +93,7 @@ Eltarthat egy ideig, amíg a rendszer replikálja a rendszerképet az összes me
 
 Javasoljuk, hogy a Képtár szintjén ossza meg a hozzáférést. A következő végigvezeti az imént létrehozott katalógus megosztásán.
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
-1. A bal oldali menüben válassza az **erőforráscsoportok** lehetőséget. 
-1. Az erőforráscsoportok listájában válassza a **myGalleryRG** lehetőséget. Ekkor megnyílik az erőforráscsoport panelje.
-1. A **myGalleryRG** lap bal oldalán található menüben válassza a **hozzáférés-vezérlés (iam)** lehetőséget. 
+1. Az új rendszerkép-katalógus lapjának bal oldali menüjében válassza a **hozzáférés-vezérlés (iam)** lehetőséget. 
 1. **A szerepkör-hozzárendelés hozzáadása** területen válassza a **Hozzáadás** lehetőséget. Ekkor megnyílik a **szerepkör-hozzárendelés hozzáadása** ablaktábla. 
 1. A **szerepkör** területen válassza az **olvasó** lehetőséget.
 1. A **hozzáférés társítása** alatt hagyja meg az alapértelmezett **Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév** beállítást.

@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 02/11/2021
-ms.openlocfilehash: 5508ffc758b08642b05b1f77b66c9f29be1c85a2
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 886889ef9a42e358fca22a9d86955a23c5419dfa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650779"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738157"
 ---
 # <a name="get-started-with-document-translation-preview"></a>Ismerkedés a dokumentumok fordításával (előzetes verzió)
 
@@ -26,6 +26,8 @@ A kezdéshez a következőkre lesz szüksége:
 * Egy [**Translator**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) Service-erőforrás (**nem** Cognitive Services erőforrás). 
 
 * Egy [**Azure Blob Storage-fiók**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Az Azure Storage-hoz való összes hozzáférés egy Storage-fiókon keresztül történik.
+
+* Egy befejezett [**dokumentum fordítása (előzetes verzió) űrlap**](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-riVR3Xj0tOnIRdZOALbM9UOEE4UVdFQVBRQVBWWDBRQUM3WjYxUEpUTC4u) , amely lehetővé teszi, hogy az Azure-előfizetése az új dokumentum-fordítási funkciót használja.
 
 > [!NOTE]
 > A dokumentumok fordítása jelenleg csak a Translator (Single-Service) erőforrásban támogatott, **nem** pedig a Cognitive Services (több szolgáltatás) erőforrás.
@@ -64,7 +66,7 @@ A Translator Service-kérelmekhez csak olvasható kulcs szükséges a hozzáfér
 
 ## <a name="create-your-azure-blob-storage-containers"></a>Azure Blob Storage-tárolók létrehozása
 
-[**Létre kell hoznia egy tárolót**](/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container) az [**Azure Blob Storage-fiókban**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM) a forrás, a cél és a nem kötelező Szószedet-fájlok számára.
+[**Létre kell hoznia egy tárolót**](../../../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) az [**Azure Blob Storage-fiókban**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM) a forrás, a cél és a nem kötelező Szószedet-fájlok számára.
 
 * **Forrás tároló**. Ebben a tárolóban töltheti fel a fájlokat fordításra (kötelező).
 * **Cél tároló**. Ebben a tárolóban lesznek tárolva a lefordított fájlok (kötelező).  
@@ -184,7 +186,7 @@ A Batch-dokumentumok fordítására vonatkozó kérelmet POST kérelem útján k
 
 A következő fejlécek szerepelnek az egyes Document Translator API-kérelmekben:
 
-|HTTP-fejléc|Description|
+|HTTP-fejléc|Leírás|
 |---|--|
 |Ocp-Apim-Subscription-Key|**Kötelező**: az érték a fordítóhoz vagy Cognitive Services erőforráshoz tartozó Azure-előfizetési kulcs.|
 |Content-Type|**Kötelező**: az adattartalom tartalomtípusát adja meg. Az elfogadott értékek az Application/JSON vagy a charset = UTF-8.|
@@ -201,26 +203,7 @@ A következő fejlécek szerepelnek az egyes Document Translator API-kérelmekbe
 >[!NOTE]
 > Ha már létezik ilyen nevű fájl a célhelyen, a rendszer felülírja.
 
-### <a name="post-a-translation-request"></a>Fordítási kérelem közzététele
-
-> [!IMPORTANT]
->
-> * Az alábbi kód-minták esetében előfordulhat, hogy a művelettől függően frissítenie kell a következő mezőket:
-
->> [!div class="checklist"]
->>
->> * `endpoint`
->> * `subscriptionKey`
->> * `sourceURL`
->> * `targetURL`
->> * `glossaryURL`
->> * `id`  (Job ID)
->>
-> * A feladatot a `id`  post metódus válasz fejlécének `Operation-Location`  URL-értékében találja. Az URL-cím utolsó paramétere a művelet feladata **`id`** .  
-> * A feladatok beolvasása kérelem használatával is lekérheti a feladatot `id`  egy dokumentum-fordítási művelethez.
-> * Az alábbi minták esetében a kulcsot és a végpontot a jelzett módon kell megadnia. Ne felejtse el eltávolítani a kulcsot a kódból, ha elkészült, és soha ne tegye közzé nyilvánosan.  
->
-> A hitelesítő adatok biztonságos tárolásához és eléréséhez tekintse meg az [Azure Cognitive Services biztonsága](/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp) című témakört.
+## <a name="post-a-translation-request"></a>Fordítási kérelem közzététele
 
 <!-- markdownlint-disable MD024 -->
 ### <a name="post-request-body-without-optional-glossaryurl"></a>POST kérelem törzse opcionális glossaryURL nélkül
@@ -286,7 +269,26 @@ A következő fejlécek szerepelnek az egyes Document Translator API-kérelmekbe
 }
 ```
 
-## <a name="_post-document-translation_-request-code-samples"></a>_Dokumentum-fordítási_ kérelem kód mintáinak közzététele
+> [!IMPORTANT]
+>
+> Az alábbi kód-minták esetében előfordulhat, hogy a művelettől függően frissítenie kell a következő mezőket:
+>>>
+>> * `endpoint`
+>> * `subscriptionKey`
+>> * `sourceURL`
+>> * `targetURL`
+>> * `glossaryURL`
+>> * `id`  (Job ID)
+>>
+> Hol találja meg az `id` értéket:
+> * A feladatot a `id`  post metódus válasz fejlécének `Operation-Location`  URL-értékében találja. Az URL-cím utolsó paramétere a művelet feladata **`id`** .  
+> * A feladatok beolvasása kérelem használatával is lekérheti a feladatot `id`  egy dokumentum-fordítási művelethez.
+>
+> Az alábbi kódrészletek esetében a kulcsot és a végpontot a jelzett módon kell megadnia. Ne felejtse el eltávolítani a kulcsot a kódból, ha elkészült, és soha ne tegye közzé nyilvánosan.  
+>
+> A hitelesítő adatok biztonságos tárolásához és eléréséhez tekintse meg az [Azure Cognitive Services biztonsága](/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp) című témakört.
+
+## <a name="_post-document-translation_-request"></a>_Dokumentum-fordítási kérelem küldése_
 
 Batch-dokumentum fordítási kérelmének elküldése a fordítási szolgáltatásnak.
 
@@ -519,7 +521,7 @@ if err != nil {
 
 ---
 
-## <a name="_get-file-formats_-code-samples"></a>_Fájlformátumok kódjának beolvasása_ minták
+## <a name="_get-file-formats_"></a>_Fájlformátumok beolvasása_ 
 
 A támogatott fájlformátumok listájának beolvasása. Ha ez sikeres, a metódus visszaadja a `200 OK` Válasz kódját.
 
@@ -696,7 +698,7 @@ func main() {
 
 ---
 
-## <a name="_get-job-status_-code-samples"></a>A feladatok állapotára vonatkozó kód mintáinak _beolvasása_
+## <a name="_get-job-status_"></a>_Feladatok állapotának beolvasása_ 
 
 Egy adott feladat aktuális állapotának beolvasása, valamint az összes feladat összefoglalója egy dokumentum-fordítási kérelemben. Ha ez sikeres, a metódus visszaadja a `200 OK` Válasz kódját.
 <!-- markdownlint-disable MD024 -->
@@ -875,7 +877,7 @@ func main() {
 
 ---
 
-## <a name="_get-document-status_-code-samples"></a>_Dokumentum állapot-kódjának beolvasása_ minták
+## <a name="_get-document-status_"></a>_Dokumentum állapotának beolvasása_
 
 ### <a name="brief-overview"></a>Rövid áttekintés
 
@@ -1055,7 +1057,7 @@ func main() {
 
 ---
 
-## <a name="_delete-job_-code-samples"></a>Feladatkártya-minták _törlése_
+## <a name="_delete-job_"></a>_Feladatok törlése_ 
 
 ### <a name="brief-overview"></a>Rövid áttekintés
 
@@ -1254,7 +1256,7 @@ Az alábbi táblázat felsorolja a dokumentumok fordítására küldött adatkor
 
 * [Translator V3 API-referenciák](../reference/v3-0-reference.md)
 * [Nyelvi támogatás](../language-support.md)
-* [Előfizetések az Azure API Managementban](/azure/api-management/api-management-subscriptions).
+* [Előfizetések az Azure API Managementban](../../../api-management/api-management-subscriptions.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -16,12 +16,12 @@ ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b45decd2f2cf9c99cffb0e08d4d6a5c5cfafc67
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: e10aa5d96722b414d7384ceb81f393575d57e2a2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96858399"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688773"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect: Helyreállítás 10 GB-ra korlátozott LocalDB-adatbázisból
 Az identitásadatok tárolásához az Azure AD Connectnek szüksége van egy SQL Server-adatbázisra. Használhatja az Azure AD Connecttel együtt telepített alapértelmezett SQL Server 2012 Express LocalDB-t, vagy használhatja saját teljes SQL-kiszolgálóját. Az SQL Server Express 10 GB-os méretkorláttal rendelkezik. Ha a LocalDB-t használja és eléri a korlátot, az Azure AD Connect szinkronizálási szolgáltatása többé nem indul majd el, vagy nem végzi el megfelelően a szinkronizálást. Ez a cikk a helyreállítási lépéseket ismerteti.
@@ -74,7 +74,7 @@ A Azure AD Connecthoz létrehozott adatbázis neve **AdSync**. A Shrink művelet
 
 4. Indítsa el a **Sqlcmd** segédprogramot a parancs futtatásával a `./SQLCMD.EXE -S "(localdb)\.\ADSync" -U <Username> -P <Password>` sysadmin (rendszergazda) vagy az adatbázis dbo hitelesítő adatainak használatával.
 
-5. Az adatbázis összezsugorodása érdekében a Sqlcmd promptnál (1>) adja meg a `DBCC Shrinkdatabase(ADSync,1);` következő sort, majd utána: `GO` .
+5. Az adatbázis összezsugorodása érdekében a Sqlcmd prompton ( `1>` ) adja meg a `DBCC Shrinkdatabase(ADSync,1);` következő sort, majd utána: `GO` .
 
 6. Ha a művelet sikeres, próbálja meg újból elindítani a szinkronizálási szolgáltatást. Ha el tudja indítani a szinkronizálási szolgáltatást, ugorjon a [futtatási előzmények adatainak törlése](#delete-run-history-data) lépésre. Ha nem, forduljon az ügyfélszolgálathoz.
 

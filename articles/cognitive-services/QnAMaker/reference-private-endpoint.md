@@ -5,18 +5,18 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 01/12/2021
-ms.openlocfilehash: 5a7ddcf25993ab4ce87bdc47c5e0ae32fa24b07f
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 7907c81e45680de49f6653891fb4204a59db1002
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956541"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710549"
 ---
 # <a name="private-endpoints"></a>Privát végpontok
 
 Az Azure privát végpont egy hálózati adapter, amely privát és biztonságos módon csatlakoztatja Önt egy Azure privát kapcsolat által működtetett szolgáltatáshoz. A QnA Maker mostantól támogatja a privát végpontok létrehozását a Azure Search szolgáltatáshoz. Ez a funkció QnA Maker felügyelt alkalmazásban érhető el. 
 
-A privát végpontokat az [Azure privát kapcsolata](https://docs.microsoft.com/azure/private-link/private-link-overview)külön szolgáltatásként biztosíthatja. A költségekkel kapcsolatos további információkért tekintse meg a [díjszabási oldalt.](https://azure.microsoft.com/pricing/details/private-link/) 
+A privát végpontokat az [Azure privát kapcsolata](../../private-link/private-link-overview.md)külön szolgáltatásként biztosíthatja. A költségekkel kapcsolatos további információkért tekintse meg a [díjszabási oldalt.](https://azure.microsoft.com/pricing/details/private-link/) 
 
 ## <a name="prerequisites"></a>Előfeltételek
 > [!div class="checklist"]

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 12/07/2020
-ms.openlocfilehash: a7e19894a4688fe270422e93f7081f98e0b699a3
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 03/02/2021
+ms.openlocfilehash: 3cf5047dbb79f6d8b35b0fe089069a20ab4a50a6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936532"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736351"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-the-azure-portal-with-azure-logic-apps-preview"></a>Állapot-nyilvántartó és állapot nélküli munkafolyamatok létrehozása a Azure Portalban Azure Logic Apps előzetes verzióban
 
@@ -34,7 +34,7 @@ Ez a cikk bemutatja, hogyan hozhatja létre a logikai alkalmazást és a munkafo
 
 * Munkafolyamat-Futtatás elindítása.
 
-* A munkafolyamat futtatási előzményeinek megtekintése.
+* A munkafolyamat futtatási és kiváltó előzményeinek megtekintése.
 
 * Az üzembe helyezést követően engedélyezze vagy nyissa meg a Application Insights.
 
@@ -51,6 +51,8 @@ Ez a cikk bemutatja, hogyan hozhatja létre a logikai alkalmazást és a munkafo
 
   > [!NOTE]
   > Az [állapot-nyilvántartó Logic apps](logic-apps-overview-preview.md#stateful-stateless) tárolási tranzakciókat hajt végre, például várólistákat használ a táblázatok és Blobok munkafolyamat-állapotának ütemezéséhez és tárolásához. Ezek a tranzakciók az [Azure Storage-díjakat terhelik](https://azure.microsoft.com/pricing/details/storage/). További információ arról, hogy az állapot-nyilvántartó Logic apps hogyan tárolja az adatokat a külső tárolóban, lásd: állapot-nyilvántartó és [állapot nélküli](logic-apps-overview-preview.md#stateful-stateless).
+
+* Docker-tárolóba való üzembe helyezéshez szüksége van egy meglévő Docker-tároló lemezképére. Létrehozhatja például ezt a rendszerképet [Azure Container Registry](../container-registry/container-registry-intro.md), [app Service](../app-service/overview.md)vagy az [Azure Container instance](../container-instances/container-instances-overview.md)használatával. 
 
 * Ha ugyanezt a logikai alkalmazást szeretné felépíteni ebben a cikkben, szüksége van egy Office 365 Outlook e-mail fiókra, amely Microsoft munkahelyi vagy iskolai fiókot használ a bejelentkezéshez.
 
@@ -74,11 +76,11 @@ Ez a cikk bemutatja, hogyan hozhatja létre a logikai alkalmazást és a munkafo
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Előfizetés** | Yes | <*Azure-előfizetés – név*> | A logikai alkalmazáshoz használandó Azure-előfizetés. |
-   | **Erőforráscsoport** | Yes | <*Azure-Erőforrás-csoport-név*> | Az Azure-erőforráscsoport, amelyben létrehozza a logikai alkalmazást és a kapcsolódó erőforrásokat. Az erőforrás nevének egyedinek kell lennie a régiók között, és csak betűket, számokat, kötőjeleket ( **-** ), aláhúzást (**_**), zárójeleket (**()**) és pontokat (**.**) tartalmazhat. <p><p>Ez a példa létrehoz egy nevű erőforráscsoportot `Fabrikam-Workflows-RG` . |
-   | **Logikai alkalmazás neve** | Yes | <*logikai alkalmazás neve*> | A logikai alkalmazáshoz használandó név. Az erőforrás nevének egyedinek kell lennie a régiók között, és csak betűket, számokat, kötőjeleket ( **-** ), aláhúzást (**_**), zárójeleket (**()**) és pontokat (**.**) tartalmazhat. <p><p>Ez a példa egy nevű logikai alkalmazást hoz létre `Fabrikam-Workflows` . <p><p>**Megjegyzés**: a logikai alkalmazás neve automatikusan beolvassa az utótagot, `.azurewebsites.net` mivel a **logikai alkalmazás (előzetes verzió)** erőforrása Azure functions, amely ugyanazt az alkalmazás-elnevezési konvenciót használja. |
-   | **Közzététel** | Yes | <*üzembe helyezés – környezet*> | A logikai alkalmazás üzembe helyezési célhelye. Üzembe helyezhető az Azure-ban a **munkafolyamat** vagy egy Docker-tároló kiválasztásával. <p><p>Ez a példa **munkafolyamatot** használ, amely a **Logic app (előzetes verzió)** erőforrás az Azure-ban. <p><p>Ha a **Docker-tárolót** választja, [adja meg a logikai alkalmazás beállításaiban használandó tárolót](#set-docker-container). |
-   | **Régió** | Yes | <*Azure-régió*> | Az erőforráscsoport és az erőforrások létrehozásakor használandó Azure-régió. <p><p>Ez a példa az **USA nyugati** régióját használja. |
+   | **Előfizetés** | Igen | <*Azure-előfizetés – név*> | A logikai alkalmazáshoz használandó Azure-előfizetés. |
+   | **Erőforráscsoport** | Igen | <*Azure-Erőforrás-csoport-név*> | Az Azure-erőforráscsoport, amelyben létrehozza a logikai alkalmazást és a kapcsolódó erőforrásokat. Az erőforrás nevének egyedinek kell lennie a régiók között, és csak betűket, számokat, kötőjeleket ( **-** ), aláhúzást (**_**), zárójeleket (**()**) és pontokat (**.**) tartalmazhat. <p><p>Ez a példa létrehoz egy nevű erőforráscsoportot `Fabrikam-Workflows-RG` . |
+   | **Logikai alkalmazás neve** | Igen | <*logikai alkalmazás neve*> | A logikai alkalmazáshoz használandó név. Az erőforrás nevének egyedinek kell lennie a régiók között, és csak betűket, számokat, kötőjeleket ( **-** ), aláhúzást (**_**), zárójeleket (**()**) és pontokat (**.**) tartalmazhat. <p><p>Ez a példa egy nevű logikai alkalmazást hoz létre `Fabrikam-Workflows` . <p><p>**Megjegyzés**: a logikai alkalmazás neve automatikusan beolvassa az utótagot, `.azurewebsites.net` mivel a **logikai alkalmazás (előzetes verzió)** erőforrása Azure functions, amely ugyanazt az alkalmazás-elnevezési konvenciót használja. |
+   | **Közzététel** | Igen | <*üzembe helyezés – környezet*> | A logikai alkalmazás üzembe helyezési célhelye. A **munkafolyamat** vagy a **Docker-tároló** kiválasztásával üzembe helyezheti az Azure-ban. <p><p>Ez a példa **munkafolyamatot** használ, amely a **logikai alkalmazás (előzetes verzió)** erőforrását telepíti a Azure Portal. <p><p>**Megjegyzés**: a **Docker**-tároló kiválasztása előtt győződjön meg róla, hogy létrehozta a Docker-tároló rendszerképét. Létrehozhatja például ezt a rendszerképet [Azure Container Registry](../container-registry/container-registry-intro.md), [app Service](../app-service/overview.md)vagy az [Azure Container instance](../container-instances/container-instances-overview.md)használatával. Így a **Docker-tároló** kiválasztása után [megadhatja a logikai alkalmazás beállításaiban használni kívánt tárolót](#set-docker-container). |
+   | **Régió** | Igen | <*Azure-régió*> | Az erőforráscsoport és az erőforrások létrehozásakor használandó Azure-régió. <p><p>Ez a példa az **USA nyugati** régióját használja. |
    |||||
 
    Bemutatunk egy példát:
@@ -89,10 +91,10 @@ Ez a cikk bemutatja, hogyan hozhatja létre a logikai alkalmazást és a munkafo
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Storage-fiók** | Yes | <*Azure-Storage-fiók-név*> | A tárolási tranzakciókhoz használandó [Azure Storage-fiók](../storage/common/storage-account-overview.md) . Az erőforrás nevének egyedinek kell lennie a régiók között, és 3-24 karakterből kell állnia, és csak számokat és kisbetűket tartalmazhat. Válasszon ki egy meglévő fiókot, vagy hozzon létre egy új fiókot. <p><p>Ez a példa egy nevű Storage-fiókot hoz létre `fabrikamstorageacct` . |
-   | **Csomag típusa** | Yes | <*Azure-üzemeltetési csomag*> | A [**prémium**](../azure-functions/functions-premium-plan.md) vagy [**app Service-csomagot**](../azure-functions/dedicated-plan.md)használó logikai alkalmazás üzembe helyezésére szolgáló [üzemeltetési terv](../app-service/overview-hosting-plans.md) . Az Ön választása befolyásolja a később választható díjszabási szinteket. <p><p>Ez a példa az **app Service-csomagot** használja. <p><p>**Megjegyzés**: a Azure Functionshöz hasonlóan a **logikai alkalmazás (előzetes verzió)** erőforrástípus üzemeltetési tervet és díjszabási szintet igényel. A felhasználási üzemeltetési csomagok nem támogatottak, és nem érhetők el ehhez az erőforrás-típushoz. További információkért tekintse át a következő témaköröket: <p><p>- [Méretezés és üzemeltetés Azure Functions](../azure-functions/functions-scale.md) <br>- [A App Service díjszabása](https://azure.microsoft.com/pricing/details/app-service/) <p><p> |
-   | **Windows-csomag** | Yes | <*csomag neve*> | A használandó csomag neve. Válasszon ki egy meglévő csomagot, vagy adja meg egy új csomag nevét. <p><p>Ez a példa a nevet használja `Fabrikam-Service-Plan` . |
-   | **SKU és size** | Yes | <*díjszabás – réteg*> | A logikai alkalmazás üzemeltetéséhez használt [díjszabási](../app-service/overview-hosting-plans.md) csomag. A beállításokat a korábban kiválasztott csomag típusa érinti. Ha módosítani szeretné az alapértelmezett szintet, válassza a **méret módosítása** lehetőséget. Ezután kiválaszthatja az egyéb díjszabási szinteket a szükséges munkaterhelés alapján. <p><p>Ez a példa az ingyenes **F1 árképzési szintet** használja a **fejlesztési és tesztelési** feladatokhoz. További információkért tekintse át [app Service díjszabását](https://azure.microsoft.com/pricing/details/app-service/). |
+   | **Storage-fiók** | Igen | <*Azure-Storage-fiók-név*> | A tárolási tranzakciókhoz használandó [Azure Storage-fiók](../storage/common/storage-account-overview.md) . Az erőforrás nevének egyedinek kell lennie a régiók között, és 3-24 karakterből kell állnia, és csak számokat és kisbetűket tartalmazhat. Válasszon ki egy meglévő fiókot, vagy hozzon létre egy új fiókot. <p><p>Ez a példa egy nevű Storage-fiókot hoz létre `fabrikamstorageacct` . |
+   | **Csomag típusa** | Igen | <*Azure-üzemeltetési csomag*> | A logikai alkalmazás üzembe helyezésére szolgáló [üzemeltetési terv](../app-service/overview-hosting-plans.md) , amely vagy [**functions Premium**](../azure-functions/functions-premium-plan.md) vagy [ **app Service-csomag** (dedikált)](../azure-functions/dedicated-plan.md). Az Ön választása befolyásolja a később elérhető képességeket és árképzési szinteket. <p><p>Ez a példa az **app Service-csomagot** használja. <p><p>**Megjegyzés**: a Azure Functionshöz hasonlóan a **logikai alkalmazás (előzetes verzió)** erőforrástípus üzemeltetési tervet és díjszabási szintet igényel. A felhasználási csomagok nem támogatottak, és nem érhetők el ehhez az erőforrás-típushoz. További információkért tekintse át a következő témaköröket: <p><p>- [Méretezés és üzemeltetés Azure Functions](../azure-functions/functions-scale.md) <br>- [A App Service díjszabása](https://azure.microsoft.com/pricing/details/app-service/) <p><p>A functions Premium csomag például hozzáférést biztosít a hálózati képességekhez, például az Azure-beli virtuális hálózatokhoz való csatlakozáshoz és az azokhoz való hozzáféréshez, hasonlóan a Azure Functionshoz, mint a logikai alkalmazások létrehozásakor és telepítésekor. További információkért tekintse át a következő témaköröket: <p><p>- [Azure Functions hálózati beállítások](../azure-functions/functions-networking-options.md) <br>- [Azure Logic Apps a bárhonnan hálózati lehetőségeket a Azure Logic Apps előzetes verziójával](https://techcommunity.microsoft.com/t5/integrations-on-azure/logic-apps-anywhere-networking-possibilities-with-logic-app/ba-p/2105047) |
+   | **Windows-csomag** | Igen | <*csomag neve*> | A használandó csomag neve. Válasszon ki egy meglévő csomagot, vagy adja meg egy új csomag nevét. <p><p>Ez a példa a nevet használja `Fabrikam-Service-Plan` . |
+   | **SKU és size** | Igen | <*díjszabás – réteg*> | A logikai alkalmazás üzemeltetéséhez használt [díjszabási](../app-service/overview-hosting-plans.md) csomag. A beállításokat a korábban kiválasztott csomag típusa érinti. Ha módosítani szeretné az alapértelmezett szintet, válassza a **méret módosítása** lehetőséget. Ezután kiválaszthatja az egyéb díjszabási szinteket a szükséges munkaterhelés alapján. <p><p>Ez a példa az ingyenes **F1 árképzési szintet** használja a **fejlesztési és tesztelési** feladatokhoz. További információkért tekintse át [app Service díjszabását](https://azure.microsoft.com/pricing/details/app-service/). |
    |||||
 
 1. Ezt követően, ha a létrehozási és telepítési beállítások támogatják a [Application Insights](../azure-monitor/app/app-insights-overview.md)-t, lehetősége van engedélyezni a diagnosztikai naplózást és a nyomkövetést a logikai alkalmazáshoz.
@@ -107,9 +109,12 @@ Ez a cikk bemutatja, hogyan hozhatja létre a logikai alkalmazást és a munkafo
 
    ![A Azure Portal és az új logikai alkalmazás erőforrás-beállításait bemutató képernyőkép.](./media/create-stateful-stateless-workflows-azure-portal/check-logic-app-resource-settings.png)
 
+   > [!TIP]
+   > Ha a **Létrehozás** gombra kattintva érvényesítési hibaüzenetet kap, nyissa meg és tekintse át a hiba részleteit. Ha például a kiválasztott régió eléri a létrehozni kívánt erőforrások kvótáját, lehetséges, hogy egy másik régiót kell kipróbálnia.
+
    Miután az Azure befejezte az üzembe helyezést, a logikai alkalmazás automatikusan működik és fut, de még nem csinál semmit, mert nem létezik munkafolyamat.
 
-1. Az üzembe helyezés befejezése lapon válassza az **erőforráshoz való ugrás** lehetőséget, így elkezdheti felépíteni a munkafolyamatot.
+1. Az üzembe helyezés befejezése lapon válassza az **erőforráshoz való ugrás** lehetőséget, így elkezdheti felépíteni a munkafolyamatot. Ha a logikai alkalmazás üzembe helyezéséhez a **Docker-tárolót** választotta, folytassa a [Docker-tárolóval kapcsolatos információk megadásához szükséges lépésekkel](#set-docker-container).
 
    ![A Azure Portalt és a befejezett telepítést bemutató képernyőkép.](./media/create-stateful-stateless-workflows-azure-portal/logic-app-completed-deployment.png)
 
@@ -117,15 +122,13 @@ Ez a cikk bemutatja, hogyan hozhatja létre a logikai alkalmazást és a munkafo
 
 ## <a name="specify-docker-container-for-deployment"></a>Docker-tároló megadása a központi telepítéshez
 
-Ha a logikai alkalmazás létrehozásakor a **Docker-tárolót** választotta, akkor győződjön meg arról, hogy az Azure Portal a **logikai alkalmazás (előzetes verzió)** erőforrásának létrehozása után az üzembe helyezéshez használni kívánt tárolóval kapcsolatos információkat biztosít.
+Mielőtt elkezdené ezeket a lépéseket, szüksége van egy Docker-tároló rendszerképére. Létrehozhatja például ezt a rendszerképet [Azure Container Registry](../container-registry/container-registry-intro.md), [app Service](../app-service/overview.md)vagy az [Azure Container instance](../container-instances/container-instances-overview.md)használatával. Ezután a logikai alkalmazás létrehozása után a Docker-tárolóval kapcsolatos információkat adhat meg.
 
 1. A Azure Portal nyissa meg a logikai alkalmazás erőforrását.
 
-1. A logikai alkalmazás menü **Beállítások** területén válassza a **tároló beállításai** elemet. Adja meg a Docker-tároló rendszerképének részleteit és helyét.
+1. A logikai alkalmazás menü **Beállítások** területén válassza a **központi telepítési központ** elemet.
 
-   ![Képernyőfelvétel: a logikai alkalmazás menüjének megjelenítése a "Container Settings" beállítással.](./media/create-stateful-stateless-workflows-azure-portal/logic-app-deploy-container-settings.png)
-
-1. Ha elkészült, mentse a beállításokat.
+1. A **központi telepítési központ** ablaktáblán kövesse a Docker-tároló részleteinek biztosításához és kezeléséhez szükséges utasításokat.
 
 <a name="add-workflow"></a>
 
@@ -223,9 +226,9 @@ Mielőtt hozzáadhat egy triggert egy üres munkafolyamathoz, győződjön meg a
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Művelet** | Yes | <*saját e-mail cím*> | Az e-mail címzettje, amely a tesztelési célú e-mail-címe lehet. Ez a példa a fiktív e-mailt használja `sophiaowen@fabrikam.com` . |
-   | **Tárgy** | Yes | `An email from your example workflow` | Az e-mail tárgya |
-   | **Törzs** | Yes | `Hello from your example workflow!` | Az e-mail szövegtörzsének tartalma |
+   | **Ide:** | Igen | <*saját e-mail cím*> | Az e-mail címzettje, amely a tesztelési célú e-mail-címe lehet. Ez a példa a fiktív e-mailt használja `sophiaowen@fabrikam.com` . |
+   | **Tárgy** | Igen | `An email from your example workflow` | Az e-mail tárgya |
+   | **Törzs** | Igen | `Hello from your example workflow!` | Az e-mail szövegtörzsének tartalma |
    ||||
 
    > [!NOTE]
@@ -286,9 +289,11 @@ Ebben a példában a munkafolyamat akkor fut le, amikor a kérelem-trigger bejö
 
       ![Az Outlook e-maileket megjelenítő képernyőkép a példában leírtak szerint](./media/create-stateful-stateless-workflows-azure-portal/workflow-app-result-email.png)
 
+<a name="view-run-history"></a>
+
 ## <a name="review-run-history"></a>Futtatási előzmények áttekintése
 
-Állapot-nyilvántartó munkafolyamatok esetén az egyes munkafolyamatok futtatása után megtekintheti a futtatási előzményeket, beleértve a teljes Futtatás állapotát, az triggerhez, valamint az egyes műveletekhez, valamint azok bemeneteit és kimeneteit.
+Állapot-nyilvántartó munkafolyamatok esetén az egyes munkafolyamatok futtatása után megtekintheti a futtatási előzményeket, beleértve a teljes Futtatás állapotát, az triggerhez, valamint az egyes műveletekhez, valamint azok bemeneteit és kimeneteit. A Azure Portal a futtatási előzmények és az triggerek előzményei a munkafolyamat szintjén jelennek meg, nem a logikai alkalmazás szintjén. Az trigger előzményeinek a futtatási előzmények kontextuson kívüli áttekintését lásd: trigger-előzmények [áttekintése](#view-trigger-histories).
 
 1. A Azure Portal a munkafolyamat menüjében válassza a **figyelés** lehetőséget.
 
@@ -302,7 +307,7 @@ Ebben a példában a munkafolyamat akkor fut le, amikor a kérelem-trigger bejö
    | Futtatás állapota | Leírás |
    |------------|-------------|
    | **Megszakítva** | A Futtatás leállt vagy nem fejeződik be külső problémák miatt, például rendszerleállás vagy elévült Azure-előfizetés. |
-   | **Megszakítva** | A Futtatás elindítva és elindítva, de lemondási kérelem érkezett. |
+   | **Megszakítva** | A Futtatás elindítva és elindítva, de megszakítási kérelem érkezett. |
    | **Sikertelen** | A Futtatás során legalább egy művelet sikertelen volt. A munkafolyamatban nem történt további művelet, amely a hiba kezelésére lett beállítva. |
    | **Futó** | A Futtatás aktiválva lett, és folyamatban van, de ez az állapot a [művelet korlátai](logic-apps-limits-and-config.md) vagy a [jelenlegi díjszabási csomag](https://azure.microsoft.com/pricing/details/logic-apps/)miatt szabályozott Futtatás esetén is megjelenhet. <p><p>**Tipp**: Ha [diagnosztikai naplózást](monitor-logic-apps-log-analytics.md)állít be, a megjelenő összes szabályozási eseményről információt kaphat. |
    | **Sikeres** | A Futtatás sikerült. Ha bármilyen művelet meghiúsult, a munkafolyamat egy későbbi művelete ezt a hibát kezelte. |
@@ -320,15 +325,15 @@ Ebben a példában a munkafolyamat akkor fut le, amikor a kérelem-trigger bejö
 
    | Művelet állapota | Ikon | Leírás |
    |---------------|------|-------------|
-   | Megszakítva | ![A "megszakított" művelet állapotának ikonja][aborted-icon] | A művelet a külső problémák miatt leállt vagy nem zárult, például rendszerleállás vagy elévült Azure-előfizetés. |
-   | Lemondva | ![A "megszakított" művelet állapotának ikonja][cancelled-icon] | A művelet futása megszakadt, de lemondási kérelmet kapott. |
-   | Sikertelen | ![A "sikertelen" művelet állapotának ikonja][failed-icon] | A művelet sikertelen volt. |
-   | Futó | ![A "futó" művelet állapotának ikonja][running-icon] | A művelet jelenleg fut. |
-   | Kimarad | ![A "kihagyott" művelet állapotának ikonja][skipped-icon] | A rendszer kihagyta a műveletet, mert a közvetlenül megelőző művelet meghiúsult. Egy művelet olyan `runAfter` feltétellel rendelkezik, amely megköveteli, hogy az előző művelet sikeresen befejeződik az aktuális művelet futtatása előtt. |
-   | Sikeres | ![A "sikeres" művelet állapotának ikonja][succeeded-icon] | A művelet sikeresen befejeződött. |
-   | Az újrapróbálkozások sikeresek voltak | !["Sikeres újrapróbálkozások" művelet ikonja][succeeded-with-retries-icon] | A művelet sikeresen befejeződött, de csak egy vagy több újrapróbálkozás után. Az újrapróbálkozási előzmények áttekintéséhez a futtatási előzmények részletei nézetben válassza ki ezt a műveletet, így megtekintheti a bemeneteket és a kimeneteket. |
-   | Időtúllépés | !["Időtúllépés" műveleti állapot ikonja][timed-out-icon] | A művelet a művelet beállításaiban megadott időkorlát miatt leállt. |
-   | Várakozó | ![A "Waiting" művelet állapotának ikonja][waiting-icon] | Egy olyan webhook-műveletre vonatkozik, amely egy hívótól érkező bejövő kérésre vár. |
+   | **Megszakítva** | ![A "megszakított" művelet állapotának ikonja][aborted-icon] | A művelet a külső problémák miatt leállt vagy nem zárult, például rendszerleállás vagy elévült Azure-előfizetés. |
+   | **Megszakítva** | ![A "megszakított" művelet állapotának ikonja][cancelled-icon] | A művelet futott, de a rendszer visszavonási kérelmet kapott. |
+   | **Sikertelen** | ![A "sikertelen" művelet állapotának ikonja][failed-icon] | A művelet sikertelen volt. |
+   | **Futó** | ![A "futó" művelet állapotának ikonja][running-icon] | A művelet jelenleg fut. |
+   | **Kimarad** | ![A "kihagyott" művelet állapotának ikonja][skipped-icon] | A rendszer kihagyta a műveletet, mert a közvetlenül megelőző művelet meghiúsult. Egy művelet olyan `runAfter` feltétellel rendelkezik, amely megköveteli, hogy az előző művelet sikeresen befejeződik az aktuális művelet futtatása előtt. |
+   | **Sikeres** | ![A "sikeres" művelet állapotának ikonja][succeeded-icon] | A művelet sikeresen befejeződött. |
+   | **Az újrapróbálkozások sikeresek voltak** | !["Sikeres újrapróbálkozások" művelet ikonja][succeeded-with-retries-icon] | A művelet sikeresen befejeződött, de csak egy vagy több újrapróbálkozás után. Az újrapróbálkozási előzmények áttekintéséhez a futtatási előzmények részletei nézetben válassza ki ezt a műveletet, így megtekintheti a bemeneteket és a kimeneteket. |
+   | **Időtúllépés** | !["Időtúllépés" műveleti állapot ikonja][timed-out-icon] | A művelet a művelet beállításaiban megadott időkorlát miatt leállt. |
+   | **Várakozó** | ![A "Waiting" művelet állapotának ikonja][waiting-icon] | Egy olyan webhook-műveletre vonatkozik, amely egy hívótól érkező bejövő kérésre vár. |
    ||||
 
    [aborted-icon]: ./media/create-stateful-stateless-workflows-azure-portal/aborted.png
@@ -346,6 +351,18 @@ Ebben a példában a munkafolyamat akkor fut le, amikor a kérelem-trigger bejö
    ![A kiválasztott "e-mail küldése" művelet bemeneteit és kimeneteit bemutató képernyőkép.](./media/create-stateful-stateless-workflows-azure-portal/review-step-inputs-outputs.png)
 
 1. Az adott lépéshez tartozó nyers bemenetek és kimenetek további áttekintéséhez válassza a **nyers bemenetek megjelenítése** vagy a **nyers kimenet megjelenítése** lehetőséget.
+
+<a name="view-trigger-histories"></a>
+
+## <a name="review-trigger-histories"></a>Trigger-előzmények áttekintése
+
+Állapot-nyilvántartó munkafolyamatok esetén áttekintheti az egyes futtatások trigger-előzményeit, beleértve az aktiválási állapotot a bemenetekkel és kimenetekkel együtt, a [futtatási előzmények környezettől](#view-run-history)függetlenül. A Azure Portalban az aktiválási előzmények és a futtatási előzmények a munkafolyamat szintjén jelennek meg, nem a logikai alkalmazás szintjén. A korábbi adatértékek megkereséséhez kövesse az alábbi lépéseket:
+
+1. A Azure Portal a munkafolyamat menüjének **fejlesztői** területén válassza az **aktiválási előzmények** elemet.
+
+   Az **trigger-előzmények** ablaktáblán láthatók a munkafolyamat futtatási előzményei.
+
+1. Egy adott trigger előzményeinek áttekintéséhez válassza ki az azonosítót a futtatáshoz.
 
 <a name="enable-open-application-insights"></a>
 
@@ -365,7 +382,10 @@ Ha a Application Insights egy telepített logikai alkalmazásban szeretné enged
 
    Ha a Application Insights engedélyezve van, akkor a **Application Insights** ablaktáblán válassza az **Application Insights-adatbázis megtekintése** lehetőséget.
 
-Application Insights megnyitása után áttekintheti a logikai alkalmazás különböző mérőszámait.
+Application Insights megnyitása után áttekintheti a logikai alkalmazás különböző mérőszámait. További információkért tekintse át a következő témaköröket:
+
+* [Azure Logic Apps fut bárhol – figyelő Application Insights – 1. rész](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-monitor-with-application/ba-p/1877849)
+* [Azure Logic Apps fut bárhol – figyelő Application Insights – 2. rész](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-monitor-with-application/ba-p/2003332)
 
 <a name="enable-run-history-stateless"></a>
 
@@ -456,7 +476,7 @@ A probléma megoldásához kövesse az alábbi lépéseket az elavult verzió t�
 
    A portál automatikusan lekéri és a legújabb csomagot használja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezt a nyilvános előzetes verziót szeretném hallani a tapasztalatairól!
 

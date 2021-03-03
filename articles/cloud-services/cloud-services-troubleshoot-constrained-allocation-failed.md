@@ -1,30 +1,24 @@
 ---
-title: ConstrainedAllocationFailed hibáinak megoldása felhőalapú szolgáltatás Azure-beli üzembe helyezése során | Microsoft Docs
-description: Ez a cikk bemutatja, Hogyan oldhatók fel a ConstrainedAllocationFailed-kivételek egy felhőalapú szolgáltatás Azure-beli üzembe helyezése során.
+title: A ConstrainedAllocationFailed hibáinak megoldása a Cloud Service (klasszikus) Azure-ba történő telepítésekor | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan oldható fel a ConstrainedAllocationFailed kivétel a Cloud Service (klasszikus) Azure-ba történő telepítésekor.
 services: cloud-services
 author: mibufo
 ms.author: v-mibufo
 ms.service: cloud-services
 ms.topic: troubleshooting
-ms.date: 02/04/2020
-ms.openlocfilehash: de344bbcd89158676bacf2a8aa1743d282700b9d
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.date: 02/22/2021
+ms.openlocfilehash: 346e7eb77039ab80e6f9dffb8ea8360198040504
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100521068"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738283"
 ---
-# <a name="troubleshoot-constrainedallocationfailed-when-deploying-a-cloud-service-to-azure"></a>ConstrainedAllocationFailed hibáinak megoldása felhőalapú szolgáltatás Azure-beli üzembe helyezése során
+# <a name="troubleshoot-constrainedallocationfailed-when-deploying-a-cloud-service-classic-to-azure"></a>A ConstrainedAllocationFailed hibáinak megoldása a Cloud Service (klasszikus) Azure-ba történő telepítésekor
 
-Ebben a cikkben azokat a foglalási hibákat fogja elhárítani, amelyekben az Azure Cloud Services korlátozások miatt nem telepíthető.
+Ebben a cikkben azokat a foglalási hibákat fogja elhárítani, amelyekben az Azure Cloud Services (klasszikus) nem telepíthető a foglalási megkötések miatt.
 
-Microsoft Azure foglalása:
-
-- Cloud Services-példányok frissítése
-
-- Új webes vagy feldolgozói szerepkör-példányok hozzáadása
-
-- Példányok üzembe helyezése egy felhőalapú szolgáltatásban
+Ha a példányokat egy felhőalapú szolgáltatásba (klasszikus) telepíti, vagy új webes vagy feldolgozói szerepkör-példányokat ad hozzá, Microsoft Azure kioszt egy számítási erőforrást.
 
 Időnként előfordulhat, hogy a műveletek során még az Azure-előfizetési korlát elérése előtt is hibákat fog kapni.
 
@@ -33,9 +27,11 @@ Időnként előfordulhat, hogy a műveletek során még az Azure-előfizetési k
 
 ## <a name="symptom"></a>Hibajelenség
 
-A Azure Portalban navigáljon a Cloud Service-hez, és az oldalsávon válassza ki a *műveleti naplókat (klasszikus)* a naplók megtekintéséhez.
+A naplók megtekintéséhez a Azure Portal navigáljon a Cloud Service-be (klasszikus), és az oldalsávon válassza a *műveleti napló (klasszikus)* lehetőséget.
 
-A felhőalapú szolgáltatás naplóinak vizsgálatakor a következő kivétel jelenik meg:
+![A képen a művelet napló (klasszikus) panel látható.](./media/cloud-services-troubleshoot-constrained-allocation-failed/cloud-services-troubleshoot-allocation-logs.png)
+
+Ha megvizsgálja a Cloud Service naplóit (klasszikus), a következő kivétel jelenik meg:
 
 |Kivétel típusa  |Hibaüzenet  |
 |---------|---------|
@@ -43,99 +39,42 @@ A felhőalapú szolgáltatás naplóinak vizsgálatakor a következő kivétel j
 
 ## <a name="cause"></a>Ok
 
-Van egy kapacitási probléma azzal a régióval vagy fürttel, amelyet üzembe helyez. Akkor következik be, amikor a kiválasztott erőforrás-SKU nem érhető el a megadott helyen.
+Ha az első példány üzembe helyezése egy felhőalapú szolgáltatásban (átmeneti vagy éles üzemben) történik, a felhőalapú szolgáltatás egy fürthöz lesz rögzítve.
 
-> [!NOTE]
-> A felhőalapú szolgáltatás első csomópontjának telepítésekor a rendszer egy erőforráskészletet *rögzít* . Az erőforráskészlet lehet egyetlen fürt vagy fürtök csoportja.
->
-> Idővel az erőforráskészlet erőforrásai teljes mértékben kihasználhatók lesznek. Ha egy felhőalapú szolgáltatás kiosztási kérést biztosít a további erőforrásokhoz, ha nem áll rendelkezésre elegendő erőforrás a rögzített erőforráskészlet-készletben, akkor a kérés [foglalási hibát](cloud-services-allocation-failures.md)eredményez.
+Idővel az ebben a fürtben lévő erőforrások teljes mértékben kihasználhatók lesznek. Ha egy felhőalapú szolgáltatás (klasszikus) kiosztási kérést biztosít további erőforrásokhoz, ha nincs elegendő erőforrás a rögzített fürtben, a kérés foglalási hibát eredményez. További információ: a [foglalási hibák gyakori problémái](cloud-services-allocation-failures.md#common-issues).
 
 ## <a name="solution"></a>Megoldás
 
-Ebben az esetben válasszon egy másik régiót vagy SKU-t a felhőalapú szolgáltatás üzembe helyezéséhez. A felhőalapú szolgáltatás üzembe helyezése vagy frissítése előtt meghatározhatja, hogy mely SKU-ket lehet elérni egy adott régióban vagy rendelkezésre állási zónában. Kövesse az alábbi [Azure CLI](#list-skus-in-region-using-azure-cli)-, [PowerShell](#list-skus-in-region-using-powershell)-vagy [REST API](#list-skus-in-region-using-rest-api) -folyamatokat.
+A meglévő felhőalapú szolgáltatások egy fürthöz vannak *rögzítve* . A Cloud Service (klasszikus) további telepítései ugyanazon a fürtön történnek.
 
-### <a name="list-skus-in-region-using-azure-cli"></a>Az Azure CLI-t használó régióban található SKU-lista listázása
+Ha ebben a forgatókönyvben lefoglalási hibát tapasztal, a javasolt művelet az új felhőalapú szolgáltatás (klasszikus) újratelepítése (és a *CNAME* frissítése).
 
-Használhatja az az [VM List-SKUs](https://docs.microsoft.com/cli/azure/vm.html#az_vm_list_skus) parancsot.
+> [!TIP]
+> Valószínűleg ez a megoldás a legeredményesebb, mivel lehetővé teszi a platform számára, hogy az adott régióban lévő összes fürt közül válasszon.
 
-- A `--location` paraméter használatával szűrheti a kimenetet a használt helyre.
-- A paraméter használatával a `--size` részleges méret neve alapján kereshet.
-- További információ: a [hiba elhárítása az SKU-hoz nem elérhető](../azure-resource-manager/templates/error-sku-not-available.md#solution-2---azure-cli) útmutatóban.
+> [!NOTE]
+> Ennek a megoldásnak nulla állásidőt kell fizetnie.
 
-    **Például:**
+1. A számítási feladatok üzembe helyezése egy új felhőalapú szolgáltatásban (klasszikus).
+    - További útmutatásért tekintse meg a [Cloud Service (klasszikus) létrehozásával és üzembe helyezésével](cloud-services-how-to-create-deploy-portal.md) kapcsolatos útmutatót.
 
-    ```azurecli
-    az vm list-skus --location southcentralus --size Standard_F --output table
-    ```
+    > [!WARNING]
+    > Ha nem szeretné elveszíteni az üzembe helyezési ponthoz tartozó IP-címet, használja [a 3. megoldást: tartsa meg az IP-címet](cloud-services-allocation-failures.md#solutions).
 
-    **Példa eredményei:** ![ Az Azure CLI kimenete az "az VM List-SKUs--Location southcentralus--size Standard_F--output Table" parancs futtatásához, amely megjeleníti az elérhető SKU-ket.](./media/cloud-services-troubleshoot-constrained-allocation-failed/cloud-services-troubleshoot-constrained-allocation-failed-1.png)
+1. Frissítse a *CNAME* -t vagy *egy* rekordot úgy, hogy az az új Cloud Service-be (klasszikus) irányítsa a forgalmat.
+    - További útmutatásért tekintse meg az [Egyéni tartománynév konfigurálása Azure Cloud Service (klasszikus)](cloud-services-custom-domain-name-portal.md#understand-cname-and-a-records) útmutatóhoz című témakört.
 
-#### <a name="list-skus-in-region-using-powershell"></a>Az SKU listázása a régióban a PowerShell használatával
+1. Ha nulla forgalom lesz a régi helyre, akkor törölheti a régi Cloud Service-t (klasszikus).
+    - További útmutatásért tekintse meg a [központi telepítések és a Cloud Service (klasszikus)](cloud-services-how-to-manage-portal.md#delete-deployments-and-a-cloud-service) című útmutatót.
+    - A felhőalapú szolgáltatás (klasszikus) hálózati forgalmának megtekintéséhez tekintse meg a [Cloud Service (klasszikus) monitorozásának bemutatása](cloud-services-how-to-monitor.md)című témakört.
 
-Használhatja a [Get-AzComputeResourceSku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku) parancsot.
-
-- Az eredmények kiszűrése hely szerint.
-- Ehhez a parancshoz a PowerShell legújabb verzióját kell megadnia.
-- További információ: a [hiba elhárítása az SKU-hoz nem elérhető](../azure-resource-manager/templates/error-sku-not-available.md#solution-1---powershell) útmutatóban.
-
-**Például:**
-
-```azurepowershell
-Get-AzComputeResourceSku | where {$_.Locations -icontains "centralus"}
-```
-
-**Más hasznos parancsok:**
-
-A méretet (Standard_DS14_v2) tartalmazó tárolóhelyek kiszűrése:
-
-```azurepowershell
-Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("Standard_DS14_v2")}
-```
-
-A méretet (v3) tartalmazó összes tárolóhely kiszűrése:
-
-```azurepowershell
-Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("v3")} | fc
-```
-
-#### <a name="list-skus-in-region-using-rest-api"></a>A régióban található SKU-ket REST API használatával listázhatja
-
-Használhatja a [Resource SKU-List](https://docs.microsoft.com/rest/api/compute/resourceskus/list) műveletet. Az elérhető SKU-ket és régiókat a következő formátumban adja vissza:
-
-```json
-{
-  "value": [
-    {
-      "resourceType": "virtualMachines",
-      "name": "Standard_A0",
-      "tier": "Standard",
-      "size": "A0",
-      "locations": [
-        "eastus"
-      ],
-      "restrictions": []
-    },
-    {
-      "resourceType": "virtualMachines",
-      "name": "Standard_A1",
-      "tier": "Standard",
-      "size": "A1",
-      "locations": [
-        "eastus"
-      ],
-      "restrictions": []
-    },
-    <Rest_of_your_file_is_located_here...>
-  ]
-}
-    
-```
+Lásd: a [Cloud Service (klasszikus) lefoglalási hibáinak elhárítása | Microsoft Docs](cloud-services-allocation-failures.md#common-issues) a további szervizelési lépésekhez.
 
 ## <a name="next-steps"></a>Következő lépések
 
-További lefoglalási hibák megoldásához és a generált eszközök jobb megismeréséhez:
+További foglalási hibákra vonatkozó megoldások és háttér-információk:
 
 > [!div class="nextstepaction"]
-> [Foglalási hibák (Cloud Services)](cloud-services-allocation-failures.md)
+> [Foglalási hibák – Cloud Service (klasszikus)](cloud-services-allocation-failures.md)
 
 Ha az Azure-beli probléma nem szerepel ebben a cikkben, látogasson el az MSDN webhelyen található Azure-fórumokra, [és stack overflow](https://azure.microsoft.com/support/forums/). Felteheti a problémát ezekben a fórumokon, vagy közzéteheti a [ @AzureSupport Twitteren](https://twitter.com/AzureSupport). Azure-támogatási kérelmet is küldhet. Ha támogatási kérést szeretne küldeni, az [Azure-támogatás](https://azure.microsoft.com/support/options/) lapon válassza a *támogatás* lekérése lehetőséget.

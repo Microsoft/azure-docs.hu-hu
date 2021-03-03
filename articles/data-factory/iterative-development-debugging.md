@@ -1,17 +1,20 @@
 ---
 title: Ismétlődő fejlesztés és hibakeresés a Azure Data Factoryban
 description: Ismerje meg, hogyan fejlesztheti és hibakeresési Data Factory folyamatok iteratív az ADF UX-ben
-ms.date: 10/29/2020
+ms.date: 02/23/2021
 ms.topic: conceptual
 ms.service: data-factory
-author: dcstwh
-ms.author: weetok
-ms.openlocfilehash: 90f3f57fa527c8aaeb32a7dcf41f461ff5f0bf77
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+services: data-factory
+documentationcenter: ''
+ms.workload: data-services
+author: kromerm
+ms.author: makromer
+ms.openlocfilehash: ef47d311f5f096db962ea27792e7871dbf0ef81a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392527"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712963"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Iteratív fejlesztés és hibakeresés az Azure Data Factoryval
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -73,6 +76,8 @@ Az adatfolyamatok leképezése lehetővé teszi, hogy olyan kód nélküli Adat�
 A **figyelő** felületén figyelheti az aktív adatfolyam-hibakeresési munkameneteket a gyáron belül.
 
 ![Adatfolyam-hibakeresési munkamenetek megtekintése](media/iterative-development-debugging/view-dataflow-debug-sessions.png)
+
+Az adatfolyamatok tervezői és adatforgalm-hibakeresési adatnézete a lehető leghatékonyabban használható kis adatmintákkal. Ha azonban nagy mennyiségű adat alapján kell tesztelni a logikát egy folyamatban vagy adatáramlásban, növelje a hibakeresési munkamenetben használt Azure Integration Runtime méretét több maggal és legalább általános célú számítással.
  
 ### <a name="debugging-a-pipeline-with-a-data-flow-activity"></a>Folyamat hibakeresése adatfolyam-tevékenységgel
 
@@ -83,7 +88,7 @@ A meglévő hibakeresési munkamenetek nagy mértékben csökkentik az adatfolya
 A tevékenység-futtatókörnyezet használatával új fürtöt hoz létre az egyes adatfolyam-tevékenységek integrációs moduljában megadott beállításokkal. Ez lehetővé teszi az egyes feladatok elkülönítését, és az összetett számítási feladatokhoz vagy a teljesítmény teszteléséhez használhatók. Az ÉLETTARTAMot a Azure IR is szabályozhatja, így a hibakereséshez használt fürterőforrás továbbra is elérhető lesz az adott időszakra, hogy további feladatokat lehessen kiszolgálni.
 
 > [!NOTE]
-> Ha párhuzamosan végrehajtó adatfolyamatokkal rendelkező folyamattal rendelkezik, válassza a "tevékenység-futtatókörnyezet használata" lehetőséget, hogy Data Factory használhassa az adatfolyam-tevékenységben kiválasztott Integration Runtime. Ez lehetővé teszi, hogy az adatforgalom több fürtön fusson, és képes legyen a párhuzamos adatfolyam-végrehajtásra.
+> Ha olyan adatáramlási folyamattal rendelkezik, amely párhuzamos vagy olyan adatfolyamatokat hajt végre, amelyeket nagy adatkészletekkel kell tesztelni, válassza a "tevékenység-futtatókörnyezet használata" lehetőséget, hogy Data Factory használhassa az adatáramlási tevékenységben kiválasztott Integration Runtime. Ez lehetővé teszi, hogy az adatforgalom több fürtön fusson, és képes legyen a párhuzamos adatfolyam-végrehajtásra.
 
 ![Folyamat futtatása adatfolyam](media/iterative-development-debugging/iterative-development-dataflow.png)
 

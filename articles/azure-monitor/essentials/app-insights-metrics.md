@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: 400f239f3e7b736196bf950e81148fa2e39aca96
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ca19fdfa617b71b1465e4710d8ca52b18c9ebff5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100613365"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731680"
 ---
 # <a name="application-insights-log-based-metrics"></a>Application Insights log-alapú metrikák
 
@@ -21,13 +21,13 @@ Application Insights log-alapú metrikák segítségével elemezheti a figyelt a
 * A jelenet mögötti [log-alapú mérőszámok](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) le vannak fordítva a tárolt események [Kusto-lekérdezéseinek](/azure/kusto/query/) .
 * A [standard mérőszámok](../app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics) előre összesített idősorozatként vannak tárolva.
 
-Mivel a *standard mérőszámok* előzetes összesítése a gyűjtemény során történik, jobb teljesítményt biztosítanak a lekérdezés időpontjában. Ez jobb választást tesz lehetővé az irányítópultok és a valós idejű riasztások számára. A *log-alapú mérőszámok* több dimenzióval rendelkeznek, így az adatelemzés és az alkalmi diagnosztika kiváló lehetőséget biztosít számukra. A [névtér-választóval](../platform/metrics-getting-started.md#create-your-first-metric-chart) válthat a log-alapú és a standard mérőszámok között a [metrikák Explorerben](../platform/metrics-getting-started.md).
+Mivel a *standard mérőszámok* előzetes összesítése a gyűjtemény során történik, jobb teljesítményt biztosítanak a lekérdezés időpontjában. Ez jobb választást tesz lehetővé az irányítópultok és a valós idejű riasztások számára. A *log-alapú mérőszámok* több dimenzióval rendelkeznek, így az adatelemzés és az alkalmi diagnosztika kiváló lehetőséget biztosít számukra. A [névtér-választóval](./metrics-getting-started.md#create-your-first-metric-chart) válthat a log-alapú és a standard mérőszámok között a [metrikák Explorerben](./metrics-getting-started.md).
 
 ## <a name="interpret-and-use-queries-from-this-article"></a>A cikkben szereplő lekérdezések értelmezése és használata
 
 Ez a cikk a támogatott összesítésekkel és Dimenziókkal rendelkező metrikákat sorolja fel. A log-alapú metrikák részletei tartalmazzák a mögöttes Kusto-lekérdezési utasításokat. A kényelmes használat érdekében minden lekérdezés alapértelmezett értékeket használ az idő részletességének, a diagram típusának és a méretezés időnként, amely leegyszerűsíti a Log Analytics lekérdezés használatát anélkül, hogy módosításra lenne szükség.
 
-Ha ugyanazt a metrikát ábrázolja a [metrikák Explorerben](../platform/metrics-getting-started.md), nincsenek alapértelmezett beállítások – a lekérdezés a diagram beállításai alapján dinamikusan módosul:
+Ha ugyanazt a metrikát ábrázolja a [metrikák Explorerben](./metrics-getting-started.md), nincsenek alapértelmezett beállítások – a lekérdezés a diagram beállításai alapján dinamikusan módosul:
 
 - A kiválasztott **időtartomány** egy további, *ahol timestamp...* záradékban van lefordítva, hogy csak a kijelölt időtartományból válassza ki az eseményeket. Például egy diagram, amely a legutóbbi 24 óra adattárat mutatja, a lekérdezés tartalmazza a *(z) | where időbélyeg > ago (24 óra)*.
 
@@ -38,7 +38,7 @@ Ha ugyanazt a metrikát ábrázolja a [metrikák Explorerben](../platform/metric
 - A kiválasztott **felosztott diagram** dimenzió egy extra összefoglaló tulajdonságra van lefordítva. Ha például a diagramot a *hely* alapján osztja szét, és egy 5 perces részletességgel ábrázolja azt, akkor a program összegzi az *Összefoglaló* záradékot *... raktárhely alapján (timestamp, 5 m), hely*.
 
 > [!NOTE]
-> Ha még nem ismeri a Kusto lekérdezési nyelvét, a Kusto-utasítások másolásával és beillesztésével az Log Analytics lekérdezési ablaktáblán végezheti el a módosítások végrehajtása nélkül. Az alapszintű diagram megjelenítéséhez kattintson a **Futtatás** gombra. Ahogy elkezdi megérteni a lekérdezési nyelv szintaxisát, elindíthatja a kisebb módosításokat, és megtekintheti a módosítás hatását. A saját adatai megismerése nagyszerű lehetőséget jelent a [log Analytics](../log-query/log-analytics-tutorial.md) és [Azure monitor](../overview.md)teljes teljesítményének megkezdésére.
+> Ha még nem ismeri a Kusto lekérdezési nyelvét, a Kusto-utasítások másolásával és beillesztésével az Log Analytics lekérdezési ablaktáblán végezheti el a módosítások végrehajtása nélkül. Az alapszintű diagram megjelenítéséhez kattintson a **Futtatás** gombra. Ahogy elkezdi megérteni a lekérdezési nyelv szintaxisát, elindíthatja a kisebb módosításokat, és megtekintheti a módosítás hatását. A saját adatai megismerése nagyszerű lehetőséget jelent a [log Analytics](../logs/log-analytics-tutorial.md) és [Azure monitor](../overview.md)teljes teljesítményének megkezdésére.
 
 ## <a name="availability-metrics"></a>Rendelkezésre állási metrikák
 

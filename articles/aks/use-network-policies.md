@@ -5,12 +5,12 @@ description: Megtudhatja, hogyan védheti meg és ki a hüvelyeken kívülre ár
 services: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: 598747c0d64db2ae62f740dca4c3e4141f2562f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d3aa49a749890783fdae589edab3d1910b2ac73
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87050479"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729419"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Biztonságos forgalom a hüvelyek között hálózati házirendek használatával az Azure Kubernetes szolgáltatásban (ak)
 
@@ -20,7 +20,7 @@ Ez a cikk bemutatja, hogyan telepítheti a hálózati házirend-motort, és hogy
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Szüksége lesz az Azure CLI-verzió 2.0.61 vagy újabb verziójára, és konfigurálva van.  `az --version`A verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Szüksége lesz az Azure CLI-verzió 2.0.61 vagy újabb verziójára, és konfigurálva van. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
 
 > [!TIP]
 > Ha az előzetes verzióban használta a hálózati házirend szolgáltatást, azt javasoljuk, hogy [hozzon létre egy új fürtöt](#create-an-aks-cluster-and-enable-network-policy).
@@ -52,8 +52,8 @@ Mindkét implementáció Linux *iptables* -t használ a megadott házirendek bet
 
 | Képesség                               | Azure                      | Calico                      |
 |------------------------------------------|----------------------------|-----------------------------|
-| Támogatott platformok                      | Linux                      | Linux                       |
-| Támogatott hálózati beállítások             | Azure-CNI                  | Azure CNI és kubenet       |
+| Támogatott platformok                      | Linux                      | Linux, Windows Server 2019 (előzetes verzió)  |
+| Támogatott hálózati beállítások             | Azure-CNI                  | Azure CNI (Windows Server 2019 és Linux) és kubenet (Linux)  |
 | Megfelelőség a Kubernetes-specifikációval | Minden támogatott házirend-típus |  Minden támogatott házirend-típus |
 | További funkciók                      | Nincs                       | Kiterjesztett házirend-modell, amely a globális hálózati házirendből, a globális hálózati készletből és a gazdagép végpontból áll. További információ a `calicoctl` parancssori felület ezen Kiterjesztett funkciók kezeléséhez való használatáról: [calicoctl felhasználói referenciája][calicoctl]. |
 | Támogatás                                  | Az Azure-támogatás és a mérnöki csapat támogatja | A tarka közösségi támogatás. A további fizetős támogatással kapcsolatos további információkért lásd a [Project tarka támogatási lehetőségeit][calico-support]. |
@@ -67,7 +67,7 @@ Ha működés közben szeretné megtekinteni a hálózati házirendeket, hozzon 
 * Adatforgalom engedélyezése a pod-címkék alapján.
 * Adatforgalom engedélyezése a névtér alapján.
 
-Először hozzon létre egy AK-fürtöt, amely támogatja a hálózati házirendet. 
+Először hozzon létre egy AK-fürtöt, amely támogatja a hálózati házirendet.
 
 > [!IMPORTANT]
 >
@@ -85,7 +85,7 @@ A következő példa szkriptet:
 
 Vegye figyelembe, hogy az egyszerű szolgáltatás használata helyett felügyelt identitást használhat az engedélyekhez. További információ: [felügyelt identitások használata](use-managed-identity.md).
 
-Saját biztonságos *SP_PASSWORD*megadása. A *RESOURCE_GROUP_NAME* és az *CLUSTER_NAME* változót is lecserélheti:
+Saját biztonságos *SP_PASSWORD* megadása. A *RESOURCE_GROUP_NAME* és az *CLUSTER_NAME* változót is lecserélheti:
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=myResourceGroup-NP
@@ -120,25 +120,101 @@ az role assignment create --assignee $SP_ID --scope $VNET_ID --role Contributor
 
 # Get the virtual network subnet resource ID
 SUBNET_ID=$(az network vnet subnet show --resource-group $RESOURCE_GROUP_NAME --vnet-name myVnet --name myAKSSubnet --query id -o tsv)
+```
 
-# Create the AKS cluster and specify the virtual network and service principal information
-# Enable network policy by using the `--network-policy` parameter
+### <a name="create-an-aks-cluster-for-azure-network-policies"></a>AK-fürt létrehozása az Azure hálózati házirendjeihez
+
+Hozza létre az AK-fürtöt, és határozza meg a virtuális hálózatot, az egyszerű szolgáltatásnév adatait és az *Azure* -t a hálózati beépülő modulhoz és a hálózati házirendhez.
+
+```azurecli
 az aks create \
     --resource-group $RESOURCE_GROUP_NAME \
     --name $CLUSTER_NAME \
     --node-count 1 \
     --generate-ssh-keys \
-    --network-plugin azure \
     --service-cidr 10.0.0.0/16 \
     --dns-service-ip 10.0.0.10 \
     --docker-bridge-address 172.17.0.1/16 \
     --vnet-subnet-id $SUBNET_ID \
     --service-principal $SP_ID \
     --client-secret $SP_PASSWORD \
+    --network-plugin azure \
     --network-policy azure
 ```
 
 A fürt létrehozása néhány percet vesz igénybe. Ha a fürt elkészült, konfigurálja úgy a `kubectl` Kubernetes-fürthöz való csatlakozást, hogy az az [AK Get-hitelesítőadats][az-aks-get-credentials] parancsot használja. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes CLI-t a használatára:
+
+```azurecli-interactive
+az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME
+```
+
+### <a name="create-an-aks-cluster-for-calico-network-policies"></a>AK-fürt létrehozása a tarka hálózati házirendekhez
+
+Hozza létre az AK-fürtöt, és határozza meg a virtuális hálózatot, az egyszerű szolgáltatásnév adatait, az *Azure* -t a hálózati beépülő modulhoz, és a hálózati házirendhez a *tarkat* . A *tarka* használatával a hálózati házirend lehetővé teszi a tarka hálózatkezelést a Linux-és a Windows-csomópontokon.
+
+Ha Windows-csomópont-készleteket szeretne hozzáadni a fürthöz, adja meg azokat a `windows-admin-username` és `windows-admin-password` paramétereket, amelyek megfelelnek a [Windows Server jelszó követelményeinek][windows-server-password]. A tarka és a Windows Node-készletek használatához regisztrálnia kell a-t is `Microsoft.ContainerService/EnableAKSWindowsCalico` .
+
+Regisztrálja a `EnableAKSWindowsCalico` szolgáltatás jelölőjét az az [Feature Register][az-feature-register] paranccsal az alábbi példában látható módon:
+
+```azurecli-interactive
+az feature register --namespace "Microsoft.ContainerService" --name "EnableAKSWindowsCalico"
+```
+
+ A regisztrációs állapotot az az [Feature List][az-feature-list] parancs használatával tekintheti meg:
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableAKSWindowsCalico')].{Name:name,State:properties.state}"
+```
+
+Ha elkészült, frissítse a *Microsoft. tárolószolgáltatás* erőforrás-szolgáltató regisztrációját az az [Provider Register][az-provider-register] paranccsal:
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+> [!IMPORTANT]
+> Jelenleg a Kubernetes 1,20-es vagy újabb verzióját használó új fürtökön elérhetők a Windows-csomópontokkal rendelkező többoldalas hálózati házirendek a 3.17.2, és az Azure CNI hálózatkezelést kell használni. Az AK-alapú fürtökön lévő Windows-csomópontok, ahol a Tarkan engedélyezve van, alapértelmezés szerint engedélyezve van a [közvetlen kiszolgáló visszaküldése (DSR)][dsr]
+>
+> Olyan fürtök esetében, amelyek csak a Kubernetes 1,20-t futtató Linux-csomópontos készleteket futtatnak, a tarka-verziót a rendszer automatikusan a 3.17.2-re frissíti.
+
+A Windows-csomópontokkal rendelkező karton hálózati házirendek jelenleg előzetes verzióban érhetők el.
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+```azurecli
+PASSWORD_WIN="P@ssw0rd1234"
+
+az aks create \
+    --resource-group $RESOURCE_GROUP_NAME \
+    --name $CLUSTER_NAME \
+    --node-count 1 \
+    --generate-ssh-keys \
+    --service-cidr 10.0.0.0/16 \
+    --dns-service-ip 10.0.0.10 \
+    --docker-bridge-address 172.17.0.1/16 \
+    --vnet-subnet-id $SUBNET_ID \
+    --service-principal $SP_ID \
+    --client-secret $SP_PASSWORD \
+    --windows-admin-password $PASSWORD_WIN \
+    --windows-admin-username azureuser \
+    --vm-set-type VirtualMachineScaleSets \
+    --kubernetes-version 1.20.2 \
+    --network-plugin azure \
+    --network-policy calico
+```
+
+A fürt létrehozása néhány percet vesz igénybe. Alapértelmezés szerint a fürt csak Linux-csomópontos készlettel hozható létre. Ha a Windows-csomópontok készleteit szeretné használni, hozzáadhat egyet. Például:
+
+```azurecli
+az aks nodepool add \
+    --resource-group $RESOURCE_GROUP_NAME \
+    --cluster-name $CLUSTER_NAME \
+    --os-type Windows \
+    --name npwin \
+    --node-count 1
+```
+
+Ha a fürt elkészült, konfigurálja úgy a `kubectl` Kubernetes-fürthöz való csatlakozást, hogy az az [AK Get-hitelesítőadats][az-aks-get-credentials] parancsot használja. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes CLI-t a használatára:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME
@@ -191,7 +267,7 @@ exit
 
 ### <a name="create-and-apply-a-network-policy"></a>Hálózati házirend létrehozása és alkalmazása
 
-Most, hogy megerősítettük, használhatja az alapszintű NGINX-weblapot a minta háttér Pod-on, hozzon létre egy hálózati házirendet az összes forgalom elutasításához. Hozzon létre egy nevű fájlt `backend-policy.yaml` , és illessze be a következő YAML-jegyzékbe. Ez a jegyzékfájl egy *podSelector* használatával csatolja a szabályzatot a következő alkalmazással rendelkező hüvelyekhez *: WebApp, szerepkör: háttér* felirat, például a minta NGINX Pod. Nincsenek szabályok meghatározva a *bejövő forgalomban, így*a pod-ra irányuló bejövő forgalom megtagadva:
+Most, hogy megerősítettük, használhatja az alapszintű NGINX-weblapot a minta háttér Pod-on, hozzon létre egy hálózati házirendet az összes forgalom elutasításához. Hozzon létre egy nevű fájlt `backend-policy.yaml` , és illessze be a következő YAML-jegyzékbe. Ez a jegyzékfájl egy *podSelector* használatával csatolja a szabályzatot a következő alkalmazással rendelkező hüvelyekhez *: WebApp, szerepkör: háttér* felirat, például a minta NGINX Pod. Nincsenek szabályok meghatározva a *bejövő forgalomban, így* a pod-ra irányuló bejövő forgalom megtagadva:
 
 ```yaml
 kind: NetworkPolicy
@@ -328,7 +404,7 @@ exit
 
 ## <a name="allow-traffic-only-from-within-a-defined-namespace"></a>Csak meghatározott névtéren belüli forgalom engedélyezése
 
-Az előző példákban létrehozott egy hálózati házirendet, amely megtagadta az összes forgalmat, majd frissítette a szabályzatot, hogy engedélyezzék a hüvelyek forgalmát egy adott címkével. Egy másik gyakori igény, hogy csak egy adott névtéren belül korlátozza a forgalmat. Ha az előző példák egy *fejlesztési* névtér forgalmára irányulnak, hozzon létre egy hálózati házirendet, amely megakadályozza, hogy egy másik névtérből, például a *termelésből*érkező forgalom a hüvelyek eljussanak.
+Az előző példákban létrehozott egy hálózati házirendet, amely megtagadta az összes forgalmat, majd frissítette a szabályzatot, hogy engedélyezzék a hüvelyek forgalmát egy adott címkével. Egy másik gyakori igény, hogy csak egy adott névtéren belül korlátozza a forgalmat. Ha az előző példák egy *fejlesztési* névtér forgalmára irányulnak, hozzon létre egy hálózati házirendet, amely megakadályozza, hogy egy másik névtérből, például a *termelésből* érkező forgalom a hüvelyek eljussanak.
 
 Először hozzon létre egy új névteret egy éles névtér szimulálásához:
 
@@ -337,7 +413,7 @@ kubectl create namespace production
 kubectl label namespace/production purpose=production
 ```
 
-Egy teszt Pod-t az *app = WebApp, role = frontend*néven jelölt *üzemi* névtérben ütemezhet. Terminál-munkamenet csatolása:
+Egy teszt Pod-t az *app = WebApp, role = frontend* néven jelölt *üzemi* névtérben ütemezhet. Terminál-munkamenet csatolása:
 
 ```console
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production
@@ -460,7 +536,7 @@ kubectl delete namespace production
 kubectl delete namespace development
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a hálózati erőforrásokról: az [Azure Kubernetes Service-ben (ak) futó alkalmazások hálózati fogalmai][concepts-network].
 
@@ -487,3 +563,7 @@ A szabályzatokkal kapcsolatos további információkért lásd: [Kubernetes há
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
+[windows-server-password]: /windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements#reference
+[az-extension-add]: /cli/azure/extension?view=azure-cli-latest#az-extension-add
+[az-extension-update]: /cli/azure/extension?view=azure-cli-latest#az-extension-update
+[dsr]: ../load-balancer/load-balancer-multivip-overview.md#rule-type-2-backend-port-reuse-by-using-floating-ip

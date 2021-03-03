@@ -3,12 +3,12 @@ title: Támogatási mátrix a VMware/fizikai vész-helyreállításhoz Azure Sit
 description: Összefoglalja a VMware virtuális gépek és a fizikai kiszolgálók vész-helyreállításának támogatását az Azure-ban Azure Site Recovery használatával.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: aecc7ccb6e633fc9c27b254f98931d682fa3d21b
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.openlocfilehash: 5eab1a1c8d085ab48dd54012908d40eec99ca4c7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100534676"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705075"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>A VMware virtuális gépek és fizikai kiszolgálók Azure-ba való vész-helyreállítási mátrixának támogatása
 
@@ -32,7 +32,7 @@ Fizikai kiszolgálók vész-helyreállítása | Helyszíni Windows-/Linux-alapú
 **Kiszolgáló** | **Követelmények** | **Részletek**
 --- | --- | ---
 vCenter Server | Az 7,0-es verzió & ezt a verziót, 6,7, 6,5, 6,0 vagy 5,5 | Javasoljuk, hogy használjon egy vCenter-kiszolgálót a vész-helyreállítási környezetben.
-vSphere-gazdagépek | Az 7,0-es verzió & ezt a verziót, 6,7, 6,5, 6,0 vagy 5,5 | Azt javasoljuk, hogy a vSphere-gazdagépek és a vCenter-kiszolgálók ugyanabban a hálózatban legyenek, mint a Process Server. Alapértelmezés szerint a Process Server fut a konfigurációs kiszolgálón. [További információ](vmware-physical-azure-config-process-server-overview.md).
+vSphere-gazdagépek | Az 7,0-es verzió & ezt a verziót, 6,7, 6,5, 6,0 vagy 5,5 | Azt javasoljuk, hogy a vSphere-gazdagépek és a vCenter-kiszolgálók ugyanabban a hálózatban legyenek, mint a Process Server. Alapértelmezés szerint a Process Server fut a konfigurációs kiszolgálón. [További információk](vmware-physical-azure-config-process-server-overview.md).
 
 ## <a name="site-recovery-configuration-server"></a>Site Recovery konfigurációs kiszolgáló
 
@@ -68,7 +68,7 @@ Site Recovery támogatja a támogatott gépen futó munkaterhelések replikálá
 **Összetevő** | **Részletek**
 --- | ---
 Számítógép beállításai | Az Azure-ba replikált gépeknek meg kell felelniük az [Azure-követelményeknek](#azure-vm-requirements).
-Gépi munkaterhelés | Site Recovery támogatja a támogatott gépen futó munkaterhelések replikálását. [További információ](./site-recovery-workload.md).
+Gépi munkaterhelés | Site Recovery támogatja a támogatott gépen futó munkaterhelések replikálását. [További információk](./site-recovery-workload.md).
 Számítógépnév | Győződjön meg arról, hogy a számítógép megjelenítendő neve nem tartozik az Azure-beli [fenntartott erőforrás-nevekhez](../azure-resource-manager/templates/error-reserved-resource-name.md)<br/><br/> A logikai kötetek neve nem megkülönbözteti a kis-és nagybetűket. Győződjön meg arról, hogy az eszközön nincs két kötet ugyanazzal a névvel. Például: a "voLUME1", a "voLUME1" névvel rendelkező kötetek nem védhetők Azure Site Recoveryon keresztül.
 
 ### <a name="for-windows"></a>Windows esetén
@@ -79,7 +79,7 @@ Windows Server 2019 | A [34 kumulatív frissítés](https://support.microsoft.co
 Windows Server 2016 64 bites | A Server Core és a Server asztali felhasználói felülettel támogatott.
 Windows Server 2012 R2/Windows Server 2012 | Támogatott.
 Windows Server 2008 R2 SP1 és újabb verziók. | Támogatott.<br/><br/> A mobilitási szolgáltatás ügynökének [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) -es verziójától kezdve telepítenie kell a [SSU](https://support.microsoft.com/help/4490628) -t és az [SHA-2 frissítést](https://support.microsoft.com/help/4474419) a Windows 2008 R2 SP1 vagy újabb verzióját futtató gépekre. Az SHA-1 nem támogatott szeptember 2019-tól, és ha az SHA-2 kód aláírása nincs engedélyezve, az ügynök bővítmény nem a várt módon fog települni/frissíteni. További információ az [SHA-2 frissítésről és a követelményekről](https://support.microsoft.com/topic/sha-2-code-signing-support-update-for-windows-server-2008-r2-windows-7-and-windows-server-2008-september-23-2019-84a8aad5-d8d9-2d5c-6d78-34f9aa5f8339).
-Windows Server 2008 SP2 vagy újabb (64 bites/32 bites) |  Csak Migrálás esetén támogatott. [További információ](migrate-tutorial-windows-server-2008.md).<br/><br/> A mobilitási szolgáltatás ügynökének [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) -es verziójától kezdve a Windows 2008 SP2 rendszerű gépekre telepíteni kell a [SSU](https://support.microsoft.com/help/4493730) -t és az [SHA-2 frissítést](https://support.microsoft.com/help/4474419) . Az SHA-1 nem támogatott szeptember 2019-tól, és ha az SHA-2 kód aláírása nincs engedélyezve, az ügynök bővítmény nem a várt módon fog települni/frissíteni. További információ az [SHA-2 frissítésről és a követelményekről](https://support.microsoft.com/topic/sha-2-code-signing-support-update-for-windows-server-2008-r2-windows-7-and-windows-server-2008-september-23-2019-84a8aad5-d8d9-2d5c-6d78-34f9aa5f8339).
+Windows Server 2008 SP2 vagy újabb (64 bites/32 bites) |  Csak Migrálás esetén támogatott. [További információk](migrate-tutorial-windows-server-2008.md).<br/><br/> A mobilitási szolgáltatás ügynökének [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) -es verziójától kezdve a Windows 2008 SP2 rendszerű gépekre telepíteni kell a [SSU](https://support.microsoft.com/help/4493730) -t és az [SHA-2 frissítést](https://support.microsoft.com/help/4474419) . Az SHA-1 nem támogatott szeptember 2019-tól, és ha az SHA-2 kód aláírása nincs engedélyezve, az ügynök bővítmény nem a várt módon fog települni/frissíteni. További információ az [SHA-2 frissítésről és a követelményekről](https://support.microsoft.com/topic/sha-2-code-signing-support-update-for-windows-server-2008-r2-windows-7-and-windows-server-2008-september-23-2019-84a8aad5-d8d9-2d5c-6d78-34f9aa5f8339).
 Windows 10, Windows 8.1, Windows 8 | Csak a 64 bites rendszer támogatott. a 32 bites rendszer nem támogatott.
 Windows 7 SP1 64 bites | A [36 kumulatív frissítés](https://support.microsoft.com/help/4503156) (a mobilitási szolgáltatás 9,22-es verziója) támogatott. </br></br> A mobilitási szolgáltatás ügynökének [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) -es verziójától kezdve a Windows 7 SP1 rendszerű gépeken telepíteni kell a [SSU](https://support.microsoft.com/help/4490628) -t és az [SHA-2 frissítést](https://support.microsoft.com/help/4474419) .  Az SHA-1 nem támogatott szeptember 2019-tól, és ha az SHA-2 kód aláírása nincs engedélyezve, az ügynök bővítmény nem a várt módon fog települni/frissíteni. További információ az [SHA-2 frissítésről és a követelményekről](https://support.microsoft.com/topic/sha-2-code-signing-support-update-for-windows-server-2008-r2-windows-7-and-windows-server-2008-september-23-2019-84a8aad5-d8d9-2d5c-6d78-34f9aa5f8339).
 
@@ -93,7 +93,7 @@ Linux: CentOS | 5,2 – 5,11</b><br/> 6,1 – 6,10</b><br/> </br> 7,0, 7,1, 7,2,
 Ubuntu | Ubuntu 14,04 * LTS [-kiszolgáló (a támogatott kernel-verziók áttekintése)](#ubuntu-kernel-versions)<br/>Ubuntu 16,04 * LTS [-kiszolgáló (a támogatott kernel-verziók áttekintése)](#ubuntu-kernel-versions) </br> Ubuntu 18,04 * LTS [-kiszolgáló (a támogatott kernel-verziók áttekintése)](#ubuntu-kernel-versions) </br> Ubuntu 20,04 * LTS [-kiszolgáló (a támogatott kernel-verziók áttekintése)](#ubuntu-kernel-versions) </br> (*az összes 14,04 támogatását tartalmazza.* x *, 16,04.* x *, 18,04.* x *, 20,04.* x * verziók)
 Debian | Debian 7/Debian 8 (tartalmazza az összes 7 támogatását). *x*, 8. *x* verziók); Debian 9 (a 9,1 és 9,13 közötti támogatással is rendelkezik. A Debian 9,0 nem támogatott.), Debian 10 [(a támogatott kernel-verziók áttekintése)](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1, SP2, SP3, SP4, [SP5](https://support.microsoft.com/help/4570609) [(támogatott kernel-verziók áttekintése)](#suse-linux-enterprise-server-12-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 15, 15 SP1 [(a támogatott kernel-verziók áttekintése)](#suse-linux-enterprise-server-15-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 11 SP3. [Győződjön meg arról, hogy letölti a legújabb mobilitási ügynök telepítőjét a konfigurációs kiszolgálón](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server). </br> 11 SP4 SUSE Linux Enterprise Server </br> **Megjegyzés**: a replikált gépek frissítése SUSE Linux Enterprise Server 11 SP3-ről SP4-re nem támogatott. A frissítéshez tiltsa le a replikációt, majd engedélyezze újra a frissítést. <br/>|
-Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery), [7,8](https://support.microsoft.com/help/4573888/), [7,9](https://support.microsoft.com/help/4597409/), [8,0](https://support.microsoft.com/help/4573888/), [8,1](https://support.microsoft.com/help/4573888/), [8,2](https://support.microsoft.com/help/4573888/), [8,3](https://support.microsoft.com/help/4597409/)  <br/> A Red hat-kompatibilis kernel vagy a nem törhető vállalati kernel kiadásának futtatása 3, 4 & 5 (UEK3, UEK4, UEK5)<br/><br/>8.1<br/>Az összes UEK-kernel és a RedHat kernel <= 3.10.0-1062. * használata támogatott a [9,35](https://support.microsoft.com/help/4573888/) -as számú RedHat-kernel számára a [9,36](https://support.microsoft.com/help/4578241/) -es verzióban
+Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery), [7,8](https://support.microsoft.com/help/4573888/), [7,9](https://support.microsoft.com/help/4597409/), [8,0](https://support.microsoft.com/help/4573888/), [8,1](https://support.microsoft.com/help/4573888/), [8,3](https://support.microsoft.com/help/4597409/)  <br/> A Red hat-kompatibilis kernel vagy a nem törhető vállalati kernel kiadásának futtatása 3, 4 & 5 (UEK3, UEK4, UEK5)<br/><br/>8.1<br/>Az összes UEK-kernel és a RedHat kernel <= 3.10.0-1062. * használata támogatott a [9,35](https://support.microsoft.com/help/4573888/) -as számú RedHat-kernel számára a [9,36](https://support.microsoft.com/help/4578241/) -es verzióban
 
 > [!Note]
 >- Az egyes Windows-verziók esetében Azure Site Recovery csak a [hosszú távú karbantartási csatorna (LTSC)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) buildeket támogatja.  A [féléves csatorna](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) kiadásai jelenleg nem támogatottak.
@@ -196,7 +196,7 @@ Vendég/kiszolgáló hálózati IPv6 | Nem.
 Vendég/kiszolgáló hálózati statikus IP-címe (Windows) | Igen.
 Vendég/kiszolgáló hálózati statikus IP-címe (Linux) | Igen. <br/><br/>A virtuális gépek DHCP használatára vannak konfigurálva a feladat-visszavétel során.
 Vendég/kiszolgáló hálózata több hálózati adapterrel | Igen.
-Site Recovery szolgáltatáshoz való privát hivatkozás | Igen. [További információ](hybrid-how-to-enable-replication-private-endpoints.md).
+Site Recovery szolgáltatáshoz való privát hivatkozás | Igen. [További információk](hybrid-how-to-enable-replication-private-endpoints.md).
 
 
 ## <a name="azure-vm-network-after-failover"></a>Azure VM-hálózat (feladatátvétel után)
@@ -243,7 +243,7 @@ Vendég/kiszolgáló – lemez kizárása | Igen
 Vendég/kiszolgáló többutas (MPIO) | Nem
 Vendég/kiszolgáló GPT-partíciók | Az 37-es [kumulatív frissítés](https://support.microsoft.com/help/4508614/) (a mobilitási szolgáltatás 9,25-es verziója) a következő öt partíciót támogatja:. Korábban négy támogatott volt.
 ReFS | A rugalmas fájlrendszer a mobilitási szolgáltatás 9,23-es vagy újabb verziójával támogatott
-Vendég/kiszolgáló EFI/UEFI rendszerindítás | – Az összes [Azure MARKETPLACE UEFI operációs](../virtual-machines/generation-2.md#generation-2-vm-images-in-azure-marketplace) rendszerhez támogatott, site Recovery mobilitási ügynök 9,30-es verziójával. <br/> – A Secure UEFI rendszerindítási típus nem támogatott. [Részletek](../virtual-machines/generation-2.md#on-premises-vs-azure-generation-2-vms)
+Vendég/kiszolgáló EFI/UEFI rendszerindítás | – Az összes [Azure MARKETPLACE UEFI operációs rendszer](../virtual-machines/generation-2.md#generation-2-vm-images-in-azure-marketplace) számára támogatott, site Recovery mobilitási ügynök 9,30-es verziójával. <br/> – A Secure UEFI rendszerindítási típus nem támogatott. [Részletek](../virtual-machines/generation-2.md#on-premises-vs-azure-generation-2-vms)
 
 ## <a name="replication-channels"></a>Replikációs csatornák
 

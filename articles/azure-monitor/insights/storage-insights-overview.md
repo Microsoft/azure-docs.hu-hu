@@ -1,17 +1,16 @@
 ---
 title: Azure Storage-szolgáltatások figyelése Azure Monitor a Storage szolgáltatáshoz | Microsoft Docs
 description: Ez a cikk az Azure Storage-fiókokkal kapcsolatos teljesítmény-és kihasználtsági problémák gyors megismerését biztosító Storage-rendszergazdáknak szóló Azure Monitor ismerteti.
-ms.subservice: ''
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/11/2020
-ms.openlocfilehash: 13c884d9f140fbd962bfa32ef2d853339aec325a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0baaca8df8865061b51f1629da14c3b18a527047
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587348"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708067"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>A Storage szolgáltatás figyelése Azure Monitor a Storage-ban
 
@@ -85,7 +84,7 @@ Amikor kiválaszt egy értéket a munkafüzet egyik oszlopában, a Storage-fiók
 
 ## <a name="view-from-a-storage-account"></a>Megtekintés egy Storage-fiókból
 
-Azure Monitor for VMs közvetlenül egy Storage-fiókból való elérése:
+A virtuális gépek információinak közvetlen elérése a Storage-fiókból:
 
 1. A Azure Portal válassza a Storage-fiókok lehetőséget.
 

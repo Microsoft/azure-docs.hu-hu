@@ -1,14 +1,14 @@
 ---
 title: Az Azure Security teljesítményteszt Foundation tervének üzembe helyezési mintája
 description: Üzembe helyezheti az Azure Security teljesítményteszt Foundation tervezetének lépéseit, beleértve a tervrajz-összetevő paraméterének részleteit.
-ms.date: 02/17/2020
+ms.date: 02/18/2020
 ms.topic: sample
-ms.openlocfilehash: aaaabc8767c6d80548a26d64d8557587180fb6f3
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: e48f3da383bdb6d5c9960595f3c0fdcabc27dc75
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095291"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740681"
 ---
 # <a name="deploy-the-azure-security-benchmark-foundation-blueprint-sample"></a>Az Azure Security teljesítményteszt Foundation tervének üzembe helyezési mintája
 
@@ -136,7 +136,7 @@ A következő táblázat a terv paramétereinek listáját tartalmazza:
 |Azure Virtual Network küllős sablon|Resource Manager-sablon|Alhálózati címek előtagjai (nem kötelező)|IP-cím előtagjainak tömbje a küllős virtuális hálózat választható alhálózatai számára; például: "10.0.7.0/24", "10.0.8.0/24"|
 |Azure Virtual Network küllős sablon|Resource Manager-sablon|Küllő üzembe helyezése|Adja meg az "igaz" vagy a "false" értéket annak megadásához, hogy a hozzárendelés üzembe helyezi-e az architektúra küllős összetevőit.|
 |Azure Network Watcher-sablon|Resource Manager-sablon|Network Watcher helye|A Network Watcher erőforrás helye|
-|Azure Network Watcher-sablon|Resource Manager-sablon|Network Watcher erőforráscsoport helye|Ha Network Watcher már engedélyezve van, ennek a paraméternek **meg kell** egyeznie a meglévő Network Watcher erőforráscsoport nevével.|
+|Azure Network Watcher-sablon|Resource Manager-sablon|Network Watcher erőforráscsoport helye|Ha a Network Watcher már engedélyezve van, akkor a paraméter értékének **meg kell** egyeznie a meglévő Network Watcher erőforráscsoport helyével.|
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

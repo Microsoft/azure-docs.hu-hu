@@ -66,10 +66,8 @@
     - name: Iparág-specifikus megoldások
       items:
         - name: Retail
-          href: retail/overview-iot-central-retail.md
           items:
             - name: Üzlethelyiség-elemzés – pénztárrészleg
-              href: retail/store-analytics-architecture.md
               items:
                 - name: 1 – Kiskereskedelmi alkalmazás létrehozása
                   href: retail/tutorial-in-store-analytics-create-app.md
@@ -77,28 +75,15 @@
                   href: retail/tutorial-in-store-analytics-customize-dashboard.md
                 - name: 3 – Adatok exportálása és megállapítások megjelenítése
                   href: retail/tutorial-in-store-analytics-export-data-visualize-insights.md
-            - name: Intelligens készletkezelés
-              href: retail/architecture-smart-inventory-management.md
-              items:
-                - name: Intelligens készletkezelési alkalmazás létrehozása
-                  href: retail/tutorial-iot-central-smart-inventory-management.md
-            - name: Összekapcsolt logisztika
-              href: retail/architecture-connected-logistics.md
-              items:
-                - name: Összekapcsolt logisztikai alkalmazás létrehozása
-                  href: retail/tutorial-iot-central-connected-logistics.md
-            - name: Digitális terjesztési központ
-              href: retail/architecture-digital-distribution-center.md
-              items:
-                - name: Digitális terjesztési központ kezelésére szolgáló alkalmazás létrehozása
-                  href: retail/tutorial-iot-central-digital-distribution-center.md
-            - name: Mikro-teljesítési központ
-              href: retail/architecture-micro-fulfillment-center.md
-              items:
-                - name: Mikro-teljesítési központ alkalmazásának létrehozása
-                  href: retail/tutorial-micro-fulfillment-center.md
+            - name: Intelligens készletkezelési alkalmazás létrehozása
+              href: retail/tutorial-iot-central-smart-inventory-management.md
+            - name: Összekapcsolt logisztikai alkalmazás létrehozása
+              href: retail/tutorial-iot-central-connected-logistics.md
+            - name: Digitális terjesztési központ kezelésére szolgáló alkalmazás létrehozása
+              href: retail/tutorial-iot-central-digital-distribution-center.md
+            - name: Mikro-teljesítési központ alkalmazásának létrehozása
+              href: retail/tutorial-micro-fulfillment-center.md
             - name: Videóelemzés – objektum- és mozgásérzékelés
-              href: retail/architecture-video-analytics.md
               items:
                 - name: 0 – Objektum- és mozgásérzékelési alkalmazás üzembe helyezése
                   href: retail/tutorial-video-analytics-deploy.md
@@ -119,38 +104,21 @@
                 - name: 4 – Élő videóelemzési átjárómodulok módosítása és kiépítése
                   href: retail/tutorial-video-analytics-build-module.md
         - name: Energia
-          href: energy/overview-iot-central-energy.md
           items:
-            - name: Az intelligens fogyasztásmérési alkalmazás architektúrája
-              href: energy/concept-iot-central-smart-meter-app.md
             - name: Intelligens fogyasztásmérő monitorozására szolgáló alkalmazás létrehozása
               href: energy/tutorial-smart-meter-app.md
-            - name: A napelempanel-alkalmazás architektúrája
-              href: energy/concept-iot-central-solar-panel-app.md
             - name: Napelempanel monitorozására szolgáló alkalmazás létrehozása
               href: energy/tutorial-solar-panel-app.md
         - name: Államigazgatás
-          href: government/overview-iot-central-government.md
           items:
-            - name: Az összekapcsolt hulladékmonitorozás referenciaarchitektúrája
-              href: government/concepts-connectedwastemanagement-architecture.md
             - name: Összekapcsolt hulladékgazdálkodási alkalmazás létrehozása
               href: government/tutorial-connected-waste-management.md
-            - name: A vízfogyasztás-monitorozás referenciaarchitektúrája
-              href: government/concepts-waterconsumptionmonitoring-architecture.md
             - name: Vízfogyasztás-monitorozási alkalmazás létrehozása
               href: government/tutorial-water-consumption-monitoring.md
-            - name: A vízminőség-monitorozás referenciaarchitektúrája
-              href: government/concepts-waterqualitymonitoring-architecture.md
             - name: Vízminőség-monitorozási alkalmazás létrehozása
               href: government/tutorial-water-quality-monitoring.md
-            - name: Azure IoT Central-alkalmazás összekötése a Dynamics 365 Field Services szolgáltatással
-              href: government/how-to-configure-connected-field-services.md
         - name: Egészségügy
-          href: healthcare/overview-iot-central-healthcare.md
           items:
-            - name: A folyamatos betegfigyelés architektúrája
-              href: healthcare/concept-continuous-patient-monitoring-architecture.md
             - name: Folyamatos betegfigyelési alkalmazás létrehozása
               href: healthcare/tutorial-continuous-patient-monitoring.md
             - name: Egészségügyi adatok osztályozására szolgáló irányítópult létrehozása
@@ -162,9 +130,51 @@
     - name: Útmutató eszközfejlesztők számára
       href: core/overview-iot-central-developer.md
     - name: Megoldás-előkészítő útmutató
-      href: core/overview-iot-central-developer.md
+      href: core/overview-iot-central-solution-builder.md
     - name: Mik azok az alkalmazássablonok?
       href: core/concepts-app-templates.md
+    - name: Iparági specifikus alkalmazások sablonjai
+      items:
+        - name: Retail
+          items:
+            - name: Áttekintés
+              href: retail/overview-iot-central-retail.md
+            - name: Áruházbeli elemzési pénztári architektúra
+              href: retail/store-analytics-architecture.md
+            - name: Intelligens leltár felügyeleti architektúrája
+              href: retail/architecture-smart-inventory-management.md
+            - name: Csatlakoztatott logisztikai architektúra
+              href: retail/architecture-connected-logistics.md
+            - name: Digitális terjesztési központ
+              href: retail/architecture-digital-distribution-center.md
+            - name: Micro-teljesítési központ architektúrája
+              href: retail/architecture-micro-fulfillment-center.md
+            - name: Videóelemzés – objektum- és mozgásérzékelés
+              href: retail/architecture-video-analytics.md
+        - name: Energia
+          items:
+            - name: Áttekintés
+              href: energy/overview-iot-central-energy.md
+            - name: Az intelligens fogyasztásmérési alkalmazás architektúrája
+              href: energy/concept-iot-central-smart-meter-app.md
+            - name: A napelempanel-alkalmazás architektúrája
+              href: energy/concept-iot-central-solar-panel-app.md
+        - name: Államigazgatás
+          items:
+            - name: Áttekintés
+              href: government/overview-iot-central-government.md
+            - name: Csatlakoztatott hulladék-figyelési architektúra
+              href: government/concepts-connectedwastemanagement-architecture.md
+            - name: Víz-felhasználás figyelési architektúrája
+              href: government/concepts-waterconsumptionmonitoring-architecture.md
+            - name: Vízminőség-figyelési architektúra
+              href: government/concepts-waterqualitymonitoring-architecture.md
+        - name: Egészségügy
+          items:
+            - name: Áttekintés
+              href: healthcare/overview-iot-central-healthcare.md
+            - name: A folyamatos betegfigyelés architektúrája
+              href: healthcare/concept-continuous-patient-monitoring-architecture.md
     - name: Mik azok az eszközsablonok?
       href: core/concepts-device-templates.md
     - name: Eszközkapcsolatok
@@ -221,6 +231,8 @@
           href: core/howto-create-custom-analytics.md
         - name: Adatok vizualizációja a Power BI-ban
           href: core/howto-connect-powerbi.md
+        - name: Az alkalmazás összekapcsolhatók a Dynamics 365 Field Services szolgáltatással
+          href: government/how-to-configure-connected-field-services.md
     - name: Eszközök kezelése
       items:
         - name: Eszközök hozzáadása és eltávolítása

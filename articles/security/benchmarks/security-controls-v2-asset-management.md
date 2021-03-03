@@ -4,19 +4,21 @@ description: Azure Security teljesítményteszt v2 – eszközkezelés
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f0c2fe78c32357798e1f9acb43f5867df9148b38
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 32b0a7e31fc0d595eacc2bf5257f41e4ce35566b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368902"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735811"
 ---
 # <a name="security-control-v2-asset-management"></a>Biztonsági vezérlő v2: Asset Management
 
 Az eszközkezelés kiterjed az Azure-erőforrások biztonságának és irányításának biztosítására szolgáló vezérlőkre. Ide tartoznak a biztonsági személyzet engedélyeivel kapcsolatos javaslatok, az eszközök leltározásának biztonsági hozzáférése, valamint a szolgáltatások és erőforrások jóváhagyásának kezelése (leltár, nyomon követés és helyes).
+
+A megfelelő beépített Azure Policy megjelenítéséhez tekintse meg [Az Azure biztonsági teljesítményteszt szabályozási megfelelőségének beépített kezdeményezésének részleteit: hálózati biztonság](../../governance/policy/samples/azure-security-benchmark#asset-management)
 
 ## <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1: Az összetevőket érintő kockázatok biztonsági csapat általi átláthatóságának biztosítása
 
@@ -24,13 +26,13 @@ Az eszközkezelés kiterjed az Azure-erőforrások biztonságának és irányít
 |--|--|--|--|
 | AM-1 | 1,1, 1,2 | CM-8, PM-5 |
 
-Győződjön meg arról, hogy a biztonsági csapatoknak biztonsági olvasói engedélyekkel kell rendelkezniük az Azure-bérlőben és-előfizetésekben, hogy a biztonsági kockázatokat a Azure Security Center használatával felügyeljék 
+Győződjön meg arról, hogy a biztonsági csapatoknak biztonsági olvasói engedélyekkel kell rendelkezniük az Azure-bérlőben és-előfizetésekben, hogy a biztonsági kockázatokat a Azure Security Center használatával felügyeljék
 
-A biztonsági kockázatok monitorozása a biztonsági csapat felelősségi köreinek struktúrájától függően egy központi biztonsági csapat vagy egy helyi csapat felelőssége lehet. A biztonsági megállapításokat és kockázatokat azonban mindig központilag kell összesíteni egy szervezeten belül. 
+A biztonsági csapat feladatainak strukturálása, a biztonsági kockázatok figyelése a központi biztonsági csapat vagy egy helyi csapat feladata lehet. A biztonsági megállapításokat és kockázatokat azonban mindig központilag kell összesíteni egy szervezeten belül. 
 
 A biztonsági olvasó engedélyek széles körben alkalmazhatók egy teljes bérlőre (gyökérszintű felügyeleti csoport), vagy a hatókör alkalmazható adott felügyeleti csoportokra vagy előfizetésekre. 
 
-Megjegyzés: A számítási feladatok és a szolgáltatások átláthatóvá tételéhez további engedélyek lehetnek szükségesek. 
+Megjegyzés: A számítási feladatok és a szolgáltatások átláthatóvá tételéhez további engedélyek lehetnek szükségesek.
 
 - [A biztonsági olvasó szerepkör áttekintése](../../role-based-access-control/built-in-roles.md#security-reader)
 
@@ -52,9 +54,9 @@ Megjegyzés: A számítási feladatok és a szolgáltatások átláthatóvá té
 
 Győződjön meg arról, hogy a biztonsági csapatok hozzáférhetnek az Azure-beli adategységek folyamatosan frissített leltározásához. A biztonsági csapatoknak gyakran van szükségük erre a leltárra a vállalat új kockázatokkal szembeni kitettségének felméréséhez, és a folyamatos biztonsági fejlesztéséket szolgáló információként. 
 
-A Azure Security Center Inventory szolgáltatás és az Azure Resource Graph az előfizetések összes erőforrását lekérdezheti és felderítheti, beleértve az Azure-szolgáltatásokat, az alkalmazásokat és a hálózati erőforrásokat is.  
+A Azure Security Center Inventory szolgáltatás és az Azure Resource Graph az előfizetések összes erőforrását lekérdezheti és felderítheti, beleértve az Azure-szolgáltatásokat, az alkalmazásokat és a hálózati erőforrásokat is.
 
-Az összetevőket címkék, valamint más Azure-beli metaadatok (név, leírás és kategória) használatával rendszerezheti logikailag a vállalati elnevezéseknek megfelelően.  
+Az eszközöket logikailag rendezheti a szervezet besorolása alapján a címkék használatával, valamint az Azure-ban található egyéb metaadatokkal (név, leírás és kategória).
 
 - [Lekérdezések létrehozása az Azure Resource Graph Explorerrel](../../governance/resource-graph/first-query-portal.md)
 
@@ -76,7 +78,7 @@ Az összetevőket címkék, valamint más Azure-beli metaadatok (név, leírás 
 |--|--|--|--|
 | AM-3 | 2,3, 2,4 | CM-7, CM-8 |
 
-Az Azure Policy használatával ellenőrizheti és korlátozhatja a felhasználók által a környezetben kiépíthető szolgáltatások körét. Az Azure Resource Graph használatával lekérdezheti és felderítheti az előfizetésükön belüli erőforrásokat.  Az Azure Monitort is használhatja olyan szabályok létrehozásához, amelyek riasztást aktiválnak nem jóváhagyott szolgáltatás észlelésekor.
+Az Azure Policy használatával ellenőrizheti és korlátozhatja a felhasználók által a környezetben kiépíthető szolgáltatások körét. Az Azure Resource Graph használatával lekérdezheti és felderítheti az előfizetésükön belüli erőforrásokat. Az Azure Monitort is használhatja olyan szabályok létrehozásához, amelyek riasztást aktiválnak nem jóváhagyott szolgáltatás észlelésekor.
 
 - [Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -90,7 +92,7 @@ Az Azure Policy használatával ellenőrizheti és korlátozhatja a felhasznál�
 
 - [Biztonsági megfelelőség kezelése](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-- [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+- [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 ## <a name="am-4-ensure-security-of-asset-lifecycle-management"></a>AM-4: Az objektuméletciklus-kezelés biztonságának garantálása
 
@@ -110,7 +112,7 @@ Távolítsa el az Azure-erőforrásokat, ha már nincs rájuk szükség.
 
 - [Infrastruktúra és végpontbiztonság](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+- [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Biztonsági megfelelőség kezelése](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
@@ -128,7 +130,7 @@ Az Azure AD feltételes hozzáférés használatával korlátozhatja, hogy a fel
 
 **Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+- [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Infrastruktúra és végpontbiztonság](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -144,7 +146,7 @@ Az alkalmazások engedélyezési listájának észleléséhez és létrehozásá
 
 A Windows-és Linux-alapú virtuális gépekről származó leltározási adatok gyűjtésének automatizálásához használja Azure Automation Change Tracking és a leltárt. A szoftver neve, verziója, közzétevője és frissítési ideje elérhető a Azure Portal. A szoftver telepítési dátumának és egyéb információinak beszerzéséhez engedélyezze a vendég szintű diagnosztikát, és irányítsa a Windows-eseménynaplókat Log Analytics munkaterületre.
 
-A parancsfájlok típusától függően az operációs rendszerre jellemző konfigurációk vagy harmadik féltől származó erőforrások segítségével korlátozható, hogy a felhasználók képesek legyenek parancsfájlokat végrehajtani az Azure számítási erőforrásokban. 
+A parancsfájlok típusától függően az operációs rendszerre jellemző konfigurációk vagy harmadik féltől származó erőforrások segítségével korlátozható, hogy a felhasználók képesek legyenek parancsfájlokat végrehajtani az Azure számítási erőforrásokban.
 
 Harmadik féltől származó megoldást is használhat a nem jóváhagyott szoftverek felderítésére és azonosítására.
 
@@ -160,6 +162,6 @@ Harmadik féltől származó megoldást is használhat a nem jóváhagyott szoft
 
 - [Infrastruktúra és végpontbiztonság](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+- [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Biztonsági megfelelőség kezelése](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)

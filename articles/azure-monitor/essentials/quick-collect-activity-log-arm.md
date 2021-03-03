@@ -7,16 +7,16 @@ ms.custom: subject-armqs, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 7465127ed9c52941d6c3ccfd40446546f0795455
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 0a740b4c6c6e89c9a4990651779ea4f0b376c971
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635472"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734349"
 ---
 # <a name="quickstart-send-azure-activity-log-to-log-analytics-workspace-using-an-arm-template"></a>Gyors útmutató: Azure-beli tevékenység naplójának küldése Log Analytics munkaterületre ARM-sablon használatával
 
-A Tevékenységnapló az Azure előfizetési szintű eseményekkel kapcsolatos megállapításokat biztosító platformnaplója. Olyan információkat tartalmaz, mint az erőforrások módosításának vagy a virtuális gépek indításának az időpontja. Megtekintheti a tevékenység naplóját a Azure Portal vagy beolvashatja a bejegyzéseket a PowerShell és a parancssori felület használatával. Ez a rövid útmutató azt ismerteti, hogyan használhatók Azure Resource Manager sablonok (ARM-sablonok) egy Log Analytics-munkaterület létrehozásához és egy diagnosztikai beállításhoz, amely a tevékenység naplóját Azure Monitor naplókba küldi, ahol elemezheti a [napló lekérdezésekkel](../log-query/log-query-overview.md) , és más funkciókat is engedélyezhet, például a [naplózási riasztásokat](../alerts/alerts-log-query.md) és a [munkafüzeteket](../visualize/workbooks-overview.md).
+A Tevékenységnapló az Azure előfizetési szintű eseményekkel kapcsolatos megállapításokat biztosító platformnaplója. Olyan információkat tartalmaz, mint az erőforrások módosításának vagy a virtuális gépek indításának az időpontja. Megtekintheti a tevékenység naplóját a Azure Portal vagy beolvashatja a bejegyzéseket a PowerShell és a parancssori felület használatával. Ez a rövid útmutató azt ismerteti, hogyan használhatók Azure Resource Manager sablonok (ARM-sablonok) egy Log Analytics-munkaterület létrehozásához és egy diagnosztikai beállításhoz, amely a tevékenység naplóját Azure Monitor naplókba küldi, ahol elemezheti a [napló lekérdezésekkel](../logs/log-query-overview.md) , és más funkciókat is engedélyezhet, például a [naplózási riasztásokat](../alerts/alerts-log-query.md) és a [munkafüzeteket](../visualize/workbooks-overview.md).
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -321,7 +321,7 @@ Remove-AzResourceGroup -Name my-resource-group
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban úgy konfigurálta a tevékenység naplóját, hogy az Log Analytics munkaterületre legyen küldve. Mostantól más adatokat is konfigurálhat a munkaterületre, ahol elemezheti azt a Azure Monitor található [naplók](../log-query/log-query-overview.md) használatával, és olyan funkciókat használhat, mint például a [naplózási riasztások](../alerts/alerts-log-query.md) és a [munkafüzetek](../visualize/workbooks-overview.md). A következő lépésekkel gyűjtsön [erőforrás-naplókat](../essentials/resource-logs.md) az Azure-erőforrásokból, amelyek a tevékenység naplójában lévő adatokat szolgáltatva betekintést nyújtanak az egyes erőforrásokon végrehajtott műveletekre.
+Ebben a rövid útmutatóban úgy konfigurálta a tevékenység naplóját, hogy az Log Analytics munkaterületre legyen küldve. Mostantól más adatokat is konfigurálhat a munkaterületre, ahol elemezheti azt a Azure Monitor található [naplók](../logs/log-query-overview.md) használatával, és olyan funkciókat használhat, mint például a [naplózási riasztások](../alerts/alerts-log-query.md) és a [munkafüzetek](../visualize/workbooks-overview.md). A következő lépésekkel gyűjtsön [erőforrás-naplókat](../essentials/resource-logs.md) az Azure-erőforrásokból, amelyek a tevékenység naplójában lévő adatokat szolgáltatva betekintést nyújtanak az egyes erőforrásokon végrehajtott műveletekre.
 
 > [!div class="nextstepaction"]
 > [Erőforrás-naplók összegyűjtése és elemzése Azure Monitor](../essentials/tutorial-resource-logs.md)

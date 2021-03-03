@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/19/2020
 ms.author: inhenkel
-ms.openlocfilehash: f2a26aae243da04fb66666639589fd115013633a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 24dcd64ba14303c4e205ba3da610d04d4ef277d9
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94974850"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101724574"
 ---
 # <a name="create-a-copyvideo-copyaudio-transform"></a>CopyVideo-CopyAudio átalakító létrehozása
 
@@ -37,7 +37,6 @@ Egy eszköz létrehozásához kövesse az [Media Services fiók létrehozása](.
 
 [!INCLUDE [task-create-copy-video-audio-rest.md](./includes/task-create-copy-video-audio-rest.md)]
 
-
 ## <a name="next-steps"></a>Következő lépések
 
-[Media Services áttekintése](media-services-overview.md)
+[!INCLUDE [transforms next steps](./includes/transforms-next-steps.md)]

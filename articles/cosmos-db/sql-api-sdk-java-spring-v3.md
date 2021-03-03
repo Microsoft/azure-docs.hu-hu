@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/18/2020
+ms.date: 02/28/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 64054a2bb5c1f7e17eef87c3babb28137b6c912a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 9c3209895902a11ad0b9f29ff28e9ac7f845b101
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097124"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692725"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>Spring-adatAzure Cosmos DB v3 for Core (SQL) API: kibocsátási megjegyzések és erőforrások
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -57,56 +57,39 @@ Az [Azure Spring Cloud](https://azure.microsoft.com/services/spring-cloud/) -alk
 > * [Spring-adatGremlin Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
 >
 
-## <a name="start-here"></a>Itt érdemes kezdenie
+## <a name="get-started-fast"></a>Gyors első lépések
 
-# <a name="explore"></a>[Böngészés](#tab/explore)
+  A Spring [boot Starter útmutatót](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db)követve megkezdheti a tavaszi adatAzure Cosmos DBek futtatását. A Spring boot Starter megközelítése az ajánlott módszer a Spring-adatAzure Cosmos DB-összekötő használatának megkezdésére.
 
-<img src="media/sql-api-sdk-java-spring-v3/up-arrow.png" alt="explore the tabs above" width="80"/>
-
-#### <a name="these-tabs-contain-basic-spring-data-azure-cosmos-db-samples"></a>Ezek a lapok alapszintű Spring-adatok Azure Cosmos DB mintákat tartalmaznak.
-
-# <a name="pomxml"></a>[pom.xml](#tab/pom)
-
-### <a name="configure-dependencies"></a>Függőségek konfigurálása
+  Azt is megteheti, hogy felveszi a Spring adat Azure Cosmos DB függőséget a `pom.xml` fájlhoz az alábbiak szerint:
 
   ```xml
   <dependency>
       <groupId>com.azure</groupId>
       <artifactId>azure-spring-data-cosmos</artifactId>
-      <version>latest</version>
+      <version>latest-version</version>
   </dependency>
   ```
 
-# <a name="connect"></a>[Kapcsolódás](#tab/connect)
+## <a name="helpful-content"></a>Hasznos tartalom
 
-### <a name="connect"></a>Kapcsolódás
-
-Azure Cosmos DB fiók és tároló adatainak megadása. A Spring-alapú adatAzure Cosmos DB automatikusan létrehozza az ügyfelet, és csatlakozik a tárolóhoz.
-
-[alkalmazás. properties](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-cosmos-java-getting-started/src/main/resources/application.properties):
-```
-cosmos.uri=${ACCOUNT_HOST}
-cosmos.key=${ACCOUNT_KEY}
-cosmos.secondaryKey=${SECONDARY_ACCOUNT_KEY}
-
-dynamic.collection.name=spel-property-collection
-# Populate query metrics
-cosmos.queryMetricsEnabled=true
-```
-
-# <a name="doc-ops"></a>[Doc-Ops](#tab/docs)
-
-### <a name="document-operations"></a>Dokumentumok műveletei
-
----
-
-## <a name="resources"></a>További források
-
-* **Közreműködés az SDK-** ban: [Spring-adatAzure Cosmos db-tárház a githubon](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-cosmos)
-
-* **Oktatóanyag** : [Spring-adatAzure Cosmos db oktatóanyag a githubon](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started) 
+| Tartalom | Hivatkozás |
+|---|---|
+|**SDK letöltése**| [Maven](https://mvnrepository.com/artifact/com.azure/azure-spring-data-cosmos) |
+|**API-dokumentáció** | [Java API-referenciák dokumentációja](/java/api/com.azure.spring.data.cosmos) |
+|**Közreműködés az SDK-val** | [Azure SDK a Java központi tárházhoz a GitHubon](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-cosmos) | 
+|**Első lépések** | [Gyors útmutató: Spring-alapú adatAzure Cosmos DB-alkalmazás létrehozása Azure Cosmos DB SQL API-alapú adatkezeléshez](./create-sql-api-spring-data.md) <br> [GitHub-tárház a gyors üzembe helyezési kóddal](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started) | 
+|**Alapszintű kódok** | [Azure Cosmos DB: Spring-adatAzure Cosmos DB példák az SQL API-ra](sql-api-spring-data-sdk-samples.md) <br> [GitHub-tárház a mintakód](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-samples)|
+| **Teljesítménnyel kapcsolatos tippek**| [Teljesítményre vonatkozó tippek Java SDK v4-hez (a Spring-adatokra érvényes)](performance-tips-java-sdk-v4-sql.md)| 
+| **Hibaelhárítás** | [A Java SDK v4 hibáinak megoldása (a rugós adatra alkalmazható)](troubleshoot-java-sdk-v4-sql.md) | 
+| **Azure Cosmos DB workshopok és Labs** |[Cosmos DB workshopok kezdőlapja](https://aka.ms/cosmosworkshop)
 
 [!INCLUDE[Release notes](~/azure-sdk-for-java-cosmos-db/sdk/cosmos/azure-spring-data-cosmos/CHANGELOG.md)]
+
+## <a name="additional-notes"></a>További megjegyzések
+
+* A Spring-adatAzure Cosmos DB támogatja a Java JDK 8 és a Java JDK 11 használatát.
+* Az 2,3-as tavaszi adatfeldolgozás jelenleg támogatott, a Spring-adat2,4 jelenleg nem támogatott.
 
 ## <a name="faq"></a>GYIK
 

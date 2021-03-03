@@ -5,13 +5,13 @@ author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: a3c8c8b2316a206ba837c0b32fd699dc0ed1eeea
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.date: 02/19/2021
+ms.openlocfilehash: b76b6ff788d3d7f44db33af96944d528282f0ac7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100519388"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712215"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-postgresql---flexible-server"></a>Számítási és tárolási lehetőségek Azure Database for PostgreSQL – rugalmas kiszolgáló
 
@@ -120,6 +120,9 @@ Az I/O-használatot a Azure Portal vagy az Azure CLI-parancsok használatával f
 
 A (a) jelölésű \* IOPS a kiválasztott VM-típus korlátozza. Ellenkező esetben a IOPS a kiválasztott tárolási méret korlátozza.
 
+>[!NOTE]
+> A metrikák nagyobb IOPS jelenhetnek meg a lemezek szintjének kitörése miatt. További részletekért tekintse meg a [dokumentációt](https://docs.microsoft.com/azure/virtual-machines/disk-bursting#disk-level-bursting) . 
+
 ### <a name="maximum-io-bandwidth-mibsec-for-your-configuration"></a>Maximális I/O-sávszélesség (MiB/s) a konfigurációhoz
 
 |SKU neve            |Tárterület mérete, GiB                             |32 |64 |128 |256 |512  |1 024|2048|4 096|8,192 |16,384|
@@ -147,7 +150,7 @@ A (a) jelölésű \* IOPS a kiválasztott VM-típus korlátozza. Ellenkező eset
 
 Ha egy \* , I/O-sávszélességgel van megjelölve, a kiválasztott virtuálisgép-típus korlátozza. Az egyéb I/O-sávszélességet a kiválasztott tárterület korlátozza.
 
-### <a name="reaching-the-storage-limit"></a>A tárolási korlát elérése
+### <a name="reaching-the-storage-limit"></a>Tárhelykorlát elérése
 
 Amikor eléri a tárolási korlátot, a kiszolgáló a hibák visszaadását és a további módosítások elkerülését fogja megkezdeni. Ez problémákat okozhat más működési tevékenységekkel, például a biztonsági mentésekkel és a WAL archiválással kapcsolatban.
 

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 09a0580adbe6d51e4de811a57ee17203d65a2435
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: bf1d6f5838e467c5f44a0090a4f1a15cd9d4ac77
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316909"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692453"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Azure ML-erőforrások létrehozása, futtatása és törlése a REST használatával
 
@@ -79,7 +79,7 @@ A válasznak egy órára jó hozzáférési jogkivonatot kell biztosítania:
 Jegyezze fel a jogkivonatot, mivel az összes további rendszergazdai kérelem hitelesítéséhez használni fogja. Ezt úgy teheti meg, hogy az összes kérelemben beállítja az engedélyezési fejlécet:
 
 ```bash
-curl -h "Authentication: Bearer {your-access-token}" ...more args...
+curl -h "Authorization:Bearer {your-access-token}" ...more args...
 ```
 
 Vegye figyelembe, hogy az érték a "tulajdonos" karakterlánccal kezdődik, beleértve a token hozzáadása előtt egy szóközzel.

@@ -1,6 +1,6 @@
 ---
 title: Előzetes értesítések (előzetes verzió) tervezett karbantartási eseményekhez
-description: Értesítés a Azure SQL Database vagy az Azure SQL felügyelt példányának tervezett karbantartása előtt.
+description: Értesítés kérése a Azure SQL Database tervezett karbantartása előtt.
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: service
@@ -11,24 +11,26 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/02/2021
-ms.openlocfilehash: 3f63a8d2f75a58a771d837128c2b2498c28948ef
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 07f6267a14a4604e1a43dd1a1a9930d63a419336
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663617"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690889"
 ---
 # <a name="advance-notifications-for-planned-maintenance-events-preview"></a>Előzetes értesítések a tervezett karbantartási eseményekhez (előzetes verzió)
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 A [karbantartási](maintenance-window.md)időszakra (előzetes verzió) konfigurált adatbázisok számára elérhetők az előzetes értesítések (előnézet). Az előzetes értesítések lehetővé teszik az ügyfelek számára, hogy a tervezett események előtt akár 24 óráig is elküldjék az értesítéseket.
 
 Az értesítések konfigurálhatók, így szövegeket, e-maileket, Azure leküldéses értesítéseket és hangpostát kaphat, ha a tervezett karbantartás a következő 24 órában kezdődik. A karbantartás megkezdése és a karbantartás befejezése után a rendszer további értesítéseket küld.
 
+> [!Note]
+> Míg az Azure SQL felügyelt példányai esetében lehetőség van karbantartási időszak kiválasztására, az előzetes értesítések jelenleg nem érhetők el az Azure SQL felügyelt példányain.
 
 ## <a name="create-an-advance-notification"></a>Előzetes értesítés létrehozása
 
-Az Azure SQL Database-adatbázisok és a karbantartási időszakra konfigurált felügyelt példányok esetében az előzetes értesítések elérhetők. 
+Az előzetes értesítések olyan Azure SQL Database-adatbázisokhoz érhetők el, amelyeken a karbantartási időszak konfigurálva van. 
 
 Az értesítések engedélyezéséhez hajtsa végre az alábbi lépéseket.  
 

@@ -2,13 +2,13 @@
 title: A funkciók áttekintése – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk részletesen ismerteti az Azure Event Hubs funkcióit és terminológiáját.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 8860a8aa83a17b12236dd47d79479a82846fa8a8
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.date: 02/19/2021
+ms.openlocfilehash: 8bb63bfdbeb5b875b1e461fbd93fb48dcbb43054
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791946"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739075"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Az Azure Event Hubs funkciói és terminológiája
 
@@ -47,7 +47,12 @@ Event Hubs biztosítja, hogy a partíciós kulcs értékeit megosztó összes es
 
 ### <a name="event-retention"></a>Esemény-megőrzés
 
-A közzétett események el lesznek távolítva az Event hub-ból egy konfigurálható, időzített adatmegőrzési házirend alapján. Az alapértelmezett érték és a lehető legrövidebb megőrzési időtartam 1 nap (24 óra). Event Hubs standard esetén a maximális megőrzési időtartam 7 nap. Dedikált Event Hubs esetében a maximális megőrzési időtartam 90 nap.
+A közzétett események el lesznek távolítva az Event hub-ból egy konfigurálható, időzített adatmegőrzési házirend alapján. Íme néhány fontos pont:
+
+- Az **alapértelmezett** érték és a lehető **legrövidebb** megőrzési időtartam **1 nap (24 óra)**.
+- Event Hubs **standard** esetén a maximális megőrzési időtartam **7 nap**. 
+- Event Hubs **dedikált** esetében a maximális megőrzési időtartam **90 nap**.
+- Ha megváltoztatja a megőrzési időtartamot, az minden üzenetre vonatkozik, beleértve az Event hub-ban már szereplő üzeneteket is. 
 
 > [!NOTE]
 > A Event Hubs valós idejű esemény-adatfolyam-motor, és nem az adatbázis és/vagy állandó tárolóként használható a végtelenül tartott esemény-adatfolyamok számára. 
@@ -118,6 +123,9 @@ Az *ellenőrzőpontok használatával* az olvasók megjelölhetik vagy végleges
 
 Ha egy olvasó lecsatlakozik egy partícióról, az újracsatlakozáskor az adott felhasználói csoportban az adott partíció utolsó olvasója által elküldött ellenőrzőpontnál kezdi az olvasást. Amikor az olvasó csatlakozik, átadja az eltolást az Event hub számára, hogy megadja a helyet, ahol az olvasást el szeretné indítani. Az ellenőrzőpontok használatával az alárendelt alkalmazások így megjelölhetik az eseményeket „befejezettként”, valamint biztosítható a rugalmasság a különböző gépeken futó olvasók közötti feladatátvétel esetén. Lehetséges visszatérni a régebbi adatokhoz egy alacsonyabb értékű eltolás megadásával az ellenőrzőpontok használata során. Ezzel a mechanizmussal az ellenőrzőpontok használata rugalmasságot biztosít feladatátvétel esetén, és lehetővé teszi az eseménystream visszajátszását.
 
+> [!IMPORTANT]
+> Az eltolásokat a Event Hubs szolgáltatás kapja meg. Az események feldolgozásakor a fogyasztó feladata az ellenőrzőpont.
+
 > [!NOTE]
 > Ha Azure Blob Storaget használ az ellenőrzőpont-tárolóként olyan környezetben, amely támogatja a Storage blob SDK egy másik verzióját, mint az Azure-ban, akkor a Storage szolgáltatás API-verziójának az adott környezet által támogatott verzióra való módosításához programkódot kell használnia. Ha például [egy 2002-es Azure stack hub-os verzióban](/azure-stack/user/event-hubs-overview)futtatja az Event Hubs-t, a Storage szolgáltatás legmagasabb rendelkezésre álló verziója a 2017-11-09-es verzió. Ebben az esetben programkódot kell használnia a Storage szolgáltatás API-verziójának 2017-11-09-re való célzásához. Az adott tárolási API-verzió célzására vonatkozó példát a GitHubon található példákban talál: 
 > - [.Net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/). 
@@ -151,7 +159,7 @@ Eseményadatok:
 
 Az eltolás kezelése a felhasználó felelőssége.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha további információkat szeretne az Event Hubsról, tekintse meg az alábbi hivatkozásokat:
 

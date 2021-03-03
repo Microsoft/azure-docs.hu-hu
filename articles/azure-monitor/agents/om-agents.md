@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2020
-ms.openlocfilehash: f9418b9a4bac9c458c530b246f7400ac067f5623
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9c20994c27680aaccb68db2ff78deb6b6bf9f8cf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100618145"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718131"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager összekötése a Azure Monitor
 
@@ -40,8 +40,8 @@ A Kezdés előtt tekintse át az alábbi követelményeket.
 * A Azure Monitor csak a 2016-es vagy újabb System Center Operations Manager, Operations Manager 2012 SP1 UR6 vagy újabb, illetve Operations Manager 2012 R2 UR2 vagy újabb verziókat támogatja. A proxytámogatás az Operations Manager 2012 SP1 UR 7-es és az Operations Manager 2012 R2 UR 3-as verziójában jelent meg.
 * A System Center Operations Manager 2016 az USA kormányzati felhővel való integrálásához a 2. kumulatív frissítéssel vagy újabb verzióval rendelkező frissített Advisor felügyeleti csomag szükséges. System Center Operations Manager 2012 R2 esetében a 3. vagy újabb kumulatív frissítéshez mellékelt frissített Advisor felügyeleti csomag szükséges.
 * Minden Operations Manager-ügynöknek meg kell felelnie a minimális támogatási feltételeknek. Győződjön meg arról, hogy az ügynökök a minimális frissítéssel rendelkeznek, ellenkező esetben előfordulhat, hogy a Windows-ügynök kommunikációja meghiúsul, és hibákat eredményez a Operations Manager eseménynaplóban.
-* Egy Log Analytics-munkaterület. További információkért tekintse át [log Analytics munkaterület áttekintését](../platform/design-logs-deployment.md).
-* Az Azure-ban olyan fiókkal végez hitelesítést, amely tagja a [log Analytics közreműködő szerepkörnek](../platform/manage-access.md#manage-access-using-azure-permissions).
+* Egy Log Analytics-munkaterület. További információkért tekintse át [log Analytics munkaterület áttekintését](../logs/design-logs-deployment.md).
+* Az Azure-ban olyan fiókkal végez hitelesítést, amely tagja a [log Analytics közreműködő szerepkörnek](../logs/manage-access.md#manage-access-using-azure-permissions).
 
 * Támogatott régiók – a System Center Operations Manager csak a következő Azure-régiókat támogatja Log Analytics munkaterülethez való kapcsolódáshoz:
     - USA nyugati középső régiója
@@ -72,15 +72,15 @@ Az alábbi információk a Operations Manager ügynökhöz, a felügyeleti kiszo
 |Erőforrás | Portszám| HTTP-ellenőrzés kihagyása|  
 |---------|------|-----------------------|  
 |**Ügynök**|||  
-|\*.ods.opinsights.azure.com| 443 |Yes|  
-|\*.oms.opinsights.azure.com| 443|Yes|  
-|\*.blob.core.windows.net| 443|Yes|  
-|\*.azure-automation.net| 443|Yes|  
+|\*.ods.opinsights.azure.com| 443 |Igen|  
+|\*.oms.opinsights.azure.com| 443|Igen|  
+|\*.blob.core.windows.net| 443|Igen|  
+|\*.azure-automation.net| 443|Igen|  
 |**Felügyeleti kiszolgáló**|||  
 |\*.service.opinsights.azure.com| 443||  
-|\*.blob.core.windows.net| 443| Yes|  
-|\*.ods.opinsights.azure.com| 443| Yes|  
-|*.azure-automation.net | 443| Yes|  
+|\*.blob.core.windows.net| 443| Igen|  
+|\*.ods.opinsights.azure.com| 443| Igen|  
+|*.azure-automation.net | 443| Igen|  
 |**Konzol Operations Manager Azure Monitor**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  
@@ -95,7 +95,7 @@ Az alábbi információk a Operations Manager ügynökhöz, a felügyeleti kiszo
 
 ### <a name="tls-12-protocol"></a>TLS 1,2 protokoll
 
-A Azure Monitor felé irányuló adatforgalom biztosításához határozottan javasoljuk, hogy az ügynököt és a felügyeleti csoportot legalább Transport Layer Security (TLS) 1,2 használatára konfigurálja. A TLS/SSL (SSL) régebbi verziói sebezhetőnek találták, és miközben jelenleg is működnek a visszamenőleges kompatibilitás érdekében, **nem ajánlottak**. További információkért tekintse át az [adatok biztonságos küldését a TLS 1,2 használatával](../platform/data-security.md#sending-data-securely-using-tls-12).
+A Azure Monitor felé irányuló adatforgalom biztosításához határozottan javasoljuk, hogy az ügynököt és a felügyeleti csoportot legalább Transport Layer Security (TLS) 1,2 használatára konfigurálja. A TLS/SSL (SSL) régebbi verziói sebezhetőnek találták, és miközben jelenleg is működnek a visszamenőleges kompatibilitás érdekében, **nem ajánlottak**. További információkért tekintse át az [adatok biztonságos küldését a TLS 1,2 használatával](../logs/data-security.md#sending-data-securely-using-tls-12).
 
 ## <a name="connecting-operations-manager-to-azure-monitor"></a>Operations Manager csatlakoztatása Azure Monitor
 
@@ -345,4 +345,3 @@ Ha a felügyeleti csoport Log Analytics munkaterületre való újrakapcsolódás
 ## <a name="next-steps"></a>Következő lépések
 
 A funkciók hozzáadásával és az adatok összegyűjtésével kapcsolatban lásd: [Azure monitor megoldások hozzáadása a Solutions Gallery](../insights/solutions.md).
-

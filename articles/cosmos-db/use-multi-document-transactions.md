@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: gahllevy
-ms.openlocfilehash: 4d7dcc829f25b7f1b7c6cb6b1d13a664d301bfe6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f319db76c8aee5a2a35ff8ca9670c42089350ede
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663653"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692470"
 ---
 # <a name="use-multi-document-transactions-in-azure-cosmos-db-api-for-mongodb"></a>Többdokumentumos tranzakciók használata a MongoDB Azure Cosmos DB API-ban
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -32,11 +32,13 @@ A többdokumentumos tranzakciók a **savas** szemantika követését követik:
 
 ## <a name="requirements"></a>Követelmények
 
-A többdokumentumos tranzakciók támogatottak a 4,0-es verzióban található, nem szilánkos gyűjteményekben. A többdokumentumos tranzakciók nem támogatottak a gyűjtemények vagy a szilánkokra bontott gyűjtemények esetében.
+A többdokumentumos tranzakciók támogatottak a 4,0-es API-verzióban található, nem többrétegű gyűjteményekben. A többdokumentumos tranzakciók nem támogatottak a gyűjtemények és a 4,0-es szegmensben lévő gyűjtemények között. A tranzakciók időtúllépése rögzített 5 másodperc.
 
 Az 4,0-es vagy annál nagyobb átviteli protokollt támogató illesztőprogramok támogatják Azure Cosmos DB API-t a többdokumentumos tranzakciók MongoDB.
 
 ## <a name="run-multi-document-transactions-in-mongodb-shell"></a>Több dokumentumból álló tranzakciók futtatása a MongoDB-rendszerhéjban
+> [!Note]
+> Ez a példa a MongoDB-Iránytűbe ágyazott MongoSH Beta (Shell) esetében nem működik.
 
 1. Nyisson meg egy parancssort, és keresse meg azt a könyvtárat, ahol a Mongo rendszerhéj 4,0-es vagy újabb verziója telepítve van:
 

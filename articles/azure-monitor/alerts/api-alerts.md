@@ -4,12 +4,12 @@ description: A Log Analytics riasztási REST API lehetővé teszi a riasztások 
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 6c347b7b8ddaac103019e15e32fb5c06219e0064
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4acb6cdcb544e8774fb60bf1ead1a4a13140024a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100620915"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717808"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Riasztási szabályok létrehozása és kezelése a Log Analyticsban REST API 
 
@@ -21,7 +21,7 @@ A Log Analytics riasztási REST API lehetővé teszi a riasztások létrehozás�
 A Log Analytics keresési REST API REST-vel rendelkezik, és a Azure Resource Manager REST API keresztül érhető el. Ebben a dokumentumban olyan példákat talál, amelyekben az API egy PowerShell-parancssorból érhető el az  [ARMClient](https://github.com/projectkudu/ARMClient)használatával, amely leegyszerűsíti a Azure Resource Manager API meghívását. A ARMClient és a PowerShell használata számos lehetőség a Log Analytics Search API eléréséhez. Ezekkel az eszközökkel a REST-Azure Resource Manager API-val hívásokat indíthat Log Analytics munkaterületekre, és keresési parancsokat hajthat végre rajtuk. Az API JSON formátumban jeleníti meg a keresési eredményeket, így a keresési eredmények többféleképpen is használhatók.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Jelenleg a riasztásokat csak Log Analytics mentett kereséssel lehet létrehozni.  További információért tekintse meg a [naplóbeli keresés REST API](../log-query/log-query-overview.md) .
+Jelenleg a riasztásokat csak Log Analytics mentett kereséssel lehet létrehozni.  További információért tekintse meg a [naplóbeli keresés REST API](../logs/log-query-overview.md) .
 
 ## <a name="schedules"></a>Ütemezések
 Egy mentett kereséshez egy vagy több ütemterv is tartozhat. Az ütemterv meghatározza, hogy a keresés milyen gyakran fusson, valamint azt az időtartamot, ameddig a feltételek azonosíthatók.
@@ -136,7 +136,7 @@ armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupN
 ### <a name="alert-actions"></a>Riasztási műveletek
 Az ütemtervnek egy és csak egy riasztási művelettel kell rendelkeznie.  A riasztási műveletekhez a következő táblázat egy vagy több szakaszában található.  Az alábbiakban részletesebben is olvashat.
 
-| Section | Description | Használat |
+| Section | Leírás | Használat |
 |:--- |:--- |:--- |
 | Küszöbérték |A művelet futtatásának feltételei.| Minden riasztáshoz szükséges, az Azure-ra való kiterjesztés előtt vagy után. |
 | Súlyosság |Az aktiváláskor a riasztás osztályozásához használt címke.| Minden riasztáshoz szükséges, az Azure-ra való kiterjesztés előtt vagy után. |
@@ -387,7 +387,6 @@ armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Na
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A [REST API használatával hajthat végre naplóbeli keresést](../log-query/log-query-overview.md) a log Analytics.
+* A [REST API használatával hajthat végre naplóbeli keresést](../logs/log-query-overview.md) a log Analytics.
 * További tudnivalók a [naplózási riasztásokról az Azure monitorban](./alerts-unified-log.md)
 * A [naplók riasztási szabályainak létrehozása, szerkesztése és kezelése az Azure monitorban](./alerts-log.md)
-

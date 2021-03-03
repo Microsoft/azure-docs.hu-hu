@@ -1,29 +1,29 @@
 ---
-title: Azure Monitor for VMs Térkép integrálása Operations Managerkal | Microsoft Docs
-description: Azure Monitor for VMs automatikusan feltérképezi az alkalmazás-összetevőket Windows-és Linux-rendszereken, és leképezi a szolgáltatások közötti kommunikációt. Ebből a cikkből megtudhatja, hogyan hozhat létre automatikusan elosztott alkalmazás-diagramokat a Operations Manager a Térkép funkcióval.
+title: Virtuálisgép-bepillantást biztosító Térkép integrálása a Operations Managerrel | Microsoft Docs
+description: A virtuális gépek elemzése automatikusan feltérképezi az alkalmazás-összetevőket Windows-és Linux-rendszereken, és leképezi a szolgáltatások közötti kommunikációt. Ebből a cikkből megtudhatja, hogyan hozhat létre automatikusan elosztott alkalmazás-diagramokat a Operations Manager a Térkép funkcióval.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: 0722a1806cc94102f92045c78850d96ed9890d02
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a39f40c2a284a743db258a49f36cb4f13c2a4d1c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608967"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725492"
 ---
-# <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager integrálása Azure Monitor for VMs Térkép funkcióval
+# <a name="integrate-system-center-operations-manager-with-vm-insights-map-feature"></a>System Center Operations Manager integrálása a virtuálisgép-bepillantást biztosító funkcióval
 
-Azure Monitor for VMs a felderített alkalmazás-összetevőket megtekintheti az Azure-ban vagy a környezetben futó Windows-és Linux-alapú virtuális gépeken (VM-EK). A Térkép funkció és a System Center Operations Manager közötti integráció révén automatikusan létrehozhat elosztott alkalmazási diagramokat a Azure Monitor for VMs dinamikus függőségi térképén alapuló Operations Manager. Ez a cikk azt ismerteti, hogyan konfigurálhatja a System Center Operations Manager felügyeleti csoportot a funkció támogatásához.
+A virtuális gépek elemzése során megtekintheti a felderített alkalmazás-összetevőket az Azure-ban vagy a környezetben futó Windows-és Linux-alapú virtuális gépeken (VM-EK). A Térkép funkció és a System Center Operations Manager közötti integráció révén automatikusan létrehozhat elosztott alkalmazási diagramokat a virtuális gépeken a dinamikus függőségi térképeken alapuló Operations Managerekben. Ez a cikk azt ismerteti, hogyan konfigurálhatja a System Center Operations Manager felügyeleti csoportot a funkció támogatásához.
 
 >[!NOTE]
->Ha már telepítette Service Map, megtekintheti a térképeit Azure Monitor for VMsban, amely a virtuális gépek állapotának és teljesítményének figyelésére szolgáló további funkciókat is tartalmaz. A Azure Monitor for VMs Térkép funkciója a különálló Service Map megoldás cseréjére szolgál. További információ: [Azure monitor for VMS Overview (áttekintés](../vm/vminsights-overview.md)).
+>Ha már telepítette Service Map, megtekintheti a térképeit a VM-információk között, így további funkciókat is megfigyelheti a virtuális gépek állapotának és teljesítményének figyeléséhez. A VM-ismeretek Térkép funkciója az önálló Service Map megoldás cseréjére szolgál. További információ: a [VM-információk áttekintése](../vm/vminsights-overview.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy System Center Operations Manager felügyeleti csoport (2012 R2 vagy újabb).
-* Azure Monitor for VMs támogatására konfigurált Log Analytics munkaterület.
+* Log Analytics munkaterület, amely támogatja a virtuális gépekkel való bepillantást.
 * Egy vagy több Windows-és Linux-alapú virtuális gép vagy fizikai számítógép, amelyet Operations Manager figyel, és adatokat küld a Log Analytics munkaterületre. A Operations Manager felügyeleti csoportnak jelentést küldő Linux-kiszolgálókat úgy kell konfigurálni, hogy közvetlenül kapcsolódjanak Azure Monitorhoz. További információkért tekintse át a [naplófájlok adatainak összegyűjtése a log Analytics ügynökkel](../agents/log-analytics-agent.md)című témakör áttekintését.
 * Az Log Analytics munkaterülethez társított Azure-előfizetéshez hozzáférő egyszerű szolgáltatás. További információ: [egyszerű szolgáltatásnév létrehozása](#create-a-service-principal).
 
@@ -43,7 +43,7 @@ Miután telepítette a Service Map felügyeleti csomagot, a Operations Manager o
 >[!NOTE]
 >Az [Operations Management Suite a log Analytics részét képező szolgáltatások gyűjteménye volt](../terminology.md#april-2018---retirement-of-operations-management-suite-brand) , immár [Azure monitor](../overview.md)része.
 
-Azure Monitor for VMs Map-integráció konfigurálásához tegye a következőket:
+A VM-alapú adatleképezések integrációjának konfigurálásához tegye a következőket:
 
 1. A konfigurációs varázsló megnyitásához a **Service Map áttekintés** ablaktáblán kattintson a **munkaterület hozzáadása** elemre.  
 
@@ -66,7 +66,7 @@ Azure Monitor for VMs Map-integráció konfigurálásához tegye a következőke
     Ahhoz, hogy az integráció egy elosztott alkalmazási diagramot hozzon létre egy kiszolgálóhoz, a kiszolgálónak a következőnek kell lennie:
 
    * Figyelte Operations Manager
-   * Úgy van konfigurálva, hogy az Log Analytics munkaterületre jelentsen Azure Monitor for VMs
+   * Úgy van konfigurálva, hogy az Log Analytics munkaterületre jelentsen, amely a VM-ismeretekkel van konfigurálva
    * A Service Map-kiszolgálók csoportban szerepel
 
      ![A Operations Manager konfigurációs csoport](media/service-map-scom/scom-config-group.png)
@@ -92,7 +92,7 @@ A Service Map mappa négy csomóponttal rendelkezik:
   >[!NOTE]
   >Ezek a riasztások nem Log Analytics a Operations Managersal szinkronizált riasztásokat, a Service Map felügyeleti csomagban meghatározott munkafolyamatok alapján jönnek létre a felügyeleti csoportban.
 
-* **Kiszolgálók**: felsorolja azokat a figyelt kiszolgálókat, amelyek Azure monitor for VMS térképi szolgáltatásból való szinkronizálásra vannak konfigurálva.
+* **Kiszolgálók**: azokat a figyelt kiszolgálókat sorolja fel, amelyek a VM-alapú leképezési szolgáltatásból való szinkronizálásra vannak konfigurálva.
 
     ![A Operations Manager figyelési kiszolgálók panel](media/service-map-scom/scom-monitoring-servers.png)
 
@@ -117,7 +117,7 @@ Ebben az aktuális kiadásban csak egy Log Analytics munkaterületet lehet konfi
 
 ## <a name="configure-rules-and-overrides"></a>Szabályok és felülbírálások konfigurálása
 
-Egy szabály, *Microsoft.SystemCenter. ServiceMapImport. Rule*, rendszeres időközönként beolvassa az adatokat Azure monitor for VMS Térkép szolgáltatásból. A szinkronizálási időköz módosításához felülbírálhatja a szabályt, és módosíthatja a **IntervalMinutes** paraméter értékét.
+Egy szabály, *Microsoft.SystemCenter. ServiceMapImport. Rule*, rendszeres időközönként beolvassa az adatokat a virtuálisgép-információk leképezése szolgáltatásból. A szinkronizálási időköz módosításához felülbírálhatja a szabályt, és módosíthatja a **IntervalMinutes** paraméter értékét.
 
 ![A Operations Manager felülbírálások tulajdonságai ablak](media/service-map-scom/scom-overrides.png)
 
@@ -131,8 +131,8 @@ Egy szabály, *Microsoft.SystemCenter. ServiceMapImport. Rule*, rendszeres idők
 Az aktuális terv a következő problémákat és korlátozásokat mutatja be:
 
 * Csak egyetlen Log Analytics-munkaterülethez csatlakozhat.
-* Bár a **szerzői műveletek** ablaktáblán manuálisan adhat hozzá kiszolgálókat a Service Map-kiszolgálók csoportjához, a kiszolgálók leképezései nincsenek azonnal szinkronizálva. A következő szinkronizálási ciklusban szinkronizálva lesznek a Azure Monitor for VMs Térkép szolgáltatásból.
-* Ha módosítja a felügyeleti csomag által létrehozott elosztott alkalmazás-diagramokat, a módosítások valószínűleg felül lesznek írva a következő szinkronizáláskor Azure Monitor for VMs.
+* Bár a **szerzői műveletek** ablaktáblán manuálisan adhat hozzá kiszolgálókat a Service Map-kiszolgálók csoportjához, a kiszolgálók leképezései nincsenek azonnal szinkronizálva. A rendszer a következő szinkronizálási ciklusban szinkronizálja a virtuális gépekről származó adatok leképezésének szolgáltatását.
+* Ha módosítja a felügyeleti csomag által létrehozott elosztott alkalmazás-diagramok változásait, akkor ezek a változások valószínűleg felül lesznek írva a virtuális gépekkel kapcsolatos következő szinkronizáláskor.
 
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
@@ -144,5 +144,5 @@ Az egyszerű szolgáltatásnév létrehozásával kapcsolatos hivatalos Azure-do
 
 ### <a name="suggestions"></a>Javaslatok
 
-Van-e visszajelzése a Azure Monitor for VMs Map szolgáltatással való integrációról vagy a dokumentációról? Látogasson el a [felhasználói hang oldalra](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), ahol javaslatot tehet a funkciókra, vagy szavazhat a meglévő javaslatokról.
+Van valamilyen visszajelzése arról, hogyan integrálható a virtuálisgép-bevezetési Térkép funkció vagy a jelen dokumentáció? Látogasson el a [felhasználói hang oldalra](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), ahol javaslatot tehet a funkciókra, vagy szavazhat a meglévő javaslatokról.
 

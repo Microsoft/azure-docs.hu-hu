@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4f6b2b1c0f584e092c9e8f7d330a94b0b54fd6f2
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: d68cfb91445e2055cb3c3feb88bf925987ea9852
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197421"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687396"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Útmutató: áttelepítés az Azure Access Control Service
 
@@ -113,7 +113,7 @@ November 2017-ig az összes Access Control-összetevő teljes mértékben támog
 Itt látható a Access Control-összetevők elavulása:
 
 - **November 2017**: a klasszikus [Azure portálon az Azure](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/)ad rendszergazdai felülete megszűnik. Ezen a ponton a Access Control névterek kezelése egy új, dedikált URL-címen érhető el: `https://manage.windowsazure.com?restoreClassic=true` . Ezzel az URl-címmel megtekintheti a meglévő névtereket, engedélyezheti és letilthatja a névtereket, és törölheti a névtereket, ha úgy dönt, hogy.
-- **2018. április 2**.: a klasszikus Azure portál teljes mértékben megszűnik, ami azt jelenti, hogy a Access Control névterek kezelése már nem érhető el az URL-címeken keresztül. Ezen a ponton nem tilthatja le, nem engedélyezheti, törölheti vagy enumerálhatja Access Control névtereit. A Access Control felügyeleti portál azonban teljesen működőképes lesz, és a következő helyen található: `https://\<namespace\>.accesscontrol.windows.net` . A Access Control összes többi összetevője továbbra is megfelelően működik.
+- **2018. április 2**.: a klasszikus Azure portál teljes mértékben megszűnik, ami azt jelenti, hogy a Access Control névterek kezelése már nem érhető el az URL-címeken keresztül. Ezen a ponton nem tilthatja le, nem engedélyezheti, törölheti vagy enumerálhatja Access Control névtereit. A Access Control felügyeleti portál azonban teljesen működőképes lesz, és a következő helyen található: `https://<namespace>.accesscontrol.windows.net` . A Access Control összes többi összetevője továbbra is megfelelően működik.
 - **2018. november 7**.: az összes Access Control-összetevő véglegesen le van állítva. Ide tartozik a Access Control felügyeleti portál, a felügyeleti szolgáltatás, az STS és a jogkivonat-átalakítási szabály motorja. Ezen a ponton a Access Controlnek küldött kérések (a következő helyen: \<namespace\> . accesscontrol.Windows.net) meghiúsulnak. A meglévő alkalmazásokat és szolgáltatásokat más technológiákra is át kell telepítenie.
 
 > [!NOTE]

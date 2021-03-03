@@ -9,12 +9,12 @@ ms.date: 01/27/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 17a2d04fd6519dfdaf3c97c4ef56e87e162c9e9c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4aa4e0566093f01e5f14691158f37c630c753b00
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591577"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714748"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage-tűzfalak és virtuális hálózatok konfigurálása
 
@@ -417,7 +417,7 @@ Telepítse **az az. Storage** Preview modult.
 Install-Module Az.Storage -Repository PsGallery -RequiredVersion 3.0.1-preview -AllowClobber -AllowPrerelease -Force 
 ```
 
-A PowerShell-modulok telepítésével kapcsolatos további információkért lásd: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps)
+A PowerShell-modulok telepítésével kapcsolatos további információkért lásd: [a Azure PowerShell modul telepítése](/powershell/azure/install-az-ps)
 
 #### <a name="grant-access"></a>Hozzáférés biztosítása
 
@@ -559,17 +559,17 @@ Egyes szolgáltatások erőforrásai, **Amikor regisztrálva vannak az előfizet
 
 | Szolgáltatás                  | Erőforrás-szolgáltató neve     | Engedélyezett műveletek                 |
 |:------------------------ |:-------------------------- |:---------------------------------- |
-| Azure Backup             | Microsoft. Recoveryservices szolgáltatónál | Biztonsági másolatok futtatása és a nem felügyelt lemezek visszaállítása a IAAS virtuális gépeken. (felügyelt lemezekhez nem szükséges). [További információ](../../backup/backup-overview.md). |
-| Azure Data Box           | Microsoft. DataBox          | Lehetővé teszi az Azure-ba történő adatimportálást Data Box használatával. [További információ](../../databox/data-box-overview.md). |
-| Azure DevTest Labs       | Microsoft. segédösszetevője       | Egyéni rendszerkép létrehozása és az összetevők telepítése. [További információ](../../devtest-labs/devtest-lab-overview.md). |
+| Azure Backup             | Microsoft. Recoveryservices szolgáltatónál | Biztonsági másolatok futtatása és a nem felügyelt lemezek visszaállítása a IAAS virtuális gépeken. (felügyelt lemezekhez nem szükséges). [További információk](../../backup/backup-overview.md). |
+| Azure Data Box           | Microsoft. DataBox          | Lehetővé teszi az Azure-ba történő adatimportálást Data Box használatával. [További információk](../../databox/data-box-overview.md). |
+| Azure DevTest Labs       | Microsoft. segédösszetevője       | Egyéni rendszerkép létrehozása és az összetevők telepítése. [További információk](../../devtest-labs/devtest-lab-overview.md). |
 | Azure Event Grid         | Microsoft. EventGrid        | Engedélyezze Blob Storage az események közzétételét, és engedélyezze a Event Grid közzétételét a tárolási várólistákon. Tudnivalók a [blob Storage-eseményekről](../../event-grid/overview.md#event-sources) és [a várólistákon való közzétételről](../../event-grid/event-handlers.md). |
 | Azure Event Hubs         | Microsoft. EventHub         | Adatok archiválása Event Hubs rögzítéssel. [További információk](../../event-hubs/event-hubs-capture-overview.md). |
 | Azure File Sync          | Microsoft. StorageSync      | Lehetővé teszi a helyszíni fájlkiszolgáló átalakítását az Azure-fájlmegosztás gyorsítótárába. Lehetővé teszi a többhelyes szinkronizálást, a gyors katasztrófa-helyreállítást és a Felhőbeli biztonsági mentést. [További információ](../files/storage-sync-files-planning.md) |
-| Azure HDInsight          | Microsoft. HDInsight        | Az alapértelmezett fájlrendszer kezdeti tartalmának kiépítése egy új HDInsight-fürthöz. [További információ](../../hdinsight/hdinsight-hadoop-use-blob-storage.md). |
-| Azure importálási exportálás      | Microsoft. ImportExport     | Lehetővé teszi az adatok importálását az Azure Storage-ba vagy az Azure Storage-ból származó adatok exportálását az Azure Storage import/export szolgáltatás használatával. [További információ](../../import-export/storage-import-export-service.md).  |
-| Azure Monitor            | Microsoft. bepillantások         | Lehetővé teszi, hogy a figyelési adatai biztonságos Storage-fiókba legyenek írva, beleértve az erőforrás-naplókat, Azure Active Directory a bejelentkezést és a naplókat, valamint Microsoft Intune naplókat. [További információ](../../azure-monitor/roles-permissions-security.md). |
-| Azure-hálózatkezelés         | Microsoft.Network          | A hálózati forgalmi naplók tárolása és elemzése, beleértve a Network Watcher és Traffic Analytics szolgáltatásokat. [További információ](../../network-watcher/network-watcher-nsg-flow-logging-overview.md). |
-| Azure Site Recovery      | Microsoft. SiteRecovery     | Engedélyezze a replikációt az Azure IaaS-alapú virtuális gépek vész-helyreállításához, ha tűzfalon alapuló gyorsítótár-, forrás-vagy tároló-fiókot használ.  [További információ](../../site-recovery/azure-to-azure-tutorial-enable-replication.md). |
+| Azure HDInsight          | Microsoft. HDInsight        | Az alapértelmezett fájlrendszer kezdeti tartalmának kiépítése egy új HDInsight-fürthöz. [További információk](../../hdinsight/hdinsight-hadoop-use-blob-storage.md). |
+| Azure importálási exportálás      | Microsoft. ImportExport     | Lehetővé teszi az adatok importálását az Azure Storage-ba vagy az Azure Storage-ból származó adatok exportálását az Azure Storage import/export szolgáltatás használatával. [További információk](../../import-export/storage-import-export-service.md).  |
+| Azure Monitor            | Microsoft. bepillantások         | Lehetővé teszi, hogy a figyelési adatai biztonságos Storage-fiókba legyenek írva, beleértve az erőforrás-naplókat, Azure Active Directory a bejelentkezést és a naplókat, valamint Microsoft Intune naplókat. [További információk](../../azure-monitor/roles-permissions-security.md). |
+| Azure-hálózatkezelés         | Microsoft.Network          | A hálózati forgalmi naplók tárolása és elemzése, beleértve a Network Watcher és Traffic Analytics szolgáltatásokat. [További információk](../../network-watcher/network-watcher-nsg-flow-logging-overview.md). |
+| Azure Site Recovery      | Microsoft. SiteRecovery     | Engedélyezze a replikációt az Azure IaaS-alapú virtuális gépek vész-helyreállításához, ha tűzfalon alapuló gyorsítótár-, forrás-vagy tároló-fiókot használ.  [További információk](../../site-recovery/azure-to-azure-tutorial-enable-replication.md). |
 
 <a id="trusted-access-system-assigned-managed-identity"></a>
 
@@ -583,7 +583,7 @@ A következő táblázat felsorolja azokat a szolgáltatásokat, amelyek hozzáf
 
 | Szolgáltatás                        | Erőforrás-szolgáltató neve                 | Cél            |
 | :----------------------------- | :------------------------------------- | :----------------- |
-| Azure API Management           | Microsoft.ApiManagement/service        | Lehetővé teszi az API Management szolgáltatás számára a tűzfal mögötti tárolási fiókok elérését a házirendek használatával. [További információ](../../api-management/api-management-authentication-policies.md#use-managed-identity-in-send-request-policy). |
+| Azure API Management           | Microsoft.ApiManagement/service        | Lehetővé teszi az API Management szolgáltatás számára a tűzfal mögötti tárolási fiókok elérését a házirendek használatával. [További információk](../../api-management/api-management-authentication-policies.md#use-managed-identity-in-send-request-policy). |
 | Azure Cognitive Search         | Microsoft. Search/searchServices        | Lehetővé teszi Cognitive Search szolgáltatások számára a Storage-fiókok elérését indexelésre, feldolgozásra és lekérdezésre. |
 | Azure Cognitive Services       | Microsoft. CognitiveService/fiókok    | Engedélyezi a Cognitive Services számára a Storage-fiókok elérését. |
 | Azure Container Registry Tasks | Microsoft. ContainerRegistry/nyilvántartók | Az ACR-feladatok tároló-lemezképek létrehozásakor férhetnek hozzá a Storage-fiókokhoz. |
@@ -591,16 +591,16 @@ A következő táblázat felsorolja azokat a szolgáltatásokat, amelyek hozzáf
 | Azure Data Share               | Microsoft. DataShare/fiókok           | Lehetővé teszi a Storage-fiókok elérését az adatmegosztáson keresztül. |
 | Azure DevTest Labs             | Microsoft. segédösszetevője/Labs              | Hozzáférést biztosít a Storage-fiókokhoz a DevTest Labs használatával. |
 | Azure IoT Hub                  | Microsoft. Devices/IotHubs              | Engedélyezi az IoT hub adatainak blob Storage-ba való írását. [További információ](../../iot-hub/virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) |
-| Azure Logic Apps               | Microsoft. Logic/munkafolyamatok              | Lehetővé teszi a Logic apps számára a Storage-fiókok elérését. [További információ](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity). |
-| Azure Machine Learning szolgáltatás | Microsoft.MachineLearningServices      | Engedélyezett Azure Machine Learning munkaterületek a kísérlet kimenetét, modelljeit és naplóit írják a blob Storage-ba, és beolvasják az adatokat. [További információ](../../machine-learning/how-to-network-security-overview.md#secure-the-workspace-and-associated-resources). |
+| Azure Logic Apps               | Microsoft. Logic/munkafolyamatok              | Lehetővé teszi a Logic apps számára a Storage-fiókok elérését. [További információk](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity). |
+| Azure Machine Learning szolgáltatás | Microsoft.MachineLearningServices      | Engedélyezett Azure Machine Learning munkaterületek a kísérlet kimenetét, modelljeit és naplóit írják a blob Storage-ba, és beolvasják az adatokat. [További információk](../../machine-learning/how-to-network-security-overview.md#secure-the-workspace-and-associated-resources). |
 | Azure Media Services           | Microsoft. Media/Mediaservices          | Lehetővé teszi a Storage-fiókok elérését Media Serviceson keresztül. |
 | Azure Migrate                  | Microsoft. Migrálás/migrateprojects      | Lehetővé teszi a Storage-fiókok elérését Azure Migrateon keresztül. |
 | Azure Purview                  | Microsoft. hatáskörébe/fiókok             | Lehetővé teszi a hatáskörébe a Storage-fiókok elérését. |
 | Azure Remote Rendering         | Microsoft. MixedReality/remoteRenderingAccounts | Lehetővé teszi a Storage-fiókok elérését távoli rendereléssel. |
 | Azure Site Recovery            | Microsoft. Recoveryservices szolgáltatónál/tárolók      | Lehetővé teszi a Storage-fiókok elérését Site Recoveryon keresztül. |
 | Azure SQL Database             | Microsoft.Sql                          | Lehetővé teszi a naplózási és a tűzfal mögötti tárolási fiókokba való [írást](../../azure-sql/database/audit-write-storage-account-behind-vnet-firewall.md) . |
-| Azure Synapse Analytics        | Microsoft.Sql                          | Lehetővé teszi az adatok importálását és exportálását adott SQL-adatbázisokból a MÁSOLÁSi utasítás vagy a (dedikált készletben lévő), illetve a `openrowset` kiszolgáló nélküli készletben lévő függvény és külső táblák használatával. [További információ](../../azure-sql/database/vnet-service-endpoint-rule-overview.md). |
-| Azure Stream Analytics         | Microsoft. StreamAnalytics              | Lehetővé teszi a folyamatos átviteli feladatok adatainak blob Storage-ba való írását. [További információ](../../stream-analytics/blob-output-managed-identity.md). |
+| Azure Synapse Analytics        | Microsoft.Sql                          | Lehetővé teszi az adatok importálását és exportálását adott SQL-adatbázisokból a MÁSOLÁSi utasítás vagy a (dedikált készletben lévő), illetve a `openrowset` kiszolgáló nélküli készletben lévő függvény és külső táblák használatával. [További információk](../../azure-sql/database/vnet-service-endpoint-rule-overview.md). |
+| Azure Stream Analytics         | Microsoft. StreamAnalytics              | Lehetővé teszi a folyamatos átviteli feladatok adatainak blob Storage-ba való írását. [További információk](../../stream-analytics/blob-output-managed-identity.md). |
 | Azure Synapse Analytics        | Microsoft. szinapszis/munkaterületek           | Lehetővé teszi az Azure Storage-beli adatokhoz való hozzáférést az Azure szinapszis Analyticsből. |
 
 ## <a name="grant-access-to-storage-analytics"></a>Hozzáférés biztosítása a Storage analyticshez

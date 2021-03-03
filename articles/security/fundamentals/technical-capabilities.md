@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: terrylan
-ms.openlocfilehash: 6e0642a2124d58bb3af483313ac824568b6bbb39
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 00a44bd0a6176270e70eca030fcfada46effe3a5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585143"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735777"
 ---
 # <a name="azure-security-technical-capabilities"></a>Az Azure biztonságtechnikai képességei
 Ez a cikk az Azure-beli biztonsági szolgáltatások bevezetését ismerteti, amelyek segítségével megvédheti adatait, erőforrásait és alkalmazásait a felhőben, és teljesítheti a vállalata biztonsági igényeit.
 
 ## <a name="azure-platform"></a>Azure-platform
 
-A [Microsoft Azure](https://azure.microsoft.com/overview/what-is-azure/) egy infrastruktúra-és alkalmazás-szolgáltatásokból álló felhőalapú platform, amely az integrált adatszolgáltatások és a fejlett analitikai szolgáltatások, valamint a Microsoft nyilvános Felhőbeli adatközpontjai által üzemeltetett fejlesztői eszközök és szolgáltatások számára elérhető. Az Azure számos különböző kapacitáshoz és forgatókönyvhöz, az alapszintű számítási, hálózatkezelési és tárolási, mobil-és webalkalmazás-szolgáltatásokhoz, a teljes Felhőbeli forgatókönyvekhez, például a eszközök internetes hálózatahoz használható, és a nyílt forráskódú technológiákkal, valamint a hibrid felhőben vagy az ügyfél adatközpontjában üzemelő környezetekben is használható. Az Azure olyan építőelemeket biztosít a felhőalapú technológiák számára, amelyek segítségével a vállalatok proaktív módon tudják megtakarítani a költségeket, az innovációt és a rendszereket. Ha egy felhőalapú szolgáltatóra épít, vagy áttelepíti az IT-eszközöket, az adott szervezet képességei az alkalmazások és az adatok védelmére szolgálnak a szolgáltatásokkal és a felhőalapú eszközök biztonságának kezeléséhez szükséges vezérlőkkel.
+A [Microsoft Azure](https://azure.microsoft.com/overview/what-is-azure/) egy infrastruktúra-és alkalmazás-szolgáltatásokból álló felhőalapú platform, amely az integrált adatszolgáltatások és a fejlett analitikai szolgáltatások, valamint a Microsoft nyilvános Felhőbeli adatközpontjai által üzemeltetett fejlesztői eszközök és szolgáltatások számára elérhető. Az Azure számos különböző kapacitáshoz és forgatókönyvhöz, az alapszintű számítási, hálózatkezelési és tárolási, mobil-és webalkalmazás-szolgáltatásokhoz, a teljes Felhőbeli forgatókönyvekhez, például a eszközök internetes hálózatahoz, valamint a nyílt forráskódú technológiákkal, valamint a hibrid felhőbe vagy az ügyfél adatközpontjában üzemeltetett környezetekhez használható. Az Azure olyan építőelemeket biztosít a felhőalapú technológiák számára, amelyek segítségével a vállalatok proaktív módon tudják megtakarítani a költségeket, az innovációt és a rendszereket. Ha egy felhőalapú szolgáltatóra épít, vagy áttelepíti az IT-eszközöket, az adott szervezet képességei az alkalmazások és az adatok védelmére szolgálnak a szolgáltatásokkal és a felhőalapú eszközök biztonságának kezeléséhez szükséges vezérlőkkel.
 
 A Microsoft Azure az egyetlen olyan felhőalapú számítástechnikai szolgáltató, amely biztonságos, konzisztens alkalmazás-platformot és infrastruktúra-szolgáltatást biztosít a csapatok számára a különböző felhőalapú szakértelmével és a projekt bonyolultságának szintjein belüli munkához. az olyan integrált adatszolgáltatásokkal és elemzésekkel, amelyek a Microsofttól és a nem Microsofttól származó platformokon, nyílt keretrendszereken és eszközökön egyaránt felfedik az adatok felderítését, és lehetővé teszik a felhő helyszíni integrálását a helyszíni adatközpontokban, valamint az Azure Cloud Services üzembe helyezését. A Microsoft megbízható felhő részeként az ügyfelek az Azure-ra támaszkodnak az iparág piacvezető biztonsága, megbízhatósága, megfelelősége, védelme, valamint a Felhőbeli szervezetek támogatásához szükséges, a felhasználók, partnerek és folyamatok nagy hálózata számára.
 
@@ -37,7 +37,7 @@ A Microsoft Azure a következőket teheti:
 
 - Üzleti védelemmel.
 
-## <a name="security-technical-capabilities-to-fulfil-your-responsibility"></a>Biztonsági technikai képességek a felelősség teljesítése érdekében
+## <a name="security-technical-capabilities-to-fulfill-your-responsibility"></a>Biztonsági technikai képességek a felelősség teljesítése érdekében
 
 Microsoft Azure olyan szolgáltatásokat nyújt, amelyek segítenek megfelelni a biztonsági, adatvédelmi és megfelelőségi igényeinek. A következő kép segít megmagyarázni a különböző Azure-szolgáltatásokat, amelyekkel az iparági szabványok alapján biztonságos és megfelelő alkalmazás-infrastruktúrát hozhat létre.
 
@@ -184,7 +184,7 @@ Olyan szervezeteknek, amelyeknek a helyszínen lévő egyik munkaállomásról a
 
 Nagyobb adatkészletek helyezhetők át egy dedikált nagy sebességű WAN-kapcsolaton, például a [ExpressRoute](https://azure.microsoft.com/services/expressroute/). Ha úgy dönt, hogy a ExpressRoute-t használja, az [SSL/TLS](https://web.archive.org/web/20150221085231/http://support.microsoft.com:80/kb/257591) vagy más protokollok használatával is titkosíthatja az alkalmazásokat az alkalmazás szintjén.
 
-Ha az Azure Storage-t az Azure Portalon keresztül használja, az összes tranzakció HTTPS-kapcsolaton keresztül történik. A [storage REST API](/rest/api/storageservices/) HTTPS protokollon keresztül is használható az [Azure storage](https://azure.microsoft.com/services/storage/) és a [Azure SQL Database](https://azure.microsoft.com/services/sql-database/)használatára.
+Ha az Azure Storage-t a Azure Portalon keresztül használja, az összes tranzakció HTTPS-kapcsolaton keresztül történik. A [storage REST API](/rest/api/storageservices/) HTTPS protokollon keresztül is használható az [Azure storage](https://azure.microsoft.com/services/storage/) és a [Azure SQL Database](https://azure.microsoft.com/services/sql-database/)használatára.
 
 Azok a szervezetek, amelyek nem tudnak védelmet biztosítani az átvitel során, érzékenyebbek a [támadók](/previous-versions/office/skype-server-2010/gg195821(v=ocs.14)), a [lehallgatás](/previous-versions/office/skype-server-2010/gg195641(v=ocs.14))és a munkamenet-eltérítések számára. Ezek a támadások a bizalmas adatokhoz való hozzáférés első lépései lehetnek.
 
@@ -194,7 +194,7 @@ Ha többet szeretne megtudni az Azure VPN-ről, tekintse át a [VPN Gateway terv
 
 A [Azure RMS](/azure/information-protection/what-is-azure-rms) titkosítási, identitási és engedélyezési házirendeket használ a fájlok és az e-mailek védelméhez. Azure RMS több eszközön is működik – telefonok, tabletták és PC-k, a szervezeten belüli és a szervezeten kívüli védelemmel. Ez a képesség azért lehetséges, mert a Azure RMS az adataiban maradó védelmi szintet is biztosít, még akkor is, ha elhagyja a szervezet határait.
 
-Ha Azure RMSt használ a fájlok védelemmel való ellátásához, az iparági szabványnak megfelelő titkosítást használ az [FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf)teljes körű támogatásával. Ha adatvédelmet Azure RMS használ, akkor a védelem abban az esetben is fennáll, ha a védelmet a fájlon kívüli tárolóba másolják, például egy felhőalapú tárolási szolgáltatás. Ugyanez vonatkozik az e-mailben megosztott fájlokra, a fájl egy e-mail-üzenet mellékletként van védve, és útmutatást nyújt a védett melléklet megnyitásához.
+Ha Azure RMSt használ a fájlok védelemmel való ellátásához, az iparági szabványnak megfelelő titkosítást használ az [FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf)teljes körű támogatásával. Ha adatvédelmet Azure RMS használ, akkor a védelem abban az esetben is fennáll, ha a fájl nem az informatikai, hanem egy felhőalapú tárolási szolgáltatás számára van átmásolva. Ugyanez vonatkozik az e-mailben megosztott fájlokra, a fájl egy e-mail-üzenet mellékletként van védve, és útmutatást nyújt a védett melléklet megnyitásához.
 Azure RMS bevezetésének tervezésekor a következőket javasoljuk:
 
 - Telepítse a [RMS-megosztó alkalmazást](/azure/information-protection/rms-client/sharing-app-windows). Ez az alkalmazás az Office-alkalmazásokkal integrálható egy Office-bővítmény telepítésével, amellyel a felhasználók könnyedén védetté tehetik a fájlokat.
@@ -278,6 +278,8 @@ A [kényszerített bújtatás](https://www.petri.com/azure-forced-tunneling) oly
 
 Az Azure támogatja a dedikált WAN-kapcsolatot a helyszíni hálózattal és egy Azure-Virtual Network a [ExpressRoute](../../expressroute/expressroute-introduction.md). Az Azure és a webhely közötti kapcsolat olyan dedikált kapcsolatot használ, amely nem a nyilvános interneten keresztül érhető el. Ha az Azure-alkalmazás több adatközpontban fut, az [azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) segítségével a felhasználóktól érkező kéréseket intelligens módon irányíthatja át az alkalmazás példányai között. Az Azure-ban nem futó szolgáltatásokra is átirányíthatja a forgalmat, ha azok elérhetők az internetről.
 
+Az Azure a saját és biztonságos kapcsolatait is támogatja a Pásti-erőforrásokhoz (például Azure Storage és SQL Database) az Azure-Virtual Network az [Azure Private link](https://docs.microsoft.com/azure/private-link/private-link-overview)használatával. A Pásti erőforrás a virtuális hálózatában lévő [privát végpontra](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) van leképezve. A virtuális hálózatban található privát végpont és a Péter-erőforrás közötti kapcsolat a Microsoft gerinc hálózatát használja, és nem a nyilvános interneten keresztül érhető el. A szolgáltatás nyilvános internetre való kimutatása már nem szükséges. Az Azure Private link használatával is elérheti az Azure-ban üzemeltetett felhasználói és partneri szolgáltatásokat a virtuális hálózaton.  Emellett az Azure Private link használatával saját [privát kapcsolati szolgáltatást](https://docs.microsoft.com/azure/private-link/private-link-service-overview) hozhat létre a virtuális hálózatban, és a virtuális hálózatában saját ügyfelei számára is elérhetővé teheti azt. Az Azure Private link használatával történő beállítás és felhasználás konzisztens az Azure Pásti, az ügyfél és a megosztott partneri szolgáltatások között.
+
 ## <a name="virtual-machine-security"></a>Virtuális gépek biztonsága
 
 Az [Azure Virtual Machines](../../virtual-machines/index.yml) számos számítástechnikai megoldás üzembe helyezését teszi lehetővé agilis módon. A Microsoft Windows, Linux, Microsoft SQL Server, Oracle, IBM, SAP és Azure BizTalk Services támogatásával szinte bármely operációs rendszeren üzembe helyezheti a számítási feladatokat és a nyelveket.
@@ -304,7 +306,7 @@ Emellett az Ellenőrzőlista:
 
 - A felhőalapú bevezetési folyamat elején ismerteti a döntéshozók számára a legfontosabb témákat.
 
-- Támogatja a szabályozásokkal kapcsolatos alapos üzleti megbeszéléseket és a szervezet saját adatvédelmi célkitűzéseit, a személyazonosításra alkalmas adatokat és az adatbiztonságot.
+- Támogatja a szabályozásokkal kapcsolatos alapos üzleti megbeszéléseket és a szervezet saját adatvédelmi, személyes és adatbiztonságra vonatkozó célkitűzéseit.
 
 - Segít a szervezeteknek azonosítani a Felhőbeli projekteket érintő esetleges problémákat.
 
@@ -316,7 +318,7 @@ Az [Azure Operational Security](operational-security.md) a felhasználók szám�
 
 ![biztonsági ellenőrzés (észlelés)](./media/technical-capabilities/azure-security-technical-capabilities-fig7.png)
 
-Az Azure Operational Security egy olyan keretrendszerre épül, amely magában foglalja a Microsoft számára egyedi, a Microsoft biztonsági fejlesztési életciklusát (SDL), a Microsoft Security Response Center programját, valamint a kiberbiztonsági fenyegetések tájképének alapos ismeretét.
+Az Azure Operational Security olyan keretrendszerre épül, amely magában foglalja a Microsoft számára egyedi, a Microsoft biztonsági fejlesztési életciklusát (SDL), a Microsoft Security Response Center programot, valamint a kiberbiztonsági fenyegetések tájképének részletes ismereteit.
 
 ### <a name="microsoft-azure-monitor"></a>Microsoft Azure figyelő
 
@@ -383,7 +385,7 @@ A [Storage Analytics](/rest/api/storageservices/fileservices/storage-analytics) 
 
 ### <a name="application-insights"></a>Application Insights
 
-A [Application Insights](../../azure-monitor/app/app-insights-overview.md) egy bővíthető Application Performance Management-(APM-) szolgáltatás, amely több platformon is használható webfejlesztőknek. Az élő webalkalmazásának figyelésére használhatja. Automatikusan felismeri a teljesítményanomáliákat. Hatékony elemzési eszközöket tartalmaz, amelyek segítségével diagnosztizálhatja a problémákat, és megtudhatja, hogy a felhasználók milyen műveleteket végeznek az alkalmazással. Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot. Számos platformon használható, többek között a .NET, a Node.js és a Java EE, a helyszínen vagy a felhőben üzemeltetett alkalmazások esetében. Integrálva van a devOps-folyamattal, és a kapcsolódási pontok különböző fejlesztői eszközökhöz vannak társítva.
+A [Application Insights](../../azure-monitor/app/app-insights-overview.md) egy bővíthető Application Performance Management-(APM-) szolgáltatás, amely több platformon is használható webfejlesztőknek. Az élő webalkalmazásának figyelésére használhatja. Automatikusan felismeri a teljesítményanomáliákat. Hatékony elemzési eszközöket tartalmaz, amelyek segítségével diagnosztizálhatja a problémákat, és megtudhatja, hogy a felhasználók milyen műveleteket végeznek az alkalmazással. Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot. Számos platformon használható, többek között a .NET, a Node.js és a Java EE, a helyszínen vagy a felhőben üzemeltetett alkalmazások esetében. Integrálva van a DevOps-folyamattal, és a kapcsolódási pontok különböző fejlesztői eszközökhöz vannak társítva.
 
 A szolgáltatás az alábbiakat figyeli:
 

@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan helyezheti üzembe az Azure SSIS integrációs 
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 10/13/2020
+ms.date: 02/22/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: e0b84bb65e71b023121a5deae8295ddaf8879311
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7c439d71806d2deba508ce35131f21ebfbd7a3ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391354"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740409"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Az Azure-SSIS integrációs modul kiépítése Azure Data Factory
 
@@ -149,6 +149,12 @@ Ha bejelöli a jelölőnégyzetet, a következő lépésekkel hozhatja létre a 
    1. A **rendszergazdai Felhasználónév** mezőben adja meg az adatbázis-kiszolgáló SQL-hitelesítési felhasználónevét a SSISDB üzemeltetéséhez. 
 
    1. **Rendszergazdai jelszó** esetén adja meg az adatbázis-kiszolgáló SQL-hitelesítési jelszavát a SSISDB üzemeltetéséhez. 
+
+   1. Jelölje be a kettős készenléti **Azure-SSIS Integration Runtime pár SSISDB feladatátvételsel** jelölőnégyzetet egy olyan kettős készenléti Azure SSIS IR-pár konfigurálásához, amely szinkronban működik Azure SQL Database/felügyelt példány feladatátvételi csoporttal az üzletmenet folytonossága és a vész-helyreállítás (BCDR) számára.
+   
+      Ha bejelöli a jelölőnégyzetet, adjon meg egy nevet az elsődleges és másodlagos Azure-SSIS IRs-nek a **kettős készenléti pair neve** szövegmezőben való azonosításához. Az elsődleges és másodlagos Azure-SSIS IRs létrehozásakor ugyanazt a párokat kell megadnia.
+
+      További információ: [a Azure-SSIS IR konfigurálása a BCDR](./configure-bcdr-azure-ssis-integration-runtime.md).
 
    1. A **katalógus-adatbázis szolgáltatási szintjéhez** válassza ki az adatbázis-kiszolgáló szolgáltatási SZINTJÉT a SSISDB üzemeltetéséhez. Válassza ki az alapszintű, a standard vagy a prémium szintet, vagy válasszon egy rugalmas készlet nevét.
 

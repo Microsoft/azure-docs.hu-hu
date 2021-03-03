@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 09/04/2020
+ms.date: 02/26/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5681228e5da2708912d69f16a4b09a4a93d8bb04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04a4366bfee6b1d9c5f52d649910163269962684
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89500300"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709257"
 ---
 # <a name="supported-authentication-methods"></a>Támogatott hitelesítési módszerek
 
@@ -21,14 +21,14 @@ Ebben a cikkben röviden áttekintjük, hogy milyen típusú hitelesítést hasz
 
 ## <a name="session-host-authentication"></a>Munkamenet-gazdagép hitelesítése
 
-A Windows virtuális asztal az NT LAN Manager (NTLM) és a Kerberos protokollt is támogatja a munkamenet-gazdagép hitelesítéséhez. A Kerberos használatához azonban az ügyfélnek egy tartományvezérlőn futó kulcsszolgáltató (KDC) szolgáltatásból kell beszereznie a Kerberos biztonsági jegyeit. A jegyek beszerzéséhez az ügyfélnek közvetlen rámutatnia kell a tartományvezérlőre. A vállalati hálózat használatával közvetlen áttekintést kaphat. VPN-kapcsolat is használható a vállalati hálózathoz.
+A Windows virtuális asztal az NT LAN Manager (NTLM) és a Kerberos protokollt is támogatja a munkamenet-gazdagép hitelesítéséhez. A Kerberos használatához azonban az ügyfélnek egy tartományvezérlőn futó kulcsszolgáltató (KDC) szolgáltatásból kell beszereznie a Kerberos biztonsági jegyeit. A jegyek beszerzéséhez az ügyfélnek közvetlen rámutatnia kell a tartományvezérlőre. A vállalati hálózat használatával közvetlen áttekintést kaphat. VPN-kapcsolat is használható a vállalati hálózathoz, vagy beállíthat egy [KDC-proxykiszolgálót](key-distribution-center-proxy.md)is.
 
 Ezek a jelenleg támogatott bejelentkezési módszerek:
 
 - Windows asztali ügyfél
     - Felhasználónév és jelszó
     - Intelligens kártya
-    - Windows Hello
+    - Vállalati Windows Hello (csak megbízható tanúsítvány)
 - Windows áruházbeli ügyfél
     - Felhasználónév és jelszó
 - Webes ügyfél
@@ -41,7 +41,7 @@ Ezek a jelenleg támogatott bejelentkezési módszerek:
     - Felhasználónév és jelszó
 
 >[!NOTE]
->Az intelligens kártya és a Windows Hello csak Kerberos használatával tud bejelentkezni. A Kerberosba való bejelentkezéshez meg kell adni a tartományvezérlőt.
+>Az intelligens kártya és a vállalati Windows Hello csak Kerberos használatával jelentkezhet be. A Kerberosba való bejelentkezéshez a tartományvezérlőre vagy a [KDC-proxykiszolgáló](key-distribution-center-proxy.md)felé irányuló betekintés szükséges.
 
 ## <a name="hybrid-identity"></a>Hibrid identitás
 

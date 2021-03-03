@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 0ff300a90876841e5a25e4e44ffdaecab2eaee95
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: cf079c009e5f6c3ef1ba6f8b22636b9a53b51348
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664756"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689232"
 ---
 # <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>Oktatóanyag: konfigurációk üzembe helyezése a GitOps használatával egy Azure arc-kompatibilis Kubernetes-fürtön 
 
@@ -26,7 +26,7 @@ Ebben az oktatóanyagban a konfigurációk a GitOps használatával lesznek alka
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen] (https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Egy meglévő Azure arc-kompatibilis Kubernetes csatlakoztatott fürt.
     - Ha még nem csatlakoztatta a fürtöt, tekintse meg a [Connect an Azure arc enabled Kubernetes-fürt](quickstart-connect-cluster.md)gyors üzembe helyezését ismertető útmutatót.
 - A szolgáltatás előnyeinek és architektúrájának megismerése. További információk: [konfigurációk és GitOps – Azure arc-kompatibilis Kubernetes-cikk](conceptual-configurations.md).
@@ -152,7 +152,7 @@ Szabja testre a konfigurációt a következő választható paraméterekkel:
 | ------------- | ------------- |
 | `--enable-helm-operator`| Váltson a Helm chart üzemelő példányok támogatásának engedélyezéséhez. |
 | `--helm-operator-params` | A Helm operátor diagramjának értékei (ha engedélyezve van). Például: `--set helm.versions=v3`. |
-| `--helm-operator-version` | A Helm operátor diagramjának verziója (ha engedélyezve van). Használja a 1.2.0 + verziót. Alapértelmezett: "1.2.0". |
+| `--helm-operator-chart-version` | A Helm operátor diagramjának verziója (ha engedélyezve van). Használja a 1.2.0 + verziót. Alapértelmezett: "1.2.0". |
 | `--operator-namespace` | Az operátori névtér neve. Alapértelmezett: "default". Max: 23 karakter. |
 | `--operator-params` | A kezelőhöz tartozó paraméterek. Egy idézőjelek között kell megadni. Például: ```--operator-params='--git-readonly --sync-garbage-collection --git-branch=main'``` 
 

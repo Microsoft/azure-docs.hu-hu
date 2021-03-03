@@ -1,14 +1,14 @@
 ---
 title: Azure Sentinel-munkaterületek kezelése nagy méretekben
 description: Ismerje meg, hogyan kezelheti hatékonyan az Azure Sentinelt a delegált felhasználói erőforrásokon.
-ms.date: 09/30/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 91e2f875aa2fc067420c0c6eda4e7dd56bd2b088
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 009edaefe021dedb5d9a40a8cc3bac2c2974ae10
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424097"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702521"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Azure Sentinel-munkaterületek kezelése nagy méretekben
 
@@ -80,15 +80,15 @@ Hozzon létre és mentsen Log Analytics-lekérdezéseket a fenyegetés észlelé
 
 Az Automation használatával több Azure Sentinel-munkaterület is kezelhető, és a [vadászati lekérdezések](../../sentinel/hunting.md), a forgatókönyvek és a munkafüzetek is konfigurálhatók. További információ: a [munkaterület-kezelés automatizálással](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-management-using-automation).
 
-## <a name="manage-security-of-office-365-environments"></a>Office 365-környezetek biztonságának kezelése
+## <a name="monitor-security-of-office-365-environments"></a>Office 365-környezetek biztonságának figyelése
 
-Az Azure-világítótorony és az Azure Sentinel együttes használatával felügyelheti az Office 365 környezetek biztonságát a bérlők között. Első lépésként a Box [Office 365 adatösszekötőket engedélyezni kell a felügyelt bérlőben](../../sentinel/connect-office-365.md) , hogy az Exchange-ben és a SharePointban (beleértve a OneDrive-t) használó felhasználói és rendszergazdai tevékenységekkel kapcsolatos információk betölthetők legyenek egy Azure Sentinel-munkaterületre a felügyelt bérlőn belül. Ide tartozik a fájlok letöltésével, a küldött hozzáférési kérelmekkel, az események csoportosításával és a postaláda-műveletekkel kapcsolatos részletek, valamint a műveleteket végrehajtó felhasználók információi. Az [office 365 DLP-riasztások](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-office-365-dlp-events-into-azure-sentinel/ba-p/1031820) a beépített Office 365-összekötők részeként is támogatottak.
+Az Azure-világítótornyot az Azure Sentineltel együtt használva figyelheti az Office 365 környezetek biztonságát a bérlők között. Első lépésként a Box [Office 365 adatösszekötőket engedélyezni kell a felügyelt bérlőben](../../sentinel/connect-office-365.md) , hogy az Exchange-ben és a SharePointban (beleértve a OneDrive-t) használó felhasználói és rendszergazdai tevékenységekkel kapcsolatos információk betölthetők legyenek egy Azure Sentinel-munkaterületre a felügyelt bérlőn belül. Ide tartozik a fájlok letöltésével, a küldött hozzáférési kérelmekkel, az események csoportosításával és a postaláda-műveletekkel kapcsolatos részletek, valamint a műveleteket végrehajtó felhasználók információi. Az [office 365 DLP-riasztások](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-office-365-dlp-events-into-azure-sentinel/ba-p/1031820) a beépített Office 365-összekötők részeként is támogatottak.
 
 A [Microsoft Cloud app Security (MCAS) összekötőt](../../sentinel/connect-cloud-app-security.md) engedélyezheti a stream-riasztásokhoz, és Cloud Discovery naplókat az Azure sentinelbe. Ez lehetővé teszi a felhőalapú alkalmazások láthatóságát, a kifinomult elemzéseket a előforduló kiberfenyegetésekkel kapcsolatban azonosítására és leküzdésére, valamint az adatmozgások szabályozására. A MCAS tartozó Tevékenységnaplók [a Common Event Format (CEF) használatával](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-box-com-activity-events-via-microsoft-cloud-app-security/ba-p/1072849)használhatók fel.
 
 Az Office 365-adatösszekötők beállítása után használhatja a több-bérlős Azure Sentinel-funkciókat, például a munkafüzetek adatainak megtekintését és elemzését, a lekérdezések használatával egyéni riasztásokat hozhat létre, és konfigurálhat forgatókönyveket a fenyegetésekre való reagáláshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [Azure sentinelről](../../sentinel/overview.md).
 - Tekintse át az [Azure Sentinel díjszabási oldalát](https://azure.microsoft.com/pricing/details/azure-sentinel/).

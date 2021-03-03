@@ -3,12 +3,12 @@ title: Az Azure Service Fabric-fürt verziójának frissítése
 description: Ismerje meg az Azure Service Fabric-beli fürtök verzióit, beleértve a Service Fabric csapat blogján elérhető legújabb kiadásokra mutató hivatkozást is.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 9c7e5e3778c9a38190be210ebb391bc8b0b58c76
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 7cb9a739572c667e0821a7a60f5c5d8cceb97957
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652054"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698382"
 ---
 # <a name="upgrade-your-azure-service-fabric-cluster-version"></a>Az Azure Service Fabric-fürt verziójának frissítése
 
@@ -63,9 +63,9 @@ Az 6,3-nál későbbi, változatlan verziókon futó Azure Service Fabric-fürt�
   
   - A **6,3-nál nagyobb Service Fabric-verziót futtató fürtök esetében** a fürt továbbra is nyitva marad.
 
- - A **6,3-nál nagyobb Service Fabric-t futtató fürtök esetében, és a [tárolók nyitott hálózati funkciójának](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) használata** esetén a fürt elérhetetlenné válhat, és megszűnik a működés, ami a munkaterhelések szolgáltatás általi megszakítását okozhatja.
+ - A **6,3-nál nagyobb Service Fabric-t futtató fürtök esetében, és a [tárolók nyitott hálózati funkciójának](./service-fabric-networking-modes.md#set-up-open-networking-mode) használata** esetén a fürt elérhetetlenné válhat, és megszűnik a működés, ami a munkaterhelések szolgáltatás általi megszakítását okozhatja.
  
- -   A **[7.0.457 és a 7.0.466 közötti Windows-verziókat futtató fürtök esetében (mindkét verzióban megtalálható)](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-version-names) és a Windows rendszerű tárolók funkció engedélyezve van. Megjegyzés: a Linux-verziók 7.0.457, a 7.0.464 és a 7.0.465 nincs hatással**.
+ -   A **[7.0.457 és a 7.0.466 közötti Windows-verziókat futtató fürtök esetében (mindkét verzióban megtalálható)](#supported-version-names) és a Windows rendszerű tárolók funkció engedélyezve van. Megjegyzés: a Linux-verziók 7.0.457, a 7.0.464 és a 7.0.465 nincs hatással**.
     - **Hatás**: a fürt működése megszűnik, ami a munkaterhelések szolgáltatás általi megszakítását okozhatja.
     
 #### <a name="required-action"></a>Szükséges művelet

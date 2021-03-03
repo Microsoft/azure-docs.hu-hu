@@ -1,28 +1,28 @@
 ---
-title: A containers Agent Azure Monitor kezelése | Microsoft Docs
-description: Ez a cikk ismerteti a leggyakoribb karbantartási feladatok kezelését a Azure Monitor által a tárolók számára használt Log Analytics ügynökkel.
+title: A Container bepillantási ügynök kezelése | Microsoft Docs
+description: Ez a cikk a leggyakoribb karbantartási feladatok kezelését ismerteti a Container bepillantást vett Log Analytics ügynökkel.
 ms.topic: conceptual
 ms.date: 07/21/2020
-ms.openlocfilehash: b656b0cc89e40dd732def4ebf56dceae69a033b0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2a0c32ef797a953eca794e16fe0ace5e967f339f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100620038"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713796"
 ---
-# <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>A containers Agent Azure Monitor kezelése
+# <a name="how-to-manage-the-container-insights-agent"></a>A Container bepillantást nyerhető ügynök kezelése
 
-A tárolók Azure Monitor a Linux Log Analytics ügynökének egy tárolós verzióját használja. A kezdeti üzembe helyezést követően a rendszer rutin vagy opcionális feladatokat hajt végre, amelyekre szükség lehet az életciklusa során. Ez a cikk azt ismerteti, hogyan lehet manuálisan frissíteni az ügynököt, és letiltani a környezeti változók gyűjteményét egy adott tárolóból. 
+A Container-bepillantást a Linux rendszerhez készült Log Analytics ügynök tárolós verzióját használja. A kezdeti üzembe helyezést követően a rendszer rutin vagy opcionális feladatokat hajt végre, amelyekre szükség lehet az életciklusa során. Ez a cikk azt ismerteti, hogyan lehet manuálisan frissíteni az ügynököt, és letiltani a környezeti változók gyűjteményét egy adott tárolóból. 
 
-## <a name="how-to-upgrade-the-azure-monitor-for-containers-agent"></a>A Azure Monitor a tárolók ügynökének frissítése
+## <a name="how-to-upgrade-the-container-insights-agent"></a>A Container bepillantást nyerhető ügynök frissítése
 
-A tárolók Azure Monitor a Linux Log Analytics ügynökének egy tárolós verzióját használja. Az ügynök új verziójának felszabadításakor az ügynök automatikusan frissül az Azure Kubernetes szolgáltatásban (ak) üzemeltetett felügyelt Kubernetes-fürtökön, valamint az Azure Red Hat OpenShift 3. x verziójában. A [hibrid Kubernetes-fürtök](container-insights-hybrid-setup.md) és az Azure Red Hat OpenShift 4. x verziója esetében az ügynök nem felügyelt, és manuálisan kell frissítenie az ügynököt.
+A Container-bepillantást a Linux rendszerhez készült Log Analytics ügynök tárolós verzióját használja. Az ügynök új verziójának felszabadításakor az ügynök automatikusan frissül az Azure Kubernetes szolgáltatásban (ak) üzemeltetett felügyelt Kubernetes-fürtökön, valamint az Azure Red Hat OpenShift 3. x verziójában. A [hibrid Kubernetes-fürtök](container-insights-hybrid-setup.md) és az Azure Red Hat OpenShift 4. x verziója esetében az ügynök nem felügyelt, és manuálisan kell frissítenie az ügynököt.
 
 Ha az ügynök frissítése meghiúsul az AK-ban vagy az Azure Red Hat OpenShift 3. x verziójában üzemeltetett fürt esetében, ez a cikk az ügynök manuális frissítésének folyamatát is ismerteti. A kiadott verziók követéséhez tekintse meg az [ügynök kiadási hirdetményei](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)című témakört.
 
 ### <a name="upgrade-agent-on-aks-cluster"></a>Ügynök frissítése az AK-fürtön
 
-Az ügynök az AK-fürtökön való frissítésének folyamata két egyenes továbbítási lépésből áll. Első lépésként le kell tiltania a figyelést Azure Monitor az Azure CLI-vel rendelkező tárolók esetében. Kövesse a [figyelés letiltása](container-insights-optout.md?#azure-cli) című cikkben ismertetett lépéseket. Az Azure CLI használata lehetővé teszi, hogy az ügynököt a fürt csomópontjairól távolítsa el anélkül, hogy ez hatással lenne a megoldásra és a munkaterületen tárolt megfelelő adatokra. 
+Az ügynök az AK-fürtökön való frissítésének folyamata két egyenes továbbítási lépésből áll. Első lépésként le kell tiltania a figyelést az Azure CLI használatával a Container bepillantásokkal. Kövesse a [figyelés letiltása](container-insights-optout.md?#azure-cli) című cikkben ismertetett lépéseket. Az Azure CLI használata lehetővé teszi, hogy az ügynököt a fürt csomópontjairól távolítsa el anélkül, hogy ez hatással lenne a megoldásra és a munkaterületen tárolt megfelelő adatokra. 
 
 >[!NOTE]
 >A karbantartási tevékenység végrehajtása közben a fürt csomópontjai nem továbbítják az összegyűjtött adatokat, és a teljesítmény nézetek nem jelenítik meg az ügynök eltávolítása és az új verzió telepítésének időpontja közötti adatokat. 
@@ -97,7 +97,7 @@ Tekintse meg az [Azure arc-kompatibilis Kubernetes-fürt figyelésének engedél
 
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>Környezeti változók gyűjteményének letiltása tárolón
 
-A tárolók Azure Monitor környezeti változókat gyűjtenek a hüvelyben futó tárolókban, és **a tárolók nézetben a** kiválasztott tároló tulajdonságok ablaktábláján jelenítik meg azokat. Ezt a viselkedést úgy szabályozhatja, ha letilt egy adott tárolóhoz tartozó gyűjteményt a Kubernetes-fürt telepítése során vagy a *AZMON_COLLECT_ENV* környezeti változó beállításával. Ez a funkció az ügynök verziójában érhető el – ciprod11292018 és újabb.  
+A Container-információk a pod-ban futó tárolók környezeti változóit gyűjtik, és **a tárolók nézetben a** kiválasztott tároló tulajdonságok ablaktábláján jelenítik meg azokat. Ezt a viselkedést úgy szabályozhatja, ha letilt egy adott tárolóhoz tartozó gyűjteményt a Kubernetes-fürt telepítése során vagy a *AZMON_COLLECT_ENV* környezeti változó beállításával. Ez a funkció az ügynök verziójában érhető el – ciprod11292018 és újabb.  
 
 Ha le szeretné tiltani a környezeti változók új vagy meglévő tárolón való gyűjtését, állítsa be az **AZMON_COLLECT_ENV** változó értékét **false** értékre a Kubernetes telepítési YAML konfigurációs fájljában. 
 
@@ -114,7 +114,7 @@ oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging
 
 Ekkor megnyílik az alapértelmezett szövegszerkesztő. A változó beállítása után mentse a fájlt a szerkesztőbe.
 
-A konfiguráció módosításának ellenőrzéséhez jelöljön ki egy tárolót **Azure monitor tárolók nézetben,** és a Tulajdonságok panelen bontsa ki a **környezeti változók** elemet.  A szakasznak csak a korábban létrehozott változót kell megjelenítenie – **AZMON_COLLECT_ENV = false**. Az összes többi tároló esetében a környezeti változók szakaszban fel kell sorolni az összes felderített környezeti változót.
+A konfiguráció módosításának ellenőrzéséhez válasszon ki egy tárolót a containers **(tárolók) nézetben,** és a Tulajdonságok panelen bontsa ki a **környezeti változók** elemet.  A szakasznak csak a korábban létrehozott változót kell megjelenítenie – **AZMON_COLLECT_ENV = false**. Az összes többi tároló esetében a környezeti változók szakaszban fel kell sorolni az összes felderített környezeti változót.
 
 A környezeti változók felderítésének újbóli engedélyezéséhez alkalmazza ugyanezt a folyamatot, és módosítsa a **hamis** értéket **true** értékre, majd futtassa újra a `kubectl` parancsot a tároló frissítéséhez.  
 

@@ -6,18 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 09/22/2020
-ms.openlocfilehash: b877cba794f97dd4736e30a72d91695774c8e688
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9352b27002162e08d53bc8166ceddd010be3c8d1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100614498"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738650"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>A Azure Monitor naplózási értesítéseinek hibakeresése  
 
 Ebből a cikkből megtudhatja, Hogyan oldhatók meg a naplózási riasztásokkal kapcsolatos gyakori problémák Azure Monitor. Emellett megoldásokat kínál a naplók működésével és konfigurációjával kapcsolatos gyakori problémákra.
 
-A riasztások naplózása lehetővé teszi, hogy a felhasználók egy [log Analytics](../log-query/log-analytics-tutorial.md) lekérdezést használjanak, amellyel kiértékelheti az erőforrások összes készletének gyakoriságát, és egy riasztást az eredmények alapján. A szabályok egy vagy több műveletet aktiválnak a [műveleti csoportok](../platform/action-groups.md)használatával. [További információ a naplózási riasztások funkcióival és terminológiával kapcsolatban](alerts-unified-log.md).
+A riasztások naplózása lehetővé teszi, hogy a felhasználók egy [log Analytics](../logs/log-analytics-tutorial.md) lekérdezést használjanak, amellyel kiértékelheti az erőforrások összes készletének gyakoriságát, és egy riasztást az eredmények alapján. A szabályok egy vagy több műveletet aktiválnak a [műveleti csoportok](./action-groups.md)használatával. [További információ a naplózási riasztások funkcióival és terminológiával kapcsolatban](alerts-unified-log.md).
 
 > [!NOTE]
 > Ez a cikk nem vizsgálja azokat az eseteket, amelyekben a Azure Portal riasztási szabályt váltott ki, és egy kapcsolódó műveleti csoport nem hajt végre értesítést. Ilyen esetekben tekintse meg a hibaelhárítás részleteit [itt](./alerts-troubleshoot.md#action-or-notification-on-my-alert-did-not-work-as-expected).
@@ -26,7 +26,7 @@ A riasztások naplózása lehetővé teszi, hogy a felhasználók egy [log Analy
 
 ### <a name="data-ingestion-time-for-logs"></a>Naplók adatfeldolgozási ideje
 
-Azure Monitor az ügyfelek által a világ különböző pontjain futó naplók terabájtját dolgozza fel, ami a naplók betöltési [késését](../platform/data-ingestion-time.md)okozhatja.
+Azure Monitor az ügyfelek által a világ különböző pontjain futó naplók terabájtját dolgozza fel, ami a naplók betöltési [késését](../logs/data-ingestion-time.md)okozhatja.
 
 A naplók félig strukturált adatok, és eredendően látensek, mint a metrikák. Ha több mint 4 perces késleltetést tapasztal a kilőtt riasztásokban, érdemes [metrikus riasztásokat](alerts-metric-overview.md)használni. Adatokat küldhet a metrikai tárolóba a naplók [metrikai riasztásai](alerts-metric-logs.md)használatával.
 
@@ -60,7 +60,7 @@ Előfordulhat, hogy a [Azure monitor konfigurált naplózási riasztási szabál
 
 ### <a name="alert-triggered-by-partial-data"></a>A riasztások részlegesen aktiválva
 
-Azure Monitor az ügyfelek által a világ különböző pontjain futó naplók terabájtját dolgozza fel, ami a naplók betöltési [késését](../platform/data-ingestion-time.md)okozhatja.
+Azure Monitor az ügyfelek által a világ különböző pontjain futó naplók terabájtját dolgozza fel, ami a naplók betöltési [késését](../logs/data-ingestion-time.md)okozhatja.
 
 A naplók félig strukturált adatok, és eredendően látensek, mint a metrikák. Ha sok problémát tapasztal a kilőtt riasztásokban, érdemes lehet [metrikus riasztásokat](alerts-metric-overview.md)használni. Adatokat küldhet a metrikai tárolóba a naplók [metrikai riasztásai](alerts-metric-logs.md)használatával.
 
@@ -87,7 +87,7 @@ SecurityEvent
 
 Nem kell riasztási logikát felvennie a lekérdezésbe, és ennek következtében problémákhoz is vezethet. A fenti példában, ha belefoglalja a `count` lekérdezésbe, az mindig az 1 értéket fogja eredményezni, mivel a riasztási szolgáltatás végrehajtja a szolgáltatást `count` `count` .
 
-Az optimalizált lekérdezés a napló riasztási szolgáltatásának futtatása. A módosított lekérdezést Log Analytics [portálon](../log-query/log-query-overview.md) vagy [API](/rest/api/loganalytics/)-ban is futtathatja.
+Az optimalizált lekérdezés a napló riasztási szolgáltatásának futtatása. A módosított lekérdezést Log Analytics [portálon](../logs/log-query-overview.md) vagy [API](/rest/api/loganalytics/)-ban is futtathatja.
 
 A munkaterületek és a Application Insights esetében a rendszer **lekérdezést hoz végre** a feltétel ablaktáblán. Az összes többi erőforrástípus területen válassza a **végleges riasztási lekérdezés** megjelenítése lehetőséget a feltétel lapon.
 
@@ -108,7 +108,7 @@ A Azure Monitor egy hét után letiltja a napló riasztását, ha a szolgáltat�
 A naplózási riasztási szabály létrehozásakor a rendszer ellenőrzi a lekérdezést a helyes szintaxishoz. Előfordulhat azonban, hogy a naplózási riasztási szabályban megadott lekérdezés nem tud elindulni. Néhány gyakori ok:
 
 - A szabályok az API-n keresztül lettek létrehozva, és a felhasználó kihagyta az érvényesítést.
-- A lekérdezés [több erőforráson fut](../log-query/cross-workspace-query.md) , és egy vagy több erőforrást törölték vagy áthelyezték.
+- A lekérdezés [több erőforráson fut](../logs/cross-workspace-query.md) , és egy vagy több erőforrást törölték vagy áthelyezték.
 - A [lekérdezés meghiúsul](https://dev.loganalytics.io/documentation/Using-the-API/Errors) , mert:
     - A naplózási megoldás nem lett [központilag telepítve a munkaterületre](../insights/solutions.md#install-a-monitoring-solution), ezért a táblák nem jönnek létre.
     - Az adat több mint 30 napig a lekérdezésben lévő táblára áramlik.
@@ -219,5 +219,5 @@ Ha a lekérdezés hét napig meghiúsul, akkor Azure Monitor letiltja a napló r
 ## <a name="next-steps"></a>Következő lépések
 
 - További információ a [log-riasztásokról az Azure-ban](./alerts-unified-log.md).
-- További információ a [naplózási riasztások konfigurálásáról](../log-query/log-query-overview.md).
-- További információ a [naplók lekérdezéséről](../log-query/log-query-overview.md).
+- További információ a [naplózási riasztások konfigurálásáról](../logs/log-query-overview.md).
+- További információ a [naplók lekérdezéséről](../logs/log-query-overview.md).

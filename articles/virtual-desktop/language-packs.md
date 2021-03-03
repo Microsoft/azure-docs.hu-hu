@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/03/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 780324d1a6f7d9edfb552377c3e966e6a186c231
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: dfedec85208ef9afaa58db2b200dc9f9988a845b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347931"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709240"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Nyelvi csomagok hozzáadása Windows 10 több munkamenetes rendszerképhez
 
@@ -53,6 +53,7 @@ Több nyelv hozzáadásához a következő dolgokra van szükség a Windows 10-e
           - [Windows 10, 2004 verzió vagy 20H2 **9C** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_32_64_ARM64_MultiLng_LngPkAll_LIP_9C_LXP_ONLY)
           - [Windows 10, 2004 verzió vagy 20H2 **10C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2010C.iso)
           - [Windows 10, 2004 verzió vagy 20H2 **11C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2011C.iso)
+          - [Windows 10, 2004-es verzió vagy 20H2 **1c** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2101C.iso)
 
 - Egy Azure Files megosztás vagy fájlmegosztás egy Windows fájlkiszolgáló virtuális gépen
 
@@ -168,9 +169,6 @@ $LanguageList = Get-WinUserLanguageList
 $LanguageList.Add("zh-cn")
 Set-WinUserLanguageList $LanguageList -force
 ```
-
->[!IMPORTANT]
->A Windows 10 Enterprise 1903-es és 1909-es verziója nem igényli a `Microsoft-Windows-Client-Language-Pack_x64_<language-code>.cab` csomagfájl használatát.
 
 A parancsfájl eltarthat egy ideig a telepítendő nyelvek számától függően.
 

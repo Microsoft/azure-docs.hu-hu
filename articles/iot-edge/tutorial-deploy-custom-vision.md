@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 564f19a1be5b3ce8a5267a07bd4f1f6de80fecf1
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 8e64233ce1d59512e38ce6c366eba889392c4623
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621280"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736491"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Oktatóanyag: Képosztályozás végrehajtása a peremhálózaton a Custom Vision Service használatával
 
@@ -40,7 +40,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 ## <a name="prerequisites"></a>Előfeltételek
 
 >[!TIP]
->Ez az oktatóanyag a Custom Vision egyszerűsített változata, amely [egy málna PI 3](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi) minta projektben Azure IoT Edge. Ez az oktatóanyag úgy lett kialakítva, hogy egy felhőalapú virtuális gépen fusson, és statikus képeket használ a képosztályozó betanítására és tesztelésére, ami akkor hasznos, ha valaki kiértékeli a Custom Vision IoT Edge. A minta projekt fizikai hardvert használ, és beállítja az élő kamera-hírcsatornát a képosztályozó betanítására és tesztelésére, ami olyan személy számára hasznos, aki részletesebb, valós helyzetet szeretne kipróbálni.
+>Ez az oktatóanyag a Custom Vision egyszerűsített változata, amely [egy málna PI 3](https://github.com/Azure-Samples/custom-vision-service-iot-edge-raspberry-pi) minta projektben Azure IoT Edge. Ez az oktatóanyag úgy lett kialakítva, hogy egy felhőalapú virtuális gépen fusson, és statikus képeket használ a képosztályozó betanítására és tesztelésére, ami akkor hasznos, ha valaki kiértékeli a Custom Vision IoT Edge. A minta projekt fizikai hardvert használ, és beállítja az élő kamera-hírcsatornát a képosztályozó betanítására és tesztelésére, ami olyan személy számára hasznos, aki részletesebb, valós helyzetet szeretne kipróbálni.
 
 Az oktatóanyag megkezdése előtt el kellett volna végeznie az előző oktatóanyagot, amellyel beállíthatja a környezetét a Linux-tárolók fejlesztéséhez: [IoT Edge modulok létrehozása Linux-eszközökhöz](tutorial-develop-for-linux.md). Az oktatóanyag elvégzésével a következő előfeltételek szükségesek:
 
@@ -77,7 +77,7 @@ A képosztályozó létrehozása és betanítása után exportálhatja azt Docke
    | Név | Adja meg a projekt nevét, például az **EdgeTreeClassifier** nevet. |
    | Leírás | Választható projektleírás. |
    | Erőforrás | Válasszon ki egy Custom Vision Service erőforrást tartalmazó Azure-erőforráscsoportot, vagy **hozzon létre újat** , ha még nem adott hozzá egyet. |
-   | Project Types (Projekttípusok) | **Osztályozás** |
+   | Project Types (Projekttípusok) | **Besorolás** |
    | Classification Types (Osztályozási típusok) | **Többosztályos (egyetlen címke/rendszerkép)** |
    | Tartományok | **General (compact)** (Általános (kompakt)) |
    | Exportálási képességek | **Alapszintű platformok (Tensorflow, CoreML, ONNX,...)** |
@@ -142,7 +142,7 @@ Most már rendelkezik a képosztályozó tárolóverziójához szükséges fájl
 
 Egy megoldás logikus módját jelenti több modul fejlesztésének és megszervezésének egyetlen IoT Edge üzemelő példány számára. Egy megoldás tartalmazza egy vagy több modul kódját, valamint az üzembehelyezési jegyzéket, amely deklarálja, hogyan kell a modulokat konfigurálni egy IoT Edge-eszközön. 
 
-1. A Visual Studio Code-ban **View** kattintson  >  a **parancs paletta** megtekintése elemre a vs Code parancs paletta megnyitásához. 
+1. A Visual Studio Code-ban kattintson  >  a **parancs paletta** megtekintése elemre a vs Code parancs paletta megnyitásához. 
 
 1. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** parancsot. A parancskatalógusban adja meg az alábbi információkat a megoldás létrehozásához: 
 
@@ -382,7 +382,7 @@ Amikor a rendszerképek a beállításjegyzékben vannak, üzembe helyezheti a m
 
 Először hozza létre, és küldje le a megoldást a tárolóregisztrációs adatbázisba.
 
-1. Nyissa meg a vs Code integrált terminált a terminál **megtekintése** lehetőség kiválasztásával  >  **Terminal**.
+1. Nyissa meg a vs Code integrált terminált a terminál **megtekintése** lehetőség kiválasztásával  >  .
 
 2. Jelentkezzen be a Docker-be a következő parancs beírásával a terminálon. Jelentkezzen be a felhasználónévvel, a jelszóval és a bejelentkezési kiszolgálóval az Azure Container registryből. Ezeket az értékeket a beállításjegyzék **hozzáférési kulcsok** részéből kérheti le a Azure Portal.
 
@@ -447,7 +447,7 @@ Ellenkező esetben törölheti a cikkben használt helyi konfigurációkat és a
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban betanított egy Custom Vision-modellt, és modulként üzembe helyezte azt egy IoT Edge-eszközön. Ezután létrehozott egy modult, amely le tudja kérdezni a képosztályozási szolgáltatást, és visszajelzést tud küldeni az eredményekről az IoT Hubnak.
 

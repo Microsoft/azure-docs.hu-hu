@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: e8d00055d9a4d7355ccd8a33c8a9b811b852f5c8
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 45ba08193d4907126bd51412805f04b7aec4fce0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955280"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686393"
 ---
 # <a name="create-azure-arc-data-controller-using-kubernetes-tools"></a>Azure arc-adatkezelő létrehozása a Kubernetes-eszközökkel
 
@@ -175,16 +175,27 @@ Szükség szerint szerkessze a következőket:
 **AJÁNLOTT ÁTTEKINTENI ÉS MÓDOSÍTANI AZ ALAPÉRTELMEZETT ÉRTÉKEKET**
 - **tárterület.. Osztálynév**: az adatkezelő és a naplófájlok számára használandó tárolási osztály.  Ha nem biztos abban, hogy a rendelkezésre álló tárolási osztályok a Kubernetes-fürtben találhatók, futtassa a következő parancsot: `kubectl get storageclass` .  Az alapértelmezett érték azt `default` feltételezi, hogy a tárolási osztály létezik, és a neve `default` nem az alapértelmezett tárolási osztály.   Megjegyzés: két osztálynév-beállítást kell beállítani a kívánt tárolási osztályra – egyet az adathalmazra, egyet pedig a naplókhoz.
 - **ServiceType**: módosítsa a szolgáltatás típusát arra az értékre, `NodePort` Ha nem használ terheléselosztó.  Megjegyzés: két serviceType-beállítást kell módosítani.
+- Az Azure Red Hat OpenShift vagy a Red Hat OpenShift Container platformon az adatkezelő létrehozása előtt a biztonsági környezeti korlátozást kell alkalmaznia. Kövesse a [biztonsági környezeti korlátozás alkalmazása az Azure arc-kompatibilis adatszolgáltatásokra a OpenShift-on](how-to-apply-security-context-constraint.md)című témakör utasításait.
+- **Biztonság** Az Azure Red Hat OpenShift vagy a Red Hat OpenShift Container platform esetében cserélje le a `security:` beállításokat a következő értékekre az adatvezérlő YAML fájljában. 
+
+```yml
+  security:
+    allowDumps: true
+    allowNodeMetricsCollection: false
+    allowPodMetricsCollection: false
+    allowRunAsRoot: false
+```
 
 **VÁLASZTHATÓ**
 - **Name (név**): az adatvezérlő alapértelmezett neve `arc` , de szükség esetén módosíthatja.
 - **DisplayName**: ezt a tulajdonságot a fájl tetején található name attribútummal megegyező értékre kell beállítani.
 - **beállításjegyzék**: a Microsoft Container Registry az alapértelmezett.  Ha a képeket a Microsoft Container Registryból húzza át, és [egy privát tároló-beállításjegyzékbe szeretné őket](offline-deployment.md)leküldeni, itt adja meg a beállításjegyzék IP-címét vagy DNS-nevét.
 - **dockerRegistry**: a kép lekérési titka, hogy szükség esetén lekérje a képeket egy privát tároló-beállításjegyzékből.
-- **adattár**: a Microsoft Container Registry alapértelmezett tárháza `arcdata` .  Ha privát tároló-beállításjegyzéket használ, adja meg az Azure ARR-kompatibilis adatszolgáltatások tárolójának rendszerképeit tartalmazó mappa/tárház elérési útját.
+- **adattár**: a Microsoft Container Registry alapértelmezett tárháza `arcdata` .  Ha privát tároló-beállításjegyzéket használ, adja meg az Azure arc-kompatibilis adatszolgáltatások tárolójának rendszerképeit tartalmazó mappa/tárház elérési útját.
 - **imageTag**: a sablon aktuális legfrissebb címkéje alapértelmezés szerint a sablonban van, de ha régebbi verziót szeretne használni, akkor módosíthatja azt.
 
-Példa egy befejezett adatkezelő YAML-fájlra:
+A következő példa egy befejezett adatkezelő YAML-fájlt mutat be. Frissítse a környezet példáját a követelmények és a fenti információk alapján.
+
 ```yaml
 apiVersion: arcdata.microsoft.com/v1alpha1
 kind: datacontroller
@@ -194,7 +205,7 @@ metadata:
 spec:
   credentials:
     controllerAdmin: controller-login-secret
-    #dockerRegistry: mssql-private-registry - optional if you are using a private container registry that requires authentication using an image pull secret
+    #dockerRegistry: arc-private-registry - optional if you are using a private container registry that requires authentication using an image pull secret
     serviceAccount: sa-mssql-controller
   docker:
     imagePullPolicy: Always
@@ -278,7 +289,7 @@ Lásd: az **SQL felügyelt példányának üzembe helyezése** az Azure arc-komp
 
 Ha bármilyen problémába ütközik a létrehozással kapcsolatban, tekintse meg a [hibaelhárítási útmutatót](troubleshoot-guide.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [SQL felügyelt példány létrehozása a Kubernetes-natív eszközök használatával](./create-sql-managed-instance-using-kubernetes-native-tools.md)
 - [PostgreSQL nagy kapacitású-kiszolgálócsoport létrehozása a Kubernetes natív eszközeivel](./create-postgresql-hyperscale-server-group-kubernetes-native-tools.md)

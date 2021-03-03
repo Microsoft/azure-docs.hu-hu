@@ -4,19 +4,19 @@ description: Ismerje meg, hogyan hozhat létre egy hagyományos metrikai riaszt�
 author: rboucher
 ms.author: robb
 ms.topic: conceptual
-ms.date: 03/09/2020
+ms.date: 02/14/2021
 ms.subservice: alerts
-ms.openlocfilehash: 418dde8311c2555f8df5929dd96ce72611422ee9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0923be317d497e471724b7611fe6b831a4be6f37
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100618135"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718046"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Klasszikus metrikariasztás létrehozása Resource Manager-sablonnal
 
 > [!WARNING]
-> Ez a cikk bemutatja, hogyan hozhat létre régebbi klasszikus metrikai riasztásokat. Azure Monitor mostantól támogatja [az újabb, közel valós idejű metrikai riasztásokat és új riasztási élményt](../platform/alerts-overview.md). A klasszikus riasztások [kimaradnak a nyilvános](../platform/monitoring-classic-retirement.md) Felhőbeli felhasználók számára, bár az új riasztásokat még nem támogató erőforrások esetében is korlátozott mértékben használják.
+> Ez a cikk bemutatja, hogyan hozhat létre régebbi klasszikus metrikai riasztásokat. Azure Monitor mostantól támogatja [az újabb, közel valós idejű metrikai riasztásokat és új riasztási élményt](./alerts-overview.md). A klasszikus riasztások [kimaradnak](./monitoring-classic-retirement.md) a nyilvános Felhőbeli felhasználók számára, bár a használat továbbra is korlátozott a **2021**-ig. A Azure Government Cloud és az Azure China 21Vianet klasszikus riasztásai a **2024. február 29**-én törlődnek.
 >
 
 Ez a cikk bemutatja, hogyan konfigurálhat egy [Azure Resource Manager sablont](../../azure-resource-manager/templates/template-syntax.md) a klasszikus Azure metrikus riasztások konfigurálásához. Ez lehetővé teszi a riasztások automatikus beállítását az erőforrásokon a létrehozásuk során, így biztosítva, hogy az összes erőforrás megfelelően legyen figyelve.
@@ -399,6 +399,6 @@ A Resource Manager-sablonokon a riasztások leggyakrabban akkor hasznosak, ha eg
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-* [További információ a riasztásokról](../platform/alerts-overview.md)
-* [Diagnosztikai beállítások hozzáadása](../samples/resource-manager-diagnostic-settings.md) a Resource Manager-sablonhoz
+* [További információ a riasztásokról](./alerts-overview.md)
+* [Diagnosztikai beállítások hozzáadása](../essentials/resource-manager-diagnostic-settings.md) a Resource Manager-sablonhoz
 * A JSON szintaxis és tulajdonságok esetében lásd: [Microsoft. alertrules/](/azure/templates/microsoft.insights/alertrules) a sablon referenciája.

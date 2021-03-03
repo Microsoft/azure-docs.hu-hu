@@ -1,19 +1,19 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: multiple
-author: sharad4u
+author: duongau
 ms.service: multiple
 ms.topic: include
 ms.date: 10/30/2020
-ms.author: sharadag
+ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: eb3cc6a37e9116b2a28b72fc7a3779aafb2a1e21
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1196ec0c3e92df6c359461ea7d1d53c8aea0bd88
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96027921"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750082"
 ---
 A saját tanúsítvány létrehozásakor a következő hitelesítésszolgáltatók engedélyezettek:
 
@@ -54,6 +54,7 @@ A saját tanúsítvány létrehozásakor a következő hitelesítésszolgáltat�
 - GlobalSign legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ
 - Go Daddy – legfelső szintű hitelesítésszolgáltató – G2
 - Go Daddy – biztonságos hitelesítésszolgáltató – G2
+- Hongkong post legfelső szintű CA 1
 - Let 's encrypting Authority X3
 - MS e-szigno legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ 2009
 - QuoVadis gyökérszintű CA2 G3
@@ -61,6 +62,7 @@ A saját tanúsítvány létrehozásakor a következő hitelesítésszolgáltat�
 - Biztonsági kommunikáció RootCA1
 - Biztonsági kommunikáció RootCA2
 - Biztonsági kommunikáció RootCA3
+- Staat der Nederlanden EV legfelső szintű HITELESÍTÉSSZOLGÁLTATÓja
 - Symantec Class 3 EV SSL-CA – G3
 - Symantec 3. osztály – biztonságos kiszolgálói HITELESÍTÉSSZOLGÁLTATÓ – G4
 - Symantec Enterprise Mobile root a Microsoft számára

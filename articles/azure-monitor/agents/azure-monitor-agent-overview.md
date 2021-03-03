@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: 5c4cfe47fce07a09eeb48e2da76d3b10c1d204af
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e4837de70e9f00308b440933e0cd433ad5b27cf9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100613485"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711535"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure Monitor-ügynök áttekintése (előzetes verzió)
 A Azure Monitor ügynök (AMA) figyeli a virtuális gépek vendég operációs rendszerének figyelési adatait, és a Azure Monitor számára biztosítja azt. Ez a cikk áttekintést nyújt a Azure Monitor-ügynökről, beleértve a telepítésének módját és az adatgyűjtés konfigurálását.
@@ -19,9 +19,9 @@ A Azure Monitor ügynök (AMA) figyeli a virtuális gépek vendég operációs r
 ## <a name="relationship-to-other-agents"></a>Kapcsolat más ügynökökkel
 A Azure Monitor ügynök a következő, jelenleg a Azure Monitor által használt ügynököket váltja fel, hogy a vendég adatait a virtuális gépekről gyűjtsön:
 
-- [Log Analytics ügynök](../platform/log-analytics-agent.md) – adatokat küld log Analytics munkaterületre, és támogatja Azure monitor for VMS és figyelési megoldásokat.
-- [Diagnosztikai bővítmény](../platform/diagnostics-extension-overview.md) – adatokat küld Azure monitor metrikák (csak Windows), az Azure Event Hubs és az Azure Storage szolgáltatásba.
-- A [Grafi ügynök](../platform/collect-custom-metrics-linux-telegraf.md) – adatokat küld Azure monitor metrikáknak (csak Linux).
+- [Log Analytics ügynök](./log-analytics-agent.md) – adatokat küld log Analytics munkaterületre, és támogatja a virtuális gépek elemzését és figyelési megoldásait.
+- [Diagnosztikai bővítmény](./diagnostics-extension-overview.md) – adatokat küld Azure monitor metrikák (csak Windows), az Azure Event Hubs és az Azure Storage szolgáltatásba.
+- A [Grafi ügynök](../essentials/collect-custom-metrics-linux-telegraf.md) – adatokat küld Azure monitor metrikáknak (csak Linux).
 
 A funkció egyetlen ügynökbe való konszolidálásán kívül a Azure Monitor ügynök a következő előnyöket biztosítja a meglévő ügynököknél:
 
@@ -52,7 +52,7 @@ Azure Monitor ügynök párhuzamosan [használható a Azure monitor általánosa
 ## <a name="current-limitations"></a>Aktuális korlátozások
 A Azure Monitor ügynök nyilvános előzetes verziója a következő korlátozásokat alkalmazza:
 
-- A Azure Monitor ügynök nem támogatja a megoldásokat és az adatAzure Monitor for VMsokat, például a és a Azure Security Center. Az egyetlen jelenleg támogatott forgatókönyv az adatok gyűjtése a konfigurált adatgyűjtési szabályok használatával. 
+- A Azure Monitor ügynök nem támogatja a megoldásokat és az adatellenőrzéseket, például a virtuális gépeket és a Azure Security Center. Az egyetlen jelenleg támogatott forgatókönyv az adatok gyűjtése a konfigurált adatgyűjtési szabályok használatával. 
 - Az adatgyűjtési szabályokat ugyanabban a régióban kell létrehozni, mint a célhelyként használt Log Analytics munkaterület.
 - Az Azure Virtual Machines, a virtuálisgép-méretezési csoportok és az Azure arc-kompatibilis kiszolgálók jelenleg támogatottak. Az Azure Kubernetes szolgáltatás és más számítási erőforrástípusok jelenleg nem támogatottak.
 - A virtuális gépnek hozzá kell férnie a következő HTTPS-végpontokhoz:
@@ -64,7 +64,7 @@ A Azure Monitor ügynök nyilvános előzetes verziója a következő korlátoz�
 ## <a name="coexistence-with-other-agents"></a>Együttélés más ügynökökkel
 A Azure Monitor ügynök együtt létezhet a meglévő ügynökökkel, így az értékelés vagy az áttelepítés során továbbra is használhatja meglévő funkcióit. Ez különösen fontos a meglévő megoldások támogatásának nyilvános előzetes verziójában. Ügyeljen arra, hogy a duplikált adatok összegyűjtése óta ez a lekérdezési eredmények eldöntése, valamint az adatfeldolgozás és-megőrzés további díját eredményezheti.
 
-A Azure Monitor for VMs például a Log Analytics ügynök használatával küld teljesítményadatokat egy Log Analytics munkaterületre. A munkaterületet úgy is beállíthatja, hogy a Windows-eseményeket és a syslog-eseményeket összegyűjtse az ügynököktől. Ha telepíti a Azure Monitor-ügynököt, és létrehoz egy adatgyűjtési szabályt ugyanezen események és teljesítményadatok esetében, a rendszer duplikált adatértéket eredményez.
+A VM-elemzések például a Log Analytics ügynök használatával küldenek teljesítményadatokat egy Log Analytics munkaterületre. A munkaterületet úgy is beállíthatja, hogy a Windows-eseményeket és a syslog-eseményeket összegyűjtse az ügynököktől. Ha telepíti a Azure Monitor-ügynököt, és létrehoz egy adatgyűjtési szabályt ugyanezen események és teljesítményadatok esetében, a rendszer duplikált adatértéket eredményez.
 
 
 ## <a name="costs"></a>Költségek
@@ -76,7 +76,7 @@ A következő táblázat felsorolja, hogy milyen típusú adatok gyűjthetők ö
 
 A Azure Monitor ügynök adatokat küld Azure Monitor metrikák vagy egy Log Analytics munkaterületre, amely támogatja Azure Monitor naplókat.
 
-| Adatforrás | Célhelyek | Description |
+| Adatforrás | Célhelyek | Leírás |
 |:---|:---|:---|
 | Teljesítmény        | Azure Monitor-metrikák<br>Log Analytics-munkaterület | Az operációs rendszer és a számítási feladatok különböző szempontjainak teljesítményét mérő numerikus értékek. |
 | Windows-eseménynaplók | Log Analytics-munkaterület | A Windows eseménynaplózási rendszernek eljuttatott információk. |

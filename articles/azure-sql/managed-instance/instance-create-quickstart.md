@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein
 ms.date: 1/29/2021
-ms.openlocfilehash: 95b721f12e4818a77f18d01c99a5c6d60b881169
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: d356cad1b4754875574e19be732fdf6481c61e22
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99089703"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691212"
 ---
 # <a name="quickstart-create-an-azure-sql-managed-instance"></a>Rövid útmutató: Azure SQL felügyelt példány létrehozása
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -113,7 +113,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ### <a name="tags"></a>Címkék
 
-- Címkék hozzáadása az erőforrásokhoz a Azure Resource Manager-sablonban (ARM-sablon). A [címkék](/azure/azure-resource-manager/management/tag-resources) segítségével logikailag rendszerezheti az erőforrásokat. A címke értékei a Cost-jelentésekben jelennek meg, és más felügyeleti tevékenységek számára is lehetővé teszik a címkézést. 
+- Címkék hozzáadása az erőforrásokhoz a Azure Resource Manager-sablonban (ARM-sablon). A [címkék](../../azure-resource-manager/management/tag-resources.md) segítségével logikailag rendszerezheti az erőforrásokat. A címke értékei a Cost-jelentésekben jelennek meg, és más felügyeleti tevékenységek számára is lehetővé teszik a címkézést. 
 
 - Ügyeljen arra, hogy az új SQL felügyelt példányt a tulajdonos címkével lássa el, és azonosítsa, hogy ki hozta létre, és a környezeti címkével azonosítsa, hogy ez a rendszer éles, fejlesztési stb. További információ: [Az Azure-erőforrások elnevezési és címkézési stratégiájának fejlesztése](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
  

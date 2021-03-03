@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/03/2020
-ms.openlocfilehash: abad5a0146f98993cd02425b33466c447f9d97ca
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 50bfed0ee4346955a9e478e7567f00610d8184f1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100613512"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708662"
 ---
 # <a name="install-log-analytics-agent-on-windows-computers"></a>Log Analytics-ügynök telepítése Windows rendszerű számítógépeken
 Ez a cikk a Log Analytics ügynök Windows rendszerű számítógépekre történő telepítésének részleteit ismerteti a következő módszerekkel:
@@ -20,7 +20,7 @@ Ez a cikk a Log Analytics ügynök Windows rendszerű számítógépekre törté
 * [Azure Automation kívánt állapot-konfiguráció (DSC)](#install-agent-using-dsc-in-azure-automation). 
 
 >[!IMPORTANT]
-> A cikkben ismertetett telepítési módszerek általában a helyszíni vagy más felhőkben található virtuális gépekhez használatosak. Az Azure Virtual Machines szolgáltatáshoz használható hatékonyabb beállításokért lásd a [telepítési beállításokat](../platform/log-analytics-agent.md#installation-options) .
+> A cikkben ismertetett telepítési módszerek általában a helyszíni vagy más felhőkben található virtuális gépekhez használatosak. Az Azure Virtual Machines szolgáltatáshoz használható hatékonyabb beállításokért lásd a [telepítési beállításokat](./log-analytics-agent.md#installation-options) .
 
 > [!NOTE]
 > Ha úgy kell beállítania az ügynököt, hogy egynél több munkaterületre jelentsen, ez a kezdeti beállítás során nem hajtható végre, csak ezt követően, ha a Vezérlőpult vagy a PowerShell beállításait a [munkaterület hozzáadása vagy eltávolítása](agent-manage.md#adding-or-removing-a-workspace)című témakörben leírtak szerint frissíti.  
@@ -42,12 +42,12 @@ A Windows-ügynök a 2020-as augusztus 17-én kizárólag az SHA-2 aláírást f
 4. Javasoljuk, hogy az ügynököt a [TLS 1,2 használatára](agent-windows.md#configure-agent-to-use-tls-12)konfigurálja. 
 
 ## <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
-Lásd: [log Analytics ügynök áttekintése](../platform/log-analytics-agent.md#network-requirements) a Windows-ügynök hálózati követelményeiről.
+Lásd: [log Analytics ügynök áttekintése](./log-analytics-agent.md#network-requirements) a Windows-ügynök hálózati követelményeiről.
 
 
    
 ## <a name="configure-agent-to-use-tls-12"></a>Az ügynök konfigurálása a TLS 1,2 használatára
-A [TLS 1,2](/windows-server/security/tls/tls-registry-settings#tls-12) protokoll biztosítja a Windows-ügynök és a log Analytics szolgáltatás közötti kommunikációhoz szükséges adatforgalom biztonságát. Ha alapértelmezés szerint a [tls 1,2 nélküli operációs rendszerre](../platform/data-security.md#sending-data-securely-using-tls-12)telepíti a szolgáltatást, akkor az alábbi lépésekkel kell konfigurálnia a TLS 1,2-es verzióit.
+A [TLS 1,2](/windows-server/security/tls/tls-registry-settings#tls-12) protokoll biztosítja a Windows-ügynök és a log Analytics szolgáltatás közötti kommunikációhoz szükséges adatforgalom biztonságát. Ha alapértelmezés szerint a [tls 1,2 nélküli operációs rendszerre](../logs/data-security.md#sending-data-securely-using-tls-12)telepíti a szolgáltatást, akkor az alábbi lépésekkel kell konfigurálnia a TLS 1,2-es verzióit.
 
 1. Keresse meg a következő beállításkulcsot: **HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
 2. Hozzon létre egy alkulcsot a **protokollok** alatt a TLS 1,2 **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1,2**

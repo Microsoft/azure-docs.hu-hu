@@ -2,14 +2,14 @@
 title: Fiók létrehozása a Azure Portalban
 description: Megtudhatja, hogyan hozhat létre Azure Batch-fiókot az Azure Portalon nagyméretű párhuzamos számítási feladatok futtatásához a felhőben
 ms.topic: how-to
-ms.date: 01/26/2021
+ms.date: 02/23/2021
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bd9dd9b6d6d3a8d6938427b83528746ae5d09318
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 36759a0caef41af9307bf621a1b6b634ddf586cc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368506"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703664"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Batch-fiók létrehozása az Azure Portalon
 
@@ -101,7 +101,7 @@ Felhasználói előfizetési módban szükség van egy [Azure Key Vaultra](../ke
 
 Ha a Batch-fiókot felhasználói előfizetési módban hozza létre, adja meg a **felhasználói előfizetést** a készlet kiosztási módjaként, jelölje ki a létrehozott Key Vault, és jelölje be a jelölőnégyzetet, és adja meg Azure batch hozzáférést a Key Vaulthoz.
 
-Ha inkább a Key Vault elérését szeretné manuálisan megadni, lépjen a Key Vault **hozzáférési házirendek** szakaszára, és válassza a **hozzáférési házirend hozzáadása** lehetőséget. Válassza ki a **rendszerbiztonsági tag kiválasztása** és a **Microsoft Azure batch** keresése (alkalmazás-azonosító **ddbf3205-c6bd-46ae-8127-60eb93363864**) melletti hivatkozást. Válassza ki a résztvevőt, majd a legördülő menüben konfigurálja a **titkos engedélyeket** . Azure Batch legalább a **Get**, a **List**, a **set** és a **delete** engedélyeket kell megadni.
+Ha inkább a Key Vault elérését szeretné manuálisan megadni, lépjen a Key Vault **hozzáférési házirendek** szakaszára, és válassza a **hozzáférési házirend hozzáadása** lehetőséget. Válassza ki a **rendszerbiztonsági tag kiválasztása** és a **Microsoft Azure batch** keresése (alkalmazás-azonosító **ddbf3205-c6bd-46ae-8127-60eb93363864**) melletti hivatkozást. Válassza ki a résztvevőt, majd a legördülő menüben konfigurálja a **titkos engedélyeket** . Azure Batch legalább a **Get**, a **List**, a **set** és a **delete** engedélyeket kell megadni. A **helyreállítható** [törlést engedélyező kulcstartók](../key-vault/general/soft-delete-overview.md)esetében Azure Batch a helyreállítási engedélyt is meg kell adni.
 
 :::image type="content" source="media/batch-account-create-portal/secret-permissions.png" alt-text="Képernyőkép a Azure Batch Secret engedélyek kiválasztásáról":::
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: fdd3886dda794ff9a91e2c2be6a3d810086d0ed2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9d93e3ec08ff16a1fcca0c914b9e817d4ca89d60
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100615798"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707948"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>Azure Monitor a naplók összekötőjét Logic Apps és a teljesítmény automatizálásához
 A [Azure Logic apps](../../logic-apps/index.yml) és a [Power automatizálása](https://flow.microsoft.com) lehetővé teszi, hogy több száz műveletet használó automatizált munkafolyamatokat hozzon létre különböző szolgáltatásokhoz. A Azure Monitor naplók összekötővel olyan munkafolyamatokat hozhat létre, amelyek egy Log Analytics-munkaterületről vagy egy Application Insights alkalmazásból kérik le az adatok lekérését Azure Monitor. Ez a cikk az összekötőhöz tartozó műveleteket ismerteti, és útmutatást nyújt a munkafolyamatok ezen az adatain keresztül történő létrehozásához.
@@ -125,6 +125,6 @@ Ha a logikai alkalmazás befejeződik, tekintse meg a megadott címzett e-mail-c
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a [Azure monitor lévő naplók lekérdezéséről](../log-query/log-query-overview.md).
+- További információ a [Azure monitor lévő naplók lekérdezéséről](./log-query-overview.md).
 - További információ a [Logic apps](../../logic-apps/index.yml)
 - További információ az [energiagazdálkodás automatizálásáról](https://flow.microsoft.com).

@@ -3,12 +3,12 @@ title: Hozzáférés a hálózatra korlátozott beállításjegyzékhez a megbí
 description: Megbízható Azure-szolgáltatási példány engedélyezése a hálózatra korlátozott tárolók beállításjegyzékének biztonságos eléréséhez a képek lekéréséhez vagy leküldéséhez
 ms.topic: article
 ms.date: 01/29/2021
-ms.openlocfilehash: 2e6b6ee3736f98f53ebb0aa43d707d42ba4cc058
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 3cc32630ea689891e7ba75163c33bc499a38becd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527669"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716482"
 ---
 # <a name="allow-trusted-services-to-securely-access-a-network-restricted-container-registry-preview"></a>A megbízható szolgáltatások biztonságos elérésének engedélyezése a korlátozott hálózati tárolók beállításjegyzékében (előzetes verzió)
 
@@ -41,7 +41,6 @@ A következő szolgáltatások példányai hozzáférhetnek a hálózatra korlá
 |Megbízható szolgáltatás  |Támogatott használati forgatókönyvek  |
 |---------|---------|
 |ACR-feladatok     | [Hozzáférés egy másik beállításjegyzékhez egy ACR-feladatból](container-registry-tasks-cross-registry-authentication.md)       |
-|Machine Learning | Modell [üzembe helyezése](../machine-learning/how-to-deploy-custom-docker-image.md) vagy [betanítása](../machine-learning/how-to-train-with-custom-image.md) Machine learning munkaterületen egyéni Docker-tároló lemezképének használatával |
 |Azure Container Registry | [Lemezképek importálása egy másik Azure Container registryből](container-registry-import-images.md#import-from-an-azure-container-registry-in-the-same-ad-tenant) | 
 
 > [!NOTE]

@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 33aa553e688b595551c20e8b1432163152865537
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b20a5bd9c06c3948097389d5439defa219a7931b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101675017"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694988"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>Azure spot Virtual Machines a virtuálisgép-méretezési csoportokhoz 
 
@@ -68,13 +68,56 @@ Ez az új platform szintű szolgáltatás a mesterséges intelligenciával autom
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Próbálkozzon & visszaállítási előnyökkel:
-- Alapértelmezés szerint engedélyezve van, ha egy méretezési csoportba helyez üzembe egy Azure-beli helyszíni virtuális gépet.
 - Megkísérli visszaállítani a kapacitás miatt kizárt Azure spot Virtual Machines.
 - A visszaállított Azure spot Virtual Machines várhatóan hosszabb ideig fut, és a kapacitás kiváltása kisebb valószínűséggel történik.
 - Javítja az Azure-beli helyszíni virtuális gépek élettartamát, így a számítási feladatok hosszabb ideig futnak.
 - Segít Virtual Machine Scale Sets fenntartani az Azure spot Virtual Machines céljának darabszámát, hasonlóan ahhoz, hogy megőrizze az utólagos elszámolású virtuális gépekhez már meglévő Target Count funkciót.
 
 Próbálja meg & a visszaállítást az [autoskálázást](virtual-machine-scale-sets-autoscale-overview.md)használó méretezési csoportokban. A méretezési csoportba tartozó virtuális gépek számát az autoskálázási szabályok vezérlik.
+
+### <a name="register-for-try--restore"></a>Regisztrálás a Try & Restore
+
+A Try & Restore funkció használata előtt regisztrálnia kell az előfizetését az előzetes verzióra. A regisztráció elvégzése több percet is igénybe vehet. Az Azure CLI vagy a PowerShell használatával végezheti el a funkció regisztrációját.
+
+
+**A CLI használata**
+
+Az az [Feature Register](/cli/azure/feature#az-feature-register) paranccsal engedélyezheti az előfizetésének előnézetét. 
+
+```azurecli-interactive
+az feature register --namespace Microsoft.Compute --name SpotTryRestore 
+```
+
+A szolgáltatás regisztrálása akár 15 percet is igénybe vehet. A regisztráció állapotának ellenõrzése: 
+
+```azurecli-interactive
+az feature show --namespace Microsoft.Compute --name SpotTryRestore 
+```
+
+Miután regisztrálta a szolgáltatást az előfizetéséhez, fejezze be a beléptetési folyamatot a számítási erőforrás-szolgáltatóra történő váltás propagálásával. 
+
+```azurecli-interactive
+az provider register --namespace Microsoft.Compute 
+```
+**A PowerShell használata** 
+
+Az előfizetés előnézetének engedélyezéséhez használja a [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) parancsmagot. 
+
+```azurepowershell-interactive
+Register-AzProviderFeature -FeatureName SpotTryRestore -ProviderNamespace Microsoft.Compute 
+```
+
+A szolgáltatás regisztrálása akár 15 percet is igénybe vehet. A regisztráció állapotának ellenõrzése: 
+
+```azurepowershell-interactive
+Get-AzProviderFeature -FeatureName SpotTryRestore -ProviderNamespace Microsoft.Compute 
+```
+
+Miután regisztrálta a szolgáltatást az előfizetéséhez, fejezze be a beléptetési folyamatot a számítási erőforrás-szolgáltatóra történő váltás propagálásával. 
+
+```azurepowershell-interactive
+Register-AzResourceProvider -ProviderNamespace Microsoft.Compute 
+```
 
 ## <a name="placement-groups"></a>Elhelyezési csoportok
 

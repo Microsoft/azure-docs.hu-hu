@@ -3,12 +3,12 @@ title: Azure Service Bus – üzenetkezelési egységek automatikus frissítése
 description: Ebből a cikkből megtudhatja, hogyan használhatja automatikusan a Service Bus-névtér üzenetkezelési egységeit.
 ms.topic: how-to
 ms.date: 09/15/2020
-ms.openlocfilehash: 932c7bb1235cb54aefe67253e38e1683187f4d2c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 594f9987bfa5a7a439fb862a0345d0004785b189
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581643"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720596"
 ---
 # <a name="automatically-update-messaging-units-of-an-azure-service-bus-namespace"></a>Azure Service Bus névtér üzenetkezelési egységeinek automatikus frissítése 
 Az automatikus méretezés lehetővé teszi, hogy az alkalmazás terhelésének kezeléséhez megfelelő mennyiségű erőforrást futtasson. Lehetővé teszi az erőforrások hozzáadását a terhelés növekedésének kezeléséhez, és pénzt takarít meg a tétlenül ülő erőforrások eltávolításával. További információ a Azure Monitor autoskálázási funkciójának [áttekintéséről: Microsoft Azure](../azure-monitor/autoscale/autoscale-overview.md) . 
@@ -57,7 +57,7 @@ Az üzenetkezelési egységek automatikus skálázását feltételek használat�
 Az alapértelmezett feltételhez nem állítható be az adott napokon vagy dátumtartományon lévő, az autoskálázásra vonatkozó ütemterv. Ezt a skálázási feltételt akkor hajtja végre a rendszer, ha a többi méretezési feltétel nem egyezik az ütemtervekkel. 
 
 ### <a name="scale-based-on-a-metric"></a>Skálázás mérőszám alapján
-Az alábbi eljárás bemutatja, hogyan adhat hozzá olyan feltételt, amely automatikusan növeli az üzenetkezelési egységeket (vertikális felskálázás), ha a CPU-használat meghaladja a 75%-ot, és csökkenti az üzenetkezelési egységeket (skálázás), ha a CPU-használat kevesebb, mint 25%. A növekmények 1 – 2, 2 és 4 közötti, valamint 4 – 8. Hasonlóképpen, a csökkentések 8 – 4, 4 – 2, és 2 – 1 értékre vannak elvégezve. 
+Az alábbi eljárás bemutatja, hogyan adhat hozzá olyan feltételt, amely automatikusan növeli az üzenetkezelési egységeket (vertikális felskálázás), ha a CPU-használat meghaladja a 75%-ot, és csökkenti az üzenetkezelési egységeket (skálázás), ha a CPU-használat kevesebb, mint 25%. A növekmények 1 – 2, 2 és 4 – 8, valamint 8 és 16 közötti értékre vannak elvégezve. Hasonlóképpen, a csökkentések 16 – 8, 8 – 4, 4 – 2, 2 és 1 között történik. 
 
 1. Az automatikus **skálázási beállítás** lapon válassza az **Egyéni automatikus méretezés** lehetőséget az **erőforrás-méretezési lehetőség kiválasztásával** . 
 1. Az oldal **alapértelmezett** szakaszában adja meg az alapértelmezett feltétel **nevét** . A szöveg szerkesztéséhez válassza a **ceruza** ikont. 
@@ -74,7 +74,7 @@ Az alábbi eljárás bemutatja, hogyan adhat hozzá olyan feltételt, amely auto
         :::image type="content" source="./media/automate-update-messaging-units/scale-rule-cpu-75.png" alt-text="Alapértelmezett – vertikális felskálázás, ha a CPU-használat meghaladja a 75%-ot":::       
 
         > [!NOTE]
-        > Az autoscale funkció növeli a névtér üzenetkezelési egységeit, ha a teljes CPU-használat 75% fölé esik ebben a példában. A növekmények 1 – 2, 2 és 4 közötti, valamint 4 – 8. 
+        > Az autoscale funkció növeli a névtér üzenetkezelési egységeit, ha a teljes CPU-használat 75% fölé esik ebben a példában. A növekmények 1 – 2, 2 és 4 – 8, valamint 8 és 16 közötti értékre vannak elvégezve. 
 1. Válassza a **+ szabály hozzáadása** lehetőséget, majd kövesse az alábbi lépéseket a **skálázási szabály** lapon:
     1. Válasszon mérőszámot a **metrika neve** legördülő listából. Ebben a példában ez a **CPU**. 
     1. Válasszon ki egy operátort és egy küszöbértéket. Ebben a példában a metrikus küszöbértéknél **kevesebb, mint** **25** a **skálázási művelet elindításához**. 
@@ -84,7 +84,7 @@ Az alábbi eljárás bemutatja, hogyan adhat hozzá olyan feltételt, amely auto
         :::image type="content" source="./media/automate-update-messaging-units/scale-rule-cpu-25.png" alt-text="Alapértelmezett – méretezés abban az esetben, ha a CPU-használat kevesebb, mint 25%":::       
 
         > [!NOTE]
-        > Az autoscale funkció csökkenti a névtér üzenetkezelési egységeit, ha a teljes CPU-használat a jelen példában 25% alá esik. Az csökkentések 8 és 4 közötti értékre, 4 – 2 és 2 – 1 értékre vannak elvégezve. 
+        > Az autoscale funkció csökkenti a névtér üzenetkezelési egységeit, ha a teljes CPU-használat a jelen példában 25% alá esik. A csökkentések 16 – 8, 8 – 4, 4 – 2 és 2 és 1 közötti értékre állnak. 
 1. Az üzenetkezelési egységek **minimális** és **maximális** és **alapértelmezett** számának beállítása.
 
     :::image type="content" source="./media/automate-update-messaging-units/default-scale-metric-based.png" alt-text="Alapértelmezett szabály metrika alapján":::

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/17/2021
+ms.date: 02/18/2021
 ms.author: memildin
-ms.openlocfilehash: 837ba5a0fd5ff94cc4f55cd4b01b8cb8a27425fd
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: e34d5520e13d45d15079a5f11775d2ef930fc62a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100634260"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727090"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -37,9 +37,10 @@ A februári frissítések a következők:
 
 - [Új biztonsági riasztások oldal a Azure Portal általánosan elérhetővé vált (GA)](#new-security-alerts-page-in-the-azure-portal-released-for-general-availability-ga)
 - [Az általánosan elérhető Kubernetes munkaterhelés-védelmi javaslatok (GA)](#kubernetes-workload-protection-recommendations-released-for-general-availability-ga)
+- [A Microsoft Defender for Endpoint Integration with Azure Defender mostantól támogatja a Windows Server 2019 és a Windows 10 Virtual Desktop (WVD) használatát (előzetes verzió)](#microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-in-preview)
 - [Közvetlen hivatkozás a szabályzatra a javaslat részletei oldalon](#direct-link-to-policy-from-recommendation-details-page)
 - [Az SQL-adatbesorolásra vonatkozó javaslat már nem érinti a biztonságos pontszámot](#sql-data-classification-recommendation-no-longer-affects-your-secure-score)
-- [A munkafolyamatok automatizálása a szabályozások megfelelőségi felmérése (előzetes verzió) változásai alapján indítható el](#workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview)
+- [A munkafolyamatok automatizálása a szabályozások megfelelőségi felmérésének változásai alapján indítható el (előzetes verzió)](#workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-in-preview)
 - [A tárgyieszköz-leltár oldal továbbfejlesztései](#asset-inventory-page-enhancements)
 
 
@@ -75,6 +76,17 @@ További információ a [munkaterhelések elleni védelemben – ajánlott eljá
 > Habár a javaslatok előzetes verzióban voltak, nem tudták nem megfelelő állapotba helyezni az AK-beli fürterőforrás-erőforrásokat, és nem szerepeltek a biztonságos pontszám számításában. Ebben a GA-közleményben ezek a pontszám kiszámításakor szerepelnek. Ha már nem szervizelte őket, ez a biztonsági pontszám enyhe kihatását okozhatja. Ha lehetséges, javítsa azokat a [Azure Security Centerban található javaslatok szervizelése](security-center-remediate-recommendations.md)című témakörben leírtak szerint.
 
 
+### <a name="microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-in-preview"></a>A Microsoft Defender for Endpoint Integration with Azure Defender mostantól támogatja a Windows Server 2019 és a Windows 10 Virtual Desktop (WVD) használatát (előzetes verzió)
+
+A Microsoft Defender for Endpoint egy holisztikus, felhőalapú végponti biztonsági megoldás. Kockázatalapú sebezhetőségi kezelést és értékelést, valamint végpontok észlelését és reagálását (EDR) biztosít. A Defender és a Azure Security Center együttes használatának előnyeiről a következő témakörben talál további információt [: a végpontok Security Center integrált EDR megoldással](security-center-wdatp.md)való ellátása, a Microsoft Defender for Endpoint.
+
+Ha engedélyezi az Azure Defender for Servers szolgáltatást a Windows Serveren, a rendszer a csomaghoz tartozó Defender-licencet is tartalmazza. Ha már engedélyezte az Azure Defender for Servers szolgáltatást, és rendelkezik az előfizetésében található Windows 2019-kiszolgálókkal, a rendszer automatikusan megkapja a Defendert a jelen frissítéssel rendelkező végpontnak. Nincs szükség manuális beavatkozásra. 
+
+A támogatás mostantól kibővült a Windows Server 2019 és a [Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md)szolgáltatással.
+
+> [!NOTE]
+> Ha Windows Server 2019 rendszerű gépen engedélyezi a Defender számára a végpontot, győződjön meg arról, hogy megfelel a [Microsoft Defender for Endpoint Integration engedélyezése](security-center-wdatp.md#enabling-the-microsoft-defender-for-endpoint-integration)című témakörben ismertetett előfeltételeknek.
+
 ### <a name="direct-link-to-policy-from-recommendation-details-page"></a>Közvetlen hivatkozás a szabályzatra a javaslat részletei oldalon
 
 A javaslatok részleteinek áttekintéséhez gyakran hasznos, ha látni szeretné a mögöttes szabályzatot. A szabályzat által támogatott minden javaslathoz van egy új hivatkozás a javaslat részletei lapról:
@@ -91,9 +103,12 @@ Ha áttekinti a javaslatok listáját a [biztonsági javaslatok hivatkozási út
 ### <a name="sql-data-classification-recommendation-no-longer-affects-your-secure-score"></a>Az SQL-adatbesorolásra vonatkozó javaslat már nem érinti a biztonságos pontszámot
 Az **SQL-adatbázisokban lévő bizalmas adatokra vonatkozó ajánlás besorolása** nem befolyásolja a biztonságos pontszámot. Ez az egyetlen javaslat az **adatbesorolás** biztonságának szabályozására, hogy a vezérlő most a 0 értékkel rendelkező biztonságos pontszám legyen.
 
+A Security Center összes biztonsági vezérlőjének teljes listáját, valamint azok pontszámait és a javaslatok listáját lásd: [biztonsági vezérlők és javaslataik](secure-score-security-controls.md#security-controls-and-their-recommendations).
 
-### <a name="workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview"></a>A munkafolyamatok automatizálása a szabályozások megfelelőségi felmérése (előzetes verzió) változásai alapján indítható el
+### <a name="workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-in-preview"></a>A munkafolyamatok automatizálása a szabályozások megfelelőségi felmérésének változásai alapján indítható el (előzetes verzió)
 Egy harmadik adattípust adtunk hozzá a munkafolyamat-automatizálások trigger-beállításaihoz: a szabályozási megfelelőségi felmérések módosításai.
+
+Megtudhatja, hogyan használhatja a munkafolyamat-automatizálási eszközöket a [Security Center triggerekre adott válaszok automatizálására](workflow-automation.md).
 
 :::image type="content" source="media/release-notes/regulatory-compliance-triggers-workflow-automation.png" alt-text="A szabályozások megfelelőségi vizsgálatának módosításai a Munkafolyamat-automatizálás elindításához" lightbox="media/release-notes/regulatory-compliance-triggers-workflow-automation.png":::
 

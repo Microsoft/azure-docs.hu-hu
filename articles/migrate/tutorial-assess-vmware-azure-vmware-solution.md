@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: e57084dab00210802edbd46e3380313e034eb036
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: c1c56edacbc777b5e8b53da588bc763201379964
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98566763"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718828"
 ---
 # <a name="tutorial-assess-vmware-vms-for-migration-to-avs"></a>Oktatóanyag: VMware virtuális gépek felmérése az AVS-re való áttelepítéshez
 
@@ -20,7 +20,7 @@ Az Azure-ba való Migrálás részeként felméri a helyszíni számítási fela
 
 Ebből a cikkből megtudhatja, hogyan értékelheti fel a felderített VMware virtuális gépeket (VM) az Azure VMware-megoldásba (AVS) való áttelepítéshez a Azure Migrate: Server Assessment Tool használatával. Az AVS egy felügyelt szolgáltatás, amely lehetővé teszi a VMware platform futtatását az Azure-ban.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 - Értékelés futtatása a számítógép metaadatai és konfigurációs adatai alapján.
 - Értékelés futtatása a teljesítményadatok alapján.
@@ -50,6 +50,9 @@ Döntse el, hogy szeretne-e értékelést használni a méretezési feltételek 
 **Módosítás nélküli helyszíni** | Értékelés a számítógép konfigurációs adatok/metaadatok alapján.  | Az AVS-ben javasolt csomópont-méret a helyszíni virtuális gép méretétől függ, valamint a csomópont típusának, tárolási típusának és a meghibásodások által tolerálható beállítás értékelésében megadott beállításoknak.
 **Teljesítményalapú** | Az összegyűjtött dinamikus teljesítményadatok alapján történő Értékelés. | Az AVS-ben javasolt csomópont-méret a CPU-és a memóriahasználat, valamint az értékelésben megadott beállításokkal, a tárolási típussal és a meghibásodások által tolerálható beállítással együtt.
 
+> [!NOTE]
+> Az Azure VMware-megoldás (AVS) értékelését csak VMware virtuális gépekhez lehet létrehozni.
+
 ## <a name="run-an-assessment"></a>Értékelés futtatása
 
 Az értékelést a következőképpen futtathatja:
@@ -60,7 +63,7 @@ Az értékelést a következőképpen futtathatja:
 
 1. **Azure Migrate: kiszolgáló értékelése**, kattintson az **értékelés** elemre.
 
-1. A **kiszolgálók**  >  **értékelési típusának** értékelése lapon válassza az **Azure VMware-megoldás (AVS) (előzetes verzió)** lehetőséget.
+1. A **kiszolgálók**  >  **felmérési típusának** értékelése területen válassza az **Azure VMware-megoldás (AVS)** lehetőséget.
 
 1. A **felderítés forrása**:
 
@@ -76,14 +79,14 @@ Az értékelést a következőképpen futtathatja:
 
     - A **célhely** mezőben válassza ki azt az Azure-régiót, amelyre az áttelepítést szeretné végezni.
        - A méretre és a díjakra vonatkozó javaslatok a megadott helyen alapulnak.
-       - Jelenleg négy régióban (Kelet-Ausztrália, az USA keleti régiójában, Nyugat-Európában, USA nyugati régiójában) mérhető fel
    - A **tárolási típus** alapértelmezett értéke **vSAN**. Ez az AVS Private Cloud alapértelmezett tárolási típusa.
    - A **fenntartott példányok** jelenleg nem támogatottak az AVS-csomópontok esetében.
 1. **Virtuális gép mérete**:
     - A **csomópont típusa** alapértelmezés szerint **AV36**. Azure Migrate a virtuális gépek AVS-re való áttelepítéséhez szükséges csomópontok csomópontját javasolja.
     - A **tranzakciós beállítások, RAID szint** területen válassza ki a nem tolerálható és a RAID-kombinációt.  A kiválasztott TRANZAKCIÓs lehetőség a helyszíni virtuálisgép-lemezre vonatkozó követelményével együtt meghatározza az AVS-ben szükséges teljes vSAN-tárolót.
     - A **CPU-előfizetésben** határozza meg az AVS-csomópont egyik fizikai magját társított virtuális magok arányát. Az 4:1-nál nagyobb túllépés a teljesítmény romlását okozhatja, de a webkiszolgáló típusú számítási feladatokhoz is használható.
-
+    - A **memória**-túlterhelési tényező mezőben adja meg a fürtön belüli véglegesítés arányát. Az 1 érték a 100%-os memória-használatot jelöli, a 0,5 például a 50%, a 2 pedig a rendelkezésre álló memória 200%-át használja. 0,5 és 10 közötti értékeket csak egy tizedesjegyre adhat hozzá.
+    - A **dedupe és a tömörítési faktor** mezőben adja meg a számítási feladatokhoz tartozó várható dedupe és Compression faktor értéket. A tényleges érték a helyszíni vSAN vagy a tárolási konfigurációból szerezhető be, és ez a munkaterhelés függvényében változhat. A 3 érték azt jelenti, hogy a 300GB lemez csak a 100 GB tárolót használja. Az 1 érték a dedupe vagy a Compression értéket sem fogja jelenteni. Csak 1 és 10 közötti értékeket adhat hozzá egy tizedes tört értékhez.
 1. **Csomópont mérete**: 
     - A **méretezési feltétel** területen válassza ki, hogy az értékelést statikus metaadatokon vagy a teljesítményen alapuló adatokon szeretné-e alapozni. Ha teljesítményadatokat használ:
         - A **teljesítmény előzményeiben** adja meg az adatok időtartamát, amely alapján az értékelést alapozni szeretné
@@ -127,7 +130,6 @@ Egy AVS-értékelés leírja:
 - AVS-csomópontok száma: a virtuális gépek futtatásához szükséges AVS-csomópontok becsült száma.
 - Használat az AVS-csomópontok között: a processzor, a memória és a tárhely kihasználtsága az összes csomóponton keresztül.
     - A kihasználtság a következő fürtszolgáltatási (például a vCenter Server, a NSX Manager (nagy), az NSX Edge, a HCX üzembe helyezése esetén a HCX-kezelő és a IX-es készülék, valamint a 44vCPU (11 CPU), a RAM-és a 75GB a tömörítés és a lekettőzés előtt történő tárolását is magában foglalja. 
-    - A memória, a dedupe és a tömörítés jelenleg 100%-os kihasználtságot biztosít a memóriához, és 1,5 a dedupet és a tömörítést, amely a következő kiadásokban a felhasználó által megadott bemenettel rendelkezik, ami lehetővé teszi a felhasználó számára a szükséges méretezés finomhangolását.
 - Havi költségbecslés: a helyszíni virtuális gépeket futtató összes Azure VMware Solution (AVS) csomópont becsült havi költségei.
 
 ## <a name="view-an-assessment"></a>Kiértékelés megtekintése
@@ -155,7 +157,7 @@ Egy AVS-értékelés leírja:
 
 3. Tekintse át a javasolt eszközt.
 
-    - VMware HCX vagy Enterprise: VMware-es gépek esetén a VMWare Hybrid Cloud Extension (HCX) megoldás a javasolt áttelepítési eszköz, amellyel áttelepítheti a helyszíni számítási feladatokat az Azure VMware-megoldás (AVS) privát felhőbe. tudj meg többet.
+    - VMware HCX vagy Enterprise: VMware-es gépek esetén a VMware Hybrid Cloud Extension (HCX) megoldás a javasolt áttelepítési eszköz, amellyel áttelepítheti a helyszíni számítási feladatokat az Azure VMware-megoldás (AVS) privát felhőbe. tudj meg többet.
     - Ismeretlen: A CSV-fájllal importált gépek esetében az alapértelmezett migrálási eszköz ismeretlen. A VMware-gépek esetében azonban javasolt a VMware Hybrid Cloud Extension (HCX) megoldás használata.
 4. Kattintson egy AVS-készültségi állapotra. Megtekintheti a VM-készültség részleteit, és részletesen megtekintheti a virtuális gép részleteit, beleértve a számítási, tárolási és hálózati beállításokat.
 
@@ -167,7 +169,7 @@ Az értékelés összegzése az Azure-ban futó virtuális gépek becsült szám
 
     - A költségbecslés az összes virtuális gép erőforrás-követelményeit figyelembe véve szükséges AVS-csomópontok számától függ.
     - Mivel az AVS díjszabása csomópontként történik, a teljes költség nem rendelkezik számítási költséggel és a tárolási költség eloszlásával.
-    - A költségbecslés a helyszíni virtuális gépek AVS-ben való futtatására szolgál. Azure Migrate Server Assessment nem veszi figyelembe a Pásti vagy az SaaS költségeit.
+    - A költségbecslés a helyszíni virtuális gépek AVS-ben való futtatására szolgál. Az AVS Assessment nem veszi figyelembe a Pásti vagy az SaaS költségeit.
 
 2. Tekintse át a havi tárolási becsléseket. A nézet a kiértékelt csoport összesített tárolási költségeit jeleníti meg, a különböző típusú tárolási lemezek felosztásával. 
 3. A részletezést lenyomva megtekintheti az adott virtuális gépek részletes költségeit.
@@ -195,7 +197,7 @@ A megbízhatósági minősítések a következők.
 
 [További](concepts-assessment-calculation.md#confidence-ratings-performance-based) információ a megbízhatósági minősítésekről.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [függőségi leképezést](concepts-dependency-visualization.md)használó számítógép-függőségek keresése.
 - [Ügynök](how-to-create-group-machine-dependencies-agentless.md) [nélküli vagy ügynök-alapú](how-to-create-group-machine-dependencies.md) függőség leképezésének beállítása.

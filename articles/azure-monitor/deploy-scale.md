@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/08/2020
-ms.openlocfilehash: f06ed85e362f15e36e030cd11639d9d17348e938
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bcd56e464419312e74aec01cf22ae56f797991ad
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573609"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731765"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Azure Monitor üzembe helyezése méretezéssel Azure Policy használatával
 Néhány Azure Monitor funkció egyszer vagy korlátozott számú alkalommal van konfigurálva, másokat meg kell ismételni minden figyelni kívánt erőforrásnál. Ez a cikk azokat a módszereket ismerteti, amelyekkel a Azure Policy használatával méretezhetők a Azure Monitorek, így biztosítható, hogy az összes Azure-erőforrás monitorozása következetes legyen és pontosan legyen konfigurálva.
@@ -121,34 +121,34 @@ A kezdeményezés a létrehozott virtuális gépekre lesz érvényes. Egy [szerv
 ![Kezdeményezés szervizelése](media/deploy-scale/initiative-remediation.png)
 
 
-## <a name="azure-monitor-for-vms"></a>Azure Monitor virtuális gépekhez
-A [Azure monitor for VMS](vm/vminsights-overview.md) a virtuális gépek figyelésére szolgáló Azure monitor elsődleges eszköze. A Azure Monitor for VMs engedélyezése a Log Analytics ügynököt és a függőségi ügynököt is telepíti. Ahelyett, hogy ezeket a feladatokat manuálisan hajtja végre, a Azure Policy használatával győződjön meg arról, hogy az egyes virtuális gépeket a létrehozáskor konfigurálta.
+## <a name="vm-insights"></a>VM-ismeretek
+A virtuálisgép- [bepillantást](vm/vminsights-overview.md) a Azure monitor elsődleges eszköze a virtuális gépek figyelésére. A VM-megállapítások engedélyezése a Log Analytics-ügynököt és a függőségi ügynököt is telepíti. Ahelyett, hogy ezeket a feladatokat manuálisan hajtja végre, a Azure Policy használatával győződjön meg arról, hogy az egyes virtuális gépeket a létrehozáskor konfigurálta.
 
 > [!NOTE]
-> Azure Monitor for VMs tartalmaz egy **Azure monitor for VMS Policy lefedettség** nevű szolgáltatást, amely lehetővé teszi a nem megfelelő virtuális gépek felderítését és szervizelését a környezetben. Ezt a funkciót használhatja ahelyett, hogy közvetlenül a Azure Policy Azure-beli virtuális gépekhez, illetve az Azure arc-hoz csatlakoztatott hibrid virtuális gépekhez kellene dolgoznia. Az Azure-beli virtuálisgép-méretezési csoportokhoz Azure Policy használatával kell létrehoznia a hozzárendelést.
+> A VM-alapú betekintő szolgáltatás a virtuális gépekre **vonatkozó házirend-lefedettségi** funkciót tartalmaz, amely lehetővé teszi a nem megfelelő virtuális gépek felderítését és szervizelését a környezetben. Ezt a funkciót használhatja ahelyett, hogy közvetlenül a Azure Policy Azure-beli virtuális gépekhez, illetve az Azure arc-hoz csatlakoztatott hibrid virtuális gépekhez kellene dolgoznia. Az Azure-beli virtuálisgép-méretezési csoportokhoz Azure Policy használatával kell létrehoznia a hozzárendelést.
  
 
-Azure Monitor for VMs a következő beépített kezdeményezéseket tartalmazza, amelyek mindkét ügynököt telepítik teljes figyelésre. 
+A VM-elemzések a következő beépített kezdeményezéseket tartalmazzák, amelyek mindkét ügynököt telepítik a teljes figyelés érdekében. 
 
 |Név |Leírás |
 |:---|:---|
-|Azure Monitor for VMs engedélyezése | Telepíti a Log Analytics-ügynököt és a függőségi ügynököt az Azure-beli virtuális gépeken és az Azure arc-hoz csatlakoztatott hibrid virtuális gépeken |
+|A virtuális gépekkel való adatfelismerés engedélyezése | Telepíti a Log Analytics-ügynököt és a függőségi ügynököt az Azure-beli virtuális gépeken és az Azure arc-hoz csatlakoztatott hibrid virtuális gépeken |
 |Azure Monitor engedélyezése virtuálisgép-méretezési csoportokhoz | Telepíti az Log Analytics Agent ügynököt és a függőségi ügynököt az Azure virtuálisgép-méretezési csoporton. |
 
 
 ### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
-Ahelyett, hogy a Azure Policy felületen hozza létre a kezdeményezésekhez tartozó hozzárendeléseket, Azure Monitor for VMs tartalmaz egy olyan szolgáltatást, amely lehetővé teszi az egyes hatókörökben lévő virtuális gépek számának vizsgálatát annak megállapítására, hogy a kezdeményezés alkalmazása megtörtént-e. Ezután konfigurálhatja a munkaterületet, és létrehozhatja a szükséges hozzárendeléseket a csatoló használatával.
+Ahelyett, hogy a Azure Policy felületen hozza létre a kezdeményezésekhez tartozó hozzárendeléseket, a VM-elemzések olyan funkciót tartalmaznak, amely lehetővé teszi az egyes hatókörökben lévő virtuális gépek számának vizsgálatát annak megállapítására, hogy a kezdeményezés alkalmazása megtörtént-e. Ezután konfigurálhatja a munkaterületet, és létrehozhatja a szükséges hozzárendeléseket a csatoló használatával.
 
-A folyamat részleteiért lásd: [Azure monitor for VMS engedélyezése Azure Policy használatával](./vm/vminsights-enable-policy.md).
+A folyamat részleteiért lásd: a [virtuális gépek bepillantást Azure Policy használatával történő használatának engedélyezése](./vm/vminsights-enable-policy.md).
 
-![Azure Monitor for VMs házirend](media/deploy-scale/vminsights-policy.png)
+![VM-alapú adatellenőrzési szabályzat](media/deploy-scale/vminsights-policy.png)
 
 ### <a name="virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok
 Ha Azure Policyt szeretne használni a virtuálisgép-méretezési csoportok figyelésének engedélyezéséhez, rendelje hozzá a **virtuálisgép-méretezési csoportok Azure monitor engedélyezése** az Azure felügyeleti csoportjához, az előfizetéshez vagy az erőforrás-csoporthoz a figyelni kívánt erőforrások körétől függően. A [felügyeleti csoport](../governance/management-groups/overview.md) különösen akkor hasznos, ha a szervezet több előfizetéssel rendelkezik.
 
 ![Képernyőkép a Azure Portal hozzárendelésének kiosztása oldalról. A kezdeményezés definíciója az Azure Monitor engedélyezése a virtuálisgép-méretezési csoportokhoz.](media/deploy-scale/virtual-machine-scale-set-assign-initiative.png)
 
-Válassza ki azt a munkaterületet, amelybe az adatküldés történik. Ennek a munkaterületnek telepítve kell lennie a *VMInsights* -megoldásnak a [Log Analytics munkaterület konfigurálása Azure monitor for VMS számára](vm/vminsights-configure-workspace.md)című témakörben leírtak szerint.
+Válassza ki azt a munkaterületet, amelybe az adatküldés történik. Ennek a munkaterületnek telepítve kell lennie a *VMInsights* -megoldásnak, amely a virtuális gépek megállapítása [log Analytics munkaterület konfigurálása](vm/vminsights-configure-workspace.md)című cikkben olvasható.
 
 ![Munkaterület kiválasztása](media/deploy-scale/virtual-machine-scale-set-workspace.png)
 
@@ -157,7 +157,7 @@ Ha olyan meglévő virtuálisgép-méretezési csoporttal rendelkezik, amelyet e
 ![Szervizelési feladat](media/deploy-scale/virtual-machine-scale-set-remediation.png)
 
 ### <a name="log-analytics-agent"></a>Log Analytics-ügynök
-Lehetnek olyan helyzetek, amikor telepíteni szeretné a Log Analytics ügynököt, de nem a függőségi ügynököt. Nincs olyan beépített kezdeményezés, amely csak az ügynökhöz tartozik, de a Azure Monitor for VMs által biztosított beépített szabályzat-definíciók alapján hozhatja létre a sajátját.
+Lehetnek olyan helyzetek, amikor telepíteni szeretné a Log Analytics ügynököt, de nem a függőségi ügynököt. Nincs olyan beépített kezdeményezés, amely csak az ügynökhöz tartozik, de saját maga is létrehozhat saját, a VM-elemzések által biztosított beépített szabályzat-definíciók alapján.
 
 > [!NOTE]
 > A függőségi ügynököt nem lehet saját maga telepíteni, mert a Log Analytics ügynöknek hozzá kell adni az adatAzure Monitorhoz.

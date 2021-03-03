@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e783e5dd3b0f1952928d1c36c682c5be1cba2599
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 924397c9c81d2a38ae74b95a8f7133ced8bde0d4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044390"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736542"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Eszközök automatikus felügyelete az Azure Digital Twins-ben a Device kiépítési szolgáltatás (DPS) használatával
 
@@ -174,7 +174,7 @@ Az alábbi információk segítségével hajtsa végre az [*Event hub létrehoz�
 
 ### <a name="create-an-azure-function"></a>Azure-függvény létrehozása
 
-Ezután létre fog hozni egy Event Hubs által aktivált függvényt egy Function alkalmazásban. Használhatja a teljes körű oktatóanyagban létrehozott Function alkalmazást ([*oktatóanyag: végpontok közötti megoldás összekapcsolását*](tutorial-end-to-end.md)) vagy a sajátját. 
+A következőkben létrehoz egy Event Hubs által aktivált függvényt egy függvényalkalmazásban. Használhatja a teljes körű oktatóanyagban létrehozott Function alkalmazást ([*oktatóanyag: végpontok közötti megoldás összekapcsolását*](tutorial-end-to-end.md)) vagy a sajátját. 
 
 Nevezze el az Event hub-eseményindítót *lifecycleevents*, és kapcsolódjon az Event hub-eseményindítóhoz az előző lépésben létrehozott Event hubhoz. Ha más Event hub-nevet használt, módosítsa úgy, hogy az az alábbi eseményindító nevével egyezzen.
 
@@ -223,7 +223,7 @@ A kivonási folyamat elindításához kézzel kell törölnie az eszközt IoT Hu
 
 A [cikk első felében](#auto-provision-device-using-device-provisioning-service)létrehozott egy eszközt IoT hub és egy megfelelő digitális Twin-ben. 
 
-Most nyissa meg a IoT Hub és törölje az eszközt (ezt megteheti egy [Azure CLI-paranccsal](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest&preserve-view=true#ext-azure-cli-iot-ext-az-iot-hub-device-identity-delete) vagy a [Azure Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs)). 
+Most nyissa meg a IoT Hub és törölje az eszközt (ezt megteheti egy [Azure CLI-paranccsal](/cli/azure/ext/azure-iot/iot/hub/module-identity?view=azure-cli-latest#ext_azure_iot_az_iot_hub_module_identity_delete) vagy a [Azure Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs)). 
 
 Az eszköz automatikusan el lesz távolítva az Azure digitális Twins-ból. 
 
@@ -251,7 +251,7 @@ az group delete --name <your-resource-group>
 
 Ezután törölje a helyi gépről letöltött Project Sample mappát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az eszközökhöz létrehozott digitális Twins-ket az Azure Digital Twins szolgáltatásban tárolja a rendszer, de a modell adataival és a szervezet többszintű hierarchiájának használatával gazdagíthatja őket. Ha többet szeretne megtudni erről a fogalomról, olvassa el a következőt:
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b484873f6c118c49712cbcd66eeb6a63d8aa05f6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5367fbcb88e19253eead58d8f99933fdadc41898
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591548"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714714"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure-beli biztonsági alapkonfiguráció Azure Storage-hoz
 
@@ -190,7 +190,7 @@ A Storage-fiókhoz kapcsolódó beépített szabályzat-definíciókat is haszn�
 
 **Útmutató**: a Azure Storage Analytics a Blobok, várólisták és táblák naplóit biztosítja. A Azure Portal segítségével beállíthatja, hogy mely naplók legyenek rögzítve a fiókjához. 
 
-- [Az Azure Storage-fiók figyelésének konfigurálása](./storage-monitor-storage-account.md#configure-monitoring-for-a-storage-account)
+- [Az Azure Storage-fiók figyelésének konfigurálása](./manage-storage-analytics-logs.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -208,7 +208,7 @@ A Storage-fiókhoz kapcsolódó beépített szabályzat-definíciókat is haszn�
 
 **Útmutató**: Ha a biztonsági eseménynaplókat az Azure Storage-fiókban vagy log Analytics munkaterületen tárolja, az adatmegőrzési házirendet a szervezet követelményeinek megfelelően állíthatja be. 
 
-- [Adatmegőrzési szabályzat konfigurálása az Azure Storage-fiók naplóihoz](./storage-monitor-storage-account.md#configure-logging)
+- [Adatmegőrzési szabályzat konfigurálása az Azure Storage-fiók naplóihoz](./manage-storage-analytics-logs.md#configure-logging)
 
 - [Az adatmegőrzési időszak módosítása Log Analytics](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
@@ -414,7 +414,7 @@ A felhasználók számára biztosított hozzáférés időtartamának korlátoz�
 
 - [Tárolók és blobok névtelen olvasási hozzáférésének kezelése](../blobs/anonymous-read-access-configure.md)
 
-- [Tárfiók monitorozása az Azure Portalon](./storage-monitor-storage-account.md)
+- [Tárfiók monitorozása az Azure Portalon](./manage-storage-analytics-logs.md)
 
 - [A Storage-fiók hozzáférési kulcsainak kezelése](./storage-account-keys-manage.md)
 
@@ -432,7 +432,7 @@ Diagnosztikai beállítások létrehozása Azure Active Directory felhasználói
 
 - [Azure-tevékenységnaplók integrálása az Azure Monitorba](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Metrikai riasztások konfigurálása az Azure Storage-fiókokhoz](./storage-monitor-storage-account.md)
+- [Metrikai riasztások konfigurálása az Azure Storage-fiókokhoz](./manage-storage-analytics-logs.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -576,7 +576,7 @@ Emellett a virtuális hálózati szolgáltatás végpont-házirendjeivel is szű
 
 - [Azure Storage Analytics-naplózás](./storage-analytics-logging.md)
 
-- [Metrikai riasztások konfigurálása az Azure Storage-fiókokhoz](./storage-monitor-storage-account.md)
+- [Metrikai riasztások konfigurálása az Azure Storage-fiókokhoz](./manage-storage-analytics-logs.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 

@@ -97,9 +97,9 @@
           href: logs/resource-manager-log-queries.md
         - name: Munkafüzetek
           href: visualize/resource-manager-workbooks.md
-        - name: Azure Monitor tárolókhoz
+        - name: Tároló-felismerések
           href: containers/resource-manager-container-insights.md
-        - name: Azure Monitor virtuális gépekhez
+        - name: VM-ismeretek
           href: vm/resource-manager-vminsights.md
     - name: Azure CLI
       href: cli-samples.md
@@ -879,8 +879,6 @@
             - name: Áttekintés
               displayname: 'user behavior analytics, user behavior, usage, behavioral analytics'
               href: app/usage-overview.md
-            - name: Felhasználói környezet küldése
-              href: app/usage-send-user-context.md
             - name: 'Felhasználók, munkamenetek, események'
               href: app/usage-segmentation.md
             - name: Tölcsérek
@@ -988,7 +986,7 @@
           href: app/change-analysis-visualizations.md
         - name: Hibaelhárítás
           href: app/change-analysis-troubleshoot.md
-    - name: Azure Monitor virtuális gépekhez
+    - name: VM-ismeretek
       items:
         - name: Áttekintés
           href: vm/vminsights-overview.md
@@ -1042,7 +1040,7 @@
           href: vm/vminsights-workbooks.md
         - name: Monitorozás letiltása
           href: vm/vminsights-optout.md
-    - name: Azure Monitor tárolókhoz
+    - name: Tároló-felismerések
       items:
         - name: Áttekintés
           href: containers/container-insights-overview.md

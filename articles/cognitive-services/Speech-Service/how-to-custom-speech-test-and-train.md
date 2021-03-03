@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 2e6f79643493457a587f907f2649c7ab50b963f4
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: f7e29fab542db79b22a9ace7371bc22d3526ac33
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100634736"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710498"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Adatok előkészítése a Custom Speech szolgáltatáshoz
 
@@ -46,9 +46,9 @@ Ez a táblázat felsorolja az elfogadott adattípusokat, valamint az egyes adatt
 
 | Adattípus | Teszteléshez használatos | Ajánlott mennyiség | Képzéshez használatos | Ajánlott mennyiség |
 |-----------|-----------------|----------|-------------------|----------|
-| [Audió](#audio-data-for-testing) | Yes<br>Vizuális vizsgálathoz használatos | 5 + hangfájl | No | N/A |
-| [Hang + emberi – címkézett átiratok](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>A pontosság kiértékeléséhez használatos | 0,5-5 órányi hang | Yes | 1-20 órányi hang |
-| [Kapcsolódó szöveg](#related-text-data-for-training) | No | N/a | Yes | 1-200 MB kapcsolódó szöveg |
+| [Audió](#audio-data-for-testing) | Igen<br>Vizuális vizsgálathoz használatos | 5 + hangfájl | Nem | N/A |
+| [Hang + emberi – címkézett átiratok](#audio--human-labeled-transcript-data-for-testingtraining) | Igen<br>A pontosság kiértékeléséhez használatos | 0,5-5 órányi hang | Igen | 1-20 órányi hang |
+| [Kapcsolódó szöveg](#related-text-data-for-training) | Nem | N/a | Igen | 1-200 MB kapcsolódó szöveg |
 
 Új modell betanításakor Kezdje a [kapcsolódó szöveggel](#related-text-data-for-training). Ezek az adatmennyiségek már javítják a speciális kifejezések és kifejezések felismerését. A szöveggel való képzés sokkal gyorsabb, mint a hanggal való képzés (perc és nap).
 
@@ -64,6 +64,8 @@ A fájlokat típus szerint kell csoportosítani egy adatkészletbe, és. zip fá
 > Abban az esetben, ha megváltoztatja a betanításhoz használt alapmodellt, és a betanítási adatkészletben van hang, *mindig* győződjön meg arról, hogy az új kiválasztott alapmodell támogatja-e a [hangadatokkal való képzést](language-support.md#speech-to-text). Ha a korábban használt alapmodell nem támogatja a hangadatokkal való betanítást, és a betanítási adatkészlet hang-és betanítási időt tartalmaz, az új alapmodellel **jelentősen** növekedni fog, és könnyen elvégezhető több óra és több nap között. Ez különösen akkor igaz, ha a beszédfelismerési szolgáltatás előfizetése **nincs** olyan [régióban, ahol a dedikált hardvert](custom-speech-overview.md#set-up-your-azure-account) betanítják.
 >
 > Ha a fenti bekezdésben ismertetett probléma merül fel, gyorsan csökkentheti a betanítási időt, ha csökkenti az adatkészletben lévő hang mennyiségét, vagy teljesen eltávolítja, és csak a szöveget hagyja. Az utóbbi lehetőség kifejezetten ajánlott, ha a beszédfelismerési szolgáltatás előfizetése **nincs** olyan [régióban, ahol a dedikált hardver](custom-speech-overview.md#set-up-your-azure-account) betanítása történik.
+>
+> A dedikált hardverrel rendelkező régiókban a beszédfelismerési szolgáltatás akár 20 órányi hang használatát is felhasználhatja a képzéshez. Más régiókban a szolgáltatás legfeljebb 8 órányi hang használatát fogja használni.
 
 ## <a name="upload-data"></a>Adatok feltöltése
 
@@ -101,7 +103,7 @@ Ezzel a táblázattal ellenőrizheti, hogy a hangfájlok formátuma helyesen van
 
 A <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">Sox <span class="docon docon-navigate-external x-hidden-focus"></span> </a> használatával ellenőrizze a hangtulajdonságokat, vagy alakítsa át a meglévő hangokat a megfelelő formátumokba. Az alábbiakban néhány példát láthat arra, hogyan végezheti el ezeket a tevékenységeket a SoX parancssorban:
 
-| Tevékenység | Description | SoX-parancs |
+| Tevékenység | Leírás | SoX-parancs |
 |----------|-------------|-------------|
 | Hangformátum keresése | Ezzel a paranccsal ellenőrizhető<br>a hangfájl formátuma. | `sox --i <filename>` |
 | Hangformátum konvertálása | A parancs használata a konvertáláshoz<br>a hangfájl egyetlen csatornára, 16 bites, 16 KHz. | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
@@ -127,7 +129,7 @@ A hangfájlok a rögzítés elején és végén is lehetnek csendben. Ha lehets�
 > [!NOTE]
 > A képzés és a tesztelési célú adatfeldolgozás során a. zip fájl mérete nem haladhatja meg a 2 GB-ot. Csak *egyetlen* adatkészletből lehet tesztelni, ügyeljen arra, hogy a fájl a megfelelő fájlméreten belül maradjon. Emellett az egyes betanítási fájlok nem haladhatják meg a 60 másodpercet, ellenkező esetben hiba történik.
 
-A Word törlési vagy helyettesítési problémák megoldásához jelentős mennyiségű adattal kell foglalkoznia az elismerés javítása érdekében. Általánosságban elmondható, hogy nagyjából 10 – 20 órányi hangátvitelt biztosít a Word-by-Word típusú átírásoknak. Az összes WAV fájl átiratát egyetlen, egyszerű szöveges fájlnak kell tartalmaznia. Az átiratfájl minden sorának egy hangfájl nevét és az annak megfelelő átiratot kell tartalmaznia. A fájlnevet és az átiratot tabulátorral (\t) kell elválasztani.
+A Word törlési vagy helyettesítési problémák megoldásához jelentős mennyiségű adattal kell foglalkoznia az elismerés javítása érdekében. Általánosságban azt javasoljuk, hogy a Word-by-Word típusú átírásokat 1 – 20 órányi hanganyagként adja meg. Azonban akár 30 percet is igénybe vehet, így javíthatja az eredmények felismerését. Az összes WAV fájl átiratát egyetlen, egyszerű szöveges fájlnak kell tartalmaznia. Az átiratfájl minden sorának egy hangfájl nevét és az annak megfelelő átiratot kell tartalmaznia. A fájlnevet és az átiratot tabulátorral (\t) kell elválasztani.
 
 Például:
 

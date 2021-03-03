@@ -7,16 +7,16 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 02/10/2021
 ms.subservice: alerts
-ms.openlocfilehash: 7b4cdd37cefb628c03129a990d52ed348acd3ac1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b3aa68be050b1ea5c1c32253f1ae6e6353ee8dc7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100614638"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717910"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>A metrikus riasztások által támogatott erőforrások Azure Monitor
 
-A Azure Monitor mostantól támogatja az [új metrikai riasztás típusát](../platform/alerts-overview.md) , amely jelentős előnnyel jár a régebbi [klasszikus metrikai riasztásokkal](./alerts-classic.overview.md)szemben. A metrikák az [Azure-szolgáltatások nagyméretű listájához](../platform/metrics-supported.md)érhetők el. Az újabb riasztások támogatják az erőforrástípusok (növekvő) részhalmazát. Ez a cikk felsorolja az adott részhalmazt.
+A Azure Monitor mostantól támogatja az [új metrikai riasztás típusát](./alerts-overview.md) , amely jelentős előnnyel jár a régebbi [klasszikus metrikai riasztásokkal](./alerts-classic.overview.md)szemben. A metrikák az [Azure-szolgáltatások nagyméretű listájához](../essentials/metrics-supported.md)érhetők el. Az újabb riasztások támogatják az erőforrástípusok (növekvő) részhalmazát. Ez a cikk felsorolja az adott részhalmazt.
 
 Újabb metrikai riasztásokat is használhat a Log Analytics munkaterületen tárolt népszerű naplófájlokban, amelyeket metrikaként Kinyer. További információkért tekintse meg [a naplók metrikai riasztásait](./alerts-metric-logs.md).
 
@@ -31,94 +31,94 @@ Az újabb riasztások által támogatott Azure Monitor metrikus források teljes
 |Erőforrás típusa  |Támogatott méretek |Több erőforrásból álló riasztások| Elérhető metrikák|
 |---------|---------|-----|----------|
 |Microsoft. Aadiam/azureADMetrics | Igen | Nem | |
-|Microsoft.ApiManagement/service | Igen | Nem | [API Management](../platform/metrics-supported.md#microsoftapimanagementservice) |
-|Microsoft. AppConfiguration/configurationStores |Igen | Nem | [Alkalmazás konfigurációja](../platform/metrics-supported.md#microsoftappconfigurationconfigurationstores) |
-|Microsoft. AppPlatform/Spring | Igen | Nem | [Azure Spring Cloud](../platform/metrics-supported.md#microsoftappplatformspring) |
-|Microsoft. Automation/automationAccounts | Igen| Nem | [Automation-fiókok](../platform/metrics-supported.md#microsoftautomationautomationaccounts) |
-|Microsoft. AVS/privateClouds | Nem | Nem | [Azure VMware Solution](../platform/metrics-supported.md#microsoftavsprivateclouds) |
-|Microsoft.BatCH/batchAccounts | Igen | Nem | [Batch-fiókok](../platform/metrics-supported.md#microsoftbatchbatchaccounts) |
-|Microsoft. cache/Redis | Igen | Yes | [Azure Cache for Redis](../platform/metrics-supported.md#microsoftcacheredis) |
-|Microsoft. ClassicCompute/tartománynév/bővítőhely/szerepkörök | Nem | Nem | [Klasszikus Cloud Services](../platform/metrics-supported.md#microsoftclassiccomputedomainnamesslotsroles) |
-|Microsoft. ClassicCompute/virtualMachines | Nem | Nem | [Klasszikus Virtual Machines](../platform/metrics-supported.md#microsoftclassiccomputevirtualmachines) |
-|Microsoft. ClassicStorage/storageAccounts | Igen | Nem | [Storage-fiókok (klasszikus)](../platform/metrics-supported.md#microsoftclassicstoragestorageaccounts) |
-|Microsoft. ClassicStorage/storageAccounts/blobServices | Igen | Nem | [Storage-fiókok (klasszikus) – Blobok](../platform/metrics-supported.md#microsoftclassicstoragestorageaccountsblobservices) |
-|Microsoft. ClassicStorage/storageAccounts/fileServices | Igen | Nem | [Storage-fiókok (klasszikus) – fájlok](../platform/metrics-supported.md#microsoftclassicstoragestorageaccountsfileservices) |
-|Microsoft. ClassicStorage/storageAccounts/queueServices | Igen | Nem | [Storage-fiókok (klasszikus) – várólisták](../platform/metrics-supported.md#microsoftclassicstoragestorageaccountsqueueservices) |
-|Microsoft. ClassicStorage/storageAccounts/tableServices | Igen | Nem | [Storage-fiókok (klasszikus) – táblák](../platform/metrics-supported.md#microsoftclassicstoragestorageaccountstableservices) |
-|Microsoft. CognitiveServices/fiókok | Igen | Nem | [Cognitive Services](../platform/metrics-supported.md#microsoftcognitiveservicesaccounts) |
-|Microsoft.Compute/virtualMachines | Yes | Igen<sup>1</sup> | [Virtual Machines](../platform/metrics-supported.md#microsoftcomputevirtualmachines) |
-|Microsoft.Compute/virtualMachineScaleSets | Igen | Nem |[Virtuálisgép-méretezési csoportok](../platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
-|Microsoft. ContainerInstance/containerGroups | Igen| Nem | [Tárolócsoportok](../platform/metrics-supported.md#microsoftcontainerinstancecontainergroups) |
-|Microsoft. ContainerRegistry/nyilvántartók | Nem | Nem | [Tároló-nyilvántartók](../platform/metrics-supported.md#microsoftcontainerregistryregistries) |
-|Microsoft. Tárolószolgáltatás/managedClusters | Igen | Nem | [Felügyelt fürtök](../platform/metrics-supported.md#microsoftcontainerservicemanagedclusters) |
-|Microsoft. DataBoxEdge/dataBoxEdgeDevices | Igen | Yes | [Data Box](../platform/metrics-supported.md#microsoftdataboxedgedataboxedgedevices) |
-|Microsoft. DataFactory/datafactories| Igen| Nem | [Az adatgyárak v1-es verziója](../platform/metrics-supported.md#microsoftdatafactorydatafactories) |
-|Microsoft. DataFactory/gyárak |Igen | Nem | [Az adatgyár v2](../platform/metrics-supported.md#microsoftdatafactoryfactories) |
-|Microsoft. DataShare/fiókok | Igen | Nem | [Adatmegosztások](../platform/metrics-supported.md#microsoftdatashareaccounts) |
-|Microsoft. DBforMariaDB/kiszolgálók | Nem | Nem | [MariaDB-adatbázis](../platform/metrics-supported.md#microsoftdbformariadbservers) |
-|Microsoft. DBforMySQL/kiszolgálók | Nem | Nem |[A MySQL-hez készült adatbázis](../platform/metrics-supported.md#microsoftdbformysqlservers)|
-|Microsoft. DBforPostgreSQL/kiszolgálók | Nem | Nem | [PostgreSQL-hez készült adatbázis](../platform/metrics-supported.md#microsoftdbforpostgresqlservers)|
-|Microsoft. DBforPostgreSQL/serversv2 | Nem | Nem | [A PostgreSQL v2 ADATBÁZISa](../platform/metrics-supported.md#microsoftdbforpostgresqlserversv2)|
-|Microsoft. DBforPostgreSQL/flexibleServers | Igen | Nem | [PostgreSQL-hez készült adatbázis (rugalmas kiszolgálók)](../platform/metrics-supported.md#microsoftdbforpostgresqlflexibleservers)|
-|Microsoft. Devices/IotHubs | Igen | Nem |[IoT Hub](../platform/metrics-supported.md#microsoftdevicesiothubs) |
-|Microsoft. Devices/provisioningServices| Igen | Nem | [Eszközök kiépítési szolgáltatásai](../platform/metrics-supported.md#microsoftdevicesprovisioningservices) |
-|Microsoft. DigitalTwins/digitalTwinsInstances | Igen | Nem | [Digital Twins](../platform/metrics-supported.md#microsoftdigitaltwinsdigitaltwinsinstances) |
-|Microsoft.DocumentDB/databaseAccounts | Igen | Nem | [Cosmos DB](../platform/metrics-supported.md#microsoftdocumentdbdatabaseaccounts) |
-|Microsoft. EventGrid/tartományok | Igen | Nem | [Event Grid-tartományok](../platform/metrics-supported.md#microsofteventgriddomains) |
-|Microsoft. EventGrid/systemTopics | Igen | Nem | [Event Grid rendszertémakörök](../platform/metrics-supported.md#microsofteventgridsystemtopics) |
-|Microsoft. EventGrid/témakörök |Igen | Nem | [Event Grid-témakörök](../platform/metrics-supported.md#microsofteventgridtopics) |
-|Microsoft. EventHub/fürtök |Igen| Nem | [Fürtök Event Hubs](../platform/metrics-supported.md#microsofteventhubclusters) |
-|Microsoft. EventHub/névterek |Igen| Nem | [Event Hubs](../platform/metrics-supported.md#microsofteventhubnamespaces) |
-|Microsoft. HDInsight/fürtök | Igen | Nem | [HDInsight-fürtök](../platform/metrics-supported.md#microsofthdinsightclusters) |
-|Microsoft. bepillantások/összetevők | Igen | Nem | [Application Insights](../platform/metrics-supported.md#microsoftinsightscomponents) |
-|Microsoft. kulcstartó/tárolók | Igen |Yes |[Kulcstartók](../platform/metrics-supported.md#microsoftkeyvaultvaults)|
-|Microsoft. Kusto/fürtök | Igen |Nem |[Fürtök Adatkezelő](../platform/metrics-supported.md#microsoftkustoclusters)|
-|Microsoft. Logic/integrationServiceEnvironments | Igen | Nem |[Integrációs szolgáltatási környezetek](../platform/metrics-supported.md#microsoftlogicintegrationserviceenvironments) |
-|Microsoft. Logic/munkafolyamatok | Nem | Nem |[Logic Apps](../platform/metrics-supported.md#microsoftlogicworkflows) |
-|Microsoft. MachineLearningServices/munkaterületek | Igen | Nem | [Machine Learning](../platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces) |
-|Microsoft. Maps/fiókok | Igen | Nem | [Maps-fiókok](../platform/metrics-supported.md#microsoftmapsaccounts) |
-|Microsoft. Media/Mediaservices | Nem | Nem | [Media Services](../platform/metrics-supported.md#microsoftmediamediaservices) |
-|Microsoft. Media/Mediaservices/streamingEndpoints | Igen | Nem | [Media Services streaming-végpontok](../platform/metrics-supported.md#microsoftmediamediaservicesstreamingendpoints) |
-|Microsoft. NetApp/netAppAccounts/capacityPools | Igen | Yes | [Azure NetApp-kapacitási készletek](../platform/metrics-supported.md#microsoftnetappnetappaccountscapacitypools) |
-|Microsoft. NetApp/netAppAccounts/capacityPools/kötetek | Igen | Yes | [Azure NetApp-kötetek](../platform/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) |
-|Microsoft. Network/applicationGateways | Igen | Nem | [Application Gateway átjárók](../platform/metrics-supported.md#microsoftnetworkapplicationgateways) |
-|Microsoft. Network/azurefirewalls | Igen | Nem | [Tűzfalak](../platform/metrics-supported.md#microsoftnetworkazurefirewalls) |
-|Microsoft. Network/dnsZones | Nem | Nem | [DNS-zónák](../platform/metrics-supported.md#microsoftnetworkdnszones) |
-|Microsoft. Network/expressRouteCircuits | Igen | Nem |[ExpressRoute-áramkörök](../platform/metrics-supported.md#microsoftnetworkexpressroutecircuits) |
-|Microsoft. Network/expressRoutePorts | Igen | Nem |[ExpressRoute Direct](../platform/metrics-supported.md#microsoftnetworkexpressrouteports) |
-|Microsoft. Network/loadBalancers (csak standard SKU-hoz)| Igen| Nem | [Terheléselosztó](../platform/metrics-supported.md#microsoftnetworkloadbalancers) |
-|Microsoft. Network/natGateways| Nem | Nem | [NAT-átjárók](../platform/metrics-supported.md#microsoftnetworknatgateways) |
-|Microsoft. Network/privateEndpoints| Nem | Nem | [Privát végpontok](../platform/metrics-supported.md#microsoftnetworkprivateendpoints) |
-|Microsoft. Network/privateLinkServices| Nem | Nem | [Private link Services](../platform/metrics-supported.md#microsoftnetworkprivatelinkservices) |
-|Microsoft. Network/nyilvános IP | Nem | Nem | [Nyilvános IP-címek](../platform/metrics-supported.md#microsoftnetworkpublicipaddresses)|
-|Microsoft. Network/trafficManagerProfiles | Igen | Nem | [Traffic Manager-profilok](../platform/metrics-supported.md#microsoftnetworktrafficmanagerprofiles) |
-|Microsoft. OperationalInsights/munkaterületek| Igen | Nem | [Log Analytics-munkaterületek](../platform/metrics-supported.md#microsoftoperationalinsightsworkspaces)|
-|Microsoft. peering/társaik | Igen | Nem | [Társviszonyok](../platform/metrics-supported.md#microsoftpeeringpeerings) |
-|Microsoft. peering/peeringServices | Igen | Nem | [Társviszony-létesítési szolgáltatások](../platform/metrics-supported.md#microsoftpeeringpeeringservices) |
-|Microsoft. PowerBIDedicated/kapacitások | Nem | Nem | [Kapacitások](../platform/metrics-supported.md#microsoftpowerbidedicatedcapacities) |
-|Microsoft. Relay/névterek | Igen | Nem | [Továbbítók](../platform/metrics-supported.md#microsoftrelaynamespaces) |
-|Microsoft. Search/searchServices | Nem | Nem | [Keresési szolgáltatások](../platform/metrics-supported.md#microsoftsearchsearchservices) |
-|Microsoft. ServiceBus/névterek | Igen | Nem | [Szolgáltatásbusz](../platform/metrics-supported.md#microsoftservicebusnamespaces) |
-|Microsoft. SQL/managedInstances | Nem | Igen | [Felügyelt SQL-példányok](../platform/metrics-supported.md#microsoftsqlmanagedinstances) |
-|Microsoft. SQL/kiszolgálók/adatbázisok | Nem | Igen | [SQL Database-adatbázisok](../platform/metrics-supported.md#microsoftsqlserversdatabases) |
-|Microsoft. SQL/kiszolgálók/elasticPools | Nem | Igen | [Rugalmas SQL-készletek](../platform/metrics-supported.md#microsoftsqlserverselasticpools) |
-|Microsoft. Storage/storageAccounts |Igen | Nem | [Storage-fiókok](../platform/metrics-supported.md#microsoftstoragestorageaccounts)|
-|Microsoft. Storage/storageAccounts/blobServices | Igen| Nem | [Storage-fiókok – Blobok](../platform/metrics-supported.md#microsoftstoragestorageaccountsblobservices) |
-|Microsoft. Storage/storageAccounts/fileServices | Igen| Nem | [Storage-fiókok – fájlok](../platform/metrics-supported.md#microsoftstoragestorageaccountsfileservices) |
-|Microsoft. Storage/storageAccounts/queueServices | Igen| Nem | [Storage-fiókok – várólisták](../platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices) |
-|Microsoft. Storage/storageAccounts/tableServices | Igen| Nem | [Storage-fiókok – táblák](../platform/metrics-supported.md#microsoftstoragestorageaccountstableservices) |
-|Microsoft. StorageCache/gyorsítótárak | Igen | Nem | [HPC-gyorsítótárak](../platform/metrics-supported.md#microsoftstoragecachecaches) |
-|Microsoft. StorageSync/storageSyncServices | Igen | Nem | [Storage Sync Services](../platform/metrics-supported.md#microsoftstoragesyncstoragesyncservices) |
-|Microsoft. StreamAnalytics/streamingjobs | Igen | Nem | [Stream Analytics](../platform/metrics-supported.md#microsoftstreamanalyticsstreamingjobs) |
-|Microsoft. szinapszis/munkaterületek | Igen | Nem | [Synapse Analytics](../platform/metrics-supported.md#microsoftsynapseworkspaces) |
-|Microsoft. szinapszis/munkaterületek/bigDataPools | Igen | Nem | [Szinapszis Analitika Apache Spark készletek](../platform/metrics-supported.md#microsoftsynapseworkspacesbigdatapools) |
-|Microsoft. szinapszis/munkaterületek/sqlPools | Igen | Nem | [Szinapszis Analytics SQL-készletek](../platform/metrics-supported.md#microsoftsynapseworkspacessqlpools) |
-|Microsoft. VMWareCloudSimple/virtualMachines | Igen | Nem | [CloudSimple-virtuálisgépek](../platform/metrics-supported.md#microsoftvmwarecloudsimplevirtualmachines) |
-|Microsoft. Web/hostingEnvironments/multiRolePools | Igen | Nem | [Több szerepkört használó készletek App Service Environment](../platform/metrics-supported.md#microsoftwebhostingenvironmentsmultirolepools)|
-|Microsoft. Web/hostingEnvironments/workerPools | Igen | Nem | [Munkavégző készletek App Service Environment](../platform/metrics-supported.md#microsoftwebhostingenvironmentsworkerpools)|
-|Microsoft. Web/kiszolgálófarmok | Igen | Nem | [App Service csomagok](../platform/metrics-supported.md#microsoftwebserverfarms)|
-|Microsoft. Web/Sites | Igen | Nem | [App Services és függvények](../platform/metrics-supported.md#microsoftwebsites)|
-|Microsoft. Web/Sites/Slots | Igen | Nem | [App Service tárolóhelyek](../platform/metrics-supported.md#microsoftwebsitesslots)|
+|Microsoft.ApiManagement/service | Igen | Nem | [API Management](../essentials/metrics-supported.md#microsoftapimanagementservice) |
+|Microsoft. AppConfiguration/configurationStores |Igen | Nem | [Alkalmazás konfigurációja](../essentials/metrics-supported.md#microsoftappconfigurationconfigurationstores) |
+|Microsoft. AppPlatform/Spring | Igen | Nem | [Azure Spring Cloud](../essentials/metrics-supported.md#microsoftappplatformspring) |
+|Microsoft. Automation/automationAccounts | Igen| Nem | [Automation-fiókok](../essentials/metrics-supported.md#microsoftautomationautomationaccounts) |
+|Microsoft. AVS/privateClouds | Nem | Nem | [Azure VMware Solution](../essentials/metrics-supported.md#microsoftavsprivateclouds) |
+|Microsoft.BatCH/batchAccounts | Igen | Nem | [Batch-fiókok](../essentials/metrics-supported.md#microsoftbatchbatchaccounts) |
+|Microsoft. cache/Redis | Igen | Igen | [Azure Cache for Redis](../essentials/metrics-supported.md#microsoftcacheredis) |
+|Microsoft. ClassicCompute/tartománynév/bővítőhely/szerepkörök | Nem | Nem | [Klasszikus Cloud Services](../essentials/metrics-supported.md#microsoftclassiccomputedomainnamesslotsroles) |
+|Microsoft. ClassicCompute/virtualMachines | Nem | Nem | [Klasszikus Virtual Machines](../essentials/metrics-supported.md#microsoftclassiccomputevirtualmachines) |
+|Microsoft. ClassicStorage/storageAccounts | Igen | Nem | [Storage-fiókok (klasszikus)](../essentials/metrics-supported.md#microsoftclassicstoragestorageaccounts) |
+|Microsoft. ClassicStorage/storageAccounts/blobServices | Igen | Nem | [Storage-fiókok (klasszikus) – Blobok](../essentials/metrics-supported.md#microsoftclassicstoragestorageaccountsblobservices) |
+|Microsoft. ClassicStorage/storageAccounts/fileServices | Igen | Nem | [Storage-fiókok (klasszikus) – fájlok](../essentials/metrics-supported.md#microsoftclassicstoragestorageaccountsfileservices) |
+|Microsoft. ClassicStorage/storageAccounts/queueServices | Igen | Nem | [Storage-fiókok (klasszikus) – várólisták](../essentials/metrics-supported.md#microsoftclassicstoragestorageaccountsqueueservices) |
+|Microsoft. ClassicStorage/storageAccounts/tableServices | Igen | Nem | [Storage-fiókok (klasszikus) – táblák](../essentials/metrics-supported.md#microsoftclassicstoragestorageaccountstableservices) |
+|Microsoft. CognitiveServices/fiókok | Igen | Nem | [Cognitive Services](../essentials/metrics-supported.md#microsoftcognitiveservicesaccounts) |
+|Microsoft.Compute/virtualMachines | Igen | Igen<sup>1</sup> | [Virtual Machines](../essentials/metrics-supported.md#microsoftcomputevirtualmachines) |
+|Microsoft.Compute/virtualMachineScaleSets | Igen | Nem |[Virtuálisgép-méretezési csoportok](../essentials/metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
+|Microsoft. ContainerInstance/containerGroups | Igen| Nem | [Tárolócsoportok](../essentials/metrics-supported.md#microsoftcontainerinstancecontainergroups) |
+|Microsoft. ContainerRegistry/nyilvántartók | Nem | Nem | [Tároló-nyilvántartók](../essentials/metrics-supported.md#microsoftcontainerregistryregistries) |
+|Microsoft. Tárolószolgáltatás/managedClusters | Igen | Nem | [Felügyelt fürtök](../essentials/metrics-supported.md#microsoftcontainerservicemanagedclusters) |
+|Microsoft. DataBoxEdge/dataBoxEdgeDevices | Igen | Igen | [Data Box](../essentials/metrics-supported.md#microsoftdataboxedgedataboxedgedevices) |
+|Microsoft. DataFactory/datafactories| Igen| Nem | [Az adatgyárak v1-es verziója](../essentials/metrics-supported.md#microsoftdatafactorydatafactories) |
+|Microsoft. DataFactory/gyárak |Igen | Nem | [Az adatgyár v2](../essentials/metrics-supported.md#microsoftdatafactoryfactories) |
+|Microsoft. DataShare/fiókok | Igen | Nem | [Adatmegosztások](../essentials/metrics-supported.md#microsoftdatashareaccounts) |
+|Microsoft. DBforMariaDB/kiszolgálók | Nem | Nem | [MariaDB-adatbázis](../essentials/metrics-supported.md#microsoftdbformariadbservers) |
+|Microsoft. DBforMySQL/kiszolgálók | Nem | Nem |[A MySQL-hez készült adatbázis](../essentials/metrics-supported.md#microsoftdbformysqlservers)|
+|Microsoft. DBforPostgreSQL/kiszolgálók | Nem | Nem | [PostgreSQL-hez készült adatbázis](../essentials/metrics-supported.md#microsoftdbforpostgresqlservers)|
+|Microsoft. DBforPostgreSQL/serversv2 | Nem | Nem | [A PostgreSQL v2 ADATBÁZISa](../essentials/metrics-supported.md#microsoftdbforpostgresqlserversv2)|
+|Microsoft. DBforPostgreSQL/flexibleServers | Igen | Nem | [PostgreSQL-hez készült adatbázis (rugalmas kiszolgálók)](../essentials/metrics-supported.md#microsoftdbforpostgresqlflexibleservers)|
+|Microsoft. Devices/IotHubs | Igen | Nem |[IoT Hub](../essentials/metrics-supported.md#microsoftdevicesiothubs) |
+|Microsoft. Devices/provisioningServices| Igen | Nem | [Eszközök kiépítési szolgáltatásai](../essentials/metrics-supported.md#microsoftdevicesprovisioningservices) |
+|Microsoft. DigitalTwins/digitalTwinsInstances | Igen | Nem | [Digital Twins](../essentials/metrics-supported.md#microsoftdigitaltwinsdigitaltwinsinstances) |
+|Microsoft.DocumentDB/databaseAccounts | Igen | Nem | [Cosmos DB](../essentials/metrics-supported.md#microsoftdocumentdbdatabaseaccounts) |
+|Microsoft. EventGrid/tartományok | Igen | Nem | [Event Grid-tartományok](../essentials/metrics-supported.md#microsofteventgriddomains) |
+|Microsoft. EventGrid/systemTopics | Igen | Nem | [Event Grid rendszertémakörök](../essentials/metrics-supported.md#microsofteventgridsystemtopics) |
+|Microsoft. EventGrid/témakörök |Igen | Nem | [Event Grid-témakörök](../essentials/metrics-supported.md#microsofteventgridtopics) |
+|Microsoft. EventHub/fürtök |Igen| Nem | [Fürtök Event Hubs](../essentials/metrics-supported.md#microsofteventhubclusters) |
+|Microsoft. EventHub/névterek |Igen| Nem | [Event Hubs](../essentials/metrics-supported.md#microsofteventhubnamespaces) |
+|Microsoft. HDInsight/fürtök | Igen | Nem | [HDInsight-fürtök](../essentials/metrics-supported.md#microsofthdinsightclusters) |
+|Microsoft. bepillantások/összetevők | Igen | Nem | [Application Insights](../essentials/metrics-supported.md#microsoftinsightscomponents) |
+|Microsoft. kulcstartó/tárolók | Igen |Igen |[Kulcstartók](../essentials/metrics-supported.md#microsoftkeyvaultvaults)|
+|Microsoft. Kusto/fürtök | Igen |Nem |[Fürtök Adatkezelő](../essentials/metrics-supported.md#microsoftkustoclusters)|
+|Microsoft. Logic/integrationServiceEnvironments | Igen | Nem |[Integrációs szolgáltatási környezetek](../essentials/metrics-supported.md#microsoftlogicintegrationserviceenvironments) |
+|Microsoft. Logic/munkafolyamatok | Nem | Nem |[Logic Apps](../essentials/metrics-supported.md#microsoftlogicworkflows) |
+|Microsoft. MachineLearningServices/munkaterületek | Igen | Nem | [Machine Learning](../essentials/metrics-supported.md#microsoftmachinelearningservicesworkspaces) |
+|Microsoft. Maps/fiókok | Igen | Nem | [Maps-fiókok](../essentials/metrics-supported.md#microsoftmapsaccounts) |
+|Microsoft. Media/Mediaservices | Nem | Nem | [Media Services](../essentials/metrics-supported.md#microsoftmediamediaservices) |
+|Microsoft. Media/Mediaservices/streamingEndpoints | Igen | Nem | [Media Services streaming-végpontok](../essentials/metrics-supported.md#microsoftmediamediaservicesstreamingendpoints) |
+|Microsoft. NetApp/netAppAccounts/capacityPools | Igen | Igen | [Azure NetApp-kapacitási készletek](../essentials/metrics-supported.md#microsoftnetappnetappaccountscapacitypools) |
+|Microsoft. NetApp/netAppAccounts/capacityPools/kötetek | Igen | Igen | [Azure NetApp-kötetek](../essentials/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) |
+|Microsoft. Network/applicationGateways | Igen | Nem | [Application Gateway átjárók](../essentials/metrics-supported.md#microsoftnetworkapplicationgateways) |
+|Microsoft. Network/azurefirewalls | Igen | Nem | [Tűzfalak](../essentials/metrics-supported.md#microsoftnetworkazurefirewalls) |
+|Microsoft. Network/dnsZones | Nem | Nem | [DNS-zónák](../essentials/metrics-supported.md#microsoftnetworkdnszones) |
+|Microsoft. Network/expressRouteCircuits | Igen | Nem |[ExpressRoute-áramkörök](../essentials/metrics-supported.md#microsoftnetworkexpressroutecircuits) |
+|Microsoft. Network/expressRoutePorts | Igen | Nem |[ExpressRoute Direct](../essentials/metrics-supported.md#microsoftnetworkexpressrouteports) |
+|Microsoft. Network/loadBalancers (csak standard SKU-hoz)| Igen| Nem | [Terheléselosztó](../essentials/metrics-supported.md#microsoftnetworkloadbalancers) |
+|Microsoft. Network/natGateways| Nem | Nem | [NAT-átjárók](../essentials/metrics-supported.md#microsoftnetworknatgateways) |
+|Microsoft. Network/privateEndpoints| Nem | Nem | [Privát végpontok](../essentials/metrics-supported.md#microsoftnetworkprivateendpoints) |
+|Microsoft. Network/privateLinkServices| Nem | Nem | [Private link Services](../essentials/metrics-supported.md#microsoftnetworkprivatelinkservices) |
+|Microsoft. Network/nyilvános IP | Nem | Nem | [Nyilvános IP-címek](../essentials/metrics-supported.md#microsoftnetworkpublicipaddresses)|
+|Microsoft. Network/trafficManagerProfiles | Igen | Nem | [Traffic Manager-profilok](../essentials/metrics-supported.md#microsoftnetworktrafficmanagerprofiles) |
+|Microsoft. OperationalInsights/munkaterületek| Igen | Nem | [Log Analytics-munkaterületek](../essentials/metrics-supported.md#microsoftoperationalinsightsworkspaces)|
+|Microsoft. peering/társaik | Igen | Nem | [Társviszonyok](../essentials/metrics-supported.md#microsoftpeeringpeerings) |
+|Microsoft. peering/peeringServices | Igen | Nem | [Társviszony-létesítési szolgáltatások](../essentials/metrics-supported.md#microsoftpeeringpeeringservices) |
+|Microsoft. PowerBIDedicated/kapacitások | Nem | Nem | [Kapacitások](../essentials/metrics-supported.md#microsoftpowerbidedicatedcapacities) |
+|Microsoft. Relay/névterek | Igen | Nem | [Továbbítók](../essentials/metrics-supported.md#microsoftrelaynamespaces) |
+|Microsoft. Search/searchServices | Nem | Nem | [Keresési szolgáltatások](../essentials/metrics-supported.md#microsoftsearchsearchservices) |
+|Microsoft. ServiceBus/névterek | Igen | Nem | [Szolgáltatásbusz](../essentials/metrics-supported.md#microsoftservicebusnamespaces) |
+|Microsoft. SQL/managedInstances | Nem | Igen | [Felügyelt SQL-példányok](../essentials/metrics-supported.md#microsoftsqlmanagedinstances) |
+|Microsoft. SQL/kiszolgálók/adatbázisok | Nem | Igen | [SQL Database-adatbázisok](../essentials/metrics-supported.md#microsoftsqlserversdatabases) |
+|Microsoft. SQL/kiszolgálók/elasticPools | Nem | Igen | [Rugalmas SQL-készletek](../essentials/metrics-supported.md#microsoftsqlserverselasticpools) |
+|Microsoft. Storage/storageAccounts |Igen | Nem | [Storage-fiókok](../essentials/metrics-supported.md#microsoftstoragestorageaccounts)|
+|Microsoft. Storage/storageAccounts/blobServices | Igen| Nem | [Storage-fiókok – Blobok](../essentials/metrics-supported.md#microsoftstoragestorageaccountsblobservices) |
+|Microsoft. Storage/storageAccounts/fileServices | Igen| Nem | [Storage-fiókok – fájlok](../essentials/metrics-supported.md#microsoftstoragestorageaccountsfileservices) |
+|Microsoft. Storage/storageAccounts/queueServices | Igen| Nem | [Storage-fiókok – várólisták](../essentials/metrics-supported.md#microsoftstoragestorageaccountsqueueservices) |
+|Microsoft. Storage/storageAccounts/tableServices | Igen| Nem | [Storage-fiókok – táblák](../essentials/metrics-supported.md#microsoftstoragestorageaccountstableservices) |
+|Microsoft. StorageCache/gyorsítótárak | Igen | Nem | [HPC-gyorsítótárak](../essentials/metrics-supported.md#microsoftstoragecachecaches) |
+|Microsoft. StorageSync/storageSyncServices | Igen | Nem | [Storage Sync Services](../essentials/metrics-supported.md#microsoftstoragesyncstoragesyncservices) |
+|Microsoft. StreamAnalytics/streamingjobs | Igen | Nem | [Stream Analytics](../essentials/metrics-supported.md#microsoftstreamanalyticsstreamingjobs) |
+|Microsoft. szinapszis/munkaterületek | Igen | Nem | [Synapse Analytics](../essentials/metrics-supported.md#microsoftsynapseworkspaces) |
+|Microsoft. szinapszis/munkaterületek/bigDataPools | Igen | Nem | [Szinapszis Analitika Apache Spark készletek](../essentials/metrics-supported.md#microsoftsynapseworkspacesbigdatapools) |
+|Microsoft. szinapszis/munkaterületek/sqlPools | Igen | Nem | [Szinapszis Analytics SQL-készletek](../essentials/metrics-supported.md#microsoftsynapseworkspacessqlpools) |
+|Microsoft. VMWareCloudSimple/virtualMachines | Igen | Nem | [CloudSimple-virtuálisgépek](../essentials/metrics-supported.md#microsoftvmwarecloudsimplevirtualmachines) |
+|Microsoft. Web/hostingEnvironments/multiRolePools | Igen | Nem | [Több szerepkört használó készletek App Service Environment](../essentials/metrics-supported.md#microsoftwebhostingenvironmentsmultirolepools)|
+|Microsoft. Web/hostingEnvironments/workerPools | Igen | Nem | [Munkavégző készletek App Service Environment](../essentials/metrics-supported.md#microsoftwebhostingenvironmentsworkerpools)|
+|Microsoft. Web/kiszolgálófarmok | Igen | Nem | [App Service csomagok](../essentials/metrics-supported.md#microsoftwebserverfarms)|
+|Microsoft. Web/Sites | Igen | Nem | [App Services és függvények](../essentials/metrics-supported.md#microsoftwebsites)|
+|Microsoft. Web/Sites/Slots | Igen | Nem | [App Service tárolóhelyek](../essentials/metrics-supported.md#microsoftwebsitesslots)|
 
 <sup>1</sup> nem támogatott a virtuálisgép-hálózati metrikák esetében (összesen a hálózat, a hálózat teljes száma, a bejövő folyamatok, a kimenő folyamatok, a bejövő folyamatok maximális létrehozási sebessége, a kimenő forgalom maximális száma) és az egyéni metrikák.
 
@@ -183,6 +183,6 @@ A POST művelet a következő JSON-adattartalomot és sémát tartalmazza az ös
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ az új [riasztási élményről](../platform/alerts-overview.md).
+* További információ az új [riasztási élményről](./alerts-overview.md).
 * További információ a [log-riasztásokról az Azure-ban](./alerts-unified-log.md).
-* További információ [Az Azure-beli riasztásokról](../platform/alerts-overview.md).
+* További információ [Az Azure-beli riasztásokról](./alerts-overview.md).

@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: 7ad0e73a90e733af0dd752100ebc71908f68181a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d3c4c4e86e2461ea1d05af284e724a5a2991f040
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388481"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727039"
 ---
 # <a name="manage-resources-created-for-the-vm-move"></a>A virtuális gép áthelyezéséhez létrehozott erőforrások kezelése
 
@@ -24,7 +24,7 @@ A virtuális gépek régiók közötti áthelyezése után az erőforrás-mozgat
 
 Törölje kézzel az áthelyezési gyűjteményt, és Site Recovery a virtuális gép áthelyezéséhez létrehozott erőforrásokat.
 
-1. Tekintse át az erőforráscsoport erőforrásait ```ResourceMoverRG-<sourceregion>-<target-region>``` .
+1. Tekintse át az erőforráscsoport erőforrásait ```ResourceMoverRG-<sourceregion>-<target-region>-<metadataRegionShortName>``` .
 2. Győződjön meg arról, hogy a virtuális gép és az áthelyezési gyűjteményben lévő összes többi forrás erőforrás át lett helyezve/törölve lett. Ezzel biztosíthatja, hogy ne legyenek használatban függő erőforrások.
 2. Törölje ezeket az erőforrásokat.
 

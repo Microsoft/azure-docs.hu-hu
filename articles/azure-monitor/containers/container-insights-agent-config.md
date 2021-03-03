@@ -1,18 +1,18 @@
 ---
-title: Azure Monitor konfigurálása a containers Agent adatgyűjtéshez | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan konfigurálható a Azure Monitor for containers Agent az stdout/stderr és a környezeti változók naplózási gyűjteményének vezérléséhez.
+title: Tároló-elemzések ügynöke adatgyűjtésének konfigurálása | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan konfigurálható a Container betekintő ügynök az stdout/stderr és a környezeti változók naplózási gyűjteményének vezérléséhez.
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: f21b841bc129012b684d2a1c59eb72989fe9e0e0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d866fec2013daf9b8edfdbfd703c7b1098ae91bd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100620198"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708390"
 ---
-# <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Ügynökadatok gyűjtésének konfigurálása a tárolókhoz készült Azure Monitorban
+# <a name="configure-agent-data-collection-for-container-insights"></a>Az ügynök adatgyűjtésének konfigurálása a tárolók elemzéséhez
 
-A tárolók Azure Monitor az stdout, a stderr és a környezeti változókat gyűjtik a felügyelt Kubernetes-fürtökre telepített tároló-munkaterhelésekről a tároló ügynökből. Az ügynök adatgyűjtési beállításainak konfigurálásához létrehozhat egy egyéni Kubernetes-ConfigMaps a felhasználói élmény szabályozása érdekében. 
+A Container-információk az stdout, a stderr és a környezeti változókat gyűjtik a felügyelt Kubernetes-fürtökre telepített tároló-munkaterhelésekről a tároló ügynökből. Az ügynök adatgyűjtési beállításainak konfigurálásához létrehozhat egy egyéni Kubernetes-ConfigMaps a felhasználói élmény szabályozása érdekében. 
 
 Ez a cikk bemutatja, hogyan hozhat létre ConfigMap, és hogyan konfigurálhatja az adatgyűjtést a követelmények alapján.
 
@@ -142,8 +142,8 @@ A kimenet az alábbihoz hasonlóan fog megjelenni a Megjegyzés sémája – ver
 
 ## <a name="next-steps"></a>Következő lépések
 
-- A tárolók Azure Monitor nem tartalmaz előre meghatározott riasztásokat. Tekintse át a [teljesítménnyel kapcsolatos riasztások létrehozása a Azure monitor for containers](./container-insights-log-alerts.md) szolgáltatással című témakört, amelyből megtudhatja, hogyan hozhat létre ajánlott riasztásokat magas CPU-és memóriahasználat esetén a DevOps vagy működési folyamatok és eljárások támogatásához
+- A tároló-felismerések nem tartalmazzák a riasztások előre meghatározott készletét. Tekintse át a [teljesítmény-riasztások létrehozása a Container-információkkal](./container-insights-log-alerts.md) című témakört, amelyből megtudhatja, hogyan hozhat létre ajánlott riasztásokat magas CPU-és memóriahasználat esetén a DevOps vagy működési folyamatainak és eljárásainak támogatásához.
 
-- A figyelés lehetővé teszi, hogy az AK-beli vagy hibrid fürtök és a rajtuk futó munkaterhelések állapotának és erőforrás-felhasználásának összegyűjtésével [hogyan használhatók](container-insights-analyze.md) a Azure monitor a tárolók számára.
+- A figyelés lehetővé teszi, hogy az AK-beli vagy hibrid fürtök és a rajtuk futó munkaterhelések állapotának és erőforrás-felhasználásának összegyűjtésével [hogyan használhatók](container-insights-analyze.md) a tároló-információk.
 
 - Megtekintheti a [napló lekérdezési példáit](container-insights-log-search.md#search-logs-to-analyze-data) , amelyekkel előre definiált lekérdezéseket és példákat tekinthet meg a fürtök riasztásának, megjelenítésének vagy elemzésének kiértékeléséhez és testreszabásához.

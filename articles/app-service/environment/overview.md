@@ -4,15 +4,15 @@ description: A App Service Environment áttekintése
 author: ccompy
 ms.assetid: 3d37f007-d6f2-4e47-8e26-b844e47ee919
 ms.topic: article
-ms.date: 11/16/2020
+ms.date: 03/02/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: fbc498fcd654d16936c2548528e2600be68a2ad9
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 23b23340550ded3642d19500270f06cfb6faf8cb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663618"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735097"
 ---
 # <a name="app-service-environment-overview"></a>App Service Environment áttekintése 
 
@@ -25,7 +25,7 @@ Az Azure App Service Environment egy Azure App Service-funkció, amely teljesen 
 - Windows-webalkalmazások
 - Linux-webalkalmazások
 - Docker-tárolók
-- Függvények
+- Functions
 
 Az App Service Environment (ASE) a következő igényekkel rendelkező összes alkalmazási számítási feladat elvégzésére használható:
 
@@ -53,7 +53,7 @@ A App Service Environment számos felhasználási esettel rendelkezik, beleértv
 Számos hálózati funkció lehetővé teszi, hogy az alkalmazások a több-bérlős App Service a hálózat izolált erőforrásainak elérésére vagy a hálózat elkülönítésére legyenek képesek. Ezek a funkciók az alkalmazás szintjén engedélyezettek.  A benyújtó nem rendelkezik további konfigurációval az alkalmazásokban, hogy azok a VNet legyenek. Az alkalmazások olyan hálózati elkülönített környezetbe vannak telepítve, amely már egy VNet van. A hálózatról elkülönített, különálló alkalmazásokat üzemeltető szolgáltatón kívül egy egybérlős rendszer is működik. Nincsenek más ügyfelek, akik a közszolgáltatást használják. Ha valóban szüksége van egy teljes elkülönítési történetre, akkor azt is megteheti, hogy dedikált hardverre helyezi üzembe a bevezetését. A hálózati elkülönített alkalmazások, az önálló bérletek és a 
 
 ## <a name="dedicated-environment"></a>Dedikált környezet
-A kiegészítő csomag kizárólag egyetlen előfizetéshez van hozzárendelve, és 200-es App Service-példányok üzemeltetésére is képes. A tartomány akár 100 példányt is magában foglalhat egyetlen App Service-csomag keretében, vagy 100 egypéldányos App Service-csomagot, illetve ezek között bármennyit.
+A kiegészítő csomag kizárólag egyetlen előfizetéshez van hozzárendelve, és a 200-es számú App Service több App Service csomagra is képes tárolni. A "példány" szó App Service vízszintes skálázási tervre hivatkozik. Az egyes példányok egy feldolgozói szerepkörrel egyenértékűek. Míg a központnak 200 összes példánya lehet, egy elkülönített v2 App Service csomag 100 példányt tartalmazhat. A kiegészítő 100 csomag két App Service csomagot képes tárolni az egyes, 200 egypéldányos App Service csomagok esetében, vagy minden a kettő között.
 
 Egy ASE előtérrendszerekből és feldolgozókból áll. Az előtérrendszerek a HTTP/HTTPS-végződtetésért, valamint az alkalmazáskérések egy ASE-n belüli automatikus terheléselosztásáért felelősek. Az előtérrendszerek az ASE App Service-csomagjainak felskálázásakor automatikusan hozzáadódnak.
 
@@ -77,7 +77,7 @@ Az alkalmazásoknak gyakran kell hozzáférniük vállalati erőforrásokhoz, p�
 ## <a name="preview"></a>Előnézet
 A App Service Environment v3 nyilvános előzetes verzióban érhető el.  Néhány funkció az előzetes verzió alatt lesz hozzáadva. A ASEv3 jelenlegi korlátai a következők:
 
-- Az App Service-csomag öt példányon túli méretezésének lehetősége
+- A App Service-csomag 50 példányon túli méretezésének lehetősége
 - Nem lehet lekérni egy tárolót egy privát beállításjegyzékből
 - A jelenleg nem támogatott App Service funkciók nem képesek az ügyfél VNet
 - Nincs külső üzembe helyezési modell internetről elérhető végponttal

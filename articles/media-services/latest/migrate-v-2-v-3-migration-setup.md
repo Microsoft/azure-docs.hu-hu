@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2021
 ms.author: inhenkel
-ms.openlocfilehash: 1f9e0816a3533008a01f26ca7c0e712abfa23e8e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 779a52b44a5dc4e81dc7910da12c5cfb91c1c3ca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946245"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705381"
 ---
 # <a name="step-3---set-up-to-migrate-to-the-v3-rest-api-or-client-sdk"></a>3. lépés – áttelepítés beállítása a v3 REST API vagy az ügyféloldali SDK-ra
 
@@ -50,8 +50,8 @@ Kövesse a rövid útmutató lépéseit a [környezet beállításához](how-to-
 
 ## <a name="download-client-sdk-of-your-choice-and-set-up-your-environment"></a>Az Ön által választott ügyféloldali SDK letöltése és a környezet beállítása
 
-- A [.net](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet&preserve-view=true), a .net Core, a [Node.js](https://docs.microsoft.com/javascript/api/overview/azure/mediaservices/management?view=azure-node-latest&preserve-view=true), a [Python](https://docs.microsoft.com/python/api/overview/azure/mediaservices/management?view=azure-python&preserve-view=true), a [Java](https://docs.microsoft.com/java/api/overview/azure/mediaservices/management?view=azure-java-stable&preserve-view=true), a [Go](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/mediaservices/mgmt/2018-07-01/media)és a [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md)esetében elérhető SDK-k.
-- [Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest&preserve-view=true)   integráció az egyszerű parancsfájlok támogatásához.
+- A [.net](/dotnet/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-dotnet), a .net Core, a [Node.js](/javascript/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-node-latest), a [Python](/python/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-python), a [Java](/java/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-java-stable), a [Go](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/mediaservices/mgmt/2018-07-01/media)és a [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md)esetében elérhető SDK-k.
+- [Azure CLI](/cli/azure/ams?preserve-view=true&view=azure-cli-latest)   integráció az egyszerű parancsfájlok támogatásához.
 
 > [!NOTE]
 > A közösségi PHP SDK már nem érhető el a (z) v3 Azure Media Serviceshoz. Ha a PHP-t használja a v2-ben, akkor közvetlenül a kódban kell áttérnie a REST APIra.
@@ -66,8 +66,8 @@ Kövesse a rövid útmutató lépéseit a [környezet beállításához](how-to-
 
 ## <a name="rest"></a>[REST](#tab/rest)
 
-A [poster](https://docs.microsoft.com/azure/media-services/latest/media-rest-apis-with-postman) Media Services v3 REST API-hívásokhoz használható.
-Olvassa el a [REST API-hivatkozási lapokat](https://docs.microsoft.com/rest/api/media/).
+A [poster](./media-rest-apis-with-postman.md) Media Services v3 REST API-hívásokhoz használható.
+Olvassa el a [REST API-hivatkozási lapokat](/rest/api/media/).
 
 A Poster-gyűjteményben az 2020-05-01-es verzió sztringjét kell használnia.
 

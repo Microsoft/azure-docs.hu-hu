@@ -6,12 +6,16 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-java
 - devx-track-azurecli
-ms.openlocfilehash: 5ebb30101d191bb254017db7b0de2f9b8bce145d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+adobe-target: true
+adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
+adobe-target-experience: Experience B
+adobe-target-content: ./create-first-function-cli-java-uiex
+ms.openlocfilehash: 0ef52da8400cfadfaaa26664d984d8b898a3b9a3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755177"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729300"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>Gyors útmutató: Java-függvény létrehozása az Azure-ban a parancssorból
 
@@ -220,7 +224,7 @@ Remove-AzResourceGroup -Name java-functions-group
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Kapcsolódás Azure Storage-várólistához](functions-add-output-binding-storage-queue-cli.md?pivots=programming-language-java)

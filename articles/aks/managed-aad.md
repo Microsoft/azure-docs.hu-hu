@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/1/2021
 ms.author: miwithro
-ms.openlocfilehash: 7f6cf503a459175e3109a515b666bbeaa3a25b4d
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 78eed4086c04ceca677a96f03875481e56206e0c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549999"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723981"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AK által felügyelt Azure Active Directory integráció
 
@@ -231,6 +231,70 @@ A Azure Portal navigáljon a Azure Active Directory elemre, válassza a *vállal
 
 :::image type="content" source="./media/managed-aad/conditional-access-sign-in-activity.png" alt-text="Sikertelen bejelentkezési bejegyzés a feltételes hozzáférési szabályzat miatt":::
 
+## <a name="configure-just-in-time-cluster-access-with-azure-ad-and-aks"></a>Igény szerinti fürthöz való hozzáférés konfigurálása az Azure AD-vel és az AK-val
+
+A fürt hozzáférés-vezérlésének egy másik lehetősége a Privileged Identity Management (PIM) használata az igény szerinti kérelmekhez.
+
+>[!NOTE]
+> A PIM egy olyan prémium szintű Azure AD-képesség, amely prémium P2 SKU-t igényel. Az Azure AD SKU-ról további információt a [díjszabási útmutatóban][aad-pricing]talál.
+
+Ha az egyidejű hozzáférési kérelmeket egy AK-fürthöz tartozó, AK által felügyelt Azure AD-integrációval szeretné integrálni, hajtsa végre a következő lépéseket:
+
+1. A Azure Portal tetején keresse meg és válassza a Azure Active Directory lehetőséget.
+1. Jegyezze fel a bérlő AZONOSÍTÓját, amelyet a többi, a webböngészőben található utasításhoz hasonlóan a `<tenant-id>` :::image type="content" source="./media/managed-aad/jit-get-tenant-id.png" alt-text="Azure Portal képernyő jelenik meg Azure Active Directory a bérlő azonosítójának kiemelése.":::
+1. A bal oldali Azure Active Directory menüjében válassza a *csoportok* kiválasztása, majd az *új csoport* *lehetőséget.*
+    :::image type="content" source="./media/managed-aad/jit-create-new-group.png" alt-text="Megjeleníti a Azure Portal Active Directory csoportok képernyőt, ahol az &quot;új csoport&quot; lehetőség ki van emelve.":::
+1. Győződjön meg arról, hogy a csoport *biztonsági* típusa van kiválasztva, és adjon meg egy csoportnevet, például *myJITGroup*. Az *Azure ad-szerepkörökhöz rendelhető hozzá ehhez a csoporthoz (előzetes verzió)*, majd válassza az *Igen* lehetőséget. Végül válassza a *Létrehozás* lehetőséget.
+    :::image type="content" source="./media/managed-aad/jit-new-group-created.png" alt-text="Megjeleníti a Azure Portal új csoport létrehozási képernyőjét.":::
+1. A *csoportok* lapra kerül vissza. Válassza ki az újonnan létrehozott csoportot, és jegyezze fel az objektum AZONOSÍTÓját, amelyet a többi utasításhoz is a következőhöz utal `<object-id>` .
+    :::image type="content" source="./media/managed-aad/jit-get-object-id.png" alt-text="Megjeleníti az imént létrehozott csoport Azure Portal képernyőjét, kiemelve az objektum azonosítóját":::
+1. Helyezzen üzembe egy AK-t használó Azure AD-integrációval rendelkező AK-fürtöt a `<tenant-id>` `<object-id>` korábbi verziók és értékek használatával:
+    ```azurecli-interactive
+    az aks create -g myResourceGroup -n myManagedCluster --enable-aad --aad-admin-group-object-ids <object-id> --aad-tenant-id <tenant-id>
+    ```
+1. A Azure Portal vissza a bal oldali *tevékenység* menüjében válassza a *privilegizált hozzáférés (előzetes verzió)* lehetőséget, és válassza a *privilegizált hozzáférés engedélyezése* lehetőséget.
+    :::image type="content" source="./media/managed-aad/jit-enabling-priv-access.png" alt-text="Megjelenik a Azure Portal privilegizált hozzáférésének (előzetes verzió) lapja, a &quot;privilegizált hozzáférés engedélyezése&quot; kiemelve":::
+1. Válassza a *hozzárendelések hozzáadása* lehetőséget a hozzáférés megkezdéséhez.
+    :::image type="content" source="./media/managed-aad/jit-add-active-assignment.png" alt-text="Az engedélyezés után a Azure Portal emelt szintű hozzáférés (előzetes verzió) képernyője jelenik meg. A &quot;hozzárendelések hozzáadása&quot; lehetőség ki van emelve.":::
+1. Válassza ki a *tag* szerepkört, és válassza ki azokat a felhasználókat és csoportokat, akik számára engedélyezni kívánja a fürt elérését. Ezek a hozzárendelések bármikor módosíthatók a csoport rendszergazdája által. Ha készen áll a beléptetésre, válassza a *tovább* lehetőséget.
+    :::image type="content" source="./media/managed-aad/jit-adding-assignment.png" alt-text="Megjelenik a Azure Portal-hozzárendelések hozzáadása képernyő, amelynek a mintája tagként való hozzáadásra van kiválasztva. A Next (tovább) lehetőség ki van emelve.":::
+1. Válasszon egy *aktív* hozzárendelési típust, a kívánt időtartamot, és adjon meg egy indoklást. Ha készen áll a folytatásra, válassza a *hozzárendelés* lehetőséget. További információ a hozzárendelési típusokról: [jogosultsági szintű hozzáférési csoport (előzetes verzió) Kiosztása Privileged Identity Managementban][aad-assignments].
+    :::image type="content" source="./media/managed-aad/jit-set-active-assignment-details.png" alt-text="Megjelenik a Azure Portal hozzárendelések hozzáadása beállítás képernyője. Egy &quot;aktív&quot; hozzárendelési típus van kiválasztva, és egy minta-indoklás lett megadva. A &quot;hozzárendelés&quot; beállítás ki van emelve.":::
+
+A hozzárendelések elvégzése után ellenőrizze, hogy az igény szerinti hozzáférés működik-e a fürt eléréséhez. Például:
+
+```azurecli-interactive
+ az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
+```
+
+Kövesse a bejelentkezés lépéseit.
+
+A `kubectl get nodes` parancs használatával tekintse meg a fürt csomópontjait:
+
+```azurecli-interactive
+kubectl get nodes
+```
+
+Jegyezze fel a hitelesítési követelményt, és kövesse a lépéseket a hitelesítéshez. Ha a művelet sikeres, a következőhöz hasonló kimenetnek kell megjelennie:
+
+```output
+To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code AAAAAAAAA to authenticate.
+NAME                                STATUS   ROLES   AGE     VERSION
+aks-nodepool1-61156405-vmss000000   Ready    agent   6m36s   v1.18.14
+aks-nodepool1-61156405-vmss000001   Ready    agent   6m42s   v1.18.14
+aks-nodepool1-61156405-vmss000002   Ready    agent   6m33s   v1.18.14
+```
+
+### <a name="troubleshooting"></a>Hibaelhárítás
+
+Ha `kubectl get nodes` a a következőhöz hasonló hibaüzenetet ad vissza:
+
+```output
+Error from server (Forbidden): nodes is forbidden: User "aaaa11111-11aa-aa11-a1a1-111111aaaaa" cannot list resource "nodes" in API group "" at the cluster scope
+```
+
+Győződjön meg arról, hogy a biztonsági csoport rendszergazdája *aktív* hozzárendelést adott a fiókhoz.
+
 ## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók az [Azure RBAC-integrációról a Kubernetes-hitelesítéshez][azure-rbac-integration]
@@ -243,6 +307,7 @@ A Azure Portal navigáljon a Azure Active Directory elemre, válassza a *vállal
 [kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
+[aad-pricing]: /azure/pricing/details/active-directory
 
 <!-- LINKS - Internal -->
 [aad-conditional-access]: ../active-directory/conditional-access/overview.md
@@ -260,3 +325,4 @@ A Azure Portal navigáljon a Azure Active Directory elemre, válassza a *vállal
 [azure-ad-cli]: azure-ad-integration-cli.md
 [access-cluster]: #access-an-azure-ad-enabled-cluster
 [aad-migrate]: #upgrading-to-aks-managed-azure-ad-integration
+[aad-assignments]: ../active-directory/privileged-identity-management/groups-assign-member-owner.md#assign-an-owner-or-member-of-a-group

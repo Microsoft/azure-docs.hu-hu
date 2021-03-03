@@ -2,13 +2,13 @@
 title: Többlépéses webes tesztek figyelése – Azure Application Insights
 description: Többlépéses webes tesztek beállítása a webalkalmazások Azure-beli figyeléséhez Application Insights
 ms.topic: conceptual
-ms.date: 05/26/2020
-ms.openlocfilehash: 0031971dc2ccd2a9e681220dd835f46d33e36dbb
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 02/14/2021
+ms.openlocfilehash: 1d3597eaf54c40fb1f986d822af0dd6b8c8a7b2e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98934851"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719848"
 ---
 # <a name="multi-step-web-tests"></a>Többlépéses webes tesztek
 
@@ -65,7 +65,6 @@ A Visual Studio webes tesztek létrehozásával kapcsolatos útmutatásért teki
 |Beállítás| Magyarázat
 |----|----|----|
 |**Közel valós idejű (előzetes verzió)** | Javasoljuk, hogy a közel valós idejű riasztásokat használja. Az ilyen típusú riasztások konfigurálása a rendelkezésre állási teszt létrehozása után történik.  |
-|**Klasszikus** | Már nem ajánlott klasszikus riasztásokat használni az új rendelkezésre állási tesztekhez.|
 |**Riasztási hely küszöbértéke**|Legalább 3/5 helyet ajánlunk. A riasztási hely küszöbértéke és a tesztelési helyek száma közötti optimális kapcsolat a **riasztási hely küszöbértéke**  =  **– 2, legalább öt tesztelési hely.**|
 
 ## <a name="configuration"></a>Konfiguráció
@@ -106,7 +105,7 @@ Minden esetben ajánlott létrehozni egy fiókot az alkalmazásában tesztelési
 
 **SAML-hitelesítés**
 
-|Tulajdonság neve| Description|
+|Tulajdonság neve| Leírás|
 |----|-----|
 | Célközönség URI-ja | Az SAML-jogkivonat célközönségének URI-ja.  Ez a Access Control Service (ACS) URI-ja – beleértve az ACS-névteret és a gazdagép nevét. |
 | Tanúsítvány jelszava | Az ügyféltanúsítvány jelszava, amely hozzáférést biztosít a beágyazott titkos kulcshoz. |

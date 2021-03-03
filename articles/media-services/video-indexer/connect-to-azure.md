@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: 4174e63ed12faf5d10029db5b4eb9bf9a40b9b5b
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: fe6be5778997f0ef4a3f53ae45d17352eca60d8e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576278"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727260"
 ---
 # <a name="create-a-video-indexer-account"></a>Video Indexer fiók létrehozása
 
@@ -201,7 +201,7 @@ A fiók létrehozásának automatizálásához a következő két lépésből á
 
 ### <a name="prerequisites-for-connecting-to-azure-government"></a>A Azure Governmenthoz való csatlakozás előfeltételei
 
--   Azure-előfizetés [Azure Governmentban](https://docs.microsoft.com/azure/azure-government/).
+-   Azure-előfizetés [Azure Governmentban](../../azure-government/index.yml).
 - Azure AD-fiók Azure Governmentban.
 - Az engedélyekkel és erőforrásokkal kapcsolatos összes előzetes követelmény az [Azure-hoz való csatlakozás előfeltételeiben](#prerequisites-for-connecting-to-azure)leírtak szerint.
 
@@ -222,7 +222,7 @@ Fizetős fiók létrehozása a Video Indexer-portálon keresztül:
     
 ### <a name="create-new-account-via-the-api-on-azure-government"></a>Új fiók létrehozása az Azure Government API-n keresztül
 
-Ha fizetős fiókot szeretne létrehozni a Azure Governmentban, kövesse a következő témakör utasításait: [create-Paid-Account](/azure/media-services/video-indexer/connect-to-azure). Ez az API-végpont csak kormányzati Felhőbeli régiókat tartalmaz.
+Ha fizetős fiókot szeretne létrehozni a Azure Governmentban, kövesse a következő témakör utasításait: [create-Paid-Account](). Ez az API-végpont csak kormányzati Felhőbeli régiókat tartalmaz.
 
 ### <a name="limitations-of-video-indexer-on-azure-government"></a>A Azure Government Video Indexer korlátozásai
 

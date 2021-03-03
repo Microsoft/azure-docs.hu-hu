@@ -7,12 +7,12 @@ ms.date: 01/22/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 4012c7417345678717800f4fdede95947e00b828
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 374ddaa088fba9ae7035f170562e06b7f07eae47
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756758"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709376"
 ---
 # <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>Erőforrások és javaslatok kizárása a biztonságos pontszám alól 
 
@@ -110,9 +110,9 @@ A fentiekben leírtaknak megfelelően a kivételi szabályok hatékony eszközt 
 
 Ahhoz, hogy nyomon tudja követni, hogy a felhasználók hogyan használják ezt a képességet, létrehoztunk egy Azure Resource Manager (ARM) sablont, amely egy logikai alkalmazás forgatókönyvének és az összes szükséges API-kapcsolat üzembe helyezésével értesíti Önt, ha létrejött a kivétel.
 
-- Ha többet szeretne megtudni a forgatókönyvről, tekintse meg ezt a bejegyzést a [technikai Közösség blogs](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-keep-track-of-resource-exemptions-in-azure-security/ba-p/1770580) weboldalán.
+- Ha többet szeretne megtudni a forgatókönyvről, tekintse meg a technikai Közösség blogbejegyzést, amely [ismerteti az erőforrás-kivételek nyomon követését Azure Security Center](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-keep-track-of-resource-exemptions-in-azure-security/ba-p/1770580)
 - Az ARM-sablon a [Azure Security Center GitHub-tárházban](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation/Notify-ResourceExemption) található.
-- [Ide](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Security-Center%2Fmaster%2FWorkflow%2520automation%2FNotify-ResourceExemption%2Fazuredeploy.json) kattintva telepítheti az összes szükséges összetevőt 
+- Az összes szükséges összetevő üzembe helyezéséhez [használja ezt az automatikus folyamatot](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Security-Center%2Fmaster%2FWorkflow%2520automation%2FNotify-ResourceExemption%2Fazuredeploy.json)
 
 
 ## <a name="find-recommendations-with-exemptions-using-azure-resource-graph"></a>Javaslatok keresése kivételekkel az Azure Resource Graph használatával
@@ -180,7 +180,7 @@ Ha a javaslathoz nem hoz létre kivételt, akkor a következő két üzenet egyi
     *Korlátozott engedélyekkel rendelkezik a kivételek az összes házirend-kezdeményezésre való alkalmazásához, a kivételeket csak a megfelelő engedélyekkel rendelkező kezdeményezésekhez hozza létre a rendszer.*
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan mentesített egy erőforrást egy javaslatból, hogy az ne befolyásolja a biztonságos pontszámot. A biztonságos pontszámról további információt a következő témakörben talál:
 

@@ -272,6 +272,8 @@
               href: azure-stack-edge-gpu-connect-powershell-interface.md
             - name: Frissítések alkalmazása
               href: azure-stack-edge-gpu-install-update.md
+            - name: 'Eszköz alaphelyzetbe állítása, újraaktiválása'
+              href: azure-stack-edge-reset-reactivate-device.md
             - name: Eszköz visszaadása
               href: azure-stack-edge-return-device.md
             - name: Eszköz cseréje

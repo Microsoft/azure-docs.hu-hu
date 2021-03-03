@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/27/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: b69e701177c6f017388521ed05c37de1271c7e60
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4e933000c8e700d8bfd193b542e3855b2fca26f8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650158"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689334"
 ---
 # <a name="tutorial-develop-a-sample-scim-endpoint"></a>Oktatóanyag: minta SCIM-végpont fejlesztése
 
@@ -57,6 +57,8 @@ A következő lépésekkel telepítheti a SCIM-végpontot egy szolgáltatásba a
     ![Képernyőkép, amely egy új App Service létrehozását mutatja be.](media/use-scim-to-build-users-and-groups-endpoints/cloud-publish-3.png)
 
 1. Válassza ki a használni kívánt erőforráscsoportot, és válassza a **Közzététel** lehetőséget.
+
+    ![Az új App Service közzétételét bemutató képernyőkép.](media/use-scim-to-build-users-and-groups-endpoints/cloud-publish-4.png)
 
 1. Nyissa meg az alkalmazást **Azure app Service**  >  **konfigurációban** , és válassza az **új Alkalmazásbeállítás** lehetőséget a *Token__TokenIssuer* beállítás értékkel való hozzáadásához `https://sts.windows.net/<tenant_id>/` . Cserélje le `<tenant_id>` az-t az Azure ad-bérlői azonosítóra. Ha az SCIM-végpontot [Poster](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint)használatával szeretné tesztelni, adjon hozzá egy *ASPNETCORE_ENVIRONMENT* beállítást az értékkel `Development` .
 

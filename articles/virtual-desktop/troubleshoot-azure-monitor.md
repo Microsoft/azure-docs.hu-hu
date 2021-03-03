@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1453d43707a3680380e553fe69d738b27fe5ae3a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c335c1cf7e5319b812345714dbdc6b87ddc4e81b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571348"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709172"
 ---
 # <a name="troubleshoot-azure-monitor-for-windows-virtual-desktop-preview"></a>A Windows rendszerű virtuális asztali számítógép (előzetes verzió) Azure Monitor hibáinak megoldása
 
@@ -42,7 +42,7 @@ Ha az adatai nem megfelelően jelennek meg, ellenőrizze a konfigurációt, az e
     - Olvasási hozzáférés az előfizetés azon csoportjaihoz, amelyek a Windows rendszerű virtuális asztali munkamenet-gazdagépeket tárolják 
     - Olvasási hozzáférés a Log Analytics munkaterülethez
 
-- Előfordulhat, hogy a kiszolgáló tűzfalán meg kell nyitnia a kimenő portokat, hogy Azure Monitor az adatküldést a portálra, lásd: [kimenő portok](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses). 
+- Előfordulhat, hogy a kiszolgáló tűzfalán meg kell nyitnia a kimenő portokat, hogy Azure Monitor az adatküldést a portálra, lásd: [kimenő portok](../azure-monitor/app/ip-addresses.md). 
 
 - Nem látja a legutóbbi tevékenységek adatait? Érdemes 15 percet várni, és frissíteni a hírcsatornát. A naplózási adatok feltöltéséhez a Azure Monitor 15 perces késési időszakot biztosít. További információ: [adatfeldolgozási idő naplózása Azure monitorban](../azure-monitor/logs/data-ingestion-time.md).
 
@@ -62,8 +62,8 @@ További információ az adatkifejezésekről: [Azure monitor for Window Virtual
 
 Ha több teljesítményszámlálókat vagy eseményt szeretne figyelni, engedélyezheti őket a Log Analytics munkaterületre való küldéshez, és megfigyelheti őket a gazdagép diagnosztika szolgáltatásában: böngésző. 
 
-- Teljesítményszámlálók hozzáadásával kapcsolatban lásd: [teljesítményszámlálók konfigurálása](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters#configuring-performance-counters)
-- Windows-események hozzáadásával kapcsolatban lásd: [Windows-eseménynaplók konfigurálása](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-windows-events#configuring-windows-event-logs)
+- Teljesítményszámlálók hozzáadásával kapcsolatban lásd: [teljesítményszámlálók konfigurálása](../azure-monitor/agents/data-sources-performance-counters.md#configuring-performance-counters)
+- Windows-események hozzáadásával kapcsolatban lásd: [Windows-eseménynaplók konfigurálása](../azure-monitor/agents/data-sources-windows-events.md#configuring-windows-event-logs)
 
 Nem található olyan adatpont, amely segít a probléma diagnosztizálásában? Küldje el nekünk visszajelzését!
 

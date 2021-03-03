@@ -7,23 +7,30 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.reviewer: dseven
 ms.author: cavoeg
-author: CaitlinV39
-ms.date: 02/03/2021
-ms.openlocfilehash: 220618f93d23ec71ee3246e8bd68bfd724860696
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+author: zxue
+ms.date: 02/24/2021
+ms.openlocfilehash: 73e1db2754749e1fb1142231e7179771bcce8e76
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581969"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712776"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>Diagnosztikai naplózás engedélyezése a FHIR készült Azure API-ban
 
 Ebből a cikkből megtudhatja, hogyan engedélyezheti a diagnosztikai naplózást az Azure API-ban a FHIR, és áttekintheti a naplókhoz tartozó egyes lekérdezéseket. A diagnosztikai naplókhoz való hozzáférés elengedhetetlen minden olyan egészségügyi szolgáltatáshoz, ahol a szabályozási követelményeknek (például HIPAA) való megfelelés kötelező. A diagnosztikai naplókat engedélyező Azure API-FHIR az Azure Portal [**diagnosztikai beállításai**](../azure-monitor/essentials/diagnostic-settings.md) . 
 
+## <a name="view-and-download-fhir-metrics-data"></a>FHIR-metrikai adatok megtekintése és letöltése
+
+A mérőszámokat a Figyelés területen tekintheti meg | Metrikák a portálról. A metrikák közé tartozik a kérelmek száma, az átlagos késés, a hibák száma, az adatok mérete, a felhasznált RUs, a meghaladt mennyiségű kérések száma és a rendelkezésre állás (százalékban). Az alábbi képernyőképen az elmúlt 7 napban egy kis tevékenységgel rendelkező mintavételi környezetben használt RUs látható. Az adatletöltés JSON formátumban is elvégezhető.
+
+   :::image type="content" source="media/diagnostic-logging/fhir-metrics-rus-screen.png" alt-text="Azure API FHIR Mérőszámokhoz a portálon" lightbox="media/diagnostic-logging/fhir-metrics-rus-screen.png":::
+
 ## <a name="enable-audit-logs"></a>Naplók engedélyezése
 1. Ha engedélyezni szeretné a diagnosztikai naplózást az Azure API FHIR, válassza ki az Azure API-t a FHIR szolgáltatáshoz a Azure Portal 
-2. A **diagnosztikai beállítások**  
- ![ diagnosztikai beállításainak navigálása](media/diagnostic-logging/diagnostic-settings-screen.png) 
+2. Navigáljon a **diagnosztikai beállításokhoz** 
+
+   :::image type="content" source="media/diagnostic-logging/diagnostic-settings-screen.png" alt-text="Adja hozzá az Azure FHIR diagnosztikai beállításait." lightbox="media/diagnostic-logging/diagnostic-settings-screen.png":::
 
 3. Válassza a **+ diagnosztikai beállítás hozzáadása** lehetőséget
 
@@ -35,7 +42,7 @@ Ebből a cikkből megtudhatja, hogyan engedélyezheti a diagnosztikai naplózás
     2. **Adatfolyam küldése az Event hub** -nak egy harmadik féltől származó szolgáltatás vagy egyéni analitikai megoldás betöltéséhez. Ennek a lépésnek a konfigurálásához létre kell hoznia egy Event hub-névteret és egy Event hub-házirendet.
     3. **Stream a Azure Monitor log Analytics** munkaterületére. Ennek a lehetőségnek a kiválasztásához létre kell hoznia a naplók Analytics-munkaterületet.
 
-6. Válassza a **AuditLogs** és/vagy a **AllMetrics** lehetőséget. A metrikák közé tartozik a szolgáltatás neve, a rendelkezésre állás, az adatok mérete, a teljes késés, a kérelmek teljes száma, az összes hiba és az időbélyeg.
+6. Válassza a **AuditLogs** és/vagy a **AllMetrics** lehetőséget. A metrikák közé tartozik a szolgáltatás neve, a rendelkezésre állás, az adatok mérete, a teljes késés, a kérelmek teljes száma, az összes hiba és az időbélyeg. A [támogatott mérőszámokról](https://docs.microsoft.com/azure/azure-monitor/essentials/metrics-supported#microsofthealthcareapisservices)részletesebben is tájékozódhat. 
 
    :::image type="content" source="media/diagnostic-logging/fhir-diagnostic-setting.png" alt-text="Az Azure FHIR diagnosztikai beállításai. Válassza a AuditLogs és/vagy a AllMetrics lehetőséget." lightbox="media/diagnostic-logging/fhir-diagnostic-setting.png":::
 

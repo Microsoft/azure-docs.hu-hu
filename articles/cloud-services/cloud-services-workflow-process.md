@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: bda066dd50d2f95776981eafc01e3ddd04d33e54
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 606510940460db963a2aa63deb57b6dba77de3ac
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741060"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700133"
 ---
 # <a name="workflow-of-windows-azure-classic-vm-architecture"></a>A klasszikus Windows Azure VM-architektúra munkafolyamata 
 
@@ -80,7 +80,7 @@ Az alábbi ábra az Azure-erőforrások architektúráját mutatja be.
 5. A WindowsAzureGuestAgent beállítja a vendég operációs rendszert (tűzfal, ACL, LocalStorage stb.), átmásol egy új XML-konfigurációs fájlt a c:\Config-be, majd elindítja a WaHostBootstrapper folyamatot.
 6. A teljes IIS-alapú webes szerepkörök esetében a WaHostBootstrapper elindítja a IISConfigurator-t, és azt jelzi, hogy az IIS-ből törli a webes szerepkör meglévő AppPools.
 7. A WaHostBootstrapper beolvassa a E:\RoleModel.xml **indítási** feladatait, és elindítja az indítási feladatok végrehajtását. A WaHostBootstrapper megvárja, amíg az összes egyszerű indítási feladat befejeződött, és "sikeres" üzenetet adott vissza.
-8. A teljes IIS-alapú webes szerepkörök esetében a WaHostBootstrapper közli a IISConfigurator, hogy konfigurálja az IIS-alkalmazáskészlet, és a helyet a következőre mutasson `E:\Sitesroot\<index>` , ahol a `<index>` 0 alapú index a `<Sites>` szolgáltatáshoz definiált elemek számával.
+8. A teljes IIS-alapú webes szerepkörök esetében a WaHostBootstrapper közli a IISConfigurator, hogy konfigurálja az IIS-alkalmazáskészlet, és a helyet a következőre mutasson `E:\Sitesroot\<index>` , ahol a `<index>` nulla alapú index a `<Sites>` szolgáltatáshoz definiált elemek számával.
 9. A WaHostBootstrapper a szerepkör típusától függően elindítja a gazdagép folyamatát:
     1. **Feldolgozói szerepkör**: WaWorkerHost.exe elindítva. A WaHostBootstrapper végrehajtja a OnStart () metódust. A visszatérést követően a WaHostBootstrapper elindítja a Run () metódust, és egyszerre készként jelöli meg a szerepkört, és a terheléselosztó rotációjában (ha InputEndpoints van meghatározva). A WaHostBootsrapper ezután egy hurokba kerül a szerepkör állapotának ellenőrzéséhez.
     2. **Teljes IIS webes szerepkör**: a aIISHost elindult. A WaHostBootstrapper végrehajtja a OnStart () metódust. A visszatérése után elindul a Run () metódus végrehajtása, majd egyidejűleg készként jelöli meg a szerepkört, és a terheléselosztó rotációs állapotba helyezi azt. A WaHostBootsrapper ezután egy hurokba kerül a szerepkör állapotának ellenőrzéséhez.

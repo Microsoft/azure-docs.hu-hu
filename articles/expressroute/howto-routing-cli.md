@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/09/2020
 ms.author: duau
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 7a482e268137946222f1c8b427424598bd78f935
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2c56e847e3b112d50285cd2c116c8f22efbc507f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735101"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715530"
 ---
 # <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-cli"></a>Oktatóanyag: társítások létrehozása és módosítása ExpressRoute-áramkörhöz a CLI használatával
 
@@ -23,7 +23,7 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre és kezelhet útválasztási 
 > * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
-> * [Nyilvános társak](about-public-peering.md)
+> * [Nyilvános társviszony-létesítés](about-public-peering.md)
 > * [Videó – privát peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
 > * [Videó – Microsoft peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
 > * [PowerShell (klasszikus)](expressroute-howto-routing-classic.md)
@@ -44,7 +44,7 @@ Az utasítások csak 2. rétegbeli kapcsolatszolgáltatásokat kínáló szolgá
 
 A ExpressRoute áramkörhöz privát és Microsoft-társítást is beállíthat. A társításokat tetszőleges sorrendben lehet konfigurálni. Az egyes társviszony-létesítéseket azonban mindenképp egyenként kell végrehajtania. További információ az útválasztási tartományokról és a társításokról: [ExpressRoute-útválasztási tartományok](expressroute-circuit-peerings.md).
 
-## <a name="microsoft-peering"></a><a name="msft"></a>Microsoftos társhálózat-létesítés
+## <a name="microsoft-peering"></a><a name="msft"></a>Microsoft-partnerek
 
 Ez a szakasz segítséget nyújt egy ExpressRoute-áramkör Microsoft-társi konfigurációjának létrehozásához, lekéréséhez, frissítéséhez és törléséhez.
 
@@ -243,8 +243,10 @@ Ez a szakasz segítséget nyújt egy ExpressRoute-áramkör Azure-beli privát t
 
 1. Konfigurálja az Azure privát társviszony-létesítést a kapcsolatcsoport számára. A következő lépések elvégzése előtt győződjön meg arról, hogy rendelkezik az alábbi elemekkel:
 
-   * Egy /30 alhálózat az elsődleges kapcsolat számára. Az alhálózat nem lehet a virtuális hálózatok számára fenntartott címterület része.
-   * Egy /30 alhálózat a másodlagos kapcsolat számára. Az alhálózat nem lehet a virtuális hálózatok számára fenntartott címterület része.
+   * Olyan alhálózatok párja, amelyek nem tartoznak a virtuális hálózatok számára fenntartott címtartomány részébe. A rendszer egy alhálózatot használ az elsődleges hivatkozáshoz, míg a másikat a másodlagos hivatkozáshoz fogja használni. Az egyes alhálózatokból az első használható IP-címet az útválasztóhoz rendeli hozzá, mivel a Microsoft a második használható IP-címet használja az útválasztóhoz. Ezt az alhálózatot három lehetőséggel látja el:
+       * IPv4: két/30 alhálózat.
+       * IPv6: két/126 alhálózat.
+       * Mindkettő: két/30 alhálózat és két/126 alhálózat.
    * Egy érvényes VLAN-azonosító a tárviszony-létesítés létrehozásához. Győződjön meg róla, hogy a kapcsolatcsoporton egy másik társviszony-létesítés sem használja ugyanezt a VLAN-azonosítót.
    * Egy AS-szám a társviszony-létesítéshez. 2 és 4 bájtos AS-számokat is használhat. Ehhez a társviszony-létesítéshez használhat privát AS-számokat is. Győződjön meg arról, hogy nem használja a 65515-et.
    * Nem **kötelező –** Egy MD5-kivonat, ha úgy dönt, hogy használ egyet.
@@ -310,7 +312,7 @@ A konfiguráció bármely részét frissítheti a következő példán keresztü
 az network express-route peering update --vlan-id 500 -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePrivatePeering
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 ### <a name="to-delete-microsoft-peering"></a><a name="deletemsft"></a>Microsoft társviszony-létesítés törlése
 

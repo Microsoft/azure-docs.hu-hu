@@ -9,12 +9,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 12/3/2020
-ms.openlocfilehash: c42eb8cac283ce096c42c9e5d4b7eac9a3e12625
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 44f093f96d0f4653a6fcca94aaa97264c93e3c7d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364375"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727940"
 ---
 # <a name="connect-data-factory-to-azure-purview-preview"></a>Data Factory összekötése az Azure hatáskörébe (előzetes verzió)
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -40,10 +40,10 @@ Ha az Azure hatáskörébe tartozó fiók Data Factory való regisztrálása ut�
 
 :::image type="content" source="./media/data-factory-purview/register-purview-account-tag.png" alt-text="Képernyőkép a hatáskörébe tartozó fiók regisztrálásához szükséges címkékről.":::
 
-2. Ellenőrizze, hogy az engedélyt megadta-e az Azure-beli hatáskörébe tartozó fiókok Data Factory való regisztrálásához. Lásd: [a Azure Data Factory és az Azure hatáskörébe való kapcsolódás](https://docs.microsoft.com/azure/purview/how-to-link-azure-data-factory#create-new-data-factory-connection)
+2. Ellenőrizze, hogy az engedélyt megadta-e az Azure-beli hatáskörébe tartozó fiókok Data Factory való regisztrálásához. Lásd: [a Azure Data Factory és az Azure hatáskörébe való kapcsolódás](../purview/how-to-link-azure-data-factory.md#create-new-data-factory-connection)
 
 ### <a name="register-data-factory-in-azure-purview"></a>Data Factory regisztrálása az Azure hatáskörébe
-Az Azure-beli Data Factory regisztrálásával kapcsolatban lásd: [a Azure Data Factory és az Azure hatáskörébe való kapcsolódás](https://docs.microsoft.com/azure/purview/how-to-link-azure-data-factory). 
+Az Azure-beli Data Factory regisztrálásával kapcsolatban lásd: [a Azure Data Factory és az Azure hatáskörébe való kapcsolódás](../purview/how-to-link-azure-data-factory.md). 
 
 ## <a name="report-lineage-data-to-azure-purview"></a>Lineage-adatjelentések az Azure hatáskörébe
 Ha az ügyfelek a másolást, az adatfolyamot vagy a SSIS-csomag végrehajtását Azure Data Factoryban futtatják, az ügyfelek megkapják a függőségi viszonyt, és magas szintű áttekintést nyújtanak a teljes munkafolyamat-folyamatról az adatforrások és a célhelyek között.

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 818cf97a640952de79e84184c52c20575a0cc92b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fe7bd4b9f800b59d2c16d4aa3dadd3626c55b7e1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100614045"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707642"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor a dedikált fürtöket naplózza
 
@@ -34,7 +34,7 @@ A fürt létrehozása után konfigurálható és hozzárendelhető munkaterület
 
 A dedikált fürtökbe betöltött adatmennyiséget a szolgáltatás szintjén, a Microsoft által felügyelt kulcsokkal vagy az [ügyfél által felügyelt kulccsal](../logs/customer-managed-keys.md)egyszer, az infrastruktúra szintjén pedig két különböző titkosítási algoritmus és két különböző kulcs használatával titkosítjuk. A [kettős titkosítás](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) védelmet biztosít olyan esetekben, amikor a titkosítási algoritmusok vagy kulcsok egyike sérül. Ebben az esetben a további titkosítási réteg továbbra is védi az adatait. A dedikált fürt lehetővé teszi, hogy az adatai a [Kulcstároló](../logs/customer-managed-keys.md#customer-lockbox-preview) -vezérlővel is védve legyenek.
 
-A fürt szintjén lévő összes művelethez a `Microsoft.OperationalInsights/clusters/write` művelet engedély szükséges a fürtön. Ez az engedély a műveletet tartalmazó tulajdonos vagy közreműködő vagy `*/write` a műveletet tartalmazó log Analytics közreműködő szerepkör használatával adható meg `Microsoft.OperationalInsights/*` . Log Analytics engedélyekkel kapcsolatos további információkért lásd: [hozzáférés kezelése a naplózási adatokhoz és munkaterületekhez Azure monitor](../platform/manage-access.md). 
+A fürt szintjén lévő összes művelethez a `Microsoft.OperationalInsights/clusters/write` művelet engedély szükséges a fürtön. Ez az engedély a műveletet tartalmazó tulajdonos vagy közreműködő vagy `*/write` a műveletet tartalmazó log Analytics közreműködő szerepkör használatával adható meg `Microsoft.OperationalInsights/*` . Log Analytics engedélyekkel kapcsolatos további információkért lásd: [hozzáférés kezelése a naplózási adatokhoz és munkaterületekhez Azure monitor](./manage-access.md). 
 
 
 ## <a name="cluster-pricing-model"></a>Fürt díjszabási modellje
@@ -77,7 +77,7 @@ A következő tulajdonságokat kell megadni:
 - **ClusterName**: felügyeleti célokra használatos. A felhasználók nem jelennek meg erre a névre.
 - **ResourceGroupName**: bármely Azure-erőforrás esetében a fürtök egy erőforráscsoporthoz tartoznak. Javasoljuk, hogy egy központi informatikai erőforráscsoportot használjon, mivel a fürtöket általában számos csapat osztja meg a szervezeten belül. További tervezési szempontokért tekintse át [a Azure monitor naplók üzembe helyezésének megtervezése](../logs/design-logs-deployment.md) című szakaszt.
 - **Hely**: a fürt egy adott Azure-régióban található. Ehhez a fürthöz csak a régióban található munkaterületek csatolhatók.
-- **SkuCapacity**: a *kapacitás foglalási* szintjét (SKU) meg kell adnia a *fürterőforrás* létrehozásakor. A *kapacitás foglalási* szintje napi 1 000 gb és 3 000 GB között lehet. Ha szükséges, a 100-es lépésekben később is frissítheti. Ha napi 3 000 GB-nál nagyobb kapacitású foglalásra van szüksége, lépjen kapcsolatba velünk a következő címen: LAIngestionRate@microsoft.com . A fürttel kapcsolatos költségekkel kapcsolatos további információkért lásd: [log Analytics-fürtök költségeinek kezelése](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)
+- **SkuCapacity**: a *kapacitás foglalási* szintjét (SKU) meg kell adnia a *fürterőforrás* létrehozásakor. A *kapacitás foglalási* szintje napi 1 000 gb és 3 000 GB között lehet. Ha szükséges, a 100-es lépésekben később is frissítheti. Ha napi 3 000 GB-nál nagyobb kapacitású foglalásra van szüksége, lépjen kapcsolatba velünk a következő címen: LAIngestionRate@microsoft.com . A fürttel kapcsolatos költségekkel kapcsolatos további információkért lásd: [log Analytics-fürtök költségeinek kezelése](./manage-cost-storage.md#log-analytics-dedicated-clusters)
 
 A *fürterőforrás* létrehozása után további tulajdonságokat (például *SKU*, * keyVaultProperties vagy *billingType*) is szerkeszthet. További részletekért lásd alább.
 
@@ -300,7 +300,7 @@ Miután létrehozta a *fürterőforrás* -erőforrást, és teljes mértékben k
 - **keyVaultProperties** – frissíti a kulcsot Azure Key Vaultban. Lásd: [a fürt frissítése a kulcs-azonosító részleteivel](../logs/customer-managed-keys.md#update-cluster-with-key-identifier-details). A következő paramétereket tartalmazza: *KeyVaultUri*, *Kulcsnév*, *Version*. 
 - **billingType** – a *billingType* tulajdonság határozza meg a *fürterőforrás* és a hozzá tartozó adatforrások számlázási hozzárendelését:
   - **Fürt** (alapértelmezett) – a fürt kapacitásának foglalási költségei a *fürterőforrás* számára vannak hozzárendelve.
-  - **Munkaterületek** – a fürt kapacitásának foglalási költségei arányosak a fürtben lévő munkaterületekhez, és a *fürt* erőforrása egy bizonyos használatot számláz ki, ha a napi teljes betöltött adat a kapacitás foglalása alatt van. A fürt árképzési modelljével kapcsolatos további tudnivalókért tekintse meg [log Analytics dedikált fürtök](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) című témakört. 
+  - **Munkaterületek** – a fürt kapacitásának foglalási költségei arányosak a fürtben lévő munkaterületekhez, és a *fürt* erőforrása egy bizonyos használatot számláz ki, ha a napi teljes betöltött adat a kapacitás foglalása alatt van. A fürt árképzési modelljével kapcsolatos további tudnivalókért tekintse meg [log Analytics dedikált fürtök](./manage-cost-storage.md#log-analytics-dedicated-clusters) című témakört. 
 
 > [!NOTE]
 > A *billingType* tulajdonság nem támogatott a PowerShellben.
@@ -573,5 +573,5 @@ Fürt törléséhez használja a következő REST-hívást:
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a [log Analytics dedikált fürt számlázásáról](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)
+- További információ a [log Analytics dedikált fürt számlázásáról](./manage-cost-storage.md#log-analytics-dedicated-clusters)
 - A [log Analytics-munkaterületek megfelelő kialakításának](../logs/design-logs-deployment.md) megismerése

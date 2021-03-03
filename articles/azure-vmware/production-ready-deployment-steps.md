@@ -2,13 +2,13 @@
 title: Az Azure VMware-megoldás üzembe helyezésének megtervezése
 description: Ez a cikk egy Azure VMware-megoldás üzembe helyezési munkafolyamatát ismerteti.  A végeredmény egy olyan környezet, amely készen áll a virtuális gép (VM) létrehozására és áttelepítésére.
 ms.topic: tutorial
-ms.date: 10/16/2020
-ms.openlocfilehash: 8b1d69f3f953b43177a3b1d0611b51ca2cfb1a75
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.date: 02/22/2021
+ms.openlocfilehash: f9d49d7ff8109364c9fc1eee4388b30ccc1a61b6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762865"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733660"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Az Azure VMware-megoldás üzembe helyezésének megtervezése
 
@@ -31,7 +31,7 @@ Azonosítsa az Azure VMware-megoldás üzembe helyezéséhez használni kívánt
 
 Azonosítsa az Azure VMware-megoldáshoz használni kívánt erőforráscsoportot.  Általában egy erőforráscsoport jön létre kifejezetten az Azure VMware megoldáshoz, de használhat egy meglévő erőforráscsoportot is.
 
-## <a name="region"></a>Régió
+## <a name="region"></a>Region
 
 Azonosítsa az Azure VMware-megoldás üzembe helyezéséhez használni kívánt régiót.  További információkért tekintse meg az [Azure-termékek régiónként elérhető útmutatót](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=azure-vmware).
 
@@ -51,12 +51,6 @@ Azonosítsa az Azure VMware-megoldás telepítésekor használni kívánt gazdag
 Adja meg az Azure VMware-megoldás saját felhőbe telepíteni kívánt gazdagépek számát.  A gazdagépek minimális száma három, a maximális érték pedig a fürt 16.  További információkért tekintse meg az [Azure VMware Solution Private Cloud és a Clusters](concepts-private-clouds-clusters.md#clusters) dokumentációját.
 
 Később is kiterjesztheti a fürtöt, ha a kezdeti üzembe helyezési számon túl kell lépnie.
-
-## <a name="vcenter-admin-password"></a>vCenter rendszergazdai jelszava
-Adja meg a vCenter rendszergazdai jelszavát.  Az üzembe helyezés során létre kell hoznia egy vCenter-rendszergazdai jelszót. A jelszó a cloudadmin@vsphere.local vCenter létrehozásakor a rendszergazdai fiókra vonatkozik. Ezzel bejelentkezhet a vCenter-be.
-
-## <a name="nsx-t-admin-password"></a>NSX-T rendszergazdai jelszó
-Adja meg a NSX-T rendszergazdai jelszót.  Az üzembe helyezés során létre fog hozni egy NSX-T rendszergazdai jelszót. A jelszó a NSX-fiókban a rendszergazda felhasználóhoz van hozzárendelve a NSX Build során. Ezzel bejelentkezik a NSX-T kezelőjébe.
 
 ## <a name="ip-address-segment"></a>IP-cím szegmense
 
@@ -130,7 +124,7 @@ A VMware HCX egy olyan technológia, amely az Azure VMware megoldással együtt 
 
 [!INCLUDE [hcx-network-segments](includes/hcx-network-segments.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy összegyűjtötte és dokumentálta a szükséges információkat, folytassa a következő szakasszal, hogy létrehozza az Azure VMware-megoldás saját felhőjét.
 
 > [!div class="nextstepaction"]

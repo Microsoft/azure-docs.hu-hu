@@ -5,30 +5,30 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, sneshaf, pinath, logicappspm
 ms.topic: conceptual
-ms.date: 01/20/2021
-ms.openlocfilehash: a90f75db6961ea06b1cf9c2958556c1c2ef24805
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/22/2021
+ms.openlocfilehash: f2b4e09ec9b50bb6993c89d90b0f33c0c905cbf0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100380134"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699096"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Folyamatok exportálása a Power Automate-ből és üzembe helyezés az Azure Logic Appsben
 
-> A 2020 októbere után létrehozott folyamatok esetében már nem lehet exportálni az Energiagazdálkodásból, és nem telepíthető a Azure Logic Appsba.
-
 A flow képességeinek bővítéséhez és kibővítéséhez áttelepítheti a folyamatot a [Power gyorsbüféból](https://flow.microsoft.com) a [Azure Logic Appsba](../logic-apps/logic-apps-overview.md). Exportálhatja a folyamatot Azure Resource Manager sablonként egy logikai alkalmazáshoz, üzembe helyezheti a logikai alkalmazás sablonját egy Azure-erőforráscsoporthoz, majd megnyithatja a logikai alkalmazást a Logic app Designerben.
 
-> [!NOTE]
-> Nem minden automatizálási összekötő érhető el Azure Logic Appsban. Csak olyan automatizálási folyamatokat telepíthet át, amelyek Azure Logic Appsban egyenértékű összekötővel rendelkeznek. Például a gomb trigger, a jóváhagyási összekötő és az értesítési összekötő kifejezetten a Power automatizálható. A OpenAPI-alapú folyamatok jelenleg nem támogatottak az exportáláshoz és az üzembe helyezéshez logikai alkalmazás-sablonokként.
->
-> * Ha szeretné megkeresni, hogy mely automatizálási összekötők nem rendelkeznek Logic Apps megfelelővel, tekintse meg a [Power automatizáló összekötők](/connectors/connector-reference/connector-reference-powerautomate-connectors)
->
-> * Ha szeretné megkeresni, hogy mely Logic Apps összekötők nem rendelkeznek az automatikus automatizálással, tekintse meg az [összekötők Logic apps](/connectors/connector-reference/connector-reference-logicapps-connectors).
+> [!IMPORTANT]
+> A Logic Appsra való exportálás nem érhető el az augusztus 2020. után létrehozott Power automatizáló folyamatok számára. Október 2020-án az [OpenAPI 2,0-es protokollon](https://swagger.io/specification/v2/)a powered új flow-létrehozása automatizálható. A protokollon alapuló új folyamatok nem kompatibilisek Logic Apps munkafolyamatokkal, ezért a rendszer letiltotta ezeket a folyamatokat Logic Apps. Ehelyett manuálisan kell [létrehoznia a logikai alkalmazásokat](quickstart-create-first-logic-app-workflow.md) ezekhez a folyamatokhoz.
+
+Nem minden automatizálási összekötő érhető el Azure Logic Appsban. Csak olyan automatizálási folyamatokat telepíthet át, amelyek Azure Logic Appsban egyenértékű összekötővel rendelkeznek. Például a gomb trigger, a jóváhagyási összekötő és az értesítési összekötő kifejezetten a Power automatizálható. 
+
+* Ha szeretné megkeresni, hogy mely automatizálási összekötők nem rendelkeznek Logic Apps megfelelővel, tekintse meg a [Power automatizáló összekötők](/connectors/connector-reference/connector-reference-powerautomate-connectors)
+
+* Ha szeretné megkeresni, hogy mely Logic Apps összekötők nem rendelkeznek az automatikus automatizálással, tekintse meg az [összekötők Logic apps](/connectors/connector-reference/connector-reference-logicapps-connectors).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
+* Azure-fiók és -előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
 * A Power automatizálni kívánt folyamat
 

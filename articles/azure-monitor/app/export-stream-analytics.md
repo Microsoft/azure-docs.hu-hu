@@ -3,22 +3,21 @@ title: Exportálás az Azure Application Insights Stream Analytics használatáv
 description: Stream Analytics a Application Insightsból exportált adatok folyamatos átalakítását, szűrését és átirányítását is elvégezheti.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: c8486d7e5656a7770aec4a50739d3a9160e123e3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a517bddd8981554b7fb5044d33b6c6777df51e36
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584331"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719797"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Stream Analytics használata az exportált adatok feldolgozásához Application Insights
+
 A [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ideális eszköz a [Application Insightsból exportált](export-telemetry.md)adatok feldolgozásához. A Stream Analytics különböző forrásokból származó adatok lekérésére használható. Átalakíthatja és szűrheti az adatmennyiséget, majd átirányíthatja azt különböző mosdók számára.
 
 Ebben a példában egy olyan adaptert hozunk létre, amely Application Insights, átnevezi és feldolgozza a mezőket, és a Power BIba helyezi azokat.
 
 > [!WARNING]
 > A [Application Insights-adatPower BIek megjelenítésének](./export-power-bi.md)sokkal jobb és egyszerűbb módja is. Az itt látható elérési út szemlélteti az exportált adatfeldolgozás módját.
-> 
-> 
 
 ![Az SA és a PBI közötti exportálás diagramjának letiltása](./media/export-stream-analytics/020.png)
 
@@ -38,6 +37,7 @@ A folyamatos exportálás mindig az adatokat egy Azure Storage-fiókba exportál
     ![A tárolóban nyissa meg a beállításokat, a kulcsokat, és készítsen másolatot az elsődleges elérési kulcsról](./media/export-stream-analytics/045.png)
 
 ## <a name="start-continuous-export-to-azure-storage"></a>Folyamatos exportálás indítása az Azure Storage-ba
+
 A [folyamatos exportálás](export-telemetry.md) a Application Insights adatait az Azure Storage-ba helyezi át.
 
 1. A Azure Portal tallózással keresse meg az alkalmazáshoz létrehozott Application Insights-erőforrást.
@@ -55,18 +55,19 @@ A [folyamatos exportálás](export-telemetry.md) a Application Insights adatait 
 
     ![Eseménytípus kiválasztása](./media/export-stream-analytics/080.png)
 
-1. Némi adatmennyiséget is felhalmozhat. Dőljön hátra, és hagyja, hogy a felhasználók egy ideig használják az alkalmazást. A telemetria a következő helyen jelenik meg: statisztikai diagramok a [metrika-kezelőben](../essentials/metrics-charts.md) és az egyes események a [diagnosztikai keresésben](./diagnostic-search.md). 
+1. Némi adatmennyiséget is felhalmozhat. Dőljön hátra, és hagyja, hogy a felhasználók egy ideig használják az alkalmazást. A telemetria a következő helyen jelenik meg: statisztikai diagramok a [metrika-kezelőben](../essentials/metrics-charts.md) és az egyes események a [diagnosztikai keresésben](./diagnostic-search.md).
    
     És az is, hogy az adatai exportálva lesznek a tárhelyre. 
 2. Vizsgálja meg az exportált adatgyűjtést. A Visual Studióban válassza a **Megtekintés/Cloud Explorer** lehetőséget, majd nyissa meg az Azure/Storage elemet. (Ha nem rendelkezik ezzel a menüponttal, telepítenie kell az Azure SDK-t: Nyissa meg az új projekt párbeszédpanelt, és nyissa meg a Visual C#/Cloud/Get Microsoft Azure SDK-t a .NET-hez.)
    
     ![Képernyőfelvétel: a megtekinteni kívánt események típusának beállítása.](./media/export-stream-analytics/04-data.png)
    
-    Jegyezze fel az elérési út nevének közös részét, amely az alkalmazás neve és a kialakítási kulcsból származik. 
+    Jegyezze fel az elérési út nevének közös részét, amely az alkalmazás neve és a kialakítási kulcsból származik.
 
 Az események JSON formátumú blob-fájlokba íródnak. Az egyes fájlok egy vagy több eseményt is tartalmazhatnak. Ezért szeretnénk beolvasni az események adatait, és kiszűrni a kívánt mezőket. Az adatkezeléshez mindenféle dolgot használhatunk, de a tervünk szerint a Stream Analytics segítségével adatcsatornán keresztül Power BI.
 
 ## <a name="create-an-azure-stream-analytics-instance"></a>Azure Stream Analytics példány létrehozása
+
 A [Azure Portal](https://portal.azure.com/)válassza ki a Azure stream Analytics szolgáltatást, és hozzon létre egy új stream Analytics feladatot:
 
 ![A Stream Analytics-feladatoknak a Azure Portalban való létrehozásának főoldalát bemutató képernyőkép.](./media/export-stream-analytics/SA001.png)
@@ -104,9 +105,9 @@ Ebben a példában:
 
 > [!NOTE]
 > Ellenőrizze a tárterületet, és győződjön meg arról, hogy a megfelelő elérési utat kapja.
-> 
 
 ## <a name="add-new-output"></a>Új kimenet hozzáadása
+
 Most válassza ki a feladatot, > **kimenet**  >  **hozzáadása** elemet.
 
 ![Képernyőfelvétel: a Stream Analytics feladatainak kiválasztásával új kimenetet adhat hozzá.](./media/export-stream-analytics/SA006.png)
@@ -117,11 +118,13 @@ Most válassza ki a feladatot, > **kimenet**  >  **hozzáadása** elemet.
 Adja meg a **munkahelyi vagy iskolai fiókját** , hogy engedélyezze stream Analytics számára a Power bi-erőforrás elérését. Ezután kitalál egy nevet a kimenethez, valamint a cél Power BI adatkészlethez és táblához.
 
 ## <a name="set-the-query"></a>A lekérdezés beállítása
+
 A lekérdezés a bemenetről a kimenetre irányítja a fordítást.
 
-A teszt függvénnyel ellenőrizze, hogy a megfelelő kimenetet kapja-e. Adja meg a bemenetek lapról vett mintaadatok adatait. 
+A teszt függvénnyel ellenőrizze, hogy a megfelelő kimenetet kapja-e. Adja meg a bemenetek lapról vett mintaadatok adatait.
 
 ### <a name="query-to-display-counts-of-events"></a>Események számának megjelenítésére szolgáló lekérdezés
+
 A lekérdezés beillesztése:
 
 ```SQL
@@ -154,7 +157,7 @@ OUTER APPLY GetElements(A.context.custom.metrics) as flat
 GROUP BY TumblingWindow(minute, 1), A.context.data.eventtime
 ```
 
-* Ez a lekérdezés a metrikák telemetria beolvassa az esemény időpontját és a metrika értékét. A metrikai értékek egy tömbön belül találhatók, ezért a sorok kinyeréséhez a külső GetElements mintát használjuk. Ebben az esetben a "myMetric" a metrika neve. 
+* Ez a lekérdezés a metrikák telemetria beolvassa az esemény időpontját és a metrika értékét. A metrikai értékek egy tömbön belül találhatók, ezért a sorok kinyeréséhez a külső GetElements mintát használjuk. Ebben az esetben a "myMetric" a metrika neve.
 
 ### <a name="query-to-include-values-of-dimension-properties"></a>A dimenzió tulajdonságainak értékeit tartalmazó lekérdezés
 
@@ -178,17 +181,18 @@ FROM flat
 * Ez a lekérdezés a dimenzió tulajdonságainak értékeit tartalmazza anélkül, hogy a dimenzió tömbben rögzített indexben lévő adott dimenzión kellene lennie.
 
 ## <a name="run-the-job"></a>A feladat futtatása
-Kiválaszthat egy dátumot a múltban, hogy elindítsa a feladatot. 
+
+Kiválaszthat egy dátumot a múltban, hogy elindítsa a feladatot.
 
 ![Válassza ki a feladatot, és kattintson a lekérdezés lehetőségre. Illessze be az alábbi mintát.](./media/export-stream-analytics/SA008.png)
 
 Várjon, amíg a feladatok futnak.
 
 ## <a name="see-results-in-power-bi"></a>Eredmények megtekintése Power BI
+
 > [!WARNING]
 > A [Application Insights-adatPower BIek megjelenítésének](./export-power-bi.md)sokkal jobb és egyszerűbb módja is. Az itt látható elérési út szemlélteti az exportált adatfeldolgozás módját.
-> 
-> 
+
 
 Nyissa meg Power BIt munkahelyi vagy iskolai fiókjával, és válassza ki a Stream Analytics feladatának kimenetében megadott adatkészletet és táblát.
 
@@ -199,17 +203,10 @@ Ezt az adatkészletet most már használhatja jelentésekben és irányítópult
 ![A képernyőképen egy Power BI adatkészletből készített jelentés látható.](./media/export-stream-analytics/210.png)
 
 ## <a name="no-data"></a>Nincs adat?
+
 * Győződjön meg arról, hogy a dátumformátum helyesen van megadva éééé-hh-nn [értékre](#set-path-prefix-pattern) (kötőjelekkel).
-
-## <a name="video"></a>Videó
-A Noam ben Zeev azt mutatja be, hogyan lehet az exportált adatfeldolgozást Stream Analytics használatával feldolgozni.
-
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Export-to-Power-BI-from-Application-Insights/player]
-> 
-> 
 
 ## <a name="next-steps"></a>Következő lépések
 * [Folyamatos exportálás](export-telemetry.md)
 * [Részletes adatmodell-referenciák a tulajdonságok típusaihoz és értékeihez.](export-data-model.md)
 * [Application Insights](./app-insights-overview.md)
-

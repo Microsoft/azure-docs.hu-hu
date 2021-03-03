@@ -3,15 +3,15 @@ title: Azure SSIS integrációs modul létrehozása Azure Data Factory
 description: Ismerje meg, hogyan hozhat létre Azure-SSIS integrációs modult Azure Data Factory, így SSIS-csomagokat helyezhet üzembe és futtathat az Azure-ban.
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/13/2020
+ms.date: 02/22/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 4e3137b08c558c8e9dfadda07f0b8bb66433ee83
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4b26abe1d1340e4e8c5f034fad72f612f0b246a2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389416"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739409"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure SSIS integrációs modul létrehozása Azure Data Factory
 
@@ -147,15 +147,21 @@ Ha bejelöli a jelölőnégyzetet, a következő lépésekkel hozhatja létre a 
    
       A kiválasztott adatbázis-kiszolgáló alapján a SSISDB-példány létrehozhatók az Ön nevében egyetlen adatbázisként egy rugalmas készlet részeként vagy egy felügyelt példányban. Nyilvános hálózaton vagy virtuális hálózathoz való csatlakozással is elérhető. Az adatbázis-kiszolgáló SSISDB gazdagépként való kiválasztásával kapcsolatos útmutatásért lásd: [SQL Database és az SQL felügyelt példányának összehasonlítása](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance).   
 
-      Ha olyan Azure SQL Database-kiszolgálót választ ki, amely IP-tűzfalszabályok/virtuális hálózati szolgáltatás-végpontokkal vagy egy privát végponttal rendelkező felügyelt példánnyal rendelkezik a SSISDB üzemeltetéséhez, vagy ha a helyi adatközpont konfigurálása nélkül szeretné elérni a helyszíni adatkezelést, akkor csatlakoztatnia kell a Azure-SSIS IRt egy virtuális hálózathoz. További információ: [Azure-SSIS IR létrehozása virtuális hálózaton]().
+      Ha olyan Azure SQL Database-kiszolgálót választ ki, amely IP-tűzfalszabályok/virtuális hálózati szolgáltatás-végpontokkal vagy egy privát végponttal rendelkező felügyelt példánnyal rendelkezik a SSISDB üzemeltetéséhez, vagy ha a helyi adatközpont konfigurálása nélkül szeretné elérni a helyszíni adatkezelést, akkor csatlakoztatnia kell a Azure-SSIS IRt egy virtuális hálózathoz. További információ: [Azure-SSIS IR csatlakoztatása egy virtuális hálózathoz](./join-azure-ssis-integration-runtime-virtual-network.md).
 
    1. Jelölje be az **Azure ad-hitelesítés használata a felügyelt identitással az ADF** -be jelölőnégyzetet, hogy kiválassza az adatbázis-kiszolgáló hitelesítési módszerét a SSISDB üzemeltetéséhez. Választhatja az SQL-hitelesítést vagy az Azure AD-hitelesítést az adatokhoz tartozó felügyelt identitással.
 
-      Ha bejelöli a jelölőnégyzetet, hozzá kell adnia az adatgyár felügyelt identitását egy Azure AD-csoportba, amely hozzáférési engedélyekkel rendelkezik az adatbázis-kiszolgálóhoz. További információ: [Azure-SSIS IR létrehozása Azure ad-hitelesítéssel]().
+      Ha bejelöli a jelölőnégyzetet, hozzá kell adnia az adatgyár felügyelt identitását egy Azure AD-csoportba, amely hozzáférési engedélyekkel rendelkezik az adatbázis-kiszolgálóhoz. További információ: az [Azure ad-hitelesítés engedélyezése Azure-SSIS IRhoz](./enable-aad-authentication-azure-ssis-ir.md).
    
    1. A **rendszergazdai Felhasználónév** mezőben adja meg az adatbázis-kiszolgáló SQL-hitelesítési felhasználónevét a SSISDB üzemeltetéséhez. 
 
    1. **Rendszergazdai jelszó** esetén adja meg az adatbázis-kiszolgáló SQL-hitelesítési jelszavát a SSISDB üzemeltetéséhez. 
+
+   1. Jelölje be a kettős készenléti **Azure-SSIS Integration Runtime pár SSISDB feladatátvételsel** jelölőnégyzetet egy olyan kettős készenléti Azure SSIS IR-pár konfigurálásához, amely szinkronban működik Azure SQL Database/felügyelt példány feladatátvételi csoporttal az üzletmenet folytonossága és a vész-helyreállítás (BCDR) számára.
+   
+      Ha bejelöli a jelölőnégyzetet, adjon meg egy nevet az elsődleges és másodlagos Azure-SSIS IRs-nek a **kettős készenléti pair neve** szövegmezőben való azonosításához. Az elsődleges és másodlagos Azure-SSIS IRs létrehozásakor ugyanazt a párokat kell megadnia.
+
+      További információ: [a Azure-SSIS IR konfigurálása a BCDR](./configure-bcdr-azure-ssis-integration-runtime.md).
 
    1. A **katalógus-adatbázis szolgáltatási szintjéhez** válassza ki az adatbázis-kiszolgáló szolgáltatási SZINTJÉT a SSISDB üzemeltetéséhez. Válassza ki az alapszintű, a standard vagy a prémium szintet, vagy válasszon egy rugalmas készlet nevét.
 

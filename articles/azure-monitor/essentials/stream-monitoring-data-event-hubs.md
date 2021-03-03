@@ -7,12 +7,12 @@ ms.author: bwren
 ms.topic: conceptual
 ms.date: 07/15/2020
 ms.subservice: ''
-ms.openlocfilehash: e541869d040cc1eead2d295583c42016b64d5edb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: db8f8628f77ef2a04a7e6d42d6470f254e458e01
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100616438"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708084"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-or-external-partner"></a>Azure monitoring-adatstreamek továbbítása egy Event hubhoz vagy külső partnerhez
 
@@ -48,20 +48,19 @@ Ha olyan adatokra van szüksége, amelyek közvetlenül nem továbbíthatók az 
 
 A monitorozási adatait Azure Monitor segítségével átirányíthatja egy Event hubhoz, így könnyen integrálható a külső SIEM-és monitorozási eszközökkel. Azure Monitor integrációs eszközök például a következők:
 
-| Eszköz | Az Azure-ban üzemeltetve | Description |
+| Eszköz | Az Azure-ban üzemeltetve | Leírás |
 |:---|:---| :---|
-|  IBM QRadar | No | A Microsoft Azure DSM és Microsoft Azure Event hub protokoll letölthető [az IBM támogatási webhelyéről](https://www.ibm.com/support). Az Azure-nal való integrációról a [QRADAR DSM-konfigurációjában](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)olvashat bővebben. |
-| Splunk | No | A [Splunk Microsoft Azure Add-On](https://splunkbase.splunk.com/app/3757/) egy nyílt forráskódú projekt, amely elérhető a Splunkbase-ben. <br><br> Ha nem telepíthet bővítményt a splunk-példányban, például ha proxyt használ, vagy ha a splunk-felhőben fut, ezeket az eseményeket a [splunk Azure Function](https://github.com/Microsoft/AzureFunctionforSplunkVS)használatával továbbíthatja a splunk http-esemény gyűjtője számára, amelyet az Event hub új üzenetei is aktiválnak. |
-| SumoLogic | No | Az SumoLogic adatok az Event hub-ból való felhasználásának beállítására vonatkozó utasítások [Az Azure-beli audit-alkalmazás eseménynaplójában érhetők el az Event hub-ból](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub). |
-| ArcSight | No | A ArcSight Azure Event hub intelligens összekötő a [ArcSight intelligens összekötő gyűjteményének](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)részeként érhető el. |
-| Syslog-kiszolgáló | No | Ha Azure Monitor-adatforrást közvetlenül egy syslog-kiszolgálóra szeretné továbbítani, használhat egy [Azure-függvényen alapuló megoldást](https://github.com/miguelangelopereira/azuremonitor2syslog/).
-| LogRhythm | No| [Itt](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)találhat útmutatást a naplók LogRhythm való összegyűjtéséhez. 
-|Logz.io | Yes | További információ: [Ismerkedés az Azure-on futó Java-alkalmazások Logz.IO használatával a figyelés és a naplózás](/azure/developer/java/fundamentals/java-get-started-with-logzio) használatába
+|  IBM QRadar | Nem | A Microsoft Azure DSM és Microsoft Azure Event hub protokoll letölthető [az IBM támogatási webhelyéről](https://www.ibm.com/support). Az Azure-nal való integrációról a [QRADAR DSM-konfigurációjában](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)olvashat bővebben. |
+| Splunk | Nem | A [Splunk Microsoft Azure Add-On](https://splunkbase.splunk.com/app/3757/) egy nyílt forráskódú projekt, amely elérhető a Splunkbase-ben. <br><br> Ha nem telepíthet bővítményt a splunk-példányban, például ha proxyt használ, vagy ha a splunk-felhőben fut, ezeket az eseményeket a [splunk Azure Function](https://github.com/Microsoft/AzureFunctionforSplunkVS)használatával továbbíthatja a splunk http-esemény gyűjtője számára, amelyet az Event hub új üzenetei is aktiválnak. |
+| SumoLogic | Nem | Az SumoLogic adatok az Event hub-ból való felhasználásának beállítására vonatkozó utasítások [Az Azure-beli audit-alkalmazás eseménynaplójában érhetők el az Event hub-ból](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub). |
+| ArcSight | Nem | A ArcSight Azure Event hub intelligens összekötő a [ArcSight intelligens összekötő gyűjteményének](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)részeként érhető el. |
+| Syslog-kiszolgáló | Nem | Ha Azure Monitor-adatforrást közvetlenül egy syslog-kiszolgálóra szeretné továbbítani, használhat egy [Azure-függvényen alapuló megoldást](https://github.com/miguelangelopereira/azuremonitor2syslog/).
+| LogRhythm | Nem| [Itt](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)találhat útmutatást a naplók LogRhythm való összegyűjtéséhez. 
+|Logz.io | Igen | További információ: [Ismerkedés az Azure-on futó Java-alkalmazások Logz.IO használatával a figyelés és a naplózás](/azure/developer/java/fundamentals/java-get-started-with-logzio) használatába
 
-Más partnerek is elérhetők lehetnek. Az összes Azure Monitor partner és azok képességeinek teljes listájáért lásd: [Azure monitor partner-integráció](../platform/partners.md).
+Más partnerek is elérhetők lehetnek. Az összes Azure Monitor partner és azok képességeinek teljes listájáért lásd: [Azure monitor partner-integráció](../partners.md).
 
 ## <a name="next-steps"></a>Következő lépések
 * [A tevékenység naplójának archiválása egy Storage-fiókba](./activity-log.md#legacy-collection-methods)
 * [Olvassa el az Azure-tevékenység naplójának áttekintését](../essentials/platform-logs-overview.md)
 * [Riasztás beállítása egy tevékenység naplójának eseménye alapján](../alerts/alerts-log-webhook.md)
-

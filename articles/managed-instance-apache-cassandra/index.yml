@@ -1,0 +1,54 @@
+### YamlMime:Landing
+title: Azure felügyelt példány az Apache Cassandra dokumentációhoz
+summary: Az Apache Cassandra Azure felügyelt példánya automatizált üzembe helyezési és skálázási műveleteket biztosít a felügyelt nyílt forráskódú Apache Cassandra-adatközpontok számára. Felgyorsítja a hibrid forgatókönyveket, és csökkenti a folyamatos karbantartást.
+metadata:
+  title: Azure felügyelt példány az Apache Cassandra-hoz
+  description: Az Apache Cassandra Azure felügyelt példánya automatizált üzembe helyezési és skálázási műveleteket biztosít a felügyelt nyílt forráskódú Apache Cassandra-adatközpontok számára. Felgyorsítja a hibrid forgatókönyveket, és csökkenti a folyamatos karbantartást.
+  services: service
+  ms.service: managed-instance-apache-cassandra
+  ms.topic: landing-page
+  ms.collection: collection
+  author: TheovanKraay
+  ms.author: thvankra
+  ms.date: 01/18/2021
+  ms.openlocfilehash: 8300012954756f1083c93745299ca57e4c4db0d3
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.translationtype: MT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101749128"
+landingContent:
+- title: Tudnivalók az Apache Cassandra Azure felügyelt példányáról
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure felügyelt példány az Apache Cassandra-hoz?
+      url: introduction.md
+  - linkListType: get-started
+    links:
+    - text: Azure felügyelt példány az Apache Cassandra vs Azure Cosmos DB Cassandra API
+      url: compare-cosmosdb-managed-instance.md
+  - linkListType: quickstart
+    links:
+    - text: Fürt létrehozása – portál
+      url: create-cluster-portal.md
+    - text: Fürt létrehozása – parancssori felület
+      url: create-cluster-cli.md
+    - text: Spark-fürt üzembe helyezése Azure Databricks
+      url: deploy-cluster-databricks.md
+  - linkListType: concept
+    links:
+    - text: Gyakori kérdések
+      url: faq.md
+- title: A fürt erőforrásainak konfigurálása és kezelése
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Hibrid fürt konfigurálása
+      url: configure-hybrid-cluster.md
+  - linkListType: how-to-guide
+    links:
+    - text: Erőforrások kezelése az Azure CLI-vel
+      url: manage-resources-cli.md
+    - text: Metrikák megjelenítése a Prometheus-ben a Grafana
+      url: visualize-prometheus-grafana.md

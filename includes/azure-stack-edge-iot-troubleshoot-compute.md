@@ -4,12 +4,12 @@ ms.service: databox
 ms.author: alkohli
 ms.topic: include
 ms.date: 02/05/2021
-ms.openlocfilehash: b06b91e972fd07543cf02105360cb0400ef6b0f1
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: ad981264a99bd48e27f745a789ebe857b7f17d80
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831543"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750664"
 ---
 A számítási feladatokkal kapcsolatos hibák elhárításához használja a IoT Edge ügynök futásidejű válaszait. Itt látható a lehetséges válaszok listája:
 
@@ -20,7 +20,7 @@ A számítási feladatokkal kapcsolatos hibák elhárításához használja a Io
 * 406 – a IoT Edge eszköz offline állapotban van, vagy nem küld állapotjelentéseket.
 * 500 – hiba történt a IoT Edge futtatókörnyezetben.
 
-További információ: [IoT Edge Agent](/azure/iot-edge/iot-edge-runtime?view=iotedge-2018-06&preserve-view=true#iot-edge-agent).
+További információ: [IoT Edge Agent](../articles/iot-edge/iot-edge-runtime.md?preserve-view=true&view=iotedge-2018-06#iot-edge-agent).
 
 A következő hiba a Azure Stack Edge Pro IoT Edge szolgáltatásával kapcsolatos.<!--/ Data Box Gateway--> irányítópultokkal.
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 8fa2a06b1310e7cd825c918e92ea7af9b9b488de
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6130572cedaaabb9d63758a2bc25f6ebd0396562
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596156"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729861"
 ---
 # <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>Ügynökök és bővítmények automatikus kiépítés a Azure Security Centerból
 
@@ -38,8 +38,8 @@ Az adatok gyűjtése a használatával történik:
 |-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Kiadás állapota:          | **Szolgáltatás**: az automatikus kiépítés általánosan elérhető (GA)<br>**Ügynök és bővítmények**: log Analytics Azure-beli virtuális gépek ügynöke, a Microsoft függőségi ügynök előzetes verzióban érhető el, a Kubernetes házirend-bővítménye a ga                |
 | Árképzési                | Ingyenes                                                                                                                                                                                                                         |
-| Támogatott célhelyek: | ![Yes](./media/icons/yes-icon.png) Azure-gépek<br>![No](./media/icons/no-icon.png) Azure arc-gépek<br>![No](./media/icons/no-icon.png) Kubernetes-csomópontok<br>![No](./media/icons/no-icon.png) Virtual Machine Scale Sets |
-| Felhők                 | ![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) US Gov, Kína gov, egyéb gov                                                                                                      |
+| Támogatott célhelyek: | ![Igen](./media/icons/yes-icon.png) Azure-gépek<br>![Nem](./media/icons/no-icon.png) Azure arc-gépek<br>![Nem](./media/icons/no-icon.png) Kubernetes-csomópontok<br>![Nem](./media/icons/no-icon.png) Virtual Machine Scale Sets |
+| Felhők                 | ![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov, Kína gov, egyéb gov                                                                                                      |
 |                         |                                                                                                                                                                                                                              |
 
 
@@ -85,7 +85,7 @@ Az log Analytics-ügynök automatikus kiépítés engedélyezése:
 
         Ha már rendelkezik meglévő Log Analytics munkaterülettel, érdemes lehet ugyanazt a munkaterületet használni (olvasási és írási engedélyeket igényel a munkaterületen). Ez a beállítás akkor hasznos, ha a szervezet központi munkaterületét használja, és a biztonsági adatgyűjtés céljából szeretné használni. További információ a [naplózási és munkaterületekhez való hozzáférés kezelése Azure monitorban](../azure-monitor/logs/manage-access.md).
 
-        Ha a kiválasztott munkaterülethez már engedélyezve van egy biztonsági vagy SecurityCenterFree megoldás, a díjszabás automatikusan be lesz állítva. Ha nem, telepítsen egy Security Center megoldást a munkaterületre:
+        Ha a kiválasztott munkaterülethez már engedélyezve van a "biztonság" vagy a "SecurityCenterFree" megoldás, a díjszabás automatikusan be lesz állítva. Ha nem, telepítsen egy Security Center megoldást a munkaterületre:
 
         1. A Security Center menüjében nyissa meg a **díjszabási & beállításait**.
         1. Válassza ki azt a munkaterületet, amelyhez csatlakoztatni kívánja az ügynököket.
@@ -235,7 +235,7 @@ A következő használati esetek határozzák meg, hogy az automatikus kiépít�
 
 - **Log Analytics ügynök telepítve van a gépen, de nem bővítményként (közvetlen ügynökként)** – ha a log Analytics ügynök közvetlenül a virtuális gépre van telepítve (nem Azure-bővítményként), Security Center telepíti a log Analytics-ügynök bővítményt, és a log Analytics-ügynököt a legújabb verzióra is frissítheti.
 A telepített ügynök továbbra is jelentést készít a már konfigurált munkaterület (ek) ről, és a Security Center-ben konfigurált munkaterületnek is jelentést küld (a Windows rendszerű gépeken támogatott a többszörös vezérlési funkció).
-Ha a konfigurált munkaterület egy felhasználói munkaterület (nem Security Center alapértelmezett munkaterülete), akkor telepítenie kell a "Security/" securityFree "megoldást arra a Security Centerra, hogy elindítsa a munkaterületre jelentett virtuális gépekről és számítógépekről származó események feldolgozását.
+Ha a konfigurált munkaterület egy felhasználói munkaterület (nem Security Center alapértelmezett munkaterülete), akkor telepítenie kell a "biztonság" vagy a "SecurityCenterFree" megoldást arra, hogy Security Center a munkaterületre jelentett virtuális gépekről és számítógépekről származó események feldolgozásának megkezdéséhez.
 
     Linux rendszerű gépek esetén az ügynök többsoros vezérlése még nem támogatott – ezért ha egy meglévő ügynök telepítését észleli, az automatikus kiépítés nem történik meg, és a gép konfigurációja nem módosul.
 
@@ -244,8 +244,8 @@ Ha a konfigurált munkaterület egy felhasználói munkaterület (nem Security C
 - **System Center Operations Manager ügynök telepítve van a gépen** – a Security Center a log Analytics Agent bővítményt a meglévő Operations Managerra telepíti. A meglévő Operations Manager ügynöke a szokásos módon folytatja a Operations Manager-kiszolgáló jelentését. A Operations Manager ügynök és Log Analytics ügynök közös futásidejű kódtárakat oszt meg, amelyek a folyamat során a legújabb verzióra lesznek frissítve. Ha a Operations Manager ügynök 2012-es verziója telepítve van **, ne engedélyezze** az automatikus kiépítés engedélyezését.
 
 - Már létezik **egy meglévő** virtuálisgép-bővítmény:
-    - Ha a figyelési ügynök bővítményként van telepítve, a bővítmény konfigurációja lehetővé teszi, hogy a jelentéskészítés csak egyetlen munkaterületre legyen elérhető. A Security Center nem bírálja felül a felhasználói munkaterületek meglévő kapcsolatait. Security Center a virtuális gépről a már csatlakoztatott munkaterületen tárolja a biztonsági adatait, ha a "biztonság" vagy a "securityFree" megoldás telepítve van rajta. Security Center a folyamat legújabb verziójára frissítheti a bővítmény verzióját.  
-    - Ha szeretné látni, hogy a meglévő bővítmény mely munkaterületre küld adatokat, futtassa a tesztet a [Azure Security Center kapcsolatának ellenőrzéséhez](/archive/blogs/yuridiogenes/validating-connectivity-with-azure-security-center). Másik lehetőségként megnyithatja Log Analytics munkaterületeket, kiválaszthat egy munkaterületet, kiválaszthatja a virtuális gépet, és megtekintheti a Log Analytics-ügynök közötti kapcsolatokat. 
+    - Ha a figyelési ügynök bővítményként van telepítve, a bővítmény konfigurációja lehetővé teszi, hogy a jelentéskészítés csak egyetlen munkaterületre legyen elérhető. A Security Center nem bírálja felül a felhasználói munkaterületek meglévő kapcsolatait. Security Center a virtuális gépről a már csatlakoztatott munkaterületen tárolja a biztonsági adatait, ha a "biztonság" vagy a "SecurityCenterFree" megoldás telepítve van rajta. Security Center a folyamat legújabb verziójára frissítheti a bővítmény verzióját.
+    - Ha szeretné látni, hogy a meglévő bővítmény mely munkaterületre küld adatokat, futtassa a tesztet a [Azure Security Center kapcsolatának ellenőrzéséhez](/archive/blogs/yuridiogenes/validating-connectivity-with-azure-security-center). Másik lehetőségként megnyithatja Log Analytics munkaterületeket, kiválaszthat egy munkaterületet, kiválaszthatja a virtuális gépet, és megtekintheti a Log Analytics-ügynök közötti kapcsolatokat.
     - Ha olyan környezettel rendelkezik, amelyben a Log Analytics ügynök telepítve van az ügyfél-munkaállomásokon, és jelentéskészítés egy meglévő Log Analytics munkaterületre, tekintse át az [Azure Security Center által támogatott operációs rendszerek](security-center-os-coverage.md) listáját, és győződjön meg arról, hogy az operációs rendszer támogatott. További információ: [meglévő log Analytics-ügyfelek](./faq-azure-monitor-logs.md).
  
 

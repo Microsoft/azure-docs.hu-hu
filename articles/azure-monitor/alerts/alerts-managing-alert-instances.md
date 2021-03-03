@@ -4,16 +4,16 @@ description: Riasztási példányok kezelése az Azure-ban
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: fece831266b19bb592c032e9125f781af83e31d1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 82905cba5f391365ada13f4e5df5ad139f4c121e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100616685"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734808"
 ---
 # <a name="manage-alert-instances-with-unified-alerts"></a>Riasztási példányok kezelése egyesített riasztásokkal
 
-A Azure Monitor [egységes riasztások terén](../platform/alerts-overview.md) az összes különböző típusú riasztást láthatja az Azure-ban. Ez több előfizetést ölel fel egyetlen ablaktáblán. Ez a cikk bemutatja, hogyan tekintheti meg a riasztási példányokat, és hogyan keresheti meg a hibaelhárításhoz adott riasztási példányokat.
+A Azure Monitor [egységes riasztások terén](./alerts-overview.md) az összes különböző típusú riasztást láthatja az Azure-ban. Ez több előfizetést ölel fel egyetlen ablaktáblán. Ez a cikk bemutatja, hogyan tekintheti meg a riasztási példányokat, és hogyan keresheti meg a hibaelhárításhoz adott riasztási példányokat.
 
 > [!NOTE]
 > Csak az elmúlt 30 napban generált riasztások érhetők el.

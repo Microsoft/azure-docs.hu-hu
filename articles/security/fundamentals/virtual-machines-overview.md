@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: ed2cb967b24ce5abdebadfe29847ae1a16b4e745
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 036a1d3f8cad4ba9cda03a9001cfec1bb7de86b0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498744"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715037"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Az Azure Virtual Machines biztonsági áttekintése
 Ez a cikk áttekintést nyújt a virtuális gépekkel használható alapvető Azure-beli biztonsági funkciókról.
@@ -51,7 +51,7 @@ Tudjon meg többet az Azure-hoz készült [Microsoft antimalware](antimalware.md
 További információ az antimalware szoftverről a virtuális gépek védelméhez:
 
 * [Kártevőirtó megoldások telepítése Azure-beli virtuális gépeken](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
-* [A Trend Micro Deep Security telepítése és konfigurálása Windows rendszerű virtuális gépen](../../virtual-machines/extensions/trend.md)
+* [A Trend Micro Deep Security telepítése és konfigurálása Windows rendszerű virtuális gépen](/previous-versions/azure/virtual-machines/extensions/trend)
 * [Symantec-Endpoint Protection telepítése és konfigurálása Windowsos virtuális gépen](../../virtual-machines/extensions/symantec.md)
 * [Biztonsági megoldások az Azure piactéren](https://azure.microsoft.com/marketplace/?term=security)
 
@@ -169,6 +169,6 @@ További információ:
 * [Az Azure bizalmas számítástechnika bemutatása](https://azure.microsoft.com/blog/introducing-azure-confidential-computing/)  
 * [Azure Confidential Computing](https://azure.microsoft.com/blog/azure-confidential-computing/)  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A virtuális gépek és operációs rendszerek [biztonsági eljárásainak](iaas.md) megismerése.

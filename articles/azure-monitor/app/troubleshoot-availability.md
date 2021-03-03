@@ -4,14 +4,14 @@ description: Webtesztek hibakeresése az Azure Application Insightsban. Riasztá
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
-ms.date: 11/19/2020
+ms.date: 02/14/2021
 ms.reviewer: sdash
-ms.openlocfilehash: 849701caf73a4fb289773c67bccaab2e0f39dbd1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 940a70de81df60f7b6c1545c992e1ee10e69fa9f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100583734"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728926"
 ---
 # <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -58,7 +58,7 @@ A hibaelhárítási jelentés segítségével egyszerűen diagnosztizálhatja a 
 
 ### <a name="i-did-not-get-an-email-when-the-alert-triggered-or-resolved-or-both"></a>Nem kaptam meg e-mailt, amikor a riasztást aktiváltam, vagy megoldottam vagy mindkettőt?
 
-A klasszikus riasztások konfigurációjában ellenőrizze, hogy az e-mailek közvetlenül szerepelnek-e a listában, vagy a terjesztési lista az értesítések fogadására van konfigurálva. Ha igen, akkor a terjesztési lista konfigurációjában ellenőrizze, hogy fogadhat-e külső e-maileket. Ellenőrizze azt is, hogy a levelezési rendszergazdája rendelkezhet-e a problémát okozó házirendekkel.
+Tekintse meg a riasztások műveleti csoportjának konfigurációját, hogy erősítse meg az e-mailek közvetlen listáját, vagy hogy a terjesztési lista az értesítések fogadására van konfigurálva. Ha igen, akkor a terjesztési lista konfigurációjában ellenőrizze, hogy fogadhat-e külső e-maileket. Ellenőrizze azt is, hogy a levelezési rendszergazdája rendelkezhet-e a problémát okozó házirendekkel.
 
 ### <a name="i-did-not-receive-the-webhook-notification"></a>Nem kaptam meg a webhook-értesítést?
 
@@ -110,21 +110,6 @@ Egy teszt legfeljebb 100 kérelemből állhat. Emellett a teszt leáll, ha két 
 ### <a name="how-can-i-run-a-test-with-client-certificates"></a>Hogyan futtathatok tesztet ügyféltanúsítványokkal?
 
 Ez jelenleg nem támogatott.
-
-## <a name="who-receives-the-classic-alert-notifications"></a>Kik kapják meg a (klasszikus) riasztási értesítéseket?
-
-Ez a szakasz csak a klasszikus riasztásokra vonatkozik, és segít optimalizálni a riasztási értesítéseket, így biztosítva, hogy csak a kívánt címzettek kapják meg az értesítéseket. Ha többet szeretne megtudni a [klasszikus riasztások](../alerts/alerts-classic.overview.md)közötti különbségről és az új riasztások élményéről, tekintse meg a [riasztások áttekintése című cikket](../alerts/alerts-overview.md). A riasztások értesítésének vezérléséhez az új riasztások használatakor használjon [műveleti csoportokat](../alerts/action-groups.md).
-
-* A klasszikus riasztási értesítések esetében javasoljuk, hogy adott címzetteket használjon.
-
-* A nem Y helyekről érkező hibákkal kapcsolatos riasztások esetén a **csoportos/csoportos** jelölőnégyzetes beállítás, ha engedélyezve van, a a rendszergazdai/társ-rendszergazdai szerepkörökkel rendelkező felhasználóknak küldi a felhasználókat.  Lényegében az _előfizetés_ _összes_ rendszergazdája értesítést kap.
-
-* Ha engedélyezve van a rendelkezésre állási metrikákkal kapcsolatos riasztások, akkor a **csoportos vagy csoportos** jelölőnégyzet be van jelölve, ha engedélyezve van, az előfizetésben tulajdonos, közreműködő vagy olvasó szerepkörrel rendelkező felhasználók számára küldi el a rendszer. _Minden_ olyan felhasználó, aki hozzáféréssel rendelkezik az előfizetéshez, a Application Insights erőforrás hatókörben van, és értesítést fog kapni. 
-
-> [!NOTE]
-> Ha jelenleg a **tömeges/csoportos** jelölőnégyzetet használja, és letiltja, akkor nem fogja tudni visszaállítani a változást.
-
-Ha a felhasználókat a szerepköreik alapján kell értesítenie, használja az új riasztási élmény/közel valós idejű riasztásokat. A [műveleti csoportokkal](../alerts/action-groups.md)e-mailes értesítéseket állíthat be a felhasználók számára a közreműködő/tulajdonos/olvasó szerepkörök bármelyikével (egyetlen lehetőségként nem kombinálva).
 
 ## <a name="next-steps"></a>Következő lépések
 

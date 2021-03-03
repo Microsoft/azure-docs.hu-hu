@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 89ce214ef9686d2704878304b8b324871ad9473f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0ca6185d829e5941145905e1bc63cc2fb9ac781e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100579493"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731646"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Folyamatos figyelés a Azure Monitor
 
@@ -36,7 +36,7 @@ Annak érdekében, hogy a teljes környezeten belül betekintést nyerjen, enged
 Az alkalmazások csak a mögöttes infrastruktúrájuk megbízhatóak. Ha a figyelést a teljes infrastruktúrán keresztül engedélyezte, a teljes körű monitorozást tesz lehetővé, és megkönnyíti a lehetséges kiváltó ok felderítését, ha valami meghiúsul. Azure Monitor segítségével nyomon követheti a teljes hibrid infrastruktúra állapotát és teljesítményét, beleértve a virtuális gépeket, a tárolókat, a tárolást és a hálózatot.
 
 - A [platform metrikáit, a tevékenységek naplóit és a diagnosztikai naplókat](agents/data-sources.md) a konfiguráció nélkül, a legtöbb Azure-erőforrásból automatikusan beolvashatja.
-- A [Azure monitor for VMsrel](vm/vminsights-overview.md)rendelkező virtuális gépek mélyebb monitorozásának engedélyezése.
+- Lehetővé teszi a virtuális gépek mélyebb figyelését a [VM](vm/vminsights-overview.md)-elemzésekkel.
 -  A [Azure monitor for containers esetében](containers/container-insights-overview.md)lehetővé teszi az AK-fürtök mélyebb figyelését.
 - [Figyelési megoldások](./monitor-reference.md) hozzáadása a környezet különböző alkalmazásaihoz és szolgáltatásaihoz.
 

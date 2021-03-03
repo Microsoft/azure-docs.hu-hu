@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: b6879d4869604af5232088063a6153a01208e7d0
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 5e5d5370057449d1877c31b249d3fe47fd60bf2a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259338"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687668"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Távoli asztal közzététele Azure AD-alkalmazásproxy használatával
 
@@ -57,7 +57,7 @@ Miután beállította az RDS-t és az Azure-AD Application Proxy a környezetéh
 ### <a name="publish-the-rd-host-endpoint"></a>A távoli asztali munkamenetgazda végpontjának közzététele
 
 1. [Egy új alkalmazásproxy-alkalmazás közzététele](application-proxy-add-on-premises-application.md) a következő értékekkel:
-   - Belső URL-cím: `https://\<rdhost\>.com/` , ahol `\<rdhost\>` a a távoli asztali webes és RD-átjáró megosztás általános gyökere.
+   - Belső URL-cím: `https://<rdhost>.com/` , ahol `<rdhost>` a a távoli asztali webes és RD-átjáró megosztás általános gyökere.
    - Külső URL-cím: a program automatikusan kitölti ezt a mezőt az alkalmazás neve alapján, de módosíthatja is. A felhasználók az RDS-hez való hozzáféréskor ezt az URL-címet fogják megnyitni.
    - Előhitelesítési módszer: Azure Active Directory
    - URL-fejlécek fordítása: nem
@@ -69,7 +69,7 @@ Miután beállította az RDS-t és az Azure-AD Application Proxy a környezetéh
 
 4. Válassza a **Azure Active Directory** lehetőséget, majd az **alkalmazások regisztrációját**. Válassza ki az alkalmazást a listából.
 5. A **kezelés** területen válassza a **branding (védjegyezés**) lehetőséget.
-6. Frissítse a **Kezdőlap URL-címe** mezőt, hogy az a távoli asztali webes végpontra mutasson (például `https://\<rdhost\>.com/RDWeb` ).
+6. Frissítse a **Kezdőlap URL-címe** mezőt, hogy az a távoli asztali webes végpontra mutasson (például `https://<rdhost>.com/RDWeb` ).
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>RDS-forgalom közvetlen átvitele az Application proxyba
 

@@ -1,25 +1,25 @@
 ---
-title: Azure Monitor for VMs figyelésének letiltása
-description: Ez a cikk azt ismerteti, hogyan lehet leállítani a virtuális gépek figyelését Azure Monitor for VMsban.
+title: A figyelés letiltása a virtuális gépekről
+description: Ez a cikk azt ismerteti, hogyan lehet leállítani a virtuális gépek figyelését a VM-információkban.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 80473aa494b8fbcea5e43870b7717cd3472dd7d1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7eca08abf1ef3bed1aa7fdd806853b94d5615854
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100619715"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717060"
 ---
-# <a name="disable-monitoring-of-your-vms-in-azure-monitor-for-vms"></a>Virtuális gépek figyelésének letiltása Azure Monitor for VMs
+# <a name="disable-monitoring-of-your-vms-in-vm-insights"></a>Virtuális gépek figyelésének letiltása a VM-alapú adatvizsgálatokban
 
-Miután engedélyezte a virtuális gépek (VM-EK) figyelését, később letilthatja a figyelést Azure Monitor for VMsban. Ez a cikk bemutatja, hogyan tilthatja le egy vagy több virtuális gép figyelését.  
+Miután engedélyezte a virtuális gépek (VM-EK) figyelését, később letilthatja a figyelést a virtuálisgép-betekintő szolgáltatásban. Ez a cikk bemutatja, hogyan tilthatja le egy vagy több virtuális gép figyelését.  
 
-A Azure Monitor for VMs jelenleg nem támogatja a virtuális gépek figyelésének szelektív letiltását. A Log Analytics munkaterület Azure Monitor for VMs és más megoldásokat is támogat. Más figyelési adatokat is gyűjthet. Ha a Log Analytics munkaterület biztosítja ezeket a szolgáltatásokat, meg kell ismernie a figyelés letiltásának hatását és metódusait a Kezdés előtt.
+Jelenleg a virtuális gépek elemzése nem támogatja a virtuális gépek figyelésének szelektív letiltását. A Log Analytics munkaterület a virtuális gépekkel és más megoldásokkal is támogathatja. Más figyelési adatokat is gyűjthet. Ha a Log Analytics munkaterület biztosítja ezeket a szolgáltatásokat, meg kell ismernie a figyelés letiltásának hatását és metódusait a Kezdés előtt.
 
-A Azure Monitor for VMs a következő összetevőkre támaszkodik a felhasználói élmény megvalósítása érdekében:
+A virtuális gépekkel kapcsolatos elemzések a következő összetevőkből állnak:
 
 * Log Analytics munkaterület, amely a virtuális gépek és más források megfigyelési adatait tárolja.
 * A munkaterületen konfigurált teljesítményszámlálók gyűjteménye. A gyűjtemény frissíti a figyelési konfigurációt a munkaterülethez csatlakozó összes virtuális gépen.
@@ -34,19 +34,19 @@ A virtuális gépek figyelésének letiltására való felkészülés során tar
 >[!NOTE]
 > Miután eltávolította a megoldás-összetevőket a munkaterületről, továbbra is megtekintheti az Azure-beli virtuális gépek teljesítmény-és leképezési adatait. Az adat végül leáll a **teljesítmény** és a **Térkép** nézetben. Az **Engedélyezés** lehetőség elérhető lesz a kiválasztott Azure-beli virtuális gépről, így később ismét engedélyezheti a figyelést.  
 
-## <a name="remove-azure-monitor-for-vms-completely"></a>Azure Monitor for VMs teljes eltávolítása
+## <a name="remove-vm-insights-completely"></a>A VM-adatfelismerések teljes eltávolítása
 
-Ha továbbra is szüksége van a Log Analytics munkaterületre, a Azure Monitor for VMs teljes eltávolításához kövesse az alábbi lépéseket. A `VMInsights` megoldást a munkaterületről távolíthatja el.  
+Ha továbbra is szüksége van a Log Analytics munkaterületre, az alábbi lépéseket követve teljes mértékben eltávolíthatja a virtuális gépeket. A `VMInsights` megoldást a munkaterületről távolíthatja el.  
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A Azure Portal válassza a **minden szolgáltatás** lehetőséget. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a bemenet alapján szűri a javaslatokat. Válassza a **Log Analytics** elemet.
-3. Log Analytics munkaterületek listájában válassza ki a Azure Monitor for VMs engedélyezésekor kiválasztott munkaterületet.
+3. Log Analytics munkaterületek listájában válassza ki a virtuális gépek elemzésekor kiválasztott munkaterületet.
 4. A bal oldalon válassza a **megoldások** elemet.  
 5. A megoldások listájában válassza a **VMInsights (munkaterület neve)** elemet. A megoldás **Áttekintés** lapján válassza a **Törlés** lehetőséget. Amikor a rendszer felszólítja a megerősítésre, válassza az **Igen** lehetőséget.
 
 ## <a name="disable-monitoring-and-keep-the-workspace"></a>A figyelés letiltása és a munkaterület megtartása  
 
-Ha a Log Analytics-munkaterületnek továbbra is támogatnia kell más forrásokból származó figyelést, a következő lépésekkel tiltsa le a figyelést a Azure Monitor for VMs kiértékeléséhez használt virtuális gépen. Azure-beli virtuális gépek esetén távolítsa el a függőségi ügynök virtuálisgép-bővítményét, valamint a Windows vagy Linux rendszerhez készült Log Analytics Agent virtuálisgép-bővítményt közvetlenül a virtuális gépről. 
+Ha a Log Analytics-munkaterületnek továbbra is támogatnia kell a más forrásokból történő figyelést, kövesse ezeket a lépéseket a virtuális gépekre vonatkozó információk kiértékeléséhez használt virtuális gép figyelésének letiltásához. Azure-beli virtuális gépek esetén távolítsa el a függőségi ügynök virtuálisgép-bővítményét, valamint a Windows vagy Linux rendszerhez készült Log Analytics Agent virtuálisgép-bővítményt közvetlenül a virtuális gépről. 
 
 >[!NOTE]
 >Ne távolítsa el a Log Analytics ügynököt, ha: 

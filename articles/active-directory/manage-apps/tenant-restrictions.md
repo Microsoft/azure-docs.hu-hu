@@ -12,12 +12,12 @@ ms.date: 2/23/2021
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 611dd5e53ae96e06677b1c4a6a6f009e582b33af
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b545afb370b84404d3e15f885464aabf00d2eaf2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101646265"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687073"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>A bérlői korlátozások használata a SaaS-Felhőbeli alkalmazásokhoz való hozzáférés kezelésére
 
@@ -109,19 +109,18 @@ Míg a bérlői korlátozások konfigurálása a vállalati proxy infrastruktúr
 
 A korlátozott hozzáférésű bérlőként megadott bérlő rendszergazdája a jelentés használatával megtekintheti a bérlői korlátozási szabályzat miatt letiltott bejelentkezéseket, beleértve a használt identitást és a cél könyvtár-azonosítót is. A bejelentkezések abban az esetben szerepelnek, ha a bérlőt a korlátozást a felhasználó bérlője vagy az erőforrás-bérlő állítja be a bejelentkezéshez.
 
-> [!NOTE]
-> Előfordulhat, hogy a jelentés korlátozott információt tartalmaz, például a célként megadott címtár-azonosítót, ha egy olyan felhasználó, aki nem a korlátozott hozzáférésű bérlőhöz tartozik Ebben az esetben a felhasználó által azonosítható információ, például a név és az egyszerű felhasználónév, a más bérlők felhasználói adatainak védelme érdekében maszkolt (" 00000000-0000-0000-0000-00000000@domain.com ") 
+Előfordulhat, hogy a jelentés korlátozott információt tartalmaz, például a célként megadott címtár-azonosítót, ha egy olyan felhasználó, aki nem a korlátozott hozzáférésű bérlőhöz tartozik Ebben az esetben a felhasználó által azonosítható információk, például a név és az egyszerű felhasználónév, a más bérlők felhasználói adatainak védelme érdekében ("{személyes eltávolítás} @domain.com " vagy a 00000000-0000-0000-0000-000000000000 a megfelelő Felhasználónév és objektumazonosítók helyett) vannak eltakarva. 
 
 A Azure Portal többi jelentéséhez hasonlóan szűrőket is használhat a jelentés hatókörének megadásához. Szűrheti egy adott időintervallumot, felhasználót, alkalmazást, ügyfelet vagy állapotot. Ha az **oszlopok** gombot választja, a következő mezők tetszőleges kombinációjával választhat:
 
-- **Felhasználó**
+- **Felhasználó** – ebben a mezőben azonosíthatók a személyazonosításra alkalmas adatok, amelyek a következőre lesznek beállítva: `00000000-0000-0000-0000-000000000000` . 
 - **Alkalmazás**
 - **Állapot**
 - **Date**
-- **Dátum (UTC)** (az UTC egyezményes világidő)
+- **Dátum (UTC)** – az UTC egyezményes világidő
 - **IP-cím**
 - **Ügyfél**
-- **Felhasználónév**
+- **Felhasználónév** – ebben a mezőben a személyazonosításra alkalmas adatok el lesznek távolítva, ahol a rendszer a következőre lesz beállítva: `{PII Removed}@domain.com`
 - **Hely**
 - **Cél bérlő azonosítója**
 
@@ -196,7 +195,7 @@ A proxy-infrastruktúra képességeitől függően lehetősége lehet a beállí
 
 További részletekért tekintse meg a proxykiszolgáló dokumentációját.
 
-## <a name="blocking-consumer-applications"></a>Fogyasztói alkalmazások blokkolása
+## <a name="blocking-consumer-applications-public-preview"></a>Fogyasztói alkalmazások blokkolása (nyilvános előzetes verzió)
 
 A Microsoft azon alkalmazásai, amelyek a felhasználói fiókokat és a szervezeti fiókokat, például a [OneDrive](https://onedrive.live.com/) vagy a [Microsoft Learn](https://docs.microsoft.com/learn/)is támogatják, esetenként ugyanazon az URL-címen futhatnak.  Ez azt jelenti, hogy azok a felhasználók, akiknek ehhez az URL-címhez hozzá kell férniük, személyes használatra is hozzá kell férniük, ami nem engedélyezett a működési irányelvekben.
 
@@ -204,11 +203,11 @@ Egyes szervezetek megpróbálják kijavítani ezt a blokkolással, `login.live.c
 
 1. A blokkoló `login.live.com` blokkolja a személyes fiókok használatát a B2B vendég forgatókönyvekben, ami behatolhat a látogatókra és az együttműködésre.
 1. [Az Autopilot használatához `login.live.com` a](https://docs.microsoft.com/mem/autopilot/networking-requirements) a telepítéshez. Az Intune és az Autopilot forgatókönyvek sikertelenek lehetnek `login.live.com` , ha a blokkolva van.
-1. A MSA szolgáltatásban az telemetria támaszkodó szervezeti és Windows-frissítések nem [fognak működni](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#feature-updates-are-not-being-offered-while-other-updates-are).
+1. A login.live.com szolgáltatásban az telemetria támaszkodó szervezeti és Windows-frissítések nem [fognak működni](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#feature-updates-are-not-being-offered-while-other-updates-are).
 
 ### <a name="configuration-for-consumer-apps"></a>A fogyasztói alkalmazások konfigurációja
 
-Míg a `Restrict-Access-To-Tenants` fejléc engedélyezési listaként funkcionál, a MSA blokk megtagadási jelként működik, és közli, hogy a Microsoft-fiók platform nem teszi lehetővé a felhasználók számára, hogy bejelentkezzenek a fogyasztói alkalmazásokba. A jel elküldéséhez a `sec-Restrict-Tenant-Access-Policy` rendszer egy fejlécet küld a meglátogatott forgalomhoz `login.live.com` ugyanazzal a vállalati [](#proxy-configuration-and-requirements)proxyval vagy tűzfallal. A fejléc értékének a számnak kell lennie `restrict-msa` . Ha a fejléc jelen van, és egy fogyasztói alkalmazás közvetlenül próbál bejelentkezni egy felhasználóba, a bejelentkezés le lesz tiltva.
+Míg a `Restrict-Access-To-Tenants` fejléc engedélyezési listaként funkcionál, a Microsoft-fiók (MSA) blokk megtagadási jelként működik, és közli, hogy a Microsoft-fiók platform nem teszi lehetővé a felhasználók számára, hogy bejelentkezzenek a fogyasztói alkalmazásokba. A jel elküldéséhez a `sec-Restrict-Tenant-Access-Policy` fejlécet `login.live.com` a [fentiekkel](#proxy-configuration-and-requirements)megegyező vállalati proxy vagy tűzfal használatával kell beadni a forgalomnak. A fejléc értékének a számnak kell lennie `restrict-msa` . Ha a fejléc jelen van, és egy fogyasztói alkalmazás közvetlenül próbál bejelentkezni egy felhasználóba, a bejelentkezés le lesz tiltva.
 
 Ekkor a felhasználói alkalmazások hitelesítése nem jelenik meg a [felügyeleti naplókban](#admin-experience), mivel a login.Live.com az Azure ad-től függetlenül fut.
 

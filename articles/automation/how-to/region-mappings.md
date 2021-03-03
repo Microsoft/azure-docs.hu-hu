@@ -1,20 +1,24 @@
 ---
 title: A társított Log Analytics-munkaterület esetében támogatott régiók
 description: Ez a cikk az Automation-fiók és a Log Analytics munkaterület közötti támogatott régió-hozzárendeléseket ismerteti, mivel azok a Azure Automation egyes szolgáltatásaihoz kapcsolódnak.
-ms.date: 01/21/2021
+ms.date: 02/17/2021
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 3b744127b51b0e0db63c158feaf463af4cd0bdcf
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 0599dcb57b46d1e48b4035acac8b64edbbe06912
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704321"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720171"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>A társított Log Analytics-munkaterület esetében támogatott régiók
 
 Azure Automation a kiszolgálók és a virtuális gépek Update Management, Change Tracking és leltár, valamint Start/Stop VMs during off-hours funkcióit engedélyezheti. Ezek a funkciók egy Log Analytics munkaterülettől függenek, ezért a munkaterület Automation-fiókkal való összekapcsolását igényli. Azonban csak bizonyos régiók támogatottak egymás összekapcsolásához. Általánosságban elmondható, hogy a leképezés *nem* alkalmazható, ha olyan munkaterülethez szeretne Automation-fiókot kapcsolni, amely nem engedélyezi ezeket a funkciókat.
+
+Az itt tárgyalt leképezések csak az Log Analytics munkaterület Automation-fiókhoz való csatolására vonatkoznak. Nem vonatkoznak azokra a virtuális gépekre (VM-EK), amelyek az Automation-fiókhoz kapcsolt munkaterülethez csatlakoznak. A virtuális gépek nem korlátozódnak az adott Log Analytics munkaterület által támogatott régiókra. Bármelyik régióban lehet. Ne feledje, hogy a virtuális gépek egy másik régióban is befolyásolhatják az állami, a helyi és az országokra vonatkozó szabályozási követelményeket, vagy a vállalat megfelelőségi követelményeit. Egy másik régióban lévő virtuális gépek is bevezethetik az adatsávszélességi díjakat.
+
+Mielőtt a virtuális gépeket egy másik régióban lévő munkaterülethez csatlakoztatja, tekintse át a követelményeket és a lehetséges költségeket a jogi és a költségek következményeinek megerősítéséhez és megismeréséhez.
 
 Ez a cikk a támogatott leképezéseket ismerteti az Automation-fiókban lévő funkciók sikeres engedélyezéséhez és használatához.
 
@@ -96,7 +100,7 @@ Azt is megteheti, hogy leválasztja a munkaterületet az Automation-fiókjából
 1. A munkaterületen válassza az **Automation-fiók** lehetőséget a **kapcsolódó erőforrások** területen.
 2. Az Automation-fiók lapon válassza a **fiók megszüntetése** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedjen meg Update Management [Update Management áttekintésében](../update-management/overview.md).
 * Ismerkedjen meg a Change Tracking és a leltárral [change Tracking és leltár áttekintésében](../change-tracking/overview.md).

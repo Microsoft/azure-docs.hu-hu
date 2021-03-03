@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 991d37b097587e8e4a524c4fc8bc21e9b6af20b5
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a01005231b5d775f79555ec10dedeb3f30b3426a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100616668"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737205"
 ---
 # <a name="troubleshoot-problems-in-it-service-management-connector"></a>A IT-szolgáltatásmenedzsmenti csatoló kapcsolatos problémák elhárítása
 
@@ -55,7 +55,7 @@ A következő fejezetek a gyakori tüneteket, a lehetséges okokat és a felbont
 
 * A hitelesítő adatok helytelenek.
 * A jogosultságok nem elegendőek.
-* A webalkalmazás telepítése helytelen volt.
+* Service Manager kapcsolatok esetén: a webalkalmazás helytelenül lett telepítve.
 
 **Megoldás**:
 
@@ -95,3 +95,12 @@ A következő fejezetek a gyakori tüneteket, a lehetséges okokat és a felbont
 **OK**: az újonnan létrehozott ITSMC-példány még befejezi a kezdeti szinkronizálást.
 
 **Megoldás**: Tekintse át a [gyakori hibákat és azok felbontását](itsmc-dashboard-errors.md).
+
+### <a name="sync-connection"></a>Szinkronizálási kapcsolatok 
+
+**OK**: a tünet több oka is lehet:
+
+* A sablonok nem jelennek meg a művelet definíciójának részeként.
+* A Incedents/Events nem jön létre a ServiceNow-ben.
+
+**Megoldás**: [szinkronizálja az összekötőt](itsmc-resync-servicenow.md).

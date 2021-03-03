@@ -7,12 +7,12 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 37099b551e004ebfc702dce37c2a1499aa46ff10
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7c91cd8cbb1a927a88f05fcea603c6a4ed6e1c14
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950724"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719032"
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>Korábban automatikusan kiépített eszközök kiépítése 
 
@@ -23,7 +23,7 @@ Előfordulhat, hogy meg kell szüntetnie az eszköz kiépítési szolgáltatás�
 1. Az eszköz regisztrációjának törlése a kiépítési szolgáltatásból a jövőbeli automatikus kiépítés megelőzése érdekében. Attól függően, hogy átmenetileg vagy véglegesen szeretné-e visszavonni a hozzáférést, érdemes lehet letiltani vagy törölni egy beléptetési bejegyzést. Az X. 509 igazolást használó eszközök esetében érdemes lehet letiltani/törölni egy bejegyzést a meglévő regisztrációs csoportok hierarchiájában.  
  
    - További információ az eszközök regisztrálásáról: az [eszköz regisztrálása az Azure-ból IoT hub Device Provisioning Service](how-to-revoke-device-access-portal.md).
-   - Ha meg szeretné tudni, hogyan lehet az eszközöket programozott módon felvenni az egyik kiépítési szolgáltatási SDK használatával, tekintse meg az [eszközök regisztrálásának kezelése a Service SDK-val](how-to-manage-enrollments-sdks.md)című témakört.
+   - Ha meg szeretné tudni, hogyan lehet az eszközöket programozott módon felvenni az egyik kiépítési szolgáltatási SDK használatával, tekintse meg az [eszközök regisztrálásának kezelése a Service SDK-val](./quick-enroll-device-x509-java.md)című témakört.
 
 2. Regisztrálja az eszközt a IoT Hub, hogy elkerülje a jövőbeli kommunikációt és az adatátvitelt. Újra ideiglenesen letilthatja vagy véglegesen törölheti az eszköz bejegyzését az azonosító beállításjegyzékében arra a IoT Hub, ahol üzembe lett helyezve. További információ a [tiltásról: eszközök letiltása](../iot-hub/iot-hub-devguide-identity-registry.md#disable-devices) . A [Azure Portalban](https://portal.azure.com)tekintse meg az IoT hub erőforrás "eszközkezelés/IoT eszközei" című témakört.
 

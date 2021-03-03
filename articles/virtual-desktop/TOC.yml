@@ -66,6 +66,8 @@
           href: create-profile-container-adds.md
         - name: Az Azure Files és az AD DS használata
           href: create-file-share.md
+        - name: Az Office telepítése a FSLogix alkalmazás-tárolókkal
+          href: fslogix-office-app-rule-editor.md
     - name: Gazdagépkészlet beállításainak konfigurálása
       items:
         - name: RDP-tulajdonságok
@@ -104,6 +106,8 @@
           href: app-attach-image-prep.md
         - name: Fájlmegosztás beállítása
           href: app-attach-file-share.md
+        - name: A MSIXMGR eszköz beállítása
+          href: app-attach-msixmgr.md
     - name: A Microsoft Teams használata
       href: teams-on-wvd.md
     - name: Azure AD többtényezős hitelesítés beállítása

@@ -7,12 +7,12 @@ ms.date: 10/09/2017
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.openlocfilehash: e85ac58c80e1fd695938bf09b6435dba1f4ee083
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 924ee745804ef31e42dc21437dbb0459f6d37701
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091346"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693747"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Beágyazott virtualizálás engedélyezése Azure-beli virtuális gépen
 
@@ -22,11 +22,9 @@ Ez a cikk a Hyper-V Azure-beli virtuális gépen való engedélyezésének, vala
 
 ## <a name="create-a-nesting-capable-azure-vm"></a>Beágyazási képességgel rendelkező Azure-beli virtuális gép létrehozása
 
-Hozzon létre egy új Windows Server 2016 Azure-beli virtuális gépet. A beágyazást támogató virtuálisgép-méretek teljes listájáért tekintse meg az [Azure számítási egységét ismertető cikket](../acu.md).
+Hozzon létre egy új Windows Server 2016 vagy Windows Server 2019 Azure virtuális gépet a gazdagép számára. Győződjön meg arról, hogy a virtuális gép számára olyan méretet választ, amely támogatja a beágyazást, és elég nagy ahhoz, hogy megfeleljen a vendég virtuális gépek igényeinek. A beágyazást támogató virtuálisgép-méretek listáját az [Azure számítási egység](../acu.md) című cikkben találja.
 
-Ne feledje, hogy a virtuális gép méretét elég nagy méretűre kell kiválasztania ahhoz, hogy támogassa a vendég virtuális gépek igényeit. Ebben a példában egy D4_v3 méretű Azure-beli virtuális gépet használunk. 
-
-[Itt](https://azure.microsoft.com/regions/services/)megtekintheti a Dv3 vagy Ev3 sorozatú virtuális gépek regionális elérhetőségét.
+Megtekintheti a virtuálisgép-méretek regionális elérhetőségét az [elérhető termékek régiónként](https://azure.microsoft.com/regions/services/) oldalon.
 
 >[!NOTE]
 >

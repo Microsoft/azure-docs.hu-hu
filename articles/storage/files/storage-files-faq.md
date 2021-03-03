@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 266862a1691387caf1b1ffa9a47b0e60e84970d8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 739e1dea23f87403a4aded50d5c9f254a55c64cc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492131"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737613"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Filesszal kapcsolatos gyakori kérdések (GYIK)
 A [Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az iparági szabványnak megfelelő [SMB protokollon](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) és a [Network File System (NFS) protokollon](https://en.wikipedia.org/wiki/Network_File_System) (előzetes verzió) keresztül érhető el. Az Azure-fájlmegosztás párhuzamosan csatlakoztatható a Felhőbeli vagy a Windows, Linux és macOS rendszerű helyszíni környezetekhez. Az Azure-fájlmegosztás a Windows Server rendszerű gépeken is gyorsítótárazható a Azure File Sync használatával a gyors eléréshez, ahol az adott adatforgalomhoz közeledik.
@@ -73,7 +73,7 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 
 * <a id="tier-options"></a>
   **Milyen tárolási rétegek támogatottak a Azure Files?**  
-    Azure Files támogatja a két tárolási szintet: prémium és standard. A standard fájlmegosztást az általános célú (GPv1 vagy GPv2) Storage-fiókok, a prémium fájlmegosztás pedig a FileStorage Storage-fiókokban hozza létre. További információ a [szabványos fájlmegosztás](storage-how-to-create-file-share.md) és a [prémium szintű fájlmegosztás](storage-how-to-create-premium-fileshare.md)létrehozásáról. 
+    Azure Files támogatja a két tárolási szintet: prémium és standard. A standard fájlmegosztást az általános célú (GPv1 vagy GPv2) Storage-fiókok, a prémium fájlmegosztás pedig a FileStorage Storage-fiókokban hozza létre. További információ a [szabványos fájlmegosztás](storage-how-to-create-file-share.md) és a [prémium szintű fájlmegosztás](./storage-how-to-create-file-share.md)létrehozásáról. 
     
     > [!NOTE]
     > Azure-fájlmegosztás nem hozható létre blob Storage-fiókokból vagy *prémium* általános célú (GPv1 vagy GPv2) Storage-fiókból. A standard szintű Azure-fájlmegosztás csak *szabványos* általános célú fiókokban hozható létre, és a prémium szintű Azure-fájlmegosztás csak FileStorage Storage-fiókokban hozható létre. A *prémium* szintű általános célú (GPv1 és GPv2) Storage-fiókok csak a prémium szintű lapokat tartalmazó Blobok esetén érhetők el. 
@@ -176,7 +176,7 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 * <a id="ad-support"></a>
 **Támogatott-e a Azure Files identitás-alapú hitelesítés és hozzáférés-vezérlés?**  
     
-    Igen, Azure Files támogatja az identitás-alapú hitelesítést és a hozzáférés-vezérlést. Az identitás-alapú hozzáférés-vezérlés használatának két módja közül választhat: helyszíni Active Directory tartományi szolgáltatások vagy Azure Active Directory Domain Services (Azure AD DS). A helyszíni Active Directory tartományi szolgáltatások (AD DS) támogatja a hitelesítést a AD DS tartományhoz csatlakoztatott, helyszíni vagy Azure-beli gépek használatával az Azure-fájlmegosztás SMB-kapcsolaton keresztüli eléréséhez. Azure Files az Azure AD DS az SMB protokollon keresztüli hitelesítés lehetővé teszi, hogy az Azure AD DS tartományhoz csatlakoztatott Windows virtuális gépek hozzáférjenek a megosztásokhoz, könyvtárakhoz és fájlokhoz az Azure AD hitelesítő adataival. További részletekért lásd: [az SMB-hozzáférésre vonatkozó Azure Files identitás-alapú hitelesítés támogatásának áttekintése](storage-files-active-directory-overview.md). 
+    Igen, Azure Files támogatja az identitás-alapú hitelesítést és a hozzáférés-vezérlést. Az identitás-alapú hozzáférés-vezérlés használatának két módja közül választhat: helyszíni Active Directory Domain Services vagy Azure Active Directory Domain Services (Azure AD DS). A helyszíni Active Directory Domain Services (AD DS) támogatja a hitelesítést a AD DS tartományhoz csatlakoztatott, helyszíni vagy Azure-beli gépek használatával az Azure-fájlmegosztás SMB-kapcsolaton keresztüli eléréséhez. Azure Files az Azure AD DS az SMB protokollon keresztüli hitelesítés lehetővé teszi, hogy az Azure AD DS tartományhoz csatlakoztatott Windows virtuális gépek hozzáférjenek a megosztásokhoz, könyvtárakhoz és fájlokhoz az Azure AD hitelesítő adataival. További részletekért lásd: [az SMB-hozzáférésre vonatkozó Azure Files identitás-alapú hitelesítés támogatásának áttekintése](storage-files-active-directory-overview.md). 
 
     A Azure Files két további módszert kínál a hozzáférés-vezérlés kezelésére:
 

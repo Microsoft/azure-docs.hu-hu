@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 1/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5c216661e45e5ed34a95e8a56002f3ad175b089a
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 1211cd306f10fb349bd42568697443ff103a171c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100545911"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703089"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-portal"></a>Felügyelt identitás engedélyezése az Azure Digital Twins-események útválasztásához (előzetes verzió): Azure Portal
 
@@ -89,8 +89,7 @@ További információ a végpontokról, az útvonalakról és az Azure digitáli
 
 ### <a name="assign-the-role"></a>A szerepkör kiosztása
 
->[!NOTE]
-> Ezt a szakaszt egy Azure-felhasználónak kell elvégeznie, aki jogosult az Azure-erőforrásokhoz való felhasználói hozzáférés kezelésére (beleértve az engedélyek megadását és delegálását). A követelménynek megfelelő általános szerepkörök a *tulajdonos*, a *fiók rendszergazdája* vagy a *felhasználói hozzáférés rendszergazdája* és a *közreműködő* kombinációja. További információ az Azure Digital Twins szerepköreinek engedélyezési követelményeiről [*: útmutató: példány és hitelesítés beállítása*](how-to-set-up-instance-portal.md#prerequisites-permission-requirements).
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
 
 Ha szerepkört szeretne hozzárendelni az identitáshoz, először nyissa meg a [Azure Portal](https://portal.azure.com).
 
@@ -116,7 +115,7 @@ Ha szerepkört szeretne hozzárendelni az identitáshoz, először nyissa meg a 
 
 Ha végzett a részletek beírásával, válassza a **Mentés** lehetőséget.
 
-## <a name="create-an-endpoint-with-identity-based-authorization"></a>Végpont létrehozása identitás-alapú hitelesítéssel
+## <a name="create-an-endpoint-with-identity-based-authentication"></a>Végpont létrehozása identitás-alapú hitelesítéssel
 
 Miután beállította a rendszer által felügyelt identitást az Azure Digital Twins-példányhoz, és hozzárendeli a megfelelő szerepkör (eke) t, létrehozhat olyan Azure digitális Twins- [végpontokat](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins) , amelyek képesek az identitás hitelesítésre való használatára. Ez a beállítás csak az Event hub és a Service Bus típusú végpontok esetében érhető el (Event Grid esetén nem támogatott).
 

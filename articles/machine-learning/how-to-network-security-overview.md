@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: 857fba6dfa6191163c06c423cefb42d57f25dc1d
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 1a73988b66ba7b47f18ecaaa07df59e9047a933b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980575"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691824"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Virtual Network elkülönítés és Adatvédelem – áttekintés
 
@@ -71,7 +71,7 @@ A munkaterület és a kapcsolódó erőforrások védelméhez kövesse az alább
 1. Hozzon létre egy [magánhálózati kapcsolattal rendelkező munkaterületet](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint) a VNet és a munkaterület közötti kommunikáció engedélyezéséhez.
 1. Azure Key Vault hozzáadása a virtuális hálózathoz [szolgáltatási végponttal](../key-vault/general/overview-vnet-service-endpoints.md) vagy [privát végponttal](../key-vault/general/private-link-service.md). A Key Vault beállítása a [következőre: "megbízható Microsoft-szolgáltatások engedélyezése a tűzfal megkerüléséhez"](how-to-secure-workspace-vnet.md#secure-azure-key-vault).
 1. Adja hozzá az Azure Storage-fiókot a virtuális hálózathoz egy [szolgáltatási végponttal](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) vagy egy [privát végponttal](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints).
-1. [Konfigurálja úgy a Azure Container registryt, hogy privát végpontot használjon](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr) , és [engedélyezze az alhálózati delegálást a Azure Container Instancesban](how-to-secure-inferencing-vnet.md#enable-azure-container-instances-aci).
+1. [Azure Container Registry konfigurálása privát végpont használatára](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr).
 
 ![Architektúra-diagram, amely bemutatja, hogy a munkaterület és a kapcsolódó erőforrások hogyan kommunikálnak egymással a szolgáltatási végpontokon vagy a VNet belüli privát végpontokon](./media/how-to-network-security-overview/secure-workspace-resources.png)
 

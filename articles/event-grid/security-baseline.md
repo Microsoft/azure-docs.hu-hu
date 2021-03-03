@@ -4,23 +4,27 @@ description: A Event Grid biztonsági alapterve az Azure biztonsági Teljesítm�
 author: msmbaldwin
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/21/2020
+ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ef0f308c3ea2986301b0247111ef96bb133b57f4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 80b630bb2f06d3eb634b9d9d32649ea8a47c0b0b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571938"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739143"
 ---
 # <a name="azure-security-baseline-for-event-grid"></a>Event Grid Azure biztonsági alapterve
 
-A Microsoft Azure Event Grid Azure biztonsági alapterve olyan javaslatokat tartalmaz, amelyek segítségével javíthatja az üzemelő példány biztonsági állapotát. A szolgáltatás alapterve az [Azure Security Benchmark 1,0-es verziójából](../security/benchmarks/overview.md)származik, amely javaslatokat tesz arra vonatkozóan, hogy miként védheti meg felhőalapú megoldásait az Azure-ban az ajánlott eljárásokat ismertető útmutató segítségével. További információ: [Azure Security](../security/benchmarks/security-baselines-overview.md)alapkonfigurációk áttekintése.
+Ez a biztonsági alapterv az [Azure biztonsági teljesítményteszt 1,0-es verziójának](../security/benchmarks/overview-v1.md) útmutatását alkalmazza Microsoft Azure Event Gridre. Az Azure Security Benchmark ajánlásokat ad arra nézve, hogy hogyan tehetők biztonságossá a felhőalapú megoldások az Azure-ban.
+A tartalom az Azure biztonsági teljesítményteszt által meghatározott **biztonsági vezérlők** szerint van csoportosítva, valamint a Azure Event Grid vonatkozó kapcsolódó útmutatás. A Azure Event Grid nem alkalmazható **vezérlők** ki vannak zárva.
+
+ 
+Ha szeretné megtekinteni, hogyan Azure Event Grid teljes mértékben leképezni az Azure biztonsági Teljesítménytesztét, tekintse meg a [teljes Azure Event Grid biztonsági alapterv-leképezési fájlt](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
 
 ## <a name="network-security"></a>Hálózati biztonság
 
-*További információt az [Azure biztonsági teljesítményteszt: hálózati biztonság](../security/benchmarks/security-control-network-security.md)című témakörben talál.*
+*További információ: [Azure Security Benchmark: Hálózati biztonság](../security/benchmarks/security-control-network-security.md).*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Azure-erőforrások biztosítása virtuális hálózatokon belül
 
@@ -28,41 +32,41 @@ A Microsoft Azure Event Grid Azure biztonsági alapterve olyan javaslatokat tart
 
 A Azure Event Grid a nyilvános IP-alapú hozzáférés-vezérlést is támogatja a témakörökben és tartományokban való közzétételhez. Az IP-alapú vezérlők használatával a közzétevőket egy témakörre vagy tartományra korlátozhatja, hogy csak a jóváhagyott gépek és felhőalapú szolgáltatások készlete legyen. Ez a szolgáltatás kiegészíti a Event Grid által támogatott hitelesítési mechanizmusokat. 
 
-- [További részletek Event Grid privát végpontokról](network-security.md#private-endpoints)
+- [További részletek Event Grid privát végpontokról](https://docs.microsoft.com/azure/event-grid/network-security#private-endpoints)
 
-- [További információ a Event Grid IP-tűzfalról](network-security.md#ip-firewall)
+- [További információ a Event Grid IP-tűzfalról](https://docs.microsoft.com/azure/event-grid/network-security#ip-firewall)
 
 - [Azure Event Grid hálózati biztonság](network-security.md) 
 
 - [Az Azure Private Link áttekintése](../private-link/private-link-overview.md)
 
-- [Azure-beli hálózati biztonsági csoport](../virtual-network/network-security-groups-overview.md)
-
-**Az Azure Security Center monitorozása**: Igen
+- [Azure-beli hálózati biztonsági csoport](/azure/virtual-network/security-overview)
 
 **Felelősség**: Ügyfél
 
+**Azure Security Center figyelés**: nincs
+
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1,2: a virtuális hálózatok, alhálózatok és hálózati adapterek konfigurációjának és forgalmának figyelése és naplózása
 
-**Útmutató**: a Azure Security Center használata és a hálózati védelmi javaslatok követése a Event Grid-erőforrások biztonságossá tételéhez az Azure-ban. Ha Azure-beli virtuális gépeket használ a Event Grid erőforrásaihoz való hozzáféréshez, engedélyezze a hálózati biztonsági csoport (NSG) folyamatának naplóit, és küldje el a naplókat egy Storage-fiókba forgalom számára
+**Útmutató**: a Azure Security Center használata és a hálózati védelmi javaslatok követése a Event Grid-erőforrások biztonságossá tételéhez az Azure-ban. Használata esetén
 
-ellenőrzési.
+Az Azure Virtual Machines szolgáltatással hozzáférhet a Event Grid erőforrásaihoz, engedélyezheti a hálózati biztonsági csoport (NSG) folyamatának naplóit, és elküldheti a naplókat a forgalmi naplózáshoz.
 
 - [A NSG folyamat naplófájljainak engedélyezése](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
 - [A Azure Security Center által biztosított hálózati biztonság ismertetése](../security-center/security-center-network-recommendations.md)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="13-protect-critical-web-applications"></a>1,3: a kritikus webalkalmazások megóvása
 
 **Útmutató**: nem alkalmazható; Ez a javaslat Azure App Service vagy számítási erőforrásokon futó webalkalmazásokhoz készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: nem alkalmazható
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: az ismert kártékony IP-címekkel folytatott kommunikáció megtagadása
 
@@ -76,11 +80,11 @@ Az elosztott szolgáltatásmegtagadási (DDoS) támadások elleni védelem érde
 
 - [A DDoS Protection konfigurálása](../ddos-protection/manage-ddos-protection.md)
 
-- [További információ az Azure Security Center integrált veszélyforrások felderítéséről](../security-center/azure-defender.md)
-
-**Az Azure Security Center monitorozása**: Igen
+- [További információ az Azure Security Center integrált veszélyforrások felderítéséről](/azure/security-center/security-center-alerts-service-layer)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="15-record-network-packets"></a>1,5: hálózati csomagok rögzítése
 
@@ -96,9 +100,9 @@ Ha a rendellenes tevékenység kivizsgálásához szükséges, engedélyezze Net
 
 - [A Network Watcher engedélyezése](../network-watcher/network-watcher-create.md)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: hálózati behatolás-észlelési/Behatolás-megelőzési rendszerek (AZONOSÍTÓk/IP-címek) üzembe helyezése
 
@@ -112,66 +116,70 @@ Az Ön által választott tűzfal-megoldás üzembe helyezésével azonosíthatj
 
 - [Riasztások konfigurálása Azure Firewall](../firewall/threat-intel.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1,7: webalkalmazások forgalmának kezelése
 
 **Útmutató**: nem alkalmazható; Ez a javaslat Azure App Service vagy számítási erőforrásokon futó webalkalmazásokhoz készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: nem alkalmazható
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: a hálózati biztonsági szabályok bonyolultságának és adminisztratív terhelésének csökkentése
 
 **Útmutató**: a virtuális hálózatok olyan erőforrásaihoz, amelyeknek hozzáférést kell biztosítania a Azure Event Grid erőforrásaihoz, a hálózati biztonsági csoportokon vagy Azure Firewallokon a hálózati hozzáférés-vezérlés meghatározásához használja Virtual Network-szolgáltatás címkéit. Biztonsági szabályok létrehozása során szolgáltatáscímkéket használhat bizonyos IP-címek helyett. A szolgáltatási címke nevének (például AzureEventGrid) megadásával a szabály megfelelő forrás vagy cél mezőjében engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával.
 
-- [A Azure Event Grid szolgáltatás címkéjének használata](network-security.md#service-tags)
+- [A Azure Event Grid szolgáltatás címkéjének használata](https://docs.microsoft.com/azure/event-grid/network-security#service-tags)
 
 - [További információ a szolgáltatási címkék használatáról](../virtual-network/service-tags-overview.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: a hálózati eszközök szabványos biztonsági konfigurációinak fenntartása
 
 **Útmutató**: a Azure Event Grid névterekhez társított hálózati erőforrásokra vonatkozó szabványos biztonsági konfigurációk definiálása és implementálása Azure Policy használatával. Használjon Azure Policy aliasokat a "Microsoft. EventGrid" és a "Microsoft. Network" névterekben, hogy egyéni szabályzatokat hozzon létre a Event Grid-erőforrások hálózati konfigurációjának naplózásához vagy érvénybe léptetéséhez. 
 
-Használhatja a Azure Event Gridhoz kapcsolódó beépített szabályzat-definíciókat is, például a következőt:-Azure Event Grid tartományoknak privát hivatkozásokat kell használniuk – Azure Event Grid a témaköröknek privát linksAzure kell használniuk
-- [beépített szabályzatok Event Grid erőforrásokhoz](../governance/policy/samples/built-in-policies.md#event-grid)
+Használhatja a Azure Event Gridhoz kapcsolódó beépített szabályzat-definíciókat is, például a következőket:
+
+- Azure Event Grid tartományoknak privát hivatkozásokat kell használniuk
+
+- Azure Event Grid témaköröknek az Azure privát hivatkozásait kell használniuk
+- [beépített szabályzatok Event Grid erőforrásokhoz](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-grid)
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="110-document-traffic-configuration-rules"></a>1,10: a dokumentum forgalmának konfigurációs szabályai
 
 **Útmutató**: a Azure Event Grid erőforrásokhoz társított hálózati erőforrásokhoz használjon címkéket, hogy logikailag szervezze őket a besorolásba.
 
-- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
-
-**Azure Security Center figyelés**: nem alkalmazható
+- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: automatikus eszközök használata a hálózati erőforrások konfigurációjának figyelésére és a változások észlelésére
 
 **Útmutató**: az Azure-tevékenység naplójának használata a hálózati erőforrás-konfigurációk figyelésére és a Azure Event Grid kapcsolódó hálózati erőforrások változásainak észlelésére. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](/azure/azure-monitor/platform/activity-log-view)
 
-- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
-
-**Azure Security Center figyelés**: nem alkalmazható
+- [Riasztások létrehozása a Azure Monitorban](/azure/azure-monitor/platform/alerts-activity-log)
 
 **Felelősség**: Ügyfél
 
-## <a name="logging-and-monitoring"></a>Naplózás és figyelés
+**Azure Security Center figyelés**: nincs
+
+## <a name="logging-and-monitoring"></a>Naplózás és monitorozás
 
 *További információt az [Azure biztonsági teljesítményteszt: naplózás és figyelés](../security/benchmarks/security-control-logging-monitoring.md)című témakörben talál.*
 
@@ -183,9 +191,9 @@ Használhatja a Azure Event Gridhoz kapcsolódó beépített szabályzat-definí
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: az Azure-erőforrások naplózásának engedélyezése
 
@@ -193,27 +201,27 @@ Használhatja a Azure Event Gridhoz kapcsolódó beépített szabályzat-definí
 
 - [Diagnosztikai naplók engedélyezése az Azure Event Grid-témakörökhöz vagy-tartományokhoz](enable-diagnostic-logs-topic.md)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: biztonsági naplók gyűjtése az operációs rendszerekből
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: nem alkalmazható
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: a biztonsági napló tárolási adatmegőrzésének konfigurálása
 
 **Útmutató**: a Azure monitor a szervezet megfelelőségi előírásai alapján állítsa be az Azure Event Grid erőforrásokhoz társított log Analytics-munkaterületek naplózásának megőrzési időtartamát.
 
-- [Napló-megőrzési paraméterek beállítása](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
-
-**Azure Security Center figyelés**: nem alkalmazható
+- [Napló-megőrzési paraméterek beállítása](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="26-monitor-and-review-logs"></a>2,6: naplók figyelése és áttekintése
 
@@ -227,13 +235,13 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics lekérdezések első lépései](../azure-monitor/logs/log-analytics-tutorial.md)
+- [Log Analytics lekérdezések első lépései](/azure/azure-monitor/log-query/log-analytics-tutorial)
 
-- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/logs/get-started-queries.md)
-
-**Azure Security Center figyelés**: nem alkalmazható
+- [Egyéni lekérdezések végrehajtása a Azure Monitorban](/azure/azure-monitor/log-query/get-started-queries)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2,7: riasztások engedélyezése rendellenes tevékenységekhez
 
@@ -249,41 +257,41 @@ Emellett a Log Analytics munkaterületét az Azure Sentinelbe is bevezetheti, mi
 
 - [Event Grid diagnosztikai napló sémájának részletei](diagnostic-logs.md)
 
-- [Naplózási riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](../azure-monitor/alerts/alerts-log.md)
+- [Naplózási riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](/azure/azure-monitor/platform/alerts-log)
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="28-centralize-anti-malware-logging"></a>2,8: kártevő szoftverek közötti naplózás központosítása
 
 **Útmutató**: nem alkalmazható; Azure Event Grid nem dolgoz fel kártevő szoftverrel kapcsolatos naplókat, illetve nem hoz létre.
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: nem alkalmazható
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="29-enable-dns-query-logging"></a>2,9: DNS-lekérdezések naplózásának engedélyezése
 
 **Útmutató**: nem alkalmazható; A Azure Event Grid nem dolgozza fel a DNS-sel kapcsolatos naplókat, és nem hoz létre.
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: nem alkalmazható
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="210-enable-command-line-audit-logging"></a>2,10: parancssori naplózás engedélyezése
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: nem alkalmazható
+
+**Azure Security Center figyelés**: nincs
 
 ## <a name="identity-and-access-control"></a>Identitás- és hozzáférés-vezérlés
 
-*További információt az [Azure biztonsági teljesítményteszt: identitás-és hozzáférés-vezérlés](../security/benchmarks/security-control-identity-access-control.md)című témakörben talál.*
+*További információt az [Azure biztonsági teljesítményteszt: Identity and Access Control](../security/benchmarks/security-control-identity-access-control.md)című témakörben talál.*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: a felügyeleti fiókok leltárának karbantartása
 
@@ -293,27 +301,27 @@ Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) lehetővé teszi
 
 - [Event Grid erőforrásokhoz való hozzáférés engedélyezése](security-authorization.md)
 
-- [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole)
+- [Címtárbeli szerepkör beszerzése Azure Active Directoryban (Azure AD) a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole)
 
 - [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: az alapértelmezett jelszavak módosítása, ha alkalmazható
 
-**Útmutató**: a Event Grid erőforrásokhoz való hozzáférés-kezelést Azure Active Directory (ad) szabályozza. Az Azure AD nem rendelkezik az alapértelmezett jelszavak fogalmával.
-
-**Azure Security Center figyelés**: nem alkalmazható
+**Útmutató**: Event Grid erőforrásokhoz való hozzáférés-kezelést Azure Active Directory (Azure ad) vezérli. Az Azure AD nem rendelkezik az alapértelmezett jelszavak fogalmával.
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3,3: dedikált rendszergazdai fiókok használata
 
 **Útmutató**: szabványos üzemeltetési eljárások létrehozása a dedikált rendszergazdai fiókok használata körül.
 
-Azure AD Privileged Identity Management és Azure Resource Manager használatával is engedélyezheti az igény szerinti hozzáférést.
+Az igény szerinti hozzáférést Azure Active Directory (Azure AD) Privileged Identity Management és Azure Resource Manager használatával is engedélyezheti.
 
 Event Grid engedélyezheti a felügyelt szolgáltatás identitását az Azure Event Grid-témakörökben vagy-tartományokban, és a használatával továbbíthatja az eseményeket olyan támogatott célhelyekre, mint például a Service Bus várólisták és témakörök, az Event hubok és a Storage-fiókok. A közös hozzáférésű aláírás (SAS) tokenje az események Azure Event Grid való közzétételére szolgál. Hozzon létre szabványos működési eljárást az esemény-hozzáférés, a továbbítás és a velük való közzététel köré.
 
@@ -321,55 +329,55 @@ Event Grid engedélyezheti a felügyelt szolgáltatás identitását az Azure Ev
 
 - [Közzétételi ügyfelek hitelesítése (Azure Event Grid)](security-authenticate-publishing-clients.md)
 
-- [További információ a Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
-
-**Az Azure Security Center monitorozása**: Igen
+- [További információ a Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: egyszeri bejelentkezés (SSO) használata Azure Active Directory
 
 **Útmutató**: nem alkalmazható; Event Grid szolgáltatás nem támogatja az egyszeri bejelentkezést.
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: nem alkalmazható
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Multi-Factor Authentication használata az összes Azure Active Directory-alapú hozzáféréshez
 
-**Útmutató**: nem alkalmazható; Event Grid szolgáltatás nem használ többtényezős hitelesítést
-
-**Azure Security Center figyelés**: nem alkalmazható
+**Útmutató**: nem alkalmazható; Event Grid szolgáltatás nem használ többtényezős hitelesítést.
 
 **Felelősség**: nem alkalmazható
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: dedikált gépek (privilegizált hozzáférési munkaállomások) használata az összes felügyeleti feladathoz
 
-**Útmutató**: nem alkalmazható; nincsenek Event Grid forgatókönyvek emelt szintű hozzáférési munkaállomásokat igényelnek. 
-
-**Azure Security Center figyelés**: nem alkalmazható
+**Útmutató**: nem alkalmazható; nincsenek Event Grid forgatókönyvek emelt szintű hozzáférési munkaállomásokat igényelnek.
 
 **Felelősség**: nem alkalmazható
 
+**Azure Security Center figyelés**: nincs
+
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3,7: naplózás és riasztás a gyanús tevékenységekről a rendszergazdai fiókoktól
 
-**Útmutató**: Azure Active Directory biztonsági jelentések és figyelés használata a környezetben előforduló gyanús vagy nem biztonságos tevékenységek észlelésére. A Azure Security Center használatával figyelheti az identitás-és hozzáférési tevékenységeket.
+**Útmutató**: a Azure Active Directory (Azure ad) biztonsági jelentéseinek és figyelésének használata annak észlelésére, hogy a környezetben gyanús vagy nem biztonságos tevékenységek történnek-e. A Azure Security Center használatával figyelheti az identitás-és hozzáférési tevékenységeket.
 
-- [A kockázatos tevékenységek miatt megjelölt Azure AD-felhasználók azonosítása](../active-directory/identity-protection/overview-identity-protection.md)
+- [A kockázatos tevékenységek miatt megjelölt Azure AD-felhasználók azonosítása](/azure/active-directory/reports-monitoring/concept-user-at-risk)
 
 - [A felhasználók identitási és hozzáférési tevékenységeinek monitorozása az Azure Security Centerben](../security-center/security-center-identity-access.md)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="38-manage-azure-resources-only-from-approved-locations"></a>3,8: csak a jóváhagyott helyekről származó Azure-erőforrások kezelése
 
-**Útmutató**: nem alkalmazható. Event Grid nem használja az Azure AD-t az esemény-közzétételi ügyfelek hitelesítéséhez; SAS-kulcsokon keresztül támogatja a hitelesítést.
-
-**Azure Security Center figyelés**: nem alkalmazható
+**Útmutató**: nem alkalmazható. A Event Grid nem használ Azure Active Directory (Azure AD) az esemény-közzétételi ügyfelek hitelesítéséhez; SAS-kulcsokon keresztül támogatja a hitelesítést.
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="39-use-azure-active-directory"></a>3,9: a Azure Active Directory használata
 
@@ -383,65 +391,63 @@ Event Grid engedélyezheti a felügyelt szolgáltatás identitását az Azure Ev
 
 - [Azure AD-példány létrehozása és konfigurálása](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: a felhasználói hozzáférés rendszeres áttekintése és egyeztetése
 
-**Útmutató**: az Azure ad olyan naplókat biztosít, amelyek segítenek az elavult fiókok felderítésében. Emellett az Azure AD identitás-és hozzáférési felülvizsgálatok segítségével hatékonyan kezelheti a csoporttagságok kezelését, a vállalati alkalmazásokhoz való hozzáférést és a szerepkör-hozzárendeléseket. A felhasználói hozzáférés rendszeresen felülvizsgálható, hogy csak a megfelelő felhasználók férhessenek hozzá. 
- 
-A naplók és a riasztások létrehozásához használja a Azure Active Directory (AD) Privileged Identity Management (PIM), ha a környezetben gyanús vagy nem biztonságos tevékenységek történnek.
+**Útmutató**: a Azure Active Directory (Azure ad) olyan naplókat biztosít, amelyek segítenek az elavult fiókok felderítésében. Emellett az Azure AD identitás-és hozzáférési felülvizsgálatok segítségével hatékonyan kezelheti a csoporttagságok kezelését, a vállalati alkalmazásokhoz való hozzáférést és a szerepkör-hozzárendeléseket. A felhasználói hozzáférés rendszeresen felülvizsgálható, hogy csak a megfelelő felhasználók férhessenek hozzá.
 
-- [Az Azure AD jelentéskészítés ismertetése](../active-directory/reports-monitoring/index.yml)
+A naplók és a riasztások generálásához használjon Azure AD Privileged Identity Management (PIM), ha a környezetben gyanús vagy nem biztonságos tevékenység történik.
+
+- [Az Azure AD jelentéskészítés ismertetése](/azure/active-directory/reports-monitoring)
 
 - [Az Azure AD identitás- és hozzáférési felülvizsgálatainak használata](../active-directory/governance/access-reviews-overview.md)
 
-- [Azure AD Privileged Identity Management (PIM) üzembe helyezése](../active-directory/privileged-identity-management/pim-deployment-plan.md)
-
-**Az Azure Security Center monitorozása**: Igen
+- [Azure AD Privileged Identity Management (PIM) üzembe helyezése](/azure/active-directory/privileged-identity-management/pim-deployment-plan)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3,11: a figyelő megkísérli a deaktivált hitelesítő adatok elérését
 
-**Útmutató**: hozzáférhet az Azure ad bejelentkezési tevékenységekhez, a naplózáshoz és a kockázatos Eseménynapló-forrásokhoz, amelyek lehetővé teszik bármely Siem/monitoring eszköz integrálását.
+**Útmutató**: hozzáférhet Azure Active Directory (Azure ad) bejelentkezési tevékenységhez, naplózáshoz és kockázati Eseménynapló-forrásokhoz, amelyek lehetővé teszik bármely Siem/monitoring eszköz integrálását.
 
 Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz létre az Azure AD felhasználói fiókjaihoz, és elküldi a naplókat és a bejelentkezési naplókat egy Log Analytics munkaterületre. Log Analytics munkaterületen belül konfigurálhatja a kívánt riasztásokat.
 
-- [Azure-beli Tevékenységnaplók integrálása a Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
-
-**Azure Security Center figyelés**: nem alkalmazható
+- [Azure-beli Tevékenységnaplók integrálása a Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
 **Felelősség**: Ügyfél
 
+**Azure Security Center figyelés**: nincs
+
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: riasztás a fiók bejelentkezési viselkedésének eltérése esetén
 
-**Útmutató**: a Azure ad Identity Protection funkcióinak használatával konfigurálhatja a felhasználói identitásokkal kapcsolatos gyanús műveletekre vonatkozó automatizált válaszokat. További vizsgálat céljából az Azure Sentinelbe is betöltheti az adatmennyiséget.
- 
- 
- 
-- [Az Azure AD kockázatos bejelentkezéseinek megtekintése](../active-directory/identity-protection/overview-identity-protection.md)
+**Útmutató**: az Azure Active Directory (Azure ad) Identity Protection-funkciókkal konfigurálhatja a felhasználói identitásokkal kapcsolatos gyanús műveletekre vonatkozó automatizált válaszokat. További vizsgálat céljából az Azure Sentinelbe is betöltheti az adatmennyiséget.
+
+- [Az Azure AD kockázatos bejelentkezéseinek megtekintése](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
 
 - [Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: a Microsoft számára elérhetővé teszi a megfelelő ügyféladatokat a támogatási forgatókönyvek során
 
 **Útmutató**: nem alkalmazható; A Event Grid szolgáltatás jelenleg nem támogatja az Ügyfélszéf.
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: nem alkalmazható
+
+**Azure Security Center figyelés**: nincs
 
 ## <a name="data-protection"></a>Adatvédelem
 
-*További információt az [Azure biztonsági teljesítményteszt: Adatvédelem](../security/benchmarks/security-control-data-protection.md)című témakörben talál.*
+*További információ: [Azure Security Benchmark: Adatvédelem](../security/benchmarks/security-control-data-protection.md).*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: bizalmas információk leltárának fenntartása
 
@@ -449,25 +455,25 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
  
  
  
-- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
-
-**Azure Security Center figyelés**: nem alkalmazható
+- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: bizalmas adatok tárolására vagy feldolgozására szolgáló rendszerek elkülönítése
 
 **Útmutató**: az elkülönítés megvalósítása különálló előfizetések és felügyeleti csoportok használatával az egyes biztonsági tartományokhoz, például a környezeti típusokhoz és az adatérzékeny szintekhez. Korlátozhatja az alkalmazásaihoz és a vállalati környezetekhez igénybe veheti az Azure-erőforrásokhoz való hozzáférés szintjét. Az Azure-erőforrásokhoz való hozzáférést az Azure RBAC segítségével szabályozhatja.
 
-- [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
+- [További Azure-előfizetések létrehozása](/azure/billing/billing-create-subscription)
 
-- [Felügyeleti csoportok létrehozása](../governance/management-groups/create-management-group-portal.md)
+- [Felügyeleti csoportok létrehozása](/azure/governance/management-groups/create)
 
-- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
-
-**Azure Security Center figyelés**: nem alkalmazható
+- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: a bizalmas adatok jogosulatlan átvitelének figyelése és letiltása
 
@@ -475,17 +481,17 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 - [Az ügyféladatok Azure-beli védelmének ismertetése](../security/fundamentals/protection-customer-data.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: Megosztott
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: minden bizalmas adat titkosítása az átvitel során
 
-**Útmutató**: Azure Event Grid HTTPS-t igényel a közzétételhez, és támogatja a HTTPS-t az események webhook-végpontba való kézbesítéséhez. Az Azure Global-ban a Event Grid a TLS 1,1-es és 1,2-es verzióját is támogatja, de javasoljuk, hogy a 1,2 verziót használja. A 21Vianet által Kínában üzemeltetett nemzeti felhőkben, például a Azure Governmentban és az Azure-ban a Event Grid csak a TLS 1,2-es verzióját támogatja. 
-
-**Azure Security Center figyelés**: nem alkalmazható
+**Útmutató**: Azure Event Grid HTTPS-t igényel a közzétételhez, és támogatja a HTTPS-t az események webhook-végpontba való kézbesítéséhez. Az Azure Global-ban a Event Grid a TLS 1,1-es és 1,2-es verzióját is támogatja, de javasoljuk, hogy a 1,2 verziót használja. A 21Vianet által Kínában üzemeltetett nemzeti felhőkben, például a Azure Governmentban és az Azure-ban a Event Grid csak a TLS 1,2-es verzióját támogatja.
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: aktív felderítési eszköz használata a bizalmas adatok azonosítására
 
@@ -495,29 +501,29 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 - [Az ügyféladatok Azure-beli védelmének ismertetése](../security/fundamentals/protection-customer-data.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés kezelése az Azure RBAC
 
-**Útmutató**: a Azure Event Grid támogatja a Azure Active Directory (ad) használatát, hogy engedélyezze a kérelmeket Event Grid erőforrásoknak. Az Azure AD-vel az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) segítségével engedélyeket biztosíthat egy rendszerbiztonsági tag számára, amely lehet egy felhasználó vagy egy egyszerű alkalmazás.
+**Útmutató**: a Azure Event Grid az Azure Active Directory (Azure ad) használatával támogatja a kérelmek Event Grid erőforrásokhoz való engedélyezését. Az Azure AD-vel az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) segítségével engedélyeket biztosíthat egy rendszerbiztonsági tag számára, amely lehet egy felhasználó vagy egy egyszerű alkalmazás.
 
 - [Event Grid erőforrásokhoz való hozzáférés engedélyezése](security-authorization.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: a kritikus Azure-erőforrások változásainak naplózása és riasztása
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használatával riasztásokat hozhat létre, amelyekkel Azure Event Grid erőforrások és egyéb kritikus vagy kapcsolódó erőforrások éles példányain végezheti el a módosításokat.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
-
-**Azure Security Center figyelés**: nem alkalmazható
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](/azure/azure-monitor/platform/alerts-activity-log)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ## <a name="vulnerability-management"></a>Biztonságirés-kezelés
 
@@ -527,27 +533,27 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: nem alkalmazható
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5,4: a biztonsági rések keresésének összehasonlítása
 
 **Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: nem alkalmazható
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: kockázatértékelési folyamat használatával rangsorolhatja a felderített biztonsági rések szervizelését
 
 **Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: nem alkalmazható
 
-## <a name="inventory-and-asset-management"></a>Leltár- és eszközfelügyelet
+**Azure Security Center figyelés**: nincs
+
+## <a name="inventory-and-asset-management"></a>Leltár-és eszközfelügyelet
 
 *További információt az [Azure biztonsági teljesítményteszt: leltár és eszközkezelés](../security/benchmarks/security-control-inventory-asset-management.md)című témakörben talál.*
 
@@ -555,19 +561,19 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: nem alkalmazható
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="62-maintain-asset-metadata"></a>6,2: az eszköz metaadatainak fenntartása
 
 **Útmutató**: címkéket alkalmazhat az Azure-erőforrásokra, így a metaadatok logikailag rendszerezve lesznek a besorolásban.
 
-- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
-
-**Azure Security Center figyelés**: nem alkalmazható
+- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6,3: jogosulatlan Azure-erőforrások törlése
 
@@ -575,23 +581,23 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
  
  
  
-- [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
+- [További Azure-előfizetések létrehozása](/azure/billing/billing-create-subscription)
 
-- [Felügyeleti csoportok létrehozása](../governance/management-groups/create-management-group-portal.md)
+- [Felügyeleti csoportok létrehozása](/azure/governance/management-groups/create)
 
-- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
-
-**Azure Security Center figyelés**: nem alkalmazható
+- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6,4: jóváhagyott Azure-erőforrások leltárának meghatározása és karbantartása
 
 **Útmutató**: a számítási erőforrásokhoz jóváhagyott Azure-erőforrások és jóváhagyott szoftverek leltárának létrehozása a szervezeti igényeknek megfelelően.
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: a nem jóváhagyott Azure-erőforrások figyelése
 
@@ -605,33 +611,33 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 - [Lekérdezések létrehozása az Azure Graph használatával](../governance/resource-graph/first-query-portal.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: a nem jóváhagyott szoftveralkalmazások figyelése a számítási erőforrásokon belül
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: nem alkalmazható
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: nem jóváhagyott Azure-erőforrások és szoftveralkalmazások eltávolítása
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: nem alkalmazható
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="68-use-only-approved-applications"></a>6,8: csak jóváhagyott alkalmazások használata
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: nem alkalmazható
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="69-use-only-approved-azure-services"></a>6,9: csak jóváhagyott Azure-szolgáltatások használata
 
@@ -646,45 +652,43 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 
 - [Lekérdezések létrehozása az Azure Graph használatával](../governance/resource-graph/first-query-portal.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6,10: a jóváhagyott szoftverek leltárának fenntartása
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: nem alkalmazható
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6,11: korlátozza a felhasználók képességét a Azure Resource Manager való interakcióra
 
-**Útmutató**: az Azure ad feltételes hozzáférés használatával korlátozhatja, hogy a felhasználók képesek legyenek az Azure erőforrás-kezelővel való interakcióra az "Microsoft Azure felügyelet" alkalmazás "hozzáférés letiltása" beállításával.
- 
- 
- 
+**Útmutató**: az Azure Active Directory (Azure ad) feltételes hozzáférés használatával korlátozhatja, hogy a felhasználók képesek legyenek az Azure Resources Managerrel együttműködni az "Microsoft Azure felügyelet" alkalmazás "hozzáférés letiltása" beállításával.
+
 - [ Feltételes hozzáférés konfigurálása az Azure Resources Manager elérésének blokkolásához](../role-based-access-control/conditional-access-azure-management.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="612-limit-users-ability-to-execute-scripts-in-compute-resources"></a>6,12: korlátozza a felhasználók számára a parancsfájlok végrehajtásának lehetőségét a számítási erőforrásokban
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: nem alkalmazható
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fizikailag vagy logikailag elkülöníthető a nagy kockázatú alkalmazások
 
 **Útmutató**: nem alkalmazható; Ez a javaslat Azure App Service vagy számítási erőforrásokon futó webalkalmazásokhoz készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: nem alkalmazható
+
+**Azure Security Center figyelés**: nincs
 
 ## <a name="secure-configuration"></a>Biztonságos konfiguráció
 
@@ -700,17 +704,17 @@ A Azure Resource Manager lehetővé teszi a sablon exportálását JavaScript Ob
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7,2: biztonságos operációsrendszer-konfigurációk létrehozása
 
 **Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: nem alkalmazható
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: biztonságos Azure-erőforrás-konfigurációk karbantartása
 
@@ -722,17 +726,17 @@ A Azure Resource Manager lehetővé teszi a sablon exportálását JavaScript Ob
 
 - [Azure Resource Manager sablonok áttekintése](../azure-resource-manager/templates/overview.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7,4: az operációs rendszer biztonságos konfigurációjának fenntartása
 
 **Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: nem alkalmazható
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: az Azure-erőforrások biztonságos tárolása
 
@@ -740,19 +744,19 @@ A Azure Resource Manager lehetővé teszi a sablon exportálását JavaScript Ob
 
 - [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow)
 
-- [Az Azure Repos dokumentációja](/azure/devops/repos/index)
-
-**Azure Security Center figyelés**: nem alkalmazható
+- [Az Azure Repos dokumentációja](/azure/devops/repos/)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: az egyéni operációsrendszer-lemezképek biztonságos tárolása
 
 **Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: nem alkalmazható
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7,7: az Azure-erőforrások konfigurációs felügyeleti eszközeinek üzembe helyezése
 
@@ -760,19 +764,19 @@ A Azure Resource Manager lehetővé teszi a sablon exportálását JavaScript Ob
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Aliasok használata](../governance/policy/concepts/definition-structure.md#aliases)
-
-**Azure Security Center figyelés**: nem alkalmazható
+- [Aliasok használata](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7,8: konfigurációs felügyeleti eszközök telepítése operációs rendszerekhez
 
 **Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: nem alkalmazható
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7,9: automatikus konfigurációs monitorozás megvalósítása Azure-erőforrásokhoz
 
@@ -780,17 +784,17 @@ A Azure Resource Manager lehetővé teszi a sablon exportálását JavaScript Ob
 
 - [Javaslatok szervizelése Azure Security Center](../security-center/security-center-remediate-recommendations.md)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: az operációs rendszerek automatikus konfiguráció-figyelésének megvalósítása
 
 **Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: nem alkalmazható
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="711-manage-azure-secrets-securely"></a>7,11: az Azure-titkok biztonságos kezelése
 
@@ -802,15 +806,15 @@ A felügyelt identitásokat a Azure Key Vaultekkel együtt használva egyszerűs
 
 - [Felügyelt identitások használata Azure-erőforrásokhoz](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-- [Key Vault létrehozása](../key-vault/general/quick-create-portal.md)
+- [Key Vault létrehozása](../key-vault/secrets/quick-create-portal.md)
 
 - [Hitelesítés Key Vault](../key-vault/general/authentication.md)
 
 - [Key Vault hozzáférési szabályzatok kiosztása](../key-vault/general/assign-access-policy-portal.md)
 
-**Az Azure Security Center monitorozása**: Igen
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7,12: az identitások biztonságos és automatikus kezelése
 
@@ -818,9 +822,9 @@ A felügyelt identitásokat a Azure Key Vaultekkel együtt használva egyszerűs
 
 - [Esemény kézbesítése felügyelt identitással](managed-service-identity.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: a hitelesítő adatok nem szándékolt expozíciójának megszüntetése
 
@@ -828,9 +832,9 @@ A felügyelt identitásokat a Azure Key Vaultekkel együtt használva egyszerűs
 
 - [A hitelesítő adatok beolvasójának beállítása](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ## <a name="malware-defense"></a>Kártevők elleni védelem
 
@@ -842,9 +846,9 @@ A felügyelt identitásokat a Azure Key Vaultekkel együtt használva egyszerűs
 
 Az Ön felelőssége, hogy előzetesen beszkennelje a nem számítási Azure-erőforrásokra feltöltött tartalmakat. A Microsoft nem fér hozzá az ügyféladatok eléréséhez, így az Ön nevében nem végezhet kártevő-ellenőrzéseket az ügyfél-tartalmakon.
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ## <a name="data-recovery"></a>Adat-helyreállítás
 
@@ -856,9 +860,9 @@ Az Ön felelőssége, hogy előzetesen beszkennelje a nem számítási Azure-er�
 
 - [Kiszolgálóoldali földrajzi katasztrófa-helyreállítás Azure Event Grid](geo-disaster-recovery.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: teljes rendszerbiztonsági mentés és minden ügyfél által felügyelt kulcs biztonsági mentése
 
@@ -868,9 +872,9 @@ A Event Grid jelenleg nem támogatja az ügyfél által felügyelt kulcsokat.
 
 - [Kiszolgálóoldali földrajzi katasztrófa-helyreállítás Azure Event Grid](geo-disaster-recovery.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: az összes biztonsági másolat ellenőrzése, beleértve az ügyfél által felügyelt kulcsokat
 
@@ -880,9 +884,9 @@ A Event Grid jelenleg nem támogatja az ügyfél által felügyelt kulcsokat.
 
 - [Kiszolgálóoldali földrajzi katasztrófa-helyreállítás Azure Event Grid](geo-disaster-recovery.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: a biztonsági másolatok és az ügyfél által felügyelt kulcsok védelmének biztosítása
 
@@ -893,13 +897,13 @@ A Event Grid jelenleg nem támogatja az ügyfél által felügyelt kulcsokat.
 
 - [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ## <a name="incident-response"></a>Incidensmegoldás
 
-*További információt az [Azure biztonsági teljesítményteszt: incidens válasza](../security/benchmarks/security-control-incident-response.md)című témakörben talál.*
+*További információ: [Azure Security Benchmark: Incidensek kezelése](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: incidens-válaszi útmutató létrehozása
 
@@ -911,9 +915,9 @@ A Event Grid jelenleg nem támogatja az ügyfél által felügyelt kulcsokat.
 
 - [A NIST számítógépes biztonsági incidensek kezelésével kapcsolatos útmutató a saját incidens-válasz tervének létrehozásához](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: incidensek pontozásának és rangsorolási eljárásának létrehozása
 
@@ -926,11 +930,11 @@ A Event Grid jelenleg nem támogatja az ügyfél által felügyelt kulcsokat.
 
 - [Biztonsági riasztások az Azure Security Centerben](../security-center/security-center-alerts-overview.md)
 
-- [Címkék használata az Azure-erőforrások rendszerezéséhez](../azure-resource-manager/management/tag-resources.md)
-
-**Az Azure Security Center monitorozása**: Igen
+- [Címkék használata az Azure-erőforrások rendszerezéséhez](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="103-test-security-response-procedures"></a>10,3: biztonsági reagálási eljárások tesztelése
 
@@ -940,9 +944,9 @@ A Event Grid jelenleg nem támogatja az ügyfél által felügyelt kulcsokat.
  
 - [ A NIST kiadványa – útmutató az IT-csomagok és-képességek teszteléséhez, betanításához és gyakorlatához](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: biztonsági incidensek elérhetőségének biztosítása és riasztási értesítések konfigurálása biztonsági incidensekhez
 
@@ -952,9 +956,9 @@ A Event Grid jelenleg nem támogatja az ügyfél által felügyelt kulcsokat.
  
 - [ A Azure Security Center biztonsági kapcsolattartó beállítása](../security-center/security-center-provide-security-contact-details.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: biztonsági riasztások beépítése az incidensek gyorsreagáló rendszerébe
 
@@ -964,9 +968,9 @@ A Event Grid jelenleg nem támogatja az ügyfél által felügyelt kulcsokat.
 
 - [Riasztások streamelése az Azure Sentinelbe](../sentinel/connect-azure-security-center.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10,6: a biztonsági riasztásokra adott válasz automatizálása
 
@@ -974,9 +978,9 @@ A Event Grid jelenleg nem támogatja az ügyfél által felügyelt kulcsokat.
 
 - [A Munkafolyamat-automatizálás konfigurálása a Security Centerban](../security-center/workflow-automation.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: Ügyfél
+
+**Azure Security Center figyelés**: nincs
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Behatolási tesztek és Red Team-gyakorlatok
 
@@ -990,11 +994,11 @@ A Event Grid jelenleg nem támogatja az ügyfél által felügyelt kulcsokat.
 
 - [Riasztási tesztek a Microsoft-felhőben](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Azure Security Center figyelés**: nem alkalmazható
-
 **Felelősség**: Megosztott
+
+**Azure Security Center figyelés**: nincs
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
-- További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)
+- [Az Azure Security Benchmark v2 áttekintésének](/azure/security/benchmarks/overview) megtekintése
+- További tudnivalók az [Azure biztonsági alapterveiről](/azure/security/benchmarks/security-baselines-overview)

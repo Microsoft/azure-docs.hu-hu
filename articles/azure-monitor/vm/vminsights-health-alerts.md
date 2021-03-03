@@ -1,25 +1,25 @@
 ---
-title: Vendég állapottal kapcsolatos riasztások Azure Monitor for VMs (előzetes verzió)
-description: A Azure Monitor for VMs Guest Health által létrehozott riasztásokat ismerteti, beleértve a hogyan engedélyezheti és konfigurálhatja az értesítéseket.
+title: A virtuális gépekkel kapcsolatos vendég állapottal kapcsolatos riasztások (előzetes verzió)
+description: Ismerteti a virtuális gépek bepillantást a vendég állapotával létrehozott riasztásokat, beleértve az engedélyezésük és az értesítések konfigurálásának módját.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
-ms.openlocfilehash: 30025f387768aaf1e4d642292c21d5b15ccc7451
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a32ba9f1c4cf5d6bb9de69e1a6860c858e3ee2a6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100620628"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707506"
 ---
-# <a name="azure-monitor-for-vms-guest-health-alerts-preview"></a>Vendég állapottal kapcsolatos riasztások Azure Monitor for VMs (előzetes verzió)
-Azure Monitor for VMs vendég állapota lehetővé teszi egy virtuális gép állapotának megtekintését, amelyet a rendszeres időközönként mintavételnek alávetett teljesítmény-mérések határoznak meg. Egy riasztás akkor hozható létre, ha egy virtuális gép vagy a figyelő nem Kifogástalan állapotra vált. Ezeket a riasztásokat megtekintheti és kezelheti a [riasztási szabályok által létrehozott Azure monitorban](../platform/alerts-overview.md) , és beállíthatja, hogy proaktívan értesítse az új riasztások létrehozásakor.
+# <a name="vm-insights-guest-health-alerts-preview"></a>A virtuális gépekkel kapcsolatos vendég állapottal kapcsolatos riasztások (előzetes verzió)
+A virtuális gép elemzése lehetővé teszi a virtuális gépek állapotának megtekintését olyan teljesítmény-mérési készlet alapján, amely rendszeres időközönként mintavételt végez. Egy riasztás akkor hozható létre, ha egy virtuális gép vagy a figyelő nem Kifogástalan állapotra vált. Ezeket a riasztásokat megtekintheti és kezelheti a [riasztási szabályok által létrehozott Azure monitorban](../alerts/alerts-overview.md) , és beállíthatja, hogy proaktívan értesítse az új riasztások létrehozásakor.
 
 ## <a name="configure-alerts"></a>Riasztások konfigurálása
-Nem hozhat létre explicit riasztási szabályt Azure Monitor for VMs vendég állapotához, miközben ez a funkció előzetes verzióban érhető el. Alapértelmezés szerint minden egyes virtuális géphez létrejönnek riasztások, de nem minden egyes figyelő esetében.  Ez azt jelenti, hogy ha egy figyelő olyan állapotra vált, amely nem befolyásolja a virtuális gép aktuális állapotát, akkor nem jön létre riasztás, mert a virtuális gép állapota nem változott. 
+Nem hozhat létre explicit riasztási szabályt a virtuálisgép-betekintő vendég állapotához, miközben ez a funkció előzetes verzióban érhető el. Alapértelmezés szerint minden egyes virtuális géphez létrejönnek riasztások, de nem minden egyes figyelő esetében.  Ez azt jelenti, hogy ha egy figyelő olyan állapotra vált, amely nem befolyásolja a virtuális gép aktuális állapotát, akkor nem jön létre riasztás, mert a virtuális gép állapota nem változott. 
 
-A riasztásokat letilthatja egy adott virtuális gép vagy egy virtuális gép egy adott figyelője számára a Azure Portalban található virtuális gép konfigurációjának **riasztás állapota** beállításával. A Azure Portal figyelők konfigurálásával kapcsolatos részletekért tekintse meg a [figyelés konfigurálása Azure monitor for VMS vendég állapota (előzetes verzió)](vminsights-health-configure.md) című témakört. A figyelők virtuális gépeken történő konfigurálásával kapcsolatos részletekért tekintse meg a [figyelés konfigurálása a Azure monitor for VMS vendég állapotához az adatgyűjtési szabályok (előzetes verzió) használatával](vminsights-health-configure-dcr.md) című témakört.
+A riasztásokat letilthatja egy adott virtuális gép vagy egy virtuális gép egy adott figyelője számára a Azure Portalban található virtuális gép konfigurációjának **riasztás állapota** beállításával. A Azure Portal figyelők konfigurálásával kapcsolatos részletekért tekintse meg a [figyelés konfigurálása a virtuális gépekhez (előzetes verzió)](vminsights-health-configure.md) című témakört. A figyelők virtuális gépeken történő konfigurálásával kapcsolatos részletekért tekintse meg a [figyelés konfigurálása a VM-elemzésekben a vendégek állapotát az adatgyűjtési szabályok (előzetes verzió) használatával](vminsights-health-configure-dcr.md) című témakört.
 
 ## <a name="alert-severity"></a>A riasztás súlyossága
 A vendég állapot által létrehozott riasztás súlyossága közvetlenül a virtuális gép súlyosságára vagy a riasztást kiváltó figyelőre mutat.
@@ -31,12 +31,12 @@ A vendég állapot által létrehozott riasztás súlyossága közvetlenül a vi
 | Kifogástalan  | Sev4 |
 
 ## <a name="alert-lifecycle"></a>Riasztási életciklus
-Minden egyes virtuális géphez létrejön egy [Azure-riasztás](../platform/alerts-overview.md) , bármikor **Figyelmeztetés** vagy **kritikus** állapotba kerül. Megtekintheti a **riasztásokat** a **Azure monitor** menüben vagy a Azure Portal virtuális gép menüjében.
+Minden egyes virtuális géphez létrejön egy [Azure-riasztás](../alerts/alerts-overview.md) , bármikor **Figyelmeztetés** vagy **kritikus** állapotba kerül. Megtekintheti a **riasztásokat** a **Azure monitor** menüben vagy a Azure Portal virtuális gép menüjében.
 
 Ha egy riasztás már folyamatban van **, a** virtuális gép állapotának megváltozásakor a rendszer nem hoz létre második riasztást, de az azonos riasztás súlyossága a virtuális gép állapotának megfelelően módosul. Ha például a virtuális gép **kritikus** állapotra vált, ha egy **figyelmeztető** riasztás már **kilőtt** állapotban van, a riasztás súlyossága a **Sev1** értékre változik. Ha a virtuális gép **Figyelmeztetési** állapotba vált, ha egy **Sev1** -riasztás már **tüzelt** állapotban van, akkor a riasztás súlyossága a **Sev2** értékre változik. Ha a virtuális gép **kifogástalan** állapotba kerül, a riasztás súlyossága a **Sev4** értékre módosul.
 
 ## <a name="viewing-alerts"></a>Riasztások megtekintése
-A Azure Monitor for VMs Guest Health által létrehozott riasztások megtekintése [a Azure Portal többi riasztásával](../platform/alerts-overview.md#alerts-experience). A **Azure monitor** menüben a **riasztások** elemre kattintva megtekintheti az összes figyelt erőforráshoz tartozó riasztásokat, vagy a virtuális gép menüjében a **riasztások** lehetőségre kattintva megtekintheti a virtuális gép riasztásait.
+Megtekintheti a virtuális gépek által [a Azure Portalban található egyéb riasztásokkal](../platform/alerts-overview.md#alerts-experience)létrehozott riasztásokat. A **Azure monitor** menüben a **riasztások** elemre kattintva megtekintheti az összes figyelt erőforráshoz tartozó riasztásokat, vagy a virtuális gép menüjében a **riasztások** lehetőségre kattintva megtekintheti a virtuális gép riasztásait.
 
 ## <a name="alert-properties"></a>Riasztás tulajdonságai
 
@@ -106,6 +106,6 @@ A **hatókör definiálása** területen válassza a **műveleti csoport** eleme
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [A vendég állapotának engedélyezése Azure Monitor for VMs és bevezetési ügynökökben.](vminsights-health-enable.md)
+- [A vendég állapotának engedélyezése a virtuális gépek és a bevezetési ügynökök számára.](vminsights-health-enable.md)
 - [A figyelők konfigurálása a Azure Portal használatával.](vminsights-health-configure.md)
 - [Figyelőket konfigurálhat az adatgyűjtési szabályokkal.](vminsights-health-configure-dcr.md)

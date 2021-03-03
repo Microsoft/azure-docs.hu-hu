@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 78971a92f1815236bd4b360e8df01b02b4c40626
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 1e08d54b9467231233c62635dafc5135456a3843
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677220"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695413"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Az AMD GPU-illesztőprogramok telepítése a Windows rendszerű N sorozatú virtuális gépeken
 
@@ -31,7 +31,7 @@ Az alapszintű specifikációk, a tárolási kapacitások és a lemezek részlet
 
 | Operációs rendszer | Illesztő |
 | -------- |------------- |
-| Windows 10 Enterprise multi-session-Build 1909 <br/><br/>Windows 10 – Build 1909<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20. Q4](https://download.microsoft.com/download/f/1/6/f16e6275-a718-40cd-a366-9382739ebd39/AMD-Azure-NVv4-Driver-20Q4.exee) (. exe) |
+| Windows 10 Enterprise multi-session-Build 1909 <br/><br/>Windows 10 – Build 1909<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20. Q4](https://download.microsoft.com/download/f/1/6/f16e6275-a718-40cd-a366-9382739ebd39/AMD-Azure-NVv4-Driver-20Q4.exe) (. exe) |
 
  > [!NOTE]
    >  Ha a Build 1903/1909-et használja, akkor előfordulhat, hogy az optimális teljesítmény érdekében frissítenie kell a következő csoportházirendet. Ezek a módosítások nem szükségesek más Windows-buildekhez.

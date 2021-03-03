@@ -7,34 +7,34 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: defeeb42340cbc3203141561aa33a2b4b7b00bb1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fa0360d6730293f3817d63e31b24464a0e4950ce
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100628616"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725475"
 ---
 # <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>Gyors útmutató: Azure-beli virtuális gép figyelése Azure Monitor
-[Azure monitor](../overview.md) elindítja az adatok gyűjtését az Azure-beli virtuális gépekről a létrehozásuk pillanatában. Ebben a rövid útmutatóban röviden ismerteti az Azure-beli virtuális gépek számára automatikusan összegyűjtött adatokat, valamint azt, hogy miként tekintheti meg a Azure Portalban. Ezután engedélyezi [Azure monitor for VMS](../vm/vminsights-overview.md) a virtuális géphez, amely lehetővé teszi az ügynökök számára a virtuális gép számára az adatok gyűjtését és elemzését a vendég operációs rendszerből, beleértve a folyamatokat és a függőségeiket.
+[Azure monitor](../overview.md) elindítja az adatok gyűjtését az Azure-beli virtuális gépekről a létrehozásuk pillanatában. Ebben a rövid útmutatóban röviden ismerteti az Azure-beli virtuális gépek számára automatikusan összegyűjtött adatokat, valamint azt, hogy miként tekintheti meg a Azure Portalban. Ezután [engedélyezheti a VM-](../vm/vminsights-overview.md) elemzéseket a virtuális géphez, amely lehetővé teszi, hogy a virtuális gép ügynökei adatokat gyűjtsenek és elemezzenek a vendég operációs rendszerből, beleértve a folyamatokat és a függőségeiket.
 
 A rövid útmutató feltételezi, hogy rendelkezik egy meglévő Azure-beli virtuális géppel. Ha nem, létrehozhat egy [Windows rendszerű virtuális gépet](../../virtual-machines/windows/quick-create-portal.md) , vagy létrehozhat egy [linuxos virtuális gépet](../../virtual-machines/linux/quick-create-cli.md) , amely a VM-útmutatókat követi.
 
-Az Azure-erőforrásokból gyűjtött monitorozási adatok részletes ismertetését lásd: Azure-beli [virtuális gépek figyelése Azure monitorokkal](../insights/monitor-vm-azure.md).
+Az Azure-erőforrásokból gyűjtött monitorozási adatok részletes ismertetését lásd: Azure-beli [virtuális gépek figyelése Azure monitorokkal](./monitor-vm-azure.md).
 
 
 ## <a name="complete-the-monitor-an-azure-resource-quickstart"></a>Fejezze be az Azure-erőforrás monitorozását.
-Az előfizetéshez tartozó virtuális gép áttekintés lapját, a tevékenység naplóját és a metrikáit az Azure Monitor segítségével tekintheti meg az [Azure-erőforrások figyelésével](../learn/quick-monitor-azure-resource.md) . Az Azure-beli virtuális gépek ugyanazt a figyelési adatot gyűjtik, mint bármely más Azure-erőforrást, de ez csak a gazda virtuális gép esetében van. A rövid útmutató hátralévő részében a vendég operációs rendszer és a számítási feladatok figyelésére fog összpontosítani.
+Az előfizetéshez tartozó virtuális gép áttekintés lapját, a tevékenység naplóját és a metrikáit az Azure Monitor segítségével tekintheti meg az [Azure-erőforrások figyelésével](../essentials/quick-monitor-azure-resource.md) . Az Azure-beli virtuális gépek ugyanazt a figyelési adatot gyűjtik, mint bármely más Azure-erőforrást, de ez csak a gazda virtuális gép esetében van. A rövid útmutató hátralévő részében a vendég operációs rendszer és a számítási feladatok figyelésére fog összpontosítani.
 
 
-## <a name="enable-azure-monitor-for-vms"></a>Azure Monitor for VMs engedélyezése
-A rendszer a gazdagép-virtuális gép metrikáit és tevékenységi naplóit gyűjti, és egy olyan konfigurációt igényel, amely a vendég operációs rendszer és a munkaterhelések figyelési adatainak gyűjtésére és elemzésére szolgál. Azure Monitor for VMs telepíti ezeket az ügynököket, és további hatékony funkciókat biztosít a virtuális gépek monitorozásához.
+## <a name="enable-vm-insights"></a>A virtuális gépekkel való adatfelismerés engedélyezése
+A rendszer a gazdagép-virtuális gép metrikáit és tevékenységi naplóit gyűjti, és egy olyan konfigurációt igényel, amely a vendég operációs rendszer és a munkaterhelések figyelési adatainak gyűjtésére és elemzésére szolgál. A VM-információk telepítik ezeket az ügynököket, és további hatékony funkciókat biztosítanak a virtuális gépek monitorozásához.
 
 1. Nyissa meg a virtuális gép menüjét.
 2. Az **Áttekintés** lapon kattintson **az adatok beolvasása elemre** , vagy kattintson az **adatok elemzése** lehetőségre a **figyelés** menüben.
 
     ![Áttekintő oldal](media/quick-monitor-azure-vm/overview-insights.png)
 
-3. Ha Azure Monitor for VMs még nincs engedélyezve a virtuális gépen, kattintson az **Engedélyezés** gombra. 
+3. Ha a virtuális gép még nem engedélyezte a virtuálisgép-bepillantást, kattintson az **Engedélyezés** gombra. 
 
     ![Betekintés engedélyezése](media/quick-monitor-azure-vm/enable-insights.png)
 
@@ -42,7 +42,7 @@ A rendszer a gazdagép-virtuális gép metrikáit és tevékenységi naplóit gy
 
     ![Munkaterület kiválasztása](media/quick-monitor-azure-vm/select-workspace.png)
 
-5. Az előkészítés eltarthat néhány percig, amíg a bővítmények engedélyezve vannak, és a rendszer ügynököket telepít a virtuális gépre. Ha elkészült, egy üzenet jelenik meg, amely szerint a rendszer sikeresen telepítette az eredményeket. A Azure Monitor for VMs megnyitásához kattintson a **Azure monitor** elemre.
+5. Az előkészítés eltarthat néhány percig, amíg a bővítmények engedélyezve vannak, és a rendszer ügynököket telepít a virtuális gépre. Ha elkészült, egy üzenet jelenik meg, amely szerint a rendszer sikeresen telepítette az eredményeket. Kattintson a **Azure monitor** elemre a virtuális gépek bepillantást a megnyitásához.
 
     ![Azure Monitor megnyitása](media/quick-monitor-azure-vm/azure-monitor.png)
 
@@ -104,7 +104,7 @@ A rendszer a gazdagép-virtuális gép metrikáit és tevékenységi naplóit gy
     ![Log Analytics](media/quick-monitor-azure-vm/log-analytics.png)
 
 ## <a name="next-steps"></a>Következő lépések
-Ebben a rövid útmutatóban engedélyezte a Azure Monitor for VMst egy virtuális géphez, és konfigurálta az Log Analytics munkaterületet a vendég operációs rendszer eseményeinek gyűjtésére. Az adatok megtekintésének és elemzésének ismertetéséhez lépjen tovább az útmutatóhoz.
+Ebben a rövid útmutatóban engedélyezte a virtuálisgép-bepillantást egy virtuális géphez, és konfigurálta az Log Analytics munkaterületet a vendég operációs rendszer eseményeinek gyűjtéséhez. Az adatok megtekintésének és elemzésének ismertetéséhez lépjen tovább az útmutatóhoz.
 
 > [!div class="nextstepaction"]
-> [Adatok megtekintése és elemzése a Log Analyticsben](../log-query/log-analytics-tutorial.md)
+> [Adatok megtekintése és elemzése a Log Analyticsben](../logs/log-analytics-tutorial.md)

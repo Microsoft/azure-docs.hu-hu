@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
-ms.openlocfilehash: 2614117d153b1db50d4487bf4045a63af430f3ac
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b36dec79e5d60d97c11b9f8c74790527e1bd19fb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100615598"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731357"
 ---
 # <a name="how-to-use-groups-in-workbooks"></a>Csoportok használata munkafüzeteknél
 
@@ -143,5 +143,5 @@ Nagyobb sablon több alsablonba való bekapcsolásához:
 6. Ezt követően módosíthatja a csoport lépéseit a sablonból való betöltéshez, majd a sablon azonosítója mezőt az 5. lépésben létrehozott munkafüzethez/sablonhoz is beállíthatja. A munkafüzetek azonosítóinak használatához a forrásnak megosztott munkafüzet-erőforrás-AZONOSÍTÓnak kell lennie. Nyomja meg a *Load (Betöltés* ) gombot, és az adott csoport tartalma betöltődik az adott alsablonból a külső munkafüzetbe való mentés helyett.
 
 ## <a name="next-steps"></a>Következő lépések
-- [Munkafüzetek áttekintése](../platform/workbooks-overview.md)
+- [Munkafüzetek áttekintése](./workbooks-overview.md)
 - [JSONPath használata munkafüzetek használatával](workbooks-jsonpath.md)

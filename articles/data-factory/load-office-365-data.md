@@ -4,18 +4,18 @@ description: Adatok másolása az Office 365-ből az Azure Data Factory használ
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 02/18/2021
 ms.author: jingwang
-ms.openlocfilehash: 8b98344dcb2321d5d91c9974dc833a735164d428
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 54aa511414695d28e390529af61d484e465f1c19
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370656"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710265"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Adatok betöltése az Office 365-ből Azure Data Factory használatával
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ebből a cikkből megtudhatja, hogyan használhatja a Data Factory _betöltési adatait az Office 365-ből az Azure Blob Storage-ba_. A hasonló lépéseket követve másolhatja az Adatmásolást Azure Data Lake Gen1 vagy Gen2. Tekintse meg az [office 365-összekötőt](connector-office-365.md) az Office 365-ből általában az adatok másolásáról szóló cikket.
 

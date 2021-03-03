@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: d38a0ea7307584c25ddec9389feaef7518bcf925
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1232a0753c988f5a28ebba28f9819aa67ce28603
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591762"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718743"
 ---
 # <a name="track-database-activity-with-audit-logs-in-azure-database-for-mysql-flexible-server"></a>Az adatbázis-tevékenységek nyomon követése Azure Database for MySQL rugalmas kiszolgáló naplófájljaival
 
@@ -46,7 +46,7 @@ A naplózási naplózási viselkedés vezérléséhez beállítható egyéb para
 | `DCL` | Lekérdezések, például "engedély megadása" |
 | `ADMIN` | Lekérdezések, például "állapot megjelenítése" |
 | `GENERAL` | Összes DML_SELECT, DML_NONSELECT, DML, DDL, DCL és ADMIN |
-| `TABLE_ACCESS` | – Csak MySQL 5,7 esetén érhető el <br> – Táblázatos olvasási utasítások, például kijelölés vagy Beszúrás a következőbe:... Válassza <br> – Tábla-törlési utasítások, például törlés vagy TRUNCATE TABLE <br> – Táblázatos beszúrási utasítások, például INSERT vagy replace <br> – Táblázatos frissítési utasítások, például frissítés |
+| `TABLE_ACCESS` | – Táblázatos olvasási utasítások, például kijelölés vagy Beszúrás a következőbe:... Válassza <br> – Tábla-törlési utasítások, például törlés vagy TRUNCATE TABLE <br> – Táblázatos beszúrási utasítások, például INSERT vagy replace <br> – Táblázatos frissítési utasítások, például frissítés |
 
 ## <a name="access-audit-logs"></a>Hozzáférés az auditnaplókhoz
 
@@ -72,7 +72,7 @@ A következő szakaszok ismertetik a MySQL naplók kimenetét az esemény típus
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | A kiszolgáló neve |
 | `event_class_s` | `connection_log` |
-| `event_subclass_s` | `CONNECT`, `DISCONNECT` , `CHANGE USER` (csak MySQL 5,7 esetén érhető el) |
+| `event_subclass_s` | `CONNECT`, `DISCONNECT`, `CHANGE USER` |
 | `connection_id_d` | A MySQL által generált egyedi kapcsolatazonosító |
 | `host_s` | Blank |
 | `ip_s` | A MySQL-hez csatlakozó ügyfél IP-címe |
@@ -80,7 +80,7 @@ A következő szakaszok ismertetik a MySQL naplók kimenetét az esemény típus
 | `db_s` | A következőhöz kapcsolódó adatbázis neve |
 | `\_ResourceId` | Erőforrás URI-ja |
 
-### <a name="general"></a>Általános
+### <a name="general"></a>Általános kérdések
 
 Az alábbi séma az általános, a DML_SELECT, a DML_NONSELECT, a DML, a DDL, a DCL és a rendszergazdai események típusára vonatkozik.
 
@@ -116,7 +116,7 @@ Az alábbi séma az általános, a DML_SELECT, a DML_NONSELECT, a DML, a DDL, a 
 ### <a name="table-access"></a>Tábla-hozzáférés
 
 > [!NOTE]
-> A Table Access-naplók csak a MySQL 5,7 kimenete.<br>A esetében a rendszer `sql_text_s` csonkolja a naplót, ha az meghaladja a 2048 karaktert.
+> A esetében a rendszer `sql_text_s` csonkolja a naplót, ha az meghaladja a 2048 karaktert.
 
 | **Tulajdonság** | **Leírás** |
 |---|---|

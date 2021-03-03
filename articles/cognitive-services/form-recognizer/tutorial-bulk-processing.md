@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 01/04/2021
 ms.author: pafarley
-ms.openlocfilehash: 1780aebc113fa68a9a89cfce9fd67c9b5911fc58
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 6faa612f55b4114b4242c48d43aae9aac8c56582
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98606047"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699997"
 ---
 # <a name="tutorial-extract-form-data-in-bulk-using-azure-data-factory"></a>Oktatóanyag: adatok tömeges kinyerése Azure Data Factory használatával
 
@@ -30,7 +30,7 @@ Az űrlapokból származó adatok kinyerése és a meglévő operatív rendszere
 
 Az Azure Form felismerő segítségével a szervezetek kihasználhatják az adatmennyiséget, automatizálják a folyamatokat (a számla kifizetését, az adózási feldolgozást stb.), megtakarítják a pénzt és az időt, és jobb adatpontossággal rendelkeznek.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Azure Data Lake beállítása az űrlapok tárolására
@@ -65,7 +65,7 @@ A Azure Databricks jegyzetfüzet ezután a betanított modellekkel kinyeri az ű
 
 Előfordulhat, hogy a várakozó űrlapok a helyszíni környezetben vagy egy FTP-kiszolgálón vannak. Ez az oktatóanyag egy Azure Data Lake Gen 2 Storage-fiók űrlapjait használja. A fájlokat Azure Data Factory, Azure Storage Explorer vagy AzCopy használatával is átviheti. A betanítási és pontozási adatkészletek különböző tárolókban lehetnek, de az összes adattípus betanítási adatkészletének ugyanabban a tárolóban kell lennie (bár különböző mappákban lehetnek).
 
-Új Data Lake létrehozásához kövesse a [Storage-fiók létrehozása a Azure Data Lake Storage Gen2 használatával](https://docs.microsoft.com/azure/storage/blobs/create-data-lake-storage-account)című témakör utasításait.
+Új Data Lake létrehozásához kövesse a [Storage-fiók létrehozása a Azure Data Lake Storage Gen2 használatával](../../storage/blobs/create-data-lake-storage-account.md)című témakör utasításait.
 
 ## <a name="create-a-parameterization-table"></a>Paraméterezés-tábla létrehozása
 
@@ -89,7 +89,7 @@ A táblázat a következő mezőket fogja használni:
 
 ### <a name="create-the-table"></a>A tábla létrehozása
 
-[Hozzon létre egy Azure SQL Database](https://ms.portal.azure.com/#create/Microsoft.SQLDatabase), majd futtassa a következő SQL-parancsfájlt a [lekérdezés-szerkesztőben](https://docs.microsoft.com/azure/azure-sql/database/connect-query-portal) a szükséges tábla létrehozásához.
+[Hozzon létre egy Azure SQL Database](https://ms.portal.azure.com/#create/Microsoft.SQLDatabase), majd futtassa a következő SQL-parancsfájlt a [lekérdezés-szerkesztőben](../../azure-sql/database/connect-query-portal.md) a szükséges tábla létrehozásához.
 
 ```sql
 CREATE TABLE dbo.ParamFormRecogniser(
@@ -142,7 +142,7 @@ A Azure Databricks használatával tárolhatja és futtathatja az űrlap-felisme
 
 ### <a name="create-a-secret-scope-backed-by-azure-key-vault"></a>Azure Key Vault által támogatott titkos hatókör létrehozása
 
-Ahhoz, hogy a fent létrehozott Azure Key Vault titkára hivatkozzon, létre kell hoznia egy titkos hatókört a Databricks-ben. Kövesse a [Azure Key Vault által támogatott titkos kulcs létrehozása](https://docs.microsoft.com/azure/databricks/security/secrets/secret-scopes#--create-an-azure-key-vault-backed-secret-scope)című témakör lépéseit.
+Ahhoz, hogy a fent létrehozott Azure Key Vault titkára hivatkozzon, létre kell hoznia egy titkos hatókört a Databricks-ben. Kövesse a [Azure Key Vault által támogatott titkos kulcs létrehozása](/azure/databricks/security/secrets/secret-scopes#--create-an-azure-key-vault-backed-secret-scope)című témakör lépéseit.
 
 ### <a name="create-a-databricks-cluster"></a>Databricks-fürt létrehozása
 
@@ -461,7 +461,7 @@ Most létrehozhatunk egy pontozási jegyzetfüzetet. A betanítási jegyzetfüze
 
 ## <a name="automate-training-and-scoring-with-azure-data-factory"></a>A képzés és a pontozás automatizálása Azure Data Factory
 
-Az egyetlen fennmaradó lépés a Azure Data Factory (ADF) szolgáltatás beállítása a betanítási és pontozási folyamatok automatizálására. Először kövesse az [adat-előállító létrehozása](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory)című témakör lépéseit. Az ADF-erőforrás létrehozása után három folyamatot kell létrehoznia: az egyiket a képzéshez és kettőt a pontozáshoz (lásd alább).
+Az egyetlen fennmaradó lépés a Azure Data Factory (ADF) szolgáltatás beállítása a betanítási és pontozási folyamatok automatizálására. Először kövesse az [adat-előállító létrehozása](../../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory)című témakör lépéseit. Az ADF-erőforrás létrehozása után három folyamatot kell létrehoznia: az egyiket a képzéshez és kettőt a pontozáshoz (lásd alább).
 
 ### <a name="training-pipeline"></a>Betanítási folyamat
 
@@ -503,7 +503,7 @@ Mostantól egy automatizált folyamattal digitalizálhatja az űrlapokat, és eg
 
 Ha új típusú új űrlapokat ad hozzá, egy betanítási adatkészletet is fel kell töltenie a megfelelő tárolóba. Ezután adjon hozzá egy új sort a paraméterezés táblához, és adja meg az új dokumentumok helyét és a betanítási adatkészletet. Adja meg az-1 értéket a **model_ID** számára, hogy jelezze, hogy egy új modellt kell képezni ezeknek az űrlapoknak. Ezután futtassa az automatikus betanítási folyamatot az ADF-ben. Beolvassa a táblázatot, betanítja a modellt, és felülírja a modell AZONOSÍTÓját a táblában. Ezután meghívhatja a pontozási folyamatokat a kimeneti fájlok írásának megkezdéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban Azure Data Factory folyamatokat állít be, hogy kiváltsa az űrlap-felismerő modellek betanítását és futtatását a fájlok nagy számainak digitalizálásához. Ezután tekintse át az űrlap-felismerő API-t, hogy megtudja, mi a teendő.
 

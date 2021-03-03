@@ -3,12 +3,12 @@ title: Az adatbázisok biztonsági mentésével kapcsolatos hibák elhárítása
 description: Leírja, hogy miként lehet elhárítani a SAP HANA-adatbázisok biztonsági mentésekor Azure Backup használata során előforduló gyakori hibákat.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: b9fa73ee38e337a547816432212bc68d419f40bb
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: 22800adc323bda8a60278160f24bc559103fb57e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95411325"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713337"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>SAP HANA-adatbázisok Azure-beli biztonsági mentésének hibáinak megoldása
 
@@ -46,13 +46,6 @@ A biztonsági mentések konfigurálása előtt tekintse át az [előfeltételeke
 | Hibaüzenet      | <span style="font-weight:normal">A megadott SAP HANA művelet nem támogatott</span>              |
 | ------------------ | ------------------------------------------------------------ |
 | **Lehetséges okok**    | A SAP HANA Azure Backup nem támogatja a növekményes biztonsági mentést és a SAP HANA natív ügyfeleken végrehajtott műveleteket (Studio/cockpit/DBA pilótafülke) |
-| **Javasolt művelet** | További [információkért tekintse](./sap-hana-backup-support-matrix.md#scenario-support)meg a következő témakört:. |
-
-### <a name="usererrorhanapodoesnotsupportbackuptype"></a>UserErrorHANAPODoesNotSupportBackupType
-
-| Hibaüzenet      | <span style="font-weight:normal">Ez a SAP HANA-adatbázis nem támogatja a kért biztonsági mentési típust</span>  |
-| ------------------ | ------------------------------------------------------------ |
-| **Lehetséges okok**    | A Azure Backup nem támogatja a növekményes biztonsági mentést és biztonsági mentést Pillanatképek használatával |
 | **Javasolt művelet** | További [információkért tekintse](./sap-hana-backup-support-matrix.md#scenario-support)meg a következő témakört:. |
 
 ### <a name="usererrorhanalsnvalidationfailure"></a>UserErrorHANALSNValidationFailure

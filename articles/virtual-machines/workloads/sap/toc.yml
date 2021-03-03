@@ -197,6 +197,8 @@
               href: high-availability-guide-rhel.md
             - name: Magas rendelkezésre állás Red Hat Enterprise Linux rendszeren (A)SCS példányhoz az Azure NetApp Filesszal
               href: high-availability-guide-rhel-netapp-files.md
+            - name: Nagyméretű példányok HA az SAP on RHEL
+              href: large-instance-high-availability-rhel.md
         - name: Az Azure infrastruktúra előkészítése
           items:
             - name: Windows közös lemezzel (A)SCS példányhoz

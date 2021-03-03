@@ -6,19 +6,19 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: cfe6aa489bcc771213ec04ca9cddd1267ccf1338
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: cda3af012a83342d5650c542fafdcd6bc36bd8e3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100616285"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717978"
 ---
 # <a name="optimizing-log-alert-queries"></a>A naplók riasztási lekérdezéseinek optimalizálása
-Ez a cikk azt ismerteti, hogyan írhat és alakíthat át [riasztási](../platform/alerts-unified-log.md) lekérdezéseket az optimális teljesítmény érdekében. Az optimalizált lekérdezések csökkentik a késést és a riasztások terhelését, ami gyakran fut.
+Ez a cikk azt ismerteti, hogyan írhat és alakíthat át [riasztási](./alerts-unified-log.md) lekérdezéseket az optimális teljesítmény érdekében. Az optimalizált lekérdezések csökkentik a késést és a riasztások terhelését, ami gyakran fut.
 
 ## <a name="how-to-start-writing-an-alert-log-query"></a>Riasztási napló lekérdezésének megkezdése
 
-A riasztási lekérdezések [a log Analytics napló adatainak lekérdezésével](alerts-log.md#create-a-log-alert-rule-with-the-azure-portal) kezdődnek, amely a problémát jelzi. A [riasztási lekérdezés példái című témakörből](../log-query/example-queries.md) megtudhatja, hogy mit tud felderíteni. Ön is [megkezdheti a saját lekérdezés megírását](../log-query/log-analytics-tutorial.md). 
+A riasztási lekérdezések [a log Analytics napló adatainak lekérdezésével](alerts-log.md#create-a-log-alert-rule-with-the-azure-portal) kezdődnek, amely a problémát jelzi. A [riasztási lekérdezés példái című témakörből](../logs/example-queries.md) megtudhatja, hogy mit tud felderíteni. Ön is [megkezdheti a saját lekérdezés megírását](../logs/log-analytics-tutorial.md). 
 
 ### <a name="queries-that-indicate-the-issue-and-not-the-alert"></a>A problémát jelző lekérdezések és nem a riasztás
 
@@ -44,7 +44,7 @@ Nem kell riasztási logikát felvennie a lekérdezésbe, és ennek következtéb
 `limit`A és `take` a lekérdezésekben való használata növelheti a késést és a riasztások terhelését, mivel az eredmények nem konzisztensek az idő múlásával. A használata javasolt, ha szükséges.
 
 ## <a name="log-query-constraints"></a>Lekérdezési korlátozások naplózása
-A [Azure monitor](../log-query/log-query-overview.md) a (z) táblával, [`search`](/azure/kusto/query/searchoperator) vagy operátorral kezdődnek a lekérdezések [`union`](/azure/kusto/query/unionoperator) .
+A [Azure monitor](../logs/log-query-overview.md) a (z) táblával, [`search`](/azure/kusto/query/searchoperator) vagy operátorral kezdődnek a lekérdezések [`union`](/azure/kusto/query/unionoperator) .
 
 A naplózási riasztási szabályok lekérdezéseit mindig egy táblázattal kell kezdeni, hogy egyértelmű hatókört határozzon meg, ami javítja a lekérdezési teljesítményt és az eredmények relevanciáját. A riasztási szabályokban lévő lekérdezések gyakran futnak, így a `search` és `union` a használatával túlzott mértékű terhelést eredményezhet a riasztáshoz, mivel több táblára történő vizsgálatra is szükség van. Ezen operátorok csökkentik a riasztási szolgáltatás képességét is a lekérdezés optimalizálására.
 
@@ -57,7 +57,7 @@ SecurityEvent
 | where EventID == 4624
 ```
 
-Ez a változás nem érinti a riasztási szabályokat a [több erőforrást használó lekérdezések](../log-query/cross-workspace-query.md) használatával, mivel a több erőforrást használó lekérdezések a típust használják `union` , amely a lekérdezési hatókört meghatározott erőforrásokra korlátozza. A következő példa egy érvényes napló-riasztási lekérdezés:
+Ez a változás nem érinti a riasztási szabályokat a [több erőforrást használó lekérdezések](../logs/cross-workspace-query.md) használatával, mivel a több erőforrást használó lekérdezések a típust használják `union` , amely a lekérdezési hatókört meghatározott erőforrásokra korlátozza. A következő példa egy érvényes napló-riasztási lekérdezés:
 
 ```Kusto
 union
@@ -67,7 +67,7 @@ workspace('Contoso-workspace1').Perf
 ```
 
 >[!NOTE]
-> Az [erőforrások közötti lekérdezések](../log-query/cross-workspace-query.md) az új [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules)-ban támogatottak. Ha továbbra is az [örökölt log Analytics riasztási API](../platform/api-alerts.md) -t használja a naplózási riasztások létrehozásához, megismerheti a váltást [itt](../alerts/alerts-log-api-switch.md).
+> Az [erőforrások közötti lekérdezések](../logs/cross-workspace-query.md) az új [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules)-ban támogatottak. Ha továbbra is az [örökölt log Analytics riasztási API](./api-alerts.md) -t használja a naplózási riasztások létrehozásához, megismerheti a váltást [itt](../alerts/alerts-log-api-switch.md).
 
 ## <a name="examples"></a>Példák
 Az alábbi példákban a és a által használt naplózási lekérdezések szerepelnek, valamint azokat a lépéseket, amelyek segítségével `search` `union` módosíthatja ezeket a lekérdezéseket a riasztási szabályokban való használatra.
@@ -217,4 +217,4 @@ SecurityEvent
 
 ## <a name="next-steps"></a>Következő lépések
 - További információ a Azure Monitor [naplózási értesítéseiről](alerts-log.md) .
-- További információ a [naplók lekérdezéséről](../log-query/log-query-overview.md).
+- További információ a [naplók lekérdezéséről](../logs/log-query-overview.md).

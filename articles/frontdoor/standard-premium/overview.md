@@ -8,27 +8,27 @@ ms.topic: overview
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: 32654f743301f9f2f6c010947d73d957c96dceac
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: bcfff1a2c8490a05f4b96a8e2ff68186348f596f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101100889"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742364"
 ---
 # <a name="what-is-azure-front-door-standardpremium-preview"></a>Mi az Azure bejárati ajtó standard/Premium (előzetes verzió)?
 
 > [!IMPORTANT]
 > Ez a dokumentáció az Azure bejárati ajtó standard/Premium (előzetes verzió) verziójához készült. Információt keres az Azure bejárati ajtóról? Tekintse meg az Azure-beli előtérben lévő [dokumentumokat](../front-door-overview.md).
 
-Az Azure bejárati ajtó standard/Premium egy gyors, megbízható és biztonságos, modern felhőalapú CDN, amely a Microsoft globális peremhálózati hálózatát használja, és integrálható az intelligens veszélyforrások elleni védelemmel. A Microsoft, az Azure bejárati ajtó, az Azure webalkalmazási tűzfal (WAF) Azure CDN szabványának képességeit egyetlen biztonságos felhőalapú CDN-platformra ötvözi.
+Az Azure bejárati ajtó standard/Premium egy gyors, megbízható és biztonságos, modern felhőalapú CDN, amely a Microsoft globális peremhálózati hálózatát használja, és integrálható az intelligens veszélyforrások elleni védelemmel. Az Azure bejárati ajtó, az Azure Content Delivery Network (CDN) standard és az Azure webalkalmazási tűzfal (WAF) funkcióit egyetlen biztonságos felhőalapú CDN-platformra ötvözi.
 
-A standard/prémium szintű Azure-ban a globális fogyasztói és nagyvállalati alkalmazásokat biztonságos és magas teljesítményű, személyre szabott modern alkalmazásokkal alakíthatja át, amelyekben az alacsony késéssel rendelkező globális célközönségek is elérhetők.
+A standard/prémium szintű Azure-szolgáltatásokkal a globális fogyasztói és vállalati alkalmazásokat biztonságos és magas teljesítményű, személyre szabott modern alkalmazásokkal alakíthatja át, amelyekben a felhasználók a hálózat peremén található globális közönséget érhetik el. Azt is lehetővé teszi, hogy az alkalmazás betöltés nélkül, a globális HTTP-terheléselosztás azonnali feladatátvételsel való használata mellett is felskálázást biztosítson.
 
    :::image type="content" source="../media/overview/front-door-overview.png" alt-text="Azure bejárati ajtó standard/prémium architektúrája" lightbox="../media/overview/front-door-overview-expanded.png":::
 
-Az Azure bejárati ajtó standard/Premium a 7. rétegbeli (HTTP/HTTPS) rétegben működik, és a globális kapcsolatok javítása érdekében a Split TCP és a Microsoft globális hálózatának használatával támogatja a többhelyes protokollt Az útválasztási módszer alapján biztosíthatja, hogy az Azure bevezető ajtaja átirányítsa az ügyfelek kérelmeit a leggyorsabb és leginkább elérhető forrásra. Az alkalmazás-háttérrendszer egy, az Azure-on kívül vagy belül üzemeltetett, internetkapcsolattal rendelkező szolgáltatás. A AzureFront Door standard/Premium számos forgalom-útválasztási módszert és a forrás állapot figyelési lehetőségeit kínálja a különböző alkalmazási igényeknek és automatikus feladatátvételi forgatókönyveknek megfelelően. A Traffic Managerhoz hasonlóan a bejárati ajtó is rugalmasan működik a hibáknál, beleértve a teljes Azure-régió meghibásodásait is.
+Az Azure bejárati ajtó standard/Premium a 7. rétegbeli (HTTP/HTTPS) rétegben működik, és a globális kapcsolatok javítása érdekében a Split TCP és a Microsoft globális hálózatának használatával támogatja a többhelyes protokollt A beállított szabályok alapján, a testreszabott útválasztási módszer alapján biztosíthatja, hogy az Azure bevezető ajtaja a leggyorsabb és legteljesebb forrásra irányítsa át az ügyfelek kérelmeit. Az alkalmazás forrása bármely, az Azure-on belül vagy kívül üzemeltetett, internetre irányuló szolgáltatás. Az Azure bejárati ajtó standard/Premium számos forgalom-útválasztási módszert és a forrás állapot figyelési lehetőségeit kínálja a különböző alkalmazási igényeknek és automatikus feladatátvételi forgatókönyveknek megfelelően. A Traffic Managerhoz hasonlóan a bejárati ajtó is rugalmasan működik a hibáknál, beleértve a teljes Azure-régió meghibásodásait is.
 
-Az Azure bejárati ajtaja is védi az alkalmazást a Web Application Firewall, a bot Protection és a beépített 3/Layer 4 DDoS Protection használatával. Emellett a privát kapcsolati szolgáltatással is biztonságossá teszi a privát háttér-végpontokat. Az Azure bejárati ajtaja globális méretekben kínálja a Microsoft legjobb biztonsági megoldásait.  
+Az Azure bejárati ajtaja is védi az alkalmazást a szélein, az integrált webalkalmazási tűzfallal, a bot Protection szolgáltatással és a beépített 3/4. rétegbeli elosztott szolgáltatásmegtagadási (DDoS) védelemmel. Emellett a privát kapcsolati szolgáltatással is biztonságossá teszi a privát háttér-végpontokat. Az Azure bejárati ajtaja globális méretekben kínálja a Microsoft legjobb biztonsági megoldásait.  
 
 >[!NOTE]
 > Az Azure teljeskörűen felügyelt terheléselosztási megoldások együttesét biztosítja a különböző forgatókönyvekre.
@@ -47,19 +47,19 @@ Az Azure bejárati ajtaja is védi az alkalmazást a Web Application Firewall, a
 
 ## <a name="why-use-azure-front-door-standardpremium-preview"></a>Miért érdemes az Azure bejárati ajtót standard/Premium (előzetes verzió) használatára használni?
 
-Az Azure bejárati ajtó standard/Premium egyetlen egységesített platformot biztosít a statikus tartalmakhoz és a dinamikus alkalmazások gyorsításához, fokozott biztonsági funkciókkal. A bejárati ajtó lehetővé teszi az alkalmazás globális útválasztásának meghatározását, kezelését és figyelését is.
+Az Azure Door standard/Premium egyetlen egységesített platformot biztosít, amely dinamikus és statikus gyorsítást tesz lehetővé beépített kulcsrakész biztonsági integrációval, valamint egy egyszerű és kiszámítható díjszabási modellel. A bejárati ajtó lehetővé teszi az alkalmazás globális útválasztásának meghatározását, kezelését és figyelését is.
 
 Az Azure bejárati ajtó standard/Premium (előzetes verzió) főbb szolgáltatásai:
 
-- Gyorsított alkalmazások teljesítménye a Split TCP-alapú csomópontos protokoll használatával.
+- Gyorsított alkalmazások teljesítménye a **[Split TCP-alapú](../front-door-routing-architecture#splittcp.md)** csomópontos protokoll használatával.
 
 - Az intelligens **[állapot](concept-health-probes.md)** mintavételének figyelése és terheléselosztása az **[eredetek](concept-origin.md)** között.
 
-- Saját egyéni tartományt definiálhat rugalmas tartományi ellenőrzéssel.
+- Saját **[Egyéni tartományt](how-to-add-custom-domain.md)** definiálhat rugalmas tartományi ellenőrzéssel.
 
-- Alkalmazások biztonsága integrált [webalkalmazási tűzfallal (WAF)](../../web-application-firewall/afds/afds-overview.md).
+- Alkalmazások biztonsága integrált **[webalkalmazási tűzfallal (WAF)](../../web-application-firewall/afds/afds-overview.md)**.
 
-- SSL-kiszervezés és integrált tanúsítványkezelő.
+- SSL-kiszervezés és integrált **[tanúsítványkezelő](how-to-configure-https-custom-domain.md)**.
 
 - Saját eredetének védelme **[privát hivatkozással](concept-private-link.md)**.  
 

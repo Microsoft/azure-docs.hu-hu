@@ -2,13 +2,13 @@
 title: Oktatóanyag – hozzáférés saját felhőhöz
 description: Ismerje meg, hogyan férhet hozzá egy Azure VMware-megoldás saját felhőhöz
 ms.topic: tutorial
-ms.date: 09/21/2020
-ms.openlocfilehash: b7f21dbba5256712607241bb1258962fc22418fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/22/2021
+ms.openlocfilehash: 81296223ab941633a4b0f1316e359a0eb2ff73ce
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578418"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738480"
 ---
 # <a name="tutorial-access-an-azure-vmware-solution-private-cloud"></a>Oktatóanyag: Azure VMware-megoldás privát felhőhöz való hozzáférése
 
@@ -30,9 +30,12 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 1. A Jump (ugrás) mezőben jelentkezzen be a vSphere-ügyfélre a VMware vCenter SSO használatával egy Felhőbeli rendszergazdai felhasználónévvel és valósággal, hogy a felhasználói felület sikeresen megjelenik.
 
-1. A Azure Portal válassza ki saját felhőjét, majd az **Áttekintés** nézetben válassza az **identitás > alapértelmezett**lehetőséget. 
+1. A Azure Portal válassza ki saját felhőjét, majd az   >  **identitás** kezelése lehetőséget. 
 
    A Private Cloud vCenter és a NSX-T Manager kijelző URL-címei és felhasználói hitelesítő adatai.
+
+   >[!TIP]
+   >Válassza az **új jelszó létrehozása** lehetőséget új VCENTER és NSX-T jelszavak létrehozásához.
 
    :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Saját Felhőbeli vCenter és NSX-kezelő URL-címek és hitelesítő adatok megjelenítése." border="true":::
 
@@ -44,17 +47,17 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 1. A vCenter lapon adja meg az `cloudadmin@vmcp.local` előző lépésben használt felhasználói hitelesítő adatokat.
 
-   :::image type="content" source="media/tutorial-access-private-cloud/ss5-vcenter-login.png" alt-text="Saját Felhőbeli vCenter és NSX-kezelő URL-címek és hitelesítő adatok megjelenítése." border="true":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss5-vcenter-login.png" alt-text="Jelentkezzen be a saját Felhőbeli vCenter." border="true":::
 
-   :::image type="content" source="media/tutorial-access-private-cloud/ss6-vsphere-client-home.png" alt-text="Saját Felhőbeli vCenter és NSX-kezelő URL-címek és hitelesítő adatok megjelenítése." border="true":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss6-vsphere-client-home.png" alt-text="vCenter-portál." border="true":::
 
 1. A böngésző második lapján jelentkezzen be a NSX-T Managerbe.
 
-   :::image type="content" source="media/tutorial-access-private-cloud/ss10-nsx-manager-home.png" alt-text="Saját Felhőbeli vCenter és NSX-kezelő URL-címek és hitelesítő adatok megjelenítése." border="true":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss10-nsx-manager-home.png" alt-text="A böngésző második lapján jelentkezzen be a NSX-T Managerbe." border="true":::
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

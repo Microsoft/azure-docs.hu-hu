@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/05/2020
+ms.date: 03/02/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ba50def51bcea4f477bea5cecbe5b1ed0409b01a
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 52b9bee1d43c0f136889a6a54277d4bb45dd4a45
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98792347"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750828"
 ---
 Az egyes felügyelt lemezek szintjén is kezelheti a titkosítást a saját kulcsaival. Az ügyfél által felügyelt kulcsokkal rendelkező felügyelt lemezek kiszolgálóoldali titkosítása integrált élményt nyújt a Azure Key Vault. Importálhatja az [RSA-kulcsokat](../articles/key-vault/keys/hsm-protected-keys.md) a Key Vault, vagy LÉTREHOZHAT új RSA-kulcsokat Azure Key Vault. 
 
@@ -43,3 +43,7 @@ A következő lista részletesebben ismerteti a diagramot:
 1. Az adatok olvasásához vagy írásához a felügyelt lemezek kéréseket küldenek Azure Key Vaultnek az adatok titkosításához és visszafejtéséhez (tördeléséhez), valamint az adattitkosítási kulcs visszafejtéséhez (kicsomagolásához). 
 
 Az ügyfél által felügyelt kulcsokhoz való hozzáférés visszavonásához lásd: [Azure Key Vault PowerShell](/powershell/module/azurerm.keyvault/) és [Azure Key Vault parancssori](/cli/azure/keyvault)felület. A hozzáférés visszavonása hatékonyan blokkolja a Storage-fiókban lévő összes adattal való hozzáférést, mivel a titkosítási kulcs nem érhető el az Azure Storage-ban.
+
+#### <a name="automatic-key-rotation-of-customer-managed-keys-preview"></a>Az ügyfél által felügyelt kulcsok automatikus elforgatása (előzetes verzió)
+
+Dönthet úgy, hogy engedélyezi a kulcs automatikus elforgatását a legújabb verzióra. A lemez a lemez titkosítási készletén keresztül hivatkozik a kulcsra. Ha engedélyezi a lemezes titkosítási készlet automatikus elforgatását, a rendszer automatikusan frissíti az összes felügyelt lemezt, pillanatképet és lemezképet, amely a lemez titkosítási készletére hivatkozik, hogy egy órán belül a kulcs új verzióját használja. A szolgáltatás jelenleg csak korlátozott számú régióban érhető el előzetes verzióban. A regionális elérhetőséget a [támogatott régiók](#supported-regions) szakaszban találja.

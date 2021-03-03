@@ -4,35 +4,26 @@ description: Ismerje meg, hogyan telepítheti át klasszikus riasztási szabály
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 03/19/2018
+ms.date: 02/14/2020
 ms.subservice: alerts
-ms.openlocfilehash: 28ccdde85f2873839fbe977c3c991177ac8bb3bb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 644346c7355df581843fa8a838eea50cfeccefd6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100614415"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729096"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>A klasszikus riasztási szabályok áttelepítéséhez használja az önkéntes áttelepítési eszközt
 
-Amint azt [korábban bejelentettük](../platform/monitoring-classic-retirement.md), a Azure monitor klasszikus riasztásai kimaradnak a nyilvános Felhőbeli felhasználók számára, bár továbbra is korlátozott használatban vannak az új riasztásokat még nem támogató erőforrások esetében. Áttelepítési eszköz volt elérhető a Azure Portalban a klasszikus riasztási szabályokat használó ügyfelek számára, akik maguknak szeretnék elindítani az áttelepítést. Ez a cikk azt ismerteti, hogyan használható az áttelepítési eszköz, amely a további bejelentéseken függőben lévő riasztások esetében is használatos.
+Amint azt [korábban bejelentettük](monitoring-classic-retirement.md), a Azure monitor klasszikus riasztásai kimaradnak a nyilvános Felhőbeli felhasználók számára, bár a használat továbbra is korlátozott, **2021**-ig. A Azure Government Cloud és az Azure China 21Vianet klasszikus riasztásai a **2024. február 29**-én törlődnek.
 
-## <a name="benefits-of-new-alerts"></a>Az új riasztások előnyei
-
-A klasszikus riasztásokat a Azure Monitor új, egyesített riasztása váltja fel. Az új riasztások platform a következő előnyöket nyújtja:
-
-- [Számos további Azure-szolgáltatáshoz több](alerts-metric-near-real-time.md#metrics-and-dimensions-supported)többdimenziós mérőszámot is felhasználhat.
-- Az új metrikai riasztások támogatják a [több erőforrásból álló riasztási szabályokat](alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor) , amelyek nagy mértékben csökkentik a sok szabály felügyeletének terhét.
-- Az egyesített értesítési mechanizmus, amely a következőket támogatja:
-  - [Műveleti csoportok](../platform/action-groups.md), moduláris értesítési mechanizmus, amely minden új riasztási típussal működik (metrika, napló és tevékenység napló).
-  - Új értesítési mechanizmusok, például SMS, Voice és ITSM-csatoló.
-- Az [egységes riasztási élmény](../platform/alerts-overview.md) egy helyre helyezi az összes riasztást a különböző jelek (metrika, napló és tevékenység napló) alapján.
+Az áttelepítési eszköz a Azure Portalban olyan ügyfelek számára érhető el, akik klasszikus riasztási szabályokat használnak, és maguknak szeretnék elindítani az áttelepítést. Ez a cikk az áttelepítési eszköz használatát ismerteti.
 
 ## <a name="before-you-migrate"></a>Migrálás előtt
 
 Az áttelepítési folyamat a klasszikus riasztási szabályokat új, egyenértékű riasztási szabályokra konvertálja, és műveleti csoportokat hoz létre. Az előkészítés során vegye figyelembe a következő szempontokat:
 
-- Az értesítési hasznos adatok formátuma és az új riasztási szabályok létrehozásához és kezeléséhez szükséges API-k eltérnek a klasszikus riasztási szabályoktól, mivel azok több funkciót is támogatnak. [Ismerje meg, hogyan készítheti elő az áttelepítést](alerts-prepare-migration.md).
+- Az értesítési hasznos adatok formátuma és az új riasztási szabályok létrehozására és kezelésére szolgáló API-k eltérnek a klasszikus riasztási szabályoktól, mert több funkciót támogatnak. [Ismerje meg, hogyan készítheti elő az áttelepítést](alerts-prepare-migration.md).
 
 - Néhány klasszikus riasztási szabály nem telepíthető át az eszköz használatával. [Megtudhatja, hogy mely szabályok nem telepíthetők át, és mire használhatók](alerts-understand-migration.md#manually-migrating-classic-alerts-to-newer-alerts).
 
@@ -83,7 +74,7 @@ Ha egy előfizetés készen áll az áttelepítésre, az előfizetés tulajdonos
 
 ### <a name="who-can-trigger-the-migration"></a>Kik indíthatják el az áttelepítést?
 
-Azok a felhasználók, akik az előfizetés szintjén hozzárendelt figyelési közreműködő szerepkörrel rendelkeznek, képesek elindítani az áttelepítést. [További információ az áttelepítési folyamat Azure szerepköralapú hozzáférés-vezérléséről](alerts-understand-migration.md#who-can-trigger-the-migration).
+Azok a felhasználók, akik az előfizetés szintjén hozzárendelt figyelési közreműködő szerepkörrel rendelkeznek, aktiválhatja az áttelepítést. [További információ az áttelepítési folyamat Azure szerepköralapú hozzáférés-vezérléséről](alerts-understand-migration.md#who-can-trigger-the-migration).
 
 ### <a name="how-long-will-the-migration-take"></a>Mennyi időt vesz igénybe az áttelepítés?
 

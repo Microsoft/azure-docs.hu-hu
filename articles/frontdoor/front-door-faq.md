@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: e28c995a0fb574f2e7319f8ee540f49d1bbed4dd
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 77cc509a9fac2a24b3cd70675c1ee4160ecdb24d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656903"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741854"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Gyakori kérdések az Azure bejárati ajtóról
 
@@ -97,9 +97,9 @@ Ha úgy szeretné zárolni az alkalmazást, hogy csak a megadott bejárati ajtó
     > [!WARNING]
     > Előfordulhat, hogy a bejárati ajtó háttérbeli IP-címe később is változhat, ezért a megjelenő esetekben biztosítani fogjuk, hogy az [Azure IP-címtartományok és a szolgáltatási címkék](https://www.microsoft.com/download/details.aspx?id=56519)integrálva lennének. Javasoljuk, hogy az [Azure IP-címtartományok és a szolgáltatás-címkék](https://www.microsoft.com/download/details.aspx?id=56519) esetében minden módosítást és frissítést előfizessen.
 
--    Hajtson végre egy GET műveletet az előtérben az API `2020-01-01` -vagy újabb verzióval. Az API-hívásban keresse meg a `frontdoorID` mezőt. Szűrje a "**X-Azure-FDID**" bejövő fejlécet, amelyet a rendszer bekapcsol a háttérbe az adott mező értékével `frontdoorID` . `Front Door ID`Az értéket az áttekintő szakaszban is megtalálhatja az első ajtós portál oldalon. 
+- Keresse meg az `Front Door ID` értéket az első ajtós portál oldal Áttekintés szakaszában. Ezt követően szűrheti az "**X-Azure-FDID**" bejövő fejlécet, amelyet a rendszer bekapcsol a háttérbe az adott értékkel annak érdekében, hogy csak a saját konkrét ajtós példánya legyen engedélyezve (mivel a fenti IP-címtartományok más ügyfelek más bejárati példányaival is megoszthatók).
 
-- Alkalmazzon szabály-szűrést a háttérbeli webkiszolgálón a forgalom korlátozásához az eredményül kapott X-Azure-FDID fejléc értéke alapján.
+- Alkalmazzon szabály-szűrést a háttérbeli webkiszolgálón a forgalom korlátozásához az eredményül kapott X-Azure-FDID fejléc értéke alapján. Vegye figyelembe, hogy egyes szolgáltatások, például a Azure App Service biztosítják ezt a [fejléc-alapú szűrési](../app-service/app-service-ip-restrictions#restrict-access-to-a-specific-azure-front-door-instance-preview) funkciót anélkül, hogy módosítani kellene az alkalmazást vagy a gazdagépet.
 
   Íme egy példa a [Microsoft Internet Information Services (IIS)](https://www.iis.net/)szolgáltatásra:
 

@@ -6,17 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/16/2020
-ms.openlocfilehash: 213437e68efb27c483c8013d209261408ab9d4ea
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e2050784d03b1f01e743df9b00916ec286a3e7ef
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100620808"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736950"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Példák a Azure Monitor log lekérdezésekre
-Ez a cikk különféle példákat tartalmaz a [Kusto lekérdezési nyelvét](/azure/kusto/query/) használó [lekérdezések](../log-query/log-query-overview.md) különböző típusú naplófájljainak lekérésére Azure monitorból. Az adatösszesítés és az elemzés különböző módszerekkel történik, így ezek a minták a saját igényeihez esetlegesen használt különböző stratégiák azonosítására használhatók.  
+Ez a cikk különféle példákat tartalmaz a [Kusto lekérdezési nyelvét](/azure/kusto/query/) használó [lekérdezések](./log-query-overview.md) különböző típusú naplófájljainak lekérésére Azure monitorból. Az adatösszesítés és az elemzés különböző módszerekkel történik, így ezek a minták a saját igényeihez esetlegesen használt különböző stratégiák azonosítására használhatók.  
 
-A példákban használt különböző kulcsszavak részleteit a [Kusto nyelvi dokumentációjában](/azure/kusto/query/) tekintheti meg. Áttekintheti a [lekérdezéseket](../log-query/get-started-queries.md) , ha új Azure monitor.
+A példákban használt különböző kulcsszavak részleteit a [Kusto nyelvi dokumentációjában](/azure/kusto/query/) tekintheti meg. Áttekintheti a [lekérdezéseket](./get-started-queries.md) , ha új Azure monitor.
 
 ## <a name="events"></a>Események
 
@@ -375,7 +375,7 @@ suspicious_users_that_later_logged_in
 
 ## <a name="usage"></a>Használat
 
-Az `Usage` adattípus segítségével nyomon követheti a betöltött adatmennyiséget megoldás vagy adattípus alapján. A betöltött adatmennyiségeket a [számítógép](../platform/manage-cost-storage.md#data-volume-by-computer) vagy az [Azure-előfizetés, az erőforráscsoport vagy az erőforrás](../platform/manage-cost-storage.md#data-volume-by-azure-resource-resource-group-or-subscription)alapján is megvizsgálhatja.
+Az `Usage` adattípus segítségével nyomon követheti a betöltött adatmennyiséget megoldás vagy adattípus alapján. A betöltött adatmennyiségeket a [számítógép](./manage-cost-storage.md#data-volume-by-computer) vagy az [Azure-előfizetés, az erőforráscsoport vagy az erőforrás](./manage-cost-storage.md#data-volume-by-azure-resource-resource-group-or-subscription)alapján is megvizsgálhatja.
 
 #### <a name="data-volume-by-solution"></a>Adatmennyiség megoldásonként
 
@@ -438,4 +438,4 @@ Update
 ## <a name="next-steps"></a>Következő lépések
 
 - A nyelvre vonatkozó részletekért tekintse meg a [Kusto nyelvi referenciáját](/azure/kusto/query) .
-- Végigvezeti a [Azure monitorban található naplók írására szolgáló leckén](../log-query/get-started-queries.md).
+- Végigvezeti a [Azure monitorban található naplók írására szolgáló leckén](./get-started-queries.md).

@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 11/18/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: adbd7deccf32312f67cff7b92ff7813036e9b1b3
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 4623610960d8f21a2dab3293c7499a2112416254
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898528"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101718913"
 ---
 # <a name="create-a-transform"></a>Átalakítás létrehozása
 
@@ -33,8 +33,6 @@ A jelen cikkben lévő Azure CLI-szkript bemutatja, hogyan hozhat létre átalak
 [Hozzon létre egy Media Services fiókot](./create-account-howto.md).
 
 ## <a name="cli"></a>[Parancssori felület](#tab/cli/)
-
-[!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
 > [!NOTE]
 > A [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset)-hez csak egy egyéni szabványos kódoló által előre beállított JSON-fájl elérési útját adhatja meg, lásd: [kódolás egyéni átalakítással](custom-preset-cli-howto.md) – példa.
@@ -53,4 +51,4 @@ A jelen cikkben lévő Azure CLI-szkript bemutatja, hogyan hozhat létre átalak
 
 ## <a name="next-steps"></a>Következő lépések
 
-[További információ az átalakításokról és a feladatokról](transforms-jobs-concept.md)
+[!INCLUDE [transforms next steps](./includes/transforms-next-steps.md)]

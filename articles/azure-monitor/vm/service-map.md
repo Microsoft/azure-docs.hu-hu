@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 0374c7d304a40031919bae8816d31477e742b9c8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 688adcf0012f8871c4034cbba6ce2ddcacdbcc43
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100618298"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717145"
 ---
 # <a name="using-service-map-solution-in-azure"></a>A Service Map megoldás használata az Azure-ban
 
@@ -26,7 +26,7 @@ Ez a cikk a Service Map bevezetésének és használatának részleteit ismertet
 * A Windows rendszerű számítógépre vagy Linux-kiszolgálóra telepített [függőségi ügynök](vminsights-enable-overview.md#agents) .
 
 >[!NOTE]
->Ha már telepítette Service Map, mostantól megtekintheti a térképeit Azure Monitor for VMsban is, amely a virtuális gépek állapotának és teljesítményének figyelésére szolgáló további funkciókat is tartalmaz. További információ: [Azure monitor for VMS Overview (áttekintés](../vm/vminsights-overview.md)). Ha többet szeretne megtudni a Service Map megoldás és a Azure Monitor for VMs Térkép funkció közötti különbségekről, tekintse meg az alábbi [gyakori kérdéseket](../faq.md#azure-monitor-for-vms).
+>Ha már telepítette a Service Mapt, mostantól megtekintheti a térképeket a VM-információk között, így további funkciókat is láthat a virtuális gépek állapotának és teljesítményének figyeléséhez. További információ: a [VM-információk áttekintése](../vm/vminsights-overview.md). Ha többet szeretne megtudni a Service Map megoldás és a virtuálisgép-információk leképezése funkció közötti különbségekről, tekintse meg az alábbi [gyakori kérdéseket](../faq.md#azure-monitor-for-vms).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -154,7 +154,7 @@ Kattintson a csoport neve melletti három pont menüre a csoport listában.
 
 Bizonyos folyamatok adott szerepköröket szolgálnak ki a gépeken: webkiszolgálók, alkalmazáskiszolgáló, adatbázis stb. A Service Map megjegyzésekkel láthatja el a folyamatokat és a számítógépeket a szerepkörök ikonjaival, így könnyebben azonosíthatja a folyamat vagy a kiszolgáló szerepét.
 
-| Szerepkör ikonja | Description |
+| Szerepkör ikonja | Leírás |
 |:--|:--|
 | ![Webkiszolgáló](media/service-map/role-web-server.png) | Webkiszolgáló |
 | ![Alkalmazáskiszolgáló](media/service-map/role-application-server.png) | Alkalmazáskiszolgáló |
@@ -241,7 +241,7 @@ A Service Map a naplóbeli kereséssel integrálva megjeleníti a kijelölt kisz
 
 ## <a name="service-desk-integration"></a>Az ügyfélszolgálat integrációja
 
-Ha mindkét megoldás engedélyezve van és konfigurálva van a Log Analytics munkaterületen, Service Map az IT-szolgáltatásmenedzsmenti csatoló integrációja automatikusan megtörténik. A Service Map integrációja a "Service Desk" címkével van ellátva. További információ: [központilag felügyelheti a ITSM munkaelemeit it-szolgáltatásmenedzsmenti csatoló használatával](../platform/itsmc-overview.md).
+Ha mindkét megoldás engedélyezve van és konfigurálva van a Log Analytics munkaterületen, Service Map az IT-szolgáltatásmenedzsmenti csatoló integrációja automatikusan megtörténik. A Service Map integrációja a "Service Desk" címkével van ellátva. További információ: [központilag felügyelheti a ITSM munkaelemeit it-szolgáltatásmenedzsmenti csatoló használatával](../alerts/itsmc-overview.md).
 
 A **számítógép-szolgáltatási** tábla ablaktábla a kiválasztott időtartományban lévő összes IT Service Management-eseményt listázza. A kiszolgáló egy ikont jelenít meg, ha vannak aktuális elemek, és a Machine Service Desk ablaktábla felsorolja őket.
 
@@ -304,7 +304,7 @@ A **számítógép frissítései** ablaktábla a kiválasztott kiszolgálóhoz t
 
 ## <a name="log-analytics-records"></a>Log Analytics-rekordok
 
-Service Map számítógép-és feldolgozási leltári adatként [kereshetők](../log-query/log-query-overview.md) a log Analytics. Ezeket az információkat olyan forgatókönyvekre alkalmazhatja, amelyek tartalmazzák az áttelepítés megtervezését, a kapacitás elemzését, a felderítést és az igény szerinti teljesítménnyel kapcsolatos hibaelhárítást.
+Service Map számítógép-és feldolgozási leltári adatként [kereshetők](../logs/log-query-overview.md) a log Analytics. Ezeket az információkat olyan forgatókönyvekre alkalmazhatja, amelyek tartalmazzák az áttelepítés megtervezését, a kapacitás elemzését, a felderítést és az igény szerinti teljesítménnyel kapcsolatos hibaelhárítást.
 
 A rendszer óránként létrehoz egy rekordot minden egyedi számítógéphez és folyamathoz, továbbá a folyamat vagy számítógép indításakor vagy a Service Mapba való bevezetéskor generált rekordokon kívül. Ezek a rekordok a következő táblákban található tulajdonságokkal rendelkeznek. A ServiceMapComputer_CL események mezői és értékei a ServiceMap Azure Resource Manager API-ban lévő számítógép-erőforrás mezőire vannak leképezve. A ServiceMapProcess_CL események mezői és értékei a ServiceMap Azure Resource Manager API-ban található folyamat-erőforrás mezőire vannak leképezve. A ResourceName_s mező megegyezik a megfelelő Resource Manager-erőforrásban található Name mezővel. 
 
@@ -550,7 +550,7 @@ További információ az adatok gyűjtéséről és használatáról: a [Microso
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a Log Analytics [naplóbeli keresésekről](../log-query/log-query-overview.md) Service Map által összegyűjtött adatok lekéréséhez.
+További információ a Log Analytics [naplóbeli keresésekről](../logs/log-query-overview.md) Service Map által összegyűjtött adatok lekéréséhez.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -571,7 +571,7 @@ A futásidejű kódtár telepítői a %LOCALAPPDATA%\temp mappában hozzák lét
 
 A következő táblázat felsorolja a kódok számát és a javasolt megoldásokat.
 
-| Code | Description | Feloldás |
+| Code | Leírás | Feloldás |
 |:--|:--|:--|
 | 0x17 | A kódtártelepítőhöz olyan Windows-frissítés szükséges, amely még nincs telepítve. | Tekintse meg a legutóbbi kódtártelepítői naplót.<br><br>Ha egy hivatkozást egy olyan `Windows8.1-KB2999226-x64.msu` vonal követ, amely `Error 0x80240017: Failed to execute MSU package,` nem rendelkezik a KB2999226 telepítéséhez szükséges előfeltételekkel. Kövesse az [Universal C-futtatókörnyezet a Windowsban](https://support.microsoft.com/kb/2999226) című cikk előfeltételekről szóló szakaszában foglalt utasításokat. Lehetséges, hogy az előfeltételek telepítéséhez futtatnia kell a Windows Update-et, és többször újra kell indítania a számítógépet.<br><br>Futtassa újra a Microsoft függőségi ügynök telepítőjét. |
 

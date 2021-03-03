@@ -5,18 +5,14 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: overview
-ms.openlocfilehash: 14ebe9dfd11bed2dfaded9f18e23f73d33a708ae
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6001fff54b86b7c18684092aad6c7fdf64f81990
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91650459"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729946"
 ---
 # <a name="about-azure-remote-rendering"></a>Az Azure Remote Rendering ismertetése
-
-> [!IMPORTANT]
-> Az **Azure távoli renderelés** jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Az *Azure távoli renderelés* (ARR) egy olyan szolgáltatás, amely lehetővé teszi a magas színvonalú, interaktív 3D-tartalmak megjelenítését a felhőben, és valós időben továbbítja azokat az eszközökre, például a 2. HoloLens.
 
@@ -61,7 +57,7 @@ A képek generálásának teljes ciklusa a következő lépésekből áll:
 
 A hálózati késés a fő probléma. A kérések küldése és az eredmény fogadása között elvárható idő általában túl hosszú az interaktív keret díjszabásához képest. Ezért a több keret is lehet egy időben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Rendszerkövetelmények](system-requirements.md)
 * [Gyors útmutató: modell megjelenítése egységgel](../quickstarts/render-model.md)

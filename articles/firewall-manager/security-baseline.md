@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f56270d853bf47faebbd6026586111ead6fb0495
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: ec746a5c347db8cb92c95b1d76f3622498f0039f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101091154"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742381"
 ---
 # <a name="azure-security-baseline-for-azure-firewall-manager"></a>Az Azure biztonsági alapterve Azure Firewall Managerhez
 
@@ -437,7 +437,7 @@ Azure Monitor az Log Analytics munkaterület megőrzési időszakát a szervezet
 
 - [Log Analytics munkaterület megőrzési időtartamának konfigurálása](../azure-monitor/logs/manage-cost-storage.md)
 
-- [Erőforrás-naplók tárolása Azure Storage-fiókban](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [Erőforrás-naplók tárolása Azure Storage-fiókban](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 

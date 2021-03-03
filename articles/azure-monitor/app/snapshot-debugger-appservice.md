@@ -6,16 +6,19 @@ author: cweining
 ms.author: cweining
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 421f80493a9cb88e8bbbddc06aa9a24042b64b17
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 291f06bea0744c991c71640272ee341b7273472b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695472"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728994"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>.NET-alkalmazások Snapshot Debuggerának engedélyezése Azure App Service
 
-A Snapshot Debugger jelenleg a ASP.NET és a ASP.NET Core a Windows-szolgáltatási csomagok Azure App Service futó alkalmazásain működik. Javasoljuk, hogy az alkalmazást az alapszintű szolgáltatási szinten vagy magasabb szinten futtassa a Snapshot Debugger használatakor. A legtöbb alkalmazás esetében az ingyenes és a közös szolgáltatási rétegek nem rendelkeznek elegendő memóriával vagy lemezterülettel a pillanatképek mentéséhez.
+A Snapshot Debugger jelenleg a Windows-ASP.NET Azure App Service operációs rendszert futtató alkalmazásokat és ASP.NET Coreeket támogatja.
+
+Javasoljuk, hogy az alkalmazást az alapszintű szolgáltatási szinten vagy magasabb szinten futtassa a Snapshot Debugger használatakor.
+A legtöbb alkalmazás esetében az ingyenes és a közös szolgáltatási rétegek nem rendelkeznek elegendő memóriával vagy lemezterülettel a pillanatképek mentéséhez.
 
 ## <a name="enable-snapshot-debugger"></a><a id="installation"></a> Snapshot Debugger engedélyezése
 Az alkalmazások Snapshot Debuggerának engedélyezéséhez kövesse az alábbi utasításokat.
@@ -28,7 +31,10 @@ Ha más típusú Azure-szolgáltatást futtat, akkor a Snapshot Debugger más t�
 * [Helyszíni virtuális vagy fizikai gépek](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 
 > [!NOTE]
-> Ha a .NET Core előzetes verzióját használja, vagy az alkalmazása Application Insights SDK-ra hivatkozik közvetlenül vagy közvetve egy függő szerelvényen keresztül, kövesse a [Microsoft. ApplicationInsights. snapshotcollector nugetcsomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-csomagnak az alkalmazással való használatának [Snapshot Debugger engedélyezéséhez](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) szükséges lépéseket, majd végezze el az alábbi utasítások további részét. 
+> Ha a .NET Core előzetes verzióját használja, vagy az alkalmazás Application Insights SDK-ra hivatkozik közvetlenül vagy közvetve egy függő szerelvényen keresztül, kövesse az [Enable Snapshot Debugger for other Environments](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) című témakör utasításait a [Microsoft. ApplicationInsights. snapshotcollector nugetcsomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-csomag az alkalmazással való belefoglalásához, majd végezze el az alábbi útmutatások további részét. 
+>
+> Application Insights Snapshot Debugger kód nélküli telepítése a .NET Core támogatási szabályzatot követi.
+> További információ a támogatott futtatókörnyezetekről: [.net Core támogatási szabályzat](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
 
 A Snapshot Debugger a App Services futtatókörnyezet részeként előre telepítve van, de a App Service alkalmazáshoz tartozó Pillanatképek lekéréséhez be kell kapcsolni.
 
@@ -95,7 +101,7 @@ Azure App Service esetén a Azure Resource Manager sablonban megadhatja az alkal
 },
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Adatforgalom létrehozása az alkalmazás számára, amely kivételt indíthat. Ezután várjon 10 – 15 percet a pillanatképek Application Insights példányba való elküldésekor.
 - A Azure Portal található [Pillanatképek](snapshot-debugger.md?toc=/azure/azure-monitor/toc.json#view-snapshots-in-the-portal) .

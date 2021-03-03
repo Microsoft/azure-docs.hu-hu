@@ -12,12 +12,12 @@ author: davidtrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 07/11/2019
-ms.openlocfilehash: 936e4f8f54e92ba90372fff1c9d8dfc1982bbd62
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: c84c81fa81cf4ba9be454eea5782927a09c3252a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325116"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690959"
 ---
 # <a name="getting-started-with-azure-sql-managed-instance"></a>Az Azure SQL felügyelt példányának első lépései
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -44,7 +44,7 @@ Első lépésként létre kell hoznia az első SQL-beli felügyelt példányát 
   > - A helyi hálózatról Express Route vagy helyek közötti kapcsolat is használható, de ezek a módszerek nem tartoznak a rövid útmutatók körébe.
   > - Ha a megőrzési időszakot 0 (korlátlan megőrzés) értékre módosítja bármely más értékre, vegye figyelembe, hogy az adatmegőrzés csak a megőrzési érték módosítását követően írt naplókra vonatkozik
 
-A felügyelt SQL-példány manuális létrehozása helyett használhatja a [PowerShellt](scripts/create-configure-managed-instance-powershell.md), [a PowerShellt Resource Manager-sablonnal](scripts/create-powershell-azure-resource-manager-template.md)vagy az [Azure CLI](/cli/azure/sql/mi#az-sql-mi-create) -vel a folyamat parancsfájlhoz és automatizálásához.
+A felügyelt SQL-példány manuális létrehozása helyett használhatja a [PowerShellt](scripts/create-configure-managed-instance-powershell.md), [a PowerShellt Resource Manager-sablonnal](./create-template-quickstart.md)vagy az [Azure CLI](/cli/azure/sql/mi#az-sql-mi-create) -vel a folyamat parancsfájlhoz és automatizálásához.
 
 ### <a name="migrate-your-databases"></a>Adatbázisok migrálása
 
@@ -76,7 +76,7 @@ Ahhoz azonban, hogy a termelési adatbázist vagy akár fejlesztési, illetve te
 
 További információ az [ajánlott áttelepítési folyamatról](migrate-to-instance-from-sql-server.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg az [SQL felügyelt példányának támogatott funkcióinak magas szintű listáját itt](../database/features-comparison.md) , valamint az [itt olvasható részleteket és ismert problémákat](transact-sql-tsql-differences-sql-server.md).
 - Ismerje meg [az SQL felügyelt példányának technikai jellemzőit](resource-limits.md#service-tier-characteristics).

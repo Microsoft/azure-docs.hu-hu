@@ -6,17 +6,17 @@ ms.author: yexu
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/09/2020
-ms.openlocfilehash: f2f0b3e452b39cb81f435dbee4a3b0f524b0213d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/18/2021
+ms.openlocfilehash: fda76fd16787c01b9fc35ef63473be215a2c126d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361145"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740052"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Új és módosított fájlok növekményes másolása LastModifiedDate alapján a Adatok másolása eszköz használatával
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ebben az oktatóanyagban a Azure Portal használatával hozzon létre egy adatelőállítót. Ezután a Adatok másolása eszköz használatával létrehozhat egy folyamatot, amely fokozatosan átmásolja az új és módosított fájlokat, az Azure Blob Storage-ból az Azure Blob Storage-ba. A használatával `LastModifiedDate` határozza meg a másolandó fájlokat.
 

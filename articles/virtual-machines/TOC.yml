@@ -860,87 +860,71 @@
                   href: windows/disks-enable-double-encryption-at-rest-powershell.md
                 - name: parancssori felület
                   href: linux/disks-enable-double-encryption-at-rest-cli.md
-        - name: Azure Disk Encryption forgatókönyvek
+        - name: Azure Disk Encryption
           items:
-            - name: Azure Disk Encryption áttekintések
-              items:
-                - name: Windows
-                - name: Linux
             - name: Linux
-              href: ./linux/disk-encryption-linux.md
-            - name: Windows
-              href: ./windows/disk-encryption-windows.md
-            - name: parancssori felület
-              items:
-                - name: Linux
-                  href: ./linux/disk-encryption-cli-quickstart.md
-                - name: Windows
-                  href: ./windows/disk-encryption-cli-quickstart.md
-            - name: PowerShell
-              items:
-                - name: Linux
-                  href: ./linux/disk-encryption-powershell-quickstart.md
-                - name: Windows
-                  href: ./windows/disk-encryption-powershell-quickstart.md
-            - name: Portál
-              items:
-                - name: Linux
-                  href: ./linux/disk-encryption-portal-quickstart.md
-                - name: Windows
-                  href: ./windows/disk-encryption-portal-quickstart.md
-            - name: Key Vault az Azure Disk Encryptionhöz
-              items:
-                - name: Linux
-                  href: ./linux/disk-encryption-key-vault.md
-                - name: Windows
-                  href: ./windows/disk-encryption-key-vault.md
-            - name: Mintaparancsfájlok
-              items:
-                - name: Linux
-                  href: ./linux/disk-encryption-sample-scripts.md
-                - name: Windows
-                  href: ./windows/disk-encryption-sample-scripts.md
-            - name: Az Azure Disk Encryption egy elszigetelt hálózaton
-              href: ./linux/disk-encryption-isolated-network.md
-            - name: A titkosítási állapot ellenőrzése
-              href: ./linux/how-to-verify-encryption-status.md
-            - name: Az LVM RAID konfigurálása titkosítással
-              href: ./linux/how-to-configure-lvm-raid-on-crypt.md
-            - name: Titkosított LVM kötetek átméretezése
-              href: ./linux/how-to-resize-encrypted-lvm.md
-            - name: Linux GPT operációsrendszer-partíciók átméretezése
-              href: linux/resize-os-disk-gpt-partition.md
-            - name: hibaelhárítás
-              items:
-                - name: Linux
-                  href: ./linux/disk-encryption-troubleshooting.md
-                - name: Windows
-                  href: ./windows/disk-encryption-troubleshooting.md
-            - name: GYIK
-              items:
-                - name: Linux
-                  href: ./linux/disk-encryption-faq.md
-                - name: Windows
-                  href: ./windows/disk-encryption-faq.md
-            - name: Azure Disk Encryption – előző verzió
               items:
                 - name: Áttekintés
+                  href: ./linux/disk-encryption-overview.md
+                - name: Rövid útmutatók
                   items:
-                    - name: Linux
-                      href: ./linux/disk-encryption-overview-aad.md
-                    - name: Windows
-                      href: ./windows/disk-encryption-overview-aad.md
+                    - name: Azure CLI
+                      href: ./linux/disk-encryption-cli-quickstart.md
+                    - name: Azure PowerShell
+                      href: ./linux/disk-encryption-powershell-quickstart.md
+                    - name: Azure Portal
+                      href: ./linux/disk-encryption-portal-quickstart.md
                 - name: Key Vault az Azure Disk Encryptionhöz
+                  href: ./linux/disk-encryption-key-vault.md
+                - name: Lemeztitkosítási mintaszkriptek
+                  href: ./linux/disk-encryption-sample-scripts.md
+                - name: Lemeztitkosítás izolált hálózaton
+                  href: ./linux/disk-encryption-isolated-network.md
+                - name: A titkosítási állapot ellenőrzése
+                  href: ./linux/how-to-verify-encryption-status.md
+                - name: Az LVM RAID konfigurálása titkosítással
+                  href: ./linux/how-to-configure-lvm-raid-on-crypt.md
+                - name: Titkosított LVM-kötetek átméretezése
+                  href: ./linux/how-to-resize-encrypted-lvm.md
+                - name: Lemeztitkosítási hibaelhárítás
+                  href: ./linux/disk-encryption-troubleshooting.md
+                - name: Lemeztitkosítás – gyakori kérdések
+                  href: ./linux/disk-encryption-faq.md
+                - name: Lemeztitkosítás – előző verzió
                   items:
-                    - name: Linux
+                    - name: Áttekintés
+                      href: ./linux/disk-encryption-overview-aad.md
+                    - name: Key Vault az Azure Disk Encryptionhöz
                       href: ./linux/disk-encryption-key-vault-aad.md
-                    - name: Windows
-                      href: ./windows/disk-encryption-key-vault-aad.md
-                - name: Lemezes titkosítási forgatókönyvek
-                  items:
-                    - name: Linux
+                    - name: Lemeztitkosítási forgatókönyvek Linux rendszerre
                       href: ./linux/disk-encryption-linux-aad.md
-                    - name: Windows
+            - name: Windows
+              items:
+                - name: Lemeztitkosítási forgatókönyvek Windowson
+                  href: ./windows/disk-encryption-windows.md
+                - name: Rövid útmutatók
+                  items:
+                    - name: Azure CLI
+                      href: ./windows/disk-encryption-cli-quickstart.md
+                    - name: Azure PowerShell
+                      href: ./windows/disk-encryption-powershell-quickstart.md
+                    - name: Azure Portal
+                      href: ./windows/disk-encryption-portal-quickstart.md
+                - name: Key Vault az Azure Disk Encryptionhöz
+                  href: ./windows/disk-encryption-key-vault.md
+                - name: Lemeztitkosítási mintaszkriptek
+                  href: ./windows/disk-encryption-sample-scripts.md
+                - name: Lemeztitkosítási hibaelhárítás
+                  href: ./windows/disk-encryption-troubleshooting.md
+                - name: Lemeztitkosítás – gyakori kérdések
+                  href: ./windows/disk-encryption-faq.md
+                - name: Lemeztitkosítás – előző verzió
+                  items:
+                    - name: Áttekintés
+                      href: ./windows/disk-encryption-overview-aad.md
+                    - name: Key Vault az Azure Disk Encryptionhöz
+                      href: ./windows/disk-encryption-key-vault-aad.md
+                    - name: Lemeztitkosítási forgatókönyvek Windowson
                       href: ./windows/disk-encryption-windows-aad.md
     - name: Teljesítmény és ár optimalizálása
       items:

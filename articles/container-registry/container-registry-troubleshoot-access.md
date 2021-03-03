@@ -3,12 +3,12 @@ title: A beállításjegyzék hálózati problémáinak elhárítása
 description: Az Azure Container Registry virtuális hálózatban való elérésekor vagy tűzfal mögötti gyakori problémák tünetei, okai és megoldása
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: cf2f308f782ac7d6011c98afd181b194f2b3e09f
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 75c94d40663a7058dab7ed691183dd578964edcc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525076"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699606"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>A beállításjegyzék hálózati problémáinak elhárítása
 
@@ -140,5 +140,5 @@ Ha itt nem oldja meg a problémát, tekintse meg a következő beállításokat.
   * [Beállításjegyzékbeli bejelentkezés – problémamegoldás](container-registry-troubleshoot-login.md) 
   * [Beállításjegyzékbeli teljesítmény – problémamegoldás](container-registry-troubleshoot-performance.md)
 * [Közösségi támogatási](https://azure.microsoft.com/support/community/) lehetőségek
-* [Microsoft Q&A](https://docs.microsoft.com/answers/products/)
+* [Microsoft Q&A](/answers/products/)
 * [Támogatási jegy megnyitása](https://azure.microsoft.com/support/create-ticket/)

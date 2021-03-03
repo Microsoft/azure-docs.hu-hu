@@ -5,14 +5,14 @@ author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 1/21/2021
+ms.date: 2/19/2021
 ms.author: cavoeg
-ms.openlocfilehash: 3437c8bcf8ff508149abae2549d7c34521700840
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 675030ac47cb26e817a9ef7ee51999f25020f292
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627263"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712698"
 ---
 # <a name="how-to-export-fhir-data"></a>FHIR-adatexportálás
 
@@ -50,15 +50,57 @@ Két kötelező fejléc-paraméternek kell megadnia $export feladatokhoz. Az ér
 ### <a name="query-parameters"></a>Lekérdezési paraméterek
 A FHIR készült Azure API a következő lekérdezési paramétereket támogatja. A paraméterek mindegyike opcionális:
 
-|Lekérdezési paraméter        | A FHIR-specifikáció határozza meg?    |  Description|
+|Lekérdezési paraméter        | A FHIR-specifikáció határozza meg?    |  Leírás|
 |------------------------|---|------------|
-| \_outputFormat | Yes | A jelenleg három értéket támogat a FHIR spec: Application/FHIR + ndjson, Application/ndjson vagy Just ndjsonhoz való igazításhoz. Minden exportálási feladat vissza fog térni `ndjson` , és az átadott érték nem befolyásolja a kód viselkedését. |
-| \_mivel | Yes | Lehetővé teszi a csak a megadott idő óta módosított erőforrások exportálását |
-| \_típusa | Yes | Lehetővé teszi annak megadását, hogy milyen típusú erőforrásokat fog tartalmazni. Írja be például, hogy \_ = beteg csak a beteg erőforrásait adja vissza|
-| \_typefilter | Yes | Ha finomabb szűrést szeretne kérni, \_ a Type paraméterrel együtt használhatja a typefilter-t is \_ . A _typeFilter paraméter értéke az olyan FHIR lekérdezések vesszővel tagolt listája, amelyek tovább korlátozzák az eredményeket |
-| \_tároló | No |  Meghatározza azt a tárolót a konfigurált Storage-fiókon belül, ahol az adatexportálást el kell helyezni. Ha meg van adva tároló, a rendszer az adott tárolóba exportálja a nevet egy új mappába. Ha a tároló nincs megadva, a rendszer egy új tárolóba exportálja az időbélyeg és a Job ID használatával. |
+| \_outputFormat | Igen | A jelenleg három értéket támogat a FHIR spec: Application/FHIR + ndjson, Application/ndjson vagy Just ndjsonhoz való igazításhoz. Minden exportálási feladat vissza fog térni `ndjson` , és az átadott érték nem befolyásolja a kód viselkedését. |
+| \_mivel | Igen | Lehetővé teszi a csak a megadott idő óta módosított erőforrások exportálását |
+| \_típusa | Igen | Lehetővé teszi annak megadását, hogy milyen típusú erőforrásokat fog tartalmazni. Írja be például, hogy \_ = beteg csak a beteg erőforrásait adja vissza|
+| \_typefilter | Igen | Ha finomabb szűrést szeretne kérni, \_ a Type paraméterrel együtt használhatja a typefilter-t is \_ . A _typeFilter paraméter értéke az olyan FHIR lekérdezések vesszővel tagolt listája, amelyek tovább korlátozzák az eredményeket |
+| \_tároló | Nem |  Meghatározza azt a tárolót a konfigurált Storage-fiókon belül, ahol az adatexportálást el kell helyezni. Ha meg van adva tároló, a rendszer az adott tárolóba exportálja a nevet egy új mappába. Ha a tároló nincs megadva, a rendszer egy új tárolóba exportálja az időbélyeg és a Job ID használatával. |
 
+## <a name="secure-export-to-azure-storage"></a>Biztonságos Exportálás az Azure Storage-ba
 
+A FHIR készült Azure API támogatja a biztonságos exportálási műveletet. Az egyik lehetőség, hogy biztonságos exportálást futtasson, lehetővé teszi, hogy az Azure API-hoz társított IP-címek FHIR az Azure Storage-fiók eléréséhez. A konfigurációk eltérőek, attól függően, hogy a Storage-fiók azonos vagy egy másik helyen található-e az Azure API-FHIR.
+
+### <a name="when-the-azure-storage-account-is-in-a-different-region"></a>Ha az Azure Storage-fiók egy másik régióban található
+
+Válassza ki az Azure Storage-fiók hálózatkezelés paneljét a portálon. 
+
+   :::image type="content" source="media/export-data/storage-networking.png" alt-text="Az Azure Storage hálózatkezelési beállításai." lightbox="media/export-data/storage-networking.png":::
+   
+Válassza a "kiválasztott hálózatok" lehetőséget, és adja meg az IP- **címet a tűzfal** SZAKASZÁNAK \| IP-tartományok hozzáadása területén az internetről vagy a helyszíni hálózatokról való hozzáférés engedélyezéséhez. Az alábbi táblázatból megtalálhatja az IP-címet az Azure-régióhoz, ahol az Azure API for FHIR szolgáltatás ki van építve.
+
+|**Azure-régió**         |**Nyilvános IP-cím** |
+|:----------------------|:-------------------|
+| Kelet-Ausztrália       | 20.53.44.80       |
+| Közép-Kanada       | 20.48.192.84      |
+| Az USA középső régiója           | 52.182.208.31     |
+| USA keleti régiója              | 20.62.128.148     |
+| USA 2. keleti régiója            | 20.49.102.228     |
+| USA 2. keleti – EUAP       | 20.39.26.254      |
+| Észak-Németország        | 51.116.51.33      |
+| Középnyugat-Németország | 51.116.146.216    |
+| Kelet-Japán           | 20.191.160.26     |
+| Dél-Korea középső régiója        | 20.41.69.51       |
+| USA északi középső régiója     | 20.49.114.188     |
+| Észak-Európa         | 52.146.131.52     |
+| Dél-Afrika északi régiója   | 102.133.220.197   |
+| USA déli középső régiója     | 13.73.254.220     |
+| Délkelet-Ázsia       | 23.98.108.42      |
+| Észak-Svájc    | 51.107.60.95      |
+| Az Egyesült Királyság déli régiója             | 51.104.30.170     |
+| Az Egyesült Királyság nyugati régiója              | 51.137.164.94     |
+| USA nyugati középső régiója      | 52.150.156.44     |
+| Nyugat-Európa          | 20.61.98.66       |
+| USA 2. nyugati régiója            | 40.64.135.77      |
+
+### <a name="when-the-azure-storage-account-is-in-the-same-region"></a>Ha az Azure Storage-fiók ugyanabban a régióban található
+
+A konfigurációs folyamat ugyanaz, mint a fentiekben, kivéve a CIDR formátumú adott IP-címtartomány használatát, a 100.64.0.0/10 helyett. Ennek az az oka, hogy az IP-címtartomány, amely magában foglalja a 100.64.0.0 – 100.127.255.255, meg kell határozni az, hogy a szolgáltatás által használt tényleges IP-cím változó, de az egyes $export kérelmek esetében a tartományon belül marad.
+
+> [!Note] 
+> Előfordulhat, hogy a 10.0.2.0/24 tartományon belül egy magánhálózati IP-cím is használható. Ebben az esetben a $export művelet sikertelen lesz. Megismételheti a $export kérelmet, de nincs garancia arra, hogy a 100.64.0.0/10 tartományon belüli IP-címek a következő alkalommal lesznek felhasználva. Ez az ismert hálózatkezelési viselkedés a tervezés szerint. A másik lehetőség a Storage-fiók konfigurálása egy másik régióban.
+    
 ## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan exportálhatja a FHIR-erőforrásokat $export parancs használatával. Következő lépésként megtudhatja, hogyan exportálhatja a de azonosított információkat:

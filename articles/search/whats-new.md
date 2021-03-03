@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: 606b102b1922d382f479235ffc4c61b68e7db766
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 36f10bebfc42ae5e9e75206392e8a5f8ccef563a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101676385"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694597"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
@@ -23,7 +23,7 @@ Ismerje meg a szolgáltatás újdonságait. Könyvjelző ezen az oldalon naprak�
 
 |Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Leírás | Rendelkezésre állás  |
 |------------------------------|---------------|---------------|
-| [Szemantikus keresés](semantic-search-overview.md) | A lekérdezésekkel kapcsolatos olyan funkciók gyűjteménye, amelyek a keresési eredményeket módosítják, és így több releváns eredményt hoznak létre. A keresési kérések kisebb módosításaival kipróbálhatja a meglévő indexeken található szolgáltatásokat.</br></br>A [szemantikai lekérdezés](semantic-how-to-query-request.md) egy új lekérdezési típus, amely a természetes nyelvi feldolgozás terén kihasználja az előrehaladást a rangsorolás javítása érdekében, valamint a válaszok, a feliratok és a szemantikai csúcsfények megadására szolgáló lekérdezési szándék megismerését.</br></br>A [szemantikai rangsorolás és válaszok (válaszok, feliratok és csúcsfények)](semantic-how-to-query-response.md) a szemantikai lekérdezést és a válasz szerkezetét meghatározó algoritmusra vonatkoznak. | Nyilvános előzetes verzió ([kérés szerint](https://aka.ms/SemanticSearchPreviewSignup)). </br></br>Használja a [Search Documents (REST)](/rest/api/searchservice/preview-api/search-documents) API-Version = 2020-06 -30-Preview és a [search Explorert](search-explorer.md) a Azure Portal. </br></br>A régió és a rétegek korlátozásai érvényesek. |
+| [Szemantikus keresés](semantic-search-overview.md) | Lekérdezésekkel kapcsolatos szolgáltatások gyűjteménye, amelyek nagyon kevés erőfeszítéssel javítják a keresési eredmények jelentőségét. A keresési kérések kisebb módosításaival kipróbálhatja a meglévő indexeken található szolgáltatásokat.</br></br>A [szemantikai lekérdezés](semantic-how-to-query-request.md) egy új lekérdezési típus, amely a természetes nyelvi feldolgozás terén kihasználja az előrehaladást a rangsorolás javítása érdekében, valamint a válaszok, a feliratok és a szemantikai csúcsfények megadására szolgáló lekérdezési szándék megismerését.</br></br>A [szemantikai rangsorolás és válaszok (válaszok, feliratok és csúcsfények)](semantic-how-to-query-response.md) az eredményeket kiértékelő modellre, valamint a modell azon képességére utalnak, hogy a válaszhoz struktúrát adjanak hozzá. | Nyilvános előzetes verzió ([kérés szerint](https://aka.ms/SemanticSearchPreviewSignup)). </br></br>Használja a [Search Documents (REST)](/rest/api/searchservice/preview-api/search-documents) API-Version = 2020-06 -30-Preview és a [search Explorert](search-explorer.md) a Azure Portal. </br></br>A régió és a rétegek korlátozásai érvényesek. |
 | [Helyesírás-ellenőrzés lekérdezési feltételei](speller-how-to-add.md) | Mielőtt a lekérdezési feltételek elérnék a keresőmotort, megadhatja őket a helyesírási hibák ellenőrzéséhez. A `speller` beállítás bármilyen típusú lekérdezéssel használható (egyszerű, teljes vagy szemantikai). |  Nyilvános előzetes verzió, csak REST, API-Version = 2020-06 -30-előzetes verzió|
 | [SharePoint Online-indexelő](search-howto-index-sharepoint-online.md) | Ez az indexelő egy SharePoint Online-webhelyhez kapcsolódik, így a tartalom indexelhető egy dokumentumtárból. | Nyilvános előzetes verzió, csak REST, API-Version = 2020-06 -30-előzetes verzió |
 
@@ -46,7 +46,7 @@ Ismerje meg a szolgáltatás újdonságait. Könyvjelző ezen az oldalon naprak�
 | Month (hónap) | Szolgáltatás | Leírás |
 |-------|---------|-------------|
 | November | [Ügyfél által felügyelt kulcs titkosítása (bővített)](search-security-manage-encryption-keys.md) | Kiterjeszti az ügyfél által felügyelt titkosítást a keresési szolgáltatás által létrehozott és kezelt eszközök teljes skáláján. Általánosan elérhető.|
-| Szeptember | [Visual Studio Code-bővítmény az Azure Cognitive Search](search-get-started-vs-code.md) | Felvesz egy munkaterületet, navigációs, IntelliSense és sablont az indexek, az indexelő, az adatforrások és a szakértelmével létrehozásához. | Nyilvános előzetes verzió |
+| Szeptember | [Visual Studio Code-bővítmény az Azure Cognitive Search](search-get-started-vs-code.md) | Felvesz egy munkaterületet, navigációs, IntelliSense és sablont az indexek, az indexelő, az adatforrások és a szakértelmével létrehozásához. Ez a szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.| 
 | Szeptember | [Felügyelt szolgáltatás identitása (indexelő)](search-howto-managed-identities-data-sources.md) | Általánosan elérhető.  |
 | Szeptember | [Privát hivatkozást használó kimenő kérelmek](search-indexer-howto-access-private.md) | Általánosan elérhető.  |
 | Szeptember | [Felügyeleti REST API (2020-08-01)](/rest/api/searchmanagement/management-api-versions) | Általánosan elérhető. |

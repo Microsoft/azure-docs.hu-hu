@@ -13,13 +13,13 @@ ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
-ms.date: 1/14/2020
-ms.openlocfilehash: 1341d0e64a01ff428fe42735d198c5e6b74b0ce8
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.date: 2/24/2021
+ms.openlocfilehash: b829d7045ac520cfe908c3c8809ae17702d6175d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99093308"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691433"
 ---
 # <a name="understand-and-resolve-azure-sql-database-blocking-problems"></a>Azure SQL Database blokkolási problémák ismertetése és megoldása
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,7 +31,7 @@ A cikk az Azure SQL Database-adatbázisok blokkolását ismerteti, és bemutatja
 Ebben a cikkben a kapcsolat kifejezése az adatbázis egy bejelentkezett munkamenetére hivatkozik. Minden kapcsolat munkamenet-AZONOSÍTÓként (SPID) vagy session_id sok DMV jelenik meg. Ezeket az SPID-ket gyakran nevezik folyamatnak, bár a szokásos értelemben nem külön folyamat-környezet. Ehelyett minden SPID olyan kiszolgálói erőforrásokból és adatstruktúrákból áll, amelyek egy adott ügyfél egyetlen kapcsolódási kérelmének kiszolgálásához szükségesek. Egyetlen ügyfélalkalmazás egy vagy több kapcsolattal rendelkezhet. Azure SQL Database szempontjából nincs különbség egyetlen ügyfélalkalmazás egyetlen ügyfélszámítógépről történő több kapcsolata és több ügyfélalkalmazás vagy több ügyfélszámítógép közötti kapcsolat között. atomiak. Egy-egy kapcsolatok letilthatnak egy másikat, függetlenül a forrás ügyfelétől.
 
 > [!NOTE]
-> **Ez a tartalom Azure SQL Databasera jellemző.** A Azure SQL Database a Microsoft SQL Server adatbázismotor legújabb stabil verziójára épül, így a tartalom nagy része hasonló, bár a hibaelhárítási lehetőségek és az eszközök eltérőek lehetnek. A SQL Server blokkolásával kapcsolatos további információkért lásd: [SQL Server blokkolási problémák megismerése és megoldása](/troubleshoot/sql/performance/understand-resolve-blocking).
+> **Ez a tartalom Azure SQL Databasere összpontosít.** A Azure SQL Database a Microsoft SQL Server adatbázismotor legújabb stabil verziójára épül, így a tartalom nagy része hasonló, bár a hibaelhárítási lehetőségek és az eszközök eltérőek lehetnek. A SQL Server blokkolásával kapcsolatos további információkért lásd: [SQL Server blokkolási problémák megismerése és megoldása](/troubleshoot/sql/performance/understand-resolve-blocking).
 
 ## <a name="understand-blocking"></a>A blokkolás ismertetése 
  
@@ -105,7 +105,7 @@ SELECT * FROM sys.dm_exec_input_buffer (66,0);
 
 * Tekintse át a sys.dm_exec_requests, és hivatkozzon a blocking_session_id oszlopra. Ha blocking_session_id = 0, a rendszer nem blokkolja a munkamenetet. Habár sys.dm_exec_requests csak a jelenleg végrehajtás alatt álló kérelmeket listázza, a rendszer minden olyan (aktív vagy nem) kapcsolódási listát listáz sys.dm_exec_sessions. Ezt a közös összekapcsolást sys.dm_exec_requests és sys.dm_exec_sessions között a következő lekérdezésben építheti ki.
 
-* A minta lekérdezés futtatásával megkeresheti az aktív végrehajtó lekérdezéseket és az aktuális SQL batch-szöveget vagy a bemeneti puffer szövegét a [sys.dm_exec_sql_text](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql) vagy a [sys.dm_exec_input_buffer](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) DMV használatával. Ha a sys.dm_exec_sql_text mezője által visszaadott adatmennyiség `text` Null, a lekérdezés jelenleg nem fut. Ebben az esetben a `event_info` sys.dm_exec_input_buffer mező az SQL-motornak átadott utolsó parancs sztringet fogja tartalmazni. 
+* A minta lekérdezés futtatásával megkeresheti az aktív végrehajtó lekérdezéseket és az aktuális SQL batch-szöveget vagy a bemeneti puffer szövegét a [sys.dm_exec_sql_text](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql) vagy a [sys.dm_exec_input_buffer](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) DMV használatával. Ha a sys.dm_exec_sql_text mezője által visszaadott adatmennyiség `text` Null, a lekérdezés jelenleg nem fut. Ebben az esetben a `event_info` sys.dm_exec_input_buffer mező az SQL-motornak átadott utolsó parancs sztringet fogja tartalmazni. Ez a lekérdezés a más munkameneteket blokkoló munkamenetek azonosítására is használható, beleértve a session_id letiltott session_ids listáját is. 
 
 ```sql
 WITH cteBL (session_id, blocking_these) AS 
@@ -125,6 +125,49 @@ OUTER APPLY sys.dm_exec_sql_text (r.sql_handle) t
 OUTER APPLY sys.dm_exec_input_buffer(s.session_id, NULL) AS ib
 WHERE blocking_these is not null or r.blocking_session_id > 0
 ORDER BY len(bl.blocking_these) desc, r.blocking_session_id desc, r.session_id;
+```
+
+* Futtassa ezt a Microsoft ügyfélszolgálata által biztosított összetettebb példa-lekérdezést egy több munkamenet-blokkoló lánc vezetőjeként, beleértve a blokkoló láncban résztvevő munkamenetek lekérdezési szövegét is.
+
+```sql
+WITH cteHead ( session_id,request_id,wait_type,wait_resource,last_wait_type,is_user_process,request_cpu_time
+,request_logical_reads,request_reads,request_writes,wait_time,blocking_session_id,memory_usage
+,session_cpu_time,session_reads,session_writes,session_logical_reads
+,percent_complete,est_completion_time,request_start_time,request_status,command
+,plan_handle,sql_handle,statement_start_offset,statement_end_offset,most_recent_sql_handle
+,session_status,group_id,query_hash,query_plan_hash) 
+AS ( SELECT sess.session_id, req.request_id, LEFT (ISNULL (req.wait_type, ''), 50) AS 'wait_type'
+    , LEFT (ISNULL (req.wait_resource, ''), 40) AS 'wait_resource', LEFT (req.last_wait_type, 50) AS 'last_wait_type'
+    , sess.is_user_process, req.cpu_time AS 'request_cpu_time', req.logical_reads AS 'request_logical_reads'
+    , req.reads AS 'request_reads', req.writes AS 'request_writes', req.wait_time, req.blocking_session_id,sess.memory_usage
+    , sess.cpu_time AS 'session_cpu_time', sess.reads AS 'session_reads', sess.writes AS 'session_writes', sess.logical_reads AS 'session_logical_reads'
+    , CONVERT (decimal(5,2), req.percent_complete) AS 'percent_complete', req.estimated_completion_time AS 'est_completion_time'
+    , req.start_time AS 'request_start_time', LEFT (req.status, 15) AS 'request_status', req.command
+    , req.plan_handle, req.[sql_handle], req.statement_start_offset, req.statement_end_offset, conn.most_recent_sql_handle
+    , LEFT (sess.status, 15) AS 'session_status', sess.group_id, req.query_hash, req.query_plan_hash
+    FROM sys.dm_exec_sessions AS sess
+    LEFT OUTER JOIN sys.dm_exec_requests AS req ON sess.session_id = req.session_id
+    LEFT OUTER JOIN sys.dm_exec_connections AS conn on conn.session_id = sess.session_id 
+    )
+, cteBlockingHierarchy (head_blocker_session_id, session_id, blocking_session_id, wait_type, wait_duration_ms,
+wait_resource, statement_start_offset, statement_end_offset, plan_handle, sql_handle, most_recent_sql_handle, [Level])
+AS ( SELECT head.session_id AS head_blocker_session_id, head.session_id AS session_id, head.blocking_session_id
+    , head.wait_type, head.wait_time, head.wait_resource, head.statement_start_offset, head.statement_end_offset
+    , head.plan_handle, head.sql_handle, head.most_recent_sql_handle, 0 AS [Level]
+    FROM cteHead AS head
+    WHERE (head.blocking_session_id IS NULL OR head.blocking_session_id = 0)
+    AND head.session_id IN (SELECT DISTINCT blocking_session_id FROM cteHead WHERE blocking_session_id != 0)
+    UNION ALL
+    SELECT h.head_blocker_session_id, blocked.session_id, blocked.blocking_session_id, blocked.wait_type,
+    blocked.wait_time, blocked.wait_resource, h.statement_start_offset, h.statement_end_offset,
+    h.plan_handle, h.sql_handle, h.most_recent_sql_handle, [Level] + 1
+    FROM cteHead AS blocked
+    INNER JOIN cteBlockingHierarchy AS h ON h.session_id = blocked.blocking_session_id and h.session_id!=blocked.session_id --avoid infinite recursion for latch type of blocking
+    WHERE h.wait_type COLLATE Latin1_General_BIN NOT IN ('EXCHANGE', 'CXPACKET') or h.wait_type is null
+    )
+SELECT bh.*, txt.text AS blocker_query_or_most_recent_query 
+FROM cteBlockingHierarchy AS bh 
+OUTER APPLY sys.dm_exec_sql_text (ISNULL ([sql_handle], most_recent_sql_handle)) AS txt;
 ```
 
 * A hosszan futó vagy nem véglegesített tranzakciók megjelenítéséhez használjon egy másik DMV az aktuális nyitott tranzakciók megtekintéséhez, beleértve a [sys.dm_tran_database_transactions](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-database-transactions-transact-sql), a [sys.dm_tran_session_transactions](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-session-transactions-transact-sql), a [sys.dm_exec_connections](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-connections-transact-sql)és a sys.dm_exec_sql_text. A nyomkövetési tranzakciókhoz több DMV is társítva van: további [DMV a tranzakciók](/sql/relational-databases/system-dynamic-management-views/transaction-related-dynamic-management-views-and-functions-transact-sql) itt. 
@@ -371,7 +414,7 @@ Ezeket a forgatókönyveket a következő forgatókönyvek fogják kibővíteni.
 
 ## <a name="see-also"></a>Lásd még
 
-* [Monitorozás és a teljesítmény finomhangolása az Azure SQL Database-ben és a felügyelt Azure SQL-példányban](/azure/azure-sql/database/monitor-tune-overview)
+* [Monitorozás és a teljesítmény finomhangolása az Azure SQL Database-ben és a felügyelt Azure SQL-példányban](./monitor-tune-overview.md)
 * [Teljesítmény figyelése a lekérdezési tároló használatával](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)
 * [Tranzakciók zárolása és a sorok verziókezelése – útmutató](/sql/relational-databases/sql-server-transaction-locking-and-row-versioning-guide)
 * [TRANZAKCIÓ ELKÜLÖNÍTÉSI SZINTJÉNEK BEÁLLÍTÁSA](/sql/t-sql/statements/set-transaction-isolation-level-transact-sql)

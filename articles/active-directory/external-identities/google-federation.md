@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9e7ec5569dd0de3b0535c3b0e3b3304848a5207
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5a397c17821d16594ccfb48175a8a141cb9f390b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101653319"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687821"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google hozzáadása identitás-szolgáltatóként a B2B vendég felhasználói számára
 
@@ -46,13 +46,7 @@ A "fejléc túl hosszú" hibát mutató vendég felhasználók törölhetik a co
 
 ## <a name="sign-in-endpoints"></a>Bejelentkezési végpontok
 
-A Google vendég felhasználók mostantól bejelentkezhetnek a több-bérlős vagy a Microsoft-alkalmazásokba egy [közös végpont](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) használatával (azaz egy általános alkalmazás URL-címe, amely nem tartalmazza a bérlői környezetet). A következő példák gyakori végpontokra mutatnak:
-
-- `https://teams.microsoft.com`
-- `https://myapps.microsoft.com`
-- `https://portal.azure.com`
-
-A bejelentkezési folyamat során a vendég felhasználó kiválasztja a **bejelentkezési beállításokat**, majd kiválasztja a **Bejelentkezés egy szervezetbe** lehetőséget. A felhasználó ezután beírja a szervezet nevét, és folytatja a bejelentkezést a Google hitelesítő adataival.
+A Google vendég felhasználók mostantól bejelentkezhetnek a több-bérlős vagy a Microsoft-alkalmazásokba egy [közös végpont](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) használatával (azaz egy általános alkalmazás URL-címe, amely nem tartalmazza a bérlői környezetet). A bejelentkezési folyamat során a vendég felhasználó kiválasztja a **bejelentkezési beállításokat**, majd kiválasztja a **Bejelentkezés egy szervezetbe** lehetőséget. A felhasználó ezután beírja a szervezet nevét, és folytatja a bejelentkezést a Google hitelesítő adataival.
 
 A Google vendég felhasználói használhatják a bérlői adatokat tartalmazó alkalmazás-végpontokat is, például:
 

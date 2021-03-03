@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/26/2021
-ms.openlocfilehash: 1b0bcf528a16e2f75bf21235980424b5375f8824
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 756337ce20c827d0c6549181c20fd843fa60c020
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539484"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720953"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Kiszolgálói paraméterek a Azure Database for MySQL
 
@@ -21,7 +21,7 @@ Ez a cikk az Azure Database for MySQL kiszolgálói paramétereinek konfigurál�
 
 A MySQL-motor számos különböző kiszolgálói változót/paramétert biztosít a motor működésének konfigurálásához és finomhangolásához. Bizonyos paraméterek dinamikusan állíthatók be futtatókörnyezet közben, míg mások "statikus" állapotban vannak, és a kiszolgáló újraindítását igénylik.
 
-Azure Database for MySQL lehetővé teszi a MySQL-kiszolgáló különböző paramétereinek értékének módosítását a [Azure Portal](./howto-server-parameters.md), az [Azure CLI](./howto-configure-server-parameters-using-cli.md)és a [PowerShell](./howto-configure-server-parameters-using-powershell.md) használatával, hogy megfeleljen a számítási feladatok igényeinek.
+Az Azure Database for MySQL lehetővé teszi a különböző MySQL-kiszolgálói paraméterek értékének módosítását a számítási feladat követelményeinek megfelelően az [Azure Portalon](./howto-server-parameters.md), az [Azure CLI-vel](./howto-configure-server-parameters-using-cli.md) és a [PowerShell-lel](./howto-configure-server-parameters-using-powershell.md).
 
 ## <a name="configurable-server-parameters"></a>Konfigurálható kiszolgálói paraméterek
 
@@ -272,7 +272,7 @@ Azt is fontos megjegyezni, hogy a jobb teljesítmény a kiszolgáló hosszú ind
 A puffer állapotának mentése a kiszolgáló leállítására beállított kiszolgáló paraméterében a következőre: `innodb_buffer_pool_dump_at_shutdown` `ON` . Hasonlóképpen állítsa be a kiszolgálói paramétert a `innodb_buffer_pool_load_at_startup` `ON` puffer-készlet állapotának visszaállításához a kiszolgáló indításakor. A kiszolgáló paraméter értékének csökkentésével és finomhangolásával szabályozhatja az indítási és újraindítási hatást, a `innodb_buffer_pool_dump_pct` paraméter pedig a következőre van beállítva: `25` .
 
 > [!Note]
-> A InnoDB puffer-készlet bemelegedési paramétereit csak az általános célú tároló kiszolgálók támogatják, legfeljebb 16 TB tárhellyel. További információ a [Azure Database for MySQL tárolási lehetőségeiről](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage).
+> A InnoDB puffer-készlet bemelegedési paramétereit csak az általános célú tároló kiszolgálók támogatják, legfeljebb 16 TB tárhellyel. További információ a [Azure Database for MySQL tárolási lehetőségeiről](./concepts-pricing-tiers.md#storage).
 
 ### <a name="time_zone"></a>time_zone
 

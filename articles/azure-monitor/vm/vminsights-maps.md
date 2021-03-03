@@ -1,22 +1,22 @@
 ---
-title: Alkalmazás függőségeinek megtekintése Azure Monitor for VMs
-description: A Térkép a Azure Monitor for VMs egyik funkciója. A szolgáltatás automatikusan feltérképezi az alkalmazás-összetevőket Windows és Linux rendszereken, és leképezi a szolgáltatások közötti kommunikációt. Ez a cikk részletesen ismerteti, hogyan használhatja a Térkép funkciót különböző helyzetekben.
+title: Alkalmazás-függőségek megtekintése a VM-alapú ismeretekkel
+description: A Térkép a virtuális gépekkel kapcsolatos ismeretek egyik funkciója. A szolgáltatás automatikusan feltérképezi az alkalmazás-összetevőket Windows és Linux rendszereken, és leképezi a szolgáltatások közötti kommunikációt. Ez a cikk részletesen ismerteti, hogyan használhatja a Térkép funkciót különböző helyzetekben.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
-ms.openlocfilehash: ea11a2dbff9c05400f24ecfa86c66395032b8ac9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 19da3e3e02581ce9fad080bb23bc48dcb9a3ceb3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100619748"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719644"
 ---
-# <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>Az alkalmazás-összetevők értelmezéséhez használja a Azure Monitor for VMs Térkép funkcióját
-Azure Monitor for VMs a felderített alkalmazás-összetevőket megtekintheti az Azure-ban vagy a környezetben futó Windows-és Linux-alapú virtuális gépeken (VM-EK). A virtuális gépek két módon figyelhetők meg. A térképeket közvetlenül egy virtuális gépről tekintheti meg, vagy megtekintheti az Azure Monitor térképét, hogy megjelenjenek-e az összetevők a virtuális gépek csoportjai között. Ez a cikk segítséget nyújt a két megtekintési módszer és a Térkép funkció használatának megismerésében. 
+# <a name="use-the-map-feature-of-vm-insights-to-understand-application-components"></a>Az alkalmazás-összetevők értelmezéséhez használja a VM-betekintő Térkép funkcióját
+A virtuális gépek elemzése során megtekintheti a felderített alkalmazás-összetevőket az Azure-ban vagy a környezetben futó Windows-és Linux-alapú virtuális gépeken (VM-EK). A virtuális gépek két módon figyelhetők meg. A térképeket közvetlenül egy virtuális gépről tekintheti meg, vagy megtekintheti az Azure Monitor térképét, hogy megjelenjenek-e az összetevők a virtuális gépek csoportjai között. Ez a cikk segítséget nyújt a két megtekintési módszer és a Térkép funkció használatának megismerésében. 
 
-További információ a Azure Monitor for VMs konfigurálásáról: [Azure monitor for VMS engedélyezése](../insights/vminsights-enable-overview.md).
+A virtuális gépekkel kapcsolatos információk konfigurálásával kapcsolatos információkért lásd: a VM-információk [engedélyezése](./vminsights-enable-overview.md).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
@@ -49,7 +49,7 @@ Ahhoz, hogy a Térkép funkció megjelenjen a kapcsolódó riasztások, hozzon l
 - Adjon meg egy záradékot a riasztások számítógép szerinti csoportosításához (például **1 perc számítógép-intervallummal**).
 - A riasztás alapja egy metrika.
 
-Az Azure-riasztásokkal és a riasztási szabályok létrehozásával kapcsolatos további információkért tekintse [meg a Azure monitor egyesített riasztásait](../platform/alerts-overview.md)ismertető témakört.
+Az Azure-riasztásokkal és a riasztási szabályok létrehozásával kapcsolatos további információkért tekintse [meg a Azure monitor egyesített riasztásait](../alerts/alerts-overview.md)ismertető témakört.
 
 A jobb felső sarokban a **Jelmagyarázat** lehetőség a térképen lévő szimbólumokat és szerepköröket ismerteti. Ha közelebbről szeretné megtekinteni a térképet, és a körére helyezi, használja a jobb alsó sarokban található Nagyítási vezérlőket. Megadhatja a nagyítási szintet, és a térképet az oldal méretéhez is elvégezheti.  
 
@@ -85,7 +85,7 @@ Ha a csoport figyelt és nem figyelt kiszolgálókat is tartalmaz, kiválaszthat
 
 ## <a name="view-a-map-from-a-vm"></a>Térkép megtekintése egy virtuális gépről 
 
-Azure Monitor for VMs elérése közvetlenül egy virtuális gépről:
+VIRTUÁLIS gépek információinak közvetlen elérése virtuális gépről:
 
 1. A Azure Portal válassza a **Virtual Machines** lehetőséget. 
 2. A listából válassza ki a virtuális gépet. A **figyelés** szakaszban válassza az **áttekintések** lehetőséget.  
@@ -99,7 +99,7 @@ Alapértelmezés szerint a Térkép az utolsó 30 percet mutatja. Ha szeretné m
 
 ## <a name="view-a-map-from-a-virtual-machine-scale-set"></a>Térkép megtekintése virtuálisgép-méretezési csoportból
 
-Azure Monitor for VMs elérése közvetlenül egy virtuálisgép-méretezési csoportból:
+A VM-adatok közvetlen elérése virtuálisgép-méretezési csoportból:
 
 1. A Azure Portal válassza a **virtuálisgép-méretezési** csoportok lehetőséget.
 2. A listából válassza ki a virtuális gépet. Ezután a **figyelés** szakaszban válassza az **áttekintések** lehetőséget.  
@@ -128,11 +128,10 @@ Azure Monitor a Térkép funkció globális áttekintést nyújt a virtuális g�
 
 Válasszon ki egy munkaterületet a lap tetején található **munkaterület** -választó használatával. Ha egynél több Log Analytics munkaterülettel rendelkezik, válassza ki azt a munkaterületet, amelyen engedélyezve van a megoldás, és amelyen a virtuális gépek jelentést küldenek. 
 
-A **csoport** választója a kiválasztott munkaterülethez kapcsolódó számítógép-előfizetéseket, erőforráscsoportokat, [számítógépcsoportokat](../platform/computer-groups.md)és virtuálisgép-méretezési csoportokat adja vissza. A kijelölés csak a Térkép szolgáltatásra vonatkozik, és nem végzi el a teljesítményt vagy az állapotot.
+A **csoport** választója a kiválasztott munkaterülethez kapcsolódó számítógép-előfizetéseket, erőforráscsoportokat, [számítógépcsoportokat](../logs/computer-groups.md)és virtuálisgép-méretezési csoportokat adja vissza. A kijelölés csak a Térkép szolgáltatásra vonatkozik, és nem végzi el a teljesítményt vagy az állapotot.
 
 Alapértelmezés szerint a Térkép az utolsó 30 percet mutatja. Ha szeretné megtekinteni, hogy a függőségek hogyan látszanak a múltban, akár egy óráig is lekérdezheti a korábbi időtartományokat. A lekérdezés futtatásához használja a **TimeRange** -választót. Futtathat egy lekérdezést, például egy incidens során, vagy megtekintheti az állapotot a változás előtt.  
 
 ## <a name="next-steps"></a>Következő lépések
 
-A szűk keresztmetszetek azonosításához, a teljesítmény vizsgálatához és a virtuális gépek általános kihasználtságának megismeréséhez tekintse meg a [Azure monitor for VMS teljesítmény állapotának megtekintése](vminsights-performance.md)című témakört. 
-
+A szűk keresztmetszetek azonosításához, a teljesítmény ellenőrzéséhez és a virtuális gépek általános kihasználtságának megismeréséhez tekintse meg a virtuálisgép-megállapítások [teljesítményi állapotának megtekintése](vminsights-performance.md)című témakört.

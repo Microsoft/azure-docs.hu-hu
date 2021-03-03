@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 12/14/2020
+ms.date: 02/23/2021
 ms.custom: project-no-code
 ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d6d5ab13c8997dffee42a053ba498376ccbcb6d8
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e87899010660eac11166275bdfd61151bb12c10f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585258"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686937"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>Feltételes hozzáférés hozzáadása a felhasználói folyamatokhoz Azure Active Directory B2C
 
@@ -101,7 +101,7 @@ További információ az [Identity Protectionről és a feltételes hozzáféré
  
 1. A **feltételes hozzáférés** szakaszban jelölje be a **feltételes hozzáférési házirendek betartatása** jelölőnégyzetet.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 
@@ -129,6 +129,8 @@ A felhasználói folyamat feltételes hozzáférésének teszteléséhez [hozzon
 ## <a name="add-conditional-access-to-your-policy"></a>Feltételes hozzáférés hozzáadása a Szabályzathoz
 
 A [githubon](https://github.com/azure-ad-b2c/samples/tree/master/policies/conditional-access)megtalálhatja például a feltételes hozzáférési szabályzatot.
+
+Azt is megtudhatja, hogyan [határozhat meg egy feltételes hozzáférési technikai profilt egy egyéni szabályzatban](conditional-access-technical-profile.md).
 
 ::: zone-end
 

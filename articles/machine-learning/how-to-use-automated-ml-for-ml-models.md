@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/20/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: 1a40fe01240474c2a6df3e028b7d03f3e8bb73fc
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: d7a0832fd15df402c88e1ba565c90a24e0d6eb8a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879747"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692419"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Automatizált gépi tanulási modellek létrehozása, áttekintése és üzembe helyezése Azure Machine Learning
 
@@ -180,6 +180,21 @@ A befejezett modellek részletezésével megtekintheti a képzések futtatásán
 
 [![Iteráció részletei](media/how-to-use-automated-ml-for-ml-models/iteration-details.png)](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
 
+## <a name="model-explanations"></a>Modell magyarázatai
+
+A modell jobb megismeréséhez tekintse meg, hogy mely adatszolgáltatások (nyers vagy mérnöki) milyen hatással vannak a modell előrejelzésére a modell magyarázatai irányítópulton. 
+
+A modell magyarázatai irányítópult átfogó elemzést nyújt a betanított modellről, valamint annak előrejelzéseit és magyarázatait. Lehetővé teszi az egyéni adatpontok és az egyes funkciók fontosságának részletezését is. [További információ a magyarázó irányítópult-vizualizációk és az adott mintaterületekről](how-to-machine-learning-interpretability-aml.md#visualizations).
+
+Egy adott modell magyarázatának megismeréséhez 
+
+1. A **modellek** lapon válassza ki a használni kívánt modellt. 
+1. Válassza ki a **modell magyarázata** gombot, és adjon meg egy számítást, amely a magyarázatok előállításához használható.
+1. Ellenőrizze az állapothoz tartozó **alárendelt futtatások** lapot. 
+1. Ha elkészült, navigáljon a magyarázatok **(előzetes verzió)** lapra, amely tartalmazza a magyarázatok irányítópultját. 
+
+    ![Modell magyarázatának irányítópultja](media/how-to-use-automated-ml-for-ml-models/model-explanation-dashboard.png)
+
 ## <a name="deploy-your-model"></a>A modell üzembe helyezése
 
 Ha már kéznél van a legjobb modell, új adatok előrejelzéséhez helyezze üzembe webszolgáltatásként.
@@ -218,7 +233,7 @@ Az automatizált ML segít programozás nélkül üzembe helyezni a modellt:
 
 Ezzel használatba állított egy előrejelzéseket készítő webszolgáltatást! Az előrejelzések teszteléséhez kérdezze le a szolgáltatást a [Power BI beépített Azure Machine Learning-támogatásából](/power-bi/connect-data/service-aml-integrate?context=azure%2fmachine-learning%2fcontext%2fml-context).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerje meg, hogyan használhat webszolgáltatásokat](how-to-consume-web-service.md).
 * Az [automatizált gépi tanulás eredményeinek megismerése](how-to-understand-automated-ml.md).

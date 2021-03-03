@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
-ms.openlocfilehash: 5485d97638679651a3890e0b7578787e481437c6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 1f619e1eac58f70642117dabafc266d1bc250609
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656278"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690413"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Áttelepítési Áttekintés: SQL Server a felügyelt SQL-példányhoz
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -115,7 +115,7 @@ A következő táblázat összehasonlítja a javasolt áttelepítési lehetősé
 
 |Áttelepítési lehetőség  |A következő esetekben használja  |Megfontolandó szempontok  |
 |---------|---------|---------|
-|[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md) | – Önálló adatbázisok vagy több adatbázis migrálása nagy léptékben. </br> – Az áttelepítési folyamat során az állásidőt is kielégíti. </br> </br> Támogatott források: </br> -SQL Server (2005-2019) helyszíni vagy Azure-beli virtuális gép </br> – AWS EC2 </br> -AWS RDS </br> -GCP számítási SQL Server VM |  – A nagy léptékű Migrálás automatizálható [PowerShell](../../../dms/howto-sql-server-to-azure-sql-mi-powershell.md)használatával. </br> – Az áttelepítés befejezéséhez szükséges idő az adatbázis méretétől függ, és a biztonsági mentés és a visszaállítás időpontját érinti. </br> – Elegendő állásidőre lehet szükség. |
+|[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md) | – Önálló adatbázisok vagy több adatbázis migrálása nagy léptékben. </br> – Az áttelepítési folyamat során az állásidőt is kielégíti. </br> </br> Támogatott források: </br> -SQL Server (2005-2019) helyszíni vagy Azure-beli virtuális gép </br> – AWS EC2 </br> -AWS RDS </br> -GCP számítási SQL Server VM |  – A nagy léptékű Migrálás automatizálható [PowerShell](../../../dms/howto-sql-server-to-azure-sql-managed-instance-powershell-offline.md)használatával. </br> – Az áttelepítés befejezéséhez szükséges idő az adatbázis méretétől függ, és a biztonsági mentés és a visszaállítás időpontját érinti. </br> – Elegendő állásidőre lehet szükség. |
 |[Natív biztonsági mentés és visszaállítás](../../managed-instance/restore-sample-database-quickstart.md) | – Az egyes üzletági alkalmazás-adatbázisok áttelepíthetők.  </br> – Gyors és egyszerű áttelepítés külön áttelepítési szolgáltatás vagy eszköz nélkül.  </br> </br> Támogatott források: </br> -SQL Server (2005-2019) helyszíni vagy Azure-beli virtuális gép </br> – AWS EC2 </br> -AWS RDS </br> -GCP számítási SQL Server VM | – Az adatbázis biztonsági mentése több szálat használ az adatok Azure Blob Storage-ba történő átvitelének optimalizálása érdekében, de az ISV sávszélesség és az adatbázis mérete hatással lehet az átvitel sebességére. </br> – Az állásidőnek el kell fogadnia a teljes biztonsági mentéshez és visszaállításhoz szükséges időt (amely az adatműveletek mérete).| 
 |[A log Replay szolgáltatás (LRS)](../../managed-instance/log-replay-service-migrate.md) | – Az egyes üzletági alkalmazás-adatbázisok áttelepíthetők.  </br> – Az adatbázisok áttelepítéséhez további szabályozásra van szükség.  </br> </br> Támogatott források: </br> -SQL Server (2008-2019) helyszíni vagy Azure-beli virtuális gép </br> – AWS EC2 </br> -AWS RDS </br> -GCP számítási SQL Server VM | – Az áttelepítés a teljes adatbázis biztonsági mentését vonja maga után SQL Server és másolja a biztonságimásolat-fájlokat az Azure Blob Storageba. A LRS az Azure Blob Storageról az SQL felügyelt példányra történő biztonsági mentési fájlok visszaállítására szolgál. </br> – Az áttelepítési folyamat során visszaállított adatbázisok visszaállítási módban lesznek, és nem használhatók olvasásra vagy írásra, amíg a folyamat be nem fejeződik.| 
 | | | |
@@ -163,7 +163,7 @@ Az SQL felügyelt példányában található magas rendelkezésre állású arch
 
 #### <a name="sql-agent-jobs"></a>SQL-ügynök feladatai
 
-Az [SQL Agent-feladatok](../../../dms/howto-sql-server-to-azure-sql-mi-powershell.md#offline-migrations)áttelepítéséhez használja az offline Azure Database MIGRATION Service (DMS) lehetőséget. Ellenkező esetben a Transact-SQL (T-SQL) feladatok futtatása a SQL Server Management Studio használatával, majd a célként megadott SQL felügyelt példányon manuálisan hozza létre őket. 
+Az [SQL Agent-feladatok](../../../dms/howto-sql-server-to-azure-sql-managed-instance-powershell-offline.md)áttelepítéséhez használja az offline Azure Database MIGRATION Service (DMS) lehetőséget. Ellenkező esetben a Transact-SQL (T-SQL) feladatok futtatása a SQL Server Management Studio használatával, majd a célként megadott SQL felügyelt példányon manuálisan hozza létre őket. 
 
 > [!IMPORTANT]
 > Az Azure DMS jelenleg csak a T-SQL alrendszer lépéseit támogató feladatokat támogatja. A SSIS csomag lépéseivel kapcsolatos feladatokat manuálisan kell áttelepíteni. 

@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 4f89ace7130e95ba109edcf6becca1e15c8d32c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6e27fddceb69efbb2c1697c09ee9b61d7f38ee4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273200"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687974"
 ---
 # <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Biztonság konfigurálása az Azure Arc-kompatibilis, rugalmas skálázású PostgreSQL-kiszolgálócsoport számára
 
@@ -23,6 +23,7 @@ Ez a dokumentum a kiszolgálócsoport biztonságával kapcsolatos különböző 
 - Felhasználókezelés
    - Általános perspektívák
    - A _postgres_ rendszergazdai felhasználó jelszavának módosítása
+- Naplózás
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -117,7 +118,7 @@ Kimenet:
 - Felhasználónév: nekem
 - USERpassword: $1 $ Uc7jzZOp $ NTfcGo7F10zGOkXOwjHy31
 
-Amikor csatlakozom az alkalmazáshoz, és elfogadok egy jelszót, megkeresi a táblázatot, és visszaadja `mysecrets` a felhasználó nevét, ha az alkalmazáshoz megadott jelszó és a táblázatban tárolt jelszavak között egyezés van. Példa:
+Amikor csatlakozom az alkalmazáshoz, és elfogadok egy jelszót, megkeresi a táblázatot, és visszaadja `mysecrets` a felhasználó nevét, ha az alkalmazáshoz megadott jelszó és a táblázatban tárolt jelszavak között egyezés van. Például:
 
 - A helytelen jelszót adja meg:
    ```console
@@ -159,13 +160,14 @@ A jelszó módosítására szolgáló parancs általános formátuma a következ
 azdata arc postgres server edit --name <server group name> --admin-password
 ```
 
-Ahol a--admin-password egy olyan logikai érték, amely a AZDATA_PASSWORD **munkamenet**környezeti változójában lévő értékek jelenlétére vonatkozik.
-Ha a AZDATA_PASSWORD **munkamenet**környezeti változója létezik, és rendelkezik értékkel, a fenti parancs futtatásakor a postgres-felhasználó jelszava a környezeti változó értékére lesz állítva.
+Ahol a egy `--admin-password` olyan logikai érték, amely a AZDATA_PASSWORD **munkamenet** környezeti változóban lévő érték jelenlétéhez kapcsolódik.
+Ha a AZDATA_PASSWORD **munkamenet** -környezeti változó létezik, és rendelkezik egy értékkel, a fenti parancs futtatásakor a postgres-felhasználó jelszava a környezeti változó értékére lesz állítva.
 
-Ha a AZDATA_PASSWORD **munkamenet**környezeti változója létezik, de nem értékkel rendelkezik, vagy a AZDATA_PASSWORD **munkamenet**környezeti változója nem létezik, a fenti parancs futtatásakor a rendszer felszólítja a felhasználót, hogy interaktívan adja meg a jelszót.
+Ha a AZDATA_PASSWORD **munkamenet** -környezeti változó létezik, de nem értékkel rendelkezik, vagy a AZDATA_PASSWORD **munkamenet** -környezeti változó nem létezik, akkor a fenti parancs futtatásakor a rendszer felszólítja a felhasználót, hogy interaktívan adja meg a jelszót.
 
-#### <a name="changing-the-password-of-the-postgres-administrative-user-in-an-interactive-way"></a>A postgres rendszergazda felhasználó jelszavának módosítása interaktív módon:
-1. Törölje a AZDATA_PASSWORD **munkamenet**környezeti változóját, vagy törölje annak értékét.
+#### <a name="change-the-password-of-the-postgres-administrative-user-in-an-interactive-way"></a>A postgres rendszergazda felhasználó jelszavának módosítása interaktív módon
+
+1. Törölje a AZDATA_PASSWORD **munkamenet** környezeti változót, vagy törölje annak értékét.
 2. Futtassa a következő parancsot:
    ```console
    azdata arc postgres server edit --name <server group name> --admin-password
@@ -186,8 +188,8 @@ Ha a AZDATA_PASSWORD **munkamenet**környezeti változója létezik, de nem ért
    postgres01 is Ready
    ```
    
-#### <a name="changing-the-password-of-the-postgres-administrative-user-using-the-azdata_password-sessions-environment-variable"></a>A postgres rendszergazdai felhasználó jelszavának módosítása a AZDATA_PASSWORD **munkamenet**környezeti változójának használatával:
-1. Állítsa be az AZDATA_PASSWORD- **munkamenet**környezeti változójának értékét arra a értékre, amelyet jelszóként szeretne használni.
+#### <a name="change-the-password-of-the-postgres-administrative-user-using-the-azdata_password-session-environment-variable"></a>Módosítsa a postgres rendszergazda felhasználó jelszavát a AZDATA_PASSWORD **munkamenet** környezeti változó használatával:
+1. Állítsa be a AZDATA_PASSWORD **munkamenet** környezeti változó értékét, hogy mit szeretne jelszóként használni.
 2. Futtassa a parancsot:
    ```console
    azdata arc postgres server edit --name <server group name> --admin-password
@@ -216,9 +218,12 @@ Ha a AZDATA_PASSWORD **munkamenet**környezeti változója létezik, de nem ért
 > echo $env:AZDATA_PASSWORD
 > ```
 
+## <a name="audit"></a>Naplózás
+
+A naplózási forgatókönyvek konfigurálásához konfigurálja a postgres a `pgaudit` bővítmények használatára. További információ a `pgaudit` GitHub- [ `pgAudit` projektről](https://github.com/pgaudit/pgaudit/blob/master/README.md):. Ha engedélyezni szeretné a `pgaudit` bővítményt a kiszolgálócsoport számára, olvassa el a [PostgreSQL-bővítmények használata](using-extensions-in-postgresql-hyperscale-server-group.md)című részt.
 
 
 ## <a name="next-steps"></a>Következő lépések
-- Olvassa el a bővítmény részleteit `pgcrypto` . [here](https://www.postgresql.org/docs/current/pgcrypto.html)
-- [Itt](using-extensions-in-postgresql-hyperscale-server-group.md)olvashat részletesen arról, hogyan használhatja a postgres-bővítményeket.
+- Lásd: [ `pgcrypto` bővítmény](https://www.postgresql.org/docs/current/pgcrypto.html)
+- Lásd: [PostgreSQL-bővítmények használata](using-extensions-in-postgresql-hyperscale-server-group.md)
 

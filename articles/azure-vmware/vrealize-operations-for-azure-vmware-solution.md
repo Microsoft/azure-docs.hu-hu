@@ -3,12 +3,12 @@ title: VRealize-műveletek beállítása Azure VMware-megoldáshoz
 description: Ismerje meg, hogyan állíthat be vRealize-műveleteket az Azure VMware-megoldás privát felhője számára.
 ms.topic: how-to
 ms.date: 01/26/2021
-ms.openlocfilehash: c2470ecde0874b46da1236ca6e99e6b0b3eb990d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 3d2617f893c34fde6a154f9f93b5bda520c5a91a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880691"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738429"
 ---
 # <a name="set-up-vrealize-operations-for-azure-vmware-solution"></a>VRealize-műveletek beállítása Azure VMware-megoldáshoz
 
@@ -37,7 +37,7 @@ Első lépésként alaposan [áttekintheti](#before-you-begin) az [előfeltétel
 ## <a name="on-premises-vrealize-operations-managing-azure-vmware-solution-deployment"></a>Azure VMware-megoldás üzembe helyezését kezelő helyszíni vRealize-műveletek
 A legtöbb ügyfél a vRealize-műveletek egy meglévő helyszíni telepítését végzi egy vagy több helyszíni vCenter-tartomány kezeléséhez. Amikor kiépítenek egy Azure VMware-megoldást saját felhőbe, az Azure ExpressRoute vagy egy 3. rétegbeli VPN-megoldás használatával csatlakoznak a helyszíni környezethez a saját felhővel.  
 
-:::image type="content" source="media/vrealize-operations-manager/vrealize-operations-deployment-option-1.png" alt-text="Azure VMware-megoldás üzembe helyezését kezelő helyszíni vRealize-műveletek"  border="false":::
+:::image type="content" source="media/vrealize-operations-manager/vrealize-operations-deployment-option-1.png" alt-text="Azure VMware-megoldás üzembe helyezését kezelő helyszíni vRealize-műveletek" border="false":::
 
 A vRealize működési képességeinek az Azure VMware megoldás privát felhőbe való kiterjesztéséhez létre kell hoznia egy adapter- [példányt a saját felhőalapú erőforrásaihoz](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.config.doc/GUID-640AD750-301E-4D36-8293-1BFEB67E2600.html). Adatokat gyűjt az Azure VMware-megoldás saját felhőből, és a helyszíni vRealize-műveletekhez. A helyszíni vRealize Operations Manager példány közvetlenül kapcsolódhat a vCenter és a NSX-T kezelőhöz az Azure VMware-megoldáson keresztül. A vRealize Operations Remote Collector üzembe helyezése az Azure VMware megoldás saját felhőben is lehetséges. A gyűjtő tömöríti és titkosítja a titkos felhőből gyűjtött adatokat, mielőtt a ExpressRoute vagy a VPN-hálózaton keresztül elküldi a helyszíni vRealize Operations Manager. 
 

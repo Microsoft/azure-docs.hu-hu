@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4fe22e0dae73df7af4fc24ba508ecbecf72dfd05
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: b6a0dee4c3fef1be4f4b9f910b4c6256b4924a2d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795374"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700218"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>A NSG-hozzáférés és az Azure Bastion használata
 
@@ -32,11 +32,15 @@ Ebben a diagramban:
 
 Ez a szakasz a felhasználó és az Azure-alapú megerősített hálózat közötti hálózati forgalmat, valamint a virtuális hálózatban megcélzott virtuális gépeket mutatja be:
 
+> [!IMPORTANT]
+> Ha úgy dönt, hogy NSG használ az Azure Bastion-erőforráshoz, akkor az alábbi bejövő és kimenő forgalmi szabályok mindegyikét létre **kell** hoznia. Ha kihagyja a következő szabályok valamelyikét a NSG, azzal letiltja az Azure Bastion-erőforrást, hogy a jövőben is fogadja a szükséges frissítéseket, ezért az erőforrást a jövőbeli biztonsági rések számára nyithatja meg.
+> 
+
 ### <a name="azurebastionsubnet"></a><a name="apply"></a>AzureBastionSubnet
 
-Az Azure Bastion kifejezetten a ***AzureBastionSubnet** _-re van üzembe helyezve.
+Az Azure Bastion üzembe helyezése kifejezetten a ***AzureBastionSubnet***.
 
-_ **Bejövő forgalom:**
+* **Bejövő forgalom:**
 
    * **Bejövő forgalom a nyilvános internetről:** Az Azure Bastion létrehoz egy nyilvános IP-címet, amelyhez a 443-es port szükséges a nyilvános IP-címen a bejövő forgalom számára. A AzureBastionSubnet nem szükséges megnyitni a 3389/22-es portot.
    * Forgalom átadása **Az Azure Bastion Control Plan síkja:** A vezérlési sík kapcsolata esetében engedélyezze a 443-es portot a **GatewayManager** szolgáltatás címkéjén. Ez lehetővé teszi, hogy az átjáró-kezelő képes legyen kommunikálni az Azure Bastion-vel.
@@ -62,6 +66,6 @@ Ez az az alhálózat, amely az RDP/SSH-t tartalmazó cél virtuális gépet tart
    * **Bejövő forgalom az Azure Bastion-ből:** Az Azure Bastion privát IP-címen éri el a cél virtuális gépet. Az RDP-/SSH-portokat (3389/22-as portokat) meg kell nyitni a cél virtuális gépen a privát IP-címeken. Az ajánlott eljárás az, ha az Azure megerősített alhálózati IP-címtartományt ebben a szabályban adja hozzá, hogy csak a Bastion tudja megnyitni ezeket a portokat a célként megadott virtuálisgép-alhálózatban lévő virtuális gépeken.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure Bastion-ről: [Gyakori kérdések](bastion-faq.md).

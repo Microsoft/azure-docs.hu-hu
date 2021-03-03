@@ -7,12 +7,12 @@ ms.date: 02/26/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 2020205357c68e007a1a375c4853e8c04afd2019
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 0326eef86b42fa8b06c336bbf2b1c6f2f9df0bcf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789060"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730354"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok bizonyítása az eszköz kiépítési szolgáltatásával
 
@@ -69,17 +69,7 @@ A dokumentációban és az SDK-ban megadott PowerShell-és bash-parancsfájlok [
 
    ![Tanúsítvány-ellenőrzés feltöltése](./media/how-to-verify-certificates/upload-cert-verification.png)  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha szeretne többet megtudni arról, hogyan használható a portál egy regisztrációs csoport létrehozásához, tekintse meg [az eszközök regisztrálásának kezelése a Azure Portal](how-to-manage-enrollments.md)használatával című témakört.
-- Ha szeretné megtudni, hogyan használhatja a szolgáltatás SDK-kat egy regisztrációs csoport létrehozásához, tekintse meg az [eszközök regisztrálásának kezelése a Service SDK-val](how-to-manage-enrollments-sdks.md)című témakört.
-
-
-
-
-
-
-
-
-
-
+- Ha szeretné megtudni, hogyan használhatja a szolgáltatás SDK-kat egy regisztrációs csoport létrehozásához, tekintse meg az [eszközök regisztrálásának kezelése a Service SDK-val](./quick-enroll-device-x509-java.md)című témakört.

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 03/02/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f76aecc80537e6db55c8c4f2e5a7a240be6b1415
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: dcd0ccdc42a820f1e264b739cb0063516a0cb53e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675746"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688552"
 ---
 # <a name="user-profile-attributes"></a>Felhasználói profilattribútumok
 
@@ -137,7 +137,7 @@ Az összevont identitások esetében az azonosítótól függően a **issuerAssi
 
 ## <a name="password-profile-property"></a>Password Profile tulajdonság
 
-Helyi identitás esetén a **passwordProfile** attribútum megadása kötelező, és tartalmazza a felhasználó jelszavát. Az `forceChangePasswordNextSignIn` attribútumnak a következőre kell beállítania: `false` .
+Helyi identitás esetén a **passwordProfile** attribútum megadása kötelező, és tartalmazza a felhasználó jelszavát. Az `forceChangePasswordNextSignIn` attribútum azt jelzi, hogy a felhasználónak vissza kell-e állítania a jelszót a következő bejelentkezéskor. A kényszerített jelszó-visszaállítási [folyamat kezeléséhez állítsa be a kényszerített jelszó-visszaállítási folyamatot](force-password-reset.md).
 
 Összevont (közösségi) identitás esetén a **passwordProfile** attribútum nem szükséges.
 

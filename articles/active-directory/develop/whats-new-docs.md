@@ -11,16 +11,37 @@ ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 11f32d893ccc26dd30d9997d4348661d45f84eb8
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 56e6d859293b91a56252372574f59c8dcc2cd80e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225479"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687328"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft Identity platform docs: Újdonságok
 
 Üdvözli a Microsoft Identity platform dokumentációjának újdonságai. Ez a cikk felsorolja a hozzáadott új dokumentumokat, valamint azokat, amelyek az elmúlt három hónapban jelentős frissítésekkel rendelkeztek.
+
+## <a name="february-2021"></a>2021. február
+
+### <a name="new-articles"></a>Új cikkek
+
+- [Gyors útmutató: hozzáférési jogkivonat beszerzése és a Microsoft Graph API meghívása egy Electron asztali alkalmazásból](quickstart-v2-nodejs-desktop.md)
+- [Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy elektron asztali alkalmazásban](tutorial-v2-nodejs-desktop.md)
+- [Gyors útmutató: token beszerzése és Microsoft Graph API meghívása egy Node.js Console-alkalmazásból az alkalmazás identitásával](quickstart-v2-nodejs-console.md)
+- [Oktatóanyag: a Microsoft Graph API meghívása egy Node.js Console-alkalmazásban](tutorial-v2-nodejs-console.md)
+- [Oktatóanyag: bejelentkezési felhasználók Node.js & Express-webalkalmazásban](tutorial-v2-nodejs-webapp-msal.md)
+- [Jelszavas hitelesítés támogatása FIDO2-kulcsokkal a fejleszthető alkalmazásokban](support-fido2-authentication.md)
+
+### <a name="updated-articles"></a>Frissített cikkek
+
+- [A hitelesítés újdonságai](reference-breaking-changes.md)
+- [A MSAL.NET használata a felhasználók közösségi identitásokkal való bejelentkezéséhez](msal-net-aad-b2c-considerations.md)
+- [Microsoft Identity platform Code Samples (v 2.0 végpont)](sample-v2-code.md)
+- [A Microsoft Identitásplatformot bemutató videók](identity-videos.md)
+- [Gyorsútmutató: Bérlő beállítása](quickstart-create-new-tenant.md)
+- [Gyors útmutató: alkalmazás regisztrálása a Microsoft Identity platformmal](quickstart-register-app.md)
+- [Gyors útmutató: token beszerzése és Microsoft Graph API meghívása egy Java-konzol alkalmazásból az alkalmazás identitásával](quickstart-v2-java-daemon.md)
 
 ## <a name="january-2021"></a>2021. január
 
@@ -66,17 +87,3 @@ ms.locfileid: "99225479"
 - [Microsoft Identity platform hozzáférési jogkivonatok](access-tokens.md)
 - [Webes API-kat meghívó webes API: az alkalmazás jogkivonatának beszerzése](scenario-web-api-call-api-acquire-token.md)
 
-
-## <a name="november-2020"></a>2020. november
-
-### <a name="new-articles"></a>Új cikkek
-
-- [A folyamatos hozzáférés kiértékelését támogató API-k használata az alkalmazásokban](app-resilience-continuous-access-evaluation.md)
-
-### <a name="updated-articles"></a>Frissített cikkek
-
-- [Microsoft Identity platform hozzáférési jogkivonatok](access-tokens.md)
-- [Alkalmazás-konfigurációs beállítások (MSAL)](msal-client-application-configuration.md)
-- [Útmutató: opcionális jogcímek megadása az alkalmazás számára](active-directory-optional-claims.md)
-- [Az alkalmazás közzététele az Azure AD App Galleryben](v2-howto-app-gallery-listing.md)
-- [Útmutató: alkalmazás-Szerepkörök hozzáadása az alkalmazáshoz és fogadása a jogkivonatban](howto-add-app-roles-in-azure-ad-apps.md)

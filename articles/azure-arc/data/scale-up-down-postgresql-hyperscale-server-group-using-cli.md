@@ -9,18 +9,18 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 303a919cc0afc9b5db49918233f3e5718a896646
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 4461fb6904d51ee8d740b633a2d0028658ac2ced
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148059"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687549"
 ---
 # <a name="scale-up-and-down-an-azure-database-for-postgresql-hyperscale-server-group-using-cli-azdata-or-kubectl"></a>Azure Database for PostgreSQL nagy kapacitású-kiszolgálócsoport vertikális fel-és leskálázása a CLI-vel (azdata vagy kubectl)
 
 
 
-Időnként előfordulhat, hogy módosítania kell a kiszolgálócsoport jellemzőit vagy definícióját. Példa:
+Időnként előfordulhat, hogy módosítania kell a kiszolgálócsoport jellemzőit vagy definícióját. Például:
 
 - A koordinátor vagy a munkavégző csomópont által használt virtuális mag számának vertikális felskálázása
 - Vertikális fel-vagy leskálázás a memóriát, amelyet a koordinátor vagy a munkavégző csomópont használ
@@ -126,7 +126,7 @@ Ekkor megjelenik a VI-szerkesztő, ahol megtekintheti és módosíthatja a konfi
 > [!CAUTION]
 > Alább látható egy példa, amely bemutatja, hogyan szerkesztheti a konfigurációt. A konfiguráció frissítése előtt ügyeljen arra, hogy a paramétereket olyan értékekre állítsa be, amelyeket a Kubernetes-fürt megtarthat.
 
-Példa:
+Például:
 - Min. virtuális mag = 2 – > scheduling\default\resources\requests\cpu
 - Max virtuális mag = 4 – > scheduling\default\resources\limits\cpu
 - Minimális memória = 512 MB – > scheduling\default\resources\requests\cpu
@@ -180,6 +180,21 @@ Ekkor megjelenik a kiszolgálócsoport új definíciója:
 ## <a name="scale-down-the-server-group"></a>A kiszolgálócsoport méretezése
 
 A kiszolgálócsoport méretezéséhez hajtsa végre ugyanazt a parancsot, de állítsa be a kisebb értékeket a méretezni kívánt beállításokhoz. Ha el szeretné távolítani a kérelmeket és/vagy a korlátozásokat, az értékét üres sztringként kell megadni.
+
+## <a name="reset-to-default-values"></a>Visszaállítás az alapértelmezett értékekre
+A Core/Memory Limits/Request paraméterek alapértelmezett értékre való visszaállításához szerkessze őket, és adjon meg egy üres karakterláncot a tényleges érték helyett. Ha például alaphelyzetbe kívánja állítani a Core limit (CL) paramétert, futtassa a következő parancsokat:
+- Linux-ügyfélen:
+
+```console
+    azdata arc postgres server edit -n <servergroup name> -cl ""
+```
+
+- Windows-ügyfélen: 
+ 
+```console
+    azdata arc postgres server edit -n <servergroup name> -cl '""'
+```
+
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 5d34893c522bd3cc3b862284cb84b44bab40856a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 65d60c77280b569d1bff5e4d3acbdf97ead96270
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100628644"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733788"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Adatok gyűjtése egy Windows rendszerű számítógépről hibrid környezetben Azure Monitor
 
@@ -165,4 +165,4 @@ Most, hogy operatív és teljesítményadatokat gyűjt a Windows rendszerű szá
 Az adatmegtekintés és-elemzés megismeréséhez folytassa az oktatóanyagot:
 
 > [!div class="nextstepaction"]
-> [Adatok megtekintése és elemzése a Log Analyticsben](../log-query/log-analytics-tutorial.md)
+> [Adatok megtekintése és elemzése a Log Analyticsben](../logs/log-analytics-tutorial.md)

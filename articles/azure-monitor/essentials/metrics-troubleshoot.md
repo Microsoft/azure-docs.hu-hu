@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: d62c4b79fcb86080649c542e34b81d3213978604
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2a3bf022d178fbd0de3ca800e0a560235c3f33b5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100616578"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731493"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Metrikadiagramok hibaelhárítása
 
@@ -62,7 +62,7 @@ A **vendég operációs rendszerre** vonatkozó metrikák gyűjteményéhez konf
 
 Ez a probléma akkor fordulhat elő, amikor az irányítópult olyan metrikával jött létre, amely később elavult, és el lett távolítva az Azure-ból. Annak ellenőrzéséhez, hogy a helyzet van-e, nyissa meg az erőforrás **metrikák** lapját, és ellenőrizze az elérhető metrikákat a metrika-választóban. Ha nem jelenik meg metrika, akkor a metrika el lett távolítva az Azure-ból. Egy metrika elavulása rendszerint azt jelenti, hogy rendelkezésre áll egy új, jobb metrika, amely hasonlóan mutatja be az erőforrás állapotát.
 
-**Megoldás:** Módosítsa a hibás csempét úgy, hogy kiválaszt egy alternatív metrikát a diagramhoz az irányítópulton. [Megtekintheti az Azure-szolgáltatásokhoz elérhető metrikák listáját](../platform/metrics-supported.md).
+**Megoldás:** Módosítsa a hibás csempét úgy, hogy kiválaszt egy alternatív metrikát a diagramhoz az irányítópulton. [Megtekintheti az Azure-szolgáltatásokhoz elérhető metrikák listáját](./metrics-supported.md).
 
 ## <a name="chart-shows-dashed-line"></a>A diagramban szaggatott vonal jelenik meg
 
@@ -104,5 +104,5 @@ Alapértelmezés szerint a Vendég operációs rendszer típusú metrikákat az 
 
 * [Ismerkedés a metrikus Explorer használatába](metrics-getting-started.md)
 * [A metrika Explorer speciális funkcióinak megismerése](../essentials/metrics-charts.md)
-* [Az Azure-szolgáltatásokhoz elérhető metrikák listájának megtekintése](../platform/metrics-supported.md)
+* [Az Azure-szolgáltatásokhoz elérhető metrikák listájának megtekintése](./metrics-supported.md)
 * [A konfigurált diagramok példáinak megtekintése](../essentials/metric-chart-samples.md)

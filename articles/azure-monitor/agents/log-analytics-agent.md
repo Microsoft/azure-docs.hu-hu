@@ -6,32 +6,32 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: c046ddbaf0fd1afbabaa87d1594f0161c71606c8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c2a97e5e54fea8d80160c1df7007d51871501ef8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100615458"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714391"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics-ügynök áttekintése
 
-Az Azure Log Analytics-ügynök a Windows-és Linux-alapú virtuális gépekről gyűjt telemetria a Felhőbeli, a helyszíni gépeken, valamint a [System Center Operations Manager](/system-center/scom/) által figyelt, és az összegyűjtött adatokat a Azure monitor log Analytics munkaterületére küldi el. A Log Analytics ügynök az Azure Monitor, például a [Azure monitor for VMS](../insights/vminsights-enable-overview.md), a [Azure Security Center](../../security-center/index.yml)és a [Azure Automation](../../automation/automation-intro.md)által nyújtott bepillantást és egyéb szolgáltatásokat is támogatja. Ez a cikk részletes áttekintést nyújt az ügynökről, a rendszerről és a hálózati követelményekről, valamint az üzembe helyezési módszerekről.
+Az Azure Log Analytics-ügynök a Windows-és Linux-alapú virtuális gépekről gyűjt telemetria a Felhőbeli, a helyszíni gépeken, valamint a [System Center Operations Manager](/system-center/scom/) által figyelt, és az összegyűjtött adatokat a Azure monitor log Analytics munkaterületére küldi el. A Log Analytics ügynök az Azure Monitor, például a [virtuális](../vm/vminsights-enable-overview.md)gépekkel, [Azure Security Centerekkel](../../security-center/index.yml)és [Azure Automationekkel](../../automation/automation-intro.md)kapcsolatos bepillantást és egyéb szolgáltatásokat is támogatja. Ez a cikk részletes áttekintést nyújt az ügynökről, a rendszerről és a hálózati követelményekről, valamint az üzembe helyezési módszerekről.
 
 > [!NOTE]
 > Azt is megteheti, hogy a Microsoft monitoring Agent (MMA) vagy a OMS Linux Agent néven ismert Log Analytics ügynök.
 
 ## <a name="comparison-to-azure-diagnostics-extension"></a>Összehasonlítás az Azure Diagnostics bővítménnyel
-Az [Azure Diagnostics bővítmény](../platform/diagnostics-extension-overview.md) a Azure monitorban is használható a figyelési adatok gyűjtésére az Azure-beli virtuális gépek vendég operációs rendszeréről. Dönthet úgy is, hogy a követelményektől függően vagy mindkettőt használja. A Azure Monitor-ügynökök részletes összehasonlítását lásd [a Azure monitor ügynökök áttekintésében](../agents/agents-overview.md) . 
+Az [Azure Diagnostics bővítmény](./diagnostics-extension-overview.md) a Azure monitorban is használható a figyelési adatok gyűjtésére az Azure-beli virtuális gépek vendég operációs rendszeréről. Dönthet úgy is, hogy a követelményektől függően vagy mindkettőt használja. A Azure Monitor-ügynökök részletes összehasonlítását lásd [a Azure monitor ügynökök áttekintésében](../agents/agents-overview.md) . 
 
 A figyelembe venni kívánt fő különbségek a következők:
 
 - Azure Diagnostics bővítmény csak az Azure Virtual Machines használatával használható. Az Log Analytics-ügynök használható az Azure-ban, a többi felhőkben és a helyszínen lévő virtuális gépekkel.
-- Azure Diagnostics a bővítmény adatokat küld az Azure Storage-ba, [Azure monitor metrikákat](../platform/data-platform-metrics.md) (csak Windows) és Event Hubs. A Log Analytics ügynök adatokat küld [Azure monitor naplókba](../platform/data-platform-logs.md).
-- A Log Analytics ügynök szükséges a [megoldások](../monitor-reference.md#insights-and-core-solutions), [Azure monitor for VMS](../insights/vminsights-overview.md)és egyéb szolgáltatások, például a [Azure Security Center](../../security-center/index.yml)esetében.
+- Azure Diagnostics a bővítmény adatokat küld az Azure Storage-ba, [Azure monitor metrikákat](../essentials/data-platform-metrics.md) (csak Windows) és Event Hubs. A Log Analytics ügynök adatokat küld [Azure monitor naplókba](../logs/data-platform-logs.md).
+- A Log Analytics ügynök szükséges a [megoldások](../monitor-reference.md#insights-and-core-solutions), a [virtuális](../vm/vminsights-overview.md)gépek és egyéb szolgáltatások, például a [Azure Security Center](../../security-center/index.yml)számára.
 
 ## <a name="costs"></a>Költségek
 
-Log Analytics ügynöknek nincs díja, de a betöltött adatokért díjat számítunk fel. A Log Analytics munkaterületen összegyűjtött adatok díjszabásával kapcsolatos részletes információkért lásd: a [használat és a költségek kezelése Azure monitor naplókkal](../platform/manage-cost-storage.md) .
+Log Analytics ügynöknek nincs díja, de a betöltött adatokért díjat számítunk fel. A Log Analytics munkaterületen összegyűjtött adatok díjszabásával kapcsolatos részletes információkért lásd: a [használat és a költségek kezelése Azure monitor naplókkal](../logs/manage-cost-storage.md) .
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
@@ -41,7 +41,7 @@ Log Analytics ügynöknek nincs díja, de a betöltött adatokért díjat szám�
 
 A következő táblázat felsorolja azokat az adattípusokat, amelyekkel a Log Analytics munkaterületek összegyűjthetők az összes csatlakoztatott ügynökből. Tekintse meg a [Azure monitor által figyelt adatokat?](../monitor-reference.md) az elemzések, megoldások és egyéb olyan megoldások listáját, amelyek a log Analytics-ügynököt használják más típusú adatok gyűjtésére.
 
-| Adatforrás | Description |
+| Adatforrás | Leírás |
 | --- | --- |
 | [Windows-eseménynaplók](../agents/data-sources-windows-events.md) | A Windows eseménynaplózási rendszernek eljuttatott információk. |
 | [Syslog](../agents/data-sources-syslog.md)                     | A Linux-eseménynaplózási rendszernek eljuttatott információk. |
@@ -77,10 +77,10 @@ Több módszerrel is telepítheti a Log Analytics-ügynököt, és a saját igé
 
 ### <a name="azure-virtual-machine"></a>Azure virtuális gép
 
-- [Azure monitor for VMS](../insights/vminsights-enable-overview.md) több módszert is biztosít az ügynökök méretének engedélyezéséhez. Ide tartozik a Log Analytics ügynök és a függőségi ügynök telepítése. 
+- A [VM](../vm/vminsights-enable-overview.md) -megállapítások több módszert biztosítanak az ügynökök méretekben való engedélyezéséhez. Ide tartozik a Log Analytics ügynök és a függőségi ügynök telepítése. 
 - [A Azure Security Center kiépítheti a log Analytics ügynököt](../../security-center/security-center-enable-data-collection.md) az összes támogatott Azure-beli virtuális gépre és a létrehozott újakra, ha engedélyezi a biztonsági rések és fenyegetések figyelését.
 - Log Analytics Windows vagy [Linux](../../virtual-machines/extensions/oms-linux.md) [rendszerhez](../../virtual-machines/extensions/oms-windows.md) készült virtuálisgép-bővítmény telepíthető a Azure Portal, az Azure CLI, a Azure PowerShell vagy egy Azure Resource Manager sablonnal.
-- Manuálisan telepítse az egyes Azure-beli virtuális gépeket [a Azure Portalból](../learn/quick-collect-azurevm.md?toc=%2fazure%2fazure-monitor%2ftoc.json).
+- Manuálisan telepítse az egyes Azure-beli virtuális gépeket [a Azure Portalból](../vm/quick-collect-azurevm.md?toc=%2fazure%2fazure-monitor%2ftoc.json).
 
 ### <a name="windows-virtual-machine-on-premises-or-in-another-cloud"></a>Windows rendszerű virtuális gép a helyszínen vagy egy másik felhőben
 
@@ -92,7 +92,7 @@ Több módszerrel is telepítheti a Log Analytics-ügynököt, és a saját igé
 ### <a name="linux-virtual-machine-on-premises-or-in-another-cloud"></a>Linux rendszerű virtuális gép a helyszínen vagy egy másik felhőben
 
 - Az [Azure arc-kompatibilis kiszolgálók](../../azure-arc/servers/overview.md) használatával telepítheti és kezelheti a log Analytics virtuálisgép-bővítményt.
-- [Manuálisan telepítse](../learn/quick-collect-linux-computer.md) az ügynököt, amely a githubon üzemeltetett burkoló parancsfájlt hívja meg.
+- [Manuálisan telepítse](../vm/quick-collect-linux-computer.md) az ügynököt, amely a githubon üzemeltetett burkoló parancsfájlt hívja meg.
 - [System Center Operations Manager](./om-agents.md) integrálása Azure Monitorekkel a felügyeleti csoportnak jelentő Windows rendszerű számítógépek összegyűjtött adatainak továbbításához.
 
 ## <a name="workspace-id-and-key"></a>Munkaterület azonosítója és kulcsa
@@ -103,7 +103,7 @@ A használt telepítési módszertől függetlenül a Log Analytics munkaterüle
 
 ## <a name="tls-12-protocol"></a>TLS 1,2 protokoll
 
-Annak érdekében, hogy az adatforgalom biztonsága Azure Monitor naplóba kerüljön, nyomatékosan javasoljuk, hogy az ügynököt legalább Transport Layer Security (TLS) 1,2 használatára konfigurálja. A TLS/SSL (SSL) régebbi verziói sebezhetőnek találták, és miközben jelenleg is működnek a visszamenőleges kompatibilitás érdekében, **nem ajánlottak**.  További információkért tekintse át az [adatok biztonságos küldését a TLS 1,2 használatával](../platform/data-security.md#sending-data-securely-using-tls-12). 
+Annak érdekében, hogy az adatforgalom biztonsága Azure Monitor naplóba kerüljön, nyomatékosan javasoljuk, hogy az ügynököt legalább Transport Layer Security (TLS) 1,2 használatára konfigurálja. A TLS/SSL (SSL) régebbi verziói sebezhetőnek találták, és miközben jelenleg is működnek a visszamenőleges kompatibilitás érdekében, **nem ajánlottak**.  További információkért tekintse át az [adatok biztonságos küldését a TLS 1,2 használatával](../logs/data-security.md#sending-data-securely-using-tls-12). 
 
 ## <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
 
@@ -117,10 +117,10 @@ A következő táblázat a Linux és a Windows-ügynökök Azure Monitor naplók
 
 |Ügynök erőforrása|Portok |Irány |HTTPS-ellenőrzés kihagyása|
 |------|---------|--------|--------|
-|*.ods.opinsights.azure.com |443-es port |Kimenő|Yes |  
-|*.oms.opinsights.azure.com |443-es port |Kimenő|Yes |  
-|*.blob.core.windows.net |443-es port |Kimenő|Yes |
-|*.azure-automation.net |443-es port |Kimenő|Yes |
+|*.ods.opinsights.azure.com |443-es port |Kimenő|Igen |  
+|*.oms.opinsights.azure.com |443-es port |Kimenő|Igen |  
+|*.blob.core.windows.net |443-es port |Kimenő|Igen |
+|*.azure-automation.net |443-es port |Kimenő|Igen |
 
 A Azure Governmentához szükséges tűzfal-információk: [Azure Government Management](../../azure-government/compare-azure-government-global-azure.md#azure-monitor). 
 
@@ -150,5 +150,5 @@ Például: `https://user01:password@proxy01.contoso.com:30443`
 ## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át az [adatforrásokat](../agents/agent-data-sources.md) , és Ismerje meg, hogy milyen adatforrások érhetők el az adatok Windows vagy Linux rendszerből való gyűjtéséhez. 
-* További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../log-query/log-query-overview.md) . 
+* További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../logs/log-query-overview.md) . 
 * Ismerkedjen meg azokkal a [figyelési megoldásokkal](../insights/solutions.md) , amelyek a Azure monitor funkciókat bővítik, és adatokat gyűjtenek a log Analytics munkaterületen.

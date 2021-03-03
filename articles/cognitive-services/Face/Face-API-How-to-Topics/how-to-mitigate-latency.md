@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 1/5/2021
 ms.author: v-jawe
-ms.openlocfilehash: e7f4293955772697ddeea5fce9daac4b04755274
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 2c771509de5ac246bac0d8e006a5d0b884a410b0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937293"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706809"
 ---
 # <a name="how-to-mitigate-latency-when-using-the-face-service"></a>Útmutató: az arc szolgáltatás használatakor felhasználható késés csökkentése
 
@@ -34,7 +34,7 @@ Ez a témakör az Azure-Cognitive Services használatának késésének lehetsé
 
 ### <a name="slow-connection-between-the-cognitive-service-and-a-remote-url"></a>Lassú kapcsolat a kognitív szolgáltatás és egy távoli URL-cím között
 
-Egyes Azure-Cognitive Services olyan metódusokat biztosítanak, amelyek az Ön által megadott távoli URL-címről szereznek be adatforrást. Például a Face szolgáltatás [DetectWithUrlAsync metódusának](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithUrlAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_) meghívásakor megadhatja egy olyan rendszerkép URL-címét, amelyben a szolgáltatás megpróbálja felderíteni az arcokat.
+Egyes Azure-Cognitive Services olyan metódusokat biztosítanak, amelyek az Ön által megadott távoli URL-címről szereznek be adatforrást. Például a Face szolgáltatás [DetectWithUrlAsync metódusának](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithUrlAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_) meghívásakor megadhatja egy olyan rendszerkép URL-címét, amelyben a szolgáltatás megpróbálja felderíteni az arcokat.
 
 ```csharp
 var faces = await client.Face.DetectWithUrlAsync("https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg");
@@ -42,7 +42,7 @@ var faces = await client.Face.DetectWithUrlAsync("https://www.biography.com/.ima
 
 A Face szolgáltatásnak ezután le kell töltenie a rendszerképet a távoli kiszolgálóról. Ha a Face szolgáltatás és a távoli kiszolgáló közötti kapcsolatok lassúak, ez hatással lesz az észlelési módszer válaszideje.
 
-Ennek enyhítése érdekében érdemes lehet [a rendszerképet az Azure Premium blob Storage tárolni](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet). Például:
+Ennek enyhítése érdekében érdemes lehet [a rendszerképet az Azure Premium blob Storage tárolni](../../../storage/blobs/storage-upload-process-images.md?tabs=dotnet). Például:
 
 ``` csharp
 var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
@@ -50,7 +50,7 @@ var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows
 
 ### <a name="large-upload-size"></a>Nagyméretű feltöltés mérete
 
-Egyes Azure-Cognitive Services olyan metódusokat biztosítanak, amelyek egy feltöltött fájlból szereznek be adatforrást. Ha például a Face szolgáltatás [DetectWithStreamAsync metódusát](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithStreamAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_IO_Stream_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_) hívja meg, feltöltheti azt a rendszerképet, amelyben a szolgáltatás megpróbálja felderíteni az arcokat.
+Egyes Azure-Cognitive Services olyan metódusokat biztosítanak, amelyek egy feltöltött fájlból szereznek be adatforrást. Ha például a Face szolgáltatás [DetectWithStreamAsync metódusát](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithStreamAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_IO_Stream_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_) hívja meg, feltöltheti azt a rendszerképet, amelyben a szolgáltatás megpróbálja felderíteni az arcokat.
 
 ```csharp
 using FileStream fs = File.OpenRead(@"C:\images\face.jpg");
@@ -62,12 +62,12 @@ Ha a feltölteni kívánt fájl nagy méretű, az a `DetectWithStreamAsync` köv
 - A fájl méretének arányában a szolgáltatás továbbra is feldolgozza a fájlt.
 
 Enyhítését
-- Érdemes lehet [a rendszerképet az Azure Premium blob Storage tárolni](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet). Például:
+- Érdemes lehet [a rendszerképet az Azure Premium blob Storage tárolni](../../../storage/blobs/storage-upload-process-images.md?tabs=dotnet). Például:
 ``` csharp
 var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
 ```
 - Érdemes lehet kisebb fájlt feltölteni.
-    - Tekintse meg a [bemeneti adatokkal](https://docs.microsoft.com/azure/cognitive-services/face/concepts/face-detection#input-data) kapcsolatos útmutatást a arcfelismerés és a [bemeneti adatok](https://docs.microsoft.com/azure/cognitive-services/face/concepts/face-recognition#input-data)észleléséhez.
+    - Tekintse meg a [bemeneti adatokkal](../concepts/face-detection.md#input-data) kapcsolatos útmutatást a arcfelismerés és a [bemeneti adatok](../concepts/face-recognition.md#input-data)észleléséhez.
     - Az Arcfelismerés esetében az észlelési modell használatakor `DetectionModel.Detection01` a képfájl méretének csökkentése növeli a feldolgozási sebességet. Az észlelési modell használatakor `DetectionModel.Detection02` a képfájlok méretének csökkentése csak akkor növeli a feldolgozási sebességet, ha a képfájl mérete kisebb, mint 1920 × 1080.
     - Az Arcfelismerés esetében az arc méretének a 200x200 képpont értékre való csökkentése nem befolyásolja az elismerési modell pontosságát.
     - A `DetectWithUrlAsync` és a `DetectWithStreamAsync` metódusok teljesítménye attól is függ, hogy hány arc van egy képben. A Face szolgáltatás legfeljebb 100 arcot tud visszaadni egy képhez. Az arcok nagy és kis méretűre vannak rendezve.

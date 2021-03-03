@@ -7,12 +7,12 @@ ms.service: data-catalog
 ms.subservice: data-catalog-gen2
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: c42a6894c33993dc9aee5a9fdd10b1c3a3627320
-ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
+ms.openlocfilehash: 77bfa3d22d628cf179e95cd4892ec030f22ab35f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97372146"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693764"
 ---
 # <a name="how-to-bulk-edit-assets-to-tag-glossary-terms"></a>Eszközök tömeges szerkesztése Szószedet-kifejezések címkézéséhez
 
@@ -63,11 +63,15 @@ Ez a cikk azt ismerteti, hogyan lehet több Szószedet-kifejezést felcímkézni
    
     :::image type="content" source="media/how-to-bulk-edit-assets/replace-list.png" alt-text="Képernyőkép az eltávolítási feltételekről.":::
 
-7. Miután befejezte a tömeges szerkesztési panel bezárását, válassza a **Bezárás** vagy az **összes eltávolítása és bezárás** lehetőséget. A Bezárás nem távolítja el a kiválasztott eszközöket, míg az összes eltávolítása és lezárása eltávolítja az összes kijelölt eszközt.
+7. Ismételje meg a fentieket besorolások, tulajdonosok és szakértők számára.
+
+    :::image type="content" source="media/how-to-bulk-edit-assets/all-list.png" alt-text="Képernyőkép az eltávolítási feltételekről.":::
+
+8. Miután befejezte a tömeges szerkesztési panel bezárását, válassza a **Bezárás** vagy az **összes eltávolítása és bezárás** lehetőséget. A Bezárás nem távolítja el a kiválasztott eszközöket, míg az összes eltávolítása és lezárása eltávolítja az összes kijelölt eszközt.
     :::image type="content" source="media/how-to-bulk-edit-assets/close-list.png" alt-text="Képernyőkép a bezárásról.":::
 
    > [!Important]
-   > A tömeges szerkesztéshez javasolt eszközök száma 15. A több mint 15 kiválasztásával teljesítményproblémák merülhetnek fel.
+   > A tömeges szerkesztéshez javasolt eszközök száma 15. Ha több mint 25 elemet választ ki, a teljesítménnyel kapcsolatos problémák merülhetnek fel.
    > A **kiválasztott nézet** mező csak akkor látható, ha van legalább egy eszköz kiválasztva.
 
 

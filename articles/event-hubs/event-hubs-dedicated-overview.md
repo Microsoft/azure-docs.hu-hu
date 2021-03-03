@@ -3,12 +3,12 @@ title: A dedikált Event hubok áttekintése – Azure Event Hubs | Microsoft Do
 description: Ez a cikk áttekintést nyújt a dedikált Azure Event Hubsről, amely az Event hub egybérlős üzembe helyezését kínálja.
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: 1a15206fc35f0d536c7105aa73dfdcfc9967124d
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 721acf354c7d14c1362b4f760982af37d59115f9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358864"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715615"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>A dedikált Event Hubs áttekintése
 
@@ -42,7 +42,7 @@ A magas beáramlású köteteknél (>100 átviteli egységekben) a fürt óránk
 
 Az dedikált Event Hubs ajánlat számlázása rögzített havi díjszabással történik, amely legalább 4 órányi használatot biztosít. A dedikált szint a standard csomag összes funkcióját biztosítja, de nagyvállalati szintű kapacitással és korlátokkal rendelkező ügyfelek számára igényes számítási feladatokkal. 
 
-| Funkció | Standard | Dedikált |
+| Szolgáltatás | Standard | Dedikált |
 | --- |:---|:---|
 | Sávszélesség | 20 TUs (legfeljebb 40 TUs) | 20 ke |
 | Névterek |  1 | 50/CU |
@@ -52,7 +52,7 @@ Az dedikált Event Hubs ajánlat számlázása rögzített havi díjszabással t
 | Partíciók | 32/Event hub | 1024/Event hub<br/>2000/CU |
 | Fogyasztói csoportok | 20/Event hub | Az Event hub-ban nincs korlát/CU, 1000 |
 | Felügyelt kapcsolatok | 1 000 tartalmazott, 5 000 Max | 100 kb és max. |
-| Üzenetek megőrzése | 7 nap, 84 GB/TU | 90 nap, 10 TB tartalmaz/CU |
+| [Esemény-megőrzés](event-hubs-features.md#event-retention) | 7 nap, 84 GB/TU | 90 nap, 10 TB tartalmaz/CU |
 | Rögzítés | Óránkénti fizetés | Tartalmazza |
 
 További kvóták és korlátozások: [Event Hubs kvóták és korlátok](event-hubs-quotas.md)
@@ -65,7 +65,7 @@ A [Event Hubs-fürtnek](event-hubs-dedicated-cluster-create-portal.md) a [Azure 
 
 [!INCLUDE [event-hubs-dedicated-clusters-faq](../../includes/event-hubs-dedicated-clusters-faq.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A dedikált Event Hubs további részleteiért forduljon a Microsoft értékesítési képviselőjéhez vagy a Microsoft ügyfélszolgálatahoz. Létrehozhat egy fürtöt is, vagy további információkat kaphat Event Hubs díjszabási szintjeiről az alábbi hivatkozásokra kattintva:
 

@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: a2ab63febbb4439e50ef0f7bcc0f9797dc50c62c
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: a9dfd185af012314ddc481b598f181b6760640ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99260028"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690940"
 ---
 # <a name="migration-guide-sql-server-to-sql-database"></a>Áttelepítési útmutató: SQL Server SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -100,7 +100,7 @@ Ha több olyan kiszolgálóval és adatbázissal rendelkezik, amelyeket méretez
 > [!IMPORTANT]
 > Ha több adatbázisra, különösen nagyra értékeli az értékeléseket, akkor a [DMA parancssori segédprogrammal](/sql/dma/dma-commandline) is automatizálható, és a további elemzéshez és a cél készültséghez [Azure Migrate](/sql/dma/dma-assess-sql-data-estate-to-sqldb#view-target-readiness-assessment-results) feltölthető.
 
-## <a name="migrate"></a>Migrate
+## <a name="migrate"></a>Migrálja a(z)
 
 Az áttelepítés előtti fázishoz kapcsolódó feladatok elvégzése után készen áll a séma és az adatok áttelepítésére. 
 
@@ -157,8 +157,8 @@ A Azure SQL Databasera való Migrálás felgyorsításához a következő ajánl
 |  | Erőforrás-tartalom | Ajánlás |
 |--|--|--|
 | **Forrás (jellemzően a helyszínen)** |Az elsődleges szűk keresztmetszet a forráson belüli áttelepítés során az adatfájlok adatfájljainak, valamint a körültekintően figyelni kívánt adatfájlok késése.  |Az adatio és az adatfájl késése alapján, valamint attól függően, hogy a virtuális gép vagy a fizikai kiszolgáló van-e, a tárolási rendszergazdának kell bejelentkeznie, és meg kell vizsgálnia a lehetőségeket a szűk keresztmetszet csökkentése érdekében. |
-|**Cél (Azure SQL Database)**|A legnagyobb korlátozási tényező a log generálási arány és a késés a naplófájlban. A Azure SQL Database legfeljebb 96 MB/s log generálási sebességet érhet el. | A Migrálás felgyorsításához a cél SQL-adatbázis vertikális felskálázása üzletileg kritikus Gen5 8 virtuális mag, hogy a maximális log generálási sebesség 96 MB/s legyen, és a naplófájlhoz is kis késést érjen el. A [nagy kapacitású](https://docs.microsoft.com/azure/azure-sql/database/service-tier-hyperscale) szolgáltatási szint 100 MB/s naplózási sebességet biztosít a választott szolgáltatási szinttől függetlenül. |
-|**Hálózat** |A hálózati sávszélességnek meg kell egyeznie a napló maximális betöltési sebességével (96 MB/s) (768 MB/s) |A helyszíni adatközpontból az Azure-ba irányuló hálózati kapcsolattól függően ellenőrizheti a hálózati sávszélességet (általában az [Azure-ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction#bandwidth-options)), hogy megfeleljen a naplók maximális betöltési arányának. |
+|**Cél (Azure SQL Database)**|A legnagyobb korlátozási tényező a log generálási arány és a késés a naplófájlban. A Azure SQL Database legfeljebb 96 MB/s log generálási sebességet érhet el. | A Migrálás felgyorsításához a cél SQL-adatbázis vertikális felskálázása üzletileg kritikus Gen5 8 virtuális mag, hogy a maximális log generálási sebesség 96 MB/s legyen, és a naplófájlhoz is kis késést érjen el. A [nagy kapacitású](../../database/service-tier-hyperscale.md) szolgáltatási szint 100 MB/s naplózási sebességet biztosít a választott szolgáltatási szinttől függetlenül. |
+|**Hálózat** |A hálózati sávszélességnek meg kell egyeznie a napló maximális betöltési sebességével (96 MB/s) (768 MB/s) |A helyszíni adatközpontból az Azure-ba irányuló hálózati kapcsolattól függően ellenőrizheti a hálózati sávszélességet (általában az [Azure-ExpressRoute](../../../expressroute/expressroute-introduction.md#bandwidth-options)), hogy megfeleljen a naplók maximális betöltési arányának. |
 |**Data Migration Assistant használt virtuális gép (DMA)** |A CPU a DMA-t futtató virtuális gép elsődleges szűk keresztmetszete |Az adatáttelepítés felgyorsításának szempontja a használatával </br>– Azure-beli nagy számítási igényű virtuális gépek </br>-Használjon legalább F8s_v2 (8 virtuális mag) virtuális gépet a DMA futtatásához </br>– Győződjön meg arról, hogy a virtuális gép ugyanabban az Azure-régióban fut, mint a cél |
 |**Azure Database Migration Service (DMS)** |Számítási erőforrás-tartalom és adatbázis-objektumok figyelembe vétele a DMS-hez |Használja a prémium 4 virtuális mag. A DMS automatikusan gondoskodik az olyan adatbázis-objektumokról, mint például a külső kulcsok, a triggerek, a megkötések és a nem fürtözött indexek, és nincs szükség manuális beavatkozásra.  |
 

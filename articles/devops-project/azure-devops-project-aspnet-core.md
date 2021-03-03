@@ -12,17 +12,17 @@ ms.assetid: ''
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 02/23/2021
 ms.author: mlearned
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 63d3ac356e4f2c1d17e1511227f5089b7ff4266f
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 59f8d721c23cbb033f295f2ef3045fc96f08ba96
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589158"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733183"
 ---
-# <a name="create-a-cicd-pipeline-for-net-with-azure-devops-starter"></a>CI/CD-folyamat létrehozása a .NET-hez az Azure DevOps Starter használatával
+# <a name="create-a-cicd-pipeline-for-net-with-azure-devops-starter"></a>CI/CD-folyamat létrehozása .NET-hez az Azure DevOps Starterrel
 
 Konfigurálja a folyamatos integrációt (CI) és a folyamatos szállítást (CD) a .NET Core-vagy ASP.NET-alkalmazáshoz a DevOps Starter használatával. A DevOps Starter leegyszerűsíti az Azure-folyamatok létrehozási és kiadási folyamatának kezdeti konfigurációját.
 
@@ -43,7 +43,9 @@ A DevOps Starter egy CI/CD-folyamatot hoz létre az Azure DevOps. Létrehozhat e
 1. Válassza a **.NET** mintaalkalmazást. A .NET-minták esetén a nyílt forráskódú ASP.NET- vagy a platformfüggetlen .NET Core-keretrendszer közül választhat.
 
    ![.NET-keretrendszer](_img/azure-devops-project-aspnet-core/select-dotnet.png)
-
+   
+   > [!NOTE]
+   > A DevOps Starter beállításának alapértelmezett beállítása a **GitHub**, de ez a beállítás a varázslóból is módosítható.
 2. Ez a minta egy ASP.NET Core MVC-alkalmazás. Válassza ki a **.net Core** alkalmazás-keretrendszert, majd kattintson a **tovább** gombra.    
     
 3. Válassza a **Windows Web App** központi telepítési cél lehetőséget, majd kattintson a **tovább** gombra. Igény szerint további Azure-szolgáltatásokat is kiválaszthat a telepítéshez. Az alkalmazás-keretrendszer, amelyet korábban választott, megdiktálja az Azure-szolgáltatások telepítési céljának itt elérhető típusát.

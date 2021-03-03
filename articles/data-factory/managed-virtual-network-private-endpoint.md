@@ -9,12 +9,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: d950b05dd34788c2c5ef0b34b8ec8ac0b20ad4b6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b6000d8ff3eb35d678a94adc021efcadf8a77f81
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379573"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699631"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory felügyelt Virtual Network (előzetes verzió)
 
@@ -43,7 +43,7 @@ A felügyelt Virtual Network használatának előnyei:
 
 ## <a name="managed-private-endpoints"></a>Felügyelt privát végpontok
 
-A felügyelt magánhálózati végpontok a Azure Data Factory felügyelt Virtual Network létrehozott privát végpontok, amelyek az Azure-erőforrásokra mutató privát hivatkozást hoznak létre. Azure Data Factory kezeli ezeket a privát végpontokat az Ön nevében. 
+A felügyelt magánhálózati végpontok a Azure Data Factory felügyelt Virtual Network létrehozott privát végpontok, amelyek az Azure-erőforrásokra mutató privát hivatkozást hoznak létre. Ezeket a privát végpontokat az Azure Data Factory kezeli az Ön nevében. 
 
 ![Új felügyelt magánhálózati végpont](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png)
 
@@ -108,11 +108,13 @@ Az alábbi adatforrások az ADF által felügyelt Virtual Networkon keresztüli 
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>Kimenő kommunikáció nyilvános végponton keresztül, felügyelt Virtual Network
 - A kimenő kommunikációhoz csak az 443-es port van megnyitva.
-- Az Azure Storage és a Azure Data Lake Gen2 nem támogatottak nyilvános végponton keresztüli csatlakoztatáshoz az ADF által felügyelt Virtual Network.
+- Az Azure Storage és az Azure Data Lake Gen2 nyilvános végponton keresztüli, az ADF felügyelt virtuális hálózatából történő csatlakoztatása nem támogatott.
 
 ### <a name="linked-service-creation-of-azure-key-vault"></a>Azure Key Vault társított szolgáltatásának létrehozása 
 - Amikor társított szolgáltatást hoz létre az Azure Key Vaulthoz, nincs az Azure integrációs modulra irányuló hivatkozás. Így nem hozhat létre privát végpontot a Azure Key Vault társított szolgáltatásának létrehozásakor. Ha azonban olyan adattárakhoz hoz létre társított szolgáltatást, amelyek Azure Key Vault társított szolgáltatásra hivatkoznak, és ez a társított szolgáltatás olyan Azure Integration Runtime, amelyeken engedélyezve van a felügyelt Virtual Network, akkor a létrehozás során létre tud hozni egy privát végpontot a Azure Key Vault társított szolgáltatáshoz. 
 - A Azure Key Vault társított szolgáltatásának **tesztelési** művelete csak az URL-formátumot ellenőrzi, de nem végez hálózati műveletet.
+- A **privát végpontot használó** oszlop mindig üresen jelenik meg, még akkor is, ha Azure Key Vaulthoz hoz létre privát végpontot.
+![Privát végpont a AKV](./media/managed-vnet/akv-pe.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

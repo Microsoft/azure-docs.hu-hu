@@ -3,12 +3,12 @@ title: Oktatóanyag – SAP HANA-adatbázisok biztonsági mentése Azure-beli vi
 description: Ebből az oktatóanyagból megtudhatja, hogyan készíthet biztonsági másolatot az Azure-beli virtuális gépen futó SAP HANA-adatbázisokról egy Azure Backup Recovery Services-tárolóra.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: ede8ebab205e814de3988a2b5c432a21f965eb55
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 5548717b25ea3ec027ba5f588e5e28faafbb5d6f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987779"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703681"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Oktatóanyag: SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépen
 
@@ -105,7 +105,7 @@ A Backint-n keresztül biztosított SAP HANA Azure-beli virtuális gépek bizton
 
 A HANA Backint összetevője biztosítja a "Pipes" (a beolvasható cső és egy pipe-ról való írás), az adatbázis-fájlok tárolására szolgáló lemezeket, amelyeket aztán a Azure Backup szolgáltatás olvas be, majd az Azure Recovery Services-tárolóba szállítja. A Azure Backup szolgáltatás a backint natív ellenőrzési ellenőrzéseken felül ellenőrzőösszeget is végrehajt a streamek ellenőrzéséhez. Ezek az érvényesítések gondoskodnak arról, hogy az Azure Recovery Services-tárolóban lévő adatszolgáltatások valóban megbízhatóak és helyreállítható legyenek.
 
-Mivel a streamek elsősorban a lemezekkel foglalkoznak, meg kell ismernie a lemez teljesítményét a biztonsági mentés és a visszaállítás teljesítményének méréséhez. Ez a [cikk](https://docs.microsoft.com/azure/virtual-machines/disks-performance) részletesen ismerteti a lemezek átviteli sebességét és teljesítményét az Azure-beli virtuális gépeken. Ezek a teljesítmény biztonsági mentésére és visszaállítására is érvényesek.
+Mivel a streamek elsősorban a lemezekkel foglalkoznak, meg kell ismernie a lemez teljesítményét a biztonsági mentés és a visszaállítás teljesítményének méréséhez. Ez a [cikk](../virtual-machines/disks-performance.md) részletesen ismerteti a lemezek átviteli sebességét és teljesítményét az Azure-beli virtuális gépeken. Ezek a teljesítmény biztonsági mentésére és visszaállítására is érvényesek.
 
 **A Azure Backup szolgáltatás megkísérli 420 elérni a nem naplózott biztonsági másolatok (például a teljes, a különbözeti és a növekményes), valamint a 100 Mbps biztonsági mentést a HANA-hoz készült naplók** számára. A fentiekben említettek szerint ezek nem garantált sebességek, és a következő tényezőktől függenek:
 
@@ -267,8 +267,8 @@ A házirend-beállításokat a következőképpen adhatja meg:
    ![Különbözeti biztonsági mentési szabályzat](./media/tutorial-backup-sap-hana-db/differential-backup-policy.png)
 
    >[!NOTE]
-   >A növekményes biztonsági mentések mostantól nyilvános előzetes verzióban érhetők el. Választhatja a napi biztonsági mentés különbözetét vagy növekményét is, de mindkettőt nem.
-   >
+   >Választhatja a napi biztonsági mentés különbözetét vagy növekményét is, de mindkettőt nem.
+
 7. A **növekményes biztonsági mentési szabályzatban** válassza az **Engedélyezés** lehetőséget a gyakoriság és a megőrzési vezérlők megnyitásához.
     * Legfeljebb napi egy növekményes biztonsági mentést indíthat.
     * A növekményes biztonsági mentések legfeljebb 180 napig tárolhatók. Ha hosszabb megőrzésre van szüksége, akkor teljes biztonsági mentést kell használnia.

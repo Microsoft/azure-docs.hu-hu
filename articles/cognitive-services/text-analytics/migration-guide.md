@@ -10,18 +10,18 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 01/22/2021
 ms.author: aahi
-ms.openlocfilehash: 0faa7a6f5a3d2efc8bbef11308b308e3305a00d5
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 416ef4ceddbb43e9f1606d44a66ffd5295cee4e6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99096321"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699895"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>Migrálás a Text Analytics API 3. x verziójára
 
 Ha a Text Analytics API 2,1-es verzióját használja, ez a cikk segítséget nyújt az alkalmazás frissítéséhez a 3. x verzió használatára. Az 3,0-es verzió általánosan elérhető, és olyan új funkciókat vezet be, mint az [elnevezett entitás-felismerés](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-features-and-versions) és a [modell verziószámozása](concepts/model-versioning.md). A v 3.1 (v 3.1-preview. x) előzetes verziója is elérhető, amely olyan funkciókat is tartalmaz, mint a [vélemény bányászata](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features). A v2-ben használt modellek nem kapják meg a jövőbeli frissítéseket. 
 
-## <a name="sentiment-analysis"></a>[Hangulat elemzése](#tab/sentiment-analysis)
+## <a name="sentiment-analysis"></a>[Hangulatelemzés](#tab/sentiment-analysis)
 
 ### <a name="feature-changes"></a>Szolgáltatások módosításai 
 
@@ -104,7 +104,7 @@ A következő táblázat felsorolja a (z) v 2.1-ben visszaadott entitási kateg�
 
 ### <a name="feature-changes"></a>Szolgáltatások módosításai 
 
-A nyelvi észlelési funkció nem módosult a v3 verzión kívül, de a JSON-válasz a `ConfidenceScore` helyett fog szerepelni `score` . A v3 is csak egyetlen nyelvet ad vissza a kimenetben. 
+A nyelvi észlelési funkció kimenete a v3-as verzióban megváltozott. A JSON-válasz a `ConfidenceScore` helyett fog szerepelni `score` . A v3 is csak egy nyelvet ad vissza egy  `detectedLanguage` attribútumban az egyes dokumentumokhoz.
 
 ### <a name="steps-to-migrate"></a>Az áttelepíteni kívánt lépések
 

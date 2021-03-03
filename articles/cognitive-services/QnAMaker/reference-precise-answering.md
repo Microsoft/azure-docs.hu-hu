@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: 5dde3da693d87d537fd2177a6f12b55297b5776e
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 6c597e8fd48eb157b69c918ae5fd5f699611ad75
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582196"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703405"
 ---
 # <a name="precise-answering"></a>Pontos válaszadás
 
@@ -32,7 +32,7 @@ A szolgáltatás a pontos válasz megbízhatósági pontszámát is visszaadja e
 
 ## <a name="publishing-a-qna-maker-bot"></a>QnA Maker robot közzététele
 
-Amikor közzétesz egy robotot, az alkalmazásban alapértelmezés szerint a pontos válasz engedélyezett élmény jelenik meg, ahol rövid választ fog látni a válasz áthaladásával együtt. A válasz létrehozásához tekintse meg az API-referenciát [, amelyből](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerv5.0-preview.1/knowledgebase/generateanswer#answerspan) megtudhatja, hogyan használhatja a pontos választ (a AnswerSpan néven) a válaszban. A felhasználónak rugalmasan kell kiválasztania más élményeket a sablonnak a bot app Service-ben való frissítésével. 
+Amikor közzétesz egy robotot, az alkalmazásban alapértelmezés szerint a pontos válasz engedélyezett élmény jelenik meg, ahol rövid választ fog látni a válasz áthaladásával együtt. A válasz létrehozásához tekintse meg az API-referenciát [, amelyből](/rest/api/cognitiveservices/qnamakerv5.0-preview.1/knowledgebase/generateanswer#answerspan) megtudhatja, hogyan használhatja a pontos választ (a AnswerSpan néven) a válaszban. A felhasználónak rugalmasan kell kiválasztania más élményeket a sablonnak a bot app Service-ben való frissítésével. 
 
 ## <a name="language-support"></a>Nyelvi támogatás
 

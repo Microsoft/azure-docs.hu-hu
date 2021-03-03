@@ -1,0 +1,46 @@
+- name: Objektum-horgonyok dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Az objektum-horgonyok ismertetése
+      href: overview.md
+    - name: Ajánlott eljárások
+      href: best-practices.md
+- name: Alapelvek
+  items:
+    - name: Futásidejű SDK – áttekintés
+      href: concepts/sdk-overview.md
+- name: Rövid útmutatók
+  expanded: true
+  items:
+    - name: Modell létrehozása
+      href: quickstarts/get-started-model-ingestion.md
+    - name: Unity-alkalmazás létrehozása
+      expanded: true
+      items:
+        - name: HoloLens
+          href: quickstarts/get-started-unity-hololens.md
+        - name: HoloLens a MRTK
+          href: quickstarts/get-started-unity-hololens-mrtk.md
+    - name: HoloLens DirectX-alkalmazás létrehozása
+      href: quickstarts/get-started-hololens-directx.md
+- name: Példák
+  items:
+    - name: Azure Object-horgonyok mintái (GitHub)
+      href: 'https://github.com/Azure/azure-object-anchors'
+- name: Hivatkozások
+  items:
+    - name: Futásidejű SDK az Unity számára
+      href: 'https://docs.microsoft.com/dotnet/api/Microsoft.Azure.ObjectAnchors/'
+    - name: Futásidejű SDK a HoloLens C++/WinRT
+      href: 'https://docs.microsoft.com/cpp/api/object-anchors/winrt/'
+- name: További források
+  items:
+    - name: Kibocsátási megjegyzések
+      href: 'https://github.com/Azure/azure-object-anchors/releases'
+    - name: Azure Mixed Reality Resource Management REST API
+      href: 'https://docs.microsoft.com/rest/api/mixedreality/'
+    - name: GYIK
+      href: faq.md
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-object-anchors'

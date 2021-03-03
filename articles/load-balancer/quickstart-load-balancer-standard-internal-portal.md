@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: f70116847a8743cf8b3cb56ff35f9d913f13f359
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: de179ab2fe1c02b3912262ee57fbb41a23d56164
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562352"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715462"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rövid útmutató: belső terheléselosztó létrehozása a virtuális gépek terheléselosztásához a Azure Portal használatával
 
@@ -68,7 +68,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     | Erőforráscsoport   | **CreateIntLBQS kiválasztása – RG** |
     | **Példány adatai** |                                                                 |
     | Name             | **MyVNet** megadása                                    |
-    | Region           | **Nyugat-Európa** kiválasztása |
+    | Region           | Select **(Európa) Nyugat-Európa** |
 
 3. Válassza az **IP-címek** lapot, vagy válassza a **következő: IP-címek** gombot az oldal alján.
 
@@ -87,7 +87,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     | Alhálózat neve | **MyBackendSubnet** megadása |
     | Alhálózati címtartomány | Adja meg a **10.1.0.0/24** értéket |
 
-7. Válassza a **Mentés** lehetőséget.
+7. Kattintson a **Mentés** gombra.
 
 8. Válassza a **Biztonság** fület.
 
@@ -106,16 +106,17 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
 
 ## <a name="create-load-balancer"></a>Terheléselosztó létrehozása
 
-1. A képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **hálózatkezelés**  >  **Load Balancer** elemet.
-
-2. A **Load Balancer létrehozása** lap **alapok** lapján adja meg a következő információkat, vagy válassza ki az alábbi adatokat: 
+1. Válassza az **Erőforrás létrehozása** lehetőséget. 
+2. A keresőmezőbe írja be a **Load Balancer** kifejezést. Válassza a **Load Balancer** elemet a keresési eredmények között.
+3. A **terheléselosztó** lapon válassza a **Létrehozás** lehetőséget.
+4. A **Load Balancer létrehozása** lapon adja meg a következő információkat, vagy válassza ki az alábbi adatokat: 
 
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
     | Előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza az előző lépésben létrehozott **CreateIntLBQS-RG** elemet.|
     | Name                   | **MyLoadBalancer** megadása                                   |
-    | Region         | Válassza a **Nyugat-Európa** régiót.                                        |
+    | Region         | Válassza az **(Európa) Nyugat-Európa** lehetőséget.                                        |
     | Típus          | Válassza a **belső** lehetőséget.                                        |
     | Termékváltozat           | **Standard** kiválasztása |
     | Virtuális hálózat | Válassza ki az előző lépésben létrehozott **myVNet** . |
@@ -228,7 +229,7 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
     | Erőforráscsoport | **CreateIntLBQS kiválasztása – RG** |
     | **Példány adatai** |  |
     | Virtuális gép neve | **MyVM1** megadása |
-    | Region | **Nyugat-Európa** kiválasztása |
+    | Region | Select **(Európa) Nyugat-Európa** |
     | Rendelkezésre állási beállítások | **Rendelkezésre állási zónák** kiválasztása |
     | A rendelkezésre állási zóna | **1** . választás |
     | Kép | **Windows Server 2019 Datacenter** kiválasztása |
@@ -303,7 +304,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     | Erőforráscsoport   | **CreateIntLBQS kiválasztása – RG** |
     | **Példány adatai** |                                                                 |
     | Name             | **MyVNet** megadása                                    |
-    | Region           | **Nyugat-Európa** kiválasztása |
+    | Region           | Select **(Európa) Nyugat-Európa** |
 
 3. Válassza az **IP-címek** lapot, vagy válassza a **következő: IP-címek** gombot az oldal alján.
 
@@ -322,7 +323,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     | Alhálózat neve | **MyBackendSubnet** megadása |
     | Alhálózati címtartomány | Adja meg a **10.1.0.0/24** értéket |
 
-7. Válassza a **Mentés** lehetőséget.
+7. Kattintson a **Mentés** gombra.
 
 8. Válassza a **Biztonság** fület.
 
@@ -350,7 +351,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     | Előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza az előző lépésben létrehozott **CreateIntLBQS-RG** elemet.|
     | Name                   | **MyLoadBalancer** megadása                                   |
-    | Region         | Válassza a **Nyugat-Európa** régiót.                                        |
+    | Region         | Válassza az **(Európa) Nyugat-Európa** lehetőséget.                                        |
     | Típus          | Válassza a **belső** lehetőséget.                                        |
     | Termékváltozat           | **Alapszintű** kiválasztása |
     | Virtuális hálózat | Válassza ki az előző lépésben létrehozott **myVNet** . |
@@ -389,7 +390,7 @@ Hozza létre a háttér-címkészlet **myBackendPool** , hogy a virtuális gépe
     | Virtuális hálózat | Válassza a **myVNet** lehetőséget. |
     | Társítva ezzel: | **Virtuális gépek** kiválasztása |
 
-4. Válassza a **Hozzáadás** elemet.
+4. Válassza a **Hozzáadás** lehetőséget.
 
 ### <a name="create-a-health-probe"></a>Állapotminta létrehozása
 
@@ -524,9 +525,9 @@ Az előző lépésekben létrehozott virtuális gépeket hozzá kell adni a **my
 
 5. Válassza ki a **myVM1**, a **MyVM2** és a **myVM3** melletti mezőket.
 
-6. Válassza a **Hozzáadás** elemet.
+6. Válassza a **Hozzáadás** lehetőséget.
 
-7. Válassza a **Mentés** lehetőséget.
+7. Kattintson a **Mentés** gombra.
 ---
 
 ## <a name="create-test-virtual-machine"></a>Teszt virtuális gép létrehozása
@@ -629,7 +630,7 @@ Ha látni szeretné, hogy a terheléselosztó mindkét virtuális gépen osztja 
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a terheléselosztót és az összes kapcsolódó erőforrást. Ehhez válassza ki az erőforrásokat tartalmazó **CreateIntLBQS-RG** erőforráscsoportot, majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban a következőket hajtja végre:
 

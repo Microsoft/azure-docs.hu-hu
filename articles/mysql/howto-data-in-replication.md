@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2021
-ms.openlocfilehash: 22974a47a6b1e9d49e5055a85f46286497cfe149
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 29ac0c5991964de48cedd15622d15e929bc9d733
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250532"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709546"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database for MySQL konfigurálása felhőbe irányuló replikálás
 
@@ -101,9 +101,23 @@ Az alábbi lépéseket követve elkészítheti és konfigurálhatja a helyszíne
    ```
 
    Ha a változót [`log_bin`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin) "on" értékre adja vissza, a bináris naplózás engedélyezve van a kiszolgálón.
-
-   Ha a `log_bin` értéket "off" értékkel adja vissza, kapcsolja be a bináris naplózást a saját. cnf fájl szerkesztésével, `log_bin=ON` és indítsa újra a kiszolgálót a módosítás érvénybe léptetéséhez.
-
+   
+   Ha a `log_bin` visszaadott érték "off", 
+   1. Keresse meg a MySQL konfigurációs fájlját (My. cnf) a forráskiszolgálón. Például: cnf
+   2. A fájl szerkesztéséhez nyissa meg a konfigurációs fájlt, és keresse meg a **mysqld** szakaszt.
+   3.  A mysqld szakaszban adja hozzá a következő sort
+   
+       ```bash
+       log-bin=mysql-bin.log
+       ```
+     
+   4. A módosítások életbe léptetéséhez indítsa újra a MySQL forráskiszolgáló-kiszolgálót.
+   5. A kiszolgáló újraindítása után ellenőrizze, hogy a bináris naplózás engedélyezve van-e a következővel megegyező lekérdezés futtatásával:
+   
+      ```sql
+      SHOW VARIABLES LIKE 'log_bin';
+      ```
+   
 4. Forráskiszolgáló beállításai
 
    Felhőbe irányuló replikálás megköveteli `lower_case_table_names` , hogy a paraméter konzisztens legyen a forrás-és a replika-kiszolgálók között. Ez a paraméter a Azure Database for MySQL alapértelmezés szerint 1.
@@ -294,6 +308,6 @@ A replikálási hibák kihagyásához és a replikálás folytatásához haszná
 CALL mysql.az_replication_skip_counter;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a Azure Database for MySQL [felhőbe irányuló replikálásról](concepts-data-in-replication.md) .

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.author: b-juche
-ms.openlocfilehash: ec6a03673112dfb5397f6fae947f1fbf65fd6791
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 2cb0e3829011ca9bd0f2b6f36ebf3e6744a180ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881418"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713405"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Gyakori kérdések a Azure NetApp Files
 
@@ -110,7 +110,7 @@ A Azure NetApp Files a kötetek teljesítményének mérőszámait biztosítja. 
 
 ### <a name="whats-the-performance-impact-of-kerberos-on-nfsv41"></a>Mi a Kerberos teljesítményére gyakorolt hatás a NFSv 4.1 rendszeren?
 
-Lásd: a [Kerberos teljesítményére gyakorolt hatás a nfsv 4.1](configure-kerberos-encryption.md#kerberos_performance) -ben a nfsv 4.1 biztonsági lehetőségeivel, a tesztelt teljesítmény-vektorokkal és a várható teljesítmény hatásával kapcsolatban. 
+Lásd: a [Kerberos teljesítményre gyakorolt hatása a nfsv 4.1-es köteteken](performance-impact-kerberos.md) a nfsv 4.1 biztonsági lehetőségeivel, a tesztelt teljesítmény-vektorokkal és a várható teljesítmény hatásával kapcsolatos információkért. 
 
 ## <a name="nfs-faqs"></a>NFS – gyakori kérdések
 
@@ -269,7 +269,7 @@ Az Azure NetApp Files NFS-kötetek csatlakoztathatók AVS Windows-alapú virtuá
 
 Az Azure NetApp Files NFS-vagy SMB-kötetek használata az AVS használatával támogatott a következő régiókban – USA keleti régiója, USA nyugati régiója, Nyugat-Európa és Kelet-Ausztrália.
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 - [Microsoft Azure ExpressRoute GYIK](../expressroute/expressroute-faqs.md)
 - [Microsoft Azure Virtual Network GYIK](../virtual-network/virtual-networks-faq.md)

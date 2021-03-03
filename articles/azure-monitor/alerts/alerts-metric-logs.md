@@ -4,22 +4,20 @@ description: Útmutató a közel valós idejű metrikai riasztások létrehozás
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 06/17/2020
+ms.date: 02/14/2021
 ms.subservice: alerts
-ms.openlocfilehash: 7c7bb9df281a37ded51e3a35b90064d875cfd729
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b24f982996ff930f384aeb5803a3ced6e3cb81dd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100614698"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714238"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Metrikai riasztások létrehozása a naplókhoz Azure Monitor
 
 ## <a name="overview"></a>Áttekintés
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-Azure Monitor támogatja a [metrikus riasztási típust](./alerts-metric-near-real-time.md) , amely a [klasszikus riasztások](./alerts-classic-portal.md)előnyeivel rendelkezik. A metrikák az [Azure-szolgáltatások nagyméretű listájához](../platform/metrics-supported.md)érhetők el. Ez a cikk az erőforráshoz tartozó részhalmazok (azaz) használatát ismerteti `Microsoft.OperationalInsights/workspaces` .
 
 Metrikai riasztásokat használhat a mutatóként kinyert népszerű Log Analytics naplókban, beleértve az Azure-ban vagy a helyszínen található erőforrásokat is. A támogatott Log Analytics megoldások az alábbiak szerint vannak felsorolva:
 
@@ -39,10 +37,10 @@ Az Azure-ban a lekérdezésen alapuló [naplózási riasztásokra](./alerts-log.
 
 ## <a name="metrics-and-dimensions-supported-for-logs"></a>Naplók által támogatott mérőszámok és méretek
 
- A metrikai riasztások támogatják a dimenziókat használó mérőszámok riasztásait. Méretek használatával szűrheti a metrikát a megfelelő szintre. A rendszer felsorolja a [log Analytics munkaterületekről](../platform/metrics-supported.md#microsoftoperationalinsightsworkspaces) származó naplókhoz támogatott metrikák teljes listáját. a támogatott megoldások között.
+ A metrikai riasztások támogatják a dimenziókat használó mérőszámok riasztásait. Méretek használatával szűrheti a metrikát a megfelelő szintre. A rendszer felsorolja a [log Analytics munkaterületekről](../essentials/metrics-supported.md#microsoftoperationalinsightsworkspaces) származó naplókhoz támogatott metrikák teljes listáját. a támogatott megoldások között.
 
 > [!NOTE]
-> Egy Log Analytics munkaterületről [Azure monitor-metrikák](../platform/metrics-charts.md)használatával kinyert támogatott metrika megtekintéséhez az adott metrikán létre kell hozni egy metrikai riasztást a naplóhoz. A naplók metrikai riasztásában kiválasztott dimenziók csak Azure Monitor-metrikák használatával jelennek meg a feltáráshoz.
+> Egy Log Analytics munkaterületről [Azure monitor-metrikák](../essentials/metrics-charts.md)használatával kinyert támogatott metrika megtekintéséhez az adott metrikán létre kell hozni egy metrikai riasztást a naplóhoz. A naplók metrikai riasztásában kiválasztott dimenziók csak Azure Monitor-metrikák használatával jelennek meg a feltáráshoz.
 
 ## <a name="creating-metric-alert-for-log-analytics"></a>Metrikai riasztás létrehozása Log Analyticshoz
 
@@ -53,10 +51,10 @@ Az alábbiakban felsoroljuk a naplókhoz tartozó metrikus riasztások készít�
 
 A Log Analytics-adatokon összegyűjtött naplók metrikája előtt be kell állítani és elérhetővé kell tennie a következőket:
 
-1. **Aktív log Analytics munkaterület**: egy érvényes és aktív log Analytics munkaterület jelen kell lennie. További információ: [log Analytics munkaterület létrehozása a Azure Portalban](../learn/quick-create-workspace.md).
+1. **Aktív log Analytics munkaterület**: egy érvényes és aktív log Analytics munkaterület jelen kell lennie. További információ: [log Analytics munkaterület létrehozása a Azure Portalban](../logs/quick-create-workspace.md).
 2. Az **ügynök konfigurálva van log Analytics munkaterületre**: az ügynököt az Azure-beli virtuális gépekhez (és/vagy) a helyszíni virtuális gépekhez kell konfigurálni, hogy az adatküldés a korábbi lépésben használt log Analytics munkaterületre történjen. További információ: [log Analytics – ügynök áttekintése](./../agents/agents-overview.md).
 3. A **támogatott log Analytics megoldások telepítve** vannak: a log Analytics megoldást konfigurálni kell, és adatokat kell elküldeni log Analytics munkaterület által támogatott megoldásokba a [teljesítményszámlálók a Windows & Linux](./../agents/data-sources-performance-counters.md), [szívverési rekordok a Agent Health, az](../insights/solution-agenthealth.md) [Update Management](../../automation/update-management/overview.md)és az [Event adatok](./../agents/data-sources-windows-events.md)számára.
-4. **Naplók küldésére konfigurált log Analytics megoldások**: a log Analytics megoldásnak rendelkeznie kell az [log Analytics munkaterületek által támogatott mérőszámokhoz](../platform/metrics-supported.md#microsoftoperationalinsightsworkspaces) tartozó szükséges naplókkal/adatokkal. A *(z)% rendelkezésre álló memória* számlálójának esetében például először a [teljesítményszámlálók](./../agents/data-sources-performance-counters.md) megoldásban kell konfigurálni.
+4. **Naplók küldésére konfigurált log Analytics megoldások**: a log Analytics megoldásnak rendelkeznie kell az [log Analytics munkaterületek által támogatott mérőszámokhoz](../essentials/metrics-supported.md#microsoftoperationalinsightsworkspaces) tartozó szükséges naplókkal/adatokkal. A *(z)% rendelkezésre álló memória* számlálójának esetében például először a [teljesítményszámlálók](./../agents/data-sources-performance-counters.md) megoldásban kell konfigurálni.
 
 ## <a name="configuring-metric-alert-for-logs"></a>Metrikai riasztás konfigurálása a naplókhoz
 
@@ -357,7 +355,7 @@ Tegyük fel, hogy a fenti JSON-t metricfromLogsAlertStatic.jsként menti a rends
 
 Feltételezve, hogy a fenti paraméter fájlja metricfromLogsAlertStatic.parameters.jsként van mentve; Ezután létrehozhat metrikai riasztást a naplókhoz [erőforrás-sablon használatával a Azure Portal létrehozásához](../../azure-resource-manager/templates/deploy-portal.md).
 
-Azt is megteheti, hogy az alábbi Azure PowerShell-parancsot is használhatja:
+Azt is megteheti, hogy az alábbi Azure PowerShell parancsot is használhatja:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfromLogsAlertStatic.json TemplateParameterFile metricfromLogsAlertStatic.parameters.json
@@ -673,7 +671,7 @@ Tegyük fel, hogy a fenti JSON-t metricfromLogsAlertDynamic.jsként menti a rend
 
 Feltételezve, hogy a fenti paraméter fájlja metricfromLogsAlertDynamic.parameters.jsként van mentve; Ezután létrehozhat metrikai riasztást a naplókhoz [erőforrás-sablon használatával a Azure Portal létrehozásához](../../azure-resource-manager/templates/deploy-portal.md).
 
-Azt is megteheti, hogy az alábbi Azure PowerShell-parancsot is használhatja:
+Azt is megteheti, hogy az alábbi Azure PowerShell parancsot is használhatja:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfromLogsAlertDynamic.json TemplateParameterFile metricfromLogsAlertDynamic.parameters.json
@@ -689,4 +687,4 @@ az deployment group create --resource-group myRG --template-file metricfromLogsA
 
 - További információ a [metrikai riasztásokról](../alerts/alerts-metric.md).
 - További információ a [log-riasztásokról az Azure-ban](./alerts-unified-log.md).
-- További információ [Az Azure-beli riasztásokról](../platform/alerts-overview.md).
+- További információ [Az Azure-beli riasztásokról](./alerts-overview.md).

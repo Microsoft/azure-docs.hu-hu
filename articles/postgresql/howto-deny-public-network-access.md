@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: bd777fe42dc8fa3ec4643fa9607f5ca8b7aac795
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: e195c005676df27385e5e00736b04bdb689fafc5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240324"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727107"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-postgresql-single-server-using-azure-portal"></a>Nyilvános hálózati hozzáférés megtagadása Azure Database for PostgreSQL egy kiszolgálón Azure Portal használatával
 
@@ -21,7 +21,7 @@ Ez a cikk azt ismerteti, hogyan konfigurálhat egy Azure Database for PostgreSQL
 
 A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 
-* Egy [Azure Database for PostgreSQL egyetlen kiszolgáló](quickstart-create-server-database-portal.md)
+* [Azure Database for PostgreSQL önálló kiszolgáló](quickstart-create-server-database-portal.md) általános célú vagy memória-optimalizálva árképzési réteggel.
 
 ## <a name="set-deny-public-network-access"></a>Nyilvános hálózati hozzáférés megtagadásának beállítása
 
@@ -39,7 +39,7 @@ Az alábbi lépéseket követve beállíthatja a PostgreSQL egyetlen kiszolgál�
 
 1. Egy értesítés megerősíti, hogy a kapcsolatbiztonsági beállítás engedélyezése sikeres volt.
 
-    :::image type="content" source="./media/howto-deny-public-network-access/deny-public-network-access-success.png" alt-text="Azure Database for PostgreSQL egyetlen kiszolgáló megtagadja a hálózati hozzáférést":::
+    :::image type="content" source="./media/howto-deny-public-network-access/deny-public-network-access-success.png" alt-text="Azure Database for PostgreSQL egyetlen kiszolgáló megtagadja a hálózati hozzáférés sikerességét":::
 
 ## <a name="next-steps"></a>Következő lépések
 

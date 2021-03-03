@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2020
-ms.openlocfilehash: 038663a6b8fe015f36f70b7bf13d25accb470903
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a7a6ba395769677fe46ddfff675640f6e15060a0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627871"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723180"
 ---
 # <a name="log-analytics-tutorial"></a>Log Analytics-oktatóanyag
 A Log Analytics egy eszköz a Azure Portalban, amellyel szerkesztheti és futtathatja a Azure Monitor naplók által összegyűjtött adatokból származó naplózott lekérdezéseket, és interaktív módon elemezheti az eredményeket. Log Analytics lekérdezések használatával lekérheti az adott feltételeknek megfelelő rekordokat, azonosíthatja a trendeket, elemezheti a mintákat, és különféle elemzéseket biztosíthat az adataihoz. 
@@ -33,7 +33,7 @@ Ez az oktatóanyag végigvezeti a Log Analytics felületen, és megkezdi az alap
 Ez az oktatóanyag a [log Analytics bemutató környezetét](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade)használja, amely rengeteg, a lekérdezéseket támogató mintát tartalmaz. Használhatja saját Azure-előfizetését is, de előfordulhat, hogy nem rendelkezik azonos táblákban található adataival.
 
 ## <a name="open-log-analytics"></a>Log Analytics megnyitása
-Nyissa meg a [log Analytics bemutató környezetet](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade) , vagy válassza a **naplók** lehetőséget az előfizetés Azure monitor menüjében. Ez a beállítás a kezdeti hatókört egy Log Analytics munkaterületre állítja be, ami azt jelenti, hogy a lekérdezés az adott munkaterületen lévő összes adattal ki lesz választva. Ha az Azure-erőforrás menüjéből kiválasztja a **naplók** lehetőséget, a hatókör csak az adott erőforrás rekordjaira van beállítva. A hatókör részleteiért lásd a [naplózási lekérdezés hatókörét](../log-query/scope.md) .
+Nyissa meg a [log Analytics bemutató környezetet](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade) , vagy válassza a **naplók** lehetőséget az előfizetés Azure monitor menüjében. Ez a beállítás a kezdeti hatókört egy Log Analytics munkaterületre állítja be, ami azt jelenti, hogy a lekérdezés az adott munkaterületen lévő összes adattal ki lesz választva. Ha az Azure-erőforrás menüjéből kiválasztja a **naplók** lehetőséget, a hatókör csak az adott erőforrás rekordjaira van beállítva. A hatókör részleteiért lásd a [naplózási lekérdezés hatókörét](./scope.md) .
 
 A hatókört a képernyő bal felső sarkában tekintheti meg. Ha saját környezetét használja, egy másik hatókört választhat, de ez a lehetőség nem érhető el a bemutató környezetben.
 

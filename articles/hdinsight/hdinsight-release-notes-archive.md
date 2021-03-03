@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/08/2021
-ms.openlocfilehash: 902b13c947cb005189e23dee943867100809564e
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 0a9a58e91202d42640264aba00e1a583be1cde70
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988543"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705653"
 ---
 # <a name="archived-release-notes"></a>Archivált kibocsátási megjegyzések
 
@@ -34,7 +34,7 @@ A HDInsight mostantól Azure-beli virtuális gépeket használ a fürt kiépít�
 
 ### <a name="deprecation"></a>Elavulás
 #### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>A HDInsight 3,6 ML Services-fürt elavult változata
-A HDInsight 3,6 ML Services-fürt típusa a támogatás végére kerül a 31 2020 decemberében. Az ügyfelek nem tudnak új 3,6 ML-es szolgáltatási fürtöket létrehozni a 31 2020. december után. A meglévő fürtök a Microsoft támogatásának hiányában lesznek futtatva. Tekintse meg a HDInsight-verziók és-fürtök támogatásának lejárati idejét [itt](./hdinsight-component-versioning.md#available-versions).
+A HDInsight 3,6 ML Services-fürt típusa a támogatás végére kerül a 31 2020 decemberében. Az ügyfelek nem tudnak új 3,6 ML-es szolgáltatási fürtöket létrehozni a 31 2020. december után. A meglévő fürtök a Microsoft támogatásának hiányában lesznek futtatva. Tekintse meg a HDInsight-verziók és-fürtök támogatásának lejárati idejét [itt](./hdinsight-component-versioning.md).
 
 #### <a name="disabled-vm-sizes"></a>Letiltott virtuálisgép-méretek
 A HDInsight november 16 2020-től kezdődően megakadályozza, hogy az új ügyfelek standand_A8, standand_A9, standand_A10 és standand_A11 virtuálisgép-méretekkel hozzanak létre fürtöket. Az elmúlt három hónapban ezeket a virtuálisgép-méreteket használó meglévő ügyfeleket nem érinti a rendszer. A HDInsight január 9 2021-től kezdődően a standand_A8, standand_A9, standand_A10 és standand_A11 virtuálisgép-méretek használatával letiltja a fürtöket létrehozó összes ügyfelet. A meglévő fürtök futtatása a következőképpen történik:. Vegye fontolóra a HDInsight 4,0-re való áttérést, hogy elkerülje a lehetséges rendszer/támogatás megszakadását.
@@ -62,7 +62,7 @@ A HDInsight mostantól Azure-beli virtuális gépeket használ a fürt kiépít�
 
 ### <a name="deprecation"></a>Elavulás
 #### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>A HDInsight 3,6 ML Services-fürt elavult változata
-A HDInsight 3,6 ML Services-fürt típusa a támogatás végére kerül a 31 2020 decemberében. Az ügyfelek a 31 2020 decembere után nem hoznak létre új 3,6 ML-es szolgáltatási fürtöket. A meglévő fürtök a Microsoft támogatásának hiányában lesznek futtatva. Tekintse meg a HDInsight-verziók és-fürtök támogatásának lejárati idejét [itt](./hdinsight-component-versioning.md#available-versions).
+A HDInsight 3,6 ML Services-fürt típusa a támogatás végére kerül a 31 2020 decemberében. Az ügyfelek a 31 2020 decembere után nem hoznak létre új 3,6 ML-es szolgáltatási fürtöket. A meglévő fürtök a Microsoft támogatásának hiányában lesznek futtatva. Tekintse meg a HDInsight-verziók és-fürtök támogatásának lejárati idejét [itt](./hdinsight-component-versioning.md#supported-hdinsight-versions).
 
 #### <a name="disabled-vm-sizes"></a>Letiltott virtuálisgép-méretek
 A HDInsight november 16 2020-től kezdődően megakadályozza, hogy az új ügyfelek standand_A8, standand_A9, standand_A10 és standand_A11 virtuálisgép-méretekkel hozzanak létre fürtöket. Az elmúlt három hónapban ezeket a virtuálisgép-méreteket használó meglévő ügyfeleket nem érinti a rendszer. A HDInsight január 9 2021-től kezdődően a standand_A8, standand_A9, standand_A10 és standand_A11 virtuálisgép-méretek használatával letiltja a fürtöket létrehozó összes ügyfelet. A meglévő fürtök futtatása a következőképpen történik:. Vegye fontolóra a HDInsight 4,0-re való áttérést, hogy elkerülje a lehetséges rendszer/támogatás megszakadását.
@@ -77,7 +77,7 @@ A következő módosítások a közelgő kiadásokban fognak történni.
 A HDInsight jelenleg nem támogatja a Zookeeper-csomópontok méretének testreszabását a Spark, a Hadoop és a ML Services típusú fürtök esetében. Alapértelmezés szerint A2_v2/a2 virtuálisgép-méreteket tartalmaz, amelyek díjmentesen állnak rendelkezésére. A következő kiadásban kiválaszthatja a forgatókönyvhöz leginkább megfelelő Zookeeper virtuális gép méretét. A A2_v2/a2 eltérő virtuálisgép-mérettel rendelkező Zookeeper-csomópontokat a rendszer felszámítja. A A2_v2 és az A2-es virtuális gépek továbbra is díjmentesen elérhetők.
 
 #### <a name="default-cluster-version-will-be-changed-to-40"></a>A fürt alapértelmezett verziója 4,0-re változik
-Február 2021-én a HDInsight-fürt alapértelmezett verziója 3,6-ről 4,0-ra módosul. További információ az elérhető verziókról: [elérhető verziók](./hdinsight-component-versioning.md#available-versions). További információ a [HDInsight 4,0](./hdinsight-version-release.md) újdonságáról
+Február 2021-én a HDInsight-fürt alapértelmezett verziója 3,6-ről 4,0-ra módosul. További információ az elérhető verziókról: [támogatott verziók](./hdinsight-component-versioning.md#supported-hdinsight-versions). További információ a [HDInsight 4,0](./hdinsight-version-release.md) újdonságáról
 
 #### <a name="hdinsight-36-end-of-support-on-june-30-2021"></a>HDInsight 3,6, 30 2021. június vége
 A HDInsight 3,6 támogatás megszűnik. A 30 2021. június megkezdése után az ügyfelek nem hozhatnak létre új HDInsight 3,6-fürtöket. A meglévő fürtök a Microsoft támogatásának hiányában lesznek futtatva. Vegye fontolóra a HDInsight 4,0-re való áttérést, hogy elkerülje a lehetséges rendszer/támogatás megszakadását.
@@ -103,7 +103,7 @@ A HDInsight mostantól Azure-beli virtuális gépeket használ a fürt kiépít�
 
 ### <a name="deprecation"></a>Elavulás
 #### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>A HDInsight 3,6 ML Services-fürt elavult változata
-A HDInsight 3,6 ML Services-fürt típusa a DEC 31 2020-es támogatás végén lesz. Az ügyfelek ezt követően nem hoznak létre új 3,6 ML-es szolgáltatási fürtöket. A meglévő fürtök a Microsoft támogatásának hiányában lesznek futtatva. Tekintse meg a HDInsight-verziók és-fürtök támogatásának lejárati idejét [itt](./hdinsight-component-versioning.md#available-versions).
+A HDInsight 3,6 ML Services-fürt típusa a DEC 31 2020-es támogatás végén lesz. Az ügyfelek ezt követően nem hoznak létre új 3,6 ML-es szolgáltatási fürtöket. A meglévő fürtök a Microsoft támogatásának hiányában lesznek futtatva. Tekintse meg a HDInsight-verziók és-fürtök támogatásának lejárati idejét [itt](./hdinsight-component-versioning.md#supported-hdinsight-versions).
 
 ### <a name="behavior-changes"></a>Viselkedési változások
 Ebben a kiadásban nem változik a viselkedés.

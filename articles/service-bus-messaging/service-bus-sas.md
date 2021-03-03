@@ -4,12 +4,12 @@ description: A Service Bus hozzáférés-vezérlésének áttekintése a közös
 ms.topic: article
 ms.date: 01/19/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6bdc167c437a79d609db25a2e3c48b71e0a748b2
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: d210da4b653a20dd273dfce723f0bf9d5dbf743b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598818"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737817"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Service Bus hozzáférés-vezérlés közös hozzáférési aláírásokkal
 
@@ -130,9 +130,9 @@ Ha ismeri vagy gyanítja, hogy a kulcs biztonsága sérül, és vissza kell vonn
 
 ## <a name="shared-access-signature-authentication-with-service-bus"></a>Közös hozzáférésű aláírások hitelesítése Service Bus
 
-Az alábbi forgatókönyvek az engedélyezési szabályok konfigurálását, az SAS-jogkivonatok létrehozását és az ügyfél-engedélyezést tartalmazzák.
+A következő témakörben ismertetett forgatókönyv magában foglalja az engedélyezési szabályok konfigurálását, az SAS-tokenek létrehozását és az ügyfél-engedélyezést.
 
-A konfigurációt bemutató és SAS-hitelesítést használó Service Bus alkalmazás teljes munkamintája: a [közös hozzáférésű aláírások hitelesítése Service Bus](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8)használatával. Az Service Bus-előfizetések biztonságossá tételéhez a névtereken vagy témakörökben konfigurált SAS-engedélyezési szabályok használatát bemutató kapcsolódó minta itt érhető el: [közös hozzáférésű aláírás (SAS) hitelesítés használata Service Bus előfizetésekkel](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c).
+Egy Service Bus alkalmazás mintája, amely bemutatja a konfigurációt, és SAS-hitelesítést használ, lásd: [közös hozzáférésű aláírások hitelesítése Service Bus](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/ManagingEntities/SASAuthorizationRule)használatával.
 
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>Megosztott hozzáférés engedélyezési szabályainak elérése egy entitáson
 
@@ -327,7 +327,7 @@ A következő táblázat a Service Bus erőforrásokon végzett különféle mű
 | Szabály törlése |Kezelés |.. /myTopic/Subscriptions/mySubscription |
 | Szabályok számbavétele |Kezelés vagy figyelés |.. /myTopic/Subscriptions/mySubscription/Rules
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Service Bus üzenetkezelésről az alábbi témakörökben találhat további információkat.
 

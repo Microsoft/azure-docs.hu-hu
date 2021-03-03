@@ -7,12 +7,12 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: 77464ccfb5b80c84f091d8e6bc491908baed6486
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 1fc21b6338accef8e22b2e41ad2017d24ab8bd38
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955003"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710464"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services és gépi tanulás
 
@@ -97,7 +97,7 @@ A következő adattípusok kategorizálják az egyes szolgáltatásokat, amelyek
 |[Face](./Face/Overview.md)|x|x||
 |[Form Recognizer](./form-recognizer/overview.md)||x||
 |[Modern olvasó](./immersive-reader/overview.md)|x|||
-|[Ink Recognizer](./Ink-recognizer/overview.md)|x|x||
+|[Ink Recognizer](/previous-versions/azure/cognitive-services/Ink-Recognizer/overview)|x|x||
 |[Language Understanding (LUIS)](./LUIS/what-is-luis.md)||x||
 |[Personalizer](./personalizer/what-is-personalizer.md)|x|x|x|
 |[QnA Maker](./QnAMaker/Overview/overview.md)||x||
@@ -127,7 +127,7 @@ Más gépi tanulási eszközökhöz exportált modelleket biztosító Cognitive 
 
 |Kognitív szolgáltatás|Modell adatai|
 |--|--|
-|[Custom Vision](./custom-vision-service/overview.md)|[Exportálás](./Custom-Vision-Service/export-model-python.md) az Androidhoz készült Tensorflow, CoreML for IOS11, ONNX for Windows ml|
+|[Custom Vision](./custom-vision-service/overview.md)|[Exportálás](./custom-vision-service/export-model-python.md) az Androidhoz készült Tensorflow, CoreML for IOS11, ONNX for Windows ml|
 
 ## <a name="learn-more"></a>Tudjon meg többet
 

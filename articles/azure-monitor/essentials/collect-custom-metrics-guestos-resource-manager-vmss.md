@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: db410133bab530db731eee58048d1f9d26a1a3fb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 65f18a21be48b6f78605b10950a2b38709b66f2d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609130"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713660"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Vendég operációs rendszer metrikáinak küldése a Azure Monitor metrika-tárolóba egy Windowsos virtuálisgép-méretezési csoport Azure Resource Manager-sablonjának használatával
 
@@ -30,7 +30,7 @@ Ha most ismerkedik a Resource Manager-sablonokkal, ismerkedjen meg a [sablonok k
 
 - [Azure PowerShell](/powershell/azure) telepítve kell lennie, vagy használhatja a [Azure Cloud Shell](../../cloud-shell/overview.md). 
 
-- A virtuális gép erőforrásának olyan régióban kell lennie [, amely támogatja az egyéni metrikákat](../platform/metrics-custom-overview.md#supported-regions).
+- A virtuális gép erőforrásának olyan régióban kell lennie [, amely támogatja az egyéni metrikákat](./metrics-custom-overview.md#supported-regions).
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>Azure Monitor beállítása adatfogadóként 
 A Azure Diagnostics bővítmény egy **adattároló** nevű funkciót használ a metrikák és naplók különböző helyszínekre való továbbításához. A következő lépések bemutatják, hogyan használható a Resource Manager-sablon és a PowerShell egy virtuális gép üzembe helyezéséhez az új Azure Monitor adatfogadó használatával. 
@@ -252,7 +252,7 @@ A Resource Manager-sablon üzembe helyezéséhez használja a Azure PowerShell:
    ```
 
    > [!NOTE]  
-   > Ne felejtse el használni az egyéni metrikák számára engedélyezett Azure-régiót. Ne felejtse el használni az [Egyéni metrikák számára engedélyezett Azure-régiót](../platform/metrics-custom-overview.md#supported-regions).
+   > Ne felejtse el használni az egyéni metrikák számára engedélyezett Azure-régiót. Ne felejtse el használni az [Egyéni metrikák számára engedélyezett Azure-régiót](./metrics-custom-overview.md#supported-regions).
  
 1. Futtassa a következő parancsokat a virtuális gép üzembe helyezéséhez:  
 
@@ -292,4 +292,4 @@ Azt is megteheti, hogy a metrika dimenzióit használja egy adott virtuális gé
 
 
 ## <a name="next-steps"></a>Következő lépések
-- További információ az [Egyéni metrikákkal](../platform/metrics-custom-overview.md)kapcsolatban.
+- További információ az [Egyéni metrikákkal](./metrics-custom-overview.md)kapcsolatban.

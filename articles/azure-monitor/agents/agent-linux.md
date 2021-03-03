@@ -6,21 +6,21 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 9e0d9162c497ff035438b5a65c6f4500ce834860
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 06b59aa1fe6b51bf237c0cd64117166ca4ece10b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100613557"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734927"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Log Analytics-ügynök telepítése Linux rendszerű számítógépeken
 Ez a cikk részletesen ismerteti a Log Analytics-ügynök Linux rendszerű számítógépekre történő telepítését a következő módszerekkel:
 
 * [Telepítse a Linux-ügynököt](#install-the-agent-using-wrapper-script) a githubon üzemeltetett burkoló parancsfájl használatával. Ez az ajánlott módszer az ügynök telepítésére és frissítésére, ha a számítógép közvetlenül vagy egy proxykiszolgálón keresztül kapcsolódik az internethez.
-* [Manuálisan töltse le és telepítse](#install-the-agent-manually) az ügynököt. Erre akkor van szükség, ha a Linux rendszerű számítógép nem fér hozzá az internethez, és az [log Analytics-átjárón](../platform/gateway.md)keresztül kommunikál Azure Monitor vagy Azure Automation. 
+* [Manuálisan töltse le és telepítse](#install-the-agent-manually) az ügynököt. Erre akkor van szükség, ha a Linux rendszerű számítógép nem fér hozzá az internethez, és az [log Analytics-átjárón](./gateway.md)keresztül kommunikál Azure Monitor vagy Azure Automation. 
 
 >[!IMPORTANT]
-> A cikkben ismertetett telepítési módszerek általában a helyszíni vagy más felhőkben található virtuális gépekhez használatosak. Az Azure Virtual Machines szolgáltatáshoz használható hatékonyabb beállításokért lásd a [telepítési beállításokat](../platform/log-analytics-agent.md#installation-options) .
+> A cikkben ismertetett telepítési módszerek általában a helyszíni vagy más felhőkben található virtuális gépekhez használatosak. Az Azure Virtual Machines szolgáltatáshoz használható hatékonyabb beállításokért lásd a [telepítési beállításokat](./log-analytics-agent.md#installation-options) .
 
 
 
@@ -32,7 +32,7 @@ A Log Analytics-ügynök által támogatott Linux-disztribúciók listáját [Az
 >Az OpenSSL 1.1.0 csak x86_x64 platformokon (64-bites) és 1. x-nél korábbi OpenSSL-platformon támogatott.
 
 >[!NOTE]
->A Log Analytics Linux-ügynök tárolókban való futtatása nem támogatott. Ha meg kell figyelnie a tárolókat, használja a [tároló-figyelési megoldást](../insights/containers.md) a Docker-gazdagépekhez vagy [Azure monitor a Kubernetes tárolók](../insights/container-insights-overview.md) számára.
+>A Log Analytics Linux-ügynök tárolókban való futtatása nem támogatott. Ha meg kell figyelnie a tárolókat, használja a [tároló-figyelési megoldást](../containers/containers.md) a Docker-gazdagépekhez vagy a Kubernetes [tároló](../containers/container-insights-overview.md) -elemzésekhez.
 
 A 2018 augusztusa után kiadott verzióktól kezdve a következő módosításokat végezjük a támogatási modellen:  
 
@@ -87,7 +87,7 @@ Más korlátozási és testreszabási módszerek nem támogatottak és nem terve
 
 A következő táblázat a [támogatott Linux-disztribúciók](#supported-operating-systems) számára szükséges csomagokat mutatja be, amelyekre az ügynököt telepíteni fogja.
 
-|Szükséges csomag |Description |Minimális verzió |
+|Szükséges csomag |Leírás |Minimális verzió |
 |-----------------|------------|----------------|
 |Glibc |    GNU C könyvtár | 2.5-12 
 |Openssl    | OpenSSL-kódtárak | 1.0. x vagy 1.1. x |
@@ -100,7 +100,7 @@ A következő táblázat a [támogatott Linux-disztribúciók](#supported-operat
 >A syslog-üzenetek összegyűjtéséhez a rsyslog vagy a syslog-ng szükséges. A syslog-események gyűjteménye nem támogatja az alapértelmezett syslog démont a Red Hat Enterprise Linux, a CentOS és a Oracle Linux verzió (sysklog) 5. verziójában. A rendszernapló-adatok ezen disztribúciók ezen verziójából való összegyűjtéséhez a rsyslog démont telepíteni és konfigurálni kell a sysklog lecserélése érdekében.
 
 ## <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
-Lásd: [log Analytics ügynök áttekintése](../platform/log-analytics-agent.md#network-requirements) a Linux-ügynök hálózati követelményeiről.
+Lásd: [log Analytics ügynök áttekintése](./log-analytics-agent.md#network-requirements) a Linux-ügynök hálózati követelményeiről.
 
 ## <a name="agent-install-package"></a>Ügynök telepítési csomagja
 

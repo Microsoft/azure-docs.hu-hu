@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
@@ -8,13 +8,13 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 634deb655620f99c7b7b2b55819c58308eaa5a92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f85f2770b98507618d5cbfdec1b55f397c7f514
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275157"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750304"
 ---
-Az Azure-ban lehetőség van arra, hogy a lemezes tárolás IOPS és a MB/s teljesítményt is felgyorsítsa, amely a Virtual Machines és a lemezekre is feltört. A bursás számos esetben hasznos, például a váratlan lemezes adatforgalom kezelése vagy a Batch-feladatok feldolgozása. A virtuális gép és a lemez szintjének hatékony kihasználásával hatékonyan kihasználhatja a virtuális gépeken és a lemezeken elérhető kiváló alapkonfigurációt és a feltört teljesítményt. Így a virtuális gépen és a lemezen is nagy teljesítményű és feltört teljesítményt érhet el. 
+Az Azure lehetővé teszi a lemezes tárolás IOPS és a MB/s teljesítmény növelését, ezt a virtuális gépek (VM) és a lemezek feltörése is utalja. Hatékonyan kihasználhatja a virtuális gépeket és a lemezeket, így jobb teljesítményt érhet el a virtuális gépeken és a lemezen is.
 
-Vegye figyelembe, hogy a lemezek és a virtuális gépek betörése egymástól független. Ha kitört lemez van, nincs szükség a feltört virtuális gépre, hogy a lemez fel legyen tört. Ha kitört virtuális géppel rendelkezik, nincs szükség a kitört lemezre, hogy a virtuális gép fel lehessen robbanni. 
+Az Azure-beli virtuális gépek és a lemez erőforrásainak kitörése nem függ egymástól. A csatlakoztatott burst képességű lemez kitöréséhez nem szükséges a burst képességgel rendelkező virtuális gép. Hasonlóképpen, nincs szükség a burst képességgel rendelkező virtuális géphez csatlakoztatott, burst képességű lemezre, amellyel a virtuális gép feltört.

@@ -5,14 +5,14 @@ ms.subservice: ''
 ms.topic: overview
 author: mgoedtel
 ms.author: magoedte
-ms.date: 01/21/2021
+ms.date: 02/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: 8b412fffdda1ce6a2023a8b9ae459a52986cd93d
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 899249c98c3ce0fdf061b1e689182f71c120aa13
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690864"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729394"
 ---
 # <a name="whats-new-in-azure-automation"></a>A Azure Automation újdonságai
 
@@ -24,7 +24,55 @@ Azure Automation folyamatosan fejleszti a fejlesztéseket. A legújabb fejlemén
 
 Ez az oldal havonta frissül, ezért rendszeresen újra kell látogatnia.
 
+## <a name="february-2021"></a>2021. február
+
+### <a name="support-for-automation-and-state-configuration-declared-ga-in-japan-west"></a>Az Automation és az állapot konfigurációjának támogatása a japán nyugati régiójában
+
+**Írja be a következőt:** Új funkció
+
+Az Automation-fiók és az állapot-konfiguráció rendelkezésre állása Japánban nyugati régiójában. További információért olvassa el a [bejelentést](https://azure.microsoft.com/updates/azure-automation-in-japan-west-region/).
+
+### <a name="introduced-custom-azure-policy-compliance-to-enforce-runbook-execution-on-hybrid-worker"></a>Az egyéni Azure Policy megfelelőségének bevezetése a runbook végrehajtásának érvénybe léptetéséhez hibrid feldolgozón
+
+**Írja be a következőt:** Új funkció
+
+Az új Azure Policy megfelelőségi szabály lehetővé teszi a feladatok, webhookok és feladatütemezés futtatását csak hibrid feldolgozói csoportokon.
+
+### <a name="update-management-availability-in-east-us-france-central-and-north-europe-regions"></a>Update Management rendelkezésre állás az USA keleti régiójában, Közép-és Észak-Európában
+
+**Írja be a következőt:** Új funkció
+
+Az Automation Update Management funkció az USA keleti régiójában, Közép-és Észak-Európában érhető el. A módosítást tükröző dokumentáció a [támogatott régiók leképezése](how-to/region-mappings.md) a frissítésekhez című témakörben található.
+
 ## <a name="january-2021"></a>2021. január
+
+### <a name="support-for-automation-and-state-configuration-declared-ga-in-switzerland-west"></a>Az Automation és az állapot konfigurációjának támogatása a Nyugat-Svájcban
+
+**Írja be a következőt:** Új funkció
+
+Az Automation-fiók és az állapot konfigurációjának rendelkezésre állása a Nyugat-Svájc régióban. További információért olvassa el a [bejelentést](https://azure.microsoft.com/updates/azure-automation-in-switzerland-west-region/).
+
+### <a name="added-python-3-script-to-import-module-with-multiple-dependencies"></a>Python 3-szkript hozzáadva több függőséggel rendelkező modul importálásához
+
+**Írja be a következőt:** Új funkció
+
+A szkript a [GitHub-adattárból](https://github.com/azureautomation/runbooks/blob/master/Utility/Python/import_py3package_from_pypi.py)tölthető le. 
+ 
+### <a name="hybrid-runbook-worker-role-support-for-centos-8xrhel-8xsles-15"></a>Hibrid Runbook-feldolgozói szerepkör támogatása CentOS 8. x/RHEL 8. x/SLES 15
+
+**Típusa.** Új funkció
+
+A hibrid Runbook Worker szolgáltatás a CentOS 8. x, a REHL 8. x és a SLES 15 disztribúciót támogatja a hibrid Runbook-feldolgozók esetében csak a folyamatok automatizálásához.  A módosítások megjelenítéséhez tekintse meg a [támogatott operációs rendszerek](automation-linux-hrw-install.md#supported-linux-operating-systems) a dokumentáció frissítéseihez című témakört.
+
+### <a name="update-management--change-tracking-availability-in-australia-east-east-asia-west-us--central-us-regions"></a>Update Management & Change Tracking rendelkezésre állása Kelet-Ausztrália, Kelet-Ázsia, USA nyugati régiója & Közép-amerikai régióban
+
+**Írja be a következőt:** Új funkció
+
+Az Automation-fiók, a Change Tracking és a leltár, valamint a Update Management a Kelet-Ausztrália, Kelet-Ázsia, az USA nyugati régiója & középső régiójában érhető el. 
+
+### <a name="introduced-public-preview-of-python-3-runbooks-in-us-government-cloud"></a>Megjelent a Python 3 runbookok nyilvános előzetese az USA kormányzati felhőben
+
+**Írja be a következőt:** Az új funkció Azure Automation a Python 3 felhő és a hibrid runbook-végrehajtás nyilvános előzetes támogatását mutatja be az USA kormányzati felhő régióiban.  További információkért lásd a [bejelentést](https://azure.microsoft.com/updates/azure-automation-python-3-public-preview/).
 
 ### <a name="azure-automation-runbooks-moved-from-technet-script-center-to-github"></a>Azure Automation runbookok a TechNet script Centerből a GitHubra költözött
 

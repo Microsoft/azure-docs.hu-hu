@@ -4,14 +4,14 @@ description: Ismerje meg az Azure-partnerek által kínált megoldásokat.
 author: tfitzmac
 ms.topic: conceptual
 ms.service: partner-services
-ms.date: 01/19/2021
+ms.date: 02/12/2021
 ms.author: tomfitz
-ms.openlocfilehash: 6779596efdebf8220af99f4e86c1fe6cc0ec90d6
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: cab246cf19e8a2e3f9e7b08019cd836e3d085266
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598782"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736049"
 ---
 # <a name="extend-azure-with-solutions-from-partners"></a>Az Azure kiterjesztése a partnerek megoldásaival
 
@@ -22,3 +22,4 @@ A partneri megoldások a piactéren keresztül érhetők el.
 | Partneri megoldás | Leírás |
 | :--- | :--- |
 | [Apache Kafka az Fluent felhőhöz](./apache-kafka-confluent-cloud/overview.md) | Teljes körűen felügyelt, Apache Kafka által működtetett Event streaming platform |
+| [Datadog](./datadog/overview.md) | Egy helyen figyelheti a kiszolgálókat, a felhőket, a metrikákat és az alkalmazásokat. |

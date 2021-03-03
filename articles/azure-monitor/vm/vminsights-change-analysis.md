@@ -1,31 +1,31 @@
 ---
-title: Azure Monitor for VMs elemzésének módosítása
-description: Azure Monitor for VMs integráció az Application Change Analysis Integration használatával megtekintheti az általa érintett virtuális gépeken végrehajtott módosításokat.
+title: A virtuális gépek elemzésének módosítása
+description: A VM-elemzések integrációja az Application Change Analysis Integration segítségével megtekintheti az általa érintett virtuális gépeken végrehajtott módosításokat.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/23/2020
-ms.openlocfilehash: 59799a09436d5968a441f6f17655d3138a2d84d8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 48f0f0e124040dc070bd5e31f956f75e759303d3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100618238"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704004"
 ---
-# <a name="change-analysis-in-azure-monitor-for-vms"></a>Azure Monitor for VMs elemzésének módosítása
-Azure Monitor for VMs integráció az [Application Change Analysis](../app/change-analysis.md) Integration használatával megtekintheti az általa érintett virtuális gépeken végrehajtott módosításokat.
+# <a name="change-analysis-in-vm-insights"></a>A virtuális gépek elemzésének módosítása
+A VM-elemzések integrációja az [Application Change Analysis](../app/change-analysis.md) Integration segítségével megtekintheti az általa érintett virtuális gépeken végrehajtott módosításokat.
 
 ## <a name="overview"></a>Áttekintés
-Tegyük fel, hogy van egy virtuális gép, amely lassan fut, és meg szeretné vizsgálni, hogy a konfiguráció legutóbbi módosításai hatással lehetnek-e a teljesítményére. A virtuális gép teljesítményét a Azure Monitor for VMs használatával tekintheti meg, és megtudhatja, hogy az elmúlt órában növekszik-e a memória kihasználtsága. A Change Analysis segítségével eldöntheti, hogy az adott időszakban végrehajtott konfigurációs változások okozták-e ezt a növekedést.
+Tegyük fel, hogy van egy virtuális gép, amely lassan fut, és meg szeretné vizsgálni, hogy a konfiguráció legutóbbi módosításai hatással lehetnek-e a teljesítményére. A virtuális gép teljesítményét a VM-megállapítások segítségével tekintheti meg, és megtudhatja, hogy az elmúlt egy órában növekszik-e a memóriahasználat. A Change Analysis segítségével eldöntheti, hogy az adott időszakban végrehajtott konfigurációs változások okozták-e ezt a növekedést.
 
 Az Application Change Analysis Service összesíti az [Azure Resource Graph](../../governance/resource-graph/how-to/get-resource-changes.md) változásait, valamint a beágyazott tulajdonságok változásait, például a hálózati biztonsági szabályokat a Azure Resource Managerból. 
 
 ## <a name="enabling-change-analysis"></a>Változások elemzésének engedélyezése
-A Change Analysis Azure Monitor for VMsban való bevezetéséhez regisztrálnia kell a *Microsoft. ChangeAnalysis* erőforrás-szolgáltatót. Amikor első alkalommal elindítja Azure Monitor for VMs vagy az alkalmazás változásának elemzését a Azure Portal, az erőforrás-szolgáltató automatikusan regisztrálva lesz. Az Application Change Analysis egy ingyenes szolgáltatás, amely nem rendelkezik teljesítménnyel az erőforrásokon.
+A virtuálisgép-elemzésekben a Change Analysis bevezetéséhez regisztrálnia kell a *Microsoft. ChangeAnalysis* erőforrás-szolgáltatót. Amikor első alkalommal indítja el a virtuálisgép-elemzéseket vagy az alkalmazások módosításának elemzését a Azure Portalban, a rendszer automatikusan regisztrálja az erőforrás-szolgáltatót. Az Application Change Analysis egy ingyenes szolgáltatás, amely nem rendelkezik teljesítménnyel az erőforrásokon.
 
 ## <a name="view-change-analysis"></a>Változási elemzés megtekintése
-A Change Analysis a Azure Monitor for VMs **teljesítmény** vagy **Térkép** lapján érhető el a **módosítás** lehetőség választásával. 
+A Change Analysis a VM-elemzések **teljesítmény** vagy **Térkép** lapján érhető el a **módosítás** lehetőség kiválasztásával. 
 
 [![Változások vizsgálata](media/vminsights-change-analysis/investigate-changes-screenshot.png)](media/vminsights-change-analysis/investigate-changes-screenshot-zoom.png#lightbox)
 

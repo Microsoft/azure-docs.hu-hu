@@ -3,12 +3,12 @@ title: Ismétlődő üzenetek észlelésének Azure Service Busa | Microsoft Doc
 description: Ez a cikk azt ismerteti, hogyan észlelhetők az ismétlődő elemek Azure Service Bus üzenetekben. Az ismétlődő üzenet figyelmen kívül hagyható, és eldobása is lehetséges.
 ms.topic: article
 ms.date: 01/13/2021
-ms.openlocfilehash: 8ff98b3a052be6004a2dc070f10d6f8c9ca0617f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 527c2dea34b02733907372b6e75a40a5ef5fc289
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684808"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711925"
 ---
 # <a name="duplicate-detection"></a>Duplikálás észlelése
 
@@ -48,7 +48,7 @@ A portálon a funkció be van kapcsolva az entitások létrehozásakor a **dupli
 
 Programozott módon beállíthatja a jelzőt a [QueueDescription. requiresDuplicateDetection](/dotnet/api/microsoft.servicebus.messaging.queuedescription.requiresduplicatedetection#Microsoft_ServiceBus_Messaging_QueueDescription_RequiresDuplicateDetection) tulajdonsággal a teljes keretrendszer .NET API-ban. A Azure Resource Manager API-val az érték a [queueProperties. requiresDuplicateDetection](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) tulajdonsággal van beállítva.
 
-A duplikált észlelési időelőzmények alapértelmezett értéke 30 másodperc a várólisták és a témakörök esetében, a maximális érték pedig hét nap. Ezt a beállítást a Azure Portal üzenetsor és témakör tulajdonságai ablakában módosíthatja.
+A duplikált észlelési időelőzmények alapértelmezés szerint 10 percet vesznek igénybe a várólisták és a témakörök esetében, és a minimális érték 20 másodperc, a maximális érték 7 nap. Ezt a beállítást a Azure Portal üzenetsor és témakör tulajdonságai ablakában módosíthatja.
 
 ![Képernyőkép a Service Bus funkcióról a Kiemelt tulajdonságok beállítással, valamint a pirosban megjelenő duplikált észlelési előzmények lehetőséggel.][2]
 

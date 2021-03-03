@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/11/2020
 ms.author: erhopf
-ms.openlocfilehash: 01e46ad8d139f2cab2fbb6499dc66c7af5ceb554
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: dbfe4a44f359f8db59ae80e04aae57164d0ccaf7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368763"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736848"
 ---
 # <a name="azure-cognitive-services-support-and-help-options"></a>Azure Cognitive Services támogatás és Súgó lehetőségek
 
@@ -52,18 +52,18 @@ Ha nem talál választ a problémára a kereséssel, küldjön új kérdést a M
 * [Language Understanding (LUIS)](/answers/topics/azure-language-understanding.html)
 * [QnA Maker](/answers/topics/azure-qna-maker.html)
 * [Text Analytics](/answers/topics/azure-text-analytics.html)
-* [Fordító](/answers/topics/azure-translator.html)
+* [Translator](/answers/topics/azure-translator.html)
 
 **Speech**
 
-* [Speech szolgáltatás](/answers/topics/azure-speech.html)
+* [Beszédfelismerési szolgáltatás](/answers/topics/azure-speech.html)
 
 
 **Döntés**
 
 * [Anomáliadetektor](/answers/topics/azure-anomaly-detector.html) 
 * [Content Moderator](/answers/topics/azure-content-moderator.html)
-* [Metrics Advisor (előzetes verzió)]()
+* [Metrikai tanácsadó (előzetes verzió)]()
 * [Personalizer](/answers/topics/azure-personalizer.html)
 
 ## <a name="post-a-question-to-stack-overflow"></a>Kérdés közzététele Stack Overflow
@@ -92,17 +92,17 @@ Ha új kérdést küld Stack Overflownek, a kérdés létrehozásakor használja
 * [Language Understanding (LUIS)](https://stackoverflow.com/search?q=azure+luis+language+understanding)
 * [QnA Maker](https://stackoverflow.com/search?q=azure+qna+maker)
 * [Text Analytics](https://stackoverflow.com/search?q=azure+text+analytics)
-* [Fordító](https://stackoverflow.com/search?q=azure+translator+text)
+* [Translator](https://stackoverflow.com/search?q=azure+translator+text)
 
 **Speech**
 
-* [Speech szolgáltatás](https://stackoverflow.com/search?q=azure+speech)
+* [Beszédfelismerési szolgáltatás](https://stackoverflow.com/search?q=azure+speech)
 
 **Döntés**
 
 * [Anomáliadetektor](https://stackoverflow.com/search?q=azure+anomaly+detector) 
 * [Content Moderator](https://stackoverflow.com/search?q=azure+content+moderator)
-* [Metrics Advisor (előzetes verzió)](https://stackoverflow.com/search?q=azure+metrics+advisor)
+* [Metrikai tanácsadó (előzetes verzió)](https://stackoverflow.com/search?q=azure+metrics+advisor)
 * [Personalizer](https://stackoverflow.com/search?q=azure+personalizer)
 
 ## <a name="submit-feedback-on-user-voice"></a>Visszajelzés küldése a felhasználói hangról
@@ -113,23 +113,34 @@ Ha új kérdést küld Stack Overflownek, a kérdés létrehozásakor használja
 
 Új szolgáltatások igényléséhez tegye közzé őket a UserVoice-on. Ossza meg ötleteit, hogy a Cognitive Services és az API-k jobban működjenek a fejlesztett alkalmazásoknál. 
 
-| Szolgáltatás                       | Cognitive Services UserVoice URL-címe |
-|-------------------------------|---------------|
-| Anomáliadetektor              | https://cognitive.uservoice.com/forums/912196-anomaly-detector |
-| Számítógépes látástechnológia               | https://cognitive.uservoice.com/forums/430309-computer-vision |
-| Content Moderator             | https://cognitive.uservoice.com/forums/559960-content-moderator |
-| Custom Vision                 | https://cognitive.uservoice.com/forums/598141-custom-vision-service |
-| Arcfelismerés                          | https://cognitive.uservoice.com/forums/430315-face |
-| Form Recognizer               | https://cognitive.uservoice.com/forums/921556-form-recognizer |
-| Ink Recognizer                | https://cognitive.uservoice.com/forums/921559-ink-recognizer |
-| Language Understanding (LUIS) | https://cognitive.uservoice.com/forums/551524-luis |
-| Personalizer                  | https://cognitive.uservoice.com/forums/921562-personalizer |
-| QnA Maker                     | https://cognitive.uservoice.com/forums/578689-qna-maker |
-| Beszédszolgáltatások               | https://cognitive.uservoice.com/forums/912208-speech-service |
-| Custom Speech                 | https://cognitive.uservoice.com/forums/555934-custom-speech-service |
-| Szövegelemzés                | https://cognitive.uservoice.com/forums/555922-text-analytics |
-| Fordító               | https://cognitive.uservoice.com/forums/558796-translator |
-| Video Indexer                 | https://cognitive.uservoice.com/forums/598144-video-indexer |
+* [Cognitive Services](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395737)
+
+**Látás**
+
+* [Computer Vision](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743)
+* [Custom Vision](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743)
+* [Face](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743)
+* [Form Recognizer](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743)
+* [Video Indexer](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743)
+
+**Nyelv**
+
+* [Modern olvasó](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749)
+* [Language Understanding (LUIS)](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749)
+* [QnA Maker](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749)
+* [Text Analytics](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749)
+* [Translator](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749)
+
+**Speech**
+
+* [Beszédfelismerési szolgáltatás](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395740)
+
+**Döntés**
+
+* [Anomáliadetektor](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395746) 
+* [Content Moderator](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395746)
+* [Metrikai tanácsadó (előzetes verzió)](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395746)
+* [Personalizer](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395746)
 
 ## <a name="stay-informed"></a>Hírek
 
@@ -140,7 +151,7 @@ Az Azure-blogon elérhető új kiadásokkal vagy Hírekkel kapcsolatos informác
 * A Cognitive Servicesról szóló híreket az [Azure blogban](https://azure.microsoft.com/blog/topics/cognitive-services/)osztjuk meg.
 * [Csatlakozzon a Reddit](https://www.reddit.com/r/AZURE/search/?q=Cognitive%20Services&restrict_sr=1) -ről a Cognitive Servicesról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Mi az Azure Cognitive Services?](./what-are-cognitive-services.md)

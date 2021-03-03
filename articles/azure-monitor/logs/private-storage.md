@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: 3c5a528ada9e7239f5c53da1cae6df7ceffac918
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4161f2f4ced848eb02d395dfb2da35d64f0c0fb6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100617475"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723061"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Ügyfél által kezelt tárfiókok használata az Azure Monitor Log Analyticsben
 
@@ -51,6 +51,7 @@ Ahhoz, hogy a Storage-fiók sikeresen csatlakozhasson a privát kapcsolathoz, a 
 * A Storage-fiók elérésének engedélyezése Azure Monitor számára. Ha úgy döntött, hogy csak a hálózatokat választja a Storage-fiókjához, válassza a "megbízható Microsoft-szolgáltatások elérésének engedélyezése a Storage-fiókhoz" kivételt.
 ![Storage-fiók megbízhatósága MS Services-rendszerkép](./media/private-storage/storage-trust.png)
 * Ha a munkaterület más hálózatokból is kezeli a forgalmat, akkor konfigurálnia kell a Storage-fiókot, hogy engedélyezze a kapcsolódó hálózatokból/internetről érkező bejövő forgalmat.
+* A TLS-verzió koordinálása az ügynökök és a Storage-fiók között – javasoljuk, hogy az adatküldés Log Analytics TLS 1,2 vagy újabb használatával történjen. Tekintse át a [platformra vonatkozó útmutatást](https://docs.microsoft.com/azure/azure-monitor/logs/data-security#sending-data-securely-using-tls-12), és ha szükséges, [konfigurálja az ügynököket a TLS 1,2 használatára](https://docs.microsoft.com/azure/azure-monitor/agents/agent-windows#configure-agent-to-use-tls-12). Ha valamilyen okból nem lehetséges, konfigurálja a Storage-fiókot a TLS 1,0 elfogadásához.
 
 ### <a name="using-a-customer-managed-storage-account-for-cmk-data-encryption"></a>Ügyfél által felügyelt Storage-fiók használata a CMK-alapú adattitkosításhoz
 Az Azure Storage-ban a Storage-fiókokban tárolt összes adatok titkosítva vannak. Alapértelmezés szerint a Microsoft által felügyelt kulcsokat (MMK) használja az adattitkosításhoz; Az Azure Storage azonban lehetővé teszi, hogy a CMK az Azure Key vaultból is használhassa a tárolási adatok titkosításához. Importálhatja a saját kulcsait Azure Key Vaultba, vagy használhatja a Azure Key Vault API-kat kulcsok létrehozásához.

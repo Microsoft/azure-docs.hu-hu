@@ -4,19 +4,21 @@ description: Azure Security teljesítményteszt v2 Endpoint Security
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 937d0b379c4f669e5b57e5053d5e3bffeb091e78
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 7672f4eb4530dbfb5d039b066fe7cf6eaf79e5a7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368953"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718641"
 ---
 # <a name="security-control-v2-endpoint-security"></a>Biztonsági vezérlő v2: Endpoint Security
 
 A Endpoint Security a végpontok észlelésével és válaszával kapcsolatos vezérlőket fedi le. Ez magában foglalja a végpontok észlelését és válaszát (EDR) és a kártevők elleni szolgáltatást az Azure-környezetekben található végpontokhoz.
+
+A megfelelő beépített Azure Policy megjelenítéséhez tekintse meg [Az Azure biztonsági teljesítményteszt szabályozási megfelelőségének beépített kezdeményezésének részleteit: Endpoint Security](../../governance/policy/samples/azure-security-benchmark#endpoint-security)
 
 ## <a name="es-1-use-endpoint-detection-and-response-edr"></a>ES-1: végpont-észlelés és-válasz használata (EDR)
 
@@ -26,13 +28,13 @@ A Endpoint Security a végpontok észlelésével és válaszával kapcsolatos ve
 
 A végpont-észlelési és-reagálási (EDR) képességek engedélyezése a kiszolgálók és az ügyfelek számára, valamint az SIEM-és biztonsági műveletek folyamatainak integrálására.
 
-A Microsoft Defender komplex veszélyforrások elleni védelem a nagyvállalati végpontok biztonsági platformjának részeként biztosít EDR képességet a fejlett fenyegetések megelőzésére, észlelésére, kivizsgálására és reagálására. 
+A Microsoft Defender for Endpoint a nagyvállalati végpontok biztonsági platformjának részeként egy EDR képességet biztosít a speciális fenyegetések megelőzésére, észlelésére, kivizsgálására és reagálására.
 
-- [A Microsoft Defender komplex veszélyforrások elleni védelem áttekintése](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)
+- [A Microsoft Defender for Endpoint áttekintése](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)
 
-- [Microsoft Defender ATP-szolgáltatás Windows-kiszolgálókhoz](/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints)
+- [Microsoft Defender a Windows Server rendszerhez készült végponthoz](/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints)
 
-- [Microsoft Defender ATP szolgáltatás a nem Windows rendszerű kiszolgálókhoz](/windows/security/threat-protection/microsoft-defender-atp/configure-endpoints-non-windows)
+- [Microsoft Defender a nem Windows rendszerű kiszolgálók végpontja számára](/windows/security/threat-protection/microsoft-defender-atp/configure-endpoints-non-windows)
 
 **Felelősség**: Ügyfél
 
@@ -56,7 +58,7 @@ A valós idejű és rendszeres vizsgálatra alkalmas, központilag felügyelt v�
 
 A Azure Security Center automatikusan képes azonosítani a virtuális gépek számos népszerű kártevő szoftveres megoldását, és jelentést készít az Endpoint Protection futási állapotáról, és javaslatokat tesz. 
 
-A Microsoft antimalware for Azure Cloud Services a Windows rendszerű virtuális gépek (VM) alapértelmezett kártevő szoftvere. Linux rendszerű virtuális gépek esetén használjon harmadik féltől származó antimalware-megoldást.  Az Azure Storage-fiókokba feltöltött kártevők észleléséhez használhatja a Azure Security Center veszélyforrások észlelését is az adatszolgáltatások számára. 
+A Microsoft antimalware for Azure Cloud Services a Windows rendszerű virtuális gépek (VM) alapértelmezett kártevő szoftvere. Linux rendszerű virtuális gépek esetén használjon harmadik féltől származó antimalware-megoldást. Az Azure Storage-fiókokba feltöltött kártevők észleléséhez használhatja a Azure Security Center veszélyforrások észlelését is az adatszolgáltatások számára. 
 
 - [A Microsoft antimalware konfigurálása Cloud Services és Virtual Machines](../fundamentals/antimalware.md)
 
@@ -80,9 +82,9 @@ A Microsoft antimalware for Azure Cloud Services a Windows rendszerű virtuális
 |--|--|--|--|
 | ES – 3 | 8.2 | SI-2, SI-3 |
 
-Győződjön meg arról, hogy a kártevők elleni aláírások gyorsan és következetesen frissülnek. 
+Győződjön meg arról, hogy a kártevők elleni aláírások gyorsan és következetesen frissülnek.
 
-Kövesse az Azure Security Center: "számítási alkalmazások" című témakörben található javaslatokat &amp; , hogy az összes végpont naprakész legyen a legújabb aláírásokkal. A Microsoft antimalware alapértelmezés szerint automatikusan telepíti a legújabb aláírásokat és a motor-frissítéseket. Linux esetén használjon harmadik féltől származó antimalware-megoldást.
+Kövesse az Azure Security Center: "számítás & alkalmazások" című témakörben található javaslatokat, hogy az összes végpont naprakész legyen a legújabb aláírásokkal. A Microsoft antimalware alapértelmezés szerint automatikusan telepíti a legújabb aláírásokat és a motor-frissítéseket. Linux esetén győződjön meg arról, hogy az aláírások frissülnek a harmadik féltől származó antimalware megoldásban.
 
 - [A Microsoft antimalware telepítése Azure Cloud Services és Virtual Machines](../fundamentals/antimalware.md)
 

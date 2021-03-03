@@ -8,22 +8,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/16/2020
+ms.date: 02/26/2021
 ms.author: justinha
-ms.openlocfilehash: 059f711269fd5f1eea9675f238a6003eaf1a0534
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: e8887cc39b48f090ff223e5e83c13d65b921dc0b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618110"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687498"
 ---
-# <a name="tutorial-create-and-use-replica-sets-for-resiliency-or-geolocation-in-azure-active-directory-domain-services-preview"></a>Oktatóanyag: replika-készletek létrehozása és használata a rugalmassághoz vagy a földrajzi helyekhez Azure Active Directory Domain Services (előzetes verzió)
+# <a name="tutorial-create-and-use-replica-sets-for-resiliency-or-geolocation-in-azure-active-directory-domain-services"></a>Oktatóanyag: replika-készletek létrehozása és használata a rugalmassághoz vagy a földrajzi helyekhez Azure Active Directory Domain Services
 
 Egy Azure Active Directory Domain Services (Azure AD DS) felügyelt tartomány rugalmasságának javításához, vagy az alkalmazásokhoz közelítő további földrajzi helyekre való üzembe helyezéshez használhat *replikakészlet-készleteket*. Minden Azure AD DS felügyelt tartományi névtér, például a *aaddscontoso.com*, egy kezdeti replikakészlet-készletet tartalmaz. A további replikák más Azure-régiókban való létrehozásának képessége földrajzi rugalmasságot biztosít a felügyelt tartományokhoz.
 
 Bármely olyan Azure-régióban, amely támogatja az Azure AD DS-t, hozzáadhat egy replikát bármely olyan társ virtuális hálózathoz.
-
-A replikakészlet a Azure AD Domain Services nyilvános előzetes verziója. Kérjük, vegye figyelembe, hogy az előzetes verzióban még elérhető funkciókra vonatkozó támogatási különbségek vannak. Az előzetes verziókkal kapcsolatos további információkért [Azure Active Directory előnézeti SLA](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)-t.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -78,7 +76,7 @@ További replikakészlet létrehozásához hajtsa végre a következő lépések
 
 1. A Azure Portal keresse meg és válassza a **Azure ad Domain Services** lehetőséget.
 1. Válassza ki a felügyelt tartományt, például *aaddscontoso.com*.
-1. A bal oldali oldalon válassza a **replika készletek (előzetes verzió)** lehetőséget. Minden felügyelt tartomány tartalmaz egy kezdeti replikát a kiválasztott régióban, ahogy az a következő példában látható:
+1. A bal oldali oldalon válassza a **másodpéldányok** lehetőséget. Minden felügyelt tartomány tartalmaz egy kezdeti replikát a kiválasztott régióban, ahogy az a következő példában látható:
 
     ![Példa képernyőképre egy replikakészlet megtekintéséhez és hozzáadásához a Azure Portal](./media/tutorial-create-replica-set/replica-set-list.png)
 
@@ -113,7 +111,7 @@ Egy replikakészlet törléséhez hajtsa végre a következő lépéseket:
 
 1. A Azure Portal keresse meg és válassza a **Azure ad Domain Services** lehetőséget.
 1. Válassza ki a felügyelt tartományt, például *aaddscontoso.com*.
-1. A bal oldali oldalon válassza a **replika készletek (előzetes verzió)** lehetőséget. A kópiakészlet listájából válassza a törölni kívánt replikakészlet melletti **...** helyi menüt.
+1. A bal oldali oldalon válassza a **másodpéldányok** lehetőséget. A kópiakészlet listájából válassza a törölni kívánt replikakészlet melletti **...** helyi menüt.
 1. A helyi menüben válassza a **Törlés** lehetőséget, majd erősítse meg, hogy törölni kívánja a replikát.
 
 > [!NOTE]

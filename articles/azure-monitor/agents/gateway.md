@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: a9b93cf05141442901531e745971ee16348cdaae
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d83ee4b53d4ccda9cb2af21fa0cb4c91822ec7c4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100615548"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732020"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Internet-hozzáférés nélküli számítógépek összekötése a Log Analytics átjáró használatával Azure Monitor
 
@@ -89,7 +89,7 @@ A Log Analytics átjáró a következő nyelveken érhető el:
 
 Az Log Analytics-átjáró csak Transport Layer Security (TLS) 1,0, 1,1 és 1,2 protokollt támogat.  Nem támogatja SSL (SSL) használatát.  A Log Analytics felé irányuló adatforgalom biztonsága érdekében konfigurálja az átjárót legalább TLS 1,2 használatára. A TLS vagy az SSL régebbi verziói sebezhetőek. Bár jelenleg lehetővé teszik a visszamenőleges kompatibilitást, ne használja őket.  
 
-További információkért tekintse át az [adatok biztonságos küldését a TLS 1,2 használatával](../platform/data-security.md#sending-data-securely-using-tls-12). 
+További információkért tekintse át az [adatok biztonságos küldését a TLS 1,2 használatával](../logs/data-security.md#sending-data-securely-using-tls-12). 
 
 ### <a name="supported-number-of-agent-connections"></a>Az ügynökök kapcsolatainak támogatott száma
 

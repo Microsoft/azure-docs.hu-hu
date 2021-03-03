@@ -4,12 +4,12 @@ description: Egy Azure-beli virtuális gép visszaállítása helyreállítási 
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 256998f2e687152bb63c9368af1a56f05bba7672
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: c15b2dc39202c6f8386031bcf055688aa2d279df
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820568"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722687"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure-beli virtuális gépekre vonatkozó Azure Portal visszaállítása
 
@@ -160,7 +160,7 @@ Ha a CRR engedélyezve van, megtekintheti a másodlagos régió biztonsági más
 
 A másodlagos régió visszaállítási felhasználói felülete hasonló lesz az elsődleges régió visszaállítási felhasználói felületéhez. Amikor konfigurálja a részleteket a visszaállítási konfiguráció ablaktáblán a visszaállítás konfigurálásához, a rendszer kérni fogja, hogy csak a másodlagos régió paramétereit adja meg.
 
-Jelenleg a másodlagos régió [RPO](azure-backup-glossary.md#rpo-recovery-point-objective) akár 12 órát is igénybe vehet az elsődleges régióból, bár az [olvasási hozzáférésű geo-REDUNDÁNS tárolás (ra-GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy#redundancy-in-a-secondary-region) replikációja 15 percet vesz igénybe.
+Jelenleg a másodlagos régió [RPO](azure-backup-glossary.md#rpo-recovery-point-objective) akár 12 órát is igénybe vehet az elsődleges régióból, bár az [olvasási hozzáférésű geo-REDUNDÁNS tárolás (ra-GRS)](../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) replikációja 15 percet vesz igénybe.
 
 ![A visszaállítani kívánt virtuális gép kiválasztása](./media/backup-azure-arm-restore-vms/sec-restore.png)
 
@@ -179,7 +179,7 @@ Jelenleg a másodlagos régió [RPO](azure-backup-glossary.md#rpo-recovery-point
 >- A régiók közötti visszaállítási funkció visszaállítja a CMK (ügyfél által felügyelt kulcsok) az Azure-beli virtuális gépeket, amelyek nem biztonsági mentést végeznek Recovery Services-tárolón, mivel nem CMK engedélyezett virtuális gépek a másodlagos régióban.
 >- A másodlagos régióban való visszaállításhoz szükséges Azure-szerepkörök ugyanazok, mint az elsődleges régióban.
 
-Az [Azure Zone rögzített virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/windows/create-portal-availability-zone) az azonos régió bármely [rendelkezésre állási zónájában](https://docs.microsoft.com/azure/availability-zones/az-overview) visszaállíthatók.
+Az [Azure Zone rögzített virtuális gépek](../virtual-machines/windows/create-portal-availability-zone.md) az azonos régió bármely [rendelkezésre állási zónájában](../availability-zones/az-overview.md) visszaállíthatók.
 
 A visszaállítási folyamat során megjelenik a **rendelkezésre állási zóna lehetőség.** Először az alapértelmezett zónát fogja látni. Egy másik zóna kiválasztásához válassza ki a kívánt zóna számát. Ha a rögzített zóna nem érhető el, nem fogja tudni visszaállítani az adott adatkészletet egy másik zónába, mert a biztonsági másolatban szereplő zonally nem replikálódnak.
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 01/28/2021
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 34223298dbf0dad9d9214676a5190bef063a8228
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 34168a02b5a2d2dfe74e2a5839e0bfddcf684222
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577038"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712181"
 ---
 # <a name="what-is-azure-private-link"></a>Mi az az Azure privát kapcsolat? 
 Az Azure Private link lehetővé teszi az Azure Pásti-szolgáltatások (például az Azure Storage és a SQL Database) és az Azure által üzemeltetett felhasználói/partneri szolgáltatások elérését a virtuális hálózat [privát végpontján](private-endpoint-overview.md) keresztül.
@@ -54,7 +54,7 @@ Az Azure Private link a következő előnyöket biztosítja:
 |  Azure Database for PostgreSQL – egyetlen kiszolgáló         | Összes nyilvános régió <br/> Minden kormányzati régió<br/>Minden kínai régió     | A általános célú és a memória optimalizált díjszabási szintjein támogatott | FE <br/> [Megtudhatja, hogyan hozhat létre saját végpontot a Azure Database for PostgreSQLhoz.](../postgresql/concepts-data-access-and-security-private-link.md)      |
 |  Azure Database for MySQL         | Összes nyilvános régió<br/> Minden kormányzati régió<br/>Minden kínai régió      |  | FE <br/> [Megtudhatja, hogyan hozhat létre saját végpontot a Azure Database for MySQLhoz.](../mysql/concepts-data-access-security-private-link.md)     |
 |  Azure Database for MariaDB         | Összes nyilvános régió<br/> Minden kormányzati régió<br/>Minden kínai régió     |  | FE <br/> [Megtudhatja, hogyan hozhat létre saját végpontot a Azure Database for MariaDBhoz.](../mariadb/concepts-data-access-security-private-link.md)      |
-|  Azure Digital Twins         | Az Azure Digital Twins által támogatott összes nyilvános régió     |  | Előnézet <br/> [Megtudhatja, hogyan hozhat létre privát végpontot az Azure Digital Twins szolgáltatáshoz.](../digital-twins/how-to-enable-private-link.md)      |
+|  Azure Digital Twins         | Az Azure Digital Twins által támogatott összes nyilvános régió     |  | Előnézet <br/> [Megtudhatja, hogyan hozhat létre privát végpontot az Azure Digital Twins szolgáltatáshoz.](../digital-twins/how-to-enable-private-link-portal.md)      |
 |  Azure Key Vault         | Összes nyilvános régió<br/> Minden kormányzati régió      |  | FE   <br/> [Megtudhatja, hogyan hozhat létre saját végpontot a Azure Key Vaulthoz.](../key-vault/general/private-link-service.md)   |
 |Azure Kubernetes Service – Kubernetes API | Összes nyilvános régió      |  | FE   <br/> [Ismerje meg, hogyan hozhat létre privát végpontot az Azure Kubernetes szolgáltatáshoz.](../aks/private-clusters.md)   |
 |Azure Search | Összes nyilvános régió <br/> Minden kormányzati régió | A szolgáltatás privát módban támogatott | FE   <br/> [Megtudhatja, hogyan hozhat létre saját végpontot a Azure Searchhoz.](../search/service-create-private-endpoint.md)    |

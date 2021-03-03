@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6f0ff7a54c2ad1fa1af649c8082498b442783c7e
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: cdcf22a42375949cc4d6be0b4f3062cee26219d6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608077"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704854"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Egyéni tartománynév vásárlása az Azure App Service-hez
 
@@ -211,7 +211,7 @@ Az Azure a következő módon bánik a lejáró vagy lejárt App Service tartom�
 * Ha az automatikus megújítás le van tiltva: 90 nappal a tartomány lejárata előtt, a rendszer elküldi a megújítási értesítő e-mailt, és a **megújítási tartomány** gomb aktiválva lesz a portálon.
 * Ha engedélyezve van az automatikus megújítás: a tartomány lejárati dátuma utáni napon az Azure megpróbál kiszámlázni a tartománynév megújítása után.
 * Ha hiba történik az automatikus megújítás során (például a kártyán a fájl lejárt), vagy ha az automatikus megújítás le van tiltva, és lehetővé teszi, hogy a tartomány lejárjon, az Azure értesíti a tartomány lejáratáról és a tartománynevet. A tartományt [manuálisan is megújíthatja](#renew-the-domain) .
-* Az Azure a lejárat után a 4. és a 12. napon belül további értesítő e-maileket küld. A tartományt [manuálisan is megújíthatja](#renew-the-domain) .
+* Az Azure a lejárat után a 4. és a 12. napon belül további értesítő e-maileket küld. A tartományt [manuálisan is megújíthatja](#renew-the-domain) . A lejáratot követő 5 napon belül a DNS-feloldás leáll a lejárt tartományhoz.
 * A lejárat utáni 19. napon a tartomány továbbra is érvényben marad, de a rendszer beváltási díjat számít fel. Az ügyfélszolgálat meghívásával megújíthatja a tartománynevet, a megújítási és beváltási díjakra is érvényes.
 * Az Azure a lejárat utáni 25. napon üzembe helyezi az árverést a tartománynév-ágazati aukciós szolgáltatással. Az ügyfélszolgálat meghívásával megújíthatja a tartománynevet, a megújítási és beváltási díjakra is érvényes.
 * A lejárat után 30 napon belül már nem tudja beváltani a tartományt.
@@ -266,7 +266,7 @@ Miután megvásárolta a App Service tartományt, öt napja van, hogy megszakít
 
 Az App Service alapértelmezés szerint az alkalmazáskód gyökérkönyvtárára irányítja a webes kérelmeket. Ha egy alkönyvtárba szeretné irányítani őket (például `public` :), tekintse át [az átirányítás egyéni könyvtárba](app-service-web-tutorial-custom-domain.md#redirect-to-a-custom-directory)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Útmutató egyéni TLS/SSL-tanúsítvány kötéséhez App Serviceához.
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 02/17/2021
 ms.author: jushiman
-ms.openlocfilehash: 6e0e582ed37230ba3f379f193a229cfec06f066c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d00a9c6012da7ad8d1566ef82bce628c7d47e7a7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101648033"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687006"
 ---
 # <a name="quickstart-enable-azure-automanage-for-virtual-machines-in-the-azure-portal"></a>Gyors útmutató: az Azure automanage engedélyezése virtuális gépekhez a Azure Portal
 
@@ -43,11 +43,11 @@ Jelentkezzen be az [Azure Portalra](https://aka.ms/AutomanagePortal-Ignite21).
 
 3. Válassza az első **lépések** lehetőséget.
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\VMManage-GetStarted.png" alt-text="Első lépések: egyetlen virtuális gép.":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\vmmanage-getstartedbutton.png" alt-text="Első lépések: egyetlen virtuális gép.":::
 
 4. Válassza ki az egyéni felügyelet beállításait (környezet, beállítások, automanage Account), és kattintson az **Engedélyezés** elemre.
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\VMManage-Enable.png" alt-text="Engedélyezés egyetlen virtuális gépen.":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\vmmanage-enablepane.png" alt-text="Engedélyezés egyetlen virtuális gépen.":::
 
 ## <a name="enable-automanage-for-multiple-vms"></a>Több virtuális gép autofelügyeletének engedélyezése
 
@@ -64,42 +64,39 @@ Jelentkezzen be az [Azure Portalra](https://aka.ms/AutomanagePortal-Ignite21).
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-select-machine.png" alt-text="Válassza ki a meglévő virtuális gépet az elérhető virtuális gépek listájából.":::
 
-4. A **konfigurációs profil** területen kattintson a Tallózás gombra, és válassza a **profilok és beállítások módosítása** elemet.
+4. A **környezet** területen válassza ki a környezet típusát: **fejlesztési/tesztelési** vagy **éles** környezetben. 
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-quick-create.png" alt-text="Profilok és beállítások tallózása és módosítása.":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-quick-create.png" alt-text="Válassza a környezetek lehetőséget.":::
 
-5. A **konfigurációs profil és beállítások kiválasztása panelen** :
-    1. Válasszon ki egy profilt a bal oldalon: *fejlesztési/tesztelési* teszt *, éles* üzemi környezet.
-    1. Kattintson a **kiválasztás** gombra.
+   Kattintson a **környezet részleteinek összehasonlítása** lehetőségre a környezetek közötti különbségek megtekintéséhez.
+    1. Válasszon ki egy környezetet a legördülő menüben: fejlesztés */tesztelés* tesztelésre, éles *üzemi* környezetben.
+    1. Kattintson az **OK** gombra.
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="Tallózás a termelési konfigurációs profilban.":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="Tallózás éles környezetben.":::
+
+5. Alapértelmezés szerint az **Azure ajánlott eljárásokat** választotta a konfigurációs beállításokhoz. Ennek módosításához hozzon létre egy új előnyt, vagy válasszon ki egy meglévőt. 
+
+    :::image type="content" source="media\quick-create-virtual-machine-portal\create-preference.png" alt-text="Beállítások létrehozása":::
 
 6. Kattintson az **Engedélyezés** gombra.
 
 
 ## <a name="enable-automanage-for-a-new-vm"></a>Új virtuális gép autokezelésének engedélyezése
 
-Egy új virtuális gép létrehozásához jelentkezzen be [a Azure Portalba, és](https://aka.ms/AutomanagePortal-Ignite21) engedélyezze az autofelügyeletet.
+Egy új virtuális gép létrehozásához jelentkezzen be [a Azure Portalba, és](https://aka.ms/AzureAutomanagePreview) engedélyezze az autofelügyeletet.
 
-1. Kattintson az Azure Portal bal felső sarkában az **Erőforrás létrehozása** gombra.
-
-2. Az Azure Marketplace-erőforrások listája felett található keresőmezőbe keresse meg és válassza ki a használni kívánt rendszerképet, majd válassza a **Létrehozás** lehetőséget.
+1. Töltse ki az **alapok** lapot a virtuális gép adataival.
 
 > [!NOTE]
-> A támogatott [Linux-disztribúciók](automanage-linux.md#supported-linux-distributions-and-versions) és a [Windows Server-verziók](automanage-windows-server.md#supported-windows-server-versions)felügyeletének ellenőrzését.
+> Győződjön meg arról, hogy a [támogatott régiókat](automanage-virtual-machines#supported-regions) és a támogatott [Linux-disztribúciókat](automanage-linux.md#supported-linux-distributions-and-versions) és a [Windows Server-verziókat](automanage-windows-server.md#supported-windows-server-versions)a felügyeli.
 
-3. Töltse ki az **alapok** lapot a virtuális gép adataival.
+2. Tallózással keresse meg a **felügyelet** lapot, és válassza ki az **automanage-környezetet**.
 
-> [!NOTE]
-> Győződjön meg arról, hogy a [támogatott régiók](automanage-virtual-machines#supported-regions)autokezelése.
+    :::image type="content" source="media\quick-create-virtual-machine-portal\vmcreate-managementtab.png" alt-text="Az autokezelés engedélyezése a felügyelet lapon.":::
 
-4. Tallózással keresse meg a **felügyelet** lapot, és válassza ki az **automanage-környezetet**.
+3. Hagyja meg a többi alapértelmezett beállítást, és kattintson a **Felülvizsgálat + létrehozás** gombra a lap alján.
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\VMCreate-Management-Tab.png" alt-text="Az autokezelés engedélyezése a felügyelet lapon.":::
-
-5. Hagyja meg a többi alapértelmezett beállítást, és kattintson a **Felülvizsgálat + létrehozás** gombra a lap alján.
-
-6. Amikor megjelenik az érvényesítés által átadott üzenet, válassza a **Létrehozás** lehetőséget.
+4. Amikor megjelenik az érvényesítés által átadott üzenet, válassza a **Létrehozás** lehetőséget.
 
 ## <a name="disable-automanage-for-vms"></a>Virtuális gépek autokezelésének letiltása
 
@@ -131,4 +128,4 @@ Ebben a rövid útmutatóban engedélyezte a virtuális gépek Azure-beli felüg
 Ismerje meg, hogyan hozhat létre és alkalmazhat testreszabott beállításokat, amikor engedélyezi az automatikus felügyeletet a virtuális gépen.
 
 > [!div class="nextstepaction"]
-> [Azure-beli automatikus felügyelet virtuális gépekhez – egyéni konfigurációs profil](virtual-machines-custom-preferences.md)
+> [Azure automatikus felügyelet virtuális gépekhez – egyéni konfigurációs beállítások](virtual-machines-custom-preferences.md)

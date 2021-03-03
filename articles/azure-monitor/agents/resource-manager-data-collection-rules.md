@@ -6,15 +6,15 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: f98e22ba28dcd05d164f40c301a2e43df66898de
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 60de25231f5fad3e7b1ddec21048d048e31f3416
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627439"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737324"
 ---
 # <a name="resource-manager-template-samples-for-data-collection-rules-in-azure-monitor"></a>Resource Manager-sablonok minták a Azure Monitor adatgyűjtési szabályaihoz
-Ez a cikk minta [Azure Resource Manager sablonokat](../../azure-resource-manager/templates/template-syntax.md) tartalmaz a [log Analytics-ügynök](../platform/log-analytics-agent.md) és a [diagnosztikai bővítmény](../platform/diagnostics-extension-overview.md) üzembe helyezéséhez és konfigurálásához a Azure monitor-ben. Mindegyik minta tartalmaz egy sablonfájlt és egy, a sablonhoz adni kívánt minta értékeket tartalmazó paramétereket tartalmazó fájlt.
+Ez a cikk minta [Azure Resource Manager sablonokat](../../azure-resource-manager/templates/template-syntax.md) tartalmaz a [log Analytics-ügynök](./log-analytics-agent.md) és a [diagnosztikai bővítmény](./diagnostics-extension-overview.md) üzembe helyezéséhez és konfigurálásához a Azure monitor-ben. Mindegyik minta tartalmaz egy sablonfájlt és egy, a sablonhoz adni kívánt minta értékeket tartalmazó paramétereket tartalmazó fájlt.
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
@@ -144,6 +144,6 @@ Az alábbi minta egy Azure arc-kompatibilis kiszolgáló és egy adatgyűjtési 
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [További Azure monitor-sablonok beszerzése](../samples/resource-manager-samples.md).
-* [További információ a log Analytics-ügynökről](../platform/log-analytics-agent.md).
-* [További információ a diagnosztikai bővítményről](../platform/diagnostics-extension-overview.md).
+* [További Azure monitor-sablonok beszerzése](../resource-manager-samples.md).
+* [További információ a log Analytics-ügynökről](./log-analytics-agent.md).
+* [További információ a diagnosztikai bővítményről](./diagnostics-extension-overview.md).

@@ -4,12 +4,12 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan készíthet biztons�
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f146bed9ee607fe1b1b6062f9fe372fbb9b9ba6a
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: ba06ef876f30dc51e04fe7491d491621f5d8e21b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746745"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710600"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Oktatóanyag: SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépen az Azure CLI használatával
 
@@ -176,11 +176,9 @@ e0f15dae-7cac-4475-a833-f52c50e5b6c3  saphanaResourceGroup
 A válasz megadja a feladatnév nevét. Ez a feladatnév használható a feladatok állapotának nyomon követésére az az [Backup Job show](/cli/azure/backup/job#az-backup-job-show) parancsmag használatával.
 
 >[!NOTE]
->A teljes vagy különbözeti biztonsági másolat ütemezése mellett manuálisan is aktiválhatja őket. A naplók biztonsági mentését a rendszer automatikusan aktiválja és felügyeli SAP HANA belsőleg.
->
-> Az Azure Backup jelenleg nem támogatja a növekményes biztonsági mentéseket.
+>A naplók biztonsági mentését a rendszer automatikusan aktiválja és felügyeli SAP HANA belsőleg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha meg szeretné tudni, hogyan állíthatja vissza SAP HANA adatbázist az Azure virtuális gépen a parancssori felület használatával, folytassa az Oktatóanyaggal – [SAP HANA adatbázis visszaállítása az Azure virtuális gépen a CLI használatával](tutorial-sap-hana-restore-cli.md)
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory összekötők hibáinak megoldása
+title: Azure Data Factory-összekötők hibaelhárítása
 description: Megtudhatja, hogyan lehet elhárítani a Azure Data Factory összekötői problémáit.
 author: linda33wj
 ms.service: data-factory
@@ -7,14 +7,14 @@ ms.topic: troubleshooting
 ms.date: 02/08/2021
 ms.author: jingwang
 ms.custom: has-adal-ref
-ms.openlocfilehash: 63a690ffaaefc506de296d43e7de13020fbd584a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 574c4967c1e45ce1ae2be92d8648d654322e2244
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100366925"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727821"
 ---
-# <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory összekötők hibáinak megoldása
+# <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory-összekötők hibaelhárítása
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -28,7 +28,7 @@ Ez a cikk az Azure Data Factory-összekötővel kapcsolatos problémák elhárí
 
 - **OK**: a blob Storage művelettel kapcsolatos probléma.
 
-- **Javaslat**: a hiba részleteinek megtekintéséhez tekintse meg a [blob Storage hibakódokat](https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codes). További segítségért forduljon a Blob Storage csapatához.
+- **Javaslat**: a hiba részleteinek megtekintéséhez tekintse meg a [blob Storage hibakódokat](/rest/api/storageservices/blob-service-error-codes). További segítségért forduljon a Blob Storage csapatához.
 
 
 ### <a name="invalid-property-during-copy-activity"></a>Érvénytelen tulajdonság a másolási tevékenység során
@@ -164,7 +164,7 @@ Ez a cikk az Azure Data Factory-összekötővel kapcsolatos problémák elhárí
   | Elemzés oka                                               | Ajánlás                                               |
   | :----------------------------------------------------------- | :----------------------------------------------------------- |
   | Ha Azure Data Lake Storage Gen2 hibát jelez, a művelet sikertelen volt.| A Azure Data Lake Storage Gen2 által kiváltott részletes hibaüzenetek megtekintése. Ha a hiba átmeneti hiba, próbálja megismételni a műveletet. További segítségért forduljon az Azure Storage támogatási szolgálatához, és adja meg a kérelem AZONOSÍTÓját a hibaüzenetben. |
-  | Ha a hibaüzenet tartalmazza a "tiltott" karakterláncot, akkor előfordulhat, hogy az Ön által használt egyszerű szolgáltatásnév vagy felügyelt identitás nem rendelkezik megfelelő engedélyekkel a Azure Data Lake Storage Gen2 eléréséhez. | A hiba megoldásához tekintse meg az [Adatmásolási és-átalakítási Azure Data Lake Storage Gen2 Azure Data Factory használatával](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication)című témakört. |
+  | Ha a hibaüzenet tartalmazza a "tiltott" karakterláncot, akkor előfordulhat, hogy az Ön által használt egyszerű szolgáltatásnév vagy felügyelt identitás nem rendelkezik megfelelő engedélyekkel a Azure Data Lake Storage Gen2 eléréséhez. | A hiba megoldásához tekintse meg az [Adatmásolási és-átalakítási Azure Data Lake Storage Gen2 Azure Data Factory használatával](./connector-azure-data-lake-storage.md#service-principal-authentication)című témakört. |
   | Ha a hibaüzenet tartalmazza a "InternalServerError" karakterláncot, a Azure Data Lake Storage Gen2 visszaadja a hibát. | Előfordulhat, hogy a hibát egy átmeneti hiba okozta. Ha mégis, próbálja meg újra elvégezni a műveletet. Ha a probléma továbbra is fennáll, forduljon az Azure Storage támogatási szolgálatához, és adja meg a kérelem AZONOSÍTÓját a hibaüzenetből. |
 
 ### <a name="request-to-azure-data-lake-storage-gen2-account-caused-a-timeout-error"></a>A Azure Data Lake Storage Gen2 fiókra vonatkozó kérelem időtúllépési hibát okozott.
@@ -204,7 +204,7 @@ Ez a cikk az Azure Data Factory-összekötővel kapcsolatos problémák elhárí
 
 - **OK**: a Azure Files tárolási művelettel kapcsolatos probléma.
 
-- **Javaslat**: a hiba részleteinek megtekintéséhez tekintse meg a [Azure Files súgóját](https://docs.microsoft.com/rest/api/storageservices/file-service-error-codes). További segítségért forduljon a Azure Files csapatához.
+- **Javaslat**: a hiba részleteinek megtekintéséhez tekintse meg a [Azure Files súgóját](/rest/api/storageservices/file-service-error-codes). További segítségért forduljon a Azure Files csapatához.
 
 
 ## <a name="azure-synapse-analytics-azure-sql-database-and-sql-server"></a>Azure szinapszis analitika, Azure SQL Database és SQL Server
@@ -216,12 +216,12 @@ Ez a cikk az Azure Data Factory-összekötővel kapcsolatos problémák elhárí
 
     | Elemzés oka                                               | Ajánlás                                               |
     | :----------------------------------------------------------- | :----------------------------------------------------------- |
-    | Az Azure SQL esetében, ha a hibaüzenet tartalmazza a "SqlErrorNumber = 47073" karakterláncot, az azt jelenti, hogy a nyilvános hálózati hozzáférés megtagadva a kapcsolati beállításban. | Az Azure SQL tűzfalon állítsa a *nem* értékre a **nyilvános hálózati hozzáférés megtagadása** beállítást. További információ: [Azure SQL-kapcsolati beállítások](https://docs.microsoft.com/azure/azure-sql/database/connectivity-settings#deny-public-network-access). |
-    | Az Azure SQL esetében, ha a hibaüzenet tartalmaz egy SQL-hibakódot (például "SqlErrorNumber = [errorcode]"), tekintse meg az Azure SQL hibaelhárítási útmutatóját. | Javaslat: [kapcsolódási problémák és egyéb hibák elhárítása Azure SQL Database és az Azure SQL felügyelt példányával](https://docs.microsoft.com/azure/azure-sql/database/troubleshoot-common-errors-issues). |
-    | Ellenőrizze, hogy a 1433-es port a tűzfal engedélyezési listájában van-e. | További információ: [SQL Server által használt portok](https://docs.microsoft.com/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access#ports-used-by-). |
-    | Ha a hibaüzenet tartalmazza a "SqlException" karakterláncot, SQL Database a hiba azt jelzi, hogy egy adott művelet meghiúsult. | További információ: SQL-hibakód keresése az [adatbázismotor hibáiban](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors). További segítségért forduljon az Azure SQL támogatási szolgálatához. |
-    | Ha ez egy átmeneti probléma (például instabil hálózati kapcsolatok), az újrapróbálkozáshoz adja hozzá a tevékenység-házirendben az Újrapróbálkozás lehetőséget. | További információ: [folyamatok és tevékenységek Azure Data Factoryban](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities#activity-policy). |
-    | Ha a hibaüzenet tartalmazza az "ügyfél IP-címmel"... karakterláncot. a kiszolgáló nem érhető el, és a Azure SQL Databasehoz próbál csatlakozni, a hibát általában egy Azure SQL Database tűzfallal kapcsolatos probléma okozza. | Az Azure SQL Server tűzfal konfigurációjában engedélyezze az **Azure-szolgáltatások és-erőforrások elérésének engedélyezése ehhez a kiszolgálóhoz** lehetőséget. További információ: [Azure SQL Database és az Azure szinapszis IP-tűzfalszabályok](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure). |
+    | Az Azure SQL esetében, ha a hibaüzenet tartalmazza a "SqlErrorNumber = 47073" karakterláncot, az azt jelenti, hogy a nyilvános hálózati hozzáférés megtagadva a kapcsolati beállításban. | Az Azure SQL tűzfalon állítsa a *nem* értékre a **nyilvános hálózati hozzáférés megtagadása** beállítást. További információ: [Azure SQL-kapcsolati beállítások](../azure-sql/database/connectivity-settings.md#deny-public-network-access). |
+    | Az Azure SQL esetében, ha a hibaüzenet tartalmaz egy SQL-hibakódot (például "SqlErrorNumber = [errorcode]"), tekintse meg az Azure SQL hibaelhárítási útmutatóját. | Javaslat: [kapcsolódási problémák és egyéb hibák elhárítása Azure SQL Database és az Azure SQL felügyelt példányával](../azure-sql/database/troubleshoot-common-errors-issues.md). |
+    | Ellenőrizze, hogy a 1433-es port a tűzfal engedélyezési listájában van-e. | További információ: [SQL Server által használt portok](/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access#ports-used-by-). |
+    | Ha a hibaüzenet tartalmazza a "SqlException" karakterláncot, SQL Database a hiba azt jelzi, hogy egy adott művelet meghiúsult. | További információ: SQL-hibakód keresése az [adatbázismotor hibáiban](/sql/relational-databases/errors-events/database-engine-events-and-errors). További segítségért forduljon az Azure SQL támogatási szolgálatához. |
+    | Ha ez egy átmeneti probléma (például instabil hálózati kapcsolatok), az újrapróbálkozáshoz adja hozzá a tevékenység-házirendben az Újrapróbálkozás lehetőséget. | További információ: [folyamatok és tevékenységek Azure Data Factoryban](./concepts-pipelines-activities.md#activity-policy). |
+    | Ha a hibaüzenet tartalmazza az "ügyfél IP-címmel"... karakterláncot. a kiszolgáló nem érhető el, és a Azure SQL Databasehoz próbál csatlakozni, a hibát általában egy Azure SQL Database tűzfallal kapcsolatos probléma okozza. | Az Azure SQL Server tűzfal konfigurációjában engedélyezze az **Azure-szolgáltatások és-erőforrások elérésének engedélyezése ehhez a kiszolgálóhoz** lehetőséget. További információ: [Azure SQL Database és az Azure szinapszis IP-tűzfalszabályok](../azure-sql/database/firewall-configure.md). |
     
 ### <a name="error-code-sqloperationfailed"></a>Hibakód: SqlOperationFailed
 
@@ -231,9 +231,9 @@ Ez a cikk az Azure Data Factory-összekötővel kapcsolatos problémák elhárí
 
     | Elemzés oka                                               | Ajánlás                                               |
     | :----------------------------------------------------------- | :----------------------------------------------------------- |
-    | Ha a hibaüzenet tartalmazza a "SqlException" karakterláncot, SQL Database hibát jelez, ami azt jelzi, hogy egy bizonyos művelet meghiúsult. | Ha az SQL-hiba nem egyértelmű, próbálja meg módosítani az adatbázist a legújabb kompatibilitási szintre (150). Ez a verzió a legújabb SQL-hibákat dobja el. További információért lásd a [dokumentációt](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat). <br/> További információ az SQL-hibák elhárításáról: SQL-hibakód keresése az [adatbázismotor hibáiban](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors). További segítségért forduljon az Azure SQL támogatási szolgálatához. |
+    | Ha a hibaüzenet tartalmazza a "SqlException" karakterláncot, SQL Database hibát jelez, ami azt jelzi, hogy egy bizonyos művelet meghiúsult. | Ha az SQL-hiba nem egyértelmű, próbálja meg módosítani az adatbázist a legújabb kompatibilitási szintre (150). Ez a verzió a legújabb SQL-hibákat dobja el. További információért lásd a [dokumentációt](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat). <br/> További információ az SQL-hibák elhárításáról: SQL-hibakód keresése az [adatbázismotor hibáiban](/sql/relational-databases/errors-events/database-engine-events-and-errors). További segítségért forduljon az Azure SQL támogatási szolgálatához. |
     | Ha a hibaüzenet tartalmazza a "PdwManagedToNativeInteropException" karakterláncot, azt általában a forrás-és a fogadó oszlop méretének eltérése okozza. | A forrás és a fogadó oszlop méretének megkeresése. További segítségért forduljon az Azure SQL támogatási szolgálatához. |
-    | Ha a hibaüzenet tartalmazza a "InvalidOperationException" karakterláncot, azt általában érvénytelen bemeneti adatok okozzák. | Annak azonosításához, hogy melyik sor észlelte a problémát, engedélyezze a hibatűrési funkciót a másolási tevékenységnél, amely további vizsgálat céljából átirányíthatja a problémás sorokat a tárolóba. További információ: a [másolási tevékenység hibatűrése Azure Data Factoryban](https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance). |
+    | Ha a hibaüzenet tartalmazza a "InvalidOperationException" karakterláncot, azt általában érvénytelen bemeneti adatok okozzák. | Annak azonosításához, hogy melyik sor észlelte a problémát, engedélyezze a hibatűrési funkciót a másolási tevékenységnél, amely további vizsgálat céljából átirányíthatja a problémás sorokat a tárolóba. További információ: a [másolási tevékenység hibatűrése Azure Data Factoryban](./copy-activity-fault-tolerance.md). |
 
 
 ### <a name="error-code-sqlunauthorizedaccess"></a>Hibakód: SqlUnauthorizedAccess
@@ -331,7 +331,7 @@ Ez a cikk az Azure Data Factory-összekötővel kapcsolatos problémák elhárí
 
 - **OK**: az SQL tömeges másolása nem sikerült, mert érvénytelen oszlopot kapott a tömeges másolási program segédprogram (BCP) ügyfelétől.
 
-- **Javaslat**: a problémát észlelő sor azonosításához engedélyezze a hibatűrés funkciót a másolási tevékenységnél. Ez további vizsgálat céljából átirányíthatja a problémás sorokat a tárolóba. További információ: a [másolási tevékenység hibatűrése Azure Data Factoryban](https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance).
+- **Javaslat**: a problémát észlelő sor azonosításához engedélyezze a hibatűrés funkciót a másolási tevékenységnél. Ez további vizsgálat céljából átirányíthatja a problémás sorokat a tárolóba. További információ: a [másolási tevékenység hibatűrése Azure Data Factoryban](./copy-activity-fault-tolerance.md).
 
 
 ### <a name="error-code-sqlconnectionisclosed"></a>Hibakód: SqlConnectionIsClosed
@@ -470,7 +470,7 @@ Ez a cikk az Azure Data Factory-összekötővel kapcsolatos problémák elhárí
 
 - **Üzenet**: `Error thrown from driver. Sql code: '%code;'`
 
-- **OK**: Ha a hibaüzenet tartalmazza a "SQLSTATE = 51002 SQLCODE =-805" karakterláncot, kövesse a "Tipp" című részt az [adatok másolása DB2-ből Azure Data Factory használatával](https://docs.microsoft.com/azure/data-factory/connector-db2#linked-service-properties).
+- **OK**: Ha a hibaüzenet tartalmazza a "SQLSTATE = 51002 SQLCODE =-805" karakterláncot, kövesse a "Tipp" című részt az [adatok másolása DB2-ből Azure Data Factory használatával](./connector-db2.md#linked-service-properties).
 
 - **Javaslat**: próbálkozzon a "NULLID" beállítással a `packageCollection`  tulajdonságban.
 
@@ -647,7 +647,7 @@ Ez a cikk az Azure Data Factory-összekötővel kapcsolatos problémák elhárí
 
 - **OK**: a Azure Data Factory nem támogatja a parketta formátumát.
 
-- **Javaslat**: Ellenőrizze a forrásadatokat úgy, hogy a [másolási tevékenység által támogatott fájlformátumokat és tömörítési kodekeket Azure Data Factory](https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs).
+- **Javaslat**: Ellenőrizze a forrásadatokat úgy, hogy a [másolási tevékenység által támogatott fájlformátumokat és tömörítési kodekeket Azure Data Factory](./supported-file-formats-and-compression-codecs.md).
 
 
 ### <a name="error-code-parquetmisseddecimalprecisionscale"></a>Hibakód: ParquetMissedDecimalPrecisionScale
@@ -683,7 +683,7 @@ Ez a cikk az Azure Data Factory-összekötővel kapcsolatos problémák elhárí
 
 - **OK**: az adattípusok nem alakíthatók át a leképezések. forrásban megadott típusra.
 
-- **Javaslat**: Ellenőrizze a forrásadatokat, vagy adja meg a megfelelő adattípust ehhez az oszlophoz a másolási tevékenység oszlop leképezésében. További információ: [másolási tevékenység által támogatott fájlformátumok és tömörítési kodekek Azure Data Factoryban](https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs).
+- **Javaslat**: Ellenőrizze a forrásadatokat, vagy adja meg a megfelelő adattípust ehhez az oszlophoz a másolási tevékenység oszlop leképezésében. További információ: [másolási tevékenység által támogatott fájlformátumok és tömörítési kodekek Azure Data Factoryban](./supported-file-formats-and-compression-codecs.md).
 
 
 ### <a name="error-code-parquetdatacountnotmatchcolumncount"></a>Hibakód: ParquetDataCountNotMatchColumnCount
@@ -831,7 +831,7 @@ Ez a cikk az Azure Data Factory-összekötővel kapcsolatos problémák elhárí
 
     Ha a titkos kulcs tartalma a kulcstartóból származik, az eredeti kulcsfájl működhet, ha közvetlenül az SFTP társított szolgáltatásba tölti fel.
 
-    További információkért lásd: [adatok másolása az SFTP-kiszolgálóra Azure Data Factory használatával](https://docs.microsoft.com/azure/data-factory/connector-sftp#using-ssh-public-key-authentication). A titkos kulcs tartalma Base64 kódolású titkos SSH-kulcs.
+    További információkért lásd: [adatok másolása az SFTP-kiszolgálóra Azure Data Factory használatával](./connector-sftp.md#using-ssh-public-key-authentication). A titkos kulcs tartalma Base64 kódolású titkos SSH-kulcs.
 
     Kódolja a *teljes* eredeti titkos kulcsot Base64 kódolással, és tárolja a kódolt karakterláncot a kulcstartóban. Az eredeti titkos kulcsfájl az a fájl, amely az SFTP társított szolgáltatásban működhet, ha a fájlból a **feltöltés** lehetőséget választja.
 
@@ -902,7 +902,7 @@ Ez a cikk az Azure Data Factory-összekötővel kapcsolatos problémák elhárí
     Ha előléptetni szeretné az alacsony átviteli sebességet, forduljon az SFTP-rendszergazdához, és növelje az egyidejű kapcsolati korlátot, vagy hajtsa végre az alábbi műveletek egyikét:
 
     * Ha saját üzemeltetésű IR-t használ, adja hozzá a saját üzemeltetésű IR-gép IP-címét az engedélyezési listához.
-    * Ha Azure IR használ, vegyen fel [Azure Integration Runtime IP-címeket](https://docs.microsoft.com/azure/data-factory/azure-integration-runtime-ip-addresses). Ha nem szeretne IP-címtartományt hozzáadni az SFTP-kiszolgáló engedélyezési listájához, használja helyette a saját üzemeltetésű IR-t.
+    * Ha Azure IR használ, vegyen fel [Azure Integration Runtime IP-címeket](./azure-integration-runtime-ip-addresses.md). Ha nem szeretne IP-címtartományt hozzáadni az SFTP-kiszolgáló engedélyezési listájához, használja helyette a saját üzemeltetésű IR-t.
 
 ## <a name="sharepoint-online-list"></a>SharePoint Online-lista
 
@@ -961,7 +961,7 @@ Ez a cikk az Azure Data Factory-összekötővel kapcsolatos problémák elhárí
 
 - **OK**: a saját üzemeltetésű IR nem találja a Java futtatókörnyezetet. Az egyes források olvasásához Java futtatókörnyezet szükséges.
 
-- **Javaslat**: Ellenőrizze az integrációs modul környezetét, lásd: saját üzemeltetésű [Integration Runtime használata](https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime).
+- **Javaslat**: Ellenőrizze az integrációs modul környezetét, lásd: saját üzemeltetésű [Integration Runtime használata](./format-parquet.md#using-self-hosted-integration-runtime).
 
 
 ### <a name="error-code-wildcardpathsinknotsupported"></a>Hibakód: WildcardPathSinkNotSupported

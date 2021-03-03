@@ -4,16 +4,16 @@ description: Ismerje meg az Azure-beli régiókat és Availability Zoneseket, ho
 author: prsandhu
 ms.service: azure
 ms.topic: conceptual
-ms.date: 01/26/2021
+ms.date: 02/23/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: dae5319e6c8b87d6a9eef98875ad7e8da623e65c
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 4adfb63ecab72eb42e188af472bb5387a0276a79
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955800"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723775"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Régiók és Availability Zones az Azure-ban
 
@@ -23,7 +23,7 @@ Microsoft Azure szolgáltatások globálisan elérhetők a Felhőbeli műveletek
 
 A régiók és Availability Zones az Azure-ban való jobb megismeréséhez segít megérteni a kulcsfontosságú feltételeket vagy fogalmakat.
 
-| Kifejezés vagy fogalom | Description |
+| Kifejezés vagy fogalom | Leírás |
 | --- | --- |
 | régió | A késés által meghatározott kerületben üzembe helyezett adatközpontok halmaza, amely egy dedikált regionális, kis késleltetésű hálózaton keresztül csatlakozik. |
 | földrajz | A világ egyik területe, amely legalább egy Azure-régiót tartalmaz. A földrajzi területek olyan diszkrét piacot határoznak meg, amely megőrizheti az adattárolási és megfelelőségi határokat. A régiócsoportok lehetővé teszik, hogy a speciális adattárolási és megfelelőségi igényekkel rendelkező ügyfelek földrajzilag közel tárolhassák adataikat és alkalmazásaikat. A földrajzi területek hibatűrők, hogy a teljes régió meghibásodása a dedikált nagy kapacitású hálózati infrastruktúrával való kapcsolaton keresztül álljanak. |
@@ -31,7 +31,7 @@ A régiók és Availability Zones az Azure-ban való jobb megismeréséhez segí
 | javasolt régió | Egy régió, amely a szolgáltatások széles skáláját biztosítja, és úgy lett kialakítva, hogy támogassa a Availability Zones most vagy a jövőben. Ezek a Azure Portal a **javasolt** módon vannak kijelölve. |
 | alternatív (egyéb) régió | Olyan régió, amely kibővíti az Azure-t az adatrezidensi határon belül, ahol egy javasolt régió is létezik. A másodlagos régiók segítik a késés optimalizálását, és egy második régiót biztosítanak a vész-helyreállítási igényeknek. Ezeket nem a Availability Zones támogatására tervezték (bár az Azure rendszeresen értékeli ezeket a régiókat annak megállapítása érdekében, hogy az ajánlott régiók legyenek). Ezek a Azure Portal vannak kijelölve.  |
 | alapszolgáltatás | Egy alapszintű Azure-szolgáltatás, amely minden régióban elérhető, amikor a régió általánosan elérhető. |
-| mainstream szolgáltatás | Egy Azure-szolgáltatás, amely a régió/szolgáltatás általános rendelkezésre állása vagy igény szerinti rendelkezésre állása mellett, a különböző régiókban található 12 hónapon belül minden javasolt régióban elérhető. |
+| mainstream szolgáltatás | Egy Azure-szolgáltatás, amely az összes 90 javasolt régióban elérhető, a régió általános rendelkezésre állása vagy igény szerinti rendelkezésre állása mellett, alternatív régiókban. |
 | speciális szolgáltatás | Egy olyan Azure-szolgáltatás, amely igény szerinti rendelkezésre állást biztosít a régiók számára a testreszabott/speciális hardverek által támogatott régiókban. |
 | regionális szolgáltatás | Egy regionálisan üzembe helyezett Azure-szolgáltatás, amely lehetővé teszi az ügyfél számára, hogy megadja azt a régiót, amelybe a szolgáltatás telepítve lesz. A teljes listát lásd: [régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/?products=all). |
 | nem regionális szolgáltatás | Egy Azure-szolgáltatás, amelynek nincs függősége egy adott Azure-régióban. A nem regionális szolgáltatások üzembe helyezése két vagy több régióban történik, és ha regionális hiba fordul elő, a szolgáltatás egy másik régióban lévő példánya folytatja az ügyfelek kiszolgálását. A teljes listát lásd: [régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/?products=all). |
@@ -69,8 +69,8 @@ Az Azure-szolgáltatások régiókban való rendelkezésre állásának megköze
 
 Az Azure-szolgáltatások három kategóriába sorolhatók: az alapszintű, a mainstream és a specializált szolgáltatásokra. Az Azure általános szabályzata, amely a szolgáltatások bármely régióba való üzembe helyezését végzi, elsősorban a régió típusa, a szolgáltatási kategóriák és az ügyfél igényei szerint:
 
-- Alapszintű **– minden** ajánlott és alternatív régióban elérhető, ha a régió általánosan elérhető, vagy az új alapszolgáltatás általánosan elérhetővé válását követő 12 hónapon belül.
-- **Mainstream** – az összes ajánlott régióban elérhető a régió/szolgáltatás általános elérhetőségét követő 12 hónapon belül. az alternatív régiókban igény szerint vezérelt (számos más régióba már telepítve van).
+- Alapszintű **– minden** ajánlott és alternatív régióban elérhető, amikor a régió általánosan elérhető, vagy egy új, általánosan elérhetővé váló alapszolgáltatásból 90 napon belül.
+- **Mainstream** (általános) – az összes javasolt régióban elérhető, a régió általános rendelkezésre állása 90 napon belül. az alternatív régiókban igény szerint vezérelt (számos más régióba már telepítve van).
 - **Specializált** – célzott szolgáltatások, amelyek gyakran az iparág által irányított vagy speciális hardverrel támogatottak. Az igény szerinti rendelkezésre állás régiók között (sok már a javasolt régiók nagy részébe van telepítve).
 
 Ha szeretné megtekinteni, hogy mely szolgáltatások lettek üzembe helyezve egy adott régióban, valamint az előzetes verzió vagy a szolgáltatások általános elérhetősége egy adott régióban, tekintse meg a [régiókban elérhető termékeket](https://azure.microsoft.com/global-infrastructure/services/?products=all).
@@ -82,78 +82,129 @@ Ha egy szolgáltatási ajánlat nem érhető el egy adott régióban, a Microsof
 | Ajánlott | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Igény szerint vezérelt | :heavy_check_mark: | :heavy_check_mark: |
 | Alternatív | :heavy_check_mark: | :heavy_check_mark: | Igény szerint vezérelt | Igény szerint vezérelt | N/A | :heavy_check_mark: |
 
-### <a name="services-by-category"></a>Szolgáltatások kategóriánként
+### <a name="services-by-category-with-availability-zones"></a>Szolgáltatások kategóriánként Availability Zones
 
-Ahogy azt korábban említettük, az Azure három kategóriába sorolja a szolgáltatásokat: az alapszintű, a mainstream és a Specialized. A szolgáltatási kategóriák az általános rendelkezésre álláshoz vannak rendelve. A szolgáltatások gyakran elindítják az életciklusát speciális szolgáltatásként, és az igény és a kihasználtság növelését a mainstream vagy az Foundation is támogatja. A következő táblázat az alapszintű, a mainstream vagy a specializált szolgáltatások kategóriáit sorolja fel. Vegye figyelembe a következőket a tábláról:
+Ahogy azt korábban említettük, az Azure három kategóriába sorolja a szolgáltatásokat: az alapszintű, a mainstream és a Specialized. A szolgáltatási kategóriák az általános rendelkezésre álláshoz vannak rendelve. A szolgáltatások gyakran elindítják az életciklusát speciális szolgáltatásként, és az igény és a kihasználtság növelését a mainstream vagy az Foundation is támogatja. A következő táblázat az alapszintű szolgáltatások kategóriáit sorolja fel. Vegye figyelembe a következőket a tábláról:
 
 - Egyes szolgáltatások nem regionálisak. További információ és a nem regionális szolgáltatások listája: [régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/).
-- A régebbi generációs virtuális gépek nincsenek felsorolva. További információ: a [virtuális gépek méreteinek korábbi generációinak](../virtual-machines/sizes-previous-gen.md) dokumentációja
+- A szolgáltatások vagy virtuális gépek régebbi generációja nem szerepel a felsorolásban. További információ: a [virtuális gépek méreteinek korábbi generációinak](../virtual-machines/sizes-previous-gen.md) dokumentációja
 - . A szolgáltatások nem kapnak kategóriát az általános Elérhetőségig (GA). További információ és az előzetes verziójú szolgáltatások listája: [régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/). 
 
 > [!div class="mx-tableFixed"]
-> | Alapító                          | Mainstream                                        | Specializált                                          |
-> |---------------------------------------|---------------------------------------------------|------------------------------------------------------|
-> | Storage-fiókok                      | API Management                                    | Azure API for FHIR                                   |
-> | Application Gateway                   | Alkalmazás konfigurációja                                 | Azure Analysis Services                              |
-> | Azure Backup                          | App Service                                       | Azure Cognitive Services: anomália detektor           |
-> | Azure Cosmos DB                       | Automation                                        | Azure Cognitive Services: Custom Vision              |
-> | 2. generációs Azure Data Lake Storage          | Azure Active Directory tartományi szolgáltatások            | Azure Cognitive Services: űrlap-felismerő            |
-> | Azure ExpressRoute                    | Azure Bastion                                     | Azure Cognitive Services: személyre szabás               |
-> | Azure-beli nyilvános IP-cím                       | Azure Cache for Redis                             | Azure Cognitive Services: QnA Maker                  |
-> | Azure SQL Database                    | Azure Cognitive Search                            | Azure Database for MariaDB                           |
-> | Azure SQL: felügyelt példány          | Azure Cognitive Services                          | Azure Database Migration Service                     |
-> | Cloud Services                        | Azure Cognitive Services: Computer Vision         | Azure Dedicated HSM                                  |
-> | Cloud Services: Av2-Series            | Azure Cognitive Services: Content Moderator       | Azure Digital Twins                                  |
-> | Cloud Services: Dv2-Series            | Azure Cognitive Services: Face                    | Azure Health bot                                     |
-> | Cloud Services: Dv3-Series            | Azure Cognitive Services: lebilincselő olvasó        | Azure HPC Cache                                      |
-> | Cloud Services: Ev3-Series            | Azure Cognitive Services: Language Understanding  | Azure Lab Services                                   |
-> | Cloud Services: példányok szintjének IP-címei    | Azure Cognitive Services: beszédfelismerési szolgáltatások         | Azure NetApp Files                                   |
-> | Cloud Services: Fenntartott IP           | Azure Cognitive Services: Text Analytics          | Azure SignalR szolgáltatás                                |
-> | Disk Storage                          | Azure Cognitive Services: fordító              | Azure Spring Cloud szolgáltatás                           |
-> | Event Hubs                            | Azure Data Explorer                               | Azure Time Series Insights                           |
-> | Key Vault                             | Azure Data Share                                  | Azure VMware Solution                                |
-> | Terheléselosztóval                         | Azure Database for MySQL                          | Azure VMware Solution by CloudSimple                 |
-> | Service Bus                           | Azure Database for PostgreSQL                     | Cloud Services: H sorozat                             |
-> | Service Fabric                        | Azure Databricks                                  | Data Catalog                                         |
-> | Tárolás: gyors/ritka Blob Storage rétegek  | Azure DDoS Protection                             | Data Lake Analytics                                  |
-> | Tárterület: Managed Disks                | Azure DevTest Labs                                | Azure Machine Learning Studio (klasszikus)              |
-> | Virtual Machine Scale Sets            | Azure Firewall                                    | Spatial Anchors                                      |
-> | Virtual Machines                      | Azure Firewall Manager                            | Tárterület: Archive Storage                             |
-> | Virtual Machines: Av2-Series          | Azure Functions                                   | StorSimple                                           |
-> | Virtual Machines: Bs-Series           | Azure IoT Hub                                     | Ultra Disk Storage                                   |
-> | Virtual Machines: DSv2-Series         | Azure Kubernetes Service (AKS)                    | Video Indexer                                        |
-> | Virtual Machines: DSv3-Series         | Azure Machine Learning                            | Virtual Machines: DASv4-Series                       |
-> | Virtual Machines: Dv2-Series          | Azure Monitor: Application Insights               | Virtual Machines: DAv4-Series                        |
-> | Virtual Machines: Dv3-Series          | Azure Monitor: Log Analytics                      | Virtual Machines: DCsv2 sorozat                       |
-> | Virtual Machines: ESv3-Series         | Azure Private Link                                | Virtual Machines: EASv4-Series                       |
-> | Virtual Machines: Ev3-Series          | Azure Red Hat OpenShift                           | Virtual Machines: EAv4-Series                        |
-> | Virtual Machines: példányok szintjének IP-címei  | Azure Site Recovery                               | Virtual Machines: HBv1-Series                        |
-> | Virtual Machines: Fenntartott IP         | Azure Stream Analytics                            | Virtual Machines: HBv2-Series                        |
-> | Virtual Network                       | Azure Synapse Analytics                           | Virtual Machines: HCv1-Series                        |
-> | VPN Gateway                           | Batch                                             | Virtual Machines: H sorozat                           |
-> |                                       | Cloud Services: M sorozat                          | Virtual Machines: LSv2-Series                        |
-> |                                       | Container Instances                               | Virtual Machines: Mv2-Series                         |
-> |                                       | Container Registry                                | Virtual Machines: NCv3-Series                        |
-> |                                       | Data Factory                                      | Virtual Machines: NDv2-Series                        |
-> |                                       | Event Grid                                        | Virtual Machines: NVv3-Series                        |
-> |                                       | HDInsight                                         | Virtual Machines: NVv4-Series                        |> 
-> |                                       | Logic Apps                                        | Virtual Machines: SAP HANA on Azure Large Instances  |
-> |                                       | Media Services                                    |                                                      |
-> |                                       | Network Watcher                                   |                                                      |
-> |                                       | Notification Hubs                                 |                                                      |
-> |                                       | Prémium Blob Storage                              |                                                      |
-> |                                       | Premium Files Storage                             |                                                      |
-> |                                       | Virtual Machines: Ddsv4-Series                    |                                                      |
-> |                                       | Virtual Machines: Ddv4-Series                     |                                                      |
-> |                                       | Virtual Machines: Dsv4-Series                     |                                                      |
-> |                                       | Virtual Machines: Dv4-Series                      |                                                      |
-> |                                       | Virtual Machines: Edsv4-Series                    |                                                      |
-> |                                       | Virtual Machines: Edv4-Series                     |                                                      |
-> |                                       | Virtual Machines: Esv4-Series                     |                                                      |
-> |                                       | Virtual Machines: Ev4-Series                      |                                                      |
-> |                                       | Virtual Machines: Fsv2-Series                     |                                                      |
-> |                                       | Virtual Machines: M sorozat                        |                                                      |
-> |                                       | Virtuális WAN                                       |                                                      |
+> | Alapító                           | Mainstream                                        | 
+> |----------------------------------------|---------------------------------------------------|
+> | Storage-fiókok                       | API Management                                    | 
+> | Application Gateway                    | Alkalmazás konfigurációja                                 | 
+> | Azure Backup                           | App Service                                       | 
+> | Azure Cosmos DB                        | Automation                                        | 
+> | 2. generációs Azure Data Lake Storage           | Azure Active Directory tartományi szolgáltatások            | 
+> | Azure ExpressRoute                     | Azure Bastion                                     | 
+> | Azure-beli nyilvános IP-cím                        | Azure Cache for Redis                             | 
+> | Azure SQL Database                     | Azure Cognitive Search                            | 
+> | Azure SQL: felügyelt példány           | Azure Cognitive Services                          | 
+> | Disk Storage                           | Azure Cognitive Services: Computer Vision         | 
+> | Event Hubs                             | Azure Cognitive Services: Content Moderator       | 
+> | Key Vault                              | Azure Cognitive Services: Face                    | 
+> | Terheléselosztóval                          | Azure Cognitive Services: lebilincselő olvasó        | 
+> | Service Bus                            | Azure Cognitive Services: Language Understanding  | 
+> | Service Fabric                         | Azure Cognitive Services: beszédfelismerési szolgáltatások         | 
+> | Tárolás: gyors/ritka Blob Storage rétegek   | Azure Cognitive Services: Text Analytics          | 
+> | Tárterület: Managed Disks                 | Azure Cognitive Services: fordító              | 
+> | Virtual Machine Scale Sets             | Azure Data Explorer                               | 
+> | Virtual Machines                       | Azure Data Share                                  | 
+> | Virtual Machines: Azure dedikált gazdagép | Azure Database for MySQL                          | 
+> | Virtual Machines: Av2-Series           | Azure Database for PostgreSQL                     | 
+> | Virtual Machines: Bs-Series            | Azure DDoS Protection                             | 
+> | Virtual Machines: DSv2-Series          | Azure Firewall                                    | 
+> | Virtual Machines: DSv3-Series          | Azure Firewall Manager                            | 
+> | Virtual Machines: Dv2-Series           | Azure Functions                                   | 
+> | Virtual Machines: Dv3-Series           | Azure IoT Hub                                     |     
+> | Virtual Machines: ESv3-Series          | Azure Kubernetes Service (AKS)                    | 
+> | Virtual Machines: Ev3-Series           | Azure Machine Learning                            | 
+> | Virtual Network                        | Azure Monitor: Application Insights               | 
+> | VPN Gateway                            | Azure Monitor: Log Analytics                      | 
+> |                                        | Azure Private Link                                | 
+> |                                        | Azure Red Hat OpenShift                           | 
+> |                                        | Azure Site Recovery                               | 
+> |                                        | Azure Stream Analytics                            | 
+> |                                        | Azure Synapse Analytics                           | 
+> |                                        | Batch                                             | 
+> |                                        | Cloud Services: M sorozat                          | 
+> |                                        | Container Instances                               | 
+> |                                        | Container Registry                                | 
+> |                                        | Data Factory                                      | 
+> |                                        | Event Grid                                        | 
+> |                                        | HDInsight                                         |  
+> |                                        | Logic Apps                                        | 
+> |                                        | Media Services                                    | 
+> |                                        | Network Watcher                                   | 
+> |                                        | Notification Hubs                                 | 
+> |                                        | Prémium Blob Storage                              | 
+> |                                        | Premium Files Storage                             | 
+> |                                        | Virtual Machines: Ddsv4-Series                    | 
+> |                                        | Virtual Machines: Ddv4-Series                     | 
+> |                                        | Virtual Machines: Dsv4-Series                     | 
+> |                                        | Virtual Machines: Dv4-Series                      | 
+> |                                        | Virtual Machines: Edsv4-Series                    | 
+> |                                        | Virtual Machines: Edv4-Series                     | 
+> |                                        | Virtual Machines: Esv4-Series                     | 
+> |                                        | Virtual Machines: Ev4-Series                      | 
+> |                                        | Virtual Machines: Fsv2-Series                     | 
+> |                                        | Virtual Machines: M sorozat                        | 
+> |                                        | Virtuális WAN                                       | 
+
+
+
+### <a name="specialized-services"></a>Speciális szolgáltatások
+Ahogy azt korábban említettük, az Azure három kategóriába sorolja a szolgáltatásokat: az alapszintű, a mainstream és a Specialized. A szolgáltatási kategóriák az általános rendelkezésre álláshoz vannak rendelve. A szolgáltatások gyakran elindítják az életciklusát speciális szolgáltatásként, és az igény és a kihasználtság növelését a mainstream vagy az Foundation is támogatja. A következő táblázat a speciális szolgáltatásokat sorolja fel. 
+
+> [!div class="mx-tableFixed"]
+> | Specializált                                          |
+> |------------------------------------------------------|
+> | Azure API for FHIR                                   |
+> | Azure Analysis Services                              |
+> | Azure Cognitive Services: anomália detektor           |
+> | Azure Cognitive Services: Custom Vision              |
+> | Azure Cognitive Services: űrlap-felismerő            |
+> | Azure Cognitive Services: személyre szabás               |
+> | Azure Cognitive Services: QnA Maker                  |
+> | Azure Database for MariaDB                           |
+> | Azure Database Migration Service                     |
+> | Azure Dedicated HSM                                  |
+> | Azure Digital Twins                                  |
+> | Azure Health bot                                     |
+> | Azure HPC Cache                                      |
+> | Azure Lab Services                                   |
+> | Azure NetApp Files                                   |
+> | Azure SignalR szolgáltatás                                |
+> | Azure Spring Cloud szolgáltatás                           |
+> | Azure Time Series Insights                           |
+> | Azure VMware Solution                                |
+> | Azure VMware Solution by CloudSimple                 |
+> | Data Lake Analytics                                  |
+> | Azure Machine Learning Studio (klasszikus)              |
+> | Spatial Anchors                                      |
+> | Tárterület: Archive Storage                             |
+> | Ultra Disk Storage                                   |
+> | Video Indexer                                        |
+> | Virtual Machines: DASv4-Series                       |
+> | Virtual Machines: DAv4-Series                        |
+> | Virtual Machines: DCsv2 sorozat                       |
+> | Virtual Machines: EASv4-Series                       |
+> | Virtual Machines: EAv4-Series                        |
+> | Virtual Machines: HBv1-Series                        |
+> | Virtual Machines: HBv2-Series                        |
+> | Virtual Machines: HCv1-Series                        |
+> | Virtual Machines: H sorozat                           |
+> | Virtual Machines: LSv2-Series                        |
+> | Virtual Machines: Mv2-Series                         |
+> | Virtual Machines: NCv3-Series                        |
+> | Virtual Machines: NDv2-Series                        |
+> | Virtual Machines: NVv3-Series                        |
+> | Virtual Machines: NVv4-Series                        | 
+> | Virtual Machines: SAP HANA on Azure Large Instances  |
+
+
 
 
 ## <a name="next-steps"></a>Következő lépések

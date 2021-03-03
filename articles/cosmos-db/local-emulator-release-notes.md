@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: 12983f43e5f778cdf46c2ea3e0177d43838e5b47
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: ff20479062e31bb61756b3de7bbf04540b2d5598
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051598"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690396"
 ---
 # <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Azure Cosmos DB Emulator – kibocsátási megjegyzések és letöltési információk
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -27,9 +27,14 @@ Ez a cikk a Azure Cosmos DB Emulator kibocsátási megjegyzéseit mutatja be az 
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
+### <a name="21111-22-february-2021"></a>2.11.11 (22 február 2021)
+
+ - Ez a kiadás frissíti a helyi Adatkezelő tartalmat a legújabb Azure Portal verzióra.
+
+
 ### <a name="21110-5-january-2021"></a>2.11.10 (5 január 2021)
 
- - Ez a kiadás frissíti a helyi Adatkezelő tartalmat az Azure Portal legújabb verziójára, és egy új nyilvános lehetőséget ("/ExportPemCert") ad hozzá, amely lehetővé teszi, hogy az emulátor felhasználója közvetlenül exportálja a nyilvános emulátor tanúsítványát. PEM-fájl.
+ - Ez a kiadás frissíti a helyi Adatkezelő tartalmat a legújabb Azure Portal verzióra, és egy új nyilvános lehetőséget ("/ExportPemCert") ad hozzá, amely lehetővé teszi, hogy az emulátor felhasználója közvetlenül exportálja a nyilvános emulátor tanúsítványát. PEM-fájl.
 
 ### <a name="2119-3-december-2020"></a>2.11.9 (2020. december 3.)
 

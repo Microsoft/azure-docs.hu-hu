@@ -12,19 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: 5c715804693571bc421951de1288fc884d2eae8d
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 23e116eba6393f834b3368901d4440e668b16fca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746184"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724285"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Fejlett többlépcsős támadások észlelése az Azure Sentinelben
 
-
 > [!IMPORTANT]
-> Az Azure Sentinel néhány fúziós funkciója jelenleg **nyilvános előzetes** verzióban érhető el.
-> Ezeket a szolgáltatásokat szolgáltatói szerződés nélkül biztosítjuk, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bizonyos fúziós észlelések (lásd alább láthatók) jelenleg **előzetes** verzióban érhetők el. Tekintse meg a kiegészítő [használati feltételeket a Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) előzetes verziókra vonatkozó további jogi feltételekhez, amelyek olyan Azure-szolgáltatásokra vonatkoznak, amelyek a bétaverzióban, az előzetes verzióban vagy más esetben még nem jelent meg általánosan elérhetővé.
 
 A gépi tanuláson alapuló fúziós technológiával az Azure Sentinel képes automatikusan észlelni a többlépcsős támadásokat a rendellenes viselkedések és a gyanús tevékenységek kombinációinak azonosításával, amelyek a kill-Chain különböző szakaszaiban figyelhetők meg. Ezen észlelések alapján az Azure Sentinel olyan incidenseket hoz létre, amelyeket egyébként nehéz lenne megfogni. Ezek az incidensek két vagy több riasztást vagy tevékenységet tartalmaznak. A tervezés szerint ezek az incidensek kis mennyiségű, magas megbízhatóságú és nagy súlyosságú.
 
@@ -60,12 +58,12 @@ A fentiekben leírtaknak megfelelően a Fusion a különböző termékekből sz�
 A fúziós támadásokkal kapcsolatos észlelési forgatókönyvek engedélyezéséhez a felsorolt adatforrásokat a társított Azure Sentinel-adatösszekötők használatával kell bevenni.
 
 > [!NOTE]
-> Ezen forgatókönyvek némelyike **nyilvános előzetes** verzióban érhető el. A rendszer ezt jelzi.
+> Ezen forgatókönyvek némelyike **előzetes** verzióban érhető el. A rendszer ezt jelzi.
 
 ## <a name="compute-resource-abuse"></a>Számítási erőforrásokkal való visszaélés
 
 ### <a name="multiple-vm-creation-activities-following-suspicious-azure-active-directory-sign-in"></a>Több virtuális gépre vonatkozó létrehozási tevékenység a gyanús Azure Active Directory bejelentkezést követően
-Ez a forgatókönyv jelenleg **nyilvános előzetes** verzióban érhető el.
+Ez a forgatókönyv jelenleg **előzetes** verzióban érhető el.
 
 **Mitre ATT&CK-taktika:** Kezdeti hozzáférés, hatás 
 
@@ -214,7 +212,7 @@ Ez a forgatókönyv jelenleg **nyilvános előzetes** verzióban érhető el.
 ### <a name="suspicious-inbox-manipulation-rules-set-following-suspicious-azure-ad-sign-in"></a>Gyanús beérkezett fájlok kezelésére vonatkozó szabályok a gyanús Azure AD-bejelentkezést követően
 Ez a forgatókönyv két fenyegetési besoroláshoz tartozik a listában: az **kiszűrése** és az **oldalirányú mozgást**. Az érthetőség kedvéért mindkét szakaszban megjelenik.
 
-Ez a forgatókönyv jelenleg **nyilvános előzetes** verzióban érhető el.
+Ez a forgatókönyv jelenleg **előzetes** verzióban érhető el.
 
 **Mitre ATT&CK-taktika:** Kezdeti hozzáférés, oldalirányú mozgás, kiszűrése
 
@@ -235,7 +233,7 @@ Ez a forgatókönyv jelenleg **nyilvános előzetes** verzióban érhető el.
 - **Bejelentkezési esemény a felhasználótól olyan kiszivárgott hitelesítő adatokkal, amelyek gyanús beérkezett fájlok manipulációs szabályához vezetnek**
 
 ### <a name="multiple-power-bi-report-sharing-activities-following-suspicious-azure-ad-sign-in"></a>Több Power BI jelentés-megosztási tevékenység a gyanús Azure AD-bejelentkezést követően 
-Ez a forgatókönyv jelenleg **nyilvános előzetes** verzióban érhető el.
+Ez a forgatókönyv jelenleg **előzetes** verzióban érhető el.
 
 **Mitre ATT&CK-taktika:** Kezdeti hozzáférés, kiszűrése 
 
@@ -256,7 +254,7 @@ Ez a forgatókönyv jelenleg **nyilvános előzetes** verzióban érhető el.
 - **Bejelentkezési esemény a felhasználótól a kiszivárgott hitelesítő adatokkal, amelyek több Power BI jelentéskészítési tevékenységhez vezetnek**
 
 ### <a name="suspicious-power-bi-report-sharing-following-suspicious-azure-ad-sign-in"></a>Gyanús Power BI jelentés megosztása a gyanús Azure AD-bejelentkezés után
-Ez a forgatókönyv jelenleg **nyilvános előzetes** verzióban érhető el.
+Ez a forgatókönyv jelenleg **előzetes** verzióban érhető el.
 
 **Mitre ATT&CK-taktika:** Kezdeti hozzáférés, kiszűrése 
 
@@ -299,7 +297,7 @@ Ez a forgatókönyv jelenleg **nyilvános előzetes** verzióban érhető el.
 - **Bejelentkezési esemény a felhasználótól a kiszivárgott hitelesítő adatokkal, amelyek a tömeges fájlok törlését eredményezik**
 
 ### <a name="suspicious-email-deletion-activity-following-suspicious-azure-ad-sign-in"></a>Gyanús e-mail törlési tevékenység gyanús Azure AD-bejelentkezést követően
-Ez a forgatókönyv jelenleg **nyilvános előzetes** verzióban érhető el.
+Ez a forgatókönyv jelenleg **előzetes** verzióban érhető el.
 
 **Mitre ATT&CK-taktika:** Kezdeti hozzáférés, hatás 
 
@@ -322,7 +320,7 @@ Ez a forgatókönyv jelenleg **nyilvános előzetes** verzióban érhető el.
 ## <a name="denial-of-service"></a>Szolgáltatásmegtagadás
 
 ### <a name="multiple-vm-delete-activities-following-suspicious-azure-ad-sign-in"></a>Több virtuális gép törlése tevékenységek a gyanús Azure AD-bejelentkezés után
-Ez a forgatókönyv jelenleg **nyilvános előzetes** verzióban érhető el.
+Ez a forgatókönyv jelenleg **előzetes** verzióban érhető el.
 
 **Mitre ATT&CK-taktika:** Kezdeti hozzáférés, hatás
 
@@ -367,7 +365,7 @@ Ez a forgatókönyv jelenleg **nyilvános előzetes** verzióban érhető el.
 ### <a name="suspicious-inbox-manipulation-rules-set-following-suspicious-azure-ad-sign-in"></a>Gyanús beérkezett fájlok kezelésére vonatkozó szabályok a gyanús Azure AD-bejelentkezést követően
 Ez a forgatókönyv két fenyegetési besoroláshoz tartozik a következő listában: **oldalirányú mozgás** és **az adatkiszűrése**. Az érthetőség kedvéért mindkét szakaszban megjelenik.
 
-Ez a forgatókönyv jelenleg **nyilvános előzetes** verzióban érhető el.
+Ez a forgatókönyv jelenleg **előzetes** verzióban érhető el.
 
 **Mitre ATT&CK-taktika:** Kezdeti hozzáférés, oldalirányú mozgás, kiszűrése
 
@@ -412,7 +410,7 @@ Ez a forgatókönyv jelenleg **nyilvános előzetes** verzióban érhető el.
 ## <a name="malicious-execution-with-legitimate-process"></a>Rosszindulatú végrehajtás legitim folyamattal
 
 ### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>A PowerShell gyanús hálózati kapcsolatban tartott, majd a Palo Alto Networks tűzfal által megjelölt rendellenes forgalom következik.
-Ez a forgatókönyv jelenleg **nyilvános előzetes** verzióban érhető el.
+Ez a forgatókönyv jelenleg **előzetes** verzióban érhető el.
 
 **Mitre ATT&CK-taktika:** Végrehajtási
 
@@ -423,7 +421,7 @@ Ez a forgatókönyv jelenleg **nyilvános előzetes** verzióban érhető el.
 **Leírás:** Az ilyen típusú fúziós incidensek azt jelzik, hogy egy PowerShell-paranccsal kezdeményezték a kimenő kapcsolódási kérelmeket, és ezt követően a rendszer rendellenes bejövő tevékenységeket észlelt a Palo Alto Networks tűzfalon. Ez azt jelzi, hogy egy támadó valószínűleg hozzáfért a hálózathoz, és rosszindulatú műveleteket próbál végrehajtani. Az ezt a mintát követő PowerShell-kapcsolati kísérletek jelezhetik a kártevők parancs-és vezérlési tevékenységeket, a további kártevők letöltésére vonatkozó kéréseket, illetve a távoli interaktív hozzáférést létrehozó támadót. Ahogy az összes "élő a szárazföldön" támadás is, ez a tevékenység a PowerShell jogos használata lehet. Azonban a PowerShell-parancs végrehajtása, amelyet a gyanús bejövő tűzfal tevékenység követ, növeli a PowerShell rosszindulatú módon való használatának megbízhatóságát, és további vizsgálatot kell végeznie. A Palo Alto-naplókban az Azure Sentinel a [veszélyforrások naplóira](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)koncentrál, és a forgalom gyanúsnak minősül, ha a fenyegetések engedélyezettek (gyanús adatok, fájlok, árvizek, csomagok, vizsgálatok, kémprogramok, URL-címek, vírusok, sebezhetőségek, Futótűz-vírusok, erdőtüzek). A további riasztási részletekért tekintse meg a fúziós incidens leírásában szereplő, a [fenyegetés/tartalom típusnak](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) megfelelő Palo Alto Threat log hivatkozást is.
 
 ### <a name="suspicious-remote-wmi-execution-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Gyanús távoli WMI-végrehajtás, amelyet a Palo Alto Networks tűzfal által megjelölt rendellenes forgalom követ
-Ez a forgatókönyv jelenleg **nyilvános előzetes** verzióban érhető el.
+Ez a forgatókönyv jelenleg **előzetes** verzióban érhető el.
 
 **Mitre ATT&CK-taktika:** Végrehajtás, felderítés
 
@@ -456,7 +454,7 @@ Ez a forgatókönyv jelenleg **nyilvános előzetes** verzióban érhető el.
 ## <a name="malware-c2-or-download"></a>Kártevő C2 vagy Letöltés
 
 ### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Hálózati kérelem a TOR névtelenítésével szolgáltatáshoz, amelyet a Palo Alto Networks tűzfal által megjelölt rendellenes forgalom követ.
-Ez a forgatókönyv jelenleg **nyilvános előzetes** verzióban érhető el.
+Ez a forgatókönyv jelenleg **előzetes** verzióban érhető el.
 
 **Mitre ATT&CK-taktika:** Parancs és vezérlés
 
@@ -467,7 +465,7 @@ Ez a forgatókönyv jelenleg **nyilvános előzetes** verzióban érhető el.
 **Leírás:** Az ilyen típusú fúziós incidensek azt jelzik, hogy kimenő kapcsolódási kérelem érkezett a TOR névtelenítésével szolgáltatáshoz, és ezt követően a rendszer rendellenes bejövő tevékenységeket észlelt a Palo Alto Networks tűzfalon. Ez azt jelzi, hogy egy támadó valószínűleg hozzáfért a hálózathoz, és megpróbálja elrejteni a műveleteit és szándékait. Az ezzel a mintázattal rendelkező TOR-hálózattal létesített kapcsolatok a kártevők és a vezérlési tevékenységek, valamint a további kártevők letöltésére vonatkozó kérések, illetve a távoli interaktív hozzáférést létrehozó támadók. A Palo Alto-naplókban az Azure Sentinel a [veszélyforrások naplóira](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)koncentrál, és a forgalom gyanúsnak minősül, ha a fenyegetések engedélyezettek (gyanús adatok, fájlok, árvizek, csomagok, vizsgálatok, kémprogramok, URL-címek, vírusok, sebezhetőségek, Futótűz-vírusok, erdőtüzek). A további riasztási részletekért tekintse meg a fúziós incidens leírásában szereplő, a [fenyegetés/tartalom típusnak](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) megfelelő Palo Alto Threat log hivatkozást is.
 
 ### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Kimenő kapcsolat az IP-címmel a jogosulatlan hozzáférési kísérletek előzményeivel, amelyet a Palo Alto Networks tűzfal által megjelölt rendellenes forgalom követ.
-Ez a forgatókönyv jelenleg **nyilvános előzetes** verzióban érhető el.
+Ez a forgatókönyv jelenleg **előzetes** verzióban érhető el.
 
 **Mitre ATT&CK-taktika:** Parancs és vezérlés
 
@@ -502,7 +500,7 @@ Ez a forgatókönyv jelenleg **nyilvános előzetes** verzióban érhető el.
 ## <a name="remote-exploitation"></a>Távoli kiaknázás
 
 ### <a name="suspected-use-of-attack-framework-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>A támadási keretrendszer feltételezett használata, amelyet a Palo Alto Networks tűzfal által megjelölt rendellenes forgalom követ.
-Ez a forgatókönyv jelenleg **nyilvános előzetes** verzióban érhető el.
+Ez a forgatókönyv jelenleg **előzetes** verzióban érhető el.
 
 **Mitre ATT&CK-taktika:** Kezdeti hozzáférés, végrehajtás, oldalirányú mozgás, jogosultság-eszkaláció
 
@@ -512,7 +510,7 @@ Ez a forgatókönyv jelenleg **nyilvános előzetes** verzióban érhető el.
 
 **Leírás:** Az ilyen típusú fúziós incidensek azt jelzik, hogy nem szabványos, a támadási keretrendszerek (például Metasploit) használatára hasonlítanak a protokollok, és ezt követően a rendszer gyanús bejövő tevékenységet észlelt a Palo Alto Networks tűzfalon. Ez lehet az első jele annak, hogy egy támadó kihasználta a szolgáltatást, hogy hozzáférjen a hálózati erőforrásokhoz, vagy hogy a támadó már elérte a hozzáférést, és megkísérli az elérhető rendszerek/szolgáltatások további kiaknázását a későbbiekben és/vagy a jogosultságok kiterjesztésével. A Palo Alto-naplókban az Azure Sentinel a [veszélyforrások naplóira](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)koncentrál, és a forgalom gyanúsnak minősül, ha a fenyegetések engedélyezettek (gyanús adatok, fájlok, árvizek, csomagok, vizsgálatok, kémprogramok, URL-címek, vírusok, sebezhetőségek, Futótűz-vírusok, erdőtüzek). A további riasztási részletekért tekintse meg a fúziós incidens leírásában szereplő, a [fenyegetés/tartalom típusnak](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) megfelelő Palo Alto Threat log hivatkozást is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte a fejlett többlépcsős támadások észlelését, az alábbi rövid útmutatóból megtudhatja, hogyan tekintheti meg az adatait és a potenciális fenyegetéseket: Ismerkedés [Az Azure Sentinel szolgáltatással](quickstart-get-visibility.md).
 

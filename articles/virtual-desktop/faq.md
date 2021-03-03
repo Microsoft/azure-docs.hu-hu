@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b915445b74e202f010c5505cc240b6f36e9da77c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 3bdb38b8a9590cf6191c75fdef024543c2b1c190
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108507"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720273"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows Virtual Desktop – gyakori kérdések
 
@@ -23,7 +23,7 @@ Ha gazdagép-készleteket és egyéb objektumokat szeretne létrehozni, hozzá k
 
 Ahhoz, hogy a felhasználók vagy felhasználói csoportok számára alkalmazás-csoportokat lehessen közzétenni, hozzá kell rendelnie a felhasználói hozzáférés rendszergazdai szerepkört egy alkalmazás-csoporthoz.
 
-Ha korlátozni szeretné, hogy a rendszergazda csak a felhasználói munkameneteket kezelje, például üzeneteket küldjön a felhasználóknak, kijelentkezzen a felhasználókat, és így tovább, létrehozhat egyéni szerepköröket is. Példa:
+Ha korlátozni szeretné, hogy a rendszergazda csak a felhasználói munkameneteket kezelje, például üzeneteket küldjön a felhasználóknak, kijelentkezzen a felhasználókat, és így tovább, létrehozhat egyéni szerepköröket is. Például:
 
 ```powershell
 "actions": [
@@ -56,7 +56,7 @@ A munkaterületeknek az alkalmazás csoportjaival megegyező helyen kell lenniü
 
 PowerShell-parancsmag futtatásakor csak az erőforrás neve és helye jelenik meg.
 
-Példa:
+Például:
 
 ```powershell
 Get-AzWvdHostPool -Name 0224hp -ResourceGroupName 0224rg
@@ -68,7 +68,7 @@ westus   0224hp Microsoft.DesktopVirtualization/hostpools
 
 Az összes erőforrás tulajdonságainak megtekintéséhez adja hozzá a vagy a parancsot `format-list` `fl` a parancsmag végéhez.
 
-Példa:
+Például:
 
 ```powershell
 Get-AzWvdHostPool -Name 0224hp -ResourceGroupName 0224rg |fl
@@ -76,7 +76,7 @@ Get-AzWvdHostPool -Name 0224hp -ResourceGroupName 0224rg |fl
 
 Adott tulajdonságok megjelenítéséhez adja hozzá a megadott tulajdonságokat a vagy a után `format-list` `fl` .
 
-Példa:
+Például:
 
 ```powershell
 Get-AzWvdHostPool -Name demohp -ResourceGroupName 0414rg |fl CustomRdpProperty
@@ -136,3 +136,7 @@ Az Azure Lighthouse nem támogatja teljes mértékben a Windows rendszerű virtu
 A CSP-előfizetések nem használhatók a Windows rendszerű virtuális asztali szolgáltatással. További információ: [Integration sandbox Account](/partner-center/develop/set-up-api-access-in-partner-center#integration-sandbox-account).
 
 Végül, ha engedélyezte az erőforrás-szolgáltatót a CSP tulajdonosi fiókjából, a CSP-ügyfél fiókjai nem tudják módosítani az erőforrás-szolgáltatót.
+
+## <a name="how-often-should-i-turn-my-vms-on-to-prevent-registration-issues"></a>Milyen gyakran kell bekapcsolni a virtuális gépeket a regisztrációs problémák megelőzésére?
+
+Miután regisztrált egy virtuális gépet a Windows Virtual Desktop szolgáltatásban található gazdagép-készletbe, az ügynök rendszeresen frissíti a virtuális gép tokenjét, amikor a virtuális gép aktív. A regisztrációs jogkivonat tanúsítványa 90 napig érvényes. A 90 napos korlát miatt javasoljuk, hogy a virtuális gépeket minden 90 nap alatt indítsa el. A virtuális gép ezen időtartamon belüli bekapcsolásával megakadályozhatja a regisztrációs token lejáratát vagy érvénytelenné válását. Ha 90 nap elteltével kezdte meg a virtuális gépet, és regisztrációs problémákat tapasztal, kövesse a [Windows rendszerű virtuális asztali ügynök hibaelhárítási útmutatójának](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved) utasításait a virtuális gép a gazdagépről való eltávolításához, telepítse újra az ügynököt, és regisztrálja újra a készletbe.

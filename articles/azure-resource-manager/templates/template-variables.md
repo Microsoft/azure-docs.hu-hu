@@ -2,13 +2,13 @@
 title: Változók a sablonokban
 description: Leírja, hogyan lehet változókat definiálni egy Azure Resource Manager sablonban (ARM-sablon) és a bicep-fájlban.
 ms.topic: conceptual
-ms.date: 02/12/2021
-ms.openlocfilehash: cafd42112e5d296cb73f88e292a66ca2203f3810
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/19/2021
+ms.openlocfilehash: e00a9e8e1801725707bac2abdc67512477e2cf07
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364460"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700337"
 ---
 # <a name="variables-in-arm-templates"></a>Az ARM-sablonokban szereplő változók
 
@@ -70,10 +70,6 @@ var concatToParam = '${inputValue}-addtoparam'
 
 A változó értékét a [template functions](template-functions.md) használatával hozhatja létre.
 
-A JSON-sablonokban nem használható a változó deklarációjában a [Reference](template-functions-resource.md#reference) függvény vagy a [List](template-functions-resource.md#list) függvény bármelyike. Ezek a függvények egy erőforrás futásidejű állapotát kapják meg, és a változók feloldása előtt nem hajthatók végre.
-
-A hivatkozás és a lista függvények érvényesek egy változónak a bicep fájlban való deklarálása során.
-
 A következő példa egy karakterlánc-értéket hoz létre egy Storage-fiók nevéhez. Számos sablon függvényt használ a paraméterérték beolvasásához, és összefűzi azt egy egyedi karakterlánchoz.
 
 # <a name="json"></a>[JSON](#tab/json)
@@ -92,6 +88,10 @@ var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().i
 
 ---
 
+A JSON-sablonokban nem használható a változó deklarációjában a [Reference](template-functions-resource.md#reference) függvény vagy a [List](template-functions-resource.md#list) függvény bármelyike. Ezek a függvények egy erőforrás futásidejű állapotát kapják meg, és a változók feloldása előtt nem hajthatók végre.
+
+A bicep-fájlokban a hivatkozás és a lista függvények érvényesek a változók deklarálása során.
+
 ## <a name="use-variable"></a>Változó használata
 
 Az alábbi példa bemutatja, hogyan használható a változó egy erőforrás-tulajdonsághoz.
@@ -101,6 +101,9 @@ Az alábbi példa bemutatja, hogyan használható a változó egy erőforrás-tu
 Egy JSON-sablonban a változó értékét a [változók](template-functions-deployment.md#variables) függvény használatával kell hivatkozni.
 
 ```json
+"variables": {
+  "storageName": "[concat(toLower(parameters('storageNamePrefix')), uniqueString(resourceGroup().id))]"
+},
 "resources": [
   {
     "type": "Microsoft.Storage/storageAccounts",
@@ -115,6 +118,8 @@ Egy JSON-sablonban a változó értékét a [változók](template-functions-depl
 Egy bicep-fájlban a változó értékének megadásával hivatkozhat a változóra.
 
 ```bicep
+var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().id)}'
+
 resource demoAccount 'Microsoft.Storage/storageAccounts@2019-06-01' = {
   name: storageName
 ```

@@ -7,14 +7,17 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 39950b4d62b7dbfacba94f5ba3c5de50bbb974b3
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 5cbcbcf8914a663a6d039abecd6a4488eaf677b2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653673"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739644"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Útvonalak az Azure statikus Web Apps előzetes verziójában
+
+> [!IMPORTANT]
+> A fájl *routes.jsban* definiált funkció már elavult, és jobban megvalósítható az Azure statikus Web Apps [konfigurációs fájljában](./configuration.md#routes).
 
 Az Azure statikus Web Apps útválasztása meghatározza a háttér-útválasztási szabályokat és a statikus tartalom és<sup>az API-</sup>k engedélyezési viselkedését. A szabályok a fájlban lévő _routes.js_ szabályok tömbje vannak meghatározva.
 
@@ -29,6 +32,9 @@ Az Útválasztás témaköre jelentősen átfedésben van a hitelesítési és e
 A részletekért tekintse meg a [példában szereplő útvonal-fájlt](#example-route-file) .
 
 ## <a name="location"></a>Hely
+
+> [!IMPORTANT]
+> A fájl *routes.jsban* definiált funkció már elavult, és jobban megvalósítható az Azure statikus Web Apps [konfigurációs fájljában](./configuration.md#routes).
 
 A fájl _routes.jsjának_ léteznie kell az alkalmazás Build-összetevő mappájának gyökerében. Ha a webalkalmazás olyan Build lépést tartalmaz, amely egy adott mappából a Build-összetevő mappájába másolt létrehozott fájlokat, akkor a fájl _routes.jsának_ léteznie kell az adott mappában.
 
@@ -46,16 +52,22 @@ A fenti táblázat csak néhány, az Azure statikus Web Appsával kompatibilis k
 
 ## <a name="defining-routes"></a>Útvonalak meghatározása
 
+> [!IMPORTANT]
+> A fájl *routes.jsban* definiált funkció már elavult, és jobban megvalósítható az Azure statikus Web Apps [konfigurációs fájljában](./configuration.md#routes).
+
 Az útvonalak a (z) _routes.js_ fájlon vannak definiálva az útválasztási szabályok tömbje a `routes` tulajdonságon. Minden szabály egy útvonal mintából áll, valamint egy vagy több választható szabály-tulajdonsággal. A használati példákat lásd a [példaként szolgáló útválasztási fájlban](#example-route-file) .
 
 | Szabály tulajdonsága  | Kötelező | Alapértelmezett érték | Megjegyzés                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
-| `route`        | Yes      | n.a.          | A hívó által kért útvonal-minta.<ul><li>A [helyettesítő karakterek](#wildcards) az útvonal-elérési utak végén támogatottak. Például az útvonal _rendszergazdája/ \*_ a _rendszergazdai_ elérési úton található bármely útvonalra illeszkedik.<li>Az útvonal alapértelmezett fájlja _index.html_.</ul>|
-| `serve`        | No       | n.a.          | Meghatározza a kérelemből visszaadott fájlt vagy elérési utat. A fájl elérési útja és neve eltérő lehet a kért elérési útról. Ha `serve` nincs megadva érték, a rendszer a kért elérési utat használja. A querystring paraméterek nem támogatottak; `serve` az értékeknek tényleges fájlokra kell mutatniuk.  |
-| `allowedRoles` | No       | névtelen     | A szerepkörök neveinek tömbje. <ul><li>Érvényes karakterek a következők:,, `a-z` `A-Z` `0-9` és `_` .<li>A beépített szerepkör minden nem `anonymous` hitelesített felhasználóra érvényes.<li>A beépített szerepkör `authenticated` minden bejelentkezett felhasználóra érvényes.<li>A felhasználóknak legalább egy szerepkörhöz kell tartoznia.<li>A szerepköröket _vagy_ azok alapján kell egyeztetni. Ha egy felhasználó a felsorolt szerepkörök valamelyikében szerepel, akkor a rendszer hozzáférést biztosít.<li>Az egyes felhasználók a szerepkörökhöz vannak társítva a [meghívásokon](authentication-authorization.md)keresztül.</ul> |
-| `statusCode`   | No       | 200           | A kérelem [http-állapotkód](https://wikipedia.org/wiki/List_of_HTTP_status_codes) -válasza. |
+| `route`        | Igen      | n.a.          | A hívó által kért útvonal-minta.<ul><li>A [helyettesítő karakterek](#wildcards) az útvonal-elérési utak végén támogatottak. Például az útvonal _rendszergazdája/ \*_ a _rendszergazdai_ elérési úton található bármely útvonalra illeszkedik.<li>Az útvonal alapértelmezett fájlja _index.html_.</ul>|
+| `serve`        | Nem       | n.a.          | Meghatározza a kérelemből visszaadott fájlt vagy elérési utat. A fájl elérési útja és neve eltérő lehet a kért elérési útról. Ha `serve` nincs megadva érték, a rendszer a kért elérési utat használja. A querystring paraméterek nem támogatottak; `serve` az értékeknek tényleges fájlokra kell mutatniuk.  |
+| `allowedRoles` | Nem       | névtelen     | A szerepkörök neveinek tömbje. <ul><li>Érvényes karakterek a következők:,, `a-z` `A-Z` `0-9` és `_` .<li>A beépített szerepkör minden nem `anonymous` hitelesített felhasználóra érvényes.<li>A beépített szerepkör `authenticated` minden bejelentkezett felhasználóra érvényes.<li>A felhasználóknak legalább egy szerepkörhöz kell tartoznia.<li>A szerepköröket _vagy_ azok alapján kell egyeztetni. Ha egy felhasználó a felsorolt szerepkörök valamelyikében szerepel, akkor a rendszer hozzáférést biztosít.<li>Az egyes felhasználók a szerepkörökhöz vannak társítva a [meghívásokon](authentication-authorization.md)keresztül.</ul> |
+| `statusCode`   | Nem       | 200           | A kérelem [http-állapotkód](https://wikipedia.org/wiki/List_of_HTTP_status_codes) -válasza. |
 
 ## <a name="securing-routes-with-roles"></a>Útvonalak biztonságossá tétele szerepkörökkel
+
+> [!IMPORTANT]
+> A fájl *routes.jsban* definiált funkció már elavult, és jobban megvalósítható az Azure statikus Web Apps [konfigurációs fájljában](./configuration.md#routes).
 
 Az útvonalak egy vagy több szerepkörnek a szabály tömbbe való felvételével biztonságosak `allowedRoles` . A használati példákat lásd a [példaként szolgáló útválasztási fájlban](#example-route-file) .
 
@@ -81,6 +93,9 @@ Szükség szerint új szerepköröket hozhat létre a `allowedRoles` tömbben. A
 - Az egyes felhasználók a szerepkörökhöz vannak társítva a [meghívásokon](authentication-authorization.md)keresztül.
 
 ## <a name="wildcards"></a>Helyettesítő karakterek
+
+> [!IMPORTANT]
+> A fájl *routes.jsban* definiált funkció már elavult, és jobban megvalósítható az Azure statikus Web Apps [konfigurációs fájljában](./configuration.md#routes).
 
 A helyettesítő karakteres szabályok az adott útvonal mintájában lévő összes kérelemnek megfelelnek. Ha meghatároz egy `serve` értéket a szabályban, a megnevezett fájl vagy elérési út válaszként szolgál.
 
@@ -109,6 +124,9 @@ Az útvonalakat helyettesítő karakterekkel is biztonságossá teheti. A követ
 
 ## <a name="fallback-routes"></a>Tartalék útvonalak
 
+> [!IMPORTANT]
+> A fájl *routes.jsban* definiált funkció már elavult, és jobban megvalósítható az Azure statikus Web Apps [konfigurációs fájljában](./configuration.md#routes).
+
 Egyoldalas alkalmazások, függetlenül attól, hogy az előtér-JavaScript-keretrendszerek vagy-kódtárak vagy webszerelvény-platformok, például a Blazer használják-e, gyakran az ügyféloldali útválasztásra támaszkodnak a webalkalmazások navigációs felületén. Ezek az ügyféloldali útválasztási szabályok frissítik a böngésző ablakának helyét anélkül, hogy kéréseket kellene visszaküldeni a kiszolgálónak. Ha frissíti az oldalt, vagy közvetlenül az ügyféloldali útválasztási szabályok által létrehozott helyekre navigál, a megfelelő HTML-oldal kiszolgálásához kiszolgálóoldali tartalék útvonal szükséges.
 
 A következő példában egy közös tartalék útvonal látható:
@@ -128,6 +146,9 @@ A következő példában egy közös tartalék útvonal látható:
 Az útválasztási szabályokban a tartalék útvonalnak szerepelnie kell az utolsóként, mivel a korábban meghatározott szabályok által nem észlelt összes kérést kigyűjti.
 
 ## <a name="redirects"></a>Átirányítja
+
+> [!IMPORTANT]
+> A fájl *routes.jsban* definiált funkció már elavult, és jobban megvalósítható az Azure statikus Web Apps [konfigurációs fájljában](./configuration.md#routes).
 
 Az [301](https://en.wikipedia.org/wiki/HTTP_301) -es és a [302](https://en.wikipedia.org/wiki/HTTP_302) -es HTTP-állapotkódok használatával átirányíthatja a kérelmeket az egyik útvonalról a másikra.
 
@@ -153,6 +174,9 @@ Az átirányítások olyan elérési utakkal is működnek, amelyek nem határoz
 
 ## <a name="custom-error-pages"></a>Egyéni hibalapok
 
+> [!IMPORTANT]
+> A fájl *routes.jsban* definiált funkció már elavult, és jobban megvalósítható az Azure statikus Web Apps [konfigurációs fájljában](./configuration.md#routes).
+
 Előfordulhat, hogy a felhasználók számos különböző szituációba ütköznek, ami hibát okozhat. A tömb használatával egyéni felhasználói élményt adhat meg a `platformErrorOverrides` hibákra reagálva. Tekintse át a [példaként szolgáló útválasztási fájlt](#example-route-file) a tömb elhelyezéséhez a fájl _routes.js_ .
 
 > [!NOTE]
@@ -171,6 +195,9 @@ A következő táblázat az elérhető platform-hibák felülbírálásait sorol
 | `Unauthorized_Unknown` | 401 | Ismeretlen hiba történt a felhasználó hitelesítése közben. Ennek a hibának az egyik oka az lehet, hogy a felhasználó nem ismerhető fel, mert nem engedélyezte az alkalmazáshoz való hozzájárulásukat.|
 
 ## <a name="custom-mime-types"></a>Egyéni MIME-típusok
+
+> [!IMPORTANT]
+> A fájl *routes.jsban* definiált funkció már elavult, és jobban megvalósítható az Azure statikus Web Apps [konfigurációs fájljában](./configuration.md#routes).
 
 A `mimeTypes` tömbvel megegyező szinten felsorolt objektum `routes` lehetővé teszi a [MIME-típusok](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types) kiterjesztésekkel való társítását.
 
@@ -194,6 +221,9 @@ A következő szempontok fontosak a MIME-típusok használatakor:
 > A statikus Web Apps megérti a Blazer-alkalmazásokat és a WASM és a DLL-fájlok várható MIME-típusait, ezért nem szükséges leképezéseket hozzáadni ezekhez.
 
 ## <a name="default-headers"></a>Alapértelmezett fejlécek
+
+> [!IMPORTANT]
+> A fájl *routes.jsban* definiált funkció már elavult, és jobban megvalósítható az Azure statikus Web Apps [konfigurációs fájljában](./configuration.md#routes).
 
 A `defaultHeaders` tömbvel megegyező szinten felsorolt objektum `routes` lehetővé teszi a [Válasz fejlécek](https://developer.mozilla.org/docs/Web/HTTP/Headers)hozzáadását, módosítását és eltávolítását.
 
@@ -221,6 +251,9 @@ A következő szempontok fontosak a fejlécek használatakor:
 - A _routes.jsban_ definiált fejlécek csak statikus tartalomra vonatkoznak. A függvény kódjában testreszabhatja az API-végpontok válaszának fejléceit.
 
 ## <a name="example-route-file"></a>Példa az útválasztási fájlra
+
+> [!IMPORTANT]
+> A fájl *routes.jsban* definiált funkció már elavult, és jobban megvalósítható az Azure statikus Web Apps [konfigurációs fájljában](./configuration.md#routes).
 
 Az alábbi példa bemutatja, hogyan hozhat létre a statikus tartalomra és API-kra vonatkozó útválasztási szabályokat a fájl _routes.js_ . Egyes útvonalak a [ _/.auth_ rendszermappáját](authentication-authorization.md) használják, amely hozzáfér a hitelesítéssel kapcsolatos végpontokhoz.
 

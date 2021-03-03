@@ -10,12 +10,12 @@ ms.date: 2/16/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 7e62bbc5929eaf23a9b7be12de222105bc2529cd
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 021abce5c6cd83257ad65f529833848d8f14f534
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653546"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750506"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 Az első lépések előtt ügyeljen a következőre:
@@ -23,7 +23,7 @@ Az első lépések előtt ügyeljen a következőre:
 - Aktív előfizetéssel rendelkező Azure-fiók létrehozása. Részletekért tekintse meg a [fiók ingyenes létrehozását](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)ismertető témakört.
 - Telepítse a [Android Studiot](https://developer.android.com/studio), majd a Android Studio használatával hozzon létre egy Android-alkalmazást a gyors üzembe helyezéshez a függőségek telepítéséhez.
 - Hozzon létre egy Azure kommunikációs szolgáltatások erőforrást. További információ: [Azure kommunikációs erőforrás létrehozása](../../create-communication-resource.md). Ehhez a rövid útmutatóhoz fel kell **jegyeznie az erőforrás-végpontot** .
-- Hozzon létre **két** kommunikációs szolgáltatást használó felhasználót, és adja ki a felhasználói hozzáférési jogkivonat [felhasználói hozzáférési jogkivonatát](../../access-tokens.md). Ügyeljen arra, hogy a hatókört a **csevegés** értékre állítsa, és **jegyezze fel a jogkivonat karakterláncát, valamint a userId karakterláncot**. Ebben a rövid útmutatóban egy kezdő résztvevővel hozunk létre egy szálat, majd egy második résztvevőt is hozzáadunk a szálhoz.
+- Hozzon létre **két** kommunikációs szolgáltatást használó felhasználót, és adja ki a felhasználói hozzáférési jogkivonat [felhasználói hozzáférési jogkivonatát](../../access-tokens.md). Ügyeljen arra, hogy a hatókört a **csevegés** értékre állítsa, és **jegyezze fel a jogkivonat-karakterláncot és a userId karakterláncot**. Ebben a rövid útmutatóban egy kezdeti résztvevővel hozunk létre egy szálat, majd egy második résztvevőt is hozzáadunk a szálhoz.
 
 ## <a name="setting-up"></a>Beállítás
 
@@ -31,16 +31,34 @@ Az első lépések előtt ügyeljen a következőre:
 
 1. Nyissa meg Android Studio és válassza a lehetőséget `Create a new project` . 
 2. A következő ablakban válassza ki `Empty Activity` a projekt sablonját.
-3. Amikor kiválasztja a beállításokat `ChatQuickstart` , adja meg a projekt nevét.
+3. Ha kiválasztja a beállításokat, adja meg `ChatQuickstart` a projekt nevét.
 4. Kattintson a Tovább gombra, és válassza ki azt a könyvtárat, ahol létre szeretné hozni a projektet.
 
 ### <a name="install-the-libraries"></a>A kódtárak telepítése
 
-A Gradle segítségével telepítjük a szükséges kommunikációs szolgáltatások függőségeit. A parancssorból navigáljon a projekt gyökérkönyvtárában `ChatQuickstart` . Nyissa meg az alkalmazás Build. gradle fájlját, és adja hozzá a következő függőségeket a `ChatQuickstart` célhoz:
+A Gradle segítségével telepítjük a szükséges kommunikációs szolgáltatások függőségeit. A parancssorban navigáljon a projekt gyökérkönyvtárában `ChatQuickstart` . Nyissa meg az alkalmazás Build. gradle fájlját, és adja hozzá a következő függőségeket a `ChatQuickstart` célhoz:
 
 ```
-implementation 'com.azure.android:azure-communication-common:1.0.0-beta.5'
-implementation 'com.azure.android:azure-communication-chat:1.0.0-beta.5'
+implementation 'com.azure.android:azure-communication-common:1.0.0-beta.6'
+implementation 'com.azure.android:azure-communication-chat:1.0.0-beta.6'
+```
+
+#### <a name="exclude-meta-files-in-packaging-options"></a>Meta Files kizárása a csomagolási beállításokban
+```
+android {
+   ...
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/license'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/notice'
+        exclude 'META-INF/ASL2.0'
+        exclude("META-INF/*.md")
+        exclude("META-INF/*.txt")
+        exclude("META-INF/*.kotlin_module")
+    }
+}
 ```
 
 Kattintson Android Studio a szinkronizálás most elemre.
@@ -52,7 +70,7 @@ Ha a gyűjteményt a [Maven](https://maven.apache.org/) Build rendszer használa
 <dependency>
   <groupId>com.azure.android</groupId>
   <artifactId>azure-communication-chat</artifactId>
-  <version>1.0.0-beta.5</version>
+  <version>1.0.0-beta.6</version>
 </dependency>
 ```
 
@@ -68,7 +86,19 @@ import com.azure.android.communication.common.*;
 
 Másolja a következő kódot a fájlba `MainActivity` :
 
-```
+```java
+    private String second_user_id = "<second_user_id>";
+    private String threadId = "<thread_id>";
+    private String chatMessageId = "<chat_message_id>";
+    private final String sdkVersion = "1.0.0-beta.6";
+    private static final String SDK_NAME = "azure-communication-com.azure.android.communication.chat";
+    private static final String TAG = "--------------Chat Quickstart App-------------";
+
+    private void log(String msg) {
+        Log.i(TAG, msg);
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+    }
+    
    @Override
     protected void onStart() {
         super.onStart();
@@ -86,6 +116,12 @@ Másolja a következő kódot a fájlba `MainActivity` :
             // <LIST USERS>
 
             // <REMOVE A USER>
+            
+            // <<SEND A TYPING NOTIFICATION>>
+            
+            // <<SEND A READ RECEIPT>>
+               
+            // <<LIST READ RECEIPTS>>
         } catch (Exception e){
             System.out.println("Quickstart failed: " + e.getMessage());
         }
@@ -106,15 +142,16 @@ import com.azure.android.core.http.HttpHeader;
 final String endpoint = "https://<resource>.communication.azure.com";
 final String userAccessToken = "<user_access_token>";
 
-ChatClient client = new ChatClient.Builder()
-    .endpoint(endpoint)
-    .credentialInterceptor(chain -> chain.proceed(chain.request()
-        .newBuilder()
-        .header(HttpHeader.AUTHORIZATION, userAccessToken)
-        .build());
+ChatAsyncClient client = new ChatAsyncClient.Builder()
+        .endpoint(endpoint)
+        .credentialInterceptor(chain -> chain.proceed(chain.request()
+                .newBuilder()
+                .header(HttpHeader.AUTHORIZATION, "Bearer " + userAccessToken)
+                .build()))
+        .build();
 ```
 
-1. A használatával `AzureCommunicationChatServiceAsyncClient.Builder` konfigurálhatja és létrehozhatja a példányát `AzureCommunicationChatClient` .
+1. A használatával `ChatAsyncClient.Builder` konfigurálhatja és létrehozhatja a példányát `ChatAsyncClient` .
 2. Cserélje le a- `<resource>` t a kommunikációs szolgáltatások erőforrására.
 3. Cserélje le a `<user_access_token>` elemet egy érvényes kommunikációs szolgáltatás hozzáférési jogkivonatára.
 
@@ -123,8 +160,8 @@ A következő osztályok és felületek az Azure kommunikációs szolgáltatáso
 
 | Név                                   | Leírás                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ChatClient | Ez az osztály szükséges a csevegési funkciókhoz. Létrehozza azt az előfizetési adatokkal, és felhasználhatja a szálak létrehozásához, lekéréséhez és törléséhez. |
-| ChatThreadClient | Ez az osztály szükséges a csevegési szál működéséhez. A példányokat a ChatClient keresztül szerezheti be, és használhatja az üzenetek küldésére/fogadására/frissítésére/törlésére, a felhasználók hozzáadására/eltávolítására/lekérésére, valamint a beírási értesítések küldésére és a beolvasási visszaigazolásokra |
+| ChatClient/ChatAsyncClient | Ez az osztály szükséges a csevegési funkciókhoz. Létrehozza azt az előfizetési adatokkal, és felhasználhatja a szálak létrehozására, lekérésére és törlésére. |
+| ChatThreadClient/ChatThreadAsyncClient | Ez az osztály szükséges a csevegési szál működéséhez. A példányokat a ChatClient keresztül szerezheti be, és használhatja az üzenetek küldésére/fogadására/frissítésére/törlésére, a felhasználók hozzáadására/eltávolítására/lekérésére, valamint a beírási értesítések küldésére és a beolvasási visszaigazolásokra |
 
 ## <a name="start-a-chat-thread"></a>Csevegési szál elindítása
 
@@ -136,61 +173,59 @@ Az `<CREATE A CHAT THREAD>` megjegyzés helyére írja be az alábbi kódot:
 //  The list of ChatParticipant to be added to the thread.
 List<ChatParticipant> participants = new ArrayList<>();
 // The communication user ID you created before, required.
-final String id = "<user_id>";
+String id = "<user_id>";
 // The display name for the thread participant.
-final String displayName = "initial participant";
+String displayName = "initial participant";
 participants.add(new ChatParticipant()
-    .setId(id)
-    .setDisplayName(displayName));
+        .setId(id)
+        .setDisplayName(displayName)
+);
 
 // The topic for the thread.
 final String topic = "General";
 // The model to pass to the create method.
 CreateChatThreadRequest thread = new CreateChatThreadRequest()
-    .setTopic(topic)
-    .setParticipants(participants);
+  .setTopic(topic)
+  .setParticipants(participants);
 
-// optional, set a repeat request ID 
-final String repeatabilityRequestID = '123';
+// optional, set a repeat request ID
+final String repeatabilityRequestID = "";
 
 client.createChatThread(thread, repeatabilityRequestID, new Callback<CreateChatThreadResult>() {
-    public void onSuccess(CreateChatThreadResult result, okhttp3.Response response) {
-        // MultiStatusResponse is the result returned from creating a thread.
-        // It has a 'multipleStatus' property which represents a list of IndividualStatusResponse.
-        String threadId;
-        List<IndividualStatusResponse> statusList = result.getMultipleStatus();
-        for (IndividualStatusResponse status : statusList) {
-            if (status.getId().endsWith("@thread.v2")
-                && status.getType().contentEquals("Thread")) {
-                threadId = status.getId();
-                break;
-            }
-        }
-        // Take further action.
-    }
+      public void onSuccess(CreateChatThreadResult result, okhttp3.Response response) {
+              ChatThread chatThread = result.getChatThread();
+              threadId = chatThread.getId();
+              // take further action
+              Log.i(TAG, "threadId: " + threadId);
+      }
 
-    public void onFailure(Throwable throwable, okhttp3.Response response) {
-        // Handle error.
-    }
+      public void onFailure(Throwable throwable, okhttp3.Response response) {
+              // Handle error.
+              Log.e(TAG, throwable.getMessage());
+      }
 });
 ```
 
-Cserélje le `<user_id>` egy érvényes kommunikációs szolgáltatások felhasználói azonosítóját. A `threadId` későbbi lépések során a befejezési kezelőhöz visszaadott válaszból fogjuk használni.
+Cserélje le `<user_id>` egy érvényes kommunikációs szolgáltatások felhasználói azonosítóját. A `threadId` későbbi lépések során a befejezési kezelőnek visszaadott válaszból fogjuk használni, ezért az `<thread_id>` osztályt cserélje le a `threadId` kérelemből, majd futtassa újra az alkalmazást.
 
 ## <a name="get-a-chat-thread-client"></a>Csevegési szál ügyfelének beolvasása
 
 Most, hogy létrehozott egy csevegési szálat, beszerezhetünk egy `ChatThreadClient` műveletet a szálon belül. Az `<CREATE A CHAT THREAD CLIENT>` megjegyzés helyére írja be az alábbi kódot:
 
 ```
-ChatThreadClient threadClient =
-        new ChatThreadClient.Builder()
-            .endpoint(<endpoint>))
-            .build();
+ChatThreadAsyncClient threadClient =
+        new ChatThreadAsyncClient.Builder()
+                .endpoint(endpoint)
+                .credentialInterceptor(chain -> chain.proceed(chain.request()
+                    .newBuilder()
+                    .header(HttpHeader.AUTHORIZATION, "Bearer " + userAccessToken)
+                    .build()))
+                .build();
 ```
 
-Cserélje le a `<endpoint>` t a kommunikációs szolgáltatási végpontra.
-
 ## <a name="send-a-message-to-a-chat-thread"></a>Üzenet küldése csevegési szálnak
+
+Győződjön meg arról, hogy `<thread_id>` egy érvényes szál-azonosítóval lett lecserélve, és most küldünk üzenetet erre a szálra.
 
 Az `<SEND A MESSAGE>` megjegyzés helyére írja be az alábbi kódot:
 
@@ -200,29 +235,29 @@ final String content = "Test message 1";
 // The display name of the sender, if null (i.e. not specified), an empty name will be set.
 final String senderDisplayName = "An important person";
 SendChatMessageRequest message = new SendChatMessageRequest()
-    .setType(ChatMessageType.TEXT)
-    .setContent(content)
-    .setSenderDisplayName(senderDisplayName);
+        .setType(ChatMessageType.TEXT)
+        .setContent(content)
+        .setSenderDisplayName(senderDisplayName);
 
-// The unique ID of the thread.
-final String threadId = "<thread_id>";
 threadClient.sendChatMessage(threadId, message, new Callback<String>() {
-    @Override
-    public void onSuccess(String messageId, Response response) {
-        // A string is the response returned from sending a message, it is an id, 
-        // which is the unique ID of the message.
-        final String chatMessageId = messageId;
-        // Take further action.
-    }
+        @Override
+        public void onSuccess(String messageId, okhttp3.Response response) {
+                // A string is the response returned from sending a message, it is an id,
+                // which is the unique ID of the message.
+                chatMessageId = messageId;
+                // Take further action.
+                Log.i(TAG, "chatMessageId: " + chatMessageId);
+        }
 
-    @Override
-    public void onFailure(Throwable throwable, Response response) {
-        // Handle error.
-    }
+        @Override
+        public void onFailure(Throwable throwable, okhttp3.Response response) {
+                // Handle error.
+                Log.e(TAG, throwable.getMessage());
+        }
 });
 ```
 
-A helyére írja `<thread_id>` be az üzenetet küldő szál azonosítóját.
+A beolvasás után lecseréljük a-t a későbbi módszerekhez a gyors útmutatóban, `chatMessageId` `<chat_message_id>` `chatMessageId` majd újra futtatjuk az alkalmazást.
 
 ## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>Felhasználó felvétele a csevegési szálba résztvevőként
 
@@ -230,42 +265,36 @@ Az `<ADD A USER>` megjegyzés helyére írja be az alábbi kódot:
 
 ```java
 //  The list of ChatParticipant to be added to the thread.
-List<ChatParticipant> participants = new ArrayList<>();
-// The CommunicationUser.identifier you created before, required.
-final String id = "<user_id>";
+participants = new ArrayList<>();
 // The display name for the thread participant.
-final String displayName = "a new participant";
-participants.add(new ChatParticipant().setId(id).setDisplayName(displayName));
+displayName = "a new participant";
+participants.add(new ChatParticipant().setId(second_user_id).setDisplayName(secondUserDisplayName));
 // The model to pass to the add method.
-AddChatParticipantsRequest participants = new AddChatParticipantsRequest()
-    .setParticipants(participants);
+AddChatParticipantsRequest addParticipantsRequest = new AddChatParticipantsRequest()
+  .setParticipants(participants);
 
-// The unique ID of the thread.
-final String threadId = "<thread_id>";
-threadClient.addChatParticipants(threadId, participants, new Callback<Void>() {
-    @Override
-    public void onSuccess(Void result, Response response) {
-        // Take further action.
-    }
-
-    @Override
-    public void onFailure(Throwable throwable, Response response) {
-        // Handle error.
-    }
+threadClient.addChatParticipants(threadId, addParticipantsRequest, new Callback<AddChatParticipantsResult>() {
+        @Override
+        public void onSuccess(AddChatParticipantsResult result, okhttp3.Response response) {
+                // Take further action.
+                Log.i(TAG, "add chat participants success");
+        }
+        
+        @Override
+        public void onFailure(Throwable throwable, okhttp3.Response response) {
+                // Handle error.
+                Log.e(TAG, throwable.getMessage());
+        }
 });
 ```
 
-1. A helyére írja `<user_id>` be a hozzáadni kívánt felhasználó kommunikációs szolgáltatások felhasználói azonosítóját. 
-2. A helyére írja `<thread_id>` be azt a szál-azonosítót, amelyet a felhasználó hozzáad a szolgáltatáshoz.
+Cserélje le a `<second_user_id>` osztályt a hozzáadni kívánt felhasználó kommunikációs szolgáltatások felhasználói azonosítójával. 
 
 ## <a name="list-users-in-a-thread"></a>Egy szál felhasználóinak listázása
 
 Az `<LIST USERS>` megjegyzést írja felül az alábbi kóddal:
 
 ```java
-// The unique ID of the thread.
-final String threadId = "<thread_id>";
-
 // The maximum number of participants to be returned per page, optional.
 final int maxPageSize = 10;
 
@@ -276,78 +305,198 @@ threadClient.listChatParticipantsPages(threadId,
     maxPageSize,
     skip,
     new Callback<AsyncPagedDataCollection<ChatParticipant, Page<ChatParticipant>>>() {
-    @Override
-    public void onSuccess(AsyncPagedDataCollection<ChatParticipant, Page<ChatParticipant>> firstPage,
-        Response response) {
-        // pageCollection enables enumerating list of chat participants.
-        pageCollection.getFirstPage(new Callback<Page<ChatParticipant>>() {
-            @Override
-            public void onSuccess(Page<ChatParticipant> firstPage, Response response) {
-                for (ChatParticipant participant : firstPage.getItems()) {
-                    // Take further action.
+        @Override
+        public void onSuccess(AsyncPagedDataCollection<ChatParticipant, Page<ChatParticipant>> pageCollection,
+            okhttp3.Response response) {
+                // pageCollection enables enumerating list of chat participants.
+                pageCollection.getFirstPage(new Callback<Page<ChatParticipant>>() {
+                    @Override
+                    public void onSuccess(Page<ChatParticipant> firstPage, okhttp3.Response response) {
+                        for (ChatParticipant participant : firstPage.getItems()) {
+                            // Take further action.
+                            Log.i(TAG, "participant: " + participant.getDisplayName());
+                        }
+                        listChatParticipantsNext(firstPage.getNextPageId(), pageCollection);
+                    }
+
+                    @Override
+                    public void onFailure(Throwable throwable, okhttp3.Response response) {
+                        // Handle error.
+                        Log.e(TAG, throwable.getMessage());
+                    }
+                });
+
+                @Override
+                public void onFailure(Throwable throwable, okhttp3.Response response) {
+                        // Handle error.
+                        Log.e(TAG, throwable.getMessage());
                 }
-                retrieveNextParticipantsPages(firstPage.getPageId(), pageCollection);
+                });
+        }
+
+        @Override
+        public void onFailure(Throwable throwable, okhttp3.Response response) {
+                // Handle error.
+                Log.e(TAG, throwable.getMessage());
+        }
+});
+```
+
+Helyezze a következő Helper metódust a osztályba:
+
+```java
+void listChatParticipantsNext(String nextLink, AsyncPagedDataCollection<ChatParticipant, Page<ChatParticipant>> pageCollection) {
+    if (nextLink != null) {
+        pageCollection.getPage(nextLink, new Callback<Page<ChatParticipant>>() {
+            @Override
+            public void onSuccess(Page<ChatParticipant> nextPage, Response response) {
+                for (ChatParticipant participant : nextPage.getItems()) {
+                    // Take further action.
+                    Log.i(TAG, "participant: " + participant.getDisplayName());
+                }
+                if (nextPage.getPageId() != null) {
+                    listChatParticipantsNext(nextPage.getPageId(), pageCollection);
+                }
             }
 
             @Override
             public void onFailure(Throwable throwable, Response response) {
-                // Handle error.
+                Log.e(TAG, throwable.getMessage());
             }
-         }
+        });
     }
-
-    @Override
-    public void onFailure(Throwable throwable, Response response) {
-        // Handle error.
-    }
-});
-
-void listChatParticipantsNext(String nextLink,
-    AsyncPagedDataCollection<Page<ChatParticipant>> pageCollection) {
-        @Override
-        public void onSuccess(Page<ChatParticipant> nextPage, Response response) {
-            for (ChatParticipant participant : nextPage.getItems()) {
-                // Take further action.
-            }
-            if (nextPage.getPageId() != null) {
-                retrieveNextParticipantsPages(nextPage.getPageId(), pageCollection);
-            }
-        }
-
-        @Override
-        public void onFailure(Throwable throwable, Response response) {
-            // Handle error.
-        }
 }
 ```
 
-Cserélje le `<thread_id>` a elemet arra a szál-azonosítóra, amellyel a felhasználókat listázni szeretné.
 
 ## <a name="remove-user-from-a-chat-thread"></a>Felhasználó eltávolítása csevegési szálból
+
+Győződjön meg arról, hogy `<second_user_id>` érvényes felhasználói azonosítóra cseréli le a rendszer, ezért most eltávolítja a második felhasználót a szálból.
 
 Az `<REMOVE A USER>` megjegyzést írja felül az alábbi kóddal:
 
 ```java
-// The unique ID of the thread.
-final String threadId = "<thread_id>";
-// The unique ID of the participant.
-final String participantId = "<participant_id>";
-threadClient.removeChatParticipant(threadId, participantId, new Callback<Void>() {
+threadClient.removeChatParticipant(threadId, second_user_id, new Callback<Void>() {
     @Override
-    public void onSuccess(Void result, Response response) {
+    public void onSuccess(Void result, okhttp3.Response response) {
         // Take further action.
+        Log.i(TAG, "remove a user successfully");
     }
 
     @Override
-    public void onFailure(Throwable throwable, Response response) {
+    public void onFailure(Throwable throwable, okhttp3.Response response) {
         // Handle error.
+        Log.e(TAG, throwable.getMessage());
     }
 });
 ```
 
-1. Cserélje le `<thread_id>` a elemet a szál-azonosítóra, amely eltávolítja a felhasználót a alkalmazásból.
-1. Cserélje le az `<participant_id>` t az eltávolítandó résztvevő kommunikációs szolgáltatások felhasználói azonosítójával.
+## <a name="send-a-typing-notification"></a>Begépelési értesítés küldése
+
+Az `<SEND A TYPING NOTIFICATION>` megjegyzést írja felül az alábbi kóddal:
+
+```java
+threadClient.sendTypingNotification(threadId, new Callback<Void>() {
+    @Override
+    public void onSuccess(Void result, Response response) {
+        Log.i(TAG, "send a typing notification successfully");
+    }
+
+    @Override
+    public void onFailure(Throwable throwable, Response response) {
+        Log.e(TAG, throwable.getMessage());
+    }
+});
+```
+
+## <a name="send-a-read-receipt"></a>Olvasási visszaigazolás küldése
+
+Ügyeljen arra, hogy `<chat_message_id>` egy érvényes csevegési azonosítójú üzenettel helyettesítse be az üzenet olvasási visszaigazolását.
+
+Az `<SEND A READ RECEIPT>` megjegyzést írja felül az alábbi kóddal:
+
+```java
+SendReadReceiptRequest readReceipt = new SendReadReceiptRequest()
+    .setChatMessageId(chatMessageId);
+threadClient.sendChatReadReceipt(threadId, readReceipt, new Callback<Void>() {
+    @Override
+    public void onSuccess(Void result, Response response) {
+        Log.i(TAG, "send a read receipt successfully");
+    }
+
+    @Override
+    public void onFailure(Throwable throwable, Response response) {
+        Log.e(TAG, throwable.getMessage());
+    }
+});
+```
+
+## <a name="list-read-receipts"></a>Olvasási visszaigazolások listázása
+
+Az `<READ RECEIPTS>` megjegyzést írja felül az alábbi kóddal:
+
+```java
+// The maximum number of participants to be returned per page, optional.
+maxPageSize = 10;
+// Skips participants up to a specified position in response.
+skip = 0;
+threadClient.listChatReadReceiptsPages(threadId,
+    maxPageSize,
+    skip,
+    new Callback<AsyncPagedDataCollection<ChatMessageReadReceipt, Page<ChatMessageReadReceipt>>>() {
+        @Override
+        public void onSuccess(AsyncPagedDataCollection<ChatMessageReadReceipt, Page<ChatMessageReadReceipt>> pageCollection,
+                              Response response) {
+            // pageCollection enables enumerating list of chat participants.
+            pageCollection.getFirstPage(new Callback<Page<ChatMessageReadReceipt>>() {
+                @Override
+                public void onSuccess(Page<ChatMessageReadReceipt> firstPage, Response response) {
+                    for (ChatMessageReadReceipt receipt : firstPage.getItems()) {
+                        Log.i(TAG, "receipt: " + receipt.getChatMessageId());
+                    }
+                    listChatReadReceiptsNext(firstPage.getNextPageId(), pageCollection);
+                }
+
+                @Override
+                public void onFailure(Throwable throwable, Response response) {
+                    Log.e(TAG, throwable.getMessage());
+                }
+            });
+        }
+
+        @Override
+        public void onFailure(Throwable throwable, Response response) {
+            Log.e(TAG, throwable.getMessage());
+        }
+});
+```
+
+Helyezze a következő Helper metódust a osztályba:
+```java
+void listChatReadReceiptsNext(String nextLink, AsyncPagedDataCollection<ChatMessageReadReceipt, Page<ChatMessageReadReceipt>> pageCollection) {
+    if (nextLink != null) {
+        pageCollection.getPage(nextLink, new Callback<Page<ChatMessageReadReceipt>>() {
+            @Override
+            public void onSuccess(Page<ChatMessageReadReceipt> nextPage, Response response) {
+                for (ChatMessageReadReceipt receipt : nextPage.getItems()) {
+                    Log.i(TAG, "receipt: " + receipt.getChatMessageId());
+                }
+                if (nextPage.getPageId() != null) {
+                    listChatReadReceiptsNext(nextPage.getPageId(), pageCollection);
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable throwable, Response response) {
+                Log.e(TAG, throwable.getMessage());
+            }
+        });
+    }
+}
+
+```
+
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-A Android Studio nyomja meg a Futtatás gombot a projekt létrehozásához és futtatásához. A konzolon megtekintheti a kód kimenetét és a ChatClient származó naplózó kimenetet.
+Android Studio a projekt létrehozásához és futtatásához nyomja le a Futtatás gombot. A-konzolon megtekintheti a kód kimenetét és a ChatClient származó naplózó kimenetet.

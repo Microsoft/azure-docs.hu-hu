@@ -2,13 +2,13 @@
 title: Sablon functions – sztring
 description: A Azure Resource Manager-sablonban (ARM-sablonban) használandó függvényeket ismerteti a karakterláncok használatához.
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: a70aaff91f701c0ba8d26db2488b82e052dd905d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 03/02/2021
+ms.openlocfilehash: e823acc07ce0618c064f30e103ec52b7133cea18
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920003"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731119"
 ---
 # <a name="string-functions-for-arm-templates"></a>Karakterlánc-függvények ARM-sablonokhoz
 
@@ -37,9 +37,9 @@ A Resource Manager a következő funkciókat biztosítja a karakterláncok haszn
 * [kihagyása](#skip)
 * [felosztása](#split)
 * [startsWith](#startswith)
-* [karakterlánc](#string)
+* [sztring](#string)
 * [substring](#substring)
-* [take](#take)
+* [eltarthat](#take)
 * [toLower](#tolower)
 * [toUpper](#toupper)
 * [Trim](#trim)
@@ -62,7 +62,7 @@ A bemeneti karakterlánc Base64-ábrázolását adja vissza.
 |:--- |:--- |:--- |:--- |
 | inputString |Igen |sztring |Az az érték, amelyet Base64-ábrázolásként kell visszaadni. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A Base64-ábrázolást tartalmazó karakterlánc.
 
@@ -145,7 +145,7 @@ Base64-leképezést alakít át egy JSON-objektumra.
 |:--- |:--- |:--- |:--- |
 | Base64value tulajdonsága |Igen |sztring |A JSON-objektumra konvertálandó Base64-ábrázolás. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Egy JSON-objektum.
 
@@ -229,7 +229,7 @@ Base64-ábrázolást konvertál karakterlánccá.
 |:--- |:--- |:--- |:--- |
 | Base64value tulajdonsága |Igen |sztring |A Base64-ábrázolás, amelyet karakterlánccá kell alakítani. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Az átalakított Base64-érték karakterlánca.
 
@@ -306,6 +306,8 @@ Az előző példában az alapértelmezett értékekkel rendelkező kimenet a kö
 
 Több karakterlánc-értéket egyesít, és visszaadja az összefűzött karakterláncot, vagy kombinálja a több tömböt, és visszaadja az összefűzött tömböt.
 
+A karakterlánc-Összefűzés egyszerűsítése érdekében a bicep támogatja a [karakterlánc-interpolációs](https://en.wikipedia.org/wiki/String_interpolation#) szintaxist.
+
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
@@ -315,7 +317,7 @@ Több karakterlánc-értéket egyesít, és visszaadja az összefűzött karakte
 
 Ez a függvény tetszőleges számú argumentumot igénybe vehet, és a paraméterekhez karakterláncokat vagy tömböket is elfogadhat. A paraméterekhez azonban nem lehet tömböt és karakterláncot megadni. A karakterláncok csak más karakterláncokkal vannak összefűzve.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Az összefűzött értékek karakterlánca vagy tömbje.
 
@@ -351,6 +353,14 @@ Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master
 param prefix string = 'prefix'
 
 output concatOutput string = concat(prefix, '-', uniqueString(resourceGroup().id))
+```
+
+vagy
+
+```bicep
+param prefix string = 'prefix'
+
+output concatOutput string = '${prefix}-${uniqueString(resourceGroup().id)}'
 ```
 
 ---
@@ -423,7 +433,7 @@ Az előző példában az alapértelmezett értékekkel rendelkező kimenet a kö
 | ---- | ---- | ----- |
 | visszatérési | Tömb | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
-## <a name="contains"></a>tartalmazza
+## <a name="contains"></a>contains
 
 `contains (container, itemToFind)`
 
@@ -436,7 +446,7 @@ Ellenőrzi, hogy egy tömb tartalmaz-e értéket, egy objektum tartalmaz-e kulcs
 | tároló |Igen |tömb, objektum vagy karakterlánc |A keresendő értéket tartalmazó érték. |
 | itemToFind |Igen |karakterlánc vagy int |A keresendő érték. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 **Igaz** , ha az adott tétel megtalálható; Ellenkező esetben **hamis**.
 
@@ -547,7 +557,7 @@ Egy értéket konvertál egy adaturi-ra.
 |:--- |:--- |:--- |:--- |
 | stringToConvert |Igen |sztring |Az adaturi-ra konvertálandó érték. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Az adaturi-ként formázott karakterlánc.
 
@@ -602,7 +612,7 @@ Az előző példában az alapértelmezett értékekkel rendelkező kimenet a kö
 | Név | Típus | Érték |
 | ---- | ---- | ----- |
 | dataUriOutput | Sztring | adatmező: text/plain; charset = UTF8; Base64, SGVsbG8 = |
-| toStringOutput | Sztring | „Helló világ!” alkalmazás! |
+| toStringOutput | Sztring | Hello World! |
 
 ## <a name="datauritostring"></a>dataUriToString
 
@@ -616,7 +626,7 @@ Az adaturi-formázott értéket karakterlánccá alakítja át.
 |:--- |:--- |:--- |:--- |
 | dataUriToConvert |Igen |sztring |Az átalakítandó adaturi-érték. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Az átalakított értéket tartalmazó sztring.
 
@@ -671,7 +681,7 @@ Az előző példában az alapértelmezett értékekkel rendelkező kimenet a kö
 | Név | Típus | Érték |
 | ---- | ---- | ----- |
 | dataUriOutput | Sztring | adatmező: text/plain; charset = UTF8; Base64, SGVsbG8 = |
-| toStringOutput | Sztring | „Helló világ!” alkalmazás! |
+| toStringOutput | Sztring | Hello World! |
 
 ## <a name="empty"></a>üres
 
@@ -685,7 +695,7 @@ Meghatározza, hogy egy tömb, objektum vagy karakterlánc üres-e.
 |:--- |:--- |:--- |:--- |
 | itemToTest |Igen |tömb, objektum vagy karakterlánc |Az érték, amely alapján ellenőrizhető, hogy üres-e. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 **Igaz** értéket ad vissza, ha az érték üres. Ellenkező esetben **hamis**.
 
@@ -767,7 +777,7 @@ Meghatározza, hogy egy karakterlánc egy értékkel végződik-e. Az összehaso
 | stringToSearch |Igen |sztring |A keresendő elemeket tartalmazó érték. |
 | stringToFind |Igen |sztring |A keresendő érték. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 **Igaz** , ha a sztring utolsó karaktere vagy karaktere megegyezik az értékkel; Ellenkező esetben **hamis**.
 
@@ -847,7 +857,7 @@ A karakterlánc első karakterét vagy a tömb első elemét adja vissza.
 |:--- |:--- |:--- |:--- |
 | arg1 |Igen |tömb vagy karakterlánc |Az első elem vagy karakter beolvasására szolgáló érték. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Egy tömb első elemének első karakterének vagy típusának (karakterlánc, int, Array vagy Object) a karakterlánca.
 
@@ -1044,7 +1054,7 @@ guid(resourceGroup().id, deployment().name)
 
 ---
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Egy 36 karaktert tartalmazó karakterlánc, amely globálisan egyedi azonosító formátumban van.
 
@@ -1101,7 +1111,7 @@ Egy érték első pozícióját adja vissza egy karakterláncon belül. Az össz
 | stringToSearch |Igen |sztring |A keresendő elemeket tartalmazó érték. |
 | stringToFind |Igen |sztring |A keresendő érték. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Egy egész szám, amely a keresett tétel pozícióját jelöli. Az érték nulla-alapú. Ha az elem nem található, a-1 értéket adja vissza.
 
@@ -1183,7 +1193,7 @@ A sztring utolsó karakterét vagy a tömb utolsó elemét adja vissza.
 |:--- |:--- |:--- |:--- |
 | arg1 |Igen |tömb vagy karakterlánc |Az utolsó elem vagy karakter beolvasására szolgáló érték. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Egy tömb utolsó elemének utolsó karakterének vagy típusának (karakterlánc, int, Array vagy Object) a karakterlánca.
 
@@ -1253,7 +1263,7 @@ Egy érték utolsó pozícióját adja vissza egy karakterláncon belül. Az ös
 | stringToSearch |Igen |sztring |A keresendő elemeket tartalmazó érték. |
 | stringToFind |Igen |sztring |A keresendő érték. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Egy egész szám, amely a keresendő tétel utolsó pozícióját jelöli. Az érték nulla-alapú. Ha az elem nem található, a-1 értéket adja vissza.
 
@@ -1327,7 +1337,7 @@ Egy sztringben szereplő karakterek számát, egy tömb elemeinek vagy egy objek
 |:--- |:--- |:--- |:--- |
 | arg1 |Igen |tömb, karakterlánc vagy objektum |Az elemek számának beolvasásához használandó tömb, a karakterek számának beolvasásához használandó karakterlánc, vagy a gyökérszintű tulajdonságok számának beolvasásához használandó objektum. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Egy int.
 
@@ -1439,7 +1449,7 @@ Tesztelési környezetben szükség lehet az olyan erőforrások ismételt üzem
 
 Ügyeljen arra, hogy egy alapértelmezett érték esetén a newGuid függvényre támaszkodó sablont telepítse újra. Ha újratelepíti, és nem ad meg értéket a paraméterhez, a függvény újraértékelése megtörténik. Ha egy meglévő erőforrást nem új létrehozása helyett szeretne frissíteni, adja át a paraméter értékét a korábbi telepítésből.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Egy 36 karaktert tartalmazó karakterlánc, amely globálisan egyedi azonosító formátumban van.
 
@@ -1530,7 +1540,7 @@ A következő példa a newGuid függvényt használja a Storage-fiók egyedi nev
 ```bicep
 param guidValue string = newGuid()
 
-var storageName = concat('storage', uniqueString(guidValue))
+var storageName = 'storage${uniqueString(guidValue)}'
 
 resource myStorage 'Microsoft.Storage/storageAccounts@2018-07-01' = {
   name: storageName
@@ -1569,7 +1579,7 @@ Egy jobbra igazított karakterláncot ad vissza, amely a megadott teljes hossz e
 
 Ha az eredeti sztring hosszabb, mint a pad karaktereinek száma, a rendszer nem adja hozzá a karaktereket.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Egy sztring, amely legalább a megadott karakterek számát adja meg.
 
@@ -1629,7 +1639,7 @@ Egy új karakterláncot ad vissza, amely egy sztring összes példányát egy m�
 | Régikarakterlánc |Igen |sztring |Az eredeti sztringből eltávolítandó karakterlánc. |
 | Újkarakterlánc |Igen |sztring |Az eltávolított karakterlánc helyére felvenni kívánt karakterlánc. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A lecserélt karaktereket tartalmazó karakterlánc.
 
@@ -1694,7 +1704,7 @@ Egy olyan sztringet ad vissza, amely a megadott számú karakter után az össze
 | originalValue |Igen |tömb vagy karakterlánc |A kihagyáshoz használandó tömb vagy karakterlánc. |
 | numberToSkip |Igen |int |A kihagyni kívánt elemek vagy karakterek száma. Ha ez az érték 0 vagy kevesebb, az értékben szereplő összes elemet vagy karaktert adja vissza a rendszer. Ha a tömb vagy a karakterlánc hossza nagyobb, akkor a rendszer üres tömböt vagy karakterláncot ad vissza. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Tömb vagy karakterlánc.
 
@@ -1782,7 +1792,7 @@ Karakterláncok tömbjét adja vissza, amely a megadott elválasztó karakterrel
 | inputString |Igen |sztring |A felosztani kívánt karakterlánc. |
 | elválasztókarakter |Igen |karakterlánc vagy karakterláncok tömbje |A karakterlánc felosztásához használandó elválasztó karakter. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Karakterláncok tömbje.
 
@@ -1860,7 +1870,7 @@ Meghatározza, hogy egy karakterlánc egy értékkel kezdődik-e. Az összehason
 | stringToSearch |Igen |sztring |A keresendő elemeket tartalmazó érték. |
 | stringToFind |Igen |sztring |A keresendő érték. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 **Igaz** , ha a karakterlánc első karaktere vagy karaktere megegyezik az értékkel; Ellenkező esetben **hamis**.
 
@@ -1940,7 +1950,7 @@ A megadott értéket karakterlánccá alakítja.
 |:--- |:--- |:--- |:--- |
 | valueToConvert |Igen | Bármelyik |A sztringre konvertálandó érték. Bármilyen típusú érték konvertálható, beleértve az objektumokat és a tömböket is. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Az átalakított érték karakterlánca.
 
@@ -2036,7 +2046,7 @@ Egy olyan alsztringet ad vissza, amely a megadott karakteres pozíciónál kezd�
 | startIndex |Nem |int |Az alsztring nulla alapú kiindulási karakterének pozíciója. |
 | hossz |Nem |int |Az alkarakterlánc karaktereinek száma. A karakterláncon belüli helyre kell hivatkoznia. Nulla vagy nagyobb értéknek kell lennie. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Az alkarakterlánc. Vagy ha a hossz nulla, akkor üres karakterláncot kell megadni.
 
@@ -2121,7 +2131,7 @@ Egy olyan karakterláncot ad vissza, amely a megadott számú karaktert tartalma
 | originalValue |Igen |tömb vagy karakterlánc |Az elemeket tartalmazó tömb vagy karakterlánc. |
 | numberToTake |Igen |int |A felvenni kívánt elemek vagy karakterek száma. Ha ez az érték 0 vagy kevesebb, üres tömböt vagy karakterláncot ad vissza. Ha az érték nagyobb, mint a megadott tömb vagy karakterlánc hossza, a rendszer a tömb vagy karakterlánc összes elemét visszaadja. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Tömb vagy karakterlánc.
 
@@ -2208,7 +2218,7 @@ A megadott sztringet kisbetűvé alakítja.
 |:--- |:--- |:--- |:--- |
 | stringToChange |Igen |sztring |Az kisbetűsre konvertálandó érték. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A karakterláncot kisbetűvé alakítja.
 
@@ -2272,7 +2282,7 @@ A megadott sztringet nagybetűvé alakítja.
 |:--- |:--- |:--- |:--- |
 | stringToChange |Igen |sztring |A nagybetűre konvertálandó érték. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A karakterlánc a nagybetűre lett konvertálva.
 
@@ -2336,7 +2346,7 @@ Eltávolítja az összes kezdő és záró szóközöket a megadott karakterlán
 |:--- |:--- |:--- |:--- |
 | stringToTrim |Igen |sztring |A vágási érték. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A karakterlánc kezdő és záró szóközök nélkül.
 
@@ -2468,7 +2478,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre egyedi nevet egy Storage-fiók
 
 ```bicep
 resource mystorage 'Microsoft.Storage/storageAccounts@@2018-07-01' = {
-  name: concat('storage, uniqueString(resourceGroup().id)')
+  name: 'storage${uniqueString(resourceGroup().id)}'
   ...
 }
 ```
@@ -2477,7 +2487,7 @@ resource mystorage 'Microsoft.Storage/storageAccounts@@2018-07-01' = {
 
 Ha minden alkalommal új egyedi nevet kell létrehoznia, amikor sablont telepít, és nem kívánja frissíteni az erőforrást, használhatja a [utcNow](template-functions-date.md#utcnow) függvényt a uniqueString. Ezt a megközelítést tesztkörnyezetben is használhatja. Példaként tekintse meg a következőt: [utcNow](template-functions-date.md#utcnow).
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 13 karaktert tartalmazó sztring.
 
@@ -2535,7 +2545,7 @@ Abszolút URI-t hoz létre a baseUri és a relativeUri karakterlánc kombinálá
 
    * Ha a **baseUri** tartalmaz némi perjelet, de a perjel nem végződik, akkor az utolsó perjeltől kezdve a rendszer eltávolítja a **baseUri** , és az eredményt a **baseUri** , majd a **relativeUri**.
 
-Néhány példa:
+Íme néhány példa:
 
 ```
 uri('http://contoso.org/firstpath', 'myscript.sh') -> http://contoso.org/myscript.sh
@@ -2545,7 +2555,7 @@ uri('http://contoso.org/firstpath/azuredeploy.json/', 'myscript.sh') -> http://c
 ```
 A teljes részletesség érdekében a **baseUri** és a **relativeUri** paramétereket a [3986-es RFC-dokumentum 5. szakasza](https://tools.ietf.org/html/rfc3986#section-5)határozza meg.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Az alap és a relatív értékek abszolút URI azonosítóját jelölő sztring.
 
@@ -2631,7 +2641,7 @@ URI kódolása.
 |:--- |:--- |:--- |:--- |
 | stringToEncode |Igen |sztring |A kódolni kívánt érték. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Az URI-kódolású érték karakterlánca.
 
@@ -2701,7 +2711,7 @@ Egy URI-kódolású érték sztringjét adja vissza.
 |:--- |:--- |:--- |:--- |
 | uriEncodedString |Igen |sztring |A karakterláncra konvertálandó URI-kódolású érték. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 URI-kódolt érték dekódolt karakterlánca.
 

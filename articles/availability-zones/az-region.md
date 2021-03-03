@@ -8,12 +8,12 @@ ms.date: 01/26/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 16bb173bdbe390da46f2dc105baa9bc73d25a3dc
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: fee000009be90a083406725fe7f1e8c4382af3e9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100557017"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701450"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>A rendelkezésreállási zónákat támogató Azure-szolgáltatások
 
@@ -106,6 +106,8 @@ Az Azure-ban elérhető átfogó Üzletmenet-folytonosság érdekében az Azure 
 |     Virtual Machines: Dv3-Series                              | : large_blue_diamond:  |
 |     Virtual Machines: ESv3-Series                             | : large_blue_diamond:  |
 |     Virtual Machines: Ev3-Series                              | : large_blue_diamond:  |
+|     Virtual Machines: F sorozat                                | : large_blue_diamond:  |
+|     Virtual Machines: FS-Series                               | : large_blue_diamond:  |
 |     Virtual Network                                           | : large_blue_diamond:  |
 |     VPN Gateway                                                 | : large_blue_diamond:  |
 
@@ -129,11 +131,18 @@ Az Azure-ban elérhető átfogó Üzletmenet-folytonosság érdekében az Azure 
 | Azure Private Link                              |      : large_blue_diamond:  |
 | Azure Red Hat OpenShift                         |      : large_blue_diamond:  |
 | Azure Site Recovery                             |      : large_blue_diamond:  |
+| Azure SQL: virtuális gép                      |      : large_blue_diamond:  |
+| Azure Search                                    |      : large_blue_diamond:  |
+| Azure Web Application Firewall                  |      : large_blue_diamond:  |
+| Cognitive Services: Text Analytics              |      : large_blue_diamond:  |
 | Container Registry                              |      : large_blue_diamond:  |
 | Event Grid                                      |      : large_blue_diamond:  |
 | Network Watcher                                 |      : large_blue_diamond:  |
+| Network Watcher: Traffic Analytics              |      : large_blue_diamond:  |
 | Power BI Embedded                               |      : large_blue_diamond:  |
 | Prémium Blob Storage                            |      : large_blue_diamond:  |
+| Storage: prémium szintű Azure-fájlok                    |      : large_blue_diamond:  |
+| Virtual Machines: Azure dedikált gazdagép          |      : large_blue_diamond:  |
 | Virtual Machines: Ddsv4-Series                  |      : large_blue_diamond:  |
 | Virtual Machines: Ddv4-Series                   |      : large_blue_diamond:  |
 | Virtual Machines: Dsv4-Series                   |      : large_blue_diamond:  |
@@ -145,6 +154,9 @@ Az Azure-ban elérhető átfogó Üzletmenet-folytonosság érdekében az Azure 
 | Virtual Machines: Fsv2-Series                   |      : large_blue_diamond:  |
 | Virtual Machines: M sorozat                      |      : large_blue_diamond:  |
 | Virtuális WAN                                     |      : large_blue_diamond:  |
+| Virtuális WAN: ExpressRoute                       |      : large_blue_diamond:  |
+| Virtuális WAN: pont – hely VPN Gateway          |      : large_blue_diamond:  |
+| Virtuális WAN: helyek közötti VPN Gateway           |      : large_blue_diamond:  |
 
 
 **Nem regionális**
@@ -153,21 +165,30 @@ Az Azure-ban elérhető átfogó Üzletmenet-folytonosság érdekében az Azure 
 |-----------------------------------------------|:-------------------:|
 |     Azure DNS                                 |     : globe_with_meridians:             |
 |     Azure Active Directory                  |     : globe_with_meridians:             |
+|     Azure Komplex veszélyforrások elleni védelem          |     : globe_with_meridians:             |
 |     Azure Advisor                             |     : globe_with_meridians:             |
+|     Azure Blueprints                          |     : globe_with_meridians:             |
 |     Azure Bot Services                        |     : globe_with_meridians:             |
 |     Azure Defender a IoT                  |     : globe_with_meridians:             |
+|     Azure Front Door                           |     : globe_with_meridians:             |
 |     Azure Information Protection            |     : globe_with_meridians:             |
 |     Azure-világítótorony                        |     : globe_with_meridians:             |
 |     Azure Managed Applications              |     : globe_with_meridians:             |
 |     Azure Maps                                |     : globe_with_meridians:             |
 |     Azure Policy                              |     : globe_with_meridians:             |
 |     Azure-erőforrás gráf                    |     : globe_with_meridians:             |
+|     Azure Sentinel                            |     : globe_with_meridians:             |
 |     Azure Stack                               |     : globe_with_meridians:             |
 |     Azure Stack Edge                        |     : globe_with_meridians:             |
 |     Cloud Shell                               |     : globe_with_meridians:             |
+|     Content Delivery Network                  |     : globe_with_meridians:             |
+|     Költségkezelés                           |     : globe_with_meridians:             |
 |     Microsoft Azure Ügyfélszéf    |     : globe_with_meridians:             |
+|     Intune                                    |     : globe_with_meridians:             |
 |     Microsoft Azure peering szolgáltatás         |     : globe_with_meridians:             |
 |     Microsoft Azure Portal                  |     : globe_with_meridians:             |
+|     Microsoft Cloud App Security              |     : globe_with_meridians:             |
+|     Microsoft Graph                           |     : globe_with_meridians:             |
 |     Security Center                         |     : globe_with_meridians:             |
 |     Traffic Manager                         |     : globe_with_meridians:             |
 

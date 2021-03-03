@@ -6,13 +6,13 @@ author: kromerm
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/04/2020
-ms.openlocfilehash: 5b2197950d5dbb95bd0a90f15506756ee3ed0b2d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/19/2021
+ms.openlocfilehash: 0aa472aca40acbaf3f8c8a09469d08fe6b37187a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369832"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699759"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Adatfolyam-hibakeresési mód leképezése
 
@@ -39,9 +39,9 @@ A legtöbb esetben célszerű hibakeresési módban felépíteni az adatfolyamat
 
 ## <a name="cluster-status"></a>Fürt állapota
 
-A fürt állapotjelzője a tervezési felület tetején zöldre vált, amikor a fürt készen áll a hibakeresésre. Ha a fürt már meleg, akkor a zöld kijelző szinte azonnal megjelenik. Ha a fürt nem fut a hibakeresési mód megadásakor, akkor 5-7 percet várnia kell, amíg a fürt fel nem kerül. A kijelző addig forog, amíg készen nem áll.
+A fürt állapotjelzője a tervezési felület tetején zöldre vált, amikor a fürt készen áll a hibakeresésre. Ha a fürt már meleg, akkor a zöld kijelző szinte azonnal megjelenik. Ha a fürt nem fut a hibakeresési mód megadásakor, akkor a Spark-fürt hideg rendszerindítást hajt végre. A kijelző addig forog, amíg a környezet nem áll készen az interaktív hibakeresésre.
 
-Ha befejezte a hibakeresést, kapcsolja ki a hibakeresési kapcsolót, hogy a Azure Databricks-fürt leálljon, és a továbbiakban nem lesz számlázva a hibakeresési tevékenységhez.
+Ha befejezte a hibakeresést, kapcsolja ki a hibakeresési kapcsolót úgy, hogy a Spark-fürt leálljon, és a továbbiakban nem lesz számlázva a hibakeresési tevékenységért.
 
 ## <a name="debug-settings"></a>Hibakeresési beállítások
 
@@ -50,6 +50,8 @@ A hibakeresési mód bekapcsolása után szerkesztheti, hogyan tekintheti át az
 ![Hibakeresési beállítások](media/data-flow/debug-settings.png "Hibakeresési beállítások")
 
 Ha az adatfolyamban vagy valamelyik hivatkozott adatkészletben paraméterek vannak megadva, megadhatja, hogy a hibakeresés során milyen értékeket kell használni a **Parameters (paraméterek** ) lapon.
+
+Az itt található mintavételi beállítások segítségével megtekintheti a mintaadatok vagy az adatminta-táblázatok adatait, így nem kell módosítania a forrás adatkészleteket. Ha itt egy minta fájlt vagy táblázatot használ, megtarthatja az adatforgalomban megjelenő logikai és tulajdonság-beállításokat, miközben az adathalmazok alapján végez tesztelést.
 
 ![Hibakeresési beállítások paraméterei](media/data-flow/debug-settings2.png "Hibakeresési beállítások paraméterei")
 

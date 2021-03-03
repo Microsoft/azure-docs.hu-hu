@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2018
-ms.openlocfilehash: 7b670cafa4d643e37fae068a4c0033fc97a96ccd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 074c5dda8ff8d5f837e8ea2a85c183c69421bedb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100613945"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710872"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Útmutató a Designer vizualizációs részeinek megtekintéséhez Azure Monitor
 A Azure Monitor Tervező nézetében számos egyéni nézetet hozhat létre a Azure Portalban, amelyek segíthetnek a Log Analytics munkaterületen lévő adatmegjelenítésben. Ez a cikk az egyéni nézetekben elérhető vizualizációs részek beállításait ismerteti.
@@ -24,7 +24,7 @@ További információ a tervező nézetéről:
 
 A következő táblázat ismerteti az elérhető View Designer csempék típusait:
 
-| Nézet típusa | Description |
+| Nézet típusa | Leírás |
 |:--- |:--- |
 | [Lekérdezések listája](#list-of-queries-part) |Megjeleníti a naplózott lekérdezések listáját. Az egyes lekérdezéseket kiválaszthatja az eredmények megjelenítéséhez. |
 | [Szám és lista](#number-and-list-part) |A fejléc egyetlen számot jelenít meg, amely egy napló lekérdezésében lévő rekordok számát jeleníti meg. A lista a lekérdezés első tíz eredményét jeleníti meg egy gráfmal, amely egy numerikus oszlop relatív értékét vagy időbeli változását jelzi. |
@@ -39,7 +39,7 @@ A következő táblázat ismerteti az elérhető View Designer csempék típusai
 A következő szakaszok részletesen ismertetik a csempék típusát és azok tulajdonságait.
 
 > [!NOTE]
-> A nézetek részei a Log Analytics munkaterületen található [naplókon](../log-query/log-query-overview.md) alapulnak. Jelenleg nem támogatják a [több erőforrás lekérdezését](../log-query/cross-workspace-query.md) az adatok Application Insightsból való lekéréséhez.
+> A nézetek részei a Log Analytics munkaterületen található [naplókon](../logs/log-query-overview.md) alapulnak. Jelenleg nem támogatják a [több erőforrás lekérdezését](../logs/cross-workspace-query.md) az adatok Application Insightsból való lekéréséhez.
 
 ## <a name="list-of-queries-part"></a>Lekérdezések részének listája
 A lekérdezések listája a naplók listáját jeleníti meg. Az egyes lekérdezéseket kiválaszthatja az eredmények megjelenítéséhez. A nézet alapértelmezés szerint egyetlen lekérdezést tartalmaz, és további lekérdezések hozzáadásához kiválaszthatja a **+ lekérdezés** lehetőséget is.
@@ -318,7 +318,7 @@ A név és az érték elválasztója az egykarakteres határolójel, amellyel a 
 Vegyünk például egy *hely* nevű tulajdonságot, amely olyan értékeket tartalmaz, mint például a *Redmond-Building 41* és a *Bellevue-Building 12*. Megadhat egy kötőjelet (-) a név és az érték elválasztója és a *város létrehozása* számára. Ez a megközelítés az egyes értékeket a *City* és a *Building* nevű két tulajdonságra elemzi.
 
 ### <a name="click-through-navigation"></a><a name="click-through-navigation"></a>Kattintás – Navigálás
-Átkattintásos Navigálás meghatározza, hogy milyen műveletet hajtson végre a rendszer, amikor rákattint egy fejlécre vagy listaelemre egy nézetben.  Ekkor megnyit egy lekérdezést a [log Analytics](../log-query/log-query-overview.md) , vagy egy másik nézetet indít el.
+Átkattintásos Navigálás meghatározza, hogy milyen műveletet hajtson végre a rendszer, amikor rákattint egy fejlécre vagy listaelemre egy nézetben.  Ekkor megnyit egy lekérdezést a [log Analytics](../logs/log-query-overview.md) , vagy egy másik nézetet indít el.
 
 A következő táblázat a kattintásra navigáció beállításait ismerteti.
 
@@ -357,4 +357,4 @@ A következő táblázat a küszöbértékek beállításait ismerteti:
 | Szín |A küszöbértéket jelző szín |
 
 ## <a name="next-steps"></a>Következő lépések
-* További információ a vizualizációs részekben található lekérdezések támogatásához használható [naplók lekérdezéséről](../log-query/log-query-overview.md) .
+* További információ a vizualizációs részekben található lekérdezések támogatásához használható [naplók lekérdezéséről](../logs/log-query-overview.md) .

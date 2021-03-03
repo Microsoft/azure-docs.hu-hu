@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/08/2020
 ms.author: jeedes
-ms.openlocfilehash: 286dc20ba70c78f8248f611abd75e0acc303c068
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 81b57563899fe4babecbdb66cf1dbd876ec5bdf9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736188"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689011"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Amazon Web Servicestal (AWS)
 
@@ -26,9 +26,26 @@ Ez az oktatóanyag azt ismerteti, hogyan integrálható Amazon Web Services (AWS
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a Amazon Web Servicesba (AWS) az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-> [!Note]
-> Az Azure AD nem támogatja az egyszeri bejelentkezéses integrációt az AWS SSO-vel, ez egy másik termék az AWS-től. Bár az AWS említi [itt](https://docs.aws.amazon.com/singlesignon/latest/userguide/azure-ad-idp.html), az Azure ad azt javasolja, hogy az ügyfelek AWS iam-integrációt használjanak, így jobb biztonsági ellenőrzéseket végezhetnek az egyes fiókokra vonatkozó feltételes hozzáférési szabályzatok használatával, továbbá hatékonyabban irányítják az alkalmazásokat.
+## <a name="understanding-the-different-aws-applications-in-the-azure-ad-application-gallery"></a>A különböző AWS-alkalmazások megismerése az Azure AD Application Galleryben
+Az alábbi információk segítségével döntéseket hozhat az AWS Single Sign-On és AWS Single-Account Access Applications az Azure AD Application Galleryben.
 
+**AWS egyszeri bejelentkezés**
+
+Az [AWS egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/saas-apps/aws-single-sign-on-tutorial) a 2021 februárjában lett hozzáadva az Azure ad Application Gallery-hez. Megkönnyíti a hozzáférést központilag több AWS-fiókhoz és AWS-alkalmazásokhoz, a bejelentkezést Microsoft Azure ADon keresztül. A összevonása az AWS egyszeri bejelentkezéssel Microsoft Azure AD egyszer, az AWS SSO használatával pedig egyetlen helyről kezelheti az összes AWS-fiók engedélyeit. Az AWS egyszeri bejelentkezésre vonatkozó engedélyei automatikusan, a házirendek és a hozzáférési hozzárendelések frissítésekor pedig naprakészek maradnak. A végfelhasználók Azure AD-beli hitelesítő adataikkal hitelesíthetők az AWS konzol, a parancssori felület és az AWS SSO integrált alkalmazások eléréséhez.
+
+**AWS Single-Account hozzáférés**
+
+Az [aws Single-Account a hozzáférést](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) az elmúlt néhány évben az ügyfelek használták, és lehetővé teszi, hogy egyetlen AWS-fiókkal összevonása az Azure ad-t, és az Azure ad segítségével kezelje az AWS iam-szerepkörökhöz való hozzáférést. Az AWS IAM-rendszergazdák minden AWS-fiókban határozzák meg a szerepköröket és a szabályzatokat. Minden AWS-fiók esetében az Azure AD-rendszergazdák összevonása az AWS IAM-t, felhasználókat vagy csoportokat rendelnek hozzá a fiókhoz, és az Azure AD-t úgy konfigurálja, hogy a szerepkör-hozzáférést engedélyező jogcímeket küldje el.  
+
+| Szolgáltatás | AWS egyszeri Sign-On | AWS Single-Account hozzáférés |
+|:--- |:---:|:---:|
+|Feltételes hozzáférés| Egyetlen feltételes hozzáférési szabályzatot támogat az összes AWS-fiókhoz. | Egyetlen feltételes hozzáférési szabályzatot támogat az összes fiókhoz vagy egyéni házirendhez egy fiókban|
+| CLI-hozzáférés | Támogatott | Támogatott|
+| Privileged Identity Management | Még nem támogatott | Még nem támogatott |
+| Fiókkezelés központosított kezelése | Az AWS-ben központosíthatja a fiókok kezelését. | Az Azure AD-fiók kezelésének központosítása (valószínűleg egy Azure AD Enterprise-alkalmazásra lesz szükség). |
+| SAML-tanúsítvány| Egyetlen tanúsítvány| Külön tanúsítvány/alkalmazás/fiók | 
+
+## <a name="aws-single-account-access-architecture"></a>AWS Single-Account-hozzáférési architektúra
 ![Az Azure AD és az AWS kapcsolatának ábrája](./media/amazon-web-service-tutorial/tutorial_amazonwebservices_image.png)
 
 Több példányhoz is konfigurálhat több azonosítót. Például:
@@ -394,7 +411,7 @@ A Microsoft Access panel használatával bármilyen módban tesztelheti az alkal
 
 * 01/12/2020 – nagyobb a szerepkör hossza 119 karakter és 239 karakter között. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután konfigurálta Amazon Web Services (AWS), kikényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 02/11/2021
-ms.openlocfilehash: 643645eb3b361cd68def1177ba7e8af89f1963bc
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 838a48aa11a1cb36c3a7d822ce88f58936aa976d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100521088"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734621"
 ---
 # <a name="visualizations-for-application-change-analysis-preview"></a>Az Application Change Analysis (előzetes verzió) vizualizációi
 
@@ -80,13 +80,13 @@ Nyissa meg a problémák diagnosztizálása és megoldása eszközt a virtuális
 
 ## <a name="activity-log-change-history"></a>Tevékenység naplójának változási előzményei
 
-A tevékenység naplójában megjelenő változási [előzmények megtekintése](../platform/activity-log.md#view-change-history) funkció az Analysis Service-háttér változásával lekéri a művelethez kapcsolódó módosításokat. Az [Azure Resource Graph](../../governance/resource-graph/overview.md) közvetlen meghívásához használt **korábbi** változások, de a háttér meghívása az alkalmazás változási elemzésének meghívására, így a visszaadott változások tartalmazzák az [Azure Resource Graph](../../governance/resource-graph/overview.md)-ból származó erőforrás-szintű változásokat, a [Azure Resource Manager](../../azure-resource-manager/management/overview.md)erőforrás-tulajdonságait, valamint a további, a Pásti-szolgáltatásokból, például app Services webalkalmazásból származó Ahhoz, hogy az alkalmazás megváltoztatja az Analysis Service-t, hogy ellenőrizni tudja a felhasználói előfizetések módosításait, regisztrálni kell egy erőforrás-szolgáltatót. Amikor először adta meg az **Előzmények** fület, az eszköz automatikusan elkezdi regisztrálni a **Microsoft. ChangeAnalysis** erőforrás-szolgáltatót. A regisztrációt követően az **Azure Resource Graph** változásai azonnal elérhetővé válnak, és az elmúlt 14 napra kiterjednek. A más forrásokból származó változások az előfizetés után 4 órával azután lesznek elérhetők.
+A tevékenység naplójában megjelenő változási [előzmények megtekintése](../essentials/activity-log.md#view-change-history) funkció az Analysis Service-háttér változásával lekéri a művelethez kapcsolódó módosításokat. Az [Azure Resource Graph](../../governance/resource-graph/overview.md) közvetlen meghívásához használt **korábbi** változások, de a háttér meghívása az alkalmazás változási elemzésének meghívására, így a visszaadott változások tartalmazzák az [Azure Resource Graph](../../governance/resource-graph/overview.md)-ból származó erőforrás-szintű változásokat, a [Azure Resource Manager](../../azure-resource-manager/management/overview.md)erőforrás-tulajdonságait, valamint a további, a Pásti-szolgáltatásokból, például app Services webalkalmazásból származó Ahhoz, hogy az alkalmazás megváltoztatja az Analysis Service-t, hogy ellenőrizni tudja a felhasználói előfizetések módosításait, regisztrálni kell egy erőforrás-szolgáltatót. Amikor először adta meg az **Előzmények** fület, az eszköz automatikusan elkezdi regisztrálni a **Microsoft. ChangeAnalysis** erőforrás-szolgáltatót. A regisztrációt követően az **Azure Resource Graph** változásai azonnal elérhetővé válnak, és az elmúlt 14 napra kiterjednek. A más forrásokból származó változások az előfizetés után 4 órával azután lesznek elérhetők.
 
 ![A műveletnapló változási előzményeinek integrációja](./media/change-analysis/activity-log-change-history.png)
 
 ## <a name="vm-insights-integration"></a>A VM-alapú adatáttekintések integrációja
 
-Azok a felhasználók, akiknél [engedélyezve van a virtuális gépek](../insights/vminsights-overview.md) elemzése, megtekinthetik, hogy milyen változások történtek az egyes mérőszámok, például a processzor vagy a memória által okozott tüskék. Az adatváltozások integrálva vannak a virtuálisgép-elemzések oldalsó navigációs sávjában. A felhasználó megtekintheti, hogy történtek-e változások a virtuális gépen, és válassza a **változások vizsgálata** lehetőséget a módosítás részleteinek megtekintéséhez az Application Change Analysis önálló felhasználói felületén.
+Azok a felhasználók, akiknél [engedélyezve van a virtuális gépek](../vm/vminsights-overview.md) elemzése, megtekinthetik, hogy milyen változások történtek az egyes mérőszámok, például a processzor vagy a memória által okozott tüskék. Az adatváltozások integrálva vannak a virtuálisgép-elemzések oldalsó navigációs sávjában. A felhasználó megtekintheti, hogy történtek-e változások a virtuális gépen, és válassza a **változások vizsgálata** lehetőséget a módosítás részleteinek megtekintéséhez az Application Change Analysis önálló felhasználói felületén.
 
 [![A VM-alapú adatáttekintések integrációja](./media/change-analysis/vm-insights.png)](./media/change-analysis/vm-insights.png#lightbox)
 

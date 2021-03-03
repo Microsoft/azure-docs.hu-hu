@@ -8,14 +8,14 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/30/2021
 ms.author: cavoeg
-ms.openlocfilehash: e75cf8d6660bf6f2630b83e0c2c812fa7cf59057
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 19f051320aaa675ebe5ff148fb6580c2a5d8770c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430242"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719134"
 ---
-# <a name="features"></a>Szolgáltatások
+# <a name="features"></a>Funkciók
 
 A FHIR készült Azure API teljes körűen felügyelt üzembe helyezést biztosít az Azure-hoz készült Microsoft FHIR-kiszolgáló számára. A kiszolgáló a [FHIR](https://hl7.org/fhir) standard implementációja. Ez a dokumentum a FHIR-kiszolgáló fő funkcióit sorolja fel.
 
@@ -35,7 +35,7 @@ A korábbi verziók jelenleg is támogatottak: `3.0.2`
 | frissítés optimista zárolással | Igen       | Igen       | Igen       |                                                     |
 | frissítés (feltételes)           | Igen       | Igen       | Igen       |                                                     |
 | javítás                          | Nem        | Nem        | Nem        |                                                     |
-| törlés                         | Igen       | Igen       | Igen       |                                                     |
+| delete                         | Igen       | Igen       | Igen       |  Lásd az alábbi megjegyzést                                                   |
 | Törlés (feltételes)           | Nem        | Nem        | Nem        |                                                     |
 | előzmények                        | Igen       | Igen       | Igen       |                                                     |
 | létrehozás                         | Igen       | Igen       | Igen       | Mind a POST, mind a PUT támogatása                               |
@@ -48,6 +48,9 @@ A korábbi verziók jelenleg is támogatottak: `3.0.2`
 | tranzakció                    | Nem        | Igen       | Nem        |                                                     |
 | lapozófájl                         | Részleges   | Részleges   | Részleges   | `self` és `next` támogatottak                     |
 | közvetítők                 | Nem        | Nem        | Nem        |                                                     |
+
+> [!Note]
+> A FHIR specifikáció által definiált törléshez a törlés után az erőforrás későbbi, nem adott olvasási művelete egy 410 HTTP-állapotkódot ad vissza, és az erőforrás már nem található meg a keresésen keresztül. A FHIR készült Azure API lehetővé teszi az erőforrás teljes törlését (az összes előzményt is beleértve). Az erőforrás teljes törléséhez átadhatja a paraméter beállításait `hardDelete` true () értékre `DELETE {server}/{resource}/{id}?hardDelete=true` . Ha nem adja át ezt a paramétert, vagy hamis értékre állítja, akkor az `hardDelete` erőforrás korábbi verziói továbbra is elérhetők lesznek.
 
 ## <a name="search"></a>Keresés
 
@@ -89,7 +92,7 @@ Az összes keresési paraméter típusa támogatott.
 | `_list`                 | Igen       | Igen       | Igen       |         |
 | `_type`                 | Igen       | Igen       | Igen       | Probléma [#1562](https://github.com/microsoft/fhir-server/issues/1562)        |
 | `_security`             | Igen       | Igen       | Igen       |         |
-| `_profile`              | Részleges   | Részleges   | Részleges   | Csak a STU3 esetében támogatott, az R4-ben nem támogatott |
+| `_profile`              | Részleges   | Részleges   | Részleges   | A STU3 támogatja. Ha az adatbázist 2021 február 20. **után** hozta létre, akkor az R4-t is támogatja. Azon dolgozunk, hogy engedélyezzük a _profile a 2021. február 20. előtt létrehozott adatbázisokon. |
 | `_text`                 | Nem        | Nem        | Nem        |         |
 | `_content`              | Nem        | Nem        | Nem        |         |
 | `_has`                  | Nem        | Nem        | Nem        |         |
@@ -99,7 +102,7 @@ Az összes keresési paraméter típusa támogatott.
 | Keresési eredmények paraméterei | Támogatott – Péter | Támogatott-OSS (SQL) | Támogatott-OSS (Cosmos DB) | Megjegyzés |
 |-------------------------|-----------|-----------|-----------|---------|
 | `_elements`             | Igen       | Igen       | Igen       | Probléma [#1256](https://github.com/microsoft/fhir-server/issues/1256)        |
-| `_count`                | Igen       | Igen       | Igen       | `_count` legfeljebb 100 karakter hosszú lehet. Ha 100-nél magasabbra van állítva, akkor a rendszer csak 100 értéket ad vissza, és a kötegben figyelmeztetést ad vissza. |
+| `_count`                | Igen       | Igen       | Igen       | `_count` legfeljebb 1000 karakter hosszú lehet. Ha 1000-nél magasabbra van állítva, akkor a rendszer csak 1000 értéket ad vissza, és a kötegben figyelmeztetést ad vissza. |
 | `_include`              | Igen       | Igen       | Igen       |A tartalmazott elemek 100-re korlátozódnak. A (z) Cosmos DB nem tartalmazza a (z) és az OSS-t a következőn: iteráció támogatása.|
 | `_revinclude`           | Igen       | Igen       | Igen       | A tartalmazott elemek 100-re korlátozódnak. A (z) Cosmos DB nem tartalmazza a (z) és az OSS-t a következőn [: iteráció támogatása](https://github.com/microsoft/fhir-server/issues/1313). Probléma [#1319](https://github.com/microsoft/fhir-server/issues/1319)|
 | `_summary`              | Részleges   | Részleges   | Részleges   | `_summary=count` támogatott |

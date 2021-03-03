@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 06f1d34e7d8da9a3ece206fc1ff804accf9454ff
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 7d2a21a30cefbc6e83e48c29d81191323387b8f2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493854"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705543"
 ---
 # <a name="quickstart-create-and-provision-an-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Rövid útmutató: X. 509 eszköz létrehozása és kiépítése a IoT Hub Device Provisioning Service C# eszközoldali SDK-val
 
@@ -22,7 +22,9 @@ ms.locfileid: "99493854"
 
 Ezek a lépések bemutatják, hogyan használható az eszköz kódja a [C# Azure IoT-mintákkal](https://github.com/Azure-Samples/azure-iot-samples-csharp) egy X. 509 eszköz kiépítéséhez. Ebben a cikkben egy eszköz mintakód használatával fog futni a fejlesztői gépen, hogy az eszköz kiépítési szolgáltatásával kapcsolódjon IoT Hubhoz.
 
-Ha nem ismeri az kiépítés folyamatát, tekintse át a [kiépítés](about-iot-dps.md#provisioning-process) áttekintését. Emellett a folytatás előtt végezze el az [IoT Hub eszközkiépítési szolgáltatás beállítása az Azure Portallal](./quick-setup-auto-provision.md) című cikk lépéseit. 
+## <a name="prerequisites"></a>Előfeltételek
+
+Ha nem ismeri az kiépítés folyamatát, tekintse át a [kiépítés](about-iot-dps.md#provisioning-process) áttekintését. Emellett a folytatás előtt végezze el az [IoT Hub eszközkiépítési szolgáltatás beállítása az Azure Portallal](./quick-setup-auto-provision.md) című cikk lépéseit.
 
 Az Azure IoT Device Provisioning Service kétféle típusú regisztrációt támogat:
 - [Regisztrációs csoportok](concepts-service.md#enrollment-group): Több kapcsolódó eszköz regisztrálásához.
@@ -48,8 +50,6 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
     ```bash
     dotnet --info
     ```
-
-
 
 ## <a name="create-a-self-signed-x509-device-certificate"></a>Önaláírt X.509-eszköztanúsítvány létrehozása
 

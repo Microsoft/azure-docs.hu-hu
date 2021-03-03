@@ -150,8 +150,10 @@
           href: disable-user-sign-in-portal.md
         - name: Új önkiszolgáló alkalmazás-hozzárendelés konfigurálása
           href: manage-self-service-access.md
-        - name: Kezdőtartomány felderítése
+        - name: Automatikus gyorsítás kényszerítése a Kezdőlap tartományának felderítési házirendjével
           href: configure-authentication-for-federated-users-portal.md
+        - name: A bejelentkezés automatikus gyorsításának tiltása a Kezdőlap tartomány-felderítési házirend használatával
+          href: prevent-domain-hints-with-home-realm-discovery.md
     - name: Identitáskezelés migrálása az Azure AD-be
       items:
         - name: Migrálási erőforrások

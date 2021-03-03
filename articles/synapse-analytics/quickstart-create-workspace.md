@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 09/03/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: fb7672a0d7bdd14415a51f2296c281e92cf5542a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d2f2ed99af288b72a4c53f07d3cd7ba8b46974c0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450659"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693628"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Rövid útmutató: szinapszis-munkaterület létrehozása
 Ez a rövid útmutató ismerteti, hogyan hozhat létre egy Azure szinapszis-munkaterületet a Azure Portal használatával.
@@ -34,7 +34,8 @@ Ez a rövid útmutató ismerteti, hogyan hozhat létre egy Azure szinapszis-munk
 1. Válassza a **Felülvizsgálat + létrehozás** > **Létrehozás** lehetőséget. A munkaterület pár percen belül elkészül.
 
 > [!NOTE]
-> Az Azure szinapszis-munkaterület létrehozása után nem fogja tudni áthelyezni a munkaterületet egy másik Azure Active Directory bérlőbe. Ha ezt az előfizetések migrálása vagy más műveletek útján mégis megkísérli, elveszítheti a hozzáférést a munkaterületen belüli összetevőkhöz.  
+> Az Azure szinapszis-munkaterület létrehozása után nem fogja tudni áthelyezni a munkaterületet egy másik Azure Active Directory bérlőbe. Ha ezt az előfizetések migrálása vagy más műveletek útján mégis megkísérli, elveszítheti a hozzáférést a munkaterületen belüli összetevőkhöz.
+> Emellett jelenleg nem hozhat létre a szinapszis Analytics-munkaterületet egy [felhőalapú megoldás-szolgáltatói (CSP)](https://docs.microsoft.com/partner-center/csp-overview) előfizetésben.
 
 ## <a name="open-synapse-studio"></a>A szinapszis Studio megnyitása
 
@@ -64,9 +65,9 @@ Előfordulhat, hogy az Azure szinapszis-munkaterülethez tartozó felügyelt ide
     * A Storage- **blob adatközreműködői** szerepköréhez a Storage-fiókban rendeljen **sajátmunkaterület** a munkaterület-identitáshoz.
     * Rendelje hozzá a **sajátmunkaterület** a munkaterület neveként.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Dedikált SQL-készlet létrehozása](quickstart-create-sql-pool-studio.md) 
 * [Kiszolgáló nélküli Apache Spark készlet létrehozása](quickstart-create-apache-spark-pool-portal.md)

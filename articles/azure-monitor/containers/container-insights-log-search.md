@@ -1,22 +1,22 @@
 ---
-title: Naplók lekérdezése Azure Monitorról tárolók számára | Microsoft Docs
-description: A tárolók Azure Monitor a metrikákat és a naplózási adatokat gyűjtik, és ez a cikk ismerteti a rekordokat, és példákat tartalmaz a lekérdezésekre.
+title: Naplók lekérdezése a Container-elemzésből | Microsoft Docs
+description: A Container-elemzések mérőszámokat és naplózási adatokat gyűjtenek, és ez a cikk ismerteti a rekordokat, és példákat tartalmaz a lekérdezésekre.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 8f02d900ba931768c7f8acebc1b124aff777da18
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 79efa714548adbde67774cab741bf953a4ff1e83
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100620035"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711110"
 ---
-# <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Naplók lekérdezése Azure Monitorról tárolók számára
+# <a name="how-to-query-logs-from-container-insights"></a>Naplók lekérdezése a Container-elemzésből
 
-A tárolók Azure Monitor a tároló gazdagépek és tárolók teljesítmény-mérőszámait, leltározási adatait és állapotadatok adatait gyűjtik. Az adatok gyűjtése három percenként történik, és a rendszer továbbítja azokat a Azure Monitor Log Analytics munkaterületére. Ezek az adatAzure Monitor [lekérdezésekhez](../log-query/log-query-overview.md) érhetők el. Ezeket az információkat olyan forgatókönyvekre alkalmazhatja, amelyek tartalmazzák az áttelepítés megtervezését, a kapacitás elemzését, a felderítést és az igény szerinti teljesítménnyel kapcsolatos hibaelhárítást.
+A Container-elemzések teljesítménymutatókat, leltározási adatokat és állapotadatokat gyűjtenek a tároló gazdagépei és tárolói között. Az adatok gyűjtése három percenként történik, és a rendszer továbbítja azokat a Azure Monitor Log Analytics munkaterületére. Ezek az adatAzure Monitor [lekérdezésekhez](../logs/log-query-overview.md) érhetők el. Ezeket az információkat olyan forgatókönyvekre alkalmazhatja, amelyek tartalmazzák az áttelepítés megtervezését, a kapacitás elemzését, a felderítést és az igény szerinti teljesítménnyel kapcsolatos hibaelhárítást.
 
 ## <a name="container-records"></a>Tároló rekordjai
 
-A következő táblázatban a Azure Monitor által a tárolók által gyűjtött rekordok részletei vannak megadva. Az oszlop leírását a [ContainerInventory](/azure/azure-monitor/reference/tables/containerinventory) és a [ContainerLog](/azure/azure-monitor/reference/tables/containerlog) táblákra vonatkozó referenciában tekintheti meg.
+A következő táblázatban a Container-információk által gyűjtött rekordok részletei vannak megadva. Az oszlop leírását a [ContainerInventory](/azure/azure-monitor/reference/tables/containerinventory) és a [ContainerLog](/azure/azure-monitor/reference/tables/containerlog) táblákra vonatkozó referenciában tekintheti meg.
 
 | Adatok | Adatforrás | Adattípus | Mezők |
 |------|-------------|-----------|--------|
@@ -47,7 +47,7 @@ A tároló a munkaterületre továbbított kimenetet naplózza STDOUT és STDERR
 
 Gyakran hasznos olyan lekérdezéseket létrehozni, amelyek egy példával vagy kettővel kezdődnek, majd az igényeinek megfelelően módosítják őket. A fejlettebb lekérdezések létrehozásához a következő példa-lekérdezésekkel lehet kísérletezni:
 
-| Lekérdezés | Description | 
+| Lekérdezés | Leírás | 
 |-------|-------------|
 | ContainerInventory<br> &#124; Project számítógép, név, rendszerkép, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime<br> &#124; renderelési táblázat | Egy tároló életciklus-információinak listázása| 
 | KubeEvents_CL<br> &#124;, ahol nem (IsEmpty (Namespace_s))<br> &#124; rendezés TimeGenerated desc szerint<br> &#124; renderelési táblázat | Kubernetes események|
@@ -110,4 +110,4 @@ A kimenet az alábbi példához hasonló eredményeket mutat:
 
 ## <a name="next-steps"></a>Következő lépések
 
-A tárolók Azure Monitor nem tartalmaz előre meghatározott riasztásokat. Tekintse át a [teljesítménnyel kapcsolatos riasztások létrehozása a Azure monitor for containers](./container-insights-log-alerts.md) szolgáltatással című témakört, amelyből megtudhatja, hogyan hozhat létre ajánlott riasztásokat magas CPU-és memóriahasználat esetén a DevOps vagy működési folyamatok és eljárások támogatásához
+A tároló-felismerések nem tartalmazzák a riasztások előre meghatározott készletét. Tekintse át a [teljesítmény-riasztások létrehozása a Container-információkkal](./container-insights-log-alerts.md) című témakört, amelyből megtudhatja, hogyan hozhat létre ajánlott riasztásokat magas CPU-és memóriahasználat esetén a DevOps vagy működési folyamatainak és eljárásainak támogatásához.

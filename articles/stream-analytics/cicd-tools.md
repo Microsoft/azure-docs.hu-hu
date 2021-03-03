@@ -7,12 +7,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: 3ed3ff44b927fa230dedf16387c1daca889d7c66
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d1a0a6ad5b45af2157b960f8990574e47d10eeb2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388702"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718420"
 ---
 # <a name="automate-builds-tests-and-deployments-of-an-azure-stream-analytics-job-using-cicd-tools"></a>Egy Azure Stream Analytics-feladatokhoz tartozó buildek, tesztek és központi telepítések automatizálása CI/CD-eszközök használatával
 
@@ -166,6 +166,9 @@ Ha azt szeretné, hogy a teszt érvényesítése figyelmen kívül hagyja az ado
   ]
 }
 ```
+
+> [!NOTE]
+> Jelenleg az elem egyetlen megengedett értéke `ScriptType` `InputMock` , amely egyben az alapértelmezett érték is. Ha más értékre állítja be, a rendszer figyelmen kívül hagyja, és az alapértelmezett értéket ( `InputMock` ) használja. 
 
 ### <a name="run-a-unit-test"></a>Egység teszt futtatása
 

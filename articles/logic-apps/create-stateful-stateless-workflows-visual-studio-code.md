@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 12/07/2020
-ms.openlocfilehash: be8d00d795c19399d494db21578e9a7ba8dd9711
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 03/02/2021
+ms.openlocfilehash: 43dd047738538b0dcc76904e951eccea3a327c19
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934016"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715955"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Állapot-nyilvántartó és állapot nélküli munkafolyamatok létrehozása a Visual Studio Code-ban a Azure Logic Apps (előzetes verzió) bővítménnyel
 
@@ -22,7 +22,7 @@ A [Azure Logic apps előzetes](logic-apps-overview-preview.md)verzióban automat
 
 ![Képernyőkép, amely a Visual Studio Code, a Logic app Project és a Workflow alkalmazást jeleníti meg.](./media/create-stateful-stateless-workflows-visual-studio-code/visual-studio-code-logic-apps-overview.png)
 
-A Visual Studio Code-ban elkezdheti egy olyan projekt létrehozásával, amely *helyileg* létrehozza és futtatja a logikai alkalmazás munkafolyamatait a fejlesztési környezetben a Azure Logic apps (előzetes verzió) bővítmény használatával. Habár az [új **Logic app (előzetes verzió)** erőforrás létrehozásával](create-stateful-stateless-workflows-azure-portal.md)is elindítható a Azure Portalban, mindkét módszer biztosítja a képességet, hogy a logikai alkalmazást ugyanolyan típusú üzemeltetési környezetekben lehessen üzembe helyezni és futtatni.
+A Visual Studio Code-ban elkezdheti egy olyan projekt létrehozásával, ahol a logikai alkalmazás munkafolyamatait *helyileg* hozhatja létre és futtathatja a fejlesztési környezetben a Azure Logic apps (előzetes verzió) bővítmény használatával. Habár az [új **Logic app (előzetes verzió)** erőforrás létrehozásával](create-stateful-stateless-workflows-azure-portal.md)is elindítható a Azure Portalban, mindkét módszer biztosítja a képességet, hogy a logikai alkalmazást ugyanolyan típusú üzemeltetési környezetekben lehessen üzembe helyezni és futtatni.
 
 Addig is létrehozhatja az eredeti logikai alkalmazás típusát. Bár a Visual Studio Code fejlesztői tapasztalatai eltérnek az eredeti és az új logikai alkalmazás típusától, az Azure-előfizetés mindkét típust magában foglalhatja. Az Azure-előfizetésben megtekintheti és elérheti az összes telepített Logic apps-alkalmazást, de az alkalmazások a saját kategóriákba és csoportokba vannak rendezve.
 
@@ -63,40 +63,53 @@ Ez a cikk bemutatja, hogyan hozhatja létre a logikai alkalmazást és a munkafo
 
 ### <a name="storage-requirements"></a>Tárolási követelmények
 
-#### <a name="windows-and-linux"></a>Windows és Linux
+#### <a name="windows"></a>Windows
+
+Ha a Windows rendszerben szeretné helyileg felépíteni és futtatni a logikai alkalmazások projektjét a Visual Studio Code-ban, kövesse az alábbi lépéseket az Azure Storage Emulator beállításához:
 
 1. Töltse le és telepítse az [Azure Storage Emulator 5,10](https://go.microsoft.com/fwlink/p/?linkid=717179)-es telepítését.
 
-1. Az emulátor futtatásához rendelkeznie kell egy helyi SQL-adatbázis-telepítéssel, például az ingyenes [SQL Server 2019 Express kiadással](https://go.microsoft.com/fwlink/p/?linkid=866658). További információ: [Az Azure Storage Emulator használata fejlesztéshez és teszteléshez](../storage/common/storage-use-emulator.md).
+1. Ha még nem rendelkezik ilyennel, rendelkeznie kell egy helyi SQL-adatbázis-telepítéssel, például az ingyenes [SQL Server 2019 Express kiadással](https://go.microsoft.com/fwlink/p/?linkid=866658), hogy az emulátor futtatható legyen.
 
-   > [!IMPORTANT]
-   > Mielőtt megnyitja a tervezőt a munkafolyamat létrehozásához, győződjön meg arról, hogy elindítja az emulátort. Ellenkező esetben a következő üzenet jelenik meg: `Workflow design time could not be started` .
-   >
-   > ![Képernyőkép, amely megjeleníti az Azure Storage-emulátort.](./media/create-stateful-stateless-workflows-visual-studio-code/start-storage-emulator.png)
+   További információ: [Az Azure Storage Emulator használata fejlesztéshez és teszteléshez](../storage/common/storage-use-emulator.md).
 
-#### <a name="macos"></a>macOS
+1. A projekt futtatása előtt győződjön meg arról, hogy elindítja az emulátort.
+
+   ![Képernyőkép, amely megjeleníti az Azure Storage-emulátort.](./media/create-stateful-stateless-workflows-visual-studio-code/start-storage-emulator.png)
+
+#### <a name="macos-and-linux"></a>macOS és Linux
+
+Ha macOS vagy Linux rendszert használ a Visual Studio Code-ban a Logic app-projekt helyi létrehozásához és futtatásához, kövesse az alábbi lépéseket egy Azure Storage-fiók létrehozásához és beállításához.
+
+> [!NOTE]
+> A Visual Studio Code-ban a tervező jelenleg nem működik Linux operációs rendszeren, de továbbra is futtathatja a Build, a Run és a Logic apps alkalmazást, amely a Logic Apps Preview futtatókörnyezetet használja a Linux-alapú virtuális gépekhez. Egyelőre a Visual Studio Code-ban hozhat létre logikai alkalmazásokat Windows vagy macOS rendszeren, majd üzembe helyezheti azt egy Linux-alapú virtuális gépen.
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és [hozzon létre egy Azure Storage-fiókot](../storage/common/storage-account-create.md?tabs=azure-portal), amely a [Azure functions előfeltétele](../azure-functions/storage-considerations.md).
 
-1. [Keresse meg és másolja a Storage-fiókhoz tartozó kapcsolatok karakterláncát](../storage/common/storage-account-keys-manage.md?tabs=azure-portal#view-account-access-keys), például:
+1. A Storage-fiók menü **Beállítások** területén válassza a **hozzáférési kulcsok** elemet.
+
+1. A **hozzáférési kulcsok** ablaktáblán keresse meg és másolja ki a Storage-fiók kapcsolati karakterláncát, amely a következő példához hasonlóan néz ki:
 
    `DefaultEndpointsProtocol=https;AccountName=fabrikamstorageacct;AccountKey=<access-key>;EndpointSuffix=core.windows.net`
 
    ![Képernyőkép, amely megjeleníti a Azure Portal a Storage-fiók hozzáférési kulcsainak és a kapcsolati karakterláncnak a másolásával.](./media/create-stateful-stateless-workflows-visual-studio-code/find-storage-account-connection-string.png)
 
-1. Mentse a karakterláncot biztonságos helyre, hogy később hozzáadja a **local.settings.js** karakterláncot a projektben található azon fájlokhoz, amelyeket a logikai alkalmazás Visual Studio Code-ban való létrehozásához használ.
+   További információkért tekintse át a [Storage-fiók kulcsainak kezelése](../storage/common/storage-account-keys-manage.md?tabs=azure-portal#view-account-access-keys)című témakört.
 
-Amikor később megpróbál megnyitni egy munkafolyamathoz tartozó tervezőt a logikai alkalmazásban, egy üzenet jelenik meg, amely a `Workflow design time could not be started` . Miután ez az üzenet megjelenik, hozzá kell adnia a Storage-fiók kapcsolódási karakterláncát a projektben lévő fájlok kétlocal.settings.js, majd újra **meg** kell nyitnia a tervezőt.
+1. Mentse a kapcsolatok karakterláncát biztonságos helyre. Miután létrehozta a logikai alkalmazás projektjét a Visual Studio Code-ban, hozzá kell adnia a karakterláncot a **local.settings.jsa** projekt legfelső szintű mappájában lévő fájlhoz.
+
+   > [!IMPORTANT]
+   > Ha egy Docker-tárolóba kíván üzembe helyezni, ezt a kapcsolódási karakterláncot is hozzá kell adnia az üzembe helyezéshez használt Docker-fájlhoz.
 
 ### <a name="tools"></a>Eszközök
 
-* A [Visual Studio Code 1.30.1 (január 2019) vagy újabb](https://code.visualstudio.com/), amely ingyenes. Töltse le és telepítse ezeket a további eszközöket a Visual Studio Code-hoz, ha még nem rendelkezik ezekkel:
+* A [Visual Studio Code 1.30.1 (január 2019) vagy újabb](https://code.visualstudio.com/), amely ingyenes. Ezeket az eszközöket a Visual Studio Code-hoz is letöltheti és telepítheti, ha még nem rendelkezik ezekkel:
 
   * [Azure-fiók bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account), amely egyetlen közös Azure bejelentkezési és előfizetés-szűrési élményt biztosít a Visual Studio Code összes többi Azure-bővítményéhez.
 
   * [C# a Visual Studio Code bővítményhez](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp), amely lehetővé teszi az F5 funkció számára a logikai alkalmazás futtatását.
 
-  * [Azure functions Core Tools 3.0.2931 vagy újabb verziót](https://github.com/Azure/azure-functions-core-tools/releases/tag/3.0.2931) a Microsoft Installer (MSI) használatával.
+  * [Azure functions Core Tools 3.0.3245 vagy újabb](https://github.com/Azure/azure-functions-core-tools/releases/tag/3.0.3245) verziót a Microsoft Installer (MSI) verziójának használatával, amely a következő: `func-cli-3.0.3245-x*.msi` .
 
     Ezek az eszközök tartalmazzák a Azure Functions futtatókörnyezetet, amely a Visual Studio Code-ban az előzetes verziójú bővítmény által használt futtatókörnyezetre is kiterjed.
 
@@ -108,9 +121,11 @@ Amikor később megpróbál megnyitni egy munkafolyamathoz tartozó tervezőt a 
     Jelenleg az eredeti Azure Logic Apps-bővítmény és a nyilvános előzetes verzió is telepítve van a Visual Studio Code-ban. Bár a fejlesztési tapasztalatok különböző módokon különböznek a bővítmények között, az Azure-előfizetés magában foglalhatja a bővítményekkel létrehozott logikai alkalmazások típusát is. A Visual Studio Code megjeleníti az Azure-előfizetésében lévő összes telepített Logic apps-alkalmazást, de a bővítmények nevei, **Logic apps** és **Azure Logic apps (előzetes verzió)** alapján különböző részekre rendezi őket.
 
     > [!IMPORTANT]
-    > Ha a korábbi Private Preview bővítménnyel létrehozott Logic apps-bővítményt, ezek a logikai alkalmazások nem fognak működni a nyilvános előzetes verziójú bővítménnyel. Ezeket a logikai alkalmazásokat azonban áttelepítheti a privát előnézet bővítmény eltávolítása után, törölheti a kapcsolódó fájlokat, és telepítheti a nyilvános előzetes bővítményt. Ezután létrehoz egy új projektet a Visual Studio Code-ban, és átmásolja a korábban létrehozott Logic apps **munkafolyamat. definition** -fájlját az új projektbe. További információ: [áttelepítés a Private Preview bővítménnyel](#migrate-private-preview).
+    > Ha a korábbi Private Preview bővítménnyel létrehozott Logic app-projekteket, ezek a projektek nem fognak működni a nyilvános előzetes verziójú bővítménnyel. Ezeket a projekteket azonban áttelepítheti a privát előnézet bővítmény eltávolítása után, törölheti a kapcsolódó fájlokat, és telepítheti a nyilvános előzetes bővítményt. Ezután létrehoz egy új projektet a Visual Studio Code-ban, és átmásolja a korábban létrehozott Logic apps **munkafolyamat. definition** -fájlját az új projektbe. További információ: [áttelepítés a Private Preview bővítménnyel](#migrate-private-preview).
+    > 
+    > Ha a korábbi nyilvános előzetes verziójú bővítménnyel létrehozott logikai alkalmazás-projekteket, az áttelepítési lépések nélkül továbbra is használhatja ezeket a projekteket.
 
-    A **Azure Logic apps (előzetes verzió)** bővítmény telepítéséhez kövesse az alábbi lépéseket:
+    **A **Azure Logic apps (előzetes verzió)** bővítmény telepítéséhez kövesse az alábbi lépéseket:**
 
     1. A Visual Studio Code-ban a bal oldali eszköztáron válassza a **bővítmények** lehetőséget.
 
@@ -119,6 +134,13 @@ Amikor később megpróbál megnyitni egy munkafolyamathoz tartozó tervezőt a 
        A telepítés befejezése után az előnézet bővítmény a **bővítmények: telepített** listában jelenik meg.
 
        ![Képernyőfelvétel: a Visual Studio Code telepített bővítmények listája, amelyekben a "Azure Logic Apps (előzetes verzió)" bővítmény aláhúzva jelenik meg.](./media/create-stateful-stateless-workflows-visual-studio-code/azure-logic-apps-extension-installed.png)
+
+       > [!TIP]
+       > Ha a bővítmény nem jelenik meg a telepített listában, próbálja meg újraindítani a Visual Studio Code-ot.
+
+* A JavaScriptet futtató [beágyazott kód műveleti művelet](../logic-apps/logic-apps-add-run-inline-code.md) használatához telepítse a [Node.js 10. x. x, 11. x. x vagy 12. x. x verziót](https://nodejs.org/en/download/releases/).
+
+  > [!TIP] A Windows esetében töltse le az MSI-verziót. Ha ehelyett a ZIP-verziót használja, manuálisan kell Node.js elérhetővé tenni az operációs rendszer PATH környezeti változójának használatával.
 
 * A webhook-alapú triggerek és műveletek helyi futtatásához, például a [beépített http webhook eseményindítóhoz](../connectors/connectors-native-webhook.md)a Visual Studio Code-ban [be kell állítania a visszahívási URL-cím továbbítását](#webhook-setup).
 
@@ -130,17 +152,17 @@ Amikor később megpróbál megnyitni egy munkafolyamathoz tartozó tervezőt a 
 
 ## <a name="migrate-from-private-preview-extension"></a>Migrálás a privát előzetes verzió bővítményből
 
-A **Azure Logic apps (privát előzetes verzió)** bővítménnyel létrehozott logikai alkalmazások nem fognak működni az PublicPreview bővítménnyel. Ezeket a logikai alkalmazásokat azonban áttelepítheti egy új Visual Studio Code-projektbe a következő lépésekkel:
+A **Azure Logic apps (privát előzetes verzió)** bővítménnyel létrehozott logikai alkalmazások projektjei nem fognak működni a nyilvános előzetes verzióban. Ezeket a projekteket azonban áttelepítheti új projektekre a következő lépések végrehajtásával:
 
 1. Távolítsa el a privát előnézet bővítményt.
 
-1. Törölje a társított kiterjesztési köteget és a NuGet csomag mappáját a következő helyen:
+1. Törölje az összes társított kiterjesztési csomagot és NuGet a következő helyszíneken:
 
    * A **Microsoft. Azure. functions. ExtensionBundle. workflows** mappa, amely az előző bővítményi csomagokat tartalmazza, és az elérési út mentén található:
 
      * `C:\Users\{userName}\AppData\Local\Temp\Functions\ExtensionBundles`
 
-     * `C:\Users\{userName}.azure-functions-core-tools\Functions\ExtensionBundles`
+     * `C:\Users\{userName}\.azure-functions-core-tools\Functions\ExtensionBundles`
 
    * A **Microsoft. Azure. workflows. webjobs. Extension** mappa, amely a [NuGet](/nuget/what-is-nuget) cache a Private Preview bővítményhez, és az elérési út mentén található:
 
@@ -158,9 +180,7 @@ A **Azure Logic apps (privát előzetes verzió)** bővítménnyel létrehozott 
 
 1. Győződjön meg arról, hogy az összes bővítmény megfelelően van telepítve, töltse be újra vagy indítsa újra a Visual Studio Code-ot.
 
-1. Engedélyezze vagy erősítse meg, hogy a Visual Studio Code automatikusan megkeresi és telepíti a bővítmények frissítéseit, hogy a PublicPreview bővítmény megkapja a legújabb frissítéseket. Ellenkező esetben manuálisan el kell távolítania az elavult verziót, és telepítenie kell a legújabb verziót.
-
-   A beállítás megadásához kövesse az alábbi lépéseket:
+1. Győződjön meg arról, hogy a Visual Studio Code automatikusan megkeresi és telepíti a bővítmények frissítéseit, hogy az előzetes verziójú bővítmény megkapja a legújabb frissítéseket. Ellenkező esetben manuálisan el kell távolítania az elavult verziót, és telepítenie kell a legújabb verziót.
 
    1. A **fájl** menüben válassza **a beállítások** **>** **Beállítások menüpontot**.
 
@@ -168,25 +188,24 @@ A **Azure Logic apps (privát előzetes verzió)** bővítménnyel létrehozott 
 
    1. Ellenőrizze, hogy be van-e jelölve az **automatikus ellenőrzés frissítései** és az **automatikus frissítés** .
 
-1. Engedélyezze vagy erősítse meg, hogy ezek a bővítmény-beállítások a megfelelő beállításokat adtak meg:
+Alapértelmezés szerint a következő beállítások engedélyezettek és a Logic Apps Preview kiterjesztéshez vannak beállítva:
 
-   * **Azure Logic Apps v2: panel mód**
-   * **Azure Logic Apps v2: Project Runtime**
+* **Azure Logic apps v2: a Project Runtime**, amely a **~ 3** verzióra van beállítva
 
-   1. A **fájl** menüben válassza **a beállítások** **>** **Beállítások menüpontot**.
+  > [!NOTE]
+  > Ez a verzió a [beágyazott kód műveleti műveleteinek](../logic-apps/logic-apps-add-run-inline-code.md)használatához szükséges.
 
-   1. A **felhasználó** lapon válassza a **>** **bővítmények** **>** **Azure Logic apps (előzetes verzió)** lehetőséget.
+* **Azure Logic apps v2: kísérleti nézet kezelője**, amely lehetővé teszi a legújabb Designer használatát a Visual Studio Code-ban. Ha problémák merülnek fel a tervezőben, például az elemek húzásával vagy eldobásával, kapcsolja ki ezt a beállítást.
 
-   1. A bővítmény beállításainak megerősítése:
+A beállítások megkereséséhez és megerősítéséhez kövesse az alábbi lépéseket:
 
-      * A **Azure Logic apps v2: panel módban** ellenőrizze, hogy be van-e jelölve az **Engedélyezés panel mód** .
+1. A **fájl** menüben válassza **a beállítások** **>** **Beállítások menüpontot**.
 
-      * A **Azure Logic apps v2: Project Runtime** alatt ellenőrizze, hogy a verzió értéke **~ 3**.
+1. A **felhasználó** lapon válassza a **>** **bővítmények** **>** **Azure Logic apps (előzetes verzió)** lehetőséget.
 
-        > [!IMPORTANT]
-        > Ha a macOS és a Linux rendszerhez jelenleg nem elérhető [beágyazott kód-műveleti](../logic-apps/logic-apps-add-run-inline-code.md)műveleteket szeretne használni, a **Project Runtime** beállítása 3-as verzióra van szükség.
+   Megkeresheti például a **Azure Logic apps v2: Project Runtime** beállítást, vagy a keresőmező segítségével további beállításokat is megtalálhat:
 
-      ![A "Azure Logic Apps (előzetes verzió)" bővítmény Visual Studio Code-beállításait bemutató képernyőkép.](./media/create-stateful-stateless-workflows-visual-studio-code/azure-logic-apps-preview-settings.png)
+   ![A "Azure Logic Apps (előzetes verzió)" bővítmény Visual Studio Code-beállításait bemutató képernyőkép.](./media/create-stateful-stateless-workflows-visual-studio-code/azure-logic-apps-preview-settings.png)
 
 <a name="connect-azure-account"></a>
 
@@ -216,7 +235,7 @@ A **Azure Logic apps (privát előzetes verzió)** bővítménnyel létrehozott 
 
 ## <a name="create-a-local-project"></a>Helyi projekt létrehozása
 
-A logikai alkalmazás létrehozása előtt hozzon létre egy helyi projektet, hogy a Visual Studio Code-ból kezelhesse és üzembe lehessen helyezni a logikai alkalmazást. Az alapul szolgáló projekt hasonló egy Azure Functions projekthez, más néven Function app-projekthez. Ezek a projekttípus azonban egymástól függetlenek, így a Logic apps és a Function alkalmazások nem létezhetnek ugyanabban a projektben.
+A logikai alkalmazás létrehozása előtt hozzon létre egy helyi projektet, így a Visual Studio Code-ból kezelheti, futtathatja és helyezheti üzembe a logikai alkalmazást. Az alapul szolgáló projekt hasonló egy Azure Functions projekthez, más néven Function app-projekthez. Ezek a projekttípus azonban egymástól függetlenek, így a Logic apps és a Function alkalmazások nem létezhetnek ugyanabban a projektben.
 
 1. A számítógépen hozzon létre egy *üres* helyi mappát a projekthez, amelyet később a Visual Studio Code-ban fog létrehozni.
 
@@ -238,15 +257,50 @@ A logikai alkalmazás létrehozása előtt hozzon létre egy helyi projektet, ho
 
 1. Adja meg a munkafolyamat nevét, majd nyomja le az ENTER billentyűt. Ez a példa `Fabrikam-Stateful-Workflow` a nevet használja.
 
-   ![Képernyőkép, amely az "új állapot-nyilvántartó munkafolyamat létrehozása (3/3)" és a "Fabrikam-állapot-munkafolyamat" nevet mutatja a munkafolyamat neveként.](./media/create-stateful-stateless-workflows-visual-studio-code/name-your-workflow.png)
+   ![Képernyőkép, amely az "új állapot-nyilvántartó munkafolyamat létrehozása (3/4)" és a "Fabrikam-állapot-munkafolyamat" nevet mutatja a munkafolyamat neveként.](./media/create-stateful-stateless-workflows-visual-studio-code/name-your-workflow.png)
 
-   A Visual Studio Code befejezi a projekt létrehozását, és megnyitja a munkafolyamathoz tartozó **workflow.js** fájlt.
+   A Visual Studio Code befejezi a projekt létrehozását, és megnyitja a munkafolyamathoz tartozó **workflow.js** fájlt a Kódszerkesztő alkalmazásban.
+
+   > [!NOTE]
+   > Ha a rendszer arra kéri, hogy válassza ki, hogyan szeretné megnyitni a projektet, válassza a **Megnyitás az aktuális ablakban** lehetőséget, ha a projektet a Visual Studio Code aktuális ablakban szeretné megnyitni. A Visual Studio Code új példányának megnyitásához válassza **a Megnyitás új ablakban** lehetőséget.
 
 1. A Visual Studio eszköztárán nyissa meg az Explorer ablaktáblát, ha még nincs megnyitva.
 
    Az Explorer ablaktáblán látható a projekt, amely mostantól automatikusan generált projektfájlt is tartalmaz. A projektnek például van egy olyan mappája, amely megjeleníti a munkafolyamat nevét. A mappában a **workflow.js** fájl a munkafolyamat MÖGÖTTes JSON-definícióját tartalmazza.
 
    ![Képernyőkép, amely megjeleníti az Explorer ablaktáblát a Project mappában, a munkafolyamat mappájában és a "workflow.json" fájlt.](./media/create-stateful-stateless-workflows-visual-studio-code/local-project-created.png)
+
+1. Ha macOS vagy Linux rendszert használ, állítsa be a Storage-fiókjához való hozzáférést a következő lépésekkel, amelyek a projekt helyi futtatásához szükségesek:
+
+   1. A projekt gyökérkönyvtárában nyissa meg a **local.settings.js** fájlt.
+
+      ![Képernyőkép, amely megjeleníti a projektben az Explorer ablaktáblát és a "local.settings.json" fájlt.](./media/create-stateful-stateless-workflows-visual-studio-code/local-settings-json-files.png)
+
+   1. Cserélje le a `AzureWebJobsStorage` tulajdonság értékét a Storage-fiók a korábban mentett, például:
+
+      Előtte:
+      ```json
+      {
+         "IsEncrypted": false,
+         "Values": {
+            "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+            "FUNCTIONS_WORKER_RUNTIME": "dotnet"
+          }
+      }
+      ```
+
+      Utána:
+      ```json
+      {
+         "IsEncrypted": false,
+         "Values": {
+            "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=fabrikamstorageacct;AccountKey=<access-key>;EndpointSuffix=core.windows.net",
+           "FUNCTIONS_WORKER_RUNTIME": "dotnet"
+         }
+      }
+      ```
+
+   1. Ha elkészült, győződjön meg róla, hogy menti a módosításokat.
 
 <a name="open-workflow-definition-designer"></a>
 
@@ -256,7 +310,7 @@ A logikai alkalmazás létrehozása előtt hozzon létre egy helyi projektet, ho
 
    `..\Users\{yourUserName}\dotnet --list-sdks`
 
-   Ha .NET Core SDK 5. x, ez a verzió megakadályozhatja, hogy megnyissa a logikai alkalmazás mögöttes munkafolyamat-definícióját a tervezőben. Ha nem távolítja el ezt a verziót, a projekt legfelső szintjén hozzon létre egy **global.js** olyan fájlon, amely a .net Core Runtime 3. x verziójára hivatkozik, amely a 3.1.201-nél későbbi, például:
+   Ha .NET Core SDK 5. x, ez a verzió megakadályozhatja, hogy megnyissa a logikai alkalmazás mögöttes munkafolyamat-definícióját a tervezőben. Ha nem távolítja el ezt a verziót, a projekt gyökérkönyvtárában hozzon létre egy **global.jst** olyan fájlon, amely a .net Core Runtime 3. x verziójára hivatkozik, amely a 3.1.201-nél későbbi, például:
 
    ```json
    {
@@ -267,49 +321,12 @@ A logikai alkalmazás létrehozása előtt hozzon létre egy helyi projektet, ho
    }
    ```
 
-   Győződjön meg arról, hogy explicit módon hozzáadja a fájl **global.jsa** projekt gyökérszintű szintjéhez a Visual Studio Code-ból belül. Ellenkező esetben a tervező nem nyílik meg.
-
-1. Ha Windows vagy Linux rendszeren futtatja a Visual Studio Code-ot, győződjön meg arról, hogy az Azure Storage-emulátor fut. További információkért tekintse át az [előfeltételeket](#prerequisites). Ha macOS rendszeren futtatja a Visual Studio Code-ot, folytassa a következő lépéssel.
+   > [!IMPORTANT]
+   > Győződjön meg arról, hogy explicit módon hozzáadja a **global.jsa** projekt gyökérkönyvtárában lévő fájlhoz a Visual Studio Code-ban. Ellenkező esetben a tervező nem nyílik meg.
 
 1. Bontsa ki a munkafolyamat projekt mappáját. Nyissa meg a **workflow.jsa** fájl helyi menüjében, és válassza a **Megnyitás a tervezőben** lehetőséget.
 
    ![Képernyőfelvétel: az Explorer panel és a parancsikon ablaka a "Megnyitás a Designerben" beállítással rendelkező fájl workflow.js.](./media/create-stateful-stateless-workflows-visual-studio-code/open-definition-file-in-designer.png)
-
-   Ha az alábbi hibaüzenet jelenik meg `Workflow design time could not be started` , ellenőrizze a következő feltételeket:
-
-   * **Windows vagy Linux**: Ellenőrizze, hogy fut-e az Azure Storage Emulator. Egyéb esetben tekintse meg a [problémák és hibák elhárítása](#troubleshooting)című témakört.
-
-   * **MacOS**: próbálja ki a következő megoldást, és ha nem sikerül, tekintse meg a [problémák és hibák elhárítása](#troubleshooting)című témakört.
-
-     1. A projektben nyissa meg a **local.settings.js** fájlokat, amelyek a projekt gyökérkönyvtárában és a **munkafolyamat-designtime** mappában találhatók.
-
-        ![Képernyőkép, amely megjeleníti a projekt Explorer ablaktábláját és a "local.settings.json" fájlokat.](./media/create-stateful-stateless-workflows-visual-studio-code/local-settings-json-files.png)
-
-     1. Az egyes fájlokban keresse meg a `AzureWebJobsStorage` tulajdonságot, például:
-
-        ```json
-        {
-           "IsEncrypted": false,
-           "Values": {
-              "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-              "FUNCTIONS_WORKER_RUNTIME": "dotnet"
-            }
-        }
-        ```
-
-      1. Cserélje le a `AzureWebJobsStorage` tulajdonság értékét a Storage-fiókból korábban mentett, például:
-
-         ```json
-         {
-            "IsEncrypted": false,
-            "Values": {
-               "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=fabrikamstorageacct;AccountKey=<access-key>;EndpointSuffix=core.windows.net",
-               "FUNCTIONS_WORKER_RUNTIME": "dotnet"
-            }
-         }
-         ```
-
-      1. Mentse a módosításokat, és próbálja meg újra megnyitni a **workflow.jst** a Designerben.
 
 1. Az **Összekötők engedélyezése az Azure-ban** listában válassza az Azure-beli **Összekötők használata** lehetőséget, amely az Azure-ban elérhető és az Azure-ban üzembe helyezett összes felügyelt összekötőre vonatkozik, nem csak az Azure-szolgáltatások összekötői.
 
@@ -337,7 +354,9 @@ A logikai alkalmazás létrehozása előtt hozzon létre egy helyi projektet, ho
    A lépés elvégzése után a Visual Studio Code megnyitja a munkafolyamat-tervezőt.
 
    > [!NOTE]
-   > Ha a Visual Studio Code elindítja a munkafolyamat tervezési idejű API-ját, megjelenik egy üzenet, amely eltarthat néhány másodpercig. Figyelmen kívül hagyhatja ezt az üzenetet, vagy választhatja **az OK** gombot.
+   > Ha a Visual Studio Code elindítja a munkafolyamat tervezési idejű API-ját, akkor előfordulhat, hogy az indítási üzenet eltarthat néhány másodpercig. Figyelmen kívül hagyhatja ezt az üzenetet, vagy választhatja **az OK** gombot.
+   >
+   > Ha a tervező nem nyílik meg, tekintse át a hibaelhárítási szakaszt, [amely nem nyílik meg a tervezőben](#designer-fails-to-open).
 
    A tervező megjelenése után a **művelet kiválasztása** üzenet jelenik meg a tervezőben, és alapértelmezés szerint ki van választva, amely megjeleníti a **művelet hozzáadása** ablaktáblát.
 
@@ -421,9 +440,9 @@ Az ebben a példában szereplő munkafolyamat ezt az triggert és a következő 
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Művelet** | Yes | <*saját e-mail cím*> | Az e-mail címzettje, amely a tesztelési célú e-mail-címe lehet. Ez a példa a fiktív e-mailt használja `sophiaowen@fabrikam.com` . |
-   | **Tárgy** | Yes | `An email from your example workflow` | Az e-mail tárgya |
-   | **Törzs** | Yes | `Hello from your example workflow!` | Az e-mail szövegtörzsének tartalma |
+   | **Ide:** | Igen | <*saját e-mail cím*> | Az e-mail címzettje, amely a tesztelési célú e-mail-címe lehet. Ez a példa a fiktív e-mailt használja `sophiaowen@fabrikam.com` . |
+   | **Tárgy** | Igen | `An email from your example workflow` | Az e-mail tárgya |
+   | **Törzs** | Igen | `Hello from your example workflow!` | Az e-mail szövegtörzsének tartalma |
    ||||
 
    > [!NOTE]
@@ -472,33 +491,41 @@ Ha a Visual Studio Code-ban helyileg szeretné futtatni a webhook-alapú esemén
 
 #### <a name="set-up-the-forwarding-url-in-your-app-settings"></a>A továbbítási URL beállítása az alkalmazás beállításaiban
 
-1. A Visual Studio Code-ban a projekt legfelső szintjén nyissa meg a **local.settings.js** fájlt.
+1. A Visual Studio Code-ban a Designerben adja hozzá a **http + webhook** -triggert vagy műveletet.
 
-1. Az `Values` objektumban adjon hozzá egy nevű tulajdonságot `Workflows.WebhookRedirectHostUri` , és állítsa be az értéket a korábban létrehozott továbbítási URL-címre, például:
+1. Amikor megjelenik a gazdagép végpontjának helye, adja meg a korábban létrehozott továbbítási (átirányítás) URL-címet.
 
+   > [!NOTE]
+   > A parancssor figyelmen kívül hagyása figyelmeztetést jelenít meg, hogy meg kell adnia a továbbítási URL-címet, ezért válassza a **Konfigurálás** lehetőséget, majd adja meg az URL-címet. Miután befejezte ezt a lépést, a kérés nem jelenik meg újra a következő webhook-eseményindítók vagy a felvenni kívánt műveletek esetében.
+   >
+   > Ahhoz, hogy a kérdés újra megjelenjen, a projekt legfelső szintjén nyissa meg a **local.settings.jsa** fájl helyi menüjében, és válassza a **Webhook átirányítási végpontjának konfigurálása** lehetőséget. A kérdés most megjelenik, így megadhatja a továbbítási URL-címet.
+
+   A Visual Studio Code hozzáadja a továbbítási URL-címet a projekt gyökérkönyvtárában található fájl **local.settings.js** . Az `Values` objektumban megjelenik a nevű tulajdonság, amely `Workflows.WebhookRedirectHostUri` a továbbítás URL-címére van beállítva, például:
+   
    ```json
    {
       "IsEncrypted": false,
       "Values": {
          "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-         "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+         "FUNCTIONS_WORKER_RUNTIME": "node",
          "FUNCTIONS_V2_COMPATIBILITY_MODE": "true",
+         <...>
          "Workflows.WebhookRedirectHostUri": "http://xxxXXXXxxxXXX.ngrok.io",
          <...>
       }
    }
    ```
 
-Amikor első alkalommal indítja el a helyi hibakeresési munkamenetet, vagy ha hibakeresés nélkül futtatja a munkafolyamatot, a Logic Apps futtatókörnyezet regisztrálja a munkafolyamatot a szolgáltatás-végponttal, és Előfizet erre a végpontra a webhook műveleteinek értesítéséhez. A munkafolyamat következő futtatásakor a futásidejű szolgáltatás nem regisztrálja vagy újrairatkozik, mert az előfizetés regisztrálása már létezik a helyi tárolóban.
+Amikor első alkalommal indítja el a helyi hibakeresési munkamenetet, vagy hibakeresés nélkül futtatja a munkafolyamatot, a Logic Apps futtatókörnyezet regisztrálja a munkafolyamatot a szolgáltatás végpontján, és előfizet a webhook műveleteinek értesítésére a végpontra. A munkafolyamat következő futtatásakor a futásidejű szolgáltatás nem regisztrálja vagy újrairatkozik, mert az előfizetés regisztrálása már létezik a helyi tárolóban.
 
-Amikor egy helyileg futtatott webhook-alapú eseményindítót vagy műveletet használó munkafolyamat-Futtatás hibakeresési munkamenetét állítja le, a meglévő előfizetés-regisztrációk nem törlődnek. A regisztráció törléséhez manuálisan el kell távolítania vagy törölnie kell az előfizetés regisztrációját.
+Ha leállítja egy olyan munkafolyamat-Futtatás hibakeresési munkamenetét, amely helyileg futtatott webhook-alapú eseményindítókat vagy műveleteket használ, a meglévő előfizetés-regisztrációk nem törlődnek. A regisztráció törléséhez manuálisan el kell távolítania vagy törölnie kell az előfizetés regisztrációját.
 
 > [!NOTE]
 > A munkafolyamat futásának megkezdése után a terminál ablaka a következőhöz hasonló hibákat jelenhet meg:
 >
 > `message='Http request failed with unhandled exception of type 'InvalidOperationException' and message: 'System.InvalidOperationException: Synchronous operations are disallowed. Call ReadAsync or set AllowSynchronousIO to true instead.`
 >
-> Ebben az esetben nyissa meg a **local.settings.js** fájlt a projekt legfelső szintjén, és győződjön meg arról, hogy a tulajdonság a következőre van beállítva `true` :
+> Ebben az esetben nyissa meg a **local.settings.js** fájlt a projekt gyökérkönyvtárában, és győződjön meg arról, hogy a tulajdonság a következőre van beállítva `true` :
 >
 > `"FUNCTIONS_V2_COMPATIBILITY_MODE": "true"`
 
@@ -544,6 +571,9 @@ A logikai alkalmazás teszteléséhez kövesse az alábbi lépéseket a hibakere
 1. A Visual Studio Code tevékenység sávján nyissa meg a **Futtatás** menüt, és válassza a **hibakeresés indítása** (F5) lehetőséget.
 
    Megnyílik a **terminál** ablak, ahol áttekintheti a hibakeresési munkamenetet.
+
+   > [!NOTE]
+   > Ha a következő hibaüzenetet kapja: **"hiba történt a (z)" generateDebugSymbols "preLaunchTask futtatása után**, tekintse meg a hibaelhárítási szakaszt, és a [hibakeresési munkamenet nem indul el](#debugging-fails-to-start).
 
 1. Most keresse meg a végpont visszahívási URL-címét a kérelem triggerében.
 
@@ -624,15 +654,15 @@ A logikai alkalmazás teszteléséhez kövesse az alábbi lépéseket a hibakere
 
    | Művelet állapota | Ikon | Leírás |
    |---------------|------|-------------|
-   | Megszakítva | ![A "megszakított" művelet állapotának ikonja][aborted-icon] | A művelet a külső problémák miatt leállt vagy nem zárult, például rendszerleállás vagy elévült Azure-előfizetés. |
-   | Lemondva | ![A "megszakított" művelet állapotának ikonja][cancelled-icon] | A művelet futása megszakadt, de lemondási kérelmet kapott. |
-   | Sikertelen | ![A "sikertelen" művelet állapotának ikonja][failed-icon] | A művelet sikertelen volt. |
-   | Futó | ![A "futó" művelet állapotának ikonja][running-icon] | A művelet jelenleg fut. |
-   | Kimarad | ![A "kihagyott" művelet állapotának ikonja][skipped-icon] | A rendszer kihagyta a műveletet, mert a közvetlenül megelőző művelet meghiúsult. Egy művelet olyan `runAfter` feltétellel rendelkezik, amely megköveteli, hogy az előző művelet sikeresen befejeződik az aktuális művelet futtatása előtt. |
-   | Sikeres | ![A "sikeres" művelet állapotának ikonja][succeeded-icon] | A művelet sikeresen befejeződött. |
-   | Az újrapróbálkozások sikeresek voltak | !["Sikeres újrapróbálkozások" művelet ikonja][succeeded-with-retries-icon] | A művelet sikeresen befejeződött, de csak egy vagy több újrapróbálkozás után. Az újrapróbálkozási előzmények áttekintéséhez a futtatási előzmények részletei nézetben válassza ki ezt a műveletet, így megtekintheti a bemeneteket és a kimeneteket. |
-   | Időtúllépés | !["Időtúllépés" műveleti állapot ikonja][timed-out-icon] | A művelet a művelet beállításaiban megadott időkorlát miatt leállt. |
-   | Várakozó | ![A "Waiting" művelet állapotának ikonja][waiting-icon] | Egy olyan webhook-műveletre vonatkozik, amely egy hívótól érkező bejövő kérésre vár. |
+   | **Megszakítva** | ![A "megszakított" művelet állapotának ikonja][aborted-icon] | A művelet a külső problémák miatt leállt vagy nem zárult, például rendszerleállás vagy elévült Azure-előfizetés. |
+   | **Megszakítva** | ![A "megszakított" művelet állapotának ikonja][cancelled-icon] | A művelet futott, de kérelem érkezett a megszakításhoz. |
+   | **Sikertelen** | ![A "sikertelen" művelet állapotának ikonja][failed-icon] | A művelet sikertelen volt. |
+   | **Futó** | ![A "futó" művelet állapotának ikonja][running-icon] | A művelet jelenleg fut. |
+   | **Kimarad** | ![A "kihagyott" művelet állapotának ikonja][skipped-icon] | A rendszer kihagyta a műveletet, mert a közvetlenül megelőző művelet meghiúsult. Egy művelet olyan `runAfter` feltétellel rendelkezik, amely megköveteli, hogy az előző művelet sikeresen befejeződik az aktuális művelet futtatása előtt. |
+   | **Sikeres** | ![A "sikeres" művelet állapotának ikonja][succeeded-icon] | A művelet sikeresen befejeződött. |
+   | **Az újrapróbálkozások sikeresek voltak** | !["Sikeres újrapróbálkozások" művelet ikonja][succeeded-with-retries-icon] | A művelet sikeresen befejeződött, de csak egy vagy több újrapróbálkozás után. Az újrapróbálkozási előzmények áttekintéséhez a futtatási előzmények részletei nézetben válassza ki ezt a műveletet, így megtekintheti a bemeneteket és a kimeneteket. |
+   | **Időtúllépés** | !["Időtúllépés" műveleti állapot ikonja][timed-out-icon] | A művelet a művelet beállításaiban megadott időkorlát miatt leállt. |
+   | **Várakozó** | ![A "Waiting" művelet állapotának ikonja][waiting-icon] | Egy olyan webhook-műveletre vonatkozik, amely egy hívótól érkező bejövő kérésre vár. |
    ||||
 
    [aborted-icon]: ./media/create-stateful-stateless-workflows-visual-studio-code/aborted.png
@@ -716,7 +746,7 @@ A Visual Studio Code-ból közvetlenül közzéteheti a projektet az Azure-ban, 
 * [Vertikális felskálázás Azure App Service](../app-service/manage-scale-up.md)
 * [Az Azure Functions méretezése és üzemeltetése](../azure-functions/functions-scale.md)
 
-A logikai alkalmazást új erőforrásként teheti közzé, amely automatikusan létrehoz minden további szükséges erőforrást, például egy [Azure Storage-fiókot, amely a Function app követelményeihez hasonló](../azure-functions/storage-considerations.md). Vagy közzéteheti a logikai alkalmazást egy korábban telepített **Logic app (előzetes verzió)** erőforráson, amely felülírja a logikai alkalmazást.
+A logikai alkalmazást új erőforrásként teheti közzé, amely automatikusan létrehozza a szükséges erőforrásokat, például egy [Azure Storage-fiókot, amely a Function app követelményeihez hasonló](../azure-functions/storage-considerations.md). Vagy közzéteheti a logikai alkalmazást egy korábban telepített **Logic app (előzetes verzió)** erőforráson, amely felülírja a logikai alkalmazást.
 
 ### <a name="publish-to-a-new-logic-app-preview-resource"></a>Közzététel egy új logikai alkalmazás (előzetes verzió) erőforráson
 
@@ -725,6 +755,8 @@ A logikai alkalmazást új erőforrásként teheti közzé, amely automatikusan 
 1. Az **Azure: Logic apps (előzetes verzió)** panel eszköztárán válassza a **telepítés logikai alkalmazásba** lehetőséget.
 
    ![Az "Azure: Logic Apps (előzetes verzió)" panel és az ablaktábla eszköztárának "üzembe helyezés logikai alkalmazásba" beállítását bemutató képernyőkép.](./media/create-stateful-stateless-workflows-visual-studio-code/deploy-to-logic-app.png)
+
+1. Ha a rendszer kéri, válassza ki a logikai alkalmazás telepítéséhez használni kívánt Azure-előfizetést.
 
 1. A Visual Studio Code megnyíló listából válassza a következő lehetőségek közül:
 
@@ -742,7 +774,21 @@ A logikai alkalmazást új erőforrásként teheti közzé, amely automatikusan 
 
       ![Az "Azure: Logic Apps (előzetes verzió)" panelt megjelenítő képernyőkép, amely a létrehozandó új logikai alkalmazás nevének megadását kéri.](./media/create-stateful-stateless-workflows-visual-studio-code/enter-logic-app-name.png)
 
-   1. Válassza ki az új logikai alkalmazás üzemeltetési tervét [**app Service csomag**](../azure-functions/dedicated-plan.md) vagy [**prémium**](../azure-functions/functions-premium-plan.md). Ez a példa **app Service tervet** választ.
+   1. Válassza ki az új logikai alkalmazás [üzemeltetési tervét](../app-service/overview-hosting-plans.md) [ **app Service csomag** (dedikált)](../azure-functions/dedicated-plan.md) vagy [**prémium**](../azure-functions/functions-premium-plan.md).
+
+      > [!IMPORTANT]
+      > A felhasználási csomagok nem támogatottak, és nem érhetők el ehhez az erőforrás-típushoz. A kiválasztott csomag hatással van a később elérhető képességekre és díjszabásokra. További információkért tekintse át a következő témaköröket: 
+      >
+      > * [Az Azure Functions méretezése és üzemeltetése](../azure-functions/functions-scale.md)
+      > * [A App Service díjszabása](https://azure.microsoft.com/pricing/details/app-service/)
+      >
+      > A Prémium csomag például hozzáférést biztosít a hálózati képességekhez, például a csatlakozáshoz és az Azure-beli virtuális hálózatokhoz való hozzáféréshez, hasonlóan a Azure Functionshoz, mint a logikai alkalmazások létrehozásakor és telepítésekor. 
+      > További információkért tekintse át a következő témaköröket:
+      > 
+      > * [Az Azure Functions hálózatkezelési lehetőségei](../azure-functions/functions-networking-options.md)
+      > * [Azure Logic Apps a bárhonnan hálózati lehetőségeket a Azure Logic Apps előzetes verziójával](https://techcommunity.microsoft.com/t5/integrations-on-azure/logic-apps-anywhere-networking-possibilities-with-logic-app/ba-p/2105047)
+
+      Ez a példa a **app Service csomagot** használja.
 
       ![Képernyőkép az "Azure: Logic Apps (előzetes verzió)" ablaktábláról, valamint egy "App Service-csomag" vagy "Prémium" kiválasztására vonatkozó kérdés.](./media/create-stateful-stateless-workflows-visual-studio-code/select-hosting-plan.png)
 
@@ -773,7 +819,7 @@ A logikai alkalmazást új erőforrásként teheti közzé, amely automatikusan 
 
       1. Az erőforrás menüben válassza az **Áttekintés** lehetőséget. Keresse meg és másolja a kialakítási **kulcs** értékét.
 
-      1. A Visual Studio Code-ban a projekt legfelső szintjén nyissa meg a **local.settings.js** fájlt.
+      1. A Visual Studio Code-ban a projekt gyökérkönyvtárában nyissa meg a **local.settings.js** fájlt.
 
       1. Az `Values` objektumban adja hozzá a `APPINSIGHTS_INSTRUMENTATIONKEY` tulajdonságot, és állítsa be az értéket a kialakítási kulcsra, például:
 
@@ -809,7 +855,7 @@ A logikai alkalmazást új erőforrásként teheti közzé, amely automatikusan 
          * Munkafolyamat-tevékenység, például trigger, művelet és Futtatás.
          * Tárolási kérelem tevékenysége, például sikeres vagy sikertelen.
          * HTTP-kérelem tevékenység, például bejövő, kimenő, sikeres és sikertelen.
-         * Ad hoc fejlesztési Nyomkövetések, például hibakeresési üzenetek.
+         * Bármilyen fejlesztési nyomkövetés, például hibakeresési üzenetek.
 
          Minden eseménytípus hozzá van rendelve egy súlyossági szinthez. A `Trace` szint például rögzíti a legrészletesebb üzeneteket, míg a `Information` szint rögzíti az általános tevékenységet a munkafolyamatban, például a logikai alkalmazás, a munkafolyamat, a trigger és a műveletek elindítását és leállítását. Ez a táblázat a súlyossági szinteket és azok nyomkövetési típusait ismerteti:
 
@@ -818,7 +864,7 @@ A logikai alkalmazást új erőforrásként teheti közzé, amely automatikusan 
          | Kritikus | A logikai alkalmazás helyreállíthatatlan hibáját leíró naplók. |
          | Hibakeresés | A fejlesztés során használható naplók, például a bejövő és kimenő HTTP-hívások. |
          | Hiba | A munkafolyamat-végrehajtás hibáját jelző naplók, de nem általános hiba a logikai alkalmazásban. |
-         | Információ | A logikai alkalmazásban vagy munkafolyamatban az általános tevékenységet nyomon követő naplók, például: <p><p>-Ha egy trigger, művelet vagy Futtatás elindul és végződik. <br>-Ha a logikai alkalmazás elindul vagy véget ér. |
+         | Tájékoztatás | A logikai alkalmazásban vagy munkafolyamatban az általános tevékenységet nyomon követő naplók, például: <p><p>-Ha egy trigger, művelet vagy Futtatás elindul és végződik. <br>-Ha a logikai alkalmazás elindul vagy véget ér. |
          | Nyomkövetés | A legrészletesebb üzeneteket, például tárolási kérelmeket vagy diszpécser tevékenységeket tartalmazó naplók, valamint a munkafolyamat-végrehajtási tevékenységgel kapcsolatos összes üzenet. |
          | Figyelmeztetés | A logikai alkalmazás rendellenes állapotát kiemelő naplók, de nem akadályozza a futását. |
          |||
@@ -890,7 +936,7 @@ Több munkafolyamattal is rendelkezhet a logikai alkalmazás projektjeiben. Ha �
 
 1. Az Azure ablaktáblán, az **Azure: Logic apps (előzetes verzió)** mellett válassza a **munkafolyamat létrehozása** (Azure Logic apps) lehetőséget.
 
-1. Válassza ki azt a munkafolyamat-típust, amelyet hozzá szeretne adni, **állapotának** vagy **állapot nélkülinek** kell lennie.
+1. Válassza ki a hozzáadni kívánt munkafolyamat-típust: **állapot** vagy **állapot nélküli**
 
 1. Adja meg a munkafolyamat nevét.
 
@@ -904,7 +950,7 @@ A Visual Studio Code-ban az összes telepített Logic apps megtekinthető az Azu
 
 1. A bal oldali eszköztáron válassza az Azure ikont. Az **Azure: Logic apps (előzetes verzió)** ablaktáblán bontsa ki az előfizetését, amely megjeleníti az előfizetéshez tartozó összes telepített logikai alkalmazást.
 
-1. Keresse meg és válassza ki a kezelni kívánt logikai alkalmazást. Nyissa meg a logikai alkalmazás helyi menüjét, és válassza ki a végrehajtani kívánt feladatot.
+1. Nyissa meg a kezelni kívánt logikai alkalmazást. A logikai alkalmazás helyi menüjében válassza ki a végrehajtani kívánt feladatot.
 
    Kijelölhet például olyan feladatokat, mint például a telepített logikai alkalmazás leállítása, elindítása, újraindítása vagy törlése.
 
@@ -998,7 +1044,7 @@ Az állapot nélküli munkafolyamatok egyszerűbb hibakereséséhez engedélyezh
 
 1. Adja hozzá a `Workflows.{yourWorkflowName}.operationOptions` tulajdonságot, és állítsa be az értéket `WithStatelessRunHistory` , például:
 
-   **Windows vagy Linux**
+   **Windows**
 
    ```json
    {
@@ -1011,7 +1057,7 @@ Az állapot nélküli munkafolyamatok egyszerűbb hibakereséséhez engedélyezh
    }
    ```
 
-   **macOS**
+   **macOS vagy Linux**
 
    ```json
    {
@@ -1061,7 +1107,10 @@ Ha a Application Insightst egy telepített logikai alkalmazásban szeretné enge
 
    Ha a Application Insights engedélyezve van, akkor a **Application Insights** ablaktáblán válassza az **Application Insights-adatbázis megtekintése** lehetőséget.
 
-Application Insights megnyitása után áttekintheti a logikai alkalmazás különböző mérőszámait. További információ: [Azure Logic apps fut bárhol-Monitor Application Insights – 1. rész](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-monitor-with-application/ba-p/1877849).
+Application Insights megnyitása után áttekintheti a logikai alkalmazás különböző mérőszámait. További információkért tekintse át a következő témaköröket:
+
+* [Azure Logic Apps fut bárhol – figyelő Application Insights – 1. rész](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-monitor-with-application/ba-p/1877849)
+* [Azure Logic Apps fut bárhol – figyelő Application Insights – 2. rész](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-monitor-with-application/ba-p/2003332)
 
 <a name="deploy-docker"></a>
 
@@ -1081,58 +1130,70 @@ Ha még nem ismeri a Docker-t, tekintse át a következő témaköröket:
 
 * A logikai alkalmazás által az üzembe helyezéshez használt Azure Storage-fiók
 
-* Docker-fájl egy olyan .NET-munkafolyamathoz, amelyet a Docker-tároló létrehozásakor használ
+* A Docker-tároló létrehozásakor használt munkafolyamat Docker-fájlja
 
-   Ez a minta Docker-fájl például üzembe helyez egy logikai alkalmazást egy állapot-nyilvántartó munkafolyamattal. A fájl megadja a logikai alkalmazás Azure Portal való közzétételéhez használt Azure Storage-fiókhoz tartozó kapcsolati karakterláncot és hozzáférési kulcsot.
+  Ez a példa egy logikai alkalmazást helyez üzembe. Az azt a kapcsolati karakterláncot adja meg, amely a logikai alkalmazás Azure Portal való közzétételéhez használt Azure Storage-fiók elérési kulcsát tartalmazza. A karakterlánc megkereséséhez lásd: a [Storage-fiók kapcsolódási karakterláncának beolvasása](#find-storage-account-connection-string).
 
    ```text
-   FROM mcr.microsoft.com/dotnet/core/sdk3.1 AS installer-env
+   FROM mcr.microsoft.com/azure-functions/node:3.0
 
-   COPY . /src/dotnet-function-app
-   RUN cd /src/dotnet-function-app && \
-       mkdir -p /home/site/wwwroot && \
-       dotnet publish *.csproj --output /home/site/wwwroot
-
-   FROM mcr.microsoft.com/azure-functions/dotnet:3.0
    ENV AzureWebJobsStorage <storage-account-connection-string>
    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
        AzureFunctionsJobHost__Logging__Console__IsEnabled=true \
        FUNCTIONS_V2_COMPATIBILITY_MODE=true
 
-   COPY --from=installer-env ["/home/site/wwwroot", "/home/site/wwwroot"]
+   COPY . /home/site/wwwroot
+
+   RUN cd /home/site/wwwroot
    ```
 
    További információ: [ajánlott eljárások a Docker-fájlok írásához](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
 
-### <a name="build-and-publish-your-app"></a>Az alkalmazás létrehozása és közzététele
+<a name="find-storage-account-connection-string"></a>
 
-1. Ha helyileg szeretné felépíteni a logikai alkalmazás projektjét, nyisson meg egy parancssort, és futtassa a következő parancsot:
+### <a name="get-storage-account-connection-string"></a>Storage-fiókhoz tartozó kapcsolatok karakterláncának beolvasása
 
-   `dotnet build -c release`
+A Docker-tároló rendszerképének létrehozása és futtatása előtt be kell szereznie a Storage-fiók elérési kulcsát tartalmazó kapcsolati karakterláncot. Korábban létrehozta ezt a Storage-fiókot a bővítmény macOS vagy Linux rendszeren való használatához, vagy ha a logikai alkalmazást üzembe helyezte a Azure Portal.
 
-   További információkért lásd a DotNet- [Build](/dotnet/core/tools/dotnet-build/) referenciáját ismertető oldalt.
-
-1. A következő parancs futtatásával közzéteheti a projekt buildjét egy olyan mappába, amely az üzemeltetési környezetben való üzembe helyezéshez használható:
-
-   `dotnet publish -c release`
-
-   További információkért tekintse meg a [DotNet publish](/dotnet/core/tools/dotnet-publish/) -referenciát ismertető oldalt.
-
-### <a name="access-to-your-storage-account"></a>Hozzáférés a Storage-fiókhoz
-
-A Docker-tároló létrehozása és futtatása előtt be kell szereznie a Storage-fiók hozzáférési kulcsait tartalmazó kapcsolati karakterláncot.
+A kapcsolódási karakterlánc megkereséséhez és másolásához kövesse az alábbi lépéseket:
 
 1. A Azure Portal a Storage-fiók menü **Beállítások** területén válassza a **hozzáférési kulcsok** elemet. 
 
+1. A **hozzáférési kulcsok** ablaktáblán keresse meg és másolja ki a Storage-fiók kapcsolati karakterláncát, amely a következő példához hasonlóan néz ki:
+
+   `DefaultEndpointsProtocol=https;AccountName=fabrikamstorageacct;AccountKey=<access-key>;EndpointSuffix=core.windows.net`
+
    ![Képernyőkép, amely megjeleníti a Azure Portal a Storage-fiók hozzáférési kulcsainak és a kapcsolati karakterláncnak a másolásával.](./media/create-stateful-stateless-workflows-visual-studio-code/find-storage-account-connection-string.png)
-
-1. A **kapcsolatok karakterlánca** alatt másolja ki a Storage-fiókhoz tartozó kapcsolatok karakterláncát. A kapcsolódási karakterlánc a következőhöz hasonlóan néz ki:
-
-   `DefaultEndpointsProtocol=https;AccountName=fabrikamstorageacct;AccountKey={access-key};EndpointSuffix=core.windows.net`
 
    További információkért tekintse át a [Storage-fiók kulcsainak kezelése](../storage/common/storage-account-keys-manage.md?tabs=azure-portal#view-account-access-keys)című témakört.
 
-1. Mentse a kapcsolatok karakterláncát biztonságos helyre. A Logic app-projektben ezt a karakterláncot kell hozzáadnia **local.settings.js** fájlokhoz. Ezt a karakterláncot is hozzá kell adnia a Docker-fájlhoz.
+1. Mentse a kapcsolódási karakterláncot biztonságos helyre, hogy hozzáadja ezt a karakterláncot az üzembe helyezéshez használt Docker-fájlhoz. 
+
+<a name="find-storage-account-master-key"></a>
+
+### <a name="find-master-key-for-storage-account"></a>A Storage-fiók főkulcsának megkeresése
+
+Ha a munkafolyamat kérelem-triggert tartalmaz, a Docker-tároló rendszerképének létrehozása és futtatása után be kell [szereznie az trigger visszahívási URL-címét](#get-callback-url-request-trigger) . Ehhez a feladathoz meg kell adnia az üzembe helyezéshez használt Storage-fiók főkulcsának értékét is.
+
+1. A főkulcs megkereséséhez nyissa meg a projektben az **Azure-webjobs-Secrets/{Deployment-Name}/host.js** fájlt.
+
+1. Keresse meg a `AzureWebJobsStorage` tulajdonságot, és másolja a kulcs értékét a következő szakaszból:
+
+   ```json
+   {
+      <...>
+      "masterKey": {
+         "name": "master",
+         "value": "<master-key>",
+         "encrypted": false
+      },
+      <...>
+   }
+   ```
+
+1. Mentse ezt a kulcs-értéket valahol biztonságos használatra később.
+
+<a name="build-run-docker-container-image"></a>
 
 ### <a name="build-and-run-your-docker-container-image"></a>Docker-tároló rendszerképének létrehozása és futtatása
 
@@ -1142,33 +1203,21 @@ A Docker-tároló létrehozása és futtatása előtt be kell szereznie a Storag
 
    További információ: [Docker Build](https://docs.docker.com/engine/reference/commandline/build/).
 
-1. Mentse a karakterláncot biztonságos helyre, hogy később hozzáadja a **local.settings.js** karakterláncot a projektben található azon fájlokhoz, amelyeket a logikai alkalmazás Visual Studio Code-ban való létrehozásához használ.
-
 1. Futtassa helyileg a tárolót a következő paranccsal:
 
    `docker run -e WEBSITE_HOSTNAME=localhost -p 8080:80 local/workflowcontainer`
 
    További információ: [Docker Run](https://docs.docker.com/engine/reference/commandline/run/).
 
+<a name="get-callback-url-request-trigger"></a>
+
 ### <a name="get-callback-url-for-request-trigger"></a>Visszahívás URL-címének beolvasása kérelem-triggerhez
 
-A kérelem-trigger visszahívási URL-címének beszerzéséhez küldje el a kérelmet:
+A kérelem triggert használó munkafolyamathoz szerezze be az trigger visszahívási URL-címét a kérelem elküldésével:
 
 `POST /runtime/webhooks/workflow/api/management/workflows/{workflow-name}/triggers/{trigger-name}/listCallbackUrl?api-version=2020-05-01-preview&code={master-key}`
 
-Az <*Master-key*> érték az Azure Storage-fiókban van definiálva, amelyet a `AzureWebJobsStorage` fájl, az **Azure-webjobs-Secrets/{Deployment-Name}/host.jsa** fájlban beállított, ahol megtalálhatja az értéket ebben a szakaszban:
-
-```json
-{
-   <...>
-   "masterKey": {
-      "name": "master",
-      "value": "<master-key>",
-      "encrypted": false
-   },
-   <...>
-   }
-```
+Az `{trigger-name}` érték a kérelem-trigger neve, amely megjelenik a munkafolyamat JSON-definíciójában. Az `{master-key}` érték a fájlon belüli tulajdonsághoz beállított Azure Storage-fiókban van definiálva `AzureWebJobsStorage` , **Azure-webjobs-Secrets/{Deployment-name}/host.js**. További információ: a [Storage-fiók főkulcsának megkeresése](#find-storage-account-master-key).
 
 <a name="delete-from-designer"></a>
 
@@ -1193,29 +1242,31 @@ Ha törölni szeretne egy elemet a munkafolyamatból a tervezőből, kövesse az
 
 <a name="designer-fails-to-open"></a>
 
-### <a name="opening-designer-fails-with-error-workflow-design-time-could-not-be-started"></a>A tervező megnyitása a következő hibával meghiúsul: "a munkafolyamat tervezési ideje nem indítható el"
+### <a name="designer-fails-to-open"></a>A tervező nem nyílik meg
 
-1. A Visual Studio Code-ban nyissa meg a kimeneti ablakot. A **nézet** menüben válassza a **kimenet** lehetőséget.
+Amikor megpróbálja megnyitni a tervezőt, a következő hibaüzenet jelenik meg: **"a munkafolyamat tervezési ideje nem indítható el"**. Ha korábban megpróbálta megnyitni a tervezőt, majd megszüntette vagy törölte a projektet, előfordulhat, hogy a bővítményi köteg letöltése nem megfelelő. Az alábbi lépéseket követve ellenőrizheti, hogy ez okozza-e a problémát:
 
-1. A kimeneti ablak címsorában lévő listából válassza a **Azure Logic apps (előzetes verzió)** lehetőséget, hogy a bővítmény kimenetét át tudja tekinteni, például:
+  1. A Visual Studio Code-ban nyissa meg a kimeneti ablakot. A **nézet** menüben válassza a **kimenet** lehetőséget.
 
-   ![A "Azure Logic Apps" kijelölt kimeneti ablakot megjelenítő képernyőkép.](./media/create-stateful-stateless-workflows-visual-studio-code/check-outout-window-azure-logic-apps.png)
+  1. A kimeneti ablak címsorában lévő listából válassza a **Azure Logic apps (előzetes verzió)** lehetőséget, hogy a bővítmény kimenetét át tudja tekinteni, például:
 
-1. Tekintse át a kimenetet, és ellenőrizze, hogy megjelenik-e a hibaüzenet:
+     ![A "Azure Logic Apps" kijelölt kimeneti ablakot megjelenítő képernyőkép.](./media/create-stateful-stateless-workflows-visual-studio-code/check-outout-window-azure-logic-apps.png)
 
-   ```text
-   A host error has occurred during startup operation '{operationID}'.
-   System.Private.CoreLib: The file 'C:\Users\{userName}\AppData\Local\Temp\Functions\
-   ExtensionBundles\Microsoft.Azure.Functions.ExtensionBundle.Workflows\1.1.1\bin\
-   DurableTask.AzureStorage.dll' already exists.
-   Value cannot be null. (Parameter 'provider')
-   Application is shutting down...
-   Initialization cancellation requested by runtime.
-   Stopping host...
-   Host shutdown completed.
-   ```
+  1. Tekintse át a kimenetet, és ellenőrizze, hogy megjelenik-e a hibaüzenet:
 
-   Ez a hiba akkor fordulhat elő, ha korábban megpróbálta megnyitni a tervezőt, majd megszüntette vagy törölte a projektet. Ennek a hibának a megoldásához törölje a **ExtensionBundles** mappát ezen a helyen **. ..\Users \\ {your-username} \AppData\Local\Temp\Functions\ExtensionBundles**, majd próbálja **meg** újra megnyitni aworkflow.jsfájlt a tervezőben.
+     ```text
+     A host error has occurred during startup operation '{operationID}'.
+     System.Private.CoreLib: The file 'C:\Users\{userName}\AppData\Local\Temp\Functions\
+     ExtensionBundles\Microsoft.Azure.Functions.ExtensionBundle.Workflows\1.1.7\bin\
+     DurableTask.AzureStorage.dll' already exists.
+     Value cannot be null. (Parameter 'provider')
+     Application is shutting down...
+     Initialization cancellation requested by runtime.
+     Stopping host...
+     Host shutdown completed.
+     ```
+
+   A hiba megoldásához törölje a **ExtensionBundles** mappát ezen a helyen **. ..\Users \{ a-username} \AppData\Local\Temp\Functions\ExtensionBundles**, majd próbálja meg újra megnyitni a **workflow.jst** a tervezőben.
 
 <a name="missing-triggers-actions"></a>
 
@@ -1285,7 +1336,38 @@ A probléma megoldásához és a hosszú URI-ra való igazításhoz módosítsa 
 
 1. Ha elkészült, indítsa újra a számítógépet, hogy a módosítások érvénybe lépnek.
 
-## <a name="next-steps"></a>További lépések
+<a name="debugging-fails-to-start"></a>
+
+### <a name="debugging-session-fails-to-start"></a>A hibakeresési munkamenet nem indul el
+
+Ha hibakeresési munkamenetet próbál elindítani, a következő hibaüzenet jelenik meg: **"generateDebugSymbols" preLaunchTask futtatása után a "hiba létezik**. A probléma megoldásához szerkessze a **tasks.jsa** projekt fájljában a szimbólum generálásának kihagyásához.
+
+1. A projektben bontsa ki a **. vscode** mappát, és nyissa meg a **tasks.js** fájlt.
+
+1. A következő feladatban törölje a sort, `"dependsOn: "generateDebugSymbols"` valamint a vesszőt, amely az előző sort ér véget, például:
+
+   Előtte:
+   ```json
+    {
+      "type": "func",
+      "command": "host start",
+      "problemMatcher": "$func-watch",
+      "isBackground": true,
+      "dependsOn": "generateDebugSymbols"
+    }
+   ```
+
+   Utána:
+   ```json
+    {
+      "type": "func",
+      "command": "host start",
+      "problemMatcher": "$func-watch",
+      "isBackground": true
+    }
+   ```
+
+## <a name="next-steps"></a>Következő lépések
 
 Szeretnénk hallani a Azure Logic Apps (előzetes verzió) bővítménnyel kapcsolatos tapasztalatairól.
 

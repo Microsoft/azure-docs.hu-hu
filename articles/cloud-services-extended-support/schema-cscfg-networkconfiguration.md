@@ -8,12 +8,12 @@ author: gachandw
 ms.author: gachandw
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 13fe83710c94c1ca37f05d59cb91f31aa8ca1bae
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 2650da2579f13ec1588af7a25e5b28908209bc82
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744637"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700184"
 ---
 # <a name="azure-cloud-services-extended-support-config-networkconfiguration-schema"></a>Azure Cloud Services (bővített támogatás) konfigurációs networkConfiguration séma
 
@@ -23,7 +23,7 @@ A virtuális hálózatokkal és a kapcsolódó sémákkal kapcsolatos további t
 
 - A [Cloud Service (bővített támogatás) konfigurációs sémája](schema-cscfg-file.md).
 - A [Cloud Service (bővített támogatás) definíciós sémája](schema-csdef-file.md).
-- [Hozzon létre egy Virtual Network](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network).
+- [Hozzon létre egy Virtual Network](../virtual-network/manage-virtual-network.md).
 
 ## <a name="networkconfiguration-element"></a>NetworkConfiguration elem
 Az alábbi példa az `NetworkConfiguration` elemet és annak alárendelt elemeit mutatja be.

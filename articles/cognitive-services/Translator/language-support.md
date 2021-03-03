@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: lajanuar
-ms.openlocfilehash: 935a9e92de88c2519dc1a1042315d204e8f60099
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: b114c4f3e6646f68e7a1068be8dd52778a26fb58
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919918"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738140"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Nyelvi és területi támogatás szöveg-és beszédfelismerési fordításhoz
 
-A fordítóval fordítást használhat a 70-es és a szöveges fordítási nyelvek bármelyikére. A neurális gépi fordítás (NMT) az új szabvány a kiváló minőségű, mesterséges intelligenciát használó gépi fordításokhoz, és az alapszintű Translator v3 használatával érhető el, amikor egy neurális rendszer elérhető.
+A fordító használatával a 90-es szöveg-fordítási nyelvek és a dialektusok bármelyikét lefordíthatja. A neurális gépi fordítás (NMT) az új szabvány a kiváló minőségű, mesterséges intelligenciát használó gépi fordításokhoz, és az alapszintű Translator v3 használatával érhető el, amikor egy neurális rendszer elérhető.
 
 A fordítót az egyéni fordítóval együtt is használhatja olyan neurális fordítási rendszerek kiépítéséhez, amelyek megértik a saját üzleti és iparági terminológiáját, valamint a Microsoft Speech Service segítségével beszédfelismerési fordítást adhat az alkalmazásához.
 
@@ -37,8 +37,12 @@ A fordító a következő nyelveket támogatja szöveg szöveggé fordításáho
 | Nyelv | Nyelvkód |
 |:-|:-:|
 | búr | `af` |
+| albán | `sq` |
+| Amhara | `am` |
 | Arab | `ar` |
+| örmény | `hy` |
 | Asszámi | `as` |
+| Azerbajdzsáni | `az` |
 | Bangla | `bn` |
 | Bosnyák (latin betűs) | `bs` |
 | Bolgár | `bg` |
@@ -74,11 +78,13 @@ A fordító a következő nyelveket támogatja szöveg szöveggé fordításáho
 | Japán | `ja` |
 | kannada | `kn` |
 | Kazak | `kk` |
+| Khmer | `km` |
 | Klingon | `tlh-Latn` |
 | Klingon (plqaD) | `tlh-Piqd` |
 | Koreai | `ko` |
 | Kurd (Közép) | `ku` |
 | Kurd (északi) | `kmr` |
+| Lao | `lo` |
 | Lett | `lv` |
 | Litván | `lt` |
 | Malgas | `mg` |
@@ -87,6 +93,8 @@ A fordító a következő nyelveket támogatja szöveg szöveggé fordításáho
 | Máltai | `mt` |
 | maori | `mi` |
 | marathi | `mr` |
+| Mianmar | `my` |
+| Nepáli | `ne` |
 | Norvég | `nb` |
 | Odia | `or` |
 | Pasto | `ps` |
@@ -110,6 +118,7 @@ A fordító a következő nyelveket támogatja szöveg szöveggé fordításáho
 | tamil | `ta` |
 | telugu | `te` |
 | Thai | `th` |
+| Tigrinya | `ti` |
 | Tongai | `to` |
 | Török | `tr` |
 | Ukrán | `uk` |
@@ -130,6 +139,7 @@ A Translator a következő nyelveket észleli fordításhoz és íráshoz.
 | Nyelv | Nyelvkód |
 |:-|:-:|
 | búr | `af` |
+| albán | `sq` |
 | Arab | `ar` |
 | Bolgár | `bg` |
 | Katalán | `ca` |
@@ -152,6 +162,7 @@ A Translator a következő nyelveket észleli fordításhoz és íráshoz.
 | Magyar | `hu` |
 | Izlandi | `is` |
 | Indonéz | `id` |
+| Inuktitut | `iu` |
 | Ír | `ga` |
 | Olasz | `it` |
 | Japán | `ja` |

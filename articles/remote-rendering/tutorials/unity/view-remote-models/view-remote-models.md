@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bfcd1e600c722cf3a4951da60097c7c373f9b1a6
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: ef2d0eb409cbef2fdd3579ae5e8b409e24bdda2f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99592041"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735964"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>Oktatóanyag: távolról renderelt modell megtekintése
 
@@ -55,43 +55,9 @@ Ebben a példában feltételezzük, hogy a projekt létrehozása egy **RemoteRen
 
 ## <a name="include-the-azure-remote-rendering-package"></a>Az Azure távoli renderelési csomag belefoglalása
 
-Módosítania kell a `Packages/manifest.json` Unity Project mappában található fájlt. Nyissa meg a fájlt egy szövegszerkesztőben, és adja hozzá a következő sorokat a jegyzékfájl elejéhez:
+[Kövesse az](../../../how-tos/unity/install-remote-rendering-unity-package.md) Azure-beli távoli renderelési csomag Unity-projekthez való hozzáadásának utasításait.
 
-```json
-{
-    "scopedRegistries": [
-    {
-        "name": "Azure Mixed Reality Services",
-        "url": "https://api.bintray.com/npm/microsoft/AzureMixedReality-NPM/",
-        "scopes": ["com.microsoft.azure"]
-    }
-    ],
-    "dependencies": {
-        "com.unity.render-pipelines.universal": "7.3.1",
-        "com.microsoft.azure.remote-rendering": "0.1.31",
-        ...existing dependencies...
-    }
-}
-```
 
-Miután módosította és mentette a jegyzékfájlt, az Unity automatikusan frissülni fog. Erősítse meg a csomagok betöltését a *projekt* ablakban:
-
-:::image type="content" source="./media/confirm-packages.png" alt-text="csomagok importálásának megerősítése":::
-
-Ha a csomagok nem töltődnek be, ellenőrizze az Unity-konzolt a hibákért. Ha nem rendelkezik hibákkal, és még mindig nem lát csomagokat a **csomagok** mappában, ellenőrizze a csomag láthatóságának váltógomb. \
-![Képernyőfelvétel a csomag láthatóságának váltógomb mutató nyilat ábrázoló nyílra.](./media/unity-package-visibility.png)
-
-## <a name="ensure-you-have-the-latest-version-of-the-package"></a>Győződjön meg arról, hogy a csomag legújabb verziója van
-
-A következő lépésekkel biztosíthatja, hogy a projekt a távoli renderelési csomag legújabb verzióját használja.
-
-1. Az Unity Editor felső menüjében nyissa meg az *ablak – >csomagkezelő*.
-1. Válassza ki a csomagot **Microsoft Azure távoli rendereléssel**.
-1. A **Microsoft Azure távoli renderelési** csomag csomagkezelő lapján ellenőrizze, hogy elérhető-e a **frissítés** gomb. Ha igen, kattintson rá a csomag frissítéséhez a legújabb elérhető verzióra: \
-![A Package Managerben található ARR-csomag](./media/package-manager.png)
-1. Előfordulhat, hogy a csomag frissítése időnként konzol hibáihoz vezethet. Ha ez történik, próbálkozzon a projekt bezárásával és újbóli megnyitásával.
-1. Ha a csomag naprakész, a Package Manager a frissítés gomb helyett naprakészen jelenik **meg** . \
-![Naprakész csomag](./media/package-up-to-date.png)
 ## <a name="configure-the-camera"></a>A kamera konfigurálása
 
 1. Válassza ki a **fő kamera** csomópontot.

@@ -1,58 +1,38 @@
 ---
-title: 'Oktatóanyag: a bejövő adatkezelő beépülő modul engedélyezése egy új, Azure Application Gateway-példánnyal rendelkező új AK-fürthöz'
-description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure CLI-t az új, Application Gateway példánnyal rendelkező új AK-fürthöz tartozó bejövő vezérlő-bővítmény engedélyezéséhez.
+title: 'Oktatóanyag: a bejövő adatkezelő beépülő modul engedélyezése új, Azure-Application Gateway'
+description: Ebből az oktatóanyagból megtudhatja, hogyan engedélyezheti a bejövő adatkezelő beépülő modult új, Application Gateway példánnyal rendelkező új AK-fürthöz.
 services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 09/24/2020
+ms.date: 03/02/2021
 ms.author: caya
-ms.openlocfilehash: 775dc2133473354a1e534275fb0d813f299217d1
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: c37168c5165f5402dd4f57c8557bc2b7b3603533
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593817"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720188"
 ---
-# <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>Oktatóanyag: az új, Application Gateway példánnyal rendelkező új AK-fürthöz tartozó bejövő vezérlő bővítmény (előzetes verzió) engedélyezése
+# <a name="tutorial-enable-the-ingress-controller-add-on-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>Oktatóanyag: a bejövő adatkezelő beépülő modul engedélyezése egy új, Application Gateway példánnyal rendelkező új AK-fürthöz
 
-Az Azure CLI-vel engedélyezheti az [Azure Kubernetes Services-(ak-)](https://azure.microsoft.com/services/kubernetes-service/) fürthöz tartozó [Application Gateway beáramló vezérlő (AGIC)](ingress-controller-overview.md) bővítményt. A bővítmény jelenleg előzetes verzióban érhető el.
+Az Azure CLI-vel engedélyezheti az új [Azure Kubernetes Services-(ak-)](https://azure.microsoft.com/services/kubernetes-service/) fürthöz tartozó [Application Gateway beáramló vezérlő (AGIC)](ingress-controller-overview.md) bővítményét.
 
 Ebben az oktatóanyagban létre fog hozni egy AK-fürtöt, amelyen engedélyezve van a AGIC-bővítmény. A fürt létrehozása automatikusan létrehoz egy Azure Application Gateway-példányt, amelyet használni fog. Ezután telepítenie kell egy minta alkalmazást, amely a bővítmény használatával teszi elérhetővé az alkalmazást Application Gatewayon keresztül. 
 
-A bővítmény sokkal gyorsabban üzembe helyezi a AGIC-t az AK-fürthöz, mint [korábban a helmon keresztül](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on). Emellett teljes körűen felügyelt élményt nyújt.    
+A bővítmény sokkal gyorsabban üzembe helyezi a AGIC-t az AK-fürthöz, mint [korábban a helmon keresztül](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on). Emellett teljes körűen felügyelt élményt nyújt.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hozzon létre egy erőforráscsoportot. 
-> * Hozzon létre egy új AK-fürtöt a AGIC-bővítmény engedélyezésével. 
+> * Hozzon létre egy új AK-fürtöt a AGIC-bővítmény engedélyezésével.
 > * Helyezzen üzembe egy minta alkalmazást a AGIC használatával az AK-fürtön történő bejövő forgalomhoz.
 > * Győződjön meg arról, hogy az alkalmazás elérhető Application Gatewayon keresztül.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
-
- - Az oktatóanyaghoz az Azure CLI 2.0.4 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van. Ha az Azure CLI-t használja, telepítenie kell az előzetes verziójú bővítményt a CLI-be a következő parancs használatával, ha még nem tette meg:
-    ```azurecli-interactive
-    az extension add --name aks-preview
-    ```
-
- - Regisztrálja az *AK-IngressApplicationGatewayAddon* funkció jelzőjét az az [Feature Register](/cli/azure/feature#az-feature-register) paranccsal az alábbi példában látható módon. Ezt csak egyszer kell elvégeznie előfizetés esetén, amíg a bővítmény még előzetes verzióban van.
-    ```azurecli-interactive
-    az feature register --name AKS-IngressApplicationGatewayAddon --namespace Microsoft.ContainerService
-    ```
-
-   Az állapot megjelenítéséhez néhány percet is igénybe vehet `Registered` . A regisztrációs állapotot az az [Feature List](/cli/azure/feature#az-feature-register) parancs használatával tekintheti meg:
-    ```azurecli-interactive
-    az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
-    ```
-
- - Ha elkészült, frissítse a Microsoft. Tárolószolgáltatás erőforrás-szolgáltató regisztrációját az az [Provider Register](/cli/azure/provider#az-provider-register) paranccsal:
-    ```azurecli-interactive
-    az provider register --namespace Microsoft.ContainerService
-    ```
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
@@ -74,10 +54,10 @@ Most üzembe kell helyeznie egy új AK-fürtöt a AGIC-bővítmény engedélyez�
 
 A következő példában egy *myCluster* nevű új AK-fürtöt fog üzembe helyezni az [Azure CNI](../aks/concepts-network.md#azure-cni-advanced-networking) és a [felügyelt identitások](../aks/use-managed-identity.md)használatával. A AGIC-bővítmény engedélyezve lesz a létrehozott erőforráscsoport *myResourceGroup*. 
 
-Ha egy meglévő Application Gateway-példány megadása nélkül telepít egy új AK-fürtöt a AGIC-bővítménysel, akkor a rendszer egy Standard_v2 SKU Application Gateway példány automatikus létrehozását fogja jelenteni. Így megadhatja a Application Gateway példány nevét és alhálózatának címterület-területét is. Az Application Gateway-példány neve *myApplicationGateway* lesz, és az alhálózati címtartomány a jelenleg használt 10.2.0.0/16. Győződjön meg arról, hogy az ebben az oktatóanyagban az AK-előzetes bővítményt adta hozzá vagy frissítette. 
+Ha egy meglévő Application Gateway-példány megadása nélkül telepít egy új AK-fürtöt a AGIC-bővítménysel, akkor a rendszer egy Standard_v2 SKU Application Gateway példány automatikus létrehozását fogja jelenteni. Így megadhatja a Application Gateway példány nevét és alhálózatának címterület-területét is. Az Application Gateway-példány neve *myApplicationGateway* lesz, és az alhálózati címtartomány a jelenleg használt 10.2.0.0/16.
 
 ```azurecli-interactive
-az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity -a ingress-appgw --appgw-name myApplicationGateway --appgw-subnet-prefix "10.2.0.0/16" --generate-ssh-keys
+az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity -a ingress-appgw --appgw-name myApplicationGateway --appgw-subnet-cidr "10.2.0.0/16" --generate-ssh-keys
 ```
 
 A parancs további paramétereinek konfigurálásához `az aks create` tekintse meg [ezeket a hivatkozásokat](/cli/azure/aks#az-aks-create). 

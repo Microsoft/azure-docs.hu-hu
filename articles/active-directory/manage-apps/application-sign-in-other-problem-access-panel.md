@@ -12,12 +12,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 5d314331059a96388f23cd43667fca20a689f167
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 2a0411e97f78104de1356d482e4e43a42701c073
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258846"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687624"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Az Azure AD saját alkalmazásaiból alkalmazásba való bejelentkezéssel kapcsolatos problémák elhárítása
 
@@ -141,14 +141,15 @@ A felhasználók csoporttagságok vizsgálatához kövesse az alábbi lépéseke
 7.  Válassza ki a **csoportokat** , és ellenőrizze, hogy a felhasználó melyik csoport tagja.
 
 ### <a name="check-if-a-user-has-more-than-999-app-role-assignments"></a>Ellenőrizze, hogy a felhasználó több mint 999 alkalmazás-szerepkör-hozzárendeléssel rendelkezik-e
-Ha egy felhasználóhoz több mint 999 alkalmazás-hozzárendelés van rendelve, akkor előfordulhat, hogy a felhasználók nem látják az alkalmazásaikat.
+Ha a felhasználó több mint 999 alkalmazás-szerepkör-hozzárendeléssel rendelkezik, akkor előfordulhat, hogy nem látják az alkalmazások összes alkalmazását.
 
 Ennek az az oka, hogy az alkalmazások jelenleg legfeljebb 999 alkalmazás-szerepkör-hozzárendelést olvasnak, hogy meghatározzák azokat az alkalmazásokat, amelyekhez a felhasználók hozzá vannak rendelve. Ha a felhasználó több mint 999 alkalmazáshoz van hozzárendelve, nem lehet szabályozni, hogy mely alkalmazások jelenjenek meg a saját alkalmazások portálon.
 
-Az alábbi lépéseket követve ellenőrizheti, hogy hány alkalmazás-hozzárendelést adott meg a felhasználónak:
+Az alábbi lépéseket követve ellenőrizheti, hogy egy felhasználó több mint 999 alkalmazás-szerepkör-hozzárendeléssel rendelkezik-e:
 1. Telepítse a [**Microsoft. Graph**](https://github.com/microsoftgraph/msgraph-sdk-powershell) PowerShell-modult.
-2. Futtatás `Connect-MgGraph -Scopes "Directory.Read.All"` és hitelesítés **globális rendszergazdaként.**
-3. A futtatásával `$m = Get-MgUserAppRoleAssignment -UserId "<userId>" | Measure; $m.Count` határozza meg, hogy a felhasználó mely alkalmazás-szerepkör-hozzárendeléseket adja meg jelenleg.
+2. Futtassa a `Connect-MgGraph -Scopes "User.ReadBasic.All Application.Read.All"` parancsot.
+3. A futtatásával `(Get-MgUserAppRoleAssignment -UserId "<userId>" -Top 999).Count` határozza meg, hogy a felhasználó mely alkalmazás-szerepkör-hozzárendeléseket adja meg jelenleg.
+4. Ha az eredmény 999, a felhasználónak valószínűleg több, mint 999 alkalmazás-szerepkör-hozzárendelése lesz.
 
 ### <a name="check-a-users-assigned-licenses"></a>Felhasználóhoz rendelt licencek keresése
 A felhasználóhoz hozzárendelt licencek vizsgálatához kövesse az alábbi lépéseket:

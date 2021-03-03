@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 8e2217c04f5c39ad93185273d537324f4b56e456
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: f6c43f943bb12e8230772f2d195589ecc4543030
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100099540"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705313"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>A Microsoft &reg; Smooth streaming ügyféloldali Porting Kit licencelése
 
@@ -32,7 +32,7 @@ Az alábbiakban látható egy magas szintű architektúra és IIS-Smooth Streami
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
-## <a name="description"></a>Description
+## <a name="description"></a>Leírás
 A SSPK a kiváló üzleti értékkel rendelkező feltételekkel rendelkezik. A SSPK-licenc a következőket biztosítja az iparág számára:
 
 * Smooth Streaming a Porting Kit forrása a C++-ban 
@@ -46,7 +46,7 @@ A SSPK a kiváló üzleti értékkel rendelkező feltételekkel rendelkezik. A S
   * programozási felületek a hardver A/V-dekóderekkel való interakcióhoz (dekódolás, renderelés)
 * Digitális Rights Management (DRM) interfész 
   * a DRM kezelésére szolgáló programozási felületek a DRM absztrakciós réteg (DAL) használatával
-  * A Microsoft PlayReady-portok különálló, de ezen a felületen keresztül integrálva vannak. A Microsoft PlayReady-eszközök licencelésével kapcsolatos további információkért kattintson [ide](https://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl).
+  * A Microsoft PlayReady-portok különálló, de ezen a felületen keresztül integrálva vannak. [További részletek: Microsoft PlayReady-eszközök licencelése](https://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl).
 * Megvalósítási minták 
   * minta PAL implementáció Linux rendszerhez
   * a GStreamer minta HAL-implementációja
@@ -148,6 +148,7 @@ Az ideiglenes és a végleges SSPK-licencek technikai kérdéseket is beküldhet
 * Shenzhen Skyworth Digital Technology Co., Ltd
 * Szecsuán Changhong, Electric Co., Ltd.
 * Skardin Industrial Corp.
+* Sky CP Ltd
 * Sky Deutschland Fernsehen GmbH & Co. KG
 * SMARDTV GLOBÁLIS SAS
 * SoftAtHome

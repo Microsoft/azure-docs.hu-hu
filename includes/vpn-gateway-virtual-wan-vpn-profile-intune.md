@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/04/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8fc3ad3e1597d9b38bd095875c8a6f11260e8711
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f64bb0dd0841e89d05a4399db4373a9eaaec48a2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515070"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101749987"
 ---
 A profilokat üzembe helyezheti az Azure VPN-ügyfelekhez (Windows 10) Microsoft Intune használatával. Ez a cikk segítséget nyújt az Intune-profilok egyéni beállításokkal történő létrehozásában.
 
@@ -30,7 +30,7 @@ A következő lépésekben egy minta XML-t használunk az Intune egyéni OMA-URI
 * Automatikus bejelentkezés
 * A megbízható hálózat észlelése engedélyezve.
 
-Más támogatott lehetőségekért tekintse meg a [VPNV2 CSP](https://docs.microsoft.com/windows/client-management/mdm/vpnv2-csp) -t ismertető cikket.
+Más támogatott lehetőségekért tekintse meg a [VPNV2 CSP](/windows/client-management/mdm/vpnv2-csp) -t ismertető cikket.
 
 1. Töltse le a VPN-profilt a Azure Portalból, és bontsa ki a *azurevpnconfig.xml* fájlt a csomagból.
 1. Másolja és illessze be az alábbi szöveget egy új szövegszerkesztőbe.
@@ -82,4 +82,4 @@ Ebben a szakaszban egy Microsoft Intune-profilt hoz létre egyéni beállításo
 1. A **felülvizsgálat + létrehozás** lapon válassza a **Létrehozás** lehetőséget.
 
     :::image type="content" source="./media/vpn-gateway-virtual-wan-vpn-profile-intune/create-profile.png" alt-text="Profil létrehozása":::
-1. Az egyéni profil létrehozása megtörtént. A profil üzembe helyezésének Microsoft Intune lépéseiért lásd: [felhasználói és eszköz profilok társítása](https://docs.microsoft.com/mem/intune/configuration/device-profile-assign).
+1. Az egyéni profil létrehozása megtörtént. A profil üzembe helyezésének Microsoft Intune lépéseiért lásd: [felhasználói és eszköz profilok társítása](/mem/intune/configuration/device-profile-assign).

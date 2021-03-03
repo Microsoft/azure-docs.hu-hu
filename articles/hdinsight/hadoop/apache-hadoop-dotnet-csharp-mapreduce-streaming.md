@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, seoapr2020, devx-track-csharp
 ms.date: 04/28/2020
-ms.openlocfilehash: 6948491091f558aa7f317d519b0f92c63cac4788
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 6e2758fd650547978924c25f8f3faf1e3e7194f6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946627"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699385"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>A C# és a MapReduce streaming használata Apache Hadoop HDInsight
 
@@ -20,7 +20,7 @@ A Apache Hadoop streaming lehetővé teszi, hogy parancsfájl vagy végrehajthat
 
 ## <a name="net-on-hdinsight"></a>.NET on HDInsight
 
-A HDInsight-fürtök [mono https://mono-project.com) ](https://mono-project.com) -t használnak (.NET-alkalmazások futtatására. A HDInsight 3,6-es verziója tartalmazza a Mono 4.2.1-es verzióját. További információ a HDInsight-mel együtt használt mono verziójával kapcsolatban: [Apache Hadoop különböző HDInsight-verziókban elérhető összetevők](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions).
+A HDInsight-fürtök [mono https://mono-project.com) ](https://mono-project.com) -t használnak (.NET-alkalmazások futtatására. A HDInsight 3,6-es verziója tartalmazza a Mono 4.2.1-es verzióját. További információ a HDInsight-mel együtt használt mono verziójáról: [Apache Hadoop HDInsight-verziókkal elérhető összetevők](../hdinsight-component-versioning.md).
 
 További információ a .NET-keretrendszer verzióival való monó kompatibilitásról: [monó kompatibilitás](https://www.mono-project.com/docs/about-mono/compatibility/).
 

@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 3b9c3c66e58ae51773a959aba0b2c76d97b44445
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 6586375d7db71274f40eb62aeb24f9daad0d7c2e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309496"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688297"
 ---
 # <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>PostgreSQL-bővítmények használata az Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálói csoportban
 
@@ -24,40 +24,55 @@ A PostgreSQL a legjobb, ha bővítményekkel használja. Valójában a saját na
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="list-of-extensions"></a>Bővítmények listája
-A bővítmények mellett [`contrib`](https://www.postgresql.org/docs/12/contrib.html) Az Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálócsoport tárolójában lévő bővítmények listája a (z):
-- `citus`, v: 9,4
-- `pg_cron`, v: 1,2
-- `plpgsql`, v: 1,0
-- `postgis`, v: 3.0.2
-- `plv8`, v: 2.3.14
+## <a name="supported-extensions"></a>Támogatott bővítmények
+A standard [`contrib`](https://www.postgresql.org/docs/12/contrib.html) kiterjesztések és a következő bővítmények már telepítve vannak az Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálócsoport tárolójában:
+- [`citus`](https://github.com/citusdata/citus), v: 9,4. A [Citus](https://www.citusdata.com/) -Citus-bővítmény alapértelmezés szerint be van töltve, mivel a nagy kapacitású-képességet a PostgreSQL-motorhoz viszi. A Citus-bővítmény az Azure arc PostgreSQL nagy kapacitású-kiszolgáló csoportból való eldobása nem támogatott.
+- [`pg_cron`](https://github.com/citusdata/pg_cron), v: 1,2
+- [`pgaudit`](https://www.pgaudit.org/), v: 1,4
+- plpgsql, v: 1,0
+- [`postgis`](https://postgis.net), v: 3.0.2
+- [`plv8`](https://plv8.github.io/), v: 2.3.14
 
-Ez a lista a túlórát és a frissítéseket is közzéteszi a dokumentumban. Még nem lehetséges, hogy a fentiekben felsorolt kiterjesztéseket is hozzáadja.
+A lista frissítései közzé lesznek téve, ahogy az idővel fejlődik.
+
+> [!IMPORTANT]
+> Habár előfordulhat, hogy a kiszolgálói csoportot a fent felsoroltakon kívül más kiterjesztéssel is elvégezheti, ebben az előzetes verzióban nem fogja tudni megőrizni a rendszerét. Ez azt jelenti, hogy a rendszer újraindítása után nem lesz elérhető, és újra kell indítania.
 
 Ez az útmutató a következő két bővítmény használatát teszi elérhetővé:
-- [PostGIS](https://postgis.net/)
+- [`PostGIS`](https://postgis.net/)
 - [`pg_cron`](https://github.com/citusdata/pg_cron)
 
+## <a name="which-extensions-need-to-be-added-to-the-shared_preload_libraries-and-created"></a>Mely bővítményeket kell hozzáadni a shared_preload_librarieshoz, és létre kell hozni?
 
-## <a name="manage-extensions"></a>Bővítmények kezelése
+|Bővítmények   |Az shared_preload_librarieshoz való hozzáadásához szükséges  |Létrehozásához szükséges |
+|-------------|--------------------------------------------------|---------------------- |
+|`pg_cron`      |Nem       |Igen        |
+|`pg_audit`     |Igen       |Igen        |
+|`plpgsql`      |Igen       |Igen        |
+|`postgis`      |Nem       |Igen        |
+|`plv8`      |Nem       |Igen        |
 
-### <a name="enable-extensions"></a>Bővítmények engedélyezése
-Ez a lépés nem szükséges a részét képező bővítményekhez `contrib` .
-A bővítmények engedélyezésére szolgáló parancs általános formátuma a következő:
+## <a name="add-extensions-to-the-shared_preload_libraries"></a>Bővítmények hozzáadása a shared_preload_librarieshoz
+További részletekért shared_preload_libraries kérjük, olvassa el a PostgreSQL-dokumentációt [itt](https://www.postgresql.org/docs/current/runtime-config-client.html#GUC-SHARED-PRELOAD-LIBRARIES):
+- Ez a lépés nem szükséges a következő részét képező bővítményekhez: `contrib`
+- Ez a lépés nem szükséges olyan bővítményekhez, amelyek nem szükségesek shared_preload_librarieshoz való előzetes betöltéshez. Ezekben a bővítményekben a következő, [bővítmények létrehozása](https://docs.microsoft.com/azure/azure-arc/data/using-extensions-in-postgresql-hyperscale-server-group#create-extensions)lehetőségre ugorhat.
 
-#### <a name="enable-an-extension-at-the-creation-time-of-a-server-group"></a>Bővítmény engedélyezése egy kiszolgálócsoport létrehozási időpontjában:
+### <a name="add-an-extension-at-the-creation-time-of-a-server-group"></a>Bővítmény hozzáadása egy kiszolgálócsoport létrehozási időpontjában
 ```console
 azdata arc postgres server create -n <name of your postgresql server group> --extensions <extension names>
 ```
-#### <a name="enable-an-extension-on-an-instance-that-already-exists"></a>Bővítmény engedélyezése olyan példányon, amely már létezik:
+### <a name="add-an-extension-to-an-instance-that-already-exists"></a>Bővítmény hozzáadása olyan példányhoz, amely már létezik
 ```console
 azdata arc postgres server edit -n <name of your postgresql server group> --extensions <extension names>
 ```
 
-#### <a name="get-the-list-of-extensions-enabled"></a>Az engedélyezett bővítmények listájának beolvasása:
+
+
+
+## <a name="show-the-list-of-extensions-added-to-shared_preload_libraries"></a>A shared_preload_librarieshoz hozzáadott bővítmények listájának megjelenítése
 Futtassa az alábbi parancs egyikét.
 
-##### <a name="with-azure-data-cli-azdata"></a>A [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
+### <a name="with-an-azdata-cli-command"></a>Azdata CLI-paranccsal
 ```console
 azdata arc postgres server show -n <server group name>
 ```
@@ -74,7 +89,7 @@ Görgessen a kimenetben, és figyelje meg a engine\extensions fejezeteit. Péld�
       ]
     },
 ```
-##### <a name="with-kubectl"></a>Kubectl
+### <a name="with-kubectl"></a>Kubectl
 ```console
 kubectl describe postgresql-12s/postgres02
 ```
@@ -87,59 +102,34 @@ Engine:
 ```
 
 
-### <a name="create-extensions"></a>Bővítmények létrehozása:
+## <a name="create-extensions"></a>Bővítmények létrehozása
 Kapcsolódjon a kiszolgálói csoporthoz az Ön által választott ügyfél-eszközzel, és futtassa a standard PostgreSQL-lekérdezést:
 ```console
 CREATE EXTENSION <extension name>;
 ```
 
-### <a name="get-the-list-of-extension-created-in-your-server-group"></a>A kiszolgáló csoportjában létrehozott bővítmény listájának beolvasása:
+## <a name="show-the-list-of-extensions-created"></a>A létrehozott bővítmények listájának megjelenítése
 Kapcsolódjon a kiszolgálói csoporthoz az Ön által választott ügyfél-eszközzel, és futtassa a standard PostgreSQL-lekérdezést:
 ```console
 select * from pg_extension;
 ```
 
-### <a name="drop-an-extension-from-your-server-group"></a>Bővítmény eldobása a kiszolgáló csoportjából:
+## <a name="drop-an-extension"></a>Bővítmény eldobása
 Kapcsolódjon a kiszolgálói csoporthoz az Ön által választott ügyfél-eszközzel, és futtassa a standard PostgreSQL-lekérdezést:
 ```console
 drop extension <extension name>;
 ```
 
-## <a name="use-the-postgis-and-the-pg_cron-extensions"></a>A PostGIS és a Pg_cron bővítmények használata
-
-### <a name="the-postgis-extension"></a>Az PostGIS bővítmény
-
-Engedélyezheti a PostGIS bővítményt egy meglévő kiszolgálócsoport számára, vagy létrehozhat egy újat a bővítmény már engedélyezve van:
-
-**Bővítmény engedélyezése egy kiszolgálócsoport létrehozási időpontjában:**
-```console
-azdata arc postgres server create -n <name of your postgresql server group> --extensions <extension names>
-
-#Example:
-azdata arc postgres server create -n pg2 -w 2 --extensions postgis
-```
-
-**A bővítmény engedélyezése olyan példányon, amely már létezik:**
-```console
-azdata arc postgres server edit -n <name of your postgresql server group> --extensions <extension names>
-
-#Example:
-azdata arc postgres server edit --extensions postgis -n pg2
-```
-
-A bővítmények telepítésének ellenőrzéséhez használja a következő standard PostgreSQL-parancsot a példányhoz való csatlakozás után a kedvenc PostgreSQL-ügyfél eszközzel, például Azure Data Studio:
-```console
-select * from pg_extension;
-```
-
-A PostGIS példaként először [olvassa el az MIT & a](http://duspviz.mit.edu/tutorials/intro-postgis/) tervezésért felelős minisztérium osztályát. Előfordulhat, hogy a virtuális gép a teszteléshez való használatakor futtatnia kell a parancsot a `apt-get install unzip` telepítéshez.
+## <a name="the-postgis-extension"></a>A `PostGIS` bővítmény
+A bővítményt nem kell hozzáadnia a következőhöz: `PostGIS` `shared_preload_libraries` .
+[Mintaadatok](http://duspviz.mit.edu/tutorials/intro-postgis/) beszerzése az mit & a tervezésből származó városi tanulmányok Minisztériuma. Futtassa `apt-get install unzip` a parancsot a telepítéshez szükség szerint.
 
 ```console
 wget http://duspviz.mit.edu/_assets/data/intro-postgis-datasets.zip
 unzip intro-postgis-datasets.zip
 ```
 
-Kapcsolódjon az adatbázishoz, és hozza létre a PostGIS bővítményt:
+Kapcsolódjon az adatbázishoz, és hozzon létre egy `PostGIS` bővítményt:
 
 ```console
 CREATE EXTENSION postgis;
@@ -165,7 +155,7 @@ CREATE TABLE coffee_shops (
 CREATE INDEX coffee_shops_gist ON coffee_shops USING gist (geom);
 ```
 
-A PostGIS a kibővítési funkcióval kombinálva a coffee_shops táblázatot terjesztettük el:
+A `PostGIS` kibővíthető funkciókkal kombinálva a coffee_shops táblázatot terjesztettük el:
 
 ```sql
 SELECT create_distributed_table('coffee_shops', 'id');
@@ -177,7 +167,7 @@ Töltsön be néhány adattal:
 \copy coffee_shops(id,name,address,city,state,zip,lat,lon) from cambridge_coffee_shops.csv CSV HEADER;
 ```
 
-És töltse ki a `geom` mezőt a megfelelő kódolású szélességgel és hosszúsággal a PostGIS `geometry` adattípusban:
+És töltse ki a `geom` mezőt a megfelelő kódolású szélességgel és hosszúsággal az `PostGIS` `geometry` adattípusban:
 
 ```sql
 UPDATE coffee_shops SET geom = ST_SetSRID(ST_MakePoint(lon,lat),4326);
@@ -190,15 +180,15 @@ SELECT name, address FROM coffee_shops ORDER BY geom <-> ST_SetSRID(ST_MakePoint
 ```
 
 
-### <a name="the-pg_cron-extension"></a>A pg_cron bővítmény
+## <a name="the-pg_cron-extension"></a>A `pg_cron` bővítmény
 
-A `pg_cron` PostGIS mellett engedélyezze a PostgreSQL-kiszolgáló csoportját:
+Most engedélyezzük `pg_cron` a PostgreSQL-kiszolgálócsoport hozzáadását a shared_preload_libraries:
 
 ```console
-azdata postgres server update -n pg2 -ns arc --extensions postgis,pg_cron
+azdata postgres server update -n pg2 -ns arc --extensions pg_cron
 ```
 
-Vegye figyelembe, hogy ezzel újraindítja a csomópontokat, és telepíti a további bővítményeket, amelyek 2-3 percet is igénybe vehetnek.
+A kiszolgálócsoport a bővítmények telepítésének befejezése után újraindul. 2 – 3 percet is igénybe vehet.
 
 Most már kapcsolódhat, és létrehozhatja a `pg_cron` bővítményt:
 
@@ -206,7 +196,7 @@ Most már kapcsolódhat, és létrehozhatja a `pg_cron` bővítményt:
 CREATE EXTENSION pg_cron;
 ```
 
-Tesztelési célokra lehetővé teszi, hogy egy olyan táblát hozzon, `the_best_coffee_shop` amely véletlenszerű nevet vesz a korábbi `coffee_shops` táblázatból, és beállítja a táblázat tartalmát:
+Tesztelési célokra lehetővé teszi, hogy egy olyan táblát hozzon, `the_best_coffee_shop` amely véletlenszerű nevet vesz a korábbi `coffee_shops` táblázatból, és beszúrja a táblázat tartalmát:
 
 ```sql
 CREATE TABLE the_best_coffee_shop(name text);
@@ -238,10 +228,8 @@ SELECT * FROM the_best_coffee_shop;
 
 A szintaxissal kapcsolatos részletekért tekintse meg a [PG_CRON readme](https://github.com/citusdata/pg_cron) című témakört.
 
->[!NOTE]
->A bővítmény eldobása nem támogatott `citus` . A `citus` nagy kapacitású-élmény biztosításához a bővítmény szükséges.
 
-## <a name="next-steps"></a>Következő lépések:
-- A [plv8](https://plv8.github.io/) dokumentációjának olvasása
-- A [PostGIS](https://postgis.net/) dokumentációjának olvasása
+## <a name="next-steps"></a>Következő lépések
+- Dokumentáció beolvasása [`plv8`](https://plv8.github.io/)
+- Dokumentáció beolvasása [`PostGIS`](https://postgis.net/)
 - Dokumentáció beolvasása [`pg_cron`](https://github.com/citusdata/pg_cron)

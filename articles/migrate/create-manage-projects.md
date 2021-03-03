@@ -6,18 +6,18 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 25572a4cc342277289459891c9bee2fa7f1cccd7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0656a9eabb692453331c5c4b229ce26f41ecfdf3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589085"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730201"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Azure Migrate-projektek létrehozása és kezelése
 
 Ez a cikk bemutatja, hogyan hozhat létre, kezelhet és törölhet [Azure Migrate](migrate-services-overview.md) projekteket. 
 
-A klasszikus Azure Migrate kivonása február 2024. Február 2024 után a Azure Migrate klasszikus verziója már nem támogatott, és a klasszikus projektben lévő leltári metaadatokat törli a rendszer. Ha klasszikus Azure Migrate projekteket használ, törölje ezeket a projekteket, és kövesse a lépéseket egy új Azure Migrate projekt létrehozásához. A klasszikus Azure Migrate projektek vagy összetevők nem frissíthetők a Azure Migratera. A létrehozási folyamat megkezdése előtt tekintse meg a [gyakori kérdéseket](https://docs.microsoft.com/azure/migrate/resources-faq#i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version) .
+A klasszikus Azure Migrate kivonása február 2024. Február 2024 után a Azure Migrate klasszikus verziója már nem támogatott, és a klasszikus projektben lévő leltári metaadatokat törli a rendszer. Ha klasszikus Azure Migrate projekteket használ, törölje ezeket a projekteket, és kövesse a lépéseket egy új Azure Migrate projekt létrehozásához. A klasszikus Azure Migrate projektek vagy összetevők nem frissíthetők a Azure Migratera. A létrehozási folyamat megkezdése előtt tekintse meg a [gyakori kérdéseket](./resources-faq.md#i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version) .
 
 Azure Migrate-projekttel a rendszer az Ön által értékelt vagy áttelepíteni kívánt környezetből gyűjtött felderítési, értékelési és áttelepítési metaadatok tárolására szolgál. Egy projektben nyomon követheti a felderített eszközöket, kiértékelheti az Azure-ba való áttelepítést, és elvégezheti az áttelepítést.  
 

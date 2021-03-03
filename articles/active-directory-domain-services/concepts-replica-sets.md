@@ -8,22 +8,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/16/2020
+ms.date: 02/26/2021
 ms.author: justinha
-ms.openlocfilehash: 5359a955ea97b559b7e3d244bfb6c4fb09e8681b
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 8eb1560887c08c3f64fa599c39e5577242d2a1e8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620035"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689062"
 ---
-# <a name="replica-sets-concepts-and-features-for-azure-active-directory-domain-services-preview"></a>A replika-készletek alapfogalmai és funkciói Azure Active Directory Domain Services (előzetes verzió)
+# <a name="replica-sets-concepts-and-features-for-azure-active-directory-domain-services"></a>A replika a Azure Active Directory Domain Services kapcsolatos fogalmakat és szolgáltatásokat tartalmazza
 
 Azure Active Directory Domain Services (Azure AD DS) felügyelt tartomány létrehozásakor egyedi névteret határozhat meg. Ez a névtér a tartománynevet, például a *aaddscontoso.com* és két tartományvezérlőt (DCS) helyezi üzembe a kiválasztott Azure-régióban. A tartományvezérlők ezt a központi telepítését replikakészlet néven nevezzük.
 
 A felügyelt tartományokat kiterjesztheti úgy, hogy az Azure AD-bérlőn belüli több replikát is hozzon létre. A kópiakészlet bármely olyan Azure-régióban használható, amely támogatja az Azure AD DS-t. A különböző Azure-régiókban található további replikák földrajzi vész-helyreállítást biztosítanak az örökölt alkalmazásokhoz, ha egy Azure-régió offline állapotba kerül.
-
-A kópiakészlet jelenleg előzetes verzióban érhető el.
 
 > [!NOTE]
 > A replikák nem lehetővé teszik több egyedi felügyelt tartomány központi telepítését egyetlen Azure-bérlőben. Mindegyik replikakészlet ugyanazokat az adathalmazokat tartalmazza.
@@ -56,15 +54,11 @@ Az alábbi példa egy felügyelt tartományt mutat be három replikával a rugal
 
 A felügyelt tartományokhoz tartozó alapértelmezett SKU a *vállalati* SKU, amely több replikát is támogat. Ha a *standard* SKU-ra módosította a további replikákat, [frissítse a felügyelt tartományt](change-sku.md) *nagyvállalati* vagy *prémium* szintűre.
 
-Az előzetes verzióban támogatott másodpéldány-készletek maximális száma négy, beleértve a felügyelt tartomány létrehozásakor létrehozott első replikát is.
+A replikakészlet-készletek maximális száma négy, beleértve a felügyelt tartomány létrehozásakor létrehozott első replikát is.
 
 Az egyes replikák számlázása a tartományi konfigurációs SKU alapján történik. Ha például olyan felügyelt tartománya van, amely a *vállalati* SKU-t használja, és három replikakészlet van, akkor az előfizetése óránként lesz elszámolva mindhárom replikakészlet esetében.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
-
-### <a name="can-i-use-my-production-managed-domain-with-this-preview"></a>Használhatom az éles környezetben felügyelt tartományt ehhez az előzetes verzióhoz?
-
-A replikakészlet a Azure AD Domain Services nyilvános előzetes verziója. Éles környezetben felügyelt tartományt is használhat, de vegye figyelembe, hogy az előzetes verzióban még elérhető funkciókkal kapcsolatos támogatási különbségek vannak. Az előzetes verziókkal kapcsolatos további információkért [Azure Active Directory előnézeti SLA](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)-t.
 
 ### <a name="can-i-create-a-replica-set-in-subscription-different-from-my-managed-domain"></a>Létrehozhatok olyan replikát az előfizetésben, amely eltér a felügyelt tartománytól?
 
@@ -72,7 +66,7 @@ Nem. A replikának a felügyelt tartományhoz tartozó előfizetésben kell lenn
 
 ### <a name="how-many-replica-sets-can-i-create"></a>Hány replikakészlet hozható létre?
 
-Az előzetes verzió legfeljebb négy másodpéldányra korlátozódik – a felügyelt tartomány kezdeti replikája, valamint három további replikakészlet.
+Legfeljebb négy replikakészlet hozható létre – a felügyelt tartomány kezdeti replikája, valamint három további replikakészlet is.
 
 ### <a name="how-does-user-and-group-information-get-synchronized-to-my-replica-sets"></a>Hogyan történik a felhasználók és a csoportok adatainak szinkronizálása a saját replikákkal?
 
@@ -84,7 +78,7 @@ A helyszíni AD DShoz hasonlóan a kiterjesztett leválasztott állapot is zavar
 
 A felügyelt tartományon belüli változások ugyanúgy működnek, mint korábban. [Hozzon létre és használjon felügyeleti virtuális gépet a felügyelt tartományhoz csatlakoztatott RSAT-eszközökkel](tutorial-create-management-vm.md). A felügyelt tartományhoz tetszőleges számú felügyeleti virtuális gépet csatlakoztathat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A replikakészlet megkezdéséhez [hozzon létre és konfiguráljon egy Azure AD DS felügyelt tartományt][tutorial-create-advanced]. Üzembe helyezéskor [hozzon létre és használjon további replikákat][create-replica-set].
 

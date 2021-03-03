@@ -1,18 +1,18 @@
 ---
 title: A hibrid Kubernetes-fürt figyelésének leállítása | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan állíthatja le a hibrid Kubernetes-fürtök figyelését a tárolók Azure Monitorával.
+description: Ez a cikk azt ismerteti, hogyan állíthatja le a hibrid Kubernetes-fürtök figyelését a Container-információkkal.
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 2754649cd990b015162be158effa2b85aa1fe27e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e8708d6b860683cc96a806160ccc7c8e33949ab2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621225"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713694"
 ---
 # <a name="how-to-stop-monitoring-your-hybrid-cluster"></a>A hibrid fürt figyelésének leállítása
 
-Miután engedélyezte a Kubernetes-fürt figyelését, leállíthatja a fürt figyelését Azure Monitor a tárolók esetében, ha úgy dönt, hogy már nem szeretné figyelni. Ez a cikk bemutatja, hogyan hajthatja végre ezt a következő környezetekben:
+Miután engedélyezte a Kubernetes-fürt figyelését, leállíthatja a fürt figyelését a tároló-megállapításokkal, ha úgy dönt, hogy már nem szeretné figyelni. Ez a cikk bemutatja, hogyan hajthatja végre ezt a következő környezetekben:
 
 - AK-motor az Azure-ban és Azure Stack
 - OpenShift 4-es és újabb verziója
@@ -25,7 +25,7 @@ A következő lépések a következő környezetekre vonatkoznak:
 - AK-motor az Azure-ban és Azure Stack
 - OpenShift 4-es és újabb verziója
 
-1. A fürtön telepített containers Helm-diagram Azure Monitor azonosításához futtassa a következő Helm-parancsot.
+1. A következő Helm-parancs futtatásával azonosíthatja a fürtön telepített Container bepillantást az Helm chart kiadásban.
 
     ```
     helm list
@@ -38,7 +38,7 @@ A következő lépések a következő környezetekre vonatkoznak:
     azmon-containers-release-1      default         3               2020-04-21 15:27:24.1201959 -0700 PDT   deployed        azuremonitor-containers-2.7.0   7.0.0-1
     ```
 
-    *azmon-containers – a Release-1* a Azure monitor for containers esetében a Helm diagram kiadását jelenti.
+    *azmon – tárolók – a Release-1* a Helm chart kiadását jelöli a tárolók bepillantást.
 
 2. A diagram kiadásának törléséhez futtassa a következő Helm-parancsot.
 
@@ -157,4 +157,4 @@ bash disable-monitoring.sh --resource-id $azureArcClusterResourceId --kube-conte
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha a Log Analytics munkaterület csak a fürt figyelésének támogatására lett létrehozva, és már nincs rá szükség, manuálisan kell törölnie. Ha nem ismeri a munkaterület törlésének módját, tekintse meg [Az Azure log Analytics munkaterület törlése](../platform/delete-workspace.md)című témakört.
+Ha a Log Analytics munkaterület csak a fürt figyelésének támogatására lett létrehozva, és már nincs rá szükség, manuálisan kell törölnie. Ha nem ismeri a munkaterület törlésének módját, tekintse meg [Az Azure log Analytics munkaterület törlése](../logs/delete-workspace.md)című témakört.

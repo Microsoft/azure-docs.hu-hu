@@ -6,16 +6,16 @@ ms.reviewer: estfan, logicappspm, azla
 ms.topic: how-to
 ms.custom: subject-cost-optimization
 ms.date: 01/29/2021
-ms.openlocfilehash: 58e12862cf00b500bced105d67fede8599c2a257
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 44351497ed58c8d49404c094f6800b52186edabb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99180496"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709631"
 ---
 # <a name="plan-and-manage-costs-for-azure-logic-apps"></a>A Azure Logic Apps költségeinek megtervezése és kezelése
 
-Ez a cikk segítséget nyújt a Azure Logic Apps költségeinek megtervezéséhez és kezeléséhez. Mielőtt bármilyen erőforrást hozna létre vagy felvesz a szolgáltatás használatával, az Azure díjszabási kalkulátor használatával becsülje meg a költségeket. A Logic Apps-erőforrások használatának megkezdése után a [Azure Cost Management](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)segítségével megadhatja a költségvetéseket és figyelheti a költségeket. A felmerülő területek azonosításához tekintse át az előre jelzett költségeket, és figyelje a kiadási trendeket.
+Ez a cikk segítséget nyújt a Azure Logic Apps költségeinek megtervezéséhez és kezeléséhez. Mielőtt bármilyen erőforrást hozna létre vagy felvesz a szolgáltatás használatával, az Azure díjszabási kalkulátor használatával becsülje meg a költségeket. A Logic Apps-erőforrások használatának megkezdése után a [Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)segítségével megadhatja a költségvetéseket és figyelheti a költségeket. A felmerülő területek azonosításához tekintse át az előre jelzett költségeket, és figyelje a kiadási trendeket.
 
 Vegye figyelembe, hogy a Logic Apps költségei csak az Azure-számlán lévő havi költségek részét képezik. Bár ez a cikk ismerteti a Logic Apps költségeinek megbecslését és kezelését, az Azure-előfizetésében használt összes Azure-szolgáltatás és-erőforrás, beleértve a harmadik féltől származó szolgáltatásokat is. Ha már ismeri a Logic Apps költségeinek kezelését, hasonló módszerekkel kezelheti az előfizetésében használt összes Azure-szolgáltatás költségeit.
 
@@ -23,9 +23,9 @@ Vegye figyelembe, hogy a Logic Apps költségei csak az Azure-számlán lévő h
 
 <!--Note for Azure service writer: This section covers prerequisites for the Cost Management's Cost Analysis feature. Add other prerequisites needed for your service after the Cost Management prerequisites. -->
 
-A [Azure Cost Management](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) a legtöbb Azure-fiók típusát támogatja. Az összes támogatott fióktípus megtekintéséhez tekintse meg az [Cost Management-információk megismerése](https://docs.microsoft.com/azure/cost-management-billing/costs/understand-cost-mgt-data?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)című témakört. A költségadatok megtekintéséhez legalább olvasási jogosultsággal kell rendelkeznie az Azure-fiókjához.
+A [Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) a legtöbb Azure-fiók típusát támogatja. Az összes támogatott fióktípus megtekintéséhez tekintse meg az [Cost Management-információk megismerése](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)című témakört. A költségadatok megtekintéséhez legalább olvasási jogosultsággal kell rendelkeznie az Azure-fiókjához.
 
-További információért az Azure Cost Management adataihoz való hozzáférés hozzárendeléséről: [Adatokhoz való hozzáférés hozzárendelése](https://docs.microsoft.com/azure/cost-management/assign-access-acm-data?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+További információért az Azure Cost Management adataihoz való hozzáférés hozzárendeléséről: [Adatokhoz való hozzáférés hozzárendelése](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
 <!--Note for Azure service writer: If you have other prerequisites for your service, add them here -->
 
@@ -101,9 +101,9 @@ Mielőtt erőforrásokat hozna létre a Azure Logic Apps, az [Azure díjszabási
 
 ## <a name="create-budgets-and-alerts"></a>Költségvetések és riasztások létrehozása
 
-Az Azure-fiók vagy-előfizetés költségeinek proaktív kezeléséhez létrehozhat [költségvetést](https://docs.microsoft.com/azure/cost-management/tutorial-acm-create-budgets?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) és [riasztásokat](https://docs.microsoft.com/azure/cost-management/cost-mgt-alerts-monitor-usage-spending?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) a [Azure Cost Management és a számlázási](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) szolgáltatás és képességek segítségével.  Az Azure-előfizetésekhez és-erőforráscsoportokhöz költségvetést és riasztásokat hoznak létre, így azok a teljes költségű figyelési stratégia részeként hasznosak.
+Az Azure-fiók vagy-előfizetés költségeinek proaktív kezeléséhez létrehozhat [költségvetést](../cost-management-billing/costs/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) és [riasztásokat](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) a [Azure Cost Management és a számlázási](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) szolgáltatás és képességek segítségével.  Az Azure-előfizetésekhez és-erőforráscsoportokhöz költségvetést és riasztásokat hoznak létre, így azok a teljes költségű figyelési stratégia részeként hasznosak.
 
-A költségvetés és a költségek küszöbértékeit összevetve a riasztások automatikusan értesítik az érintett feleket a rendellenességek elköltéséről és a kockázatok túlterheléséről. Ha részletesebben szeretné megfigyelni a figyelést, olyan költségvetéseket is létrehozhat, amelyek az Azure adott erőforrásaihoz vagy szolgáltatásaihoz szűrőket használnak. A szűrők segítenek biztosítani, hogy ne hozzon létre véletlenül új erőforrásokat, ami extra pénzbe kerül. A szűrési lehetőségekkel kapcsolatos további információkért lásd: [csoportosítási és szűrési beállítások](https://docs.microsoft.com/azure/cost-management-billing/costs/group-filter?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+A költségvetés és a költségek küszöbértékeit összevetve a riasztások automatikusan értesítik az érintett feleket a rendellenességek elköltéséről és a kockázatok túlterheléséről. Ha részletesebben szeretné megfigyelni a figyelést, olyan költségvetéseket is létrehozhat, amelyek az Azure adott erőforrásaihoz vagy szolgáltatásaihoz szűrőket használnak. A szűrők segítenek biztosítani, hogy ne hozzon létre véletlenül új erőforrásokat, ami extra pénzbe kerül. A szűrési lehetőségekkel kapcsolatos további információkért lásd: [csoportosítási és szűrési beállítások](../cost-management-billing/costs/group-filter.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
 <a name="monitor-costs"></a>
 
@@ -115,7 +115,7 @@ Miután elindította a költségeket az Azure-ban létrehozott vagy elkezdett er
 
 * A [Logic app-végrehajtás és a tárterület-felhasználás figyelése](#monitor-billing-metrics) Azure monitor használatával
 
-* A [Cost Analysis](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) futtatása [Azure Cost Management és számlázás](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) használatával
+* A [Cost Analysis](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) futtatása [Azure Cost Management és számlázás](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) használatával
 
 <a name="monitor-billing-metrics"></a>
 
@@ -170,7 +170,7 @@ A Azure Monitor használatával megtekintheti az adott logikai alkalmazás metri
 
 ### <a name="run-cost-analysis-by-using-azure-cost-management-and-billing"></a>A Cost Analysis futtatása Azure Cost Management és számlázás használatával
 
-Ha egy adott hatókör (például egy Azure-előfizetés) alapján szeretné áttekinteni a Logic Apps szolgáltatás költségeit, használhatja a [Azure Cost Management és a számlázás](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) [Cost Analysis](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) funkcióit.
+Ha egy adott hatókör (például egy Azure-előfizetés) alapján szeretné áttekinteni a Logic Apps szolgáltatás költségeit, használhatja a [Azure Cost Management és a számlázás](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) [Cost Analysis](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) funkcióit.
 
 1. A Azure Portal nyissa meg a kívánt hatókört, például az Azure-előfizetését. A bal oldali menü **Cost Management** területén válassza a **Cost Analysis** elemet.
 
@@ -197,7 +197,7 @@ Ha egy adott hatókör (például egy Azure-előfizetés) alapján szeretné át
 
 ### <a name="export-cost-data"></a>Költségadatok exportálása
 
-Ha további adatelemzésre van szüksége a költségekkel kapcsolatban, a [költségadatok](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) a Storage-fiókba exportálhatók. Egy pénzügyi csapat például az Excel vagy a Power BI használatával elemezheti ezeket az adatforrásokat. A költségeket napi, heti vagy havi rendszerességgel exportálhatja, és egyéni dátumtartományt is beállíthat. A költségadatok exportálásának ajánlott módja a Cost-adatkészletek beolvasása.
+Ha további adatelemzésre van szüksége a költségekkel kapcsolatban, a [költségadatok](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) a Storage-fiókba exportálhatók. Egy pénzügyi csapat például az Excel vagy a Power BI használatával elemezheti ezeket az adatforrásokat. A költségeket napi, heti vagy havi rendszerességgel exportálhatja, és egyéni dátumtartományt is beállíthat. A költségadatok exportálásának ajánlott módja a Cost-adatkészletek beolvasása.
 
 ## <a name="other-ways-to-manage-and-reduce-costs"></a>A költségek kezelésének és csökkentésének egyéb módjai
 
@@ -228,9 +228,7 @@ A logikai APS és a kapcsolódó erőforrások költségeinek csökkentéséhez 
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [A felhővel kapcsolatos befektetés optimalizálása az Azure Cost Management használatával](https://docs.microsoft.com/azure/cost-management-billing/costs/cost-mgt-best-practices?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
-* [Költségek kezelése a Cost Analysis használatával](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
-* [Váratlan költségek megelőzése](https://docs.microsoft.com/azure/cost-management-billing/understand/analyze-unexpected-charges?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
-* Ismerkedjen meg a [Cost Management](https://docs.microsoft.com/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) interaktív tanulás tanfolyamával
-
-
+* [A felhővel kapcsolatos befektetés optimalizálása az Azure Cost Management használatával](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+* [Költségek kezelése a Cost Analysis használatával](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+* [Váratlan költségek megelőzése](../cost-management-billing/understand/analyze-unexpected-charges.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+* Ismerkedjen meg a [Cost Management](/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) interaktív tanulás tanfolyamával

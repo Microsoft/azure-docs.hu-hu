@@ -3,12 +3,12 @@ title: Biztonsági mentési adatok titkosítása ügyfelek által felügyelt kul
 description: Megtudhatja, hogyan titkosíthatja a biztonsági mentési adatait az ügyfél által felügyelt kulcsokkal (CMK) a Azure Backup segítségével.
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 230669e0a3543a0709dda3f7fee35a0cae300d5a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 474f4238276f460abde3d600422e309171875a0c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369458"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716737"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Biztonsági mentési adatok titkosítása ügyfelek által felügyelt kulcsok használatával
 
@@ -239,7 +239,7 @@ InfrastructureEncryptionState : Disabled
 >
 > - A Key vaultban engedélyezve van a Soft-delete és a Purge Protection
 >
-> - A Recovery Services-tároló rendelkezik a Key Vault eléréséhez szükséges engedélyekkel.
+> - A Recovery Services-tároló rendelkezik a kulcstartó eléréséhez szükséges engedélyekkel.
 
 ## <a name="backing-up-to-a-vault-encrypted-with-customer-managed-keys"></a>Az ügyfél által felügyelt kulcsokkal titkosított tárolóba való biztonsági mentés
 

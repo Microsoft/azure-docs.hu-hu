@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
-ms.openlocfilehash: 0af868f62f9bc62ee6b4b2a10d16f8eed632b6d3
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 7551ef88c2251b64cf6f6db1de4fed22db2c69e2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679837"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693645"
 ---
 # <a name="create-a-semantic-query-in-cognitive-search"></a>Szemantikai lekérdezés létrehozása Cognitive Search
 
@@ -82,7 +82,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 ### <a name="formulate-the-request"></a>A kérelem összeállítása
 
-1. Állítsa "queryType" értékre "szemantika" és "queryLanguage" értékre az "en-us" kifejezésre. Mindkét paraméter megadása kötelező.
+1. Állítsa **`"queryType"`** a "szemantika" és **`"queryLanguage"`** az "en-us" értékre. Mindkét paraméter megadása kötelező.
 
    A queryLanguage konzisztensnek kell lennie az index séma mezőihez rendelt [nyelvi elemzők](index-add-language-analyzers.md) esetében. Ha a queryLanguage "en-us", akkor minden nyelvi elemzőnek angol változatnak ("en. Microsoft" vagy "en. Lucene") is szerepelnie kell. A nyelvtől független elemzők, például a kulcsszavak vagy az egyszerűek nem ütköznek a queryLanguage értékekkel.
 
@@ -90,7 +90,9 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
    Míg a keresési index tartalma több nyelvből is állhat, a lekérdezés bemenete valószínűleg egy. A keresőmotor nem ellenőrzi a queryLanguage, a Language Analyzer és a tartalom összetételének nyelvét, ezért ügyeljen arra, hogy a helytelen eredmények kiépítésének elkerülése érdekében a hatókör-lekérdezések megfelelően legyenek kitéve.
 
-1. Nem kötelező, de ajánlott, állítsa be a "searchFields" kifejezést.
+<a name="searchfields"></a>
+
+1. Set **`"searchFields"`** (nem kötelező, de ajánlott).
 
    Szemantikai lekérdezésekben a "searchFields" mezők sorrendje a mező prioritását vagy relatív fontosságát tükrözi a szemantikai rangsorban. Csak a legfelső szintű karakterlánc-mezők (önálló vagy gyűjtemény) lesznek használatban. Mivel a searchFields más viselkedésekkel rendelkezik az egyszerű és a teljes Lucene-lekérdezésekben (ha nincs implicit prioritási sorrend), a nem sztring mezők és almezők nem eredményeznek hibát, de a szemantikai rangsorolásban nem lesznek használva.
 
@@ -104,9 +106,9 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
    + Ha nincsenek megadva mezők, akkor az összes kereshető mező a dokumentumok szemantikai rangsorolását veszi figyelembe. Ez azonban nem ajánlott, mivel előfordulhat, hogy a keresési indexből nem lehet a legoptimálisabb eredményeket kiszolgálni.
 
-1. Távolítsa el a "orderBy" záradékokat, ha meglévő kérelemben vannak. A szemantikai pontszám az eredmények rendezésére szolgál, és ha explicit rendezési logikát tartalmaz, a rendszer HTTP 400-hibát ad vissza.
+1. Távolítsa el **`"orderBy"`** a záradékokat, ha meglévő kérelemben vannak. A szemantikai pontszám az eredmények rendezésére szolgál, és ha explicit rendezési logikát tartalmaz, a rendszer HTTP 400-hibát ad vissza.
 
-1. Opcionálisan "kinyerő" értékre állíthatja a "válaszok" értéket, és megadhatja a válaszok számát, ha egynél többre van szüksége.
+1. Opcionálisan adja hozzá a **`"answers"`** "kinyerés" értéket, és adja meg a válaszok számát, ha egynél többre van szüksége.
 
 1. Igény szerint testre szabhatja a feliratokra alkalmazott kiemelés stílusát. A feliratok a válasz összegzése a dokumentumban lévő legfontosabb részeknél. A mező alapértelmezett értéke: `<em>`. Ha meg szeretné adni a formázás típusát (például sárga háttér), megadhatja a highlightPreTag és a highlightPostTag.
 

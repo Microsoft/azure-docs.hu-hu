@@ -8,14 +8,14 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: jushiman
-ms.openlocfilehash: bdd5a379afb9603c8966320d85c778632948cfd0
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 710e6902be6ebe28caaf40fb446e4ee7cd2bf4dc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662209"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687566"
 ---
-# <a name="hotpatch-for-windows-server-azure-edition-preview"></a>HotPatching melletti telepítéséről for Windows Server Azure Edition (előzetes verzió)
+# <a name="hotpatch-for-new-virtual-machines-preview"></a>HotPatching melletti telepítéséről az új virtuális gépekhez (előzetes verzió)
 
 A javítás új módszer a frissítések telepítéséhez olyan új Windows Server Azure Edition rendszerű virtuális gépeken (VM), amelyeken a telepítés után nem szükséges újraindítás. Ez a cikk a Windows Server Azure Edition rendszerű virtuális gépek HotPatching melletti telepítéséről kapcsolatos információkat ismerteti, amelyek a következő előnyöket nyújtják:
 * Alacsonyabb munkaterhelés-hatás kevesebb újraindítással
@@ -26,7 +26,7 @@ A javítás új módszer a frissítések telepítéséhez olyan új Windows Serv
 
 A HotPatching melletti telepítéséről úgy működik, hogy először létrehoz egy alapkonfigurációt Windows Update legújabb összesítő frissítéssel. A Hotpatches rendszeres időközönként (például a hónap második keddjén) jelennek meg, amelyek az adott alaptervre épülnek. A Hotpatches olyan frissítéseket fog tartalmazni, amelyek nem igényelnek újraindítást. Időnként (három havonta kezdődően) az alapkonfiguráció egy új, legújabb összesítő frissítéssel frissül.
 
-    :::image type="content" source="media\automanage-hotpatch\hotpatch-sample-schedule.png" alt-text="Hotpatch Sample Schedule.":::
+:::image type="content" source="media\automanage-hotpatch\hotpatch-sample-schedule.png" alt-text="HotPatching melletti telepítéséről minta-ütemterv.":::
 
 Kétféle alapkonfiguráció létezik: **tervezett** alapkonfigurációk és nem **tervezett alaptervek**.
 *  A **tervezett** alapkonfigurációk egy normál ütemben jelennek meg, a HotPatching melletti telepítéséről-kiadásokkal együtt.  A tervezett alapkonfigurációk közé tartozik az adott hónaphoz hasonló, _legújabb összesítő frissítéssel_ rendelkező összes frissítés, és újraindítás szükséges.
@@ -154,7 +154,7 @@ A virtuális gép javítási állapotának megtekintéséhez navigáljon a **ven
 Ezen a képernyőn a virtuális gép HotPatching melletti telepítéséről állapota látható. Azt is megtekintheti, hogy van-e elérhető javítás a virtuális géphez, amely még nincs telepítve. A fenti "javítás telepítése" című szakaszban leírtak szerint a rendszer az összes biztonsági és kritikus frissítést automatikusan telepíti a virtuális gépre a [virtuális gép vendégének automatikus javításával](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching) , és nincs szükség további műveletekre. A más frissítési besorolású javítások nem települnek automatikusan. Ehelyett az elérhető javítások listájában láthatók a "frissítés megfelelősége" lapon. A virtuális gépen található frissítési központi telepítések előzményeit a "frissítési előzmények" segítségével is megtekintheti. Az elmúlt 30 napban frissültek az előzmények, a javítások telepítésének részleteivel együtt.
 
 
-    :::image type="content" source="media\automanage-hotpatch\hotpatch-management-ui.png" alt-text="Hotpatch Management.":::
+:::image type="content" source="media\automanage-hotpatch\hotpatch-management-ui.png" alt-text="HotPatching melletti telepítéséről-kezelés.":::
 
 A virtuális gépek automatikus javításával a virtuális gép rendszeres időközönként és automatikusan kiértékelésre kerül az elérhető frissítésekhez. Ezek az időszakos értékelések biztosítják a rendelkezésre álló javítások észlelését. Az értékelés eredményeit a fenti frissítések képernyőn tekintheti meg, beleértve a legutóbbi értékelés időpontját is. Azt is megteheti, hogy az igény szerinti javítás értékelését bármikor elindítja a virtuális gépen a "felmérés most" lehetőség használatával, és az értékelés befejezése után áttekinti az eredményeket.
 
@@ -197,7 +197,7 @@ Fontos szempont, hogy a Windows Server Azure Edition rendszerű virtuális gépe
 
 ### <a name="are-reboots-still-needed-for-a-vm-enrolled-in-hotpatch"></a>A HotPatching melletti telepítéséről-ben regisztrált virtuális gépek esetében is szükség van újraindításra?
 
-* Az újraindítások továbbra is szükségesek a HotPatching melletti telepítéséről programban nem szereplő frissítések telepítéséhez, és az alapkonfiguráció (Windows Update legújabb összesítő frissítés) után rendszeres időközönként szükségesek. Az újraindítás után a virtuális gép szinkronizálva marad a kumulatív frissítésben található összes javítással. Az alapkonfigurációk (amelyek újraindítást igényelnek) a három hónapos ütemben kezdődnek, és az idő 6 + hónapra növekednek.
+* Az újraindítások továbbra is szükségesek a HotPatching melletti telepítéséről programban nem szereplő frissítések telepítéséhez, és az alapkonfiguráció (Windows Update legújabb összesítő frissítés) után rendszeres időközönként szükségesek. Az újraindítás után a virtuális gép szinkronizálva marad a kumulatív frissítésben található összes javítással. Az alapkonfigurációk (amelyek újraindítást igényelnek) a három hónapos ütemben kezdődnek, és idővel növekednek.
 
 ### <a name="are-my-applications-affected-when-a-hotpatch-update-is-installed"></a>Vannak érintett alkalmazásaim egy HotPatching melletti telepítéséről-frissítés telepítésekor?
 

@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 10/22/2020
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: d134532e7f285f391b6791a9fc73d5e3251ddac8
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 1a7e1cc2303438a904b95a378a14bd02ac88c179
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369409"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736633"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Mi az Azure Cognitive Services?
 
@@ -39,18 +39,18 @@ A cikk következő fejezetei az öt pillér részét képező szolgáltatások l
 
 |Szolgáltatásnév|A szolgáltatás leírása|
 |:-----------|:------------------|
-|[Computer Vision](./computer-vision/index.yml "Számítógépes látástechnológia")|A Computer Vision szolgáltatás a képek feldolgozásához és a visszaadott adatokhoz való hozzáférést biztosít a speciális kognitív algoritmusokhoz.|
+|[Computer Vision](./computer-vision/index.yml "Computer Vision")|A Computer Vision szolgáltatás a képek feldolgozásához és a visszaadott adatokhoz való hozzáférést biztosít a speciális kognitív algoritmusokhoz.|
 |[Egyéni vizuális szolgáltatás](./custom-vision-service/overview.md "Egyéni vizuális szolgáltatás")|A Custom Vision Service segítségével egyéni rendszerkép-osztályozók hozhatók létre.|
 |[Face](./face/index.yml "Arcfelismerés")| A Face szolgáltatás hozzáférést biztosít a speciális arc-algoritmusokhoz, lehetővé téve a Face attribútumok észlelését és felismerését.|
 |[Form Recognizer](./form-recognizer/index.yml "Form Recognizer")|Az űrlap-felismerő azonosítja és kigyűjti a kulcs-érték párokat és a táblák adatait az űrlap dokumentumaiból. Ezután a a strukturált adatokat is megjeleníti, beleértve az eredeti fájlban lévő kapcsolatokat is.|
-|[Kézírás-felismerő](./ink-recognizer/index.yml "Ink Recognizer") (kivonás)|A kézírás-felismerő lehetővé teszi a digitális tollvonási adat, az alakzatok és a kézírásos tartalom felismerését és elemzését, valamint a dokumentum-struktúra kimenetét az összes felismert entitással.|
+|[Kézírás-felismerő](/previous-versions/azure/cognitive-services/Ink-Recognizer/ "Ink Recognizer") (kivonás)|A kézírás-felismerő lehetővé teszi a digitális tollvonási adat, az alakzatok és a kézírásos tartalom felismerését és elemzését, valamint a dokumentum-struktúra kimenetét az összes felismert entitással.|
 |[Video Indexer](../media-services/video-indexer/video-indexer-overview.md "Video Indexer")|A Video Indexer lehetővé teszi a videóból származó adatok kinyerését.|
 
 ## <a name="speech-apis"></a>Beszédfelismerési API-k
 
 |Szolgáltatásnév|A szolgáltatás leírása|
 |:-----------|:------------------|
-|[Speech szolgáltatás](./speech-service/index.yml "Speech szolgáltatás")|A beszédfelismerési szolgáltatás lehetővé teszi a beszédfelismerést támogató funkciók használatát az alkalmazásokhoz. A Speech Service számos funkciót tartalmaz, például a beszédfelismerést, a szöveg és a beszéd fordítását, valamint sok mást.|
+|[Beszédfelismerési szolgáltatás](./speech-service/index.yml "Speech szolgáltatás")|A beszédfelismerési szolgáltatás lehetővé teszi a beszédfelismerést támogató funkciók használatát az alkalmazásokhoz. A Speech Service számos funkciót tartalmaz, például a beszédfelismerést, a szöveg és a beszéd fordítását, valamint sok mást.|
 <!--
 |[Speaker Recognition API](./speech-service/speaker-recognition-overview.md "Speaker Recognition API") (Preview)|The Speaker Recognition API provides algorithms for speaker identification and verification.|
 |[Bing Speech](./speech-service/how-to-migrate-from-bing-speech.md "Bing Speech") (Retiring)|The Bing Speech API provides you with an easy way to create speech-enabled features in your applications.|
@@ -63,7 +63,7 @@ A cikk következő fejezetei az öt pillér részét képező szolgáltatások l
 |[Language Understanding LUIS](./luis/index.yml "Language Understanding")|A Language Understanding szolgáltatás (LUIS) lehetővé teszi az alkalmazás számára, hogy megértse egy személy saját szavakkal megfogalmazott utasításait.|
 |[QnA Maker](./qnamaker/index.yml "QnA Maker")|QnA Maker lehetővé teszi, hogy a félig strukturált tartalomból hozzon létre egy kérdés-válasz szolgáltatást.|
 |[Text Analytics](./text-analytics/index.yml "Szövegelemzés")| A Text Analytics természetes nyelvi feldolgozást tesz lehetővé a nyers szövegekben az érzelmek elemzése, a fő kifejezés kinyerése és a nyelvfelismerés terén.|
-|[Fordító](./translator/index.yml "Fordító")|A Translator gépi alapú szöveges fordítást biztosít közel valós időben.|
+|[Translator](./translator/index.yml "Fordító")|A Translator gépi alapú szöveges fordítást biztosít közel valós időben.|
 | [Modern olvasó](./immersive-reader/index.yml "Modern olvasó") | Az olvasói és a szövegértési képességek az alkalmazásokban is felhasználhatók. |
 
 ## <a name="decision-apis"></a>Döntési API-k
@@ -151,7 +151,7 @@ Az adatvédelem és az adatkezelés megismeréséhez nyissa meg a [megbízhatós
 
 A Cognitive Services számos támogatási lehetőséget kínál, amelyek segítenek az intelligens alkalmazások létrehozásában. A Cognitive Services a fejlesztők erős közösségét is felhasználhatják, akik segíthetnek az adott kérdések megválaszolásában. Az elérhető lehetőségek teljes listáját itt tekintheti meg: [Cognitive Services támogatási és Súgó beállításai](cognitive-services-support-options.md "Cognitive Services támogatás és Súgó lehetőségek").
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Cognitive Services-fiók létrehozása](cognitive-services-apis-create-account.md "Cognitive Services-fiók létrehozása")
 * [A Cognitive Services docs újdonságai](whats-new-docs.md "A Cognitive Services docs újdonságai")

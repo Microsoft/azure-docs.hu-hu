@@ -2,16 +2,16 @@
 title: Azure Key Vault használata a sablonokban
 description: Megtudhatja, hogyan használhatók a Azure Key Vault a biztonságos paraméterek értékének átadására Azure Resource Manager sablon (ARM-sablon) üzembe helyezése során.
 author: mumian
-ms.date: 04/23/2020
+ms.date: 03/01/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 44a5131a7ad90feeeeff56e95b64e65f3f18855c
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 388996dc0054192f6d9f3c87e11ca1d15e8a85e1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674157"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703885"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Oktatóanyag: Az Azure Key Vault integrálása ARM-sablonalapú telepítésbe
 
@@ -93,7 +93,14 @@ Az azonosító másolásakor és beillesztésekor előfordulhat, hogy több sorb
 A központi telepítés ellenőrzéséhez futtassa a következő PowerShell-parancsot ugyanazon a rendszerhéj-ablaktáblán a titkos kód egyszerű szövegként való lekéréséhez. A parancs csak ugyanabban a rendszerhéj-munkamenetben működik, mert a változót használja `$keyVaultName` , amely az előző PowerShell-parancsfájlban van meghatározva.
 
 ```azurepowershell
-(Get-AzKeyVaultSecret -vaultName $keyVaultName  -name "vmAdminPassword").SecretValueText
+$secret = Get-AzKeyVaultSecret -VaultName $keyVaultName -Name "vmAdminPassword"
+$ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
+try {
+   $secretValueText = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($ssPtr)
+} finally {
+   [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ssPtr)
+}
+Write-Output $secretValueText
 ```
 
 Most előkészített egy kulcstartót és egy titkos kulcsot. A következő részben bemutatjuk, hogyan szabhatja testre a meglévő sablonokat a titkos kód beolvasására a telepítés során.
@@ -141,7 +148,7 @@ A statikus azonosító módszer használatával semmilyen módosítást nem kell
     "adminPassword": {
         "reference": {
             "keyVault": {
-            "id": "/subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>"
+                "id": "/subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>"
             },
             "secretName": "vmAdminPassword"
         }

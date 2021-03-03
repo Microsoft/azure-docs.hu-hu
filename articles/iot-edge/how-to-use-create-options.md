@@ -9,12 +9,12 @@ ms.date: 04/01/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c07e161042a497a232cbd5e3f11128893a095381
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 055b89858fde901ab014e409fbe30c3438efce12
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80550343"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732989"
 ---
 # <a name="how-to-configure-container-create-options-for-iot-edge-modules"></a>Tároló-létrehozási beállítások konfigurálása IoT Edge modulokhoz
 
@@ -60,9 +60,9 @@ Ha a Visual studióhoz vagy a Visual Studio Code-hoz készült Azure IoT Tools-b
 
 A létrehozási beállítások írásához egy tippet kell használni a `docker inspect` parancs használatával. A fejlesztési folyamat részeként futtassa a modult helyileg a használatával `docker run <container name>` . Ha a modul a kívánt módon működik, futtassa a parancsot `docker inspect <container name>` . Ez a parancs JSON formátumban jeleníti meg a modul részleteit. Keresse meg a konfigurált paramétereket, és másolja a JSON-t. Például:
 
-[![A Docker vizsgálatának eredményei edgeHub ](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png)](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png#lightbox)
+[![A Docker vizsgálatának eredményei edgeHub](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png)](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png#lightbox)
 
-## <a name="common-scenarios"></a>Gyakori helyzetek
+## <a name="common-scenarios"></a>Gyakori forgatókönyvek
 
 A tároló-létrehozási lehetőségek számos forgatókönyvet tesznek lehetővé, de a leggyakrabban a IoT Edge megoldások kiépítésekor következik be:
 
@@ -127,9 +127,9 @@ A végső üzembe helyezési jegyzék sztringesített követően ezek az érték
 "createOptions":"{\"HostConfig\":{\"Memory\":268435456,\"MemorySwap\":536870912,\"CpuPeriod\":25000}}"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha további példákat szeretne a műveletek létrehozásához, tekintse meg a következő IoT Edge mintákat:
 
-* [Custom Vision és Azure IoT Edge egy málna PI 3](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi)
+* [Custom Vision és Azure IoT Edge egy málna PI 3](https://github.com/Azure-Samples/custom-vision-service-iot-edge-raspberry-pi)
 * [BLOB Storage-minta Azure IoT Edge](https://github.com/Azure-Samples/azure-iotedge-blobstorage-sample)

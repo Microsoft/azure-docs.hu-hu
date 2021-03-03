@@ -3,18 +3,18 @@ title: Biztonsági mentés automatikus engedélyezése a virtuális gép Azure P
 description: A cikk azt ismerteti, hogyan használható a Azure Policy az adott hatókörben létrehozott összes virtuális gép biztonsági mentésének automatikus engedélyezéséhez
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 7e8195d22f54f29b36549b966322623ed0987d72
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: dfa4364eeaa9f5b60af3f5d6a19aaeb188d4f65e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896867"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707302"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Biztonsági mentés automatikus engedélyezése a virtuális gép Azure Policyval végzett létrehozásakor
 
 A szervezet biztonsági mentési vagy megfelelőségi rendszergazdájának egyik kulcsfontosságú feladata, hogy biztosítsa, hogy az üzleti szempontból kritikus fontosságú gépek biztonsági mentése a megfelelő megőrzéssel történjen.
 
-Napjainkban a Azure Backup számos beépített szabályzatot biztosít ( [Azure Policy](https://docs.microsoft.com/azure/governance/policy/overview)használatával), így automatikusan biztosíthatja, hogy az Azure-beli virtuális gépek biztonsági mentésre legyenek konfigurálva. A biztonsági mentési csoportok és erőforrások rendszerezésének módjától függően az alábbi szabályzatok bármelyikét használhatja:
+Napjainkban a Azure Backup számos beépített szabályzatot biztosít ( [Azure Policy](../governance/policy/overview.md)használatával), így automatikusan biztosíthatja, hogy az Azure-beli virtuális gépek biztonsági mentésre legyenek konfigurálva. A biztonsági mentési csoportok és erőforrások rendszerezésének módjától függően az alábbi szabályzatok bármelyikét használhatja:
 
 ## <a name="policy-1---configure-backup-on-vms-without-a-given-tag-to-an-existing-recovery-services-vault-in-the-same-location"></a>1. szabályzat – a biztonsági mentés konfigurálása egy adott címkével nem rendelkező virtuális gépeken ugyanazon a helyen, egy meglévő Recovery Services-tárolóban
 
@@ -29,7 +29,7 @@ Ha az alkalmazásokat dedikált erőforráscsoportok szerint rendezi, és ugyana
 ## <a name="policy-4---preview-configure-backup-on-vms-with-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy"></a>4. szabályzat – [előzetes verzió] az adott címkével rendelkező virtuális gépek biztonsági mentésének konfigurálása egy új Recovery Services-tárolóra alapértelmezett házirenddel
 Ez a szabályzat ugyanúgy működik, mint a fenti 3. szabályzat, az egyetlen különbség, hogy a szabályzattal olyan **virtuális gépeket is** felhasználhat, amelyek egy adott címkét tartalmaznak a szabályzat hatókörében. 
 
-A fentiek mellett a Azure Backup egy [csak naplózási](https://docs.microsoft.com/azure/governance/policy/concepts/effects#audit) házirendet is biztosít, **Azure Backup engedélyezni kell a Virtual Machines**. Ez a házirend azonosítja, hogy mely virtuális gépeken nincs engedélyezve a biztonsági mentés, de nem konfigurálja automatikusan a biztonsági másolatokat ezekhez a virtuális gépekhez. Ez akkor hasznos, ha csak a virtuális gépek általános megfelelőségét szeretné kiértékelni, de nem szeretné azonnal végrehajtani a műveletet.
+A fentiek mellett a Azure Backup egy [csak naplózási](../governance/policy/concepts/effects.md#audit) házirendet is biztosít, **Azure Backup engedélyezni kell a Virtual Machines**. Ez a házirend azonosítja, hogy mely virtuális gépeken nincs engedélyezve a biztonsági mentés, de nem konfigurálja automatikusan a biztonsági másolatokat ezekhez a virtuális gépekhez. Ez akkor hasznos, ha csak a virtuális gépek általános megfelelőségét szeretné kiértékelni, de nem szeretné azonnal végrehajtani a műveletet.
 
 ## <a name="supported-scenarios"></a>Támogatott helyzetek
 

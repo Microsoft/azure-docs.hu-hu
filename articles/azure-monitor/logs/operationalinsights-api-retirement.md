@@ -6,17 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/29/2020
-ms.openlocfilehash: 6564e7263639f0a78df6f2674ce7a4b610fb0fc1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 03e534564b4a32f112c2aaff44a187b10eb2a537
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100617485"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723112"
 ---
 # <a name="operationalinsights-api-version-retirement"></a>OperationalInsights API-verziójának nyugdíjazása
 A Microsoft legalább 12 hónappal korábban értesítést küld egy API kivonásáról, hogy zökkenőmentes legyen az áttérés egy újabb/támogatott verzióra. Megjelent egy új verzió (2020-08-01) a **OperationalInsights** erőforrás-szolgáltató API-khoz, és minden korábbi API-verziót kivonja a 2024. február 29-én.
 
-Javasoljuk, hogy a 2020-08-01-es verzió használatának megkezdéséhez használja az új funkciók előnyeit, például a [dedikált fürtöt](../log-query/logs-dedicated-clusters.md), az [ügyfél által felügyelt kulcsokat](../logs/customer-managed-keys.md), a [privát kapcsolatot](./private-link-security.md) és az [adatexportálást](./logs-data-export.md). Emellett az új funkciók és funkciók és optimalizációk csak az aktuális API-hoz lesznek hozzáadva.
+Javasoljuk, hogy a 2020-08-01-es verzió használatának megkezdéséhez használja az új funkciók előnyeit, például a [dedikált fürtöt](./logs-dedicated-clusters.md), az [ügyfél által felügyelt kulcsokat](../logs/customer-managed-keys.md), a [privát kapcsolatot](./private-link-security.md) és az [adatexportálást](./logs-data-export.md). Emellett az új funkciók és funkciók és optimalizációk csak az aktuális API-hoz lesznek hozzáadva.
 
 A 2024. február 29. után a Azure Monitor már nem fogja támogatni a 2020-08-01-nál korábbi API-verziókat. Ha nem szeretné frissíteni, a korábbi verziókból küldött kérelmeket a Azure Monitor szolgáltatás a 2024. február 29-én továbbra is kiszolgálja.
 

@@ -5,20 +5,20 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 07/22/2020
 ms.subservice: metrics
-ms.openlocfilehash: 8f503623031b7071c5e0a206d078175e16a7e919
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d48dcb4e45bbaf3d516f2a45e14a6be0837b55c0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100617108"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734383"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>A diagnosztikai beállításokon keresztül exportálható Azure Monitor-platformmetrikák
 
-A Azure Monitor alapértelmezés szerint a [platform metrikáit](../essentials/data-platform-metrics.md) biztosítja konfiguráció nélkül. Számos lehetőséget kínál a platform metrikáinak interakcióra, például a portálon való ábrázolásra, a REST API való hozzáférésre, vagy a PowerShell vagy a parancssori felület használatával történő lekérdezésre. Lásd: [mérőszámok – támogatott](../platform/metrics-supported.md) a Azure monitor konszolidált metrikus folyamatával jelenleg elérhető platform-metrikák teljes listájához. A metrikák lekérdezéséhez és eléréséhez használja az [2018-01-01 API-Version](/rest/api/monitor/metricdefinitions). Más mérőszámok a portálon vagy a régi API-k használatával is elérhetők.
+A Azure Monitor alapértelmezés szerint a [platform metrikáit](../essentials/data-platform-metrics.md) biztosítja konfiguráció nélkül. Számos lehetőséget kínál a platform metrikáinak interakcióra, például a portálon való ábrázolásra, a REST API való hozzáférésre, vagy a PowerShell vagy a parancssori felület használatával történő lekérdezésre. Lásd: [mérőszámok – támogatott](./metrics-supported.md) a Azure monitor konszolidált metrikus folyamatával jelenleg elérhető platform-metrikák teljes listájához. A metrikák lekérdezéséhez és eléréséhez használja az [2018-01-01 API-Version](/rest/api/monitor/metricdefinitions). Más mérőszámok a portálon vagy a régi API-k használatával is elérhetők.
 
 ## <a name="metrics-not-exportable-via-diagnostic-settings"></a>A metrikák nem exportálhatók diagnosztikai beállítások használatával
 
-Az ezen a helyen használt tartalom át lett helyezve [Azure monitor mérőszámok támogatott listájára](../platform/metrics-supported.md#exporting-platform-metrics-to-other-locations).
+Az ezen a helyen használt tartalom át lett helyezve [Azure monitor mérőszámok támogatott listájára](./metrics-supported.md#exporting-platform-metrics-to-other-locations).
 
 A mérőszámok diagnosztikai beállításokon keresztüli exportálásának korlátai vannak. Az összes metrika exportálható a REST API használatával. 
 
@@ -548,5 +548,4 @@ A következő lista felsorolja azokat a metrikákat, amelyek viselkedése megvá
 | Microsoft. SQL/kiszolgálók/elasticPools | xtp_storage_percent | In-Memory OLTP-tárolási százalék | 
 | Microsoft. SQL/kiszolgálók | dtu_consumption_percent | DTU-kihasználtság (%) | 
 | Microsoft. SQL/kiszolgálók | dtu_used | Használt DTU | 
-| Microsoft. SQL/managedInstances | avg_cpu_percent | Átlagos CPU-százalék | 
-
+| Microsoft. SQL/managedInstances | avg_cpu_percent | Átlagos CPU-százalék |

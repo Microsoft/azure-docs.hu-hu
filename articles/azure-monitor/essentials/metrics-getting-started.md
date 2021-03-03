@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: d914c9b5f96cf502247d40a913ce8ad4651a4a14
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 68a9dd5cb24dda54e867580cf7c1bc869e692833
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100615098"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734417"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Bevezetés az Azure Metrikaböngésző használatába
 
@@ -29,7 +29,7 @@ Azure Monitor a metrikák Explorer a Microsoft Azure Portal egy olyan összetev�
 
 Metrikus diagram létrehozásához az erőforrás, Erőforráscsoport, előfizetés vagy Azure Monitor nézetben nyissa meg a **metrikák** lapot, és kövesse az alábbi lépéseket:
 
-1. Kattintson a "hatókör kiválasztása" gombra az erőforrás hatókör-választójának megnyitásához. Ezzel kiválaszthatja azokat az erőforrásokat, amelyekhez mérőszámokat kíván megjeleníteni. Ha az erőforrás menüjéből megnyitotta a metrikák Explorert, az erőforrást már fel kell tölteni. Ha szeretné megtudni, hogyan tekintheti meg a mérőszámokat több erőforrás között, [olvassa el ezt a cikket](../platform/metrics-dynamic-scope.md).
+1. Kattintson a "hatókör kiválasztása" gombra az erőforrás hatókör-választójának megnyitásához. Ezzel kiválaszthatja azokat az erőforrásokat, amelyekhez mérőszámokat kíván megjeleníteni. Ha az erőforrás menüjéből megnyitotta a metrikák Explorert, az erőforrást már fel kell tölteni. Ha szeretné megtudni, hogyan tekintheti meg a mérőszámokat több erőforrás között, [olvassa el ezt a cikket](./metrics-dynamic-scope.md).
     > ![Erőforrás kiválasztása](./media/metrics-getting-started/scope-picker.png)
 
 2. Egyes erőforrások esetében ki kell választania egy névteret. A névtér csak a mérőszámok rendszerezését teszi lehetővé, így könnyen megtalálhatja őket. A Storage-fiókok például különálló névtereket biztosítanak a fájlok, táblák, blobok és várólisták metrikáinak tárolásához. Számos erőforrástípus csak egy névteret tartalmaz.
@@ -72,7 +72,7 @@ Testreszabhatja a diagram stílusát, címét és a speciális diagram beállít
 ## <a name="next-steps"></a>Következő lépések
 
 * [További információ a Metrikaböngésző speciális funkcióiról](../essentials/metrics-charts.md)
-* [Több erőforrás megtekintése Metrikaböngésző](../platform/metrics-dynamic-scope.md)
+* [Több erőforrás megtekintése Metrikaböngésző](./metrics-dynamic-scope.md)
 * [A Metrikaböngésző hibaelhárítása](metrics-troubleshoot.md)
-* [Az Azure-szolgáltatásokhoz elérhető metrikák listájának megtekintése](../platform/metrics-supported.md)
+* [Az Azure-szolgáltatásokhoz elérhető metrikák listájának megtekintése](./metrics-supported.md)
 * [A konfigurált diagramok példáinak megtekintése](../essentials/metric-chart-samples.md)

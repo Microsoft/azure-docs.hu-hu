@@ -13,3 +13,14 @@
           href: ./apache-kafka-confluent-cloud/manage.md
         - name: Hibaelhárítás
           href: ./apache-kafka-confluent-cloud/troubleshoot.md
+    - name: Datadog
+      items:
+        - name: Áttekintés
+          displayName: 'Datadog, Monitoring'
+          href: ./datadog/overview.md
+        - name: Létrehozás
+          href: ./datadog/create.md
+        - name: Kezelés
+          href: ./datadog/manage.md
+        - name: Hibaelhárítás
+          href: ./datadog/troubleshoot.md

@@ -1,15 +1,15 @@
 ---
 title: Folyamatos integráció az Azure Pipelinesszal
 description: Ismerje meg, hogyan hozhat létre és helyezhet üzembe Azure Resource Manager sablonokat (ARM-sablonokat) folyamatosan.
-ms.date: 02/16/2021
+ms.date: 03/02/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d367da33d6b9997d77606e9a77a961808d66ff99
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 3ff98c1c033c6da4b6bdf40c3b8ecb3347601741
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560896"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722822"
 ---
 # <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>Oktatóanyag: ARM-sablonok folyamatos integrálása az Azure-folyamatokkal
 
@@ -83,8 +83,8 @@ A _CreateWebApp_ mappa a sablon tárolására szolgáló mappa. A `pwd` parancs 
 
 A sablonok létrehozása helyett letöltheti a sablonokat, és mentheti azokat a _CreateWebApp_ mappába.
 
-* A fő sablon: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/pipeline/azuredeploy.json
-* A csatolt sablon: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/pipeline/linkedStorageAccount.json
+* A fő sablon: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/azuredeploy.json
+* A csatolt sablon: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json
 
 A rendszer a mappa nevét és a fájlneveket is használja, mivel azok a folyamatban vannak. Ha megváltoztatja ezeket a neveket, frissítenie kell a folyamatban használt neveket.
 
@@ -106,7 +106,7 @@ A _azuredeploy.js_ bekerült a helyi tárházba. Ezután töltse fel a sablont a
     Előfordulhat, hogy figyelmeztetést kap a LF-ről. Figyelmen kívül hagyhatja a figyelmeztetést. a **Main a** fő ág.  Általában létre kell hoznia egy ágat az egyes frissítésekhez. Az oktatóanyag leegyszerűsítése érdekében közvetlenül a fő ágat használja.
 
 1. Tallózással keresse meg a GitHub-tárházat egy böngészőben. Az URL-cím: `https://github.com/[YourAccountName]/[YourGitHubRepository]` . A mappában a _CreateWebApp_ mappát és a két fájlt kell megtekinteni.
-1. A sablon megnyitásához válassza _alinkedStorageAccount.json_ lehetőséget.
+1. A sablon megnyitásához válassza _aazuredeploy.json_ lehetőséget.
 1. Kattintson a **RAW** gombra. Az URL-cím kezdete `https://raw.githubusercontent.com` .
 1. Másolja az URL-címet. Ezt az értéket kell megadnia, amikor az oktatóanyag későbbi részében konfigurálja a folyamatot.
 
@@ -174,10 +174,10 @@ Folyamat létrehozása lépéssel a sablon üzembe helyezéséhez:
     * **Művelet**: válassza ki az **erőforráscsoport létrehozása vagy frissítése** műveletet 2 művelet – 1. hozzon létre egy erőforráscsoportot, ha új erőforráscsoport-nevet ad meg; 2. a megadott sablon üzembe helyezése.
     * **Erőforráscsoport**: adjon meg egy új erőforráscsoport-nevet. Például: **AzureRmPipeline-RG**.
     * **Hely**: válassza ki az erőforráscsoport helyét, például az **USA középső** régióját.
-    * **Sablon helye**: válassza a **társított** összetevő elemet, ami azt jelenti, hogy a feladat közvetlenül a csatlakoztatott tárházból keresi a sablonfájlt.
-    * **Sablon**: írja be _a CreateWebApp/azuredeploy.js_ értéket. Ha módosította a mappa nevét és a fájl nevét, módosítania kell ezt az értéket.
-    * **Sablon paraméterei**: hagyja üresen ezt a mezőt. A paraméter értékeit a **felülbírálási sablon paraméterei** között kell megadni.
-    * **Felülbírálja a sablon paramétereit**: ENTER `-projectName [EnterAProjectName] -linkedTemplateUri [EnterTheLinkedTemplateURL]` . Cserélje le a projekt nevét és a csatolt sablon URL-címét. A csatolt sablon URL-címe a [GitHub-Tárház létrehozása](#create-a-github-repository)végén írt leírás. Ezzel kezdődik `https://raw.githubusercontent.com` .
+    * **Sablon helye**: válassza ki **a fájl URL-címét**, ami azt jelenti, hogy a feladat az URL-cím használatával keresi a sablonfájlt. Mivel a _relativePath_ a fősablonban van használatban, és a _relativePath_ csak URI-alapú telepítések esetén támogatott, itt az URL-címet kell használnia.
+    * **Sablon hivatkozása**: adja meg a [GitHub-tárház előkészítése](#prepare-a-github-repository) szakasz végén található URL-címet. Ezzel kezdődik `https://raw.githubusercontent.com` .
+    * **Sablon paraméterei hivatkozás**: hagyja üresen ezt a mezőt. A paraméter értékeit a **felülbírálási sablon paraméterei** között kell megadni.
+    * **Felülbírálja a sablon paramétereit**: ENTER `-projectName [EnterAProjectName]` .
     * **Üzembe helyezési mód**: válassza a **növekményes** lehetőséget.
     * **Központi telepítés neve**: adja meg a **DeployPipelineTemplate**. A **központi telepítés nevének** megtekintéséhez válassza a **speciális** lehetőséget.
 

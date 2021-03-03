@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: ff4882f2146a8b978047df2fcf6c52734534979f
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: d4ab5361d245ad1ee10d43184cc0a2d65fed2054
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833983"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730031"
 ---
 # <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>Migrálás a Csatlakozáskezelő szolgáltatásból (klasszikus)
 
@@ -32,7 +32,7 @@ Az áttelepítés a következő eredményeket segíti elő:
 
 * Az ügynökök és a tűzfalbeállítások ugyanúgy működnek, mint a. Nincs szükség módosításra. 
 * A meglévő kapcsolódási figyelők le vannak képezve a > a test Group > tesztelési formátumára. A **Szerkesztés** lehetőség kiválasztásával megtekintheti és módosíthatja az új kapcsolat figyelője tulajdonságait, letölthet egy sablont a kapcsolati figyelő módosításához, és beküldheti azt Azure Resource Manager használatával. 
-* Az Network Watcher bővítménnyel rendelkező Azure-beli virtuális gépek adatokat küldenek a munkaterületnek és a mérőszámoknak. A Csatlakozáskezelő az új metrikák (ChecksFailedPercent és RoundTripTimeMs) révén elérhetővé teszi az adatokat a régi metrikák (ProbesFailedPercent és AverageRoundtripMs) helyett. 
+* Az Network Watcher bővítménnyel rendelkező Azure-beli virtuális gépek adatokat küldenek a munkaterületnek és a mérőszámoknak. A Csatlakozáskezelő az új metrikák (ChecksFailedPercent és RoundTripTimeMs) révén elérhetővé teszi az adatokat a régi metrikák (ProbesFailedPercent és AverageRoundtripMs) helyett. A régi mérőszámok új mérőszámokra lesznek áttelepítve, mint a ProbesFailedPercent-> ChecksFailedPercent és a AverageRoundtripMs-> RoundTripTimeMs.
 * Adatfigyelés:
    * **Riasztások**: a rendszer automatikusan áttelepíti az új metrikákat.
    * **Irányítópultok és integrációk**: a beállított mérőszámok manuális szerkesztését igényli. 
@@ -49,7 +49,7 @@ Ha egyéni munkaterületet használ, győződjön meg arról, hogy a Network Wat
     
 1. Válassza ki az előfizetését és az áttelepíteni kívánt kapcsolódási figyelőket, majd válassza a **kijelölt áttelepít** lehetőséget. 
 
-Mindössze néhány kattintással áttelepítette a meglévő kapcsolódási figyelőket a Csatlakozáskezelő szolgáltatásba. 
+Mindössze néhány kattintással áttelepítette a meglévő kapcsolódási figyelőket a Csatlakozáskezelő szolgáltatásba. A CM (klasszikus) és a CM közötti Migrálás után nem fogja tudni megtekinteni a figyelőt a CM (klasszikus) alatt.
 
 Mostantól testreszabhatja a Csatlakozáskezelő tulajdonságait, módosíthatja az alapértelmezett munkaterületet, letöltheti a sablonokat, és ellenőrizheti az áttelepítés állapotát. 
 

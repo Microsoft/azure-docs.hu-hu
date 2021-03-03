@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
-ms.openlocfilehash: ceed62d466627d6a23554229bd6f4b96c674c7e9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7c84d8129e1d0d88601495dec41883077784bb71
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993669"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728195"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Teljesítmény javítása fájltömörítéssel az Azure CDN-ben
 A fájltömörítés egy egyszerű és hatékony módszer a fájlátvitel sebességének javítására, valamint a lapozófájl teljesítményének növelésére azáltal, hogy a fájl méretét a kiszolgálóról való elküldésük előtt csökkenti. A fájltömörítés csökkentheti a sávszélesség-költségeket, és rugalmasabb felhasználói élményt nyújt a felhasználóknak.
@@ -153,10 +153,10 @@ Az alábbi táblázatok az egyes forgatókönyvek Azure CDN tömörítési visel
 ### <a name="compression-is-enabled-and-file-is-eligible-for-compression"></a>A tömörítés engedélyezve van, és a fájl tömörítésre alkalmas
 | Ügyfél által kért formátum (Accept-Encoding fejlécen keresztül) | Gyorsítótárazott fájlformátum | CDN-válasz az ügyfélre | Jegyzetek |
 | --- | --- | --- | --- |
-| Tömörített |Tömörített |Tömörített |A CDN átkódolja a támogatott formátumok között. |
+| Tömörített |Tömörített |Tömörített |A CDN átkódolja a támogatott formátumok között. <br/>A **Microsoft Azure CDN** nem támogatja a formátumok közötti átkódolást, hanem a forrástól származó adatok beolvasását, és a formátumhoz külön tömöríti és gyorsítótárazza azokat. |
 | Tömörített |Tömörítetlen |Tömörített |A CDN tömörítést végez. |
 | Tömörített |Nincs gyorsítótárazva |Tömörített |A CDN tömörítést végez, ha a forrás tömörítetlen fájlt ad vissza. <br/>A **Verizon Azure CDN** a kibontott fájlt továbbítja az első kérelemre, majd a további kérésekhez tömöríti és gyorsítótárazza a fájlt. <br/>A `Cache-Control: no-cache` fejlécet tartalmazó fájlok tömörítése nem történik meg. |
-| Tömörítetlen |Tömörített |Tömörítetlen |A CDN kibontást végez. |
+| Tömörítetlen |Tömörített |Tömörítetlen |A CDN kibontást végez. <br/>**A Microsoft Azure CDN** nem támogatja a kibontást, hanem a forrás-és a gyorsítótár-adatoknak a tömörítetlen ügyfelek számára külön történő lekérdezését. |
 | Tömörítetlen |Tömörítetlen |Tömörítetlen | |
 | Tömörítetlen |Nincs gyorsítótárazva |Tömörítetlen | |
 

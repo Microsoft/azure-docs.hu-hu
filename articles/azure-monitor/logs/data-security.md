@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: e8ad1cda8f80b1dbbdd56fb47bbf6c22aff82729
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 128a82fdc9b5a37258b5ca245a63bf52c050db26
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100615028"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713609"
 ---
 # <a name="log-analytics-data-security"></a>Adatbiztonság Log Analytics
 Ennek a dokumentumnak az a célja, hogy Log Analyticsra vonatkozó információt szolgáltasson, amely a Azure Monitor egyik funkciója, hogy kiegészítse a [Azure biztonsági és adatkezelési központ](https://www.microsoft.com/en-us/trust-center?rtc=1)információit.  
@@ -183,12 +183,12 @@ Log Analytics munkaterület eléréséhez jelentkezzen be a Azure Portal a korá
 ## <a name="additional-security-features"></a>További biztonsági funkciók
 Ezeket a további biztonsági funkciókat a Azure Monitor/Log Analytics-környezet további biztonságossá tételéhez használhatja. Ezeknek a funkcióknak több rendszergazdai felügyeletre van szükségük. 
 - [Ügyfél által felügyelt (biztonsági) kulcsok](../logs/customer-managed-keys.md) – az ügyfél által felügyelt kulcsokkal titkosíthatja az log Analytics-munkaterületek számára továbbított adatfájlokat. Azure Key Vault használatát igényli. 
-- [Magánjellegű/ügyfél által felügyelt tár](../platform/private-storage.md) – felügyelje a személyes titkosított Storage-fiókját, és mondja el, log Analytics, hogy használja a figyelési adatai tárolásához 
-- [Privát kapcsolat hálózatkezelése](../platform/private-link-security.md) – az Azure Private link lehetővé teszi, hogy privát végpontok használatával biztonságosan összekapcsolja az Azure Pásti-szolgáltatásokat (beleértve a Azure monitor) a virtuális hálózattal. 
+- [Magánjellegű/ügyfél által felügyelt tár](./private-storage.md) – felügyelje a személyes titkosított Storage-fiókját, és mondja el, log Analytics, hogy használja a figyelési adatai tárolásához 
+- [Privát kapcsolat hálózatkezelése](./private-link-security.md) – az Azure Private link lehetővé teszi, hogy privát végpontok használatával biztonságosan összekapcsolja az Azure Pásti-szolgáltatásokat (beleértve a Azure monitor) a virtuális hálózattal. 
 - Az [Azure Customer kulcstároló](../../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-preview) -Ügyfélszéf for Microsoft Azure egy felületet biztosít az ügyfelek számára az ügyfél-hozzáférési kérelmek áttekintéséhez és jóváhagyásához vagy elutasításához. Olyan esetekben használatos, amikor egy Microsoft-mérnöknek egy támogatási kérelem kezelése során hozzá kell férnie az ügyfél adataihoz.
 
 
 ## <a name="next-steps"></a>Következő lépések
-* Ismerje meg, hogyan gyűjthet adatokat az Azure-beli virtuális gépek Log Analyticsával az [Azure VM](../learn/quick-collect-azurevm.md)gyors üzembe helyezését követően.  
+* Ismerje meg, hogyan gyűjthet adatokat az Azure-beli virtuális gépek Log Analyticsával az [Azure VM](../vm/quick-collect-azurevm.md)gyors üzembe helyezését követően.  
 
-*  Ha a környezetben található fizikai vagy virtuális Windows-vagy Linux-számítógépekről szeretne adatokat gyűjteni, tekintse meg a Linux rendszerű [számítógépek](../vm/quick-collect-linux-computer.md) és a [Windows rendszerű számítógépek](../learn/quick-collect-windows-computer.md) gyors útmutatója című témakört.
+*  Ha a környezetben található fizikai vagy virtuális Windows-vagy Linux-számítógépekről szeretne adatokat gyűjteni, tekintse meg a Linux rendszerű [számítógépek](../vm/quick-collect-linux-computer.md) és a [Windows rendszerű számítógépek](../vm/quick-collect-windows-computer.md) gyors útmutatója című témakört.

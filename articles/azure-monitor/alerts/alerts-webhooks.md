@@ -4,19 +4,19 @@ description: Ismerje meg, hogyan irányíthatja át az Azure metrikus riasztáso
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 04/03/2017
+ms.date: 02/14/2021
 ms.subservice: alerts
-ms.openlocfilehash: 93b8a9935e1a26df5aa76ca45c890036589a48ff
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1ead28618582ff670aca048bb92803d61c6ca938
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100618035"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723520"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Webhook meghívása klasszikus metrikai riasztással Azure Monitor
 
 > [!WARNING]
-> Ez a cikk a régebbi klasszikus metrikai riasztások használatát ismerteti. Azure Monitor mostantól támogatja [az újabb, közel valós idejű metrikai riasztásokat és új riasztási élményt](../platform/alerts-overview.md). A klasszikus riasztások [kimaradnak a nyilvános](../platform/monitoring-classic-retirement.md) Felhőbeli felhasználók számára, bár az új riasztásokat még nem támogató erőforrások esetében is korlátozott mértékben használják.
+> Ez a cikk a régebbi klasszikus metrikai riasztások használatát ismerteti. Azure Monitor mostantól támogatja [az újabb, közel valós idejű metrikai riasztásokat és új riasztási élményt](./alerts-overview.md). A klasszikus riasztások [kimaradnak](./monitoring-classic-retirement.md) a nyilvános Felhőbeli felhasználók számára, bár a használat továbbra is korlátozott a **2021**-ig. A Azure Government Cloud és az Azure China 21Vianet klasszikus riasztásai a **2024. február 29**-én törlődnek.
 >
 
 A webhookok használatával átirányíthat egy Azure-riasztási értesítést más rendszerekre a feldolgozás utáni vagy egyéni műveletekhez. A riasztások segítségével egy webhook használatával átirányíthatja azt a szolgáltatásba, amely SMS-üzeneteket küld, a hibák naplózása, a csapat csevegési vagy üzenetküldési szolgáltatásokon keresztüli értesítése, illetve egyéb műveletek esetén. 
@@ -30,7 +30,7 @@ A webhook URI-azonosítójának hozzáadásához vagy frissítéséhez lépjen a
 
 ![Riasztási szabály hozzáadása panel](./media/alerts-webhooks/Alertwebhook.png)
 
-Az [Azure PowerShell-parancsmagok](../samples/powershell-samples.md#create-metric-alerts), [platformfüggetlen parancssori](../samples/cli-samples.md#work-with-alerts) [felület vagy Azure monitor REST API](/rest/api/monitor/alertrules)-k használatával riasztást is beállíthat a webhook URI-jának közzétételéhez.
+Az [Azure PowerShell-parancsmagok](../powershell-samples.md#create-metric-alerts), [platformfüggetlen parancssori](../cli-samples.md#work-with-alerts) [felület vagy Azure monitor REST API](/rest/api/monitor/alertrules)-k használatával riasztást is beállíthat a webhook URI-jának közzétételéhez.
 
 ## <a name="authenticate-the-webhook"></a>A webhook hitelesítése
 A webhook a jogkivonat-alapú hitelesítés használatával tud hitelesítést végezni. A webhook URI-ja a jogkivonat-AZONOSÍTÓval lett mentve. Például: `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`

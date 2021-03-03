@@ -85,7 +85,7 @@
               href: create-routebased-vpn-gateway-cli.md
         - name: VPN-átjárókapcsolat ellenőrzése
           href: vpn-gateway-verify-connection-resource-manager.md
-        - name: VPN-átjáró alaphelyzetbe állítása
+        - name: VPN-átjáró vagy-kapcsolat alaphelyzetbe állítása
           href: reset-gateway.md
         - name: VPN Gateway törlése
           items:
@@ -177,6 +177,10 @@
               href: about-vpn-profile-download.md
             - name: Intune – VPN-ügyfélprofil üzembe helyezése
               href: vpn-profile-intune.md
+        - name: Több hitelesítési típus
+          items:
+            - name: Azure Portal
+              href: howto-point-to-site-multi-auth.md
         - name: OpenVPN
           items:
             - name: Az OpenVPN-alagút típusának konfigurálása
@@ -205,6 +209,8 @@
               href: vpn-gateway-bgp-resource-manager-ps.md
             - name: Azure CLI
               href: bgp-how-to-cli.md
+        - name: BGP-diagnosztika
+          href: bgp-diagnostics.md
         - name: Kényszerített bújtatás konfigurálása
           items:
             - name: Azure PowerShell

@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – Azure API Management-példány létrehozása a parancssori felület használatával (előzetes verzió)
+title: Rövid útmutató – Azure API Management-példány létrehozása a parancssori felület használatával
 description: Hozzon létre egy új Azure API Management Service-példányt az Azure CLI használatával.
 author: dlepow
 ms.service: api-management
@@ -7,18 +7,18 @@ ms.topic: quickstart
 ms.custom: ''
 ms.date: 09/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 863cb6cd10664e14966898045cb2b1861ef75b9f
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 72d1faac02a21f23d46eb992af1d501bca89e71f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887450"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688076"
 ---
-# <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-cli-preview"></a>Rövid útmutató: új Azure API Management Service-példány létrehozása az Azure CLI (előzetes verzió) használatával
+# <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-cli"></a>Rövid útmutató: új Azure API Management Service-példány létrehozása az Azure CLI használatával
 
 Az Azure API Management (APIM) segít közzétenni az API-kat a külső, a partner- és a belső fejlesztők számára, hogy ki tudják használni az adataikban és szolgáltatásaikban rejlő lehetőségeket. Az API Management a fejlesztők bevonásán, az üzleti elemzéseken, a biztonságon és a védelmen keresztül biztosítja az alapvető kompetenciákat az API-program sikeressé tételéhez. A APIM lehetővé teszi modern API Gateway-átjárók létrehozását és felügyeletét a bárhol üzemeltetett meglévő háttér-szolgáltatásokhoz. További információ: [Áttekintés](api-management-key-concepts.md).
 
-Ez a rövid útmutató ismerteti, hogyan hozhat létre új API Management példányt az az [APIM](/cli/azure/apim) parancsok használatával az Azure CLI-ben. A `az apim` parancsban szereplő parancsok jelenleg előzetes verzióban érhetők el, és egy későbbi kiadásban módosíthatók vagy eltávolíthatók.
+Ez a rövid útmutató ismerteti, hogyan hozhat létre új API Management példányt az az [APIM](/cli/azure/apim) parancsok használatával az Azure CLI-ben.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -26,7 +26,7 @@ Ez a rövid útmutató ismerteti, hogyan hozhat létre új API Management péld�
 
 - Ehhez a cikkhez az Azure CLI 2.11.1 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure API Management példányokat, például az összes Azure-erőforrást, egy erőforráscsoporthoz kell telepíteni. Az erőforráscsoportok lehetővé teszik az egymáshoz kapcsolódó Azure-erőforrások rendszerezését és kezelését.
 

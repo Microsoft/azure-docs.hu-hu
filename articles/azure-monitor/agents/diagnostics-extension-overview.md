@@ -1,17 +1,16 @@
 ---
 title: Az Azure Diagnostics bővítmény áttekintése
 description: Az Azure Diagnostics használata hibakereséshez, teljesítmény méréséhez, monitorozáshoz, Traffic Analysis in Cloud Services, Virtual Machines és Service Fabric
-ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: f3cde32178449169b07f57d4abbc346d8ca89df4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3c0e348e62184f839ce38e4c364fb5c6b81f1131
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100617345"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726223"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Az Azure Diagnostics bővítmény áttekintése
 A Azure Diagnostics Extension olyan [Azure monitor ügynöke](../agents/agents-overview.md) , amely az Azure számítási erőforrások, például a virtuális gépek vendég operációs rendszerének figyelési adatait gyűjti. Ez a cikk áttekintést nyújt Azure Diagnostics bővítményről, beleértve az általa támogatott speciális funkciókat, valamint a telepítés és a konfigurálás lehetőségeit. 
@@ -33,8 +32,8 @@ A Azure Monitor Log Analytics ügynöke is használható a virtuális gépek ven
 A figyelembe venni kívánt fő különbségek a következők:
 
 - Azure Diagnostics bővítmény csak az Azure Virtual Machines használatával használható. Az Log Analytics-ügynök használható az Azure-ban, a többi felhőkben és a helyszínen lévő virtuális gépekkel.
-- Azure Diagnostics a bővítmény adatokat küld az Azure Storage-ba, [Azure monitor metrikákat](../platform/data-platform-metrics.md) (csak Windows) és Event Hubs. A Log Analytics ügynök adatokat gyűjt [Azure monitor naplókhoz](../platform/data-platform-logs.md).
-- A Log Analytics ügynök szükséges a [megoldások](../monitor-reference.md#insights-and-core-solutions), [Azure monitor for VMS](../insights/vminsights-overview.md)és egyéb szolgáltatások, például a [Azure Security Center](../../security-center/index.yml)esetében.
+- Azure Diagnostics a bővítmény adatokat küld az Azure Storage-ba, [Azure monitor metrikákat](../essentials/data-platform-metrics.md) (csak Windows) és Event Hubs. A Log Analytics ügynök adatokat gyűjt [Azure monitor naplókhoz](../logs/data-platform-logs.md).
+- A Log Analytics ügynök szükséges a [megoldások](../monitor-reference.md#insights-and-core-solutions), a [virtuális](../vm/vminsights-overview.md)gépek és egyéb szolgáltatások, például a [Azure Security Center](../../security-center/index.yml)számára.
 
 ## <a name="costs"></a>Költségek
 Az Azure diagnosztikai bővítmény használatáért nem számítunk fel díjat, de díjkötelesek lehetnek a betöltött adatokért járó díjak. Tekintse meg [Azure monitor díjszabását](https://azure.microsoft.com/pricing/details/monitor/) azon a célhelyen, amelyben az adatok gyűjtése folyamatban van.
@@ -44,7 +43,7 @@ Az alábbi táblázatok felsorolják azokat az adatokat, amelyeket a Windows és
 
 ### <a name="windows-diagnostics-extension-wad"></a>Windows diagnosztikai bővítmény (WAD)
 
-| Adatforrás | Description |
+| Adatforrás | Leírás |
 | --- | --- |
 | Windows-eseménynaplók   | Események a Windows-eseménynaplóból. |
 | Teljesítményszámlálók | Az operációs rendszer és a számítási feladatok különböző szempontjainak teljesítményét mérő numerikus értékek. |
@@ -59,7 +58,7 @@ Az alábbi táblázatok felsorolják azokat az adatokat, amelyeket a Windows és
 
 ### <a name="linux-diagnostics-extension-lad"></a>Linux diagnosztikai bővítmény (LAD)
 
-| Adatforrás | Description |
+| Adatforrás | Leírás |
 | --- | --- |
 | Rendszernapló | A Linux-eseménynaplózási rendszernek eljuttatott események.   |
 | Teljesítményszámlálók  | Az operációs rendszer és a számítási feladatok különböző szempontjainak teljesítményét mérő numerikus értékek. |
@@ -72,9 +71,9 @@ Konfiguráljon egy vagy több *adattárolót* az egyéb további célhelyekre va
 
 ### <a name="windows-diagnostics-extension-wad"></a>Windows diagnosztikai bővítmény (WAD)
 
-| Cél | Description |
+| Cél | Leírás |
 |:---|:---|
-| Azure Monitor-metrikák | Teljesítményadatokat gyűjt Azure Monitor Mérőszámokhoz. Lásd: [vendég operációs rendszer metrikáinak küldése a Azure monitor metrikus adatbázisba](../platform/collect-custom-metrics-guestos-resource-manager-vm.md).  |
+| Azure Monitor-metrikák | Teljesítményadatokat gyűjt Azure Monitor Mérőszámokhoz. Lásd: [vendég operációs rendszer metrikáinak küldése a Azure monitor metrikus adatbázisba](../essentials/collect-custom-metrics-guestos-resource-manager-vm.md).  |
 | Event Hubs | Az Azure Event Hubs használatával küldhet az Azure-on kívüli adatküldést. Lásd: [Streaming Azure Diagnostics-adatátviteli Event Hubs](diagnostics-extension-stream-event-hubs.md) |
 | Azure Storage-Blobok | Adatok írása a Blobok számára az Azure Storage-ban a táblák mellett. |
 | Application Insights | Gyűjtsön adatokat a virtuális gépen futó alkalmazásokból, hogy Application Insights, hogy integrálható legyen más alkalmazás-figyeléssel. Lásd: [diagnosztikai információk küldése Application Insightsba](diagnostics-extension-to-application-insights.md). |
@@ -85,11 +84,11 @@ A tárolóban lévő WAD-adatokat egy Log Analytics munkaterületre is gyűjthet
 ### <a name="linux-diagnostics-extension-lad"></a>Linux diagnosztikai bővítmény (LAD)
 A LAD az Azure Storage tábláiba írja az adatot. A következő táblázatban található mosogatókat támogatja.
 
-| Cél | Description |
+| Cél | Leírás |
 |:---|:---|
 | Event Hubs | Az Azure Event Hubs használatával küldhet az Azure-on kívüli adatküldést. |
 | Azure Storage-Blobok | Adatok írása a Blobok számára az Azure Storage-ban a táblák mellett. |
-| Azure Monitor-metrikák | Telepítse a saját Graf-ügynököt a LAD mellett. Lásd: [Egyéni metrikák gyűjtése Linux](../platform/collect-custom-metrics-linux-telegraf.md)RENDSZERű virtuális gépekhez a InfluxData-gyártói ügynökkel.
+| Azure Monitor-metrikák | Telepítse a saját Graf-ügynököt a LAD mellett. Lásd: [Egyéni metrikák gyűjtése Linux](../essentials/collect-custom-metrics-linux-telegraf.md)RENDSZERű virtuális gépekhez a InfluxData-gyártói ügynökkel.
 
 
 ## <a name="installation-and-configuration"></a>Telepítés és konfigurálás

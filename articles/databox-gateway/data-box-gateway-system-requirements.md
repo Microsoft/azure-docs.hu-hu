@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 05/08/2019
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: aadaedfd2c9ecf544d142e42a0fbeb410324b7d8
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: e7c8653b39a3e0333ff6e98783a6e9a1437dba22
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96582429"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739211"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Rendszerkövetelmények Azure Data Box Gateway
 
@@ -29,10 +29,10 @@ A Data Box Gateway virtuális eszköz rendszerkövetelményei a következők:
 
 A Data Box Gateway mögöttes gazdagéprendszer képes a következő erőforrások kiosztására a virtuális eszköz kiépítése érdekében:
 
-| Specifikációk                                          | Description              |
+| Specifikációk                                          | Leírás              |
 |---------------------------------------------------------|--------------------------|
 | Virtuális processzorok (magok)   | Minimum 4 |
-| Memória  | Minimum 8 GB|
+| Memória  | Legalább 8 GB. Legalább 16 GB-ot javasoljuk. |
 | Rendelkezésre állás|Egyetlen csomópont|
 | Lemezek| Operációsrendszer-lemez: 250 GB <br> Adatlemez: legalább 2 TB, dinamikusan kiosztott és SSD-másolatokkal kiegészített|
 | Hálózati adapterek|1 vagy több virtuális hálózati adapter|
@@ -69,7 +69,7 @@ A Data Box Gateway mögöttes gazdagéprendszer képes a következő erőforrás
 
 ## <a name="networking-port-requirements"></a>Hálózati portokra vonatkozó követelmények
 
-A következő táblázat felsorolja azokat a portokat, amelyeket meg kell nyitni a tűzfalon az SMB-, felhő-vagy felügyeleti forgalom engedélyezéséhez. A (z) *in* vagy a *bejövő* tábla a bejövő ügyfél által az eszközhöz való hozzáférést kérő irányt jelöli. A *kimenő vagy kimenő* *állapot arra utal* , hogy a Data Box Gateway-eszköz hogyan küldi el az adatokat külsőleg, az üzembe helyezésen kívül: például az internet felé.
+A következő táblázat felsorolja azokat a portokat, amelyeket meg kell nyitni a tűzfalon az SMB-, felhő-vagy felügyeleti forgalom engedélyezéséhez. A (z)  vagy a *bejövő* tábla a bejövő ügyfél által az eszközhöz való hozzáférést kérő irányt jelöli. A *kimenő vagy kimenő* *állapot arra utal* , hogy a Data Box Gateway-eszköz hogyan küldi el az adatokat külsőleg, az üzembe helyezésen kívül: például az internet felé.
 
 [!INCLUDE [Port configuration for device](../../includes/data-box-edge-gateway-port-config.md)]
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 90f0cd913a191f345afd8acc3f3449b87e4cbfaf
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 474bad4c3d7250d93b3e926f6e71da6734d7a4d0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918606"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702045"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>A fájlok integritásának figyelése Azure Security Center
 Ismerje meg, hogyan konfigurálhatja a fájlok integritásának figyelését (FIM) Azure Security Center az útmutató segítségével.
@@ -120,7 +120,7 @@ A FIM csak a Azure Portal Security Center lapjairól érhető el. A FIM használ
 
     - Az egyes munkaterületek állapotának és beállításainak elérése és megtekintése
 
-    - ![A Frissítési terv ikonja ][4] frissíti a munkaterületet az Azure Defender használatára. Ez az ikon azt jelzi, hogy a munkaterületet vagy előfizetést nem az Azure Defender védi. A FIM-funkciók használatához az előfizetését az Azure Defendernek kell védenie. [További információ](security-center-pricing.md).
+    - ![A Frissítési terv ikonja ][4] frissíti a munkaterületet az Azure Defender használatára. Ez az ikon azt jelzi, hogy a munkaterületet vagy előfizetést nem az Azure Defender védi. A FIM-funkciók használatához az előfizetését az Azure Defendernek kell védenie. További információ: [Security Center Free vs Azure Defender engedélyezve](security-center-pricing.md#security-center-free-vs-azure-defender-enabled).
 
     - ![Engedélyezés ikon][3] Engedélyezze a FIM-t a munkaterület alá tartozó összes gépen, és konfigurálja a FIM beállításait. Ez az ikon azt jelzi, hogy a FIM nincs engedélyezve a munkaterületen.
 
@@ -212,7 +212,7 @@ A **change details** (módosítás részletei) elemre kattintva megadhatja a ker
 
    ![Új elem hozzáadása a figyeléshez][14]
 
-3. Válassza a **Hozzáadás** elemet. **A hozzáadás Change Tracking** megnyílik.
+3. Válassza a **Hozzáadás** lehetőséget. **A hozzáadás Change Tracking** megnyílik.
 
    ![Adja meg a kért adatokat][15]
 

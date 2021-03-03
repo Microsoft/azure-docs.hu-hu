@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: a44ff15300d05713e812f5c60ad3bf00d9f13104
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 6d2ad87f6a8c79f61d62140a1549968cd88d83aa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526856"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722313"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Hangminták rögzítése egyéni hang létrehozásához
 
@@ -29,9 +29,9 @@ Sok kicsi, de fontos részlet a professzionális hangfelvételek létrehozásáb
 > Ha szeretné betanítani a neurális hangvételt, meg kell adnia egy hangtehetségi profilt a hangfelvételt tartalmazó hangfelvételi fájllal, amely a beszédfelismerési adatok használatával betanítja az egyéni hangmodellt. A rögzítési parancsfájl előkészítésekor ügyeljen rá, hogy tartalmazza az alábbi mondatot. 
 
 > "I [állapot az első és az utolsó név] tisztában vagyok azzal, hogy a hangfelvételeket [a vállalat neve] fogja használni a hang szintetikus verziójának létrehozásához és használatához."
-Ezt a mondatot fogjuk használni annak ellenőrzéséhez, hogy ugyanaz a személy végzi-e a betanítási adatgyűjtést, aki a beleegyezik. További információ a [hangalapú tehetségek ellenőrzéséről](https://aka.ms/CNV-data-privacy) itt olvashat.
+Ezt a mondatot fogjuk használni annak ellenőrzéséhez, hogy ugyanaz a személy végzi-e a betanítási adatgyűjtést, aki a beleegyezik. További információ a [hangalapú tehetségek ellenőrzéséről](/legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) itt olvashat.
 
-> Az egyéni neurális hang korlátozott hozzáféréssel érhető el. Győződjön meg róla, hogy tisztában van a [felelős AI-követelményekkel](https://aka.ms/gating-overview) , és [alkalmazza a hozzáférést itt](https://aka.ms/customneural). 
+> Az egyéni neurális hang korlátozott hozzáféréssel érhető el. Győződjön meg róla, hogy tisztában van a [felelős AI-követelményekkel](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) , és [alkalmazza a hozzáférést itt](https://aka.ms/customneural). 
 
 > [!TIP]
 > A legjobb minőség érdekében érdemes megfontolni a Microsoftot abban, hogy fejlessze saját hangját. A Microsoft széles körű tapasztalattal rendelkezik a saját termékeire, például a Cortana és az Office-ra való kiváló minőségű hangok készítésére.

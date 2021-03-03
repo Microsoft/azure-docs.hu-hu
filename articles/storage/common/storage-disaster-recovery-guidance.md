@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 9a4453c29c52f8821643e93584666c3a6a8e6b4c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e00e22862121f2f974f9531a9892e32e115d6041
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379828"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737647"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Vészhelyreállítás és tárfiók feladatátvétele
 
@@ -55,7 +55,7 @@ Emellett vegye figyelembe ezeket az ajánlott eljárásokat az Azure Storage-bel
 
 - **Lemezek:** A [Azure Backup](https://azure.microsoft.com/services/backup/) használatával biztonsági mentést készíthet az Azure-beli virtuális gépek által használt VM-lemezekről. Vegye fontolóra a [Azure site Recovery](https://azure.microsoft.com/services/site-recovery/) használatát a virtuális gépek biztonságának biztosítása érdekében regionális katasztrófa esetén is.
 - **Blobok letiltása:** Ha a [AzCopy](./storage-use-azcopy-v10.md), a [Azure PowerShell](/powershell/module/az.storage/)vagy az [Azure adatátviteli függvénytárat](storage-use-data-movement-library.md)használja, a [Soft delete](../blobs/soft-delete-blob-overview.md) bekapcsolásával védelmet biztosíthat az objektum-szintű törlések és a felülírások ellen, vagy más régióba másolja a blokk blobokat egy másikba.
-- **Fájlok:** A fájlmegosztás biztonsági mentéséhez használja a [Azure Backup](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview) . Engedélyezze a helyreállítható [törlést](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion) is a véletlen fájlmegosztás törlésével szembeni védelem érdekében. Ha a GRS nem érhető el, a [AzCopy](./storage-use-azcopy-v10.md) vagy a [Azure PowerShell](/powershell/module/az.storage/) használatával másolhatja át a fájlokat egy másik, eltérő régióban lévő Storage-fiókba.
+- **Fájlok:** A fájlmegosztás biztonsági mentéséhez használja a [Azure Backup](../../backup/azure-file-share-backup-overview.md) . Engedélyezze a helyreállítható [törlést](../files/storage-files-prevent-file-share-deletion.md) is a véletlen fájlmegosztás törlésével szembeni védelem érdekében. Ha a GRS nem érhető el, a [AzCopy](./storage-use-azcopy-v10.md) vagy a [Azure PowerShell](/powershell/module/az.storage/) használatával másolhatja át a fájlokat egy másik, eltérő régióban lévő Storage-fiókba.
 - **Táblák:** a [AzCopy](./storage-use-azcopy-v10.md) használatával exportálhatja a tábla-és más tárolási fiókokat egy másik régióban.
 
 ## <a name="track-outages"></a>Kimaradások nyomon követése

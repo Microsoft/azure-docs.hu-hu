@@ -4,15 +4,15 @@ description: Azure Security teljesítményteszt v2 – irányítás és stratég
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 935a6b41152ff914889e299b6455fbb30b2f0447
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 277033e41ec7e02b89eca8cf74fe6854acb51cc1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369055"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727022"
 ---
 # <a name="security-control-v2-governance-and-strategy"></a>Security Control v2: irányítási és stratégiai
 
@@ -24,15 +24,15 @@ A szabályozás és a stratégia útmutatást nyújt egy koherens biztonsági st
 |--|--|--|--|
 | GS-1 | 2, 13 | SC, AC |
 
-Gondoskodjon róla, hogy a rendszerek és az információk folyamatos monitorozásával és védelmével kapcsolatos egyértelmű stratégiát dokumentáljon és tájékoztasson. Állítsa fel az üzletileg kritikus adatok és rendszerek felmérésének, védelmének és monitorozásának fontossági sorrendjét. 
+Gondoskodjon róla, hogy a rendszerek és az információk folyamatos monitorozásával és védelmével kapcsolatos egyértelmű stratégiát dokumentáljon és tájékoztasson. Állítsa fel az üzletileg kritikus adatok és rendszerek felmérésének, védelmének és monitorozásának fontossági sorrendjét.
 
 Ennek a stratégiának magában kell foglalnia a dokumentált útmutatót, és az alábbi elemek szabványait: 
 
 - Az üzleti kockázattal összhangban lévő adatbesorolási szabványok
 
-- A kockázatok és az eszközleltár biztonsági szervezet általi láthatósága 
+- A kockázatok és az eszközleltár biztonsági szervezet általi láthatósága
 
-- A használandó Azure-szolgáltatások biztonsági szervezet általi jóváhagyása 
+- A használandó Azure-szolgáltatások biztonsági szervezet általi jóváhagyása
 
 - Az biztonsága azok teljes életciklusában
 
@@ -127,9 +127,9 @@ Győződjön meg arról, hogy dokumentálja és kommunikálja a biztonsági szer
 |--|--|--|--|
 | GS-5 | 9 | CA, SC |
 
-Hozzon létre egy Azure-alapú hálózati biztonsági megközelítést a szervezet általános biztonsági hozzáférés-vezérlési stratégiájának részeként.  
+Hozzon létre egy Azure-alapú hálózati biztonsági megközelítést a szervezet általános biztonsági hozzáférés-vezérlési stratégiájának részeként.
 
-Ennek a stratégiának magában kell foglalnia a dokumentált útmutatót, és az alábbi elemek szabványait: 
+Ennek a stratégiának magában kell foglalnia a dokumentált útmutatót, és az alábbi elemek szabványait:
 
 - Központosított hálózatkezelési és biztonsági felelősség
 
@@ -141,7 +141,7 @@ Ennek a stratégiának magában kell foglalnia a dokumentált útmutatót, és a
 
 - Hibrid felhős és helyszíni kapcsolódási stratégia
 
-- Naprakész hálózati biztonsági összetevők (pl. hálózati diagramok, hálózati referencia-architektúra)
+- Naprakész hálózati biztonsági összetevők (például hálózati diagramok, hivatkozási hálózati architektúra)
 
 További információkat az alábbi hivatkozásokon találhat:
 
@@ -165,9 +165,9 @@ További információkat az alábbi hivatkozásokon találhat:
 |--|--|--|--|
 | GS-6 | 16, 4 | AC, AU, SC |
 
-Hozzon létre egy Azure-identitást és egy emelt szintű hozzáférési megközelítést a szervezet általános biztonsági hozzáférés-vezérlési stratégiájának részeként.  
+Hozzon létre egy Azure-identitást és egy emelt szintű hozzáférési megközelítést a szervezet általános biztonsági hozzáférés-vezérlési stratégiájának részeként.
 
-Ennek a stratégiának magában kell foglalnia a dokumentált útmutatót, és az alábbi elemek szabványait: 
+Ennek a stratégiának magában kell foglalnia a dokumentált útmutatót, és az alábbi elemek szabványait:
 
 - Központosított identitáskezelési és hitelesítési rendszer és annak kapcsolatai más belső és külső identitásrendszerekkel
 
@@ -175,7 +175,7 @@ Ennek a stratégiának magában kell foglalnia a dokumentált útmutatót, és a
 
 - Emelt jogosultságú felhasználók védelme
 
-- Rendellenes felhasználói tevékenységek monitorozása és kezelése  
+- Rendellenes felhasználói tevékenységek monitorozása és kezelése
 
 - Felhasználói identitások és hozzáférések felülvizsgálati és egyeztetési folyamata
 
@@ -205,7 +205,7 @@ Hozzon létre egy naplózási és veszélyforrás-reagálási stratégiát a fen
 
 Ennek a stratégiának tartalmaznia kell az alábbi elemek dokumentált útmutatóit, szabályzatait és szabványait: 
 
-- A biztonsági üzemeltetési (SecOps) szervezet szerepköre és feladatai 
+- A biztonsági műveletek (SecOps) szervezet szerepköre és feladatai 
 
 - Jól definiált incidenskezelési folyamat az NIST-vel vagy más iparági keretrendszerrel összhangban 
 

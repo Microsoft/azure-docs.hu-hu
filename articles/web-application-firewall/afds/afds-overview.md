@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.author: victorh
-ms.openlocfilehash: e3b3b7a058fbd1235619c01e0dca24a3de9036db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66ca039a449e355e47563b689f5f44cced164fea
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231435"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724149"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure webalkalmazási tűzfal az Azure-beli bejárati ajtón
 
@@ -23,6 +23,8 @@ A WAF globális és központosított megoldás. Üzembe helyezése az Azure-beli
 A WAF megakadályozza, hogy a rosszindulatú támadások a támadási források közelébe lépjenek, mielőtt belépnek a virtuális hálózatba. A globális védelmet a teljesítmény feláldozása nélkül érheti el. A WAF szabályzat egyszerűen az előfizetésben lévő bejárati profilokra mutató hivatkozásokat tartalmaz. Az új szabályok percek alatt üzembe helyezhetők, így gyorsan reagálhat a veszélyforrások változására.
 
 ![Azure-beli webalkalmazási tűzfal](../media/overview/wafoverview.png)
+
+Az Azure bejárati ajtaja [két új SKU-](https://docs.microsoft.com/azure/frontdoor/standard-premium/overview)t vezet be előzetes verzióban: a bejárati ajtó standard és a bejárat Premium SKU A WAF natív módon integrálva van a prémium szintű SKU-val a teljes funkcionalitással. A bejárati ajtó szabványos SKU-jának csak az [Egyéni szabályok](https://docs.microsoft.com/azure/web-application-firewall/afds/afds-overview#custom-authored-rules) támogatottak.
 
 ## <a name="waf-policy-and-rules"></a>WAF szabályzat és szabályok
 

@@ -4,16 +4,16 @@ description: Tekintse át, hogy mit tehet a metrikus riasztásokkal, és hogyan 
 ms.date: 01/19/2021
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 989c3b8a50c3e613e67726684f35c6adce9c8b96
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fc0f41f23f1d9387f806c947ac27e6f31cc0e053
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100614598"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723605"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>A metrikariasztások működése az Azure Monitorban
 
-A Azure Monitor metrikus riasztások a többdimenziós mérőszámok felett működnek. Ezek a metrikák lehetnek [platform-metrikák](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [Egyéni metrikák](../platform/metrics-custom-overview.md), [népszerű naplók Azure monitor konvertálva mérőszámokra](./alerts-metric-logs.md) és Application Insights mérőszámokra. A metrikai riasztások rendszeres időközönként értékelik ki, hogy egy vagy több metrikai idősorozatra vonatkozó feltételek igazak-e, és értesítjük, ha teljesülnek az értékelések. A metrikai riasztások állapota, azaz csak akkor küldenek értesítéseket, ha az állapot megváltozik.
+A Azure Monitor metrikus riasztások a többdimenziós mérőszámok felett működnek. Ezek a metrikák lehetnek [platform-metrikák](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [Egyéni metrikák](../essentials/metrics-custom-overview.md), [népszerű naplók Azure monitor konvertálva mérőszámokra](./alerts-metric-logs.md) és Application Insights mérőszámokra. A metrikai riasztások rendszeres időközönként értékelik ki, hogy egy vagy több metrikai idősorozatra vonatkozó feltételek igazak-e, és értesítjük, ha teljesülnek az értékelések. A metrikai riasztások állapota, azaz csak akkor küldenek értesítéseket, ha az állapot megváltozik.
 
 ## <a name="how-do-metric-alerts-work"></a>Hogyan működnek a metrikus riasztások?
 
@@ -26,7 +26,7 @@ Tegyük fel, hogy létrehozott egy egyszerű statikus küszöbérték-metrika ri
 - Célként megadott erőforrás (a figyelni kívánt Azure-erőforrás): myVM
 - Metrika: százalékos CPU
 - Feltétel típusa: statikus
-- Összesítési típus (olyan statisztika, amely nyers metrikai értékeken fut. A [támogatott összesítési típusok](../platform/metrics-aggregation-explained.md#aggregation-types) a következők: minimum, maximum, átlag, összeg, darabszám): átlag
+- Összesítési típus (olyan statisztika, amely nyers metrikai értékeken fut. A [támogatott összesítési típusok](../essentials/metrics-aggregation-explained.md#aggregation-types) a következők: minimum, maximum, átlag, összeg, darabszám): átlag
 - Időtartam (a visszatekintő ablak, amelyen a metrika értékei be vannak jelölve): az elmúlt 5 percben
 - Gyakoriság (az a gyakoriság, amellyel a metrika riasztása ellenőrzi, hogy teljesülnek-e a feltételek): 1 perc
 - Operátor: nagyobb, mint
@@ -43,7 +43,7 @@ Tegyük fel, hogy létrehozott egy egyszerű dinamikus küszöbértékek mérős
 - Célként megadott erőforrás (a figyelni kívánt Azure-erőforrás): myVM
 - Metrika: százalékos CPU
 - Feltétel típusa: dinamikus
-- Összesítési típus (olyan statisztika, amely nyers metrikai értékeken fut. A [támogatott összesítési típusok](../platform/metrics-aggregation-explained.md#aggregation-types) a következők: minimum, maximum, átlag, összeg, darabszám): átlag
+- Összesítési típus (olyan statisztika, amely nyers metrikai értékeken fut. A [támogatott összesítési típusok](../essentials/metrics-aggregation-explained.md#aggregation-types) a következők: minimum, maximum, átlag, összeg, darabszám): átlag
 - Időtartam (a visszatekintő ablak, amelyen a metrika értékei be vannak jelölve): az elmúlt 5 percben
 - Gyakoriság (az a gyakoriság, amellyel a metrika riasztása ellenőrzi, hogy teljesülnek-e a feltételek): 1 perc
 - Operátor: nagyobb, mint
@@ -141,7 +141,7 @@ Ez a funkció jelenleg a platform metrikái (nem egyéni metrikák) esetén tám
 
 | Szolgáltatás | Nyilvános Azure | Államigazgatás | Kína |
 |:--------|:--------|:--------|:--------|
-| Virtuális gépek<sup>1</sup>  | **Igen** | **Igen** | No |
+| Virtuális gépek<sup>1</sup>  | **Igen** | **Igen** | Nem |
 | SQL Server-adatbázisok | **Igen** | **Igen** | **Igen** |
 | SQL Server rugalmas készletek | **Igen** | **Igen** | **Igen** |
 | NetApp-fájlok kapacitásának készletei | **Igen** | **Igen** | **Igen** |
@@ -180,9 +180,8 @@ A támogatott erőforrástípusok teljes listáját ebben a [cikkben](./alerts-m
 ## <a name="next-steps"></a>Következő lépések
 
 - [Megtudhatja, hogyan hozhat létre, tekinthet meg és kezelhet metrikus riasztásokat az Azure-ban](../alerts/alerts-metric.md)
-- [Ismerje meg, hogyan hozhat létre riasztásokat az Azure Monti Metrikaböngésző](../platform/metrics-charts.md#alert-rules)
+- [Ismerje meg, hogyan hozhat létre riasztásokat az Azure Monti Metrikaböngésző](../essentials/metrics-charts.md#alert-rules)
 - [Megtudhatja, hogyan helyezhet üzembe metrikus riasztásokat Azure Resource Manager sablonok használatával](./alerts-metric-create-templates.md)
-- [További információ a műveleti csoportokról](../platform/action-groups.md)
+- [További információ a műveleti csoportokról](./action-groups.md)
 - [További információ a dinamikus küszöbértékek feltételének típusáról](../alerts/alerts-dynamic-thresholds.md)
 - [További információ a metrikus riasztásokkal kapcsolatos problémák elhárításáról](alerts-troubleshoot-metric.md)
-

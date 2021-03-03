@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/12/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 057fc654597360a4666342f7de10bf908224f1de
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 276cc6ad12fe51947ae1db0ece6cbacec4b6771f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100521357"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732537"
 ---
 Az Azure-fájlmegosztás többcsatornás SMB szolgáltatás jelenleg csak a következő régiókban érhető el:
 
@@ -31,4 +31,4 @@ Az Azure-fájlmegosztás többcsatornás SMB szolgáltatás jelenleg csak a köv
 | Svájc | Észak-Svájc |
 | Egyesült Arab Emírségek | Észak-Egyesült Arab |
 | Egyesült Királyság | Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója |
-| Egyesült Államok | USA középső régiója, USA keleti régiója, USA északi középső régiója, USA déli középső régiója, USA nyugati középső régiója |
+| Egyesült Államok | USA középső régiója, USA keleti régiója, az USA északi középső régiója, az USA déli középső régiója, az USA nyugati középső régiója, USA 2 |

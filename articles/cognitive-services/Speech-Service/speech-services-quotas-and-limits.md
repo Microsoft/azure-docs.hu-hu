@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/07/2020
 ms.author: alexeyo
-ms.openlocfilehash: 9b923ba208dd2a5111a59f67401b1e4f080b7187
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: f5566276f4555e2480434e385bf2129f5b8cdd24
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754164"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699980"
 ---
 # <a name="speech-services-quotas-and-limits"></a>A Speech Services kvótái és korlátai
 
@@ -37,12 +37,12 @@ Az alábbi táblázatokban az "állítható" sor nélkül **nem** állítható b
 | Kvóta | Ingyenes (F0)<sup>1</sup> | Standard (S0) |
 |--|--|--|
 | REST API korlát | A Batch-átírás nem érhető el a F0 | 300 kérelem percenként |
-| Hangbeviteli fájl maximális mérete | N.A. | 1 GB |
-| A bemeneti Blobok maximális mérete (több fájlt is tartalmazhat, például egy ZIP-archívumban), ügyeljen arra, hogy a fenti fájlméretre vonatkozó korlátot jegyezze fel. | N.A. | 2,5 GB |
-| BLOB-tároló maximális mérete | N.A. | 5 GB |
-| Blobok maximális száma egy tárolóban | N.A. | 10000 |
-| Fájlok maximális száma átírási kérelem esetén (több tartalom URL-címének bemenetként való használata esetén) | N.A. | 1000  |
-| Egyszerre futó feladatok maximális száma | N.A. | 2000  |
+| Hangbeviteli fájl maximális mérete | N/A | 1 GB |
+| A bemeneti Blobok maximális mérete (több fájlt is tartalmazhat, például egy ZIP-archívumban), ügyeljen arra, hogy a fenti fájlméretre vonatkozó korlátot jegyezze fel. | N/A | 2,5 GB |
+| BLOB-tároló maximális mérete | N/A | 5 GB |
+| Blobok maximális száma egy tárolóban | N/A | 10000 |
+| Fájlok maximális száma átírási kérelem esetén (több tartalom URL-címének bemenetként való használata esetén) | N/A | 1000  |
+| Egyszerre futó feladatok maximális száma | N/A | 2000  |
 
 #### <a name="model-customization"></a>Modell testreszabása
 | Kvóta | Ingyenes (F0)<sup>1</sup> | Standard (S0) |
@@ -104,14 +104,14 @@ Az **Alap** -és **Egyéni** modellek egyidejű kérelmi korlátait **külön** 
 Az egyidejű kérelmek korlátja paraméter meglévő értéke **nem** látható Azure Portalon, Command-Line eszközökön vagy API-kérelmeken keresztül. A meglévő érték ellenőrzéséhez hozzon létre egy Azure-támogatási kérelmet.
 
 >[!NOTE]
->A [beszédfelismerési tárolók](speech-container-howto.md) nem igénylik az egyidejű kérelmek korlátjának növelését, mivel a tárolókat csak az általuk üzemeltetett hardver processzorai korlátozzák. A beszédfelismerési tárolók azonban saját kapacitásbeli korlátozásokkal rendelkeznek, amelyeket figyelembe kell venni. Tekintse meg a "hasznos lehet a *kapacitás megtervezése és a költséghatékony tárolók becsült díja?"* című kérdést. a [Speech containers GYIK](speech-container-faq.md)-ból.
+>A [beszédfelismerési tárolók](speech-container-howto.md) nem igénylik az egyidejű kérelmek korlátjának növelését, mivel a tárolókat csak az általuk üzemeltetett hardver processzorai korlátozzák. A beszédfelismerési tárolók azonban saját kapacitásbeli korlátozásokkal rendelkeznek, amelyeket figyelembe kell venni. Tekintse meg a "hasznos lehet a *kapacitás megtervezése és a költséghatékony tárolók becsült díja?"* című kérdést. a [Speech containers GYIK](./speech-container-howto.md)-ból.
 
 #### <a name="have-the-required-information-ready"></a>Készítse elő a szükséges információkat:
 - **Alapmodell** esetén:
   - Beszédfelismerési erőforrás azonosítója
-  - Régió
+  - Region
 - **Egyéni modell** esetén: 
-  - Régió
+  - Region
   - Egyéni végpont azonosítója
 
 - **Információk beszerzése (alapmodell)**:  
@@ -205,4 +205,3 @@ Kezdeményezheti az erőforrás egyidejű kérelmi korlátjának növelését, v
   - A [korábban összegyűjtött](#prepare-the-required-information) Azure-erőforrások adatai 
   - Fejezze be a szükséges adatokat, majd kattintson a *Létrehozás* gombra a *felülvizsgálat + létrehozás* lapon.
   - Jegyezze fel Azure Portal értesítésekben szereplő támogatási kérelmek számát. A további feldolgozáshoz hamarosan felveszi a kapcsolatot
-

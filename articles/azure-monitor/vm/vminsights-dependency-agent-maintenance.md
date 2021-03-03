@@ -1,21 +1,21 @@
 ---
-title: A Azure Monitor for VMs függőségi ügynök frissítése
-description: Ez a cikk azt ismerteti, hogyan lehet frissíteni a Azure Monitor for VMs függőségi ügynököt a parancssori, a telepítővarázsló és más módszerek használatával.
+title: A VM-alapú információ-függőségi ügynök frissítése
+description: Ez a cikk azt ismerteti, hogyan lehet frissíteni a virtuálisgép-alapú függőségi ügynököt a parancssori, a telepítővarázsló és más módszerek használatával.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/16/2020
-ms.openlocfilehash: 05358c560c70396d4e165abd174178378aad517b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 14ca614c1e108ce43f05f98520cff6ff215ec5cc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100619868"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722908"
 ---
-# <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>A Azure Monitor for VMs függőségi ügynök frissítése
+# <a name="how-to-upgrade-the-vm-insights-dependency-agent"></a>A VM-alapú információ-függőségi ügynök frissítése
 
-A Azure Monitor for VMs függőségi ügynök kezdeti üzembe helyezése után a rendszer olyan frissítéseket szabadít fel, amelyek hibajavításokat vagy új funkciók vagy funkciók támogatását tartalmazzák.  Ez a cikk segítséget nyújt az elérhető módszerek megismerésében, valamint a frissítés manuális vagy automatizáláson keresztüli végrehajtásában.
+A virtuális gép bepillantást igénylő függőségi ügynökének kezdeti üzembe helyezése után a rendszer olyan frissítéseket szabadít fel, amelyek a hibajavításokat vagy új funkciók vagy funkciók támogatását tartalmazzák.  Ez a cikk segítséget nyújt az elérhető módszerek megismerésében, valamint a frissítés manuális vagy automatizáláson keresztüli végrehajtásában.
 
 ## <a name="upgrade-options"></a>Frissítési beállítások 
 
@@ -70,4 +70,4 @@ Ha a függőségi ügynök nem indul el, ellenőrizze a naplókat a hibák rész
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha le szeretné állítani a virtuális gépek figyelését egy adott időtartamra, vagy Azure Monitor for VMs teljes egészében, tekintse [meg a virtuális gépek figyelésének letiltása Azure monitor for VMS-ben](../vm/vminsights-optout.md)című témakört.
+Ha le szeretné állítani a virtuális gépek figyelését egy adott időszakra, vagy a VM-információk teljes körű eltávolítását, tekintse [meg a virtuális gépek figyelésének letiltása a VM-ben](../vm/vminsights-optout.md)című témakört.

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/31/2020
-ms.openlocfilehash: 678a6f0dc19d966f3d15e713008c19c8fbb96f5e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5eaa2d686ecd38c006a720e9ffb97a4604f18ba8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100620815"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708866"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Függvények használata Azure Monitor log-lekérdezésekben
 
@@ -35,7 +35,7 @@ A **Save (Mentés** ) gombra kattintva hozzon létre egy Azure Portal log Analyt
 Használjon függvényt egy másik lekérdezésben szereplő aliassal együtt. Más táblákhoz hasonlóan is használható.
 
 ## <a name="function-parameters"></a>Függvény paraméterei 
-Paramétereket adhat hozzá egy függvényhez, így bizonyos változók értékeit megadhatja a híváskor. Egy Resource Manager-sablon használatával az egyetlen lehetőség, hogy a függvényt a paraméterekkel együtt hozza létre. Példaként tekintse meg a [Resource Manager-sablonok mintáit a Azure monitor napló lekérdezéséhez](../samples/resource-manager-log-queries.md#parameterized-function) .
+Paramétereket adhat hozzá egy függvényhez, így bizonyos változók értékeit megadhatja a híváskor. Egy Resource Manager-sablon használatával az egyetlen lehetőség, hogy a függvényt a paraméterekkel együtt hozza létre. Példaként tekintse meg a [Resource Manager-sablonok mintáit a Azure monitor napló lekérdezéséhez](./resource-manager-log-queries.md#parameterized-function) .
 
 ## <a name="example"></a>Példa
 A következő minta lekérdezés az elmúlt nap során jelentett összes hiányzó biztonsági frissítést visszaadja. Mentse ezt a lekérdezést függvényként az alias _security_updates_last_day_. 

@@ -9,16 +9,16 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 02/01/2021
 tags: connectors
-ms.openlocfilehash: cbbc0edf710b8823c1a36daa66bc01d89acf63da
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: e52c4acb4b59414e89e87bf5a6ee2cfae8207cae
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575483"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712453"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Csatlakozás SAP-rendszerekhez az Azure Logic Appsből
 
-Ez a cikk azt ismerteti, hogyan érheti el az SAP-erőforrásait Logic Apps az [SAP-összekötő](https://docs.microsoft.com/connectors/sap/)használatával.
+Ez a cikk azt ismerteti, hogyan érheti el az SAP-erőforrásait Logic Apps az [SAP-összekötő](/connectors/sap/)használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -547,14 +547,14 @@ A helyszíni adatátjárók esetében az április 2020-es és korábbi verzióib
 
 Ha helyszíni [adatátjárót használ a Logic Appshoz](../logic-apps/logic-apps-gateway-install.md), beállíthat egy kiterjesztett naplófájlt az SAP-összekötőhöz. A helyszíni adatátjáróval átirányíthatja Windows esemény-nyomkövetés (ETW) eseményeit az átjáró naplózási. zip fájljaiban található, forgó naplófájlokra. 
 
-Az átjáró [konfigurációjának és szolgáltatásának összes naplóját exportálhatja](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app) egy. zip fájlba az átjáró alkalmazás beállításaiban.
+Az átjáró [konfigurációjának és szolgáltatásának összes naplóját exportálhatja](/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app) egy. zip fájlba az átjáró alkalmazás beállításaiban.
 
 > [!NOTE]
 > Ha mindig engedélyezve van, a kiterjesztett naplózás hatással lehet a Logic apps teljesítményére. Az ajánlott eljárás a kiterjesztett naplófájlok kikapcsolására, miután végzett a probléma elemzésével és hibaelhárításával.
 
 #### <a name="capture-etw-events"></a>ETW események rögzítése
 
-Igény szerint a haladó felhasználók közvetlenül is rögzíthetik a ETW eseményeket. Ezután felhasználhatja az [adatokat Event Hubs Azure Diagnosticsban,](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-stream-event-hubs) vagy [adatokat gyűjthet Azure monitor naplókba](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-logs). További információ: az [adatok gyűjtésével és tárolásával kapcsolatos ajánlott eljárások](https://docs.microsoft.com/azure/architecture/best-practices/monitoring#collecting-and-storing-data). A [perfview eszköz](https://github.com/Microsoft/perfview/blob/master/README.md) használatával dolgozhat a létrejövő ETL-fájlokkal, vagy írhat saját programot is. Ez az útmutató az Perfview eszköz-t használja:
+Igény szerint a haladó felhasználók közvetlenül is rögzíthetik a ETW eseményeket. Ezután felhasználhatja az [adatokat Event Hubs Azure Diagnosticsban,](../azure-monitor/agents/diagnostics-extension-stream-event-hubs.md) vagy [adatokat gyűjthet Azure monitor naplókba](/azure/azure-monitor/agents/diagnostics-extension-logs). További információ: az [adatok gyűjtésével és tárolásával kapcsolatos ajánlott eljárások](/azure/architecture/best-practices/monitoring#collecting-and-storing-data). A [perfview eszköz](https://github.com/Microsoft/perfview/blob/master/README.md) használatával dolgozhat a létrejövő ETL-fájlokkal, vagy írhat saját programot is. Ez az útmutató az Perfview eszköz-t használja:
 
 1. Az események rögzítéséhez a perfview eszköz **menüben válassza a gyűjtés összegyűjtése lehetőséget** &gt;  .
 
@@ -1336,7 +1336,7 @@ A Call BAPI művelet használatával kapcsolatos részletes példákért tekints
 
 ### <a name="send-idoc-action"></a>IDoc művelet küldése
 
-A [Send IDoc ( `SendIDoc` )](https://docs.microsoft.com/connectors/sap/#send-idoc-(preview)) művelet elküldi a IDOC üzenetet az SAP-kiszolgálónak.
+A [Send IDoc ( `SendIDoc` )](/connectors/sap/) művelet elküldi a IDOC üzenetet az SAP-kiszolgálónak.
 
 A következő paramétereket kell használnia a híváshoz: 
 
