@@ -8,13 +8,13 @@ ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/02/2021
-ms.openlocfilehash: e8f7e5451b48066f52a4c1038e58b1efa99951e6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/04/2021
+ms.openlocfilehash: f5692f2bcaaadfc56084ec8db745eae48112ecf3
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102048597"
+ms.locfileid: "102101239"
 ---
 # <a name="configure-maintenance-window-preview"></a>Karbantartási időszak konfigurálása (előzetes verzió)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -26,6 +26,8 @@ A *rendszer alapértelmezett* karbantartási időszaka napi 5 – 08:00 (az erő
 
 A másik karbantartási időszakra való váltás nem minden szolgáltatási szinthez vagy régióhoz érhető el. A rendelkezésre állással kapcsolatos részletekért lásd a [karbantartási időszak elérhetőségét](maintenance-window.md#availability)ismertető témakört.
 
+> [!Important]
+> A karbantartási időszak konfigurálása hosszú ideig futó aszinkron művelet, hasonlóan az Azure SQL-erőforrás szolgáltatási rétegének módosításához. Az erőforrás a művelet során elérhető, kivéve a művelet végén előforduló rövid feladatátvételt, és általában akár 8 másodpercig is tart, akár a hosszan futó tranzakciók megszakítása esetén is. A feladatátvétel hatásának csökkentése érdekében a műveletet a csúcsidőben kívül kell végrehajtania.
 
 ## <a name="configure-maintenance-window-during-database-creation"></a>Karbantartási időszak konfigurálása az adatbázisok létrehozásakor 
 

@@ -25,10 +25,8 @@
       href: tutorial-restrict-network-access-to-resources.md
     - name: Virtuális hálózatok csatlakoztatása
       href: tutorial-connect-virtual-networks-portal.md
-    - name: NAT-átjáró létrehozása
-      href: quickstart-create-nat-gateway-portal.md
     - name: NAT-átjáró létrehozása és ellenőrzése
-      href: tutorial-create-validate-nat-gateway-portal.md
+      href: tutorial-create-nat-gateway-portal.md
 - name: Példák
   items:
     - name: Azure CLI

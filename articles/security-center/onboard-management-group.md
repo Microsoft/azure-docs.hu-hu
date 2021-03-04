@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2020
 ms.author: memildin
-ms.openlocfilehash: 31472b0a0eedee03d5cfcb6ff47a97033a8c78e0
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 9db276425d510316c41126f8e942a1e2a362ea35
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98796069"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101290"
 ---
 # <a name="enable-security-center-on-all-subscriptions-in-a-management-group"></a>Security Center engedélyezése egy felügyeleti csoportban lévő összes előfizetésben
 
@@ -60,7 +60,7 @@ A Azure Policy definíciójának módosítására többféle lehetőség is van:
     A megadott definíció az alábbi "díjszabási" beállítások *egyikét* határozza meg a megfelelőként. Azt jelenti, hogy az előfizetés "standard" vagy "Free" értékre van beállítva.
 
     > [!TIP]
-    > Ha engedélyezve van egy Azure Defender-csomag, azt a "standard" beállításban ismertetjük. Ha le van tiltva, az "ingyenes". [További információ az Azure Defender-csomagokról](security-center-pricing.md).
+    > Ha engedélyezve van egy Azure Defender-csomag, azt egy szabályzat-definíció írja le a "standard" beállításnál. Ha le van tiltva, az "ingyenes". A csomagok közötti különbségekről további információt a [Security Center Free vs Azure Defender engedélyezése](security-center-pricing.md)című témakörben talál. 
 
     ```
     "existenceCondition": {
@@ -98,4 +98,4 @@ A Azure Policy definíciójának módosítására többféle lehetőség is van:
 Most, hogy betöltött egy teljes felügyeleti csoportot, engedélyezze az Azure Defender speciális védelmét. 
 
 > [!div class="nextstepaction"]
-> [Az Azure Defender engedélyezése](security-center-pricing.md#enable-azure-defender)
+> [Az Azure Defender engedélyezése](enable-azure-defender.md)

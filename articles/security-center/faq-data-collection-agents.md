@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 754e9516c5fd47668cbff5bdc64b8dfdeed050d8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: dc277d71f8f39b342095d0ac14b592eb866984d5
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705134"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100525"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Gyakori kérdések – az adatgyűjtés, az ügynökök és a munkaterületek kérdései
 
@@ -33,7 +33,7 @@ Nem. A Security Center által létrehozott munkaterületek, miközben a csomópo
 
 - Az **Azure Defender on** – Security Center engedélyezi a "biztonsági" megoldást az alapértelmezett munkaterületen.
 
-További információ a díjszabásról: [Security Center díjszabása](https://azure.microsoft.com/pricing/details/security-center/).
+A díjszabással kapcsolatos részletekért a választott pénznemben és a régiója szerint tekintse meg a [Security Center díjszabását](https://azure.microsoft.com/pricing/details/security-center/).
 
 > [!NOTE]
 > A Security Center által létrehozott munkaterületek log Analytics árképzési szintje nem befolyásolja Security Center számlázást.

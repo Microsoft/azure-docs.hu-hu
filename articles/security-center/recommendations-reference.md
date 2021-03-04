@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/16/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: ecc9279b66f7dca431cc8c33a47b07a6349d8ed6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d484802b35ffec26d1248e51b365ac9041fc7934
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100574492"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100406"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Biztonsági javaslatok – gyorsútmutató
 
@@ -49,7 +49,7 @@ A biztonságos pontszám a befejezett Security Center javaslatok számán alapul
 |Ajánlás|Leírás & kapcsolódó szabályzat|Súlyosság|Gyors javítás engedélyezve? ([További információ](security-center-remediate-recommendations.md#quick-fix-remediation))|Erőforrás típusa|
 |----|----|----|----|----|
 |**A App Serviceshoz való hozzáférést korlátozni kell**|Korlátozza a hozzáférést a App Services a hálózati konfiguráció módosításával, hogy megtagadja a bejövő forgalmat a túl széles tartományokból.<br>(Kapcsolódó szabályzat: [előzetes verzió]: a App Services elérését korlátozni kell)|Magas|N|App Service|
-|**A IaaS-NSG lévő webalkalmazások szabályait meg kell erősíteni**|Megerősítheti a webalkalmazásokat futtató virtuális gépek hálózati biztonsági csoportját (NSG) olyan NSG-szabályokkal, amelyek túlzottan engedékenyek a webalkalmazási portok tekintetében.<br>(Kapcsolódó szabályzat: a IaaS webalkalmazásaihoz tartozó NSG-szabályokat meg kell erősíteni)|Magas|N|Virtuális gép|
+|**A IaaS-NSG lévő webalkalmazások szabályait meg kell erősíteni**|Megerősítheti a webalkalmazásokat futtató virtuális gépek hálózati biztonsági csoportját (NSG), valamint a webalkalmazás-portok tekintetében túlzottan megengedhető NSG-szabályokat.<br>(Kapcsolódó szabályzat: a IaaS webalkalmazásaihoz tartozó NSG-szabályokat meg kell erősíteni)|Magas|N|Virtuális gép|
 |**A pod biztonsági házirendeket úgy kell meghatározni, hogy csökkentse a támadási vektort a szükségtelen alkalmazási jogosultságok eltávolításával (előzetes verzió)**|Határozza meg a pod biztonsági szabályzatokat a szükségtelen alkalmazás-jogosultságok eltávolításával a támadási vektor csökkentése érdekében. Ajánlott a pod biztonsági szabályzatok konfigurálása, hogy a hüvelyek csak azokhoz az erőforrásokhoz férhessenek hozzá, amelyekhez hozzáférésük engedélyezett.<br>(Kapcsolódó szabályzat: [előzetes verzió]: a pod biztonsági szabályzatokat meg kell határozni a Kubernetes-szolgáltatásokon)|Közepes|N|Számítási erőforrások (tárolók)|
 |**A IoT biztonsági modul Azure Security Center telepítése a IoT-eszközök láthatóságának megismeréséhez**|Telepítse Azure Security Center a IoT biztonsági modulhoz, és ismerkedjen meg a IoT-eszközökkel.|Alacsony|N|IoT-eszköz|
 
@@ -57,5 +57,5 @@ A biztonságos pontszám a befejezett Security Center javaslatok számán alapul
 
 A javaslatokkal kapcsolatos további tudnivalókért tekintse meg a következőket:
 
-- [Biztonsági javaslatok az Azure Security Centerben](security-center-recommendations.md)
-- [Hálózat védelme az Azure Security Centerben](security-center-network-recommendations.md)
+- [Mik azok a biztonsági szabályzatok, kezdeményezések és javaslatok?](security-policy-concept.md)
+- [Biztonsági javaslatok áttekintése](security-center-recommendations.md)

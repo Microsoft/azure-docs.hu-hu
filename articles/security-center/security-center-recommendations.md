@@ -1,57 +1,22 @@
 ---
 title: Biztonsági javaslatok az Azure Security Centerben
 description: Ez a dokumentum részletesen ismerteti, hogyan segíti az Azure Security Center az Azure-erőforrások védelmében és a biztonsági szabályzatoknak való megfelelésben.
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 86c50c9f-eb6b-4d97-acb3-6d599c06133e
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 3b2f111f83dbd731b69671e58d4bf9dc648a596f
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 57760443746e111750e74ef55fc18729f6ba32c4
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526506"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100338"
 ---
-# <a name="security-recommendations-in-azure-security-center"></a>Biztonsági javaslatok az Azure Security Centerben 
+# <a name="review-your-security-recommendations"></a>Biztonsági javaslatok áttekintése
 
 Ez a témakör azt ismerteti, hogyan lehet megtekinteni és értelmezni a Azure Security Centerban található javaslatokat az Azure-erőforrások védelmének elősegítése érdekében.
-
-
-## <a name="what-are-security-recommendations"></a>Mik azok a biztonsági javaslatok?
-
-Security Center rendszeresen elemzi az Azure-erőforrások biztonsági állapotát az esetleges biztonsági rések azonosítása érdekében. Ezután javaslatokat tesz a biztonsági rések megoldására.
-
-A javaslatok olyan műveletek, amelyekkel biztonságossá teheti és megerősítheti az erőforrásait. 
-
-Az egyes javaslatok a következőket biztosítják:
-
-- A probléma rövid leírása
-- A javaslat megvalósításának végrehajtásához szükséges szervizelési lépések
-- Az érintett erőforrások
-
-## <a name="how-does-microsoft-decide-what-needs-securing-and-hardening"></a>Hogyan dönti el a Microsoft a biztonság és a megerősítés szükségletét?
-
-Security Center javaslatai az Azure biztonsági Teljesítményteszten alapulnak. Szinte minden javaslat rendelkezik egy alapul szolgáló házirenddel, amely a teljesítményteszt követelményének megfelelően van származtatva.
-
-Az Azure biztonsági teljesítményteszt a Microsoft által létrehozott, Azure-specifikus irányelvek a biztonsági és megfelelőségi szabályzatok közös megfelelőségi keretrendszereken alapuló bevált eljárásaihoz. Ez a széles körben tiszteletben lévő teljesítményteszt a [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) és a [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) által vezérelt vezérlőkre épül, és a felhő-központú biztonságra összpontosít. További tudnivalók az [Azure-biztonsági teljesítménytesztről](../security/benchmarks/introduction.md).
-
-A javaslatok részleteinek áttekintéséhez gyakran hasznos, ha látni szeretné a mögöttes szabályzatot. A szabályzat által támogatott minden javaslat esetében a javaslat részletei lapon található **házirend-definíció megtekintése** hivatkozásra kattintva lépjen közvetlenül a megfelelő szabályzat Azure Policy bejegyzésére:
-
-:::image type="content" source="media/release-notes/view-policy-definition.png" alt-text="Hivatkozás Azure Policy lapra a javaslatot támogató konkrét szabályzathoz":::
-
-Ezzel a hivatkozással megtekintheti a szabályzat definícióját, és áttekintheti az értékelési logikát. 
-
-Ha áttekinti a javaslatok listáját a [biztonsági javaslatok hivatkozási útmutatójában](recommendations-reference.md), akkor a szabályzat-definíciós lapokra mutató hivatkozásokat is láthatja:
-
-:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="Egy adott szabályzat Azure Policy oldalának elérése közvetlenül a Azure Security Center javaslatok hivatkozási oldaláról":::
 
 ## <a name="monitor-recommendations"></a>Javaslatok figyelése <a name="monitor-recommendations"></a>
 

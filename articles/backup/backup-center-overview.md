@@ -3,12 +3,12 @@ title: A Backup Center áttekintése
 description: Ez a cikk áttekintést nyújt az Azure-hoz készült Backup Centerről.
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: 0acf3a17e41b89b462a7fb07c5d3ebd55d4052af
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fee7bf41d0c72238231d9c4aba52a26cac9fb960
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101725373"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099998"
 ---
 # <a name="overview-of-backup-center"></a>A Backup Center áttekintése
 
@@ -27,7 +27,7 @@ A Backup Center legfontosabb előnyei a következők:
 
 ## <a name="get-started"></a>Bevezetés
 
-A Backup Center használatának megkezdéséhez keresse meg a Azure Portal **biztonsági mentési központot** , és navigáljon a **Backup Center (előzetes verzió)** irányítópultra.
+A Backup Center használatának megkezdéséhez keresse meg a Azure Portal **biztonsági mentési központot** , és navigáljon a **Backup Center** irányítópultra.
 
 ![Backup Center – keresés](./media/backup-center-overview/backup-center-search.png)
 
@@ -37,7 +37,7 @@ Az első megjelenített képernyő az **Áttekintés**. Két csempét tartalmaz 
 
 A **feladatok** csempén az elmúlt 24 órában az összes biztonsági mentési és visszaállítással kapcsolatos feladat összefoglaló nézete látható. A befejezett, sikertelen és folyamatban lévő feladatok számával kapcsolatos információkat is megtekintheti. A csempe bármelyik számának kiválasztásával további információkat tekinthet meg egy adott adatforrás-típussal, a művelet típusával és állapotával kapcsolatos feladatokkal kapcsolatban.
 
-A **biztonsági mentési példányok** csempén megjelenik az összes biztonsági mentési példány összesített nézete a Backup-birtokon. Megtekintheti például a helyreállítható állapotú biztonságimásolat-példányok számát a védelemre beállított példányok számával szemben. A csempe bármelyik számának kiválasztásával további információkat tekinthet meg a biztonsági mentési példányokról egy adott adatforrás-típus és egy védelmi állapot tekintetében.
+A **biztonsági mentési példányok** csempén megjelenik az összes biztonsági mentési példány összesített nézete a Backup-birtokon. Megtekintheti például a helyreállítható állapotú biztonságimásolat-példányok számát a védelemre beállított példányok számával szemben. A csempe bármelyik számának kiválasztásával további információkat tekinthet meg a biztonsági mentési példányokról egy adott adatforrás-típus és egy védelmi állapot tekintetében. Megtekintheti az összes olyan biztonsági mentési példányt is, amelynek az alapjául szolgáló adatforrás nem található (az adatforrás törölhető, vagy előfordulhat, hogy nincs hozzáférése az adatforráshoz).
 
 Tekintse meg a következő videót a Backup Center képességeinek megismeréséhez:
 

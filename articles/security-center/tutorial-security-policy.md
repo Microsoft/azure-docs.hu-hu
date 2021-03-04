@@ -1,44 +1,32 @@
 ---
 title: A biztonsági szabályzatok használata | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan használhatók a biztonsági házirendek a Azure Security Centerban.
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
-ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 19128f0372f9a5bda0d16155167a507eccaf436a
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 6ecedc20cf6924a82b6b4640d3caa75bc5958de0
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986602"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101324"
 ---
 # <a name="manage-security-policies"></a>Biztonsági szabályzatok kezelése
 
 Ez a cikk ismerteti a biztonsági házirendek konfigurálásának módját, valamint azt, hogy miként lehet megtekinteni őket a Security Centerban. 
 
-## <a name="introduction-to-security-policies"></a>A biztonsági szabályzatok bemutatása
+## <a name="who-can-edit-security-policies"></a>Kik módosíthatják a biztonsági házirendeket?
 
-A biztonsági szabályzat határozza meg a számítási feladatok kívánt konfigurációját, és segít biztosítani, hogy megfeleljen a vállalat vagy a szabályozók biztonsági követelményeinek.
+A biztonsági szabályzatokat a Azure Policy-portálon, REST API vagy a Windows PowerShell használatával szerkesztheti.
 
-A Azure Security Center a kiválasztott szabályzatok alapján hozza meg a biztonsági javaslatait. Security Center házirendek a Azure Policyban létrehozott házirend-kezdeményezéseken alapulnak. A [Azure Policy](../governance/policy/overview.md) segítségével kezelheti a házirendeket, és házirendeket állíthat be a felügyeleti csoportok és több előfizetés között.
+A Security Center Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) használ, amely beépített szerepköröket biztosít az Azure-felhasználók,-csoportok és-szolgáltatások számára. Security Center megnyitásakor a felhasználók csak az elérhető erőforrásokhoz kapcsolódó információkat látják. Ez azt jelenti, hogy a felhasználók a *tulajdonos*, *közreműködő* vagy *olvasó* szerepkört rendelik hozzá az erőforrás előfizetéséhez. Két konkrét Security Center szerepkör is létezik:
 
-Security Center a következő lehetőségeket kínálja a biztonsági házirendek használatához:
-
-* **A beépített alapértelmezett házirend megtekintése és szerkesztése** – a Security Center engedélyezésekor az "Azure biztonsági teljesítményteszt" nevű kezdeményezés automatikusan hozzá van rendelve az összes Security Center regisztrált előfizetéshez. A kezdeményezés testreszabásához engedélyezheti vagy letilthatja az egyes házirendeket. Tekintse meg a [beépített biztonsági szabályzatok](./policy-reference.md) listáját, amelyből megismerheti a rendelkezésre álló lehetőségeket.
-
-* **Saját egyéni szabályzatok hozzáadása** – Ha testre szeretné szabni az előfizetésre alkalmazott biztonsági kezdeményezéseket, akkor a Security Centeron belül megteheti. Ezután javaslatokat fog kapni, ha a gépek nem követik a létrehozott házirendeket. Az egyéni házirendek létrehozásával és hozzárendelésével kapcsolatos utasításokért lásd: [egyéni biztonsági házirendek használata](custom-security-policies.md).
-
-* **Szabályozási megfelelőségi szabályzatok hozzáadása** – a Security Center szabályozási megfelelőségi irányítópultja egy adott szabvány vagy szabályozás (például Azure CIS, NIST SP 800-53 R4, Swift CSP CSCF-v2020) kontextusában jeleníti meg a környezet összes értékelésének állapotát. További információ: [a szabályozás megfelelőségének javítása](security-center-compliance-dashboard.md).
-
+- **Biztonsági olvasó**: jogosult a Security Center elemek, például javaslatok, riasztások, szabályzatok és állapotok megtekintésére. Nem lehet módosítani.
+- **Biztonsági rendszergazda**: a *biztonsági olvasóval* megegyező megtekintési jogosultsággal rendelkezik. A a biztonsági házirend frissítése és a riasztások elvetése is megtehető.
 
 ## <a name="manage-your-security-policies"></a>Biztonsági szabályzatok kezelése
 
@@ -59,14 +47,13 @@ Biztonsági szabályzatok megtekintése a Security Centerben:
     > [!NOTE]
     > Ha az alapértelmezett szabályzat mellett "MG örökölt" címkével rendelkezik, az azt jelenti, hogy a szabályzat hozzá van rendelve egy felügyeleti csoporthoz, és a megtekintett előfizetés örökli.
 
-
 1. Válasszon az ezen az oldalon elérhető lehetőségek közül:
 
-    1. Az iparági szabályzatokkal való munkavégzéshez válassza a **további szabványok hozzáadása** lehetőséget. További információ: [frissítés a dinamikus megfelelőségi csomagokra](update-regulatory-compliance-packages.md).
+    1. Az iparági szabványokkal való együttműködéshez válassza a **további szabványok hozzáadása** lehetőséget. További információ: [a szabványok készletének testreszabása a szabályozási megfelelőségi irányítópulton](update-regulatory-compliance-packages.md).
 
-    1. Egyéni kezdeményezések hozzárendeléséhez és kezeléséhez válassza az **Egyéni kezdeményezések hozzáadása** lehetőséget. További információ: [egyéni biztonsági házirendek használata](custom-security-policies.md).
+    1. Egyéni kezdeményezések hozzárendeléséhez és kezeléséhez válassza az **Egyéni kezdeményezések hozzáadása** lehetőséget. További információ: [egyéni biztonsági kezdeményezések és házirendek használata](custom-security-policies.md).
 
-    1. Az alapértelmezett házirend megtekintéséhez és szerkesztéséhez válassza a **hatályos házirend megtekintése** lehetőséget, és folytassa az alább leírtak szerint. 
+    1. Az alapértelmezett kezdeményezés megtekintéséhez és szerkesztéséhez válassza a **hatályos házirend megtekintése** lehetőséget, és folytassa az alább leírtak szerint. 
 
         :::image type="content" source="./media/security-center-policies/policy-screen.png" alt-text="Érvényes házirend képernyő":::
 
@@ -80,16 +67,6 @@ Biztonsági szabályzatok megtekintése a Security Centerben:
 
        > [!NOTE]
        > A hozzárendelt házirendek megtekintésekor több hozzárendelést láthat, és megtekintheti, hogy az egyes hozzárendelések hogyan legyenek konfigurálva.
-
-
-## <a name="who-can-edit-security-policies"></a>Kik módosíthatják a biztonsági házirendeket?
-
-A biztonsági szabályzatokat a Azure Policy-portálon, REST API vagy a Windows PowerShell használatával szerkesztheti.
-
-A Security Center Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) használ, amely beépített szerepköröket biztosít az Azure-felhasználók,-csoportok és-szolgáltatások számára. Security Center megnyitásakor a felhasználók csak az elérhető erőforrásokhoz kapcsolódó információkat látják. Ez azt jelenti, hogy a felhasználók a *tulajdonos*, *közreműködő* vagy *olvasó* szerepkört rendelik hozzá az erőforrás előfizetéséhez. Két konkrét Security Center szerepkör is létezik:
-
-- **Biztonsági olvasó**: jogosult a Security Center elemek, például javaslatok, riasztások, szabályzatok és állapotok megtekintésére. Nem lehet módosítani.
-- **Biztonsági rendszergazda**: a *biztonsági olvasóval* megegyező megtekintési jogosultsággal rendelkezik. A a biztonsági házirend frissítése és a riasztások elvetése is megtehető.
 
 
 ## <a name="disable-security-policies-and-disable-recommendations"></a>Biztonsági házirendek letiltása és javaslatok letiltása
@@ -129,7 +106,7 @@ A javaslatokkal kapcsolatos további információkért lásd: [biztonsági javas
 ## <a name="next-steps"></a>Következő lépések
 Ez az oldal a biztonsági szabályzatokat ismerteti. A kapcsolódó információkat a következő lapokon tekintheti meg:
 
-- [Ismerje meg, hogyan állíthatja be a szabályzatokat a PowerShell használatával](../governance/policy/assign-policy-powershell.md) - 
-- [Megtudhatja, hogyan szerkesztheti a biztonsági házirendeket Azure Policy](../governance/policy/tutorials/create-and-manage.md) - 
-- [Megtudhatja, hogyan állíthatja be a szabályzatot az előfizetések és a felügyeleti csoportok között Azure Policy használatával](../governance/policy/overview.md).
+- [Ismerje meg, hogyan állíthatja be a szabályzatokat a PowerShell használatával](../governance/policy/assign-policy-powershell.md)
+- [Megtudhatja, hogyan szerkesztheti a biztonsági házirendeket Azure Policy](../governance/policy/tutorials/create-and-manage.md)
+- [Megtudhatja, hogyan állíthatja be a szabályzatot az előfizetések és a felügyeleti csoportok között a Azure Policy használatával](../governance/policy/overview.md)
 - [Megtudhatja, hogyan engedélyezheti Security Center a felügyeleti csoportban lévő összes előfizetéshez](onboard-management-group.md)

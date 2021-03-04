@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: memildin
-ms.openlocfilehash: 24822777b06fadf87ca446d9b7ff8ba4df34adc5
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: b19a7c156abf32e2a0f6d70717145a6ed5ab42ce
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007676"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099675"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Biztonsági pontszám az Azure Security Centerben
 
@@ -42,99 +42,6 @@ A biztonság növelése érdekében tekintse át a Security Center ajánlásaina
 A javaslatok **biztonsági vezérlőkbe** vannak csoportosítva. Az egyes vezérlők a kapcsolódó biztonsági javaslatok logikai csoportjai, és a sebezhető támadási felületeket tükrözik. A pontszám csak akkor javul, ha egy vezérlőelemen belül egy adott erőforráshoz tartozó *összes* javaslatot szervizeli. Ha szeretné megtudni, hogy a szervezet milyen jól védi az egyes támadási felületeket, tekintse át az egyes biztonsági vezérlők pontszámait.
 
 További információ: [a biztonságos pontszám kiszámítása](secure-score-security-controls.md#how-your-secure-score-is-calculated) alább. 
-
-
-## <a name="access-your-secure-score"></a>Hozzáférés a biztonságos pontszámhoz
-
-Az alábbi szakaszokban leírtak szerint megtalálhatja a teljes biztonsági pontszámot, valamint a pontszám/előfizetés alapján a Azure Portal vagy a programozott módon:
-
-- [A portál biztonságos pontszámának beolvasása](#get-your-secure-score-from-the-portal)
-- [Szerezze be biztonságos pontszámát a REST API](#get-your-secure-score-from-the-rest-api)
-- [Az Azure Resource Graph (ARG) biztonságos pontszámának beolvasása](#get-your-secure-score-from-azure-resource-graph-arg)
-
-### <a name="get-your-secure-score-from-the-portal"></a>A portál biztonságos pontszámának beolvasása
-
-Security Center a pontszám kiemelten jelenik meg a portálon: ez az első fő csempe az Security Center áttekintés oldalon. A csempe kiválasztásával a dedikált biztonságos pontszám oldalra kerül, ahol a pontszám az előfizetés alapján lebontva jelenik meg. Válasszon ki egy előfizetést, és tekintse meg a rangsorolt javaslatok részletes listáját, valamint azt, hogy milyen hatással lehet a szervizelését rájuk az előfizetés pontszáma. 
-
-Az emlékeztetőhöz a biztonságos pontszám a Security Center portáljának oldalain a következő helyekről jelenik meg.
-
-- Security Center **áttekintésében** lévő csempén (fő irányítópult):
-
-    :::image type="content" source="./media/secure-score-security-controls/score-on-main-dashboard.png" alt-text="A biztonságos pontszám Security Center irányítópultján":::
-
-- A dedikált **biztonságos pontszám** lapon az előfizetés és a felügyeleti csoportok biztonságos pontszáma látható:
-
-    :::image type="content" source="./media/secure-score-security-controls/score-on-dedicated-dashboard.png" alt-text="Az előfizetések biztonságos pontszáma Security Center biztonságos pontszám oldalon":::
-
-    :::image type="content" source="./media/secure-score-security-controls/secure-score-management-groups.png" alt-text="A felügyeleti csoportok biztonságos pontszáma Security Center biztonságos pontszám lapján":::
-
-    > [!NOTE]
-    > Azok a felügyeleti csoportok, amelyekhez nem rendelkezik megfelelő engedélyekkel, a pontszámát "korlátozott" értékként jelenítik meg. 
-
-- A **javaslatok** lap tetején:
-
-    :::image type="content" source="./media/secure-score-security-controls/score-on-recommendations-page.png" alt-text="A biztonságos pontszám Security Center a javaslatok oldalon":::
-
-### <a name="get-your-secure-score-from-the-rest-api"></a>Szerezze be biztonságos pontszámát a REST API
-
-A pontszám a Secure score API-n keresztül érhető el. Az API-módszerek lehetővé teszik az adatlekérdezés rugalmasságát és a biztonságos pontszámok saját jelentési mechanizmusának elkészítését az idő múlásával. Használhatja például a [Secure scores API](/rest/api/securitycenter/securescores) -t egy adott előfizetés pontszámának lekéréséhez. Emellett a [Secure score Controls API](/rest/api/securitycenter/securescorecontrols) használatával is listázhatja az előfizetések biztonsági vezérlőit és aktuális pontszámát.
-
-![Egyetlen biztonságos pontszám beolvasása az API-n keresztül](media/secure-score-security-controls/single-secure-score-via-api.png)
-
-A biztonságos pontszám API-ra épülő eszközökre vonatkozó példákért tekintse meg [a GitHub-Közösség biztonságos pontszám területét](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score). 
-
-### <a name="get-your-secure-score-from-azure-resource-graph-arg"></a>Az Azure Resource Graph (ARG) biztonságos pontszámának beolvasása
-
-Az Azure Resource Graph azonnali hozzáférést biztosít az erőforrás-információkhoz a felhőalapú környezetekben, robusztus szűrési, csoportosítási és rendezési képességekkel. Az Azure-előfizetések programozott vagy a Azure Portalon keresztüli lekérdezésének gyors és hatékony módja. [További információ az Azure Resource Graph-ról](../governance/resource-graph/index.yml).
-
-Az ARG-sel rendelkező több előfizetés biztonságos pontszámának elérése:
-
-1. A Azure Portal nyissa meg az **Azure Resource Graph Explorert**.
-
-    :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="Az Azure Resource Graph Explorer * * ajánlási oldalának elindítása" :::
-
-1. Adja meg a Kusto-lekérdezést (az alábbi példák használatával útmutatást talál).
-
-    - Ez a lekérdezés visszaadja az előfizetés-azonosítót, az aktuális pontszámot a pontokban és százalékban, valamint az előfizetés maximális pontszámát. 
-
-        ```kusto
-        SecurityResources 
-        | where type == 'microsoft.security/securescores' 
-        | extend current = properties.score.current, max = todouble(properties.score.max)
-        | project subscriptionId, current, max, percentage = ((current / max)*100)
-        ```
-
-    - Ez a lekérdezés az összes biztonsági vezérlő állapotát adja vissza. Az egyes vezérlőknél a nem megfelelő állapotú erőforrások számát, az aktuális pontszámot és a maximális pontszámot kell megszereznie. 
-
-        ```kusto
-        SecurityResources 
-        | where type == 'microsoft.security/securescores/securescorecontrols'
-        | extend SecureControl = properties.displayName, unhealthy = properties.unhealthyResourceCount, currentscore = properties.score.current, maxscore = properties.score.max
-        | project SecureControl , unhealthy, currentscore, maxscore
-        ```
-
-1. Válassza a **lekérdezés futtatása** lehetőséget.
-
-
-
-
-## <a name="tracking-your-secure-score-over-time"></a>A biztonságos pontszám nyomon követése az idő függvényében
-
-Ha Ön egy Pro-fiókkal rendelkező Power BI felhasználó, akkor a biztonságos pontszámot az **idő múlásával** Power bi irányítópulton követheti nyomon a biztonságos pontszámot az idő múlásával, és megvizsgálhatja a módosításokat.
-
-> [!TIP]
-> Ezt az irányítópultot és más eszközöket is megtalálhatja a biztonságos programozott módon való munkavégzéshez a GitHubon a Azure Security Center Közösség dedikált területén: https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score
-
-Az irányítópulton a következő két jelentés található, amelyek segítenek a biztonsági állapot elemzésében:
-
-- **Erőforrások összegzése** – az erőforrások állapotával kapcsolatos összesített információkat biztosít.
-- **Biztonságos pontszámok összegzése** – összesített információkat biztosít a pontszám előrehaladásával kapcsolatban. A pontszám változásainak megtekintéséhez használja a "biztonságos pontszám az idő múlásával egy időben" diagramot. Ha drámai változást tapasztal a pontszámban, tekintse meg a "a biztonságos pontszámra hatással lehet a védett pontok" táblázatot a módosítást okozó lehetséges változásokhoz. Ez a táblázat a törölt erőforrásokat, az újonnan telepített erőforrásokat, illetve az egyik javaslatban a biztonsági állapotukban megváltoztatott erőforrásokat ismerteti.
-
-:::image type="content" source="./media/secure-score-security-controls/power-bi-secure-score-dashboard.png" alt-text="A választható biztonsági pontszám az idő múlásával Power BI irányítópult a biztonságos pontszám nyomon követéséhez az idő múlásával és a változások kivizsgálásával":::
-
-
-
-
 
 ## <a name="how-your-secure-score-is-calculated"></a>A biztonságos pontszám kiszámításának módja 
 
@@ -221,3 +128,7 @@ Ez a cikk a biztonságos pontszámot és az általa bevezetett biztonsági ellen
 - [Tudnivalók a javaslatok különböző elemeiről](security-center-recommendations.md)
 - [Útmutató a javaslatok megoldásához](security-center-remediate-recommendations.md)
 - [A GitHub-alapú eszközök megtekintése a biztonságos pontszám használatával történő programozott munkához](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)
+
+
+> [!div class="nextstepaction"]
+> [A biztonságos pontszám elérése és nyomon követése](secure-score-access-and-track.md)

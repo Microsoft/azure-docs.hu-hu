@@ -3,17 +3,18 @@ title: Vezérlőelemek hozzáadása Android-térképhez | Microsoft Azure térk�
 description: Nagyítás-vezérlés, szurok-vezérlőelem hozzáadása, a vezérlés elforgatása és a stílus kiválasztása a Microsoft Azure Maps Android SDK-ban.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 02/19/2021
+ms.date: 02/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 8224192ed0d13af2ff6ac60aac5aa928589ff01a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: 90d037fc02bdc1c4d6fe682386790561c890c1e6
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054890"
+ms.locfileid: "102100219"
 ---
 # <a name="add-controls-to-a-map-android-sdk"></a>Vezérlőelemek hozzáadása térképhez (Android SDK)
 
@@ -23,9 +24,23 @@ Ez a cikk bemutatja, hogyan adhat hozzá FELHASZNÁLÓIFELÜLET-vezérlőket a t
 
 A nagyítás-vezérlés gombokkal bővítheti a térképet és a nagyítást. A következő mintakód létrehozza az osztály egy példányát `ZoomControl` , és hozzáadja azt egy térképhez.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
+//Construct a zoom control and add it to the map.
 map.controls.add(new ZoomControl());
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Construct a zoom control and add it to the map.
+map.controls.add(ZoomControl())
+```
+
+::: zone-end
 
 Az alábbi képernyőképen egy térképen betöltött nagyítási vezérlő látható.
 
@@ -35,10 +50,23 @@ Az alábbi képernyőképen egy térképen betöltött nagyítási vezérlő lá
 
 A Pitch vezérlő gombok hozzáadásával megdöntheti, hogy a szurok a horizonthoz viszonyítva legyen-e leképezve. A következő mintakód létrehozza az osztály egy példányát `PitchControl` , és hozzáadja azt egy térképhez.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 //Construct a pitch control and add it to the map.
 map.controls.add(new PitchControl());
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Construct a pitch control and add it to the map.
+map.controls.add(PitchControl())
+```
+
+::: zone-end
 
 Az alábbi képernyőképen egy térképen betöltött szurok-vezérlőelem látható.
 
@@ -48,10 +76,23 @@ Az alábbi képernyőképen egy térképen betöltött szurok-vezérlőelem lát
 
 Az iránytű vezérlőelem egy gombot helyez el a Térkép elforgatásához. A következő mintakód létrehozza az osztály egy példányát `CompassControl` , és hozzáadja azt egy térképhez.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 //Construct a compass control and add it to the map.
 map.controls.add(new CompassControl());
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Construct a compass control and add it to the map.
+map.controls.add(CompassControl())
+```
+
+::: zone-end
 
 Az alábbi képernyőképen egy térképen betöltött iránytű-vezérlő látható.
 
@@ -61,10 +102,23 @@ Az alábbi képernyőképen egy térképen betöltött iránytű-vezérlő láth
 
 Egy adatforgalom-vezérléssel egy gomb jelenik meg, amely a Térkép forgalmi adatok láthatóságát adja meg. A következő mintakód létrehozza az osztály egy példányát `TrafficControl` , és hozzáadja azt egy térképhez.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 //Construct a traffic control and add it to the map.
 map.controls.add(new TrafficControl());
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Construct a traffic control and add it to the map.
+map.controls.add(TrafficControl())
+```
+
+::: zone-end
 
 Az alábbi képernyőképen egy térképen betöltött forgalom vezérlőelem látható.
 
@@ -73,6 +127,8 @@ Az alábbi képernyőképen egy térképen betöltött forgalom vezérlőelem l�
 ## <a name="a-map-with-all-controls"></a>Térkép az összes vezérlővel
 
 Több vezérlő helyezhető egy tömbbe, és a térképhez mind egyszerre, mind a Térkép ugyanazon területén helyezhető el, hogy egyszerűbbé váljon a fejlesztés. A következő lépés a szabványos navigációs vezérlőket hozzáadja a térképhez ezzel a módszerrel.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 map.controls.add(
@@ -84,6 +140,23 @@ map.controls.add(
     }
 );
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+map.controls.add(
+    arrayOf<Control>(
+        ZoomControl(),
+        CompassControl(),
+        PitchControl(),
+        TrafficControl()
+    )
+)
+```
+
+::: zone-end
 
 Az alábbi képernyőképen a térképen betöltött összes vezérlő látható. Vegye figyelembe, hogy a térképhez hozzáadott sorrend a megjelenő sorrend.
 

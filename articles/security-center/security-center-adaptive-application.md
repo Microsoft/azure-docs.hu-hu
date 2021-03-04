@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: b18b498f250e9ff62180ba21c3bcbda562b13b8c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: be37f2d361b6bb164a3e01b9ac6f115294137dd0
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101735862"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099539"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Az adaptív alkalmazás-vezérlőelemek használatával csökkentheti a gépek támadási felületét
 
@@ -193,6 +193,12 @@ A problémák megoldásához:
 
 1. További részletekért és az érintett gépek listájáért válassza ki a riasztást.
 
+    A riasztások lap a riasztások további részleteit jeleníti meg, és a **lépéseket** a fenyegetés enyhítésére vonatkozó javaslatokkal ismerteti.
+
+    :::image type="content" source="media/security-center-adaptive-application/adaptive-application-alerts-start-time.png" alt-text="Az Adaptive Application Controls riasztások indítási időpontja a ":::
+
+    > [!NOTE]
+    > Az adaptív alkalmazás-vezérlőelemek tizenkét óránként egyszer kiszámítják az eseményeket. A riasztások lapon látható "tevékenység kezdési időpontja" az az idő, amikor az adaptív alkalmazások vezérlői létrehozták a riasztást, **nem** pedig a gyanús folyamat aktív időpontját.
 
 
 ## <a name="move-a-machine-from-one-group-to-another"></a>Gép áthelyezése egyik csoportból a másikba

@@ -7,18 +7,19 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 10/20/2020
 ms.author: allensu
-ms.openlocfilehash: a7eca29dc9390306ac6ad4e66eec75a25c2d33ff
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.custom: fasttrack-edit
+ms.openlocfilehash: dfbd1f4077caa2fd80a00e3cf950735363a0a971
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522158"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099896"
 ---
 # <a name="tutorial---connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-portal"></a>Oktatóanyag – kapcsolódás Azure SQL Serverhez Azure Private Endpoint-Azure Portal használatával
 
 Az Azure privát végpontja az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a virtuális gépek (VM-EK) számára, hogy magánjellegű módon kommunikáljanak a privát kapcsolati erőforrásokkal.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hozzon létre egy virtuális hálózatot és egy megerősített gazdagépet.
@@ -86,7 +87,7 @@ A megerősített gazdagép a magánhálózati végpont teszteléséhez a virtuá
 
 8. Válassza a **felülvizsgálat + létrehozás** lapot, vagy kattintson a **felülvizsgálat + létrehozás** gombra.
 
-9. Kattintson a **Létrehozás** gombra.
+9. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
@@ -259,6 +260,8 @@ Ebben az oktatóanyagban a következőket hozta létre:
 * Azure SQL Server magánhálózati végponttal.
 
 A virtuális gépet arra használta, hogy biztonságosan tesztelje a kapcsolatot az SQL Serverhez a magánhálózati végponton keresztül.
+
+A következő lépésként a webalkalmazás az Azure SQL Database architektúra-forgatókönyvhöz való [privát kapcsolattal](https://docs.microsoft.com/azure/architecture/example-scenario/private-web-app/private-web-app) is érdekli, amely a virtuális hálózaton kívül egy webalkalmazást kapcsol össze egy adatbázis privát végpontján.
 
 Megtudhatja, hogyan hozhat létre privát hivatkozási szolgáltatást:
 > [!div class="nextstepaction"]

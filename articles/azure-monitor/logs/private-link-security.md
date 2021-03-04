@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: bf9ffe3640c704fb1da51f6f9c2fe42ca5d46851
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 65af5810152034fd7b6014041edd07835eebd194
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102047553"
+ms.locfileid: "102101477"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Hálózatok biztonságos csatlakoztatása az Azure Monitorhoz az Azure Private Linkkel
 
@@ -172,7 +172,8 @@ A létrehozott privát végpontnak most már négy DNS-zónával kell rendelkezn
 * privatelink-ODS-opinsights-Azure-com
 * privatelink-agentsvc-Azure-Automation-net
 
-Ezek a zónák adott Azure Monitor végpontokat képeznek le a privát IP-címekre a privát végpont VNet tartozó IP-címekből.
+> [!NOTE]
+> Ezen zónák mindegyike adott Azure Monitor végpontokat képez le a VNet IP-címeiből származó magánhálózati IP-címekre. Az alábbi képen látható IP-címek csak példák. A konfigurációnak Ehelyett privát IP-címeket kell megjelenítenie a saját hálózatáról.
 
 #### <a name="privatelink-monitor-azure-com"></a>Privatelink-monitor-Azure-com
 Ez a zóna a Azure Monitor által használt globális végpontokat fedi le, ami azt jelenti, hogy ezek a végpontok olyan kérelmeket szolgálnak ki, amelyek az összes erőforrást figyelembe veszik. Ehhez a zónához a következőhöz hozzárendelt végpontoknak kell szerepelniük:
@@ -218,7 +219,7 @@ A lap alsó részén lévő beállítások vezérlik a nyilvános hálózatokró
 
 ### <a name="exceptions"></a>Kivételek
 A fentiekben leírtak szerint a hozzáférés korlátozása nem vonatkozik a Azure Resource Managerra, ezért a következő korlátozásokkal rendelkezik:
-* Hozzáférés az adatokhoz – a nyilvános hálózatokból érkező lekérdezések letiltása vagy engedélyezése a legtöbb Log Analyticsi tapasztalatra vonatkozik, és egyes funkciók a Azure Resource Manageron keresztül kérdezik le az adatlekérdezéseket, ezért nem lesznek képesek az adatok lekérdezésére, kivéve, ha a privát kapcsolat beállításait a Resource Manager is alkalmazza (a szolgáltatás hamarosan elérhető). Ez magában foglalja például a Azure Monitor megoldásokat, a munkafüzeteket és az adattartalmakat, valamint az LogicApp-összekötőt.
+* Hozzáférés az adatokhoz – a nyilvános hálózatokból érkező lekérdezések letiltása vagy engedélyezése a legtöbb Log Analyticsi tapasztalatra vonatkozik, és egyes funkciók a Azure Resource Manageron keresztül kérdezik le az adatlekérdezéseket, ezért nem lesznek képesek az adatok lekérdezésére, kivéve, ha a privát kapcsolat beállításait a Resource Manager is alkalmazza (a szolgáltatás hamarosan elérhető). Ilyenek például a következők: Azure Monitor megoldások, munkafüzetek és bepillantások, valamint az LogicApp-összekötő.
 * A munkaterület-kezelés – a munkaterület beállítását és a konfiguráció módosításait (beleértve a hozzáférési beállítások be-és kikapcsolását) a Azure Resource Manager kezeli. Korlátozza a munkaterület-felügyelet elérését a megfelelő szerepkörök, engedélyek, hálózati vezérlők és naplózás használatával. További információ: [Azure monitor szerepkörök, engedélyek és biztonság](../roles-permissions-security.md).
 
 > [!NOTE]
@@ -248,17 +249,17 @@ Másodszor, azt is szabályozhatja, hogy ez az erőforrás Hogyan érhető el a 
 > [!NOTE]
 > A portálon kívüli felhasználási tapasztalatokat a felügyelt munkaterheléseket tartalmazó privát csatolt VNET is futtatni kell.
 
-A megfigyelt számítási feladatokat üzemeltető erőforrásokat a privát hivatkozáshoz kell hozzáadnia. Az alábbi [dokumentációból](../../app-service/networking/private-endpoint.md) megtudhatja, hogyan teheti meg ezt a app Services.
+A megfigyelt számítási feladatokat üzemeltető erőforrásokat a privát hivatkozáshoz kell hozzáadnia. Lásd például: [privát végpontok használata az Azure Web App](../../app-service/networking/private-endpoint.md)szolgáltatáshoz.
 
 A hozzáférés ezen a módon való korlátozása csak a Application Insights erőforrásban lévő értékekre vonatkozik. Azonban a konfiguráció módosításait, például a hozzáférési beállítások be-és kikapcsolását, a Azure Resource Manager kezeli. Ezért a megfelelő szerepkörök, engedélyek, hálózati vezérlők és naplózás használatával korlátozhatja a hozzáférést a Resource Managerhez. További információ: [Azure monitor szerepkörök, engedélyek és biztonság](../roles-permissions-security.md).
 
 > [!NOTE]
 > A munkaterület-alapú Application Insights teljes biztonsága érdekében le kell zárnia a Application Insights erőforráshoz és a mögöttes Log Analytics munkaterülethez való hozzáférést.
 >
-> A kód szintű diagnosztika (Profiler/Debugger) esetében meg kell adnia a saját Storage-fiókját a privát kapcsolat támogatásához. Ehhez a [dokumentációban](../app/profiler-bring-your-own-storage.md) olvashat.
+> A kód szintű diagnosztika (Profiler/Debugger) esetében meg kell [adnia a saját Storage-fiókját](../app/profiler-bring-your-own-storage.md) a privát kapcsolat támogatásához.
 
 ### <a name="handling-the-all-or-nothing-nature-of-private-links"></a>A privát hivatkozások összes vagy semmi természetének kezelését
-Ahogy azt a [saját hivatkozásának megtervezése](#planning-your-private-link-setup)című részben leírtak szerint, egy privát hivatkozás beállítása akár egyetlen erőforrásra is hatással van az adott hálózat összes Azure monitor erőforrására, valamint más, azonos DNS-t használó hálózatokra. Ezzel kihívást jelenthet a bevezetési folyamat. Vegye figyelembe a következő lehetőségeket:
+Ahogy azt a [saját hivatkozásának megtervezése](#planning-your-private-link-setup)című részben leírtak szerint, egy privát hivatkozás beállítása akár egyetlen erőforrásra is hatással van az adott hálózat összes Azure monitor erőforrására, valamint más, azonos DNS-t használó hálózatokra. Ez a viselkedés a bevezetési folyamat számára is kihívást jelenthet. Vegye figyelembe a következő lehetőségeket:
 
 * A legegyszerűbb és legbiztonságosabb megközelítése az összes Application Insights-összetevő hozzáadása a AMPLS. Azokhoz az összetevőkhöz, amelyeken más hálózatokból is el szeretné érni a hozzáférést, ne hagyja az Igen értékre a "nyilvános internet-hozzáférés engedélyezése a betöltéshez/lekérdezéshez" jelzőt (az alapértelmezett érték).
 * Hálózatok elkülönítése – ha a küllős virtuális hálózatok használatával (vagy a szolgáltatáshoz is igazodik), kövesse az [Azure-beli sugaras hálózati topológia](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)útmutatását. Ezután állítsa be a privát kapcsolat beállításait a megfelelő küllős virtuális hálózatok. Ügyeljen arra, hogy a DNS-zónák elkülönítése is megtörténjen, mivel a DNS-zónák más küllős hálózatokkal való megosztása a [DNS-felülbírálásokat](#the-issue-of-dns-overrides)eredményezi.

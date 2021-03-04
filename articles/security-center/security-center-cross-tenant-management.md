@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: d76ecc55c2e156199b2db789721946fd1f36de27
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 493a06e85ad6c8260c342cf8167386394835b1c6
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922905"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099488"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Több-bérlős felügyelet a Security Center
 
@@ -41,7 +41,7 @@ A felső menüsorban kattintson a szűrő ikonra, és válassza ki az előfizet�
 
   ![Bérlők szűrése](./media/security-center-cross-tenant-management/cross-tenant-filter.png)
 
-A nézetek és a műveletek alapvetően azonosak. Néhány példa:
+A nézetek és a műveletek alapvetően azonosak. Íme néhány példa:
 
 - **Biztonsági házirendek kezelése**: az egyik nézetből számos erőforrás biztonsági állapotát kezelheti a [szabályzatokkal](tutorial-security-policy.md), a biztonsági javaslatokkal kapcsolatos műveleteket, valamint a biztonsági adatok gyűjtését és kezelését.
 - A **biztonságos pontszám és a megfelelőségi helyzet javítása**: a bérlők közötti láthatósággal megtekintheti az összes bérlő teljes biztonsági állapotát, valamint azt, hogy miként és hogyan lehet legjobban javítani a [biztonságos pontszámot](secure-score-security-controls.md) és a [megfelelőségi testhelyzetet](security-center-compliance-dashboard.md) .
@@ -51,8 +51,4 @@ A nézetek és a műveletek alapvetően azonosak. Néhány példa:
 - A **speciális Cloud Defense-funkciók kezelése és egyebek**: a veszélyforrások elleni védelem különböző szolgáltatásainak kezelése, például az igény szerinti [(JIT)](security-center-just-in-time.md)virtuálisgép-hozzáférés, az [adaptív hálózatok megerősítése](security-center-adaptive-network-hardening.md), az [adaptív alkalmazások vezérlése](security-center-adaptive-application.md)stb.
  
 ## <a name="next-steps"></a>Következő lépések
-Ez a cikk bemutatja, hogyan működik a több-bérlős felügyelet a Security Centerban. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
-
-* [Megerősítheti a biztonsági helyzeteket Azure Security Centerekkel](security-center-monitoring.md) – megismerheti az Azure-erőforrások állapotának monitorozását.
-* [Azure Security Center GYIK](faq-general.md) – gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
-* [Ismerje meg az Azure Lighthouse nagyvállalati forgatókönyveit – megismerheti,](../lighthouse/concepts/enterprise.md) hogy az Azure Lighthouse hogyan egyszerűsítheti le a több-bérlős felügyeletet egy olyan vállalaton belül, amely több Azure ad-bérlőt használ.
+Ez a cikk bemutatja, hogyan működik a több-bérlős felügyelet a Security Centerban. Ha szeretné megtudni, hogy az Azure Lighthouse hogyan egyszerűsítheti a több-bérlős felügyeletet egy olyan vállalaton belül, amely több Azure AD-bérlőt használ, tekintse [meg az Azure Lighthouse vállalati forgatókönyvek](../lighthouse/concepts/enterprise.md)című

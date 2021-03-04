@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: fcaf427c2e0ab275a5a6e08306dda785bca690d6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e4f905b7a08564eadb20d65d651c137ef3741376
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784167"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100321"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure Security Center készültségi ütemterv
 Ez a dokumentum egy készültségi ütemtervet tartalmaz, amely az Azure Security Center használatának első lépéseiben nyújt segítséget.
@@ -59,7 +59,6 @@ A Security Center automatikusan gyűjti, elemzi és integrálja az Azure-erőfor
 A következő forrásanyagok segítségére lehetnek a biztonsági riasztások kezelésében és az erőforrások védelmében.
 
 Cikkek    
-- [Biztonsági állapotfigyelés az Azure Security Centerben](./security-center-monitoring.md)
 - [Hálózat védelme az Azure Security Centerben](./security-center-network-recommendations.md)
 - [Az Azure SQL-szolgáltatás és -adatok védelme az Azure Security Centerben](./security-center-remediate-recommendations.md)
 

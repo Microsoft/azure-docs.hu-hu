@@ -7,12 +7,12 @@ ms.date: 02/07/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 0878686e203960a0b7f33c19cc64e82319997684
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 83d0215ebca9d60d61937cb20bb82c7ccb30aac1
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590445"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100627"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Bevezetés az Azure Defender for Kubernetes használatába
 
@@ -29,9 +29,9 @@ Ha engedélyezi a kiszolgálók és a Log Analytics ügynöke [számára az Azur
 |Szempont|Részletek|
 |----|:----|
 |Kiadás állapota:|Általánosan elérhető (GA)|
-|Árképzési|A **Kubernetes készült Azure Defender** számlázása [a díjszabási oldalon](security-center-pricing.md) látható.|
+|Árképzési|A **Kubernetes készült Azure Defender** számlázása [Security Center díjszabásban](https://azure.microsoft.com/pricing/details/security-center/) látható|
 |Szükséges szerepkörök és engedélyek:|A **biztonsági rendszergazda** figyelmen kívül hagyhatja a riasztásokat.<br>A **biztonsági olvasó** megtekintheti az eredményeket.|
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-kubernetes"></a>Milyen előnyökkel jár az Azure Defender for Kubernetes?
@@ -79,7 +79,7 @@ Ha a fürtök már futtatják a Azure Monitor a tárolók ügynöke számára, a
 Ebben a cikkben megtanulta Security Center Kubernetes-védelmét, beleértve a Kubernetes készült Azure Defendert is. 
 
 > [!div class="nextstepaction"]
-> [Az Azure Defender engedélyezése](security-center-pricing.md#enable-azure-defender)
+> [Az Azure Defender engedélyezése](enable-azure-defender.md)
 
 A kapcsolódó anyagokkal kapcsolatban tekintse meg a következő cikkeket: 
 

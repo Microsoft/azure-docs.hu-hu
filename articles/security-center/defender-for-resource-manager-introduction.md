@@ -7,12 +7,12 @@ ms.date: 12/07/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 922189909da21aac65d1e2e898df58598868b929
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 903853f9f37921a68c918d09a94087548b5c562c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590464"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100661"
 ---
 # <a name="introduction-to-azure-defender-for-resource-manager"></a>A Resource Managerhez készült Azure Defender bemutatása
 
@@ -20,15 +20,15 @@ ms.locfileid: "100590464"
 
 A felhőalapú felügyeleti réteg az összes felhőalapú erőforráshoz kapcsolódó kulcsfontosságú szolgáltatás. Emiatt a támadók számára is lehetséges célpont. Ezért azt javasoljuk, hogy a biztonsági műveleti csapatok szorosan figyelik az erőforrás-kezelési réteget. 
 
-Az Azure Defender for Resource Manager automatikusan figyeli a szervezet erőforrás-kezelési műveleteit, függetlenül attól, hogy azok a Azure Portalon, az Azure REST API-kon, az Azure CLI-n vagy más Azure programozott ügyfeleken keresztül történnek-e. Az Azure Defender speciális biztonsági elemzéseket futtat a fenyegetések észleléséhez és a gyanús tevékenységekkel kapcsolatos riasztásokhoz.
+Az Azure Defender for Resource Manager automatikusan figyeli a szervezet erőforrás-kezelési műveleteit, függetlenül attól, hogy azok a Azure Portalon, az Azure REST API-kon, az Azure CLI-n vagy más Azure programozott ügyfeleken keresztül történnek-e. Az Azure Defender speciális biztonsági elemzéseket futtat, hogy észlelje a fenyegetéseket, és riasztást küld a gyanús tevékenységekről.
 
 ## <a name="availability"></a>Rendelkezésre állás
 
 |Szempont|Részletek|
 |----|:----|
 |Kiadás állapota:|Előnézet<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
-|Árképzési|A **Resource Managerhez készült Azure Defender** számlázása [a díjszabási oldalon](security-center-pricing.md) látható.|
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![No](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Árképzési|A **Resource Managerhez készült Azure Defender** számlázása a [Security Center díjszabásában](https://azure.microsoft.com/pricing/details/security-center/) látható módon történik|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-resource-manager"></a>Milyen előnyökkel jár az Azure Defender for Resource Manager?
@@ -75,4 +75,4 @@ Ebből a cikkből megtudhatta, hogyan használható az Azure Defender a Resource
 - Előfordulhat, hogy a biztonsági riasztásokat a Security Center vagy a különböző biztonsági termékekből Security Center fogadja. Ha az összes riasztást az Azure Sentinelbe, harmadik féltől származó SIEM-re vagy más külső eszközre kívánja exportálni, kövesse a [riasztások a Siem](continuous-export.md)-ben való exportálásának utasításait.
 
 - > [!div class="nextstepaction"]
-    > [Az Azure Defender engedélyezése](security-center-pricing.md#enable-azure-defender)
+    > [Az Azure Defender engedélyezése](enable-azure-defender.md)

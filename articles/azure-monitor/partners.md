@@ -3,12 +3,12 @@ title: A Azure Monitorrel integrált partnerek
 description: Ismerkedjen meg Azure Monitor partnereivel, és hogyan férhet hozzá az integrációhoz szükséges dokumentációhoz.
 ms.topic: conceptual
 ms.date: 02/19/2021
-ms.openlocfilehash: b971aa70411212e96c39e6bf824fa9e28bd8a1f1
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: ca58023510eb9329bc8ddf1339df4d8c27aae5e6
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102052364"
+ms.locfileid: "102101018"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor-partnerintegrációk
 
@@ -291,8 +291,7 @@ Az Azure Site24x7 a következőket teszi lehetővé:
 * A Microsoft ecosphere, például az SQL, az Exchange, az Active Directory, az Office 365, az IIS és a Hyper-V alkalmazások figyelése.
 * Zökkenőmentesen integrálhat olyan harmadik féltől származó szolgáltatásokkal, mint a Microsoft Teams, a PagerDuty, a Zapier és más szolgáltatások.
 
-[A site nonstop dokumentációja](https://www.site24x7.com/)
-
+[A Site24X7 dokumentációja](https://www.site24x7.com/azure/?utm_source=microsoft-partner-page&utm_medium=webpage&utm_campaign=ms-partner)
 
 ## <a name="solarwinds"></a>SolarWinds
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: terrylan
-ms.openlocfilehash: 79262b85e9591ae4b41e8467abdcbccb3804d4ec
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 81b2227ac519de4d03bb63907d14c23b9c34dc64
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590340"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101035"
 ---
 # <a name="azure-threat-protection"></a>Azure Threat Protection
 
@@ -368,6 +368,6 @@ Példa az Azure Marketplace-en elérhető webalkalmazási tűzfalakra: [BARRACUD
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Válaszadás a mai fenyegetésekre](../../security-center/security-center-alerts-overview.md#respond-threats): segít azonosítani az Azure-erőforrásokat megcélzó aktív fenyegetéseket, és biztosítja a gyors reagáláshoz szükséges megállapításokat.
+- [Válaszadás a mai fenyegetésekre](../../security-center/security-center-managing-and-responding-alerts.md): segít azonosítani az Azure-erőforrásokat megcélzó aktív fenyegetéseket, és biztosítja a gyors reagáláshoz szükséges megállapításokat.
 
 - [Azure SQL Database veszélyforrások észlelése](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-your-built-in-security-expert/): segít a lehetséges fenyegetésekkel kapcsolatos problémáinak megoldásában az adatbázisokban.

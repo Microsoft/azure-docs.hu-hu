@@ -7,12 +7,12 @@ ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a5d66e43485ec66b6297ef11ed382e8fb82b7cb3
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: ee4992e41e792b570d8937edfe31efb4c651d742
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96014574"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100729"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Az Azure Defender használata a tárolóregisztrációs adatbázisokban található rendszerképek biztonsági réseinek vizsgálatához
 
@@ -21,8 +21,6 @@ Ez az oldal azt ismerteti, hogyan használható a beépített sebezhetőségi el
 Ha az **Azure Defender tárolóregisztrációs adatbázisokhoz** engedélyezve van, a rendszer azonnal megvizsgálja a regisztrációs adatbázisba küldött rendszerképeket. Emellett a rendszer az utolsó 30 napban lekért képeket is ellenőrzi. 
 
 Ha a képolvasó Security Center biztonsági réseket, Security Center a megállapításokat és a kapcsolódó információkat a javaslatok alapján mutatja be. Emellett a megállapítások olyan kapcsolódó információkat is tartalmaznak, mint például a Szervizelési lépések, a kapcsolódó CVEs, CVSS pontszámok és egyebek. Megtekintheti egy vagy több előfizetéshez tartozó azonosított biztonsági réseket vagy egy adott beállításjegyzéket.
-
-[!INCLUDE [Defender for container registries availability info](../../includes/security-center-availability-defender-for-container-registries.md)]
 
 
 ## <a name="identify-vulnerabilities-in-images-in-azure-container-registries"></a>Biztonsági rések azonosítása az Azure Container nyilvántartóban található lemezképekben 
@@ -146,7 +144,7 @@ Szabály létrehozása:
     1. A szabály megtekintéséhez vagy törléséhez válassza a három pontot ("...").
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További információ az Azure Defenderről](azure-defender.md)

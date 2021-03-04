@@ -3,12 +3,12 @@ title: Közösségi erőforrások elérése a Backup Center használatával
 description: A biztonsági mentési központ használata a sablonok, parancsfájlok és szolgáltatások kéréseinek eléréséhez
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: ee377ed393aa4afe1f41d243230686020f5825aa
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 23892c11df26bd3799ca247ef31a7d4c1b6e8bf5
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101746065"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100032"
 ---
 # <a name="access-community-resources-using-backup-center"></a>Közösségi erőforrások elérése a Backup Center használatával
 
@@ -26,7 +26,7 @@ A Közösségi központon keresztül elérhető erőforrások némelyike:
 
 - **Szolgáltatásra vonatkozó kérelmek**: megnyithatja a UserVoice és a fájlokra vonatkozó szolgáltatásokra vonatkozó kéréseket.
 
-- **Minták automatikus központi telepítésekhez**: a közösségi központ használatával felderítheti a dobozból kihasználható minta Azure Resource Manager (ARM) sablonokat és az Azure-szabályzatokat. A PowerShell-parancsfájlok, a CLI-parancsok és a MSDB-parancsfájlok is megtalálhatók.
+- **Minták automatikus központi telepítésekhez**: a közösségi központ használatával felderítheti a dobozból kihasználható minta Azure Resource Manager (ARM) sablonokat és az Azure-szabályzatokat. A PowerShell-parancsfájlok, a CLI-parancsok és a Microsoft adatbázis biztonsági mentési parancsfájljai is megtalálhatók.
 
 ## <a name="next-steps"></a>Következő lépések
 

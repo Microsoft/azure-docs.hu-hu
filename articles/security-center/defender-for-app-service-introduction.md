@@ -7,31 +7,43 @@ ms.date: 01/25/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 2a3253d1ed8b0814fc20b3256a0f98d3aa0949f6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ec4ac5d355266a46b33d89fd25c2665493773f5d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393309"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100814"
 ---
-# <a name="introduction-to-azure-defender-for-app-service"></a>A App Service Azure Defender bemutatása
+# <a name="protect-your-web-apps-and-apis"></a>A webalkalmazások és API-k elleni védelem
+
+## <a name="prerequisites"></a>Előfeltételek
+
+A Security Center natív módon van integrálva a App Serviceval, így nincs szükség az üzembe helyezésre és a bevezetésre – az integráció átlátható.
+
+Ahhoz, hogy a Azure App Service-csomagot a App Service Azure Defender szolgáltatással megvédje, a következőkre lesz szüksége:
+
+- A dedikált gépekhez társított támogatott App Service-csomag. A támogatott csomagok felsorolása a [rendelkezésre állásban](#availability)található.
+
+- Az Azure Defender engedélyezve van az előfizetésében a gyors útmutató [: az Azure Defender engedélyezése](enable-azure-defender.md)című témakörben leírtak szerint.
+
+    > [!TIP]
+    > Az Azure Defender (például az Azure Defender for App Service) egyéni csomagjait is engedélyezheti.
+
+## <a name="availability"></a>Rendelkezésre állás
+
+| Szempont                       | Részletek                                                                                                                                                                                        |
+|------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Kiadás állapota:               | Általánosan elérhető (GA)                                                                                                                                                                      |
+| Árképzési                     | Az [Azure Defender for app Service](azure-defender.md) számlázása [Security Center díjszabás](https://azure.microsoft.com/pricing/details/security-center/) szerint történik<br>A számlázás az összes csomag összes számítási példánya szerint történik       |
+| Támogatott App Service csomagok: | Az [összes app Service-csomag](https://azure.microsoft.com/pricing/details/app-service/plans/) támogatott, kivéve [a használati terv Azure Functionsét](../azure-functions/functions-scale.md). |
+| Felhők                      | ![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)                                                     |
+|                              |                                                                                                                                                                                                |
+
+## <a name="what-are-the-benefits-of-azure-defender-for-app-service"></a>Milyen előnyökkel jár az Azure Defender a App Service?
 
 A Azure App Service egy teljes körűen felügyelt platform a webalkalmazások és API-k létrehozásához és üzemeltetéséhez. Mivel a platform teljes körűen felügyelt, nem kell aggódnia az infrastruktúrával kapcsolatban. Felügyeleti, monitorozási és üzemeltetési megállapításokat biztosít a vállalati szintű teljesítmény-, biztonsági és megfelelőségi követelmények teljesítéséhez. További információ: [Azure app Service](https://azure.microsoft.com/services/app-service/).
 
 Az **Azure Defender for app Service** a felhő méretezését használja a app Serviceon futó alkalmazások megcélzására irányuló támadások azonosítására. A támadók webes alkalmazásokat kereshetnek a gyengeségek megtalálásához és kiaknázásához. Az Azure-ban futó alkalmazásokra irányuló kérelmek az adott környezetbe való átirányításuk előtt több átjárón keresztül futnak, ahol megvizsgálják és naplózzák azokat. Ezeket az információkat a rendszer felhasználja a biztonsági rések és a támadók azonosítására, valamint a később felhasználható új mintázatok megismerésére.
-
-
-## <a name="availability"></a>Rendelkezésre állás
-
-| Szempont                       | Részletek                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-|------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Kiadás állapota:               | Általánosan elérhető (GA)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| Árképzési                     | Az [Azure Defender for app Service](azure-defender.md) számlázása [a díjszabási oldalon](security-center-pricing.md) látható<br>A számlázás az összes csomag összes számítási példánya szerint történik|
-| Támogatott App Service csomagok: | Az összes App Service-csomag támogatott (egyetlen kivétellel, lásd alább). [További információ a app Service csomagokról](https://azure.microsoft.com/pricing/details/app-service/plans/).<br>A felhasználási terv Azure Functions nem támogatott. [További információ a Azure functions üzemeltetési lehetőségeiről](../azure-functions/functions-scale.md).                                                                                                                                                                                                                                                                   |
-| Felhők                      | ![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![No](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)                                                                                                                                                                                                                                                                                                                                                                                 |
-|                              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-
-## <a name="what-are-the-benefits-of-azure-defender-for-app-service"></a>Milyen előnyökkel jár az Azure Defender a App Service?
 
 Ha engedélyezi az Azure Defender App Serviceét, azonnal kihasználhatja a következő, az Azure Defender-csomag által kínált szolgáltatásokat:
 
@@ -77,19 +89,6 @@ Az Azure App Service riasztások teljes listájáért tekintse meg a [riasztáso
 > [!NOTE]
 > Előfordulhat, hogy a Defender nem aktiválja a DNS-riasztásokat, ha az egyéni tartomány nem közvetlenül egy App Service erőforrásra mutat, vagy ha a Defender nem figyelt a webhelyre irányuló forgalmat, mivel a lelógó DNS-védelem engedélyezve lett (mivel nem lesznek naplók az egyéni tartomány azonosításához).
 
-## <a name="how-to-protect-your-azure-app-service-web-apps-and-apis"></a>A Azure App Service Web Apps és API-k elleni védelem
-
-A Azure App Service-csomag a App Service Azure Defenderrel való ellátásához:
-
-1. Győződjön meg arról, hogy rendelkezik olyan támogatott App Service-csomaggal, amely dedikált gépekhez van társítva. A fent felsorolt támogatott csomagok a [rendelkezésre állás](#availability)alatt találhatók.
-
-2. Engedélyezze az **Azure Defendert** az előfizetésben a [Azure Security Center díjszabása](security-center-pricing.md)című témakörben leírtak szerint.
-
-    Az Azure Defender (például az Azure Defender for App Service) egyéni csomagjait is engedélyezheti.
-
-    A Security Center natív módon van integrálva a App Serviceval, így nincs szükség az üzembe helyezésre és a bevezetésre – az integráció átlátható.
-
-
 ## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan App Service Azure Defendert. 
@@ -100,4 +99,4 @@ A kapcsolódó anyagokkal kapcsolatban tekintse meg a következő cikkeket:
 - Az App Service riasztásokhoz tartozó Azure Defender listáját a [riasztások hivatkozási táblázata](alerts-reference.md#alerts-azureappserv)tartalmazza.
 - App Service csomagokkal kapcsolatos további információkért lásd: [app Service csomagok](https://azure.microsoft.com/pricing/details/app-service/plans/).
 > [!div class="nextstepaction"]
-> [Az Azure Defender engedélyezése](security-center-pricing.md#enable-azure-defender)
+> [Az Azure Defender engedélyezése](enable-azure-defender.md)

@@ -1,15 +1,16 @@
 ---
 title: A Hyperledger Fabric Consortium üzembe helyezése az Azure Kubernetes Service-ben
 description: Hyperledger Fabric Consortium-hálózat üzembe helyezése és konfigurálása az Azure Kubernetes Service-ben
-ms.date: 01/08/2021
+ms.date: 03/01/2021
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: c0e7f3e7ab83f64cebd990de57d48c97891edb7f
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 42d16adbc5e6396c8d5d38176ac7681c712f4555
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897258"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101103"
 ---
 # <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>A Hyperledger Fabric Consortium üzembe helyezése az Azure Kubernetes Service-ben
 
@@ -31,34 +32,6 @@ Beállítás | Szolgáltatási modell | Gyakori használati eset
 Megoldássablonok | IaaS | A megoldási sablonok olyan Azure Resource Manager-sablonok, amelyekkel teljes körűen konfigurált blockchain hálózati topológiát lehet kiépíteni. A Sablonok Microsoft Azure számítási, hálózatkezelési és tárolási szolgáltatásokat telepítenek és konfigurálnak a blockchain. A megoldási sablonokat szolgáltatási szintű szerződés nélkül biztosítjuk. Támogatáshoz használja a [Microsoft Q&egy oldalát](/answers/topics/azure-blockchain-workbench.html) .
 [Azure Blockchain Service](../service/overview.md) | PaaS | Az Azure Blockchain szolgáltatás előzetes verziója leegyszerűsíti a konzorciumi Blockchain hálózatok képződését, kezelését és irányítását. Az Azure Blockchain Service olyan megoldások esetében használható, amelyek a Pásti, a konzorciumok felügyeletére, vagy a szerződés és a tranzakciók adatvédelmet igénylik
 [Azure Blockchain Workbench](../workbench/overview.md) | IaaS és Péter | Az Azure Blockchain Workbench előzetes verziója olyan Azure-szolgáltatások és-funkciók gyűjteménye, amelyek segítségével Blockchain-alkalmazásokat hozhat létre és helyezhet üzembe más szervezetekkel való üzleti folyamatok és adatmennyiségek megosztásához. Az Azure Blockchain Workbench használatával Blockchain-megoldást vagy egy Blockchain-alkalmazásra vonatkozó megvalósíthatósági koncepciót használhat. Az Azure Blockchain Workbench szolgáltatói szerződés nélkül biztosított. Támogatáshoz használja a [Microsoft Q&egy oldalát](/answers/topics/azure-blockchain-workbench.html) .
-
-## <a name="hyperledger-fabric-consortium-architecture"></a>Hyperledger Fabric Consortium-architektúra
-
-Ahhoz, hogy az Azure-beli Hyperledger-hálót hozzon létre, üzembe kell helyeznie egy rendezési szolgáltatást és a szervezetet a társ-csomópontokkal. Az Azure Kubernetes Service Solution sablon Hyperledger-hálójának használatával megrendelési csomópontokat vagy társ-csomópontokat hozhat létre. Minden létrehozni kívánt csomóponthoz telepítenie kell a sablont.
-
-A sablon központi telepítésének részeként létrehozott alapvető összetevők a következők:
-
-- **Rendezési csomópontok**: a főkönyvben a tranzakciók rendezéséhez felelős csomópont. A többi csomóponttal együtt a megrendelt csomópontok képezik a Hyperledger Fabric-hálózat rendezési szolgáltatását.
-
-- **Társ-csomópontok**: olyan csomópontok, amelyek elsődlegesen a hálózat alapvető elemeit tartalmazó főkönyveket és intelligens szerződéseket futtatnak.
-
-- **FABRIC CA**: a Hyperledger-hálóhoz tartozó HITELESÍTÉSSZOLGÁLTATÓ (CA). A Fabric CA segítségével inicializálhatja és elindíthatja a hitelesítésszolgáltatót futtató kiszolgálói folyamatot. Lehetővé teszi az identitások és a tanúsítványok kezelését. A sablon részeként üzembe helyezett minden AK-fürthöz alapértelmezés szerint a Fabric CA Pod lesz.
-
-- **CouchDB vagy LevelDB**: a társ-csomópontok globális állapotú adatbázisai. A LevelDB az alapértelmezett állapotú adatbázis, amely a társ csomópontban van beágyazva. Egyszerű kulcs/érték párokként tárolja a chaincode, és csak a kulcs, a kulcs tartomány és az összetett kulcsok lekérdezéseit támogatja. A CouchDB egy opcionális, alternatív állapotú adatbázis, amely támogatja a gazdag lekérdezéseket, ha a chaincode az adatértékek JSON-ként vannak modellezve.
-
-Az üzembe helyezési sablon különböző Azure-erőforrásokat indít el az előfizetésében. Az üzembe helyezett Azure-erőforrások a következők:
-
-- **AK-fürt**: az Azure Kubernetes Service-fürt, amely az ügyfél által megadott bemeneti paramétereknek megfelelően van konfigurálva. Az AK-fürthöz különböző hüvelyek vannak konfigurálva a Hyperledger háló hálózati összetevőinek futtatásához. A létrehozott hüvelyek a következők:
-
-  - **Háló eszközei**: a Hyperledger-háló összetevőinek konfigurálásához felelős eszközök.
-  - **Megrendelő/társ hüvelyek**: a Hyperledger háló hálózat csomópontjai.
-  - **Proxy**: egy ngnix proxy Pod, amelyen keresztül az ügyfélalkalmazások kommunikálni tudnak az AK-fürttel.
-  - **FABRIC CA**: a Fabric CA-t futtató Pod.
-- **PostgreSQL**: adatbázis-példány, amely karbantartja a háló hitelesítésszolgáltatói identitásait.
-
-- **Key Vault**: a Azure Key Vault szolgáltatás példánya, amelyet a rendszer a háló hitelesítésszolgáltatói hitelesítő adatainak és az ügyfél által biztosított főtanúsítványoknak a mentéséhez telepített. A tár a sablon központi telepítésének újrapróbálkozása esetén használatos a sablon mechanikaának kezeléséhez.
-- **Felügyelt lemez**: az Azure Managed Disks szolgáltatás olyan példánya, amely állandó tárolót biztosít a főkönyvhez és a társ-csomópont globális állapotú adatbázisához.
-- **Nyilvános IP-cím**: a fürttel folytatott kommunikációhoz üzembe helyezett AK-fürt végpontja.
 
 ## <a name="deploy-the-orderer-and-peer-organization"></a>A sorrend és a társ-szervezet üzembe helyezése
 
@@ -85,10 +58,10 @@ A Hyperledger háló hálózati összetevőinek üzembe helyezésének megkezdé
     - **Szervezet neve**: írja be a Hyperledger-háló szervezet nevét, amely a különböző adatsíkok-műveletekhez szükséges. Az üzembe helyezéshez a szervezet nevének egyedinek kell lennie.
     - **Háló hálózati összetevő**: válassza a szolgáltatás vagy **társ csomópontok** **rendezése** lehetőséget a beállítani kívánt blockchain hálózati összetevő alapján.
     - **Csomópontok száma**: a következő két típusú csomópont létezik:
-        - **Rendelés szolgáltatás**: válassza ki a hálózat hibatűrését biztosító csomópontok számát. A támogatott megrendelési csomópontok száma 3, 5 és 7.
-        - **Társ-csomópontok**: a követelmények alapján 1 – 10 csomópontot választhat.
-    - **Társ csomópont globális állapotának adatbázisa**: válasszon a LevelDB és a CouchDB között. Ez a mező akkor jelenik meg, ha a **háló hálózati összetevő** legördülő listájában a **társ csomópontok** lehetőséget választja.
-    - **FABRIC CA Felhasználónév**: adja meg a háló hitelesítésszolgáltatói hitelesítéshez használt felhasználónevet.
+        - **Rendezési szolgáltatás**: a főkönyvben a tranzakciók rendezéséhez felelős csomópontok. Válassza ki a hálózati hibatűrést biztosító csomópontok számát. A támogatott megrendelési csomópontok száma 3, 5 és 7.
+        - **Társ-csomópontok**: a főkönyveket és az intelligens szerződéseket futtató csomópontok. A követelmények alapján 1 – 10 csomópontot is választhat.
+    - **Társ-csomópont globális állapotának adatbázisa**: a társ-csomópontok globális állapotú adatbázisai. A LevelDB az alapértelmezett állapotú adatbázis, amely a társ csomópontban van beágyazva. Egyszerű kulcs/érték párokként tárolja a chaincode, és csak a kulcs, a kulcs tartomány és az összetett kulcsok lekérdezéseit támogatja. A CouchDB egy opcionális, alternatív állapotú adatbázis, amely támogatja a gazdag lekérdezéseket, ha a chaincode az adatértékek JSON-ként vannak modellezve. Ez a mező akkor jelenik meg, ha a **háló hálózati összetevő** legördülő listájában a **társ csomópontok** lehetőséget választja.
+    - **FABRIC CA-Felhasználónév**: a háló hitelesítésszolgáltatója lehetővé teszi egy olyan kiszolgálói folyamat inicializálását és elindítását, amely a hitelesítésszolgáltatót üzemelteti. Lehetővé teszi az identitások és a tanúsítványok kezelését. A sablon részeként üzembe helyezett minden AK-fürthöz alapértelmezés szerint a Fabric CA Pod lesz. Adja meg a háló HITELESÍTÉSSZOLGÁLTATÓI hitelesítéshez használt felhasználónevet.
     - **FABRIC CA-jelszó**: adja meg a háló hitelesítésszolgáltatói hitelesítésének jelszavát.
     - **Jelszó megerősítése**: erősítse meg a háló hitelesítésszolgáltatói jelszavát.
     - **Tanúsítványok**: Ha saját főtanúsítványokat kíván használni a háló hitelesítésszolgáltató inicializálásához, akkor válassza a **Főtanúsítvány feltöltése** lehetőségre. Ellenkező esetben a Fabric CA automatikusan önaláírt tanúsítványokat hoz létre.
@@ -96,11 +69,21 @@ A Hyperledger háló hálózati összetevőinek üzembe helyezésének megkezdé
     - **Főtanúsítvány titkos kulcsa**: töltse fel a főtanúsítvány titkos kulcsát. Ha a. PEM tanúsítvánnyal rendelkezik, amely nyilvános és titkos kulccsal rendelkezik, töltse fel itt is.
 
 
-6. Válassza az **AK-fürt beállításai** fület az Azure Kubernetes szolgáltatás-fürt konfigurációjának meghatározásához, amely az alapul szolgáló infrastruktúra, amelyen a Hyperledger-háló hálózati összetevői lesznek beállítva.
+6. Válassza az **AK-fürt beállításai** lapot az Azure Kubernetes szolgáltatás-fürt konfigurációjának definiálásához. Az AK-fürthöz különböző hüvelyek vannak konfigurálva a Hyperledger háló hálózati összetevőinek futtatásához. Az üzembe helyezett Azure-erőforrások a következők:
+
+    - **Háló eszközei**: a Hyperledger-háló összetevőinek konfigurálásához felelős eszközök.
+    - **Megrendelő/társ hüvelyek**: a Hyperledger háló hálózat csomópontjai.
+    - **Proxy**: egy ngnix proxy Pod, amelyen keresztül az ügyfélalkalmazások kommunikálni tudnak az AK-fürttel.
+    - **FABRIC CA**: a Fabric CA-t futtató Pod.
+    - **PostgreSQL**: adatbázis-példány, amely karbantartja a háló hitelesítésszolgáltatói identitásait.
+    - **Key Vault**: a Azure Key Vault szolgáltatás példánya, amelyet a rendszer a háló hitelesítésszolgáltatói hitelesítő adatainak és az ügyfél által biztosított főtanúsítványoknak a mentéséhez telepített. A tár a sablon központi telepítésének újrapróbálkozása esetén használatos a sablon mechanikaának kezeléséhez.
+    - **Felügyelt lemez**: az Azure Managed Disks szolgáltatás olyan példánya, amely állandó tárolót biztosít a főkönyvhez és a társ-csomópont globális állapotú adatbázisához.
+    - **Nyilvános IP-cím**: a fürttel folytatott kommunikációhoz üzembe helyezett AK-fürt végpontja.
+
+    Adja meg a következő részleteket: 
 
     ![Képernyőkép, amely megjeleníti a K S fürt beállításait tartalmazó lapot.](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-aks-cluster-settings-1.png)
 
-7. Adja meg a következő részleteket:
     - **Kubernetes-fürt neve**: szükség esetén módosítsa az AK-fürt nevét. Ez a mező előre fel van töltve a megadott erőforrás-előtag alapján.
     - **Kubernetes verziója**: válassza ki a fürtön telepítendő Kubernetes verzióját. Az **alapok** lapon kiválasztott régió alapján előfordulhat, hogy az elérhető támogatott verziók változhatnak.
     - **DNS-előtag**: adjon meg egy tartománynévrendszer-(DNS-) nevet az AK-fürthöz. A DNS használatával csatlakozhat a Kubernetes API-hoz a tárolók kezelésekor a fürt létrehozása után.

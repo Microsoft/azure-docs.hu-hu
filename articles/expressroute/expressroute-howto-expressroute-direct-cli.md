@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: aea51e56f2d96fa634b1ece2029c9ea5bf3f60fc
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: d68011afe044535783dd8a8c56ed5d950c6d06b1
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011305"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099879"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>ExpressRoute közvetlen konfigurálása az Azure CLI használatával
 
@@ -21,12 +21,21 @@ A közvetlen ExpressRoute lehetővé teszi a Microsoft globális hálózatának 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A ExpressRoute Direct használata előtt először regisztrálnia kell az előfizetését. A regisztráláshoz küldjön egy e-mailt az <ExpressRouteDirect@microsoft.com> előfizetés-azonosítójával, beleértve az alábbi adatokat:
+A ExpressRoute Direct használata előtt először regisztrálnia kell az előfizetését. A ExpressRoute Direct használata előtt először regisztrálnia kell az előfizetését. A regisztráláshoz tegye a következőket Azure PowerShellon keresztül:
+1.  Jelentkezzen be az Azure-ba, és válassza ki a regisztrálni kívánt előfizetést.
 
-* A **ExpressRoute Directtel** elérni kívánt forgatókönyvek
-* Hely beállításai – az összes hely teljes listájáért tekintse meg a [partnerek és](expressroute-locations-providers.md) a társítási helyek elemet.
-* Megvalósítási ütemterv
-* Bármilyen egyéb kérdés
+    ```azurepowershell-interactive
+    Connect-AzAccount 
+
+    Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
+    ```
+
+2. Regisztrálja az előfizetését a nyilvános előzetes verzióra az alábbi paranccsal:
+    ```azurepowershell-interactive
+    Register-AzProviderFeature -FeatureName AllowExpressRoutePorts -ProviderNamespace Microsoft.Network
+    ```
+
+A regisztráció után ellenőrizze, hogy a **Microsoft. Network** erőforrás-szolgáltató regisztrálva van-e az előfizetésében. Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre.
 
 ## <a name="create-the-resource"></a><a name="resources"></a>Az erőforrás létrehozása
 
@@ -342,6 +351,6 @@ Hozzon létre egy áramkört a ExpressRoute Direct erőforráson:
   }  
   ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A közvetlen ExpressRoute kapcsolatos további információkért tekintse meg az [áttekintést](expressroute-erdirect-about.md).

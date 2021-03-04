@@ -1,6 +1,6 @@
 ---
-title: Az Azure Defender használata az SQL-hez
-description: Ismerje meg, hogyan használhatja a Azure Security Center opcionális Azure Defender for SQL-csomagot
+title: Az Azure Defender for SQL beállítása
+description: Megtudhatja, hogyan engedélyezheti Azure Security Center opcionális Azure Defender for SQL-csomagot
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2021
 ms.author: memildin
-ms.openlocfilehash: 96af34b5b68fca5ab8061c8c99f03bee094dc175
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b82f0ca0624fcbd64f1c23f87f8f21f96d8e4d4c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590383"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100576"
 ---
-# <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender a gépeken futó SQL-kiszolgálókon 
+# <a name="enable-azure-defender-for-sql-servers-on-machines"></a>Azure Defender engedélyezése a gépeken futó SQL-kiszolgálókhoz 
 
 Ez az Azure Defender-csomag olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához.
 
@@ -31,20 +31,19 @@ A riasztások akkor jelennek meg, ha gyanús adatbázis-tevékenységek, potenci
 |Szempont|Részletek|
 |----|:----|
 |Kiadás állapota:|Általánosan elérhető (GA)|
-|Árképzési|A **gépeken futó Azure Defender szolgáltatás** számlázása [a díjszabási oldalon](security-center-pricing.md) látható módon történik.|
+|Árképzési|A **gépeken futó Azure Defender szolgáltatás** számlázása [Security Center díjszabás](https://azure.microsoft.com/pricing/details/security-center/) szerint történik|
 |Védett SQL-verziók:|Azure SQL Server (a Microsoft támogatási szolgálata által érintett összes verzió)|
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Kínai gov, egyéb gov|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Nem](./media/icons/no-icon.png) Kínai gov, egyéb gov|
 |||
 
 ## <a name="set-up-azure-defender-for-sql-servers-on-machines"></a>Azure Defender beállítása a gépeken futó SQL-kiszolgálókhoz
 
 A csomag engedélyezése:
 
-* A Log Analytics ügynök kiépítése az SQL Server gazdagépén. Ez biztosítja az Azure-hoz való kapcsolódást.
+[1. lépés. A Log Analytics-ügynök kiépítése az SQL Server gazdagépén:](#step-1-provision-the-log-analytics-agent-on-your-sql-servers-host)
 
-* Engedélyezze a választható csomagot Security Center díjszabási és beállítási lapján.
+[2. lépés. Engedélyezze a választható csomagot Security Center díjszabási és beállítási lapján:](#step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page)
 
-A fentiek mindegyikét alább találja.
 
 ### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>1. lépés A Log Analytics-ügynök kiépítése az SQL Server gazdagépén:
 
@@ -81,31 +80,6 @@ A fentiek mindegyikét alább találja.
 1. Szükség esetén az e-mail-értesítések konfigurálása a biztonsági riasztásokhoz. 
     Megadhatja a címzettek listáját, amely e-mailben értesítést kap a Security Center riasztások létrehozásakor. Az e-mail tartalmaz egy közvetlen hivatkozást a riasztáshoz Azure Security Center az összes releváns részletet. További információ: [e-mail-értesítések beállítása biztonsági riasztásokhoz](security-center-provide-security-contact-details.md).
 
-
-
-## <a name="explore-vulnerability-assessment-reports"></a>A sebezhetőségi felmérési jelentések megismerése
-
-A sebezhetőség-felmérési szolgáltatás hetente egyszer vizsgálja meg az adatbázisokat. A vizsgálatok a hét azon napján futnak, amelyen engedélyezte a szolgáltatást.
-
-A sebezhetőségi felmérés irányítópultja áttekintést nyújt az összes adatbázisra vonatkozó értékelési eredményekről, valamint az egészséges és a nem kifogástalan adatbázisok összefoglalásáról, valamint a kockázatos eloszlások szerinti sikertelen ellenőrzések általános összegzéséről.
-
-A sebezhetőségi felmérés eredményei közvetlenül a Security Center tekinthetők meg.
-
-1. A Security Center oldalsávján nyissa meg a **javaslatok** lapot, és válassza ki a **számítógépeken található SQL-kiszolgálók ajánlott biztonsági réseit (előzetes verzió)**. További információ: [Security Center javaslatok](security-center-recommendations.md). 
-
-    :::image type="content" source="./media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png" alt-text="A biztonsági rések felmérésének eredményeit a gépeken lévő SQL-kiszolgálókon szervizelni kell (előzetes verzió)":::
-
-    Megjelenik a javaslat részletes nézete.
-
-    :::image type="content" source="./media/security-center-advanced-iaas-data/all-servers-view.png" alt-text="A javaslat részletes nézete":::
-
-1. További részleteket a következő részletezésben talál:
-
-    * A beolvasott erőforrások (adatbázisok) és a tesztelt biztonsági ellenőrzések listájának áttekintéséhez válassza ki az Önt érdeklő kiszolgálót.
-
-    * Az adott SQL-adatbázis által csoportosított biztonsági rések áttekintéséhez válassza ki az Önt érdeklő adatbázist.
-
-    Az egyes nézetekben a biztonsági ellenőrzések **Súlyosság** szerint rendezve jelennek meg. Egy adott biztonsági vizsgálatra kattintva megtekintheti a részleteket tartalmazó ablaktáblát **, amely** **leírja, hogyan** javíthatja, és egyéb kapcsolódó információkat, például a **hatást** vagy a **teljesítménytesztet**.
 
 ## <a name="azure-defender-for-sql-alerts"></a>SQL-alapú Azure Defender-riasztások
 A riasztásokat szokatlan és potenciálisan ártalmas kísérletek generálják az SQL-gépek eléréséhez vagy kiaknázásához. Ezek az események a [riasztások hivatkozása lapon](alerts-reference.md#alerts-sql-db-and-warehouse)megjelenő riasztásokat indíthatnak.

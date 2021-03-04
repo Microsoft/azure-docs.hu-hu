@@ -9,13 +9,13 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.custom: references_regions
-ms.date: 03/02/2021
-ms.openlocfilehash: 9dc4d17ea95362dd915bd1dfdfd82f4cdec611b8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/04/2021
+ms.openlocfilehash: 0a9a4b2de03c62640bb1c643d3ff3da4139d42a4
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692810"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101205"
 ---
 # <a name="maintenance-window-preview"></a>Karbantartási időszak (előzetes verzió)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -32,29 +32,31 @@ A karbantartási időszak olyan üzleti számítási feladatokhoz készült, ame
 
 A karbantartási időszakot a Azure Portal, a PowerShell, a CLI vagy az Azure API használatával lehet konfigurálni. Konfigurálható a létrehozáskor, illetve a meglévő SQL-adatbázisok és az SQL-felügyelt példányok esetében is.
 
+> [!Important]
+> A karbantartási időszak konfigurálása hosszú ideig futó aszinkron művelet, hasonlóan az Azure SQL-erőforrás szolgáltatási rétegének módosításához. Az erőforrás a művelet során elérhető, kivéve a művelet végén előforduló rövid feladatátvételt, és általában akár 8 másodpercig is tart, akár a hosszan futó tranzakciók megszakítása esetén is. A feladatátvétel hatásának csökkentése érdekében a műveletet a csúcsidőben kívül kell végrehajtania.
+
 ### <a name="gain-more-predictability-with-maintenance-window"></a>A karbantartási időszak további kiszámíthatósága
 
 Alapértelmezés szerint az összes Azure SQL Database-adatbázis és felügyelt példány-adatbázis csak napi 5 – 8-án frissül, hogy elkerülje a maximális munkaidő-megszakítást. A helyi időt az erőforrást üzemeltető [Azure-régió](https://azure.microsoft.com/global-infrastructure/geographies/) határozza meg. A karbantartási frissítéseket a következő két További karbantartási időszakra kiválasztva tovább módosíthatja az adatbázisának megfelelő időre:
-
-* **Alapértelmezett** ablak, 5 – 08:00 helyi idő szerint hétfő – vasárnap 
+ 
 * Hét napja, 22:00 – 06:00 helyi idő szerint hétfő – csütörtök
 * Hétvégi időszak, 10 – 6 helyi idő szerint péntek – vasárnap
 
-A karbantartási időszak kiválasztása után a rendszer az összes tervezett karbantartási frissítést csak a választott ablakban fogja elvégezni.   
+Miután megtörtént a karbantartási időszak kiválasztása, és a szolgáltatás konfigurálása befejeződött, a rendszer az összes tervezett karbantartási frissítést csak a választott ablakban hajtja végre.   
 
 > [!Note]
 > A tervezett karbantartási frissítések mellett ritka esetekben nem tervezett karbantartási események is okozhatják a rendelkezésre állást. 
 
 ### <a name="cost-and-eligibility"></a>Cost és támogathatóság
 
-A karbantartási időszak kiválasztása a következő előfizetési [ajánlati típusok](https://azure.microsoft.com/support/legal/offer-details/)esetében díjmentes: utólagos elszámolású, felhőalapú megoldás-szolgáltató (CSP), Microsoft Enterprise vagy Microsoft Customer Agreement.
+A karbantartási időszak konfigurálása és használata ingyenesen használható az összes jogosult [ajánlati típushoz](https://azure.microsoft.com/support/legal/offer-details/): utólagos elszámolású, felhőalapú megoldás-szolgáltató (CSP), Microsoft Enterprise vagy Microsoft Customer Agreement.
 
 > [!Note]
 > Az Azure-ajánlat az Ön Azure-előfizetésének típusa. Például az utólagos elszámolású előfizetések [, a](https://azure.microsoft.com/offers/ms-azr-0003p/) [Azure in Open Licencprogram](https://azure.microsoft.com/en-us/offers/ms-azr-0111p/)és a [Visual Studio Enterprise](https://azure.microsoft.com/en-us/offers/ms-azr-0063p/) minden Azure-ajánlat. Minden ajánlat vagy csomag eltérő feltételekkel és előnyökkel rendelkezik. Ajánlatát vagy tervét az előfizetés áttekintése mutatja be. Az előfizetés egy másik ajánlatra váltásával kapcsolatos további információkért lásd: [Azure-előfizetés módosítása egy másik ajánlatra](/azure/cost-management-billing/manage/switch-azure-offer).
 
 ## <a name="advance-notifications"></a>Előzetes értesítések
 
-A karbantartási értesítések beállítható úgy, hogy az ügyfeleket 24 órával előre, a karbantartás időpontjában és a karbantartási időszak végén riasztást kapjanak a közelgő tervezett karbantartási eseményekről. További információ: [Advance Notifications (előzetes értesítések](advance-notifications.md)).
+A karbantartási értesítések úgy konfigurálhatók, hogy riasztást kapjanak a közelgő tervezett karbantartási eseményekről Azure SQL Database 24 órával előre, a karbantartás időpontjában és a karbantartási időszak végén. További információ: [Advance Notifications (előzetes értesítések](advance-notifications.md)).
 
 ## <a name="availability"></a>Rendelkezésre állás
 
@@ -62,6 +64,7 @@ A karbantartási értesítések beállítható úgy, hogy az ügyfeleket 24 ór�
 
 Az alapértelmezetttől eltérő karbantartási időszak az összes slo elérhető, kivéve a **következőt**:
 * Rugalmas skálázás 
+* Példánykészletek
 * Örökölt Gen4 virtuális mag
 * Alapszintű, S0 és S1 
 * DC, Fsv2, M-sorozat
@@ -93,7 +96,7 @@ A karbantartási időszakok maximális előnyének lekéréséhez győződjön m
 
 * Azure SQL Database a proxy kapcsolati házirendjét használó kapcsolatokat a kiválasztott karbantartási időszak és az átjáró-csomópont karbantartási időszaka is befolyásolhatja. Az átjáró-csomópontok karbantartási feladatátvétele azonban nem érinti a javasolt átirányítási kapcsolati házirendet használó ügyfélkapcsolatokat. 
 
-* Az Azure SQL felügyelt példányaiban az átjáró-csomópontok [a virtuális fürtön belül](../../azure-sql/managed-instance/connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture) találhatók, és a felügyelt példányokkal megegyező karbantartási időszaktal rendelkeznek, így a proxy kapcsolati házirend használata nem teszi lehetővé a További karbantartási időszakokhoz való kapcsolódást.
+* Az Azure SQL felügyelt példányaiban az átjáró-csomópontok a [virtuális fürtön](../../azure-sql/managed-instance/connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture) futnak, és a felügyelt példányokkal megegyező karbantartási időszaktal rendelkeznek, de az átirányítás kapcsolati házirendjének használata továbbra is ajánlott a karbantartási esemény során felmerülő fennakadások számának csökkentése érdekében.
 
 További információ a Azure SQL Database az ügyfélkapcsolati házirendről: [Azure SQL Database-kapcsolatok házirendje](../database/connectivity-architecture.md#connection-policy). 
 

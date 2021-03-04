@@ -6,6 +6,8 @@
       href: overview.md
 - name: Rövid útmutatók
   items:
+    - name: Útvonal-kiszolgáló konfigurálása – portál
+      href: quickstart-configure-route-server-portal.md
     - name: Útvonal-kiszolgáló konfigurálása – PowerShell
       href: quickstart-configure-route-server-powershell.md
     - name: Útvonal-kiszolgáló konfigurálása – parancssori felület

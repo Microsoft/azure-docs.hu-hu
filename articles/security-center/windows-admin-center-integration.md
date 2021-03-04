@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: memildin
-ms.openlocfilehash: ca3dd410474af0a42a3cd5b4217c3bba90b8ff1a
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: fc4207547a1f34fca1ef302626f1365572a236b9
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511984"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101307"
 ---
 # <a name="protect-windows-admin-center-resources-with-security-center"></a>A Windows felügyeleti központ erőforrásainak védetté Security Center
 
@@ -21,7 +21,7 @@ A Windows felügyeleti központ egy felügyeleti eszköz a Windows-kiszolgálók
 
 > [!NOTE]
 > Az Azure-előfizetéshez és a hozzá tartozó Log Analytics munkaterülethez az Azure Defender engedélyezése szükséges ahhoz, hogy engedélyezze a Windows felügyeleti központ integrációját.
-> Ha korábban még nem használta az előfizetést és a munkaterületet, az Azure Defender ingyenes az első 30 napban. További információkért tekintse meg [a díjszabási információkat ismertető oldalt](security-center-pricing.md).
+> Ha korábban még nem használta az előfizetést és a munkaterületet, az Azure Defender ingyenes az első 30 napban. A díjszabással kapcsolatos részletekért a választott pénznemben és a régiója szerint tekintse meg a [Security Center díjszabását](https://azure.microsoft.com/pricing/details/security-center/).
 >
 
 Ha sikeresen felkészített egy kiszolgálót a Windows felügyeleti központból a Azure Security Centerba, a következőket teheti:

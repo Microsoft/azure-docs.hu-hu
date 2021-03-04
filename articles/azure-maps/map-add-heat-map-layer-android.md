@@ -3,17 +3,18 @@ title: Heat Map-réteg hozzáadása Android-térképekhez | Microsoft Azure tér
 description: Megtudhatja, hogyan hozhat létre hő-térképet. Tekintse meg, hogyan adhat hozzá egy Heat Map-réteget egy térképhez az Azure MapsAndroid SDK használatával. Megtudhatja, hogyan szabhatja testre a Heat Térkép rétegeit.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/01/2020
+ms.date: 02/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 4de59bd0b2a9dc9b11acf55a59b82724d2c7b862
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: fce2c2d007f92c43e763826f9345f773324e885e
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97681604"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100185"
 ---
 # <a name="add-a-heat-map-layer-android-sdk"></a>Heat Map-réteg hozzáadása (Android SDK)
 
@@ -43,6 +44,8 @@ Győződjön meg arról, hogy a gyors útmutató [: Android-alkalmazás létreho
 Ha a pontok egy adatforrását szeretné megjeleníteni hő-hozzárendelésként, adja át az adatforrást az osztály egy példányának `HeatMapLayer` , és adja hozzá a térképhez.
 
 A következő mintakód betölt egy GeoJSON-hírcsatornát az elmúlt héten, és hő-térképként jeleníti meg őket. Az egyes adatpontok minden nagyítási szinten 10 képpontos sugarat jelenítenek meg. A jobb felhasználói élmény érdekében a hő Térkép a címke réteg alatt van, így a feliratok jól láthatók maradnak. Az ebben a példában szereplő adatok az [USGS földrengés veszélyei programból](https://earthquake.usgs.gov/)származnak. Ez a minta a webes adatok GeoJSON tölti be az adatforrás [létrehozása](create-data-source-android-sdk.md) dokumentumban megadott adatimportálási segédprogram kódjának blokkját használva.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Create a data source and add it to the map.
@@ -80,6 +83,49 @@ Utils.importData("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_
     });
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a data source and add it to the map.
+val source = DataSource()
+map.sources.add(source)
+
+//Create a heat map layer.
+val layer = HeatMapLayer(
+    source,
+    heatmapRadius(10f),
+    heatmapOpacity(0.8f)
+)
+
+//Add the layer to the map, below the labels.
+map.layers.add(layer, "labels")
+
+//Import the geojson data and add it to the data source.
+Utils.importData("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson",
+    this
+) { result: String? ->
+    //Parse the data as a GeoJSON Feature Collection.
+    val fc = FeatureCollection.fromJson(result!!)
+
+    //Add the feature collection to the data source.
+    source.add(fc)
+
+    //Optionally, update the maps camera to focus in on the data.
+    //Calculate the bounding box of all the data in the Feature Collection.
+    val bbox = MapMath.fromData(fc)
+
+    //Update the maps camera so it is focused on the data.
+    map.setCamera(
+        bounds(bbox),
+        padding(20)
+    )
+}
+```
+
+::: zone-end
+
 Az alábbi képernyőfelvételen egy Térkép betöltését láthatja a fenti kóddal.
 
 ![Térkép a legutóbbi földrengések Heat Map-rétegével](media/map-add-heat-map-layer-android/android-heat-map-layer.png)
@@ -110,6 +156,8 @@ Az előző példában a sugár-és opacitási beállítások megadásával testr
 - `visible`: Elrejti vagy megjeleníti a réteget.
 
 Az alábbi példa egy olyan Heat-Térképet mutat be, amelyben egy vonalhajózási interpolációs kifejezést használunk egy sima színátmenet létrehozásához. Az `mag` egyes adatpontok súlyozásának vagy relevanciájának beállításához az adatpontban definiált tulajdonság exponenciális interpolációval történik.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 HeatMapLayer layer = new HeatMapLayer(source,
@@ -143,6 +191,44 @@ HeatMapLayer layer = new HeatMapLayer(source,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = HeatMapLayer(source,
+    heatmapRadius(10f),
+
+    //A linear interpolation is used to create a smooth color gradient based on the heat map density.
+    heatmapColor(
+        interpolate(
+            linear(),
+            heatmapDensity(),
+            stop(0, color(Color.TRANSPARENT)),
+            stop(0.01, color(Color.BLACK)),
+            stop(0.25, color(Color.MAGENTA)),
+            stop(0.5, color(Color.RED)),
+            stop(0.75, color(Color.YELLOW)),
+            stop(1, color(Color.WHITE))
+        )
+    ),
+
+    //Using an exponential interpolation since earthquake magnitudes are on an exponential scale.
+    heatmapWeight(
+       interpolate(
+            exponential(2),
+            get("mag"),
+            stop(0,0),
+
+            //Any earthquake above a magnitude of 6 will have a weight of 1
+            stop(6, 1)
+       )
+    )
+)
+```
+
+::: zone-end
+
 Az alábbi képernyőfelvételen a fenti egyéni hő-leképező réteg látható az előző Heat Map-példából származó adatok használatával.
 
 ![Térkép a legutóbbi földrengések egyéni Heat Map-rétegével](media/map-add-heat-map-layer-android/android-custom-heat-map-layer.png)
@@ -156,6 +242,8 @@ Alapértelmezés szerint a Heat Map rétegben megjelenített adatpontok sugara r
 Egy `zoom` kifejezéssel méretezheti a sugarat az egyes nagyítási szintekhez, így az egyes adatpontok a Térkép ugyanazon fizikai területére terjednek ki. Ez a kifejezés a Heat Map réteget statikus és konzisztensvé teszi. A Térkép minden nagyítási szintje kétszer annyi képpontot tartalmaz függőlegesen és vízszintesen, mint az előző nagyítási szint.
 
 A sugár skálázása úgy, hogy az minden nagyítási szinten megduplázódik, létrehoz egy hő-térképet, amely minden nagyítási szinten konzisztensnek tűnik. Ha alkalmazni szeretné ezt a skálázást, használja a ( `zoom` 2 `exponential interpolation` . alap) kifejezést, a minimális nagyítási szinthez pedig a képpont sugarat, a maximális nagyítási szinthez pedig a következő mintában látható méretet `2 * Math.pow(2, minZoom - maxZoom)` . A Térkép nagyításával megtekintheti, hogy a Heat Térkép hogyan méretezhető a nagyítási szinttel.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 HeatMapLayer layer = new HeatMapLayer(source,
@@ -175,11 +263,35 @@ HeatMapLayer layer = new HeatMapLayer(source,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = HeatMapLayer(source,
+  heatmapRadius(
+    interpolate(
+      exponential(2),
+      zoom(),
+
+      //For zoom level 1 set the radius to 2 pixels.
+      stop(1, 2f),
+
+      //Between zoom level 1 and 19, exponentially scale the radius from 2 pixels to 2 * (maxZoom - minZoom)^2 pixels.
+      stop(19, Math.pow(2.0, 19 - 1.0) * 2f)
+    )
+  ),
+  heatmapOpacity(0.75f)
+)
+```
+
+::: zone-end
+
 Az alábbi videó egy, a fenti kódot futtató Térképet mutat be, amely méretezi a sugarat, miközben a Térkép nagyítása folyamatban van, hogy konzisztens hő-leképezést hozzon létre a nagyítási szintek között.
 
 ![Animáció, amely egy térképes nagyítást mutat egy Heat térképes réteggel, amely konzisztens földrajzi méretet mutat](media/map-add-heat-map-layer-android/android-consistent-zoomable-heat-map-layer.gif)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A térképekhez hozzáadandó további példákat a következő cikkekben talál:
 

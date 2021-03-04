@@ -1,21 +1,37 @@
 ---
 title: Ügynökök automatikus üzembe helyezése Azure Security Centerhoz | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan állíthatja be a Log Analytics-ügynök és a Azure Security Center által használt egyéb ügynökök automatikus üzembe helyezését.
-services: security-center
+description: Ez a cikk azt ismerteti, hogyan állítható be a Log Analytics-ügynök és a Azure Security Center által használt egyéb ügynökök és bővítmények automatikus üzembe helyezése
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
-ms.date: 11/15/2020
+ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 6130572cedaaabb9d63758a2bc25f6ebd0396562
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d9d0739704a9f5f16bdbde80661192b2f1ca9bb1
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101729861"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099420"
 ---
-# <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>Ügynökök és bővítmények automatikus kiépítés a Azure Security Centerból
+# <a name="configure-auto-provisioning-for-agents-and-extensions-from-azure-security-center"></a>Az ügynökök és bővítmények automatikus kiépítés beállítása Azure Security Center
+
+Security Center adatokat gyűjt az erőforrásokról az adott erőforráshoz tartozó megfelelő ügynökkel vagy bővítményekkel, valamint az Ön által engedélyezett adatgyűjtési típussal. Az alábbi precedures használatával gondoskodhat arról, hogy az erőforrása rendelkezzen a Log Analytics ügynök és a Azure Security Center által használt egyéb ügynökök és bővítmények automatikus kiépítés beállításával.
+
+## <a name="prerequisites"></a>Előfeltételek
+A Security Center használatához Microsoft Azure-előfizetéssel kell rendelkeznie. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/pricing/free-trial/).
+
+## <a name="availability"></a>Rendelkezésre állás
+
+| Szempont                  | Részletek                                                                                                                                                                                                                      |
+|-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Kiadás állapota:          | **Szolgáltatás**: az automatikus kiépítés általánosan elérhető (GA)<br>**Ügynök és bővítmények**: log Analytics Azure-beli virtuális gépek ügynöke, a Microsoft függőségi ügynök előzetes verzióban érhető el, a Kubernetes házirend-bővítménye a ga                |
+| Árképzési                | Ingyenes                                                                                                                                                                                                                         |
+| Támogatott célhelyek: | ![Igen](./media/icons/yes-icon.png) Azure-gépek<br>![Nem](./media/icons/no-icon.png) Azure arc-gépek<br>![Nem](./media/icons/no-icon.png) Kubernetes-csomópontok<br>![Nem](./media/icons/no-icon.png) Virtual Machine Scale Sets |
+| Felhők                 | ![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov, Kína gov, egyéb gov                                                                                                      |
+|                         |                                                                                                                                                                                                                              |
+
+## <a name="how-does-security-center-collect-data"></a>Hogyan gyűjt Security Center adatokat?
 
 A Security Center adatokat gyűjt az Azure-beli virtuális gépekről (VM), a virtuálisgép-méretezési csoportokról, a IaaS-tárolókra és a nem Azure-ból (beleértve a helyszíni gépeket is) a biztonsági rések és fenyegetések figyelésére. 
 
@@ -29,20 +45,6 @@ Az adatok gyűjtése a használatával történik:
 > [!TIP]
 > Ahogy a Security Center nőtt, a megfigyelhető erőforrások típusai is megnőttek. A bővítmények száma is megnőtt. Az automatikus kiépítés kibővült a további erőforrástípusok támogatásához a Azure Policy képességeinek kihasználásával.
 
-:::image type="content" source="./media/security-center-enable-data-collection/auto-provisioning-options.png" alt-text="Security Center automatikus kiépítési beállításainak lapja":::
-
-
-## <a name="availability"></a>Rendelkezésre állás
-
-| Szempont                  | Részletek                                                                                                                                                                                                                      |
-|-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Kiadás állapota:          | **Szolgáltatás**: az automatikus kiépítés általánosan elérhető (GA)<br>**Ügynök és bővítmények**: log Analytics Azure-beli virtuális gépek ügynöke, a Microsoft függőségi ügynök előzetes verzióban érhető el, a Kubernetes házirend-bővítménye a ga                |
-| Árképzési                | Ingyenes                                                                                                                                                                                                                         |
-| Támogatott célhelyek: | ![Igen](./media/icons/yes-icon.png) Azure-gépek<br>![Nem](./media/icons/no-icon.png) Azure arc-gépek<br>![Nem](./media/icons/no-icon.png) Kubernetes-csomópontok<br>![Nem](./media/icons/no-icon.png) Virtual Machine Scale Sets |
-| Felhők                 | ![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov, Kína gov, egyéb gov                                                                                                      |
-|                         |                                                                                                                                                                                                                              |
-
-
 ## <a name="why-use-auto-provisioning"></a>Miért érdemes az automatikus kiépítés használatára?
 Az ezen *a lapon leírt* ügynökök és bővítmények bármelyike telepíthető manuálisan (lásd: [a log Analytics ügynök manuális telepítése](#manual-agent)). Az **automatikus kiépítés** azonban csökkenti a felügyelet terhelését azáltal, hogy az összes szükséges ügynököt és bővítményt telepíti a meglévő és a új gépekre, így biztosítva az összes támogatott erőforrás gyorsabb biztonsági lefedettségét. 
 
@@ -54,14 +56,19 @@ Security Center automatikus kiépítési beállításai rendelkeznek a támogato
 > [!TIP]
 > További információ a Azure Policy-effektusokról, beleértve az üzembe helyezést, ha nem létezik [Azure Policy-effektusok értelmezése](../governance/policy/concepts/effects.md).
 
-## <a name="enable-auto-provisioning-of-the-log-analytics-agent"></a>Az log Analytics-ügynök automatikus kiépítés engedélyezése <a name="auto-provision-mma"></a>
+
+## <a name="enable-auto-provisioning-of-the-log-analytics-agent-and-extensions"></a>A log Analytics-ügynök és-bővítmények automatikus kiépítés engedélyezése <a name="auto-provision-mma"></a>
+
 Ha az automatikus kiépítés be van kapcsolva a Log Analytics ügynöknél, Security Center üzembe helyezi az ügynököt az összes támogatott Azure-beli virtuális gépen és minden újonnan létrehozott rendszeren. A támogatott platformok listáját lásd: [Azure Security Center támogatott platformok](security-center-os-coverage.md).
 
 Az log Analytics-ügynök automatikus kiépítés engedélyezése:
 
 1. A Security Center menüjében válassza a **díjszabás & beállítások** lehetőséget.
 1. Válassza ki az adott előfizetést.
-1. Az **automatikus kiépítés** lapon állítsa be az ügynök állapotát **a** következőre:.
+1. Az **automatikus kiépítés** lapon állítsa be a log Analytics ügynök állapotát a következőre **:.**
+
+    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Az log Analytics-ügynök automatikus kiépítés engedélyezése":::
+
 1. A konfigurációs beállítások panelen adja meg a használni kívánt munkaterületet.
 
     :::image type="content" source="./media/security-center-enable-data-collection/log-analytics-agent-deploy-options.png" alt-text="A Log Analytics-ügynökök virtuális gépekre való automatikus kiépítési beállításainak konfigurációs beállításai" lightbox="./media/security-center-enable-data-collection/log-analytics-agent-deploy-options.png":::
@@ -104,6 +111,22 @@ Az log Analytics-ügynök automatikus kiépítés engedélyezése:
 
 1. Válassza az **alkalmaz** lehetőséget a konfiguráció ablaktáblán.
 
+1. A log Analytics ügynökön kívüli bővítmény automatikus kiépítés engedélyezése: 
+
+    1. Ha engedélyezi az automatikus kiépítés a Microsoft függőségi ügynök számára, győződjön meg arról, hogy az log Analytics ügynök automatikus központi telepítésre van beállítva.
+    1. A megfelelő bővítmény állapotának **bekapcsolása a következőre** :.
+
+        :::image type="content" source="./media/security-center-enable-data-collection/toggle-kubernetes-add-on.png" alt-text="Váltás az automatikus kiépítés engedélyezéséhez a K8s házirend-bővítményéhez":::
+
+    1. Kattintson a **Mentés** gombra. Az Azure-szabályzat hozzá van rendelve, és létrejön egy szervizelési feladat.
+
+        |Mellék  |Szabályzat  |
+        |---------|---------|
+        |Kubernetes vonatkozó házirend-bővítmény|[Azure Policy bővítmény üzembe helyezése az Azure Kubernetes Service-fürtökön](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa8eff44f-8c92-45c3-a3fb-9880802d67a7)|
+        |Microsoft függőségi ügynök (előzetes verzió) (Windows rendszerű virtuális gépek)|[Windows rendszerű virtuális gépek függőségi ügynökének telepítése](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1c210e94-a481-4beb-95fa-1571b434fb04)         |
+        |Microsoft függőségi ügynök (előzetes verzió) (Linux rendszerű virtuális gépek)|[Függőségi ügynök telepítése Linux rendszerű virtuális gépekhez](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da21710-ce6f-4e06-8cdb-5cc4c93ffbee)|
+        |||
+
 1. Kattintson a **Mentés** gombra. Ha egy munkaterületet ki kell építeni, az ügynök telepítése akár 25 percet is igénybe vehet.
 
 1. A rendszer megkérdezi, hogy szeretné-e újrakonfigurálni azokat a figyelt virtuális gépeket, amelyek korábban egy alapértelmezett munkaterülethez voltak csatlakoztatva:
@@ -115,28 +138,6 @@ Az log Analytics-ügynök automatikus kiépítés engedélyezése:
 
    > [!NOTE]
    > Ha az **Igen** lehetőséget választja, ne törölje a Security Center által létrehozott munkaterületeket, amíg az összes virtuális gép újra nem csatlakozik az új cél munkaterülethez. A művelet meghiúsul, ha a munkaterület túl korán van törölve.
-
-
-## <a name="enable-auto-provisioning-of-extensions"></a>Bővítmények automatikus kiépítés engedélyezése
-
-A log Analytics ügynökön kívüli bővítmény automatikus kiépítés engedélyezése: 
-
-1. A Azure Portal Security Center menüjében válassza a **díjszabás & beállítások** lehetőséget.
-1. Válassza ki az adott előfizetést.
-1. Válassza az **automatikus kiépítés** lehetőséget.
-1. Ha engedélyezi az automatikus kiépítés a Microsoft függőségi ügynök számára, győződjön meg arról, hogy az log Analytics-ügynök az automatikus telepítésre van beállítva. 
-1. A megfelelő bővítmény állapotának **bekapcsolása a következőre** :.
-
-    :::image type="content" source="./media/security-center-enable-data-collection/toggle-kubernetes-add-on.png" alt-text="Váltás az automatikus kiépítés engedélyezéséhez a K8s házirend-bővítményéhez":::
-
-1. Kattintson a **Mentés** gombra. Az Azure-szabályzat hozzá van rendelve, és létrejön egy szervizelési feladat.
-
-    |Mellék  |Szabályzat  |
-    |---------|---------|
-    |Kubernetes vonatkozó házirend-bővítmény|[Azure Policy bővítmény üzembe helyezése az Azure Kubernetes Service-fürtökön](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa8eff44f-8c92-45c3-a3fb-9880802d67a7)|
-    |Microsoft függőségi ügynök (előzetes verzió) (Windows rendszerű virtuális gépek)|[Windows rendszerű virtuális gépek függőségi ügynökének telepítése](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1c210e94-a481-4beb-95fa-1571b434fb04)         |
-    |Microsoft függőségi ügynök (előzetes verzió) (Linux rendszerű virtuális gépek)|[Függőségi ügynök telepítése Linux rendszerű virtuális gépekhez](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da21710-ce6f-4e06-8cdb-5cc4c93ffbee)|
-
 
 
 ## <a name="windows-security-event-options-for-the-log-analytics-agent"></a>A Windows biztonsági eseményeinek beállításai a Log Analytics ügynökhöz <a name="data-collection-tier"></a> 
@@ -274,25 +275,11 @@ Az ügynök automatikus kiépítési funkciójának kikapcsolásához:
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
--   Az automatikus telepítési problémák azonosításához lásd: az [ügynök állapotával kapcsolatos problémák elhárítása](security-center-troubleshooting-guide.md#mon-agent).
-
+-   A telepítési problémák automatikus kiépítésének azonosításához lásd: az [ügynök állapotával kapcsolatos problémák elhárítása](security-center-troubleshooting-guide.md#mon-agent).
 -  A figyelési ügynök hálózati követelményeinek azonosításához lásd: a [figyelési ügynök hálózati követelményeinek hibaelhárítása](security-center-troubleshooting-guide.md#mon-network-req).
 -   A manuális előkészítési problémák azonosításához lásd: [az Operations Management Suite bevezetési problémáinak elhárítása](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues).
-
-- A nem figyelt virtuális gépek és számítógépek problémáinak azonosítása:
-
-    A Security Center nem figyeli a virtuális gépet vagy számítógépet, ha a gép nem futtatja a Log Analytics-ügynök bővítményt. Előfordulhat, hogy egy gépen már telepítve van egy helyi ügynök, például a OMS Direct ügynök vagy a System Center Operations Manager ügynök. Az ezekkel az ügynökökkel rendelkező gépeket a rendszer nem figyeli, mivel ezek az ügynökök nem teljes mértékben támogatottak Security Centerban. A Security Center összes funkciójának legteljesebb kihasználása érdekében szükség van a Log Analytics-ügynökbővítményre.
-
-    Ha további információra van szükség arról, hogy Security Center miért nem tudja sikeresen figyelni a virtuális gépeket és a számítógépeket az automatikus kiépítés során, tekintse meg a [figyelési ügynök állapotával kapcsolatos problémákat](security-center-troubleshooting-guide.md#mon-agent).
-
 
 
 
 ## <a name="next-steps"></a>Következő lépések
-Ez a cikk bemutatja, hogyan működik az adatgyűjtés és az automatikus kiépítés a Security Centerban. Ha többet szeretne megtudni a Security Centerről, tekintse meg a következő lapokat:
-
-- [Azure Security Center – gyakran ismételt kérdések](faq-general.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
-- [Biztonsági állapotfigyelés az Azure Security Centerben](security-center-monitoring.md) – Megtudhatja, hogyan figyelheti az Azure-erőforrások állapotát.
-
-Ez a cikk azt ismerteti, hogyan telepíthet egy Log Analytics-ügynököt, és hogyan állíthat be egy Log Analytics-munkaterületet, amelyben tárolni kívánja az összegyűjtött adatokat. Az adatgyűjtés engedélyezéséhez mindkét művelet szükséges. Az adatok tárolása Log Analyticsban, akár új, akár meglévő munkaterületet használ, az adattárolásra további díjak merülhetnek fel. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/security-center/) olvasható.
-
+Ez az oldal azt ismerteti, hogyan engedélyezhető az automatikus kiépítés a Log Analytics-ügynök és más Security Center-bővítmények számára. Azt is ismerteti, hogyan lehet definiálni egy Log Analytics munkaterületet, amelyben tárolni kívánja az összegyűjtött adatokat. Az adatgyűjtés engedélyezéséhez mindkét művelet szükséges. Az adatok tárolása Log Analyticsban, akár új, akár meglévő munkaterületet használ, az adattárolásra további díjak merülhetnek fel. A díjszabással kapcsolatos részletekért a választott pénznemben és a régiója szerint tekintse meg a [Security Center díjszabását](https://azure.microsoft.com/pricing/details/security-center/).

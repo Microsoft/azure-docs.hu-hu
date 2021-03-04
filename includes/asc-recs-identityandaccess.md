@@ -2,19 +2,19 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 02/16/2021
+ms.date: 02/28/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 8ebd7f245205844ac4b9f35d7205fc7f28502484
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1bce65cf0a2edbf87efd2d1d745d90c32fb004c5
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100574450"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100389"
 ---
 Ebben a kategóriában **21** javaslat van.
 
-|Ajánlás |Description |Súlyosság |
+|Ajánlás |Leírás |Súlyosság |
 |---|---|---|
 |Az előfizetéshez legfeljebb 3 tulajdonost kell kijelölni |A feltört tulajdonosi fiókok általi visszaélések csökkentése érdekében javasoljuk, hogy a tulajdonosi fiókok számát legfeljebb 3 értékre korlátozza.<br />(Kapcsolódó szabályzat: [legfeljebb 3 tulajdonost kell kijelölni az előfizetéséhez](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4f11b553-d42e-4e3a-89be-32ca364cad4c)) |Magas |
 |Az Azure Defender for Key Vault engedélyezése szükséges |A Azure Security Center a Key Vault Azure Defendert is tartalmazza, amely további biztonsági intelligenciát biztosít.<br>Az Azure Defender for Key Vault szokatlan és potenciálisan ártalmas kísérleteket észlel Key Vault fiókok eléréséhez vagy kiaknázásához.<br><br>Fontos: a szervizelését ez a javaslat a kulcstartók védelmének díját eredményezi. Ha nem rendelkezik kulcstartóval ebben az előfizetésben, nem számítunk fel díjat.<br>Ha a későbbiekben létrehoz egy kulcstartót ezen az előfizetésen, akkor a rendszer automatikusan védelmet biztosít, és a díjak ekkor megkezdődik.<br> <a href='https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault'>További információ az Azure Defender Key Vaultról.</a><br />(Kapcsolódó szabályzat: [Az Azure Defender for Key Vault engedélyezése](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2f0e6763cc-5078-4e64-889d-ff4d9a839047)szükséges) |Magas |
