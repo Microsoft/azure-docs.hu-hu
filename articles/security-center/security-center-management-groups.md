@@ -1,26 +1,22 @@
 ---
-title: A Azure Security Center teljes körű láthatósága a bérlők számára | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan kezelheti a biztonsági testhelyzetet nagy léptékben, ha szabályzatokat alkalmaz a Azure Active Directory bérlőhöz kapcsolódó összes előfizetésre vonatkozóan.
+title: Előfizetések rendszerezése felügyeleti csoportokra és szerepkörök társítása a felhasználókhoz Azure Security Center
+description: Ismerje meg, hogyan rendezheti az Azure-előfizetéseit a Azure Security Center felügyeleti csoportjaiba, és hogyan rendelhet hozzá szerepköröket a szervezet felhasználóihoz
 services: security-center
 documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: b85c0e93-9982-48ad-b23f-53b367f22b10
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/04/2021
+ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 13cbc2e9451221fef951eb6fac4c6b2772275122
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 3508d508a19d6ce7fba4f3ef3a4fa545a58a167d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99556429"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099386"
 ---
-# <a name="organize-management-groups-subscriptions-and-tenant-wide-visibility"></a>Felügyeleti csoportok, előfizetések és bérlői szintű láthatóság rendszerezése
+# <a name="organize-subscriptions-into-management-groups-and-assign-roles-to-users"></a>Előfizetések rendszerezése felügyeleti csoportokra és szerepkörök társítása a felhasználókhoz
 
 Ez a cikk bemutatja, hogyan kezelheti a szervezete biztonsági állapotát a Azure Active Directory bérlőhöz kapcsolódó összes Azure-előfizetésre vonatkozó biztonsági szabályzatok alkalmazásával.
 
@@ -79,65 +75,6 @@ Előfizetéseket adhat hozzá a létrehozott felügyeleti csoporthoz.
    > A felügyeleti csoportok előfizetéseket és alárendelt felügyeleti csoportokat is tartalmazhatnak. Amikor egy felhasználóhoz egy Azure-szerepkört rendel a fölérendelt felügyeleti csoporthoz, a gyermek-felügyeleti csoport előfizetései öröklik a hozzáférést. A szülő felügyeleti csoportban beállított házirendeket a gyermekek is öröklik. 
 
 
-## <a name="grant-tenant-wide-permissions-to-yourself"></a>A bérlői szintű engedélyek megadása saját magának
-
-A **globális rendszergazda** Azure Active Directory (ad) szerepkörrel rendelkező felhasználó bérlői szintű felelősséggel rendelkezhet, de nem rendelkezik az Azure-engedélyekkel a szervezetre vonatkozó információk megtekintésére a Azure Security Centerban. A jogosultságszint-emelésre van szükség, mert az Azure AD-szerepkör-hozzárendelések nem biztosítanak hozzáférést az Azure-erőforrásokhoz. 
-
-> [!TIP]
-> További információ az [Azure-előfizetések és-felügyeleti csoportok kezeléséhez való jogosultságszint](../role-based-access-control/elevate-access-global-admin.md)-emelési jogosultságok a globális rendszergazdai szerepkörhöz való jogosultságszint-emeléséről.
-
-Bérlői szintű engedélyek kiosztása:
-
-1. Ha a szervezet [Azure ad Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-configure.md)vagy bármely más PIM eszközzel felügyeli az erőforrás-hozzáférést, a globális rendszergazdai szerepkörnek aktívnak kell lennie a felhasználó számára az alábbi eljárást követve.
-
-1. A bérlő legfelső szintű felügyeleti csoportjához tartozó hozzárendelés nélküli globális rendszergazda felhasználóként nyissa meg Security Center **Áttekintés** lapját, és válassza ki a teljes **bérlőre kiterjedő láthatósági** hivatkozást a szalagcímben. 
-
-    :::image type="content" source="media/security-center-management-groups/enable-tenant-level-permissions-banner.png" alt-text="Bérlői szintű engedélyek engedélyezése Azure Security Center":::
-
-1. Válassza ki a hozzárendelni kívánt új Azure-szerepkört. 
-
-    :::image type="content" source="media/security-center-management-groups/enable-tenant-level-permissions-form.png" alt-text="A felhasználóhoz hozzárendelni kívánt bérlői szintű engedélyek definiálásának űrlapja":::
-
-    > [!TIP]
-    > Általában a biztonsági rendszergazdai szerepkör szükséges ahhoz, hogy a legfelső szintű házirendeket alkalmazzuk, míg a biztonsági olvasó elegendő lesz a bérlői szintű láthatóság biztosításához. A szerepkörök által biztosított engedélyekkel kapcsolatos további információkért tekintse meg a [biztonsági rendszergazda beépített szerepkörének leírását](../role-based-access-control/built-in-roles.md#security-admin) vagy a [biztonsági olvasó beépített szerepkörének leírását](../role-based-access-control/built-in-roles.md#security-reader).
-    >
-    > A Security Center-specifikus szerepkörök közötti különbségekért tekintse meg a [szerepkörök és az engedélyezett műveletek](security-center-permissions.md#roles-and-allowed-actions)táblázatát.
-
-    A szervezeti szintű nézetet úgy érheti el, hogy a bérlő legfelső szintű felügyeleti csoport szintjén adja meg a szerepköröket.  
-
-1. Jelentkezzen ki a Azure Portalból, majd jelentkezzen be újra.
-
-1. Ha emelt szintű hozzáférést, nyissa meg vagy frissítse Azure Security Center annak ellenőrzéséhez, hogy látható-e az Azure AD-bérlő összes előfizetése. 
-
-
-## <a name="request-tenant-wide-permissions-when-yours-are-insufficient"></a>Bérlői szintű engedélyek kérése, ha a tiéd nem elegendő
-
-Ha bejelentkezik Security Centerba, és megjelenik egy szalagcím, amely arról tájékoztat, hogy a nézet korlátozott, a through gombra kattintva küldhet egy kérést a szervezet globális rendszergazdájának. A kérelemben megadhatja a hozzárendelni kívánt szerepkört, és a globális rendszergazda döntést fog hozni arról, hogy melyik szerepkört kell megadnia. 
-
-Ez a globális rendszergazda döntése, hogy elfogadják vagy elutasítja ezeket a kéréseket. 
-
-> [!IMPORTANT]
-> Hét naponta csak egy kérést lehet elküldeni.
-
-Emelt szintű engedélyek kérése a globális rendszergazdától:
-
-1. A Azure Portal nyissa meg Azure Security Center.
-
-1. Ha megjelenik a "korlátozott információ" felirat. Válassza ki.
-
-    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions.png" alt-text="A felhasználó bérlői szintű engedélyeket kérhet a felhasználónak, hogy tájékoztassa a felhasználót.":::
-
-1. A részletes kérelem űrlapján válassza ki a kívánt szerepkört és annak indoklását, hogy miért van szüksége ezekre az engedélyekre.
-
-    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions-details.png" alt-text="A részleteket tartalmazó lap, amely a bérlői szintű engedélyeket kéri az Azure globális rendszergazdájától":::
-
-1. Válassza a **hozzáférés kérése** lehetőséget.
-
-    A rendszer e-mailt küld a globális rendszergazdának. Az e-mail tartalmaz egy hivatkozást Security Center, ahol jóváhagyhatja vagy elutasíthatja a kérést.
-
-    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions-email.png" alt-text="E-mail küldése a globális rendszergazdának új engedélyek megadásához":::
-
-    Miután a globális rendszergazda kiválasztja **a kérelem áttekintését** , és befejezi a folyamatot, a döntés e-mailben szerepel a kérelmező felhasználó számára. 
 
 ## <a name="assign-azure-roles-to-other-users"></a>Azure-szerepkörök kiosztása más felhasználóknak
 
@@ -195,6 +132,6 @@ Miután hozzárendelte az Azure-szerepköröket a felhasználókhoz, a bérlői 
 
 
 ## <a name="next-steps"></a>Következő lépések
-Ebből a cikkből megtudhatta, hogyan szerezhet Azure Security Center bérlői szintű láthatóságot. A kapcsolódó információk a következő témakörben találhatók:
+Ebből a cikkből megtudhatta, hogyan rendezheti az előfizetéseket felügyeleti csoportokba, és hogyan rendelhet hozzá szerepköröket a felhasználókhoz. A kapcsolódó információk a következő témakörben találhatók:
 
 - [Engedélyek az Azure Security Centerben](security-center-permissions.md)

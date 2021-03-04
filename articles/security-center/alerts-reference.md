@@ -1,23 +1,20 @@
 ---
 title: A Azure Security Center összes biztonsági riasztására vonatkozó hivatkozási táblázat
-description: Ez a cikk a Azure Security Center Azure Defender-irányítópultján látható biztonsági riasztásokat sorolja fel.
+description: Ez a cikk a Azure Security Center Azure Defender-irányítópultján látható biztonsági riasztásokat sorolja fel
 services: security-center
 documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/21/2021
+ms.date: 03/03/2021
 ms.author: memildin
-ms.openlocfilehash: a9ba66580d6b98cfde0abe934f53f05d27edc57f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e8ebf47420150c82c8e94299291e9ea6bd7d4d88
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101735845"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096955"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Biztonsági riasztások - – referencia-útmutató
 
@@ -278,6 +275,9 @@ A lap alján található egy táblázat, amely leírja a Azure Security Center k
 
 ## <a name="alerts-for-containers---host-level"></a><a name="alerts-containerhost"></a>Tárolók riasztásai – gazdagép szintje
 
+Az Azure Defender-riasztások a tároló gazdagépekhez nem korlátozódnak az alábbi riasztásokra. A riasztások az [Azure hálózati réteghez](#alerts-azurenetlayer), a [Windows rendszerű számítógépekre](#alerts-windows)vonatkozó riasztások, valamint a Linux rendszerű [gépekhez tartozó riasztások](#alerts-linux) a tároló gazdagépeken is előfordulhatnak. A Microsoft globális fenyegetést jelentő hírszerzési csapata folyamatosan méri és hangolja a Kubernetes-fürtökkel kapcsolatos számos típusú riasztást az észlelés és a téves pozitív hibák csökkentése érdekében.
+
+
 [További részletek és megjegyzések](defender-for-kubernetes-introduction.md)
 
 | Riasztás                                                                          | Leírás                                                                                                                                                                                                                                                                                                | MITRE taktika<br>([További információ](#intentions)) | Súlyosság |
@@ -294,9 +294,7 @@ A lap alján található egy táblázat, amely leírja a Azure Security Center k
 
 ## <a name="alerts-for-sql-database-and-azure-synapse-analytics"></a><a name="alerts-sql-db-and-warehouse"></a>Riasztások a SQL Database és az Azure szinapszis Analytics szolgáltatáshoz
 
-[További részletek és megjegyzések](defender-for-sql-introduction.md)
-
-| Riasztás                                                    | Leírás                                                                                                                                                                                                                                                                                                                                                                                                                               | MITRE taktika<br>([További információ](#intentions)) | Súlyosság |
+[További részletek és megjegyzések](defender-for-sql-introduction.md)| Riasztás                                                    | Leírás                                                                                                                                                                                                                                                                                                                                                                                                                               | MITRE taktika<br>([További információ](#intentions)) | Súlyosság |
 |----------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------:|----------|
 | **Az SQL-injektálás lehetséges biztonsági rése**            | Egy alkalmazás egy hibás SQL-utasítást generált az adatbázisban. Ez az SQL-injektálási támadások lehetséges sebezhetőségét jelezheti. A hibás utasításoknak két lehetséges oka van. Előfordulhat, hogy az alkalmazás kódjában lévő hiba a hibás SQL-utasítást alakította ki. Vagy az alkalmazás kódja vagy tárolt eljárásai nem fertőtlenítik a felhasználói adatbevitelt a hibás SQL-utasítás létrehozásakor, ami kihasználható az SQL-injektáláshoz. | -                                            | Közepes   |
 | **Potenciálisan ártalmas alkalmazás általi bejelentkezés történt** | Egy potenciálisan ártalmas alkalmazás megpróbálta elérni a (z) {Name} SQL Servert.                                                                                                                                                                                                                                                                                                                                                               | Előtámadás                                    | Magas     |
@@ -477,8 +475,7 @@ A lap alján található egy táblázat, amely leírja a Azure Security Center k
 
 ## <a name="security-incident-alerts"></a><a name="alerts-fusion"></a>Biztonsági incidensek riasztásai
 
-[További részletek és megjegyzések](security-center-alerts-cloud-smart.md)
-
+[További részletek és megjegyzések](security-center-alerts-overview.md#cloud-smart-alert-correlation-in-azure-security-center-incidents)
 
 | Riasztás                                   | Leírás                                                          | MITRE taktika<br>([További információ](#intentions)) | Súlyosság |
 |-----------------------------------------|----------------------------------------------------------------------|:----------------------------------:|----------|

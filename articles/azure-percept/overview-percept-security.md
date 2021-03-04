@@ -7,25 +7,25 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: b5a345139114842c83cb1f11792076efb1461870
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a08876cde9fac64c3a361b469049b4e33678a86f
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663713"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098145"
 ---
 # <a name="azure-percept-security-overview"></a>Az Azure Percept biztonsági áttekintése
 
-Az Azure Percept DK-eszközök a megbízható hardver gyökerével vannak kialakítva – a beépített biztonság minden eszközön. Megvédi az adatvédelmet, például a kamerákat és a mikrofonokat, az adatokat, és lehetővé teszi az eszközök hitelesítését és engedélyezését az Azure Percept Studio-szolgáltatásokhoz.
+Az Azure Percept DK-eszközöket a megbízható hardver gyökerével tervezték meg: minden eszközön további beépített biztonság szükséges. Megvédi az adatvédelmet, például a kamerákat és a mikrofonokat, az adatokat, és lehetővé teszi az eszközök hitelesítését és engedélyezését az Azure Percept Studio-szolgáltatásokhoz.
 
 > [!NOTE]
-> Az Azure Percept DK fejlesztési és tesztelési környezetekben, valamint a megvalósíthatósági forgatókönyvekben használható.
+> Az Azure Percept DK kizárólag fejlesztési és tesztelési környezetekben használható.
 
 ## <a name="devices"></a>Eszközök
 
 ### <a name="azure-percept-dk"></a>Azure Percept DK
 
-Az Azure Percept DK tartalmaz egy platformmegbízhatósági modul (TPM) 2,0-es verziót, amely az eszköz biztonságos csatlakoztatására használható az Azure Device kiépítési szolgáltatásokhoz. A TPM a Trusted Computing Group iparági szintű, ISO szabványa, és a TPM a [teljes tpm 2,0 specifikációban](https://trustedcomputinggroup.org/resource/tpm-library-specification/) , illetve az ISO/IEC 11889 specifikációban is olvasható. További információ arról, hogy a DPS hogyan tudja biztonságos módon kiépíteni az eszközöket: [Azure IoT hub Device Provisioning Service – TPM-igazolás](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation).
+Az Azure Percept DK tartalmaz egy platformmegbízhatósági modul (TPM) 2,0-es verziót, amely felhasználható az eszköz és az Azure-eszközök kiépítési szolgáltatásainak további biztonsággal való összekapcsolására. A TPM a Trusted Computing Group iparági szintű, ISO szabványa, és a TPM a [teljes tpm 2,0 specifikációban](https://trustedcomputinggroup.org/resource/tpm-library-specification/) , illetve az ISO/IEC 11889 specifikációban is olvasható. További információ arról, hogy a DPS hogyan tudja biztonságos módon kiépíteni az eszközöket: [Azure IoT hub Device Provisioning Service – TPM-igazolás](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation).
 
 ### <a name="azure-percept-system-on-module-som"></a>Azure Percept rendszer a modulon (SOM)
 
@@ -37,11 +37,11 @@ Az Azure Percept-eszközök a hardveres legfelső szintű megbízhatóságot has
 
 ### <a name="iot-edge"></a>IoT Edge
 
-Az Azure Percept DK biztonságosan csatlakozik az Azure Percept studióhoz és más Azure-szolgáltatásokhoz, Transport Layer Security (TLS) protokollt használ. Az Azure Percept DK egy Azure IoT Edge engedélyezett eszköz. A IoT Edge Runtime olyan programok gyűjteménye, amelyek egy eszközt IoT Edge eszközre kapcsolnak be. Együttesen a IoT Edge futtatókörnyezet-összetevők lehetővé teszik, hogy IoT Edge eszközök megkapják a kód futtatását a peremhálózat szélén, és közlik az eredményeket. Az Azure Percept DK Docker-tárolókat használ a IoT Edge munkaterhelések elkülönítésére a gazda operációs rendszer és az Edge-kompatibilis alkalmazások számára. A Azure IoT Edge biztonsági keretrendszerével kapcsolatos további információkért olvassa el a [IoT Edge Security Manager](https://docs.microsoft.com/azure/iot-edge/iot-edge-security-manager?view=iotedge-2018-06)című témakört.
+Az Azure Percept DK a Transport Layer Security (TLS) protokollt használó további biztonsági és egyéb Azure-szolgáltatásokkal csatlakozik az Azure Percept studióhoz. Az Azure Percept DK egy Azure IoT Edge engedélyezett eszköz. A IoT Edge Runtime olyan programok gyűjteménye, amelyek egy eszközt IoT Edge eszközre kapcsolnak be. Együttesen a IoT Edge futtatókörnyezet-összetevők lehetővé teszik, hogy IoT Edge eszközök megkapják a kód futtatását a peremhálózat szélén, és közlik az eredményeket. Az Azure Percept DK Docker-tárolókat használ a IoT Edge munkaterhelések elkülönítésére a gazda operációs rendszer és az Edge-kompatibilis alkalmazások számára. A Azure IoT Edge biztonsági keretrendszerével kapcsolatos további információkért olvassa el a [IoT Edge Security Manager](https://docs.microsoft.com/azure/iot-edge/iot-edge-security-manager?view=iotedge-2018-06)című témakört.
 
 ### <a name="device-update-for-iot-hub"></a>IoT Hub eszköz frissítése
 
-A IoT Hub eszköz frissítése lehetővé teszi a biztonságos, méretezhető és megbízható, az Azure Percept-eszközökre épülő, megújítható biztonságot biztosító frissítést. Részletes felügyeleti felügyeletet biztosít, és a megfelelőséget az információkkal frissíti. Az Azure Percept DK olyan előre integrált eszköz-frissítési megoldást tartalmaz, amely rugalmas frissítést (A/B) biztosít a belső vezérlőprogram és az operációs rendszer rétegei számára.
+A IoT Hub eszköz frissítése biztonságosabb, méretezhető és megbízható, az Azure Percept-eszközökre épülő, megújítható biztonságot biztosító frissítést tesz lehetővé. Részletes felügyeleti felügyeletet biztosít, és a megfelelőséget az információkkal frissíti. Az Azure Percept DK olyan előre integrált eszköz-frissítési megoldást tartalmaz, amely rugalmas frissítést (A/B) biztosít a belső vezérlőprogram és az operációs rendszer rétegei számára.
 
 <!---I think the below topics need to be somewhere else, (i.e. not on the main page)
 --->
@@ -57,16 +57,19 @@ Ez az ellenőrzőlista a tűzfalszabályok kiindulási pontja:
 |*. auth.azureperceptdk.azure.net|   443|    Azure DK SOM-hitelesítés és-engedélyezés|
 |*. auth.projectsantacruz.azure.net| 443|    Azure DK SOM-hitelesítés és-engedélyezés|
 
-Emellett tekintse át az [Azure IOT Edge által használt kapcsolatok](https://docs.microsoft.com/azure/iot-edge/production-checklist?view=iotedge-2018-06#allow-connections-from-iot-edge-devices)listáját.
+Emellett tekintse át az [Azure IoT Edge által használt kapcsolatok](https://docs.microsoft.com/azure/iot-edge/production-checklist?view=iotedge-2018-06#allow-connections-from-iot-edge-devices)listáját.
 
-## <a name="additional-recommendations-for-deployment-to-production"></a>További javaslatok az éles környezetben történő üzembe helyezéshez
+<!---
+## Additional Recommendations for Deployment to Production
 
-Az Azure Percept DK számos biztonsági képességgel rendelkezik a dobozból. A jelenlegi kiadásban szereplő hatékony biztonsági funkciók mellett a Microsoft a következő irányelveket is javasolja az éles környezetekben üzemelő példányok tervezésekor:
+Azure Percept DK offers a great variety of security capabilities out of the box. In addition to those powerful security features included in the current release, Microsoft also suggests the following guidelines when considering production deployments:
 
-- Az eszköz erős fizikai védelme
-- Az inaktív adatok titkosítása engedélyezve van
-- Az eszköz testhelyzetének folyamatos figyelése és a riasztások gyors reagálásának megválaszolása
-- Az eszközhöz hozzáféréssel rendelkező rendszergazdák számának korlátozása
+- Strong physical protection of the device itself
+- Ensuring data at rest encryption is enabled
+- Continuously monitoring the device posture and quickly responding to alerts
+- Limiting the number of administrators who have access to the device
+--->
+
 
 ## <a name="next-steps"></a>Következő lépések
 

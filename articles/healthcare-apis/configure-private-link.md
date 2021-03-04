@@ -6,18 +6,23 @@ author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 10/12/2020
-ms.author: matjazl
-ms.openlocfilehash: cdb41f12e8f050e3c74fccddb392d7a816c15b2f
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.date: 03/03/2021
+ms.author: zxue
+ms.openlocfilehash: 5e24c7666fd2ece7d284b7705bc481866d7604de
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621878"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097040"
 ---
 # <a name="configure-private-link"></a>Privát hivatkozás konfigurálása
 
 A privát hivatkozás lehetővé teszi az Azure API FHIR elérését egy privát végponton keresztül, egy olyan hálózati adaptert, amely privát és biztonságos módon csatlakoztatja a virtuális hálózatról a magánhálózati IP-címet. A privát hivatkozással biztonságosan érheti el szolgáltatásait a vnet az első féltől származó szolgáltatásként anélkül, hogy nyilvános DNS-t kellene átesnie. Ez a cikk bemutatja, hogyan hozhatja létre, tesztelheti és kezelheti az Azure API FHIR-hez készült privát végpontját.
+
+>[!Note]
+>Sem a privát kapcsolat, sem az Azure API for FHIR nem helyezhető át egy erőforráscsoport vagy előfizetés között egy másikra, ha a privát kapcsolat engedélyezve van. Először törölje a privát hivatkozást, majd helyezze át az Azure API-t a FHIR, és hozzon létre egy új privát hivatkozást az áthelyezés befejeződése után. A privát hivatkozás törlése előtt mérje fel a potenciális biztonsági következményeket.
+>
+>Ha a naplók exportálása és a metrikák engedélyezve vannak a FHIR készült Azure API-hoz, a portálon frissítse az exportálási beállítást a diagnosztikai beállítások segítségével.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

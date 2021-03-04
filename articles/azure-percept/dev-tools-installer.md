@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 02292d4559697bc38d47811fe392dc86427515b4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d684311ef959ac13f3be8bac7ffbbb06a741962a
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662335"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097703"
 ---
 # <a name="dev-tools-pack-installer-overview"></a>A dev Tools Pack telepítő áttekintése
 
@@ -84,6 +84,8 @@ A dev Tools Pack telepítője egy egyablakos megoldás, amely az intelligens per
 
         > [!NOTE]
         > A Docker támogatja a Docker Desktopot a macOS legújabb verzióiban. Ez a macOS jelenlegi kiadása, valamint az előző két kiadás. Mivel általánosan elérhető a macOS új fő verziói, a Docker nem támogatja a legrégebbi verziót, és támogatja a macOS legújabb verzióját (az előző két kiadáson felül). A Docker Desktop jelenleg a macOS Mojave, a macOS Catalina és a macOS Big Sur használatát támogatja.
+        > 
+        - A telepítő nem támogatott az Apple M1-ben.
 
 ## <a name="instructions"></a>Utasítások
 
@@ -99,7 +101,7 @@ A dev Tools Pack telepítője egy egyablakos megoldás, amely az intelligens per
     
         1. A letöltés után helyezze át a Dev-Tools-Pack-Installer. app fájlt az alkalmazások mappába.
         
-        1. A telepítővarázsló megnyitásához kattintson a "Dev-Tools-Pack-Installer. app" elemre.
+        1. A telepítővarázsló megnyitásához kattintson a **dev-Tools-Pack-Installer. app** elemre.
         
         1. Ha "azonosítatlan fejlesztő" biztonsági párbeszédpanelt kap:
         
@@ -123,7 +125,7 @@ A dev Tools Pack telepítője egy egyablakos megoldás, amely az intelligens per
                 
             1. Írja be a következőt a terminálon, hogy a AppImage végrehajtható legyen
             
-                1. chmod + x dev-Tools-Pack-Installer. AppImage
+                1. chmod + x **dev-Tools-Pack-Installer. AppImage**
                 
             1. A telepítő futtatásához írja be a következőt a terminálba
             
@@ -141,11 +143,11 @@ A dev Tools Pack telepítője egy egyablakos megoldás, amely az intelligens per
 
 1. A **dev Tools Pack telepítőjének telepítése** lapon kattintson a **licenc megtekintése** elemre a telepítőben található egyes szoftvercsomagok licencszerződésének megtekintéséhez. Ha elfogadja a licencszerződések feltételeit, jelölje be a jelölőnégyzetet, és kattintson a **tovább** gombra.
 
-    ![Licencszerződés képernyője a telepítőben.](https://github.com/microsoft/Project-Santa-Cruz-Private-Preview/blob/main/user-guides/prototyping/article_images/dev_tools_license_agreements.png)
+    :::image type="content" source="./media/dev-tools-installer/dev-tools-license-agreements.png" alt-text="Licencszerződés képernyője a telepítőben.":::
 
 1. A Microsoft adatvédelmi nyilatkozatának áttekintéséhez kattintson az **adatvédelmi nyilatkozatra** . Ha elfogadja az adatvédelmi nyilatkozat feltételeit, és diagnosztikai adatokat szeretne küldeni a Microsoftnak, válassza az **Igen** lehetőséget, és kattintson a **tovább** gombra. Ellenkező esetben válassza a **nem** lehetőséget, majd kattintson a **tovább** gombra.
 
-    ![Adatvédelmi nyilatkozati szerződés képernyője a telepítőben.](https://github.com/microsoft/Project-Santa-Cruz-Private-Preview/blob/main/user-guides/prototyping/article_images/dev_tools_privacy_statement.png)
+    :::image type="content" source="./media/dev-tools-installer/dev-tools-privacy-statement.png" alt-text="Adatvédelmi nyilatkozati szerződés képernyője a telepítőben.":::
 
 1. Az **összetevők konfigurálása** lapon válassza ki a telepíteni kívánt választható eszközöket (a kötelező eszközöket alapértelmezés szerint telepíti a rendszer).
 
@@ -153,11 +155,11 @@ A dev Tools Pack telepítője egy egyablakos megoldás, amely az intelligens per
 
     1. A telepítés folytatásához kattintson a **telepítés** gombra.
 
-    ![A telepítő képernyője a rendelkezésre álló szoftvercsomagok megjelenítéséhez.](https://github.com/microsoft/Project-Santa-Cruz-Private-Preview/blob/main/user-guides/prototyping/article_images/dev_tools_configure_components.png)
+    :::image type="content" source="./media/dev-tools-installer/dev-tools-configure-components.png" alt-text="A telepítő képernyője a rendelkezésre álló szoftvercsomagok megjelenítéséhez.":::
 
 1. Az összes kiválasztott összetevő sikeres telepítése után a varázsló továbblép a telepítővarázsló **befejezése** lapra. A telepítőből való kilépéshez kattintson a **Befejezés** gombra.
 
-    ![A telepítő befejezési képernyője.](https://github.com/microsoft/Project-Santa-Cruz-Private-Preview/blob/main/user-guides/prototyping/article_images/dev_tools_finish.png)
+    :::image type="content" source="./media/dev-tools-installer/dev-tools-finish.png" alt-text="A telepítő befejezési képernyője.":::
 
 ## <a name="docker-status-check"></a>Docker-állapot-ellenőrzési
 
@@ -168,12 +170,12 @@ Ha a telepítő értesíti arról, hogy a Docker Desktop jó futású állapotba
       1. Rendszertálca rejtett ikonjainak kibontása:
       
          1. A rendszertálca rejtett ikonjainak kibontása rejtett:
-         
-            * ![Rendszertálca](https://github.com/microsoft/Project-Santa-Cruz-Preview/blob/main/Sample-Scripts-and-Notebooks/Official/Machine%20Learning%20Notebooks/article_images/SystemTray.png)
+
+            :::image type="content" source="./media/dev-tools-installer/system-tray.png" alt-text="Tálcán.":::
          
          1. Ellenőrizze, hogy fut-e a Docker Desktop ikon:
-         
-            * ![Docker-állapot](https://github.com/microsoft/Project-Santa-Cruz-Preview/blob/main/Sample-Scripts-and-Notebooks/Official/Machine%20Learning%20Notebooks/article_images/DockerStatusRunning.png)
+
+            :::image type="content" source="./media/dev-tools-installer/docker-status-running.png" alt-text="Docker-állapot.":::
          
          1. Ha a fenti ikon nem jelenik meg a rendszertálcán, indítsa el a Docker Desktopot a Start menüből.
          
@@ -181,4 +183,4 @@ Ha a telepítő értesíti arról, hogy a Docker Desktop jó futású állapotba
 
 ## <a name="next-steps"></a>Következő lépések
 
-Tekintse meg a [fejlett fejlesztői oktatóanyagot (helyi)](./advanced-development-local.md)az Azure Percept DK fejlett fejlesztésének megkezdéséhez.
+Tekintse meg az [Azure Percept speciális fejlesztői tárházát](https://github.com/microsoft/azure-percept-advanced-development) , amely az Azure Percept DK fejlett fejlesztésének első lépéseiben nyújt segítséget.

@@ -3,17 +3,18 @@ title: Szimbólum-réteg hozzáadása az Android Maps-hez | Microsoft Azure tér
 description: Megtudhatja, hogyan adhat hozzá egy jelölőt egy térképhez. Egy olyan példát láthat, amely a Azure Maps Android SDK-t használja egy adatforrásból származó, pont-alapú adatokból álló szimbólum réteg hozzáadásához.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/08/2020
+ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 1706b60a61bd3b507d9fbcf555e478b388f51168
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: edb758469a06dcb7914025ea449b9d952e939533
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102047570"
+ms.locfileid: "102097210"
 ---
 # <a name="add-a-symbol-layer-android-sdk"></a>Szimbólum réteg hozzáadása (Android SDK)
 
@@ -32,6 +33,8 @@ Ahhoz, hogy hozzá lehessen adni egy szimbólum réteget a térképhez, néhány
 
 Az alábbi kód azt mutatja be, hogy mit kell hozzáadni a térképhez a betöltését követően. Ez a minta egy pontot jelenít meg a térképen egy szimbólum réteg használatával.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 //Create a data source and add it to the map.
 DataSource source = new DataSource();
@@ -47,6 +50,27 @@ SymbolLayer layer = new SymbolLayer(source);
 map.layers.add(layer);
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a data source and add it to the map.
+val source = DataSource()
+map.sources.add(source)
+
+//Create a point and add it to the data source.
+source.add(Point.fromLngLat(0, 0))
+
+//Create a symbol layer to render icons and/or text at points on the map.
+val layer = SymbolLayer(source)
+
+//Add the layer to the map.
+map.layers.add(layer)
+```
+
+::: zone-end
+
 A térképhez három különböző típusú pont-adattípust lehet hozzáadni:
 
 - GeoJSON pont geometriája – ez az objektum csak egy pont koordinátáit tartalmazza, semmi más. A `Point.fromLngLat` statikus metódus használatával egyszerűen hozhatók létre ezek az objektumok.
@@ -56,6 +80,8 @@ A térképhez három különböző típusú pont-adattípust lehet hozzáadni:
 További információkért lásd az [adatforrások létrehozása](create-data-source-android-sdk.md) című dokumentumot az adatok létrehozásához és a térképhez való hozzáadásához.
 
 Az alábbi mintakód egy GeoJSON pontot hoz létre, és átadja azt a GeoJSON szolgáltatásnak, és `title` hozzáadott egy értéket a tulajdonságaihoz. A `title` tulajdonság a Térkép szimbólum ikonja fölötti szövegként jelenik meg.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Create a data source and add it to the map.
@@ -81,6 +107,36 @@ SymbolLayer layer = new SymbolLayer(source,
 map.layers.add(layer);
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a data source and add it to the map.
+val source = DataSource()
+map.sources.add(source)
+
+//Create a point feature.
+val feature = Feature.fromGeometry(Point.fromLngLat(0, 0))
+
+//Add a property to the feature.
+feature.addStringProperty("title", "Hello World!")
+
+//Add the feature to the data source.
+source.add(feature)
+
+//Create a symbol layer to render icons and/or text at points on the map.
+val layer = SymbolLayer(
+    source,  //Get the title property of the feature and display it on the map.
+    textField(get("title"))
+)
+
+//Add the layer to the map.
+map.layers.add(layer)
+```
+
+::: zone-end
+
 Az alábbi képernyőfelvételen látható, hogy a fenti kód egy tépő egy ikon és egy szöveges címke használatával.
 
 ![Leképezés a ponttal megjelenített ponttal egy szimbólum-réteggel, amely egy adott pont funkció ikonját és szöveges címkéjét jeleníti meg](media/how-to-add-symbol-to-android-map/android-map-pin.png)
@@ -91,6 +147,8 @@ Az alábbi képernyőfelvételen látható, hogy a fenti kód egy tépő egy iko
 ## <a name="add-a-custom-icon-to-a-symbol-layer"></a>Egyéni ikon hozzáadása egy szimbólum réteghez
 
 A szimbólumok rétegei a WebGL használatával jelennek meg. Ennek megfelelően az összes erőforrást, például ikonokat be kell tölteni a WebGL-környezetbe. Ez a minta bemutatja, hogyan adhat hozzá egyéni ikont a Térkép erőforrásaihoz. Ezt az ikont ezután a rendszer a Térkép egyéni szimbólumával jeleníti meg. A `textField` szimbólum réteg tulajdonságának meg kell adni egy kifejezést. Ebben az esetben a hőmérséklet tulajdonságot szeretnénk megjeleníteni. Mivel a hőmérséklet egy szám, azt karakterlánccá kell konvertálni. Emellett szeretnénk hozzáfűzni a "°F" kifejezést. Ehhez az összefűzéshez kifejezés használható. `concat(Expression.toString(get("temperature")), literal("°F"))`.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Load a custom icon image into the image sprite of the map.
@@ -120,6 +178,39 @@ SymbolLayer layer = new SymbolLayer(source,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Load a custom icon image into the image sprite of the map.
+map.images.add("my-custom-icon", R.drawable.showers)
+
+//Create a data source and add it to the map.
+val source = DataSource()
+map.sources.add(source)
+
+//Create a point feature.
+val feature = Feature.fromGeometry(Point.fromLngLat(-73.985708, 40.75773))
+
+//Add a property to the feature.
+feature.addNumberProperty("temperature", 64)
+
+//Add the feature to the data source.
+source.add(feature)
+
+//Create a symbol layer to render icons and/or text at points on the map.
+val layer = SymbolLayer(
+    source,
+    iconImage("my-custom-icon"),
+    iconSize(0.5f),  //Get the title property of the feature and display it on the map.
+    textField(concat(Expression.toString(get("temperature")), literal("°F"))),
+    textOffset(arrayOf(0f, -1.5f))
+)
+```
+
+::: zone-end
+
 Ebben a példában a következő rendszerkép be lett töltve az alkalmazás megrajzolható mappájába.
 
 | ![Rain záporok ikonjának képe](media/how-to-add-symbol-to-android-map/showers.png)|
@@ -135,13 +226,27 @@ A következő képernyőfelvételen a fenti kód látható, amely egy egyéni ik
 
 ## <a name="modify-symbol-colors"></a>Szimbólum színének módosítása
 
-A Azure Maps Android SDK az alapértelmezett jelölő ikonjának előre definiált színvariációit tartalmazza. Például `marker-red` átadható `iconImage` egy szimbólum rétege, amely a jelölő ikon piros verzióját jeleníti meg az adott rétegben. 
+A Azure Maps Android SDK az alapértelmezett jelölő ikonjának előre definiált színvariációit tartalmazza. Például `marker-red` átadható `iconImage` egy szimbólum rétege, amely a jelölő ikon piros verzióját jeleníti meg az adott rétegben.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 SymbolLayer layer = new SymbolLayer(source,
     iconImage("marker-red")
 );
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = SymbolLayer(source,
+    iconImage("marker-red")
+)
+```
+
+::: zone-end
 
 Az alábbi táblázat felsorolja az összes elérhető rendszerkép-nevet. Ezen jelölők mindegyike lekéri a színeit a felülbírálható színforrásokból. A jelölő fő kitöltési színének felülbírálása mellett. Vegye figyelembe azonban, hogy az egyik jelölő színének felülbírálása az ikont használó összes rétegre érvényes lesz.
 

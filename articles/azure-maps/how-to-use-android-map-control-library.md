@@ -3,18 +3,18 @@ title: Bevezetés az Android Map Control használatába | Microsoft Azure térk�
 description: Ismerkedjen meg a Azure Maps Android SDK-val. Ismerje meg, hogyan hozhat létre projektet a Android Studioban, hogyan telepítheti az SDK-t, és hogyan hozhat létre interaktív térképet.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/10/2020
+ms.date: 2/26/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.custom: mvc
-ms.openlocfilehash: a7533e079ca13f8ac891fa96f11f740a21c1a3dc
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: 5888a5f34ef65fc1015b6e73af1d03368a8329b2
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680359"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098519"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Ismerkedés a Azure Maps Android SDK-val
 
@@ -30,10 +30,15 @@ A Azure Maps Android SDK három különböző módszert biztosít a Térkép nye
 
 Az első lehetőség, hogy átadja a nyelvet, és megtekinti a regionális információkat az `AzureMaps` osztályba a statikus `setLanguage` és a `setView` metódusok globális használatával. Ezzel a beállítással megadhatja az alkalmazásban betöltött összes Azure Maps vezérlő alapértelmezett nyelvi és regionális nézetét.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 static {
     //Set your Azure Maps Key.
     AzureMaps.setSubscriptionKey("<Your Azure Maps Key>");
+
+    //Alternatively use Azure Active Directory authenticate.
+    //AzureMaps.setAadProperties("<Your aad clientId>", "<Your aad AppId>", "<Your aad Tenant>");
 
     //Set the language to be used by Azure Maps.
     AzureMaps.setLanguage("fr-FR");
@@ -42,6 +47,30 @@ static {
     AzureMaps.setView("Auto");
 }
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+companion object {
+    init {
+        //Set your Azure Maps Key.
+        AzureMaps.setSubscriptionKey("<Your Azure Maps Key>");
+
+        //Alternatively use Azure Active Directory authenticate.
+        //AzureMaps.setAadProperties("<Your aad clientId>", "<Your aad AppId>", "<Your aad Tenant>");
+    
+        //Set the language to be used by Azure Maps.
+        AzureMaps.setLanguage("fr-FR");
+    
+        //Set the regional view to be used by Azure Maps.
+        AzureMaps.setView("Auto");
+    }
+}
+```
+
+::: zone-end
 
 A második lehetőség, hogy átadja a nyelvet, és megtekinti az információkat a Térkép vezérlőelem XML-kódjában.
 
@@ -57,6 +86,8 @@ A második lehetőség, hogy átadja a nyelvet, és megtekinti az információka
 
 A harmadik lehetőség az, hogy programozott módon állítsa be a Térkép nyelvét és regionális nézetét a Maps `setStyle` metódus használatával. Ezt bármikor megteheti a Térkép nyelvének és regionális nézetének módosításához.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 mapControl.onReady(map -> {
     map.setStyle(
@@ -65,6 +96,21 @@ mapControl.onReady(map -> {
     );
 });
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+mapControl.onReady(OnReady { map: AzureMap ->
+    map.setStyle(
+        language("fr-FR"),
+        view("Auto")
+    )
+})
+```
+
+::: zone-end
 
 Itt látható egy példa arra, hogy Azure Maps a "fr-FR" és a regionális nézet beállítása "Auto" értékre.
 
@@ -101,9 +147,21 @@ A Azure Maps Android SDK támogatja a Azure Government-felhőt. A Azure Maps And
 
 Ugyanazon a helyen, ahol meg van adva a Azure Maps-hitelesítés részletei, adja hozzá a következő kódrészletet, hogy tájékoztassa a térképet a Azure Maps kormányzati felhő tartományának használatáról.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 AzureMaps.setDomain("atlas.azure.us");
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+AzureMaps.setDomain("atlas.azure.us")
+```
+
+::: zone-end
 
 Ügyeljen arra, hogy a Térkép és a szolgáltatások hitelesítése során a Azure Government Cloud platformon Azure Maps hitelesítés részleteit használja.
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 12/01/2020
 ms.author: memildin
-ms.openlocfilehash: 668fe1436feeb0888f7d871144da6cb6b8e3864e
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 14ee9f23379a26c1756c622efb7d739f49dd0537
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922605"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099182"
 ---
 # <a name="permissions-in-azure-security-center"></a>Engedélyek az Azure Security Centerben
 
@@ -59,6 +59,5 @@ Ez a cikk azt ismerteti, hogyan használja a Security Center az Azure RBAC-t az 
 
 - [Biztonsági szabályzatok beállítása a Security Centerben](tutorial-security-policy.md)
 - [Biztonsági javaslatok kezelése Security Center](security-center-recommendations.md)
-- [Azure-erőforrások biztonsági állapotának figyelése](security-center-monitoring.md)
 - [Biztonsági riasztások kezelése és reagálás Security Center](security-center-managing-and-responding-alerts.md)
 - [Partneri biztonsági megoldások figyelése](./security-center-partner-integration.md)

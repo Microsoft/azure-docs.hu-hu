@@ -7,26 +7,27 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: 4fd0a7cb575a109d1393527b48de3fa4e3446167
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4c2ace609d67cc48d1b73bdb044e7048ebda21e7
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663472"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098332"
 ---
 # <a name="azure-percept-dk-overview"></a>Az Azure Percept DK áttekintése
 
-Az Azure Percept DK egy élvonalbeli AI fejlesztői csomag, amely a fogalmakra épülő mesterséges intelligencia-igazolás kialakítására készült. Az [Azure Percept Studióval](./overview-azure-percept-studio.md)kombinálva hatékony, mégis egyszerűen használható platformot kínál a Edge AI-megoldások széles SPEKTRUMÚ mesterséges intelligencia-alkalmazások létrehozásához. A [Microsoft online áruházban](https://go.microsoft.com/fwlink/p/?LinkId=2155270)megvásárolható.
+Az Azure Percept DK egy élvonalbeli AI-és IoT-fejlesztési csomag, amely a fogalmak kialakításához és hangalapú AI-igazolásához készült. Az [Azure Percept Studióval](./overview-azure-percept-studio.md) és az [Azure Percept hanggal](./overview-azure-percept-audio.md)kombinálva hatékony, mégis egyszerűen használható platformot kínál a Edge AI-megoldások széles körének kialakításához a különböző látási vagy audio AI-alkalmazások számára. A [Microsoft online áruházban](https://go.microsoft.com/fwlink/p/?LinkId=2155270)megvásárolható.
 
-:::image type="content" source="./media/overview-azure-percept-dk/dk-image.png" alt-text="Lemezkép.":::
+:::image type="content" source="./media/overview-azure-percept-dk/dk-image.png" alt-text="Azure Percept DK-eszköz.":::
 
 ## <a name="key-features"></a>A legfontosabb jellemzők
 
 - **Lehetőség a mesterséges intelligencia futtatására az Edge-** ben. A beépített hardveres gyorsítás lehetővé teszi, hogy a felhőhöz való kapcsolódás nélkül is futtasson látási AI-modelleket.
 - A **megbízhatósági kapcsolat biztonságának beépített hardveres gyökere**. További részletekért tekintse meg az [Azure Percept Security](./overview-percept-security.md) áttekintését.
 - **Zökkenőmentes integráció az [Azure Percept Studióval](./overview-azure-percept-studio.md)** és más Azure-szolgáltatásokkal. Például az Azure IoT Hub, az Azure Cognitive Services és az [élő videó Analytics](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/overview)
+- **Zökkenőmentes integráció opcionális [Azure Percept hanggal](./overview-azure-percept-audio.md)**
 - **Támogatás a legfontosabb AI-platformokhoz**. Ilyenek például a ONNX és a TensorFlow.
-- **Integráció az 80/20 railing rendszerrel**. Így könnyebben hozhat létre prototípusokat éles környezetekben. További információ az [8/20-integrációról](./overview-8020-integration.md).
+- **Integráció az 80/20 railing rendszerrel**. Így könnyebben hozhat létre prototípusokat éles környezetekben. További információ az [80/20-integrációról](./overview-8020-integration.md).
 
 ## <a name="hardware-components"></a>Hardver-összetevők
 

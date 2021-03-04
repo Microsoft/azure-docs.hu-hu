@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: 9b8dc635781c96dcbd7aa423c77f60ff0556bd71
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: fc3774a01665b88ccae2e25ae8382497f8010c35
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100634063"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096972"
 ---
 # <a name="continuously-export-security-center-data"></a>Security Center-adatfeldolgozás folyamatos exportálása
 
@@ -44,7 +44,7 @@ Ez a cikk bemutatja, hogyan konfigurálhatja a folyamatos exportálást Log Anal
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|Ingyenes|
 |Szükséges szerepkörök és engedélyek:|<ul><li>**Biztonsági rendszergazda** vagy az erőforráscsoport **tulajdonosa**</li><li>Írási engedélyek a célként megadott erőforráshoz</li><li>Ha az alábbiakban ismertetett Azure Policy "DeployIfNotExist" szabályzatot használja, a szabályzatok hozzárendelésére vonatkozó engedélyekre is szüksége lesz</li></ul>|
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) US Gov, egyéb gov<br>![Yes](./media/icons/yes-icon.png) Kínai gov (az Event hub-hoz)|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov, egyéb gov<br>![Igen](./media/icons/yes-icon.png) Kínai gov|
 |||
 
 
@@ -65,7 +65,7 @@ A folyamatos exportálás a következő adattípusokat exportálhatja, valahány
 
 A folyamatos exportálást a Azure Portal Security Center lapjain, a Security Center REST API vagy a megadott Azure Policy sablonok használatával konfigurálhatja. A részletekért válassza az alábbi megfelelő fület.
 
-### <a name="use-the-azure-portal"></a>[**Az Azure Portal használata**](#tab/azure-portal)
+### <a name="use-the-azure-portal"></a>[**A Azure Portal használata**](#tab/azure-portal)
 
 ### <a name="configure-continuous-export-from-the-security-center-pages-in-azure-portal"></a>Folyamatos exportálás konfigurálása Azure Portal Security Center lapjain
 
@@ -171,7 +171,7 @@ Ha egy Log Analytics munkaterületen belül szeretné elemezni Azure Security Ce
 
 ### <a name="log-analytics-tables-and-schemas"></a>Táblák és sémák Log Analytics
 
-A biztonsági riasztások és javaslatok tárolása a *SecurityAlert* és a *SecurityRecommendations* táblákban történik. 
+A biztonsági riasztások és javaslatok tárolása a *SecurityAlert* és a *SecurityRecommendation* táblákban történik. 
 
 Az alábbi táblákat tartalmazó Log Analytics-megoldás neve attól függ, hogy engedélyezve van-e az Azure Defender: Security ("Security and Audit") vagy a SecurityCenterFree. 
 

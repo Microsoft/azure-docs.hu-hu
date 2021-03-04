@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 21f07ed76ef0b900a723677acc2bf576649fe861
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 532c46c50d0b422946af649801e43904b4b6ed7d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702011"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096870"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Az SQL-hez készült Azure Defender bemutatása
 
@@ -26,7 +26,7 @@ Az SQL-hez készült Azure Defender két Azure Defender-csomagot tartalmaz, amel
 |Szempont|Részletek|
 |----|:----|
 |Kiadás állapota:|**Azure Defender az Azure SQL Database-kiszolgálókhoz** – általánosan elérhető (GA)<br>**Azure Defender a gépeken futó SQL-kiszolgálókhoz** – általánosan elérhető (GA) |
-|Árképzési|Az **Azure Defender for SQL** -t alkotó két csomag számlázása [a díjszabási oldalon](security-center-pricing.md) látható módon történik|
+|Árképzési|Az **Azure Defender for SQL** -t alkotó két csomag számlázása [Security Center díjszabás](https://azure.microsoft.com/pricing/details/security-center/) szerint történik|
 |Védett SQL-verziók:|[SQL Azure-beli virtuális gépeken](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)<br>[Azure arc-kompatibilis SQL-kiszolgálók](/sql/sql-server/azure-arc/overview)<br>Helyszíni SQL-kiszolgálók a Windows rendszerű gépeken az Azure arc nélkül<br>Önálló Azure SQL- [adatbázisok](../azure-sql/database/single-database-overview.md) és [rugalmas készletek](../azure-sql/database/elastic-pool-overview.md)<br>[Felügyelt Azure SQL-példány](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Azure szinapszis Analytics (korábban SQL DW) dedikált SQL-készlet](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
 |Felhők|![Igen ](./media/icons/yes-icon.png) kereskedelmi felhők<br>![Igen ](./media/icons/yes-icon.png) US gov<br>![Igen ](./media/icons/yes-icon.png) China gov (**részleges**: a riasztások részhalmaza és az SQL Server sebezhetőségi felmérése. A viselkedési veszélyforrások elleni védelem nem érhető el.)|
 |||

@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 8d150228be2cf6deff3bc2fd0a0599cca70d24ac
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8dda18271de9b7d65246f0882ee7a68191031c05
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662383"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096615"
 ---
 # <a name="connect-to-your-azure-percept-dk-over-ssh"></a>Kapcsolódás az Azure Percept DK-hoz SSH-kapcsolaton keresztül
 
@@ -25,6 +25,7 @@ Az alábbi lépéseket követve állíthatja be az Azure Percept DK-hoz való SS
     - Ha a gazdagépen a Windows fut, a [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) egy hatékony SSH-ügyfél, és az útmutatóban is szerepel.
     - Ha a gazdagépen Linux vagy OS X rendszer fut, az SSH-szolgáltatásokat az operációs rendszerek tartalmazzák, és külön ügyfélalkalmazás nélkül is futtathatók. Az SSH-szolgáltatások futtatásával kapcsolatos további információkért olvassa el az operációs rendszer termékdokumentációját.
 - Azure Percept DK
+- SSH bejelentkezési fiók beállítása az [Azure PERCEPT DK helyszíni](./quickstart-percept-dk-set-up.md) üzembe helyezési felületén
 
 ## <a name="initiate-the-ssh-connection"></a>Az SSH-kapcsolatok kezdeményezése
 
@@ -48,15 +49,8 @@ Az alábbi lépéseket követve állíthatja be az Azure Percept DK-hoz való SS
 
     :::image type="content" source="./media/how-to-ssh-into-percept-dk/ssh-putty.png" alt-text="Lemezkép.":::
 
-1. Jelentkezzen be a PuTTY-terminálba. Ha az OOBE során beállít egy SSH-felhasználónevet és-jelszót, adja meg ezeket a bejelentkezési hitelesítő adatokat, amikor a rendszer kéri. Ellenkező esetben adja meg a következőt:  
-
-    1. Bejelentkezés a következőképpen: root
-    1. Jelszó: p@ssw0rd
-
-    :::image type="content" source="./media/how-to-ssh-into-percept-dk/putty-terminal.png" alt-text="Putty-terminál ablaka.":::  
+1. Jelentkezzen be a PuTTY-terminálba az SSH-felhasználónévvel és jelszóval, amelyet a helyszíni folyamat során hoztak létre.
 
 ## <a name="next-steps"></a>Következő lépések
 
 Miután sikeresen kapcsolódott az Azure Percept DK-hez az SSH-n keresztül, számos feladatot elvégezhet, például a hibaelhárítást, az USB-frissítéseket, valamint a DiagTool vagy a SoftAP eszköz futtatását.
-
-

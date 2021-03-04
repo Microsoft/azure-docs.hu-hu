@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 02/18/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 575107859f56df742ab41a299269c250511022b3
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 588ebde85b6012ddbfb88ca8305fc735b7a0ba41
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665498"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097992"
 ---
 # <a name="azure-percept-audio-setup"></a>Azure Percept – hangbeállítás
 
@@ -24,25 +24,21 @@ Az Azure Percept hang az Azure Percept DK-mel működik együtt. Nincs szükség
 - Azure Percept hang
 - [Azure-előfizetés](https://azure.microsoft.com/free/)
 - Az [Azure PERCEPT DK telepítési felülete](./quickstart-percept-dk-set-up.md): csatlakoztatta a fejlesztői készlet egy Wi-Fi hálózathoz, létrehozott egy IoT hub, és csatlakoztatta a fejlesztői készlet a IoT hub
+- A 3,5 mm-es hangkimenethez csatlakoztatható hangszóró vagy fejhallgató (opcionális)
 
 ## <a name="connecting-your-devices"></a>Az eszközök csatlakoztatása
 
-1. Csatlakoztassa az Azure Percept hangeszközét az Azure Percept DK Carrier-táblához a mellékelt USB Micro Type-B típussal az USB-kábellel. Csatlakoztassa a kábel mikro-Type-B végét a hang SoM és a típus – a Percept DK Carrier Board végponthoz.
+1. Csatlakoztassa az Azure Percept hangeszközt az Azure Percept DK Carrier-táblához a mellékelt Micro USB-ről USB-re – a kábelhez. Csatlakoztassa a kábel Micro USB-végpontját a közvetítő (Developer) táblához, és a típust a Percept DK Carrier-táblához.
+1. (Nem kötelező) a hangcsatlakozón keresztül csatlakoztatható a hangszóró vagy a fejhallgató az Azure Percept hanghoz. Ez lehetővé teszi, hogy meghallgassa a hangsegéd hangválaszait. Ha nem csatlakozik hangszóróhoz vagy fejhallgatóhoz, akkor továbbra is megtekintheti a válaszokat szövegként a bemutató ablakban. 
 
-1. Kapcsolja be a fejlesztői készlet.
-
-    - Az audio SoM LED-L01 a tömör zöldre vált, jelezve, hogy az eszköz be van kapcsolva.
-    - A LED L02 a villogó zöldre változik, jelezve, hogy a hang SoM hitelesítve van.
+1. Kapcsolja be a fejlesztői készlet. A L02 LED-je villogó fehérre változik, jelezve, hogy az eszköz be van kapcsolva, és hogy a hang SoM hitelesítve van.
 
 1. Várjon, amíg a hitelesítési folyamat befejeződik – ez akár 3 percet is igénybe vehet.
 
 1. Készen áll a prototípusok megkezdésére, ha a következők valamelyikét látja:
 
-    - A LED L01 kikapcsol, és a L02 fehérre vált. Ez azt jelzi, hogy a hitelesítés befejeződött, és a fejlesztői készlet még nem lett konfigurálva kulcsszóval.
+    - A LED L02 folytonos fehérre változik. Ez azt jelzi, hogy a hitelesítés befejeződött, és a fejlesztői készlet még nem lett konfigurálva kulcsszóval.
     - Mindhárom LED kékre vált. Ez azt jelzi, hogy a hitelesítés befejeződött, és a fejlesztői készlet egy kulcsszóval van konfigurálva.
-
-    > [!NOTE]
-    > Ha a fejlesztői készlet nem végzi el a hitelesítést, forduljon az ügyfélszolgálathoz.
 
 ## <a name="next-steps"></a>Következő lépések
 

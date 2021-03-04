@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 593d2ccadf814cb5af27a4bb738f28132f39ab7d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5e41dea3b47c608b9e82ac57fa1cfe5247ea6cc2
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662401"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099012"
 ---
 # <a name="managing-your-voice-assistant"></a>A hangsegéd kezelése
 
@@ -28,7 +28,7 @@ A kulcsszó egy beszéd asszisztens aktiválásához használt szó vagy rövid 
 
 1. Kattintson az **egyéni kulcsszó** melletti **módosítás** elemre a bemutató oldalon.
 
-    :::image type="content" source="./media/manage-voice-assistant/hospitality-demo.png" alt-text="Lemezkép.":::
+    :::image type="content" source="./media/manage-voice-assistant/hospitality-demo.png" alt-text="Képernyőfelvétel a Hospitality bemutató ablakáról.":::
 
     Ha nincs megnyitva a bemutató oldal, navigáljon az eszköz lapra (lásd alább), majd kattintson a **hangsegéd tesztelése** **elemre** a bemutatóhoz való hozzáféréshez.
 
@@ -40,17 +40,17 @@ A kulcsszó egy beszéd asszisztens aktiválásához használt szó vagy rövid 
 
 1. Az [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819)áttekintés lapján kattintson az **eszközök** elemre a bal oldali menü ablaktáblán.
 
-    :::image type="content" source="./media/manage-voice-assistant/portal-overview-devices.png" alt-text="Lemezkép.":::
+    :::image type="content" source="./media/manage-voice-assistant/portal-overview-devices.png" alt-text="Képernyőkép az Azure Percept Studio áttekintő oldaláról a Kiemelt eszközökkel.":::
 
 1. Válassza ki azt az eszközt, amelyre a hangsegéd alkalmazást telepítette.
 
 1. Nyissa meg a **Speech (beszédfelismerés** ) lapot.
 
-    :::image type="content" source="./media/manage-voice-assistant/device-page.png" alt-text="Lemezkép.":::
+    :::image type="content" source="./media/manage-voice-assistant/device-page.png" alt-text="Képernyőkép a peremhálózati eszköz oldaláról, a Speech (beszédfelismerés) lappal kiemelve.":::
 
 1. Kattintson a **kulcsszó** melletti **módosítás** elemre.
 
-    :::image type="content" source="./media/manage-voice-assistant/change-keyword-device.png" alt-text="Lemezkép.":::
+    :::image type="content" source="./media/manage-voice-assistant/change-keyword-device.png" alt-text="Képernyőkép az elérhető beszédfelismerési megoldás műveleteiről.":::
 
 1. Válasszon ki egy elérhető kulcsszót, majd kattintson a **Mentés** gombra a módosítások alkalmazásához.
 

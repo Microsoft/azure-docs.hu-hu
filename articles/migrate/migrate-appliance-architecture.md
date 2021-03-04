@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 9a7a3a603944970a5e78a24ca4042f97b1c43fcc
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d695758849fd4f7e6f595820221f6b8606fe7cf1
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102047859"
+ms.locfileid: "102096190"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Az Azure Migrate-berendezés architektúrája
 
@@ -62,7 +62,7 @@ A készülék a következő folyamattal kommunikál a felderítési forrásokkal
 
 **Folyamat** | **VMware készülék** | **Hyper-V készülék** | **Fizikai készülék**
 ---|---|---|---
-**Felderítés indítása**| A készülék alapértelmezés szerint a 443-as TCP-porton kommunikál a vCenter-kiszolgálóval. Ha a vCenter-kiszolgáló egy másik portot figyel, azt a készülék Configuration Managerben állíthatja be. | A készülék a 5985-as (HTTP) WinRM-porton keresztül kommunikál a Hyper-V-gazdagépekkel. | A készülék a Windows-kiszolgálókkal kommunikál a WinRM port 5985 (HTTP) protokollal a 22-es porton keresztül (TCP).
+**Felderítés indítása** | A készülék alapértelmezés szerint a 443-as TCP-porton kommunikál a vCenter-kiszolgálóval. Ha a vCenter-kiszolgáló egy másik portot figyel, azt a készülék Configuration Managerben állíthatja be. | A készülék a 5985-as (HTTP) WinRM-porton keresztül kommunikál a Hyper-V-gazdagépekkel. | A készülék a Windows-kiszolgálókkal kommunikál a WinRM port 5985 (HTTP) protokollal a 22-es porton keresztül (TCP).
 **Konfigurációs és teljesítménybeli metaadatok összegyűjtése** | A készülék a vSphere API-k használatával gyűjti a vCenter Server-on futó kiszolgálók metaadatait az 443-as porton (alapértelmezett porton) vagy bármely más porton, vCenter Server figyeli. | A készülék a Hyper-V-gazdagépeken futó kiszolgálók metaadatait a 5985-es porton található gazdagépekkel CIM (CIM) munkamenettel gyűjti.| A készülék metaadatokat gyűjt a Windows-kiszolgálókról CIM (CIM) munkamenettel a 5985-es porton lévő kiszolgálókkal és a Linux-kiszolgálókkal a 22-es porton SSH-kapcsolat használatával.
 **Felderítési adatainak küldése** | A készülék elküldi az összegyűjtött adatokat a Azure Migratenak: kiszolgáló értékelése és Azure Migrate: kiszolgáló áttelepítése a 443-as SSL-porton keresztül.<br/><br/> A készülék az interneten keresztül vagy ExpressRoute keresztül tud csatlakozni az Azure-hoz (Microsoft-társat igényel). | A készülék elküldi az összegyűjtött adatokat a Azure Migratenak: a kiszolgáló értékelése az 443-as SSL-porton keresztül.<br/><br/> A készülék az interneten keresztül vagy ExpressRoute keresztül tud csatlakozni az Azure-hoz (Microsoft-társat igényel).| A készülék elküldi az összegyűjtött adatokat a Azure Migratenak: a kiszolgáló értékelése az 443-as SSL-porton keresztül.<br/><br/> A készülék az interneten keresztül vagy ExpressRoute keresztül tud csatlakozni az Azure-hoz (Microsoft-társat igényel).
 **Adatgyűjtés gyakorisága** | A konfigurációs metaadatok gyűjtése és küldése 30 percenként történik. <br/><br/> A teljesítmény metaadatainak gyűjtése 20 másodpercenként történik, és a rendszer összesíti az adatpontok Azure-ba történő küldését 10 percenként. <br/><br/> A szoftver leltározási szolgáltatásait 12 óránként egyszer küldik el az Azure-nak. <br/><br/> Az ügynök nélküli függőségi adatokat 5 percenként gyűjtöttük össze, a készüléken összesítve, és 6 óránként küldik az Azure-ba. <br/><br/> A SQL Server konfigurációs adatai 24 óránként frissülnek, és a teljesítményadatokat 30 másodpercenként rögzíti a rendszer.| A konfigurációs metaadatok gyűjtése és küldése 30 percenként történik. <br/><br/> A teljesítmény metaadatainak gyűjtése 30 másodpercenként történik, és a rendszer összesíti az adatpontok Azure-ba történő küldését 10 percenként.|  A konfigurációs metaadatok gyűjtése és küldése 30 percenként történik. <br/><br/> A teljesítmény metaadatainak gyűjtése 5 percenként történik, és a rendszer összesíti az adatpontok Azure-ba történő küldését 10 percenként.

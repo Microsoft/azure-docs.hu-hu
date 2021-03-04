@@ -2,23 +2,18 @@
 title: Biztonsági megoldások integrálása az Azure Security Centerbe | Microsoft Docs
 description: Megtudhatja, hogy az Azure Security Center hogyan integrálható a partnerekkel az Azure-erőforrások általános biztonságának növelése érdekében.
 services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 6af354da-f27a-467a-8b7e-6cbcf70fdbcb
 ms.service: security-center
 ms.topic: conceptual
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 12/10/2020
 ms.author: memildin
-ms.openlocfilehash: ecfb4bdbd523dd1514333a2185186eab0a7e4aaa
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: ff23a1fa4b631fc10163f22d94ccdbd8cbe657c2
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032677"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099250"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Biztonsági megoldások integrálása az Azure Security Centerbe
 Ez a dokumentum az Azure Security Centerhez már csatlakoztatott biztonsági megoldások kezelésében és újak hozzáadásában segít.
@@ -39,7 +34,7 @@ Ha többet szeretne megtudni a sebezhetőségi vizsgálat eszközeinek integrál
 
 A Security Center a következő biztonsági rések elemzését is biztosítja:
 
-* SQL-adatbázisok – lásd: [sebezhetőségi felmérési jelentések feltárása a sebezhetőségi felmérés irányítópultján](defender-for-sql-usage.md#explore-vulnerability-assessment-reports)
+* SQL-adatbázisok – lásd: [sebezhetőségi felmérési jelentések feltárása a sebezhetőségi felmérés irányítópultján](defender-for-sql-on-machines-vulnerability-assessment.md#explore-vulnerability-assessment-reports)
 * Azure Container Registry lemezképek – lásd: az [Azure Defender használata a tárolók beállításjegyzékében a lemezképek vizsgálatához a biztonsági rések](defender-for-container-registries-usage.md) felderítéséhez
 
 ## <a name="how-security-solutions-are-integrated"></a>A biztonsági megoldások integrálása
@@ -88,8 +83,7 @@ Válassza a **nézet** lehetőséget További információk és beállítások m
 Security Center automatikusan felderíti az Azure-ban futó biztonsági megoldásokat, de nem kapcsolódik Security Centerhoz, és megjeleníti a megoldásokat a **felderített megoldások** szakaszban. Ezen megoldások közé tartoznak az Azure-megoldások, például a [Azure ad Identity Protection](../active-directory/identity-protection/overview-identity-protection.md)és a partneri megoldások.
 
 > [!NOTE]
-> Az **Azure Defender** előfizetési szintjének engedélyezése a felderített megoldások szolgáltatáshoz. A díjszabással kapcsolatos további információkért tekintse meg a [díjszabást](security-center-pricing.md) .
->
+> Az **Azure Defender** előfizetési szintjének engedélyezése a felderített megoldások szolgáltatáshoz. További információ a gyors üzembe helyezési útmutatóban [: az Azure Defender engedélyezése](enable-azure-defender.md).
 
 Válassza a **Kapcsolódás** a megoldás alatt lehetőséget a Security Center való integráláshoz és a biztonsági riasztások értesítéséhez.
 
@@ -103,7 +97,4 @@ Az **Adatforrások hozzáadása** szakasz sorolja fel az egyéb csatlakoztathat�
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben megismerkedett a partnermegoldások Security Centerrel való integrálásával. A kapcsolódó információk a következő cikkekben találhatók:
-
-* [Security Center-adatfeldolgozás folyamatos exportálása](continuous-export.md). Ismerje meg, hogyan telepítheti az integrációt az Azure Sentinel vagy más SIEM használatával.
-* [Biztonsági állapot monitorozása a Security Centerben](security-center-monitoring.md). Az Azure-erőforrások állapotának figyelését ismertető útmutató.
+Ebben a cikkben megismerkedett a partnermegoldások Security Centerrel való integrálásával. Ha meg szeretné tudni, hogyan lehet az Azure Sentinel vagy más SIEM-sel való integrációt beállítani, tekintse meg a [folyamatos Security Center-adatexportálás](continuous-export.md)című témakört.

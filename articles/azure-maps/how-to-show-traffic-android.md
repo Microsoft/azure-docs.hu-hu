@@ -3,17 +3,18 @@ title: Forgalmi adatok megjelenítése az Android-térképeken | Microsoft Azure
 description: Ebből a cikkből megtudhatja, hogyan jelenítheti meg a forgalmi adatokat egy térképen a Microsoft Azure Maps Android SDK használatával.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/04/2020
+ms.date: 2/26/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 113f39ac2976b870c9e07851cdd0919e2578940f
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: 36b3666f12b48468467e76f4c281d58d8018478c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680462"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098536"
 ---
 # <a name="show-traffic-data-on-the-map-android-sdk"></a>Forgalmi adatok megjelenítése a térképen (Android SDK)
 
@@ -30,7 +31,7 @@ A Azure Mapsban kétféle forgalmi adatok érhetők el:
 - Incidensek – olyan pont-és vonal-alapú adatmennyiségből állnak, mint például az építőipar, a közúti bezárások és a balesetek.
 - Flow-adatok – mérőszámokat biztosít a forgalom forgalmáról az utakon. Gyakran a forgalmi forgalomra vonatkozó adatokat használják az utak színezésére. A színek attól függnek, hogy mekkora forgalom lassul le a folyamaton, a sebességkorlátozás vagy más metrika alapján. Négy érték adható át a `flow` Térkép forgalmi lehetőségéhez.
 
-    |Folyamat értéke | Description (Leírás)|
+    |Folyamat értéke | Leírás|
     | :-- | :-- |
     | Forgalomáramlási. NONE | Nem jeleníti meg a forgalmi adatokat a térképen |
     | Forgalomáramlási. relatív | Az út szabad áramlási sebességéhez viszonyított forgalmi adatokat jeleníti meg |
@@ -38,6 +39,8 @@ A Azure Mapsban kétféle forgalmi adatok érhetők el:
     | Forgalomáramlási. ABSOLUTE | Az összes jármű teljes sebességét jeleníti meg az úton |
 
 A következő kód bemutatja, hogyan jelenítheti meg a forgalmi adatokat a térképen.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Show traffic on the map using the traffic options.
@@ -47,6 +50,19 @@ map.setTraffic(
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+map.setTraffic(
+    incidents(true),
+    flow(TrafficFlow.RELATIVE)
+)
+```
+
+::: zone-end
+
 Az alábbi képernyőfelvételen a fenti kódot tépő valós idejű forgalmi információk láthatók a térképen.
 
 ![Valós idejű forgalmi adatokat megjelenítő Térkép](media/how-to-show-traffic-android/android-show-traffic.png)
@@ -54,6 +70,8 @@ Az alábbi képernyőfelvételen a fenti kódot tépő valós idejű forgalmi in
 ## <a name="get-traffic-incident-details"></a>Forgalmi incidens részleteinek beolvasása
 
 A forgalmi incidens részleteit az incidens a térképen való megjelenítéséhez használt funkció tulajdonságai között érheti el. A forgalmi incidenseket a rendszer a Azure Maps Traffic incidens Vector csempe szolgáltatással adja hozzá a térképhez. A vektoros csempék adatformátuma, ha [itt van dokumentálva](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles). A következő kód egy Click eseményt helyez el a térképhez, és lekéri a forgalmi incidens funkcióját, amelyre rákattintott, és egy Toast-üzenetet jelenít meg a részletek közül.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Show traffic information on the map.
@@ -107,6 +125,59 @@ map.events.add((OnFeatureClick) (features) -> {
     }
 });
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Show traffic information on the map.
+map.setTraffic(
+    incidents(true),
+    flow(TrafficFlow.RELATIVE)
+)
+
+//Add a click event to the map.
+map.events.add(OnFeatureClick { features: List<Feature>? ->
+    if (features != null && features.size > 0) {
+        val incident = features[0]
+
+        //Ensure that the clicked feature is an traffic incident feature.
+        if (incident.properties() != null && incident.hasProperty("incidentType")) {
+            val sb = StringBuilder()
+            val incidentType = incident.getStringProperty("incidentType")
+
+            if (incidentType != null) {
+                sb.append(incidentType)
+            }
+
+            if (sb.length > 0) {
+                sb.append("\n")
+            }
+
+            //If the road is closed, find out where it is closed from.
+            if ("Road Closed" == incidentType) {
+                val from = incident.getStringProperty("from")
+                if (from != null) {
+                    sb.append(from)
+                }
+            } else { //Get the description of the traffic incident.
+                val description = incident.getStringProperty("description")
+                if (description != null) {
+                    sb.append(description)
+                }
+            }
+
+            val message = sb.toString()
+            if (message.length > 0) {
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+})
+```
+
+::: zone-end
 
 Az alábbi képernyőfelvételen a tépő valós idejű forgalmi információi láthatók a térképen, és egy Toast üzenet jeleníti meg az incidens részleteit.
 

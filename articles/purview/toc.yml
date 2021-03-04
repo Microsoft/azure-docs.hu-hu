@@ -166,6 +166,10 @@ items:
             href: sensitivity-insights.md
           - name: Fájlkiterjesztéssel kapcsolatos megállapítások megtekintése
             href: file-extension-insights.md
+      - name: Biztonság & hálózatkezelés
+        items:
+          - name: Privát végpontok kezelése
+            href: catalog-private-link.md
   - name: Referencia
     items:
       - name: Támogatott besorolások

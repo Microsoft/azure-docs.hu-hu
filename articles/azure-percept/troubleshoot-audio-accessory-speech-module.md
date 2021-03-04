@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 1e2ad920afb55066f07430568f976154f6d7cae1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a3877ea680e7b4c705f127c54e0fa10c45d3b51d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679636"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097975"
 ---
 # <a name="azure-percept-audio-and-speech-module-troubleshooting"></a>Az Azure Percept hang-és beszédfelismerési moduljának hibaelhárítása
 
@@ -38,35 +38,32 @@ Ha a kimenetet egy. txt fájlba irányítja át, másolja a fájlt a gazdagép S
 scp [remote username]@[IP address]:[remote file path]/[file name].txt [local host file path]
 ```
 
-[a helyi gazdagép fájljának elérési útja] arra a helyre hivatkozik, amelyre a. txt fájlt át szeretné másolni. [távoli Felhasználónév] a [telepítési élményben](./quickstart-percept-dk-set-up.md)kiválasztott SSH-Felhasználónév. Ha nem állított be SSH-bejelentkezést az OOBE során, a távoli Felhasználónév a root.
+[a helyi gazdagép fájljának elérési útja] arra a helyre hivatkozik, amelyre a. txt fájlt át szeretné másolni. [távoli Felhasználónév] a beléptetési [élmény](./quickstart-percept-dk-set-up.md)során kiválasztott SSH-Felhasználónév. Ha nem állított be SSH-bejelentkezést az Azure Percept DK beléptetési felületén, akkor a távoli Felhasználónév a root.
 
 ## <a name="checking-runtime-status-of-the-speech-module"></a>A beszédfelismerési modul futtatókörnyezeti állapotának ellenőrzése
 
-Ellenőrizze, hogy **fut**-e a **azureearspeechclientmodule** futásidejű állapota. Az eszköz moduljainak futtatókörnyezeti állapotának megkereséséhez nyissa meg a [Azure Portal](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_Azure_Iothub=aduprod&microsoft_azure_marketplace_ItemHideKey=Microsoft_Azure_ADUHidden#home) , és navigáljon az **összes erőforráshoz**  ->  **\<your IoT hub>**  ->  **IoT Edge**  ->  **\<your device ID>** . Kattintson a **modulok** lapra az összes telepített modul futtatókörnyezeti állapotának megtekintéséhez.
+Ellenőrizze, hogy **fut**-e a **azureearspeechclientmodule** futásidejű állapota. Az eszköz moduljainak futtatókörnyezeti állapotának megkereséséhez nyissa meg a [Azure Portal](https://portal.azure.com/) , és navigáljon az **összes erőforráshoz**  ->  **\<your IoT hub>**  ->  **IoT Edge**  ->  **\<your device ID>** . Kattintson a **modulok** lapra az összes telepített modul futtatókörnyezeti állapotának megtekintéséhez.
 
 :::image type="content" source="./media/troubleshoot-audio-accessory-speech-module/over-the-air-iot-edge-device-page.png" alt-text="A Azure Portal peremhálózati eszköz lapja.":::
 
 Ha a **azureearspeechclientmodule** futásidejű állapota nem **futként** van felsorolva, kattintson a **modulok beállítása**  ->  **azureearspeechclientmodule** elemre. A **modul beállításai** lapon állítsa a **kívánt állapotot** a **Futtatás** elemre, majd kattintson a **frissítés** gombra.
 
-:::image type="content" source="./media/troubleshoot-audio-accessory-speech-module/firmware-desired-status-stopped.png" alt-text="Adja meg a modulok képernyőjét a Azure Portalban.":::
-
 ## <a name="understanding-ear-som-led-indicators"></a>A EAR SoM LED-indikátorok ismertetése
 
 A LED-mutatók segítségével megtudhatja, milyen állapotban van az eszköz. Általában körülbelül 2 percet vesz igénybe, hogy a modul teljesen inicializáljon a *bekapcsolás* után. Ahogy halad az inicializálás lépésein, látni fogja a következőket:
 
-1. 1 balra zöld fény – az eszköz bekapcsolt állapotú. 
-2. 1 balra zöld fény és középre LED villogó zöld-hitelesítés folyamatban van. 
+1. 1 Közép fehér LED – az eszköz be van kapcsolva. 
+2. 1 Közép-fehér LED-alapú villogás – a hitelesítés folyamatban van. 
 3. Mindhárom LED kéken változik, ha az eszköz hitelesítése megtörtént, és használatra kész.
 
-|LED-állapot                  |EAR SoM állapota            |
-|----------------------------|---------------------------|
-|1x zöld (bal oldali LED)         |bekapcsolás |
-|1x zöld (bal oldali LED) <br> 1x villogó zöld (középső LED) |hitelesítés folyamatban |
-|3x kikapcsolva                      |az inicializálás befejeződött |
-|3x kék                     |használatra kész |
-|3x villogó kék            |kulcsszó ismerhető fel |
-|3x Racing Blue              |feldolgozási |
-|3x piros                      |némító |
+|VEZETETT|   LED-állapot|  EAR SoM állapota|
+|---|------------|----------------| 
+|L02|   1x fehér, statikus bekapcsolás |Bekapcsolás |
+|L02|   1x fehér, 0,5 Hz-es villogás|  Hitelesítés folyamatban |
+|L01 & L02 & L03|   3x kék, statikus bekapcsolva|     Várakozás a kulcsszóra|
+|L01 & L02 & L03|   LED-tömb villogása, 20fps | Figyelés vagy beszéd|
+|L01 & L02 & L03|   LED array Racing, 20fps|    Gondolkodás|
+|L01 & L02 & L03|   3x piros, statikus bekapcsolva | Némító|
 
 ## <a name="next-steps"></a>Következő lépések
 

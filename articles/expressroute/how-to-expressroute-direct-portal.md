@@ -7,26 +7,33 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: duau
-ms.openlocfilehash: acbd5c3aa88c2c8c14407ebda0c42d228aa6c9e3
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: b133f1cce4af07d8d5e50e04670741fcf7c936a4
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98018938"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097074"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>Közvetlen ExpressRoute létrehozása a Azure Portal használatával
 
 Ez a cikk bemutatja, hogyan hozhat létre közvetlen ExpressRoute a Azure Portal használatával.
 A ExpressRoute Direct szolgáltatással közvetlenül kapcsolódhat a Microsoft globális hálózatához a világ minden pontján elérhető, stratégiai módon elosztott helyen. További információ: [Az ExpressRoute Direct ismertetése](expressroute-erdirect-about.md).
 
-## <a name="before-you-begin"></a><a name="before"></a>Előkészületek
+## <a name="before-you-begin"></a><a name="before"></a>Kezdés előtt
 
-A ExpressRoute Direct használata előtt először regisztrálnia kell az előfizetését. A regisztráláshoz küldjön egy e-mailt az <ExpressRouteDirect@microsoft.com> előfizetés-azonosítójával, beleértve az alábbi adatokat:
+A ExpressRoute Direct használata előtt először regisztrálnia kell az előfizetését. A regisztráláshoz tegye a következőket Azure PowerShellon keresztül:
+1.  Jelentkezzen be az Azure-ba, és válassza ki a regisztrálni kívánt előfizetést.
 
-* A **ExpressRoute Directtel** elérni kívánt forgatókönyvek
-* Hely beállításai – az összes hely teljes listájáért tekintse meg a [partnerek és](expressroute-locations-providers.md) a társítási helyek elemet.
-* Megvalósítási ütemterv
-* Bármilyen egyéb kérdés
+    ```azurepowershell-interactive
+    Connect-AzAccount 
+
+    Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
+    ```
+
+2. Regisztrálja az előfizetését a nyilvános előzetes verzióra az alábbi paranccsal:
+    ```azurepowershell-interactive
+    Register-AzProviderFeature -FeatureName AllowExpressRoutePorts -ProviderNamespace Microsoft.Network
+    ```
 
 A regisztráció után ellenőrizze, hogy a **Microsoft. Network** erőforrás-szolgáltató regisztrálva van-e az előfizetésében. Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre.
 
@@ -70,7 +77,7 @@ A regisztráció után ellenőrizze, hogy a **Microsoft. Network** erőforrás-s
 
     :::image type="content" source="./media/how-to-expressroute-direct-portal/validate.png" alt-text="Képernyőkép, amely a &quot;ExpressRoute létrehozása&quot; lapot jeleníti meg a &quot;felülvizsgálat + létrehozás&quot; lapon.":::
 
-1. Kattintson a **Létrehozás** gombra. Megjelenik egy üzenet, amely tájékoztatja, hogy a telepítés folyamatban van. Az állapot ekkor megjelenik ezen a lapon az erőforrások létrehozásakor. 
+1. Válassza a **Létrehozás** lehetőséget. Megjelenik egy üzenet, amely tájékoztatja, hogy a telepítés folyamatban van. Az állapot ekkor megjelenik ezen a lapon az erőforrások létrehozásakor. 
 
 ## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a>Engedélyezési engedély (LOA) előállítása
 
@@ -118,8 +125,8 @@ Az alábbi lépések segítségével ExpressRoute-áramkört hozhat létre a Exp
 
    :::image type="content" source="./media/how-to-expressroute-direct-portal/review.png" alt-text="ExpressRoute Direct áttekintése és létrehozása":::
 
-1. Kattintson a **Létrehozás** gombra. Megjelenik egy üzenet, amely tájékoztatja, hogy a telepítés folyamatban van. Az állapot ekkor megjelenik ezen a lapon az erőforrások létrehozásakor. 
+1. Válassza a **Létrehozás** lehetőséget. Megjelenik egy üzenet, amely tájékoztatja, hogy a telepítés folyamatban van. Az állapot ekkor megjelenik ezen a lapon az erőforrások létrehozásakor. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A közvetlen ExpressRoute kapcsolatos további információkért tekintse meg az [áttekintést](expressroute-erdirect-about.md).

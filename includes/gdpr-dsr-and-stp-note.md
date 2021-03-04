@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: lizross
 ms.custom: include file
-ms.openlocfilehash: 062956e4895287d943cfffa0e8e078ca8412dafc
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
-ms.translationtype: HT
+ms.openlocfilehash: 5bf486da8fc17b08c4e4cc3abf163312426d5f72
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186803"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096360"
 ---
->[!NOTE] 
->További információ a személyes adatok megtekintésével vagy törlésével kapcsolatban: [Azure érintettek kérelmei a GDPR-rel kapcsolatban](/microsoft-365/compliance/gdpr-dsr-azure). További információ a GDPR-ról: [A Szolgáltatásmegbízhatósági portál GDPR-szakasza](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).
+> [!NOTE]
+> További információ a személyes adatok megtekintésével vagy törlésével kapcsolatban: [Azure érintettek kérelmei a GDPR-rel kapcsolatban](/microsoft-365/compliance/gdpr-dsr-azure). A GDPR kapcsolatos további információkért tekintse meg a [Microsoft adatvédelmi központ GDPR szakaszát](https://www.microsoft.com/trust-center/privacy/gdpr-overview) , valamint a [szolgáltatás-megbízhatósági portál GDPR szakaszát](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).

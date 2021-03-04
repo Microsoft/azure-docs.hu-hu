@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: dseven
 ms.author: cavoeg
 author: zxue
-ms.date: 02/24/2021
-ms.openlocfilehash: 73e1db2754749e1fb1142231e7179771bcce8e76
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: 8dde5c6206087c8bb1c1f456a0c858abbccf0cc4
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712776"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096309"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>Diagnosztikai naplózás engedélyezése a FHIR készült Azure API-ban
 
@@ -50,7 +50,7 @@ A mérőszámokat a Figyelés területen tekintheti meg | Metrikák a portálró
 
 
 > [!Note] 
-> Akár 15 percet is igénybe vehet, hogy az első naplók megjelenjenek Log Analyticsban.  
+> Akár 15 percet is igénybe vehet, hogy az első naplók megjelenjenek Log Analyticsban. Ha a FHIR készült Azure API-t egy erőforráscsoport vagy egy másik előfizetésbe helyezi át, frissítse a beállítást az áthelyezés befejeződése után. 
  
 A diagnosztikai naplók használatával kapcsolatos további tudnivalókért tekintse meg az [Azure Resource log dokumentációját](../azure-monitor/essentials/platform-logs-overview.md) .
 

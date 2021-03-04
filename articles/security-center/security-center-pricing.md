@@ -1,30 +1,23 @@
 ---
-title: A Azure Security Center díjszabása
-description: Azure Security Center két üzemmódban érhető el, az Azure Defender és anélkül.
-services: security-center
-documentationcenter: na
+title: Azure Security Center Free vs Azure Defender engedélyezve
+description: Ismerje meg, hogy milyen előnyökkel jár az Azure Defender for Cloud munkaterhelés-védelem engedélyezése Azure Security Center
 author: memildin
-manager: rkarlin
-ms.assetid: 4d1364cd-7847-425a-bb3a-722cb0779f78
-ms.service: security-center
-ms.devlang: na
-ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/14/2021
 ms.author: memildin
-ms.openlocfilehash: 8d8ef4236a9dd993faaaa2aacfd40a7592e9017f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+manager: rkarlin
+ms.service: security-center
+ms.topic: overview
+ms.date: 02/14/2021
+ms.openlocfilehash: 7ca8a89cc93cc36d790eca7b19665e5bfed9695c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101698671"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099103"
 ---
-# <a name="pricing-of-azure-security-center"></a>A Azure Security Center díjszabása
-Az Azure Security Center egységes biztonsági felügyeletet és fejlett fenyegetésvédelmet biztosít az Azure-ban, a helyszínen és egyéb felhőszolgáltatásokban futó számítási feladatokhoz. Lehetővé teszi a hibrid Felhőbeli számítási feladatok, az aktív védelem és a fenyegetések kialakulásának csökkentését, valamint az intelligens észlelést, amely megkönnyíti a gyors fejlődést jelentő számítógépes kockázatok megtartását.
+# <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Azure Security Center Free vs Azure Defender engedélyezve
+Az Azure Defender az első 30 napon belül díjmentes. 30 nap elteltével a szolgáltatás használatának folytatásához automatikusan elindul a használati díj.
 
-
-## <a name="security-center-free-vs-azure-defender-enabled"></a>Security Center Free vs Azure Defender engedélyezve
+## <a name="what-are-the-benefits-of-enabling-azure-defender"></a>Milyen előnyökkel jár az Azure Defender engedélyezése?
 
 Security Center két üzemmódban érhető el:
 
@@ -41,43 +34,22 @@ Security Center két üzemmódban érhető el:
     - **A veszélyforrások védelme az Azure-környezethez kapcsolódó erőforrások esetében** – az Azure Defender az Azure-beli natív, az Azure-szolgáltatások általános fenyegetés elleni védelmét is biztosítja az összes erőforráshoz: Azure Resource Manager, Azure DNS, Azure hálózati réteg és Azure Key Vault. Az Azure Defender egyedi láthatósággal rendelkezik az Azure felügyeleti rétegében és a Azure DNS rétegben, és így biztosíthatja a rétegekhez kapcsolódó Felhőbeli erőforrások védelméhez.
 
 
-## <a name="try-azure-defender-free-for-30-days"></a>Próbálja ki az Azure Defendert ingyen 30 napig
-Az Azure Defender az első 30 napon belül díjmentes. 30 nap elteltével a szolgáltatás használatának folytatásához automatikusan elindul a használati díj.
-
-## <a name="enable-azure-defender"></a>Az Azure Defender engedélyezése
-Az Azure Defender teljes Azure-előfizetését védelemmel láthatja el, és az előfizetésben lévő összes erőforrás örökli a védelmet.
-
-Az Azure Defender engedélyezése:
-
-1. A Security Center főmenüjében válassza a **díjszabás & beállítások** lehetőséget.
-1. Válassza ki a frissíteni kívánt előfizetést.
-1. A frissítéshez válassza az **Azure Defender** lehetőséget.
-1. Kattintson a **Mentés** gombra.
-
-Az alábbi példa egy előfizetésre vonatkozó díjszabási oldalt mutat be. Megfigyelheti, hogy az Azure Defender minden csomagja külön díjszabású, és egyénileg be-és kikapcsolható.
-
-:::image type="content" source="./media/security-center-pricing/pricing-tier-page.png" alt-text="A Security Center díjszabási oldala a portálon":::
-
-> [!NOTE]
-> Az összes Security Center funkció engedélyezéséhez, beleértve a veszélyforrások elleni védelmi képességeket is, engedélyeznie kell az Azure Defender szolgáltatást a megfelelő munkaterheléseket tartalmazó előfizetésben. A munkaterület szintjének engedélyezése nem teszi lehetővé az Azure-erőforrások igény szerinti elérését, az adaptív alkalmazások vezérlését és a hálózati észleléseket. Emellett az egyetlen Azure Defender-csomag is elérhető a munkaterület szintjén az Azure Defender for Servers és az Azure Defender a gépeken futó SQL-kiszolgálókhoz.
->
-> Az **Azure Defendert** engedélyezheti a Storage-fiókokhoz az előfizetés szintjén vagy az erőforrás szintjén.
-> Az **Azure Defender for SQL** engedélyezhető az előfizetés szintjén vagy az erőforrás szintjén is.
-> Az **Azure Database for MariaDB/MySQL/PostgreSQL** veszélyforrások elleni védelmét csak az erőforrás szintjén engedélyezheti.
-
-
 ## <a name="faq---pricing-and-billing"></a>Gyakori kérdések – díjszabás és számlázás 
 
-- [Hogyan követhetem nyomon a szervezetem, hogy az Azure Defender milyen változásokat Azure Security Center?](#how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center)
-- [Mik a Security Center által kínált csomagok?](#what-are-the-plans-offered-by-security-center)
-- [Hogyan engedélyezhetem az Azure Defendert az előfizetéshez?](#how-do-i-enable-azure-defender-for-my-subscription)
-- [Engedélyezhetem az Azure Defendert kiszolgálók részhalmazában lévő kiszolgálókhoz az előfizetésben?](#can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription)
-- [Ha már van licencem a Microsoft Defender for Endpoint szolgáltatáshoz, kedvezményt kaphatok az Azure Defender számára?](#if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender)
-- [Engedélyezve van-e az Azure Defender for Servers előfizetése, ha nem futó kiszolgálókat fizetnem?](#my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers)
-- [A Log Analytics ügynök nélküli gépek után kell díjat fizetni?](#will-i-be-charged-for-machines-without-the-log-analytics-agent-installed)
-- [Ha egy Log Analytics ügynök több munkaterületre jelent jelentést, akkor kétszer kell fizetnem?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice)
-- [Ha egy Log Analytics-ügynök több munkaterületre is jelentést készít, a 500 MB-os ingyenes adatfeldolgozás az összes rajtuk elérhető?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them)
-- [A teljes munkaterülethez vagy a gépenként kizárólag a 500 MB-os ingyenes adatfeldolgozást számítjuk ki?](#is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine)
+- [Azure Security Center Free vs Azure Defender engedélyezve](#azure-security-center-free-vs-azure-defender-enabled)
+  - [Milyen előnyökkel jár az Azure Defender engedélyezése?](#what-are-the-benefits-of-enabling-azure-defender)
+  - [Gyakori kérdések – díjszabás és számlázás](#faq---pricing-and-billing)
+    - [Hogyan követhetem nyomon a szervezetem, hogy az Azure Defender milyen változásokat Security Center?](#how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center)
+    - [Mik a Security Center által kínált csomagok?](#what-are-the-plans-offered-by-security-center)
+    - [Hogyan engedélyezhetem az Azure Defendert az előfizetéshez?](#how-do-i-enable-azure-defender-for-my-subscription)
+    - [Engedélyezhetem az Azure Defendert kiszolgálók részhalmazában lévő kiszolgálókhoz az előfizetésben?](#can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription)
+    - [Ha már van licencem a Microsoft Defender for Endpoint szolgáltatáshoz, kedvezményt kaphatok az Azure Defender számára?](#if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender)
+    - [Engedélyezve van-e az Azure Defender for Servers előfizetése, ha nem futó kiszolgálókat fizetnem?](#my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers)
+    - [A Log Analytics ügynök nélküli gépek után kell díjat fizetni?](#will-i-be-charged-for-machines-without-the-log-analytics-agent-installed)
+    - [Ha egy Log Analytics ügynök több munkaterületre jelent jelentést, akkor kétszer kell fizetnem?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice)
+    - [Ha egy Log Analytics-ügynök több munkaterületre is jelentést készít, a 500 MB-os ingyenes adatfeldolgozás az összes rajtuk elérhető?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them)
+    - [A teljes munkaterülethez vagy a gépenként kizárólag a 500 MB-os ingyenes adatfeldolgozást számítjuk ki?](#is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine)
+  - [Következő lépések](#next-steps)
 
 ### <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center"></a>Hogyan követhetem nyomon a szervezetem, hogy az Azure Defender milyen változásokat Security Center?
 Az Azure-előfizetések több rendszergazdai jogosultsággal rendelkezhetnek a díjszabási beállítások módosításához. Ha szeretné megtudni, hogy melyik felhasználó módosította a változást, használja az Azure-tevékenység naplóját.
@@ -100,7 +72,7 @@ Az előfizetéshez az alábbi módokon engedélyezheti az Azure Defender haszná
 
 |Metódus  |Utasítások  |
 |---------|---------|
-|A Azure Portal Azure Security Center lapja|[Az Azure Defender engedélyezése](#enable-azure-defender)|
+|A Azure Portal Azure Security Center lapja|[Az Azure Defender engedélyezése](enable-azure-defender.md)|
 |REST API|[Díjszabási API](/rest/api/securitycenter/pricings)|
 |Azure CLI|[az Security díjszabása](/cli/azure/security/pricing)|
 |PowerShell|[Set-AzSecurityPricing](/powershell/module/az.security/set-azsecuritypricing)|

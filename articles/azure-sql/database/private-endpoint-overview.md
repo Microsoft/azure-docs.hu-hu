@@ -6,15 +6,15 @@ ms.author: rohitna
 titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.service: sql-database
 ms.topic: overview
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, fasttrack-edit
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 7bc15b369bfa4964384d4f7910d6953bdfeaa664
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 506982a22fd53dfb4f8f3d94735c11fc491469eb
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094165"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097278"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure Private-hivatkozás Azure SQL Database és az Azure szinapszis Analyticshez
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -61,6 +61,8 @@ A privát kapcsolat lehetővé teszi, hogy az ügyfelek az [ExpressRoute](../../
 Az ügyfelek ugyanahhoz a virtuális hálózathoz, azonos régióban lévő virtuális hálózatról vagy virtuális hálózaton keresztül csatlakozhatnak a privát végponthoz, és a virtuális hálózati kapcsolaton keresztül is elérhetők a régiók között. Emellett az ügyfelek a helyszíni ExpressRoute, a privát vagy a VPN-alagúton keresztül is csatlakozhatnak. Alább látható egy egyszerűsített diagram, amely a gyakori használati eseteket mutatja.
 
  ![Csatlakozási lehetőségek diagramja][1]
+
+Emellett a nem közvetlenül a virtuális hálózaton futó szolgáltatások, de integrálva vannak vele (például App Service webalkalmazások vagy függvények) az adatbázishoz való magánhálózati kapcsolat elérésére is. Az adott használati esettel kapcsolatos további információkért tekintse meg a [webalkalmazás és az Azure SQL Database](https://docs.microsoft.com/azure/architecture/example-scenario/private-web-app/private-web-app) architektúrája című témakört.
 
 ## <a name="test-connectivity-to-sql-database-from-an-azure-vm-in-same-virtual-network"></a>Az Azure-beli virtuális gép SQL Databasei kapcsolatának tesztelése ugyanazon a virtuális hálózaton
 
@@ -183,6 +185,7 @@ A Base és a COPY utasítást általában az Azure szinapszis Analytics szolgál
 
 - A Azure SQL Database biztonság áttekintését lásd: [az adatbázis biztonságossá tétele](security-overview.md)
 - Az Azure SQL Database kapcsolatok áttekintését lásd: [Azure SQL connectivity Architecture](connectivity-architecture.md)
+- A webalkalmazás az [Azure SQL Database](https://docs.microsoft.com/azure/architecture/example-scenario/private-web-app/private-web-app) architektúrájának használatára is kíváncsi lehet, amely a virtuális hálózaton kívül egy webalkalmazást kapcsol össze egy adatbázis privát végpontján.
 
 <!--Image references-->
 [1]: media/quickstart-create-single-database/pe-connect-overview.png

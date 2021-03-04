@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 54d4f1fe983cf20b734351754bb8eba191894dbc
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 6de86cbc065b5352b3b643708dd55c6856b37dd7
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664902"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097907"
 ---
 # <a name="create-a-no-code-vision-solution-in-azure-percept-studio"></a>Kód nélküli jövőkép megoldás létrehozása az Azure Percept Studióban
 
@@ -23,6 +23,7 @@ Az Azure Percept Studio lehetővé teszi egyéni számítógép-vizuális megold
 - A betanítási lemezképek címkézése [Custom Vision](https://www.customvision.ai/)
 - Az egyéni objektum-észlelési vagy besorolási modell betanítása
 - A modell üzembe helyezése a fejlesztői készlet
+- Fejlessze modelljét az átképzés beállításával
 
 Ez az oktatóanyag olyan fejlesztők számára megfelelő, akik egyszerűen nem rendelkeznek mesterséges intelligenciával és az Azure Percept-vel való ismerkedéssel.
 
@@ -30,15 +31,13 @@ Ez az oktatóanyag olyan fejlesztők számára megfelelő, akik egyszerűen nem 
 
 - Azure Percept DK (fejlesztői készlet)
 - [Azure-előfizetés](https://azure.microsoft.com/free/)
-- Kezdőélmény (OOBE): csatlakoztatta a fejlesztői készlet egy Wi-Fi hálózathoz, létrehozott egy IoT Hub, és csatlakoztatta a fejlesztői készlet a IoT Hub
+- Az Azure Percept DK telepítési felülete: csatlakoztatta a fejlesztői készlet egy Wi-Fi hálózathoz, létrehozott egy IoT Hub, és csatlakoztatta a fejlesztői készlet a IoT Hub
 
 ## <a name="create-a-vision-prototype"></a>Víziós prototípus létrehozása
 
 1. Indítsa el a böngészőt, és nyissa meg az [Azure Percept studiót](https://go.microsoft.com/fwlink/?linkid=2135819).
 
-1. Az Áttekintés lapon kattintson a **bemutatók & oktatóanyagok** fülre.
-
-    :::image type="content" source="./media/tutorial-nocode-vision/percept-studio-overview-inline.png" alt-text="Az Azure Percept Studio áttekintése képernyő." lightbox="./media/tutorial-nocode-vision/percept-studio-overview.png":::
+1. Az Áttekintés lapon kattintson a **bemutatók & oktatóanyagok** fülre.  Az  :::image type="content" source="./media/tutorial-nocode-vision/percept-studio-overview-inline.png" alt-text="Azure Percept Studio áttekintése képernyő." lightbox="./media/tutorial-nocode-vision/percept-studio-overview.png":::
 
 1. A **jövőkép oktatóanyagok és bemutatók** területen kattintson **a jövőkép prototípus létrehozása** elemre.
 
@@ -142,11 +141,23 @@ Az ablak bezárása után bármikor visszatérhet és szerkesztheti a víziós p
 
 :::image type="content" source="./media/tutorial-nocode-vision/vision-project-inline.png" alt-text="Jövőkép projekt lapja" lightbox="./media/tutorial-nocode-vision/vision-project.png":::
 
+## <a name="improve-your-model-by-setting-up-retraining"></a>Fejlessze modelljét az átképzés beállításával
+
+Miután betanítja a modellt, és üzembe helyezte az eszközön, javíthatja a modell teljesítményét úgy, hogy átképzési paramétereket állít be a további betanítási adatok rögzítéséhez. Ez a funkció a betanított modell teljesítményének javítására szolgál azáltal, hogy lehetővé teszi a lemezképek valószínűségi tartományon alapuló rögzítését. Beállíthatja például, hogy az eszköz csak akkor rögzítsen betanítási képeket, ha a valószínűség alacsony. Itt talál [további útmutatást](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier) további képek hozzáadásához és a betanítási információk kiegyensúlyozásához.
+
+1. Az átképzés beállításához lépjen vissza a **projektbe**, majd a **projekt összegzése** elemre.
+1. A **rendszerkép rögzítése** lapon válassza az **automatikus rendszerkép-rögzítés** lehetőséget, és **állítsa be az átképzést**.
+1. Állítsa be az automatikus képrögzítést úgy, hogy egyszerre nagy mennyiségű képet gyűjtsön az **automatikus rendszerkép-rögzítési** mező ellenőrzésével.
+1. Válassza ki a kívánt képalkotási arányt a **rögzítési arány** és a **cél** alatt gyűjteni kívánt lemezképek teljes száma alapján.
+1. Az **átképzés beállítása** szakaszban válassza ki azt az iterációt, amelyhez további betanítási adatmennyiséget szeretne rögzíteni, majd válassza ki a valószínűségi tartományt. Csak a valószínűségi aránynak megfelelő lemezképek lesznek feltöltve a projektbe.
+
+    :::image type="content" source="./media/tutorial-nocode-vision/vision-image-capture.png" alt-text="rendszerkép rögzítése.":::
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha létrehozott egy új Azure-erőforrást ehhez az oktatóanyaghoz, és már nem kívánja fejleszteni vagy használni a jövőképét, hajtsa végre az alábbi lépéseket az erőforrás törléséhez:
 
-1. Nyissa meg az [Azure Portal](https://ms.portal.azure.com/#home).
+1. Nyissa meg az [Azure Portal](https://ms.portal.azure.com/).
 1. Kattintson az **összes erőforrás** elemre.
 1. Kattintson az oktatóanyag során létrehozott erőforrás melletti jelölőnégyzetre. Az erőforrástípus **Cognitive Servicesként** jelenik meg.
 1. Kattintson a **Törlés** ikonra a képernyő felső részén.

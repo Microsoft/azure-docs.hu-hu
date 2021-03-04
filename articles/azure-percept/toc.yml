@@ -38,12 +38,6 @@
           href: tutorial-nocode-vision.md
         - name: Kód nélküli beszédfelismerési megoldás létrehozása és üzembe helyezése
           href: tutorial-no-code-speech.md
-    - name: Fejlett fejlesztés
-      items:
-        - name: Fejlett fejlesztői oktatóanyag (felhő)
-          href: advanced-development-cloud.md
-        - name: Fejlett fejlesztői oktatóanyag (helyi)
-          href: advanced-development-local.md
 - name: Alapelvek
   items:
     - name: Azure Percept hang
@@ -106,5 +100,3 @@
           href: azure-percept-vision-datasheet.md
         - name: Azure Percept audio Adatlap
           href: azure-percept-audio-datasheet.md
-- name: További források
-  items: null

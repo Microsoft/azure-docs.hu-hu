@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 12/09/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: fe427150b15c6bccb97172ae751235d388c95c7b
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: dbeb3cd4fccf80f434e6c7ac08c658632f64b135
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675026"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096853"
 ---
 # <a name="tutorial-configure-zscaler-private-access-with-azure-active-directory-b2c"></a>Oktatóanyag: a Zscaler privát hozzáférésének konfigurálása Azure Active Directory B2C
 
@@ -100,11 +100,11 @@ Ha egyéni házirendeket szeretne konfigurálni a Azure AD B2C bérlőn, tekints
 
 ### <a name="step-3-register-zpa-as-a-saml-application-in-azure-ad-b2c"></a>3. lépés: a ZPA SAML-alkalmazásként való regisztrálása Azure AD B2C
 
-Az SAML-alkalmazások Azure AD B2C-ben való konfigurálásával kapcsolatban lásd: [SAML-alkalmazás regisztrálása Azure ad B2Cban](./connect-with-saml-service-providers.md). 
+Az SAML-alkalmazások Azure AD B2C-ben való konfigurálásával kapcsolatban lásd: [SAML-alkalmazás regisztrálása Azure ad B2Cban](./saml-service-provider.md). 
 
-A ["3,2 a szabályzat metaadatainak feltöltése és tesztelése"](./connect-with-saml-service-providers.md#32-upload-and-test-your-policy-metadata)lépésben másolja vagy jegyezze fel a identitásszolgáltató SAML-metaadatok URL-címét, amelyet a Azure ad B2C használ. Erre később még szüksége lesz.
+A ["szabályzat feltöltése"](./saml-service-provider.md#upload-your-policy)lépésben másolja vagy jegyezze fel a IDENTITÁSSZOLGÁLTATÓ SAML-metaadatokat, amelyet a Azure ad B2C használ. Erre később még szüksége lesz.
 
-Kövesse az ["4,2 Update The app manifest"](./connect-with-saml-service-providers.md#42-update-the-app-manifest)című lépés útmutatását. Az 4,2. lépésben frissítse az alkalmazás jegyzékfájljának tulajdonságait a következőképpen:
+Kövesse az ["alkalmazás konfigurálása Azure ad B2Cban"](./saml-service-provider.md#configure-your-application-in-azure-ad-b2c)című lépés útmutatását. Az 4,2. lépésben frissítse az alkalmazás jegyzékfájljának tulajdonságait a következőképpen:
 
 - **IdentifierUris** esetében: használja az "1.6. b" lépésben korábban másolt vagy feljegyzett szolgáltatói entitás azonosítóját.  
 - A **samlMetadataUrl** esetében: hagyja ki ezt a tulajdonságot, mert a ZPA nem tartalmaz SAML-metaadatok URL-címét.  
@@ -150,6 +150,6 @@ Nyissa meg a ZPA felhasználói portált vagy egy böngésző-hozzáférési alk
 További információkért tekintse át a következő cikkeket:
 
 - [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](./custom-policy-get-started.md)
-- [SAML-alkalmazás regisztrálása Azure AD B2C](./connect-with-saml-service-providers.md)
+- [SAML-alkalmazás regisztrálása Azure AD B2C](./saml-service-provider.md)
 - [Részletes konfigurációs útmutató a ZPA](https://help.zscaler.com/zpa/step-step-configuration-guide-zpa)
 - [Identitásszolgáltató konfigurálása egyszeri bejelentkezéshez](https://help.zscaler.com/zpa/configuring-idp-single-sign)

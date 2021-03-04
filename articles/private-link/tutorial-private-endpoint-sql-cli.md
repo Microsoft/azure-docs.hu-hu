@@ -7,18 +7,19 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 11/03/2020
 ms.author: allensu
-ms.openlocfilehash: 8cfe44b9433ee1daac028253aa45c97804c88ae5
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.custom: fasttrack-edit
+ms.openlocfilehash: ab530817e912495049ad3fe8b36f9a5fad47eb2c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544105"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096581"
 ---
 # <a name="tutorial---connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-cli"></a>Oktatóanyag – Azure SQL Server-kiszolgálóhoz való kapcsolódás Azure Private-végpont használatával – Azure CLI
 
 Az Azure privát végpontja az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a virtuális gépek (VM-EK) számára, hogy magánjellegű módon kommunikáljanak a privát kapcsolati erőforrásokkal.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hozzon létre egy virtuális hálózatot és egy megerősített gazdagépet.
@@ -33,7 +34,7 @@ Az oktatóanyag a következőket ismerteti:
 * A futtatásával tekintse meg az Azure CLI-verziót egy terminálon vagy parancsablakban `az --version` . A legújabb verzióra vonatkozó megjegyzések a [legújabb kiadási megjegyzésekben](/cli/azure/release-notes-azure-cli?tabs=azure-cli)találhatók.
   * Ha nem rendelkezik a legújabb verzióval, frissítse a telepítést az [operációs rendszer vagy a platform telepítési útmutatóját](/cli/azure/install-azure-cli)követve.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -326,6 +327,8 @@ Ebben az oktatóanyagban a következőket hozta létre:
 * Azure SQL Server magánhálózati végponttal.
 
 A virtuális gépet arra használta, hogy biztonságosan tesztelje a kapcsolatot az SQL Serverhez a magánhálózati végponton keresztül.
+
+A következő lépésként a webalkalmazás az Azure SQL Database architektúra-forgatókönyvhöz való [privát kapcsolattal](https://docs.microsoft.com/azure/architecture/example-scenario/private-web-app/private-web-app) is érdekli, amely a virtuális hálózaton kívül egy webalkalmazást kapcsol össze egy adatbázis privát végpontján.
 
 Megtudhatja, hogyan hozhat létre privát hivatkozási szolgáltatást:
 > [!div class="nextstepaction"]

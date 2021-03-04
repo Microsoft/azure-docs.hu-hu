@@ -12,12 +12,12 @@ ms.date: 12/18/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 13cff9f3a6037a16d7c3b9cf233d26c6e9518bc1
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: b6fb5f680dfa5e2c87533083e3df4c2bae1ed12a
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756100"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097023"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Rendszergazdai engedély a Microsoft Identity platformon
 
@@ -33,19 +33,16 @@ Amikor aláírja a felhasználót az alkalmazásba, azonosíthatja azt a szervez
 
 Ha készen áll arra, hogy engedélyt kérjen a szervezete rendszergazdájától, átirányíthatja a felhasználót a Microsoft Identity platform *rendszergazdai engedélyezési végpontján*.
 
-```HTTP
-// Line breaks are for legibility only.
-GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
-client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-&state=12345
-&redirect_uri=http://localhost/myapp/permissions
-&scope=
-https://graph.microsoft.com/calendars.read
-https://graph.microsoft.com/mail.send
+```none
+https://login.microsoftonline.com/{tenant}/v2.0/adminconsent
+        ?client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+        &scope=https://graph.microsoft.com/Calendars.Read https://graph.microsoft.com/Mail.Send
+        &redirect_uri=http://localhost/myapp/permissions
+        &state=12345
 ```
 
 | Paraméter | Feltétel | Leírás |
-| ---: | ---: | :---: |
+| :--- | :--- | :--- |
 | `tenant` | Kötelező | Az a címtár-bérlő, amelyre engedélyt szeretne kérni. A GUID vagy a felhasználóbarát név formátumban adható meg, vagy `organizations` a példában látható módon általános hivatkozással. Ne használja a "Common" kulcsszót, mert a személyes fiókok nem biztosíthatnak rendszergazdai jogosultságot, kivéve a bérlő kontextusát. A bérlőket kezelő személyes fiókokkal való legjobb kompatibilitás érdekében használja a bérlői azonosítót, ha lehetséges. |
 | `client_id` | Kötelező | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felület **(ügyfél) azonosítója** . |
 | `redirect_uri` | Kötelező |Az az átirányítási URI, ahová az alkalmazásnak el kell juttatnia a választ a kezelésére. Pontosan meg kell egyeznie az alkalmazás regisztrációs portálján regisztrált átirányítási URI-k egyikével. |
@@ -58,12 +55,16 @@ Ezen a ponton az Azure AD-nek a bérlői rendszergazdának kell bejelentkeznie a
 
 Ha a rendszergazda jóváhagyja az alkalmazás engedélyeit, a sikeres válasz a következőképpen néz ki:
 
-```
-http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-a743-29f2956fd429&state=12345&scope=https%3a%2f%2fgraph.microsoft.com%2fCalendars.Read+https%3a%2f%2fgraph.microsoft.com%2fMail.Send
+```none
+http://localhost/myapp/permissions
+    ?admin_consent=True
+    &tenant=fa00d692-e9c7-4460-a743-29f2956fd429
+    &scope=https://graph.microsoft.com/Calendars.Read https://graph.microsoft.com/Mail.Send
+    &state=12345
 ```
 
 | Paraméter | Leírás |
-| ---: | :---: |
+| :--- | :--- |
 | `tenant`| A címtár-bérlő, amely az alkalmazást a kért engedélyekkel rendelkezik, GUID formátumban megadva.|
 | `state` | A kérelemben szereplő érték, amely a jogkivonat-válaszban is szerepelni fog. A kívánt tartalom sztringje lehet. Az állapot az alkalmazásban a felhasználó állapotára vonatkozó információk kódolására szolgál a hitelesítési kérelem végrehajtása előtt, például az oldal vagy a nézet megtekintését.|
 | `scope` | Az alkalmazáshoz való hozzáférést engedélyező engedélyek készlete.|
@@ -71,19 +72,26 @@ http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-
 
 ### <a name="error-response"></a>Hiba válasza
 
-`http://localhost/myapp/permissions?error=consent_required&error_description=AADSTS65004%3a+The+resource+owner+or+authorization+server+denied+the+request.%0d%0aTrace+ID%3a+d320620c-3d56-42bc-bc45-4cdd85c41f00%0d%0aCorrelation+ID%3a+8478d534-5b2c-4325-8c2c-51395c342c89%0d%0aTimestamp%3a+2019-09-24+18%3a34%3a26Z&admin_consent=True&tenant=fa15d692-e9c7-4460-a743-29f2956fd429&state=12345`
+```none
+http://localhost/myapp/permissions
+        ?admin_consent=True
+        &tenant=fa15d692-e9c7-4460-a743-29f2956fd429
+        &error=consent_required
+        &error_description=AADSTS65004%3a+The+resource+owner+or+authorization+server+denied+the+request.%0d%0aTrace+ID%3a+d320620c-3d56-42bc-bc45-4cdd85c41f00%0d%0aCorrelation+ID%3a+8478d534-5b2c-4325-8c2c-51395c342c89%0d%0aTimestamp%3a+2019-09-24+18%3a34%3a26Z
+        &state=12345
+```
 
 A sikeres válaszban látható paraméterekhez való hozzáadáskor a hiba paramétereit az alábbi módon tekintheti meg.
 
 | Paraméter | Leírás |
-|-------------------:|:-------------------------------------------------------------------------------------------------:|
+|:-------------------|:-------------------------------------------------------------------------------------------------|
 | `error` | Hibakód-karakterlánc, amely a felmerülő hibák típusának besorolására használható, és felhasználható a hibákra való reagálásra.|
 | `error_description` | Egy adott hibaüzenet, amely segítséget nyújt a fejlesztőknek a hibák kiváltó okának azonosításában.|
 | `tenant`| A címtár-bérlő, amely az alkalmazást a kért engedélyekkel rendelkezik, GUID formátumban megadva.|
 | `state` | A kérelemben szereplő érték, amely a jogkivonat-válaszban is szerepelni fog. A kívánt tartalom sztringje lehet. Az állapot az alkalmazásban a felhasználó állapotára vonatkozó információk kódolására szolgál a hitelesítési kérelem végrehajtása előtt, például az oldal vagy a nézet megtekintését.|
 | `admin_consent` | Úgy lesz beállítva, hogy `True` jelezze, hogy ez a válasz rendszergazdai engedélyezési folyamaton történt.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ismerje [meg, hogyan alakíthat át egy alkalmazást több-bérlővé](howto-convert-app-to-be-multi-tenant.md)
 - Ismerje meg [, hogyan támogatott a hozzájárulás a OAuth 2,0 protokoll szintjén az engedélyezési kód engedélyezése során](v2-oauth2-auth-code-flow.md#request-an-authorization-code).
 - Ismerje meg, [Hogyan használhatják a több-bérlős alkalmazások a](./howto-convert-app-to-be-multi-tenant.md) "felhasználó" és a "rendszergazda" jogosultságot a "felhasználói" és "rendszergazdai" engedély megvalósításához, ami fejlettebb többrétegű alkalmazási mintákat is támogat.

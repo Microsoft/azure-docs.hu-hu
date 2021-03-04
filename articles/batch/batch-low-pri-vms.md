@@ -3,14 +3,14 @@ title: Számítási feladatok futtatása költséghatékony, alacsony prioritás
 description: Ismerje meg, hogy miként lehet alacsony prioritású virtuális gépeket kiépíteni Azure Batch munkaterhelések díjainak csökkentése érdekében.
 author: mscurrell
 ms.topic: how-to
-ms.date: 02/02/2021
+ms.date: 03/03/2021
 ms.custom: seodec18
-ms.openlocfilehash: 9214ef83ec9b8bef4fb7bc7489aa0ab388f67c0d
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: cafc7216e8112640f823ecee1aea055ab78b3fc6
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507272"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098468"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Alacsony prioritású virtuális gépek használata a Batch szolgáltatással
 
@@ -25,9 +25,9 @@ Az alacsony prioritású virtuális gépeket a dedikált virtuális gépekhez k�
 > [!NOTE]
 > Az [egypéldányos virtuális gépekhez](../virtual-machines/spot-vms.md) és a virtuálisgép- [méretezési csoportokhoz](../virtual-machine-scale-sets/use-spot.md)mostantól elérhetők a [helyszíni virtuális gépek](https://azure.microsoft.com/pricing/spot/) . A helyszíni virtuális gépek az alacsony prioritású virtuális gépek fejlődése, azonban a díjszabásban különböznek, és a helyszíni virtuális gépek kiosztásakor a választható maximális árat is megadhatja.
 >
-> Azure Batch készletek az általánosan elérhető néhány hónapon belül elkezdik támogatni a helyszíni virtuális gépeket, a [Batch API-k és eszközök](./batch-apis-tools.md)új verzióival. A helyszíni virtuális gépek támogatásának engedélyezése után az alacsony prioritású virtuális gépek elavultak lesznek, így a jelenlegi API-k és az eszközök verziószáma legalább 12 hónapig érvényes lesz, hogy elegendő idő álljon rendelkezésre a helyszíni virtuális gépekre való áttelepítéshez.
+>Azure Batch készletek a jövőben megkezdik a helyszíni virtuális gépek támogatását a [Batch API-k és eszközök](./batch-apis-tools.md)új verzióival. A helyszíni virtuálisgép-támogatás elérhetővé tétele után az alacsony prioritású virtuális gépek elavultak lesznek – a jelenlegi API-k és az eszközök verziószáma legalább 12 hónapig érvényes lesz, hogy elegendő idő álljon rendelkezésre a helyszíni virtuális gépekre való áttelepítéshez.
 >
-> A [Cloud Service-konfigurációs](/rest/api/batchservice/pool/add#cloudserviceconfiguration) készletek nem támogatják a helyszíni virtuális gépeket. A helyszíni virtuális gépek használatához a Cloud Service-készleteket át kell telepíteni a [virtuálisgép-konfigurációs](/rest/api/batchservice/pool/add#virtualmachineconfiguration) készletekbe.
+> A helyszíni virtuális gépek csak a virtuálisgép-konfigurációs készletek esetén lesznek támogatottak. A helyszíni virtuális gépek használatához a Felhőbeli szolgáltatások konfigurációs készleteit át kell [telepíteni a virtuálisgép-konfigurációs készletekbe](batch-pool-cloud-service-to-virtual-machine-configuration.md).
 
 ## <a name="batch-support-for-low-priority-vms"></a>Batch-támogatás alacsony prioritású virtuális gépekhez
 

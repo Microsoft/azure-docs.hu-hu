@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.custom: template-how-to
-ms.openlocfilehash: de85c4f8cdcd9781345ee1488549aab23e38ec5c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3c5e6fd62e4f4db9ccc1306d32d09b8338cbf963
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664917"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098026"
 ---
 # <a name="create-a-voice-assistant-with-azure-percept-dk-and-azure-percept-audio"></a>Hangsegéd létrehozása az Azure Percept DK és az Azure Percept audio használatával
 
@@ -24,30 +24,11 @@ Ebből az útmutatóból megtudhatja, hogyan állíthatja be az eszközöket, ho
 
 - Azure Percept DK (fejlesztői készlet)
 - Azure Percept hang
-- Beszélő vagy fejhallgató (nem kötelező)
+- A 3,5 mm-es hangkimenethez csatlakoztatható hangszóró vagy fejhallgató (opcionális)
 - [Azure-előfizetés](https://azure.microsoft.com/free/)
 - Az [Azure PERCEPT DK telepítési felülete](./quickstart-percept-dk-set-up.md): csatlakoztatta a fejlesztői készlet egy Wi-Fi hálózathoz, létrehozott egy IoT hub, és csatlakoztatta a fejlesztői készlet a IoT hub
+- [Azure Percept – hangbeállítás](./quickstart-percept-audio-setup.md)
 
-## <a name="device-setup"></a>Eszköz beállítása
-
-1. (Opcionálisan) csatlakoztasson hangszórót vagy fejhallgatót a hanghoz a fejhallgató-összekötőn keresztül, amely "line out" címkével van ellátva. Ez lehetővé teszi, hogy meghallgassa a hangsegéd hangválaszait. Ha nem csatlakozik hangszóróhoz vagy fejhallgatóhoz, akkor továbbra is megtekintheti a válaszokat szövegként a bemutató ablakban.
-
-1. Csatlakoztassa a hang SoM-t a fejlesztői készlet Carrier táblához a mellékelt USB-A-ről a Micro B-kábellel.
-
-1. Kapcsolja be a fejlesztői készlet.
-
-    - Az audio SoM LED-L01 a tömör zöldre vált, jelezve, hogy az eszköz be van kapcsolva.
-    - A LED L02 a villogó zöldre változik, jelezve, hogy a hang SoM hitelesítve van.
-
-1. Várjon, amíg a hitelesítési folyamat befejeződik – ez akár 3 percet is igénybe vehet.
-
-1. Folytassa a következő szakasszal, ha a következők egyikét látja:
-
-    - A LED L01 kikapcsol, és a L02 fehérre vált. Ez azt jelzi, hogy a hitelesítés befejeződött, és a fejlesztői készlet még nem lett konfigurálva kulcsszóval.
-    - Mindhárom LED kékre vált. Ez azt jelzi, hogy a hitelesítés befejeződött, és a fejlesztői készlet egy kulcsszóval van konfigurálva.
-
-    > [!NOTE]
-    > Ha a fejlesztői készlet nem végzi el a hitelesítést, forduljon az ügyfélszolgálathoz.
 
 ## <a name="create-a-voice-assistant-using-an-available-template"></a>Hangsegéd létrehozása elérhető sablon használatával
 
@@ -119,6 +100,7 @@ Az autóipari bemutatóban a virtuális munkaállomás, a páramentesítő és a
 * "A hőmérséklet beállítása X fok értékre" (X a kívánt hőmérséklet, például 75.)
 * "A hőmérséklet növelése/csökkentése Y fokkal."
 
+
 :::image type="content" source="./media/tutorial-no-code-speech/auto-demo.png" alt-text="Képernyőkép az autóipari bemutató ablakról.":::
 
 ### <a name="inventory-demo-commands"></a>Leltározási bemutató parancsai
@@ -131,19 +113,30 @@ A leltár-bemutatóban a virtuális leltári alkalmazással együtt a virtuális
 * "Y Count mezők száma" (Y a dobozok színe, például sárga.)
 * "Az összes raktárban lévő hajó".
 
+
 :::image type="content" source="./media/tutorial-no-code-speech/inventory-demo.png" alt-text="Képernyőfelvétel a leltár-bemutató ablakról.":::
 
 ## <a name="configure-your-keyword"></a>A kulcsszó konfigurálása
 
-A kulcsszó módosításához kattintson az **egyéni kulcsszó** melletti **módosítás** elemre a bemutató ablakban. Válasszon ki egy elérhető kulcsszót, majd kattintson a **Mentés** gombra. Az előre elkészített kulcsszavakat és a létrehozott egyéni kulcsszavakat is kiválaszthatja.
+Testreszabhatja a kulcsszót a hangsegéd alkalmazáshoz.
 
-:::image type="content" source="./media/tutorial-no-code-speech/change-keyword.png" alt-text="Képernyőkép az elérhető kulcsszavak kiválasztásáról.":::
+1. Kattintson az **egyéni kulcsszó** melletti **módosítás** elemre a bemutató ablakban.
+
+1. Válasszon ki egy elérhető kulcsszót. Kiválaszthatja a minták kiválasztott kulcsszavait és a létrehozott egyéni kulcsszavakat is.
+
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="create-a-custom-keyword"></a>Egyéni kulcsszó létrehozása
 
-Egyéni kulcsszó létrehozásához kattintson az **+ egyéni kulcsszó létrehozása** elemre a bemutató ablak felső részén. Adja meg a kívánt kulcsszót, amely lehet egy szó vagy egy rövid kifejezés, válassza ki a **beszédfelismerési erőforrást** (ez a bemutató ablakban az **Egyéni parancs** mellett szerepel, és tartalmazza az alkalmazás előtagja), majd kattintson a **Save (Mentés**) gombra. Az egyéni kulcsszó betanítása néhány másodperc alatt elvégezhető.
+Saját kulcsszót is létrehozhat a hangalkalmazáshoz. Az egyéni kulcsszó betanítása néhány perc alatt elvégezhető.
 
-:::image type="content" source="./media/tutorial-no-code-speech/custom-keyword.png" alt-text="Képernyőkép az egyéni kulcsszó-létrehozási ablakról.":::
+1. Kattintson az **+ egyéni kulcsszó létrehozása** elemre a bemutató ablak felső részén. 
+
+1. Adja meg a kívánt kulcsszót, amely lehet egyetlen szó vagy egy rövid kifejezés.
+
+1. Válassza ki a **beszédfelismerési erőforrást** (ez az **Egyéni parancs** mellett szerepel a bemutató ablakban, és tartalmazza az alkalmazás előtagját).
+
+1. Kattintson a **Mentés** gombra. 
 
 ## <a name="create-a-custom-command"></a>Egyéni parancs létrehozása
 
@@ -185,13 +178,13 @@ Az egyéni parancsok fejlesztésével kapcsolatos további információkért tek
 
 ### <a name="voice-assistant-was-created-but-does-not-respond-to-commands"></a>A hangsegéd létrejött, de nem válaszol a parancsokra
 
-Győződjön meg arról, hogy az audio SoM LED-jelzőfényei:
+Keresse meg a LED-jelzőfényeket a következőben:
 
 * Három stabil kék fény jelzi, hogy a hangsegéd készen áll, és a kulcsszóra vár.
 * Ha a középső LED (L02) fehér, a fejlesztői készlet befejezte az inicializálást, és egy kulcsszóval kell konfigurálni.
-* A zöld fények bármely kombinációja azt jelzi, hogy a hang SoM még nem végezte el az inicializálást. Az inicializálás több percet is igénybe vehet.
+* Ha a középső LED (L02) fehér színű, a hang SoM még nem végezte el az inicializálást. Az inicializálás több percet is igénybe vehet.
 
-A hang SoM LED-indikátorokkal kapcsolatos további információkért tekintse meg a LED-cikket.
+A LED-mutatókról a LED-es [cikkben](./audio-button-led-behavior.md)talál további információt.
 
 ### <a name="voice-assistant-does-not-respond-to-a-custom-keyword-created-in-speech-studio"></a>A hangsegéd nem válaszol a Speech Studióban létrehozott egyéni kulcsszóra
 
@@ -207,22 +200,20 @@ Ez akkor fordulhat elő, ha a beszédfelismerési modul elavult. Kövesse az al�
 
 1. Keresse meg a beszédfelismerő modul verzióját. Ha egy frissítés elérhető, megjelenik egy **frissítés** gomb a verziószám mellett.
 
-    :::image type="content" source="./media/tutorial-no-code-speech/devkit.png" alt-text="Képernyőkép az fejlesztői készlet-Beszédfelismerési beállítások ablakról.":::
-
 1. Kattintson a **frissítés** elemre a beszédfelismerési modul frissítésének telepítéséhez. A frissítési folyamat általában 2-3 percet vesz igénybe.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha elkészült a hangsegéd-alkalmazással, kövesse az alábbi lépéseket az oktatóanyag során üzembe helyezett beszédfelismerési erőforrások tisztításához:
 
-1. A [Azure Portal](https://ms.portal.azure.com/#home)válassza ki az **erőforráscsoportok** elemet a bal oldali menüből, vagy írja be a keresősávba.
+1. A [Azure Portal](https://portal.azure.com)válassza ki az **erőforráscsoportok** elemet a bal oldali menüből, vagy írja be a keresősávba.
 
     :::image type="content" source="./media/tutorial-no-code-speech/azure-portal.png" alt-text="Képernyőkép a Azure Portal kezdőlapról a bal oldali menü és az erőforráscsoportok panelről.":::
 
 1. Válassza ki az erőforráscsoportot.
 
 1. Válassza ki mind a hat erőforrást, amely tartalmazza az alkalmazás előtagját, és kattintson a felső menüsorban található **Törlés** ikonra.
-
+\
     :::image type="content" source="./media/tutorial-no-code-speech/select-resources.png" alt-text="A törlésre kijelölt beszédfelismerési erőforrások képernyőképe.":::
 
 1. A törlés megerősítéséhez írja be az **Igen** értéket a megerősítés mezőbe, ellenőrizze, hogy a megfelelő erőforrásokat választotta-e ki, majd kattintson a **Törlés** gombra.

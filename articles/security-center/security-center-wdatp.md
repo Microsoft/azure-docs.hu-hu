@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2021
 ms.author: memildin
-ms.openlocfilehash: b9095d78d902bf5e44bffaba5db19bf2c26e0845
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a659ea897f013e504668789a7d5671420ff70a9f
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727005"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099080"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>A végpontok Security Center integrált EDR megoldással való ellátása: a Microsoft Defender for Endpoint
 
@@ -41,7 +41,7 @@ A Microsoft Defender for Endpoint egy holisztikus, felhőalapú végponti bizton
 | Szempont                          | Részletek                                                                                                                                                                                                                                                                                                       |
 |---------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Kiadás állapota:                  | Általánosan elérhető (GA)                                                                                                                                                                                                                                                                                      |
-| Árképzési                        | [Az Azure Defender for Servers](security-center-pricing.md) használatát igényli                                                                                                                                                                                                                                             |
+| Árképzési                        | [Az Azure Defender for Servers](defender-for-servers-introduction.md) használatát igényli                                                                                                                                                                                                                                             |
 | Támogatott platformok:            |  • Windows rendszerű Azure-gépek<br> • Windows rendszerű Azure arc-gépek|
 | A Windows támogatott verziói:  |   • **Általánosan elérhető (GA) –** észlelés a Windows Server 2016, 2012 r2 és 2008 R2 SP1 rendszeren<br> • **Előzetes verzió –** észlelés a windows Server 2019, a [Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md)és a [Windows 10 Enterprise multi-session](../virtual-desktop/windows-10-multisession-faq.md) (korábban Enterprise for Virtual desktops (EVD) szolgáltatásban<br>Az alábbi integrációkat használó kiszolgálói végpontok figyelése le van tiltva az Office 365 GCC-ügyfelek számára|
 | Nem támogatott operációs rendszerek:  |  • Windows 10 (a EVD vagy a WVD kivételével)<br> • Linux|
@@ -83,8 +83,7 @@ A hely konfigurálása után nem módosítható. Ha rendelkezik saját licenccel
         - Ha a Defender-t egy helyszíni gépekre helyezi üzembe, a [hibrid gépek összekapcsolása az Azure arc-kompatibilis kiszolgálókkal](../azure-arc/servers/learn/quick-enable-hybrid-vm.md) című részben leírtak szerint kapcsolja össze az Azure-ívet.
     - Emellett a **Windows Server 2019** rendszerű gépek esetében ellenőrizze, hogy érvényes ügynököt futtatnak-e, és hogy van-e a MicrosoftMonitoringAgent-bővítmény
 
-1. **Az Azure Defender engedélyezése a kiszolgálókhoz**. Tekintse meg [a Azure Security Center díjszabását](security-center-pricing.md#enable-azure-defender).
-
+1. **Az Azure Defender engedélyezése a kiszolgálókhoz**. Lásd [: gyors útmutató: az Azure Defender engedélyezése](enable-azure-defender.md).
 
 1. Ha már licencelte és telepítette a Microsoft Defendert a kiszolgálókon a végpontokhoz, távolítsa el azt a [regisztrációjának megszüntetésére szolgáló Windows Servers](/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints#offboard-windows-servers)című témakörben leírt eljárással.
 1. A Security Center menüjében válassza a **díjszabás & beállítások** lehetőséget.
