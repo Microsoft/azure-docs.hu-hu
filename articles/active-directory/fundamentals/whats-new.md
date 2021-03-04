@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c767d114ad6a1b5cb8b9c6bf4c0fe4f2ccd1dae6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 2e0315eda72681f650172117038ff5ede9f602cc
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650124"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032432"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>A Azure Active Directory újdonságai
 
@@ -651,7 +651,7 @@ A **termék képességei:** Access Control
 
 Most már megtekintheti az egyes Azure AD-szerepkörökhöz tartozó sablon AZONOSÍTÓját a Azure Portal. Az Azure AD-ben válassza a kiválasztott szerepkör  **leírását** . 
 
-Javasoljuk, hogy az ügyfelek a megjelenítendő név helyett a szerepkör-sablon azonosítóit használják a PowerShell-parancsfájlban és a kódban. A szerepkör-sablon azonosítója [directoryRoles](/graph/api/resources/directoryrole) és [definíciós](/graph/api/resources/unifiedroledefinition?view=graph-rest-beta) objektumokhoz használható. További információ a szerepkör-sablon azonosítói: [szerepkör-sablon azonosítói](../roles/permissions-reference.md#role-template-ids).
+Javasoljuk, hogy az ügyfelek a megjelenítendő név helyett a szerepkör-sablon azonosítóit használják a PowerShell-parancsfájlban és a kódban. A szerepkör-sablon azonosítója [directoryRoles](/graph/api/resources/directoryrole) és [definíciós](/graph/api/resources/unifiedroledefinition?view=graph-rest-beta) objektumokhoz használható. További információ a szerepkör-sablon azonosítóinak használatáról: [Azure ad beépített szerepkörök](../roles/permissions-reference.md).
 
 ---
 

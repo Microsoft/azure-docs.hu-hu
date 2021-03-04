@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: bb132baf3e93242c1b228f0ac7f0cfb7f41e1164
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 6287215233ae9baa220df37c6b820c1d1bec7720
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679844"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032517"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-the-azure-cli"></a>Azure Cognitive Search szolgáltatás kezelése az Azure CLI-vel
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ A szolgáltatáson belül a tartalom létrehozása és kezelése [Search Service
 
 A cikkben szereplő példák interaktívak, és emelt szintű engedélyeket igényelnek. Telepíteni kell az Azure CLI-t. További információ: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
-Most már futtathatja az Azure CLI-t a `az` paranccsal a Windows parancssorból, a powershellből vagy a [Azure Cloud Shellból](../cloud-shell/overview)is. A PowerShell néhány olyan parancssori kiegészítési funkciót is biztosít, amely nem érhető el a Windows-parancssorból. 
+Most már futtathatja az Azure CLI-t a `az` paranccsal a Windows parancssorból, a powershellből vagy a [Azure Cloud Shellból](../cloud-shell/overview.md)is. A PowerShell néhány olyan parancssori kiegészítési funkciót is biztosít, amely nem érhető el a Windows-parancssorból. 
 
 ### <a name="check-the-azure-cli-version"></a>Az Azure CLI verziójának keresése
 
@@ -152,7 +152,7 @@ az search service show --name <service-name> --resource-group <resource-group-na
 
 ## <a name="create-or-delete-a-service"></a>Szolgáltatás létrehozása vagy törlése
 
-[Új keresési szolgáltatás létrehozásához](search-create-service-portal)használja az az [**Search Service Create**](/cli/azure/search/service#az_search_service_show) parancsot.
+[Új keresési szolgáltatás létrehozásához](search-create-service-portal.md)használja az az [**Search Service Create**](/cli/azure/search/service#az_search_service_show) parancsot.
 
 ```azurecli-interactive
 az search service create \

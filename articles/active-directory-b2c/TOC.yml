@@ -150,6 +150,8 @@
           displayName: 'AD-FS, ADFS'
         - name: Amazon
           href: identity-provider-amazon.md
+        - name: Apple (előzetes verzió)
+          href: identity-provider-apple-id.md
         - name: Azure AD (egybérlős)
           href: identity-provider-azure-ad-single-tenant.md
         - name: Azure AD (több-bérlős)
@@ -217,11 +219,11 @@
           href: configure-tokens.md
     - name: Egyéni attribútumok meghatározása
       href: user-flow-custom-attributes.md
-    - name: Identity Protection és feltételes hozzáférés
+    - name: Kockázatalapú hitelesítés
       items:
-        - name: Identity Protection és feltételes hozzáférés beállítása
-          href: conditional-access-identity-protection-setup.md
-        - name: Feltételes hozzáférés hozzáadása
+        - name: Kockázat vizsgálata az Identity Protection szolgáltatással
+          href: identity-protection-investigate-risk.md
+        - name: Feltételes hozzáférés konfigurálása
           href: conditional-access-user-flow.md
     - name: Korhatáralapú hozzáférés-korlátozás konfigurálása
       href: basic-age-gating.md
@@ -327,9 +329,6 @@
                       href: aad-sspr-technical-profile.md
                     - name: Jogcím-átalakítás
                       href: claims-transformation-technical-profile.md
-                    - name: Feltételes hozzáférés
-                      href: conditional-access-technical-profile.md
-                      displayName: ca
                     - name: Azonosító jogkivonatokra vonatkozó tippek
                       href: id-token-hint.md
                     - name: JWT-jogkivonatkiállító

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 70c5593f29b5e83d5d3f318179d365a9235849ca
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 24cc7773d281d98b6a0943f5e0a61b6f547991ee
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790613"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032823"
 ---
 # <a name="speech-to-text-rest-api"></a>Diktálás REST API
 
@@ -152,7 +152,7 @@ var pronAssessmentHeader = Convert.ToBase64String(pronAssessmentParamsBytes);
 Javasoljuk, hogy a hangadatok közzététele során a streaming (darabolásos) feltöltést is javasolja, ami jelentősen csökkentheti a késést. A streaming engedélyezéséhez lásd: [mintakód különböző programozási nyelveken](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/PronunciationAssessment) .
 
 >[!NOTE]
->A kiejtés-értékelési funkció jelenleg csak `westus` `eastasia` és `centralindia` régiókban érhető el. Ez a funkció jelenleg csak nyelven érhető el `en-US` .
+>A kiejtés-értékelési funkció jelenleg csak nyelven érhető el `en-US` .
 
 ### <a name="sample-request"></a>Példa a kérelemre
 
@@ -335,7 +335,7 @@ Egy tipikus válasz az elismeréshez a kiejtés értékelésével:
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/cognitive-services/)
 - [Akusztikai modellek testreszabása](./how-to-custom-speech-train-model.md)

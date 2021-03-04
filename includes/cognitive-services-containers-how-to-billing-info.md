@@ -1,15 +1,15 @@
 ---
-author: IEvangelist
-ms.author: dapine
-ms.date: 02/19/2020
+author: aahill
+ms.author: aahi
+ms.date: 03/02/2021
 ms.service: cognitive-services
 ms.topic: include
-ms.openlocfilehash: 2ac93f5aba722eea78267a512999a5581a887b99
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d61813e723992f4381c5ea82121da8bbb70016dc
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996432"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032932"
 ---
 A tárolóra irányuló lekérdezések számlázása az Azure-erőforrás díjszabási szintjénél történik `ApiKey` .
 
@@ -17,7 +17,7 @@ Az Azure Cognitive Services-tárolók nem rendelkeznek licenccel a mérési/szá
 
 ### <a name="connect-to-azure"></a>Csatlakozás az Azure szolgáltatáshoz
 
-A tárolónak a számlázási argumentum értékeit kell futtatnia. Ezek az értékek lehetővé teszik a tárolónak a számlázási végponthoz való kapcsolódást. A tároló 10 – 15 percen belül jelentést készít a használatról. Ha a tároló nem csatlakozik az Azure-hoz az engedélyezett időtartományon belül, a tároló továbbra is futni fog, de addig nem szolgál lekérdezéseket, amíg a számlázási végpont vissza nem áll. A rendszer 10 – 15 percen belül 10 alkalommal kísérli meg a kapcsolódást. Ha a 10 próbálkozáson belül nem tud csatlakozni a számlázási végponthoz, a tároló leállítja a kérelmek kiszolgálását.
+A tárolónak a számlázási argumentum értékeit kell futtatnia. Ezek az értékek lehetővé teszik a tárolónak a számlázási végponthoz való kapcsolódást. A tároló 10 – 15 percen belül jelentést készít a használatról. Ha a tároló nem csatlakozik az Azure-hoz az engedélyezett időtartományon belül, a tároló továbbra is futni fog, de addig nem szolgál lekérdezéseket, amíg a számlázási végpont vissza nem áll. A rendszer 10 – 15 percen belül 10 alkalommal kísérli meg a kapcsolódást. Ha a 10 próbálkozáson belül nem tud csatlakozni a számlázási végponthoz, a tároló leállítja a kérelmek kiszolgálását. Az [Cognitive Services-tárolóval kapcsolatos gyakori kérdésekért](../articles/cognitive-services/containers/container-faq.yml#how-does-billing-work) tekintse meg a Microsoft számára a számlázásra vonatkozóan eljuttatott információkat.
 
 ### <a name="billing-arguments"></a>Számlázási argumentumok
 

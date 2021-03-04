@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 5a83211654ad1abafff59d5968c191ec1fa63616
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3bcbe846d102b0ef821394246e10d2af4d48cacf
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692402"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032619"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Adatok áthelyezése gép tanulási folyamatok lépéseibe és azok között (Python)
 
@@ -245,7 +245,7 @@ step1_output_ds = step1_output_data.register_on_complete(name='processed_data',
 Az Azure nem törli automatikusan a-val írt köztes adatkészleteket `OutputFileDatasetConfig` . Ha el szeretné kerülni a nagy mennyiségű szükségtelen adatok tárolási díját, akkor a következők valamelyikét kell megadnia:
 
 * Programozott módon törölheti a közbenső adatmennyiséget a folyamat futásának végén, ha már nincs rá szükség
-* Használjon rövid távú tárolási házirenddel rendelkező blob Storage-t a köztes adattároláshoz (lásd: a [költségek optimalizálása az Azure Blob Storage hozzáférési szintjeinek automatizálásával](../storage/blobs/storage/blobs/storage-lifecycle-management-concepts.md)) 
+* Használjon rövid távú tárolási házirenddel rendelkező blob Storage-t a köztes adattároláshoz (lásd: a [költségek optimalizálása az Azure Blob Storage hozzáférési szintjeinek automatizálásával](../storage/blobs/storage-lifecycle-management-concepts.md)) 
 * A már nem szükséges adatfeldolgozások rendszeres felülvizsgálata és törlése
 
 További információ: [Azure Machine learning költségeinek tervezése és kezelése](concept-plan-manage-cost.md).

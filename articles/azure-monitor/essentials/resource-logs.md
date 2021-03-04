@@ -6,13 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
-ms.subservice: logs
-ms.openlocfilehash: dcd6522c46b6ca35031092c634803267a8486647
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: cb4f1ecdada68218c104558a85277417641906f6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101731459"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033012"
 ---
 # <a name="azure-resource-logs"></a>Azure-erőforrásnaplók
 Az Azure-erőforrás-naplók olyan [platform-naplók](../essentials/platform-logs-overview.md) , amelyek betekintést nyújtanak az Azure-erőforrásokon belül végrehajtott műveletekre. Az erőforrás-naplók tartalma az Azure-szolgáltatás és az erőforrás típusa szerint változik. A rendszer alapértelmezés szerint nem gyűjti az erőforrás-naplókat. Minden egyes Azure-erőforráshoz létre kell hoznia egy diagnosztikai beállítást, hogy az erőforrás-naplókat egy Log Analytics munkaterületre küldje el, amelyet [Azure monitor naplók](../logs/data-platform-logs.md), az Azure Event Hubs az Azure-on kívüli továbbítására, illetve az Azure Storage-ba történő archiválásra kíván használni.

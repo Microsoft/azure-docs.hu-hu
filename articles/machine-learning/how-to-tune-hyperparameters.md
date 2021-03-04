@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 0212ed1378dbb1d2165e9333a38fa911598c4c6d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 768d2011ae3f2826b42befa8f0d40f0e56b993fd
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691484"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032687"
 ---
 # <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>Hiperparaméter a modell finomhangolása Azure Machine Learning
 
@@ -332,7 +332,7 @@ hd_config = HyperDriveConfig(run_config=script_run_config,
                              max_concurrent_runs=4)
 ```
 
-A `HyperDriveConfig` Beállítja a paraméternek átadott paramétereket `ScriptRunConfig script_run_config` . A- `script_run_config` ben pedig a paramétereket továbbítja a betanítási parancsfájlnak. A fenti kódrészlet a minta notebook [-Betanításból, a hiperparaméter és a PyTorch-vel való üzembe helyezésből](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch/train-hyperparameter-tune-deploy-with-pytorch)származik. Ebben a példában a `learning_rate` és a `momentum` Paraméterek be lesznek hangolva. A futtatások korai leállítását az a határozza meg `BanditPolicy` , amely leállítja azt a futtatást, amelynek elsődleges metrikája kívül esik a `slack_factor` (lásd: [BanditPolicy-osztály referenciája](python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py)). 
+A `HyperDriveConfig` Beállítja a paraméternek átadott paramétereket `ScriptRunConfig script_run_config` . A- `script_run_config` ben pedig a paramétereket továbbítja a betanítási parancsfájlnak. A fenti kódrészlet a minta notebook [-Betanításból, a hiperparaméter és a PyTorch-vel való üzembe helyezésből](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch/train-hyperparameter-tune-deploy-with-pytorch)származik. Ebben a példában a `learning_rate` és a `momentum` Paraméterek be lesznek hangolva. A futtatások korai leállítását az a határozza meg `BanditPolicy` , amely leállítja azt a futtatást, amelynek elsődleges metrikája kívül esik a `slack_factor` (lásd: [BanditPolicy-osztály referenciája](/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy)). 
 
 A mintából származó következő kód azt mutatja be, hogy a rendszer hogyan fogadja el, elemezze és átadja a betanítási parancsfájl függvényének a beérkező értékeket `fine_tune_model` :
 

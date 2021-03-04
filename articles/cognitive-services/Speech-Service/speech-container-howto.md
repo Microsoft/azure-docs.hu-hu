@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/17/2020
+ms.date: 03/02/2021
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: helyszíni, Docker, tároló
-ms.openlocfilehash: 7bebaf7558de8ec5c1fcca3c9a4526330da1d695
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 4970b33d51ed7ef54727c1c15e2482ff10d70506
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575788"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032933"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Docker-tárolók telepítése és futtatása a Speech Service API-khoz 
 
@@ -455,7 +455,7 @@ A parancs a következőket hajtja végre:
 * *Custom Speech – Text* tárolót futtat a tároló rendszerképből.
 * A cél területi beállítás elérhető alapmodelljeinek beadása és visszaadása.
 
-A kimenet felsorolja az alapmodelleket, amelyek az információ területi beállítását, a modell azonosítóját és a létrehozási dátum időpontját jelenítik meg. A modell azonosítójának használatával letöltheti és használhatja az Ön által előnyben részesített alapmodellt. Például:
+A kimenet felsorolja az alapmodelleket, amelyek az információ területi beállítását, a modell AZONOSÍTÓját és a létrehozási dátum időpontját jelenítik meg. A modell AZONOSÍTÓjának használatával letöltheti és használhatja az Ön által előnyben részesített alapmodellt. Például:
 ```
 Checking available base model for en-us
 2020/10/30 21:54:20 [Info] Searching available base models for en-us

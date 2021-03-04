@@ -1,17 +1,16 @@
 ---
 title: Resource Manager-sablonok – minták a diagnosztikai beállításokhoz
 description: Példa Azure Resource Manager sablonokra Azure Monitor diagnosztikai beállítások Azure-erőforrásra való alkalmazásához.
-ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 09/11/2020
-ms.openlocfilehash: 304c359296c4fbff79dd367facd8bbb98c8903b5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ec44c54a00c8532ed082b6e5f9e9cb9ce84f64b5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101731442"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033027"
 ---
 # <a name="resource-manager-template-samples-for-diagnostic-settings-in-azure-monitor"></a>Resource Manager-sablonok – minták a diagnosztikai beállításokhoz Azure Monitor
 Ez a cikk minta [Azure Resource Manager sablonokat](../../azure-resource-manager/templates/template-syntax.md) tartalmaz az Azure-erőforrások diagnosztikai beállításainak létrehozásához. Mindegyik minta tartalmaz egy sablonfájlt és egy, a sablonhoz adni kívánt minta értékeket tartalmazó paramétereket tartalmazó fájlt.

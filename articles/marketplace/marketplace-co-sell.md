@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 2/24/2021
-ms.openlocfilehash: 5d6b05b9656879f174d92d75ca8b188f7e74e5a1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ef90a21ab8fad0e18542c1c88ee808237ff150c5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721140"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032585"
 ---
 # <a name="co-sell-with-microsoft-sales-teams-and-partners-overview"></a>Közös értékesítés a Microsoft értékesítési csapatával és partnereivel – áttekintés
 
@@ -70,7 +70,7 @@ Az alábbi típusú ajánlatokra alkalmazhatók a biz apps ISV-vel való csatlak
 - Dynamics 365 a Customer engagement & PowerApps
 - A Dynamics 365 for Operations
 
-Azok az ajánlatok, amelyek az _Azure IP-incentivized_ vagy a _BIZ apps ISV_ -ket érik el, a prémium szintű ösztönző állapotot kapják meg a következő kereskedelmi piactéren:
+Az _Azure-beli IP-incentivized_ állapotot elérő ajánlatok ezeket a kereskedelmi Piactéri kedvezményeket vehetik igénybe:
 
 - A Piactéri szolgáltatási díj 20%-ról 10%-ra csökken. Ez a kedvezmény a kereskedelmi piactéren eladott, szolgáltatásként nyújtott infrastruktúra-(IaaS-) megoldás vagy szolgáltatott szoftver (SaaS) megoldásra vonatkozik. További információkért lásd: [kereskedelmi piactér szolgáltatási díjai](marketplace-commercial-transaction-capabilities-and-considerations.md#commercial-marketplace-service-fees).
 - A Cloud Solution Provider (CSP) partnerei 10%-os kedvezményt kapnak a IaaS-megoldás vagy az SaaS-ajánlat értékesítéséhez. További információ a CSP programról: [Cloud Solution Provider program](cloud-solution-providers.md).

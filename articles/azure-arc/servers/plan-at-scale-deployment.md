@@ -3,12 +3,12 @@ title: Az Azure arc-kompatibilis kiszolgálók helyszíni üzembe helyezésének
 description: Megtudhatja, hogyan engedélyezheti a nagy számú gépet az Azure arc használatára képes kiszolgálókon az Azure-ban az alapvető biztonsági, felügyeleti és monitorozási képességek konfigurálásának egyszerűbbé tételéhez.
 ms.date: 02/23/2021
 ms.topic: conceptual
-ms.openlocfilehash: fd02e7c0b4d65efde13fbc428a15d60adab174d4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0e77fc00f94f2f46c60bb2c5dcecc10a4e2e3bc5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693092"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032228"
 ---
 # <a name="planing-for-an-at-scale-deployment-of-azure-arc-enabled-servers"></a>Az Azure arc-kompatibilis kiszolgálók helyszíni üzembe helyezésének megtervezése
 
@@ -71,7 +71,7 @@ Ezt követően az 1. fázisban az üzembe helyezés előkészítésével és az 
 
 |Feladat |Részletek |Időtartam |
 |-----|-------|---------|
-| Az előre definiált telepítési parancsfájl letöltése | Tekintse át és szabja testre az előre definiált telepítési parancsfájlt a csatlakoztatott számítógép-ügynök helyszíni telepítéséhez, hogy támogassa az automatikus üzembe helyezési követelményeket.<br><br> Példa a bevezetési erőforrások méretezésére:<br><br> * [Alapszintű üzembe helyezési parancsfájl](servers/onboard-service-principal.md)<br><br> * [VMware vSphere Windows Server rendszerű virtuális gépek méretezése](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_win.md)<br><br> * [Nagyszabású bevezetési VMware vSphere Linux rendszerű virtuális gépek](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_linux.md)<br><br> * [Integrált AWS EC2-példányok méretezése a Ansible használatával](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/aws_scale_ansible.md)<br><br> * [Központi telepítés a PowerShell távelérési szolgáltatásával](https://docs.microsoft.com/azure/azure-arc/servers/onboard-powershell) (csak Windows)| Egy vagy több nap a követelményektől, a szervezeti folyamattól (például a módosítási és kiadási felügyelettől) és az Automation-módszertől függően. |
+| Az előre definiált telepítési parancsfájl letöltése | Tekintse át és szabja testre az előre definiált telepítési parancsfájlt a csatlakoztatott számítógép-ügynök helyszíni telepítéséhez, hogy támogassa az automatikus üzembe helyezési követelményeket.<br><br> Példa a bevezetési erőforrások méretezésére:<br><br> <ul><li> [Alapszintű üzembe helyezési parancsfájl](onboard-service-principal.md)</ul></li> <ul><li>[VMware vSphere Windows Server rendszerű virtuális gépek méretezése](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_win.md)</ul></li> <ul><li>[Nagyszabású bevezetési VMware vSphere Linux rendszerű virtuális gépek](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_linux.md)</ul></li> <ul><li>[Integrált AWS EC2-példányok méretezése a Ansible használatával](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/aws_scale_ansible.md)</ul></li> <ul><li>[Központi telepítés a PowerShell távelérési szolgáltatásával](https://docs.microsoft.com/azure/azure-arc/servers/onboard-powershell) (csak Windows)</ul></li>| Egy vagy több nap a követelményektől, a szervezeti folyamattól (például a módosítási és kiadási felügyelettől) és az Automation-módszertől függően. |
 | [Egyszerű szolgáltatás létrehozása](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) |Hozzon létre egy egyszerű szolgáltatást, amely nem interaktív módon, Azure PowerShell vagy a portálon keresztül csatlakozik a gépekhez.| Egy óra |
 | A csatlakoztatott számítógép ügynökének üzembe helyezése a célkiszolgálón és a gépeken |Az Automation eszközzel telepítse a parancsfájlokat a kiszolgálókra, és kapcsolódjon az Azure-hoz.| Egy vagy több nap a kiadási tervtől függően, és a szakaszos bevezetést követően. |
 
@@ -83,7 +83,7 @@ A 3. fázis olyan rendszergazdákat vagy rendszermérnököket lát el, amelyek 
 |-----|-------|---------|
 |Resource Health riasztás létrehozása |Ha egy kiszolgáló 15 percnél hosszabb ideig nem küld szívveréseket az Azure-nak, az azt jelenti, hogy offline állapotban van, a hálózati kapcsolat le lett tiltva, vagy az ügynök nem fut. Dolgozzon ki egy tervet az incidensek megválaszolásához és kivizsgálásához, valamint [Resource Health riasztások](../..//service-health/resource-health-alert-monitor-guide.md) használatával, hogy értesítést kapjon az indításakor.<br><br> A riasztás konfigurálásakor a következőket kell megadnia:<br> **Erőforrás típusa**  =  **Azure arc-kompatibilis kiszolgálók**<br> **Aktuális erőforrás állapota**  =  Nem **érhető el**<br> **Korábbi erőforrás állapota**  =  **Elérhető** | Egy óra |
 |Azure Advisor riasztás létrehozása | A legjobb megoldás és a legújabb biztonsági és hibajavítások esetében ajánlott az Azure arc-kompatibilis kiszolgálók ügynökének naprakészen tartása. Az elavult ügynökök [Azure Advisor riasztással](../../advisor/advisor-alerts-portal.md)lesznek azonosítva.<br><br> A riasztás konfigurálásakor a következőket kell megadnia:<br> **Javaslat típusa**  =  **Frissítés az Azure Connected Machine Agent legújabb verziójára** | Egy óra |
-|[Azure-szabályzatok kiosztása](../../governance/policy/assign-policy-portal.md) az előfizetéshez vagy az erőforráscsoport hatóköréhez |Rendelje hozzá az **engedélyezés Azure monitor for VMS** házirendet és másokat, amelyek megfelelnek az előfizetésnek vagy az erőforráscsoport hatókörének, így biztosítva, hogy az összes arc-kompatibilis kiszolgáló automatikusan be legyen állítva a figyeléshez Azure monitor for VMS használatával.| Változó |
+|[Azure-szabályzatok kiosztása](../../governance/policy/assign-policy-portal.md) az előfizetéshez vagy az erőforráscsoport hatóköréhez |Az előfizetés vagy az erőforráscsoport hatóköréhez rendelje hozzá a **Azure monitor for VMS** [házirend](../../azure-monitor/vm/vminsights-enable-policy.md) engedélyezése (és az igényeinek megfelelő többi) beállítást. Azure Policy lehetővé teszi, hogy olyan szabályzat-definíciókat rendeljen hozzá, amelyek a szükséges ügynököket telepítik Azure Monitor for VMs a környezetében.| Változó |
 |[Update Management engedélyezése az ív használatára képes kiszolgálókon](../../automation/update-management/enable-from-automation-account.md) |Update Management konfigurálása Azure Automation az arc-kompatibilis kiszolgálókon regisztrált Windows-és Linux-alapú virtuális gépek operációsrendszer-frissítéseinek kezeléséhez. | 15 perc |
 
 ## <a name="next-steps"></a>Következő lépések

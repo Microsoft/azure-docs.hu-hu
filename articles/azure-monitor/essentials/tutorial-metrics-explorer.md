@@ -3,15 +3,14 @@ title: Oktatóanyag – metrikai diagram létrehozása Azure Monitor
 description: Megtudhatja, hogyan hozhat létre metrikus diagramokat az Azure mérőszámok Explorerrel.
 author: bwren
 ms.author: bwren
-ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: 52e44eca72040019a97ad176a01d20a54a122efa
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9923bfcbd439ef5e20e44e9c397199fe06f40b43
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627511"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032908"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>Oktatóanyag: metrikai diagram létrehozása Azure Monitor
 Azure Portal a metrikák Explorer a Azure Monitor egyik funkciója, amely lehetővé teszi, hogy diagramokat hozzon létre a metrikák értékeiből, vizuálisan korrelálja a trendeket, és vizsgálja meg a mérőszámok és a dips értékeit. A metrikák Explorerrel megvizsgálhatja az Azure-erőforrások állapotát és kihasználtságát, illetve diagramokat rajzolhat az egyéni metrikák használatával. 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c9df24a255d640c463bd62e8bdfe8a576df3b09
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: eaad4995abcf54e9ca7040d570c7a9abbdbc9cf5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693118"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032415"
 ---
 # <a name="securing-service-principals"></a>Az egyszerű szolgáltatások biztonságossá tétele
 
@@ -107,7 +107,7 @@ Az egyszerű szolgáltatásokhoz való bejelentkezést nem lehet feltételes hoz
 ## <a name="move-from-a-user-account-to-a-service-principal"></a>Áthelyezés felhasználói fiókból egy egyszerű szolgáltatásba  
 Ha Azure-beli felhasználói fiókot használ szolgáltatásnévként, akkor kiértékelheti, hogy áthelyezhető-e egy [felügyelt identitásra](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet) vagy egy egyszerű szolgáltatásra. Ha nem tud felügyelt identitást használni, hozzon létre egy egyszerű szolgáltatásnevet, amely a szükséges feladatok futtatásához elég engedélyekkel és hatókörrel rendelkezik. Egyszerű szolgáltatást [egy alkalmazás regisztrálásával](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)vagy a [PowerShell](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell)-lel hozhat létre.
 
-Microsoft Graph használatakor tekintse meg az adott API dokumentációját, például [ebben a példában](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps?view=azps-5.0.0), és győződjön meg arról, hogy az alkalmazáshoz tartozó engedély típusa támogatott.
+Microsoft Graph használatakor tekintse meg az adott API dokumentációját, például [ebben a példában](/powershell/azure/create-azure-service-principal-azureps), és győződjön meg arról, hogy az alkalmazáshoz tartozó engedély típusa támogatott.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -115,7 +115,7 @@ Microsoft Graph használatakor tekintse meg az adott API dokumentációját, pé
 
 [Egyszerű szolgáltatás létrehozása](../develop/howto-create-service-principal-portal.md)
 
- [Egyszerű szolgáltatás-bejelentkezések figyelése](../reports-monitoring/concept-all-sign-ins#sign-ins-report.md)
+ [Egyszerű szolgáltatás-bejelentkezések figyelése](../reports-monitoring/concept-all-sign-ins.md#sign-ins-report)
 
 **További információ a szolgáltatásfiókok biztonságossá tételéről:**
 
@@ -125,4 +125,4 @@ Microsoft Graph használatakor tekintse meg az adott API dokumentációját, pé
 
 [Az Azure-szolgáltatásfiókok szabályozása](service-accounts-governing-azure.md)
 
-[A helyszíni szolgáltatásfiókok bemutatása](service-accounts-on-poremises.md)
+[A helyszíni szolgáltatásfiókok bemutatása](service-accounts-on-premises.md)
