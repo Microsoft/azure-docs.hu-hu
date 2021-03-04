@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 32b0a7e31fc0d595eacc2bf5257f41e4ce35566b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fbeb88b6aa542666481458fde97d7c63f467fa30
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101735811"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051531"
 ---
 # <a name="security-control-v2-asset-management"></a>Biztonsági vezérlő v2: Asset Management
 
 Az eszközkezelés kiterjed az Azure-erőforrások biztonságának és irányításának biztosítására szolgáló vezérlőkre. Ide tartoznak a biztonsági személyzet engedélyeivel kapcsolatos javaslatok, az eszközök leltározásának biztonsági hozzáférése, valamint a szolgáltatások és erőforrások jóváhagyásának kezelése (leltár, nyomon követés és helyes).
 
-A megfelelő beépített Azure Policy megjelenítéséhez tekintse meg [Az Azure biztonsági teljesítményteszt szabályozási megfelelőségének beépített kezdeményezésének részleteit: hálózati biztonság](../../governance/policy/samples/azure-security-benchmark#asset-management)
+A megfelelő beépített Azure Policy megjelenítéséhez tekintse meg [Az Azure biztonsági teljesítményteszt szabályozási megfelelőségének beépített kezdeményezésének részleteit: hálózati biztonság](../../governance/policy/samples/azure-security-benchmark.md#asset-management)
 
 ## <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1: Az összetevőket érintő kockázatok biztonsági csapat általi átláthatóságának biztosítása
 
@@ -154,7 +154,7 @@ Harmadik féltől származó megoldást is használhat a nem jóváhagyott szoft
 
 - [A Azure Automation Change Tracking és a leltár ismertetése](../../automation/change-tracking/overview.md)
 
-- [A PowerShell-parancsfájlok végrehajtásának szabályozása Windows-környezetekben](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+- [A PowerShell-parancsfájlok végrehajtásának szabályozása Windows-környezetekben](/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 **Felelősség**: Ügyfél
 

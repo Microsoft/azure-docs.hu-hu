@@ -5,15 +5,15 @@ description: Ismerje meg, hogyan telepítheti és hitelesítheti a Defender Micr
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 1/18/2021
+ms.date: 3/3/2021
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: 8d7e6dffcc40ba1e34a4a84ecccccc1f8b181393
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4125fc3c2f03104eeca108a73d83f2fad44bebc1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703048"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051752"
 ---
 # <a name="install-defender-for-iot-micro-agent-preview"></a>A Defender telepítése a IoT Micro agenthez (előzetes verzió)
 
@@ -21,7 +21,7 @@ Ez a cikk azt ismerteti, hogyan telepítheti és hitelesítheti a Defender Micro
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Defender for IoT modul telepítése előtt létre kell hoznia egy modul-identitást a IoT Hubban. A modul identitásának létrehozásával kapcsolatos további információkért lásd: [azureiotsecurity-modul létrehozása – Twin](quickstart-create-security-twin.md)
+A Defender for IoT modul telepítése előtt létre kell hoznia egy modul-identitást a IoT Hubban. A modul identitásának létrehozásával kapcsolatos további információkért lásd: [Defender IoT Micro Agent Module twin (előzetes verzió)](quickstart-create-micro-agent-module-twin.md).
 
 ## <a name="install-the-package"></a>A csomag telepítése
 

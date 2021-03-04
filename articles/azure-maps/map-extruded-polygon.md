@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 211bcbf27f3a9e885a4bc2c4e5edd27db7907edf
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 19675a92101ed1a13b07bc1a4039701cd029a020
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890768"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044085"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map"></a>Sokszög-kihúzási réteg hozzáadása a térképhez
 
@@ -22,7 +22,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a sokszög-kihúzási réteg
 
 ## <a name="use-a-polygon-extrusion-layer"></a>Sokszög kihúzási rétegének használata
 
-A [sokszög kihúzási rétegének](/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer) összekötése egy adatforrással. Ezután betöltve a térképen. A sokszög kihúzási rétege `Polygon` kihúzott alakzatként jeleníti meg a és a funkciók területét `MultiPolygon` . A  `height` `base` sokszög kihúzási rétegének és tulajdonságai határozzák meg az extrudált alakzat területének és magasságának alaptávolságát **méterben** . A következő kód bemutatja, hogyan hozható létre sokszög, hogyan adható hozzá egy adatforráshoz, és Hogyan jeleníthető meg a sokszög kihúzási rétegének osztálya alapján.
+A [sokszög kihúzási rétegének](/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer) összekötése egy adatforrással. Ezután betöltve a térképen. A sokszög kihúzási rétege `Polygon` kihúzott alakzatként jeleníti meg a és a funkciók területét `MultiPolygon` . A `height` `base` sokszög kihúzási rétegének és tulajdonságai határozzák meg az extrudált alakzat területének és magasságának alaptávolságát **méterben**. A következő kód bemutatja, hogyan hozható létre sokszög, hogyan adható hozzá egy adatforráshoz, és Hogyan jeleníthető meg a sokszög kihúzási rétegének osztálya alapján.
 
 > [!Note]
 > A `base` sokszög kihúzási rétegében megadott érték nem lehet kisebb, mint az `height` .
@@ -32,10 +32,9 @@ A [sokszög kihúzási rétegének](/javascript/api/azure-maps-control/atlas.lay
 <iframe height="500" style="width: 100%;" scrolling="no" title="Extrudált sokszög" src="https://codepen.io/azuremaps/embed/wvvBpvE?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/wvvBpvE'>extrudált sokszögét</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) használatával a <a href='https://codepen.io'>CodePen</a>.</iframe>
 
-
 ## <a name="add-data-driven-polygons"></a>Adatvezérelt sokszögek hozzáadása
 
-A choropleth-leképezések a sokszög kihúzási réteg használatával állíthatók be. A `height` `fillColor` kihúzási réteg és a tulajdonságok tulajdonságát állítsa a `Polygon` és a `MultiPolygon` szolgáltatás geometriájában található statisztikai változó mértékére. A következő mintakód egy extrudált choropleth-Térképet mutat be az U. S alapján, amely a populáció sűrűségének az állapot szerinti mérésén alapul.
+A choropleth-leképezések a sokszög kihúzási réteg használatával állíthatók be. A `height` `fillColor` kihúzási réteg és a tulajdonságok tulajdonságát állítsa a `Polygon` és a `MultiPolygon` szolgáltatás geometriájában található statisztikai változó mértékére. Az alábbi mintakód a Egyesült Államok extrudált choropleth-térképét jeleníti meg, a népsűrűség alapján.
 
 <br/>
 

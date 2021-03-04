@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 02/15/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 77ccf09903b6cff83b52d60d43d0c52533c9c1ad
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 78c5d2d03ebca45bcf1602b35453914d033db5c8
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041688"
+ms.locfileid: "102098247"
 ---
 # <a name="set-up-your-azure-percept-dk-and-deploy-your-first-ai-model"></a>Az Azure Percept DK beállítása és az első AI-modell üzembe helyezése
 
@@ -25,7 +25,7 @@ Ha problémákat tapasztal a gyorskonfigurálás során, tekintse meg a lehetsé
 - Egy Azure Percept DK.
 - Egy Windows-, Linux-vagy OS X-alapú gazdaszámítógép Wi-Fi-képességgel és egy webböngészővel.
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- Az Azure-fióknak a tulajdonos vagy a közreműködő szerepkörrel kell rendelkeznie az előfizetésben. További információ az Azure szerepkör-definíciókkal kapcsolatban
+- Az Azure-fióknak a tulajdonos vagy a közreműködő szerepkörrel kell rendelkeznie az előfizetésben. További információ az [Azure szerepkör-definíciókkal](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles#azure-roles)kapcsolatban.
 
 ### <a name="prerequisite-check"></a>Előfeltételek ellenőrzése
 

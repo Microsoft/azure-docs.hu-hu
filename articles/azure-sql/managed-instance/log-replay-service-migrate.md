@@ -4,17 +4,17 @@ description: Ismerje meg, hogyan migrálhat adatbázisokat SQL Serverról SQL fe
 services: sql-database
 ms.service: sql-managed-instance
 ms.custom: seo-lt-2019, sqldbrb=1
-ms.devlang: ''
 ms.topic: how-to
 author: danimir
+ms.author: danil
 ms.reviewer: sstein
 ms.date: 03/01/2021
-ms.openlocfilehash: bc0dc72c7547c8f74aec53b7153fc5384c6b634b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 74403b7ec1469ce7cdaadc9931eb5ac95f55f6f5
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690787"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096836"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-using-log-replay-service-preview"></a>Adatbázisok migrálása SQL Serverról SQL felügyelt példányra a log Replay szolgáltatással (előzetes verzió)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -56,7 +56,7 @@ A LRS az automatikus kiegészítés vagy a folyamatos mód használatával indí
 
 Miután leállította az LRS-t, automatikusan az automatikus kiegészítésben vagy manuálisan a átváltás-on, a visszaállítási folyamat nem folytatható olyan adatbázis esetében, amely az SQL felügyelt példányon online állapotú. Ha az áttelepítést automatikus kiegészítéssel, vagy manuálisan a átváltás-n keresztül szeretné visszaállítani a további biztonságimásolat-fájlokat, az adatbázist törölni kell, és a teljes biztonsági mentési láncot teljesen vissza kell állítani a LRS újraindításával.
 
-![A log Replay szolgáltatás összehangolása című témakör ismerteti az SQL felügyelt példányát](./media/log-replay-service-migrate/log-replay-service-conceptual.png)
+   :::image type="content" source="./media/log-replay-service-migrate/log-replay-service-conceptual.png" alt-text="A log Replay szolgáltatás összehangolása című témakör ismerteti az SQL felügyelt példányát" border="false":::
     
 | Művelet | Részletek |
 | :----------------------------- | :------------------------- |
@@ -193,18 +193,30 @@ WITH COMPRESSION, CHECKSUM
 Az Azure Blob Storage a SQL Server és az SQL felügyelt példánya közötti biztonsági mentési fájlok köztes tárolóként használatos. A LRS szolgáltatás általi használatra elő kell állítani a SAS hitelesítési tokent a List és az írásvédett engedélyek használatával. Ez lehetővé teszi az LRS szolgáltatás számára az Azure-Blob Storage elérését, és a biztonságimásolat-fájlok használatával visszaállíthatja őket az SQL felügyelt példányain. Az alábbi lépéseket követve hozhatja ki az SAS-hitelesítést a LRS használatára:
 
 1. A Storage Explorer elérése Azure Portal
+
 2. BLOB-tárolók kibontása
-3. Kattintson a jobb gombbal a blob-tárolóra, és válassza a közös hozzáférésű aláírás  ![ naplózása szolgáltatás sas-hitelesítési jogkivonat előállítása lehetőséget.](./media/log-replay-service-migrate/lrs-sas-token-01.png)
+
+3. Kattintson a jobb gombbal a blob-tárolóra, és válassza a közös hozzáférési aláírás beolvasása elemet.
+
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-sas-token-01.png" alt-text="Log Replay szolgáltatás – közös hozzáférésű aláírás beolvasása":::
+
 4. Válassza ki a jogkivonat lejárati időkeretét. Győződjön meg arról, hogy a jogkivonat az áttelepítés időtartamára érvényes.
+
 5. Válassza ki a token-UTC vagy a helyi idő időzónáját
-    - A jogkivonat időzónája és az SQL felügyelt példánya eltérő lehet. Győződjön meg arról, hogy az SAS-token rendelkezik a megfelelő időtartammal az időzónák figyelembe vétele érdekében. Ha lehetséges, állítsa az időzónát a tervezett áttelepítési időszak korábbi és későbbi időpontjára.
+
+   - A jogkivonat időzónája és az SQL felügyelt példánya eltérő lehet. Győződjön meg arról, hogy az SAS-token rendelkezik a megfelelő időtartammal az időzónák figyelembe vétele érdekében. Ha lehetséges, állítsa az időzónát a tervezett áttelepítési időszak korábbi és későbbi időpontjára.
+
 6. Csak olvasási és listázási engedélyek kiválasztása
-    - Nincs szükség más engedély kiválasztására, vagy egyéb módon a LRS nem fog tudni elindulni. Ezt a biztonsági követelményt a terv szerint kell megtervezni.
-7. Kattintson a létrehozás gomb  ![ log Replay szolgáltatás sas-hitelesítési jogkivonat létrehozása elemre.](./media/log-replay-service-migrate/lrs-sas-token-02.png)
 
-Az SAS-hitelesítés a korábban megadott idő érvényességével jön létre. Szüksége lesz a generált jogkivonat URI-verziójára – ahogy az alábbi képernyőképen is látható.
+   - Nincs szükség más engedély kiválasztására, vagy egyéb módon a LRS nem fog tudni elindulni. Ezt a biztonsági követelményt a terv szerint kell megtervezni.
 
-![Log Replay szolgáltatás által generált SAS-hitelesítési URI-példa](./media/log-replay-service-migrate/lrs-generated-uri-token.png)
+7. Kattintson a Létrehozás gombra
+
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-sas-token-02.png" alt-text="Log Replay szolgáltatás – SAS hitelesítési jogkivonat előállítása":::
+
+   Az SAS-hitelesítés a korábban megadott idő érvényességével jön létre. Szüksége lesz a generált jogkivonat URI-verziójára – ahogy az alábbi képernyőképen is látható.
+
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-generated-uri-token.png" alt-text="Log Replay szolgáltatás – az URI közös hozzáférési aláírásának másolása":::
 
 ### <a name="copy-parameters-from-sas-token-generated"></a>Paraméterek másolása a létrehozott SAS-tokenből
 
@@ -212,7 +224,7 @@ Ahhoz, hogy megfelelően használhassa az SAS-tokent a LRS elindításához, meg
 - StorageContainerUri és 
 - StorageContainerSasToken, a kérdőjel (?) karakterrel elválasztva, ahogy az alábbi képen is látható.
 
-    ![Log Replay szolgáltatás által generált SAS-hitelesítési URI-példa](./media/log-replay-service-migrate/lrs-token-structure.png)
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-token-structure.png" alt-text="Log Replay szolgáltatás által generált SAS-hitelesítési URI-példa" border="false":::
 
 - Az első rész a "https://" kezdetű, amíg a kérdőjel (?) a StorageContainerURI paraméterhez van felhasználva, amely a LRS bemenetként van táplálva. Ez a LRS információt nyújt az adatbázis-biztonságimásolat-fájlokat tároló mappáról.
 - A második rész, amely a kérdőjel (?) után kezdődik, az "SP =" példában és egészen addig, amíg a sztring véget nem StorageContainerSasToken paraméternek. Ez a tényleges aláírt hitelesítési jogkivonat, amely a megadott idő időtartamára érvényes. Ennek a résznek nem feltétlenül kell az "SP =" kifejezéssel kezdődnie, ahogy az adott eset eltérő lehet.
@@ -221,11 +233,11 @@ A paramétereket a következőképpen másolja:
 
 1. Másolja a token első részét a https://egészen addig, amíg a kérdőjel (?) be nem fejeződik, és StorageContainerUri paraméterként használja a PowerShellben vagy a CLI-ben a LRS elindításához az alábbi képernyőképen látható módon.
 
-    ![A log Replay szolgáltatás StorageContainerUri-paraméterének másolása](./media/log-replay-service-migrate/lrs-token-uri-copy-part-01.png)
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-token-uri-copy-part-01.png" alt-text="A log Replay szolgáltatás StorageContainerUri-paraméterének másolása":::
 
 2. Másolja a token második részét a kérdőjel (?) karaktertől kezdve egészen a karakterlánc végéig, és használja StorageContainerSasToken paraméterként a PowerShellben vagy a CLI-ben a LRS elindításához az alábbi képernyőképen látható módon.
 
-    ![A log Replay szolgáltatás StorageContainerSasToken-paraméterének másolása](./media/log-replay-service-migrate/lrs-token-uri-copy-part-02.png)
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-token-uri-copy-part-02.png" alt-text="A log Replay szolgáltatás StorageContainerSasToken-paraméterének másolása":::
 
 > [!IMPORTANT]
 > - Az Azure Blob Storage SAS-jogkivonatára vonatkozó engedélyeket csak olvasási és listázási jogosultsággal kell elvégeznie. Ha más engedélyek is meg vannak adva az SAS hitelesítési jogkivonat számára, a LRS szolgáltatás indítása sikertelen lesz. Ezek a biztonsági követelmények a tervek szerint vannak kialakítva.

@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: d388478fb3bc9b4e355d8c3cd3f16c0a785b8b27
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: da7d540a4b7982c7f743a7ae968515485b45aa5a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578922"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035427"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Adatforrások az Azure Sentinelhez való összekapcsolásához használja a Logstash-t
 
 > [!IMPORTANT]
 > A Logstash kimeneti beépülő modullal történő adatfeldolgozás jelenleg nyilvános előzetes verzióban érhető el. Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Az Azure Sentinel új kimeneti beépülő moduljának használata a **Logstash adatgyűjtő motorhoz** mostantól bármilyen típusú naplót küldhet a Logstash-en keresztül közvetlenül az azure Sentinel Log Analytics munkaterületére. A rendszer elküldi a naplókat egy egyéni táblába, amelyet a kimeneti beépülő modullal fog meghatározni.
+Az Azure Sentinel kimeneti beépülő moduljának használatával a **Logstash adatgyűjtő motorhoz** bármilyen típusú naplót küldhet a Logstash-en keresztül közvetlenül az azure Sentinel Log Analytics munkaterületére. A rendszer elküldi a naplókat egy egyéni táblába, amelyet a kimeneti beépülő modullal fog meghatározni.
 
 Ha többet szeretne megtudni a Logstash-adatgyűjtési motor használatáról, tekintse meg a [Logstash használatának első lépéseit](https://www.elastic.co/guide/en/logstash/current/getting-started-with-logstash.html)ismertető témakört.
 
@@ -65,7 +65,7 @@ Az Azure Sentinel kimeneti beépülő modulja elérhető a Logstash gyűjtemény
 
 Használja a konfigurációs [fájl Logstash struktúrájában](https://www.elastic.co/guide/en/logstash/current/configuration-file-structure.html) található információkat, és adja hozzá az Azure Sentinel kimeneti beépülő modult a konfigurációhoz a következő kulcsokkal és értékekkel. (A megfelelő konfigurációs fájl szintaxisa a tábla után jelenik meg.)
 
-| Mező neve | Adattípus | Description |
+| Mező neve | Adattípus | Leírás |
 |----------------|---------------|-----------------|
 | `workspace_id` | sztring | Adja meg a munkaterület AZONOSÍTÓjának GUID azonosítóját. * |
 | `workspace_key` | sztring | Adja meg a munkaterület elsődleges kulcsának GUID azonosítóját. * |
@@ -76,8 +76,10 @@ Használja a konfigurációs [fájl Logstash struktúrájában](https://www.elas
 | `plugin_flush_interval` | szám | Nem kötelező kitölteni. A beállítással adhatja meg a maximális időközt (másodpercben) az üzenetek átvitele között Log Analytics. Az alapértelmezett érték az 5. |
     | `amount_resizing` | boolean | Igaz vagy hamis. Engedélyezheti vagy letilthatja az automatikus skálázási mechanizmust, amely a fogadott naplófájlok mennyisége alapján módosítja az üzenet pufferének méretét. |
 | `max_items` | szám | Nem kötelező kitölteni. Csak akkor érvényes `amount_resizing` , ha a "false" értékre van állítva. A használatával megadhatja a határértéket az üzenet pufferének méretétől (a rekordokban). Az alapértelmezett érték 2000.  |
+| `azure_resource_id` | sztring | Nem kötelező kitölteni. Meghatározza annak az Azure-erőforrásnak az AZONOSÍTÓját, amelyben az adat található. <br>Az erőforrás-azonosító értéke különösen akkor hasznos, ha [erőforrás-környezeti RBAC](resource-context-rbac.md) használ, hogy csak bizonyos adatforrásokhoz férhessenek hozzá. |
+| | | |
 
-\* A munkaterület-azonosítót és az elsődleges kulcsot a munkaterület-erőforrásban, az **ügynökök kezelése** területen találja.
+* A munkaterület-azonosítót és az elsődleges kulcsot a munkaterület-erőforrásban, az **ügynökök kezelése** területen találja.
 
 #### <a name="sample-configurations"></a>Minta konfiguráció
 

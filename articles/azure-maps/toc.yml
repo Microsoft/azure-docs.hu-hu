@@ -244,6 +244,8 @@
           href: how-to-use-android-map-control-library.md
         - name: A térkép stílusának módosítása
           href: set-android-map-styles.md
+        - name: Vezérlőelemek hozzáadása a térképhez
+          href: map-add-controls-android.md
         - name: Adatforrás létrehozása
           href: create-data-source-android-sdk.md
         - name: Szimbólumréteg hozzáadása
@@ -256,8 +258,12 @@
           href: android-map-add-line-layer.md
         - name: Sokszögréteg hozzáadása
           href: how-to-add-shapes-to-android-map.md
+        - name: Kiterjesztési sokszögréteg hozzáadása
+          href: map-extruded-polygon-android.md
         - name: Hőtérképréteg hozzáadása
           href: map-add-heat-map-layer-android.md
+        - name: Rendszerképréteg hozzáadása
+          href: map-add-image-layer-android.md
         - name: Mozaikréteg hozzáadása
           href: how-to-add-tile-layer-android-map.md
         - name: Forgalomadatok megjelenítése

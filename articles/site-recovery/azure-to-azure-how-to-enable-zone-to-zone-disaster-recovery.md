@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: d207a5629647ef3582f1e0490ef6ccc407f935f7
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: beba8e1d8126818f142e4873d551ed077af869d2
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584838"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035237"
 ---
 # <a name="enable-azure-vm-disaster-recovery-between-availability-zones"></a>Azure-beli virtuális gép vész-helyreállításának engedélyezése rendelkezésre állási zónák között
 
@@ -20,7 +20,7 @@ Ez a cikk az Azure-beli virtuális gépek egyik rendelkezésre állási zónáb�
 
 >[!NOTE]
 >
->- A zóna és a zóna közötti vész-helyreállítás támogatása jelenleg kilenc régióra korlátozódik: Délkelet-Ázsia, Kelet-Japán, Kelet-Ausztrália, Egyesült Királyság déli régiója, Nyugat-Európa, Észak-Európa, az USA középső régiója, az USA keleti régiója és az USA nyugati régiója 2.  
+>- A zóna és a zóna vész-helyreállításának támogatása jelenleg a következő régiókban érhető el: Délkelet-Ázsia, Kelet-Japán, Kelet-Ausztrália, Egyesült Királyság déli régiója, Nyugat-Európa, Észak-Európa, USA középső régiója, USA keleti régiója, USA 2. keleti régiója és USA 2. nyugati  
 >- A Site Recovery nem helyezi át és nem tárolja az ügyféladatokat azon a régión kívül, amelyben az ügyfél üzembe helyezése történik, amikor a felhasználó a zónát használja a zóna vész-helyreállítási feladataihoz. Az ügyfelek választhatnak egy Recovery Services-tárolót egy másik régióból is. A Recovery Services-tároló metaadatokat tartalmaz, de nincsenek tényleges ügyféladatok.
 
 A Site Recovery szolgáltatás a tervezett és nem tervezett leállások során az üzletmenet-folytonosságot és a vész-helyreállítási stratégiát segíti az üzleti alkalmazások működésének megtartásában. Az ajánlott vész-helyreállítási lehetőség, hogy az alkalmazásait akár regionális kimaradás esetén is meg kell őrizni.

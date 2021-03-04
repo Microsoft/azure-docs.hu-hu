@@ -9,18 +9,22 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 766136731cb92b1bd4f0965d4929b1ac5eda14dc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
-ms.translationtype: HT
+ms.openlocfilehash: 996c974473c53833dd26abae2fb61585999f33b4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690493"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050443"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>A Microsoft-ügyfélszerződés számláin szereplő kifejezések
 
-Ez a cikk a Microsoft-ügyfélszerződéshez tartozó Azure számlázási fiókokra vonatkozik. [Ellenőrizze, hogy rendelkezik-e hozzáféréssel a Microsoft-ügyfélszerződéshez](#check-access-to-a-microsoft-customer-agreement).
+Ez a cikk a Microsoft-ügyfélszerződéshez tartozó Azure-beli számlázási fiókra vonatkozik. [Ellenőrizze, hogy rendelkezik-e hozzáféréssel egy Microsoft-ügyfélszerződéshez](#check-access-to-a-microsoft-customer-agreement).
 
 A számla tartalmazza a díjak összesítését, valamint a fizetésre vonatkozó utasításokat. A számlát letöltheti Portable Document Format (.pdf) formátumban az [Azure Portalról](https://portal.azure.com/), vagy kérheti, hogy e-mailben legyen elküldve. További információ: [A Microsoft Azure-számla megtekintése és letöltése](download-azure-invoice.md).
+
+Tekintse meg a [Microsoft ügyfél-szerződéssel kapcsolatos számláját](https://www.youtube.com/watch?v=e2LGZZ7GubA) bemutató videót, amelyből megtudhatja, hogyan elemezheti a számláját, és hogyan elemezheti azt.
+
+>[!VIDEO https://www.youtube.com/embed/e2LGZZ7GubA]
 
 ## <a name="billing-period"></a>Számlázási időszak
 
@@ -71,7 +75,7 @@ A számlázási profilban szereplő minden egyes számlaszakasznál láthatja a 
 
 A részletek az egyes számlaszakaszok költségeit mutatják termékrendelések szerinti lebontásban. Az egyes termékrendeléseken belül a költségek a szolgáltatás típusa szerint vannak lebontva. A termékekre és szolgáltatásokra vonatkozó napidíjakat az Azure Portalon, az Azure-használati adatok és díjak CSV-fájljában találja. További információ: [A Microsoft-ügyfélszerződés számláján szereplő díjak ismertetése](review-customer-agreement-bill.md).
 
-Az egyes szolgáltatáscsaládokhoz tartozó teljes összeg kiszámítása az *Azure-kreditek* *kreditekből/díjakból* való levonásával és az *adó* hozzáadásával történik:
+Az egyes szolgáltatáscsaládokhoz tartozó teljes összeg kiszámítása az *Azure-kreditek**kreditekből/díjakból* való levonásával és az *adó* hozzáadásával történik:
 
 
 ![Számlaszakasz-információk](./media/mca-understand-your-invoice/invoicesectiondetails.png)
@@ -101,7 +105,7 @@ Ha a számlán harmadik féltől származó szolgáltatások szerepelnek, az egy
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A számlázási profil számláján szereplő díjak ismertetése](review-customer-agreement-bill.md)
 - [Az Azure számlázási és napi használati adatainak beszerzése](../manage/download-azure-invoice-daily-usage-date.md)

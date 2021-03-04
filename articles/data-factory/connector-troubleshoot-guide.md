@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 02/08/2021
 ms.author: jingwang
 ms.custom: has-adal-ref
-ms.openlocfilehash: 574c4967c1e45ce1ae2be92d8648d654322e2244
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9d8f940e3900c00b1c6f6623dfeff2d92ca85aa3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727821"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042436"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory-összekötők hibaelhárítása
 
@@ -831,7 +831,7 @@ Ez a cikk az Azure Data Factory-összekötővel kapcsolatos problémák elhárí
 
     Ha a titkos kulcs tartalma a kulcstartóból származik, az eredeti kulcsfájl működhet, ha közvetlenül az SFTP társított szolgáltatásba tölti fel.
 
-    További információkért lásd: [adatok másolása az SFTP-kiszolgálóra Azure Data Factory használatával](./connector-sftp.md#using-ssh-public-key-authentication). A titkos kulcs tartalma Base64 kódolású titkos SSH-kulcs.
+    További információkért lásd: [adatok másolása az SFTP-kiszolgálóra Azure Data Factory használatával](./connector-sftp.md#use-ssh-public-key-authentication). A titkos kulcs tartalma Base64 kódolású titkos SSH-kulcs.
 
     Kódolja a *teljes* eredeti titkos kulcsot Base64 kódolással, és tárolja a kódolt karakterláncot a kulcstartóban. Az eredeti titkos kulcsfájl az a fájl, amely az SFTP társított szolgáltatásban működhet, ha a fájlból a **feltöltés** lehetőséget választja.
 

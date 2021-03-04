@@ -8,12 +8,12 @@ ms.date: 03/02/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 161aafce1c04e5d09cf08529bcbf1baf6b8a86b1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 429845aa22b6d069b8d7233132de8eb3b24b2985
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674927"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043677"
 ---
 # <a name="change-your-performance-tier-using-the-azure-powershell-module-or-the-azure-cli"></a>A teljesítmény szintjeinek módosítása a Azure PowerShell modul vagy az Azure CLI használatával
 
@@ -117,7 +117,7 @@ $disk.Tier
 
 ## <a name="change-the-performance-tier-of-a-disk-without-downtime-preview"></a>Lemez teljesítményi szintjeinek módosítása állásidő nélkül (előzetes verzió)
 
-A teljesítményszint a leállás nélkül is módosítható, így nem kell felszabadítani a virtuális gépet, vagy leválasztani a lemezt a rétegek módosításához. További információért és az előzetes verzióra vonatkozó regisztrációs hivatkozáshoz lásd a [teljesítményszint módosítása állásidő nélkül (előzetes verzió)](#changing-performance-tier-without-downtime-preview) szakaszt.
+A teljesítményszint a leállás nélkül is módosítható, így nem kell felszabadítani a virtuális gépet, vagy leválasztani a lemezt a rétegek módosításához. További információ és az előzetes verzióra vonatkozó regisztrációs hivatkozás a [teljesítmény megváltozása állásidő nélkül (előzetes verzió)](#change-performance-tier-without-downtime-preview) szakaszban található.
 
 
 A következő parancsfájl frissíti az alapszinten magasabb méretű lemez szintjét a minta sablonnal [CreateUpdateDataDiskWithTier.js](https://github.com/Azure/azure-managed-disks-performance-tiers/blob/main/CreateUpdateDataDiskWithTier.json)használatával. Cserélje le,,,, `<yourSubScriptionID>` `<yourResourceGroupName>` `<yourDiskName>` `<yourDiskSize>` és `<yourDesiredPerformanceTier>` futtassa a szkriptet:

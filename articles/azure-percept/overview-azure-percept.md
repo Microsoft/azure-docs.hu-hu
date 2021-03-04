@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: overview
 ms.date: 02/18/2021
 ms.custom: template-overview
-ms.openlocfilehash: 0581e659eca0a59719db0dd0e48cf3628b64dd2a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 85b7f3a62324bc93cd78649cd39e0f4dc7d0baed
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665503"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098196"
 ---
 # <a name="introduction-to-azure-percept"></a>Az Azure Percept bemutatása
 
@@ -22,21 +22,21 @@ Az integrációs kihívások az egyik arca, amikor az Edge AI-megoldások nagy l
 
 - Azonosítsa és válassza ki a megfelelő szilíciumot a megoldások kikapcsolásához.
 - A hardver, a szoftver, a modellek és az adattípusok kollektív biztonságának biztosítása.
-- Képes a zökkenőmentesen működő megoldások létrehozására és kezelésére.
+- Képes a zökkenőmentesen működő, nagy léptékű megoldások létrehozására és kezelésére.
 
 ## <a name="components-of-azure-percept"></a>Az Azure Percept összetevői
 
 Az Azure Percept fő összetevői a következők:
 
-- AI hardver-referenciák tervezési és minősítési programjai.
+1. AI hardver-referenciák tervezési és minősítési programjai.
 
     - Az Azure AI-és IoT-szolgáltatásokkal egyszerűen integrálható, az Edge AI-hardverek fejlesztésére szolgáló mintázatokkal és ajánlott eljárásokkal biztosítja a hardveres fejlesztők ökoszisztémáját.
 
-- Azure Percept DK (fejlesztői készlet).
+2. Azure Percept DK (fejlesztői készlet).
 
-    - Egy olyan fejlesztői csomag, amely elég rugalmas ahhoz, hogy támogassa a különböző prototípus-forgatókönyveket.
+    - Az eszköz-építők, a megoldás-építők és az ügyfelek számára a prototípus-forgatókönyvek széles választékát támogató fejlesztői csomag.
 
-- Szolgáltatások és munkafolyamatok az Edge AI-modell és a megoldás-fejlesztés felgyorsításához.
+3. Szolgáltatások és munkafolyamatok az Edge AI-modell és a megoldás-fejlesztés felgyorsításához.
 
     - Az Azure Percept studióból elérhető fejlesztői munkafolyamatok és előre elkészített modellek.
     - Modell-fejlesztési szolgáltatások.

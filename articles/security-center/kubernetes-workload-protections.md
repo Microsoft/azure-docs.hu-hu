@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 02/16/2021
 ms.author: memildin
-ms.openlocfilehash: f024457ed9f20e6bab0852a53ab6a60ac85ed25a
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 6d0e660ecce1d45dab4d6003cdba391ba2eb4ee9
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546261"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095595"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>A Kubernetes számítási feladatok védelme
 
@@ -51,7 +51,7 @@ Azure Security Center tartalmaz olyan javaslatokat, amelyek akkor érhetők el, 
 
 A javaslatok konfigurálásához telepítse a  **Kubernetes Azure Policy bővítményét**. 
 
-- Ezt a bővítményt automatikusan telepítheti a [bővítmények automatikus kiépítése lehetővé tétele](security-center-enable-data-collection.md#enable-auto-provisioning-of-extensions)című részben leírtak szerint. Ha a bővítmény automatikus kiépítés értéke "on", a bővítmény alapértelmezés szerint engedélyezve van az összes meglévő és jövőbeli fürtben (amelyek megfelelnek a bővítmény telepítési követelményeinek).
+- Ezt a bővítményt automatikusan telepítheti az [log Analytics-ügynök és-bővítmények automatikus kiépítése lehetővé tétele](security-center-enable-data-collection.md#auto-provision-mma)című részben leírtak szerint. Ha a bővítmény automatikus kiépítés értéke "on", a bővítmény alapértelmezés szerint engedélyezve van az összes meglévő és jövőbeli fürtben (amelyek megfelelnek a bővítmény telepítési követelményeinek).
 
     :::image type="content" source="media/defender-for-kubernetes-usage/policy-add-on-auto-provision.png" alt-text="Az Security Center automatikus kiépítési eszközének használata a Kubernetes házirend-bővítményének telepítéséhez":::
 

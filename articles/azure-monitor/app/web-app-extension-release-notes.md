@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
 ms.date: 06/26/2020
-ms.openlocfilehash: b9da3b0647d5abe60dd8f6cb21163ff21f07205b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07ba61f630b849a377f1c7ba881f95518eb73606
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86539720"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042606"
 ---
 # <a name="release-notes-for-azure-web-app-extension-for-application-insights"></a>Az Azure webalkalmazás-bővítmény kibocsátási megjegyzései Application Insights
 
@@ -27,6 +27,24 @@ Ez a cikk az Azure Web Apps-bővítmény kiadási megjegyzéseit tartalmazza a f
     - Távolítsa el a Private site Extensions szolgáltatást, mert már nem támogatott.
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="2838"></a>2.8.38
+
+- JAVA-bővítmény: frissítve a [Java Agent 3.0.2 (GA)](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/3.0.2) a 2.5.1-ből.
+- Node.js bővítmény: frissített AI SDK- [1.8.8](https://github.com/microsoft/ApplicationInsights-node.js/releases/tag/1.8.8) a 1.8.7-ből.
+- .NET Core: eltávolított támogatott verziók (2,0, 2,2, 3,0). A támogatott verziók a következők: 2,1 és 3,1.
+
+### <a name="2837"></a>2.8.37
+
+- AppSvc Windows-bővítmény: a .net Core a System.Diagnostics.DiagnosticSource.dll bármely verziójával működik.
+
+### <a name="2836"></a>2.8.36
+
+- AppSvc Windows-bővítmény: enabled Inter-op az AI SDK-val a .NET Core-ban.
+
+### <a name="2835"></a>2.8.35
+
+- AppSvc Windows-bővítmény: a .NET Core 3,1-támogatás hozzáadva.
 
 ### <a name="2833"></a>2.8.33
 
@@ -73,6 +91,6 @@ Ez a cikk az Azure Web Apps-bővítmény kiadási megjegyzéseit tartalmazza a f
 
 - Javítsa ki az ASP.NET Core-alkalmazások hiányos HTML-válaszát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure App Services figyelésének konfigurálásával kapcsolatos további információkért tekintse meg az [Azure app Service dokumentációját](azure-web-apps.md) . 

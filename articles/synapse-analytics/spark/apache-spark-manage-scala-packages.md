@@ -5,16 +5,16 @@ services: synapse-analytics
 author: midesa
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 03/01/2020
+ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 8d5c18eaaa4065eac515f38557664ceb44262adf
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c70ecc4fc5469d728bc12d47024585ccf00ff98e
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695935"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098706"
 ---
 # <a name="manage-scala-and-java-packages-for-apache-spark-in-azure-synapse-analytics"></a>A Scala és a Java-csomagok kezelése az Azure szinapszis Analytics szolgáltatásban Apache Sparkhoz
 
@@ -37,13 +37,10 @@ A munkaterület-csomagok lehetnek egyéni vagy privát JAR-fájlok. Ezeket a cso
 
 Munkaterület-csomagok hozzáadása:
 1. Navigáljon a   >  **munkaterület-csomagok** kezelése lapra.
-2. Töltse fel a görgetőkerék fájljait a fájl választójának használatával.
-3. Miután feltöltötte a fájlokat az Azure szinapszis munkaterületre, felveheti ezeket a kerek fájlokat egy adott Apache Spark készletbe.
+2. Töltse fel a jar-fájljait a fájl választójának használatával.
+3. Miután feltöltötte a fájlokat az Azure szinapszis munkaterületre, felveheti ezeket a jar-fájlokat egy adott Apache Spark készletbe.
 
 ![A munkaterület-csomagokat kiemelő képernyőkép.](./media/apache-spark-azure-portal-add-libraries/studio-add-workspace-package.png "Munkaterület-csomagok megtekintése")
-
-> [!IMPORTANT]
-> A munkaterület-csomagok telepítése jelenleg még nem támogatott az adatkiszűrése védett (DEP) munkaterületeken belül.
 
 ## <a name="pool-libraries"></a>Készlet kódtárai
 Miután azonosította a Spark-alkalmazáshoz használni kívánt Scala-és Java-csomagokat, telepítheti őket egy Spark-készletbe. A készleten futó összes jegyzetfüzet és feladat számára a készlet szintű kódtárak érhetők el.

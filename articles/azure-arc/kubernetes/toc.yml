@@ -10,6 +10,8 @@
   items:
     - name: Konfigurációk üzembe helyezése GitOps használatával
       href: tutorial-use-gitops-connected-cluster.md
+    - name: CI/CD implementálása a GitOps
+      href: tutorial-gitops-ci-cd.md
 - name: Rövid útmutatók
   items:
     - name: Fürt összekötése az Azure-ív használatával
@@ -20,6 +22,8 @@
       href: conceptual-agent-architecture.md
     - name: Konfigurációk és GitOps
       href: conceptual-configurations.md
+    - name: CI/CD-munkafolyamat a GitOps használatával
+      href: conceptual-gitops-ci-cd.md
     - name: Gyakori kérdések
       href: faq.md
 - name: Útmutatók

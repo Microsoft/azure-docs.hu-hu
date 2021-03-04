@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: f5b332415f1abf7d4c1002bdd4f3bfcef12f1267
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ff9d1f0ff75a6df6c115ecfe2b8c5f71b12049e4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023258"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036171"
 ---
 ## <a name="configure-the-sample-project"></a>A minta projekt konfigurálása
 
@@ -22,7 +22,7 @@ A mappa belsejében navigáljon a _AdtSampleApp_. Nyissa meg a _**AdtE2ESample. 
 
 A Visual Studióban válassza ki a _SampleClientApp > **appsettings.jsa**_ fájl megnyitásához a szerkesztési ablakban. Ez egy előre beállított JSON-fájlként fog szolgálni a projekt futtatásához szükséges konfigurációs változók használatával.
 
-A fájl törzsében módosítsa az `instanceUrl` Azure Digital Twins-példány *állomásnév* -URL-címére (a *https://* az alább látható módon).
+A fájl törzsében módosítsa az `instanceUrl` Azure Digital Twins *-példány állomásnév-URL-címére* (az alábbi ábrán látható módon adja hozzá a **_https://_** az *állomásnév* előtt).
 
 ```json
 {
@@ -32,7 +32,7 @@ A fájl törzsében módosítsa az `instanceUrl` Azure Digital Twins-példány *
 
 Mentse és zárja be a fájlt. 
 
-Ezután konfigurálja a fájl *appsettings.jsa* kimeneti könyvtárba a *SampleClientApp* létrehozásakor. Ehhez kattintson a jobb gombbal a *appsettings.js* fájlra, majd válassza a *Tulajdonságok elemet.* A *Tulajdonságok* ellenőrben módosítsa a *Másolás a kimeneti könyvtárba* tulajdonság értékét, *Ha újabb*.
+Ezután konfigurálja a fájl *appsettings.jsa* kimeneti könyvtárba a *SampleClientApp* létrehozásakor. Ehhez kattintson a jobb gombbal a *appsettings.js* fájlra, majd válassza a **Tulajdonságok** elemet. A **Tulajdonságok** ellenőrben keresse meg a *Másolás a kimeneti könyvtárba* tulajdonságot. Módosítsa a másolandó értéket, **Ha az újabb** , ha még nincs beállítva.
 
 :::image type="content" source="../articles/digital-twins/media/includes/copy-config.png" alt-text="Részletek a Visual Studio ablakból: a Megoldáskezelő panel, amelyen a Kiemelt appsettings.jslátható, a Tulajdonságok ablaktábla pedig a &quot;másolás a kimeneti könyvtárba&quot; tulajdonsága a &quot;másolás, ha újabb&quot; értékre van állítva." border="false" lightbox="../articles/digital-twins/media/includes/copy-config.png":::
 

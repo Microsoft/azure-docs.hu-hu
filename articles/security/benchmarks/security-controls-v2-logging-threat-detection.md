@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 43119a51be2359ed2ddfb4e5d5fa629badedb054
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a274ec1aab3f530700f89ef810fa667fdf4d08e6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720681"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042980"
 ---
 # <a name="security-control-v2-logging-and-threat-detection"></a>Security Control v2: naplózás és fenyegetések észlelése
 
 A naplózás és a fenyegetések észlelése kiterjed az Azure-beli fenyegetések észlelésére, valamint az Azure-szolgáltatások naplófájljainak engedélyezésére, gyűjtésére és tárolására. Ebbe beletartozik az észlelési, vizsgálati és szervizelési folyamatok engedélyezése a vezérlőkkel, hogy magas színvonalú riasztásokat készítsen a natív veszélyforrások észlelésével az Azure-szolgáltatásokban; magában foglalja a naplók gyűjtését is Azure Monitor, központosítva a biztonsági elemzést az Azure Sentinel, az időszinkronizálás és a naplózás megőrzése mellett.
 
-A megfelelő beépített Azure Policy megjelenítéséhez tekintse meg [Az Azure biztonsági teljesítményteszt szabályozási megfelelőségének beépített kezdeményezésének részleteit: naplózás és fenyegetések észlelése](../../governance/policy/samples/azure-security-benchmark#logging-and-threat-detection)
+A megfelelő beépített Azure Policy megjelenítéséhez tekintse meg [Az Azure biztonsági teljesítményteszt szabályozási megfelelőségének beépített kezdeményezésének részleteit: naplózás és fenyegetések észlelése](../../governance/policy/samples/azure-security-benchmark.md#logging-and-threat-detection)
 
 ## <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1: az Azure-erőforrások fenyegetés-észlelésének engedélyezése
 

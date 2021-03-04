@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/03/2018
 ms.author: memildin
-ms.openlocfilehash: 89d04588d07407be5dbd7ddbafd6543ed461462e
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: cc88561f8882b1712648a261d1f0208a18bab26d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945719"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095476"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Oktatóanyag: Erőforrások védelme az Azure Security Centerrel
 A Security Center korlátozza a fenyegetéseknek való kitettségét azzal, hogy hozzáférés- és alkalmazásvezérlőket használ a kártékony tevékenységek blokkolására. Az igény szerinti (JIT) virtuálisgép-hozzáférés csökkenti a támadásoknak való kitettséget azáltal, hogy lehetővé teszi a virtuális gépek állandó hozzáférésének megtagadását. Az állandó hozzáférés helyett szabályozott és naplózott hozzáférést biztosít a virtuális gépekhez – csak akkor, ha szükség van rá. Az adaptív alkalmazásvezérlők segítenek felvértezni a virtuális gépeket a kártevők ellen azáltal, hogy szabályozzák, mely alkalmazások futhatnak rajtuk. Security Center a gépi tanulás segítségével elemzi a virtuális gépen futó folyamatokat, és segítséget nyújt az engedélyezési listákra vonatkozó szabályok alkalmazásában az intelligenciával.
@@ -31,7 +31,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 > * Alkalmazásvezérlési szabályzat konfigurálása
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az oktatóanyagban szereplő funkciók átlépéséhez engedélyeznie kell az Azure Defender használatát. Az Azure Defender szolgáltatás díjmentesen kipróbálható. További információ: az [Azure Defender kipróbálása](security-center-pricing.md).
+Az oktatóanyagban szereplő funkciók átlépéséhez engedélyeznie kell az Azure Defender használatát. Ennek létezik egy ingyenesen elérhető próbaverziója. A frissítéshez tekintse meg az [Azure Defender engedélyezése](enable-azure-defender.md)című témakört.
 
 ## <a name="manage-vm-access"></a>Virtuális gépekhez való hozzáférés kezelése
 A JIT VM-hozzáférés segítségével zárolhatja az Azure-beli virtuális gépek bejövő forgalmát, így csökkentve a támadásoknak való kitettséget, miközben könnyű hozzáférést biztosít a virtuális gépekhez, ha szükséges.
@@ -45,7 +45,7 @@ Az adaptív alkalmazásvezérlők segítségével meghatározhatja a konfigurál
 
 A [gépek támadási felületének csökkentése érdekében kövesse az adaptív alkalmazások használatának szabályozása](security-center-adaptive-application.md)című témakör útmutatását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez az oktatóanyag bemutatta, hogyan korlátozhatja a fenyegetéseknek való kitettségét a következőkkel:
 
 > [!div class="checklist"]

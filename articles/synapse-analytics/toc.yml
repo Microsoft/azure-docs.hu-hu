@@ -1,6 +1,6 @@
 - name: Azure Synapse Analytics
   href: index.yml
-- name: Váltás dedikált SQL-készletre (korábban SQL DW)
+- name: Váltás dedikált SQL-készletre (korábbi nevén SQL DW) >
   href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md
 - name: Áttekintés
   items:
@@ -48,17 +48,19 @@
   items:
     - name: Rövid útmutatók
       items:
-        - name: Munkaterület létrehozása az Azure Portal használatával
-          href: quickstart-create-workspace.md
-          displayName: quickstart
-        - name: Munkaterület létrehozása az Azure CLI használatával
-          href: quickstart-create-workspace-cli.md
-          displayName: quickstart
-        - name: Munkaterület létrehozása az Azure PowerShell használatával
-          href: quickstart-create-workspace-powershell.md
-          displayName: quickstart
-        - name: Üzembe helyezés sablon használatával
-          href: quickstart-deployment-template-workspaces.md
+        - name: Munkaterület létrehozása
+          items:
+            - name: Azure Portal
+              href: quickstart-create-workspace.md
+              displayName: quickstart
+            - name: Azure CLI
+              href: quickstart-create-workspace-cli.md
+              displayName: quickstart
+            - name: Azure PowerShell
+              href: quickstart-create-workspace-powershell.md
+              displayName: quickstart
+            - name: ARM-sablon
+              href: quickstart-deployment-template-workspaces.md
           displayName: quickstart
         - name: Power BI-munkaterület csatolása
           href: quickstart-power-bi.md
@@ -586,6 +588,8 @@
               href: ./spark/apache-spark-manage-scala-packages.md
             - name: Python-csomag telepítési hibáinak elhárítása
               href: ./spark/apache-spark-troubleshoot-library-errors.md
+            - name: Conda privát csatornájának létrehozása
+              href: ./spark/apache-spark-custom-conda-channel.md
         - name: Jegyzetfüzetek és IDE-eszközök használata
           items:
             - name: Jegyzetfüzetek kezelése

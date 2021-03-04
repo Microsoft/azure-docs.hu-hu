@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 53884c2f6d9f2e8cbb5676e9ac10e8fb15ed919e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 13b57a8ef57e1d5f2fe066a9fc8b0b74382f066f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024279"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042844"
 ---
 # <a name="use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>Az áramkör-megszakító irányítópultjának használata az Azure Spring Cloud használatával
 
@@ -46,9 +46,9 @@ Kövesse az eljárást, és hozzon létre [egy Service-példányt az Azure CLI](
 ## <a name="deploy-your-applications-to-azure-spring-cloud"></a>Alkalmazások üzembe helyezése az Azure Spring Cloud-on
 Ezek az alkalmazások nem használják a **konfigurációs kiszolgálót**, így nincs szükség az Azure Spring Cloud-hoz készült **konfigurációs kiszolgáló** beállítására.  Hozza létre és telepítse a következőt:
 ```azurecli
-az spring-cloud app create -n user-service --is-public
+az spring-cloud app create -n user-service --assign-endpoint
 az spring-cloud app create -n recommendation-service
-az spring-cloud app create -n hystrix-turbine --is-public
+az spring-cloud app create -n hystrix-turbine --assign-endpoint
 
 az spring-cloud app deploy -n user-service --jar-path user-service/target/user-service.jar
 az spring-cloud app deploy -n recommendation-service --jar-path recommendation-service/target/recommendation-service.jar
@@ -80,7 +80,7 @@ A Hystrix metrikái streamek is elérhetők innen: `test-endpoint` . Háttérbel
 
 Webalkalmazásként a Hystrix irányítópultjának kell működnie `test-endpoint` . Ha nem működik megfelelően, két ok lehet: először a (z) vagy a `test-endpoint` (z) alapurl-címének módosítása a `/ to /<APP-NAME>/<DEPLOYMENT-NAME>` (z) vagy a másodperc alapján, a webalkalmazás a statikus erőforrás abszolút elérési útját használja. A működésének megkezdéséhez `test-endpoint` Előfordulhat, hogy manuálisan kell szerkesztenie az <base> előtér-fájlokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Szolgáltatási példány kiépítése az Azure CLI-ben](./spring-cloud-quickstart.md#provision-an-instance-of-azure-spring-cloud)
 * [Java Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez](./spring-cloud-tutorial-prepare-app-deployment.md)
 

@@ -1,18 +1,18 @@
 ---
 title: Az Azure Cosmos DB időponthoz tartozó visszaállítási funkció erőforrás-modellje.
-description: Ez a cikk az Azure Cosmos DB időponthoz való visszaállítási funkciójának erőforrás-modelljét ismerteti. Ismerteti azokat a paramétereket, amelyek támogatják az SQL-és MongoDB-fiókok Azure Cosmos DB API-ban visszaállítható folyamatos biztonsági mentését és erőforrásait.
+description: Ez a cikk az Azure Cosmos DB időponthoz kötött visszaállítási funkciójához tartozó erőforrásmodellt mutatja be. Ismerteti azokat a folyamatos biztonsági mentést támogató paramétereket, valamint az SQL-hez és MongoDB-hez készült Azure Cosmos DB API-fiókok esetében visszaállítható erőforrásokat.
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 02/22/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: d838425583638aef5199b52df4869923c826553d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: edf60a5c454d34a2424ef7981b02952ffbfd3bde
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369968"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097227"
 ---
 # <a name="resource-model-for-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Erőforrás-modell a Azure Cosmos DB időponthoz tartozó visszaállítási szolgáltatáshoz (előzetes verzió)
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "100369968"
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ez a cikk az Azure Cosmos DB időponthoz tartozó visszaállítási funkció (előzetes verzió) erőforrás-modelljét ismerteti. Ismerteti azokat a paramétereket, amelyek támogatják az SQL-és MongoDB-fiókok Azure Cosmos DB API-ban visszaállítható folyamatos biztonsági mentését és erőforrásait.
+Ez a cikk az Azure Cosmos DB időponthoz tartozó visszaállítási funkció (előzetes verzió) erőforrás-modelljét ismerteti. Ismerteti azokat a folyamatos biztonsági mentést támogató paramétereket, valamint az SQL-hez és MongoDB-hez készült Azure Cosmos DB API-fiókok esetében visszaállítható erőforrásokat.
 
 ## <a name="database-accounts-resource-model"></a>Adatbázis-fiók erőforrás-modellje
 
@@ -43,7 +43,7 @@ Ez a tulajdonság azt jelzi, hogy a fiók hogyan lett létrehozva. A lehetséges
 
 Az `RestoreParameters` erőforrás tartalmazza a visszaállítási művelet részleteit, beleértve a fiók azonosítóját, a visszaállítani kívánt időt és a visszaállítani kívánt erőforrásokat.
 
-|Tulajdonság neve |Description  |
+|Tulajdonság neve |Leírás  |
 |---------|---------|
 |restoreMode  | A visszaállítási módnak *PointInTime* kell lennie |
 |restoreSource   |  Annak a instanceId a címe, amelyből a visszaállítást kezdeményezni kívánja.       |
@@ -52,7 +52,7 @@ Az `RestoreParameters` erőforrás tartalmazza a visszaállítási művelet rés
 
 **DatabaseRestoreResource** – minden erőforrás egyetlen adatbázist és az adatbázis alatti összes gyűjteményt jelképezi.
 
-|Tulajdonság neve |Description  |
+|Tulajdonság neve |Leírás  |
 |---------|---------|
 |databaseName | Az adatbázis nevét |
 | collectionNames| Az adatbázishoz tartozó tárolók listája |
@@ -128,13 +128,13 @@ Ez az erőforrás egy visszaállítható adatbázis-fiók-példányt tartalmaz. 
 | restorableLocations: creationTime | A regionális fiók létrehozásának időpontja (UTC).|
 | restorableLocations: deletionTime | A regionális fiók törlésének időpontja (UTC). Ez az érték üres, ha a regionális fiók él.|
 
-Az összes helyreállítható fiók listájának lekéréséhez lásd: [helyreállítható adatbázis-fiókok – lista](restorable-database-accounts-list.md) vagy [helyreállítható adatbázis-fiókok – helyek listázása](restorable-database-accounts-list-by-location.md) .
+Az összes helyreállítható fiók listájának lekéréséhez lásd: [helyreállítható adatbázis-fiókok – lista](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorabledatabaseaccounts/list) vagy [helyreállítható adatbázis-fiókok – helyek listázása](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorabledatabaseaccounts/listbylocation) .
 
 ### <a name="restorable-sql-database"></a>Helyreállítható SQL-adatbázis
 
 Minden erőforrás egy mutációs eseményről tartalmaz információkat, például a létrehozás és a törlés a SQL Databaseon történt. Ezek az információk segíthetnek olyan forgatókönyvekben, amelyekben véletlenül törölték az adatbázist, és ha meg kell tudnia, hogy mikor történt ez az esemény.
 
-|Tulajdonság neve |Description  |
+|Tulajdonság neve |Leírás  |
 |---------|---------|
 | eventTimestamp | Az adatbázis létrehozásakor vagy törlésekor az időpontot (UTC). |
 | ownerId | Az SQL-adatbázis neve. |
@@ -142,13 +142,13 @@ Minden erőforrás egy mutációs eseményről tartalmaz információkat, péld�
 | operationType | Az adatbázis-esemény műveletének típusa. A lehetséges értékek a következők:<br/><ul><li>Létrehozás: adatbázis-létrehozási esemény</li><li>Törlés: adatbázis-törlési esemény</li><li>Csere: adatbázis-módosítási esemény</li><li>SystemOperation: adatbázis-módosítási esemény, amelyet a rendszeren aktiváltak. Ezt az eseményt a felhasználó nem indítja el</li></ul> |
 | adatbázis |Az esemény időpontjában az SQL Database tulajdonságai|
 
-Az adatbázis-mutációk listájának lekéréséhez lásd: [helyreállítható SQL-adatbázisok – cikk listázása](restorable-sql-databases-list.md) .
+Az adatbázis-mutációk listájának lekéréséhez lásd: [helyreállítható SQL-adatbázisok – cikk listázása](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablesqldatabases/list) .
 
 ### <a name="restorable-sql-container"></a>Helyreállítható SQL-tároló
 
 Mindegyik erőforrás olyan mutációs eseményről tartalmaz információkat, mint például az SQL-tárolóban történt létrehozás és törlés. Ezek az információk segíthetnek olyan forgatókönyvekben, amelyekben a tárolót módosították vagy törölték, és ha az esemény megtörtént.
 
-|Tulajdonság neve |Description  |
+|Tulajdonság neve |Leírás  |
 |---------|---------|
 | eventTimestamp    | A tároló eseményének időpontja (UTC).|
 | ownerId| Az SQL-tároló neve.|
@@ -156,55 +156,55 @@ Mindegyik erőforrás olyan mutációs eseményről tartalmaz információkat, m
 | operationType | A tároló eseményének Művelettípus. A lehetséges értékek a következők: <br/><ul><li>Létrehozás: tároló-létrehozási esemény</li><li>Törlés: tároló törlési eseménye</li><li>Csere: tároló módosításának eseménye</li><li>SystemOperation: a szolgáltatás által aktivált tároló-módosítási esemény. Ezt az eseményt a felhasználó nem indítja el</li></ul> |
 | tároló | Az esemény időpontjában az SQL-tároló tulajdonságai.|
 
-Az azonos adatbázishoz tartozó összes tároló-mutáció listájának megtekintéséhez lásd: [helyreállítható SQL-tárolók listája](restorable-sql-containers-list.md) .
+Az azonos adatbázishoz tartozó összes tároló-mutáció listájának megtekintéséhez lásd: [helyreállítható SQL-tárolók listája](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablesqlcontainers/list) .
 
 ### <a name="restorable-sql-resources"></a>Helyreállítható SQL-erőforrások
 
 Az egyes erőforrások egyetlen adatbázist és az adatbázis alatti összes tárolót jelölik.
 
-|Tulajdonság neve |Description  |
+|Tulajdonság neve |Leírás  |
 |---------|---------|
 | databaseName  | Az SQL-adatbázis neve.
 | collectionNames   | Az adatbázishoz tartozó SQL-tárolók listája.|
 
-Az SQL Database és a Container combok listájának lekéréséhez, amelyek a megadott időbélyegen és helyen találhatók a fiókban, tekintse meg a [helyreállítható SQL-erőforrások – lista](restorable-sql-resources-list.md) cikket.
+Az SQL Database és a Container combok listájának lekéréséhez, amelyek a megadott időbélyegen és helyen találhatók a fiókban, tekintse meg a [helyreállítható SQL-erőforrások – lista](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablesqlresources/list) cikket.
 
 ### <a name="restorable-mongodb-database"></a>Helyreállítható MongoDB-adatbázis
 
 Minden erőforrás egy olyan mutációs eseményről tartalmaz információkat, mint például a MongoDB-adatbázisban történt létrehozás és törlés. Ezek az információk segíthetnek abban a forgatókönyvben, amikor az adatbázist véletlenül törölték, és a felhasználónak meg kell találnia az esemény bekövetkezésekor.
 
-|Tulajdonság neve |Description  |
+|Tulajdonság neve |Leírás  |
 |---------|---------|
 |eventTimestamp| Az adatbázis eseményének időpontja (UTC).|
 | ownerId| A MongoDB-adatbázis neve. |
 | ownerResourceId   | A MongoDB-adatbázis erőforrás-azonosítója. |
 | operationType |   Az adatbázis-esemény műveletének típusa. A lehetséges értékek a következők:<br/><ul><li> Létrehozás: adatbázis-létrehozási esemény</li><li> Törlés: adatbázis-törlési esemény</li><li> Csere: adatbázis-módosítási esemény</li><li> SystemOperation: adatbázis-módosítási esemény, amelyet a rendszeren aktiváltak. Ezt az eseményt a felhasználó nem indítja el </li></ul> |
 
-Az adatbázis-mutációk listájának lekéréséhez tekintse meg a visszaállítható [Mongodb adatbázisok – lista](restorable-mongodb-databases-list.md) cikket.
+Az adatbázis-mutációk listájának lekéréséhez tekintse meg a visszaállítható [Mongodb adatbázisok – lista](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablemongodbdatabases/list) cikket.
 
 ### <a name="restorable-mongodb-collection"></a>Helyreállítható MongoDB-gyűjtemény
 
 Minden erőforrás egy olyan mutációs eseményről tartalmaz információkat, mint például a MongoDB-gyűjteményen történt létrehozás és törlés. Ezek az információk segíthetnek olyan forgatókönyvekben, amelyekben a gyűjteményt módosították vagy törölték, és a felhasználónak meg kell találnia az esemény megtörténtét.
 
-|Tulajdonság neve |Description  |
+|Tulajdonság neve |Leírás  |
 |---------|---------|
 | eventTimestamp |A gyűjtemény eseményének időpontja (UTC). |
 | ownerId| A MongoDB-gyűjtemény neve. |
 | ownerResourceId   | A MongoDB-gyűjtemény erőforrás-azonosítója. |
 | operationType |A gyűjteményi esemény Művelettípus. A lehetséges értékek a következők:<br/><ul><li>Létrehozás: gyűjtemény-létrehozási esemény</li><li>Törlés: gyűjtemény törlési eseménye</li><li>Csere: gyűjtemény módosítási eseménye</li><li>SystemOperation: a gyűjtemény módosítási eseménye, amelyet a rendszeren aktiváltak. Ezt az eseményt a felhasználó nem indítja el</li></ul> |
 
-Az azonos adatbázishoz tartozó összes tároló-mutáció listájának megtekintéséhez lásd: [helyreállítható Mongodb-gyűjtemények – cikk listázása](restorable-mongodb-collections-list.md) .
+Az azonos adatbázishoz tartozó összes tároló-mutáció listájának megtekintéséhez lásd: [helyreállítható Mongodb-gyűjtemények – cikk listázása](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablemongodbcollections/list) .
 
 ### <a name="restorable-mongodb-resources"></a>Helyreállítható MongoDB-erőforrások
 
 Mindegyik erőforrás egyetlen adatbázist és az adatbázis alatti összes gyűjteményt jelképezi.
 
-|Tulajdonság neve |Description  |
+|Tulajdonság neve |Leírás  |
 |---------|---------|
 | databaseName  |A MongoDB-adatbázis neve. |
 | collectionNames | A MongoDB-gyűjtemények listája ebben az adatbázisban. |
 
-Az adott időbélyegzőn és helyen található fiókon létező összes MongoDB-adatbázis és-gyűjtemény kombinációjának megtekintéséhez tekintse meg a visszaállítható [MongoDB-erőforrások – lista](restorable-mongodb-resources-list.md) cikket.
+Az adott időbélyegzőn és helyen található fiókon létező összes MongoDB-adatbázis és-gyűjtemény kombinációjának megtekintéséhez tekintse meg a visszaállítható [MongoDB-erőforrások – lista](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/restorablemongodbresources/list) cikket.
 
 ## <a name="next-steps"></a>Következő lépések
 

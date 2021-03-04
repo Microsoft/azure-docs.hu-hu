@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: d52998e477e44f89a35a70f7e2b5d49cbc68e386
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: edf7a7cdbd24249205fedb4654aa092755700910
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662251"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035653"
 ---
 # <a name="configure-active-geo-replication-for-enterprise-azure-cache-for-redis-instances-preview"></a>Az aktív geo-replikáció konfigurálása a Redis-példányok Enterprise Azure cache-hez (előzetes verzió)
 
@@ -36,7 +36,7 @@ Az aktív geo-replikációs csoportok két vagy több Enterprise Azure cache-t R
 
 1. Kattintson a **Konfigurálás** gombra a befejezéshez.
 
-    ![Csatolási gyorsítótárak](./media/cache-how-to-active-geo-replication/cache-active-geo-replication-configured.png)
+    ![Aktív geo-replikáció konfigurálva](./media/cache-how-to-active-geo-replication/cache-active-geo-replication-configured.png)
 
 1. Ismételje meg a fenti lépéseket a Geo-replikáció csoportban található minden további gyorsítótár-példánynál.
 

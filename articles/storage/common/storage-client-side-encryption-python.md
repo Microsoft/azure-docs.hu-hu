@@ -7,16 +7,16 @@ author: tamram
 ms.service: storage
 ms.devlang: python
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 02/18/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 511166e156591562b2120b58cc420f3fccd1d8c4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ffdfd4dc8a81587d757e3f9853f1bb34e0b93c0d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008930"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043745"
 ---
 # <a name="client-side-encryption-with-python"></a>Ügyféloldali titkosítás Python-val
 
@@ -54,7 +54,7 @@ A burkológörbe technikán keresztüli visszafejtés a következő módon műk�
 A Storage ügyféloldali kódtára [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) -t használ a felhasználói adattartalom titkosításához. Pontosabban, AES-sel rendelkező [titkosítási blokkoló (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) mód. Az egyes szolgáltatások némileg eltérően működnek, ezért ezeket itt fogjuk megbeszélni.
 
 ### <a name="blobs"></a>Blobok
-Az ügyféloldali kódtár jelenleg csak a teljes Blobok titkosítását támogatja. A titkosítás csak akkor támogatott, ha a felhasználók a **create** _ metódusokat használják. A letöltések esetében a teljes és a tartományra vonatkozó letöltések is támogatottak, és a feltöltés és a letöltés párhuzamos is elérhető.
+Az ügyféloldali kódtár jelenleg csak a teljes Blobok titkosítását támogatja. A titkosítás csak akkor támogatott, ha a felhasználók a **create*** metódusokat használják. A letöltések esetében a teljes és a tartományra vonatkozó letöltések is támogatottak, és a feltöltés és a letöltés párhuzamos is elérhető.
 
 A titkosítás során az ügyfél-függvénytár 16 bájtos véletlenszerű inicializálási vektort (IV) állít elő, amely egy 32 bájtos véletlenszerű tartalom-titkosítási kulccsal (CEK), valamint a Blobok adatainak ezen információk használatával történő titkosítását is elvégezheti. A burkolt CEK és néhány további titkosítási metaadat ezután blob-metaadatokként tárolódik a szolgáltatás titkosított blobja mellett.
 
@@ -63,9 +63,9 @@ A titkosítás során az ügyfél-függvénytár 16 bájtos véletlenszerű inic
 > 
 > 
 
-A titkosított Blobok letöltése magában foglalja a teljes blob tartalmának lekérését a kényelmi módszerek _*beszerzésével* *_ . A burkolt CEK nincs becsomagolva és együtt használva a IV (ebben az esetben a blob-metaadatokban tárolt), hogy visszaállítsa a visszafejtett adatokat a felhasználók számára.
+A titkosított Blobok letöltése magában foglalja a teljes blob tartalmának lekérését a **Get*** kényelmi módszerek használatával. A burkolt CEK nincs becsomagolva és együtt használva a IV (ebben az esetben a blob-metaadatokban tárolt), hogy visszaállítsa a visszafejtett adatokat a felhasználók számára.
 
-Egy tetszőleges tartomány letöltése (metódusok _*beolvasása* *_ az átadott tartomány-paraméterekkel) a titkosított blobban a felhasználók által megadott tartomány módosítása a kért tartomány sikeres visszafejtéséhez használható, kis mennyiségű további adat beszerzése érdekében.
+Egy tetszőleges tartomány (**Get*** metódusok, amelyekben az átadott tartománybeli paraméterek) letöltése a titkosított blobban magában foglalja a felhasználók által megadott tartomány beállítását, hogy a kért tartomány sikeres visszafejtéséhez használható, kis mennyiségű további adat legyen elérhető.
 
 A blobok és a Blobok csak akkor titkosíthatók/visszafejthetők, ha ezt a sémát használják. A hozzáfűző Blobok titkosítása jelenleg nem támogatott.
 
@@ -114,7 +114,7 @@ Vegye figyelembe, hogy az entitások titkosítva vannak, mivel a köteg titkosí
 > [!IMPORTANT]
 > Az ügyféloldali titkosítás használatakor vegye figyelembe ezeket a fontos pontokat:
 > 
-> _ Ha titkosított blobba olvas vagy ír, használja az egész blob feltöltési parancsokat és a tartomány/teljes blob letöltési parancsot. Kerülje a titkosított blobba való írást olyan protokollok használatával, mint például a Put blokk, a tiltási lista, az írási lapok vagy a törlési lapok használata. Ellenkező esetben előfordulhat, hogy a titkosított blob sérült, és nem olvasható.
+> * Titkosított blobba való olvasáskor vagy az azokból való íráskor használja az egész blob feltöltési parancsokat és a tartomány/teljes blob letöltési parancsot. Kerülje a titkosított blobba való írást olyan protokollok használatával, mint például a Put blokk, a tiltási lista, az írási lapok vagy a törlési lapok használata. Ellenkező esetben előfordulhat, hogy a titkosított blob sérült, és nem olvasható.
 > * A táblákhoz hasonló korlátozás létezik. Ügyeljen arra, hogy ne frissítse a titkosított tulajdonságokat a titkosítási metaadatok frissítése nélkül.
 > * Ha a titkosított blobon beállítja a metaadatokat, felülírhatja a titkosítással kapcsolatos metaadatokat a visszafejtéshez, mivel a metaadatok beállítása nem adalékanyag. Ez a pillanatképek esetében is igaz. Kerülje a metaadatok megadását egy titkosított blob pillanatképének létrehozása közben. Ha a metaadatokat be kell állítani, ügyeljen arra, hogy először hívja meg a **get_blob_metadata** metódust az aktuális titkosítási metaadatok beszerzéséhez, és ne legyenek egyidejű írások a metaadatok beállításakor.
 > * Engedélyezze a **require_encryption** jelzőt a szolgáltatás objektumon olyan felhasználók számára, akik csak titkosított adattal működnek. További információért lásd alább.
@@ -150,6 +150,12 @@ A felhasználók opcionálisan engedélyezhetik a művelet módját, ahol a felt
 ### <a name="blob-service-encryption"></a>Titkosítás Blob service
 Állítsa be a titkosítási házirend mezőket a blockblobservice objektumra. Minden mást az ügyféloldali kódtár fog kezelni belsőleg.
 
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+Jelenleg dolgozunk olyan kódrészletek létrehozásán, amelyek tükrözik az Azure Storage ügyféloldali kódtárainak 12. x verzióját. További információ: [Az Azure Storage V12 ügyféloldali kódtárainak bejelentése](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="python-v21"></a>[Python v 2.1](#tab/python2)
+
 ```python
 # Create the KEK used for encryption.
 # KeyWrapper is the provided sample implementation, but the user may use their own object as long as it implements the interface above.
@@ -171,9 +177,16 @@ my_block_blob_service.create_blob_from_stream(
 # Download and decrypt the encrypted contents from the blob.
 blob = my_block_blob_service.get_blob_to_bytes(container_name, blob_name)
 ```
+---
 
 ### <a name="queue-service-encryption"></a>Titkosítás Queue szolgáltatás
 Állítsa be a titkosítási házirend mezőket a queueservice objektumra. Minden mást az ügyféloldali kódtár fog kezelni belsőleg.
+
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+Jelenleg dolgozunk olyan kódrészletek létrehozásán, amelyek tükrözik az Azure Storage ügyféloldali kódtárainak 12. x verzióját. További információ: [Az Azure Storage V12 ügyféloldali kódtárainak bejelentése](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="python-v21"></a>[Python v 2.1](#tab/python2)
 
 ```python
 # Create the KEK used for encryption.
@@ -195,11 +208,18 @@ my_queue_service.put_message(queue_name, content)
 # Retrieve message
 retrieved_message_list = my_queue_service.get_messages(queue_name)
 ```
+---
 
 ### <a name="table-service-encryption"></a>Titkosítás Table service
 A titkosítási szabályzat létrehozása és a kérési beállítások megadása mellett meg kell adnia egy **encryption_resolver_function** a **tableservice**, vagy a titkosítás attribútumot a EntityProperty kell beállítania.
 
 ### <a name="using-the-resolver"></a>A feloldó használata
+
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+Jelenleg dolgozunk olyan kódrészletek létrehozásán, amelyek tükrözik az Azure Storage ügyféloldali kódtárainak 12. x verzióját. További információ: [Az Azure Storage V12 ügyféloldali kódtárainak bejelentése](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="python-v21"></a>[Python v 2.1](#tab/python2)
 
 ```python
 # Create the KEK used for encryption.
@@ -233,17 +253,25 @@ my_table_service.insert_entity(table_name, entity)
 my_table_service.get_entity(
     table_name, entity['PartitionKey'], entity['RowKey'])
 ```
+---
 
 ### <a name="using-attributes"></a>Attribútumok használata
 A fentiekben leírtaknak megfelelően a tulajdonságot a rendszer egy EntityProperty objektumban tárolja, és beállítja a titkosítást.
 
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+Jelenleg dolgozunk olyan kódrészletek létrehozásán, amelyek tükrözik az Azure Storage ügyféloldali kódtárainak 12. x verzióját. További információ: [Az Azure Storage V12 ügyféloldali kódtárainak bejelentése](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="python-v21"></a>[Python v 2.1](#tab/python2)
+
 ```python
 encrypted_property_1 = EntityProperty(EdmType.STRING, value, encrypt=True)
 ```
+---
 
 ## <a name="encryption-and-performance"></a>Titkosítás és teljesítmény
 Vegye figyelembe, hogy a tárolási adatokat a rendszer további teljesítménybeli terhelést eredményez. A tartalmi kulcsot és a IV-t elő kell állítani, a tartalmat titkosítani kell, és további metaadatokat kell formázni és feltölteni. Ez a terhelés a titkosított adatmennyiségtől függően eltérő lesz. Javasoljuk, hogy az ügyfelek mindig tesztelje az alkalmazásaikat a fejlesztés során.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Töltse le az [Azure Storage ügyféloldali kódtárat a Java PyPi-csomaghoz](https://pypi.python.org/pypi/azure-storage)
 * Töltse le az [Azure Storage ügyféloldali kódtárat a githubról a Python forráskódjának kódjából](https://github.com/Azure/azure-storage-python)

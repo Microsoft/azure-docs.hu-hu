@@ -5,16 +5,16 @@ services: synapse-analytics
 author: midesa
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 03/01/2020
+ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 296bd3a4a75cdd7f5dab3b6eb5fdcb00a889703d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4bb323e0e8f72456b6a522ede9a98d193e1c3c7e
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695938"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098774"
 ---
 # <a name="manage-python-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Python-kódtárak kezelése Apache Sparkhoz az Azure szinapszis Analyticsben
 
@@ -42,7 +42,7 @@ A tárak fürtön való telepítésének két fő módja van:
 > [!IMPORTANT]
 > - Ha a telepített csomag nagy méretű, vagy hosszú ideig tart a telepítés, ez hatással van a Spark-példány indítási idejére.
 > - A PySpark, a Python, a Scala/Java, a .NET vagy a Spark verzió módosítása nem támogatott.
-> - A csomagok telepítése a PyPI-ből nem támogatott a DEP-kompatibilis munkaterületeken.
+> - A csomagokat olyan külső adattárakból kell telepíteni, mint a PyPI, a Conda-Forge, vagy az alapértelmezett Conda-csatornák nem támogatottak a DEP-kompatibilis munkaterületeken.
 
 ### <a name="install-python-packages"></a>Python-csomagok telepítése
 A Python-csomagok olyan adattárakból telepíthetők, mint a PyPI és a Conda-Forge egy környezeti specifikációs fájl megadásával. 
@@ -140,9 +140,6 @@ Munkaterület-csomagok hozzáadása:
 
 ![A munkaterület-csomagokat kiemelő képernyőkép.](./media/apache-spark-azure-portal-add-libraries/studio-add-workspace-package.png "Munkaterület-csomagok megtekintése")
 
-> [!IMPORTANT]
-> A munkaterület-csomagok telepítése jelenleg még nem támogatott az adatkiszűrése védett (DEP) munkaterületeken belül.
-
 ### <a name="storage-account"></a>A(z)
 Az egyéni Builder-csomagok telepíthetők a Apache Spark készletbe úgy, hogy az összes kerék fájlt feltölti a szinapszis munkaterülethez csatolt Azure Data Lake Storage (Gen2) fiókba. 
 
@@ -160,8 +157,8 @@ Előfordulhat, hogy a mappán belül fel kell vennie a ```python``` mappát, ```
 >[!WARNING]
 > Egyéni kerék-fájlok megadásakor a felhasználók a Storage-fiókban és a munkaterület-függvénytár felületén sem tudnak kerék-fájlokat biztosítani. Ha mindkettő meg van adva, a rendszer csak a munkaterület-csomagok listájában megadott felni fájlokat telepíti. 
 
-## <a name="session-scoped-libraries-preview"></a>Munkamenet-hatókörű kódtárak (előzetes verzió)
-A készlet szintjének könyvtárain kívül a munkamenet-hatókörű kódtárakat is megadhatja egy jegyzetfüzet-munkamenet elején.  A munkamenet-hatókörű kódtárak segítségével egyéni Python-környezeteket adhat meg és használhat egy jegyzetfüzet-munkamenetben. 
+## <a name="session-scoped-packages-preview"></a>Munkamenet-hatókörű csomagok (előzetes verzió)
+A készlet szintjének csomagokon kívül a munkamenet-hatókörű kódtárakat is megadhatja egy jegyzetfüzet-munkamenet elején.  A munkamenet-hatókörű kódtárak segítségével egyéni Python-környezeteket adhat meg és használhat egy jegyzetfüzet-munkamenetben. 
 
 Munkamenet-hatókörű kódtárak használata esetén fontos szem előtt tartani a következő szempontokat:
    - A munkamenet-hatókörű kódtárak telepítésekor csak az aktuális jegyzetfüzet fér hozzá a megadott könyvtárakhoz. 
@@ -187,3 +184,4 @@ Bizonyos esetekben előfordulhat, hogy meg kell vizsgálnia a csomag verziószá
 ## <a name="next-steps"></a>Következő lépések
 - Az alapértelmezett könyvtárak megtekintése: [Apache Spark verzió támogatása](apache-spark-version-support.md)
 - A kódtár telepítési hibáinak elhárítása: [függvénytár-hibák elhárítása](apache-spark-troubleshoot-library-errors.md)
+- Hozzon létre egy privát Conda-csatornát a Azure Data Lake Storage fiók használatával: [privát csatornák Conda](./spark/../apache-spark-custom-conda-channel.md)

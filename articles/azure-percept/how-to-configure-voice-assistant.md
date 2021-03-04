@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.custom: template-how-to
-ms.openlocfilehash: ec3e06b2d161785b5e6978cdf4cc6415fc0eb592
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b22ef4ee0a8b5978bb2ec1c02fadf368815f3014
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662425"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095782"
 ---
 # <a name="configure-voice-assistant-application-using-azure-iot-hub"></a>Hangsegéd-alkalmazás konfigurálása az Azure IoT Hub használatával
 
@@ -20,7 +20,7 @@ Ez a cikk bemutatja, hogyan konfigurálhatja a hangsegéd alkalmazást a IoT Hub
 
 ## <a name="update-your-voice-assistant-configuration"></a>A hangsegéd konfigurációjának frissítése
 
-1. Nyissa meg a [Azure Portalt](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_Azure_Iothub=aduprod&microsoft_azure_marketplace_ItemHideKey=Microsoft_Azure_ADUHidden#home) , és írja be a **IoT Hubt** a keresősávba. Kattintson az ikonra az IoT Hub lap megnyitásához.
+1. Nyissa meg a [Azure Portalt](https://portal.azure.com) , és írja be a **IoT Hubt** a keresősávba. Kattintson az ikonra az IoT Hub lap megnyitásához.
 
 1. A IoT Hub lapon válassza ki azt a IoT Hub, amelyhez az eszközt kiépítték.
 
@@ -30,7 +30,7 @@ Ez a cikk bemutatja, hogyan konfigurálhatja a hangsegéd alkalmazást a IoT Hub
 
 1. Kattintson a **modulok beállítása** elemre.
 
-    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/set-modules.png" alt-text="Lemezkép.":::
+    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/set-modules.png" alt-text="Képernyőkép az eszköz oldaláról, a beállított modulok kiemelve.":::
 
 1. Győződjön meg arról, hogy a következő bejegyzés szerepel a **Container Registry hitelesítő adatok** szakaszban. Szükség esetén adja meg a hitelesítő adatokat.
 
@@ -40,30 +40,17 @@ Ez a cikk bemutatja, hogyan konfigurálhatja a hangsegéd alkalmazást a IoT Hub
 
 1. A **IoT Edge-modulok** szakaszban válassza a **azureearspeechclientmodule** lehetőséget.
 
-    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/modules.png" alt-text="Lemezkép.":::
+    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/modules.png" alt-text="Képernyőfelvétel: az eszközön található összes IoT Edge-modul listáját jeleníti meg.":::
 
 1. Kattintson a **modul beállításai** fülre. Ellenőrizze a következő konfigurációt:
 
-    |Rendszerkép URI-ja|Újraindítási szabályzat|Kívánt állapot|
-    |---------|--------------|--------------|
-    |azureedgedevices.azurecr.io/azureearspeechclientmodule:preload-devkit |mindig|fut|
+    Rendszerkép URI-ja|Újraindítási szabályzat|Kívánt állapot
+    ---------|--------------|--------------
+    mcr.microsoft.com/azureedgedevices/azureearspeechclientmodule:preload-devkit|mindig|fut
 
     Ha a beállítások nem egyeznek, szerkessze őket, és kattintson a **frissítés** gombra.
 
 1. Kattintson a **környezeti változók** fülre. Ellenőrizze, hogy nincsenek-e definiálva környezeti változók.
-
-1. Kattintson a **tároló létrehozása beállítások** fülre. Ellenőrizze, hogy a **HostConfig** -beállítások megfelelnek-e az alább láthatók. Ha nem, akkor frissítse a beállításokat.
-
-    ```
-    {
-        "HostConfig": {
-            "Privileged": true,
-            "Binds": [
-                "/dev:/dev"
-            ]
-        }
-    }
-    ```
 
 1. Kattintson a **modul Twin beállítások** fülre. Frissítse a **speechConfigs** szakaszt a következőképpen:
 
@@ -72,7 +59,7 @@ Ez a cikk bemutatja, hogyan konfigurálhatja a hangsegéd alkalmazást a IoT Hub
         "appId": "<Application id for custom command project>",
         "key": "<Speech Resource key for custom command project>",
         "region": "<Region for the speech service>",
-        "keywordModelUrl": "https://aedspeechscenarios.blob.core.windows.net/keyword-tables/computer.table",
+        "keywordModelUrl": "https://aedsamples.blob.core.windows.net/speech/keyword-tables/computer.table",
         "keyword": "computer"
     }
     ```
@@ -88,16 +75,16 @@ A **appID**, a **kulcs** és a **régió** megkereséséhez nyissa meg a [Speech
 1. A **Speech Studio** kezdőlapján kattintson az **egyéni parancsok** lehetőségre a **hangsegédek** területen.
 1. Válassza ki a célként megadott projektet.
 
-    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/project.png" alt-text="Lemezkép.":::
+    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/project.png" alt-text="Képernyőkép a Project (projekt) oldalról a Speech Studióban.":::
 
 1. Kattintson a **Beállítások** elemre a bal oldali menüsorban.
 1. A **appID** és a **kulcs** az **általános** beállítások lapon található.
 
-    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/general-settings.png" alt-text="Lemezkép.":::
+    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/general-settings.png" alt-text="Képernyőkép a beszédfelismerési projekt általános beállításairól.":::
 
 1. A **régió** megkereséséhez nyissa meg a **Luis Resources** fület a beállítások között. A **szerzői erőforrás** kiválasztása a régió adatait fogja tartalmazni.
 
-    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/luis-resources.png" alt-text="Lemezkép.":::
+    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/luis-resources.png" alt-text="Képernyőkép a Speech Project LUIS erőforrásairól.":::
 
 1. A **speechConfigs** adatainak megadása után kattintson a **frissítés** gombra.
 
@@ -113,6 +100,8 @@ A **appID**, a **kulcs** és a **régió** megkereséséhez nyissa meg a [Speech
 
 1. Kattintson a **Létrehozás** lehetőségre.
 
+
 ## <a name="next-steps"></a>Következő lépések
 
 A hangsegéd konfigurációjának frissítése után térjen vissza az Azure Percept Studióban található bemutatóhoz, és lépjen kapcsolatba az alkalmazással.
+

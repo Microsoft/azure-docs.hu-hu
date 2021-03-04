@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 02/18/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c16f8233a2800025a8c6f601e236b86d2fd044fd
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1a07acedadfaf3d5158ba8e494d4527301655425
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480683"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035101"
 ---
 # <a name="use-geo-redundancy-to-design-highly-available-applications"></a>A Geo-redundancia használata a magasan elérhető alkalmazások kialakításához
 
@@ -148,6 +148,12 @@ Három fő lehetősége van az újrapróbálkozások gyakoriságának figyelés�
 
 * Adjon hozzá egy kezelőt az [**újrapróbálkozási**](/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) eseményhez a Storage-kérelmeknek átadott [**OperationContext**](/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) objektumban – ez a jelen cikkben és a kísérő mintában használt metódus. Ezek az események akkor következnek be, amikor az ügyfél újrapróbálkozik egy kéréssel, így nyomon követheti, hogy az ügyfél milyen gyakran találkozik az újrapróbálkozást lehetővé tevő hibákkal egy elsődleges végponton.
 
+    # <a name="net-v12"></a>[.NET V12](#tab/current)
+
+    Jelenleg dolgozunk olyan kódrészletek létrehozásán, amelyek tükrözik az Azure Storage ügyféloldali kódtárainak 12. x verzióját. További információ: [Az Azure Storage V12 ügyféloldali kódtárainak bejelentése](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+    # <a name="net-v11"></a>[.NET-v11](#tab/legacy)
+
     ```csharp
     operationContext.Retrying += (sender, arguments) =>
     {
@@ -156,8 +162,15 @@ Három fő lehetősége van az újrapróbálkozások gyakoriságának figyelés�
             ...
     };
     ```
+    ---
 
 * Az egyéni újrapróbálkozási szabályzat [**kiértékelési**](/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) metódusában egyéni kódokat futtathat, amikor újra megtörténik az újrapróbálkozások. Az újrapróbálkozások bekövetkezésekor a rögzítés mellett lehetősége van az újrapróbálkozási viselkedés módosítására is.
+
+    # <a name="net-v12"></a>[.NET V12](#tab/current)
+
+    Jelenleg dolgozunk olyan kódrészletek létrehozásán, amelyek tükrözik az Azure Storage ügyféloldali kódtárainak 12. x verzióját. További információ: [Az Azure Storage V12 ügyféloldali kódtárainak bejelentése](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+    # <a name="net-v11"></a>[.NET-v11](#tab/legacy)
 
     ```csharp
     public RetryInfo Evaluate(RetryContext retryContext,
@@ -184,6 +197,7 @@ Három fő lehetősége van az újrapróbálkozások gyakoriságának figyelés�
         return info;
     }
     ```
+    ---
 
 * A harmadik módszer egy egyéni figyelési összetevő megvalósítása az alkalmazásban, amely folyamatosan Pingeli az elsődleges tárolási végpontot a dummy olvasási kérelmekkel (például egy kis blob olvasásával) az állapotának meghatározásához. Ez némi erőforrást is igénybe vehet, de nem jelent jelentős mennyiséget. Ha olyan problémát észlel, amely eléri a küszöbértéket, akkor a kapcsolót a **SecondaryOnly** és csak olvasható módra kell végrehajtania.
 
@@ -193,7 +207,7 @@ A harmadik forgatókönyv esetén, amikor az elsődleges tároló végpontjának
 
 ## <a name="handling-eventually-consistent-data"></a>A végül konzisztens adatkezelés
 
-A Geo-redundáns tárolás úgy működik, hogy az elsődlegesről a másodlagos régióba replikálja a tranzakciókat. Ez a replikációs folyamat garantálja, hogy a másodlagos régióban lévő adategységek *végül konzisztensek* . Ez azt jelenti, hogy az elsődleges régió összes tranzakciója végül megjelenik a másodlagos régióban, de előfordulhat, hogy a megjelenésük előtt késésben van, és nem garantálható, hogy a tranzakciók ugyanabban a sorrendben érkeznek a másodlagos régióba, mint ahogyan eredetileg az elsődleges régióban voltak alkalmazva. Ha a tranzakciók sorrendben érkeznek meg a másodlagos régióban, akkor *Előfordulhat* , hogy a másodlagos régióban lévő adatai inkonzisztens állapotba kerülnek, amíg a szolgáltatás fel nem zárkózik.
+A Geo-redundáns tárolás úgy működik, hogy az elsődlegesről a másodlagos régióba replikálja a tranzakciókat. Ez a replikációs folyamat garantálja, hogy a másodlagos régióban lévő adategységek *végül konzisztensek*. Ez azt jelenti, hogy az elsődleges régió összes tranzakciója végül megjelenik a másodlagos régióban, de előfordulhat, hogy a megjelenésük előtt késésben van, és nem garantálható, hogy a tranzakciók ugyanabban a sorrendben érkeznek a másodlagos régióba, mint ahogyan eredetileg az elsődleges régióban voltak alkalmazva. Ha a tranzakciók sorrendben érkeznek meg a másodlagos régióban, akkor *Előfordulhat* , hogy a másodlagos régióban lévő adatai inkonzisztens állapotba kerülnek, amíg a szolgáltatás fel nem zárkózik.
 
 Az alábbi táblázat egy példát mutat be arra, hogy mi történhet, ha egy alkalmazott adatait frissíti, hogy azok a *rendszergazdák* szerepkör tagjai legyenek. Ennek a példának a kedvéért ehhez frissítenie kell az **alkalmazott** entitást, és frissítenie kell egy **rendszergazdai szerepkör** entitást a rendszergazdák teljes száma számával. Figyelje meg, hogy a frissítések nem sorrendben vannak alkalmazva a másodlagos régióban.
 
@@ -209,7 +223,7 @@ Az alábbi táblázat egy példát mutat be arra, hogy mi történhet, ha egy al
 
 Ebben a példában feltételezzük, hogy az ügyfél a T5 másodlagos régiójából való olvasásra vált. Ekkor sikeresen beolvashatja a **rendszergazdai szerepkör** entitást, de az entitás tartalmazza a rendszergazdák számának értékét, amely nem konzisztens a másodlagos régióban rendszergazdaként megjelölt **alkalmazotti** entitások számával. Az ügyfél egyszerűen megjelenítheti ezt az értéket azzal a kockázattal, hogy inkonzisztens információ. Azt is megteheti, hogy az ügyfél megpróbálta megállapítani, hogy a **rendszergazdai szerepkör** valószínűleg inkonzisztens állapotban van-e, mert a frissítések sorrendje nem megfelelő, majd tájékoztatja a felhasználót erről a tényről.
 
-Annak felismeréséhez, hogy potenciálisan inkonzisztens adatmennyiséggel rendelkezik, az ügyfél használhatja a *legutóbbi szinkronizálás időpontját* , amelyet bármikor lekérhet a tárolási szolgáltatás lekérdezésével. Ez azt jelzi, hogy mikor történt a másodlagos régióban lévő adategység utolsó egységessége, és ha a szolgáltatás az adott időpontot megelőzően az összes tranzakciót alkalmazta. A fenti példában látható példa azt követően, hogy a szolgáltatás beszúrja az **alkalmazott** entitást a másodlagos régióban, a legutóbbi szinkronizálási idő a *T1* értékre van állítva. Addig marad *T1* , amíg a szolgáltatás frissíti a másodlagos régióban lévő **Employee** entitást, ha a *T6* értékre van állítva. Ha az ügyfél lekéri a legutóbbi szinkronizálási időt, amikor beolvassa az entitást a *T5* -ben, akkor összehasonlíthatja azt az entitás időbélyegével. Ha az entitás időbélyege későbbi, mint az utolsó szinkronizálás ideje, akkor az entitás potenciálisan inkonzisztens állapotban van, és az alkalmazásra vonatkozó megfelelő művelet is megtehető. Ennek a mezőnek a használatával tudnia kell, hogy mikor fejeződött be az elsődleges frissítés.
+Annak felismeréséhez, hogy potenciálisan inkonzisztens adatmennyiséggel rendelkezik, az ügyfél használhatja a *legutóbbi szinkronizálás időpontját* , amelyet bármikor lekérhet a tárolási szolgáltatás lekérdezésével. Ez azt jelzi, hogy mikor történt a másodlagos régióban lévő adategység utolsó egységessége, és ha a szolgáltatás az adott időpontot megelőzően az összes tranzakciót alkalmazta. A fenti példában látható példa azt követően, hogy a szolgáltatás beszúrja az **alkalmazott** entitást a másodlagos régióban, a legutóbbi szinkronizálási idő a *T1* értékre van állítva. Addig marad *T1* , amíg a szolgáltatás frissíti a másodlagos régióban lévő **Employee** entitást, ha a *T6* értékre van állítva. Ha az ügyfél lekéri a legutóbbi szinkronizálási időt, amikor beolvassa az entitást a *T5*-ben, akkor összehasonlíthatja azt az entitás időbélyegével. Ha az entitás időbélyege későbbi, mint az utolsó szinkronizálás ideje, akkor az entitás potenciálisan inkonzisztens állapotban van, és az alkalmazásra vonatkozó megfelelő művelet is megtehető. Ennek a mezőnek a használatával tudnia kell, hogy mikor fejeződött be az elsődleges frissítés.
 
 A legutóbbi szinkronizálás időpontjának vizsgálatával kapcsolatban lásd: [Storage-fiók utolsó szinkronizálási idejének tulajdonságának](last-sync-time-get.md)megkeresése.
 
@@ -218,6 +232,13 @@ A legutóbbi szinkronizálás időpontjának vizsgálatával kapcsolatban lásd:
 Fontos ellenőrizni, hogy az alkalmazás a várt módon viselkedik-e, amikor az újrapróbálkozást lehetővé tevő hibákba ütközik. Például tesztelni kell, hogy az alkalmazás a másodlagosra vált, és csak olvasható módba váltson, amikor problémát észlel, és visszavált, amikor az elsődleges régió újra elérhetővé válik. Ehhez az újrapróbálkozást lehetővé tevő hibákat szimulálni kell, és meg kell határozni, hogy milyen gyakran történjenek.
 
 A [Hegedűs](https://www.telerik.com/fiddler) a http-válaszok lehallgatására és módosítására használható egy parancsfájlban. Ez a szkript azonosíthatja az elsődleges végponttól érkező válaszokat, és a HTTP-állapotkódot úgy változtathatja meg, hogy a Storage ügyféloldali kódtár újrapróbálkozást lehetővé tevő hibát észlel. Ez a kódrészlet egy olyan Hegedűs-parancsfájl egyszerű példáját mutatja be, amely elfogja a **employeedata** tábla olvasási kéréseire adott válaszokat, hogy visszaadja a 502 állapotot:
+
+
+# <a name="java-v12"></a>[Java V12](#tab/current)
+
+Jelenleg dolgozunk olyan kódrészletek létrehozásán, amelyek tükrözik az Azure Storage ügyféloldali kódtárainak 12. x verzióját. További információ: [Az Azure Storage V12 ügyféloldali kódtárainak bejelentése](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="java-v11"></a>[Java v11](#tab/legacy)
 
 ```java
 static function OnBeforeResponse(oSession: Session) {

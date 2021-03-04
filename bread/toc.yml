@@ -266,8 +266,8 @@
       topicHref: /azure/partner-solutions/
       items:
         - name: Apache Kafka az Fluent felhőhöz
-          tocHref: /azure/partner-solutions/apache-kafka-confluent-cloud/overview
-          topicHref: /azure/partner-solutions/apache-kafka-confluent-cloud/overview
+          tocHref: /azure/partner-solutions/apache-kafka-confluent-cloud/
+          topicHref: /azure/partner-solutions/apache-kafka-confluent-cloud/
     - name: SignalR szolgáltatás
       tocHref: /azure/azure-signalr/
       topicHref: /azure/azure-signalr/

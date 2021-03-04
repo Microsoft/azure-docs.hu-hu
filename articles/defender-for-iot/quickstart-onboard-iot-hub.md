@@ -1,5 +1,5 @@
 ---
-title: A Defender IoT-ügynökön alapuló megoldás beléptetése
+title: A Defender a IoT ügynök-alapú megoldáshoz
 description: Ismerje meg, hogyan hozhatja be és engedélyezheti a Defender for IoT biztonsági szolgáltatást az Azure IoT Hubban.
 services: defender-for-iot
 ms.service: defender-for-iot
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/20/2021
 ms.author: shhazam
-ms.openlocfilehash: 127e439a7740cb97cbe126071aaaa5245cd85782
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 62ea7b95609f9e1f896852da5c10244d1bd16ce1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809133"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049931"
 ---
-# <a name="onboard-to-defender-for-iot-agent-based-solution"></a>A Defender IoT-ügynökön alapuló megoldás beléptetése
+# <a name="onboard-defender-for-iot-to-an-agent-based-solution"></a>A Defender a IoT ügynök-alapú megoldáshoz
 
 Ez a cikk azt ismerteti, hogyan engedélyezheti a Defender for IoT szolgáltatást a meglévő IoT Hub. Ha jelenleg nem rendelkezik IoT Hubval, a kezdéshez tekintse meg [a IoT hub létrehozása a Azure Portal használatával](../iot-hub/iot-hub-create-through-portal.md) című témakört.
 
@@ -35,7 +35,7 @@ A IoT biztonságát IoT Hub a Defender IoT szolgáltatásán keresztül kezelhet
 > [!NOTE]
 > A IoT Defender jelenleg csak a standard szintű IoT hubokat támogatja.
 
-## <a name="onboard-to-defender-for-iot-in-iot-hub"></a>IoT Hub-beli IoT beléptetése a Defenderbe
+## <a name="onboard-defender-for-iot-to-an-iot-hub"></a>Defender IoT IoT Hub
 
 Az új IoT-hubok esetében a Defender for IoT alapértelmezés szerint be van **kapcsolva** . A IoT Hub-létrehozási folyamat során ellenőrizheti, hogy az IoT Defender be van-e **kapcsolva** .
 
@@ -55,14 +55,23 @@ Annak ellenőrzése, hogy a váltógomb be van **-e állítva:**
 
 ## <a name="onboard-defender-for-iot-to-an-existing-iot-hub"></a>A Defender IoT meglévő IoT Hub
 
-A szolgáltatás elindításához a következő lépéseket követve figyelheti az eszköz Identitáskezelés-felügyeletét, az eszközt a felhőbe és a felhőben az eszköz kommunikációs mintáit: 
+A Defender a IoT egy meglévő IoT Hubba is bevezethető, ahol nyomon követheti az eszközök identitás-kezelését, az eszköz és a felhő közötti kommunikációt, valamint a felhőben az eszköz kommunikációs mintáit.
 
-1. Navigáljon IoT Hub. 
+A Defender beléptetése a IoT meglévő IoT Hubba:
 
-1. Válassza a **Biztonság áttekintése**   menüt. 
+1. Navigáljon a IoT Hub. 
 
-1. Kattintson a IoT-megoldás biztonságossá tétele lehetőségre, és fejezze be a bevezetési űrlapot. 
+1. Válassza ki a bekészíteni kívánt IoT Hub.
 
+1. Válassza a **Biztonság** szakaszban található bármelyik lehetőséget.
+
+1. Kattintson a **IoT-megoldás biztonságossá tétele** lehetőségre   , és fejezze be a bevezetési űrlapot. 
+
+    :::image type="content" source="media/quickstart-onboard-iot-hub/secure-your-iot-solution.png" alt-text="A megoldás biztonságossá tételéhez kattintson a IoT-megoldás biztonságossá tétele gombra.":::
+
+A **IoT-megoldás biztonságossá tétele** gomb csak akkor jelenik meg, ha a IoT hub még nincs előkészítve, vagy ha bevezetéskor a Defender for IoT kapcsolót **kikapcsolta**.
+
+:::image type="content" source="media/quickstart-onboard-iot-hub/toggle-is-off.png" alt-text="Ha a váltógomb be van kapcsolva a bevezetéskor.":::
 
 ## <a name="next-steps"></a>Következő lépések
 
