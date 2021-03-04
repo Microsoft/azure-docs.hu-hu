@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: overview
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 98527ea5227fcdc2c35dbe3579657368e30fcdaa
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 099f9b3769179076491c7c2098ec56faff9847dd
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680623"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039835"
 ---
 # <a name="what-is-azure-route-server-preview"></a>Mi az az Azure Route Server (előzetes verzió)? 
 
@@ -49,5 +49,5 @@ Az Azure Route Serverrel kapcsolatos gyakori kérdésekért lásd: [Azure Route 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Ismerje meg, hogyan konfigurálhatja az Azure Route Servert.](quickstart-configure-route-server-portal.md)
+- [Ismerje meg, hogyan konfigurálhatja az Azure Route Servert](quickstart-configure-route-server-powershell.md)
 - [Ismerje meg, hogyan működik az Azure Route Server az Azure ExpressRoute és az Azure VPN-sel](expressroute-vpn-support.md)

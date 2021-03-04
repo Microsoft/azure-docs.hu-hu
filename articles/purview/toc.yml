@@ -122,8 +122,6 @@ items:
             href: how-to-create-import-export-glossary.md
           - name: Kifejezéssablonok kezelése
             href: how-to-manage-term-templates.md
-          - name: Objektumok tömeges szerkesztése szószedet-kifejezések hozzárendeléséhez
-            href: how-to-bulk-edit-assets.md
       - name: Tömeges szerkesztés
         items:
           - name: Eszközök tömeges szerkesztése a jegyzetek és a névjegyek címkézéséhez

@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 2/9/2021
+ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 402714b55d7513e41458503b12c68768d0c6ad5e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 20b8e354d0c8e2e04cf22d1b8014f5b8e33a860c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101745936"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038866"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-azure-powershell-preview"></a>IPv6-támogatás hozzáadása a Azure PowerShell (előzetes verzió) használatával a privát partnerek számára
 
@@ -60,8 +60,8 @@ A kérést a ExpressRoute csapata 2-3 munkanapon belül jóváhagyja.
 
 3. Adjon hozzá egy IPv6-alapú privát társat a meglévő IPv4-alapú privát kapcsolati konfigurációhoz. Adjon meg egy pár/126 IPv6-alhálózatot, amelyet Ön az elsődleges és másodlagos hivatkozások számára is tartalmaz. Az egyes alhálózatokból az első használható IP-címet az útválasztóhoz rendeli hozzá, mivel a Microsoft a második használható IP-címet használja az útválasztóhoz.
 
-> [!Note]
-> A társ ASN-nek és a VlanId meg kell egyezniük az IPv4-alapú privát társ-konfigurációban találhatókkal.
+    > [!Note]
+    > A társ ASN-nek és a VlanId meg kell egyezniük az IPv4-alapú privát társ-konfigurációban találhatókkal.
 
     ```azurepowershell-interactive
     Set-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "3FFE:FFFF:0:CD30::/126" -SecondaryPeerAddressPrefix "3FFE:FFFF:0:CD30::4/126" -VlanId 200 -PeerAddressType IPv6
@@ -175,6 +175,7 @@ Míg az IPv6-támogatás elérhető az Availability Zones-vel rendelkező régi�
 * Az Azure-beli üzembe helyezések kapcsolatai nem AZ ExpressRoute Gateway SKU használatával
 * Kapcsolatok a nem az-régiókban üzemelő példányokhoz
 * ExpressRoute-áramkörök közötti Global Reach kapcsolatok
+* ExpressRoute használata a vWAN
 
 ## <a name="next-steps"></a>Következő lépések
 

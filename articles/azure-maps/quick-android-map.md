@@ -9,12 +9,13 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: mvc
-ms.openlocfilehash: 740563935e12d5a7418bada2a18b48fb573f6e7d
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: 3c0f95c1252b6895b4604d14e5565395beab8952
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98679007"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039648"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-maps"></a>Gyors útmutató: Android-alkalmazás létrehozása Azure Maps
 
@@ -90,7 +91,7 @@ Az alkalmazás létrehozásának következő lépése a Azure Maps Android SDK t
 
 1. Nyissa meg a legfelső szintű **Build. gradle** fájlt, és adja hozzá a következő kódot a **minden projekt**, **adattárak** blokkolása szakaszhoz:
 
-    ```java
+    ```gradle
     maven {
         url "https://atlas.microsoft.com/sdk/android"
     }
@@ -102,7 +103,7 @@ Az alkalmazás létrehozásának következő lépése a Azure Maps Android SDK t
 
     2. Adja hozzá a következő kódot az Android szakaszhoz:
 
-        ```java
+        ```gradle
         compileOptions {
             sourceCompatibility JavaVersion.VERSION_1_8
             targetCompatibility JavaVersion.VERSION_1_8
@@ -111,8 +112,8 @@ Az alkalmazás létrehozásának következő lépése a Azure Maps Android SDK t
 
     3. Frissítse a függőségek blokkot, és adjon hozzá egy új implementációs függőségi sort a legújabb Azure Maps Android SDK-hoz:
 
-        ```java
-        implementation "com.microsoft.azure.maps:mapcontrol:0.6"
+        ```gradle
+        implementation "com.microsoft.azure.maps:mapcontrol:0.7"
         ```
 
         > [!Note]
@@ -121,22 +122,15 @@ Az alkalmazás létrehozásának következő lépése a Azure Maps Android SDK t
     4. Nyissa meg a **fájlt** az eszköztáron, majd kattintson a **szinkronizálás projekt Gradle-fájlokkal** elemre.
 3. Térképi töredék hozzáadása a fő tevékenységhez (res \> elrendezési \> tevékenység \_main.xml):
 
-    ```XML
-    <?xml version="1.0" encoding="utf-8"?>
-    <FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    ```xml
+    <com.microsoft.azure.maps.mapcontrol.MapControl
+        android:id="@+id/mapcontrol"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
-
-        <com.microsoft.azure.maps.mapcontrol.MapControl
-            android:id="@+id/mapcontrol"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
-    </FrameLayout>
+        />
     ```
+
+::: zone pivot="programming-language-java-android"
 
 4. A **MainActivity. Java** fájlban a következőket kell tennie:
 
@@ -149,20 +143,19 @@ Az alkalmazás létrehozásának következő lépése a Azure Maps Android SDK t
     A Térkép vezérlőelem saját életciklus-metódusokat tartalmaz az Android OpenGL-életciklusának kezeléséhez. Ezeket az életciklus-metódusokat közvetlenül a tartalmazó tevékenységből kell meghívni. Ahhoz, hogy az alkalmazás helyesen hívja meg a Map Control életciklusának módszereit, felül kell bírálnia a következő életciklus-metódusokat a Térkép vezérlőelemet tartalmazó tevékenységben. És meg kell hívnia a megfelelő leképezés-vezérlési módszert.
 
     * `onCreate(Bundle)`
-    * `onStart()`
-    * `onResume()`
-    * `onPause()`
-    * `onStop()`
     * `onDestroy()`
-    * `onSaveInstanceState(Bundle)`
     * `onLowMemory()`
+    * `onPause()`
+    * `onResume()`
+    * `onSaveInstanceState(Bundle)`
+    * `onStart()`
+    * `onStop()`
 
     Szerkessze a **MainActivity. Java** fájlt a következőképpen:
 
-    ```Java
+    ```java
     package com.example.myapplication;
     
-    //For older versions use: import android.support.v7.app.AppCompatActivity; 
     import androidx.appcompat.app.AppCompatActivity;
     import com.microsoft.azure.maps.mapcontrol.AzureMaps;
     import com.microsoft.azure.maps.mapcontrol.MapControl;
@@ -241,8 +234,111 @@ Az alkalmazás létrehozásának következő lépése a Azure Maps Android SDK t
     ```
 
     > [!NOTE]
-    > Az előző lépések elvégzése után valószínűleg figyelmeztetést kap a Android Studioról a kódok némelyikéről. A figyelmeztetések feloldásához importálja a alkalmazásban hivatkozott osztályokat `MainActivity.java` .
+    > Az előző lépések elvégzése után Android Studio figyelmeztetéseket kaphat a kóddal kapcsolatban. A figyelmeztetések feloldásához importálja a alkalmazásban hivatkozott osztályokat `MainActivity.java` .
     > Ezeket az osztályokat automatikusan importálhatja a `Alt`  +  `Enter` ( `Option`  +  `Return` Mac gépen) lehetőség kiválasztásával.
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+4. A **MainActivity. kt** fájlban a következőket kell tennie:
+
+    * importálások hozzáadása az Azure Maps SDK-hoz
+    * a Azure Maps hitelesítési adatainak beállítása
+    * a Térkép vezérlőelem példányának beolvasása a **onCreate** metódusban
+
+    Ha a (z) és a (z) metódusok használatával globálisan szeretné beállítani a hitelesítési adatokat, akkor `AzureMaps` `setSubscriptionKey` `setAadProperties` nem kell minden nézetben felvennie a hitelesítési adatokat.
+
+    A Térkép vezérlőelem saját életciklus-metódusokat tartalmaz az Android OpenGL-életciklusának kezeléséhez. Ezeket az életciklus-metódusokat közvetlenül a tartalmazó tevékenységből kell meghívni. Ahhoz, hogy az alkalmazás helyesen hívja meg a Map Control életciklusának módszereit, felül kell bírálnia a következő életciklus-metódusokat a Térkép vezérlőelemet tartalmazó tevékenységben. És meg kell hívnia a megfelelő leképezés-vezérlési módszert.
+
+    * `onCreate(Bundle)`
+    * `onDestroy()`
+    * `onLowMemory()`
+    * `onPause()`
+    * `onResume()`
+    * `onSaveInstanceState(Bundle)`
+    * `onStart()`
+    * `onStop()`
+
+    Szerkessze a **MainActivity. kt** fájlt a következőképpen:
+
+    ```kotlin
+    package com.example.myapplication;
+
+    import androidx.appcompat.app.AppCompatActivity
+    import android.os.Bundle
+    import com.microsoft.azure.maps.mapcontrol.AzureMap
+    import com.microsoft.azure.maps.mapcontrol.AzureMaps
+    import com.microsoft.azure.maps.mapcontrol.MapControl
+    import com.microsoft.azure.maps.mapcontrol.events.OnReady
+    
+    class MainActivity : AppCompatActivity() {
+    
+        companion object {
+            init {
+                AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
+    
+                //Alternatively use Azure Active Directory authenticate.
+                //AzureMaps.setAadProperties("<Your aad clientId>", "<Your aad AppId>", "<Your aad Tenant>");
+            }
+        }
+    
+        var mapControl: MapControl? = null
+    
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+            setContentView(R.layout.activity_main)
+    
+            mapControl = findViewById(R.id.mapcontrol)
+    
+            mapControl?.onCreate(savedInstanceState)
+    
+            //Wait until the map resources are ready.
+            mapControl?.onReady(OnReady { map: AzureMap -> })
+        }
+    
+        public override fun onStart() {
+            super.onStart()
+            mapControl?.onStart()
+        }
+    
+        public override fun onResume() {
+            super.onResume()
+            mapControl?.onResume()
+        }
+    
+        public override fun onPause() {
+            mapControl?.onPause()
+            super.onPause()
+        }
+    
+        public override fun onStop() {
+            mapControl?.onStop()
+            super.onStop()
+        }
+    
+        override fun onLowMemory() {
+            mapControl?.onLowMemory()
+            super.onLowMemory()
+        }
+    
+        override fun onDestroy() {
+            mapControl?.onDestroy()
+            super.onDestroy()
+        }
+    
+        override fun onSaveInstanceState(outState: Bundle) {
+            super.onSaveInstanceState(outState)
+            mapControl?.onSaveInstanceState(outState)
+        }
+    }
+    ```
+
+    > [!NOTE]
+    > Az előző lépések elvégzése után Android Studio figyelmeztetéseket kaphat a kóddal kapcsolatban. A figyelmeztetések feloldásához importálja a alkalmazásban hivatkozott osztályokat `MainActivity.kt` .
+    > Ezeket az osztályokat automatikusan importálhatja a `Alt`  +  `Enter` ( `Option`  +  `Return` Mac gépen) lehetőség kiválasztásával.
+
+::: zone-end
 
 5. Az `Control` alkalmazás létrehozásához kattintson a Futtatás gombra, ahogy az az alábbi ábrán is látható (vagy nyomja meg a Mac billentyűt  +  `R` ).
 

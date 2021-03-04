@@ -413,7 +413,7 @@
         - name: Mi az a rugalmas kiszolgáló?
           href: flexible-server/overview.md
         - name: Támogatott verziók
-          href: flexible-server/concepts-supported-versions.md
+          href: concepts-supported-versions.md
         - name: Számítás és tárolás
           href: flexible-server/concepts-compute-storage.md
     - name: Rövid útmutatók

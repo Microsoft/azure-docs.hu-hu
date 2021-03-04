@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: overview
-ms.date: 12/15/2020
+ms.date: 02/24/2021
 ms.author: banders
-ms.openlocfilehash: 0e45e9741e92bb9e1fe23af79695cae06e64e871
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: HT
+ms.openlocfilehash: 7c2cf88eed3d8b727147f57ef9e2b52afd07de59
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602051"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039138"
 ---
 # <a name="what-are-azure-reservations"></a>Mi az az Azure Reservations?
 
@@ -91,7 +91,8 @@ További információkért lásd: [Az Azure Reservations önkiszolgáló csere- 
 - **Fenntartott virtuálisgép-példány** – A foglalás csak a virtuális gép és a felhőszolgáltatások számítási költségeit fedezi. Nem fedezi azonban a további szoftverek, a Windows, a hálózatkezelés és a tárolás költségeit.
 - **Fenntartott kapacitás az Azure Storage-ban** – A foglalás a standard Blob Storage- vagy Azure Data Lake Gen2-tárfiókok tárolási kapacitását fedezi. A foglalás nem fedezi a sávszélességgel és a tranzakciókkal járó díjakat.
 - **Fenntartott Azure Cosmos DB-kapacitás** – A foglalás az erőforrások számára kiosztott átviteli sebességet fedezi. Nem fedezi azonban a tárolás és a hálózatkezelés költségeit.
-- **Fenntartott SQL Database virtuális mag** – A felügyelt SQL-példányt és az SQL Database rugalmas készletet/önálló adatbázist is lefedi. A foglalás csak a számítási költségeket foglalja magában. Az SQL-licenc számlázása külön történik. 
+- **Adatáramlások Azure Data Factory** – a foglalás magában foglalja az integrációs modul költségét a megvásárolt számítási típushoz és a magok számához.
+- **Fenntartott SQL Database virtuális mag** – A felügyelt SQL-példányt és az SQL Database rugalmas készletet/önálló adatbázist is lefedi. A foglalás csak a számítási költségeket foglalja magában. Az SQL-licenc számlázása külön történik.
 - **Azure Synapse Analytics** – A foglalás a cDWU-használatot fedezi. Nem fedezi az Azure Synapse Analytics használatával kapcsolatos tárolási és hálózatkezelési költségeket.
 - **Azure Databricks** – A foglalás csak a DBU-használatot fedezi. Az egyéb – például számítási, tárolási és hálózati – díjakat külön számítjuk fel.
 - **App Service-bélyeg díja** – A foglalás a bélyeghasználatot fedezi. Nem érvényes azonban a feldolgozókra, így a bélyeghez társított egyéb erőforrásokért külön kell fizetnie.

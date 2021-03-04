@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor meglévő Operations Manager ügyfelek számára
 description: Útmutató a Operations Manager meglévő felhasználói számára, hogy a felhőbe való áttérés részeként bizonyos számítási feladatok monitorozását Azure Monitor.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2021
-ms.openlocfilehash: e9f0a285df6013334970b971e46079b9e78b19cb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6d92b7c2f01a7e9ef12bc2bb422cfb6ed0076f73
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728960"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039376"
 ---
 # <a name="azure-monitor-for-existing-operations-manager-customers"></a>Azure Monitor meglévő Operations Manager ügyfelek számára
 Ez a cikk útmutatást nyújt azokhoz az ügyfelekhez, akik jelenleg használják a [System Center Operations Managert](/system-center/scom/welcome) , és az üzleti alkalmazások és egyéb erőforrások az Azure-ba való áttelepítésének megtervezése [Azure Monitorre](overview.md) Azt feltételezi, hogy a végső cél a felhőbe való teljes átállás, amely a lehető legtöbb Operations Manager funkciót helyettesíti a Azure Monitor, az üzleti és informatikai működési követelmények veszélyeztetése nélkül. 

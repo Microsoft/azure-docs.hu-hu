@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: contperf-fy21q1
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: fdc3a94c081d8a02725f145fc6b20ace4c1731ce
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 8bcdb87e04d90aeb3d807e43c53e74d74299091b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090553"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040005"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Mi az az Azure HDInsight-alapú Apache Spark?
 
@@ -50,7 +50,7 @@ A HDInsight Apache Spark-fürtök a következő összetevőket tartalmazzák, am
 * [Jupyter Notebook](https://jupyter.org)
 * [Apache Zeppelin notebook](http://zeppelin-project.org/)
 
-A HDInsight Spark-fürtök egy [ODBC-illesztőt](/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15) biztosítanak a BI-eszközök, például a Microsoft Power bi közötti kapcsolathoz.
+A HDInsight Spark-fürtök egy [ODBC-illesztőt](/sql/connect/odbc/download-odbc-driver-for-sql-server) biztosítanak a BI-eszközök, például a Microsoft Power bi közötti kapcsolathoz.
 
 ## <a name="spark-cluster-architecture"></a>Spark-fürtarchitektúra
 

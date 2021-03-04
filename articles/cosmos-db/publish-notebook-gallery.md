@@ -7,17 +7,17 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: dech
-ms.openlocfilehash: c7c910c7162bde2209b07eb4f1d533328bae08c3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 58ae61bc9e1736b13bb1802e2f39d5ada045cb6a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693210"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039325"
 ---
 # <a name="publish-notebooks-to-the-azure-cosmos-db-notebook-gallery"></a>Jegyzetfüzetek közzététele a Azure Cosmos DB notebook-galériában
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB beépített Jupyter jegyzetfüzetek közvetlenül integrálva vannak a Azure Portal Azure Cosmos DB fiókjaiba. Ezeket a jegyzetfüzeteket használva elemezheti és megjelenítheti az adatait a Azure Portalból. A Azure Cosmos DB beépített jegyzetfüzetei jelenleg [29 régióban](#supported-regions)érhetők el. Jegyzetfüzetek használatához [hozzon létre egy új Cosmos-fiókot](#create-a-new-cosmos-account) , vagy [engedélyezze a jegyzetfüzeteket egy meglévő fiókban](#enable-notebooks-in-an-existing-cosmos-account) ezen régiók egyikében.
+Azure Cosmos DB beépített Jupyter jegyzetfüzetek közvetlenül integrálva vannak a Azure Portal Azure Cosmos DB fiókjaiba. Ezeket a jegyzetfüzeteket használva elemezheti és megjelenítheti az adatait a Azure Portalból. A Azure Cosmos DB beépített jegyzetfüzetei jelenleg [számos régióban](https://azure.microsoft.com/global-infrastructure/services/?products=cosmos-db&regions=all)elérhetők. Jegyzetfüzetek használatához [hozzon létre egy új Cosmos-fiókot](create-cosmosdb-resources-portal.md) , vagy [engedélyezze a jegyzetfüzeteket egy meglévő fiókban](enable-notebooks.md) ezen régiók egyikében.
 
 A Azure Portalban található notebook-környezetnek van néhány mintája, amelyet a Azure Cosmos DB csapat tesz közzé. Emellett rendelkezik egy nyilvános katalógussal is, ahol közzéteheti és megoszthatja saját jegyzetfüzeteit. Miután közzétett egy jegyzetfüzetet a katalógusban, elérhetővé válik az összes Azure Cosmos DB felhasználó számára a megtekintéshez és a használathoz. Ebből a cikkből megtudhatja, hogyan használhatók a jegyzetfüzetek a nyilvános galériában, és hogyan tehetők közzé a katalógusban.
 
@@ -53,7 +53,7 @@ Jegyzetfüzet közzétételéhez kövesse az alábbi lépéseket:
 
    A **Közzététel** a katalógusban lehetőséget a... lehetőségre kattintva is megtalálhatja **.** a jegyzetfüzet neve melletti gomb:
 
-   :::image type="content" source="./media/publish-notebook-gallery/choose-notebook-publish.png" alt-text="Válasszon ki egy jegyzetfüzetet, amelyet közzé szeretne tenni a gyűjteményben.":::
+   :::image type="content" source="./media/publish-notebook-gallery/choose-notebook-publish.png" alt-text="Egy másik módszer a katalógusban közzétenni kívánt jegyzetfüzet kiválasztására.":::
 
 1. Töltse ki a **Közzététel** a katalógusba űrlapot a következő részletekkel:
 
@@ -61,11 +61,10 @@ Jegyzetfüzet közzétételéhez kövesse az alábbi lépéseket:
    * **Leírás:**  A jegyzetfüzet funkcióinak rövid leírása.
    * **Címkék:** A címkék nem kötelezőek, és az eredmények szűrésére szolgálnak egy kulcsszó alapján való kereséskor.
    * **Takarás képe:** A címlapon a jegyzetfüzet közzétételekor használt rendszerkép. A következő lehetőségek közül választhat:
-
-     * **Egyéni rendszerkép** – feltölthet egy rendszerképet a számítógépről. Válasszon egy képfájlt méretarányos 256x144.
-     * **URL-cím** – adjon meg egy nyilvánosan elérhető URL-címet, ahol a rendszerkép található.
-     * **Képernyőkép készítése** – a megnyitott jegyzetfüzetből származó képernyőkép automatikusan megjelenik, és az előzetes verzióra lesz feltöltve.
-     * A megjelenítési kimenettel rendelkező első cella **első kimeneti kimenetének használata** . Azok a cellák, amelyek csak Markdown vagy szöveget jelenítenek meg, nem jelenítik meg a megjelenítési kimenetet.
+   * **Egyéni rendszerkép** – feltölthet egy rendszerképet a számítógépről. Válasszon egy képfájlt méretarányos 256x144.
+   * **URL-cím** – adjon meg egy nyilvánosan elérhető URL-címet, ahol a rendszerkép található.
+   * **Képernyőkép készítése** – a megnyitott jegyzetfüzetből származó képernyőkép automatikusan megjelenik, és az előzetes verzióra lesz feltöltve.
+   * A megjelenítési kimenettel rendelkező első cella **első kimeneti kimenetének használata** . Azok a cellák, amelyek csak Markdown vagy szöveget jelenítenek meg, nem jelenítik meg a megjelenítési kimenetet.
 
    :::image type="content" source="./media/publish-notebook-gallery/publish-notebook.png" alt-text="Töltse ki a közzététel a galériában űrlapot.":::
 

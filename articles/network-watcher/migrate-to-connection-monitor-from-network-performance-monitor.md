@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: e5053284de18740b761df3e5df256cc79d2e8f1c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e95f6fdff164a6f5f9d4af4f19b1876d1483a70c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101698688"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038713"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Migrálás a Network Performance Monitorről a kapcsolódási figyelőbe
 
@@ -41,7 +41,7 @@ Az áttelepítés a következő eredményeket segíti elő:
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Győződjön meg arról, hogy a Network Watcher engedélyezve van az előfizetésben és a Log Analytics munkaterület régiójában. 
-* Ha az Azure virtuális gép egy másik régióhoz vagy előfizetéshez kapcsolódik, mint Log Analytics munkaterületet, akkor győződjön meg arról, hogy a Network Watcher engedélyezve van az adott előfizetéshez és régióhoz.   
+* Abban az esetben, ha az Azure-beli virtuális gép egy másik régióhoz vagy előfizetéshez csatlakozik, mint a Log Analytics munkaterület egy végpontja, győződjön meg arról, hogy a Network Watcher engedélyezve van az adott előfizetéshez és régióhoz.   
 * A telepített Log Analytics-ügynökökkel rendelkező Azure-beli virtuális gépeket a Network Watcher bővítménnyel kell engedélyezni.
 
 ## <a name="migrate-the-tests"></a>A tesztek áttelepíteni

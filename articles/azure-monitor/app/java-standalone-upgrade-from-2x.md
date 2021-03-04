@@ -6,12 +6,12 @@ ms.date: 11/25/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: e9208e617eb73786bcb003dc1b55d0d77ca6650f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6e1c7e15ff77fd75ff2fb70a6741ea2dd9a4cab8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704429"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040243"
 ---
 # <a name="upgrading-from-application-insights-java-2x-sdk"></a>Frissítés Application Insights Java 2. x SDK-ból
 
@@ -219,11 +219,24 @@ Néhány alkalmazás esetében továbbra is használhatja a korábbi függőség
 
 Korábban a 2. x SDK-ban a kérelem telemetria tartozó művelet neve is be lett állítva a függőségi telemetria.
 Application Insights Java 3,0 már nem tölti fel a művelet nevét a függőségi telemetria.
-Ha szeretné megtekinteni a művelet nevét, amely a függőségi telemetria szülője, írhat naplókat (Kusto) tartalmazó lekérdezést, amely a függőségi táblából a kérési táblához csatlakozik.
+Ha szeretné megtekinteni a művelet nevét, amely a függőségi telemetria szülője, megírhat egy naplók (Kusto) lekérdezést, amely a függőségi táblából a kérelem táblába csatlakozik, például:
+
+```
+let start = datetime('...');
+let end = datetime('...');
+dependencies
+| where timestamp between (start .. end)
+| project timestamp, type, name, operation_Id
+| join (requests
+    | where timestamp between (start .. end)
+    | project operation_Name, operation_Id)
+    on $left.operation_Id == $right.operation_Id
+| summarize count() by operation_Name, type, name
+```
 
 ## <a name="2x-sdk-logging-appenders"></a>2. x SDK naplózási hozzáfűzése
 
-Az 3,0-ügynök [automatikusan összegyűjti a naplózást](./java-standalone-config#auto-collected-logging) anélkül, hogy konfigurálnia kellene a naplózási hozzáfűző adatokat.
+Az 3,0-ügynök [automatikusan összegyűjti a naplózást](./java-standalone-config.md#auto-collected-logging) anélkül, hogy konfigurálnia kellene a naplózási hozzáfűző adatokat.
 Ha 2. x SDK-naplózási hozzáfűzést használ, ezeket eltávolíthatják, mert az 3,0-ügynök nem fogja tudni letiltani őket.
 
 ## <a name="2x-sdk-spring-boot-starter"></a>2. x SDK Spring boot Starter

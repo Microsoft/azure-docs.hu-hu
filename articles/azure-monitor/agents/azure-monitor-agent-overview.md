@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor-ügynök áttekintése
 description: A Azure Monitor ügynök (AMA) áttekintése, amely a virtuális gépek vendég operációs rendszerének figyelési adatait gyűjti.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: e4837de70e9f00308b440933e0cd433ad5b27cf9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0487e5bd8109c02605e785e74d45589dd5fde5b9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101711535"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039597"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure Monitor-ügynök áttekintése (előzetes verzió)
 A Azure Monitor ügynök (AMA) figyeli a virtuális gépek vendég operációs rendszerének figyelési adatait, és a Azure Monitor számára biztosítja azt. Ez a cikk áttekintést nyújt a Azure Monitor-ügynökről, beleértve a telepítésének módját és az adatgyűjtés konfigurálását.

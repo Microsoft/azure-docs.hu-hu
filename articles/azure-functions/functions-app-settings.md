@@ -3,12 +3,12 @@ title: Azure Functions – alkalmazásbeállítási referencia
 description: A Azure Functions Alkalmazásbeállítások vagy környezeti változók dokumentációja.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 8cb3e12c48adf1273c58f4914e34590e21b9d3cc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6f77efc877f210455be6716f8159ee000241c62f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378298"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040345"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions – alkalmazásbeállítási referencia
 
@@ -80,7 +80,7 @@ Ha a értékre `AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES` van állítva `
 
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
-A functions futtatókörnyezet 2. x vagy újabb verziójában a futásidejű környezet alapján konfigurálja az alkalmazások viselkedését. Az [inicializálás során](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43)ez az érték olvasható. Bármelyik értéket megadhatja `AZURE_FUNCTIONS_ENVIRONMENT` , de [három érték](/dotnet/api/microsoft.aspnetcore.hosting.environmentname) támogatott: [fejlesztés](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [előkészítés](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging)és [éles környezet](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production). Ha `AZURE_FUNCTIONS_ENVIRONMENT` nincs beállítva, az alapértelmezett érték `Development` egy helyi környezetben és `Production` Az Azure-ban. Ezt `ASPNETCORE_ENVIRONMENT` a beállítást a futásidejű környezet beállítása helyett kell használni. 
+A functions futtatókörnyezet 2. x vagy újabb verziójában a futásidejű környezet alapján konfigurálja az alkalmazások viselkedését. Ez az érték az inicializálás során olvasható, és tetszőleges értékre állítható. `Development` `Staging` A futtatókörnyezetnek csak a, és értékeit kell megadnia `Production` . Ha ez az Alkalmazásbeállítás nem jelenik meg az Azure-ban való futtatáskor, a rendszer a környezetet feltételezi `Production` . Akkor használja ezt a beállítást, `ASPNETCORE_ENVIRONMENT` Ha az Azure-ban módosítania kell a futásidejű környezetet `Production` . A Azure Functions Core Tools `AZURE_FUNCTIONS_ENVIRONMENT` `Development` helyi számítógépen való futásra van beállítva, és ez nem bírálható felül a fájl local.settings.js. További információért lásd: [környezet-alapú indítási osztály és metódusok](/aspnet/core/fundamentals/environments#environment-based-startup-class-and-methods).
 
 ## <a name="azurefunctionsjobhost__"></a>AzureFunctionsJobHost__\*
 

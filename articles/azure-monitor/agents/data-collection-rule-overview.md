@@ -1,17 +1,16 @@
 ---
 title: Adatgyűjtés szabályai a Azure Monitorban (előzetes verzió)
 description: Az adatgyűjtési szabályok (DCR) áttekintése Azure Monitor, beleértve azok tartalmát és szerkezetét, valamint hogyan hozhat létre és dolgozhat velük.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2021
-ms.openlocfilehash: 0bae058804bdb1f199c39497c59e89bda8087424
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a0c5e9f89b983871224e79c2fc4f518a15d42a6f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100620388"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039614"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Adatgyűjtés szabályai a Azure Monitorban (előzetes verzió)
 Az adatgyűjtési szabályok (DCR) a Azure Monitorba érkező, illetve az adatküldés és-tárolás helyét adja meg. Ez a cikk áttekintést nyújt az adatgyűjtési szabályokról, beleértve azok tartalmát és szerkezetét, valamint azt, hogy miként hozhat létre és dolgozhat velük.
@@ -40,7 +39,7 @@ Az alábbi ábrán egy adatgyűjtési szabály és a kapcsolat összetevői lát
 ### <a name="data-source-types"></a>Adatforrástípusok
 Minden adatforrás típusa adatforrással rendelkezik. Mindegyik típus egyedi tulajdonságokat határoz meg, amelyeket minden egyes adatforráshoz meg kell adni. A jelenleg elérhető adatforrás-típusok az alábbi táblázatban láthatók.
 
-| Adatforrás típusa | Description | 
+| Adatforrás típusa | Leírás | 
 |:---|:---|
 | kiterjesztés | Virtuálisgép-bővítmény-alapú adatforrás |
 | performanceCounters | Teljesítményszámlálók Windows és Linux rendszerekhez |

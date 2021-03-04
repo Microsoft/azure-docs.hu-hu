@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 02/20/2020
 ms.topic: article
 keywords: Azure, Kinect, specs, Hardware, DK, képességek, mélység, szín, RGB, IMU, tömb, mélység, több, szinkronizálás
-ms.openlocfilehash: 30961152b31a659cb27e91a99d6806490998d18d
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: eabf77896777f39efcfd61adb3040bca8642716e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97592279"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039954"
 ---
 # <a name="synchronize-multiple-azure-kinect-dk-devices"></a>Több Azure Kinect DK-eszköz szinkronizálása
 
@@ -36,6 +36,9 @@ Számos oka lehet annak, hogy több Azure Kinect DK-eszközt használ, többek k
 ## <a name="plan-your-multi-device-configuration"></a>A többszörös eszköz konfigurációjának megtervezése
 
 Mielőtt elkezdené, győződjön meg róla, hogy áttekinti az [Azure Kinect DK hardveres specifikációit](hardware-specification.md) és az [Azure Kinect DK részletes kameráját](depth-camera.md).
+
+> [!NOTE]  
+> Távolítsa el a külső műanyag burkolatot, hogy elérhető legyen a szinkronizálás, és szinkronizálja a csatlakozókat.
 
 ### <a name="select-a-device-configuration"></a>Eszköz konfigurációjának kiválasztása
 
@@ -63,6 +66,9 @@ Az trigger forrásának az 3,5-mm-es audiokábel használatával kell továbbít
 ![Külső trigger-jel kábeles konfigurációi](./media/resources/camera-trigger-signal.jpg)
 
 További információ a külső berendezésekkel való [használatról: az Azure Kinect Recorder használata külső szinkronizált eszközökkel](record-external-synchronized-units.md)
+
+> [!NOTE]  
+> A szinkronizálás ki az RGB-kamera VSync-je. Az összes eszköz időbélyege nulla értékre van állítva, és megszámolható. A Microsoft nem jellemezte a szinkronizálási impulzus minimális és maximális szélességét, és azt ajánlja, hogy az Azure Kinect DK-ből való szinkronizálás által generált impulzust utánozza.
 
 ### <a name="plan-your-camera-settings-and-software-configuration"></a>A kamera beállításainak és a szoftver konfigurációjának megtervezése
 

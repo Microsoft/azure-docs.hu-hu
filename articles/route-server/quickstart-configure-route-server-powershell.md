@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: c56e7318e24b802ae9ad605a0c9ae5f88397ec8b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5b40cfcde7aa1771c8a4b9025d35b2dc0c728676
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680619"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039784"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-powershell"></a>Gyors útmutató: útvonal-kiszolgáló létrehozása és konfigurálása Azure PowerShell használatával
 
@@ -70,7 +70,7 @@ A RouteServerSubnet-azonosító a következőhöz hasonlóan néz ki:
 Hozza létre az útválasztási kiszolgálót a következő paranccsal:
 
 ```azurepowershell-interactive 
-New-AzRouteServer -Name myRouteServer -ResourceGroupName RouteServerRG -Location "West US” -HostedSubnet “RouteServerSubnet_ID”
+New-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServerRG -Location "West US” -HostedSubnet “RouteServerSubnet_ID”
 ```
 
 A helynek meg kell egyeznie a virtuális hálózat helyével. A HostedSubnet az előző szakaszban beszerzett RouteServerSubnet-azonosító.
@@ -80,7 +80,7 @@ A helynek meg kell egyeznie a virtuális hálózat helyével. A HostedSubnet az 
 A következő parancs használatával hozzon létre BGP-társat az útvonal-kiszolgálóról a NVA:
 
 ```azurepowershell-interactive 
-Add-AzRouteServerPeer -PeerName "myNVA” -PeerIp “nva_ip” -PeerAsn “nva_asn” -RouteServerName "myRouteServer -ResourceGroupName ”RouteServerRG”
+Add-AzRouteServerPeer -PeerName "myNVA" -PeerIp "nva_ip" -PeerAsn "nva_asn" -RouteServerName myRouteServer -ResourceGroupName RouteServerRG
 ```
 
 a "nva_ip" a NVA hozzárendelt virtuális hálózati IP-cím. a "nva_asn" a NVA konfigurált autonóm rendszer száma (ASN). Az ASN bármely 16 bites szám lehet, amely nem a 65515-65520-es tartományba esik. A ASN ezen tartományát a Microsoft foglalta le.
@@ -88,7 +88,7 @@ a "nva_ip" a NVA hozzárendelt virtuális hálózati IP-cím. a "nva_asn" a NVA 
 A következő parancs használatával állíthatja be a társítást különböző NVA vagy ugyanazon NVA egy másik példányával a redundancia érdekében:
 
 ```azurepowershell-interactive 
-Add-AzRouteServerPeer -PeerName “NVA2_name” -PeerIp “nva2_ip” -PeerAsn “nva2_asn” -RouteServerName “myRouteServer” -ResourceGroupName “RouteServerRG” 
+Add-AzRouteServerPeer -PeerName "NVA2_name" -PeerIp "nva2_ip" -PeerAsn "nva2_asn" -RouteServerName myRouteServer -ResourceGroupName RouteServerRG 
 ```
 
 ## <a name="complete-the-configuration-on-the-nva"></a>A konfiguráció befejezése a NVA
@@ -96,7 +96,7 @@ Add-AzRouteServerPeer -PeerName “NVA2_name” -PeerIp “nva2_ip” -PeerAsn �
 A NVA konfigurálásának befejezéséhez és a BGP-munkamenetek engedélyezéséhez szüksége lesz az Azure Route Server IP-címére és ASN-ra. Ezt az információt a következő paranccsal kérheti le:
 
 ```azurepowershell-interactive 
-Get-AzRouteServer -RouterName “myRouteServer” -ResourceGroupName “RouteServerRG”
+Get-AzRouteServer -RouterServerName myRouteServer -ResourceGroupName RouteServerRG
 ```
 
 A kimenet a következő információkból áll:
@@ -113,13 +113,13 @@ Ha egy ExpressRoute-átjáróval és egy Azure-beli VPN-átjáróval rendelkezik
 1. Az Azure Route Server és az átjáró (k) közötti útvonal-csere engedélyezéséhez használja a következő parancsot:
 
 ```azurepowershell-interactive 
-Update-AzRouteServer -RouteServerName “myRouteServer” -ResourceGroupName “RouteServerRG” -AllowBranchToBranchTraffic 
+Update-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServerRG -AllowBranchToBranchTraffic 
 ```
 
 2. Az Azure Route Server és az átjáró (k) közötti útválasztási váltás letiltásához használja a következő parancsot:
 
 ```azurepowershell-interactive 
-Update-AzRouteServer -RouteServerName “myRouteServer” -ResourceGroupName “RouteServerRG” 
+Update-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServerRG
 ```
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
@@ -137,13 +137,13 @@ Ha már nincs szüksége az Azure Route Serverre, az alábbi parancsokkal távol
 1. Távolítsa el a BGP-társat az Azure Route Server és egy NVA között a következő paranccsal:
 
 ```azurepowershell-interactive 
-Remove-AzRouteServerPeer -PeerName “nva_name” -RouteServerName “myRouteServer” -ResourceGroupName “RouteServerRG” 
+Remove-AzRouteServerPeer -PeerName “nva_name” -RouteServerName myRouteServer -ResourceGroupName RouteServerRG 
 ```
 
 2. Az Azure Route Server eltávolítása ezzel a paranccsal:
 
 ```azurepowershell-interactive 
-Remove-AzRouteServer -RouteServerName “myRouteServer” -ResourceGroupName “RouteServerRG” 
+Remove-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServerRG
 ```
 
 ## <a name="next-steps"></a>Következő lépések

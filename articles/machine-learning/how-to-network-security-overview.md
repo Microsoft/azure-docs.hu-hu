@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 10/06/2020
+ms.date: 03/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: 1a73988b66ba7b47f18ecaaa07df59e9047a933b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e3705be10cb540538464e6b1299d848bc9057c7c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691824"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039920"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Virtual Network elkülönítés és Adatvédelem – áttekintés
 
@@ -106,10 +106,7 @@ Ebből a szakaszból megtudhatja, hogyan Azure Machine Learning biztonságosan k
 
 1. Azure Batch szolgáltatások fogadják a feladatot a munkaterületről, és elküldik a betanítási feladatot a számítási környezetnek a számítási erőforrással kiépített nyilvános terheléselosztó használatával. 
 
-1. A számítási erőforrás megkapja a feladatot, és megkezdi a betanítást. A számítási erőforrások biztonságos Storage-fiókokhoz férnek hozzá a betanítási fájlok letöltéséhez és a kimenet feltöltéséhez. 
-
-![Architektúra-diagram, amely bemutatja, hogyan küldhető el egy Azure Machine Learning betanítási feladatot egy VNet használata során](./media/how-to-network-security-overview/secure-training-job-submission.png)
-
+1. A számítási erőforrás megkapja a feladatot, és megkezdi a betanítást. A számítási erőforrások biztonságos Storage-fiókokhoz férnek hozzá a betanítási fájlok letöltéséhez és a kimenet feltöltéséhez.
 
 ### <a name="limitations"></a>Korlátozások
 

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: be5000b6f9153839b926932c82c9f8fa3ab93f5f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a713d869a754f17f4030c531999c822a2cbb76ee
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704837"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039801"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel Azure App Service
 
@@ -42,7 +42,7 @@ A következő útmutató követése:
 - [Privát tanúsítvány hozzáadása az alkalmazáshoz](configure-ssl-certificate.md)
 
 > [!NOTE]
-> Privát tanúsítvány hozzáadásának legegyszerűbb módja egy [ingyenes app Service felügyelt tanúsítvány](configure-ssl-certificate.md#create-a-free-certificate-preview) (előzetes verzió) létrehozása.
+> Privát tanúsítvány hozzáadásának legegyszerűbb módja egy [ingyenes app Service felügyelt tanúsítvány](configure-ssl-certificate.md#create-a-free-managed-certificate-preview) (előzetes verzió) létrehozása.
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
@@ -73,7 +73,7 @@ Ha az alkalmazás nem rendelkezik tanúsítványokkal a kiválasztott egyéni ta
 - **Importálás app Service-tanúsítvány** – kövesse a munkafolyamatot [app Service tanúsítvány importálása](configure-ssl-certificate.md#import-an-app-service-certificate)lapon, majd válassza ezt a lehetőséget.
 
 > [!NOTE]
-> [Létrehozhat egy ingyenes tanúsítványt](configure-ssl-certificate.md#create-a-free-certificate-preview) (előzetes verzió) is, vagy [importálhat egy Key Vault tanúsítványt](configure-ssl-certificate.md#import-a-certificate-from-key-vault), de ezt külön kell elvégeznie, majd vissza kell térnie a **TLS/SSL kötési** párbeszédpanelre.
+> [Létrehozhat egy ingyenes tanúsítványt](configure-ssl-certificate.md#create-a-free-managed-certificate-preview) (előzetes verzió) is, vagy [importálhat egy Key Vault tanúsítványt](configure-ssl-certificate.md#import-a-certificate-from-key-vault), de ezt külön kell elvégeznie, majd vissza kell térnie a **TLS/SSL kötési** párbeszédpanelre.
 
 ### <a name="create-binding"></a>Kötés létrehozása
 

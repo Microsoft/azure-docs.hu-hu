@@ -1,17 +1,16 @@
 ---
 title: Az Azure Log Analytics virtuálisgép-bővítmény hibáinak megoldása
 description: Leírja a Windows és a Linux rendszerű Azure virtuális gépek Log Analytics virtuálisgép-bővítményével kapcsolatos leggyakoribb problémák tüneteit, okait és megoldásait.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/06/2019
-ms.openlocfilehash: c499633931bd44fed5372f1f05521980f0b61a85
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 33bdff8d516929e7f615f3a7f8bd77463eea0c64
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100613808"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040141"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension-in-azure-monitor"></a>A Log Analytics virtuális gépi bővítményének hibaelhárítása az Azure Monitorban
 Ez a cikk segítséget nyújt a Windows-és Linux-alapú virtuális gépek Log Analytics virtuálisgép-bővítményével kapcsolatos hibaelhárítási hibák elhárításához Microsoft Azure rendszeren, és javaslatot tesz a lehetséges megoldásokra.

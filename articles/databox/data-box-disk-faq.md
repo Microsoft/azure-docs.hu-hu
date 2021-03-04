@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: conceptual
-ms.date: 02/17/2021
+ms.date: 03/02/2021
 ms.author: alkohli
 ms.custom: references_regions
-ms.openlocfilehash: 7212fc4113c1de0a7aee4c6c02e8fa65f9828680
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 88aedb7daa375ae6b4a9107dceed1d25ed72ed92
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724829"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039104"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: gyakori kérdések
 
@@ -55,7 +55,7 @@ A. Öt lemez esetén 8 TB-os kapacitással (7 TB felhasználható kapacitással)
 A.  Ha szeretné megtekinteni, hogy jelenleg milyen Data Box lemezek érhetők el, lépjen a [régió rendelkezésre állása területre](data-box-disk-overview.md#region-availability).  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>K. Mely régiókban tárolhatok adatokat a Data Box Disk-lemezekkel?
-A. A Data Box Disk az Egyesült Államok, Kanada, Ausztrália, Nyugat-Európa és Észak-Európa, Korea és Japán régiókban is támogatott. Csak a nyilvános Azure-felhőrégiók támogatottak. Az Azure Government és más független felhők nem támogatottak.
+A. A Data Box Disk az Egyesült Államok, Kanada, EU, Egyesült Királyság, Ausztrália, Szingapúr, India, Kína, Hongkong, Japán, Korea és Dél-Afrika területén is támogatott. Csak a nyilvános Azure-felhőrégiók támogatottak. Az Azure Government és más független felhők nem támogatottak.
 
 ### <a name="q-how-can-i-import-source-data-present-at-my-location-in-one-countryregion-to-an-azure-region-in-a-different-country"></a>K. Hogyan importálhatók a saját helyükre tartozó forrásadatok egy adott országban vagy régióban egy másik országban található Azure-régióba?
 A. Data Box Disk támogatja az adatfeldolgozást kizárólag a rendeltetési országon vagy régióban belül, és nem keresztez nemzetközi határokat. Az egyetlen kivétel az Európai Unió (EU) megrendeléseire vonatkozik, ahol a Data Box-lemezek bármelyik EU-országba/régióba oda tudnak szállítani.
@@ -199,7 +199,7 @@ A.  A másolási folyamat felgyorsításához:
 - Másolja a fájlokat a virtuális gép lemezére.
 
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box-disks"></a>K. Használhatok több tárfiókot is a Data Box Disk-lemezekkel?
-A.  Nem. A Data Box Disk-lemezekkel jelenleg csak egyetlen általános célú vagy hagyományos tárfiók használata támogatott. A gyakori és a ritka elérésű blob is támogatott. Jelenleg csak az USA-beli, Nyugat-európai és észak-európai Azure-beli Storage-fiókok támogatottak.
+A.  Nem. A Data Box Disk-lemezekkel jelenleg csak egyetlen általános célú vagy hagyományos tárfiók használata támogatott. A gyakori és a ritka elérésű blob is támogatott.
 
 ### <a name="q-what-is-the-toolset-available-for-my-data-with-data-box-disks"></a>K. Milyen eszközkészlet érhető el az adataim Data Box lemezzel?
 A. A Data Box Disk elérhető eszközkészlet három eszközt tartalmaz:

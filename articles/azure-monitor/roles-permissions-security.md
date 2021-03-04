@@ -6,13 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
-ms.subservice: ''
-ms.openlocfilehash: 5cd1f5442526b0eb08dffc5430cf1598cc8d14c3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d0877059dca01bf01df7a4f2aeaa5114278ecc97
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609028"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040277"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Szerepkörök, engedélyek és biztonság a Azure Monitorban
 
@@ -70,7 +69,7 @@ A figyelő közreműködő szerepkörrel rendelkező személyek megtekinthetik a
 ## <a name="monitoring-permissions-and-azure-custom-roles"></a>Figyelési engedélyek és egyéni Azure-szerepkörök
 Ha a fenti beépített szerepkörök nem felelnek meg a csoport pontos igényeinek, létrehozhat egy részletesebb engedélyekkel rendelkező Azure-beli [Egyéni szerepkört](../role-based-access-control/custom-roles.md) is. Alább láthatók a közös Azure RBAC-műveletek, amelyekkel a leírásuk Azure Monitor.
 
-| Művelet | Description |
+| Művelet | Leírás |
 | --- | --- |
 | Microsoft. ininsights/ActionGroups/[olvasás, írás, törlés] |A műveleti csoportok olvasása/írása/törlése. |
 | Microsoft. ininsights/ActivityLogAlerts/[olvasás, írás, törlés] |Olvasási/írási/törlési műveletnapló riasztásai. |

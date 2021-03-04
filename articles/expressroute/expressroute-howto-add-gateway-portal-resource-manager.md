@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: tutorial
-ms.date: 10/05/2020
+ms.date: 03/03/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 56e35c23eacdf98db283ba5d8c2e32687cbe0ea8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6c6969fdf413c4eb5e7bbcf046fc397834d6c0a2
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740902"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038917"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Oktatóanyag: virtuális hálózati átjáró konfigurálása a ExpressRoute-hez a Azure Portal használatával
 > [!div class="op_single_selector"]
@@ -67,9 +67,9 @@ A konfigurálás megkezdése előtt tekintse meg az alábbi lépések [videóit]
 
     Ha kettős veremből álló virtuális hálózatot használ, és az IPv6-alapú privát ExpressRoute-t szeretné használni, kattintson az **IP6-címterület hozzáadása** és a bemeneti **IPv6-címtartomány** értékei elemre.
 
-Ezután kattintson az **OK** gombra az értékek mentéséhez és az átjáró-alhálózat létrehozásához.
+    Ezután kattintson az **OK** gombra az értékek mentéséhez és az átjáró-alhálózat létrehozásához.
 
-    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-subnet-gateway.png" alt-text="Adding the subnet":::
+    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-subnet-gateway.png" alt-text="Az alhálózat hozzáadása":::
 
 ## <a name="create-the-virtual-network-gateway"></a>Virtuális hálózati átjáró létrehozása
 

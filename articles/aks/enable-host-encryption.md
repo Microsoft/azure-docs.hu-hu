@@ -3,13 +3,13 @@ title: Gazdagép-alapú titkosítás engedélyezése az Azure Kubernetes szolgá
 description: Megtudhatja, hogyan konfigurálhat gazdagép-alapú titkosítást egy Azure Kubernetes-szolgáltatási (ak-) fürtben
 services: container-service
 ms.topic: article
-ms.date: 01/27/2021
-ms.openlocfilehash: ac28c698a766f1f3febaff582038906f658d58dd
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.date: 03/03/2021
+ms.openlocfilehash: 66e71dfd6a76fb4e6b464eb5c44dcc809fb9be38
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071850"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039733"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Gazdagép-alapú titkosítás az Azure Kubernetes szolgáltatásban (ak) (előzetes verzió)
 
@@ -26,6 +26,13 @@ Ez a funkció csak a fürt létrehozásakor vagy a csomópont-készlet létrehoz
 ### <a name="prerequisites"></a>Előfeltételek
 
 - Győződjön meg arról, hogy telepítve van a `aks-preview` CLI bővítmény v 0.4.73 vagy újabb verziója.
+- Győződjön meg arról, hogy engedélyezve van a `EnableEncryptionAtHostPreview` funkció jelzője `Microsoft.ContainerService` .
+
+Ahhoz, hogy a virtuális gépekhez vagy virtuálisgép-méretezési csoportokhoz titkosítást lehessen használni a gazdagépen, be kell szereznie a funkciót az előfizetésében. Küldje el az **encryptionAtHost@microsoft.com** előfizetési azonosítókat az előfizetések funkciójának beszerzéséhez. 
+
+> [!IMPORTANT]
+> **encryptionAtHost@microsoft.com** Ahhoz, hogy a szolgáltatás engedélyezve legyen a számítási erőforrások számára, e-mailt kell kapnia az előfizetési azonosítókkal. Számítási erőforrások esetében nem engedélyezheti saját magát.
+
 
 ### <a name="install-aks-preview-cli-extension"></a>Az aks-preview CLI-bővítmény telepítése
 

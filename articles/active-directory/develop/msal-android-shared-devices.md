@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: 85f8b340635354d4bb0f28f2b3d79b617bd897f8
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: ea902b8b609d226f6bb9e61ec0bfd60f75a3825d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754883"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038577"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Megosztott eszköz mód Android-eszközökhöz
 
@@ -34,7 +34,7 @@ A megosztott eszköz mód az eszköz Microsoft Identity-beli felügyeletét is b
 Megosztott eszköz üzemmódú alkalmazás létrehozásához a fejlesztők és a felhőalapú eszközök rendszergazdái együttesen működnek:
 
 - A fejlesztők egyfiókos alkalmazást írnak (a több fiókból álló alkalmazások nem támogatottak a megosztott eszköz módban), hozzáadhatók `"shared_device_mode_supported": true` az alkalmazás konfigurációjához, és kódot írhatnak az olyan dolgok kezelésére, mint például a megosztott eszközök kijelentkezése.
-- Az eszközök rendszergazdái az eszköz megosztását a hitelesítő alkalmazás telepítésével, valamint a hitelesítő alkalmazás használatával a megosztott módba állításával készíti el. A [hitelesítő alkalmazás](../user-help/user-help-auth-app-overview.md)használatával csak a [Cloud Device rendszergazdai](../roles/permissions-reference.md#cloud-device-administrator-permissions) szerepkörrel rendelkező felhasználók helyezhetnek el egy eszközt megosztott módba. A Azure Portal a (z) **Azure Active Directory**  >  **szerepkörök és rendszergazdák**  >  **felhőalapú eszköz rendszergazdája** segítségével konfigurálhatja a szervezeti szerepkörök tagságát.
+- Az eszközök rendszergazdái az eszköz megosztását a hitelesítő alkalmazás telepítésével, valamint a hitelesítő alkalmazás használatával a megosztott módba állításával készíti el. A [hitelesítő alkalmazás](../user-help/user-help-auth-app-overview.md)használatával csak a [Cloud Device rendszergazdai](../roles/permissions-reference.md#cloud-device-administrator) szerepkörrel rendelkező felhasználók helyezhetnek el egy eszközt megosztott módba. A Azure Portal a (z) **Azure Active Directory**  >  **szerepkörök és rendszergazdák**  >  **felhőalapú eszköz rendszergazdája** segítségével konfigurálhatja a szervezeti szerepkörök tagságát.
 
  Ez a cikk elsősorban a fejlesztőknek szól.
 
@@ -104,6 +104,6 @@ Az alábbi ábrán az alkalmazás teljes életciklusa látható, valamint az alk
 
 ![Megosztott eszközök alkalmazásának életciklusa](media/v2-shared-device-mode/lifecycle.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbálja ki az [Android-alkalmazás megosztott eszközének használatát](tutorial-v2-shared-device-mode.md) ismertető oktatóanyagot, amely bemutatja, hogyan futtathat egy firstline Worker alkalmazást egy megosztott módú Android-eszközön.

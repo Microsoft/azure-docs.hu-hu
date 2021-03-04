@@ -9,15 +9,15 @@ ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 03/02/2021
 ms.author: aahi
 keywords: helyszíni, Docker, tároló
-ms.openlocfilehash: 2bef6aa4e624386750a4c989d7e56cc1b22aaa5e
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: e157e976186f03aa984877435c42b996ce476740
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861995"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040192"
 ---
 # <a name="install-and-run-docker-containers-for-luis"></a>Docker-tárolók telepítése és futtatása a LUIS-hoz
 
@@ -281,7 +281,7 @@ A lekérdezési paraméterek a lekérdezési válaszban megadhatják, hogy hogya
 |`staging`|boolean|Az átmeneti környezet eredményeiből származó lekérdezést adja vissza, ha igaz értékre van állítva. |
 |`log`|boolean|Naplózza a lekérdezéseket, amelyek később az [aktív tanuláshoz](luis-how-to-review-endpoint-utterances.md)is felhasználhatók. Alapértelmezett érték: true (igaz).|
 
-**_
+***
 
 ### <a name="query-the-luis-app"></a>A LUIS-alkalmazás lekérdezése
 
@@ -299,7 +299,7 @@ curl -G \
 "http://localhost:5000/luis/v3.0/apps/{APP_ID}/slots/production/predict"
 ```
 
-Ha lekérdezéseket szeretne készíteni a _ *átmeneti* környezetbe, cserélje le az `production` útvonalat a következőre `staging` :
+Az **átmeneti** környezet lekérdezéséhez cserélje le az útvonalat a `production` következőre `staging` :
 
 `http://localhost:5000/luis/v3.0/apps/{APP_ID}/slots/staging/predict`
 
@@ -335,7 +335,7 @@ curl -X GET \
 ```
 A verzió neve legfeljebb 10 karakterből állhat, és csak az URL-címekben engedélyezett karaktereket tartalmazza.
 
-**_
+***
 
 ## <a name="import-the-endpoint-logs-for-active-learning"></a>Az aktív tanuláshoz tartozó végponti naplók importálása
 
@@ -346,7 +346,7 @@ A következő helyen a tároló naplófájljainak beágyazott címtár-szerkezet
 /output/luis/{INSTANCE_ID}/
 ```
 
-A LUIS portálon válassza ki az alkalmazást, majd válassza az _ *importálási végpontok** elemet a naplók feltöltéséhez.
+A LUIS portálon válassza ki az alkalmazást, majd válassza a **végponti naplók importálása** elemet a naplók feltöltéséhez.
 
 ![Tároló naplófájljának importálása az aktív tanuláshoz](./media/luis-container-how-to/upload-endpoint-log-files.png)
 
@@ -374,7 +374,7 @@ A LUIS-tároló számlázási adatokat küld az Azure-nak az Azure-fiókja _Cogn
 
 További információ ezekről a beállításokról: [tárolók konfigurálása](luis-container-configuration.md).
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ebben a cikkben megtanulta a Language Understanding (LUIS) tárolók letöltésére, telepítésére és futtatására vonatkozó fogalmakat és munkafolyamatokat. Összegezve:
 
@@ -387,7 +387,7 @@ Ebben a cikkben megtanulta a Language Understanding (LUIS) tárolók letöltés�
 > [!IMPORTANT]
 > Cognitive Services tárolók nem futtathatók az Azure-hoz való csatlakozás nélkül. Az ügyfeleknek engedélyeznie kell, hogy a tárolók a számlázási adatokat mindig a mérési szolgáltatással kommunikáljanak. Cognitive Services tárolók nem küldenek ügyféladatokat (például az elemzett képet vagy szöveget) a Microsoftnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át a [tárolók konfigurálása](luis-container-configuration.md) konfigurációs beállításokat.
 * Tekintse meg a [Luis Container korlátozásait](luis-container-limitations.md) az ismert képességekre vonatkozó korlátozásokról.
