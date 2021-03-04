@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 09e7a39a2d97626dd01a00fdaef9bc4d711d557b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions
+ms.openlocfilehash: 22d7c1bbe03d8b3c0e3b6026c9bac039f0651548
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91828097"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037251"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>AI-gazdagítás az Azure Cognitive Search
 
@@ -32,6 +33,17 @@ A beépített készségek a következő kategóriákba sorolhatók:
 Az Azure Cognitive Search beépített képességei a Cognitive Services API-k: [Computer Vision](../cognitive-services/computer-vision/index.yml) és [text Analytics](../cognitive-services/text-analytics/overview.md)előre betanított gépi tanulási modelljein alapulnak. Ha az erőforrásokat a tartalom feldolgozása során szeretné használni, csatolhatja Cognitive Services erőforrást.
 
 A természetes nyelv és a képfeldolgozás az adatfeldolgozási fázisban történik, és az eredmények egy dokumentum összeállításának részévé válnak az Azure Cognitive Search kereshető indexében. Az adatforrások Azure-adatkészletként vannak kialakítva, majd egy indexelési folyamaton keresztül leküldve, amely a szükséges [beépített képességekkel](cognitive-search-predefined-skills.md) rendelkezik.  
+
+## <a name="feature-availability"></a>Szolgáltatások rendelkezésre állása
+
+Az AI-gazdagodás olyan régiókban érhető el, ahol az Azure Cognitive Services is elérhetők.  Az AI-bővítés aktuális rendelkezésre állását az [Azure-termékek régiónként elérhetővé](https://azure.microsoft.com/global-infrastructure/services/?products=search) tételét ismertető oldalon tekintheti meg.  Az AI-gazdagodás az összes támogatott régióban elérhető, kivéve a következőket:
+
++ Délkelet-Ausztrália
++ Észak-Kína 2
++ Kelet-Norvégia
++ Középnyugat-Németország
+
+Ha a keresési szolgáltatás ezen régiók egyikében található, nem fogja tudni létrehozni és használni a szakértelmével, de az összes többi keresési funkció elérhető és teljes mértékben támogatott.
 
 ## <a name="when-to-use-ai-enrichment"></a>Mikor kell használni a mesterséges intelligenciát
 
@@ -73,7 +85,7 @@ A folyamat elején strukturálatlan szöveggel vagy nem szöveges tartalommal (p
 
 ### <a name="step-2-cognitive-skills-and-enrichment-phase"></a>2. lépés: a kognitív képességek és a gazdagodás fázisa
 
-A gazdagodás az atomi műveleteket végző *kognitív képességekkel* történik. Ha például megrepedt egy PDF-fájlt, alkalmazhatja az entitások felismerését, a nyelvfelismerés vagy a kulcsfontosságú kifejezés kinyerését, hogy az indexben olyan új mezőket hozzon létre, amelyek nem érhetők el natív módon a forrásban. A folyamat során használt szaktudás gyűjteményét teljes egészében *készségkészlet*nevezzük.  
+A gazdagodás az atomi műveleteket végző *kognitív képességekkel* történik. Ha például megrepedt egy PDF-fájlt, alkalmazhatja az entitások felismerését, a nyelvfelismerés vagy a kulcsfontosságú kifejezés kinyerését, hogy az indexben olyan új mezőket hozzon létre, amelyek nem érhetők el natív módon a forrásban. A folyamat során használt szaktudás gyűjteményét teljes egészében *készségkészlet* nevezzük.  
 
 ![Dúsítási fázis](./media/cognitive-search-intro/enrichment-phase-blowup.png "dúsítási fázis")
 

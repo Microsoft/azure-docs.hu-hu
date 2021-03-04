@@ -2,14 +2,13 @@
 title: Intelligens csoportok
 description: Az intelligens csoportok olyan riasztások összesítései, amelyek segítenek csökkenteni a riasztási zajt
 ms.topic: conceptual
-ms.subservice: alerts
 ms.date: 05/15/2018
-ms.openlocfilehash: 743bd1a674c034cd6a0350f959289ac3ecb568de
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8a164fe6e5fd5be58da969d9266329755705ea82
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100614518"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037965"
 ---
 # <a name="smart-groups"></a>Intelligens csoportok
 
@@ -47,7 +46,7 @@ Ha intelligens csoportot választ, az intelligens csoport részletei lap jelenik
 
 Az intelligens csoport részleteit tartalmazó oldal a következő részekből áll.
 
-| Section | Description |
+| Section | Leírás |
 |:---|:---|
 | Riasztások | Felsorolja az intelligens csoportban található egyes riasztásokat. Válasszon ki egy riasztást a riasztás részletei lap megnyitásához. |
 | Előzmények | Felsorolja az intelligens csoport által végrehajtott összes műveletet, valamint a rajta végrehajtott módosításokat. Ez jelenleg csak az állapot változásaira és a riasztások tagságának változásaira korlátozódik. |

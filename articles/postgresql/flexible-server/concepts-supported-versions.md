@@ -5,13 +5,13 @@ author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/16/2020
-ms.openlocfilehash: b139e2f14379e0cd52ca72c347d49bcb4512c473
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 03/03/2021
+ms.openlocfilehash: 474545b7c5eca64b558e5fe26e23e6800b0cab96
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542080"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037166"
 ---
 # <a name="supported-postgresql-major-versions-in-azure-database-for-postgresql---flexible-server"></a>Támogatott PostgreSQL főverziók Azure Database for PostgreSQL-rugalmas kiszolgálón
 
@@ -22,11 +22,11 @@ Azure Database for PostgreSQL – a rugalmas kiszolgáló jelenleg a következő
 
 ## <a name="postgresql-version-12"></a>PostgreSQL 12-es verzió
 
-Az aktuális alverzió 12,4. Tekintse meg a [PostgreSQL dokumentációját](https://www.postgresql.org/docs/12/static/release-12-4.html) , ahol további információt talál az ebben a másodlagos kiadásban található javításokról és javításokról.
+Az aktuális alverzió 12,5. Tekintse meg a [PostgreSQL dokumentációját](https://www.postgresql.org/docs/12/static/release-12-4.html) , ahol további információt talál az ebben a másodlagos kiadásban található javításokról és javításokról.
 
 ## <a name="postgresql-version-11"></a>PostgreSQL 11-es verzió
 
-Az aktuális alverzió 11,9. Tekintse meg a [PostgreSQL dokumentációját](https://www.postgresql.org/docs/11/static/release-11-9.html) , ahol további információt talál az ebben a másodlagos kiadásban található javításokról és javításokról.
+Az aktuális alverzió 11,10. Tekintse meg a [PostgreSQL dokumentációját](https://www.postgresql.org/docs/11/static/release-11-9.html) , ahol további információt talál az ebben a másodlagos kiadásban található javításokról és javításokról.
 
 ## <a name="postgresql-version-10-and-older"></a>PostgreSQL 10-es és régebbi verzió
 
@@ -34,7 +34,7 @@ Azure Database for PostgreSQL rugalmas kiszolgáló esetén nem támogatott a Po
 
 ## <a name="managing-upgrades"></a>Frissítések kezelése
 
-A PostgreSQL-projekt rendszeresen kiad kisebb kiadásokat a jelentett hibák kijavítása érdekében. Azure Database for PostgreSQL a szolgáltatás havi üzembe helyezése során a rendszer a kisebb kiadású kiszolgálók automatikus javítását végzi.
+A PostgreSQL-projekt rendszeresen kiad kisebb kiadásokat a jelentett hibák kijavítása érdekében. Az Azure Database for PostgreSQL a szolgáltatás havi rendszerességű üzembehelyezései során automatikusan alverziókkal frissíti a kiszolgálókat.
 
 A főverzió verziófrissítésének automatizálása még nem támogatott. Például jelenleg nincs automatikus frissítés a PostgreSQL 11-ről a PostgreSQL 12-re.<!-- To upgrade to the next major version, create a [database dump and restore](howto-migrate-using-dump-and-restore.md) to a server that was created with the new engine version.-->
 

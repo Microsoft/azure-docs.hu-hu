@@ -9,98 +9,78 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/02/2019
+ms.date: 02/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 1ffa5d359e689220bd8cdbc7b9f6e305f451269a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: ddfffb77ca889aea9ff32c7be1ce2e4cb7fc04a7
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458753"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037602"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-launchdarkly"></a>Oktatóanyag: Azure Active Directory integráció a LaunchDarkly
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a LaunchDarkly a Azure Active Directory (Azure AD) szolgáltatással.
-A LaunchDarkly és az Azure AD integrálásával a következő előnyöket nyújtja:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a LaunchDarkly a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az LaunchDarkly-t az Azure AD-vel, a következőket teheti:
 
-* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a LaunchDarkly.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a LaunchDarkly (egyszeri bejelentkezés) az Azure AD-fiókokkal.
+* A LaunchDarkly-hez hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a LaunchDarkly az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+    > [!NOTE]
+    > A LaunchDarkly Azure Active Directory integráció egyirányú. Az integráció konfigurálása után az Azure AD segítségével kezelheti a felhasználókat, az SSO-t és a fiókokat a LaunchDarkly-ben, de **nem** használhatja a LaunchDarkly-t a felhasználók, az egyszeri bejelentkezés és az Azure-beli fiókok kezelésére.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció LaunchDarkly való konfigurálásához a következő elemek szükségesek:
+Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
-* LaunchDarkly egyszeri bejelentkezésre engedélyezett előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* LaunchDarkly egyszeri bejelentkezésre engedélyezett előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* A LaunchDarkly támogatja **az SP és a identitásszolgáltató** által KEZDEMÉNYEZett SSO
-* A LaunchDarkly **csak időben támogatja a** felhasználók kiépítési folyamatát
+* A LaunchDarkly támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést.
+* A LaunchDarkly **csak időben támogatja a** felhasználók üzembe helyezését.
 
-## <a name="adding-launchdarkly-from-the-gallery"></a>LaunchDarkly hozzáadása a gyűjteményből
+> [!NOTE]
+> Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
+
+## <a name="add-launchdarkly-from-the-gallery"></a>LaunchDarkly hozzáadása a gyűjteményből
 
 A LaunchDarkly Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a LaunchDarkly a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Ha LaunchDarkly szeretne hozzáadni a katalógusból, hajtsa végre a következő lépéseket:**
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **LaunchDarkly** kifejezést a keresőmezőbe.
+1. Válassza ki a **LaunchDarkly** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
+## <a name="configure-and-test-azure-ad-sso-for-launchdarkly"></a>Azure AD SSO konfigurálása és tesztelése a LaunchDarkly-hez
 
-    ![A Azure Active Directory gomb](common/select-azuread.png)
+Konfigurálja és tesztelje az Azure AD SSO-t a LaunchDarkly a **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a LaunchDarkly-ben.
 
-2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+Az Azure AD SSO és a LaunchDarkly konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
-    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. **[LAUNCHDARKLY SSO konfigurálása](#configure-launchdarkly-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    1. **[Hozzon létre LaunchDarkly-teszt felhasználót](#create-launchdarkly-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-LaunchDarkly rendelkezik.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-4. A keresőmezőbe írja be a **LaunchDarkly**kifejezést, válassza a **LaunchDarkly** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+1. A Azure Portal **LaunchDarkly** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikonra a beállítások szerkesztéséhez.
 
-     ![LaunchDarkly az eredmények listájában](common/search-new-app.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
-
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli az [alkalmazásnév] névvel a **Britta Simon**nevű tesztelési felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és az [alkalmazásnév] kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
-
-Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
-
-1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[LaunchDarkly egyszeri bejelentkezés konfigurálása](#configure-launchdarkly-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-5. **[Hozzon létre LaunchDarkly-teszt felhasználót](#create-launchdarkly-test-user)** – hogy a LaunchDarkly Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
-
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
-
-Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] használatával történő konfigurálásához hajtsa végre a következő lépéseket:
-
-1. A [Azure Portal](https://portal.azure.com/) **LaunchDarkly** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
-
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
-
-2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
-
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
-
-3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
-
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
-
-    ![A képernyőfelvételen az alapszintű SAML-konfiguráció látható, ahol megadható az azonosító, a válasz U R L, majd a Mentés elemre.](common/idp-intiated.png)
+4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet: `app.launchdarkly.com`
 
@@ -108,12 +88,6 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] használatával törté
 
     > [!NOTE]
     > A válasz URL-cím értéke nem valódi. A tényleges válasz URL-címével frissíti az értéket, amelyet később az oktatóanyagban talál. Ha az alkalmazást **identitásszolgáltató** módban kívánja használni, hagyja üresen a **bejelentkezési URL-cím** mezőt, ellenkező esetben nem fogja tudni elindítani a bejelentkezést a **identitásszolgáltató**. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
-
-5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
-
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://app.launchdarkly.com`
-
-    ![Képernyőfelvétel: további U R ls beállítása, ahol megadhatja a bejelentkezést az U R L-ben.](common/metadata-upload-additional-signon.png)
 
 6. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
@@ -123,108 +97,70 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] használatával törté
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-    b. Azure ad-azonosító
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-    c. Kijelentkezési URL-cím
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
-### <a name="configure-launchdarkly-single-sign-on"></a>LaunchDarkly egyetlen Sign-On konfigurálása
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a LaunchDarkly.
+
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **LaunchDarkly** lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+
+## <a name="configure-launchdarkly-sso"></a>LaunchDarkly SSO konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be a LaunchDarkly vállalati webhelyre rendszergazdaként.
 
 2. Válassza a **Fiókbeállítások** lehetőséget a bal oldali navigációs panelen.
 
-    ![A képernyőképen az éles környezetben kiválasztott Fiókbeállítások elem látható.](./media/launchdarkly-tutorial/configure1.png)
+    ![A képernyőképen az éles környezetben kiválasztott Fiókbeállítások elem látható.](./media/launchdarkly-tutorial/configure-1.png)
 
 3. Kattintson a **Biztonság** fülre.
 
-    ![Képernyőfelvétel: a Fiókbeállítások Biztonság lapja.](./media/launchdarkly-tutorial/configure2.png)
+    ![Képernyőfelvétel: a Fiókbeállítások Biztonság lapja.](./media/launchdarkly-tutorial/configure-2.png)
 
-4. Kattintson az **egyszeri bejelentkezés engedélyezése** , majd az **SAML-konfiguráció szerkesztése**elemre.
+4. Kattintson az **egyszeri bejelentkezés engedélyezése** , majd az **SAML-konfiguráció szerkesztése** elemre.
 
-    ![Képernyőfelvétel: az egyszeri bejelentkezési oldal, amelyen ENGEDÉLYEZheti az S S O-t, és SZERKESZTHETi az SAML-KONFIGURÁCIÓt.](./media/launchdarkly-tutorial/configure3.png)
+    ![Képernyőfelvétel: az egyszeri bejelentkezési oldal, amelyen ENGEDÉLYEZheti az S S O-t, és SZERKESZTHETi az SAML-KONFIGURÁCIÓt.](./media/launchdarkly-tutorial/configure-3.png)
 
 5. Az **SAML-konfiguráció szerkesztése** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Képernyőfelvétel: az SAML-konfiguráció szerkesztése szakasz, ahol az itt ismertetett módosításokat végezheti el.](./media/launchdarkly-tutorial/configure4.png)
+    ![Képernyőfelvétel: az SAML-konfiguráció szerkesztése szakasz, ahol az itt ismertetett módosításokat végezheti el.](./media/launchdarkly-tutorial/configure-4.png)
 
     a. Másolja az **SAML fogyasztói szolgáltatás URL-címét** a példányhoz, és illessze be a válasz URL-szövegmezőbe a **LaunchDarkly tartomány és URL-címek** szakaszban Azure Portal.
 
     b. A **bejelentkezési URL** szövegmezőbe illessze be a **bejelentkezési URL-címet** , amelyet a Azure Portal másolt.
 
-    c. Nyissa meg a letöltött tanúsítványt a Azure Portal a Jegyzettömbben, másolja a tartalmat, majd illessze be az **X. 509-tanúsítvány** mezőbe, vagy közvetlenül feltöltheti a tanúsítványt a **feltöltés**gombra kattintva.
+    c. Nyissa meg a letöltött tanúsítványt a Azure Portal a Jegyzettömbben, másolja a tartalmat, majd illessze be az **X. 509-tanúsítvány** mezőbe, vagy közvetlenül feltöltheti a tanúsítványt a **feltöltés** gombra kattintva.
 
-    d. Kattintson a **Mentés** gombra
-
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
-
-Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
-
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-
-    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
-
-2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
-
-    ![Új felhasználó gomb](common/new-user.png)
-
-3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
-
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
-
-    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
-  
-    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
-    Például: BrittaSimon@contoso.com
-
-    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
-
-    d. Kattintson a **Létrehozás** lehetőségre.
-
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
-
-Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a LaunchDarkly hozzáférésének biztosításával.
-
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **LaunchDarkly**lehetőséget.
-
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
-
-2. Az alkalmazások listában válassza a **LaunchDarkly**lehetőséget.
-
-    ![Az LaunchDarkly hivatkozás az alkalmazások listájában](common/all-applications.png)
-
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
-
-    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
-
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
-
-5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
-
-6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-
-7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+    d. Kattintson a **Mentés** gombra.
 
 ### <a name="create-launchdarkly-test-user"></a>LaunchDarkly-tesztelési felhasználó létrehozása
 
-Ennek a szakasznak a célja egy Britta Simon nevű felhasználó létrehozása a LaunchDarkly-ben. A LaunchDarkly támogatja az igény szerinti üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Új felhasználó jön létre a LaunchDarkly elérésére tett kísérlet során, ha még nem létezik.
+Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a LaunchDarkly-ben. A LaunchDarkly támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ebben a szakaszban nincs művelet. Ha egy felhasználó még nem létezik a LaunchDarkly-ben, a rendszer egy újat hoz létre a hitelesítés után.
 
-> [!Note]
-> Ha manuálisan kell létrehoznia egy felhasználót, forduljon a [LaunchDarkly ügyfélszolgálati csapatához](mailto:support@launchdarkly.com).
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját.
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+* Kattintson az alkalmazás tesztelése Azure Portal lehetőségre, és automatikusan be kell jelentkeznie arra a LaunchDarkly, amelyhez be szeretné állítani az egyszeri bejelentkezést.
 
-Ha a hozzáférési panelen a LaunchDarkly csempére kattint, automatikusan be kell jelentkeznie arra a LaunchDarkly, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+* Használhatja a Microsoft saját alkalmazásait. Amikor a saját alkalmazások LaunchDarkly csempére kattint, automatikusan be kell jelentkeznie arra a LaunchDarkly, amelyhez be szeretné állítani az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
 
-## <a name="additional-resources"></a>További források
+## <a name="next-steps"></a>Következő lépések
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
-
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
-
-- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)
+A LaunchDarkly konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

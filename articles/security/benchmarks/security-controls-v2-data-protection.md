@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: c8d907062835f18393946b04f1f1e9d5ec345411
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 50358eed580bbd83f25386feb0068a252060672b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101735760"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037115"
 ---
 # <a name="security-control-v2-data-protection"></a>Biztonság-vezérlés v2: Adatvédelem
 
 Az adatvédelem magában foglalja az adatvédelem inaktív állapotban, továbbításkor és a jogosult hozzáférési mechanizmusok útján történő felügyeletét. Ez magában foglalja a bizalmas adategységek felderítését, osztályozását, védelmének és figyelését a hozzáférés-vezérlés, a titkosítás és az Azure-beli naplózás használatával.
 
-A megfelelő beépített Azure Policy megjelenítéséhez tekintse meg [Az Azure Security benchmark szabályozási megfelelőségének beépített kezdeményezését](../../governance/policy/samples/azure-security-benchmark#data-protection) ismertető témakört: Adatvédelem
+A megfelelő beépített Azure Policy megjelenítéséhez tekintse meg [Az Azure Security benchmark szabályozási megfelelőségének beépített kezdeményezését](../../governance/policy/samples/azure-security-benchmark.md#data-protection) ismertető témakört: Adatvédelem
 
 ## <a name="dp-1-discovery-classify-and-label-sensitive-data"></a>DP-1: Bizalmas adatok felderítése, besorolása és címkézése
 

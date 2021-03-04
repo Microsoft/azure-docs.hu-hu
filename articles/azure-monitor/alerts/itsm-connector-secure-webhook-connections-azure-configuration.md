@@ -1,17 +1,16 @@
 ---
 title: IT-szolgáltatásmenedzsmenti csatoló – biztonságos exportálás Azure Monitor – Azure-konfigurációk
 description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja az Azure-t úgy, hogy a ITSM-termékek/szolgáltatások a biztonságos exportálással való összekapcsolásához Azure Monitor a ITSM-munkaelemek központilag figyeléséhez
-ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/03/2021
-ms.openlocfilehash: 62167b8fd72c660e50378a9492528aa5b70bbee7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8eb9430e3d280c52cf84c61f0a44cb12152ac054
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100620838"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037540"
 ---
 # <a name="configure-azure-to-connect-itsm-tools-using-secure-export"></a>Az Azure konfigurálása a ITSM-eszközök biztonságos exportálással történő összekapcsolásához
 
@@ -30,7 +29,7 @@ A "biztonságos exportálás" használatához kövesse az alábbi lépéseket:
 
 Az alábbi lépéseket követve regisztrálja az alkalmazást az Azure AD-ben:
 
-1. Kövesse az [alkalmazás regisztrálása a Microsoft Identity platformmal](../../active-directory/develop/quickstart-register-app.md)című témakör lépéseit.
+1. Kövesse az [alkalmazás a Microsoft identitásplatformján való regisztrálását](../../active-directory/develop/quickstart-register-app.md) ismertető cikkben található lépéseket.
 2. Az Azure AD-ben válassza az **alkalmazás közzététele** lehetőséget.
 3. Adja **meg** az **alkalmazás azonosítójának URI** azonosítóját.
 
@@ -44,7 +43,7 @@ Választható lépésként megadhatja az alkalmazási szerepkört a létrehozott
 
 Ez a lépés ugyanazokkal a PowerShell- [parancsokkal](../alerts/action-groups.md#secure-webhook-powershell-script)végezhető el.
 
-## <a name="create-a-secure-webhook-action-group"></a>Biztonságos webhook-műveleti csoport létrehozása
+## <a name="create-a-secure-webhook-action-group"></a>Biztonságos webhook műveletcsoport létrehozása
 
 Miután az alkalmazás regisztrálva lett az Azure AD-ben, létrehozhat munkaelemeket a ITSM eszközön az Azure-riasztások alapján, a biztonságos webhook művelettel a műveleti csoportokban.
 
