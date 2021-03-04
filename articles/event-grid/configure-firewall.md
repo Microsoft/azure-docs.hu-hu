@@ -2,13 +2,13 @@
 title: IP-tűzfal konfigurálása Azure Event Grid témakörökhöz vagy tartományokhoz
 description: Ez a cikk a tűzfalbeállítások konfigurálását ismerteti Event Grid témakörökhöz vagy tartományokhoz.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: fd190a13a177b6b6d0f6b0dbcaa35d63dccd93c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/02/2021
+ms.openlocfilehash: 178b9d84ea8b2e0f764f7584526db8dbcf5284f3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324161"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031837"
 ---
 # <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains"></a>IP-tűzfal konfigurálása Azure Event Grid témakörökhöz vagy tartományokhoz 
 Alapértelmezés szerint a témakör és a tartomány elérhető az internetről, feltéve, hogy a kérés érvényes hitelesítéssel és engedélyezéssel rendelkezik. Az IP-tűzfallal a [CIDR (osztály nélküli Inter-Domain útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelöléssel tovább korlátozhatja az IPv4-címek vagy az IPv4-címtartományok körét. A más IP-címről származó közzétevőket a rendszer elutasítja, és 403 (tiltott) választ fog kapni. A Event Grid által támogatott hálózati biztonsági funkciókkal kapcsolatos további információkért lásd: [Event Grid hálózati biztonsága](network-security.md).
@@ -16,7 +16,7 @@ Alapértelmezés szerint a témakör és a tartomány elérhető az internetről
 Ez a cikk azt ismerteti, hogyan konfigurálható az IP-tűzfalbeállítások Azure Event Grid témakörökhöz vagy tartományokhoz.
 
 ## <a name="use-azure-portal"></a>Az Azure Portal használata
-Ez a szakasz bemutatja, hogyan használható a Azure Portal a bejövő IP-tűzfalszabályok létrehozásához. Az ebben a szakaszban bemutatott lépések témakörökre vonatkoznak. Hasonló lépéseket használhat a **tartományok**bejövő IP-szabályainak létrehozásához. 
+Ez a szakasz bemutatja, hogyan használható a Azure Portal a bejövő IP-tűzfalszabályok létrehozásához. Az ebben a szakaszban bemutatott lépések témakörökre vonatkoznak. Hasonló lépéseket használhat a **tartományok** bejövő IP-szabályainak létrehozásához. 
 
 1. A [Azure Portal](https://portal.azure.com)navigáljon az Event Grid-témakörhöz vagy a tartományhoz, és váltson a **hálózatkezelés** lapra.
 2. Válassza a **nyilvános hálózatok** lehetőséget az erőforrás eléréséhez az összes hálózat, beleértve az internetet. 
@@ -32,21 +32,8 @@ Ez a szakasz bemutatja, hogyan használható a Azure Portal a bejövő IP-tűzfa
 
 
 ## <a name="use-azure-cli"></a>Az Azure parancssori felület használatával
-Ebből a szakaszból megtudhatja, hogyan hozhat létre a bejövő IP-szabályokkal rendelkező témaköröket az Azure CLI-parancsok használatával. Az ebben a szakaszban bemutatott lépések témakörökre vonatkoznak. Hasonló lépéseket használhat a **tartományok**bejövő IP-szabályainak létrehozásához. 
+Ebből a szakaszból megtudhatja, hogyan hozhat létre a bejövő IP-szabályokkal rendelkező témaköröket az Azure CLI-parancsok használatával. Az ebben a szakaszban bemutatott lépések témakörökre vonatkoznak. Hasonló lépéseket használhat a **tartományok** bejövő IP-szabályainak létrehozásához. 
 
-
-### <a name="prerequisites"></a>Előfeltételek
-Frissítse a CLI Azure Event Grid bővítményét a következő parancs futtatásával: 
-
-```azurecli-interactive
-az extension update -n eventgrid
-```
-
-Ha a bővítmény nincs telepítve, futtassa a következő parancsot a telepítéséhez: 
-
-```azurecli-interactive
-az extension add -n eventgrid
-```
 
 ### <a name="enable-or-disable-public-network-access"></a>Nyilvános hálózati hozzáférés engedélyezése vagy letiltása
 Alapértelmezés szerint a nyilvános hálózati hozzáférés engedélyezve van a témakörökhöz és a tartományokhoz. Azt is engedélyezheti explicit módon, vagy letilthatja. A bejövő IP-tűzfalszabályok beállításával korlátozhatja a forgalmat. 
@@ -160,7 +147,7 @@ az eventgrid topic update \
 
 
 ## <a name="use-powershell"></a>A PowerShell használata
-Ebből a szakaszból megtudhatja, hogyan hozhat létre Azure PowerShell-parancsokat a bejövő IP-tűzfalszabályok használatával Azure Event Grid témakörök létrehozásához. Az ebben a szakaszban bemutatott lépések témakörökre vonatkoznak. Hasonló lépéseket használhat a **tartományok**bejövő IP-szabályainak létrehozásához. 
+Ebből a szakaszból megtudhatja, hogyan hozhat létre Azure PowerShell-parancsokat a bejövő IP-tűzfalszabályok használatával Azure Event Grid témakörök létrehozásához. Az ebben a szakaszban bemutatott lépések témakörökre vonatkoznak. Hasonló lépéseket használhat a **tartományok** bejövő IP-szabályainak létrehozásához. 
 
 ### <a name="prerequisites"></a>Előfeltételek
 Kövesse az utasításokat a következő témakör útmutatását követve [: a portál használatával hozzon létre egy Azure ad-alkalmazást és egy egyszerű szolgáltatásnevet, amely hozzáférhet az erőforrásokhoz](../active-directory/develop/howto-create-service-principal-portal.md) Azure Active Directory-alkalmazás létrehozásához, és jegyezze fel az alábbi értékeket:

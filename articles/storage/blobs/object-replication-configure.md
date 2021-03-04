@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/09/2020
+ms.date: 03/02/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 226601eadf922a9d834ab84520fd1edf964348fa
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 2b6855d72b644a3fe1fa46c883eb7414383a1a57
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762924"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031701"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>Objektumok replikálásának konfigurálása a blokkos blobokhoz
 
@@ -238,10 +238,10 @@ Ne feledje, hogy a házirend létrehozásához hozzá kell rendelnie a Azure Res
 
 A következő táblázat összefoglalja, hogy mely értékeket kell használni a JSON-fájlban a szabályzat-AZONOSÍTÓhoz és a szabály-azonosítóhoz.
 
-| Ha létrehoz egy JSON-fájlt ehhez a fiókhoz... | Állítsa be a szabályzat AZONOSÍTÓját és a szabály azonosítóit erre az értékre... |
-|-|-|
-| Cél fiók | A sztring *alapértelmezett* értéke. Az Azure Storage létrehozza a szabályzat AZONOSÍTÓját és a szabály azonosítóit. |
-| Forrásoldali fiók | A házirend-azonosító és a szabály-azonosítók azon értékei, amelyeket a rendszer a célkiszolgálón a JSON-fájlként megadott szabályzat letöltésekor adott vissza. |
+| Ha létrehoz egy JSON-fájlt ehhez a fiókhoz... | Állítsa be a házirend-azonosítót erre az értékre. | Szabály-azonosítók beállítása erre az értékre |
+|-|-|-|
+| Cél fiók | A sztring *alapértelmezett* értéke. Az Azure Storage létrehozza a házirend-azonosító értékét. | Üres karakterlánc. Az Azure Storage létrehozza a szabály azonosító értékeit. |
+| Forrásoldali fiók | Annak a házirend-AZONOSÍTÓnak az értéke, amelyet a rendszer a cél fiókban a JSON-fájlként megadott házirend letöltésekor adott vissza. | A rendszer a cél fiókban a JSON-fájlként megadott szabályzat letöltésekor visszaadott szabály-azonosítók értékeit adja vissza. |
 
 Az alábbi példa egy replikációs házirendet definiál a célszámítógépen egyetlen olyan szabállyal, amely megfelel a *b* előtagnak, és beállítja a replikálni kívánt Blobok minimális létrehozási idejét. Ne felejtse el lecserélni a szögletes zárójelben lévő értékeket a saját értékeire:
 
@@ -253,7 +253,7 @@ Az alábbi példa egy replikációs házirendet definiál a célszámítógépen
     "destinationAccount": "<dest-account>",
     "rules": [
       {
-        "ruleId": "default",
+        "ruleId": "",
         "sourceContainer": "<source-container>",
         "destinationContainer": "<destination-container>",
         "filters": {
@@ -272,7 +272,7 @@ Az alábbi példa egy replikációs házirendet definiál a célszámítógépen
 
 A következő lépésekkel konfigurálhatja az objektumok replikálását a cél fiókban egy JSON-fájllal a Azure Portalban:
 
-1. Hozzon létre egy helyi JSON-fájlt, amely meghatározza a cél fiók replikációs házirendjét. Állítsa a **policyId** mezőt az **alapértelmezett** értékre, hogy az Azure Storage meghatározza a szabályzat azonosítóját.
+1. Hozzon létre egy helyi JSON-fájlt, amely meghatározza a cél fiók replikációs házirendjét. Állítsa a **policyId** mezőt az *alapértelmezett* értékre, hogy az Azure Storage meghatározza a szabályzat azonosítóját.
 
     A replikációs házirendet definiáló JSON-fájlok létrehozásának egyszerű módja, ha először létrehoz egy tesztelési replikációs házirendet a Azure Portal két Storage-fiókja között. Ezután letöltheti a replikációs szabályokat, és szükség szerint módosíthatja a JSON-fájlt.
 
@@ -441,7 +441,7 @@ az storage account or-policy delete \
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Objektum-replikáció áttekintése](object-replication-overview.md)
 - [BLOB-verziószámozás engedélyezése és kezelése](versioning-enable.md)

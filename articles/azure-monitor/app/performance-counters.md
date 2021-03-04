@@ -4,12 +4,12 @@ description: A rendszer és az egyéni .NET-teljesítményszámlálók figyelés
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5f1bd3ac4542dcce0d41f69a9c1664b747214554
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 423e17ef2b44286c28b464836075284929d8644c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100583881"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031361"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Rendszerteljesítmény-számlálók a Application Insightsban
 
@@ -21,7 +21,7 @@ A metrikák ablaktáblán a teljesítményszámlálók alapértelmezett készlet
 
 ![Application Insightsben jelentett teljesítményszámlálók](./media/performance-counters/performance-counters.png)
 
-A ASP.NET/ASP.NET Core-webalkalmazások gyűjtésére konfigurált aktuális alapértelmezett számlálók a következők:
+A ASP.NET webalkalmazások gyűjtésére konfigurált aktuális alapértelmezett számlálók a következők:
 - Feldolgozási idő%-ban a \\ processzoron
 - A \\ processzor processzoridő (%) normalizálása folyamatban van
 - \\Rendelkezésre álló memória bájtjai
@@ -31,6 +31,14 @@ A ASP.NET/ASP.NET Core-webalkalmazások gyűjtésére konfigurált aktuális ala
 - \\Saját bájtok feldolgozása
 - Feldolgozási \\ IO-adatmennyiség (bájt/s)
 - ASP.NET \\ -kérelmek az alkalmazás-várólistán
+- Processzor (_Total) \\ processzoridő (%)
+
+A ASP.NET Core webalkalmazások gyűjtésére konfigurált aktuális alapértelmezett számlálók a következők:
+- Feldolgozási idő%-ban a \\ processzoron
+- A \\ processzor processzoridő (%) normalizálása folyamatban van
+- \\Rendelkezésre álló memória bájtjai
+- \\Saját bájtok feldolgozása
+- Feldolgozási \\ IO-adatmennyiség (bájt/s)
 - Processzor (_Total) \\ processzoridő (%)
 
 ## <a name="add-counters"></a>Számlálók hozzáadása

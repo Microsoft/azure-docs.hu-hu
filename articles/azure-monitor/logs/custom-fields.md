@@ -1,17 +1,16 @@
 ---
 title: Egyéni mezők a Azure Monitorban (előzetes verzió) | Microsoft Docs
 description: A Azure Monitor egyéni mezők funkciója lehetővé teszi, hogy saját kereshető mezőket hozzon létre egy olyan Log Analytics-munkaterületen lévő rekordokból, amelyek egy összegyűjtött rekord tulajdonságaihoz vannak hozzáadva.  Ez a cikk az egyéni mezők létrehozásának folyamatát ismerteti, és részletes útmutatót nyújt egy adott eseményről.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: f35100d703e56d1fda731aab5e6a96c791c8f0d9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e7ddeaf1273a9e3b5608336b24c07fad3c3f4525
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101713677"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031038"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Egyéni mezők létrehozása Log Analytics munkaterületen Azure Monitor (előzetes verzió)
 

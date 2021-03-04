@@ -1,17 +1,16 @@
 ---
 title: A Log Analytics a Azure Monitor a saját lekérdezések kiindulási pontként használható lekérdezési példákat kínál.
 description: Az igényeinek megfelelő lekérdezések
-ms.subservice: logs
 ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 06/16/2020
-ms.openlocfilehash: e421676ab8c44abc3432ab7ac45aecf98c98c304
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e4f20032febe1c4afe9cb0964c1b448eaa018103
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708033"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030851"
 ---
 # <a name="example-queries-in-azure-monitor-log-analytics"></a>Példák lekérdezésekre Azure Monitor Log Analytics
 Log Analytics olyan lekérdezési példákat kínál, amelyek a saját vagy a saját lekérdezések kiindulási pontként használhatók. Ez a cikk példaként szolgáló lekérdezéseket és azok használatát ismerteti.

@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 keywords: kognitív szolgáltatások, kognitív intelligencia, kognitív megoldások, AI-szolgáltatások
 ms.service: cognitive-services
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: 3fd1d9e708a5f1a500440f20c2947ddfe4bc7460
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 0ad2d0a10b20aa049147d61bd4e8168ea956392c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368916"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031922"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>Gyors útmutató: Cognitive Services-erőforrás létrehozása a Azure Portal használatával
 
@@ -40,9 +40,9 @@ Az Azure Cognitive Services a REST API-kkal rendelkező felhőalapú szolgáltat
 
     A több szolgáltatásból álló erőforrás jelenleg a következő Cognitive Serviceshoz biztosít hozzáférést:
 
-    - Számítógépes látástechnológia
+    - Computer Vision
     - Content Moderator
-    - Arcfelismerés
+    - Face
     - Language Understanding (LUIS)
     - Szövegelemzés
     - Fordító
@@ -59,14 +59,14 @@ Az Azure Cognitive Services a REST API-kkal rendelkező felhőalapú szolgáltat
     | Látás                      | Beszéd                  | Nyelv                          | Döntés             | Keresés                 |
     |-----------------------------|-------------------------|-----------------------------------|----------------------|------------------------|
     | [Számítógép jövőképe](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [Beszédfelismerési szolgáltatások](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [Magával ragadó olvasó](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [Anomáliadetektor](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | [Bing Search API v7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7) |
-    | [Egyéni jövőkép szolgáltatás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) | [Beszélőfelismerés](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeakerRecognition) | [Language Understanding (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | [Bing – Egyéni keresés](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) |
+    | [Egyéni jövőkép szolgáltatás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) | [Speaker Recognition](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeakerRecognition) | [Language Understanding (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | [Bing – Egyéni keresés](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) |
     | [Face](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)                    |                         | [QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)                     | [Personalizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)     | [Bing – Entitáskeresés](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingEntitySearch) |
     | [Ink Recognizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesInkRecognizer)        |                         | [Text Analytics](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |  [Metrics Advisor](https://go.microsoft.com/fwlink/?linkid=2142156)                    | [Bing – Helyesírás-ellenőrzés](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7)   |
-    |           |                         | [Fordító](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)               |                      | [Bing Autosuggest](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)                       |
+    |           |                         | [Translator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)               |                      | [Bing Autosuggest](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)                       |
 
-    **_
+    ***
 
-3. A _ *create* * lapon adja meg a következő információkat:
+3. A **Létrehozás** lapon adja meg a következő információkat:
 
     #### <a name="multi-service-resource"></a>[Több szolgáltatásból álló erőforrás](#tab/multiservice)
 
@@ -80,7 +80,7 @@ Az Azure Cognitive Services a REST API-kkal rendelkező felhőalapú szolgáltat
 
     ![Több szolgáltatás erőforrás-erőforrás-létrehozási képernyője](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
 
-    Kattintson a **Létrehozás** gombra.
+    Kattintson a **Létrehozás** lehetőségre.
 
     #### <a name="single-service-resource"></a>[Egy szolgáltatásból származó erőforrás](#tab/singleservice)
 
@@ -94,15 +94,15 @@ Az Azure Cognitive Services a REST API-kkal rendelkező felhőalapú szolgáltat
 
     ![Egy szolgáltatásbeli erőforrás-létrehozási képernyő](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
-    Kattintson a **Létrehozás** gombra.
+    Kattintson a **Létrehozás** lehetőségre.
 
-    **_
+    ***
 
 [!INCLUDE [Register Azure resource for subscription](./includes/register-resource-subscription.md)]
 
 ## <a name="get-the-keys-for-your-resource"></a>Az erőforrás kulcsainak beolvasása
 
-1. Az erőforrás sikeres üzembe helyezése után kattintson az _ *Ugrás erőforrás* * elemre a **következő lépések** alatt.
+1. Az erőforrás sikeres üzembe helyezése után kattintson az **Ugrás az erőforráshoz** lehetőségre a **következő lépések** alatt.
 
     ![Cognitive Services keresése](media/cognitive-services-apis-create-account/resource-next-steps.png)
 

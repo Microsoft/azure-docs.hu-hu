@@ -1,17 +1,16 @@
 ---
 title: A virtuális gépekkel való bepillantások engedélyezése Resource Manager-sablonok használatával
 description: Ez a cikk azt ismerteti, hogyan engedélyezheti a VM-információkat egy vagy több Azure-beli virtuális gép vagy virtuálisgép-méretezési csoport számára Azure PowerShell vagy Azure Resource Manager-sablonok használatával.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 57e2649dfe651bfa1e2ef18ff52ca611c122d696
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fc0c304a3fea81f44e01d3e815f34e44728ea42e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101707489"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031868"
 ---
 # <a name="enable-vm-insights-using-resource-manager-templates"></a>A virtuális gépekkel való bepillantások engedélyezése Resource Manager-sablonok használatával
 Ez a cikk bemutatja, hogyan engedélyezheti a virtuális gépek vagy virtuálisgép-méretezési csoport számára a virtuálisgép-információkat Resource Manager-sablonok használatával. Ez az eljárás a következő módon használható:

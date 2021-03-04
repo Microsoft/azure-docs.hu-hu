@@ -1,17 +1,16 @@
 ---
 title: alkalmazás () kifejezés Azure Monitor log lekérdezésekben | Microsoft Docs
 description: Az alkalmazás kifejezése egy Azure Monitor naplózási lekérdezésben szerepel, hogy egy adott Application Insights alkalmazásból egy adott erőforráscsoport, egy másik erőforráscsoport vagy egy másik előfizetés adatait olvassa be.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/09/2019
-ms.openlocfilehash: 4789594cef0f7e900582dd9aad231b81547d3b3e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 235a6bf4a0dd9afcac8751067b2eac3ddb37c0cd
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728416"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031242"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>alkalmazás () kifejezés Azure Monitor lekérdezésben
 

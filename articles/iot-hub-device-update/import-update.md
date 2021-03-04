@@ -1,17 +1,17 @@
 ---
 title: Új frissítés importálása | Microsoft Docs
 description: How-To útmutató egy új frissítés importálásához IoT Hub eszköz frissítése IoT Hub.
-author: andbrown
+author: andrewbrownmsft
 ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: d8757f3076f784576f95bbdfc30abf578446c776
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c83221743e0566d783c38c40aaf92111a0cd80f7
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663288"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030732"
 ---
 # <a name="import-new-update"></a>Új frissítés importálása
 Ismerje meg, hogyan importálhat új frissítést a IoT Hub eszköz frissítésében.
@@ -53,7 +53,7 @@ Ismerje meg, hogyan importálhat új frissítést a IoT Hub eszköz frissítés�
     $importManifest | Out-File '.\importManifest.json' -Encoding UTF8
     ```
 
-    A rövid útmutatóhoz Íme néhány példa a fenti paraméterek értékeire. A teljes dokumentációt az alábbi, a teljes importálási jegyzékfájlt ismertető szakaszban találja.
+    A rövid útmutatóhoz Íme néhány példa a fenti paraméterek értékeire. További részletekért tekintse meg a teljes [importálási jegyzékfájl sémáját](import-schema.md) is.
 
     | Paraméter | Leírás |
     | --------- | ----------- |
@@ -66,19 +66,6 @@ Ismerje meg, hogyan importálhat új frissítést a IoT Hub eszköz frissítés�
     | installedCriteria | <ul><li>SWVersion értékének megadása a `microsoft/swupdate:1` frissítési típushoz</li><li>Adja meg a `microsoft/apt:1` frissítési típus javasolt értékét.
     | updateFilePath (ok) | A frissítési fájl (ok) elérési útja a számítógépen
 
-    Teljes importálási jegyzékfájl sémája
-
-    | Név | Típus | Leírás | Korlátozások |
-    | --------- | --------- | --------- | --------- |
-    | UpdateId | `UpdateId` objektum | Identitás frissítése. |
-    | Frissítés típusa | sztring | Frissítés típusa: <ul><li>Itt adhatja meg, `microsoft/apt:1` Mikor hajtson végre egy Package-alapú frissítést a Reference Agent használatával.</li><li>Itt adhatja meg, `microsoft/swupdate:1` hogy mikor hajtson végre rendszerkép-alapú frissítést a Reference Agent használatával.</li><li>Itt adhatja meg `microsoft/simulator:1` a minta ügynök szimulátor használatát.</li><li>Egyedi típust adjon meg, ha egyéni ügynököt fejleszt.</li></ul> | <ul><li>Formátumban `{provider}/{type}:{typeVersion}`</li><li>Maximális 32 karakter összesen</li></ul> |
-    | InstalledCriteria | sztring | Az ügynök által értelmezett karakterlánc annak megállapítására, hogy a frissítés sikeresen alkalmazva lett-e:  <ul><li>Adja  meg a frissítési típus SWVersion értékét `microsoft/swupdate:1` .</li><li>Adja meg a `{name}-{version}` frissítési típust `microsoft/apt:1` , amelynek a nevét és verzióját az apt-fájlból kell beolvasni.</li><li>Adja meg a frissítési fájl kivonatát a frissítési típushoz `microsoft/simulator:1` .</li><li>Egyéni karakterláncot egyedi ügynök létrehozásakor kell megadni.</li></ul> | Legfeljebb 64 karakter |
-    | Kompatibilitás | Objektumok tömbje `CompatibilityInfo` | A frissítéssel kompatibilis eszköz kompatibilitási információi. | Legfeljebb 10 elem |
-    | CreatedDateTime | dátum és idő | A frissítés létrehozásának dátuma és időpontja. | Tagolt ISO 8601 dátum és idő formátuma (UTC) |
-    | ManifestVersion | sztring | A jegyzékfájl-séma verziójának importálása. Megadható `2.0` , amely kompatibilis lesz a `urn:azureiot:AzureDeviceUpdateCore:1` csatolóval és az `urn:azureiot:AzureDeviceUpdateCore:4` adapterrel.</li></ul> | Kötelező `2.0` |
-    | Fájlok | Objektumok tömbje `File` | Hasznos adatok fájljainak frissítése | Legfeljebb 5 fájl |
-
-Megjegyzés: minden mező kitöltése kötelező.
 
 ## <a name="review-generated-import-manifest"></a>Létrehozott importálási jegyzékfájl áttekintése
 

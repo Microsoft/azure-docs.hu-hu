@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre Java-függvényeket, és hogyan t
 ms.topic: quickstart
 ms.date: 11/03/2020
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 38ed05d8bf9f7714b9cd58449f565cf94cb481e5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6c84bf4ebc73857fa0280ffbcbf46b68c2da630f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748567"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031718"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-using-visual-studio-code"></a>Rövid útmutató: Java-függvény létrehozása az Azure-ban a Visual Studio Code használatával
 
@@ -140,7 +140,7 @@ A kód első üzembe helyezése magában foglalja az Azure-előfizetésben talá
 
     + **Előfizetés kiválasztása**: válassza ki a használni kívánt előfizetést. Ez nem jelenik meg, ha csak egy előfizetéssel rendelkezik.
 
-    + **Azure-beli Függvényalkalmazás kiválasztása**: Válassza a `- Create new Function App` elemet.
+    + **Azure-beli Függvényalkalmazás kiválasztása**: Válassza a `Create new Function App` elemet.
 
     + **Adja meg a Function alkalmazás globálisan egyedi nevét**: írjon be egy, az Azure-ban egyedi nevet egy URL-útvonalon. A rendszer érvényesíti a beírt nevet a globális egyediség biztosítása érdekében.
 

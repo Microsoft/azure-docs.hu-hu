@@ -7,12 +7,12 @@ ms.custom:
 - devx-track-python
 - devx-track-azurecli
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 76ec99e5f892438aaa637b15bb7382843d90f334
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: da7f6fdaedd8105363cc62bf55bae2cb5f72f234
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748783"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031650"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>Gyors útmutató: Python-függvény létrehozása az Azure-ban a parancssorból
 
@@ -62,7 +62,7 @@ Ellenőrizze az előfeltételeket, amelyek attól függnek, hogy az Azure CLI-t 
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-+ A terminál vagy a parancssorablakban futtassa a parancsot az `func --version` Azure functions Core Tools 3. x verziójának megadásához.
++ A terminál vagy a parancssorablakban futtassa a parancsot, `func --version` és győződjön meg arról, hogy a <abbr title="Parancssori eszközök készlete, amelyekkel a helyi számítógép Azure Functions dolgozhat.">Azure Functions Core Tools</abbr> 3. x verziójú.
 
 + Futtassa `(Get-Module -ListAvailable Az).Version` és ellenőrizze a 5,0-es vagy újabb verziót. 
 
@@ -292,7 +292,7 @@ Mielőtt üzembe helyezi a függvény kódját az Azure-ban, létre kell hoznia 
 
     ---
 
-    A helyére írja be `<STORAGE_NAME>` a megfelelő nevet, és <abbr title="A névnek egyedinek kell lennie az Azure-ügyfelek által világszerte használt összes Storage-fiókban. Használhatja például a személyes vagy a vállalat neve, az alkalmazás neve és a numerikus azonosító kombinációját a contosobizappstorage20">egyedi az Azure Storage-ban</abbr>. A névnek három – 24 karakterből kell állnia, és csak kisbetűket tartalmazhat. `Standard_LRS` a [függvények által támogatott](storage-considerations.md#storage-account-requirements)általános célú fiókot határozza meg.
+    A helyére írja be `<STORAGE_NAME>` a megfelelő nevet, és <abbr title="A névnek egyedinek kell lennie az Azure-ügyfelek által világszerte használt összes Storage-fiókban. Használhatja például a személyes vagy a vállalat neve, az alkalmazás neve és a numerikus azonosító kombinációját is a contosobizappstorage20.">egyedi az Azure Storage-ban</abbr>. A névnek három – 24 karakterből kell állnia, és csak kisbetűket tartalmazhat. `Standard_LRS` a [függvények által támogatott](storage-considerations.md#storage-account-requirements)általános célú fiókot határozza meg.
     
     A Storage-fiók ebben a rövid útmutatóban csak néhány cent (USD) értékkel rendelkezik.
 

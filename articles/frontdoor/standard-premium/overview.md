@@ -8,12 +8,12 @@ ms.topic: overview
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: bcfff1a2c8490a05f4b96a8e2ff68186348f596f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 574340825567dcd512a5da1b311c57fe12954e34
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742364"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030545"
 ---
 # <a name="what-is-azure-front-door-standardpremium-preview"></a>Mi az Azure bejárati ajtó standard/Premium (előzetes verzió)?
 
@@ -51,7 +51,7 @@ Az Azure Door standard/Premium egyetlen egységesített platformot biztosít, am
 
 Az Azure bejárati ajtó standard/Premium (előzetes verzió) főbb szolgáltatásai:
 
-- Gyorsított alkalmazások teljesítménye a **[Split TCP-alapú](../front-door-routing-architecture#splittcp.md)** csomópontos protokoll használatával.
+- Gyorsított alkalmazások teljesítménye a **[Split TCP-alapú](../front-door-routing-architecture.md#splittcp)** csomópontos protokoll használatával.
 
 - Az intelligens **[állapot](concept-health-probes.md)** mintavételének figyelése és terheléselosztása az **[eredetek](concept-origin.md)** között.
 

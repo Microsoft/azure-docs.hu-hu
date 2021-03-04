@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/08/2021
-ms.openlocfilehash: 50535ab9ac2a3541ade7b9abd8f355bbeaf6d4b3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 37496b9358ec72c79f8d26e32a92485f001e0e9d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365004"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031667"
 ---
 # <a name="quickstart-create-a-redis-enterprise-cache-preview"></a>Gyors útmutató: Redis Enterprise cache létrehozása (előzetes verzió)
 
@@ -22,7 +22,7 @@ Az Azure cache for Redis vállalati szintjei teljes mértékben integrált és f
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, szüksége lesz egy Azure-előfizetésre. Ha még nem rendelkezik ilyennel, hozzon létre egy [fiókot](https://azure.microsoft.com/). További információkért lásd a [vállalati szintű követelmények](cache-overview.md#enterprise-and-enterprise-flash-tier-requirements)című témakört.
+Mielőtt elkezdené, szüksége lesz egy Azure-előfizetésre. Ha még nem rendelkezik ilyennel, hozzon létre egy [fiókot](https://azure.microsoft.com/). További információ: [a vállalati rétegek speciális szempontjai](cache-overview.md#special-considerations-for-enterprise-tiers).
 
 ## <a name="create-a-cache"></a>Gyorsítótár létrehozása
 1. Gyorsítótár létrehozásához jelentkezzen be a Azure Portal az előnézeti meghívásban található hivatkozással, és válassza az **erőforrás létrehozása** lehetőséget.
@@ -41,7 +41,7 @@ Mielőtt elkezdené, szüksége lesz egy Azure-előfizetésre. Ha még nem rende
    | **Hely** | Legördülő menüből válassza ki a helyet. | A nagyvállalati rétegek az előzetes verzióban korlátozott Azure-régiókban érhetők el. |
    | **Gyorsítótár típusa** | Legördülő menüből válassza ki a *vállalati* vagy *vállalati Flash* -szintet és a méretet. |  A szinten a gyorsítótár számára elérhető méretet, teljesítményt és funkciókat határozza meg. |
    
-   :::image type="content" source="media/cache-create/enterprise-tier-basics.png" alt-text="Nagyvállalati szint alapjai":::
+   :::image type="content" source="media/cache-create/enterprise-tier-basics.png" alt-text="Nagyvállalati szint alapjai lap":::
 
    > [!NOTE] 
    > A folytatás előtt győződjön meg róla, hogy a "feltételek" alatt bejelöli a mezőt.
@@ -57,17 +57,13 @@ Mielőtt elkezdené, szüksége lesz egy Azure-előfizetésre. Ha még nem rende
    
    Megtarthatja az alapértelmezett beállításokat, és szükség szerint módosíthatja azokat. Ha bekapcsolja a **hozzáférés engedélyezése csak a TLS protokollon keresztül lehetőséget**, a TLS használatával férhet hozzá az alkalmazás új gyorsítótárához.
 
-   :::image type="content" source="media/cache-create/enterprise-tier-advanced.png" alt-text="Nagyvállalati szintű fejlett":::
+   :::image type="content" source="media/cache-create/enterprise-tier-advanced.png" alt-text="Vállalati szintű speciális lap":::
 
-   > [!NOTE] 
-   > A Redis modulok még nem támogatottak a vállalati Flash-szinten. Ha Redis-modult szeretne használni, akkor mindenképpen válasszon egy vállalati szintű gyorsítótárat.
-   >
-   
 1. Válassza a **Next (tovább): címkék** és Kihagyás lehetőséget.
 
 1. Válassza a **Tovább: Ellenőrzés és létrehozás** lehetőségre.
 
-   :::image type="content" source="media/cache-create/enterprise-tier-summary.png" alt-text="Nagyvállalati szintű összefoglalás":::
+   :::image type="content" source="media/cache-create/enterprise-tier-summary.png" alt-text="Nagyvállalati szintű felülvizsgálat + Létrehozás lap":::
 
 1. Tekintse át a beállításokat, és kattintson a **Létrehozás** gombra.
    

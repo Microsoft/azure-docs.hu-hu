@@ -1,17 +1,16 @@
 ---
 title: A virtuális gépek bepillantást tesznek a Azure Policy használatával
 description: Leírja, hogyan engedélyezheti a VM-információkat több Azure-beli virtuális gép vagy virtuálisgép-méretezési csoport számára a Azure Policy használatával.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: a63a647f3d76e3cc2616f05fe96d86dbdd36e74d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 51baf009543208fbbfe091238d0215a24761641d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101707540"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031956"
 ---
 # <a name="enable-vm-insights-by-using-azure-policy"></a>A virtuális gépek bepillantást tesznek a Azure Policy használatával
 Ez a cikk bemutatja, hogyan engedélyezheti a VM-ismereteket az Azure-beli virtuális gépekhez vagy az Azure arc (előzetes verzió) szolgáltatással összekapcsolt hibrid virtuális géphez Azure Policy használatával. Azure Policy lehetővé teszi, hogy olyan szabályzat-definíciókat rendeljen hozzá, amelyek a szükséges ügynököket telepítik az Azure-környezetben lévő virtuális gépekhez, és automatikusan engedélyezik a virtuális gépek figyelését minden egyes virtuális gép létrehozásakor. A VM-alapú adatáttekintések lehetővé teszik a nem megfelelő virtuális gépek felderítését és szervizelését a környezetben. Használja ezt a funkciót ahelyett, hogy közvetlenül a Azure Policy használatával kellene dolgoznia.
@@ -19,7 +18,7 @@ Ez a cikk bemutatja, hogyan engedélyezheti a VM-ismereteket az Azure-beli virtu
 Ha még nem ismeri a Azure Policyt, rövid bevezetést kaphat a [Azure monitor üzembe helyezéséről a Azure Policy használatával](../deploy-scale.md).
 
 > [!NOTE]
-> Ha Azure Policyt szeretne használni az Azure-beli virtuálisgép-méretezési csoportokkal, vagy közvetlenül az Azure-beli virtuális gépeket engedélyező Azure Policy szeretne dolgozni, tekintse meg a [Azure monitor üzembe helyezése méretezéssel Azure Policy használatával](../deploy-scale.md#azure-monitor-for-vms)
+> Ha Azure Policyt szeretne használni az Azure-beli virtuálisgép-méretezési csoportokkal, vagy közvetlenül az Azure-beli virtuális gépeket engedélyező Azure Policy szeretne dolgozni, tekintse meg a [Azure monitor üzembe helyezése méretezéssel Azure Policy használatával](../deploy-scale.md#vm-insights)
 
 ## <a name="prerequisites"></a>Előfeltételek
 - [Hozzon létre és konfiguráljon egy log Analytics munkaterületet](./vminsights-configure-workspace.md).

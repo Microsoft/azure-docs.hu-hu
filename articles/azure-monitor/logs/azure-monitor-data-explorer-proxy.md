@@ -4,15 +4,14 @@ description: A Azure Monitor az Azure Adatkezelő, Log Analytics munkaterületek
 author: osalzberg
 ms.author: bwren
 ms.reviewer: bwren
-ms.subservice: logs
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: 8bc47eb2a6a22224f4df186136da2c184979ea24
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1857f0e39cd5d9ddc616eed1db18cd58b98721a4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100618495"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031123"
 ---
 # <a name="cross-resource-query-azure-data-explorer-by-using-azure-monitor"></a>Több erőforrás lekérdezése az Azure Adatkezelő Azure Monitor használatával
 Azure Monitor támogatja az Azure Adatkezelő, a [Application Insights](../app/app-insights-overview.md)és a [log Analytics](../logs/data-platform-logs.md)közötti szolgáltatások közötti lekérdezéseket. Ezután lekérdezheti az Azure Adatkezelő-fürtöt Log Analytics-vagy Application Insights-eszközök használatával, és megtekintheti azt egy több szolgáltatásból álló lekérdezésben. A cikk bemutatja, hogyan végezheti el a szolgáltatások közötti lekérdezést.

@@ -1,17 +1,16 @@
 ---
 title: Adatfeldolgozási idő naplózása Azure Monitorban | Microsoft Docs
 description: Ismerteti azokat a különböző tényezőket, amelyek befolyásolják a naplózási adatok Azure Monitorban való gyűjtésének késését.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 501e395cf91630789824cc111614e7150dddaa7c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6037ef9c539c3c57f2ba5a19f371237159d1bf69
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101700609"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030885"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Naplóadatok feldolgozási ideje az Azure Monitorban
 A Azure Monitor egy nagy léptékű adatszolgáltatás, amely több ezer ügyfelet szolgál ki havonta több, mint havi terabájt adatküldéssel. A naplózási adatok begyűjtése után elérhetővé tételével kapcsolatban gyakran merül fel kérdések. Ez a cikk a késést befolyásoló különféle tényezőket ismerteti.

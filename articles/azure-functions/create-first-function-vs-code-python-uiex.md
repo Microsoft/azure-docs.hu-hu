@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 11/04/2020
 ms.custom: devx-track-python
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 19a8a73428bef3c29c5bf9e56b45750adf5fb2dd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 42f07b76cefed38aad53caba9ba35c74238540fe
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748692"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031735"
 ---
 # <a name="quickstart-create-a-function-in-azure-with-python-using-visual-studio-code"></a>Gyors útmutató: függvény létrehozása az Azure-ban a Python használatával a Visual Studio Code-ban
 
@@ -90,12 +90,12 @@ A helyi functions-projekt létrehozásakor feloldható leggyakoribb problémák 
 
 1. A **terminál** panelen tekintse meg a helyileg futó függvény URL-végpontját.
 
-    ![Helyi függvény VS Code kimenet](./media/functions-run-function-test-local-vs-code/functions-vscode-f5.png)
+    ![Helyi függvény VS Code kimenet](../../includes/media/functions-run-function-test-local-vs-code/functions-vscode-f5.png)
 
 
 1. Az alapszintű eszközök futtatásával nyissa meg az **Azure: functions** területen. A **függvények** területen bontsa ki a **helyi Project**  >  **functions** elemet. Kattintson a jobb gombbal a (Windows) vagy a <kbd>CTRL-</kbd> click (MacOS) elemre `HttpExample` , és válassza a **függvény végrehajtása most..**. lehetőséget.
 
-    :::image type="content" source="media/functions-run-function-test-local-vs-code/execute-function-now.png" alt-text="A függvény végrehajtása most a Visual Studio Code-ból":::
+    :::image type="content" source="../../includes/media/functions-run-function-test-local-vs-code/execute-function-now.png" alt-text="A függvény végrehajtása most a Visual Studio Code-ból":::
 
 1. Az **írja be a kérelem törzsében** megjelenik a kérelem üzenet törzsének értéke `{ "name": "Azure" }` . Nyomja le az ENTER billentyűt a kérelem üzenetének a függvénynek való elküldéséhez.  
 

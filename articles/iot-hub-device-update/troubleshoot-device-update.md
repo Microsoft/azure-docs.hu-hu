@@ -6,12 +6,12 @@ ms.author: lichris
 ms.date: 2/17/2021
 ms.topic: troubleshooting
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 6329e93bb5e628d68afbb2700ce0b9e3a2a711ad
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3c1f60b214397b1f97e0157b5beca32d504102d6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679493"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030630"
 ---
 # <a name="device-update-for-iot-hub-troubleshooting-guide"></a>Eszköz frissítése IoT Hub hibaelhárítási útmutató
 
@@ -46,7 +46,7 @@ _Az eszköz megfelelőségi állapota akár 5 percet is igénybe vehet. Várjon,
 ### <a name="q-my-devices-deployment-status-shows-incompatible-what-should-i-do"></a>K: az eszköz üzembe helyezési állapota nem kompatibilis, mi a teendő?
 _Előfordulhat, hogy a célként megadott eszköz gyártója és modellje módosítva lett az eszköz IoT Hub való csatlakoztatása után, így az eszköz már nem kompatibilis az aktuális üzemelő példány frissítési tartalmával._
 
-_Ellenőrizze az [adu Alapfelületét](./device-update-plug-and-play) , és tekintse meg, hogy az eszköz milyen gyártót és modellt jelent az eszköz frissítési szolgáltatásának, és ellenőrizze, hogy az megfelel-e az üzembe helyezett frissítési tartalom [importálási jegyzékfájljában](./import-concepts.md) megadott gyártónak és modellnek. Az adott eszköz tulajdonságait az [eszköz frissítése konfigurációs fájl](./device-update-cofiguration-file.md)használatával módosíthatja._
+_Ellenőrizze az [adu Alapfelületét](./device-update-plug-and-play.md) , és tekintse meg, hogy az eszköz milyen gyártót és modellt jelent az eszköz frissítési szolgáltatásának, és ellenőrizze, hogy az megfelel-e az üzembe helyezett frissítési tartalom [importálási jegyzékfájljában](./import-concepts.md) megadott gyártónak és modellnek. Az adott eszköz tulajdonságait az [eszköz frissítése konfigurációs fájl](./device-update-configuration-file.md)használatával módosíthatja._
 
 ### <a name="q-i-see-my-deployment-is-in-active-stage-but-none-of-my-devices-are-in-progress-with-the-update-what-should-i-do"></a>K: látom az üzembe helyezést "aktív" fázisban, de egyik eszköz sem "folyamatban" van a frissítéssel. Mit tegyek?
 _Győződjön meg arról, hogy a központi telepítés kezdő dátuma nincs beállítva a jövőben. Új központi telepítés létrehozásakor a rendszer alapértelmezés szerint a központi telepítési kezdési dátumot a következő napra védi, hacsak nem módosítja kifejezetten. Megvárhatja a központi telepítés kezdő dátumát, vagy megszakíthatja a folyamatban lévő telepítést, és létrehozhat egy új központi telepítést a kívánt kezdési dátummal._

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: ed9690a750ad6e1167ba0a0ae4a87b603c4a1f15
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a889275782388781eadffb7cf0a24771bf6e9e4f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717400"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030834"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Az Azure Monitor-naplók üzembe helyezésének megtervezése
 
@@ -87,9 +87,9 @@ A felhasználók két lehetőség közül választhatnak az adatok eléréséhez
 
     > [!NOTE]
     > A naplók csak akkor érhetők el erőforrás-környezeti lekérdezésekhez, ha megfelelően vannak társítva az adott erőforráshoz. Jelenleg az alábbi erőforrások korlátai vannak:
-    > - Az Azure-on kívüli számítógépek
+    > - Az Azure-on kívüli számítógépek – csak az [Azure arc for Servers](../../azure-arc/servers/index.yml) szolgáltatáson keresztül támogatott erőforrás-kontextushoz
     > - Service Fabric
-    > - Application Insights
+    > - Application Insights – erőforrás-környezet esetén csak [munkaterület-alapú Application Insights erőforrás](../app/create-workspace-resource.md) használata esetén támogatott
     >
     > Ellenőrizheti, hogy a naplók megfelelően vannak-e társítva az erőforráshoz egy lekérdezés futtatásával és a kívánt rekordok vizsgálatával. Ha a megfelelő erőforrás-azonosító a [_ResourceId](./log-standard-columns.md#_resourceid) tulajdonságban van, akkor az adatok elérhetők az erőforrás-központú lekérdezések számára.
 

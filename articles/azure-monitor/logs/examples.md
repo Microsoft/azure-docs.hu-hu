@@ -1,17 +1,16 @@
 ---
 title: Példák a Azure Monitor log lekérdezésre | Microsoft Docs
 description: Példák a Azure Monitor a Kusto lekérdezési nyelvét használó naplózási lekérdezésekre.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/16/2020
-ms.openlocfilehash: e2050784d03b1f01e743df9b00916ec286a3e7ef
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 56866d8e255f15a93aaa9133f9cda9de4fdd9fd5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736950"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030800"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Példák a Azure Monitor log lekérdezésekre
 Ez a cikk különféle példákat tartalmaz a [Kusto lekérdezési nyelvét](/azure/kusto/query/) használó [lekérdezések](./log-query-overview.md) különböző típusú naplófájljainak lekérésére Azure monitorból. Az adatösszesítés és az elemzés különböző módszerekkel történik, így ezek a minták a saját igényeihez esetlegesen használt különböző stratégiák azonosítására használhatók.  

@@ -40,6 +40,8 @@
       href: connected-cache-disconnected-device-update.md
     - name: A Microsoft csatlakoztatott gyorsítótár konfigurálása a IoT Hub eszköz frissítéséhez
       href: connected-cache-configure.md
+    - name: Importálással kapcsolatos séma és egyéb információk
+      href: import-schema.md
 - name: Útmutatók
   items:
     - name: Eszköz-frissítési fiók létrehozása

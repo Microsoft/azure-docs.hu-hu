@@ -6,12 +6,12 @@ ms.author: margard
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/10/2020
-ms.openlocfilehash: 8ea8376307807abff8227d82bb6de7956fa3de99
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: a33ba6813b4a67de7f46f3576a44fa7411278ba7
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088533"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031786"
 ---
 # <a name="tutorial-use-a-managed-identity-to-invoke-azure-functions-from-an-azure-spring-cloud-app"></a>Oktatóanyag: felügyelt identitás használata az Azure Spring Cloud app Azure Functionsának meghívásához
 
@@ -28,7 +28,7 @@ A Azure Functions és a App Services egyaránt támogatja az Azure Active Direct
 * [A Azure Functions Core Tools 3.0.2009 vagy újabb verziójának telepítése](../azure-functions/functions-run-local.md#install-the-azure-functions-core-tools)
 
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy erőforráscsoportot, amely a Function alkalmazást és a Spring Cloudt is tartalmazza a parancs az [Group Create](/cli/azure/group#az-group-create)paranccsal történő használatával:
 
 ```azurecli-interactive
@@ -119,7 +119,7 @@ az spring-cloud create --name mymsispringcloud --resource-group myResourceGroup 
 Az alábbi példa egy nevű alkalmazást hoz létre `msiapp` egy rendszerhez rendelt felügyelt identitással, a paraméter által kért módon `--assign-identity` .
 
 ```azurecli
-az spring-cloud app create --name "msiapp" --service "mymsispringcloud" --resource-group "myResourceGroup" --is-public true --assign-identity
+az spring-cloud app create --name "msiapp" --service "mymsispringcloud" --resource-group "myResourceGroup" --assign-endpoint true --assign-identity
 ```
 
 ## <a name="build-sample-spring-boot-app-to-invoke-the-function"></a>A függvény meghívásához hozzon létre egy minta Spring boot-alkalmazást
@@ -139,7 +139,7 @@ Ez a minta elindítja a http által aktivált függvényt, ha először egy hozz
     vim src/main/resources/application.properties
     ```
 
-    Az Azure Spring Cloud apps felügyelt identitásának használatához adja hozzá a tulajdonságokat a következő tartalommal a *src/Main/Resources/Application. properties*fájlhoz.
+    Az Azure Spring Cloud apps felügyelt identitásának használatához adja hozzá a tulajdonságokat a következő tartalommal a *src/Main/Resources/Application. properties* fájlhoz.
 
     ```
     azure.function.uri=https://<your-functionapp-name>.azurewebsites.net

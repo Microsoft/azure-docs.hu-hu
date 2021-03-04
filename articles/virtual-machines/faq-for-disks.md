@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: dcfef81f2d7f3413489490d97c143fdec7e11bed
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d516bcb224f7a7b5943214f28cffb7da3ea0871f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499322"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031599"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Gyakori kérdések az Azure IaaS virtuálisgép-lemezekről, valamint a felügyelt és nem felügyelt prémium szintű lemezekről
 
@@ -382,11 +382,9 @@ Az Azure-lemezeken a prémium és a standard szintű lemezek esetében nincs há
 
 **Mely régiók támogatják a kitörési képességet a megfelelő prémium szintű SSD-lemez méretéhez?**
 
-A feltört képesség jelenleg az Azure nyilvános felhő összes régiójában támogatott, és hamarosan a szuverén felhők támogatása is elérhető. 
+Az Azure-beli nyilvános felhőben jelenleg a kredit-alapú feltörtség támogatott, a szuverén felhők jelenleg nem támogatottak.
 
-**Mely régiókban támogatott a 4/8/16 GiB által felügyelt lemez mérete (P1/P2/P3, E1/E2/E3)?**
-
-Az új lemezes méretek jelenleg az Azure nyilvános felhő összes régiójában támogatottak, és hamarosan a szuverén felhők támogatása is elérhető. 
+Az igény szerinti bursás csak az USA nyugati középső régiójában érhető el.
 
 **Támogatottak-e a P1/P2/P3 méretű lemezek a nem felügyelt lemezekhez vagy a blobokhoz?**
 

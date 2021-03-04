@@ -1,17 +1,16 @@
 ---
 title: VIRTUÁLIS gépekkel kapcsolatos ismeretek (GA) – gyakori kérdések | Microsoft Docs
 description: A VM-információk az Azure-ban az Azure VM operációs rendszer állapotának és teljesítményének figyelését, valamint az alkalmazások összetevőinek és függőségeinek más erőforrásokkal való felismerését, valamint a közöttük zajló kommunikációt térképezik fel. Ez a cikk a GA kiadásával kapcsolatos gyakori kérdésekre ad választ.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: 0c55463847e0bf55cf14db2a35de1de16526cd90
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fbef73bfe8058110277b200b8c4091fcde110c04
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710753"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031872"
 ---
 # <a name="vm-insights-generally-available-ga-frequently-asked-questions"></a>Általánosan elérhető a VM-ismeretek (GA) – gyakori kérdések
 Ez az általános elérhetőségi gyakori kérdések a GA-ban felkészített, a 2019-as és a Q1 2020-es verzióban végrehajtott módosításokat fedik le.
@@ -20,15 +19,15 @@ Ez az általános elérhetőségi gyakori kérdések a GA-ban felkészített, a 
 Megjelent a VM-belátások új verziója a 2020-es verzióban, a GA-bejelentés előtt. A VM-megállapításokat lehetővé tévő ügyfelek mostantól megkapják a GA verzióját, de a meglévő ügyfelek a 2019-es és korábbi verziójú virtuálisgép-megállapítások verzióját fogják kérni a frissítésre. Ez a GYIK útmutatást nyújt a nagy méretekben történő frissítéshez, ha több munkaterületen van nagyméretű üzemelő példány.
 
 
-Ezzel a frissítéssel Azure Monitor for VMs teljesítményadatokat a *InsightsMetrics* ugyanabban a táblázatban [tárolja, amely](../containers/container-insights-overview.md)megkönnyíti a két adathalmaz lekérdezését. Azt is megteheti, hogy több különböző adatkészletet is tárolhat, amelyeket nem sikerült tárolni a korábban használt táblázatban. 
+Ezzel a frissítéssel a virtuálisgép-elemzések teljesítményadatait ugyanabban a *InsightsMetrics* -táblában tároljuk, mint a [Container bepillantást](../containers/container-insights-overview.md), ami megkönnyíti a két adathalmaz lekérdezését. Azt is megteheti, hogy több különböző adatkészletet is tárolhat, amelyeket nem sikerült tárolni a korábban használt táblázatban. 
 
 A teljesítménnyel kapcsolatos nézeteink mostantól a *InsightsMetrics* táblában tárolt adathalmazokat használják.  Ha még nem frissítette a legújabb VMInsights-megoldás használatát a munkaterületen, a diagramok többé nem fognak adatokat megjeleníteni.  Az alább leírtak szerint frissíthet az **első lépések** lapról.
 
 
 ## <a name="what-is-changing"></a>Mi változik?
-Megjelent egy VMInsights nevű új megoldás, amely az adatgyűjtés további funkcióit tartalmazza, valamint egy új helyet az adattároláshoz a Log Analytics munkaterületen. 
+Megjelent egy VMInsights nevű új megoldás, amely több funkciót is tartalmaz az adatgyűjtéshez, valamint egy új helyet az adattároláshoz a Log Analytics munkaterületen. 
 
-A múltban engedélyezte a ServiceMap megoldást a munkaterületen, és a Log Analytics munkaterületen a teljesítményszámlálók beállításával elküldheti az adatait a *perf* táblába. Ez az új megoldás a *InsightsMetrics* nevű táblába küldi az adatokat, amelyet a tároló-elemzések is használnak. Ez a táblázatos séma lehetővé teszi, hogy olyan további mérőszámokat és szolgáltatási adatkészleteket tároljon, amelyek nem kompatibilisek a *perf* Table formátumával.
+A múltban engedélyezte a ServiceMap megoldást a munkaterületen, és a Log Analytics munkaterületen a teljesítményszámlálók beállításával elküldheti az adatait a *perf* táblába. Ez az új megoldás a *InsightsMetrics* nevű táblába küldi az adatokat, amelyet a tároló-elemzések is használnak. Ez a táblázatos séma lehetővé teszi, hogy több mérőszámot és szolgáltatási adatkészletet tároljon, amelyek nem kompatibilisek a *perf* Table formátumával.
 
 Frissítettük a teljesítmény diagramokat a *InsightsMetrics* táblában tárolt adat használatához. Az alábbi lépésekkel frissítheti a *InsightsMetrics* táblázatot az **első lépések** oldaláról.
 
@@ -58,7 +57,7 @@ Ha olyan [naplózási riasztásokat](../alerts/alerts-unified-log.md) hozott lé
 
 Frissíteni fogjuk ezt a GYIK-t és a dokumentációt, amely tartalmazza például a begyűjtött adathalmazokra vonatkozó naplóbeli keresési riasztási szabályokat.
 
-## <a name="how-will-this-affect-my-bill"></a>Hogyan befolyásolja ez a számla?
+## <a name="how-will-this-change-affect-my-bill"></a>Hogyan befolyásolja ez a változás a számlát?
 
 A számlázás továbbra is a Log Analytics munkaterületen betöltött és megőrzött adatmennyiségen alapul.
 
@@ -84,13 +83,13 @@ A `InsightsMetrics` táblázat tárolja azokat a virtuális gépeket, folyamatok
 
 Nem, a két megoldás közösen tárolja a `VMComputer` (korábban ServiceMapComputer_CL), `VMProcess` (korábban ServiceMapProcess_CL), és rendszerekben tárolt Térkép-adatkészleteket `VMConnection` `VMBoundPort` . Ha mindkét megoldás szerepel a munkaterületen, akkor nem számítunk fel díjat.
 
-## <a name="if-i-remove-either-the-service-map-or-vminsights-solution-will-it-remove-my-data"></a>Ha eltávolítom vagy a Service Map vagy a VMInsights megoldást, akkor eltávolítja az adataimat?
+## <a name="if-i-remove-either-the-service-map-or-vminsights-solution-will-it-remove-my-data"></a>Ha eltávolítom vagy a Service Map vagy a VMInsights-megoldást, eltávolítja az adataimat?
 
 Nem, a két megoldás közösen tárolja a `VMComputer` (korábban ServiceMapComputer_CL), `VMProcess` (korábban ServiceMapProcess_CL), és rendszerekben tárolt Térkép-adatkészleteket `VMConnection` `VMBoundPort` . Ha eltávolítja az egyik megoldást, ezek az adatkészletek azt észlelik, hogy még mindig van olyan megoldás, amely az adatmennyiséget használja, és a Log Analytics munkaterületen marad. Mindkét megoldást el kell távolítania a munkaterületről abból a célból, hogy az adatok el legyenek távolítva belőle.
 
 ## <a name="health-feature-is-in-limited-public-preview"></a>A Health funkció korlátozott nyilvános előzetes verzióban érhető el
 
-Nagy mennyiségű visszajelzést kaptunk az ügyfelektől a VM Health szolgáltatás készletével kapcsolatban. Ez a funkció nagy érdeklődést mutat a figyelési munkafolyamatok támogatásával kapcsolatban. Azt tervezzük, hogy egy sor módosítást teszünk elérhetővé a funkciók hozzáadásához és a kapott visszajelzések kezeléséhez. 
+Nagy mennyiségű visszajelzést kaptunk az ügyfelektől a VM Health szolgáltatás készletével kapcsolatban. Ennek a funkciónak a asignificant érdekli a figyelési munkafolyamatok támogatásának lehetősége. Azt tervezzük, hogy egy sor módosítást teszünk elérhetővé a funkciók hozzáadásához és a kapott visszajelzések kezeléséhez. 
 
 Ennek a változásnak az új ügyfelekre gyakorolt hatásának csökkentése érdekében a funkciót **korlátozott nyilvános előzetes** verzióra helyezte át. Ez a frissítés 2019 októberében történt.
 
@@ -108,7 +107,7 @@ Meglévő ügyfélként továbbra is használhatja az állapotfigyelő szolgált
 
 ## <a name="i-use-vm-health-now-with-one-environment-and-would-like-to-deploy-it-to-a-new-one"></a>A VM Health-t most egy környezettel használom, és egy újat szeretnék telepíteni
 
-Ha Ön az a felhasználó, aki az állapotfigyelő funkciót használja, és új bevezetésre szeretné használni, lépjen kapcsolatba velünk a következő címen: vminsights@microsoft.com .
+Ha Ön az a felhasználó, aki az állapotfigyelő funkciót használja, és új bevezetésre szeretné használni, vegye fel velünk a kapcsolatot a következő vminsights@microsoft.com lépésekkel:.
 
 ## <a name="next-steps"></a>Következő lépések
 

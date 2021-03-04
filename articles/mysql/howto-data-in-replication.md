@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2021
-ms.openlocfilehash: 29ac0c5991964de48cedd15622d15e929bc9d733
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d5a013fc4e4ef931579da4fa13f400d5f4fcff0d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101709546"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030749"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database for MySQL konfigurálása felhőbe irányuló replikálás
 
@@ -102,7 +102,7 @@ Az alábbi lépéseket követve elkészítheti és konfigurálhatja a helyszíne
 
    Ha a változót [`log_bin`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin) "on" értékre adja vissza, a bináris naplózás engedélyezve van a kiszolgálón.
    
-   Ha a `log_bin` visszaadott érték "off", 
+    Ha a a `log_bin` "off" értékkel tér vissza, és a forráskiszolgáló helyszíni vagy virtuális gépeken fut, ahol elérheti a konfigurációs fájlt (saját. cnf), kövesse az alábbi lépéseket:
    1. Keresse meg a MySQL konfigurációs fájlját (My. cnf) a forráskiszolgálón. Például: cnf
    2. A fájl szerkesztéséhez nyissa meg a konfigurációs fájlt, és keresse meg a **mysqld** szakaszt.
    3.  A mysqld szakaszban adja hozzá a következő sort

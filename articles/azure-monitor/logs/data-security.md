@@ -1,17 +1,16 @@
 ---
 title: Adatbiztonság Log Analytics | Microsoft Docs
 description: Ismerje meg, hogyan védi a Log Analytics a magánélet védelmét, és gondoskodik az adatok védelméről.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: 128a82fdc9b5a37258b5ca245a63bf52c050db26
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8f193cface177e6be6343f28ef4dc27c2d6c6a7b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101713609"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030902"
 ---
 # <a name="log-analytics-data-security"></a>Adatbiztonság Log Analytics
 Ennek a dokumentumnak az a célja, hogy Log Analyticsra vonatkozó információt szolgáltasson, amely a Azure Monitor egyik funkciója, hogy kiegészítse a [Azure biztonsági és adatkezelési központ](https://www.microsoft.com/en-us/trust-center?rtc=1)információit.  

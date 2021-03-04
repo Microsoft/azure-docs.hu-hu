@@ -4,15 +4,15 @@ description: Azure Spring Cloud üzembe helyezése virtuális hálózaton (VNet 
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 73dd60dba50d3bd29cda0f538462884822054cf9
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 82dcd8c59c55a2866b51fd6dee896ea1298b6cf6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880599"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031803"
 ---
 # <a name="deploy-azure-spring-cloud-in-a-virtual-network"></a>Azure Spring Cloud üzembe helyezése virtuális hálózaton
 
@@ -50,7 +50,7 @@ Az Azure Spring Cloud-példány üzembe helyezéséhez használt virtuális hál
     * Az egyik a Spring boot Service-alkalmazásaihoz.
     * Egy-az-egyhez kapcsolat áll fenn ezen alhálózatok és egy Azure Spring Cloud-példány között. Használjon egy új alhálózatot minden egyes telepített szolgáltatási példányhoz. Mindegyik alhálózat csak egyetlen szolgáltatási példányt tartalmazhat.
 * **Címterület**: a CIDR a Service Runtime alhálózathoz és a Spring boot Service-alhálózathoz is akár *28-* ot is blokkol.
-* **Útválasztási táblázat**: az alhálózatok nem rendelkezhetnek meglévő útválasztási táblázattal.
+* **Útválasztási táblázat**: alapértelmezés szerint az alhálózatok nem igényelnek meglévő útválasztási táblákat. [Saját útválasztási táblázatot](#bring-your-own-route-table)is használhat.
 
 Az alábbi eljárások ismertetik a virtuális hálózat telepítését, amely az Azure Spring Cloud példányát tartalmazza.
 
@@ -180,7 +180,27 @@ Az alhálózatok esetében öt IP-cím van fenntartva az Azure-ban, és legaláb
 
 A szolgáltatás futásidejű alhálózata esetében a minimális méret/28. Ez a méret nem befolyásolja az alkalmazások példányainak számát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="bring-your-own-route-table"></a>Saját útválasztási táblázat használata
+
+Az Azure Spring Cloud támogatja a meglévő alhálózatok és útválasztási táblázatok használatát.
+
+Ha az egyéni alhálózatok nem tartalmaznak útválasztási táblákat, az Azure Spring Cloud létrehozza őket az egyes alhálózatokhoz, és a példányok életciklusa során szabályokkal bővíti őket. Ha az egyéni alhálózatok útválasztási táblákat tartalmaznak, az Azure Spring Cloud elismeri a meglévő útválasztási táblázatokat a példányok műveletei során, és ennek megfelelően hozzáadja a/Updates és/vagy szabályokat a műveletekhez.
+
+> [!Warning] 
+> Az egyéni szabályok hozzáadhatók az egyéni útválasztási táblázatokhoz és frissíthetők. A szabályokat azonban az Azure Spring Cloud adja hozzá, és ezeket nem kell frissíteni vagy eltávolítani. A 0.0.0.0/0 szabályoknak mindig léteznie kell egy adott útválasztási táblában, és le kell képeznie az internetes átjáró céljára, például egy NVA vagy más kimenő átjáróra. A szabályok frissítésekor körültekintően járjon el, ha csak az egyéni szabályokat módosítják.
+
+
+### <a name="route-table-requirements"></a>Útválasztási táblázatra vonatkozó követelmények
+
+Az egyéni vnet társított útválasztási tábláknak meg kell felelniük az alábbi követelményeknek:
+
+* Az Azure Route-táblákat csak akkor társíthatja a vnet, ha új Azure Spring Cloud Service-példányt hoz létre. Az Azure Spring Cloud létrehozása után nem lehet másik útválasztási táblázatot használni.
+* A Service Runtime alhálózatának és a szolgáltatási futtatókörnyezet alhálózatának is társítva kell lennie különböző útválasztási táblázatokkal vagy ezek egyikével sem.
+* A példány létrehozása előtt engedélyeket kell rendelni. Ügyeljen arra, hogy az Azure *Spring Cloud tulajdonosi* engedélyeit az útválasztási táblázatokhoz adja.
+* A társított útválasztási tábla erőforrása nem frissíthető a fürt létrehozása után. Amíg az útválasztási tábla erőforrása nem frissíthető, egyéni szabályok módosíthatók az útválasztási táblázatban.
+* A lehetséges ütköző útválasztási szabályok miatt nem lehet felhasználni több példányú útválasztási táblázatot.
+
+## <a name="next-steps"></a>Következő lépések
 
 [Alkalmazás üzembe helyezése az Azure Spring Cloud-ban a VNet](https://github.com/microsoft/vnet-in-azure-spring-cloud/blob/master/02-deploy-application-to-azure-spring-cloud-in-your-vnet.md)
 

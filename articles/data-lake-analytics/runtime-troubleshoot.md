@@ -5,12 +5,12 @@ ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.date: 10/10/2019
-ms.openlocfilehash: 41b7c80c85331f288343351749e6b2e5292b30c6
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 1236b83b410057e55015391772e37bd461a448d0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95241607"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030613"
 ---
 # <a name="learn-how-to-troubleshoot-u-sql-runtime-failures-due-to-runtime-changes"></a>Ismerje meg, hogy miként lehet elhárítani a futásidejű változások miatti U-SQL futásidejű hibákat
 
@@ -55,7 +55,7 @@ A futásidejű verziók két lehetséges problémája merülhet fel:
 
 ## <a name="known-issues"></a>Ismert problémák
 
-* Ha egy USQL-parancsfájl 12.0.3 vagy újabb verziójára Newtonsoft.Jshivatkozik, akkor a következő fordítási hiba fog megjelenni:
+1. Ha egy USQL-parancsfájl 12.0.3 vagy újabb verziójára Newtonsoft.Jshivatkozik, akkor a következő fordítási hiba fog megjelenni:
 
     *"Sajnos a Data Lake Analytics-fiókban futó feladatok valószínűleg lassabban futnak, vagy a művelet nem fejeződik be. Egy váratlan probléma miatt nem tudjuk automatikusan visszaállítani a funkciót a Azure Data Lake Analytics-fiókjába. Azure Data Lake mérnököket felvettek a vizsgálatba. "*  
 
@@ -65,6 +65,10 @@ A futásidejű verziók két lehetséges problémája merülhet fel:
     `...`
 
     **Megoldás**: használja a Newtonsoft.Jsfájlt a v 12.0.2 vagy az alacsonyabb fájlnál.
+2. Előfordulhat, hogy az ügyfelek az áruházban ideiglenes fájlokat és mappákat látnak. Ezek a normál feladatok végrehajtásának részeként jönnek létre, de általában törölve lesznek, mielőtt az ügyfelek lássák őket. Bizonyos körülmények között, amelyek ritkaak és véletlenszerűek, előfordulhat, hogy egy adott időtartamon belül láthatók maradnak. Ezek végül törölve lesznek, és a rendszer soha nem veszi számításba a felhasználói tárterület részét, vagy bármilyen használati díjat generál. Az ügyfelek feladatainak logikája miatt problémákat okozhatnak. Ha például a feladat a mappában lévő összes fájlt enumerálja, majd összehasonlítja a fájl-listát, akkor előfordulhat, hogy a váratlan ideiglenes fájlok jelennek meg. Hasonlóképpen, ha egy alsóbb rétegbeli feladatban egy adott mappából származó összes fájl egy további feldolgozásra van felsorolva, az ideiglenes fájlokat is fel lehet sorolni.  
+
+    **Megoldás**: a futtatókörnyezetben egy javítást azonosít a rendszer, ahol az ideiglenes fájlokat a rendszer a fiók szintű Temp mappában tárolja, mint a jelenlegi kimeneti mappa. Az ideiglenes fájlok ebben az új Temp mappában lesznek megírva, és a rendszer törli a feladatot a végrehajtás befejezésekor.  
+    Mivel ez a javítás kezeli az ügyféladatokat, nagyon fontos, hogy ezt a javítást a kiadás előtt jól érvényesítse. Ez a javítás a 2021-as év közepén, a 2021-as év második felében pedig az alapértelmezett futtatókörnyezetként érhető el bétaverzióként. 
 
 
 ## <a name="see-also"></a>Lásd még

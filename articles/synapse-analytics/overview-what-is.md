@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/28/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7882fc6a6823a93d09c04a8ae2c19005df4843d8
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 37768b994d4b61ee728e04352f027a6f5a478341
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917093"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031616"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>Mi az az Azure Synapse Analytics?
 
@@ -64,13 +64,13 @@ Az Azure szinapszis egyetlen lehetőséget biztosít a vállalatok számára az 
 * Részletes hozzáférés-vezérlés az adatkapcsolaton és a kódban
 * Egyetlen irányítópult az erőforrások, a használat és a felhasználók figyeléséhez az SQL és a Spark között
 
-### <a name="synapse-studio"></a>Synapse Studio
+### <a name="unified-experience"></a>Egységes felhasználói élmény
 
-A **szinapszis Studio** az a webes felület, amely az adatmérnökökkel együtt mindent összekapcsol, és lehetővé teszi számukra, hogy a teljes megoldás létrehozásához szükséges összes feladatnak egy helyen legyenek.
+A **szinapszis Studio** a felhasználói élmény, amely az adatmérnökökkel együtt mindent összekapcsol. Lehetővé teszi, hogy a teljes elemzési megoldás létrehozásához szükséges összes feladatot elvégezzék.
 
-* Hozzon létre egy végpontok közötti elemzési megoldást egy helyen: betöltés, felfedezés, előkészítés, hangolás, megjelenítés
-* Piacvezető termelékenység az adatmérnökök számára az SQL vagy a Spark kód írásához: szerzői műveletek, hibakeresés és teljesítmény optimalizálása
-* Integrálás vállalati CI/CD-folyamatokkal
+* A legfontosabb adatok engingeer feladatok egy helyen: betöltés, vizsgálat, előkészítés, hangolás, megjelenítés
+* Piacvezető termelékenység az SQL vagy a Spark-kód írásához: szerzői műveletek, hibakeresés és teljesítmény optimalizálása
+* Integrálás a vállalati CI/CD-folyamattal
 
 ## <a name="engage-with-the-synapse-engineering-team"></a>A szinapszis mérnöki csapatának részvétele
 

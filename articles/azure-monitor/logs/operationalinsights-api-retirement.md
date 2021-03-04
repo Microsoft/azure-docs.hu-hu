@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor API-nyugdíjazás
 description: Ismerteti a OperationalInsights erőforrás-szolgáltató API régebbi verzióinak kivonulását.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/29/2020
-ms.openlocfilehash: 03e534564b4a32f112c2aaff44a187b10eb2a537
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7b5d105f6a93102ff1b9142fbdf690c3873d872f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723112"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032024"
 ---
 # <a name="operationalinsights-api-version-retirement"></a>OperationalInsights API-verziójának nyugdíjazása
 A Microsoft legalább 12 hónappal korábban értesítést küld egy API kivonásáról, hogy zökkenőmentes legyen az áttérés egy újabb/támogatott verzióra. Megjelent egy új verzió (2020-08-01) a **OperationalInsights** erőforrás-szolgáltató API-khoz, és minden korábbi API-verziót kivonja a 2024. február 29-én.
