@@ -3,15 +3,14 @@ title: Azure Monitor a Designer és a munkafüzetek mozaik konverziójának megt
 description: A csempék munkafüzetekbe való átalakításának részletei a Azure Monitor nézeteiből való áttéréskor.
 author: austonli
 ms.author: aul
-ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: 0fe1c5a4e6da1cb2955542c2651fcaf2d015b8f8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9b8d1840c0b1cea4c03312d38ed892fde94faa4c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100619028"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043337"
 ---
 # <a name="azure-monitor-view-designer-tile-conversions"></a>Azure Monitor View Designer csempe konverziók
 A [tervező](view-designer.md) a Azure monitor egyik funkciója, amely lehetővé teszi, hogy egyéni nézeteket hozzon létre, amelyek segítségével megjelenítheti a log Analytics-munkaterületen lévő, diagramokkal, listákkal és időpontokkal kapcsolatos adatait. A rendszer fokozatosan lecseréli azokat a munkafüzetekkel, amelyek további funkciókat biztosítanak. Ez a cikk a különböző csempék munkafüzetekbe konvertálásának részleteit ismerteti.

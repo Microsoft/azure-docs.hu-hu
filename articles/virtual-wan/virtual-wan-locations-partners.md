@@ -5,25 +5,26 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 03/03/2021
 ms.author: cherylmc
+ms.custom: references_regions
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: 188bc14de502640ae05f1d1eb55330d86cee50b4
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 1e8a8aa632d4c91cdfc6753d988a439d2de8938e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621479"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040539"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtuális WAN-partnerek és virtuális központ helyei
 
 Ez a cikk a virtuális WAN által támogatott régiókkal és partnerekkel kapcsolatos információkat nyújt a virtuális központhoz való kapcsolódáshoz.
 
-Az Azure Virtual WAN egy olyan hálózati szolgáltatás, amely optimalizált és automatizált ágak közötti kapcsolódást biztosít az Azure-on keresztül. A Virtual WAN segítségével ágeszközöket csatlakoztathat és konfigurálhat az Azure-ral való kommunikációra. Ezt manuálisan is megteheti, vagy egy virtuális WAN-partneren keresztül a szolgáltatói eszközök használatával. A partneri eszközök lehetővé teszik a könnyű használatot, a kapcsolatok egyszerűsítését és a konfiguráció felügyeletét.
+Az Azure Virtual WAN egy olyan hálózati szolgáltatás, amely optimalizált és automatizált ágak közötti kapcsolódást biztosít az Azure-on keresztül. A Virtual WAN segítségével ágeszközöket csatlakoztathat és konfigurálhat az Azure-ral való kommunikációra. A kapcsolat és a konfiguráció manuálisan is elvégezhető, vagy a szolgáltatói eszközök használatával egy virtuális WAN-partneren keresztül. A partneri eszközök lehetővé teszik a könnyű használatot, a kapcsolatok egyszerűsítését és a konfiguráció felügyeletét.
 
 A helyszíni eszköz kapcsolatát a virtuális központ automatizált módon hozza meg. A virtuális központ egy Microsoft által felügyelt virtuális hálózat. Az elosztó különféle szolgáltatásvégpontokat tartalmaz a helyszíni hálózatból (vpnsite) induló kapcsolatok biztosításához. Régiónként csak egy hubhoz tartozhat.
 
-## <a name="branch-ipsec-connectivity-automation-from-partners"></a><a name="automation"></a>Ág IPSec-kapcsolatának automatizálása a partnerektől
+## <a name="branch-ipsec-connectivity-automation-from-partners"></a><a name="automation"></a>Ág IPsec-kapcsolatának automatizálása a partnerektől
 
 Az Azure Virtual WAN-hoz csatlakozó eszközökhöz beépített Automation szükséges a kapcsolódáshoz. Ez általában az Eszközkezelő felhasználói felületén (vagy ezzel egyenértékű) van beállítva, amely a VPN-ág eszköz és egy Azure Virtual hub VPN-végpont (VPN-átjáró) közötti kapcsolat és konfiguráció kezelését állítja be.
 
@@ -36,23 +37,25 @@ A következő magas szintű automatizálás van beállítva az Eszközkezelőben
 
 Néhány csatlakozási partner kiterjesztheti az automationt, hogy az tartalmazza az Azure Virtual hub VNet és VPN Gateway létrehozását. Ha többet szeretne megtudni az automatizálásról, tekintse meg [a virtuális WAN-partnerek automatizálási irányelveit](virtual-wan-configure-automation-providers.md).
 
-## <a name="branch-ipsec-connectivity-partners"></a><a name="partners"></a>Ág IPSec-kapcsolati partnerei
+## <a name="branch-ipsec-connectivity-partners"></a><a name="partners"></a>Ág IPsec-kapcsolati partnerei
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-A következő partnereink a vállalatok közötti, a partner-eszköz és az Azure virtuális WAN VPN-átjárók közötti IPsec-kapcsolat automatizálására szolgáló munkaterületet jelző, a vállalat által aláírt használati feltételeken alapuló ütemtervet mutatnak: 128 Technologies, Arista, F5 Networks, Oracle SD-WAN (Torda) és SharpLink.
+A következő partnerek az ütemterv szerint a vállalatok között aláírt, a partneri eszköz és az Azure virtuális WAN VPN-átjárók közötti IPsec-kapcsolat automatizálására szolgáló munkaterületet jelző használati feltételeken alapuló, a 128 Technologies, a Arista, az F5 Networks, az Oracle SD-WAN (Torda) és a SharpLink.
 
 ## <a name="partners-with-integrated-virtual-hub-offerings"></a>Integrált virtuális hub-ajánlatokat tartalmazó partnerek
-Az automatikus fiókirodai IPSec-kapcsolat mellett egyes partnerek olyan **hálózati virtuális berendezéseket (NVA)** is kínálnak, amelyek közvetlenül az Azure Virtual WAN-hubhoz integrálhatók.  Ez lehetővé teszi, hogy az ügyfelek az ág kapcsolataikat egy kompatibilis, harmadik féltől származó berendezéssel szakítsák meg a virtuális központban.  
+
+Az automatikus fiókirodai IPsec-kapcsolat mellett egyes partnerek olyan **hálózati virtuális berendezéseket (NVA)** is kínálnak, amelyek közvetlenül az Azure Virtual WAN-hubhoz integrálhatók.  Ez lehetővé teszi az ügyfeleknek, hogy az ág kapcsolataikat egy kompatibilis, külső gyártótól származó berendezéssel szakítsák meg a virtuális központban.  
 
 A virtuális WAN-központban NVA kínáló partnereknek a következőket kell tenniük:
 
-* Implementálták az IPSec-kapcsolat automatizálását a fiókirodából, és az Azure Virtual WAN hub-ra felkészítettük a NVA ajánlatot.
+* Implementálták az IPsec-kapcsolat automatizálását a fiókirodából, és az Azure Virtual WAN hub-ra felkészítettük a NVA ajánlatot.
 * Az Azure Marketplace-en rendelkezésre áll egy meglévő hálózati virtuális berendezési ajánlat.
 
-Ha Ön partner, és kérdései vannak a virtuális központ által felügyelt NVA kapcsolatban, kérjük, lépjen kapcsolatba velünk e-mailben a következő címre: vwannvaonboarding@microsoft.com
+Ha Ön partner, és kérdései vannak a virtuális központ által felügyelt NVA kapcsolatban, lépjen kapcsolatba velünk e-mailben a következő címre: vwannvaonboarding@microsoft.com
 
 ## <a name="integrated-virtual-hub-nva-partners"></a>Integrált Virtual hub NVA-partnerek
+
 Ezek a partnerek **felügyelt alkalmazási** ajánlatokat biztosítanak, amelyek mostantól elérhetők a virtuális WAN-hubhoz való üzembe helyezéshez.
 
 |Partnerek|Konfiguráció/útmutató/üzembe helyezési útmutató|
@@ -64,9 +67,9 @@ A következő partnerek a NVA a virtuális központhoz a közeljövőben: Aviatr
 
 ## <a name="locations"></a><a name="locations"></a>Helyek
 
-[!INCLUDE [regions](../../includes/virtual-wan-regions-include.md)]
+[!INCLUDE [Virtual WAN regions file](../../includes/virtual-wan-regions-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A virtuális WAN-ról további információt a [virtuális WAN gyakori kérdések](virtual-wan-faq.md)című témakörben talál.
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/13/2020
-ms.openlocfilehash: 1d9f1c5beafb7b54c5fd0189dd738ff8e346a3e8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 911238efafb948b304455cf75cc4ec2c3c605c76
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695949"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042060"
 ---
 # <a name="deploy-the-metadata-extraction-abap-function-module-for-the-sap-r3-family-of-bridges"></a>A metaadat-kinyerő ABAP Function modul üzembe helyezése az SAP R3 híd-termékcsaládhoz 
 Ez a cikk a ABAP függvények moduljának SAP-kiszolgálón történő üzembe helyezésének lépéseit ismerteti.
@@ -74,7 +74,7 @@ A modul létrehozása után a következő információkat kell megadnia:
 
 3.  Navigáljon a \" forráskód \" lapra. A függvényhez kétféleképpen telepíthet programkódot:
 
-    a.  A főmenüből töltse fel a \_ Z \_DOWNLOAD.txt fájlt a Utilities = \> további segédprogramok = \> feltöltés/letöltés = feltöltés lehetőség kiválasztásával \> .
+    a.  A főmenüből töltse fel a Z... szövegfájlt, majd a segédprogramok = további [ \_ \_ ](https://github.com/Azure/Purview-Samples/tree/master/connectors/sap) \> segédprogramok = \> feltöltés/letöltés = feltöltés elemet választva töltse le a fájlt \> .
 
     b.  Másik lehetőségként nyissa meg a fájlt, másolja a tartalmát, és illessze be a \" forráskód \" területére.
 

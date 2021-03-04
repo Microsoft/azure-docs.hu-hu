@@ -3,12 +3,12 @@ title: Üzembe helyezés egy IoT Edge Linuxon a Windows rendszeren – Azure
 description: Ez a cikk útmutatást nyújt a Windows-eszközök Linux rendszerű IoT Edge való üzembe helyezéséhez.
 ms.topic: how-to
 ms.date: 02/18/2021
-ms.openlocfilehash: 5cf4184857f12065d808d7b528dbfe8258950cd8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b635070d6a4834da2c6d82cc768684b6cde9cd71
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101745482"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042181"
 ---
 # <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device"></a>Üzembe helyezés egy IoT Edge for Linux on Windows (EFLOW) eszközön
 
@@ -107,7 +107,7 @@ A következő ábra a dokumentum teljes folyamatát ábrázolja, és 5 egyszerű
 ## <a name="next-steps"></a>Következő lépések
 
 * Próbálja ki a mozgásérzékelőket a felhőben a kapcsolódó videók rögzítésével együtt. Kövesse a [mozgás észlelése, videoklipek rögzítése Media Services](detect-motion-record-video-clips-media-services-quickstart.md#review-the-sample-video) rövid útmutató lépéseit.
-* [AI futtatása élő videón](use-your-model-quickstart#overview) (kihagyhatja az előfeltételként megadott beállítást, mert már a fentiekben is megtörtént)
+* [AI futtatása élő videón](use-your-model-quickstart.md#overview) (kihagyhatja az előfeltételként megadott beállítást, mert már a fentiekben is megtörtént)
 * A [vs Code bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge) használatával további adathordozó-diagramokat jeleníthet meg.
 * Használjon olyan [IP-kamerát](https://en.wikipedia.org/wiki/IP_camera)  , amely támogatja az RTSP-t az RTSP-szimulátor használata helyett. Az RTSP-t támogató IP-kamerákat a [ONVIF-megfelelőségi termékek](https://www.onvif.org/conformant-products/) lapon találja. Keresse meg azokat az eszközöket, amelyek megfelelnek a G, S vagy T profiloknak.
 

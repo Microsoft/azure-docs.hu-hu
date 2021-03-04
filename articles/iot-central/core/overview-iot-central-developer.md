@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 326fed659be43be3115cae1d7c2b14d0708f4a96
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f69bbecfc2acc24cd63b87212197342b28723a9f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100377805"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043099"
 ---
 # <a name="iot-central-device-development-guide"></a>IoT Central eszköz fejlesztési útmutatója
 
@@ -68,7 +68,7 @@ A DPS használata lehetővé teszi a következőket:
 - A saját eszközök azonosítóinak használatával regisztrálhatja az eszközöket a IoT Centralban. A saját eszköz-azonosítók használatával egyszerűbbé válik a meglévő Back-Office rendszerekkel való integráció.
 - Egyetlen, egységes módszer az eszközök IoT Centralhoz való csatlakoztatására.
 
-További információért lásd: [Csatlakozás az Azure IoT Centralhoz](./concepts-get-connected.md).
+További információért lásd: [Csatlakozás az Azure IoT Centralhoz](./concepts-get-connected.md) és az [ajánlott eljárások](concepts-best-practices.md).
 
 ### <a name="security"></a>Biztonság
 

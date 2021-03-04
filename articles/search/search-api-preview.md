@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
-ms.openlocfilehash: a03707133b384f7717a624e810d0f7a41267969d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 596113f9fcb7326010090e67b3a52ca03faa25d0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101670880"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041977"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Az Azure előzetes verziójának szolgáltatásai Cognitive Search
 
@@ -25,7 +25,7 @@ Az általánosan elérhetővé vált előzetes verziójú funkciók törlődnek 
 |---------|------------------|-------------|---------------|
 | [**Szemantikus keresés**](semantic-search-overview.md) | Relevancia (pontozás) | Szemantikai rangsorolási algoritmus, lekérdezési típus és lekérdezési válasz. | [Keresés REST API 2020-06-30 – előzetes verzió](/rest/api/searchservice/) |
 | [**helyesírás**](cognitive-search-aml-skill.md) | Lekérdezés | Opcionális helyesírás-javítás a lekérdezési kifejezés bemenetei esetében egyszerű, teljes és szemantikai lekérdezésekhez. | [Keresés REST API 2020-06-30 – előzetes verzió](/rest/api/searchservice/) |
-| SharePoint Online-indexelő | Indexelő adatforrása | Új adatforrás a SharePoint-tartalom indexelő alapú indexeléséhez. | [Keresés REST API 2020-06-30 – előzetes verzió](/rest/api/searchservice/) |
+| [**SharePoint Online-indexelő**](search-howto-index-sharepoint-online.md) | Indexelő adatforrása | Új adatforrás a SharePoint-tartalom indexelő alapú indexeléséhez. | [Keresés REST API 2020-06-30 – előzetes verzió](/rest/api/searchservice/) |
 | [**Azure Machine Learning (pénzmosás) ismerete**](cognitive-search-aml-skill.md) | MI-bővítés| Egy új, az Azure Machine Learning-ból származó következtetési végpont integrálására szolgáló képzettségi típus. Ismerkedjen meg az [oktatóanyaggal](cognitive-search-tutorial-aml-custom-skill.md). | Használja a [Search REST API 2020-06-30 – Preview](/rest/api/searchservice/) vagy 2019-05-06-Preview lehetőséget. A portálon is elérhető a készségkészlet-kialakításban, feltéve, hogy a Cognitive Search és az Azure ML-szolgáltatások ugyanabban az előfizetésben vannak telepítve. |
 | [**featuresMode paraméter**](/rest/api/searchservice/preview-api/search-documents#query-parameters) | Relevancia (pontozás) | A relevancia pontszámának kiterjesztése a részletekre: a mező szerinti hasonlóság pontszáma, a mezők kifejezésének gyakorisága, valamint az egyedi tokenek számának egyeztetése. Ezeket az adatpontokat [Egyéni pontozási megoldásokban](https://github.com/Azure-Samples/search-ranking-tutorial)használhatja fel. | Adja hozzá ezt a lekérdezési paramétert a [Search Documents (REST)](/rest/api/searchservice/preview-api/search-documents) használatával az API-Version = 2020-06 -30-Preview vagy a 2019-05-06-Preview értékkel. |
 | [**Hibakeresési munkamenetek**](cognitive-search-debug-session.md) | Portál, AI-dúsítás (készségkészlet) | Egy munkameneten belüli készségkészlet-szerkesztő, amely a készségkészlet kapcsolatos problémák vizsgálatára és megoldására szolgál. A hibakeresési munkamenet során alkalmazott javítások menthetők a szolgáltatás egyik készségkészlet is. | Egy hibakeresési munkamenet megnyitásához csak a portálon, az áttekintő lapon található, a lap közepére mutató hivatkozásokat használva. |

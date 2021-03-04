@@ -1,17 +1,16 @@
 ---
 title: Log Analytics Agent adatforrások a Azure Monitor
 description: Az adatforrások határozzák meg azokat a naplózási adatokat, amelyeket a Azure Monitor ügynökökből és más csatlakoztatott forrásokból gyűjt.  Ez a cikk a Azure Monitor adatforrások felhasználásának fogalmát ismerteti, ismerteti a konfigurálásának részleteit, és összefoglalja a különböző elérhető adatforrásokat.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/21/2020
-ms.openlocfilehash: 8b0debed6e0865f39cd42c7003347b2510600f81
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 02/26/2021
+ms.openlocfilehash: 51cdee9c899feeb003a7d6301d2da0749fad65e9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720018"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041934"
 ---
 # <a name="log-analytics-agent-data-sources-in-azure-monitor"></a>Log Analytics Agent adatforrások a Azure Monitor
 Az [log Analytics](./log-analytics-agent.md) ügynököt használó virtuális gépekről Azure monitor gyűjtött adatokat az [log Analytics munkaterületen](../logs/data-platform-logs.md)konfigurált adatforrások határozzák meg.   Minden adatforrás egy adott típusú rekordokat hoz létre, amelyek mindegyike rendelkezik saját tulajdonságokkal.
@@ -40,11 +39,11 @@ A következő táblázat felsorolja a Log Analytics ügynökkel jelenleg elérhe
 
 
 ## <a name="configuring-data-sources"></a>Adatforrások konfigurálása
-Log Analytics-ügynökök adatforrásainak konfigurálásához lépjen a Azure Portal **log Analytics munkaterületek** menüjére, és válasszon ki egy munkaterületet. Kattintson a **Speciális beállítások** , majd **az** adatelemre. Válassza ki a konfigurálni kívánt adatforrást. A fenti táblázatban található hivatkozásokat követve az egyes adatforrások dokumentációját és a konfigurációjuk részleteit is megtekintheti.
+Log Analytics-ügynökök adatforrásainak konfigurálásához lépjen a Azure Portal **log Analytics munkaterületek** menüjére, és válasszon ki egy munkaterületet. Kattintson az **ügynökök konfigurálása** elemre. Válassza ki a konfigurálni kívánt adatforrás lapját. A fenti táblázatban található hivatkozásokat követve az egyes adatforrások dokumentációját és a konfigurációjuk részleteit is megtekintheti.
 
 Minden konfiguráció az adott munkaterülethez csatlakozó összes ügynök számára elérhető.  A csatlakoztatott ügynökök nem zárhatók ki ebből a konfigurációból.
 
-![Windows-események konfigurálása](media/agent-data-sources/configure-events.png)
+[![Windows-események konfigurálása](media/agent-data-sources/configure-events.png)](media/agent-data-sources/configure-events.png#lightbox)
 
 
 

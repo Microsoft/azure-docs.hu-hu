@@ -1,26 +1,21 @@
 ---
 title: Az Azure RBAC változásaival kapcsolatos tevékenységek naplóinak megtekintése
-description: Tekintse meg az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) Azure-erőforrásokkal kapcsolatos változásait az elmúlt 90 napban.
+description: Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) változásainak megtekintése az elmúlt 90 napban.
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: 2bc68595-145e-4de3-8b71-3a21890d13d9
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/27/2020
+ms.date: 03/01/2021
 ms.author: rolyon
-ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 53b72ac22df845f88dc82b14aa5dfaa57973b0d1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d9b39bc9a2f00fe83cae0ff78c6346042967e8bf
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100595846"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042127"
 ---
 # <a name="view-activity-logs-for-azure-rbac-changes"></a>Az Azure RBAC változásaival kapcsolatos tevékenységek naplóinak megtekintése
 
@@ -41,6 +36,10 @@ Első lépésként a legegyszerűbb módszer, ha megtekinti a tevékenységnapl�
 
 ![A portált használó tevékenységek naplói – képernyőfelvétel](./media/change-history-report/activity-log-portal.png)
 
+További információért kattintson egy bejegyzésre az összefoglalás ablaktábla megnyitásához. A részletes napló megjelenítéséhez kattintson a **JSON** fülre.
+
+![Tevékenységek naplói a portálon az összefoglalás ablaktáblán Megnyitás – képernyőfelvétel](./media/change-history-report/activity-log-summary-portal.png)
+
 A portálon a tevékenység naplója több szűrőt tartalmaz. Az Azure RBAC-hez kapcsolódó szűrők:
 
 | Szűrő | Érték |
@@ -50,9 +49,24 @@ A portálon a tevékenység naplója több szűrőt tartalmaz. Az Azure RBAC-hez
 
 További információ a tevékenységi naplókról: [tevékenység-naplók megtekintése az erőforrásokon végzett műveletek figyeléséhez](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).
 
-## <a name="azure-powershell"></a>Azure PowerShell
 
-[!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
+## <a name="interpret-a-log-entry"></a>Naplóbejegyzés értelmezése
+
+A JSON lapon, Azure PowerShell vagy az Azure CLI-ből származó napló kimenete számos információt tartalmazhat. Íme néhány olyan fő tulajdonság, amely a naplóbejegyzések értelmezésére tett kísérlet során keres. A naplók kimenetének Azure PowerShell vagy az Azure CLI használatával történő szűréséhez tekintse meg a következő részeket.
+
+> [!div class="mx-tableFixed"]
+> | Tulajdonság | Példaértékek | Leírás |
+> | --- | --- | --- |
+> | engedélyezés: művelet | Microsoft.Authorization/roleAssignments/write | Szerepkör-hozzárendelés létrehozása |
+> |  | Microsoft. Authorization/roleAssignments/delete | Szerepkör-hozzárendelés törlése |
+> |  | Microsoft. Authorization/roleDefinitions/írás | Szerepkör-definíció létrehozása vagy frissítése |
+> |  | Microsoft. Authorization/roleDefinitions/delete | Szerepkör-definíció törlése |
+> | engedélyezés: hatókör | /subscriptions/{subscriptionId}<br/>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId} | A művelet hatóköre |
+> | hívó | admin@example.com<br/>ObjectId | A műveletet kezdeményező személy |
+> | eventTimestamp | 2021-03-01T22:07:41.126243 Z | A művelet elkövetkezett ideje |
+> | állapot: érték | Első lépések<br/>Sikeres<br/>Sikertelen | A művelet állapota |
+
+## <a name="azure-powershell"></a>Azure PowerShell
 
 Ha Azure PowerShellkal szeretné megtekinteni a tevékenység naplóit, használja a [Get-AzLog](/powershell/module/Az.Monitor/Get-AzLog) parancsot.
 
@@ -68,56 +82,115 @@ Ez a parancs felsorolja az adott erőforráscsoport összes szerepkör-definíci
 Get-AzLog -ResourceGroupName pharma-sales -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/roleDefinitions/*'}
 ```
 
-Ez a parancs felsorolja az összes szerepkör-hozzárendelést és szerepkör-definíciót az előfizetésben az elmúlt hét napban, és megjeleníti az eredményeket egy listában:
+### <a name="filter-log-output"></a>Napló kimenetének szűrése
+
+A napló kimenete számos információt tartalmazhat. Ez a parancs felsorolja az összes szerepkör-hozzárendelést és szerepkör-definíciót az előfizetésben az elmúlt hét napban, és szűri a kimenetet:
 
 ```azurepowershell
 Get-AzLog -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/role*'} | Format-List Caller,EventTimestamp,{$_.Authorization.Action},Properties
 ```
 
-```Example
-Caller                  : alain@example.com
-EventTimestamp          : 2/27/2020 9:18:07 PM
+A következő példa a szűrt napló kimenetét mutatja be szerepkör-hozzárendelés létrehozásakor:
+
+```azurepowershell
+Caller                  : admin@example.com
+EventTimestamp          : 3/1/2021 10:07:42 PM
 $_.Authorization.Action : Microsoft.Authorization/roleAssignments/write
 Properties              :
                           statusCode     : Created
-                          serviceRequestId: 11111111-1111-1111-1111-111111111111
+                          serviceRequestId: {serviceRequestId}
                           eventCategory  : Administrative
+                          entity         : /subscriptions/{subscriptionId}/resourceGroups/example-group/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}
+                          message        : Microsoft.Authorization/roleAssignments/write
+                          hierarchy      : {tenantId}/{subscriptionId}
 
-Caller                  : alain@example.com
-EventTimestamp          : 2/27/2020 9:18:05 PM
+Caller                  : admin@example.com
+EventTimestamp          : 3/1/2021 10:07:41 PM
 $_.Authorization.Action : Microsoft.Authorization/roleAssignments/write
 Properties              :
-                          requestbody    : {"Id":"22222222-2222-2222-2222-222222222222","Properties":{"PrincipalId":"33333333-3333-3333-3333-333333333333","RoleDefinitionId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers
-                          /Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c","Scope":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"}}
+                          requestbody    : {"Id":"{roleAssignmentId}","Properties":{"PrincipalId":"{principalId}","PrincipalType":"User","RoleDefinitionId":"/providers/Microsoft.Authorization/roleDefinitions/fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64","Scope":"/subscriptions/
+                          {subscriptionId}/resourceGroups/example-group"}}
+                          eventCategory  : Administrative
+                          entity         : /subscriptions/{subscriptionId}/resourceGroups/example-group/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}
+                          message        : Microsoft.Authorization/roleAssignments/write
+                          hierarchy      : {tenantId}/{subscriptionId}
 
 ```
 
-Ha egyszerű szolgáltatásnevet használ a szerepkör-hozzárendelések létrehozásához, a hívó tulajdonság egy objektumazonosító lesz. A [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) használatával információkat kérhet le az egyszerű szolgáltatásról.
+Ha egyszerű szolgáltatásnevet használ a szerepkör-hozzárendelések létrehozásához, akkor a hívó tulajdonság egy egyszerű szolgáltatásnév. A [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) használatával információkat kérhet le az egyszerű szolgáltatásról.
 
 ```Example
-Caller                  : 44444444-4444-4444-4444-444444444444
-EventTimestamp          : 6/4/2020 9:43:08 PM
+Caller                  : {objectId}
+EventTimestamp          : 3/1/2021 9:43:08 PM
 $_.Authorization.Action : Microsoft.Authorization/roleAssignments/write
 Properties              : 
                           statusCode     : Created
-                          serviceRequestId: 55555555-5555-5555-5555-555555555555
-                          category       : Administrative
+                          serviceRequestId: {serviceRequestId}
+                          eventCategory  : Administrative
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Ha az Azure CLI-vel szeretné megtekinteni a tevékenység naplóit, használja az az [monitor Activity-log List](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) parancsot.
+Ha az Azure CLI-vel szeretné megtekinteni a tevékenység naplóit, használja az az [monitor Activity-log List](/cli/azure/monitor/activity-log#az_monitor_activity_log_list) parancsot.
 
-Ez a parancs egy erőforráscsoport tevékenység-naplóit sorolja fel február 27-én, hét nap megvizsgálva:
+Ez a parancs egy erőforráscsoport tevékenység-naplóit sorolja fel március 1-től, hét nap megvizsgálva:
 
 ```azurecli
-az monitor activity-log list --resource-group pharma-sales --start-time 2020-02-27 --offset 7d
+az monitor activity-log list --resource-group example-group --start-time 2021-03-01 --offset 7d
 ```
 
-Ez a parancs az engedélyezési erőforrás-szolgáltató tevékenység naplóit sorolja fel február 27-én, a hét napja előre látható:
+Ez a parancs az engedélyezési erőforrás-szolgáltató tevékenység naplóit sorolja fel március 1-től:
 
 ```azurecli
-az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 2020-02-27 --offset 7d
+az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 2021-03-01 --offset 7d
+```
+
+### <a name="filter-log-output"></a>Napló kimenetének szűrése
+
+A napló kimenete számos információt tartalmazhat. Ez a parancs felsorolja az összes szerepkör-hozzárendelést és szerepkör-definíciót az előfizetésben hét nap elteltével, a kimenet szűrésével:
+
+```azurecli
+az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 2021-03-01 --offset 7d --query '[].{authorization:authorization, caller:caller, eventTimestamp:eventTimestamp, properties:properties}'
+```
+
+A következő példa a szűrt napló kimenetét mutatja be szerepkör-hozzárendelés létrehozásakor:
+
+```azurecli
+[
+ {
+    "authorization": {
+      "action": "Microsoft.Authorization/roleAssignments/write",
+      "role": null,
+      "scope": "/subscriptions/{subscriptionId}/resourceGroups/example-group/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}"
+    },
+    "caller": "admin@example.com",
+    "eventTimestamp": "2021-03-01T22:07:42.456241+00:00",
+    "properties": {
+      "entity": "/subscriptions/{subscriptionId}/resourceGroups/example-group/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}",
+      "eventCategory": "Administrative",
+      "hierarchy": "{tenantId}/{subscriptionId}",
+      "message": "Microsoft.Authorization/roleAssignments/write",
+      "serviceRequestId": "{serviceRequestId}",
+      "statusCode": "Created"
+    }
+  },
+  {
+    "authorization": {
+      "action": "Microsoft.Authorization/roleAssignments/write",
+      "role": null,
+      "scope": "/subscriptions/{subscriptionId}/resourceGroups/example-group/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}"
+    },
+    "caller": "admin@example.com",
+    "eventTimestamp": "2021-03-01T22:07:41.126243+00:00",
+    "properties": {
+      "entity": "/subscriptions/{subscriptionId}/resourceGroups/example-group/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}",
+      "eventCategory": "Administrative",
+      "hierarchy": "{tenantId}/{subscriptionId}",
+      "message": "Microsoft.Authorization/roleAssignments/write",
+      "requestbody": "{\"Id\":\"{roleAssignmentId}\",\"Properties\":{\"PrincipalId\":\"{principalId}\",\"PrincipalType\":\"User\",\"RoleDefinitionId\":\"/providers/Microsoft.Authorization/roleDefinitions/fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64\",\"Scope\":\"/subscriptions/{subscriptionId}/resourceGroups/example-group\"}}"
+    }
+  }
+]
 ```
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor-naplók
@@ -139,7 +212,7 @@ Az első lépésekhez a következő alapvető lépések szükségesek:
 
    ![Azure Monitor naplók lehetőség a portálon](./media/change-history-report/azure-log-analytics-option.png)
 
-1. Igény szerint a [Azure Monitor log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) is használhatja a naplók lekérdezéséhez és megtekintéséhez. További információ: Ismerkedés [a Azure monitor log lekérdezésekkel](../azure-monitor/logs/get-started-queries.md).
+1. Igény szerint a [Azure Monitor log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) is használhatja a naplók lekérdezéséhez és megtekintéséhez. További információ: Ismerkedés [a Azure monitor-naplózási lekérdezésekkel](../azure-monitor/logs/get-started-queries.md).
 
 A következő egy lekérdezés, amely a célként megadott erőforrás-szolgáltató által szervezett új szerepkör-hozzárendeléseket adja vissza:
 
@@ -162,5 +235,5 @@ AzureActivity
 ![Tevékenységek naplói a speciális elemzési portál használatával – képernyőfelvétel](./media/change-history-report/azure-log-analytics.png)
 
 ## <a name="next-steps"></a>Következő lépések
-* [Események megtekintése a tevékenységnaplóban](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
-* [Előfizetési tevékenységek monitorozása az Azure-tevékenységnaplóval](../azure-monitor/essentials/platform-logs-overview.md)
+* [Tevékenységek naplóinak megtekintése az erőforrásokon végzett műveletek figyeléséhez](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
+* [Előfizetési tevékenység figyelése az Azure-beli tevékenység naplójával](../azure-monitor/essentials/platform-logs-overview.md)

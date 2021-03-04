@@ -3,12 +3,12 @@ title: Azure Service Bus – üzenet lejárata
 description: Ez a cikk a Azure Service Bus üzenetek érvényességének lejáratát és időpontját ismerteti. Az ilyen határidő lejárta után az üzenet már nem érkezik meg.
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: 505a041d2f6129b159166e9f99ce7fef779e1e66
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 74df8909633c2fa048c23c559ffdd315a8616e11
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101698365"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042827"
 ---
 # <a name="message-expiration-time-to-live"></a>Üzenetek lejárata (élettartama)
 Az üzenetben szereplő hasznos adatok, illetve az üzenetek fogadóknak küldött utasításait vagy lekérdezéseit szinte mindig az alkalmazási szintű lejárati határidő valamilyen formája adja. Az ilyen határidő lejárta után a rendszer már nem továbbítja a tartalmat, vagy a kért művelet már nem lesz végrehajtva.
@@ -21,7 +21,7 @@ A **lejárati idő lejártakor** az üzenetek lekérésére nem jogosultak. A le
 
 Amíg az üzenet zárolva van, előfordulhat, hogy az alkalmazás lejárt üzenettel rendelkezik. Azt jelzi, hogy az alkalmazás készen áll-e a feldolgozásra, vagy úgy dönt, hogy elhagyja az üzenetet a végrehajtónak.
 
-Azt javasoljuk, hogy az üzenetben az **idő – élő** érték legyen óra vagy nap. Ha másodpercben vagy ezredmásodpercben alacsony értékre állítja azt, akkor előfordulhat, hogy az üzenet lejár, mielőtt a fogyasztó felhasználja azt. 
+A rendkívül alacsony élettartam az ezredmásodpercek és másodpercek sorrendjében az üzenetek lejáratát okozhatja, mielőtt a fogadó alkalmazások megkapják azt. Vegye figyelembe az alkalmazáshoz használható legmagasabb ÉLETTARTAMot.
 
 ## <a name="entity-level-expiration"></a>Entitások szintjének lejárata
 A várólistába vagy témakörbe küldött összes üzenet az entitás szintjén beállított alapértelmezett lejárati idő alá esik. Később is beállítható a portálon a létrehozás és a módosítás során. Az alapértelmezett lejáratot a rendszer az entitásnak küldött összes üzenethez használja, ahol az élettartam nincs explicit módon beállítva. Az alapértelmezett lejárati idő felső határként is működik az élettartam értékeként. Azok az üzenetek, amelyek hosszabb élettartamú lejárattal rendelkeznek, mint az alapértelmezett érték, a várólistán lévő előtt csendben módosítva lesznek az üzenet alapértelmezett élettartama értékre.

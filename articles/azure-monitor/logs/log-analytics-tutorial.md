@@ -1,17 +1,16 @@
 ---
 title: Log Analytics-oktatóanyag
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Azure Monitor Log Analytics funkcióit egy naplófájl futtatására és az eredmények elemzésére a Azure Portal.
-ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2020
-ms.openlocfilehash: a7a6ba395769677fe46ddfff675640f6e15060a0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 06a73b495cefc361db88d80413f4f4be50e105d1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723180"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041144"
 ---
 # <a name="log-analytics-tutorial"></a>Log Analytics-oktatóanyag
 A Log Analytics egy eszköz a Azure Portalban, amellyel szerkesztheti és futtathatja a Azure Monitor naplók által összegyűjtött adatokból származó naplózott lekérdezéseket, és interaktív módon elemezheti az eredményeket. Log Analytics lekérdezések használatával lekérheti az adott feltételeknek megfelelő rekordokat, azonosíthatja a trendeket, elemezheti a mintákat, és különféle elemzéseket biztosíthat az adataihoz. 

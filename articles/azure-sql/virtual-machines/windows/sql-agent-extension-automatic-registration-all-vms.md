@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/07/2020
-ms.openlocfilehash: 1ef7943586123a1870ed9a2d0c21aa8b5fd38c1c
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 139852949a3744fd603cb197b2e27fa32679aae0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359999"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042419"
 ---
 # <a name="automatic-registration-with-sql-iaas-agent-extension"></a>Automatikus regisztráció az SQL IaaS-ügynök bővítménnyel
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,7 +30,7 @@ A SQL Server VM regisztrálása az [SQL IaaS-ügynök bővítménnyel](sql-serve
 
 Ha engedélyezve van az automatikus regisztráció, a feladatok naponta futnak annak észleléséhez, hogy SQL Server telepítve van-e az előfizetésben lévő összes nem regisztrált virtuális gépre. Ezt úgy teheti meg, hogy az SQL IaaS-ügynök bővítmény bináris fájljait másolja a virtuális gépre, majd egy egyszeri segédprogramot futtat, amely a SQL Server beállításjegyzék-struktúrát ellenőrzi. Ha a rendszer észleli a SQL Server struktúrát, a virtuális gép egyszerűsített módban van regisztrálva a kiterjesztéssel. Ha nem létezik SQL Server struktúra a beállításjegyzékben, a bináris fájlok törlődnek.
 
-Miután engedélyezte az automatikus regisztrációt az előfizetéshez, a SQL Server telepített összes aktuális és jövőbeli virtuális gép az SQL IaaS-ügynök bővítménnyel lesz regisztrálva, egyszerűsített módban. Továbbra is [manuálisan kell frissítenie a teljes kezelhetőségi módra](sql-agent-extension-manually-register-single-vm.md#upgrade-to-full) , hogy kihasználhassa a teljes szolgáltatáskészlet előnyeit. 
+Miután engedélyezte az automatikus regisztrációt az előfizetéshez, a SQL Server telepített összes aktuális és jövőbeli virtuális gép az SQL IaaS-ügynök bővítménye **egyszerűsített módban, állásidő nélkül, és a SQL Server szolgáltatás újraindítása nélkül** lesz regisztrálva. Továbbra is [manuálisan kell frissítenie a teljes kezelhetőségi módra](sql-agent-extension-manually-register-single-vm.md#upgrade-to-full) , hogy kihasználhassa a teljes szolgáltatáskészlet előnyeit. 
 
 > [!IMPORTANT]
 > Az SQL IaaS-ügynök bővítmény olyan adatokat gyűjt az expressz célra, amelyek az ügyfelek számára opcionális előnyöket biztosítanak SQL Server Azure-beli Virtual Machines való használatakor. A Microsoft ezeket az adatszolgáltatásokat nem használja fel a licencelési naplózáshoz az ügyfél előzetes belefoglalása nélkül. További információért tekintse meg a [SQL Server adatvédelmi kiegészítését](/sql/sql-server/sql-server-privacy#non-personal-data) .
@@ -47,7 +47,7 @@ A SQL Server VM a bővítménnyel való regisztrálásához a következőkre les
 
 Ha engedélyezni szeretné a SQL Server virtuális gépek automatikus regisztrációját a Azure Portalban, kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Navigáljon az [**SQL Virtual Machines**](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) erőforrás oldalára. 
 1. Válassza az **automatikus SQL Server VM regisztráció** lehetőséget az **automatikus regisztráció** lap megnyitásához. 
 

@@ -1,17 +1,16 @@
 ---
 title: Lekérdezések naplózása Azure Monitor
 description: Az Azure Monitor által használt Kusto-lekérdezési nyelvre vonatkozó információk. A Azure Monitor és a Azure Monitor napló lekérdezésekben nem támogatott elemek további elemeit tartalmazza.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/09/2020
-ms.openlocfilehash: 7ce73fc69ac0ff88c6048aad39fd07ae802b978d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 529fc432bf8777ef7e2b527f08e9cb59e42bf156
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704225"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041025"
 ---
 # <a name="log-queries-in-azure-monitor"></a>Lekérdezések naplózása Azure Monitor
 Azure Monitor naplók az Azure Adatkezelőon alapulnak, és a napló lekérdezéseit ugyanazzal a Kusto lekérdezési nyelvvel (KQL) kell írni. Ez egy sokoldalú, könnyen olvasható és elsajátítható nyelv, ezért a lekérdezéseket elindíthatja néhány alapvető útmutatással.

@@ -10,17 +10,16 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
-ms.date: 12/03/2019
-ms.openlocfilehash: 35e2a73b0cfae104cee417e7d4a159e7fd169a17
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 03/03/2021
+ms.openlocfilehash: d60810c291984e0f57df1968f69678de8179273c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500903"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042521"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>A Azure Portal automatikus hangolásának engedélyezése a lekérdezések figyeléséhez és a munkaterhelés teljesítményének növeléséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
-
 
 A Azure SQL Database automatikusan kezeli azokat az adatszolgáltatásokat, amelyek folyamatosan figyelik a lekérdezéseket, és azonosítják a munkaterhelés teljesítményének növelése érdekében végrehajtható műveleteket. Áttekintheti az ajánlásokat, és manuálisan alkalmazhatja őket, vagy engedélyezheti Azure SQL Database a javítási műveletek automatikus alkalmazását – ezt az **Automatikus hangolási módot** nevezzük.
 
@@ -111,11 +110,26 @@ Ha a be értékre állítja az egyes hangolási lehetőséget, az az adatbázis 
 
 Ha többet szeretne megtudni a vmivel T-SQL-beállításokról az automatikus hangolás konfigurálásához, tekintse meg az [adatbázis-beállítási beállítások módosítása (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current&preserve-view=true)című témakört.
 
-## <a name="disabled-by-the-system"></a>A rendszer letiltotta
+## <a name="troubleshooting"></a>Hibaelhárítás
 
-Az automatikus hangolás az adatbázison végrehajtott összes műveletet figyeli, és bizonyos esetekben megállapíthatja, hogy az automatikus hangolás nem tud megfelelően működni az adatbázison. Ebben az esetben a rendszer letiltja a hangolási beállítást. A legtöbb esetben ez azért történik, mert a lekérdezési tár nincs engedélyezve, vagy csak olvasható állapotban van egy adott adatbázison.
+### <a name="automated-recommendation-management-is-disabled"></a>Az automatizált javaslatok kezelése le van tiltva
 
-## <a name="permissions"></a>Engedélyek
+Ha az automatikus ajánlás-kezelési szolgáltatás le van tiltva, vagy egyszerűen le van tiltva a rendszeren, a leggyakoribb okok a következők:
+- A lekérdezési tároló nincs engedélyezve, vagy
+- A lekérdezési tároló egy adott adatbázis írásvédett módban van, vagy
+- A lekérdezési tároló leállt, mert a lefoglalt tárolóhelyet használta.
+
+A probléma kijavításához a következő lépéseket kell figyelembe venni:
+- Törölje a lekérdezési tárolót, vagy módosítsa az adatmegőrzési időszakot az "Auto" értékre a T-SQL használatával. Lásd: a [lekérdezési tároló ajánlott megőrzési és rögzítési szabályzatának konfigurálása](/azure/azure-sql/database/query-performance-insight-use#recommended-retention-and-capture-policy).
+- Használja a SQL Server Management Studio (SSMS), és kövesse az alábbi lépéseket:
+  - Kapcsolódás a Azure SQL Databasehoz
+  - Kattintson a jobb gombbal az adatbázisra
+  - Válassza a tulajdonságok lehetőséget, és kattintson a lekérdezés-áruház elemre.
+  - A műveleti mód módosítása Read-Writere
+  - Az áruház rögzítési módjának módosítása automatikusra
+  - A méret alapú karbantartási mód módosítása automatikusra
+
+### <a name="permissions"></a>Engedélyek
 
 Mivel az automatikus hangolás egy Azure-szolgáltatás, a használatához az Azure beépített szerepköreit kell használnia. Az SQL-hitelesítés használata nem elegendő a funkciónak a Azure Portal való használatához.
 
@@ -123,9 +137,9 @@ Az automatikus hangolás használatához a felhasználónak való megadáshoz mi
 
 ## <a name="configure-automatic-tuning-e-mail-notifications"></a>E-mail értesítések automatikus hangolásának konfigurálása
 
-Lásd az [e-mail értesítések automatikus finomhangolása](automatic-tuning-email-notifications-configure.md) útmutatót.
+Ha automatizált e-mail-értesítéseket szeretne kapni az automatikus hangolással kapcsolatos javaslatokról, tekintse meg az [e-mail értesítések automatikus finomhangolása](automatic-tuning-email-notifications-configure.md) útmutatót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az automatikus hangolással kapcsolatos további információkért olvassa el az automatikus finomhangolásról szóló [cikket](automatic-tuning-overview.md) , és azt, hogy miként segíthet a teljesítmény javításában.
 - Tekintse meg a teljesítményre vonatkozó [javaslatokat](database-advisor-implement-performance-recommendations.md) a Azure SQL Database teljesítményével kapcsolatos javaslatok áttekintéséhez.

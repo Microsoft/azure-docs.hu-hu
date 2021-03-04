@@ -3,15 +3,14 @@ title: Azure Monitor a Designer és a munkafüzetek közötti áttérési útmut
 description: Átmenet a nézetekről a Azure Monitor munkafüzetekbe.
 author: austonli
 ms.author: aul
-ms.subservice: ''
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: 7c43d1e4dda10cca6b868ef814ec8298d6e21fd0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 19de2a3d3f5a998c09db7c4df689b0378e2597fd
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736967"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043371"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-transition-guide"></a>Azure Monitor a Designer és a munkafüzetek közötti áttérési útmutató megtekintése
 A [tervező](view-designer.md) a Azure monitor egyik funkciója, amely lehetővé teszi, hogy egyéni nézeteket hozzon létre, amelyek segítségével megjelenítheti a log Analytics-munkaterületen lévő, diagramokkal, listákkal és időpontokkal kapcsolatos adatait. A rendszer átváltotta a munkafüzeteket, hogy rugalmas vászonra legyen szükség az adatelemzéshez és a Azure Portalon belüli, gazdag vizualizációs jelentések létrehozásához. Ebből a cikkből megtudhatja, hogyan lehet áttérni a tervezőből a munkafüzetekbe. 

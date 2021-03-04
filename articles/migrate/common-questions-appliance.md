@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 9badbfe6cfe12d67e07f0889d175ed32bc455321
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 5a050d9aab9e8665c6048391488e57c9b4af10a5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753875"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043065"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate berendezés: gyakori kérdések
 
@@ -36,21 +36,20 @@ További információ az Azure Migrate készülékről:
 
 ## <a name="how-can-i-deploy-the-appliance"></a>Hogyan helyezhetem üzembe a készüléket?
 
-A berendezés a következőképpen telepíthető:
+A készülék több módszer használatával is üzembe helyezhető:
 
-- Sablon használata a VMware virtuális gépek felderítéséhez (. PETESEJT-fájl) és Hyper-V virtuális gépek (. VHD-fájl) a készüléket futtató új virtuális gép létrehozásához.
-- Ha nem szeretne sablont használni, telepítheti a készüléket egy meglévő fizikai vagy virtuális gépen a VMware virtuális gépek vagy a Hyper-V virtuális gépek PowerShell-telepítő parancsfájl használatával történő felderítéséhez, amely letölthető egy zip-fájlban a portálról.
-- A helyszíni vagy bármely felhőből származó fizikai vagy virtuális kiszolgálók esetében mindig egy meglévő kiszolgálón lévő parancsfájl használatával telepítse a készüléket.
-- Azure Government esetében mindhárom készülék csak a PowerShell telepítő parancsfájl használatával telepíthető.
+- A készülék a VMware vagy a Hyper-V környezetben futó kiszolgálók sablonjának használatával telepíthető (a VMware-hez vagy [a virtuális merevlemezhez a Hyper-v-hez](how-to-set-up-appliance-hyper-v.md)készült[petesejtek sablonja](how-to-set-up-appliance-vmware.md) ).
+- Ha nem szeretne sablont használni, telepítheti a készüléket VMware vagy Hyper-V környezetben egy [PowerShell-telepítő parancsfájl](deploy-appliance-script.md)használatával.
+- Azure Government a készüléket egy PowerShell-telepítő parancsfájl használatával kell telepítenie. Tekintse át az üzembe helyezés lépéseit [itt](deploy-appliance-script-government.md).
+- A helyszíni vagy más Felhőbeli fizikai vagy virtualizált kiszolgálók esetében mindig PowerShell-telepítő parancsfájl használatával telepítse a készüléket. Tekintse át az üzembe helyezés lépéseit [itt](how-to-set-up-appliance-physical.md).
 
 ## <a name="how-does-the-appliance-connect-to-azure"></a>Hogyan kapcsolódik a készülék az Azure-hoz?
 
 A készülék az interneten keresztül vagy az Azure ExpressRoute segítségével csatlakozhat. 
 
 - Győződjön meg arról, hogy a készülék képes csatlakozni ezekhez az [Azure URL-címekhez](./migrate-appliance.md#url-access). 
-- A ExpressRoute-et Microsoft-partnerekkel is használhatja.  A nyilvános társítás elavult, és nem érhető el az új ExpressRoute-áramkörökhöz.
+- A ExpressRoute-et Microsoft-partnerekkel is használhatja. A nyilvános társítás elavult, és nem érhető el az új ExpressRoute-áramkörökhöz.
 - A privát társ-kezelés csak nem támogatott.
-
 
 
 ## <a name="does-appliance-analysis-affect-performance"></a>Befolyásolja a berendezések elemzése a teljesítményt?
@@ -109,7 +108,7 @@ Nem. Egy [Azure Migrate berendezés](migrate-appliance.md) és vCenter Server k�
 
 ## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Rendelkezhet Azure Migrate-projekttel több készülékkel?
 
-Egy projekthez több készülék is csatlakoztatható. Egy berendezés azonban csak egy projekthez társítható. 
+Egy projekthez több készülék is regisztrálva lehet. Egy készüléket azonban csak egyetlen projektben regisztrálhat.
 
 ## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Csatlakozhat a Azure Migrate készülék/replikációs berendezés ugyanahhoz a vCenter?
 
@@ -135,7 +134,7 @@ Egy meglévő Azure Migrate-projekt kulcsát nem használhatja újra konfigurál
 
 ## <a name="can-i-set-up-the-appliance-on-an-azure-vm"></a>Be lehet állítani a készüléket egy Azure-beli virtuális gépen?
 
-Nem. Ez a lehetőség jelenleg nem támogatott. 
+Nem. Ez a lehetőség jelenleg nem támogatott.
 
 ## <a name="can-i-discover-on-an-esxi-host"></a>Felfedezhető egy ESXi-gazdagépen is?
 
@@ -151,6 +150,19 @@ Ezek az automatikus frissítések csak a készülék és a berendezés ügynöke
 
 Igen. A portálon nyissa meg az Azure Migrate: Server Assessment vagy Azure Migrate: Server áttelepítési eszköz **ügynök állapota** lapját. Itt megtekintheti a kapcsolat állapotát az Azure és a készüléken található felderítési és értékelési ügynökök között.
 
-## <a name="next-steps"></a>További lépések
+## <a name="can-i-add-multiple-server-credentials-on-vmware-appliance"></a>Több kiszolgálói hitelesítő adatot is Hozzáadhatok a VMware készüléken?
+
+Igen, a szoftveres leltár (telepített alkalmazások felderítése), az ügynök nélküli függőségek elemzése és a SQL Server példányok és adatbázisok felderítése érdekében már több kiszolgáló hitelesítő adatait is támogatjuk. [További információ](tutorial-discover-vmware.md#provide-server-credentials) a hitelesítő adatok megadásáról a készülék Configuration Managerben.
+
+## <a name="what-type-of-server-credentials-can-i-add-on-the-vmware-appliance"></a>Milyen típusú kiszolgálói hitelesítő adatok adhatók hozzá a VMware készüléken?
+Megadhat tartomány/Windows (nem tartományi)/Linux (nem tartományi)/SQL Server hitelesítési hitelesítő adatokat a készülék Configuration Managerben. [További](add-server-credentials.md) információ a hitelesítő adatok megadásáról és kezeléséről.
+
+## <a name="what-type-of-sql-server-connection-properties-are-supported-by-azure-migrate-for-sql-discovery"></a>Milyen típusú SQL Server-kapcsolatok tulajdonságait támogatja az SQL-felderítési Azure Migrate?
+A Azure Migrate titkosítja Azure Migrate berendezés és a forrás SQL Server példányok közötti kommunikációt (a kapcsolat titkosítása tulajdonság értéke TRUE). Ezek a kapcsolatok a [TrustServerCertificate](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) -mel vannak titkosítva (igaz értékre állítva); az átviteli réteg az SSL használatával titkosítja a csatornát, és megkerüli a tanúsítványláncot a megbízhatóság ellenőrzéséhez. A berendezés-kiszolgálót úgy kell beállítani, hogy [megbízzon a tanúsítvány legfelső szintű hitelesítésszolgáltatóján](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).
+
+Ha nincs tanúsítvány kiépítve a kiszolgálón az indításkor, SQL Server létrehoz egy önaláírt tanúsítványt, amelyet a rendszer a bejelentkezési csomagok titkosítására használ. [További információk](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).
+
+
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el a [Azure Migrate áttekintést](migrate-services-overview.md).

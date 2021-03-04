@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 213b973bfc93cb2237473b6bc4c7f1e138457409
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: d879039e6d3ad94e55ed7f7bd283f8b99a5b2161
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131899"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042453"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Always On rendelkezésre állási csoport SQL Server Azure-beli virtuális gépeken
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,7 +42,7 @@ A redundancia és a magas rendelkezésre állás növeléséhez SQL Server virtu
 
 Ha a virtuális gépek egy készletét ugyanabban a rendelkezésre állási csoportba helyezi, a berendezés meghibásodása által okozott kimaradás (a rendelkezésre állási csoportba tartozó virtuális gépek nem osztják meg az erőforrásokat) vagy a frissítések (a rendelkezésre állási csoportba tartozó virtuális gépek nem frissülnek egyszerre). Availability Zones a teljes adatközpont meghibásodása elleni védelmet, és minden olyan zónát, amely egy adott régióban található adatközpontok készletét jelképezi.  Azáltal, hogy az erőforrások különböző Availability Zonesba vannak helyezve, az adatközpont-szintű leállás nélkül az összes virtuális gép offline állapotba kerülhet.
 
-Az Azure-beli virtuális gépek létrehozásakor választania kell a rendelkezésre állási készletek és a Availability Zones konfigurálása között.  Az Azure-beli virtuális gépek adatbázismotor is részt vesznek.
+Az Azure-beli virtuális gépek létrehozásakor választania kell a rendelkezésre állási készletek és a Availability Zones konfigurálása között.  Az Azure-beli virtuális gépek nem vehetnek részt mindkettőben.
 
 
 ## <a name="connectivity"></a>Kapcsolatok 
@@ -51,6 +51,7 @@ A hagyományos helyszíni telepítés során az ügyfelek a virtuális hálózat
 
 Ha SQL Server Azure-beli virtuális gépeken, állítson be egy [Load balancert](availability-group-vnn-azure-load-balancer-configure.md) a rendelkezésre állási csoport figyelője felé irányuló forgalom átirányításához, vagy ha SQL Server 2019 CU8 vagy újabb verzióval rendelkezik, konfigurálhat egy [Distributed Network name (DNN) figyelőt](availability-group-distributed-network-name-dnn-listener-configure.md) , hogy lecserélje a hagyományos VNN rendelkezésre állási csoport figyelőjét. 
 
+A fürt csatlakozási lehetőségeivel kapcsolatos további információkért lásd: [HADR-kapcsolatok továbbítása SQL Server Azure-beli virtuális gépeken](hadr-cluster-best-practices.md#connectivity). 
 
 ### <a name="vnn-listener"></a>VNN-figyelő 
 
@@ -88,9 +89,9 @@ Az alábbi táblázat az elérhető lehetőségek összehasonlítását tartalma
 |**Lehetséges DNN-figyelőt létrehozni ezzel a módszerrel?**|Nem|Nem|Nem|Igen|
 |**WSFC kvórum konfigurálása**|Felhőbeli tanúsító|Felhőbeli tanúsító|Felhőbeli tanúsító|Mind|
 |**DR több régióban** |Nem|Nem|Nem|Igen|
-|**Többalhálózat támogatása** |Igen|Igen|Igen|Yes|
-|**Meglévő AD támogatása**|Igen|Igen|Igen|Yes|
-|**DR többzónás, ugyanabban a régióban**|Igen|Igen|Igen|Yes|
+|**Többalhálózat támogatása** |Igen|Igen|Igen|Igen|
+|**Meglévő AD támogatása**|Igen|Igen|Igen|Igen|
+|**DR többzónás, ugyanabban a régióban**|Igen|Igen|Igen|Igen|
 |**AD-t nem tartalmazó elosztott AG**|Nem|Nem|Nem|Igen|
 |**Fürt nélküli elosztott AG** |Nem|Nem|Nem|Igen|
 

@@ -3,12 +3,12 @@ title: Hitelesítés felügyelt identitással
 description: Hozzáférés biztosítása a privát tároló beállításjegyzékében lévő rendszerképekhez felhasználó által hozzárendelt vagy rendszer által hozzárendelt Azure-identitás használatával.
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 68564cc5743b1deb43bf39f897c239dc683c334c
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: e6c0d21f7bdefa94241655225589a52c02110f70
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987755"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041467"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Azure-beli felügyelt identitás használata az Azure Container registryben való hitelesítéshez 
 
@@ -107,13 +107,13 @@ Lépjen ki az SSH-munkamenetből.
 
 ### <a name="create-an-identity"></a>Identitás létrehozása
 
-Hozzon létre egy identitást az előfizetésben az az [Identity Create](/cli/azure/identit#az-identity-create) paranccsal. Használhatja ugyanazt az erőforráscsoportot, amelyet korábban használt a tároló-beállításjegyzék vagy a virtuális gép létrehozásához, vagy egy másikat.
+Hozzon létre egy identitást az előfizetésben az az [Identity Create](/cli/azure/identity#az_identity_create) paranccsal. Használhatja ugyanazt az erőforráscsoportot, amelyet korábban használt a tároló-beállításjegyzék vagy a virtuális gép létrehozásához, vagy egy másikat.
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myACRId
 ```
 
-Az identitásnak az alábbi lépésekben való konfigurálásához használja az az [Identity show][az-identity-show] parancsot az identitás erőforrás-azonosítójának és egyszerű szolgáltatásnév azonosítójának a változókban való tárolásához.
+Az identitásnak az alábbi lépésekben való konfigurálásához használja az [az Identity show] [az_identity_show] parancsot az identitás erőforrás-AZONOSÍTÓjának és egyszerű szolgáltatásnév AZONOSÍTÓjának a változókban való tárolásához.
 
 ```azurecli
 # Get resource ID of the user-assigned identity

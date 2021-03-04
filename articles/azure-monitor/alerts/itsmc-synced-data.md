@@ -1,18 +1,17 @@
 ---
 title: A ITSM-termékről a LA Workspace-ba szinkronizált adatok
 description: Ez a cikk áttekintést nyújt a ITSM-termékről a LA Workspace-ba szinkronizált adatokról.
-ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/29/2020
 ms.custom: references_regions
-ms.openlocfilehash: fd570950190ceabac413aca2d68368e5e722a3da
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 83994c1b6e150342a777a079d79d6a594d30c3ff
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100614398"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041603"
 ---
 # <a name="data-synced-from-your-itsm-product"></a>A ITSM-termékről szinkronizált adatok
 
@@ -84,7 +83,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 - Tervezett befejezési dátum
 - Munka kezdő dátuma
 - Munka befejezési dátuma
-- Description
+- Leírás
 - Computer
 
 ## <a name="servicenow-example"></a>ServiceNow példa 
@@ -132,7 +131,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 | PlannedEndDate_t  | Tervezett befejezési dátum |
 | WorkStartDate_t  | Tényleges kezdési dátum |
 | WorkEndDate_t | Tényleges befejezési dátum|
-| Description_s | Description |
+| Description_s | Leírás |
 | Computer  | Konfigurációs tétel |
 
 ## <a name="next-steps"></a>Következő lépések

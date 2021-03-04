@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: űrlapos adatok tömeges kinyerése Azure Data Factory-űrlap felismerő használatával'
 titleSuffix: Azure Cognitive Services
-description: Azure Data Factory tevékenységek beállításával elindíthatja az űrlap-felismerő modellek betanítását és futtatását a dokumentumok nagy lemaradásának digitalizálásához.
+description: Azure Data Factory tevékenységek beállításával aktiválhatja az űrlap-felismerő modellek betanítását és futtatását, és digitalizálhatja a dokumentumok nagy számát.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,87 +9,89 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 01/04/2021
 ms.author: pafarley
-ms.openlocfilehash: 6faa612f55b4114b4242c48d43aae9aac8c56582
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d0c95312e1794e2f78bbbef217ef5530a993146d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101699997"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040906"
 ---
-# <a name="tutorial-extract-form-data-in-bulk-using-azure-data-factory"></a>Oktatóanyag: adatok tömeges kinyerése Azure Data Factory használatával
+# <a name="tutorial-extract-form-data-in-bulk-by-using-azure-data-factory"></a>Oktatóanyag: adatok tömeges kinyerése Azure Data Factory használatával
 
-Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure-szolgáltatásokat egy nagy mennyiségű űrlap digitális médiába való betöltésére. Ez az oktatóanyag bemutatja, hogyan automatizálható az adatok betöltése egy Azure Data Lake dokumentumból egy Azure SQL Database-adatbázisba. Gyorsan betaníthatja a modelleket, és néhány kattintással feldolgozhatja az új dokumentumokat.
+Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure-szolgáltatásokat egy nagy mennyiségű űrlap digitális médiába való betöltésére. Az oktatóanyag bemutatja, hogyan automatizálható a dokumentumok Azure-beli adatfeldolgozása az Azure SQL Database-be. Gyorsan betaníthatja a modelleket, és néhány kattintással feldolgozhatja az új dokumentumokat.
 
 ## <a name="business-need"></a>Üzleti igények
 
-A legtöbb szervezet most már tisztában van azzal, hogy milyen értékesek a különböző formátumokban tárolt adatmennyiségek (PDF, képek, videók). Az ajánlott eljárásokat és a legtöbb költséghatékony módszert keresik az eszközök digitalizálásához.
+A legtöbb szervezet már ismeri a különböző formátumokban (PDF, képek, videók) tárolt adatmennyiséget. Az ajánlott eljárásokat és a legtöbb költséghatékony módszert keresik az eszközök digitalizálásához.
 
-Emellett ügyfeleink gyakran különböző típusú űrlapokkal rendelkeznek, amelyek számos ügyféltől és ügyféltől származnak. A rövid útmutatóktól eltérően ez az oktatóanyag azt mutatja [be, hogyan](./quickstarts/client-library.md)lehet automatikusan betanítani egy modellt új és különböző típusú űrlapokkal a metaadatokon alapuló megközelítés használatával. Ha nem rendelkezik meglévő modellel a megadott típusú űrlaphoz, akkor a rendszer létrehoz egyet, és megadja a modell AZONOSÍTÓját. 
+Emellett ügyfeleink gyakran különböző típusú űrlapokkal rendelkeznek, amelyek számos ügyfélből és ügyfélből származnak. A rövid útmutatóktól eltérően ez az oktatóanyag azt mutatja [be, hogyan](./quickstarts/client-library.md)lehet automatikusan betanítani egy modellt új és különböző típusú űrlapokkal a metaadatokon alapuló megközelítés használatával. Ha nem rendelkezik meglévő modellel a megadott típusú űrlaphoz, akkor a rendszer létrehoz egyet, és megadja a modell AZONOSÍTÓját. 
 
 Az űrlapokból származó adatok kinyerése és a meglévő operatív rendszerek és adattárházak kombinálásával való összevonásával a vállalatok bepillantást nyerhetnek, és az ügyfelek és az üzleti felhasználók számára értékes eredményeket szerezhetnek.
 
-Az Azure Form felismerő segítségével a szervezetek kihasználhatják az adatmennyiséget, automatizálják a folyamatokat (a számla kifizetését, az adózási feldolgozást stb.), megtakarítják a pénzt és az időt, és jobb adatpontossággal rendelkeznek.
+Az Azure űrlap-felismerő szolgáltatás segít a szervezeteknek az adatok felhasználásában, a folyamatok automatizálásában (számlázás, adófizetési műveletek stb.), pénzt takaríthat meg és időt takaríthat meg, és jobb adatpontosságot érhet el.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Azure Data Lake beállítása az űrlapok tárolására
-> * Parametrization-tábla létrehozása Azure-adatbázis használatával
-> * Bizalmas hitelesítő adatok tárolása a Azure Key Vault használatával
-> * Az űrlap-felismerő modell betanítása Databricks-jegyzetfüzetbe
-> * Űrlap-adatok kinyerése Databricks notebook használatával
-> * Automatizálja az űrlapok betanítását és kinyerését Azure Data Factory
+> * Azure Data Lake beállítása az űrlapok tárolásához.
+> * Parametrization-tábla létrehozásához használjon Azure-adatbázist.
+> * A bizalmas hitelesítő adatok tárolásához használjon Azure Key Vault.
+> * Az űrlap-felismerő modell betanítása Azure Databricks notebookon.
+> * Kinyerheti az űrlapadatokat egy Databricks notebook használatával.
+> * Automatizálja az űrlapok betanítását és kinyerését Azure Data Factory használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" hozzon létre egy űrlap-felismerő erőforrást "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Az Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően válassza **az Ugrás erőforráshoz** lehetőséget.
-    * Az alkalmazás az űrlap-felismerő API-hoz való összekapcsolásához a létrehozott erőforrás kulcsára és végpontra lesz szüksége. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
-    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
-* Legalább öt azonos típusú űrlap. Ideális esetben ez a munkafolyamat nagy méretű dokumentumok támogatását jelenti. A betanítási adatkészletek összeállításával kapcsolatos tippekért és lehetőségekkel kapcsolatban lásd: [képzési adatkészlet létrehozása](./build-training-data-set.md) . Ebben az oktatóanyagban használhatja a [minta adatkészletének](https://go.microsoft.com/fwlink/?linkid=2128080) **vonattal** mappában található fájlokat.
+* Azure-előfizetés. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/).
+* Az Azure <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" -előfizetés létrehozása után hozzon létre egy űrlap-felismerő erőforrást "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Az Azure Portal a kulcs és a végpont beszerzéséhez. Az erőforrás üzembe helyezése után válassza az **Erőforrás megnyitása** lehetőséget.
+    * Az alkalmazás az űrlap-felismerő API-hoz való összekapcsolásához a létrehozott erőforrás kulcsára és végpontra lesz szüksége. Ebben a rövid útmutatóban később beillesztheti a kulcsot és a végpontot a kódjába.
+    * A szolgáltatás kipróbálásához az ingyenes díjszabási szintet (F0) használhatja. Ezt követően később is frissítheti az éles környezetben futó fizetős csomagot.
+* Legalább öt azonos típusú űrlap. Ideális esetben ez a munkafolyamat nagy méretű dokumentumok támogatását jelenti. A betanítási adatkészlet összeállításával kapcsolatos tippekért és lehetőségekért tekintse meg [a képzési adatkészlet létrehozása](./build-training-data-set.md) című témakört. Ebben az oktatóanyagban a [minta adatkészlethez](https://go.microsoft.com/fwlink/?linkid=2128080)tartozó Train mappában található fájlokat használhatja.
 
 ## <a name="project-architecture"></a>Projekt architektúrája 
 
 Ez a projekt Azure Data Factory folyamatokból áll, amelyek olyan Python-jegyzetfüzetek kiváltására szolgálnak, amelyek egy Azure Data Lake Storage-fiókban lévő dokumentumokból betanítják, elemzik és kinyerik az adatokból.
 
-Az űrlap-felismerő REST AP-nek bizonyos paramétereket kell megadnia bemenetként. Biztonsági okokból a paraméterek némelyike egy Azure Key Vault lesz tárolva, míg más kevésbé érzékeny paraméterek, például a Storage blob-mappa neve, egy Azure SQL Database-adatbázis paraméterezés-táblájába kerülnek.
+Az űrlap-felismerő REST APIhoz bemenetként paramétereket kell megadni. Biztonsági okokból ezek a paraméterek egy Azure Key vaultban lesznek tárolva. A más, kevésbé bizalmas paramétereket, például a Storage blob-mappájának nevét, egy Azure SQL Database-adatbázis egy paraméterezés-táblájában tárolja a rendszer.
 
-Az elemezni kívánt űrlap típusa az adatmérnökök vagy az adatszakértők a paraméter táblázat egy sorát töltik fel. Ezután a Azure Data Factory segítségével megismétlik az észlelt Űrlapbeállítások listáját, és átadhatják a releváns paramétereket egy Databricks-jegyzetfüzetbe az űrlap-felismerő modellek betanításához vagy átképzéséhez. Itt is használhatja az Azure-függvényeket.
+Minden elemezni kívánt űrlap esetében adatmérnökök vagy adatszakértők töltik fel a paraméter táblázat egy sorát. Ezután a Azure Data Factory segítségével megismétlik az észlelt Űrlapbeállítások listáját, és átadhatják a releváns paramétereket egy Databricks-jegyzetfüzetbe az űrlap-felismerő modellek betanításához vagy újratanításához. Itt is használhatja az Azure-függvényeket.
 
-A Azure Databricks jegyzetfüzet ezután a betanított modellekkel kinyeri az űrlapadatokat, és exportálja ezt a dátumot egy Azure SQL Database-adatbázisba.
+A Azure Databricks jegyzetfüzet ezután a betanított modelleket használja az űrlapadatok kinyeréséhez. Ezt az adatexportálást egy Azure SQL Database-adatbázisba exportálja.
 
-:::image type="content" source="./media/tutorial-bulk-processing/architecture.png" alt-text="projekt architektúrája":::
+:::image type="content" source="./media/tutorial-bulk-processing/architecture.png" alt-text="A projekt architektúráját bemutató diagram.":::
 
 
 ## <a name="set-up-azure-data-lake"></a>Azure Data Lake beállítása
 
-Előfordulhat, hogy a várakozó űrlapok a helyszíni környezetben vagy egy FTP-kiszolgálón vannak. Ez az oktatóanyag egy Azure Data Lake Gen 2 Storage-fiók űrlapjait használja. A fájlokat Azure Data Factory, Azure Storage Explorer vagy AzCopy használatával is átviheti. A betanítási és pontozási adatkészletek különböző tárolókban lehetnek, de az összes adattípus betanítási adatkészletének ugyanabban a tárolóban kell lennie (bár különböző mappákban lehetnek).
+Előfordulhat, hogy az űrlapon várakozó fájlok a helyszíni környezetben vagy az FTP-kiszolgálón vannak. Ez az oktatóanyag egy Azure Data Lake Storage Gen2-fiók űrlapjait használja. A fájlokat Azure Data Factory, Azure Storage Explorer vagy AzCopy használatával is átviheti. A betanítási és pontozási adatkészletek különböző tárolókban lehetnek, de az összes adattípus betanítási adatkészletének ugyanabban a tárolóban kell lennie. (Lehetnek különböző mappákban.)
 
-Új Data Lake létrehozásához kövesse a [Storage-fiók létrehozása a Azure Data Lake Storage Gen2 használatával](../../storage/blobs/create-data-lake-storage-account.md)című témakör utasításait.
+Új adattó létrehozásához kövesse a [Storage-fiók létrehozása a Azure Data Lake Storage Gen2 használatával való használatra](../../storage/blobs/create-data-lake-storage-account.md)című témakör utasításait.
 
 ## <a name="create-a-parameterization-table"></a>Paraméterezés-tábla létrehozása
 
-Ezután létrehozunk egy metaadat-táblázatot egy Azure SQL Database. Ez a táblázat az űrlap-felismerő REST API által igényelt nem bizalmas adatokat tartalmazza. Amikor új típusú űrlap szerepel az adatkészletben, egy új rekordot szúrunk be a táblázatba, és aktiváljuk a betanítási és pontozási folyamatot (később kell megvalósítani).
+Ezután létrehozunk egy metaadat-táblázatot egy Azure SQL-adatbázisban. Ez a táblázat az űrlap-felismerő REST API által igényelt nem bizalmas adatokat tartalmazza. Minden alkalommal, amikor új típusú űrlap szerepel az adatkészletben, beszúrunk egy új rekordot a táblázatba, és Kiváltjuk a betanítási és pontozási folyamatokat. (Később fogjuk megvalósítani ezeket a folyamatokat.)
 
-A táblázat a következő mezőket fogja használni:
+Ezek a mezők a következő táblázatban lesznek felhasználva:
 
-* **form_description**: Ez a mező nem szükséges a betanítás részeként. Leírja, hogy milyen típusú űrlapokat tanítunk a modellhez (például "ügyfél A Forms", "Hotel B Forms").
-* **training_container_name**: Ez a mező a Storage-fiók tárolójának neve, ahol a betanítási adatkészletet tároljuk. Ez lehet ugyanaz a tároló, mint **scoring_container_name**.
-* **training_blob_root_folder**: a Storage-fiókban található mappa, ahol a rendszer a modell képzéséhez tartozó fájlokat tárolja.
-* **scoring_container_name**: Ez a mező a Storage-fiók tárolójának neve, ahol tároltuk azokat a fájlokat, amelyekről a kulcs érték párokat szeretnénk kinyerni. Ez lehet ugyanaz a tároló, mint **training_container_name**.
-* **scoring_input_blob_folder**: a Storage-fiókban található mappa, ahol a fájlokat tároljuk az adatok kinyeréséhez.
-* **model_id**: az újratanítani kívánt modell azonosítója. Az első futtatásnál az értéket a-1 értékre kell beállítani, ami azt eredményezi, hogy a betanítási jegyzetfüzet új egyéni modellt hoz létre a betanításhoz. A betanítási jegyzetfüzet visszaküldi az újonnan létrehozott modell AZONOSÍTÓját a Azure Data Factory példánynak, és egy tárolt eljárási tevékenység használatával frissítjük ezt az értéket az Azure SQL Database-ben.
+* **form_description**. A képzés részeként nem szükséges. Ez a mező leírja, hogy milyen típusú űrlapokat tanítunk a modellnek (például "ügyfél A Forms", "Hotel B Forms").
+* **training_container_name**. Annak a Storage-fióknak a neve, amelyben a betanítási adatkészletet tároljuk. Ez lehet ugyanaz a tároló, mint **scoring_container_name**.
+* **training_blob_root_folder**. A Storage-fiókban található mappa, ahol a rendszer a modell képzéséhez tartozó fájlokat tárolja.
+* **scoring_container_name**. Annak a Storage-fióknak a neve, amelyben a fájlokat tároljuk, és a kulcs/érték párokat szeretnénk kinyerni. Ez lehet ugyanaz a tároló, mint **training_container_name**.
+* **scoring_input_blob_folder**. Az a mappa a Storage-fiókban, ahol a fájlokat tároljuk az adatok kinyeréséhez.
+* **model_id**. A kitanítani kívánt modell azonosítója. Az első futtatásnál az értéket a-1 értékre kell beállítani, ami azt eredményezi, hogy a betanítási jegyzetfüzet új egyéni modellt hoz létre a betanításhoz. A betanítási jegyzetfüzet az új modell AZONOSÍTÓját az Azure Data Factory-példányhoz fogja visszaadni. Tárolt eljárási tevékenység használatával frissítjük ezt az értéket az Azure SQL Database-ben.
 
-  Amikor új űrlapot szeretne bevenni, manuálisan kell átállítania a modell AZONOSÍTÓját a-1 értékre a modell betanítása előtt.
+  Ha új típusú űrlapot szeretne bevenni, manuálisan kell átállítania a modell AZONOSÍTÓját a-1 értékre a modell betanítása előtt.
 
-* **file_type**: a támogatott típusú űrlapok a következők:,, `application/pdf` `image/jpeg` `image/png` és `image/tif` .
+* **file_type**. A támogatott típusú űrlapok:,, `application/pdf` `image/jpeg` `image/png` és `image/tif` .
 
-  Ha különböző fájltípusokkal rendelkezik, akkor módosítania kell ezt az értéket, és **model_id** új oldaltükör betanításakor.
-* **form_batch_group_id**: az idő múlásával több, ugyanazon a modellen betanítási típussal rendelkezhet. A **form_batch_group_id** lehetővé teszi az összes olyan adattípus megadását, amely egy adott modell használatával lett betanítva.
+  Ha más fájltípusokban is vannak űrlapok, akkor módosítania kell ezt az értéket, és a **model_id** új típusú űrlap betanításakor.
+* **form_batch_group_id**. Az idő múlásával több, ugyanazon a modellen betanított oldaltükör is lehet. A **form_batch_group_id** mező lehetővé teszi az összes olyan adattípus megadását, amely egy adott modellel betanításra került.
 
 ### <a name="create-the-table"></a>A tábla létrehozása
 
-[Hozzon létre egy Azure SQL Database](https://ms.portal.azure.com/#create/Microsoft.SQLDatabase), majd futtassa a következő SQL-parancsfájlt a [lekérdezés-szerkesztőben](../../azure-sql/database/connect-query-portal.md) a szükséges tábla létrehozásához.
+
+[Hozzon létre egy Azure SQL Database-adatbázist](https://ms.portal.azure.com/#create/Microsoft.SQLDatabase), majd futtassa ezt az SQL-parancsfájlt a [lekérdezés-szerkesztőben](../../azure-sql/database/connect-query-portal.md) a szükséges tábla létrehozásához:
+
 
 ```sql
 CREATE TABLE dbo.ParamFormRecogniser(
@@ -105,7 +107,7 @@ CREATE TABLE dbo.ParamFormRecogniser(
 GO
 ```
 
-Futtassa az alábbi szkriptet a **model_id** automatikus frissítéséhez, miután betanítják.
+Futtassa ezt a parancsfájlt a **model_id** automatikus frissítését követően.
 
 ```SQL
 CREATE PROCEDURE [dbo].[update_model_id] ( @form_batch_group_id  varchar(50),@model_id varchar(50))
@@ -121,16 +123,16 @@ END
 
 Biztonsági okokból nem szeretnénk bizonyos bizalmas adatokat tárolni az Azure SQL Database paraméterezés táblájában. A bizalmas paramétereket Azure Key Vault titokként tároljuk.
 
-### <a name="create-an-azure-key-vault"></a>Azure Key Vault létrehozása;
+### <a name="create-an-azure-key-vault"></a>Azure Key Vault létrehozása
 
-[Key Vault erőforrás létrehozása](https://ms.portal.azure.com/#create/Microsoft.KeyVault). Ezután a létrehozás után navigáljon a Key Vault erőforráshoz, és a **Beállítások** szakaszban válassza a **titkok** lehetőséget a paraméterek hozzáadásához.
+[Key Vault erőforrás létrehozása](https://ms.portal.azure.com/#create/Microsoft.KeyVault). Ezután nyissa meg a Key Vault erőforrást a létrehozása után, és a **Beállítások** szakaszban válassza a **titkok** lehetőséget a paraméterek hozzáadásához.
 
-Ekkor megjelenik egy új ablak, majd válassza a **Létrehozás/importálás** lehetőséget. Adja meg a paraméter nevét és értékét, majd kattintson a Létrehozás gombra. Tegye ezt a következő paraméterekkel:
+Megjelenik egy új ablak. Válassza a **készítés/importálás** lehetőséget. Adja meg a paraméter nevét és értékét, majd válassza a **Létrehozás** lehetőséget. Hajtsa végre ezeket a lépéseket a következő paraméterekkel:
 
-* **CognitiveServiceEndpoint**: az űrlap-felismerő API végpontjának URL-címe.
-* **CognitiveServiceSubscriptionKey**: az űrlap-felismerő szolgáltatás elérési kulcsa. 
-* **StorageAccountName**: az a Storage-fiók, amelyben a betanítási adatkészletet és űrlapokat a kulcs-érték párokat szeretnénk kinyerni. Ha ezek különböző fiókokban vannak, adja meg az egyes fiókok nevét külön titokként. Ne feledje, hogy a betanítási adatkészleteknek ugyanabban a tárolóban kell lenniük az összes adattípus esetében, de lehetnek különböző mappákban.
-* **StorageAccountSasKey**: a Storage-fiók közös hozzáférésű aláírása (SAS). Az SAS URL-cím lekéréséhez nyissa meg a Storage-erőforrást, és válassza a **Storage Explorer** lapot. Navigáljon a tárolóhoz, kattintson a jobb gombbal, majd válassza a **közös hozzáférési aláírás beolvasása** elemet. Fontos, hogy az SAS-t lekérje a tárolóhoz, nem pedig magához a Storage-fiókhoz. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás** gombra. Ezután másolja az értéket az **URL** szakaszban. A következő formátumban kell lennie: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+* **CognitiveServiceEndpoint**. Az űrlap-felismerő API végpontjának URL-címe.
+* **CognitiveServiceSubscriptionKey**. Az űrlap-felismerő szolgáltatás elérési kulcsa. 
+* **StorageAccountName**. A Storage-fiók, amelyben a betanítási adatkészletet és a kulcs/érték párokat tartalmazó űrlapokat tárolja. Ha ezek az elemek különböző fiókokban találhatók, adja meg az egyes fiókok nevét külön titokként. Ne feledje, hogy a betanítási adatkészleteknek ugyanabban a tárolóban kell lenniük az összes adattípus esetében. Különböző mappákban lehetnek.
+* **StorageAccountSasKey**. A Storage-fiók közös hozzáférésű aláírása (SAS). Az SAS URL-cím lekéréséhez nyissa meg a Storage-erőforrást. A **Storage Explorer** lapon nyissa meg a tárolót, kattintson a jobb gombbal, majd válassza a **közös hozzáférésű aláírás beolvasása** elemet. Fontos, hogy az SAS-t lekérje a tárolóhoz, nem pedig magához a Storage-fiókhoz. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély van kiválasztva, majd válassza a **Létrehozás** lehetőséget. Ezután másolja az értéket az **URL** szakaszban. A következő űrlapot kell tartalmaznia: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
 
 ## <a name="train-your-form-recognizer-model-in-a-databricks-notebook"></a>Az űrlap-felismerő modell betanítása Databricks-jegyzetfüzetbe
 
@@ -138,28 +140,29 @@ A Azure Databricks használatával tárolhatja és futtathatja az űrlap-felisme
 
 ### <a name="create-a-notebook-in-databricks"></a>Jegyzetfüzet létrehozása a Databricks-ben
 
-[Hozzon létre egy Azure Databricks erőforrást](https://ms.portal.azure.com/#create/Microsoft.Databricks) a Azure Portalban. Nyissa meg az erőforrást a létrehozása után, és indítsa el a munkaterületet.
+[Hozzon létre egy Azure Databricks erőforrást](https://ms.portal.azure.com/#create/Microsoft.Databricks) a Azure Portalban. A létrehozás után nyissa meg az erőforrást, és nyissa meg a munkaterületet.
 
 ### <a name="create-a-secret-scope-backed-by-azure-key-vault"></a>Azure Key Vault által támogatott titkos hatókör létrehozása
 
-Ahhoz, hogy a fent létrehozott Azure Key Vault titkára hivatkozzon, létre kell hoznia egy titkos hatókört a Databricks-ben. Kövesse a [Azure Key Vault által támogatott titkos kulcs létrehozása](/azure/databricks/security/secrets/secret-scopes#--create-an-azure-key-vault-backed-secret-scope)című témakör lépéseit.
+
+Ha a fent létrehozott Azure Key vaultban lévő titkos kulcsokra szeretne hivatkozni, létre kell hoznia egy titkos hatókört a Databricks-ben. Kövesse az alábbi lépéseket: [hozzon létre egy Azure Key Vault által támogatott titkos kulcsot](/azure/databricks/security/secrets/secret-scopes#--create-an-azure-key-vault-backed-secret-scope).
 
 ### <a name="create-a-databricks-cluster"></a>Databricks-fürt létrehozása
 
 A fürt Databricks számítási erőforrások gyűjteménye. Fürt létrehozása:
 
-1. Az oldalsávon kattintson a **fürtök** gombra.
-1. A **fürtök** lapon kattintson a **fürt létrehozása** elemre.
-1. A **fürt létrehozása** lapon adja meg a fürt nevét, és válassza a **7,2 (Scala 2,12, Spark 3.0.0)** elemet a Databricks Runtime verzió legördülő menüben.
-1. Kattintson a **fürt létrehozása** elemre.
+1. A bal oldali ablaktáblán kattintson a **fürtök** gombra.
+1. A **fürtök** lapon válassza a **fürt létrehozása** lehetőséget.
+1. A **fürt létrehozása** lapon adja meg a fürt nevét, majd válassza a **7,2 (Scala 2,12, Spark 3.0.0)** elemet a **Databricks Runtime verziók** listájában.
+1. Válassza a **Fürt létrehozása** lehetőséget.
 
 ### <a name="write-a-settings-notebook"></a>Beállítások megírása jegyzetfüzet
 
-Most már készen áll a Python-jegyzetfüzetek hozzáadására. Először hozzon létre egy **Beállítások** nevű jegyzetfüzetet; Ez a jegyzetfüzet a paraméterezés táblában lévő értékeket rendeli hozzá a parancsfájlban szereplő változókhoz. Az értékeket a rendszer később paraméterként adja át Azure Data Factory. Az értékeket a Key Vault titkos kulcsaihoz is hozzárendeljük a változókhoz. 
+Most már készen áll a Python-jegyzetfüzetek hozzáadására. Először hozzon létre egy **Beállítások** nevű jegyzetfüzetet. Ez a jegyzetfüzet a paraméterezés táblában lévő értékeket rendeli hozzá a parancsfájlban szereplő változókhoz. A Azure Data Factory később adja át az értékeket paraméterként. A Key vaultban található titkos kódok értékeit is a változókhoz rendeljük. 
 
-1. A **Beállítások** jegyzetfüzet létrehozásához kattintson a **munkaterület** gombra, az új lapon kattintson a legördülő listára, majd válassza a **Létrehozás** , majd a **Jegyzetfüzet** lehetőséget.
-1. Az előugró ablakban adja meg a jegyzetfüzethez adni kívánt nevet, és válassza a **Python** alapértelmezett nyelvként lehetőséget. Válassza ki a Databricks-fürtöt, és válassza a **Létrehozás** lehetőséget.
-1. Az első jegyzetfüzet-cellában lekéri a Azure Data Factory által átadott paramétereket.
+1. A **Beállítások** jegyzetfüzet létrehozásához kattintson a **munkaterület** gombra. Az új lapon válassza ki a legördülő listát, és válassza a **Létrehozás** , majd a **Jegyzetfüzet** lehetőséget.
+1. Az előugró ablakban adja meg a jegyzetfüzet nevét, majd válassza a **Python** alapértelmezett nyelvként lehetőséget. Válassza ki a Databricks-fürtöt, majd válassza a **Létrehozás** lehetőséget.
+1. Az első jegyzetfüzet-cellában lekéri a Azure Data Factory által átadott paramétereket:
 
     ```python 
     dbutils.widgets.text("form_batch_group_id", "","")
@@ -196,7 +199,7 @@ Most már készen áll a Python-jegyzetfüzetek hozzáadására. Először hozzo
     file_to_score_name=  getArgument("file_to_score_name")
     ```
 
-1. A második cellában beolvasjuk a titkokat a Key Vaultból, és hozzárendeljük őket a változókhoz.
+1. A második cellában beolvasjuk a titkokat a Key Vaultból, és hozzárendeljük őket a változókhoz:
 
     ```python 
     cognitive_service_subscription_key = dbutils.secrets.get(scope = "FormRecognizer_SecretScope", key = "CognitiveserviceSubscriptionKey")
@@ -211,16 +214,16 @@ Most már készen áll a Python-jegyzetfüzetek hozzáadására. Először hozzo
 
 ### <a name="write-a-training-notebook"></a>Betanítási jegyzetfüzet írása
 
-Most, hogy elvégezte a **Beállítások** jegyzetfüzetet, létrehozhatunk egy jegyzetfüzetet a modell betanításához. A fentiekben leírtaknak megfelelően egy Azure Data Lake 2. generációs Storage-fiók (**training_blob_root_folder**) mappájában tárolt fájlokat fogjuk használni. A mappa neve változóként lett átadva. Az egyes objektumtípusok ugyanabban a mappában lesznek, és a paraméter táblázatán keresztül a modell az összes típusú űrlap használatával betanítjuk a modellt. 
+Most, hogy elvégezte a **Beállítások** jegyzetfüzetet, létrehozhatunk egy jegyzetfüzetet a modell betanításához. A fentiekben leírtak szerint egy Azure Data Lake Storage Gen2 fiókban (**training_blob_root_folder**) található mappában tárolt fájlokat fogjuk használni. A mappa neve változóként lett átadva. Az egyes objektumtípusok ugyanabban a mappában lesznek. Ahogy a paraméter táblázatára mutatunk, a modell tanítása az összes oldaltükör típus használatával történik. 
 
-1. Hozzon létre egy új, **TrainFormRecognizer** nevű jegyzetfüzetet. 
-1. Az első cellában hajtsa végre a beállítások jegyzetfüzetet:
+1. Hozzon létre egy **TrainFormRecognizer** nevű jegyzetfüzetet. 
+1. Az első cellában futtassa a **Beállítások** jegyzetfüzetet:
 
     ```python
     %run "./Settings"
     ```
 
-1. A következő cellában rendeljen hozzá változókat a **beállítási** fájlból, és az egyes típusú típusok dinamikusan betanítsa a modellt, és alkalmazza a kódot a [Rest](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-train-extract.md#get-training-results%20)rövid útmutatóban.
+1. A következő cellában rendeljen hozzá változókat a beállítási fájlból, és az egyes típusú típusok dinamikusan betanítsa a modellt, és alkalmazza a kódot a [Rest](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-train-extract.md#get-training-results%20)rövid útmutatóban.
 
     ```python
     import json
@@ -234,7 +237,7 @@ Most, hogy elvégezte a **Beállítások** jegyzetfüzetet, létrehozhatunk egy 
     includeSubFolders=True
     useLabelFile=False
     headers = {
-        # Request headers
+        # Request headers.
         'Content-Type': file_type,
         'Ocp-Apim-Subscription-Key': cognitive_service_subscription_key,
     }
@@ -245,7 +248,7 @@ Most, hogy elvégezte a **Beállítások** jegyzetfüzetet, létrehozhatunk egy 
             "includeSubFolders": includeSubFolders
        },
     }
-    if model_id=="-1": # if you don't already have a model you want to retrain. In this case, we create a model and use it to extract the key-value pairs
+    if model_id=="-1": # If you don't already have a model you want to retrain. In this case, we create a model and use it to extract the key/value pairs.
       try:
           resp = post(url = post_url, json = body, headers = headers)
           if resp.status_code != 201:
@@ -258,7 +261,7 @@ Most, hogy elvégezte a **Beállítások** jegyzetfüzetet, létrehozhatunk egy 
       except Exception as e:
           print("POST model failed:\n%s" % str(e))
           quit()
-    else :# if you already have a model you want to retrain, we reuse it and (re)train with the new form types.  
+    else :# If you already have a model you want to retrain, we reuse it and (re)train with the new form types.  
       try:
         get_url =post_url+r"/"+model_id
           
@@ -267,7 +270,7 @@ Most, hogy elvégezte a **Beállítások** jegyzetfüzetet, létrehozhatunk egy 
           quit()
     ```
 
-1. A betanítási folyamat utolsó lépése a betanítási eredmény JSON formátumban való beszerzése.
+1. A betanítási folyamat utolsó lépése a betanítási eredmény beszerzése JSON formátumban:
 
     ```python
     n_tries = 10
@@ -305,22 +308,22 @@ Most, hogy elvégezte a **Beállítások** jegyzetfüzetet, létrehozhatunk egy 
     print("Train operation did not complete within the allocated time.")
     ```
 
-## <a name="extract-form-data-using-a-notebook"></a>Űrlap-adatok kinyerése jegyzetfüzet használatával
+## <a name="extract-form-data-by-using-a-notebook"></a>Űrlap-adatok kinyerése jegyzetfüzet használatával
 
 ### <a name="mount-the-azure-data-lake-storage"></a>A Azure Data Lake tároló csatlakoztatása
 
-A következő lépés a betanított modellt használó különböző űrlapok kiértékelése. Csatlakoztatni fogjuk a Azure Data Lake Storage-fiókot a Databricks-ben, és a betöltési folyamat során a csatlakoztatásra hivatkozunk.
+A következő lépés a betanított modellen alapuló különféle űrlapok kiértékelése. Csatlakoztatni fogjuk a Azure Data Lake Storage fiókot a Databricks-ben, és a betöltési folyamat során a csatlakoztatásra hivatkozunk.
 
-Akárcsak a betanítási szakaszban, a Azure Data Factory segítségével meghívjuk a kulcs-érték párok kinyerését az űrlapokból. Az űrlapokat a paraméter táblázatban megadott mappákban fogjuk átadni.
+Ahogy a betanítási szakaszban tettük, a Azure Data Factory segítségével meghívjuk a kulcs/érték párok kinyerését az űrlapokból. Az űrlapokat a paraméter táblázatban megadott mappákban fogjuk átadni.
 
-1. Hozzuk létre a notebookot a Storage-fiók csatlakoztatásához a Databricks-ben. Meghívjuk a **MountDataLake**. 
+1. Hozza létre a notebookot a Storage-fiók csatlakoztatásához a Databricks-ben. Hívja meg a **MountDataLake**. 
 1. Először meg kell hívnia a **Beállítások** jegyzetfüzetet:
 
     ```python
     %run "./Settings"
     ```
 
-1. A második cellában definiáljuk a bizalmas paraméterek változóit, amelyeket a Key Vault titkaink közül fogunk lekérdezni.
+1. A második cellában definiálja a bizalmas paraméterek változóit, amelyeket a Key Vault titkaink közül fogunk beolvasni:
 
     ```python
     cognitive_service_subscription_key = dbutils.secrets.get(scope = "FormRecognizer_SecretScope", key = "CognitiveserviceSubscriptionKey")
@@ -335,7 +338,7 @@ Akárcsak a betanítási szakaszban, a Azure Data Factory segítségével meghí
     
     ```
 
-1. Ezután megpróbáljuk leválasztani a Storage-fiókot arra az esetre, ha korábban már csatlakoztatták.
+1. Próbálja meg leválasztani a Storage-fiókot abban az esetben, ha korábban már csatlakoztatták:
 
     ```python
     try:
@@ -345,7 +348,7 @@ Akárcsak a betanítási szakaszban, a Azure Data Factory segítségével meghí
     
     ```
 
-1. Végül csatlakoztatni fogjuk a Storage-fiókot.
+1. A Storage-fiók csatlakoztatása:
 
 
     ```python
@@ -361,21 +364,21 @@ Akárcsak a betanítási szakaszban, a Azure Data Factory segítségével meghí
     ```
 
     > [!NOTE]
-    > Ebben az esetben csak a betanítási tárterületet csatlakoztatjuk &mdash; , a betanítási fájlokat és a kulcs-érték párokat. Ha a pontozási és a betanítási tárolási fiókok eltérőek, akkor ide kell csatlakoztatnia mindkét Storage-fiókot. 
+    > Csak a betanítási Storage-fiókot csatlakoztatta. Ebben az esetben a betanítási fájlok és a kulcs/érték párokat kinyerni kívánt fájlok ugyanabban a Storage-fiókban találhatók. Ha a pontozási és a betanítási tárolási fiókok eltérőek, mindkét Storage-fiókot csatlakoztatni kell. 
 
 ### <a name="write-the-scoring-notebook"></a>Pontozási jegyzetfüzet írása
 
-Most létrehozhatunk egy pontozási jegyzetfüzetet. A betanítási jegyzetfüzethez hasonlóan az imént csatlakoztatott Azure Data Lake Storage-fiók mappáiban tárolt fájlokat fogjuk használni. A mappa nevét változóként adja át a rendszer. A megadott mappában lévő összes űrlapot átemeljük, majd kinyerjük a kulcs-érték párokat. 
+Most már létrehozhatunk egy pontozási jegyzetfüzetet is. A betanítási jegyzetfüzetben a következőhöz hasonló műveleteket végezünk: az imént csatlakoztatott Azure Data Lake Storage-fiók mappáiban tárolt fájlokat fogjuk használni. A mappa nevét változóként adja át a rendszer. A megadott mappában lévő összes űrlapot átemeljük, majd kinyerjük a kulcs/érték párokat. 
 
-1. Hozzon létre egy új jegyzetfüzetet, és hívja meg a **ScoreFormRecognizer**. 
-1. Hajtsa végre a **beállításokat** és a **MountDataLake** -jegyzetfüzeteket.
+1. Hozzon létre egy jegyzetfüzetet, és hívja meg a **ScoreFormRecognizer**. 
+1. A **Beállítások** és a **MountDataLake** jegyzetfüzetek futtatása:
 
     ```python
     %run "./Settings"
     %run "./MountDataLake"
     ```
 
-1. Ezután adja hozzá a következő kódot, amely meghívja az [elemzés](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) API-t.
+1. Adja hozzá ezt a kódot, amely meghívja az [elemzés](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) API-t:
 
     ```python
     ########### Python Form Recognizer Async Analyze #############
@@ -394,7 +397,7 @@ Most létrehozhatunk egy pontozási jegyzetfüzetet. A betanítási jegyzetfüze
     }
     
     headers = {
-        # Request headers
+        # Request headers.
         'Content-Type': file_type,
         'Ocp-Apim-Subscription-Key': cognitive_service_subscription_key,
     }
@@ -414,7 +417,7 @@ Most létrehozhatunk egy pontozási jegyzetfüzetet. A betanítási jegyzetfüze
         quit() 
     ```
 
-1. A következő cellában megkapjuk a kulcs-érték párok kinyerésének eredményét. Ennek a cellának a kimenete lesz az eredmény. Mivel az eredményt JSON formátumban szeretnénk feldolgozni a Azure SQL Database vagy Cosmos DB, az eredményt egy. JSON fájlba írjuk. A kimeneti fájl neve lesz a "_output.json" összefűzött fájl neve. A fájl ugyanabban a mappában lesz tárolva, mint a forrásfájl.
+1. A következő cellában megkapjuk a kulcs/érték párok kinyerésének eredményét. Ennek a cellának a kimenete lesz az eredmény. Azt szeretnénk, hogy az eredmény JSON formátumú legyen, hogy tovább lehessen feldolgozni Azure SQL Database vagy Azure Cosmos DB. Ezért egy. JSON fájlba írjuk az eredményt. A kimeneti fájl neve lesz a "_output.jsbekapcsolva" értékkel összefűzött kilőtt fájl neve. A fájl ugyanabban a mappában lesz tárolva, mint a forrásfájl.
 
     ```python
     n_tries = 10
@@ -459,52 +462,52 @@ Most létrehozhatunk egy pontozási jegyzetfüzetet. A betanítási jegyzetfüze
     file.close()
     ```
 
-## <a name="automate-training-and-scoring-with-azure-data-factory"></a>A képzés és a pontozás automatizálása Azure Data Factory
+## <a name="automate-training-and-scoring-by-using-azure-data-factory"></a>A képzés és a pontozás automatizálása Azure Data Factory használatával
 
-Az egyetlen fennmaradó lépés a Azure Data Factory (ADF) szolgáltatás beállítása a betanítási és pontozási folyamatok automatizálására. Először kövesse az [adat-előállító létrehozása](../../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory)című témakör lépéseit. Az ADF-erőforrás létrehozása után három folyamatot kell létrehoznia: az egyiket a képzéshez és kettőt a pontozáshoz (lásd alább).
+Az egyetlen fennmaradó lépés az Azure Data Factory szolgáltatás beállítása a betanítási és pontozási folyamatok automatizálására. Először kövesse az [adat-előállító létrehozása](../../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory)című témakör lépéseit. A Azure Data Factory erőforrás létrehozása után három folyamatot kell létrehoznia: az egyiket a képzéshez, a kettőt pedig a pontozáshoz. (Később fogjuk megmagyarázni.)
 
 ### <a name="training-pipeline"></a>Betanítási folyamat
 
-A betanítási folyamat első tevékenysége az Azure SQL Database paraméterezés táblájában lévő értékek olvasására és visszaküldésére szolgáló keresés. Mivel a betanítási adatkészletek ugyanabban a Storage-fiókban és tárolóban (de esetleg más mappákban) is szerepelnek, a keresési tevékenység beállításaiban megtartjuk az alapértelmezett érték **első sora** attribútumát. A modellnek az egyes típusú űrlapokra való betanításához a **training_blob_root_folder** összes fájljának használatával betanítjuk a modellt.
+A betanítási folyamat első tevékenysége az Azure SQL Database paraméterezés táblájában lévő értékek olvasására és visszaküldésére szolgáló keresés. A betanítási adatkészletek ugyanabban a Storage-fiókban és tárolóban (de esetleg más mappákban) is szerepelnek. Ezért az attribútum alapértelmezett értékeként csak a keresési tevékenység beállításaiban kell megtartani az **első sort** . A modellnek az egyes típusú űrlapokra való betanításához a **training_blob_root_folder** összes fájljának használatával betanítjuk a modellt.
 
-:::image type="content" source="./media/tutorial-bulk-processing/training-pipeline.png" alt-text="az adatfeldolgozó folyamata":::
+:::image type="content" source="./media/tutorial-bulk-processing/training-pipeline.png" alt-text="Képernyőkép, amely a Data Factory betanítási folyamatát mutatja be.":::
 
-A tárolt eljárás két paramétert vesz igénybe: **model_id** és a **form_batch_group_id**. A Databricks-jegyzetfüzetből a modell AZONOSÍTÓjának visszaküldésére szolgáló kód `dbutils.notebook.exit(model_id)` , valamint a kód, amely beolvassa a kódot a tárolt eljárási tevékenységben a adat-előállítóban `@activity('GetParametersFromMetadaTable').output.firstRow.form_batch_group_id` .
+A tárolt eljárás két paramétert használ: **model_id** és **form_batch_group_id**. A Databricks jegyzetfüzetből a modell AZONOSÍTÓját visszaadó kód `dbutils.notebook.exit(model_id)` . A kód, amely beolvassa a kódot az Data Factory tárolt eljárási tevékenységében `@activity('GetParametersFromMetadaTable').output.firstRow.form_batch_group_id` .
 
 ### <a name="scoring-pipelines"></a>Pontozási folyamatok
 
-A kulcs-érték párok kinyeréséhez a paraméterezés tábla összes mappáját ellenőrizni fogjuk, az egyes mappák esetében pedig kinyerjük az összes fájl kulcs-érték párokat. A mai naptól kezdve az ADF nem támogatja a beágyazott ForEach hurkokat. Tehát Ehelyett két folyamat jön létre. Az első folyamat végrehajtja a keresést a paraméterezés táblából, és a mappák listáját a második folyamat paraméterként adja át.
+A kulcs/érték párok kinyeréséhez a paraméterezés tábla összes mappáját ellenőrizni fogjuk. Minden mappához kinyerjük a benne lévő összes fájl kulcs/érték párokat. A Azure Data Factory jelenleg nem támogatja a beágyazott ForEach hurkokat. Ehelyett két folyamatot hozunk létre. Az első folyamat végrehajtja a keresést a paraméterezés táblából, és a mappák listáját a második folyamat paraméterként adja át.
 
-:::image type="content" source="./media/tutorial-bulk-processing/scoring-pipeline-1a.png" alt-text="első pontozási folyamat a adatgyárban":::
+:::image type="content" source="./media/tutorial-bulk-processing/scoring-pipeline-1a.png" alt-text="A Data Factory első pontozási folyamatát bemutató képernyőkép.":::
 
-:::image type="content" source="./media/tutorial-bulk-processing/scoring-pipeline-1b.png" alt-text="első pontozási folyamat a adat-előállítóban, részletek":::
+:::image type="content" source="./media/tutorial-bulk-processing/scoring-pipeline-1b.png" alt-text="Képernyőkép, amely a Data Factory első pontozási folyamatának részleteit jeleníti meg.":::
 
 A második folyamat egy GetMeta tevékenységet fog használni a mappában található fájlok listájának lekéréséhez, és paraméterként adja át a pontozási Databricks notebooknak.
 
-:::image type="content" source="./media/tutorial-bulk-processing/scoring-pipeline-2a.png" alt-text="második pontozási folyamat a The Factoryban":::
+:::image type="content" source="./media/tutorial-bulk-processing/scoring-pipeline-2a.png" alt-text="A Data Factory második pontozási folyamatát bemutató képernyőkép.":::
 
-:::image type="content" source="./media/tutorial-bulk-processing/scoring-pipeline-2b.png" alt-text="második pontozási folyamat a adat-előállítóban, részletek":::
+:::image type="content" source="./media/tutorial-bulk-processing/scoring-pipeline-2b.png" alt-text="A Data Factory második pontozási folyamatának részleteit bemutató képernyőkép.":::
 
 ### <a name="specify-a-degree-of-parallelism"></a>A párhuzamossági fok meghatározása
 
-A betanítási és pontozási folyamatokban megadhatja, hogy a párhuzamosság foka egyszerre több űrlapot is feldolgozzon.
+A betanítási és pontozási folyamatokban megadhatja a párhuzamosság fokát, így egyszerre több űrlapot is feldolgozhat.
 
-Az ADF-folyamat párhuzamossági fokának beállítása:
+A párhuzamosság mértékének beállítása a Azure Data Factory folyamatban:
 
-* Válassza ki a foreach tevékenységet.
-* Törölje a **szekvenciális** mezőt.
-* Állítsa be a párhuzamosság fokát a **kötegek száma** szövegmezőbe. A pontozáshoz legfeljebb 15 batch-értéket ajánlunk.
+1. Válassza ki a **foreach** tevékenységet.
+1. Törölje a **szekvenciális** mezőt.
+1. Állítsa be a párhuzamosság fokát a **kötegek száma** mezőben. A pontozáshoz legfeljebb 15 batch-értéket ajánlunk.
 
-:::image type="content" source="./media/tutorial-bulk-processing/parallelism.png" alt-text="a pontozási tevékenység párhuzamossági konfigurációja az ADF-ben":::
+:::image type="content" source="./media/tutorial-bulk-processing/parallelism.png" alt-text="A Azure Data Factory pontozási tevékenységének párhuzamossági beállításait bemutató képernyőkép.":::
 
-## <a name="how-to-use"></a>Használat
+## <a name="how-to-use-the-pipeline"></a>A folyamat használata
 
-Mostantól egy automatizált folyamattal digitalizálhatja az űrlapokat, és egy elemzést is futtathat rajtuk. Ha egy ismerős típusú új űrlapokat ad hozzá egy meglévő Storage-mappához, egyszerűen futtassa újra a pontozási folyamatokat, és frissíti az összes kimeneti fájlt, beleértve az új űrlapok kimeneti fájljait is. 
+Mostantól egy automatizált folyamattal digitalizálhatja az űrlapokat, és egy elemzést is futtathat rajtuk. Ha egy ismerős típusú új űrlapokat ad hozzá egy meglévő Storage-mappához, egyszerűen futtassa újra a pontozási folyamatokat. A rendszer frissíti az összes kimeneti fájlt, beleértve az új űrlapok kimeneti fájljait is. 
 
-Ha új típusú új űrlapokat ad hozzá, egy betanítási adatkészletet is fel kell töltenie a megfelelő tárolóba. Ezután adjon hozzá egy új sort a paraméterezés táblához, és adja meg az új dokumentumok helyét és a betanítási adatkészletet. Adja meg az-1 értéket a **model_ID** számára, hogy jelezze, hogy egy új modellt kell képezni ezeknek az űrlapoknak. Ezután futtassa az automatikus betanítási folyamatot az ADF-ben. Beolvassa a táblázatot, betanítja a modellt, és felülírja a modell AZONOSÍTÓját a táblában. Ezután meghívhatja a pontozási folyamatokat a kimeneti fájlok írásának megkezdéséhez.
+Ha új típusú új űrlapokat ad hozzá, egy betanítási adatkészletet is fel kell töltenie a megfelelő tárolóba. Ezután új sort fog hozzáadni a paraméterezés táblában, megadhatja az új dokumentumok helyét és a betanítási adatkészletet. Adja meg az-1 értéket a **model_ID** számára, hogy jelezze, hogy az űrlapokhoz új modellt kell képezni. Ezután futtassa a betanítási folyamatot Azure Data Factory. A folyamat beolvassa a táblázatot, betanítja a modellt, és felülírja a modell AZONOSÍTÓját a táblában. Ezután meghívhatja a pontozási folyamatokat a kimeneti fájlok írásának megkezdéséhez.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban Azure Data Factory folyamatokat állít be, hogy kiváltsa az űrlap-felismerő modellek betanítását és futtatását a fájlok nagy számainak digitalizálásához. Ezután tekintse át az űrlap-felismerő API-t, hogy megtudja, mi a teendő.
+Ebben az oktatóanyagban Azure Data Factory folyamatokat állít be, hogy aktiválja az űrlap-felismerő modellek betanítását és futtatását, és digitalizálja a fájlok nagy számát. Ezután tekintse át az űrlap-felismerő API-t, hogy megtudja, mi a teendő.
 
 * [Űrlap-felismerő REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)

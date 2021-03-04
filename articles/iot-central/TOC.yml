@@ -183,6 +183,8 @@
       href: core/concepts-telemetry-properties-commands.md
     - name: IoT Edge-eszközök csatlakoztatása
       href: core/concepts-iot-edge.md
+    - name: Ajánlott eljárások
+      href: core/concepts-best-practices.md
 - name: Útmutatók
   items:
     - name: Eszközök fejlesztése és csatlakoztatása

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/14/2020
-ms.openlocfilehash: 7277ad060c57b44d633054c4fc4d29d151bd7192
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.date: 03/03/2021
+ms.openlocfilehash: 234a0137f0a9487a56b3e0343eaea375d2f9a1af
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400811"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043014"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Lekérdezés az Azure Cognitive Searchban
 
@@ -82,10 +82,10 @@ A szűrők széles körben használatosak a Cognitive Searcht tartalmazó alkalm
 
 A következő táblázatban leírtak szerint szűrőkre is szükség lehet egy speciális lekérdezési űrlap meghívásához. A szűrőket meghatározatlan kereséssel ( **`search=*`** ) vagy olyan lekérdezési karakterlánccal használhatja, amely kifejezéseket, kifejezéseket, operátorokat és mintákat tartalmaz.
 
-| Szűrési forgatókönyv | Description |
+| Szűrési forgatókönyv | Leírás |
 |-----------------|-------------|
-| Tartomány szűrőinek | Az Azure Cognitive Searchban a Range lekérdezéseket a Filter paraméterrel kell felépíteni. További információért és Példákért lásd: [tartomány szűrő példa](search-query-simple-examples.md#example-4-range-filters). |
-| Földrajzi hely keresése | Ha egy kereshető mező [EDM. geographypoint adattípuson típusú](/rest/api/searchservice/supported-data-types), létrehozhat egy szűrési kifejezést a "keresés a közelben" vagy a térképes keresési vezérlőkben. A földrajzi keresést elvégező mezők koordinátáit tartalmaznak. További információ és példa: [földrajzi keresési példa](search-query-simple-examples.md#example-5-geo-search). |
+| Tartomány szűrőinek | Az Azure Cognitive Searchban a Range lekérdezéseket a Filter paraméterrel kell felépíteni. További információért és Példákért lásd: [tartomány szűrő példa](search-query-simple-examples.md#example-5-range-filters). |
+| Földrajzi hely keresése | Ha egy kereshető mező [EDM. geographypoint adattípuson típusú](/rest/api/searchservice/supported-data-types), létrehozhat egy szűrési kifejezést a "keresés a közelben" vagy a térképes keresési vezérlőkben. A földrajzi keresést elvégező mezők koordinátáit tartalmaznak. További információ és példa: [földrajzi keresési példa](search-query-simple-examples.md#example-6-geo-search). |
 | Jellemzőalapú navigáció | A felületi navigációs struktúra a felhasználó által irányított Navigálás során válik elérhetővé, amikor egy dimenzióban lévő eseményre adott válaszként meghívja a szűrőt `onclick` . Ennek megfelelően a dimenziók és a szűrők kézzel is elérhetők. Ha dimenziós navigálást ad hozzá, a felhasználói élmény elvégzéséhez szűrőkre lesz szüksége. További információ: [Face szűrő](search-filters-facets.md)létrehozása. |
 
 > [!NOTE]
@@ -101,12 +101,12 @@ A speciális lekérdezési űrlap a teljes Lucene-elemzőtől és az adott leké
 
 | Lekérdezés típusa | Használat | Példák és további információk |
 |------------|--------|------------------------------|
-| [Mező szerinti keresés](query-lucene-syntax.md#bkmk_fields) | **`search`**  paraméter **`queryType=full`**  | Hozzon létre egy összetett lekérdezési kifejezést, amely egyetlen mezőt céloz meg. <br/>[Mező szerinti keresés – példa](search-query-lucene-examples.md#example-2-fielded-search) |
-| [fuzzy keresés](query-lucene-syntax.md#bkmk_fuzzy) | **`search`** paraméter **`queryType=full`** | Megegyezik a hasonló szerkezettel vagy helyesírással kapcsolatos feltételekkel. <br/>[Fuzzy keresési példa](search-query-lucene-examples.md#example-3-fuzzy-search) |
-| [közelség keresése](query-lucene-syntax.md#bkmk_proximity) | **`search`** paraméter **`queryType=full`** | Megkeresi a dokumentumban egymáshoz közeli kifejezéseket. <br/>[Proximity keresési példa](search-query-lucene-examples.md#example-4-proximity-search) |
-| [a kifejezés fokozása](query-lucene-syntax.md#bkmk_termboost) | **`search`** paraméter **`queryType=full`** | Ha a megnövelt kifejezést tartalmazza, rangsorolja a dokumentumot, amely nem a többihez képest. <br/>[Példa a "Kiemelés" kifejezésre](search-query-lucene-examples.md#example-5-term-boosting) |
-| [reguláris kifejezés keresése](query-lucene-syntax.md#bkmk_regex) | **`search`** paraméter **`queryType=full`** | A reguláris kifejezés tartalma alapján illeszkedik. <br/>[Reguláris kifejezés – példa](search-query-lucene-examples.md#example-6-regex) |
-|  [helyettesítő karakter vagy előtag keresése](query-lucene-syntax.md#bkmk_wildcard) | **`search`** paraméter * *_`~`_* vagy **`?`** , **`queryType=full`**| Egy előtag és egy tilde ( `~` ) vagy egy karakter () alapján illeszkedik `?` . <br/>[Helyettesítő karakteres keresés – példa](search-query-lucene-examples.md#example-7-wildcard-search) |
+| [Mező szerinti keresés](query-lucene-syntax.md#bkmk_fields) | **`search`**  paraméter **`queryType=full`**  | Hozzon létre egy összetett lekérdezési kifejezést, amely egyetlen mezőt céloz meg. <br/>[Mező szerinti keresés – példa](search-query-lucene-examples.md#example-1-fielded-search) |
+| [fuzzy keresés](query-lucene-syntax.md#bkmk_fuzzy) | **`search`** paraméter **`queryType=full`** | Megegyezik a hasonló szerkezettel vagy helyesírással kapcsolatos feltételekkel. <br/>[Fuzzy keresési példa](search-query-lucene-examples.md#example-2-fuzzy-search) |
+| [közelség keresése](query-lucene-syntax.md#bkmk_proximity) | **`search`** paraméter **`queryType=full`** | Megkeresi a dokumentumban egymáshoz közeli kifejezéseket. <br/>[Proximity keresési példa](search-query-lucene-examples.md#example-3-proximity-search) |
+| [a kifejezés fokozása](query-lucene-syntax.md#bkmk_termboost) | **`search`** paraméter **`queryType=full`** | Ha a megnövelt kifejezést tartalmazza, rangsorolja a dokumentumot, amely nem a többihez képest. <br/>[Példa a "Kiemelés" kifejezésre](search-query-lucene-examples.md#example-4-term-boosting) |
+| [reguláris kifejezés keresése](query-lucene-syntax.md#bkmk_regex) | **`search`** paraméter **`queryType=full`** | A reguláris kifejezés tartalma alapján illeszkedik. <br/>[Reguláris kifejezés – példa](search-query-lucene-examples.md#example-5-regex) |
+|  [helyettesítő karakter vagy előtag keresése](query-lucene-syntax.md#bkmk_wildcard) | **`search`** paraméter * *_`~`_* vagy **`?`** , **`queryType=full`**| Egy előtag és egy tilde ( `~` ) vagy egy karakter () alapján illeszkedik `?` . <br/>[Helyettesítő karakteres keresés – példa](search-query-lucene-examples.md#example-6-wildcard-search) |
 
 ## <a name="next-steps"></a>Következő lépések
 

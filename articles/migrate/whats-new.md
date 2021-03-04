@@ -7,16 +7,20 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: cc207522048e3f0491e3aa54f2ae21d2e7e63bc2
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: f50737bdefc9065c9b16633ba3360bda1d028cd6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834034"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043048"
 ---
 # <a name="whats-new-in-azure-migrate"></a>A Azure Migrate újdonságai
 
 A [Azure Migrate](migrate-services-overview.md) segítségével helyszíni kiszolgálókat, alkalmazásokat és az Microsoft Azure felhőbe áttelepítheti, elemezheti és áttelepítheti azokat. Ez a cikk a Azure Migrate új kiadásait és szolgáltatásait foglalja össze.
+
+## <a name="update-march-2021"></a>Frissítés (2021. március)
+- Több kiszolgálói hitelesítő adat biztosítása Azure Migrate készüléken a telepített alkalmazások (szoftverek leltározása), az ügynök nélküli függőségek elemzése, valamint a VMware-környezetekben SQL Server példányok és adatbázisok felderítése céljából. [További információ](tutorial-discover-vmware.md#provide-server-credentials)
+- A VMware-környezetben futó SQL Server példányok és adatbázisok felderítése és értékelése már előzetes verzióban érhető el. [További információ](concepts-azure-sql-assessment-calculation.md)<br/>A szolgáltatás kipróbálásához használja ezt a [hivatkozást](https://aka.ms/AzureMigrate/SQL) **Kelet-Ausztrália** régióban található projekt létrehozásához. Az első lépésekhez tekintse meg a [felderítési](tutorial-discover-vmware.md) és [értékelési](tutorial-assess-sql.md) oktatóanyagokat.
 
 ## <a name="update-january-2021"></a>Frissítés (január 2021)
 -  Azure Migrate: a kiszolgáló áttelepítési eszköze lehetővé teszi a VMware virtuális gépek, fizikai kiszolgálók és virtuális gépek áttelepítését más felhőből az Azure-beli virtuális gépekre, az ügyfél által felügyelt kulcsokkal (CMK) kiszolgálóoldali titkosítással titkosított lemezekkel.
@@ -58,7 +62,7 @@ A Azure Migrate a Azure Government üzemelő példányait támogatja.
 
 - A VMware virtuális gépeket, a Hyper-V virtuális gépeket és a fizikai kiszolgálókat is felderítheti és elemezheti.
 - VMware virtuális gépeket, Hyper-V virtuális gépeket és fizikai kiszolgálókat telepíthet át az Azure-ba.
-- A VMware-áttelepítés esetében ügynök nélküli vagy ügynök alapú áttelepítést használhat. [További információ](server-migrate-overview.md).
+- A VMware-áttelepítés esetében ügynök nélküli vagy ügynök alapú áttelepítést használhat. [További információk](server-migrate-overview.md).
 - [Tekintse át](migrate-support-matrix.md#supported-geographies-azure-government) a Azure Government támogatott földrajzi területeit és régióit.
 - Azure Government nem támogatja az [ügynök-alapú függőségek elemzését](concepts-dependency-visualization.md#agent-based-analysis) .
 - Az előzetes verzióban elérhető funkciók a Azure Government, különösen az [ügynök nélküli függőségek elemzése](concepts-dependency-visualization.md#agentless-analysis)és az [alkalmazások felderítése](how-to-discover-applications.md)esetén támogatottak.
@@ -84,7 +88,7 @@ Számos új funkció lett hozzáadva a Azure Migratehoz:
 
 Új felmérési és áttelepítési eszközök lettek hozzáadva a Azure Migratehoz:
 
-- **Rackware**: a felhő áttelepítését kínálja.
+- **RackWare**: a felhő áttelepítését kínálja.
 - **Győztes**: ajánlat értékelése.
 
 [További](migrate-services-overview.md) információ az eszközök és az ISV-ajánlatok használatáról a Azure Migrate értékeléséhez és áttelepítéséhez.

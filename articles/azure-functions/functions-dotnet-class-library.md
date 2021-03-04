@@ -1,21 +1,24 @@
 ---
-title: Azure Functions C# – fejlesztői dokumentáció
-description: Ismerje meg, hogyan fejlesztheti Azure Functions a C# használatával.
+title: C# függvények fejlesztése Azure Functions használatával
+description: Ismerje meg, hogyan hozhat létre és tehet közzé olyan kódot a C# használatával, amely a Azure Functions futtatókörnyezettel fut folyamatban.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 335cc3017e7b016666324306181c90a0e405a956
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: e29b250b25bdafb2b3af26f5669f2ae5ed485457
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806327"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041195"
 ---
-# <a name="azure-functions-c-developer-reference"></a>Azure Functions C# – fejlesztői dokumentáció
+# <a name="develop-c-functions-using-azure-functions"></a>C# függvények fejlesztése Azure Functions használatával
 
 <!-- When updating this article, make corresponding changes to any duplicate content in functions-reference-csharp.md -->
 
 Ez a cikk bemutatja, hogyan fejlesztheti Azure Functions a C# használatával a .NET-osztály könyvtáraiban.
+
+>[!IMPORTANT]
+>Ez a cikk olyan .NET Class Library-függvényeket támogat, amelyek folyamaton belüli futtatásával futnak a futtatókörnyezetben. A functions a .NET 5. x verzióját is támogatja a C#-függvények folyamaton kívüli futtatásával, valamint a futtatókörnyezettől való elkülönítéssel. További információ: [.net elkülönített folyamat függvények](dotnet-isolated-process-guide.md).
 
 C#-fejlesztőként a következő cikkek egyike is érdekli:
 
@@ -31,9 +34,11 @@ A functions futtatókörnyezet verziói a .NET adott verziójával működnek. A
 
 | Functions futtatókörnyezet verziója | .NET-es verzió max. verziója |
 | ---- | ---- |
-| Függvények 3. x | .NET Core 3.1 |
+| Függvények 3. x | .NET Core 3.1<br/>.NET 5,0<sup>*</sup> |
 | Functions 2.x | .NET Core 2.2 |
 | Functions 1.x | .NET-keretrendszer 4,7 |
+
+<sup>*</sup>[Folyamaton kívül](dotnet-isolated-process-guide.md)kell futnia.
 
 További információ: [Azure functions Runtime-verziók áttekintése](functions-versions.md)
 
@@ -94,9 +99,11 @@ A metódus aláírása nem az trigger attribútummal használt paramétereket ta
 
 A függvények aláírásában szereplő paraméterek sorrendje nem számít. Például az aktiválási paramétereket más kötések előtt vagy után is elhelyezheti, és a naplózó paramétert trigger vagy kötési paraméterek előtt vagy után is elhelyezheti.
 
-### <a name="output-binding-example"></a>Kimeneti kötési példa
+### <a name="output-bindings"></a>Kimeneti kötések
 
-A következő példa egy kimeneti várólista-kötés hozzáadásával módosítja az előzőt. A függvény az üzenetsor-üzenetet írja, amely egy másik várólistában lévő új üzenetsor-üzenetre indítja a függvényt.
+A függvények a kimeneti paraméterek használatával nulla vagy egy kimeneti kötést is meghatározhatnak. 
+
+A következő példa egy nevű kimeneti várólista-kötés hozzáadásával módosítja az előzőt `myQueueItemCopy` . A függvény beírja az üzenet tartalmát, amely egy másik várólistában lévő új üzenetre indítja a függvényt.
 
 ```csharp
 public static class SimpleExampleWithOutput
@@ -112,6 +119,8 @@ public static class SimpleExampleWithOutput
     }
 }
 ```
+
+A kimeneti kötésekhez rendelt értékek a függvény bezárásakor íródnak. A függvényekben egynél több kimeneti kötést is használhat, ha egyszerűen több kimeneti paraméterhez rendeli az értékeket. 
 
 A kötési útmutató cikkei (például a[tárolási várólisták](functions-bindings-storage-queue.md)) megmutatják, hogy milyen típusú paramétereket használhat trigger-, bemeneti vagy kimeneti kötési attribútumokkal.
 
@@ -361,7 +370,7 @@ Az alábbi példa az adat JSON-ábrázolását mutatja be `customDimensions` :
 }
 ```
 
-## <a name="log-custom-telemetry-in-c-functions"></a>Egyéni telemetria naplózása C#-függvényekben
+### <a name="log-custom-telemetry"></a><a name="log-custom-telemetry-in-c-functions"></a>Egyéni telemetria naplózása
 
 A Application Insights SDK egy függvény-specifikus verziója, amellyel egyéni telemetria-adatok küldhetők a függvényekből Application Insights: [Microsoft. Azure. webjobs. Logging. ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights). A következő paranccsal telepítheti a csomagot a parancssorból:
 
@@ -647,7 +656,7 @@ public static class IBinderExampleMultipleAttributes
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További információ az eseményindítók és kötésekről](functions-triggers-bindings.md)

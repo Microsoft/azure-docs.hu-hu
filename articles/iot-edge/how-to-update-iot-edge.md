@@ -5,16 +5,16 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/20/2021
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0adcbf49ff2128fdbe623121838058c5ed89dce2
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9c311826c2b17f8e9f95d1ef31980922154635b9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378026"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042317"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Az IoT Edge biztonsági démon és futtatókörnyezet frissítése
 
@@ -29,6 +29,9 @@ A Azure IoT Edge legújabb verziójának megkereséséhez tekintse meg [Azure Io
 A IoT Edge Security Daemon egy natív összetevő, amelyet a IoT Edge eszköz csomagkezelő funkciójával kell frissíteni.
 
 A parancs használatával keresse meg az eszközön futó Security Daemon verzióját `iotedge version` .
+
+>[!IMPORTANT]
+>Ha az 1,0-es vagy a 1,1-es verziójú eszközt a 1,2-as verzióra frissíti, a telepítési és konfigurálási folyamatokban további lépések szükségesek. További információkért tekintse meg a cikk későbbi részében leírt lépéseket: [speciális eset: frissítés 1,0 vagy 1,1 – 1,2](#special-case-update-from-10-or-11-to-12).
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
@@ -67,6 +70,9 @@ Az apt frissítése.
    sudo apt-get update
    ```
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 Ellenőrizze, hogy a IoT Edge mely verziói érhetők el.
 
    ```bash
@@ -91,17 +97,41 @@ Ha a telepíteni kívánt verzió az apt-get használatával nem érhető el, a 
 curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo dpkg -i ./libiothsm-std.deb
 curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
 ```
+<!-- end 1.1 -->
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+Ellenőrizze, hogy a IoT Edge mely verziói érhetők el.
+
+   ```bash
+   apt list -a aziot-edge
+   ```
+
+Ha a IoT Edge legújabb verziójára szeretne frissíteni, használja a következő parancsot, amely az Identity Service-t is frissíti a legújabb verzióra:
+
+   ```bash
+   sudo apt-get install aziot-edge
+   ```
+<!-- end 1.2 -->
+:::moniker-end
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
 <!-- 1.1 -->
-::: moniker range="iotedge-2018-06"
-
+:::moniker range="iotedge-2018-06"
 A Windows rendszeren futó Linux-IoT Edge esetén a IoT Edge egy Windows-eszközön üzemeltetett linuxos virtuális gépen fut. Ez a virtuális gép előre telepítve van a IoT Edgeval, és a Microsoft Update kezeli az összetevők naprakészen tartásához. Jelenleg nincsenek elérhető frissítések.
 
-::: moniker-end
-
 A Windows IoT Edge a IoT Edge közvetlenül a Windows-eszközön fut. A PowerShell-parancsfájlok használatával kapcsolatos frissítési utasításokért lásd: [Azure IoT Edge telepítése és kezelése a Windows](how-to-install-iot-edge-windows-on-windows.md)rendszerhez.
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+Jelenleg nem támogatott a Windows rendszerű eszközökön futó IoT Edge 1,2-es verzió.
+
+:::moniker-end
 
 ---
 
@@ -158,7 +188,79 @@ Ha adott címkéket használ a központi telepítésben (például mcr.microsoft
 
 1. Válassza a **felülvizsgálat + létrehozás** lehetőséget, tekintse át a telepítést, és válassza a **Létrehozás** lehetőséget.
 
-## <a name="update-to-a-release-candidate-version"></a>Frissítés a Release Candidate verzióra
+## <a name="special-case-update-from-10-or-11-to-12"></a>Különleges eset: frissítés 1,0 vagy 1,1 és 1,2 között
+
+Az 1,2-es verziótól kezdődően a IoT Edge szolgáltatás új csomagot használ, és a telepítési és konfigurálási folyamatokban némi különbségek vannak. Ha az 1,0-es vagy a 1,1-es verziót futtató IoT Edge eszközzel rendelkezik, a következő útmutatást követve megismerheti az 1,2-ra való frissítést.
+
+>[!NOTE]
+>Jelenleg nem támogatott a Windows rendszerű eszközökön futó IoT Edge 1,2-es verzió.
+
+A 1,2-es és korábbi verziók közötti főbb különbségek a következők:
+
+* A csomag neve a **iotedge** értékről a **aziotra** módosult.
+* A **libiothsm-STD** csomag már nem használatos. Ha a IoT Edge kiadás részeként biztosított standard csomagot használta, akkor a konfigurációk átvihetők az új verzióra. Ha a libiothsm-STD eltérő implementációját használta, akkor a felhasználó által megadott összes tanúsítványt, például az eszköz identitási tanúsítványát, az eszköz HITELESÍTÉSSZOLGÁLTATÓját és a megbízhatósági csomagot újra kell konfigurálni.
+* Egy új Identity Service, a **aziot** a 1,2 kiadás részeként lett bevezetve. Ez a szolgáltatás kezeli a IoT Edge az identitás kiépítését és felügyeletét, valamint a IoT Hubokkal kommunikáló egyéb eszközök összetevőit, például az Azure IoT Hub az eszköz frissítését. <!--TODO: add link to ADU when available -->
+* Az alapértelmezett konfigurációs fájl új névvel és hellyel rendelkezik. Korábban `/etc/iotedge/config.yaml` az eszköz konfigurációs adatai mostantól várhatóan bekerülnek a szolgáltatásba `/etc/aziot/congig.toml` . A `iotedge config import` parancs segítségével a konfigurációs adatok áttelepíthetők a régi helyükre és szintaxisra az újat.
+* Minden olyan modul, amely a IoT Edge munkaterhelés API-t használja az állandó adatok titkosításához vagy visszafejtéséhez, a frissítés után nem lehet visszafejteni. IoT Edge dinamikusan generál egy fő azonosító kulcsot és egy titkosítási kulcsot belső használatra. Ez a kulcs nem kerül át az új szolgáltatásba. A IoT Edge v 1.2 egy újat fog előállítani.
+
+A frissítési folyamatok automatizálása előtt ellenőrizze, hogy működik-e tesztelési gépen.
+
+Ha elkészült, kövesse az alábbi lépéseket az eszközök IoT Edge frissítéséhez:
+
+1. A legújabb adattár-konfiguráció beszerzése a Microsofttól:
+
+   * **Ubuntu Server 18,04**:
+
+     ```bash
+     curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
+     ```
+
+   * **Málna PI operációs rendszer stretch**:
+
+     ```bash
+     curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list
+     ```
+
+2. Másolja a generált listát.
+
+   ```bash
+   sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
+   ```
+
+3. Telepítse a Microsoft GPG nyilvános kulcsot.
+
+   ```bash
+   curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+   sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
+   ```
+
+4. Az apt frissítése.
+
+   ```bash
+   sudo apt-get update
+   ```
+
+5. Távolítsa el a IoT Edge korábbi verzióját, és hagyja a konfigurációs fájlokat a helyükre.
+
+   ```bash
+   sudo apt-get remove iotedge
+   ```
+
+6. Telepítse a IoT Edge legújabb verzióját, valamint a IoT Identity Service-t.
+
+   ```bash
+   sudo apt-get install aziot-edge
+   ```
+
+7. Importálja a régi config. YAML fájlt az új formátumba, és alkalmazza a konfigurációs adatokat.
+
+   ```bash
+   sudo iotedge config import
+   ```
+
+Most, hogy az eszközökön futó IoT Edge szolgáltatás frissítve lett, a cikkben ismertetett lépéseket követve [frissítse a futásidejű tárolókat](#update-the-runtime-containers)is.
+
+## <a name="special-case-update-to-a-release-candidate-version"></a>Speciális eset: frissítés a Release Candidate verzióra
 
 Azure IoT Edge rendszeresen felszabadítja a IoT Edge szolgáltatás új verzióit. Az egyes stabil kiadások előtt egy vagy több Release Candidate (RC) verzió található. Az RC-verziók tartalmazzák a kiadás tervezett funkcióit, de továbbra is tesztelésen és ellenőrzésen mennek keresztül. Ha korábban egy új szolgáltatást szeretne tesztelni, telepítheti az RC-verziót, és visszajelzést küldhet a GitHubon keresztül.
 

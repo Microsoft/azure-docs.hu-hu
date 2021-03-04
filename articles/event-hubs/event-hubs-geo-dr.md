@@ -3,12 +3,12 @@ title: Földrajzi katasztrófa-helyreállítás – Azure Event Hubs | Microsoft
 description: A földrajzi régiók használata a feladatátvételhez és a vész-helyreállítási műveletek végrehajtásához az Azure-ban Event Hubs
 ms.topic: article
 ms.date: 02/10/2021
-ms.openlocfilehash: 2fd13ac98e80aa67a2a3150e8406a0b0b1b08d13
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: eb6ef1a7536b819d1bc973740a0da6fdf3d756d5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390674"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042368"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs – geo-vész-helyreállítás 
 
@@ -44,11 +44,7 @@ A cikk a következő kifejezéseket használja:
 -  *Alias*: az Ön által beállított vész-helyreállítási konfiguráció neve. Az alias egyetlen stabil teljes tartománynevet (FQDN) tartalmazó adatkarakterláncot biztosít. Az alkalmazások ezt az alias kapcsolati karakterláncot használják a névtérhez való kapcsolódáshoz. 
 
 -  *Elsődleges/másodlagos névtér*: az aliasnak megfelelő névterek. Az elsődleges névtér "aktív", és fogadja az üzeneteket (lehet meglévő vagy új névtér is). A másodlagos névtér "passzív", és nem fogad üzeneteket. A kettő közötti metaadatok szinkronban vannak, így mindkét alkalmazás kód vagy kapcsolati karakterlánc módosítása nélkül is zökkenőmentesen fogadhat üzeneteket. Annak biztosítása érdekében, hogy csak az aktív névtér kapjon üzeneteket, az aliast kell használnia.
-
-    > [!IMPORTANT]
-    > A Geo-vész-helyreállítási funkció megköveteli, hogy az előfizetés és az erőforráscsoport azonos legyen az elsődleges és a másodlagos névterekben. 
 -  *Metaadatok*: olyan entitások, mint az Event hubok és a fogyasztói csoportok; a névtérhez társított szolgáltatás tulajdonságai. A rendszer csak az entitásokat és azok beállításait replikálja automatikusan. Az üzenetek és események nem replikálódnak. 
-
 -  *Feladatátvétel*: a másodlagos névtér aktiválása folyamatban van.
 
 ## <a name="supported-namespace-pairs"></a>Támogatott névtér-párok
@@ -56,10 +52,10 @@ Az elsődleges és a másodlagos névterek következő kombinációi támogatott
 
 | Elsődleges névtér | Másodlagos névtér | Támogatott | 
 | ----------------- | -------------------- | ---------- |
-| Standard | Standard | Yes | 
-| Standard | Dedikált | Yes | 
-| Dedikált | Dedikált | Yes | 
-| Dedikált | Standard | No | 
+| Standard | Standard | Igen | 
+| Standard | Dedikált | Igen | 
+| Dedikált | Dedikált | Igen | 
+| Dedikált | Standard | Nem | 
 
 > [!NOTE]
 > Ugyanahhoz a dedikált fürthöz tartozó névtereket nem lehet párosítani. A különálló fürtökben található névtereket is párosíthatja. 
@@ -75,13 +71,13 @@ A következő szakasz áttekintést nyújt a feladatátvételi folyamatról, és
 Először hozzon létre vagy használjon egy meglévő elsődleges névteret, és egy új másodlagos névteret, és párosítsa a kettőt. Ez a párosítás egy aliast ad meg, amely a kapcsolódáshoz használható. Mivel aliast használ, nem kell módosítania a kapcsolódási karakterláncokat. Csak új névterek adhatók hozzá a feladatátvételi párosításhoz. 
 
 1. Hozza létre az elsődleges névteret.
-1. Hozza létre a másodlagos névteret az előfizetésben és az elsődleges névtérrel rendelkező erőforráscsoportot, de egy másik régióban. Ez a lépés nem kötelező. A másodlagos névteret a következő lépésben a párosítás létrehozásakor hozhatja létre. 
+1. Hozza létre a másodlagos névteret egy másik régióban. Ez a lépés nem kötelező. A másodlagos névteret a következő lépésben a párosítás létrehozásakor hozhatja létre. 
 1. A Azure Portal navigáljon az elsődleges névtérhez.
 1. A bal oldali menüben válassza a **geo-helyreállítás** lehetőséget, majd válassza a **párosítás kezdeményezése** lehetőséget az eszköztáron. 
 
     :::image type="content" source="./media/event-hubs-geo-dr/primary-namspace-initiate-pairing-button.png" alt-text="Párosítás kezdeményezése az elsődleges névtérből":::    
 1. A **párosítás kezdeményezése** lapon kövesse az alábbi lépéseket:
-    1. Válasszon ki egy meglévő másodlagos névteret, vagy hozzon létre egyet az előfizetésben és az elsődleges névteret tartalmazó erőforráscsoportot. Ebben a példában egy meglévő névtér van kiválasztva.  
+    1. Válasszon ki egy meglévő másodlagos névteret, vagy hozzon létre egyet egy másik régióban. Ebben a példában egy meglévő névtér van kiválasztva.  
     1. **Alias** esetén adjon meg egy aliast a Geo-Dr párosításhoz. 
     1. Ezután kattintson a **Létrehozás** elemre. 
 

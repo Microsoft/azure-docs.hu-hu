@@ -2,7 +2,6 @@
 title: API-hitelesítés és-engedélyezés – Azure Time Series Insights | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan konfigurálható a hitelesítés és engedélyezés egy olyan egyéni alkalmazáshoz, amely meghívja a Azure Time Series Insights API-t.
 ms.service: time-series-insights
-services: time-series-insights
 author: deepakpalled
 ms.author: shresha
 manager: dpalled
@@ -12,16 +11,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 58c0f408e3ad80109efd3db79d6e4a0d881aed78
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 02d9edd555566f86fd8bb09cf4acef4956ae53e4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724174"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041212"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Hitelesítés és engedélyezés az Azure Time Series Insights API-hoz
 
-Az üzleti igényektől függően előfordulhat, hogy a megoldás egy vagy több ügyfélalkalmazások közé tartozik, amelyet a Azure Time Series Insights-környezet [API-jai](https://docs.microsoft.com/en-us/rest/api/time-series-insights/reference-data-access-overview)segítségével szeretne kezelni. [A Azure Time Series Insights az Azure ad biztonsági jogkivonatok használatával hajtja végre a hitelesítést az OAUTH 2,0 alapján](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims). Az ügyfél (ek) hitelesítéséhez be kell szereznie a megfelelő engedélyekkel rendelkező tulajdonosi jogkivonatot, és át kell adnia az API-hívásokkal. Ez a dokumentum több hitelesítő adat beszerzésére szolgáló módszert ismertet, amelyek segítségével tulajdonosi jogkivonatot és hitelesítést végezhet.
+Az üzleti igényektől függően előfordulhat, hogy a megoldás egy vagy több ügyfélalkalmazások közé tartozik, amelyet a Azure Time Series Insights-környezet [API-jai](/rest/api/time-series-insights/reference-data-access-overview)segítségével szeretne kezelni. [A Azure Time Series Insights az Azure ad biztonsági jogkivonatok használatával hajtja végre a hitelesítést az OAUTH 2,0 alapján](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims). Az ügyfél (ek) hitelesítéséhez be kell szereznie a megfelelő engedélyekkel rendelkező tulajdonosi jogkivonatot, és át kell adnia az API-hívásokkal. Ez a dokumentum több hitelesítő adat beszerzésére szolgáló módszert ismertet, amelyek segítségével tulajdonosi jogkivonatot és hitelesítést végezhet.
 
 
   alkalmazások regisztrálása Azure Active Directory az új Azure Active Directory panel használatával. A Azure Active Directory regisztrált alkalmazások lehetővé teszik a felhasználók számára, hogy hitelesítsék magukat a Azure Time Series Insights-környezethez társított Azure Time Series Insight API használatával.
@@ -34,7 +33,7 @@ A következő szakaszok azt ismertetik, hogyan lehet felügyelt identitást hasz
 - A felügyelt identitások használatával bármely olyan Azure-szolgáltatáshoz hitelesíthető, amely támogatja az Azure AD-hitelesítést, beleértve a Azure Key Vaultt is.
 - A felügyelt identitások további díjak nélkül is használhatók.
 
-A felügyelt identitások két típusával kapcsolatos további információkért olvassa el az [Azure-erőforrások felügyelt identitásai](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) című témakört.
+A felügyelt identitások két típusával kapcsolatos további információkért olvassa el az [Azure-erőforrások felügyelt identitásai](../active-directory/managed-identities-azure-resources/overview.md) című témakört.
 
 A felügyelt identitások a következővel használhatók:
 
@@ -44,7 +43,7 @@ A felügyelt identitások a következővel használhatók:
 - Azure Container instances
 - és még sok minden más...
 
-Tekintse meg az Azure- [erőforrások felügyelt identitásokat támogató Azure-szolgáltatásait](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-managed-identities-for-azure-resources) a teljes listához.
+Tekintse meg az Azure- [erőforrások felügyelt identitásokat támogató Azure-szolgáltatásait](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) a teljes listához.
 
 ## <a name="azure-active-directory-app-registration"></a>Azure Active Directory alkalmazás regisztrálása
 
@@ -54,9 +53,9 @@ Az alkalmazás regisztrációjának befejezése után az alkalmazás (az Applica
 
 Ha regisztrál egy alkalmazást a portálon, a rendszer automatikusan létrehoz egy Application-objektumot és egy egyszerű szolgáltatásnevet a saját bérlőben. Ha a Microsoft Graph API-k használatával regisztrál/hoz létre alkalmazást, az egyszerű szolgáltatás létrehozása egy külön lépés. A jogkivonatok igényléséhez egyszerű szolgáltatásnév-objektum szükséges.
 
-Mindenképpen tekintse át az alkalmazás [biztonsági](https://docs.microsoft.com/azure/active-directory/develop/identity-platform-integration-checklist#security) ellenőrzőlistáját. Ajánlott eljárásként a [tanúsítvány hitelesítő adatait](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials)kell használnia, nem pedig a jelszó hitelesítő adatait (az ügyfél titkos kulcsait).
+Mindenképpen tekintse át az alkalmazás [biztonsági](../active-directory/develop/identity-platform-integration-checklist.md#security) ellenőrzőlistáját. Ajánlott eljárásként a [tanúsítvány hitelesítő adatait](../active-directory/develop/active-directory-certificate-credentials.md)kell használnia, nem pedig a jelszó hitelesítő adatait (az ügyfél titkos kulcsait).
 
-További részletekért lásd: [alkalmazás-és szolgáltatásnév-objektumok Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) .
+További részletekért lásd: [alkalmazás-és szolgáltatásnév-objektumok Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md) .
 
 ## <a name="step-1-create-your-managed-identity-or-app-registration"></a>1. lépés: a felügyelt identitás vagy alkalmazás regisztrációjának létrehozása
 
@@ -64,16 +63,16 @@ Miután azonosította, hogy felügyelt identitást vagy alkalmazás-regisztráci
 
 ### <a name="managed-identity"></a>Felügyelt identitás
 
-A felügyelt identitás létrehozásához szükséges lépések eltérőek lehetnek attól függően, hogy hol található a kód, és hogy van-e létrehozva rendszerhez rendelt vagy felhasználó által hozzárendelt identitás. A különbség megismeréséhez olvassa el a [felügyelt identitások típusait](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview#managed-identity-types) . Miután kiválasztotta az identitás típusát, keresse meg és kövesse a megfelelő oktatóanyagot az Azure AD által felügyelt identitások [dokumentációjában](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/). Itt útmutatást talál a felügyelt identitások konfigurálásához a következőhöz:
+A felügyelt identitás létrehozásához szükséges lépések eltérőek lehetnek attól függően, hogy hol található a kód, és hogy van-e létrehozva rendszerhez rendelt vagy felhasználó által hozzárendelt identitás. A különbség megismeréséhez olvassa el a [felügyelt identitások típusait](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) . Miután kiválasztotta az identitás típusát, keresse meg és kövesse a megfelelő oktatóanyagot az Azure AD által felügyelt identitások [dokumentációjában](../active-directory/managed-identities-azure-resources/index.yml). Itt útmutatást talál a felügyelt identitások konfigurálásához a következőhöz:
 
-- [Azure-beli virtuális gépek](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#enable-system-assigned-managed-identity-during-creation-of-a-vm)
-- [App Service és Azure Functions](https://docs.microsoft.com/azure/app-service/overview-managed-identity)
-- [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-managed-identity)
+- [Azure-beli virtuális gépek](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-during-creation-of-a-vm)
+- [App Service és Azure Functions](../app-service/overview-managed-identity.md)
+- [Azure Container Instances](../container-instances/container-instances-managed-identity.md)
 - és még sok minden más...
 
 ### <a name="application-registration"></a>Alkalmazásregisztráció
 
-Kövesse az [alkalmazás regisztrálása](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app#register-an-application)című témakörben felsorolt lépéseket.
+Kövesse az [alkalmazás regisztrálása](../active-directory/develop/quickstart-register-app.md#register-an-application)című témakörben felsorolt lépéseket.
 
 [!INCLUDE [Azure Active Directory app registration](../../includes/time-series-insights-aad-registration.md)]
 
@@ -81,16 +80,16 @@ Kövesse az [alkalmazás regisztrálása](https://docs.microsoft.com/azure/activ
 
 Ha a Azure Time Series Insights-környezet kérést kap, először a hívó tulajdonosi jogkivonatát kell érvényesíteni. Ha az érvényesítés sikeres, a hívó hitelesítése megtörtént, majd egy másik ellenőrzéssel biztosítható, hogy a hívó jogosult legyen a kért művelet végrehajtására. Bármely felhasználó vagy szolgáltatásnév engedélyezéséhez először hozzáférést kell biztosítania számukra a környezethez az olvasó vagy közreműködő szerepkör hozzárendelésével.
 
-- A [Azure Portal](https://portal.azure.com/) felhasználói felületen keresztüli hozzáférés biztosításához kövesse az [adathozzáférés a környezethez](https://docs.microsoft.com/azure/time-series-insights/concepts-access-policies) című cikkben felsorolt utasításokat. A felhasználó kiválasztásakor a név vagy azonosító alapján keresheti meg a felügyelt identitást vagy az alkalmazás regisztrációját.
+- A [Azure Portal](https://portal.azure.com/) felhasználói felületen keresztüli hozzáférés biztosításához kövesse az [adathozzáférés a környezethez](concepts-access-policies.md) című cikkben felsorolt utasításokat. A felhasználó kiválasztásakor a név vagy azonosító alapján keresheti meg a felügyelt identitást vagy az alkalmazás regisztrációját.
 
-- Az Azure CLI használatával történő hozzáférés biztosításához futtassa a következő parancsot. Tekintse át az [itt](https://docs.microsoft.com/cli/azure/ext/timeseriesinsights/tsi/access-policy?view=azure-cli-latest) található dokumentációt a hozzáférések kezeléséhez elérhető parancsok teljes listájához.
+- Az Azure CLI használatával történő hozzáférés biztosításához futtassa a következő parancsot. Tekintse át az [itt](/cli/azure/ext/timeseriesinsights/tsi/access-policy) található dokumentációt a hozzáférések kezeléséhez elérhető parancsok teljes listájához.
 
    ```azurecli-interactive
    az tsi access-policy create --name "ap1" --environment-name "env1" --description "some description" --principal-object-id "aGuid" --roles Reader Contributor --resource-group "rg1"
    ```
 
 > [!Note]
-> Az Azure CLI-hez készült timeseriesinsights-bővítményhez a 2.11.0 vagy újabb verzió szükséges. A bővítmény automatikusan telepíti az az ÁME Access-Policy parancs első indításakor. [További](https://docs.microsoft.com/cli/azure/azure-cli-extensions-overview) információ a bővítményekről.
+> Az Azure CLI-hez készült timeseriesinsights-bővítményhez a 2.11.0 vagy újabb verzió szükséges. A bővítmény automatikusan telepíti az az ÁME Access-Policy parancs első indításakor. [További](/cli/azure/azure-cli-extensions-overview) információ a bővítményekről.
 
 ## <a name="step-3-requesting-tokens"></a>3. lépés: jogkivonatok kérése
 
@@ -107,37 +106,37 @@ Miután a felügyelt identitása vagy az alkalmazás regisztrálása megtörtén
 
 ### <a name="managed-identities"></a>Felügyelt identitások
 
-Ha Azure App Service vagy functions szolgáltatáshoz fér hozzá, kövesse az [Azure-erőforrások jogkivonatok beszerzése](https://docs.microsoft.com/azure/app-service/overview-managed-identity)című témakör útmutatását.
+Ha Azure App Service vagy functions szolgáltatáshoz fér hozzá, kövesse az [Azure-erőforrások jogkivonatok beszerzése](../app-service/overview-managed-identity.md)című témakör útmutatását.
 
 > [!TIP]
-> A .NET-alkalmazások és-függvények esetében a felügyelt identitással való munka legegyszerűbb módja a .NET-hez készült [Azure Identity ügyféloldali kódtár](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme) . 
+> A .NET-alkalmazások és-függvények esetében a felügyelt identitással való munka legegyszerűbb módja a .NET-hez készült [Azure Identity ügyféloldali kódtár](/dotnet/api/overview/azure/identity-readme) . 
 
-A .NET-alkalmazások és-függvények esetében a felügyelt identitással való munka legegyszerűbb módja a Microsoft. Azure. Services. AppAuthentication csomag. Ez a csomag az egyszerűség és a biztonsági előnyök miatt népszerű. A fejlesztők egyszer is írhatnak kódot, és lehetővé teszik az ügyféloldali kódtár számára az alkalmazási környezet alapján történő hitelesítést – akár fejlesztői munkaállomáson, akár fejlesztői fiók használatával, akár az Azure-ban, felügyelt szolgáltatás identitásával. Áttelepítési útmutató a megelőző AppAuthentication könyvtárában olvassa el a AppAuthentication az Azure-ba című témakört. [identitás-áttelepítési útmutató](https://docs.microsoft.com/dotnet/api/overview/azure/app-auth-migration?view=azure-dotnet).
+A .NET-alkalmazások és-függvények esetében a felügyelt identitással való munka legegyszerűbb módja a Microsoft. Azure. Services. AppAuthentication csomag. Ez a csomag az egyszerűség és a biztonsági előnyök miatt népszerű. A fejlesztők egyszer is írhatnak kódot, és lehetővé teszik az ügyféloldali kódtár számára az alkalmazási környezet alapján történő hitelesítést – akár fejlesztői munkaállomáson, akár fejlesztői fiók használatával, akár az Azure-ban, felügyelt szolgáltatás identitásával. Áttelepítési útmutató a megelőző AppAuthentication könyvtárában olvassa el a AppAuthentication az Azure-ba című témakört. [identitás-áttelepítési útmutató](/dotnet/api/overview/azure/app-auth-migration).
 
 Jogkivonatot kér Azure Time Series Insights C# és a .NET-hez készült Azure Identity ügyféloldali kódtár használatával:
 
-    ```csharp
-    using Azure.Identity;
-    // ...
-    var credential = new DefaultAzureCredential();
-    var token = credential.GetToken(
-    new Azure.Core.TokenRequestContext(
-        new[] { "https://api.timeseries.azure.com/" }));
-   var accessToken = token. Jogkivonat
-    ```
+   ```csharp
+   using Azure.Identity;
+   // ...
+   var credential = new DefaultAzureCredential();
+   var token = credential.GetToken(
+   new Azure.Core.TokenRequestContext(
+       new[] { "https://api.timeseries.azure.com/" }));
+   var accessToken = token.Token;
+   ```
 
 ### <a name="app-registration"></a>Alkalmazásregisztráció
 
-* A fejlesztők a [Microsoft Authentication Library](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) (MSAL) használatával szerezhetnek be jogkivonatokat az alkalmazás regisztrálásához.
+* A fejlesztők a [Microsoft Authentication Library](../active-directory/develop/msal-overview.md) (MSAL) használatával szerezhetnek be jogkivonatokat az alkalmazás regisztrálásához.
 
 A MSAL számos alkalmazási forgatókönyvben használható, beleértve a következőket:
 
-* [Egyoldalas alkalmazások (JavaScript)](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-overview.md)
-* [Webalkalmazás-aláírás a felhasználó nevében, és webes API meghívása a felhasználó nevében](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-overview.md)
-* [Webes API, amely egy másik alsóbb rétegbeli webes API-t hív meg a bejelentkezett felhasználó nevében](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-api-call-api-overview.md)
-* [A bejelentkezett felhasználó nevében webes API-t hívó asztali alkalmazás](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-overview.md)
-* A [mobil alkalmazás a webes API-t hívja interaktív módon bejelentkezett felhasználó nevében](https://docs.microsoft.com/azure/active-directory/develop/scenario-mobile-overview.md).
-* [Desktop/Service Daemon-alkalmazás a webes API-t saját nevében hívja meg](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-overview.md)
+* [Egyoldalas alkalmazások (JavaScript)](../active-directory/develop/scenario-spa-overview.md)
+* [Webalkalmazás-aláírás a felhasználó nevében, és webes API meghívása a felhasználó nevében](../active-directory/develop/scenario-web-app-call-api-overview.md)
+* [Webes API, amely egy másik alsóbb rétegbeli webes API-t hív meg a bejelentkezett felhasználó nevében](../active-directory/develop/scenario-web-api-call-api-overview.md)
+* [A bejelentkezett felhasználó nevében webes API-t hívó asztali alkalmazás](../active-directory/develop/scenario-desktop-overview.md)
+* A [mobil alkalmazás a webes API-t hívja interaktív módon bejelentkezett felhasználó nevében](../active-directory/develop/scenario-mobile-overview.md).
+* [Desktop/Service Daemon-alkalmazás a webes API-t saját nevében hívja meg](../active-directory/develop/scenario-daemon-overview.md)
 
 A példában szereplő C#-kód azt mutatja be, hogyan lehet jogkivonat beszerzése alkalmazás-regisztrálási és-lekérdezési adatok Gen2-környezetből, tekintse meg a minta alkalmazást a [githubon](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClientSampleApp/Program.cs)
 

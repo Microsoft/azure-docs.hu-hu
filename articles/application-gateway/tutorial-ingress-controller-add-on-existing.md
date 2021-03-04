@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.author: caya
-ms.openlocfilehash: 1daf5fef1383272f728ff3dac7557e55398f7d50
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bfff962f6d302f589acc437550fa25f76ec7ce35
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720222"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040421"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway"></a>Oktatóanyag: Application Gateway beáramlási vezérlő bővítményének engedélyezése meglévő AK-alapú fürtökhöz meglévő Application Gateway
 
@@ -82,7 +82,7 @@ az aks enable-addons -n myCluster -g myResourceGroup -a ingress-appgw --appgw-id
 
 Ha Azure Portalt szeretne használni a AGIC-bővítmény engedélyezéséhez, nyissa meg a [( https://aka.ms/azure/portal/aks/agic) ](https://aka.ms/azure/portal/aks/agic) z) (és keresse meg az AK-fürtöt a portál hivatkozásán keresztül. Innen lépjen a hálózatkezelés lapra az AK-fürtön belül. Ekkor megjelenik egy Application Gateway beáramló vezérlő szakasz, amely lehetővé teszi, hogy engedélyezze vagy tiltsa le a bejövő vezérlő bővítményét a portál felhasználói felületén. Jelölje be a "bejövő adatok vezérlésének engedélyezése" jelölőnégyzetet, majd válassza ki a létrehozott Application Gateway *myApplicationGateway* a legördülő menüből. 
 
-![Application Gateway bejövő adatkezelő portál](./media/tutorial-ingress-controller-add-on-existing/portal_ingress_controller_addon.png)
+![Application Gateway bejövő adatkezelő portál](./media/tutorial-ingress-controller-add-on-existing/portal-ingress-controller-add-on.png)
 
 ## <a name="peer-the-two-virtual-networks-together"></a>Egyenrangú a két virtuális hálózat együtt
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/10/2021
 ms.author: jodowns
 ms.custom: fasttrack-new
-ms.openlocfilehash: 9dc44b4b898603df88d1bdd8c36ddfb6449335ac
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 55951f288314d92cf5057e7d5c1e988f65cb3e14
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547196"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040379"
 ---
 # <a name="versions-in-azure-api-management"></a>Az Azure API Management verziói
 
@@ -42,7 +42,7 @@ Az elérési út verziószámozási sémájának használatakor a verzió azonos
 
 Például, `https://apis.contoso.com/products/v1` és `https://apis.contoso.com/products/v2` hivatkozhat ugyanarra az `products` API-ra, de a verziókra és a verzióra `v1` `v2` .
 
-Az API-kérelmek URL-címének formátuma fejléc-alapú verziószámozás használata esetén: `https://{yourDomain}/{apiName}/{versionIdentifier}/{operationId}` .
+Az API-kérelmek URL-címének formátuma, amikor elérésiút-alapú verziószámozást használ: `https://{yourDomain}/{apiName}/{versionIdentifier}/{operationId}` .
 
 ### <a name="header-based-versioning"></a>Fejléc-alapú verziószámozás
 

@@ -4,19 +4,19 @@ description: Megtudhatja, hogyan hozhatja létre a Azure IoT Edge-megoldását a
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 07/10/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 7850763abe2ef40aea4ab3b97187d50f7060fa18
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 65710047d5d5d1cc6b835144f7778392fb20b797
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388770"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042266"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Felkészülés a IoT Edge-megoldás éles környezetben történő üzembe helyezésére
 
@@ -38,14 +38,19 @@ IoT Edge az eszközök a málna PI-ből egy laptopra vagy egy kiszolgálón fut�
 
 ### <a name="install-production-certificates"></a>Éles tanúsítványok telepítése
 
-Minden üzemi IoT Edge eszközön telepítve kell lennie egy, az eszközre telepített HITELESÍTÉSSZOLGÁLTATÓI tanúsítványnak. Ezt követően a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány deklarálva lesz a config. YAML fájlban lévő IoT Edge futtatókörnyezetnek. Fejlesztési és tesztelési forgatókönyvek esetén az IoT Edge Runtime ideiglenes tanúsítványokat hoz létre, ha nem deklarálnak tanúsítványokat a config. YAML fájlban. Ezek az ideiglenes tanúsítványok azonban három hónap elteltével lejárnak, és nem biztonságosak az éles környezetekben. Éles forgatókönyvek esetén saját eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványát kell megadnia egy önaláírt hitelesítésszolgáltatótól, vagy egy kereskedelmi hitelesítésszolgáltatótól vásárolhatja meg.
+Minden üzemi IoT Edge eszközön telepítve kell lennie egy, az eszközre telepített HITELESÍTÉSSZOLGÁLTATÓI tanúsítványnak. Ezt követően a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány deklarálva lesz a konfigurációs fájlban lévő IoT Edge futtatókörnyezetnek. Fejlesztési és tesztelési forgatókönyvek esetén a IoT Edge futtatókörnyezet ideiglenes tanúsítványokat hoz létre, ha nem deklarálnak tanúsítványokat a konfigurációs fájlban. Ezek az ideiglenes tanúsítványok azonban három hónap elteltével lejárnak, és nem biztonságosak az éles környezetekben. Éles forgatókönyvek esetén saját eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványát kell megadnia egy önaláírt hitelesítésszolgáltatótól, vagy egy kereskedelmi hitelesítésszolgáltatótól vásárolhatja meg.
+
+<!--1.1-->
+:::moniker range="iotedge-2018-06"
 
 > [!NOTE]
 > Jelenleg a libiothsm korlátozásai meggátolják a 2038 január 1-jén vagy azt követően lejáró tanúsítványok használatát.
 
+:::moniker-end
+
 Az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa szerepkörének megismeréséhez tekintse meg a [hogyan használja a Azure IoT Edge a tanúsítványokat](iot-edge-certs.md).
 
-Ha további információt szeretne arról, hogyan telepíthet tanúsítványokat egy IoT Edge eszközre, és hogyan hivatkozhat rájuk a config. YAML fájlból, tekintse [meg a tanúsítvány kezelése IoT Edge eszközön](how-to-manage-device-certificates.md)című témakört.
+Ha további információt szeretne arról, hogyan telepíthet tanúsítványokat egy IoT Edge eszközre, és hogyan hivatkozhat rájuk a konfigurációs fájlból, tekintse [meg a tanúsítvány kezelése IoT Edge eszközön](how-to-manage-device-certificates.md)című témakört.
 
 ### <a name="have-a-device-management-plan"></a>Eszközkezelés
 
@@ -54,10 +59,10 @@ Mielőtt üzembe helyezi az eszközt az éles környezetben, tudnia kell, hogyan
 * Az eszköz belső vezérlőprogramja
 * Operációs rendszer kódtárai
 * Tároló motor, például Moby
-* IoT Edge démon
+* IoT Edge
 * CA-tanúsítványok
 
-További információ: [a IoT Edge futtatókörnyezet frissítése](how-to-update-iot-edge.md). A IoT Edge démon frissítésének jelenlegi módszerei fizikai vagy SSH-hozzáférést igényelnek a IoT Edge eszközhöz. Ha sok eszközt szeretne frissíteni, vegye fel a frissítési lépéseket egy parancsfájlba, vagy használjon olyan Automation-eszközt, mint például a Ansible.
+További információ: [a IoT Edge futtatókörnyezet frissítése](how-to-update-iot-edge.md). A IoT Edge frissítésének jelenlegi módszerei fizikai vagy SSH-hozzáférést igényelnek a IoT Edge eszközhöz. Ha sok eszközt szeretne frissíteni, vegye fel a frissítési lépéseket egy parancsfájlba, vagy használjon olyan Automation-eszközt, mint például a Ansible.
 
 ### <a name="use-moby-as-the-container-engine"></a>A Moby használata tároló motorként
 
@@ -74,7 +79,7 @@ A két futásidejű modul **UpstreamProtocol** környezeti változóval rendelke
 * MQTTWS
 * AMQPWS
 
-Konfigurálja a UpstreamProtocol változót a IoT Edge ügynökhöz a config. YAML fájlban az eszközön. Ha például a IoT Edge eszköz egy olyan proxykiszolgáló mögött található, amely blokkolja a AMQP-portokat, előfordulhat, hogy a IoT Edge-ügynököt úgy kell konfigurálnia, hogy az AMQP-t használja a WebSocket (AMQPWS) használatával a kezdeti kapcsolat létrehozásához a IoT Hub.
+Konfigurálja az UpstreamProtocol változót a IoT Edge ügynökhöz az eszköz konfigurációs fájljában. Ha például a IoT Edge eszköz egy olyan proxykiszolgáló mögött található, amely blokkolja a AMQP-portokat, előfordulhat, hogy a IoT Edge-ügynököt úgy kell konfigurálnia, hogy az AMQP-t használja a WebSocket (AMQPWS) használatával a kezdeti kapcsolat létrehozásához a IoT Hub.
 
 Ha a IoT Edge-eszköz csatlakozik, mindenképpen folytassa a UpstreamProtocol változó konfigurálását mindkét futtatókörnyezeti modulban a jövőbeli telepítések során. Ennek a folyamatnak egy példája a [IoT Edge eszköz konfigurálása egy proxykiszolgálón keresztül történő kommunikációra](how-to-configure-proxy-support.md)című cikkben található.
 
@@ -203,7 +208,7 @@ Ezután frissítse a képhivatkozásokat a fájl deployment.template.jsa edgeAge
 
 ### <a name="review-outboundinbound-configuration"></a>Kimenő/bejövő konfiguráció áttekintése
 
-Az Azure IoT Hub és IoT Edge közötti kommunikációs csatornák mindig kimenő értékre vannak konfigurálva. A legtöbb IoT Edge forgatókönyv esetén csak három kapcsolat szükséges. A tároló-motornak kapcsolódnia kell a modul lemezképeit tároló beállításjegyzékbeli (vagy kibocsátásiegység-nyilvántartási) adatbázishoz. Az IoT Edge futtatókörnyezetnek csatlakoznia kell a IoT Hubhoz az eszköz konfigurációs adatainak lekéréséhez, valamint üzenetek és telemetria küldéséhez. Ha az automatikus kiépítés szolgáltatást használja, a IoT Edge démonnak csatlakoznia kell az eszköz kiépítési szolgáltatásához. További információ: a [tűzfal és a port konfigurációs szabályai](troubleshoot.md#check-your-firewall-and-port-configuration-rules).
+Az Azure IoT Hub és IoT Edge közötti kommunikációs csatornák mindig kimenő értékre vannak konfigurálva. A legtöbb IoT Edge forgatókönyv esetén csak három kapcsolat szükséges. A tároló-motornak kapcsolódnia kell a modul lemezképeit tároló beállításjegyzékbeli (vagy kibocsátásiegység-nyilvántartási) adatbázishoz. Az IoT Edge futtatókörnyezetnek csatlakoznia kell a IoT Hubhoz az eszköz konfigurációs adatainak lekéréséhez, valamint üzenetek és telemetria küldéséhez. Ha automatikus üzembe helyezést használ, IoT Edge csatlakoznia kell az eszköz kiépítési szolgáltatásához. További információ: a [tűzfal és a port konfigurációs szabályai](troubleshoot.md#check-your-firewall-and-port-configuration-rules).
 
 ### <a name="allow-connections-from-iot-edge-devices"></a>IoT Edge eszközök kapcsolatainak engedélyezése
 
@@ -211,7 +216,7 @@ Ha a hálózatkezelés beállítása megköveteli, hogy explicit módon engedél
 
 * **IoT Edge-ügynök** állandó AMQP/MQTT-kapcsolaton keresztül nyitja meg a IoT hub, valószínűleg a WebSockets szolgáltatásban.
 * **IoT Edge hub** egyetlen állandó AMQP-kapcsolatot nyit meg, vagy több MQTT-kapcsolatot hoz IoT hub, valószínűleg a websocketek felett.
-* **IoT Edge démon** időszakos HTTPS-hívásokat végez IoT hub.
+* A **IoT Edge szolgáltatás** időszakos HTTPS-hívásokat végez IoT hub.
 
 Mindhárom esetben a DNS-név megegyezik a minta \* . Azure-Devices.net.
 
@@ -248,7 +253,28 @@ Ha az eszközök egy proxykiszolgálót használó hálózaton lesznek telepítv
 
 ### <a name="set-up-logs-and-diagnostics"></a>Naplók és diagnosztika beállítása
 
-Linux rendszeren a IoT Edge démon az alapértelmezett naplózási illesztőprogramként használja a naplókat. A Daemon-naplókat a parancssori eszköz használatával `journalctl` kérdezheti le. Windows rendszeren a IoT Edge démon PowerShell-diagnosztikát használ. `Get-IoTEdgeLog`A paranccsal a démonokból kérdezheti le a naplókat. IoT Edge modulok a JSON-illesztőprogramot használják a naplózáshoz, amely az alapértelmezett.  
+Linux rendszeren a IoT Edge démon az alapértelmezett naplózási illesztőprogramként használja a naplókat. A Daemon-naplókat a parancssori eszköz használatával `journalctl` kérdezheti le.
+
+<!--1.2-->
+:::moniker range=">=iotedge-2020-11"
+
+Az 1,2-es verziótól kezdődően IoT Edge több démonra támaszkodik. Az egyes démonok naplóit egyenként is lekérdezheti `journalctl` , így a `iotedge system` parancsok kényelmes módot biztosítanak a kombinált naplók lekérdezésére.
+
+* Konszolidált `iotedge` parancs:
+
+  ```bash
+  sudo iotedge system logs
+  ```
+
+* Egyenértékű `journalctl` parancs:
+
+  ```bash
+  journalctl -u aziot-edge -u aziot-identityd -u aziot-keyd -u aziot-certd -u aziot-tpmd
+  ```
+
+:::moniker-end
+
+Windows rendszeren a IoT Edge démon PowerShell-diagnosztikát használ. `Get-IoTEdgeLog`A paranccsal a démonokból kérdezheti le a naplókat. IoT Edge modulok a JSON-illesztőprogramot használják a naplózáshoz, amely az alapértelmezett.  
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
