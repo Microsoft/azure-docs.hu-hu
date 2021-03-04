@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 12/15/2020
+ms.date: 02/24/2021
 ms.author: banders
-ms.openlocfilehash: 8c69f477f363654b8bd707949f0a5b4c46a4e8df
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
-ms.translationtype: HT
+ms.openlocfilehash: 477dff9db28672f8231710af34786ac387f43b71
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561104"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050341"
 ---
 # <a name="view-azure-reservations"></a>Azure-foglalások megtekintése
 
@@ -47,8 +47,15 @@ Két lehetősége van, ha más személyeknek is engedélyezni szeretné a foglal
 
 ### <a name="how-billing-administrators-view-or-manage-reservations"></a>A foglalások megtekintése és kezelése a számlázási rendszergazdák számára
 
-1. Válassza ki a **Cost Management + Billing** lehetőséget, majd a lap bal oldalán a **Foglalási tranzakciók** lehetőséget.
-2. Ha rendelkezik a szükséges számlázási engedélyekkel, akkor megtekintheti és kezelheti a foglalásokat. Ha egy foglalást sem lát, győződjön meg róla, hogy azzal az Azure AD-bérlővel jelentkezett be, amelyen a foglalás létre lett hozva.
+Ha az Azure RBAC-hozzáféréssel rendelkezik a foglalásokhoz vagy a foglalási rendelésekhez, akkor a foglalások megnyitásakor csak a foglalási tranzakciók egy részhalmazát láthatja. Az alábbi lépések segítségével megtekintheti és kezelheti az összes foglalást és foglalási tranzakciót.
+
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és navigáljon a **Cost Management + számlázás** elemre.
+    - Ha Ön egy nagyvállalati rendszergazda, a bal oldali menüben válassza ki a **Számlázási hatókörök** elemet, majd a számlázási hatókörök listájában válasszon egyet.
+    - Ha Ön a Microsoft ügyfél-szerződés számlázási profiljának tulajdonosa, a bal oldali menüben válassza a **Számlázási profilok** lehetőséget. A számlázási profilok listájában válasszon egyet.
+1. A bal oldali menüben válassza a **foglalási tranzakciók** elemet. Megjelenik a foglalási tranzakciók listája.
+1. A lap tetején található szalagcím beolvassa a *Számlázási rendszergazdák a foglalásokat kezelhetik. Kattintson ide a foglalások kezeléséhez.* Válassza ki a szalagcímet.
+1. Megjelenik az EA-regisztrációhoz vagy a számlázási profilhoz tartozó foglalások teljes listája.
+1. Ha szeretné, hogy a foglalás tulajdonosa legyen, válassza ki. Ezután az engedélyek beállítása lapon válassza a **hozzáférés engedélyezése** lehetőséget. Tulajdonosi hozzáférést kap a foglaláshoz és a foglalási rendeléshez.
 
 ## <a name="view-reservation-and-utilization-in-the-azure-portal"></a>Foglalás és kihasználtság megtekintése az Azure Portalon
 

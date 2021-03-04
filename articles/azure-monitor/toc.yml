@@ -416,7 +416,7 @@
                 - name: Küldés az Event Hubsba
                   href: agents/diagnostics-extension-stream-event-hubs.md
                 - name: Küldés a naplókba
-                  href: essentials/diagnostics-extension-logs.md
+                  href: agents/diagnostics-extension-logs.md
                 - name: Küldés az Application Insightsba
                   href: agents/diagnostics-extension-to-application-insights.md
                 - name: Verzióelőzmények
@@ -993,7 +993,7 @@
         - name: Általános rendelkezésre állás – gyakori kérdések
           href: vm/vminsights-ga-release-faq.md
         - name: GYIK
-          href: faq.md#azure-monitor-for-vms
+          href: faq.md#vm-insights
         - name: Munkaterület konfigurálása
           href: vm/vminsights-configure-workspace.md
         - name: Ügynökök telepítése
@@ -1045,7 +1045,7 @@
         - name: Áttekintés
           href: containers/container-insights-overview.md
         - name: GYIK
-          href: faq.md#azure-monitor-for-containers
+          href: faq.md#container-insights
         - name: Monitorozás engedélyezése
           items:
             - name: Monitorozás engedélyezésének áttekintése

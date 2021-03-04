@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: fd9a01868230efd9e9078171359d81302b472cd3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 39466ad621eff1a7d3490c936c90fbff6f63e0fc
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724421"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051548"
 ---
 # <a name="security-control-v2-backup-and-recovery"></a>Security Control v2: biztonsági mentés és helyreállítás
 
 A biztonsági mentés és helyreállítás kiterjed a vezérlőkre, így biztosítva, hogy az adatokat és a konfigurációkat a különböző szolgáltatási rétegek végzik, ellenőrzik és védik.
 
-A megfelelő beépített Azure Policy megjelenítéséhez tekintse meg [Az Azure biztonsági teljesítményteszt szabályozási megfelelőségének beépített kezdeményezését ismertető témakört: biztonsági mentés és helyreállítás](../../governance/policy/samples/azure-security-benchmark#backup-and-recovery)
+A megfelelő beépített Azure Policy megjelenítéséhez tekintse meg [Az Azure biztonsági teljesítményteszt szabályozási megfelelőségének beépített kezdeményezését ismertető témakört: biztonsági mentés és helyreállítás](../../governance/policy/samples/azure-security-benchmark.md#backup-and-recovery)
 
 ## <a name="br-1-ensure-regular-automated-backups"></a>BR-1: rendszeres automatikus biztonsági mentések biztosítása
 
@@ -66,7 +66,7 @@ A biztonsági másolatok és az ügyfelek által felügyelt kulcsok elleni véde
 
 - [Biztonsági mentési adatok titkosítása ügyfelek által felügyelt kulcsok használatával](../../backup/encryption-at-rest-with-cmk.md) 
 
-- [Key Vault kulcsok biztonsági mentése az Azure-ban](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Key Vault kulcsok biztonsági mentése az Azure-ban](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 - [Biztonsági funkciók a hibrid biztonsági mentések elleni védelemhez](../../backup/backup-azure-security-feature.md#prevent-attacks)
 
@@ -90,7 +90,7 @@ Rendszeres időközönként végezze el a biztonsági mentés adatvisszaállít�
 
 - [Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából](../../backup/backup-azure-restore-files-from-vm.md)
 
-- [Key Vault kulcsok visszaállítása az Azure-ban](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Key Vault kulcsok visszaállítása az Azure-ban](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 **Felelősség**: Ügyfél
 

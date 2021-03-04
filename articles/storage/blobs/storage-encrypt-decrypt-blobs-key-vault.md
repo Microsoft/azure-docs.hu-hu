@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 12/04/2019
+ms.date: 02/18/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ddc9dbf77c04ea95e5b873c45de4c0df109514c7
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: c2daed4a8df89ed176749900dc75eb231c00af87
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544445"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049270"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>Oktatóanyag – Blobok titkosítása és visszafejtése Azure Key Vault használatával
 
@@ -90,6 +90,12 @@ Adja hozzá a AppSettings a App.Confighoz.
 
 Adja hozzá a következő `using` irányelveket, és ügyeljen arra, hogy adjon hozzá egy hivatkozást System.Configszülő a projekthez.
 
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+Jelenleg dolgozunk olyan kódrészletek létrehozásán, amelyek tükrözik az Azure Storage ügyféloldali kódtárainak 12. x verzióját. További információ: [Az Azure Storage V12 ügyféloldali kódtárainak bejelentése](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
+
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System.Configuration;
@@ -101,10 +107,17 @@ using Microsoft.Azure.KeyVault;
 using System.Threading;
 using System.IO;
 ```
+---
 
 ## <a name="add-a-method-to-get-a-token-to-your-console-application"></a>Metódus hozzáadása a konzol alkalmazáshoz való token beszerzéséhez
 
 A következő módszert olyan Key Vault osztályok használják, amelyeknek hitelesítést kell végezniük a kulcstartóhoz való hozzáféréshez.
+
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+Jelenleg dolgozunk olyan kódrészletek létrehozásán, amelyek tükrözik az Azure Storage ügyféloldali kódtárainak 12. x verzióját. További információ: [Az Azure Storage V12 ügyféloldali kódtárainak bejelentése](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
 
 ```csharp
 private async static Task<string> GetToken(string authority, string resource, string scope)
@@ -121,10 +134,17 @@ private async static Task<string> GetToken(string authority, string resource, st
     return result.AccessToken;
 }
 ```
+---
 
 ## <a name="access-azure-storage-and-key-vault-in-your-program"></a>Az Azure Storage és a Key Vault elérése a programban
 
 A Main () metódusban adja hozzá a következő kódot.
+
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+Jelenleg dolgozunk olyan kódrészletek létrehozásán, amelyek tükrözik az Azure Storage ügyféloldali kódtárainak 12. x verzióját. További információ: [Az Azure Storage V12 ügyféloldali kódtárainak bejelentése](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
 
 ```csharp
 // This is standard code to interact with Blob storage.
@@ -141,6 +161,7 @@ contain.CreateIfNotExists();
 // This is where the GetToken method from above is used.
 KeyVaultKeyResolver cloudResolver = new KeyVaultKeyResolver(GetToken);
 ```
+---
 
 > [!NOTE]
 > Key Vault Object models
@@ -156,6 +177,12 @@ KeyVaultKeyResolver cloudResolver = new KeyVaultKeyResolver(GetToken);
 ## <a name="encrypt-blob-and-upload"></a>BLOB titkosítása és feltöltés
 
 Adja hozzá a következő kódot a blob titkosításához, majd töltse fel az Azure Storage-fiókjába. A használt **ResolveKeyAsync** metódus egy rendszerállapotkulcsot ad vissza.
+
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+Jelenleg dolgozunk olyan kódrészletek létrehozásán, amelyek tükrözik az Azure Storage ügyféloldali kódtárainak 12. x verzióját. További információ: [Az Azure Storage V12 ügyféloldali kódtárainak bejelentése](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
 
 ```csharp
 // Retrieve the key that you created previously.
@@ -175,9 +202,11 @@ CloudBlockBlob blob = contain.GetBlockBlobReference("MyFile.txt");
 using (var stream = System.IO.File.OpenRead(@"C:\Temp\MyFile.txt"))
     blob.UploadFromStream(stream, stream.Length, null, options, null);
 ```
+---
 
 > [!NOTE]
 > Ha megtekinti a BlobEncryptionPolicy konstruktort, látni fogja, hogy el tud fogadni egy kulcsot és/vagy egy feloldót. Vegye figyelembe, hogy jelenleg nem használhat feloldót a titkosításhoz, mert jelenleg nem támogatja az alapértelmezett kulcsot.
+
 
 ## <a name="decrypt-blob-and-download"></a>BLOB visszafejtése és letöltése
 
@@ -186,6 +215,12 @@ A visszafejtési osztályok használata valóban hasznos, ha a feloldó osztály
 Egy RSA-kulcs titkos kulcsa Key Vault marad, ezért a visszafejtéshez a CEK tartalmazó blob-metaadatok titkosított kulcsát a rendszer elküldi Key Vault a visszafejtéshez.
 
 Adja hozzá a következőt az imént feltöltött blob visszafejtéséhez.
+
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+Jelenleg dolgozunk olyan kódrészletek létrehozásán, amelyek tükrözik az Azure Storage ügyféloldali kódtárainak 12. x verzióját. További információ: [Az Azure Storage V12 ügyféloldali kódtárainak bejelentése](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
 
 ```csharp
 // In this case, we will not pass a key and only pass the resolver because
@@ -196,6 +231,7 @@ BlobRequestOptions options = new BlobRequestOptions() { EncryptionPolicy = polic
 using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
     blob.DownloadToStream(np, null, options, null);
 ```
+---
 
 > [!NOTE]
 > A kulcskezelő szolgáltatás egyszerűbben elvégezhető, többek között a következők: AggregateKeyResolver és CachingKeyResolver.
@@ -226,13 +262,18 @@ $secret = Set-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'TestSecret
 
 A konzol alkalmazásban ugyanazt a hívást használhatja, mint korábban a titkos kód SymmetricKey való lekéréséhez.
 
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+Jelenleg dolgozunk olyan kódrészletek létrehozásán, amelyek tükrözik az Azure Storage ügyféloldali kódtárainak 12. x verzióját. További információ: [Az Azure Storage V12 ügyféloldali kódtárainak bejelentése](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
+
 ```csharp
 SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
     "https://contosokeyvault.vault.azure.net/secrets/TestSecret2/",
     CancellationToken.None).GetAwaiter().GetResult();
 ```
-
-Ennyi az egész. Jó munkát!
+---
 
 ## <a name="next-steps"></a>Következő lépések
 

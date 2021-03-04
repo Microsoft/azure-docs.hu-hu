@@ -1,14 +1,14 @@
 ---
 title: Bérlők közötti felügyeleti megoldások
 description: Az Azure-beli delegált erőforrás-kezelés lehetővé teszi a több-bérlős felügyeleti élményt.
-ms.date: 02/08/2021
+ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: 644cac70ef6459a1b0be45e9ab8f2757fafddeed
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 844ac637f9fcaed5d78520923e5f7184fcde0d25
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101699249"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050392"
 ---
 # <a name="cross-tenant-management-experiences"></a>Bérlők közötti felügyeleti megoldások
 
@@ -113,9 +113,11 @@ A legtöbb feladat és szolgáltatás a felügyelt bérlők delegált erőforrá
 [Azure Policy](../../governance/policy/index.yml):
 
 - Szabályzat-definíciók létrehozása és szerkesztése a delegált előfizetéseken belül
+- Házirend-definíciók és szabályzat-hozzárendelések telepítése több bérlő között
 - Ügyfél által definiált szabályzat-definíciók kiosztása delegált előfizetéseken belül
 - Az ügyfelek a szolgáltató által készített szabályzatokat a saját maguk által létrehozott szabályzatok mellett látják
 - Javíthatja [a felügyelt bérlőn belüli deployIfNotExists, vagy módosíthatja a hozzárendeléseket](../how-to/deploy-policy-remediation.md)
+- Vegye figyelembe, hogy az ügyfél bérlői nem megfelelő erőforrásainak megfelelőségi adatainak megtekintése jelenleg nem támogatott
 
 [Azure-erőforrás gráf](../../governance/resource-graph/index.yml):
 

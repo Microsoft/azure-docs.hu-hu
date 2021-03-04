@@ -2,13 +2,13 @@
 title: Megfelelőség a Azure Policy használatával
 description: Beépített szabályzatok kiosztása Azure Policyban az Azure Container-nyilvántartások megfelelőségének naplózásához
 ms.topic: article
-ms.date: 06/11/2020
-ms.openlocfilehash: 26c56616bcc411063d0ebfda28ba1e6fdf44c7fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/01/2021
+ms.openlocfilehash: 3f6809698171950060b54257a365889242f4636e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291015"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050579"
 ---
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>Az Azure Container-nyilvántartások megfelelőségének naplózása Azure Policy használatával
 
@@ -22,7 +22,7 @@ A Azure Policy használatához nem számítunk fel díjat.
 
 A következő beépített szabályzat-definíciók a Azure Container Registryra vonatkoznak:
 
-[!INCLUDE [azure-policy-reference-policies-container-registry](../../includes/policy/reference/bycat/policies-container-registry.md)]
+[!INCLUDE [azure-policy-reference-rp-containerreg](../../includes/policy/reference/byrp/microsoft.containerregistry.md)]
 
 Lásd még a beépített hálózati házirend definíciója: [Container Registry virtuális hálózati szolgáltatás végpontját kell használnia](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78).
 
@@ -43,8 +43,8 @@ Ha egy erőforrás nem megfelelő, számos lehetséges oka lehet. Az ok megálla
 
 ### <a name="policy-compliance-in-the-portal"></a>Szabályzat megfelelősége a portálon:
 
-1. Válassza a **minden szolgáltatás**lehetőséget, és keresse meg a **házirendet**.
-1. Válassza a **megfelelőség**lehetőséget.
+1. Válassza a **minden szolgáltatás** lehetőséget, és keresse meg a **házirendet**.
+1. Válassza a **megfelelőség** lehetőséget.
 1. A szűrők használatával korlátozhatja a megfelelőségi állapotokat, vagy megkeresheti a szabályzatokat.
 
     ![Szabályzatoknak való megfelelés a portálon](./media/container-registry-azure-policy/azure-policy-compliance.png)

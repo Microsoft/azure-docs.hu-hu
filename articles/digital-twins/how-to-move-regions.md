@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: 6393b0b8d794345fded95718a2581ae9b929ad49
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: e268cca87479625af023b5970bb27c56721f6d39
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381150"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049848"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Azure digitális Twins-példány áthelyezése egy másik Azure-régióba
 
@@ -42,7 +42,7 @@ Célszerű megfontolni többek között a következő kérdéseket:
 * Mi a példában szereplő *gráf* általános alakja? Hány kapcsolat létezik?
 * Milyen *végpontok* vannak a saját példányban?
 * Milyen *útvonalakat* használhatok a saját példányban? Vannak szűrők?
-* Hol kapcsolódnak a példányok *más Azure-szolgáltatásokhoz* ? Néhány gyakori integrációs pont a következőkre terjed ki:
+* Hol kapcsolódnak a példányok *más Azure-szolgáltatásokhoz*? Néhány gyakori integrációs pont a következőkre terjed ki:
 
     - Azure Event Grid, Azure Event Hubs vagy Azure Service Bus
     - Azure Functions
@@ -52,18 +52,18 @@ Célszerű megfontolni többek között a következő kérdéseket:
     - Azure IoT Hub Device Provisioning Service
 * Milyen más *személyes vagy vállalati alkalmazások* csatlakoznak a saját példányhoz?
 
-Ezeket az információkat a [Azure Portal](https://portal.azure.com), az [Azure digitális Twins API-k és SDK](how-to-use-apis-sdks.md)-k, az [Azure digitális Twins CLI-parancsok](how-to-use-cli.md)vagy az [Azure Digital Twins (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) -minta használatával gyűjthetheti össze.
+Ezeket az információkat a [Azure Portal](https://portal.azure.com), az [Azure digitális Twins API-](how-to-use-apis-sdks.md)k, az SDK-k, az [Azure digitális Twins CLI-parancsok](how-to-use-cli.md)vagy az [Azure digitális Twins Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) -minta használatával gyűjthetheti össze.
 
 ## <a name="prepare"></a>Előkészítés
 
-Ebben a szakaszban elő fogja készíteni a példány újbóli létrehozását, ha az eredeti példányból letölti az eredeti modelleket, az ikreket és a gráfot. Ez a cikk a [ADT Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) -mintát használja ehhez a feladathoz.
+Ebben a szakaszban elő fogja készíteni a példány újbóli létrehozását, ha az eredeti példányból letölti az eredeti modelleket, az ikreket és a gráfot. Ez a cikk az [Azure Digital Twins Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) -mintát használja ehhez a feladathoz.
 
 >[!NOTE]
 >Előfordulhat, hogy már rendelkezik olyan fájlokkal, amelyek tartalmazzák a modelleket vagy a diagramot a példányban. Ha így van, nem kell újra letöltenie az összes adatot – csak a hiányzó darabokat vagy olyan dolgokat, amelyek megváltoztak, mivel eredetileg feltöltötte ezeket a fájlokat. Előfordulhat például, hogy az ikrek új adattal frissültek.
 
-### <a name="limitations-of-adt-explorer"></a>A ADT Explorer korlátai
+### <a name="limitations-of-azure-digital-twins-explorer"></a>Az Azure Digital Twins Explorer korlátai
 
-A [ADT Explorer minta](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) egy olyan ügyfélalkalmazás-minta, amely támogatja a gráf vizuális ábrázolását, és vizuális interakciót biztosít a példányával. Ez a cikk bemutatja, hogyan használhatja azt a letöltéshez, majd később újrafeltöltheti a modelleket, az ikreket és a diagramokat.
+Az [Azure Digital Twins Explorer minta](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) egy olyan ügyfélalkalmazás-minta, amely támogatja a gráf vizuális ábrázolását, és vizuális interakciót biztosít a példánnyal. Ez a cikk bemutatja, hogyan használhatja azt a letöltéshez, majd később újrafeltöltheti a modelleket, az ikreket és a diagramokat.
 
 Ez a minta nem egy teljes eszköz. Nem tesztelték a hangsúlyt, és nem készült nagy méretű gráfok kezelésére. Ebből kifolyólag ne feledje, hogy a következő beépített mintákra vonatkozó korlátozások érvényesek:
 
@@ -77,27 +77,27 @@ Ha a minta nem tudja kezelni a gráf méretét, exportálhatja és importálhatj
 * [Azure digitális Twins CLI-parancsok](how-to-use-cli.md)
 * [Azure digitális Twins API-k és SDK-k](how-to-use-apis-sdks.md)
 
-### <a name="set-up-the-adt-explorer-application"></a>A ADT Explorer alkalmazás beállítása
+### <a name="set-up-the-azure-digital-twins-explorer-application"></a>Az Azure digitális Twins Explorer alkalmazásának beállítása
 
-A ADT Explorer folytatásához először töltse le a minta alkalmazás kódját, és állítsa be úgy, hogy az a gépen fusson.
+Az Azure Digital Twins Explorer futtatásához először töltse le a minta alkalmazás kódját, és állítsa be úgy, hogy az a gépen fusson.
 
-A minta beszerzéséhez lásd: [ADT Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). A **zip letöltése** gombra kattintva letöltheti a mintakód egy. zip fájlját a gépre **Azure_Digital_Twins__ADT__explorer.zip**. Bontsa ki a fájlt.
+A minta beszerzéséhez tekintse meg a következőt: [Azure digitális Twins Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). A **zip letöltése** gombra kattintva letöltheti a mintakód egy. zip fájlját a gépre **Azure_Digital_Twins__ADT__explorer.zip**. Bontsa ki a fájlt.
 
-Ezután állítsa be és konfigurálja a ADT Explorer engedélyeit. Kövesse az Azure digitális Twins [-útmutató Azure digitális Twins és ADT Explorer beállítása](quickstart-adt-explorer.md#set-up-azure-digital-twins-and-adt-explorer) szakaszának utasításait. Ez a szakasz végigvezeti a következő lépéseken:
+Ezután állítsa be és konfigurálja az Azure Digital Twins Explorer engedélyeit. Kövesse az Azure digitális Twins és az Azure digitális Twins [-kezelő beállítása](quickstart-adt-explorer.md#set-up-azure-digital-twins-and-azure-digital-twins-explorer) című szakasz útmutatását. Ez a szakasz végigvezeti a következő lépéseken:
 
 1. Azure digitális Twins-példány beállítása. Ezt a részt kihagyhatja, mert már van példánya.
 1. Helyi Azure-beli hitelesítő adatok beállítása a példányhoz való hozzáférés biztosításához.
-1. Futtassa a ADT Explorert, és konfigurálja úgy, hogy a példányhoz kapcsolódjon. Az Ön által áthelyezett eredeti Azure Digital Twins-példány *állomásneve* lesz használatban.
+1. Futtassa az Azure digitális Twins Explorer alkalmazást, és konfigurálja úgy, hogy a példányhoz kapcsolódjon. Az Ön által áthelyezett eredeti Azure Digital Twins-példány *állomásneve* lesz használatban.
 
-Most meg kell jelennie a ADT Explorer-alkalmazásnak, amely egy böngészőben fut a gépen. A mintát az eredeti Azure Digital Twins-példányhoz kell csatlakoztatni.
+Most az Azure-beli digitális Twins Explorer-alkalmazásnak kell futnia egy böngészőben a gépen. A mintát az eredeti Azure Digital Twins-példányhoz kell csatlakoztatni.
 
-:::image type="content" source="media/how-to-move-regions/explorer-blank.png" alt-text="A böngészőablakban futó alkalmazást bemutató böngészőablak: 3000. Az alkalmazás neve ADT Explorer, amely a Query Explorer, a Model View, a Graph View és a Property Explorer mezőihez tartalmaz mezőket. Még nincsenek megjeleníthető adathalmazok." lightbox="media/how-to-move-regions/explorer-blank.png":::
+:::image type="content" source="media/how-to-move-regions/explorer-blank.png" alt-text="A böngészőablakban futó alkalmazást bemutató böngészőablak: 3000. Az alkalmazás neve Azure Digital Twins Explorer, és a lekérdezési Explorer, a modell nézet, a Graph View és a Property Explorer mezőinek tartalmaz. Még nincsenek megjeleníthető adathalmazok." lightbox="media/how-to-move-regions/explorer-blank.png":::
 
 A kapcsolat ellenőrzéséhez kattintson a **lekérdezés futtatása** gombra, és futtassa az alapértelmezett lekérdezést, amely az összes ikreket és kapcsolatot megjeleníti a Graph **Explorer** mezőben.
 
 :::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Az ablak jobb felső sarkában lévő lekérdezés futtatása gomb ki van emelve." lightbox="media/how-to-move-regions/run-query.png":::
 
-A ADT Explorer futtatása nem végezhető el, mert a cikk későbbi részében később újra fel szeretné tölteni ezeket az elemeket az új példányba a célhelyen.
+Az Azure Digital Twins Explorer futtatása nem végezhető el, mert a cikk későbbi részében később újra fel fogja tölteni ezeket az elemeket az új példányba a célhelyen.
 
 ### <a name="download-models-twins-and-graph"></a>Modellek, ikrek és Graph letöltése
 
@@ -131,17 +131,17 @@ A lépés befejezése után szüksége lesz az új példány állomásneve, hogy
 
 Ezután állítsa be az új példányt úgy, hogy az az eredeti másolata legyen.
 
-#### <a name="upload-the-original-models-twins-and-graph-by-using-adt-explorer"></a>Töltse fel az eredeti modelleket, az ikreket és a Graphot a ADT Explorer használatával
+#### <a name="upload-the-original-models-twins-and-graph-by-using-azure-digital-twins-explorer"></a>Az eredeti modellek, ikrek és gráf feltöltése az Azure Digital Twins Explorer használatával
 
 Ebben a szakaszban újra feltöltheti a modelleket, az ikreket és a Graphot az új példányra. Ha nem rendelkezik modellekkel, ikrekkel vagy gráfokkal az eredeti példányban, vagy nem szeretné áthelyezni őket az új példányra, ugorjon a [következő szakaszra](#re-create-endpoints-and-routes).
 
-Ellenkező esetben térjen vissza a ADT Explorer alkalmazást futtató böngészőablakba, és kövesse az alábbi lépéseket.
+Ellenkező esetben térjen vissza az Azure Digital Twins Explorer böngészőt futtató böngészőablakba, és kövesse az alábbi lépéseket.
 
 ##### <a name="connect-to-the-new-instance"></a>Kapcsolódás az új példányhoz
 
-A ADT Explorer jelenleg az eredeti Azure Digital Twins-példányhoz csatlakozik. Az ablak jobb felső sarkában lévő **Bejelentkezés** gombra kattintva váltson úgy, hogy az új példányra mutasson.
+Jelenleg az Azure digitális Twins Explorer csatlakozik az eredeti Azure Digital Twins-példányhoz. Az ablak jobb felső sarkában lévő **Bejelentkezés** gombra kattintva váltson úgy, hogy az új példányra mutasson.
 
-:::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="Az ablak jobb felső sarkában található bejelentkezési ikon kiemelése a ADT. Az ikon a kulcs sziluettjét ábrázoló személy egyszerű sziluettjét jeleníti meg." lightbox="media/how-to-move-regions/sign-in.png":::
+:::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="Az Azure Digital Twins Explorer kiemeli a bejelentkezési ikont az ablak jobb felső sarkában. Az ikon a kulcs sziluettjét ábrázoló személy egyszerű sziluettjét jeleníti meg." lightbox="media/how-to-move-regions/sign-in.png":::
 
 Cserélje le a **ADT URL-címét** az új példánynak megfelelően. Módosítsa ezt az értéket úgy, hogy az beolvassa a *https://{új példány állomásneve} nevet*.
 
@@ -157,7 +157,7 @@ Ha fel szeretné tölteni a modelleket, az ikreket és a Graphot, jelölje be a 
 
 A fájl kiválasztása mezőben válassza a letöltött gráfot. Válassza ki a Graph **. JSON** fájlt, és kattintson a **Megnyitás** gombra.
 
-Néhány másodperc elteltével a ADT Explorer egy olyan **importálási** nézetet nyit meg, amely a betöltendő gráf előnézetét jeleníti meg.
+Néhány másodperc elteltével az Azure Digital Twins Explorer egy olyan **importálási** nézetet nyit meg, amely a betöltendő gráf előnézetét jeleníti meg.
 
 A gráf feltöltésének megerősítéséhez kattintson a **Save (Mentés** ) ikonra a **Graph nézet** jobb felső sarkában.
 
@@ -169,7 +169,7 @@ A gráf feltöltésének megerősítéséhez kattintson a **Save (Mentés** ) ik
     :::column-end:::
 :::row-end:::
 
-A ADT Explorer most feltölti a modelleket és a diagramot (beleértve az ikreket és a kapcsolatokat) az új Azure Digital Twins-példányra. Megjelenik egy sikeres üzenet, amely azt mutatja, hogy hány modell, ikrek és kapcsolat lett feltöltve.
+Az Azure Digital Twins Explorer most feltölti a modelleket és a diagramot (beleértve az ikreket és a kapcsolatokat) az új Azure Digital Twins-példányra. Megjelenik egy sikeres üzenet, amely azt mutatja, hogy hány modell, ikrek és kapcsolat lett feltöltve.
 
 :::row:::
     :::column:::
@@ -187,7 +187,7 @@ Annak ellenőrzéséhez, hogy minden feltöltés sikeresen befejeződött-e, kat
 
 Meg kell jelennie a gráfnak a **Graph Explorerben** megjelenő összes ikrek és kapcsolat között. Emellett a **modell nézet** mezőben is megjelennek a modellek.
 
-:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="A ADT Explorer egyik nézete, amely két modellt jelölt ki a modell nézet mezőben, valamint egy gráfot a Graph Explorerben." lightbox="media/how-to-move-regions/post-upload.png":::
+:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="Az Azure Digital Twins Explorer egyik nézete, amely két, a modell nézetében Kiemelt modellt és egy, a Graph Explorerben Kiemelt modellt mutat be." lightbox="media/how-to-move-regions/post-upload.png":::
 
 Ezek a nézetek megerősítik, hogy a modelleket, az ikreket és a gráfot újra feltöltötték a célként megadott régióban lévő új példányra.
 
@@ -228,7 +228,7 @@ Az új példány helyes beállításának ellenőrzéséhez használja a követk
 
 * [Azure Portal](https://portal.azure.com). A portál kiválóan alkalmas arra, hogy ellenőrizze, hogy az új példány létezik-e, és hogy a megfelelő célcsoportban van-e. Emellett a végpontok és útvonalak, valamint más Azure-szolgáltatások kapcsolatainak ellenőrzésére is jó.
 * [Azure digitális Twins CLI-parancsok](how-to-use-cli.md). Ezekkel a parancsokkal ellenőrizheti, hogy az új példány létezik-e, és hogy a megfelelő célcsoportban van-e. Emellett a példányok adatellenőrzéséhez is használhatók.
-* [ADT Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). A ADT Explorer kiválóan alkalmas a példányok, például modellek, ikrek és diagramok ellenőrzéséhez.
+* [Azure digitális ikrek Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Az Azure digitális Twins Explorer kiválóan alkalmas a példányok, például modellek, ikrek és diagramok ellenőrzéséhez.
 * [Azure digitális Twins API-k és SDK-](how-to-use-apis-sdks.md)k. Ezek az erőforrások kiválóan alkalmasak a példányok, például modellek, ikrek és diagramok ellenőrzéséhez. Emellett megfelelőek a végpontok és útvonalak ellenőrzéséhez.
 
 Az eredeti példánnyal futtatott egyéni alkalmazásokat vagy végpontok közötti folyamatokat is futtathatja, hogy segítsen ellenőrizni, hogy megfelelően működnek-e az új példánnyal.

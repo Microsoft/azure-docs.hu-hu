@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/17/2021
+ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 375e8a748e8833e9483d92353ed04add287e90fb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6bec9f0a1c22691d818566cec3f59c1ec0f3d3bb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705092"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051616"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>A Azure Security Center fontos jövőbeli módosításai
 
@@ -31,10 +31,28 @@ Ha a legújabb kibocsátási megjegyzéseket keresi, a [Azure Security Center ú
 
 ## <a name="planned-changes"></a>Tervezett változások
 
+- [Az AWS javaslatai az általánosan elérhetővé tételhez lesznek közzétéve](#recommendations-from-aws-will-be-released-for-general-availability-ga)
 - [Két örökölt javaslat nem fog közvetlenül az Azure-beli tevékenység naplóba írni.](#two-legacy-recommendations-will-no-longer-write-data-directly-to-azure-activity-log)
 - [A System Updates (rendszerfrissítések alkalmazása) biztonsági ellenőrzésének két javaslata elavult](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
 - [Az SQL-adatbesorolásra vonatkozó javaslat továbbfejlesztése](#enhancements-to-sql-data-classification-recommendation)
 - [11 Azure Defender-riasztás elavult](#deprecation-of-11-azure-defender-alerts)
+
+
+### <a name="recommendations-from-aws-will-be-released-for-general-availability-ga"></a>Az AWS javaslatai az általánosan elérhetővé tételhez lesznek közzétéve
+
+**Változás becsült dátuma:** Április 2021
+
+Azure Security Center védi a munkaterheléseket az Azure-ban, a Amazon Web Services (AWS) és a Google Cloud Platformban (GCP).
+
+Az AWS biztonsági hubhoz érkező javaslatok előzetes verzióban érhetők el, mivel a felhőalapú összekötők bevezetése megtörtént. Az **előzetesként** megjelölt javaslatok nem szerepelnek a biztonságos pontszám számításaiban, de ha lehetséges, továbbra is szervizelni kell, hogy ha az előzetes verzió időtartama lejár, a pontszámhoz is hozzájárul.
+
+Ezzel a módosítással az AWS-javaslatok két halmaza kerül át a GA-ra:
+
+- [A Security hub PCI DSS vezérlői](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-pci-controls.html)
+- [Biztonsági központ CIS AWS-alapjai – teljesítményteszt-vezérlők](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html)
+
+Ha ezek a GA és a felmérések az AWS-erőforrásokon futnak, az eredmények az összes multi-és hibrid Felhőbeli erőforrás együttes biztonsági pontszámát is befolyásolják. 
+
 
 
 ### <a name="two-legacy-recommendations-will-no-longer-write-data-directly-to-azure-activity-log"></a>Két örökölt javaslat nem fog közvetlenül az Azure-beli tevékenység naplóba írni. 
@@ -53,7 +71,7 @@ Ha a következő két javaslathoz fér hozzá a tevékenység naplójának "Task
 
 ### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>A System Updates (rendszerfrissítések alkalmazása) biztonsági ellenőrzésének két javaslata elavult 
 
-**Változás becsült dátuma:** Február 2021
+**Változás becsült dátuma:** Március 2021
 
 A következő két javaslatot ütemezjük a 2021 februárjában:
 

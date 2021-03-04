@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 03/02/2021
-ms.openlocfilehash: 43dd047738538b0dcc76904e951eccea3a327c19
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0850830e6f8101feae80154a0e245196a690f276
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715955"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050239"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Állapot-nyilvántartó és állapot nélküli munkafolyamatok létrehozása a Visual Studio Code-ban a Azure Logic Apps (előzetes verzió) bővítménnyel
 
@@ -140,7 +140,8 @@ Ha macOS vagy Linux rendszert használ a Visual Studio Code-ban a Logic app-proj
 
 * A JavaScriptet futtató [beágyazott kód műveleti művelet](../logic-apps/logic-apps-add-run-inline-code.md) használatához telepítse a [Node.js 10. x. x, 11. x. x vagy 12. x. x verziót](https://nodejs.org/en/download/releases/).
 
-  > [!TIP] A Windows esetében töltse le az MSI-verziót. Ha ehelyett a ZIP-verziót használja, manuálisan kell Node.js elérhetővé tenni az operációs rendszer PATH környezeti változójának használatával.
+  > [!TIP] 
+  > A Windows esetében töltse le az MSI-verziót. Ha ehelyett a ZIP-verziót használja, manuálisan kell Node.js elérhetővé tenni az operációs rendszer PATH környezeti változójának használatával.
 
 * A webhook-alapú triggerek és műveletek helyi futtatásához, például a [beépített http webhook eseményindítóhoz](../connectors/connectors-native-webhook.md)a Visual Studio Code-ban [be kell állítania a visszahívási URL-cím továbbítását](#webhook-setup).
 

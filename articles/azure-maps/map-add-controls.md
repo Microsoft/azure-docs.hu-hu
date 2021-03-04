@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 2a225d4ea19cccea114e47cc61a8055d28e8cd99
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: bbcfe4935843a00bc5274273e79f4ffc72dc25ed
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895290"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051055"
 ---
 # <a name="add-controls-to-a-map"></a>Vezérlőelemek hozzáadása térképhez
 
@@ -58,11 +58,11 @@ Alább látható a fenti funkciók teljes futási kódjának mintája.
 
 ## <a name="add-compass-control"></a>Iránytű vezérlőelem hozzáadása
 
-Az iránytű vezérlőelem egy gombot helyez el a Térkép elforgatásához. Az alábbi mintakód az [iránytű vezérlő](/javascript/api/azure-maps-control/atlas.control.compasscontrol) osztály egy példányát hozza létre, és hozzáadja a térkép bal alsó sarkához.
+Az iránytű vezérlőelem egy gombot helyez el a Térkép elforgatásához. A következő mintakód létrehozza a [CompassControl](/javascript/api/azure-maps-control/atlas.control.compasscontrol) osztály egy példányát, és hozzáadja a térkép bal alsó sarkához.
 
 ```javascript
 //Construct a compass control and add it to the map.
-map.controls.add(new atlas.control.Compass(), {
+map.controls.add(new atlas.control.CompassControl(), {
     position: 'bottom-left'
 });
 ```
@@ -71,7 +71,7 @@ Alább látható a fenti funkciók teljes futási kódjának mintája.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Forgatás vezérlőelem hozzáadása' src='//codepen.io/azuremaps/embed/GBEoRb/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat a CodePen-on Azure Maps () <a href='https://codepen.io/azuremaps/pen/GBEoRb/'>elforgatási vezérlő hozzáadásával</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='500' scrolling='no' title='Forgatás vezérlőelem hozzáadása' src='//codepen.io/azuremaps/embed/GBEoRb/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat a CodePen-on Azure Maps () <a href='https://codepen.io/azuremaps/pen/GBEoRb/'>elforgatási vezérlő hozzáadásával</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 ## <a name="a-map-with-all-controls"></a>Térkép az összes vezérlővel
@@ -105,7 +105,7 @@ Itt található egy eszköz, amellyel kipróbálhatja a vezérlők testreszabás
 <br/>
 
 <iframe height="700" style="width: 100%;" scrolling="no" title="Navigációs vezérlőelem beállításai" src="//codepen.io/azuremaps/embed/LwBZMx/?height=700&theme-id=0&default-tab=result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a CodePen-on Azure Maps () által <a href='https://codepen.io/azuremaps/pen/LwBZMx/'>felügyelt tollas Navigálás beállításait</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+Tekintse meg a CodePen-on Azure Maps () által <a href='https://codepen.io/azuremaps/pen/LwBZMx/'>felügyelt tollas Navigálás beállításait</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 Ha testreszabott navigációs vezérlőket szeretne létrehozni, hozzon létre egy osztályt, amely kiterjeszti az `atlas.Control` osztályból, vagy hozzon létre egy HTML-elemet, és helyezze a Térkép div fölé. Ez a felhasználói felületi vezérlő hívja `setCamera` meg a Maps függvényt a Térkép áthelyezéséhez. 

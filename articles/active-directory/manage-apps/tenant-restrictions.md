@@ -12,12 +12,12 @@ ms.date: 2/23/2021
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b545afb370b84404d3e15f885464aabf00d2eaf2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bdcdd387575faec87656430860e24fee56387775
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101687073"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050902"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>A bérlői korlátozások használata a SaaS-Felhőbeli alkalmazásokhoz való hozzáférés kezelésére
 
@@ -29,7 +29,7 @@ A bérlői korlátozásokkal a szervezetek meghatározhatják azon bérlők list
 
 Ez a cikk a Microsoft 365 bérlői korlátozásait ismerteti, de a szolgáltatás védi az összes olyan alkalmazást, amely a felhasználót az Azure AD számára egyszeri bejelentkezésre küldi. Ha SaaS-alkalmazásokat használ a Microsoft 365 által használt bérlőtől eltérő Azure AD-Bérlővel, győződjön meg arról, hogy minden szükséges bérlő engedélyezett (például B2B együttműködési forgatókönyvekben). A SaaS Cloud apps szolgáltatással kapcsolatos további információkért tekintse meg a [Active Directory piactéren](https://azuremarketplace.microsoft.com/marketplace/apps).
 
-Emellett a bérlői korlátozások funkció mostantól támogatja az [összes Microsoft fogyasztói alkalmazás](#blocking-consumer-applications) (MSA-alkalmazás) használatát, mint például a OneDrive, a Hotmail és a Xbox.com.  Ez egy külön fejlécet használ a `login.live.com` végponthoz, és részletesen a dokumentum végén található.
+Emellett a bérlői korlátozások funkció mostantól támogatja az [összes Microsoft fogyasztói alkalmazás](#blocking-consumer-applications-public-preview) (MSA-alkalmazás) használatát, mint például a OneDrive, a Hotmail és a Xbox.com.  Ez egy külön fejlécet használ a `login.live.com` végponthoz, és részletesen a dokumentum végén található.
 
 ## <a name="how-it-works"></a>Működés
 

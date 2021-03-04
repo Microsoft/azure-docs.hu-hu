@@ -6,13 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: bwren
-ms.subservice: metrics
-ms.openlocfilehash: 0051ec15cafc60af6a0523631f77a9b52294e69c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8e510cf2e6fed9f9ffdec1dcc4dacf16a866d66b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101731714"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049015"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine"></a>Vendég operációs rendszer metrikáinak küldése a Azure Monitor metrika-tárolóba egy Windows rendszerű virtuális gép Azure Resource Manager-sablonjának használatával
 Az Azure-beli virtuális gépek vendég operációs rendszeréről származó teljesítményadatokat a rendszer nem gyűjti automatikusan, mint más [platform metrikákat](./monitor-azure-resource.md#monitoring-data). Telepítse a Azure Monitor [diagnosztikai bővítményt](../agents/diagnostics-extension-overview.md) a vendég operációs rendszer metrikáinak összegyűjtéséhez a metrikák adatbázisába, hogy az Azure monitor metrikák összes szolgáltatásával használható legyen, beleértve a közel valós idejű riasztásokat, a diagramokat, az útválasztást és a REST API elérését. Ez a cikk azt ismerteti, hogyan lehet a vendég operációs rendszer teljesítményének mérőszámait egy Windows rendszerű virtuális géphez a metrikai adatbázishoz Resource Manager-sablon használatával elküldeni. 

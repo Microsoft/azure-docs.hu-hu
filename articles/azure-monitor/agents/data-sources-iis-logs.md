@@ -1,17 +1,16 @@
 ---
 title: Az IIS-naplók összegyűjtése Log Analytics ügynökkel Azure Monitor
 description: A Internet Information Services (IIS) a Azure Monitor által összegyűjthető naplófájlokban tárolja a felhasználói tevékenységeket.  Ez a cikk bemutatja, hogyan konfigurálhatja az IIS-naplók gyűjteményét és a Azure Monitorban létrehozott rekordok részleteit.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/13/2020
-ms.openlocfilehash: 96eab2d93ae0212568f8ef23e32a35016cb17248
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 02/26/2021
+ms.openlocfilehash: 484e49219b94f5974661b1e76f533236666ebcfb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732054"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050732"
 ---
 # <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>Az IIS-naplók összegyűjtése Log Analytics ügynökkel Azure Monitor
 A Internet Information Services (IIS) olyan naplófájlokban tárolja a felhasználói tevékenységeket, amelyeket az Log Analytics ügynök gyűjthet, és [Azure monitor naplókban](../data-platform.md)tárol.
@@ -26,7 +25,7 @@ A Azure Monitor az IIS által létrehozott naplófájlokból gyűjt bejegyzések
 
 Az Azure Monitor csak a W3C formátumban tárolt IIS-naplófájlokat támogatja, és nem támogatja az egyéni mezőket és a speciális IIS-naplózást. Nem gyűjt naplókat natív NCSA vagy IIS formátumban.
 
-Konfigurálja az IIS-naplókat a Azure Monitor a Log Analytics ügynök [Speciális beállítások menüjében](../agents/agent-data-sources.md#configuring-data-sources) .  A **W3C-formátumú IIS-naplófájlok gyűjtésének** kiválasztásához nincs szükség konfigurációra.
+Konfigurálja az IIS-naplókat a Azure Monitor az Log Analytics ügynökhöz tartozó [ügynök konfigurációs menüjében](../agents/agent-data-sources.md#configuring-data-sources) .  A **W3C-formátumú IIS-naplófájlok gyűjtésének** kiválasztásához nincs szükség konfigurációra.
 
 
 ## <a name="data-collection"></a>Adatgyűjtés

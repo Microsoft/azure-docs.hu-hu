@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5cb7e1521c649be4abc155d9f28a49b43a11e6d
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: fea9662b6f5890c6240e91b26cf641d6166d560a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071263"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051191"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Alkalmazás-regisztrációs engedélyek delegálása Azure Active Directory
 
@@ -77,7 +77,7 @@ Az Azure AD beépített rendszergazdai szerepkörökkel rendelkezik, amelyek hoz
 - Alkalmazás-rendszergazda: ebben a szerepkörben lévő felhasználók létrehozhatják és kezelhetik a vállalati alkalmazások, az alkalmazások regisztrációi és az alkalmazásproxy-beállítások összes aspektusát. Ez a szerepkör lehetővé teszi a delegált engedélyekkel való hozzájárulást, valamint az Microsoft Graph nélküli alkalmazás-engedélyek megadását is. Az ehhez a szerepkörhöz hozzárendelt felhasználók nem lesznek hozzáadva tulajdonosként új alkalmazás-regisztrációk vagy vállalati alkalmazások létrehozásakor.
 - Cloud Application Administrator: az ebben a szerepkörben lévő felhasználók ugyanazok az engedélyek, mint az alkalmazás-rendszergazda szerepkör, kivéve az alkalmazásproxy felügyeletének képességét. Az ehhez a szerepkörhöz hozzárendelt felhasználók nem lesznek hozzáadva tulajdonosként új alkalmazás-regisztrációk vagy vállalati alkalmazások létrehozásakor.
 
-További információért és a szerepkörök leírásának megtekintéséhez tekintse meg a [rendelkezésre álló szerepkörök](permissions-reference.md#available-roles)című témakört.
+További információért és a szerepkörök leírásának megtekintéséhez tekintse meg az [Azure ad beépített szerepkörei](permissions-reference.md)című témakört.
 
 Az alkalmazás-rendszergazda vagy a Felhőbeli alkalmazás rendszergazdai szerepköreinek hozzárendeléséhez kövesse a [szerepkörök társítása felhasználók számára Azure Active Directory](../fundamentals/active-directory-users-assign-role-azure-portal.md) útmutatóban található utasításokat.
 

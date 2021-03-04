@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 924397c9c81d2a38ae74b95a8f7133ced8bde0d4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 24dac044982d59e93da17ee75190f378d5e3cdea
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736542"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050919"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Eszközök automatikus felügyelete az Azure Digital Twins-ben a Device kiépítési szolgáltatás (DPS) használatával
 
@@ -85,7 +85,7 @@ A Function app-projekten belül adjon hozzá egy új függvényt. Továbbá adjo
 
 Az újonnan létrehozott függvény kódlapja fájlban illessze be a következő kódot.
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIotHub_allocate.cs":::
+:::code language="csharp" source="~/digital-twins-docs-samples-dps/functions/DpsAdtAllocationFunc.cs":::
 
 Mentse a fájlt, majd tegye közzé újra a Function alkalmazást. A Function alkalmazás közzétételével kapcsolatos utasításokért tekintse meg a teljes körű oktatóanyag [*alkalmazás közzététele*](tutorial-end-to-end.md#publish-the-app) című szakaszát.
 
@@ -182,7 +182,7 @@ Ez a függvény a IoT Hub eszköz életciklusa eseményt fogja használni egy me
 
 A közzétett Function alkalmazásban vegyen fel egy *Event hub eseményindító* típusú új függvényt, és illessze be az alábbi kódot.
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIotHub_delete.cs":::
+:::code language="csharp" source="~/digital-twins-docs-samples-dps/functions/DeleteDeviceInTwinFunc.cs":::
 
 Mentse a projektet, majd tegye közzé újra a Function alkalmazást. A Function alkalmazás közzétételével kapcsolatos utasításokért tekintse meg a teljes körű oktatóanyag [*alkalmazás közzététele*](tutorial-end-to-end.md#publish-the-app) című szakaszát.
 
@@ -223,7 +223,7 @@ A kivonási folyamat elindításához kézzel kell törölnie az eszközt IoT Hu
 
 A [cikk első felében](#auto-provision-device-using-device-provisioning-service)létrehozott egy eszközt IoT hub és egy megfelelő digitális Twin-ben. 
 
-Most nyissa meg a IoT Hub és törölje az eszközt (ezt megteheti egy [Azure CLI-paranccsal](/cli/azure/ext/azure-iot/iot/hub/module-identity?view=azure-cli-latest#ext_azure_iot_az_iot_hub_module_identity_delete) vagy a [Azure Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs)). 
+Most nyissa meg a IoT Hub és törölje az eszközt (ezt megteheti egy [Azure CLI-paranccsal](/cli/azure/ext/azure-iot/iot/hub/module-identity?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_iot_hub_module_identity_delete) vagy a [Azure Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs)). 
 
 Az eszköz automatikusan el lesz távolítva az Azure digitális Twins-ból. 
 

@@ -3,14 +3,14 @@ title: Adatbiztonság Azure Automation
 description: Ebből a cikkből megtudhatja, hogyan védi a Azure Automation az adatvédelmet, és gondoskodik az adatok védelméről.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 01/08/2021
+ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: f2ce8d482231b4a95c322e9d495a75f89953c32a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2bdf25ef24f1fbf4aaf4dec154ea6af3421b915a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581111"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050817"
 ---
 # <a name="management-of-azure-automation-data"></a>Azure Automation-adatok kezelése
 
@@ -41,7 +41,7 @@ További információ a Windows és Linux rendszerhez készült Log Analytics ü
 
 ## <a name="data-retention"></a>Adatmegőrzés
 
-Amikor töröl egy erőforrást a Azure Automationban, a rendszer a végleges eltávolítás előtt több napra megőrzi a naplózási célokat. Ebben az időszakban nem tekintheti meg és nem használhatja az erőforrást. Ez a szabályzat a törölt Automation-fiókhoz tartozó erőforrásokra is vonatkozik.
+Amikor töröl egy erőforrást a Azure Automationban, a rendszer a végleges eltávolítás előtt több napra megőrzi a naplózási célokat. Ebben az időszakban nem tekintheti meg és nem használhatja az erőforrást. Ez a szabályzat a törölt Automation-fiókhoz tartozó erőforrásokra is vonatkozik. Az adatmegőrzési szabályzat minden felhasználóra érvényes, és jelenleg nem szabható testre. Ha azonban hosszabb ideig kell megtartania az adatokra vonatkozó adatmegőrzést, [Azure Automation feladataikat Azure monitor naplókhoz továbbíthatja](automation-manage-send-joblogs-log-analytics.md).
 
 A következő táblázat összefoglalja a különböző erőforrások adatmegőrzési szabályzatát.
 
@@ -54,9 +54,9 @@ A következő táblázat összefoglalja a különböző erőforrások adatmegőr
 | Modulok |Egy modul a felhasználó törlése után 30 nappal véglegesen el lesz távolítva, vagy 30 nappal azután, hogy a felhasználó törli a modult tartalmazó fiókot. |
 | Csomópont-konfigurációk/MOF-fájlok |Egy régi csomópont-konfiguráció véglegesen el lesz távolítva egy új csomópont-konfiguráció generálása után 30 nappal. |
 | Csomópont-jelentések |Az adott csomópontra vonatkozó új jelentés létrehozása után a Node-jelentés 90 nappal véglegesen törlődik. |
-| Runbookok |Egy runbook véglegesen el lett távolítva 30 nappal azután, hogy egy felhasználó törli az erőforrást, vagy 30 nappal azután, hogy egy felhasználó törli az erőforrást tároló fiókot. |
+| Runbookok |Egy runbook véglegesen el lett távolítva 30 nappal azután, hogy egy felhasználó törli az erőforrást, vagy 30 nappal azután, hogy egy felhasználó törli az<sup>1</sup>. erőforrást tartalmazó fiókot. |
 
-Az adatmegőrzési szabályzat minden felhasználóra érvényes, és jelenleg nem szabható testre. Ha azonban hosszabb ideig kell megtartania az adatokra vonatkozó adatmegőrzést, [Azure Automation feladataikat Azure monitor naplókhoz továbbíthatja](automation-manage-send-joblogs-log-analytics.md).
+<sup>1</sup> A runbook a 30 napos időszakon belül helyreállítható egy Microsoft Azure támogatással rendelkező Azure támogatási incidens bejelentésével. Nyissa meg az [Azure támogatási webhelyét](/support/options) , és válassza a **támogatási kérelem küldése** lehetőséget.
 
 ## <a name="data-backup"></a>Az adatbiztonsági mentés
 

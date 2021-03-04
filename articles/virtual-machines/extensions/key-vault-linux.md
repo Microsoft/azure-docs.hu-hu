@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0558513d88eb5ffb03484e9d3bd8e37b2c9a0dcf
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 73bd2ac3159b674dd01c853bb540989fa10c8c28
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895019"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051361"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>A Linux rendszerhez készült virtuálisgép-bővítmény Key Vault
 
@@ -106,7 +106,7 @@ A következő JSON a Key Vault virtuálisgép-bővítmény sémáját jeleníti 
 | apiVersion | 2019-07-01 | dátum |
 | közzétevő | Microsoft.Azure.KeyVault | sztring |
 | típus | KeyVaultForLinux | sztring |
-| typeHandlerVersion | 1,0 | int |
+| typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | sztring |
 | certificateStoreName | A Linuxon figyelmen kívül lesz hagyva | sztring |
 | linkOnRenewal | hamis | boolean |
@@ -235,7 +235,7 @@ Az Azure CLI használatával telepítheti a Key Vault virtuálisgép-bővítmén
         az vmss extension set -n "KeyVaultForLinux" `
         --publisher Microsoft.Azure.KeyVault `
         -g "<resourcegroup>" `
-        --vm-name "<vmName>" `
+        --vmss-name "<vmssName>" `
         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
 Vegye figyelembe a következő korlátozásokat/követelményeket:

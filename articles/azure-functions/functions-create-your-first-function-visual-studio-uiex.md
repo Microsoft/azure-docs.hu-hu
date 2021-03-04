@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 09/30/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: fb3ba4ad49cc78b6082d347521cd87be5409cd34
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9e3144738bd259ab9be75059af00f125581bb37c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748782"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050120"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>Rövid útmutató: az első függvény létrehozása az Azure-ban a Visual Studióval
 
@@ -27,9 +27,10 @@ A rövid útmutató elvégzésével néhány USD értékű vagy annál kisebb k�
 
 ![A Visual Studio telepítése az Azure-fejlesztési számítási feladattal](media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
+<br/>
 <details>
-<summary>Ehelyett használjon Azure Functions projektet</summary>
-Ha létre szeretne hozni egy <abbr title="Egy vagy több, együtt telepíthető és felügyelhető különálló függvény logikai tárolója. "> Azure Functions projekt</abbr> a Visual Studio 2017 használatával Ehelyett először telepítenie kell a [legújabb Azure functions eszközöket](functions-develop-vs.md#check-your-tools-version).
+<summary><strong>Ehelyett használjon Azure Functions projektet</strong></summary>
+Ha létre szeretne hozni egy <abbr title="Egy vagy több, együtt telepíthető és felügyelhető különálló függvény logikai tárolója.">Azure Functions projekt</abbr> a Visual Studio 2017 használatával Ehelyett először telepítenie kell a [legújabb Azure functions eszközöket](functions-develop-vs.md#check-your-tools-version).
 </details>
 
 ## <a name="2-create-a-function-app-project"></a>2. Function alkalmazás-projekt létrehozása
@@ -42,13 +43,13 @@ Ha létre szeretne hozni egy <abbr title="Egy vagy több, együtt telepíthető 
 
 1. Adja meg a következő információkat az **új Azure functions alkalmazás-beállítások létrehozásához** :
 
-    + Válassza **<abbr title=" ezt az értéket olyan Function projekt létrehozása, amely az Azure functions 3. x futtatókörnyezetét használja, amely támogatja a .net Core 3. x. Azure functions 1. x verziója támogatja a .NET-keretrendszert. További információ: [Azure functions Runtime Versions – áttekintés](functions-versions.md). "> Azure Functions v3 (.NET Core) </abbr>** a functions Runtime legördülő menüből
+    + Válassza **<abbr title=" ezt az értéket olyan Function projekt létrehozása, amely az Azure functions 3. x futtatókörnyezetét használja, amely támogatja a .net Core 3. x. Azure functions 1. x verziója támogatja a .NET-keretrendszert. "> Azure Functions v3 (.NET Core) </abbr>** a functions Runtime legördülő menüből. (További információ: [Azure functions Runtime-verziók áttekintése](functions-versions.md).)
     
     + Válassza **<abbr title=" ezt az értéket, ha egy HTTP-kérelem által aktivált függvényt hoz létre. "> HTTP- </abbr> trigger** a függvény sablonja.
     
-    + Válassza **<abbr = "lehetőséget, mivel egy Azure-függvényhez Storage-fiók szükséges, az egyiket a rendszer a projekt Azure-ba való közzétételekor rendeli hozzá vagy hozza létre. A HTTP-triggerek nem használnak Azure Storage-fiókhoz tartozó kapcsolatok karakterláncát; minden más trigger-típushoz érvényes Azure Storage-fiókhoz tartozó kapcsolatok karakterlánc szükséges. " >Storage- </abbr> emulátor** a Storage-fiók legördülő listából.
+    + Válassza ki, hogy egy **<abbr title=" Azure-függvényhez szükség van egy Storage-fiókra, az egyiket a rendszer a projekt az Azure-ba való közzétételekor rendeli hozzá A HTTP-triggerek nem használnak Azure Storage-fiókhoz tartozó kapcsolatok karakterláncát; minden más trigger-típushoz érvényes Azure Storage-fiókhoz tartozó összekapcsolási karakterlánc szükséges. "> Storage- </abbr> emulátor** a Storage-fiók legördülő listából.
         
-    + Válassza a **Névtelen** lehetőséget a <abbr title="A létrehozott függvényt bármely ügyfél elindíthatja, kulcs megadása nélkül. Ez az engedélyezési beállítás megkönnyíti az új függvény tesztelését. A kulcsokkal és az engedélyezéssel kapcsolatos további információkért lásd: [engedélyezési kulcsok](functions-bindings-http-webhook-trigger.md#authorization-keys) és [http-és webhook-kötések](functions-bindings-http-webhook.md).">Engedélyszint</abbr> legördülő
+    + Válassza a **Névtelen** lehetőséget a <abbr title="A létrehozott függvényt bármely ügyfél elindíthatja, kulcs megadása nélkül. Ez az engedélyezési beállítás megkönnyíti az új függvény tesztelését.">Engedélyszint</abbr> legördülő. (A kulcsokkal és az engedélyezéssel kapcsolatos további információkért lásd: [engedélyezési kulcsok](functions-bindings-http-webhook-trigger.md#authorization-keys) és [http-és webhook-kötések](functions-bindings-http-webhook.md).)
 
     + Kattintson a **Létrehozás** elemre.
         
@@ -77,8 +78,9 @@ A `FunctionName` Method attribútum a függvény nevét állítja be, amely alap
 
 1. A hibakeresés leállításához nyomja le az F5 <kbd>billentyűt</kbd> + <kbd></kbd> a Visual Studióban.
 
+<br/>
 <details>
-<summary>Hibaelhárítás</summary>
+<summary><strong>Hibaelhárítás</strong></summary>
  Előfordulhat, hogy engedélyeznie kell egy tűzfal-kivételt, hogy az eszközök kezelni tudják a HTTP-kérelmeket. A függvény helyi futtatásakor a rendszer soha nem kényszeríti ki az engedélyezési szinteket.
 </details>
 
@@ -102,7 +104,7 @@ A `FunctionName` Method attribútum a függvény nevét állítja be, amely alap
     
     + **Válasszon ki** egy meglévőt <abbr title="Logikai tároló a kapcsolódó Azure-erőforrásokhoz, amelyeket egységként lehet kezelni.">erőforráscsoport</abbr> a legördülő listából, vagy az **új** elemre kattintva hozzon létre egy új erőforráscsoportot.
     
-    + **Kiválasztás** <abbr title="Ha a projektet egy [felhasználási](consumption-plan.md)csomagban futó Function alkalmazásban teszi közzé, csak a functions-alkalmazás végrehajtásához kell fizetnie. Más üzemeltetési csomagok magasabb költségekkel járnak.">Használat</abbr> a lejátszás típusa legördülő menüből
+    + **Kiválasztás** <abbr title="Ha a projektet egy felhasználási csomagban futó Function alkalmazásban teszi közzé, csak a functions-alkalmazás végrehajtásához kell fizetnie. Más üzemeltetési csomagok magasabb költségekkel járnak.">Használat</abbr> a lejátszás típusa legördülő menüből. (További információ: [felhasználási terv](consumption-plan.md).)
     
     + **Válasszon ki** egy  <abbr title="Földrajzi hivatkozás egy adott Azure-adatközpontra, amelyben az erőforrások le vannak foglalva. Az elérhető régiók listájáért lásd: [régiók](https://azure.microsoft.com/regions/) .">location</abbr> a legördülő menüből.
     
@@ -116,8 +118,9 @@ A `FunctionName` Method attribútum a függvény nevét állítja be, amely alap
 
     :::image type="content" source="../../includes/media/functions-vstools-publish/functions-visual-studio-publish-profile-step-4.png" alt-text="Profil létrehozásának befejezése":::
 
+    <br/>
     <details>
-    <summary>Mit tesz ez a beállítás?</summary>
+    <summary><strong>Mit tesz ez a beállítás?</strong></summary>
     A **csomag fájlból való futtatásakor** a Function alkalmazás a [zip-telepítéssel](functions-deployment-technologies.md#zip-deploy) van telepítve, és a [csomagon](run-functions-from-deployment-package.md) belüli mód engedélyezve van. Ez az ajánlott üzembe helyezési módszer a functions-projekthez, mert jobb teljesítményt eredményez.    
     </details>   
 
@@ -127,14 +130,14 @@ A `FunctionName` Method attribútum a függvény nevét állítja be, amely alap
 
 1. A közzétételi lapon tekintse át a Function alkalmazás gyökerének URL-címét.
 
-1. A közzététel lapon válassza a **kezelés a <abbr title=" Cloud Explorerben lehetőséget, hogy a Visual Studio használatával megtekintheti a hely tartalmát, elindíthatja és leállíthatja a Function alkalmazást, és közvetlenül böngészhet az Azure-beli és a Azure Portalban található alkalmazás-erőforrások működéséhez. "> Cloud Explorer</>**.
+1. A közzététel lapon válassza a **kezelés a <abbr title=" Cloud Explorerben lehetőséget, hogy a Visual Studio használatával megtekintheti a hely tartalmát, elindíthatja és leállíthatja a Function alkalmazást, és közvetlenül böngészhet az Azure-beli és a Azure Portalban található alkalmazás-erőforrások működéséhez. "> Cloud Explorer </abbr>**.
     
     :::image type="content" source="../../includes/media/functions-vstools-publish/functions-visual-studio-publish-complete.png" alt-text="Sikeres közzétételt jelző üzenet":::
     
 
 ## <a name="6-test-your-function-in-azure"></a>6. a függvény tesztelése az Azure-ban
 
-1. A Cloud Explorerben ki kell választania az új Function alkalmazást. Ha nem, bontsa ki az előfizetését > **app Services**, és válassza ki az új Function alkalmazást.
+1. A Cloud Explorerben ki kell választania az új Function alkalmazást. Ha nem, bontsa ki az előfizetést, bontsa ki **app Services** és válassza ki az új Function alkalmazást.
 
 1. Kattintson a jobb gombbal a Function alkalmazásra, és válassza a **Megnyitás böngészőben** lehetőséget. Ekkor megnyílik a Function alkalmazás gyökere az alapértelmezett böngészőben, és megjeleníti azt a lapot, amely azt jelzi, hogy a Function alkalmazás fut. 
 
@@ -154,7 +157,7 @@ A `FunctionName` Method attribútum a függvény nevét állítja be, amely alap
 
 Törölje a Function alkalmazást és annak erőforrásait, hogy elkerülje a további költségek felmerülését.
 
-1. A Cloud Explorerben bontsa ki az előfizetését > **app Services**, kattintson a jobb gombbal a Function alkalmazásra, majd válassza a **Megnyitás a portálon** lehetőséget. 
+1. A Cloud Explorerben bontsa ki az előfizetést, bontsa ki a **app Services** elemet, kattintson a jobb gombbal a Function alkalmazásra, majd válassza a **Megnyitás a portálon** lehetőséget. 
 
 1. A Function alkalmazás lapon válassza az **Áttekintés** lapot, majd válassza ki az **erőforráscsoport** területen található hivatkozást.
 

@@ -4,17 +4,17 @@ description: Az Azure Cost Management + Billing szolgáltatásaival a számláz�
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/28/2021
+ms.date: 03/03/2021
 ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: a070b2329777accab6f62b767f74dbc28e5d2623
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 9fe658a1755ce3731f220ec656845da1f861fa9b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051093"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050535"
 ---
 # <a name="what-is-azure-cost-management--billing"></a>Mi az az Azure Cost Management + Billing?
 
@@ -33,6 +33,8 @@ Az Azure-termékek és -szolgáltatások esetén a fizetés használat alapján 
 
 Ha több információra van szüksége arról, hogy szervezetileg hogyan közelíthető meg a költségkezelés, tekintse meg a következő cikket: [Az Azure Cost Management ajánlott eljárásai](./costs/cost-mgt-best-practices.md).
 
+![A Cost Management + számlázási optimalizálási folyamat ábrája.](./media/cost-management-optimization-process.png)
+
 ## <a name="understand-azure-billing"></a>Az Azure Billing ismertetése
 
 Az Azure Billing szolgáltatásaival áttekintheti a kiszámlázott költségeket, és kezelheti a számlázási információkhoz való hozzáférést. Nagyobb szervezetekben általában a beszerzési és pénzügyi csapatok végzik a számlázási feladatokat.
@@ -48,32 +50,6 @@ Az Azure Portal jelenleg a következő típusú számlázási fiókokat támogat
 - **Nagyvállalati Szerződés**: Nagyvállalati Szerződéshez tartozó számlázási fiók akkor jön létre, amikor a szervezet Nagyvállalati Szerződést (EA) köt az Azure használatára.
 
 - **Microsoft-ügyfélszerződés**: A Microsoft-ügyfélszerződéshez tartozó számlázási fiók akkor jön létre, amikor a szervezet a Microsoft képviselőjével együttműködve Microsoft-ügyfélszerződést köt. Egyes régiókban, ha a felhasználó az Azure-webhelyen regisztrál egy használatalapú fizetést használó fiókot, vagy frissíti [ingyenes Azure-fiókját](./manage/create-free-services.md), külön számlázási fiókot kaphat a Microsoft-ügyfélszerződéshez.
-
-### <a name="scopes-for-billing-accounts"></a>A számlázási fiókok hatóköre
-A hatókör egy csomópont a számlázási fiókban. Ennek használatával lehet megtekinteni és kezelni a számlázást. Itt lehet kezelni a számlázási adatokat, a fizetéseket, a számlákat, és itt történik az általános fiókkezelés.
-
-#### <a name="microsoft-online-services-program"></a>Microsoft Online Services Program
-
-|Hatókör  |Meghatározás  |
-|---------|---------|
-|Számlázási fiók     | Egy vagy több Azure-előfizetés önálló tulajdonosát (fiókadminisztrátorát) jelöli. A fiókadminisztrátor jogosult elvégezni bizonyos számlázási feladatokat, például az előfizetések létrehozását, a számlák megtekintését vagy az előfizetések számlázásának módosítását.  |
-|Előfizetés     |  Adott Azure-erőforrások csoportja. A számla létrehozása az előfizetés hatókörben történik. Saját fizetési módokkal rendelkezik, amelyek a számlák kiegyenlítésére szolgálnak.|
-
-#### <a name="enterprise-agreement"></a>Nagyvállalati Szerződés
-
-|Hatókör  |Meghatározás  |
-|---------|---------|
-|Számlázási fiók    | Egy Nagyvállalati Szerződésre való regisztrációt jelöl. A számla létrehozása a számlázási fiók hatókörben történik. A struktúráját a bevont részlegek és regisztrált fiókok határozzák meg.  |
-|Részleg     |  Regisztrált fiókok opcionális csoportja.      |
-|Regisztrációs fiók     |  Egyetlen fióktulajdonost jelöl. Az Azure-előfizetések létrehozása a regisztrációs fiók hatókörben történik.  |
-
-#### <a name="microsoft-customer-agreement"></a>Microsoft-ügyfélszerződés
-
-|Hatókör  |Feladatok  |
-|---------|---------|
-|Számlázási fiók     |   Egy több Microsoft-terméket és -szolgáltatást magában foglaló ügyfélszerződést jelöl. A számlázási fiók struktúráját a számlázási profilok és a számlázási szakaszok határozzák meg.   |
-|Számlázási profil     |  Egy számlát és annak fizetési módjait jelöli. Ebben a hatókörben történik számlakiállítás. A számlázási profil több számlázási szakaszt is magában foglalhat.      |
-|Számlázási szakasz     |   Egy költségcsoportot jelöl a számlán belül. Az előfizetések és más vásárlások a számlázási szakasz hatókörhöz vannak társítva.    |
 
 ## <a name="understand-azure-cost-management"></a>Az Azure Cost Management ismertetése
 

@@ -438,14 +438,6 @@
           href: manage/review-subscription-billing.md
         - name: Az erőforrás-használat áttekintése
           href: manage/review-service-usage-api.md
-    - name: .NET-minták
-      items:
-        - name: Számlázási API kódmintája
-          href: 'https://github.com/Azure-Samples/billing-dotnet-core-invoice-download'
-        - name: Használati API kódmintája
-          href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
-        - name: RateCard API kódmintája
-          href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'
 - name: Cloudyn
   items:
     - name: Áttekintés

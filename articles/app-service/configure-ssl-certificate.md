@@ -3,15 +3,15 @@ title: TLS/SSL-tanúsítványok hozzáadása és kezelése
 description: Hozzon létre egy ingyenes tanúsítványt, importáljon egy App Service tanúsítványt, importáljon egy Key Vault tanúsítványt, vagy vásároljon egy App Service tanúsítványt a Azure App Serviceban.
 tags: buy-ssl-certificates
 ms.topic: tutorial
-ms.date: 10/25/2019
+ms.date: 03/02/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: e563981d3a68375105256aa6015aa94ada91326b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d6f6db34239cf8c77b6e43d4426d889fa12c0690
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101711705"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051344"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>TLS-/SSL-tanúsítvány hozzáadása az Azure App Service-ben
 
@@ -26,7 +26,7 @@ A következő táblázat felsorolja azokat a beállításokat, amelyekkel tanús
 
 |Beállítás|Leírás|
 |-|-|
-| Ingyenes App Service felügyelt tanúsítvány létrehozása (előzetes verzió) | Egy könnyen használható privát tanúsítvány, ha csak az `www` [Egyéni tartományt](app-service-web-tutorial-custom-domain.md) vagy a nem meztelen tartományt kell védenie app Serviceban. |
+| Ingyenes App Service felügyelt tanúsítvány létrehozása (előzetes verzió) | Ingyenes és könnyen használható privát tanúsítvány, ha csak az [Egyéni tartományt](app-service-web-tutorial-custom-domain.md) kell biztonságossá tennie app Serviceban. |
 | App Service-tanúsítvány vásárlása | Az Azure által felügyelt privát tanúsítvány. A szolgáltatás ötvözi az automatizált tanúsítványok kezelését, valamint a megújítási és exportálási lehetőségek rugalmasságát. |
 | Tanúsítvány importálása Key Vault | Hasznos, ha a [Azure Key Vault](../key-vault/index.yml) használatával kezeli a [PKCS12/pfx-profil-tanúsítványokat](https://wikipedia.org/wiki/PKCS_12). Lásd a [privát tanúsítványra vonatkozó követelményeket](#private-certificate-requirements). |
 | Privát tanúsítvány feltöltése | Ha már rendelkezik egy külső szolgáltatótól származó privát tanúsítvánnyal, feltöltheti azt. Lásd a [privát tanúsítványra vonatkozó követelményeket](#private-certificate-requirements). |
@@ -34,19 +34,17 @@ A következő táblázat felsorolja azokat a beállításokat, amelyekkel tanús
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A következő útmutató követése:
-
 - [Hozzon létre egy app Service alkalmazást](./index.yml).
-- Csak az ingyenes tanúsítvány: altartomány hozzárendelése (például `www.contoso.com` ) egy [CNAME-rekorddal](app-service-web-tutorial-custom-domain.md#map-a-cname-record)app Service.
+- Privát tanúsítvány esetén győződjön meg arról, hogy az megfelel [a app Service összes követelményének](#private-certificate-requirements).
+- **Csak az ingyenes tanúsítvány**:
+    - Képezze le a tartományt, amelyhez tanúsítványt szeretne App Service. További információ: [oktatóanyag: meglévő egyéni DNS-név leképezése Azure app Service](app-service-web-tutorial-custom-domain.md).
+    - A gyökértartomány (például a contoso.com) esetében győződjön meg arról, hogy az alkalmazás nem rendelkezik konfigurált [IP-korlátozásokkal](app-service-ip-restrictions.md) . A tanúsítvány létrehozása és a gyökértartomány rendszeres megújítása attól függ, hogy az alkalmazás elérhető-e az internetről.
 
 ## <a name="private-certificate-requirements"></a>Magánjellegű tanúsítványokra vonatkozó követelmények
 
-> [!NOTE]
-> Az Azure Web Apps **nem támogatja a** AES256, és az összes pfx-fájlt titkosítani kell a TripleDES-mel.
+Az [ingyenes app Service felügyelt tanúsítvány](#create-a-free-managed-certificate-preview) és a [app Service tanúsítvány](#import-an-app-service-certificate) már megfelel a app Service követelményeinek. Ha úgy dönt, hogy feltölt vagy importál egy privát tanúsítványt App Serviceba, a tanúsítványnak meg kell felelnie a következő követelményeknek:
 
-Az [ingyenes app Service felügyelt tanúsítvány](#create-a-free-certificate-preview) vagy a [app Service tanúsítvány](#import-an-app-service-certificate) már megfelel a app Service követelményeinek. Ha úgy dönt, hogy feltölt vagy importál egy privát tanúsítványt App Serviceba, a tanúsítványnak meg kell felelnie a következő követelményeknek:
-
-* [Jelszóval védett pfx-fájlként](https://en.wikipedia.org/w/index.php?title=X.509&section=4#Certificate_filename_extensions) exportálva
+* [Jelszóval védett pfx-fájlként](https://en.wikipedia.org/w/index.php?title=X.509&section=4#Certificate_filename_extensions)lett exportálva, a Triple des használatával titkosítva.
 * Legalább 2048 bit hosszúságú titkos kulcsot kell tartalmaznia.
 * Tartalmaznia kell a tanúsítványláncban lévő összes köztes tanúsítványt.
 
@@ -60,21 +58,21 @@ Egy TLS-kötésben lévő egyéni tartomány biztonságossá tételéhez a tanú
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
-## <a name="create-a-free-certificate-preview"></a>Ingyenes tanúsítvány létrehozása (előzetes verzió)
+## <a name="create-a-free-managed-certificate-preview"></a>Ingyenes felügyelt tanúsítvány létrehozása (előzetes verzió)
+
+> [!NOTE]
+> Az ingyenes felügyelt tanúsítvány létrehozása előtt győződjön meg arról, hogy [teljesítette az alkalmazás előfeltételeit](#prerequisites) .
 
 Az ingyenes App Service felügyelt tanúsítvány egy kulcsrakész megoldás az egyéni DNS-név biztonságossá tételéhez App Serviceban. Ez egy teljesen működőképes TLS/SSL-tanúsítvány, amelyet a App Service felügyel, és automatikusan megújul. Az ingyenes tanúsítvány a következő korlátozásokkal jár:
 
 - A nem támogatja a helyettesítő tanúsítványokat.
-- A nem támogatja a meztelen tartományokat.
 - Nem exportálható.
-- Nem támogatott App Service Environment (bekapcsoló) esetén
-- A nem támogatja A rekordokat. Az automatikus megújítás például nem működik a rekordokkal.
+- App Service Environment (bekapcsoló) esetén nem támogatott.
+- Nem támogatott a Traffic Manager rendszerbe integrált legfelső szintű tartományokkal.
 
 > [!NOTE]
 > Az ingyenes tanúsítványt a DigiCert bocsátja ki. Egyes legfelső szintű tartományok esetében explicit módon engedélyeznie kell a DigiCert tanúsítvány-kiállítóként, ha létrehoz egy [CAA tartományi rekordot](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization) a következő értékkel: `0 issue digicert.com` .
 > 
-
-Ingyenes App Service felügyelt tanúsítvány létrehozása:
 
 A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali menüjében válassza a app Services lehetőséget   >  **\<app-name>** .
 
@@ -82,7 +80,7 @@ Az alkalmazás bal oldali navigációs sávján válassza a **TLS/SSL**  >  **-B
 
 ![Ingyenes tanúsítvány létrehozása App Service](./media/configure-ssl-certificate/create-free-cert.png)
 
-Az alkalmazáshoz a CNAME-rekorddal megfelelően hozzárendelt, nem meztelen tartományok listája megjelenik a párbeszédpanelen. Válassza ki az egyéni tartományt egy ingyenes tanúsítvány létrehozásához, majd válassza a **Létrehozás** lehetőséget. Minden támogatott egyéni tartományhoz csak egy tanúsítványt hozhat létre.
+Válassza ki az egyéni tartományt egy ingyenes tanúsítvány létrehozásához, majd válassza a **Létrehozás** lehetőséget. Minden támogatott egyéni tartományhoz csak egy tanúsítványt hozhat létre.
 
 Ha a művelet befejeződik, megjelenik a tanúsítvány a **titkos kulcs tanúsítványainak** listájában.
 

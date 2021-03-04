@@ -11,12 +11,12 @@ ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 03bfca6fe350612b657ad1b8b39534c43cf38db9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 64e4c05e9439c164329dede5d714bec160bc5ae2
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748603"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050375"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure App Service
 
@@ -93,7 +93,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 # <a name="java-se"></a>[Java SE](#tab/javase)
 
 1. Amikor a rendszer a **Subscription** (előfizetés) értékre kérdez rá, adja meg a helyes `Subscription` értéket a sor elején álló szám beírásával.
-1. Ha a rendszer rákérdez a **webalkalmazás** lehetőségre, fogadja el a defaut lehetőséget az `<create>` ENTER billentyű lenyomásával vagy egy meglévő alkalmazás kiválasztásával.
+1. Ha a rendszer a **webalkalmazás** beállítását kéri, fogadja el az alapértelmezett beállítást az `<create>` ENTER billentyű lenyomásával vagy egy meglévő alkalmazás kiválasztásával.
 1. Ha a rendszer az **operációs rendszer** beállítását kéri, válassza a **Windows** lehetőséget a beírásával `3` .
 1. Ha a rendszer a **díjszabási** csomaggal kéri, válassza a **B2** lehetőséget a beírásával `2` .
 1. Használja az alapértelmezett Java-verziót ( **Java 8**) az ENTER billentyű lenyomásával.
@@ -125,7 +125,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 # <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
 1. Amikor a rendszer a **Subscription** (előfizetés) értékre kérdez rá, adja meg a helyes `Subscription` értéket a sor elején álló szám beírásával.
-1. Ha a rendszer rákérdez a **webalkalmazás** lehetőségre, fogadja el a defaut lehetőséget az `<create>` ENTER billentyű lenyomásával vagy egy meglévő alkalmazás kiválasztásával.
+1. Ha a rendszer a **webalkalmazás** beállítását kéri, fogadja el az alapértelmezett beállítást az `<create>` ENTER billentyű lenyomásával vagy egy meglévő alkalmazás kiválasztásával.
 1. Ha a rendszer az **operációs rendszer** beállítását kéri, válassza a **Windows** lehetőséget a beírásával `3` .
 1. Ha a rendszer a **díjszabási** csomaggal kéri, válassza a **B2** lehetőséget a beírásával `2` .
 1. Használja az alapértelmezett Java-verziót ( **Java 8**) az ENTER billentyű lenyomásával.
@@ -163,7 +163,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 ### <a name="java-se"></a>[Java SE](#tab/javase)
 
 1. Amikor a rendszer a **Subscription** (előfizetés) értékre kérdez rá, adja meg a helyes `Subscription` értéket a sor elején álló szám beírásával.
-1. Ha a rendszer rákérdez a **webalkalmazás** lehetőségre, fogadja el a defaut lehetőséget az `<create>` ENTER billentyű lenyomásával vagy egy meglévő alkalmazás kiválasztásával.
+1. Ha a rendszer a **webalkalmazás** beállítását kéri, fogadja el az alapértelmezett beállítást az `<create>` ENTER billentyű lenyomásával vagy egy meglévő alkalmazás kiválasztásával.
 1. Ha a rendszer az **operációs rendszer** beállítását kéri, az ENTER billentyű lenyomásával válassza a **Linux** lehetőséget.
 1. Ha a rendszer a **díjszabási** csomaggal kéri, válassza a **B2** lehetőséget a beírásával `2` .
 1. Használja az alapértelmezett Java-verziót ( **Java 8**) az ENTER billentyű lenyomásával.
@@ -192,7 +192,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 ### <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
 1. Amikor a rendszer a **Subscription** (előfizetés) értékre kérdez rá, adja meg a helyes `Subscription` értéket a sor elején álló szám beírásával.
-1. Ha a rendszer rákérdez a **webalkalmazás** lehetőségre, fogadja el a defaut lehetőséget az `<create>` ENTER billentyű lenyomásával vagy egy meglévő alkalmazás kiválasztásával.
+1. Ha a rendszer a **webalkalmazás** beállítását kéri, fogadja el az alapértelmezett beállítást az `<create>` ENTER billentyű lenyomásával vagy egy meglévő alkalmazás kiválasztásával.
 1. Ha a rendszer az **operációs rendszer** beállítását kéri, az ENTER billentyű lenyomásával válassza a **Linux** lehetőséget.
 1. Ha a rendszer a **díjszabási** csomaggal kéri, válassza a **B2** lehetőséget a beírásával `2` .
 1. Használja az alapértelmezett Java-verziót ( **Java 8**) az ENTER billentyű lenyomásával.
@@ -228,7 +228,7 @@ Szükség esetén közvetlenül is módosíthatja App Service konfigurációit `
 Tulajdonság | Kötelező | Leírás | Verzió
 ---|---|---|---
 `<schemaVersion>` | hamis | Határozza meg a konfigurációs séma verzióját. A támogatott értékek a következők: `v1` , `v2` . | 1.5.2
-`<subscriptionId>` | hamis | Határozza meg az előfizetés azonosítóját. | 0.1.0 +
+`<subscriptionId>` | hamis | Határozza meg az előfizetés AZONOSÍTÓját. | 0.1.0 +
 `<resourceGroup>` | true | Azure <abbr title="Logikai tároló a kapcsolódó Azure-erőforrásokhoz, amelyeket egységként lehet kezelni.">erőforráscsoport</abbr> a webalkalmazáshoz. | 0.1.0 +
 `<appName>` | true | A webalkalmazás neve. | 0.1.0 +
 `<region>` | true | Meghatározza azt a régiót, ahol a webalkalmazás üzemeltetve lesz; az alapértelmezett érték a **westeurope**. A [támogatott régiók](https://azure.microsoft.com/global-infrastructure/services/?products=app-service) szakaszban található összes érvényes régió. | 0.1.0 +
