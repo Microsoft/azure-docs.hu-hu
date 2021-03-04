@@ -337,6 +337,8 @@
               href: migration-guides/database/sql-server-to-sql-database-overview.md
             - name: Migrate
               href: migration-guides/database/sql-server-to-sql-database-guide.md
+            - name: Értékelési szabályok
+              href: migration-guides/database/sql-server-to-sql-database-assessment-rules.md
     - name: Alapelvek
       items:
         - name: Kapcsolati architektúra
@@ -757,6 +759,8 @@
               href: migration-guides/managed-instance/sql-server-to-managed-instance-guide.md
             - name: Alapteljesítmény
               href: migration-guides/managed-instance/sql-server-to-managed-instance-performance-baseline.md
+            - name: Értékelési szabályok
+              href: migration-guides/managed-instance/sql-server-to-sql-managed-instance-assessment-rules.md
     - name: Alapelvek
       items:
         - name: Erőforráskorlátok

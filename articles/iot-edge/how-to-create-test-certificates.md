@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c5af77da0ed2c579a478c8ebaaa924882d9a15c6
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: d82f1cac6e437663fa0b1c3e21c65036f3c1d4eb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927702"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046040"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>Bemutató tanúsítvány létrehozása az IoT Edge-eszköz funkcióinak teszteléséhez
 
@@ -32,7 +32,7 @@ A következő lépésekkel hozhat létre bemutató tanúsítványokat a IoT Edge
 1. [Hozzon létre parancsfájlokat](#set-up-scripts) a tanúsítvány létrehozásához az eszközön.
 2. [Hozza létre a legfelső szintű hitelesítésszolgáltatói tanúsítványt](#create-root-ca-certificate) , amelyet a forgatókönyv összes többi tanúsítványának aláírásához használ.
 3. A tesztelni kívánt forgatókönyvhöz szükséges tanúsítványok létrehozása:
-   * [Hozzon létre IoT Edge eszköz-azonosító tanúsítványokat](#create-iot-edge-device-identity-certificates) az automatikus kiépítés céljából a IoT hub Device Provisioning Service.
+   * [Hozzon létre IoT Edge eszköz-azonosító tanúsítványokat](#create-iot-edge-device-identity-certificates) az X. 509 tanúsítványalapú hitelesítéssel rendelkező eszközök kiépítési eszközeihez manuálisan vagy a IoT hub Device Provisioning Service.
    * [Hozzon létre IoT Edge eszköz hitelesítésszolgáltatói tanúsítványokat](#create-iot-edge-device-ca-certificates) IoT Edge eszközökhöz az átjáró forgatókönyvei között.
    * [Alsóbb rétegbeli eszközök tanúsítványainak létrehozása](#create-downstream-device-certificates) átjáró-forgatókönyvben lévő alsóbb rétegbeli eszközök hitelesítéséhez.
 
@@ -183,9 +183,9 @@ Az ebben a szakaszban ismertetett lépések elvégzése előtt kövesse a [paran
 
 ## <a name="create-iot-edge-device-identity-certificates"></a>IoT Edge eszköz-identitási tanúsítványok létrehozása
 
-Az eszköz-identitási tanúsítványok az Azure IoT Hub Device Provisioning Service (DPS) keresztül IoT Edge eszközök kiépítésére szolgálnak.
+Az eszköz-identitási tanúsítványok IoT Edge eszközök kiépítésére használhatók, ha az X. 509 tanúsítványalapú hitelesítés használatát választja. Ezek a tanúsítványok a manuális kiépítés vagy az Azure IoT Hub Device Provisioning Service (DPS) használatával történő automatikus kiépítés esetén működnek.
 
-Az eszköz identitásának tanúsítványai a IoT Edge eszköz config. YAML fájljának **kiépítési** szakaszában találhatók.
+Az eszköz azonosító tanúsítványai a IoT Edge eszköz konfigurációs fájljának **kiépítési** szakaszában találhatók.
 
 Az ebben a szakaszban ismertetett lépések végrehajtása előtt kövesse a [parancsfájlok beállítása](#set-up-scripts) és a [legfelső szintű hitelesítésszolgáltatói tanúsítvány létrehozása](#create-root-ca-certificate) című szakasz lépéseit.
 
@@ -223,11 +223,19 @@ A szkript több tanúsítvány-és kulcsfájl létrehozását is tartalmazza, be
 
 ## <a name="create-iot-edge-device-ca-certificates"></a>IoT Edge-eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványainak létrehozása
 
-Az éles környezetben minden IoT Edge eszköznek szüksége van egy eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványára, amelyre a config. YAML fájl hivatkozik.
+Az éles környezetben minden IoT Edge eszköznek szüksége van egy eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványára, amelyre a konfigurációs fájl hivatkozik.
 Az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa felelős az eszközön futó modulok tanúsítványainak létrehozásához.
 Az átjáró-forgatókönyvek esetében is szükséges, mivel az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa az, hogy a IoT Edge eszköz ellenőrzi az identitását az alsóbb rétegbeli eszközökre.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványai a IoT Edge eszköz config. YAML fájljának **tanúsítvány** részében találhatók.
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+Az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványai a IoT Edge eszköz config. toml fájljának **PEREMHÁLÓZATI CA** szakaszában találhatók.
+:::moniker-end
 
 Az ebben a szakaszban ismertetett lépések végrehajtása előtt kövesse a [parancsfájlok beállítása](#set-up-scripts) és a [legfelső szintű hitelesítésszolgáltatói tanúsítvány létrehozása](#create-root-ca-certificate) című szakasz lépéseit.
 
@@ -241,12 +249,12 @@ Az ebben a szakaszban ismertetett lépések végrehajtása előtt kövesse a [pa
    New-CACertsEdgeDevice "<CA cert name>"
    ```
 
-   Ezzel a paranccsal több tanúsítvány-és kulcsfájl is létrehozható. A következő tanúsítványt és kulcspárt át kell másolni egy IoT Edge eszközre, és hivatkozni kell rá a config. YAML fájlban:
+   Ezzel a paranccsal több tanúsítvány-és kulcsfájl is létrehozható. A következő tanúsítványt és kulcspárt át kell másolni egy IoT Edge eszközre, és hivatkozni kell rá a konfigurációs fájlban:
 
    * `<WRKDIR>\certs\iot-edge-device-<CA cert name>-full-chain.cert.pem`
    * `<WRKDIR>\private\iot-edge-device-<CA cert name>.key.pem`
 
-A **New-CACertsEdgeDevice** parancsnak átadott név nem egyezhet meg a config. YAML, illetve az eszköz azonosítójában a következőben: IoT hub.
+A **New-CACertsEdgeDevice** parancsnak átadott név nem egyezhet meg a konfigurációs fájlban található állomásnév paraméterrel, vagy az eszköz azonosítóját a IoT Hubban.
 
 ### <a name="linux"></a>Linux
 
@@ -258,12 +266,12 @@ A **New-CACertsEdgeDevice** parancsnak átadott név nem egyezhet meg a config. 
    ./certGen.sh create_edge_device_ca_certificate "<CA cert name>"
    ```
 
-   Ezzel a parancsfájl-paranccsal számos tanúsítvány-és kulcsfájl hozható létre. A következő tanúsítványt és kulcspárt át kell másolni egy IoT Edge eszközre, és hivatkozni kell rá a config. YAML fájlban:
+   Ezzel a parancsfájl-paranccsal számos tanúsítvány-és kulcsfájl hozható létre. A következő tanúsítványt és kulcspárt át kell másolni egy IoT Edge eszközre, és hivatkozni kell rá a konfigurációs fájlban:
 
    * `<WRKDIR>/certs/iot-edge-device-<CA cert name>-full-chain.cert.pem`
    * `<WRKDIR>/private/iot-edge-device-<CA cert name>.key.pem`
 
-A **create_edge_device_ca_certificate** parancsnak átadott név nem egyezhet meg a config. YAML, illetve az eszköz azonosítójában a IoT Hubban.
+A **create_edge_device_ca_certificate** parancsnak átadott név nem egyezhet meg a konfigurációs fájlban található állomásnév paraméterrel, vagy az eszköz azonosítóját a IoT Hubban.
 
 ## <a name="create-downstream-device-certificates"></a>Alsóbb rétegbeli eszközök tanúsítványainak létrehozása
 

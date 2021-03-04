@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 6cafbff86a55ad0bed7da17fcef1aea2b0a53d1b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f0f3baf1bf56f958408f789961812c0555f289f1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679709"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043643"
 ---
 # <a name="redundancy-options-for-managed-disks"></a>A felügyelt lemezek redundancia beállításai
 
@@ -34,7 +34,7 @@ Ha a munkafolyamat nem támogatja az alkalmazás szintű szinkron írásokat a z
 
 A Zone-redundáns tárolás (ZRS) a kiválasztott régió három Azure-beli rendelkezésre állási zónájában szinkron módon replikálja az Azure felügyelt lemezt. Minden rendelkezésreállási zóna egy fizikailag elkülönített, független áramforrással, hűtéssel és hálózatkezelési megoldással rendelkező hely. 
 
-A ZRS lemezek lehetővé teszik a helyreállítást a rendelkezésre állási zónák hibáiból. Ha egy teljes zóna leállt, egy ZRS-lemez csatlakoztatható egy másik zónában lévő virtuális géphez. A ZRS-lemezeket megosztott lemezekkel együtt is használhatja, így jobb rendelkezésre állást biztosíthat a fürtözött vagy elosztott alkalmazások, például az SQL-verzió, az SAP ASCS/SCS vagy a GFS2 számára. Az elsődleges és a másodlagos virtuális gépekhez közös ZRS csatlakoztathat különböző zónákban, így kihasználhatja a ZRS és a [Availability Zones](../availability-zones/az-overview.md)előnyeit is. Ha az elsődleges zóna meghibásodik, gyorsan átadhatja a feladatátvételt a másodlagos virtuális géphez a [SCSI állandó foglalás](disks-shared-enable.md#supported-scsi-pr-commands)használatával.
+A ZRS lemezek lehetővé teszik a helyreállítást a rendelkezésre állási zónák hibáiból. Ha egy teljes zóna leállt, egy ZRS-lemez csatlakoztatható egy másik zónában lévő virtuális géphez. A ZRS-lemezeket megosztott lemezként is használhatja a fürtözött vagy elosztott alkalmazások, például az SQL-verzió, az SAP ASCS/SCS vagy a GFS2 jobb rendelkezésre állásának biztosításához. Az elsődleges és a másodlagos virtuális gépekhez közös ZRS csatlakoztathat különböző zónákban, így kihasználhatja a ZRS és a [Availability Zones](../availability-zones/az-overview.md)előnyeit is. Ha az elsődleges zóna meghibásodik, gyorsan átadhatja a feladatátvételt a másodlagos virtuális géphez a [SCSI állandó foglalás](disks-shared-enable.md#supported-scsi-pr-commands)használatával.
 
 ### <a name="limitations"></a>Korlátozások
 
@@ -56,7 +56,7 @@ A további írási késések kivételével a ZRS-t használó lemezek azonosak a
 
 ### <a name="create-zrs-managed-disks"></a>ZRS Managed Disks létrehozása
 
-ZRS-lemez létrehozásához az API-t kell használnia a `2020-12-01` Azure Resource Manager sablonnal.
+`2020-12-01`ZRS-lemez létrehozásához használja az API-t a Azure Resource Manager sablonnal.
 
 #### <a name="create-a-vm-with-zrs-disks"></a>Virtuális gép létrehozása ZRS-lemezekkel
 
@@ -120,3 +120,7 @@ New-AzResourceGroupDeployment -ResourceGroupName zrstesting `
 -osDiskType "StandardSSD_LRS" `
 -dataDiskType "Premium_ZRS" `
 ```
+
+## <a name="next-steps"></a>Következő lépések
+
+- Ezekkel a minta [Azure Resource Manager sablonokkal ZRS-lemezekkel rendelkező virtuális gépeket hozhat létre](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/ZRSDisks).

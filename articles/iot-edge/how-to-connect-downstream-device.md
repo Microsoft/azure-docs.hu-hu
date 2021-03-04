@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 35bb17a5cdfcc6aff4a513a594a08283ab1f1305
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 44fe128658b90d2327f17f22b2a33aaa1d4da1fc
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437031"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046125"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Lefelé irányuló eszköz csatlakoztatása Azure IoT Edge-átjáróhoz
 
@@ -159,7 +159,7 @@ Ez a szakasz egy Azure IoT .NET-eszköz ügyfelének egy IoT Edge átjáróhoz v
 
 Ha egy .NET-alkalmazás használatával szeretne programozott módon telepíteni egy megbízható tanúsítványt a tanúsítványtárolóban, tekintse meg a **InstallCACert ()** függvényt a **EdgeDownstreamDevice/program.cs** fájlban. Ez a művelet idempotens, így többször is futhat ugyanazzal az értékekkel, további hatás nélkül.
 
-### <a name="c"></a>C#
+### <a name="c"></a>C
 
 Ez a szakasz egy Azure IoT C-eszköz ügyfelének egy IoT Edge átjáróhoz való csatlakoztatására szolgáló minta alkalmazást mutat be. A C SDK számos TLS-függvénytárral működhet, beleértve az OpenSSL-t, a WolfSSL-t és a Schannel-t. További információkért lásd az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)-t.
 
@@ -214,10 +214,10 @@ A parancs kimenete hosszú lehet, beleértve a láncban lévő összes tanúsít
 
 Ha a levélben lévő eszköz időnként csatlakozik az átjáró eszközéhez, próbálkozzon a következő lépésekkel a megoldáshoz.
 
-1. Az átjáró gazdagépének állomásneve megegyezik a (z) IoT Edge config. YAML fájlban található állomásnév értékével az átjáró eszközén?
+1. Az átjáró gazdagépének állomásneve megegyezik a (z) IoT Edge konfigurációs fájlban található állomásnév értékével az átjáró-eszközön?
 2. Feloldható az átjáró állomásneve egy IP-címhez? Az időszakos kapcsolatokat a DNS használatával vagy egy gazda-fájl bejegyzésének a levél eszközön való hozzáadásával oldhatja fel.
 3. Nyitva vannak a kommunikációs portok a tűzfalon? A használt protokollon alapuló (MQTTS: 8883/AMQPS: 5671/HTTPS: 433) kommunikációnak az alsóbb rétegbeli eszköz és az átlátszó IoT Edge között kell lennie.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan bővítheti IoT Edge az [Offline képességeket](offline-capabilities.md) az alsóbb rétegbeli eszközökre.

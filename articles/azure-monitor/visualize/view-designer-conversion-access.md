@@ -3,15 +3,14 @@ title: Azure Monitor tervező átalakítása munkafüzetekbe konverzió összegz
 description: A munkafüzetek eléréséhez szükséges engedélyek a Azure Monitor nézeteiből való áttéréskor.
 author: austonli
 ms.author: aul
-ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: c5b3096c4eb8cf71ff1d13476fa09cc65ef413a7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 42cb8db0f67d3a01b2e8443e6cb7c47f0fc44c4b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608992"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043390"
 ---
 # <a name="view-designer-to-workbooks-conversion-summary-and-access"></a>Tervező megtekintése a munkafüzetek átalakításának összegzéséhez és eléréséhez
 A [tervező](view-designer.md) a Azure monitor egyik funkciója, amely lehetővé teszi, hogy egyéni nézeteket hozzon létre, amelyek segítségével megjelenítheti a log Analytics-munkaterületen lévő, diagramokkal, listákkal és időpontokkal kapcsolatos adatait. A rendszer fokozatosan kiváltja és lecseréli azokat a munkafüzetekkel, amelyek további funkciókat biztosítanak. Ez a cikk részletesen ismerteti, hogyan hozhat létre áttekintés-összefoglalást és a munkafüzetek eléréséhez szükséges engedélyeket.

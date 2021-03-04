@@ -5,25 +5,25 @@ author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.reviewer: mrohera
-ms.date: 4/3/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: bfb61a5434089fffab9d8ceb9c7b0fbca528cac5
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 73d1d873df58c672e9db6b9e4e17ed58e1a6397e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430611"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046193"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>IoT Edge-eszköz létrehozása és kiépítése a szimmetrikus kulcs igazolásával
 
 Azure IoT Edge eszközök automatikusan kiállíthatók az [eszköz kiépítési szolgáltatásával](../iot-dps/index.yml) , ugyanúgy, mint az Edge-t nem használó eszközök. Ha nem ismeri az automatikus kiépítés folyamatát, a folytatás előtt tekintse át a [kiépítés](../iot-dps/about-iot-dps.md#provisioning-process) áttekintését.
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre egyéni regisztrációt egy IoT Edge eszközön a szimmetrikus kulcs igazolásával egy eszköz kiépítési szolgáltatásához a következő lépések végrehajtásával:
+Ebből a cikkből megtudhatja, hogyan hozhat létre egyéni vagy csoportos tanúsítványigénylési szolgáltatást egy IoT Edge eszközön a szimmetrikus kulcs igazolásával, a következő lépésekkel:
 
 * Hozzon létre egy IoT Hub Device Provisioning Service (DPS) egy példányát.
-* Hozzon létre egy egyéni regisztrációt az eszközhöz.
+* Hozzon létre egy regisztrációt az eszközhöz.
 * Telepítse a IoT Edge futtatókörnyezetet, és kapcsolódjon a IoT Hubhoz.
 
 A szimmetrikus kulcs igazolása egyszerű módszer egy eszköz kiépítési szolgáltatási példánnyal való hitelesítésére. Ez az igazolási módszer a "Hello World" felhasználói élményt jelöli olyan fejlesztők számára, akik még nem ismerik az eszközök üzembe helyezését, vagy nincsenek szigorú biztonsági követelmények. A [TPM](../iot-dps/concepts-tpm-attestation.md) vagy [X. 509 tanúsítványokat](../iot-dps/concepts-x509-attestation.md) használó eszközök igazolása biztonságosabb, és szigorúbb biztonsági követelményekhez kell használni őket.
@@ -72,8 +72,8 @@ Amikor létrehoz egy regisztrációt a DPS-ben, lehetősége van bejelenteni a *
 
    1. A **true (igaz** ) érték kiválasztásával deklarálhatja, hogy a beléptetés egy IoT Edge eszközre vonatkozik. Csoportos regisztráció esetén minden eszköznek IoT Edge eszköznek kell lennie, vagy egyikük sem lehet.
 
-   > [!TIP]
-   > Az Azure CLI-ben létrehozhat egy [beléptetést](/cli/azure/ext/azure-iot/iot/dps/enrollment) vagy egy [beléptetési csoportot](/cli/azure/ext/azure-iot/iot/dps/enrollment-group) , és az **Edge-kompatibilis** jelző használatával meghatározhatja, hogy egy eszköz vagy egy csoport IoT Edge eszköz-e.
+      > [!TIP]
+      > Az Azure CLI-ben létrehozhat egy [beléptetést](/cli/azure/ext/azure-iot/iot/dps/enrollment) vagy egy [beléptetési csoportot](/cli/azure/ext/azure-iot/iot/dps/enrollment-group) , és az **Edge-kompatibilis** jelző használatával meghatározhatja, hogy egy eszköz vagy egy csoport IoT Edge eszköz-e.
 
    1. Fogadja el az alapértelmezett értéket az eszköz kiépítési szolgáltatásának kiosztási házirendjében, hogy **hogyan kívánja hozzárendelni az eszközöket az elosztóhoz** , vagy válasszon egy másik, a regisztrációra vonatkozó értéket.
 
@@ -169,10 +169,12 @@ A következő információk állnak készen:
 * A DPS-regisztrációból másolt **elsődleges kulcs**
 
 > [!TIP]
-> Csoportos regisztráció esetén az eszköz [származtatott kulcsára](#derive-a-device-key) van szükség a DPS regisztrációs kulcs helyett.
+> Csoportos regisztráció esetén a DPS-regisztráció elsődleges kulcsa helyett az egyes eszközök [származtatott kulcsára](#derive-a-device-key) van szükség.
 
 ### <a name="linux-device"></a>Linuxos eszköz
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 1. Nyissa meg a konfigurációs fájlt a IoT Edge eszközön.
 
    ```bash
@@ -197,15 +199,66 @@ A következő információk állnak készen:
    #  dynamic_reprovisioning: false
    ```
 
-   Igény szerint a vagy a `always_reprovision_on_startup` `dynamic_reprovisioning` vonalak használatával konfigurálhatja az eszköz újraépítésének viselkedését. Ha egy eszköz úgy van beállítva, hogy a rendszer újraépítse az indítást, a rendszer mindig először a DPS-t próbálja kiépíteni, majd visszatér a kiépítési biztonsági mentéshez, ha az nem sikerül. Ha egy eszköz úgy van beállítva, hogy dinamikusan újra kiépítse magát, IoT Edge újraindítja és újraépíti, ha a rendszer újraépítési eseményt észlel. További információ: [IoT hub eszköz újraépítési fogalmai](../iot-dps/concepts-device-reprovision.md).
-
 1. A, a és a értékének frissítése a `scope_id` `registration_id` `symmetric_key` DPS és az eszköz adataival.
+
+1. Igény szerint a vagy a `always_reprovision_on_startup` `dynamic_reprovisioning` vonalak használatával konfigurálhatja az eszköz újraépítésének viselkedését. Ha egy eszköz úgy van beállítva, hogy a rendszer újraépítse az indítást, a rendszer mindig először a DPS-t próbálja kiépíteni, majd visszatér a kiépítési biztonsági mentéshez, ha az nem sikerül. Ha egy eszköz úgy van beállítva, hogy dinamikusan újra kiépítse magát, IoT Edge újraindítja és újraépíti, ha a rendszer újraépítési eseményt észlel. További információ: [IoT hub eszköz újraépítési fogalmai](../iot-dps/concepts-device-reprovision.md).
 
 1. Indítsa újra a IoT Edge futtatókörnyezetet, hogy az az eszközön végrehajtott összes konfigurációs módosítást felveszi.
 
    ```bash
    sudo systemctl restart iotedge
    ```
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. Hozzon létre egy konfigurációs fájlt az eszközhöz a IoT Edge telepítésének részeként megadott sablonfájl alapján.
+
+   ```bash
+   sudo cp /etc/aziot/config.toml.edge.template /etc/aziot/config.toml
+   ```
+
+1. Nyissa meg a konfigurációs fájlt a IoT Edge eszközön.
+
+   ```bash
+   sudo nano /etc/aziot/config.toml
+   ```
+
+1. A fájl **kiépítési** szakaszának megkeresése. A rendszer visszafejti a DPS-kiépítés sorait a szimmetrikus kulccsal, és gondoskodjon arról, hogy minden más kiépítési sor megjegyzésbe kerüljön.
+
+   ```toml
+   # DPS provisioning with symmetric key
+   [provisioning]
+   source = "dps"
+   global_endpoint = "https://global.azure-devices-provisioning.net"
+   id_scope = "<SCOPE_ID>"
+   
+   [provisioning.attestation]
+   method = "symmetric_key"
+   registration_id = "<REGISTRATION_ID>"
+
+   symmetric_key = "<PRIMARY_KEY OR DERIVED_KEY>"
+   ```
+
+1. A, a és a értékének frissítése a `id_scope` `registration_id` `symmetric_key` DPS és az eszköz adataival.
+
+   A szimmetrikus kulcs paraméter a beágyazott kulcs, a fájl URI-ja vagy a PKCS # 11 URI értékét is elfogadhatja. A használt formátum alapján csak egy szimmetrikus kulcspárt kell visszaírnia.
+
+   Ha PKCS # 11 URI-t használ, keresse meg a **PKCS # 11** szakaszt a konfigurációs fájlban, és adja meg a PKCS # 11 konfigurációjának adatait.
+
+1. Mentse és zárjuk be a config. toml fájlt.
+
+1. Alkalmazza a IoT Edge végrehajtott konfigurációs módosításokat.
+
+   ```bash
+   sudo iotedge config apply
+   ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ### <a name="windows-device"></a>Windows-eszköz
 
@@ -228,6 +281,9 @@ Ha a futtatókörnyezet sikeresen elindult, beléphet a IoT Hubba, és megkezdhe
 
 ### <a name="linux-device"></a>Linuxos eszköz
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 Ellenőrizze az IoT Edge-szolgáltatás állapotát.
 
 ```cmd/sh
@@ -245,6 +301,31 @@ Futó modulok listázása.
 ```cmd/sh
 iotedge list
 ```
+
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+Ellenőrizze az IoT Edge-szolgáltatás állapotát.
+
+```cmd/sh
+sudo iotedge system status
+```
+
+A szolgáltatási naplók vizsgálata.
+
+```cmd/sh
+sudo iotedge system logs
+```
+
+Futó modulok listázása.
+
+```cmd/sh
+sudo iotedge list
+```
+
+:::moniker-end
 
 ### <a name="windows-device"></a>Windows-eszköz
 

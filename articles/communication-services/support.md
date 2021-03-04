@@ -1,19 +1,19 @@
 ---
 title: Támogatás és Súgó lehetőségek az Azure kommunikációs szolgáltatásokhoz
 description: Ismerje meg az Azure kommunikációs szolgáltatásokhoz elérhető különböző Súgó-és támogatási lehetőségeket.
-author: rifox
+author: ProbablePrime
 manager: chpalm
 services: azure-communication-services
 ms.author: rifox
 ms.date: 02/23/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fb53fb98d36250c3cfa161180208ed8c6ce96315
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4d34f816a89091ecbdf3893a377c999a3c46869c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693354"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043813"
 ---
 # <a name="help-and-support-options-for-azure-communication-services"></a>Súgó és támogatás lehetőségek az Azure kommunikációs szolgáltatásokhoz
 

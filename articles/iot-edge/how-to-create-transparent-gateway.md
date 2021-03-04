@@ -4,19 +4,19 @@ description: Azure IoT Edge-eszköz használata transzparens átjáróként, ame
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/15/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 9ecb1c50fe99cc93417a37e892049e03585945a5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 431c116fee22da27ed0487fc6d2fe3644575491f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370427"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046023"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>IoT Edge-eszköz konfigurálása transzparens átjáróként való működéshez
 
@@ -26,10 +26,9 @@ Ez a cikk részletesen ismerteti, hogyan konfigurálhat egy IoT Edge eszközt ú
 ::: moniker range="iotedge-2018-06"
 
 >[!NOTE]
->Jelenleg
+>A IoT Edge 1,1-es és régebbi verzióiban egy IoT Edge eszköz nem lehet egy IoT Edge átjárón.
 >
-> * Az Edge-kompatibilis eszközök nem csatlakozhatnak IoT Edge átjáróhoz.
-> * Az alsóbb rétegbeli eszközök nem használhatják a fájl feltöltését.
+>Az alsóbb rétegbeli eszközök nem használhatják a fájl feltöltését.
 
 ::: moniker-end
 
@@ -37,9 +36,7 @@ Ez a cikk részletesen ismerteti, hogyan konfigurálhat egy IoT Edge eszközt ú
 ::: moniker range=">=iotedge-2020-11"
 
 >[!NOTE]
->Jelenleg
->
-> * Az alsóbb rétegbeli eszközök nem használhatják a fájl feltöltését.
+>Az alsóbb rétegbeli eszközök nem használhatják a fájl feltöltését.
 
 ::: moniker-end
 
@@ -51,7 +48,17 @@ A sikeres transzparens átjáró-kapcsolatok létrehozásához három általáno
 
 Ahhoz, hogy egy eszköz átjáróként működjön, biztonságosan csatlakoznia kell az alsóbb rétegbeli eszközökhöz. Azure IoT Edge lehetővé teszi, hogy egy nyilvános kulcsokra épülő infrastruktúrát (PKI) használjon az eszközök közötti biztonságos kapcsolatok beállításához. Ebben az esetben lehetővé tesszük, hogy egy alsóbb rétegbeli eszköz olyan IoT Edge-eszközhöz kapcsolódjon, amely transzparens átjáróként működik. Az ésszerű biztonság fenntartása érdekében az alsóbb rétegbeli eszköznek meg kell erősítenie az átjáró-eszköz identitását. Ez az identitás-ellenőrzési szolgáltatás megakadályozza, hogy az eszközök esetlegesen rosszindulatú átjáróhoz csatlakozzanak.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Egy alsóbb rétegbeli eszköz lehet bármely olyan alkalmazás vagy platform, amely rendelkezik az [Azure IoT hub](../iot-hub/index.yml) Cloud Service szolgáltatással létrehozott identitással. Ezek az alkalmazások gyakran az [Azure IoT-eszköz SDK](../iot-hub/iot-hub-devguide-sdks.md)-t használják. Egy alsóbb rétegbeli eszköz is lehet a IoT Edge átjáró eszközön futó alkalmazás. Egy IoT Edge eszköz azonban nem lehet egy IoT Edge átjárón.
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+Egy alsóbb rétegbeli eszköz lehet bármely olyan alkalmazás vagy platform, amely rendelkezik az [Azure IoT hub](../iot-hub/index.yml) Cloud Service szolgáltatással létrehozott identitással. Ezek az alkalmazások gyakran az [Azure IoT-eszköz SDK](../iot-hub/iot-hub-devguide-sdks.md)-t használják. Egy alsóbb rétegbeli eszköz is lehet a IoT Edge átjáró eszközön futó alkalmazás.
+:::moniker-end
+<!-- end 1.2 -->
 
 Létrehozhat olyan tanúsítvány-infrastruktúrát is, amely lehetővé teszi az eszköz-átjáró topológiához szükséges megbízhatóságot. Ez a cikk azt feltételezi, hogy ugyanazt a tanúsítványt használja, amelyet az [x. 509 hitelesítésszolgáltatói biztonság](../iot-hub/iot-hub-x509ca-overview.md) engedélyezéséhez használ IoT Hubban, amely egy adott IoT hubhoz (az IoT hub legfelső szintű hitelesítésszolgáltatója) társított x. 509 hitelesítésszolgáltatói tanúsítvánnyal, a hitelesítésszolgáltatóval aláírt tanúsítványok sorozatával, valamint a IoT Edge eszközhöz tartozó hitelesítésszolgáltatóval is rendelkezik.
 
@@ -64,7 +71,7 @@ A következő lépések végigvezetik a tanúsítványok létrehozásának és t
 
 Linux vagy Windows rendszerű eszköz, amelyen IoT Edge telepítve van.
 
-Ha nem áll készen az eszköz, létrehozhat egyet egy Azure-beli virtuális gépen. Kövesse az [első IoT Edge modul üzembe helyezése virtuális Linux-eszközön](quickstart-linux.md) című témakör lépéseit IoT hub létrehozásához, a virtuális gép létrehozásához és a IoT Edge futtatókörnyezet konfigurálásához. 
+Ha nem áll készen az eszköz, létrehozhat egyet egy Azure-beli virtuális gépen. Kövesse az [első IoT Edge modul üzembe helyezése virtuális Linux-eszközön](quickstart-linux.md) című témakör lépéseit IoT hub létrehozásához, a virtuális gép létrehozásához és a IoT Edge futtatókörnyezet konfigurálásához.
 
 ## <a name="set-up-the-device-ca-certificate"></a>Az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványának beállítása
 
@@ -72,7 +79,7 @@ Minden IoT Edge átjáróhoz telepítve kell lennie egy eszköz HITELESÍTÉSSZO
 
 ![Átjáró tanúsítványának beállítása](./media/how-to-create-transparent-gateway/gateway-setup.png)
 
-A legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványnak és az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványának (titkos kulcsával) jelen kell lennie az IoT Edge átjáró eszközön, és konfigurálni kell a IoT Edge config. YAML fájlban. Ne feledje, hogy ebben az esetben a *legfelső szintű hitelesítésszolgáltatói tanúsítvány* a legfelső szintű hitelesítésszolgáltatót jelenti ehhez a IoT Edge-forgatókönyvhöz. Az átjáró-eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványának és az alsóbb rétegbeli eszköz tanúsítványának azonos legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványra van szüksége.
+A legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványnak és az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványának (titkos kulcsával) jelen kell lennie az IoT Edge átjáró eszközön, és konfigurálni kell a IoT Edge konfigurációs fájlban. Ne feledje, hogy ebben az esetben a *legfelső szintű hitelesítésszolgáltatói tanúsítvány* a legfelső szintű hitelesítésszolgáltatót jelenti ehhez a IoT Edge-forgatókönyvhöz. Az átjáró-eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványának és az alsóbb rétegbeli eszköz tanúsítványának azonos legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványra van szüksége.
 
 >[!TIP]
 >A legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány és az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványának IoT Edge-eszközre történő telepítésének folyamatát a [IoT Edge-eszközök tanúsítványainak kezelése](how-to-manage-device-certificates.md)című részben is ismertetjük.
@@ -85,7 +92,7 @@ A következő fájlok készen állnak:
 
 Éles környezetekben ezeket a fájlokat saját hitelesítésszolgáltatóval kell előállítani. Fejlesztési és tesztelési helyzetekben használhat bemutató tanúsítványokat.
 
-1. Ha bemutató tanúsítványokat használ, a fájlok létrehozásához használja a [bemutató tanúsítványok létrehozása a IoT Edge eszköz szolgáltatásainak teszteléséhez](how-to-create-test-certificates.md) című témakör utasításait. Ezen az oldalon a következő lépéseket kell elvégeznie:
+Ha nem rendelkezik saját hitelesítésszolgáltatóval, és a bemutató tanúsítványokat szeretné használni, kövesse a bemutató tanúsítványok létrehozása a fájlok létrehozásához [IoT Edge eszköz szolgáltatásainak teszteléséhez](how-to-create-test-certificates.md) című témakör utasításait. Ezen az oldalon a következő lépéseket kell elvégeznie:
 
    1. Az indításhoz állítson be a parancsfájlokat a tanúsítványok létrehozásához az eszközön.
    2. Hozzon létre egy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt. Ezen utasítások végén egy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványfájl fog rendelkezni:
@@ -94,24 +101,55 @@ A következő fájlok készen állnak:
       * `<path>/certs/iot-edge-device-<cert name>-full-chain.cert.pem` és
       * `<path>/private/iot-edge-device-<cert name>.key.pem`
 
-2. Ha egy másik gépen hozta létre a tanúsítványokat, másolja át őket a IoT Edge eszközre.
+Ha egy másik gépen hozta létre a tanúsítványokat, másolja át őket a IoT Edge eszközre, majd folytassa a következő lépésekkel.
 
-3. A IoT Edge eszközön nyissa meg a biztonsági démon konfigurációs fájlját.
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
+1. A IoT Edge eszközön nyissa meg a biztonsági démon konfigurációs fájlját.
+
    * Windows: `C:\ProgramData\iotedge\config.yaml`
    * Linux: `/etc/iotedge/config.yaml`
 
-4. Keresse meg a fájl **tanúsítvány-beállítások** szakaszát. A következő tulajdonságok értékének megadásával adja meg a négy sort a **tanúsítványokkal** kezdődően: és adja meg a fájl URI-azonosítóit a három fájl számára:
+1. Keresse meg a fájl **tanúsítvány-beállítások** szakaszát. A következő tulajdonságok értékének megadásával adja meg a négy sort a **tanúsítványokkal** kezdődően: és adja meg a fájl URI-azonosítóit a három fájl számára:
    * **device_ca_cert**: eszköz hitelesítésszolgáltatói tanúsítványa
    * **device_ca_pk**: eszköz hitelesítésszolgáltatói titkos kulcsa
    * **trusted_ca_certs**: legfelső szintű hitelesítésszolgáltatói tanúsítvány
 
    Győződjön meg arról, hogy a **tanúsítványok:** sorban nincs-e a fenti szóközök, és hogy a többi sor két szóközzel van behúzva.
 
-5. Mentse és zárja be a fájlt.
+1. Mentse és zárja be a fájlt.
 
-6. IoT Edge újraindítása.
+1. IoT Edge újraindítása.
    * Windows: `Restart-Service iotedge`
    * Linux: `sudo systemctl restart iotedge`
+:::moniker-end
+<!-- end 1.1 -->
+
+<!--1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. A IoT Edge eszközön nyissa meg a konfigurációs fájlt: `/etc/aziot/config.toml`
+
+   >[!TIP]
+   >Ha a konfigurációs fájl még nem létezik az eszközön, akkor `/etc/aziot/config.toml.edge.template` sablonként használva hozzon létre egyet.
+
+1. Keresse meg a `trust_bundle_cert` paramétert. A sor megjegyzésének visszaadása és a fájl URI-ja megadása a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványfájl számára az eszközön.
+
+1. Keresse meg a `[edge_ca]` fájl szakaszát. Adja meg a jelen szakasz három sorát, és adja meg a fájl URI-azonosítóit a tanúsítványhoz és a kulcs fájljaihoz a következő tulajdonságok értékeiként:
+   * **tanúsítvány**: eszköz hitelesítésszolgáltatói tanúsítványa
+   * **PK**: eszköz hitelesítésszolgáltatójának titkos kulcsa
+
+1. Mentse és zárja be a fájlt.
+
+1. IoT Edge újraindítása.
+
+   ```bash
+   sudo iotedge system restart
+   ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="deploy-edgehub-and-route-messages"></a>EdgeHub üzembe helyezése és az üzenetek továbbítása
 

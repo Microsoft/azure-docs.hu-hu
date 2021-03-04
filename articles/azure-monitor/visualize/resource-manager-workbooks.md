@@ -1,17 +1,16 @@
 ---
 title: Resource Manager-sablonok – minták a munkafüzetek számára
 description: Példa Azure Resource Manager-sablonokra Azure Monitor-munkafüzetek telepítéséhez.
-ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: 1a3a67ff223199663d35ffad3b39cdbf0c020d98
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bcd477d30c74f12e2836f41facec23103547c31b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627822"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043507"
 ---
 # <a name="resource-manager-template-samples-for-workbooks-in-azure-monitor"></a>Resource Manager-sablonok – minták a Azure Monitor munkafüzetekhez
 Ez a cikk minta- [Azure Resource Manager sablonokat](../../azure-resource-manager/templates/template-syntax.md) tartalmaz a Azure monitor-munkafüzetek létrehozásához. Mindegyik minta tartalmaz egy sablonfájlt és egy, a sablonhoz adni kívánt minta értékeket tartalmazó paramétereket tartalmazó fájlt.

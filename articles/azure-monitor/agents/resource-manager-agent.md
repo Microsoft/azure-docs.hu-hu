@@ -1,17 +1,16 @@
 ---
 title: Resource Manager-sablonok – minták az ügynökökhöz
 description: Példa Azure Resource Manager sablonokat a virtuálisgép-ügynökök üzembe helyezéséhez és konfigurálásához a Azure Monitorban.
-ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: 4d4f9b7caed81f8c01e7e2d7e9f94ec3acf3ba92
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9aae62b9f4ca74b11c4f62c44f6d310628d36316
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737341"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045768"
 ---
 # <a name="resource-manager-template-samples-for-agents-in-azure-monitor"></a>Resource Manager-sablonok – minták a Azure Monitor lévő ügynökökhöz
 Ez a cikk minta [Azure Resource Manager sablonokat](../../azure-resource-manager/templates/template-syntax.md) tartalmaz a [log Analytics-ügynök](./log-analytics-agent.md) és a [diagnosztikai bővítmény](./diagnostics-extension-overview.md) üzembe helyezéséhez és konfigurálásához a Azure monitor-ben. Mindegyik minta tartalmaz egy sablonfájlt és egy, a sablonhoz adni kívánt minta értékeket tartalmazó paramétereket tartalmazó fájlt.

@@ -8,12 +8,12 @@ ms.date: 11/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c5f28e2c2d370329dbee0fb76284a4b76b2b945e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d46ad8238faa42ca657b18b3997407d91a224537
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100376510"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045921"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>A IoT Edge eszköz hibáinak megoldása
 
@@ -42,7 +42,7 @@ iotedge check
 
 A hibaelhárító eszköz sok olyan ellenőrzést futtat, amelyek a következő három kategóriába vannak rendezve:
 
-* A *konfigurációs ellenőrzések* olyan részleteket vizsgálnak meg, amelyek megakadályozhatják, hogy IoT Edge eszközök csatlakozzanak a felhőhöz, beleértve a *config. YAML* és a Container motorral kapcsolatos problémákat is.
+* A *konfigurációs ellenőrzések* olyan részleteket vizsgálnak meg, amelyek megakadályozhatják, hogy IoT Edge eszközök csatlakozzanak a felhőhöz, beleértve a konfigurációs fájllal és a tároló motorral kapcsolatos problémákat is.
 * A *kapcsolat ellenőrzi* , hogy a IoT Edge futtatókörnyezet hozzáférhet-e a gazdagép-eszköz portjaihoz, és hogy az összes IoT Edge-összetevő csatlakozni tud-e a IoT hubhoz. Ez az ellenőrzés hibákat ad vissza, ha a IoT Edge eszköz proxy mögött van.
 * Az *éles üzemi készültségi ellenőrzések* az ajánlott éles környezetek, például az eszközök hitelesítésszolgáltatói tanúsítványai és a modul naplófájljai konfigurációjának állapotát keresik.
 
@@ -102,6 +102,9 @@ A [IoT Edge Security Manager](iot-edge-security-manager.md) felelős az olyan m�
 
 Linux rendszeren:
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 * A IoT Edge Security Manager állapotának megtekintése:
 
    ```bash
@@ -110,32 +113,68 @@ Linux rendszeren:
 
 * A IoT Edge Security Manager naplóinak megtekintése:
 
-    ```bash
-    sudo journalctl -u iotedge -f
-    ```
+   ```bash
+   sudo journalctl -u iotedge -f
+   ```
 
 * Tekintse meg a IoT Edge Security Manager részletes naplóit:
 
-  * IoT Edge Daemon-beállítások szerkesztése:
+  1. IoT Edge Daemon-beállítások szerkesztése:
 
-      ```bash
-      sudo systemctl edit iotedge.service
-      ```
+     ```bash
+     sudo systemctl edit iotedge.service
+     ```
 
-  * Frissítse a következő sorokat:
+  2. Frissítse a következő sorokat:
 
-      ```bash
-      [Service]
-      Environment=IOTEDGE_LOG=edgelet=debug
-      ```
+     ```bash
+     [Service]
+     Environment=IOTEDGE_LOG=edgelet=debug
+     ```
 
-  * Indítsa újra a IoT Edge biztonsági démont:
+  3. Indítsa újra a IoT Edge biztonsági démont:
 
-      ```bash
-      sudo systemctl cat iotedge.service
-      sudo systemctl daemon-reload
-      sudo systemctl restart iotedge
-      ```
+     ```bash
+     sudo systemctl cat iotedge.service
+     sudo systemctl daemon-reload
+     sudo systemctl restart iotedge
+     ```
+<!--end 1.1 -->
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+* A IoT Edge rendszerszolgáltatások állapotának megtekintése:
+
+   ```bash
+   sudo iotedge system status
+   ```
+
+* Tekintse meg a IoT Edge rendszerszolgáltatások naplóit:
+
+   ```bash
+   sudo iotedge system logs -- -f
+   ```
+
+* A IoT Edge rendszerszolgáltatások részletes naplóinak megjelenítéséhez engedélyezze a hibakeresési szintű naplókat:
+
+  1. Hibakeresési szintű naplók engedélyezése.
+
+     ```bash
+     sudo iotedge system set-log-level debug
+     sudo iotedge system restart
+     ```
+
+  1. A hibakeresés után váltson vissza az alapértelmezett információs szintű naplókra.
+
+     ```bash
+     sudo iotedge system set-log-level info
+     sudo iotedge system restart
+     ```
+
+<!-- end 1.2 -->
+:::moniker-end
 
 Windows rendszeren:
 
@@ -159,52 +198,17 @@ Windows rendszeren:
 
 * Tekintse meg a IoT Edge Security Manager részletes naplóit:
 
-  * Rendszerszintű környezeti változó hozzáadása:
+  1. Rendszerszintű környezeti változó hozzáadása:
 
-      ```powershell
-      [Environment]::SetEnvironmentVariable("IOTEDGE_LOG", "debug", [EnvironmentVariableTarget]::Machine)
-      ```
+     ```powershell
+     [Environment]::SetEnvironmentVariable("IOTEDGE_LOG", "debug", [EnvironmentVariableTarget]::Machine)
+     ```
 
-  * Indítsa újra a IoT Edge biztonsági démont:
+  2. Indítsa újra a IoT Edge biztonsági démont:
 
-      ```powershell
-      Restart-Service iotedge
-      ```
-
-### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>Ha a IoT Edge Security Manager nem fut, ellenőrizze a YAML konfigurációs fájlját.
-
-> [!WARNING]
-> A YAML-fájlok nem tartalmazhatnak behúzást tartalmazó lapokat. Ehelyett használjon két szóközt. A legfelső szintű elemeknek nincsenek kezdő szóközök.
-
-Linux rendszeren:
-
-   ```bash
-   sudo nano /etc/iotedge/config.yaml
-   ```
-
-Windows rendszeren:
-
-   ```cmd
-   notepad C:\ProgramData\iotedge\config.yaml
-   ```
-
-### <a name="restart-the-iot-edge-security-manager"></a>A IoT Edge Security Manager újraindítása
-
-Ha a probléma továbbra is fennáll, próbálja meg újraindítani a IoT Edge Security Managert.
-
-Linux rendszeren:
-
-   ```cmd
-   sudo systemctl restart iotedge
-   ```
-
-Windows rendszeren:
-
-   ```powershell
-   Stop-Service iotedge -NoWait
-   sleep 5
-   Start-Service iotedge
-   ```
+     ```powershell
+     Restart-Service iotedge
+     ```
 
 ## <a name="check-container-logs-for-issues"></a>A problémákhoz tartozó tároló-naplók keresése
 
@@ -217,6 +221,9 @@ iotedge logs <container name>
 Az eszközön található egyik modulhoz is használhat [közvetlen metódust](how-to-retrieve-iot-edge-logs.md#upload-module-logs) , hogy feltöltse a modul naplóit az Azure Blob Storageba.
 
 ## <a name="view-the-messages-going-through-the-iot-edge-hub"></a>Az IoT Edge hub-on keresztül haladó üzenetek megtekintése
+
+<!--1.1 -->
+:::moniker range="iotedge-2018-06"
 
 Megtekintheti az IoT Edge hub-on keresztül megjelenő üzeneteket, és bepillantást nyerhet a részletes naplókból a futásidejű tárolóból. A részletes naplók ezen tárolók bekapcsolásához állítsa be a `RuntimeLogLevel` YAML konfigurációs fájlját. A fájl megnyitása:
 
@@ -256,7 +263,29 @@ Csere `env: {}` ezzel:
 
 Mentse a fájlt, és indítsa újra a IoT Edge Security Manager alkalmazást.
 
-Az IoT Hub és az IoT Edge-eszközök között küldött üzeneteket is ellenőrizheti. A [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)-hoz készült Azure IoT hub-bővítmény használatával tekintheti meg ezeket az üzeneteket. További információ: [praktikus eszköz az Azure IoT való fejlesztés során](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/).
+<!-- end 1.1 -->
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+Megtekintheti az IoT Edge hub-on keresztül megjelenő üzeneteket, és bepillantást nyerhet a részletes naplókból a futásidejű tárolók között. A részletes naplók ezen tárolók bekapcsolásához állítsa a `RuntimeLogLevel` környezeti változót az üzembe helyezési jegyzékbe.
+
+Az IoT Edge hub-on keresztül haladó üzenetek megtekintéséhez állítsa a `RuntimeLogLevel` környezeti változót a `debug` edgeHub modulra.
+
+A edgeHub és a edgeAgent modulban is szerepel ez a futásidejű naplózási környezeti változó, amely az alapértelmezett értékre van beállítva `info` . Ez a környezeti változó a következő értékeket veheti fel:
+
+* végzetes
+* error
+* figyelmeztetés
+* információ
+* debug
+* részletes
+
+<!-- end 1.2 -->
+:::moniker-end
+
+A IoT Hub-és IoT-eszközök között elküldött üzeneteket is megtekintheti. A [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)-hoz készült Azure IoT hub-bővítmény használatával tekintheti meg ezeket az üzeneteket. További információ: [praktikus eszköz az Azure IoT való fejlesztés során](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/).
 
 ## <a name="restart-containers"></a>Tárolók újraindítása
 

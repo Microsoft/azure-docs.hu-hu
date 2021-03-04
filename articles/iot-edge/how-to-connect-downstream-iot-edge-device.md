@@ -4,7 +4,7 @@ description: IoT Edge eszköz konfigurálása Azure IoT Edge Gateway-eszközökh
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/10/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 1258fd4b5c69b399b70d1f2db1be63765771e631
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 709b986cc06aada45a0f541142b89fc3537f8ba8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629403"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046091"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>Alsóbb rétegbeli IoT Edge eszköz csatlakoztatása Azure IoT Edge átjáróhoz (előzetes verzió)
 
@@ -25,6 +25,8 @@ Ez a cikk egy IoT Edge átjáró és egy alsóbb rétegbeli IoT Edge-eszköz kö
 
 >[!NOTE]
 >Ehhez a szolgáltatáshoz a IoT Edge 1,2-es verziója szükséges, amely nyilvános előzetes verzióban, Linux-tárolókat futtat.
+>
+>Ez a cikk a IoT Edge 1,2-es verziójának legújabb előzetes kiadását mutatja be. Győződjön meg arról, hogy az eszközön a [1.2.0-RC4](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc4) vagy újabb verzió fut. A legújabb előzetes verziónak az eszközön való beszerzéséhez a következő témakörben talál további információt: [Install Azure IoT Edge for Linux (1,2-es verzió)](how-to-install-iot-edge.md) vagy [Update IoT Edge a 1,2-es verzióra](how-to-update-iot-edge.md#special-case-update-from-10-or-11-to-12).
 
 Egy átjáró-forgatókönyvben egy IoT Edge eszköz lehet átjáró és alsóbb rétegbeli eszköz is. Több IoT Edge átjáró is létrehozható az eszközök hierarchiájának létrehozásához. Az alsóbb rétegbeli (vagy gyermek) eszközök az átjáró (vagy a szülő) eszközön keresztül hitelesíthetők, és küldhetők vagy fogadhatnak üzeneteket.
 
@@ -103,9 +105,6 @@ Hozza létre a következő tanúsítványokat:
 * Minden olyan **köztes tanúsítvány** , amelyet fel szeretne venni a főtanúsítvány-láncba.
 * Az **eszköz hitelesítésszolgáltatói tanúsítványa** és a hozzá tartozó **titkos kulcs**, amelyet a gyökér és a köztes tanúsítvány generál. Az átjáró-hierarchiában minden IoT Edge eszközhöz egyedi HITELESÍTÉSSZOLGÁLTATÓI tanúsítványra van szükség.
 
->[!NOTE]
->Jelenleg a libiothsm korlátozásai meggátolják a 2038 január 1-jén vagy azt követően lejáró tanúsítványok használatát.
-
 Használhat önaláírt hitelesítésszolgáltatót, vagy vásárolhat egy megbízható kereskedelmi hitelesítésszolgáltatótól (például Baltimore, VeriSign, Digicert vagy GlobalSign).
 
 Ha nem rendelkezik saját tanúsítványokkal, [létrehozhat bemutató tanúsítványokat IoT Edge eszköz funkcióinak teszteléséhez](how-to-create-test-certificates.md). A cikk lépéseit követve hozzon létre egy gyökér-és köztes tanúsítványokat, majd hozzon létre IoT Edge eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványokat az egyes eszközökhöz.
@@ -124,7 +123,7 @@ Az ebben a szakaszban ismertetett lépések a **legfelső szintű hitelesítéss
 
 A következő lépésekkel konfigurálhatja a IoT Edget az eszközön.
 
-Linux rendszeren ellenőrizze, hogy a felhasználó **iotedge** rendelkezik-e olvasási engedéllyel a tanúsítványokat és kulcsokat tároló címtárhoz.
+Győződjön meg arról, hogy a felhasználó **iotedge** rendelkezik olvasási engedéllyel a tanúsítványokat és kulcsokat tároló könyvtárhoz.
 
 1. Telepítse a **legfelső szintű hitelesítésszolgáltatói tanúsítványt** erre a IoT Edge eszközre.
 
@@ -140,19 +139,16 @@ Linux rendszeren ellenőrizze, hogy a felhasználó **iotedge** rendelkezik-e ol
 
    A parancs kimenete azt eredményezi, hogy az egyik tanúsítvány hozzá lett adva a/etc/SSL/certs.
 
-1. Nyissa meg a IoT Edge biztonsági démon konfigurációs fájlját.
+1. Nyissa meg az IoT Edge konfigurációs fájlját.
 
    ```bash
-   sudo nano /etc/iotedge/config.yaml
+   sudo nano /etc/aziot/config.toml
    ```
 
-1. Keresse meg a **tanúsítványok** szakaszt a config. YAML fájlban. Frissítse a három tanúsítvány mezőt úgy, hogy az a tanúsítványokra mutasson. Adja meg a fájl URI elérési útját, amely a formátumot használja `file:///<path>/<filename>` .
+   >[!TIP]
+   >Ha a konfigurációs fájl még nem létezik az eszközön, használja `/etc/aziot/config.toml.edge.template` sablonként egy létrehozáshoz.
 
-   * **device_ca_cert**: az eszköz egyedi hitelesítésszolgáltatói tanúsítványának fájl URI elérési útja.
-   * **device_ca_pk**: a fájl URI-elérési útja az eszközhöz egyedi hitelesítésszolgáltató titkos kulcsához.
-   * **trusted_ca_certs**: az átjáró-hierarchiában lévő összes eszköz által megosztott legfelső szintű hitelesítésszolgáltatói tanúsítvány FÁJLjának URI-elérési útja.
-
-1. Keresse meg a **hostname** paramétert a config. YAML fájlban. Frissítse a gazdagépet a teljes tartománynév (FQDN) vagy a IoT Edge eszköz IP-címének megadásával.
+1. Keresse meg a **hostname** szakaszt a konfigurációs fájlban. A paramétert tartalmazó sor megjegyzésének visszaadása `hostname` , és az érték frissítése a IoT Edge eszköz teljes tartománynevére (FQDN) vagy IP-címére.
 
    Ennek a paraméternek az értéke, amelyet az alsóbb rétegbeli eszközök fognak használni az átjáróhoz való kapcsolódáshoz. Az állomásnév alapértelmezés szerint a számítógépnévre kerül, de az alárendelt eszközök csatlakoztatásához a teljes tartománynév vagy az IP-cím szükséges.
 
@@ -160,33 +156,38 @@ Linux rendszeren ellenőrizze, hogy a felhasználó **iotedge** rendelkezik-e ol
 
    Konzisztensnek kell lennie az állomásnév-mintázattal az átjáró-hierarchián belül. Használjon teljes tartománynevet vagy IP-címet, de mindkettőt nem.
 
-1. **Ha ez az eszköz egy gyermek eszköz**, keresse meg a **parent_hostname** paramétert. Frissítse a **parent_hostname** mezőt úgy, hogy a szülő eszköz teljes tartományneve vagy IP-címe legyen, és hogy az a szülő config. YAML fájljában található állomásnévként legyen megadva.
+1. *Ha ez az eszköz egy alárendelt eszköz*, keresse meg a **szülő hostname** szakaszt. A Megjegyzés `parent_hostname` kihagyása és a paraméter frissítése a fölérendelt eszköz teljes tartománynevére vagy IP-címére, függetlenül attól, hogy a szülő eszköz konfigurációs fájljában az állomásnév van megadva.
+
+1. Keresse meg a **megbízhatósági csomag tanúsítványa** szakaszt. Adja meg a megjegyzését, és frissítse a `trust_bundle_cert` paramétert a fájl URI-ja alapján a legfelső szintű hitelesítésszolgáltatói tanúsítványra az eszközön.
 
 1. Habár ez a funkció nyilvános előzetes verzióban érhető el, a IoT Edge eszközt úgy kell konfigurálnia, hogy az indításkor a IoT Edge-ügynök nyilvános előzetes verzióját használja.
 
-   Keresse meg az **ügynök** YAML szakaszt, és frissítse a rendszerkép értékét a nyilvános előzetes rendszerképre:
+   Keresse meg az **alapértelmezett peremhálózati ügynök** szakaszt, és frissítse a rendszerkép értékét a nyilvános előzetes rendszerképre:
 
-   ```yml
-   agent:
-     name: "edgeAgent"
-     type: "docker"
-     env: {}
-     config:
-       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2"
-       auth: {}
+   ```toml
+   [agent.config]
+   image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc4"
    ```
 
-1. Mentse ( `Ctrl+O` ) és `Ctrl+X` a config. YAML fájlt a Bezárás () gombra.
+1. Keresse meg a **PEREMHÁLÓZATI hitelesítésszolgáltatói tanúsítvány** szakaszt a konfigurációs fájlban. Az ebben a szakaszban szereplő sorok megjegyzésének visszaadása és a IoT Edge eszközön található tanúsítványhoz és kulcshoz tartozó fájlok URI-elérési útjának megadása.
+
+   ```toml
+   [edge_ca]
+   cert = "file:///<path>/<device CA cert>"
+   pk = "file:///<path>/<device CA key>"
+   ```
+
+1. Mentse `Ctrl+O` a () és a Bezárás ( `Ctrl+X` ) konfigurációs fájlt.
 
 1. Ha korábban más tanúsítványokat is használt a IoT Edgehoz, törölje az alábbi két könyvtár fájljait, hogy megbizonyosodjon róla, hogy az új tanúsítványok érvénybe lépnek:
 
-   * `/var/lib/iotedge/hsm/certs`
-   * `/var/lib/iotedge/hsm/cert_keys`
+   * `/var/lib/aziot/certd/certs`
+   * `/var/lib/aziot/keyd/keys`
 
-1. A módosítások alkalmazásához indítsa újra a IoT Edge szolgáltatást.
+1. Válassza az Alkalmaz gombot a módosítások alkalmazásához.
 
    ```bash
-   sudo systemctl restart iotedge
+   sudo iotedge config apply
    ```
 
 1. Keressen hibákat a konfigurációban.
@@ -202,7 +203,7 @@ Linux rendszeren ellenőrizze, hogy a felhasználó **iotedge** rendelkezik-e ol
 
 Habár ez a funkció nyilvános előzetes verzióban érhető el, konfigurálnia kell a IoT Edge eszközt az IoT Edge Runtime-modulok nyilvános előzetes verziójára. Az előző szakasz a edgeAgent konfigurálásának lépéseit ismerteti indításkor. A futásidejű modulokat is konfigurálnia kell az eszköz telepítéséhez.
 
-1. Konfigurálja a edgeHub modult a nyilvános előzetes rendszerkép használatára: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2` .
+1. Konfigurálja a edgeHub modult a nyilvános előzetes rendszerkép használatára: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4` .
 
 1. Konfigurálja az alábbi környezeti változókat a edgeHub modulhoz:
 
@@ -211,7 +212,7 @@ Habár ez a funkció nyilvános előzetes verzióban érhető el, konfigurálnia
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__nestedEdgeEnabled` | `true` |
 
-1. Konfigurálja a edgeAgent modult a nyilvános előzetes rendszerkép használatára: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2` .
+1. Konfigurálja a edgeAgent modult a nyilvános előzetes rendszerkép használatára: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4` .
 
 ## <a name="network-isolate-downstream-devices"></a>Hálózati elkülönítésű alsóbb szintű eszközök
 
@@ -356,21 +357,20 @@ Ha nem szeretné, hogy az alsóbb rétegbeli eszközök lekéréses kérelmeket 
 
 A IoT Edge ügynök az első futtatókörnyezet-összetevő, amely bármely IoT Edge eszközön elindul. Győződjön meg arról, hogy minden alsóbb rétegbeli IoT Edge eszköz elérheti a edgeAgent-modul rendszerképét az indításkor, majd hozzáférhet az üzembe helyezésekhez, és elindíthatja a modul többi rendszerképét is.
 
-Ha a config. YAML fájlt egy IoT Edge eszközön nyitja meg a hitelesítési információk, tanúsítványok és a szülő állomásnév megadásához, akkor az edgeAgent-tároló rendszerképét is frissítenie kell.
+Ha a konfigurációs fájlt egy IoT Edge eszközön nyitja meg a hitelesítési információk, tanúsítványok és a szülő állomásnév megadásához, frissítse az edgeAgent-tároló rendszerképét is.
 
 Ha a legfelső szintű átjáró eszköze a tároló képkérelmének kezelésére van konfigurálva, cserélje le `mcr.microsoft.com` a nevet a szülő állomásnévre és az API-proxy figyelési portjára. A központi telepítési jegyzékfájlban `$upstream` billentyűparancsként is használható, de ehhez a edgeHub modulnak kell kezelnie az útválasztást, és ez a modul nem indult el ezen a ponton. Például:
 
-```yml
-agent:
-  name: "edgeAgent"
-  type: "docker"
-  env: {}
-  config:
-    image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc2"
-    auth: {}
+```toml
+[agent]
+name = "edgeAgent"
+type = "docker"
+
+[agent.config]
+image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc4"
 ```
 
-Ha helyi tároló-beállításjegyzéket használ, vagy manuálisan adja meg a tároló lemezképeit az eszközön, akkor a config. YAML fájlt ennek megfelelően frissítse.
+Ha helyi tároló-beállításjegyzéket használ, vagy manuálisan adja meg a tároló lemezképeit az eszközön, ennek megfelelően frissítse a konfigurációs fájlt.
 
 #### <a name="configure-runtime-and-deploy-proxy-module"></a>Futtatókörnyezet konfigurálása és proxy modul üzembe helyezése
 

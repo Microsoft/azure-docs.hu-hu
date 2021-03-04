@@ -197,6 +197,9 @@
           href: supported-languages.md
         - name: C# (osztálytár)
           href: functions-dotnet-class-library.md
+        - name: C# (elszigetelt folyamat)
+          displayName: '.NET isolated, .NET 5'
+          href: dotnet-isolated-process-guide.md
         - name: C#-szkript (.csx)
           href: functions-reference-csharp.md
         - name: F#

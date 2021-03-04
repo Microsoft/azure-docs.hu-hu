@@ -4,16 +4,16 @@ description: Hozzon létre tesztelési tanúsítványokat, telepítsen és kezel
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/02/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1f07f9d481ca8ede29c8b8443dad81a442962a71
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6a4cade6a740bffc33695c40663609df38ba6e7a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044139"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044901"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>Tanúsítványok kezelése egy IoT Edge eszközön
 
@@ -51,8 +51,13 @@ A következő fájlok létrehozásához használja a saját hitelesítésszolgá
 
 Ebben a cikkben a *legfelső szintű hitelesítésszolgáltatót* nevezzük, nem pedig a szervezet legfelső szintű hitelesítésszolgáltatója. Ez a legfelső szintű hitelesítésszolgáltató a IoT Edge-forgatókönyvhöz, amelyet az IoT Edge hub modul, a felhasználói modulok és az alsóbb rétegbeli eszközök az egymás közötti megbízhatósági kapcsolat létrehozására használnak.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 > [!NOTE]
 > Jelenleg a libiothsm korlátozásai meggátolják a 2038 január 1-jén vagy azt követően lejáró tanúsítványok használatát.
+
+:::moniker-end
 
 Ha szeretné megtekinteni a tanúsítványok példáját, tekintse át a bemutató tanúsítványokat létrehozó parancsfájlokat a [teszt hitelesítésszolgáltatói tanúsítványok kezelése a mintákhoz és az oktatóanyagokhoz](https://github.com/Azure/iotedge/tree/master/tools/CACertificates)című témakörben.
 
@@ -60,20 +65,21 @@ Ha szeretné megtekinteni a tanúsítványok példáját, tekintse át a bemutat
 
 Telepítse a tanúsítványláncot a IoT Edge eszközre, és konfigurálja a IoT Edge futtatókörnyezetet az új tanúsítványokra való hivatkozáshoz.
 
+Másolja a három tanúsítvány-és kulcsfájl-fájlt a IoT Edge eszközre. Használhat olyan szolgáltatásokat, mint például a [Azure Key Vault](../key-vault/index.yml) vagy a [biztonságos másolási protokollt](https://www.ssh.com/ssh/scp/) használó függvények a tanúsítványfájl áthelyezéséhez.  Ha saját maga hozta létre a tanúsítványokat a IoT Edge eszközön, kihagyhatja ezt a lépést, és használhatja a munkakönyvtár elérési útját.
+
 Ha például a minta parancsfájlokat használta a [bemutató tanúsítványok létrehozásához](how-to-create-test-certificates.md), másolja a következő fájlokat a IoT-Edge eszközre:
 
 * Eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa: `<WRKDIR>\certs\iot-edge-device-MyEdgeDeviceCA-full-chain.cert.pem`
 * Eszköz HITELESÍTÉSSZOLGÁLTATÓjának titkos kulcsa: `<WRKDIR>\private\iot-edge-device-MyEdgeDeviceCA.key.pem`
 * Legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ: `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
 
-1. Másolja a három tanúsítvány-és kulcsfájl-fájlt a IoT Edge eszközre.
-
-   Használhat olyan szolgáltatásokat, mint például a [Azure Key Vault](../key-vault/index.yml) vagy a [biztonságos másolási protokollt](https://www.ssh.com/ssh/scp/) használó függvények a tanúsítványfájl áthelyezéséhez.  Ha saját maga hozta létre a tanúsítványokat a IoT Edge eszközön, kihagyhatja ezt a lépést, és használhatja a munkakönyvtár elérési útját.
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 
 1. Nyissa meg a IoT Edge biztonsági démon konfigurációs fájlját.
 
-   * Windows `C:\ProgramData\iotedge\config.yaml`
-   * Linux `/etc/iotedge/config.yaml`
+   * Windows: `C:\ProgramData\iotedge\config.yaml`
+   * Linux: `/etc/iotedge/config.yaml`
 
 1. Állítsa be a **tanúsítvány** tulajdonságait a config. YAML értékre a IoT Edge eszköz tanúsítvány-és kulcsfájl-FÁJLjának URI-elérési útjára. Távolítsa el a `#` karaktert, mielőtt a tanúsítvány tulajdonságai megszüntessék a négy sort. Győződjön meg arról, hogy a (z) **:** sor nem rendelkezik korábbi szóközökkel, és hogy a beágyazott elemek két szóközzel vannak behúzva. Például:
 
@@ -102,6 +108,41 @@ Ha például a minta parancsfájlokat használta a [bemutató tanúsítványok l
    * Windows: `C:\ProgramData\iotedge\hsm\certs` és `C:\ProgramData\iotedge\hsm\cert_keys`
 
    * Linux: `/var/lib/iotedge/hsm/certs` és `/var/lib/iotedge/hsm/cert_keys`
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. Nyissa meg a IoT Edge biztonsági démon konfigurációs fájlját: `/etc/aziot/config.toml`
+
+1. Keresse meg a `trust_bundle_cert` paramétert a fájl elején. A sor megjegyzésének visszaadása, és a fájl URI-ja megadása a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány számára az eszközön.
+
+   ```toml
+   trust_bundle_cert = "file:///<path>/<root CA cert>"
+   ```
+
+1. Keresse meg a `[edge_ca]` config. toml fájlban található szakaszt. Az ebben a szakaszban szereplő sorok megjegyzésének visszaadása és a IoT Edge eszközön található tanúsítványhoz és kulcshoz tartozó fájlok URI-elérési útjának megadása.
+
+   ```toml
+   [edge_ca]
+   cert = "file:///<path>/<device CA cert>"
+   pk = "file:///<path>/<device CA key>"
+   ```
+
+1. Győződjön meg arról, hogy a felhasználó **iotedge** rendelkezik olvasási engedéllyel a tanúsítványokat tároló címtárhoz.
+
+1. Ha korábban más tanúsítványokat használt IoT Edgehoz az eszközön, a IoT Edge elindítása vagy újraindítása előtt törölje a fájlokat a következő két könyvtárban:
+
+   * `/var/lib/aziot/certd/certs`
+   * `/var/lib/aziot/keyd/keys`
+
+:::moniker-end
+<!-- end 1.2 -->
+
+<!-- 1.1. -->
+<!-- Temporarily, customizable certificate lifetime not available in 1.2. Update before GA. -->
+:::moniker range="iotedge-2018-06"
 
 ## <a name="customize-certificate-lifetime"></a>A tanúsítvány élettartamának testreszabása
 
@@ -112,31 +153,29 @@ IoT Edge több esetben automatikusan hoz létre tanúsítványokat az eszközön
 
 További információ a IoT Edge eszköz különböző tanúsítványainak funkciójával kapcsolatban: a [Azure IoT Edge tanúsítványok használatának ismertetése](iot-edge-certs.md).
 
-A két automatikusan generált tanúsítvány esetében beállíthatja a **auto_generated_ca_lifetime_days** jelzőt a config. yamlban a tanúsítványok élettartamára vonatkozó napok számának beállításához.
+A két automatikusan generált tanúsítvány esetében beállíthatja, hogy a konfigurációs fájlban a **auto_generated_ca_lifetime_days** jelzőt állítsa be a tanúsítványok élettartamára vonatkozó napok számának beállításához.
 
 >[!NOTE]
 >Létezik egy harmadik automatikusan generált tanúsítvány, amelyet a IoT Edge Security Manager hoz létre, a **IoT Edge hub-kiszolgáló tanúsítványát**. A tanúsítványnak mindig 90 napos élettartama van, de a lejárata előtt automatikusan megújul. A **auto_generated_ca_lifetime_days** érték nem befolyásolja ezt a tanúsítványt.
 
-Ha a tanúsítvány lejáratát az alapértelmezett 90 napnál nem korábbi értékre szeretné beállítani, adja hozzá az értéket napokban a **config. YAML** fájl **tanúsítványok** szakaszába.
+A megadott számú nap lejárata után IoT Edget újra kell indítani az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványának újbóli létrehozásához. Az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa nem újítható meg automatikusan.
 
-A megadott számú nap lejárata után a IoT Edge biztonsági démont újra kell indítani az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványának újbóli létrehozásához, ezért a rendszer nem újítja meg automatikusan.
+1. Ha a tanúsítvány lejáratát az alapértelmezett 90 napnál nem korábbi értékre szeretné beállítani, adja hozzá az értéket napokban a konfigurációs fájl **tanúsítványok** szakaszához.
 
-```yaml
-certificates:
-  device_ca_cert: "<ADD URI TO DEVICE CA CERTIFICATE HERE>"
-  device_ca_pk: "<ADD URI TO DEVICE CA PRIVATE KEY HERE>"
-  trusted_ca_certs: "<ADD URI TO TRUSTED CA CERTIFICATES HERE>"
-  auto_generated_ca_lifetime_days: <value>
-```
+   ```yaml
+   certificates:
+     device_ca_cert: "<ADD URI TO DEVICE CA CERTIFICATE HERE>"
+     device_ca_pk: "<ADD URI TO DEVICE CA PRIVATE KEY HERE>"
+     trusted_ca_certs: "<ADD URI TO TRUSTED CA CERTIFICATES HERE>"
+     auto_generated_ca_lifetime_days: <value>
+   ```
 
-> [!NOTE]
-> Jelenleg a libiothsm korlátozásai meggátolják a 2038 január 1-jén vagy azt követően lejáró tanúsítványok használatát.
+   > [!NOTE]
+   > Jelenleg a libiothsm korlátozásai meggátolják a 2038 január 1-jén vagy azt követően lejáró tanúsítványok használatát.
 
-Miután megadta az értéket a config. YAML fájlban, hajtsa végre a következő lépéseket:
+1. Törölje a mappa tartalmát a `hsm` korábban létrehozott tanúsítványok eltávolításához.
 
-1. Törölje a `hsm` mappa tartalmát.
-
-   Windows: `C:\ProgramData\iotedge\hsm\certs and C:\ProgramData\iotedge\hsm\cert_keys` Linux: `/var/lib/iotedge/hsm/certs and /var/lib/iotedge/hsm/cert_keys`
+   Windows: `C:\ProgramData\iotedge\hsm\certs` és `C:\ProgramData\iotedge\hsm\cert_keys` Linux: `/var/lib/iotedge/hsm/certs` és `/var/lib/iotedge/hsm/cert_keys`
 
 1. Indítsa újra a IoT Edge szolgáltatást.
 
@@ -167,6 +206,42 @@ Miután megadta az értéket a config. YAML fájlban, hajtsa végre a következ�
    ```
 
    Tekintse meg az **éles készültségi** egység kimenetét: tanúsítványok ellenőrzését, amely felsorolja, hogy hány nap elteltével járjon le az automatikusan létrehozott hitelesítésszolgáltatói tanúsítványok érvényessége.
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 
+<!-- 1.2 --
+:::moniker range=">=iotedge-2020-11"
+
+1. To configure the certificate expiration to something other than the default 90 days, add the value in days to the **certificates** section of the config file.
+
+   ```toml
+   [certificates]
+   device_ca_cert = "<ADD URI TO DEVICE CA CERTIFICATE HERE>"
+   device_ca_pk = "<ADD URI TO DEVICE CA PRIVATE KEY HERE>"
+   trusted_ca_certs = "<ADD URI TO TRUSTED CA CERTIFICATES HERE>"
+   auto_generated_ca_lifetime_days = <value>
+   ```
+
+1. Delete the contents of the `certd` and `keyd` folders to remove any previously generated certificates: `/var/lib/aziot/certd/certs` `/var/lib/aziot/keyd/keys`
+
+1. Restart IoT Edge.
+
+   ```bash
+   sudo iotedge system restart
+   ```
+
+1. Confirm the new lifetime setting.
+
+   ```bash
+   sudo iotedge check --verbose
+   ```
+
+   Check the output of the **production readiness: certificates** check, which lists the number of days until the automatically generated device CA certificates expire.
+:::moniker-end
+<!-- end 1.2 --
+-->
 
 ## <a name="next-steps"></a>Következő lépések
 

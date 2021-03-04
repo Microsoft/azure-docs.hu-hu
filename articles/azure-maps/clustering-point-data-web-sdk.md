@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: e80465cf8d43918e6ed6da8ebb3b96f3f197e887
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 0af327f624d0fed648012ce1d12bacabca688cec
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679956"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044187"
 ---
 # <a name="clustering-point-data"></a>Fürtözési pontra vonatkozó adatértékek
 
@@ -26,17 +26,17 @@ Ha sok adatpontot jelenít meg a térképen, az adatpontok átfedésben lehetnek
 
 ## <a name="enabling-clustering-on-a-data-source"></a>Az adatforrások fürtözésének engedélyezése
 
-Engedélyezze a fürtözést a `DataSource` osztályban úgy, hogy a beállítást igaz értékre állítja `cluster` . Állítsa be `ClusterRadius` a közeli pontok kijelölését, és egy fürthöz kombinálja őket. A értéke `ClusterRadius` képpontban megadva. Ezzel a `clusterMaxZoom` beállítással adható meg egy nagyítási szint, amelyen le kell tiltani a fürtszolgáltatási logikát. Íme egy példa arra, hogyan engedélyezhető a fürtözés egy adatforrásban.
+Engedélyezze a fürtözést a `DataSource` osztályban úgy, hogy a beállítást igaz értékre állítja `cluster` . Állítsa be `clusterRadius` a közeli pontok kiválasztását és a fürtbe való egyesítését. A értéke `clusterRadius` képpontban megadva. Ezzel a `clusterMaxZoom` beállítással adható meg egy nagyítási szint, amelyen le kell tiltani a fürtszolgáltatási logikát. Íme egy példa arra, hogyan engedélyezhető a fürtözés egy adatforrásban.
 
 ```javascript
 //Create a data source and enable clustering.
 var datasource = new atlas.source.DataSource(null, {
     //Tell the data source to cluster point data.
     cluster: true,
-
+    
     //The radius in pixels to cluster points together.
     clusterRadius: 45,
-
+    
     //The maximum zoom level in which clustering occurs.
     //If you zoom in more than this, all points are rendered as symbols.
     clusterMaxZoom: 15
@@ -46,9 +46,9 @@ var datasource = new atlas.source.DataSource(null, {
 > [!TIP]
 > Ha két adatpont van a helyszínen, akkor lehetséges, hogy a fürt soha nem szakad meg egymástól, attól függetlenül, hogy a felhasználó milyen mértékben nagyítja a szolgáltatást. Ennek a megoldásnak a megadásával `clusterMaxZoom` letilthatja a fürtözési logikát, és egyszerűen megjelenítheti a mindent.
 
-Az alábbiakban az osztály által a `DataSource` fürtözéshez biztosított további módszerek érhetők el:
+Az `DataSource` osztály a következő módszereket biztosítja a fürtözéshez kapcsolódóan.
 
-| Módszer | Visszatérési típus | Description (Leírás) |
+| Metódus | Visszatérési típus | Leírás |
 |--------|-------------|-------------|
 | getClusterChildren (clusterId: szám) | &lt;A tömb &lt; funkcióinak &lt; geometriája, bármilyen &gt; \| alakzat&gt;&gt; | A következő nagyítási szinten kéri le a megadott fürt gyermekeit. Ezek a gyerekek az alakzatok és alfürtek kombinációja lehet. Az alfürtek a ClusteredProperties megfelelő tulajdonságokkal rendelkező funkciók lesznek. |
 | getClusterExpansionZoom (clusterId: szám) | Ígéret &lt; száma&gt; | Kiszámítja azt a nagyítási szintet, amelynél a fürt megkezdi a kibővítését vagy szétbontását. |
@@ -92,7 +92,7 @@ Tekintse meg a tollas <a href='https://codepen.io/azuremaps/pen/VRJrgO/'>fürtö
 
 Ha az egér eseményei olyan rétegen történnek, amely fürtözött adatpontokat tartalmaz, a fürtözött adatpont GeoJSON pont szolgáltatás objektumként tér vissza az eseményre. Ennek a pontnak a funkciója a következő tulajdonságokkal fog rendelkezni:
 
-| Tulajdonság neve             | Típus    | Description (Leírás)   |
+| Tulajdonság neve             | Típus    | Leírás   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | Azt jelzi, hogy a szolgáltatás egy fürtöt jelöl-e. |
 | `cluster_id`              | sztring  | A fürt egyedi azonosítója, amely használható az adatforrással `getClusterExpansionZoom` , `getClusterChildren` és `getClusterLeaves` metódusokkal. |

@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.date: 02/12/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 1a276915f8132f2941bfb4425011c2d34454093b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3350ff7aa05232173e5fd3b21451a76a0a40683d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693883"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043711"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>Előzetes verzió: az Azure-beli virtuálisgép-méretezési csoportok előkészítési módjai 
 
@@ -73,7 +73,7 @@ Az előnyben részesített módszer az Azure Resource Graph használata egy virt
 | order by resourceGroup desc, name desc 
 ```
 
-Az erőforrások [Azure Resource Graph](../governance/resource-graph/overview) használatával történő lekérdezése kényelmes és hatékony módja az Azure-erőforrások lekérdezésének, valamint az erőforrás-szolgáltatóhoz való API-hívások minimalizálásának. Az Azure Resource Graph egy végül konzisztens gyorsítótár, amelyben az új vagy frissített erőforrások nem jelenhetnek meg legfeljebb 60 másodpercig. A következőket teheti:
+Az erőforrások [Azure Resource Graph](../governance/resource-graph/overview.md) használatával történő lekérdezése kényelmes és hatékony módja az Azure-erőforrások lekérdezésének, valamint az erőforrás-szolgáltatóhoz való API-hívások minimalizálásának. Az Azure Resource Graph egy végül konzisztens gyorsítótár, amelyben az új vagy frissített erőforrások nem jelenhetnek meg legfeljebb 60 másodpercig. A következőket teheti:
 - Egy erőforráscsoport vagy előfizetés virtuális gépei listázása.
 - A Kibontás lehetőséggel lekérheti a példány nézetet (tartalék tartomány-hozzárendelés, energiaellátás és kiépítési állapotok) az előfizetésben lévő összes virtuális géphez.
 - A virtuális gépek beolvasása API-val és parancsokkal egyetlen példány modelljének és példányának nézetét szerezheti be.

@@ -13,14 +13,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/12/2020
+ms.date: 02/18/2021
 ms.author: radeltch
-ms.openlocfilehash: e8d58a74f9ce8489465934398014dd4af3309a9e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a4c4631a0a1263e5a5398c44a8570f92571102e8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101669824"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045836"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>Magas rendelkezésre állás a Windows rendszerű Azure-beli virtuális gépeken futó SAP NetWeaver számára az SAP-alkalmazások Azure NetApp Files (SMB) szolgáltatásával
 
@@ -82,6 +82,9 @@ Először olvassa el a következő SAP-megjegyzéseket és dokumentumokat:
 * [Egy (A) SCS-példány telepítése feladatátvevő fürtön](https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html)
 * [SMB-kötet létrehozása az Azure NetApp Files számára](../../../azure-netapp-files/create-active-directory-connections.md#requirements-for-active-directory-connections)
 * [NetApp SAP-alkalmazások Microsoft Azure a Azure NetApp Files használatával][anf-sap-applications-azure]
+
+> [!IMPORTANT]
+> VIGYÁZat: vegye figyelembe, hogy egy olyan SAP-rendszer telepítése, amely az SMB-megosztáson [Azure NetApp Files][anf-azure-doc] az SMB-köteten található SWPM, a nem megfelelő engedélyek telepítési hibája miatt meghiúsulhat, például "warningPerm nincs meghatározva". A hiba elkerüléséhez az SAP-rendszer telepítése során a felhasználónak, hogy milyen környezeti SWPM hajt végre, emelt szintű jogosultságot kell biztosítania a "tartományi rendszergazda" számára.  
 
 ## <a name="overview"></a>Áttekintés
 

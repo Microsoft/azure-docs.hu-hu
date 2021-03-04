@@ -5,17 +5,17 @@ author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.reviewer: kevindaw
-ms.date: 04/09/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: ee51b31246760e4619eef1e16e800b16ea886de0
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: f4b33b0156f1a5e27f71509cad637684a0332413
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430713"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046159"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>IoT Edge-eszköz létrehozása és kiépítése X. 509 tanúsítványok használatával
 
@@ -52,10 +52,14 @@ A következő fájlokra van szükség az automatikus kiépítés beállításáh
 * Egy teljes láncú tanúsítvány, amelynek tartalmaznia kell legalább az eszköz identitását és a köztes tanúsítványokat. A rendszer átadja a teljes lánc tanúsítványát a IoT Edge futtatókörnyezetnek.
 * Egy köztes vagy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány a megbízhatósági tanúsítványlánc alapján. A tanúsítványt a rendszer feltölti a DPS-be, ha létrehoz egy csoportos regisztrációt.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 > [!NOTE]
 > Jelenleg a libiothsm korlátozásai meggátolják a 2038 január 1-jén vagy azt követően lejáró tanúsítványok használatát.
 
-### <a name="use-test-certificates"></a>Tesztelési tanúsítványok használata
+:::moniker-end
+
+### <a name="use-test-certificates-optional"></a>Tesztelési tanúsítványok használata (nem kötelező)
 
 Ha nincs elérhető hitelesítésszolgáltató az új identitási tanúsítványok létrehozásához, és szeretné kipróbálni ezt a forgatókönyvet, a Azure IoT Edge git-tárház olyan parancsfájlokat tartalmaz, amelyek segítségével tesztelési tanúsítványokat hozhat létre. Ezek a tanúsítványok csak fejlesztési tesztelésre vannak kialakítva, és nem használhatók éles környezetben.
 
@@ -227,18 +231,21 @@ A következő információk állnak készen:
 
 ### <a name="linux-device"></a>Linuxos eszköz
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 1. Nyissa meg a konfigurációs fájlt a IoT Edge eszközön.
 
    ```bash
    sudo nano /etc/iotedge/config.yaml
    ```
 
-1. A fájl kiépítési konfigurációk szakaszának megkeresése. Jegyezze fel a DPS szimmetrikus kulcsú kiépítés sorait, és győződjön meg arról, hogy az egyéb kiépítési sorok megjegyzése megtörténik.
+1. A fájl kiépítési konfigurációk szakaszának megkeresése. Jegyezze fel a DPS X. 509 tanúsítvány kiépítés sorait, és győződjön meg arról, hogy az egyéb kiépítési sorok megjegyzése megtörténik.
 
    A `provisioning:` sornak nem lehetnek korábbi szóközök, és a beágyazott elemeket két szóközzel kell behúzni.
 
    ```yml
-   # DPS TPM provisioning configuration
+   # DPS X.509 provisioning configuration
    provisioning:
      source: "dps"
      global_endpoint: "https://global.azure-devices-provisioning.net"
@@ -252,8 +259,6 @@ A következő információk állnak készen:
    #  dynamic_reprovisioning: false
    ```
 
-   Igény szerint a vagy a `always_reprovision_on_startup` `dynamic_reprovisioning` vonalak használatával konfigurálhatja az eszköz újraépítésének viselkedését. Ha egy eszköz úgy van beállítva, hogy a rendszer újraépítse az indítást, a rendszer mindig először a DPS-t próbálja kiépíteni, majd visszatér a kiépítési biztonsági mentéshez, ha az nem sikerül. Ha egy eszköz úgy van beállítva, hogy dinamikusan újra kiépítse magát, IoT Edge újraindítja és újraépíti, ha a rendszer újraépítési eseményt észlel. További információ: [IoT hub eszköz újraépítési fogalmai](../iot-dps/concepts-device-reprovision.md).
-
 1. A, a és a értékének frissítése a `scope_id` `identity_cert` `identity_pk` DPS és az eszköz adataival.
 
    Ha hozzáadja az X. 509 tanúsítványt és a legfontosabb adatokat a config. YAML fájlhoz, az elérési utakat fájl URI-ként kell megadni. Például:
@@ -261,13 +266,74 @@ A következő információk állnak készen:
    `file:///<path>/identity_certificate_chain.pem`
    `file:///<path>/identity_key.pem`
 
-1. `registration_id`Ha szeretné, adjon meg egy eszközt az eszközhöz, vagy hagyja meg ezt a sort, hogy regisztrálja az eszközt az identitási tanúsítvány CN-nevével.
+1. Szükség esetén adjon meg egy `registration_id` eszközt az eszközhöz. Ellenkező esetben hagyja meg ezt a sort, hogy regisztrálja az eszközt az azonosító tanúsítvány CN-nevével.
+
+1. Igény szerint a vagy a `always_reprovision_on_startup` `dynamic_reprovisioning` vonalak használatával konfigurálhatja az eszköz újraépítésének viselkedését. Ha egy eszköz úgy van beállítva, hogy a rendszer újraépítse az indítást, a rendszer mindig először a DPS-t próbálja kiépíteni, majd visszatér a kiépítési biztonsági mentéshez, ha az nem sikerül. Ha egy eszköz úgy van beállítva, hogy dinamikusan újra kiépítse magát, IoT Edge újraindítja és újraépíti, ha a rendszer újraépítési eseményt észlel. További információ: [IoT hub eszköz újraépítési fogalmai](../iot-dps/concepts-device-reprovision.md).
+
+1. Mentse és zárjuk be a config. YAML fájlt.
 
 1. Indítsa újra a IoT Edge futtatókörnyezetet, hogy az az eszközön végrehajtott összes konfigurációs módosítást felveszi.
 
    ```bash
    sudo systemctl restart iotedge
    ```
+
+:::moniker-end
+<!-- end 1.1. -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. Hozzon létre egy konfigurációs fájlt az eszközhöz a IoT Edge telepítésének részeként megadott sablonfájl alapján.
+
+   ```bash
+   sudo cp /etc/aziot/config.toml.edge.template /etc/aziot/config.toml
+   ```
+
+1. Nyissa meg a konfigurációs fájlt a IoT Edge eszközön.
+
+   ```bash
+   sudo nano /etc/aziot/config.toml
+   ```
+
+1. A fájl **kiépítési** szakaszának megkeresése. Jegyezze fel az X. 509 tanúsítvánnyal rendelkező DPS-kiépítés sorait, és győződjön meg arról, hogy minden más kiépítési sor megjegyzésbe kerül.
+
+   ```toml
+   # DPS provisioning with X.509 certificate
+   [provisioning]
+   source = "dps"
+   global_endpoint = "https://global.azure-devices-provisioning.net"
+   id_scope = "<SCOPE_ID>"
+   
+   [provisioning.attestation]
+   method = "x509"
+   # registration_id = "<OPTIONAL REGISTRATION ID. LEAVE COMMENTED OUT TO REGISTER WITH CN OF identity_cert>"
+
+   identity_cert = "<REQUIRED URI TO DEVICE IDENTITY CERTIFICATE>"
+
+   identity_pk = "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
+   ```
+
+1. A, a és a értékének frissítése a `id_scope` `identity_cert` `identity_pk` DPS és az eszköz adataival.
+
+   Az azonosító tanúsítvány értéke fájl URI-ként is megadható, vagy az EST vagy egy helyi hitelesítésszolgáltató használatával dinamikusan kiállítható. A használandó formátum alapján csak egy sort adjon meg megjegyzésként.
+
+   Az identitás titkos kulcsának értéke fájl URI-ként vagy PKCS # 11 URI-ként is megadható. A használandó formátum alapján csak egy sort adjon meg megjegyzésként.
+
+   Ha PKCS # 11 URI-t használ, keresse meg a **PKCS # 11** szakaszt a konfigurációs fájlban, és adja meg a PKCS # 11 konfigurációjának adatait.
+
+1. Szükség esetén adjon meg egy `registration_id` eszközt az eszközhöz. Ellenkező esetben hagyja meg a sort, hogy regisztrálja az eszközt az azonosító tanúsítvány köznapi nevével.
+
+1. Mentse és zárja be a fájlt.
+
+1. Alkalmazza a IoT Edge végrehajtott konfigurációs módosításokat.
+
+   ```bash
+   sudo iotedge config apply
+   ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ### <a name="windows-device"></a>Windows-eszköz
 
@@ -287,7 +353,7 @@ A következő információk állnak készen:
    ```
 
    >[!TIP]
-   >A config. YAML fájl a tanúsítvány és a kulcs adatait fájl URI-ként tárolja. Azonban a Initialize-IoTEdge parancs kezeli ezt a formázási lépést, így megadhatja a tanúsítvány és a kulcs fájljainak abszolút elérési útját az eszközön.
+   >A konfigurációs fájl a tanúsítvány és a kulcs adatait fájl URI-ként tárolja. Azonban a Initialize-IoTEdge parancs kezeli ezt a formázási lépést, így megadhatja a tanúsítvány és a kulcs fájljainak abszolút elérési útját az eszközön.
 
 ## <a name="verify-successful-installation"></a>Sikeres telepítés ellenőrzése
 
@@ -298,6 +364,9 @@ Ellenőrizheti, hogy a rendszer használta-e a Device kiépítési szolgáltatá
 Az eszközön az alábbi parancsokkal ellenőrizheti, hogy a futtatókörnyezet telepítése és elindítása sikeresen megtörtént-e.
 
 ### <a name="linux-device"></a>Linuxos eszköz
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 
 Ellenőrizze az IoT Edge-szolgáltatás állapotát.
 
@@ -316,6 +385,29 @@ Futó modulok listázása.
 ```cmd/sh
 iotedge list
 ```
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+Ellenőrizze az IoT Edge-szolgáltatás állapotát.
+
+```cmd/sh
+sudo iotedge system status
+```
+
+A szolgáltatási naplók vizsgálata.
+
+```cmd/sh
+sudo iotedge system logs
+```
+
+Futó modulok listázása.
+
+```cmd/sh
+sudo iotedge list
+```
+:::moniker-end
 
 ### <a name="windows-device"></a>Windows-eszköz
 

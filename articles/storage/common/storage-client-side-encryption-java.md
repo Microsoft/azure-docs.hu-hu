@@ -6,17 +6,17 @@ author: tamram
 ms.service: storage
 ms.devlang: java
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 02/18/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-java
-ms.openlocfilehash: fafce52f9d760fac0d5c3f0ea1be2480547c5d4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78baaa3f794bed870b40fb3975f6b80ff37e90f0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91817524"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043728"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Client-Side titkosítás és Azure Key Vault Javával Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -48,7 +48,7 @@ A burkológörbe technikán keresztüli visszafejtés a következő módon műk�
 A Storage ügyféloldali kódtára [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) -t használ a felhasználói adattartalom titkosításához. Pontosabban, AES-sel rendelkező [titkosítási blokkoló (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) mód. Az egyes szolgáltatások némileg eltérően működnek, ezért ezeket itt fogjuk megbeszélni.
 
 ### <a name="blobs"></a>Blobok
-Az ügyféloldali kódtár jelenleg csak a teljes Blobok titkosítását támogatja. A titkosítás akkor támogatott, ha a felhasználók a **feltöltési*** módszereket vagy a **openOutputStream** módszert használják. A letöltések esetében a teljes és a tartományra vonatkozó letöltések is támogatottak.  
+Az ügyféloldali kódtár jelenleg csak a teljes Blobok titkosítását támogatja. A titkosítás akkor támogatott, ha a felhasználók a **feltöltés** _ metódusait vagy a _ *openOutputStream** metódust használják. A letöltések esetében a teljes és a tartományra vonatkozó letöltések is támogatottak.  
 
 A titkosítás során az ügyfél-függvénytár 16 bájtos véletlenszerű inicializálási vektort (IV) állít elő, amely egy 32 bájtos véletlenszerű tartalom-titkosítási kulccsal (CEK), valamint a Blobok adatainak ezen információk használatával történő titkosítását is elvégezheti. A burkolt CEK és néhány további titkosítási metaadat ezután blob-metaadatokként tárolódik a szolgáltatás titkosított blobja mellett.
 
@@ -152,7 +152,13 @@ A felhasználók opcionálisan engedélyezhetik a művelet módját, ahol a felt
 Használja például a **CloudBlobClient. getDefaultRequestOptions (). setRequireEncryption (true)** értéket, ha titkosítást kíván használni az adott ügyfélalkalmazás által végrehajtott összes blob-művelethez.
 
 ### <a name="blob-service-encryption"></a>Titkosítás Blob service
-Hozzon létre egy **BlobEncryptionPolicy** objektumot, és állítsa be a kérési beállítások között (API-ban vagy ügyféloldali szinten a **DefaultRequestOptions**használatával). Minden mást az ügyféloldali kódtár fog kezelni belsőleg.
+Hozzon létre egy **BlobEncryptionPolicy** objektumot, és állítsa be a kérési beállítások között (API-ban vagy ügyféloldali szinten a **DefaultRequestOptions** használatával). Minden mást az ügyféloldali kódtár fog kezelni belsőleg.
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+Jelenleg dolgozunk olyan kódrészletek létrehozásán, amelyek tükrözik az Azure Storage ügyféloldali kódtárainak 12. x verzióját. További információ: [Az Azure Storage V12 ügyféloldali kódtárainak bejelentése](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="java-v8"></a>[Java V8](#tab/java8)
 
 ```java
 // Create the IKey used for encryption.
@@ -172,9 +178,16 @@ blob.upload(stream, size, null, options, null);
 ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 blob.download(outputStream, null, options, null);
 ```
+---
 
 ### <a name="queue-service-encryption"></a>Titkosítás Queue szolgáltatás
-Hozzon létre egy **QueueEncryptionPolicy** objektumot, és állítsa be a kérési beállítások között (API-ban vagy ügyféloldali szinten a **DefaultRequestOptions**használatával). Minden mást az ügyféloldali kódtár fog kezelni belsőleg.
+Hozzon létre egy **QueueEncryptionPolicy** objektumot, és állítsa be a kérési beállítások között (API-ban vagy ügyféloldali szinten a **DefaultRequestOptions** használatával). Minden mást az ügyféloldali kódtár fog kezelni belsőleg.
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+Jelenleg dolgozunk olyan kódrészletek létrehozásán, amelyek tükrözik az Azure Storage ügyféloldali kódtárainak 12. x verzióját. További információ: [Az Azure Storage V12 ügyféloldali kódtárainak bejelentése](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="java-v8"></a>[Java V8](#tab/java8)
 
 ```java
 // Create the IKey used for encryption.
@@ -192,11 +205,18 @@ queue.addMessage(message, 0, 0, options, null);
 // Retrieve message
 CloudQueueMessage retrMessage = queue.retrieveMessage(30, options, null);
 ```
+---
 
 ### <a name="table-service-encryption"></a>Titkosítás Table service
 A titkosítási szabályzat létrehozása és a kérési beállítások megadása mellett meg kell adnia egy **EncryptionResolver** a **TableRequestOptions**-ben, vagy a [titkosítás] attribútumot kell megadnia az entitás kiolvasóján és szetterén.
 
 ### <a name="using-the-resolver"></a>A feloldó használata
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+Jelenleg dolgozunk olyan kódrészletek létrehozásán, amelyek tükrözik az Azure Storage ügyféloldali kódtárainak 12. x verzióját. További információ: [Az Azure Storage V12 ügyféloldali kódtárainak bejelentése](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="java-v8"></a>[Java V8](#tab/java8)
 
 ```java
 // Create the IKey used for encryption.
@@ -228,9 +248,16 @@ retrieveOptions.setEncryptionPolicy(policy);
 TableOperation operation = TableOperation.retrieve(ent.PartitionKey, ent.RowKey, DynamicTableEntity.class);
 TableResult result = currentTable.execute(operation, retrieveOptions, null);
 ```
+---
 
 ### <a name="using-attributes"></a>Attribútumok használata
-Ahogy azt fentebb említettük, ha az entitás TableEntity valósít meg, akkor a **EncryptionResolver**megadása helyett a [titkosítás] attribútummal rendezheti a tulajdonságok beolvasóját és a szetteret.
+Ahogy azt fentebb említettük, ha az entitás TableEntity valósít meg, akkor a **EncryptionResolver** megadása helyett a [titkosítás] attribútummal rendezheti a tulajdonságok beolvasóját és a szetteret.
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+Jelenleg dolgozunk olyan kódrészletek létrehozásán, amelyek tükrözik az Azure Storage ügyféloldali kódtárainak 12. x verzióját. További információ: [Az Azure Storage V12 ügyféloldali kódtárainak bejelentése](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="java-v8"></a>[Java V8](#tab/java8)
 
 ```java
 private string encryptedProperty1;
@@ -245,6 +272,7 @@ public void setEncryptedProperty1(final String encryptedProperty1) {
     this.encryptedProperty1 = encryptedProperty1;
 }
 ```
+---
 
 ## <a name="encryption-and-performance"></a>Titkosítás és teljesítmény
 
@@ -255,6 +283,6 @@ Vegye figyelembe, hogy a tárolási adatokat a rendszer további teljesítményb
 * Töltse le az [Azure Storage ügyféloldali kódtárat a Java Maven-csomaghoz](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage)  
 * Az [Azure Storage ügyféloldali kódtár letöltése a githubról a Java-forráskódhoz](https://github.com/Azure/azure-storage-java)
 * Töltse le a Azure Key Vault Maven-függvénytárat a Java Maven-csomagokhoz:
-  * [Core](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault-core) Alapcsomag
+  * [](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault-core) Alapcsomag
   * [Ügyfél](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault) -csomag
 * A [Azure Key Vault dokumentációjának](../../key-vault/general/overview.md) felkeresése

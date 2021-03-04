@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan fejlesztheti a függvényeket a Python használ
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 78965a1a09272663c52469b8ccd91988f30b53cc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0829ef9a6b63866c2527e521ed7edf48a3249392
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708696"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044255"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python fejlesztői útmutató
 
@@ -22,7 +22,7 @@ Python-fejlesztőként a következő cikkek egyike is érdekli:
 | <ul><li>[Python-függvény a Visual Studio Code használatával](./create-first-function-vs-code-csharp.md?pivots=programming-language-python)</li><li>[Python-függvény a Terminal/Command parancssorral](./create-first-function-cli-csharp.md?pivots=programming-language-python)</li></ul> | <ul><li>[Fejlesztői útmutató](functions-reference.md)</li><li>[Üzemeltetési lehetőségek](functions-scale.md)</li><li>[Teljesítménnyel &nbsp; kapcsolatos megfontolások](functions-best-practices.md)</li></ul> | <ul><li>[Képek besorolása a PyTorch használatával](machine-learning-pytorch.md)</li><li>[Azure Automation-minta](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[Gépi tanulás a TensorFlow-val](functions-machine-learning-tensorflow.md)</li><li>[Python-minták tallózása](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
 
 > [!NOTE]
-> Noha a [Python-alapú Azure functions helyileg fejlesztheti a Windows](./azure-functions/create-first-function-vs-code-python#run-the-function-locally)rendszeren, a Python csak Linux-alapú üzemeltetési csomag esetén támogatott az Azure-ban való futtatáskor. Tekintse meg a támogatott [operációs rendszerek/futtatókörnyezet-](./azure-functions/functions-scale#operating-systemruntime) kombinációk listáját.
+> Noha a [Python-alapú Azure functions helyileg fejlesztheti a Windows](create-first-function-vs-code-python.md#run-the-function-locally)rendszeren, a Python csak Linux-alapú üzemeltetési csomag esetén támogatott az Azure-ban való futtatáskor. Tekintse meg a támogatott [operációs rendszerek/futtatókörnyezet-](functions-scale.md#operating-systemruntime) kombinációk listáját.
 
 ## <a name="programming-model"></a>Programozási modell
 

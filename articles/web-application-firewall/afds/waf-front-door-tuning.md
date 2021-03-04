@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/11/2020
 ms.author: mohitku
 ms.reviewer: tyao
-ms.openlocfilehash: 4c710792dd7966fad76b33954fdf7c2253cf18f0
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8752886bc5304de420083212d29ccd3e1cb14084
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488238"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043694"
 ---
 # <a name="tuning-web-application-firewall-waf-for-azure-front-door"></a>Webalkalmazási tűzfal (WAF) finomhangolása az Azure bejárati ajtóhoz
  
@@ -38,9 +38,17 @@ UserId=20&captchaId=7&captchaId=15&comment="1=1"&rating=3
 
 Ha kipróbálja a kérelmet, a WAF letiltja az *1 = 1* karakterláncot tartalmazó forgalmat bármely paraméterben vagy mezőben. Ez az SQL-injektálási támadáshoz gyakran társított karakterlánc. Megtekintheti a naplókat, és megtekintheti a kérés időbélyegét és a blokkolt/egyeztetett szabályokat.
  
-A következő példában egy `FrontdoorWebApplicationFirewallLog` szabály egyezése miatt létrehozott naplót vizsgálunk.
+A következő példában egy `FrontdoorWebApplicationFirewallLog` szabály egyezése miatt létrehozott naplót vizsgálunk. Az alábbi Log Analytics lekérdezéssel megkeresheti az elmúlt 24 órában blokkolt kérelmeket:
+
+```kusto
+AzureDiagnostics
+| where Category == 'FrontdoorWebApplicationFirewallLog'
+| where TimeGenerated > ago(1d)
+| where action_s == 'Block'
+
+```
  
-A "requestUri" mezőben láthatja, hogy a kérelem `/api/Feedbacks/` konkrétan történt. További információért keresse meg a szabály AZONOSÍTÓját `942110` a "ruleName" mezőben. A szabály AZONOSÍTÓjának ismerete után megtekintheti a [OWASP ModSecurity alapszintű szabálykészlet hivatalos tárházát](https://github.com/coreruleset/coreruleset) , és megkeresheti az adott [szabály azonosítóját](https://github.com/coreruleset/coreruleset/blob/v3.1/dev/rules/REQUEST-942-APPLICATION-ATTACK-SQLI.conf) , és megtudhatja, hogy pontosan milyen a szabály egyezése. 
+A `requestUri` mezőben megtekintheti a kérést, hogy `/api/Feedbacks/` konkrétan megtörténjen. További információért keresse meg a szabály AZONOSÍTÓját `942110` a `ruleName` mezőben. A szabály AZONOSÍTÓjának ismerete után megtekintheti a [OWASP ModSecurity alapszintű szabálykészlet hivatalos tárházát](https://github.com/coreruleset/coreruleset) , és megkeresheti az adott [szabály azonosítóját](https://github.com/coreruleset/coreruleset/blob/v3.1/dev/rules/REQUEST-942-APPLICATION-ATTACK-SQLI.conf) , és megtudhatja, hogy pontosan milyen a szabály egyezése. 
  
 A mező ellenőrzésével `action` azt láthatjuk, hogy ez a szabály úgy van beállítva, hogy letiltsa a kérelmeket, és megerősítjük, hogy a kérést a WAF valóban letiltotta, mert a értéke a következő: `policyMode` `prevention` . 
  
@@ -197,6 +205,9 @@ Ha a felügyelt szabály letiltásához Azure PowerShellt szeretne használni, t
 
 ![WAF-szabályok](../media/waf-front-door-tuning/waf-rules.png)
 
+> [!TIP]
+> Érdemes dokumentálni a WAF-szabályzatban végrehajtott módosításokat. Példákat tartalmaz a hamis pozitív észlelés szemléltetésére, és egyértelműen megmagyarázza, miért adtak hozzá egyéni szabályt, letiltottak egy szabályt vagy szabályrendszert, vagy hozzáadtak egy kivételt. Ez a dokumentáció akkor lehet hasznos, ha a jövőben újratervezi az alkalmazást, és ellenőriznie kell, hogy a módosítások még érvényesek-e. A szolgáltatás segítséget nyújt abban az esetben is, ha bármikor naplózva van, vagy meg kell indokolnia, hogy miért konfigurálta újra a WAF házirendet az alapértelmezett beállítások alapján.
+
 ## <a name="finding-request-fields"></a>Kérelem mezőinek keresése
 
 A [Hegedűs](https://www.telerik.com/fiddler)használatával megvizsgálhatja az egyes kéréseket, és meghatározhatja a weblapok adott mezőit. Ez akkor hasznos, ha ki kell zárni bizonyos mezőket a WAF-ben található kizárási listával.
@@ -264,7 +275,7 @@ A kérések és válaszok fejlécek megtekintésének egy másik módja, ha a b�
 
 Ha a kérelem cookie-kat tartalmaz, a cookie-k lapon lehet megtekinteni őket a Hegedűsben. A cookie-adatok használatával kizárásokat vagy egyéni szabályokat hozhat létre a WAF-ben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg az [Azure webalkalmazási tűzfalat](../overview.md).
 - Útmutató a [Front Door létrehozásához](../../frontdoor/quickstart-create-front-door.md).

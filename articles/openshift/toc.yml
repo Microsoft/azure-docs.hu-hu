@@ -28,6 +28,8 @@
           href: dns-forwarding.md
     - name: Storage
       items:
+        - name: A PVC titkosítása az ügyfél által felügyelt kulccsal (előzetes verzió)
+          href: howto-encrypt-data-disks.md
         - name: Azure Files StorageClass létrehozása
           href: howto-create-a-storageclass.md
         - name: A beépített tárolóregisztrációs adatbázis használata

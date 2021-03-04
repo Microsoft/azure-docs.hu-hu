@@ -4,12 +4,12 @@ description: A helyszíni vagy Microsoft Azure webalkalmazástól származó fü
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 05b6c29b121cbf42cf0ebe12b2879e50735db7ea
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 124b8d3de59d1645379d50360e69a5fdbd5587e5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652003"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045292"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Függőségek nyomon követése az Azure Application Insights 
 
@@ -88,6 +88,9 @@ Ha ki szeretné kapcsolni a szabványos függőség-követési modult, távolít
 Weblapok esetében Application Insights JavaScript SDK automatikusan függőségként gyűjti az AJAX-hívásokat.
 
 ## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>Részletes SQL-követés a teljes SQL-lekérdezés beszerzéséhez
+
+> [!NOTE]
+> Azure Functions külön beállításokat igényel az SQL-szöveg gyűjtésének engedélyezéséhez, lásd: [a figyelés beállítása Azure functions](../../azure-functions/configure-monitoring.md) további információért.
 
 SQL-hívások esetén a rendszer a kiszolgáló és az adatbázis nevét gyűjti össze és tárolja az összegyűjtött név szerint `DependencyTelemetry` . Van egy "adat" nevű további mező, amely a teljes SQL-lekérdezési szöveget tartalmazhatja.
 

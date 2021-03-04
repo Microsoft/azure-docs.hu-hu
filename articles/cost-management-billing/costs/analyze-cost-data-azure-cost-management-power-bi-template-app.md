@@ -3,17 +3,17 @@ title: Az Azure költségeinek elemzése a Power BI-alkalmazással
 description: Ez a cikk ismerteti az Azure Cost Management Power BI-alkalmazás telepítését és használatát.
 author: bandersmsft
 ms.author: banders
-ms.date: 1/29/2021
+ms.date: 02/19/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: d3439f5a86c445898d95191a32496b5f0c86be0b
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: b08ff57f964ef7bc3712c930c222a10ed0f89ef4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99070157"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045098"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Az Azure költségeinek elemzése a Nagyvállalati Szerződésekhez (EA) készült Azure Cost Management Power BI-alkalmazással
 
@@ -36,24 +36,23 @@ Az alkalmazás korlátozza a testreszabhatóság kiszabását. Ha szeretné mód
 Az alkalmazás telepítése:
 
 1. Nyissa meg az [Azure Cost Management Power BI-alkalmazást](https://aka.ms/costmgmt/ACMApp).
-2. A Power BI AppSource oldalán válassza a **Letöltés most** lehetőséget.
-3. A használati feltételek és adatvédelmi szabályzat elfogadásához válassza a **Folytatás** lehetőséget.
-4. Az **A Power BI-alkalmazás telepítése** mezőben válassza a **Telepítés** lehetőséget.
-5. Ha szükséges, hozzon létre egy munkaterületet, majd válassza a **Folytatás** lehetőséget.
-6. Ha a telepítés befejeződött, egy megjelenő értesítés jelzi, hogy az új alkalmazás készen áll.
-7. Válassza az **Ugrás az alkalmazáshoz** lehetőséget.
-8. A **Bevezetés az új alkalmazás használatába** terület **Az adatok csatlakoztatása** részén válassza a **Csatlakozás** lehetőséget.  
-  ![Bevezetés az új alkalmazás használatába – Csatlakozás](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-data2.png)
-9. A megjelenő párbeszédablakban adja meg EA regisztrációs számát a **BillingProfileIdOrEnrollmentNumber** értékeként. Adja meg, hogy hány hónapnyi adatot kíván lekérni. Hagyja meg a **Regisztrációs szám** alapértelmezett **Hatókör** értékét, majd válassza a **Következő** lehetőséget.  
-  ![EA regisztrációs adatok megadása](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
-10. A következő párbeszédablak csatlakozik az Azure-hoz, és beolvassa a fenntartott példányokra vonatkozó javaslatokhoz szükséges adatokat. *Hagyja meg az alapértelmezett értékek konfigurációját*, majd válassza a **Bejelentkezés** lehetőséget.  
-  ![Képernyőkép a Csatlakozás az Azure Cost Managementhez alkalmazás párbeszédablakáról, az alapértelmezett értékekkel.](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
-11. A telepítés utolsó lépésében csatlakozni kell az EA-regisztrációhoz, amihez [vállalati rendszergazdai](../manage/understand-ea-roles.md) fiók szükséges. Válassza a **Bejelentkezés** elemet az EA-regisztrációval való hitelesítéshez. Ez a lépés egy adatfrissítési műveletet is elindít a Power BI-ban.  
-  ![Csatlakozás EA-regisztrációhoz](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png)  
+1. A Power BI AppSource oldalán válassza a **Letöltés most** lehetőséget.
+1. A használati feltételek és adatvédelmi szabályzat elfogadásához válassza a **Folytatás** lehetőséget.
+1. Az **A Power BI-alkalmazás telepítése** mezőben válassza a **Telepítés** lehetőséget.
+1. Ha szükséges, hozzon létre egy munkaterületet, majd válassza a **Folytatás** lehetőséget.
+1. Ha a telepítés befejeződött, egy megjelenő értesítés jelzi, hogy az új alkalmazás készen áll.
+1. Válassza ki a telepített alkalmazást.
+1. A kezdeti lépések **lapon válassza az adatkapcsolat lehetőséget**.
+    :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-your-data.png" alt-text="Képernyőfelvétel: az adatkapcsolat csatlakoztatása hivatkozás kiemelése." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-your-data.png" :::
+1. A megjelenő párbeszédablakban adja meg EA regisztrációs számát a **BillingProfileIdOrEnrollmentNumber** értékeként. Adja meg, hogy hány hónapnyi adatot kíván lekérni. Hagyja meg a **Regisztrációs szám** alapértelmezett **Hatókör** értékét, majd válassza a **Következő** lehetőséget.  
+    :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png" alt-text="Képernyőfelvétel: az E-regisztrációs adatok megadása." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png" :::
+1. A következő párbeszédablak csatlakozik az Azure-hoz, és beolvassa az adatgyűjtést. *Hagyja meg az alapértelmezett értékeket konfiguráltként* , majd válassza a **bejelentkezés lehetőséget, és folytassa a folytatást**.  
+    :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png" alt-text="Képernyőfelvétel: a kapcsolódás Azure Cost Management alkalmazáshoz párbeszédpanel alapértelmezett értékekkel." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png" :::
+1. A telepítés utolsó lépésében csatlakozni kell az EA-regisztrációhoz, amihez [vállalati rendszergazdai](../manage/understand-ea-roles.md) fiók szükséges. Hagyja meg az összes alapértelmezett értéket. Válassza **a bejelentkezés és a kapcsolat** lehetőséget.  
+    :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png" alt-text="Képernyőfelvétel: a kapcsolódás Azure Cost Management alkalmazáshoz párbeszédpanel, amely az alapértelmezett értékeket tartalmazza a kapcsolódáshoz." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png" :::
+1. A rendszer felszólítja, hogy végezzen hitelesítést az EA-regisztrációval. Hitelesítés Power BI használatával. A hitelesítés után megkezdődik egy Power BI Adatfrissítés.
     > [!NOTE]
     > Az adatfrissítési folyamat befejeződése eltarthat egy ideig. Az időtartam a hónapok megadott számától és a szinkronizálásra váró adatok mennyiségétől függ.
-12. Az adatok frissítési állapotának ellenőrzéséhez válassza az **Adathalmazok** lapot a munkaterületén. Pillantson a Frissített időbélyeg melletti területre. Ha a frissítés még zajlik, látni fog egy kijelzőt, amely azt mutatja, hogy a frissítés folyamatban van.  
-  ![Adatok frissítése](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/data-refresh2.png)
 
 Az adatfrissítés befejezése után válassza ki az Azure Cost Management alkalmazást az előre létrehozott jelentések megtekintéséhez.
 
@@ -78,11 +77,11 @@ Az alkalmazásban az alábbi jelentések érhetők el.
 
 **Windows Server – AHB-használat** – A jelentés azon virtuális gépek számát jeleníti meg, amelyeken engedélyezve van az Azure Hybrid Benefit. Megjeleníti a virtuális gépek által használt magok/vCPU-k számát is.
 
-![Azure Hybrid Benefit – Teljes jelentés](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report-full.png)
+:::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report-full.png" alt-text="Képernyőfelvétel a teljes Azure Hybrid benefites jelentésről." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report-full.png" :::
 
 A jelentés azokat a Windows rendszerű virtuális gépeket is azonosítja, amelyeken a Hybrid Benefit **engedélyezett**, de _kevesebb, mint_ 8 vCPU-val rendelkeznek. Azt is megmutatja, ha a Hybrid Benefit **nincs engedélyezve**, de 8 _vagy több_ vCPU van. Ez az információ segíti a Hybrid Benefit teljes kihasználását. Használja az előnyt a legdrágább virtuális gépén, hogy maximalizálhassa a potenciális megtakarítást.
 
-![Azure Hybrid Benefits – Kevesebb, mint 8 vCPU, és a vCPU-k nincsenek engedélyezve](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report.png)
+:::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report.png" alt-text="Képernyőfelvétel: az Azure Hybrid Benefits jelentés kevesebb mint 8 vCPU és vCPU nem engedélyezett területe." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report.png" :::
 
 **RI – Költséghelyi elszámolás** – A jelentés segít megismerni, hogy a fenntartott példányokra (RI) vonatkozó előny hol és mekkora részben van alkalmazva régiónként, előfizetésenként, erőforráscsoportonként vagy erőforrásonként. A jelentés amortizált használati adatokat használ a nézet megjelenítéséhez.
 
@@ -105,7 +104,7 @@ Az adatokra való építkezéshez használhat amortizált használati adatokat.
 
 A jelentés használatához válassza a részletes elemzés szűrőjét.
 
-![VM RI-lefedettségi jelentés – A részletes elemzés kiválasztása](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-drill-down2.png)
+:::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-drill-down2.png" alt-text="Képernyőfelvétel: a virtuális gép RI lefedettségi jelentésében válassza a részletezés kiválasztása lehetőséget." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-drill-down2.png" :::
 
 Jelölje ki az elemezni kívánt régiót. Ezután válassza ki a példányméret-rugalmassági csoportot és egyebeket.
 
@@ -118,7 +117,7 @@ A javaslatok táblázat a felhasznált virtuálisgép-méretek alapján nyújt j
 
 A _Normalizált méret_ és az _Ajánlott normalizált mennyiség_ értékek segítségével a vásárlást egy példányméret-rugalmassági csoport legkisebb méretére normalizálhatja. Ez az információ akkor hasznos, ha csak egy foglalást tervez vásárolni a példányméret-rugalmassági csoport minden méretéhez.
 
-![RI-javaslatok](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-recomendations.png)
+:::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-recommendations.png" alt-text="Képernyőkép az RI-javaslatok jelentésről." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-recommendations.png" :::
 
 **VM RI-lefedettség (egyetlen javaslat)** – A jelentés az igény szerinti VM-használat és az RI VM-használata között oszlik meg a megadott időszakra vonatkozóan. Egy előfizetés hatókörében ad javaslatokat VM RI-vásárlásokhoz.
 
@@ -151,7 +150,7 @@ A **Hatókör** alapértelmezett `Enrollment Number` értéke módosult a Cost M
 
 Csatlakozzon újra a Cost Managementhez, és állítsa a **Hatókör** értékét a következőre: `Enrollment Number`. Ne adja meg a szervezete regisztrációs számát, inkább írja be a(z) `Enrollment Number` értéket pont úgy, ahogy az alábbi képen megjelenik.
 
-![EA-regisztrációs adatok megadása](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
+:::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number-troubleshoot.png" alt-text="Képernyőfelvétel: a beléptetési szám alapértelmezett szövege nem változtatható meg." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number-troubleshoot.png" :::
 
 ### <a name="budgetamount-error"></a>BudgetAmount hiba
 
@@ -166,12 +165,11 @@ Data source error: The 'budgetAmount' column does not exist in the rowset. Table
 
 #### <a name="cause"></a>Ok
 
-Ez a hiba az alapul szolgáló metaadatok hibája miatt következik be. A probléma azért merül fel, mert nincs elérhető költségvetés a **Cost Management > Költségvetés** alatt az Azure Portalon. A hiba javítása folyamatban van a Power BI Desktop és a Power BI szolgáltatásban. 
+Ez a hiba az alapul szolgáló metaadatok hibája miatt következik be. A probléma azért merül fel, mert nincs elérhető költségvetés a **Cost Management > Költségvetés** alatt az Azure Portalon. A hiba javítása folyamatban van a Power BI Desktop és a Power BI szolgáltatásban.
 
 #### <a name="solution"></a>Megoldás
 
 - Amíg a hiba nincs kijavítva, megkerülheti a problémát egy tesztköltségvetés hozzáadásával az Azure Portalon a számlázási fiók/EA-regisztráció szintjén. A tesztköltségvetés megszünteti a Power BI-kapcsolat blokkolását. A költségvetés létrehozásával kapcsolatos további információkért lásd: [Oktatóanyag: Azure-költségvetések létrehozása és kezelése](tutorial-acm-create-budgets.md).
-
 
 ### <a name="invalid-credentials-for-azureblob-error"></a>Érvénytelen hitelesítő adatok az AzureBlobhoz hiba
 
@@ -183,15 +181,14 @@ Failed to update data source credentials: The credentials provided for the Azure
 
 #### <a name="cause"></a>Ok
 
-Ez a hiba akkor fordul elő, ha módosítja az AutoFitComboMeter blobkapcsolat hitelesítési módszerét.
+Ez a hiba akkor fordul elő, ha megváltoztatja az adatforrás-kapcsolatok hitelesítési módszerét.
 
 #### <a name="solution"></a>Megoldás
 
 1. Csatlakozzon az adatokhoz.
 1. Az EA-regisztráció és a hónapok számának megadása után bizonyosodjon meg arról, hogy az alapértelmezett **Névtelen** érték van beállítva a Hitelesítési módszerhez, és a **Nincs** érték az Adatvédelmi szinthez.  
-  ![Képernyőkép a Csatlakozás az Azure Cost Managementhez alkalmazás párbeszédablakáról, amelyben Névtelen és Nincs értékek vannak megadva.](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png)  
+  :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png" alt-text="Képernyőkép a Csatlakozás az Azure Cost Managementhez alkalmazás párbeszédablakáról, amelyben Névtelen és Nincs értékek vannak megadva." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png" :::
 1. A következő oldalon állítsa be az **OAuth2** értéket a Hitelesítési módszerhez, és a **Nincs** értéket az Adatvédelmi szinthez. Majd jelentkezzen be a regisztrációval való hitelesítéshez. Ez a lépés egy Power BI-adatfrissítési műveletet is elindít.
-
 
 ## <a name="data-reference"></a>Adatreferencia
 

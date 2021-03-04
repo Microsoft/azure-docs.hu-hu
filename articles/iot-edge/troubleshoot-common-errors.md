@@ -4,19 +4,19 @@ description: Ez a cikk a IoT Edge-megoldások telepítésekor észlelt gyakori p
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/10/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e1605f45dc8a7a1c03b5481ea17478064414df59
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a3e646f44978e8897c22d579639efcef0fcd2205
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100382208"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045972"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Az Azure IoT Edge gyakori problémái és azok megoldásai
 
@@ -216,6 +216,9 @@ A IoT Edge futtatókörnyezet csak 64 karakternél rövidebb gazdagépeket támo
 
 Ha ezt a hibát látja, akkor a virtuális gép DNS-nevének konfigurálásával, majd a DNS-név beállítása állomásnévként a telepítési parancsban is megoldható.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 1. A Azure Portal navigáljon a virtuális gép áttekintés lapjára.
 2. Válassza a **Konfigurálás** a DNS-név alatt lehetőséget. Ha a virtuális gépnek már van konfigurált DNS-neve, nem kell újat konfigurálnia.
 
@@ -236,6 +239,39 @@ Ha ezt a hibát látja, akkor a virtuális gép DNS-nevének konfigurálásával
       ```cmd
       notepad C:\ProgramData\iotedge\config.yaml
       ```
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. A Azure Portal navigáljon a virtuális gép áttekintés lapjára.
+
+2. Válassza a **Konfigurálás** a DNS-név alatt lehetőséget. Ha a virtuális gépnek már van konfigurált DNS-neve, nem kell újat konfigurálnia.
+
+   ![A virtuális gép DNS-nevének konfigurálása](./media/troubleshoot/configure-dns.png)
+
+3. Adjon meg egy értéket a **DNS-név címkéhez** , majd válassza a **Mentés** lehetőséget.
+
+4. Másolja az új DNS-nevet, amelynek formátuma legyen **\<DNSnamelabel\> . \<vmlocation\> cloudapp.azure.com**.
+
+5. A IoT Edge eszközön nyissa meg a konfigurációs fájlt.
+
+   ```bash
+   sudo nano /etc/aziot/config.toml
+   ```
+
+6. Cserélje le a értéket a `hostname` DNS-nevére.
+
+7. Mentse és zárjuk be a fájlt, majd alkalmazza a módosításokat IoT Edgera.
+
+   ```bash
+   sudo iotedge config apply
+   ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="cant-get-the-iot-edge-daemon-logs-on-windows"></a>Nem lehet beolvasni a IoT Edge Daemon-naplókat a Windows rendszerben
 
@@ -343,7 +379,7 @@ A IoT Edge démon érvényes konfigurációs fájllal aktív, de nem tudja elind
 
 **Alapvető ok:**
 
-Az átjáró mögött található eszközök a `parent_hostname` config. YAML fájl mezőjében megadott szülő IoT Edge eszközről kapják meg a modul rendszerképeit. IoT Edge A `Could not perform HTTP request` hiba azt jelenti, hogy az alárendelt eszköz nem tudja elérni a szülő eszközét http-n keresztül.
+Az átjáró mögött található eszközök IoT Edge a `parent_hostname` konfigurációs fájl mezőjében megadott szülő IoT Edge eszközről kapják meg a modul lemezképeit. A `Could not perform HTTP request` hiba azt jelenti, hogy az alárendelt eszköz nem tudja elérni a szülő eszközét http-n keresztül.
 
 **Felbontás**
 

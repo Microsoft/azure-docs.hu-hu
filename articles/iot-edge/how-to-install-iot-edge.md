@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 01/20/2021
+ms.date: 03/01/2021
 ms.author: kgremban
-ms.openlocfilehash: efbae71162bdd0c126287191f7ad35cf903db138
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3a2d048bfd3b47cd5a3cb93763aa27fac1b89649
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378077"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044918"
 ---
 # <a name="install-or-uninstall-azure-iot-edge-for-linux"></a>Linuxos Azure IoT Edge telepítése vagy eltávolítása
 
@@ -96,11 +96,14 @@ Ha a Moby Container Engine telepítésekor hibákat kap, ellenőrizze a Linux-ke
 
 A parancsfájl kimenetében győződjön meg arról, hogy a és a összes eleme `Generally Necessary` `Network Drivers` engedélyezve van. Ha hiányoznak a funkciók, engedélyezze őket a kernel a forrásból való újraépítésével, majd a megfelelő kernel. config fájlban való felvételhez kapcsolódó modulok kiválasztásával. Hasonlóképpen, ha olyan kernel-konfigurációs generátort használ `defconfig` , mint a vagy a `menuconfig` , megkeresheti és engedélyezheti a megfelelő szolgáltatásokat, és ennek megfelelően újjáépítheti a kernelt. Miután telepítette az újonnan módosított kernelt, futtassa újra a bejelentkezést ellenőrző parancsfájlt annak ellenőrzéséhez, hogy az összes szükséges funkció engedélyezve lett-e.
 
-## <a name="install-the-iot-edge-security-daemon"></a>A IoT Edge biztonsági démon telepítése
+## <a name="install-iot-edge"></a>IoT Edge telepítése
+
+<!-- 1.1 -->
+::: moniker range="iotedge-2018-06"
 
 A IoT Edge biztonsági démon a IoT Edge eszközön biztosít és tart fenn biztonsági szabványokat. A démon minden rendszerindításkor elindul, és elindítja az eszközt a IoT Edge futtatókörnyezet további részének elindításával.
 
-Az ebben a szakaszban szereplő lépések a legújabb verziónak az internetkapcsolattal rendelkező eszközre történő telepítésének tipikus folyamatát szemléltetik. Ha telepítenie kell egy adott verziót, például egy előzetes verziót, vagy offline üzemmódban kell telepítenie, kövesse a következő szakaszban található [Offline vagy adott verzió telepítési](#offline-or-specific-version-installation-optional) lépéseit.
+Az ebben a szakaszban szereplő lépések a legújabb verziónak az internetkapcsolattal rendelkező eszközre történő telepítésének tipikus folyamatát szemléltetik. Ha telepítenie kell egy adott verziót, például egy előzetes verziót, vagy offline üzemmódban kell telepítenie, kövesse a jelen cikk későbbi, [Offline vagy adott verziójának telepítési](#offline-or-specific-version-installation-optional) lépéseit.
 
 Frissítési csomagok listája az eszközön.
 
@@ -128,6 +131,54 @@ Ha a biztonsági démon egy adott verzióját szeretné telepíteni, adja meg a 
 
 Ha a telepíteni kívánt verzió nem szerepel a listáján, kövesse a cikk későbbi, [Offline vagy adott verziójának telepítési](#offline-or-specific-version-installation-optional) lépéseit. Ez a szakasz bemutatja, hogyan célozhatja meg a IoT Edge biztonsági démon vagy a Release Candidate verziójának korábbi verzióját.
 
+<!-- end 1.1 -->
+::: moniker-end
+
+<!-- 1.2 -->
+::: moniker range=">=iotedge-2020-11"
+
+A IoT Edge szolgáltatás biztonsági szabványokat biztosít és tart fenn a IoT Edge eszközön. A szolgáltatás minden rendszerindításkor elindul, és elindítja az eszközt a IoT Edge futtatókörnyezet további részének elindításával.
+
+A IoT Identity Service a IoT Edge 1,2-es verziójával együtt lett bevezetve. Ez a szolgáltatás kezeli az identitások kiépítés és felügyeletét IoT Edge és más, a IoT Hubkel kommunikáló eszköz-összetevőkhöz.
+
+Az ebben a szakaszban szereplő lépések a legújabb verziónak az internetkapcsolattal rendelkező eszközre történő telepítésének tipikus folyamatát szemléltetik. Ha telepítenie kell egy adott verziót, például egy előzetes verziót, vagy offline üzemmódban kell telepítenie, kövesse a jelen cikk későbbi, [Offline vagy adott verziójának telepítési](#offline-or-specific-version-installation-optional) lépéseit.
+
+>[!NOTE]
+>A jelen szakaszban ismertetett lépések bemutatják, hogyan telepítheti az IoT Edge 1,2-es verzióját, amely jelenleg nyilvános előzetes verzióban érhető el. Ha a IoT Edge legújabb általánosan elérhető verziójának telepítésére vonatkozó lépéseket keresi, tekintse meg a cikk [1,1 (LTS)](?view=iotedge-2018-06&preserve-view=true) verzióját.
+>
+>Ha már rendelkezik egy régebbi verziót futtató IoT Edge eszközzel, és a 1,2-re szeretné frissíteni, használja a [IoT Edge biztonsági démon és futtatókörnyezet frissítése](how-to-update-iot-edge.md)című témakör lépéseit. Az 1,2-es verzió megfelelően különbözik a korábbi IoT Edge verzióitól, hogy a frissítéshez adott lépések szükségesek.
+
+Frissítési csomagok listája az eszközön.
+
+   ```bash
+   sudo apt-get update
+   ```
+
+Ellenőrizze, hogy a IoT Edge mely verziói érhetők el.
+
+   ```bash
+   apt list -a aziot-edge
+   ```
+
+Ha a IoT Edge legújabb verzióját szeretné telepíteni, használja a következő parancsot, amely az Identity Service-csomag legújabb verzióját is telepíti:
+
+   ```bash
+   sudo apt-get install aziot-edge
+   ```
+
+<!-- commenting out for public preview. reintroduce at GA
+
+Or, if you want to install a specific version of IoT Edge and the identity service, specify the versions from the apt list output. Specify the same versions for both services.. For example, the following command installs the most recent version of the 1.2 release:
+
+   ```bash
+   sudo apt-get install aziot-edge=1.2* aziot-identity-service=1.2*
+   ```
+
+-->
+
+<!-- end 1.2 -->
+::: moniker-end
+
 ## <a name="provision-the-device-with-its-cloud-identity"></a>Az eszköz kiépítése a Felhőbeli identitással
 
 Most, hogy telepítette a tároló motort és a IoT Edge futtatókörnyezetet az eszközre, készen áll a következő lépésre, amely az eszköz Felhőbeli identitás-és hitelesítési adataival való beállítására szolgál.
@@ -143,20 +194,22 @@ Ezen a ponton a IoT Edge Runtime telepítve van a Linux-eszközön, és az eszk�
 
 Ez a szakasz végigvezeti az eszköz szimmetrikus kulcsos hitelesítéssel történő kiépítésének lépésein. Regisztrálnia kell az eszközét IoT Hubban, és le kell kérnie a kapcsolatok karakterláncát az eszköz adataiból. Ha nem, kövesse az [IoT Edge eszköz regisztrálása IoT Hubban](how-to-register-device.md)című témakör lépéseit.
 
+<!-- 1.1 -->
+::: moniker range="iotedge-2018-06"
+
 A IoT Edge eszközön nyissa meg a konfigurációs fájlt.
 
    ```bash
    sudo nano /etc/iotedge/config.yaml
    ```
 
-Keresse meg a fájl kiépítési konfigurációit, és a **manuális üzembe helyezési konfigurációt a kapcsolatok karakterlánc szakasz használatával** írja vissza.
+Keresse meg a fájl kiépítési konfigurációit, és a **manuális üzembe helyezési konfigurációt a kapcsolatok karakterlánca szakasz használatával** írja le, ha még nem tette meg a megjegyzéseit.
 
    ```yml
    # Manual provisioning configuration using a connection string
    provisioning:
      source: "manual"
      device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
-     dynamic_reprovisioning: false
    ```
 
 **Device_connection_string** értékének frissítése a IoT Edge eszközhöz tartozó kapcsolatok karakterláncával. Győződjön meg arról, hogy a többi kiépítési szakaszt feljegyezték. Győződjön meg arról, hogy a **kiépítés:** sor nem tartalmaz korábbi szóközt, és a beágyazott elemek két szóközzel vannak behúzva.
@@ -173,11 +226,58 @@ A konfigurációs fájlban szereplő kiépítési információk megadása után 
    sudo systemctl restart iotedge
    ```
 
+<!-- end 1.1 -->
+::: moniker-end
+
+<!-- 1.2 -->
+::: moniker range=">=iotedge-2020-11"
+
+Hozza létre az eszköz konfigurációs fájlját a IoT Edge telepítésének részeként megadott sablonfájl alapján.
+
+   ```bash
+   sudo cp /etc/aziot/config.toml.edge.template /etc/aziot/config.toml
+   ```
+
+A IoT Edge eszközön nyissa meg a konfigurációs fájlt.
+
+   ```bash
+   sudo nano /etc/aziot/config.toml
+   ```
+
+Keresse meg a fájl **kiépítési** szakaszát, és a manuális kiépítés a kapcsolatok karakterlánc-soraival című szakaszt.
+
+   ```toml
+   # Manual provisioning with connection string
+   [provisioning]
+   source = "manual"
+   connection_string = "<ADD DEVICE CONNECTION STRING HERE>"
+   ```
+
+**Connection_string** értékének frissítése a IoT Edge eszközhöz tartozó kapcsolatok karakterláncával.
+
+A vágólap tartalmának a Nanoba vagy a sajtóba való beillesztéséhez `Shift+Right Click` `Shift+Insert` .
+
+Mentse és zárja be a fájlt.
+
+   `CTRL + X`, `Y`, `Enter`
+
+Miután beírta a kiépítési információkat a konfigurációs fájlban, alkalmazza a módosításokat:
+
+   ```bash
+   sudo iotedge config apply
+   ```
+
+<!-- end 1.2 -->
+::: moniker-end
+
 ### <a name="option-2-authenticate-with-x509-certificates"></a>2. lehetőség: hitelesítés X. 509 tanúsítvánnyal
 
 Ezen a ponton a IoT Edge Runtime telepítve van a Linux-eszközön, és az eszközt a Felhőbeli identitás-és hitelesítési adataival kell kiépíteni.
 
 Ez a szakasz végigvezeti az eszköz X. 509 tanúsítvánnyal történő hitelesítésének lépésein. Regisztrálnia kell az eszközét IoT Hubban, és meg kell adnia a IoT Edge eszközön található tanúsítvány-és titkos kulccsal egyező ujjlenyomatai megfelelnek. Ha nem, kövesse az [IoT Edge eszköz regisztrálása IoT Hubban](how-to-register-device.md)című témakör lépéseit.
+
+<!-- 1.1 -->
+::: moniker range="iotedge-2018-06"
 
 A IoT Edge eszközön nyissa meg a konfigurációs fájlt.
 
@@ -188,7 +288,7 @@ A IoT Edge eszközön nyissa meg a konfigurációs fájlt.
 Keresse meg a fájl létesítési konfigurációk szakaszát, és írja be a **manuális kiépítési konfigurációt az X. 509 azonosító tanúsítványa szakasz használatával** . Győződjön meg arról, hogy a többi kiépítési szakaszt feljegyezték. Győződjön meg arról, hogy a **kiépítés:** sor nem tartalmaz korábbi szóközt, és a beágyazott elemek két szóközzel vannak behúzva.
 
    ```yml
-   # Manual provisioning configuration using a connection string
+   # Manual provisioning configuration using an x.509 identity certificate
    provisioning:
      source: "manual"
      authentication:
@@ -197,7 +297,6 @@ Keresse meg a fájl létesítési konfigurációk szakaszát, és írja be a **m
        device_id: "<REQUIRED DEVICE ID PROVISIONED IN IOTHUB>"
        identity_cert: "<REQUIRED URI TO DEVICE IDENTITY CERTIFICATE>"
        identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
-     dynamic_reprovisioning: false
    ```
 
 Frissítse a következő mezőket:
@@ -217,35 +316,118 @@ A konfigurációs fájlban szereplő kiépítési információk megadása után 
    sudo systemctl restart iotedge
    ```
 
+<!-- end 1.1 -->
+::: moniker-end
+
+<!-- 1.2 -->
+::: moniker range=">=iotedge-2020-11"
+
+Hozza létre az eszköz konfigurációs fájlját a IoT Edge telepítésének részeként megadott sablonfájl alapján.
+
+   ```bash
+   sudo cp /etc/aziot/config.toml.edge.template /etc/aziot/config.toml
+   ```
+
+A IoT Edge eszközön nyissa meg a konfigurációs fájlt.
+
+   ```bash
+   sudo nano /etc/aziot/config.toml
+   ```
+
+Keresse meg a fájl **kiépítési** szakaszát, és tegye meg a manuális kiépítés sorát az X. 509 azonosító tanúsítványával. Győződjön meg arról, hogy a többi kiépítési szakaszt feljegyezték.
+
+   ```toml
+   # Manual provisioning with x.509 certificates
+   [provisioning]
+   source = "manual"
+   iothub_hostname = "<REQUIRED IOTHUB HOSTNAME>"
+   device_id = "<REQUIRED DEVICE ID PROVISIONED IN IOTHUB>"
+
+   [provisioning.authentication]
+   method = "x509"
+
+   identity_cert = "<REQUIRED URI OR POINTER TO DEVICE IDENTITY CERTIFICATE>"
+
+   identity_pk = "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
+   ```
+
+Frissítse a következő mezőket:
+
+* **iothub_hostname**: a IoT hub állomásneve, amelyhez az eszköz csatlakozni fog. Például: `{IoT hub name}.azure-devices.net`.
+* **device_id**: az eszköz regisztrálása során megadott azonosító.
+* **identity_cert**: URI azonosító tanúsítvány az eszközön, például: `file:///path/identity_certificate.pem` . Vagy dinamikusan kiállíthatja a tanúsítványt az EST vagy egy helyi hitelesítésszolgáltató használatával.
+* **identity_pk**: a megadott identitási tanúsítványhoz tartozó titkos kulcs fájljának URI azonosítója, például: `file:///path/identity_key.pem` . Vagy adjon meg egy PKCS # 11 URI-t, majd adja meg a konfigurációs adatokat a konfigurációs fájl későbbi, **PKCS # 11** szakaszában.
+
+Mentse és zárja be a fájlt.
+
+   `CTRL + X`, `Y`, `Enter`
+
+Miután beírta a kiépítési információkat a konfigurációs fájlban, alkalmazza a módosításokat:
+
+   ```bash
+   sudo iotedge config apply
+   ```
+
+<!-- end 1.2 -->
+::: moniker-end
+
 ## <a name="verify-successful-configuration"></a>Sikeres konfiguráció ellenőrzése
 
 Ellenőrizze, hogy a futtatókörnyezet sikeresen telepítve és konfigurálva van-e a IoT Edge eszközön.
 
-1. Ellenőrizze, hogy a IoT Edge biztonsági démon rendszerszolgáltatásként fut-e.
+>[!TIP]
+>Az `iotedge` parancsok futtatásához megemelt jogosultsági szint szükséges. Amikor az IoT Edge-futtatókörnyezet telepítése után kijelentkezik, majd először újra bejelentkezik a gépre, az engedélyei automatikusan frissülnek. Addig használja `sudo` a parancsot a parancsok előtt.
+
+Ellenőrizze, hogy fut-e a IoT Edge rendszerszolgáltatás.
+
+<!-- 1.1 -->
+::: moniker range="iotedge-2018-06"
 
    ```bash
    sudo systemctl status iotedge
    ```
 
-   >[!TIP]
-   >Az `iotedge` parancsok futtatásához megemelt jogosultsági szint szükséges. Amikor az IoT Edge-futtatókörnyezet telepítése után kijelentkezik, majd először újra bejelentkezik a gépre, az engedélyei automatikusan frissülnek. Addig használja `sudo` a parancsot a parancsok előtt.
+::: moniker-end
 
-2. Ha hibaelhárításra van szükség, kérje le a szolgáltatás naplóit.
+<!-- 1.2 -->
+::: moniker range=">=iotedge-2020-11"
+
+   ```bash
+   sudo iotedge system status
+   ```
+
+::: moniker-end
+
+Ha hibaelhárításra van szükség, kérje le a szolgáltatás naplóit.
+
+<!-- 1.1 -->
+::: moniker range="iotedge-2018-06"
 
    ```bash
    journalctl -u iotedge
    ```
 
-3. Az eszköz használatával `check` ellenőrizze az eszköz konfigurációját és kapcsolódási állapotát.
+::: moniker-end
+
+<!-- 1.2 -->
+::: moniker range=">=iotedge-2020-11"
+
+   ```bash
+   sudo iotedge system logs
+   ```
+
+::: moniker-end
+
+Az eszköz használatával `check` ellenőrizze az eszköz konfigurációját és kapcsolódási állapotát.
 
    ```bash
    sudo iotedge check
    ```
 
-   >[!TIP]
-   >Mindig használja `sudo` az ellenőrzési eszköz futtatására, még az engedélyek frissítése után is. Az eszköznek emelt szintű jogosultságokkal kell rendelkeznie a **config. YAML** fájl eléréséhez a konfiguráció állapotának ellenőrzéséhez.
+>[!TIP]
+>Mindig használja `sudo` az ellenőrzési eszköz futtatására, még az engedélyek frissítése után is. Az eszköznek emelt szintű jogosultsággal kell rendelkeznie a konfigurációs fájl eléréséhez a konfiguráció állapotának ellenőrzéséhez.
 
-4. Tekintse meg az IoT Edge-eszközön futó összes modult. A szolgáltatás első indításakor csak a **edgeAgent** modult kell futtatnia. A edgeAgent modul alapértelmezés szerint fut, és az eszközre telepített további modulok telepítését és elindítását is lehetővé teszi.
+Tekintse meg az IoT Edge-eszközön futó összes modult. A szolgáltatás első indításakor csak a **edgeAgent** modult kell futtatnia. A edgeAgent modul alapértelmezés szerint fut, és az eszközre telepített további modulok telepítését és elindítását is lehetővé teszi.
 
    ```bash
    sudo iotedge list
@@ -262,11 +444,14 @@ Az ebben a szakaszban ismertetett lépéseket követve telepítheti a Azure IoT 
 
 A curl-parancsok használatával közvetlenül a IoT Edge GitHub-tárházból is megcélozhatja az összetevők fájljait.
 
+<!-- 1.1 -->
+::: moniker range="iotedge-2018-06"
+
 1. Navigáljon a [Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases)kiadásokhoz, és keresse meg a célként használni kívánt kiadási verziót.
 
 2. Bontsa ki az **eszközök** szakaszt az adott verzióhoz.
 
-3. Minden kiadásnak új fájlokkal kell rendelkeznie a IoT Edge biztonsági démonhoz és a hsmlib. Ezen összetevők frissítéséhez használja az alábbi parancsokat.
+3. Minden kiadásnak új fájlokkal kell rendelkeznie a IoT Edge biztonsági démonhoz és a hsmlib. Ha offline eszközre kívánja telepíteni a IoT Edget, töltse le előre ezeket a fájlokat. Ellenkező esetben az alábbi parancsokkal frissítheti ezeket az összetevőket.
 
    1. Keresse meg a IoT Edge eszköz architektúrájának megfelelő **libiothsm-STD-** fájlt. Kattintson a jobb gombbal a fájl hivatkozásra, és másolja a hivatkozás címe.
 
@@ -284,6 +469,40 @@ A curl-parancsok használatával közvetlenül a IoT Edge GitHub-tárházból is
       curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
       ```
 
+<!-- end 1.1 -->
+::: moniker-end
+
+<!-- 1.2 -->
+::: moniker range=">=iotedge-2020-11"
+
+>[!NOTE]
+>Ha az eszköz jelenleg a 1,1-es vagy régebbi verziójú IoT Edge fut, távolítsa el a **iotedge** és a **libiothsm-STD** csomagokat, mielőtt ezt a szakaszt végrehajtja. További információ: [Update from 1,0 vagy 1,1 to 1,2](how-to-update-iot-edge.md#special-case-update-from-10-or-11-to-12).
+
+1. Navigáljon a [Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases)kiadásokhoz, és keresse meg a célként használni kívánt kiadási verziót.
+
+2. Bontsa ki az **eszközök** szakaszt az adott verzióhoz.
+
+3. Minden kiadásnak új fájlokkal kell rendelkeznie IoT Edge és az Identity szolgáltatáshoz. Ha offline eszközre kívánja telepíteni a IoT Edget, töltse le előre ezeket a fájlokat. Ellenkező esetben az alábbi parancsokkal frissítheti ezeket az összetevőket.
+
+   1. Keresse meg a IoT Edge eszköz architektúrájának megfelelő, **aziot-Identity-Service** fájlt. Kattintson a jobb gombbal a fájl hivatkozásra, és másolja a hivatkozás címe.
+
+   2. A következő parancsban található másolt hivatkozás használatával telepítheti az Identity Service adott verzióját:
+
+      ```bash
+      curl -L <identity service link> -o aziot-identity-service.deb && sudo dpkg -i ./aziot-identity-service.deb
+      ```
+
+   3. A IoT Edge eszköz architektúrájának megfelelő **aziot-** fájl megkeresése. Kattintson a jobb gombbal a fájl hivatkozásra, és másolja a hivatkozás címe.
+
+   4. A következő parancsban található másolt hivatkozásra kattintva telepítheti a IoT Edge ezen verzióját.
+
+      ```bash
+      curl -L <iotedge link> -o aziot-edge.deb && sudo dpkg -i ./aziot-edge.deb
+      ```
+
+<!-- end 1.2 -->
+::: moniker-end
+
 Most, hogy a Container Engine és a IoT Edge Runtime telepítve van az eszközre, készen áll a következő lépésre, amely [az eszköz Felhőbeli identitással](#provision-the-device-with-its-cloud-identity)való kiépítésére szolgál.
 
 ## <a name="uninstall-iot-edge"></a>IoT Edge eltávolítása
@@ -292,9 +511,25 @@ Ha el szeretné távolítani a IoT Edge telepítését az eszközről, használj
 
 Távolítsa el az IoT Edge-futtatókörnyezetet.
 
+<!-- 1.1 -->
+::: moniker range="iotedge-2018-06"
+
 ```bash
-sudo apt-get remove --purge iotedge
+sudo apt-get remove iotedge
 ```
+
+::: moniker-end
+
+<!-- 1.2 -->
+::: moniker range=">=iotedge-2020-11"
+
+```bash
+sudo apt-get remove aziot-edge
+```
+
+::: moniker-end
+
+`--purge`Ha törölni szeretné a IoT Edgehoz társított összes fájlt, beleértve a konfigurációs fájlokat is, használja a jelzőt. Hagyja ki ezt a jelzőt, ha újra szeretné telepíteni IoT Edge, és a későbbiekben ugyanazt a konfigurációs információt használja.
 
 A IoT Edge futtatókörnyezet eltávolításakor a létrehozott tárolók leállnak, de továbbra is léteznek az eszközön. Megtekintheti az összes tárolót, hogy azok megmaradjanak-e.
 

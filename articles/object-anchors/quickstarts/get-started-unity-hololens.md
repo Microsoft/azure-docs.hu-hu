@@ -4,15 +4,15 @@ description: Ebből a rövid útmutatóból megtudhatja, hogyan építhet ki egy
 author: craigktreasure
 manager: virivera
 ms.author: crtreasu
-ms.date: 02/02/2021
+ms.date: 03/02/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: caf64883635d7fa1746d12caf24333a22ba2fa98
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4f85a258042430d58690ef578db6d21a6c831d50
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748585"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044813"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-object-anchors-in-unity"></a>Gyors útmutató: HoloLens-alkalmazás létrehozása Azure Object-Horgonyokkal, Unity
 
@@ -38,8 +38,6 @@ A következőket fogja megtanulni:
 Az egység területen nyissa meg a `quickstarts/apps/unity/basic` projektet.
 
 [!INCLUDE [Import Unity Package](../../../includes/object-anchors-quickstart-unity-import-package.md)]
-
-[!INCLUDE [Unity build and run](../../../includes/object-anchors-quickstart-unity-build-run.md)]
 
 [!INCLUDE [Unity build sample scene 1](../../../includes/object-anchors-quickstart-unity-build-sample-scene-1.md)]
 

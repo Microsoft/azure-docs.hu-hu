@@ -7,17 +7,17 @@ ms.custom:
 - devx-track-csharp
 - devx-track-azurecli
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: e5a3872cace0c2a691d64f4c00bd29dc3248f27f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a78abea5bcc5925cb2e137d918c7217ae92b118e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748572"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044323"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>Rövid útmutató: C#-függvény létrehozása az Azure-ban a parancssorból
 
 > [!div class="op_single_selector" title1="Válassza ki a függvény nyelvét: "]
-> - [C#](create-first-function-cli-csharp-uiex.md)
+> - [C#](create-first-function-cli-csharp-ieux.md)
 > - [Java](create-first-function-cli-java.md)
 > - [JavaScript](create-first-function-cli-node.md)
 > - [PowerShell](create-first-function-cli-powershell.md)

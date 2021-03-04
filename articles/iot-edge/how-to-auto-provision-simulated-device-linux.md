@@ -8,12 +8,12 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: fccd1bd6f808fad11946c6f0b0dff1f453b61d66
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: ace0847f1b6df646bf0d9a6c8507f4660ab02c8b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430628"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046210"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>IoT Edge-eszköz létrehozása és kiépítése Linux rendszerű TPM-sel
 
@@ -240,8 +240,8 @@ A rendszerszintű beállítások felülbírálása érdekében engedélyezheti a
 4. Másolja a következő hozzáférési adatokat a szabályok fájlba.
 
    ```input
-   # allow iotedge access to tpm0
-   KERNEL=="tpm0", SUBSYSTEM=="tpm", OWNER="iotedge", MODE="0600"
+   # allow aziottpm access to tpm0
+   KERNEL=="tpm0", SUBSYSTEM=="tpm", OWNER="aziottpm", MODE="0600"
    ```
 
 5. Mentse és zárja be a fájlt.

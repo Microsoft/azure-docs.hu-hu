@@ -1,17 +1,16 @@
 ---
 title: Az Azure Monitor üzembe helyezése
 description: A Azure Monitor teljes megvalósításához szükséges különböző lépéseket ismerteti az Azure-előfizetés összes erőforrásának figyeléséhez.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: f5855d7ab1f7ba8e11334f1373fb10166f47003a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7656efeb26a8a8b3c752ea996c8e644c68a48626
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708254"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044000"
 ---
 # <a name="deploy-azure-monitor"></a>Az Azure Monitor üzembe helyezése
 Az Azure-erőforrások figyelésének engedélyezése Azure Monitor az Azure Monitor-összetevők konfigurálását és az Azure-erőforrások konfigurálását is lehetővé teszi, hogy a gyűjtéshez Azure Monitor figyelési adatokat készítsenek. Ez a cikk a Azure Monitor teljes megvalósításához szükséges különböző lépéseket ismerteti az Azure-előfizetésében lévő összes erőforrás figyelésére szolgáló közös konfiguráció használatával. Az egyes lépésekhez tartozó alapszintű leírások a részletes konfigurációs követelményekre mutató hivatkozásokkal is rendelkeznek.
