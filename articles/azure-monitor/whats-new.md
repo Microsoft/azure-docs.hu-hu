@@ -1,17 +1,16 @@
 ---
 title: Az Azure Monitor dokumentációjának újdonságai
 description: A Azure Monitor dokumentációjának frissítése havonta frissül.
-ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 02/10/2021
-ms.openlocfilehash: b21e5ea8e25844e3e025915b0b9f15162c642f25
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: dd6c44587ce3f4e2b5de940ef831a20a4079c4ef
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101713439"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051922"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Az Azure Monitor dokumentációjának újdonságai
 
@@ -48,7 +47,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 ### <a name="logs"></a>Naplók    
 - [Azure monitor ügyfél által felügyelt kulcs](./logs/customer-managed-keys.md) – felhasználóhoz rendelt felügyelt identitás bevezetése.
-- A [Azure monitor a dedikált fürtöket naplózza](./logs/logs-dedicated-clusters.md) – frissítette a visszajelzési kódot.
+- [Azure monitor naplók dedikált fürtök](./logs/logs-dedicated-clusters.md) – frissített válasz kódja.
 - [Több szolgáltatás lekérdezése – Azure monitor és Azure adatkezelő (előzetes verzió)](/azure/azure-monitor/platform/azure-data-explorer-monitor-cross-service-query) – új cikk.
 
 ### <a name="metrics"></a>Mérőszámok
@@ -721,7 +720,7 @@ Több frissítés a diagnosztikai bővítmény tartalmának újraírása részek
 
 - [Az Azure monitoring-ügynökök áttekintése](agents/agents-overview.md) – átstrukturált táblázatok az egyes ügynökök egyedi funkcióinak jobb tisztázásához.
 - [Azure Diagnostics bővítmény áttekintése](agents/diagnostics-extension-overview.md) – teljes újraírás.
-- A [blob Storage használata az IIS-hez és a Table Storage](essentials/diagnostics-extension-logs.md) -hoz a frissítéshez és a tisztasághoz Azure monitor általános újraírással kapcsolatos eseményekhez.
+- A [blob Storage használata az IIS-hez és a Table Storage](agents/diagnostics-extension-logs.md) -hoz a frissítéshez és a tisztasághoz Azure monitor általános újraírással kapcsolatos eseményekhez.
 - [Telepítse és konfigurálja a Windows Azure Diagnostics bővítményt (wad)](agents/diagnostics-extension-windows-install.md) – új cikk. 
 - [Windows Diagnostics bővítmény sémája](agents/diagnostics-extension-schema-windows.md) – átrendezve.
 - [Adatok küldése a Windows Azure Diagnostics bővítményből az azure Event Hubsba](agents/diagnostics-extension-stream-event-hubs.md) – teljes mértékben újraírható és frissítve.

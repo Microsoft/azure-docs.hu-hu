@@ -1,17 +1,16 @@
 ---
 title: A figyelés konfigurálása a VM-beli betekintő Guest Health szolgáltatásban (előzetes verzió)
 description: Ismerteti, hogyan lehet módosítani a virtuális gépekhez tartozó (előzetes verzió) alapértelmezett figyelését a Azure Portal használatával.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/14/2020
-ms.openlocfilehash: 8c15a44fc086c9c686e75879b3086436ea327560
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0f6599bb9f379cf471dafbb83a7deefbb05c0dbe
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719593"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052211"
 ---
 # <a name="configure-monitoring-in-vm-insights-guest-health-preview"></a>A figyelés konfigurálása a VM-beli betekintő Guest Health szolgáltatásban (előzetes verzió)
 A virtuális gép elemzése lehetővé teszi a virtuális gépek állapotának megtekintését olyan teljesítmény-mérési készlet alapján, amely rendszeres időközönként mintavételt végez. Ez a cikk azt ismerteti, hogyan módosíthatja az alapértelmezett figyelést a Azure Portal használatával. Emellett ismerteti a [figyelőknek az adatgyűjtési szabály használatával történő konfigurálásához](vminsights-health-configure-dcr.md)szükséges alapvető fogalmakat is.

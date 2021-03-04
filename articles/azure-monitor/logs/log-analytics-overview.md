@@ -1,17 +1,16 @@
 ---
 title: A Azure Monitor Log Analytics áttekintése
 description: Leírja, hogy Log Analytics melyik az a Azure Portal, amely a Azure Monitor naplókban lévő adatok elemzésére szolgáló naplók szerkesztésére és futtatására szolgál.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/04/2020
-ms.openlocfilehash: ef8be3d1fd815362971d5ae2beb27edf47766c94
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d83cc4045f09ed0f704a0d61c6b303406835eb44
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723163"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052296"
 ---
 # <a name="overview-of-log-analytics-in-azure-monitor"></a>A Azure Monitor Log Analytics áttekintése
 A Log Analytics egy olyan eszköz a Azure Portal, amely Azure Monitor naplókba tartozó adatnapló-lekérdezések szerkesztésére és futtatására szolgál. Írhat olyan egyszerű lekérdezést, amely rekordokat ad vissza, majd a Log Analytics funkcióit használja a rendezésre, szűrésre és elemzésre. Vagy egy összetettebb lekérdezést is írhat a statisztikai elemzések elvégzéséhez, és megjelenítheti az eredményeket egy diagramon egy adott trend azonosításához. Függetlenül attól, hogy a lekérdezések eredményét interaktív módon használja-e, vagy más Azure Monitor funkciókkal, például a log lekérdezési riasztásokkal vagy a munkafüzetekkel kívánja használni, Log Analytics az az eszköz, amelyet írási és tesztelési műveletek végrehajtásához használni fog. 

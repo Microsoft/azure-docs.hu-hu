@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6fd28c9392d760888eafde37471a49ffaa2e4423
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a3dc0b9e83af5a29172189f75e5a2174dc4d393d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694138"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096122"
 ---
 # <a name="create-a-workspace-with-data-exfiltration-protection-enabled"></a>Munkaterület létrehozása a kiszűrése-védelem engedélyezésével
 Ez a cikk azt ismerteti, hogyan hozhat létre olyan munkaterületet, amelyen engedélyezve van az kiszűrése Protection, és hogyan kezelheti a jóváhagyott Azure AD-bérlőket ehhez a munkaterülethez.
@@ -50,7 +50,9 @@ Felügyelt privát végpontokat hozhat létre az Azure AD-bérlők azon Azure-er
 >A munkaterületén kívüli bérlők erőforrásai nem rendelkezhetnek az SQL-készletekhez való kapcsolódáshoz szükséges tűzfalszabályok blokkolásával. A munkaterület felügyelt virtuális hálózatában lévő erőforrások, például a Spark-fürtök, felügyelt magánhálózati kapcsolatokon keresztül kapcsolódhatnak a tűzfallal védett erőforrásokhoz.
 
 ## <a name="known-limitations"></a>Ismert korlátozások
-A felhasználók megadhatnak egy környezeti konfigurációs fájlt a Python-csomagok nyilvános adattárakból (például PyPI) való telepítéséhez. A védett munkaterületek kiszűrése a kimenő adattárak kapcsolatai le vannak tiltva. Ennek eredményeképpen a nyilvános adattárakból (például PyPI) telepített Python-könyvtár nem támogatott. Másik lehetőségként a felhasználók létrehozhatnak egy privát csatornát az elsődleges Azure Data Lake Storage fiókjában, és hivatkozhatnak arra, hogy a Conda-környezet konfigurációs fájlján belül. 
+A felhasználók megadhatnak egy környezeti konfigurációs fájlt a Python-csomagok nyilvános adattárakból (például PyPI) való telepítéséhez. A védett munkaterületek kiszűrése a kimenő adattárak kapcsolatai le vannak tiltva. Ennek eredményeképpen a nyilvános adattárakból (például PyPI) telepített Python-könyvtár nem támogatott. 
+
+Másik lehetőségként a felhasználók feltölthetik a munkaterület-csomagokat, vagy létrehozhatnak egy privát csatornát az elsődleges Azure Data Lake Storage fiókjában. További információért látogasson el a [csomagkezelő az Azure szinapszis Analytics szolgáltatásban](./spark/../../spark/apache-spark-azure-portal-add-libraries.md) című témakörben. 
   
 ## <a name="next-steps"></a>Következő lépések
 

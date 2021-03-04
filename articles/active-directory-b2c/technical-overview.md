@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3a044faf5546a22c997b8358d8809e240d563ac9
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 77dab865b2b023f59e6776349b4045107bdb3a29
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100556826"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095493"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>A Azure Active Directory B2C technikai és funkcióinak áttekintése
 
@@ -134,7 +134,7 @@ További információ az egyéni házirendekről [Azure Active Directory B2Cban]
 
 ## <a name="protocols-and-tokens"></a>Protokollok és tokenek
 
-- Alkalmazások esetén a Azure AD B2C támogatja a [OAuth 2,0](protocols-overview.md), [OpenID Connect](openid-connect.md)és [SAML protokollt](connect-with-saml-service-providers.md) a felhasználói útvonalakhoz. Az alkalmazás megkezdi a felhasználói utazást a Azure AD B2C felé irányuló hitelesítési kérések kiállításával. Az Azure AD B2Cre irányuló kérelem eredménye biztonsági jogkivonat, például [azonosító token, hozzáférési jogkivonat](tokens-overview.md)vagy SAML-jogkivonat. Ez a biztonsági jogkivonat határozza meg a felhasználó identitását az alkalmazáson belül.
+- Alkalmazások esetén a Azure AD B2C támogatja a [OAuth 2,0](protocols-overview.md), [OpenID Connect](openid-connect.md)és [SAML protokollt](saml-service-provider.md) a felhasználói útvonalakhoz. Az alkalmazás megkezdi a felhasználói utazást a Azure AD B2C felé irányuló hitelesítési kérések kiállításával. Az Azure AD B2Cre irányuló kérelem eredménye biztonsági jogkivonat, például [azonosító token, hozzáférési jogkivonat](tokens-overview.md)vagy SAML-jogkivonat. Ez a biztonsági jogkivonat határozza meg a felhasználó identitását az alkalmazáson belül.
 
 - Külső identitások esetén a Azure AD B2C támogatja a OAuth 1,0, OAuth 2,0, OpenID Connect és SAML Identity szolgáltatók összevonását.
 

@@ -1,17 +1,16 @@
 ---
 title: A virtuális gépekkel kapcsolatos vendég állapottal kapcsolatos riasztások (előzetes verzió)
 description: Ismerteti a virtuális gépek bepillantást a vendég állapotával létrehozott riasztásokat, beleértve az engedélyezésük és az értesítések konfigurálásának módját.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
-ms.openlocfilehash: a32ba9f1c4cf5d6bb9de69e1a6860c858e3ee2a6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1b5fd10b3e0bd84aa7d34a918f4f2376130d2e45
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101707506"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052262"
 ---
 # <a name="vm-insights-guest-health-alerts-preview"></a>A virtuális gépekkel kapcsolatos vendég állapottal kapcsolatos riasztások (előzetes verzió)
 A virtuális gép elemzése lehetővé teszi a virtuális gépek állapotának megtekintését olyan teljesítmény-mérési készlet alapján, amely rendszeres időközönként mintavételt végez. Egy riasztás akkor hozható létre, ha egy virtuális gép vagy a figyelő nem Kifogástalan állapotra vált. Ezeket a riasztásokat megtekintheti és kezelheti a [riasztási szabályok által létrehozott Azure monitorban](../alerts/alerts-overview.md) , és beállíthatja, hogy proaktívan értesítse az új riasztások létrehozásakor.

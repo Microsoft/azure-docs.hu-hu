@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b4fb7c6fb3bbf02e5f1aba25c868e4a44e8507dd
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 54869c14cf7c5a7e43f34102f5c95e37689dfee8
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309630"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095340"
 ---
 # <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Az SAML-token kiállítójának műszaki profiljának meghatározása egy Azure Active Directory B2C egyéni házirendben
 
@@ -58,9 +58,9 @@ A **szabályzattípushoz**, a **OutputClaims** és a **PersistClaims** elemek ü
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | IssuerUri | Nem | Az SAML-válaszban megjelenő kiállító neve. Az értéknek meg kell egyeznie a függő entitás alkalmazásban konfigurált névvel. |
-| XmlSignatureAlgorithm | Nem | Az a módszer, amelyet a Azure AD B2C az SAML-állítás aláírására használ. Lehetséges értékek: `Sha256` ,,, `Sha384` `Sha512` vagy `Sha1` . Győződjön meg arról, hogy az aláírási algoritmus mindkét oldalon ugyanazzal az értékkel van konfigurálva. Csak a tanúsítvány által támogatott algoritmust használja. Az SAML-válasz konfigurálásával kapcsolatban lásd: [függő entitás SAML-metaadatai](relyingparty.md#metadata)|
+| XmlSignatureAlgorithm | Nem | Az a módszer, amelyet a Azure AD B2C az SAML-állítás aláírására használ. Lehetséges értékek: `Sha256` ,,, `Sha384` `Sha512` vagy `Sha1` . Győződjön meg arról, hogy az aláírási algoritmus mindkét oldalon ugyanazzal az értékkel van konfigurálva. Csak a tanúsítvány által támogatott algoritmust használja. Az SAML-válasz konfigurálásához tekintse meg az [SAML-alkalmazások regisztrálásának lehetőségeit](saml-service-provider.md) .|
 |TokenNotBeforeSkewInSeconds| Nem| Meghatározza az érvényességi időszak kezdetét jelölő időbélyegző egész számként való eldöntését. Minél nagyobb ez a szám, az érvényességi időszak további visszalépésének időpontja a jogcímek a függő entitáshoz való kibocsátásának időpontjára vonatkozóan kezdődik. Ha például a TokenNotBeforeSkewInSeconds 60 másodpercre van állítva, ha a tokent 13:05:10 UTC alapján állították ki, a jogkivonat a 13:04:10 UTC-től érvényes. Az alapértelmezett érték a 0. A maximális érték 3600 (egy óra). |
-|TokenLifeTimeInSeconds| Nem| Megadja az SAML-állítás élettartamát. Ez az érték másodpercben van a fenti NotBefore érték refernced. Az alapértelmezett érték 300 másodperc (5 perc). |
+|TokenLifeTimeInSeconds| Nem| Megadja az SAML-állítás élettartamát. Ez az érték másodpercben van a fent hivatkozott NotBefore értéktől. Az alapértelmezett érték 300 másodperc (5 perc). |
 
 
 ## <a name="cryptographic-keys"></a>Titkosítási kulcsok
@@ -76,9 +76,9 @@ A CryptographicKeys elem a következő attribútumokat tartalmazza:
 
 Az Azure AD B2C SAML-munkamenetek konfigurálásához egy függő entitás alkalmazása, az elem attribútuma `UseTechnicalProfileForSessionManagement` , a [SamlSSOSessionProvider](custom-policy-reference-sso.md#samlssosessionprovider) SSO-munkamenetre való hivatkozás.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megtudhatja, hogyan használhatja az SAML kiállítói technikai profilt:
 
-- [SAML-alkalmazás regisztrálása Azure AD B2C](connect-with-saml-service-providers.md)
+- [SAML-alkalmazás regisztrálása Azure AD B2C](saml-service-provider.md)
 

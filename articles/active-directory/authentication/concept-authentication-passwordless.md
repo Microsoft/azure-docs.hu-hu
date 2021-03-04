@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e36acb5a6a0984b003e4e8deb597bddfc43b064a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 97517ad3ff260806108dc22686d49b43b0fc6609
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101647557"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096020"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>A Azure Active Directory jelszóval nem rendelkező hitelesítési beállításai
 
@@ -89,6 +89,8 @@ A FIDO2 biztonsági kulcsai egy nem adattípusra épülő, szabványos jelszavas
 A felhasználók regisztrálhatnak és kijelölhetnek egy FIDO2 biztonsági kulcsot a bejelentkezési felületen a hitelesítés fő eszközeként. Ezek a FIDO2 biztonsági kulcsok általában USB-eszközök, de a Bluetooth vagy az NFC használatát is használhatják. Ha a hitelesítést kezelő hardvereszközt használ, a rendszer megnöveli a fiók biztonságát, mivel nincs olyan jelszó, amely elérhetővé vagy kitalált.
 
 A FIDO2 biztonsági kulcsainak használatával bejelentkezhet az Azure AD-be vagy hibrid Azure AD-hez csatlakoztatott Windows 10-es eszközökre, és egyszeri bejelentkezéssel bejelentkezhet a felhőbe és a helyszíni erőforrásaiba. A felhasználók a támogatott böngészőkbe is bejelentkezhetnek. A FIDO2 biztonsági kulcsai nagyszerű lehetőséget biztosítanak olyan nagyvállalatok számára, akik nagyon érzékenyek a biztonságra, vagy olyan forgatókönyvekkel vagy alkalmazottakkal rendelkeznek, akik nem hajlandók vagy nem tudják használni a telefont második tényezőként.
+
+Rendelkezünk egy dokumentációval, amely [támogatja a FIDO2-hitelesítést az Azure ad-vel](fido2-compatibility.md), valamint ajánlott eljárásokat azon fejlesztők számára, akik támogatni szeretnék [a FIDO2-hitelesítés használatát az általuk fejlesztett alkalmazásokban](../develop/support-fido2-authentication.md).
 
 ![Bejelentkezés a Microsoft Edge-be egy biztonsági kulccsal](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 

@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9dce61817bdd6b42223028a624cd6e237be28bfe
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: cfdd96ffa9e7758fc594f7e7ae53c84495b8b2e8
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98953818"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095408"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-saml-protocol-in-azure-active-directory-b2c"></a>Salesforce SAML-szolgáltatóval való bejelentkezés beállítása SAML protokoll használatával Azure Active Directory B2C
 
@@ -33,7 +33,7 @@ ms.locfileid: "98953818"
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ez a cikk bemutatja, hogyan engedélyezheti a bejelentkezést egy Salesforce-szervezet felhasználói számára a Azure Active Directory B2C (Azure AD B2C) [Egyéni házirendjeivel](custom-policy-overview.md) . A bejelentkezést egy SAML-identitás- [szolgáltató technikai profiljának](saml-identity-provider-technical-profile.md) egy egyéni szabályzathoz való hozzáadásával engedélyezheti.
+Ez a cikk bemutatja, hogyan engedélyezheti a bejelentkezést egy Salesforce-szervezet felhasználói számára a Azure Active Directory B2C (Azure AD B2C) [Egyéni házirendjeivel](custom-policy-overview.md) . A bejelentkezést egy [SAML-identitás szolgáltatójának](identity-provider-generic-saml.md) egyéni szabályzatba való felvételével engedélyezheti.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -100,7 +100,7 @@ A Azure AD B2C bérlőben létrehozott tanúsítványt kell tárolnia.
 
 Ha azt szeretné, hogy a felhasználók Salesforce-fiókkal jelentkezzenek be, meg kell adnia a fiókot jogcím-szolgáltatóként, amely Azure AD B2C tud kommunikálni egy végponton keresztül. A végpont olyan jogcímeket biztosít, amelyeket a Azure AD B2C használ annak ellenőrzéséhez, hogy egy adott felhasználó hitelesítve van-e.
 
-A Salesforce-fiókot jogcím-szolgáltatóként is meghatározhatja, ha hozzáadja azt a **ClaimsProviders** elemhez a szabályzat fájlkiterjesztés fájljában. További információ: SAML- [identitás-szolgáltató technikai profiljának megadása](saml-identity-provider-technical-profile.md).
+A Salesforce-fiókot jogcím-szolgáltatóként is meghatározhatja, ha hozzáadja azt a **ClaimsProviders** elemhez a szabályzat fájlkiterjesztés fájljában. További információ: SAML- [identitás szolgáltatójának meghatározása](identity-provider-generic-saml.md).
 
 1. Nyissa meg a *TrustFrameworkExtensions.xml*.
 1. Keresse meg a **ClaimsProviders** elemet. Ha nem létezik, adja hozzá a gyökérelem elemhez.

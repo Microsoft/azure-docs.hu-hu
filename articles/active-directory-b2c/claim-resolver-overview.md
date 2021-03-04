@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 682b83d7016a89b27b5c936853abda1438f59c28
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: e4e90d91b8e6ae017f00e37304c4da56cd618732
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508016"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095306"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Tudnivalók a jogcímek feloldóinak Azure Active Directory B2C egyéni házirendekben
 
@@ -66,16 +66,16 @@ A következő fejezetei az elérhető jogcímek feloldóit sorolja fel.
 
 | Jogcím | Leírás | Példa |
 | ----- | ----------- | --------|
-| {OIDC: AuthenticationContextReferences} |A `acr_values` lekérdezési karakterlánc paraméter. | N.A. |
+| {OIDC: AuthenticationContextReferences} |A `acr_values` lekérdezési karakterlánc paraméter. | N/A |
 | {OIDC: ClientId} |A `client_id`  lekérdezési karakterlánc paraméter. | 00000000-0000-0000-0000-000000000000 |
 | {OIDC: DomainHint} |A `domain_hint`  lekérdezési karakterlánc paraméter. | facebook.com |
 | {OIDC: LoginHint} |  A `login_hint` lekérdezési karakterlánc paraméter. | someone@contoso.com |
-| {OIDC: MaxAge} | `max_age`. | N.A. |
+| {OIDC: MaxAge} | `max_age`. | N/A |
 | {OIDC: alkalom} |A `Nonce`  lekérdezési karakterlánc paraméter. | defaultNonce |
 | {OIDC: Password}| Az [erőforrás-tulajdonos jelszava hitelesíti](ropc-custom.md) a felhasználói jelszót.| jelszó1| 
 | {OIDC: prompt} | A `prompt` lekérdezési karakterlánc paraméter. | bejelentkezés |
 | {OIDC: RedirectUri} |A `redirect_uri`  lekérdezési karakterlánc paraméter. | https://jwt.ms |
-| {OIDC: erőforrás} |A `resource`  lekérdezési karakterlánc paraméter. | N.A. |
+| {OIDC: erőforrás} |A `resource`  lekérdezési karakterlánc paraméter. | N/A |
 | {OIDC: hatókör} |A `scope`  lekérdezési karakterlánc paraméter. | OpenID |
 | {OIDC: username}| Az [erőforrás-tulajdonos jelszavának hitelesítő adatai folyamat](ropc-custom.md) felhasználójának felhasználóneve.| emily@contoso.com| 
 
@@ -87,6 +87,7 @@ A következő fejezetei az elérhető jogcímek feloldóit sorolja fel.
 | {Context: CorrelationId} | A korrelációs azonosító.  | 00000000-0000-0000-0000-000000000000 |
 | {Context: DateTimeInUtc} |A dátum és idő (UTC).  | 10/10/2018 12:00:00 PM |
 | {Context: Deploymentmode beállítása} |A házirend-telepítési mód.  | Production |
+| {Context: állomásnév} | Az aktuális kérelem állomásneve.  | contoso.b2clogin.com |
 | {Context: Ip_cím} | A felhasználó IP-címe. | 11.111.111.11 |
 | {Context: KMSI} | Azt jelzi, hogy be van-e jelölve [a bejelentkezve marad](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) jelölőnégyzet. |  true |
 
@@ -106,14 +107,14 @@ Egy OIDC-vagy OAuth2-kérelem részeként megadott paraméter neve a felhasznál
 | {OAUTH-KV: campaignId} | Egy lekérdezési karakterlánc paraméter. | Hawaii |
 | {OAUTH-KV: app_session} | Egy lekérdezési karakterlánc paraméter. | A3C5R |
 | {OAUTH-KV: loyalty_number} | Egy lekérdezési karakterlánc paraméter. | 1234 |
-| {OAUTH-KV: bármely egyéni lekérdezési karakterlánc} | Egy lekérdezési karakterlánc paraméter. | N.A. |
+| {OAUTH-KV: bármely egyéni lekérdezési karakterlánc} | Egy lekérdezési karakterlánc paraméter. | N/A |
 
 ### <a name="oauth2"></a>OAuth2
 
 | Jogcím | Leírás | Példa |
 | ----- | ----------------------- | --------|
-| {oauth2: access_token} | A hozzáférési jogkivonat. | N.A. |
-| {oauth2: refresh_token} | A frissítési jogkivonat. | N.A. |
+| {oauth2: access_token} | A hozzáférési jogkivonat. | N/A |
+| {oauth2: refresh_token} | A frissítési jogkivonat. | N/A |
 
 
 ### <a name="saml"></a>SAML
@@ -141,7 +142,7 @@ A jogcímek feloldóit a következő elemekkel használhatja:
 |[OpenID Connect](openid-connect-technical-profile.md) – technikai profil| `InputClaim`, `OutputClaim`| 1, 2|
 |[Jogcím-átalakítási](claims-transformation-technical-profile.md) technikai profil| `InputClaim`, `OutputClaim`| 1, 2|
 |[Rest-szolgáltató](restful-technical-profile.md) technikai profilja| `InputClaim`| 1, 2|
-|[SAML-identitás szolgáltatójának](saml-identity-provider-technical-profile.md)  műszaki profilja| `OutputClaim`| 1, 2|
+|[SAML-identitás szolgáltatójának](identity-provider-generic-saml.md)  műszaki profilja| `OutputClaim`| 1, 2|
 |[Önérvényesített](self-asserted-technical-profile.md) technikai profil| `InputClaim`, `OutputClaim`| 1, 2|
 |[ContentDefinition](contentdefinitions.md)| `LoadUri`| |
 |[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |

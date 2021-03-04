@@ -1,17 +1,16 @@
 ---
 title: A VM bepillantást a vendég állapotára (előzetes verzió)
 description: A virtuálisgép-információk állapotának áttekintése, beleértve a virtuális gépek állapotának megtekintését és a riasztások fogadását, ha a virtuális gép nem megfelelő állapotba kerül.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/27/2020
-ms.openlocfilehash: 3db6c2f4da28bba2d12aacc90b2fa8e420aa6fbf
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2922ca4068531c45e6acad0ce54aa96624c6238e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101707455"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052126"
 ---
 # <a name="vm-insights-guest-health-preview"></a>A VM bepillantást a vendég állapotára (előzetes verzió)
 A virtuális gépek bepillantást nyerhetnek, és a vendég operációs rendszertől rendszeres időközönként mintát vett teljesítmény-mérési készlet alapján megtekintheti a virtuális gépek állapotát. Gyorsan megtekintheti az előfizetésben vagy az erőforráscsoporthoz tartozó összes virtuális gép állapotát, részletezheti az adott virtuális gép részletes állapotát, vagy proaktívan értesítheti, ha a virtuális gép nem Kifogástalan állapotba kerül. 

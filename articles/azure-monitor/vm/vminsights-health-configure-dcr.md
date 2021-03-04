@@ -1,17 +1,16 @@
 ---
 title: Az adatgyűjtési szabályok (előzetes verzió) használatával konfigurálhatja a virtuális gépek elemzését a vendég állapotában
 description: Ismerteti, hogyan lehet módosítani az alapértelmezett monitorozást a virtuális gépeken a vendégek számára a Resource Manager-sablonok használatával.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2020
-ms.openlocfilehash: 907aea16b018fb5dd3846db546787d132f8f5a9f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0db6ed7566c53429f8b9798ac8cdafe76ca7bd5a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101731221"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052143"
 ---
 # <a name="configure-monitoring-in-vm-insights-guest-health-using-data-collection-rules-preview"></a>Az adatgyűjtési szabályok (előzetes verzió) használatával konfigurálhatja a virtuális gépek elemzését a vendég állapotában
 A [virtuális gép elemzése lehetővé teszi](vminsights-health-overview.md) a virtuális gépek állapotának megtekintését olyan teljesítmény-mérési készlet alapján, amely rendszeres időközönként mintavételt végez. Ez a cikk azt ismerteti, hogyan módosíthatja az alapértelmezett figyelést több virtuális gépen az adatgyűjtési szabályok használatával.

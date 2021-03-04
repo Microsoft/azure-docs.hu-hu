@@ -352,13 +352,13 @@
     - name: Frissítések telepítése
       items:
         - name: Eszköz-frissítési fiók létrehozása
-          href: /iot-hub-device-update/create-device-update-account.md
+          href: ../iot-hub-device-update/create-device-update-account.md
         - name: Frissítés importálása
-          href: /iot-hub-device-update/import-update.md
+          href: ../iot-hub-device-update/import-update.md
         - name: Frissítési csoport létrehozása
-          href: /iot-hub-device-update/create-update-group.md
+          href: ../iot-hub-device-update/create-update-group.md
         - name: Frissítés központi telepítése
-          href: /iot-hub-device-update/deploy-update.md
+          href: ../iot-hub-device-update/deploy-update.md
     - name: Valós eszközök használata
       items:
         - name: Online szimulátor használata

@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/26/2019
+ms.date: 03/03/2021
 ms.author: duau
-ms.openlocfilehash: fa8dba12a050e42e258e4224f29e379ff53f09d8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 163436ad82ea6f5067ad41b7fdd7e315db6dc29a
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576669"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095017"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager gyakori kérdések (GYIK)
 
@@ -447,7 +447,18 @@ Ha nincs megadva egyéni állomásfejléc-beállítás, az Traffic Manager álta
 
 ### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate"></a>Mik azok az IP-címek, amelyekről az állapot-ellenőrzések származnak?
 
-Ide [kattintva](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json) megtekintheti a JSON-fájlt, amely felsorolja azokat az IP-címeket, amelyekről Traffic Manager állapot-ellenőrzések származhatnak. Tekintse át a JSON-fájlban felsorolt IP-címeket annak biztosításához, hogy az ezen IP-címekről érkező bejövő kapcsolatok engedélyezettek legyenek a végpontokon az állapotának ellenőrzéséhez.
+Ide [kattintva](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) megtudhatja, hogyan kérheti le azoknak az IP-címeknek a listáját, amelyekről Traffic Manager állapot-ellenőrzés származhat. A legújabb lista lekéréséhez használhatja a REST API, az Azure CLI vagy a Azure PowerShell lehetőséget. Tekintse át a felsorolt IP-címek listáját, és győződjön meg arról, hogy az ezen IP-címekről érkező bejövő kapcsolatok engedélyezettek a végpontokon az állapotának ellenőrzéséhez.
+
+Példa Azure PowerShell használatával:
+
+```azurepowershell-interactive
+$serviceTags = Get-AzNetworkServiceTag -Location eastus
+$result = $serviceTags.Values | Where-Object { $_.Name -eq "AzureTrafficManager" }
+$result.Properties.AddressPrefixes
+```
+
+> [!NOTE]
+> A nyilvános IP-címek értesítés nélkül változhatnak. Győződjön meg arról, hogy a legfrissebb információkat a Service tag Discovery API vagy a letölthető JSON-fájl használatával kéri le.
 
 ### <a name="how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager"></a>Hány állapot-ellenőrzést várhatok a végpontom Traffic Manager?
 

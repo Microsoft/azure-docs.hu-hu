@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/20/2020
-ms.openlocfilehash: f61d99a61cb50886d70489b586d948bfa751e196
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: eb1d59ae41b04be60dec90aaee4b2305b6d39ca6
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576774"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095850"
 ---
 # <a name="glossary-insights-on-your-data-in-azure-purview"></a>Az Azure hatáskörébe tartozó adataival kapcsolatos Szószedet
 
@@ -48,25 +48,33 @@ Az Azure hatáskörébe tartozik a Szószedet feltétele, és csatolható az esz
 
    :::image type="content" source="./media/glossary-insights/portal-access.png" alt-text="A hatáskörébe tartozó Azure Portal elindítása":::
 
-1. A hatáskörébe tartozó **kezdőlapon** válassza az eredmények **megtekintése** csempét az információhoz való hozzáféréshez **Insights** :::image type="icon" source="media/glossary-insights/ico-insights.png" border="false"::: .
+1. A hatáskörébe tartozó **kezdőlapon** válassza az eredmények **megtekintése** csempét az információhoz való hozzáféréshez  :::image type="icon" source="media/glossary-insights/ico-insights.png" border="false"::: .
 
    :::image type="content" source="./media/glossary-insights/view-insights.png" alt-text="Tekintse meg az Azure Portal":::
 
 1. Az **Áttekintés** :::image type="icon" source="media/glossary-insights/ico-insights.png" border="false"::: területen válassza a **Szószedet** lehetőséget a hatáskörébe tartozó **Szószedet** -információk jelentés megjelenítéséhez.
 
-A **Glosszárium** -információk oldal a következő területeket jeleníti meg:
-1. **Magas szintű KPI** -k a Szószedet feltételeit és a katalógus felhasználóinak megjelenítéséhez
+A **Szószedetbeli** információk üzleti felhasználóként és értékes információkkal szolgálnak a szervezet számára jól definiált Szószedet fenntartásához.
 
-2. A **legfontosabb Szószedet-használati feltételek és az eszközök száma** az 5. számú szószedetet mutatja a hozzájuk csatolt eszközökkel. Minden egyéb eszköz a gráf "other" kategóriájában szerepel.
+1. A jelentés **magas szintű KPI-** kkel kezdődik, amelyek az **_összes kifejezést_ megjelenítik *a hatáskörébe tartozó fiókban***. Ezen értékek mindegyike segítséget nyújt a Szószedet állapotának azonosításában.
 
-3. A **Szószedet feltételek szerinti állapota szerint** a szószedetben szereplő kifejezések állapota például a "draft", a "jóváhagyva", a "riasztás" és a "lejárt". 
+   :::image type="content" source="./media/glossary-insights/glossary-kpi.png" alt-text="Szószedet-áttekintési KPI megtekintése"::: 
 
-1. Mutasson rá, vagy kattintson a gráf szeletére egy állapottal, és jegyezze fel az adott állapotú kifejezések számát.
 
-1. **A szerepköröknek a felhasználók száma alapján történő eloszlása** a szerepkörben lévő felhasználók száma szerint osztja meg a szerepkörök eloszlását.
+2. **A használati feltételek szakaszának pillanatképe** (fent látható) megmutatja, hogy a kifejezés állapota " ***_",*_"_"_*, "*_Alert_*_" és*"_lejárt_** ".
 
-   :::image type="content" source="./media/glossary-insights/glossary-insights1.png" alt-text="Szószedet-áttekintések megtekintése":::
+3. A **továbbiak megtekintése** elemre kattintva megtekintheti a különböző állapotú kifejezéseket, és további részleteket tudhat meg a **_stewards_*_ és a _*_szakértőkről_**. 
 
-## <a name="next-steps"></a>További lépések
+   :::image type="content" source="./media/glossary-insights/glossary-view-more.png" alt-text="A feltételek és az eszközök nélkül készített Pillanatképek":::  
 
-További információ az Azure-beli felügyeleti jelentésekről az [Asset](./asset-insights.md) -elemzések segítségével
+4. Ha a (z) "továbbiak" megtekintése a (z) "az **assets" jóváhagyott feltételeknél** lehetőségre kattint, a rendszer az információk alapján megkeresi az _ *Szószedet** kifejezés részletes oldalát, ahol tovább megtekintheti az eszközök listáját a csatolt feltételekkel. 
+
+   :::image type="content" source="./media/glossary-insights/navigate-to-glossary-detail.png" alt-text="A Szószedet bepillantást nyerhet"::: 
+
+4. A Szószedet elemzése lapon megtekintheti a **hiányos feltételek** eloszlását a hiányzó információk típusa szerint. A diagram a hiányzó definícióval rendelkező kifejezések számát jeleníti meg: _ ***, _*_hiányzó szakértő_: _ *,*_hiányzó Steward_*_ és _*_több mező hiányzik_** .
+
+1. A hiányzó információkat tartalmazó feltételek megtekintéséhez kattintson a ***részletek megtekintése** _ * hiányos feltételek * * elemre. A hiányzó információk megadásához és a Szószedet kifejezésének befejezéséhez navigáljon a Szószedet részletes adatai lapra.
+
+## <a name="next-steps"></a>Következő lépések
+
+További információ [a Szószedet-](./how-to-create-import-export-glossary.md) kifejezés létrehozásáról a Szószedet használatával

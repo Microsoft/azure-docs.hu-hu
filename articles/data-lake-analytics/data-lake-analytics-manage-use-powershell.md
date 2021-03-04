@@ -5,12 +5,12 @@ ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/29/2018
-ms.openlocfilehash: 2f56fc285ed263b4b58985b5df620740a33cb3f5
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: f1d5d732433a78b8e3e7ff94bd6aaa2eea8f4a87
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092351"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051786"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Az Azure Data Lake Analytics kezelése az Azure PowerShell-lel
 
@@ -296,9 +296,6 @@ Ahelyett, hogy megismétli a `Get-AdlAnalyticsJob` feladatot, a `Wait-AdlJob` pa
 Wait-AdlJob -Account $adla -JobId $job.JobId
 ```
 
-## <a name="analyzing-job-history"></a>A feladatok előzményeinek elemzése
-
-A Data Lake Analyticsben futtatott feladatok előzményeinek elemzése Azure PowerShell használatával hatékony módszer. A használatával betekintést nyerhet a használatba és a költséghatékonyságba. További információ: a [Job History Analysis Sample repo](https://github.com/jpalbright31/data-lake-analytics-powershell-job-history-analysis)  
 
 ## <a name="list-job-pipelines-and-recurrences"></a>Feladatokhoz tartozó folyamatok és ismétlődések listázása
 

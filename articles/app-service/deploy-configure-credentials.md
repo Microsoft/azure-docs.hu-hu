@@ -5,17 +5,20 @@ ms.topic: article
 ms.date: 02/11/2021
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 2a53ecb1b3411561da50f7dbf3be79f9d70b42bc
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: c7d3c7c8b5da40a4e9ccd9085af5a850b9ebc3dd
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560430"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052347"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Központi telepítési hitelesítő adatok konfigurálása Azure App Servicehoz
 Ha egy helyi számítógépről szeretné biztonságossá tenni az alkalmazások telepítését, [Azure app Service](./overview.md) támogatja a [helyi git-telepítés](deploy-local-git.md) és az [FTP/S üzembe helyezése](deploy-ftp.md)során a hitelesítő adatok két típusát. Ezek a hitelesítő adatok nem egyeznek meg az Azure-előfizetés hitelesítő adataival.
 
 [!INCLUDE [app-service-deploy-credentials](../../includes/app-service-deploy-credentials.md)]
+
+> [!NOTE]
+> A Azure Portal, amely a régi telepítési élmény, a **fejlesztői központ (klasszikus)** lapja 2021 márciusában elavulttá válik. Ez a módosítás nem befolyásolja az alkalmazásban meglévő központi telepítési beállításokat, és az alkalmazás központi telepítését továbbra is kezelheti a **központi telepítési központ** lapon.
 
 ## <a name="configure-user-scope-credentials"></a><a name="userscope"></a>Felhasználói hatókörű hitelesítő adatok konfigurálása
 

@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 18a3216855516156792524dc577ecef725d3119d
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 76dcb9aec935dd4ea4f57a1362953d9741d8eaf0
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99218774"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095799"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Fejlesztői megjegyzések a Azure Active Directory B2C egyéni házirendjeihez
 
@@ -70,7 +70,7 @@ Az egyéni házirend-képességek állandó fejlesztés alatt állnak. A követk
 | [OAuth2 implicit folyamat](implicit-flow-single-page-application.md) |  |  | X |  |
 | [OAuth2 erőforrás-tulajdonos jelszavas hitelesítő adatai](ropc-custom.md) |  | X |  |  |
 | [OIDC-kapcsolat](openid-connect.md) |  |  | X |  |
-| [EGY SAML2](connect-with-saml-service-providers.md)  |  |  |X  | Kötések közzététele és átirányítása. |
+| [EGY SAML2](saml-service-provider.md)  |  |  |X  | Kötések közzététele és átirányítása. |
 | OAuth1 |  |  |  | Nem támogatott. |
 | WSFED | X |  |  |  |
 
@@ -81,7 +81,7 @@ Az egyéni házirend-képességek állandó fejlesztés alatt állnak. A követk
 | [OpenID Connect](openid-connect-technical-profile.md) |  |  | X | Például: Google +.  |
 | [OAuth2](oauth2-technical-profile.md) |  |  | X | Például: Facebook.  |
 | [OAuth1](oauth1-technical-profile.md) |  | X |  | Például: Twitter. |
-| [EGY SAML2](saml-identity-provider-technical-profile.md) |  |   | X | Például: Salesforce, ADFS. |
+| [EGY SAML2](identity-provider-generic-saml.md) |  |   | X | Például: Salesforce, ADFS. |
 | WSFED| X |  |  |  |
 
 

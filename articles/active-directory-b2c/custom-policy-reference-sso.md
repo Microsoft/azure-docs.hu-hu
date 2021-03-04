@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 453042766c427b05ec1ee1090a0702f64065542d
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: f690f4a416e86b02de0d35fc673849c1293df577
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508050"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095765"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Egyszeri bejelentkezés munkamenet-kezelés a Azure Active Directory B2C-ben
 
@@ -135,7 +135,7 @@ Ez a szolgáltató a OAuth2 vagy OpenId Connect függő entitás és Azure AD B2
 
 ### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
 
-Ez a szolgáltató az Azure AD B2C SAML-munkamenetek felügyeletére szolgál a függő entitás alkalmazása vagy egy összevont SAML-szolgáltató között. Ha az SSO-szolgáltatót használja az SAML-identitás szolgáltatói munkamenetének tárolására, akkor a értékének a következőnek kell `RegisterServiceProviders` lennie: `false` . A `SM-Saml-idp` [SAML-identitás szolgáltatójának műszaki profilja](saml-identity-provider-technical-profile.md)a következő technikai profilt használja.
+Ez a szolgáltató az Azure AD B2C SAML-munkamenetek felügyeletére szolgál a függő entitás alkalmazása vagy egy összevont SAML-szolgáltató között. Ha az SSO-szolgáltatót használja az SAML-identitás szolgáltatói munkamenetének tárolására, akkor a értékének a következőnek kell `RegisterServiceProviders` lennie: `false` . Az `SM-Saml-idp` [SAML-identitás szolgáltatója](identity-provider-generic-saml.md)a következő technikai profilt használja.
 
 ```xml
 <TechnicalProfile Id="SM-Saml-idp">
@@ -149,7 +149,7 @@ Ez a szolgáltató az Azure AD B2C SAML-munkamenetek felügyeletére szolgál a 
 
 A B2C SAML-munkamenet tárolására szolgáló szolgáltató használata esetén a értékének a következőnek `RegisterServiceProviders` kell lennie: `true` . Az SAML-munkamenet kijelentkezéséhez a `SessionIndex` és a `NameID` Befejezés szükséges.
 
-Az `SM-Saml-issuer` [SAML kiállítói műszaki profil](saml-issuer-technical-profile.md) a következő műszaki profilt használja
+Az `SM-Saml-issuer` [SAML kiállítói műszaki profil](saml-service-provider.md) a következő műszaki profilt használja
 
 ```xml
 <TechnicalProfile Id="SM-Saml-issuer">
@@ -166,6 +166,6 @@ Az `SM-Saml-issuer` [SAML kiállítói műszaki profil](saml-issuer-technical-pr
 | RegisterServiceProviders | Nem | Azt jelzi, hogy a szolgáltatónak regisztrálnia kell az összes olyan SAML-szolgáltatót, amely kiállított egy állítást. Lehetséges értékek: `true` (alapértelmezett) vagy `false` .|
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan [konfigurálhatja a munkamenet viselkedését](session-behavior.md).

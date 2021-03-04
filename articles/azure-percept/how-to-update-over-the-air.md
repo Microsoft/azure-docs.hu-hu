@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: aa8f696b6a26e812256be4e93975844f2c721b6e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b8f9e6f4bc091abbd1bb08ecbd649c1411e5ab20
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662378"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095391"
 ---
 # <a name="update-your-azure-percept-dk-over-the-air"></a>Az Azure Percept DK frissítése a levegőben
 
@@ -92,7 +92,7 @@ A csoport címkére vonatkozó követelmények:
 1. Ellenőrizze, hogy a megfelelő eszközcsoport van-e kiválasztva célként kiválasztott eszközként. Válassza ki a központi telepítés **kezdési dátumát** és **kezdési idejét** , majd kattintson a **központi telepítés létrehozása** elemre. 
 
     >[!CAUTION]
-    >A korábbi indítási idő beállítása a telepítés azonnali elindítására.
+    >Ha a múltbeli kezdési időt állítja be, a rendszer azonnal elindítja az üzembe helyezést.
  
 1. A megfelelőségi diagram ellenőrzése. Ekkor már folyamatban van a frissítés.
  

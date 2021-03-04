@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 18b70d60ade7cd40f7ed51aa7c219c8c046abfc3
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 1c2b608107beff2a4f34325f8a6e5be3a0551053
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584741"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051905"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Válasz kérése a GenerateAnswer API-val és a metaadatokkal
 
@@ -272,6 +272,44 @@ A alkalmazásban a közzétett kb, a `isTest=false` vagy a teszt Tudásbázis ha
   "RankerType":"QuestionOnly"
 }
 ```
+
+## <a name="return-precise-answers"></a>Pontos válaszok visszaadása
+
+### <a name="generate-answer-api"></a>Válasz API-k előállítása 
+
+A felhasználó a QnA Maker felügyelt erőforrás használatakor is engedélyezheti a [pontos válaszokat](../reference-precise-answering.md) . A answerSpanRequest paramétert azonos értékre kell frissíteni.
+
+```json
+{
+    "question": "How long it takes to charge surface pro 4?",
+    "top": 3,
+    "answerSpanRequest": {
+        "enable": true,
+        "topAnswersWithSpan": 1
+    }
+}
+```
+
+Hasonlóképpen, a felhasználók dönthetnek úgy, hogy letiltják a pontos válaszokat, ha nem állítja be a answerSpanRequest paramétert.
+
+```json
+{
+    "question": "How long it takes to charge surface pro 4?",
+    "top": 3
+}
+```
+### <a name="bot-settings"></a>Bot-beállítások
+
+Ha a bot szolgáltatás pontos beállításait szeretné konfigurálni, navigáljon az App Service-erőforráshoz a robothoz. Ezután a következő beállítás hozzáadásával frissítenie kell a konfigurációkat.
+
+- EnablePreciseAnswer
+- DisplayPreciseAnswerOnly
+
+|Konfiguráció megjelenítése|EnablePreciseAnswer|DisplayPreciseAnswerOnly|
+|:--|--|--|
+|Csak pontos válaszok|true|true|
+|Csak hosszú válaszok|hamis|hamis|
+|Hosszú és pontos válaszok|true|hamis|
 
 ## <a name="common-http-errors"></a>Gyakori HTTP-hibák
 
