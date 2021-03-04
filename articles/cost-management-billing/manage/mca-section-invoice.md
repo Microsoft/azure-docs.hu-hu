@@ -8,18 +8,22 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 6424fc0ff49566fad949b3fba4718acb2bad4cd3
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
-ms.translationtype: HT
+ms.openlocfilehash: c3ee643d525cb5394369aba3b0e803bd1a94c852
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362771"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036235"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>A költségek rendszerezése a számlázási fiók testreszabásával
 
 A Microsoft Ügyfélszerződéshez tartozó számlázási fiókkal rugalmasan rendszerezheti a költségeit az igényeinek megfelelően, például részleg, projekt vagy fejlesztési környezet szerint.
 
 Ez a cikk azt ismerteti, hogyan rendszerezheti a költségeit az Azure Portal használatával. A Microsoft Ügyfélszerződéshez tartozó számlázási fiókokra vonatkozik. [Ellenőrizze, hogy rendelkezik-e hozzáféréssel egy Microsoft-ügyfélszerződéshez](#check-access-to-a-microsoft-customer-agreement).
+
+Tekintse meg a [megszervezési költségeket úgy, hogy testreszabja a Microsoft Customer Agreement számlázási fiókjának](https://www.youtube.com/watch?v=7RxTfShGHwU) videóját, hogy megtudja, hogyan szervezheti meg a Számlázási fiók költségeit.
+
+>[!VIDEO https://www.youtube.com/embed/7RxTfShGHwU]
 
 ## <a name="structure-your-account-with-billing-profiles-and-invoice-sections"></a>A fiók strukturálása számlázási profilok és számlaszakaszok segítségével
 

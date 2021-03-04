@@ -7,12 +7,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: d1a0a6ad5b45af2157b960f8990574e47d10eeb2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2dbb491e77f132daf7b432f27705eba9e3e3cd3c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718420"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036962"
 ---
 # <a name="automate-builds-tests-and-deployments-of-an-azure-stream-analytics-job-using-cicd-tools"></a>Egy Azure Stream Analytics-feladatokhoz tartozó buildek, tesztek és központi telepítések automatizálása CI/CD-eszközök használatával
 
@@ -122,6 +122,9 @@ azure-streamanalytics-cicd addtestcase -project <projectFullPath> [-testConfigPa
 |---|---|
 | `-project` | A Visual Studio Code-projekt vagy **[a projekt neve]. asaproj** for Visual Studio projekthez tartozó fájl **asaproj.jsának** elérési útja. |
 | `-testConfigPath` | A teszt konfigurációs fájljának elérési útja. Ha nincs megadva, a rendszer a **\test** a fájl **asaproj.js** aktuális könyvtára alatt keresi a fájlt, és az alapértelmezett fájlnév **testConfig.jsbe**. Ha nem létezik, új fájl jön létre. |
+
+> [!NOTE]
+> A `Script` fájl generált **testConfig.jsjának** értéke csak a kontextus biztosítására szolgál. A tesztelési logikában nem használatos. 
 
 #### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 

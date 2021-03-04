@@ -1,17 +1,16 @@
 ---
 title: Azure-erőforrások figyelése Azure Monitorokkal | Microsoft Docs
 description: Ismerteti, hogyan gyűjthet és elemezheti a monitorozási adatokat az Azure-beli erőforrásokból Azure Monitor használatával.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 7d5fcd4da5ab8b8516794bf99b8aab69ada24644
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: af2803a945821a23ff59f196967d792a6593009f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708118"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033384"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure-erőforrások monitorozása az Azure Monitor segítségével
 Ha kritikus fontosságú alkalmazásokat és üzleti folyamatokat kíván használni az Azure-erőforrásokon, figyelnie kell ezeket az erőforrásokat a rendelkezésre állással, a teljesítménnyel és a művelettel kapcsolatban. Ez a cikk ismerteti az Azure-erőforrások által létrehozott figyelési információkat, valamint azt, hogy miként használhatók a Azure Monitor funkciói az adatelemzéshez és a riasztáshoz.

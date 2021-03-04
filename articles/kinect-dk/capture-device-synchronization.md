@@ -7,16 +7,16 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, szenzor, SDK, mélység, RGB, belső, külső, szinkronizálás, százszorszép lánc, fázis eltolása
-ms.openlocfilehash: 914a29882277c11c388d3f81f0b1fe827fc2f156
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce0c72d3d708d5696a9775b3885f278f0c23cac1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85277300"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034309"
 ---
 # <a name="capture-azure-kinect-device-synchronization"></a>Az Azure Kinect-eszközök szinkronizálásának rögzítése
 
-Az Azure Kinect-hardver képes a színek és a részletes képek rögzítési idejének igazítására. Az ugyanazon az eszközön lévő kamerák közötti igazítás **belső szinkronizálás**. Az idő igazításának rögzítése több csatlakoztatott eszközön **külső szinkronizálás**.
+Az Azure Kinect-hardver képes a színek és a részletes képek rögzítési idejének igazítására. Az ugyanazon az eszközön lévő kamerák közötti igazítás **belső szinkronizálás**. Az idő igazításának rögzítése több csatlakoztatott eszközön **külső szinkronizálás**. A mikrofon tömbje a színes és a részletes kameráktól függetlenül működik.
 
 ## <a name="device-internal-synchronization"></a>Eszköz belső szinkronizálása
 
@@ -48,7 +48,7 @@ deviceConfig.wired_sync_mode = K4A_WIRED_SYNC_MODE_MASTER;
 
 A szinkronizálási bemeneti és szinkronizálási kimeneti csatlakozók aktuális állapotának programozott beolvasásához használja a [k4a_device_get_sync_jack](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga0209ac87bfd055163677321b0304e962.html#ga0209ac87bfd055163677321b0304e962) függvényt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már tudja, hogyan engedélyezheti és rögzítheti az eszközök szinkronizálását. Azt is megtekintheti, hogyan használhatja a 
 

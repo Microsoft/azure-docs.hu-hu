@@ -2,21 +2,19 @@
 title: Bicep nyelv a Azure Resource Manager-sablonokhoz
 description: Leírja az infrastruktúra Azure-beli üzembe helyezéséhez Azure Resource Manager sablonokon keresztül.
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 6a2750dc99e82c9cf8c9b8b97d156d3a9fe30f31
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: 2fb13bca9e9d456889185d512ee2fc9d4cbbe673
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101746073"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036384"
 ---
 # <a name="what-is-bicep-preview"></a>Mi az a bicep (előzetes verzió)?
 
-A bicep az Azure-erőforrások deklaratív üzembe helyezéséhez használt nyelv. Rövid szintaxissal egyszerűsíti a szerzői élményt, és jobb támogatást nyújt a modularitás és a kód újrafelhasználásához. A bicep egy tartományi-specifikus nyelv (DSL), ami azt jelenti, hogy egy adott forgatókönyvhöz vagy tartományhoz van tervezve. A bicep nem az alkalmazások írására szolgáló általános programozási nyelv.
+A bicep az Azure-erőforrások deklaratív üzembe helyezéséhez használt nyelv. Rövid szintaxist és jobb támogatást nyújt a kód újrafelhasználásához, így egyszerűsíti a szerzői élményt. A bicep egy tartományi-specifikus nyelv (DSL), ami azt jelenti, hogy egy adott forgatókönyvhöz vagy tartományhoz van tervezve. A bicep nem az alkalmazások írására szolgáló általános programozási nyelv.
 
-A bicep a Azure Resource Manager-sablonok (ARM-sablonok) transzparens absztrakciója. Mindegyik bicep-fájl egy standard ARM-sablonhoz lett lefordítva. Az ARM-sablonban érvényes erőforrástípusok, API-verziók és tulajdonságok egy bicep-fájlban érvényesek.
-
-[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
+Korábban Azure Resource Manager sablonokat (ARM-sablonokat) fejlesztett ki JSON-val. A sablon létrehozásához használt JSON-szintaxis részletesen és bonyolult kifejezéssel is megkövetelhető. A bicep a JSON-sablonok bármelyik funkciójának elvesztése nélkül javítja a felhasználói élményt. Ez egy transzparens absztrakt a JSON for ARM-sablonokhoz. Mindegyik bicep-fájl egy standard ARM-sablonhoz lett lefordítva. Az ARM-sablonban érvényes erőforrástípusok, API-verziók és tulajdonságok egy bicep-fájlban érvényesek.
 
 ## <a name="get-started"></a>Bevezetés
 
@@ -30,7 +28,26 @@ Ha van egy meglévő ARM-sablonja, amelyet a bicep-re szeretne átalakítani, te
 
 ## <a name="bicep-improvements"></a>A bicep fejlesztése
 
-A bicep könnyebb és tömörebb szintaxist biztosít az egyenértékű JSON-hoz képest. Nem használ `[...]` kifejezéseket. Ehelyett közvetlenül a függvények hívása, a paraméterek és változók értékeinek beolvasása, valamint az erőforrások hivatkozása. A szintaxis teljes összehasonlítását lásd: [a JSON és a bicep a sablonok összehasonlítása](compare-template-syntax.md).
+A bicep könnyebb és tömörebb szintaxist biztosít az egyenértékű JSON-hoz képest. Nem használ `[...]` kifejezéseket. Ehelyett közvetlenül hívja meg a függvényeket, és értékeket kell beolvasnia a paraméterekből és változókból. Minden üzembe helyezett erőforráshoz egy szimbolikus nevet kell adni, amely megkönnyíti a sablonban lévő erőforrások hivatkozását.
+
+A következő JSON például egy erőforrás-tulajdonságból származó kimeneti értéket ad vissza.
+
+```json
+"outputs": {
+  "hostname": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName'))).dnsSettings.fqdn]"
+    },
+}
+```
+
+A bicep megjelenő egyenértékű kimeneti kifejezés könnyebben írható. A következő példa ugyanazt a tulajdonságot adja vissza egy, a sablonban definiált erőforrás szimbolikus neve **publicIP** használatával:
+
+```bicep
+output hostname string = publicIP.properties.dnsSettings.fqdn
+```
+
+A szintaxis teljes összehasonlítását lásd: [a JSON és a bicep a sablonok összehasonlítása](compare-template-syntax.md).
 
 A bicep automatikusan kezeli az erőforrások közötti függőségeket. Elkerülheti a beállítást, `dependsOn` Ha egy erőforrás szimbolikus neve egy másik erőforrás-deklarációban van használatban.
 

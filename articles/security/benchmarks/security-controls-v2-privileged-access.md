@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a4f1c6e32bbc679a7ec946384903b2bda3887d05
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 29d4acc50ed872c37268a0b21c3e34837249a026
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720579"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035414"
 ---
 # <a name="security-control-v2-privileged-access"></a>Security Control v2: emelt szintű hozzáférés
 
 Az emelt szintű hozzáférés kiterjed az Azure-bérlőhöz és-erőforrásokhoz való rendszerjogosultságú hozzáférések elleni védelemre. Ez számos vezérlőelemet tartalmaz a felügyeleti modell, a rendszergazdai fiókok és a privilegizált hozzáférésű munkaállomások szándékos és véletlen kockázattal szembeni megóvására.
 
-A megfelelő beépített Azure Policy megjelenítéséhez tekintse meg [Az Azure biztonsági teljesítményteszt szabályozási megfelelőségének beépített kezdeményezésének részleteit: emelt szintű hozzáférés](../../governance/policy/samples/azure-security-benchmark#privileged-access)
+A megfelelő beépített Azure Policy megjelenítéséhez tekintse meg [Az Azure biztonsági teljesítményteszt szabályozási megfelelőségének beépített kezdeményezésének részleteit: emelt szintű hozzáférés](../../governance/policy/samples/azure-security-benchmark.md#privileged-access)
 
 ## <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1: Emelt jogosultságú felhasználók védelme és korlátozása
 
@@ -160,8 +160,6 @@ Az Azure AD-jogosultságok kezelési funkciói segítségével automatizálhatja
 A biztonságos, elkülönített munkaállomások kritikus fontosságúak a bizalmas szerepkörök, például a rendszergazda, a fejlesztő és a kritikus fontosságú szolgáltatások biztonsága szempontjából. A biztonságos felhasználói munkaállomásokat és/vagy az Azure Bastion-t a felügyeleti feladatokhoz használhatja. Az Azure Active Directory, a Microsoft Defender Advanced Threat Protection (ATP) és/vagy a Microsoft Intune használatával biztonságos és felügyelt felhasználói munkaállomásokat helyezhet üzembe a rendszergazdai tevékenységekhez. A biztonságos munkaállomások központilag felügyelhetők a biztonságos konfiguráció kikényszerítéséhez, beleértve az erős hitelesítést, a szoftver-és a hardver-alapterveket, valamint a korlátozott logikai és hálózati hozzáférést is. 
 
 - [Az emelt szintű hozzáférésű munkaállomások ismertetése](/security/compass/privileged-access-deployment)
-
-- [Emelt szintű hozzáférésű munkaállomás üzembe helyezése](../../active-directory/devices/howto-azure-managed-workstation)
 
 **Felelősség**: Ügyfél
 

@@ -1,17 +1,16 @@
 ---
 title: Resource Manager-sablonok – minták a műveleti csoportokhoz
 description: Példa Azure Resource Manager sablonokra Azure Monitor műveleti csoportok telepítéséhez.
-ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 12/03/2020
-ms.openlocfilehash: 13a353ba469f0a01011b72b9c014b8f97e4d6fae
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3c7982c108cf6c238c28c843e1dfbb881a6e0bb4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627840"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036401"
 ---
 # <a name="resource-manager-template-samples-for-action-groups-in-azure-monitor"></a>Resource Manager-sablonok – minták a műveleti csoportokhoz a Azure Monitor
 Ez a cikk minta- [Azure Resource Manager sablonokat](../../azure-resource-manager/templates/template-syntax.md) tartalmaz a Azure monitorban lévő [műveleti csoportok](../alerts/action-groups.md) létrehozásához. Mindegyik minta tartalmaz egy sablonfájlt és egy, a sablonhoz adni kívánt minta értékeket tartalmazó paramétereket tartalmazó fájlt.

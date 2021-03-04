@@ -1,17 +1,16 @@
 ---
 title: Windows Eseménynapló-adatforrások összegyűjtése Log Analytics ügynökkel Azure Monitor
 description: Ismerteti, hogyan konfigurálható a Windows-eseménynaplók gyűjteménye Azure Monitor és a létrehozott rekordok részleteivel.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/21/2020
-ms.openlocfilehash: b747a4b58c9c460178d415d0b45ade814723d8fe
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 02/26/2021
+ms.openlocfilehash: a3baa83e2ae306f1e43aee52e29a151bad6f85d9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719865"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036595"
 ---
 # <a name="collect-windows-event-log-data-sources-with-log-analytics-agent"></a>Windows-Eseménynapló adatforrásainak összegyűjtése Log Analytics ügynökkel
 A Windows-eseménynaplók az egyik leggyakoribb [adatforrások](../agents/agent-data-sources.md) a Windows rendszerű virtuális gépeken található log Analytics ügynökök számára, mivel számos alkalmazás a Windows-eseménynaplóba ír.  Az eseményeket összegyűjtheti a szabványos naplókból, például a rendszerből és az alkalmazásból is, és megadhatja a figyelni kívánt alkalmazások által létrehozott egyéni naplókat.
@@ -22,13 +21,13 @@ A Windows-eseménynaplók az egyik leggyakoribb [adatforrások](../agents/agent-
 ![Windows-események](media/data-sources-windows-events/overview.png)     
 
 ## <a name="configuring-windows-event-logs"></a>Windows-eseménynaplók konfigurálása
-Konfigurálja a Windows-eseménynaplókat az Log Analytics munkaterület [speciális beállításainak adatok menüjéből](../agents/agent-data-sources.md#configuring-data-sources) .
+Konfigurálja a Windows-eseménynaplókat az Log Analytics munkaterület [ügynökök konfigurációs menüjében](../agents/agent-data-sources.md#configuring-data-sources) .
 
 Azure Monitor csak a beállításokban megadott Windows-eseménynaplókban lévő eseményeket gyűjti.  Eseménynapló hozzáadásához írja be a napló nevét, majd kattintson a elemre **+** .  Minden napló esetében csak a kijelölt megszakításokkal rendelkező események lesznek összegyűjtve.  Tekintse át a gyűjteni kívánt naplóhoz tartozó megszakításokat.  Az események szűréséhez nem adhat meg további feltételeket.
 
 Amikor beírja az Eseménynapló nevét, Azure Monitor a gyakori Eseménynapló-nevekre vonatkozó javaslatokat is tartalmaz. Ha a hozzáadni kívánt napló nem jelenik meg a listában, akkor a napló teljes nevének beírásával továbbra is hozzáadhatja azt. A napló teljes nevét az Eseménynapló használatával találja. Az eseménynaplóban nyissa meg a napló *Tulajdonságok* lapját, és másolja a karakterláncot a *teljes név* mezőből.
 
-![Windows-események konfigurálása](media/data-sources-windows-events/configure.png)
+[![Windows-események konfigurálása](media/data-sources-windows-events/configure.png)](media/data-sources-windows-events/configure.png#lightbox)
 
 > [!NOTE]
 > A Windows-Eseménynapló kritikus eseményeinek súlyossága "Error" lesz a Azure Monitor naplókban.

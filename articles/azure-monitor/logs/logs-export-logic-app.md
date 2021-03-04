@@ -2,17 +2,16 @@
 title: Adatok archiválása Log Analytics munkaterületről az Azure Storage-ba a logikai alkalmazás használatával
 description: Leírja, hogyan lehet Azure Logic Apps használatával lekérdezni egy Log Analytics munkaterület adatait, és hogyan küldhet az Azure Storage-ba.
 ms.service: azure-monitor
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
-ms.openlocfilehash: ae95580a8c192f0815623461fb21ec9ecf52ae26
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fd66aa1f10a32d94d515a1f0aa25c25331796a8d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101700643"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035687"
 ---
 # <a name="archive-data-from-log-analytics-workspace-to-azure-storage-using-logic-app"></a>Adatok archiválása Log Analytics munkaterületről az Azure Storage-ba a logikai alkalmazás használatával
 Ez a cikk azt ismerteti, hogyan lehet a [Azure Logic apps](../../logic-apps/index.yml) segítségével lekérdezni a Azure monitor és az Azure Storage szolgáltatásba küldött log Analytics munkaterületről származó adatok lekérdezésére szolgáló módszert. Akkor használja ezt a folyamatot, ha a naplózási és megfelelőségi forgatókönyvek Azure Monitor naplózási adatait szeretné exportálni, vagy egy másik szolgáltatás számára engedélyezi az adatok lekérését.  

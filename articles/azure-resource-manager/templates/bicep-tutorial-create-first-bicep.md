@@ -2,16 +2,16 @@
 title: Oktatóanyag – Azure Resource Manager bicep-fájlok létrehozása & üzembe helyezése
 description: Hozza létre az első bicep-fájlt az Azure-erőforrások üzembe helyezéséhez. Az oktatóanyagban megismerheti a bicep fájl szintaxisát és a Storage-fiók üzembe helyezésének módját.
 author: mumian
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: a0e4d4e56974e2f5bb44a3a300ce185c18582463
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6a335b554fa0cfc2e12c8ddbe3e24a50fdedec0f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748079"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036314"
 ---
 # <a name="tutorial-create-and-deploy-first-azure-resource-manager-bicep-file"></a>Oktatóanyag: az első Azure Resource Manager bicep-fájl létrehozása és üzembe helyezése
 
@@ -76,7 +76,7 @@ Most már készen áll arra, hogy megkezdje a bicep megismerését.
     Az erőforrás deklarációja négy összetevőből áll:
 
     - **erőforrás**: kulcsszó.
-    - **szimbolikus név** (STG): a szimbolikus név egy azonosító, amely az erőforrásra hivatkozik az egész bicep-fájlban. Az erőforrás neve nem az, hogy mikor lesz telepítve. Az erőforrás nevét a **Name (név** ) tulajdonság határozza meg.  Lásd a lista negyedik összetevőjét.
+    - **szimbolikus név** (STG): a szimbolikus név egy azonosító, amely az erőforrásra hivatkozik az egész bicep-fájlban. Az erőforrás neve nem az, hogy mikor lesz telepítve. Az erőforrás nevét a **Name (név** ) tulajdonság határozza meg.  Lásd a lista negyedik összetevőjét. Ahhoz, hogy az oktatóanyagok könnyen követhető legyenek, a **STG** a Storage-fiók erőforrásának szimbolikus neveként használja ebben az oktatóanyag-sorozatban.
     - **erőforrástípus** ( Microsoft.Storage/storageAccounts@2019-06-01 ): az erőforrás-szolgáltató (Microsoft. Storage), az erőforrás típusa (storageAccounts) és a apiVersion (2019-06-01) áll. Mindegyik erőforrás-szolgáltató közzéteszi a saját API-verzióit, így ez az érték a típusra jellemző. Több típust és apiVersions is találhat az [ARM-sablonok referenciájának](/azure/templates/)különböző Azure-erőforrásaihoz.
     - **Tulajdonságok** (minden belül = {...}): ezek a megadott tulajdonságok, amelyeket meg szeretne adni az adott erőforrástípus számára. Ezek pontosan ugyanazok a tulajdonságok, mint az ARM-sablonokban. Minden erőforrás rendelkezik egy `name` tulajdonsággal. A legtöbb erőforráshoz tartozik egy `location` tulajdonság is, amely azt a régiót állítja be, ahol az erőforrás telepítve van. A többi tulajdonság az erőforrás típusa és az API-verzió szerint változhat. Fontos tisztában lenni az API-verzió és a rendelkezésre álló tulajdonságok közötti kapcsolattal, így részletesebben is megtudhatja.
 

@@ -2,15 +2,15 @@
 title: ARM-sablon – gyakori kérdések
 description: Gyakori kérdések (GYIK) Azure Resource Manager-sablonokról (ARM-sablonok).
 ms.topic: conceptual
-ms.date: 09/17/2020
+ms.date: 03/03/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 757dfa119649e21c6e1787671afa61ee18184300
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 24baa0dc7444f632040ddaf9fcc2266f9e4ccae5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561902"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036140"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>Az ARM-sablonokkal kapcsolatos gyakori kérdések
 
@@ -88,7 +88,7 @@ Ez a cikk a Azure Resource Manager-sablonokkal (ARM-sablonokkal) kapcsolatos gya
 
 * **Hallottam, hogy az új sablon nyelvén dolgozik. Hol találhatok további információt?**
 
-  Az új nyelv megtekintéséhez lásd: [Project bicep repository](https://github.com/Azure/bicep). Ha az új nyelvről szeretne tájékozódni, [regisztráljon az értesítésekre](https://aka.ms/armLangUpdates).
+  További információ az új nyelvről: [Mi az a bicep (előzetes verzió)?](bicep-overview.md).
 
 * **Van olyan terv, amely támogatja a sablonok létrehozását a YAML-ben?**
 
@@ -100,7 +100,7 @@ Ez a cikk a Azure Resource Manager-sablonokkal (ARM-sablonokkal) kapcsolatos gya
 
 * **Olyan eszközt is kínál, amely a JSON-sablonokat az új sablon nyelvére konvertálja?**
 
-  Igen.
+  Igen. Lásd: [JSON lefordítása a bicep](compare-template-syntax.md#decompile-json-to-bicep).
 
 ## <a name="template-specs"></a>Sablonspecifikációk
 
@@ -188,6 +188,6 @@ Ez a cikk a Azure Resource Manager-sablonokkal (ARM-sablonokkal) kapcsolatos gya
 
   Igen, lásd: [ARM-sablonok telepítése GitHub-műveletek használatával](deploy-github-actions.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ARM-sablonok bemutatása: [Mi az ARM-sablonok?](overview.md).

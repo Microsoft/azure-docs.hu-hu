@@ -2,18 +2,18 @@
 title: Az Azure Managed Disks kiszolgálóoldali titkosítása
 description: Az Azure Storage védi az adatait úgy, hogy titkosítja a nyugalmát, mielőtt megőrzi azt a Storage-fürtökön. Az ügyfél által felügyelt kulcsokkal kezelheti a titkosítást a saját kulcsaival, vagy a Microsoft által felügyelt kulcsokat a felügyelt lemezek titkosítására is használhatja.
 author: roygara
-ms.date: 10/22/2020
+ms.date: 03/02/2021
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: f9152e341ac04209754bbf5f008cd56373967b9f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a1fbd536943023d3e6724b9c1638f7a0bd97d847
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677440"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036945"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure Disk Storage kiszolgálóoldali titkosítása
 
@@ -66,6 +66,8 @@ Az automatikus kulcs elforgatása előzetes verzióban érhető el, és csak a k
 > [!IMPORTANT]
 > Az ügyfél által felügyelt kulcsok az Azure-erőforrások felügyelt identitásait, Azure Active Directory (Azure AD) funkcióját használják. Az ügyfél által felügyelt kulcsok konfigurálásakor a rendszer automatikusan hozzárendel egy felügyelt identitást a borítók alá tartozó erőforrásokhoz. Ha ezt követően áthelyezi az előfizetést, az erőforráscsoportot vagy a felügyelt lemezt egyik Azure AD-címtárból a másikba, a felügyelt lemezekhez társított felügyelt identitás nem kerül át az új bérlőre, így az ügyfél által felügyelt kulcsok nem fognak működni. További információ: [előfizetés továbbítása az Azure ad-címtárak között](../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).
 
+A felügyelt lemezek ügyfelek által felügyelt kulcsainak engedélyezéséhez tekintse meg a cikkek, amelyek a [Azure PowerShell modul](windows/disks-enable-customer-managed-keys-powershell.md), az [Azure CLI](linux/disks-enable-customer-managed-keys-cli.md) vagy a [Azure Portal](disks-enable-customer-managed-keys-portal.md)engedélyezését ismertetik. Ha szeretné megtudni, hogyan engedélyezheti az ügyfelek által felügyelt kulcsokat automatikus kulcs-elforgatással, tekintse meg a [Azure Key Vault és a DiskEncryptionSet automatikus kulccsal történő elforgatásával (előzetes verzió)](windows/disks-enable-customer-managed-keys-powershell.md#set-up-an-azure-key-vault-and-diskencryptionset-with-automatic-key-rotation-preview).
+
 ## <a name="encryption-at-host---end-to-end-encryption-for-your-vm-data"></a>Titkosítás a virtuális gép adatai számára a gazdagép-végpontok közötti titkosításnál
 
 Ha engedélyezi a titkosítást a gazdagépen, a titkosítás a virtuális gép gazdagépén indul el, az Azure-kiszolgáló, amelyhez a virtuális gép hozzá van rendelve. Az ideiglenes lemez és az operációs rendszer/adatlemez-gyorsítótárak adatait a rendszer a virtuális gép gazdagépén tárolja. Miután engedélyezte a titkosítást a gazdagépen, az összes adatok titkosítva maradnak a nyugalmi állapotban és a tárolási szolgáltatásba titkosított folyamatokban. A gazdagép titkosítása lényegében teljes körűen titkosítja adatait. A gazdagépen lévő titkosítás nem használja a virtuális gép PROCESSZORát, és nem befolyásolja a virtuális gép teljesítményét. 
@@ -84,6 +86,8 @@ Az ideiglenes lemezek és az elmúló operációsrendszer-lemezek a platform ál
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-suported-sizes](../../includes/virtual-machines-disks-encryption-at-host-suported-sizes.md)]
 
+A végpontok közötti titkosítás engedélyezéséhez a gazdagépen lévő titkosítás használatával tekintse meg a cikkek, amelyek a [Azure PowerShell modul](windows/disks-enable-host-based-encryption-powershell.md), az [Azure CLI](linux/disks-enable-host-based-encryption-cli.md)vagy a [Azure Portal](disks-enable-host-based-encryption-portal.md)engedélyezését ismertetik.
+
 ## <a name="double-encryption-at-rest"></a>Dupla titkosítás a nyugalmi állapotban
 
 A fokozott biztonságú bizalmas ügyfelek, akik az adott titkosítási algoritmushoz, megvalósításhoz vagy kulcshoz kapcsolódó kockázatokat érintik, mostantól további titkosítási réteget is választhatnak, ha az infrastruktúra rétegében a platform által felügyelt titkosítási kulcsok használatával más titkosítási algoritmust/üzemmódot használnak. Ezt az új réteget a megőrzött operációs rendszerre és adatlemezekre, pillanatképekre és képekre lehet alkalmazni, amelyek mindegyike titkosítva lesz a kettős titkosítással.
@@ -91,6 +95,8 @@ A fokozott biztonságú bizalmas ügyfelek, akik az adott titkosítási algoritm
 ### <a name="supported-regions"></a>Támogatott régiók
 
 A kettős titkosítás minden olyan régióban elérhető, ahol elérhetők a felügyelt lemezek.
+
+A felügyelt lemezek kettős titkosításának engedélyezéséhez tekintse meg a cikkek a [Azure PowerShell modul](windows/disks-enable-double-encryption-at-rest-powershell.md), az [Azure CLI](linux/disks-enable-double-encryption-at-rest-cli.md) vagy a [Azure Portal](disks-enable-double-encryption-at-rest-portal.md)használatával történő engedélyezését ismertető cikket.
 
 ## <a name="server-side-encryption-versus-azure-disk-encryption"></a>Kiszolgálóoldali titkosítás és az Azure Disk Encryption
 

@@ -1,17 +1,16 @@
 ---
 title: Számítógépek összekötése az Log Analytics átjáró használatával | Microsoft Docs
 description: Az eszközök és a Operations Manager által figyelt számítógépek összekapcsolásához használja az Log Analytics Gatewayt az Azure Automation és Log Analytics szolgáltatásba való adatküldés esetén, amikor nincs internet-hozzáférése.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: d83ee4b53d4ccda9cb2af21fa0cb4c91822ec7c4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2c8b77e480f3a4f9ba342c6793a708ca6723ec34
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732020"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036571"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Internet-hozzáférés nélküli számítógépek összekötése a Log Analytics átjáró használatával Azure Monitor
 

@@ -8,18 +8,18 @@ ms.date: 11/19/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 742cff544886a1499bccfa575684edef708da7bd
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 9549e6ea30be0cd9eb1a8c200a5af4a4721793a6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028359"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034676"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>Az Azure Digital Twins lekérdezési nyelvének ismertetése
 
 Ne felejtse el, hogy az Azure Digital Twins középpontja a digitális ikrekből és kapcsolatokból kialakított [Twin gráf](concepts-twins-graph.md). 
 
-Ez a gráf lekérdezhető a digitális ikrek és a benne található kapcsolatok adatainak lekérdezéséhez. Ezek a lekérdezések egy egyéni SQL-szerű lekérdezési nyelven íródnak, amelyet az **Azure digitális Twins lekérdezési nyelvének** nevezünk. Ez hasonló a [IoT hub lekérdezési nyelvhez](../iot-hub/iot-hub-devguide-query-language.md) , amely számos hasonló funkcióval rendelkezik.
+Ez a gráf lekérdezhető a digitális ikrek és a benne található kapcsolatok adatainak lekérdezéséhez. Ezek a lekérdezések egy egyed, SQL-szerű lekérdezési nyelven vannak megírva, amelyet **Azure Digital Twins lekérdezési nyelvnek** neveznek. Ez hasonló a [IoT hub lekérdezési nyelvhez](../iot-hub/iot-hub-devguide-query-language.md) , amely számos hasonló funkcióval rendelkezik.
 
 Ez a cikk a lekérdezés nyelvének és képességeinek alapjait ismerteti. A lekérdezési szintaxissal és a lekérdezési kérelmek futtatásával kapcsolatos részletesebb példákat a [*útmutató: a Twin gráf lekérdezése*](how-to-query-graph.md)című témakörben talál.
 
@@ -33,12 +33,17 @@ Az Azure digitális Twins lekérdezési nyelvével lekérheti a digitális ikrek
 
 Ha egy ügyfélalkalmazás számára szeretne lekérdezést küldeni a szolgáltatásnak, az Azure Digital Twins [**lekérdezési API**](/rest/api/digital-twins/dataplane/query)-ját fogja használni. Az API használatának egyik módja az Azure Digital Twins-hoz készült [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis) -k egyike.
 
+### <a name="considerations-for-querying"></a>A lekérdezés szempontjai
+
+Az Azure Digital Twins-lekérdezések írásakor a következő szempontokat vegye figyelembe:
+* Kis-és nagybetűk **megkülönböztetése**: az Azure Digital Twins összes lekérdezési művelete megkülönbözteti a kis-és nagybetűket, ezért ügyeljen arra, hogy a modellekben definiált pontos neveket használja. Ha a tulajdonságok neve hibásan van megadva vagy helytelenül van megadva, az eredményhalmaz üres, és nem ad vissza hibát.
+* **Escape-idézőjelek**: Ha a lekérdezés szövege egyetlen idézőjel karaktert tartalmaz az adataiban, az idézőjelet a karakterrel kell megszökni `\` . Íme egy példa, amely a *Deli* tulajdonság értékét tárgyalja:
+
+  :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="EscapedSingleQuote":::
+
 ## <a name="reference-expressions-and-conditions"></a>Hivatkozás: kifejezések és kikötések
 
 Ez a szakasz azokat a kezelőket és funkciókat ismerteti, amelyek elérhetők az Azure Digital Twins-lekérdezések írásához. A szolgáltatások használatát szemléltető lekérdezések például a következő témakörben olvashatók [*: útmutató: a Twin gráf lekérdezése*](how-to-query-graph.md).
-
-> [!NOTE]
-> Az Azure Digital Twins összes lekérdezési művelete megkülönbözteti a kis-és nagybetűket, ezért ügyeljen arra, hogy a modellekben definiált pontos neveket használja. Ha a tulajdonságok neve hibásan van megadva vagy helytelenül van megadva, az eredményhalmaz üres, és nem ad vissza hibát.
 
 ### <a name="operators"></a>Operátorok
 
@@ -50,7 +55,7 @@ A következő operátorok támogatottak:
 | Összehasonlítás | `=`, `!=`, `<`, `>`, `<=`, `>=` |
 | Contains | `IN`, `NIN` |
 
-### <a name="functions"></a>Függvények
+### <a name="functions"></a>Functions
 
 A következő típusú ellenőrzési és öntési függvények támogatottak:
 

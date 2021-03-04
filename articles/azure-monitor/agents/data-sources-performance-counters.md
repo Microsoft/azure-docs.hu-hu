@@ -1,17 +1,16 @@
 ---
 title: Windows-és Linux-teljesítményű adatforrások összegyűjtése Log Analytics ügynökkel Azure Monitor
 description: A teljesítményszámlálókat a Azure Monitor gyűjti a Windows-és Linux-ügynökök teljesítményének elemzéséhez.  Ez a cikk bemutatja, hogyan konfigurálhatja a teljesítményszámlálók gyűjteményét Windows-és Linux-ügynökökhöz, a munkaterületen tárolt adatokat, valamint azt, hogyan elemezheti őket a Azure Portalban.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/21/2020
-ms.openlocfilehash: c06123b33c7f467e12742cf6180d821e647b5115
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 02/26/2021
+ms.openlocfilehash: f4bddc1666d1165d6a1e4c749fdbc96ede37747a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101711552"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036773"
 ---
 # <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>Windows-és Linux-teljesítményű adatforrások gyűjtése Log Analytics-ügynökkel
 A Windows és Linux rendszerű teljesítményszámlálók betekintést nyújtanak a hardver-összetevők, operációs rendszerek és alkalmazások teljesítményére.  A Azure Monitor a teljesítmény-és a hosszú távú elemzéshez és jelentéskészítéshez kapcsolódóan rendszeres időközönként gyűjthetik be a Log Analytics ügynököktől származó teljesítményszámlálókat a közel valós idejű (vizsgálja) elemzéshez.
@@ -22,7 +21,7 @@ A Windows és Linux rendszerű teljesítményszámlálók betekintést nyújtana
 ![Teljesítményszámlálók](media/data-sources-performance-counters/overview.png)
 
 ## <a name="configuring-performance-counters"></a>Teljesítményszámlálók konfigurálása
-A teljesítményszámlálók konfigurálása a Log Analytics munkaterület [speciális beállításaiban található adatok menüből](../agents/agent-data-sources.md#configuring-data-sources) .
+Konfigurálja a teljesítményszámlálókat a Log Analytics munkaterület [ügynökök konfigurációs menüjében](../agents/agent-data-sources.md#configuring-data-sources) .
 
 Amikor először konfigurálja a Windows-vagy Linux-teljesítményszámlálókat egy új munkaterülethez, lehetősége van számos gyakori számláló gyors létrehozására.  Ezek mindegyike mellett egy jelölőnégyzet található.  Győződjön meg arról, hogy a kezdetben létrehozni kívánt számlálók be vannak jelölve, majd kattintson **a kijelölt teljesítményszámlálók hozzáadása** lehetőségre.
 
@@ -36,28 +35,28 @@ A Windows-teljesítményszámlálók esetében kiválaszthatja az egyes teljesí
 
 ### <a name="windows-performance-counters"></a>Windows-teljesítményszámlálók
 
-![Windows-teljesítményszámlálók konfigurálása](media/data-sources-performance-counters/configure-windows.png)
+[![Windows-teljesítményszámlálók konfigurálása](media/data-sources-performance-counters/configure-windows.png)](media/data-sources-performance-counters/configure-windows.png#lightbox)
 
 Kövesse ezt az eljárást egy új Windows-teljesítményszámláló hozzáadásához a gyűjtéshez. Ne feledje, hogy a v2 Windows-teljesítményszámlálók nem támogatottak.
 
-1. Írja be a számláló nevét a Format *objektum (példány) \ számláló* szövegmezőbe.  A gépelés megkezdése után a rendszer a gyakori számlálók megfelelő listáját mutatja be.  Kiválaszthat egy számlálót a listából, vagy megadhatja a kívánt értéket.  A *object\counter* megadásával egy adott számlálóhoz tartozó összes példányt is visszaadhat.  
+1. Kattintson a **teljesítményszámláló hozzáadása** lehetőségre.
+2. Írja be a számláló nevét a Format *objektum (példány) \ számláló* szövegmezőbe.  A gépelés megkezdése után a rendszer a gyakori számlálók megfelelő listáját mutatja be.  Kiválaszthat egy számlálót a listából, vagy megadhatja a kívánt értéket.  A *object\counter* megadásával egy adott számlálóhoz tartozó összes példányt is visszaadhat.  
 
     SQL Server teljesítményszámlálók elnevezett példányokból való gyűjtésekor az összes elnevezett példány számlálója az *MSSQL $* értékkel kezdődik, amelyet a példány neve követ.  Ha például a log cache találati arány számlálóját szeretné összegyűjteni az SQL-példány INST2 tartozó adatbázis-teljesítmény objektum összes adatbázisához, akkor a következőt kell megadnia: `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio` .
 
-2. Kattintson **+** vagy nyomja le az **ENTER** billentyűt a számláló a listához való hozzáadásához.
-3. Számláló hozzáadásakor a rendszer az alapértelmezett 10 másodpercet használja a **mintavételi intervallumhoz**.  Ez a érték legfeljebb 1800 másodperc (30 perc) lehet, ha csökkenteni szeretné az összegyűjtött teljesítményadatok tárolási követelményeit.
-4. Ha elkészült a számlálók hozzáadásával, kattintson a képernyő felső részén található **Mentés** gombra a konfiguráció mentéséhez.
+4. Számláló hozzáadásakor a rendszer az alapértelmezett 10 másodpercet használja a **mintavételi intervallumhoz**.  Ez a érték legfeljebb 1800 másodperc (30 perc) lehet, ha csökkenteni szeretné az összegyűjtött teljesítményadatok tárolási követelményeit.
+5. Ha elkészült a számlálók hozzáadásával, kattintson a képernyő tetején található **alkalmaz** gombra a konfiguráció mentéséhez.
 
 ### <a name="linux-performance-counters"></a>Linux-teljesítményszámlálók
 
-![Linux-teljesítményszámlálók konfigurálása](media/data-sources-performance-counters/configure-linux-1.png)
+[![Linux-teljesítményszámlálók konfigurálása](media/data-sources-performance-counters/configure-linux.png)](media/data-sources-performance-counters/configure-linux.png#lightbox)
 
 Kövesse ezt az eljárást egy új Linux-teljesítményszámláló hozzáadásához a gyűjtéshez.
 
+1. Kattintson a **teljesítményszámláló hozzáadása** lehetőségre.
 1. Írja be a számláló nevét a Format *objektum (példány) \ számláló* szövegmezőbe.  A gépelés megkezdése után a rendszer a gyakori számlálók megfelelő listáját mutatja be.  Kiválaszthat egy számlálót a listából, vagy megadhatja a kívánt értéket.  
-1. Kattintson **+** vagy nyomja le az **ENTER** billentyűt a számláló az objektumhoz tartozó egyéb számlálók listájához való hozzáadásához.
 1. Egy objektum összes számlálója ugyanazt a **mintavételi időközt** használja.  Az alapértelmezett érték 10 másodperc.  Ezt magasabb értékre kell módosítani, amely legfeljebb 1800 másodperc (30 perc) lehet, ha csökkenteni szeretné az összegyűjtött teljesítményadatok tárolási követelményeit.
-1. Ha elkészült a számlálók hozzáadásával, kattintson a képernyő felső részén található **Mentés** gombra a konfiguráció mentéséhez.
+1. Ha elkészült a számlálók hozzáadásával, kattintson a képernyő tetején található **alkalmaz** gombra a konfiguráció mentéséhez.
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>Linux-teljesítményszámlálók konfigurálása a konfigurációs fájlban
 A Linux-teljesítményszámlálók a Azure Portal használatával történő konfigurálása helyett lehetősége van a konfigurációs fájlok szerkesztésére a Linux-ügynökön.  A gyűjteni kívánt teljesítmény-mérőszámokat a **/etc/opt/Microsoft/omsagent/ \<workspace id\> /conf/omsagent.conf** konfigurációja vezérli.

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 3c0e348e62184f839ce38e4c364fb5c6b81f1131
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 90addb74811819dec563ba072e9a6aea2cf72ca4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726223"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036537"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Az Azure Diagnostics bővítmény áttekintése
 A Azure Diagnostics Extension olyan [Azure monitor ügynöke](../agents/agents-overview.md) , amely az Azure számítási erőforrások, például a virtuális gépek vendég operációs rendszerének figyelési adatait gyűjti. Ez a cikk áttekintést nyújt Azure Diagnostics bővítményről, beleértve az általa támogatott speciális funkciókat, valamint a telepítés és a konfigurálás lehetőségeit. 
@@ -78,7 +78,7 @@ Konfiguráljon egy vagy több *adattárolót* az egyéb további célhelyekre va
 | Azure Storage-Blobok | Adatok írása a Blobok számára az Azure Storage-ban a táblák mellett. |
 | Application Insights | Gyűjtsön adatokat a virtuális gépen futó alkalmazásokból, hogy Application Insights, hogy integrálható legyen más alkalmazás-figyeléssel. Lásd: [diagnosztikai információk küldése Application Insightsba](diagnostics-extension-to-application-insights.md). |
 
-A tárolóban lévő WAD-adatokat egy Log Analytics munkaterületre is gyűjtheti, hogy elemezze Azure Monitor-naplókat, bár a Log Analytics ügynök jellemzően ehhez a funkcióhoz használatos. Az adatküldés közvetlenül egy Log Analytics munkaterületre képes, és támogatja a további funkciókat biztosító megoldásokat és elemzéseket.  Lásd: [Azure-beli diagnosztikai naplók gyűjtése az Azure Storage-ból](../essentials/diagnostics-extension-logs.md). 
+A tárolóban lévő WAD-adatokat egy Log Analytics munkaterületre is gyűjtheti, hogy elemezze Azure Monitor-naplókat, bár a Log Analytics ügynök jellemzően ehhez a funkcióhoz használatos. Az adatküldés közvetlenül egy Log Analytics munkaterületre képes, és támogatja a további funkciókat biztosító megoldásokat és elemzéseket.  Lásd: [Azure-beli diagnosztikai naplók gyűjtése az Azure Storage-ból](../agents/diagnostics-extension-logs.md). 
 
 
 ### <a name="linux-diagnostics-extension-lad"></a>Linux diagnosztikai bővítmény (LAD)

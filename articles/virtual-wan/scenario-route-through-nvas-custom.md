@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/25/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8916fbc7c2a0b9789dcc73697324cee370f1fc1c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6291964aff7c215df7f738ab103947dcb9b1b1d4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704905"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036867"
 ---
 # <a name="scenario-route-traffic-through-nvas-by-using-custom-settings"></a>Forgatókönyv: forgalom továbbítása NVA keresztül egyéni beállítások használatával
 
@@ -176,7 +176,7 @@ Az Útválasztás NVA-n keresztüli beállításához vegye figyelembe a követk
    >
    > * A portál felhasználóknak engedélyeznie kell a "propagálás az alapértelmezett útvonalon" beállítást a (z) 0.0.0.0/0 útvonal kapcsolatok (VPN/ER/P2S/VNet) esetében a érvénybe léptetéséhez.
    > * A PS/CLI/REST felhasználóknál a "enableinternetsecurity" jelzőt igaz értékre kell állítani a 0.0.0.0/0 útvonal érvénybe léptetéséhez.
-   >
+   > * Virtual Network kapcsolat nem támogatja a "többszörös/egyedi" következő ugrási IP-címet az "azonos" hálózati virtuális készülékre egy KÜLLŐs VNet, ha a következő ugrási IP-címmel rendelkező útvonalak egyike nyilvános IP-cím vagy 0.0.0.0/0 (Internet).
 
 ## <a name="next-steps"></a>Következő lépések
 

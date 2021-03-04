@@ -4,12 +4,12 @@ description: Ez az oktatóanyag azt ismerteti, hogyan hozhat létre egy alkalmaz
 ms.topic: tutorial
 ms.date: 07/10/2019
 ms.custom: mvc, devx-track-js, devx-track-csharp
-ms.openlocfilehash: a783f5338dbc7ce0832b346492490525da332e39
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 8fe9f1fcb85e58122290f89819aa721c8f0e632a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96297117"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035326"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Oktatóanyag: Alkalmazás létrehozása és üzembe helyezése egy ASP.NET Core Web API kezelőfelületi szolgáltatás és egy állapotalapú háttérszolgáltatás segítségével
 
@@ -147,7 +147,7 @@ Nyissa meg a **Views/Home/Index.cshtml** fájlt, amely a kezdőlapvezérlő egye
                 </div>
                 <div class="row top-buffer" ng-repeat="vote in votes.data">
                     <div class="col-xs-8">
-                        <button class="btn btn-success text-left btn-block" ng-click="add(vote.Key)">
+                        <button class="btn btn-success text-left btn-block" ng-click="add(vote.key)">
                             <span class="pull-left">
                                 {{vote.Key}}
                             </span>
@@ -157,7 +157,7 @@ Nyissa meg a **Views/Home/Index.cshtml** fájlt, amely a kezdőlapvezérlő egye
                         </button>
                     </div>
                     <div class="col-xs-4">
-                        <button class="btn btn-danger pull-right btn-block" ng-click="remove(vote.Key)">
+                        <button class="btn btn-danger pull-right btn-block" ng-click="remove(vote.key)">
                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                             Remove
                         </button>

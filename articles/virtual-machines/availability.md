@@ -6,12 +6,12 @@ ms.author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: 6601cd31cf6e332bf292cd887b498a92946d8af7
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c336c1632cf206cdf2bf7151dc191c4de5ef820d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101668299"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036928"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Az Azure-beli virtuális gépek rendelkezésreállási beállításai
 
@@ -55,7 +55,7 @@ A virtuálisgép-méretezési csoportok a tartalék tartományok és a frissít�
 
 **Méretezési csoportok előkészítési módjai**
 
-A virtuálisgép-méretezési csoportok összehangolása lehetővé teszi, hogy nagyobb mértékben szabályozható legyen a méretezési csoport által kezelt virtuálisgép-példányok kezelése. A méretezési csoporton engedélyezheti az egységes vagy a rugalmas előkészítési módot. Az egységes összehangolás nagy mennyiségű állapot nélküli, azonos példányokkal rendelkező számítási feladatokra van optimalizálva. A rugalmas előkészítés (előzetes verzió) az azonos vagy több virtuálisgép-típussal rendelkező, magas rendelkezésre állást jelent. További információ ezekről a [hangszerelési módokról](./virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md) és azok engedélyezéséről.
+A virtuálisgép-méretezési csoportok összehangolása lehetővé teszi, hogy nagyobb mértékben szabályozható legyen a méretezési csoport által kezelt virtuálisgép-példányok kezelése. A méretezési csoporton engedélyezheti az egységes vagy a rugalmas előkészítési módot. Az egységes összehangolás nagy mennyiségű állapot nélküli, azonos példányokkal rendelkező számítási feladatokra van optimalizálva. A rugalmas előkészítés (előzetes verzió) az azonos vagy több virtuálisgép-típussal rendelkező, magas rendelkezésre állást jelent. További információ ezekről a [hangszerelési módokról](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md) és azok engedélyezéséről.
 
 
 ## <a name="availability-sets"></a>Rendelkezésre állási csoportok

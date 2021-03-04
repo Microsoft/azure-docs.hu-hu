@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 2cce4810a9e1a4d7143e2bab384d4b26471b7238
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: b664dd406a1ab90b4ea5e85005a69935f345c609
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240749"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034659"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>A kiszolgálói fogalmak a Azure Database for MySQL rugalmas kiszolgálóban (előzetes verzió)
 
@@ -38,7 +38,7 @@ Egy Azure Database for MySQL rugalmas kiszolgáló:
 - Virtuális hálózati integrációt biztosít az adatbázis-kiszolgáló eléréséhez
 - Lehetőséget biztosít a költségek megtakarítására a rugalmas kiszolgáló felfüggesztésével, ha nincs használatban
 - Az adatbázisokra vonatkozó felügyeleti házirendek hatókörét biztosítja: bejelentkezés, tűzfal, felhasználók, szerepkörök, konfigurációk stb.
-- Jelenleg a MySQL 5,7-es verziójában támogatott. További információ: [támogatott Azure Database for MySQL motor-verziók](./concepts-supported-versions.md).
+- A a MySQL 5,7 és a MySQL 8,0 fő verzióját támogatja. További információ: [támogatott Azure Database for MySQL motor-verziók](./../concepts-supported-versions.md).
 
 Egy Azure Database for MySQL rugalmas kiszolgálón belül létrehozhat egy vagy több adatbázist is. Dönthet úgy is, hogy kiszolgálónként létrehoz egy adatbázist az összes erőforrás használatára, vagy több adatbázist hoz létre az erőforrások megosztásához. A díjszabás a számítási réteg, a virtuális mag és a tárterület (GB) konfigurációja alapján strukturált kiszolgálónként történik. További információ: [számítás és tárolás](./concepts-compute-storage.md).
 

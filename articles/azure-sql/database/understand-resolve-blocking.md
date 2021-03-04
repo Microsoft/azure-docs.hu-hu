@@ -13,13 +13,13 @@ ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
-ms.date: 2/24/2021
-ms.openlocfilehash: b829d7045ac520cfe908c3c8809ae17702d6175d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 3/02/2021
+ms.openlocfilehash: 3d64336184450514d52095097343a4588213f111
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691433"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034897"
 ---
 # <a name="understand-and-resolve-azure-sql-database-blocking-problems"></a>Azure SQL Database blokkolási problémák ismertetése és megoldása
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -208,7 +208,7 @@ AND object_name(p.object_id) = '<table_name>';
 
 ## <a name="gather-information-from-extended-events"></a>Információk gyűjtése a kiterjesztett eseményekről
 
-A fenti információk mellett gyakran szükség van arra, hogy nyomon kövessék a kiszolgálón található tevékenységek nyomkövetését, hogy alaposan megvizsgálják a blokkoló problémát Azure SQL Database. Ha például egy munkamenet több utasítást hajt végre egy tranzakción belül, a rendszer csak az elküldött utolsó utasítást fogja megjeleníteni. Azonban a korábbi utasítások egyike lehet az, hogy a zárolások továbbra is megmaradnak. A nyomkövetés lehetővé teszi az aktuális tranzakción belüli munkamenet által végrehajtott összes parancs megtekintését.
+Az előző információk mellett gyakran szükség van arra, hogy nyomon kövessék a kiszolgálón található tevékenységek nyomkövetését, hogy alaposan megvizsgálják a Azure SQL Database blokkoló problémáit. Ha például egy munkamenet több utasítást hajt végre egy tranzakción belül, a rendszer csak az elküldött utolsó utasítást fogja megjeleníteni. Azonban a korábbi utasítások egyike lehet az, hogy a zárolások továbbra is megmaradnak. A nyomkövetés lehetővé teszi az aktuális tranzakción belüli munkamenet által végrehajtott összes parancs megtekintését.
 
 A SQL Server két módon rögzíthet nyomkövetéseket. Kiterjesztett események (Xevent típusú eseményekhez) és Profiler-Nyomkövetések. [SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) azonban elavult nyomkövetési technológia nem támogatott Azure SQL Database esetén. A [kiterjesztett események](/sql/relational-databases/extended-events/extended-events) az újabb nyomkövetési technológia, amely nagyobb sokoldalúságot és kisebb hatást gyakorol a megfigyelt rendszerre, és a felülete integrálva van a SQL Server Management Studioba (SSMS). 
 
@@ -238,7 +238,7 @@ Tekintse meg az SSMS-ben a [kiterjesztett események új munkamenet varázsló](
 
 ## <a name="identify-and-resolve-common-blocking-scenarios"></a>Gyakori blokkolási forgatókönyvek azonosítása és megoldása
 
-A fenti információk vizsgálatával megállapíthatja a legtöbb blokkolási probléma okát. A cikk további részében megtudhatja, hogyan használhatja ezeket az információkat a gyakori blokkolási forgatókönyvek azonosítására és megoldására. Ez a vita feltételezi, hogy használta a blokkoló (korábban hivatkozott) parancsfájlokat a blokkoló SPID-adatok rögzítéséhez, és XEvent-munkamenet használatával rögzítette az alkalmazási tevékenységet.
+Az előző információk vizsgálatával megállapíthatja a legtöbb blokkolási probléma okát. A cikk további részében megtudhatja, hogyan használhatja ezeket az információkat a gyakori blokkolási forgatókönyvek azonosítására és megoldására. Ez a vita feltételezi, hogy használta a blokkoló (korábban hivatkozott) parancsfájlokat a blokkoló SPID-adatok rögzítéséhez, és XEvent-munkamenet használatával rögzítette az alkalmazási tevékenységet.
 
 ## <a name="analyze-blocking-data"></a>Blokkoló adatvesztés elemzése 
 
@@ -334,7 +334,7 @@ A `wait_type` , a `open_transaction_count` és az oszlopok a `status` [sys.dm_ex
 | 5 | NULL | \>0 | visszaállítási | Igen. | Az ehhez az SPID-hez tartozó bővített események munkamenetében a rendszer figyelemmel kíséri a lekérdezés időkorlátját vagy megszakítását, vagy egyszerűen csak egy visszaállítási utasítást adott ki. |  
 | 6 | NULL | \>0 | alvó | Végül. Ha a Windows NT meghatározza, hogy a munkamenet már nem aktív, a Azure SQL Database kapcsolat megszakad. | `last_request_start_time`Sys.dm_exec_sessions értéke jóval korábbi az aktuális időpontnál. |
 
-Ezeket a forgatókönyveket a következő forgatókönyvek fogják kibővíteni. 
+## <a name="detailed-blocking-scenarios"></a>Részletes blokkolási forgatókönyvek
 
 1.  A szokásosan futó lekérdezés hosszú végrehajtási idővel okozott blokkolása
 
@@ -366,7 +366,7 @@ Ezeket a forgatókönyveket a következő forgatókönyvek fogják kibővíteni.
 
     A második lekérdezés kimenete azt jelzi, hogy a tranzakció beágyazási szintje egy. A tranzakcióban beszerzett összes zárolás továbbra is a tranzakció véglegesítése vagy visszaállítása után marad. Ha az alkalmazások explicit módon megnyitják és véglegesítik a tranzakciókat, a kommunikáció vagy más hiba nyitott állapotban hagyhatja a munkamenetet és a tranzakciót. 
 
-    Használja a fenti parancsfájlt sys.dm_tran_active_transactions alapján a jelenleg nem véglegesített tranzakciók azonosításához.
+    A jelen cikk korábbi részében ismertetett parancsfájl használatával sys.dm_tran_active_transactions alapján azonosíthatja a jelenleg nem véglegesített tranzakciókat a példányon.
 
     **Megoldások**:
 
@@ -377,6 +377,7 @@ Ezeket a forgatókönyveket a következő forgatókönyvek fogják kibővíteni.
             *    Az ügyfélalkalmazás hibájában hajtsa végre a hibát `IF @@TRANCOUNT > 0 ROLLBACK TRAN` , még akkor is, ha az ügyfélalkalmazás nem azt hiszi, hogy a tranzakció nyitva van. A nyitott tranzakciók ellenőrzése kötelező, mert a köteg során meghívott tárolt eljárás elindíthat egy tranzakciót az ügyfélalkalmazás ismerete nélkül. Bizonyos feltételek, például a lekérdezés megszakítása, megakadályozhatja az aktuális utasítás lejártának végrehajtását, így még akkor is, ha az eljárás logikával rendelkezik `IF @@ERROR <> 0` a tranzakció vizsgálatához és megszakításához, ez a visszaállítási kód ilyen esetekben nem lesz végrehajtva.  
             *    Ha a kapcsolat készletezését egy olyan alkalmazás használja, amely megnyitja a kapcsolódást, és kis számú lekérdezést futtat, mielőtt visszaadná a kapcsolatnak a készletbe, például egy webalapú alkalmazásba, átmenetileg letilthatja a kapcsolatok készletezését, amíg az ügyfélalkalmazás nem módosul a hibák megfelelő kezelése érdekében. A kapcsolatok készletezésének letiltásával a kapcsolat felszabadítása a Azure SQL Database kapcsolat fizikai leválasztását eredményezi, ami azt eredményezi, hogy a kiszolgáló visszaállítja a nyitott tranzakciókat.  
             *    Használhatja `SET XACT_ABORT ON` a-t a kapcsolatok esetében, vagy bármely tárolt eljárásban, amely megkezdi a tranzakciókat, és a hiba után nem takarít meg. Futásidejű hiba esetén ez a beállítás megszakítja a nyitott tranzakciókat, és visszaadja a vezérlést az ügyfélnek. További információkért tekintse át a [SET XACT_ABORT (Transact-SQL)](/sql/t-sql/statements/set-xact-abort-transact-sql)című témakört.
+
     > [!NOTE]
     > A rendszer nem állítja alaphelyzetbe a kapcsolódást, amíg újra nem használják a kapcsolódási készletből, így előfordulhat, hogy egy felhasználó megnyithat egy tranzakciót, majd felszabadítja a kapcsolódást a kapcsolódási készlethez, de nem lesz újra felhasználva több másodpercig, amíg a tranzakció nyitva marad. Ha a rendszer nem használja újra a kapcsolódást, a rendszer megszakítja a tranzakciót, amikor a kapcsolódás időtúllépéssel megszűnik, és el lett távolítva a kapcsolódási készletből. Így az ügyfélalkalmazás számára optimális, hogy megszakítsa a hibákkal kapcsolatos tranzakciókat a hibakezelő vagy a használatával, `SET XACT_ABORT ON` hogy elkerülje a lehetséges késleltetést.
 
@@ -385,14 +386,14 @@ Ezeket a forgatókönyveket a következő forgatókönyvek fogják kibővíteni.
 
 1.  Olyan SPID által okozott blokkolás, amelynek a megfelelő ügyfélalkalmazás nem tudta beolvasni az összes eredményhalmaz befejezését
 
-    Miután lekérdezést küldött a kiszolgálónak, minden alkalmazásnak azonnal le kell kérnie az összes eredményhalmaz befejezését. Ha egy alkalmazás nem kérdezi le az összes eredményt, a zárolások megmaradhatnak a táblákon, és blokkolhatja a többi felhasználót. Ha olyan alkalmazást használ, amely transzparens módon küldi el az SQL-utasításokat a kiszolgálónak, az alkalmazásnak be kell olvasnia az összes eredmény sort. Ha nem, akkor előfordulhat, hogy nem tudja feloldani a blokkolási problémát. A probléma elkerülése érdekében a rosszul viselkedő alkalmazások jelentéskészítésre vagy döntés-támogatási adatbázisra korlátozhatók.
+    Miután lekérdezést küldött a kiszolgálónak, minden alkalmazásnak azonnal le kell kérnie az összes eredményhalmaz befejezését. Ha egy alkalmazás nem kérdezi le az összes eredményt, a zárolások megmaradhatnak a táblákon, és blokkolhatja a többi felhasználót. Ha olyan alkalmazást használ, amely transzparens módon küldi el az SQL-utasításokat a kiszolgálónak, az alkalmazásnak be kell olvasnia az összes eredmény sort. Ha nem, akkor előfordulhat, hogy nem tudja feloldani a blokkolási problémát. A probléma elkerülése érdekében a nem megfelelően viselkedő alkalmazásokat egy jelentéskészítési vagy döntési támogatási adatbázisra korlátozhatja, a fő OLTP-adatbázistól elkülönítve.
     
     > [!NOTE]
     > A Azure SQL Databasehoz csatlakozó alkalmazások esetében lásd: [útmutatás az újrapróbálkozási logikához](./troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors) . 
     
     **Megoldás**: az alkalmazásnak újra kell írnia, hogy beolvassa az eredmény összes sorát a befejezéshez. Ez nem zárja ki az eltolás és a FETCH használatát egy lekérdezés [Order by záradékában](/sql/t-sql/queries/select-order-by-clause-transact-sql#using-offset-and-fetch-to-limit-the-rows-returned) a kiszolgálóoldali lapozás végrehajtásához.
 
-1.  A visszaállítási állapotban lévő SPID azonosító által okozott blokkolás
+1.  Egy munkamenet által a visszagörgetési állapotban okozott blokkolás
 
     Egy, a felhasználó által meghatározott tranzakción kívül törölt vagy megszakított adatmódosítási lekérdezés vissza lesz állítva. Ez az ügyfél hálózati munkamenetének leválasztását, illetve a holtpont áldozatainak kiválasztásakor is megtörténhet. Ez gyakran azonosítható a sys.dm_exec_requests kimenetének megfigyelésével, amely a VISSZAÁLLÍTÁSi **parancsra** utalhat, és a **percent_complete oszlop** előrehaladást eredményezhet. 
 

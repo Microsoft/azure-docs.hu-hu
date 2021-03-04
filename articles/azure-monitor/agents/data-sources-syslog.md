@@ -1,17 +1,16 @@
 ---
 title: Syslog-adatforrások gyűjtése Log Analytics ügynökkel Azure Monitor
 description: A syslog egy olyan eseménynaplózási protokoll, amely közös a Linux rendszerben. Ez a cikk ismerteti, hogyan konfigurálhatja a syslog-üzenetek gyűjteményét Log Analytics és a létrehozott rekordok részleteit.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/21/2020
-ms.openlocfilehash: 0d9804d088e1f193e0adf1fa26adbbe5d3680097
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 02/26/2021
+ms.openlocfilehash: e82e74f4cd325444221bbd2e1c060b7cd2f5c6c7
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101729198"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036731"
 ---
 # <a name="collect-syslog-data-sources-with-log-analytics-agent"></a>Syslog-adatforrások gyűjtése Log Analytics ügynökkel
 A syslog egy olyan eseménynaplózási protokoll, amely közös a Linux rendszerben. Az alkalmazások elküldik a helyi gépen tárolt vagy a syslog-gyűjtőnek küldött üzeneteket. A Linux rendszerhez készült Log Analytics-ügynök telepítésekor a helyi syslog démont úgy konfigurálja, hogy továbbítsa az üzeneteket az ügynöknek. Az ügynök ezután elküldi az üzenetet, hogy Azure Monitor, ahol létrejön egy megfelelő rekord.  
@@ -48,11 +47,11 @@ Bármilyen más létesítmény esetében [konfigurálja az egyéni naplók adatf
 A Linux rendszerhez készült Log Analytics-ügynök csak a konfigurációjában megadott létesítményekkel és megszakításokkal gyűjt eseményeket. A syslog-t a Azure Portal vagy a Linux-ügynökökön található konfigurációs fájlok kezelésével konfigurálhatja.
 
 ### <a name="configure-syslog-in-the-azure-portal"></a>A syslog konfigurálása a Azure Portalban
-Konfigurálja a syslog-t az Log Analytics munkaterület [Speciális beállítások menüjének adatok menüjében](../agents/agent-data-sources.md#configuring-data-sources) . Ezt a konfigurációt minden Linux-ügynök konfigurációs fájljába továbbítja a rendszer.
+Konfigurálja a syslog-t az Log Analytics munkaterület [ügynök konfigurálása menüjében](../agents/agent-data-sources.md#configuring-data-sources) . Ezt a konfigurációt minden Linux-ügynök konfigurációs fájljába továbbítja a rendszer.
 
-Új létesítmény hozzáadásához először válassza az **alábbi konfiguráció alkalmazása a saját gépekre** lehetőséget, majd írja be a nevét, és kattintson a elemre **+** . Minden egyes létesítmény esetében csak a kiválasztott részekkel rendelkező üzenetek lesznek összegyűjtve.  Tekintse át a gyűjteni kívánt adott létesítmény súlyosságát. Nem adhat meg további feltételeket az üzenetek szűréséhez.
+A **létesítmény hozzáadása** lehetőségre kattintva hozzáadhat egy új létesítményt. Minden egyes létesítmény esetében csak a kiválasztott részekkel rendelkező üzenetek lesznek összegyűjtve.  Tekintse át a gyűjteni kívánt adott létesítmény súlyosságát. Nem adhat meg további feltételeket az üzenetek szűréséhez.
 
-![A syslog konfigurálása](media/data-sources-syslog/configure.png)
+[![A syslog konfigurálása](media/data-sources-syslog/configure.png)](media/data-sources-syslog/configure.png#lightbox)
 
 Alapértelmezés szerint a rendszer az összes konfigurációs módosítást automatikusan leküldi az összes ügynöknek. Ha minden Linux-ügynökön manuálisan szeretné konfigurálni a syslog-t, törölje a jelet az *alábbi konfiguráció alkalmazása a saját gépekre* jelölőnégyzetből.
 

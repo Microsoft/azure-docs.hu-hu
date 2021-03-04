@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 10/23/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f0bcc4b4c900ba53ecd780530ce61487bcc998a4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ef1c4d87be39b6af90ed07cba9249cca4cf8bd6a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101658197"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036027"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Hibaelhárítás az Azure kommunikációs szolgáltatásokban
 
@@ -21,16 +21,11 @@ Ez a dokumentum segítséget nyújt a kommunikációs szolgáltatási megoldásb
 
 ## <a name="getting-help"></a>Segítség kérése
 
-Javasoljuk, hogy a fejlesztők a kommunikációs szolgáltatások [GitHub-tárházában](https://github.com/Azure/communication)felmerülő problémákkal kapcsolatos kérdéseket, javaslatokat és problémákat jelentsenek. További fórumok a következők:
-
-* [Microsoft Q&A](/answers/questions/topics/single/101418.html)
-* [StackOverflow](https://stackoverflow.com/questions/tagged/azure+communication)
-
-Az Azure-előfizetések [támogatási](https://azure.microsoft.com/support/plans/) csomagjától függően közvetlenül a [Azure Portal](https://azure.microsoft.com/support/create-ticket/)is benyújthatja a támogatási jegyet.
+Javasoljuk, hogy a fejlesztők a problémák megoldására, a funkciókra és a problémák jelentésére vonatkozó kérdéseket küldjenek be. Ennek támogatásához egy [dedikált támogatási és Súgó-beállítási oldal](../support.md) áll rendelkezésére, amely a támogatási lehetőségeket sorolja fel.
 
 Bizonyos típusú problémák elhárítása érdekében a következő információk bármelyikét kérheti:
 
-* **MS-CV-azonosító**: ez az azonosító a hívások és üzenetek hibakereséséhez használatos.
+* **MS-CV-azonosító**: ez az azonosító a hívások és üzenetek hibakereséséhez használatos. 
 * **Call ID**: ez az azonosító a kommunikációs szolgáltatások hívásainak azonosítására szolgál.
 * **SMS-üzenet azonosítója**: ez az azonosító az SMS-üzenetek azonosítására szolgál.
 * **Hívásnaplók: ezek** a naplók részletes információkat tartalmaznak, amelyek a hívási és hálózati problémák megoldásához használhatók.
@@ -38,14 +33,14 @@ Bizonyos típusú problémák elhárítása érdekében a következő informáci
 
 ## <a name="access-your-ms-cv-id"></a>Hozzáférés az MS-CV-AZONOSÍTÓhoz
 
-Az MS-CV AZONOSÍTÓját a diagnosztika konfigurálásával érheti el az `clientOptions` Object példányban az ügyféloldali kódtárak inicializálásakor. A diagnosztika bármely Azure-ügyfél kódtára számára konfigurálható, beleértve a csevegést, az identitást és a VoIP-hívást is.
+Az MS-CV AZONOSÍTÓját a diagnosztika konfigurálásával érheti el az `clientOptions` Object példányban az ügyféloldali kódtárak inicializálásakor. A diagnosztika bármely Azure-ügyfél kódtára számára konfigurálható, beleértve a csevegést, a felügyeletet és a VoIP-hívást.
 
 ### <a name="client-options-example"></a>Ügyfél-beállítások – példa
 
 A következő kódrészletek szemléltetik a diagnosztika konfigurációját. Ha az ügyféloldali kódtárakat a diagnosztika engedélyezve van, a rendszer a diagnosztikai adatokat a beállított esemény-figyelőhöz fogja kiadni:
 
 # <a name="c"></a>[C#](#tab/csharp)
-```
+``` 
 // 1. Import Azure.Core.Diagnostics
 using Azure.Core.Diagnostics;
 
@@ -66,13 +61,13 @@ var clientOptions = new ChatClientOptions()
     }
 };
 
-// 4. Initialize the ChatClient instance with the clientOptions
+// 4. Initialize the ChatClient instance with the clientOptions 
 ChatClient chatClient = new ChatClient(endpoint, communicationUserCredential, clientOptions);
 ChatThreadClient chatThreadClient = await chatClient.CreateChatThreadAsync("Thread Topic", new[] { new ChatThreadMember(communicationUser) });
 ```
 
 # <a name="python"></a>[Python](#tab/python)
-```
+``` 
 from azure.communication.chat import ChatClient, CommunicationUserCredential
 endpoint = "https://communication-services-sdk-live-tests-for-python.communication.azure.com"
 chat_client = ChatClient(
@@ -88,25 +83,24 @@ Ha egy támogatási kérést a hívási problémákkal kapcsolatos Azure Portal 
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 ```javascript
-// `call` is an instance of a call created by `callAgent.call` or `callAgent.join` methods
+// `call` is an instance of a call created by `callAgent.call` or `callAgent.join` methods 
 console.log(call.id)
 ```
 
 # <a name="ios"></a>[iOS](#tab/ios)
 ```objc
-// The `call id` property can be retrieved by calling the `call.getCallId()` method on a call object after a call ends
+// The `call id` property can be retrieved by calling the `call.getCallId()` method on a call object after a call ends 
 // todo: the code snippet suggests it's a property while the comment suggests it's a method call
-print(call.callId)
+print(call.callId) 
 ```
 
 # <a name="android"></a>[Android](#tab/android)
 ```java
 // The `call id` property can be retrieved by calling the `call.getCallId()` method on a call object after a call ends
-// `call` is an instance of a call created by `callAgent.call(…)` or `callAgent.join(…)` methods
-Log.d(call.getCallId())
+// `call` is an instance of a call created by `callAgent.call(…)` or `callAgent.join(…)` methods 
+Log.d(call.getCallId()) 
 ```
 ---
-
 
 ## <a name="access-your-sms-message-id"></a>Az SMS-üzenet AZONOSÍTÓjának elérése
 
@@ -131,29 +125,26 @@ console.log(result); // your message ID will be in the result
 
 ## <a name="enable-and-access-call-logs"></a>Hívásnaplók engedélyezése és elérése
 
-
-
-
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A következő kód használatával konfigurálhatja a `AzureLogger` naplófájlokat a konzolon a JavaScript ügyféloldali kódtár segítségével:
 
 ```javascript
-import { AzureLogger } from '@azure/logger';
+import { AzureLogger } from '@azure/logger'; 
 
-AzureLogger.verbose = (...args) => { console.info(...args); }
-AzureLogger.info = (...args) => { console.info(...args); }
-AzureLogger.warning = (...args) => { console.info(...args); }
-AzureLogger.error = (...args) => { console.info(...args); }
+AzureLogger.verbose = (...args) => { console.info(...args); } 
+AzureLogger.info = (...args) => { console.info(...args); } 
+AzureLogger.warning = (...args) => { console.info(...args); } 
+AzureLogger.error = (...args) => { console.info(...args); } 
 
-callClient = new CallClient({logger: AzureLogger});
+callClient = new CallClient({logger: AzureLogger}); 
 ```
 
 # <a name="ios"></a>[iOS](#tab/ios)
 
 Az iOS rendszerre való fejlesztéskor a naplók `.blog` fájlokba kerülnek. Vegye figyelembe, hogy a naplókat nem lehet közvetlenül megtekinteni, mert azok titkosítottak.
 
-Ezek a Xcode megnyitásával érhetők el. Nyissa meg a Windows > eszközök és szimulátorok > eszközöket. Jelölje ki az eszközét. A telepített alkalmazások területen válassza ki az alkalmazást, és kattintson a "tároló letöltése" elemre.
+Ezek a Xcode megnyitásával érhetők el. Nyissa meg a Windows > eszközök és szimulátorok > eszközöket. Jelölje ki az eszközét. A telepített alkalmazások területen válassza ki az alkalmazást, és kattintson a "tároló letöltése" elemre. 
 
 Ezzel egy fájlt fog adni `xcappdata` . Kattintson a jobb gombbal a fájlra, és válassza a "csomag tartalmának megjelenítése" lehetőséget. Ekkor megjelenik az `.blog` Azure-támogatási kérelemhez csatolni kívánt fájlok.
 
@@ -161,11 +152,10 @@ Ezzel egy fájlt fog adni `xcappdata` . Kattintson a jobb gombbal a fájlra, és
 
 Az Android rendszerre való fejlesztéskor a rendszer fájlokba tárolja a naplókat `.blog` . Vegye figyelembe, hogy a naplókat nem lehet közvetlenül megtekinteni, mert azok titkosítottak.
 
-Android Studioon navigáljon az eszköz Fájlkezelőhöz úgy, hogy kijelöli a megtekintés > eszköz Windows > eszköz Fájlkezelő lehetőséget a szimulátorból és az eszközről. A `.blog` fájl az alkalmazás könyvtárában fog megjelenni, és így kell kinéznie `/data/data/[app_name_space:com.contoso.com.acsquickstartapp]/files/acs_sdk.blog` . Ezt a fájlt csatolhatja a támogatási kérelemhez.
-
+Android Studioon navigáljon az eszköz Fájlkezelőhöz úgy, hogy kijelöli a megtekintés > eszköz Windows > eszköz Fájlkezelő lehetőséget a szimulátorból és az eszközről. A `.blog` fájl az alkalmazás könyvtárában fog megjelenni, és így kell kinéznie `/data/data/[app_name_space:com.contoso.com.acsquickstartapp]/files/acs_sdk.blog` . Ezt a fájlt csatolhatja a támogatási kérelemhez. 
+   
 
 ---
-
 
 ## <a name="calling-client-library-error-codes"></a>Ügyféloldali függvénytár-hibakódok hívása
 
@@ -184,7 +174,6 @@ Az ügyféloldali függvénytárat hívó Azure kommunikációs szolgáltatások
 | 490, 491, 496, 487, 498 | Helyi végponti hálózati problémák. | Győződjön meg arról, hogy a hálózatban van. |
 | 500, 503, 504 | Kommunikációs szolgáltatások infrastrukturális hibája. | Támogatási kérelem nyújtása a Azure Portalon keresztül. |
 | 603 | A távoli kommunikációs szolgáltatások résztvevője által visszautasított globális hívás | A várt viselkedés. |
-
 
 ## <a name="related-information"></a>Kapcsolódó információk
 - [Naplók és diagnosztika](logging-and-diagnostics.md)

@@ -12,12 +12,12 @@ ms.date: 01/28/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a7e9e523d3aae7cf1444c048c023ca1d85fde41f
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: a8ff94acbd9ffd491bf628ae61ee87634a9c6dd6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98952230"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033622"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Azure AD B2C kezelése Microsoft Graph
 
@@ -137,6 +137,14 @@ Azure AD B2C egy olyan könyvtárat biztosít, amely felhasználónként 100 egy
 - [Naplófájlok listázása](/graph/api/directoryaudit-list)
 
 További információ a Azure AD B2C naplók eléréséről: Azure AD B2C naplók [elérése](view-audit-logs.md).
+
+## <a name="conditional-access"></a>Feltételes hozzáférés
+
+- [Az összes feltételes hozzáférési szabályzat listázása](/graph/api/resources/conditionalaccessroot-list-policies)
+- [Feltételes hozzáférési szabályzat tulajdonságainak és kapcsolatainak beolvasása](/graph/api/conditionalaccesspolicy-get)
+- [Új feltételes hozzáférési szabályzat létrehozása](/graph/api/resources/application)
+- [Feltételes hozzáférési szabályzat frissítése](/graph/api/conditionalaccesspolicy-update)
+- [Feltételes hozzáférési szabályzat törlése](/graph/api/conditionalaccesspolicy-delete)
 
 ## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>Mintakód: felhasználói fiókok programozott felügyelete
 

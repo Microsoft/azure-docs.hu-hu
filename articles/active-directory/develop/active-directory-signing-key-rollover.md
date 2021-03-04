@@ -12,12 +12,12 @@ ms.date: 8/11/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: f3bf9ffeb8da8e877a27ab8758572b2c8277146d
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: ce4917f968ef1664a1d41f4eaff162df116bda4f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090315"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035084"
 ---
 # <a name="signing-key-rollover-in-the-microsoft-identity-platform"></a>Kulcs átváltásának aláírása a Microsoft Identity platformon
 Ez a cikk azt ismerteti, hogy mit kell tudni a Microsoft Identity platform által a biztonsági jogkivonatok aláírásához használt nyilvános kulcsokról. Fontos megjegyezni, hogy ezek a kulcsok rendszeres időközönként, és vészhelyzetben azonnal összeállíthatók. A Microsoft Identity platformot használó összes alkalmazásnak képesnek kell lennie programozott módon kezelni a kulcs átváltási folyamatát. Folytassa az olvasással, hogy megtudja, hogyan működik a kulcsok működése, hogyan állapítható meg a rollover hatása az alkalmazásra, illetve hogyan lehet frissíteni az alkalmazást, vagy létre kell hozni egy rendszeres manuális átütemezési folyamatot a kulcsok átváltásához, ha szükséges.
@@ -297,7 +297,7 @@ Ha létrehoz egy alkalmazást a WIF 1.0-s verziójában, nincs megadva olyan mec
 
 Útmutató a FedUtil a konfiguráció frissítéséhez való használatához:
 
-1. Ellenőrizze, hogy telepítve van-e a WIF v 1.0 SDK a Visual Studio 2008-es vagy 2010-es verziójának fejlesztői gépére. [Innen letöltheti](https://www.softpedia.com/get/Programming/Other-Programming-Files/Windows-Identity-Foundation-SDK.shtml) innen, ha még nem telepítette.
+1. Ellenőrizze, hogy telepítve van-e a WIF v 1.0 SDK a Visual Studio 2008-es vagy 2010-es verziójának fejlesztői gépére. [Innen letöltheti](https://www.microsoft.com/download/details.aspx?id=17331) innen, ha még nem telepítette.
 2. A Visual Studióban nyissa meg a megoldást, majd kattintson a jobb gombbal a megfelelő projektre, és válassza az **összevonási metaadatok frissítése** lehetőséget. Ha ez a beállítás nem érhető el, a FedUtil és/vagy a WIF v 1.0 SDK nincs telepítve.
 3. A parancssorból válassza a **frissítés** lehetőséget az összevonási metaadatok frissítésének megkezdéséhez. Ha rendelkezik hozzáféréssel az alkalmazást futtató kiszolgálói környezethez, igény szerint használhatja a FedUtil [automatikus metaadat-frissítési ütemező](/previous-versions/windows-identity-foundation/ee517272(v=msdn.10))eszközét is.
 4. A frissítési folyamat befejezéséhez kattintson a **Befejezés** gombra.

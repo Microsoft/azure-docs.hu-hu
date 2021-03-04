@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: cff40385edc89c0f6d2d105d089b66c046b0c04b
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: d46a20079919f052ed343c9702ba02ce7f109b5c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100545938"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "102036170"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Oktatóanyag: végpontok közötti megoldás kiépítése
 
@@ -107,7 +107,7 @@ Vissza a Visual Studio-ablakba, ahol a _**AdtE2ESample**_ -projekt meg van nyitv
 
 Az alkalmazás közzététele előtt érdemes meggyőződni arról, hogy a függőségek naprakészek, így biztos lehet benne, hogy rendelkezik az összes mellékelt csomag legújabb verziójával.
 
-A *megoldáskezelő* ablaktáblán bontsa ki a *SampleFunctionsApp > függőségek* elemet. Kattintson a jobb gombbal a *csomagok* elemre, és válassza a *NuGet-csomagok kezelése...* lehetőséget.
+A *megoldáskezelő* ablaktáblán bontsa ki a _**SampleFunctionsApp** > függőségek_ elemet. Kattintson a jobb gombbal a *csomagok* elemre, és válassza a *NuGet-csomagok kezelése...* lehetőséget.
 
 :::image type="content" source="media/tutorial-end-to-end/update-dependencies-1.png" alt-text="Visual Studio: NuGet-csomagok kezelése a SampleFunctionsApp projekthez" border="false":::
 
@@ -131,15 +131,17 @@ Azure Cloud Shell a következő parancs használatával állítson be egy olyan 
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
 
-A kimenet az Azure-függvény beállításainak listája, amely most már tartalmaz egy *ADT_SERVICE_URL* nevű bejegyzést.
+A kimenet az Azure-függvény beállításainak listája, amely most már tartalmaz egy **ADT_SERVICE_URL** nevű bejegyzést.
 
-A rendszerfelügyelt identitás létrehozásához használja a következő parancsot. Jegyezze fel a kimenet *principalId* mezőjét.
+A rendszerfelügyelt identitás létrehozásához használja a következő parancsot. Keresse meg a **principalId** mezőt a kimenetben.
 
 ```azurecli-interactive
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
-Használja az alábbi parancs kimenetében található *principalId* értéket, hogy a Function alkalmazás identitását az Azure Digital Twins-beli *adattulajdonosi* szerepkörhöz rendelje az Azure digitális Twins-példányhoz:
+Használja a **principalId** értéket az alábbi parancs kimenetében, hogy hozzárendelje a Function alkalmazás identitását az Azure Digital *Twins-beli adattulajdonosi* szerepkörhöz az Azure Digital Twins-példányhoz.
+
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
 
 ```azurecli-interactive
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
@@ -176,7 +178,7 @@ az iot hub create --name <name-for-your-IoT-hub> -g <your-resource-group> --sku 
 
 A parancs kimenete a létrehozott IoT hub adatait ismerteti.
 
-Mentse az IoT hub-ba kapott nevet. Erre később még szüksége lesz.
+Mentse az IoT hub-ba kapott **nevet** . Erre később még szüksége lesz.
 
 ### <a name="connect-the-iot-hub-to-the-azure-function"></a>Az IoT hub és az Azure-függvény összekötése
 
@@ -269,7 +271,10 @@ A megnyíló Project Console ablakban futtassa a következő parancsot a digitá
 ObserveProperties thermostat67 Temperature
 ```
 
-Az *Azure Digital Twins-példány* élő frissített hőmérsékletét 10 másodpercenként kell megtekinteni a konzolon.
+Az *Azure Digital Twins-példány* élő frissített hőmérsékletét két másodpercenként naplózza a konzolon.
+
+>[!NOTE]
+> Eltarthat néhány másodpercig, amíg az eszközről az adatok továbbítva vannak a Twin-re. Az első néhány hőmérséklet-olvasási érték 0 lehet, mielőtt megkezdődik az adat érkezése.
 
 :::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry.png" alt-text="Konzol kimenete, amely a digitális Twin thermostat67 származó hőmérsékleti üzenetek naplóját jeleníti meg":::
 
@@ -327,7 +332,7 @@ Keresse meg a `provisioningState` kimenetben a mezőt, és ellenőrizze, hogy az
 
 :::image type="content" source="media/tutorial-end-to-end/output-endpoints.png" alt-text="A végpont-lekérdezés eredménye, amely a sikeres provisioningState rendelkező végpontot mutatja":::
 
-Mentse az Event Grid-témakörben és a Event Grid-végpontban megadott neveket az Azure digitális Twins-ban. Ezeket később fogja használni.
+Mentse az **Event Grid-témakörben** és a Event Grid- **végpontban** megadott neveket az Azure digitális Twins-ban. Ezeket később fogja használni.
 
 ### <a name="set-up-route"></a>Útvonal beállítása
 
@@ -346,7 +351,7 @@ A parancs kimenete néhány információ a létrehozott útvonalról.
 
 Ezután fizessen elő a *ProcessDTRoutedData* Azure-függvényt a korábban létrehozott Event Grid-témakörre, hogy a telemetria-adatok az Event Grid-témakörben a függvénybe *thermostat67* , amely visszakerül az Azure digitális Twins-be, és ennek megfelelően frissíti a *room21* .
 
-Ehhez létre kell hoznia egy Event Grid- **előfizetést** az Event Grid-témakörből a *ProcessDTRoutedData* Azure-függvényhez végpontként.
+Ehhez létre kell hoznia egy Event Grid- **előfizetést** , amely adatokat küld az *ProcessDTRoutedData* Azure-függvénynek korábban létrehozott **Event Grid-témakörből** .
 
 A [Azure Portalban](https://portal.azure.com/)keresse meg az Event Grid-témakört úgy, hogy a felső keresési sávban keresi a nevét. Válassza a *+ Esemény-előfizetés* lehetőséget.
 
@@ -381,7 +386,7 @@ A megnyíló Project Console ablakban futtassa a következő **parancsot a digit
 ObserveProperties thermostat67 Temperature room21 Temperature
 ```
 
-Az *Azure Digital Twins-példány* élő frissített hőmérsékletét 10 másodpercenként kell megtekinteni a konzolon. Figyelje meg, hogy a *room21* hőmérséklete frissül, hogy megfeleljen a *thermostat67* frissítéseinek.
+Az *Azure Digital Twins-példány* élő frissített hőmérsékletét két másodpercenként naplózza a konzolon. Figyelje meg, hogy a *room21* hőmérséklete frissül, hogy megfeleljen a *thermostat67* frissítéseinek.
 
 :::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry-b.png" alt-text="Konzol kimenete, amely a hőmérsékleti üzenetek naplóját mutatja egy termosztátból és egy helyiségből":::
 

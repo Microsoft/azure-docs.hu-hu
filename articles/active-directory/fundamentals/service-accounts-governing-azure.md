@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c43125edab0f5ed097b99798ca22e5543e15a2d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4311d0acc7c417bf31c71f46e6c25c65312b894d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693133"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034531"
 ---
 # <a name="governing-azure-ad-service-accounts"></a>Az Azure AD-szolgáltatásfiókok szabályozása
 
@@ -51,13 +51,13 @@ A szolgáltatásfiók-jogosultságok kezeléséhez a következő eljárásokat j
 
 **Engedélyek**
 
-* Ne rendeljen beépített szerepköröket a szolgáltatásfiókokhöz. Ehelyett használja a [OAuth2 engedély engedélyezési modelljét Microsoft Graphhoz](https://docs.microsoft.com/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0),
+* Ne rendeljen beépített szerepköröket a szolgáltatásfiókokhöz. Ehelyett használja a [OAuth2 engedély engedélyezési modelljét Microsoft Graphhoz](/graph/api/resources/oauth2permissiongrant),
 
 * Ha az egyszerű szolgáltatásnak Kiemelt szerepkörrel kell rendelkeznie, érdemes egy adott, a szükséges jogosultságokkal rendelkező [Egyéni szerepkört](https://docs.microsoft.com/azure/active-directory/roles/custom-create) hozzárendelni egy időben kötött módon.
 
 * Az emelt szintű engedélyekkel rendelkező csoportok tagjaiként ne szerepeljenek a szolgáltatásfiókok. 
 
-* A [PowerShell használatával sorolja fel a Kiemelt szerepkörök tagjait](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0), például   
+* A [PowerShell használatával sorolja fel a Kiemelt szerepkörök tagjait](/powershell/module/azuread/get-azureaddirectoryrolemember), például   
 `Get-AzureADDirectoryRoleMember`, és szűrő a objektumtípus "egyszerű szolgáltatásnév".
 
    vagy használja  
@@ -117,7 +117,7 @@ Javasoljuk, hogy exportálja az Azure AD bejelentkezési naplóit, és importál
 
 Rendszeresen tekintse át a szolgáltatásfiókok által biztosított engedélyeket és hatóköröket, és ellenőrizze, hogy a felhasználók csökkenthetők-e.
 
-* A [PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipaloauth2permissiongrant?view=azureadps-2.0) használatával [automatizálhatja a](https://gist.github.com/psignoret/41793f8c6211d2df5051d77ca3728c09) szolgáltatási fiók belefoglalását, és dokumentálhatja azokat a hatóköröket, amelyekhez beleegyezik a hozzáférés.
+* A [PowerShell](/powershell/module/azuread/get-azureadserviceprincipaloauth2permissiongrant) használatával [automatizálhatja a](https://gist.github.com/psignoret/41793f8c6211d2df5051d77ca3728c09) szolgáltatási fiók belefoglalását, és dokumentálhatja azokat a hatóköröket, amelyekhez beleegyezik a hozzáférés.
 
 * A PowerShell használatával [tekintse át a meglévő egyszerű szolgáltatásnév hitelesítő adatait](https://github.com/AzureAD/AzureADAssessment) , és ellenőrizze azok érvényességét.
 
@@ -172,7 +172,7 @@ Hozzon létre egy felülvizsgálati folyamatot annak biztosítására, hogy a sz
 
 **A megszüntetési folyamatoknak a következő feladatokat kell tartalmazniuk.**
 
-1. Ha a társított alkalmazást vagy parancsfájlt kiépítik, [Figyelje](../reports-monitoring/concept-all-sign-ins#sign-ins-report.md) a szolgáltatás fiókjának bejelentkezési és erőforrás-hozzáférését.
+1. Ha a társított alkalmazást vagy parancsfájlt kiépítik, [Figyelje](../reports-monitoring/concept-all-sign-ins.md#sign-ins-report) a szolgáltatás fiókjának bejelentkezési és erőforrás-hozzáférését.
 
    * Ha a fiók továbbra is aktív, határozza meg, hogyan használja a rendszer a következő lépések megkezdése előtt.
  

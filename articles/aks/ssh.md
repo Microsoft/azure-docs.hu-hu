@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre SSH-kapcsolatokat az Azure Kubern
 services: container-service
 ms.topic: article
 ms.date: 07/31/2019
-ms.openlocfilehash: 96334985862c65000d783df3a205406f046be07a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7455b98348f2b8c40f2ffc125abe1297af88fbd8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740545"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034455"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>SSH-n keresztüli csatlakozás az Azure Kubernetes Service- (AKS-) fürtcsomópontokhoz karbantartás és hibaelhárítás céljából
 
@@ -168,7 +168,7 @@ Egy AK-csomóponthoz való SSH-kapcsolatok létrehozásához egy segítő Pod-t 
 1. Térjen vissza a terminál-munkamenetbe a tárolóba, frissítse a másolt `id_rsa` titkos SSH-kulcs engedélyeit, hogy az csak a felhasználó számára írásvédett legyen:
 
     ```console
-    chmod 0600 id_rsa
+    chmod 0400 id_rsa
     ```
 
 1. Hozzon létre egy SSH-kapcsolatokat az AK-csomóponthoz. Az AK-csomópontok alapértelmezett felhasználóneve a következő: *azureuser*. Fogadja el a kérést a kapcsolódás folytatásához, mivel az SSH-kulcs először megbízható. Ekkor megjelenik az AK-csomópont bash-üzenete:

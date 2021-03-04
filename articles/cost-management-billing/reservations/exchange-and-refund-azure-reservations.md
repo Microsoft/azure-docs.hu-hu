@@ -5,18 +5,28 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 12/15/2020
+ms.date: 02/24/2021
 ms.author: banders
-ms.openlocfilehash: 045ab35a35aa4caefb1e1bcbbf7bf78b726c09f7
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: HT
+ms.openlocfilehash: 9015cbcd669665467d3836112b152aa504176f2b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601459"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035993"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai
 
-Az Azure Reservations biztosítja a rugalmasságot a változó igények kielégítéséhez. A foglalásokat le tudja cserélni azonos típusú foglalásokra. Például egy virtuális gép foglalása kicserélhető bármilyen méretű vagy régiójú virtuális gép foglalásának megvásárlására. Hasonlóképpen, egy SQL PaaS Database-foglalás is kicserélhető másik típusú vagy régiójú SQL PaaS Database-foglalás megvásárlására. A foglalásokért visszatérítést is kérhet, de a visszamondott foglalási kötelezettségvállalások teljes összege a számlázási hatókörben (például Nagyvállalati Szerződés, Microsoft-ügyfélszerződés és Microsoft-partnerszerződés) nem haladhatja meg az 50 000 USD összeget az elmúlt 12 hónapra vonatkozóan. Az Azure Databricks fenntartott kapacitás, az Azure VMware Solution by CloudSimple-foglalás, az Azure Red Hat Open Shift-foglalás, a Red Hat-csomagok és a SUSE Linux-csomagok nem jogosultak visszatérítésre.
+Az Azure Reservations biztosítja a rugalmasságot a változó igények kielégítéséhez. Megadhatja az azonos típusú foglalások foglalását. Például több számítási foglalást is visszaadhat, beleértve az Azure dedikált gazdagépet, az Azure VMware-megoldást és az Azure Virtual Machines egyszerre. Más szóval a foglalási termékek egymással megváltoztathatók, ha ugyanaz a foglalási típus. Egy másik példában több SQL Database-foglalási típust is cserélhet, beleértve a felügyelt példányokat és rugalmas készlet egymással.
+
+Nem válthat azonban eltérő foglalásokat. Nem cserélhet például SQL Databasehoz Cosmos DB foglalást.
+
+A foglalások cseréjével egy másik régióban is megvásárolhatja a hasonló típusú más foglalásokat. Például megadhat egy, az USA nyugati régiójában található foglalást, amely Nyugat-Európában található.
+
+Ha kicserél egy foglalást, az adott időszakot egy évig, három évre módosíthatja.
+
+A foglalásokért visszatérítést is kérhet, de a visszamondott foglalási kötelezettségvállalások teljes összege a számlázási hatókörben (például Nagyvállalati Szerződés, Microsoft-ügyfélszerződés és Microsoft-partnerszerződés) nem haladhatja meg az 50 000 USD összeget az elmúlt 12 hónapra vonatkozóan.
+
+Az Azure Databricks fenntartott kapacitás, az Azure VMware Solution by CloudSimple-foglalás, az Azure Red Hat Open Shift-foglalás, a Red Hat-csomagok és a SUSE Linux-csomagok nem jogosultak visszatérítésre.
 
 Az önkiszolgáló csere- és lemondási lehetőség nem érhető el az Egyesült Államok kormányának nagyvállalati szerződésével rendelkező ügyfelei számára. Az Egyesült Államok kormányának (US Government) egyéb előfizetési típusai támogatottak, például a használatalapú fizetés és a Felhőszolgáltató (CSP).
 
@@ -37,9 +47,26 @@ A foglalás cseréjét az [Azure Portalon](https://portal.azure.com/#blade/Micro
 
 Egy foglalás visszatérítéséhez lépjen a **Foglalás részleteire**, és válassza a **Visszatérítés** lehetőséget.
 
+## <a name="exchange-multiple-reservations"></a>Több foglalás cseréje
+
+Egy műveletben hasonló típusú foglalásokat adhat vissza.
+
+A foglalások cseréjekor az új beszerzési pénznem összegének nagyobbnak kell lennie a visszatérítési összegnél. Ha az új vásárlási összeg kisebb a visszatérítési összegnél, hibaüzenet jelenik meg. Ha a hiba jelenik meg, csökkentse a visszaadni kívánt mennyiségét, vagy növelje a megvásárolni kívánt mennyiséget.
+
+1. Jelentkezzen be az Azure Portalra, és lépjen a **Foglalások** területre.
+1. A foglalások listájában jelölje be az Exchange-hez használni kívánt foglalások jelölőnégyzetét.
+1. Az oldal tetején válassza az **Exchange** lehetőséget.
+1. Ha szükséges, módosítsa az egyes foglalások visszaadott mennyiségét.
+1. Ha kijelöli az automatikus kitöltés visszaküldési mennyiségét, az **összes** megadásával kitöltheti a listát az egyes foglalásokhoz tartozó teljes mennyiséggel, vagy **optimalizálhatja a kihasználtságot (7 napos)** a lista egy olyan mennyiséggel való kitöltéséhez, amely a használat utolsó hét napja alapján optimalizálja a kihasználtságot. **Válassza az alkalmaz lehetőséget**.
+1. A lap alján válassza a **Tovább: vásárlás** lehetőséget.
+1. A vásárlás lapon válassza ki azokat az elérhető termékeket, amelyeket szeretne cserélni. Több különböző típusú terméket is kijelölhet.
+1. A megvásárolni kívánt termék kiválasztása ablaktáblán válassza ki a kívánt termékeket, majd válassza a **Hozzáadás a kosárhoz** lehetőséget, majd válassza a **Bezárás** lehetőséget.
+1. Ha elkészült, kattintson a **Tovább gombra: felülvizsgálat**.
+1. Tekintse át a foglalások visszaadását és a megvásárolni kívánt új foglalásokat, majd válassza az **Exchange megerősítése** lehetőséget.
+
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>Nem prémium szintű tároló cseréje prémium tárolóra
 
-Ha egy olyan virtuálisgép-méretre rendelkezik foglalással, amely nem támogatja a Premium Storage-ot, becserélheti egy olyan egyenértékű VM-méretre, amely támogatja azt. Például egy _F1_ méretűt egy _F1s_ méretűre. A csere végrehajtásához lépjen a Foglalás részleteire, és válassza a **Csere** lehetőséget. A csere nem állítja vissza a fenntartott példány időtartamát, és nem hoz létre új tranzakciót. 
+Ha egy olyan virtuálisgép-méretre rendelkezik foglalással, amely nem támogatja a Premium Storage-ot, becserélheti egy olyan egyenértékű VM-méretre, amely támogatja azt. Például egy _F1_ méretűt egy _F1s_ méretűre. A csere végrehajtásához lépjen a Foglalás részleteire, és válassza a **Csere** lehetőséget. A csere nem állítja vissza a fenntartott példány időtartamát, és nem hoz létre új tranzakciót.
 
 ## <a name="how-transactions-are-processed"></a>A tranzakciók feldolgozása
 

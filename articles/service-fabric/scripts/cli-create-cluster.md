@@ -13,18 +13,18 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 8a6f23a5f4ce497c38358f06394f0f0aa97f9889
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b69f62f6f47c656921f4f2230a296e293e423fa4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101739661"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035292"
 ---
 # <a name="create-a-secure-service-fabric-linux-cluster-in-azure"></a>Biztonságos Service Fabric-fürt létrehozása az Azure-ban
 
 Ez a parancs létrehoz egy önaláírt tanúsítványt, hozzáadja egy kulcstartóhoz, és helyileg letölti a tanúsítványt.  A rendszer az új tanúsítványt a fürt védelmére használja a telepítést követően.  Meglévő tanúsítványt is használhat egy új létrehozása helyett.  A tanúsítvány tulajdonosnevének mindkét esetben egyeznie kell a Service Fabric-fürthöz való hozzáféréshez használt tartománnyal. Ez a megfeleltetés szükséges ahhoz, hogy a TLS-t biztosítani lehessen a fürt HTTPS-felügyeleti végpontjai és Service Fabric Explorer számára. Nem szerezhet be TLS/SSL-tanúsítványt a `.cloudapp.azure.com` tartomány hitelesítésszolgáltatótól. Egyéni tartománynevet kell beszereznie a fürt számára. Amikor tanúsítványt igényel egy hitelesítésszolgáltatótól, a tanúsítvány tulajdonosnevének meg kell felelnie a fürthöz használt egyéni tartománynévnek.
 
-Amennyiben szükséges, telepítse az [Azure CLI-t](cli/azure/install-azure-cli).
+Amennyiben szükséges, telepítse az [Azure CLI-t](/cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Példaszkript
 

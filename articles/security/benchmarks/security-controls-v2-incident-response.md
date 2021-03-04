@@ -4,21 +4,21 @@ description: Azure Security benchmark v2 – incidens válasza
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 002/22/2021
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 40a88349040482b3325e63d7035dea35df444cdb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b9295482c2464eb80bc49fa707744f49a2fbebfd
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101698586"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035377"
 ---
 # <a name="security-control-v2-incident-response"></a>Security Control v2: incidens válasza
 
 Az incidensekre adott válasz az incidensek életciklusának előkészítését, észlelését és elemzését, a tárolást és az incidens utáni tevékenységeket fedi le. Ez magában foglalja az Azure-szolgáltatások, például a Azure Security Center és a Sentinel használatát az incidensek reagálási folyamatának automatizálásához.
 
-A megfelelő beépített Azure Policy megtekintéséhez tekintse meg [Az Azure biztonsági teljesítményteszt szabályozási megfelelőségének beépített kezdeményezésének részleteit: incidens válasza](../../governance/policy/samples/azure-security-benchmark#incident-response)
+A megfelelő beépített Azure Policy megtekintéséhez tekintse meg [Az Azure biztonsági teljesítményteszt szabályozási megfelelőségének beépített kezdeményezésének részleteit: incidens válasza](../../governance/policy/samples/azure-security-benchmark.md#incident-response)
 
 ## <a name="ir-1-preparation--update-incident-response-process-for-azure"></a>IR-1: Előkészítés – incidensválasz-folyamat frissítése az Azure-hoz
 

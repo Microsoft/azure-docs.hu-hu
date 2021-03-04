@@ -1,17 +1,16 @@
 ---
 title: Log Analytics munkaterület állapotának figyelése Azure Monitor
 description: Ismerteti, hogyan lehet figyelni a Log Analytics munkaterület állapotát a műveleti tábla adataival.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2020
-ms.openlocfilehash: 09df1c2ecb94089f23a88dd36c5343bb4cf2feea
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9eda0acc15badfe7bb2e754d887786aa990d6e24
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710940"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034965"
 ---
 # <a name="monitor-health-of-log-analytics-workspace-in-azure-monitor"></a>Log Analytics munkaterület állapotának figyelése Azure Monitor
 A Log Analytics munkaterület teljesítményének és rendelkezésre állásának Azure Monitor-ban való fenntartásához képesnek kell lennie proaktív módon észlelni a felmerülő problémákat. Ez a cikk azt ismerteti, hogyan figyelheti a Log Analytics munkaterület állapotát a [műveleti](/azure/azure-monitor/reference/tables/operation) tábla adatai alapján. Ez a táblázat minden Log Analytics-munkaterület része, és a munkaterületen előforduló hibákat és figyelmeztetéseket tartalmazza. Rendszeresen tekintse át ezeket az adatait, és hozzon létre riasztásokat, amelyekkel proaktívan értesítheti, ha vannak olyan fontos incidensek a munkaterületen.

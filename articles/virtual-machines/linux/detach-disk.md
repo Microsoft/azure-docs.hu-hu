@@ -8,12 +8,12 @@ ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7e618475d7d0160bce5aee39c267bb191a3a9f0a
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: d8694a715e53f820556231ae6a549e98b2963fa1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897139"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035704"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Adatlemez leválasztása Linux rendszerű virtuális gépről
 
@@ -108,13 +108,10 @@ A lemez a tárolóban marad, de már nincs csatlakoztatva a virtuális géphez.
 
 1. A bal oldali menüben válassza a **Virtual Machines** lehetőséget.
 1. A virtuális gép panelen válassza a **lemezek** lehetőséget.
-1. A **lemezek** panel tetején válassza a **Szerkesztés** lehetőséget.
-1. A **lemezek** panelen a leválasztani kívánt adatlemez jobb szélén kattintson a ![ leválasztási gombra a lemezkép leválasztása ](./media/detach-disk/detach.png) gombra.
-1. A lemez eltávolítása után kattintson a panel tetején található **Mentés** gombra.
+1. A **lemezek** panelen a leválasztani kívánt adatlemez jobb széléhez válassza az **X** gombot a lemez leválasztásához.
+1. A lemez eltávolítása után válassza a **Mentés** lehetőséget a panel tetején.
 
-A lemez a tárolóban marad, de már nincs csatlakoztatva a virtuális géphez.
-
-
+A lemez a tárolóban marad, de már nincs csatlakoztatva a virtuális géphez. A lemez nincs törölve.
 
 ## <a name="next-steps"></a>Következő lépések
 Ha újra fel szeretné használni az adatlemezt, egyszerűen [csatolhatja azt egy másik virtuális géphez](add-disk.md).

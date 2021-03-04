@@ -1,20 +1,20 @@
 ---
-title: Víziós AI-modell üzembe helyezése az Azure Percept DK-ben
-description: Ismerje meg, hogyan helyezhet üzembe egy víziós AI-modellt az Azure Percept DK-ből az Azure Percept studióból
+title: Lemezképek rögzítése kód nélküli megoldáshoz az Azure Percept Studióban
+description: Ismerje meg, hogyan rögzíthet képeket az Azure Percept DK-mel az Azure Percept Studio alkalmazásban a kód nélküli megoldáshoz
 author: elqu20
 ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 5ad263f5ae3b0b8e91de30b620002e33086608b4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 44bf498af52f4d8a0d880dc1f1d5874d5b444cae
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662287"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035534"
 ---
-# <a name="capture-images-for-a-vision-project"></a>Képek rögzítése egy víziós projekthez
+# <a name="capture-images-for-a-vision-project-in-azure-percept-studio"></a>Lemezképek rögzítése az Azure Percept Studióban
 
 Ezt az útmutatót követve képeket rögzíthet az Azure Percept DK víziójában, amely az Azure Percept Studio egy meglévő víziós projektjét mutatja be. Ha még nem hozott létre egy víziós projektet, tekintse meg a [kód nélküli jövőképet ismertető oktatóanyagot](./tutorial-nocode-vision.md).
 
@@ -56,7 +56,7 @@ Ezt az útmutatót követve képeket rögzíthet az Azure Percept DK víziójáb
         1. A **rögzítési arány** területen válassza ki a kívánt képalkotási arányt.
         1. Válassza ki a **cél** alatt gyűjteni kívánt rendszerképek teljes számát.
 
-    :::image type="content" source="./media/how-to-capture-images/take-photo.png" alt-text="Percept-eszközök lap a felsorolt elérhető műveletekkel.":::
+    :::image type="content" source="./media/how-to-capture-images/take-photo.png" alt-text="Rendszerkép-rögzítő képernyő.":::
 
 Minden rendszerkép elérhető lesz [Custom Visionban](https://www.customvision.ai/).
 

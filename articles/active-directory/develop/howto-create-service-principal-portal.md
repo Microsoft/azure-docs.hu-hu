@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 8a4a4153261b93b3b17641e8561962c274570bd0
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 5dd960dde72b879515bd948c4731ead135bef4b0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104212"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035050"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Útmutató: Az erőforrásokhoz hozzáférő Azure AD-alkalmazás és -szolgáltatásnév létrehozása a portálon
 
@@ -45,7 +45,7 @@ Megfelelő engedélyekkel kell rendelkeznie az alkalmazások Azure AD-Bérlővel
 1. A bal oldali ablaktáblán válassza a **felhasználói beállítások** lehetőséget.
 1. Keresse meg a **Alkalmazásregisztrációk** beállítást. Ezt az értéket csak rendszergazda állíthatja be. Ha az **Igen** értékre van állítva, akkor az Azure ad-bérlő bármelyik felhasználója regisztrálhat egy alkalmazást.
 
-Ha az alkalmazás regisztrációja **nem** értékre van állítva, akkor csak a rendszergazdai szerepkörrel rendelkező felhasználók regisztrálhatják az ilyen típusú alkalmazásokat. A rendelkezésre álló rendszergazdai szerepkörökről és az egyes szerepkörökhöz megadott Azure AD-engedélyekről az [elérhető szerepkörök](../roles/permissions-reference.md#available-roles) és [szerepkör-engedélyek](../roles/permissions-reference.md#role-permissions) című szakaszban talál további információt. Ha a fiókja hozzá van rendelve a felhasználói szerepkörhöz, de az alkalmazás regisztrációs beállítása a rendszergazda felhasználókra korlátozódik, kérje meg a rendszergazdát, hogy rendeljen hozzá egy olyan rendszergazdai szerepkört, amely az alkalmazások regisztrálásának minden aspektusát létrehozhatja és kezelheti, illetve lehetővé teheti a felhasználók számára, hogy regisztrálják az alkalmazásokat.
+Ha az alkalmazás regisztrációja **nem** értékre van állítva, akkor csak a rendszergazdai szerepkörrel rendelkező felhasználók regisztrálhatják az ilyen típusú alkalmazásokat. Az [Azure ad beépített szerepköreinek](../roles/permissions-reference.md#all-roles) megismeréséhez tekintse meg az egyes szerepkörökhöz elérhető rendszergazdai szerepköröket és az Azure ad-ben megadott engedélyeket. Ha a fiókja hozzá van rendelve a felhasználói szerepkörhöz, de az alkalmazás regisztrációs beállítása a rendszergazda felhasználókra korlátozódik, kérje meg a rendszergazdát, hogy rendeljen hozzá egy olyan rendszergazdai szerepkört, amely az alkalmazások regisztrálásának minden aspektusát létrehozhatja és kezelheti, illetve lehetővé teheti a felhasználók számára, hogy regisztrálják az alkalmazásokat.
 
 ### <a name="check-azure-subscription-permissions"></a>Azure-előfizetési engedélyek keresése
 
