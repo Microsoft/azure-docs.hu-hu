@@ -5,15 +5,15 @@ author: craigktreasure
 manager: vriveras
 services: azure-object-anchors
 ms.author: crtreasu
-ms.date: 02/19/2021
+ms.date: 03/02/2021
 ms.topic: conceptual
 ms.service: azure-object-anchors
-ms.openlocfilehash: 020f727674449523a57a608e8930d67e0f239cf6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 74663f05c5ff995a090c7cd35e4edf46a754da17
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101746017"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034608"
 ---
 # <a name="runtime-sdk-overview"></a>Futásidejű SDK – áttekintés
 
@@ -25,7 +25,7 @@ Az alábbi típusok mindegyike megtalálható a **Microsoft. MixedReality. Objec
 
 ### <a name="objectmodel"></a>ObjectModel
 
-A [ObjectModel](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectmodel) a fizikai objektum geometriáját jelöli, és az észleléshez és a becsléshez szükséges paramétereket kódolja. Az [objektum-horgonyok szolgáltatás](../quickstarts/get-started-model-ingestion.md)használatával kell létrehozni. Ezután az alkalmazás betöltheti a generált modellt az objektum-horgonyok API-val, és lekérdezheti a modellbe ágyazott rácsvonalat a vizualizációhoz.
+A [ObjectModel](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectmodel) a fizikai objektum geometriáját jelöli, és az észleléshez és a becsléshez szükséges paramétereket kódolja. Az [objektum-horgonyok szolgáltatás](../quickstarts/get-started-model-conversion.md)használatával kell létrehozni. Ezután az alkalmazás betöltheti a generált modellt az objektum-horgonyok API-val, és lekérdezheti a modellbe ágyazott rácsvonalat a vizualizációhoz.
 
 ### <a name="objectsearcharea"></a>ObjectSearchArea
 
@@ -103,7 +103,7 @@ if(status != ObjectObserverStatus.Allowed)
 }
 ```
 
-Ezután az alkalmazás létrehoz egy objektum megfigyelőt, és betölti az objektum- [horgonyok](../quickstarts/get-started-model-ingestion.md)betöltési szolgáltatása által generált szükséges modelleket.
+Ezután az alkalmazás létrehoz egy objektum megfigyelőt, és betölti a [modell-átalakítási szolgáltatás](../quickstarts/get-started-model-conversion.md)által generált szükséges modelleket.
 
 ```cs
 var observer = new ObjectObserver();

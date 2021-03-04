@@ -1,17 +1,16 @@
 ---
 title: Webalkalmazás létrehozása a Service Management-összekötőhöz
 description: Hozzon létre egy Service Manager webalkalmazást automatikus parancsfájl használatával az Azure-beli IT-szolgáltatásmenedzsmenti csatolóhoz való kapcsolódáshoz, valamint a ITSM munkaelemek központi figyeléséhez és kezeléséhez.
-ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
-ms.openlocfilehash: 3d9360b167a246e257d8c0b2ec4cb88f1ae39dcd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 16b48ac213168eaa58de5b0603025b2d48bb5ed5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100614405"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041654"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>Service Manager Webalkalmazás létrehozása az automatikus parancsfájl használatával
 

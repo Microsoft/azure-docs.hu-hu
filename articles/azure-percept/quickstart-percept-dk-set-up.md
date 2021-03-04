@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 02/15/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 3540204d66bb589c567514f92a9a8acb2159e343
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 77ccf09903b6cff83b52d60d43d0c52533c9c1ad
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665516"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041688"
 ---
 # <a name="set-up-your-azure-percept-dk-and-deploy-your-first-ai-model"></a>Az Azure Percept DK beállítása és az első AI-modell üzembe helyezése
 
@@ -173,7 +173,7 @@ Ha új előfizetést szeretne létrehozni, kövesse [az alábbi lépéseket](htt
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/main-19-0-warning.png" alt-text="A telepítési élmény megszakítása figyelmeztetés."::: 
 
-1. Folytassa az Azure Portalon – lépjen vissza a telepítési élmény ablakba, és kattintson a **Folytatás a Azure Portal** gombra, hogy megkezdje az egyéni AI-modellek létrehozását az Azure Percept Studióban.
+1. Folytassa a Azure Portal – lépjen vissza a telepítési élmény ablakba, és kattintson a **Folytatás a Azure Portal** gombra, hogy megkezdje az egyéni AI-modellek létrehozását az Azure Percept Studióban.
 
     > [!NOTE]
     > Győződjön meg arról, hogy a gazdaszámítógép már nem csatlakozik a fejlesztői csomag hozzáférési pontjához a WiFi-beállításokban, és most újra csatlakozik a helyi WiFi-hez.
@@ -205,8 +205,6 @@ Ha új előfizetést szeretne létrehozni, kövesse [az alábbi lépéseket](htt
     
 1. Helyezzen üzembe egy új, előre elkészített mintát a csatlakoztatott eszközön. Válasszon ki egy mintát a könyvtárból, és kattintson az "üzembe helyezés eszközre" elemre.
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/portal-05-1-select-prebuilt.png" alt-text="Válasszon egy előre elkészített elemet.":::
-    
     :::image type="content" source="./media/quickstart-percept-dk-setup/portal-05-2-select-journey.png" alt-text="Lásd: objektumok észlelése működés közben.":::
 
 ## <a name="next-steps"></a>Következő lépések

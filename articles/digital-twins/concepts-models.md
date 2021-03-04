@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 9abf389eb7f8862440f860c53a0dbd8b10315c67
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: d33634c08b85ad633fdad3f709b2b2182571d7de
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558154"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034761"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Az Azure Digital Twinsbeli ikermodellek ismertetése
 
@@ -65,7 +65,7 @@ A **telemetria** gyakran használják a IoT-eszközökhöz, mert számos eszköz
 
 Ennek eredményeképpen, amikor modelleket tervez az Azure Digital Twinsban, valószínűleg a legtöbb esetben a **tulajdonságokat** fogja használni az ikrek modellezéséhez. Ez lehetővé teszi a biztonsági mentést, valamint az adatmezők olvasását és lekérdezését.
 
-A telemetria és a tulajdonságok gyakran együtt működnek az eszközökről érkező adatforgalom kezelésére. Mivel az Azure Digital Twins-ba való belépés az [API](how-to-use-apis-sdks.md)-kon keresztül történik, általában a bemenők függvényt használja az eszközökről származó telemetria-vagy tulajdonság-események olvasására, és válaszként a ADT tulajdonságot kell beállítania. 
+A telemetria és a tulajdonságok gyakran együtt működnek az eszközökről érkező adatforgalom kezelésére. Mivel az Azure digitális Twins-ba való belépés az [API](how-to-use-apis-sdks.md)-kon keresztül történik, általában a beáramlási függvényt használja az eszközökről származó telemetria-vagy tulajdonság-események olvasására, és válaszként egy tulajdonságot állít be az Azure Digital Twins-ban. 
 
 Telemetria eseményt is közzétehet az Azure digitális Twins API-ból. Akárcsak más telemetria, ez egy rövid életű esemény, amelyhez figyelőt kell kezelni.
 
@@ -154,7 +154,7 @@ Ha azonban sok modell van feltöltve – vagy ha sok egymásrautaltsága lenne a
 
 _**Modellek megjelenítéséhez**_
 
-Miután feltöltötte a modelleket az Azure Digital Twins-példányba, megtekintheti a modelleket az Azure Digital Twins-példányban, beleértve az öröklési és a modellbeli kapcsolatokat is a [**ADT-modell**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer)megjelenítésével. Ez a minta jelenleg vázlat állapotban van. Javasoljuk, hogy a digitális Twins fejlesztői közösség kiterjessze és hozzájáruljanak a mintához. 
+Miután feltöltötte a modelleket az Azure Digital Twins-példányba, megtekintheti az Azure digitális Twins-példányának modelljeit, beleértve az öröklési és a modellbeli kapcsolatokat is az [**Azure digitális Twins-modell megjelenítő**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer)funkciójának használatával. Ez a minta jelenleg vázlat állapotban van. Javasoljuk, hogy a digitális Twins fejlesztői közösség kiterjessze és hozzájáruljanak a mintához. 
 
 ## <a name="next-steps"></a>Következő lépések
 

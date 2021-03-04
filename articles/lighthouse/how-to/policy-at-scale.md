@@ -1,14 +1,14 @@
 ---
 title: Azure Policy üzembe helyezése a delegált előfizetések számára nagy léptékben
 description: Ismerje meg, hogy az Azure Lighthouse hogyan helyezheti üzembe a házirend-definíciót és a házirend-hozzárendelést több bérlő között.
-ms.date: 11/09/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 5af938c61ad3e42e36360a15c6011b54fa1e823d
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 48354c3cca7574b1d5acf71865218564591bc23e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412068"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049780"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>Azure Policy üzembe helyezése a delegált előfizetések számára nagy léptékben
 
@@ -51,6 +51,9 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 }
 ```
 
+> [!NOTE]
+> Míg a házirendek több bérlőn is üzembe helyezhetők, jelenleg nem tekintheti meg a nem megfelelő erőforrások [megfelelőségi adatait](../../governance/policy/how-to/determine-non-compliance.md#compliance-details) ezekben a bérlők között.
+
 ## <a name="validate-the-policy-deployment"></a>Szabályzat központi telepítésének ellenőrzése
 
 Miután telepítette a Azure Resource Manager sablont, megerősítheti, hogy a házirend-definíció alkalmazása sikeresen megtörtént, ha a **EnableHttpsTrafficOnly** beállítással **Hamis értéket** ad meg a delegált előfizetések egyikében. A házirend-hozzárendelés miatt nem lehet létrehozni ezt a Storage-fiókot.  
@@ -64,7 +67,7 @@ New-AzStorageAccount -ResourceGroupName (New-AzResourceGroup -name policy-test -
                      -Verbose                  
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha elkészült, távolítsa el az üzemelő példány által létrehozott házirend-definíciót és hozzárendelést.
 
@@ -91,10 +94,7 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 }
 ```
 
-> [!NOTE]
-> Míg a házirendek több bérlőn is üzembe helyezhetők, jelenleg nem tekintheti meg a nem megfelelő erőforrások [megfelelőségi adatait](../../governance/policy/how-to/determine-non-compliance.md#compliance-details) ezekben a bérlők között.
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [Azure Policy](../../governance/policy/index.yml)megismerése.
 - További információ a [bérlők közötti felügyeleti élményekről](../concepts/cross-tenant-management-experience.md).

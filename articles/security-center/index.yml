@@ -11,12 +11,12 @@ metadata:
   author: memildin
   ms.author: memildin
   ms.date: 08/17/2020
-  ms.openlocfilehash: 0ee97ba1d0190cfb3331372329677b8ffe740439
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-  ms.translationtype: HT
+  ms.openlocfilehash: 3049f7598990a97e6647011012bae0ddd2651944
+  ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+  ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "90883846"
+  ms.lasthandoff: 03/04/2021
+  ms.locfileid: "102095527"
 landingContent:
 - title: Tudnivalók a Security Centerről
   linkLists:
@@ -24,39 +24,39 @@ landingContent:
     links:
     - text: Melyek a Security Center főbb képességei?
       url: security-center-introduction.md
-    - text: Mely Windows Server- és Linux-verziókat támogatja?
-      url: security-center-os-coverage.md
-    - text: Mi az az Azure Defender?
+    - text: Mik az Azure Defender főbb képességei?
       url: azure-defender.md
+    - text: A Windows Server és a Linux mely verziói támogatottak?
+      url: security-center-os-coverage.md
 - title: Legyen naprakész
   linkLists:
   - linkListType: whats-new
     links:
     - text: A Security Center kibocsátási megjegyzései
       url: release-notes.md
-    - text: Az új áttekintési oldal megismerése
+    - text: Ismerkedés az áttekintési irányítópulttal
       url: overview-page.md
-    - text: A Kubernetes számítási feladatok védelme
-      url: kubernetes-workload-protections.md
+    - text: Az integrált munkafüzetek jelentéseinek használata
+      url: custom-dashboards-azure-workbooks.md
     - text: Válaszadás Key Vaulthoz készült Azure Defender-riasztásokra
       url: defender-for-key-vault-usage.md
     - text: Secure score API
-      url: secure-score-security-controls.md#get-your-secure-score-from-the-rest-api
+      url: secure-score-access-and-track.md#get-your-secure-score-from-the-rest-api
 - title: Bevezetés
   linkLists:
   - linkListType: get-started
     links:
-    - text: A Security Center használatának első lépései
+    - text: Security Center engedélyezése az előfizetéseken
       url: security-center-get-started.md
-    - text: Biztonsági szabályzatok konfigurálása
-      url: tutorial-security-policy.md
-    - text: A biztonsági rendszer értékelése
-      url: secure-score-security-controls.md
-    - text: Az AWS-fiók csatlakoztatása
-      url: quickstart-onboard-aws.md
-    - text: A GCP-fiók csatlakoztatása
-      url: quickstart-onboard-gcp.md
-- title: A biztonsági pontszám javítása
+    - text: Az Azure Defender engedélyezése
+      url: enable-azure-defender.md
+    - text: Automatikus kiépítés konfigurálása
+      url: security-center-enable-data-collection.md
+    - text: E-mail-értesítések beállítása
+      url: security-center-provide-security-contact-details.md
+    - text: Nem Azure-beli gép csatlakoztatása
+      url: quickstart-onboard-machines.md
+- title: Biztonsági pontszám javítása
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -66,10 +66,8 @@ landingContent:
       url: security-center-remediate-recommendations.md
     - text: Erőforrás kivonása egy javaslatból
       url: exempt-resource.md
-    - text: Javaslatok használata a biztonság növelése érdekében
-      url: security-center-using-recommendations.md
-    - text: Nyomkövetés a biztonsági pontszám API-jával
-      url: secure-score-security-controls.md#get-your-secure-score-from-the-rest-api
+    - text: A pontszámok nyomon követése az idő függvényében
+      url: custom-dashboards-azure-workbooks.md#use-the-secure-score-over-time-report
 - title: Fenyegetések enyhítése
   linkLists:
   - linkListType: how-to-guide
@@ -80,7 +78,5 @@ landingContent:
       url: security-center-adaptive-application.md
     - text: Adaptív hálózatmegerősítés implementálása
       url: security-center-adaptive-network-hardening.md
-    - text: Próbálja ki az Azure Defendert ingyen 30 napig
-      url: security-center-pricing.md#try-azure-defender-free-for-30-days
     - text: Az Azure Defender irányítópultjának használata
       url: azure-defender-dashboard.md

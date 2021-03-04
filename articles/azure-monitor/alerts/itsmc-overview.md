@@ -1,18 +1,17 @@
 ---
 title: IT-szolgáltatásmenedzsmenti csatoló áttekintése
 description: Ez a cikk a IT-szolgáltatásmenedzsmenti csatoló (ITSMC) áttekintését tartalmazza.
-ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: d22bb05ad6db3630e9b0242e098fd81f65e34b05
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3f6131bc585b91676f29ed34dfedd49a5ca92201
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100617188"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041790"
 ---
 # <a name="it-service-management-connector-overview"></a>IT-szolgáltatásmenedzsmenti csatoló áttekintése
 

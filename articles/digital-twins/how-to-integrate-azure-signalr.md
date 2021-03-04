@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 02/12/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8828b2dc48a8865e43a176757dc973a5cf85b784
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a39b91304c4123b216a0b508dcea0547cae5ab43
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703001"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041501"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Az Azure Digital Twins integrálása az Azure Signaler szolgáltatással
 
@@ -51,7 +51,7 @@ Először töltse le a szükséges minta alkalmazásokat. A következőkre lesz 
 
     Ezzel letölti a minta-tárház egy példányát a gépre, **digital-twins-samples-master.zip**. Csomagolja ki a mappát.
 * A [**signaler Integration Web App minta**](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/): ez egy példa a webalkalmazásra, amely az Azure-beli digitális Twins telemetria adatait az Azure Signaler szolgáltatásból fogja felhasználni.
-    -  Navigáljon a minta hivatkozásra, és a *zip letöltése* gombra kattintva töltse le a minta egy példányát a gépre, _**Azure_Digital_Twins_SignalR_integration_web_app_sample.zip**_. Csomagolja ki a mappát.
+    -  Navigáljon a minta hivatkozáshoz, és ugyanazzal a letöltési folyamattal töltse le a minta egy példányát a gépre, _**digitaltwins-signalr-webapp-sample-main.zip**_. Csomagolja ki a mappát.
 
 [!INCLUDE [Create instance](../azure-signalr/includes/signalr-quickstart-create-instance.md)]
 
@@ -139,7 +139,7 @@ Ezután konfigurálja a minta ügyfél-webalkalmazást. Először Gyűjtse össz
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="Az &quot;egyeztetés&quot; függvény Azure Portal nézete. A &quot;függvény URL-címének beolvasása&quot; gomb ki van emelve, az URL-cím része pedig az elejétől a &quot;/API&quot;":::
 
-1. A Visual Studióval vagy bármely más szövegszerkesztővel nyissa meg a [*minta alkalmazások letöltése*](#download-the-sample-applications) szakaszban letöltött kibontott _**Azure_Digital_Twins_SignalR_integration_web_app_sample**_ mappát.
+1. A Visual Studióval vagy bármely más Kódszerkesztő használatával nyissa meg a [*minta alkalmazások letöltése*](#download-the-sample-applications) szakaszban letöltött kibontott _**digitaltwins-signaler-WebApp-Sample-Main**_ mappát.
 
 1. Nyissa meg a *src/App.js* fájlt, és cserélje le a függvény URL-címét az `HubConnectionBuilder` előző lépésben mentett **egyeztetési** függvény URL-címére:
 
@@ -148,7 +148,7 @@ Ezután konfigurálja a minta ügyfél-webalkalmazást. Először Gyűjtse össz
             .withUrl('<Function URL>')
             .build();
     ```
-1. A Visual Studio *fejlesztői parancssorában* vagy bármelyik parancssori ablakban navigáljon a *Azure_Digital_Twins_SignalR_integration_web_app_sample \src* mappára. Futtassa a következő parancsot a függő csomópont-csomagok telepítéséhez:
+1. A Visual Studio *fejlesztői parancssorában* vagy a számítógép bármelyik parancssori ablakában navigáljon a *digitaltwins-signalr-WebApp-Sample-main\src* mappára. Futtassa a következő parancsot a függő csomópont-csomagok telepítéséhez:
 
     ```cmd
     npm install
@@ -175,7 +175,7 @@ Ebben a konzolban nem kell mást tennie, de a következő lépés végrehajtása
 
 ### <a name="see-the-results"></a>Az eredmények megtekintése
 
-Az eredmények működés közbeni megjelenítéséhez indítsa el a **signaler Integration Web App mintát**. Ezt a következő parancs futtatásával bármelyik konzolról elvégezheti *Azure_Digital_Twins_SignalR_integration_web_app_sample \src* helyen:
+Az eredmények működés közbeni megjelenítéséhez indítsa el a **signaler Integration Web App mintát**. Ezt a következő parancs futtatásával bármely, a *digitaltwins-signalr-WebApp-Sample-main\src* helyen található konzolról elvégezheti:
 
 ```cmd
 npm start
@@ -203,7 +203,7 @@ Az Azure Cloud Shell vagy a helyi Azure CLI használatával törölheti az erőf
 az group delete --name <your-resource-group>
 ```
 
-Végezetül törölje a helyi gépre letöltött Project Sample-mappákat (*digital-twins-samples-master.zip* és *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip*).
+Végezetül törölje a helyi gépre letöltött Project Sample-mappákat (*digital-twins-samples-master.zip*, *digitaltwins-signalr-webapp-sample-main.zip* és a kibontott társaik).
 
 ## <a name="next-steps"></a>Következő lépések
 

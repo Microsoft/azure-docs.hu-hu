@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 10/16/2018
 ms.title: include
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 5ef61502d0b2fccc92ca606992e965b45764baa0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5687fb99c27b8b2141e0a2a817327cfbb124951a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101745657"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109024"
 ---
 ## <a name="create-a-manually-triggered-webjob"></a><a name="CreateOnDemand"></a> Manuálisan aktivált Webjobs létrehozása
 
@@ -28,8 +28,8 @@ ms.locfileid: "101745657"
 
     ![Képernyőkép, amely a manuálisan aktivált Webjobs létrehozásához szükséges beállításokat jeleníti meg.](../media/web-sites-create-web-jobs/addwjtriggered.png)
     
-    | Beállítás      | Mintaérték   | Leírás  |
-    | ------------ | ----------------- | ------------ |
+    | Beállítás      | Mintaérték   | 
+    | ------------ | ----------------- | 
    | <abbr title="Egy App Service alkalmazáson belül egyedi név. Betűvel vagy számmal kell kezdődnie, és a és a nem tartalmazhat különleges `-` karaktereket `_` .">Name</abbr> | myTriggeredWebJob | 
     | <abbr title="A végrehajtható fájlt vagy parancsfájlt tartalmazó *. zip* fájl, valamint a program vagy a parancsfájl futtatásához szükséges összes támogató fájl.">Fájlfeltöltés</abbr> | ConsoleApp.zip |
     | <abbr title="A típusok között folyamatos, aktivált.">Típus</abbr> | Kiváltott | 

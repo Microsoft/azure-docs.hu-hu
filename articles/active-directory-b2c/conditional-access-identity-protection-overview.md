@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 09/01/2020
+ms.date: 03/03/2021
 ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b17706f908613336714bb7daf08fdf3bfd5eaf64
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: e2ec8af824d573493d1da743923956e587ded62e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928392"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033826"
 ---
 # <a name="identity-protection-and-conditional-access-for-azure-ad-b2c"></a>Identity Protection és feltételes hozzáférés Azure AD B2C
 
@@ -49,21 +49,21 @@ Az Identitáskezelés és a feltételes hozzáférés Azure AD B2C általában u
 
 - Azure AD B2C bérlők esetében az Identity Protection kockázati észlelése csak a helyi B2C-fiókok esetében érhető el, nem pedig a közösségi identitásokhoz, például a Google-hoz vagy a Facebookhoz.
 
-- Azure AD B2C bérlők esetében az Identity Protection kockázati észlelésének egy részhalmaza érhető el. Lásd: [Identity Protection beállítása](conditional-access-identity-protection-setup.md#set-up-identity-protection).
+- Azure AD B2C bérlők esetében az Identity Protection kockázati észlelésének egy részhalmaza érhető el. Tekintse meg [a kockázat vizsgálata az Identity Protection](identity-protection-investigate-risk.md) [használatával és a felhasználói folyamatokhoz való feltételes hozzáférés hozzáadását](conditional-access-user-flow.md)ismertető témakört.
 
 - A feltételes hozzáférésű eszköz megfelelőségi funkciója Azure AD B2C bérlők esetében nem érhető el.
 
 
 ## <a name="integrate-conditional-access-with-user-flows-and-custom-policies"></a>Feltételes hozzáférés integrálása felhasználói folyamatokkal és egyéni szabályzatokkal
 
-Azure AD B2C a feltételes hozzáférési feltételeket a beépített felhasználói folyamatokból is aktiválhatja. A feltételes hozzáférést egyéni szabályzatokhoz is beépítheti. A B2C felhasználói folyamat más szempontjaihoz hasonlóan a végfelhasználói üzenetkezelés is testreszabható a szervezet hang-, márka-és enyhítő alternatívái alapján. Lásd: [feltételes hozzáférés technikai profiljának definiálása](conditional-access-technical-profile.md).
+Az Azure AD B2C-ben beépített felhasználói folyamatokból aktiválhat feltételes hozzáférési feltételeket. A feltételes hozzáférést emellett az egyéni szabályzatokba is belefoglalhatja. A B2C felhasználói folyamat más szempontjaihoz hasonlóan a végfelhasználói üzenetkezelés is testreszabható a szervezet hang-, márka-és enyhítő alternatívái alapján. Lásd: [feltételes hozzáférés hozzáadása a felhasználói folyamatokhoz](conditional-access-user-flow.md).
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
-A feltételes hozzáférési szabályzatokat a Azure AD B2C Microsoft Graph API-val is kezelheti. Részletekért tekintse meg a [feltételes hozzáférési dokumentációt](../active-directory/conditional-access/overview.md) és a [Microsoft Graph referenciát](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta).
+A feltételes hozzáférési szabályzatokat a Azure AD B2C Microsoft Graph API-val is kezelheti. Részletekért tekintse meg a [feltételes hozzáférési dokumentációt](../active-directory/conditional-access/overview.md) és a [Microsoft Graph műveleteket](microsoft-graph-operations.md#conditional-access).
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Identity Protection és a feltételes hozzáférés beállítása Azure AD B2Choz](conditional-access-identity-protection-setup.md)
+- [Feltételes hozzáférés hozzáadása a felhasználói folyamatokhoz](conditional-access-user-flow.md)
 - [További információ az Azure AD Identity Protection szolgáltatásáról](../active-directory/identity-protection/overview-identity-protection.md)
 - [Tudnivalók a feltételes hozzáférésről](../active-directory/conditional-access/overview.md)

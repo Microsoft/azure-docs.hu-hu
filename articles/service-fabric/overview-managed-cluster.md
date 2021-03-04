@@ -3,12 +3,12 @@ title: Felügyelt fürtök Service Fabric (előzetes verzió)
 description: Service Fabric felügyelt fürtök az Azure Service Fabric fürterőforrás-modell fejlődése, amely egyszerűsíti az üzembe helyezést és a fürtözést.
 ms.topic: overview
 ms.date: 02/15/2021
-ms.openlocfilehash: 8b90b73ef5f3202788ac7857875427673ebb562b
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 271852214097ee96ba6b10de7a94904981cd8ef8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635145"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041229"
 ---
 # <a name="service-fabric-managed-clusters-preview"></a>Felügyelt fürtök Service Fabric (előzetes verzió)
 
@@ -69,7 +69,7 @@ A Service Fabric Managed Clusters előzetes verziójának legújabb funkciói a 
 * [Alkalmazások üzembe helyezése ARM-sablonok használatával](how-to-managed-cluster-app-deployment-template.md)
 * [Operációs rendszer automatikus frissítései](how-to-managed-cluster-configuration.md#enable-automatic-os-image-upgrades)
 * [Lemez titkosítása](how-to-enable-managed-cluster-disk-encryption.md)
-* [NSG-szabályok alkalmazása](how-to-managed-cluster-configuration.md#apply-nsg-rules)
+* [NSG-szabályok alkalmazása](how-to-managed-cluster-networking.md)
 
 A következő kiadásokban felvenni kívánt funkciók a következők:
 

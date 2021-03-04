@@ -3,12 +3,12 @@ title: Az Azure Backup újdonságai
 description: Ismerkedjen meg a Azure Backup új szolgáltatásaival.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: dd9546002e63072ce9631f5b8e7ac09ab0f5352b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 48c8c189d956c4003d24511a54975fe86a982832
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728178"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095714"
 ---
 # <a name="whats-new-in-azure-backup"></a>Az Azure Backup újdonságai
 
@@ -18,6 +18,9 @@ Az új kiadásokról további információt az oldal könyvjelzővel vagy a [fri
 
 ## <a name="updates-summary"></a>Frissítések összegzése
 
+- Március 2021
+  - [A Backup Center már általánosan elérhető](#backup-center-is-now-generally-available)
+  - [A Azure Backup archiválási szintjeinek támogatása (előzetes verzió)](#archive-tier-support-for-azure-backup-in-preview)
 - 2021. február
   - [Azure-Blobok biztonsági mentése (előzetes verzió)](#backup-for-azure-blobs-in-preview)
 - 2021. január
@@ -36,6 +39,18 @@ Az új kiadásokról további információt az oldal könyvjelzővel vagy a [fri
   - [Backup SAP HANA a RHEL Azure Virtual Machines (előzetes verzió)](#backup-sap-hana-in-rhel-azure-virtual-machines-in-preview)
   - [A zóna redundáns tárolója (ZRS) a biztonsági mentési adatként (előzetes verzió)](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Az Azure-beli virtuális gépek SQL Server és SAP HANA számítási feladatainak törlése](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="backup-center-is-now-generally-available"></a>A Backup Center már általánosan elérhető
+
+A Backup Center egyszerűbbé teszi az adatvédelem felügyeletét azáltal, hogy lehetővé teszi a biztonsági mentési felügyelet felderítését, irányítását, figyelését, üzemeltetését és optimalizálását egyetlen központi konzolról.
+
+További információ: [a Backup Center áttekintése](backup-center-overview.md).
+
+## <a name="archive-tier-support-for-azure-backup-in-preview"></a>A Azure Backup archiválási szintjeinek támogatása (előzetes verzió)
+
+A Azure Backup mostantól lehetővé teszi a hosszú távú adatmegőrzési biztonsági másolatok költségeit az Azure-beli virtuális gépekre vonatkozó archív szint és az Azure Virtual Machines szolgáltatásban SQL Server.
+
+További információ: az [archiválási szint támogatása (előzetes verzió)](archive-tier-support.md).
 
 ## <a name="backup-for-azure-blobs-in-preview"></a>Azure-Blobok biztonsági mentése (előzetes verzió)
 

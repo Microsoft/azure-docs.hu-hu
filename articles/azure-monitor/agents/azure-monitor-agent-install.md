@@ -1,17 +1,16 @@
 ---
 title: A Azure Monitor ügynök telepítése
 description: A Azure Monitor-ügynök (AMA) telepítésének lehetőségei az Azure Virtual Machines és az Azure arc-kompatibilis kiszolgálókon.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: 17c7609afeef8b5129e3bfe252def74b45cb4208
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6bf0e8b90ca50a90f84c18981ab6accae8477b46
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719950"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034310"
 ---
 # <a name="install-the-azure-monitor-agent-preview"></a>A Azure Monitor-ügynök telepítése (előzetes verzió)
 Ez a cikk a [Azure monitor ügynöknek](azure-monitor-agent-overview.md) az Azure-beli virtuális gépeken és az Azure arc-kompatibilis kiszolgálókon való telepítésének különböző lehetőségeit ismerteti, valamint az [adatgyűjtési szabályokkal rendelkező társítások](data-collection-rule-azure-monitor-agent.md) létrehozási lehetőségeit, amelyek meghatározzák, hogy az ügynöknek milyen adatokat kell gyűjtenie.

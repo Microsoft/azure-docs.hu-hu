@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 6dda65be98934ce90e985b241078ae8019afb7e0
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e344d85bbdac92aa372fc5d5e59ef90b11dfac6c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361264"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095731"
 ---
 # <a name="add-ad-fs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>AD FS hozzáadása SAML-identitás-szolgáltatóként egyéni szabályzatok használatával Azure Active Directory B2C
 
@@ -34,7 +34,7 @@ ms.locfileid: "100361264"
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ez a cikk bemutatja, hogyan engedélyezheti a bejelentkezést egy AD FS felhasználói fiókhoz Azure Active Directory B2C (Azure AD B2C) [Egyéni házirendjeivel](custom-policy-overview.md) . A bejelentkezést egy SAML-identitás- [szolgáltató technikai profiljának](saml-identity-provider-technical-profile.md) egy egyéni szabályzathoz való hozzáadásával engedélyezheti.
+Ez a cikk bemutatja, hogyan engedélyezheti a bejelentkezést egy AD FS felhasználói fiókhoz Azure Active Directory B2C (Azure AD B2C) [Egyéni házirendjeivel](custom-policy-overview.md) . A bejelentkezést egy [SAML-identitás szolgáltatójának](identity-provider-generic-saml.md) egyéni szabályzatba való felvételével engedélyezheti.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -62,7 +62,7 @@ A tanúsítványt a Azure AD B2C bérlőben kell tárolnia.
 
 Ha azt szeretné, hogy a felhasználók egy AD FS-fiókkal jelentkezzenek be, meg kell adnia a fiókot jogcím-szolgáltatóként, amely Azure AD B2C tud kommunikálni egy végponton keresztül. A végpont olyan jogcímeket biztosít, amelyeket a Azure AD B2C használ annak ellenőrzéséhez, hogy egy adott felhasználó hitelesítve van-e.
 
-Egy AD FS fiókot jogcím-szolgáltatóként is megadhat, ha hozzáadja azt a **ClaimsProviders** elemhez a szabályzat bővítmény fájljában. További információ: SAML- [identitás-szolgáltató technikai profiljának megadása](saml-identity-provider-technical-profile.md).
+Egy AD FS fiókot jogcím-szolgáltatóként is megadhat, ha hozzáadja azt a **ClaimsProviders** elemhez a szabályzat bővítmény fájljában. További információ: SAML- [identitás szolgáltatójának meghatározása](identity-provider-generic-saml.md).
 
 1. Nyissa meg a *TrustFrameworkExtensions.xml*.
 1. Keresse meg a **ClaimsProviders** elemet. Ha nem létezik, adja hozzá a gyökérelem elemhez.
@@ -217,7 +217,7 @@ Ez a hiba azt jelzi, hogy Azure AD B2C által elküldett SAML-kérelem nincs al�
 
 #### <a name="option-1-set-the-signature-algorithm-in-azure-ad-b2c"></a>1. lehetőség: az aláírási algoritmus beállítása Azure AD B2Cban  
 
-Megadhatja, hogyan írja alá az SAML-kérelmet Azure AD B2C. A [XmlSignatureAlgorithm](saml-identity-provider-technical-profile.md#metadata) -metaadatok a `SigAlg` SAML-kérelemben szereplő paraméter (lekérdezési karakterlánc vagy post paraméter) értékét vezérlik. Az alábbi példa a Azure AD B2C az `rsa-sha256` aláírási algoritmus használatára konfigurálja.
+Megadhatja, hogyan írja alá az SAML-kérelmet Azure AD B2C. A [XmlSignatureAlgorithm](identity-provider-generic-saml.md) -metaadatok a `SigAlg` SAML-kérelemben szereplő paraméter (lekérdezési karakterlánc vagy post paraméter) értékét vezérlik. Az alábbi példa a Azure AD B2C az `rsa-sha256` aláírási algoritmus használatára konfigurálja.
 
 ```xml
 <Metadata>

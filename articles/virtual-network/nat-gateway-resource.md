@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: 5c1f52fda2edfa0a03caa72fcd7fa8dc02d0a607
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 5c70c575464d82f714022291406418cdd1ca0f8d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954664"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102094966"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Virtuális hálózatok tervezése NAT Gateway-erőforrásokkal
 
@@ -224,7 +224,7 @@ Amíg a forgatókönyv működni fog, az állapot modellje és a meghibásodási
 >Egy NAT-átjáró erőforrásának zónák tulajdonsága nem változtatható meg.  Telepítse újra a NAT-átjáró erőforrását a kívánt területi vagy zóna-beállítással.
 
 >[!NOTE] 
->Önmagukban az IP-címek nem redundánsak, ha nincs megadva zóna.  Egy [standard Load Balancer előtér-zónája redundáns](../load-balancer/load-balancer-standard-availability-zones.md#frontend) , ha egy IP-cím nincs létrehozva egy adott zónában.  Ez nem vonatkozik a NAT-ra.  Csak regionális vagy zóna-elkülönítés támogatott.
+>Önmagukban az IP-címek nem redundánsak, ha nincs megadva zóna.  Egy [standard Load Balancer előtér-zónája redundáns](../load-balancer/load-balancer-standard-availability-zones.md) , ha egy IP-cím nincs létrehozva egy adott zónában.  Ez nem vonatkozik a NAT-ra.  Csak regionális vagy zóna-elkülönítés támogatott.
 
 ## <a name="performance"></a>Teljesítmény
 
@@ -350,20 +350,3 @@ Szeretnénk tudni, hogyan lehet javítani a szolgáltatást. Hiányzik egy képe
 * További tudnivalók a [Virtual Network NAT](nat-overview.md)-ról.
 * Tudnivalók a [NAT-átjáró erőforrásaira vonatkozó mérőszámokról és riasztásokról](nat-metrics.md).
 * További információ a [NAT-átjárók erőforrásainak hibaelhárításáról](troubleshoot-nat.md).
-* Oktatóanyag a NAT-átjáró ellenőrzéséhez
-  - [Azure CLI](tutorial-create-validate-nat-gateway-cli.md)
-  - [PowerShell](tutorial-create-validate-nat-gateway-powershell.md)
-  - [Portál](tutorial-create-validate-nat-gateway-portal.md)
-* Gyors útmutató NAT Gateway-erőforrás üzembe helyezéséhez
-  - [Azure CLI](./quickstart-create-nat-gateway-cli.md)
-  - [PowerShell](./quickstart-create-nat-gateway-powershell.md)
-  - [Portál](./quickstart-create-nat-gateway-portal.md)
-  - [Sablon](./quickstart-create-nat-gateway-template.md)
-* Tudnivalók a NAT Gateway Resource API-ról
-  - [REST API](/rest/api/virtualnetwork/natgateways)
-  - [Azure CLI](/cli/azure/network/nat/gateway)
-  - [PowerShell](/powershell/module/az.network/new-aznatgateway)
-* További információ a [rendelkezésre állási zónákról](../availability-zones/az-overview.md).
-* Ismerje meg a [standard Load balancert](../load-balancer/load-balancer-overview.md).
-* További információ a [rendelkezésre állási zónákról és a standard Load balancerről](../load-balancer/load-balancer-standard-availability-zones.md).
-* [Ossza meg velünk a következőt Virtual Network NAT UserVoice-ben való létrehozásához](https://aka.ms/natuservoice).

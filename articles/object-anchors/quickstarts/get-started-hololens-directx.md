@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 02/02/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 7e71719d83426a3444435ed78d0d63a2599a9157
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8a02bb7c70df4fed55c354638fe6662b85e6c164
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748792"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049634"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-object-anchors-in-cwinrt-and-directx"></a>Gyors útmutató: HoloLens-alkalmazás létrehozása Azure Object-Horgonyokkal, C++/WinRT és DirectX-ben
 
@@ -23,7 +23,6 @@ A következőket fogja megtanulni:
 > [!div class="checklist"]
 > * HoloLens-alkalmazás létrehozása és oldalsó betöltése
 > * Objektum észlelése és a modell megjelenítése
-> * Futásidejű diagnosztika rögzítése
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -64,7 +63,7 @@ Az alkalmazás elindításához és hibakereséséhez válassza a hibakeresés *
 
 ## <a name="ingest-object-model-and-detect-its-instance"></a>Objektummodell betöltése és a példány észlelése
 
-A minta alkalmazás futtatásához létre kell hoznia egy objektummodell-modellt. Tegyük fel, hogy a tárhelyen már van egy objektum CAD vagy beolvasott 3D Mesh modellje. Tekintse meg a gyors útmutató [: 3D modell](./get-started-model-ingestion.md) betöltését a modell létrehozásával kapcsolatban.
+A minta alkalmazás futtatásához létre kell hoznia egy objektummodell-modellt. Tegyük fel, hogy a tárhelyen már van egy objektum CAD vagy beolvasott 3D Mesh modellje. Tekintse meg a gyors útmutató [: 3D modell](./get-started-model-conversion.md) betöltését a modell létrehozásával kapcsolatban.
 
 Töltse le a modellt, a **Tanszék. ou** -t az esetünkben a számítógépre. Ezután a HoloLens-eszköz portálon válassza a **System > fájlkezelő > LocalAppData > AoaSampleApp > LocalState** elemet, és válassza a **Tallózás** lehetőséget. Ezután válassza ki a modell fájlját, a **Tanszék. szervezeti egységet** , és válassza a **feltöltés** lehetőséget. Ekkor meg kell jelennie a modell fájljának a helyi gyorsítótárban.
 
@@ -86,7 +85,7 @@ Az alkalmazás szorosan összehangolja a 3D modellt a fizikai munkatársaival. A
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Gyors útmutató: 3D modell betöltése](./get-started-model-ingestion.md)
+> [Gyors útmutató: 3D modell betöltése](./get-started-model-conversion.md)
 
 > [!div class="nextstepaction"]
 > [Fogalmak: az SDK áttekintése](../concepts/sdk-overview.md)

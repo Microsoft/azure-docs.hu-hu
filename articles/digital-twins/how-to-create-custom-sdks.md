@@ -8,12 +8,12 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: e0c0d18dbb3596733d02430554fd40ec16180c64
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: e7239bfdca1dc464048c0db08488029b0868deb5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980660"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049797"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Egyéni SDK-k létrehozása az Azure Digital Twins-hoz az autorest használatával
 
@@ -44,10 +44,10 @@ Az Azure digitális Twins hencegő fájlján az autorest futtatásához kövesse
 3. Futtassa az autorest parancsot a következő paranccsal. Cserélje le a `<language>` helyőrzőt az Ön által választott nyelvre: `python` ,, `java` `go` stb. (A beállítások teljes listáját megtalálja az [Autorest README fájlban](https://github.com/Azure/autorest).)
 
 ```cmd/sh
-autorest --input-file=digitaltwins.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
+autorest --input-file=digitaltwins.json --<language> --output-folder=DigitalTwinsApi --add-credentials --azure-arm --namespace=DigitalTwinsApi
 ```
 
-Ennek eredményeképpen egy új, *ADTApi* nevű mappa jelenik meg a munkakönyvtárban. A generált SDK-fájlok a névtér *ADTApi* lesznek. Ezt a névteret továbbra is használhatja a jelen cikkben található használati példákban.
+Ennek eredményeképpen egy új, *DigitalTwinsApi* nevű mappa jelenik meg a munkakönyvtárban. A generált SDK-fájlok a névtér *DigitalTwinsApi* lesznek. Ezt a névteret továbbra is használhatja a jelen cikkben található használati példákban.
 
 Az autorest számos nyelvi kód generátort támogat.
 
@@ -60,8 +60,8 @@ Ebből a szakaszból megtudhatja, hogyan hozhatja létre az SDK-t egy olyan oszt
 A lépések a következők:
 
 1. Új Visual Studio-megoldás létrehozása az osztály könyvtára számára
-2. A *ADTApi* használata projekt neveként
-3. A Solutions Explorerben kattintson a jobb gombbal a generált megoldás *ADTApi* projektre, és válassza a *> meglévő elem hozzáadása..* . lehetőséget.
+2. A *DigitalTwinsApi* használata projekt neveként
+3. A Solutions Explorerben kattintson a jobb gombbal a generált megoldás *DigitalTwinsApi* projektre, és válassza a *> meglévő elem hozzáadása..* . lehetőséget.
 4. Keresse meg azt a mappát, ahová létrehozta az SDK-t, és válassza ki a legfelső szintű fájlokat.
 5. Nyomja meg az "OK" gombot
 6. Adjon hozzá egy mappát a projekthez (kattintson a jobb gombbal a projektre Megoldáskezelő, majd válassza a *> új mappa hozzáadása*) lehetőséget.

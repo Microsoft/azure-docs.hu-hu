@@ -6,13 +6,13 @@ ms.author: sunila
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 09/22/2020
-ms.openlocfilehash: b4df91f4654f39780f81e0a27139677431926238
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 03/03/2021
+ms.openlocfilehash: d36dcfccb6843947991b2548af6dd98b81adb40e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532662"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049508"
 ---
 # <a name="azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL – rugalmas kiszolgáló
 
@@ -56,7 +56,7 @@ Az alábbi ábrán látható a virtuális gép és a tárolási hiba átmenete.
 
 Ha a zóna redundáns magas rendelkezésre állása be van állítva, a szolgáltatás kiépíti és karbantartja a gyors készenléti kiszolgálót a rendelkezésre állási zónán belül ugyanazon az Azure-régióban. A forráskiszolgálón lévő adatváltozásokat a rendszer szinkron módon replikálja a készenléti kiszolgálóra, így biztosítva a nulla adatvesztést. A zóna redundáns, magas rendelkezésre állása esetén a tervezett vagy nem tervezett feladatátvételi esemény elindítása után a készenléti kiszolgáló azonnal online állapotba kerül, és elérhető a bejövő tranzakciók feldolgozásához. Ez lehetővé teszi a szolgáltatás rugalmasságát a rendelkezésre állási zóna meghibásodása esetén egy olyan Azure-régióban, amely támogatja a több rendelkezésre állási zónát, ahogy az alábbi képen is látható.
 
- :::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="Rugalmas kiszolgáló – virtuális gépek és tárolási hibák":::
+ :::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="Zóna redundáns magas rendelkezésre állása":::
 
  További részletekért tekintse meg a [magas rendelkezésre állásról szóló dokumentumot](./concepts-high-availability.md) .
 
@@ -86,7 +86,25 @@ A rugalmas kiszolgálók lehetővé teszik a kiszolgálók teljes magánhálóza
 
 A rugalmas kiszolgáló szolgáltatás beépített teljesítmény-figyelési és riasztási funkciókkal rendelkezik. Minden Azure-metrika egyperces gyakorisággal rendelkezik, és minden metrika 30 napos előzményt biztosít. A mérőszámokra vonatkozó riasztásokat is beállíthat. A szolgáltatás elérhetővé teszi a gazdagép-kiszolgáló metrikáit az erőforrások kihasználtságának figyelésére, valamint a lassú lekérdezési naplók konfigurálására. Ezen eszközök használatával gyorsan optimalizálhatja a számítási feladatokat, és konfigurálhatja a kiszolgálót a legjobb teljesítmény érdekében.
 
-## <a name="migration"></a>Migrálás
+## <a name="azure-regions"></a>Azure-régiók
+
+A számítási feladatok Azure-ban való futtatásának egyik előnye, hogy globálisan elérhető. A rugalmas kiszolgáló jelenleg a következő Azure-régiókban érhető el:
+
+| Region | Rendelkezésre állás | Zóna redundáns HA | 
+| --- | --- | --- |
+| Nyugat-Európa | :heavy_check_mark: | :heavy_check_mark: |
+| Észak-Európa | :heavy_check_mark: | :heavy_check_mark: |
+| Az Egyesült Királyság déli régiója | :heavy_check_mark: | :heavy_check_mark: | 
+| USA 2. keleti régiója | :heavy_check_mark: | :heavy_check_mark: |
+| USA 2. nyugati régiója | :heavy_check_mark: | :heavy_check_mark: |
+| Az USA középső régiója | :heavy_check_mark: | :heavy_check_mark: | 
+| USA keleti régiója | :heavy_check_mark: | :heavy_check_mark: | 
+| Délkelet-Ázsia | :heavy_check_mark: | :heavy_check_mark: |
+| Kelet-Japán | :heavy_check_mark: | :heavy_check_mark: | 
+
+Továbbra is új régiókat adunk hozzá. 
+
+## <a name="migration"></a>Áttelepítés
 
 A szolgáltatás a PostgreSQL közösségi verzióját futtatja. Ez lehetővé teszi az alkalmazások teljes kompatibilitását, és minimális újraszámítási költségeket igényel a PostgreSQL-motoron kifejlesztett meglévő alkalmazások rugalmas kiszolgálóra történő áttelepítéséhez. 
 

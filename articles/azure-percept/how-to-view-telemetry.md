@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/17/2021
 ms.custom: template-how-to
-ms.openlocfilehash: b03cd8bc71f87e3ce7984a55d330bc116614f928
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 07abbc5f5e85c75b73774d11b6b81dd2085735b7
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663213"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095323"
 ---
 # <a name="view-your-azure-percept-dks-model-inference-telemetry"></a>Tekintse meg az Azure Percept DK modell következtetéseit telemetria
 
@@ -35,7 +35,7 @@ Ezt az útmutatót követve megtekintheti az Azure Percept DK víziós modelljé
 
 1. IoT Hub összekötése az Azure IoT Explorerrel:
 
-    1. Nyissa meg az [Azure Portal](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_Azure_Iothub=aduprod&microsoft_azure_marketplace_ItemHideKey=Microsoft_Azure_ADUHidden#home).
+    1. Nyissa meg az [Azure Portal](https://portal.azure.com).
 
     1. Válassza a **Minden erőforrás** elemet.
 
@@ -70,5 +70,4 @@ Ezt az útmutatót követve megtekintheti az Azure Percept DK víziós modelljé
     1. A **Start** gombra kattintva megtekintheti az eszköz telemetria eseményeit.
 
 ## <a name="next-steps"></a>Következő lépések
-
-Ismerje meg, hogyan tekintheti meg az [Azure PERCEPT DK videó streamjét](how-to-view-video-stream.md).
+Ismerje meg, hogyan tekintheti meg az [Azure PERCEPT DK videó streamjét](./how-to-view-video-stream.md).

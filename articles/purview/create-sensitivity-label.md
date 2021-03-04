@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: b86414758c3b644725e5aa29ca3b314f489508aa
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bcfe26bc6f637dd140776df98f8267c4c43684ba
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693526"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049540"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Az Azure hatáskörébe tartozó adatfeliratok automatikus címkézése
 
@@ -120,7 +120,10 @@ Ha kiterjeszti a címkézést az eszközökre az Azure hatáskörébe, kiválasz
 
     :::image type="content" source="media/create-sensitivity-label/create-sensitivity-label-full-small.png" alt-text="Érzékenységi Címkék létrehozása a Microsoft 365 biztonsági és megfelelőségi központban" lightbox="media/create-sensitivity-label/create-sensitivity-label-full.png":::
 
-1. Nevezze el a címkét. Ezután **a címke hatókörének meghatározása** területen válassza a **fájlok és e-mailek** és az **Azure hatáskörébe tartozó eszközök** elemet.
+1. Nevezze el a címkét. Ezután **a címke hatókörének meghatározása** területen:
+
+    - Minden esetben válassza az **Azure hatáskörébe tartozó eszközök** elemet.
+    - A fájlok címkézéséhez válassza a **fájlok & e-mailek** elemet. Ez a beállítás nem szükséges az adatbázis-eszközök címkézéséhez. 
     
     :::image type="content" source="media/create-sensitivity-label/create-label-scope-small.png" alt-text="A címke létrehozása a Microsoft 365 biztonsági és megfelelőségi központban" lightbox="media/create-sensitivity-label/create-label-scope.png":::
 

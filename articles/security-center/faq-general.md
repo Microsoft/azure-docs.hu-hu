@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 061b190af6e66cf0c7e8095251a3ef77d9aaf247
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 3a8429d9dc6820b1f79c49d325872b61833f988d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341685"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095544"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>GYIK – általános kérdések Azure Security Center
 
@@ -29,7 +29,7 @@ Security Center a Log Analytics ügynök használatával gyűjti és tárolja az
 
 
 ## <a name="how-do-i-get-azure-security-center"></a>Hogyan lekérni Azure Security Center?
-A Azure Security Center engedélyezve van a Microsoft Azure-előfizetéssel, és a [Azure Portal](https://azure.microsoft.com/features/azure-portal/)érhető el. A hozzáféréshez [Jelentkezzen be a portálra](https://portal.azure.com), válassza a **Tallózás**lehetőséget, majd görgessen a **Security Center**elemre.
+A Azure Security Center engedélyezve van a Microsoft Azure-előfizetéssel, és a [Azure Portal](https://azure.microsoft.com/features/azure-portal/)érhető el. A hozzáféréshez [Jelentkezzen be a portálra](https://portal.azure.com), válassza a **Tallózás** lehetőséget, majd görgessen a **Security Center** elemre.
 
 
 ## <a name="which-azure-resources-are-monitored-by-azure-security-center"></a>Mely Azure-erőforrásokat figyeli a Azure Security Center?
@@ -46,10 +46,10 @@ A **Security Center áttekintő** oldal a környezet általános biztonsági ál
 
 
 
-## <a name="what-is-a-security-policy"></a>Mi az a biztonsági szabályzat?
-A biztonsági szabályzat határozza meg a megadott előfizetésben lévő erőforrásokhoz ajánlott vezérlők készletét. Azure Security Center az Azure-előfizetésekre vonatkozó szabályzatokat a vállalat biztonsági követelményeinek, valamint az egyes előfizetésekben szereplő alkalmazások típusának vagy az adatérzékenység alapján határozhatja meg.
+## <a name="what-is-a-security-initiative"></a>Mi az a biztonsági kezdeményezés?
+A biztonsági kezdeményezés meghatározza a megadott előfizetésben lévő erőforrásokhoz ajánlott vezérlők (szabályzatok) készletét. A Azure Security Center az Azure-előfizetésekhez tartozó kezdeményezéseket a vállalat biztonsági követelményeinek, az alkalmazások típusának és az egyes előfizetésekben található adattartalomnak megfelelően rendelheti hozzá.
 
-A biztonsági szabályzatok Azure Security Center meghajtó biztonsági javaslatai és figyelése. A biztonsági házirendekkel kapcsolatos további információkért lásd: [biztonsági állapot figyelése Azure Security Center](security-center-monitoring.md).
+A biztonsági szabályzatok Azure Security Center meghajtó biztonsági javaslatai és figyelése. További információ a [biztonsági szabályzatokról, a kezdeményezésekről és a javaslatokról](security-policy-concept.md):.
 
 
 ## <a name="who-can-modify-a-security-policy"></a>Kik módosíthatják a biztonsági házirendeket?

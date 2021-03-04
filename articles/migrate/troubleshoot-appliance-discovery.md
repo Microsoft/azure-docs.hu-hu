@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 810ea58c5d88dec53463b9a2b04750169c70e137
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: f3331504540e8c23c3a83fe245bae27ca6c49385
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704027"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041280"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>A Azure Migrate készülék és a felderítés hibáinak megoldása
 
@@ -27,7 +27,7 @@ Ez a cikk segítséget nyújt a [Azure Migrate](migrate-services-overview.md) be
 
 Ha "a megadott jegyzékfájl érvénytelen: érvénytelen OVF manifest-bejegyzés" hibaüzenet jelenik meg, tegye a következőket:
 
-1. Ellenőrizze, hogy a Azure Migrate készülék PETESEJTJEInek fájlja helyesen van-e letöltve a kivonatoló értékének ellenőrzésével. [További információ](./tutorial-discover-vmware.md). Ha a kivonatoló érték nem egyezik, töltse le újra a PETESEJT-fájlt, majd próbálja megismételni a telepítést.
+1. Ellenőrizze, hogy a Azure Migrate készülék PETESEJTJEInek fájlja helyesen van-e letöltve a kivonatoló értékének ellenőrzésével. [További információk](./tutorial-discover-vmware.md). Ha a kivonatoló érték nem egyezik, töltse le újra a PETESEJT-fájlt, majd próbálja megismételni a telepítést.
 2. Ha a telepítés továbbra is meghiúsul, és a VMware vSphere ügyfél használatával telepíti a OVF-fájlt, próbálja meg telepíteni a vSphere webes ügyfelén keresztül. Ha az üzembe helyezés továbbra is sikertelen, próbálkozzon más böngészővel.
 3. Ha a vSphere webes ügyfélprogramot használja, és vCenter Server 6,5-es vagy 6,7-es számítógépen szeretné telepíteni, próbálja meg közvetlenül telepíteni a PETESEJTeket az ESXi-gazdagépre:
    - Kapcsolódjon közvetlenül az ESXi-gazdagéphez (vCenter Server helyett) a webes ügyféllel (https://<*gazdagép IP-címe*>/UI).
@@ -167,6 +167,19 @@ Ha a felderített virtuális gépek nem jelennek meg a portálon, vagy ha a VM-a
 
 Ha törli a virtuális gépeket, és azok továbbra is megjelennek a portálon, várjon 30 percet. Ha továbbra is megjelennek, frissítse a fentiekben leírtak szerint.
 
+## <a name="discovered-applications-and-sql-server-instances-and-databases-not-in-portal"></a>Felderített alkalmazások és SQL Server példányok és adatbázisok nem a portálon
+
+Miután elindította a felderítést a készüléken, akár 24 óráig is eltarthat, hogy megkezdje a leltár adatainak megjelenítését a portálon.
+
+Ha nem adott meg Windows-hitelesítést vagy SQL Server hitelesítő adatokat a készülék Configuration Managerben, akkor adja hozzá a hitelesítő adatokat, hogy a készülék használhassa őket a megfelelő SQL Server példányokhoz való kapcsolódáshoz.
+
+A csatlakozás után a készülék összegyűjti SQL Server példányok és adatbázisok konfigurációs és teljesítményadatokat. A SQL Server konfigurációs adatai 24 óránként frissülnek, és a teljesítményadatokat 30 másodpercenként rögzíti a rendszer. Így a SQL Server példány és az adatbázisok (például az adatbázis állapota, a kompatibilitási szint stb.) tulajdonságainak módosítása akár 24 órát is igénybe vehet a portálon való frissítéshez.
+
+## <a name="sql-server-instance-is-showing-up-in-not-connected-state-on-portal"></a>SQL Server példány "nincs csatlakoztatva" állapotú a portálon
+SQL Server példányok és adatbázisok felderítése során felmerülő problémák megtekintéséhez kattintson a "nincs kapcsolat" állapotra a projekt felderített kiszolgálók lapján található kapcsolat állapota oszlopban.
+
+Az értékelést olyan kiszolgálókon kell létrehozni, amelyek olyan SQL-példányokat tartalmaznak, amelyek nem lettek teljesen felderítve, vagy nem csatlakoztatott állapotban vannak, a készültség "ismeretlen" jelölést eredményezhet.
+
 ## <a name="i-do-not-see-performance-data-for-some-network-adapters-on-my-physical-servers"></a>Nem látok teljesítményadatokat a fizikai kiszolgálókon lévő egyes hálózati adapterekhez
 
 Ez akkor fordulhat elő, ha a fizikai kiszolgálón engedélyezve van a Hyper-V-virtualizálás. A termékekkel kapcsolatos hézagok miatt a rendszer rögzíti a hálózati átviteli sebességet a felderített virtuális hálózati adaptereken.
@@ -199,9 +212,9 @@ A szokásos alkalmazás-felderítési hibák a táblázatban vannak összegezve.
 
 | **Hiba** | **Ok** | **Művelet** |
 |--|--|--|
-| 9000: a VMware-eszköz állapota nem észlelhető. | Előfordulhat, hogy a VMWare-eszközök nincsenek telepítve vagy sérültek. | Győződjön meg arról, hogy a VMware-eszközök telepítve vannak és futnak a virtuális gépen. |
-| 9001: nincs telepítve a VMware-eszközök. | Előfordulhat, hogy a VMWare-eszközök nincsenek telepítve vagy sérültek. | Győződjön meg arról, hogy a VMware-eszközök telepítve vannak és futnak a virtuális gépen. |
-| 9002: a VMware-eszközök nem futnak. | Előfordulhat, hogy a VMWare-eszközök nincsenek telepítve vagy sérültek. | Győződjön meg arról, hogy a VMware-eszközök telepítve vannak és futnak a virtuális gépen. |
+| 9000: a VMware-eszköz állapota nem észlelhető. | Előfordulhat, hogy a VMware-eszközök nincsenek telepítve vagy sérültek. | Győződjön meg arról, hogy a VMware-eszközök telepítve vannak és futnak a virtuális gépen. |
+| 9001: nincs telepítve a VMware-eszközök. | Előfordulhat, hogy a VMware-eszközök nincsenek telepítve vagy sérültek. | Győződjön meg arról, hogy a VMware-eszközök telepítve vannak és futnak a virtuális gépen. |
+| 9002: a VMware-eszközök nem futnak. | Előfordulhat, hogy a VMware-eszközök nincsenek telepítve vagy sérültek. | Győződjön meg arról, hogy a VMware-eszközök telepítve vannak és futnak a virtuális gépen. |
 | 9003: a vendég virtuális gép felderítése nem támogatja az operációs rendszer típusát. | A kiszolgálón futó operációs rendszer sem Windows, sem Linux. | A támogatott operációsrendszer-típusok csak Windows és Linux rendszereken érhetők el. Ha a kiszolgáló valóban Windows vagy Linux rendszerű, ellenőrizze a vCenter Serverban megadott operációsrendszer-típust. |
 | 9004: a virtuális gép nem fut. | A virtuális gép ki van kapcsolva. | Győződjön meg arról, hogy a virtuális gép be van kapcsolva. |
 | 9005: a vendég virtuális gép felderítése nem támogatja az operációs rendszer típusát. | A vendég virtuális gép felderítése nem támogatja az operációs rendszer típusát. | A támogatott operációsrendszer-típusok csak Windows és Linux rendszereken érhetők el. |
@@ -228,7 +241,7 @@ A szokásos alkalmazás-felderítési hibák a táblázatban vannak összegezve.
 | 9026: nem lehet futtatni a vendég műveleteit a virtuális gépen. | A virtuális gép állapota nem teszi lehetővé, hogy a vendég műveletei a virtuális gépen fussanak. | Megoldásért forduljon Microsoft ügyfélszolgálatahoz. |
 | 9027: a vendég műveleti ügynök nem fut a virtuális gépen. | Nem sikerült felvenni a kapcsolatot a virtuális gépen futó vendég műveleti ügynökkel. | Megoldásért forduljon Microsoft ügyfélszolgálatahoz. |
 | 9028: a fájl nem hozható létre, mert nincs elég szabad lemezterület a virtuális gépen. | Nincs elég hely a lemezen. | Gondoskodjon arról, hogy elegendő lemezterület álljon rendelkezésre a virtuális gép lemezes tárolásában. |
-| 9029: nem érhető el a PowerShell a vendég virtuális gép hitelesítő adatainak megadásakor. | A Powershellhez való hozzáférés nem érhető el a felhasználó számára. | Győződjön meg arról, hogy a készüléken hozzáadott felhasználó hozzáférhet a PowerShellhez a vendég virtuális gépen. |
+| 9029: nem érhető el a PowerShell a vendég virtuális gép hitelesítő adatainak megadásakor. | A PowerShellhez való hozzáférés nem érhető el a felhasználó számára. | Győződjön meg arról, hogy a készüléken hozzáadott felhasználó hozzáférhet a PowerShellhez a vendég virtuális gépen. |
 | 9030: nem sikerült a felderített metaadatok gyűjtése, mert az ESXi-gazdagép le van választva. | Az ESXi-gazdagép leválasztott állapotban van. | Győződjön meg arról, hogy a virtuális gépet futtató ESXi-gazdagép csatlakoztatva van. |
 | 9031: nem sikerült a felderített metaadatok gyűjtése, mert az ESXi-gazdagép nem válaszol. | A távoli gazdagép érvénytelen állapotban van. | Győződjön meg arról, hogy a virtuális gépet futtató ESXi-gazdagép fut és csatlakoztatva van. |
 | 9032: egy belső hiba miatt nem sikerült felderíteni. | A probléma belső hiba miatt fordulhat elő. | Megoldásért forduljon Microsoft ügyfélszolgálatahoz. |
@@ -247,6 +260,6 @@ A szokásos alkalmazás-felderítési hibák a táblázatban vannak összegezve.
 | 10008: nem hozható létre fájl a kiszolgálón. | A probléma belső hiba miatt előfordulhat. | Megoldásért forduljon Microsoft ügyfélszolgálatahoz. |
 | 10009: nem lehet felderített metaadatokat írni a-kiszolgálón található fájlba. | A probléma belső hiba miatt fordulhat elő. | Megoldásért forduljon Microsoft ügyfélszolgálatahoz. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Állítson be egy berendezést a [VMware](how-to-set-up-appliance-vmware.md), a [Hyper-V](how-to-set-up-appliance-hyper-v.md)vagy a [fizikai kiszolgálók](how-to-set-up-appliance-physical.md)számára.

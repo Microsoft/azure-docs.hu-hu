@@ -3,18 +3,18 @@ title: Windows rendszerű virtuális gép létrehozása az Azure rendszerkép-k�
 description: Windows rendszerű virtuális gép létrehozása az Azure rendszerkép-készítővel meglévő VNET használatával
 author: cynthn
 ms.author: cynthn
-ms.date: 05/29/2020
+ms.date: 03/02/2021
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
 ms.reviewer: danis
-ms.openlocfilehash: 8700a43ca026b45dbbf7a3db1ea580ba7b5a3dd9
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3695732f81463efcadb3d8d8b49e367501cb6e29
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101669095"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034064"
 ---
 # <a name="use-azure-image-builder-for-windows-vms-allowing-access-to-an-existing-azure-vnet"></a>Az Azure rendszerkép-készítő használata a Windows rendszerű virtuális gépekhez, amelyek lehetővé teszik egy meglévő Azure-VNET való hozzáférést
 
@@ -133,13 +133,13 @@ A rendszerkép-készítő hálózatkezeléssel kapcsolatos további információ
 ## <a name="modify-the-example-template-and-create-role"></a>Példa sablon módosítása és szerepkör létrehozása
 
 ```powershell-interactive
-$templateUrl="https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1a_Creating_a_Custom_Win_Image_on_Existing_VNET/existingVNETWindows.json"
+$templateUrl="https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/1a_Creating_a_Custom_Win_Image_on_Existing_VNET/existingVNETWindows.json"
 $templateFilePath = "existingVNETWindows.json"
 
-$aibRoleNetworkingUrl="https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleNetworking.json"
+$aibRoleNetworkingUrl="https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleNetworking.json"
 $aibRoleNetworkingPath = "aibRoleNetworking.json"
 
-$aibRoleImageCreationUrl="https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json"
+$aibRoleImageCreationUrl="https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json"
 $aibRoleImageCreationPath = "aibRoleImageCreation.json"
 
 # download configs

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
-ms.openlocfilehash: 2259d0114d91af2e688df66ff8dc4e8d293c2b03
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 0b1358f67e2b10078e24168bdb779cd708ac2403
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624835"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095663"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>Tartomány kiválasztása Custom Vision projekthez
 
@@ -37,7 +37,7 @@ A Custom Vision projekt beállítások lapján választhat egy tartományt a pro
 |Tartomány|Cél|
 |---|---|
 |__Általános__| Az objektum-észlelési feladatok széles körére optimalizált. Ha a többi tartomány egyike sem megfelelő, vagy nem biztos benne, hogy melyik tartományt szeretné kiválasztani, válassza az általános tartományt. ID `da2e3a8a-40a5-4171-82f4-58522f70fbc1`|
-|__Általános [a1]__| A jobb pontosság érdekében az általános tartományhoz hasonló következtetési idő van optimalizálva. A régió pontos elhelyezésére, nagyobb adatkészletekre vagy bonyolultabb felhasználói forgatókönyvekre ajánlott. Ehhez a tartományhoz több betanítási idő szükséges, és az eredmények nem determinisztikus: a rendszer egy +-1%-os leképezési különbözetet vár a megadott betanítási adatokkal. ID `9c616dff-2e7d-ea11-af59-1866da359ce6`|
+|__Általános [a1]__| A jobb pontosság érdekében az általános tartományhoz hasonló következtetési idő van optimalizálva. A régió pontos elhelyezésére, nagyobb adatkészletekre vagy bonyolultabb felhasználói forgatókönyvekre ajánlott. Ehhez a tartományhoz több betanítási idő szükséges, és az eredmények nem determinisztikus: a rendszer a megadott betanítási adatokkal egy +-1% átlagos pontossági (mAP) különbözetet vár. ID `9c616dff-2e7d-ea11-af59-1866da359ce6`|
 |__Embléma__|A képeken található márka emblémák keresésére optimalizált. ID `1d8ffafe-ec40-4fb2-8f90-72b3b6cecea4`|
 |__Termékek a polcokon__|A polcokon található termékek észlelésére és besorolására optimalizált. ID `3780a898-81c3-4516-81ae-3a139614e1f3`|
 |__Kompakt tartományok__| Az Edge-eszközök valós idejű objektum-észlelésének korlátaira optimalizált.|
