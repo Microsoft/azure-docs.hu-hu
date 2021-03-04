@@ -11,16 +11,20 @@ ms.custom:
 - seo-python-october2019
 - devx-track-python
 ms.date: 11/05/2019
-ms.openlocfilehash: 79add54478e9cd52ffd3041d5f85bf588929b44f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 048c31bedb56bdb66dc3b80d12c3014652e34625
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008871"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121150"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-python"></a>Gyors útmutató: az Azure cache használata a Redis a Pythonban
 
 Ebben a cikkben egy Python-alkalmazásba foglalja bele az Azure cache-t a Redis-be, hogy hozzáférhessen egy biztonságos, dedikált gyorsítótárhoz, amely az Azure-on belül bármely alkalmazásból elérhető.
+
+## <a name="skip-to-the-code-on-github"></a>Ugrás a kódra a GitHubon
+
+Ha egyenesen a kódra szeretne ugrani, tekintse meg a [Python](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/python) rövid útmutatóját a githubon.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -105,7 +109,7 @@ Az erőforráscsoport és az Azure-példány Redis Cacheának törlése:
    
    ![Az Azure cache Redis tartozó erőforráscsoport törlése](./media/cache-python-get-started/delete-your-resource-group-for-azure-cache-for-redis.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Hozzon létre egy egyszerű ASP.NET-webalkalmazást, amely egy Azure cache-t használ a Redis.](./cache-web-app-howto.md)

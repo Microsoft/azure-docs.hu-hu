@@ -7,20 +7,20 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 09/02/2020
-ms.openlocfilehash: 688fabb7138ad71a978051e742dd8397042ffcf1
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 9ec914e5fea0d54f4705e8f14f5a64fa80c1adfe
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744669"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120028"
 ---
 # <a name="co-sell-state-and-province-codes-in-azure-marketplace"></a>Állami és tartományi kódok közös értékesítése az Azure Marketplace-en
 
-Ez a cikk felsorolja a rendelkezésre álló állam-és tartományi kódokat, amikor az ajánlat közös értékesítési oldalán található kapcsolattartási adatokat nyújt. Ha szükséges, használja ezeket a kódokat az állam/tartomány adatainak megadásához, amikor [az ajánlat közös értékesítési oldalán található kapcsolattartási adatokat](commercial-marketplace-co-sell.md#contacts)nyújt.
+Ez a cikk felsorolja a rendelkezésre álló állam-és tartományi kódokat, amikor az ajánlat közös értékesítési oldalán található kapcsolattartási adatokat nyújt. Ha szükséges, használja ezeket a kódokat az állam/tartomány adatainak megadásához, amikor [az ajánlat közös értékesítési oldalán található kapcsolattartási adatokat](commercial-marketplace-co-sell.md#enter-your-contacts)nyújt.
 
 ## <a name="us-states-and-territories"></a>Egyesült Államok és területek
 
-|   Állapot és terület neve          |   Kód    |
+|   Állapot és terület neve          |   Code    |
 |-------------------------------------|-----------|
 | Alabama                             | USA – AL     |
 | Alaszka                              | USA – AK     |
@@ -82,7 +82,7 @@ Ez a cikk felsorolja a rendelkezésre álló állam-és tartományi kódokat, am
 
 ## <a name="canadian-provinces-and-territories"></a>Kanadai tartományok és területek
 
-|   Tartomány és terület neve       |   Kód    |
+|   Tartomány és terület neve       |   Code    |
 |-------------------------------------|-----------|
 | Alberta                             |  CA-AB    |
 | Brit Columbia                    |  CA-BC    |
@@ -101,7 +101,7 @@ Ez a cikk felsorolja a rendelkezésre álló állam-és tartományi kódokat, am
 
 ## <a name="australian-states-and-territories"></a>Ausztráliai Államok és területek
 
-|   Állapot és terület neve          |   Kód    |
+|   Állapot és terület neve          |   Code    |
 |-------------------------------------|-----------|
 | Új-Dél-Wales                     |  AU-NSW   |
 | Queensland                          |  AU-QLD   |
@@ -113,6 +113,6 @@ Ez a cikk felsorolja a rendelkezésre álló állam-és tartományi kódokat, am
 | Északi terület                  |  AU-NT    |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg a [kereskedelmi piactéren a közös értékesítés lehetőségét](./commercial-marketplace-co-sell.md).

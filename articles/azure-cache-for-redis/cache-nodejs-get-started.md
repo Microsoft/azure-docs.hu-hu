@@ -8,16 +8,20 @@ ms.topic: quickstart
 ms.date: 05/21/2018
 ms.author: yegu
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
-ms.openlocfilehash: aa22cffc1fc38e055c6c2bb504c311c012f31ac2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e4c58d67668a67eee38a73d46a2a40ca29c1dfd8
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012901"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121252"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-nodejs"></a>Gyors útmutató: az Azure cache használata a Redis Node.js
 
 Ebben a rövid útmutatóban beépíti az Azure cache-t a Redis-ba egy Node.js alkalmazásba, hogy hozzáférjen egy olyan biztonságos, dedikált gyorsítótárhoz, amely az Azure-on belül bármely alkalmazásból elérhető.
+
+## <a name="skip-to-the-code-on-github"></a>Ugrás a kódra a GitHubon
+
+Ha közvetlenül a kódra szeretne ugrani, tekintse meg a következőt: [Node.js](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/nodejs) rövid útmutató a githubon.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -129,7 +133,7 @@ A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. A
 
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja az Azure cache-t a Redis egy Node.js alkalmazásból. Folytassa a következő rövid útmutatóval, hogy az Azure cache-t használja a Redis egy ASP.NET-webalkalmazással.
 

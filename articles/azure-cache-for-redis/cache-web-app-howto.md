@@ -7,16 +7,20 @@ ms.topic: quickstart
 ms.date: 09/29/2020
 ms.author: yegu
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: b880762d43cd4e105b79613aadb476611228a47e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 342125da35868b2b0f71609c4114cc561821eb1a
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536606"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121133"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>Gyors útmutató: az Azure cache használata a Redis ASP.NET-webalkalmazással 
 
 Ebben a rövid útmutatóban a Visual Studio 2019 segítségével hozhat létre olyan ASP.NET-webalkalmazást, amely az Azure cache-hez csatlakozik a Redis-hoz az adatok tárolásához és lekéréséhez a gyorsítótárból. Ezután központilag telepíti az alkalmazást Azure App Service.
+
+## <a name="skip-to-the-code-on-github"></a>Ugrás a kódra a GitHubon
+
+Ha közvetlenül a kódra szeretne ugrani, tekintse meg a [ASP.net](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/aspnet) rövid útmutatóját a githubon.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -59,7 +63,7 @@ A következő lépésben létrehozza az alkalmazás gyorsítótárát.
 
 #### <a name="to-edit-the-cachesecretsconfig-file"></a>A *CacheSecrets.config* fájl módosítása
 
-1. Hozzon létre egy fájlt a *CacheSecrets.config* nevű számítógépen. Helyezze olyan helyre, ahol a minta alkalmazás forráskódja nem lesz bejelentkezve. Ebben a rövid útmutatóban a *CacheSecrets.config* fájl a következő helyen található: *C:\AppSecrets\CacheSecrets.config* .
+1. Hozzon létre egy fájlt a *CacheSecrets.config* nevű számítógépen. Helyezze olyan helyre, ahol a minta alkalmazás forráskódja nem lesz bejelentkezve. Ebben a rövid útmutatóban a *CacheSecrets.config* fájl a következő helyen található: *C:\AppSecrets\CacheSecrets.config*.
 
 1. Szerkessze a *CacheSecrets.config* fájlt. Ezután adja hozzá a következő tartalmat:
 
@@ -205,7 +209,7 @@ Az ASP.NET futtatási környezet a külső fájl tartalmát egyesíti az `<appSe
 
 ### <a name="to-add-a-new-rediscache-view"></a>Új RedisCache-nézet hozzáadása
 
-1. A **Megoldáskezelőben** bontsa ki a **Nézetek** mappát, majd kattintson a jobb gombbal a **Kezdőmappára** . Válassza a nézet **hozzáadása**  >  **...** lehetőséget.
+1. A **Megoldáskezelőben** bontsa ki a **Nézetek** mappát, majd kattintson a jobb gombbal a **Kezdőmappára**. Válassza a nézet **hozzáadása**  >  **...** lehetőséget.
 
 2. A **Nézet hozzáadása** párbeszédpanelen a Nézet neve mezőben adja meg a **RedisCache** nevet. Ezután válassza a **Hozzáadás** elemet.
 
@@ -270,7 +274,7 @@ Az alkalmazás sikeres helyi tesztelése után az Azure-beli üzembe helyezés �
 
     ![Közzététel](./media/cache-web-app-howto/cache-publish-app.png)
 
-2. Válassza a **Microsoft Azure App Service** , majd a **Create New** (Új létrehozása) elemet, végül pedig a **Publish** (Közzététel) lehetőséget.
+2. Válassza a **Microsoft Azure App Service**, majd a **Create New** (Új létrehozása) elemet, végül pedig a **Publish** (Közzététel) lehetőséget.
 
     ![Közzététel az App Service-ben](./media/cache-web-app-howto/cache-publish-to-app-service.png)
 
@@ -280,8 +284,8 @@ Az alkalmazás sikeres helyi tesztelése után az Azure-beli üzembe helyezés �
     | ------- | :---------------: | ----------- |
     | **Alkalmazás neve** | Használja az alapértelmezettet. | Az alkalmazásnév lesz az alkalmazás gazdagépneve, amikor üzembe helyezi az Azure-ban. Ha a név egyediségéhez ez szükséges, a rendszer időbélyeg-utótagot fűzhet hozzá. |
     | **Előfizetés** | Válassza ki az Azure-előfizetését. | A kapcsolódó üzemeltetési költségek ennél az előfizetésnél lesznek felszámítva. Ha több Azure-előfizetéssel is rendelkezik, ellenőrizze, hogy a kívánt előfizetés van-e kiválasztva.|
-    | **Erőforráscsoport** | Használja ugyanazt az erőforráscsoportot, mint amelyben a gyorsítótárat létrehozta (pl.: *TestResourceGroup* ). | Az erőforráscsoport segítségével az összes erőforrást egy csoportként kezelheti. Később, amikor törölni kívánja az alkalmazást, elég csak a csoportot törölnie. |
-    | **App Service terv** | Válassza az **Új** elemet, és hozzon létre egy *TestingPlan* nevű új App Service-csomagot. <br />Használja ugyanazt a **Helyet** , mint amelyet a gyorsítótár létrehozásakor használt. <br />A méretnél válassza az **Ingyenes** lehetőséget. | Az App Service-csomag meghatároz egy futtatáshoz használható számításierőforrás-készletet a webalkalmazás számára. |
+    | **Erőforráscsoport** | Használja ugyanazt az erőforráscsoportot, mint amelyben a gyorsítótárat létrehozta (pl.: *TestResourceGroup*). | Az erőforráscsoport segítségével az összes erőforrást egy csoportként kezelheti. Később, amikor törölni kívánja az alkalmazást, elég csak a csoportot törölnie. |
+    | **App Service-csomag** | Válassza az **Új** elemet, és hozzon létre egy *TestingPlan* nevű új App Service-csomagot. <br />Használja ugyanazt a **Helyet**, mint amelyet a gyorsítótár létrehozásakor használt. <br />A méretnél válassza az **Ingyenes** lehetőséget. | Az App Service-csomag meghatároz egy futtatáshoz használható számításierőforrás-készletet a webalkalmazás számára. |
 
     ![App Service párbeszédpanel](./media/cache-web-app-howto/cache-create-app-service-dialog.png)
 
@@ -313,7 +317,7 @@ A gyorsítótár-hozzáférés teszteléséhez válassza a navigációs sávon a
 
 ![Egyszerű teszt eredménye – Azure](./media/cache-web-app-howto/cache-simple-test-complete-azure.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja és újból felhasználhatja az ebben a rövid útmutatóban létrehozott erőforrásokat.
 
@@ -326,11 +330,11 @@ Ha azonban befejezte az oktatóanyag mintaalkalmazásának használatát, a díj
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és válassza az **Erőforráscsoportok** elemet.
 
-2. A **Szűrés név alapján** mezőbe írja be az erőforráscsoport nevét. A jelen cikk utasításai egy *TestResources* nevű erőforráscsoportot használtak. Az erőforráscsoport eredménylistájában válassza a **...** , majd az **Erőforráscsoport törlése** lehetőséget.
+2. A **Szűrés név alapján** mezőbe írja be az erőforráscsoport nevét. A jelen cikk utasításai egy *TestResources* nevű erőforráscsoportot használtak. Az erőforráscsoport eredménylistájában válassza a **...**, majd az **Erőforráscsoport törlése** lehetőséget.
 
     ![Törlés](./media/cache-web-app-howto/cache-delete-resource-group.png)
 
-A rendszer az erőforráscsoport törlésének megerősítését kéri. A megerősítéshez írja be az erőforráscsoport nevét, és válassza a **Törlést** .
+A rendszer az erőforráscsoport törlésének megerősítését kéri. A megerősítéshez írja be az erőforráscsoport nevét, és válassza a **Törlést**.
 
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és annak erőforrásait.
 

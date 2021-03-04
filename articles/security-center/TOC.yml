@@ -5,6 +5,14 @@
   items:
     - name: Mi az az Azure Security Center?
       href: security-center-introduction.md
+    - name: Mi az az Azure Defender?
+      href: azure-defender.md
+    - name: Újdonságok
+      displayName: 'changelog, news, release notes'
+      href: release-notes.md
+    - name: Fontos várható változások
+      displayName: 'release notes, changelog, news'
+      href: upcoming-changes.md
     - name: Rendelkezésre állás
       items:
         - name: Támogatott platformok
@@ -14,71 +22,22 @@
           href: security-center-services.md
         - name: Azure PaaS-erőforrások funkciólefedettsége
           href: features-paas.md
-    - name: Újdonságok
-      items:
-        - name: Kibocsátási megjegyzések
-          displayName: 'changelog, news'
-          href: release-notes.md
-        - name: Fontos várható változások
-          displayName: 'release notes, changelog, news'
-          href: upcoming-changes.md
-        - name: Archivált kibocsátási megjegyzések (hat hónapnál régebbiek)
-          displayName: 'changelog, news'
-          href: release-notes-archive.md
-    - name: A Security Center alapjai
-      items:
-        - name: A Security Center áttekintő lapja
-          href: overview-page.md
-        - name: Biztonsági javaslatok
-          href: recommendations-reference.md
-        - name: Biztonsági riasztások és a szándékos törlési lánc
-          href: alerts-reference.md
-        - name: Hogyan védi a Microsoft az ügyféladatokat?
-          href: security-center-data-security.md
-        - name: Engedélyek
+        - name: Felhasználói szerepkörök és engedélyek
+          displayName: RBAC
           href: security-center-permissions.md
-    - name: Az Azure Defender speciális biztonsági megoldása
-      items:
-        - name: Az Azure Defender áttekintése
-          href: azure-defender.md
-        - name: Azure Defender kiszolgálókhoz
-          displayName: VM
-          href: defender-for-servers-introduction.md
-        - name: Azure Defender App Service-hez
-          href: defender-for-app-service-introduction.md
-        - name: Azure Defender tároláshoz
-          displayName: 'blob, adls, files'
-          href: defender-for-storage-introduction.md
-        - name: Azure Defender SQL-hez
-          displayName: database
-          href: defender-for-sql-introduction.md
-        - name: Azure Defender Key Vaulthoz
-          displayName: 'KV, akv'
-          href: defender-for-key-vault-introduction.md
-        - name: Azure Defender a Resource Managerhez
-          displayName: ARM
-          href: defender-for-resource-manager-introduction.md
-        - name: Azure Defender DNS-hez
-          displayName: domain
-          href: defender-for-dns-introduction.md
-        - name: Azure Defender Kuberneteshez
-          displayName: 'clusters, k8s, aks'
-          href: defender-for-kubernetes-introduction.md
-        - name: Azure Defender tárolóregisztrációs adatbázisokhoz
-          displayName: 'ACR, registry, images'
-          href: defender-for-container-registries-introduction.md
-        - name: További fenyegetésvédelem
-          href: other-threat-protections.md
-    - name: A Security Center tárolóbiztonsági szolgáltatásai
-      displayName: 'kubernetes, aks, acr, registries, k8s'
-      href: container-security.md
-    - name: Díjszabás
-      href: security-center-pricing.md
+        - name: Security Center Free vs Azure Defender engedélyezve
+          href: security-center-pricing.md
 - name: Rövid útmutatók
   items:
-    - name: Bevezetés
+    - name: 1. Security Center engedélyezése az előfizetéseken
       href: security-center-get-started.md
-    - name: Hibrid környezet beállítása
+    - name: 2. Az Azure Defender engedélyezése
+      href: enable-azure-defender.md
+    - name: 3. Automatikus kiépítés konfigurálása
+      href: security-center-enable-data-collection.md
+    - name: 4. E-mail-értesítések beállítása
+      href: security-center-provide-security-contact-details.md
+    - name: 5. Hibrid és többfelhős gépek összekötése
       items:
         - name: Nem Azure-beli gép csatlakoztatása
           displayName: 'azure stack, ash, windows, linux, hybrid, arc'
@@ -89,17 +48,12 @@
         - name: GCP-fiókok csatlakoztatása
           displayName: 'hybrid, multicloud, google'
           href: quickstart-onboard-gcp.md
-    - name: Előkészítés automatizálása a PowerShell használatával
-      href: security-center-powershell-onboarding.md
-    - name: A Security Center engedélyezése felügyeleti csoportokhoz
-      href: onboard-management-group.md
-    - name: Automatikus kiépítés konfigurálása
-      href: security-center-enable-data-collection.md
-    - name: E-mail-értesítések beállítása
-      href: security-center-provide-security-contact-details.md
-    - name: Riasztásra adott automatikus válasz létrehozása ARM-sablonnal
-      displayName: Resource Manager
+    - name: 6. Automatikus válaszok létrehozása a riasztásokhoz
+      displayName: 'Resource Manager, ARM'
       href: quickstart-automation-alert.md
+    - name: 7. A megfelelőségi irányítópultra vonatkozó szabványok kiválasztása
+      displayName: 'regulatory, regulation, CIS, PCI DSS, ISO, SOC, ASB, Benchmark, Azure Security Benchmark, HIPAA'
+      href: update-regulatory-compliance-packages.md
 - name: Oktatóanyagok
   items:
     - name: Tervezési és működtetési útmutató
@@ -114,74 +68,59 @@
       href: tutorial-security-policy.md
 - name: Alapelvek
   items:
-    - name: Felhőbeli biztonsági helyzet kezelése
+    - name: A Felhőbeli biztonsági testhelyzet kezelése – fogalmak
       items:
-        - name: Az erőforrások kezelése eszközleltárral
-          href: asset-inventory.md
-        - name: Biztonsági pontszám
+        - name: 'Szabályzatok, kezdeményezések és javaslatok'
+          href: security-policy-concept.md
+        - name: Biztonságos pontszám és biztonsági vezérlők
           href: secure-score-security-controls.md
-        - name: Biztonsági javaslatok áttekintése
-          href: security-center-recommendations.md
-        - name: Javaslatok használata a biztonság növelése érdekében
-          href: security-center-using-recommendations.md
-        - name: Biztonsági alapkonfiguráció
-          href: security-baseline.md
-        - name: Bérlők közötti felügyelet
-          href: security-center-cross-tenant-management.md
-        - name: A Windows Admin Center kiszolgálóinak védelme
-          href: windows-admin-center-integration.md
-        - name: Biztonsági megoldások és adatforrások integrálása
-          href: security-center-partner-integration.md
+        - name: Javaslatok hivatkozási listája
+          href: recommendations-reference.md
+    - name: Felhőalapú munkaterhelés-védelmi fogalmak
+      items:
+        - name: Biztonsági riasztások és incidensek
+          href: security-center-alerts-overview.md
+        - name: Riasztások hivatkozási listája
+          href: alerts-reference.md
+- name: Útmutatók
+  items:
+    - name: Az Áttekintés irányítópult használata
+      displayName: 'overview, compliance, inventory'
+      href: overview-page.md
+    - name: Az Azure Defender irányítópultjának használata
+      href: azure-defender-dashboard.md
+    - name: A biztonságos pontszám elérése és nyomon követése
+      href: secure-score-access-and-track.md
+    - name: Az erőforrások kezelése eszközleltárral
+      href: asset-inventory.md
+    - name: Security Center-adatmennyiség interaktív jelentéseinek összeállítása
+      displayName: 'workbooks, Secure Score Over Time, Vulnerability Assessment Findings'
+      href: custom-dashboards-azure-workbooks.md
     - name: Biztonsági javaslatok használata a biztonság javításához
       items:
+        - name: Biztonsági javaslatok áttekintése
+          href: security-center-recommendations.md
         - name: Szervizelési javaslatok
           href: security-center-remediate-recommendations.md
         - name: Helytelen konfigurációk megelőzése Kényszerítéssel/Megtagadással
           displayName: recommendations
           href: prevent-misconfigurations.md
-        - name: Biztonsági helyzet megerősítése
-          href: security-center-monitoring.md
-        - name: Javaslatok hivatkozási listája
-          href: recommendations-reference.md
-        - name: Biztonsági javaslatok kezelése
-          items:
-            - name: Javaslatokra adott válaszok automatizálása
-              displayName: workflow
-              href: workflow-automation.md
-            - name: Erőforrás kivonása egy javaslatból
-              href: exempt-resource.md
-        - name: Hálózati erőforrások védelme
-          href: security-center-network-recommendations.md
-        - name: Identitás és hozzáférés védelme
-          href: security-center-identity-access.md
-    - name: Információ a biztonsági riasztásokról
-      items:
-        - name: Biztonsági riasztások áttekintése
-          href: security-center-alerts-overview.md
-        - name: Riasztások hivatkozási listája
-          href: alerts-reference.md
-        - name: Riasztási sémák
-          href: alerts-schemas.md
-        - name: Biztonsági incidensek áttekintése
-          href: security-center-alerts-cloud-smart.md
-- name: Útmutatók
-  items:
-    - name: Az Azure Defender irányítópultjának használata
-      href: azure-defender-dashboard.md
-    - name: Biztonsági szabályzatok és megfelelőségi előírások konfigurálása
-      items:
-        - name: Egyéni biztonsági szabályzatok létrehozása
+        - name: Javaslatokra adott válaszok automatizálása
+          displayName: workflow
+          href: workflow-automation.md
+        - name: Erőforrás kivonása egy javaslatból
+          href: exempt-resource.md
+        - name: Egyéni biztonsági kezdeményezések és szabályzatok létrehozása
           href: custom-security-policies.md
-        - name: Szabályzatok kezelése az Azure Policy REST API-val
-          href: configure-security-policy-azure-policy.md
-        - name: A megfelelőségi irányítópultra vonatkozó szabványok kiválasztása
-          displayName: 'regulatory, regulation, CIS, PCI DSS, ISO, SOC, Benchmark, Azure Security Benchmark, HIPAA'
-          href: update-regulatory-compliance-packages.md
-    - name: Az Azure Defender használata kiszolgálókhoz
+    - name: A gépek megóvása az Azure Defender for Servers szolgáltatással
+      displayName: 'hybrid, arc, Azure Defender for machines'
       items:
+        - name: Az Azure Defender for Servers szolgáltatás áttekintése
+          displayName: VM
+          href: defender-for-servers-introduction.md
         - name: Biztonsági rések vizsgálata
           items:
-            - name: Integrált biztonságirés-felmérési vizsgálat gépekhez
+            - name: A gépek ellenőrzése az integrált VA Scanner eszközzel
               displayName: 'qualys, vulnerability, arc, hybrid'
               href: deploy-vulnerability-assessment-vm.md
             - name: A virtuális gépek vizsgálata BYOL sebezhetőség-felmérési megoldással
@@ -204,58 +143,131 @@
         - name: Végponthoz készült Microsoft Defender-licenc használata
           displayName: 'ATP, mdatp, wdatp'
           href: security-center-wdatp.md
-        - name: Adaptív alkalmazásvezérlők kezelése
-          displayName: 'aac, whitelist, allowlist, reviewgroup'
+        - name: A gépek biztonságos alkalmazásainak listáját határozza meg
+          displayName: 'aac, whitelist, allowlist, reviewgroup, adaptive application controls'
           href: security-center-adaptive-application.md
-        - name: Fájlintegritási monitorozás használata
+        - name: Fájlok és beállításjegyzékek változásainak követése a fájlok integritásának figyelésével
           items:
             - name: A fájlintegritási monitorozás áttekintése
               displayName: 'fim, change'
               href: security-center-file-integrity-monitoring.md
-            - name: Alapértékek összehasonlítása fájlintegritási monitorozással
+            - name: Alaptervek összehasonlítása a fájlok integritásának figyelésével
               displayName: 'fim, change'
               href: security-center-file-integrity-monitoring-baselines.md
-        - name: Adaptív hálózatmegerősítés kezelése
+        - name: A hálózati biztonság helyzetének javítása adaptív hálózati megerősítéssel
           displayName: anh
           href: security-center-adaptive-network-hardening.md
         - name: A Docker-gazdagépek megerősítése
           displayName: containers
           href: harden-docker-hosts.md
-    - name: Az SQL-hez készült Azure Defender használata
-      href: defender-for-sql-usage.md
-      displayName: 'hybrid, arc'
-    - name: Az Azure Defender használata tárolóregisztrációs adatbázisokhoz
+    - name: Az SQL-erőforrások megóvása
       items:
+        - name: Az SQL-hez készült Azure Defender áttekintése
+          displayName: database
+          href: defender-for-sql-introduction.md
+        - name: A Defender engedélyezése a gépeken futó SQL-kiszolgálókon
+          href: defender-for-sql-usage.md
+          displayName: 'hybrid, arc, Azure Defender'
+        - name: Biztonsági rések ellenőrzése az SQL-erőforrásokban
+          href: defender-for-sql-on-machines-vulnerability-assessment.md
+          displayName: 'hybrid, arc, Azure Defender'
+        - name: Sebezhetőségi megállapítás letiltása az SQL-kiszolgálókon
+          displayName: 'VA, registry, vulnerabilities'
+          href: defender-for-sql-on-machines-vulnerability-assessment.md#disable-specific-findings-preview
+        - name: Az SQL Information Protection-szabályzat testreszabása
+          displayName: 'sql, database, data discovery'
+          href: security-center-info-protection-policy.md
+    - name: A tároló környezetek elleni védelem
+      displayName: Azure Defender
+      items:
+        - name: A Security Center tárolóbiztonsági szolgáltatásai
+          displayName: 'kubernetes, aks, acr, registries, k8s'
+          href: container-security.md
+        - name: A Kubernetes Defender áttekintése
+          displayName: 'clusters, k8s, aks'
+          href: defender-for-kubernetes-introduction.md
+        - name: A Container nyilvántartók Defender általi áttekintése
+          displayName: 'ACR, registry, images'
+          href: defender-for-container-registries-introduction.md
         - name: Biztonsági rések meglétének ellenőrzése a regisztrációs adatbázis rendszerképei kapcsán
           displayName: 'ACR, registry, images, qualys'
           href: defender-for-container-registries-usage.md
         - name: Meghatározott rendszerkép-sebezhetőségi eredmények letiltása
           displayName: 'ACR, registry, images, qualys'
           href: defender-for-container-registries-usage.md#disable-specific-findings-preview
-    - name: Riasztások és javaslatok exportálása
+        - name: A Kubernetes számítási feladatok védelme
+          displayName: 'k8s, containers, aks'
+          href: kubernetes-workload-protections.md
+    - name: Azure App Service-webalkalmazások és -API-k védelme
+      displayName: 'Azure Defender for App Service, defender for app'
+      href: defender-for-app-service-introduction.md
+    - name: Az Azure Storage-fiókok megóvása
+      displayName: 'blob, adls, files, Azure Defender for Storage, Defender for Storage'
+      href: defender-for-storage-introduction.md
+    - name: A Key Vault kulcsok és titkos kódok elleni védelem
       items:
-        - name: 'Exportálás SIEM-be, SOAR-ba vagy ITSM-be'
-          displayName: 'continuous, SIEM, SOAR, Splunk, QRadar, ServiceNow, ArcSight, Monitor, Graph, Sentinel,'
-          href: export-to-siem.md
-        - name: Exportálás Log Analytics-munkaterületbe vagy az Azure Event Hubba
-          displayName: continuous
-          href: continuous-export.md
-        - name: Az összes riasztás CSV-jelentésének letöltése
-          href: continuous-export.md#manual-one-time-export-of-alerts-and-recommendations
-    - name: Biztonsági riasztások kezelése
-      items:
-        - name: Biztonsági riasztások kezelése
-          href: security-center-managing-and-responding-alerts.md
-        - name: Riasztásletiltási szabályok létrehozása és kezelése
-          href: alerts-suppression-rules.md
+        - name: Az Key Vault Azure Defender áttekintése
+          displayName: 'KV, akv'
+          href: defender-for-key-vault-introduction.md
         - name: Válaszadás Key Vaulthoz készült Azure Defender-riasztásokra
           displayName: 'akv, kv'
           href: defender-for-key-vault-usage.md
-        - name: Válaszadás a DNS-hez készült Azure Defender-riasztásokra
-          href: defender-for-dns-usage.md
+    - name: Az erőforrás-kezelési műveletek figyelése
+      items:
+        - name: A Resource Managerhez készült Azure Defender áttekintése
+          displayName: ARM
+          href: defender-for-resource-manager-introduction.md
         - name: Válaszadás a Resource Managerhez készült Azure Defender-riasztásokra
           displayName: arm
           href: defender-for-resource-manager-usage.md
+    - name: DNS-lekérdezések figyelése az Azure-erőforrásokból
+      items:
+        - name: A DNS-hez készült Azure Defender áttekintése
+          displayName: 'domain, Defender for DNS'
+          href: defender-for-dns-introduction.md
+        - name: Válaszadás a DNS-hez készült Azure Defender-riasztásokra
+          href: defender-for-dns-usage.md
+    - name: A Windows Admin Center kiszolgálóinak védelme
+      href: windows-admin-center-integration.md
+    - name: Biztonsági megoldások és adatforrások integrálása
+      href: security-center-partner-integration.md
+    - name: Hálózati erőforrások védelme
+      href: security-center-network-recommendations.md
+    - name: Identitás és hozzáférés védelme
+      href: security-center-identity-access.md
+    - name: Security Center további veszélyforrások elleni védelem használata
+      href: other-threat-protections.md
+    - name: 'Előfizetések, felhasználók és engedélyek kezelése'
+      items:
+        - name: Felügyeleti csoportok és előfizetések rendszerezése
+          href: security-center-management-groups.md
+        - name: Bérlői szintű engedélyek megadása és kérése
+          displayName: 'global admin, Azure Active Directory (AD), AAD'
+          href: tenant-wide-permissions-management.md
+        - name: A Security Center engedélyezése felügyeleti csoportokhoz
+          href: onboard-management-group.md
+        - name: Bérlők közötti felügyelet beállítása
+          href: security-center-cross-tenant-management.md
+        - name: Előkészítés automatizálása a PowerShell használatával
+          href: security-center-powershell-onboarding.md
+    - name: 'Riasztások, incidensek és fenyegetések jelentésének kezelése'
+      items:
+        - name: Válaszadás a biztonsági riasztásokra
+          href: security-center-managing-and-responding-alerts.md
+        - name: Riasztásletiltási szabályok létrehozása és kezelése
+          href: alerts-suppression-rules.md
+        - name: Riasztások és javaslatok exportálása
+          items:
+            - name: 'Exportálás SIEM-be, SOAR-ba vagy ITSM-be'
+              displayName: 'continuous, SIEM, SOAR, Splunk, QRadar, ServiceNow, ArcSight, Monitor, Graph, Sentinel,'
+              href: export-to-siem.md
+            - name: Exportálás Log Analytics-munkaterületbe vagy az Azure Event Hubba
+              displayName: continuous
+              href: continuous-export.md
+            - name: Az összes riasztás CSV-jelentésének letöltése
+              href: continuous-export.md#manual-one-time-export-of-alerts-and-recommendations
+            - name: Riasztási sémák
+              href: alerts-schemas.md
         - name: Biztonsági incidensek kezelése
           href: security-center-incident.md
         - name: Fenyegetésfelderítési jelentés előállítása
@@ -266,18 +278,17 @@
         - name: Riasztásokra adott válaszok automatizálása
           displayName: workflow
           href: workflow-automation.md
-    - name: A Kubernetes számítási feladatok védelme
-      displayName: 'k8s, containers, aks'
-      href: kubernetes-workload-protections.md
-    - name: Bérlőszintű áttekintés
-      href: security-center-management-groups.md
-    - name: Az SQL Information Protection-szabályzat testreszabása
-      displayName: 'sql, database, data discovery'
-      href: security-center-info-protection-policy.md
 - name: Referencia
   items:
-    - name: REST API-k
+    - name: Archivált kibocsátási megjegyzések (hat hónapnál régebbiek)
+      displayName: 'changelog, news'
+      href: release-notes-archive.md
+    - name: Hogyan védi a Microsoft az ügyféladatokat?
+      href: security-center-data-security.md
+    - name: REST API-k dokumentációja
       href: /rest/api/securitycenter/
+    - name: Biztonsági alapkonfiguráció
+      href: security-baseline.md
     - name: Azure Security Center – gyakori kérdések
       items:
         - name: Általános kérdések

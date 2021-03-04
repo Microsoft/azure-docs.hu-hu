@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 03/04/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 44a084266a083b2cc7c0609e4bfedb10a018585d
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 075b04414c752ce87365d03212fcdabab6eaa7dd
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102107553"
+ms.locfileid: "102119824"
 ---
 # <a name="configure-saml-identity-provider-options-with-azure-active-directory-b2c"></a>SAML-identitás-szolgáltatói beállítások konfigurálása Azure Active Directory B2C
 
@@ -43,8 +43,8 @@ Olyan jogcímeket is megadhat, amelyeket nem ad vissza az identitás-szolgáltat
 A kimeneti jogcím elem a következő attribútumokat tartalmazza:
 
 - A **ClaimTypeReferenceId** a jogcím típusára mutató hivatkozás. 
-- A **PartnerClaimType** az Azure-adatfelismerésekben megjelenő tulajdonság neve. Használja a szintaxist `{property:NAME}` , ahol a `NAME` tulajdonság az eseményhez van adva.
-- A **DefaultValue** a rögzítendő előre definiált érték, például az esemény neve. A felhasználói úton használt jogcím, például az identitás-szolgáltató neve. Ha a jogcím üres, a rendszer az alapértelmezett értéket fogja használni. Például a `identityProvider` jogcímet az összevonási technikai profilok, például a Facebook állítja be. Ha a jogcím üres, az azt jelzi, hogy a felhasználó helyi fiókkal jelentkezik be. Így az alapértelmezett érték a *helyi*. Egy [jogcímet](claim-resolver-overview.md) is rögzíthet egy környezetfüggő értékkel, például az alkalmazás azonosítójával vagy a felhasználó IP-címével.
+- A **PartnerClaimType** az SAML-kijelentést megjelenő tulajdonság neve. 
+- A **DefaultValue** egy előre definiált alapértelmezett érték. Ha a jogcím üres, a rendszer az alapértelmezett értéket fogja használni. A [jogcímek feloldóit](claim-resolver-overview.md) környezetfüggő értékkel is használhatja, például a korrelációs azonosítót vagy a felhasználói IP-címet.
 
 ### <a name="subject-name"></a>Tulajdonos neve
 

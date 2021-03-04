@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 12/07/2020
-ms.openlocfilehash: 84d98eedb3ea6f3faaeaecf832811f9f4c78c7c5
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 445810d5873bb935ded180a969e4612542bde5ed
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880355"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120181"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>A OCP GTM közös értékesítési megoldásainak áttelepítése a kereskedelmi piactérre
 
@@ -136,7 +136,7 @@ Az ajánlat közzétételéhez szükséges információkkal kapcsolatos részlet
 
     :::image type="content" source="media/co-sell-migrate/offer-setup.png" alt-text="Az ajánlat áttekintése telepítési lapok a partner Centerben.":::
 
-3. A Microsoft Seller szolgáltatással kapcsolatos néhány részlet a OCP GTM-megoldásból lett másolva. Fejezze be a többi szükséges információt a **közös értékesítés a Microsoft** lapon, hogy az ajánlat közös értékesítésre készen álljon. Ha elkészült, válassza **a felülvizsgálat és közzététel** lehetőséget. További információ: a [közös értékesítéssel kapcsolatos anyagok beküldése a partner Centerben](marketplace-co-sell.md#how-to-submit-co-sell-materials-in-partner-center).
+3. A Microsoft Seller szolgáltatással kapcsolatos néhány részlet a OCP GTM-megoldásból lett másolva. Fejezze be a többi szükséges információt a **közös értékesítés a Microsoft** lapon, hogy az ajánlat közös értékesítésre készen álljon. Ha elkészült, válassza **a felülvizsgálat és közzététel** lehetőséget. További információ: a [közös értékesítéssel kapcsolatos anyagok beküldése a partner Centerben](marketplace-co-sell.md).
 
     :::image type="content" source="media/co-sell-migrate/co-sell-page.png" alt-text="Az ajánlat közös értékesítésének lapja a partner Centerben.":::
 
@@ -151,8 +151,8 @@ Az ajánlat közzétételéhez szükséges információkkal kapcsolatos részlet
 6. A rendszer értesíti Önt, ha a minősítési felülvizsgálat elkészült. Ha a művelettel kapcsolatos visszajelzések megadására van szükség, keresse meg, majd válassza a **Közzététel** lehetőséget az újraminősítés kezdeményezéséhez.
 7. Ha az ajánlata megfelel a minősítésnek, előzetesen tekintse meg az ajánlatot a megadott hivatkozással, és végezze el a kívánt végső módosításokat. Ha elkészült, válassza az **élő indítás** lehetőséget (lásd a fenti gombot) az ajánlat közzétételéhez a releváns kereskedelmi Piactéri kirakatokban. A Live szolgáltatásban az ajánlat az eredeti OCP GTM-megoldással megőrzi a közös értékesítési állapotát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Viszonteladás CSP-partnereken keresztül](cloud-solution-providers.md)
-- [Közös értékesítésű anyagok beküldése a partner Centerben](marketplace-co-sell.md#how-to-submit-co-sell-materials-in-partner-center)
+- [Közös értékesítésű anyagok beküldése a partner Centerben](marketplace-co-sell.md)
 - A [Gyakori kérdések](https://partner.microsoft.com/resources/detail/co-sell-requirements-publish-commercial-marketplace-faq-pdf) megtekintése (PDF)

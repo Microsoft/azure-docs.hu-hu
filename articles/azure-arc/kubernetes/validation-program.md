@@ -2,18 +2,18 @@
 title: Azure arc-kompatibilis Kubernetes-ellenőrzési program
 services: azure-arc
 ms.service: azure-arc
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: A Kubernetes-disztribúciók ív-ellenőrzési programjának ismertetése
 keywords: Kubernetes, arc, Azure, K8s, érvényesítés
-ms.openlocfilehash: 0d7756f407a3a176c8913d99bdb45a5026300569
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 819df906add6275997e01fab310fe8dd57a87b51
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101689215"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121371"
 ---
 # <a name="azure-arc-validation-program"></a>Azure arc-ellenőrzési program
 
@@ -61,6 +61,6 @@ Az Azure arc-kompatibilis Kubernetes ellenőrzésének részeként futtatott meg
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Fürt összekötése az Azure-ív használatával](./connect-cluster.md)
-* [Konfigurációk létrehozása az ív használatára képes Kubernetes-fürtön](./use-gitops-connected-cluster.md)
-* [A Azure Policy használata a konfigurációk nagy méretekben való alkalmazásához](./use-azure-policy.md)
+Megtudhatja, hogyan csatlakoztatható a fürt az Azure arc szolgáltatáshoz.
+> [!div class="nextstepaction"]
+> [Fürt összekötése az Azure-ív használatával](./quickstart-connect-cluster.md)

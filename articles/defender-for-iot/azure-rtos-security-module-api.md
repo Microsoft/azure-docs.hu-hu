@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/07/2020
 ms.author: mlottner
-ms.openlocfilehash: 8191d68f701a3be6a37d8623d2d900f6aa6c1851
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cec28f9290808836ec2dfd334b23fe8c76df03fc
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90939540"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120062"
 ---
-# <a name="security-module-for-azure-rtos-api-preview"></a>Biztonsági modul az Azure RTOS API-hoz (előzetes verzió)
+# <a name="security-module-for-azure-rtos-api"></a>Az Azure RTOS biztonsági moduljának API-ja 
 
 Ez az API kizárólag az Azure RTOS biztonsági moduljának használatára szolgál. További forrásokért tekintse meg az [Azure RTOS GitHub-erőforrás biztonsági modulját](https://github.com/azure-rtos/azure-iot-preview/releases). 
 

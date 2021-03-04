@@ -8,16 +8,20 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp, mvc
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 945d4a3d2bba84bf8f5973fd8dec092c66794c11
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 525ad6df1bb94a1fb917e41495d7f8aafa1e79ae
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004296"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121422"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-net-core"></a>Gyors útmutató: az Azure cache használata a Redis a .NET Core-ban
 
 Ebben a rövid útmutatóban beépíti az Azure cache-t a Redis-ba egy .NET Core-alkalmazásba, hogy hozzáférhessen egy biztonságos, dedikált gyorsítótárhoz, amely az Azure-on belül bármely alkalmazásból elérhető. A [StackExchange. Redis](https://github.com/StackExchange/StackExchange.Redis) -ügyfelet a C#-kóddal kifejezetten egy .net Core Console-alkalmazásban használhatja.
+
+## <a name="skip-to-the-code-on-github"></a>Ugrás a kódra a GitHubon
+
+Ha közvetlenül a kódra szeretne ugrani, tekintse meg a [.net Core](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/dotnet-core) rövid útmutatóját a githubon.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -307,7 +311,7 @@ A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne
 
 <a name="next-steps"></a>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja az Azure cache-t egy .NET Core-alkalmazásból származó Redis. Folytassa a következő rövid útmutatóval, hogy az Azure cache-t használja a Redis egy ASP.NET-webalkalmazással.
 

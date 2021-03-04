@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: lizross
 ms.custom: include file
-ms.openlocfilehash: b049b3651f12b1a73a3511d030bbdbbfaceb2480
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: HT
+ms.openlocfilehash: 1f451db9ab06ff376e1a6ca4d503d21b48d19789
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95972563"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109271"
 ---
->[!Note] 
-> Ez a cikk azt ismerteti, hogyan lehet személyes adatokat törölni az eszközről vagy a szolgáltatásból, és hogyan lehet felhasználni a GDPR szerinti kötelességek teljesítésének támogatására. Ha a GDPR-re vonatkozó általános információkat keres, tekintse meg a [Szolgáltatásmegbízhatósági portál GDPR-ről szóló szakaszát](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).
+> [!NOTE]
+> Ez a cikk a személyes adatok eszközről vagy szolgáltatásból való törlésének lépéseit ismerteti, és a GDPR tartozó kötelezettségek támogatásához használható. A GDPR kapcsolatos általános információkért tekintse meg a [Microsoft adatvédelmi központ GDPR szakaszát](https://www.microsoft.com/trust-center/privacy/gdpr-overview) , valamint a [szolgáltatás-megbízhatósági portál GDPR szakaszát](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).

@@ -2,13 +2,13 @@
 title: Sablon szerkezete és szintaxisa
 description: Ismerteti Azure Resource Manager sablonok (ARM-sablonok) szerkezetét és tulajdonságait a deklaratív JSON szintaxis használatával.
 ms.topic: conceptual
-ms.date: 12/17/2020
-ms.openlocfilehash: 31576c72fb845677f132fd9cd6ee776db922d436
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: da64eb8abeaf45f58933dfbddaf954cad8e66f4a
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722704"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120416"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>Az ARM-sablonok struktúrájának és szintaxisának megismerése
 
@@ -46,62 +46,6 @@ A legegyszerűbb struktúrájában a sablon a következő elemekből áll:
 
 Minden elemnek van beállítható tulajdonsága. Ez a cikk részletesebben ismerteti a sablon szakaszait.
 
-## <a name="data-types"></a>Adattípusok
-
-Az ARM-sablonon belül a következő adattípusokat használhatja:
-
-* sztring
-* SecureString
-* int
-* logikai
-* object
-* secureObject
-* array
-
-Az alábbi sablon az adattípusok formátumát mutatja be. Minden típushoz megfelelő formátumú alapértelmezett érték tartozik.
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringParameter": {
-      "type": "string",
-      "defaultValue": "option 1"
-    },
-    "intParameter": {
-      "type": "int",
-      "defaultValue": 1
-    },
-    "boolParameter": {
-      "type": "bool",
-      "defaultValue": true
-    },
-    "objectParameter": {
-      "type": "object",
-      "defaultValue": {
-        "one": "a",
-        "two": "b"
-      }
-    },
-    "arrayParameter": {
-      "type": "array",
-      "defaultValue": [ 1, 2, 3 ]
-    }
-  },
-  "resources": [],
-  "outputs": {}
-}
-```
-
-A biztonságos karakterlánc ugyanazt a formátumot használja, mint a karakterlánc, és a Secure objektum ugyanazt a formátumot használja, mint az objektum. Ha egy paramétert biztonságos sztringre vagy biztonságos objektumra állít be, a paraméter értéke nem kerül a telepítési előzményekbe, és nincs naplózva. Ha azonban olyan tulajdonságra állítja be a biztonságos értéket, amely nem vár biztonságos értéket, az érték nem védett. Ha például egy biztonságos karakterláncot állít be egy címkére, az értéket egyszerű szövegként tárolja a rendszer. Biztonságos karakterláncok használata jelszavakhoz és titkos kulcsokhoz.
-
-A beágyazott paraméterekként átadott egész számok esetében az értékek tartományát az SDK vagy az üzembe helyezéshez használt parancssori eszköz korlátozza. Ha például a PowerShell használatával telepít egy sablont, az egész szám típusú érték-2147483648 és 2147483647 között lehet. Ha el szeretné kerülni ezt a korlátozást, adjon meg nagyméretű egész értékeket egy [paraméter fájljában](parameter-files.md). Az erőforrástípusok a saját korlátait alkalmazzák az egész tulajdonságok esetében.
-
-Ha a sablonban logikai és egész értékeket ad meg, ne adja meg idézőjelek közé az értéket. Kezdő és záró karakterlánc-értékek dupla idézőjelekkel ( `"string value"` ).
-
-Az objektumok bal oldali kapcsos zárójeltel () kezdődnek, `{` és a végén egy jobb oldali kapcsos zárójel ( `}` ) áll. A tömbök bal oldali szögletes zárójeltel () kezdődnek, `[` és a jobb oldali szögletes zárójel () végére állnak `]` .
-
 ## <a name="parameters"></a>Paraméterek
 
 A `parameters` sablon szakaszban megadhatja, hogy mely értékeket adhatja meg az erőforrások telepítésekor. Egy sablonban legfeljebb 256 paramétert használhat. A paraméterek számát a több tulajdonságot tartalmazó objektumok használatával csökkentheti.
@@ -128,7 +72,7 @@ A paraméterek elérhető tulajdonságai a következők:
 | Elem neve | Kötelező | Leírás |
 |:--- |:--- |:--- |
 | paraméter – név |Igen |A paraméter neve. Érvényes JavaScript-azonosítónak kell lennie. |
-| típus |Igen |A paraméter értékének típusa A megengedett típusok és értékek a következők: **String**, **SecureString**, **int**, **bool**, **Object**, **secureObject** és **Array**. Lásd [az adattípusokat](#data-types). |
+| típus |Igen |A paraméter értékének típusa A megengedett típusok és értékek a következők: **String**, **SecureString**, **int**, **bool**, **Object**, **secureObject** és **Array**. Lásd [az ARM-sablonok adattípusait](data-types.md). |
 | defaultValue |Nem |A paraméter alapértelmezett értéke, ha a paraméterhez nincs megadva érték. |
 | allowedValues |Nem |A paraméter számára engedélyezett értékek tömbje, hogy meggyőződjön arról, hogy a megfelelő érték van megadva. |
 | minValue |Nem |Az int Type paraméterek minimális értéke, ez az érték tartalmazza a befogadó értéket. |
@@ -141,7 +85,7 @@ A paraméterek használatáról a következő témakörben talál példákat: [p
 
 ## <a name="variables"></a>Változók
 
-A `variables` szakaszban a sablonban használható értékeket hozhat létre. Nem kell megadnia a változókat, de gyakran egyszerűsíti a sablont a komplex kifejezések csökkentésével. Az egyes változók formátuma megegyezik az egyik [adattípussal](#data-types).
+A `variables` szakaszban a sablonban használható értékeket hozhat létre. Nem kell megadnia a változókat, de gyakran egyszerűsíti a sablont a komplex kifejezések csökkentésével. Az egyes változók formátuma megegyezik az egyik [adattípussal](data-types.md).
 
 A következő példa egy változó definiálásához elérhető lehetőségeket mutatja be:
 

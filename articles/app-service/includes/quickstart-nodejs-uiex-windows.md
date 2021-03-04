@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 ms.custom: mvc, devcenter, seodec18
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 302e0dc79d13eedebf810df042dc31f78b173fb6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 324919c1d085302e675e0bc9a370ce35f52a0f1d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748602"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109370"
 ---
 <!-- advanced for windows -->
 
@@ -70,10 +70,14 @@ ms.locfileid: "101748602"
 
 1. Miután az üzembe helyezés befejeződött, a kérdésben válassza a **Tallózás webhely** lehetőséget a frissen telepített webalkalmazás megtekintéséhez.
 
-<br>
+<br/>
 <details>
-<summary>Hibaelhárítás</summary>
+<summary><strong>Hibaelhárítás</strong></summary>
+
+Ha nem tudta végrehajtani a következő lépéseket, ellenőrizze a következőket:
+
 * Győződjön meg arról, hogy az alkalmazás figyeli a PORT környezeti változó által biztosított portot: `process.env.PORT` .
+
 * Ha a következő hibaüzenet jelenik meg: **"nincs engedélye a könyvtár vagy lap megtekintésére."**, akkor az alkalmazás valószínűleg nem indult el megfelelően. A hiba megtalálásához és kijavításához tekintse át a napló kimenetét. 
 
 </details>
@@ -83,5 +87,5 @@ ms.locfileid: "101748602"
 [Probléma bejelentése](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&prepare-your-environment)
 
 
-<br>
+<br/>
 <hr/>

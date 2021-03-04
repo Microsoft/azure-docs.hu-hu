@@ -4,17 +4,17 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/11/2020
-ms.openlocfilehash: 1085daca153431a28fdcc2583d0e31308214bf91
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: fcb4113a4dab1e3de17eb022b1ad386cbc6a9583
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95562862"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109072"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Hitelesítés az Azure Active Directoryval
 
 > [!IMPORTANT]
-> 1. Jelenleg **csak** a Computer Vision API, a Face API, a Text Analytics API, a teljes olvasó, az űrlap-felismerő, a anomália-detektor és az összes Bing-szolgáltatás Bing Custom Search támogatja a hitelesítést a Azure Active Directory (HRE) használatával.
+> 1. Jelenleg **csak** a Computer Vision API, a Face API, a Text Analytics API, a teljes olvasó, az űrlap-felismerő, a anomália-detektor, a QnA Maker és az összes Bing-szolgáltatás, kivéve Bing Custom Search az Azure Active Directory (HRE) használatával történő hitelesítést támogatja.
 > 2. Az HRE-hitelesítést mindig az Azure-erőforrás egyéni altartománynevével együtt kell használni. A [regionális végpontok](../articles/cognitive-services/cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) nem TÁMOGATJÁK a HRE-hitelesítést.
 
 Az előző szakaszokban bemutatjuk, hogyan végezheti el a hitelesítést az Azure Cognitive Services az egy vagy több szolgáltatást használó előfizetési kulccsal. Habár ezek a kulcsok gyors és egyszerű elérési utat biztosítanak a fejlesztés megkezdéséhez, olyan összetettebb forgatókönyvekhez tartoznak, amelyek Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) igényelnek. Nézzük meg, mi szükséges a hitelesítéshez Azure Active Directory (HRE) használatával.
@@ -128,7 +128,7 @@ Mielőtt felügyelt identitásokat használ az Azure-erőforrásokhoz a virtuál
 - [Azure Portalra](../articles/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../articles/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../articles/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
-- [Azure Resource Manager sablon](../articles/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+- [Azure Resource Manager-sablon](../articles/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
 - [Azure Resource Manager ügyféloldali kódtárak](../articles/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 A felügyelt identitásokkal kapcsolatos további információkért lásd: [felügyelt identitások az Azure-erőforrásokhoz](../articles/active-directory/managed-identities-azure-resources/overview.md).

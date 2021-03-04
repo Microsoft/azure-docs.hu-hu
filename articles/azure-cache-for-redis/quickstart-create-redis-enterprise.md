@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/08/2021
-ms.openlocfilehash: 37496b9358ec72c79f8d26e32a92485f001e0e9d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8dbde1f74c700e772823d61b3e35a464f9bbc17e
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102031667"
+ms.locfileid: "102120963"
 ---
 # <a name="quickstart-create-a-redis-enterprise-cache-preview"></a>Gyors útmutató: Redis Enterprise cache létrehozása (előzetes verzió)
 
@@ -49,13 +49,7 @@ Mielőtt elkezdené, szüksége lesz egy Azure-előfizetésre. Ha még nem rende
 
 1. Válassza a **Tovább: hálózatkezelés** és Kihagyás lehetőséget.
 
-   > [!NOTE] 
-   > A magánhálózati hivatkozás lehetőség bekerül, és előfordulhat, hogy nem érhető el azonnal a régiójában.
-   >
-
-1. Válassza a **Next (tovább): speciális** lehetőséget, és állítsa be a **fürtözési házirendet** a **vállalat** számára.
-   
-   Megtarthatja az alapértelmezett beállításokat, és szükség szerint módosíthatja azokat. Ha bekapcsolja a **hozzáférés engedélyezése csak a TLS protokollon keresztül lehetőséget**, a TLS használatával férhet hozzá az alkalmazás új gyorsítótárához.
+1. Válassza a **Next (tovább): speciális** lehetőséget, és állítsa be a **fürtözési házirendet** a **vállalat** számára. Csak akkor engedélyezze a **nem TLS-hozzáférést** , ha a TLS használata nélkül tervezi az új gyorsítótárhoz való kapcsolódást. Ez azonban nem ajánlott.
 
    :::image type="content" source="media/cache-create/enterprise-tier-advanced.png" alt-text="Vállalati szintű speciális lap":::
 

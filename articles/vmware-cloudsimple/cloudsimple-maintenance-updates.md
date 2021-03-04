@@ -4,17 +4,17 @@ titleSuffix: Azure VMware Solution by CloudSimple
 description: Ismerteti a CloudSimple szolgáltatási folyamatát az ütemezett karbantartáshoz és frissítésekhez
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 08/20/2019
+ms.date: 03/04/2021
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 826fae1123b355a4143118b53ba649f0939acaf7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 814a901fba065e36ea3ba9e3a6fe1175365de6c5
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77025027"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120708"
 ---
 # <a name="cloudsimple-maintenance-and-updates"></a>CloudSimple-karbantartás és-frissítések
 
@@ -49,7 +49,7 @@ A CloudSimple biztonsági mentést készít, karbantartja és frissíti ezeket a
 
 * ESXi
 * vCenter platform szolgáltatásai
-* Tartományvezérlő
+* Vezérlő
 * vSAN
 * NSX
 
@@ -100,10 +100,10 @@ A szoftverfrissítések a következők:
 * **Frissítések**. Egy VMware stack-összetevő másodlagos verziója megváltozik.
 * **Frissítések**. VMware stack-összetevő főverziójának módosítása.
 
-A CloudSimple kritikus biztonsági javítást végez, amint a VMware-ről elérhetővé válik. A CloudSimple egy héten belül kivezeti a biztonsági javítást a privát felhőalapú környezetekhez.
+A CloudSimple kritikus biztonsági javítást végez, amint a VMware-ről elérhetővé válik. 
 
 A CloudSimple negyedévente karbantartási frissítéseket biztosít a VMware szoftver összetevőihez. Ha elérhetővé válik a VMware szoftver új főverziója, a CloudSimple együttműködik az ügyfelekkel, hogy koordinálja a megfelelő karbantartási időszakot a frissítéshez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Munkaterhelési virtuális gépek biztonsági mentése a Veeam használatával](backup-workloads-veeam.md)

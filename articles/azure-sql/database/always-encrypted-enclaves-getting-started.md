@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: d9c2bec575f2c7a948f3eb6e65be6a735a3c03e8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 809ac72977b670faff984ad39effb1c70767e141
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733811"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120946"
 ---
 # <a name="tutorial-getting-started-with-always-encrypted-with-secure-enclaves-in-azure-sql-database"></a>Oktatóanyag: a Always Encrypted első lépései a biztonságos enklávékkal Azure SQL Database
 
@@ -71,40 +71,45 @@ A SSMS letöltésével kapcsolatos információkért tekintse meg a [letöltés 
 A SSMS kötelező minimális verziója 18,8.
 
 
-## <a name="step-1-create-a-server-and-a-dc-series-database"></a>1. lépés: kiszolgáló és egy DC sorozatú adatbázis létrehozása
+## <a name="step-1-create-and-configure-a-server-and-a-dc-series-database"></a>1. lépés: kiszolgáló és egy DC sorozatú adatbázis létrehozása és konfigurálása
 
- Ebben a lépésben egy új Azure SQL Database logikai kiszolgálót és egy új adatbázist fog létrehozni a DC sorozatú hardverkonfiguráció használatával. A Azure SQL Database Secure enklávés Always Encrypted az Intel SGX ENKLÁVÉHOZ enklávés szolgáltatást használja, amelyet a DC sorozatú hardverkonfiguráció támogat. További információ: [DC-Series](service-tiers-vcore.md#dc-series).
+Ebben a lépésben egy új Azure SQL Database logikai kiszolgálót és egy új adatbázist fog létrehozni a DC sorozatú hardveres generációval, amely a biztonságos enklávékkal való Always Encrypted szükséges. További információ: [DC-Series](service-tiers-vcore.md#dc-series).
 
-1. Nyisson meg egy PowerShell-konzolt, és jelentkezzen be az Azure-ba. Ha szükséges, [váltson az oktatóanyaghoz használt előfizetésre](/powershell/azure/manage-subscriptions-azureps) .
+1. Nyisson meg egy PowerShell-konzolt, és importálja az az verziójának szükséges verzióját.
+
+  ```PowerShell
+  Import-Module "Az" -MinimumVersion "4.5.0"
+  ```
+  
+2. Jelentkezzen be az Azure-ba. Ha szükséges, [váltson az oktatóanyaghoz használt előfizetésre](/powershell/azure/manage-subscriptions-azureps) .
 
   ```PowerShell
   Connect-AzAccount
-  $subscriptionId = <your subscription ID>
-  Set-AzContext -Subscription $serverSubscriptionId
+  $subscriptionId = "<your subscription ID>"
+  Set-AzContext -Subscription $subscriptionId
   ```
 
-2. Hozzon létre egy erőforráscsoportot, amely tartalmazza az adatbázis-kiszolgálót. 
-
-  ```powershell
-  $serverResourceGroupName = "<server resource group name>"
-  $serverLocation = "<Azure region that supports DC-series in SQL Database>"
-  New-AzResourceGroup -Name $serverResourceGroupName -Location $serverLocation 
-  ```
+3. Új erőforráscsoport létrehozása. 
 
   > [!IMPORTANT]
-  > Létre kell hoznia egy erőforráscsoportot egy olyan régióban, amely támogatja a DC sorozatú hardver konfigurációját. A jelenleg támogatott régiók listáját lásd: a [DC-sorozat rendelkezésre állása](service-tiers-vcore.md#dc-series-1).
-
-3. Hozzon létre egy adatbázis-kiszolgálót. Ha a rendszer kéri, adja meg a kiszolgáló rendszergazdájának nevét és jelszavát.
+  > Létre kell hoznia az erőforráscsoportot egy olyan régióban (hely), amely támogatja mind a DC sorozatú hardverek létrehozását, mind a Microsoft Azure igazolását. A DC-sorozatot támogató régiók listáját lásd: [DC-Series elérhetőség](service-tiers-vcore.md#dc-series-1). [Itt](https://azure.microsoft.com/global-infrastructure/services/?products=azure-attestation) látható a Microsoft Azure igazolás regionális elérhetősége.
 
   ```powershell
-  $serverName = "<server name>" 
-  New-AzSqlServer -ServerName $serverName -ResourceGroupName $serverResourceGroupName -Location $serverLocation
+  $resourceGroupName = "<your new resource group name>"
+  $location = "<Azure region supporting DC-series and Microsoft Azure Attestation>"
+  New-AzResourceGroup -Name $resourceGroupName -Location $location
   ```
 
-4. A megadott IP-címtartomány elérését lehetővé tevő kiszolgálói tűzfalszabály létrehozása
+4. Hozzon létre egy Azure SQL logikai kiszolgálót. Ha a rendszer kéri, adja meg a kiszolgáló rendszergazdájának nevét és jelszavát. Ügyeljen rá, hogy jegyezze fel a rendszergazda nevét és jelszavát – később szüksége lesz rájuk a kiszolgálóhoz való kapcsolódáshoz.
+
+  ```powershell
+  $serverName = "<your server name>" 
+  New-AzSqlServer -ServerName $serverName -ResourceGroupName $resourceGroupName -Location $location 
+  ```
+
+5. Hozzon létre egy olyan kiszolgálói tűzfalszabály, amely engedélyezi a hozzáférést a megadott IP-tartományból.
   
   ```powershell
-  # The ip address range that you want to allow to access your server
   $startIp = "<start of IP range>"
   $endIp = "<end of IP range>"
   $serverFirewallRule = New-AzSqlServerFirewallRule -ResourceGroupName $resourceGroupName `
@@ -112,21 +117,11 @@ A SSMS kötelező minimális verziója 18,8.
     -FirewallRuleName "AllowedIPs" -StartIpAddress $startIp -EndIpAddress $endIp
   ```
 
-5. Rendeljen hozzá egy felügyelt rendszeridentitást a kiszolgálóhoz. Később szüksége lesz rá, hogy hozzáférést biztosítson a kiszolgálónak Microsoft Azure igazoláshoz.
-
-  ```powershell
-  Set-AzSqlServer -ServerName $serverName -ResourceGroupName $serverResourceGroupName -AssignIdentity 
-  ```
-
-6. A kiszolgálóhoz hozzárendelt identitás AZONOSÍTÓjának beolvasása. Mentse az eredményül kapott objektumazonosítót. Az azonosítót egy későbbi szakaszban kell megadnia.
-
-  > [!NOTE]
-  > Eltarthat néhány másodpercig, amíg az újonnan hozzárendelt felügyelt rendszer-identitást Azure Active Directory propagálni. Ha az alábbi szkript üres eredményt ad vissza, próbálkozzon újra.
+6. Rendeljen hozzá egy felügyelt rendszeridentitást a kiszolgálóhoz. 
 
   ```PowerShell
-  $server = Get-AzSqlServer -ServerName $serverName -ResourceGroupName $serverResourceGroupName 
+  $server = Set-AzSqlServer -ServerName $serverName -ResourceGroupName $resourceGroupName -AssignIdentity
   $serverObjectId = $server.Identity.PrincipalId
-  $serverObjectId
   ```
 
 7. Hozzon létre egy DC sorozatú adatbázist.
@@ -136,12 +131,26 @@ A SSMS kötelező minimális verziója 18,8.
   $edition = "GeneralPurpose"
   $vCore = 2
   $generation = "DC"
-  New-AzSqlDatabase -ResourceGroupName $serverResourceGroupName -ServerName $serverName -DatabaseName $databaseName -Edition $edition -Vcore $vCore -ComputeGeneration $generation
+  New-AzSqlDatabase -ResourceGroupName $resourceGroupName `
+    -ServerName $serverName `
+    -DatabaseName $databaseName `
+    -Edition $edition `
+    -Vcore $vCore `
+    -ComputeGeneration $generation
   ```
 
-## <a name="step-2-configure-an-attestation-provider"></a>2. lépés: igazolási szolgáltató konfigurálása
+8. A kiszolgálóval és az adatbázissal kapcsolatos információk lekérése és mentése. Ezekre az adatokra, valamint a jelen szakasz 4. lépésében található rendszergazdai névre és jelszóra is szüksége lesz a későbbi szakaszokban.
 
-Ebben a lépésben egy igazolási szolgáltatót fog létrehozni és konfigurálni Microsoft Azure igazolásban. Erre azért van szükség, hogy tanúsítsa a biztonságos enklávét az adatbázis-kiszolgálón.
+  ```powershell
+  Write-Host 
+  Write-Host "Fully qualified server name: $($server.FullyQualifiedDomainName)" 
+  Write-Host "Server Object Id: $serverObjectId"
+  Write-Host "Database name: $databaseName"
+  ```
+  
+## <a name="step-2-configure-an-attestation-provider"></a>2. lépés: igazolási szolgáltató konfigurálása 
+
+Ebben a lépésben egy igazolási szolgáltatót fog létrehozni és konfigurálni Microsoft Azure igazolásban. Erre azért van szükség, hogy tanúsítsa az adatbázis által használt biztonságos enklávét.
 
 1. Másolja az alábbi igazolási házirendet, és mentse a szabályzatot szövegfájlba (txt). További információ az alábbi szabályzatról: [igazolási szolgáltató létrehozása és konfigurálása](always-encrypted-enclaves-configure-attestation.md#create-and-configure-an-attestation-provider).
 
@@ -157,60 +166,60 @@ Ebben a lépésben egy igazolási szolgáltatót fog létrehozni és konfigurál
   };
   ```
 
-2. Importálja a és a szükséges verzióit `Az.Accounts` `Az.Attestation` .  
+2. Importálja a szükséges verziót `Az.Attestation` .  
 
   ```powershell
-  Import-Module "Az.Accounts" -MinimumVersion "1.9.2"
   Import-Module "Az.Attestation" -MinimumVersion "0.1.8"
   ```
-
-3. Hozzon létre egy erőforráscsoportot az igazolási szolgáltatóhoz.
-
-  ```powershell
-  $attestationLocation = $serverLocation
-  $attestationResourceGroupName = "<attestation provider resource group name>"
-  New-AzResourceGroup -Name $attestationResourceGroupName -Location $location  
-  ```
-
-4. Hozzon létre egy igazolási szolgáltatót. 
+  
+3. Hozzon létre egy igazolási szolgáltatót. 
 
   ```powershell
-  $attestationProviderName = "<attestation provider name>" 
-  New-AzAttestation -Name $attestationProviderName -ResourceGroupName $attestationResourceGroupName -Location $attestationLocation
+  $attestationProviderName = "<your attestation provider name>" 
+  New-AzAttestation -Name $attestationProviderName -ResourceGroupName $resourceGroupName -Location $location
   ```
 
-5. Konfigurálja az igazolási szabályzatot.
+4. Konfigurálja az igazolási szabályzatot.
   
   ```powershell
-  $policyFile = "<the pathname of the file from step 1 in this section"
+  $policyFile = "<the pathname of the file from step 1 in this section>"
   $teeType = "SgxEnclave"
   $policyFormat = "Text"
   $policy=Get-Content -path $policyFile -Raw
-  Set-AzAttestationPolicy -Name $attestationProviderName -ResourceGroupName $attestationResourceGroupName -Tee $teeType -Policy $policy -PolicyFormat  $policyFormat
+  Set-AzAttestationPolicy -Name $attestationProviderName `
+    -ResourceGroupName $resourceGroupName `
+    -Tee $teeType `
+    -Policy $policy `
+    -PolicyFormat  $policyFormat
   ```
 
-6. Adja meg az Azure SQL logikai kiszolgáló hozzáférését az igazolási szolgáltatóhoz. Ebben a lépésben a korábban a kiszolgálóhoz hozzárendelt felügyelt szolgáltatás identitásának objektumazonosítót használjuk.
+5. Adja meg az Azure SQL logikai kiszolgáló hozzáférését az igazolási szolgáltatóhoz. Ebben a lépésben a korábban a kiszolgálóhoz hozzárendelt felügyelt szolgáltatás identitásának objektumazonosító-AZONOSÍTÓját használja.
 
   ```powershell
-  New-AzRoleAssignment -ObjectId $serverObjectId -RoleDefinitionName "Attestation Reader" -ResourceGroupName $attestationResourceGroupName  
+  New-AzRoleAssignment -ObjectId $serverObjectId `
+    -RoleDefinitionName "Attestation Reader" `
+    -ResourceName $attestationProviderName `
+    -ResourceType "Microsoft.Attestation/attestationProviders" `
+    -ResourceGroupName $resourceGroupName  
   ```
 
-7. A tanúsítvány URL-címének beolvasása.
+6. A SGX ENKLÁVÉHOZ enklávéhoz konfigurált igazolási házirendre mutató igazolási URL-cím beolvasása. Mentse az URL-címet, mert később szüksége lesz rá.
 
   ```powershell
-  $attestationProvider = Get-AzAttestation -Name $attestationProviderName -ResourceGroupName $attestationResourceGroupName 
+  $attestationProvider = Get-AzAttestation -Name $attestationProviderName -ResourceGroupName $resourceGroupName 
   $attestationUrl = $attestationProvider.AttestUri + “/attest/SgxEnclave”
-  Write-Host "Your attestation URL is: " $attestationUrl 
+  Write-Host
+  Write-Host "Your attestation URL is: $attestationUrl"
   ```
-
-8.  Mentse az eredményül kapott igazolási URL-címet, amely a SGX ENKLÁVÉHOZ enklávéhoz konfigurált igazolási házirendre mutat. Erre később még szüksége lesz. A tanúsítvány URL-címének így kell kinéznie: `https://contososqlattestation.uks.attest.azure.net/attest/SgxEnclave`
+  
+  A tanúsítvány URL-címének így kell kinéznie: `https://contososqlattestation.uks.attest.azure.net/attest/SgxEnclave`
 
 ## <a name="step-3-populate-your-database"></a>3. lépés: az adatbázis feltöltése
 
 Ebben a lépésben létrehoz egy táblát, és feltölti azt néhány olyan adattal, amelyet később titkosítani és lekérdezni fog.
 
 1. Nyissa meg a SSMS-t, és kapcsolódjon a **ContosoHR** -adatbázishoz az Ön által létrehozott Azure SQL logikai kiszolgálón **anélkül** , hogy az adatbázis-kapcsolaton engedélyezve Always encrypted.
-    1. A **Kapcsolódás a kiszolgálóhoz** párbeszédpanelen adja meg a kiszolgáló nevét (például *myserver123.database.Windows.net*), és adja meg a korábban megadott felhasználónevet és jelszót.
+    1. A **Kapcsolódás a kiszolgálóhoz** párbeszédpanelen adja meg a kiszolgáló teljesen minősített nevét (például *myserver123.database.Windows.net*), és adja meg a rendszergazda felhasználónevét és jelszavát, amelyet a kiszolgáló létrehozásakor adott meg.
     2. Kattintson a **beállítások >>** elemre, és válassza a **kapcsolatok tulajdonságai** lapot. Ügyeljen arra, hogy a **ContosoHR** -adatbázist (nem az alapértelmezett főadatbázist) válassza ki. 
     3. Válassza a **Always encrypted** lapot.
     4. Győződjön meg arról, hogy az **Enable Always encrypted (oszlop titkosítása)** jelölőnégyzet **nincs** bejelölve.
@@ -292,7 +301,7 @@ Ebben a lépésben a **Taj** -ben és a **fizetési** oszlopokban tárolt adateg
 
 1. Nyisson meg egy új SSMS-példányt, és kapcsolódjon **az adatbázishoz Always encrypted engedélyezve** van az adatbázis-kapcsolathoz.
     1. Indítsa el a SSMS új példányát.
-    2. A **Kapcsolódás a kiszolgálóhoz** párbeszédpanelen adja meg a kiszolgáló nevét, válasszon ki egy hitelesítési módszert, és adja meg a hitelesítő adatait.
+    2. A **Kapcsolódás a kiszolgálóhoz** párbeszédpanelen adja meg a kiszolgáló teljesen minősített nevét (például *myserver123.database.Windows.net*), és adja meg a rendszergazda felhasználónevét és jelszavát, amelyet a kiszolgáló létrehozásakor adott meg.
     3. Kattintson a **beállítások >>** elemre, és válassza a **kapcsolatok tulajdonságai** lapot. Ügyeljen arra, hogy a **ContosoHR** -adatbázist (nem az alapértelmezett főadatbázist) válassza ki. 
     4. Válassza a **Always encrypted** lapot.
     5. Győződjön meg arról, hogy a **Always encrypted engedélyezése (oszlop titkosítása)** jelölőnégyzet be van jelölve.
@@ -353,7 +362,7 @@ A titkosított oszlopokon is futtathat részletes lekérdezéseket. Néhány lek
 
 3. Próbálkozzon újra ugyanazzal a lekérdezéssel abban a SSMS-példányban, amelyhez nincs Always Encrypted engedélyezve. Hiba lép fel.
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag elvégzése után az alábbi oktatóanyagok közül választhat:
 - [Oktatóanyag: .NET-alkalmazások fejlesztése a Always Encrypted használatával biztonságos enklávékkal](/sql/connect/ado-net/sql/tutorial-always-encrypted-enclaves-develop-net-apps)

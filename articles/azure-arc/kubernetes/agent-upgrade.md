@@ -2,18 +2,18 @@
 title: Az Azure arc-kompatibilis Kubernetes-ügynökök frissítése
 services: azure-arc
 ms.service: azure-arc
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Vezérlő ügynök frissítései az Azure arc-kompatibilis Kubernetes
 keywords: Kubernetes, arc, Azure, K8s, tárolók, ügynök, frissítés
-ms.openlocfilehash: 3a5355269db4ccfc91612f661b464556b22c1d35
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 172654f655e594c295a8807b417c32d7849bd4b1
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662264"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121915"
 ---
 # <a name="upgrading-azure-arc-enabled-kubernetes-agents"></a>Az Azure arc-kompatibilis Kubernetes-ügynökök frissítése
 
@@ -84,6 +84,6 @@ A "támogatáson kívül" kifejezés azt jelenti, hogy a futtatott verziók az �
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Fürt összekötése az Azure-ív használatával](./connect-cluster.md)
-* [Konfigurációk létrehozása az ív használatára képes Kubernetes-fürtön](./use-gitops-connected-cluster.md)
-* [A Azure Policy használata a konfigurációk nagy méretekben való alkalmazásához](./use-azure-policy.md)
+* Útmutató a [Kubernetes-fürtök Azure arc-hoz való összekapcsolásához](./connect-cluster.md).
+* Már van csatlakoztatva Kubernetes-fürt az Azure arc? [Konfigurációk létrehozása az ív használatára képes Kubernetes-fürtön](./use-gitops-connected-cluster.md).
+* Megtudhatja, hogyan [használhatók a Azure Policy a konfigurációk méretezésére való alkalmazásához](./use-azure-policy.md).

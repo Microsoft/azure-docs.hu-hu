@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/21/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1ad9cc3d6d07c8d744ec667e2fffb035848121b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9104fb4598eb62ed96d0b21734053fa118b5237
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85203248"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120282"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection stb jogcímek átalakításai
 
@@ -31,7 +31,7 @@ Karakterlánc-jogcímet hoz létre egy új, egyedi értékekre StringCollection 
 | Elem | TransformationClaimType | Adattípus | Jegyzetek |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | item | sztring | A kimeneti jogcímhez hozzáadni kívánt ClaimType. |
-| InputClaim | gyűjtemény | StringCollection stb | Választható Ha meg van adva, a jogcím-átalakítás átmásolja az elemeket ebből a gyűjteményből, és hozzáadja az elemet a kimeneti gyűjteményi jogcím végéhez. |
+| InputClaim | gyűjtemény | StringCollection stb | A kimeneti jogcímhez hozzáadandó karakterlánc-gyűjtemény. Ha a gyűjtemény elemeket tartalmaz, a jogcím-átalakítás átmásolja az elemeket, és hozzáadja az elemet a kimeneti gyűjteményi jogcím végéhez. |
 | OutputClaim | gyűjtemény | StringCollection stb | A jogcímek átalakítását követően létrehozott ClaimType a bemeneti jogcímben megadott értékkel lett meghívva. |
 
 A jogcím-átalakítás használatával hozzáadhat egy karakterláncot egy új vagy egy meglévő StringCollection stb. Ez általában egy **HRE-UserWriteUsingAlternativeSecurityId** technikai profilban használatos. Új közösségi fiók létrehozása előtt a **CreateOtherMailsFromEmail** jogcím-átalakítás beolvassa a claimType, és hozzáadja az értéket a **otherMails** -claimType.
@@ -64,7 +64,7 @@ Egy karakterlánc-paramétert hoz létre egy új, egyedi értékek StringCollect
 
 | Elem | TransformationClaimType | Adattípus | Jegyzetek |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | gyűjtemény | StringCollection stb | Választható Ha meg van adva, a jogcím-átalakítás átmásolja az elemeket ebből a gyűjteményből, és hozzáadja az elemet a kimeneti gyűjteményi jogcím végéhez. |
+| InputClaim | gyűjtemény | StringCollection stb | A kimeneti jogcímhez hozzáadandó karakterlánc-gyűjtemény. Ha a gyűjtemény elemeket tartalmaz, a jogcím-átalakítás átmásolja az elemeket, és hozzáadja az elemet a kimeneti gyűjteményi jogcím végéhez. |
 | InputParameter | item | sztring | A kimeneti jogcímhez hozzáadandó érték. |
 | OutputClaim | gyűjtemény | StringCollection stb | A jogcím-átalakítást követően létrehozott ClaimType a bemeneti paraméterben megadott értékkel lett meghívva. |
 
@@ -125,7 +125,7 @@ A következő példa beolvassa a **otherMails** jogcímet, és az első tételt 
 
 ## <a name="stringcollectioncontains"></a>StringCollectionContains
 
-Annak ellenőrzése, hogy egy StringCollection stb jogcím típusa tartalmaz-e elemet
+Ellenőrzi, hogy egy StringCollection stb jogcím típusa tartalmaz-e elemet.
 
 | Elem | TransformationClaimType | Adattípus | Jegyzetek |
 | ---- | ----------------------- | --------- | ----- |
@@ -134,7 +134,7 @@ Annak ellenőrzése, hogy egy StringCollection stb jogcím típusa tartalmaz-e e
 |InputParameter|ignoreCase|sztring|Meghatározza, hogy az összehasonlítás figyelmen kívül hagyja-e az összehasonlított karakterláncok esetét.|
 | OutputClaim | outputClaim | boolean | A ClaimsTransformation után létrehozott ClaimType meghívása megtörtént. Logikai kijelző, ha a gyűjtemény tartalmaz egy ilyen karakterláncot. |
 
-A következő példa ellenőrzi, hogy a `roles` StringCollection stb jogcím típusa tartalmazza-e a **rendszergazda**értéket.
+A következő példa ellenőrzi, hogy a `roles` StringCollection stb jogcím típusa tartalmazza-e a **rendszergazda** értéket.
 
 ```xml
 <ClaimsTransformation Id="IsAdmin" TransformationMethod="StringCollectionContains">

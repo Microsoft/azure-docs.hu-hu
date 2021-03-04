@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/01/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f6b6fb18ce086c2eadc829f03460452deb0a12b9
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 670fbeeb006d21e29675f88895018d1a453a1c54
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675152"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120300"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>OpenID Connect műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -95,6 +95,7 @@ A technikai profil az Identitáskezelő által nem visszaadott jogcímeket is vi
 | token_endpoint_auth_method | Nem | Meghatározza, hogy a Azure AD B2C hogyan küldi el a hitelesítési fejlécet a jogkivonat-végpontnak. Lehetséges értékek: `client_secret_post` (alapértelmezett) és `client_secret_basic` (nyilvános előzetes verzió). További információ: [OpenID Connect ügyfél-hitelesítés szakasz](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication). |
 | token_signing_algorithm | Nem | Az ügyfél-kijelentésekhez használt aláírási algoritmus, amikor a **token_endpoint_auth_method** metaadatok be vannak állítva `private_key_jwt` . Lehetséges értékek: `RS256` (alapértelmezett). |
 | SingleLogoutEnabled | Nem | Azt jelzi, hogy a technikai profilba való bejelentkezés során a rendszer megpróbál-e kijelentkezni az összevont identitás-szolgáltatókról. További információ: Azure AD B2C- [munkamenet](./session-behavior.md#sign-out)kijelentkezése.  Lehetséges értékek: `true` (alapértelmezett) vagy `false` . |
+|ReadBodyClaimsOnIdpRedirect| Nem| Állítsa be a (z) értékre, `true` Ha olvasási jogcímeket szeretne olvasni az Identitáskezelő átirányításához. Ezeket a metaadatokat az [Apple ID](identity-provider-apple-id.md)-vel együtt használják, ahol a jogcímek a válasz adattartalomban térnek vissza.|
 
 ```xml
 <Metadata>

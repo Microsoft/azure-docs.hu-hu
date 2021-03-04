@@ -553,6 +553,9 @@
     - name: Adatok migrálása a mysqldump vagy a phpmyadmin használatával
       href: concepts-migrate-dump-restore.md
       displayName: 'migrate, mysqldump'
+    - name: Adatáttelepítés a dbForge Studio for MySQL szolgáltatással
+      href: concepts-migrate-dbforge-studio-for-mysql.md
+      displayName: 'migrate, dbforge'
     - name: Adatok migrálása a MySQL Workbench használatával
       href: concepts-migrate-import-export.md
       displayName: 'import , migrate, export'

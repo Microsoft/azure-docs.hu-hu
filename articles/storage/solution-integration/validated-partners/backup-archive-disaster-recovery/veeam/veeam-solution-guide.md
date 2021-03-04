@@ -3,18 +3,18 @@ title: Biztonsági másolatok készítése az Azure-ba az Veeam-mel
 titleSuffix: Azure Blob Storage Docs
 description: A weblap áttekintést nyújt azokról a tényezőkről, amelyeket figyelembe kell venni, és követnie kell, hogy az Azure hogyan hasznosítható tárolási célként és helyreállítási helyként a Veeam biztonsági mentéshez és helyreállításhoz
 keywords: Veeam,, biztonsági mentés a felhőbe, biztonsági mentés, biztonsági mentés az Azure-ba, vész-helyreállítás, Üzletmenet-folytonosság
-author: Karl Rautenstrauch
+author: karauten
 ms.author: karauten
 ms.date: 11/11/2020
 ms.topic: article
 ms.service: Storage
 ms.subservice: Blob Storage
-ms.openlocfilehash: 9f07703d23c3be6e842a54ba4bb0d46467ccb71d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b7bc20d80887df5a5ad235c87238b0239abadc0a
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101745952"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101579"
 ---
 # <a name="backup-to-azure-with-veeam"></a>Biztonsági mentés az Azure-ba a Veeam
 

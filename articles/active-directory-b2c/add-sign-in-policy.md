@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/12/2021
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 2956f0ffb562214477249da3198ebbe42ef9bb45
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: c84966f7b4dc1740235fe6414da2ba832a1334fd
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660369"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102119909"
 ---
 # <a name="set-up-a-sign-in-flow-in-azure-active-directory-b2c"></a>Bejelentkezési folyamat beállítása Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ A bejelentkezési szabályzat lehetővé teszi a felhasználók számára a köv
 * A felhasználók Azure AD B2C helyi fiókkal jelentkezhetnek be
 * Közösségi fiókkal való regisztráció vagy bejelentkezés
 * Új jelszó létrehozása
-* A felhasználók nem regisztrálhatnak Azure AD B2C helyi fiókra – fiók létrehozásához a rendszergazda az [MS Graph APIt](microsoft-graph-operations.md)használhatja.
+* A felhasználók nem regisztrálhatnak Azure AD B2C helyi fiókra. Fiók létrehozásához a rendszergazda [Azure Portal](manage-users-portal.md#create-a-consumer-user)vagy [MS Graph APIt](microsoft-graph-operations.md)használhat.
 
 ![Profil szerkesztési folyamata](./media/add-sign-in-policy/sign-in-user-flow.png)
 
@@ -75,26 +75,34 @@ A **SelfAsserted-LocalAccountSignin-e-mailes** technikai profil egy [önérvény
 1. Adja hozzá a következő jogcím-szolgáltatót a `ClaimsProviders` elemhez:
 
     ```xml
-    <ClaimsProvider>
-      <DisplayName>Local Account</DisplayName>
-      <TechnicalProfiles>
-        <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
-          <Metadata>
-            <Item Key="setting.showSignupLink">false</Item>
-          </Metadata>
-        </TechnicalProfile>
-      </TechnicalProfiles>
-    </ClaimsProvider>
+    <!--
+    <ClaimsProviders> -->
+      <ClaimsProvider>
+        <DisplayName>Local Account</DisplayName>
+        <TechnicalProfiles>
+          <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
+            <Metadata>
+              <Item Key="setting.showSignupLink">false</Item>
+            </Metadata>
+          </TechnicalProfile>
+        </TechnicalProfiles>
+      </ClaimsProvider>
+    <!--
+    </ClaimsProviders> -->
     ```
 
 1. A `<BuildingBlocks>` elemen belül adja hozzá a következő [ContentDefinition](contentdefinitions.md) a verzió 1.2.0 vagy újabb adaturi-azonosítóra való hivatkozáshoz:
 
     ```XML
-    <ContentDefinitions>
-     <ContentDefinition Id="api.localaccountsignup">
-        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0</DataUri>
-      </ContentDefinition>
-    </ContentDefinitions>
+    <!-- 
+    <BuildingBlocks> 
+      <ContentDefinitions>-->
+        <ContentDefinition Id="api.localaccountsignup">
+          <DataUri>urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0</DataUri>
+        </ContentDefinition>
+      <!--
+      </ContentDefinitions>
+    </BuildingBlocks> -->
     ```
 
 ## <a name="update-and-test-your-policy"></a>A szabályzat frissítése és tesztelése
@@ -103,7 +111,7 @@ A **SelfAsserted-LocalAccountSignin-e-mailes** technikai profil egy [önérvény
 1. Győződjön meg arról, hogy az Azure AD-bérlőt tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki az Azure ad-bérlőt tartalmazó könyvtárat.
 1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Alkalmazásregisztrációk**.
 1. Válassza az **identitási élmény keretrendszert**.
-1. Válassza az **egyéni házirend feltöltése** lehetőséget, majd töltse fel a módosított két házirendet.
+1. Válassza az **egyéni házirend feltöltése** lehetőséget, majd töltse fel a módosított házirend-fájlt *TrustFrameworkExtensions.xml*.
 1. Válassza ki a feltöltött bejelentkezési szabályzatot, majd kattintson a **Futtatás most** gombra.
 1. A regisztrációs hivatkozás nélkül be kell jelentkeznie a létrehozott fiókkal (MS Graph API használatával).
 

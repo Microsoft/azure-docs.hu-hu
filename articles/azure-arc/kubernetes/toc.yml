@@ -2,20 +2,20 @@
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Az Arc-kompatibilis Kubernetes ismertetése
+    - name: Az Azure Arc-kompatibilis Kubernetes ismertetése
       href: overview.md
     - name: Azure arc-ellenőrzési program
       href: validation-program.md
+- name: Rövid útmutatók
+  items:
+    - name: Fürt összekötése az Azure-ív használatával
+      href: quickstart-connect-cluster.md
 - name: Oktatóanyagok
   items:
     - name: Konfigurációk üzembe helyezése GitOps használatával
       href: tutorial-use-gitops-connected-cluster.md
     - name: CI/CD implementálása a GitOps
       href: tutorial-gitops-ci-cd.md
-- name: Rövid útmutatók
-  items:
-    - name: Fürt összekötése az Azure-ív használatával
-      href: quickstart-connect-cluster.md
 - name: Alapelvek
   items:
     - name: Ügynök architektúrája

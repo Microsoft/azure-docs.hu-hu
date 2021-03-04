@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: d3eb4e4b45a13872a11515dd4f53fcbbc069a954
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6b4d5c1372a8351f1fe5a6608aff38bf232aabd8
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101686682"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121949"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Kibocsátási megjegyzések – az Azure arc-kompatibilis adatszolgáltatások (előzetes verzió)
 
@@ -36,7 +36,7 @@ A további frissítések a következők:
 - Azure arc engedélyezve PostgreSQL nagy kapacitású Azure Data Studio: 
    - Az áttekintő lap megjeleníti a csomópontok szerint részletezett kiszolgálócsoport állapotát.
    - Most már elérhetővé vált egy új tulajdonságlap a kiszolgálócsoport további részleteinek megjelenítéséhez.
-   - Postgres-motor paramétereinek konfigurálása a **csomópont-paraméterek** lapról =
+   - Postgres-motor paramétereinek konfigurálása a **csomópont-paraméterek** lapról
 
 A kiadással kapcsolatos problémák esetén lásd: [ismert problémák – Azure arc-kompatibilis adatszolgáltatások (előzetes verzió)](known-issues.md)
 

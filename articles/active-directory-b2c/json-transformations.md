@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/13/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 20480a252d7aedfd48a59bc05166f645e02e37e9
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: c5c8e21f2ce3f6907547bf1b2fe4681eb937864b
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998439"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102119875"
 ---
 # <a name="json-claims-transformations"></a>JSON-jogcímek átalakítása
 
@@ -117,8 +117,8 @@ A következő jogcím-átalakítás egy JSON-karakterlánc-jogcímet eredményez
 - Bemeneti jogcímek:
   - **e-mail**, átalakítási jogcím típusa  **customerEntity. email**: " john.s@contoso.com "
   - **objectId**, átalakítási jogcím típusa **customerEntity. userObjectId** "01234567-89ab-cdef-0123-456789abcdef"
-  - **objectId**, átalakítási jogcím típusa **customerEntity. firstName** "John"
-  - **objectId**, átalakítási jogcím típusa **customerEntity. lastName** "Smith"
+  - **givenName**, átalakítási jogcím típusa **customerEntity. firstName** "John"
+  - **vezetéknév**, átalakítási jogcím típusa **customerEntity. lastName** "Smith"
 - Bemeneti paraméter:
   - **customerEntity.role.name**: "rendszergazda"
   - 1. **customerEntity.role.id**
@@ -281,7 +281,7 @@ A JSON-adatok első elemének beolvasása.
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputJson | sztring | A jogcím-átalakítás által az elemnek a JSON-adatokból való beolvasásához használt ClaimTypes. |
 | OutputClaim | kulcs | sztring | Az első elem kulcsa a JSON-ben. |
-| OutputClaim | value | sztring | Az első elem értéke a JSON-ban. |
+| OutputClaim | érték | sztring | Az első elem értéke a JSON-ban. |
 
 A következő példában a jogcím-átalakítás kibontja az első elemet (Utónév) a JSON-adatokból.
 

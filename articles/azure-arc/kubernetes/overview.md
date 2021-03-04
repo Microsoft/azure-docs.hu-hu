@@ -2,19 +2,19 @@
 title: Az Azure arc-kompatibilis Kubernetes áttekintése
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/19/2021
+ms.date: 03/03/2021
 ms.topic: overview
 author: mlearned
 ms.author: mlearned
 description: Ez a cikk az Azure arc-kompatibilis Kubernetes áttekintését tartalmazza.
 keywords: Kubernetes, arc, Azure, tárolók
 ms.custom: references_regions
-ms.openlocfilehash: 42a04bb349b2acbd68c7088bc0348deda1ee09e1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b3296aa1c1d5d463cc7f4cb932b44ad76632e19e
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101652268"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121592"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes"></a>Mi az Azure Arc-kompatibilis Kubernetes?
 
@@ -66,4 +66,6 @@ Az Azure arc-kompatibilis Kubernetes jelenleg a következő régiókban támogat
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Fürt összekötése az Azure-ív használatával](./quickstart-connect-cluster.md)
+Megtudhatja, hogyan csatlakoztatható a fürt az Azure arc szolgáltatáshoz.
+> [!div class="nextstepaction"]
+> [Fürt összekötése az Azure-ív használatával](./quickstart-connect-cluster.md)

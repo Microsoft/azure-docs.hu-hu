@@ -7,16 +7,20 @@ ms.service: cache
 ms.devlang: rust
 ms.topic: quickstart
 ms.date: 01/08/2021
-ms.openlocfilehash: b55a706aa25b21620226690c172c996fe10a84fa
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 17f38d79b75179d7a54ca5ed1d20dff18d0a0363
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203508"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121099"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-rust"></a>Gyors útmutató: az Azure cache használata a Redis és a rozsda használatával
 
 Ebből a cikkből megtudhatja, hogyan használhatja a [rozsda programozási nyelvét](https://www.rust-lang.org/) az [Azure cache Redis](./cache-overview.md)való interakcióhoz. Bemutatja a leggyakrabban használt Redis-adatstruktúrák példáit, például a [karakterláncot](https://redis.io/topics/data-types-intro#redis-strings), a [kivonatot](https://redis.io/topics/data-types-intro#redis-hashes), a [listázást](https://redis.io/topics/data-types-intro#redis-lists) stb. a Redis [Redis-RS](https://github.com/mitsuhiko/redis-rs) függvénytárának használata. Ez az ügyfél magas és alacsony szintű API-kat tesz elérhetővé, és a jelen cikkben ismertetett mintakód segítségével mindkét stílust megtekintheti működés közben.
+
+## <a name="skip-to-the-code-on-github"></a>Ugrás a kódra a GitHubon
+
+Ha egyenesen a kódra szeretne ugrani, tekintse meg a [rozsda](https://github.com/Azure-Samples/azure-redis-cache-rust-quickstart/) rövid útmutatóját a githubon.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -268,7 +272,7 @@ Az alkalmazás környezeti változók formájában fogadja el a kapcsolódási �
     set REDIS_PASSWORD=<Primary Access Key>
     ```
 
-1. A terminál ablakban váltson a megfelelő mappára. Példa:
+1. A terminál ablakban váltson a megfelelő mappára. Például:
 
     ```shell
     cd "C:\git-samples\azure-redis-cache-rust-quickstart"

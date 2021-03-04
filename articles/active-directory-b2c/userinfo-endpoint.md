@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/14/2020
+ms.date: 03/04/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 73964fa1840f3f220662000eb91d34c3eb37bbd8
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 55d3f38405d8f03ea7c13077872c2b7f7bc30b72
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584425"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120657"
 ---
 # <a name="userinfo-endpoint"></a>UserInfo végpont
 
@@ -56,104 +56,116 @@ A felhasználói adatok UserJourney a következőket határozza meg:
 1. Adja hozzá a következő jogcím-szolgáltatót:
 
     ```xml
-    <ClaimsProvider>
-      <DisplayName>Token Issuer</DisplayName>
-      <TechnicalProfiles>
-        <TechnicalProfile Id="UserInfoIssuer">
-          <DisplayName>JSON Issuer</DisplayName>
-          <Protocol Name="None" />
-          <OutputTokenFormat>JSON</OutputTokenFormat>
-          <CryptographicKeys>
-            <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
-          </CryptographicKeys>
-          <!-- The Below claims are what will be returned on the UserInfo Endpoint if in the Claims Bag-->
-          <InputClaims>
-            <InputClaim ClaimTypeReferenceId="objectId"/>
-            <InputClaim ClaimTypeReferenceId="givenName"/>
-            <InputClaim ClaimTypeReferenceId="surname"/>
-            <InputClaim ClaimTypeReferenceId="displayName"/>
-            <InputClaim ClaimTypeReferenceId="signInNames.emailAddress"/>
-          </InputClaims>
-          <OutputClaims />
-        </TechnicalProfile>
-        <TechnicalProfile Id="UserInfoAuthorization">
-          <DisplayName>UserInfo authorization</DisplayName>
-          <Protocol Name="None" />
-          <InputTokenFormat>JWT</InputTokenFormat>
-          <Metadata>
-            <!-- Update the Issuer and Audience below -->
-            <!-- Audience is optional, Issuer is required-->
-            <Item Key="issuer">https://yourtenant.b2clogin.com/11111111-1111-1111-1111-111111111111/v2.0/</Item>
-            <Item Key="audience">[ "22222222-2222-2222-2222-222222222222", "33333333-3333-3333-3333-333333333333" ]</Item>
-            <Item Key="client_assertion_type">urn:ietf:params:oauth:client-assertion-type:jwt-bearer</Item>
-          </Metadata>
-          <CryptographicKeys>
-            <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
-          </CryptographicKeys>
-          <OutputClaims>
-            <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
-            <!-- Optional claims to read from the access token  -->
-            <!-- <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name"/>
+    <!-- 
+    <ClaimsProviders> -->
+      <ClaimsProvider>
+        <DisplayName>Token Issuer</DisplayName>
+        <TechnicalProfiles>
+          <TechnicalProfile Id="UserInfoIssuer">
+            <DisplayName>JSON Issuer</DisplayName>
+            <Protocol Name="None" />
+            <OutputTokenFormat>JSON</OutputTokenFormat>
+            <CryptographicKeys>
+              <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
+            </CryptographicKeys>
+            <!-- The Below claims are what will be returned on the UserInfo Endpoint if in the Claims Bag-->
+            <InputClaims>
+              <InputClaim ClaimTypeReferenceId="objectId"/>
+              <InputClaim ClaimTypeReferenceId="givenName"/>
+              <InputClaim ClaimTypeReferenceId="surname"/>
+              <InputClaim ClaimTypeReferenceId="displayName"/>
+              <InputClaim ClaimTypeReferenceId="signInNames.emailAddress"/>
+            </InputClaims>
+          </TechnicalProfile>
+          <TechnicalProfile Id="UserInfoAuthorization">
+            <DisplayName>UserInfo authorization</DisplayName>
+            <Protocol Name="None" />
+            <InputTokenFormat>JWT</InputTokenFormat>
+            <Metadata>
+              <!-- Update the Issuer and Audience below -->
+              <!-- Audience is optional, Issuer is required-->
+              <Item Key="issuer">https://yourtenant.b2clogin.com/11111111-1111-1111-1111-111111111111/v2.0/</Item>
+              <Item Key="audience">[ "22222222-2222-2222-2222-222222222222", "33333333-3333-3333-3333-333333333333" ]</Item>
+              <Item Key="client_assertion_type">urn:ietf:params:oauth:client-assertion-type:jwt-bearer</Item>
+            </Metadata>
+            <CryptographicKeys>
+              <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
+            </CryptographicKeys>
+            <OutputClaims>
+              <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+              <OutputClaim ClaimTypeReferenceId="signInNames.emailAddress" PartnerClaimType="email"/>
+              <!-- Optional claims to read from the access token. -->
+              <!-- <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name"/>
                  <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="family_name"/>
                  <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name"/> -->
-          </OutputClaims>
-        </TechnicalProfile>
-      </TechnicalProfiles>
-    </ClaimsProvider>
+            </OutputClaims>
+          </TechnicalProfile>
+        </TechnicalProfiles>
+      </ClaimsProvider>
+    <!-- 
+    </ClaimsProviders> -->
     ``` 
 
-1. A UserInfoIssuer technikai profiljában található outputClaims szakasz a visszaadni kívánt attribútumokat határozza meg. A UserInfoIssuer technikai profilt a felhasználói út végén hívja meg. 
-1. A UserInfoAuthorization technikai profilja ellenőrzi az aláírást, a kiállító nevét és a jogkivonat célközönségét, és kibontja a jogcímet a bejövő jogkivonatból. Módosítsa a következő metaadatokat a környezetének megfelelően:
+1. A **UserInfoIssuer** technikai profiljában található szabályzattípushoz szakasz a visszaadni kívánt attribútumokat határozza meg. A UserInfoIssuer technikai profilt a felhasználói út végén hívja meg. 
+1. A **UserInfoAuthorization** technikai profilja ellenőrzi az aláírást, a kiállító nevét és a jogkivonat célközönségét, és kibontja a jogcímet a bejövő jogkivonatból. Módosítsa a következő metaadatokat a környezetének megfelelően:
     1. **kiállító** – ennek az értéknek meg kell egyeznie a `iss` jogcímet a hozzáférési jogkivonat jogcímen belül. A Azure AD B2C által kiállított jogkivonatok a kibocsátót használják a formátumban `https://yourtenant.b2clogin.com/your-tenant-id/v2.0/` . További információ a [token testreszabásáról](configure-tokens.md).
     1. **IdTokenAudience** – `aud` a hozzáférési jogkivonat jogcímen belüli jogcímet meg kell egyeznie. Azure AD B2C a `aud` jogcím a függő entitás alkalmazásának azonosítója. Ez az érték egy gyűjtemény, amely vesszővel elválasztó karakter használatával több értéket is támogat.
 
-A következő hozzáférési jogkivonatban a `iss` jogcím értéke: `https://contoso.b2clogin.com/11111111-1111-1111-1111-111111111111/v2.0/` . A `aud` jogcím értéke: `22222222-2222-2222-2222-222222222222` .
+        A következő hozzáférési jogkivonatban a `iss` jogcím értéke: `https://contoso.b2clogin.com/11111111-1111-1111-1111-111111111111/v2.0/` . A `aud` jogcím értéke: `22222222-2222-2222-2222-222222222222` .
 
-```json
-{
-  "exp": 1605549468,
-  "nbf": 1605545868,
-  "ver": "1.0",
-  "iss": "https://contoso.b2clogin.com/11111111-1111-1111-1111-111111111111/v2.0/",
-  "sub": "44444444-4444-4444-4444-444444444444",
-  "aud": "22222222-2222-2222-2222-222222222222",
-  "acr": "b2c_1a_signup_signin",
-  "nonce": "defaultNonce",
-  "iat": 1605545868,
-  "auth_time": 1605545868,
-  "name": "John Smith",
-  "given_name": "John",
-  "family_name": "Smith",
-  "tid": "11111111-1111-1111-1111-111111111111"
-}
-```
+        ```json
+        {
+          "exp": 1605549468,
+          "nbf": 1605545868,
+          "ver": "1.0",
+          "iss": "https://contoso.b2clogin.com/11111111-1111-1111-1111-111111111111/v2.0/",
+          "sub": "44444444-4444-4444-4444-444444444444",
+          "aud": "22222222-2222-2222-2222-222222222222",
+          "acr": "b2c_1a_signup_signin",
+          "nonce": "defaultNonce",
+          "iat": 1605545868,
+          "auth_time": 1605545868,
+          "name": "John Smith",
+          "given_name": "John",
+          "family_name": "Smith",
+          "tid": "11111111-1111-1111-1111-111111111111"
+        }
+        ```
+    
+1.  A **UserInfoAuthorization** műszaki profil OutputClaims eleme határozza meg a hozzáférési tokenből beolvasni kívánt attribútumokat. A **ClaimTypeReferenceId** a jogcím típusára mutató hivatkozás. A választható **PartnerClaimType** a hozzáférési jogkivonatban definiált jogcím neve.
+
+
 
 ### <a name="2-add-the-userjourney-element"></a>2. adja hozzá a UserJourney elemet 
 
 A [UserJourney](userjourneys.md) elem azt az elérési utat határozza meg, amelyet a felhasználó az alkalmazással való interakció során használ. Adja hozzá a **UserJourneys** elemet, ha az nem létezik a következőképpen azonosított **UserJourney** `UserInfoJourney` :
 
 ```xml
-<UserJourney Id="UserInfoJourney" DefaultCpimIssuerTechnicalProfileReferenceId="UserInfoIssuer">
-  <Authorization>
-    <AuthorizationTechnicalProfiles>
-      <AuthorizationTechnicalProfile ReferenceId="UserInfoAuthorization" />
-    </AuthorizationTechnicalProfiles>
-  </Authorization>
-  <OrchestrationSteps >
-    <OrchestrationStep Order="1" Type="ClaimsExchange">
-      <Preconditions>
-        <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
-          <Value>objectId</Value>
-          <Action>SkipThisOrchestrationStep</Action>
-        </Precondition>
-      </Preconditions>
-      <ClaimsExchanges UserIdentity="false">
-        <ClaimsExchange Id="AADUserReadWithObjectId" TechnicalProfileReferenceId="AAD-UserReadUsingObjectId" />
-      </ClaimsExchanges>
-    </OrchestrationStep>
-    <OrchestrationStep Order="2" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="UserInfoIssuer" />
-  </OrchestrationSteps>
-</UserJourney>
+<!-- 
+<UserJourneys> -->
+  <UserJourney Id="UserInfoJourney" DefaultCpimIssuerTechnicalProfileReferenceId="UserInfoIssuer">
+    <Authorization>
+      <AuthorizationTechnicalProfiles>
+        <AuthorizationTechnicalProfile ReferenceId="UserInfoAuthorization" />
+      </AuthorizationTechnicalProfiles>
+    </Authorization>
+    <OrchestrationSteps >
+      <OrchestrationStep Order="1" Type="ClaimsExchange">
+        <Preconditions>
+          <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
+            <Value>objectId</Value>
+            <Action>SkipThisOrchestrationStep</Action>
+          </Precondition>
+        </Preconditions>
+        <ClaimsExchanges UserIdentity="false">
+          <ClaimsExchange Id="AADUserReadWithObjectId" TechnicalProfileReferenceId="AAD-UserReadUsingObjectId" />
+        </ClaimsExchanges>
+      </OrchestrationStep>
+      <OrchestrationStep Order="2" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="UserInfoIssuer" />
+    </OrchestrationSteps>
+  </UserJourney>
+<!-- 
+</UserJourneys> -->
 ```
 
 ### <a name="3-include-the-endpoint-to-the-relying-party-policy"></a>3. a végpont belefoglalása a függő entitás házirendjébe
@@ -251,7 +263,7 @@ A sikeres válasz A következőképpen néz ki:
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [githubon](https://github.com/azure-ad-b2c/samples/tree/master/policies/user-info-endpoint)megtalálhatja például a UserInfo-végponti szabályzatot.
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 01/06/2021
 ms.author: sngun
-ms.openlocfilehash: 561375eb41600ba1404bba2bcbf15b6cbfc61851
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 807c9961926b6f1c74f5ed1242e4272e87a98c43
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100595348"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120368"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Azure Cosmos DB-adatok monitorozása az Azure diagnosztikai beállításainak használatával
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -246,7 +246,7 @@ A diagnosztikai beállítások a Azure Portal, a CLI vagy a PowerShell használa
    ```Kusto
    AzureDiagnostics
    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics"
-   | where todouble(sizeKb_d) > 800000
+   | where todouble(sizeKb_d) > 8000000
    ```
 
 1. Hogyan kérhető le a P99 vagy a P50 replikáció késése a műveletekhez, a kérelmek díja vagy a válasz hossza?

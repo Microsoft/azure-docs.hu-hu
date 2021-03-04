@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/24/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 491549933817a127a92180b0e4b455e461e4d3a2
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: df94bb5e6066b83afd566181debbc0872dc1a5b4
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492246"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120262"
 ---
 # <a name="page-layout-versions"></a>Oldalelrendezési verziók
 
@@ -76,7 +76,7 @@ A lapelrendezés-csomagok rendszeres időközönként frissülnek, hogy tartalma
 
 **2.1.2**
 - Kijavítottuk a honosított kódolási problémát olyan nyelveken, mint például a spanyol és a francia.
-- A "Elfelejtett jelszó" hivatkozás engedélyezése a jogcím-csereként, például a közösségi IDENTITÁSSZOLGÁLTATÓ való használathoz.
+- A "Elfelejtett jelszó" hivatkozás engedélyezése a jogcím-csereként való használatra. További információ: [önkiszolgáló jelszó-visszaállítás](add-password-reset-policy.md#self-service-password-reset-recommended).
 
 **2.1.1**
 - Hozzáadott egy UXString az `heading` oldalon a `intro` címként való megjelenítéshez. Alapértelmezés szerint ez a beállítás rejtett.

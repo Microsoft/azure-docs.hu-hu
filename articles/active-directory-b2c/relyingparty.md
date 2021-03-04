@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/14/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ea23be06939d58b08516a00bbe8aba97c6ccc87d
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 488065b0a1865484e96ea574b3031f2bf61869dd
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102095272"
+ms.locfileid: "102120589"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -153,7 +153,7 @@ A **SingleSignon** elem a következő attribútumban szerepel:
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Hatókör | Igen | Az egyszeri bejelentkezés viselkedésének hatóköre. Lehetséges értékek: `Suppressed` ,,, `Tenant` `Application` vagy `Policy` . Az `Suppressed` érték azt jelzi, hogy a rendszer letiltja a viselkedést, és a felhasználó mindig kéri az identitás-szolgáltató kijelölését.  Az `Tenant` érték azt jelzi, hogy a rendszer a bérlő összes házirendjére alkalmazza a viselkedést. Ha például egy felhasználó két házirend-útvonalon keresztül navigál a bérlőhöz, a rendszer nem kéri az identitás-szolgáltató kijelölését. Az `Application` érték azt jelzi, hogy a rendszer alkalmazza a viselkedést a kérést kérő alkalmazás összes szabályzatára. Ha például egy alkalmazásra két házirend-útvonalon navigál, a rendszer nem kéri az identitás-szolgáltató kijelölését. Az `Policy` érték azt jelzi, hogy a viselkedés csak egy házirendre vonatkozik. Egy megbízhatósági keretrendszer két házirend-útvonalon való navigálásakor például a rendszer a házirendek közötti váltáskor megkéri az identitás-szolgáltató kijelölését. |
-| KeepAliveInDays | Igen | Meghatározza, hogy a felhasználó mennyi ideig maradjon bejelentkezve. Ha a 0 értéket állítja be, kikapcsolja a KMSI funkciót. További információt a [bejelentkezett adatok megtartása](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi)című témakörben talál. |
+| KeepAliveInDays | Nem | Meghatározza, hogy a felhasználó mennyi ideig maradjon bejelentkezve. Ha a 0 értéket állítja be, kikapcsolja a KMSI funkciót. További információt a [bejelentkezett adatok megtartása](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi)című témakörben talál. |
 |EnforceIdTokenHintOnLogout| Nem|  Egy korábban kiállított azonosító token átadásának kényszerítése a kijelentkezési végpontra, amely a végfelhasználó aktuálisan hitelesített munkamenetével kapcsolatos mutatóként szolgál a-ügyféllel. Lehetséges értékek: `false` (alapértelmezett) vagy `true` . További információ: [webes bejelentkezés OpenID-kapcsolattal](openid-connect.md).  |
 
 

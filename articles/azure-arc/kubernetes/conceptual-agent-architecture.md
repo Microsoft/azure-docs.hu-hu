@@ -2,18 +2,18 @@
 title: Azure arc-kompatibilis Kubernetes-ügynök architektúrája
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/19/2021
+ms.date: 03/03/2021
 ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
 description: Ez a cikk az Azure arc-kompatibilis Kubernetes-ügynökök építészeti áttekintését tartalmazza
 keywords: Kubernetes, arc, Azure, tárolók
-ms.openlocfilehash: b4fb836cc7782f4026a28f4af0ca372c76486a31
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5e53e99c492f08deab8dea89ec95190782661012
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650532"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121898"
 ---
 # <a name="azure-arc-enabled-kubernetes-agent-architecture"></a>Azure arc-kompatibilis Kubernetes-ügynök architektúrája
 
@@ -93,5 +93,5 @@ A legtöbb helyszíni adatközpont szigorú hálózati szabályokat kényszerít
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Fürt összekötése az Azure-ív használatával](./quickstart-connect-cluster.md)
-* [A konfigurációk fogalmi áttekintése](./conceptual-configurations.md)
+* Útmutató a [Kubernetes-fürtök Azure arc-hoz való összekapcsolásához](./connect-cluster.md).
+* További információ a fürt és a git-tárház közötti kapcsolatok létrehozásáról az [Azure arc-kompatibilis Kubernetes rendelkező konfigurációs erőforrásként](./conceptual-configurations.md).

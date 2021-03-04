@@ -1,20 +1,8 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
-services: event-hubs
-author: spelluru
-ms.service: event-hubs
-ms.topic: include
-ms.date: 02/01/2021
-ms.author: spelluru
-ms.custom: include file
-ms.openlocfilehash: 45cc5120072f2a8c7742f79cfb79161042345505
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99427181"
+title: include file Description: include file Services: Event-hubok Author: spelluru MS. Service: Event-hubok MS. topic: include MS. Date: 02/01/2021 MS. Author: spelluru MS. Custom: "include file", "FastTrack-Edit", "IOT", "Event-hubok"
+
 ---
+
 Az alábbi táblázatok az [Azure Event Hubsra](https://azure.microsoft.com/services/event-hubs/)vonatkozó kvótákat és korlátokat biztosítanak. További információ a Event Hubs díjszabásáról: [Event Hubs díjszabása](https://azure.microsoft.com/pricing/details/event-hubs/).
 
 ### <a name="common-limits-for-all-tiers"></a>Általános korlátok az összes szinten
@@ -24,7 +12,6 @@ Az alábbi korlátok az összes szinten gyakoriak.
 | --- |  --- | --- |
 | Event Hubs névterek száma/előfizetés |- |100 |
 | Az Event hubok száma névtérben | Az új Event hub létrehozására vonatkozó további kérelmeket a rendszer elutasítja. |10 |
-| Partíciók száma az Event hub-ban |- |32 |
 | Event hub-név mérete |- | 256 karakter |
 | Fogyasztói csoport nevének mérete |- | 256 karakter |
 | Nem EPOCH-fogadók száma fogyasztói csoportonként |- |5 |
@@ -39,11 +26,17 @@ Az alábbi táblázat az alapszintű és a standard szintekhez eltérő korláto
 
 | Korlát | Jegyzetek | Alapszintű | Standard |
 |---|---|--|---|
-| Event Hubs esemény maximális mérete| &nbsp; | 256 KB | 1 MB |
+| Event Hubs kiadvány maximális mérete| &nbsp; | 256 KB | 1 MB |
 | Fogyasztói csoportok száma az Event hub-ban | &nbsp; |1 |20 |
 | AMQP-kapcsolatok száma névtérben | A további kapcsolatokra vonatkozó további kérelmeket a rendszer elutasítja, és a hívási kód kivételt kap. |100 |5000|
 | Esemény-adatok maximális megőrzési ideje | &nbsp; |1 nap |1-7 nap |
 | Maximális átviteli egységek |Ha túllépi ezt a korlátot, a rendszer leszabályozza az adatait, és létrehoz egy [kiszolgáló által foglalt kivételt](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception). Ha nagyobb számú átviteli egységet szeretne igényelni egy standard szintű csomaghoz, a [támogatási kérést](../articles/azure-portal/supportability/how-to-create-azure-support-request.md). A [további átviteli egységek](../articles/event-hubs/event-hubs-auto-inflate.md) 20 blokkban érhetők el egy véglegesített vásárlás alapján. |20 | 20 | 
+| Partíciók száma az Event hub-ban | |32 | 32 | 
+
+> [!NOTE]
+>
+> Az eseményeket egyenként vagy kötegelten teheti közzé. 
+> A közzétételi korlát (SKU alapján) attól függetlenül érvényes, hogy egyetlen eseményről vagy kötegről van szó. A maximális küszöbértéknél nagyobb közzétételi eseményeket a rendszer elutasítja.
 
 ### <a name="dedicated-tier-vs-standard-tier"></a>Dedikált szint és standard szint
 Az dedikált Event Hubs ajánlat számlázása rögzített havi díjszabással történik, amely legalább 4 órányi használatot biztosít. A dedikált szint a standard csomag összes funkcióját felkínálja, de nagyvállalati kapacitást és korlátokat biztosít az ügyfelek számára igényes számítási feladatokkal. 

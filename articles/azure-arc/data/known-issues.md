@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: d4667e8fa3a5624dddc3cb0dd792fc73ea812332
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8100d9e12f107e0c4598876c46453b46c6ee4d0e
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693109"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122000"
 ---
 # <a name="known-issues---azure-arc-enabled-data-services-preview"></a>Ismert problémák – az Azure arc-kompatibilis adatszolgáltatások (előzetes verzió)
 
@@ -22,10 +22,7 @@ ms.locfileid: "101693109"
 
 ## <a name="february-2021"></a>2021. február
 
-
 - A csatlakoztatott fürt üzemmódja le van tiltva
-- Az Azure arc-kompatibilis PostgreSQL-nagy kapacitású pontatlan hibaüzenetet ad vissza, ha nem tudja visszaállítani a megadott relatív időpontot. Ha például olyan időpontot adott meg a visszaállításhoz, amely régebbi a biztonsági másolatok által tartalmazott értéknél, a visszaállítás a következőhöz hasonló hibaüzenettel meghiúsul: `ERROR: (404). Reason: Not found. HTTP response body: {"code":404, "internalStatus":"NOT_FOUND", "reason":"Failed to restore backup for server...}` . Ha ez bekövetkezik, indítsa újra a parancsot egy olyan időpontot jelző időtartományon belül, amelynek a biztonsági másolatait tartalmazza. A tartomány meghatározásához sorolja fel a biztonsági mentéseket, és tekintse meg azokat a dátumokat, amelyeken a készítésük megtörtént.
-- A teljes visszaállításhoz szükség van egy biztonsági mentési azonosítóra. Alapértelmezés szerint, ha nem jelez biztonsági mentési azonosítót, a rendszer a legújabb biztonsági mentést fogja használni. Ez a kiadás nem működik.
 
 ## <a name="introduced-prior-to-february-2021"></a>Február 2021. előtt bemutatott
 

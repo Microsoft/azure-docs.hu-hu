@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dcd0ccdc42a820f1e264b739cb0063516a0cb53e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: db2715f0827203dac505fa4dc15c22bdab953010
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101688552"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120215"
 ---
 # <a name="user-profile-attributes"></a>Felhasználói profilattribútumok
 
@@ -101,9 +101,9 @@ Az alábbi identitás-típusokhoz lehet hozzárendelni egy felhasználói fióko
 - **Helyi** identitás – a felhasználónevet és a jelszót a rendszer helyileg tárolja a Azure ad B2C könyvtárban. Gyakran hivatkozunk ezekre az identitásokra "helyi fiókokként".
 - **Összevont** identitás – más néven *közösségi* vagy *vállalati* fiók, a felhasználó identitását egy összevont identitás-szolgáltató kezeli, például Facebook, Microsoft, ADFS vagy Salesforce.
 
-Az ügyfél fiókkal rendelkező felhasználók több identitással is bejelentkezhetnek. Ilyen például a Felhasználónév, az e-mail, az alkalmazott azonosítója, a kormányzati azonosító és egyebek. Egyetlen fiók több identitással is rendelkezhet, amelyek helyi és közösségi, ugyanazzal a jelszóval.
+Az ügyfél fiókkal rendelkező felhasználók több identitással is bejelentkezhetnek. Ilyen például a Felhasználónév, az e-mail, az alkalmazott azonosítója, a kormányzati azonosító és egyebek. Egyetlen fiók több identitással is rendelkezhet, amelyek helyi és közösségi, ugyanazzal a jelszóval. 
 
-A Microsoft Graph API-ban mind a helyi, mind az összevont identitások a User `identities` attribútumban tárolódnak, amely [objectIdentity] [Graph-objectIdentity] típusú. A `identities` gyűjtemény a felhasználói fiókba való bejelentkezéshez használt identitások készletét jelöli. Ez a gyűjtemény lehetővé teszi, hogy a felhasználó a hozzá tartozó identitásokkal jelentkezzen be a felhasználói fiókba.
+A Microsoft Graph API-ban a helyi és az összevont identitások is a User `identities` attribútumban tárolódnak, amely [objectIdentity](/graph/api/resources/objectidentity)típusú. A `identities` gyűjtemény a felhasználói fiókba való bejelentkezéshez használt identitások készletét jelöli. Ez a gyűjtemény lehetővé teszi, hogy a felhasználó a hozzá tartozó identitásokkal jelentkezzen be a felhasználói fiókba. Az identitások attribútum legfeljebb tíz [objectIdentity](/graph/api/resources/objectidentity) objektumot tartalmazhat. Minden objektum a következő tulajdonságokat tartalmazza:
 
 | Név   | Típus |Leírás|
 |:---------------|:--------|:----------|

@@ -328,6 +328,8 @@
       items:
         - name: JSON összehasonlítása a bicep
           href: compare-template-syntax.md
+    - name: Adattípusok
+      href: data-types.md
     - name: Gyakori kérdések
       href: frequently-asked-questions.md
     - name: Felhőkonzisztencia-sablonok

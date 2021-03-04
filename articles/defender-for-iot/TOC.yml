@@ -27,12 +27,12 @@
         - name: A Defender IoT-ügynökön alapuló megoldás beléptetése
           displayName: 'IoT Hub, existing, enable'
           href: quickstart-onboard-iot-hub.md
-        - name: A Defender telepítése a IoT Micro agenthez (előzetes verzió)
+        - name: A Defender telepítése a IoT Micro agenthez
           displayName: 'package, authentication, methods, certificate, authenticate, version'
           href: quickstart-standalone-agent-binary-installation.md
-        - name: Defender IoT Micro Agent-modul létrehozása twin (előzetes verzió)
+        - name: Defender IoT Micro Agent-modul létrehozása – Twin
           href: quickstart-create-micro-agent-module-twin.md
-        - name: A IoT Micro Agent Defender létrehozása a forráskódból (előzetes verzió)
+        - name: A IoT Micro Agent Defender létrehozása a forráskódból
           displayName: 'baseline, configuration, customize, distribution'
           href: quickstart-building-the-defender-micro-agent-from-source.md
         - name: Az Azure RTOS biztonsági moduljának konfigurálása
@@ -56,18 +56,18 @@
           href: concept-key-concepts.md
     - name: Ügynökalapú megoldás eszközkészítők számára
       items:
-        - name: Az ügynök portfoliójának áttekintése és az operációs rendszer támogatása (előzetes verzió)
+        - name: Az ügynök portfoliójának áttekintése és operációs rendszer támogatása
           displayName: 'standalone agent, micro agent, RTOS'
           href: concept-agent-portfolio-overview-os-support.md
-        - name: Önálló Micro Agent – áttekintés (előzetes verzió)
+        - name: Önálló Micro Agent – áttekintés
           displayName: 'endpoint, posture, distribution, flexible, model'
           href: concept-standalone-micro-agent-overview.md
-        - name: Biztonsági ügynök hitelesítése (előzetes verzió)
+        - name: Biztonsági ügynök hitelesítése
           displayName: 'connection string, certificate, authentication'
           href: concept-security-agent-authentication.md
         - name: Biztonsági helyzet – CIS-teljesítményteszt
           href: concept-security-posture.md
-        - name: Esemény összesítése (előzetes verzió)
+        - name: Eseményösszesítés
           displayName: 'process events, network connection'
           href: concept-event-aggregation.md
         - name: Beépített riasztások a IoT Hubhoz
@@ -249,9 +249,6 @@
           displayName: 'data, collection, geolocation, log analytics, raw events'
           href: how-to-configure-agent-based-solution.md
         - name: A CIS benchmark javaslatának vizsgálata
-          displayName: 'investigation, queries, investigate'
-          href: how-to-configure-agent-based-solution.md
-        - name: A CIS benchmark javaslatának vizsgálata
           href: how-to-investigate-cis-benchmark.md
         - name: Egyéni riasztások létrehozása
           displayName: security group
@@ -300,7 +297,7 @@
               href: how-to-investigate-device.md
 - name: Hibaelhárítás
   items:
-    - name: Defender IoT Micro Agent hibaelhárítás (előzetes verzió)
+    - name: Defender IoT Micro Agent – hibaelhárítás
       displayName: 'service status, review logs'
       href: troubleshoot-defender-micro-agent.md
 - name: Szolgáltatások támogatása és kivonulás

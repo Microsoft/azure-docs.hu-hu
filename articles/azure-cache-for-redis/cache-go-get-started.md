@@ -7,16 +7,20 @@ ms.service: cache
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 01/08/2021
-ms.openlocfilehash: de7bdc22b4bfdf9ef5865b1b601b32672eb868d1
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 04b582b5ef31e61039c5513ea2a4aa60f1c638e7
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165127"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121337"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-go"></a>Gyors útmutató: az Azure cache használata a go-Redis
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre olyan REST API a Go-ban, amely a [Redis készült Azure cache](./cache-overview.md)-ben tárolja és lekéri a [kivonatoló](https://redis.io/topics/data-types-intro#redis-hashes) adatstruktúra által támogatott felhasználói adatokat. 
+
+## <a name="skip-to-the-code-on-github"></a>Ugrás a kódra a GitHubon
+
+Ha közvetlenül a kódra szeretne ugrani, tekintse meg a gyors [útmutató a](https://github.com/Azure-Samples/azure-redis-cache-go-quickstart/) githubon című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

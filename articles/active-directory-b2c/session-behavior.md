@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/23/2021
+ms.date: 03/04/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e0516c25a69f22f5e66dd3ed083805cd4a9f1a61
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 2d64e85576b35caa2262ad1d635fc72fc7e2d2b8
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102096139"
+ms.locfileid: "102120623"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Munkamenet viselkedésének konfigurálása az Azure Active Directory B2C-ben
 
@@ -71,7 +71,7 @@ Az alkalmazás-munkamenet lehet az alkalmazás tartományának neve alatt tárol
 
 Beállíthatja a Azure AD B2C munkamenet viselkedését, beleértve a következőket:
 
-- **Webalkalmazás-munkamenet élettartama (perc)** – a sikeres hitelesítés után az Azure ad B2C munkamenet-cookie-t a felhasználó böngészőjében tárolja a rendszer. A munkamenet élettartama 15 és 720 perc közötti értékre állítható be.
+- **Webalkalmazás-munkamenet élettartama (perc)** – a sikeres hitelesítés után az Azure ad B2C munkamenet-cookie-t a felhasználó böngészőjében tárolja a rendszer. A munkamenet élettartamát akár 24 óráig is beállíthatja.
 
 - **Webalkalmazás-munkamenet időtúllépése** – azt jelzi, hogy a munkamenetet a munkamenet élettartama beállítás vagy a bejelentkezett maradás (KMSI) beállítás hogyan hosszabbítja meg.
   - **Gördülő** – azt jelzi, hogy a munkamenet minden alkalommal ki van-e terjesztve, amikor a felhasználó elvégez egy cookie-alapú hitelesítést (alapértelmezett).

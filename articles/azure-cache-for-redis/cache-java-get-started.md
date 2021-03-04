@@ -8,16 +8,20 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: yegu
 ms.custom: mvc, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: edb80ab3107cbd0a5ddd802d56a60ce77affb2f2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 856f33875316eca8b3c16f28c6c222f42e0a0be5
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012918"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121269"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-java"></a>Gyors útmutató: az Azure cache használata a Redis javában
 
 Ebben a rövid útmutatóban beépíti az Azure cache-t a Redis egy Java-alkalmazásba a [jedis](https://github.com/xetorthio/jedis) Redis-ügyféllel, hogy hozzáférjen egy olyan biztonságos, dedikált gyorsítótárhoz, amely az Azure-on belül bármely alkalmazásból elérhető.
+
+## <a name="skip-to-the-code-on-github"></a>Ugrás a kódra a GitHubon
+
+Ha közvetlenül a kódra szeretne ugrani, tekintse meg a [Java](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/java) rövid útmutatóját a githubon.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -162,7 +166,7 @@ Ha azonban befejezte az oktatóanyag mintaalkalmazásának használatát, a díj
 
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja az Azure cache-t egy Java-alkalmazásból származó Redis. Folytassa a következő rövid útmutatóval, hogy az Azure cache-t használja a Redis egy ASP.NET-webalkalmazással.
 

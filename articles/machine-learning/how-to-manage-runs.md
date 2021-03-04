@@ -9,15 +9,15 @@ ms.author: roastala
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 12/04/2020
+ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 3eaab31d3948e41a216eaa402c2a11e470a6545d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fb877b208e6c9599347e2b45e140545e5815e695
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691501"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120810"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>A betanítási futtatások elindítása, figyelése és megszakítása a Pythonban
 
@@ -113,6 +113,10 @@ A következő elemekre lesz szüksége:
     
         További információ: [az ml Run Submit-script](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
 
+    # <a name="studio"></a>[Studio](#tab/azure-studio)
+
+    A Azure Machine Learning Designerben található modellek betanítását bemutató példát a következő témakörben talál [: oktatóanyag: az autó árának előrejelzése a tervezővel](tutorial-designer-automobile-price-train-score.md).
+
     ---
 
 * Futtatás állapotának figyelése
@@ -195,8 +199,7 @@ Egy futtatási Leírás hozzáadható egy futtatáshoz, amely további kontextus
 
 Navigáljon a Futtatás **részletei** lapra, és válassza a Szerkesztés vagy a ceruza ikont a futtatásához szükséges leírások hozzáadásához, szerkesztéséhez vagy törléséhez. A futtatások listájának módosításához mentse a módosításokat a meglévő egyéni nézetbe vagy egy új egyéni nézetbe. A Markdown formátuma támogatott a futtatási leírások esetében, amelyek lehetővé teszik a képek beágyazását és mély összekapcsolását az alább látható módon.
 
-:::image type="content" source="media/how-to-manage-runs/rundescription.gif" alt-text="Képernyőkép: Futtatás leírásának létrehozása"::: 
-    
+:::image type="content" source="media/how-to-manage-runs/run-description.gif" alt-text="Képernyőkép: Futtatás leírásának létrehozása"::: 
 
 ## <a name="tag-and-find-runs"></a>Címke és keresés futtatása
 

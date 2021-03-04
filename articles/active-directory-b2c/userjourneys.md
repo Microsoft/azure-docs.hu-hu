@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/14/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ce41edd2c0048a20368dd02c2dd6101248e26c14
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: aac75e7876ce59b90e27f9e87c96240755d26235
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400013"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120742"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -29,7 +29,7 @@ A szabályzat által támogatott felhasználói útvonalak definiálásához a r
 
 A **UserJourneys** elem a következő elemet tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | UserJourney | 1: n | Egy felhasználói út, amely meghatározza a teljes felhasználói folyamathoz szükséges összes szerkezetet. |
 
@@ -37,11 +37,11 @@ A **UserJourney** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Id | Yes | Egy felhasználói utazás azonosítója, amely a szabályzat más elemeinek hivatkozására használható. A [függő entitás házirendjének](relyingparty.md) **DefaultUserJourney** eleme erre az attribútumra mutat. |
+| Id | Igen | Egy felhasználói utazás azonosítója, amely a szabályzat más elemeinek hivatkozására használható. A [függő entitás házirendjének](relyingparty.md) **DefaultUserJourney** eleme erre az attribútumra mutat. |
 
 A **UserJourney** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | AuthorizationTechnicalProfiles | 0:1 | Az engedélyezési műszaki profilok listája. | 
 | OrchestrationSteps | 1: n | Egy olyan előkészítési sorozatot, amelyet követni kell egy sikeres tranzakcióhoz. Minden felhasználói út a sorrendben végrehajtott előkészítési lépések rendezett listáját tartalmazza. Ha bármelyik lépés meghiúsul, a tranzakció meghiúsul. |
@@ -52,7 +52,7 @@ Tegyük fel, hogy egy felhasználó befejezte a UserJourney, és hozzáférési 
 
 A **AuthorizationTechnicalProfiles** elem a következő elemet tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | AuthorizationTechnicalProfile | 0:1 | Az engedélyezési műszaki profilok listája. | 
 
@@ -60,7 +60,7 @@ A **AuthorizationTechnicalProfile** elem a következő attribútumot tartalmazza
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| TechnicalProfileReferenceId | Yes | A végrehajtandó műszaki profil azonosítója. |
+| TechnicalProfileReferenceId | Igen | A végrehajtandó műszaki profil azonosítója. |
 
 Az alábbi példa egy felhasználói út elemet mutat be az engedélyezési technikai profilokkal:
 
@@ -80,13 +80,13 @@ Az alábbi példa egy felhasználói út elemet mutat be az engedélyezési tech
 
 A felhasználói út olyan összehangoló sorozatot jelöl, amelyet egy sikeres tranzakcióhoz kell követni. Ha bármelyik lépés meghiúsul, a tranzakció meghiúsul. Ezek a kialakítási lépések az építőelemeket és a házirend fájljában engedélyezett jogcím-szolgáltatókat egyaránt felmutatják. A felhasználói élmény megjelenítéséhez vagy megjelenítéséhez felelős bármely előkészítési lépés a megfelelő tartalom-definíciós azonosítóra is hivatkozik.
 
-A szerelési lépések feltételesen hajthatók végre a előkészítési lépés elemében meghatározott előfeltételek alapján. Megtekintheti például, hogy csak akkor végezzen előkészítési lépést, ha egy adott jogcím létezik, vagy ha egy jogcím a megadott értékkel egyenlő vagy sem.
+A szerelési lépések feltételesen hajthatók végre a előkészítési lépés elemében meghatározott előfeltételek alapján. Megtekintheti például, hogy csak akkor hajtson végre egy előkészítési lépést, ha egy adott jogcím létezik, vagy ha egy jogcím megegyezik a megadott értékkel.
 
 A rendezési lépések rendezett listájának megadásához egy **OrchestrationSteps** elem kerül a szabályzat részeként. Ezt az elemet kötelező megadni.
 
 A **OrchestrationSteps** elem a következő elemet tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | OrchestrationStep | 1: n | Egy rendezett előkészítési lépés. |
 
@@ -95,13 +95,13 @@ A **OrchestrationStep** elem a következő attribútumokat tartalmazza:
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | `Order` | Igen | A folyamat lépéseinek sorrendje. |
-| `Type` | Yes | A előkészítési lépés típusa. Lehetséges értékek: <ul><li>**ClaimsProviderSelection** – azt jelzi, hogy a előkészítési lépés különböző jogcím-szolgáltatókat mutat be a felhasználónak az egyik kiválasztásához.</li><li>**CombinedSignInAndSignUp** – azt jelzi, hogy a koordináló lépés a Kombinált közösségi szolgáltató bejelentkezési és helyi fiókjának regisztrációs lapját mutatja be.</li><li>**ClaimsExchange** – azt jelzi, hogy a koordináló lépés jogcímeket cserél a jogcím-szolgáltatóval.</li><li>**GetClaims** – azt határozza meg, hogy a előkészítési lépésnek a függő entitás által a konfiguráción keresztül Azure ad B2C elküldett jogcímet kell feldolgoznia `InputClaims` .</li><li>**InvokeSubJourney** – azt jelzi, hogy a koordináló lépés a jogcímeket egy [alárendelt útra](subjourneys.md) cseréli (nyilvános előzetes verzióban).</li><li>**SendClaims** – azt jelzi, hogy a koordináló lépés elküldi a jogcímeket a függő entitásnak a jogcímek kiállítói által kiállított jogkivonattal.</li></ul> |
-| ContentDefinitionReferenceId | No | Az ehhez a előkészítési lépéshez társított [tartalom-definíció](contentdefinitions.md) azonosítója. Általában a Content definition Reference azonosító az önérvényesített technikai profilban van definiálva. Vannak azonban olyan esetek, amikor Azure AD B2Cnek technikai profil nélküli valamit kell megjelenítenie. Kétféle példa van – ha a előkészítési lépés típusa a következők egyike: `ClaimsProviderSelection` vagy Azure ad B2C az  `CombinedSignInAndSignUp` identitás-szolgáltató kijelölését a technikai profil megadása nélkül kell megjelenítenie. |
-| CpimIssuerTechnicalProfileReferenceId | No | Az előkészítési lépés típusa: `SendClaims` . Ez a tulajdonság határozza meg a függő entitáshoz tartozó jogkivonatot kibocsátó jogcím-szolgáltató technikai profiljának azonosítóját.  Ha hiányzik, a rendszer nem hoz létre függő entitás tokenjét. |
+| `Type` | Igen | A előkészítési lépés típusa. Lehetséges értékek: <ul><li>**ClaimsProviderSelection** – azt jelzi, hogy a előkészítési lépés különböző jogcím-szolgáltatókat mutat be a felhasználónak az egyik kiválasztásához.</li><li>**CombinedSignInAndSignUp** – azt jelzi, hogy a koordináló lépés a Kombinált közösségi szolgáltató bejelentkezési és helyi fiókjának regisztrációs lapját mutatja be.</li><li>**ClaimsExchange** – azt jelzi, hogy a koordináló lépés jogcímeket cserél a jogcím-szolgáltatóval.</li><li>**GetClaims** – azt határozza meg, hogy a előkészítési lépésnek a függő entitás által a konfiguráción keresztül Azure ad B2C elküldett jogcímet kell feldolgoznia `InputClaims` .</li><li>**InvokeSubJourney** – azt jelzi, hogy a koordináló lépés a jogcímeket egy [alárendelt útra](subjourneys.md) cseréli (nyilvános előzetes verzióban).</li><li>**SendClaims** – azt jelzi, hogy a koordináló lépés elküldi a jogcímeket a függő entitásnak a jogcímek kiállítói által kiállított jogkivonattal.</li></ul> |
+| ContentDefinitionReferenceId | Nem | Az ehhez a előkészítési lépéshez társított [tartalom-definíció](contentdefinitions.md) azonosítója. Általában a Content definition Reference azonosító az önérvényesített technikai profilban van definiálva. Vannak azonban olyan esetek, amikor Azure AD B2Cnek technikai profil nélküli valamit kell megjelenítenie. Kétféle példa van – ha a előkészítési lépés típusa a következők egyike: `ClaimsProviderSelection` vagy Azure ad B2C az  `CombinedSignInAndSignUp` identitás-szolgáltató kijelölését a technikai profil megadása nélkül kell megjelenítenie. |
+| CpimIssuerTechnicalProfileReferenceId | Nem | Az előkészítési lépés típusa: `SendClaims` . Ez a tulajdonság határozza meg a függő entitáshoz tartozó jogkivonatot kibocsátó jogcím-szolgáltató technikai profiljának azonosítóját.  Ha hiányzik, a rendszer nem hoz létre függő entitás tokenjét. |
 
 A **OrchestrationStep** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | Előfeltételei | 0: n | Azon előfeltételek listája, amelyeknek teljesülniük kell a előkészítési lépés végrehajtásához. |
 | ClaimsProviderSelections | 0: n | A létrehozási lépéshez tartozó jogcím-szolgáltatói beállítások listája. |
@@ -112,7 +112,7 @@ A **OrchestrationStep** elem a következő elemeket tartalmazza:
 
 Az **Előfeltételek** elem a következő elemet tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | Előfeltétel | 1: n | A használt technikai profiltól függően vagy átirányítja az ügyfelet a jogcím-szolgáltató kiválasztása alapján, vagy kezdeményezi a kiszolgálótól az Exchange-jogcímek meghívását. |
 
@@ -124,11 +124,11 @@ Az **előfeltétel** elem a következő attribútumokat tartalmazza:
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | `Type` | Igen | Az előfeltételként végrehajtandó ellenőrzés vagy lekérdezés típusa. Az érték lehet **ClaimsExist**, amely megadja, hogy a rendszer végrehajtja a műveleteket, ha a megadott jogcímek a felhasználó aktuális jogcímek készletében vannak, vagy **ClaimEquals**, amely meghatározza, hogy a rendszer végrehajtja a műveleteket, ha a megadott jogcím létezik, és annak értéke megegyezik a megadott értékkel. |
-| `ExecuteActionsIf` | Yes | Használjon igaz vagy hamis tesztet annak eldöntéséhez, hogy az előfeltételben szereplő műveleteket kell-e végrehajtani. |
+| `ExecuteActionsIf` | Igen | Használjon igaz vagy hamis tesztet annak eldöntéséhez, hogy az előfeltételben szereplő műveleteket kell-e végrehajtani. |
 
 Az **előfeltétel** elemek a következő elemeket tartalmazzák:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | Érték | 1: n | Egy ClaimTypeReferenceId, amelyről le kell kérdezni. Egy másik érték elem tartalmazza az ellenőrizendő értéket.</li></ul>|
 | Művelet | 1:1 | Az a művelet, amelyet akkor kell végrehajtani, ha az előfeltétel-ellenőrzés egy előkészítési lépésen belül igaz. Ha a értéke a `Action` `SkipThisOrchestrationStep` , a társított `OrchestrationStep` nem hajtható végre. |
@@ -189,13 +189,16 @@ Az előfeltételek több előfeltétel ellenőrzését is megadhatják. A követ
 </OrchestrationStep>
 ```
 
-## <a name="claimsproviderselection"></a>ClaimsProviderSelection
+## <a name="identity-provider-selection"></a>Identitás-szolgáltató kiválasztása
 
-Egy vagy több típusú előkészítési lépés, `ClaimsProviderSelection` vagy `CombinedSignInAndSignUp` tartalmazhat olyan jogcím-szolgáltatókat, amelyekkel a felhasználó bejelentkezhet. Az elemek elemeinek sorrendje `ClaimsProviderSelections` vezérli a felhasználónak megjelenő identitás-szolgáltatók sorrendjét.
+Az identitás-szolgáltató kijelölése lehetővé teszi, hogy a felhasználók a lehetőségek listájából válasszanak ki egy műveletet. Az identitás-szolgáltató kiválasztása két előkészítési lépésből áll: 
+
+1. **Gombok** – a típusával kezdődik `ClaimsProviderSelection` , vagy `CombinedSignInAndSignUp` olyan beállításokat tartalmaz, amelyek a felhasználó által választható lehetőségek listáját tartalmazzák. Az elemen belüli beállítások sorrendje `ClaimsProviderSelections` vezérli a felhasználó számára megjelenített gombok sorrendjét.
+2. **Műveletek** – a típusával kiegészítve `ClaimsExchange` . A ClaimsExchange a műveletek listáját tartalmazza. A művelet egy technikai profilra, például a [OAuth2](oauth2-technical-profile.md), az [OpenID connectre](openid-connect-technical-profile.md), a [jogcímek átalakítására](claims-transformation-technical-profile.md)vagy a [saját](self-asserted-technical-profile.md)állítására mutató hivatkozás. Amikor egy felhasználó rákattint valamelyik gombra, a rendszer végrehajtja a megfelelő műveletet.
 
 A **ClaimsProviderSelections** elem a következő elemet tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | ClaimsProviderSelection | 1: n | A kiválasztható jogcím-szolgáltatók listáját jeleníti meg.|
 
@@ -203,14 +206,14 @@ A **ClaimsProviderSelections** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| DisplayOption| No | Egy olyan eset viselkedését szabályozza, amelyben egyetlen jogcím-szolgáltató választható ki. Lehetséges értékek: `DoNotShowSingleProvider` (alapértelmezett) a rendszer azonnal átirányítja a felhasználót az összevont identitás-szolgáltatóhoz. Vagy `ShowSingleProvider` Azure ad B2C megadja a bejelentkezési oldalt az egyetlen identitás-szolgáltató kijelölésével. Ennek az attribútumnak a használatához a [Content definition verziójának](page-layout.md) `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` és annál újabbnak kell lennie.|
+| DisplayOption| Nem | Egy olyan eset viselkedését szabályozza, amelyben egyetlen jogcím-szolgáltató választható ki. Lehetséges értékek: `DoNotShowSingleProvider` (alapértelmezett) a rendszer azonnal átirányítja a felhasználót az összevont identitás-szolgáltatóhoz. Vagy `ShowSingleProvider` Azure ad B2C megadja a bejelentkezési oldalt az egyetlen identitás-szolgáltató kijelölésével. Ennek az attribútumnak a használatához a [Content definition verziójának](page-layout.md) `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` és annál újabbnak kell lennie.|
 
 A **ClaimsProviderSelection** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| TargetClaimsExchangeId | No | A jogcím-szolgáltató kiválasztásának következő megszervezési lépésében végrehajtott jogcímbarát Exchange azonosítója. Ezt az attribútumot vagy a ValidationClaimsExchangeId attribútumot meg kell adni, de nem mindkettőt. |
-| ValidationClaimsExchangeId | No | A jogcímek cseréjének azonosítója, amelyet a rendszer az aktuális előkészítési lépésben hajt végre a jogcím-szolgáltató kijelölésének ellenőrzéséhez. Ezt az attribútumot vagy a TargetClaimsExchangeId attribútumot meg kell adni, de nem mindkettőt. |
+| TargetClaimsExchangeId | Nem | A jogcím-szolgáltató kiválasztásának következő megszervezési lépésében végrehajtott jogcímbarát Exchange azonosítója. Ezt az attribútumot vagy a ValidationClaimsExchangeId attribútumot meg kell adni, de nem mindkettőt. |
+| ValidationClaimsExchangeId | Nem | A jogcímek cseréjének azonosítója, amelyet a rendszer az aktuális előkészítési lépésben hajt végre a jogcím-szolgáltató kijelölésének ellenőrzéséhez. Ezt az attribútumot vagy a TargetClaimsExchangeId attribútumot meg kell adni, de nem mindkettőt. |
 
 ### <a name="claimsproviderselection-example"></a>ClaimsProviderSelection példa
 
@@ -242,7 +245,7 @@ A következő előkészítési lépésben a felhasználó dönthet úgy, hogy be
   <ClaimsExchanges>
     <ClaimsExchange Id="FacebookExchange" TechnicalProfileReferenceId="Facebook-OAUTH" />
     <ClaimsExchange Id="SignUpWithLogonEmailExchange" TechnicalProfileReferenceId="LocalAccountSignUpWithLogonEmail" />
-  <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
+    <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
     <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAUTH" />
     <ClaimsExchange Id="TwitterExchange" TechnicalProfileReferenceId="Twitter-OAUTH1" />
   </ClaimsExchanges>
@@ -253,7 +256,7 @@ A következő előkészítési lépésben a felhasználó dönthet úgy, hogy be
 
 A **ClaimsExchanges** elem a következő elemet tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | ClaimsExchange | 1: n | A használt technikai profiltól függően vagy átirányítja az ügyfelet a kiválasztott ClaimsProviderSelection megfelelően, vagy kezdeményezi a kiszolgálótól az Exchange-jogcímek meghívását. |
 
@@ -261,14 +264,14 @@ A **ClaimsExchange** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Id | Yes | A jogcím Exchange-lépés azonosítója. Az azonosító a jogcím-szolgáltató jogcímek kiválasztási lépésében való hivatkozására szolgál a szabályzatban. |
-| TechnicalProfileReferenceId | Yes | A végrehajtandó műszaki profil azonosítója. |
+| Id | Igen | A jogcím Exchange-lépés azonosítója. Az azonosító a jogcím-szolgáltató jogcímek kiválasztási lépésében való hivatkozására szolgál a szabályzatban. |
+| TechnicalProfileReferenceId | Igen | A végrehajtandó műszaki profil azonosítója. |
 
 ## <a name="journeylist"></a>JourneyList
 
 A **JourneyList** elem a következő elemet tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | Tagjelölt | 1:1 | A meghívott alútra mutató hivatkozás. |
 
@@ -278,4 +281,4 @@ A **jelölt** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| SubJourneyReferenceId | Yes | A végrehajtandó [alárendelt út](subjourneys.md) azonosítója. |
+| SubJourneyReferenceId | Igen | A végrehajtandó [alárendelt út](subjourneys.md) azonosítója. |
