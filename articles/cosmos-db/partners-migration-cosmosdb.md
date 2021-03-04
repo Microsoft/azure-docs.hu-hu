@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 7fe0817abfac3070f77303bb0d2d662d18010862
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 66f26cfa14d51a985e2bb420bec294f7ef3a6cd1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090502"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048148"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL áttelepítési és alkalmazásfejlesztés-partnerek
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -31,7 +31,6 @@ A NoSQL migrálása révén számos tapasztalt rendszerintegrátori partnert és
 | [Capgemini](https://www.capgemini.com/) | Kiskereskedelmi (leltár), IoT, operatív elemzés (Spark), alkalmazásfejlesztés | Egyesült Államok, Franciaország, Egyesült Királyság, Hollandia, Finnország  |
 | [Cognizant azért](https://www.cognizant.com/) | IoT, személyre szabás, kiskereskedelmi (leltár), operatív elemzés (Spark), alkalmazásfejlesztés |Egyesült Államok, Kanada, Egyesült Királyság, Dánia, Hollandia, Svájc, Ausztrália, Japán |
 |[Infosys](https://www.infosys.com/)     | Alkalmazás-fejlesztés      |    USA    |  
-| [Lagash rendszerek](https://www.devex.com/organizations/lagash-systems-131346) | IoT, kiszolgáló nélküli architektúra, alkalmazásfejlesztés | Argentína, Chile, Kolumbia, Mexikó|
 | [Lambda3 informatika](https://www.lambda3.com.br/) | Valós idejű személyre szabás, kiskereskedelmi leltár, alkalmazások fejlesztése | Brazília|
 |[Neal-elemzés](https://www.nealanalytics.com/)    |     Személyre szabás, kiskereskedelmi (leltár), operatív elemzés (Spark), alkalmazásfejlesztés  |    USA     |  
 |[Gyakorlatias Works szoftver Inc](https://www.pragmaticworks.com/)    |   NoSQL migrálása      |   USA      |

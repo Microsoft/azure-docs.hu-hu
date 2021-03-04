@@ -1,17 +1,16 @@
 ---
 title: Lekérdezések naplózása Azure Monitor naplózási lekérdezésekben
 description: A naplózási lekérdezések azon naplófájljainak részletei, amelyek a Azure Monitorban futtatott telemetria nyújtanak.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/03/2020
-ms.openlocfilehash: 70741e91830027e210afce75e93d931d70bdbed1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 28dfac7de8e73adf577b0a13e5fbd8740b1e3b06
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100617455"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047417"
 ---
 # <a name="audit-queries-in-azure-monitor-logs-preview"></a>Lekérdezések naplózása Azure Monitor naplókban (előzetes verzió)
 A napló lekérdezési naplói a Azure Monitorban futtatott telemetria kapcsolatos információkat biztosítanak. Ez olyan információkat tartalmaz, mint például a lekérdezés futtatása, a futtatásuk, a használt eszköz, a lekérdezés szövege és a lekérdezés végrehajtását leíró teljesítmény-statisztika.

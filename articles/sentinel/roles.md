@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: f9b50c831b435a6189a9b9e4d79a934a2661b033
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 69f78f6e70fa4f0b04ca7527751085ec0265363a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570404"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048216"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Az Azure Sentinel engedélyei
 
@@ -89,12 +89,19 @@ Az alábbi táblázat a szerepköröket és az Azure Sentinelben engedélyezett 
 
 ## <a name="custom-roles-and-advanced-azure-rbac"></a>Egyéni szerepkörök és speciális Azure RBAC
 
-- Az Azure beépített szerepköreinek használatával vagy ahelyett, hogy az Azure Sentinelhez egyéni Azure-szerepköröket is létrehozhat. Az Azure Sentinel Azure-beli egyéni szerepkörei ugyanúgy jönnek létre, mint más [Egyéni Azure-szerepköröket](../role-based-access-control/custom-roles-rest.md#create-a-custom-role)az [Azure Sentinel](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) és az [Azure log Analytics erőforrásaira](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights)adott engedélyek alapján.
+- **Egyéni szerepkörök**. Az Azure beépített szerepköreinek használatával vagy ahelyett, hogy az Azure Sentinelhez egyéni Azure-szerepköröket is létrehozhat. Az Azure Sentinel Azure-beli egyéni szerepkörei ugyanúgy jönnek létre, mint más [Egyéni Azure-szerepköröket](../role-based-access-control/custom-roles-rest.md#create-a-custom-role)az [Azure Sentinel](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) és az [Azure log Analytics erőforrásaira](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights)adott engedélyek alapján.
 
-- A Log Analytics Advanced Azure szerepköralapú hozzáférés-vezérlést az Azure Sentinel-munkaterület összes adatához használhatja. Ebbe beletartozik az adattípuson alapuló Azure RBAC és az erőforrás-központú Azure RBAC is. További információ a Log Analytics-szerepkörökről: [Naplóadatok és munkaterületek felügyelete az Azure Monitorban](../azure-monitor/logs/manage-access.md#manage-access-using-workspace-permissions).
+- **Log Analytics RBAC**. A Log Analytics Advanced Azure szerepköralapú hozzáférés-vezérlést az Azure Sentinel-munkaterület összes adatához használhatja. Ebbe beletartozik az adattípuson alapuló Azure-RBAC és az erőforrás-környezet Azure-RBAC is. További információkért lásd:
+
+    - [A naplózási és munkaterületek kezelése Azure Monitor](../azure-monitor/logs/manage-access.md#manage-access-using-workspace-permissions)
+
+    - [Az Azure Sentinel erőforrás-környezeti RBAC](resource-context-rbac.md)
+    - [Táblaszintű RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043)
+
+    Az erőforrás-környezet és a tábla szintű RBAC kétféleképpen biztosít hozzáférést az Azure Sentinel-munkaterületen lévő konkrét információhoz anélkül, hogy hozzáférést kellene biztosítani a teljes Azure Sentinel-élményhez.
 
 ## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtudhatta, hogyan dolgozhat az Azure Sentinel-felhasználók szerepköreivel, és hogy az egyes szerepkörök hogyan teszik lehetővé a felhasználók számára.
 
-* [Azure Sentinel blog](https://aka.ms/azuresentinelblog). Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
+Az Azure-beli biztonsági és megfelelőségi blogbejegyzések az [Azure Sentinel blogban](https://aka.ms/azuresentinelblog)találhatók.

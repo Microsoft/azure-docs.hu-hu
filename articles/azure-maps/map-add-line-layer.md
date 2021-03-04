@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 9cf2f4876d62572ace118562fe5760f2b4010fa5
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: fedf1bc37661100404106859d3aef52b3eddf06d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891159"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048137"
 ---
 # <a name="add-a-line-layer-to-the-map"></a>Vonal rétegének hozzáadása a térképhez
 
@@ -44,7 +44,7 @@ Alább látható a fenti funkciók teljes futási kódjának mintája.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Vonal hozzáadása térképhez' src='//codepen.io/azuremaps/embed/qomaKv/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat a CodePen-on lévő Azure Maps () <a href='https://codepen.io/azuremaps/pen/qomaKv/'>, és adjon hozzá egy sort</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='500' scrolling='no' title='Vonal hozzáadása térképhez' src='//codepen.io/azuremaps/embed/qomaKv/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat a CodePen-on lévő Azure Maps () <a href='https://codepen.io/azuremaps/pen/qomaKv/'>, és adjon hozzá egy sort</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 A [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions) stílusú és [adatvezérelt stílusú kifejezéseket](data-driven-style-expressions-web-sdk.md)használó vonalak lehetnek.
@@ -66,12 +66,12 @@ Tekintse meg a tollat <a href='https://codepen.io/azuremaps/pen/drBJwX/'>mutató
 
 ## <a name="add-a-stroke-gradient-to-a-line"></a>Körvonal átmenetének hozzáadása sorba
 
-Egyetlen ecsetvonás színét is alkalmazhatja egy sorba. A színátmenetes vonalakat is kitöltheti úgy, hogy az egyik vonalszakaszból a következő sorra váltson átmenetet. A vonalak közötti átmenetek például az idő és a távolság, illetve a csatlakoztatott objektumok különböző hőmérsékletei közötti változások ábrázolására használhatók. Ahhoz, hogy a funkciót egy sorba lehessen alkalmazni, az adatforrásnak `lineMetrics` igaz értékűnek kell lennie, majd egy színátmenetes kifejezés is átadható a `strokeColor` sor kapcsolójának. A stroke Gradient kifejezésnek hivatkoznia kell arra az `['line-progress']` adatkifejezésre, amely a számított vonal metrikáit a kifejezésre teszi elérhetővé.
+Egyetlen ecsetvonás színét is alkalmazhatja egy sorba. A színátmenetes vonalakat is kitöltheti úgy, hogy az egyik vonalszakaszból a következő sorra váltson átmenetet. A vonalak közötti átmenetek például az idő és a távolság, illetve a csatlakoztatott objektumok különböző hőmérsékletei közötti változások ábrázolására használhatók. Ahhoz, hogy ezt a funkciót egy sorba lehessen alkalmazni, az adatforráshoz `lineMetrics` be kell állítani a beállítást `true` , majd egy színátmenetes kifejezést is át lehet adni a `strokeColor` sor kapcsolójának. A stroke Gradient kifejezésnek hivatkoznia kell arra az `['line-progress']` adatkifejezésre, amely a számított vonal metrikáit a kifejezésre teszi elérhetővé.
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Ecsetvonás-átmenetes vonal" src="//codepen.io/azuremaps/embed/wZwWJZ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
-A CodePen-on Azure Maps () használatával megtekintheti a tollvonási <a href='https://codepen.io/azuremaps/pen/wZwWJZ/'>átmenetet</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+A CodePen-on Azure Maps () használatával megtekintheti a tollvonási <a href='https://codepen.io/azuremaps/pen/wZwWJZ/'>átmenetet</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 ## <a name="customize-a-line-layer"></a>Vonal rétegének testreszabása

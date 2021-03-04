@@ -1,17 +1,16 @@
 ---
 title: A lekérdezés hatókörének naplózása Azure Monitor Log Analytics
 description: A Azure Monitor Log Analyticsban lévő napló lekérdezés hatókörét és időtartományát ismerteti.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/09/2020
-ms.openlocfilehash: 892c79d7908903b95a3bbbae2857933d877c7fba
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 43e4e861905352c2818dfb08b8cb442bd70481c1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100619485"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047179"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>A lekérdezés hatókörének és időtartományának naplózása Azure Monitor Log Analytics
 Ha [a Azure Portal log Analyticsban](../logs/log-analytics-tutorial.md)futtat [naplózási lekérdezést](../logs/log-query-overview.md) , a lekérdezés által kiértékelt adatok halmaza a hatókörtől és a kiválasztott időtartománytól függ. Ez a cikk a hatókört és az időtartományt ismerteti, valamint azt, hogyan állíthatja be az egyes igényektől függően. Emellett leírja a különböző típusú hatókörök viselkedését is.

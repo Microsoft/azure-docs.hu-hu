@@ -13,81 +13,52 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/27/2021
+ms.date: 03/03/2021
 ms.author: yelevin
-ms.openlocfilehash: c404aa93669cd95dccb0ad185d71d2ec16256d0d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 30cd0181ff2c5fbb8918921be3515818128a98d0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570439"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048233"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Az Azure Sentinel használatának hasznos erőforrásai
 
-
-
 Ez a cikk azokat az erőforrásokat sorolja fel, amelyek segítségével további információkhoz juthat az Azure Sentinel használatáról.
 
-- **Azure Logic apps összekötők**: <https://docs.microsoft.com/connectors/>
+## <a name="learn-more-about-creating-queries"></a>További információ a lekérdezések létrehozásáról
 
+Az Azure Sentinel Azure Monitor Log Analytics Kusto lekérdezési nyelvét (KQL) használja a lekérdezések létrehozásához. További információkért lásd:
 
-## <a name="auditing-and-reporting"></a>Naplózás és jelentéskészítés
-Az Azure Sentinel naplózási naplóit az [Azure-tevékenységek naplójában](../azure-monitor/essentials/platform-logs-overview.md)tartják karban.
+- [KQL fogalmak](/azure/data-explorer/kusto/concepts/)
+- [KQL lekérdezések](/azure/data-explorer/kusto/query/)
+- [KQL gyors útmutató](/azure/data-explorer/kql-quick-reference).
+- [Ismerkedés a KQL-lekérdezésekkel](../azure-monitor/logs/get-started-queries.md)
 
-A következő támogatott műveletek naplózhatók.
+## <a name="learn-more-about-creating-automation"></a>További információ az automatizálás létrehozásáról
 
-|Művelet neve|    Erőforrás típusa|
-|----|----|
-|Munkafüzet létrehozása vagy frissítése  |Microsoft. bepillantások/munkafüzetek|
-|Munkafüzet törlése    |Microsoft. bepillantások/munkafüzetek|
-|Munkafolyamat beállítása   |Microsoft. Logic/munkafolyamatok|
-|Munkafolyamat törlése    |Microsoft. Logic/munkafolyamatok|
-|Mentett keresés létrehozása    |Microsoft. OperationalInsights/munkaterületek/savedSearches|
-|Mentett keresés törlése    |Microsoft. OperationalInsights/munkaterületek/savedSearches|
-|Riasztási szabályok frissítése |Microsoft. SecurityInsights/alertRules|
-|Riasztási szabályok törlése |Microsoft. SecurityInsights/alertRules|
-|Riasztási szabály válaszára vonatkozó műveletek frissítése |Microsoft. SecurityInsights/alertRules/műveletek|
-|Riasztási szabály válaszára vonatkozó műveletek törlése |Microsoft. SecurityInsights/alertRules/műveletek|
-|Könyvjelzők frissítése   |Microsoft. SecurityInsights/könyvjelzők|
-|Könyvjelzők törlése   |Microsoft. SecurityInsights/könyvjelzők|
-|Esetek frissítése   |Microsoft. SecurityInsights/esetek|
-|Frissítési eset vizsgálata  |Microsoft. SecurityInsights/esetek/vizsgálatok|
-|Eseti megjegyzések létrehozása   |Microsoft. SecurityInsights/esetek/megjegyzések|
-|Adatösszekötők frissítése |Microsoft. SecurityInsights/dataConnectors|
-|Adatösszekötők törlése |Microsoft. SecurityInsights/dataConnectors|
-|Beállítások frissítése    |Microsoft. SecurityInsights/beállítások|
+Hozzon létre automatizálást az Azure Sentinelben Azure Logic Apps használatával, a beépített forgatókönyvek egyre bővülő gyűjteményével. 
 
-### <a name="view-audit-and-reporting-data-in-azure-sentinel"></a>Naplózási és jelentéskészítési jelentések megtekintése az Azure Sentinel szolgáltatásban
+További információ: Azure Logic Apps- [Összekötők](https://docs.microsoft.com/connectors/).
 
-Ezeket az adatok megtekinthetők úgy, hogy az Azure-tevékenység naplójában közvetítik az Azure Sentinel-ba, ahol a kutatást és elemzést végezheti el.
+## <a name="comment-on-our-blogs-and-forums"></a>A blogok és fórumok megjegyzései
 
-1. Az [Azure-tevékenység](connect-azure-activity.md) adatforrásának összekapcsolása. Ennek elvégzése után a naplózási események egy új táblába kerülnek a **naplók** képernyő AzureActivity nevű képernyőjén.
+Szeretjük a felhasználóink meghallgatását.
 
-1. Ezt követően az KQL használatával kérdezheti le az adatlekérdezéseket, mint bármely más táblát.
+Az Azure Sentinel TechCommunity területe:
 
-    Ha például meg szeretné tudni, hogy ki volt az utolsó felhasználó egy adott elemzési szabály szerkesztéséhez, használja a következő lekérdezést (a helyére a `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` szabályt, amelyet meg szeretne keresni):
+- [A Legutóbbi blogbejegyzések megtekintése és megjegyzése](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog)
+- [Saját kérdések közzététele az Azure Sentinelről](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel)
 
-    ```kusto
-    AzureActivity
-    | where OperationNameValue startswith "MICROSOFT.SECURITYINSIGHTS/ALERTRULES/WRITE"
-    | where Properties contains "alertRules/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-    | project Caller , TimeGenerated , Properties
-    ```
+A [felhasználói](https://feedback.azure.com/forums/920458-azure-sentinel) hangprogram használatával javaslatokat is küldhet a tökéletesítésekhez.
 
+## <a name="join-the-azure-sentinel-github-community"></a>Csatlakozás az Azure Sentinel GitHub-közösséghez
 
-## <a name="blogs-and-forums"></a>Blogok és fórumok
+Az [Azure Sentinel GitHub-tárház](https://github.com/Azure/Azure-Sentinel) egy hatékony erőforrás a fenyegetések észleléséhez és automatizálásához. 
 
-Szeretjük a felhasználóink meghallgatását!
+A Microsoft biztonsági elemzői folyamatosan új munkafüzeteket, forgatókönyveket, vadászati lekérdezéseket és egyebeket hoznak létre és vesznek fel, és a saját környezetében való használatra közzétesszük a Közösségbe. 
 
-- **Tegye fel kérdéseit** az Azure Sentinel [TechCommunity-területére](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel) . 
-
-- **Javaslatok küldése a** [felhasználói](https://feedback.azure.com/forums/920458-azure-sentinel) hangprogramon keresztüli tökéletesítésekhez.
-
-- **Tekintse meg és véleményezze** az Azure Sentinel blogbejegyzéseit:
-
-    - [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) 
-    - [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/)
-
+Töltse le a saját közösségi GitHub-adattárból származó minta tartalmakat, és hozzon létre egyéni munkafüzeteket, vadászati lekérdezéseket, jegyzetfüzeteket és forgatókönyveket az Azure Sentinel számára.
 
 ## <a name="next-steps"></a>Következő lépések
 

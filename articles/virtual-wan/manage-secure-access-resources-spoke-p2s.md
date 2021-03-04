@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 03/03/2021
 ms.author: cherylmc
-ms.openlocfilehash: c2efd9ac137c226c1d3a77e2cb6ebe17d75cb496
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 751d11fcd4b5d4c33145ee7f2b7b49971b8927ae
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051530"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048258"
 ---
 # <a name="manage-secure-access-to-resources-in-spoke-vnets-for-user-vpn-clients"></a>Az erőforrásokhoz való biztonságos hozzáférés kezelése küllős virtuális hálózatok a felhasználói VPN-ügyfelek számára
 
@@ -50,8 +50,6 @@ A hitelesítési módszer kiválasztásakor három lehetőség közül választh
 * **RADIUS-alapú hitelesítés:** Szerezze be a RADIUS-kiszolgáló IP-címét, a RADIUS-kiszolgáló titkos kulcsát és a tanúsítvány információit.
 
 * **Azure-tanúsítványok:** Ehhez a konfigurációhoz tanúsítványokra van szükség. Tanúsítványokat kell létrehoznia vagy beszereznie. Minden ügyfélhez Ügyféltanúsítvány szükséges. Emellett a főtanúsítvány információit (nyilvános kulcs) is fel kell tölteni. A szükséges tanúsítványokkal kapcsolatos további információkért lásd: [tanúsítványok készítése és exportálása](../vpn-gateway/vpn-gateway-certificates-point-to-site.md).
-
-Az alábbi példa az Azure tanúsítványalapú hitelesítést mutatja be.
 
 [!INCLUDE [Define parameters](../../includes/virtual-wan-p2s-configuration-include.md)]
 
@@ -144,7 +142,7 @@ Ellenőrizze a biztonságos központ telepítését.
 * Győződjön meg arról, hogy a biztonságos virtuális hubhoz **érvényes útvonalak tábla** a következő ugrást tartalmazza a tűzfalon keresztüli privát forgalomhoz. A hatályos útvonalak táblázat eléréséhez navigáljon a **virtuális hub** -erőforráshoz. A **kapcsolat** területen válassza az **Útválasztás** lehetőséget, majd válassza a **hatályos útvonalak** lehetőséget. Innen válassza ki az **alapértelmezett** útválasztási táblázatot.
 * Ellenőrizze, hogy létrehozott-e szabályokat a [szabályok létrehozása](#create-rules) szakaszban. Ha ezek a lépések nem teljesülnek, az Ön által létrehozott szabályok nem lesznek ténylegesen társítva a központhoz, és az útválasztási táblázat és a csomag folyamata nem fogja használni a Azure Firewall.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A virtuális WAN-ról további információt a [virtuális WAN gyakori kérdések](virtual-wan-faq.md)című témakörben talál.
 * További információ a Azure Firewallről: [Azure Firewall gyakori kérdések](../firewall/firewall-faq.yml).

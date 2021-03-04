@@ -1,23 +1,22 @@
 ---
 title: Mi az a VM-alapú adatfelismerés?
 description: A VM-információk áttekintése, amely figyeli az Azure-beli virtuális gépek állapotát és teljesítményét, és automatikusan feltérképezi és leképezi az alkalmazás-összetevőket és azok függőségeit.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/22/2020
-ms.openlocfilehash: 967ff9672f55af3e9c5d2e7c3c3dbc7d2ff6cb3c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 18e1fdcdee347a057c452f6170f36ec7f1f43244
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101707370"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046414"
 ---
 # <a name="overview-of-vm-insights"></a>A VM-információk áttekintése
 
 A VM-információk figyelik a virtuális gépek és a virtuálisgép-méretezési csoportok teljesítményét és állapotát, beleértve a futó folyamatokat és a más erőforrásokkal kapcsolatos függőségeket is. A teljesítménnyel kapcsolatos szűk keresztmetszetek és hálózati problémák azonosításával segítheti a létfontosságú alkalmazások kiszámítható teljesítményét és rendelkezésre állását, és segít megérteni, hogy a probléma más függőségekhez is kapcsolódik-e.
 
-A VM-alapú bepillantást a következő Windows-és Linux-operációs rendszerek támogatják:
+A VM-ismeretek a következő gépeken támogatják a Windows és a Linux operációs rendszereket:
 
 - Azure-beli virtuális gépek
 - Azure-beli virtuálisgép-méretezési csoportok
@@ -39,7 +38,7 @@ A virtuális gépekkel kapcsolatos bepillantást nem számítjuk fel közvetlen 
 - A riasztási szabályok a naplózási és az állapotadatok alapján.
 - Riasztási szabályokból küldött értesítések.
 
-A napló mérete a teljesítményszámlálók hosszának megfelelően változik, és növelheti a virtuális gép számára lefoglalt logikai lemezek és hálózati adapterek számát. Ha már használja a Service Map-t, az egyetlen változás, amelyet a Azure Monitor adattípusnak elküldő további teljesítményadatokat láthat `InsightsMetrics` .
+A napló mérete a teljesítményszámlálók hosszának megfelelően változik, és növelheti a virtuális gép számára lefoglalt logikai lemezek és hálózati adapterek számát. Ha már használja a Service Map-t, az egyetlen változás, amelyet a Azure Monitor adattípusnak elküldett további teljesítményadatokat láthat `InsightsMetrics` .
 
 
 ## <a name="configuring-vm-insights"></a>A VM-ismeretek konfigurálása

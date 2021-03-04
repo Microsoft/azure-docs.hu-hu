@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 1712cedab9cef23108fcc48b8e09bdc3e33065c4
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 25785ae7a214d6122fb90b80e8f0725a3468c48d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679469"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047602"
 ---
 # <a name="add-a-polygon-layer-to-the-map-android-sdk"></a>Sokszög réteg hozzáadása a térképhez (Android SDK)
 
@@ -97,6 +97,47 @@ Az alábbi képernyőképen a fenti kód jelenik meg, amely egy sokszöget jelen
 > [!TIP]
 > Ha egy sokszöget egy vonal réteggel rajzol, ügyeljen arra, hogy a sokszögekben lévő összes gyűrűt lezárja úgy, hogy minden egyes tömb ugyanazzal a kezdési és végponti ponttal legyen. Ha ez nem történik meg, akkor előfordulhat, hogy a réteg nem csatlakozik a sokszög utolsó pontjához az első ponthoz.
 
+## <a name="fill-a-polygon-with-a-pattern"></a>Sokszög kitöltése mintázattal
+
+A sokszög színekkel való kitöltése mellett a sokszög kitöltéséhez használhat képmintázatot is. Helyezzen be egy képmintázatot a Maps-rendszerkép sprite-erőforrásaiba, majd hivatkozzon erre a képre a `fillPattern` sokszög rétegének beállításával.
+
+```java
+//Load an image pattern into the map image sprite.
+map.images.add("fill-checker-red", R.drawable.fill_checker_red);
+
+//Create a data source and add it to the map.
+DataSource source = new DataSource();
+map.sources.add(source);
+
+//Create a polygon.
+source.add(Polygon.fromLngLats(
+    Arrays.asList(
+        Arrays.asList(
+            Point.fromLngLat(-50, -20),
+            Point.fromLngLat(0, 40),
+            Point.fromLngLat(50, -20),
+            Point.fromLngLat(-50, -20)
+        )
+    )
+));
+
+//Create and add a polygon layer to render the polygon on the map, below the label layer.
+map.layers.add(new PolygonLayer(source,
+        fillPattern("fill-checker-red"),
+        fillOpacity(0.5f)
+), "labels");
+```
+
+Ebben a példában a következő rendszerkép be lett töltve az alkalmazás megrajzolható mappájába.
+
+| ![Lila nyíl ikon képe](media/how-to-add-shapes-to-android-map/fill-checker-red.png)|
+|:-----------------------------------------------------------------------:|
+| fill_checker_red.png                                                    |
+
+Az alábbi képernyőkép a sokszög kitöltési mintázattal történő megjelenítését ábrázolja a térképen.
+
+![A sokszög a térképen megjelenített kitöltési mintával](media/how-to-add-shapes-to-android-map/android-polygon-pattern.jpg)
+
 ## <a name="next-steps"></a>Következő lépések
 
 Az alábbi cikkekben további kódokat talál a Maps-hez való hozzáadáshoz:
@@ -109,3 +150,6 @@ Az alábbi cikkekben további kódokat talál a Maps-hez való hozzáadáshoz:
 
 > [!div class="nextstepaction"]
 > [Vonalréteg hozzáadása](android-map-add-line-layer.md)
+
+> [!div class="nextstepaction"]
+> [Kiterjesztési sokszögréteg hozzáadása](map-extruded-polygon-android.md)

@@ -8,12 +8,12 @@ ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 13ac18abd0a557d02435c3805e1ab86bcbf1ff84
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d9e3e0f96d235829928c1f7c79864b1dc732f9e4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391983"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046346"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Lefelé irányuló eszköz hitelesítése az Azure IoT Hubon
 
@@ -35,7 +35,7 @@ Végezze el az [IoT Edge-eszköz konfigurálásának lépéseit transzparens át
 
 Ha X. 509 hitelesítést használ, az alsóbb rétegbeli eszközhöz tanúsítványokat fog készíteni. Ugyanazzal a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal rendelkezik, és a tanúsítvány generálására szolgáló parancsfájl, amelyet az átlátszó átjáró számára a rendelkezésre álló cikkhez használ.
 
-Ez a cikk az *átjáró állomásneve* több ponton is hivatkozik. Az átjáró állomásneve deklarálva van a config. YAML fájl **hostname** paraméterében a IoT Edge Gateway eszközön. Az alárendelt eszköz kapcsolódási sztringje hivatkozik rá. Az átjáró állomásneve feloldhatónak kell lennie egy IP-címhez, vagy a DNS-t vagy egy Host file bejegyzést kell használnia az alsóbb rétegbeli eszközön.
+Ez a cikk az *átjáró állomásneve* több ponton is hivatkozik. Az átjáró állomásneve deklarálva van a konfigurációs fájl **hostname** paraméterében a IoT Edge átjáró eszközön. Az alárendelt eszköz kapcsolódási sztringje hivatkozik rá. Az átjáró állomásneve feloldhatónak kell lennie egy IP-címhez, vagy a DNS-t vagy egy Host file bejegyzést kell használnia az alsóbb rétegbeli eszközön.
 
 ## <a name="register-device-with-iot-hub"></a>Eszköz regisztrálása a IoT Hub
 
@@ -192,7 +192,7 @@ Az alsóbb rétegbeli eszközökhöz tartozó kapcsolatok karakterláncának a k
 * A hitelesítési módszer, hogy a szimmetrikus kulcs vagy az X. 509 tanúsítvány
   * Ha szimmetrikus kulcsos hitelesítést használ, adja meg az elsődleges vagy a másodlagos kulcsot: `SharedAccessKey={key}`
   * Ha X. 509 tanúsítványalapú hitelesítést használ, adjon meg egy jelzőt: `x509=true`
-* Az az átjáró-eszköz, amelyhez az eszköz csatlakozik. Adja meg a **hostname** értéket az IoT Edge Gateway-eszköz config. YAML fájljában: `GatewayHostName={gateway hostname}`
+* Az az átjáró-eszköz, amelyhez az eszköz csatlakozik. Adja meg a **hostname** értéket az IoT Edge Gateway-eszköz konfigurációs fájljából: `GatewayHostName={gateway hostname}`
 
 Az összes együtt egy teljes körű kapcsolatok karakterlánca a következőképpen néz ki:
 

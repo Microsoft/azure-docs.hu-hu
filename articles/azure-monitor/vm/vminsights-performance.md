@@ -1,17 +1,16 @@
 ---
 title: A teljesítmény diagramon való elkészítése a virtuális gépekkel
 description: A teljesítmény a virtuálisgép-bepillantások egyik funkciója, amely automatikusan feltérképezi az alkalmazás-összetevőket Windows és Linux rendszereken, és leképezi a szolgáltatások közötti kommunikációt. Ez a cikk részletesen ismerteti, hogyan használhatja azt különböző helyzetekben.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/31/2020
-ms.openlocfilehash: 9c69ea3da71063d7e20ebf31ae2eb3df9a51e2c2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 02cb6a0c69fef1a33dd9327ddbd86e02b376a60e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101725441"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046465"
 ---
 # <a name="how-to-chart-performance-with-vm-insights"></a>A teljesítmény diagramon való elkészítése a virtuális gépekkel
 

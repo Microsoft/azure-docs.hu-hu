@@ -1,17 +1,16 @@
 ---
 title: Alkalmazás-függőségek megtekintése a VM-alapú ismeretekkel
 description: A Térkép a virtuális gépekkel kapcsolatos ismeretek egyik funkciója. A szolgáltatás automatikusan feltérképezi az alkalmazás-összetevőket Windows és Linux rendszereken, és leképezi a szolgáltatások közötti kommunikációt. Ez a cikk részletesen ismerteti, hogyan használhatja a Térkép funkciót különböző helyzetekben.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
-ms.openlocfilehash: 19da3e3e02581ce9fad080bb23bc48dcb9a3ceb3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 267ec0ed01fb85e9e29b0b8c9294d20d610db8fb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719644"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046567"
 ---
 # <a name="use-the-map-feature-of-vm-insights-to-understand-application-components"></a>Az alkalmazás-összetevők értelmezéséhez használja a VM-betekintő Térkép funkcióját
 A virtuális gépek elemzése során megtekintheti a felderített alkalmazás-összetevőket az Azure-ban vagy a környezetben futó Windows-és Linux-alapú virtuális gépeken (VM-EK). A virtuális gépek két módon figyelhetők meg. A térképeket közvetlenül egy virtuális gépről tekintheti meg, vagy megtekintheti az Azure Monitor térképét, hogy megjelenjenek-e az összetevők a virtuális gépek csoportjai között. Ez a cikk segítséget nyújt a két megtekintési módszer és a Térkép funkció használatának megismerésében. 

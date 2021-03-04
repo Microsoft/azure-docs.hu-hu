@@ -1,6 +1,6 @@
 - name: Dedikált SQL-készlet (korábban SQL DW)
   href: sql-data-warehouse-overview-what-is.md
-- name: Váltás az Azure Synapse-re
+- name: Váltás az Azure szinapszis >
   href: ../overview-what-is.md
 - name: Áttekintés
   items:

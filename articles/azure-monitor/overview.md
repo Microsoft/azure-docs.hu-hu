@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor áttekintése | Microsoft Docs
 description: Az Azure-szolgáltatások és -alkalmazások teljes monitorozási stratégiájának részét képező Microsoft-szolgáltatások és funkciók áttekintése.
-ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2019
-ms.openlocfilehash: 00f1bec4d4117d9ccebb4440e3649dd9dff32058
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 544d6937e412e3e1cfc2cf4e520c02f3f804fc8c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717349"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047162"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor – áttekintés
 
@@ -145,7 +144,7 @@ Több API áll rendelkezésre a metrikák és a naplók olvasására és írás�
 ## <a name="next-steps"></a>Következő lépések
 További információk:
 
-* A Azure Monitor által gyűjtött adatok [metrikái és naplói](data-platform.md) .
+* A Azure Monitor által gyűjtött adatok [metrikái és naplói](https://docs.microsoft.com/azure/azure-monitor/data-platform#metrics) .
 * [Adatforrások](agents/data-sources.md) az alkalmazás különböző összetevőinek telemetria küldéséhez.
 * [Naplók lekérdezése](logs/log-query-overview.md) az összegyűjtött adatok elemzéséhez.
 * [Ajánlott eljárások](/azure/architecture/best-practices/monitoring) a felhőalapú alkalmazások és szolgáltatások monitorozásához.

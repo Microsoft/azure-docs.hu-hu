@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 02/22/2021
-ms.openlocfilehash: 887245bbbefa1c0232313b638203206b623d506b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: c466d7717dd1dad0ea9ee3f44088d1400cee083f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101729708"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048182"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Az Azure Sentinel újdonságai
 
@@ -32,8 +32,44 @@ A feljegyzett funkciók jelenleg előzetes verzióban érhetők el. Az [Azure el
 
 ## <a name="february-2021"></a>2021. február
 
+- [Harmadik féltől származó adatösszekötők](#third-party-data-connectors)
 - [UEBA az entitások oldalán](#ueba-insights-in-the-entity-page)
 - [Javított incidensek keresése](#improved-incident-search)
+
+### <a name="third-party-data-connectors"></a>Harmadik féltől származó adatösszekötők
+
+A harmadik féltől származó integrációs gyűjtemények folyamatosan növekednek, és az elmúlt két hónapban harminc összekötőt adnak hozzá. Itt található egy lista:
+
+- [Agari adathalászat elleni védelem és márka védelme](connect-agari-phishing-defense.md)
+- [Akamai biztonsági események](connect-akamai-security-events.md)
+- [Active Directory Alsid](connect-alsid-active-directory.md)
+- [Apache HTTP-kiszolgáló](connect-apache-http-server.md)
+- [Aruba ClearPass](connect-aruba-clearpass.md)
+- [BlackBerry CylancePROTECT](connect-data-sources.md)
+- [Broadcom Symantec DLP](connect-broadcom-symantec-dlp.md)
+- [Cisco tűzerő eStreamer](connect-data-sources.md)
+- [Cisco Meraki](connect-cisco-meraki.md)
+- [Cisco Umbrella](connect-cisco-umbrella.md)
+- [Cisco Unified Computing System (FKR)](connect-cisco-ucs.md)
+- [ESET nagyvállalati ellenőr](connect-data-sources.md)
+- [ESET biztonsági felügyeleti központ](connect-data-sources.md)
+- [Google Workspace (korábban G csomag)](connect-google-workspace.md)
+- [Inperverz WAF-átjáró](connect-imperva-waf-gateway.md)
+- [Juniper SRX](connect-juniper-srx.md)
+- [Netskope](connect-data-sources.md)
+- [NXLog DNS-naplók](connect-nxlog-dns.md)
+- [NXLog Linux audit](connect-nxlog-linuxaudit.md)
+- [Onapsis platform](connect-data-sources.md)
+- [Proofpoint on demand – E-mail biztonság (POD)](connect-proofpoint-pod.md)
+- [Qualys biztonsági rések kezelése – Tudásbázis](connect-data-sources.md)
+- [Salesforce Service Cloud](connect-salesforce-service-cloud.md)
+- [SonicWall tűzfal](connect-data-sources.md)
+- [Sophos Cloud Optix](connect-sophos-cloud-optix.md)
+- [Squid Proxy](connect-squid-proxy.md)
+- [Symantec Endpoint Protection](connect-data-sources.md)
+- [Thycotic Secret Server](connect-thycotic-secret-server.md)
+- [Trend Micro XDR](connect-data-sources.md)
+- [VMWare ESXi](connect-vmware-esxi.md)
 
 ### <a name="ueba-insights-in-the-entity-page"></a>UEBA az entitások oldalán
 
@@ -66,6 +102,7 @@ Ha az Azure Sentinelben incidenseket keres, mostantól a következő incidensek 
 - [Elemzési szabály varázsló: továbbfejlesztett lekérdezés-szerkesztési élmény (nyilvános előzetes verzió)](#analytics-rule-wizard-improved-query-editing-experience-public-preview)
 - [Az az. SecurityInsights PowerShell-modul (nyilvános előzetes verzió)](#azsecurityinsights-powershell-module-public-preview)
 - [SQL Database-összekötő](#sql-database-connector)
+- [Dynamics 365-összekötő](#dynamics-365-connector)
 - [Javított incidensek megjegyzései](#improved-incident-comments)
 - [Dedikált Log Analytics-fürtök](#dedicated-log-analytics-clusters)
 - [Logic apps – felügyelt identitások](#logic-apps-managed-identities)
@@ -81,7 +118,7 @@ Az Azure Sentinel ütemezett elemzési szabály varázsló most a következő fe
 -   Bővített automatikus kiegészítés támogatása.
 -   Valós idejű lekérdezések érvényessége. A lekérdezésben szereplő hibák mostantól piros blokkként jelennek meg a görgetősávon, és a **szabály logikája** lap neve piros pont. Emellett a hibákkal rendelkező lekérdezések nem menthetők.
 
-További információ: [oktatóanyag: fenyegetések észlelése](tutorial-detect-threats-built-in.md).
+További információt az [oktatóanyag: egyéni elemzési szabályok létrehozása a fenyegetések észleléséhez](tutorial-detect-threats-custom.md)című témakörben talál.
 ### <a name="azsecurityinsights-powershell-module-public-preview"></a>Az az. SecurityInsights PowerShell-modul (nyilvános előzetes verzió)
 
 Az Azure Sentinel mostantól támogatja az új az [. SecurityInsights](https://www.powershellgallery.com/packages/Az.SecurityInsights/) PowerShell-modult.
@@ -99,6 +136,12 @@ Az Azure Sentinel mostantól egy Azure SQL Database-összekötőt biztosít, ame
 Az Azure SQL egy teljes körűen felügyelt, szolgáltatásként szolgáló platform, amely az adatbázis-kezelési funkciókat, például a verziófrissítést, a javítást, a biztonsági mentést és a figyelést kezeli, felhasználói beavatkozás nélkül.
 
 További információkért lásd: az [Azure SQL Database diagnosztika és a naplózási naplók összekötése](connect-azure-sql-logs.md).
+
+### <a name="dynamics-365-connector"></a>Dynamics 365-összekötő
+
+Az Azure Sentinel mostantól egy összekötőt biztosít a Microsoft Dynamics 365-hez, amely lehetővé teszi a Dynamics 365-alkalmazások felhasználói, felügyeleti és támogatási tevékenységének naplóinak begyűjtését az Azure Sentinelbe. Ezekkel az értékekkel a lehetséges biztonsági rések teljes adatfeldolgozási műveleteinek naplózását és elemzését végezheti el.
+
+További információ: [a Dynamics 365-tevékenység naplófájljainak összekapcsolása az Azure Sentinel](connect-dynamics-365.md)szolgáltatással.
 
 ### <a name="improved-incident-comments"></a>Javított incidensek megjegyzései
 
@@ -185,15 +228,14 @@ Az Azure Sentinel a Log Analytics ügynök használatával eljuttatja az esemén
 További információkért tekintse meg a [log Analytics dokumentációját](../azure-monitor/agents/log-analytics-agent.md) és a [log Analytics ügynök kibocsátási megjegyzéseit](https://github.com/microsoft/OMS-Agent-for-Linux/releases).
 ## <a name="november-2020"></a>2020. november
 
-- [A Logic Apps forgatókönyvek figyelése az Azure Sentinelben](#monitor-your-logic-apps-playbooks-in-azure-sentinel)
+- [A forgatókönyvek állapotának monitorozása az Azure Sentinelben](#monitor-your-playbooks-health-in-azure-sentinel)
 - [Microsoft 365 Defender-összekötő (nyilvános előzetes verzió)](#microsoft-365-defender-connector-public-preview)
-### <a name="monitor-your-logic-apps-playbooks-in-azure-sentinel"></a>A Logic Apps forgatókönyvek figyelése az Azure Sentinelben
 
-Az Azure Sentinel mostantól integrálva van az [Azure log apps](../logic-apps/index.yml)szolgáltatással, amely segít a feladatok, az üzleti folyamatok és a munkafolyamatok ütemtervének, automatizálásának és összehangolásának előkészítésében.
+### <a name="monitor-your-playbooks-health-in-azure-sentinel"></a>A forgatókönyvek állapotának monitorozása az Azure Sentinelben
 
-Egy Azure-beli logikai alkalmazást használhat az Azure Sentinelben, amely egy incidens létrehozásakor automatikusan meghívható, illetve osztályozásakor és incidensek használata esetén is. 
+Az Azure Sentinel-forgatókönyvek olyan [Azure log-alkalmazásokban](../logic-apps/index.yml)létrehozott munkafolyamatokon alapulnak, amelyek segítségével a feladatok, az üzleti folyamatok és a munkafolyamatok ütemezhetők, automatizálható és hangolható. A forgatókönyvek automatikusan meghívhatók az incidensek létrehozásakor, illetve a osztályozásakor és az incidensek használatakor is. 
 
-A forgatókönyvek állapotának, teljesítményének és felhasználásának betekintéséhez, beleértve a Azure Logic Apps-mel felvett adatokat is, egy forgatókönyvek **állapotának monitorozása** nevű [Azure-munkafüzetet](../azure-monitor/visualize/workbooks-overview.md) adtunk hozzá. 
+A forgatókönyvek állapotának, teljesítményének és használatának megtalálása érdekében egy forgatókönyvek **állapotának monitorozása** nevű [munkafüzetet](../azure-monitor/visualize/workbooks-overview.md) adtunk hozzá. 
 
 A forgatókönyvek **állapotának figyelése** munkafüzettel figyelheti a forgatókönyvek állapotát, vagy a sikeres vagy sikertelen futtatások mennyiségében megkeresheti a rendellenességeket. 
 

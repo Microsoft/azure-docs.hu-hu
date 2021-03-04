@@ -1,17 +1,16 @@
 ---
 title: Resource Manager-sablonok – minták a naplók lekérdezéséhez
 description: Példa Azure Resource Manager sablonokra Azure Monitor naplózási lekérdezések telepítéséhez.
-ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: ad8d984f7d363499ed2e85d7d46b95c05460f3eb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 97b3ac4d693afb8ee2f2dba362e1e2f307e50f78
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627828"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047264"
 ---
 # <a name="resource-manager-template-samples-for-log-queries-in-azure-monitor"></a>Resource Manager-sablonok – minták a Azure Monitor naplózási lekérdezéséhez
 Ez a cikk példákat tartalmaz a Azure Monitorban a naplók létrehozására és konfigurálására szolgáló minta- [Azure Resource Manager sablonokra](../../azure-resource-manager/templates/template-syntax.md) . Mindegyik minta tartalmaz egy sablonfájlt és egy, a sablonhoz adni kívánt minta értékeket tartalmazó paramétereket tartalmazó fájlt.

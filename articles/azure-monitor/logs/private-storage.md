@@ -1,17 +1,16 @@
 ---
 title: Ügyfél által kezelt tárfiókok használata az Azure Monitor Log Analyticsben
 description: Saját Storage-fiók használata Log Analytics forgatókönyvekhez
-ms.subservice: logs
 ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: 4161f2f4ced848eb02d395dfb2da35d64f0c0fb6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 69b5927c73dac14c76b94a4ee5bbb21449f8ec98
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723061"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047452"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Ügyfél által kezelt tárfiókok használata az Azure Monitor Log Analyticsben
 
@@ -23,7 +22,7 @@ A Log Analytics különböző helyzetekben az Azure Storage-ra támaszkodik. Ezt
 ## <a name="ingesting-azure-diagnostics-extension-logs-wadlad"></a>Azure Diagnostics-bővítményi naplók betöltése (WAD/LAD)
 A Azure Diagnostics Extension Agents (más néven WAD és LAD Windows-és Linux-ügynökök esetében) különböző operációsrendszer-naplókat gyűjt, és egy ügyfél által felügyelt Storage-fiókba tárolja őket. Ezután betöltheti ezeket a naplókat Log Analyticsba, hogy áttekintse és elemezze őket.
 ### <a name="how-to-collect-azure-diagnostics-extension-logs-from-your-storage-account"></a>Azure Diagnostics-bővítményi naplók összegyűjtése a Storage-fiókból
-A Storage-fiókot a [Azure Portal](../essentials/diagnostics-extension-logs.md#collect-logs-from-azure-storage) vagy a Storage-ELEMZÉSi [API](/rest/api/loganalytics/storage%20insights/createorupdate)meghívásával a Storage-adatforráshoz a log Analytics munkaterülethez kell kötni.
+A Storage-fiókot a [Azure Portal](../agents/diagnostics-extension-logs.md#collect-logs-from-azure-storage) vagy a Storage-ELEMZÉSi [API](/rest/api/loganalytics/storage%20insights/createorupdate)meghívásával a Storage-adatforráshoz a log Analytics munkaterülethez kell kötni.
 
 Támogatott adattípusok:
 * Rendszernapló

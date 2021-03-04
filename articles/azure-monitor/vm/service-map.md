@@ -1,17 +1,16 @@
 ---
 title: Service Map megoldás használata az Azure-ban | Microsoft Docs
 description: A Service Map az Azure egyik megoldása, amely automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Ez a cikk részletesen ismerteti Service Map telepítését a környezetben, és számos különböző forgatókönyvben használható.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 688adcf0012f8871c4034cbba6ce2ddcacdbcc43
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ad3f8821189e6e7aabb5653e5f938bb73f57a34b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717145"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047005"
 ---
 # <a name="using-service-map-solution-in-azure"></a>A Service Map megoldás használata az Azure-ban
 
@@ -26,7 +25,7 @@ Ez a cikk a Service Map bevezetésének és használatának részleteit ismertet
 * A Windows rendszerű számítógépre vagy Linux-kiszolgálóra telepített [függőségi ügynök](vminsights-enable-overview.md#agents) .
 
 >[!NOTE]
->Ha már telepítette a Service Mapt, mostantól megtekintheti a térképeket a VM-információk között, így további funkciókat is láthat a virtuális gépek állapotának és teljesítményének figyeléséhez. További információ: a [VM-információk áttekintése](../vm/vminsights-overview.md). Ha többet szeretne megtudni a Service Map megoldás és a virtuálisgép-információk leképezése funkció közötti különbségekről, tekintse meg az alábbi [gyakori kérdéseket](../faq.md#azure-monitor-for-vms).
+>Ha már telepítette a Service Mapt, mostantól megtekintheti a térképeket a VM-információk között, így további funkciókat is láthat a virtuális gépek állapotának és teljesítményének figyeléséhez. További információ: a [VM-információk áttekintése](../vm/vminsights-overview.md). Ha többet szeretne megtudni a Service Map megoldás és a virtuálisgép-információk leképezése funkció közötti különbségekről, tekintse meg az alábbi [gyakori kérdéseket](../faq.md#vm-insights).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 

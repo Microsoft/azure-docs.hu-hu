@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/02/2021
-ms.openlocfilehash: ae31b329cbea82ac664af24e42ec58d094b3a7ae
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e8f7e5451b48066f52a4c1038e58b1efa99951e6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663437"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048597"
 ---
 # <a name="configure-maintenance-window-preview"></a>Karbantartási időszak konfigurálása (előzetes verzió)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -275,7 +275,7 @@ A következő lépésekkel állíthatja be a karbantartási időszakot egy megl�
 1. Navigáljon ahhoz a felügyelt példányhoz, amelyhez be szeretné állítani a karbantartási időszakot.
 1. A **Beállítások** menüben válassza a **karbantartás** lehetőséget, majd válassza ki a kívánt karbantartási időszakot.
 
-   :::image type="content" source="media/maintenance-window-configure/maintenance.png" alt-text="SQL Database-karbantartási oldal":::
+   :::image type="content" source="media/maintenance-window-configure/maintenance-mi.png" alt-text="SQL felügyelt példány karbantartási lapja":::
 
 
 

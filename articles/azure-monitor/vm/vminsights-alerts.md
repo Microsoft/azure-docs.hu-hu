@@ -1,17 +1,16 @@
 ---
 title: Riasztások a virtuális gépekről
 description: Ismerteti, hogyan hozhat létre riasztási szabályokat a virtuálisgép-elemzések által gyűjtött teljesítményadatok alapján.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
-ms.openlocfilehash: e3b5f49d9a4ed7af40afba5b267ba0c7bb9cd73a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 06c58b7081ed68724a3c907f8fe76dcf5f7b8057
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704055"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046805"
 ---
 # <a name="how-to-create-alerts-from-vm-insights"></a>Riasztások létrehozása a virtuális gépekről
 A [Azure monitor riasztásai](../alerts/alerts-overview.md) proaktívan értesítik Önt a megfigyelési adataiban található érdekes adatmennyiségekről és mintákról. A virtuálisgép-elemzések nem tartalmazzák az előre konfigurált riasztási szabályokat, de saját maga is létrehozhat saját adatokat a gyűjtött adatok alapján. Ez a cikk útmutatást nyújt a riasztási szabályok létrehozásához, többek között a példákat tartalmazó lekérdezésekhez.

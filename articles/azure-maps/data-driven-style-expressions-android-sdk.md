@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 61d7a295d86fd7da74dee03cd35c79feea0218ed
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 7e4af0647a2810a27001c15a5030fca660828147
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97681579"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047740"
 ---
 # <a name="data-driven-style-expressions-android-sdk"></a>Adatvezérelt stílusú kifejezések (Android SDK)
 
@@ -23,7 +23,7 @@ Az adatvezérelt stílusok csökkentik az üzleti logika stíluson belüli megva
 
 A Azure Maps Android SDK szinte teljesen azonos stílusú kifejezéseket támogat, mint a Azure Maps web SDK, így az [adatvezérelt stílusú kifejezésekben (web SDK)](data-driven-style-expressions-web-sdk.md) megjelenő fogalmak az Android-alkalmazásokban is elvégezhetők. A Azure Maps Android SDK-ban található összes stílus kifejezés a névtér alatt érhető el `com.microsoft.azure.maps.mapcontrol.options.Expression` . Számos különböző típusú kifejezés létezik.
 
-| Kifejezések típusa | Description (Leírás) |
+| Kifejezések típusa | Leírás |
 |---------------------|-------------|
 | [Logikai kifejezések](#boolean-expressions) | A logikai kifejezések logikai operátorok egy készletét biztosítják a logikai összehasonlítások kiértékeléséhez. |
 | [Színkifejezések](#color-expressions) | A színkifejezések egyszerűbbé teszik a színértékek létrehozását és kezelését. |
@@ -141,7 +141,7 @@ Ez a videó áttekintést nyújt a Azure Maps adatvezérelt stílusáról.
 
 Az adatkifejezések hozzáférést biztosítanak a szolgáltatásban található tulajdonság-értékekhez.
 
-| Expression | Visszatérési típus | Description (Leírás) |
+| Expression | Visszatérési típus | Leírás |
 |------------|-------------|-------------|
 | `accumulated()` | szám | Lekérdezi a fürt eddig felhalmozott tulajdonságának értékét. |
 | `at(number | Expression, Expression)` | érték | Egy elem lekérése egy tömbből. |
@@ -233,7 +233,7 @@ has("fillColor", get("_style"))
 
 A matematikai kifejezések matematikai operátorokat biztosítanak az adatvezérelt számítások végrehajtásához a kifejezés keretrendszerében.
 
-| Expression | Visszatérési típus | Description (Leírás) |
+| Expression | Visszatérési típus | Leírás |
 |------------|-------------|-------------|
 | `abs(number | Expression)` | szám | Kiszámítja a megadott szám abszolút értékét. |
 | `acos(number | Expression)` | szám | Kiszámítja a megadott szám szám arkusz koszinuszát. |
@@ -268,7 +268,7 @@ A logikai kifejezések logikai operátorok egy készletét biztosítják a logik
 
 Az értékek összehasonlításakor az összehasonlítás szigorúan be van írva. A különböző típusú értékek mindig egyenlőtlennek számítanak. Azok az esetek, amelyekben a típusok ismertek, hogy az elemzési idő eltérő, és elemzési hibát eredményez.
 
-| Expression | Visszatérési típus | Description (Leírás) |
+| Expression | Visszatérési típus | Leírás |
 |------------|-------------|-------------|
 | `all(Expression...)` | boolean | Visszaadja `true` , ha az összes bemenet `true` , `false` ellenkező esetben. |
 | `any(Expression...)` | boolean | Visszaadja `true` , ha a bemenetek bármelyike `true` , `false` ellenkező esetben. |
@@ -421,7 +421,7 @@ SymbolLayer layer = new SymbolLayer(dataSource,
 
 A Type kifejezések a különböző adattípusok (például karakterláncok, számok és logikai értékek) tesztelésére és átalakítására szolgáló eszközöket biztosítanak.
 
-| Expression | Visszatérési típus | Description (Leírás) |
+| Expression | Visszatérési típus | Leírás |
 |------------|-------------|-------------|
 | `array(Expression)` | Objektum [] | Azt állítja be, hogy a bemenet egy tömb. |
 | `bool(Expression)` | boolean | Azt állítja be, hogy a bemeneti érték logikai. |
@@ -440,7 +440,7 @@ A Type kifejezések a különböző adattípusok (például karakterláncok, sz�
 
 A színkifejezések egyszerűbbé teszik a színértékek létrehozását és kezelését.
 
-| Expression | Visszatérési típus | Description (Leírás) |
+| Expression | Visszatérési típus | Leírás |
 |------------|-------------|-------------|
 | `color(int)` | szín | Egy szín egész értékének átalakítása színkifejezésre. |
 | `rgb(Expression red, Expression green, Expression blue)` \| `rgb(number red, number green, number blue)` | szín | Egy színértéket hoz létre a *vörös*, *zöld* és *kék* összetevőkből a és a között `0` `255` , és egy alfa-összetevőt `1` . Ha bármelyik összetevő tartományon kívül esik, a kifejezés hibát jelez. |
@@ -498,7 +498,7 @@ BubbleLayer layer = new BubbleLayer(dataSource,
 
 A karakterlánc-operátor kifejezései olyan karakterlánc-átalakítási műveleteket hajtanak végre, mint például az Összefűzés és az átalakítás. 
 
-| Expression | Visszatérési típus | Description (Leírás) |
+| Expression | Visszatérési típus | Leírás |
 |------------|-------------|-------------|
 | `concat(string...)` \| `concat(Expression...)` | sztring | Több karakterlánc összefűzése egymással. Minden értéknek sztringnek kell lennie. Ha szükséges, használja a `toString` Type kifejezést más típusú értékek karakterlánccá alakításához. |
 | `downcase(string)` \| `downcase(Expression)` | sztring | A megadott karakterláncot kisbetűsre alakítja. |
@@ -662,7 +662,7 @@ HeatMapLayer layer = new HeatMapLayer(dataSource,
 
 Amellett, hogy a zökkenőmentes átmenetet egy hő-Térkép színezésére használja, a színeket kifejezés használatával is megadhatja egy tartományon belül `step` . `step`A Heat Térkép színezésére szolgáló kifejezés használatával a rendszer vizuálisan megtöri a sűrűséget olyan tartományokra, amelyek egy kontúr vagy egy radar stílusú térképhez hasonlítanak.  
 
-```java 
+```java
 HeatMapLayer layer = new HeatMapLayer(dataSource,
     heatmapColor(
         step(
@@ -679,6 +679,36 @@ HeatMapLayer layer = new HeatMapLayer(dataSource,
 ```
 
 További információkért lásd a [Heat Map-réteg hozzáadása](map-add-heat-map-layer-android.md) című dokumentumot.
+
+### <a name="line-progress-expression"></a>Vonal állapota kifejezés
+
+Egy vonal-folyamatjelző kifejezés lekérdezi az előrehaladást egy vonal rétegében lévő átmenetes vonal mentén, és a következőképpen van definiálva: `lineProgress()` . Ez az érték 0 és 1 közötti szám. Egy `interpolation` vagy `step` kifejezéssel együtt használható. Ez a kifejezés csak `strokeGradient` a vonal rétegének beállításával használható.
+
+> [!NOTE]
+> A `strokeGradient` vonal rétegének beállításához `lineMetrics` meg kell adni az adatforrás beállítását `true` .
+
+**Példa**
+
+Ez a példa a `lineProgress()` kifejezés használatával egy színátmenetet alkalmaz egy vonal körvonalára.
+
+```javascript
+LineLayer layer = new LineLayer(source,
+    strokeGradient(
+        interpolate(
+            linear(),
+            lineProgress(),
+            stop(0, color(Color.BLUE)),
+            stop(0.1, color(Color.argb(255, 65, 105, 225))), //Royal Blue
+            stop(0.3, color(Color.CYAN)),
+            stop(0.5, color(Color.argb(255,0, 255, 0))), //Lime
+            stop(0.7, color(Color.YELLOW)),
+            stop(1, color(Color.RED))
+        )
+    )
+);
+```
+
+[Lásd az élő példát](map-add-line-layer.md#line-stroke-gradient)
 
 ### <a name="text-field-format-expression"></a>Szöveg mező formázása kifejezés
 
@@ -755,7 +785,7 @@ HeatMapLayer layer = new HeatMapLayer(dataSource,
 
 Változó kötési kifejezések a számítások eredményeit tárolják egy változóban. Így a számítási eredmények több alkalommal is hivatkozhatnak egy kifejezésben máshol. Hasznos optimalizálás olyan kifejezések esetében, amelyek sok számítást tartalmaznak.
 
-| Expression | Visszatérési típus | Description (Leírás) |
+| Expression | Visszatérési típus | Leírás |
 |--------------|---------------|--------------|
 | `let(Expression... input)` | | Egy vagy több értéket tárol változóként az `var` eredményt visszaadó gyermek kifejezésben szereplő kifejezés használatával. |
 | `var(Expression expression)` \| `var(string variableName)` | Objektum | A kifejezés használatával létrehozott változóra hivatkozik `let` . |
@@ -787,7 +817,7 @@ BubbleLayer layer = new BubbleLayer(dataSource,
 );
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a kifejezéseket támogató rétegekről:
 

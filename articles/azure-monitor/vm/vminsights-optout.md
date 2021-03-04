@@ -1,17 +1,16 @@
 ---
 title: A figyelés letiltása a virtuális gépekről
 description: Ez a cikk azt ismerteti, hogyan lehet leállítani a virtuális gépek figyelését a VM-információkban.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 7eca08abf1ef3bed1aa7fdd806853b94d5615854
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2de0dcd52745ebadb02ab8dbb563e28abf2822dc
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717060"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046482"
 ---
 # <a name="disable-monitoring-of-your-vms-in-vm-insights"></a>Virtuális gépek figyelésének letiltása a VM-alapú adatvizsgálatokban
 

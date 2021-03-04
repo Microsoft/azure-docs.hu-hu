@@ -4,6 +4,8 @@
   items:
     - name: Mik azok az ARM-sablonok?
       href: overview.md
+    - name: A bicep áttekintése
+      href: bicep-overview.md
 - name: Rövid útmutatók
   items:
     - name: Sablonok létrehozása – portál
@@ -324,9 +326,7 @@
       href: template-best-practices.md
     - name: Bicep
       items:
-        - name: Áttekintés
-          href: bicep-overview.md
-        - name: A JSON-ról a bicep-re
+        - name: JSON összehasonlítása a bicep
           href: compare-template-syntax.md
     - name: Gyakori kérdések
       href: frequently-asked-questions.md

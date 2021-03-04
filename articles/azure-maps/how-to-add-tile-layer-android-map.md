@@ -3,17 +3,18 @@ title: Csempe réteg hozzáadása Android-térképekhez | Microsoft Azure térk�
 description: Megtudhatja, hogyan adhat hozzá egy csempe réteget egy térképhez. Egy olyan példát láthat, amely a Azure Maps Android SDK-t használja egy időjárási radar átfedésének egy térképhez való hozzáadásához.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/08/2020
+ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 8ea6f44c47c5cd4d223b053640f65827f46db482
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: 6a920dc222cae4aedd77b667644de317637bbb69
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679288"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047502"
 ---
 # <a name="add-a-tile-layer-to-a-map-android-sdk"></a>Csempe réteg hozzáadása térképhez (Android SDK)
 
@@ -36,6 +37,7 @@ A csempe rétegbe átadott csempe URL-címének HTTP/HTTPS URL-címnek kell lenn
 * `{quadkey}` – Csempe quadkey-azonosítója a Bing Maps csempe rendszerelnevezési konvenciója alapján.
 * `{bbox-epsg-3857}` – Egy határolókeret karakterlánca, amely a `{west},{south},{east},{north}` EPSG 3857 térbeli hivatkozási rendszer formátumát jelöli.
 * `{subdomain}` – A altartomány értékeinek helyőrzője, ha meg van adva az altartomány értéke.
+* `azmapsdomain.invalid` – A Térkép által használt értékekkel összehangolja a tartományt és a csempe-kérelmek hitelesítését. Akkor használja, ha Azure Maps által üzemeltetett csempe-szolgáltatást hív meg.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -44,6 +46,8 @@ A cikkben szereplő folyamat elvégzéséhez telepítenie kell [Azure Maps Andro
 ## <a name="add-a-tile-layer-to-the-map"></a>Csempe réteg hozzáadása a térképhez
 
 Ez a minta bemutatja, hogyan hozhat létre csempéket tartalmazó csempe réteget. Ez a példa az "x, y, zoom" csempe rendszerét használja. Ennek a csempének a forrása a [OpenSeaMap projekt](https://openseamap.org/index.php), amely a tömegből származó tengeri diagramokat tartalmazza. A csempék rétegeinek megtekintésekor érdemes lehet tisztán látni a térképen található városok címkéit. Ez a viselkedés úgy érhető el, ha beszúrja a csempe réteget a Térkép feliratának rétegeibe.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 TileLayer layer = new TileLayer(
@@ -57,16 +61,31 @@ TileLayer layer = new TileLayer(
 map.layers.add(layer, "labels");
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = TileLayer(
+    tileUrl("https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png"),
+    opacity(0.8f),
+    tileSize(256),
+    minSourceZoom(7),
+    maxSourceZoom(17)
+)
+
+map.layers.add(layer, "labels")
+```
+
+::: zone-end
+
 Az alábbi képernyőfelvételen a fenti kód látható, amely egy sötét szürkeárnyalatos stílusú térképen jeleníti meg a hajózási adatok csempe rétegét.
 
 ![Az Android-Térkép csempét megjelenítő réteg](media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-A Térkép stílusainak beállításával kapcsolatos további tudnivalókért tekintse meg a következő cikket.
+Az alábbi cikkből megtudhatja, hogyan jelenítheti meg a képek ábrázolását a térképeken.
 
 > [!div class="nextstepaction"]
-> [Térkép stílusának módosítása](set-android-map-styles.md)
-
-> [!div class="nextstepaction"]
-> [Hő-Térkép hozzáadása](map-add-heat-map-layer-android.md)
+> [Képréteg](map-add-image-layer-android.md)

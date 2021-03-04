@@ -1,18 +1,17 @@
 ---
 title: PowerShell-minták Azure Monitor
 description: A PowerShell használatával férhet hozzá olyan Azure Monitor-funkciókhoz, mint például az autoscale, a riasztások, a webhookok és a keresési tevékenységek naplói.
-ms.subservice: ''
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9f43531e6b81b9bd4a294d70e9b8091463cf507a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1aa0d44dcb73a925494c0bc4aae43dc93e5a33d0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627457"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047060"
 ---
 # <a name="azure-monitor-powershell-samples"></a>PowerShell-minták Azure Monitor
 Ebből a cikkből megtudhatja, hogyan érheti el Azure Monitor szolgáltatásait a PowerShell-parancsok segítségével.

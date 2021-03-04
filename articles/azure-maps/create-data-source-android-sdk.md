@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 78b0cbbdccc7d6853d4ce2821bf659e888680a5f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: fc68dc25aad3671a55e5c11cbee094b4027e7070
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98674643"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047672"
 ---
 # <a name="create-a-data-source-android-sdk"></a>Adatforrás létrehozása (Android SDK)
 
@@ -360,14 +360,17 @@ Azure Maps betartja a [Mapbox Vector csempe specifikációját](https://github.c
 - A forgalmi folyamat [dokumentációjának](/rest/api/maps/traffic/gettrafficflowtile)  |  [adatformátumának részletei](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
 - A Azure Maps Creator Emellett lehetővé teszi az egyéni vektoros csempék létrehozását és elérését a [csempe renderelése v2](/rest/api/maps/renderv2/getmaptilepreview) használatával.
 
+> [!TIP]
+> Ha vektoros vagy raszteres képcsempéket használ a Azure Maps Render szolgáltatásból a web SDK-val, a `atlas.microsoft.com` helyőrzőre cserélheti `azmapsdomain.invalid` . Ezt a helyőrzőt a Térkép ugyanazokkal a tartománnyal helyettesíti, és a rendszer automatikusan hozzáfűzi ugyanazokat a hitelesítési adatokat is. Ez nagymértékben leegyszerűsíti a Azure Active Directory hitelesítés használatakor a renderelési szolgáltatással történő hitelesítést.
+
 Ha a térképen a vektoros csempe forrásának adatait szeretné megjeleníteni, a forrást csatlakoztathatja az egyik adatmegjelenítési réteghez. A vektoros forrást használó összes rétegnek meg kell adnia egy `sourceLayer` értéket a beállításokban. A következő kód betölti a Azure Maps Traffic flow Vector csempe szolgáltatást vektoros csempe-forrásként, majd a térképen egy vonal réteget használva jeleníti meg. Ez a vektoros csempés forrás egyetlen adatkészlettel rendelkezik, amely a "forgalom flow" nevű rétegben található. Ebben az adatkészletben az adathalmazban található sorokra vonatkozó tulajdonság egy nevű tulajdonsággal rendelkezik, `traffic_level` amely a kód kiválasztásához és a sorok méretének méretezéséhez használatos.
 
 ```java
 //Formatted URL to the traffic flow vector tiles, with the maps subscription key appended to it.
-String trafficFlowUrl = "https://atlas.microsoft.com/traffic/flow/tile/pbf?api-version=1.0&style=relative&zoom={z}&x={x}&y={y}&subscription-key=" + AzureMaps.getSubscriptionKey();
+String trafficFlowUrl = "https://azmapsdomain.invalid/traffic/flow/tile/pbf?api-version=1.0&style=relative&zoom={z}&x={x}&y={y}";
 
 //Create a vector tile source and add it to the map.
-VectorTileSource source = new VectorTileSource("flowLayer",
+VectorTileSource source = new VectorTileSource(
     tiles(new String[] { trafficFlowUrl }),
     maxSourceZoom(22)
 );

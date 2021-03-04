@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 02/28/2021
+ms.date: 03/03/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 8635e3590d4196e407dfc591a55ee240806358ed
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e01f44d363d038bd2ea4b985e12c9afc200f2c20
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691518"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046448"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>A Azure SQL Database és az Azure szinapszis Analytics naplózása
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -58,6 +58,11 @@ Egy naplózási szabályzat definiálható egy adott adatbázishoz, vagy az Azur
 
 - Ha a *kiszolgáló naplózása engedélyezve van*, az *mindig az adatbázisra vonatkozik*. A rendszer naplózza az adatbázist, az adatbázis naplózási beállításaitól függetlenül.
 
+- Ha a naplózási házirend az adatbázis szintjén van definiálva egy Log Analytics munkaterületre vagy egy Event hub-célhelyre, a következő műveletek nem őrzik meg a forrás-adatbázis szintű naplózási házirendet:
+    - [Adatbázis-másolat](database-copy.md)
+    - [Időponthoz való visszaállítás](recovery-using-backups.md)
+    - [Geo-replikáció](active-geo-replication-overview.md) (a másodlagos adatbázis nem rendelkezik adatbázis szintű naplózással)
+
 - Az adatbázis naplózásának engedélyezése a kiszolgálón való engedélyezésen kívül a nem bírálja felül vagy *nem* módosítja a kiszolgáló naplózásának beállításait. Mindkét naplózás egymás mellett fog létezni. Ez azt jelenti, hogy az adatbázist párhuzamosan, kétszer kell naplózni. egyszer a kiszolgálói házirend és egyszer az adatbázis-házirend alapján.
 
    > [!NOTE]
@@ -94,7 +99,8 @@ A Azure SQL Database és az Azure szinapszis audit 4000 karakterből álló adat
 A következő szakasz ismerteti a naplózás konfigurációját a Azure Portal használatával.
 
   > [!NOTE]
-  > Egy szüneteltetett dedikált SQL-készlet naplózásának engedélyezése nem lehetséges. A naplózás engedélyezéséhez szüntesse meg a dedikált SQL-készlet szüneteltetését. További információ a [DEDIKÁLT SQL-készletről](../..//synapse-analytics/sql/best-practices-sql-pool.md).
+  > - Egy szüneteltetett dedikált SQL-készlet naplózásának engedélyezése nem lehetséges. A naplózás engedélyezéséhez szüntesse meg a dedikált SQL-készlet szüneteltetését. További információ a [DEDIKÁLT SQL-készletről](../..//synapse-analytics/sql/best-practices-sql-pool.md).
+  > - Ha a naplózás a Azure Portal vagy a PowerShell-parancsmaggal egy Log Analytics munkaterületre vagy egy még hub-célhelyre van konfigurálva, akkor a rendszer a "SQLSecurityAuditEvents" kategória használatával hozza létre a [diagnosztikai beállításokat](../../azure-monitor/essentials/diagnostic-settings.md) .
 
 1. Nyissa meg az [Azure Portal](https://portal.azure.com).
 2. Navigáljon a **naplózás** elemre az SQL- **adatbázis** vagy az **SQL Server** -ablaktábla biztonsági fejléce alatt.
@@ -104,18 +110,18 @@ A következő szakasz ismerteti a naplózás konfigurációját a Azure Portal h
 
 4. Ha azt szeretné, hogy az adatbázis szintjén engedélyezze a naplózást, kapcsolja be a **naplózást** **a** következőre:. Ha a kiszolgáló naplózása engedélyezve van, az adatbázis által konfigurált naplózás párhuzamosan, a kiszolgáló auditálásával fog létezni.
 
-5. Több lehetőség is van annak konfigurálására, hogy a naplók hol lesznek írva. Naplókat írhat egy Azure Storage-fiókba, Log Analytics munkaterületre Azure Monitor naplók (előzetes verzió) és az Event hub (előzetes verzió) használatával történő felhasználásra. Ezen beállítások bármely kombinációját konfigurálhatja, és a rendszer a naplókat is megírja a naplókba.
+5. Több lehetőség is van annak konfigurálására, hogy a naplók hol lesznek írva. Naplókat írhat egy Azure Storage-fiókba, Log Analytics munkaterületre Azure Monitor naplók általi felhasználáshoz, vagy az Event hub használatával történő felhasználásra. Ezen beállítások bármely kombinációját konfigurálhatja, és a rendszer a naplókat is megírja a naplókba.
   
    ![tárolási beállítások](./media/auditing-overview/auditing-select-destination.png)
 
-### <a name="auditing-of-microsoft-support-operations-preview"></a><a id="auditing-of-microsoft-support-operations"></a>Microsoft ügyfélszolgálata műveletek naplózása (előzetes verzió)
+### <a name="auditing-of-microsoft-support-operations"></a><a id="auditing-of-microsoft-support-operations"></a>Microsoft ügyfélszolgálata műveletek naplózása
 
-Az Azure SQL Server Microsoft ügyfélszolgálata műveletek (előzetes verzió) naplózása lehetővé teszi a Microsoft támogatási mérnökök műveleteinek naplózását, amikor egy támogatási kérelem során hozzá kell férniük a kiszolgálóhoz. Ennek a képességnek a használata a naplózással együtt nagyobb átláthatóságot biztosít a munkaerő számára, és lehetővé teszi a rendellenességek észlelését, a trendek megjelenítését és az adatveszteség-megelőzést.
+Az Azure SQL Server Microsoft ügyfélszolgálata műveleteinek naplózása lehetővé teszi a Microsoft támogatási mérnökök műveleteinek naplózását, amikor egy támogatási kérelem során hozzá kell férniük a kiszolgálóhoz. Ennek a képességnek a használata a naplózással együtt nagyobb átláthatóságot biztosít a munkaerő számára, és lehetővé teszi a rendellenességek észlelését, a trendek megjelenítését és az adatveszteség-megelőzést.
 
-A Microsoft ügyfélszolgálata műveletek (előzetes verzió) naplózásának engedélyezéséhez navigáljon a **naplózás** elemre az **Azure SQL Server** panel biztonsági fejlécében, és váltson át **a** **Microsoft támogatási műveleteinek (előzetes verzió) naplózására** .
+A Microsoft ügyfélszolgálata műveletek naplózásának engedélyezéséhez navigáljon a **naplózás** elemre az **Azure SQL Server** paneljének biztonsági fejléce alatt, és váltson a **Microsoft támogatási műveleteinek naplózására** **a** következőre:.
 
   > [!IMPORTANT]
-  > A Microsoft támogatási műveleteinek (előzetes verzió) naplózása nem támogatja a Storage-fiók célhelyét. A képesség engedélyezéséhez be kell állítani egy Log Analytics munkaterületet vagy egy Event hub-célhelyet.
+  > A Microsoft támogatási műveleteinek naplózása nem támogatja a Storage-fiók célhelyét. A képesség engedélyezéséhez be kell állítani egy Log Analytics munkaterületet vagy egy Event hub-célhelyet.
 
 ![Képernyőkép a Microsoft ügyfélszolgálata műveletekről](./media/auditing-overview/support-operations.png)
 
@@ -137,7 +143,7 @@ A naplók a Storage-fiókba való írásának konfigurálásához válassza a **
 
 ### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>Naplózás Log Analytics célhelyre
   
-A naplók Log Analytics munkaterületre való írásának konfigurálásához válassza a **log Analytics (előzetes verzió)** lehetőséget, és nyissa meg **log Analytics részleteit**. Válassza ki vagy hozza létre a Log Analytics munkaterületet, ahol a naplók meg lesznek írva, majd kattintson **az OK** gombra.
+A naplók Log Analytics munkaterületre való írásának konfigurálásához válassza a **log Analytics** lehetőséget, majd nyissa meg **log Analytics részleteit**. Válassza ki vagy hozza létre a Log Analytics munkaterületet, ahol a naplók meg lesznek írva, majd kattintson **az OK** gombra.
 
    ![LogAnalyticsworkspace](./media/auditing-overview/auditing_select_oms.png)
 
@@ -145,7 +151,7 @@ További információ a Azure Monitor Log Analytics munkaterületről: [a Azure 
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>Naplózás az Event hub célhelyére
 
-Ha konfigurálni szeretné a naplók írását az Event hubhoz, válassza az **Event hub (előzetes verzió)** lehetőséget, és nyissa meg az **Event hub részleteit**. Válassza ki az Event hub-t, ahol a naplók meg lesznek írva, majd kattintson **az OK** gombra. Ügyeljen arra, hogy az Event hub ugyanabban a régióban legyen, mint az adatbázis és a kiszolgáló.
+Ha be szeretné állítani a naplók írását az Event hub-ba, válassza az **Event hub** lehetőséget, és nyissa meg az **Event hub részleteit**. Válassza ki az Event hub-t, ahol a naplók meg lesznek írva, majd kattintson **az OK** gombra. Ügyeljen arra, hogy az Event hub ugyanabban a régióban legyen, mint az adatbázis és a kiszolgáló.
 
    ![Eventhub](./media/auditing-overview/auditing_select_event_hub.png)
 

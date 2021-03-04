@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: anithaa
-ms.openlocfilehash: 9b07af72983931e0e1cab9e7d5093fd845b363bc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2f15b397fbceb9e097d94080ba03fba50a96ed06
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692198"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048505"
 ---
 # <a name="configure-private-endpoints-for-azure-cosmos-db-analytical-store"></a>Privát végpontok konfigurálása Azure Cosmos DB analitikus tárolóhoz
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -118,7 +118,8 @@ A fiók hálózati elkülönítésének konfigurálása a szinapszis munkaterül
    az cosmosdb update --name MyCosmosDBDatabaseAccount --resource-group MyResourceGroup --network-acl-bypass AzureServices --network-acl-bypass-resource-ids "/subscriptions/subId/resourceGroups/rgName/providers/Microsoft.Synapse/workspaces/wsName"
    ```
 
-   > Megjegyzés Azure Cosmos DB fióknak és az Azure szinapszis Analytics-munkaterületnek ugyanahhoz a Azure Active Directory (AD) bérlőhöz kell tartoznia.
+   > [!NOTE]
+   > Azure Cosmos DB fióknak és az Azure szinapszis Analytics-munkaterületnek ugyanahhoz a Azure Active Directory (AD) bérlőhöz kell tartoznia.
 
 2. Most már hozzáférhet a fiókhoz a kiszolgáló nélküli SQL-készletekből, T-SQL-lekérdezésekkel az Azure szinapszis-kapcsolaton keresztül. Ahhoz azonban, hogy az analitikus tárolóban lévő adatelkülönítés biztosítható legyen, hozzá kell adnia egy **analitikus** felügyelt magánhálózati végpontot ehhez a fiókhoz. Ellenkező esetben az analitikus tárolóban lévő adatok nem lesznek letiltva a nyilvános hozzáférésből.
 

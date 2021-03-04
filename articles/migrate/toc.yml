@@ -36,6 +36,8 @@
           items:
             - name: VMware virtuális gépek felmérése Azure-beli virtuális gépekbe történő migráláshoz
               href: tutorial-assess-vmware-azure-vm.md
+            - name: SQL-példányok felmérése az Azure SQL-re való áttelepítéshez
+              href: tutorial-assess-sql.md
             - name: VMware virtuális gépek felmérése AVS-be történő migráláshoz
               href: tutorial-assess-vmware-azure-vmware-solution.md
         - name: A Hyper-V virtuális gépek felmérése az Azure-ba való migráláshoz
@@ -102,6 +104,8 @@
       items:
         - name: Felmérések áttekintése (migrálás Azure-beli virtuális gépre)
           href: concepts-assessment-calculation.md
+        - name: Értékelések áttekintése (Migrálás az Azure SQL-be)
+          href: concepts-azure-sql-assessment-calculation.md
         - name: Felmérések áttekintése (migrálás AVS-re)
           href: concepts-azure-vmware-solution-assessment-calculation.md
         - name: Felmérés ajánlott eljárásai
@@ -144,8 +148,12 @@
               href: deploy-appliance-script-government.md
         - name: A VMware rendszerű virtuális gépek felderítési hatókörének korlátozása
           href: set-discovery-scope.md
+        - name: Kiszolgáló hitelesítő adatainak hozzáadása
+          href: add-server-credentials.md
         - name: Alkalmazások/szerepkörök/szolgáltatások felderítése
           href: how-to-discover-applications.md
+        - name: SQL-példányok felderítése meglévő projektekben
+          href: how-to-discover-sql-existing-project.md
         - name: A gép függőségeinek elemzése (ügynökalapú)
           href: how-to-create-group-machine-dependencies.md
         - name: A gép függőségeinek elemzése (ügynök nélküli)
@@ -158,6 +166,8 @@
           href: how-to-create-a-group.md
         - name: Azure-beli virtuális gép felmérésének létrehozása
           href: how-to-create-assessment.md
+        - name: Azure SQL-Értékelés létrehozása
+          href: how-to-create-azure-sql-assessment.md
         - name: AVS-felmérés létrehozása
           href: how-to-create-azure-vmware-solution-assessment.md
         - name: SQL Server-adatbázis értékelése
@@ -176,6 +186,8 @@
       items:
         - name: Migrálási eszközök hozzáadása
           href: how-to-migrate.md
+        - name: Replikálás a ExpressRoute használatával
+          href: replicate-using-expressroute.md
         - name: Gépek előkészítése migrálásra
           href: prepare-for-migration.md
         - name: Windows 2003-kiszolgálók előkészítése migrálásra

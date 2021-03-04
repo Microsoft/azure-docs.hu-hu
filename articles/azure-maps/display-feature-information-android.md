@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 37b5ab1c144ed81d995da40b87edeaccdcad7253
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 4e84bd821d53048b134db635c7ec541db74fbf11
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680010"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047713"
 ---
 # <a name="display-feature-information"></a>Funkcióinformációk megjelenítése
 
-A térbeli adataikat gyakran pontok, vonalak és sokszögek használatával jelölik. Ezek az adatok gyakran metaadatokkal kapcsolatos adatokkal rendelkeznek. Előfordulhat például, hogy egy pont egy étterem és a metaadatok helyét jelöli az adott étteremben, a neve, a címe és a kiszolgált élelmiszer típusa. Ez a metaadatok hozzáadhatók a GeoJSON tulajdonságaihoz `Feature` . A következő kód egy egyszerű pont funkciót hoz létre egy olyan `title` tulajdonsággal, amelynek értéke "„Helló világ!” alkalmazás!".
+A térbeli adataikat gyakran pontok, vonalak és sokszögek használatával jelölik. Ezek az adatok gyakran metaadatokkal kapcsolatos adatokkal rendelkeznek. Előfordulhat például, hogy egy pont egy étterem és a metaadatok helyét jelöli az adott étteremben, a neve, a címe és a kiszolgált élelmiszer típusa. Ez a metaadatok hozzáadhatók a GeoJSON tulajdonságaihoz `Feature` . A következő kód egy egyszerű pont funkciót hoz létre egy olyan `title` tulajdonsággal, amelynek értéke "Hello World!".
 
 ```java
 //Create a data source and add it to the map.
@@ -75,6 +75,81 @@ A pirítós üzenetein kívül számos más módon is bemutathatja egy szolgált
 - [Párbeszédpanelek](https://developer.android.com/guide/topics/ui/dialogs) – a párbeszédpanel egy kis ablak, amely arra kéri a felhasználót, hogy hozzon döntést, vagy adjon meg további információkat. Egy párbeszédpanel nem tölti ki a képernyőt, és általában olyan modális eseményekhez használatos, amelyek megkövetelik, hogy a felhasználók a folytatás előtt végrehajtsák a műveletet.
 - Adjon hozzá egy [töredéket](https://developer.android.com/guide/components/fragments) az aktuális tevékenységhez.
 - Navigáljon egy másik tevékenységhez vagy nézethez.
+
+## <a name="display-a-popup"></a>Felugró ablak megjelenítése
+
+A Azure Maps Android SDK olyan osztályt biztosít, amely megkönnyíti a `Popup` térképen való elhelyezésre rögzített felhasználói felületi megjegyzések létrehozását. A felugró ablakokhoz relatív elrendezéssel rendelkező nézetben kell átadni a `content` felugró ablak beállítását. Íme egy egyszerű elrendezési példa, amely a háttérben a sötét szöveget jeleníti meg.
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    android:layout_margin="8dp"
+    android:padding="10dp"
+
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="wrap_content"
+        android:text=""
+        android:textSize="18dp"
+        android:textColor="#222"
+        android:layout_height="wrap_content"
+        android:width="200dp"/>
+
+</RelativeLayout>
+```
+
+Ha a fenti elrendezést egy `popup_text.xml` alkalmazás mappájában található fájl tárolja `res -> layout` , a következő kód létrehoz egy előugró ablakokat, hozzáadja azt a térképhez. Ha egy szolgáltatásra kattint, a `title` tulajdonság az elrendezés használatával jelenik meg, `popup_text.xml` és az elrendezés alsó középpontja a térképen megadott pozícióra van rögzítve.
+
+```java
+//Create a popup and add it to the map.
+Popup popup = new Popup();
+map.popups.add(popup);
+
+map.events.add((OnFeatureClick)(feature) -> {
+    //Get the first feature and it's properties.
+    Feature f = feature.get(0);
+    JsonObject props = f.properties();
+
+    //Retrieve the custom layout for the popup.
+    View customView = LayoutInflater.from(this).inflate(R.layout.popup_text, null);
+
+    //Access the text view within the custom view and set the text to the title property of the feature.
+    TextView tv = customView.findViewById(R.id.message);
+    tv.setText(props.get("title").getAsString());
+
+    //Get the coordinates from the clicked feature and create a position object.
+    List<Double> c = ((Point)(f.geometry())).coordinates();
+    Position pos = new Position(c.get(0), c.get(1));
+
+    //Set the options on the popup.
+    popup.setOptions(
+        //Set the popups position.
+        position(pos),
+
+        //Set the anchor point of the popup content.
+        anchor(AnchorType.BOTTOM),
+
+        //Set the content of the popup.
+        content(customView)
+
+        //Optionally, hide the close button of the popup.
+        //, closeButton(false)
+    );
+
+    //Open the popup.
+    popup.open();
+});
+
+```
+
+A következő képernyőfelvételen láthatók azok a felugró ablakok, amelyek akkor jelennek meg, amikor a funkciók rákattintanak, és az adott helyen vannak rögzítve a térképen, ahogy mozog.
+
+![Megjelenik egy előugró ablak animációja, és a Térkép az előugró ablakban rögzített állapotba került](./media/display-feature-information-android/android-popup.gif)
 
 ## <a name="next-steps"></a>Következő lépések
 

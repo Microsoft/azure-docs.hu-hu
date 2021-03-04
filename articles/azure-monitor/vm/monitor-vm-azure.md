@@ -2,17 +2,16 @@
 title: Azure-beli virtuális gépek figyelése Azure Monitor
 description: Ismerteti, hogyan gyűjthet és elemezheti az Azure-beli virtuális gépek monitorozási adatait Azure Monitor használatával.
 ms.service: azure-monitor
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 6209389843b19d933bdce2726b55946b8839a264
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2c93471436030f9260f4fa0d95d656c27d382346
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101731374"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047043"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Azure-beli virtuális gépek figyelése Azure Monitor
 Ez a cikk azt ismerteti, hogyan használható a Azure Monitor az Azure-beli virtuális gépek monitorozási adatainak gyűjtésére és elemzésére az állapotuk fenntartása érdekében. A virtuális gépeket a rendelkezésre állás és a teljesítmény figyelésére használhatja Azure Monitor mint bármely [más Azure-erőforrást](../essentials/monitor-azure-resource.md), de ezek más erőforrásokkal is egyediek, mivel a vendég operációs és a rendszer, valamint a rajta futó munkaterhelések figyelésére is szükség van. 
@@ -56,7 +55,7 @@ Ha a Azure Monitor összes funkcióját engedélyezni szeretné egy virtuális g
 | Konfigurációs lépés | Befejezett műveletek | Engedélyezett funkciók |
 |:---|:---|:---|
 | Nincs konfiguráció | -A metrikák számára gyűjtött platform-mérőszámok.<br>– A tevékenység naplója begyűjtve. | -Metrikai tallózó a gazdagéphez.<br>-Metrikákkal kapcsolatos riasztások a gazdagéphez.<br>-Műveletnapló riasztásai. |
-| [A virtuális gépekkel való adatfelismerés engedélyezése](#enable-azure-monitor-for-vms) | -Log Analytics ügynök telepítve.<br>-A függőségi ügynök telepítve van.<br>– Vendég teljesítményadatokat gyűjtött a naplókba.<br>– A naplókba gyűjtött folyamat-és függőségi részletek. | – Teljesítmény-diagramok és a vendég teljesítményadatokat tartalmazó munkafüzetek.<br>– A vendég teljesítményadatokat érintő lekérdezések naplózása.<br>– A vendég teljesítményadatokat naplózó riasztások.<br>– Függőségi Térkép. |
+| [A virtuális gépekkel való adatfelismerés engedélyezése](#enable-vm-insights) | -Log Analytics ügynök telepítve.<br>-A függőségi ügynök telepítve van.<br>– Vendég teljesítményadatokat gyűjtött a naplókba.<br>– A naplókba gyűjtött folyamat-és függőségi részletek. | – Teljesítmény-diagramok és a vendég teljesítményadatokat tartalmazó munkafüzetek.<br>– A vendég teljesítményadatokat érintő lekérdezések naplózása.<br>– A vendég teljesítményadatokat naplózó riasztások.<br>– Függőségi Térkép. |
 | [A diagnosztikai bővítmény és a-Graf ügynök telepítése](#enable-diagnostics-extension-and-telegraf-agent) | – A vendég teljesítményadatokat gyűjt a metrikák között. | -Metrikai tallózó vendégként.<br>-Metrikák riasztások vendég számára.  |
 | [A Log Analytics-munkaterület konfigurálása](#configure-log-analytics-workspace) | – Vendégtől gyűjtött események. | – A vendég eseményeihez tartozó lekérdezések naplózása.<br>– Riasztások naplózása a vendég eseményeihez. |
 | [Diagnosztikai beállítás létrehozása a virtuális géphez](#collect-platform-metrics-and-activity-log) | – A naplókba gyűjtött platform-metrikák.<br>– A naplókba gyűjtött tevékenység naplója. | – Lekérdezések naplózása a gazdagép metrikái számára.<br>– Riasztások naplózása a gazdagép metrikái esetében.<br>– A tevékenység naplójának lekérdezése.

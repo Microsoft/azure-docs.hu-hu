@@ -1,17 +1,16 @@
 ---
 title: Adatok megjelenítése Azure Monitorból | Microsoft Docs
 description: A Azure Monitorban tárolt metrika és naplózási adatok megjelenítéséhez elérhető módszerek összegzését tartalmazza.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/25/2021
-ms.openlocfilehash: 29164bbb205e9f3ad59ac28200b5c6cd1e47bf39
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b90d628f0d24e43d7b9f2e3fa87e74d426648c6e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101707574"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048573"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Adatok megjelenítése az Azure Monitorból
 Ez a cikk az Azure Monitorban tárolt napló-és metrikai adatok megjelenítéséhez használható módszerek összegzését tartalmazza.

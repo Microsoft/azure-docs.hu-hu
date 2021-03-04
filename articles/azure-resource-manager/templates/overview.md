@@ -2,13 +2,13 @@
 title: Sablonok – Áttekintés
 description: A Azure Resource Manager-sablonok (ARM-sablonok) használatának előnyeit ismerteti az erőforrások üzembe helyezéséhez.
 ms.topic: conceptual
-ms.date: 01/20/2021
-ms.openlocfilehash: dd9207ca1d0397b7dce63eb826567f07b1d0b892
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.date: 03/03/2021
+ms.openlocfilehash: 7f850d06066a6892db9f17ae86a6bba9496bad58
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621839"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046380"
 ---
 # <a name="what-are-arm-templates"></a>Mik azok az ARM-sablonok?
 
@@ -17,6 +17,8 @@ A felhőbe való áttéréssel számos csapat agilis fejlesztési módszereket f
 Ezeknek a kihívásoknak a kielégítéséhez automatizálhatja az üzembe helyezéseket, és használhatja az infrastruktúra mint kód gyakorlatát. A kódban definiálni kell a telepítendő infrastruktúrát. Az infrastruktúra kódja a projekt részévé válik. Az alkalmazás kódjához hasonlóan az infrastruktúra kódját is tárolhatja egy forrás adattárban, és annak verzióját is. A csapatának bármelyike futtathatja a kódot, és telepíthet hasonló környezeteket is.
 
 Az infrastruktúra kódként való megvalósításához az Azure-megoldásokhoz használja Azure Resource Manager-sablonokat (ARM-sablonok). A sablon egy JavaScript Object Notation (JSON) fájl, amely meghatározza a projekt infrastruktúráját és konfigurációját. A sablon olyan deklaratív szintaxist használ, amellyel anélkül határozhatja meg, hogy mit szeretne üzembe helyezni, hogy ehhez programozási parancsok sorozatát kellene megírnia. A sablonban megadhatja a telepítendő erőforrásokat és az erőforrások tulajdonságait.
+
+Új nyelvet vezettünk be az ARM-sablonok fejlesztéséhez. A nyelv neve bicep, és jelenleg előzetes verzióban érhető el. A bicep és a JSON-sablonok ugyanazokat a képességeket kínálnak. A sablont a két nyelv között alakíthatja át. A bicep olyan szintaxist biztosít, amely könnyebben használható a sablonok létrehozásához. További információ: [Mi az a bicep (előzetes verzió)?](bicep-overview.md).
 
 ## <a name="why-choose-arm-templates"></a>Miért érdemes ARM-sablonokat választani?
 
@@ -68,7 +70,7 @@ A sablon a következő résszel rendelkezik:
 
 * [Felhasználó által definiált függvények](template-user-defined-functions.md) – a sablont leegyszerűsítő testreszabott függvények létrehozása.
 
-* [Erőforrások](template-syntax.md#resources) – a telepítendő erőforrások meghatározása.
+* [Erőforrások](resource-declaration.md) – a telepítendő erőforrások meghatározása.
 
 * [Kimenetek](template-outputs.md) – az üzembe helyezett erőforrások értékeit adja vissza.
 

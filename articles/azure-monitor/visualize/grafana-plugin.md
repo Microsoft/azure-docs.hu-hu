@@ -1,15 +1,14 @@
 ---
 title: Azure-szolgáltatások és-alkalmazások figyelése a Grafana használatával
 description: Átirányíthatja Azure Monitor és Application Insights az Grafana-ben megtekintheti azokat.
-ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/06/2017
-ms.openlocfilehash: e882b9d19564dab1ef2c0abb34b5d557cb4a5821
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: decd0353bcb2cf048fd5591ea8c895cf22944809
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100620475"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048658"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Az Azure-szolgáltatások figyelése a Grafana-ben
 Mostantól a [Azure monitor adatforrás beépülő](https://grafana.com/plugins/grafana-azure-monitor-datasource)modullal is figyelheti az Azure-szolgáltatásokat és-alkalmazásokat a [Grafana](https://grafana.com/) . A beépülő modul a Azure Monitor által összegyűjtött alkalmazás-teljesítményadatokat gyűjti, beleértve a különböző naplókat és mérőszámokat. Ezt az Grafana irányítópulton jelenítheti meg.
